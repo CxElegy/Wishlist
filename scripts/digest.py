@@ -572,11 +572,20 @@ def last_story(name, before):
     return None
 
 
+SECTION_BY_TYPE = {"game": "游戏", "anime": "影视", "show": "影视", "product": "好物", "category": "好物"}
+
+
+def section_of(item):
+    """头版上的板块。"""
+    return item.get("section") or SECTION_BY_TYPE.get(item.get("type", "product"), "好物")
+
+
 def quiet_block(item, themes, date):
     """本期没有新消息的关注项：只留一个小栏（名字、现状、最近一条），配色照旧。"""
     cover = find_cover(item, None)
     return {
         "name": item["name"],
+        "section": section_of(item),
         "subtitle": item.get("subtitle", ""),
         "theme": theme.resolve(item, cover, themes),
         "quiet": True,
@@ -641,7 +650,9 @@ def publish(inbox_path=None):
             continue
         blocks.append({
             "name": raw["name"],
+            "section": section_of(item),
             "subtitle": item.get("subtitle", ""),
+            "cover": raw.get("cover"),
             "theme": theme.resolve(item, raw.get("cover"), themes),
             "facts": raw["facts"],
             "stories": attach_media(stories, entries, raw.get("cover")),

@@ -2,8 +2,10 @@
  "date": "2026-10-11",
  "items": [
   {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
+   "section": "游戏",
    "stories": [
     {
      "blurb": "10/2–10/6 全球 CBT 结束，日韩台媒体集中发布试玩。1989 年东京的复古动画感广受好评，战斗过于依赖角色克制则被反复点名。下次测试与上线日期仍未公布。",
@@ -42,7 +44,7 @@
      "headline": "战斗系统详解：领地宣言可重置冷却",
      "highlight": "领地宣言",
      "image": "https://cdn.gamey.kr/news/photo/202610/3019068_171645_5722.jpg",
-     "url": "http://www.gamey.kr/news/articleView.html?idxno=3019068",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBnVE93YkJrV1Q2eXdSYU55WVk5TUpUSUFyWXdqUzZ5TFdXQ1BmQTloR2ZueGZqWTZ4NjZoVVNXU1hhZm5QVFBrY3g4LXJobjBMRTNUalB5b095cTVubXZMc1ZxbU1yZ9IBakFVX3lxTE9WcEcwb2NSWm5DYnVyWVloSmZNdUhPTWlVLXNQbjlkelVwT2YtaEg2dFFUN0NVNDV1ZlJHRjgwVWFTelljZS1jc3N3VFFXUmY2bXp3V0VkUjJsZTdONHpoSlpMX053VkVGeVE?oc=5",
      "weight": "normal"
     },
     {
@@ -96,6 +98,7 @@
    "last": null,
    "name": "BLEACH Mirrors High",
    "quiet": true,
+   "section": "游戏",
    "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
    "stories": [],
    "subtitle": "死神 新作手游",
@@ -107,6 +110,48 @@
     "bg": "#FBF7EE",
     "fg": "#1A1111",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg",
+   "facts": [],
+   "last": null,
+   "name": "GTA 6",
+   "quiet": true,
+   "section": "游戏",
+   "status": "定于 2026 年 11 月 19 日发售（PS5 / Xbox Series X|S）· PC 版未公布",
+   "stories": [],
+   "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
+   "theme": {
+    "accent": "#FF5FA2",
+    "alt_accent": "#C2185B",
+    "alt_bg": "#FFB25B",
+    "alt_fg": "#1E1033",
+    "bg": "#1E1033",
+    "fg": "#FFF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": null,
+   "name": "滑雪",
+   "quiet": true,
+   "section": "运动",
+   "status": "",
+   "stories": [],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
     "split": true
    }
   }

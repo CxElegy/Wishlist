@@ -2,11 +2,14 @@ name: 关注清单通信
 
 # 每 2 小时：收集 → 更新简报网页（GitHub Pages）→ 有要紧消息立刻发 Discord
 # 每周一早上：发 Discord 周报（过去 7 天的要点 + 网页链接）
+# 改了关注清单或代码并推送时：立刻跑一次（新增关注项马上通知、网页马上按新版式更新）
 
 on:
   schedule:
     - cron: "17 */2 * * *"   # 每 2 小时（UTC 的偶数点 17 分）
     - cron: "47 0 * * 1"     # 每周一 00:47 UTC = 北京时间 08:47，发周报
+  push:
+    paths: ["items.yaml", "scripts/**", ".github/workflows/digest.yml"]
   workflow_dispatch:
     inputs:
       weekly:

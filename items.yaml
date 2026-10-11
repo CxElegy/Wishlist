@@ -11,6 +11,8 @@
 #   priority_keywords 不用 AI 时生效：标题含这些词的消息排在最前面做头条
 #   urgent_patterns   要紧消息的判定（正则，匹配标题）。命中的消息当天立刻通知 Discord，并在简报里做成整行“重大”板块。
 #                     Reddit / YouTube 的帖子不算，避免传闻误报
+#   section      可选，头版上归到哪个板块：游戏 / 影视 / 运动 / 好物（也可以自己起新名字）。
+#                不填按 type：game → 游戏，anime / show → 影视，product / category → 好物
 #   subtitle     可选，板块标题旁的副标题（如日文名）
 #   status       可选，一句话现状。本期没有新消息时，该项只留一个小栏，显示这句话和往期最近一条
 #   use          可选，用哪些来源，默认 [google, bing, reddit]
@@ -169,6 +171,7 @@ items:
   - name: 滑雪
     subtitle: 日本雪场 · 雪板装备 · 2026-27
     type: category
+    section: 运动
     keywords: [
       "日本 滑雪 2026", "スキー場 オープン 2026-27", "スキー場 リフト券 2026-27", "Japan ski season 2026-27",
       "26-27 スノーボード 新作", "26-27 snowboard", "2027 snowboard new"

@@ -1,6 +1,7 @@
 """把各期数据渲染成一张报纸式简报网页（docs/index.html），新一期在最上面。
 
 版式规则：
+- 每期最上面一张「头版」：重磅头条大图 + 按板块（游戏 / 影视 / 运动 / 好物）的彩色索引 + 今日要闻
 - 报头中性；每个关注项一个板块，配色取自该作品（theme.py）
 - weight=hero 的消息（直接回答你最关心的问题，如定档、测试日期）独占整行大图
 - 其余第一条做头条（8 栏大图），接着两条做侧栏，剩下的三栏一排
@@ -81,7 +82,50 @@ a{color:inherit;text-decoration:none}
 .calm .last{flex:0 1 40%;display:flex;flex-direction:column;gap:2px;font-size:15px;line-height:1.5;border-left:1px solid color-mix(in srgb,currentColor 25%,transparent);padding-left:20px}
 .calm .last .mono{font-size:11px;letter-spacing:.15em;opacity:.7}
 .calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
+/* ---------- 头版 ---------- */
+.front{background:#FBF8F1;border:3px solid #1A1C22;box-shadow:6px 6px 0 #1A1C22;display:flex;flex-direction:column;
+ background-image:radial-gradient(#1A1C22 .8px,transparent .9px);background-size:7px 7px;background-position:0 0}
+.front>*{background:#FBF8F1}
+.fbar{display:flex;align-items:center;gap:14px;padding:8px 18px;background:#1A1C22;color:#FBF8F1;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.25em}
+.fbar b{font:900 15px 'Noto Sans SC',sans-serif;letter-spacing:.3em;color:#FFD23F}
+.fbar span:last-child{margin-left:auto}
+.fbody{display:grid;grid-template-columns:7fr 5fr;gap:0;border-bottom:3px solid #1A1C22}
+.top{position:relative;padding:22px;border-right:3px solid #1A1C22;display:flex;flex-direction:column;gap:14px;color:#1A1C22}
+.top .pic{border:3px solid #1A1C22;color:#1A1C22}
+.top .badge{position:absolute;left:8px;top:8px;z-index:2;padding:6px 14px 6px 12px;background:#D7261E;color:#FFF;
+ font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em;clip-path:polygon(0 0,100% 0,88% 100%,0 100%);border:none}
+.top .kicker{display:flex;align-items:center;gap:10px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.2em}
+.top .kicker i{font-style:normal;padding:2px 10px;color:#FFF;letter-spacing:.15em}
+.top h2{margin:0;font:900 44px/1.2 'Noto Sans SC',sans-serif;color:#D7261E;letter-spacing:.01em;
+ text-shadow:2px 2px 0 #FFD23F}
+.top p{margin:0;font-size:16px;line-height:1.75}
+.top:hover h2{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.boards{display:flex;flex-direction:column}
+.board{border-bottom:3px solid #1A1C22;display:flex;flex-direction:column}
+.board:last-child{border-bottom:none;flex:1}
+.board h3{margin:0;display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--sc);color:#FFF;
+ font:900 20px/1.2 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.board h3 small{margin-left:auto;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.9}
+.entry{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;padding:10px 16px;border-top:1px dashed color-mix(in srgb,#1A1C22 35%,transparent)}
+.entry:first-of-type{border-top:none}
+.entry .pic{aspect-ratio:16/10;border:2px solid #1A1C22;color:#1A1C22}
+.entry .nm{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--sc)}
+.entry b{display:block;font-size:15px;line-height:1.45;margin-top:2px}
+.entry.q b{font-weight:500;opacity:.6}
+.entry:hover b{text-decoration:underline;text-underline-offset:3px}
+.board .none{padding:10px 16px;font-size:13px;opacity:.55}
+.heads{display:flex;flex-direction:column}
+.heads h4{margin:0;display:flex;align-items:baseline;gap:14px;padding:10px 18px;border-bottom:2px solid #1A1C22;
+ font:900 26px/1 'Noto Sans SC',sans-serif;letter-spacing:.06em}
+.heads h4 small{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.3em;color:#D7261E}
+.heads ol{list-style:none;margin:0;padding:6px 18px 14px;columns:2;column-gap:32px}
+.heads li{break-inside:avoid;padding:7px 0;border-bottom:1px dotted color-mix(in srgb,#1A1C22 40%,transparent);display:flex;gap:10px;align-items:baseline}
+.heads li i{flex:none;font:900 11px/1.6 'Noto Sans SC',sans-serif;font-style:normal;color:#FFF;background:var(--sc);padding:0 6px;letter-spacing:.1em}
+.heads li a{font-size:15px;line-height:1.5}
+.heads li a:hover{text-decoration:underline;text-underline-offset:3px}
 @media (max-width:760px){
+ .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}
+ .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
  .band .title{font-size:34px}.band .sub{margin-left:0}
  .band.split{background:var(--abg)}.band.split .sub{color:var(--afg)}
@@ -174,7 +218,7 @@ def _calm(block):
             f"{tail}</div>")
 
 
-def _section(block):
+def _section(block, anchor=""):
     t = block["theme"]
     style = (f"--bg:{t['bg']};--fg:{t['fg']};--acc:{t['accent']};--abg:{t['alt_bg']};"
              f"--afg:{t['alt_fg']};--aacc:{t['alt_accent']};--aac:{t['alt_accent']};"
@@ -194,9 +238,82 @@ def _section(block):
     if block.get("quiet"):
         grid = _calm(block)
     quiet = " quiet" if block.get("quiet") else ""
-    return (f'<section class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
+    return (f'<section id="{anchor}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
             f"{facts}{grid}</section>")
+
+
+# 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
+SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "好物": "#E07A1F"}
+SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "好物": "GOODS"}
+
+
+def _sec_color(name):
+    return SECTIONS.get(name, "#5B5F6B")
+
+
+def _top_story(issue):
+    """头条：先找 hero（直接回答最关心问题的新消息），没有就用第一个有消息的关注项的头条。"""
+    blocks = [b for b in issue["items"] if b.get("stories")]
+    for b in blocks:
+        for s in b["stories"]:
+            if s.get("weight") == "hero":
+                return b, s
+    return (blocks[0], blocks[0]["stories"][0]) if blocks else (None, None)
+
+
+def _front(issue):
+    date = issue["date"]
+    tb, top = _top_story(issue)
+    sections = {}
+    for i, b in enumerate(issue["items"]):
+        sections.setdefault(b.get("section") or "其他", []).append((i, b))
+    order = [n for n in SECTIONS] + [n for n in sections if n not in SECTIONS]
+    count = sum(len(b.get("stories") or []) for b in issue["items"])
+
+    head = (f'<div class="fbar"><b>头 版</b><span>FRONT PAGE · No.{issue["no"]:03d}</span>'
+            f'<span>{date.replace("-", ".")} · 今日 {count} 条</span></div>')
+
+    if top:
+        sc = _sec_color(tb.get("section"))
+        badge = "重 磅" if top.get("weight") == "hero" else "头 条"
+        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener">'
+                    f'<span class="badge">{badge}</span>{_pic(top)}'
+                    f'<span class="kicker"><i style="background:{sc}">{e(tb.get("section") or "")}</i>{e(tb["name"])}</span>'
+                    f'<h2>{e(top["headline"])}</h2>'
+                    + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + "</a>")
+    else:
+        top_html = '<div class="top"><h2>今天没有新消息</h2></div>'
+
+    boards = []
+    for name in order:
+        members = sections.get(name, [])
+        sc = _sec_color(name)
+        rows = []
+        for i, b in members:
+            first = (b.get("stories") or [None])[0]
+            if first:
+                text, img, cls = first["headline"], first.get("image") or b.get("cover"), "entry"
+            else:
+                text, img, cls = b.get("status") or "暂无新消息", b.get("cover"), "entry q"
+            rows.append(f'<a class="{cls}" href="#issue-{date}-{i}">{_pic({"image": img})}'
+                        f'<span><span class="nm">{e(b["name"])}</span><b>{e(text)}</b></span></a>')
+        body = "".join(rows) or '<div class="none">还没有关注项</div>'
+        boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
+
+    heads = []
+    for b in issue["items"]:
+        for s in b.get("stories") or []:
+            if s is top:
+                continue
+            heads.append(f'<li style="--sc:{_sec_color(b.get("section"))}"><i>{e(b.get("section") or "")}</i>'
+                         f'<a href="{e(s["url"])}" target="_blank" rel="noopener">{e(s["headline"])}</a></li>')
+    heads_html = ""
+    if heads:
+        heads_html = (f'<div class="heads"><h4>今日要闻<small>TODAY\'S HEADLINES</small></h4>'
+                      f'<ol>{"".join(heads[:12])}</ol></div>')
+    return (f'<section class="front">{head}<div class="fbody">{top_html}'
+            f'<div class="boards">{"".join(boards)}</div></div>{heads_html}</section>')
 
 
 def render(issues):
@@ -206,7 +323,8 @@ def render(issues):
     for i, issue in enumerate(issues):
         label = ("今 日" if i == 0 else "往 期") + f" · {issue['date'].replace('-', '.')}"
         parts.append(f'<div class="issue" id="issue-{issue["date"]}"><div class="issue-head"><span>{label}</span></div>'
-                     + "".join(_section(b) for b in issue["items"]) + "</div>")
+                     + _front(issue)
+                     + "".join(_section(b, f"issue-{issue['date']}-{n}") for n, b in enumerate(issue["items"])) + "</div>")
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
