@@ -40,7 +40,7 @@ FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
 INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = ROOT / "docs"
-ISSUES_ON_PAGE = 30  # 网页上保留最近几期（每天一期）
+ISSUES_ON_PAGE = 3650  # 网页汇总所有期：消息永远保留，一周前的收进折叠区
 
 NEWS_LANGS = {
     "zh-CN": ("zh-CN", "CN", "CN:zh-Hans"),
@@ -413,6 +413,8 @@ def attach_media(stories, entries, cover):
     for n, s in enumerate(stories):
         refs = [entries[r - 1] for r in s.pop("refs")]
         s["url"] = s.get("url") or sources.resolve_url(refs[0].url)
+        if refs[0].published:  # 消息本身的日期，卡片上显示、按它排序
+            s["date"] = refs[0].published.date().isoformat()
         s["image"] = s.get("image") or next((e.image for e in refs if e.image), None)
         for i, e in enumerate(refs):
             if s["image"]:

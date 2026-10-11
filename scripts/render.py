@@ -1,14 +1,16 @@
-"""把各期数据渲染成一张报纸式简报网页（docs/index.html），新一期在最上面。
+"""把所有期的数据渲染成一张报纸式简报网页（docs/index.html）。消息永远保留，不随新一期消失。
 
 版式规则：
-- 顶部悬浮目录：按板块分组列出每个作品，滚动时当前所在的一项放大并换成板块色，点击直达；可跳往期
-- 每期最上面一张「头版」：重磅头条大图 + 按板块（游戏 / 影视 / 运动 / 好物）的彩色索引 + 今日要闻
-- 报头中性；每个关注项一个板块，配色取自该作品（theme.py）
-- weight=hero 的消息（直接回答你最关心的问题，如定档、测试日期）独占整行大图
-- 其余第一条做头条（8 栏大图），接着两条做侧栏，剩下的三栏一排
-- 本期没有新消息的关注项（quiet）只留一个小栏：标题条 + 现状 + 往期最近一条
+- 左侧目录（撑满屏幕高度）：按板块分组列出每个作品，滚动时当前所在的一项放大并换成板块色，点击直达
+- 最上面一张「头版」：今天的重磅头条大图 + 按板块（游戏 / 影视 / 运动 / 好物）的彩色索引 + 今日要闻
+- 每个关注项一个版面，配色取自该作品（theme.py）。所有日期的消息汇总在一起，按时间排列（新的在前）：
+  - 一周内收到的直接显示，卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满
+  - 更早的收进版面底部的「更早的消息」折叠区，点开才显示
+- 一周内没有新消息的关注项只留一个小栏：标题条 + 现状
 """
 
+import datetime as dt
+import hashlib
 import html
 import re
 import urllib.parse
@@ -155,7 +157,30 @@ html{scroll-behavior:smooth}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,#D7261E);width:calc(var(--prog,0) * 100%)}
  [data-k]{scroll-margin-top:64px}
 }
+/* ---------- 按时间排列的卡片 ---------- */
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
+.when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
+.when b{padding:1px 6px;background:var(--ac);color:var(--bg);letter-spacing:.1em;opacity:1}
+.card.a .when b{color:var(--abg)}
+.card.wide{display:grid;grid-template-columns:5fr 7fr;gap:24px;align-items:center;padding:24px}
+.card.wide .txt{display:flex;flex-direction:column;gap:12px;min-width:0}
+.card.wide h3{margin:0;font-weight:900;font-size:28px;line-height:1.3}
+.card.c8 h3{font-size:28px;line-height:1.3}.card.c6 h3{font-size:24px;line-height:1.35}
+.card.c4 h3,.card.c3 h3{margin:0;font-weight:900;font-size:20px;line-height:1.4}
+.older{background:var(--bg);color:var(--fg);border-top:1px solid var(--line)}
+.older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 24px;
+ font:700 12px 'JetBrains Mono',monospace;letter-spacing:.2em}
+.older summary::-webkit-details-marker{display:none}
+.older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;border:1.5px solid currentColor;
+ font:700 15px/1 'JetBrains Mono',monospace;transition:transform .25s}
+.older[open] summary::before{content:"−"}
+.older summary:hover,.older summary:focus-visible{color:var(--acc);outline:none}
+.older summary span{opacity:.6;letter-spacing:.1em}
+.older .grid .card{padding:16px;gap:10px}
+.older .card.c3 h3{font-size:16px;line-height:1.45}
 @media (max-width:760px){
+ .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr;padding:20px}
+ .card.c8 h3,.card.wide h3{font-size:24px}
  .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}
  .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
@@ -217,24 +242,126 @@ def _hero(story, side):
             + "</div></a>")
 
 
-def _grid(stories):
-    heroes = [s for s in stories if s.get("weight") == "hero"]
-    rest = [s for s in stories if s.get("weight") != "hero"]
-    out = [_hero(s, "m" if i % 2 == 0 else "a") for i, s in enumerate(heroes)]
+HOLD_DAYS = 7  # 一周内收到的消息直接显示，更早的收进折叠区
+SPAN = {"hero": 12, "lead": 8, "normal": 4}
+RANK = {"hero": 0, "lead": 1, "normal": 2}
 
-    if len(rest) == 1:
-        out.append(_card(rest[0], "hero" if not heroes else "s12 row", "m" if not heroes else "a",
-                         level="h2" if not heroes else "h3", blurb=True))
-        return "".join(out)
-    if rest:
-        lead, side, others = rest[0], rest[1:3], rest[3:]
-        out.append(_card(lead, "lead", "m", level="h2", blurb=True))
-        out.append('<div class="side">' + "".join(_card(s, "", "a") for s in side) + "</div>")
-        for start in range(0, len(others), 3):
-            chunk = others[start:start + 3]
-            span = {1: "s12", 2: "s6", 3: "s4"}[len(chunk)]
-            out += [_card(s, f"row {span}", "a" if (start + i) % 2 == 0 else "m") for i, s in enumerate(chunk)]
-    return "".join(out)
+
+def _wid(name):
+    """作品版面的锚点。"""
+    return "w-" + hashlib.md5(name.encode()).hexdigest()[:8]
+
+
+def _pack(stories, size_of, total=12):
+    """按顺序排成行，不改变时间顺序；一行放不下就换行，剩下的空位分给这一行里最重要的卡片。"""
+    rows, row, used = [], [], 0
+    for s in stories:
+        w = size_of(s)
+        if row and used + w > total:
+            rows.append(row)
+            row, used = [], 0
+        row.append([s, w])
+        used += w
+    if row:
+        rows.append(row)
+    for row in rows:
+        left = total - sum(w for _, w in row)
+        if left:
+            best = min(row, key=lambda x: RANK.get(x[0].get("weight"), 2))
+            best[1] += left
+    return [x for row in rows for x in row]
+
+
+def _when(story, today):
+    d = story.get("date") or story["_issue"]
+    new = "<b>NEW</b>" if story["_issue"] == today else ""
+    return f'<span class="when">{new}{e(d[5:].replace("-", "."))}</span>'
+
+
+def _tcard(story, span, i, today, small=False):
+    side = "m" if i % 2 == 0 else "a"
+    w = story.get("weight", "normal")
+    url = e(story["url"])
+    if span == 12 and w == "hero":
+        return (f'<a class="card {side} hero" href="{url}" target="_blank" rel="noopener">{_pic(story)}'
+                f'<div class="txt">{_when(story, today)}<span class="tag">重 大</span><h2>{_headline(story)}</h2>'
+                + (f'<p class="blurb">{e(story["blurb"])}</p>' if story.get("blurb") else "") + "</div></a>")
+    blurb = f'<p class="blurb">{e(story["blurb"])}</p>' if story.get("blurb") and not small and w != "normal" else ""
+    if span == 12 and not small:
+        return (f'<a class="card {side} wide c12" href="{url}" target="_blank" rel="noopener">{_pic(story)}'
+                f'<div class="txt">{_when(story, today)}<h3>{_headline(story)}</h3>{blurb}</div></a>')
+    level = "h2" if w == "lead" and span >= 8 and not small else "h3"
+    cls = f"c{span}" + (" lead" if level == "h2" else "")
+    return (f'<a class="card {side} {cls}" href="{url}" target="_blank" rel="noopener">{_pic(story)}'
+            f'{_when(story, today)}<{level}>{_headline(story)}</{level}>{blurb}</a>')
+
+
+PAGE_HEIGHT = 1100  # 每个作品直接显示的消息最多占大约一屏高（像素，按卡片行的大致高度估算）
+ROW_HEIGHT = {12: 300, 8: 560, 6: 450, 4: 350}  # 一行里最宽那张卡片的宽度 → 这一行大约多高；整行大图另算
+
+
+def _row_height(row):
+    widest = max(row, key=lambda x: x[1])
+    if widest[1] == 12 and widest[0].get("weight") == "hero":
+        return 470
+    return ROW_HEIGHT.get(widest[1], 350)
+
+
+def _timeline(stories, today):
+    """一周内的消息：按时间排成行，放满约一屏为止；放不下的返回给折叠区。"""
+    packed = _pack(stories, lambda s: SPAN.get(s.get("weight"), 4))
+    rows, row, used = [], [], 0
+    for x in packed:
+        row.append(x)
+        used += x[1]
+        if used >= 12:
+            rows.append(row)
+            row, used = [], 0
+    shown, height = [], 0
+    for row in rows:
+        h = _row_height(row)
+        if shown and height + h > PAGE_HEIGHT:
+            break
+        shown += row
+        height += h
+    rest = [s for s, _ in packed[len(shown):]]
+    html_ = '<div class="grid">' + "".join(_tcard(s, w, i, today) for i, (s, w) in enumerate(shown)) + "</div>"
+    return html_, rest
+
+
+def _older(stories, today, more=0):
+    """折叠区：一周内放不下的（more 条）+ 一周以前的。"""
+    if not stories:
+        return ""
+    packed = _pack(stories, lambda s: 3)
+    first, last = stories[-1].get("date") or stories[-1]["_issue"], stories[0].get("date") or stories[0]["_issue"]
+    rng = f"{first[5:].replace('-', '.')} – {last[5:].replace('-', '.')}"
+    cards = "".join(_tcard(s, w, i, today, small=True) for i, (s, w) in enumerate(packed))
+    label = "更多消息" if more else "更早的消息"
+    detail = f"一周内另有 {more} 条" + (f" · 更早 {len(stories) - more} 条" if len(stories) > more else "") if more else rng
+    return (f'<details class="older"><summary>{label} · {len(stories)} 条<span>{detail}</span></summary>'
+            f'<div class="grid">{cards}</div></details>')
+
+
+def collect(issues):
+    """把各期按作品汇总：作品顺序和外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。"""
+    latest = issues[0]
+    works = {}
+    for b in latest["items"]:
+        works[b["name"]] = {**b, "stories": [], "_seen": set()}
+    for issue in issues:  # 新到旧
+        for b in issue["items"]:
+            w = works.get(b["name"])
+            if w is None:  # 已经从关注清单里删掉的不再显示
+                continue
+            for st in b.get("stories") or []:
+                if st["url"] in w["_seen"]:
+                    continue
+                w["_seen"].add(st["url"])
+                w["stories"].append({**st, "_issue": issue["date"]})
+    for w in works.values():
+        w["stories"].sort(key=lambda x: (x["_issue"], x.get("date") or ""), reverse=True)
+    return list(works.values())
 
 
 def _calm(block):
@@ -266,10 +393,16 @@ def _section(block, anchor=""):
             f'{e(f["label"])}{" · 有变化" if f["changed"] else ""}</span><span>{_md_links(f["text"])}</span></div>'
             for f in changed
         ) + "</div>"
-    grid = f'<div class="grid">{_grid(block["stories"])}</div>' if block.get("stories") else ""
-    if block.get("quiet"):
-        grid = _calm(block)
-    quiet = " quiet" if block.get("quiet") else ""
+    today = block["_today"]
+    cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
+    recent = [x for x in block["stories"] if x["_issue"] >= cutoff]
+    older = [x for x in block["stories"] if x["_issue"] < cutoff]
+    if recent:
+        grid, more = _timeline(recent, today)
+    else:
+        grid, more = _calm({**block, "last": None}), []
+    grid += _older(more + older, today, len(more))
+    quiet = "" if recent else " quiet"
     return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
             f"{facts}{grid}</section>")
@@ -328,7 +461,7 @@ def _front(issue):
                 text, img, cls = first["headline"], first.get("image") or b.get("cover"), "entry"
             else:
                 text, img, cls = b.get("status") or "暂无新消息", b.get("cover"), "entry q"
-            rows.append(f'<a class="{cls}" href="#issue-{date}-{i}">{_pic({"image": img})}'
+            rows.append(f'<a class="{cls}" href="#{_wid(b["name"])}">{_pic({"image": img})}'
                         f'<span><span class="nm">{e(b["name"])}</span><b>{e(text)}</b></span></a>')
         body = "".join(rows) or '<div class="none">还没有关注项</div>'
         boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
@@ -353,9 +486,11 @@ def _front(issue):
 NAV_STYLES = {
     # A 线路图：每个板块一段彩色线路，作品是站点；读到哪站圆点放大，线路按进度填色，读过的站变实心
     "line": """
-.nav{padding:6px 0 16px}
+.nav{top:0;height:100vh;max-height:none;padding:16px 0}
 .nav .here{display:none}
-.nav .rail{padding-left:14px}
+.nav .rail{flex:1;padding-left:14px}
+.nav .pill{flex:1 1 auto;min-height:44px;max-height:180px}
+.nav .grp{flex:none}
 .nav .grp{display:flex;align-items:baseline;gap:8px;padding:16px 0 4px 26px;color:var(--sc)}
 .nav .grp b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
 .nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.25em;opacity:.75}
@@ -451,36 +586,32 @@ NAV_STYLES = {
 }
 
 
-def _nav(issues):
-    """左侧目录：以最新一期为准，按板块分组；往期用下拉跳转。"""
-    latest = issues[0]
+def _nav(works, date):
+    """左侧目录：按板块分组列出每个作品。"""
     groups = {}
-    for b in latest["items"]:
-        groups.setdefault(b.get("section") or "其他", []).append(b)
+    for w in works:
+        groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
-    date = latest["date"]
+    cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#issue-{date}">'
             f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
     n = 0
     for name in order:
         sc = _sec_color(name)
         rail.append(f'<div class="grp" style="--sc:{sc}"><b>{e(name)}</b><small>{SECTION_EN.get(name, "")}</small></div>')
-        for b in groups[name]:
+        for w in groups[name]:
             n += 1
-            stories = b.get("stories") or []
-            img = next((x.get("image") for x in stories if x.get("image")), None) or b.get("cover")
+            recent = [x for x in w["stories"] if x["_issue"] >= cutoff]
+            img = next((x.get("image") for x in recent if x.get("image")), None) or w.get("cover") \
+                or next((x.get("image") for x in w["stories"] if x.get("image")), None)
             css_img = f";--img:url({urllib.parse.quote(img, safe=':/?&=%#@+,;~')})" if img else ""
-            cnt = f"今日 {len(stories)} 条" if stories else "暂无新消息"
-            rail.append(f'<a class="pill" style="--sc:{sc}{e(css_img)}" data-for="{e(b["name"])}" '
-                        f'href="#issue-{date}-{latest["items"].index(b)}"><i class="no">{n:02d}</i>'
-                        f'<span class="nm">{e(b["name"])}<small class="cnt">{cnt}</small></span></a>')
-    past = ""
-    if len(issues) > 1:
-        opts = "".join(f'<option value="issue-{i["date"]}">{i["date"][5:].replace("-", ".")}</option>' for i in issues[1:])
-        past = f'<select id="nav-past" aria-label="跳到往期"><option value="">往期 ▾</option>{opts}</select>'
+            cnt = f"一周 {len(recent)} 条" if recent else "暂无新消息"
+            rail.append(f'<a class="pill" style="--sc:{sc}{e(css_img)}" data-for="{e(w["name"])}" '
+                        f'href="#{_wid(w["name"])}"><i class="no">{n:02d}</i>'
+                        f'<span class="nm">{e(w["name"])}<small class="cnt">{cnt}</small></span></a>')
     return (f'<nav class="nav" aria-label="目录">'
             f'<div class="here"><b>目录</b><small>INDEX</small><span id="nav-here">今日 · {date.replace("-", ".")}</span></div>'
-            f'<div class="rail" id="nav-rail">{"".join(rail)}</div>{past}<div class="bar" id="nav-bar"></div></nav>')
+            f'<div class="rail" id="nav-rail">{"".join(rail)}</div><div class="bar" id="nav-bar"></div></nav>')
 
 
 NAV_JS = """
@@ -524,26 +655,20 @@ NAV_JS = """
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   addEventListener('resize', update);
-  const past = document.getElementById('nav-past');
-  if (past) past.addEventListener('change', () => {
-    if (past.value) document.getElementById(past.value).scrollIntoView();
-    past.value = '';
-  });
   update();
 })();
 """
 
 
 def render(issues, nav_style="line"):
-    """issues：按时间倒序的各期数据。nav_style：左侧目录风格，见 NAV_STYLES。"""
+    """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。"""
     latest = issues[0]
-    parts = []
-    for i, issue in enumerate(issues):
-        label = ("今 日" if i == 0 else "往 期") + f" · {issue['date'].replace('-', '.')}"
-        short = ("今日" if i == 0 else "往期") + f" · {issue['date'].replace('-', '.')}"
-        parts.append(f'<div class="issue" id="issue-{issue["date"]}" data-label="{short}"><div class="issue-head"><span>{label}</span></div>'
-                     + _front(issue)
-                     + "".join(_section(b, f"issue-{issue['date']}-{n}") for n, b in enumerate(issue["items"])) + "</div>")
+    works = collect(issues)
+    for w in works:
+        w["_today"] = latest["date"]
+    body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="今日 · {latest["date"].replace("-", ".")}">'
+            + _front(latest) + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
+    parts = [body]
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -561,7 +686,7 @@ def render(issues, nav_style="line"):
 <h1>关注清单通信</h1>
 <div class="meta"><div class="no">No.{latest['no']:03d}</div><div class="mono">{latest['date'].replace('-', '.')}</div></div>
 </div></header>
-{_nav(issues)}
+{_nav(works, latest['date'])}
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>
