@@ -29,7 +29,7 @@ items.yaml
                      > Claude API（summarize: true 时）
                      > 关键词规则 priority_keywords（免费，默认）
        配图  Reddit 图 / 文章预览图 / 作品封面；配色取自作品主视觉
-       输出  reports/YYYY-MM-DD.json + docs/index.html（GitHub Pages）+ GitHub Issue 提醒
+       输出  reports/YYYY-MM-DD.json + docs/index.html（GitHub Pages）→ Discord 通知
 ```
 
 版面规则：
