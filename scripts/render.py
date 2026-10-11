@@ -170,8 +170,8 @@ def render(issues):
     latest = issues[0]
     parts = []
     for i, issue in enumerate(issues):
-        label = "本 期" if i == 0 else f"往 期 · No.{issue['no']:03d} · {issue['date'].replace('-', '.')}"
-        parts.append(f'<div class="issue"><div class="issue-head"><span>{label}</span></div>'
+        label = ("今 日" if i == 0 else "往 期") + f" · {issue['date'].replace('-', '.')}"
+        parts.append(f'<div class="issue" id="issue-{issue["date"]}"><div class="issue-head"><span>{label}</span></div>'
                      + "".join(_section(b) for b in issue["items"]) + "</div>")
     return f"""<!doctype html>
 <html lang="zh-CN">

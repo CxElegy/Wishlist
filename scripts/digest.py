@@ -41,7 +41,7 @@ FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
 INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = ROOT / "docs"
-ISSUES_ON_PAGE = 20  # 网页上保留最近几期
+ISSUES_ON_PAGE = 30  # 网页上保留最近几期（每天一期）
 
 SEEN_KEEP_DAYS = 90
 NEWS_LANGS = {
@@ -323,13 +323,14 @@ def fallback_stories(entries, item, limit=7):
     - 媒体报道优先于 Reddit；Reddit 帖子没命中关键词的不收（多半是同人图、闲聊）
     - 同等条件下有图的、较新的优先"""
     words = [w.lower() for w in item.get("priority_keywords") or []]
+    urgent = {i for i, e in enumerate(entries, 1) if is_urgent(e, item)}
 
     def hits(e):
         return sum(w in e.title.lower() for w in words)
 
     def score(pair):
         i, e = pair
-        return (hits(e) > 0, not e.source.startswith("r/"), hits(e),
+        return (i in urgent, hits(e) > 0, not e.source.startswith("r/"), hits(e),
                 bool(e.image) or "news.google.com" not in e.url, -i)
 
     candidates = [(i, e) for i, e in enumerate(entries, 1) if hits(e) or not e.source.startswith("r/")]
@@ -339,8 +340,8 @@ def fallback_stories(entries, item, limit=7):
         if any(len(g & h) / max(1, min(len(g), len(h))) > 0.5 for h in grams):
             continue
         grams.append(g)
-        picked.append({"headline": e.title, "highlight": "", "blurb": "",
-                       "weight": "lead" if not picked else "normal", "refs": [i]})
+        weight = "hero" if i in urgent else ("lead" if not picked or all(p["weight"] == "hero" for p in picked) else "normal")
+        picked.append({"headline": e.title, "highlight": "", "blurb": "", "weight": weight, "refs": [i]})
         if len(picked) == limit:
             break
     return picked
@@ -423,11 +424,37 @@ def entry_from_dict(d):
                          published=dt.datetime.fromisoformat(d["date"]) if d.get("date") else None)
 
 
+def is_urgent(e, item):
+    """要紧消息：标题命中 items.yaml 里该项的 urgent_patterns（正则）。
+    Reddit / YouTube 不算（传闻和二手消息多，避免误报）。"""
+    if e.source.startswith("r/") or e.source in ("Reddit", "YouTube"):
+        return False
+    return any(re.search(p, e.title, re.I) for p in item.get("urgent_patterns") or [])
+
+
+def merge_inbox(old, new):
+    """同一天多次运行：新条目接在已有条目后面（编号顺延），状态以最新为准但保留“当天有变化”。"""
+    by_name = {i["name"]: i for i in old["items"]}
+    for item in new["items"]:
+        cur = by_name.get(item["name"])
+        if cur is None:
+            old["items"].append(item)
+            continue
+        start = len(cur["entries"])
+        for k, entry in enumerate(item["entries"], 1):
+            cur["entries"].append({**entry, "n": start + k})
+        changed_before = {f["label"] for f in cur["facts"] if f["changed"]}
+        cur["facts"] = [{**f, "changed": f["changed"] or f["label"] in changed_before} for f in item["facts"]] or cur["facts"]
+        cur["cover"] = cur.get("cover") or item.get("cover")
+    return old
+
+
 def ingest(dry_run=False):
     """收集本期原始条目到 inbox/。返回写入的文件路径（没有新内容时返回 None）。"""
     settings, items = load_config()
     now = dt.datetime.now(dt.timezone.utc)
-    today = now.date().isoformat()
+    # “每天一期”按你所在时区的日期划分（默认北京时间）
+    today = now.astimezone(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
     seen, facts = load_json(SEEN_FILE), load_json(FACTS_FILE)
 
     inbox_items = []
@@ -446,7 +473,7 @@ def ingest(dry_run=False):
             "priority": item.get("priority", ""),
             "facts": item_facts,
             "cover": find_cover(item, status_cover),
-            "entries": [entry_to_dict(n, e) for n, e in enumerate(entries, 1)],
+            "entries": [{**entry_to_dict(n, e), "urgent": is_urgent(e, item)} for n, e in enumerate(entries, 1)],
         })
         for e in entries:
             seen[e.url] = seen[title_key(e.title)] = today
@@ -460,7 +487,13 @@ def ingest(dry_run=False):
         print("本期没有新消息", file=sys.stderr)
         return None
     path = INBOX_DIR / f"{today}.json"
-    save_json(path, {"date": today, "items": inbox_items})
+    data = {"date": today, "items": inbox_items}
+    if path.exists():  # 当天已经收集过：合并进去
+        data = merge_inbox(load_json(path), data)
+    save_json(path, data)
+    urgent = sum(e.get("urgent", False) for i in inbox_items for e in i["entries"])
+    if urgent:
+        print(f"  其中要紧消息 {urgent} 条", file=sys.stderr)
     print(f"已收集：{path.relative_to(ROOT)}", file=sys.stderr)
     return path
 
@@ -505,6 +538,11 @@ def publish(inbox_path=None):
                 s.setdefault("highlight", ""), s.setdefault("blurb", ""), s.setdefault("weight", "normal")
                 s["refs"] = [r for r in s.get("refs", []) if 0 < r <= len(entries)]
             stories = [s for s in stories if s["refs"]]
+            # 编排写好之后当天又来的要紧消息：自动补成“重大”板块放在最前面
+            used = {r for s in stories for r in s["refs"]}
+            late = [{"headline": e.title, "highlight": "", "blurb": "", "weight": "hero", "refs": [n]}
+                    for n, e in enumerate(entries, 1) if n not in used and raw["entries"][n - 1].get("urgent")]
+            stories = late + stories
         elif entries:
             stories = (edit_stories(client, model, item, entries) if client else None) or fallback_stories(entries, item)
         else:
@@ -534,7 +572,8 @@ def publish(inbox_path=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("step", nargs="?", default="all", choices=["all", "ingest", "publish", "render"])
+    parser.add_argument("step", nargs="?", default="all",
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly"])
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
     args = parser.parse_args()
     if args.dry_run:
@@ -545,6 +584,12 @@ def main():
         ingest()
     elif args.step == "publish":
         publish()
+    elif args.step == "notify-urgent":
+        import notify
+        notify.urgent(pages_url(load_config()[0]))
+    elif args.step == "notify-weekly":
+        import notify
+        notify.weekly(pages_url(load_config()[0]))
     else:
         path = ingest()
         if path:

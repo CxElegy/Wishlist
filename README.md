@@ -1,6 +1,7 @@
 # Wishlist · 关注清单通信
 
-每周自动收集你关注的**游戏、动画、影视剧、商品**的最新消息，编成一张报纸式的简报网页：每个作品用它自己的配色，新一期总在最上面。
+每 2 小时自动收集你关注的**游戏、动画、影视剧、商品**的最新消息，编成报纸式的简报网页（GitHub Pages，每天一期，新的在最上面，每个作品用它自己的配色）。
+有要紧消息（定档、开放预约、下次测试公布……）**当天立刻**通过 Discord 通知；其余的**每周一**发一次周报。
 
 思路参考 [agents-radar](https://github.com/duanyytop/agents-radar)：**信息由脚本从免费 RSS / API 抓取，AI 只负责把抓到的标题编排成几条报道**，不让 AI 自己联网搜索，token 消耗很低。
 
@@ -8,7 +9,12 @@
 
 分两步，中间用 `inbox/` 里的数据文件衔接。
 
-> **目前 GitHub Actions 只跑 ingest**：每周一自动收集，产出 `inbox/日期.json` 后停止。publish 是下一阶段，现在可以在本地手动运行 `python scripts/digest.py publish`。
+GitHub Actions 的安排：
+
+| 时间 | 做什么 |
+|---|---|
+| 每 2 小时 | 收集 → 更新当天的简报网页 → 命中 `urgent_patterns` 的要紧消息立刻发 Discord（发过的不重发） |
+| 每周一 08:47（北京时间） | 发 Discord 周报：过去 7 天每个关注项的要点 + 网页链接 |
 
 ```
 items.yaml
@@ -58,14 +64,17 @@ items.yaml
 
    不配置就用关键词规则编排，直接用原标题。
 
-3. **其它 Secrets（可选）**，在 **Secrets** 标签页添加：
+3. **Discord 通知**：在 Discord 频道 → 编辑频道 → 整合 → Webhook → 新建 Webhook → 复制 Webhook 网址，
+   然后在 GitHub 仓库 Settings → Secrets and variables → Actions → **Secrets** 添加 `DISCORD_WEBHOOK_URL`。
+
+   其它可选的 Secrets：
 
    | 名称 | 用途 |
    |---|---|
    | `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` | Reddit 常拦截云服务器的匿名请求，用官方 API 才稳定。在 [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) 创建一个 *script* 类型的应用即可（免费） |
    | `TMDB_API_KEY` | 关注影视剧时需要，在 themoviedb.org 的账号设置里免费申请 |
 
-4. **运行**：Actions → 关注清单 · 收集 → Run workflow。之后每周一北京时间 08:17 自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
+4. **运行**：Actions → 关注清单通信 → Run workflow（勾选“顺便发一次周报”可以测试 Discord）。之后会自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
 
 ## 添加关注项
 
@@ -74,6 +83,7 @@ items.yaml
 - `keywords`：各语言的正式名称都写上
 - `priority`：你最关心它的什么，比如「什么时候能玩」「第二季什么时候播」「什么时候降价」
 - `type`：`game` / `anime` / `show` / `product` / `category`
+- `urgent_patterns`：什么样的标题算要紧消息（正则），命中就当天通知 Discord
 - `theme`：可选，手写配色；不写就从封面自动取色
 
 ## 本地运行
@@ -85,6 +95,8 @@ python scripts/digest.py             # 收集 + 出刊
 python scripts/digest.py ingest      # 只收集到 inbox/
 python scripts/digest.py publish     # 只出刊（用最新一份 inbox，有 .edit.json 就按它编排）
 python scripts/digest.py render      # 改了版式后，用已有数据重新生成网页
+python scripts/digest.py notify-urgent   # 把还没通知过的要紧消息发到 Discord
+python scripts/digest.py notify-weekly   # 发过去 7 天的周报
 ```
 
 ## 成本
@@ -104,6 +116,7 @@ python scripts/digest.py render      # 改了版式后，用已有数据重新�
 | `scripts/digest.py` | 主流程：抓取 → 过滤 → 编辑 → 输出 |
 | `scripts/theme.py` | 从封面图提取板块配色 |
 | `scripts/render.py` | 简报网页的版式 |
+| `scripts/notify.py` | Discord 通知（要紧消息 / 周报） |
 | `inbox/` | 每期收集到的原始条目；`.edit.json` 是对应的编排 |
 | `reports/` | 每期出刊的数据（JSON） |
 | `docs/` | 简报网页，由 GitHub Pages 发布 |

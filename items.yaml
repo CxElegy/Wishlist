@@ -9,6 +9,8 @@
 #   news_langs   可选，单独为这一项指定新闻语言区，会覆盖下面 settings 里的设置
 #   priority          你最关心这一项的什么（用 AI 时生效）。AI 按它给报道排序，直接回答它的新消息会做成整行大板块
 #   priority_keywords 不用 AI 时生效：标题含这些词的消息排在最前面做头条
+#   urgent_patterns   要紧消息的判定（正则，匹配标题）。命中的消息当天立刻通知 Discord，并在简报里做成整行“重大”板块。
+#                     Reddit / YouTube 的帖子不算，避免传闻误报
 #   subtitle     可选，板块标题旁的副标题（如日文名）
 #   use          可选，用哪些来源，默认 [google, bing, reddit]
 #   subreddits   可选，额外在这些 Reddit 版块里按关键词搜
@@ -59,6 +61,16 @@ items:
       预约, 預約, 事前登録, 사전예약, pre-regist,
       PC版, PC 版, PC 버전, Steam, 定档, 日程, 일정, 発表, 확정
     ]
+    urgent_patterns:
+      # 上线 / 发售日期公布
+      - '(上线|上線|发售|發售|配信|リリース|출시|오픈|release|launch)\s*(日|日期|日程|date|일|일정).{0,12}(決定|决定|確定|确定|확정|公布|発表|발표|公開|공개|announce|confirm|reveal)'
+      - '(定档|定檔|配信日決定|출시일 확정|release date (announced|confirmed|revealed))'
+      # 预约 / 事前登录开放
+      - '(事前登録|事前登錄|사전예약|사전 예약|预约|預約|pre-?regist\w*).{0,10}(開始|开始|開放|开放|시작|오픈|受付|open|start|begin|live)'
+      # 下一次测试公布
+      - '(第2回|第二次|第二轮|2차|二测|二測|second|2nd|next|global|final).{0,12}(CBT|β|ベータ|테스트|测试|測試|封测|封測|内测|內測|beta|test).{0,20}(決定|决定|確定|确定|확정|公布|発表|발표|모집|募集|招募|报名|報名|登場|登场|announce|registration|sign.?up|date)'
+      # PC 版 / Steam 页面
+      - '(Steam|PC版|PC 版|PC 버전|PC version).{0,12}(页面|頁面|ページ|페이지|page|上架|公開|公开|공개|配信|출시|wishlist|ウィッシュリスト)'
     notes: >-
       NC 发行、Dynamis One 开发的新传奇魔法 RPG，舞台是架空的 1989 年东京。
       预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。
