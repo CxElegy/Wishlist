@@ -265,10 +265,35 @@ def steam_price(appid, country):
 
 # ---------- 图片 ----------
 
+def resolve_url(url):
+    """把 Google 新闻的跳转链接还原成原文地址（Google 页面里的签名参数换取真实地址）；失败就原样返回。"""
+    if "news.google.com" not in (url or ""):
+        return url
+    try:
+        aid = urllib.parse.urlparse(url).path.split("/")[-1]
+        page = _get(f"https://news.google.com/rss/articles/{aid}").decode("utf-8", "ignore")
+        sg = re.search(r'data-n-a-sg="([^"]+)"', page).group(1)
+        ts = re.search(r'data-n-a-ts="([^"]+)"', page).group(1)
+        inner = ["garturlreq", [["X", "X", ["X", "X"], None, None, 1, 1, "US:en", None, 1, None, None, None,
+                                 None, None, 0, 1], "X", "X", 1, [1, 1, 1], 1, 1, None, 0, 0, None, 0],
+                 aid, int(ts), sg]
+        body = urllib.parse.urlencode({"f.req": json.dumps([[["Fbv4je", json.dumps(inner), None, "generic"]]])})
+        req = urllib.request.Request(
+            "https://news.google.com/_/DotsSplashUi/data/batchexecute", data=body.encode(),
+            headers={"User-Agent": USER_AGENT, "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
+        )
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            arr = json.loads(resp.read().decode().split("\n\n", 1)[1])
+        real = json.loads(arr[0][2])[1]
+        return real if real.startswith("http") else url
+    except Exception:
+        return url
+
+
 def og_image(url):
     """读取网页的预览图（og:image / twitter:image），只读前 300KB。"""
     if not url or "news.google.com" in url:
-        return None  # Google 新闻是跳转页，解析成本太高，跳过
+        return None
     try:
         req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
         with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:

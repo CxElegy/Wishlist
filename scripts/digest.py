@@ -347,15 +347,16 @@ def fallback_stories(entries, item, limit=7):
 
 
 def attach_media(stories, entries, cover):
-    """给每条报道配链接和图：条目自带图 > 文章预览图 > （仅头条）作品封面。"""
+    """给每条报道配链接和图：条目自带图 > 原文预览图 > （仅头条）作品封面。
+    Google 新闻的跳转链接先还原成原文地址，链接和配图都用原文的。"""
     for n, s in enumerate(stories):
         refs = [entries[r - 1] for r in s.pop("refs")]
-        s["url"] = refs[0].url
-        s["image"] = next((e.image for e in refs if e.image), None)
-        for e in refs:
+        s["url"] = s.get("url") or sources.resolve_url(refs[0].url)
+        s["image"] = s.get("image") or next((e.image for e in refs if e.image), None)
+        for i, e in enumerate(refs):
             if s["image"]:
                 break
-            s["image"] = sources.og_image(e.url)
+            s["image"] = sources.og_image(s["url"] if i == 0 else sources.resolve_url(e.url))
         if not s["image"] and n == 0:
             s["image"] = cover
     return stories

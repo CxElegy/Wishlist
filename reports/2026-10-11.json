@@ -1,0 +1,71 @@
+{
+ "date": "2026-10-11",
+ "items": [
+  {
+   "facts": [],
+   "name": "Astrae Oratio",
+   "stories": [
+    {
+     "blurb": "10/2–10/6 全球 CBT 结束，日韩台媒体集中发布试玩。1989 年东京的复古动画感广受好评，战斗过于依赖角色克制则被反复点名。下次测试与上线日期仍未公布。",
+     "headline": "全球封测落幕：氛围获好评，战斗成最大争议",
+     "highlight": "战斗成最大争议",
+     "image": "https://image.zdnet.co.kr/2026/10/08/dbcbbc4858c1f2fcab30b393d978c6b9.jpg",
+     "url": "https://zdnet.co.kr/view/?no=20261008230655",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "headline": "日媒长篇试玩：“魔法×行政”的东京公务员生活",
+     "highlight": "魔法×行政",
+     "image": "https://www.inside-games.jp/imgs/ogp_f/1790774.jpg",
+     "url": "https://www.inside-games.jp/article/2026/10/07/188896.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "GAME Watch：18 位魔法使的设计“癖好”拉满",
+     "highlight": "18 位魔法使",
+     "image": "https://game.watch.impress.co.jp/img/gmw/list/2145/759/40.jpg",
+     "url": "https://game.watch.impress.co.jp/docs/kikaku/2145759.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "战斗系统详解：领地宣言可重置冷却",
+     "highlight": "领地宣言",
+     "image": "https://cdn.gamey.kr/news/thumbnail/202610/3019068_171642_5721_v150.jpg",
+     "url": "http://www.gamey.kr/news/articleView.html?idxno=3019068",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "拆解封测 18 名角色：没有治疗职业",
+     "highlight": "没有治疗职业",
+     "image": "https://dcimg2.dcinside.co.kr/viewimage.php?id=2abcdd23fc&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a19ae6b17e552a9c877bced29a77b04e626521eab8dbca09b031248281a5d653d28735876835609b09a187fde8d488aa958564605bcff",
+     "url": "https://m.dcinside.com/board/gamey/16028",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "社区：封测主线剧情与全角色台词已整理上传",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1x2l6vi/astrae_oratios_cbt_story_compilation/",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#8DB8E8",
+    "alt_accent": "#3D6FA8",
+    "alt_bg": "#F2F2F4",
+    "alt_fg": "#1B1B1C",
+    "bg": "#1B1B1C",
+    "fg": "#F2F2F4",
+    "font": "serif",
+    "split": true
+   }
+  }
+ ],
+ "no": 1
+}
