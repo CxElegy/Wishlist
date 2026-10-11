@@ -198,10 +198,27 @@ def _reddit_entries(path, params, name):
         _warn(name, e)
         return []
     if not is_json:
-        return rss_bytes(data, name)
+        entries = rss_bytes(data, name)
+        # 标了剧透 / NSFW 的帖子 RSS 里没有缩略图（网页上是「View spoiler」遮罩），改用帖子外链的预览图
+        links = {}
+        try:
+            for it in ET.fromstring(data.strip()).iter(f"{ATOM}entry"):
+                link = it.find(f"{ATOM}link")
+                m = re.search(r'href="([^"]+)">\[link\]', html.unescape(it.findtext(f"{ATOM}content") or ""))
+                if link is not None and m:
+                    links[link.get("href", "")] = html.unescape(m.group(1))
+        except ET.ParseError:
+            pass
+        for e in entries:
+            if not e.image and links.get(e.url):
+                e.image = link_image(links[e.url]) or ""
+        return entries
     entries = []
     for p in (c["data"] for c in json.loads(data)["data"]["children"]):
+        # 剧透帖的 preview 原图本身没有打码（打码的是 variants.obfuscated），直接用
         preview = ((p.get("preview") or {}).get("images") or [{}])[0].get("source", {}).get("url", "")
+        if not preview and p.get("url_overridden_by_dest"):
+            preview = link_image(p["url_overridden_by_dest"]) or ""
         entries.append(Entry(
             title=_clean(p["title"], 200),
             url="https://www.reddit.com" + p["permalink"],
@@ -308,6 +325,21 @@ def og_image(url):
         if m:
             return urllib.parse.urljoin(url, html.unescape(m.group(1)))
     return None
+
+
+def link_image(url):
+    """帖子外链的预览图：YouTube 视频 / 播放列表用官方 oEmbed 取封面，其它网页取 og:image。
+    链回 Reddit 本身的（纯文字帖）不算。"""
+    host = urllib.parse.urlparse(url).netloc.lower()
+    if not host or host.endswith("reddit.com") or host.endswith("redd.it"):
+        return None
+    if host.endswith("youtube.com") or host.endswith("youtu.be"):
+        try:
+            data = json.loads(_get("https://www.youtube.com/oembed?format=json&url=" + urllib.parse.quote(url, safe="")))
+            return data.get("thumbnail_url")
+        except Exception:
+            return None
+    return og_image(url)
 
 
 IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|/ads?/|\.svg|\.gif|data:", re.I)

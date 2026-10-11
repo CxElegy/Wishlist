@@ -2,7 +2,7 @@
 #
 # 通用字段：
 #   name         必填，报告里显示的名字
-#   type         product 商品 / category 一类产品 / game 游戏 / anime 动画漫画 / show 影视剧，默认 product
+#   type         product 商品 / category 一类产品 / game 游戏 / anime 动画漫画 / show 影视剧 / event 艺人演出，默认 product
 #   keywords     搜索关键词，每个词单独搜一次；建议写上各语言的正式名称
 #   match        可选，标题或摘要必须包含其中一个词才保留，默认用 keywords
 #   exclude      可选，标题包含这些词的条目直接丢掉
@@ -313,7 +313,134 @@ items:
       alt_bg: "#EC1D24"
       alt_fg: "#FFFFFF"
       alt_accent: "#151515"
+
+  - name: ILLIT 演唱会
+    subtitle: アイリット · 日本公演特别关注
+    type: event
+    keywords: ["ILLIT ライブ", "ILLIT 公演", "ILLIT JAPAN", "아일릿 콘서트", "ILLIT concert", "ILLIT 演唱会"]
+    match: [ILLIT, アイリット, 아일릿]
+    news_langs: [ja-JP, ko-KR, en-US, zh-CN]
+    max_entries: 40
+    use: [google, bing]   # r/ILLIT 多是日常闲聊，不抓 Reddit
+    priority: 日本的演出：新的日本巡演 / 追加公演 / 巨蛋公演官宣，日程与场馆，门票抽选（GLLIT 会员先行、一般发售）；其次是韩国及其他地区的演唱会
+    priority_keywords: [
+      日本, JAPAN, Japan, ジャパン, 東京, 大阪, 名古屋, 福岡, 神戸, 千葉, 横浜, ドーム, アリーナ, 일본, 도쿄,
+      追加公演, アンコール, ツアー, ファンミーティング, 開催決定,
+      チケット, 先行, 抽選, 一般発売, 一般販売, GLLIT,
+      콘서트, 투어, 앙코르, 티켓, 예매,
+      tour, concert, encore, ticket, 巡演, 演唱会, 加场, 门票
+    ]
+    urgent_patterns:
+      # 日本新巡演 / 公演官宣
+      - '(日本|ジャパン|JAPAN|東京|大阪|名古屋|福岡|神戸|横浜|札幌|ドーム|アリーナ|일본|도쿄|돔).{0,20}(公演|ツアー|ライブ|コンサート|ファンミーティング|tour|concert|콘서트|투어|팬미팅|演唱会|巡演).{0,15}(決定|発表|開催|확정|개최|발표|announce|confirm|官宣|确定)'
+      - '(ツアー|ライブ|公演|ファンミーティング|tour|concert|투어|콘서트|팬미팅|演唱会|巡演).{0,15}(日本|ジャパン|JAPAN|Japan|일본).{0,15}(決定|発表|開催|확정|개최|발표|announce|confirm|官宣|确定)'
+      # 追加公演 / 巨蛋
+      - '(追加公演|公演追加|ドーム公演|ドームツアー|추가 공연|돔 공연|additional (show|date)s?|dome (tour|concert)|加场|加演|巨蛋)'
+      # 日本公演门票开售 / 抽选开始
+      - '(チケット|先行|抽選|一般発売|一般販売|ticket).{0,12}(受付開始|受付スタート|発売開始|販売開始|スタート|on sale|go(es)? on sale)'
+    notes: >-
+      ILLIT（아일릿 / アイリット）是 HYBE 旗下 BELIFT LAB 的五人女团（YUNAH、MINJU、MOKA、WONHEE、IROHA），
+      日本官方粉丝俱乐部叫 GLLIT。MOKA 自 2026 年 6 月起再次休养，目前四人活动。首次巡演「ILLIT LIVE 'PRESS START♥︎'」2026 年 15 场全部售罄：
+      日本 5 城 11 场——爱知 6/13–14、大阪 6/20–21、福冈 6/29–30、神户 GLION ARENA 7/18–19、
+      东京 TOYOTA ARENA TOKYO 7/23·25·26。7 月 27 日官宣安可场：韩国仁川 INSPIRE Arena 10/17–18，
+      日本千叶 LaLa arena TOKYO-BAY 12/23·24·26·27。千叶安可场的日程本身不算新消息，
+      新的追加场次、门票发售阶段、2027 年日本新巡演才是重点。日本音乐节 / 电视节目出演可以报，排在演唱会之后；
+      新专辑、代言、时尚活动等与演出无关的消息丢掉。
+    status: 日本安可场 12/23·24·26·27 千叶 LaLa arena TOKYO-BAY
+    site: https://www.hybejapan.events/illit/press_start
+    theme:   # 取自「PRESS START♥︎」的红白爱心配色
+      bg: "#FFF4F6"
+      fg: "#2A1A20"
+      accent: "#E8394F"
+      alt_bg: "#E8394F"
+      alt_fg: "#FFFFFF"
+      alt_accent: "#FFD1DA"
       split: true
+      font: sans
+
+  - name: 星巴克马克杯
+    subtitle: スターバックス マグ · 日本优先 · 海外好设计
+    type: category
+    section: 好物
+    keywords: [
+      "スターバックス マグ 新作", "スタバ マグカップ 新作", "スタバ マグ 発売",
+      "星巴克 马克杯 新品", "星巴克 馬克杯 新品", "스타벅스 머그 신상",
+      "Starbucks new mug", "Starbucks mug collection 2026"
+    ]
+    # 只要马克杯：标题或摘要里必须有「马克杯」类的词；标题里只有保温杯 / 冷杯这类的直接丢掉
+    match: [マグ, 马克杯, 馬克杯, 머그, mug, 陶瓷杯, 陶杯]
+    exclude: [Stanley, 求人, 中古, メルカリ, 株価, stock price]
+    news_langs: [ja-JP, zh-TW, ko-KR, en-US, zh-CN]
+    max_entries: 30
+    max_stories: 5
+    priority: >-
+      只看马克杯（陶瓷 / 骨瓷杯，不要随行杯、保温杯、冷杯、水壶）。
+      第一优先：星巴克日本的新款马克杯——发售日、价格、网店先行、限定款（季节、地域 JIMOTO / 47 都道府県、Reserve、联名）；
+      其次：海外星巴克（韩国、台湾、中国、泰国、美国、Reserve 烘焙工坊、Been There / Across the Globe 城市杯）设计特别好看的马克杯
+    priority_keywords: [
+      マグ, 新作, 発売, 予約, 先行, 限定, 再販, 発売日,
+      马克杯, 馬克杯, 新品, 上市, 限定, 首发,
+      머그, 신상, 출시, 한정,
+      mug, new, release, limited, launch
+    ]
+    urgent_patterns:
+      # 星巴克日本的新马克杯公布 / 发售
+      - '(スタバ|スターバックス|Starbucks).{0,30}マグ.{0,30}(発売|新作|登場|予約|先行|再販)'
+      - '(新作|発売|登場).{0,20}(スタバ|スターバックス).{0,30}マグ'
+    notes: >-
+      读者只要马克杯，报道里只写马克杯（含马克杯的一整套系列也可以，但只讲杯子）；随行杯、保温杯、冷杯、水壶的消息不报。
+      日本的放前面，海外的只挑设计确实好看的。已知背景（2026/10）：日本 9/18 STARBUCKS STAND by BEAMS、
+      9/30 Pokémon + STARBUCKS（41 件）、10/9 Halloween 2026（黑猫白猫）已上市，接下来是 11 月前后的 Holiday 系列；
+      亚太 Peanuts「Great Pumpkin」秋季系列（韩国 / 台湾 / 泰国等）也在售。转卖平台的帖子不算正式发售。
+    site: https://www.starbucks.co.jp/
+    theme:   # 自选：奶白杯身 + 深绿 + 陶土棕，对角分割，衬线
+      bg: "#F6F1E7"
+      fg: "#1E3932"
+      accent: "#00704A"
+      alt_bg: "#1E3932"
+      alt_fg: "#F6F1E7"
+      alt_accent: "#C9A27E"
+      split: true
+      font: serif
+
+  - name: 日本网球赛事
+    subtitle: 大阪・関西 週末観戦
+    type: category
+    section: 运动
+    keywords: [
+      "テニス 大阪 大会", "木下グループジャパンオープン", "ジャパンオープン テニス",
+      "靱 テニス", "テニス 観戦 関西", "テニス 兵庫 大会", "Japan Open tennis Osaka"
+    ]
+    match: [テニス, 网球, 網球, tennis]
+    exclude: [ソフトテニス, テニスの王子様, テニプリ, 求人, 中古, 結果速報・トーナメント表]   # 最后一个是业余比赛成绩页，量大没用
+    news_langs: [ja-JP, zh-CN]
+    priority: 大阪及附近（关西）周末能和同学去现场看的比赛：哪天打哪一轮、门票什么时候卖 / 多少钱、日本选手是否出场
+    priority_keywords: [
+      大阪, 靱, 靭, うつぼ, 関西, 神戸, 兵庫, 京都,
+      木下グループ, ジャパンオープン, Japan Open,
+      チケット, 観戦, 入場無料, 土曜, 日曜, 週末, 決勝, 準決勝,
+      出場, エントリー, ドロー, 組み合わせ, 日程
+    ]
+    urgent_patterns:
+      # 大阪 / 关西的比赛开卖门票
+      - '(大阪|靱|靭|うつぼ|関西|神戸|兵庫|京都|木下グループ|ジャパンオープン|Japan Open).{0,25}(チケット|観戦券|入場券|ticket).{0,12}(発売|販売|受付|開始|on sale)'
+      # 大阪的比赛公布签表 / 出场名单
+      - '(大阪|靱|靭|木下グループ|ジャパンオープン).{0,25}(エントリー|出場選手|ドロー|組み合わせ|draw|entry list)'
+    notes: >-
+      读者在大阪附近，想周末和同学去现场看网球。只关心关西（大阪・兵库・京都）能现场看的比赛，
+      其它地区的只在有日本选手大新闻时简单带过。2026 年 WTA250 木下グループジャパンオープン在大阪
+      モリタテニスセンター靱（本町站步行约 7 分钟）举行：10/17（六）资格赛首轮、10/18（日）资格赛次轮、
+      10/19–23 正赛、10/24（六）单打半决赛 + 双打决赛、10/25（日）单打决赛。
+      同一场馆 11/7–15 有关西学生网球锦标赛正赛；春季的 BLUESIX OPEN（男子 ITF）在靱一般场地免费观战。
+    status: 大阪 WTA 木下グループジャパンオープン 10/17–25 · 周末：10/17–18 资格赛、10/24 半决赛、10/25 决赛
+    site: https://www.japanopentennis.com/wta/
+    theme:   # 硬地球场蓝 + 网球黄绿
+      bg: "#1F4E79"
+      fg: "#F5F7F2"
+      accent: "#D7F03C"
+      alt_bg: "#F5F7F2"
+      alt_fg: "#1F4E79"
+      alt_accent: "#2E7D32"
       font: sans
 
   # ↓↓↓ 其它类型的写法示例，去掉行首的 # 就会生效 ↓↓↓

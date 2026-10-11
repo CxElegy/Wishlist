@@ -25,7 +25,7 @@ ANNOUNCED_FILE = digest.STATE_DIR / "announced_commit.txt"
 # 改了这些地方才算“功能更新”；只改数据（inbox / reports / state / docs）或关注清单的不算
 FEATURE_PATHS = ["scripts", ".github", "EDITING.md", ".claude", "requirements.txt", "README.md"]
 KNOWN_FILE = digest.STATE_DIR / "known_items.json"
-TYPE_NAMES = {"product": "商品", "category": "一类产品", "game": "游戏", "anime": "动画 / 漫画", "show": "影视剧"}
+TYPE_NAMES = {"product": "商品", "category": "一类产品", "game": "游戏", "anime": "动画 / 漫画", "show": "影视剧", "event": "艺人演出"}
 MAX_LINES = 6  # 每个关注项最多列几条
 
 

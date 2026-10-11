@@ -74,5 +74,17 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add inbox reports state docs
           git diff --cached --quiet || git commit -m "更新 $(TZ=Asia/Shanghai date +'%F %H:%M')"
-          git pull --rebase --autostash -q || true
-          git push
+          # 运行期间别处也推送了（合并 PR、改代码、AI 编辑）：先合并；生成文件冲突时以这次的新数据为准，
+          # 再用合并后的代码重新生成网页。最多试 3 次
+          for i in 1 2 3; do
+            if git pull --rebase -X theirs -q; then
+              python scripts/digest.py render
+              git add docs
+              git diff --cached --quiet || git commit -q -m "重新生成网页"
+              git push && exit 0
+            else
+              git rebase --abort || true
+            fi
+            sleep $((i * 5))
+          done
+          exit 1
