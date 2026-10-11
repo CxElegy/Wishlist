@@ -43,7 +43,7 @@ settings:
   summarize: false              # true = 用 Claude API 编排报道（需要 ANTHROPIC_API_KEY，按量付费）
                                 # false = 不用 AI，按 priority_keywords 排序、用原标题（完全免费）
   model: claude-haiku-5-5       # 归纳用的模型
-  create_issue: true            # 每期同时开一个 GitHub Issue（会邮件通知你）
+  discord_mention: "263923518780080128"   # 要紧通知时 @ 这个 Discord 用户（填用户 ID，不是密码）
 
 items:
   - name: Astrae Oratio

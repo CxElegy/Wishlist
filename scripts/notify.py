@@ -42,6 +42,7 @@ def _cut(text, n):
 
 
 def send(payload):
+    payload.setdefault("allowed_mentions", {"parse": []})
     url = os.environ.get("DISCORD_WEBHOOK_URL")
     if not url:
         print("未设置 DISCORD_WEBHOOK_URL，以下是将要发送的内容：", file=sys.stderr)
@@ -86,10 +87,13 @@ def urgent(page_url):
     if not embeds:
         print("没有新的要紧消息", file=sys.stderr)
         return
+    mention = digest.load_config()[0].get("discord_mention")
     payload = {
         "username": "关注清单通信",
-        "content": f"**【要紧】关注清单有新消息**\n简报：{page_url}",
+        "content": (f"<@{mention}> " if mention else "") + f"**【要紧】关注清单有新消息**\n简报：{page_url}",
         "embeds": embeds[:10],
+        # 只允许 @ 设置里的这个人，防止标题里的 @everyone 之类被触发
+        "allowed_mentions": {"users": [str(mention)] if mention else []},
     }
     if send(payload):
         notified.update({k: today.isoformat() for k in keys})
