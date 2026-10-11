@@ -121,6 +121,51 @@ items:
       split: true
       font: serif
 
+  - name: 滑雪
+    subtitle: 日本雪场 · 雪板装备 · 2026-27
+    type: category
+    keywords: [
+      "日本 滑雪 2026", "スキー場 オープン 2026-27", "スキー場 リフト券 2026-27", "Japan ski season 2026-27",
+      "26-27 スノーボード 新作", "26-27 snowboard", "2027 snowboard new"
+    ]
+    match: [
+      滑雪, 雪场, 雪板, 单板, 固定器, 雪靴, スキー, スノーボード, スノボ, ゲレンデ, リフト, ゴンドラ, ビンディング,
+      ski, snowboard, binding, Niseko, ニセコ, Hakuba, 白馬, 二世古, 白马
+    ]
+    exclude: [ジャンプ, 女子ジャンプ, World Cup, W杯, 求人, 中古]
+    news_langs: [zh-CN, ja-JP, en-US]
+    max_entries: 40
+    subreddits: [JapanSnow, snowboarding]
+    priority: >-
+      日本雪场的开放日期、新缆车 / 新吊椅、缆车票价和早鸟票、今冬雪况；
+      26-27 新款雪板、固定器、雪靴（Burton、CAPiTA、UNION、GRAY、Yonex、Ogasaka 等）的发布、日本发售和到货
+    priority_keywords: [
+      オープン, 営業開始, 開業, 开放, 开业, opening, open,
+      リフト券, シーズン券, 早割, 早鸟, 票价, lift ticket, season pass,
+      新ゴンドラ, 新リフト, 缆车, gondola, 降雪, 積雪, 初滑り, 雪况, snowfall,
+      新作, 新モデル, 新款, 发布, 発表, 発売, 予約, 入荷, new model, release
+    ]
+    urgent_patterns:
+      # 雪场开放日确定 / 已开放
+      - '(オープン|営業開始|開業|开放|开业|open\w*).{0,10}(決定|決まる|確定|确定|公布|発表|開始|开始|announce|confirm)'
+      - '(今季|今シーズン|初滑り|今天|本日).{0,6}(オープン|営業開始|开放|open)'
+      # 早鸟票 / 季票开卖
+      - '(早割|早鸟|早鳥|シーズン券|季票|season pass|early.?bird).{0,10}(発売|開始|开始|开卖|販売|on sale|start)'
+    notes: >-
+      一类关注项：日本 2026-27 雪季 + 26-27 雪板装备。已知背景（2026/10）：
+      二世古 / 富良野 / 留寿都 / 野泽温泉 预计 11/28 开放，白马约 12 月初；二世古 Village 新缆车第 1 段与栂池 6 人座吊椅 T3 均 12 月启用；
+      缆车票普遍涨 5–20%；气象厅预报日本海一侧降雪偏少，强厄尔尼诺。
+      装备方面 Burton Family Tree 新款、CAPiTA Sidewinder、UNION NEO 固定器、K2 26/27 已发布，GRAY 等多款 12 月到货。
+    theme:   # 自选：雪白 + 深夜蓝 + 雪场缆车的朱红，对角分割，无衬线
+      bg: "#F4F8FB"
+      fg: "#14233A"
+      accent: "#D9412B"
+      alt_bg: "#14233A"
+      alt_fg: "#F4F8FB"
+      alt_accent: "#8EC5E8"
+      split: true
+      font: sans
+
   # ↓↓↓ 其它类型的写法示例，去掉行首的 # 就会生效 ↓↓↓
   #
   # - name: 葬送的芙莉莲
