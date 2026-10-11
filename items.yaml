@@ -1,20 +1,30 @@
 # 关注清单：只需要改这个文件，定时任务会自动读取。
 #
-# item 字段：
+# 通用字段：
 #   name         必填，报告里显示的名字
-#   type         product（具体商品）/ category（一类产品）/ game（游戏），默认 product
-#   keywords     搜索关键词，每个关键词单独搜一次；越具体越准，可中英混写
-#   use          用哪些新闻源，默认 [google, bing]；只想用下面的专用源可写 []
+#   type         product 商品 / category 一类产品 / game 游戏 / anime 动画漫画 / show 影视剧，默认 product
+#   keywords     搜索关键词，每个词单独搜一次；建议写上各语言的正式名称
+#   match        可选，标题或摘要必须包含其中一个词才保留，默认用 keywords
+#   exclude      可选，标题包含这些词的条目直接丢掉
+#   news_langs   可选，单独为这一项指定新闻语言区，会覆盖下面 settings 里的设置
+#   use          可选，用哪些新闻源，默认 [google, bing]
 #   subreddits   可选，在这些 Reddit 版块里按关键词搜
-#   feeds        可选，任意 RSS / Atom 地址（官网博客、B站专栏 RSSHub 等）
-#   steam_appid  可选，游戏的 Steam ID（商店网址里的数字），会抓官方公告和当前价格
-#   match        可选，标题或摘要必须含其中一个词才保留；默认用 keywords
-#   exclude      可选，标题含这些词的条目丢掉
+#   feeds        可选，任意 RSS / Atom 地址（官网博客、RSSHub 等）
+#   max_entries  可选，单独为这一项设置交给 AI 的条目上限
 #   notes        可选，给 AI 的补充说明
+#
+# 按类型的专用字段：
+#   game   steam_appid   Steam 商店网址里的数字，用来抓官方公告和当前价格
+#   anime  anilist_id    anilist.co 网址里的数字；不填就按 keywords 的第一个词搜索。
+#                        填第一季也行，会自动追到最新一季
+#          anilist_type  ANIME（默认）或 MANGA
+#   show   tmdb          themoviedb.org 网址里的那一段，如 tv/1399 或 movie/693134
+#                        需要在仓库 Secrets 里设置 TMDB_API_KEY（免费申请）
 
 settings:
   lookback_days: 7              # 只看最近 N 天
-  news_langs: [zh-CN, en-US]    # Google 新闻的语言区：zh-CN / zh-TW / en-US / ja-JP
+  news_langs: [zh-CN, en-US]    # 默认的新闻语言区：zh-CN / zh-TW / en-US / ja-JP / ko-KR
+  timezone: Asia/Shanghai       # 播出时间按这个时区显示
   steam_country: cn             # Steam 价格地区
   max_entries_per_item: 30      # 每个关注项最多交给 AI 的条目数（控制 token）
   summarize: true               # false = 不调用 AI，只列链接（完全零成本）
@@ -22,20 +32,35 @@ settings:
   create_issue: true            # 每期同时开一个 GitHub Issue（会邮件通知你）
 
 items:
-  # ↓↓↓ 以下是示例，换成你自己的 ↓↓↓
-
-  - name: Sony WH-1000XM6
-    type: product
-    keywords: ["WH-1000XM6"]
-    notes: 重点关注国内电商价格
-
-  - name: OLED 显示器
-    type: category
-    keywords: ["OLED 显示器", "OLED monitor"]
-    exclude: [手机, iPhone, TV]
-
-  - name: 艾尔登法环 黑夜君临
+  - name: Astrae Oratio（アストラエ・オラティオ）
     type: game
-    keywords: ["黑夜君临", "Elden Ring Nightreign"]
-    match: [黑夜君临, Nightreign]
-    steam_appid: 2622380
+    keywords: ["Astrae Oratio", "アストラエ・オラティオ", "아스트라에 오라티오", "阿索拉 星之祈願"]
+    match: [Astrae Oratio, アストラエ・オラティオ, アスオラ, 아스트라에 오라티오, 아스오라, 阿索拉]
+    news_langs: [zh-TW, en-US, ja-JP, ko-KR]
+    max_entries: 40
+    notes: >-
+      NC 发行、Dynamis One 开发的新传奇魔法 RPG，舞台是架空的 1989 年东京。
+      预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。
+      重点关注：正式上线日期、测试/预约、新角色和 PV、PC 版和 Steam 页面消息。
+
+  # ↓↓↓ 其它类型的写法示例，去掉行首的 # 就会生效 ↓↓↓
+  #
+  # - name: 葬送的芙莉莲
+  #   type: anime
+  #   keywords: ["葬送的芙莉莲", "葬送のフリーレン", "Frieren"]
+  #   anilist_id: 154587
+  #   news_langs: [zh-CN, ja-JP]
+  #
+  # - name: 三体（剧集）
+  #   type: show
+  #   keywords: ["三体 电视剧", "3 Body Problem season 2"]
+  #   tmdb: tv/108545
+  #
+  # - name: OLED 显示器
+  #   type: category
+  #   keywords: ["OLED 显示器", "OLED monitor"]
+  #   exclude: [手机, iPhone, TV]
+  #
+  # - name: Sony WH-1000XM6
+  #   type: product
+  #   keywords: ["WH-1000XM6"]

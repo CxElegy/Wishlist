@@ -18,6 +18,7 @@ import os
 import pathlib
 import re
 import sys
+import zoneinfo
 
 import yaml
 
@@ -28,7 +29,7 @@ ITEMS_FILE = ROOT / "items.yaml"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 SEEN_FILE = STATE_DIR / "seen.json"
-PRICES_FILE = STATE_DIR / "prices.json"
+FACTS_FILE = STATE_DIR / "facts.json"
 
 SEEN_KEEP_DAYS = 90
 NEWS_LANGS = {
@@ -36,6 +37,7 @@ NEWS_LANGS = {
     "zh-TW": ("zh-TW", "TW", "TW:zh-Hant"),
     "en-US": ("en-US", "US", "US:en"),
     "ja-JP": ("ja", "JP", "JP:ja"),
+    "ko-KR": ("ko", "KR", "KR:ko"),
 }
 
 # 不同类型关注项交给 LLM 的整理要求
@@ -43,6 +45,8 @@ ITEM_TYPES = {
     "product": "这是一个具体商品。重点：价格与促销、库存、评测、新版本/固件。",
     "category": "这是一整类产品，不要只盯一个型号。盘点新品、热门型号和明显降价，按重要性排序。",
     "game": "这是一款游戏。重点：版本更新/补丁、活动（写明起止时间）、DLC/发售日、折扣、官方公告。",
+    "anime": "这是一部动画或漫画。重点：新季/续作/剧场版官宣、定档与播出时间、PV 和主视觉、制作阵容、原作动态。",
+    "show": "这是一部电影或剧集。重点：定档、上映/播出时间、预告片、续集或新季消息、口碑与票房、国内上线平台。",
 }
 
 SYSTEM_PROMPT = """你负责把抓取到的新闻条目整理成简报。只依据提供的条目，不要编造或补充条目之外的信息。
@@ -50,6 +54,7 @@ SYSTEM_PROMPT = """你负责把抓取到的新闻条目整理成简报。只依�
 规则：
 - 合并重复报道，忽略和关注项无关的条目、广告和纯水贴。
 - 每条要点末尾用方括号标注引用的条目编号，例如 [3] 或 [3][7]，不要写 URL。
+- 一律用中文输出，外文消息翻译成中文。
 - 传闻要标注“传闻”；价格写明渠道和币种。
 - 条目全部无关时，只输出：本期无重要更新
 
@@ -77,7 +82,7 @@ def save_json(path, data):
 
 def collect(item, settings):
     lookback = settings.get("lookback_days", 7)
-    langs = settings.get("news_langs") or ["zh-CN"]
+    langs = item.get("news_langs") or settings.get("news_langs") or ["zh-CN"]
     keywords = item.get("keywords") or [item["name"]]
     use = item.get("use") or ["google", "bing"]
 
@@ -126,20 +131,44 @@ def filter_entries(entries, item, settings, seen, now):
             continue
         titles.add(key)
         out.append(e)
-    return out[: settings.get("max_entries_per_item", 30)]
+    return out[: item.get("max_entries") or settings.get("max_entries_per_item", 30)]
 
 
-def price_line(item, settings, prices):
-    appid = item.get("steam_appid")
-    if not appid:
-        return None
-    price = sources.steam_price(appid, settings.get("steam_country", "cn"))
-    if not price:
-        return None
-    old = prices.get(str(appid))
-    prices[str(appid)] = price
-    change = f"（上期 {old}）" if old and old != price else ""
-    return f"**Steam 当前价格**：{price}{change}"
+def fact_lines(item, settings, facts):
+    """Steam 价格、番剧/剧集播出状态等“当前状态”，与上期不同时标注出来。"""
+    tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
+    checks = []
+    if item.get("steam_appid"):
+        appid = item["steam_appid"]
+        checks.append(("Steam 当前价格", f"steam:{appid}",
+                       lambda: _same(sources.steam_price(appid, settings.get("steam_country", "cn")))))
+    if item["type"] == "anime" and (item.get("anilist_id") or item.get("keywords")):
+        media_type = item.get("anilist_type", "ANIME")
+        checks.append(("播出状态" if media_type == "ANIME" else "连载状态",
+                       f"anilist:{item.get('anilist_id') or item['keywords'][0]}",
+                       lambda: sources.anilist_status(item.get("anilist_id"), item["keywords"][0], media_type, tz)))
+    if item.get("tmdb"):
+        key = os.environ.get("TMDB_API_KEY")
+        if key:
+            checks.append(("播出状态", f"tmdb:{item['tmdb']}", lambda: sources.tmdb_status(item["tmdb"], key)))
+        else:
+            print("  [提示] 未设置 TMDB_API_KEY，跳过剧集/电影状态", file=sys.stderr)
+
+    lines = []
+    for label, key, fetch in checks:
+        result = fetch()
+        if not result:
+            continue
+        text, stable = result
+        old = facts.get(key)
+        facts[key] = {"text": text, "stable": stable}
+        changed = f"（🆕 有变化，上期：{old['text']}）" if old and old["stable"] != stable else ""
+        lines.append(f"**{label}**：{text}{changed}")
+    return lines
+
+
+def _same(value):
+    return (value, value) if value else None
 
 
 # ---------- LLM 归纳 ----------
@@ -160,7 +189,7 @@ def summarize(client, model, item, entries):
 
     prompt = (
         f"关注项：{item['name']}\n"
-        f"整理要求：{ITEM_TYPES[item.get('type', 'product')]}\n"
+        f"整理要求：{ITEM_TYPES[item['type']]}\n"
         + (f"补充说明：{item['notes']}\n" if item.get("notes") else "")
         + f"\n条目：\n{format_entries(entries)}"
     )
@@ -204,16 +233,18 @@ def main():
     settings = config.get("settings") or {}
     items = config.get("items") or []
     for item in items:
-        if item.get("type", "product") not in ITEM_TYPES:
+        item.setdefault("type", "product")
+        if item["type"] not in ITEM_TYPES:
             sys.exit(f"{item['name']} 的 type 必须是 {'/'.join(ITEM_TYPES)} 之一")
-    for lang in settings.get("news_langs") or []:
+    all_langs = (settings.get("news_langs") or []) + [l for i in items for l in i.get("news_langs") or []]
+    for lang in all_langs:
         if lang not in NEWS_LANGS:
             sys.exit(f"news_langs 只支持 {'/'.join(NEWS_LANGS)}，不支持 {lang!r}")
 
     now = dt.datetime.now(dt.timezone.utc)
     today = now.date().isoformat()
     seen = load_json(SEEN_FILE)
-    prices = load_json(PRICES_FILE)
+    facts = load_json(FACTS_FILE)
 
     client = None
     model = settings.get("model", "claude-haiku-5-5")
@@ -234,9 +265,7 @@ def main():
             continue
 
         parts = [f"## {item['name']}"]
-        price = price_line(item, settings, prices)
-        if price:
-            parts.append(price)
+        parts += fact_lines(item, settings, facts)
         if not entries:
             parts.append("本期无新消息。")
         else:
@@ -253,7 +282,7 @@ def main():
 
     cutoff = (now - dt.timedelta(days=SEEN_KEEP_DAYS)).date().isoformat()
     save_json(SEEN_FILE, {u: d for u, d in seen.items() if d >= cutoff})
-    save_json(PRICES_FILE, prices)
+    save_json(FACTS_FILE, facts)
 
     REPORTS_DIR.mkdir(exist_ok=True)
     report = (

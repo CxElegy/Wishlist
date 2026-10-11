@@ -30,6 +30,7 @@ jobs:
       - name: 抓取并整理
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: python scripts/digest.py
 
       - name: 提交报告

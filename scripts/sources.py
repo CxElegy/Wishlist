@@ -60,14 +60,10 @@ def _warn(name, err):
 def rss(url, source=None):
     """通用 RSS 2.0 / Atom 解析。"""
     try:
-        data = _get(url)
-        if not data.strip():
-            return []  # 没有结果时 Bing 会返回空内容
-        try:
-            root = ET.fromstring(data)
-        except ET.ParseError:
-            # Bing 偶尔把未转义的查询词写进 xmlns 属性，去掉后重试
-            root = ET.fromstring(re.sub(rb'\sxmlns:\w+="[^"]*"', b"", data, count=1))
+        data = _get(url).strip()
+        if not data or data[:15].lower().startswith(b"<!doctype html"):
+            return []  # 没有结果时 Bing 会返回空内容或 HTML 页面
+        root = ET.fromstring(data)
     except Exception as e:  # 网络或格式错误都跳过，不影响其它来源
         _warn(source or url, e)
         return []
@@ -162,3 +158,110 @@ def steam_price(appid, country):
     if price["discount_percent"]:
         return f"{price['final_formatted']}（-{price['discount_percent']}%，原价 {price['initial_formatted'] or price['initial'] / 100}）"
     return price["final_formatted"]
+
+
+# ---------- 状态类数据源：返回 (显示文字, 稳定值)，稳定值变了才提示“有变化” ----------
+
+def _fmt_time(ts, tz):
+    return dt.datetime.fromtimestamp(ts, tz).strftime("%m-%d %H:%M")
+
+
+ANILIST_QUERY = """
+query ($id: Int, $search: String, $type: MediaType) {
+  Media(id: $id, search: $search, type: $type) {
+    id type status episodes chapters siteUrl
+    title { native romaji }
+    startDate { year month day }
+    nextAiringEpisode { episode airingAt }
+    relations { edges { relationType node { id type } } }
+  }
+}"""
+ANILIST_STATUS = {
+    "FINISHED": "已完结", "RELEASING": "连载中", "NOT_YET_RELEASED": "未开播",
+    "CANCELLED": "已取消", "HIATUS": "停更中",
+}
+
+
+def _anilist(variables):
+    req = urllib.request.Request(
+        "https://graphql.anilist.co",
+        # 传 null 会让 AniList 返回 404，空值直接不传
+        data=json.dumps({"query": ANILIST_QUERY, "variables": {k: v for k, v in variables.items() if v}}).encode(),
+        headers={"User-Agent": USER_AGENT, "Content-Type": "application/json", "Accept": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+        return json.loads(resp.read())["data"]["Media"]
+
+
+def anilist_status(anilist_id, search, media_type, tz):
+    """番剧 / 漫画状态。番剧会顺着“续作”关系找到最新一季，所以填第一季也行。"""
+    try:
+        media = _anilist({"id": anilist_id, "search": None if anilist_id else search, "type": media_type})
+        for _ in range(10):  # 最多追 10 季
+            sequel = next(
+                (e["node"]["id"] for e in media["relations"]["edges"]
+                 if e["relationType"] == "SEQUEL" and e["node"]["type"] == media_type),
+                None,
+            )
+            if not sequel:
+                break
+            media = _anilist({"id": sequel, "type": media_type})
+    except Exception as e:
+        _warn(f"AniList {anilist_id or search}", e)
+        return None
+
+    title = media["title"]["native"] or media["title"]["romaji"]
+    status = ANILIST_STATUS.get(media["status"], media["status"])
+    parts = [f"[《{title}》]({media['siteUrl']})", status]
+    nxt = media.get("nextAiringEpisode")
+    if nxt:
+        parts.append(f"第 {nxt['episode']} 集 {_fmt_time(nxt['airingAt'], tz)} 播出")
+    elif media["status"] == "NOT_YET_RELEASED":
+        d = media["startDate"]
+        when = "-".join(str(x) for x in (d["year"], d["month"], d["day"]) if x)
+        parts.append(f"预计 {when} 开播" if when else "开播日期未定")
+    total = media.get("episodes") or media.get("chapters")
+    if total:
+        parts.append(f"共 {total} {'集' if media_type == 'ANIME' else '话'}")
+    return " · ".join(parts), f"{media['id']}|{media['status']}"
+
+
+TMDB_STATUS = {
+    "Returning Series": "连载中", "Ended": "已完结", "Canceled": "已取消",
+    "In Production": "制作中", "Planned": "计划中", "Pilot": "试播",
+    "Released": "已上映", "Post Production": "后期制作", "Rumored": "传闻",
+}
+
+
+def tmdb_status(ref, api_key, language="zh-CN"):
+    """ref 形如 'tv/1399' 或 'movie/693134'（就是 themoviedb.org 网址里的那段）。"""
+    kind, _, tmdb_id = ref.partition("/")
+    url = f"https://api.themoviedb.org/3/{kind}/{tmdb_id}?language={language}"
+    headers = {"User-Agent": USER_AGENT, "Accept": "application/json"}
+    if api_key.startswith("eyJ"):  # v4 读访问令牌
+        headers["Authorization"] = f"Bearer {api_key}"
+    else:  # v3 API Key
+        url += f"&api_key={api_key}"
+    try:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            d = json.loads(resp.read())
+    except Exception as e:
+        _warn(f"TMDB {ref}", e)
+        return None
+
+    status = TMDB_STATUS.get(d.get("status"), d.get("status"))
+    link = f"https://www.themoviedb.org/{ref}"
+    if kind == "movie":
+        date = d.get("release_date") or "待定"
+        return f"[《{d.get('title')}》]({link}) · {status} · 上映日期 {date}", f"{d.get('status')}|{date}"
+
+    parts = [f"[《{d.get('name')}》]({link})", status, f"共 {d.get('number_of_seasons')} 季"]
+    nxt = d.get("next_episode_to_air")
+    if nxt:
+        parts.append(f"下一集 S{nxt['season_number']}E{nxt['episode_number']} {nxt.get('air_date') or '日期未定'}")
+    elif d.get("last_episode_to_air"):
+        last = d["last_episode_to_air"]
+        parts.append(f"最近一集 S{last['season_number']}E{last['episode_number']} {last.get('air_date')}")
+    nxt_season = nxt["season_number"] if nxt else None
+    return " · ".join(parts), f"{d.get('status')}|{d.get('number_of_seasons')}|{nxt_season}"
