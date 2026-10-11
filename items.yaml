@@ -168,6 +168,51 @@ items:
       split: true
       font: sans
 
+  - name: MMORPG 新作
+    subtitle: 近期上线 · 测试 · 新公布的网游
+    type: category
+    section: 游戏
+    keywords: [
+      "MMORPG 新作", "MMORPG 公测", "MMORPG 定档", "MMO 新游 测试",
+      "new MMORPG release date", "MMORPG early access", "MMORPG closed beta",
+      "MMORPG 新作 リリース", "MMORPG 正式サービス", "MMORPG 출시", "MMORPG 사전예약"
+    ]
+    match: [MMORPG, MMO, 网游, 網遊, 大型多人]
+    exclude: [私服, 外挂, 代练, 金币, gold farming, 求人]
+    news_langs: [zh-CN, en-US, ja-JP, ko-KR]
+    max_entries: 40
+    max_stories: 6
+    subreddits: [MMORPG]
+    priority: >-
+      近期哪些 MMORPG 能玩：新作的上线 / 抢先体验日期、测试（CBT / OBT / alpha）时间和报名、预约开放、
+      国服 / 全球服 / Steam 页面；已上线新作的口碑和在线人数
+    priority_keywords: [
+      上线, 上線, 公测, 公測, 发售, 定档, 开服, 開服, release, launch, early access, 抢先体验,
+      测试, 測試, 封测, 内测, CBT, OBT, alpha, beta, テスト, 베타, 테스트,
+      预约, 預約, 事前登録, 사전예약, pre-regist, Steam, 全球, global, 国服
+    ]
+    urgent_patterns:
+      # MMO 新作定档 / 正式上线 / 抢先体验开始
+      - '(MMO|MMORPG|网游|網遊).{0,40}(定档|定檔|公测|公測|上线日期|發售日|release date|launch date|early access).{0,20}(公布|宣布|确定|確定|決定|확정|announce|confirm|reveal|set|date)'
+      # 测试招募 / 预约开放
+      - '(MMO|MMORPG).{0,40}(CBT|OBT|alpha|beta|测试|測試|テスト|테스트|事前登録|사전예약|预约|預約|pre-?regist\w*).{0,20}(开始|開始|开放|開放|招募|募集|모집|시작|sign.?up|registration|open)'
+    notes: >-
+      一类关注项：最近上线 / 即将上线 / 测试中的 MMORPG 新作（PC、主机、手游都算），不报老游戏的常规版本更新。
+      已知背景（2026/10）：AION 2（NCSoft）10/5 全球正式上线，Steam 同时在线峰值约 40 万；
+      Kakao Games《도깨비의세계（鬼怪的世界）》10/8 韩国上线，双榜第一；《Icarus Online》日服 10/22 重启；
+      生活 MMO《Loftia》11/3 抢先体验；《ArcheAge Chronicles》买断制，计划 Steam 抢先体验；
+      《Odin Q》2027 年 1 月；Chrono Odyssey 推迟到 2027；王者荣耀世界国服已上线、全球版未定。
+      New World 将于 2027/1/31 停服。传闻和“爆料”按传闻处理。
+    theme:   # 自选：深夜地下城 + 魔法金 + 奥术紫，对角分割，衬线
+      bg: "#15131F"
+      fg: "#F3EEDF"
+      accent: "#E3B341"
+      alt_bg: "#2C2148"
+      alt_fg: "#F3EEDF"
+      alt_accent: "#B794F6"
+      split: true
+      font: serif
+
   - name: 滑雪
     subtitle: 日本雪场 · 雪板装备 · 2026-27
     type: category
