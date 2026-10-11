@@ -40,7 +40,7 @@ FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
 INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = ROOT / "docs"
-ISSUES_ON_PAGE = 30  # 网页上保留最近几期（每天一期）
+ISSUES_ON_PAGE = 3650  # 网页汇总所有期：消息永远保留，一周前的收进折叠区
 
 NEWS_LANGS = {
     "zh-CN": ("zh-CN", "CN", "CN:zh-Hans"),
@@ -190,6 +190,15 @@ def recent_titles(days=HISTORY_DAYS):
         for item in load_json(path).get("items", []):
             titles.setdefault(item["name"], []).extend(e["title"] for e in item["entries"])
     return titles
+
+
+def has_history(name):
+    """这个关注项以前收到过条目吗（翻全部 inbox）。没有就是第一次收集，要多往前看一些。"""
+    for path in INBOX_DIR.glob("????-??-??.json"):
+        for item in load_json(path).get("items", []):
+            if item["name"] == name and item["entries"]:
+                return True
+    return False
 
 
 def filter_entries(entries, item, settings, seen, now, known=()):
@@ -404,6 +413,8 @@ def attach_media(stories, entries, cover):
     for n, s in enumerate(stories):
         refs = [entries[r - 1] for r in s.pop("refs")]
         s["url"] = s.get("url") or sources.resolve_url(refs[0].url)
+        if refs[0].published:  # 消息本身的日期，卡片上显示、按它排序
+            s["date"] = refs[0].published.date().isoformat()
         s["image"] = s.get("image") or next((e.image for e in refs if e.image), None)
         for i, e in enumerate(refs):
             if s["image"]:
@@ -430,7 +441,7 @@ def write_page():
     if not issues:
         return
     DOCS_DIR.mkdir(exist_ok=True)
-    (DOCS_DIR / "index.html").write_text(render.render(issues), encoding="utf-8")
+    (DOCS_DIR / "index.html").write_text(render.render(issues, load_config()[0].get("nav_style", "line")), encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 
@@ -514,7 +525,12 @@ def ingest(dry_run=False):
     inbox_items = []
     for item in items:
         print(f"抓取：{item['name']}", file=sys.stderr)
-        entries = filter_entries(collect(item, settings), item, settings, seen, now, known.get(item["name"], []))
+        # 新加的关注项第一次收集时往前多看几周，补上加入之前的报道；之后照常只看 lookback_days
+        backfill = not has_history(item["name"])
+        conf = dict(settings, lookback_days=settings.get("first_lookback_days", 42)) if backfill else settings
+        if backfill:
+            print(f"  第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
+        entries = filter_entries(collect(item, conf), item, conf, seen, now, known.get(item["name"], []))
         print(f"  新条目 {len(entries)} 条", file=sys.stderr)
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
@@ -525,9 +541,12 @@ def ingest(dry_run=False):
         inbox_items.append({
             "name": item["name"],
             "priority": item.get("priority", ""),
+            **({"backfill": True} if backfill else {}),
             "facts": item_facts,
             "cover": find_cover(item, status_cover),
-            "entries": [{**entry_to_dict(n, e), "urgent": is_urgent(e, item)} for n, e in enumerate(entries, 1)],
+            # 补抓的是旧闻，不算要紧，不发 Discord
+            "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item)}
+                        for n, e in enumerate(entries, 1)],
         })
         for e in entries:
             seen.update((e.url, title_key(e.title)))
@@ -572,11 +591,20 @@ def last_story(name, before):
     return None
 
 
+SECTION_BY_TYPE = {"game": "游戏", "anime": "影视", "show": "影视", "product": "好物", "category": "好物"}
+
+
+def section_of(item):
+    """头版上的板块。"""
+    return item.get("section") or SECTION_BY_TYPE.get(item.get("type", "product"), "好物")
+
+
 def quiet_block(item, themes, date):
     """本期没有新消息的关注项：只留一个小栏（名字、现状、最近一条），配色照旧。"""
     cover = find_cover(item, None)
     return {
         "name": item["name"],
+        "section": section_of(item),
         "subtitle": item.get("subtitle", ""),
         "theme": theme.resolve(item, cover, themes),
         "quiet": True,
@@ -612,6 +640,8 @@ def publish(inbox_path=None):
     blocks = []
     for raw in inbox["items"]:
         item = by_name.get(raw["name"], {"name": raw["name"], "type": "product"})
+        if raw.get("backfill"):  # 补抓的旧闻不做“重大”
+            item = {**item, "urgent_patterns": []}
         entries = [entry_from_dict(d) for d in raw["entries"]]
         if raw["name"] in edits and not raw["name"].startswith("_"):
             stories = [dict(s) for s in edits[raw["name"]]]
@@ -641,7 +671,9 @@ def publish(inbox_path=None):
             continue
         blocks.append({
             "name": raw["name"],
+            "section": section_of(item),
             "subtitle": item.get("subtitle", ""),
+            "cover": raw.get("cover"),
             "theme": theme.resolve(item, raw.get("cover"), themes),
             "facts": raw["facts"],
             "stories": attach_media(stories, entries, raw.get("cover")),
@@ -728,7 +760,7 @@ def pick_images(date=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "pick-images"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "pick-images"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
     args = parser.parse_args()
@@ -745,6 +777,9 @@ def main():
     elif args.step == "notify-urgent":
         import notify
         notify.urgent(pages_url(load_config()[0]))
+    elif args.step == "notify-changes":
+        import notify
+        notify.changes(pages_url(load_config()[0]))
     elif args.step == "notify-new-items":
         import notify
         notify.new_items(pages_url(load_config()[0]))
