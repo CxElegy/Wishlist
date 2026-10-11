@@ -2,7 +2,7 @@
 #
 # 通用字段：
 #   name         必填，报告里显示的名字
-#   type         product 商品 / category 一类产品 / game 游戏 / anime 动画漫画 / show 影视剧，默认 product
+#   type         product 商品 / category 一类产品 / game 游戏 / anime 动画漫画 / show 影视剧 / event 艺人演出，默认 product
 #   keywords     搜索关键词，每个词单独搜一次；建议写上各语言的正式名称
 #   match        可选，标题或摘要必须包含其中一个词才保留，默认用 keywords
 #   exclude      可选，标题包含这些词的条目直接丢掉
@@ -120,6 +120,50 @@ items:
       alt_accent: "#E65224"
       split: true
       font: serif
+
+  - name: ILLIT 演唱会
+    subtitle: アイリット · 日本公演特别关注
+    type: event
+    keywords: ["ILLIT ライブ", "ILLIT 公演", "ILLIT JAPAN", "아일릿 콘서트", "ILLIT concert", "ILLIT 演唱会"]
+    match: [ILLIT, アイリット, 아일릿]
+    news_langs: [ja-JP, ko-KR, en-US, zh-CN]
+    max_entries: 40
+    use: [google, bing]   # r/ILLIT 多是日常闲聊，不抓 Reddit
+    priority: 日本的演出：新的日本巡演 / 追加公演 / 巨蛋公演官宣，日程与场馆，门票抽选（GLLIT 会员先行、一般发售）；其次是韩国及其他地区的演唱会
+    priority_keywords: [
+      日本, JAPAN, Japan, ジャパン, 東京, 大阪, 名古屋, 福岡, 神戸, 千葉, 横浜, ドーム, アリーナ, 일본, 도쿄,
+      追加公演, アンコール, ツアー, ファンミーティング, 開催決定,
+      チケット, 先行, 抽選, 一般発売, 一般販売, GLLIT,
+      콘서트, 투어, 앙코르, 티켓, 예매,
+      tour, concert, encore, ticket, 巡演, 演唱会, 加场, 门票
+    ]
+    urgent_patterns:
+      # 日本新巡演 / 公演官宣
+      - '(日本|ジャパン|JAPAN|東京|大阪|名古屋|福岡|神戸|横浜|札幌|ドーム|アリーナ|일본|도쿄|돔).{0,20}(公演|ツアー|ライブ|コンサート|ファンミーティング|tour|concert|콘서트|투어|팬미팅|演唱会|巡演).{0,15}(決定|発表|開催|확정|개최|발표|announce|confirm|官宣|确定)'
+      - '(ツアー|ライブ|公演|ファンミーティング|tour|concert|투어|콘서트|팬미팅|演唱会|巡演).{0,15}(日本|ジャパン|JAPAN|Japan|일본).{0,15}(決定|発表|開催|확정|개최|발표|announce|confirm|官宣|确定)'
+      # 追加公演 / 巨蛋
+      - '(追加公演|公演追加|ドーム公演|ドームツアー|추가 공연|돔 공연|additional (show|date)s?|dome (tour|concert)|加场|加演|巨蛋)'
+      # 日本公演门票开售 / 抽选开始
+      - '(チケット|先行|抽選|一般発売|一般販売|ticket).{0,12}(受付開始|受付スタート|発売開始|販売開始|スタート|on sale|go(es)? on sale)'
+    notes: >-
+      ILLIT（아일릿 / アイリット）是 HYBE 旗下 BELIFT LAB 的五人女团（YUNAH、MINJU、MOKA、WONHEE、IROHA），
+      日本官方粉丝俱乐部叫 GLLIT。MOKA 自 2026 年 6 月起再次休养，目前四人活动。首次巡演「ILLIT LIVE 'PRESS START♥︎'」2026 年 15 场全部售罄：
+      日本 5 城 11 场——爱知 6/13–14、大阪 6/20–21、福冈 6/29–30、神户 GLION ARENA 7/18–19、
+      东京 TOYOTA ARENA TOKYO 7/23·25·26。7 月 27 日官宣安可场：韩国仁川 INSPIRE Arena 10/17–18，
+      日本千叶 LaLa arena TOKYO-BAY 12/23·24·26·27。千叶安可场的日程本身不算新消息，
+      新的追加场次、门票发售阶段、2027 年日本新巡演才是重点。日本音乐节 / 电视节目出演可以报，排在演唱会之后；
+      新专辑、代言、时尚活动等与演出无关的消息丢掉。
+    status: 日本安可场 12/23·24·26·27 千叶 LaLa arena TOKYO-BAY
+    site: https://www.hybejapan.events/illit/press_start
+    theme:   # 取自「PRESS START♥︎」的红白爱心配色
+      bg: "#FFF4F6"
+      fg: "#2A1A20"
+      accent: "#E8394F"
+      alt_bg: "#E8394F"
+      alt_fg: "#FFFFFF"
+      alt_accent: "#FFD1DA"
+      split: true
+      font: sans
 
   # ↓↓↓ 其它类型的写法示例，去掉行首的 # 就会生效 ↓↓↓
   #
