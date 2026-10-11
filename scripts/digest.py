@@ -376,20 +376,54 @@ def _bigrams(text):
     return {t[i:i + 2] for i in range(len(t) - 1)}
 
 
+_TOPIC_STOP = {"with", "that", "this", "from", "have", "will", "just", "more", "after", "into", "about",
+               "what", "your", "over", "gets", "reveals", "reveal", "official", "officially", "latest", "news",
+               "game", "games", "here", "every", "first", "still", "could", "would", "they", "their"}
+
+
+def _topic_tokens(title, names):
+    """判断“是不是同一件事”用的词：英文 4 字母以上的词 + 中日文的两字组，去掉作品名本身"""
+    t = title.lower()
+    for n in names:
+        t = t.replace(n.lower(), " ")
+    words = {w[:4] for w in re.findall(r"[a-z]{4,}", t) if w not in _TOPIC_STOP}  # 取前 4 个字母，leak / leaker 算同一个词
+    cjk = re.sub(r"[^\u3040-\u30ff\u4e00-\u9fff]", "", t)
+    return words | {cjk[i:i + 2] for i in range(len(cjk) - 1)}
+
+
+def _same_topic(a, b):
+    return len(a & b) >= 2 and len(a & b) / max(1, min(len(a), len(b))) >= 0.25
+
+
+HEAT_MIN_OUTLETS = 4  # 设了 hot_only 时，头条以外的报道至少要有几家媒体在报
+
+
 def fallback_stories(entries, item, limit=7):
     """不用 AI 时的编排：
     - 标题含 priority_keywords（你最关心的事）的排前面，第一条做头条
+    - 设了 hot_only 的关注项只要“最火的事”：改按有多少家媒体在报同一件事排序，同一件事合成一条；
+      头条以外只留至少 HEAT_MIN_OUTLETS 家在报的，没那么多事就少写
     - 同一新闻被多家转载时只留一条（标题字符重合度高的视为同一条）
     - 媒体报道优先于 Reddit；Reddit 帖子没命中关键词的不收（多半是同人图、闲聊）
     - 同等条件下有图的、较新的优先"""
     words = [w.lower() for w in item.get("priority_keywords") or []]
     urgent = {i for i, e in enumerate(entries, 1) if is_urgent(e, item)}
+    by_heat = bool(item.get("hot_only"))
+    names = sorted({item["name"], *(item.get("keywords") or []), *(item.get("match") or [])}, key=len, reverse=True)
+    topics = {i: _topic_tokens(e.title, names) for i, e in enumerate(entries, 1)} if by_heat else {}
+    media = [i for i, e in enumerate(entries, 1) if not e.source.startswith("r/")]
 
     def hits(e):
         return sum(w in e.title.lower() for w in words)
 
+    def heat(i):
+        return sum(1 for j in media if j != i and _same_topic(topics[i], topics[j]))
+
     def score(pair):
         i, e = pair
+        if by_heat:
+            return (i in urgent, heat(i), not e.source.startswith("r/"), hits(e),
+                    bool(e.image) or "news.google.com" not in e.url, -i)
         return (i in urgent, hits(e) > 0, not e.source.startswith("r/"), hits(e),
                 bool(e.image) or "news.google.com" not in e.url, -i)
 
@@ -399,9 +433,14 @@ def fallback_stories(entries, item, limit=7):
         g = _bigrams(e.title)
         if any(len(g & h) / max(1, min(len(g), len(h))) > 0.5 for h in grams):
             continue
+        if by_heat and any(i in p["refs"] or any(_same_topic(topics[i], topics[r]) for r in p["refs"]) for p in picked):
+            continue  # 已经归进前面某条报道的同一件事
         grams.append(g)
         weight = "hero" if i in urgent else ("lead" if not picked or all(p["weight"] == "hero" for p in picked) else "normal")
-        picked.append({"headline": e.title, "highlight": "", "blurb": "", "weight": weight, "refs": [i]})
+        refs = [i] + ([j for j in media if j != i and _same_topic(topics[i], topics[j])] if by_heat else [])
+        if by_heat and picked and i not in urgent and len(refs) < HEAT_MIN_OUTLETS:
+            continue  # 只有一两家在报的不算“火”，事情少就少写
+        picked.append({"headline": e.title, "highlight": "", "blurb": "", "weight": weight, "refs": refs})
         if len(picked) == limit:
             break
     return picked
