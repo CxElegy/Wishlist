@@ -20,6 +20,7 @@ import os
 import pathlib
 import re
 import sys
+import urllib.request
 import zoneinfo
 
 import yaml
@@ -225,6 +226,39 @@ def find_cover(item, status_cover):
 
 # ---------- LLM 编辑 ----------
 
+def _github_oidc_token():
+    """向 GitHub Actions 现场要一个身份令牌。令牌约 5 分钟过期且只能换一次，所以每次换取都重新要。"""
+    url = os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience=https://api.anthropic.com"
+    req = urllib.request.Request(url, headers={"Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.loads(resp.read())["value"]
+
+
+def make_client():
+    """凭据优先级：API Key > GitHub Actions 的 Workload Identity Federation > SDK 自己能找到的（环境变量 / 本机登录）。
+    都没有就返回 None，简报直接用原标题。"""
+    import anthropic
+
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        # 空的 ANTHROPIC_API_KEY 也会抢占凭据（会用空 Key 去认证），必须删掉
+        os.environ.pop("ANTHROPIC_API_KEY", None)
+    else:
+        return anthropic.Anthropic()
+
+    rule = os.environ.get("ANTHROPIC_FEDERATION_RULE_ID")
+    if rule and os.environ.get("ACTIONS_ID_TOKEN_REQUEST_URL"):
+        print("使用 Workload Identity Federation（GitHub Actions）", file=sys.stderr)
+        return anthropic.Anthropic(credentials=anthropic.WorkloadIdentityCredentials(
+            identity_token_provider=_github_oidc_token,
+            federation_rule_id=rule,
+            organization_id=os.environ["ANTHROPIC_ORGANIZATION_ID"],
+            service_account_id=os.environ.get("ANTHROPIC_SERVICE_ACCOUNT_ID") or None,
+            workspace_id=os.environ.get("ANTHROPIC_WORKSPACE_ID") or None,
+        ))
+    if any(os.environ.get(k) for k in ("ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_PROFILE", "ANTHROPIC_FEDERATION_RULE_ID")):
+        return anthropic.Anthropic()  # 其它环境：SDK 按自己的规则读取这些环境变量
+    return None
+
 def format_entries(entries):
     lines = []
     for i, e in enumerate(entries, 1):
@@ -238,8 +272,6 @@ def format_entries(entries):
 
 def edit_stories(client, model, item, entries):
     """让 LLM 把条目编成报道；失败返回 None。"""
-    import anthropic
-
     prompt = (
         f"关注项：{item['name']}\n"
         f"类型说明：{ITEM_TYPES[item['type']]}\n"
@@ -255,8 +287,8 @@ def edit_stories(client, model, item, entries):
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": prompt}],
         )
-    except anthropic.APIError as e:
-        print(f"  [警告] LLM 调用失败：{e}", file=sys.stderr)
+    except Exception as e:  # API 错误或凭据错误：这一项退回原标题，不影响整期
+        print(f"  [警告] LLM 调用失败：{type(e).__name__}: {e}", file=sys.stderr)
         return None
     if response.stop_reason in ("refusal", "max_tokens"):
         print(f"  [警告] LLM 未完成（{response.stop_reason}）", file=sys.stderr)
@@ -354,11 +386,10 @@ def main():
 
     client = None
     model = settings.get("model", "claude-haiku-5-5")
-    if not args.dry_run and settings.get("summarize", True) and os.environ.get("ANTHROPIC_API_KEY"):
-        import anthropic
-        client = anthropic.Anthropic()
-    elif not args.dry_run:
-        print("未设置 ANTHROPIC_API_KEY 或已关闭 summarize，直接用原标题", file=sys.stderr)
+    if not args.dry_run and settings.get("summarize", True):
+        client = make_client()
+        if client is None:
+            print("没有可用的 Claude 凭据，直接用原标题", file=sys.stderr)
 
     blocks = []
     for item in items:

@@ -25,15 +25,37 @@ items.yaml
 
 1. **开启 GitHub Pages**：仓库 Settings → Pages → Build and deployment → Source 选 *Deploy from a branch*，分支选默认分支，文件夹选 `/docs`。
    简报地址：`https://cxelegy.github.io/Wishlist/`
-2. **添加 Secrets**（Settings → Secrets and variables → Actions）：
+2. **连接 Claude**（二选一）
 
-   | 名称 | 必需？ | 用途 |
-   |---|---|---|
-   | `ANTHROPIC_API_KEY` | 建议 | AI 编排报道。不设置就直接用原标题 |
-   | `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` | 建议 | Reddit 常拦截云服务器的匿名请求，用官方 API 才稳定。在 [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) 创建一个 *script* 类型的应用即可（免费） |
-   | `TMDB_API_KEY` | 关注影视剧时 | 在 themoviedb.org 的账号设置里免费申请 |
+   **A. Workload Identity Federation（推荐，不需要存任何 Key）**
+   1. 在 [Claude Console](https://platform.claude.com) → Settings → Workload identity → **Connect workload** → 选 **GitHub Actions**
+   2. 按向导填写，匹配条件这样填（只允许这个仓库的默认分支）：
+      - Subject prefix：`repo:CxElegy/Wishlist:ref:refs/heads/claude/sharp-gauss-osunmb`
+      - Audience：`https://api.anthropic.com`
+      - Claims：`repository_owner` = `CxElegy`
+   3. 向导完成后会给出 federation rule ID（`fdrl_` 开头）和 service account ID（`svac_` 开头）；organization ID 在 Settings → Organization
+   4. 回到 GitHub：仓库 Settings → Secrets and variables → Actions → **Variables** 标签页 → New repository variable，添加：
 
-3. **运行**：Actions → 关注清单简报 → Run workflow。之后每周一北京时间 08:17 自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
+      | Name | Value |
+      |---|---|
+      | `ANTHROPIC_FEDERATION_RULE_ID` | `fdrl_...` |
+      | `ANTHROPIC_ORGANIZATION_ID` | 组织 ID（UUID） |
+      | `ANTHROPIC_SERVICE_ACCOUNT_ID` | `svac_...` |
+
+      这些只是 ID，不是密码，所以放 Variables 而不是 Secrets。
+
+   **B. API Key**：在 **Secrets** 标签页添加 `ANTHROPIC_API_KEY`。
+
+   两个都不配置也能跑，只是不用 AI，直接用原标题。
+
+3. **其它 Secrets（可选）**，在 **Secrets** 标签页添加：
+
+   | 名称 | 用途 |
+   |---|---|
+   | `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` | Reddit 常拦截云服务器的匿名请求，用官方 API 才稳定。在 [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) 创建一个 *script* 类型的应用即可（免费） |
+   | `TMDB_API_KEY` | 关注影视剧时需要，在 themoviedb.org 的账号设置里免费申请 |
+
+4. **运行**：Actions → 关注清单简报 → Run workflow。之后每周一北京时间 08:17 自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
 
 ## 添加关注项
 

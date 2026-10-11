@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   issues: write
+  id-token: write   # Workload Identity Federation：向 GitHub 要身份令牌，换取 Claude 的临时访问令牌
 
 concurrency:
   group: digest
@@ -29,6 +30,13 @@ jobs:
 
       - name: 抓取、编辑、生成简报
         env:
+          # Claude 凭据二选一：
+          #   A. Workload Identity Federation（推荐，不存 Key）：在仓库 Variables 里填下面三个 ID
+          #   B. API Key：在仓库 Secrets 里填 ANTHROPIC_API_KEY
+          ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+          ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+          ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+          ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
