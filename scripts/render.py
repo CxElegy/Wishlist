@@ -1,6 +1,7 @@
 """把各期数据渲染成一张报纸式简报网页（docs/index.html），新一期在最上面。
 
 版式规则：
+- 顶部悬浮目录：按板块分组列出每个作品，滚动时当前所在的一项放大并换成板块色，点击直达；可跳往期
 - 每期最上面一张「头版」：重磅头条大图 + 按板块（游戏 / 影视 / 运动 / 好物）的彩色索引 + 今日要闻
 - 报头中性；每个关注项一个板块，配色取自该作品（theme.py）
 - weight=hero 的消息（直接回答你最关心的问题，如定档、测试日期）独占整行大图
@@ -123,7 +124,33 @@ a{color:inherit;text-decoration:none}
 .heads li i{flex:none;font:900 11px/1.6 'Noto Sans SC',sans-serif;font-style:normal;color:#FFF;background:var(--sc);padding:0 6px;letter-spacing:.1em}
 .heads li a{font-size:15px;line-height:1.5}
 .heads li a:hover{text-decoration:underline;text-underline-offset:3px}
+/* ---------- 悬浮目录 ---------- */
+html{scroll-behavior:smooth}
+[data-k]{scroll-margin-top:84px}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:#1A1C22;color:#FBF8F1;
+ border:3px solid #1A1C22;box-shadow:0 6px 0 rgba(26,28,34,.12)}
+.nav-in{display:flex;align-items:center;gap:14px;padding:8px 14px}
+.nav .here{flex:none;display:flex;flex-direction:column;gap:1px;padding-right:14px;border-right:1px solid rgba(251,248,241,.25)}
+.nav .here b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.35em;color:#FFD23F}
+.nav .here span{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;font-variant-numeric:tabular-nums;opacity:.8}
+.nav .rail{flex:1;min-width:0;display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;padding:6px 4px}
+.nav .rail::-webkit-scrollbar{display:none}
+.nav .grp{flex:none;margin-left:8px;font:900 11px 'Noto Sans SC',sans-serif;letter-spacing:.2em;color:var(--sc);
+ filter:brightness(1.6) saturate(.9)}
+.nav .grp:first-child{margin-left:0}
+.nav .pill{flex:none;padding:4px 10px;border:1px solid rgba(251,248,241,.28);font:700 13px/1.3 'Noto Sans SC',sans-serif;
+ white-space:nowrap;transform-origin:center;transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s,color .2s,border-color .2s}
+.nav .pill:hover{border-color:#FBF8F1}
+.nav .pill:focus-visible,.nav select:focus-visible{outline:2px solid #FFD23F;outline-offset:2px}
+.nav .pill.on{background:var(--sc);border-color:var(--sc);color:#FFF;transform:scale(1.18);margin:0 6px;
+ box-shadow:2px 2px 0 #FBF8F1}
+.nav .pill.front-k{--sc:#D7261E}
+.nav select{flex:none;background:transparent;color:#FBF8F1;border:1px solid rgba(251,248,241,.28);padding:4px 6px;
+ font:700 12px 'JetBrains Mono',monospace;color-scheme:dark}
+.nav .bar{height:3px;background:var(--cur,#D7261E);width:0;transition:width .15s linear,background .2s}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav .pill,.nav .bar{transition:none}}
 @media (max-width:760px){
+ .nav .here{display:none}.nav-in{padding:6px 8px;gap:8px}[data-k]{scroll-margin-top:64px}
  .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}
  .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
@@ -238,7 +265,7 @@ def _section(block, anchor=""):
     if block.get("quiet"):
         grid = _calm(block)
     quiet = " quiet" if block.get("quiet") else ""
-    return (f'<section id="{anchor}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
             f"{facts}{grid}</section>")
 
@@ -312,8 +339,75 @@ def _front(issue):
     if heads:
         heads_html = (f'<div class="heads"><h4>今日要闻<small>TODAY\'S HEADLINES</small></h4>'
                       f'<ol>{"".join(heads[:12])}</ol></div>')
-    return (f'<section class="front">{head}<div class="fbody">{top_html}'
+    return (f'<section class="front" data-k="front">{head}<div class="fbody">{top_html}'
             f'<div class="boards">{"".join(boards)}</div></div>{heads_html}</section>')
+
+
+def _nav(issues):
+    """顶部悬浮目录：以最新一期为准，按板块分组；往期用下拉跳转。"""
+    latest = issues[0]
+    groups = {}
+    for b in latest["items"]:
+        groups.setdefault(b.get("section") or "其他", []).append(b)
+    order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
+    date = latest["date"]
+    rail = [f'<a class="pill front-k" data-for="front" href="#issue-{date}">头版</a>']
+    for name in order:
+        sc = _sec_color(name)
+        rail.append(f'<span class="grp" style="--sc:{sc}">{e(name)}</span>')
+        rail += [f'<a class="pill" style="--sc:{sc}" data-for="{e(b["name"])}" href="#issue-{date}-{latest["items"].index(b)}">'
+                 f'{e(b["name"])}</a>' for b in groups[name]]
+    past = ""
+    if len(issues) > 1:
+        opts = "".join(f'<option value="issue-{i["date"]}">{i["date"][5:].replace("-", ".")}</option>' for i in issues[1:])
+        past = (f'<select id="nav-past" aria-label="跳到往期"><option value="">往期</option>{opts}</select>')
+    return (f'<nav class="nav" aria-label="目录"><div class="nav-in">'
+            f'<div class="here"><b>目 录</b><span id="nav-here">今日 · {date.replace("-", ".")}</span></div>'
+            f'<div class="rail" id="nav-rail">{"".join(rail)}</div>{past}</div><div class="bar" id="nav-bar"></div></nav>')
+
+
+NAV_JS = """
+(() => {
+  const rail = document.getElementById('nav-rail'), bar = document.getElementById('nav-bar'),
+        here = document.getElementById('nav-here'), nav = document.querySelector('.nav');
+  const marks = [...document.querySelectorAll('[data-k]')];
+  const pills = [...rail.querySelectorAll('.pill')];
+  let cur = null, ticking = false;
+  function update() {
+    ticking = false;
+    const y = nav.getBoundingClientRect().bottom + 24;
+    let m = marks[0];
+    for (const el of marks) { if (el.getBoundingClientRect().top <= y) m = el; else break; }
+    if (!m) return;
+    const r = m.getBoundingClientRect();
+    bar.style.width = Math.min(100, Math.max(0, (y - r.top) / r.height * 100)) + '%';
+    if (m === cur) return;
+    cur = m;
+    const issue = m.closest('.issue');
+    here.textContent = issue ? issue.dataset.label : '';
+    const today = issue === document.querySelector('.issue');
+    let on = null;
+    pills.forEach(p => {
+      const hit = today && p.dataset.for === m.dataset.k;
+      p.classList.toggle('on', hit);
+      if (hit) on = p;
+    });
+    bar.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
+    if (on) {
+      const left = on.offsetLeft - rail.clientWidth / 2 + on.offsetWidth / 2;
+      rail.scrollTo({ left, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  const past = document.getElementById('nav-past');
+  if (past) past.addEventListener('change', () => {
+    if (past.value) document.getElementById(past.value).scrollIntoView();
+    past.value = '';
+  });
+  update();
+})();
+"""
 
 
 def render(issues):
@@ -322,7 +416,8 @@ def render(issues):
     parts = []
     for i, issue in enumerate(issues):
         label = ("今 日" if i == 0 else "往 期") + f" · {issue['date'].replace('-', '.')}"
-        parts.append(f'<div class="issue" id="issue-{issue["date"]}"><div class="issue-head"><span>{label}</span></div>'
+        short = ("今日" if i == 0 else "往期") + f" · {issue['date'].replace('-', '.')}"
+        parts.append(f'<div class="issue" id="issue-{issue["date"]}" data-label="{short}"><div class="issue-head"><span>{label}</span></div>'
                      + _front(issue)
                      + "".join(_section(b, f"issue-{issue['date']}-{n}") for n, b in enumerate(issue["items"])) + "</div>")
     return f"""<!doctype html>
@@ -342,8 +437,10 @@ def render(issues):
 <h1>关注清单通信</h1>
 <div class="meta"><div class="no">No.{latest['no']:03d}</div><div class="mono">{latest['date'].replace('-', '.')}</div></div>
 </div></header>
+{_nav(issues)}
 {''.join(parts)}
 </div>
+<script>{NAV_JS}</script>
 </body>
 </html>
 """
