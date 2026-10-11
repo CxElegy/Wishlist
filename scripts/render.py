@@ -52,18 +52,20 @@ a{color:inherit;text-decoration:none}
 .hl{color:var(--ac)}
 .pic{position:relative;overflow:hidden;border:1px solid color-mix(in srgb,currentColor 35%,transparent);
  background:repeating-linear-gradient(135deg,color-mix(in srgb,currentColor 7%,transparent) 0 14px,transparent 14px 28px)}
-.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pic{aspect-ratio:16/9}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.pic img.bg{object-fit:cover;filter:blur(18px) brightness(.8);transform:scale(1.15)}
 .hero{grid-column:span 12;display:grid;grid-template-columns:7fr 5fr;gap:24px;padding:24px}
-.hero .pic{height:420px}
+.hero .pic{align-self:center}
+.s12 .pic{aspect-ratio:auto;height:260px}.s12 .pic:empty{display:none}
 .hero .txt{display:flex;flex-direction:column;justify-content:center;gap:16px}
 .tag{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.25em;color:var(--ac)}
 .hero h2{margin:0;font-weight:900;font-size:46px;line-height:1.2}
-.lead{grid-column:span 8}.lead .pic{height:380px}
+.lead{grid-column:span 8}
 .lead h2{margin:0;font-weight:900;font-size:36px;line-height:1.25}
 .side{grid-column:span 4;display:flex;flex-direction:column;gap:1px}
-.side .card{flex:1}.side .pic{height:150px}
+.side .card{flex:1}
 .side h3{margin:0;font-weight:900;font-size:22px;line-height:1.35}
-.row .pic{height:170px}
 .row h3{margin:0;font-weight:900;font-size:21px;line-height:1.4}
 .s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
 .blurb{margin:0;font-size:16px;line-height:1.75;opacity:.85}
@@ -71,7 +73,7 @@ a{color:inherit;text-decoration:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
  .band .title{font-size:34px}.band .sub{margin-left:0}
  .band.split{background:var(--abg)}.band.split .sub{color:var(--afg)}
- .hero{grid-template-columns:1fr}.hero .pic,.lead .pic,.side .pic,.row .pic{height:200px}
+ .hero{grid-template-columns:1fr}
  .hero h2,.lead h2{font-size:28px}
  .lead,.side,.s12,.s6,.s4{grid-column:span 12}
 }
@@ -101,10 +103,11 @@ def _headline(story):
 
 def _pic(story):
     img = story.get("image")
-    tag = (
-        f'<img src="{e(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
-        if img else ""
-    )
+    # 底层模糊铺满，上层完整显示：图片不裁切，也不留空白条
+    tag = "".join(
+        f'<img{cls} src="{e(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
+        for cls in (' class="bg"', "")
+    ) if img else ""
     return f'<div class="pic">{tag}</div>'
 
 
