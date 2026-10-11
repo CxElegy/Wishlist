@@ -20,6 +20,8 @@
 #   feeds        可选，任意 RSS / Atom 地址（官网博客、RSSHub 等）
 #   max_entries  可选，单独为这一项设置交给 AI 的条目上限
 #   max_stories  可选，这一项每期最多几条报道（只挑最火的；事情少就少写，不凑数）
+#   hot_only     可选，true = 只要最火的事：按多少家媒体在报同一件事排序，同一件事合成一条，
+#                头条以外只留至少 4 家在报的；没那么多事就少写（不用 AI 编排时生效）
 #   notes        可选，给 AI 的背景说明
 #
 # 简报外观（都可选）：
@@ -133,6 +135,7 @@ items:
     news_langs: [zh-CN, en-US]
     max_entries: 30
     max_stories: 4   # 只要最近最火的几件事，一页以内；没什么事就少写
+    hot_only: true
     subreddits: [GTA6]
     priority: 能不能按时玩到：11 月 19 日发售会不会再延期、预载 / 解锁时间、PC 版什么时候公布、第三支预告片
     priority_keywords: [
@@ -151,7 +154,8 @@ items:
       # 第三支预告片
       - '(GTA ?(6|VI)|Grand Theft Auto VI).{0,30}(Trailer 3|third trailer|第三支预告|第三支預告|预告片3|預告片3)'
       # 正式发售 / 解锁
-      - '(GTA ?(6|VI)|Grand Theft Auto VI).{0,30}((is )?out now|now available|launches today|正式发售|正式發售|已发售|已發售|解锁时间|unlock time)'
+      #   只认作品名紧跟“已发售”的说法，避免“周边 / 典藏版 now available”误报
+      - '(GTA ?(6|VI)|Grand Theft Auto VI)[’'']?s?\s*(is\s*)?(out now|now available|launches today|正式发售|正式發售|已发售|已發售|解锁时间|unlock time)'
     notes: >-
       Rockstar Games 开发、Take-Two 发行的开放世界动作游戏，舞台是 Leonida 州的 Vice City（以迈阿密为原型），
       双主角 Lucia 与 Jason。2023 年 12 月公布首支预告，2025 年 5 月公布第二支预告。
