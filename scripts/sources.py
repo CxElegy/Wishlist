@@ -95,7 +95,10 @@ def rss_bytes(data, source):
 
     entries = []
     for it in root.iter("item"):  # RSS 2.0
+        # Google 用 <source>，Bing 用带命名空间的 <News:Source>
         src = it.find("source")
+        if src is None:
+            src = next((c for c in it if c.tag.endswith("}Source")), None)
         entries.append(Entry(
             title=_clean(it.findtext("title"), 200),
             url=(it.findtext("link") or "").strip(),

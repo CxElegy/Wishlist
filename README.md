@@ -6,14 +6,22 @@
 
 ## 流程
 
+分两步，中间用 `inbox/` 里的数据文件衔接：
+
 ```
 items.yaml
   │
-  ├─ 抓取   Google 新闻 / Bing 新闻 / Reddit / Steam / AniList / TMDB / 任意 RSS     ← 免费
-  ├─ 过滤   时间窗口 + 关键词 + 与往期去重                                           ← 免费
-  ├─ 编辑   AI 按你最关心的问题（priority）挑选、排序、写标题                         ← 少量 token
-  ├─ 配图   Reddit 图 / 文章预览图 / 作品封面；配色取自作品主视觉
-  └─ 输出   docs/index.html（GitHub Pages 简报） + GitHub Issue 提醒
+  ├─ ingest（收集，免费）
+  │    抓取  Google 新闻 / Bing 新闻 / Reddit / Steam / AniList / TMDB / 任意 RSS
+  │    过滤  时间窗口 + 关键词 + 与往期去重
+  │    输出  inbox/YYYY-MM-DD.json（原始条目、状态变化、封面）
+  │
+  └─ publish（出刊）
+       编排  按优先级：inbox/YYYY-MM-DD.edit.json（人工或 Claude 写的）
+                     > Claude API（summarize: true 时）
+                     > 关键词规则 priority_keywords（免费，默认）
+       配图  Reddit 图 / 文章预览图 / 作品封面；配色取自作品主视觉
+       输出  reports/YYYY-MM-DD.json + docs/index.html（GitHub Pages）+ GitHub Issue 提醒
 ```
 
 版面规则：
@@ -25,7 +33,7 @@ items.yaml
 
 1. **开启 GitHub Pages**：仓库 Settings → Pages → Build and deployment → Source 选 *Deploy from a branch*，分支选默认分支，文件夹选 `/docs`。
    简报地址：`https://cxelegy.github.io/Wishlist/`
-2. **连接 Claude**（二选一）
+2. **连接 Claude API（可选，默认不用）**：只有 `summarize: true` 时才需要，二选一
 
    **A. Workload Identity Federation（推荐，不需要存任何 Key）**
    1. 在 [Claude Console](https://platform.claude.com) → Settings → Workload identity → **Connect workload** → 选 **GitHub Actions**
@@ -46,7 +54,7 @@ items.yaml
 
    **B. API Key**：在 **Secrets** 标签页添加 `ANTHROPIC_API_KEY`。
 
-   两个都不配置也能跑，只是不用 AI，直接用原标题。
+   不配置就用关键词规则编排，直接用原标题。
 
 3. **其它 Secrets（可选）**，在 **Secrets** 标签页添加：
 
@@ -70,14 +78,20 @@ items.yaml
 
 ```bash
 pip install -r requirements.txt
-python scripts/digest.py --dry-run   # 只看抓到了什么，不调用 AI、不写文件
-python scripts/digest.py             # 生成一期（需要的 Key 放在环境变量里）
-python scripts/digest.py --render    # 改了版式后，用已有数据重新生成网页
+python scripts/digest.py --dry-run   # 只看抓到了什么，不写文件
+python scripts/digest.py             # 收集 + 出刊
+python scripts/digest.py ingest      # 只收集到 inbox/
+python scripts/digest.py publish     # 只出刊（用最新一份 inbox，有 .edit.json 就按它编排）
+python scripts/digest.py render      # 改了版式后，用已有数据重新生成网页
 ```
 
 ## 成本
 
-抓取、过滤、配图、取色都不花钱。AI 每个关注项每期调用一次，只发送标题和摘要，默认模型 `claude-haiku-5-5`，十几个关注项每周大约几美分。设置 `summarize: false` 可以完全不用 AI。
+默认完全免费：收集、关键词编排、配图、取色都不调用任何付费接口。
+
+想让 AI 把标题翻成中文、按关注重点挑选和合并，有两种方式：
+- 在 Claude 里让 Claude 读 `inbox/` 写 `.edit.json`（用你的 Claude 订阅，不另外付费）
+- 打开 `summarize: true` 并配置 Claude API（按量付费，默认 `claude-haiku-5-5`，十几个关注项每周大约几美分）
 
 ## 目录
 
@@ -88,6 +102,7 @@ python scripts/digest.py --render    # 改了版式后，用已有数据重新�
 | `scripts/digest.py` | 主流程：抓取 → 过滤 → 编辑 → 输出 |
 | `scripts/theme.py` | 从封面图提取板块配色 |
 | `scripts/render.py` | 简报网页的版式 |
-| `reports/` | 每期的数据（JSON） |
+| `inbox/` | 每期收集到的原始条目；`.edit.json` 是对应的编排 |
+| `reports/` | 每期出刊的数据（JSON） |
 | `docs/` | 简报网页，由 GitHub Pages 发布 |
 | `state/` | 已报道的链接、上期状态、配色缓存，请勿手动修改 |

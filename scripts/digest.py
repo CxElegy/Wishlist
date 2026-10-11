@@ -1,16 +1,19 @@
-"""关注清单定期整理。
+"""关注清单定期整理，分两步（参考 agents-radar）：
 
-流程（参考 agents-radar）：
-1. 按 items.yaml 从免费 RSS / API 抓取消息（不消耗 LLM token）
-2. 按时间窗口、关键词过滤，并去掉以前报道过的
-3. 只把新消息的标题和摘要交给 LLM，按你最关心的问题（priority）排序、归纳成几条报道
-4. 配图：文章预览图 / Reddit 图 / 作品封面；配色：作品主视觉
-5. 输出 reports/YYYY-MM-DD.json（本期数据）和 docs/index.html（简报网页，新一期在最上面）
+ingest   收集：按 items.yaml 从免费 RSS / API 抓取，按时间窗口、关键词过滤，与往期去重，
+         连同状态变化、封面图一起存成 inbox/YYYY-MM-DD.json。不做任何编排，不花钱。
+publish  出刊：读 inbox，把条目编排成报道，配图、配色，输出 reports/YYYY-MM-DD.json
+         和 docs/index.html（简报网页，新一期在最上面）。编排方式按优先级：
+           1. inbox/YYYY-MM-DD.edit.json（人工或 Claude 写的编排，格式见 load_edits）
+           2. Claude API（settings.summarize: true 且有凭据）
+           3. 关键词规则（priority_keywords），完全免费
 
 用法：
-    python scripts/digest.py            # 生成本期
-    python scripts/digest.py --dry-run  # 只抓取并打印，不调用 LLM、不写文件
-    python scripts/digest.py --render   # 只用已有数据重新生成网页（改了版式时用）
+    python scripts/digest.py              # ingest + publish
+    python scripts/digest.py ingest       # 只收集
+    python scripts/digest.py publish      # 只出刊（用最新一份 inbox）
+    python scripts/digest.py render       # 只用已有数据重新生成网页（改了版式时用）
+    python scripts/digest.py --dry-run    # 只抓取并打印，不写文件
 """
 
 import argparse
@@ -36,6 +39,7 @@ STATE_DIR = ROOT / "state"
 SEEN_FILE = STATE_DIR / "seen.json"
 FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
+INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = ROOT / "docs"
 ISSUES_ON_PAGE = 20  # 网页上保留最近几期
 
@@ -172,7 +176,11 @@ def filter_entries(entries, item, settings, seen, now):
         if not trusted and not any(w in _norm(e.title + e.summary) for w in match):
             continue
         out.append(e)
-    return out[: item.get("max_entries") or settings.get("max_entries_per_item", 30)]
+    # Reddit 帖子多且杂（同人图、闲聊），单独限额，不和媒体报道抢名额
+    news = [e for e in out if not e.source.startswith("r/") and e.source != "Reddit"]
+    posts = [e for e in out if e not in news]
+    cap = item.get("max_entries") or settings.get("max_entries_per_item", 30)
+    return news[:cap] + posts[: settings.get("max_reddit_per_item", 10)]
 
 
 def status_facts(item, settings, facts):
@@ -303,10 +311,39 @@ def edit_stories(client, model, item, entries):
     return [s for s in stories if s["refs"]]
 
 
-def fallback_stories(entries):
-    """不用 AI 时：直接取最新几条标题。"""
-    return [{"headline": e.title, "highlight": "", "blurb": "", "weight": "normal", "refs": [i]}
-            for i, e in enumerate(entries[:6], 1)]
+def _bigrams(text):
+    t = re.sub(r"\W+", "", text.lower())
+    return {t[i:i + 2] for i in range(len(t) - 1)}
+
+
+def fallback_stories(entries, item, limit=7):
+    """不用 AI 时的编排：
+    - 标题含 priority_keywords（你最关心的事）的排前面，第一条做头条
+    - 同一新闻被多家转载时只留一条（标题字符重合度高的视为同一条）
+    - 媒体报道优先于 Reddit；Reddit 帖子没命中关键词的不收（多半是同人图、闲聊）
+    - 同等条件下有图的、较新的优先"""
+    words = [w.lower() for w in item.get("priority_keywords") or []]
+
+    def hits(e):
+        return sum(w in e.title.lower() for w in words)
+
+    def score(pair):
+        i, e = pair
+        return (hits(e) > 0, not e.source.startswith("r/"), hits(e),
+                bool(e.image) or "news.google.com" not in e.url, -i)
+
+    candidates = [(i, e) for i, e in enumerate(entries, 1) if hits(e) or not e.source.startswith("r/")]
+    picked, grams = [], []
+    for i, e in sorted(candidates, key=score, reverse=True):
+        g = _bigrams(e.title)
+        if any(len(g & h) / max(1, min(len(g), len(h))) > 0.5 for h in grams):
+            continue
+        grams.append(g)
+        picked.append({"headline": e.title, "highlight": "", "blurb": "",
+                       "weight": "lead" if not picked else "normal", "refs": [i]})
+        if len(picked) == limit:
+            break
+    return picked
 
 
 def attach_media(stories, entries, cover):
@@ -359,15 +396,7 @@ def write_issue_markdown(issue, settings):
 
 # ---------- 主流程 ----------
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不调用 LLM、不写文件")
-    parser.add_argument("--render", action="store_true", help="只用已有数据重新生成网页")
-    args = parser.parse_args()
-    if args.render:
-        write_page()
-        return
-
+def load_config():
     config = yaml.safe_load(ITEMS_FILE.read_text(encoding="utf-8")) or {}
     settings = config.get("settings") or {}
     items = config.get("items") or []
@@ -379,63 +408,146 @@ def main():
     for lang in all_langs:
         if lang not in NEWS_LANGS:
             sys.exit(f"news_langs 只支持 {'/'.join(NEWS_LANGS)}，不支持 {lang!r}")
+    return settings, items
 
+
+def entry_to_dict(n, e):
+    return {"n": n, "date": e.published.isoformat() if e.published else None, "source": e.source,
+            "title": e.title, "summary": e.summary, "url": e.url, "image": e.image}
+
+
+def entry_from_dict(d):
+    return sources.Entry(title=d["title"], url=d["url"], source=d["source"], summary=d.get("summary", ""),
+                         image=d.get("image", ""),
+                         published=dt.datetime.fromisoformat(d["date"]) if d.get("date") else None)
+
+
+def ingest(dry_run=False):
+    """收集本期原始条目到 inbox/。返回写入的文件路径（没有新内容时返回 None）。"""
+    settings, items = load_config()
     now = dt.datetime.now(dt.timezone.utc)
     today = now.date().isoformat()
-    seen, facts, themes = load_json(SEEN_FILE), load_json(FACTS_FILE), load_json(THEMES_FILE)
+    seen, facts = load_json(SEEN_FILE), load_json(FACTS_FILE)
 
-    client = None
-    model = settings.get("model", "claude-haiku-5-5")
-    if not args.dry_run and settings.get("summarize", True):
-        client = make_client()
-        if client is None:
-            print("没有可用的 Claude 凭据，直接用原标题", file=sys.stderr)
-
-    blocks = []
+    inbox_items = []
     for item in items:
         print(f"抓取：{item['name']}", file=sys.stderr)
         entries = filter_entries(collect(item, settings), item, settings, seen, now)
         print(f"  新条目 {len(entries)} 条", file=sys.stderr)
-        if args.dry_run:
+        if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
             continue
-
         item_facts, status_cover = status_facts(item, settings, facts)
-        stories = []
-        if entries:
-            stories = (edit_stories(client, model, item, entries) if client else None) or fallback_stories(entries)
-        # 没有新报道、状态也没变化的关注项，本期不出现
-        if not stories and not any(f["changed"] for f in item_facts):
+        if not entries and not any(f["changed"] for f in item_facts):
             continue
-        cover = find_cover(item, status_cover)
-        blocks.append({
+        inbox_items.append({
             "name": item["name"],
-            "subtitle": item.get("subtitle", ""),
-            "theme": theme.resolve(item, cover, themes),
+            "priority": item.get("priority", ""),
             "facts": item_facts,
-            "stories": attach_media(stories, entries, cover),
+            "cover": find_cover(item, status_cover),
+            "entries": [entry_to_dict(n, e) for n, e in enumerate(entries, 1)],
         })
         for e in entries:
             seen[e.url] = seen[title_key(e.title)] = today
 
-    if args.dry_run:
-        return
-
+    if dry_run:
+        return None
     cutoff = (now - dt.timedelta(days=SEEN_KEEP_DAYS)).date().isoformat()
     save_json(SEEN_FILE, {u: d for u, d in seen.items() if d >= cutoff})
     save_json(FACTS_FILE, facts)
+    if not inbox_items:
+        print("本期没有新消息", file=sys.stderr)
+        return None
+    path = INBOX_DIR / f"{today}.json"
+    save_json(path, {"date": today, "items": inbox_items})
+    print(f"已收集：{path.relative_to(ROOT)}", file=sys.stderr)
+    return path
+
+
+def load_edits(inbox_path):
+    """读取人工 / Claude 写的编排：inbox/YYYY-MM-DD.edit.json，格式：
+    {"关注项名称": [{"headline": "中文标题", "highlight": "标题里要强调的字", "blurb": "一句话",
+                    "weight": "hero|lead|normal", "refs": [inbox 里条目的 n]}, ...]}
+    某个关注项写成空列表 [] 表示本期不出现。"""
+    path = inbox_path.with_suffix(".edit.json")
+    return load_json(path) if path.exists() else {}
+
+
+def publish(inbox_path=None):
+    settings, items = load_config()
+    by_name = {i["name"]: i for i in items}
+    if inbox_path is None:
+        candidates = sorted(INBOX_DIR.glob("????-??-??.json"))
+        if not candidates:
+            print("inbox 里没有可出刊的内容", file=sys.stderr)
+            return
+        inbox_path = candidates[-1]
+    inbox = load_json(inbox_path)
+    date = inbox["date"]
+    edits = load_edits(inbox_path)
+    themes = load_json(THEMES_FILE)
+
+    client = None
+    if settings.get("summarize", False) and any(i["name"] not in edits for i in inbox["items"]):
+        client = make_client()
+        if client is None:
+            print("没有可用的 Claude 凭据，改用关键词规则编排", file=sys.stderr)
+    model = settings.get("model", "claude-haiku-5-5")
+
+    blocks = []
+    for raw in inbox["items"]:
+        item = by_name.get(raw["name"], {"name": raw["name"], "type": "product"})
+        entries = [entry_from_dict(d) for d in raw["entries"]]
+        if raw["name"] in edits:
+            stories = [dict(s) for s in edits[raw["name"]]]
+            for s in stories:
+                s.setdefault("highlight", ""), s.setdefault("blurb", ""), s.setdefault("weight", "normal")
+                s["refs"] = [r for r in s.get("refs", []) if 0 < r <= len(entries)]
+            stories = [s for s in stories if s["refs"]]
+        elif entries:
+            stories = (edit_stories(client, model, item, entries) if client else None) or fallback_stories(entries, item)
+        else:
+            stories = []
+        if not stories and not any(f["changed"] for f in raw["facts"]):
+            continue
+        blocks.append({
+            "name": raw["name"],
+            "subtitle": item.get("subtitle", ""),
+            "theme": theme.resolve(item, raw.get("cover"), themes),
+            "facts": raw["facts"],
+            "stories": attach_media(stories, entries, raw.get("cover")),
+        })
     save_json(THEMES_FILE, themes)
 
     if not blocks:
-        print("本期没有新消息，不出刊", file=sys.stderr)
+        print("本期没有可出刊的内容", file=sys.stderr)
         return
     existing = sorted(p.stem for p in REPORTS_DIR.glob("????-??-??.json"))
-    no = existing.index(today) + 1 if today in existing else len(existing) + 1
-    issue = {"no": no, "date": today, "items": blocks}
-    save_json(REPORTS_DIR / f"{today}.json", issue)
+    no = existing.index(date) + 1 if date in existing else len(existing) + 1
+    issue = {"no": no, "date": date, "items": blocks}
+    save_json(REPORTS_DIR / f"{date}.json", issue)
     write_page()
     write_issue_markdown(issue, settings)
-    print(f"第 {no} 期：reports/{today}.json → docs/index.html")
+    print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("step", nargs="?", default="all", choices=["all", "ingest", "publish", "render"])
+    parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
+    args = parser.parse_args()
+    if args.dry_run:
+        ingest(dry_run=True)
+    elif args.step == "render":
+        write_page()
+    elif args.step == "ingest":
+        ingest()
+    elif args.step == "publish":
+        publish()
+    else:
+        path = ingest()
+        if path:
+            publish(path)
 
 
 if __name__ == "__main__":

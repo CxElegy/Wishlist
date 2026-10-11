@@ -7,7 +7,8 @@
 #   match        可选，标题或摘要必须包含其中一个词才保留，默认用 keywords
 #   exclude      可选，标题包含这些词的条目直接丢掉
 #   news_langs   可选，单独为这一项指定新闻语言区，会覆盖下面 settings 里的设置
-#   priority     你最关心这一项的什么。AI 按它给报道排序，直接回答它的新消息会做成整行大板块
+#   priority          你最关心这一项的什么（用 AI 时生效）。AI 按它给报道排序，直接回答它的新消息会做成整行大板块
+#   priority_keywords 不用 AI 时生效：标题含这些词的消息排在最前面做头条
 #   subtitle     可选，板块标题旁的副标题（如日文名）
 #   use          可选，用哪些来源，默认 [google, bing, reddit]
 #   subreddits   可选，额外在这些 Reddit 版块里按关键词搜
@@ -35,8 +36,10 @@ settings:
   news_langs: [zh-CN, en-US]    # 默认的新闻语言区：zh-CN / zh-TW / en-US / ja-JP / ko-KR
   timezone: Asia/Shanghai       # 播出时间按这个时区显示
   steam_country: cn             # Steam 价格地区
-  max_entries_per_item: 30      # 每个关注项最多交给 AI 的条目数（控制 token）
-  summarize: true               # false = 不调用 AI，直接用原标题（完全零成本）
+  max_entries_per_item: 30      # 每个关注项每期最多收集几条媒体报道
+  max_reddit_per_item: 10       # 每个关注项每期最多收集几条 Reddit 帖子
+  summarize: false              # true = 用 Claude API 编排报道（需要 ANTHROPIC_API_KEY，按量付费）
+                                # false = 不用 AI，按 priority_keywords 排序、用原标题（完全免费）
   model: claude-haiku-5-5       # 归纳用的模型
   create_issue: true            # 每期同时开一个 GitHub Issue（会邮件通知你）
 
@@ -50,6 +53,12 @@ items:
     max_entries: 40
     subreddits: [Astrae_Oratio]
     priority: 什么时候能玩：下次测试的时间和报名、正式上线日期、预约开放、PC 版 / Steam 页面
+    priority_keywords: [
+      测试, 測試, 封测, 內測, CBT, beta, テスト, βテスト, 베타, 테스트,
+      上线, 上線, 发售, 發售, 配信, リリース, 출시, 오픈, release, launch,
+      预约, 預約, 事前登録, 사전예약, pre-regist,
+      PC版, PC 版, PC 버전, Steam, 定档, 日程, 일정, 発表, 확정
+    ]
     notes: >-
       NC 发行、Dynamis One 开发的新传奇魔法 RPG，舞台是架空的 1989 年东京。
       预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。

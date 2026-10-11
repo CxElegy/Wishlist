@@ -28,7 +28,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: 抓取、编辑、生成简报
+      - name: 收集（ingest）并出刊（publish）
         env:
           # Claude 凭据二选一：
           #   A. Workload Identity Federation（推荐，不存 Key）：在仓库 Variables 里填下面三个 ID
@@ -47,7 +47,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports state docs
+          git add inbox reports state docs
           git diff --cached --quiet || git commit -m "简报 $(date -u +%F)"
           git push
 
