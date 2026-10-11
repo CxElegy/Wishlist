@@ -214,6 +214,51 @@ items:
       split: true
       font: sans
 
+  - name: 星巴克马克杯
+    subtitle: スターバックス マグ · 日本优先 · 海外好设计
+    type: category
+    section: 好物
+    keywords: [
+      "スターバックス マグ 新作", "スタバ マグカップ 新作", "スタバ マグ 発売",
+      "星巴克 马克杯 新品", "星巴克 馬克杯 新品", "스타벅스 머그 신상",
+      "Starbucks new mug", "Starbucks mug collection 2026"
+    ]
+    # 只要马克杯：标题或摘要里必须有「马克杯」类的词；标题里只有保温杯 / 冷杯这类的直接丢掉
+    match: [マグ, 马克杯, 馬克杯, 머그, mug, 陶瓷杯, 陶杯]
+    exclude: [Stanley, 求人, 中古, メルカリ, 株価, stock price]
+    news_langs: [ja-JP, zh-TW, ko-KR, en-US, zh-CN]
+    max_entries: 30
+    max_stories: 5
+    priority: >-
+      只看马克杯（陶瓷 / 骨瓷杯，不要随行杯、保温杯、冷杯、水壶）。
+      第一优先：星巴克日本的新款马克杯——发售日、价格、网店先行、限定款（季节、地域 JIMOTO / 47 都道府県、Reserve、联名）；
+      其次：海外星巴克（韩国、台湾、中国、泰国、美国、Reserve 烘焙工坊、Been There / Across the Globe 城市杯）设计特别好看的马克杯
+    priority_keywords: [
+      マグ, 新作, 発売, 予約, 先行, 限定, 再販, 発売日,
+      马克杯, 馬克杯, 新品, 上市, 限定, 首发,
+      머그, 신상, 출시, 한정,
+      mug, new, release, limited, launch
+    ]
+    urgent_patterns:
+      # 星巴克日本的新马克杯公布 / 发售
+      - '(スタバ|スターバックス|Starbucks).{0,30}マグ.{0,30}(発売|新作|登場|予約|先行|再販)'
+      - '(新作|発売|登場).{0,20}(スタバ|スターバックス).{0,30}マグ'
+    notes: >-
+      读者只要马克杯，报道里只写马克杯（含马克杯的一整套系列也可以，但只讲杯子）；随行杯、保温杯、冷杯、水壶的消息不报。
+      日本的放前面，海外的只挑设计确实好看的。已知背景（2026/10）：日本 9/18 STARBUCKS STAND by BEAMS、
+      9/30 Pokémon + STARBUCKS（41 件）、10/9 Halloween 2026（黑猫白猫）已上市，接下来是 11 月前后的 Holiday 系列；
+      亚太 Peanuts「Great Pumpkin」秋季系列（韩国 / 台湾 / 泰国等）也在售。转卖平台的帖子不算正式发售。
+    site: https://www.starbucks.co.jp/
+    theme:   # 自选：奶白杯身 + 深绿 + 陶土棕，对角分割，衬线
+      bg: "#F6F1E7"
+      fg: "#1E3932"
+      accent: "#00704A"
+      alt_bg: "#1E3932"
+      alt_fg: "#F6F1E7"
+      alt_accent: "#C9A27E"
+      split: true
+      font: serif
+
   # ↓↓↓ 其它类型的写法示例，去掉行首的 # 就会生效 ↓↓↓
   #
   # - name: 葬送的芙莉莲
