@@ -52,8 +52,13 @@ def send(payload):
         url, data=json.dumps(payload).encode(),
         headers={"Content-Type": "application/json", "User-Agent": sources.USER_AGENT},
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return 200 <= resp.status < 300
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return 200 <= resp.status < 300
+    except Exception as e:
+        # 发送失败不中断工作流（后面还要提交网页）；没标记为已通知，下次运行会重试
+        print(f"[警告] Discord 发送失败：{e}", file=sys.stderr)
+        return False
 
 
 def urgent(page_url):
