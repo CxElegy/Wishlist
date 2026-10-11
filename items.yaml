@@ -17,6 +17,7 @@
 #   subreddits   可选，额外在这些 Reddit 版块里按关键词搜
 #   feeds        可选，任意 RSS / Atom 地址（官网博客、RSSHub 等）
 #   max_entries  可选，单独为这一项设置交给 AI 的条目上限
+#   max_stories  可选，这一项每期最多几条报道（只挑最火的；事情少就少写，不凑数）
 #   notes        可选，给 AI 的背景说明
 #
 # 简报外观（都可选）：
@@ -126,8 +127,9 @@ items:
     type: game
     keywords: ["GTA 6", "GTA VI", "Grand Theft Auto VI", "侠盗猎车手6", "俠盜獵車手6"]
     match: [GTA 6, GTA VI, GTA6, GTAVI, Grand Theft Auto VI, Grand Theft Auto 6, 侠盗猎车手6, 侠盗猎车手 6, 俠盜獵車手6, 俠盜獵車手 6, 侠盗猎车手VI, 俠盜獵車手VI]
-    news_langs: [zh-CN, zh-TW, en-US]
-    max_entries: 40
+    news_langs: [zh-CN, en-US]
+    max_entries: 30
+    max_stories: 4   # 只要最近最火的几件事，一页以内；没什么事就少写
     subreddits: [GTA6]
     priority: 能不能按时玩到：11 月 19 日发售会不会再延期、预载 / 解锁时间、PC 版什么时候公布、第三支预告片
     priority_keywords: [
