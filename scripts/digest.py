@@ -436,6 +436,8 @@ def write_issue_markdown(issue, settings):
     """GitHub Issue 正文：标题列表 + 网页链接，用于邮件提醒。"""
     lines = [f"**[查看本期简报 →]({pages_url(settings)})**", ""]
     for block in issue["items"]:
+        if block.get("quiet"):
+            continue
         lines.append(f"### {block['name']}")
         lines += [f"- **{f['label']}**：{f['text']}" + ("（有变化）" if f["changed"] else "")
                   for f in block["facts"] if f["changed"]]
@@ -556,6 +558,34 @@ def load_edits(inbox_path):
     return load_json(path) if path.exists() else {}
 
 
+def last_story(name, before):
+    """往期里这个关注项最近的一条报道（优先 hero / lead），给“暂无新消息”小栏用。"""
+    for path in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True):
+        if path.stem >= before:
+            continue
+        for block in (load_json(path) or {}).get("items", []):
+            if block["name"] == name and block.get("stories"):
+                s = min(block["stories"], key=lambda s: {"hero": 0, "lead": 1}.get(s.get("weight"), 2))
+                return {"headline": s["headline"], "url": s["url"], "date": path.stem}
+    return None
+
+
+def quiet_block(item, themes, date):
+    """本期没有新消息的关注项：只留一个小栏（名字、现状、最近一条），配色照旧。"""
+    cover = find_cover(item, None)
+    return {
+        "name": item["name"],
+        "subtitle": item.get("subtitle", ""),
+        "theme": theme.resolve(item, cover, themes),
+        "quiet": True,
+        "status": item.get("status", ""),
+        "cover": cover,
+        "last": last_story(item["name"], date),
+        "facts": [],
+        "stories": [],
+    }
+
+
 def publish(inbox_path=None):
     settings, items = load_config()
     by_name = {i["name"]: i for i in items}
@@ -612,6 +642,9 @@ def publish(inbox_path=None):
             "facts": raw["facts"],
             "stories": attach_media(stories, entries, raw.get("cover")),
         })
+    # 没有新消息的关注项也留一个小栏，排在有消息的后面
+    shown = {b["name"] for b in blocks}
+    blocks += [quiet_block(i, themes, date) for i in items if i["name"] not in shown]
     save_json(THEMES_FILE, themes)
 
     if not blocks:
