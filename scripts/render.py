@@ -2,7 +2,8 @@
 
 版式规则：
 - 左侧目录（撑满屏幕高度）：按板块分组列出每个作品，滚动时当前所在的一项放大并换成板块色，点击直达
-- 最上面一张「头版」：今天的重磅头条大图 + 按板块（游戏 / 影视 / 运动 / 好物）的彩色索引 + 今日要闻
+- 最上面一张「头版」：最近一周的实时总览（最重要的一条做头条 + 各作品最新一条 + 最新消息列表）
+- 版面数量和顺序固定（板块 → items.yaml 顺序）；每天更新只是版面里的消息变化
 - 每个关注项一个版面，配色取自该作品（theme.py）。所有日期的消息汇总在一起，按时间排列（新的在前）：
   - 一周内收到的直接显示，卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满
   - 更早的收进版面底部的「更早的消息」折叠区，点开才显示
@@ -125,7 +126,8 @@ a{color:inherit;text-decoration:none}
 .heads ol{list-style:none;margin:0;padding:6px 18px 14px;columns:2;column-gap:32px}
 .heads li{break-inside:avoid;padding:7px 0;border-bottom:1px dotted color-mix(in srgb,#1A1C22 40%,transparent);display:flex;gap:10px;align-items:baseline}
 .heads li i{flex:none;font:900 11px/1.6 'Noto Sans SC',sans-serif;font-style:normal;color:#FFF;background:var(--sc);padding:0 6px;letter-spacing:.1em}
-.heads li a{font-size:15px;line-height:1.5}
+.heads li a{flex:1;min-width:0;font-size:15px;line-height:1.5}
+.heads li .d{flex:none;font:700 11px 'JetBrains Mono',monospace;opacity:.55;font-variant-numeric:tabular-nums}
 .heads li a:hover{text-decoration:underline;text-underline-offset:3px}
 /* ---------- 左侧目录（共用骨架；风格见 NAV_STYLES） ---------- */
 html{scroll-behavior:smooth}
@@ -344,11 +346,17 @@ def _older(stories, today, more=0):
             f'<div class="grid">{cards}</div></details>')
 
 
-def collect(issues):
-    """把各期按作品汇总：作品顺序和外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。"""
+def collect(issues, order=None):
+    """把各期按作品汇总：外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。
+    作品顺序固定：先按板块（游戏 / 影视 / 运动 / 好物 / 其他），同板块内按 order（items.yaml 的顺序）。
+    这样每天更新只是版面里的消息变化，版面的数量和位置不变。"""
     latest = issues[0]
+    rank = {n: i for i, n in enumerate(order or [])}
+    sec_rank = {n: i for i, n in enumerate(SECTIONS)}
+    blocks = sorted(latest["items"], key=lambda b: (sec_rank.get(b.get("section"), len(SECTIONS)),
+                                                    rank.get(b["name"], len(rank))))
     works = {}
-    for b in latest["items"]:
+    for b in blocks:
         works[b["name"]] = {**b, "stories": [], "_seen": set()}
     for issue in issues:  # 新到旧
         for b in issue["items"]:
@@ -361,7 +369,7 @@ def collect(issues):
                 w["_seen"].add(st["url"])
                 w["stories"].append({**st, "_issue": issue["date"]})
     for w in works.values():
-        w["stories"].sort(key=lambda x: (x["_issue"], x.get("date") or ""), reverse=True)
+        w["stories"].sort(key=lambda x: x.get("date") or x["_issue"], reverse=True)  # 按消息本身的日期
     return list(works.values())
 
 
@@ -418,69 +426,64 @@ def _sec_color(name):
     return SECTIONS.get(name, "#5B5F6B")
 
 
-def _top_story(issue):
-    """头条：先找 hero（直接回答最关心问题的新消息），没有就用第一个有消息的关注项的头条。"""
-    blocks = [b for b in issue["items"] if b.get("stories")]
-    for b in blocks:
-        for s in b["stories"]:
-            if s.get("weight") == "hero":
-                return b, s
-    return (blocks[0], blocks[0]["stories"][0]) if blocks else (None, None)
+def _recent(w, today):
+    cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
+    return [x for x in w["stories"] if x["_issue"] >= cutoff]
 
 
-def _front(issue):
-    date = issue["date"]
-    tb, top = _top_story(issue)
-    sections = {}
-    for i, b in enumerate(issue["items"]):
-        sections.setdefault(b.get("section") or "其他", []).append((i, b))
-    order = [n for n in SECTIONS] + [n for n in sections if n not in SECTIONS]
-    count = sum(len(b.get("stories") or []) for b in issue["items"])
+def _front(works, today, updated):
+    """头版：最近一周的实时总览。头条 = 最近一周里最重要的一条（同样重要取最新）；
+    板块索引 = 每个作品最新的一条；最新消息 = 所有作品按时间排的前 12 条。"""
+    pool = [(w, x) for w in works for x in _recent(w, today)]
+    newest = sorted(pool, key=lambda p: p[1].get("date") or p[1]["_issue"], reverse=True)
+    top_w, top = min(newest, key=lambda p: RANK.get(p[1].get("weight"), 2)) if newest else (None, None)
 
-    head = (f'<div class="fbar"><b>头 版</b><span>FRONT PAGE · No.{issue["no"]:03d}</span>'
-            f'<span>{date.replace("-", ".")} · 今日 {count} 条</span></div>')
+    groups = {}
+    for w in works:
+        groups.setdefault(w.get("section") or "其他", []).append(w)
+    order = [n for n in SECTIONS] + [n for n in groups if n not in SECTIONS]
+
+    head = (f'<div class="fbar"><b>头 版</b><span>LATEST · 最近 {HOLD_DAYS} 天</span>'
+            f'<span>更新于 {updated} · {len(pool)} 条</span></div>')
 
     if top:
-        sc = _sec_color(tb.get("section"))
+        sc = _sec_color(top_w.get("section"))
         badge = "重 磅" if top.get("weight") == "hero" else "头 条"
         top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener">'
                     f'<span class="badge">{badge}</span>{_pic(top)}'
-                    f'<span class="kicker"><i style="background:{sc}">{e(tb.get("section") or "")}</i>{e(tb["name"])}</span>'
+                    f'<span class="kicker"><i style="background:{sc}">{e(top_w.get("section") or "")}</i>'
+                    f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
                     f'<h2>{e(top["headline"])}</h2>'
                     + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + "</a>")
     else:
-        top_html = '<div class="top"><h2>今天没有新消息</h2></div>'
+        top_html = f'<div class="top"><h2>最近 {HOLD_DAYS} 天没有新消息</h2></div>'
 
     boards = []
     for name in order:
-        members = sections.get(name, [])
         sc = _sec_color(name)
         rows = []
-        for i, b in members:
-            first = (b.get("stories") or [None])[0]
-            if first:
-                text, img, cls = first["headline"], first.get("image") or b.get("cover"), "entry"
+        for w in groups.get(name, []):
+            rec = _recent(w, today)
+            if rec:
+                first = rec[0]
+                text, img, cls = first["headline"], first.get("image") or w.get("cover"), "entry"
             else:
-                text, img, cls = b.get("status") or "暂无新消息", b.get("cover"), "entry q"
-            rows.append(f'<a class="{cls}" href="#{_wid(b["name"])}">{_pic({"image": img})}'
-                        f'<span><span class="nm">{e(b["name"])}</span><b>{e(text)}</b></span></a>')
+                text, img, cls = w.get("status") or "暂无新消息", w.get("cover"), "entry q"
+            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic({"image": img})}'
+                        f'<span><span class="nm">{e(w["name"])}</span><b>{e(text)}</b></span></a>')
         body = "".join(rows) or '<div class="none">还没有关注项</div>'
         boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
 
-    heads = []
-    for b in issue["items"]:
-        for s in b.get("stories") or []:
-            if s is top:
-                continue
-            heads.append(f'<li style="--sc:{_sec_color(b.get("section"))}"><i>{e(b.get("section") or "")}</i>'
-                         f'<a href="{e(s["url"])}" target="_blank" rel="noopener">{e(s["headline"])}</a></li>')
+    heads = [f'<li style="--sc:{_sec_color(w.get("section"))}"><i>{e(w.get("section") or "")}</i>'
+             f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a>'
+             f'<span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span></li>'
+             for w, x in newest if x is not top][:12]
     heads_html = ""
     if heads:
-        heads_html = (f'<div class="heads"><h4>今日要闻<small>TODAY\'S HEADLINES</small></h4>'
-                      f'<ol>{"".join(heads[:12])}</ol></div>')
-    return (f'<section class="front" data-k="front">{head}<div class="fbody">{top_html}'
+        heads_html = (f'<div class="heads"><h4>最新消息<small>LATEST HEADLINES</small></h4>'
+                      f'<ol>{"".join(heads)}</ol></div>')
+    return (f'<section class="front" data-k="front" id="front">{head}<div class="fbody">{top_html}'
             f'<div class="boards">{"".join(boards)}</div></div>{heads_html}</section>')
-
 
 
 # 左侧目录的四种风格（items.yaml 的 settings.nav_style 选择）。只在宽屏生效，窄屏统一是顶部横条
@@ -594,7 +597,7 @@ def _nav(works, date):
         groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
-    rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#issue-{date}">'
+    rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#front">'
             f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
     n = 0
     for name in order:
@@ -611,7 +614,7 @@ def _nav(works, date):
                         f'href="#{_wid(w["name"])}"><i class="no">{n:02d}</i>'
                         f'<span class="nm">{e(w["name"])}<small class="cnt">{cnt}</small></span></a>')
     return (f'<nav class="nav" aria-label="目录">'
-            f'<div class="here"><b>目录</b><small>INDEX</small><span id="nav-here">今日 · {date.replace("-", ".")}</span></div>'
+            f'<div class="here"><b>目录</b><small>INDEX</small><span id="nav-here"></span></div>'
             f'<div class="rail" id="nav-rail">{"".join(rail)}</div><div class="bar" id="nav-bar"></div></nav>')
 
 
@@ -661,21 +664,24 @@ NAV_JS = """
 """
 
 
-def render(issues, nav_style="line"):
-    """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。"""
+def render(issues, nav_style="line", order=None, updated=None):
+    """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
+    order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）。"""
     latest = issues[0]
-    works = collect(issues)
+    works = collect(issues, order)
     for w in works:
         w["_today"] = latest["date"]
-    body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="今日 · {latest["date"].replace("-", ".")}">'
-            + _front(latest) + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
+    updated = updated or latest["date"].replace("-", ".")
+    # id 保留 issue-日期：Discord 通知里的链接指向这里
+    body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
+            + _front(works, latest["date"], updated) + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>关注清单通信 No.{latest['no']:03d}</title>
+<title>关注清单通信</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
@@ -685,7 +691,7 @@ def render(issues, nav_style="line"):
 <header class="mast"><div>
 <div class="logo">{LOGO}</div>
 <h1>关注清单通信</h1>
-<div class="meta"><div class="no">No.{latest['no']:03d}</div><div class="mono">{latest['date'].replace('-', '.')}</div></div>
+<div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
 </div></header>
 {_nav(works, latest['date'])}
 <main class="issues">{''.join(parts)}</main>

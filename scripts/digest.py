@@ -441,7 +441,11 @@ def write_page():
     if not issues:
         return
     DOCS_DIR.mkdir(exist_ok=True)
-    (DOCS_DIR / "index.html").write_text(render.render(issues, load_config()[0].get("nav_style", "line")), encoding="utf-8")
+    settings, items = load_config()
+    tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
+    updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
+    html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated)
+    (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 
