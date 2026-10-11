@@ -66,7 +66,7 @@ a{color:inherit;text-decoration:none}
 .s12 .pic{aspect-ratio:auto;height:260px}.s12 .pic:empty{display:none}
 .hero .txt{display:flex;flex-direction:column;justify-content:center;gap:16px}
 .tag{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.25em;color:var(--ac)}
-.hero h2{margin:0;font-weight:900;font-size:46px;line-height:1.2}
+.hero h2{margin:0;font-weight:900;font-size:34px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
 .lead{grid-column:span 8}
 .lead h2{margin:0;font-weight:900;font-size:36px;line-height:1.25}
 .side{grid-column:span 4;display:flex;flex-direction:column;gap:1px}
@@ -167,7 +167,8 @@ html{scroll-behavior:smooth}
 .card.wide h3{margin:0;font-weight:900;font-size:28px;line-height:1.3}
 .card.c8 h3{font-size:28px;line-height:1.3}.card.c6 h3{font-size:24px;line-height:1.35}
 .card.c4 h3,.card.c3 h3{margin:0;font-weight:900;font-size:20px;line-height:1.4}
-.older{background:var(--bg);color:var(--fg);border-top:1px solid var(--line)}
+.older{background:var(--abg);color:var(--afg);border-top:1px solid var(--line)}
+.older .grid{background:color-mix(in srgb,var(--afg) 16%,var(--abg))}
 .older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 24px;
  font:700 12px 'JetBrains Mono',monospace;letter-spacing:.2em}
 .older summary::-webkit-details-marker{display:none}
@@ -279,7 +280,7 @@ def _when(story, today):
 
 
 def _tcard(story, span, i, today, small=False):
-    side = "m" if i % 2 == 0 else "a"
+    side = "a" if small else "m"  # 不再黑白交替：一周内统一主色底，折叠区统一副色底
     w = story.get("weight", "normal")
     url = e(story["url"])
     if span == 12 and w == "hero":
