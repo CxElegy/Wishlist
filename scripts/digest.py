@@ -192,6 +192,15 @@ def recent_titles(days=HISTORY_DAYS):
     return titles
 
 
+def has_history(name):
+    """这个关注项以前收到过条目吗（翻全部 inbox）。没有就是第一次收集，要多往前看一些。"""
+    for path in INBOX_DIR.glob("????-??-??.json"):
+        for item in load_json(path).get("items", []):
+            if item["name"] == name and item["entries"]:
+                return True
+    return False
+
+
 def filter_entries(entries, item, settings, seen, now, known=()):
     names = [item["name"], *(item.get("keywords") or []), *(item.get("match") or [])]
     since = now - dt.timedelta(days=settings.get("lookback_days", 7))
@@ -512,7 +521,12 @@ def ingest(dry_run=False):
     inbox_items = []
     for item in items:
         print(f"抓取：{item['name']}", file=sys.stderr)
-        entries = filter_entries(collect(item, settings), item, settings, seen, now, known.get(item["name"], []))
+        # 新加的关注项第一次收集时往前多看几周，补上加入之前的报道；之后照常只看 lookback_days
+        backfill = not has_history(item["name"])
+        conf = dict(settings, lookback_days=settings.get("first_lookback_days", 42)) if backfill else settings
+        if backfill:
+            print(f"  第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
+        entries = filter_entries(collect(item, conf), item, conf, seen, now, known.get(item["name"], []))
         print(f"  新条目 {len(entries)} 条", file=sys.stderr)
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
@@ -523,9 +537,12 @@ def ingest(dry_run=False):
         inbox_items.append({
             "name": item["name"],
             "priority": item.get("priority", ""),
+            **({"backfill": True} if backfill else {}),
             "facts": item_facts,
             "cover": find_cover(item, status_cover),
-            "entries": [{**entry_to_dict(n, e), "urgent": is_urgent(e, item)} for n, e in enumerate(entries, 1)],
+            # 补抓的是旧闻，不算要紧，不发 Discord
+            "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item)}
+                        for n, e in enumerate(entries, 1)],
         })
         for e in entries:
             seen.update((e.url, title_key(e.title)))
@@ -610,6 +627,8 @@ def publish(inbox_path=None):
     blocks = []
     for raw in inbox["items"]:
         item = by_name.get(raw["name"], {"name": raw["name"], "type": "product"})
+        if raw.get("backfill"):  # 补抓的旧闻不做“重大”
+            item = {**item, "urgent_patterns": []}
         entries = [entry_from_dict(d) for d in raw["entries"]]
         if raw["name"] in edits and not raw["name"].startswith("_"):
             stories = [dict(s) for s in edits[raw["name"]]]

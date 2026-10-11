@@ -36,6 +36,7 @@
 
 settings:
   lookback_days: 7              # 只看最近 N 天
+  first_lookback_days: 42       # 新加的关注项第一次收集时往前看 N 天，补上加入前的报道（补抓的不发要紧通知）
   news_langs: [zh-CN, en-US]    # 默认的新闻语言区：zh-CN / zh-TW / en-US / ja-JP / ko-KR
   timezone: Asia/Shanghai       # 播出时间按这个时区显示
   steam_country: cn             # Steam 价格地区
