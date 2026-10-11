@@ -739,7 +739,7 @@ def pick_images(date=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "pick-images"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "pick-images"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
     args = parser.parse_args()
@@ -756,6 +756,9 @@ def main():
     elif args.step == "notify-urgent":
         import notify
         notify.urgent(pages_url(load_config()[0]))
+    elif args.step == "notify-changes":
+        import notify
+        notify.changes(pages_url(load_config()[0]))
     elif args.step == "notify-new-items":
         import notify
         notify.new_items(pages_url(load_config()[0]))
