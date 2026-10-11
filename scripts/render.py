@@ -4,6 +4,7 @@
 - 报头中性；每个关注项一个板块，配色取自该作品（theme.py）
 - weight=hero 的消息（直接回答你最关心的问题，如定档、测试日期）独占整行大图
 - 其余第一条做头条（8 栏大图），接着两条做侧栏，剩下的三栏一排
+- 本期没有新消息的关注项（quiet）只留一个小栏：标题条 + 现状 + 往期最近一条
 """
 
 import html
@@ -69,6 +70,17 @@ a{color:inherit;text-decoration:none}
 .row h3{margin:0;font-weight:900;font-size:21px;line-height:1.4}
 .s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
 .blurb{margin:0;font-size:16px;line-height:1.75;opacity:.85}
+.quiet .band{min-height:64px;padding:10px 24px}
+.quiet .band .title{font-size:32px}
+.sans.quiet .band .title{font-size:26px}
+.calm{display:flex;align-items:center;gap:20px;padding:12px 24px;background:var(--bg);color:var(--fg);border-top:3px solid var(--acc)}
+.calm .pic{flex:0 0 120px;height:62px}
+.calm .txt{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+.calm .tag{color:var(--acc)}
+.calm .status{font-size:15px;line-height:1.6}
+.calm .last{flex:0 1 40%;display:flex;flex-direction:column;gap:2px;font-size:15px;line-height:1.5;border-left:1px solid color-mix(in srgb,currentColor 25%,transparent);padding-left:20px}
+.calm .last .mono{font-size:11px;letter-spacing:.15em;opacity:.7}
+.calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
 @media (max-width:760px){
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
  .band .title{font-size:34px}.band .sub{margin-left:0}
@@ -76,6 +88,9 @@ a{color:inherit;text-decoration:none}
  .hero{grid-template-columns:1fr}
  .hero h2,.lead h2{font-size:28px}
  .lead,.side,.s12,.s6,.s4{grid-column:span 12}
+ .quiet .band .title{font-size:26px}
+ .calm{flex-wrap:wrap;gap:12px;padding:12px 16px}.calm .pic{display:none}
+ .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
 }
 """
 
@@ -146,6 +161,19 @@ def _grid(stories):
     return "".join(out)
 
 
+def _calm(block):
+    """没有新消息时的小栏：封面小图、现状、往期最近一条。"""
+    pic = _pic({"image": block.get("cover")}) if block.get("cover") else ""
+    status = f'<span class="status">{_md_links(block["status"])}</span>' if block.get("status") else ""
+    last = block.get("last")
+    tail = ""
+    if last:
+        tail = (f'<a class="last" href="{e(last["url"])}" target="_blank" rel="noopener">'
+                f'<span class="mono">最近 · {e(last["date"].replace("-", "."))}</span><b>{e(last["headline"])}</b></a>')
+    return (f'<div class="calm">{pic}<div class="txt"><span class="tag">暂 无 新 消 息</span>{status}</div>'
+            f"{tail}</div>")
+
+
 def _section(block):
     t = block["theme"]
     style = (f"--bg:{t['bg']};--fg:{t['fg']};--acc:{t['accent']};--abg:{t['alt_bg']};"
@@ -163,7 +191,10 @@ def _section(block):
             for f in changed
         ) + "</div>"
     grid = f'<div class="grid">{_grid(block["stories"])}</div>' if block.get("stories") else ""
-    return (f'<section class="sec {"serif" if t.get("font") == "serif" else "sans"}" style="{style}">'
+    if block.get("quiet"):
+        grid = _calm(block)
+    quiet = " quiet" if block.get("quiet") else ""
+    return (f'<section class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
             f"{facts}{grid}</section>")
 

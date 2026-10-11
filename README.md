@@ -14,6 +14,7 @@
 | 流程图（含时间轴、费用、GitHub 限制附录） | [flow.html](https://cxelegy.github.io/Wishlist/design/flow.html) | [flow.png](docs/design/flow.png) |
 | 架构图（哪个任务在哪个环境） | [architecture.html](https://cxelegy.github.io/Wishlist/design/architecture.html) | [architecture.png](docs/design/architecture.png) |
 | 工作流程图解 | [guide.html](https://cxelegy.github.io/Wishlist/design/guide.html) | [guide.png](docs/design/guide.png) |
+| 合并图（分支怎么合、合并之后的流程） | [merge.html](https://cxelegy.github.io/Wishlist/design/merge.html) | [merge.png](docs/design/merge.png) |
 
 设计稿源文件在 `design/`（Claude 设计画布格式，修改时用）。
 

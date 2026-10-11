@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关注清单通信 · 合并图</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500;700;900&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.c{position:relative;width:2000px;height:1690px;background:#EDEBE6;color:#1A1C22;font-family:'Noto Sans SC',sans-serif}
+.c>*{position:absolute;box-sizing:border-box}
+.mono{font-family:'JetBrains Mono',monospace}
+.lane{left:40px;width:1920px}
+.lane-label{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#1A1C22;display:flex;gap:14px;align-items:center}
+.lane-label .note{font:500 12px 'Noto Sans SC',sans-serif;letter-spacing:0;color:#5E5A50}
+.chip{font:700 11px 'Noto Sans SC',sans-serif;letter-spacing:0;padding:3px 9px;color:#fff;background:#2E7D4F}
+.chip.red{background:#B83A17}.chip.black{background:#1A1C22}
+.box{border:2px solid #1A1C22;background:#FBFAF7;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.box b{font-size:17px;font-weight:700;line-height:1.3}
+.box span{font-size:13px;line-height:1.5;color:#3A3A3A}
+.box.green{border-color:#2E7D4F}.box.green b{color:#2E7D4F}
+.box.red{border-color:#B83A17;background:#F6E3DC}.box.red b{color:#B83A17}
+.box.dark{background:#1A1C22;color:#F1EEE6;border-color:#1A1C22}.box.dark span{color:#D8D4CA}
+.box.blue{background:#5865F2;border-color:#5865F2;color:#fff}.box.blue span{color:#E1E3F7}
+.dia{z-index:1;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.dia::before{content:"";position:absolute;inset:0;background:#D8CFC0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);z-index:-1}
+.dia.red::before{background:#EBA58F}
+.lbl{font-size:13px;color:#3A3A3A;white-space:nowrap}
+.lbl.red{color:#B83A17;font-weight:700}.lbl.green{color:#2E7D4F;font-weight:700}
+.commit{font-size:13px;line-height:1.45;width:220px}
+.commit .mono{font-size:12px;font-weight:700}
+.card{border:2px solid #1A1C22;background:#FBFAF7;padding:22px 24px}
+.card h3{margin:0 0 14px;font-size:22px;display:flex;align-items:center;gap:12px}
+.card .row{display:flex;gap:12px;font-size:14px;line-height:1.5;padding:7px 0;border-top:1px solid #E2DDD2}
+.card .row .mono{flex:0 0 190px;font-size:13px}
+.card .foot{margin-top:12px;font-size:13px;color:#5E5A50;line-height:1.6}
+code{font-family:'JetBrains Mono',monospace;font-size:12.5px;background:#E2DDD2;padding:1px 5px}
+</style>
+</head>
+<body>
+<div class="c">
+
+<!-- ===== 标题 ===== -->
+<div style="left:60px;top:44px;font-size:40px;font-weight:900;letter-spacing:.02em">合并图 · 改动怎么进到线上</div>
+<div style="left:60px;top:104px;font-size:14px;color:#3A3A3A">从左往右读。<b>黑框 / 黑线</b> = 默认分支和你要做的事，<b style="color:#2E7D4F">绿 = Claude 做的</b>，<b style="color:#B83A17">红 = 冲突要处理</b>，虚线 = 机器人自动提交</div>
+<div class="box" style="left:1340px;top:30px;width:600px;height:110px;border-width:3px;flex-direction:row;align-items:center;gap:28px;padding:0 26px">
+  <div><div style="font-size:13px;color:#3A3A3A">需要你做的</div><div style="font-size:40px;font-weight:900;line-height:1.1">1 步</div></div>
+  <div style="font-size:14px;line-height:1.7">在 GitHub 的 PR 页面点「合并」<br><span style="color:#5E5A50">合并前的准备（合并默认分支、处理冲突、检查）Claude 来做</span></div>
+</div>
+
+<!-- ===== A. 两条分支 ===== -->
+<div class="lane" style="top:170px;height:340px;background:#E2DDD2"></div>
+<div class="lane-label" style="left:60px;top:184px">BRANCHES · 两 条 分 支<span class="note">分支 = 仓库的一条修改线。线上（网页、定时任务）只看默认分支</span></div>
+
+<div style="left:60px;top:236px;width:190px;font-size:13px;line-height:1.5"><b style="font-size:16px">默认分支</b><br><span class="mono" style="font-size:11px">claude/sharp-gauss-osunmb</span><br><span style="color:#5E5A50">定时任务、网页都在这条</span></div>
+<div style="left:60px;top:390px;width:190px;font-size:13px;line-height:1.5"><b style="font-size:16px;color:#2E7D4F">这次的分支</b><br><span class="mono" style="font-size:11px">claude/gifted-bardeen-6v3yy3</span><br><span style="color:#5E5A50">BLEACH + 小栏都在这条</span></div>
+
+<svg style="left:0;top:0;z-index:2;pointer-events:none" width="2000" height="1690" viewBox="0 0 2000 1690" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <marker id="ah" orient="auto" markerWidth="10" markerHeight="10" refX="8" refY="5" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#1A1C22"/></marker>
+    <marker id="ahg" orient="auto" markerWidth="10" markerHeight="10" refX="8" refY="5" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#2E7D4F"/></marker>
+    <marker id="ahr" orient="auto" markerWidth="10" markerHeight="10" refX="8" refY="5" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#B83A17"/></marker>
+    <marker id="ahb" orient="auto" markerWidth="10" markerHeight="10" refX="8" refY="5" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#5865F2"/></marker>
+  </defs>
+
+  <!-- 分支图 -->
+  <path d="M270 272 L1040 272" stroke="#1A1C22" stroke-width="4"/>
+  <path d="M1040 272 L1300 272" stroke="#1A1C22" stroke-width="4" stroke-dasharray="2 10"/>
+  <path d="M1300 272 L1560 272" stroke="#1A1C22" stroke-width="4"/>
+  <path d="M1586 272 L1690 272" stroke="#1A1C22" stroke-width="3" marker-end="url(#ah)"/>
+  <path d="M270 272 C 330 272, 340 422, 420 422 L1180 422" stroke="#2E7D4F" stroke-width="4"/>
+  <!-- ① 默认分支合进这条分支 -->
+  <path d="M1040 278 C 1100 330, 1120 400, 1166 418" stroke="#2E7D4F" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#ahg)"/>
+  <!-- ② PR 合回默认分支 -->
+  <path d="M1196 422 L1380 422 C 1470 422, 1500 290, 1546 278" stroke="#2E7D4F" stroke-width="4" marker-end="url(#ahg)"/>
+
+  <!-- 步骤流程 -->
+  <path d="M260 1036 L318 1036" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M498 1036 L578 1036" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M408 1086 L408 1128" stroke="#B83A17" stroke-width="2" marker-end="url(#ahr)"/>
+  <path d="M650 1170 L700 1170 L700 1082" stroke="#B83A17" stroke-width="2" marker-end="url(#ahr)"/>
+  <path d="M778 1036 L838 1036" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M1038 1036 L1098 1036" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M1298 1036 L1358 1036" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M1558 1036 L1618 1036" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- 合并之后 -->
+  <path d="M260 1440 L318 1440" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M520 1440 L578 1440" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M758 1440 L790 1440 L790 1380 L838 1380" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M790 1440 L790 1530 L838 1530" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M1098 1380 L1158 1380" stroke="#1A1C22" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M1338 1380 L1418 1380" stroke="#B83A17" stroke-width="2.5" marker-end="url(#ahr)"/>
+</svg>
+
+<!-- 默认分支上的提交 -->
+<div style="left:258px;top:260px;width:24px;height:24px;border-radius:50%;background:#1A1C22"></div>
+<div style="left:508px;top:260px;width:24px;height:24px;border-radius:50%;background:#1A1C22"></div>
+<div style="left:768px;top:260px;width:24px;height:24px;border-radius:50%;background:#1A1C22"></div>
+<div style="left:1028px;top:260px;width:24px;height:24px;border-radius:50%;background:#1A1C22"></div>
+<div style="left:1162px;top:264px;width:16px;height:16px;border-radius:50%;border:3px dashed #1A1C22;background:#E2DDD2"></div>
+<div style="left:1546px;top:252px;width:40px;height:40px;transform:rotate(45deg);background:#2E7D4F;border:3px solid #1A1C22"></div>
+
+<div class="commit" style="left:240px;top:206px"><span class="mono">36a389b</span> 心跳文件</div>
+<div class="commit" style="left:490px;top:296px"><span class="mono">f576f76</span><br>流程图、架构图</div>
+<div class="commit" style="left:750px;top:296px"><span class="mono">3e2c448</span><br>图片完整显示<br><span style="color:#5E5A50">改了 render.py</span></div>
+<div class="commit" style="left:1010px;top:206px;width:180px">当前最新</div>
+<div class="commit" style="left:1110px;top:206px;width:200px;color:#5E5A50">机器人「更新 …」<br>每 2 小时可能多几次</div>
+<div class="commit" style="left:1520px;top:196px;width:150px;font-weight:700;color:#2E7D4F">② 你点「合并」</div>
+<div class="box dark" style="left:1700px;top:228px;width:240px;height:90px"><b>线上</b><span>Pages 网页重新发布<br>下次定时任务按新逻辑跑</span></div>
+
+<!-- 这次分支上的提交 -->
+<div style="left:510px;top:412px;width:20px;height:20px;border-radius:50%;background:#2E7D4F"></div>
+<div style="left:770px;top:412px;width:20px;height:20px;border-radius:50%;background:#2E7D4F"></div>
+<div style="left:1166px;top:408px;width:28px;height:28px;border-radius:50%;background:#FBFAF7;border:5px solid #2E7D4F"></div>
+<div class="commit" style="left:490px;top:444px"><span class="mono">1390a22</span> 关注 BLEACH Mirrors High</div>
+<div class="commit" style="left:750px;top:444px"><span class="mono">c368808</span> 没新消息留小栏 + BLEACH 配色</div>
+<div class="commit" style="left:1140px;top:444px;width:300px;color:#2E7D4F"><b>① 先把默认分支合进来</b><br><span style="color:#3A3A3A">冲突在这条分支上解决，不碰线上</span></div>
+<div class="lbl green" style="left:1060px;top:350px">拿到最新</div>
+
+<!-- ===== B. 逐个文件 ===== -->
+<div style="left:60px;top:546px;font-size:26px;font-weight:900">逐个文件怎么合</div>
+<div style="left:300px;top:556px;font-size:14px;color:#3A3A3A">已经用 <code>git merge-tree</code> 模拟过一次（不改任何分支），结果如下</div>
+
+<div class="card" style="left:60px;top:600px;width:600px;height:300px;border-color:#2E7D4F">
+  <h3 style="color:#2E7D4F">Git 自动合好<span class="chip">不用管</span></h3>
+  <div class="row"><span class="mono">items.yaml</span><span>只有这次改了 → 直接用这次的</span></div>
+  <div class="row"><span class="mono">scripts/digest.py<br>scripts/notify.py</span><span>只有这次改了 → 直接用这次的</span></div>
+  <div class="row"><span class="mono">design/  docs/design/<br>README.md</span><span>只有默认分支改了 → 直接用默认分支的</span></div>
+  <div class="row"><span class="mono">scripts/render.py</span><span>两边都改了，但改的是不同的行（图片显示 / 小栏）→ 两边都保留</span></div>
+</div>
+
+<div class="card" style="left:700px;top:600px;width:600px;height:300px;border-color:#B83A17;background:#F6E3DC">
+  <h3 style="color:#B83A17">冲突 · 不手动挑<span class="chip red">重新生成</span></h3>
+  <div class="row" style="border-color:#EBC3B5"><span class="mono">docs/index.html</span><span>两边都重新生成过网页，整份都不同</span></div>
+  <div class="foot" style="color:#3A3A3A;font-size:14px;line-height:1.8">它完全是由 <code>reports/*.json</code> + <code>render.py</code> 生成的，<br>所以冲突时直接运行：<br><code style="font-size:14px">python scripts/digest.py render</code><br>用合并后的 render.py 重新生成一份。<br>新网页里两边的改动都在：图片不裁切 + 没消息的小栏。</div>
+</div>
+
+<div class="card" style="left:1340px;top:600px;width:600px;height:300px">
+  <h3>数据文件<span class="chip black">以默认分支为准</span></h3>
+  <div class="row"><span class="mono">reports/  inbox/<br>state/</span><span>机器人每 2 小时也在写。这次模拟没冲突，但 PR 放久了可能会有</span></div>
+  <div class="foot" style="font-size:14px;color:#3A3A3A;line-height:1.8">万一冲突：<b>用默认分支（机器人）的版本</b>。<br>这次分支里这些文件只是多了 BLEACH 的小栏和配色缓存，<br>下一次出刊会自动重新算出来，丢了也没关系。</div>
+</div>
+
+<!-- ===== C. 合并步骤 ===== -->
+<div style="left:60px;top:940px;font-size:26px;font-weight:900">合并步骤</div>
+<div class="lane" style="top:984px;height:260px;background:#F4F2ED;border:2px dashed #8C8678"></div>
+
+<div class="box green" style="left:60px;top:996px;width:200px;height:80px"><b>① 合并默认分支</b><span>合进这次的分支</span></div>
+<div class="dia" style="left:318px;top:986px;width:180px;height:100px">有冲突？</div>
+<div class="lbl" style="left:506px;top:1012px">否</div>
+<div class="lbl red" style="left:418px;top:1094px">是</div>
+<div class="box red" style="left:240px;top:1130px;width:410px;height:84px"><b>② 处理冲突</b><span><code>docs/index.html</code> → 重新生成 · 数据文件 → 用默认分支的</span></div>
+<div class="box green" style="left:578px;top:996px;width:200px;height:80px"><b>③ 检查</b><span>脚本能运行 · 网页截图核对</span></div>
+<div class="box green" style="left:838px;top:996px;width:200px;height:80px"><b>④ 推送 · 开 PR</b><span>推到这次的分支</span></div>
+<div class="box dark" style="left:1098px;top:996px;width:200px;height:80px"><b>⑤ 你点「合并」</b><span>在 GitHub 的 PR 页面</span></div>
+<div class="box" style="left:1358px;top:996px;width:200px;height:80px"><b>⑥ 上线</b><span>默认分支包含这次改动</span></div>
+<div class="box" style="left:1618px;top:996px;width:322px;height:236px;gap:8px;justify-content:flex-start">
+  <b>什么时候能看到</b>
+  <span><b style="font-size:14px;color:#1A1C22">网页样式</b><br>约 1 分钟（Pages 重新发布）</span>
+  <span><b style="font-size:14px;color:#1A1C22">BLEACH 开始收集</b><br>最晚 2 小时（下次定时任务）</span>
+  <span><b style="font-size:14px;color:#1A1C22">小栏出现在简报里</b><br>下一次出刊时（当天有新消息就会出刊）</span>
+</div>
+
+<!-- ===== D. 合并之后 ===== -->
+<div style="left:60px;top:1290px;font-size:26px;font-weight:900">合并之后 · 每 2 小时</div>
+<div class="lane" style="top:1334px;height:300px;background:#E2DDD2"></div>
+<div class="lane-label" style="left:60px;top:1346px">GITHUB ACTIONS<span class="note">和原来的流程图一样，只多了两处：BLEACH 也收集；没消息的项留小栏</span></div>
+
+<div class="box dark" style="left:60px;top:1400px;width:200px;height:80px"><b>每 2 小时触发</b><span>00:17、02:17 … 22:17</span></div>
+<div class="box" style="left:320px;top:1400px;width:200px;height:80px"><b>抓取 · 筛选</b><span>Astrae Oratio <b style="color:#B83A17">+ BLEACH</b></span></div>
+<div class="dia" style="left:578px;top:1390px;width:180px;height:100px">这一项有新消息？</div>
+<div class="lbl" style="left:800px;top:1352px">是</div>
+<div class="lbl" style="left:800px;top:1500px">否</div>
+<div class="box" style="left:838px;top:1340px;width:260px;height:80px"><b>完整板块</b><span>头条大图 · 侧栏 · 重大整行</span></div>
+<div class="box" style="left:838px;top:1490px;width:280px;height:84px;border-color:#AB1F12;background:#FBF7EE"><b style="color:#AB1F12">小栏（这次新加）</b><span>封面 · 一句现状 · 往期最近一条</span></div>
+<div class="dia red" style="left:1158px;top:1330px;width:180px;height:100px">要紧？</div>
+<div class="box blue" style="left:1418px;top:1340px;width:240px;height:80px"><b>Discord @你</b><span>如「配信日決定」，当天就发</span></div>
+<div class="box" style="left:1158px;top:1490px;width:500px;height:84px"><b>周报（每周一 08:47）</b><span>只汇总有新消息的项，小栏不进周报</span></div>
+<div class="lbl" style="left:1700px;top:1360px;color:#5E5A50;white-space:normal;width:240px">BLEACH 的要紧规则：<br>上线日期公布 · 正式上线 · 下次测试公布</div>
+
+<!-- 小栏样例 -->
+<div style="left:60px;top:1650px;font-size:12px;color:#5E5A50">BLEACH 板块配色取自官方主视觉：米白纸底 #FBF7EE · 墨黑 #1A1111 · 血红 #AB1F12</div>
+
+</div>
+</body>
+</html>

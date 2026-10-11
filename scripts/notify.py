@@ -117,6 +117,8 @@ def weekly(page_url):
         if not (start.isoformat() <= path.stem <= end.isoformat()):
             continue
         for block in digest.load_json(path)["items"]:
+            if block.get("quiet"):
+                continue
             stories.setdefault(block["name"], []).extend(block["stories"])
             facts.setdefault(block["name"], []).extend(f for f in block["facts"] if f["changed"])
 
