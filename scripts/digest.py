@@ -467,6 +467,29 @@ def fallback_stories(entries, item, limit=7):
     return picked
 
 
+def find_image(chosen, refs, url):
+    """一条报道的配图：AI 挑的 > 条目自带图 > 原文预览图 > 原文正文里的大图。每张都实际下载试一下，
+    打不开（防盗链、付费墙）就换下一张；都没有返回 None（网页上会用作品封面代替）。"""
+    seen = set()
+
+    def candidates():
+        yield chosen
+        for e in refs:
+            yield e.image
+        for page in [url] + [sources.resolve_url(e.url) for e in refs[1:3]]:
+            yield sources.og_image(page)
+            yield from sources.article_images(page, limit=6)
+
+    for img in candidates():
+        if img and img not in seen:
+            seen.add(img)
+            if sources.image_ok(img):
+                return img
+        if len(seen) >= 10:
+            break
+    return None
+
+
 def attach_media(stories, entries, cover):
     """给每条报道配链接和图：条目自带图 > 原文预览图 > （仅头条）作品封面。
     Google 新闻的跳转链接先还原成原文地址，链接和配图都用原文的。"""
@@ -475,11 +498,7 @@ def attach_media(stories, entries, cover):
         s["url"] = s.get("url") or sources.resolve_url(refs[0].url)
         if refs[0].published:  # 消息本身的日期，卡片上显示、按它排序
             s["date"] = refs[0].published.date().isoformat()
-        s["image"] = s.get("image") or next((e.image for e in refs if e.image), None)
-        for i, e in enumerate(refs):
-            if s["image"]:
-                break
-            s["image"] = sources.og_image(s["url"] if i == 0 else sources.resolve_url(e.url))
+        s["image"] = find_image(s.get("image"), refs, s["url"])
         if not s["image"] and n == 0:
             s["image"] = cover
     return stories

@@ -307,6 +307,24 @@ def resolve_url(url):
         return url
 
 
+def image_ok(url):
+    """图片真的能下载（不是 403 / 付费墙 / 网页），且不是小图标。"""
+    if not url or not url.startswith("http"):
+        return False
+    for attempt in range(2):  # 网络偶尔抽风，失败再试一次
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                if not resp.headers.get("Content-Type", "").startswith("image/"):
+                    return False
+                return len(resp.read(20_000)) >= 8_000
+        except urllib.error.HTTPError:
+            return False
+        except Exception:
+            time.sleep(1)
+    return False
+
+
 def og_image(url):
     """读取网页的预览图（og:image / twitter:image），只读前 300KB。"""
     if not url or "news.google.com" in url:

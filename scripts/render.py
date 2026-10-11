@@ -62,6 +62,12 @@ a{color:inherit;text-decoration:none}
  background:repeating-linear-gradient(135deg,color-mix(in srgb,currentColor 7%,transparent) 0 14px,transparent 14px 28px)}
 .pic{aspect-ratio:16/9}
 .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.pic .ph{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;text-align:center;
+ font:600 clamp(18px,3vw,34px)/1.1 'Cormorant Garamond','Noto Serif SC',serif;letter-spacing:.04em;color:var(--ac,currentColor);
+ background:radial-gradient(circle at 30% 20%,color-mix(in srgb,var(--ac,currentColor) 28%,transparent),transparent 60%),
+ color-mix(in srgb,currentColor 8%,transparent)}
+.pic.none{background:none}
+.pic.none .ph{display:flex}
 .pic img.bg{object-fit:cover;filter:blur(18px) brightness(.8);transform:scale(1.15)}
 .hero{grid-column:span 12;display:grid;grid-template-columns:7fr 5fr;gap:24px;padding:24px}
 .hero .pic{align-self:center}
@@ -222,13 +228,20 @@ def _headline(story):
 
 
 def _pic(story):
-    img = story.get("image")
-    # 底层模糊铺满，上层完整显示：图片不裁切，也不留空白条
+    """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
+    没有图或图打不开（防盗链等）时换成作品封面；连封面也没有，就显示作品名排版的封面块。"""
+    img, cover, name = story.get("image"), story.get("_cover"), story.get("_work", "")
+    fb = f' data-fb="{e(cover)}"' if cover and cover != img else ""
+    swap = ("if(this.dataset.fb){this.src=this.dataset.fb;this.removeAttribute('data-fb')}"
+            "else{this.parentNode.classList.add('none');this.remove()}")
+    src = img or cover
     tag = "".join(
-        f'<img{cls} src="{e(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
+        f'<img{cls} src="{e(src)}"{fb if img else ""} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="{swap}">'
         for cls in (' class="bg"', "")
-    ) if img else ""
-    return f'<div class="pic">{tag}</div>'
+    ) if src else ""
+    none = "" if src else " none"
+    label = f'<span class="ph">{e(name)}</span>' if name else ""
+    return f'<div class="pic{none}">{label}{tag}</div>'
 
 
 def _card(story, cls, side, level="h3", blurb=False):
@@ -311,19 +324,62 @@ def _row_height(row):
     return ROW_HEIGHT.get(widest[1], 350)
 
 
-def _rows(packed):
-    rows, row, used = [], [], 0
-    for x in packed:
-        row.append(x)
-        used += x[1]
-        if used >= 12:
-            rows.append(row)
-            row, used = [], 0
-    return rows + ([row] if row else [])
+def _layout(stories):
+    """一周内消息的版式（保持时间顺序）：
+    重大 → 整行大图；头条 → 左 8 栏，右边竖排接下来的两条普通消息（只有一条就两张各占一半）；
+    普通消息三张一排，凑不满时平分整行。返回 [(行类型, 卡片列表)]。"""
+    rows, normals = [], []
+
+    def flush():
+        if normals:
+            rows.append(("normal", normals[:]))
+            normals.clear()
+
+    for x in stories:
+        w = x.get("weight", "normal")
+        if w == "hero":
+            flush()
+            rows.append(("hero", [x]))
+        elif w == "lead":
+            flush()
+            rows.append(("lead", [x]))
+        else:
+            last = rows[-1] if rows and not normals else None
+            if last and last[0] == "lead" and len(last[1]) < 3:
+                last[1].append(x)
+            else:
+                normals.append(x)
+                if len(normals) == 3:
+                    flush()
+    flush()
+    return rows
+
+
+def _row_h(kind, cards):
+    if kind == "hero":
+        return 470
+    if kind == "lead":
+        return {1: 300, 2: 450, 3: 560}[len(cards)]
+    return {1: 300, 2: 450, 3: 350}[len(cards)]
 
 
 def _height(stories):
-    return sum(_row_height(r) for r in _rows(_pack(stories, lambda s: SPAN.get(s.get("weight"), 4))))
+    return sum(_row_h(k, c) for k, c in _layout(stories))
+
+
+def _render_rows(rows, today):
+    out, i = [], 0
+    for kind, cards in rows:
+        if kind == "hero":
+            out.append(_tcard(cards[0], 12, i, today))
+        elif kind == "lead" and len(cards) == 3:
+            out.append(_tcard(cards[0], 8, i, today))
+            out.append('<div class="side">' + "".join(_tcard(c, 4, i, today) for c in cards[1:]) + "</div>")
+        else:
+            span = {1: 12, 2: 6, 3: 4}[len(cards)]
+            out += [_tcard(c, span, i, today) for c in cards]
+        i += 1
+    return "".join(out)
 
 
 def _timeline(stories, today):
@@ -340,12 +396,9 @@ def _timeline(stories, today):
             trial = newest_first(keep + [x])
             if not keep or _height(trial) <= PAGE_HEIGHT:
                 keep = trial
-        keep = newest_first(keep)
     kept = {id(x) for x in keep}
     rest = [x for x in stories if id(x) not in kept]
-    packed = _pack(keep, lambda s: SPAN.get(s.get("weight"), 4))
-    html_ = '<div class="grid">' + "".join(_tcard(s, w, i, today) for i, (s, w) in enumerate(packed)) + "</div>"
-    return html_, rest
+    return '<div class="grid">' + _render_rows(_layout(keep), today) + "</div>", rest
 
 
 def _older(stories, today, more=0):
@@ -383,7 +436,8 @@ def collect(issues, order=None):
                 if st["url"] in w["_seen"]:
                     continue
                 w["_seen"].add(st["url"])
-                w["stories"].append({**st, "_issue": issue["date"]})
+                w["stories"].append({**st, "_issue": issue["date"], "_work": b["name"],
+                                     "_cover": w.get("cover") or b.get("cover")})
     for w in works.values():
         w["stories"].sort(key=lambda x: x.get("date") or x["_issue"], reverse=True)  # 按消息本身的日期
     return list(works.values())
