@@ -334,6 +334,8 @@ def edit_stories(client, model, item, entries):
         f"类型说明：{ITEM_TYPES[item['type']]}\n"
         f"读者最关心的问题：{item.get('priority') or '所有重要动态'}\n"
         + (f"背景：{item['notes']}\n" if item.get("notes") else "")
+        + (f"篇幅：最多 {item['max_stories']} 条，只挑最近最受关注的事；值得报的不多就少写，不要凑数\n"
+           if item.get("max_stories") else "")
         + f"\n条目：\n{format_entries(entries)}"
     )
     try:
@@ -633,6 +635,8 @@ def publish(inbox_path=None):
             stories = (edit_stories(client, model, item, entries) if client else None) or fallback_stories(entries, item)
         else:
             stories = []
+        if item.get("max_stories"):  # 篇幅上限：要紧的排在最前，截掉的是后面次要的
+            stories = stories[:item["max_stories"]]
         if not stories and not any(f["changed"] for f in raw["facts"]):
             continue
         blocks.append({

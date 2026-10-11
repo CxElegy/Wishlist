@@ -17,6 +17,7 @@
 #   subreddits   可选，额外在这些 Reddit 版块里按关键词搜
 #   feeds        可选，任意 RSS / Atom 地址（官网博客、RSSHub 等）
 #   max_entries  可选，单独为这一项设置交给 AI 的条目上限
+#   max_stories  可选，这一项每期最多几条报道（只挑最火的；事情少就少写，不凑数）
 #   notes        可选，给 AI 的背景说明
 #
 # 简报外观（都可选）：
@@ -120,6 +121,50 @@ items:
       alt_accent: "#E65224"
       split: true
       font: serif
+
+  - name: GTA 6
+    subtitle: Grand Theft Auto VI · 侠盗猎车手 6
+    type: game
+    keywords: ["GTA 6", "GTA VI", "Grand Theft Auto VI", "侠盗猎车手6", "俠盜獵車手6"]
+    match: [GTA 6, GTA VI, GTA6, GTAVI, Grand Theft Auto VI, Grand Theft Auto 6, 侠盗猎车手6, 侠盗猎车手 6, 俠盜獵車手6, 俠盜獵車手 6, 侠盗猎车手VI, 俠盜獵車手VI]
+    news_langs: [zh-CN, en-US]
+    max_entries: 30
+    max_stories: 4   # 只要最近最火的几件事，一页以内；没什么事就少写
+    subreddits: [GTA6]
+    priority: 能不能按时玩到：11 月 19 日发售会不会再延期、预载 / 解锁时间、PC 版什么时候公布、第三支预告片
+    priority_keywords: [
+      延期, 推迟, 跳票, 延後, delay, delayed, postpone,
+      发售, 發售, 发布日期, release, launch, 11月19日, November 19,
+      预载, 預載, 预购, 預購, preload, pre-load, pre-order, unlock,
+      PC版, PC 版, PC version, Steam,
+      预告, 預告, trailer, Trailer 3, 第三支, Rockstar, Take-Two
+    ]
+    urgent_patterns:
+      # 再次延期
+      - '(GTA ?(6|VI)|Grand Theft Auto VI|侠盗猎车手 ?6|俠盜獵車手 ?6).{0,30}(延期|推迟|跳票|延後|delay(ed)?|postpone[sd]?|pushed back)'
+      - '(延期|推迟|跳票|delay(ed|s)?|postpone[sd]?).{0,30}(GTA ?(6|VI)|Grand Theft Auto VI)'
+      # PC 版公布
+      - '(GTA ?(6|VI)|Grand Theft Auto VI).{0,30}(PC版|PC 版|PC version|on PC|Steam).{0,20}(公布|宣布|確認|确认|announce|confirm|reveal|date)'
+      # 第三支预告片
+      - '(GTA ?(6|VI)|Grand Theft Auto VI).{0,30}(Trailer 3|third trailer|第三支预告|第三支預告|预告片3|預告片3)'
+      # 正式发售 / 解锁
+      - '(GTA ?(6|VI)|Grand Theft Auto VI).{0,30}((is )?out now|now available|launches today|正式发售|正式發售|已发售|已發售|解锁时间|unlock time)'
+    notes: >-
+      Rockstar Games 开发、Take-Two 发行的开放世界动作游戏，舞台是 Leonida 州的 Vice City（以迈阿密为原型），
+      双主角 Lucia 与 Jason。2023 年 12 月公布首支预告，2025 年 5 月公布第二支预告。
+      原定 2025 年秋，先延至 2026 年 5 月 26 日，2025 年 11 月再延至 2026 年 11 月 19 日（PS5 / Xbox Series X|S），
+      PC 版尚未公布。网上传闻和“内鬼爆料”极多，没有 Rockstar / Take-Two 官方确认的都按传闻处理。
+    status: 定于 2026 年 11 月 19 日发售（PS5 / Xbox Series X|S）· PC 版未公布
+    site: https://www.rockstargames.com/VI
+    theme:   # 取自官方主视觉：Vice City 黄昏，深紫夜空 + 霓虹粉 + 落日橙，标题条做成深紫 / 落日对角分割
+      bg: "#1E1033"
+      fg: "#FFF1F6"
+      accent: "#FF5FA2"
+      alt_bg: "#FFB25B"
+      alt_fg: "#1E1033"
+      alt_accent: "#C2185B"
+      split: true
+      font: sans
 
   - name: 滑雪
     subtitle: 日本雪场 · 雪板装备 · 2026-27
