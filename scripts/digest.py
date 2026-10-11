@@ -626,14 +626,79 @@ def publish(inbox_path=None):
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
 
 
+PICK_DIR = pathlib.Path(os.environ.get("PICK_DIR", "/tmp/wishlist-pick"))
+
+
+def pick_images(date=None):
+    """给 AI 编辑挑图用：按 edit.json 里每条报道，收集原文候选图，拼成带编号的对照图。
+    对照图在 PICK_DIR（不进仓库），候选链接写在 PICK_DIR/candidates.json。"""
+    import io
+    from PIL import Image, ImageDraw
+    paths = sorted(INBOX_DIR.glob(f"{date or '????-??-??'}.json"))
+    if not paths:
+        print("inbox 里没有内容", file=sys.stderr)
+        return
+    inbox_path = paths[-1]
+    inbox, edits = load_json(inbox_path), load_edits(inbox_path)
+    PICK_DIR.mkdir(parents=True, exist_ok=True)
+    out = {}
+    for raw in inbox["items"]:
+        entries = [entry_from_dict(d) for d in raw["entries"]]
+        for k, story in enumerate(edits.get(raw["name"], []) or []):
+            refs = [entries[r - 1] for r in story.get("refs", []) if 0 < r <= len(entries)]
+            urls = []
+            for e in refs[:3]:
+                if e.image and e.image not in urls:
+                    urls.append(e.image)
+                for u in sources.article_images(sources.resolve_url(e.url)):
+                    if u not in urls:
+                        urls.append(u)
+            thumbs = []
+            for u in urls:
+                try:
+                    req = urllib.request.Request(u, headers={"User-Agent": sources.USER_AGENT})
+                    im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=15).read())).convert("RGB")
+                except Exception:
+                    continue
+                if im.width < 300 or im.height < 160:
+                    continue
+                im.thumbnail((360, 240))
+                thumbs.append((u, im))
+                if len(thumbs) >= 12:
+                    break
+            key = f"{raw['name']}#{k}"
+            out[key] = {"headline": story.get("headline", ""), "current": story.get("image"),
+                        "candidates": [u for u, _ in thumbs]}
+            if not thumbs:
+                continue
+            cols = 4
+            rows = (len(thumbs) + cols - 1) // cols
+            sheet = Image.new("RGB", (cols * 370, rows * 250), "white")
+            draw = ImageDraw.Draw(sheet)
+            for i, (_, im) in enumerate(thumbs):
+                x, y = (i % cols) * 370 + 5, (i // cols) * 250 + 5
+                sheet.paste(im, (x, y))
+                draw.rectangle([x, y, x + 34, y + 26], fill="black")
+                draw.text((x + 8, y + 6), str(i + 1), fill="white")
+            name = f"{len(out):02d}.jpg"
+            sheet.save(PICK_DIR / name, quality=85)
+            out[key]["sheet"] = str(PICK_DIR / name)
+            print(f"{key}  {story.get('headline', '')}  → {PICK_DIR / name}（{len(thumbs)} 张）")
+    (PICK_DIR / "candidates.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"候选链接：{PICK_DIR / 'candidates.json'}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "pick-images"])
+    parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
     args = parser.parse_args()
     if args.dry_run:
         ingest(dry_run=True)
+    elif args.step == "pick-images":
+        pick_images(args.date)
     elif args.step == "render":
         write_page()
     elif args.step == "ingest":

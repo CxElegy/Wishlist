@@ -10,12 +10,24 @@
 3. 读 `items.yaml`，了解每个关注项的 `priority`（读者最关心什么）和 `notes`（背景）。
 4. 读 inbox 里每个关注项的 `entries`（编号 `n`、日期、来源、标题、摘要），按下面的规则编排。
 5. 写 `inbox/YYYY-MM-DD.edit.json`（格式见下）。已经有这个文件时**整份重写**，覆盖当天所有条目。
-6. 运行：
+6. **挑配图**：
    ```bash
    pip install -q -r requirements.txt
+   python scripts/digest.py pick-images
+   ```
+   它会给每条报道拼一张带编号的候选图对照表（`/tmp/wishlist-pick/01.jpg` …），候选链接在
+   `/tmp/wishlist-pick/candidates.json`（键是「关注项名称#报道序号」）。逐张看对照表，挑一张写进该报道的
+   `"image"`（照抄链接）。挑图标准：
+   - 人物的**脸和主体要完整**，不能被画面边缘切掉；
+   - 优先官方主视觉、角色立绘、能说明报道内容的画面；
+   - 避开纯 UI 教学截图、图标、大段文字、广告、和本作无关的图；
+   - 同一期里尽量不重复用同一张图。
+   都不合适就不写 `image`，系统会用原文预览图。
+7. 出刊：
+   ```bash
    python scripts/digest.py publish
    ```
-7. 提交并推送：
+8. 提交并推送：
    ```bash
    git add inbox reports state docs
    git commit -m "编排 YYYY-MM-DD"
@@ -48,7 +60,8 @@
      "highlight": "战斗成最大争议",
      "blurb": "10/2–10/6 全球 CBT 结束……",
      "weight": "lead",
-     "refs": [2, 20, 31]}
+     "refs": [2, 20, 31],
+     "image": "（可选）挑好的配图链接"}
   ],
   "_covered": {"关注项名称": 编排时该项 entries 的条目数}
 }
