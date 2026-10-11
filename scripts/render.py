@@ -1,15 +1,19 @@
-"""把各期数据渲染成一张报纸式简报网页（docs/index.html），新一期在最上面。
+"""把所有期的数据渲染成一张报纸式简报网页（docs/index.html）。消息永远保留，不随新一期消失。
 
 版式规则：
-- 每期最上面一张「头版」：重磅头条大图 + 按板块（游戏 / 影视 / 运动 / 好物）的彩色索引 + 今日要闻
-- 报头中性；每个关注项一个板块，配色取自该作品（theme.py）
-- weight=hero 的消息（直接回答你最关心的问题，如定档、测试日期）独占整行大图
-- 其余第一条做头条（8 栏大图），接着两条做侧栏，剩下的三栏一排
-- 本期没有新消息的关注项（quiet）只留一个小栏：标题条 + 现状 + 往期最近一条
+- 左侧目录（撑满屏幕高度）：按板块分组列出每个作品，滚动时当前所在的一项放大并换成板块色，点击直达
+- 最上面一张「头版」：今天的重磅头条大图 + 按板块（游戏 / 影视 / 运动 / 好物）的彩色索引 + 今日要闻
+- 每个关注项一个版面，配色取自该作品（theme.py）。所有日期的消息汇总在一起，按时间排列（新的在前）：
+  - 一周内收到的直接显示，卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满
+  - 更早的收进版面底部的「更早的消息」折叠区，点开才显示
+- 一周内没有新消息的关注项只留一个小栏：标题条 + 现状
 """
 
+import datetime as dt
+import hashlib
 import html
 import re
+import urllib.parse
 
 FONTS = (
     "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700;900"
@@ -62,7 +66,7 @@ a{color:inherit;text-decoration:none}
 .s12 .pic{aspect-ratio:auto;height:260px}.s12 .pic:empty{display:none}
 .hero .txt{display:flex;flex-direction:column;justify-content:center;gap:16px}
 .tag{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.25em;color:var(--ac)}
-.hero h2{margin:0;font-weight:900;font-size:46px;line-height:1.2}
+.hero h2{margin:0;font-weight:900;font-size:34px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
 .lead{grid-column:span 8}
 .lead h2{margin:0;font-weight:900;font-size:36px;line-height:1.25}
 .side{grid-column:span 4;display:flex;flex-direction:column;gap:1px}
@@ -123,7 +127,61 @@ a{color:inherit;text-decoration:none}
 .heads li i{flex:none;font:900 11px/1.6 'Noto Sans SC',sans-serif;font-style:normal;color:#FFF;background:var(--sc);padding:0 6px;letter-spacing:.1em}
 .heads li a{font-size:15px;line-height:1.5}
 .heads li a:hover{text-decoration:underline;text-underline-offset:3px}
+/* ---------- 左侧目录（共用骨架；风格见 NAV_STYLES） ---------- */
+html{scroll-behavior:smooth}
+[data-k]{scroll-margin-top:24px}
+.page{max-width:1480px;display:grid;grid-template-columns:236px minmax(0,1fr);gap:28px 32px;align-items:start}
+.mast{grid-column:1/-1}
+.issues{display:flex;flex-direction:column;gap:28px;min-width:0}
+.nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px);display:flex;flex-direction:column;z-index:50}
+.nav .rail{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;min-height:0}
+.nav .rail::-webkit-scrollbar{display:none}
+.nav .pill{display:flex;align-items:center;gap:8px;position:relative}
+.nav .pill .no{font:700 10px 'JetBrains Mono',monospace;font-style:normal;font-variant-numeric:tabular-nums}
+.nav .pill:focus-visible,.nav select:focus-visible{outline:2px solid #FFD23F;outline-offset:2px}
+.nav select{font:700 12px 'JetBrains Mono',monospace;padding:6px 8px;border-radius:0}
+.nav .bar{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav *{transition:none!important}}
+/* 窄屏：目录变成顶部横条 */
+@media (max-width:1000px){
+ .page{grid-template-columns:minmax(0,1fr)}
+ .nav{top:env(safe-area-inset-top,0px);max-height:none;flex-direction:row;align-items:center;gap:8px;padding:6px 8px!important;
+  background:#1A1C22!important;color:#FBF8F1!important;border:none!important;box-shadow:none!important}
+ .nav .here,.nav .grp{display:none!important}
+ .nav .rail{flex:1;flex-direction:row;overflow-x:auto;gap:6px;padding:6px 4px!important;border:none!important}
+ .nav .pill{flex:none;padding:4px 10px!important;margin:0!important;font:700 13px/1.3 'Noto Sans SC',sans-serif!important;
+  color:#FBF8F1!important;background:none!important;border:1px solid rgba(251,248,241,.3)!important;transform:none!important;width:auto!important}
+ .nav .pill::before,.nav .pill::after,.nav .pill .no{display:none!important}
+ .nav .pill.on{background:var(--sc)!important;border-color:var(--sc)!important;transform:scale(1.12)!important;margin:0 4px!important}
+ .nav select{background:transparent;color:#FBF8F1;border:1px solid rgba(251,248,241,.3)}
+ .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,#D7261E);width:calc(var(--prog,0) * 100%)}
+ [data-k]{scroll-margin-top:64px}
+}
+/* ---------- 按时间排列的卡片 ---------- */
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
+.when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
+.when b{padding:1px 6px;background:var(--ac);color:var(--bg);letter-spacing:.1em;opacity:1}
+.card.a .when b{color:var(--abg)}
+.card.wide{display:grid;grid-template-columns:5fr 7fr;gap:24px;align-items:center;padding:24px}
+.card.wide .txt{display:flex;flex-direction:column;gap:12px;min-width:0}
+.card.wide h3{margin:0;font-weight:900;font-size:28px;line-height:1.3}
+.card.c8 h3{font-size:28px;line-height:1.3}.card.c6 h3{font-size:24px;line-height:1.35}
+.card.c4 h3,.card.c3 h3{margin:0;font-weight:900;font-size:20px;line-height:1.4}
+.older{background:var(--abg);color:var(--afg);border-top:1px solid var(--line)}
+.older .grid{background:color-mix(in srgb,var(--afg) 16%,var(--abg))}
+.older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 24px;
+ font:700 12px 'JetBrains Mono',monospace;letter-spacing:.2em}
+.older summary::-webkit-details-marker{display:none}
+.older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;border:1.5px solid currentColor;
+ font:700 15px/1 'JetBrains Mono',monospace;transition:transform .25s}
+.older[open] summary::before{content:"−"}
+.older summary:hover,.older summary:focus-visible{color:var(--acc);outline:none}
+.older summary span{opacity:.6;letter-spacing:.1em}
+.older .grid .card{padding:16px;gap:10px}
+.older .card.c3 h3{font-size:16px;line-height:1.45}
 @media (max-width:760px){
+ .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr;padding:20px}
+ .card.c8 h3,.card.wide h3{font-size:24px}
  .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}
  .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
@@ -185,24 +243,126 @@ def _hero(story, side):
             + "</div></a>")
 
 
-def _grid(stories):
-    heroes = [s for s in stories if s.get("weight") == "hero"]
-    rest = [s for s in stories if s.get("weight") != "hero"]
-    out = [_hero(s, "m" if i % 2 == 0 else "a") for i, s in enumerate(heroes)]
+HOLD_DAYS = 7  # 一周内收到的消息直接显示，更早的收进折叠区
+SPAN = {"hero": 12, "lead": 8, "normal": 4}
+RANK = {"hero": 0, "lead": 1, "normal": 2}
 
-    if len(rest) == 1:
-        out.append(_card(rest[0], "hero" if not heroes else "s12 row", "m" if not heroes else "a",
-                         level="h2" if not heroes else "h3", blurb=True))
-        return "".join(out)
-    if rest:
-        lead, side, others = rest[0], rest[1:3], rest[3:]
-        out.append(_card(lead, "lead", "m", level="h2", blurb=True))
-        out.append('<div class="side">' + "".join(_card(s, "", "a") for s in side) + "</div>")
-        for start in range(0, len(others), 3):
-            chunk = others[start:start + 3]
-            span = {1: "s12", 2: "s6", 3: "s4"}[len(chunk)]
-            out += [_card(s, f"row {span}", "a" if (start + i) % 2 == 0 else "m") for i, s in enumerate(chunk)]
-    return "".join(out)
+
+def _wid(name):
+    """作品版面的锚点。"""
+    return "w-" + hashlib.md5(name.encode()).hexdigest()[:8]
+
+
+def _pack(stories, size_of, total=12):
+    """按顺序排成行，不改变时间顺序；一行放不下就换行，剩下的空位分给这一行里最重要的卡片。"""
+    rows, row, used = [], [], 0
+    for s in stories:
+        w = size_of(s)
+        if row and used + w > total:
+            rows.append(row)
+            row, used = [], 0
+        row.append([s, w])
+        used += w
+    if row:
+        rows.append(row)
+    for row in rows:
+        left = total - sum(w for _, w in row)
+        if left:
+            best = min(row, key=lambda x: RANK.get(x[0].get("weight"), 2))
+            best[1] += left
+    return [x for row in rows for x in row]
+
+
+def _when(story, today):
+    d = story.get("date") or story["_issue"]
+    new = "<b>NEW</b>" if story["_issue"] == today else ""
+    return f'<span class="when">{new}{e(d[5:].replace("-", "."))}</span>'
+
+
+def _tcard(story, span, i, today, small=False):
+    side = "a" if small else "m"  # 不再黑白交替：一周内统一主色底，折叠区统一副色底
+    w = story.get("weight", "normal")
+    url = e(story["url"])
+    if span == 12 and w == "hero":
+        return (f'<a class="card {side} hero" href="{url}" target="_blank" rel="noopener">{_pic(story)}'
+                f'<div class="txt">{_when(story, today)}<span class="tag">重 大</span><h2>{_headline(story)}</h2>'
+                + (f'<p class="blurb">{e(story["blurb"])}</p>' if story.get("blurb") else "") + "</div></a>")
+    blurb = f'<p class="blurb">{e(story["blurb"])}</p>' if story.get("blurb") and not small and w != "normal" else ""
+    if span == 12 and not small:
+        return (f'<a class="card {side} wide c12" href="{url}" target="_blank" rel="noopener">{_pic(story)}'
+                f'<div class="txt">{_when(story, today)}<h3>{_headline(story)}</h3>{blurb}</div></a>')
+    level = "h2" if w == "lead" and span >= 8 and not small else "h3"
+    cls = f"c{span}" + (" lead" if level == "h2" else "")
+    return (f'<a class="card {side} {cls}" href="{url}" target="_blank" rel="noopener">{_pic(story)}'
+            f'{_when(story, today)}<{level}>{_headline(story)}</{level}>{blurb}</a>')
+
+
+PAGE_HEIGHT = 1100  # 每个作品直接显示的消息最多占大约一屏高（像素，按卡片行的大致高度估算）
+ROW_HEIGHT = {12: 300, 8: 560, 6: 450, 4: 350}  # 一行里最宽那张卡片的宽度 → 这一行大约多高；整行大图另算
+
+
+def _row_height(row):
+    widest = max(row, key=lambda x: x[1])
+    if widest[1] == 12 and widest[0].get("weight") == "hero":
+        return 470
+    return ROW_HEIGHT.get(widest[1], 350)
+
+
+def _timeline(stories, today):
+    """一周内的消息：按时间排成行，放满约一屏为止；放不下的返回给折叠区。"""
+    packed = _pack(stories, lambda s: SPAN.get(s.get("weight"), 4))
+    rows, row, used = [], [], 0
+    for x in packed:
+        row.append(x)
+        used += x[1]
+        if used >= 12:
+            rows.append(row)
+            row, used = [], 0
+    shown, height = [], 0
+    for row in rows:
+        h = _row_height(row)
+        if shown and height + h > PAGE_HEIGHT:
+            break
+        shown += row
+        height += h
+    rest = [s for s, _ in packed[len(shown):]]
+    html_ = '<div class="grid">' + "".join(_tcard(s, w, i, today) for i, (s, w) in enumerate(shown)) + "</div>"
+    return html_, rest
+
+
+def _older(stories, today, more=0):
+    """折叠区：一周内放不下的（more 条）+ 一周以前的。"""
+    if not stories:
+        return ""
+    packed = _pack(stories, lambda s: 3)
+    first, last = stories[-1].get("date") or stories[-1]["_issue"], stories[0].get("date") or stories[0]["_issue"]
+    rng = f"{first[5:].replace('-', '.')} – {last[5:].replace('-', '.')}"
+    cards = "".join(_tcard(s, w, i, today, small=True) for i, (s, w) in enumerate(packed))
+    label = "更多消息" if more else "更早的消息"
+    detail = f"一周内另有 {more} 条" + (f" · 更早 {len(stories) - more} 条" if len(stories) > more else "") if more else rng
+    return (f'<details class="older"><summary>{label} · {len(stories)} 条<span>{detail}</span></summary>'
+            f'<div class="grid">{cards}</div></details>')
+
+
+def collect(issues):
+    """把各期按作品汇总：作品顺序和外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。"""
+    latest = issues[0]
+    works = {}
+    for b in latest["items"]:
+        works[b["name"]] = {**b, "stories": [], "_seen": set()}
+    for issue in issues:  # 新到旧
+        for b in issue["items"]:
+            w = works.get(b["name"])
+            if w is None:  # 已经从关注清单里删掉的不再显示
+                continue
+            for st in b.get("stories") or []:
+                if st["url"] in w["_seen"]:
+                    continue
+                w["_seen"].add(st["url"])
+                w["stories"].append({**st, "_issue": issue["date"]})
+    for w in works.values():
+        w["stories"].sort(key=lambda x: (x["_issue"], x.get("date") or ""), reverse=True)
+    return list(works.values())
 
 
 def _calm(block):
@@ -234,11 +394,17 @@ def _section(block, anchor=""):
             f'{e(f["label"])}{" · 有变化" if f["changed"] else ""}</span><span>{_md_links(f["text"])}</span></div>'
             for f in changed
         ) + "</div>"
-    grid = f'<div class="grid">{_grid(block["stories"])}</div>' if block.get("stories") else ""
-    if block.get("quiet"):
-        grid = _calm(block)
-    quiet = " quiet" if block.get("quiet") else ""
-    return (f'<section id="{anchor}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
+    today = block["_today"]
+    cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
+    recent = [x for x in block["stories"] if x["_issue"] >= cutoff]
+    older = [x for x in block["stories"] if x["_issue"] < cutoff]
+    if recent:
+        grid, more = _timeline(recent, today)
+    else:
+        grid, more = _calm({**block, "last": None}), []
+    grid += _older(more + older, today, len(more))
+    quiet = "" if recent else " quiet"
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
             f"{facts}{grid}</section>")
 
@@ -296,7 +462,7 @@ def _front(issue):
                 text, img, cls = first["headline"], first.get("image") or b.get("cover"), "entry"
             else:
                 text, img, cls = b.get("status") or "暂无新消息", b.get("cover"), "entry q"
-            rows.append(f'<a class="{cls}" href="#issue-{date}-{i}">{_pic({"image": img})}'
+            rows.append(f'<a class="{cls}" href="#{_wid(b["name"])}">{_pic({"image": img})}'
                         f'<span><span class="nm">{e(b["name"])}</span><b>{e(text)}</b></span></a>')
         body = "".join(rows) or '<div class="none">还没有关注项</div>'
         boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
@@ -312,19 +478,198 @@ def _front(issue):
     if heads:
         heads_html = (f'<div class="heads"><h4>今日要闻<small>TODAY\'S HEADLINES</small></h4>'
                       f'<ol>{"".join(heads[:12])}</ol></div>')
-    return (f'<section class="front">{head}<div class="fbody">{top_html}'
+    return (f'<section class="front" data-k="front">{head}<div class="fbody">{top_html}'
             f'<div class="boards">{"".join(boards)}</div></div>{heads_html}</section>')
 
 
-def render(issues):
-    """issues：按时间倒序的各期数据。"""
+
+# 左侧目录的四种风格（items.yaml 的 settings.nav_style 选择）。只在宽屏生效，窄屏统一是顶部横条
+NAV_STYLES = {
+    # A 线路图：每个板块一段彩色线路，作品是站点；读到哪站圆点放大，线路按进度填色，读过的站变实心
+    "line": """
+.nav{top:0;height:100vh;max-height:none;padding:16px 0}
+.nav .here{display:none}
+.nav .rail{flex:1;padding-left:14px}
+.nav .pill{flex:1 1 auto;min-height:44px;max-height:180px}
+.nav .grp{flex:none}
+.nav .grp{display:flex;align-items:baseline;gap:8px;padding:16px 0 4px 26px;color:var(--sc)}
+.nav .grp b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.25em;opacity:.75}
+.nav .pill{padding:9px 0 9px 26px;font:700 14px/1.3 'Noto Sans SC',sans-serif;color:rgba(26,28,34,.5);
+ transition:color .2s,font-size .3s cubic-bezier(.2,.9,.3,1),padding .3s cubic-bezier(.2,.9,.3,1)}
+.nav .pill::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:3px;
+ background:linear-gradient(var(--sc) calc(var(--p,0)*100%),rgba(26,28,34,.13) 0)}
+.nav .pill::after{content:"";position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;
+ background:#EDEBE6;border:2px solid rgba(26,28,34,.35);
+ transition:width .35s cubic-bezier(.3,1.5,.5,1),height .35s cubic-bezier(.3,1.5,.5,1),margin .35s cubic-bezier(.3,1.5,.5,1),left .35s cubic-bezier(.3,1.5,.5,1),border-color .2s}
+.nav .pill .no{display:none}
+.nav .pill .nm{display:flex;flex-direction:column;gap:3px}
+.nav .pill .cnt{display:none;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--sc)}
+.nav .pill:hover{color:#1A1C22}
+.nav .pill.past{color:rgba(26,28,34,.72)}
+.nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
+.nav .pill.on{color:#1A1C22;font-size:21px;font-weight:900;letter-spacing:-.01em;padding:16px 0 16px 40px}
+.nav .pill.on .cnt{display:block}
+.nav .pill.on::after{width:38px;height:38px;margin-top:-19px;left:-9px;
+ background:var(--img,none) center/cover no-repeat,#EDEBE6;border:3px solid var(--sc);
+ box-shadow:0 0 0 5px color-mix(in srgb,var(--sc) 20%,transparent),0 6px 14px rgba(26,28,34,.25)}
+.nav select{margin:14px 0 0 26px;align-self:flex-start;background:transparent;color:#1A1C22;border:1px solid rgba(26,28,34,.35)}
+""",
+    # B 报纸索引栏：米色纸面、双线，条目带编号和引导点；当前条目反白成板块色色块并放大
+    "index": """
+.nav{background:#FBF8F1;color:#1A1C22;border:3px solid #1A1C22;box-shadow:6px 6px 0 #1A1C22;padding:0}
+.nav .here{display:flex;flex-direction:column;gap:2px;padding:14px 16px 12px;border-bottom:3px double #1A1C22;text-align:center}
+.nav .here b{font:900 30px/1 'Noto Serif SC',serif;letter-spacing:.4em;padding-left:.4em}
+.nav .here small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.45em;color:#D7261E}
+.nav .here span{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.1em;opacity:.7}
+.nav .rail{padding:4px 0 10px}
+.nav .grp{display:flex;align-items:center;gap:8px;margin:12px 12px 4px;padding:3px 8px;background:var(--sc);color:#FFF}
+.nav .grp b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.nav .grp small{margin-left:auto;font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.9}
+.nav .pill{margin:0 12px;padding:7px 8px;font:700 14px/1.35 'Noto Serif SC',serif;border-bottom:1px dotted rgba(26,28,34,.35);
+ transition:background .2s,color .2s,font-size .2s,padding .2s}
+.nav .pill .no{color:var(--sc);min-width:18px}
+.nav .pill .nm{flex:1;min-width:0}
+.nav .pill::after{content:"";position:absolute;left:0;bottom:-1px;height:3px;width:calc(var(--p,0)*100%);background:var(--sc)}
+.nav .pill:hover .nm{text-decoration:underline;text-underline-offset:3px}
+.nav .pill.past{opacity:.55}
+.nav .pill.on{background:var(--sc);color:#FFF;font-size:18px;font-weight:900;padding:12px 10px;opacity:1}
+.nav .pill.on .no{color:#FFD23F}
+.nav .pill.on::after{background:#FFD23F}
+.nav select{margin:0 12px 12px;background:#FBF8F1;color:#1A1C22;border:2px solid #1A1C22}
+""",
+    # C 活页夹标签：每个作品是一张贴在内容左缘的彩色索引签；当前那张向右抽出、变大
+    "tabs": """
+.nav{padding:0;background:none}
+.page{grid-template-columns:220px minmax(0,1fr);column-gap:0}
+.nav .here{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:0 0 10px 4px}
+.nav .here b{font:900 24px/1 'Noto Sans SC',sans-serif;letter-spacing:.2em;white-space:nowrap}
+.nav .here small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.3em;color:#D7261E}
+.nav .here span{flex-basis:100%;font:700 10px 'JetBrains Mono',monospace;opacity:.6}
+.nav .rail{gap:5px;padding:4px 0 8px;overflow-x:visible}
+.nav .grp{display:flex;align-items:baseline;gap:6px;padding:10px 4px 2px;color:var(--sc)}
+.nav .grp b{font:900 12px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em}
+.nav .pill{margin-left:28px;padding:10px 12px;background:color-mix(in srgb,var(--sc) 22%,#FBF8F1);color:#1A1C22;
+ border:2px solid #1A1C22;border-right:none;font:900 14px/1.25 'Noto Sans SC',sans-serif;
+ clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px),0 10px);
+ transition:margin .3s cubic-bezier(.3,1.5,.5,1),background .2s,color .2s,font-size .2s}
+.nav .pill .no{color:var(--sc)}
+.nav .pill::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:calc(var(--p,0)*100%);background:#1A1C22}
+.nav .pill:hover{margin-left:18px}
+.nav .pill.past{background:color-mix(in srgb,var(--sc) 10%,#FBF8F1);color:rgba(26,28,34,.6)}
+.nav .pill.on{margin-left:0;background:var(--sc);color:#FFF;font-size:17px;padding:14px 14px}
+.nav .pill.on .no{color:#FFD23F}
+.nav .pill.on::after{background:#FFD23F}
+.nav select{margin:6px 0 0 28px;background:#FBF8F1;color:#1A1C22;border:2px solid #1A1C22}
+""",
+    # D 大字滚动：没有框，只有字；当前作品放大成巨大的板块色标题，其余缩小变淡，像焦点在移动
+    "type": """
+.nav{padding:4px 0}
+.nav .here{display:flex;flex-direction:column;gap:2px;padding-bottom:12px;border-bottom:3px solid #1A1C22}
+.nav .here b{font:900 13px 'JetBrains Mono',monospace;letter-spacing:.5em}
+.nav .here small{display:none}
+.nav .here span{font:700 11px 'JetBrains Mono',monospace;opacity:.6}
+.nav .rail{padding:8px 0;mask-image:linear-gradient(transparent,#000 6%,#000 94%,transparent)}
+.nav .grp{display:flex;gap:6px;align-items:baseline;padding:14px 0 2px;color:var(--sc)}
+.nav .grp b{font:900 11px 'Noto Sans SC',sans-serif;letter-spacing:.4em}
+.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.8}
+.nav .pill{flex-direction:column;align-items:flex-start;gap:0;padding:5px 0;color:rgba(26,28,34,.38);
+ font:900 15px/1.15 'Noto Sans SC',sans-serif;letter-spacing:-.01em;transition:font-size .35s cubic-bezier(.2,.9,.3,1),color .25s,padding .35s}
+.nav .pill .no{font-size:10px;color:inherit}
+.nav .pill:hover{color:#1A1C22}
+.nav .pill.past{color:rgba(26,28,34,.55)}
+.nav .pill.on{color:var(--sc);font-size:34px;line-height:1.02;padding:10px 0 12px}
+.nav .pill.on .no{color:#1A1C22}
+.nav .pill.on::after{content:"";height:4px;width:calc(var(--p,0)*100%);background:var(--sc);margin-top:8px;transition:width .15s linear}
+.nav select{margin-top:8px;background:transparent;color:#1A1C22;border:2px solid #1A1C22}
+""",
+}
+
+
+def _nav(works, date):
+    """左侧目录：按板块分组列出每个作品。"""
+    groups = {}
+    for w in works:
+        groups.setdefault(w.get("section") or "其他", []).append(w)
+    order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
+    cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
+    rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#issue-{date}">'
+            f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
+    n = 0
+    for name in order:
+        sc = _sec_color(name)
+        rail.append(f'<div class="grp" style="--sc:{sc}"><b>{e(name)}</b><small>{SECTION_EN.get(name, "")}</small></div>')
+        for w in groups[name]:
+            n += 1
+            recent = [x for x in w["stories"] if x["_issue"] >= cutoff]
+            img = next((x.get("image") for x in recent if x.get("image")), None) or w.get("cover") \
+                or next((x.get("image") for x in w["stories"] if x.get("image")), None)
+            css_img = f";--img:url({urllib.parse.quote(img, safe=':/?&=%#@+,;~')})" if img else ""
+            cnt = f"一周 {len(recent)} 条" if recent else "暂无新消息"
+            rail.append(f'<a class="pill" style="--sc:{sc}{e(css_img)}" data-for="{e(w["name"])}" '
+                        f'href="#{_wid(w["name"])}"><i class="no">{n:02d}</i>'
+                        f'<span class="nm">{e(w["name"])}<small class="cnt">{cnt}</small></span></a>')
+    return (f'<nav class="nav" aria-label="目录">'
+            f'<div class="here"><b>目录</b><small>INDEX</small><span id="nav-here">今日 · {date.replace("-", ".")}</span></div>'
+            f'<div class="rail" id="nav-rail">{"".join(rail)}</div><div class="bar" id="nav-bar"></div></nav>')
+
+
+NAV_JS = """
+(() => {
+  const nav = document.querySelector('.nav'), rail = document.getElementById('nav-rail'),
+        here = document.getElementById('nav-here');
+  const marks = [...document.querySelectorAll('[data-k]')];
+  const pills = [...rail.querySelectorAll('.pill')];
+  const firstIssue = document.querySelector('.issue');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let cur = null, ticking = false;
+  function update() {
+    ticking = false;
+    const horizontal = getComputedStyle(rail).flexDirection === 'row';
+    const y = (horizontal ? nav.getBoundingClientRect().bottom : 0) + 40;
+    let m = marks[0];
+    for (const el of marks) { if (el.getBoundingClientRect().top <= y) m = el; else break; }
+    if (!m) return;
+    const r = m.getBoundingClientRect();
+    const prog = Math.min(1, Math.max(0, (y - r.top) / r.height));
+    nav.style.setProperty('--prog', prog.toFixed(3));
+    const today = m.closest('.issue') === firstIssue;
+    let idx = -1;
+    pills.forEach((p, i) => { if (today && p.dataset.for === m.dataset.k) idx = i; });
+    pills.forEach((p, i) => {
+      p.classList.toggle('on', i === idx);
+      p.classList.toggle('past', idx >= 0 && i < idx);
+      p.style.setProperty('--p', i === idx ? prog.toFixed(3) : (idx >= 0 && i < idx ? 1 : 0));
+    });
+    if (m === cur) return;
+    cur = m;
+    const issue = m.closest('.issue');
+    here.textContent = issue ? issue.dataset.label : '';
+    const on = pills[idx];
+    nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
+    if (on) {
+      const opt = horizontal ? { left: on.offsetLeft - rail.clientWidth / 2 + on.offsetWidth / 2 }
+                             : { top: on.offsetTop - rail.clientHeight / 2 + on.offsetHeight / 2 };
+      rail.scrollTo({ ...opt, behavior: reduce ? 'auto' : 'smooth' });
+    }
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
+"""
+
+
+def render(issues, nav_style="line"):
+    """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。"""
     latest = issues[0]
-    parts = []
-    for i, issue in enumerate(issues):
-        label = ("今 日" if i == 0 else "往 期") + f" · {issue['date'].replace('-', '.')}"
-        parts.append(f'<div class="issue" id="issue-{issue["date"]}"><div class="issue-head"><span>{label}</span></div>'
-                     + _front(issue)
-                     + "".join(_section(b, f"issue-{issue['date']}-{n}") for n, b in enumerate(issue["items"])) + "</div>")
+    works = collect(issues)
+    for w in works:
+        w["_today"] = latest["date"]
+    body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="今日 · {latest["date"].replace("-", ".")}">'
+            + _front(latest) + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
+    parts = [body]
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -333,7 +678,7 @@ def render(issues):
 <title>关注清单通信 No.{latest['no']:03d}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
-<style>{CSS}</style>
+<style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
 </head>
 <body>
 <div class="page">
@@ -342,8 +687,10 @@ def render(issues):
 <h1>关注清单通信</h1>
 <div class="meta"><div class="no">No.{latest['no']:03d}</div><div class="mono">{latest['date'].replace('-', '.')}</div></div>
 </div></header>
-{''.join(parts)}
+{_nav(works, latest['date'])}
+<main class="issues">{''.join(parts)}</main>
 </div>
+<script>{NAV_JS}</script>
 </body>
 </html>
 """

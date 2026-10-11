@@ -44,7 +44,7 @@
      "headline": "战斗系统详解：领地宣言可重置冷却",
      "highlight": "领地宣言",
      "image": "https://cdn.gamey.kr/news/photo/202610/3019068_171645_5722.jpg",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBnVE93YkJrV1Q2eXdSYU55WVk5TUpUSUFyWXdqUzZ5TFdXQ1BmQTloR2ZueGZqWTZ4NjZoVVNXU1hhZm5QVFBrY3g4LXJobjBMRTNUalB5b095cTVubXZMc1ZxbU1yZ9IBakFVX3lxTE9WcEcwb2NSWm5DYnVyWVloSmZNdUhPTWlVLXNQbjlkelVwT2YtaEg2dFFUN0NVNDV1ZlJHRjgwVWFTelljZS1jc3N3VFFXUmY2bXp3V0VkUjJsZTdONHpoSlpMX053VkVGeVE?oc=5",
+     "url": "http://www.gamey.kr/news/articleView.html?idxno=3019068",
      "weight": "normal"
     },
     {
@@ -65,18 +65,58 @@
     },
     {
      "blurb": "",
-     "headline": "[아스오라][기본학습⑦] 평가 시험 상대는 체력 1만 갑옷 기사",
+     "headline": "Astrae Oratio My Final Thoughts on CBT 1 , The potential is immense..",
      "highlight": "",
-     "image": "https://cdn.gamey.kr/news/thumbnail/202610/3019072_171670_245_v150.jpg",
-     "url": "http://www.gamey.kr/news/articleView.html?idxno=3019072",
+     "image": "https://external-preview.redd.it/K7N7ioU2d7csvDIUCYzeTe1ghmkUYsuXT22bFVjyY7s.jpeg?width=320&crop=smart&auto=webp&s=b35d056464ac9cd111b1a250e1b7a84daaa7413c",
+     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1wzbau0/astrae_oratio_my_final_thoughts_on_cbt_1_the/",
      "weight": "normal"
     },
     {
      "blurb": "",
-     "headline": "'아스트라에 오라티오' 신규 티저 영상 공개",
+     "headline": "For those who played Astrae Oratio CBT what you thought about it?",
      "highlight": "",
-     "image": "https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202610/05/maniareport/20261005223602600wvwc.jpg",
-     "url": "https://v.daum.net/v/20261005223600721?f=p",
+     "image": null,
+     "url": "https://www.reddit.com/r/gachagaming/comments/1wz0om0/for_those_who_played_astrae_oratio_cbt_what_you/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "Made an idle animation for Anna M. Battenberg",
+     "highlight": "",
+     "image": "https://external-preview.redd.it/eW1zMnZrdXRwYXVoMXP5Gbyf8S63-faEwbCRYXaKMNvF_msyFClH8zLez6dy.png?width=640&crop=smart&auto=webp&s=76ec5ae18dadff38a706cb351c8ee28bce9952b6",
+     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1x10g1z/made_an_idle_animation_for_anna_m_battenberg/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "Astrae Oratio Skills and Ultimate preview",
+     "highlight": "",
+     "image": "https://external-preview.redd.it/cHN1MXBxMGFycXRoMat8rngEU6i2-d58IrG8iWfkTegWZTSvn81xSv0Y283H.png?width=640&crop=smart&auto=webp&s=89c631467ba88e1ed02e3f2e9b8d7a417ce00f4d",
+     "url": "https://www.reddit.com/r/gachagaming/comments/1wyouhm/astrae_oratio_skills_and_ultimate_preview/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "➡️PROGRAMACIÓN SEMANAL",
+     "highlight": "",
+     "image": "https://preview.redd.it/hkifdixygqth1.jpeg?width=640&crop=smart&auto=webp&s=1d72308bc9e35afbf5faee352dddfd4d717710a0",
+     "url": "https://www.reddit.com/r/ElKamiNews/comments/1wynlcb/programación_semanal/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "Astrae Oratio Full Combat System Breakdown !",
+     "highlight": "",
+     "image": "https://external-preview.redd.it/FyDZJefxMIfvhWVJEfo5tRv9mzjSwjQyQWAPxWaiPTs.jpeg?width=320&crop=smart&auto=webp&s=627b84dc3f39dbb84a1f8546f2db698d09e8b3bd",
+     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1wxvmns/astrae_oratio_full_combat_system_breakdown/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "[아스오라][기본학습⑦] 평가 시험 상대는 체력 1만 갑옷 기사",
+     "highlight": "",
+     "image": "https://cdn.gamey.kr/news/thumbnail/202610/3019072_171670_245_v150.jpg",
+     "url": "http://www.gamey.kr/news/articleView.html?idxno=3019072",
      "weight": "normal"
     }
    ],
@@ -89,6 +129,132 @@
     "bg": "#1B1B1C",
     "fg": "#F2F2F4",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg",
+   "facts": [],
+   "name": "GTA 6",
+   "section": "游戏",
+   "stories": [
+    {
+     "blurb": "",
+     "headline": "GTA 6 leaker threatens to release full game build before November launch",
+     "highlight": "",
+     "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/lucia_caminos_07.jpg?w=1600&h=900&fit=crop",
+     "url": "https://www.polygon.com/grand-theft-auto-6-gta-cyberleek-full-build-release-threat/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "headline": "Is GTA 6 Coming to Switch 2? Nintendo of America Chief Says It’s Up to Rockstar & Take-Two",
+     "highlight": "",
+     "image": null,
+     "url": "https://windowsreport.com/gta-6-on-nintendo-switch-2-is-up-to-rockstar-take-two-devon-pritchard/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "GTA 6 Leaker Guns For Take-Two With Disc And Apology Ultimatum",
+     "highlight": "",
+     "image": "https://images.hothardware.com/contentimages/newsitem/71832/content/16x9_2133x1200_highres-gta-6-jason-lucia.jpg",
+     "url": "https://hothardware.com/news/gta-6-leaker-guns-take-two-disc-apology-ultimatum",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "🚨 Rockstar has revealed the hosts of the radio stations in GTA 6:",
+     "highlight": "",
+     "image": "https://preview.redd.it/qu6es4hti9uh1.jpeg?width=640&crop=smart&auto=webp&s=0c631b40a705768e4913028ba6d47a963b03b360",
+     "url": "https://www.reddit.com/r/GTA/comments/1x0u24y/rockstar_has_revealed_the_hosts_of_the_radio/",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
+   "theme": {
+    "accent": "#FF5FA2",
+    "alt_accent": "#C2185B",
+    "alt_bg": "#FFB25B",
+    "alt_fg": "#1E1033",
+    "bg": "#1E1033",
+    "fg": "#FFF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "滑雪",
+   "section": "运动",
+   "stories": [
+    {
+     "blurb": "",
+     "headline": "【星野リゾート】福島県のスキー場ネコマ マウンテン、シーズン券＆早割リフト券の販売開始 - お得な「3日券・5日券」が新登場",
+     "highlight": "",
+     "image": "https://news.mynavi.jp/article/20261006-5063054/ogp_images/ogp.jpg",
+     "url": "https://news.mynavi.jp/article/20261006-5063054/",
+     "weight": "hero"
+    },
+    {
+     "blurb": "",
+     "headline": "【信州 北八ヶ岳標高 1830ｍ：八千穂高原スキー場】シーズン前に購入する事で大変お得な「早割チケット」10月より販売開始！",
+     "highlight": "",
+     "image": null,
+     "url": "https://news.nicovideo.jp/watch/nw19848896",
+     "weight": "hero"
+    },
+    {
+     "blurb": "",
+     "headline": "所沢で初滑り！狭山スキー場2026-27シーズンは10月30日オープン",
+     "highlight": "",
+     "image": "https://tokorozawanavi.com/wp-content/uploads/2026/09/134339-67-571f8cd3625d05d52bf74f8609ebeea6-960x72011-1.jpg",
+     "url": "https://tokorozawanavi.com/news-sayamaski20261006/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "headline": "八千穂高原スキー場、2026-27シーズンの早割リフト券を10月1日から販売開始",
+     "highlight": "",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/nagano-ski-snowboard.jpg",
+     "url": "https://dmksnowboard.com/yachiho-kogen-ski-resort-early-bird-tickets-2026-27/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "Which of Western Canada’s Ski Areas Will Open First?",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.powder.com/news/western-canada-ski-resorts-opening-dates-2026",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "‘Unprecedented’ winter weather looms over the ski season: Find out when resorts open",
+     "highlight": "",
+     "image": "https://www.telegraph.co.uk/content/dam/travel/2025/10/27/TELEMMGLPICT000446554593_17615720004180_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQf-0Jyi0jPPD6Zx1hiwTPhlc.jpeg?impolicy=Twitter-Standard",
+     "url": "https://www.telegraph.co.uk/travel/ski/news/ski-resorts-opening-usa-europe/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "headline": "JATA、春スキーで早期予約促進 訪日需要拡大で日本人の予約行動にも変化求める",
+     "highlight": "",
+     "image": "http://www.travelvision.jp/common/img/header/logo.jpg",
+     "url": "https://www.travelvision.jp/news/detail/news-124654",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
     "split": true
    }
   },
@@ -110,48 +276,6 @@
     "bg": "#FBF7EE",
     "fg": "#1A1111",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg",
-   "facts": [],
-   "last": null,
-   "name": "GTA 6",
-   "quiet": true,
-   "section": "游戏",
-   "status": "定于 2026 年 11 月 19 日发售（PS5 / Xbox Series X|S）· PC 版未公布",
-   "stories": [],
-   "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
-   "theme": {
-    "accent": "#FF5FA2",
-    "alt_accent": "#C2185B",
-    "alt_bg": "#FFB25B",
-    "alt_fg": "#1E1033",
-    "bg": "#1E1033",
-    "fg": "#FFF1F6",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "last": null,
-   "name": "滑雪",
-   "quiet": true,
-   "section": "运动",
-   "status": "",
-   "stories": [],
-   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
-   "theme": {
-    "accent": "#D9412B",
-    "alt_accent": "#8EC5E8",
-    "alt_bg": "#14233A",
-    "alt_fg": "#F4F8FB",
-    "bg": "#F4F8FB",
-    "fg": "#14233A",
-    "font": "sans",
     "split": true
    }
   }

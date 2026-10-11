@@ -1,5 +1,7 @@
 """Discord 通知。
 
+changes    推送了新功能（代码、工作流、编辑手册、skill 有改动）时，把这些提交的说明发一条「功能更新」；
+           已经发过的位置记在 state/announced_commit.txt
 new-items  items.yaml 里新加 / 删掉了关注项，发一条通知；已知的关注项记在 state/known_items.json
 urgent  要紧消息（ingest 标记的 urgent 条目、状态变化）当天立刻发；发过的记在 state/notified.json，不重复发
 weekly  每周一发一次：过去 7 天各关注项的要点 + 简报网页链接
@@ -11,6 +13,7 @@ weekly  每周一发一次：过去 7 天各关注项的要点 + 简报网页链
 import datetime as dt
 import json
 import os
+import subprocess
 import sys
 import urllib.request
 
@@ -18,6 +21,9 @@ import digest
 import sources
 
 NOTIFIED_FILE = digest.STATE_DIR / "notified.json"
+ANNOUNCED_FILE = digest.STATE_DIR / "announced_commit.txt"
+# 改了这些地方才算“功能更新”；只改数据（inbox / reports / state / docs）或关注清单的不算
+FEATURE_PATHS = ["scripts", ".github", "EDITING.md", ".claude", "requirements.txt", "README.md"]
 KNOWN_FILE = digest.STATE_DIR / "known_items.json"
 TYPE_NAMES = {"product": "商品", "category": "一类产品", "game": "游戏", "anime": "动画 / 漫画", "show": "影视剧"}
 MAX_LINES = 6  # 每个关注项最多列几条
@@ -108,6 +114,45 @@ def urgent(page_url):
         # 只保留 30 天的记录（更早的消息早已不会再被收集），文件不会无限变大
         cutoff = (today - dt.timedelta(days=30)).isoformat()
         digest.save_json(NOTIFIED_FILE, {k: d for k, d in notified.items() if d >= cutoff})
+
+
+def _git(*args):
+    return subprocess.run(["git", *args], cwd=digest.ROOT, capture_output=True, text=True, check=True).stdout
+
+
+def changes(page_url):
+    """上次通知之后新加的功能（提交说明的第一行）发 Discord。机器人自己的提交和合并提交不算。"""
+    head = _git("rev-parse", "HEAD").strip()
+    if not ANNOUNCED_FILE.exists():
+        ANNOUNCED_FILE.write_text(head + "\n")
+        return
+    since = ANNOUNCED_FILE.read_text().strip()
+    try:
+        log = _git("log", "--no-merges", "--reverse", "--format=%H%x1f%s%x1f%an", f"{since}..{head}", "--", *FEATURE_PATHS)
+    except subprocess.CalledProcessError as e:
+        print(f"[警告] 读不到提交记录：{e.stderr.strip()}", file=sys.stderr)
+        return
+    repo = os.environ.get("GITHUB_REPOSITORY", "CxElegy/Wishlist")
+    lines = []
+    for row in log.splitlines():
+        sha, subject, author = row.split("\x1f")
+        if author == "github-actions[bot]":
+            continue
+        lines.append(f"• [{_cut(subject, 150)}](https://github.com/{repo}/commit/{sha[:7]})")
+    if not lines:
+        ANNOUNCED_FILE.write_text(head + "\n")
+        return
+    desc = "\n".join(lines)
+    if len(desc) > 3800:
+        desc = desc[:3800] + "\n……"
+    payload = {
+        "username": "关注清单通信",
+        "content": f"**【功能更新】关注清单加了新功能**\n简报：{page_url}",
+        "embeds": [{"title": f"本次更新 · {len(lines)} 项", "url": f"https://github.com/{repo}/commits",
+                    "color": 0x2F5BD3, "description": desc}],
+    }
+    if send(payload):
+        ANNOUNCED_FILE.write_text(head + "\n")
 
 
 def new_items(page_url):
