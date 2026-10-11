@@ -164,11 +164,11 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-11",
-     "headline": "塞巴斯蒂安·斯坦称《复仇者联盟5：毁灭之日》或令漫威粉丝心碎",
+     "date": "2026-10-08",
+     "headline": "Samuel L. Jackson Returns For Avengers: Secret Wars Not Doomsday",
      "highlight": "",
-     "image": "https://img1.gamersky.com/upimg/pic/2026/10/11/small_202610111543528550.webp",
-     "url": "https://www.gamersky.com/news/202610/2225664.shtml",
+     "image": "https://cosmicbook.news/wp-content/uploads/2026/10/samuel-l-jakcson-nick-fury-avengers-doomsday-secret-wars.webp",
+     "url": "https://cosmicbook.news/samuel-l-jackson-nick-fury-avengers-secret-wars-doomsday",
      "weight": "normal"
     }
    ],
@@ -254,6 +254,34 @@
     "bg": "#15131F",
     "fg": "#F3EEDF",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "滑雪",
+   "section": "运动",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "無限ダウンヒルスキーゲーム『SNØ: Ultimate Freeriding』コンソール版配信日決定！",
+     "highlight": "",
+     "image": null,
+     "url": "https://news.nicovideo.jp/watch/nw19858332?news_ref=watch_70_nw19603093",
+     "weight": "lead"
+    }
+   ],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
     "split": true
    }
   },
@@ -507,31 +535,6 @@
     "bg": "#1B1B1C",
     "fg": "#F2F2F4",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "last": {
-    "date": "2026-10-11",
-    "headline": "【星野リゾート】福島県のスキー場ネコマ マウンテン、シーズン券＆早割リフト券の販売開始 - お得な「3日券・5日券」が新登場",
-    "url": "https://news.mynavi.jp/article/20261006-5063054/"
-   },
-   "name": "滑雪",
-   "quiet": true,
-   "section": "运动",
-   "status": "",
-   "stories": [],
-   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
-   "theme": {
-    "accent": "#D9412B",
-    "alt_accent": "#8EC5E8",
-    "alt_bg": "#14233A",
-    "alt_fg": "#F4F8FB",
-    "bg": "#F4F8FB",
-    "fg": "#14233A",
-    "font": "sans",
     "split": true
    }
   }
