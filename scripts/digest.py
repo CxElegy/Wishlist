@@ -151,7 +151,36 @@ def _norm(text):
     return re.sub(r"\s+", "", text.lower())
 
 
-def filter_entries(entries, item, settings, seen, now):
+# 图片画廊、附图页这类“同一篇文章的分页”，标题只差编号，直接丢掉
+JUNK_PATTERNS = [r"^画像ギャラリー", r"\d+枚目の写真", r"写真・画像$", r"^图集", r"^사진\s*\d"]
+# 标题去掉作品名后，字符二元组重合度超过这个值视为同一篇（转载、截断标题、改了后缀的）。
+# 用实际标题校准过：真重复 ≥ 0.8，不同文章 ≤ 0.63
+SIMILAR = 0.75
+
+
+def _similar(a, b):
+    return len(a & b) / max(1, min(len(a), len(b))) > SIMILAR
+
+
+def _title_grams(title, names):
+    """去掉作品名再取二元组，避免“都含游戏名”被误判为同一篇。"""
+    t = re.sub(r"\W+", "", title.rstrip(". …").lower())
+    for n in names:
+        t = t.replace(re.sub(r"\W+", "", n.lower()), "")
+    return {t[i:i + 2] for i in range(len(t) - 1)}
+
+
+def recent_titles(days=7):
+    """最近几天 inbox 里已经收过的标题，按关注项分组，用来做跨批次的相似去重。"""
+    titles = {}
+    for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-days:]:
+        for item in load_json(path).get("items", []):
+            titles.setdefault(item["name"], []).extend(e["title"] for e in item["entries"])
+    return titles
+
+
+def filter_entries(entries, item, settings, seen, now, known=()):
+    names = [item["name"], *(item.get("keywords") or []), *(item.get("match") or [])]
     since = now - dt.timedelta(days=settings.get("lookback_days", 7))
     exclude = [w.lower() for w in item.get("exclude") or []]
     # 新闻搜索会混入不相关结果：标题或摘要里必须出现某个匹配词（忽略大小写和空格）
@@ -163,10 +192,16 @@ def filter_entries(entries, item, settings, seen, now):
         key = title_key(e.title)
         if key not in best or ("news.google.com" in best[key].url and "news.google.com" not in e.url):
             best[key] = e
-    out = []
+    out, grams = [], [_title_grams(t, names) for t in known]
+    skip_sources = set(settings.get("exclude_sources", ["YouTube"]))
     for e in sorted(best.values(), key=lambda e: e.published or now, reverse=True):
         key = title_key(e.title)
-        if e.url in seen or key in seen:
+        if e.url in seen or key in seen or e.source in skip_sources:
+            continue
+        if any(re.search(p, e.title) for p in JUNK_PATTERNS):
+            continue
+        g = _title_grams(e.title, names)
+        if any(_similar(g, h) for h in grams):
             continue
         if e.published and e.published < since:
             continue
@@ -175,6 +210,7 @@ def filter_entries(entries, item, settings, seen, now):
         trusted = e.source in TRUSTED_SOURCES or e.source in {f"r/{s}" for s in item.get("subreddits") or []}
         if not trusted and not any(w in _norm(e.title + e.summary) for w in match):
             continue
+        grams.append(g)
         out.append(e)
     # Reddit 帖子多且杂（同人图、闲聊），单独限额，不和媒体报道抢名额
     news = [e for e in out if not e.source.startswith("r/") and e.source != "Reddit"]
@@ -456,11 +492,12 @@ def ingest(dry_run=False):
     # “每天一期”按你所在时区的日期划分（默认北京时间）
     today = now.astimezone(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
     seen, facts = load_json(SEEN_FILE), load_json(FACTS_FILE)
+    known = recent_titles()
 
     inbox_items = []
     for item in items:
         print(f"抓取：{item['name']}", file=sys.stderr)
-        entries = filter_entries(collect(item, settings), item, settings, seen, now)
+        entries = filter_entries(collect(item, settings), item, settings, seen, now, known.get(item["name"], []))
         print(f"  新条目 {len(entries)} 条", file=sys.stderr)
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
@@ -501,8 +538,9 @@ def ingest(dry_run=False):
 def load_edits(inbox_path):
     """读取人工 / Claude 写的编排：inbox/YYYY-MM-DD.edit.json，格式：
     {"关注项名称": [{"headline": "中文标题", "highlight": "标题里要强调的字", "blurb": "一句话",
-                    "weight": "hero|lead|normal", "refs": [inbox 里条目的 n]}, ...]}
-    某个关注项写成空列表 [] 表示本期不出现。"""
+                    "weight": "hero|lead|normal", "refs": [inbox 里条目的 n]}, ...],
+     "_covered": {"关注项名称": 编排时 inbox 里该项的条目数}}
+    某个关注项写成空列表 [] 表示本期不出现。详细规则见 EDITING.md。"""
     path = inbox_path.with_suffix(".edit.json")
     return load_json(path) if path.exists() else {}
 
@@ -532,17 +570,24 @@ def publish(inbox_path=None):
     for raw in inbox["items"]:
         item = by_name.get(raw["name"], {"name": raw["name"], "type": "product"})
         entries = [entry_from_dict(d) for d in raw["entries"]]
-        if raw["name"] in edits:
+        if raw["name"] in edits and not raw["name"].startswith("_"):
             stories = [dict(s) for s in edits[raw["name"]]]
             for s in stories:
                 s.setdefault("highlight", ""), s.setdefault("blurb", ""), s.setdefault("weight", "normal")
                 s["refs"] = [r for r in s.get("refs", []) if 0 < r <= len(entries)]
             stories = [s for s in stories if s["refs"]]
-            # 编排写好之后当天又来的要紧消息：自动补成“重大”板块放在最前面
-            used = {r for s in stories for r in s["refs"]}
-            late = [{"headline": e.title, "highlight": "", "blurb": "", "weight": "hero", "refs": [n]}
-                    for n, e in enumerate(entries, 1) if n not in used and raw["entries"][n - 1].get("urgent")]
-            stories = late + stories
+            # 编排写好之后当天又来的消息（编号大于 _covered）：先用关键词规则补上，
+            # 要紧的放最前面做“重大”，其余接在后面；下次 AI 编排时会重写
+            covered = edits.get("_covered", {}).get(raw["name"], len(entries))
+            late = [(n, e) for n, e in enumerate(entries, 1) if n > covered]
+            if late:
+                extra = fallback_stories([e for _, e in late], item)
+                for x in extra:
+                    x["refs"] = [late[x["refs"][0] - 1][0]]
+                    if x["weight"] == "lead":
+                        x["weight"] = "normal"
+                stories = [x for x in extra if x["weight"] == "hero"] + stories + \
+                          [x for x in extra if x["weight"] != "hero"]
         elif entries:
             stories = (edit_stories(client, model, item, entries) if client else None) or fallback_stories(entries, item)
         else:
