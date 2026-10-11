@@ -85,6 +85,31 @@ items:
       split: true
       font: serif
 
+  - name: BLEACH Mirrors High
+    subtitle: 死神 新作手游
+    type: game
+    keywords: ["BLEACH Mirrors High", "死神 Mirrors High", "ブリーチ ミラーズハイ"]
+    match: [Mirrors High, ミラーズハイ, ミラハイ]
+    news_langs: [zh-CN, en-US, ja-JP]
+    priority: 什么时候能玩：正式上线日期、下次测试、全球 / 国服版本
+    priority_keywords: [
+      上线, 上線, 发售, 配信, リリース, release, launch,
+      配信日, 発売日, 定档, 日程, 決定, 确定,
+      测试, 測試, CBT, beta, β, テスト,
+      预约, 預約, 事前登録, pre-regist, 国服, 全球, global
+    ]
+    urgent_patterns:
+      # 上线 / 配信日期公布
+      - '(上线|上線|发售|發售|配信|リリース|release|launch)\s*(日|日期|日程|date).{0,12}(決定|决定|確定|确定|公布|発表|公開|announce|confirm|reveal)'
+      - '(定档|定檔|配信日決定|配信開始|正式上线|正式配信|release date (announced|confirmed|revealed)|(is )?(out )?now available|launches (today|on))'
+      # 下一次测试公布
+      - '(第2回|第二次|二测|二測|second|2nd|next|global|final).{0,12}(CBT|β|ベータ|测试|測試|封测|封測|beta|test).{0,20}(決定|决定|確定|确定|公布|発表|募集|招募|报名|報名|announce|registration|sign.?up|date)'
+    notes: >-
+      万代南梦宫发行的《死神 BLEACH》新作手游（iOS/Android），久保带人参与监修，
+      剧情接续《千年血战篇》之后，三人组队 + 卡牌连携战斗。2025 年 12 月 Jump Festa 首次公开，
+      2026 年 7 月 22–29 日进行过封闭测试，8 月 29 日开放事前登录，官方称 2026 年内上线，具体日期未定。
+    site: https://bleach-mh.bn-ent.net/
+
   # ↓↓↓ 其它类型的写法示例，去掉行首的 # 就会生效 ↓↓↓
   #
   # - name: 葬送的芙莉莲
