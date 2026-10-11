@@ -372,6 +372,24 @@ def edit_stories(client, model, item, entries):
     return [s for s in stories if s["refs"]]
 
 
+QUOTED = r"[『「《〈]([^』」》〉]+)[』」》〉]"
+EVENT_NAMES = r"(TGS|東京ゲームショウ|Tokyo Game Show|gamescom|BitSummit|Anime ?Expo|Jump ?Festa|ジャンプフェスタ|\[)"
+
+
+def side_mention(title, item):
+    """标题里列了好几部作品、打头的是别的作品，本作只是顺带一提
+    （例：『ガンダム…』がブースで試遊出展。『BLEACH Mirrors High』『ワンピース…』などとともに）。
+    打头的是本作的系列名（如『BLEACH』）不算。只看单部作品（游戏、动画），一类东西 / 系列本来就会列好几个。"""
+    if item.get("type") not in ("game", "anime"):
+        return False
+    works = [q for q in re.findall(QUOTED, title) if not re.match(EVENT_NAMES, q, re.I)]
+    if len(works) < 2:
+        return False
+    first = _norm(works[0])
+    names = [_norm(w) for w in [item["name"], *(item.get("keywords") or []), *(item.get("match") or [])]]
+    return not any(n in first or first in n for n in names if n)
+
+
 def _bigrams(text):
     t = re.sub(r"\W+", "", text.lower())
     return {t[i:i + 2] for i in range(len(t) - 1)}
@@ -406,6 +424,7 @@ def fallback_stories(entries, item, limit=7):
       头条以外只留至少 HEAT_MIN_OUTLETS 家在报的，没那么多事就少写
     - 同一新闻被多家转载时只留一条（标题字符重合度高的视为同一条）
     - 媒体报道优先于 Reddit；Reddit 帖子没命中关键词的不收（多半是同人图、闲聊）
+    - 本作只是被顺带提到的（打头的是别的作品）不收
     - 同等条件下有图的、较新的优先"""
     words = [w.lower() for w in item.get("priority_keywords") or []]
     urgent = {i for i, e in enumerate(entries, 1) if is_urgent(e, item)}
@@ -428,7 +447,8 @@ def fallback_stories(entries, item, limit=7):
         return (i in urgent, hits(e) > 0, not e.source.startswith("r/"), hits(e),
                 bool(e.image) or "news.google.com" not in e.url, -i)
 
-    candidates = [(i, e) for i, e in enumerate(entries, 1) if hits(e) or not e.source.startswith("r/")]
+    candidates = [(i, e) for i, e in enumerate(entries, 1)
+                  if (hits(e) or not e.source.startswith("r/")) and not side_mention(e.title, item)]
     picked, grams = [], []
     for i, e in sorted(candidates, key=score, reverse=True):
         g = _bigrams(e.title)
