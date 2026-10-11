@@ -5,7 +5,8 @@
 - 最上面一张「头版」：最近一周的实时总览（最重要的一条做头条 + 各作品最新一条 + 最新消息列表）
 - 版面数量和顺序固定（板块 → items.yaml 顺序）；每天更新只是版面里的消息变化
 - 每个关注项一个版面，配色取自该作品（theme.py）。所有日期的消息汇总在一起，按时间排列（新的在前）：
-  - 一周内收到的直接显示，卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满
+  - 一周内收到的直接显示（最多约一屏），卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满；
+    放不下时先按重要度挑出留下的，留下的再按时间排
   - 更早的收进版面底部的「更早的消息」折叠区，点开才显示
 - 一周内没有新消息的关注项只留一个小栏：标题条 + 现状
 """
@@ -310,9 +311,7 @@ def _row_height(row):
     return ROW_HEIGHT.get(widest[1], 350)
 
 
-def _timeline(stories, today):
-    """一周内的消息：按时间排成行，放满约一屏为止；放不下的返回给折叠区。"""
-    packed = _pack(stories, lambda s: SPAN.get(s.get("weight"), 4))
+def _rows(packed):
     rows, row, used = [], [], 0
     for x in packed:
         row.append(x)
@@ -320,15 +319,32 @@ def _timeline(stories, today):
         if used >= 12:
             rows.append(row)
             row, used = [], 0
-    shown, height = [], 0
-    for row in rows:
-        h = _row_height(row)
-        if shown and height + h > PAGE_HEIGHT:
-            break
-        shown += row
-        height += h
-    rest = [s for s, _ in packed[len(shown):]]
-    html_ = '<div class="grid">' + "".join(_tcard(s, w, i, today) for i, (s, w) in enumerate(shown)) + "</div>"
+    return rows + ([row] if row else [])
+
+
+def _height(stories):
+    return sum(_row_height(r) for r in _rows(_pack(stories, lambda s: SPAN.get(s.get("weight"), 4))))
+
+
+def _timeline(stories, today):
+    """一周内的消息，最多放约一屏。放不下时按重要度挑：重要的先留（同样重要的取新的），
+    能放进一屏就留下；留下的再按时间排列显示，其余返回给折叠区。"""
+    def newest_first(xs):
+        return sorted(xs, key=lambda x: x.get("date") or x["_issue"], reverse=True)
+
+    keep = stories
+    if _height(stories) > PAGE_HEIGHT:
+        by_rank = sorted(newest_first(stories), key=lambda x: RANK.get(x.get("weight"), 2))
+        keep = []
+        for x in by_rank:
+            trial = newest_first(keep + [x])
+            if not keep or _height(trial) <= PAGE_HEIGHT:
+                keep = trial
+        keep = newest_first(keep)
+    kept = {id(x) for x in keep}
+    rest = [x for x in stories if id(x) not in kept]
+    packed = _pack(keep, lambda s: SPAN.get(s.get("weight"), 4))
+    html_ = '<div class="grid">' + "".join(_tcard(s, w, i, today) for i, (s, w) in enumerate(packed)) + "</div>"
     return html_, rest
 
 
