@@ -7,6 +7,17 @@
 
 ## 流程
 
+**图解**（开启 GitHub Pages 后可直接打开网页版）：
+
+| 图 | 网页 | 图片 |
+|---|---|---|
+| 流程图（含时间轴、费用、GitHub 限制附录） | [flow.html](https://cxelegy.github.io/Wishlist/design/flow.html) | [flow.png](docs/design/flow.png) |
+| 架构图（哪个任务在哪个环境） | [architecture.html](https://cxelegy.github.io/Wishlist/design/architecture.html) | [architecture.png](docs/design/architecture.png) |
+| 工作流程图解 | [guide.html](https://cxelegy.github.io/Wishlist/design/guide.html) | [guide.png](docs/design/guide.png) |
+| 合并图（分支怎么合、合并之后的流程） | [merge.html](https://cxelegy.github.io/Wishlist/design/merge.html) | [merge.png](docs/design/merge.png) |
+
+设计稿源文件在 `design/`（Claude 设计画布格式，修改时用）。
+
 分两步，中间用 `inbox/` 里的数据文件衔接。
 
 GitHub Actions 的安排：
@@ -119,5 +130,7 @@ python scripts/digest.py notify-weekly   # 发过去 7 天的周报
 | `scripts/notify.py` | Discord 通知（要紧消息 / 周报） |
 | `inbox/` | 每期收集到的原始条目；`.edit.json` 是对应的编排 |
 | `reports/` | 每期出刊的数据（JSON） |
-| `docs/` | 简报网页，由 GitHub Pages 发布 |
+| `docs/` | 简报网页，由 GitHub Pages 发布；`docs/design/` 是流程图和架构图 |
+| `design/` | 流程图、架构图、简报样式的设计稿源文件 |
+| `EDITING.md` | AI 编辑的工作规则 |
 | `state/` | 已报道的链接、上期状态、配色缓存，请勿手动修改 |

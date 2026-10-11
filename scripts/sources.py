@@ -310,6 +310,37 @@ def og_image(url):
     return None
 
 
+IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|/ads?/|\.svg|\.gif|data:", re.I)
+
+
+def article_images(url, limit=8):
+    """原文里的候选配图：og:image 排第一，然后是正文 <img>（优先 <article> 内的），去掉图标 / logo。"""
+    if not url or "news.google.com" in url:
+        return []
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            page = resp.read(1_500_000).decode("utf-8", "ignore")
+    except Exception:
+        return []
+    m = re.search(r"<article\b.*?</article>", page, re.I | re.S)
+    body = m.group(0) if m else page
+    found = []
+    og = og_image(url)
+    if og:
+        found.append(og)
+    for tag in re.findall(r"<img\b[^>]*>", body, re.I):
+        src = re.search(r'(?:data-src|data-original|src)=["\']([^"\']+)', tag, re.I)
+        if not src or IMG_SKIP.search(src.group(1)):
+            continue
+        u = urllib.parse.urljoin(url, html.unescape(src.group(1)))
+        if u.startswith("http") and u not in found:
+            found.append(u)
+        if len(found) >= limit:
+            break
+    return found
+
+
 def steam_header(appid):
     try:
         data = json.loads(_get(f"https://store.steampowered.com/api/appdetails?appids={appid}&filters=basic"))

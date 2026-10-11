@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关注清单通信 · 架构图</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500;700;900&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1A1C22}a:hover{color:#B83A17}
+</style>
+
+</head>
+<body>
+
+
+<div style="position: relative; width: 2004px; height: 1064px; background: #EDEBE6; color: #1A1C22; font-family: 'Noto Sans SC', sans-serif">
+
+<!-- ===== 环境边界（先画） ===== -->
+<!-- 互联网 -->
+<div style="position: absolute; left: 64px; top: 260px; width: 300px; height: 500px; box-sizing: border-box; border: 2px dashed #8C8678; background: #F4F2ED"></div>
+<!-- GitHub -->
+<div style="position: absolute; left: 440px; top: 200px; width: 920px; height: 800px; box-sizing: border-box; border: 3px dashed #1A1C22"></div>
+<div style="position: absolute; left: 480px; top: 260px; width: 840px; height: 260px; box-sizing: border-box; border: 2px dashed #1A1C22; background: #E2DDD2"></div>
+<div style="position: absolute; left: 480px; top: 600px; width: 600px; height: 360px; box-sizing: border-box; border: 2px solid #1A1C22; background: #F4F2ED"></div>
+<div style="position: absolute; left: 1120px; top: 600px; width: 200px; height: 360px; box-sizing: border-box; border: 2px solid #B83A17; background: #F6E3DC"></div>
+<!-- Anthropic -->
+<div style="position: absolute; left: 1440px; top: 200px; width: 500px; height: 320px; box-sizing: border-box; border: 3px dashed #2E7D4F"></div>
+<div style="position: absolute; left: 1480px; top: 300px; width: 420px; height: 196px; box-sizing: border-box; border: 2px dashed #2E7D4F; background: #DCE8DF"></div>
+<!-- Discord -->
+<div style="position: absolute; left: 1440px; top: 640px; width: 500px; height: 180px; box-sizing: border-box; border: 3px dashed #5865F2; background: #E1E3F7"></div>
+
+<!-- ===== 箭头 ===== -->
+<!-- 1 来源 → Actions -->
+<svg width="115" height="8" viewBox="0 0 115 8" preserveAspectRatio="none" style="position: absolute; left: 364px; top: 386px; width: 115px; height: 8px; overflow: visible; fill: none; stroke: #1A1C22; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-1" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#1A1C22" stroke="none" style="stroke: none; fill: #1A1C22; fill: context-stroke"/></marker></defs><path d="M 0 4 L 111 4" marker-end="url(#dc-arrow-head-filled-1)"></path></svg>
+<!-- 2a Actions → 仓库（写入） -->
+<svg width="8" height="79" viewBox="0 0 8 79" preserveAspectRatio="none" style="position: absolute; left: 636px; top: 520px; width: 8px; height: 79px; overflow: visible; fill: none; stroke: #1A1C22; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-2" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#1A1C22" stroke="none" style="stroke: none; fill: #1A1C22; fill: context-stroke"/></marker></defs><path d="M 4 0 L 4 75" marker-end="url(#dc-arrow-head-filled-2)"></path></svg>
+<!-- 2b 仓库 → Actions（读取） -->
+<svg width="8" height="79" viewBox="0 0 8 79" preserveAspectRatio="none" style="position: absolute; left: 896px; top: 521px; width: 8px; height: 79px; overflow: visible; fill: none; stroke: #1A1C22; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 6 6"><defs><marker id="dc-arrow-head-filled-3" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#1A1C22" stroke="none" style="stroke: none; fill: #1A1C22; fill: context-stroke"/></marker></defs><path d="M 4 79 L 4 4" marker-end="url(#dc-arrow-head-filled-3)"></path></svg>
+<!-- 3 仓库 → Pages -->
+<svg width="39" height="8" viewBox="0 0 39 8" preserveAspectRatio="none" style="position: absolute; left: 1080px; top: 776px; width: 39px; height: 8px; overflow: visible; fill: none; stroke: #B83A17; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-4" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#B83A17" stroke="none" style="stroke: none; fill: #B83A17; fill: context-stroke"/></marker></defs><path d="M 0 4 L 35 4" marker-end="url(#dc-arrow-head-filled-4)"></path></svg>
+<!-- 4 Anthropic ↔ 仓库（折线） -->
+<svg width="8" height="40" viewBox="0 0 8 40" preserveAspectRatio="none" style="position: absolute; left: 1496px; top: 520px; width: 8px; height: 40px; overflow: visible; fill: none; stroke: #2E7D4F; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M 4 0 L 4 40"></path></svg>
+<svg width="500" height="8" viewBox="0 0 500 8" preserveAspectRatio="none" style="position: absolute; left: 1000px; top: 556px; width: 500px; height: 8px; overflow: visible; fill: none; stroke: #2E7D4F; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M 0 4 L 500 4"></path></svg>
+<svg width="8" height="39" viewBox="0 0 8 39" preserveAspectRatio="none" style="position: absolute; left: 996px; top: 560px; width: 8px; height: 39px; overflow: visible; fill: none; stroke: #2E7D4F; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-5" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#2E7D4F" stroke="none" style="stroke: none; fill: #2E7D4F; fill: context-stroke"/></marker></defs><path d="M 4 0 L 4 35" marker-end="url(#dc-arrow-head-filled-5)"></path></svg>
+<!-- 5 Actions → Discord（折线） -->
+<svg width="80" height="8" viewBox="0 0 80 8" preserveAspectRatio="none" style="position: absolute; left: 1320px; top: 296px; width: 80px; height: 8px; overflow: visible; fill: none; stroke: #5865F2; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M 0 4 L 80 4"></path></svg>
+<svg width="8" height="400" viewBox="0 0 8 400" preserveAspectRatio="none" style="position: absolute; left: 1396px; top: 300px; width: 8px; height: 400px; overflow: visible; fill: none; stroke: #5865F2; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M 4 0 L 4 400"></path></svg>
+<svg width="39" height="8" viewBox="0 0 39 8" preserveAspectRatio="none" style="position: absolute; left: 1400px; top: 696px; width: 39px; height: 8px; overflow: visible; fill: none; stroke: #5865F2; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-6" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#5865F2" stroke="none" style="stroke: none; fill: #5865F2; fill: context-stroke"/></marker></defs><path d="M 0 4 L 35 4" marker-end="url(#dc-arrow-head-filled-6)"></path></svg>
+<!-- 6 Pages → 你 -->
+<svg width="119" height="8" viewBox="0 0 119 8" preserveAspectRatio="none" style="position: absolute; left: 1320px; top: 916px; width: 119px; height: 8px; overflow: visible; fill: none; stroke: #B83A17; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-7" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#B83A17" stroke="none" style="stroke: none; fill: #B83A17; fill: context-stroke"/></marker></defs><path d="M 0 4 L 115 4" marker-end="url(#dc-arrow-head-filled-7)"></path></svg>
+<!-- 7 Discord → 你 -->
+<svg width="8" height="59" viewBox="0 0 8 59" preserveAspectRatio="none" style="position: absolute; left: 1686px; top: 820px; width: 8px; height: 59px; overflow: visible; fill: none; stroke: #5865F2; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><defs><marker id="dc-arrow-head-filled-8" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#5865F2" stroke="none" style="stroke: none; fill: #5865F2; fill: context-stroke"/></marker></defs><path d="M 4 0 L 4 55" marker-end="url(#dc-arrow-head-filled-8)"></path></svg>
+
+<!-- ===== 标题 ===== -->
+<div style="position: absolute; left: 64px; top: 44px; font-size: 40px; font-weight: 900; letter-spacing: 0.04em; line-height: 48px">架构图 · 哪个任务在哪个环境</div>
+<div style="position: absolute; left: 64px; top: 100px; font-size: 15px; line-height: 22px; color: #4A4538">虚线框 = 运行环境（<b>临时</b>：每次新开、用完即销毁）· 实线框 = 长期保存的地方 · 卡片 = 任务或文件</div>
+
+<!-- ===== 环境名 ===== -->
+<div style="position: absolute; left: 80px; top: 272px; font-size: 14px; font-weight: 900; line-height: 20px">互联网 · 新闻来源</div>
+<div style="position: absolute; left: 248px; top: 272px; padding: 1px 8px; background: #2E7D4F; color: #FFFFFF; font-size: 11px; font-weight: 900; line-height: 18px">免费</div>
+
+<div style="position: absolute; left: 456px; top: 212px; font-size: 18px; font-weight: 900; line-height: 26px">GitHub</div>
+<div style="position: absolute; left: 532px; top: 216px; padding: 1px 8px; background: #2E7D4F; color: #FFFFFF; font-size: 11px; font-weight: 900; line-height: 18px">免费（公开仓库）</div>
+
+<div style="position: absolute; left: 496px; top: 270px; font-size: 13px; font-weight: 900; line-height: 20px">GitHub Actions · 临时服务器 Ubuntu <span style="font-weight: 500; color: #4A4538">（每次新开一台，跑完即销毁）</span></div>
+<div style="position: absolute; left: 1086px; top: 268px; width: 222px; box-sizing: border-box; padding: 2px 8px; display: flex; align-items: center; gap: 6px; background: #1A1C22; color: #F1EEE6; font-size: 11px; line-height: 18px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F1EEE6" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Secrets：Discord Webhook 网址</span></div>
+
+<div style="position: absolute; left: 496px; top: 610px; font-size: 13px; font-weight: 900; line-height: 20px">仓库 CxElegy/Wishlist · 长期存储 <span style="font-weight: 500; color: #4A4538">（公开）</span></div>
+<div style="position: absolute; left: 1136px; top: 610px; font-size: 13px; font-weight: 900; line-height: 20px; color: #B83A17">GitHub Pages</div>
+
+<div style="position: absolute; left: 1456px; top: 212px; font-size: 18px; font-weight: 900; line-height: 26px; color: #2E7D4F">Anthropic</div>
+<div style="position: absolute; left: 1556px; top: 216px; padding: 1px 8px; background: #D99A1E; color: #1A1C22; font-size: 11px; font-weight: 900; line-height: 18px">你的 Claude 订阅额度</div>
+<div style="position: absolute; left: 1496px; top: 310px; font-size: 13px; font-weight: 900; line-height: 20px; color: #2E7D4F">云端临时容器 <span style="font-weight: 500; color: #4A4538">（每次新开，用完即销毁）</span></div>
+
+<div style="position: absolute; left: 1456px; top: 652px; font-size: 18px; font-weight: 900; line-height: 26px; color: #3C45A5">Discord · 你的频道</div>
+<div style="position: absolute; left: 1636px; top: 656px; padding: 1px 8px; background: #2E7D4F; color: #FFFFFF; font-size: 11px; font-weight: 900; line-height: 18px">免费</div>
+
+<!-- ===== 互联网：来源 ===== -->
+<div style="position: absolute; left: 80px; top: 312px; width: 268px; height: 56px; box-sizing: border-box; padding: 6px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #8C8678; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">Google 新闻</b><br>繁中 / 英 / 日 / 韩</span></div>
+<div style="position: absolute; left: 80px; top: 384px; width: 268px; height: 56px; box-sizing: border-box; padding: 6px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #8C8678; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">Bing 新闻</b><br>原文链接 · 媒体名</span></div>
+<div style="position: absolute; left: 80px; top: 456px; width: 268px; height: 56px; box-sizing: border-box; padding: 6px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #8C8678; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">Reddit</b><br>r/Astrae_Oratio · 全站搜索</span></div>
+<div style="position: absolute; left: 80px; top: 528px; width: 268px; height: 56px; box-sizing: border-box; padding: 6px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #8C8678; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">Steam</b><br>官方公告 · 价格</span></div>
+<div style="position: absolute; left: 80px; top: 600px; width: 268px; height: 56px; box-sizing: border-box; padding: 6px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #8C8678; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">AniList</b><br>动画播出状态</span></div>
+<div style="position: absolute; left: 80px; top: 672px; width: 268px; height: 56px; box-sizing: border-box; padding: 6px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #8C8678; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">TMDB</b><br>影视剧播出状态</span></div>
+
+<!-- ===== GitHub Actions：任务 ===== -->
+<div style="position: absolute; left: 504px; top: 316px; width: 252px; height: 64px; box-sizing: border-box; padding: 8px 12px; display: flex; align-items: center; background: #FBFAF7; border: 2px solid #1A1C22; font-size: 12px; line-height: 17px"><span><b style="font-size: 15px">① 抓取</b><br>每 2 小时 · 00:17 起</span></div>
+<div style="position: absolute; left: 780px; top: 316px; width: 252px; height: 64px; box-sizing: border-box; padding: 8px 12px; display: flex; align-items: center; background: #FBFAF7; border: 2px solid #1A1C22; font-size: 12px; line-height: 17px"><span><b style="font-size: 15px">② 筛选 · 去重</b><br>近 7 天 · 相关 · 限额</span></div>
+<div style="position: absolute; left: 1056px; top: 316px; width: 252px; height: 64px; box-sizing: border-box; padding: 8px 12px; display: flex; align-items: center; background: #FBFAF7; border: 2px solid #1A1C22; font-size: 12px; line-height: 17px"><span><b style="font-size: 15px">③ 存入 inbox</b><br>同一天合并成一份</span></div>
+<div style="position: absolute; left: 504px; top: 404px; width: 252px; height: 64px; box-sizing: border-box; padding: 8px 12px; display: flex; align-items: center; background: #B83A17; color: #FFFFFF; font-size: 12px; line-height: 17px"><span><b style="font-size: 15px">④ 出刊 → 网页</b><br>有中文编排就用</span></div>
+<div style="position: absolute; left: 780px; top: 404px; width: 252px; height: 64px; box-sizing: border-box; padding: 8px 12px; display: flex; align-items: center; background: #5865F2; color: #FFFFFF; font-size: 12px; line-height: 17px"><span><b style="font-size: 15px">⑤ 要紧 → Discord @你</b><br>发现就发 · 只发一次</span></div>
+<div style="position: absolute; left: 1056px; top: 404px; width: 252px; height: 64px; box-sizing: border-box; padding: 8px 12px; display: flex; align-items: center; background: #5865F2; color: #FFFFFF; font-size: 12px; line-height: 17px"><span><b style="font-size: 15px">⑥ 周报 → Discord</b><br>每周一 08:47 · 写心跳</span></div>
+
+<!-- ===== 仓库：文件 ===== -->
+<div style="position: absolute; left: 504px; top: 652px; width: 264px; height: 44px; box-sizing: border-box; padding: 4px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #1A1C22; font-size: 12px; line-height: 17px"><span><b style="font-family: 'JetBrains Mono', monospace">items.yaml</b>　你的关注清单</span></div>
+<div style="position: absolute; left: 792px; top: 652px; width: 264px; height: 44px; box-sizing: border-box; padding: 4px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #1A1C22; font-size: 12px; line-height: 17px"><span><b style="font-family: 'JetBrains Mono', monospace">EDITING.md</b>　AI 编辑规则</span></div>
+<div style="position: absolute; left: 504px; top: 708px; width: 264px; height: 44px; box-sizing: border-box; padding: 4px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #1A1C22; font-size: 12px; line-height: 17px"><span><b style="font-family: 'JetBrains Mono', monospace">inbox/日期.json</b>　原始条目</span></div>
+<div style="position: absolute; left: 792px; top: 708px; width: 264px; height: 44px; box-sizing: border-box; padding: 4px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #2E7D4F; font-size: 12px; line-height: 17px"><span><b style="font-family: 'JetBrains Mono', monospace; color: #2E7D4F">日期.edit.json</b>　中文编排</span></div>
+<div style="position: absolute; left: 504px; top: 764px; width: 264px; height: 44px; box-sizing: border-box; padding: 4px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #1A1C22; font-size: 12px; line-height: 17px"><span><b style="font-family: 'JetBrains Mono', monospace">reports/</b>　每期出刊数据</span></div>
+<div style="position: absolute; left: 792px; top: 764px; width: 264px; height: 44px; box-sizing: border-box; padding: 4px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #B83A17; font-size: 12px; line-height: 17px"><span><b style="font-family: 'JetBrains Mono', monospace; color: #B83A17">docs/index.html</b>　网页</span></div>
+<div style="position: absolute; left: 504px; top: 820px; width: 264px; height: 44px; box-sizing: border-box; padding: 4px 12px; display: flex; align-items: center; background: #FFFFFF; border: 1px solid #1A1C22; font-size: 12px; line-height: 17px"><span><b style="font-family: 'JetBrains Mono', monospace">state/</b>　价格 · 通知记录 · 心跳</span></div>
+<div style="position: absolute; left: 504px; top: 884px; width: 552px; font-size: 12px; line-height: 17px; color: #4A4538">每个作品每天约 33KB · 详见流程图附录</div>
+
+<!-- ===== Pages ===== -->
+<div style="position: absolute; left: 1136px; top: 652px; width: 168px; height: 120px; box-sizing: border-box; padding: 10px 12px; display: flex; align-items: center; background: #B83A17; color: #FFFFFF; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">简报网站</b><br>cxelegy.github.io<br>/Wishlist<br>每天一期 · 留 30 期</span></div>
+
+<!-- ===== Anthropic：任务 ===== -->
+<div style="position: absolute; left: 1480px; top: 248px; width: 420px; height: 40px; box-sizing: border-box; padding: 4px 12px; display: flex; align-items: center; background: #2E7D4F; color: #FFFFFF; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">Claude 定时任务（Routine）</b>　每天 12:43 · 23:43 启动</span></div>
+<div style="position: absolute; left: 1496px; top: 360px; width: 124px; height: 112px; box-sizing: border-box; padding: 8px 10px; display: flex; align-items: center; background: #FBFAF7; border: 2px solid #2E7D4F; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">拉取仓库</b><br>读 inbox 和 EDITING.md</span></div>
+<div style="position: absolute; left: 1628px; top: 360px; width: 124px; height: 112px; box-sizing: border-box; padding: 8px 10px; display: flex; align-items: center; background: #FBFAF7; border: 2px solid #2E7D4F; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">整理成中文</b><br>挑重点 · 合并 · 判断重大</span></div>
+<div style="position: absolute; left: 1760px; top: 360px; width: 124px; height: 112px; box-sizing: border-box; padding: 8px 10px; display: flex; align-items: center; background: #FBFAF7; border: 2px solid #2E7D4F; font-size: 12px; line-height: 17px"><span><b style="font-size: 14px">推送回仓库</b><br>edit.json + 中文版网页</span></div>
+
+<!-- ===== Discord ===== -->
+<div style="position: absolute; left: 1456px; top: 692px; width: 468px; height: 108px; box-sizing: border-box; padding: 10px 14px; display: flex; align-items: center; background: #5865F2; color: #FFFFFF; font-size: 13px; line-height: 19px"><span><b style="font-size: 15px">Webhook 收到消息 → 发到频道</b><br>要紧通知：@你 · 要点 + 原文链接<br>周报：每周一 · 要点 + 网页链接</span></div>
+
+<!-- ===== 你 ===== -->
+<div style="position: absolute; left: 1440px; top: 880px; width: 500px; height: 120px; box-sizing: border-box; padding: 14px 18px; display: flex; align-items: center; gap: 14px; background: #1A1C22; color: #F1EEE6; font-size: 13px; line-height: 19px"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F1EEE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span><b style="font-size: 18px">你 · 手机 / 电脑</b><br>看网页、收 Discord 通知<br>想加关注项 → 告诉 Claude</span></div>
+
+<!-- ===== 线上的标注 ===== -->
+<div style="position: absolute; left: 376px; top: 362px; width: 92px; text-align: center; font-size: 12px; line-height: 16px">RSS / API</div>
+<div style="position: absolute; left: 528px; top: 552px; width: 100px; text-align: right; font-size: 12px; line-height: 16px">写入 inbox · 网页</div>
+<div style="position: absolute; left: 808px; top: 552px; width: 80px; text-align: right; font-size: 12px; line-height: 16px">读清单 · 去重</div>
+<div style="position: absolute; left: 1100px; top: 532px; width: 280px; font-size: 12px; line-height: 16px; color: #2E7D4F; font-weight: 700">AI 拉取 inbox，推送中文编排</div>
+<div style="position: absolute; left: 1368px; top: 892px; width: 64px; text-align: center; font-size: 12px; line-height: 16px; color: #B83A17">浏览</div>
+<div style="position: absolute; left: 1702px; top: 842px; width: 120px; font-size: 12px; line-height: 16px; color: #3C45A5">@你 · 周报</div>
+
+</div>
+
+</body>
+</html>
