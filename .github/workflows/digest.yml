@@ -1,4 +1,7 @@
-name: 关注清单简报
+name: 关注清单 · 收集
+
+# 目前只跑 ingest：抓取 → 过滤 → 去重，产出 inbox/日期.json 后停止。
+# publish（编排、出刊网页、Issue 提醒）是下一阶段，届时再接上。
 
 on:
   schedule:
@@ -7,17 +10,15 @@ on:
 
 permissions:
   contents: write
-  issues: write
-  id-token: write   # Workload Identity Federation：向 GitHub 要身份令牌，换取 Claude 的临时访问令牌
 
 concurrency:
   group: digest
   cancel-in-progress: false
 
 jobs:
-  digest:
+  ingest:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
@@ -28,35 +29,17 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: 收集（ingest）并出刊（publish）
+      - name: 收集（ingest）
         env:
-          # Claude 凭据二选一：
-          #   A. Workload Identity Federation（推荐，不存 Key）：在仓库 Variables 里填下面三个 ID
-          #   B. API Key：在仓库 Secrets 里填 ANTHROPIC_API_KEY
-          ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
-          ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
-          ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
-          ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-        run: python scripts/digest.py
+        run: python scripts/digest.py ingest
 
-      - name: 提交（docs/ 由 GitHub Pages 发布）
+      - name: 提交 inbox
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add inbox reports state docs
-          git diff --cached --quiet || git commit -m "简报 $(date -u +%F)"
+          git add inbox state
+          git diff --cached --quiet || git commit -m "收集 $(date -u +%F)"
           git push
-
-      - name: 开 Issue 提醒
-        if: hashFiles('issue.md') != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          enabled=$(python -c "import yaml; print((yaml.safe_load(open('items.yaml')).get('settings') or {}).get('create_issue', True))")
-          if [ "$enabled" = "True" ]; then
-            gh issue create --title "关注清单通信 $(date -u +%F)" --body-file issue.md
-          fi

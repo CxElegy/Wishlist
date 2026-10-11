@@ -6,7 +6,9 @@
 
 ## 流程
 
-分两步，中间用 `inbox/` 里的数据文件衔接：
+分两步，中间用 `inbox/` 里的数据文件衔接。
+
+> **目前 GitHub Actions 只跑 ingest**：每周一自动收集，产出 `inbox/日期.json` 后停止。publish 是下一阶段，现在可以在本地手动运行 `python scripts/digest.py publish`。
 
 ```
 items.yaml
@@ -63,7 +65,7 @@ items.yaml
    | `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` | Reddit 常拦截云服务器的匿名请求，用官方 API 才稳定。在 [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) 创建一个 *script* 类型的应用即可（免费） |
    | `TMDB_API_KEY` | 关注影视剧时需要，在 themoviedb.org 的账号设置里免费申请 |
 
-4. **运行**：Actions → 关注清单简报 → Run workflow。之后每周一北京时间 08:17 自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
+4. **运行**：Actions → 关注清单 · 收集 → Run workflow。之后每周一北京时间 08:17 自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
 
 ## 添加关注项
 
