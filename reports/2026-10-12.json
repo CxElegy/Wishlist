@@ -100,11 +100,11 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-09",
-     "headline": "GTA 6 周边商店已上线，但尚未开放预购",
+     "date": "2026-10-08",
+     "headline": "YouTube 广告暗示 Rockstar Games 新作后，玩家对 GTA 6 第 3 支预告片的期待升温",
      "highlight": "",
-     "image": "https://www.notebookcheck-cn.com/fileadmin/Notebooks/News/_nc5/gta-6-merch.jpg",
-     "url": "https://www.notebookcheck-cn.com/GTA-6.1419868.0.html",
+     "image": "https://www.notebookcheck-cn.com/fileadmin/Notebooks/News/_nc5/GTA6YouTubeadLuciaJason.jpg",
+     "url": "https://www.notebookcheck-cn.com/YouTube-Rockstar-Games-GTA-6-3.1419056.0.html",
      "weight": "normal"
     }
    ],
@@ -116,6 +116,70 @@
     "alt_fg": "#1E1033",
     "bg": "#1E1033",
     "fg": "#FFF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
+   "facts": [],
+   "name": "漫威电影",
+   "section": "影视",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-09",
+     "headline": "'Avengers: Doomsday': Trailers, tickets, release date and 'Endgame: Encore' details",
+     "highlight": "",
+     "image": "https://i.abcnewsfe.com/a/3f4d22ad-8045-4791-a537-3773774a4769/doomsday-1-ht-jef-260720_1784553718149_hpMain_16x9.jpg?w=1600",
+     "url": "https://abcnews.com/GMA/Culture/avengers-doomsday-trailer-release-date-marvel-movie/story?id=134860279",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "《复仇者联盟4：终局之战》内地累计票房破44亿元",
+     "highlight": "",
+     "image": "https://q6.itc.cn/q_70/images03/20261010/3e0f51f7fdc84a9bac7b8f46ef34137a.jpeg",
+     "url": "https://m.sohu.com/a/1085879545_121347613?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "塞巴斯蒂安·斯坦称《复仇者联盟5：毁灭之日》或令漫威粉丝心碎",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.gamersky.com/news/202610/2225664.shtml",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "全球票房530亿！《复仇者联盟》四部比《哪吒》多300亿，最强系列电影诞生",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.sohu.com/a/1086293538_122094388",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-09",
+     "headline": "漫威又有新剧了！《Zodiac》定档2028年，神盾局或将迎来重要戏份？",
+     "highlight": "",
+     "image": "https://q7.itc.cn/images01/20261009/ae479076c686440c8c041f4289d4ab47.png",
+     "url": "https://www.sohu.com/a/1085696441_122969565",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "Marvel Studios · MCU",
+   "theme": {
+    "accent": "#EC1D24",
+    "alt_accent": "#151515",
+    "alt_bg": "#EC1D24",
+    "alt_fg": "#FFFFFF",
+    "bg": "#151515",
+    "fg": "#F5F5F5",
     "font": "sans",
     "split": true
    }
