@@ -11,6 +11,7 @@
 
 import html
 import re
+import urllib.parse
 
 FONTS = (
     "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700;900"
@@ -124,33 +125,37 @@ a{color:inherit;text-decoration:none}
 .heads li i{flex:none;font:900 11px/1.6 'Noto Sans SC',sans-serif;font-style:normal;color:#FFF;background:var(--sc);padding:0 6px;letter-spacing:.1em}
 .heads li a{font-size:15px;line-height:1.5}
 .heads li a:hover{text-decoration:underline;text-underline-offset:3px}
-/* ---------- 悬浮目录 ---------- */
+/* ---------- 左侧目录（共用骨架；风格见 NAV_STYLES） ---------- */
 html{scroll-behavior:smooth}
-[data-k]{scroll-margin-top:84px}
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:#1A1C22;color:#FBF8F1;
- border:3px solid #1A1C22;box-shadow:0 6px 0 rgba(26,28,34,.12)}
-.nav-in{display:flex;align-items:center;gap:14px;padding:8px 14px}
-.nav .here{flex:none;display:flex;flex-direction:column;gap:1px;padding-right:14px;border-right:1px solid rgba(251,248,241,.25)}
-.nav .here b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.35em;color:#FFD23F}
-.nav .here span{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;font-variant-numeric:tabular-nums;opacity:.8}
-.nav .rail{flex:1;min-width:0;display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;padding:6px 4px}
+[data-k]{scroll-margin-top:24px}
+.page{max-width:1480px;display:grid;grid-template-columns:236px minmax(0,1fr);gap:28px 32px;align-items:start}
+.mast{grid-column:1/-1}
+.issues{display:flex;flex-direction:column;gap:28px;min-width:0}
+.nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px);display:flex;flex-direction:column;z-index:50}
+.nav .rail{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;min-height:0}
 .nav .rail::-webkit-scrollbar{display:none}
-.nav .grp{flex:none;margin-left:8px;font:900 11px 'Noto Sans SC',sans-serif;letter-spacing:.2em;color:var(--sc);
- filter:brightness(1.6) saturate(.9)}
-.nav .grp:first-child{margin-left:0}
-.nav .pill{flex:none;padding:4px 10px;border:1px solid rgba(251,248,241,.28);font:700 13px/1.3 'Noto Sans SC',sans-serif;
- white-space:nowrap;transform-origin:center;transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s,color .2s,border-color .2s}
-.nav .pill:hover{border-color:#FBF8F1}
+.nav .pill{display:flex;align-items:center;gap:8px;position:relative}
+.nav .pill .no{font:700 10px 'JetBrains Mono',monospace;font-style:normal;font-variant-numeric:tabular-nums}
 .nav .pill:focus-visible,.nav select:focus-visible{outline:2px solid #FFD23F;outline-offset:2px}
-.nav .pill.on{background:var(--sc);border-color:var(--sc);color:#FFF;transform:scale(1.18);margin:0 6px;
- box-shadow:2px 2px 0 #FBF8F1}
-.nav .pill.front-k{--sc:#D7261E}
-.nav select{flex:none;background:transparent;color:#FBF8F1;border:1px solid rgba(251,248,241,.28);padding:4px 6px;
- font:700 12px 'JetBrains Mono',monospace;color-scheme:dark}
-.nav .bar{height:3px;background:var(--cur,#D7261E);width:0;transition:width .15s linear,background .2s}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav .pill,.nav .bar{transition:none}}
+.nav select{font:700 12px 'JetBrains Mono',monospace;padding:6px 8px;border-radius:0}
+.nav .bar{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav *{transition:none!important}}
+/* 窄屏：目录变成顶部横条 */
+@media (max-width:1000px){
+ .page{grid-template-columns:minmax(0,1fr)}
+ .nav{top:env(safe-area-inset-top,0px);max-height:none;flex-direction:row;align-items:center;gap:8px;padding:6px 8px!important;
+  background:#1A1C22!important;color:#FBF8F1!important;border:none!important;box-shadow:none!important}
+ .nav .here,.nav .grp{display:none!important}
+ .nav .rail{flex:1;flex-direction:row;overflow-x:auto;gap:6px;padding:6px 4px!important;border:none!important}
+ .nav .pill{flex:none;padding:4px 10px!important;margin:0!important;font:700 13px/1.3 'Noto Sans SC',sans-serif!important;
+  color:#FBF8F1!important;background:none!important;border:1px solid rgba(251,248,241,.3)!important;transform:none!important;width:auto!important}
+ .nav .pill::before,.nav .pill::after,.nav .pill .no{display:none!important}
+ .nav .pill.on{background:var(--sc)!important;border-color:var(--sc)!important;transform:scale(1.12)!important;margin:0 4px!important}
+ .nav select{background:transparent;color:#FBF8F1;border:1px solid rgba(251,248,241,.3)}
+ .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,#D7261E);width:calc(var(--prog,0) * 100%)}
+ [data-k]{scroll-margin-top:64px}
+}
 @media (max-width:760px){
- .nav .here{display:none}.nav-in{padding:6px 8px;gap:8px}[data-k]{scroll-margin-top:64px}
  .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}
  .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
@@ -343,59 +348,178 @@ def _front(issue):
             f'<div class="boards">{"".join(boards)}</div></div>{heads_html}</section>')
 
 
+
+# 左侧目录的四种风格（items.yaml 的 settings.nav_style 选择）。只在宽屏生效，窄屏统一是顶部横条
+NAV_STYLES = {
+    # A 线路图：每个板块一段彩色线路，作品是站点；读到哪站圆点放大，线路按进度填色，读过的站变实心
+    "line": """
+.nav{padding:6px 0 16px}
+.nav .here{display:none}
+.nav .rail{padding-left:14px}
+.nav .grp{display:flex;align-items:baseline;gap:8px;padding:16px 0 4px 26px;color:var(--sc)}
+.nav .grp b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.25em;opacity:.75}
+.nav .pill{padding:9px 0 9px 26px;font:700 14px/1.3 'Noto Sans SC',sans-serif;color:rgba(26,28,34,.5);
+ transition:color .2s,font-size .3s cubic-bezier(.2,.9,.3,1),padding .3s cubic-bezier(.2,.9,.3,1)}
+.nav .pill::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:3px;
+ background:linear-gradient(var(--sc) calc(var(--p,0)*100%),rgba(26,28,34,.13) 0)}
+.nav .pill::after{content:"";position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;
+ background:#EDEBE6;border:2px solid rgba(26,28,34,.35);
+ transition:width .35s cubic-bezier(.3,1.5,.5,1),height .35s cubic-bezier(.3,1.5,.5,1),margin .35s cubic-bezier(.3,1.5,.5,1),left .35s cubic-bezier(.3,1.5,.5,1),border-color .2s}
+.nav .pill .no{display:none}
+.nav .pill .nm{display:flex;flex-direction:column;gap:3px}
+.nav .pill .cnt{display:none;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--sc)}
+.nav .pill:hover{color:#1A1C22}
+.nav .pill.past{color:rgba(26,28,34,.72)}
+.nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
+.nav .pill.on{color:#1A1C22;font-size:21px;font-weight:900;letter-spacing:-.01em;padding:16px 0 16px 40px}
+.nav .pill.on .cnt{display:block}
+.nav .pill.on::after{width:38px;height:38px;margin-top:-19px;left:-9px;
+ background:var(--img,none) center/cover no-repeat,#EDEBE6;border:3px solid var(--sc);
+ box-shadow:0 0 0 5px color-mix(in srgb,var(--sc) 20%,transparent),0 6px 14px rgba(26,28,34,.25)}
+.nav select{margin:14px 0 0 26px;align-self:flex-start;background:transparent;color:#1A1C22;border:1px solid rgba(26,28,34,.35)}
+""",
+    # B 报纸索引栏：米色纸面、双线，条目带编号和引导点；当前条目反白成板块色色块并放大
+    "index": """
+.nav{background:#FBF8F1;color:#1A1C22;border:3px solid #1A1C22;box-shadow:6px 6px 0 #1A1C22;padding:0}
+.nav .here{display:flex;flex-direction:column;gap:2px;padding:14px 16px 12px;border-bottom:3px double #1A1C22;text-align:center}
+.nav .here b{font:900 30px/1 'Noto Serif SC',serif;letter-spacing:.4em;padding-left:.4em}
+.nav .here small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.45em;color:#D7261E}
+.nav .here span{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.1em;opacity:.7}
+.nav .rail{padding:4px 0 10px}
+.nav .grp{display:flex;align-items:center;gap:8px;margin:12px 12px 4px;padding:3px 8px;background:var(--sc);color:#FFF}
+.nav .grp b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.nav .grp small{margin-left:auto;font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.9}
+.nav .pill{margin:0 12px;padding:7px 8px;font:700 14px/1.35 'Noto Serif SC',serif;border-bottom:1px dotted rgba(26,28,34,.35);
+ transition:background .2s,color .2s,font-size .2s,padding .2s}
+.nav .pill .no{color:var(--sc);min-width:18px}
+.nav .pill .nm{flex:1;min-width:0}
+.nav .pill::after{content:"";position:absolute;left:0;bottom:-1px;height:3px;width:calc(var(--p,0)*100%);background:var(--sc)}
+.nav .pill:hover .nm{text-decoration:underline;text-underline-offset:3px}
+.nav .pill.past{opacity:.55}
+.nav .pill.on{background:var(--sc);color:#FFF;font-size:18px;font-weight:900;padding:12px 10px;opacity:1}
+.nav .pill.on .no{color:#FFD23F}
+.nav .pill.on::after{background:#FFD23F}
+.nav select{margin:0 12px 12px;background:#FBF8F1;color:#1A1C22;border:2px solid #1A1C22}
+""",
+    # C 活页夹标签：每个作品是一张贴在内容左缘的彩色索引签；当前那张向右抽出、变大
+    "tabs": """
+.nav{padding:0;background:none}
+.page{grid-template-columns:220px minmax(0,1fr);column-gap:0}
+.nav .here{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:0 0 10px 4px}
+.nav .here b{font:900 24px/1 'Noto Sans SC',sans-serif;letter-spacing:.2em;white-space:nowrap}
+.nav .here small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.3em;color:#D7261E}
+.nav .here span{flex-basis:100%;font:700 10px 'JetBrains Mono',monospace;opacity:.6}
+.nav .rail{gap:5px;padding:4px 0 8px;overflow-x:visible}
+.nav .grp{display:flex;align-items:baseline;gap:6px;padding:10px 4px 2px;color:var(--sc)}
+.nav .grp b{font:900 12px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em}
+.nav .pill{margin-left:28px;padding:10px 12px;background:color-mix(in srgb,var(--sc) 22%,#FBF8F1);color:#1A1C22;
+ border:2px solid #1A1C22;border-right:none;font:900 14px/1.25 'Noto Sans SC',sans-serif;
+ clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px),0 10px);
+ transition:margin .3s cubic-bezier(.3,1.5,.5,1),background .2s,color .2s,font-size .2s}
+.nav .pill .no{color:var(--sc)}
+.nav .pill::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:calc(var(--p,0)*100%);background:#1A1C22}
+.nav .pill:hover{margin-left:18px}
+.nav .pill.past{background:color-mix(in srgb,var(--sc) 10%,#FBF8F1);color:rgba(26,28,34,.6)}
+.nav .pill.on{margin-left:0;background:var(--sc);color:#FFF;font-size:17px;padding:14px 14px}
+.nav .pill.on .no{color:#FFD23F}
+.nav .pill.on::after{background:#FFD23F}
+.nav select{margin:6px 0 0 28px;background:#FBF8F1;color:#1A1C22;border:2px solid #1A1C22}
+""",
+    # D 大字滚动：没有框，只有字；当前作品放大成巨大的板块色标题，其余缩小变淡，像焦点在移动
+    "type": """
+.nav{padding:4px 0}
+.nav .here{display:flex;flex-direction:column;gap:2px;padding-bottom:12px;border-bottom:3px solid #1A1C22}
+.nav .here b{font:900 13px 'JetBrains Mono',monospace;letter-spacing:.5em}
+.nav .here small{display:none}
+.nav .here span{font:700 11px 'JetBrains Mono',monospace;opacity:.6}
+.nav .rail{padding:8px 0;mask-image:linear-gradient(transparent,#000 6%,#000 94%,transparent)}
+.nav .grp{display:flex;gap:6px;align-items:baseline;padding:14px 0 2px;color:var(--sc)}
+.nav .grp b{font:900 11px 'Noto Sans SC',sans-serif;letter-spacing:.4em}
+.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.8}
+.nav .pill{flex-direction:column;align-items:flex-start;gap:0;padding:5px 0;color:rgba(26,28,34,.38);
+ font:900 15px/1.15 'Noto Sans SC',sans-serif;letter-spacing:-.01em;transition:font-size .35s cubic-bezier(.2,.9,.3,1),color .25s,padding .35s}
+.nav .pill .no{font-size:10px;color:inherit}
+.nav .pill:hover{color:#1A1C22}
+.nav .pill.past{color:rgba(26,28,34,.55)}
+.nav .pill.on{color:var(--sc);font-size:34px;line-height:1.02;padding:10px 0 12px}
+.nav .pill.on .no{color:#1A1C22}
+.nav .pill.on::after{content:"";height:4px;width:calc(var(--p,0)*100%);background:var(--sc);margin-top:8px;transition:width .15s linear}
+.nav select{margin-top:8px;background:transparent;color:#1A1C22;border:2px solid #1A1C22}
+""",
+}
+
+
 def _nav(issues):
-    """顶部悬浮目录：以最新一期为准，按板块分组；往期用下拉跳转。"""
+    """左侧目录：以最新一期为准，按板块分组；往期用下拉跳转。"""
     latest = issues[0]
     groups = {}
     for b in latest["items"]:
         groups.setdefault(b.get("section") or "其他", []).append(b)
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     date = latest["date"]
-    rail = [f'<a class="pill front-k" data-for="front" href="#issue-{date}">头版</a>']
+    rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#issue-{date}">'
+            f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
+    n = 0
     for name in order:
         sc = _sec_color(name)
-        rail.append(f'<span class="grp" style="--sc:{sc}">{e(name)}</span>')
-        rail += [f'<a class="pill" style="--sc:{sc}" data-for="{e(b["name"])}" href="#issue-{date}-{latest["items"].index(b)}">'
-                 f'{e(b["name"])}</a>' for b in groups[name]]
+        rail.append(f'<div class="grp" style="--sc:{sc}"><b>{e(name)}</b><small>{SECTION_EN.get(name, "")}</small></div>')
+        for b in groups[name]:
+            n += 1
+            stories = b.get("stories") or []
+            img = next((x.get("image") for x in stories if x.get("image")), None) or b.get("cover")
+            css_img = f";--img:url({urllib.parse.quote(img, safe=':/?&=%#@+,;~')})" if img else ""
+            cnt = f"今日 {len(stories)} 条" if stories else "暂无新消息"
+            rail.append(f'<a class="pill" style="--sc:{sc}{e(css_img)}" data-for="{e(b["name"])}" '
+                        f'href="#issue-{date}-{latest["items"].index(b)}"><i class="no">{n:02d}</i>'
+                        f'<span class="nm">{e(b["name"])}<small class="cnt">{cnt}</small></span></a>')
     past = ""
     if len(issues) > 1:
         opts = "".join(f'<option value="issue-{i["date"]}">{i["date"][5:].replace("-", ".")}</option>' for i in issues[1:])
-        past = (f'<select id="nav-past" aria-label="跳到往期"><option value="">往期</option>{opts}</select>')
-    return (f'<nav class="nav" aria-label="目录"><div class="nav-in">'
-            f'<div class="here"><b>目 录</b><span id="nav-here">今日 · {date.replace("-", ".")}</span></div>'
-            f'<div class="rail" id="nav-rail">{"".join(rail)}</div>{past}</div><div class="bar" id="nav-bar"></div></nav>')
+        past = f'<select id="nav-past" aria-label="跳到往期"><option value="">往期 ▾</option>{opts}</select>'
+    return (f'<nav class="nav" aria-label="目录">'
+            f'<div class="here"><b>目录</b><small>INDEX</small><span id="nav-here">今日 · {date.replace("-", ".")}</span></div>'
+            f'<div class="rail" id="nav-rail">{"".join(rail)}</div>{past}<div class="bar" id="nav-bar"></div></nav>')
 
 
 NAV_JS = """
 (() => {
-  const rail = document.getElementById('nav-rail'), bar = document.getElementById('nav-bar'),
-        here = document.getElementById('nav-here'), nav = document.querySelector('.nav');
+  const nav = document.querySelector('.nav'), rail = document.getElementById('nav-rail'),
+        here = document.getElementById('nav-here');
   const marks = [...document.querySelectorAll('[data-k]')];
   const pills = [...rail.querySelectorAll('.pill')];
+  const firstIssue = document.querySelector('.issue');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let cur = null, ticking = false;
   function update() {
     ticking = false;
-    const y = nav.getBoundingClientRect().bottom + 24;
+    const horizontal = getComputedStyle(rail).flexDirection === 'row';
+    const y = (horizontal ? nav.getBoundingClientRect().bottom : 0) + 40;
     let m = marks[0];
     for (const el of marks) { if (el.getBoundingClientRect().top <= y) m = el; else break; }
     if (!m) return;
     const r = m.getBoundingClientRect();
-    bar.style.width = Math.min(100, Math.max(0, (y - r.top) / r.height * 100)) + '%';
+    const prog = Math.min(1, Math.max(0, (y - r.top) / r.height));
+    nav.style.setProperty('--prog', prog.toFixed(3));
+    const today = m.closest('.issue') === firstIssue;
+    let idx = -1;
+    pills.forEach((p, i) => { if (today && p.dataset.for === m.dataset.k) idx = i; });
+    pills.forEach((p, i) => {
+      p.classList.toggle('on', i === idx);
+      p.classList.toggle('past', idx >= 0 && i < idx);
+      p.style.setProperty('--p', i === idx ? prog.toFixed(3) : (idx >= 0 && i < idx ? 1 : 0));
+    });
     if (m === cur) return;
     cur = m;
     const issue = m.closest('.issue');
     here.textContent = issue ? issue.dataset.label : '';
-    const today = issue === document.querySelector('.issue');
-    let on = null;
-    pills.forEach(p => {
-      const hit = today && p.dataset.for === m.dataset.k;
-      p.classList.toggle('on', hit);
-      if (hit) on = p;
-    });
-    bar.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
+    const on = pills[idx];
+    nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
     if (on) {
-      const left = on.offsetLeft - rail.clientWidth / 2 + on.offsetWidth / 2;
-      rail.scrollTo({ left, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      const opt = horizontal ? { left: on.offsetLeft - rail.clientWidth / 2 + on.offsetWidth / 2 }
+                             : { top: on.offsetTop - rail.clientHeight / 2 + on.offsetHeight / 2 };
+      rail.scrollTo({ ...opt, behavior: reduce ? 'auto' : 'smooth' });
     }
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
@@ -410,8 +534,8 @@ NAV_JS = """
 """
 
 
-def render(issues):
-    """issues：按时间倒序的各期数据。"""
+def render(issues, nav_style="line"):
+    """issues：按时间倒序的各期数据。nav_style：左侧目录风格，见 NAV_STYLES。"""
     latest = issues[0]
     parts = []
     for i, issue in enumerate(issues):
@@ -428,7 +552,7 @@ def render(issues):
 <title>关注清单通信 No.{latest['no']:03d}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
-<style>{CSS}</style>
+<style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
 </head>
 <body>
 <div class="page">
@@ -438,7 +562,7 @@ def render(issues):
 <div class="meta"><div class="no">No.{latest['no']:03d}</div><div class="mono">{latest['date'].replace('-', '.')}</div></div>
 </div></header>
 {_nav(issues)}
-{''.join(parts)}
+<main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>
 </body>

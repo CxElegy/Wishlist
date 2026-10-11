@@ -430,7 +430,7 @@ def write_page():
     if not issues:
         return
     DOCS_DIR.mkdir(exist_ok=True)
-    (DOCS_DIR / "index.html").write_text(render.render(issues), encoding="utf-8")
+    (DOCS_DIR / "index.html").write_text(render.render(issues, load_config()[0].get("nav_style", "line")), encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 
