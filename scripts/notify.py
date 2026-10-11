@@ -102,7 +102,9 @@ def urgent(page_url):
     }
     if send(payload):
         notified.update({k: today.isoformat() for k in keys})
-        digest.save_json(NOTIFIED_FILE, notified)
+        # 只保留 30 天的记录（更早的消息早已不会再被收集），文件不会无限变大
+        cutoff = (today - dt.timedelta(days=30)).isoformat()
+        digest.save_json(NOTIFIED_FILE, {k: d for k, d in notified.items() if d >= cutoff})
 
 
 def weekly(page_url):

@@ -36,14 +36,12 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 ITEMS_FILE = ROOT / "items.yaml"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
-SEEN_FILE = STATE_DIR / "seen.json"
 FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
 INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = ROOT / "docs"
 ISSUES_ON_PAGE = 30  # 网页上保留最近几期（每天一期）
 
-SEEN_KEEP_DAYS = 90
 NEWS_LANGS = {
     "zh-CN": ("zh-CN", "CN", "CN:zh-Hans"),
     "zh-TW": ("zh-TW", "TW", "TW:zh-Hant"),
@@ -170,7 +168,22 @@ def _title_grams(title, names):
     return {t[i:i + 2] for i in range(len(t) - 1)}
 
 
-def recent_titles(days=7):
+HISTORY_DAYS = 14  # 去重看最近几天的 inbox（收集窗口是 7 天，留一倍余量）
+
+
+def seen_from_inbox(days=HISTORY_DAYS):
+    """报道过的链接和标题，直接从最近几天的 inbox 里取。
+    不再单独存 seen.json：那个文件每次运行都整份重写，git 历史会越积越大。"""
+    seen = set()
+    for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-days:]:
+        for item in load_json(path).get("items", []):
+            for e in item["entries"]:
+                seen.add(e["url"])
+                seen.add(title_key(e["title"]))
+    return seen
+
+
+def recent_titles(days=HISTORY_DAYS):
     """最近几天 inbox 里已经收过的标题，按关注项分组，用来做跨批次的相似去重。"""
     titles = {}
     for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-days:]:
@@ -491,7 +504,7 @@ def ingest(dry_run=False):
     now = dt.datetime.now(dt.timezone.utc)
     # “每天一期”按你所在时区的日期划分（默认北京时间）
     today = now.astimezone(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
-    seen, facts = load_json(SEEN_FILE), load_json(FACTS_FILE)
+    seen, facts = seen_from_inbox(), load_json(FACTS_FILE)
     known = recent_titles()
 
     inbox_items = []
@@ -513,12 +526,10 @@ def ingest(dry_run=False):
             "entries": [{**entry_to_dict(n, e), "urgent": is_urgent(e, item)} for n, e in enumerate(entries, 1)],
         })
         for e in entries:
-            seen[e.url] = seen[title_key(e.title)] = today
+            seen.update((e.url, title_key(e.title)))
 
     if dry_run:
         return None
-    cutoff = (now - dt.timedelta(days=SEEN_KEEP_DAYS)).date().isoformat()
-    save_json(SEEN_FILE, {u: d for u, d in seen.items() if d >= cutoff})
     save_json(FACTS_FILE, facts)
     if not inbox_items:
         print("本期没有新消息", file=sys.stderr)
