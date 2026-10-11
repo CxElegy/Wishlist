@@ -45,6 +45,9 @@ jobs:
         if: env.IS_WEEKLY != 'true' || github.event_name == 'workflow_dispatch'
         run: python scripts/digest.py
 
+      - name: 新增关注项 → Discord
+        run: python scripts/digest.py notify-new-items
+
       - name: 要紧消息 → Discord
         if: env.IS_WEEKLY != 'true' || github.event_name == 'workflow_dispatch'
         run: python scripts/digest.py notify-urgent
