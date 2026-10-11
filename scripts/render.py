@@ -108,9 +108,20 @@ a{color:inherit;text-decoration:none}
  font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em;clip-path:polygon(0 0,100% 0,88% 100%,0 100%);border:none}
 .top .kicker{display:flex;align-items:center;gap:10px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.2em}
 .top .kicker i{font-style:normal;padding:2px 10px;color:#FFF;letter-spacing:.15em}
-.top h2{margin:0;font:900 44px/1.2 'Noto Sans SC',sans-serif;color:#D7261E;letter-spacing:.01em;
+.top h2{margin:0;font:900 34px/1.25 'Noto Sans SC',sans-serif;color:#D7261E;letter-spacing:.01em;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance;
  text-shadow:2px 2px 0 #FFD23F}
 .top p{margin:0;font-size:16px;line-height:1.75}
+.topcol{display:flex;flex-direction:column;border-right:3px solid #1A1C22}
+.topcol .top{border-right:none}
+.mores{flex:1;display:flex;flex-direction:column;padding:0 22px 18px;gap:0}
+.mores h5{margin:0 0 4px;padding-top:12px;border-top:3px double #1A1C22;font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.more{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px dashed color-mix(in srgb,#1A1C22 35%,transparent);color:#1A1C22}
+.more .pic{aspect-ratio:16/10;border:2px solid #1A1C22;--ac:var(--sc)}
+.more .pic .ph{font-size:13px}
+.more .nm{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--sc)}
+.more b{display:block;margin-top:3px;font-size:16px;line-height:1.45}
+.more:hover b{text-decoration:underline;text-underline-offset:3px}
 .top:hover h2{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
 .boards{display:flex;flex-direction:column}
 .board{border-bottom:3px solid #1A1C22;display:flex;flex-direction:column}
@@ -120,7 +131,8 @@ a{color:inherit;text-decoration:none}
 .board h3 small{margin-left:auto;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.9}
 .entry{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;padding:10px 16px;border-top:1px dashed color-mix(in srgb,#1A1C22 35%,transparent)}
 .entry:first-of-type{border-top:none}
-.entry .pic{aspect-ratio:16/10;border:2px solid #1A1C22;color:#1A1C22}
+.entry .pic{aspect-ratio:16/10;border:2px solid #1A1C22;color:#1A1C22;--ac:var(--sc)}
+.entry .pic .ph{font-size:13px}
 .entry .nm{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--sc)}
 .entry b{display:block;font-size:15px;line-height:1.45;margin-top:2px}
 .entry.q b{font-weight:500;opacity:.6}
@@ -191,7 +203,8 @@ html{scroll-behavior:smooth}
 @media (max-width:760px){
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr;padding:20px}
  .card.c8 h3,.card.wide h3{font-size:24px}
- .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}
+ .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}.topcol{border-right:none}
+ .more{grid-template-columns:90px 1fr}
  .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
  .band .title{font-size:34px}.band .sub{margin-left:0}
@@ -291,7 +304,8 @@ def _pack(stories, size_of, total=12):
 
 def _when(story, today):
     d = story.get("date") or story["_issue"]
-    new = "<b>NEW</b>" if story["_issue"] == today else ""
+    # NEW 只给最近 24 小时左右发布的消息（按消息本身的日期，不是收集到的日期）
+    new = "<b>NEW</b>" if d >= (dt.date.fromisoformat(today) - dt.timedelta(days=1)).isoformat() else ""
     return f'<span class="when">{new}{e(d[5:].replace("-", "."))}</span>'
 
 
@@ -516,6 +530,13 @@ def _front(works, today, updated):
     head = (f'<div class="fbar"><b>头 版</b><span>LATEST · 最近 {HOLD_DAYS} 天</span>'
             f'<span>更新于 {updated} · {len(pool)} 条</span></div>')
 
+    # 头条下面补 3 条次重要的（按重要度，再按新旧），填满左栏
+    ranked = sorted(newest, key=lambda p: RANK.get(p[1].get("weight"), 2))
+    more = [p for p in ranked if p[1] is not top][:3]
+    more_html = "".join(
+        f'<a class="more" href="#{_wid(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">{_pic(x)}'
+        f'<span><span class="nm">{e(w["name"])} · {e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span>'
+        f'<b>{e(x["headline"])}</b></span></a>' for w, x in more)
     if top:
         sc = _sec_color(top_w.get("section"))
         badge = "重 磅" if top.get("weight") == "hero" else "头 条"
@@ -525,6 +546,7 @@ def _front(works, today, updated):
                     f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
                     f'<h2>{e(top["headline"])}</h2>'
                     + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + "</a>")
+        top_html = f'<div class="topcol">{top_html}<div class="mores"><h5>其他重要</h5>{more_html}</div></div>' if more else top_html
     else:
         top_html = f'<div class="top"><h2>最近 {HOLD_DAYS} 天没有新消息</h2></div>'
 
@@ -539,7 +561,7 @@ def _front(works, today, updated):
                 text, img, cls = first["headline"], first.get("image") or w.get("cover"), "entry"
             else:
                 text, img, cls = w.get("status") or "暂无新消息", w.get("cover"), "entry q"
-            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic({"image": img})}'
+            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic({"image": img, "_work": w["name"], "_cover": w.get("cover")})}'
                         f'<span><span class="nm">{e(w["name"])}</span><b>{e(text)}</b></span></a>')
         body = "".join(rows) or '<div class="none">还没有关注项</div>'
         boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
@@ -547,7 +569,7 @@ def _front(works, today, updated):
     heads = [f'<li style="--sc:{_sec_color(w.get("section"))}"><i>{e(w.get("section") or "")}</i>'
              f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a>'
              f'<span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span></li>'
-             for w, x in newest if x is not top][:12]
+             for w, x in newest if x is not top and all(x is not m for _, m in more)][:12]
     heads_html = ""
     if heads:
         heads_html = (f'<div class="heads"><h4>最新消息<small>LATEST HEADLINES</small></h4>'
