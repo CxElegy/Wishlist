@@ -51,7 +51,10 @@ jobs:
 
       - name: 周报 → Discord
         if: env.IS_WEEKLY == 'true'
-        run: python scripts/digest.py notify-weekly
+        run: |
+          python scripts/digest.py notify-weekly
+          # 心跳：每周至少提交一次。公开仓库连续 60 天没有活动，GitHub 会悄悄停用定时任务
+          TZ=Asia/Shanghai date +'%F %H:%M 周报已发送' > state/heartbeat.txt
 
       - name: 提交（docs/ 由 GitHub Pages 发布）
         run: |
