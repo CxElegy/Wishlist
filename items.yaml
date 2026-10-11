@@ -7,11 +7,20 @@
 #   match        可选，标题或摘要必须包含其中一个词才保留，默认用 keywords
 #   exclude      可选，标题包含这些词的条目直接丢掉
 #   news_langs   可选，单独为这一项指定新闻语言区，会覆盖下面 settings 里的设置
-#   use          可选，用哪些新闻源，默认 [google, bing]
-#   subreddits   可选，在这些 Reddit 版块里按关键词搜
+#   priority     你最关心这一项的什么。AI 按它给报道排序，直接回答它的新消息会做成整行大板块
+#   subtitle     可选，板块标题旁的副标题（如日文名）
+#   use          可选，用哪些来源，默认 [google, bing, reddit]
+#   subreddits   可选，额外在这些 Reddit 版块里按关键词搜
 #   feeds        可选，任意 RSS / Atom 地址（官网博客、RSSHub 等）
 #   max_entries  可选，单独为这一项设置交给 AI 的条目上限
-#   notes        可选，给 AI 的补充说明
+#   notes        可选，给 AI 的背景说明
+#
+# 简报外观（都可选）：
+#   cover        封面图地址；不填会自动找（AniList / TMDB / Steam 封面，或 site 的预览图）
+#   site         官网地址，用来找封面
+#   theme        板块配色，不填就从封面自动取色。字段：
+#                bg/fg/accent（主面底色/文字/强调）、alt_bg/alt_fg/alt_accent（副面），
+#                split: true 标题条做成两色对角分割，font: serif | sans
 #
 # 按类型的专用字段：
 #   game   steam_appid   Steam 商店网址里的数字，用来抓官方公告和当前价格
@@ -27,26 +36,40 @@ settings:
   timezone: Asia/Shanghai       # 播出时间按这个时区显示
   steam_country: cn             # Steam 价格地区
   max_entries_per_item: 30      # 每个关注项最多交给 AI 的条目数（控制 token）
-  summarize: true               # false = 不调用 AI，只列链接（完全零成本）
+  summarize: true               # false = 不调用 AI，直接用原标题（完全零成本）
   model: claude-haiku-5-5       # 归纳用的模型
   create_issue: true            # 每期同时开一个 GitHub Issue（会邮件通知你）
 
 items:
-  - name: Astrae Oratio（アストラエ・オラティオ）
+  - name: Astrae Oratio
+    subtitle: アストラエ・オラティオ
     type: game
     keywords: ["Astrae Oratio", "アストラエ・オラティオ", "아스트라에 오라티오", "阿索拉 星之祈願"]
     match: [Astrae Oratio, アストラエ・オラティオ, アスオラ, 아스트라에 오라티오, 아스오라, 阿索拉]
     news_langs: [zh-TW, en-US, ja-JP, ko-KR]
     max_entries: 40
+    subreddits: [Astrae_Oratio]
+    priority: 什么时候能玩：下次测试的时间和报名、正式上线日期、预约开放、PC 版 / Steam 页面
     notes: >-
       NC 发行、Dynamis One 开发的新传奇魔法 RPG，舞台是架空的 1989 年东京。
       预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。
-      重点关注：正式上线日期、测试/预约、新角色和 PV、PC 版和 Steam 页面消息。
+    site: https://astraeoratio.plaync.com/
+    theme:   # 取自官方主视觉：黑白对角分割 + 衬线 + “dream” 的淡蓝
+      bg: "#1B1B1C"
+      fg: "#F2F2F4"
+      accent: "#8DB8E8"
+      alt_bg: "#F2F2F4"
+      alt_fg: "#1B1B1C"
+      alt_accent: "#3D6FA8"
+      split: true
+      font: serif
 
   # ↓↓↓ 其它类型的写法示例，去掉行首的 # 就会生效 ↓↓↓
   #
   # - name: 葬送的芙莉莲
+  #   subtitle: 葬送のフリーレン
   #   type: anime
+  #   priority: 新一季什么时候播
   #   keywords: ["葬送的芙莉莲", "葬送のフリーレン", "Frieren"]
   #   anilist_id: 154587
   #   news_langs: [zh-CN, ja-JP]

@@ -16,7 +16,7 @@ concurrency:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -27,26 +27,28 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: 抓取并整理
+      - name: 抓取、编辑、生成简报
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
         run: python scripts/digest.py
 
-      - name: 提交报告
+      - name: 提交（docs/ 由 GitHub Pages 发布）
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports state
+          git add reports state docs
           git diff --cached --quiet || git commit -m "简报 $(date -u +%F)"
           git push
 
-      - name: 发布为 Issue
+      - name: 开 Issue 提醒
+        if: hashFiles('issue.md') != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           enabled=$(python -c "import yaml; print((yaml.safe_load(open('items.yaml')).get('settings') or {}).get('create_issue', True))")
           if [ "$enabled" = "True" ]; then
-            head -c 60000 reports/LATEST.md > issue.md   # Issue 正文上限 65536 字符
-            gh issue create --title "关注清单简报 $(date -u +%F)" --body-file issue.md
+            gh issue create --title "关注清单通信 $(date -u +%F)" --body-file issue.md
           fi

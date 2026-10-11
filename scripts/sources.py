@@ -6,9 +6,13 @@
 import datetime as dt
 import email.utils
 import html
+import base64
 import json
+import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -17,6 +21,7 @@ from dataclasses import dataclass
 USER_AGENT = "Mozilla/5.0 (wishlist-digest; +https://github.com/CxElegy/Wishlist)"
 TIMEOUT = 20
 ATOM = "{http://www.w3.org/2005/Atom}"
+MEDIA = "{http://search.yahoo.com/mrss/}"
 
 
 @dataclass
@@ -26,6 +31,7 @@ class Entry:
     published: dt.datetime | None
     source: str
     summary: str = ""
+    image: str = ""
 
 
 def _get(url):
@@ -53,19 +59,38 @@ def _parse_date(text):
     return d if d.tzinfo else d.replace(tzinfo=dt.timezone.utc)
 
 
+def _image(node, raw_html):
+    """RSS 条目里的配图：media:thumbnail / media:content / enclosure / 正文第一张图。"""
+    for tag in (f"{MEDIA}thumbnail", f"{MEDIA}content", "enclosure"):
+        el = node.find(tag)
+        if el is not None and el.get("url") and (tag != "enclosure" or el.get("type", "").startswith("image")):
+            return html.unescape(el.get("url"))
+    m = re.search(r'<img[^>]+src=["\']([^"\']+)', html.unescape(raw_html or ""))
+    return html.unescape(m.group(1)) if m else ""
+
+
 def _warn(name, err):
     print(f"  [警告] {name} 抓取失败：{err}", file=sys.stderr)
 
 
 def rss(url, source=None):
-    """通用 RSS 2.0 / Atom 解析。"""
+    """抓取并解析 RSS 2.0 / Atom。"""
     try:
-        data = _get(url).strip()
-        if not data or data[:15].lower().startswith(b"<!doctype html"):
-            return []  # 没有结果时 Bing 会返回空内容或 HTML 页面
-        root = ET.fromstring(data)
-    except Exception as e:  # 网络或格式错误都跳过，不影响其它来源
+        data = _get(url)
+    except Exception as e:  # 网络错误跳过，不影响其它来源
         _warn(source or url, e)
+        return []
+    return rss_bytes(data, source or url)
+
+
+def rss_bytes(data, source):
+    data = data.strip()
+    if not data or data[:15].lower().startswith(b"<!doctype html"):
+        return []  # 没有结果时 Bing 会返回空内容或 HTML 页面
+    try:
+        root = ET.fromstring(data)
+    except ET.ParseError as e:
+        _warn(source, e)
         return []
 
     entries = []
@@ -75,8 +100,9 @@ def rss(url, source=None):
             title=_clean(it.findtext("title"), 200),
             url=(it.findtext("link") or "").strip(),
             published=_parse_date(it.findtext("pubDate")),
-            source=(src.text if src is not None and src.text else source or url),
+            source=(src.text if src is not None and src.text else source),
             summary=_clean(it.findtext("description")),
+            image=_image(it, it.findtext("description")),
         ))
     for it in root.iter(f"{ATOM}entry"):  # Atom
         link = it.find(f"{ATOM}link")
@@ -84,8 +110,9 @@ def rss(url, source=None):
             title=_clean(it.findtext(f"{ATOM}title"), 200),
             url=link.get("href", "") if link is not None else "",
             published=_parse_date(it.findtext(f"{ATOM}updated") or it.findtext(f"{ATOM}published")),
-            source=source or url,
+            source=source,
             summary=_clean(it.findtext(f"{ATOM}content") or it.findtext(f"{ATOM}summary")),
+            image=_image(it, it.findtext(f"{ATOM}content") or it.findtext(f"{ATOM}summary")),
         ))
     return [e for e in entries if e.title and e.url]
 
@@ -113,12 +140,85 @@ def bing_news(query):
     return entries
 
 
-def reddit(subreddit, query):
-    q = urllib.parse.quote(query)
-    return rss(
-        f"https://www.reddit.com/r/{subreddit}/search.rss?q={q}&restrict_sr=1&sort=new",
-        f"r/{subreddit}",
-    )
+_reddit_token = None
+
+
+def _reddit_oauth():
+    """用 Reddit 官方 API（免费的 script 应用）换取只读令牌；没配置返回 None。"""
+    global _reddit_token
+    cid, secret = os.environ.get("REDDIT_CLIENT_ID"), os.environ.get("REDDIT_CLIENT_SECRET")
+    if not (cid and secret):
+        return None
+    if _reddit_token is None:
+        req = urllib.request.Request(
+            "https://www.reddit.com/api/v1/access_token",
+            data=b"grant_type=client_credentials",
+            headers={
+                "User-Agent": USER_AGENT,
+                "Authorization": "Basic " + base64.b64encode(f"{cid}:{secret}".encode()).decode(),
+            },
+        )
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            _reddit_token = json.loads(resp.read())["access_token"]
+    return _reddit_token
+
+
+def _reddit_get(path, params):
+    """先用官方 API；没配置就用 RSS。Reddit 限流很严：每次请求间隔 2 秒，遇到 429 等 10 秒重试一次。"""
+    try:
+        token = _reddit_oauth()
+    except Exception as e:
+        _warn("Reddit 授权", e)
+        token = None
+    query = urllib.parse.urlencode(params)
+    if token:
+        url = f"https://oauth.reddit.com{path}?{query}"
+        headers = {"User-Agent": USER_AGENT, "Authorization": f"Bearer {token}"}
+    else:
+        url = f"https://www.reddit.com{path}.rss?{query}"
+        headers = {"User-Agent": USER_AGENT}
+    for attempt in range(2):
+        time.sleep(2)
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=TIMEOUT) as resp:
+                return token is not None, resp.read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt:
+                raise
+            time.sleep(10)
+
+
+def _reddit_entries(path, params, name):
+    try:
+        is_json, data = _reddit_get(path, params)
+    except Exception as e:
+        _warn(name, e)
+        return []
+    if not is_json:
+        return rss_bytes(data, name)
+    entries = []
+    for p in (c["data"] for c in json.loads(data)["data"]["children"]):
+        preview = ((p.get("preview") or {}).get("images") or [{}])[0].get("source", {}).get("url", "")
+        entries.append(Entry(
+            title=_clean(p["title"], 200),
+            url="https://www.reddit.com" + p["permalink"],
+            published=dt.datetime.fromtimestamp(p["created_utc"], dt.timezone.utc),
+            source=f"r/{p['subreddit']}",
+            summary=f"赞 {p['score']} · 评论 {p['num_comments']} · " + _clean(p.get("selftext"), 250),
+            image=html.unescape(preview),
+        ))
+    return entries
+
+
+def reddit_search(query, lookback_days=7):
+    """全站搜索。摘要里带赞数和评论数（官方 API 才有），方便 AI 判断热度。"""
+    period = "week" if lookback_days <= 7 else "month"
+    return _reddit_entries("/search", {"q": query, "sort": "relevance", "t": period, "limit": 25}, "Reddit")
+
+
+def reddit_sub(subreddit):
+    """专门版块的最新帖子（版块本身就是相关的，不再按关键词过滤）。"""
+    return _reddit_entries(f"/r/{subreddit}/new", {"limit": 25}, f"r/{subreddit}")
 
 
 def steam_news(appid, count=10):
@@ -160,7 +260,37 @@ def steam_price(appid, country):
     return price["final_formatted"]
 
 
-# ---------- 状态类数据源：返回 (显示文字, 稳定值)，稳定值变了才提示“有变化” ----------
+# ---------- 图片 ----------
+
+def og_image(url):
+    """读取网页的预览图（og:image / twitter:image），只读前 300KB。"""
+    if not url or "news.google.com" in url:
+        return None  # Google 新闻是跳转页，解析成本太高，跳过
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            head = resp.read(300_000).decode("utf-8", "ignore")
+    except Exception:
+        return None
+    for pattern in (
+        r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)(?::src)?["\'][^>]*content=["\']([^"\']+)',
+        r'<meta[^>]+content=["\']([^"\']+)["\'][^>]*(?:property|name)=["\'](?:og:image|twitter:image)',
+    ):
+        m = re.search(pattern, head, re.I)
+        if m:
+            return urllib.parse.urljoin(url, html.unescape(m.group(1)))
+    return None
+
+
+def steam_header(appid):
+    try:
+        data = json.loads(_get(f"https://store.steampowered.com/api/appdetails?appids={appid}&filters=basic"))
+        return data[str(appid)]["data"]["header_image"]
+    except Exception:
+        return None
+
+
+# ---------- 状态类数据源：返回 (显示文字, 稳定值, 封面图)，稳定值变了才提示“有变化” ----------
 
 def _fmt_time(ts, tz):
     return dt.datetime.fromtimestamp(ts, tz).strftime("%m-%d %H:%M")
@@ -171,6 +301,8 @@ query ($id: Int, $search: String, $type: MediaType) {
   Media(id: $id, search: $search, type: $type) {
     id type status episodes chapters siteUrl
     title { native romaji }
+    coverImage { extraLarge }
+    bannerImage
     startDate { year month day }
     nextAiringEpisode { episode airingAt }
     relations { edges { relationType node { id type } } }
@@ -223,7 +355,8 @@ def anilist_status(anilist_id, search, media_type, tz):
     total = media.get("episodes") or media.get("chapters")
     if total:
         parts.append(f"共 {total} {'集' if media_type == 'ANIME' else '话'}")
-    return " · ".join(parts), f"{media['id']}|{media['status']}"
+    cover = media.get("bannerImage") or (media.get("coverImage") or {}).get("extraLarge")
+    return " · ".join(parts), f"{media['id']}|{media['status']}", cover
 
 
 TMDB_STATUS = {
@@ -252,9 +385,11 @@ def tmdb_status(ref, api_key, language="zh-CN"):
 
     status = TMDB_STATUS.get(d.get("status"), d.get("status"))
     link = f"https://www.themoviedb.org/{ref}"
+    art = d.get("backdrop_path") or d.get("poster_path")
+    cover = f"https://image.tmdb.org/t/p/w780{art}" if art else None
     if kind == "movie":
         date = d.get("release_date") or "待定"
-        return f"[《{d.get('title')}》]({link}) · {status} · 上映日期 {date}", f"{d.get('status')}|{date}"
+        return f"[《{d.get('title')}》]({link}) · {status} · 上映日期 {date}", f"{d.get('status')}|{date}", cover
 
     parts = [f"[《{d.get('name')}》]({link})", status, f"共 {d.get('number_of_seasons')} 季"]
     nxt = d.get("next_episode_to_air")
@@ -264,4 +399,4 @@ def tmdb_status(ref, api_key, language="zh-CN"):
         last = d["last_episode_to_air"]
         parts.append(f"最近一集 S{last['season_number']}E{last['episode_number']} {last.get('air_date')}")
     nxt_season = nxt["season_number"] if nxt else None
-    return " · ".join(parts), f"{d.get('status')}|{d.get('number_of_seasons')}|{nxt_season}"
+    return " · ".join(parts), f"{d.get('status')}|{d.get('number_of_seasons')}|{nxt_season}", cover
