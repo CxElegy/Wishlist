@@ -29,6 +29,46 @@
   "font": "serif",
   "split": false
  },
+ "ILLIT 演唱会|https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png": {
+  "accent": "#B31957",
+  "alt_accent": "#E85E96",
+  "alt_bg": "#371B24",
+  "alt_fg": "#F2EEE6",
+  "bg": "#F3E7EB",
+  "fg": "#1A1C22",
+  "font": "serif",
+  "split": false
+ },
+ "MMORPG 新作|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
+ "日本网球赛事|https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png": {
+  "accent": "#4C8DE6",
+  "alt_accent": "#1C63C4",
+  "alt_bg": "#EEECEE",
+  "alt_fg": "#1A1C22",
+  "bg": "#1E1A1E",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
+ "星巴克马克杯|https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png": {
+  "accent": "#0F6B4C",
+  "alt_accent": "#19B37F",
+  "alt_bg": "#292929",
+  "alt_fg": "#F2EEE6",
+  "bg": "#EDEDED",
+  "fg": "#1A1C22",
+  "font": "serif",
+  "split": false
+ },
  "滑雪|None": {
   "accent": "#E0703F",
   "alt_accent": "#B83A17",
