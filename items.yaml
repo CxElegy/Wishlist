@@ -215,6 +215,58 @@ items:
       split: true
       font: sans
 
+  - name: 漫威电影
+    subtitle: Marvel Studios · MCU
+    type: show
+    keywords: [
+      "漫威 电影", "复仇者联盟5", "复仇者联盟：毁灭之日", "复仇者联盟6 秘密战争",
+      "Marvel Studios movie", "Avengers: Doomsday", "Avengers: Secret Wars", "MCU movie"
+    ]
+    match: [
+      漫威, 復仇者, 复仇者, 复联, 復聯, 毁灭之日, 毀滅之日, 末日博士, 秘密战争, 秘密戰爭,
+      Marvel, MCU, Avengers, Doomsday, Secret Wars, Doctor Doom, Kevin Feige, 凯文·费奇
+    ]
+    exclude: [Marvel Rivals, 漫威争锋, 漫威爭鋒, Marvel Snap, 漫威终极逆转, Marvel Contest, LEGO, 乐高, 手办, Funko]
+    news_langs: [zh-CN, en-US]
+    max_entries: 40
+    max_stories: 5   # 漫威新闻多、传闻多，只挑最火的几件
+    subreddits: [marvelstudios, MarvelStudiosSpoilers]
+    priority: >-
+      什么时候能看：《复仇者联盟5：毁灭之日》12 月 18 日北美上映会不会变、中国内地定档和预售、新预告片；
+      之后的漫威电影（《复仇者联盟6：秘密战争》、X 战警等）的定档、改档和官宣
+    priority_keywords: [
+      定档, 定檔, 内地, 內地, 大陆, 引进, 预售, 預售, 上映, 改档, 撤档, 延期, 推迟,
+      release date, delay, delayed, pushed, moved, 预告, 預告, trailer, teaser,
+      毁灭之日, Doomsday, 秘密战争, Secret Wars, 票房, box office, D23, Comic-Con, Feige
+    ]
+    urgent_patterns:
+      # 复联5 内地定档 / 开启预售
+      - '(复仇者联盟|复联|復仇者|復聯|毁灭之日|毀滅之日).{0,20}(内地|內地|大陆|全国院线|全國院線)?.{0,10}(定档|定檔|预售|預售|开启预售|开票)'
+      # 改档 / 延期
+      - '(Avengers|Doomsday|Secret Wars|Marvel|漫威|复仇者|复联|毁灭之日|秘密战争).{0,30}(延期|推迟|改档|撤档|delay(ed)?|postpone[sd]?|pushed (back|to)|moved to|new release date)'
+      # 新预告
+      - '(Avengers: Doomsday|Doomsday|Secret Wars|毁灭之日|毀滅之日|复联5|复仇者联盟5).{0,20}(new |official |final |second |2nd |third )?(trailer|teaser|预告|預告)'
+      # 新片定档 / 官宣
+      - '(Marvel Studios|漫威影业|漫威影業|漫威).{0,30}(新片|电影|電影|movie|film).{0,20}(定档|定檔|官宣|release date)'
+    notes: >-
+      追踪漫威影业（MCU）的院线电影。已知背景（2026/10）：《复仇者联盟5：毁灭之日》原定 2026 年 5 月 1 日，
+      已改到 2026 年 12 月 18 日北美上映（港台约 12 月 16 日），小罗伯特·唐尼饰演末日博士，罗素兄弟执导；
+      9 月 28 日官宣引进中国内地，内地具体上映日期尚未公布。《蜘蛛侠：崭新之日》已于 2026 年 7 月 31 日上映。
+      《复仇者联盟6：秘密战争》定于 2027 年 12 月 17 日。2028 年迪士尼占了 2 月 18 日、5 月 5 日、11 月 10 日三个未命名漫威档期，
+      X 战警新片被传在其中，未官宣。漫威游戏（漫威争锋、Marvel Snap）、周边不算。
+      “内鬼爆料”、选角传闻很多，没有漫威 / 迪士尼官方或主流媒体确认的都按传闻处理，标题注明「传闻」。
+    status: 《复仇者联盟5：毁灭之日》12 月 18 日北美上映 · 已确认引进内地，内地档期未定
+    site: https://www.marvel.com/movies
+    theme:   # 漫威红 + 近黑，对角分割，无衬线
+      bg: "#151515"
+      fg: "#F5F5F5"
+      accent: "#EC1D24"
+      alt_bg: "#EC1D24"
+      alt_fg: "#FFFFFF"
+      alt_accent: "#151515"
+      split: true
+      font: sans
+
   # ↓↓↓ 其它类型的写法示例，去掉行首的 # 就会生效 ↓↓↓
   #
   # - name: 葬送的芙莉莲
