@@ -1,0 +1,41 @@
+# 关注清单：只需要改这个文件，定时任务会自动读取。
+#
+# item 字段：
+#   name         必填，报告里显示的名字
+#   type         product（具体商品）/ category（一类产品）/ game（游戏），默认 product
+#   keywords     搜索关键词，每个关键词单独搜一次；越具体越准，可中英混写
+#   use          用哪些新闻源，默认 [google, bing]；只想用下面的专用源可写 []
+#   subreddits   可选，在这些 Reddit 版块里按关键词搜
+#   feeds        可选，任意 RSS / Atom 地址（官网博客、B站专栏 RSSHub 等）
+#   steam_appid  可选，游戏的 Steam ID（商店网址里的数字），会抓官方公告和当前价格
+#   match        可选，标题或摘要必须含其中一个词才保留；默认用 keywords
+#   exclude      可选，标题含这些词的条目丢掉
+#   notes        可选，给 AI 的补充说明
+
+settings:
+  lookback_days: 7              # 只看最近 N 天
+  news_langs: [zh-CN, en-US]    # Google 新闻的语言区：zh-CN / zh-TW / en-US / ja-JP
+  steam_country: cn             # Steam 价格地区
+  max_entries_per_item: 30      # 每个关注项最多交给 AI 的条目数（控制 token）
+  summarize: true               # false = 不调用 AI，只列链接（完全零成本）
+  model: claude-haiku-5-5       # 归纳用的模型
+  create_issue: true            # 每期同时开一个 GitHub Issue（会邮件通知你）
+
+items:
+  # ↓↓↓ 以下是示例，换成你自己的 ↓↓↓
+
+  - name: Sony WH-1000XM6
+    type: product
+    keywords: ["WH-1000XM6"]
+    notes: 重点关注国内电商价格
+
+  - name: OLED 显示器
+    type: category
+    keywords: ["OLED 显示器", "OLED monitor"]
+    exclude: [手机, iPhone, TV]
+
+  - name: 艾尔登法环 黑夜君临
+    type: game
+    keywords: ["黑夜君临", "Elden Ring Nightreign"]
+    match: [黑夜君临, Nightreign]
+    steam_appid: 2622380
