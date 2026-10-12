@@ -47,7 +47,9 @@
 settings:
   lookback_days: 7              # 只看最近 N 天
   first_lookback_days: 42       # 新加的关注项第一次收集时往前看 N 天，补上加入前的报道（补抓的不发要紧通知）
-  news_langs: [zh-CN, en-US]    # 默认的新闻语言区：zh-CN / zh-TW / en-US / ja-JP / ko-KR
+  news_langs: [zh-TW, en-US]    # 默认的新闻语言区：zh-CN / zh-TW / en-US / ja-JP / ko-KR
+                                # 中文新闻用 zh-TW（港台媒体）：zh-CN 搜回来八九成是大陆网站，常拦海外服务器、图片防盗链。
+                                # 某一项确实要大陆新闻时，在它的 news_langs 里写上 zh-CN（同时也收 Bing 上的大陆网站）
   timezone: Asia/Shanghai       # 播出时间按这个时区显示
   steam_country: cn             # Steam 价格地区
   max_entries_per_item: 30      # 每个关注项每期最多收集几条媒体报道
@@ -110,10 +112,10 @@ items:
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 动漫改编新手游, lang: ja-JP, query: "人気アニメ 原作 新作 スマホゲーム 事前登録", need: ["事前登録|预约|預約|配信|上线|リリース|定档", "アニメ|原作|动漫|改编|漫画"]}
-      - {label: 动漫改编新手游, lang: zh-CN, query: "动漫改编 新手游 预约 定档", need: ["事前登録|预约|預約|配信|上线|リリース|定档", "アニメ|原作|动漫|改编|漫画"]}
+      - {label: 动漫改编新手游, lang: zh-TW, query: "動畫改編 手遊 上市", need: ["事前登録|预约|預約|配信|上线|上線|上市|推出|リリース|定档|定檔", "アニメ|原作|动漫|動漫|動畫|改编|改編|漫画|漫畫"]}
     keywords: ["BLEACH Mirrors High", "死神 Mirrors High", "ブリーチ ミラーズハイ"]
     match: [Mirrors High, ミラーズハイ, ミラハイ]
-    news_langs: [zh-CN, en-US, ja-JP]
+    news_langs: [zh-TW, en-US, ja-JP]
     priority: 什么时候能玩：正式上线日期、下次测试、全球 / 国服版本
     priority_keywords: [
       上线, 上線, 发售, 配信, リリース, release, launch,
@@ -148,10 +150,10 @@ items:
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 开放世界大作, lang: en-US, query: "open world game release date announced", need: ["open world|open-world|开放世界|オープンワールド"]}
-      - {label: 开放世界大作, lang: zh-CN, query: "开放世界 3A 新作 发售日", need: ["open world|open-world|开放世界|オープンワールド"]}
+      - {label: 开放世界大作, lang: zh-TW, query: "開放世界 新作 發售日", need: ["open world|open-world|开放世界|開放世界|オープンワールド"]}
     keywords: ["GTA 6", "GTA VI", "Grand Theft Auto VI", "侠盗猎车手6", "俠盜獵車手6"]
     match: [GTA 6, GTA VI, GTA6, GTAVI, Grand Theft Auto VI, Grand Theft Auto 6, 侠盗猎车手6, 侠盗猎车手 6, 俠盜獵車手6, 俠盜獵車手 6, 侠盗猎车手VI, 俠盜獵車手VI]
-    news_langs: [zh-CN, en-US]
+    news_langs: [zh-TW, en-US]
     max_entries: 30
     max_stories: 4   # 只要最近最火的几件事，一页以内；没什么事就少写
     hot_only: true
@@ -203,7 +205,7 @@ items:
     ]
     match: [MMORPG, MMO, 网游, 網遊, 大型多人]
     exclude: [私服, 外挂, 代练, 金币, gold farming, 求人]
-    news_langs: [zh-CN, en-US, ja-JP, ko-KR]
+    news_langs: [zh-TW, en-US, ja-JP, ko-KR]
     max_entries: 40
     max_stories: 6
     subreddits: [MMORPG]
@@ -256,7 +258,7 @@ items:
       ジャンプ, W杯, World Cup, 五輪, Olympic, 選手, 選抜, Team, X Games, World Tour,
       競馬, JET SKI, 知事選, 求人, 中古, 画像・写真
     ]
-    news_langs: [zh-CN, ja-JP, en-US]
+    news_langs: [zh-TW, ja-JP, en-US]
     max_entries: 40
     subreddits: [JapanSnow]   # r/snowboarding 太杂（全球闲聊），不收
     priority: >-
@@ -293,7 +295,7 @@ items:
     subtitle: Marvel Studios · MCU
     type: show
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
-      - {label: 超级英雄电影, lang: zh-CN, query: "超级英雄电影 定档 预告", need: ["superhero|超级英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠"]}
+      - {label: 超级英雄电影, lang: zh-TW, query: "超級英雄電影 預告", need: ["superhero|超级英雄|超級英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|蝙蝠俠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠|蜘蛛俠|蜘蛛人"]}
       - {label: 超级英雄电影, lang: en-US, query: "superhero movie release date trailer", need: ["superhero|超级英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠"]}
     keywords: [
       "漫威 电影", "复仇者联盟5", "复仇者联盟：毁灭之日", "复仇者联盟6 秘密战争",
@@ -304,7 +306,7 @@ items:
       Marvel, MCU, Avengers, Doomsday, Secret Wars, Doctor Doom, Kevin Feige, 凯文·费奇
     ]
     exclude: [Marvel Rivals, 漫威争锋, 漫威爭鋒, Marvel Snap, 漫威终极逆转, Marvel Contest, LEGO, 乐高, 手办, Funko]
-    news_langs: [zh-CN, en-US]
+    news_langs: [zh-TW, en-US]
     max_entries: 40
     max_stories: 5   # 漫威新闻多、传闻多，只挑最火的几件
     subreddits: [marvelstudios, MarvelStudiosSpoilers]
@@ -350,7 +352,7 @@ items:
       - {label: K-POP 女团日本公演, lang: ko-KR, query: "걸그룹 일본 투어 확정", need: ["ガールズ|걸그룹|girl group|女团|女團", "日本|일본|Japan|東京|大阪|ドーム|아레나|돔"]}
     keywords: ["ILLIT ライブ", "ILLIT 公演", "ILLIT JAPAN", "아일릿 콘서트", "ILLIT concert", "ILLIT 演唱会"]
     match: [ILLIT, アイリット, 아일릿]
-    news_langs: [ja-JP, ko-KR, en-US, zh-CN]
+    news_langs: [ja-JP, ko-KR, en-US, zh-TW]
     max_entries: 40
     use: [google, bing]   # r/ILLIT 多是日常闲聊，不抓 Reddit
     priority: 日本的演出：新的日本巡演 / 追加公演 / 巨蛋公演官宣，日程与场馆，门票抽选（GLLIT 会员先行、一般发售）；其次是韩国及其他地区的演唱会
@@ -401,7 +403,7 @@ items:
     # 只要马克杯：标题或摘要里必须有「马克杯」类的词；标题里只有保温杯 / 冷杯这类的直接丢掉
     match: [マグ, 马克杯, 馬克杯, 머그, mug, 陶瓷杯, 陶杯]
     exclude: [Stanley, 求人, 中古, メルカリ, 株価, stock price]
-    news_langs: [ja-JP, zh-TW, ko-KR, en-US, zh-CN]
+    news_langs: [ja-JP, zh-TW, ko-KR, en-US]
     max_entries: 30
     max_stories: 5
     priority: >-
@@ -442,7 +444,7 @@ items:
     section: 好物
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 猫咪新奇用品, lang: ja-JP, query: "猫 世界初 新製品", need: ["猫|ねこ|ネコ", "世界初|業界初|新発想|新製品|新発売"]}
-      - {label: 猫咪新奇用品, lang: zh-CN, query: "全球首款 猫咪 新品", need: ["猫", "首款|首发|黑科技|新品"]}
+      - {label: 猫咪新奇用品, lang: zh-TW, query: "貓咪 新品 首款", need: ["猫|貓", "首款|首发|首發|黑科技|全球首|新品"]}
     keywords: [
       # 特别新颖的新品（智能设备 / 猫粮零食 / 日用品）
       "猫 世界初 新製品", "猫 業界初", "猫用 新発想 グッズ", "猫 AI 新製品", "ペット家電 猫 新製品",
@@ -482,7 +484,7 @@ items:
     ]
     exclude_sources: ["クラウドファンディング - READYFOR", note, Catster]   # 众筹求助、个人博客、测评站
     dedupe_others: true   # 别的关注项已经收过的同一件事（如星巴克马克杯板块的黑猫杯），这里不再重复收
-    news_langs: [ja-JP, zh-CN, zh-TW, en-US]
+    news_langs: [ja-JP, zh-TW, en-US]
     max_entries: 30
     max_stories: 6
     priority: >-
@@ -539,7 +541,7 @@ items:
       日本网球公开赛, 东丽泛太平洋, 東麗泛太平洋
     ]
     exclude: [テニスの王子様, テニプリ, 求人, バドミントン, ゴルフ]
-    news_langs: [ja-JP, zh-CN]
+    news_langs: [ja-JP, zh-TW]
     priority: 大阪那站（WTA250 木下グループジャパンオープン）周末能不能和同学去现场看：哪天打哪一轮、门票、谁出场；其次是东京的东丽 PPO（WTA500）
     priority_keywords: [
       大阪, 靱, 靭, うつぼ, 木下グループ,
@@ -576,7 +578,7 @@ items:
   #   priority: 新一季什么时候播
   #   keywords: ["葬送的芙莉莲", "葬送のフリーレン", "Frieren"]
   #   anilist_id: 154587
-  #   news_langs: [zh-CN, ja-JP]
+  #   news_langs: [zh-TW, ja-JP]
   #
   # - name: 三体（剧集）
   #   type: show
@@ -597,7 +599,7 @@ items:
     type: category
     section: 三星手机
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
-      - {label: 安卓旗舰新机, lang: zh-CN, query: "安卓 旗舰 新机 发布 2027", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市"]}
+      - {label: 安卓旗舰新机, lang: zh-TW, query: "旗艦手機 發表", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市|亮相|現身|新旗艦|新旗舰|新機|新机"]}
       - {label: 安卓旗舰新机, lang: en-US, query: "flagship Android phone launch 2027", need: ["flagship|旗舰|旗艦", "launch|announce|release|unveil"]}
     keywords: [
       "Galaxy S27", "Galaxy S27 Unpacked", "Galaxy S27 series", "Galaxy S27 price",
@@ -606,7 +608,7 @@ items:
     # 单写「S27」会混进显示器型号，必须带 Galaxy / 갤럭시 / 三星
     match: [Galaxy S27, GalaxyS27, 갤럭시 S27, 갤럭시S27, 三星S27, 三星 S27, ギャラクシーS27, ギャラクシー S27]
     exclude: [ultra, 울트라, ウルトラ, s27u, s27 pro, s27pro, s27 프로, s27프로, s27 プロ, s27プロ, 求人, 中古, メルカリ, 株価, stock price, 闲鱼, 二手]
-    news_langs: [zh-CN, en-US, ko-KR, ja-JP]
+    news_langs: [zh-TW, en-US, ko-KR, ja-JP]
     max_entries: 30
     max_stories: 4
     priority: >-
@@ -647,7 +649,7 @@ items:
     ]
     match: [S27 Ultra, S27Ultra, S27U, S27 울트라, S27울트라, S27 ウルトラ]
     exclude: [s27 pro, s27pro, s27 프로, s27프로, s27 プロ, s27プロ, 求人, 中古, メルカリ, 株価, stock price, 闲鱼, 二手]
-    news_langs: [zh-CN, en-US, ko-KR, ja-JP]
+    news_langs: [zh-TW, en-US, ko-KR, ja-JP]
     max_entries: 30
     max_stories: 5
     priority: >-
@@ -691,7 +693,7 @@ items:
     ]
     match: [S27 Pro, S27Pro, S27 프로, S27프로, S27 プロ, S27プロ]
     exclude: [求人, 中古, メルカリ, 株価, stock price, 闲鱼, 二手]
-    news_langs: [zh-CN, en-US, ko-KR, ja-JP]
+    news_langs: [zh-TW, en-US, ko-KR, ja-JP]
     max_entries: 30
     max_stories: 5
     priority: >-
@@ -737,7 +739,7 @@ items:
     # 「ジェラート」单独会混进冰淇淋，必须是完整的牌子名
     match: [ジェラートピケ, ジェラート・ピケ, ジェラピケ, gelato pique, gelatopique, ジェラートピケカフェ]
     exclude: [求人, 中古, メルカリ, 転売, 株価, stock price, 闲鱼, 二手, 代购]
-    news_langs: [ja-JP, zh-CN, zh-TW]
+    news_langs: [ja-JP, zh-TW]
     max_entries: 30
     max_stories: 5
     priority: >-

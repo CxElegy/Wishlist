@@ -32,6 +32,7 @@
 | 合并图（分支怎么合、合并之后的流程） | [merge.html](https://cxelegy.github.io/Wishlist/design/merge.html) | [merge.png](docs/design/merge.png) |
 | 改动怎么进 main（会话 → 分支 → PR → 合并 → 自动上线；冲突怎么办、黄色横幅是什么） | [pr-flow.html](https://cxelegy.github.io/Wishlist/design/pr-flow.html) | [pr-flow.png](docs/design/pr-flow.png) |
 | 编排逻辑（一条新闻怎么变成网页上的卡片、三条编排路、去重的四道关） | [editing.html](https://cxelegy.github.io/Wishlist/design/editing.html) | [editing.png](docs/design/editing.png) |
+| 情报来源（从哪搜、每一步留下谁、配图回退梯、来源多元化保留了什么 / 在哪收窄，附真实数字） | [sources.html](https://cxelegy.github.io/Wishlist/design/sources.html) | [sources.png](docs/design/sources.png) |
 
 设计稿源文件在 `design/`（Claude 设计画布格式，修改时用）。
 
@@ -125,6 +126,7 @@ items.yaml
 - `type`：`game` / `anime` / `show` / `product` / `category`
 - `urgent_patterns`：什么样的标题算要紧消息（正则），命中就当天通知 Discord
 - `theme`：可选，手写配色；不写就从封面自动取色
+- `news_langs`：新闻语言区。中文用 `zh-TW`（港台媒体）；默认不收中国大陆网站（常拦海外服务器、图片防盗链，链接和配图容易失效），某一项确实要大陆新闻时再写上 `zh-CN`
 
 ## 本地运行
 
@@ -154,7 +156,7 @@ python -m unittest discover tests       # 运行测试（本地假网站，不�
 |---|---|
 | `items.yaml` | 关注清单和设置 |
 | `scripts/sources.py` | 各数据源的抓取，新增数据源加在这里 |
-| `scripts/images.py` | 配图：找候选图、实际下载检查、按顺序回退，记录没图的原因（Actions 日志里的 `[配图]` 行和「配图汇总」） |
+| `scripts/images.py` | 配图：找候选图（含 MSN 文章接口、Bing / Google 新闻上的转载和新闻稿原出处）、实际下载检查、按顺序回退，记录没图的原因（Actions 日志里的 `[配图]` 行和「配图汇总」）；国外来源优先，大陆网站的图验证不了时万不得已才用；原文已删（404 / 410）的报道不出刊 |
 | `scripts/digest.py` | 主流程：抓取 → 过滤 → 编辑 → 输出 |
 | `scripts/theme.py` | 从封面图提取板块配色 |
 | `scripts/render.py` | 简报网页的版式 |

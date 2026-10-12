@@ -324,14 +324,18 @@ def _headline(story):
 
 def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
-    没有图或图打不开（防盗链等）时换成作品封面；连封面也没有，就显示作品名排版的封面块。"""
-    img, cover, name = story.get("image"), story.get("_cover"), story.get("_work", "")
-    fb = f' data-fb="{e(cover)}"' if cover and cover != img else ""
-    swap = ("if(this.dataset.fb){this.src=this.dataset.fb;this.removeAttribute('data-fb')}"
+    没有图或图打不开（防盗链、网站删图等）时按顺序换：作品封面 → 同一关注项其它报道的图（_fbs）；
+    全都打不开才显示作品名排版的封面块。"""
+    img, name = story.get("image"), story.get("_work", "")
+    fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
+    chain = list(dict.fromkeys(u for u in [img, *fbs] if u))  # 第一张是 src，其余按顺序备用
+    fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
+    swap = ("var f=(this.dataset.fb||'').split(' ').filter(Boolean);"
+            "if(f.length){this.src=f.shift();this.dataset.fb=f.join(' ')}"
             "else{this.parentNode.classList.add('none');this.remove()}")
-    src = img or cover
+    src = chain[0] if chain else None
     tag = "".join(
-        f'<img{cls} src="{e(src)}"{fb if img else ""} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="{swap}">'
+        f'<img{cls} src="{e(src)}"{fb} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="{swap}">'
         for cls in (' class="bg"', "")
     ) if src else ""
     none = "" if src else " none"
@@ -355,6 +359,7 @@ def _hero(story, side):
 
 
 HOLD_DAYS = 7  # 一周内收到的消息直接显示，更早的收进折叠区
+FALLBACKS = 5  # 每张图打不开时最多依次换几张备用图（作品封面 + 同一关注项其它报道的图）
 SPAN = {"hero": 12, "lead": 8, "normal": 4}
 RANK = {"hero": 0, "lead": 1, "normal": 2}
 
@@ -536,12 +541,16 @@ def collect(issues, order=None):
                                      "_cover": w.get("cover") or b.get("cover")})
     for w in works.values():
         w["stories"].sort(key=lambda x: x.get("date") or x["_issue"], reverse=True)  # 按消息本身的日期
+        # 备用图：作品封面，再是这一项最近几条报道的图。没封面的（滑雪、猫用品这类一整类东西）也不会只剩名字块
+        w["_fbs"] = list(dict.fromkeys(u for u in [w.get("cover"), *(x.get("image") for x in w["stories"])] if u))[:FALLBACKS]
+        for x in w["stories"]:
+            x["_fbs"] = [u for u in w["_fbs"] if u != x.get("image")]
     return list(works.values())
 
 
 def _calm(block):
     """没有新消息时的小栏：封面小图、现状、往期最近一条。"""
-    pic = _pic({"image": block.get("cover")}) if block.get("cover") else ""
+    pic = _pic({"image": None, "_fbs": block.get("_fbs") or [block.get("cover")]}) if block.get("_fbs") or block.get("cover") else ""
     status = f'<span class="status">{_md_links(block["status"])}</span>' if block.get("status") else ""
     last = block.get("last")
     tail = ""
@@ -594,14 +603,14 @@ def _picks(picks, works, feedback=None):
     feedback 配好了 Supabase（url、key）时，每条下面有 👍 / 👎，投票直接写进数据库，下次出刊时学习。"""
     if not picks:
         return ""
-    covers = {w["name"]: w.get("cover") for w in works}
+    covers = {w["name"]: w.get("_fbs") or [w.get("cover")] for w in works}
 
     def cards_of(group, big_first):
         return "".join(card(x, big_first and i == 0) for i, x in enumerate(group))
 
     def card(x, big):
         follow = x.get("kind") in ("follow", "hesitate")  # 同类新发现不是那个作品本身，没图时不能用它的封面
-        story = {"image": x.get("image"), "_cover": None if follow else covers.get(x["work"]),
+        story = {"image": x.get("image"), "_fbs": [] if follow else covers.get(x["work"], []),
                  "_work": (x.get("hits") or [x["work"]])[0] if follow else x["work"]}
         tags = "".join(f"<i>{e(h)}</i>" for h in x.get("hits", []))
         date = e(x["date"][5:].replace("-", ".")) if x.get("date") else ""
@@ -912,7 +921,7 @@ def _front(works, today, updated):
                 text, img, cls = first["headline"], first.get("image") or w.get("cover"), "entry"
             else:
                 text, img, cls = w.get("status") or "暂无新消息", w.get("cover"), "entry q"
-            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic({"image": img, "_work": w["name"], "_cover": w.get("cover")})}'
+            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic({"image": img, "_work": w["name"], "_fbs": w.get("_fbs") or [w.get("cover")]})}'
                         f'<span><span class="nm">{e(w["name"])}</span><b>{e(text)}</b></span></a>')
         body = "".join(rows) or '<div class="none">还没有关注项</div>'
         boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
