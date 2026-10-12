@@ -5,7 +5,7 @@
 - 最上面一张「头版」：最近一周的实时总览（最重要的一条做头条 + 各作品最新一条 + 最新消息列表）
 - 版面数量和顺序固定（板块 → items.yaml 顺序）；每天更新只是版面里的消息变化
 - 每个关注项一个版面，配色取自该作品（theme.py）。所有日期的消息汇总在一起，按时间排列（新的在前）：
-  - 一周内收到的直接显示（最多约一屏），卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满；
+  - 一周内收到的直接显示（最多多高按篇幅 S / M / L，L 约一屏），卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满；
     放不下时先按重要度挑出留下的，留下的再按时间排
   - 更早的收进版面底部的「更早的消息」折叠区，点开才显示
 - 一周内没有新消息的关注项只留一个小栏：标题条 + 现状
@@ -457,7 +457,9 @@ def _tcard(story, span, i, today, small=False):
             f'{_when(story, today)}<{level}>{_headline(story)}</{level}>{blurb}</a>')
 
 
-PAGE_HEIGHT = 1100  # 每个作品直接显示的消息最多占大约一屏高（像素，按卡片行的大致高度估算）
+# 每个作品一周内直接显示的消息最多占多高（像素，按卡片行的大致高度估算），按篇幅（数据库 sizes 表）：
+# S 只放几条（大约一行），M 中等，L 满满一整屏；表里没有的按 M
+SIZE_HEIGHT = {"S": 460, "M": 800, "L": 1400}
 ROW_HEIGHT = {12: 300, 8: 560, 6: 450, 4: 350}  # 一行里最宽那张卡片的宽度 → 这一行大约多高；整行大图另算
 
 
@@ -526,19 +528,19 @@ def _render_rows(rows, today):
     return "".join(out)
 
 
-def _timeline(stories, today):
-    """一周内的消息，最多放约一屏。放不下时按重要度挑：重要的先留（同样重要的取新的），
-    能放进一屏就留下；留下的再按时间排列显示，其余返回给折叠区。"""
+def _timeline(stories, today, budget=SIZE_HEIGHT["M"]):
+    """一周内的消息，最多放 budget 高（见 SIZE_HEIGHT）。放不下时按重要度挑：重要的先留（同样重要的取新的），
+    放得下就留下；留下的再按时间排列显示，其余返回给折叠区。"""
     def newest_first(xs):
         return sorted(xs, key=lambda x: x.get("date") or x["_issue"], reverse=True)
 
     keep = stories
-    if _height(stories) > PAGE_HEIGHT:
+    if _height(stories) > budget:
         by_rank = sorted(newest_first(stories), key=lambda x: RANK.get(x.get("weight"), 2))
         keep = []
         for x in by_rank:
             trial = newest_first(keep + [x])
-            if not keep or _height(trial) <= PAGE_HEIGHT:
+            if not keep or _height(trial) <= budget:
                 keep = trial
     kept = {id(x) for x in keep}
     rest = [x for x in stories if id(x) not in kept]
@@ -663,7 +665,7 @@ def _section(block, anchor=""):
     texts = [x for x in block["stories"] if x["_issue"] >= cutoff and not _has_pic(x)]
     old_texts = [x for x in block["stories"] if x["_issue"] < cutoff and not _has_pic(x)]
     if recent:
-        grid, more = _timeline(recent, today)
+        grid, more = _timeline(recent, today, SIZE_HEIGHT.get(block.get("_size"), SIZE_HEIGHT["M"]))
     elif texts:
         grid, more = "", []
     else:
@@ -1206,13 +1208,14 @@ NAV_JS = """
 """
 
 
-def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None):
+def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
-    order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）。"""
+    order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。"""
     latest = issues[0]
     works = collect(issues, order)
     for w in works:
         w["_today"] = latest["date"]
+        w["_size"] = (sizes or {}).get(w["name"], "M")
     updated = updated or latest["date"].replace("-", ".")
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'

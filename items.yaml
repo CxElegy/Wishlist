@@ -22,7 +22,8 @@
 #   subreddits   可选，额外在这些 Reddit 版块里按关键词搜
 #   feeds        可选，任意 RSS / Atom 地址（官网博客、RSSHub 等）
 #   max_entries  可选，单独为这一项设置交给 AI 的条目上限
-#   max_stories  可选，这一项每期最多几条报道（只挑最火的；事情少就少写，不凑数）
+#   max_stories  可选，这一项每期最多几条报道（只挑最火的；事情少就少写，不凑数）。
+#                篇幅 S / M / L 在数据库 sizes 表里管理（db/sizes.sql），表里有这一项时以数据库为准
 #   exclude_sources 可选，这些来源（媒体名）的条目直接丢掉
 #   dedupe_others 可选，true = 别的关注项已经收过的同一件事（标题相近），这一项不再重复收
 #   hot_only     可选，true = 只要最火的事：按多少家媒体在报同一件事排序，同一件事合成一条，

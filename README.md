@@ -109,6 +109,8 @@ items.yaml
    1. 在 [supabase.com](https://supabase.com) 注册（免费），New project 新建一个项目（名字随意，数据库密码自己记下）。
    2. 左侧 **SQL Editor** → 把 [`db/feedback.sql`](db/feedback.sql) 整段粘贴进去 → Run。建好 `feedback` 表：网页只能往里新增投票，读不到也改不了。
       再新建一个查询，把 [`db/news.sql`](db/news.sql) 粘贴进去 → Run。建好 `news` 表：每次收集后写入新消息（同一关注项的同一条链接只存一行），第一次运行会把 `inbox/` 里已有的全部补进去；只有 secret key 能读写。
+      再把 [`db/sizes.sql`](db/sizes.sql) 粘贴进去 → Run。建好 `sizes` 表：每个关注项的篇幅 **S**（少，每期最多 3 条、网页上约一行）/ **M**（中等，5 条）/ **L**（多，8 条、满满一整屏），表里没有的按 M。
+      以后在 Table Editor 里改 `size` 那一格就行，下次出刊生效；网页上不显示篇幅。
    3. 项目的 **Connect** 按钮（或 Project Settings → Data API）里复制 Project URL；Project Settings → **API Keys** 里复制 publishable key（`sb_publishable_` 开头）和 secret key（`sb_secret_` 开头）。
    4. 把 Project URL 和 publishable key 填进 `items.yaml` 的 `settings` → `supabase_url` / `supabase_key`（publishable key 本来就是公开给网页用的）。
    5. secret key 放进 GitHub 仓库 Settings → Secrets and variables → Actions → **Secrets**，名字 `SUPABASE_SERVICE_KEY`。**不要**写进任何文件。
@@ -170,5 +172,5 @@ python -m unittest discover tests       # 运行测试（本地假网站，不�
 | `docs/` | 简报网页，由 GitHub Pages 发布；`docs/design/` 是流程图和架构图 |
 | `design/` | 流程图、架构图、简报样式的设计稿源文件 |
 | `EDITING.md` | AI 编辑的工作规则 |
-| `db/feedback.sql`、`db/news.sql` | 数据库（Supabase）的建表语句：投票、收集到的消息 |
+| `db/feedback.sql`、`db/news.sql`、`db/sizes.sql` | 数据库（Supabase）的建表语句：投票、收集到的消息、每个关注项的篇幅 |
 | `state/` | 已报道的链接、上期状态、配色缓存，请勿手动修改 |
