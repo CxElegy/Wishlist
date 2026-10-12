@@ -533,6 +533,10 @@ def write_page():
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
                           load_wishlist())
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
+    wishes = load_wishlist()
+    if wishes:
+        works = render.collect(issues, [i["name"] for i in items])
+        (DOCS_DIR / "wishlist.html").write_text(render.render_wishlist(wishes, works, updated), encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 

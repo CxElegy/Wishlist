@@ -181,13 +181,13 @@ def wishlist(page_url):
             lines.append(x["note"])
         if x.get("watch"):
             lines.append(f"会在「{x['watch']}」版面持续追踪相关消息")
-        embed = {"title": f"♥ {x['name']}", "url": x.get("url") or f"{page_url}#wishlist",
+        embed = {"title": f"♥ {x['name']}", "url": x.get("url") or f"{page_url}wishlist.html",
                  "color": 0xB8336A, "description": "\n".join(lines),
                  "footer": {"text": " · ".join(str(v) for v in (x.get("shop"), x.get("added")) if v)}}
         if img:
             embed["image"] = {"url": img}
         embeds.append(embed)
-    if send({"username": "关注清单通信", "content": f"**愿望清单新加了 {len(new)} 件**\n{page_url}#wishlist",
+    if send({"username": "关注清单通信", "content": f"**愿望清单新加了 {len(new)} 件**\n{page_url}wishlist.html",
              "embeds": embeds}):
         digest.save_json(KNOWN_WISH_FILE, [x["name"] for x in wishes])
 

@@ -213,6 +213,17 @@ html{scroll-behavior:smooth}
 .wcard .added{font:700 11px 'JetBrains Mono',monospace;opacity:.5;letter-spacing:.1em}
 @media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
  .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
+.mastwish{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 22px;
+ border-left:1px solid #1A1C22;color:#B8336A;transition:background .2s,color .2s}
+.mastwish b{font-size:22px;line-height:1}.mastwish span{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.2em;color:#1A1C22}
+.mastwish small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.1em;opacity:.7;color:#1A1C22}
+.mastwish:hover{background:#B8336A}.mastwish:hover b,.mastwish:hover span,.mastwish:hover small{color:#FFF}
+.navwish{display:flex;align-items:center;gap:8px;margin:10px 0 0 14px;padding:8px 12px;border:2px solid #B8336A;color:#B8336A;
+ font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.15em;flex:none}
+.navwish small{margin-left:auto;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.05em;opacity:.8}
+.navwish:hover{background:#B8336A;color:#FFF}
+@media (max-width:1000px){.navwish{display:none}}
+@media (max-width:760px){.mastwish{padding:0 10px}.mastwish span,.mastwish small{display:none}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
@@ -536,6 +547,80 @@ def _section(block, anchor=""):
             f"{facts}{grid}</section>")
 
 
+def _wish_link(wishes, cls):
+    """主页面上去愿望清单子页面的入口（报头右上角、左侧目录底部）。"""
+    if not wishes:
+        return ""
+    want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
+    return (f'<a class="{cls}" href="wishlist.html"><b>♥</b><span>愿望清单</span>'
+            f'<small>{want} 件想要</small></a>')
+
+
+def render_wishlist(wishes, works, updated):
+    """愿望清单子页面（docs/wishlist.html）：收藏柜式大图网格，可按状态筛选，顶部是件数和想要的总价。"""
+    totals = {}
+    for x in wishes:
+        if (x.get("status") or "想要") == "想要" and isinstance(x.get("price"), (int, float)):
+            cur = x.get("currency", "")
+            totals[cur] = totals.get(cur, 0) + x["price"]
+    total = " + ".join(f"{c} {v:,.0f}" for c, v in totals.items()) or "—"
+    counts = {k: sum(1 for x in wishes if (x.get("status") or "想要") == k) for k in ("想要", "已入手", "没买到")}
+    chips = "".join(f'<button type="button" class="chip" data-f="{k}" aria-pressed="{str(k == "全部").lower()}">'
+                    f'{k}<small>{len(wishes) if k == "全部" else counts[k]}</small></button>'
+                    for k in ("全部", "想要", "已入手", "没买到") if k == "全部" or counts[k])
+    section = _wish_section(wishes, works)
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>愿望清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{FONTS}">
+<style>{CSS}
+.page{{grid-template-columns:minmax(0,1fr);max-width:1200px}}
+.back{{display:inline-flex;align-items:center;gap:8px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.15em}}
+.back:hover{{color:#B8336A}}
+.wsum{{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}}
+.wsum .stat{{display:flex;flex-direction:column;gap:2px}}
+.wsum .stat span{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.6}}
+.wsum .stat b{{font:900 26px/1 'Noto Sans SC',sans-serif;font-variant-numeric:tabular-nums}}
+.chips{{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px}}
+.chip{{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;
+ font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.15em;cursor:pointer}}
+.chip small{{font:700 11px 'JetBrains Mono',monospace;opacity:.6}}
+.chip[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
+.chip:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
+.wish .band{{display:none}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="mast"><div>
+<div class="logo">{LOGO}</div>
+<h1>愿望清单</h1>
+<div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
+</div></header>
+<a class="back" href="./">← 回到关注清单通信</a>
+<div class="wsum">
+<div class="stat"><span>共</span><b>{len(wishes)} 件</b></div>
+<div class="stat"><span>想要的合计</span><b>{e(total)}</b></div>
+<div class="chips" role="group" aria-label="按状态筛选">{chips}</div>
+</div>
+{section}
+</div>
+<script>
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {{
+  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', String(x === c)));
+  const f = c.dataset.f;
+  document.querySelectorAll('.wcard').forEach(w => {{ w.hidden = f !== '全部' && w.dataset.status !== f; }});
+}}));
+</script>
+</body>
+</html>
+"""
+
+
 def _wish_section(wishes, works):
     """愿望清单版面。只有一件时做成横向大卡，多件时自动排成网格。"""
     if not wishes:
@@ -557,14 +642,14 @@ def _wish_section(wishes, works):
             links.append(f'<a href="{e(x["url"])}" target="_blank" rel="noopener">去看看 ↗</a>')
         watch = ""
         if x.get("watch"):
-            links.append(f'<a href="#{_wid(x["watch"])}">{e(x["watch"])} 版面 →</a>')
+            links.append(f'<a href="./#{_wid(x["watch"])}">{e(x["watch"])} 版面 →</a>')
             st = latest.get(x["watch"])
             if st:
                 watch = (f'<a class="watch" href="{e(st["url"])}" target="_blank" rel="noopener"><span>相关最新 · '
                          f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}</span>{e(st["headline"])}</a>')
         added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
         cards.append(
-            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}">'
+            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}">'
             f'<div class="wimg">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else ""}'
             f'<span class="heart {cls}">♥ {e(status)}</span></div>'
             f'<div class="wtxt">' + (f'<span class="shop">{e(x["shop"])}</span>' if x.get("shop") else "")
@@ -768,12 +853,6 @@ def _nav(works, date, wishes=()):
     cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#front">'
             f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
-    if wishes:
-        img = wishes[0].get("image") or ""
-        img = img if img.startswith("http") or not img else "wishlist/" + img
-        css_img = f";--img:url({urllib.parse.quote(img, safe=':/?&=%#@+,;~')})" if img else ""
-        rail.append(f'<a class="pill" style="--sc:#B8336A{e(css_img)}" data-for="wishlist" href="#wishlist">'
-                    f'<i class="no">♥</i><span class="nm">愿望清单<small class="cnt">{len(wishes)} 件</small></span></a>')
     n = 0
     for name in order:
         sc = _sec_color(name)
@@ -790,7 +869,8 @@ def _nav(works, date, wishes=()):
                         f'<span class="nm">{e(w["name"])}<small class="cnt">{cnt}</small></span></a>')
     return (f'<nav class="nav" aria-label="目录">'
             f'<div class="here"><b>目录</b><small>INDEX</small><span id="nav-here"></span></div>'
-            f'<div class="rail" id="nav-rail">{"".join(rail)}</div><div class="bar" id="nav-bar"></div></nav>')
+            f'<div class="rail" id="nav-rail">{"".join(rail)}</div>{_wish_link(wishes, "navwish")}'
+            f'<div class="bar" id="nav-bar"></div></nav>')
 
 
 NAV_JS = """
@@ -849,7 +929,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=()):
     updated = updated or latest["date"].replace("-", ".")
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
-            + _front(works, latest["date"], updated) + _wish_section(wishes, works)
+            + _front(works, latest["date"], updated)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>
@@ -867,6 +947,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=()):
 <header class="mast"><div>
 <div class="logo">{LOGO}</div>
 <h1>关注清单通信</h1>
+{_wish_link(wishes, "mastwish")}
 <div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
 </div></header>
 {_nav(works, latest['date'], wishes)}

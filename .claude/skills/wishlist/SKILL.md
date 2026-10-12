@@ -6,7 +6,7 @@ description: 把用户喜欢的东西加进愿望清单（wishlist.yaml），网
 # 愿望清单
 
 数据在仓库根目录的 `wishlist.yaml`，图片放在 `docs/wishlist/`。推送到 `claude/sharp-gauss-osunmb` 后，
-工作流会自动重新生成网页（「愿望清单」版面）并在 Discord 发一条带大图的通知。
+工作流会自动重新生成网页（子页面 `docs/wishlist.html`，主页报头右上角和左侧目录底部有入口）并在 Discord 发一条带大图的通知。
 
 ## 加一件
 
@@ -19,7 +19,7 @@ description: 把用户喜欢的东西加进愿望清单（wishlist.yaml），网
    - 裁完用 Read 看一眼，确认商品完整、没被切掉。
 3. **写进 `wishlist.yaml`**（字段说明在文件顶部），`added` 填今天，`status: 想要`。
    和某个关注项有关（如星巴克马克杯）就填 `watch`，版面上会顺带显示那个关注项的最新消息。
-4. 运行 `python scripts/digest.py render`，截图检查「愿望清单」版面，然后提交并推送。
+4. 运行 `python scripts/digest.py render`，截图检查 `docs/wishlist.html`，然后提交并推送。
    不要自己发 Discord：推送触发的工作流会发（`state/known_wishlist.json` 记录已通知的）。
 
 ## 改状态 / 删除

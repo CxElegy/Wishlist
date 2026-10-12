@@ -8,7 +8,7 @@
 ## 愿望清单
 
 看到喜欢的东西，跟 Claude 说「加进 wishlist」并附上截图或链接就行（做法写在 `.claude/skills/wishlist/SKILL.md`）。
-数据在 `wishlist.yaml`，图片在 `docs/wishlist/`；网页上有单独的「愿望清单」版面，推送后 Discord 会收到一条带大图的通知。
+数据在 `wishlist.yaml`，图片在 `docs/wishlist/`；网页上是单独的子页面（[wishlist.html](https://cxelegy.github.io/Wishlist/wishlist.html)，主页报头右上角有入口，可按 想要 / 已入手 / 没买到 筛选），推送后 Discord 会收到一条带大图的通知。
 填了 `watch`（关联的关注项）的，版面上会顺带显示那个关注项的最新消息。
 
 ## 流程
