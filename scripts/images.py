@@ -44,6 +44,9 @@ IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoj
 GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder", re.I)
 BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied", re.I)
 
+ICON_MIN = 32                 # 来源图标至少这么多像素（Google 图标服务查不到时给 16px 的地球图标）
+FAVICON_SERVICE = "https://www.google.com/s2/favicons?domain={host}&sz=128"  # Google 的公开网站图标服务
+
 _pages = {}   # 运行内缓存：网页地址 → Page
 _checks = {}  # 运行内缓存：图片地址 → (ok, reason)
 _reddit_blocked = []  # 本次运行里 Reddit 已经限流 / 拒绝过（没配 API 时），后面的帖子不再请求
@@ -52,6 +55,7 @@ _reddit_blocked = []  # 本次运行里 Reddit 已经限流 / 拒绝过（没配
 def clear_cache():
     _pages.clear()
     _checks.clear()
+    _icons.clear()
     _reddit_blocked.clear()
 
 
@@ -156,6 +160,7 @@ class Page:
     body: list = field(default_factory=list)          # 正文 <img>
     status: int | None = None                         # 打不开时的 HTTP 状态码
     og_label: str = "og:image"                        # og 那一栏的来源名（MSN 接口取到的图写「MSN 接口」）
+    icons: list = field(default_factory=list)         # 网站声明的图标（apple-touch-icon / icon），大的在前
 
     @property
     def gone(self):
@@ -213,6 +218,18 @@ def parse_page(url, text):
             p.body.append(u)
         if len(p.body) >= BODY_IMAGES:
             break
+    icons = []
+    for tag in re.findall(r"<link\b[^>]*>", text, re.I):
+        rel = re.search(r'rel=["\']([^"\']+)', tag, re.I)
+        href = re.search(r'href=["\']([^"\']+)', tag, re.I)
+        if not rel or not href or "icon" not in rel.group(1).lower() or "mask" in rel.group(1).lower():
+            continue
+        sizes = re.search(r'sizes=["\'](\d+)', tag, re.I)
+        size = int(sizes.group(1)) if sizes else (180 if "apple" in rel.group(1).lower() else 0)
+        u = _abs(url, href.group(1))
+        if u and not u.lower().split("?")[0].endswith(".svg"):
+            icons.append((size, u))
+    p.icons = [u for _, u in sorted(icons, key=lambda x: -x[0])]
     if not (p.og or p.jsonld or p.body):
         p.reason = "原文没有图片元数据，正文也没有图"
     return p
@@ -278,6 +295,47 @@ def og_image(url):
     """网页的第一张预览图（作品官网取封面用）。"""
     p = page(url)
     return (p.og or p.jsonld or [None])[0]
+
+
+# ---------- 来源图标（拿不到配图时，网页上显示来源网站的图标） ----------
+
+_icons = {}  # 运行内缓存：图标地址 → 能不能用
+
+
+def check_icon(url):
+    """图标能不能用：实际下载，是图片，最短边至少 ICON_MIN 像素。"""
+    if not url or not url.startswith(("http://", "https://")):
+        return False
+    if url not in _icons:
+        f = _fetch(url, 1_000_000)
+        ok = False
+        if f.status == 200 and not f.too_big:
+            from PIL import Image
+            try:
+                with Image.open(io.BytesIO(f.body)) as im:
+                    ok = min(im.size) >= ICON_MIN
+            except Exception:
+                pass
+        _icons[url] = ok
+    return _icons[url]
+
+
+def base_domain(host):
+    """主域名：news.nicovideo.jp → nicovideo.jp，news.yahoo.co.jp → yahoo.co.jp。"""
+    parts = (host or "").lower().split(".")
+    n = 3 if len(parts) >= 3 and len(parts[-1]) == 2 and parts[-2] in ("co", "ne", "or", "ac", "go", "com", "net", "org") else 2
+    return ".".join(parts[-n:])
+
+
+def source_icon(url):
+    """来源网站的图标：网站自己声明的（apple-touch-icon / icon，大的优先），没有或打不开就用
+    Google 的公开网站图标服务，先查完整域名再查主域名。每个都实际下载检查；都不行返回 None。"""
+    host = (urllib.parse.urlparse(url or "").hostname or "").lower()
+    if not host or host == "news.google.com":
+        return None
+    p = _pages.get(url) or (page(url) if not REDDIT_POST.match(url) else None)
+    candidates = (p.icons[:3] if p and p.ok else []) + [FAVICON_SERVICE.format(host=h) for h in dict.fromkeys([host, base_domain(host)])]
+    return next((u for u in candidates if check_icon(u)), None)
 
 
 # ---------- Reddit / YouTube ----------
