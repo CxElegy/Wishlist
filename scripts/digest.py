@@ -526,8 +526,12 @@ DISCOVER_HOURS = 12    # 「同类新消息」每隔多久搜一次
 DISCOVER_PICKS = 4     # 「我会喜欢？」里放几条同类新消息（每个关注项最多一条）
 
 
+HESITATE = "纠结"   # 愿望清单里还在犹豫买不买的状态：它的 similar 也会每天搜，找类似的好产品
+
+
 def discover(force=False):
     """按 items.yaml 里每个关注项的 similar（同类搜索词）抓 Google 新闻，去掉已经在关注清单里的作品。
+    愿望清单里 status 是「纠结」的东西也一样：按它的 similar 搜类似的好产品（条目带 "wish": true）。
     结果存 state/discover.json；每 DISCOVER_HOURS 小时最多搜一次。"""
     settings, items = load_config()
     old = load_json(DISCOVER_FILE) or {}
@@ -537,7 +541,8 @@ def discover(force=False):
     tracked = {_norm(w) for i in items for w in (i.get("match") or i.get("keywords") or [i["name"]])}
     since = now - dt.timedelta(days=settings.get("lookback_days", 7))
     out, grams = [], []
-    for item in items:
+    hesitating = [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE]
+    for item in items + hesitating:
         for q in item.get("similar") or []:
             try:
                 found = sources.google_news(q["query"], settings.get("lookback_days", 7), NEWS_LANGS[q.get("lang", "zh-CN")])
@@ -558,7 +563,8 @@ def discover(force=False):
                     continue
                 grams.append(g)
                 out.append({"title": e.title, "url": e.url, "source": e.source, "summary": e.summary, "image": e.image,
-                            "date": e.published.isoformat() if e.published else "", "item": item["name"], "label": q["label"]})
+                            "date": e.published.isoformat() if e.published else "", "item": item["name"], "label": q["label"],
+                            **({"wish": True} if item.get("_wish") else {})})
     save_json(DISCOVER_FILE, {"at": now.isoformat(), "entries": out})
     print(f"同类新消息：{len(out)} 条", file=sys.stderr)
     return out
@@ -668,7 +674,8 @@ def recommend(force_discover=False):
         grams.append(g)
         picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
                       "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish",
-                      "words": sorted(key), "taste": why})
+                      "words": sorted(key), "taste": why,
+                      **({"hesitating": True} if w.get("status") == HESITATE else {})})
         if len(picks) >= PICK_COUNT:
             break
 
@@ -698,7 +705,8 @@ def recommend(force_discover=False):
         if chosen:
             x, img, url = chosen
             follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],
-                           "work": name, "image": img, "because": name, "hits": [x["label"]], "kind": "follow",
+                           "work": name, "image": img, "because": name, "hits": [x["label"]],
+                           "kind": "hesitate" if x.get("wish") else "follow",
                            "words": [], "taste": taste_bonus(taste, [x["label"]])[1]})
     picks += follow
     keep = {p["url"] for p in picks}
@@ -723,7 +731,8 @@ def write_page():
     wishes = load_wishlist()
     if wishes:
         works = render.collect(issues, [i["name"] for i in items])
-        (DOCS_DIR / "wishlist.html").write_text(render.render_wishlist(wishes, works, updated), encoding="utf-8")
+        finds = [x for x in (load_json(DISCOVER_FILE) or {}).get("entries", []) if x.get("wish")]
+        (DOCS_DIR / "wishlist.html").write_text(render.render_wishlist(wishes, works, updated, finds), encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 
@@ -1104,6 +1113,7 @@ def main():
     elif args.step == "notify-wishlist":
         import notify
         notify.wishlist(pages_url(load_config()[0]))
+        notify.hesitate(pages_url(load_config()[0]))
     elif args.step == "notify-changes":
         import notify
         notify.changes(pages_url(load_config()[0]))
