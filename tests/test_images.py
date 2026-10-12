@@ -524,6 +524,26 @@ class ImagesTest(unittest.TestCase):
         picked = digest.fallback_stories([cn, tw], {"name": "复联5", "type": "show"})
         self.assertEqual([p["refs"] for p in picked], [[2]])
 
+    def test_render_pic_fallback_chain(self):
+        """网页上图打不开时按顺序换备用图；没有自己的图就直接用第一张备用图；全都没有才是名字块。"""
+        import render
+        html = render._pic({"image": "https://a/1.jpg", "_fbs": ["https://c/cover.jpg", "https://a/2.jpg"], "_work": "x"})
+        self.assertIn('src="https://a/1.jpg" data-fb="https://c/cover.jpg https://a/2.jpg"', html)
+        html = render._pic({"image": None, "_fbs": ["https://a/2.jpg"], "_work": "x"})
+        self.assertIn('src="https://a/2.jpg"', html)
+        self.assertNotIn("data-fb", html)
+        self.assertIn('class="pic none"', render._pic({"image": None, "_fbs": [], "_work": "x"}))
+        self.assertIn('data-fb="https://c/cover.jpg"', render._pic({"image": "https://a/1.jpg", "_cover": "https://c/cover.jpg"}))
+
+    def test_render_works_without_cover_use_story_images(self):
+        import render
+        issue = {"date": "2026-10-12", "items": [{"name": "滑雪", "cover": None, "stories": [
+            {"headline": "a", "url": "https://a/1", "image": None, "date": "2026-10-12"},
+            {"headline": "b", "url": "https://a/2", "image": "https://a/2.jpg", "date": "2026-10-11"}]}]}
+        w = render.collect([issue])[0]
+        self.assertEqual(w["_fbs"], ["https://a/2.jpg"])
+        self.assertEqual(w["stories"][0]["_fbs"], ["https://a/2.jpg"])  # 没图的那条显示同一项另一条报道的图
+
     # ---------- digest.attach_media（旧功能不回归） ----------
 
     def test_attach_media_writes_back_and_falls_back_to_cover(self):
