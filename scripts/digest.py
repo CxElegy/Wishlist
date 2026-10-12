@@ -18,6 +18,7 @@ publish  出刊：读 inbox，把条目编排成报道，配图、配色，输�
 
 import argparse
 import datetime as dt
+import functools
 import hashlib
 import json
 import os
@@ -47,6 +48,7 @@ REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
+SIZES_FILE = STATE_DIR / "sizes.json"
 INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = ROOT / "docs"
 ISSUES_ON_PAGE = 3650  # 网页汇总所有期：消息永远保留，一周前的收进折叠区
@@ -439,7 +441,7 @@ def _same_topic(a, b):
 HEAT_MIN_OUTLETS = 4  # 设了 hot_only 时，头条以外的报道至少要有几家媒体在报
 
 
-def fallback_stories(entries, item, limit=7):
+def fallback_stories(entries, item, limit=None):
     """不用 AI 时的编排：
     - 标题含 priority_keywords（你最关心的事）的排前面，第一条做头条
     - 设了 hot_only 的关注项只要“最火的事”：改按有多少家媒体在报同一件事排序，同一件事合成一条；
@@ -449,6 +451,7 @@ def fallback_stories(entries, item, limit=7):
     - 本作只是被顺带提到的（打头的是别的作品）不收
     - 同等条件下国外来源优先于中国大陆网站（大陆网站常拦海外服务器、防盗链，图片和链接容易失效），
       再其次有图的、较新的优先"""
+    limit = limit or max(7, item.get("max_stories") or 0)  # 篇幅 L 每期可以多于 7 条
     words = [w.lower() for w in item.get("priority_keywords") or []]
     urgent = {i for i, e in enumerate(entries, 1) if is_urgent(e, item)}
     by_heat = bool(item.get("hot_only"))
@@ -714,6 +717,26 @@ def load_feedback():
     return [r for r in latest.values() if r["vote"]]
 
 
+SIZE_STORIES = {"S": 3, "M": 5, "L": 8}   # 篇幅 → 每期最多几条报道（网页上直接显示多高见 render.SIZE_HEIGHT）
+
+
+@functools.lru_cache(maxsize=None)
+def load_sizes():
+    """每个关注项的篇幅 S / M / L，在数据库 sizes 表里管理（建表语句在 db/sizes.sql），网页上不显示。
+    有 SUPABASE_SERVICE_KEY 时从数据库读，顺便存一份到 state/sizes.json；读不到就用上次存的那份。
+    返回 {关注项: "S" | "M" | "L"}，表里没有的关注项按 M。"""
+    sizes = load_json(SIZES_FILE) or {}
+    try:
+        got = supabase("sizes?select=item,size")
+        if got is not None:
+            sizes = {r["item"]: r["size"] for r in got if r.get("size") in SIZE_STORIES}
+            save_json(SIZES_FILE, sizes)
+    except Exception as err:
+        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/sizes.sql）" if "PGRST205" in str(err) else ""
+        print(f"  [篇幅] 读数据库失败，用上次存的{hint}：{err}", file=sys.stderr)
+    return sizes
+
+
 TASTE_LIMIT = (-6, 4)   # 投票学到的口味最多让一条推荐 -6 ~ +4 分（推荐门槛是 PICK_THRESHOLD）
 
 
@@ -835,7 +858,7 @@ def write_page():
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
-                          {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")})
+                          {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes())
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     wishes = load_wishlist()
     if wishes:
@@ -1038,6 +1061,7 @@ def publish(inbox_path=None):
     date = inbox["date"]
     edits = load_edits(inbox_path)
     themes = load_json(THEMES_FILE)
+    sizes = load_sizes()
 
     client = None
     if settings.get("summarize", False) and any(i["name"] not in edits for i in inbox["items"]):
@@ -1051,6 +1075,10 @@ def publish(inbox_path=None):
         item = by_name.get(raw["name"], {"name": raw["name"], "type": "product"})
         if raw.get("backfill"):  # 补抓的旧闻不做“重大”
             item = {**item, "urgent_patterns": []}
+        if raw["name"] in sizes:  # 数据库里定的篇幅优先于 items.yaml 的 max_stories
+            item = {**item, "max_stories": SIZE_STORIES[sizes[raw["name"]]]}
+        elif not item.get("max_stories"):
+            item = {**item, "max_stories": SIZE_STORIES["M"]}
         entries = [entry_from_dict(d) for d in raw["entries"]]
         if raw["name"] in edits and not raw["name"].startswith("_"):
             stories = [dict(s) for s in edits[raw["name"]]]
