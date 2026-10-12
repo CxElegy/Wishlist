@@ -49,6 +49,7 @@ STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
 SIZES_FILE = STATE_DIR / "sizes.json"
+SIZES_PUSHED_FILE = STATE_DIR / "sizes_pushed.json"   # items.yaml 里的 size 上次同步进数据库时是什么
 INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = ROOT / "docs"
 ISSUES_ON_PAGE = 3650  # 网页汇总所有期：消息永远保留，一周前的收进折叠区
@@ -724,17 +725,50 @@ SIZE_STORIES = {"S": 3, "M": 5, "L": 8}   # 篇幅 → 每期最多几条报道�
 def load_sizes():
     """每个关注项的篇幅 S / M / L，在数据库 sizes 表里管理（建表语句在 db/sizes.sql），网页上不显示。
     有 SUPABASE_SERVICE_KEY 时从数据库读，顺便存一份到 state/sizes.json；读不到就用上次存的那份。
-    返回 {关注项: "S" | "M" | "L"}，表里没有的关注项按 M。"""
+    返回 {关注项: "S" | "M" | "L"}，表里没有的关注项按 M。
+
+    不用手动往表里加：数据库里还没有的关注项自动补上一行（items.yaml 写了 size 就用它，没写按 M）；
+    items.yaml 的 size 改了（和上次同步的不一样）也自动写进去。在数据库里直接改的，只要 items.yaml 没再改，就一直以数据库为准。"""
     sizes = load_json(SIZES_FILE) or {}
     try:
         got = supabase("sizes?select=item,size")
         if got is not None:
             sizes = {r["item"]: r["size"] for r in got if r.get("size") in SIZE_STORIES}
+            sizes.update(_push_sizes(sizes))
             save_json(SIZES_FILE, sizes)
     except Exception as err:
         hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/sizes.sql）" if "PGRST205" in str(err) else ""
         print(f"  [篇幅] 读数据库失败，用上次存的{hint}：{err}", file=sys.stderr)
+    # 数据库还没有的（没配置、还没建表、刚加的关注项）：先用 items.yaml 写的 size
+    for item in load_config()[1]:
+        want = str(item.get("size") or "").upper()
+        if item["name"] not in sizes and want in SIZE_STORIES:
+            sizes[item["name"]] = want
     return sizes
+
+
+def _push_sizes(db):
+    """把数据库里缺的、和 items.yaml 里新改的篇幅写进数据库。返回写进去的 {关注项: 篇幅}。"""
+    _, items = load_config()
+    pushed = load_json(SIZES_PUSHED_FILE) or {}
+    todo = {}
+    for item in items:
+        want = str(item.get("size") or "").upper()
+        if want and want not in SIZE_STORIES:
+            print(f"  [篇幅] {item['name']} 的 size 只能是 S / M / L，忽略 {item['size']!r}", file=sys.stderr)
+            want = ""
+        if item["name"] not in db:
+            todo[item["name"]] = want or "M"
+        elif want and want != pushed.get(item["name"]) and want != db[item["name"]]:
+            todo[item["name"]] = want
+    if todo:
+        supabase("sizes?on_conflict=item", [{"item": k, "size": v} for k, v in todo.items()],
+                 "resolution=merge-duplicates,return=minimal")
+        print(f"篇幅：写进数据库 {'、'.join(f'{k}={v}' for k, v in todo.items())}", file=sys.stderr)
+    now = {i["name"]: str(i["size"]).upper() for i in items if str(i.get("size") or "").upper() in SIZE_STORIES}
+    if now != pushed:
+        save_json(SIZES_PUSHED_FILE, now)
+    return todo
 
 
 TASTE_LIMIT = (-6, 4)   # 投票学到的口味最多让一条推荐 -6 ~ +4 分（推荐门槛是 PICK_THRESHOLD）

@@ -25,9 +25,11 @@ class LoadSizes(unittest.TestCase):
         digest.load_sizes.cache_clear()
         self.addCleanup(digest.load_sizes.cache_clear)
         self.tmp = pathlib.Path(tempfile.mkdtemp()) / "sizes.json"
-        patcher = mock.patch.object(digest, "SIZES_FILE", self.tmp)
-        patcher.start()
-        self.addCleanup(patcher.stop)
+        for patcher in (mock.patch.object(digest, "SIZES_FILE", self.tmp),
+                        mock.patch.object(digest, "SIZES_PUSHED_FILE", self.tmp.with_name("pushed.json")),
+                        mock.patch.object(digest, "load_config", return_value=({}, []))):
+            patcher.start()
+            self.addCleanup(patcher.stop)
 
     def test_reads_database_and_caches(self):
         rows = [{"item": "FROM", "size": "S"}, {"item": "滑雪", "size": "L"}, {"item": "坏数据", "size": "XL"}]
@@ -42,6 +44,52 @@ class LoadSizes(unittest.TestCase):
         digest.load_sizes.cache_clear()
         with mock.patch.object(digest, "supabase", return_value=None):  # 没配置数据库
             self.assertEqual(digest.load_sizes(), {"FROM": "S"})
+
+
+class PushSizes(unittest.TestCase):
+    """数据库里缺的、items.yaml 新改的篇幅自动写进数据库，不用手动加。"""
+
+    def setUp(self):
+        digest.load_sizes.cache_clear()
+        self.addCleanup(digest.load_sizes.cache_clear)
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        for name, path in (("SIZES_FILE", tmp / "sizes.json"), ("SIZES_PUSHED_FILE", tmp / "pushed.json")):
+            patcher = mock.patch.object(digest, name, path)
+            patcher.start()
+            self.addCleanup(patcher.stop)
+        self.writes = []
+
+    def run_with(self, db, items):
+        def fake(path, body=None, prefer=None):
+            if body is None:
+                return [{"item": k, "size": v} for k, v in db.items()]
+            self.writes.append({r["item"]: r["size"] for r in body})
+            db.update(self.writes[-1])
+            return []
+        digest.load_sizes.cache_clear()
+        with mock.patch.object(digest, "supabase", side_effect=fake), \
+                mock.patch.object(digest, "load_config", return_value=({}, items)):
+            return digest.load_sizes()
+
+    def test_missing_items_are_added(self):
+        got = self.run_with({"A": "L"}, [{"name": "A"}, {"name": "B"}, {"name": "C", "size": "s"}])
+        self.assertEqual(self.writes, [{"B": "M", "C": "S"}])
+        self.assertEqual(got, {"A": "L", "B": "M", "C": "S"})
+
+    def test_yaml_change_is_pushed_but_database_edit_wins_otherwise(self):
+        db = {"A": "S"}
+        self.run_with(db, [{"name": "A", "size": "S"}])
+        self.assertEqual(self.writes, [])
+        db["A"] = "L"  # 在数据库里手动改
+        self.assertEqual(self.run_with(db, [{"name": "A", "size": "S"}]), {"A": "L"})
+        self.assertEqual(self.writes, [])
+        self.assertEqual(self.run_with(db, [{"name": "A", "size": "M"}]), {"A": "M"})  # items.yaml 改了
+        self.assertEqual(self.writes, [{"A": "M"}])
+
+    def test_yaml_size_used_when_database_unavailable(self):
+        with mock.patch.object(digest, "supabase", return_value=None), \
+                mock.patch.object(digest, "load_config", return_value=({}, [{"name": "A", "size": "L"}, {"name": "B"}])):
+            self.assertEqual(digest.load_sizes(), {"A": "L"})
 
 
 class SizeOnPage(unittest.TestCase):

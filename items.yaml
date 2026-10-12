@@ -24,6 +24,8 @@
 #   max_entries  可选，单独为这一项设置交给 AI 的条目上限
 #   max_stories  可选，这一项每期最多几条报道（只挑最火的；事情少就少写，不凑数）。
 #                篇幅 S / M / L 在数据库 sizes 表里管理（db/sizes.sql），表里有这一项时以数据库为准
+#   size         可选，篇幅 S（少，每期 3 条、网页约一行）/ M（中等，5 条，默认）/ L（多，8 条、满满一整屏）。
+#                不用去数据库手动加：新关注项会自动写进 sizes 表；这里改了也会同步过去。在数据库里改的，这里不再改就以数据库为准
 #   exclude_sources 可选，这些来源（媒体名）的条目直接丢掉
 #   dedupe_others 可选，true = 别的关注项已经收过的同一件事（标题相近），这一项不再重复收
 #   hot_only     可选，true = 只要最火的事：按多少家媒体在报同一件事排序，同一件事合成一条，
@@ -67,6 +69,7 @@ settings:
 items:
   - name: Astrae Oratio
     subtitle: アストラエ・オラティオ
+    size: L
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 动画风新作手游, lang: ja-JP, query: "新作 アニメ調 RPG クローズドβテスト", need: ["テスト|β|CBT|封測|beta|事前登録|預約|预约|測試"]}
@@ -242,6 +245,7 @@ items:
 
   - name: 滑雪
     subtitle: 日本雪场 · 雪板装备 · 2026-27
+    size: L
     type: category
     section: 运动
     keywords: [
@@ -347,6 +351,7 @@ items:
 
   - name: FROM
     subtitle: 美剧 · MGM+ 恐怖悬疑
+    size: S
     type: show
     tmdb: tv/124364
     keywords: [
@@ -392,6 +397,7 @@ items:
 
   - name: ILLIT
     subtitle: アイリット · 日本公演特别关注
+    size: L
     type: event
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: K-POP 女团日本公演, lang: ja-JP, query: "K-POP ガールズグループ 日本 公演 決定", need: ["ガールズ|걸그룹|girl group|女团|女團", "日本|일본|Japan|東京|大阪|ドーム|아레나|돔"]}
@@ -570,6 +576,7 @@ items:
 
   - name: 日本顶级网球赛事
     subtitle: ATP・WTA ツアー 日本開催
+    size: L
     type: category
     section: 运动
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
