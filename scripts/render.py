@@ -907,8 +907,8 @@ def _wish_section(wishes, works, finds=()):
 
 
 # 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
-SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "演出": "#D6336C", "好物": "#E07A1F", "三星手机": "#1428A0"}
-SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS", "三星手机": "SAMSUNG"}
+SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "演出": "#D6336C", "好物": "#E07A1F"}
+SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
 
 
 def _sec_color(name):

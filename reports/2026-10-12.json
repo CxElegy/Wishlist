@@ -62,8 +62,8 @@
      "date": "2026-10-09",
      "headline": "BLEACH Mirror’s High Celebrates Pre-Registration Milestone",
      "highlight": "",
-     "image": "https://cdn.theouterhaven.net/wp-content/uploads/2026/10/BLEACH.jpg",
-     "image_via": "正文图",
+     "image": "https://cdn.theouterhaven.net/wp-content/uploads/100_0578-scaled.jpg",
+     "image_via": "JSON-LD",
      "url": "https://www.theouterhaven.net/bleach-mirrors-high-celebrates-pre-registration-milestone/",
      "weight": "normal"
     }
@@ -256,7 +256,8 @@
      "date": "2026-10-12",
      "headline": "영리하게 찔렀다, 엔씨 '아스트라에 오라티오' 세계관 분석",
      "highlight": "",
-     "image": null,
+     "image": "https://cdn.gameple.co.kr/news/photo/202610/216667_249570_1227.jpg",
+     "image_via": "og:image",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216667",
      "weight": "normal"
     }
@@ -300,15 +301,6 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-10",
-     "headline": "无职业俯视角MMO新作《鬼怪世界》韩服公测体验",
-     "highlight": "",
-     "image": null,
-     "url": "https://news.17173.com/content/10102026/091914484.shtml",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-09",
      "headline": "웹젠, 신작 '용과 전사' 사전예약 실시…하반기 출시 예고",
      "highlight": "",
@@ -335,6 +327,15 @@
      "image": "https://automaton-media.com/wp-content/uploads/2026/10/20261006-471947-header.jpg",
      "image_via": "og:image",
      "url": "https://automaton-media.com/articles/newsjp/20261006-471947/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "판타지포유 사전예약, 퀴즈·퍼즐 풀면 100만 골드 상자 지급",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.specialtimes.co.kr/news/articleView.html?idxno=471862",
      "weight": "normal"
     }
    ],
@@ -412,7 +413,7 @@
      "headline": "Bataleon - Evil Twin 2027 Snowboard none",
      "highlight": "",
      "image": "https://www.neveitalia.it/static/prodotti/02/600/305679228.jpg",
-     "image_via": "条目自带",
+     "image_via": "og:image",
      "url": "https://www.neveitalia.it/materiali/prezzi/prezzo/bataleon-evil-twin-2027-snowboard-none-305679228-2",
      "weight": "normal"
     },
@@ -608,7 +609,7 @@
      "headline": "【木下グループジャパンオープン2026】錦織圭｜日程・会場・アクセス・チケット・放送",
      "highlight": "",
      "image": "https://www.sportzorg24.tv/wp-content/uploads/2026/08/kinoshita-group-japan-open-2026-overview-v01-16x9-1-1024x576.png",
-     "image_via": "条目自带",
+     "image_via": "og:image",
      "url": "https://www.sportzorg24.tv/kinoshita-group-japan-open-2026/",
      "weight": "lead"
     },
@@ -628,7 +629,7 @@
      "headline": "【テニス】国スポ2026 結果速報・ドロー・日程・配信予定（青森）｜ 青の煌めきあおもり",
      "highlight": "",
      "image": "https://www.sportzorg24.tv/wp-content/uploads/2026/10/kokusupo-2026-tennis-results-v02-16x9-1-1024x576.png",
-     "image_via": "条目自带",
+     "image_via": "og:image",
      "url": "https://www.sportzorg24.tv/kokusupo-2026-tennis-results/",
      "weight": "normal"
     },
@@ -756,8 +757,8 @@
   {
    "cover": null,
    "facts": [],
-   "name": "Galaxy S27 系列情报",
-   "section": "三星手机",
+   "name": "三星手机",
+   "section": "好物",
    "stories": [
     {
      "blurb": "",
@@ -771,6 +772,16 @@
     },
     {
      "blurb": "",
+     "date": "2026-10-12",
+     "headline": "معالجات سلسلة Galaxy S27: حسم مصير Exynos 2700 وSnapdragon",
+     "highlight": "",
+     "image": "https://external-preview.redd.it/BtwNx7SL-POUmB6-B2BUKFrcPNkJUqait_3fAi9-Eug.jpeg?width=640&crop=smart&auto=webp&s=740fd11da1f8e498c2b0c4d0c54bf0072f7f225d",
+     "image_via": "条目自带",
+     "url": "https://www.reddit.com/r/mjbtechtips/comments/1x3yqke/معالجات_سلسلة_galaxy_s27_حسم_مصير_exynos_2700/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-11",
      "headline": "갤럭시 S27, '프로' 추가 4종 출시 전망…가격도 최대 13만원 인상 검토",
      "highlight": "",
@@ -781,71 +792,22 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-11",
-     "headline": "삼성전자 S27 가격 인상 검토…메모리값 급등에 수익성 압박",
-     "highlight": "",
-     "image": "https://cdn.it.chosun.com/news/thumbnail/202610/2023092171656_454286_520_v150.jpg",
-     "image_via": "og:image",
-     "url": "https://it.chosun.com/news/articleView.html?idxno=2023092171656",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-10",
-     "headline": "가격 인상 Galaxy S26 이건 큰 경고입니다. 가격이 걱정되네요. Galaxy S27 천문학적일 것이다",
-     "highlight": "",
-     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-9.jpg",
-     "image_via": "og:image",
-     "url": "https://samsungmagazine.eu/ko/2026/10/10/samsung-galaxy-s26-price-galaxy-s27-ultra/",
-     "weight": "normal"
-    }
-   ],
-   "subtitle": "갤럭시 S27 · 发布会 · 阵容 · 价格",
-   "theme": {
-    "accent": "#4C8DFF",
-    "alt_accent": "#1428A0",
-    "alt_bg": "#C9CDD5",
-    "alt_fg": "#0E1016",
-    "bg": "#0E1016",
-    "fg": "#EEF1F6",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "Galaxy S27 Ultra",
-   "section": "三星手机",
-   "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-07",
-     "headline": "Samsung Galaxy S27 Ultra Leaks: Expected India Price, Launch Timeline, Specifications and Everything We Know",
-     "highlight": "",
-     "image": "https://iamabiker.com/wp-content/uploads/2026/10/Samsung-S27-Ultra-new-details.jpg",
-     "image_via": "og:image",
-     "url": "https://iamabiker.com/avin/2026/samsung-galaxy-s27-ultra-leaks-expected-india-price-launch-timeline-specifications-and-everything-we-know/",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-09",
-     "headline": "또 계획이 바뀌었나요? Galaxy S27 Ultra 스냅드래곤 칩을 탑재한 제품이 결국 전 세계적으로 출시될 예정입니다.",
+     "headline": "Samsung Galaxy S27 Series Prices Leaked: S27, S27+, S27 Pro, S27 Ultra Leaked Prices Ahead of 2027 Launch - Here’s Other Design and Display Leaks",
      "highlight": "",
-     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-recenze-8.jpg",
+     "image": "https://sundayguardianlive.com/wp-content/uploads/2026/10/untitled-design-2026-10-09t192410701.png",
      "image_via": "og:image",
-     "url": "https://samsungmagazine.eu/ko/2026/10/09/galaxy-s27-ultra-snapdragon/",
+     "url": "https://sundayguardianlive.com/tech-news/samsung-galaxy-s27-series-prices-leaked-s27-s27-s27-pro-s27-ultra-leaked-prices-ahead-of-2027-launch-heres-other-design-and-display-leaks-302329/",
      "weight": "normal"
     },
     {
      "blurb": "",
-     "date": "2026-10-09",
-     "headline": "Android Circuit: S27 Ultra Specs, Honor’s New Display, Alexa Tablets",
+     "date": "2026-10-12",
+     "headline": "Galaxy S27 Pro／Ultraは画面とチップを強化か、価格は1.5万円上昇の可能性",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.0-BtK_nTrAPOiiYiWJ2QOw&pid=News&w=1200",
-     "image_via": "Bing 缩略图",
-     "url": "https://www.forbes.com/sites/ewanspence/2026/10/09/android-news-headlines-galaxy-s27-ultra-googlebook-oneui-9-coloros-17-honor-alexa/",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-12-101714.jpg",
+     "image_via": "og:image",
+     "url": "https://sumahodigest.com/?p=73438",
      "weight": "normal"
     },
     {
@@ -857,95 +819,16 @@
      "image_via": "条目自带",
      "url": "https://www.reddit.com/r/Frandroid/comments/1x3wgdg/galaxy_s27_ultra_son_privacy_display_corrigerait/",
      "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-10",
-     "headline": "Galaxy S27 Ultra laser autofocus leak shows why camera hardware rumours need more than case renders",
-     "highlight": "",
-     "image": "https://preview.redd.it/kqk8nxew8luh1.png?width=640&crop=smart&auto=webp&s=6e70e6a4a48da3c38461a17ea058d34d261086b8",
-     "image_via": "条目自带",
-     "url": "https://www.reddit.com/r/poprant/comments/1x28lmv/galaxy_s27_ultra_laser_autofocus_leak_shows_why/",
-     "weight": "normal"
     }
    ],
-   "subtitle": "갤럭시 S27 울트라 · 想买 · 指定商品追踪",
+   "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
-    "accent": "#2F6FDB",
-    "alt_accent": "#9CB8E8",
-    "alt_bg": "#15181E",
-    "alt_fg": "#E6E8EC",
-    "bg": "#E6E8EC",
-    "fg": "#15181E",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "Galaxy S27 Pro",
-   "section": "三星手机",
-   "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "Galaxy S27 Ultra vs. S27 Pro: Rumored Specs Comparison",
-     "highlight": "",
-     "image": "https://nokiamob.net/wp-content/uploads/2026/10/Samsung-Galaxy-S27-Pro-leak-als-kompakteres-Galaxy-S27-Ultra.jpg",
-     "image_via": "og:image",
-     "url": "https://nokiamob.net/2026/10/12/samsung-galaxy-s27-ultra-vs-s27-pro-which-premium-flagship-should-you-wait-for/",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-11",
-     "headline": "Samsung Galaxy S27 Pro vs Galaxy S27 Ultra: Who should wait for which phone",
-     "highlight": "",
-     "image": "https://www.gizmochina.com/wp-content/uploads/2026/10/Erste-Samsung-Galaxy-S27-Ultra-Cases-zeigen-mehr-vom-neuen-Kamera-Design-q82-w2560-h-1.jpg",
-     "image_via": "og:image",
-     "url": "https://www.gizmochina.com/2026/10/12/samsung-galaxy-s27-pro-vs-galaxy-s27-ultra-who-should-wait-for-which-phone/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-11",
-     "headline": "Galaxy S27 ProとS27 Ultraのスペック分析：カメラの変更点とハードウェアランキング",
-     "highlight": "",
-     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/11/1791693558571_img_f8150f3f.webp",
-     "image_via": "og:image",
-     "url": "https://www.vietnam.vn/ja/phan-tich-thong-so-galaxy-s27-pro-va-s27-ultra-thay-doi-camera-va-su-phan-cap-phan-cung",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "Galaxy S27 Pro／Ultraは画面とチップを強化か、価格は1.5万円上昇の可能性",
-     "highlight": "",
-     "image": "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-12-101714.jpg",
-     "image_via": "og:image",
-     "url": "https://sammyguru.com/galaxy-s27-pro-ultra-display-upgrades-leak/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "Galaxy S27 Pro and Ultra May Fix OLED Flickering and Privacy Display Issues",
-     "highlight": "",
-     "image": "https://sammyguru.com/wp-content/uploads/2026/02/Galaxy-S26-Ultra-SammyGuru-29-widgets.jpg",
-     "image_via": "og:image",
-     "url": "https://sammyguru.com/galaxy-s27-pro-ultra-display-upgrades-leak/",
-     "weight": "normal"
-    }
-   ],
-   "subtitle": "갤럭시 S27 프로 · 想买 · 指定商品追踪",
-   "theme": {
-    "accent": "#8E2A47",
-    "alt_accent": "#E7A9BA",
-    "alt_bg": "#5A1A2E",
-    "alt_fg": "#F6EEF0",
-    "bg": "#F6EEF0",
-    "fg": "#2B1219",
+    "accent": "#4C8DFF",
+    "alt_accent": "#1428A0",
+    "alt_bg": "#C9CDD5",
+    "alt_fg": "#0E1016",
+    "bg": "#0E1016",
+    "fg": "#EEF1F6",
     "font": "sans",
     "split": true
    }
@@ -992,7 +875,7 @@
      "headline": "ジェラピケ x Sanrio characters コラボコレクション第2弾が国内10月14日より先行予約開始",
      "highlight": "",
      "image": "https://uptodate.tokyo/wp-content/uploads/2026/10/IMG_4137_3AC2E5DB-768x1024.jpeg",
-     "image_via": "条目自带",
+     "image_via": "og:image",
      "url": "https://uptodate.tokyo/gelato-pique-sanrio-characters-part2/",
      "weight": "normal"
     }
