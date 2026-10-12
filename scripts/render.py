@@ -18,6 +18,8 @@ import json
 import re
 import urllib.parse
 
+from images import GENERIC  # 网站 logo / 默认分享图的判断，和找图用同一条规则
+
 FONTS = (
     "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700;900"
     "&family=Noto+Serif+SC:wght@500;700;900&family=Cormorant+Garamond:wght@600"
@@ -324,8 +326,8 @@ def _headline(story):
 
 def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
-    没有图或图打不开（防盗链、网站删图等）时按顺序换：作品封面 → 同一关注项其它报道的图（_fbs）；
-    全都打不开才显示作品名排版的封面块。"""
+    图打不开（防盗链、网站删图等）时按顺序换 _fbs 里的备用图（作品封面）；
+    没有图、也没有备用图时显示作品名排版的封面块。"""
     img, name = story.get("image"), story.get("_work", "")
     fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
     chain = list(dict.fromkeys(u for u in [img, *fbs] if u))  # 第一张是 src，其余按顺序备用
@@ -359,7 +361,6 @@ def _hero(story, side):
 
 
 HOLD_DAYS = 7  # 一周内收到的消息直接显示，更早的收进折叠区
-FALLBACKS = 5  # 每张图打不开时最多依次换几张备用图（作品封面 + 同一关注项其它报道的图）
 SPAN = {"hero": 12, "lead": 8, "normal": 4}
 RANK = {"hero": 0, "lead": 1, "normal": 2}
 
@@ -541,10 +542,20 @@ def collect(issues, order=None):
                                      "_cover": w.get("cover") or b.get("cover")})
     for w in works.values():
         w["stories"].sort(key=lambda x: x.get("date") or x["_issue"], reverse=True)  # 按消息本身的日期
-        # 备用图：作品封面，再是这一项最近几条报道的图。没封面的（滑雪、猫用品这类一整类东西）也不会只剩名字块
-        w["_fbs"] = list(dict.fromkeys(u for u in [w.get("cover"), *(x.get("image") for x in w["stories"])] if u))[:FALLBACKS]
+        # 没有自己图的报道：作品封面每个版面只用一次（几张卡片同一张图很难看），其余显示作品名封面块。
+        # 不拿同一项别的报道的图来顶：那是另一件事的图，放上去是错的
+        cover = w.get("cover")
+        if cover and GENERIC.search(urllib.parse.urlparse(cover).path):
+            cover = None  # 封面是品牌 logo（gelato pique）：不拿来顶替报道的图
+        cover_used = any(x.get("image") == cover for x in w["stories"]) if cover else True
+        w["_fbs"] = [cover] if cover else []
         for x in w["stories"]:
-            x["_fbs"] = [u for u in w["_fbs"] if u != x.get("image")]
+            if x.get("image"):
+                x["_fbs"] = [cover] if cover and cover != x["image"] else []  # 自己的图打不开时才换封面
+            elif not cover_used:
+                x["_fbs"], cover_used = [cover], True
+            else:
+                x["_fbs"] = []
     return list(works.values())
 
 

@@ -41,6 +41,8 @@ SYNDICATION_PAGES = 3         # Google 新闻找转载：最多读几篇（每�
 GONE = (404, 410)             # 原文返回这些状态码：页面已经删了，这条报道不出刊
 
 IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|qrcode|/ads?/|\.svg|\.gif|data:", re.I)
+# 网站 logo、全站共用的默认分享图：放在哪条报道上都不对（theouterhaven Logo.jpg、rbbtoday img_ogp.png、fb_um_logo_m.jpg）
+GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder", re.I)
 BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied", re.I)
 
 _pages = {}   # 运行内缓存：网页地址 → Page
@@ -445,7 +447,7 @@ _KINDS = (  # (原因里的关键字, 大类)：从具体到笼统，第一个�
     ("Google 新闻跳转", "原文链接未还原"), ("没有图片元数据", "原文没有图"), ("Reddit 帖子没有图", "原文没有图"),
     ("图片 HTTP", "候选图 HTTP 错误"), ("图片 超时", "候选图超时"), ("图片 网络错误", "候选图网络错误"),
     ("不是图片", "候选图格式错误"), ("太小", "候选图尺寸不合格"), ("图片超过", "候选图过大"),
-    ("地址无效", "候选图地址无效"),
+    ("地址无效", "候选图地址无效"), ("logo / 默认图", "候选图是网站 logo / 默认图"), ("和别的报道重复", "候选图和别的报道重复"),
 )
 
 
@@ -460,12 +462,13 @@ def kind(reason):
 UNVERIFIABLE = re.compile(r"HTTP 567|超时|网络错误")  # 大陆网站拦海外服务器的样子（不是防盗链 403）
 
 
-def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None):
+def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
     """一条报道的配图。按顺序检查候选图，第一张可用的就用：
     AI 挑的 > 条目自带图 > 原文（og:image > JSON-LD > 正文图；Reddit 帖子读帖子本身和外链）
     > 其它来源的原文 > Bing / Google 新闻上的同一篇转载。
     都不行时，用第一张因为拦海外服务器而验证不了的中国大陆网站图片（万不得已）；
-    连这也没有返回 image=None（网页上用作品封面代替）。"""
+    连这也没有返回 image=None（网页上用作品封面代替）。
+    网站 logo / 全站默认分享图不用；avoid 里的图（同一期别的报道已经用了）也不用，免得几张卡片同一张图。"""
     res = Result()
     seen = set()
     deadline = time.monotonic() + (STORY_BUDGET if budget is None else budget)
@@ -479,7 +482,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None):
     def stages():
         yield [("AI 挑选", chosen)]
         yield [("条目自带", e.image) for e in refs]
-        pages = [url] + [sources.resolve_url(e.url) for e in refs[1:3]]
+        pages = [url] + [sources.entry_link(e) for e in refs[1:3]]
         for i, link in enumerate(pages):
             if REDDIT_POST.match(link or ""):
                 found, note = reddit_candidates(link)
@@ -502,6 +505,10 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None):
     for stage in stages():
         for label, img in stage:
             if not img or img in seen:
+                continue
+            if GENERIC.search(urllib.parse.urlparse(img).path) or img in avoid:
+                seen.add(img)
+                res.trace.append((label, img, "网站 logo / 默认图" if img not in avoid else "和别的报道重复"))
                 continue
             if time.monotonic() > deadline:
                 res.notes.append(f"找图超过 {STORY_BUDGET if budget is None else budget} 秒，停止")
