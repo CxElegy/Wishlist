@@ -232,6 +232,10 @@ html{scroll-behavior:smooth}
 .pkhead span{font-size:13px;opacity:.75}
 .pkhead a{color:#B8336A;font-weight:700;border-bottom:1px solid currentColor}
 .pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:color-mix(in srgb,#1A1C22 18%,#F4EDE4)}
+.pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.pksub{display:flex;align-items:baseline;gap:12px;padding:12px 22px;border-top:3px solid #1A1C22;border-bottom:1px solid color-mix(in srgb,#1A1C22 18%,#F4EDE4);
+ font:900 15px 'Noto Sans SC',sans-serif;letter-spacing:.2em}
+.pksub span{font:500 12px 'Noto Serif SC',serif;letter-spacing:0;opacity:.7}
 .pk{display:flex;flex-direction:column;gap:10px;padding:16px;background:#F4EDE4;color:#1A1C22;min-width:0}
 .pk.big{grid-column:span 2;grid-row:span 2}
 .pk .pic{background:#FFF;color:#1A1C22;border:none}
@@ -243,7 +247,7 @@ html{scroll-behavior:smooth}
 .pk .tags{display:flex;flex-wrap:wrap;gap:4px}
 .pk .tags i{font-style:normal;font:700 10px 'Noto Sans SC',sans-serif;letter-spacing:.1em;padding:1px 7px;border:1px solid #B8336A;color:#B8336A}
 .pk:hover b{text-decoration:underline;text-underline-offset:3px}
-@media (max-width:760px){.pkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
+@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
@@ -572,18 +576,32 @@ def _picks(picks, works):
     if not picks:
         return ""
     covers = {w["name"]: w.get("cover") for w in works}
-    cards = []
-    for i, x in enumerate(picks):
-        story = {"image": x.get("image"), "_cover": covers.get(x["work"]), "_work": x["work"]}
+
+    def cards_of(group, big_first):
+        return "".join(card(x, big_first and i == 0) for i, x in enumerate(group))
+
+    def card(x, big):
+        follow = x.get("kind") == "follow"  # 同类新发现不是那个作品本身，没图时不能用它的封面
+        story = {"image": x.get("image"), "_cover": None if follow else covers.get(x["work"]),
+                 "_work": (x.get("hits") or [x["work"]])[0] if follow else x["work"]}
         tags = "".join(f"<i>{e(h)}</i>" for h in x.get("hits", []))
-        cards.append(
-            f'<a class="pk{" big" if i == 0 else ""}" href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
-            f'<span class="pkt"><span class="src">{e(x["source"])} · {e(x["date"][5:].replace("-", "."))}</span>'
+        date = e(x["date"][5:].replace("-", ".")) if x.get("date") else ""
+        return (
+            f'<a class="pk{" big" if big else ""}" href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
+            f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
-            f'<span class="why">因为你想要「{e(x["because"])}」</span><span class="tags">{tags}</span></span></a>')
+            f'<span class="why">因为你{"关注" if x.get("kind") == "follow" else "想要"}「{e(x["because"])}」</span>'
+            f'<span class="tags">{tags}</span></span></a>')
+
+    wish = [x for x in picks if x.get("kind") != "follow"]
+    follow = [x for x in picks if x.get("kind") == "follow"]
+    body = f'<div class="pkgrid">{cards_of(wish, True)}</div>' if wish else ""
+    if follow:
+        body += (f'<div class="pksub">同类新发现<span>你关注的作品之外，同类型的新消息</span></div>'
+                 f'<div class="pkgrid row" style="--n:{len(follow)}">{cards_of(follow, False)}</div>')
     return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>我会喜欢<em>？</em></h2>'
-            f'<span>根据愿望清单里的喜好，从最近收集到的消息里挑的 · <a href="wishlist.html">♥ 愿望清单</a></span></div>'
-            f'<div class="pkgrid">{"".join(cards)}</div></section>')
+            f'<span>根据愿望清单里的喜好和你关注的作品类型挑的 · <a href="wishlist.html">♥ 愿望清单</a></span></div>'
+            f'{body}</section>')
 
 
 def _wish_link(wishes, cls):

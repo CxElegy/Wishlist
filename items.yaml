@@ -13,6 +13,9 @@
 #                     Reddit / YouTube 的帖子不算，避免传闻误报
 #   section      可选，头版上归到哪个板块：游戏 / 影视 / 运动 / 好物（也可以自己起新名字）。
 #                不填按 type：game → 游戏，anime / show → 影视，product / category → 好物
+#   similar      可选，主页「我会喜欢？」用：同类新东西的搜索词，每条 {label: 同类名, lang: 语言区, query: 搜索词, need: [...]}。
+#                need 里每一项都必须在标题或摘要里出现（一项里用 | 写几种说法，命中一种就算），用来去掉不相关的
+#                每天搜一次，已经在关注清单里的作品会被去掉，剩下的推荐给你
 #   subtitle     可选，板块标题旁的副标题（如日文名）
 #   status       可选，一句话现状。本期没有新消息时，该项只留一个小栏，显示这句话和往期最近一条
 #   use          可选，用哪些来源，默认 [google, bing, reddit]
@@ -56,6 +59,10 @@ items:
   - name: Astrae Oratio
     subtitle: アストラエ・オラティオ
     type: game
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 动画风新作手游, lang: ja-JP, query: "新作 アニメ調 RPG クローズドβテスト", need: ["テスト|β|CBT|封測|beta|事前登録|預約|预约|測試"]}
+      - {label: 动画风新作手游, lang: zh-TW, query: "二次元 新作 手遊 封測", need: ["テスト|β|CBT|封測|beta|事前登録|預約|预约|測試"]}
+      - {label: 动画风新作手游, lang: en-US, query: "anime gacha game closed beta test", need: ["テスト|β|CBT|封測|beta|事前登録|預約|预约|測試"]}
     keywords: ["Astrae Oratio", "アストラエ・オラティオ", "아스트라에 오라티오", "阿索拉 星之祈願"]
     match: [Astrae Oratio, アストラエ・オラティオ, アスオラ, 아스트라에 오라티오, 아스오라, 阿索拉]
     news_langs: [zh-TW, en-US, ja-JP, ko-KR]
@@ -95,6 +102,9 @@ items:
   - name: BLEACH Mirrors High
     subtitle: 死神 新作手游
     type: game
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 动漫改编新手游, lang: ja-JP, query: "人気アニメ 原作 新作 スマホゲーム 事前登録", need: ["事前登録|预约|預約|配信|上线|リリース|定档", "アニメ|原作|动漫|改编|漫画"]}
+      - {label: 动漫改编新手游, lang: zh-CN, query: "动漫改编 新手游 预约 定档", need: ["事前登録|预约|預約|配信|上线|リリース|定档", "アニメ|原作|动漫|改编|漫画"]}
     keywords: ["BLEACH Mirrors High", "死神 Mirrors High", "ブリーチ ミラーズハイ"]
     match: [Mirrors High, ミラーズハイ, ミラハイ]
     news_langs: [zh-CN, en-US, ja-JP]
@@ -130,6 +140,9 @@ items:
   - name: GTA 6
     subtitle: Grand Theft Auto VI · 侠盗猎车手 6
     type: game
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 开放世界大作, lang: en-US, query: "open world game release date announced", need: ["open world|open-world|开放世界|オープンワールド"]}
+      - {label: 开放世界大作, lang: zh-CN, query: "开放世界 3A 新作 发售日", need: ["open world|open-world|开放世界|オープンワールド"]}
     keywords: ["GTA 6", "GTA VI", "Grand Theft Auto VI", "侠盗猎车手6", "俠盜獵車手6"]
     match: [GTA 6, GTA VI, GTA6, GTAVI, Grand Theft Auto VI, Grand Theft Auto 6, 侠盗猎车手6, 侠盗猎车手 6, 俠盜獵車手6, 俠盜獵車手 6, 侠盗猎车手VI, 俠盜獵車手VI]
     news_langs: [zh-CN, en-US]
@@ -267,6 +280,9 @@ items:
   - name: 漫威电影
     subtitle: Marvel Studios · MCU
     type: show
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 超级英雄电影, lang: zh-CN, query: "超级英雄电影 定档 预告", need: ["superhero|超级英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠"]}
+      - {label: 超级英雄电影, lang: en-US, query: "superhero movie release date trailer", need: ["superhero|超级英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠"]}
     keywords: [
       "漫威 电影", "复仇者联盟5", "复仇者联盟：毁灭之日", "复仇者联盟6 秘密战争",
       "Marvel Studios movie", "Avengers: Doomsday", "Avengers: Secret Wars", "MCU movie"
@@ -317,6 +333,9 @@ items:
   - name: ILLIT 演唱会
     subtitle: アイリット · 日本公演特别关注
     type: event
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: K-POP 女团日本公演, lang: ja-JP, query: "K-POP ガールズグループ 日本 公演 決定", need: ["ガールズ|걸그룹|girl group|女团|女團", "日本|일본|Japan|東京|大阪|ドーム|아레나|돔"]}
+      - {label: K-POP 女团日本公演, lang: ko-KR, query: "걸그룹 일본 투어 확정", need: ["ガールズ|걸그룹|girl group|女团|女團", "日本|일본|Japan|東京|大阪|ドーム|아레나|돔"]}
     keywords: ["ILLIT ライブ", "ILLIT 公演", "ILLIT JAPAN", "아일릿 콘서트", "ILLIT concert", "ILLIT 演唱会"]
     match: [ILLIT, アイリット, 아일릿]
     news_langs: [ja-JP, ko-KR, en-US, zh-CN]
@@ -408,6 +427,8 @@ items:
   - name: 日本网球赛事
     subtitle: 大阪・関西 週末観戦
     type: category
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 关西体育观战, lang: ja-JP, query: "大阪 スポーツ 観戦 チケット 発売", need: ["大阪|関西|京都|神戸", "観戦|チケット", "スポーツ|試合|大会|リーグ|テニス|サッカー|野球|バスケ|バレー|ラグビー|マラソン"]}
     section: 运动
     keywords: [
       "テニス 大阪 大会", "木下グループジャパンオープン", "ジャパンオープン テニス",

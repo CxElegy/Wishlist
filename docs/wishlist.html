@@ -215,6 +215,10 @@ html{scroll-behavior:smooth}
 .pkhead span{font-size:13px;opacity:.75}
 .pkhead a{color:#B8336A;font-weight:700;border-bottom:1px solid currentColor}
 .pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:color-mix(in srgb,#1A1C22 18%,#F4EDE4)}
+.pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.pksub{display:flex;align-items:baseline;gap:12px;padding:12px 22px;border-top:3px solid #1A1C22;border-bottom:1px solid color-mix(in srgb,#1A1C22 18%,#F4EDE4);
+ font:900 15px 'Noto Sans SC',sans-serif;letter-spacing:.2em}
+.pksub span{font:500 12px 'Noto Serif SC',serif;letter-spacing:0;opacity:.7}
 .pk{display:flex;flex-direction:column;gap:10px;padding:16px;background:#F4EDE4;color:#1A1C22;min-width:0}
 .pk.big{grid-column:span 2;grid-row:span 2}
 .pk .pic{background:#FFF;color:#1A1C22;border:none}
@@ -226,7 +230,7 @@ html{scroll-behavior:smooth}
 .pk .tags{display:flex;flex-wrap:wrap;gap:4px}
 .pk .tags i{font-style:normal;font:700 10px 'Noto Sans SC',sans-serif;letter-spacing:.1em;padding:1px 7px;border:1px solid #B8336A;color:#B8336A}
 .pk:hover b{text-decoration:underline;text-underline-offset:3px}
-@media (max-width:760px){.pkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
+@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
@@ -287,7 +291,7 @@ html{scroll-behavior:smooth}
 <header class="mast"><div>
 <div class="logo"><svg width="62" height="62" viewBox="0 0 92 92" aria-hidden="true" fill="none" stroke="#EDEBE6" stroke-width="2"><circle cx="46" cy="46" r="40"/><circle cx="46" cy="46" r="31" stroke-dasharray="3 4"/><path d="M46 18 L51 41 L74 46 L51 51 L46 74 L41 51 L18 46 L41 41 Z" fill="#EDEBE6" stroke="none"/></svg></div>
 <h1>愿望清单</h1>
-<div class="meta"><div class="mono">更新于</div><div class="no">10:19</div><div class="mono">10.12</div></div>
+<div class="meta"><div class="mono">更新于</div><div class="no">10:22</div><div class="mono">10.12</div></div>
 </div></header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

@@ -1,10 +1,14 @@
 {
  "images": {
+  "https://collider.com/man-of-tomorrow-new-superman-costume-david-corenswet/": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/09/superman-david-corenswet-1.jpg?w=1200&h=675&fit=crop",
+  "https://kanstarpress.com/?p=206407": null,
+  "https://news.infoseek.co.jp/article/inside_189107/": "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_189107_0-enlarge.jpg",
   "https://note.com/yamato_pokemon/n/n51f8de870e31": "https://assets.st-note.com/production/uploads/images/318648466/rectangle_large_type_2_de1d72ecf9a67c49677e1833b2ed7ddd.png?fit=bounds&quality=85&width=1280",
   "https://www.cbr.com/studio-ghibli-howls-moving-castle-mug-fall-2026-return/": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/10/ghibli-mug.jpg?w=1200&h=675&fit=crop",
   "https://www.fashion-press.net/news/150627": "https://www.fashion-press.net/img/news/150627/top.jpg?1788325469",
   "https://www.fashion-press.net/news/150868": "https://www.fashion-press.net/img/news/150868/top.jpg?1788918798",
-  "https://www.msn.com/en-gb/news/other/starbucks-fans-rush-for-new-snoopy-collection-as-limited-edition-range-launches/ar-AA2clQJ9": null
+  "https://www.msn.com/en-gb/news/other/starbucks-fans-rush-for-new-snoopy-collection-as-limited-edition-range-launches/ar-AA2clQJ9": null,
+  "https://www.playstationlifestyle.net/2026/10/08/forza-horizon-6-playstation-5-release-date": "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/forza-horizon-6.jpg?resize=1200,630"
  },
  "picks": [
   {
@@ -16,6 +20,7 @@
     "马克杯"
    ],
    "image": "https://assets.st-note.com/production/uploads/images/318648466/rectangle_large_type_2_de1d72ecf9a67c49677e1833b2ed7ddd.png?fit=bounds&quality=85&width=1280",
+   "kind": "wish",
    "score": 7,
    "source": "note",
    "title": "スタバ×ポケモン、どの商品が売れる？発売前に人気商品を予想",
@@ -31,6 +36,7 @@
     "马克杯"
    ],
    "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/10/ghibli-mug.jpg?w=1200&h=675&fit=crop",
+   "kind": "wish",
    "score": 7,
    "source": "Comic Book Resources",
    "title": "Studio Ghibli's Limited-Edition Howl's Moving Castle Mug Returns to Outshine Starbucks",
@@ -46,6 +52,7 @@
     "马克杯"
    ],
    "image": null,
+   "kind": "wish",
    "score": 7,
    "source": "South Wales Argus on MSN",
    "title": "Starbucks fans rush for new Snoopy collection as limited-edition range launches",
@@ -60,6 +67,7 @@
     "马克杯"
    ],
    "image": "https://www.fashion-press.net/img/news/150868/top.jpg?1788918798",
+   "kind": "wish",
    "score": 5,
    "source": "ファッションプレス",
    "title": "スターバックス「月＆ウサギ」の“中秋の名月”グッズ、やさしいタッチのうさぎが跳ねるタンブラーやマグ",
@@ -74,11 +82,64 @@
     "马克杯"
    ],
    "image": "https://www.fashion-press.net/img/news/150627/top.jpg?1788325469",
+   "kind": "wish",
    "score": 5,
    "source": "ファッションプレス",
    "title": "スターバックス リザーブ ロースタリー 東京×鎌倉紅谷「クルミッ子」雑貨、リスくん柄ボトルやマグ",
    "url": "https://www.fashion-press.net/news/150627",
    "work": "星巴克马克杯"
+  },
+  {
+   "because": "Astrae Oratio",
+   "date": "2026-10-11",
+   "hits": [
+    "动画风新作手游"
+   ],
+   "image": "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_189107_0-enlarge.jpg",
+   "kind": "follow",
+   "source": "Infoseek",
+   "title": "美少女×武装艦の新作RPG『深鳶』が中国で配信開始！人気アニメ原作『鎮魂街』新作アクションもテスト間近―日本未上陸の注目ゲーム3選【2026年10月11日】｜Infoseekニュース",
+   "url": "https://news.infoseek.co.jp/article/inside_189107/",
+   "work": "Astrae Oratio"
+  },
+  {
+   "because": "漫威电影",
+   "date": "2026-10-09",
+   "hits": [
+    "超级英雄电影"
+   ],
+   "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/09/superman-david-corenswet-1.jpg?w=1200&h=675&fit=crop",
+   "kind": "follow",
+   "source": "Collider",
+   "title": "Superman Officially Gets a New Look for ‘Man of Tomorrow’",
+   "url": "https://collider.com/man-of-tomorrow-new-superman-costume-david-corenswet/",
+   "work": "漫威电影"
+  },
+  {
+   "because": "GTA 6",
+   "date": "2026-10-08",
+   "hits": [
+    "开放世界大作"
+   ],
+   "image": "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/forza-horizon-6.jpg?resize=1200,630",
+   "kind": "follow",
+   "source": "PlayStation LifeStyle",
+   "title": "Acclaimed Open-World Xbox Exclusive Sets PlayStation 5 Release Date",
+   "url": "https://www.playstationlifestyle.net/2026/10/08/forza-horizon-6-playstation-5-release-date",
+   "work": "GTA 6"
+  },
+  {
+   "because": "ILLIT 演唱会",
+   "date": "2026-10-05",
+   "hits": [
+    "K-POP 女团日本公演"
+   ],
+   "image": null,
+   "kind": "follow",
+   "source": "韓スタ！",
+   "title": "うあと驚くくらいカッコかわいい！日本人ソラ所属 K-POPガールズアイドルグループ WOOAH (ウア)、約2年ぶりの来日公演｢WXW: WICKED｣東京・大阪で開催",
+   "url": "https://kanstarpress.com/?p=206407",
+   "work": "ILLIT 演唱会"
   }
  ]
 }

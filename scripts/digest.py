@@ -36,6 +36,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 ITEMS_FILE = ROOT / "items.yaml"
 WISHLIST_FILE = ROOT / "wishlist.yaml"
 RECOMMEND_FILE = ROOT / "state" / "recommend.json"
+DISCOVER_FILE = ROOT / "state" / "discover.json"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
@@ -527,6 +528,48 @@ PICK_DAYS = 14       # 从最近几天收集到的消息里挑
 PICK_THRESHOLD = 5   # 每命中一个喜好标签 2 分，和愿望清单同一个关注项再加 1 分；至少 5 分才推荐
 
 
+DISCOVER_HOURS = 12    # 「同类新消息」每隔多久搜一次
+DISCOVER_PICKS = 4     # 「我会喜欢？」里放几条同类新消息（每个关注项最多一条）
+
+
+def discover(force=False):
+    """按 items.yaml 里每个关注项的 similar（同类搜索词）抓 Google 新闻，去掉已经在关注清单里的作品。
+    结果存 state/discover.json；每 DISCOVER_HOURS 小时最多搜一次。"""
+    settings, items = load_config()
+    old = load_json(DISCOVER_FILE) or {}
+    now = dt.datetime.now(dt.timezone.utc)
+    if not force and old.get("at") and now - dt.datetime.fromisoformat(old["at"]) < dt.timedelta(hours=DISCOVER_HOURS):
+        return old.get("entries", [])
+    tracked = {_norm(w) for i in items for w in (i.get("match") or i.get("keywords") or [i["name"]])}
+    since = now - dt.timedelta(days=settings.get("lookback_days", 7))
+    out, grams = [], []
+    for item in items:
+        for q in item.get("similar") or []:
+            try:
+                found = sources.google_news(q["query"], settings.get("lookback_days", 7), NEWS_LANGS[q.get("lang", "zh-CN")])
+            except Exception as err:
+                print(f"  [同类] {q['query']} 失败：{err}", file=sys.stderr)
+                continue
+            for e in found[:20]:
+                if e.source == "YouTube" or any(re.search(p, e.title) for p in JUNK_PATTERNS):
+                    continue
+                if e.published and e.published < since:
+                    continue
+                if any(w and w in _norm(e.title + e.summary) for w in tracked):  # 已经在关注的不算“新发现”
+                    continue
+                if not all(_like_hit(n, (e.title + " " + e.summary).lower()) for n in q.get("need") or []):
+                    continue
+                g = _title_grams(e.title, [])
+                if any(_similar(g, x) for x in grams):
+                    continue
+                grams.append(g)
+                out.append({"title": e.title, "url": e.url, "source": e.source, "summary": e.summary, "image": e.image,
+                            "date": e.published.isoformat() if e.published else "", "item": item["name"], "label": q["label"]})
+    save_json(DISCOVER_FILE, {"at": now.isoformat(), "entries": out})
+    print(f"同类新消息：{len(out)} 条", file=sys.stderr)
+    return out
+
+
 def _like_hit(keyword, text):
     """喜好关键词可以用 | 写同一个东西的几种写法（Snoopy|スヌーピー|史努比），命中任意一种就算。"""
     return any(alt.strip().lower() in text for alt in str(keyword).split("|") if alt.strip())
@@ -536,15 +579,12 @@ def _like_key(keyword):
     return str(keyword).split("|")[0].strip().lower()
 
 
-def recommend():
+def recommend(force_discover=False):
     """「我会喜欢？」：按愿望清单里每件东西的 likes（喜好标签），从最近收集到的所有消息里打分挑推荐。
     不让 AI 联网，只用已经收集到的消息；结果写进 state/recommend.json，网页读它。"""
     wishes = [w for w in load_wishlist() if w.get("likes")]
     old = load_json(RECOMMEND_FILE) or {}
     images = old.get("images", {})
-    if not wishes:
-        save_json(RECOMMEND_FILE, {"picks": [], "images": images})
-        return
     wish_urls = {w.get("url") for w in wishes}
     pool = []
     for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]:
@@ -579,12 +619,35 @@ def recommend():
             images[url] = find_image(d.get("image"), [entry_from_dict(d)], url)
         grams.append(g)
         picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
-                      "image": images[url], "because": w["name"], "hits": hits, "score": score})
+                      "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish"})
         if len(picks) >= PICK_COUNT:
             break
+
+    # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条
+    found = sorted(discover(force_discover), key=lambda x: x.get("date") or "", reverse=True)
+    follow = []
+    for name in dict.fromkeys(x["item"] for x in found):
+        if len(follow) >= DISCOVER_PICKS:
+            break
+        chosen = None
+        for x in [x for x in found if x["item"] == name][:4]:
+            url = sources.resolve_url(x["url"])
+            if any(p["url"] == url for p in picks + follow):
+                continue
+            if url not in images:
+                images[url] = find_image(x.get("image"), [entry_from_dict(x)], url)
+            if chosen is None or (images[url] and not chosen[1]):  # 有图的优先，都没图就用第一条
+                chosen = (x, images[url], url)
+            if images[url]:
+                break
+        if chosen:
+            x, img, url = chosen
+            follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],
+                           "work": name, "image": img, "because": name, "hits": [x["label"]], "kind": "follow"})
+    picks += follow
     keep = {p["url"] for p in picks}
     save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep}})
-    print(f"我会喜欢？：{len(picks)} 条（候选 {len(pool)}）", file=sys.stderr)
+    print(f"我会喜欢？：{len(picks) - len(follow)} 条按愿望清单 + {len(follow)} 条同类新消息", file=sys.stderr)
 
 
 def write_page():
@@ -965,7 +1028,7 @@ def main():
         import notify
         notify.urgent(pages_url(load_config()[0]))
     elif args.step == "recommend":
-        recommend()
+        recommend(force_discover=True)
         write_page()
     elif args.step == "notify-wishlist":
         import notify
