@@ -54,6 +54,9 @@ jobs:
       - name: 功能更新 → Discord
         run: python scripts/digest.py notify-changes
 
+      - name: 记下这次新加的关注项（发通知前，发完就记进 known_items 了）
+        run: echo "NEW_ITEMS=$(python scripts/digest.py new-items)" >> "$GITHUB_ENV"
+
       - name: 新增关注项 → Discord
         run: python scripts/digest.py notify-new-items
 
@@ -88,3 +91,25 @@ jobs:
             sleep $((i * 5))
           done
           exit 1
+
+      # 新加的关注项已经收集到消息、但当天还没被 AI 编辑过：立刻叫 Claude 定时任务（Routine）编一次，
+      # 不用等 12:43 / 23:43。必须在推送之后，Routine 拉仓库时才看得到新条目。
+      # 需要仓库 Secret ROUTINE_FIRE_TOKEN（claude.ai/code/routines → AI 编辑 → 编辑 → 添加触发器 → API → 生成令牌）；
+      # 没设置就跳过，照旧等定时编排
+      - name: 新关注项 → 立刻 AI 编辑
+        if: env.NEW_ITEMS != ''
+        env:
+          ROUTINE_FIRE_TOKEN: ${{ secrets.ROUTINE_FIRE_TOKEN }}
+          ROUTINE_ID: trig_01QyUjFidUCUR1sngyt8wdBt
+        run: |
+          if [ -z "$ROUTINE_FIRE_TOKEN" ]; then echo "没设置 ROUTINE_FIRE_TOKEN，等定时编排"; exit 0; fi
+          git pull -q --rebase || true
+          names=$(python scripts/digest.py unedited --only "$NEW_ITEMS")
+          if [ -z "$names" ]; then echo "新关注项还没有消息或已编排过，不用叫 AI 编辑"; exit 0; fi
+          body=$(python -c 'import json,sys; print(json.dumps({"text": "新加的关注项：" + sys.argv[1] + "。今天的 edit.json 里还没有它们，请现在按 EDITING.md 整份重新编排今天的报道。"}, ensure_ascii=False))' "$names")
+          curl -fsS -X POST "https://api.anthropic.com/v1/claude_code/routines/$ROUTINE_ID/fire" \
+            -H "Authorization: Bearer $ROUTINE_FIRE_TOKEN" \
+            -H "anthropic-beta: experimental-cc-routine-2026-04-01" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "Content-Type: application/json" \
+            -d "$body" || echo "::warning::叫 AI 编辑失败，等定时编排"

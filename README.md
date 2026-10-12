@@ -27,6 +27,8 @@ GitHub Actions 的安排：
 |---|---|
 | 每 2 小时 | 收集 → 更新当天的简报网页 → 命中 `urgent_patterns` 的要紧消息立刻发 Discord（发过的不重发） |
 | 每周一 08:47（北京时间） | 发 Discord 周报：过去 7 天每个关注项的要点 + 网页链接 |
+| 每天 12:43 · 23:43（北京时间） | Claude 定时任务（AI 编辑）把当天的条目编成中文报道、合并同一件事 |
+| 新加关注项推送后 | 收集到消息就立刻叫 AI 编辑编一次，不等定时（需要仓库 Secret `ROUTINE_FIRE_TOKEN`：claude.ai/code/routines → 「关注清单通信 · AI 编辑」→ 编辑 → 添加触发器 → API → 生成令牌） |
 
 ```
 items.yaml
