@@ -51,6 +51,13 @@ a{color:inherit;text-decoration:none}
  color-mix(in srgb,currentColor 8%,transparent)}
 .pic.none{background:none}
 .pic.none .ph{display:flex}
+.pic.icon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+ background:color-mix(in srgb,currentColor 6%,transparent)}
+.pic.icon img.ico{position:static;width:min(64px,30%);height:auto;aspect-ratio:1;object-fit:contain;
+ background:#FFFFFF;border-radius:14px;padding:6px;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.pic.icon .src{max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+ font:600 13px 'JetBrains Mono','Noto Sans SC',monospace;opacity:.75}
+.pic.icon.none{background:none}.pic.icon.none .src{display:none}
 .pic img.bg{object-fit:cover;filter:blur(18px) brightness(.8);transform:scale(1.15)}
 .hero{grid-column:span 12;display:grid;grid-template-columns:7fr 5fr;gap:24px;padding:24px}
 .hero .pic{align-self:center}
@@ -326,7 +333,7 @@ html{scroll-behavior:smooth}
 <header class="mast"><div>
 <div class="logo"><svg width="62" height="62" viewBox="0 0 92 92" aria-hidden="true" fill="none" stroke="#EDEBE6" stroke-width="2"><circle cx="46" cy="46" r="40"/><circle cx="46" cy="46" r="31" stroke-dasharray="3 4"/><path d="M46 18 L51 41 L74 46 L51 51 L46 74 L41 51 L18 46 L41 41 Z" fill="#EDEBE6" stroke="none"/></svg></div>
 <h1>愿望清单</h1>
-<div class="meta"><div class="mono">更新于</div><div class="no">03:33</div><div class="mono">10.13</div></div>
+<div class="meta"><div class="mono">更新于</div><div class="no">06:29</div><div class="mono">10.13</div></div>
 </div></header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

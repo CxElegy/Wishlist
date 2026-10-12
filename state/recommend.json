@@ -12,6 +12,44 @@
  },
  "picks": [
   {
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-12",
+   "hits": [
+    "三星 Galaxy",
+    "旗舰手机",
+    "手机"
+   ],
+   "image": null,
+   "kind": "wish",
+   "score": 11,
+   "source": "케이벤치 on MSN",
+   "taste": [
+    [
+     "三星 Galaxy",
+     1
+    ],
+    [
+     "旗舰手机",
+     1
+    ],
+    [
+     "galaxy",
+     1
+    ],
+    [
+     "旗舰",
+     1
+    ]
+   ],
+   "title": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "url": "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%ED%94%84%EB%A1%9C-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EC%B5%9C%EC%8B%A0-m16-oled%EC%97%90-%EC%82%BC%EC%84%B1-%EC%B5%9C%EC%B4%88-dc-%EB%94%94%EB%B0%8D%EA%B9%8C%EC%A7%80-%EC%A0%81%EC%9A%A9-%EC%A0%84%EB%A7%9D/ar-AA2e1E0i",
+   "words": [
+    "galaxy",
+    "旗舰"
+   ],
+   "work": "三星手机"
+  },
+  {
    "because": "黑貓魔法術溫變馬克杯",
    "date": "2026-09-28",
    "hits": [
@@ -21,12 +59,16 @@
    ],
    "image": "https://assets.st-note.com/production/uploads/images/318648466/rectangle_large_type_2_de1d72ecf9a67c49677e1833b2ed7ddd.png?fit=bounds&quality=85&width=1280",
    "kind": "wish",
-   "score": 9,
+   "score": 10,
    "source": "note",
    "taste": [
     [
      "动物 / 角色造型",
      2
+    ],
+    [
+     "ポケモン",
+     1
     ]
    ],
    "title": "スタバ×ポケモン、どの商品が売れる？発売前に人気商品を予想",
@@ -46,12 +88,16 @@
    ],
    "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/10/ghibli-mug.jpg?w=1200&h=675&fit=crop",
    "kind": "wish",
-   "score": 9,
+   "score": 10,
    "source": "Comic Book Resources",
    "taste": [
     [
      "动物 / 角色造型",
      2
+    ],
+    [
+     "ジブリ",
+     1
     ]
    ],
    "title": "Studio Ghibli's Limited-Edition Howl's Moving Castle Mug Returns to Outshine Starbucks",
@@ -85,27 +131,6 @@
     "snoopy"
    ],
    "work": "星巴克马克杯"
-  },
-  {
-   "because": "Galaxy S27 Ultra",
-   "date": "2026-10-12",
-   "hits": [
-    "三星 Galaxy",
-    "旗舰手机",
-    "手机"
-   ],
-   "image": null,
-   "kind": "wish",
-   "score": 7,
-   "source": "케이벤치 on MSN",
-   "taste": [],
-   "title": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
-   "url": "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%ED%94%84%EB%A1%9C-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EC%B5%9C%EC%8B%A0-m16-oled%EC%97%90-%EC%82%BC%EC%84%B1-%EC%B5%9C%EC%B4%88-dc-%EB%94%94%EB%B0%8D%EA%B9%8C%EC%A7%80-%EC%A0%81%EC%9A%A9-%EC%A0%84%EB%A7%9D/ar-AA2e1E0i",
-   "words": [
-    "galaxy",
-    "旗舰"
-   ],
-   "work": "三星手机"
   },
   {
    "because": "黑貓魔法術溫變馬克杯",
@@ -152,6 +177,26 @@
    "work": "ILLIT"
   },
   {
+   "because": "gelato pique",
+   "date": "2026-10-11",
+   "hits": [
+    "可爱居家服新品"
+   ],
+   "image": "https://www.inside-games.jp/imgs/ogp_f/1781773.jpg",
+   "kind": "follow",
+   "source": "インサイド",
+   "taste": [
+    [
+     "可爱居家服新品",
+     1
+    ]
+   ],
+   "title": "「ちいかわ」×「GU」コラボに癒される…！テーマは「さむ～い雪の日も楽しもう！」、おでかけ着やルームウェアなど実用性バッチリ",
+   "url": "https://www.inside-games.jp/article/2026/10/11/189110.html",
+   "words": [],
+   "work": "gelato pique"
+  },
+  {
    "because": "GTA 6",
    "date": "2026-10-12",
    "hits": [
@@ -180,21 +225,6 @@
    "url": "https://prtimes.jp/main/html/rd/p/000001259.000155396.html",
    "words": [],
    "work": "猫用品"
-  },
-  {
-   "because": "gelato pique",
-   "date": "2026-10-11",
-   "hits": [
-    "可爱居家服新品"
-   ],
-   "image": "https://www.inside-games.jp/imgs/ogp_f/1781773.jpg",
-   "kind": "follow",
-   "source": "インサイド",
-   "taste": [],
-   "title": "「ちいかわ」×「GU」コラボに癒される…！テーマは「さむ～い雪の日も楽しもう！」、おでかけ着やルームウェアなど実用性バッチリ",
-   "url": "https://www.inside-games.jp/article/2026/10/11/189110.html",
-   "words": [],
-   "work": "gelato pique"
   }
  ]
 }
