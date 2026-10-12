@@ -147,32 +147,13 @@
    "stories": [
     {
      "blurb": "",
-     "date": "2026-10-06",
-     "headline": "再现巅峰!《复仇者联盟5》全球预售票房突破1亿美元 距上映还有两个多月",
-     "highlight": "",
-     "image": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
-     "image_via": "作品封面",
-     "url": "https://www.msn.com/zh-cn/entertainment/movies/%E5%86%8D%E7%8E%B0%E5%B7%85%E5%B3%B0-%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F5-%E5%85%A8%E7%90%83%E9%A2%84%E5%94%AE%E7%A5%A8%E6%88%BF%E7%AA%81%E7%A0%B41%E4%BA%BF%E7%BE%8E%E5%85%83-%E8%B7%9D%E4%B8%8A%E6%98%A0%E8%BF%98%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%A4%9A%E6%9C%88/ar-AA2dIUl0",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-11",
-     "headline": "《复仇者联盟5：毁灭之日》定档12月16日，超越北美提前两天上映！",
-     "highlight": "",
-     "image": null,
-     "url": "https://www.sohu.com/a/1086788942_121924583",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-09",
      "headline": "'Avengers: Doomsday': Trailers, tickets, release date and 'Endgame: Encore' details",
      "highlight": "",
      "image": "https://i.abcnewsfe.com/a/3f4d22ad-8045-4791-a537-3773774a4769/doomsday-1-ht-jef-260720_1784553718149_hpMain_16x9.jpg?w=1600",
      "image_via": "og:image",
      "url": "https://abcnews.com/GMA/Culture/avengers-doomsday-trailer-release-date-marvel-movie/story?id=134860279",
-     "weight": "normal"
+     "weight": "lead"
     },
     {
      "blurb": "",
@@ -182,6 +163,24 @@
      "image": "https://linedrivemedia.com/wp-content/uploads/2026/10/Luna_Leija_mug.jpg",
      "image_via": "og:image",
      "url": "https://linedrivemedia.com/news/club-news-the-final-pitch-oct-9-2026-spotlighting-impact-gold-prospect-luna-leija-news-commits-24k-magic-avengers-secret-wars-delayed/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "再现巅峰!《复仇者联盟5》全球预售票房突破1亿美元 距上映还有两个多月",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.msn.com/zh-cn/entertainment/movies/%E5%86%8D%E7%8E%B0%E5%B7%85%E5%B3%B0-%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F5-%E5%85%A8%E7%90%83%E9%A2%84%E5%94%AE%E7%A5%A8%E6%88%BF%E7%AA%81%E7%A0%B41%E4%BA%BF%E7%BE%8E%E5%85%83-%E8%B7%9D%E4%B8%8A%E6%98%A0%E8%BF%98%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%A4%9A%E6%9C%88/ar-AA2dIUl0",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "《复仇者联盟5：毁灭之日》定档12月16日，超越北美提前两天上映！",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.sohu.com/a/1086788942_121924583",
      "weight": "normal"
     },
     {
@@ -214,22 +213,22 @@
    "stories": [
     {
      "blurb": "",
-     "date": "2026-10-11",
-     "headline": "아스트라에 오라티오, '그 시절' 덕후의 꿈은 계속된다",
-     "highlight": "",
-     "image": "https://file.thisisgame.com/next-upload/cmcn2gsyt0006t5012nlq9doe/2026/10/12/1639273710172097022_bc9c39bb-4c92-4af6-a97a-6785e821418f_%5B%EC%97%94%EC%94%A8%5D%20%EC%97%94%EC%94%A8%20'%EC%95%84%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%97%90%20%EC%98%A4%EB%9D%BC%ED%8B%B0%EC%98%A4'%20%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg",
-     "image_via": "og:image",
-     "url": "https://www.thisisgame.com/articles/430857",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-12",
      "headline": "Samsung, NC bring “Astrae Oratio” to life with glasses-free 3D displays at Tokyo event",
      "highlight": "",
      "image": "https://marketech-apac.com/wp-content/uploads/2026/10/SI-1.webp",
      "image_via": "og:image",
      "url": "https://marketech-apac.com/samsung-nc-bring-astrae-oratio-to-life-with-glasses-free-3d-displays-at-tokyo-event/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "아스트라에 오라티오, '그 시절' 덕후의 꿈은 계속된다",
+     "highlight": "",
+     "image": "https://file.thisisgame.com/next-upload/cmcn2gsyt0006t5012nlq9doe/2026/10/12/1639273710172097022_bc9c39bb-4c92-4af6-a97a-6785e821418f_%5B%EC%97%94%EC%94%A8%5D%20%EC%97%94%EC%94%A8%20'%EC%95%84%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%97%90%20%EC%98%A4%EB%9D%BC%ED%8B%B0%EC%98%A4'%20%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg",
+     "image_via": "og:image",
+     "url": "https://www.thisisgame.com/articles/430857",
      "weight": "normal"
     },
     {
@@ -380,24 +379,6 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-08",
-     "headline": "Bataleon - Evil Twin 2027 Snowboard none",
-     "highlight": "",
-     "image": null,
-     "url": "https://www.neveitalia.it/materiali/prezzi/prezzo/bataleon-evil-twin-2027-snowboard-none-305679228-2",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-08",
-     "headline": "無限ダウンヒルスキーゲーム『SNØ: Ultimate Freeriding』コンソール版配信日決定！",
-     "highlight": "",
-     "image": null,
-     "url": "https://news.nicovideo.jp/watch/nw19858332?news_ref=watch_70_nw19603093",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-12",
      "headline": "ニンジャスノーハイランドが「峰の原高原スキー場」へ名称変更",
      "highlight": "",
@@ -414,6 +395,26 @@
      "image": "https://cdn.inthesnow.com/uploads/2026/10/ellis-brigham-ski-gear-edit-2026-27-hero.jpg",
      "image_via": "og:image",
      "url": "https://www.inthesnow.com/gear/ellis-brigham-ski-gear-edit-2026-27/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "Bataleon - Evil Twin 2027 Snowboard none",
+     "highlight": "",
+     "image": "https://www.neveitalia.it/static/prodotti/02/600/305679228.jpg",
+     "image_via": "og:image",
+     "url": "https://www.neveitalia.it/materiali/prezzi/prezzo/bataleon-evil-twin-2027-snowboard-none-305679228-2",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "無限ダウンヒルスキーゲーム『SNØ: Ultimate Freeriding』コンソール版配信日決定！",
+     "highlight": "",
+     "image": "https://www.rbbtoday.com/base/images/img_ogp.png",
+     "image_via": "转载 www.rbbtoday.com",
+     "url": "https://news.nicovideo.jp/watch/nw19858332?news_ref=watch_70_nw19603093",
      "weight": "normal"
     },
     {
@@ -446,23 +447,13 @@
    "stories": [
     {
      "blurb": "",
-     "date": "2026-10-07",
-     "headline": "Rhythm Hive launches promotion celebrating ILLIT encore concert",
-     "highlight": "",
-     "image": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
-     "image_via": "作品封面",
-     "url": "https://www.msn.com/en-us/news/other/rhythm-hive-launches-promotion-celebrating-illit-encore-concert/ar-AA2dMYZ2",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-09",
      "headline": "CORTIS, ILLIT, and SOYEON Top Hanteo’s Country-Specific Charts for 2nd Consecutive Week…Defend No. 1 Spots in U.S., Japan, and China",
      "highlight": "",
      "image": "https://resource.hanteonews.com/content/post/2026/10/01/06413c55-e5dc-4568-88ea-bb34c3e66e2f.png",
      "image_via": "og:image",
      "url": "https://www.hanteonews.com/en/article/93795",
-     "weight": "normal"
+     "weight": "lead"
     },
     {
      "blurb": "",
@@ -482,6 +473,15 @@
      "image": "https://phinf.wevpstatic.net/MjAyNjA5MjhfMTkg/MDAxNzkwNTYwMDgxMDMz.ySMYtyI1Ba95J2H7MfzRFV9MwLf9pVG7lLwiUW1CzLEg.-1hgNP9G2ufq3E93Q1fIAuVTmRw6QJ8otFmj6yQZWaAg.JPEG/26c83e8d-56cc-4ea0-ad41-2de018486706.jpeg?type=w1414",
      "image_via": "og:image",
      "url": "https://weverse.io/illit/notice/39582?hl=ko",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-07",
+     "headline": "Rhythm Hive launches promotion celebrating ILLIT encore concert",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.msn.com/en-us/news/other/rhythm-hive-launches-promotion-celebrating-illit-encore-concert/ar-AA2dMYZ2",
      "weight": "normal"
     },
     {
@@ -604,41 +604,21 @@
    "stories": [
     {
      "blurb": "",
-     "date": "2026-10-06",
-     "headline": "【準決勝】J.ラフェチュカ vs V.バシュロ ハイライト│木下グループジャパンオープンテニス2026",
-     "highlight": "",
-     "image": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
-     "image_via": "作品封面",
-     "url": "https://sports.yahoo.co.jp/video/player/28153272",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-07",
      "headline": "【木下グループジャパンオープン2026】錦織圭｜日程・会場・アクセス・チケット・放送",
      "highlight": "",
      "image": "https://www.sportzorg24.tv/wp-content/uploads/2026/08/kinoshita-group-japan-open-2026-overview-v01-16x9-1-1024x576.png",
      "image_via": "og:image",
      "url": "https://www.sportzorg24.tv/kinoshita-group-japan-open-2026/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-05",
-     "headline": "小田凱人 パリ・パラリンピック決勝を戦ったライバル 世界2位のヒューエットとエキシビション試合 木下グループ・ジャパンOP",
-     "highlight": "",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261006-10061097-sph-000-3-view.jpg?exp=10800",
-     "image_via": "转载 news.yahoo.co.jp",
-     "url": "https://www.msn.com/ja-jp/news/other/%E5%B0%8F%E7%94%B0%E5%87%B1%E4%BA%BA-%E3%83%91%E3%83%AA-%E3%83%91%E3%83%A9%E3%83%AA%E3%83%B3%E3%83%94%E3%83%83%E3%82%AF%E6%B1%BA%E5%8B%9D%E3%82%92%E6%88%A6%E3%81%A3%E3%81%9F%E3%83%A9%E3%82%A4%E3%83%90%E3%83%AB-%E4%B8%96%E7%95%8C%EF%BC%92%E4%BD%8D%E3%81%AE%E3%83%92%E3%83%A5%E3%83%BC%E3%82%A8%E3%83%83%E3%83%88%E3%81%A8%E3%82%A8%E3%82%AD%E3%82%B7%E3%83%93%E3%82%B7%E3%83%A7%E3%83%B3%E8%A9%A6%E5%90%88-%E6%9C%A8%E4%B8%8B%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%EF%BD%8F%EF%BD%90/ar-AA2dDVYA",
-     "weight": "normal"
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-06",
-     "headline": "最終日 車いすエキシビションマッチ／ダブルス 決勝／シングルス 決勝 【木下グループジャパンオープンテニス】",
+     "headline": "【準決勝】J.ラフェチュカ vs V.バシュロ ハイライト│木下グループジャパンオープンテニス2026",
      "highlight": "",
      "image": null,
-     "url": "https://abema.tv/live-event/cde19792-f1c1-492d-9040-b626b28c076c",
+     "url": "https://sports.yahoo.co.jp/video/player/28153272",
      "weight": "normal"
     },
     {
@@ -669,6 +649,25 @@
      "image": "https://tokyochips.tokyo/contents/wp-content/uploads/2026/10/torayppo_1.jpg",
      "image_via": "正文图",
      "url": "https://topics.smt.docomo.ne.jp/article/tokyochips/trend/tokyochips-63596",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-05",
+     "headline": "小田凱人 パリ・パラリンピック決勝を戦ったライバル 世界2位のヒューエットとエキシビション試合 木下グループ・ジャパンOP",
+     "highlight": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261006-10061097-sph-000-3-view.jpg?exp=10800",
+     "image_via": "转载 news.yahoo.co.jp",
+     "url": "https://www.msn.com/ja-jp/news/other/%E5%B0%8F%E7%94%B0%E5%87%B1%E4%BA%BA-%E3%83%91%E3%83%AA-%E3%83%91%E3%83%A9%E3%83%AA%E3%83%B3%E3%83%94%E3%83%83%E3%82%AF%E6%B1%BA%E5%8B%9D%E3%82%92%E6%88%A6%E3%81%A3%E3%81%9F%E3%83%A9%E3%82%A4%E3%83%90%E3%83%AB-%E4%B8%96%E7%95%8C%EF%BC%92%E4%BD%8D%E3%81%AE%E3%83%92%E3%83%A5%E3%83%BC%E3%82%A8%E3%83%83%E3%83%88%E3%81%A8%E3%82%A8%E3%82%AD%E3%82%B7%E3%83%93%E3%82%B7%E3%83%A7%E3%83%B3%E8%A9%A6%E5%90%88-%E6%9C%A8%E4%B8%8B%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%EF%BD%8F%EF%BD%90/ar-AA2dDVYA",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "最終日 車いすエキシビションマッチ／ダブルス 決勝／シングルス 決勝 【木下グループジャパンオープンテニス】",
+     "highlight": "",
+     "image": null,
+     "url": "https://abema.tv/live-event/cde19792-f1c1-492d-9040-b626b28c076c",
      "weight": "normal"
     }
    ],
@@ -712,6 +711,16 @@
     {
      "blurb": "",
      "date": "2026-09-30",
+     "headline": "洗うたび、皮膚を整える。獣医師共同開発「犬猫用マヌカハニースキンケア シャンプー＆トリートメント」新発売",
+     "highlight": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/160922/8/160922-8-3f07030114b7a94ebac30796e35432fd-3900x2601.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000008.000160922.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-09-30",
      "headline": "α-カソゼピン配合でペットの落ち着いた生活をサポート。クリームタイプの猫用おやつが新発売",
      "highlight": "",
      "image": "https://news.mynavi.jp/article/20260930-5043109/ogp_images/ogp.jpg",
@@ -728,16 +737,6 @@
      "image_via": "og:image",
      "url": "https://mantan-web.jp/prtimes/article/20260930prt00m200000963a.html",
      "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-09-30",
-     "headline": "洗うたび、皮膚を整える。獣医師共同開発「犬猫用マヌカハニースキンケア シャンプー＆トリートメント」新発売",
-     "highlight": "",
-     "image": "https://prcdn.freetls.fastly.net/release_image/160922/8/160922-8-3f07030114b7a94ebac30796e35432fd-3900x2601.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
-     "image_via": "og:image",
-     "url": "https://prtimes.jp/main/html/rd/p/000000008.000160922.html",
-     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
@@ -748,6 +747,75 @@
     "alt_fg": "#FBF4EA",
     "bg": "#FBF4EA",
     "fg": "#3A2C24",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "Galaxy S27 Ultra / Pro",
+   "section": "好物",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Samsung Galaxy S27 Ultra May Stick With Snapdragon as Exynos 2700 Production Progresses",
+     "highlight": "",
+     "image": "https://sm.mashable.com/mashable_in/seo/default/z3wq-2026-10-12t132106246_f51h.jpg",
+     "image_via": "og:image",
+     "url": "https://in.mashable.com/tech/114875/samsung-galaxy-s27-ultra-may-stick-with-snapdragon-as-exynos-2700-production-progresses",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "갤럭시 S27, '프로' 추가 4종 출시 전망…가격도 최대 13만원 인상 검토",
+     "highlight": "",
+     "image": "https://cdn.newsworks.co.kr/news/thumbnail/202610/856132_820183_1629_v150.jpg",
+     "image_via": "og:image",
+     "url": "https://www.newsworks.co.kr/news/articleView.html?idxno=856132",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Samsung Galaxy S27 Ultra Price Leak Just Dropped—And You Won’t Like It",
+     "highlight": "",
+     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-leak.jpg",
+     "image_via": "og:image",
+     "url": "https://www.geeky-gadgets.com/galaxy-s27-ultra-price-leak/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Another report suggests Samsung Galaxy S27 series could cost more - GSMArena.com news",
+     "highlight": "",
+     "image": "https://fdn.gsmarena.com/imgroot/news/26/10/galaxy-s27-series-price-hike-report/-952x498w6/gsmarena_00.jpg",
+     "image_via": "og:image",
+     "url": "https://www.gsmarena.com/another_report_suggests_samsung_galaxy_s27_series_could_cost_more-news-74999.php",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Galaxy S27 Ultra vs. S27 Pro: Rumored Specs Comparison",
+     "highlight": "",
+     "image": "https://nokiamob.net/wp-content/uploads/2026/10/Samsung-Galaxy-S27-Pro-leak-als-kompakteres-Galaxy-S27-Ultra.jpg",
+     "image_via": "og:image",
+     "url": "https://nokiamob.net/2026/10/12/samsung-galaxy-s27-ultra-vs-s27-pro-which-premium-flagship-should-you-wait-for/",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "갤럭시 S27 울트라 · S27 Pro · 明年旗舰特别关注",
+   "theme": {
+    "accent": "#4C8DFF",
+    "alt_accent": "#1428A0",
+    "alt_bg": "#C9CDD5",
+    "alt_fg": "#0E1016",
+    "bg": "#0E1016",
+    "fg": "#EEF1F6",
     "font": "sans",
     "split": true
    }
