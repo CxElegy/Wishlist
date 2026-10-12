@@ -229,8 +229,19 @@ html{scroll-behavior:smooth}
 .pk .why{font-size:12px;color:#B8336A;font-weight:700}
 .pk .tags{display:flex;flex-wrap:wrap;gap:4px}
 .pk .tags i{font-style:normal;font:700 10px 'Noto Sans SC',sans-serif;letter-spacing:.1em;padding:1px 7px;border:1px solid #B8336A;color:#B8336A}
-.pk:hover b{text-decoration:underline;text-underline-offset:3px}
-@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
+.pk>a{display:flex;flex-direction:column;gap:10px;min-width:0;flex:1}
+.pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
+.pk .taste{font-size:11px;opacity:.7}
+.vote{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.vote button{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border:1.5px solid #1A1C22;background:transparent;
+ color:#1A1C22;font:700 12px 'Noto Sans SC',sans-serif;cursor:pointer;border-radius:0;white-space:nowrap}
+.vote button:hover{background:#1A1C22;color:#F4EDE4}
+.vote button[aria-pressed=true]{background:#B8336A;border-color:#B8336A;color:#FFF}
+.vote button:disabled{opacity:.5;cursor:wait}
+.vote small{font-size:11px;opacity:.7}
+.pk.down>a{opacity:.35;filter:grayscale(1)}
+@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}
+ .pk:not(.big) .vote button span{display:none}.pk:not(.big) .vote button{padding:4px 14px;font-size:15px}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
