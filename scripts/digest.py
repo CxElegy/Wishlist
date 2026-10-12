@@ -34,6 +34,7 @@ import theme
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ITEMS_FILE = ROOT / "items.yaml"
+WISHLIST_FILE = ROOT / "wishlist.yaml"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
@@ -514,6 +515,12 @@ def pages_url(settings):
     return f"https://{owner.lower()}.github.io/{name}/"
 
 
+def load_wishlist():
+    if not WISHLIST_FILE.exists():
+        return []
+    return (yaml.safe_load(WISHLIST_FILE.read_text(encoding="utf-8")) or {}).get("wishlist") or []
+
+
 def write_page():
     issues = [load_json(p) for p in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True)[:ISSUES_ON_PAGE]]
     issues = [i for i in issues if i]
@@ -523,7 +530,8 @@ def write_page():
     settings, items = load_config()
     tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
-    html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated)
+    html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
+                          load_wishlist())
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
@@ -863,7 +871,7 @@ def pick_images(date=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "pick-images", "unedited", "new-items"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "pick-images", "unedited", "new-items"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -885,6 +893,9 @@ def main():
     elif args.step == "notify-urgent":
         import notify
         notify.urgent(pages_url(load_config()[0]))
+    elif args.step == "notify-wishlist":
+        import notify
+        notify.wishlist(pages_url(load_config()[0]))
     elif args.step == "notify-changes":
         import notify
         notify.changes(pages_url(load_config()[0]))

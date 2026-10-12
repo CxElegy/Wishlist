@@ -172,12 +172,47 @@ html{scroll-behavior:smooth}
  .nav .rail{flex:1;flex-direction:row;overflow-x:auto;gap:6px;padding:6px 4px!important;border:none!important}
  .nav .pill{flex:none;padding:4px 10px!important;margin:0!important;font:700 13px/1.3 'Noto Sans SC',sans-serif!important;
   color:#FBF8F1!important;background:none!important;border:1px solid rgba(251,248,241,.3)!important;transform:none!important;width:auto!important}
- .nav .pill::before,.nav .pill::after,.nav .pill .no{display:none!important}
+ .nav .pill::before,.nav .pill::after,.nav .pill .no,.nav .pill .cnt{display:none!important}
  .nav .pill.on{background:var(--sc)!important;border-color:var(--sc)!important;transform:scale(1.12)!important;margin:0 4px!important}
  .nav select{background:transparent;color:#FBF8F1;border:1px solid rgba(251,248,241,.3)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,#D7261E);width:calc(var(--prog,0) * 100%)}
  [data-k]{scroll-margin-top:64px}
 }
+/* ---------- 愿望清单 ---------- */
+.wish{--bg:#F4EDE4;--fg:#1A1C22;--acc:#B8336A;--abg:#1A1C22;--afg:#F4EDE4;--aacc:#F2A7C3;--ac:#B8336A;
+ --line:color-mix(in srgb,#1A1C22 18%,#F4EDE4);background:var(--bg);color:var(--fg);border:1px solid var(--line)}
+.wish .band{background:linear-gradient(162deg,#1A1C22 0 42%,var(--bg) 42% 100%)}
+.wish .band .title{font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:40px;color:#F4EDE4;letter-spacing:.08em}
+.wish .band .sub{color:var(--fg);font:700 13px 'JetBrains Mono',monospace;letter-spacing:.25em}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--line)}
+.wcard{position:relative;display:flex;flex-direction:column;background:var(--bg)}
+.wcard.solo{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+.wcard .wimg{position:relative;aspect-ratio:1/1;max-width:100%;background:#FFF;display:grid;place-items:center;overflow:hidden}
+.wcard.solo .wimg{aspect-ratio:auto;min-height:380px}
+.wcard .wimg img{width:86%;height:86%;object-fit:contain;transition:transform .4s cubic-bezier(.2,.9,.3,1)}
+.wcard:hover .wimg img{transform:scale(1.04) rotate(-1.5deg)}
+.wcard .heart{position:absolute;top:14px;left:14px;padding:4px 10px;background:var(--acc);color:#FFF;
+ font:900 12px 'Noto Sans SC',sans-serif;letter-spacing:.25em}
+.wcard .heart.got{background:#1F9D6B}.wcard .heart.miss{background:#8C8678}
+.wcard .wtxt{display:flex;flex-direction:column;gap:14px;padding:24px 26px;min-width:0}
+.wcard.solo .wtxt{justify-content:center;padding:36px 40px;border-left:1px solid var(--line)}
+.wcard .shop{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc)}
+.wcard h3{margin:0;font:900 26px/1.3 'Noto Sans SC',sans-serif;text-wrap:balance}
+.wcard.solo h3{font-size:36px}
+.wcard .price{font:900 30px/1 'Noto Sans SC',sans-serif;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.wcard .price small{font:700 14px 'JetBrains Mono',monospace;margin-right:6px;opacity:.7}
+.wcard dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px}
+.wcard dt{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.6;padding-top:2px}
+.wcard dd{margin:0}
+.wcard .note{margin:0;font-size:15px;line-height:1.7;opacity:.85}
+.wcard .links{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em}
+.wcard .links a{border-bottom:2px solid var(--acc);padding-bottom:1px}
+.wcard .links a:hover{color:var(--acc)}
+.wcard .watch{display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:color-mix(in srgb,var(--acc) 8%,transparent);border-left:3px solid var(--acc);font-size:14px;line-height:1.55}
+.wcard .watch span{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc)}
+.wcard .added{font:700 11px 'JetBrains Mono',monospace;opacity:.5;letter-spacing:.1em}
+@media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
+ .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
@@ -501,6 +536,48 @@ def _section(block, anchor=""):
             f"{facts}{grid}</section>")
 
 
+def _wish_section(wishes, works):
+    """愿望清单版面。只有一件时做成横向大卡，多件时自动排成网格。"""
+    if not wishes:
+        return ""
+    latest = {w["name"]: (w["stories"][0] if w["stories"] else None) for w in works}
+    cards = []
+    for x in wishes:
+        img = x.get("image") or ""
+        if img and not img.startswith("http"):
+            img = "wishlist/" + img
+        status = x.get("status") or "想要"
+        cls = {"已入手": "got", "没买到": "miss"}.get(status, "")
+        price = ""
+        if x.get("price") not in (None, ""):
+            price = f'<div class="price"><small>{e(str(x.get("currency", "")))}</small>{e(str(x["price"]))}</div>'
+        specs = "".join(f"<dt>{e(str(k))}</dt><dd>{e(str(v))}</dd>" for k, v in (x.get("specs") or {}).items())
+        links = []
+        if x.get("url"):
+            links.append(f'<a href="{e(x["url"])}" target="_blank" rel="noopener">去看看 ↗</a>')
+        watch = ""
+        if x.get("watch"):
+            links.append(f'<a href="#{_wid(x["watch"])}">{e(x["watch"])} 版面 →</a>')
+            st = latest.get(x["watch"])
+            if st:
+                watch = (f'<a class="watch" href="{e(st["url"])}" target="_blank" rel="noopener"><span>相关最新 · '
+                         f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}</span>{e(st["headline"])}</a>')
+        added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
+        cards.append(
+            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}">'
+            f'<div class="wimg">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else ""}'
+            f'<span class="heart {cls}">♥ {e(status)}</span></div>'
+            f'<div class="wtxt">' + (f'<span class="shop">{e(x["shop"])}</span>' if x.get("shop") else "")
+            + f'<h3>{e(x["name"])}</h3>{price}'
+            + (f"<dl>{specs}</dl>" if specs else "")
+            + (f'<p class="note">{e(x["note"])}</p>' if x.get("note") else "")
+            + watch + f'<div class="links">{"".join(links)}{added}</div></div></article>')
+    want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
+    return (f'<section id="wishlist" data-k="wishlist" class="sec wish"><div class="band split">'
+            f'<span class="title">愿望清单</span><span class="sub">WISHLIST · {len(wishes)} 件 · 想要 {want}</span></div>'
+            f'<div class="wgrid">{"".join(cards)}</div></section>')
+
+
 # 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
 SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "演出": "#D6336C", "好物": "#E07A1F"}
 SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
@@ -682,7 +759,7 @@ NAV_STYLES = {
 }
 
 
-def _nav(works, date):
+def _nav(works, date, wishes=()):
     """左侧目录：按板块分组列出每个作品。"""
     groups = {}
     for w in works:
@@ -691,6 +768,12 @@ def _nav(works, date):
     cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#front">'
             f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
+    if wishes:
+        img = wishes[0].get("image") or ""
+        img = img if img.startswith("http") or not img else "wishlist/" + img
+        css_img = f";--img:url({urllib.parse.quote(img, safe=':/?&=%#@+,;~')})" if img else ""
+        rail.append(f'<a class="pill" style="--sc:#B8336A{e(css_img)}" data-for="wishlist" href="#wishlist">'
+                    f'<i class="no">♥</i><span class="nm">愿望清单<small class="cnt">{len(wishes)} 件</small></span></a>')
     n = 0
     for name in order:
         sc = _sec_color(name)
@@ -756,7 +839,7 @@ NAV_JS = """
 """
 
 
-def render(issues, nav_style="line", order=None, updated=None):
+def render(issues, nav_style="line", order=None, updated=None, wishes=()):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）。"""
     latest = issues[0]
@@ -766,7 +849,8 @@ def render(issues, nav_style="line", order=None, updated=None):
     updated = updated or latest["date"].replace("-", ".")
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
-            + _front(works, latest["date"], updated) + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
+            + _front(works, latest["date"], updated) + _wish_section(wishes, works)
+            + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -785,7 +869,7 @@ def render(issues, nav_style="line", order=None, updated=None):
 <h1>关注清单通信</h1>
 <div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
 </div></header>
-{_nav(works, latest['date'])}
+{_nav(works, latest['date'], wishes)}
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>
