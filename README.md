@@ -15,6 +15,7 @@
 | 架构图（哪个任务在哪个环境） | [architecture.html](https://cxelegy.github.io/Wishlist/design/architecture.html) | [architecture.png](docs/design/architecture.png) |
 | 工作流程图解 | [guide.html](https://cxelegy.github.io/Wishlist/design/guide.html) | [guide.png](docs/design/guide.png) |
 | 合并图（分支怎么合、合并之后的流程） | [merge.html](https://cxelegy.github.io/Wishlist/design/merge.html) | [merge.png](docs/design/merge.png) |
+| 编排逻辑（一条新闻怎么变成网页上的卡片、三条编排路、去重的四道关） | [editing.html](https://cxelegy.github.io/Wishlist/design/editing.html) | [editing.png](docs/design/editing.png) |
 
 设计稿源文件在 `design/`（Claude 设计画布格式，修改时用）。
 
