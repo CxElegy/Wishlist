@@ -8,7 +8,11 @@
 #   specs    规格，任意几行「名称: 值」
 #   shop     在哪里卖；url 商品页或报道链接
 #   added    加入日期
-#   status   想要 / 已入手 / 没买到，默认 想要
+#   status   想要 / 纠结 / 已入手 / 没买到 / 已过期（去不了、买不到了但还想要），默认 想要
+#            纠结 = 还在犹豫买不买：单独排进「纠结名单」，不算进想要的合计；你自己决定放不放进去
+#   alternatives 可选（纠结的东西用）：帮你查好的类似好产品，每条 {name, price, why, url}，卡片上会列出来
+#   similar  可选（纠结的东西用）：每天搜类似新产品的搜索词，格式同 items.yaml 的 similar
+#            {label: 同类名, lang: 语言区, query: 搜索词, need: [...]}；搜到新的会列在卡片上并发 Discord
 #   watch    可选，关联的关注项名字（items.yaml 里的 name）。版面上会顺带显示它的最新消息
 #   note     可选，一句话备注
 #   likes    可选，从这件东西看出的喜好：「标签: [关键词…]」。主页「我会喜欢？」会用它从收集到的消息里挑推荐
@@ -36,3 +40,197 @@ wishlist:
       限定款: ["限定|限量|limited"]
       马克杯: ["マグ|馬克杯|马克杯|mug"]
     basics: [限定款, 马克杯]
+
+  - name: 貓眼溫變馬克杯
+    image: starbucks-cat-eye-mug.jpg
+    price: 600
+    currency: NT$
+    specs:
+      容量: 414 ml
+      造型: 黑白賓士貓，杯耳是尾巴
+    shop: 台湾星巴克
+    url: https://www.cosmopolitan.com/tw/lifestyle/hot-topics/g74024085/starbucks-halloween-2026-1010/
+    added: 2026-10-12
+    status: 想要
+    watch: 星巴克马克杯
+    note: 温变杯，倒热饮后闭着的眼睛会变化；货币和链接按截图（繁体字、毫升、星巴克）推断是台湾星巴克 2026 万圣节系列
+    likes:
+      猫: ["猫|貓|ネコ|ねこ|黒猫|black cat|kitty"]
+      黑白配色: ["賓士貓|宾士猫|ハチワレ|tuxedo cat|黑白"]
+      万圣节: ["ハロウィン|萬聖|万圣|Halloween"]
+      温变杯: ["温变|溫變|変色|color changing"]
+      马克杯: ["マグ|馬克杯|马克杯|mug"]
+    basics: [马克杯]
+
+  - name: SALONIA 无线直发夹（コードレス ストレートアイロン）
+    image: salonia-cordless-iron.jpg
+    price: 4378
+    currency: ¥
+    specs:
+      颜色: 粉色
+      原价: ¥6,578（限定 Prime 促销 -33%）
+      类型: 无线充电式，可随身带
+    shop: Amazon.co.jp
+    url: https://www.amazon.co.jp/s?k=SALONIA+%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AC%E3%82%B9+%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%83%88%E3%82%A2%E3%82%A4%E3%83%AD%E3%83%B3
+    added: 2026-10-12
+    status: 纠结
+    note: Prime 限定促销价，评分 4.0（209 条）；参考价 ¥6,578 和 2026/8 改版的新款定价一样（约 60 秒到 140℃、3 档温度、12mm 细夹板），截图商品名被截断，链接是亚马逊搜索页。新款打 -33% 算是好时机
+    alternatives:
+      - name: ReFa ビューテック フィンガーアイロン
+        price: 约 ¥13,200–14,500
+        why: 更小更轻（160g）的无线手指夹，专修刘海和碎发；贵一倍，夹不了整头
+        url: https://www.cosme.net/variations/1124843/
+    similar:
+      - {label: 无线直发夹, lang: ja-JP, query: コードレス ヘアアイロン 新発売, need: ["コードレス|cordless", "アイロン"]}
+    likes:
+      SALONIA: ["SALONIA|サロニア"]
+      直发夹 / 卷发棒: ["ヘアアイロン|ストレートアイロン|カールアイロン|直发夹|直髮夾|離子夾|卷发棒|hair iron|straightener"]
+      美容家电: ["美容家電|美容家电|ドライヤー|吹风机|吹風機|hair dryer"]
+      粉色: ["ピンク|粉色|粉紅|pink"]
+    basics: [粉色]
+
+  - name: Aesop ルーセント フェイシャル エッセンス
+    image: aesop-lucent-facial-essence.jpg
+    price: 13800
+    currency: ¥
+    specs:
+      容量: 60 mL
+      功效: 保湿（モイスチャライジング）
+      成分: 玫瑰花瓣、维生素 C 衍生物、烟酰胺
+      原价: ¥14,600（过去价格）；官方定价约 ¥15,840
+    shop: Amazon.co.jp
+    url: https://www.cosme.net/variations/996675/
+    added: 2026-10-12
+    status: 纠结
+    note: 海外叫 Lucent Facial Concentrate；亚马逊 ¥13,800 比官方定价 ¥15,840 便宜约 2,000；图是网上找的官方瓶身图（英文标签）
+    alternatives:
+      - name: オバジC25セラム ネオ（12 mL）
+        price: ¥11,000
+        why: 高浓度维 C 精华，偏毛孔 / 透亮；量少很多，保湿感不如 Aesop，注意有仿品，要在正规店买
+        url: https://www.e-fujiyakuhin.jp/smp/item/4987241199891.html
+    similar:
+      - {label: 维C 保湿精华, lang: ja-JP, query: ビタミンC 美容液 新発売, need: ["美容液|セラム|エッセンス", "ビタミンC|VC"]}
+    likes:
+      Aesop: ["Aesop|イソップ|伊索"]
+      护肤精华: ["美容液|エッセンス|精华|精華|serum|essence"]
+      保湿: ["保湿|モイスチャ|moisturi"]
+    basics: [保湿]
+
+  - name: Panasonic 衣類スチーマー NI-GS420-K（挂烫机）
+    image: panasonic-garment-steamer.jpg
+    price: 8050
+    currency: ¥
+    specs:
+      型号: NI-GS420-K 迷夜黑（ミッドナイトブラック）
+      蒸汽量: 约 18 g/分（大容量，松下史上最大）
+      水箱: 约 160 mL，连续喷约 8 分钟
+      重量: 约 950 g
+    shop: Amazon.co.jp
+    url: https://panasonic.jp/iron/products/NI-GS420.html
+    added: 2026-10-12
+    status: 纠结
+    note: 2025/10 发售，只出蒸汽（スチーム専用）；评价说略重，久拿手会累
+    alternatives:
+      - name: Panasonic NI-GS400（上一代）
+        price: 价格随店变动，常比新款便宜
+        why: 外形和重量（约 950g）、水箱 160 mL 几乎一样，蒸汽量约 16 g/分略少；想省钱可以找它
+        url: https://panasonic.jp/iron/products/NI-GS400/spec.html
+      - name: T-fal アクセススチーム ファースト DT6101J0
+        price: 定价 ¥9,000，常见 ¥5,000 左右
+        why: 约 725g 更轻、15 秒就能用，蒸汽约 16 g/分；水箱只有 70 mL，适合每天早上快速烫一两件
+        url: https://getnavi.jp/appliances/772233/
+    similar:
+      - {label: 挂烫机, lang: ja-JP, query: 衣類スチーマー 新製品, need: ["スチーマー"]}
+    likes:
+      Panasonic: ["パナソニック|Panasonic|松下|國際牌"]
+      衣物护理: ["スチーマー|アイロン|挂烫|掛燙|毛玉|毛球|衣類ケア|steamer"]
+      生活家电: ["家電|家电|家電量販"]
+    basics: [生活家电]
+
+  - name: Panasonic 毛玉クリーナー NI-LC300-A（毛球修剪器）
+    image: panasonic-lint-remover.jpg
+    price: 4000
+    currency: ¥
+    specs:
+      型号: NI-LC300-A 藏青（ネイビー）
+      充电: USB Type-C，充满约用 60 分钟
+      刀片: 6 枚刃 + 不易凹陷的外网，三档强度
+      重量: 约 174 g
+    shop: Amazon.co.jp
+    url: https://panasonic.jp/iron/products/NI-LC300.html
+    added: 2026-10-12
+    status: 纠结
+    note: 2025/10 复刻发售，杂志《家電批評》评测第 1 名；截图商品名被截断，按「毛玉クリーナー + ネイビー」对上的型号
+    alternatives:
+      - name: テスコム KD778（插电式）
+        price: 约 ¥2,700 起
+        why: 力气大、倒毛屑方便，mybest 评分 4.63；但要插电、声音大，用力压会伤衣服
+        url: https://my-best.com/products/68531
+      - name: テスコム 毛だまトレタ スピードタイプ TKD60A（充电式）
+        why: 同样是无线充电式，可以作为备选比价
+        url: https://www.elecom.co.jp/products/TKD60A-C.html
+    similar:
+      - {label: 毛球修剪器, lang: ja-JP, query: 毛玉クリーナー 新製品, need: ["毛玉"]}
+    likes:
+      Panasonic: ["パナソニック|Panasonic|松下|國際牌"]
+      衣物护理: ["スチーマー|アイロン|挂烫|掛燙|毛玉|毛球|衣類ケア|steamer"]
+      生活家电: ["家電|家电|家電量販"]
+    basics: [生活家电]
+
+  - name: Mrs. GREEN APPLE Ringo Jam Tour “SHADOWS”
+    image: mga-shadows-tour.jpg
+    specs:
+      日程: 2026/9/30 – 12/28 · 14 个场馆 28 场
+      离你最近: 12/2 · 12/3 兵库 GLION ARENA KOBE
+      类型: 全国体育馆巡演（时隔 3 年）
+    shop: Mrs. GREEN APPLE
+    url: https://www.oricon.co.jp/news/2461515/full/
+    added: 2026-10-12
+    status: 已过期
+    note: 去不了了，但还是想去。下次巡演 / 追加公演再看
+    likes:
+      Mrs. GREEN APPLE: ["Mrs. GREEN APPLE|ミセス|大森元貴|Mrs.GREEN APPLE"]
+      日本乐队: ["ロックバンド|バンド|乐队|樂團"]
+      演唱会: ["ライブ|ツアー|公演|演唱会|演唱會|concert|tour"]
+    basics: [演唱会]
+
+  - name: Galaxy S27 Ultra
+    image: galaxy-s27-ultra.jpg
+    specs:
+      价格: 未公布（传全系涨价）
+      屏幕: 约 6.9 英寸（传闻）
+      相机: 200MP 主摄 + 50MP 5x 潜望，横向相机大平台（传闻）
+      其他: 保留 S Pen · 60W 快充（认证）
+    shop: 三星 · 传 2027 年 2 月前后发布
+    url: https://www.notebookcheck.net/This-is-the-Samsung-Galaxy-S27-Ultra-Renders-seem-to-confirm-redesign.1378354.0.html
+    added: 2026-10-12
+    status: 想要
+    watch: Galaxy S27 Ultra
+    note: 还没发布，图是 OnLeaks × Android Headlines 的 CAD 渲染图，规格都是传闻 / 认证信息
+    likes:
+      三星 Galaxy: ["Galaxy|ギャラクシー|갤럭시|三星|Samsung|サムスン|삼성"]
+      旗舰手机: ["旗舰|旗艦|flagship|フラッグシップ|플래그십"]
+      手写笔: ["S Pen|手写笔|手寫筆|スタイラス|stylus"]
+      手机影像: ["长焦|長焦|潜望|望遠|telephoto|periscope|200MP"]
+      手机: ["smartphone|スマホ|スマートフォン|手机|手機|스마트폰"]
+    basics: [手机]
+
+  - name: Galaxy S27 Pro
+    image: galaxy-s27-pro.jpg
+    specs:
+      价格: 未公布（传全系涨价）
+      屏幕: 约 6.6 英寸，比 Ultra 小一圈（传闻）
+      相机: 和 Ultra 同款横向相机大平台，没有 S Pen（传闻）
+      其他: 60W 快充（认证）· 最高 12GB 内存、有 1TB 版本（传闻）
+    shop: 三星 · 传 2027 年 2 月前后发布（新增机型）
+    url: https://helentech.jp/news-galaxy-s27-pro-cad-render-leak-90528/
+    added: 2026-10-12
+    status: 想要
+    watch: Galaxy S27 Pro
+    note: 还没发布，图是 OnLeaks × Android Headlines 的 CAD 渲染图，规格都是传闻 / 认证信息
+    likes:
+      三星 Galaxy: ["Galaxy|ギャラクシー|갤럭시|三星|Samsung|サムスン|삼성"]
+      旗舰手机: ["旗舰|旗艦|flagship|フラッグシップ|플래그십"]
+      小屏旗舰: ["小屏|小尺寸|コンパクト|compact"]
+      手机: ["smartphone|スマホ|スマートフォン|手机|手機|스마트폰"]
+    basics: [手机]

@@ -32,6 +32,7 @@ class Entry:
     source: str
     summary: str = ""
     image: str = ""
+    image_via: str = ""  # 配图是出刊时补到的：从哪来（og:image、转载 xxx ……）；收集时自带的为空
 
 
 def _get(url):
@@ -191,7 +192,22 @@ def _reddit_get(path, params):
             time.sleep(10)
 
 
+def reddit_links(data):
+    """Reddit RSS 里每个帖子的外链（正文末尾的 [link]）：{帖子链接: 外链}。"""
+    links = {}
+    try:
+        for it in ET.fromstring(data.strip()).iter(f"{ATOM}entry"):
+            link = it.find(f"{ATOM}link")
+            m = re.search(r'href="([^"]+)">\[link\]', html.unescape(it.findtext(f"{ATOM}content") or ""))
+            if link is not None and m:
+                links[link.get("href", "")] = html.unescape(m.group(1))
+    except ET.ParseError:
+        pass
+    return links
+
+
 def _reddit_entries(path, params, name):
+    import images  # images 也 import 了 sources，放到函数里避免循环导入
     try:
         is_json, data = _reddit_get(path, params)
     except Exception as e:
@@ -200,25 +216,17 @@ def _reddit_entries(path, params, name):
     if not is_json:
         entries = rss_bytes(data, name)
         # 标了剧透 / NSFW 的帖子 RSS 里没有缩略图（网页上是「View spoiler」遮罩），改用帖子外链的预览图
-        links = {}
-        try:
-            for it in ET.fromstring(data.strip()).iter(f"{ATOM}entry"):
-                link = it.find(f"{ATOM}link")
-                m = re.search(r'href="([^"]+)">\[link\]', html.unescape(it.findtext(f"{ATOM}content") or ""))
-                if link is not None and m:
-                    links[link.get("href", "")] = html.unescape(m.group(1))
-        except ET.ParseError:
-            pass
+        links = reddit_links(data)
         for e in entries:
             if not e.image and links.get(e.url):
-                e.image = link_image(links[e.url]) or ""
+                e.image = images.link_image(links[e.url]) or ""
         return entries
     entries = []
     for p in (c["data"] for c in json.loads(data)["data"]["children"]):
         # 剧透帖的 preview 原图本身没有打码（打码的是 variants.obfuscated），直接用
         preview = ((p.get("preview") or {}).get("images") or [{}])[0].get("source", {}).get("url", "")
         if not preview and p.get("url_overridden_by_dest"):
-            preview = link_image(p["url_overridden_by_dest"]) or ""
+            preview = images.link_image(p["url_overridden_by_dest"]) or ""
         entries.append(Entry(
             title=_clean(p["title"], 200),
             url="https://www.reddit.com" + p["permalink"],
@@ -305,90 +313,6 @@ def resolve_url(url):
         return real if real.startswith("http") else url
     except Exception:
         return url
-
-
-def image_ok(url):
-    """图片真的能下载（不是 403 / 付费墙 / 网页），且不是小图标。"""
-    if not url or not url.startswith("http"):
-        return False
-    for attempt in range(2):  # 网络偶尔抽风，失败再试一次
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=10) as resp:
-                if not resp.headers.get("Content-Type", "").startswith("image/"):
-                    return False
-                return len(resp.read(20_000)) >= 8_000
-        except urllib.error.HTTPError:
-            return False
-        except Exception:
-            time.sleep(1)
-    return False
-
-
-def og_image(url):
-    """读取网页的预览图（og:image / twitter:image），只读前 300KB。"""
-    if not url or "news.google.com" in url:
-        return None
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-            head = resp.read(300_000).decode("utf-8", "ignore")
-    except Exception:
-        return None
-    for pattern in (
-        r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)(?::src)?["\'][^>]*content=["\']([^"\']+)',
-        r'<meta[^>]+content=["\']([^"\']+)["\'][^>]*(?:property|name)=["\'](?:og:image|twitter:image)',
-    ):
-        m = re.search(pattern, head, re.I)
-        if m:
-            return urllib.parse.urljoin(url, html.unescape(m.group(1)))
-    return None
-
-
-def link_image(url):
-    """帖子外链的预览图：YouTube 视频 / 播放列表用官方 oEmbed 取封面，其它网页取 og:image。
-    链回 Reddit 本身的（纯文字帖）不算。"""
-    host = urllib.parse.urlparse(url).netloc.lower()
-    if not host or host.endswith("reddit.com") or host.endswith("redd.it"):
-        return None
-    if host.endswith("youtube.com") or host.endswith("youtu.be"):
-        try:
-            data = json.loads(_get("https://www.youtube.com/oembed?format=json&url=" + urllib.parse.quote(url, safe="")))
-            return data.get("thumbnail_url")
-        except Exception:
-            return None
-    return og_image(url)
-
-
-IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|/ads?/|\.svg|\.gif|data:", re.I)
-
-
-def article_images(url, limit=8):
-    """原文里的候选配图：og:image 排第一，然后是正文 <img>（优先 <article> 内的），去掉图标 / logo。"""
-    if not url or "news.google.com" in url:
-        return []
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-            page = resp.read(1_500_000).decode("utf-8", "ignore")
-    except Exception:
-        return []
-    m = re.search(r"<article\b.*?</article>", page, re.I | re.S)
-    body = m.group(0) if m else page
-    found = []
-    og = og_image(url)
-    if og:
-        found.append(og)
-    for tag in re.findall(r"<img\b[^>]*>", body, re.I):
-        src = re.search(r'(?:data-src|data-original|src)=["\']([^"\']+)', tag, re.I)
-        if not src or IMG_SKIP.search(src.group(1)):
-            continue
-        u = urllib.parse.urljoin(url, html.unescape(src.group(1)))
-        if u.startswith("http") and u not in found:
-            found.append(u)
-        if len(found) >= limit:
-            break
-    return found
 
 
 def steam_header(appid):

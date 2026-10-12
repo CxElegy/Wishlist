@@ -1,0 +1,58 @@
+{
+ "rows": [
+  {
+   "because": null,
+   "created_at": "2026-10-12T13:57:05.845181+00:00",
+   "hits": [],
+   "kind": "wish",
+   "title": "设置测试",
+   "url": "https://example.com/__setup-test__",
+   "vote": 0,
+   "words": [],
+   "work": null
+  },
+  {
+   "because": "黑貓魔法術溫變馬克杯",
+   "created_at": "2026-10-12T14:02:24.363644+00:00",
+   "hits": [
+    "动物 / 角色造型",
+    "限定款",
+    "马克杯"
+   ],
+   "kind": "wish",
+   "title": "スタバ×ポケモン、どの商品が売れる？発売前に人気商品を予想",
+   "url": "https://note.com/yamato_pokemon/n/n51f8de870e31",
+   "vote": 1,
+   "words": null,
+   "work": "星巴克马克杯"
+  },
+  {
+   "because": "ILLIT",
+   "created_at": "2026-10-12T14:05:14.722626+00:00",
+   "hits": [
+    "K-POP 女团日本公演"
+   ],
+   "kind": "follow",
+   "title": "韓国発の実力派ガールズグループ・KISS OF LIFEが「THE FIRST TAKE」出演！メンバーの繊細且つ力強い歌声で『SWEAT (Japanese Ver.)』を一発撮りパフォーマンス！",
+   "url": "https://prtimes.jp/main/html/rd/p/000005141.000019470.html",
+   "vote": 1,
+   "words": null,
+   "work": "ILLIT"
+  },
+  {
+   "because": "黑貓魔法術溫變馬克杯",
+   "created_at": "2026-10-12T14:05:27.258105+00:00",
+   "hits": [
+    "动物 / 角色造型",
+    "限定款",
+    "马克杯"
+   ],
+   "kind": "wish",
+   "title": "Studio Ghibli's Limited-Edition Howl's Moving Castle Mug Returns to Outshine Starbucks",
+   "url": "https://www.cbr.com/studio-ghibli-howls-moving-castle-mug-fall-2026-return/",
+   "vote": 1,
+   "words": null,
+   "work": "星巴克马克杯"
+  }
+ ]
+}

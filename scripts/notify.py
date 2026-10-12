@@ -3,6 +3,7 @@
 changes    推送了新功能（代码、工作流、编辑手册、skill 有改动）时，把这些提交的说明发一条「功能更新」；
            已经发过的位置记在 state/announced_commit.txt
 wishlist   wishlist.yaml 里新加的东西（图、价格、链接）发一条通知；发过的记在 state/known_wishlist.json
+hesitate   纠结名单里的东西搜到了类似的新产品 / 新消息，发一条通知；发过的链接记在 state/known_hesitate.json
 new-items  items.yaml 里新加 / 删掉了关注项，发一条通知；已知的关注项记在 state/known_items.json
 urgent  要紧消息（ingest 标记的 urgent 条目、状态变化）当天立刻发；发过的记在 state/notified.json，不重复发
 weekly  每周一发一次：过去 7 天各关注项的要点 + 简报网页链接
@@ -27,6 +28,8 @@ ANNOUNCED_FILE = digest.STATE_DIR / "announced_commit.txt"
 # 改了这些地方才算“功能更新”；只改数据（inbox / reports / state / docs）或关注清单的不算
 FEATURE_PATHS = ["scripts", ".github", "EDITING.md", ".claude", "requirements.txt", "README.md"]
 KNOWN_WISH_FILE = digest.STATE_DIR / "known_wishlist.json"
+KNOWN_HESITATE_FILE = digest.STATE_DIR / "known_hesitate.json"
+HESITATE_PER_WISH = 3  # 每件纠结的东西一次最多报几条
 KNOWN_FILE = digest.STATE_DIR / "known_items.json"
 TYPE_NAMES = {"product": "商品", "category": "一类产品", "game": "游戏", "anime": "动画 / 漫画", "show": "影视剧", "event": "艺人演出"}
 MAX_LINES = 6  # 每个关注项最多列几条
@@ -171,7 +174,7 @@ def wishlist(page_url):
         if img and not img.startswith("http"):
             # 用仓库里的原文件地址：推送后立刻能访问，不用等 GitHub Pages 发布
             repo = os.environ.get("GITHUB_REPOSITORY", "CxElegy/Wishlist")
-            branch = os.environ.get("GITHUB_REF_NAME", "claude/sharp-gauss-osunmb")
+            branch = os.environ.get("GITHUB_REF_NAME", "main")
             img = f"https://raw.githubusercontent.com/{repo}/{branch}/docs/wishlist/{urllib.parse.quote(img)}"
         lines = []
         if x.get("price") not in (None, ""):
@@ -181,7 +184,8 @@ def wishlist(page_url):
             lines.append(x["note"])
         if x.get("watch"):
             lines.append(f"会在「{x['watch']}」版面持续追踪相关消息")
-        embed = {"title": f"♥ {x['name']}", "url": x.get("url") or f"{page_url}wishlist.html",
+        st = x.get("status") or "想要"
+        embed = {"title": f"♥ {x['name']}" + ("" if st == "想要" else f"（{st}）"), "url": x.get("url") or f"{page_url}wishlist.html",
                  "color": 0xB8336A, "description": "\n".join(lines),
                  "footer": {"text": " · ".join(str(v) for v in (x.get("shop"), x.get("added")) if v)}}
         if img:
@@ -190,6 +194,25 @@ def wishlist(page_url):
     if send({"username": "关注清单通信", "content": f"**愿望清单新加了 {len(new)} 件**\n{page_url}wishlist.html",
              "embeds": embeds}):
         digest.save_json(KNOWN_WISH_FILE, [x["name"] for x in wishes])
+
+
+def hesitate(page_url):
+    """纠结名单：每天搜到的类似新产品 / 新消息（state/discover.json 里带 wish 的条目），没报过的发一条通知。"""
+    torn = {x["name"] for x in digest.load_wishlist() if x.get("status") == digest.HESITATE}
+    finds = [x for x in (digest.load_json(digest.DISCOVER_FILE) or {}).get("entries", []) if x.get("wish") and x["item"] in torn]
+    known = digest.load_json(KNOWN_HESITATE_FILE) if KNOWN_HESITATE_FILE.exists() else []
+    new = [x for x in finds if x["url"] not in known]
+    if not new:
+        return
+    embeds = []
+    for name in dict.fromkeys(x["item"] for x in new):
+        mine = sorted((x for x in new if x["item"] == name), key=lambda x: x.get("date") or "", reverse=True)
+        lines = [f"[{x['title']}]({x['url']}) · {x['source']}" for x in mine[:HESITATE_PER_WISH]]
+        embeds.append({"title": f"纠结中：{name}", "url": f"{page_url}wishlist.html", "color": 0xB5650D,
+                       "description": "\n".join(lines)})
+    if send({"username": "关注清单通信", "content": f"**纠结名单里的东西有类似的新发现**\n{page_url}wishlist.html",
+             "embeds": embeds[:10]}):
+        digest.save_json(KNOWN_HESITATE_FILE, sorted(set(known) | {x["url"] for x in finds}))
 
 
 def new_items(page_url):
