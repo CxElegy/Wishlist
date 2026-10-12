@@ -89,21 +89,21 @@
     {
      "blurb": "",
      "date": "2026-10-08",
-     "headline": "Grand Theft Auto VI Announce In-Game Radio Stations Featuring Lana Del Rey, Slayer, Bad Bunny & More",
-     "highlight": "",
-     "image": "https://music-b26f.kxcdn.com/wp-content/uploads/2014/04/Coachella2014-Lana-Del-Rey-2.jpg",
-     "image_via": "og:image",
-     "url": "https://music.mxdwn.com/2026/10/08/news/grand-theft-auto-vi-announce-in-game-radio-stations-featuring-lana-del-rey-slayer-bad-bunny-more/",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-08",
      "headline": "Cyberleek is back: GTA 6 gets a 25-minute gameplay leak showing first-person mode and full nudity",
      "highlight": "",
      "image": "https://cdn.videocardz.com/1/2026/08/GTA-CYBERLEEK.webp",
      "image_via": "og:image",
      "url": "https://videocardz.com/newz/cyberleek-is-back-gta-6-gets-a-25-minute-gameplay-leak-showing-first-person-mode-and-full-nudity",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "Grand Theft Auto VI Announce In-Game Radio Stations Featuring Lana Del Rey, Slayer, Bad Bunny & More",
+     "highlight": "",
+     "image": "https://music-b26f.kxcdn.com/wp-content/uploads/2014/04/Coachella2014-Lana-Del-Rey-2.jpg",
+     "image_via": "og:image",
+     "url": "https://music.mxdwn.com/2026/10/08/news/grand-theft-auto-vi-announce-in-game-radio-stations-featuring-lana-del-rey-slayer-bad-bunny-more/",
      "weight": "normal"
     },
     {
@@ -256,7 +256,8 @@
      "date": "2026-10-12",
      "headline": "영리하게 찔렀다, 엔씨 '아스트라에 오라티오' 세계관 분석",
      "highlight": "",
-     "image": null,
+     "image": "https://cdn.gameple.co.kr/news/photo/202610/216667_249570_1227.jpg",
+     "image_via": "og:image",
      "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216667",
      "weight": "normal"
     }
@@ -770,31 +771,32 @@
     },
     {
      "blurb": "",
+     "date": "2026-10-11",
+     "headline": "삼성전자 S27 가격 인상 검토…메모리값 급등에 수익성 압박",
+     "highlight": "",
+     "image": "https://cdn.it.chosun.com/news/thumbnail/202610/2023092171656_454286_520_v150.jpg",
+     "image_via": "og:image",
+     "url": "https://it.chosun.com/news/articleView.html?idxno=2023092171656",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "가격 인상 Galaxy S26 이건 큰 경고입니다. 가격이 걱정되네요. Galaxy S27 천문학적일 것이다",
+     "highlight": "",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-9.jpg",
+     "image_via": "og:image",
+     "url": "https://samsungmagazine.eu/ko/2026/10/10/samsung-galaxy-s26-price-galaxy-s27-ultra/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-12",
      "headline": "三星Galaxy S27“扩大阵容”……将增加高端机型",
      "highlight": "",
      "image": "https://pimg.mk.co.kr/news/cms/202610/13/20261013_01110114000006_L00.jpg",
      "image_via": "og:image",
      "url": "https://www.mk.co.kr/cn/business/12173858",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "This Galaxy S27 price rumor might be the worst one yet",
-     "highlight": "",
-     "image": null,
-     "url": "https://www.phonearena.com/news/galaxy-s27-price-hike-new-rumor_id183998",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "Another report suggests Samsung Galaxy S27 series could cost more - GSMArena.com news",
-     "highlight": "",
-     "image": "https://fdn.gsmarena.com/imgroot/news/26/10/galaxy-s27-series-price-hike-report/-952x498w6/gsmarena_00.jpg",
-     "image_via": "og:image",
-     "url": "https://www.gsmarena.com/another_report_suggests_samsung_galaxy_s27_series_could_cost_more-news-74999.php",
      "weight": "normal"
     }
    ],
@@ -856,11 +858,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-12",
-     "headline": "Galaxy S27 Ultra PWM Dimming: Why It's Still Unconfirmed",
+     "date": "2026-10-11",
+     "headline": "Samsung may give the Galaxy S27 Ultra a major eye comfort upgrade",
      "highlight": "",
-     "image": null,
-     "url": "https://samsung.gadgethacks.com/news/galaxy-s27-ultra-pwm-dimming-why-its-still-unconfirmed/",
+     "image": "https://www.digitaltrends.com/tachyon/2026/06/samsung-galaxy-s26-ultra-smartphone-8.jpg?resize=1200%2C630",
+     "image_via": "og:image",
+     "url": "https://www.digitaltrends.com/phones/samsung-may-give-the-galaxy-s27-ultra-a-major-eye-comfort-upgrade/",
      "weight": "normal"
     }
    ],
@@ -904,6 +907,16 @@
     },
     {
      "blurb": "",
+     "date": "2026-10-11",
+     "headline": "Galaxy S27 ProとS27 Ultraのスペック分析：カメラの変更点とハードウェアランキング",
+     "highlight": "",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/11/1791693558571_img_f8150f3f.webp",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/ja/phan-tich-thong-so-galaxy-s27-pro-va-s27-ultra-thay-doi-camera-va-su-phan-cap-phan-cung",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-12",
      "headline": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
      "highlight": "",
@@ -920,16 +933,6 @@
      "image_via": "og:image",
      "url": "https://sammyguru.com/galaxy-s27-pro-ultra-display-upgrades-leak/",
      "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "\"울트라는 5배, 프로는 3배 망원\"…삼성 갤럭시S27 카메라 급나누기",
-     "highlight": "",
-     "image": "https://www.ddaily.co.kr/photos/2026/10/12/2026101209083862704_l.png",
-     "image_via": "og:image",
-     "url": "https://www.ddaily.co.kr/page/view/2026101209102622312",
-     "weight": "normal"
     }
    ],
    "subtitle": "갤럭시 S27 프로 · 想买 · 指定商品追踪",
@@ -941,6 +944,73 @@
     "bg": "#F6EEF0",
     "fg": "#2B1219",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "name": "gelato pique",
+   "section": "好物",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "FURFUR×gelato piqueの限定コラボ♡20周年を彩る全14型のルームウェアが登場",
+     "highlight": "",
+     "image": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+     "image_via": "作品封面",
+     "url": "https://www.msn.com/ja-jp/news/other/furfur-gelato-pique%E3%81%AE%E9%99%90%E5%AE%9A%E3%82%B3%E3%83%A9%E3%83%9C-20%E5%91%A8%E5%B9%B4%E3%82%92%E5%BD%A9%E3%82%8B%E5%85%A814%E5%9E%8B%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2dWmge",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "ジェラピケ x Sanrio characters コラボコレクション第2弾が国内10月14日より先行予約開始",
+     "highlight": "",
+     "image": "https://uptodate.tokyo/wp-content/uploads/2026/10/IMG_4137_3AC2E5DB-768x1024.jpeg",
+     "image_via": "og:image",
+     "url": "https://uptodate.tokyo/gelato-pique-sanrio-characters-part2/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "Gelato Pique Holiday 店舗限定 トートバッグ 新品タグ付き - バッグ",
+     "highlight": "",
+     "image": null,
+     "url": "http://www.v-shinpo.com/shopdetail/U85925263103",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "ご褒美買いしたい！ 【ファーファー×ジェラピケ】ふんわり暖かいウエアなど「20周年記念コラボ全14型」を10/9発売",
+     "highlight": "",
+     "image": "https://p.potaufeu.asahi.com/c2dc-p/picture/31416699/72243b8d2254b36daa8010677f8b393f.jpg",
+     "image_via": "og:image",
+     "url": "https://www.asahi.com/and/w/article/16947414",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "gelato piqueとサンリオキャラクターズが再びコラボ♪冬のおうち時間を彩る新作に注目",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/gelato-pique%E3%81%A8%E3%82%B5%E3%83%B3%E3%83%AA%E3%82%AA%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E3%82%BA%E3%81%8C%E5%86%8D%E3%81%B3%E3%82%B3%E3%83%A9%E3%83%9C-%E5%86%AC%E3%81%AE%E3%81%8A%E3%81%86%E3%81%A1%E6%99%82%E9%96%93%E3%82%92%E5%BD%A9%E3%82%8B%E6%96%B0%E4%BD%9C%E3%81%AB%E6%B3%A8%E7%9B%AE/ar-AA2dHQEq",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
     "split": true
    }
   }
