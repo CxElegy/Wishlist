@@ -5,8 +5,7 @@ MSN 的公开文章接口、Reddit（官方 API 或公开 RSS）、YouTube oEmbe
 同一篇文章的公开转载和新闻稿原出处。
 请求不带 Referer、不伪装来源；被防盗链、防机器人或登录挡住的图就判为不可用，换下一张，
 都不行时交给网页上的作品封面 / 作品名封面块兜底。
-中国大陆网站的图常把海外服务器整个拦掉（GitHub 上验证不了，国内浏览器却能看）：
-国外的图都不行时，才用这种验证不了的国内图（网页上打不开会自动换成作品封面）。
+验证不了的图（大陆网站把海外服务器整个拦掉的那种）一律不用：看网页的人不在大陆就是一张打不开的图。
 
     res = pick(chosen, refs, url)      # res.image / res.source / res.trace / res.reason
     print(log_line("关注项", "标题", res))
@@ -459,25 +458,15 @@ def kind(reason):
     return "其它"
 
 
-UNVERIFIABLE = re.compile(r"HTTP 567|超时|网络错误")  # 大陆网站拦海外服务器的样子（不是防盗链 403）
-
-
 def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
     """一条报道的配图。按顺序检查候选图，第一张可用的就用：
     AI 挑的 > 条目自带图 > 原文（og:image > JSON-LD > 正文图；Reddit 帖子读帖子本身和外链）
     > 其它来源的原文 > Bing / Google 新闻上的同一篇转载。
-    都不行时，用第一张因为拦海外服务器而验证不了的中国大陆网站图片（万不得已）；
-    连这也没有返回 image=None（网页上用作品封面代替）。
+    都不行返回 image=None（网页上这条进「其他消息」文字列表，或用这一版面唯一一次的作品封面）。
     网站 logo / 全站默认分享图不用；avoid 里的图（同一期别的报道已经用了）也不用，免得几张卡片同一张图。"""
     res = Result()
     seen = set()
     deadline = time.monotonic() + (STORY_BUDGET if budget is None else budget)
-    backup = []  # 验证不了的大陆网站图片：(来源, 地址)
-
-    def done():
-        if not res.image and backup:
-            res.image, res.source = backup[0][1], backup[0][0] + "（大陆网站，服务器验证不了）"
-        return res
 
     def stages():
         yield [("AI 挑选", chosen)]
@@ -512,19 +501,17 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
                 continue
             if time.monotonic() > deadline:
                 res.notes.append(f"找图超过 {STORY_BUDGET if budget is None else budget} 秒，停止")
-                return done()
+                return res
             seen.add(img)
             ok, why = check(img)
             res.trace.append((label, img, why if not ok else "OK"))
             if ok:
                 res.image, res.source = img, label
                 return res
-            if UNVERIFIABLE.search(why) and sources.is_domestic(img):
-                backup.append((label, img))
             if len(seen) >= max_checks:
                 res.notes.append(f"已检查 {max_checks} 张，停止")
-                return done()
-    return done()
+                return res
+    return res
 
 
 def log_line(name, headline, res):

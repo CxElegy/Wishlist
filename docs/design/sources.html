@@ -86,10 +86,10 @@ h1{margin:0;font-size:40px;font-weight:900;line-height:52px}
  <div class="legend"><span><i style="border-color:#1A1C22"></i>数据流</span><span><i style="border-color:#2E7D4F"></i>保留多样性 / 这次新加</span><span><i style="border-color:#B83A17"></i>收窄 · 丢掉</span></div>
 
  <div class="big">
-  <div style="background:#1A1C22;color:#F1EEE6"><span class="k">来源多元</span><span class="n">76 条 · 59 家</span><span class="d">10-12 那期 76 条报道来自 59 个不同网站<br>新配置实测：留下的条目来自 236 家媒体</span></div>
+  <div style="background:#1A1C22;color:#F1EEE6"><span class="k">来源多元</span><span class="n">75 条 · 58 家</span><span class="d">10-12 那期 75 条报道来自 58 个不同网站<br>新配置实测：留下的条目来自 236 家媒体</span></div>
   <div style="background:#2E7D4F;color:#fff"><span class="k">4 种语言</span><span class="n">繁中 · 英 · 日 · 韩</span><span class="d">每个关键词在 4 个语言区各搜一次<br>+ Bing · Reddit · Steam 官方 · RSS</span></div>
   <div style="background:#B83A17;color:#fff"><span class="k">大陆网站</span><span class="n">12% → 0%</span><span class="d">收集到的条目里大陆网站的占比<br>它们出刊后 4 条全部没图（拦海外、防盗链）</span></div>
-  <div style="background:#FBFAF7;border:3px solid #1A1C22;padding:15px 19px"><span class="k" style="color:#4A4538">没图的报道</span><span class="n">13 → 0</span><span class="d">10-12 实测：9 条找到图 · 2 条原文已删不出刊<br>· 2 条大陆网站现在不收了</span></div>
+  <div style="background:#FBFAF7;border:3px solid #1A1C22;padding:15px 19px"><span class="k" style="color:#4A4538">配图</span><span class="n">空图 0</span><span class="d">网页上：占位块 0 · 重复图 0 · logo 0<br>实在找不到图的进「其他消息」文字列表</span></div>
  </div>
 
  <div class="sec"><h2>流程</h2><span>每个关注项单独走一遍 · 从左往右</span></div>
@@ -148,10 +148,11 @@ h1{margin:0;font-size:40px;font-weight:900;line-height:52px}
    <div><b>4 其它来源原文</b> · refs 第 2–3 个</div>
    <div class="new"><b>5 Bing 转载</b> · 含原文自己的 Bing 缩略图</div>
    <div class="new"><b>6 Google 转载</b> · 新闻稿原出处（PR TIMES…）</div>
-   <div class="last"><b>7 大陆图</b> · 被拦验证不了，万不得已</div>
-   <div class="end"><b>8 作品封面</b> › 作品名封面块</div>
+   <div class="last"><b>✕ 不用</b> · 网站 logo、同一期用过的图、验证不了的图</div>
+   <div><b>7 作品封面</b> · 每个版面最多一次</div>
+   <div class="end"><b>8 「其他消息」</b> · 纯文字列表，不放空图</div>
   </div>
-  <div style="font-size:12px;color:#4A4538;line-height:17px">绿框 = 这次新加 · 每张都实际下载检查（格式、≥200×300、≤8MB）</div>
+  <div style="font-size:12px;color:#4A4538;line-height:17px">绿框 = 这次新加 · 每张都实际下载检查（格式、≥200×300、≤8MB）· 从不拿别的报道的图顶替</div>
  </div>
 </div>
 
@@ -169,20 +170,20 @@ h1{margin:0;font-size:40px;font-weight:900;line-height:52px}
  <div><div class="keep"><b>保留</b><br>第一家删了还有第二家顶上</div>
       <div class="cut"><b>收窄</b><br>全删了的报道不出刊</div></div>
  <div><div class="keep"><b>保留</b><br>原文挡机器人也能从转载、Bing、新闻稿原出处拿图</div>
-      <div class="cut"><b>收窄</b><br>防盗链（新浪 403）的图不用</div></div>
+      <div class="cut"><b>收窄</b><br>logo、重复、验证不了的图不用；没图的进文字列表</div></div>
 </div>
 
 
- <div class="sec"><h2>真实数字</h2><span>msn.com 6 · prtimes.jp 3 · walkerplus.com 3 · gamemeca.com 2 · news.17173.com 2 · news.nicovideo.jp 2 · news.yahoo.co.jp 2 · sanyonews.jp 2 · sportzorg24.tv 2 · samsungmagazine.eu 2（10-12 那期出现最多的网站）</span></div>
+ <div class="sec"><h2>真实数字</h2><span>msn.com 5 · walkerplus.com 4 · news.yahoo.co.jp 3 · gamemeca.com 2 · news.17173.com 2 · news.nicovideo.jp 2 · sanyonews.jp 2 · sportzorg24.tv 2 · samsungmagazine.eu 2 · reddit.com 2（10-12 那期出现最多的网站）</span></div>
  
 <div class="charts">
  <div class="chart"><h3>① 从哪来：各渠道条数</h3>
   <div class="cap">新配置实测：14 个关注项各收集一次（Google / Bing / Steam / RSS）。<br>灰 = 搜回来的，绿 = 筛完留下的；Reddit 在这台机器被限流，用 inbox 里的实际数</div>
-  <div class="bar"><span class="bl">Google 繁中（港台）</span><span class="bt" style="width:133px;background:#C9C2B2"></span><span class="bv">1005</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:5px;background:#2E7D4F"></span><span class="bv">35</span></div><div class="bar"><span class="bl">Google 英文</span><span class="bt" style="width:300px;background:#C9C2B2"></span><span class="bv">2265</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:15px;background:#2E7D4F"></span><span class="bv">110</span></div><div class="bar"><span class="bl">Google 日文</span><span class="bt" style="width:232px;background:#C9C2B2"></span><span class="bv">1755</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:16px;background:#2E7D4F"></span><span class="bv">120</span></div><div class="bar"><span class="bl">Google 韩文</span><span class="bt" style="width:126px;background:#C9C2B2"></span><span class="bv">951</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:6px;background:#2E7D4F"></span><span class="bv">46</span></div><div class="bar"><span class="bl">Bing 新闻</span><span class="bt" style="width:100px;background:#C9C2B2"></span><span class="bv">754</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:10px;background:#2E7D4F"></span><span class="bv">72</span></div><div class="bar"><span class="bl">Reddit（inbox 实际）</span><span class="bt" style="width:38px;background:#5865F2"></span><span class="bv">288（占 15%）</span></div>
+  <div class="bar"><span class="bl">Google 繁中（港台）</span><span class="bt" style="width:133px;background:#C9C2B2"></span><span class="bv">1005</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:5px;background:#2E7D4F"></span><span class="bv">35</span></div><div class="bar"><span class="bl">Google 英文</span><span class="bt" style="width:300px;background:#C9C2B2"></span><span class="bv">2265</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:15px;background:#2E7D4F"></span><span class="bv">110</span></div><div class="bar"><span class="bl">Google 日文</span><span class="bt" style="width:232px;background:#C9C2B2"></span><span class="bv">1755</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:16px;background:#2E7D4F"></span><span class="bv">120</span></div><div class="bar"><span class="bl">Google 韩文</span><span class="bt" style="width:126px;background:#C9C2B2"></span><span class="bv">951</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:6px;background:#2E7D4F"></span><span class="bv">46</span></div><div class="bar"><span class="bl">Bing 新闻</span><span class="bt" style="width:100px;background:#C9C2B2"></span><span class="bv">754</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:10px;background:#2E7D4F"></span><span class="bv">72</span></div><div class="bar"><span class="bl">Reddit（inbox 实际）</span><span class="bt" style="width:41px;background:#5865F2"></span><span class="bv">309（占 15%）</span></div>
  </div>
  <div class="chart"><h3>② 大陆网站占比：改前 → 改后</h3>
   <div class="cap">红条 = 改前（inbox 里已收集的条目，合计 12%）<br>绿字 = 改后（新配置实测，筛完留下的）</div>
-  <div class="pair"><span class="bl">漫威电影</span><span class="bt" style="width:90px;background:#B83A17"></span><span class="bv">24% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">GTA 6</span><span class="bt" style="width:79px;background:#B83A17"></span><span class="bv">21% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">MMORPG 新作</span><span class="bt" style="width:31px;background:#B83A17"></span><span class="bv">8% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 Ultra</span><span class="bt" style="width:15px;background:#B83A17"></span><span class="bv">4% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 系列情报</span><span class="bt" style="width:12px;background:#B83A17"></span><span class="bv">3% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">猫用品</span><span class="bt" style="width:10px;background:#B83A17"></span><span class="bv">3% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 Pro</span><span class="bt" style="width:9px;background:#B83A17"></span><span class="bv">2% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">ILLIT</span><span class="bt" style="width:5px;background:#B83A17"></span><span class="bv">1% → <b style="color:#2E7D4F">0%</b></span></div>
+  <div class="pair"><span class="bl">漫威电影</span><span class="bt" style="width:83px;background:#B83A17"></span><span class="bv">22% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">GTA 6</span><span class="bt" style="width:74px;background:#B83A17"></span><span class="bv">20% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">MMORPG 新作</span><span class="bt" style="width:31px;background:#B83A17"></span><span class="bv">8% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">猫用品</span><span class="bt" style="width:22px;background:#B83A17"></span><span class="bv">6% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 Ultra</span><span class="bt" style="width:12px;background:#B83A17"></span><span class="bv">3% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">ILLIT</span><span class="bt" style="width:10px;background:#B83A17"></span><span class="bv">3% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 系列情报</span><span class="bt" style="width:10px;background:#B83A17"></span><span class="bv">3% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 Pro</span><span class="bt" style="width:8px;background:#B83A17"></span><span class="bv">2% → <b style="color:#2E7D4F">0%</b></span></div>
  </div>
  <div class="chart"><h3>③ 留下的条目：语言 · 媒体家数</h3>
   <div class="cap">新配置实测，按标题文字分语言；右边是条数和不同媒体数<br><span class="lg"><i style="background:#B83A17"></i>中文</span> <span class="lg"><i style="background:#1A1C22"></i>日文</span> <span class="lg"><i style="background:#5865F2"></i>韩文</span> <span class="lg"><i style="background:#2E7D4F"></i>英文等</span></div>
@@ -207,7 +208,7 @@ h1{margin:0;font-size:40px;font-weight:900;line-height:52px}
  <div><b>「删了」和「打不开」不一样</b>
   <p>删了：404 / 410<br><span>换下一个来源；都删了不出刊</span></p>
   <p>打不开：403、captcha、超时<br><span>只是挡机器人，照常出刊，图去转载、Bing 找</span></p>
-  <p>大陆图：567 / 超时<br><span>国内浏览器能看，海外服务器验证不了 → 最后才用；防盗链 403 不用</span></p>
+  <p>验证不了的图：567 / 超时<br><span>看网页的人不在大陆就打不开 → 不用</span></p>
  </div>
  <div><b>时间 · 费用</b>
   <p>每 2 小时 :17<br><span>收集 ①②③ + 出刊 ⑤⑥（GitHub Actions，免费）</span></p>

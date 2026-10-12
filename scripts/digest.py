@@ -1135,7 +1135,8 @@ def pick_images(date=None):
 def repair_images():
     """修已经出刊的各期（新的找图规则只管新出刊的，旧几期要补一遍）：
     - 原文已删（404 / 410）的报道撤掉
-    - 没有自己图的报道重新找图：没图、用作品封面顶替、网站 logo / 默认图、和别的报道同一张图（先出现的那条留着）
+    - 没有自己图的报道重新找图：没图、用作品封面顶替、网站 logo / 默认图、和别的报道同一张图（先出现的那条留着）、
+      图现在下载不了或不合格
     Google 跳转链接先还原；在 inbox 里找回这条报道的原始条目（原标题、自带图），找转载更准。改完重新生成网页。"""
     paths = sorted(REPORTS_DIR.glob("????-??-??.json"))
     reports = [(p, load_json(p)) for p in paths]
@@ -1160,7 +1161,8 @@ def repair_images():
             keep = []
             for st in b["stories"]:
                 img = st.get("image")
-                bad = (not img or st.get("image_via") == "作品封面"
+                bad = (not img or st.get("image_via") == "作品封面" or "验证不了" in (st.get("image_via") or "")
+                       or not images.check(img)[0]  # 图后来被删、或者不合格（太小、打不开）
                        or images.GENERIC.search(urllib.parse.urlparse(img).path)
                        or first_user.get(img) not in (None, st["url"]))
                 d = raw.get(st["url"])
@@ -1180,7 +1182,8 @@ def repair_images():
                         st["image"], st["image_via"], changed = res.image, res.source, True
                         used.add(res.image)
                         fixed += 1
-                    elif img and (images.GENERIC.search(urllib.parse.urlparse(img).path) or first_user.get(img) != st["url"]):
+                    elif img and (images.GENERIC.search(urllib.parse.urlparse(img).path) or first_user.get(img) != st["url"]
+                                  or "验证不了" in (st.get("image_via") or "") or not images.check(img)[0]):
                         st["image"], changed = None, True  # 错的图宁可不放（网页上用作品封面或作品名封面块）
                         st.pop("image_via", None)
                         still += 1
