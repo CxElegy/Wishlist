@@ -34,6 +34,7 @@ jobs:
       TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
       REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
       REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # 读「我会喜欢？」的投票
       IS_WEEKLY: ${{ github.event.schedule == '47 0 * * 1' || inputs.weekly == true }}
     steps:
       - uses: actions/checkout@v4

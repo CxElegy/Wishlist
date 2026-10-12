@@ -54,6 +54,10 @@ settings:
                                 # false = 不用 AI，按 priority_keywords 排序、用原标题（完全免费）
   model: claude-haiku-5-5       # 归纳用的模型
   discord_mention: "263923518780080128"   # 要紧通知时 @ 这个 Discord 用户（填用户 ID，不是密码）
+  # 「我会喜欢？」的 👍 / 👎：投票存进 Supabase（Postgres）。按 README「投票数据库」一节设置，两项都填了网页上才出现按钮。
+  # 这里只放公开的 publishable key（网页本来就要用它，只能新增投票）；读投票用的 secret key 放仓库 Secret SUPABASE_SERVICE_KEY
+  supabase_url: "https://bzokpnbcjscbcehdxtjq.supabase.co"           # 形如 https://xxxx.supabase.co
+  supabase_key: "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC"           # publishable key（sb_publishable_ 开头）或旧版 anon key
 
 items:
   - name: Astrae Oratio

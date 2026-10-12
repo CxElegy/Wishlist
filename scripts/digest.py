@@ -38,6 +38,7 @@ ITEMS_FILE = ROOT / "items.yaml"
 WISHLIST_FILE = ROOT / "wishlist.yaml"
 RECOMMEND_FILE = ROOT / "state" / "recommend.json"
 DISCOVER_FILE = ROOT / "state" / "discover.json"
+FEEDBACK_FILE = ROOT / "state" / "feedback.json"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
@@ -572,13 +573,65 @@ def _like_key(keyword):
     return str(keyword).split("|")[0].strip().lower()
 
 
+def load_feedback():
+    """「我会喜欢？」上的 👍 / 👎：投票存在 Supabase（Postgres）的 feedback 表里，网页直接写入。
+    有 SUPABASE_SERVICE_KEY 时从数据库读出全部投票，顺便存一份到 state/feedback.json；
+    读不到（本地运行、没配置、数据库暂时连不上）就用上次存的那份。返回每个链接最新的一票。"""
+    settings, _ = load_config()
+    base, key = (settings.get("supabase_url") or "").rstrip("/"), os.environ.get("SUPABASE_SERVICE_KEY")
+    rows = (load_json(FEEDBACK_FILE) or {}).get("rows", [])
+    if base and key:
+        headers = {"apikey": key, "Accept": "application/json"}
+        if key.startswith("eyJ"):  # 旧版 JWT 格式的 key 还要放进 Authorization；新版 sb_secret_ 只放 apikey
+            headers["Authorization"] = f"Bearer {key}"
+        url = f"{base}/rest/v1/feedback?select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=20) as resp:
+                rows = json.loads(resp.read().decode("utf-8"))
+            save_json(FEEDBACK_FILE, {"rows": rows})
+            print(f"投票：从数据库读到 {len(rows)} 条", file=sys.stderr)
+        except Exception as err:
+            print(f"  [投票] 读数据库失败，用上次存的：{err}", file=sys.stderr)
+    latest = {}
+    for r in rows:
+        if r.get("url") and r.get("vote") in (-1, 0, 1):
+            latest[r["url"]] = r
+    return [r for r in latest.values() if r["vote"]]
+
+
+TASTE_LIMIT = (-6, 4)   # 投票学到的口味最多让一条推荐 -6 ~ +4 分（推荐门槛是 PICK_THRESHOLD）
+
+
+def learn_taste(votes):
+    """从投票学口味：赞过的推荐命中的喜好标签、具体关键词各 +1，踩过的各 -1，累加。
+    「同类新发现」的标签（如 动画风新作手游）也一样。返回 {标签或关键词: 分}。"""
+    taste = {}
+    for r in votes:
+        for k in set(r.get("hits") or []) | set(r.get("words") or []):
+            taste[k] = taste.get(k, 0) + r["vote"]
+    return {k: v for k, v in taste.items() if v}
+
+
+def taste_bonus(taste, keys):
+    """一条候选按学到的口味加减几分，并列出是哪些标签 / 关键词起的作用（网页上写明理由）。"""
+    used = sorted(((k, taste[k]) for k in dict.fromkeys(keys) if k in taste), key=lambda kv: -abs(kv[1]))
+    total = max(TASTE_LIMIT[0], min(TASTE_LIMIT[1], sum(v for _, v in used)))
+    return total, [[k, v] for k, v in used]
+
+
 def recommend(force_discover=False):
     """「我会喜欢？」：按愿望清单里每件东西的 likes（喜好标签），从最近收集到的所有消息里打分挑推荐。
     不让 AI 联网，只用已经收集到的消息；结果写进 state/recommend.json，网页读它。"""
     wishes = [w for w in load_wishlist() if w.get("likes")]
+    common = {_like_key(k) for w in wishes for label, kws in w["likes"].items()
+              if label in (w.get("basics") or []) for k in kws}
     old = load_json(RECOMMEND_FILE) or {}
     images = old.get("images", {})
     wish_urls = {w.get("url") for w in wishes}
+    votes = load_feedback()
+    taste = learn_taste(votes)
+    disliked = {r["url"] for r in votes if r["vote"] < 0}
+    disliked_grams = [_title_grams(r.get("title") or "", []) for r in votes if r["vote"] < 0]
     pool = []
     for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]:
         for item in load_json(path)["items"]:
@@ -589,43 +642,52 @@ def recommend(force_discover=False):
                     hits = [label for label, kws in w["likes"].items() if any(_like_hit(k, text) for k in kws)]
                     words = {_like_key(k) for kws in w["likes"].values() for k in kws if _like_hit(k, text)}
                     score = 2 * len(hits) + (1 if w.get("watch") == item["name"] else 0)
-                    if not best or score > best[0]:
-                        best = (score, w, hits, words)
+                    # 学到的口味只看具体的喜好，基本属性（马克杯、限定款）不跟着投票涨跌
+                    basics = set(w.get("basics") or [])
+                    bonus, why = taste_bonus(taste, [h for h in hits if h not in basics] + sorted(words - common))
+                    if hits and (not best or score + bonus > best[0]):
+                        best = (score + bonus, w, hits, words, why)
                 if best and best[0] >= PICK_THRESHOLD:
-                    pool.append((best[0], d.get("date") or path.stem, d, item["name"], best[1], best[2], best[3]))
+                    pool.append((best[0], d.get("date") or path.stem, d, item["name"], *best[1:]))
     # 同分时，命中具体喜好（猫、角色造型……）的排在只命中基本属性（限定、马克杯）的前面
     pool.sort(key=lambda x: (x[0], len(set(x[5]) - set(x[4].get("basics") or [])), x[1]), reverse=True)
-    # 推荐要分散：两条靠同一个具体关键词命中（如都是 Snoopy）只留一条；basics 里的基本属性（限定、马克杯）不算
-    common = {_like_key(k) for w in wishes for label, kws in w["likes"].items()
-              if label in (w.get("basics") or []) for k in kws}
-    picks, grams, used = [], [], set()
-    for score, date, d, work, w, hits, words in pool:
+    picks, grams, used = [], list(disliked_grams), set()
+    for score, date, d, work, w, hits, words, why in pool:
         g = _title_grams(d["title"], [])
         key = words - common
+        # 推荐要分散：两条靠同一个具体关键词命中（如都是 Snoopy）只留一条；basics 里的基本属性（限定、马克杯）不算
+        # 踩过的消息（和别家报道的同一件事）不再推荐
         if any(_similar(g, x) for x in grams) or key & used:
             continue
-        used |= key
         url = sources.resolve_url(d["url"])
-        if url in wish_urls or any(p["url"] == url for p in picks):
+        if url in wish_urls or url in disliked or any(p["url"] == url for p in picks):
             continue
+        used |= key
         if url not in images:
             images[url] = find_image(d.get("image"), [entry_from_dict(d)], url)
         grams.append(g)
         picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
-                      "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish"})
+                      "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish",
+                      "words": sorted(key), "taste": why})
         if len(picks) >= PICK_COUNT:
             break
 
-    # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条
+    # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条。
+    # 投票学到的口味决定先后：常赞的同类排前面，净踩两次以上的同类先不推荐
     found = sorted(discover(force_discover), key=lambda x: x.get("date") or "", reverse=True)
+    found = [x for x in found if not any(_similar(_title_grams(x["title"], []), g) for g in disliked_grams)]
+    names = list(dict.fromkeys(x["item"] for x in found))
+    label_of = {x["item"]: x["label"] for x in found}
+    names = [n for n in names if taste.get(label_of[n], 0) > -2]
+    names.sort(key=lambda n: -taste.get(label_of[n], 0))  # sort 是稳定的：同分时保持按时间
     follow = []
-    for name in dict.fromkeys(x["item"] for x in found):
+    for name in names:
         if len(follow) >= DISCOVER_PICKS:
             break
         chosen = None
         for x in [x for x in found if x["item"] == name][:4]:
             url = sources.resolve_url(x["url"])
-            if any(p["url"] == url for p in picks + follow):
+            if url in disliked or any(p["url"] == url for p in picks + follow):
                 continue
             if url not in images:
                 images[url] = find_image(x.get("image"), [entry_from_dict(x)], url)
@@ -636,11 +698,13 @@ def recommend(force_discover=False):
         if chosen:
             x, img, url = chosen
             follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],
-                           "work": name, "image": img, "because": name, "hits": [x["label"]], "kind": "follow"})
+                           "work": name, "image": img, "because": name, "hits": [x["label"]], "kind": "follow",
+                           "words": [], "taste": taste_bonus(taste, [x["label"]])[1]})
     picks += follow
     keep = {p["url"] for p in picks}
     save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep}})
-    print(f"我会喜欢？：{len(picks) - len(follow)} 条按愿望清单 + {len(follow)} 条同类新消息", file=sys.stderr)
+    print(f"我会喜欢？：{len(picks) - len(follow)} 条按愿望清单 + {len(follow)} 条同类新消息"
+          f"（学自 {len(votes)} 次投票）", file=sys.stderr)
 
 
 def write_page():
@@ -653,7 +717,8 @@ def write_page():
     tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
-                          load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []))
+                          load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
+                          {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")})
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     wishes = load_wishlist()
     if wishes:
