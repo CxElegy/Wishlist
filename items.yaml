@@ -562,12 +562,12 @@ items:
       split: true
       font: sans
 
-  # Galaxy S27：一个系列情报版面 + 两款想买的型号各一个追踪版面。
+  # Galaxy S27：一个系列情报版面 + 两款想买的型号各一个追踪版面，主页上合在「三星手机」板块里。
   # 三项按这个顺序收集，同一篇只进一个版面：标题提到 Ultra / Pro 的不进系列情报；标题提到 Pro 的不进 Ultra（Pro 与 Ultra 的对比放 Pro）
   - name: Galaxy S27 系列情报
     subtitle: 갤럭시 S27 · 发布会 · 阵容 · 价格
     type: category
-    section: 好物
+    section: 三星手机
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 安卓旗舰新机, lang: zh-CN, query: "安卓 旗舰 新机 发布 2027", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市"]}
       - {label: 安卓旗舰新机, lang: en-US, query: "flagship Android phone launch 2027", need: ["flagship|旗舰|旗艦", "launch|announce|release|unveil"]}
@@ -612,7 +612,7 @@ items:
   - name: Galaxy S27 Ultra
     subtitle: 갤럭시 S27 울트라 · 想买 · 指定商品追踪
     type: product
-    section: 好物
+    section: 三星手机
     keywords: [
       "Galaxy S27 Ultra", "S27 Ultra", "三星 S27 Ultra", "갤럭시 S27 울트라",
       "Galaxy S27 Ultra 発売", "Galaxy S27 Ultra 価格", "Galaxy S27 Ultra review"
@@ -656,7 +656,7 @@ items:
   - name: Galaxy S27 Pro
     subtitle: 갤럭시 S27 프로 · 想买 · 指定商品追踪
     type: product
-    section: 好物
+    section: 三星手机
     keywords: [
       "Galaxy S27 Pro", "S27 Pro", "三星 S27 Pro", "갤럭시 S27 프로",
       "Galaxy S27 Pro 発売", "Galaxy S27 Pro vs Ultra", "Galaxy S27 Pro review"
