@@ -18,12 +18,14 @@ publish  出刊：读 inbox，把条目编排成报道，配图、配色，输�
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
 import pathlib
 import re
 import sys
 import urllib.parse
+import urllib.error
 import urllib.request
 import zoneinfo
 
@@ -40,6 +42,7 @@ WISHLIST_FILE = ROOT / "wishlist.yaml"
 RECOMMEND_FILE = ROOT / "state" / "recommend.json"
 DISCOVER_FILE = ROOT / "state" / "discover.json"
 FEEDBACK_FILE = ROOT / "state" / "feedback.json"
+NEWS_SYNC_FILE = ROOT / "state" / "db_news.json"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
@@ -618,25 +621,87 @@ def _like_key(keyword):
     return str(keyword).split("|")[0].strip().lower()
 
 
+def supabase(path, body=None, prefer=None):
+    """用 secret key（SUPABASE_SERVICE_KEY）调 Supabase 的数据接口。没配置时返回 None。"""
+    settings, _ = load_config()
+    base, key = (settings.get("supabase_url") or "").rstrip("/"), os.environ.get("SUPABASE_SERVICE_KEY")
+    if not (base and key):
+        return None
+    headers = {"apikey": key, "Accept": "application/json"}
+    if key.startswith("eyJ"):  # 旧版 JWT 格式的 key 还要放进 Authorization；新版 sb_secret_ 只放 apikey
+        headers["Authorization"] = f"Bearer {key}"
+    data = None
+    if body is not None:
+        data = json.dumps(body, ensure_ascii=False).encode("utf-8")
+        headers["Content-Type"] = "application/json"
+    if prefer:
+        headers["Prefer"] = prefer
+    req = urllib.request.Request(f"{base}/rest/v1/{path}", data=data, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            text = resp.read().decode("utf-8")
+    except urllib.error.HTTPError as err:
+        detail = err.read().decode("utf-8", "replace")[:300]
+        raise RuntimeError(f"HTTP {err.code}：{detail}") from None
+    return json.loads(text) if text.strip() else []
+
+
+def news_rows(path):
+    """一份 inbox 里的全部条目，转成数据库 news 表的行。"""
+    data = load_json(path)
+    rows = {}
+    for item in data.get("items", []):
+        for d in item.get("entries", []):
+            rows[(item["name"], d["url"])] = {
+                "item": item["name"], "url": d["url"], "title": d["title"], "source": d.get("source"),
+                "summary": d.get("summary") or None, "image": d.get("image") or None,
+                "published_at": d.get("date"), "collected_on": data.get("date") or path.stem,
+                "urgent": bool(d.get("urgent")), "backfill": bool(item.get("backfill"))}
+    return rows
+
+
+def sync_news():
+    """把收集到的消息写进数据库（Supabase 的 news 表，建表语句在 db/news.sql）。
+    只同步内容变过的 inbox 文件，记在 state/db_news.json；第一次运行会把已有的全部补进去。
+    数据库连不上不影响出刊，下次运行再补。"""
+    synced = (load_json(NEWS_SYNC_FILE) or {}).get("files", {})
+    todo, rows = {}, {}
+    for path in sorted(INBOX_DIR.glob("????-??-??.json")):
+        file_rows = news_rows(path)
+        digest_ = hashlib.sha1(json.dumps(sorted(file_rows.items(), key=lambda kv: kv[0]),
+                                          ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+        if synced.get(path.stem) != digest_:
+            todo[path.stem] = digest_
+            rows.update(file_rows)  # 同一条在几期里都有时，以最新一期为准（一次写入里不能有重复的行）
+    if not todo:
+        return
+    batch = list(rows.values())
+    try:
+        for i in range(0, len(batch), 500):
+            if supabase("news?on_conflict=item,url", batch[i:i + 500],
+                        "resolution=merge-duplicates,return=minimal") is None:
+                return  # 没配置数据库
+    except Exception as err:
+        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/news.sql）" if "PGRST205" in str(err) else ""
+        print(f"  [数据库] 写入消息失败，下次再试{hint}：{err}", file=sys.stderr)
+        return
+    save_json(NEWS_SYNC_FILE, {"files": {**synced, **todo}})
+    print(f"数据库：写入 {len(batch)} 条消息（{'、'.join(sorted(todo))}）", file=sys.stderr)
+
+
 def load_feedback():
     """「我会喜欢？」上的 👍 / 👎：投票存在 Supabase（Postgres）的 feedback 表里，网页直接写入。
     有 SUPABASE_SERVICE_KEY 时从数据库读出全部投票，顺便存一份到 state/feedback.json；
     读不到（本地运行、没配置、数据库暂时连不上）就用上次存的那份。返回每个链接最新的一票。"""
-    settings, _ = load_config()
-    base, key = (settings.get("supabase_url") or "").rstrip("/"), os.environ.get("SUPABASE_SERVICE_KEY")
     rows = (load_json(FEEDBACK_FILE) or {}).get("rows", [])
-    if base and key:
-        headers = {"apikey": key, "Accept": "application/json"}
-        if key.startswith("eyJ"):  # 旧版 JWT 格式的 key 还要放进 Authorization；新版 sb_secret_ 只放 apikey
-            headers["Authorization"] = f"Bearer {key}"
-        url = f"{base}/rest/v1/feedback?select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"
-        try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=20) as resp:
-                rows = json.loads(resp.read().decode("utf-8"))
+    try:
+        got = supabase("feedback?select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc")
+        if got is not None:
+            rows = got
             save_json(FEEDBACK_FILE, {"rows": rows})
             print(f"投票：从数据库读到 {len(rows)} 条", file=sys.stderr)
-        except Exception as err:
-            print(f"  [投票] 读数据库失败，用上次存的：{err}", file=sys.stderr)
+    except Exception as err:
+        print(f"  [投票] 读数据库失败，用上次存的：{err}", file=sys.stderr)
     latest = {}
     for r in rows:
         if r.get("url") and r.get("vote") in (-1, 0, 1):
@@ -1201,7 +1266,7 @@ def repair_images():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -1220,6 +1285,9 @@ def main():
         write_page()
     elif args.step == "ingest":
         ingest()
+        sync_news()
+    elif args.step == "sync-db":
+        sync_news()
     elif args.step == "publish":
         publish()
     elif args.step == "notify-urgent":
@@ -1243,6 +1311,7 @@ def main():
         notify.weekly(pages_url(load_config()[0]))
     else:
         path = ingest()
+        sync_news()
         if path:
             publish(path)
 
