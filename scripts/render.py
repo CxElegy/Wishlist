@@ -18,7 +18,7 @@ import json
 import re
 import urllib.parse
 
-from images import GENERIC  # 网站 logo / 默认分享图的判断，和找图用同一条规则
+from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
 FONTS = (
     "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700;900"
@@ -71,6 +71,13 @@ a{color:inherit;text-decoration:none}
  color-mix(in srgb,currentColor 8%,transparent)}
 .pic.none{background:none}
 .pic.none .ph{display:flex}
+.pic.icon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+ background:color-mix(in srgb,currentColor 6%,transparent)}
+.pic.icon img.ico{position:static;width:min(64px,30%);height:auto;aspect-ratio:1;object-fit:contain;
+ background:#FFFFFF;border-radius:14px;padding:6px;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.pic.icon .src{max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+ font:600 13px 'JetBrains Mono','Noto Sans SC',monospace;opacity:.75}
+.pic.icon.none{background:none}.pic.icon.none .src{display:none}
 .pic img.bg{object-fit:cover;filter:blur(18px) brightness(.8);transform:scale(1.15)}
 .hero{grid-column:span 12;display:grid;grid-template-columns:7fr 5fr;gap:24px;padding:24px}
 .hero .pic{align-self:center}
@@ -338,6 +345,26 @@ SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest
            "else{p.classList.add('none');if(b)b.remove();me.remove()}")
 
 
+ICON_FAIL_JS = "var p=this.closest('.pic');p.classList.add('none');this.remove()"
+ICON_LOAD_JS = "if(this.naturalWidth<32){" + ICON_FAIL_JS + "}"  # Google 图标服务查不到时给的是 16px 地球图标
+
+
+def _icon(story):
+    """拿不到配图的报道用来源网站的图标：出刊时找好、检查过的；以前的报道没存，就按链接的域名
+    用 Google 的公开网站图标服务（打不开或太小，网页上自动换成作品名封面块）。"""
+    if story.get("source_icon"):
+        return story["source_icon"]
+    host = (urllib.parse.urlparse(story.get("url") or "").hostname or "").lower()
+    if not host or host == "news.google.com":
+        return None
+    return FAVICON_SERVICE.format(host=base_domain(host))
+
+
+def _source_name(story):
+    host = (urllib.parse.urlparse(story.get("url") or "").hostname or "").lower()
+    return story.get("source") or host.removeprefix("www.")
+
+
 def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
     图打不开（防盗链、网站删图等）时按顺序换 _fbs 里的备用图（作品封面）；
@@ -350,8 +377,13 @@ def _pic(story):
     # 主图打不开：换下一张备用图，但同一版面已经有这张图就跳过（免得两张卡片同一张图）；背景模糊图跟着主图换
     tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
            f'<img src="{e(src)}"{fb} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="{e(SWAP_JS)}">') if src else ""
-    none = "" if src else " none"
     label = f'<span class="ph">{e(name)}</span>' if name else ""
+    icon = None if src else _icon(story)
+    if icon:  # 没有配图、也没有作品封面：配图位置显示来源网站的图标和网站名
+        return (f'<div class="pic icon">{label}<img class="ico" src="{e(icon)}" alt="" loading="lazy" '
+                f'referrerpolicy="no-referrer" onload="{e(ICON_LOAD_JS)}" onerror="{e(ICON_FAIL_JS)}">'
+                f'<span class="src">{e(_source_name(story))}</span></div>')
+    none = "" if src else " none"
     return f'<div class="pic{none}">{label}{tag}</div>'
 
 
@@ -513,12 +545,18 @@ def _timeline(stories, today):
     return '<div class="grid">' + _render_rows(_layout(keep), today) + "</div>", rest
 
 
-def _has_pic(x):
+def _has_photo(x):
+    """有真正的图（自己的图，或这一版面唯一一次的作品封面）。"""
     return bool(x.get("image") or x.get("_fbs"))
 
 
+def _has_pic(x):
+    """能做成卡片：有图，或者至少有来源网站的图标。"""
+    return _has_photo(x) or bool(_icon(x))
+
+
 def _brief(stories):
-    """找不到图的消息：只列日期和标题（不做空图卡片，也不拿别的图顶替）。"""
+    """连来源图标都没有的消息：只列日期和标题（不做空图卡片，也不拿别的图顶替）。"""
     if not stories:
         return ""
     rows = "".join(f'<li><span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span>'
@@ -618,7 +656,8 @@ def _section(block, anchor=""):
         ) + "</div>"
     today = block["_today"]
     cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
-    # 有图（自己的图，或这一版面唯一一次的作品封面）的做图片卡片；实在找不到图的不做空卡片，放进「其他消息」文字列表
+    # 有图（自己的图，或这一版面唯一一次的作品封面）的做图片卡片；没图的配图位置显示来源网站图标；
+    # 连来源都看不出（没还原的 Google 新闻跳转）的不做空卡片，放进「其他消息」文字列表
     recent = [x for x in block["stories"] if x["_issue"] >= cutoff and _has_pic(x)]
     older = [x for x in block["stories"] if x["_issue"] < cutoff and _has_pic(x)]
     texts = [x for x in block["stories"] if x["_issue"] >= cutoff and not _has_pic(x)]
@@ -925,7 +964,7 @@ def _front(works, today, updated):
     板块索引 = 每个作品最新的一条；最新消息 = 所有作品按时间排的前 12 条。"""
     pool = [(w, x) for w in works for x in _recent(w, today)]
     newest = sorted(pool, key=lambda p: p[1].get("date") or p[1]["_issue"], reverse=True)
-    pictured = [p for p in newest if _has_pic(p[1])]  # 头条和「其他重要」带大图，只从有图的里挑
+    pictured = [p for p in newest if _has_photo(p[1])]  # 头条和「其他重要」带大图，只从有真正配图的里挑（来源图标不算）
     top_w, top = min(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2)) if pictured else (None, None)
 
     groups = {}

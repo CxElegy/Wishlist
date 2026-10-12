@@ -533,10 +533,15 @@ def attach_media(stories, entries, cover, name="", stats=None, used=None):
             s["image_via"] = next((e.image_via for e in refs if e.image == res.image and e.image_via), res.source)
             if res.source not in ("AI 挑选", "条目自带") and not refs[0].image:
                 refs[0].image, refs[0].image_via = res.image, res.source
+        icon = None
+        if not s["image"]:  # 拿不到配图：记下来源网站和它的图标，网页上配图位置显示来源图标
+            s["source"] = refs[0].source
+            icon = s["source_icon"] = images.source_icon(s["url"])
         fallback = not s["image"] and not out and bool(cover)
         if fallback:
             s["image"], s["image_via"] = cover, "作品封面"
-        print(images.log_line(name, s.get("headline", ""), res) + ("（用作品封面）" if fallback else ""), file=sys.stderr)
+        note = "（用作品封面）" if fallback else "（显示来源图标）" if icon else ""
+        print(images.log_line(name, s.get("headline", ""), res) + note, file=sys.stderr)
         if stats is not None:
             stats.add(res, fallback)
         out.append(s)

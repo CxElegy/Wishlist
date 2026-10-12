@@ -38,6 +38,12 @@ HITS = {}       # 路径 → 被请求的次数
 REFERERS = []   # 收到的 Referer 头（应该一直是空的）
 
 
+def png(side):
+    buf = io.BytesIO()
+    Image.new("RGB", (side, side), (40, 80, 200)).save(buf, "PNG")
+    return buf.getvalue()
+
+
 def html_page(head="", body=""):
     return f"<html><head>{head}</head><body>{body}</body></html>".encode()
 
@@ -62,6 +68,9 @@ ROUTES = {
         '<meta property="og:image" content="/forbidden.jpg">',
         '<article><img src="/icon.png"><img src="/small.jpg"><img data-src="/big.jpg"></article>')),
     "/nothing.html": (200, "text/html", html_page(body="<p>text only</p>")),
+    "/icons.html": (200, "text/html", html_page(
+        '<link rel="icon" href="/fav/tiny-site"><link rel="mask-icon" href="/mask.svg">'
+        '<link rel="apple-touch-icon" href="/fav/site-180">')),
     "/blocked.html": (403, "text/html", b"<title>Attention Required! | Cloudflare</title>"),
     "/copy.html": (200, "text/html", html_page('<meta property="og:image" content="/big2.jpg">')),
     "/yt-article.html": (200, "text/html", html_page('<meta property="og:image" content="/big.jpg">')),
@@ -84,6 +93,8 @@ class Handler(BaseHTTPRequestHandler):
         elif path in ("/slow.jpg", "/slow.html"):
             _real_sleep(1.5)
             status, ctype, body = (200, "image/jpeg", BIG) if path.endswith(".jpg") else ROUTES["/og.html"]
+        elif path.startswith("/fav/"):  # 假的网站图标服务：tiny- 开头的域名只给 16px 地球图标
+            status, ctype, body = 200, "image/png", png(16 if "tiny" in path else 64)
         elif path == "/flaky.jpg":  # 第一次 503，第二次成功
             status, ctype, body = (503, "text/plain", b"busy") if HITS[path] == 1 else (200, "image/jpeg", BIG)
         else:
@@ -543,18 +554,72 @@ class ImagesTest(unittest.TestCase):
         w = render.collect([issue])[0]
         self.assertNotIn("https://a/2.jpg", sum((x["_fbs"] for x in w["stories"]), []))
 
-    def test_render_imageless_story_goes_to_text_list(self):
-        """找不到图的报道不做空图卡片，进「其他消息」文字列表；头版头条只挑有图的。"""
+    def test_render_imageless_story_shows_source_icon(self):
+        """找不到图的报道：配图位置显示来源网站的图标和网站名；连来源都看不出（没还原的 Google 新闻跳转）的
+        才进「其他消息」文字列表；头版头条只挑有真正配图的（来源图标不算）。"""
         import render
         issue = {"date": "2026-10-12", "items": [{"name": "网球", "cover": "https://c/cover.jpg", "section": "运动",
                                                    "theme": dict(digest.theme.DEFAULT), "facts": [], "stories": [
             {"headline": "有图", "url": "https://a/1", "image": "https://c/cover.jpg", "image_via": "作品封面", "date": "2026-10-12", "weight": "lead"},
-            {"headline": "没图的消息", "url": "https://a/2", "image": None, "date": "2026-10-12", "weight": "hero"}]}]}
+            {"headline": "没图的消息", "url": "https://news.nicovideo.jp/watch/nw1", "image": None, "source": "ニコニコニュース",
+             "source_icon": "https://icons.example/nico.png", "date": "2026-10-12", "weight": "hero"},
+            {"headline": "以前的没图消息", "url": "https://www.powder.com/news/x", "image": None, "date": "2026-10-12"},
+            {"headline": "看不出来源", "url": "https://news.google.com/rss/articles/x", "image": None, "date": "2026-10-12"}]}]}
         page = render.render([issue], order=["网球"])
-        self.assertNotIn('class="pic none"', page)
+        self.assertIn('<img class="ico" src="https://icons.example/nico.png"', page)
+        self.assertIn('<span class="src">ニコニコニュース</span>', page)
+        # 以前的报道没存图标：按域名用图标服务，网站名用域名
+        self.assertIn(render.FAVICON_SERVICE.format(host="powder.com").replace("&", "&amp;"), page)
+        self.assertIn('<span class="src">powder.com</span>', page)
         self.assertIn('<div class="brief"><h4>其他消息</h4>', page)
-        self.assertIn('没图的消息</a></li>', page)
+        self.assertIn('看不出来源</a></li>', page)
+        self.assertNotIn('没图的消息</a></li>', page)
         self.assertIn('class="top" href="https://a/1"', page)  # 没图的 hero 不上头条大图
+
+    def test_render_icon_only_when_no_image_or_cover(self):
+        import render
+        self.assertNotIn("ico", render._pic({"image": "https://a/1.jpg", "url": "https://x.example/a"}))
+        self.assertNotIn("ico", render._pic({"image": None, "_fbs": ["https://c/cover.jpg"], "url": "https://x.example/a"}))
+        html = render._pic({"image": None, "_fbs": [], "url": "https://news.yahoo.co.jp/a", "_work": "网球"})
+        self.assertIn('class="pic icon"', html)
+        self.assertIn("yahoo.co.jp", html)
+        self.assertIn('<span class="ph">网球</span>', html)  # 图标打不开时换成作品名封面块
+        self.assertIn("naturalWidth&lt;32", html)  # 图标服务给的 16px 地球图标也当作打不开
+        self.assertTrue(render._has_pic({"image": None, "_fbs": [], "url": "https://x.example/a"}))
+        self.assertFalse(render._has_photo({"image": None, "_fbs": [], "url": "https://x.example/a"}))
+        self.assertFalse(render._has_pic({"image": None, "_fbs": [], "url": "https://news.google.com/rss/articles/x"}))
+
+    # ---------- 来源图标 ----------
+
+    def test_page_icons_largest_first_without_mask(self):
+        p = images.page(self.u("/icons.html"))
+        self.assertEqual(p.icons, [self.u("/fav/site-180"), self.u("/fav/tiny-site")])
+
+    def test_source_icon_prefers_site_icon(self):
+        self.assertEqual(images.source_icon(self.u("/icons.html")), self.u("/fav/site-180"))
+
+    def test_source_icon_falls_back_to_icon_service(self):
+        with mock.patch.object(images, "FAVICON_SERVICE", self.base + "/fav/{host}"):
+            self.assertEqual(images.source_icon(self.u("/blocked.html")), self.base + "/fav/127.0.0.1")
+        images.clear_cache()
+        with mock.patch.object(images, "FAVICON_SERVICE", self.base + "/fav/tiny-{host}"):
+            self.assertIsNone(images.source_icon(self.u("/blocked.html")))  # 只有 16px 的不要
+        self.assertIsNone(images.source_icon("https://news.google.com/rss/articles/x"))
+
+    def test_base_domain(self):
+        self.assertEqual(images.base_domain("news.nicovideo.jp"), "nicovideo.jp")
+        self.assertEqual(images.base_domain("news.yahoo.co.jp"), "yahoo.co.jp")
+        self.assertEqual(images.base_domain("m.dcinside.com"), "dcinside.com")
+        self.assertEqual(images.base_domain("www.sina.com.cn"), "sina.com.cn")
+
+    def test_attach_media_records_source_and_icon(self):
+        entries = [entry(url=self.u("/nothing.html"), source="Example News")]
+        with mock.patch.object(images, "FAVICON_SERVICE", self.base + "/fav/{host}"), \
+                mock.patch("sys.stderr", io.StringIO()) as err:
+            out = digest.attach_media([{"headline": "第二条", "refs": [1]}], entries, None, "测试项")
+        self.assertIsNone(out[0]["image"])
+        self.assertEqual((out[0]["source"], out[0]["source_icon"]), ("Example News", self.base + "/fav/127.0.0.1"))
+        self.assertIn("（显示来源图标）", err.getvalue())
 
     def test_generic_and_duplicate_images_skipped(self):
         refs = [entry(url=self.u("/og.html"), image="https://cdn.example.com/wp-content/uploads/2026/07/Logo.jpg")]
@@ -651,7 +716,9 @@ class PublishTest(unittest.TestCase):
             mock.patch.object(digest.theme, "resolve", lambda *a: dict(digest.theme.DEFAULT)), mock.patch.object(sources, "resolve_url", lambda u: u),
             mock.patch.object(digest, "make_client", lambda: None), mock.patch.object(images, "gone", lambda u: False),
             # publish 最后会重算「我会喜欢？」：它写真实的 state/recommend.json，还会联网搜同类新品，测试里跳过
-            mock.patch.object(digest, "recommend", lambda *a, **k: None)]
+            mock.patch.object(digest, "recommend", lambda *a, **k: None),
+            mock.patch.object(images, "source_icon", lambda u: "https://icons.example/a.png"),
+            mock.patch.object(digest, "find_cover", lambda *a, **k: None)]  # 没新消息的项找封面会读作品官网
         for p in patches:
             p.start()
         try:
@@ -668,6 +735,7 @@ class PublishTest(unittest.TestCase):
             ("AI 挑了图", "https://ai.example/pick.jpg", "AI 挑选"),
             ("补到了图", "https://copy.example/x.jpg", "转载 copy.example")])
         saved = json.loads((tmp / "inbox" / "2026-10-11.json").read_text())["items"][0]["entries"]
+        self.assertEqual(stories[0]["source_icon"], "https://icons.example/a.png")  # 没找到图：记下来源图标
         self.assertEqual(saved[0]["image"], "")  # 封面不写回
         self.assertEqual((saved[1]["image"], saved[1]["image_via"]), ("https://copy.example/x.jpg", "转载 copy.example"))
         log = err.getvalue()
