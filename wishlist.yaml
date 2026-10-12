@@ -193,3 +193,44 @@ wishlist:
       日本乐队: ["ロックバンド|バンド|乐队|樂團"]
       演唱会: ["ライブ|ツアー|公演|演唱会|演唱會|concert|tour"]
     basics: [演唱会]
+
+  - name: Galaxy S27 Ultra
+    image: galaxy-s27-ultra.jpg
+    specs:
+      价格: 未公布（传全系涨价）
+      屏幕: 约 6.9 英寸（传闻）
+      相机: 200MP 主摄 + 50MP 5x 潜望，横向相机大平台（传闻）
+      其他: 保留 S Pen · 60W 快充（认证）
+    shop: 三星 · 传 2027 年 2 月前后发布
+    url: https://www.notebookcheck.net/This-is-the-Samsung-Galaxy-S27-Ultra-Renders-seem-to-confirm-redesign.1378354.0.html
+    added: 2026-10-12
+    status: 想要
+    watch: Galaxy S27 Ultra
+    note: 还没发布，图是 OnLeaks × Android Headlines 的 CAD 渲染图，规格都是传闻 / 认证信息
+    likes:
+      三星 Galaxy: ["Galaxy|ギャラクシー|갤럭시|三星|Samsung|サムスン|삼성"]
+      旗舰手机: ["旗舰|旗艦|flagship|フラッグシップ|플래그십"]
+      手写笔: ["S Pen|手写笔|手寫筆|スタイラス|stylus"]
+      手机影像: ["长焦|長焦|潜望|望遠|telephoto|periscope|200MP"]
+      手机: ["smartphone|スマホ|スマートフォン|手机|手機|스마트폰"]
+    basics: [手机]
+
+  - name: Galaxy S27 Pro
+    image: galaxy-s27-pro.jpg
+    specs:
+      价格: 未公布（传全系涨价）
+      屏幕: 约 6.6 英寸，比 Ultra 小一圈（传闻）
+      相机: 和 Ultra 同款横向相机大平台，没有 S Pen（传闻）
+      其他: 60W 快充（认证）· 最高 12GB 内存、有 1TB 版本（传闻）
+    shop: 三星 · 传 2027 年 2 月前后发布（新增机型）
+    url: https://helentech.jp/news-galaxy-s27-pro-cad-render-leak-90528/
+    added: 2026-10-12
+    status: 想要
+    watch: Galaxy S27 Pro
+    note: 还没发布，图是 OnLeaks × Android Headlines 的 CAD 渲染图，规格都是传闻 / 认证信息
+    likes:
+      三星 Galaxy: ["Galaxy|ギャラクシー|갤럭시|三星|Samsung|サムスン|삼성"]
+      旗舰手机: ["旗舰|旗艦|flagship|フラッグシップ|플래그십"]
+      小屏旗舰: ["小屏|小尺寸|コンパクト|compact"]
+      手机: ["smartphone|スマホ|スマートフォン|手机|手機|스마트폰"]
+    basics: [手机]

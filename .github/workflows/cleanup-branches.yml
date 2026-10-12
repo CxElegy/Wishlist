@@ -1,0 +1,29 @@
+name: 清理分支
+
+# 手动运行（Actions 页面 → 清理分支 → Run workflow），删掉不用的分支。
+# 只删 branches 里列出的；main 永远不删。
+
+on:
+  workflow_dispatch:
+    inputs:
+      branches:
+        description: "要删的分支，空格分隔"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 删除分支
+        env:
+          BRANCHES: ${{ inputs.branches }}
+        run: |
+          for b in $BRANCHES; do
+            if [ "$b" = "main" ]; then echo "跳过 main"; continue; fi
+            if git push origin --delete "$b"; then echo "已删除 $b"; else echo "删除失败或不存在：$b"; fi
+          done

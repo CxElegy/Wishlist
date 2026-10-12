@@ -14,6 +14,7 @@
 import datetime as dt
 import hashlib
 import html
+import json
 import re
 import urllib.parse
 
@@ -246,8 +247,19 @@ html{scroll-behavior:smooth}
 .pk .why{font-size:12px;color:#B8336A;font-weight:700}
 .pk .tags{display:flex;flex-wrap:wrap;gap:4px}
 .pk .tags i{font-style:normal;font:700 10px 'Noto Sans SC',sans-serif;letter-spacing:.1em;padding:1px 7px;border:1px solid #B8336A;color:#B8336A}
-.pk:hover b{text-decoration:underline;text-underline-offset:3px}
-@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
+.pk>a{display:flex;flex-direction:column;gap:10px;min-width:0;flex:1}
+.pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
+.pk .taste{font-size:11px;opacity:.7}
+.vote{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.vote button{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border:1.5px solid #1A1C22;background:transparent;
+ color:#1A1C22;font:700 12px 'Noto Sans SC',sans-serif;cursor:pointer;border-radius:0;white-space:nowrap}
+.vote button:hover{background:#1A1C22;color:#F4EDE4}
+.vote button[aria-pressed=true]{background:#B8336A;border-color:#B8336A;color:#FFF}
+.vote button:disabled{opacity:.5;cursor:wait}
+.vote small{font-size:11px;opacity:.7}
+.pk.down>a{opacity:.35;filter:grayscale(1)}
+@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}
+ .pk:not(.big) .vote button span{display:none}.pk:not(.big) .vote button{padding:4px 14px;font-size:15px}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
@@ -577,8 +589,9 @@ def _why_verb(x):
     return "在纠结" if x.get("kind") == "hesitate" or x.get("hesitating") else "想要"
 
 
-def _picks(picks, works):
-    """「我会喜欢？」角落：按愿望清单的喜好，从收集到的消息里挑的推荐，每条写明推荐理由。"""
+def _picks(picks, works, feedback=None):
+    """「我会喜欢？」角落：按愿望清单的喜好，从收集到的消息里挑的推荐，每条写明推荐理由。
+    feedback 配好了 Supabase（url、key）时，每条下面有 👍 / 👎，投票直接写进数据库，下次出刊时学习。"""
     if not picks:
         return ""
     covers = {w["name"]: w.get("cover") for w in works}
@@ -592,12 +605,21 @@ def _picks(picks, works):
                  "_work": (x.get("hits") or [x["work"]])[0] if follow else x["work"]}
         tags = "".join(f"<i>{e(h)}</i>" for h in x.get("hits", []))
         date = e(x["date"][5:].replace("-", ".")) if x.get("date") else ""
+        taste = " · ".join(f"{e(k)} {v:+d}" for k, v in (x.get("taste") or [])[:3])
+        taste = f'<span class="taste">按你的投票：{taste}</span>' if taste else ""
+        vote = ""
+        if feedback:  # 投票要写进的数据：网页把它原样发给数据库
+            data = {k: x.get(k) for k in ("url", "kind", "title", "work", "because", "hits", "words")}
+            vote = (f'<div class="vote" data-v="{e(json.dumps(data, ensure_ascii=False))}">'
+                    f'<button type="button" data-vote="1" aria-pressed="false" title="多推荐这类">👍<span> 喜欢</span></button>'
+                    f'<button type="button" data-vote="-1" aria-pressed="false" title="少推荐这类">👎<span> 不感兴趣</span></button>'
+                    f'<small></small></div>')
         return (
-            f'<a class="pk{" big" if big else ""}" href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
+            f'<div class="pk{" big" if big else ""}"><a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
             f'<span class="why">因为你{_why_verb(x)}「{e(x["because"])}」</span>'
-            f'<span class="tags">{tags}</span></span></a>')
+            f'<span class="tags">{tags}</span>{taste}</span></a>{vote}</div>')
 
     wish = [x for x in picks if x.get("kind") not in ("follow", "hesitate")]
     follow = [x for x in picks if x.get("kind") in ("follow", "hesitate")]
@@ -606,8 +628,50 @@ def _picks(picks, works):
         body += (f'<div class="pksub">同类新发现<span>你关注的作品和纠结的东西之外，同类型的新消息</span></div>'
                  f'<div class="pkgrid row" style="--n:{len(follow)}">{cards_of(follow, False)}</div>')
     return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>我会喜欢<em>？</em></h2>'
-            f'<span>根据愿望清单里的喜好和你关注的作品类型挑的 · <a href="wishlist.html">♥ 愿望清单</a></span></div>'
-            f'{body}</section>')
+            f'<span>根据愿望清单里的喜好和你关注的作品类型挑的{"，点 👍 / 👎 教它你的口味" if feedback else ""}'
+            f' · <a href="wishlist.html">♥ 愿望清单</a></span></div>'
+            f'{body}</section>'
+            + (f"<script>{VOTE_JS % json.dumps(feedback)}</script>" if feedback else ""))
+
+
+# 投票：直接写进 Supabase 的 feedback 表（只能新增，见 db/feedback.sql）。
+# 每次点击新增一行，同一条消息以最后一票为准；再点一次已选中的按钮 = 撤销（写一行 vote 0）。
+# 本机记住投过什么，刷新后按钮状态还在；学习在下次出刊时进行（每 2 小时）
+VOTE_JS = """
+(() => {
+  const cfg = %s, KEY = 'wishlist-votes';
+  let mine = {};
+  try { mine = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_) {}
+  const headers = { apikey: cfg.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' };
+  if (cfg.key.startsWith('eyJ')) headers.Authorization = 'Bearer ' + cfg.key;
+  const show = (box, v) => {
+    box.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.vote) === v)));
+    box.closest('.pk').classList.toggle('down', v === -1);
+    box.querySelector('small').textContent = v === 1 ? '会多推荐这类' : v === -1 ? '以后少推荐这类' : '';
+  };
+  document.querySelectorAll('.vote').forEach(box => {
+    const data = JSON.parse(box.dataset.v);
+    show(box, mine[data.url] || 0);
+    box.querySelectorAll('button').forEach(btn => btn.addEventListener('click', async () => {
+      const v = (mine[data.url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
+      box.querySelectorAll('button').forEach(b => b.disabled = true);
+      try {
+        const r = await fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/feedback',
+          { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v }) });
+        if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120));
+        mine[data.url] = v;
+        try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
+        show(box, v);
+      } catch (err) {
+        box.querySelector('small').textContent = '没存上，稍后再试';
+        console.error('投票失败', err);
+      } finally {
+        box.querySelectorAll('button').forEach(b => b.disabled = false);
+      }
+    }));
+  });
+})();
+"""
 
 
 def _wish_link(wishes, cls):
@@ -789,8 +853,8 @@ def _wish_section(wishes, works, finds=()):
 
 
 # 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
-SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "演出": "#D6336C", "好物": "#E07A1F"}
-SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
+SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "演出": "#D6336C", "好物": "#E07A1F", "三星手机": "#1428A0"}
+SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS", "三星手机": "SAMSUNG"}
 
 
 def _sec_color(name):
@@ -1047,7 +1111,7 @@ NAV_JS = """
 """
 
 
-def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=()):
+def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）。"""
     latest = issues[0]
@@ -1057,7 +1121,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
     updated = updated or latest["date"].replace("-", ".")
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
-            + _front(works, latest["date"], updated) + _picks(picks, works)
+            + _front(works, latest["date"], updated) + _picks(picks, works, feedback if feedback and feedback.get("url") and feedback.get("key") else None)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>

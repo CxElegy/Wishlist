@@ -14,6 +14,12 @@
 - 按愿望清单里每件东西的 `likes`（喜好标签），从最近两周收集到的所有消息里挑 5 条；
 - 「同类新发现」：按 `items.yaml` 里每个关注项的 `similar`（同类搜索词），每天搜一次 Google 新闻，去掉已经在关注的作品，每个关注项挑一条（最多 4 条）。
 
+每条推荐下面有 **👍 喜欢 / 👎 不感兴趣**，投票存进 Supabase（Postgres 数据库，设置见下面「投票数据库」），每次出刊时从投票学习口味：
+- 赞过的推荐命中的喜好标签、具体关键词（如「猫」「Snoopy」）各 +1，踩过的各 −1，累加起来给之后的候选加减分（最多 +4 / −6）；
+- 踩过的那条消息、和别家报道的同一件事不再推荐；
+- 「同类新发现」常赞的同类排前面，净踩两次以上的同类先不推荐；
+- 卡片上写明起作用的投票，如「按你的投票：猫 +2」。再点一次已选中的按钮是撤销。
+
 ## 流程
 
 **图解**（开启 GitHub Pages 后可直接打开网页版）：
@@ -69,7 +75,7 @@ items.yaml
    **A. Workload Identity Federation（推荐，不需要存任何 Key）**
    1. 在 [Claude Console](https://platform.claude.com) → Settings → Workload identity → **Connect workload** → 选 **GitHub Actions**
    2. 按向导填写，匹配条件这样填（只允许这个仓库的默认分支）：
-      - Subject prefix：`repo:CxElegy/Wishlist:ref:refs/heads/claude/sharp-gauss-osunmb`
+      - Subject prefix：`repo:CxElegy/Wishlist:ref:refs/heads/main`
       - Audience：`https://api.anthropic.com`
       - Claims：`repository_owner` = `CxElegy`
    3. 向导完成后会给出 federation rule ID（`fdrl_` 开头）和 service account ID（`svac_` 开头）；organization ID 在 Settings → Organization
@@ -97,7 +103,17 @@ items.yaml
    | `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` | Reddit 常拦截云服务器的匿名请求，用官方 API 才稳定。在 [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) 创建一个 *script* 类型的应用即可（免费） |
    | `TMDB_API_KEY` | 关注影视剧时需要，在 themoviedb.org 的账号设置里免费申请 |
 
-4. **运行**：Actions → 关注清单通信 → Run workflow（勾选“顺便发一次周报”可以测试 Discord）。之后会自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
+4. **投票数据库（可选，「我会喜欢？」的 👍 / 👎 用）**：没设置时网页上不显示按钮。
+   1. 在 [supabase.com](https://supabase.com) 注册（免费），New project 新建一个项目（名字随意，数据库密码自己记下）。
+   2. 左侧 **SQL Editor** → 把 [`db/feedback.sql`](db/feedback.sql) 整段粘贴进去 → Run。建好 `feedback` 表：网页只能往里新增投票，读不到也改不了。
+   3. 项目的 **Connect** 按钮（或 Project Settings → Data API）里复制 Project URL；Project Settings → **API Keys** 里复制 publishable key（`sb_publishable_` 开头）和 secret key（`sb_secret_` 开头）。
+   4. 把 Project URL 和 publishable key 填进 `items.yaml` 的 `settings` → `supabase_url` / `supabase_key`（publishable key 本来就是公开给网页用的）。
+   5. secret key 放进 GitHub 仓库 Settings → Secrets and variables → Actions → **Secrets**，名字 `SUPABASE_SERVICE_KEY`。**不要**写进任何文件。
+
+   投票在每次出刊（每 2 小时）时读出来学习，同时存一份到 `state/feedback.json`。
+   注意：网页是公开的，知道网址的人理论上也能投票（只能新增）；真有乱投，在 Supabase 的 Table Editor 里删掉那几行即可。
+
+5. **运行**：Actions → 关注清单通信 → Run workflow（勾选“顺便发一次周报”可以测试 Discord）。之后会自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
 
 ## 添加关注项
 
@@ -120,6 +136,7 @@ python scripts/digest.py publish     # 只出刊（用最新一份 inbox，有 .
 python scripts/digest.py render      # 改了版式后，用已有数据重新生成网页
 python scripts/digest.py notify-urgent   # 把还没通知过的要紧消息发到 Discord
 python scripts/digest.py notify-weekly   # 发过去 7 天的周报
+python -m unittest discover tests       # 运行测试（本地假网站，不联网）
 ```
 
 ## 成本
@@ -136,13 +153,16 @@ python scripts/digest.py notify-weekly   # 发过去 7 天的周报
 |---|---|
 | `items.yaml` | 关注清单和设置 |
 | `scripts/sources.py` | 各数据源的抓取，新增数据源加在这里 |
+| `scripts/images.py` | 配图：找候选图、实际下载检查、按顺序回退，记录没图的原因（Actions 日志里的 `[配图]` 行和「配图汇总」） |
 | `scripts/digest.py` | 主流程：抓取 → 过滤 → 编辑 → 输出 |
 | `scripts/theme.py` | 从封面图提取板块配色 |
 | `scripts/render.py` | 简报网页的版式 |
 | `scripts/notify.py` | Discord 通知（要紧消息 / 周报） |
+| `tests/` | 测试 |
 | `inbox/` | 每期收集到的原始条目；`.edit.json` 是对应的编排 |
 | `reports/` | 每期出刊的数据（JSON） |
 | `docs/` | 简报网页，由 GitHub Pages 发布；`docs/design/` 是流程图和架构图 |
 | `design/` | 流程图、架构图、简报样式的设计稿源文件 |
 | `EDITING.md` | AI 编辑的工作规则 |
+| `db/feedback.sql` | 投票数据库（Supabase）的建表语句 |
 | `state/` | 已报道的链接、上期状态、配色缓存，请勿手动修改 |

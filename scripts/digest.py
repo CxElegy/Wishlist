@@ -28,6 +28,7 @@ import zoneinfo
 
 import yaml
 
+import images
 import render
 import sources
 import theme
@@ -37,6 +38,7 @@ ITEMS_FILE = ROOT / "items.yaml"
 WISHLIST_FILE = ROOT / "wishlist.yaml"
 RECOMMEND_FILE = ROOT / "state" / "recommend.json"
 DISCOVER_FILE = ROOT / "state" / "discover.json"
+FEEDBACK_FILE = ROOT / "state" / "feedback.json"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
@@ -290,7 +292,7 @@ def find_cover(item, status_cover):
         if img:
             return img
     if item.get("site"):
-        return sources.og_image(item["site"])
+        return images.og_image(item["site"])
     return None
 
 
@@ -471,39 +473,31 @@ def fallback_stories(entries, item, limit=7):
 
 
 def find_image(chosen, refs, url):
-    """一条报道的配图：AI 挑的 > 条目自带图 > 原文预览图 > 原文正文里的大图。每张都实际下载试一下，
-    打不开（防盗链、付费墙）就换下一张；都没有返回 None（网页上会用作品封面代替）。"""
-    seen = set()
-
-    def candidates():
-        yield chosen
-        for e in refs:
-            yield e.image
-        for page in [url] + [sources.resolve_url(e.url) for e in refs[1:3]]:
-            yield sources.og_image(page)
-            yield from sources.article_images(page, limit=6)
-
-    for img in candidates():
-        if img and img not in seen:
-            seen.add(img)
-            if sources.image_ok(img):
-                return img
-        if len(seen) >= 10:
-            break
-    return None
+    """只要图片地址的地方（「我会喜欢？」推荐）用：和报道配图同一套候选、检查和回退，没有可用的返回 None。"""
+    return images.pick(chosen, refs, url).image
 
 
-def attach_media(stories, entries, cover):
-    """给每条报道配链接和图：条目自带图 > 原文预览图 > （仅头条）作品封面。
-    Google 新闻的跳转链接先还原成原文地址，链接和配图都用原文的。"""
+def attach_media(stories, entries, cover, name="", stats=None):
+    """给每条报道配链接和图（候选、检查和回退见 images.pick），没图的头条用作品封面。
+    出刊时补到的图写回条目（entry.image / image_via），publish 会存回 inbox，下次直接用。
+    每条报道的配图结果打一行日志，stats 记整期汇总。"""
     for n, s in enumerate(stories):
         refs = [entries[r - 1] for r in s.pop("refs")]
         s["url"] = s.get("url") or sources.resolve_url(refs[0].url)
         if refs[0].published:  # 消息本身的日期，卡片上显示、按它排序
             s["date"] = refs[0].published.date().isoformat()
-        s["image"] = find_image(s.get("image"), refs, s["url"])
-        if not s["image"] and n == 0:
-            s["image"] = cover
+        res = images.pick(s.get("image"), refs, s["url"])
+        s["image"] = res.image
+        if res.image:
+            s["image_via"] = next((e.image_via for e in refs if e.image == res.image and e.image_via), res.source)
+            if res.source not in ("AI 挑选", "条目自带") and not refs[0].image:
+                refs[0].image, refs[0].image_via = res.image, res.source
+        fallback = not s["image"] and n == 0 and bool(cover)
+        if fallback:
+            s["image"], s["image_via"] = cover, "作品封面"
+        print(images.log_line(name, s.get("headline", ""), res) + ("（用作品封面）" if fallback else ""), file=sys.stderr)
+        if stats is not None:
+            stats.add(res, fallback)
     return stories
 
 
@@ -585,13 +579,65 @@ def _like_key(keyword):
     return str(keyword).split("|")[0].strip().lower()
 
 
+def load_feedback():
+    """「我会喜欢？」上的 👍 / 👎：投票存在 Supabase（Postgres）的 feedback 表里，网页直接写入。
+    有 SUPABASE_SERVICE_KEY 时从数据库读出全部投票，顺便存一份到 state/feedback.json；
+    读不到（本地运行、没配置、数据库暂时连不上）就用上次存的那份。返回每个链接最新的一票。"""
+    settings, _ = load_config()
+    base, key = (settings.get("supabase_url") or "").rstrip("/"), os.environ.get("SUPABASE_SERVICE_KEY")
+    rows = (load_json(FEEDBACK_FILE) or {}).get("rows", [])
+    if base and key:
+        headers = {"apikey": key, "Accept": "application/json"}
+        if key.startswith("eyJ"):  # 旧版 JWT 格式的 key 还要放进 Authorization；新版 sb_secret_ 只放 apikey
+            headers["Authorization"] = f"Bearer {key}"
+        url = f"{base}/rest/v1/feedback?select=url,vote,kind,title,work,because,hits,words,created_at&order=id.asc"
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=20) as resp:
+                rows = json.loads(resp.read().decode("utf-8"))
+            save_json(FEEDBACK_FILE, {"rows": rows})
+            print(f"投票：从数据库读到 {len(rows)} 条", file=sys.stderr)
+        except Exception as err:
+            print(f"  [投票] 读数据库失败，用上次存的：{err}", file=sys.stderr)
+    latest = {}
+    for r in rows:
+        if r.get("url") and r.get("vote") in (-1, 0, 1):
+            latest[r["url"]] = r
+    return [r for r in latest.values() if r["vote"]]
+
+
+TASTE_LIMIT = (-6, 4)   # 投票学到的口味最多让一条推荐 -6 ~ +4 分（推荐门槛是 PICK_THRESHOLD）
+
+
+def learn_taste(votes):
+    """从投票学口味：赞过的推荐命中的喜好标签、具体关键词各 +1，踩过的各 -1，累加。
+    「同类新发现」的标签（如 动画风新作手游）也一样。返回 {标签或关键词: 分}。"""
+    taste = {}
+    for r in votes:
+        for k in set(r.get("hits") or []) | set(r.get("words") or []):
+            taste[k] = taste.get(k, 0) + r["vote"]
+    return {k: v for k, v in taste.items() if v}
+
+
+def taste_bonus(taste, keys):
+    """一条候选按学到的口味加减几分，并列出是哪些标签 / 关键词起的作用（网页上写明理由）。"""
+    used = sorted(((k, taste[k]) for k in dict.fromkeys(keys) if k in taste), key=lambda kv: -abs(kv[1]))
+    total = max(TASTE_LIMIT[0], min(TASTE_LIMIT[1], sum(v for _, v in used)))
+    return total, [[k, v] for k, v in used]
+
+
 def recommend(force_discover=False):
     """「我会喜欢？」：按愿望清单里每件东西的 likes（喜好标签），从最近收集到的所有消息里打分挑推荐。
     不让 AI 联网，只用已经收集到的消息；结果写进 state/recommend.json，网页读它。"""
     wishes = [w for w in load_wishlist() if w.get("likes")]
+    common = {_like_key(k) for w in wishes for label, kws in w["likes"].items()
+              if label in (w.get("basics") or []) for k in kws}
     old = load_json(RECOMMEND_FILE) or {}
     images = old.get("images", {})
     wish_urls = {w.get("url") for w in wishes}
+    votes = load_feedback()
+    taste = learn_taste(votes)
+    disliked = {r["url"] for r in votes if r["vote"] < 0}
+    disliked_grams = [_title_grams(r.get("title") or "", []) for r in votes if r["vote"] < 0]
     pool = []
     for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]:
         for item in load_json(path)["items"]:
@@ -602,44 +648,53 @@ def recommend(force_discover=False):
                     hits = [label for label, kws in w["likes"].items() if any(_like_hit(k, text) for k in kws)]
                     words = {_like_key(k) for kws in w["likes"].values() for k in kws if _like_hit(k, text)}
                     score = 2 * len(hits) + (1 if w.get("watch") == item["name"] else 0)
-                    if not best or score > best[0]:
-                        best = (score, w, hits, words)
+                    # 学到的口味只看具体的喜好，基本属性（马克杯、限定款）不跟着投票涨跌
+                    basics = set(w.get("basics") or [])
+                    bonus, why = taste_bonus(taste, [h for h in hits if h not in basics] + sorted(words - common))
+                    if hits and (not best or score + bonus > best[0]):
+                        best = (score + bonus, w, hits, words, why)
                 if best and best[0] >= PICK_THRESHOLD:
-                    pool.append((best[0], d.get("date") or path.stem, d, item["name"], best[1], best[2], best[3]))
+                    pool.append((best[0], d.get("date") or path.stem, d, item["name"], *best[1:]))
     # 同分时，命中具体喜好（猫、角色造型……）的排在只命中基本属性（限定、马克杯）的前面
     pool.sort(key=lambda x: (x[0], len(set(x[5]) - set(x[4].get("basics") or [])), x[1]), reverse=True)
-    # 推荐要分散：两条靠同一个具体关键词命中（如都是 Snoopy）只留一条；basics 里的基本属性（限定、马克杯）不算
-    common = {_like_key(k) for w in wishes for label, kws in w["likes"].items()
-              if label in (w.get("basics") or []) for k in kws}
-    picks, grams, used = [], [], set()
-    for score, date, d, work, w, hits, words in pool:
+    picks, grams, used = [], list(disliked_grams), set()
+    for score, date, d, work, w, hits, words, why in pool:
         g = _title_grams(d["title"], [])
         key = words - common
+        # 推荐要分散：两条靠同一个具体关键词命中（如都是 Snoopy）只留一条；basics 里的基本属性（限定、马克杯）不算
+        # 踩过的消息（和别家报道的同一件事）不再推荐
         if any(_similar(g, x) for x in grams) or key & used:
             continue
-        used |= key
         url = sources.resolve_url(d["url"])
-        if url in wish_urls or any(p["url"] == url for p in picks):
+        if url in wish_urls or url in disliked or any(p["url"] == url for p in picks):
             continue
+        used |= key
         if url not in images:
             images[url] = find_image(d.get("image"), [entry_from_dict(d)], url)
         grams.append(g)
         picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
                       "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish",
+                      "words": sorted(key), "taste": why,
                       **({"hesitating": True} if w.get("status") == HESITATE else {})})
         if len(picks) >= PICK_COUNT:
             break
 
-    # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条
+    # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条。
+    # 投票学到的口味决定先后：常赞的同类排前面，净踩两次以上的同类先不推荐
     found = sorted(discover(force_discover), key=lambda x: x.get("date") or "", reverse=True)
+    found = [x for x in found if not any(_similar(_title_grams(x["title"], []), g) for g in disliked_grams)]
+    names = list(dict.fromkeys(x["item"] for x in found))
+    label_of = {x["item"]: x["label"] for x in found}
+    names = [n for n in names if taste.get(label_of[n], 0) > -2]
+    names.sort(key=lambda n: -taste.get(label_of[n], 0))  # sort 是稳定的：同分时保持按时间
     follow = []
-    for name in dict.fromkeys(x["item"] for x in found):
+    for name in names:
         if len(follow) >= DISCOVER_PICKS:
             break
         chosen = None
         for x in [x for x in found if x["item"] == name][:4]:
             url = sources.resolve_url(x["url"])
-            if any(p["url"] == url for p in picks + follow):
+            if url in disliked or any(p["url"] == url for p in picks + follow):
                 continue
             if url not in images:
                 images[url] = find_image(x.get("image"), [entry_from_dict(x)], url)
@@ -651,11 +706,13 @@ def recommend(force_discover=False):
             x, img, url = chosen
             follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],
                            "work": name, "image": img, "because": name, "hits": [x["label"]],
-                           "kind": "hesitate" if x.get("wish") else "follow"})
+                           "kind": "hesitate" if x.get("wish") else "follow",
+                           "words": [], "taste": taste_bonus(taste, [x["label"]])[1]})
     picks += follow
     keep = {p["url"] for p in picks}
     save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep}})
-    print(f"我会喜欢？：{len(picks) - len(follow)} 条按愿望清单 + {len(follow)} 条同类新消息", file=sys.stderr)
+    print(f"我会喜欢？：{len(picks) - len(follow)} 条按愿望清单 + {len(follow)} 条同类新消息"
+          f"（学自 {len(votes)} 次投票）", file=sys.stderr)
 
 
 def write_page():
@@ -668,7 +725,8 @@ def write_page():
     tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
-                          load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []))
+                          load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
+                          {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")})
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     wishes = load_wishlist()
     if wishes:
@@ -711,13 +769,16 @@ def load_config():
 
 
 def entry_to_dict(n, e):
-    return {"n": n, "date": e.published.isoformat() if e.published else None, "source": e.source,
-            "title": e.title, "summary": e.summary, "url": e.url, "image": e.image}
+    d = {"n": n, "date": e.published.isoformat() if e.published else None, "source": e.source,
+         "title": e.title, "summary": e.summary, "url": e.url, "image": e.image}
+    if e.image_via:
+        d["image_via"] = e.image_via
+    return d
 
 
 def entry_from_dict(d):
     return sources.Entry(title=d["title"], url=d["url"], source=d["source"], summary=d.get("summary", ""),
-                         image=d.get("image", ""),
+                         image=d.get("image", ""), image_via=d.get("image_via", ""),
                          published=dt.datetime.fromisoformat(d["date"]) if d.get("date") else None)
 
 
@@ -870,7 +931,7 @@ def publish(inbox_path=None):
             print("没有可用的 Claude 凭据，改用关键词规则编排", file=sys.stderr)
     model = settings.get("model", "claude-haiku-5-5")
 
-    blocks = []
+    blocks, inbox_changed, stats = [], False, images.Stats()
     for raw in inbox["items"]:
         item = by_name.get(raw["name"], {"name": raw["name"], "type": "product"})
         if raw.get("backfill"):  # 补抓的旧闻不做“重大”
@@ -909,12 +970,19 @@ def publish(inbox_path=None):
             "cover": raw.get("cover"),
             "theme": theme.resolve(item, raw.get("cover"), themes),
             "facts": raw["facts"],
-            "stories": attach_media(stories, entries, raw.get("cover")),
+            "stories": attach_media(stories, entries, raw.get("cover"), raw["name"], stats),
         })
+        # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
+        for d, e in zip(raw["entries"], entries):
+            if e.image and not d.get("image"):
+                d["image"], d["image_via"], inbox_changed = e.image, e.image_via, True
     # 没有新消息的关注项也留一个小栏，排在有消息的后面
     shown = {b["name"] for b in blocks}
     blocks += [quiet_block(i, themes, date) for i in items if i["name"] not in shown]
     save_json(THEMES_FILE, themes)
+    if inbox_changed:
+        save_json(inbox_path, inbox)
+    print(stats.summary(), file=sys.stderr)
 
     if not blocks:
         print("本期没有可出刊的内容", file=sys.stderr)
@@ -973,11 +1041,14 @@ def pick_images(date=None):
             for e in refs[:3]:
                 if e.image and e.image not in urls:
                     urls.append(e.image)
-                for u in sources.article_images(sources.resolve_url(e.url)):
+                p = images.page(sources.resolve_url(e.url))
+                for u in p.og + p.jsonld + p.body:
                     if u not in urls:
                         urls.append(u)
             thumbs = []
             for u in urls:
+                if not images.check(u)[0]:  # 打不开、太大、太小、不是图片的先排除
+                    continue
                 try:
                     req = urllib.request.Request(u, headers={"User-Agent": sources.USER_AGENT})
                     im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=15).read())).convert("RGB")

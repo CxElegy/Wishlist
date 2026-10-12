@@ -5,7 +5,7 @@ description: 把用户喜欢的东西加进愿望清单（wishlist.yaml），网
 
 # 愿望清单
 
-数据在仓库根目录的 `wishlist.yaml`，图片放在 `docs/wishlist/`。推送到 `claude/sharp-gauss-osunmb` 后，
+数据在仓库根目录的 `wishlist.yaml`，图片放在 `docs/wishlist/`。推送到 `main` 后，
 工作流会自动重新生成网页（子页面 `docs/wishlist.html`，主页报头右上角和左侧目录底部有入口）并在 Discord 发一条带大图的通知。
 
 ## 加一件

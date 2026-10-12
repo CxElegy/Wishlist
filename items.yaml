@@ -54,6 +54,10 @@ settings:
                                 # false = 不用 AI，按 priority_keywords 排序、用原标题（完全免费）
   model: claude-haiku-5-5       # 归纳用的模型
   discord_mention: "263923518780080128"   # 要紧通知时 @ 这个 Discord 用户（填用户 ID，不是密码）
+  # 「我会喜欢？」的 👍 / 👎：投票存进 Supabase（Postgres）。按 README「投票数据库」一节设置，两项都填了网页上才出现按钮。
+  # 这里只放公开的 publishable key（网页本来就要用它，只能新增投票）；读投票用的 secret key 放仓库 Secret SUPABASE_SERVICE_KEY
+  supabase_url: "https://bzokpnbcjscbcehdxtjq.supabase.co"           # 形如 https://xxxx.supabase.co
+  supabase_key: "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC"           # publishable key（sb_publishable_ 开头）或旧版 anon key
 
 items:
   - name: Astrae Oratio
@@ -239,14 +243,20 @@ items:
       "日本 滑雪 2026", "スキー場 オープン 2026-27", "スキー場 リフト券 2026-27", "Japan ski season 2026-27",
       "26-27 スノーボード 新作", "26-27 snowboard", "2027 snowboard new"
     ]
+    # 只收和雪场、雪板装备直接相关的：单独的「スキー」「ski」会混进选手、比赛、海外雪场
     match: [
-      滑雪, 雪场, 雪板, 单板, 固定器, 雪靴, スキー, スノーボード, スノボ, ゲレンデ, リフト, ゴンドラ, ビンディング,
-      ski, snowboard, binding, Niseko, ニセコ, Hakuba, 白馬, 二世古, 白马
+      スキー場, ゲレンデ, スノーリゾート, リフト券, シーズン券, 早割, スノーボード, スノボ, ビンディング,
+      滑雪场, 雪场, 雪板, 单板, 固定器, 雪靴, 二世古, 白马,
+      Niseko, ニセコ, Hakuba, 白馬, Japan ski, ski Japan, Japow, マウンテンリゾート,
+      26/27, 2027 snowboard, snowboard review, snowboard binding, Burton, CAPiTA, Ogasaka, オガサカ
     ]
-    exclude: [ジャンプ, 女子ジャンプ, World Cup, W杯, 求人, 中古]
+    exclude: [
+      ジャンプ, W杯, World Cup, 五輪, Olympic, 選手, 選抜, Team, X Games, World Tour,
+      競馬, JET SKI, 知事選, 求人, 中古, 画像・写真
+    ]
     news_langs: [zh-CN, ja-JP, en-US]
     max_entries: 40
-    subreddits: [JapanSnow, snowboarding]
+    subreddits: [JapanSnow]   # r/snowboarding 太杂（全球闲聊），不收
     priority: >-
       日本雪场的开放日期、新缆车 / 新吊椅、缆车票价和早鸟票、今冬雪况；
       26-27 新款雪板、固定器、雪靴（Burton、CAPiTA、UNION、GRAY、Yonex、Ogasaka 等）的发布、日本发售和到货
@@ -330,7 +340,7 @@ items:
       alt_fg: "#FFFFFF"
       alt_accent: "#151515"
 
-  - name: ILLIT 演唱会
+  - name: ILLIT
     subtitle: アイリット · 日本公演特别关注
     type: event
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -424,38 +434,44 @@ items:
       split: true
       font: serif
 
-  - name: 日本网球赛事
-    subtitle: 大阪・関西 週末観戦
+  - name: 日本顶级网球赛事
+    subtitle: ATP・WTA ツアー 日本開催
     type: category
+    section: 运动
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 关西体育观战, lang: ja-JP, query: "大阪 スポーツ 観戦 チケット 発売", need: ["大阪|関西|京都|神戸", "観戦|チケット", "スポーツ|試合|大会|リーグ|テニス|サッカー|野球|バスケ|バレー|ラグビー|マラソン"]}
-    section: 运动
+    # 只看日本举办的 ATP / WTA 巡回赛（大阪 WTA250、东京 WTA500 东丽、东京 ATP500），不看业余 / 学生 / 低级别比赛
     keywords: [
-      "テニス 大阪 大会", "木下グループジャパンオープン", "ジャパンオープン テニス",
-      "靱 テニス", "テニス 観戦 関西", "テニス 兵庫 大会", "Japan Open tennis Osaka"
+      "木下グループジャパンオープン", "ジャパンオープンテニス", "ジャパンオープン 大阪 WTA",
+      "東レ パン パシフィック オープンテニス", "東レPPO",
+      "Japan Open tennis", "Toray Pan Pacific Open"
     ]
-    match: [テニス, 网球, 網球, tennis]
-    exclude: [ソフトテニス, テニスの王子様, テニプリ, 求人, 中古, 結果速報・トーナメント表]   # 最后一个是业余比赛成绩页，量大没用
+    match: [
+      木下グループジャパンオープン, ジャパンオープンテニス, 木下ジャパンオープン, ジャパンOP,
+      東レパンパシフィック, 東レPPO, 東レ・パンパシフィック,
+      JapanOpenTennis, KinoshitaGroupJapanOpen, PanPacificOpen, TorayPPO,
+      日本网球公开赛, 东丽泛太平洋, 東麗泛太平洋
+    ]
+    exclude: [テニスの王子様, テニプリ, 求人, バドミントン, ゴルフ]
     news_langs: [ja-JP, zh-CN]
-    priority: 大阪及附近（关西）周末能和同学去现场看的比赛：哪天打哪一轮、门票什么时候卖 / 多少钱、日本选手是否出场
+    priority: 大阪那站（WTA250 木下グループジャパンオープン）周末能不能和同学去现场看：哪天打哪一轮、门票、谁出场；其次是东京的东丽 PPO（WTA500）
     priority_keywords: [
-      大阪, 靱, 靭, うつぼ, 関西, 神戸, 兵庫, 京都,
-      木下グループ, ジャパンオープン, Japan Open,
-      チケット, 観戦, 入場無料, 土曜, 日曜, 週末, 決勝, 準決勝,
-      出場, エントリー, ドロー, 組み合わせ, 日程
+      大阪, 靱, 靭, うつぼ, 木下グループ,
+      チケット, 観戦, 土曜, 日曜, 週末, 決勝, 準決勝,
+      出場, エントリー, ドロー, 組み合わせ, 日程, 大坂なおみ
     ]
     urgent_patterns:
-      # 大阪 / 关西的比赛开卖门票
-      - '(大阪|靱|靭|うつぼ|関西|神戸|兵庫|京都|木下グループ|ジャパンオープン|Japan Open).{0,25}(チケット|観戦券|入場券|ticket).{0,12}(発売|販売|受付|開始|on sale)'
-      # 大阪的比赛公布签表 / 出场名单
+      # 大阪站开卖门票
+      - '(大阪|靱|靭|うつぼ|木下グループ|ジャパンオープン).{0,25}(チケット|観戦券|入場券|ticket).{0,12}(発売|販売|受付|開始|on sale)'
+      # 大阪站公布签表 / 出场名单
       - '(大阪|靱|靭|木下グループ|ジャパンオープン).{0,25}(エントリー|出場選手|ドロー|組み合わせ|draw|entry list)'
     notes: >-
-      读者在大阪附近，想周末和同学去现场看网球。只关心关西（大阪・兵库・京都）能现场看的比赛，
-      其它地区的只在有日本选手大新闻时简单带过。2026 年 WTA250 木下グループジャパンオープン在大阪
-      モリタテニスセンター靱（本町站步行约 7 分钟）举行：10/17（六）资格赛首轮、10/18（日）资格赛次轮、
-      10/19–23 正赛、10/24（六）单打半决赛 + 双打决赛、10/25（日）单打决赛。
-      同一场馆 11/7–15 有关西学生网球锦标赛正赛；春季的 BLUESIX OPEN（男子 ITF）在靱一般场地免费观战。
-    status: 大阪 WTA 木下グループジャパンオープン 10/17–25 · 周末：10/17–18 资格赛、10/24 半决赛、10/25 决赛
+      读者在大阪附近，想周末和同学去现场看网球，只关心日本举办的顶级（ATP / WTA 巡回赛）赛事。
+      2026 年：WTA250 木下グループジャパンオープン在大阪モリタテニスセンター靱（本町站步行约 7 分钟），
+      10/17（六）资格赛首轮、10/18（日）资格赛次轮、10/19–23 正赛、10/24（六）单打半决赛 + 双打决赛、10/25（日）单打决赛，
+      10/9 已公布出场名单；WTA500 东丽 PPO 在东京有明コロシアム，10/24–11/1（10/24–25 资格赛，10/26 正赛开幕），大坂なおみ、ルバキナ、ベンチッチ已表明出场；
+      ATP500 木下グループジャパンオープン（男子，东京有明）已于 10/6 结束，阿尔卡拉斯卫冕。
+    status: 大阪 WTA250 10/17–25（周末：10/17–18 资格赛、10/24 半决赛、10/25 决赛）· 东京东丽 PPO 10/24–11/1
     site: https://www.japanopentennis.com/wta/
     theme:   # 硬地球场蓝 + 网球黄绿
       bg: "#1F4E79"
@@ -489,3 +505,254 @@ items:
   # - name: Sony WH-1000XM6
   #   type: product
   #   keywords: ["WH-1000XM6"]
+
+  - name: 猫用品
+    subtitle: 猫グッズ · 家里两只猫
+    type: category
+    section: 好物
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 猫咪新品, lang: ja-JP, query: "猫 グッズ 新発売", need: ["猫|ねこ|ネコ", "新発売|発売|新作|登場"]}
+      - {label: 猫咪新品, lang: zh-CN, query: "猫咪 新品 发布", need: ["猫", "新品|发布|上市|首发"]}
+    keywords: [
+      "猫用品 新品", "猫咪 新品 上市", "智能猫砂盆 新品", "猫粮 召回",
+      "貓咪用品 新品", "貓砂盆 新品",
+      "猫用品 新発売", "猫グッズ 新作", "自動トイレ 猫 新製品", "キャットフード 新発売", "キャットフード 回収",
+      "new cat products", "cat food recall", "automatic litter box new"
+    ]
+    # 必须是猫「用」的东西：标题或摘要里要有猫粮 / 猫砂 / 用品这类词，光有「猫」的周边、联名、趣闻不收
+    match: [
+      猫粮, 貓糧, 猫砂, 貓砂, 猫罐, 貓罐, 猫条, 猫用, 貓用, 猫咪用品, 貓咪用品, 养猫, 養貓, 猫爬架, 貓跳台, 猫抓板, 貓抓板,
+      喂食器, 餵食器, 饮水机, 飲水機, 宠物用品, 寵物用品,
+      キャットフード, 猫砂, 猫用, 猫トイレ, 自動トイレ, 給水器, 給餌器, 爪とぎ, キャットタワー, ちゅ～る, ペット用品,
+      cat food, cat litter, litter box, cat tree, cat toy, cat feeder, cat fountain, pet food recall
+    ]
+    exclude: [
+      スタバ, スターバックス, 星巴克, Starbucks, フラペチーノ, 星冰樂, コラボ, 联名, 聯名, ハリー・ポッター,
+      Machine Cat, Transformers, ドッグ ウォーカー, 猫ミーム, 招き猫, 熊猫, 猫眼, 求人, 中古, メルカリ, 株価, stock price, 市場規模, 市场规模, 市場：規模, market size
+    ]
+    news_langs: [ja-JP, zh-CN, zh-TW, en-US]
+    max_entries: 30
+    max_stories: 5
+    priority: >-
+      养两只猫用得上的东西：猫粮 / 零食的召回和安全问题（第一优先）；
+      新出的实用用品——自动猫砂盆、饮水机、自动喂食器（多猫识别）、猫砂、猫抓板、猫爬架、玩具、航空箱；
+      日本能买到的新品、发售日和价格，大促（双十一、黑五、Amazon 大促）里的好价
+    priority_keywords: [
+      回収, リコール, 召回, 回收, recall, 注意喚起, 安全,
+      新発売, 新製品, 新作, 発売, 登場, 予約,
+      新品, 上市, 发布, 首发, 新款,
+      new, launch, release,
+      自動トイレ, 給水器, 給餌器, 猫砂, 爪とぎ, キャットタワー, おもちゃ,
+      猫砂盆, 饮水机, 喂食器, 猫抓板, 猫爬架, 玩具,
+      多頭飼い, 多猫, multi-cat
+    ]
+    urgent_patterns:
+      # 猫粮 / 零食 / 用品召回
+      - '(猫|貓|ねこ|ネコ|キャット|cat).{0,30}(回収|リコール|召回|回收|recall)'
+      - '(回収|リコール|召回|回收|recall).{0,30}(猫|貓|ねこ|ネコ|キャット|cat)'
+    notes: >-
+      读者家里养了两只猫，想知道有什么新的、好用的猫用品，以及和猫粮安全有关的消息。
+      召回 / 安全问题最优先，写清是哪个牌子、哪个批次、哪个国家；
+      新品只挑实用、口碑好或设计好看的，多猫家庭适用的（多猫识别喂食器、大号猫砂盆等）优先；日本能买到的放前面。
+      不报：猫咪趣闻、萌宠视频、领养 / 走失、猫咖、单纯的猫主题周边（文具、衣服），以及软文和带货清单。
+      同一款产品的发售消息和之后的测评合成一条，refs 都列上。
+    theme:   # 自选：奶油米色 + 猫爪粉 + 橘猫橙，对角分割，无衬线
+      bg: "#FBF4EA"
+      fg: "#3A2C24"
+      accent: "#E8875B"
+      alt_bg: "#3A2C24"
+      alt_fg: "#FBF4EA"
+      alt_accent: "#F3B6B0"
+      split: true
+      font: sans
+
+  # Galaxy S27：一个系列情报版面 + 两款想买的型号各一个追踪版面，主页上合在「三星手机」板块里。
+  # 三项按这个顺序收集，同一篇只进一个版面：标题提到 Ultra / Pro 的不进系列情报；标题提到 Pro 的不进 Ultra（Pro 与 Ultra 的对比放 Pro）
+  - name: Galaxy S27 系列情报
+    subtitle: 갤럭시 S27 · 发布会 · 阵容 · 价格
+    type: category
+    section: 三星手机
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 安卓旗舰新机, lang: zh-CN, query: "安卓 旗舰 新机 发布 2027", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市"]}
+      - {label: 安卓旗舰新机, lang: en-US, query: "flagship Android phone launch 2027", need: ["flagship|旗舰|旗艦", "launch|announce|release|unveil"]}
+    keywords: [
+      "Galaxy S27", "Galaxy S27 Unpacked", "Galaxy S27 series", "Galaxy S27 price",
+      "三星 S27 系列", "갤럭시 S27", "갤럭시 S27 언팩", "Galaxy S27 発売日"
+    ]
+    # 单写「S27」会混进显示器型号，必须带 Galaxy / 갤럭시 / 三星
+    match: [Galaxy S27, GalaxyS27, 갤럭시 S27, 갤럭시S27, 三星S27, 三星 S27, ギャラクシーS27, ギャラクシー S27]
+    exclude: [ultra, 울트라, ウルトラ, s27u, s27 pro, s27pro, s27 프로, s27프로, s27 プロ, s27プロ, 求人, 中古, メルカリ, 株価, stock price, 闲鱼, 二手]
+    news_langs: [zh-CN, en-US, ko-KR, ja-JP]
+    max_entries: 30
+    max_stories: 4
+    priority: >-
+      整个 S27 系列的大事：Unpacked 发布会日期和地点、最终阵容（几款、各叫什么）、预购 / 开卖日程、全系价格走向、
+      日本的发售计划；单款型号的细节在 Ultra / Pro 两个版面里，这里只报系列层面的
+    priority_keywords: [
+      Unpacked, 언팩, 发布会, 發表會, 発表会, 发布日期, release date, launch date,
+      阵容, 라인업, lineup, ラインナップ, 涨价, 인상, price, 価格, 가격, 日本, 量产, 양산
+    ]
+    urgent_patterns:
+      # 官方公布 Unpacked 日期 / 发出邀请函
+      - '(Galaxy ?S27|갤럭시 ?S27).{0,40}(Unpacked|언팩|发布会|發表會|発表会|launch event).{0,30}(官宣|正式|公式|확정|official(ly)?|confirm(ed|s)?|invite|邀请|招待)'
+      - '(Samsung|三星|삼성|サムスン).{0,20}(confirm(ed|s)?|官宣|확정|公式発表).{0,30}(Unpacked|언팩|发布会|発表会).{0,40}(Galaxy ?S27|갤럭시 ?S27|S27)'
+    notes: >-
+      系列层面的情报版面，读者明年想换 S27 Ultra 或 S27 Pro（两款各有自己的追踪版面）。已知背景（2026/10）：
+      上一代 Galaxy S26 系列 2026/2/25 发布、3/11 起开卖。S27 系列传为 4 款（S27 / S27+ / S27 Pro / S27 Ultra），
+      S27 Pro 是新增的高价机型（매일경제独家）；三星未官宣，传 2027 年 2 月前后发布，部分零件已开始量产；传全系涨价（韩国最多约 13 万韩元）。
+      以上都是传闻，没有三星官方确认的在标题注明「传闻」。手机壳厂商的「谍照」算传闻；促销、带货文不报。
+    status: 未发布 · 传 2027 年 2 月前后 Unpacked · 传 4 款，S27 Pro 是新增机型
+    site: https://news.samsung.com/global/
+    theme:   # 自选：深夜黑 + 银钛灰 + Galaxy 蓝，对角分割，无衬线
+      bg: "#0E1016"
+      fg: "#EEF1F6"
+      accent: "#4C8DFF"
+      alt_bg: "#C9CDD5"
+      alt_fg: "#0E1016"
+      alt_accent: "#1428A0"
+      split: true
+      font: sans
+
+  - name: Galaxy S27 Ultra
+    subtitle: 갤럭시 S27 울트라 · 想买 · 指定商品追踪
+    type: product
+    section: 三星手机
+    keywords: [
+      "Galaxy S27 Ultra", "S27 Ultra", "三星 S27 Ultra", "갤럭시 S27 울트라",
+      "Galaxy S27 Ultra 発売", "Galaxy S27 Ultra 価格", "Galaxy S27 Ultra review"
+    ]
+    match: [S27 Ultra, S27Ultra, S27U, S27 울트라, S27울트라, S27 ウルトラ]
+    exclude: [s27 pro, s27pro, s27 프로, s27프로, s27 プロ, s27プロ, 求人, 中古, メルカリ, 株価, stock price, 闲鱼, 二手]
+    news_langs: [zh-CN, en-US, ko-KR, ja-JP]
+    max_entries: 30
+    max_stories: 5
+    priority: >-
+      只看 Galaxy S27 Ultra 这一款：发布前——确定规格（屏幕、相机、芯片、电池、S Pen）、配色、价格、预购礼和日本发售日 / 价格
+      （docomo / au / 三星官网 SIM free 版）；发布后——评测、发热 / 缺陷等问题、系统更新，以及日本的降价、优惠和大促好价
+    priority_keywords: [
+      预购, 預購, 予約, 사전 예약, 사전예약, pre-order, preorder, 开售, 発売, 출시,
+      价格, 價格, 価格, 가격, price, 降价, 値下げ, 割引, deal, 优惠,
+      日本, ドコモ, docomo, au, SIMフリー, SIM フリー,
+      规格, スペック, specs, 配色, colors, 认证, 認証, 评测, レビュー, review, 리뷰
+    ]
+    urgent_patterns:
+      # 预购 / 开卖开始
+      - '(S27 ?Ultra|S27 ?울트라).{0,40}(预购|預購|予約開始|予約受付|사전 ?예약|pre-?orders? (are )?(now )?(open|live|begin)|now available|発売開始|正式开售|开售)'
+      # 日本发售 / 价格公布
+      - '(S27 ?Ultra|S27 ?ウルトラ).{0,40}(日本|国内|ドコモ|docomo|au|楽天).{0,20}(発売|発表|予約|価格)'
+    notes: >-
+      读者想买的型号，在日本（大阪附近）。已知传闻（2026/10，三星未确认）：约 6.9 英寸，OnLeaks CAD 渲染图 163.76×78.25×7.97mm，
+      横向一体式相机大平台、后摄三颗（可能取消 3x 长焦），保留 S Pen；传 200MP 主摄 + 50MP 5x 潜望，
+      芯片传全市场 Snapdragon 8 Elite Gen 6 for Galaxy（也有 Exynos 2700 的说法）；屏幕传 M16 OLED、DC 调光、第二代隐私显示；
+      认证显示 60W 有线快充、额定电池约 5,534mAh。传闻在标题注明「传闻」；和 S27 Pro 的对比放在 S27 Pro 版面，不在这里报。
+      带货、优惠券软文不报，但日本正规渠道的明确降价可以报。
+    status: 未发布 · 传 2027 年 2 月前后发布 · 价格未公布
+    theme:   # 自选：钛灰 + 墨黑 + 冷蓝，无衬线
+      bg: "#E6E8EC"
+      fg: "#15181E"
+      accent: "#2F6FDB"
+      alt_bg: "#15181E"
+      alt_fg: "#E6E8EC"
+      alt_accent: "#9CB8E8"
+      split: true
+      font: sans
+
+  - name: Galaxy S27 Pro
+    subtitle: 갤럭시 S27 프로 · 想买 · 指定商品追踪
+    type: product
+    section: 三星手机
+    keywords: [
+      "Galaxy S27 Pro", "S27 Pro", "三星 S27 Pro", "갤럭시 S27 프로",
+      "Galaxy S27 Pro 発売", "Galaxy S27 Pro vs Ultra", "Galaxy S27 Pro review"
+    ]
+    match: [S27 Pro, S27Pro, S27 프로, S27프로, S27 プロ, S27プロ]
+    exclude: [求人, 中古, メルカリ, 株価, stock price, 闲鱼, 二手]
+    news_langs: [zh-CN, en-US, ko-KR, ja-JP]
+    max_entries: 30
+    max_stories: 5
+    priority: >-
+      只看 Galaxy S27 Pro 这一款（新增机型）：发布前——确定规格（屏幕尺寸、相机、芯片、内存、电池）、和 Ultra 的差别、配色、价格、
+      日本有没有得卖和发售日 / 价格（docomo / au / 三星官网 SIM free 版）；发布后——评测、问题、系统更新，以及日本的降价和好价
+    priority_keywords: [
+      预购, 預購, 予約, 사전 예약, 사전예약, pre-order, preorder, 开售, 発売, 출시,
+      价格, 價格, 価格, 가격, price, 降价, 値下げ, 割引, deal, 优惠,
+      日本, ドコモ, docomo, au, SIMフリー, SIM フリー,
+      vs, 对比, 比較, 비교, Ultra, 울트라, 规格, スペック, specs, 配色, colors, 评测, レビュー, review, 리뷰
+    ]
+    urgent_patterns:
+      # 预购 / 开卖开始
+      - '(S27 ?Pro|S27 ?프로).{0,40}(预购|預購|予約開始|予約受付|사전 ?예약|pre-?orders? (are )?(now )?(open|live|begin)|now available|発売開始|正式开售|开售)'
+      # 日本发售 / 价格公布
+      - '(S27 ?Pro|S27 ?プロ).{0,40}(日本|国内|ドコモ|docomo|au|楽天).{0,20}(発売|発表|予約|価格)'
+    notes: >-
+      读者想买的型号之一，在日本（大阪附近）。S27 Pro 是 S27 系列新增的机型，像缩小版 Ultra。已知传闻（2026/10，三星未确认）：
+      约 6.6 英寸，OnLeaks CAD 渲染图 154.06×73.77×7.95mm，和 Ultra 同款横向相机大平台，没有 S Pen；
+      长焦传是 3x（Ultra 是 5x）；传最高 12GB 内存、有 1TB 版本；屏幕传 M16 OLED、DC 调光；认证显示 60W 有线快充、额定电池约 5,087mAh。
+      Pro 和 Ultra 的对比文章放在这里。日本会不会上市还不确定，有消息优先报。传闻在标题注明「传闻」；带货软文不报。
+    status: 未发布 · 新增机型 · 传 2027 年 2 月前后发布 · 日本上市未定
+    theme:   # 取自渲染图的酒红配色，无衬线
+      bg: "#F6EEF0"
+      fg: "#2B1219"
+      accent: "#8E2A47"
+      alt_bg: "#5A1A2E"
+      alt_fg: "#F6EEF0"
+      alt_accent: "#E7A9BA"
+      split: true
+      font: sans
+
+  - name: gelato pique
+    subtitle: ジェラート ピケ · ルームウェア
+    type: category
+    section: 好物
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 可爱居家服新品, lang: ja-JP, query: "ルームウェア 新作 コラボ 発売", need: ["ルームウェア|パジャマ|部屋着", "新作|発売|コラボ|登場"]}
+    keywords: [
+      "ジェラートピケ", "ジェラピケ", "ジェラートピケ 新作", "ジェラートピケ コラボ", "ジェラートピケ 福袋",
+      "gelato pique", "gelato pique 新品", "gelato pique 联名"
+    ]
+    # 「ジェラート」单独会混进冰淇淋，必须是完整的牌子名
+    match: [ジェラートピケ, ジェラート・ピケ, ジェラピケ, gelato pique, gelatopique, ジェラートピケカフェ]
+    exclude: [求人, 中古, メルカリ, 転売, 株価, stock price, 闲鱼, 二手, 代购]
+    news_langs: [ja-JP, zh-CN, zh-TW]
+    max_entries: 30
+    max_stories: 5
+    priority: >-
+      特别关注：猫系商品（猫柄、猫咪造型、CAT 系列、猫角色联名如 Hello Kitty）和各种联名（动漫、角色、艺人）——
+      发售日、价格、怎么买（店铺抽选入场、网店几点开卖、整理券）；
+      其次：福袋 HAPPY BOX 的抽选 / 预约开始和截止；限定款、再贩、大阪的店铺活动和新店
+    priority_keywords: [
+      ねこ, ネコ, 猫, キャット, CAT, にゃん, 貓, 猫咪, キティ, Kitty,
+      コラボ, 新作, 発売, 発売日, 予約, 抽選, 先行, 限定, 再販, 再入荷, 福袋, HAPPY BOX, ハッピーボックス,
+      联名, 新品, 上市, 发售, 预约, 限定, 福袋,
+      大阪, 梅田, 心斎橋, なんば
+    ]
+    urgent_patterns:
+      # 福袋抽选 / 预约开始
+      - '(ジェラートピケ|ジェラート ピケ|ジェラピケ|gelato pique).{0,30}(福袋|HAPPY ?BOX|ハッピーボックス).{0,30}(抽選|予約|受付|販売).{0,8}(開始|スタート|決定|発表)'
+      - '(福袋|HAPPY ?BOX|ハッピーボックス).{0,20}(ジェラートピケ|ジェラート ピケ|ジェラピケ|gelato pique).{0,30}(抽選|予約|受付)'
+      # 猫系新品
+      - '(ジェラートピケ|ジェラート ピケ|ジェラピケ|gelato pique).{0,40}(ねこ|ネコ|猫|キャット|CAT|にゃん|貓).{0,30}(発売|新作|登場|予約|コラボ|上市|发售)'
+      - '(ねこ|ネコ|猫|キャット|にゃん|貓).{0,30}(ジェラートピケ|ジェラート ピケ|ジェラピケ|gelato pique)'
+      # 新联名公布
+      - '(ジェラートピケ|ジェラート ピケ|ジェラピケ|gelato pique).{0,40}(コラボ|联名|聯名).{0,30}(発売|決定|発表|登場|予約)'
+    notes: >-
+      读者喜欢 gelato pique 的居家服和小物，在日本（大阪附近），想第一时间知道新品、联名和福袋怎么买。
+      读者家里养了两只猫，猫系商品（猫柄、猫咪造型、CAT 系列、Hello Kitty 等猫角色）和联名是最想看的：有就排最前面，
+      联名里有猫的（如三丽鸥的 Hello Kitty）要点明；上一次猫系是 2025/4/2 的 CAT 系列（猫 × 蝴蝶结印花），2026 年还没有新的猫系列。
+      已知背景（2026/10）：9/3 LE SSERAFIM 联名第 2 弾、9/9 宝可梦联名第 3 弾（皮卡丘、皮皮、玛力露丽）已上市；
+      10/20 和 Mrs. GREEN APPLE 首次联名「Mrs. GREEN APPLE with GELATO PIQUE」（青苹果造型的「グリベア」），全国店铺发售、官网 12 点开卖，
+      当天部分时段店铺要事先报名抽选入场——读者也喜欢 Mrs. GREEN APPLE，这个联名的购买方式要写清楚；
+      三丽鸥联名第 2 弾 10/21 起在 sanrio house、10/28 起在 gelato pique 期间限定店 5 家发售（加入美乐蒂、库洛米、双子星）。
+      福袋 HAPPY BOX 往年 10 月底到 11 月初开始抽选（2026 年版：10/31–11/4 在 MASH STORE App / USAGI ONLINE 抽选，女装 ¥13,200），2027 年版还没公布。
+      不报：转卖、二手、带货清单和「全部商品一览」这类聚合文；同一个联名的发售消息和之后的开箱、口碑合成一条，refs 都列上。
+    status: 10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）
+    site: https://gelatopique.com/
+    theme:   # 自选：粉彩薄荷 + 草莓粉 + 奶油白，对角分割，衬线
+      bg: "#FFF6F3"
+      fg: "#5A4049"
+      accent: "#EE8FA7"
+      alt_bg: "#BFE3DA"
+      alt_fg: "#3F4F4B"
+      alt_accent: "#F4B6C6"
+      split: true
+      font: serif

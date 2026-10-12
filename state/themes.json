@@ -29,7 +29,37 @@
   "font": "serif",
   "split": false
  },
- "ILLIT 演唱会|https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png": {
+ "Galaxy S27 Pro|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
+ "Galaxy S27 Ultra|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
+ "Galaxy S27 系列情报|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
+ "ILLIT|https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png": {
   "accent": "#B31957",
   "alt_accent": "#E85E96",
   "alt_bg": "#371B24",
@@ -49,7 +79,17 @@
   "font": "sans",
   "split": false
  },
- "日本网球赛事|https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png": {
+ "gelato pique|http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718": {
+  "accent": "#2C1FAD",
+  "alt_accent": "#8F86E9",
+  "alt_bg": "#292929",
+  "alt_fg": "#F2EEE6",
+  "bg": "#EDEDED",
+  "fg": "#1A1C22",
+  "font": "serif",
+  "split": false
+ },
+ "日本顶级网球赛事|https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png": {
   "accent": "#4C8DE6",
   "alt_accent": "#1C63C4",
   "alt_bg": "#EEECEE",
@@ -87,6 +127,16 @@
   "bg": "#F3EEE7",
   "fg": "#1A1C22",
   "font": "serif",
+  "split": false
+ },
+ "猫用品|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
   "split": false
  }
 }
