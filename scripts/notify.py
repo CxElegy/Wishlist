@@ -181,7 +181,8 @@ def wishlist(page_url):
             lines.append(x["note"])
         if x.get("watch"):
             lines.append(f"会在「{x['watch']}」版面持续追踪相关消息")
-        embed = {"title": f"♥ {x['name']}", "url": x.get("url") or f"{page_url}wishlist.html",
+        st = x.get("status") or "想要"
+        embed = {"title": f"♥ {x['name']}" + ("" if st == "想要" else f"（{st}）"), "url": x.get("url") or f"{page_url}wishlist.html",
                  "color": 0xB8336A, "description": "\n".join(lines),
                  "footer": {"text": " · ".join(str(v) for v in (x.get("shop"), x.get("added")) if v)}}
         if img:

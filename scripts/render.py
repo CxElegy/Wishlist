@@ -621,11 +621,16 @@ def render_wishlist(wishes, works, updated):
             cur = x.get("currency", "")
             totals[cur] = totals.get(cur, 0) + x["price"]
     total = " + ".join(f"{c} {v:,.0f}" for c, v in totals.items()) or "—"
-    counts = {k: sum(1 for x in wishes if (x.get("status") or "想要") == k) for k in ("想要", "已入手", "没买到")}
+    counts = {k: sum(1 for x in wishes if (x.get("status") or "想要") == k) for k in ("想要", "已入手", "没买到", "已过期")}
     chips = "".join(f'<button type="button" class="chip" data-f="{k}" aria-pressed="{str(k == "全部").lower()}">'
                     f'{k}<small>{len(wishes) if k == "全部" else counts[k]}</small></button>'
-                    for k in ("全部", "想要", "已入手", "没买到") if k == "全部" or counts[k])
-    section = _wish_section(wishes, works)
+                    for k in ("全部", "想要", "已入手", "没买到", "已过期") if k == "全部" or counts[k])
+    live = [x for x in wishes if x.get("status") != "已过期"]
+    gone = [x for x in wishes if x.get("status") == "已过期"]
+    section = _wish_section(live, works)
+    if gone:
+        section += (f'<div class="gonehead"><h2>过期的愿望</h2><span>去不了、买不到了，但还想要 · {len(gone)} 件</span></div>'
+                    + _wish_section(gone, works).replace('class="sec wish"', 'class="sec wish expired"').replace('id="wishlist" ', ''))
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -649,6 +654,12 @@ def render_wishlist(wishes, works, updated):
 .chip[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
 .chip:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
 .wish .band{{display:none}}
+.gonehead{{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding-top:12px;border-top:3px double #1A1C22}}
+.gonehead h2{{margin:0;font:900 26px/1 'Noto Sans SC',sans-serif;letter-spacing:.06em;color:#6B6457}}
+.gonehead span{{font-size:13px;opacity:.7}}
+.wish.expired{{--bg:#E9E5DE;--acc:#6B6457}}
+.wish.expired .wimg img{{filter:grayscale(.65) contrast(.95);opacity:.85}}
+.wish.expired .wcard:hover .wimg img{{filter:none;opacity:1}}
 </style>
 </head>
 <body>
@@ -671,6 +682,11 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
   document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', String(x === c)));
   const f = c.dataset.f;
   document.querySelectorAll('.wcard').forEach(w => {{ w.hidden = f !== '全部' && w.dataset.status !== f; }});
+  document.querySelectorAll('.wish').forEach(sec => {{
+    const empty = [...sec.querySelectorAll('.wcard')].every(w => w.hidden);
+    sec.hidden = empty;
+    if (sec.previousElementSibling && sec.previousElementSibling.classList.contains('gonehead')) sec.previousElementSibling.hidden = empty;
+  }});
 }}));
 </script>
 </body>
@@ -689,7 +705,7 @@ def _wish_section(wishes, works):
         if img and not img.startswith("http"):
             img = "wishlist/" + img
         status = x.get("status") or "想要"
-        cls = {"已入手": "got", "没买到": "miss"}.get(status, "")
+        cls = {"已入手": "got", "没买到": "miss", "已过期": "miss"}.get(status, "")
         price = ""
         if x.get("price") not in (None, ""):
             price = f'<div class="price"><small>{e(str(x.get("currency", "")))}</small>{e(str(x["price"]))}</div>'

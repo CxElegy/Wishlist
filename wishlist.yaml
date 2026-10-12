@@ -8,7 +8,7 @@
 #   specs    规格，任意几行「名称: 值」
 #   shop     在哪里卖；url 商品页或报道链接
 #   added    加入日期
-#   status   想要 / 已入手 / 没买到，默认 想要
+#   status   想要 / 已入手 / 没买到 / 已过期（去不了、买不到了但还想要），默认 想要
 #   watch    可选，关联的关注项名字（items.yaml 里的 name）。版面上会顺带显示它的最新消息
 #   note     可选，一句话备注
 #   likes    可选，从这件东西看出的喜好：「标签: [关键词…]」。主页「我会喜欢？」会用它从收集到的消息里挑推荐
@@ -36,3 +36,20 @@ wishlist:
       限定款: ["限定|限量|limited"]
       马克杯: ["マグ|馬克杯|马克杯|mug"]
     basics: [限定款, 马克杯]
+
+  - name: Mrs. GREEN APPLE Ringo Jam Tour “SHADOWS”
+    image: mga-shadows-tour.jpg
+    specs:
+      日程: 2026/9/30 – 12/28 · 14 个场馆 28 场
+      离你最近: 12/2 · 12/3 兵库 GLION ARENA KOBE
+      类型: 全国体育馆巡演（时隔 3 年）
+    shop: Mrs. GREEN APPLE
+    url: https://www.oricon.co.jp/news/2461515/full/
+    added: 2026-10-12
+    status: 已过期
+    note: 去不了了，但还是想去。下次巡演 / 追加公演再看
+    likes:
+      Mrs. GREEN APPLE: ["Mrs. GREEN APPLE|ミセス|大森元貴|Mrs.GREEN APPLE"]
+      日本乐队: ["ロックバンド|バンド|乐队|樂團"]
+      演唱会: ["ライブ|ツアー|公演|演唱会|演唱會|concert|tour"]
+    basics: [演唱会]

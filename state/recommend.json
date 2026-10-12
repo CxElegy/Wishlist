@@ -1,14 +1,14 @@
 {
  "images": {
   "https://collider.com/man-of-tomorrow-new-superman-costume-david-corenswet/": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/09/superman-david-corenswet-1.jpg?w=1200&h=675&fit=crop",
-  "https://kanstarpress.com/?p=206407": null,
   "https://news.infoseek.co.jp/article/inside_189107/": "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_189107_0-enlarge.jpg",
   "https://note.com/yamato_pokemon/n/n51f8de870e31": "https://assets.st-note.com/production/uploads/images/318648466/rectangle_large_type_2_de1d72ecf9a67c49677e1833b2ed7ddd.png?fit=bounds&quality=85&width=1280",
+  "https://prtimes.jp/main/html/rd/p/000005141.000019470.html": "https://prcdn.freetls.fastly.net/release_image/19470/5141/19470-5141-32383ee635860226a81c353846642971-3840x2160.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://www.cbr.com/studio-ghibli-howls-moving-castle-mug-fall-2026-return/": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/10/ghibli-mug.jpg?w=1200&h=675&fit=crop",
   "https://www.fashion-press.net/news/150627": "https://www.fashion-press.net/img/news/150627/top.jpg?1788325469",
   "https://www.fashion-press.net/news/150868": "https://www.fashion-press.net/img/news/150868/top.jpg?1788918798",
-  "https://www.msn.com/en-gb/news/other/starbucks-fans-rush-for-new-snoopy-collection-as-limited-edition-range-launches/ar-AA2clQJ9": null,
-  "https://www.playstationlifestyle.net/2026/10/08/forza-horizon-6-playstation-5-release-date": "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/forza-horizon-6.jpg?resize=1200,630"
+  "https://www.gamingbible.com/news/platform/steam/outward-skyrim-alternative-037810-20261012": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt8bbf115aeeaf378d/6acca2bea74b6e1dcafa5b6a/outward.jpg",
+  "https://www.msn.com/en-gb/news/other/starbucks-fans-rush-for-new-snoopy-collection-as-limited-edition-range-launches/ar-AA2clQJ9": null
  },
  "picks": [
   {
@@ -90,6 +90,32 @@
    "work": "星巴克马克杯"
   },
   {
+   "because": "GTA 6",
+   "date": "2026-10-12",
+   "hits": [
+    "开放世界大作"
+   ],
+   "image": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt8bbf115aeeaf378d/6acca2bea74b6e1dcafa5b6a/outward.jpg",
+   "kind": "follow",
+   "source": "GAMINGbible",
+   "title": "This 100-hour Steam RPG just dropped to $2 and is an open-world alternative to Skyrim",
+   "url": "https://www.gamingbible.com/news/platform/steam/outward-skyrim-alternative-037810-20261012",
+   "work": "GTA 6"
+  },
+  {
+   "because": "ILLIT 演唱会",
+   "date": "2026-10-12",
+   "hits": [
+    "K-POP 女团日本公演"
+   ],
+   "image": "https://prcdn.freetls.fastly.net/release_image/19470/5141/19470-5141-32383ee635860226a81c353846642971-3840x2160.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+   "kind": "follow",
+   "source": "PR TIMES",
+   "title": "韓国発の実力派ガールズグループ・KISS OF LIFEが「THE FIRST TAKE」出演！メンバーの繊細且つ力強い歌声で『SWEAT (Japanese Ver.)』を一発撮りパフォーマンス！",
+   "url": "https://prtimes.jp/main/html/rd/p/000005141.000019470.html",
+   "work": "ILLIT 演唱会"
+  },
+  {
    "because": "Astrae Oratio",
    "date": "2026-10-11",
    "hits": [
@@ -114,32 +140,6 @@
    "title": "Superman Officially Gets a New Look for ‘Man of Tomorrow’",
    "url": "https://collider.com/man-of-tomorrow-new-superman-costume-david-corenswet/",
    "work": "漫威电影"
-  },
-  {
-   "because": "GTA 6",
-   "date": "2026-10-08",
-   "hits": [
-    "开放世界大作"
-   ],
-   "image": "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/forza-horizon-6.jpg?resize=1200,630",
-   "kind": "follow",
-   "source": "PlayStation LifeStyle",
-   "title": "Acclaimed Open-World Xbox Exclusive Sets PlayStation 5 Release Date",
-   "url": "https://www.playstationlifestyle.net/2026/10/08/forza-horizon-6-playstation-5-release-date",
-   "work": "GTA 6"
-  },
-  {
-   "because": "ILLIT 演唱会",
-   "date": "2026-10-05",
-   "hits": [
-    "K-POP 女团日本公演"
-   ],
-   "image": null,
-   "kind": "follow",
-   "source": "韓スタ！",
-   "title": "うあと驚くくらいカッコかわいい！日本人ソラ所属 K-POPガールズアイドルグループ WOOAH (ウア)、約2年ぶりの来日公演｢WXW: WICKED｣東京・大阪で開催",
-   "url": "https://kanstarpress.com/?p=206407",
-   "work": "ILLIT 演唱会"
   }
  ]
 }
