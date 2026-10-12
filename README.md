@@ -111,6 +111,7 @@ python scripts/digest.py publish     # 只出刊（用最新一份 inbox，有 .
 python scripts/digest.py render      # 改了版式后，用已有数据重新生成网页
 python scripts/digest.py notify-urgent   # 把还没通知过的要紧消息发到 Discord
 python scripts/digest.py notify-weekly   # 发过去 7 天的周报
+python -m unittest discover tests       # 运行测试（本地假网站，不联网）
 ```
 
 ## 成本
@@ -127,10 +128,12 @@ python scripts/digest.py notify-weekly   # 发过去 7 天的周报
 |---|---|
 | `items.yaml` | 关注清单和设置 |
 | `scripts/sources.py` | 各数据源的抓取，新增数据源加在这里 |
+| `scripts/images.py` | 配图：找候选图、实际下载检查、按顺序回退，记录没图的原因（Actions 日志里的 `[配图]` 行和「配图汇总」） |
 | `scripts/digest.py` | 主流程：抓取 → 过滤 → 编辑 → 输出 |
 | `scripts/theme.py` | 从封面图提取板块配色 |
 | `scripts/render.py` | 简报网页的版式 |
 | `scripts/notify.py` | Discord 通知（要紧消息 / 周报） |
+| `tests/` | 测试 |
 | `inbox/` | 每期收集到的原始条目；`.edit.json` 是对应的编排 |
 | `reports/` | 每期出刊的数据（JSON） |
 | `docs/` | 简报网页，由 GitHub Pages 发布；`docs/design/` 是流程图和架构图 |

@@ -28,6 +28,7 @@ import zoneinfo
 
 import yaml
 
+import images
 import render
 import sources
 import theme
@@ -287,7 +288,7 @@ def find_cover(item, status_cover):
         if img:
             return img
     if item.get("site"):
-        return sources.og_image(item["site"])
+        return images.og_image(item["site"])
     return None
 
 
@@ -467,40 +468,27 @@ def fallback_stories(entries, item, limit=7):
     return picked
 
 
-def find_image(chosen, refs, url):
-    """一条报道的配图：AI 挑的 > 条目自带图 > 原文预览图 > 原文正文里的大图。每张都实际下载试一下，
-    打不开（防盗链、付费墙）就换下一张；都没有返回 None（网页上会用作品封面代替）。"""
-    seen = set()
-
-    def candidates():
-        yield chosen
-        for e in refs:
-            yield e.image
-        for page in [url] + [sources.resolve_url(e.url) for e in refs[1:3]]:
-            yield sources.og_image(page)
-            yield from sources.article_images(page, limit=6)
-
-    for img in candidates():
-        if img and img not in seen:
-            seen.add(img)
-            if sources.image_ok(img):
-                return img
-        if len(seen) >= 10:
-            break
-    return None
-
-
-def attach_media(stories, entries, cover):
-    """给每条报道配链接和图：条目自带图 > 原文预览图 > （仅头条）作品封面。
-    Google 新闻的跳转链接先还原成原文地址，链接和配图都用原文的。"""
+def attach_media(stories, entries, cover, name="", stats=None):
+    """给每条报道配链接和图（候选、检查和回退见 images.pick），没图的头条用作品封面。
+    出刊时补到的图写回条目（entry.image / image_via），publish 会存回 inbox，下次直接用。
+    每条报道的配图结果打一行日志，stats 记整期汇总。"""
     for n, s in enumerate(stories):
         refs = [entries[r - 1] for r in s.pop("refs")]
         s["url"] = s.get("url") or sources.resolve_url(refs[0].url)
         if refs[0].published:  # 消息本身的日期，卡片上显示、按它排序
             s["date"] = refs[0].published.date().isoformat()
-        s["image"] = find_image(s.get("image"), refs, s["url"])
-        if not s["image"] and n == 0:
-            s["image"] = cover
+        res = images.pick(s.get("image"), refs, s["url"])
+        s["image"] = res.image
+        if res.image:
+            s["image_via"] = next((e.image_via for e in refs if e.image == res.image and e.image_via), res.source)
+            if res.source not in ("AI 挑选", "条目自带") and not refs[0].image:
+                refs[0].image, refs[0].image_via = res.image, res.source
+        fallback = not s["image"] and n == 0 and bool(cover)
+        if fallback:
+            s["image"], s["image_via"] = cover, "作品封面"
+        print(images.log_line(name, s.get("headline", ""), res) + ("（用作品封面）" if fallback else ""), file=sys.stderr)
+        if stats is not None:
+            stats.add(res, fallback)
     return stories
 
 
@@ -561,13 +549,16 @@ def load_config():
 
 
 def entry_to_dict(n, e):
-    return {"n": n, "date": e.published.isoformat() if e.published else None, "source": e.source,
-            "title": e.title, "summary": e.summary, "url": e.url, "image": e.image}
+    d = {"n": n, "date": e.published.isoformat() if e.published else None, "source": e.source,
+         "title": e.title, "summary": e.summary, "url": e.url, "image": e.image}
+    if e.image_via:
+        d["image_via"] = e.image_via
+    return d
 
 
 def entry_from_dict(d):
     return sources.Entry(title=d["title"], url=d["url"], source=d["source"], summary=d.get("summary", ""),
-                         image=d.get("image", ""),
+                         image=d.get("image", ""), image_via=d.get("image_via", ""),
                          published=dt.datetime.fromisoformat(d["date"]) if d.get("date") else None)
 
 
@@ -720,7 +711,7 @@ def publish(inbox_path=None):
             print("没有可用的 Claude 凭据，改用关键词规则编排", file=sys.stderr)
     model = settings.get("model", "claude-haiku-5-5")
 
-    blocks = []
+    blocks, inbox_changed, stats = [], False, images.Stats()
     for raw in inbox["items"]:
         item = by_name.get(raw["name"], {"name": raw["name"], "type": "product"})
         if raw.get("backfill"):  # 补抓的旧闻不做“重大”
@@ -759,12 +750,19 @@ def publish(inbox_path=None):
             "cover": raw.get("cover"),
             "theme": theme.resolve(item, raw.get("cover"), themes),
             "facts": raw["facts"],
-            "stories": attach_media(stories, entries, raw.get("cover")),
+            "stories": attach_media(stories, entries, raw.get("cover"), raw["name"], stats),
         })
+        # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
+        for d, e in zip(raw["entries"], entries):
+            if e.image and not d.get("image"):
+                d["image"], d["image_via"], inbox_changed = e.image, e.image_via, True
     # 没有新消息的关注项也留一个小栏，排在有消息的后面
     shown = {b["name"] for b in blocks}
     blocks += [quiet_block(i, themes, date) for i in items if i["name"] not in shown]
     save_json(THEMES_FILE, themes)
+    if inbox_changed:
+        save_json(inbox_path, inbox)
+    print(stats.summary(), file=sys.stderr)
 
     if not blocks:
         print("本期没有可出刊的内容", file=sys.stderr)
@@ -822,11 +820,14 @@ def pick_images(date=None):
             for e in refs[:3]:
                 if e.image and e.image not in urls:
                     urls.append(e.image)
-                for u in sources.article_images(sources.resolve_url(e.url)):
+                p = images.page(sources.resolve_url(e.url))
+                for u in p.og + p.jsonld + p.body:
                     if u not in urls:
                         urls.append(u)
             thumbs = []
             for u in urls:
+                if not images.check(u)[0]:  # 打不开、太大、太小、不是图片的先排除
+                    continue
                 try:
                     req = urllib.request.Request(u, headers={"User-Agent": sources.USER_AGENT})
                     im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=15).read())).convert("RGB")
