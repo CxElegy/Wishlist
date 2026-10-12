@@ -10,7 +10,7 @@ on:
     - cron: "47 0 * * 1"     # 每周一 00:47 UTC = 北京时间 08:47，发周报
   push:
     branches: [claude/sharp-gauss-osunmb]   # 只有主分支（网页所在分支）；PR 合并进来时才触发，避免未合并的分支先发通知
-    paths: ["items.yaml", "scripts/**", ".github/**", "EDITING.md", ".claude/**", "requirements.txt", "README.md"]
+    paths: ["items.yaml", "wishlist.yaml", "docs/wishlist/**", "scripts/**", ".github/**", "EDITING.md", ".claude/**", "requirements.txt", "README.md"]
   workflow_dispatch:
     inputs:
       weekly:
@@ -56,6 +56,9 @@ jobs:
 
       - name: 记下这次新加的关注项（发通知前，发完就记进 known_items 了）
         run: echo "NEW_ITEMS=$(python scripts/digest.py new-items)" >> "$GITHUB_ENV"
+
+      - name: 愿望清单 → Discord
+        run: python scripts/digest.py notify-wishlist
 
       - name: 新增关注项 → Discord
         run: python scripts/digest.py notify-new-items

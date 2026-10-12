@@ -172,12 +172,82 @@ html{scroll-behavior:smooth}
  .nav .rail{flex:1;flex-direction:row;overflow-x:auto;gap:6px;padding:6px 4px!important;border:none!important}
  .nav .pill{flex:none;padding:4px 10px!important;margin:0!important;font:700 13px/1.3 'Noto Sans SC',sans-serif!important;
   color:#FBF8F1!important;background:none!important;border:1px solid rgba(251,248,241,.3)!important;transform:none!important;width:auto!important}
- .nav .pill::before,.nav .pill::after,.nav .pill .no{display:none!important}
+ .nav .pill::before,.nav .pill::after,.nav .pill .no,.nav .pill .cnt{display:none!important}
  .nav .pill.on{background:var(--sc)!important;border-color:var(--sc)!important;transform:scale(1.12)!important;margin:0 4px!important}
  .nav select{background:transparent;color:#FBF8F1;border:1px solid rgba(251,248,241,.3)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,#D7261E);width:calc(var(--prog,0) * 100%)}
  [data-k]{scroll-margin-top:64px}
 }
+/* ---------- 愿望清单 ---------- */
+.wish{--bg:#F4EDE4;--fg:#1A1C22;--acc:#B8336A;--abg:#1A1C22;--afg:#F4EDE4;--aacc:#F2A7C3;--ac:#B8336A;
+ --line:color-mix(in srgb,#1A1C22 18%,#F4EDE4);background:var(--bg);color:var(--fg);border:1px solid var(--line)}
+.wish .band{background:linear-gradient(162deg,#1A1C22 0 42%,var(--bg) 42% 100%)}
+.wish .band .title{font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:40px;color:#F4EDE4;letter-spacing:.08em}
+.wish .band .sub{color:var(--fg);font:700 13px 'JetBrains Mono',monospace;letter-spacing:.25em}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--line)}
+.wcard{position:relative;display:flex;flex-direction:column;background:var(--bg)}
+.wcard.solo{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+.wcard .wimg{position:relative;aspect-ratio:1/1;max-width:100%;background:#FFF;display:grid;place-items:center;overflow:hidden}
+.wcard.solo .wimg{aspect-ratio:auto;min-height:380px}
+.wcard .wimg img{width:86%;height:86%;object-fit:contain;transition:transform .4s cubic-bezier(.2,.9,.3,1)}
+.wcard:hover .wimg img{transform:scale(1.04) rotate(-1.5deg)}
+.wcard .heart{position:absolute;top:14px;left:14px;padding:4px 10px;background:var(--acc);color:#FFF;
+ font:900 12px 'Noto Sans SC',sans-serif;letter-spacing:.25em}
+.wcard .heart.got{background:#1F9D6B}.wcard .heart.miss{background:#8C8678}
+.wcard .wtxt{display:flex;flex-direction:column;gap:14px;padding:24px 26px;min-width:0}
+.wcard.solo .wtxt{justify-content:center;padding:36px 40px;border-left:1px solid var(--line)}
+.wcard .shop{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc)}
+.wcard h3{margin:0;font:900 26px/1.3 'Noto Sans SC',sans-serif;text-wrap:balance}
+.wcard.solo h3{font-size:36px}
+.wcard .price{font:900 30px/1 'Noto Sans SC',sans-serif;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.wcard .price small{font:700 14px 'JetBrains Mono',monospace;margin-right:6px;opacity:.7}
+.wcard dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px}
+.wcard dt{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.6;padding-top:2px}
+.wcard dd{margin:0}
+.wcard .note{margin:0;font-size:15px;line-height:1.7;opacity:.85}
+.wcard .links{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em}
+.wcard .links a{border-bottom:2px solid var(--acc);padding-bottom:1px}
+.wcard .links a:hover{color:var(--acc)}
+.wcard .watch{display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:color-mix(in srgb,var(--acc) 8%,transparent);border-left:3px solid var(--acc);font-size:14px;line-height:1.55}
+.wcard .watch span{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc)}
+.wcard .added{font:700 11px 'JetBrains Mono',monospace;opacity:.5;letter-spacing:.1em}
+@media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
+ .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
+.mastwish{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 22px;
+ border-left:1px solid #1A1C22;color:#B8336A;transition:background .2s,color .2s}
+.mastwish b{font-size:22px;line-height:1}.mastwish span{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.2em;color:#1A1C22}
+.mastwish small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.1em;opacity:.7;color:#1A1C22}
+.mastwish:hover{background:#B8336A}.mastwish:hover b,.mastwish:hover span,.mastwish:hover small{color:#FFF}
+.navwish{display:flex;align-items:center;gap:8px;margin:10px 0 0 14px;padding:8px 12px;border:2px solid #B8336A;color:#B8336A;
+ font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.15em;flex:none}
+.navwish small{margin-left:auto;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.05em;opacity:.8}
+.navwish:hover{background:#B8336A;color:#FFF}
+@media (max-width:1000px){.navwish{display:none}}
+@media (max-width:760px){.mastwish{padding:0 10px}.mastwish span,.mastwish small{display:none}}
+/* ---------- 我会喜欢？ ---------- */
+.picks{--ac:#B8336A;background:#F4EDE4;color:#1A1C22;border:3px solid #1A1C22;box-shadow:6px 6px 0 #B8336A}
+.pkhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;padding:16px 22px 14px;border-bottom:3px solid #1A1C22}
+.pkhead h2{margin:0;font:900 34px/1 'Noto Sans SC',sans-serif;letter-spacing:.04em}
+.pkhead h2 em{font-style:normal;color:#B8336A;display:inline-block;transform:rotate(12deg) translateY(-2px);margin-left:2px}
+.pkhead span{font-size:13px;opacity:.75}
+.pkhead a{color:#B8336A;font-weight:700;border-bottom:1px solid currentColor}
+.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:color-mix(in srgb,#1A1C22 18%,#F4EDE4)}
+.pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.pksub{display:flex;align-items:baseline;gap:12px;padding:12px 22px;border-top:3px solid #1A1C22;border-bottom:1px solid color-mix(in srgb,#1A1C22 18%,#F4EDE4);
+ font:900 15px 'Noto Sans SC',sans-serif;letter-spacing:.2em}
+.pksub span{font:500 12px 'Noto Serif SC',serif;letter-spacing:0;opacity:.7}
+.pk{display:flex;flex-direction:column;gap:10px;padding:16px;background:#F4EDE4;color:#1A1C22;min-width:0}
+.pk.big{grid-column:span 2;grid-row:span 2}
+.pk .pic{background:#FFF;color:#1A1C22;border:none}
+.pk .pkt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.pk .src{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;opacity:.6}
+.pk b{font-size:15px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pk.big b{font:900 22px/1.35 'Noto Sans SC',sans-serif;-webkit-line-clamp:4}
+.pk .why{font-size:12px;color:#B8336A;font-weight:700}
+.pk .tags{display:flex;flex-wrap:wrap;gap:4px}
+.pk .tags i{font-style:normal;font:700 10px 'Noto Sans SC',sans-serif;letter-spacing:.1em;padding:1px 7px;border:1px solid #B8336A;color:#B8336A}
+.pk:hover b{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
@@ -501,6 +571,171 @@ def _section(block, anchor=""):
             f"{facts}{grid}</section>")
 
 
+def _picks(picks, works):
+    """「我会喜欢？」角落：按愿望清单的喜好，从收集到的消息里挑的推荐，每条写明推荐理由。"""
+    if not picks:
+        return ""
+    covers = {w["name"]: w.get("cover") for w in works}
+
+    def cards_of(group, big_first):
+        return "".join(card(x, big_first and i == 0) for i, x in enumerate(group))
+
+    def card(x, big):
+        follow = x.get("kind") == "follow"  # 同类新发现不是那个作品本身，没图时不能用它的封面
+        story = {"image": x.get("image"), "_cover": None if follow else covers.get(x["work"]),
+                 "_work": (x.get("hits") or [x["work"]])[0] if follow else x["work"]}
+        tags = "".join(f"<i>{e(h)}</i>" for h in x.get("hits", []))
+        date = e(x["date"][5:].replace("-", ".")) if x.get("date") else ""
+        return (
+            f'<a class="pk{" big" if big else ""}" href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
+            f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
+            f'<b>{e(x["title"])}</b>'
+            f'<span class="why">因为你{"关注" if x.get("kind") == "follow" else "想要"}「{e(x["because"])}」</span>'
+            f'<span class="tags">{tags}</span></span></a>')
+
+    wish = [x for x in picks if x.get("kind") != "follow"]
+    follow = [x for x in picks if x.get("kind") == "follow"]
+    body = f'<div class="pkgrid">{cards_of(wish, True)}</div>' if wish else ""
+    if follow:
+        body += (f'<div class="pksub">同类新发现<span>你关注的作品之外，同类型的新消息</span></div>'
+                 f'<div class="pkgrid row" style="--n:{len(follow)}">{cards_of(follow, False)}</div>')
+    return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>我会喜欢<em>？</em></h2>'
+            f'<span>根据愿望清单里的喜好和你关注的作品类型挑的 · <a href="wishlist.html">♥ 愿望清单</a></span></div>'
+            f'{body}</section>')
+
+
+def _wish_link(wishes, cls):
+    """主页面上去愿望清单子页面的入口（报头右上角、左侧目录底部）。"""
+    if not wishes:
+        return ""
+    want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
+    return (f'<a class="{cls}" href="wishlist.html"><b>♥</b><span>愿望清单</span>'
+            f'<small>{want} 件想要</small></a>')
+
+
+def render_wishlist(wishes, works, updated):
+    """愿望清单子页面（docs/wishlist.html）：收藏柜式大图网格，可按状态筛选，顶部是件数和想要的总价。"""
+    totals = {}
+    for x in wishes:
+        if (x.get("status") or "想要") == "想要" and isinstance(x.get("price"), (int, float)):
+            cur = x.get("currency", "")
+            totals[cur] = totals.get(cur, 0) + x["price"]
+    total = " + ".join(f"{c} {v:,.0f}" for c, v in totals.items()) or "—"
+    counts = {k: sum(1 for x in wishes if (x.get("status") or "想要") == k) for k in ("想要", "已入手", "没买到", "已过期")}
+    chips = "".join(f'<button type="button" class="chip" data-f="{k}" aria-pressed="{str(k == "全部").lower()}">'
+                    f'{k}<small>{len(wishes) if k == "全部" else counts[k]}</small></button>'
+                    for k in ("全部", "想要", "已入手", "没买到", "已过期") if k == "全部" or counts[k])
+    live = [x for x in wishes if x.get("status") != "已过期"]
+    gone = [x for x in wishes if x.get("status") == "已过期"]
+    section = _wish_section(live, works)
+    if gone:
+        section += (f'<div class="gonehead"><h2>过期的愿望</h2><span>去不了、买不到了，但还想要 · {len(gone)} 件</span></div>'
+                    + _wish_section(gone, works).replace('class="sec wish"', 'class="sec wish expired"').replace('id="wishlist" ', ''))
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>愿望清单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{FONTS}">
+<style>{CSS}
+.page{{grid-template-columns:minmax(0,1fr);max-width:1200px}}
+.back{{display:inline-flex;align-items:center;gap:8px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.15em}}
+.back:hover{{color:#B8336A}}
+.wsum{{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}}
+.wsum .stat{{display:flex;flex-direction:column;gap:2px}}
+.wsum .stat span{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.6}}
+.wsum .stat b{{font:900 26px/1 'Noto Sans SC',sans-serif;font-variant-numeric:tabular-nums}}
+.chips{{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px}}
+.chip{{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;
+ font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.15em;cursor:pointer}}
+.chip small{{font:700 11px 'JetBrains Mono',monospace;opacity:.6}}
+.chip[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
+.chip:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
+.wish .band{{display:none}}
+.gonehead{{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding-top:12px;border-top:3px double #1A1C22}}
+.gonehead h2{{margin:0;font:900 26px/1 'Noto Sans SC',sans-serif;letter-spacing:.06em;color:#6B6457}}
+.gonehead span{{font-size:13px;opacity:.7}}
+.wish.expired{{--bg:#E9E5DE;--acc:#6B6457}}
+.wish.expired .wimg img{{filter:grayscale(.65) contrast(.95);opacity:.85}}
+.wish.expired .wcard:hover .wimg img{{filter:none;opacity:1}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="mast"><div>
+<div class="logo">{LOGO}</div>
+<h1>愿望清单</h1>
+<div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
+</div></header>
+<a class="back" href="./">← 回到关注清单通信</a>
+<div class="wsum">
+<div class="stat"><span>共</span><b>{len(wishes)} 件</b></div>
+<div class="stat"><span>想要的合计</span><b>{e(total)}</b></div>
+<div class="chips" role="group" aria-label="按状态筛选">{chips}</div>
+</div>
+{section}
+</div>
+<script>
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {{
+  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', String(x === c)));
+  const f = c.dataset.f;
+  document.querySelectorAll('.wcard').forEach(w => {{ w.hidden = f !== '全部' && w.dataset.status !== f; }});
+  document.querySelectorAll('.wish').forEach(sec => {{
+    const empty = [...sec.querySelectorAll('.wcard')].every(w => w.hidden);
+    sec.hidden = empty;
+    if (sec.previousElementSibling && sec.previousElementSibling.classList.contains('gonehead')) sec.previousElementSibling.hidden = empty;
+  }});
+}}));
+</script>
+</body>
+</html>
+"""
+
+
+def _wish_section(wishes, works):
+    """愿望清单版面。只有一件时做成横向大卡，多件时自动排成网格。"""
+    if not wishes:
+        return ""
+    latest = {w["name"]: (w["stories"][0] if w["stories"] else None) for w in works}
+    cards = []
+    for x in wishes:
+        img = x.get("image") or ""
+        if img and not img.startswith("http"):
+            img = "wishlist/" + img
+        status = x.get("status") or "想要"
+        cls = {"已入手": "got", "没买到": "miss", "已过期": "miss"}.get(status, "")
+        price = ""
+        if x.get("price") not in (None, ""):
+            price = f'<div class="price"><small>{e(str(x.get("currency", "")))}</small>{e(str(x["price"]))}</div>'
+        specs = "".join(f"<dt>{e(str(k))}</dt><dd>{e(str(v))}</dd>" for k, v in (x.get("specs") or {}).items())
+        links = []
+        if x.get("url"):
+            links.append(f'<a href="{e(x["url"])}" target="_blank" rel="noopener">去看看 ↗</a>')
+        watch = ""
+        if x.get("watch"):
+            links.append(f'<a href="./#{_wid(x["watch"])}">{e(x["watch"])} 版面 →</a>')
+            st = latest.get(x["watch"])
+            if st:
+                watch = (f'<a class="watch" href="{e(st["url"])}" target="_blank" rel="noopener"><span>相关最新 · '
+                         f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}</span>{e(st["headline"])}</a>')
+        added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
+        cards.append(
+            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}">'
+            f'<div class="wimg">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else ""}'
+            f'<span class="heart {cls}">♥ {e(status)}</span></div>'
+            f'<div class="wtxt">' + (f'<span class="shop">{e(x["shop"])}</span>' if x.get("shop") else "")
+            + f'<h3>{e(x["name"])}</h3>{price}'
+            + (f"<dl>{specs}</dl>" if specs else "")
+            + (f'<p class="note">{e(x["note"])}</p>' if x.get("note") else "")
+            + watch + f'<div class="links">{"".join(links)}{added}</div></div></article>')
+    want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
+    return (f'<section id="wishlist" data-k="wishlist" class="sec wish"><div class="band split">'
+            f'<span class="title">愿望清单</span><span class="sub">WISHLIST · {len(wishes)} 件 · 想要 {want}</span></div>'
+            f'<div class="wgrid">{"".join(cards)}</div></section>')
+
+
 # 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
 SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "演出": "#D6336C", "好物": "#E07A1F"}
 SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
@@ -682,7 +917,7 @@ NAV_STYLES = {
 }
 
 
-def _nav(works, date):
+def _nav(works, date, wishes=(), picks=()):
     """左侧目录：按板块分组列出每个作品。"""
     groups = {}
     for w in works:
@@ -691,6 +926,9 @@ def _nav(works, date):
     cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#front">'
             f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
+    if picks:
+        rail.append(f'<a class="pill" style="--sc:#B8336A" data-for="picks" href="#picks">'
+                    f'<i class="no">?</i><span class="nm">我会喜欢？<small class="cnt">{len(picks)} 条推荐</small></span></a>')
     n = 0
     for name in order:
         sc = _sec_color(name)
@@ -707,7 +945,8 @@ def _nav(works, date):
                         f'<span class="nm">{e(w["name"])}<small class="cnt">{cnt}</small></span></a>')
     return (f'<nav class="nav" aria-label="目录">'
             f'<div class="here"><b>目录</b><small>INDEX</small><span id="nav-here"></span></div>'
-            f'<div class="rail" id="nav-rail">{"".join(rail)}</div><div class="bar" id="nav-bar"></div></nav>')
+            f'<div class="rail" id="nav-rail">{"".join(rail)}</div>{_wish_link(wishes, "navwish")}'
+            f'<div class="bar" id="nav-bar"></div></nav>')
 
 
 NAV_JS = """
@@ -756,7 +995,7 @@ NAV_JS = """
 """
 
 
-def render(issues, nav_style="line", order=None, updated=None):
+def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=()):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）。"""
     latest = issues[0]
@@ -766,7 +1005,8 @@ def render(issues, nav_style="line", order=None, updated=None):
     updated = updated or latest["date"].replace("-", ".")
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
-            + _front(works, latest["date"], updated) + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
+            + _front(works, latest["date"], updated) + _picks(picks, works)
+            + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -783,9 +1023,10 @@ def render(issues, nav_style="line", order=None, updated=None):
 <header class="mast"><div>
 <div class="logo">{LOGO}</div>
 <h1>关注清单通信</h1>
+{_wish_link(wishes, "mastwish")}
 <div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
 </div></header>
-{_nav(works, latest['date'])}
+{_nav(works, latest['date'], wishes, picks)}
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>

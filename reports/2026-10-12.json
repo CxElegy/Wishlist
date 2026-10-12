@@ -51,6 +51,15 @@
      "image": "https://www.inside-games.jp/imgs/ogp_f/1782521.jpg",
      "url": "https://www.inside-games.jp/article/2026/09/19/188009.html",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-09",
+     "headline": "BLEACH Mirror’s High Celebrates Pre-Registration Milestone",
+     "highlight": "",
+     "image": "https://cdn.theouterhaven.net/wp-content/uploads/2026/07/Logo.jpg",
+     "url": "https://www.theouterhaven.net/bleach-mirrors-high-celebrates-pre-registration-milestone/",
+     "weight": "normal"
     }
    ],
    "subtitle": "死神 新作手游",
@@ -137,6 +146,15 @@
     },
     {
      "blurb": "",
+     "date": "2026-10-11",
+     "headline": "《复仇者联盟5：毁灭之日》定档12月16日，超越北美提前两天上映！",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.sohu.com/a/1086788942_121924583",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-09",
      "headline": "'Avengers: Doomsday': Trailers, tickets, release date and 'Endgame: Encore' details",
      "highlight": "",
@@ -161,15 +179,6 @@
      "image": null,
      "url": "https://www.sina.cn/news/detail/5351163219940888.html",
      "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-10",
-     "headline": "《复仇者联盟4：终局之战》内地累计票房破44亿元",
-     "highlight": "",
-     "image": "https://q6.itc.cn/q_70/images03/20261010/3e0f51f7fdc84a9bac7b8f46ef34137a.jpeg",
-     "url": "https://m.sohu.com/a/1085879545_121347613?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
-     "weight": "normal"
     }
    ],
    "subtitle": "Marvel Studios · MCU",
@@ -182,6 +191,70 @@
     "fg": "#F5F5F5",
     "font": "serif",
     "split": false
+   }
+  },
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "name": "Astrae Oratio",
+   "section": "游戏",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "아스트라에 오라티오, '그 시절' 덕후의 꿈은 계속된다",
+     "highlight": "",
+     "image": "https://file.thisisgame.com/next-upload/cmcn2gsyt0006t5012nlq9doe/2026/10/12/1639273710172097022_bc9c39bb-4c92-4af6-a97a-6785e821418f_%5B%EC%97%94%EC%94%A8%5D%20%EC%97%94%EC%94%A8%20'%EC%95%84%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%97%90%20%EC%98%A4%EB%9D%BC%ED%8B%B0%EC%98%A4'%20%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg",
+     "url": "https://www.thisisgame.com/articles/430857",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Samsung, NC bring “Astrae Oratio” to life with glasses-free 3D displays at Tokyo event",
+     "highlight": "",
+     "image": "https://marketech-apac.com/wp-content/uploads/2026/10/SI-1.webp",
+     "url": "https://marketech-apac.com/samsung-nc-bring-astrae-oratio-to-life-with-glasses-free-3d-displays-at-tokyo-event/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "古典アニメの感性と洗練された戦闘の調和、アストラエ・オラティオ",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.gamemeca.com/ja/view.php?gid=1781449",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "고전 애니 감성과 세련된 전투의 조화, 아스트라에 오라티오",
+     "highlight": "",
+     "image": "https://cdn.gamemeca.com/g17/images/conico/topbn/top_tree_tier.jpg",
+     "url": "https://www.gamemeca.com/view.php?gid=1781449",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "영리하게 찔렀다, 엔씨 '아스트라에 오라티오' 세계관 분석",
+     "highlight": "",
+     "image": "https://cdn.gameple.co.kr/news/photo/202610/216667_249570_1227.jpg",
+     "url": "https://www.gameple.co.kr/news/articleView.html?idxno=216667",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#8DB8E8",
+    "alt_accent": "#3D6FA8",
+    "alt_bg": "#F2F2F4",
+    "alt_fg": "#1B1B1C",
+    "bg": "#1B1B1C",
+    "fg": "#F2F2F4",
+    "font": "serif",
+    "split": true
    }
   },
   {
@@ -231,7 +304,7 @@
      "date": "2026-10-07",
      "headline": "【Steam(10/7)】NCの新作『AION 2』が連日の首位 シーズン5開幕『オーバーウォッチ』5位浮上 新作『Gears of War: E-Day』が11位に登場",
      "highlight": "",
-     "image": null,
+     "image": "https://i3.gamebiz.jp/media/438f2618-6cb6-4bb2-8ba4-ee2e57cfe461.jpg",
      "url": "https://gamebiz.jp/news/433717",
      "weight": "normal"
     },
@@ -275,6 +348,15 @@
     {
      "blurb": "",
      "date": "2026-10-08",
+     "headline": "Bataleon - Evil Twin 2027 Snowboard none",
+     "highlight": "",
+     "image": "https://www.neveitalia.it/static/prodotti/02/600/305679228.jpg",
+     "url": "https://www.neveitalia.it/materiali/prezzi/prezzo/bataleon-evil-twin-2027-snowboard-none-305679228-2",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
      "headline": "無限ダウンヒルスキーゲーム『SNØ: Ultimate Freeriding』コンソール版配信日決定！",
      "highlight": "",
      "image": null,
@@ -288,6 +370,15 @@
      "highlight": "",
      "image": "https://prcdn.freetls.fastly.net/release_image/186711/3/186711-3-f5d63de7121da3e4536c04ea6e8ffe19-2936x1959.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
      "url": "https://prtimes.jp/main/html/rd/p/000000003.000186711.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "Ellis Brigham’s Expert Ski Gear Edit 2026/27",
+     "highlight": "",
+     "image": "https://cdn.inthesnow.com/uploads/2026/10/ellis-brigham-ski-gear-edit-2026-27-hero.jpg",
+     "url": "https://www.inthesnow.com/gear/ellis-brigham-ski-gear-edit-2026-27/",
      "weight": "normal"
     }
    ],
@@ -502,20 +593,20 @@
     },
     {
      "blurb": "",
+     "date": "2026-10-05",
+     "headline": "＜木下グループジャパンオープン最終日＞セレモニーに臨むマイケル・チャン氏（撮影・小海途 良幹）",
+     "highlight": "",
+     "image": "https://www.sponichi.co.jp/sports/news/2026/10/06/jpeg/20261006s10028000252000p_view.webp",
+     "url": "https://www.sponichi.co.jp/sports/news/2026/10/06/gazo/20261006s10028000252000p.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-09",
      "headline": "ジャパンオープン2026 出場選手発表、中国ジェンら参戦へ＜女子テニス＞（tennis365.net）",
      "highlight": "",
      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261009-00010002-tennisnet-000-1-view.jpg?exp=10800",
      "url": "https://news.yahoo.co.jp/articles/ab49e2353e02ec22adceb44674bf4e136674c926",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-07",
-     "headline": "世界のトップ選手が集う国際テニス大会で宮崎の食をPR！「木下グループジャパンオープンテニスチャンピオンシップス2026」で県産品を提供",
-     "highlight": "",
-     "image": "https://www.pref.miyazaki.lg.jp/shared/site_rn/images/sns/logo.jpg",
-     "url": "https://www.pref.miyazaki.lg.jp/kokusai-keizaikoryu/press/2026/10/20261002084242.html",
      "weight": "normal"
     }
    ],
@@ -529,31 +620,6 @@
     "fg": "#F5F7F2",
     "font": "sans",
     "split": false
-   }
-  },
-  {
-   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-   "facts": [],
-   "last": {
-    "date": "2026-10-11",
-    "headline": "全球封测落幕：氛围获好评，战斗成最大争议",
-    "url": "https://zdnet.co.kr/view/?no=20261008230655"
-   },
-   "name": "Astrae Oratio",
-   "quiet": true,
-   "section": "游戏",
-   "status": "",
-   "stories": [],
-   "subtitle": "アストラエ・オラティオ",
-   "theme": {
-    "accent": "#8DB8E8",
-    "alt_accent": "#3D6FA8",
-    "alt_bg": "#F2F2F4",
-    "alt_fg": "#1B1B1C",
-    "bg": "#1B1B1C",
-    "fg": "#F2F2F4",
-    "font": "serif",
-    "split": true
    }
   }
  ],
