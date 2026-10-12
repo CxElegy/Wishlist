@@ -561,3 +561,65 @@ items:
       alt_accent: "#F3B6B0"
       split: true
       font: sans
+
+  - name: Galaxy S27 Ultra / Pro
+    subtitle: 갤럭시 S27 울트라 · S27 Pro · 明年旗舰特别关注
+    type: product
+    section: 好物
+    similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
+      - {label: 安卓旗舰新机, lang: zh-CN, query: "安卓 旗舰 新机 发布 2027", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市"]}
+      - {label: 安卓旗舰新机, lang: en-US, query: "flagship Android phone launch 2027", need: ["flagship|旗舰|旗艦", "launch|announce|release|unveil"]}
+    keywords: [
+      "Galaxy S27 Ultra", "Galaxy S27 Pro", "三星 S27 Ultra", "三星 S27 Pro",
+      "갤럭시 S27 울트라", "갤럭시 S27 프로", "Galaxy S27 Ultra 発売", "Galaxy S27 Pro 日本"
+    ]
+    # 系列整体的消息（发布会、价格、全系规格）也要；单写「S27」会混进显示器型号，必须带 Galaxy / 갤럭시 / 型号后缀
+    match: [
+      S27 Ultra, S27Ultra, S27 Pro, S27Pro, S27U, Galaxy S27, GalaxyS27, 갤럭시 S27, 갤럭시S27, S27 울트라, S27 프로,
+      三星S27, 三星 S27, ギャラクシーS27, ギャラクシー S27
+    ]
+    exclude: [求人, 中古, メルカリ, 株価, stock price, 闲鱼, 二手]
+    news_langs: [zh-CN, en-US, ko-KR, ja-JP]
+    max_entries: 40
+    max_stories: 5
+    subreddits: [samsung]
+    priority: >-
+      明年的 Galaxy S27 Ultra 和 S27 Pro：Unpacked 发布会日期、预购 / 开卖日期、价格（日本的发售日、价格、docomo / au / 三星官网 SIM free 版优先）；
+      其次是两款的确定规格和差异（屏幕尺寸、S Pen、相机、芯片、电池和快充、配色），认证 / 官方消息排在传闻前面
+    priority_keywords: [
+      Unpacked, 언팩, 发布会, 發表會, 発表会, 发布日期, release date, launch date,
+      预购, 預購, 予約, 사전 예약, 사전예약, pre-order, preorder, 开售, 発売, 출시,
+      价格, 價格, 価格, 가격, price,
+      日本, ドコモ, docomo, au, SIM フリー, SIMフリー,
+      认证, 認證, 認証, FCC, 3C, GSMA, 规格, スペック, specs,
+      S Pen, Snapdragon, Exynos, 渲染, render, 配色, colors
+    ]
+    urgent_patterns:
+      # 官方公布 Unpacked 日期 / 发出邀请函
+      - '(Galaxy ?S27|갤럭시 ?S27|S27 ?(Ultra|Pro)).{0,40}(Unpacked|언팩|发布会|發表會|発表会|launch event).{0,30}(官宣|正式|公式|확정|official(ly)?|confirm(ed|s)?|invite|邀请|招待)'
+      - '(Samsung|三星|삼성|サムスン).{0,20}(confirm(ed|s)?|官宣|확정|公式発表).{0,30}(Unpacked|언팩|发布会|発表会).{0,40}(Galaxy ?S27|갤럭시 ?S27|S27)'
+      # 预购 / 开卖开始
+      - '(Galaxy ?S27|갤럭시 ?S27|S27 ?(Ultra|Pro)).{0,40}(预购|預購|予約開始|予約受付|사전 ?예약|pre-?orders? (are )?(now )?(open|live|begin)|now available|発売開始|正式开售|开售)'
+      # 日本发售 / 价格公布
+      - '(Galaxy ?S27|ギャラクシー ?S27|S27 ?(Ultra|Pro)).{0,40}(日本|国内|ドコモ|docomo|au|楽天).{0,20}(発売|発表|予約|価格)'
+    notes: >-
+      读者明年想换 Galaxy S27 Ultra 或 S27 Pro，在日本（大阪附近），日本的发售日、价格、运营商和 SIM free 版要报。
+      已知背景（2026/10）：上一代 Galaxy S26 系列 2026/2/25 发布、3/11 起开卖。
+      S27 系列传为 4 款（ETNews：S27 / S27+ / S27 Pro / S27 Ultra），S27 Pro 是新增机型；三星未官宣，传 2027 年 2 月前后发布，
+      ZDNet Korea 称部分零件 9 月已开始量产。8 月 OnLeaks × Android Headlines 的 CAD 渲染图：Ultra 和 Pro 都改成横向的一体式相机大平台，
+      后摄三颗（Ultra 可能取消 3x 长焦）；Ultra 约 6.9 英寸、163.76×78.25×7.97mm、保留 S Pen；
+      Pro 约 6.6 英寸、154.06×73.77×7.95mm、没有 S Pen，像缩小版 Ultra。中国认证显示 Pro / Ultra 都是 60W 有线快充，
+      额定电池 Pro 约 5,087mAh、Ultra 约 5,534mAh。Ultra 传 200MP 主摄 + 50MP 5x 潜望，芯片传 Snapdragon 8 Elite Gen 6 for Galaxy（也有 Exynos 2700 的说法）；
+      Pro 传最高 12GB 内存、有 1TB 版本；传全系涨价。以上都是传闻 / 认证，没有三星官方确认的在标题注明「传闻」。
+      手机壳、保护膜厂商的「谍照」算传闻；促销、优惠券、带货文不报。
+    status: 未发布 · 传 2027 年 2 月前后 Unpacked · S27 Pro 是新增机型
+    site: https://news.samsung.com/global/
+    theme:   # 自选：深夜黑 + 银钛灰 + Galaxy 蓝，对角分割，无衬线
+      bg: "#0E1016"
+      fg: "#EEF1F6"
+      accent: "#4C8DFF"
+      alt_bg: "#C9CDD5"
+      alt_fg: "#0E1016"
+      alt_accent: "#1428A0"
+      split: true
+      font: sans
