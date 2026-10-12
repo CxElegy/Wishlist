@@ -666,7 +666,8 @@
      "date": "2026-10-06",
      "headline": "最終日 車いすエキシビションマッチ／ダブルス 決勝／シングルス 決勝 【木下グループジャパンオープンテニス】",
      "highlight": "",
-     "image": null,
+     "image": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C225966/thumb001.png?height=720&quality=75&version=1791287953&width=1280",
+     "image_via": "og:image",
      "url": "https://abema.tv/live-event/cde19792-f1c1-492d-9040-b626b28c076c",
      "weight": "normal"
     }
@@ -704,7 +705,8 @@
      "date": "2026-10-05",
      "headline": "『猫用ドーム』の中を覗いたら…まさかの『可愛すぎる光景』に「新発売の和菓子かとw」「みっちりは気持ちいいのかな」と話題に",
      "highlight": "",
-     "image": null,
+     "image": "https://s.eximg.jp/exnews/feed/nekochan/22/nekochan_cat49957/nekochan_cat49957_1.jpg",
+     "image_via": "og:image",
      "url": "https://www.excite.co.jp/news/article/nekochan_cat49957/",
      "weight": "normal"
     },
@@ -754,19 +756,9 @@
   {
    "cover": null,
    "facts": [],
-   "name": "Galaxy S27 Ultra / Pro",
+   "name": "Galaxy S27 系列情报",
    "section": "好物",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "Samsung Galaxy S27 Ultra May Stick With Snapdragon as Exynos 2700 Production Progresses",
-     "highlight": "",
-     "image": "https://sm.mashable.com/mashable_in/seo/default/z3wq-2026-10-12t132106246_f51h.jpg",
-     "image_via": "og:image",
-     "url": "https://in.mashable.com/tech/114875/samsung-galaxy-s27-ultra-may-stick-with-snapdragon-as-exynos-2700-production-progresses",
-     "weight": "lead"
-    },
     {
      "blurb": "",
      "date": "2026-10-11",
@@ -775,28 +767,57 @@
      "image": "https://cdn.newsworks.co.kr/news/thumbnail/202610/856132_820183_1629_v150.jpg",
      "image_via": "og:image",
      "url": "https://www.newsworks.co.kr/news/articleView.html?idxno=856132",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "삼성전자 S27 가격 인상 검토…메모리값 급등에 수익성 압박",
+     "highlight": "",
+     "image": "https://cdn.it.chosun.com/news/thumbnail/202610/2023092171656_454286_520_v150.jpg",
+     "image_via": "og:image",
+     "url": "https://it.chosun.com/news/articleView.html?idxno=2023092171656",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "가격 인상 Galaxy S26 이건 큰 경고입니다. 가격이 걱정되네요. Galaxy S27 천문학적일 것이다",
+     "highlight": "",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-9.jpg",
+     "image_via": "og:image",
+     "url": "https://samsungmagazine.eu/ko/2026/10/10/samsung-galaxy-s26-price-galaxy-s27-ultra/",
      "weight": "normal"
     },
     {
      "blurb": "",
      "date": "2026-10-12",
-     "headline": "Another report suggests Samsung Galaxy S27 series could cost more - GSMArena.com news",
+     "headline": "三星Galaxy S27“扩大阵容”……将增加高端机型",
      "highlight": "",
-     "image": "https://fdn.gsmarena.com/imgroot/news/26/10/galaxy-s27-series-price-hike-report/-952x498w6/gsmarena_00.jpg",
+     "image": "https://pimg.mk.co.kr/news/cms/202610/13/20261013_01110114000006_L00.jpg",
      "image_via": "og:image",
-     "url": "https://www.gsmarena.com/another_report_suggests_samsung_galaxy_s27_series_could_cost_more-news-74999.php",
+     "url": "https://www.mk.co.kr/cn/business/12173858",
      "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "Galaxy S27 Ultra vs. S27 Pro: Rumored Specs Comparison",
-     "highlight": "",
-     "image": "https://nokiamob.net/wp-content/uploads/2026/10/Samsung-Galaxy-S27-Pro-leak-als-kompakteres-Galaxy-S27-Ultra.jpg",
-     "image_via": "og:image",
-     "url": "https://nokiamob.net/2026/10/12/samsung-galaxy-s27-ultra-vs-s27-pro-which-premium-flagship-should-you-wait-for/",
-     "weight": "normal"
-    },
+    }
+   ],
+   "subtitle": "갤럭시 S27 · 发布会 · 阵容 · 价格",
+   "theme": {
+    "accent": "#4C8DFF",
+    "alt_accent": "#1428A0",
+    "alt_bg": "#C9CDD5",
+    "alt_fg": "#0E1016",
+    "bg": "#0E1016",
+    "fg": "#EEF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "Galaxy S27 Ultra",
+   "section": "好物",
+   "stories": [
     {
      "blurb": "",
      "date": "2026-10-12",
@@ -805,17 +826,123 @@
      "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-leak.jpg",
      "image_via": "og:image",
      "url": "https://www.geeky-gadgets.com/galaxy-s27-ultra-price-leak/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Why the Samsung Galaxy S27 Ultra Hardware Changes Raise Questions",
+     "highlight": "",
+     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra.jpg",
+     "image_via": "og:image",
+     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-leaks-21/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "\"갤럭시S27 울트라, 화면 확 바뀐다\"…3가지 변화는",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.msn.com/ko-kr/news/techandscience/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%ED%99%94%EB%A9%B4-%ED%99%95-%EB%B0%94%EB%80%90%EB%8B%A4-3%EA%B0%80%EC%A7%80-%EB%B3%80%ED%99%94%EB%8A%94/ar-AA2e1htA",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "'갤럭시S27 울트라' 2세대 프라이버시 디스플레이…화질·선명도 업그레이드",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.msn.com/ko-kr/news/other/갤럭시s27-울트라-2세대-프라이버시-디스플레이-화질-선명도-업그레이드/ar-AA2e3hzX",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "Samsung may give the Galaxy S27 Ultra a major eye comfort upgrade",
+     "highlight": "",
+     "image": "https://www.digitaltrends.com/tachyon/2026/06/samsung-galaxy-s26-ultra-smartphone-8.jpg?resize=1200%2C630",
+     "image_via": "og:image",
+     "url": "https://www.digitaltrends.com/phones/samsung-may-give-the-galaxy-s27-ultra-a-major-eye-comfort-upgrade/",
      "weight": "normal"
     }
    ],
-   "subtitle": "갤럭시 S27 울트라 · S27 Pro · 明年旗舰特别关注",
+   "subtitle": "갤럭시 S27 울트라 · 想买 · 指定商品追踪",
    "theme": {
-    "accent": "#4C8DFF",
-    "alt_accent": "#1428A0",
-    "alt_bg": "#C9CDD5",
-    "alt_fg": "#0E1016",
-    "bg": "#0E1016",
-    "fg": "#EEF1F6",
+    "accent": "#2F6FDB",
+    "alt_accent": "#9CB8E8",
+    "alt_bg": "#15181E",
+    "alt_fg": "#E6E8EC",
+    "bg": "#E6E8EC",
+    "fg": "#15181E",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "Galaxy S27 Pro",
+   "section": "好物",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Galaxy S27 Ultra vs. S27 Pro: Rumored Specs Comparison",
+     "highlight": "",
+     "image": "https://nokiamob.net/wp-content/uploads/2026/10/Samsung-Galaxy-S27-Pro-leak-als-kompakteres-Galaxy-S27-Ultra.jpg",
+     "image_via": "og:image",
+     "url": "https://nokiamob.net/2026/10/12/samsung-galaxy-s27-ultra-vs-s27-pro-which-premium-flagship-should-you-wait-for/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "Samsung Galaxy S27 Pro vs Galaxy S27 Ultra: Who should wait for which phone",
+     "highlight": "",
+     "image": "https://www.gizmochina.com/wp-content/uploads/2026/10/Erste-Samsung-Galaxy-S27-Ultra-Cases-zeigen-mehr-vom-neuen-Kamera-Design-q82-w2560-h-1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.gizmochina.com/2026/10/12/samsung-galaxy-s27-pro-vs-galaxy-s27-ultra-who-should-wait-for-which-phone/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "Galaxy S27 ProとS27 Ultraのスペック分析：カメラの変更点とハードウェアランキング",
+     "highlight": "",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/11/1791693558571_img_f8150f3f.webp",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/ja/phan-tich-thong-so-galaxy-s27-pro-va-s27-ultra-thay-doi-camera-va-su-phan-cap-phan-cung",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%ED%94%84%EB%A1%9C-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EC%B5%9C%EC%8B%A0-m16-oled%EC%97%90-%EC%82%BC%EC%84%B1-%EC%B5%9C%EC%B4%88-dc-%EB%94%94%EB%B0%8D%EA%B9%8C%EC%A7%80-%EC%A0%81%EC%9A%A9-%EC%A0%84%EB%A7%9D/ar-AA2e1E0i",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Galaxy S27 Pro and Ultra May Fix OLED Flickering and Privacy Display Issues",
+     "highlight": "",
+     "image": "https://sammyguru.com/wp-content/uploads/2026/02/Galaxy-S26-Ultra-SammyGuru-29-widgets.jpg",
+     "image_via": "og:image",
+     "url": "https://sammyguru.com/galaxy-s27-pro-ultra-display-upgrades-leak/",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "갤럭시 S27 프로 · 想买 · 指定商品追踪",
+   "theme": {
+    "accent": "#8E2A47",
+    "alt_accent": "#E7A9BA",
+    "alt_bg": "#5A1A2E",
+    "alt_fg": "#F6EEF0",
+    "bg": "#F6EEF0",
+    "fg": "#2B1219",
     "font": "sans",
     "split": true
    }
@@ -838,21 +965,21 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-10",
-     "headline": "Gelato Pique Holiday 店舗限定 トートバッグ 新品タグ付き - バッグ",
-     "highlight": "",
-     "image": null,
-     "url": "http://www.v-shinpo.com/shopdetail/U85925263103",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-06",
      "headline": "ジェラピケ x Sanrio characters コラボコレクション第2弾が国内10月14日より先行予約開始",
      "highlight": "",
      "image": "https://uptodate.tokyo/wp-content/uploads/2026/10/IMG_4137_3AC2E5DB-768x1024.jpeg",
      "image_via": "og:image",
      "url": "https://uptodate.tokyo/gelato-pique-sanrio-characters-part2/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "Gelato Pique Holiday 店舗限定 トートバッグ 新品タグ付き - バッグ",
+     "highlight": "",
+     "image": null,
+     "url": "http://www.v-shinpo.com/shopdetail/U85925263103",
      "weight": "normal"
     },
     {
