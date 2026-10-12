@@ -451,7 +451,9 @@ class PublishTest(unittest.TestCase):
             mock.patch.object(digest, "STATE_DIR", tmp / "state"), mock.patch.object(digest, "THEMES_FILE", tmp / "state" / "themes.json"),
             mock.patch.object(digest, "write_issue_markdown", lambda *a: None), mock.patch.object(images, "pick", fake_pick),
             mock.patch.object(digest.theme, "resolve", lambda *a: dict(digest.theme.DEFAULT)), mock.patch.object(sources, "resolve_url", lambda u: u),
-            mock.patch.object(digest, "make_client", lambda: None)]
+            mock.patch.object(digest, "make_client", lambda: None),
+            # publish 最后会重算「我会喜欢？」：它写真实的 state/recommend.json，还会联网搜同类新品，测试里跳过
+            mock.patch.object(digest, "recommend", lambda *a, **k: None)]
         for p in patches:
             p.start()
         try:
