@@ -231,7 +231,7 @@ def filter_entries(entries, item, settings, seen, now, known=()):
         if key not in best or rank(e) > rank(best[key]):
             best[key] = e
     out, grams = [], [_title_grams(t, names) for t in known]
-    skip_sources = set(settings.get("exclude_sources", ["YouTube"]))
+    skip_sources = set(settings.get("exclude_sources", ["YouTube"])) | set(item.get("exclude_sources") or [])
     # 标题相近的转载只留先看到的那条：国外网站先看，同一件事有国外报道就不收大陆网站的；最后再按时间排回来
     for e in sorted(best.values(), key=lambda e: (sources.is_domestic(e.url, e.source),
                                                   -(e.published or now).timestamp())):
@@ -858,7 +858,10 @@ def ingest(dry_run=False):
         conf = dict(settings, lookback_days=settings.get("first_lookback_days", 42)) if backfill else settings
         if backfill:
             print(f"  第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
-        entries = filter_entries(collect(item, conf), item, conf, seen, now, known.get(item["name"], []))
+        compare = known.get(item["name"], [])
+        if item.get("dedupe_others"):  # 别的关注项已经收过的同一件事，这一项不再重复收
+            compare = compare + [t for name, ts in known.items() if name != item["name"] for t in ts]
+        entries = filter_entries(collect(item, conf), item, conf, seen, now, compare)
         print(f"  新条目 {len(entries)} 条", file=sys.stderr)
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
@@ -878,6 +881,7 @@ def ingest(dry_run=False):
         })
         for e in entries:
             seen.update((e.url, title_key(e.title)))
+        known.setdefault(item["name"], []).extend(e.title for e in entries)
 
     if dry_run:
         return None
