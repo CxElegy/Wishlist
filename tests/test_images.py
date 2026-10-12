@@ -404,6 +404,12 @@ class ImagesTest(unittest.TestCase):
         self.assertEqual(stats.counts["无图→作品封面"], 1)
         self.assertIn("有图 2 条", stats.summary())
 
+    def test_find_image_shim_for_recommend(self):
+        """「我会喜欢？」推荐用的 digest.find_image 走同一套检查：坏图跳过，最后没图返回 None。"""
+        self.assertEqual(digest.find_image(self.u("/forbidden.jpg"), [entry(url=self.u("/og.html"))], self.u("/og.html")),
+                         self.u("/big.jpg"))
+        self.assertIsNone(digest.find_image(None, [entry(url=self.u("/nothing.html"))], self.u("/nothing.html")))
+
     def test_written_back_image_keeps_source_next_run(self):
         d = digest.entry_to_dict(1, entry(url=self.u("/nothing.html"), image=self.u("/big2.jpg")))
         self.assertNotIn("image_via", d)  # 没补过图的条目，inbox 格式不变

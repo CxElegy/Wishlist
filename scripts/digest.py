@@ -471,6 +471,11 @@ def fallback_stories(entries, item, limit=7):
     return picked
 
 
+def find_image(chosen, refs, url):
+    """只要图片地址的地方（「我会喜欢？」推荐）用：和报道配图同一套候选、检查和回退，没有可用的返回 None。"""
+    return images.pick(chosen, refs, url).image
+
+
 def attach_media(stories, entries, cover, name="", stats=None):
     """给每条报道配链接和图（候选、检查和回退见 images.pick），没图的头条用作品封面。
     出刊时补到的图写回条目（entry.image / image_via），publish 会存回 inbox，下次直接用。
