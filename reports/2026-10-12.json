@@ -89,21 +89,21 @@
     {
      "blurb": "",
      "date": "2026-10-08",
-     "headline": "Grand Theft Auto VI Announce In-Game Radio Stations Featuring Lana Del Rey, Slayer, Bad Bunny & More",
-     "highlight": "",
-     "image": "https://music-b26f.kxcdn.com/wp-content/uploads/2014/04/Coachella2014-Lana-Del-Rey-2.jpg",
-     "image_via": "og:image",
-     "url": "https://music.mxdwn.com/2026/10/08/news/grand-theft-auto-vi-announce-in-game-radio-stations-featuring-lana-del-rey-slayer-bad-bunny-more/",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-08",
      "headline": "Cyberleek is back: GTA 6 gets a 25-minute gameplay leak showing first-person mode and full nudity",
      "highlight": "",
      "image": "https://cdn.videocardz.com/1/2026/08/GTA-CYBERLEEK.webp",
      "image_via": "og:image",
      "url": "https://videocardz.com/newz/cyberleek-is-back-gta-6-gets-a-25-minute-gameplay-leak-showing-first-person-mode-and-full-nudity",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "Grand Theft Auto VI Announce In-Game Radio Stations Featuring Lana Del Rey, Slayer, Bad Bunny & More",
+     "highlight": "",
+     "image": "https://music-b26f.kxcdn.com/wp-content/uploads/2014/04/Coachella2014-Lana-Del-Rey-2.jpg",
+     "image_via": "og:image",
+     "url": "https://music.mxdwn.com/2026/10/08/news/grand-theft-auto-vi-announce-in-game-radio-stations-featuring-lana-del-rey-slayer-bad-bunny-more/",
      "weight": "normal"
     },
     {
@@ -379,6 +379,16 @@
     },
     {
      "blurb": "",
+     "date": "2026-10-08",
+     "headline": "無限ダウンヒルスキーゲーム『SNØ: Ultimate Freeriding』コンソール版配信日決定！",
+     "highlight": "",
+     "image": "https://www.rbbtoday.com/base/images/img_ogp.png",
+     "image_via": "转载 www.rbbtoday.com",
+     "url": "https://news.nicovideo.jp/watch/nw19858332?news_ref=watch_70_nw19603093",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-12",
      "headline": "ニンジャスノーハイランドが「峰の原高原スキー場」へ名称変更",
      "highlight": "",
@@ -405,16 +415,6 @@
      "image": "https://www.neveitalia.it/static/prodotti/02/600/305679228.jpg",
      "image_via": "og:image",
      "url": "https://www.neveitalia.it/materiali/prezzi/prezzo/bataleon-evil-twin-2027-snowboard-none-305679228-2",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-08",
-     "headline": "無限ダウンヒルスキーゲーム『SNØ: Ultimate Freeriding』コンソール版配信日決定！",
-     "highlight": "",
-     "image": "https://www.rbbtoday.com/base/images/img_ogp.png",
-     "image_via": "转载 www.rbbtoday.com",
-     "url": "https://news.nicovideo.jp/watch/nw19858332?news_ref=watch_70_nw19603093",
      "weight": "normal"
     },
     {
@@ -780,16 +780,6 @@
     {
      "blurb": "",
      "date": "2026-10-12",
-     "headline": "Samsung Galaxy S27 Ultra Price Leak Just Dropped—And You Won’t Like It",
-     "highlight": "",
-     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-leak.jpg",
-     "image_via": "og:image",
-     "url": "https://www.geeky-gadgets.com/galaxy-s27-ultra-price-leak/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-12",
      "headline": "Another report suggests Samsung Galaxy S27 series could cost more - GSMArena.com news",
      "highlight": "",
      "image": "https://fdn.gsmarena.com/imgroot/news/26/10/galaxy-s27-series-price-hike-report/-952x498w6/gsmarena_00.jpg",
@@ -806,6 +796,16 @@
      "image_via": "og:image",
      "url": "https://nokiamob.net/2026/10/12/samsung-galaxy-s27-ultra-vs-s27-pro-which-premium-flagship-should-you-wait-for/",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Samsung Galaxy S27 Ultra Price Leak Just Dropped—And You Won’t Like It",
+     "highlight": "",
+     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-leak.jpg",
+     "image_via": "og:image",
+     "url": "https://www.geeky-gadgets.com/galaxy-s27-ultra-price-leak/",
+     "weight": "normal"
     }
    ],
    "subtitle": "갤럭시 S27 울트라 · S27 Pro · 明年旗舰特别关注",
@@ -817,6 +817,73 @@
     "bg": "#0E1016",
     "fg": "#EEF1F6",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "name": "gelato pique",
+   "section": "好物",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "FURFUR×gelato piqueの限定コラボ♡20周年を彩る全14型のルームウェアが登場",
+     "highlight": "",
+     "image": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+     "image_via": "作品封面",
+     "url": "https://www.msn.com/ja-jp/news/other/furfur-gelato-pique%E3%81%AE%E9%99%90%E5%AE%9A%E3%82%B3%E3%83%A9%E3%83%9C-20%E5%91%A8%E5%B9%B4%E3%82%92%E5%BD%A9%E3%82%8B%E5%85%A814%E5%9E%8B%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2dWmge",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "Gelato Pique Holiday 店舗限定 トートバッグ 新品タグ付き - バッグ",
+     "highlight": "",
+     "image": null,
+     "url": "http://www.v-shinpo.com/shopdetail/U85925263103",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "ジェラピケ x Sanrio characters コラボコレクション第2弾が国内10月14日より先行予約開始",
+     "highlight": "",
+     "image": "https://uptodate.tokyo/wp-content/uploads/2026/10/IMG_4137_3AC2E5DB-768x1024.jpeg",
+     "image_via": "og:image",
+     "url": "https://uptodate.tokyo/gelato-pique-sanrio-characters-part2/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "ご褒美買いしたい！ 【ファーファー×ジェラピケ】ふんわり暖かいウエアなど「20周年記念コラボ全14型」を10/9発売",
+     "highlight": "",
+     "image": "https://p.potaufeu.asahi.com/c2dc-p/picture/31416699/72243b8d2254b36daa8010677f8b393f.jpg",
+     "image_via": "og:image",
+     "url": "https://www.asahi.com/and/w/article/16947414",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "gelato piqueとサンリオキャラクターズが再びコラボ♪冬のおうち時間を彩る新作に注目",
+     "highlight": "",
+     "image": null,
+     "url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/gelato-pique%E3%81%A8%E3%82%B5%E3%83%B3%E3%83%AA%E3%82%AA%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E3%82%BA%E3%81%8C%E5%86%8D%E3%81%B3%E3%82%B3%E3%83%A9%E3%83%9C-%E5%86%AC%E3%81%AE%E3%81%8A%E3%81%86%E3%81%A1%E6%99%82%E9%96%93%E3%82%92%E5%BD%A9%E3%82%8B%E6%96%B0%E4%BD%9C%E3%81%AB%E6%B3%A8%E7%9B%AE/ar-AA2dHQEq",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
     "split": true
    }
   }
