@@ -19,6 +19,16 @@
   "font": "serif",
   "split": false
  },
+ "FROM|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
  "GTA 6|https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg": {
   "accent": "#CF636F",
   "alt_accent": "#BB3A48",
