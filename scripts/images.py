@@ -1,9 +1,12 @@
 """报道配图：候选获取 → 有效性检查 → 回退选择 → 失败原因记录。
 
 只用公开的网页元数据（og:image / twitter:image / JSON-LD）、正文图片、条目自带图、
-Reddit（官方 API 或公开 RSS）、YouTube oEmbed 和 Bing 新闻上同一篇文章的公开转载。
+MSN 的公开文章接口、Reddit（官方 API 或公开 RSS）、YouTube oEmbed，以及 Bing / Google 新闻上
+同一篇文章的公开转载和新闻稿原出处。
 请求不带 Referer、不伪装来源；被防盗链、防机器人或登录挡住的图就判为不可用，换下一张，
 都不行时交给网页上的作品封面 / 作品名封面块兜底。
+中国大陆网站的图常把海外服务器整个拦掉（GitHub 上验证不了，国内浏览器却能看）：
+国外的图都不行时，才用这种验证不了的国内图（网页上打不开会自动换成作品封面）。
 
     res = pick(chosen, refs, url)      # res.image / res.source / res.trace / res.reason
     print(log_line("关注项", "标题", res))
@@ -32,7 +35,10 @@ MIN_LONG_SIDE = 300           # 长边至少这么多像素
 MAX_CHECKS = 12               # 每条报道最多实际检查这么多张候选图
 STORY_BUDGET = 60             # 每条报道找图最多花这么多秒（到点不再开始新的检查）
 BODY_IMAGES = 6               # 每个网页最多取这么多张正文图
-SYNDICATION_SIMILARITY = 0.8  # Bing 转载：标题二元组重合度至少这么高才算同一篇
+SYNDICATION_SIMILARITY = 0.8  # 转载：标题二元组重合度至少这么高才算同一篇
+SYNDICATION_DAYS = 30         # Google 新闻找转载：搜最近多少天
+SYNDICATION_PAGES = 3         # Google 新闻找转载：最多读几篇（每篇要还原跳转链接再读网页）
+GONE = (404, 410)             # 原文返回这些状态码：页面已经删了，这条报道不出刊
 
 IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|qrcode|/ads?/|\.svg|\.gif|data:", re.I)
 BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied", re.I)
@@ -147,6 +153,13 @@ class Page:
     og: list = field(default_factory=list)            # og:image / twitter:image
     jsonld: list = field(default_factory=list)        # JSON-LD 里的 image / thumbnailUrl
     body: list = field(default_factory=list)          # 正文 <img>
+    status: int | None = None                         # 打不开时的 HTTP 状态码
+    og_label: str = "og:image"                        # og 那一栏的来源名（MSN 接口取到的图写「MSN 接口」）
+
+    @property
+    def gone(self):
+        """原文已经删了（404 / 410）。"""
+        return self.status in GONE
 
 
 _META = (
@@ -161,10 +174,12 @@ def page(url):
         return _pages[url]
     if not url or "news.google.com" in url:
         p = Page(url, False, "原文是未还原的 Google 新闻跳转链接")
+    elif MSN_ARTICLE.match(url):
+        p = msn_page(url)
     else:
         f = _fetch(url, PAGE_LIMIT)
         if f.status != 200:
-            p = Page(url, False, _http_reason(f, "原文"))
+            p = Page(url, False, _http_reason(f, "原文"), status=f.status)
         else:
             p = parse_page(url, f.body.decode("utf-8", "ignore"))
     _pages[url] = p
@@ -226,6 +241,36 @@ def _jsonld_images(node):
         for k, v in node.items():
             if k not in ("image", "thumbnailUrl") and isinstance(v, (dict, list)):
                 yield from _jsonld_images(v)
+
+
+MSN_ARTICLE = re.compile(r"https?://(?:www\.)?msn\.(?:com|cn)/([a-z]{2}-[a-z]{2})/.*?/ar-([A-Za-z0-9]+)", re.I)
+
+
+def msn_page(url):
+    """MSN 的文章页是脚本渲染的空壳（HTML 里没有图）：改读 MSN 网页自己用的公开文章接口，取文章里的图。"""
+    m = MSN_ARTICLE.match(url)
+    f = _fetch(f"https://assets.msn.com/content/view/v2/Detail/{m.group(1).lower()}/{m.group(2)}", PAGE_LIMIT)
+    if f.status != 200:
+        return Page(url, False, _http_reason(f, "原文") + "（MSN 接口）", status=f.status)
+    try:
+        data = json.loads(f.body)
+    except ValueError:
+        return Page(url, False, "原文 MSN 接口返回格式无法解析")
+    p = Page(url, True, og_label="MSN 接口")
+    for im in data.get("imageResources") or []:
+        u = _abs(url, (im or {}).get("url"))
+        if u and u not in p.og:
+            p.og.append(u)
+    if not p.og:
+        p.reason = "原文没有图片元数据，正文也没有图"
+    return p
+
+
+def gone(url):
+    """原文是不是已经删了（404 / 410）。Reddit 帖子和没还原的 Google 跳转不判断。"""
+    if not url or "news.google.com" in url or REDDIT_POST.match(url):
+        return False
+    return page(url).gone
 
 
 def og_image(url):
@@ -303,22 +348,60 @@ def similarity(a, b):
     return len(ga & gb) / max(1, min(len(ga), len(gb)))
 
 
+def search_phrase(title):
+    """拿去搜转载的标题前半句：标题常被截断，各家后半句的措辞也常不一样（中日文取前 30 字，其它取前 10 个词）。"""
+    t = re.sub(r"\s+", " ", unicodedata.normalize("NFKC", title or "")).strip()
+    if re.search(r"[\u3040-\u30ff\u4e00-\u9fff\uac00-\ud7af]", t):
+        return t[:30]
+    return " ".join(t.split(" ")[:10])
+
+
+def news_lang(title):
+    """按标题文字选 Google 新闻的语言版本：(hl, gl, ceid)。"""
+    if re.search(r"[\u3040-\u30ff]", title or ""):
+        return "ja", "JP", "JP:ja"
+    if re.search(r"[\uac00-\ud7af]", title or ""):
+        return "ko", "KR", "KR:ko"
+    if re.search(r"[\u4e00-\u9fff]", title or ""):
+        return "zh-CN", "CN", "CN:zh-Hans"
+    return "en-US", "US", "US:en"
+
+
 def syndicated_candidates(title, skip_url=""):
-    """新闻稿常被好几家网站转载：用 Bing 新闻搜同一标题，标题几乎相同的那几篇的预览图。
+    """原文打不开（防机器人）或没有图时，找同一篇的转载 / 新闻稿原出处：
+    1. Bing 新闻搜同一标题：Bing 自己的缩略图（bing.com 提供，原站挡机器人也能用）和转载网页的预览图；
+       搜回来的就是原文本身时，只用它的 Bing 缩略图。
+    2. Google 新闻搜标题前半句：转载网页 / 新闻稿原出处（PR TIMES 等）的预览图。
+    标题几乎相同（SYNDICATION_SIMILARITY）才算同一篇；国外网站排在中国大陆网站前面。
     返回 ([(来源, 地址)], 原因)；来源写明是哪个网站的转载。"""
     if len(title_grams(title)) < 8:
         return [], "标题太短，不找转载"
-    found = []
+    found, read = [], {skip_url}  # found: (来源, 图片地址, 所在网页)
+
+    def add_page(url, host):
+        read.add(url)
+        p = page(url)
+        for u in (p.og + p.jsonld)[:2]:
+            found.append((f"转载 {host}", u, url))
+
     for e in sources.bing_news(title)[:8]:
-        if e.url == skip_url or similarity(title, e.title) < SYNDICATION_SIMILARITY:
+        if similarity(title, e.title) < SYNDICATION_SIMILARITY:
             continue
         host = urllib.parse.urlparse(e.url).netloc
         if e.image:
-            found.append((f"转载 {host}（Bing 缩略图）", e.image))
-        p = page(e.url)
-        for u in (p.og + p.jsonld)[:2]:
-            found.append((f"转载 {host}", u))
-    return found, "" if found else "Bing 新闻没有找到带图的同一篇转载"
+            label = "Bing 缩略图" if e.url == skip_url else f"转载 {host}（Bing 缩略图）"
+            found.append((label, e.image, e.url))
+        if e.url not in read:
+            add_page(e.url, host)
+    hits = [e for e in sources.google_news(search_phrase(title), SYNDICATION_DAYS, news_lang(title))
+            if similarity(title, e.title) >= SYNDICATION_SIMILARITY]
+    hits.sort(key=lambda e: sources.is_domestic(e.url, e.source))
+    for e in hits[:SYNDICATION_PAGES]:
+        url = sources.resolve_url(e.url)
+        if url not in read and "news.google.com" not in url:
+            add_page(url, urllib.parse.urlparse(url).netloc)
+    found.sort(key=lambda x: sources.is_domestic(x[2]))
+    return [(label, u) for label, u, _ in found], "" if found else "Bing / Google 新闻都没有找到带图的同一篇转载"
 
 
 # ---------- 选择 ----------
@@ -374,13 +457,24 @@ def kind(reason):
     return "其它"
 
 
+UNVERIFIABLE = re.compile(r"HTTP 567|超时|网络错误")  # 大陆网站拦海外服务器的样子（不是防盗链 403）
+
+
 def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None):
     """一条报道的配图。按顺序检查候选图，第一张可用的就用：
     AI 挑的 > 条目自带图 > 原文（og:image > JSON-LD > 正文图；Reddit 帖子读帖子本身和外链）
-    > 其它来源的原文 > Bing 新闻上的同一篇转载。都不行返回 image=None（网页上用作品封面代替）。"""
+    > 其它来源的原文 > Bing / Google 新闻上的同一篇转载。
+    都不行时，用第一张因为拦海外服务器而验证不了的中国大陆网站图片（万不得已）；
+    连这也没有返回 image=None（网页上用作品封面代替）。"""
     res = Result()
     seen = set()
     deadline = time.monotonic() + (STORY_BUDGET if budget is None else budget)
+    backup = []  # 验证不了的大陆网站图片：(来源, 地址)
+
+    def done():
+        if not res.image and backup:
+            res.image, res.source = backup[0][1], backup[0][0] + "（大陆网站，服务器验证不了）"
+        return res
 
     def stages():
         yield [("AI 挑选", chosen)]
@@ -391,7 +485,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None):
                 found, note = reddit_candidates(link)
             else:
                 p = page(link)
-                found = [("og:image", u) for u in p.og] + [("JSON-LD", u) for u in p.jsonld] + \
+                found = [(p.og_label, u) for u in p.og] + [("JSON-LD", u) for u in p.jsonld] + \
                         [("正文图", u) for u in p.body]
                 note = p.reason
             if i:
@@ -411,17 +505,19 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None):
                 continue
             if time.monotonic() > deadline:
                 res.notes.append(f"找图超过 {STORY_BUDGET if budget is None else budget} 秒，停止")
-                return res
+                return done()
             seen.add(img)
             ok, why = check(img)
             res.trace.append((label, img, why if not ok else "OK"))
             if ok:
                 res.image, res.source = img, label
                 return res
+            if UNVERIFIABLE.search(why) and sources.is_domestic(img):
+                backup.append((label, img))
             if len(seen) >= max_checks:
                 res.notes.append(f"已检查 {max_checks} 张，停止")
-                return res
-    return res
+                return done()
+    return done()
 
 
 def log_line(name, headline, res):
@@ -437,12 +533,17 @@ class Stats:
 
     def __init__(self):
         self.counts = Counter()
+        self.dropped = 0  # 原文已删（404 / 410）、不出刊的报道
 
     def add(self, res, fallback_cover=False):
         self.counts["无图→作品封面" if fallback_cover else res.category] += 1
+
+    def drop(self):
+        self.dropped += 1
 
     def summary(self):
         total = sum(self.counts.values())
         ok = sum(n for k, n in self.counts.items() if k.startswith("有图"))
         parts = [f"{k} {n}" for k, n in self.counts.most_common()]
-        return f"配图汇总：共 {total} 条，有图 {ok} 条 · " + " · ".join(parts)
+        gone = f"（另有 {self.dropped} 条原文已删，不出刊）" if self.dropped else ""
+        return f"配图汇总：共 {total} 条{gone}，有图 {ok} 条 · " + " · ".join(parts)

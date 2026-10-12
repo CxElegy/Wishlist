@@ -65,6 +65,10 @@ ROUTES = {
     "/blocked.html": (403, "text/html", b"<title>Attention Required! | Cloudflare</title>"),
     "/copy.html": (200, "text/html", html_page('<meta property="og:image" content="/big2.jpg">')),
     "/yt-article.html": (200, "text/html", html_page('<meta property="og:image" content="/big.jpg">')),
+    "/gone.html": (410, "text/html", b"Gone"),
+    "/edgeone.jpg": (567, "text/html", b"Access Restricted. Protected by Tencent Cloud EdgeOne"),
+    "/msn-api/en-us/AA1": (200, "application/json", json.dumps(
+        {"title": "t", "imageResources": [{"url": "/big2.jpg", "width": 800, "height": 450}]}).encode()),
 }
 
 
@@ -117,9 +121,11 @@ class ImagesTest(unittest.TestCase):
         images.clear_cache()
         HITS.clear()
         REFERERS.clear()
+        self.real_bing = sources.bing_news
         # 测试里不访问外网：Google 跳转还原 / Bing / Reddit 都替换掉
         self.patches = [mock.patch.object(sources, "resolve_url", lambda u: u),
                         mock.patch.object(sources, "bing_news", lambda q: []),
+                        mock.patch.object(sources, "google_news", lambda q, days, lang: []),
                         mock.patch.object(images, "TIMEOUT", 1),
                         mock.patch("time.sleep", lambda s: None)]
         for p in self.patches:
@@ -311,7 +317,7 @@ class ImagesTest(unittest.TestCase):
         bad = self.category_of("/nothing.html", "/small.jpg")
         self.assertEqual(images.log_line("项", "标题", ok), "  [配图] 项 | 标题 | 正文图（前 2 张不合格）")
         self.assertEqual(images.log_line("项", "标题", bad),
-                         "  [配图] 项 | 标题 | 无图：原文没有图片元数据，正文也没有图；Bing 新闻没有找到带图的同一篇转载；图片太小 120×80")
+                         "  [配图] 项 | 标题 | 无图：原文没有图片元数据，正文也没有图；Bing / Google 新闻都没有找到带图的同一篇转载；图片太小 120×80")
         stats = images.Stats()
         stats.add(ok), stats.add(bad), stats.add(bad, fallback_cover=True)
         self.assertEqual(stats.summary(), "配图汇总：共 3 条，有图 1 条 · 有图：正文图 1 · 无图：候选图尺寸不合格 1 · 无图→作品封面 1")
@@ -379,6 +385,139 @@ class ImagesTest(unittest.TestCase):
         rss = self.RSS.replace(b"LINK", b"https://youtube.com/playlist?list=PL1&amp;amp;si=x")
         self.assertEqual(sources.reddit_links(rss),
                          {"https://www.reddit.com/r/x/comments/abc/t/": "https://youtube.com/playlist?list=PL1&si=x"})
+
+    # ---------- Bing 缩略图 / MSN / 转载 / 大陆网站 / 原文已删 ----------
+
+    def test_bing_news_image_parsed(self):
+        rss = (b'<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xmlns:News="https://www.bing.com/news/search?q=x">'
+               b'<channel><item><title>Galaxy S27 news</title><link>https://example.com/a</link>'
+               b'<News:Source>Forbes</News:Source><News:Image>http://www.bing.com/th?id=ONUT.abc&amp;pid=News</News:Image>'
+               b'<News:ImageMaxWidth>1350</News:ImageMaxWidth></item>'
+               b'<item><title>Small one</title><link>https://example.com/b</link>'
+               b'<News:Image>http://www.bing.com/th?id=ONUT.def&amp;pid=News</News:Image><News:ImageMaxWidth>640</News:ImageMaxWidth>'
+               b'</item></channel></rss>')
+        got = sources.rss_bytes(rss, "Bing 新闻")
+        self.assertEqual([e.image for e in got], ["https://www.bing.com/th?id=ONUT.abc&pid=News&w=1200",
+                                                   "https://www.bing.com/th?id=ONUT.def&pid=News&w=640"])
+        self.assertEqual(got[0].source, "Forbes")
+
+    def test_bing_news_retries_random_empty_result(self):
+        answers = [[], [entry(url="http://www.bing.com/news/apiclick.aspx?url=https%3a%2f%2fa.example%2f1")]]
+        with mock.patch.object(sources, "rss", lambda url, source=None: answers.pop(0)):
+            got = self.real_bing("x")
+        self.assertEqual([e.url for e in got], ["https://a.example/1"])
+
+    def test_msn_article_uses_msn_api(self):
+        api = "https://assets.msn.com/content/view/v2/Detail/en-us/AA1"
+        with mock.patch.object(images, "_fetch", lambda url, limit: images.Fetched(200, {}, ROUTES["/msn-api/en-us/AA1"][2])
+                               if url == api else images.Fetched(error="不该请求 " + url)):
+            p = images.page("https://www.msn.com/en-us/news/other/some-title/ar-AA1")
+        self.assertEqual(p.og, ["https://www.msn.com/big2.jpg"])
+        self.assertEqual(p.og_label, "MSN 接口")
+
+    def test_bing_thumbnail_of_the_original_itself_is_used(self):
+        """原文挡机器人（Forbes captcha），Bing 搜回来的就是原文本身：不再读原文，但用它的 Bing 缩略图。"""
+        title = "Android Circuit: S27 Ultra Specs, Honor's New Display, Alexa Tablets"
+        same = entry(title=title, url=self.u("/blocked.html"), image=self.u("/big2.jpg"))
+        with mock.patch.object(sources, "bing_news", lambda q: [same]):
+            res = images.pick(None, [entry(title=title, url=self.u("/blocked.html"))], self.u("/blocked.html"))
+        self.assertEqual((res.image, res.source), (self.u("/big2.jpg"), "Bing 缩略图"))
+        self.assertEqual(HITS["/blocked.html"], 1)
+
+    def test_google_news_finds_press_release_original(self):
+        """原文挡机器人、Bing 没有：Google 新闻用标题前半句搜到新闻稿原出处（标题后半句措辞不同也算同一篇）。"""
+        title = "「西日本最大級から、西日本最高峰へ。」オリンピアン・日本のスノーリゾートを牽引するトップリーダー皆川賢太郎が、JAM福"
+        orig = entry(title="「西日本最大級から、西日本最高峰へ。」オリンピアン・日本のスノーリゾートを牽引するトップリーダー 皆川賢太郎が、勝山高原開発株式会社 副社長に就任",
+                     url="https://news.google.com/rss/articles/PR", source="PR TIMES")
+        queries = []
+
+        def google(q, days, lang):
+            queries.append((q, lang))
+            return [orig]
+        with mock.patch.object(sources, "google_news", google), \
+                mock.patch.object(sources, "resolve_url", lambda u: self.u("/copy.html") if u.endswith("/PR") else u):
+            res = images.pick(None, [entry(title=title, url=self.u("/blocked.html"))], self.u("/blocked.html"))
+        self.assertEqual(queries, [(title[:30], ("ja", "JP", "JP:ja"))])
+        self.assertEqual(res.image, self.u("/big2.jpg"))
+        self.assertTrue(res.source.startswith("转载 127.0.0.1"))
+
+    def test_foreign_copy_before_domestic_copy(self):
+        title = "八千穂高原スキー場 シーズン前に購入する事で大変お得な早割チケット10月より販売開始"
+        cn = entry(title=title, url="https://www.sohu.com/a/1", image=self.u("/big.jpg"))
+        jp = entry(title=title, url=self.u("/copy.html"))
+        real_page = images.page
+        with mock.patch.object(sources, "bing_news", lambda q: [cn, jp]), \
+                mock.patch.object(images, "page", lambda u: real_page(u) if "sohu" not in u else images.Page(u, True)):
+            found, _ = images.syndicated_candidates(title, self.u("/nothing.html"))
+        self.assertEqual([label for label, _ in found], ["转载 127.0.0.1:%d" % self.server.server_port, "转载 www.sohu.com（Bing 缩略图）"])
+
+    def test_domestic_image_blocked_overseas_used_as_last_resort(self):
+        """大陆网站把海外服务器拦掉（EdgeOne 567）：国外的图都不行时才用它；防盗链 403 的不用。"""
+        cn_img = "https://i.17173cdn.com/x.jpg"
+        checks = {cn_img: (False, "图片 HTTP 567"), "https://n.sinaimg.cn/y.jpg": (False, "图片 HTTP 403（防机器人：ACCESS DENIED）")}
+        with mock.patch.object(images, "check", lambda u: checks.get(u) or (False, "图片太小 120×80")):
+            res = images.pick(None, [entry(url=self.u("/nothing.html"), image="https://n.sinaimg.cn/y.jpg"),
+                                     entry(url=self.u("/nothing.html"), image=cn_img)], self.u("/nothing.html"))
+        self.assertEqual(res.image, cn_img)
+        self.assertEqual(res.source, "条目自带（大陆网站，服务器验证不了）")
+        images.clear_cache()
+        with mock.patch.object(images, "check", lambda u: checks.get(u) or (True, "640×400")):
+            res = images.pick(None, [entry(url=self.u("/nothing.html"), image=cn_img),
+                                     entry(url=self.u("/og.html"))], self.u("/nothing.html"))
+        self.assertEqual(res.image, self.u("/big.jpg"))  # 有验证过的国外图就不用大陆的
+
+    def test_is_domestic(self):
+        self.assertTrue(sources.is_domestic("https://news.17173.com/content/1.shtml"))
+        self.assertTrue(sources.is_domestic("https://ent.sina.cn/x"))
+        self.assertTrue(sources.is_domestic("https://news.google.com/rss/articles/x", "新浪网"))
+        self.assertFalse(sources.is_domestic("https://news.google.com/rss/articles/x", "Forbes"))
+        self.assertFalse(sources.is_domestic("https://www.msn.com/zh-cn/x", "一点资讯 on MSN"))
+        self.assertFalse(sources.is_domestic("https://tw.news.yahoo.com/x"))
+        self.assertFalse(sources.is_domestic("https://www.notchina.com/x"))
+
+    def test_attach_media_prefers_foreign_ref_and_drops_deleted(self):
+        entries = [entry(url="https://www.sohu.com/a/1", source="搜狐"), entry(url=self.u("/og.html")),
+                   entry(url=self.u("/gone.html")), entry(url=self.u("/missing.html")), entry(url=self.u("/jsonld.html"))]
+        stories = [{"headline": "国内外都报了", "refs": [1, 2]},
+                   {"headline": "原文已删", "refs": [3, 4]},
+                   {"headline": "第一个来源删了，换第二个", "refs": [3, 5]}]
+        stats = images.Stats()
+        with mock.patch("sys.stderr", io.StringIO()) as err:
+            out = digest.attach_media(stories, entries, None, "测试项", stats)
+        self.assertEqual([(s["headline"], s["url"]) for s in out],
+                         [("国内外都报了", self.u("/og.html")), ("第一个来源删了，换第二个", self.u("/jsonld.html"))])
+        self.assertNotIn("/sohu", "".join(HITS))
+        self.assertIn("[配图] 测试项 | 原文已删 | 不出刊：原文已删", err.getvalue())
+        self.assertIn("另有 1 条原文已删，不出刊", stats.summary())
+
+    def test_collect_adds_zh_tw_when_zh_cn(self):
+        calls = []
+        with mock.patch.object(sources, "google_news", lambda q, days, lang: calls.append(lang[0]) or []):
+            digest.collect({"name": "x", "use": ["google"], "news_langs": ["zh-CN", "en-US"]}, {})
+        self.assertEqual(calls, ["zh-TW", "zh-CN", "en-US"])
+
+    def test_filter_entries_prefers_foreign_copy(self):
+        now = dt.datetime(2026, 10, 12, tzinfo=dt.timezone.utc)
+        cn = entry(title="复联5 全球预售票房突破1亿美元 距上映还有两个多月", url="https://www.sohu.com/a/1", source="搜狐")
+        cn.published = now  # 大陆网站那篇更新，也不收
+        hk = entry(title="复联5 全球预售票房突破1亿美元！距上映还有两个多月", url="https://www.hk01.com/x", source="香港01")
+        same_title_cn = entry(title="复联5 内地定档 12 月 16 日", url="https://news.google.com/rss/articles/a", source="新浪网")
+        same_title_tw = entry(title="复联5 内地定档 12 月 16 日", url="https://news.google.com/rss/articles/b", source="Yahoo奇摩新聞")
+        only_cn = entry(title="复联5 内地首映礼名单公布", url="https://www.sohu.com/a/2", source="搜狐")
+        got = digest.filter_entries([cn, hk, same_title_cn, same_title_tw, only_cn], {"name": "复联5"}, {}, set(), now)
+        self.assertEqual({e.source for e in got}, {"香港01", "Yahoo奇摩新聞", "搜狐"})
+        self.assertIn(only_cn, got)  # 只有大陆网站报道的照样收
+
+    def test_llm_sees_domestic_mark(self):
+        text = digest.format_entries([entry(url="https://www.sohu.com/a/1", source="搜狐"), entry(url="https://a.example/1")])
+        self.assertIn("搜狐（大陆网站）", text)
+        self.assertNotIn("Example News（大陆网站）", text)
+
+    def test_fallback_prefers_foreign_copy(self):
+        cn = entry(title="复联5 内地定档 12 月 16 日", url="https://www.sohu.com/a/1", source="搜狐")
+        tw = entry(title="复联5 内地定档 12 月 16 日！", url="https://tw.news.yahoo.com/x", source="Yahoo奇摩新聞")
+        picked = digest.fallback_stories([cn, tw], {"name": "复联5", "type": "show"})
+        self.assertEqual([p["refs"] for p in picked], [[2]])
 
     # ---------- digest.attach_media（旧功能不回归） ----------
 
@@ -451,7 +590,7 @@ class PublishTest(unittest.TestCase):
             mock.patch.object(digest, "STATE_DIR", tmp / "state"), mock.patch.object(digest, "THEMES_FILE", tmp / "state" / "themes.json"),
             mock.patch.object(digest, "write_issue_markdown", lambda *a: None), mock.patch.object(images, "pick", fake_pick),
             mock.patch.object(digest.theme, "resolve", lambda *a: dict(digest.theme.DEFAULT)), mock.patch.object(sources, "resolve_url", lambda u: u),
-            mock.patch.object(digest, "make_client", lambda: None),
+            mock.patch.object(digest, "make_client", lambda: None), mock.patch.object(images, "gone", lambda u: False),
             # publish 最后会重算「我会喜欢？」：它写真实的 state/recommend.json，还会联网搜同类新品，测试里跳过
             mock.patch.object(digest, "recommend", lambda *a, **k: None)]
         for p in patches:

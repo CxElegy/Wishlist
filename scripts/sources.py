@@ -61,13 +61,46 @@ def _parse_date(text):
 
 
 def _image(node, raw_html):
-    """RSS 条目里的配图：media:thumbnail / media:content / enclosure / 正文第一张图。"""
+    """RSS 条目里的配图：media:thumbnail / media:content / enclosure / Bing 的 News:Image / 正文第一张图。"""
     for tag in (f"{MEDIA}thumbnail", f"{MEDIA}content", "enclosure"):
         el = node.find(tag)
         if el is not None and el.get("url") and (tag != "enclosure" or el.get("type", "").startswith("image")):
             return html.unescape(el.get("url"))
+    # Bing 新闻：<News:Image>（Bing 自己的缩略图，原站挡机器人也能用）。不带尺寸参数时常只有 100×100，
+    # 按 <News:ImageMaxWidth>（原图宽度）要原比例的图，最宽 1200
+    bing = {el.tag.split("}")[-1]: (el.text or "").strip() for el in node if el.tag.startswith("{")}
+    if bing.get("Image"):
+        width = min(int(bing["ImageMaxWidth"]) if bing.get("ImageMaxWidth", "").isdigit() else 1200, 1200)
+        return re.sub(r"^http://", "https://", html.unescape(bing["Image"])) + f"&w={width}"
     m = re.search(r'<img[^>]+src=["\']([^"\']+)', html.unescape(raw_html or ""))
     return html.unescape(m.group(1)) if m else ""
+
+
+# 中国大陆网站：海外服务器（GitHub Actions）常被拦（腾讯云 EdgeOne 567、超时），防盗链也多。
+# 新闻优先用国外（含港台、日韩、欧美）来源，只有大陆网站报道的才用它们。
+DOMESTIC_HOSTS = (
+    ".cn", "sohu.com", "sina.com", "qq.com", "gtimg.com", "163.com", "126.net", "ifeng.com", "17173.com",
+    "17173cdn.com", "3dmgame.com", "gamersky.com", "mydrivers.com", "ithome.com", "yidianzixun.com",
+    "toutiao.com", "baidu.com", "bdstatic.com", "bilibili.com", "hdslb.com", "zhihu.com", "zhimg.com",
+    "weibo.com", "douban.com", "doubanio.com", "36kr.com", "huxiu.com", "eastmoney.com", "cnbeta.com",
+    "gcores.com", "donews.com", "ali213.net", "hupu.com", "china.com", "thepaper.com", "xinhuanet.com",
+    "people.com.cn", "chinanews.com", "bjnews.com", "163yun.com", "youku.com", "iqiyi.com",
+)
+# Google 新闻的跳转链接看不出网站：按媒体名判断
+DOMESTIC_SOURCES = (
+    "新浪", "搜狐", "腾讯", "网易", "凤凰", "17173", "3DM", "驱动之家", "快科技", "游民星空", "游侠网", "机核",
+    "一点资讯", "cnBeta", "DoNews", "虎扑", "财联社", "光明日报", "智源社区", "中华网", "东方财富", "IT之家",
+    "36氪", "虎嗅", "澎湃", "新华", "人民网", "央视", "中国新闻网", "哔哩哔哩", "知乎", "微博", "今日头条",
+    "红板报", "体坛", "QQ News", "Gamereactor China", "豆瓣", "百度", "新京报", "界面新闻", "第一财经",
+)
+
+
+def is_domestic(url, source=""):
+    """是不是中国大陆网站。看得出网址的看网址，Google 新闻跳转链接看媒体名。"""
+    host = urllib.parse.urlparse(url or "").hostname or ""
+    if host and host != "news.google.com":
+        return any(host == h.lstrip(".") or host.endswith(h if h.startswith(".") else "." + h) for h in DOMESTIC_HOSTS)
+    return any(s in (source or "") for s in DOMESTIC_SOURCES)
 
 
 def _warn(name, err):
@@ -133,9 +166,17 @@ def google_news(query, lookback_days, lang):
     return entries
 
 
+BING_TRIES = 3  # Bing 新闻 RSS 常随机返回空结果（同一个词连搜 10 次约 3 次是空的）：空的就再搜，最多这么多次
+
+
 def bing_news(query):
     q = urllib.parse.quote(query)
-    entries = rss(f"https://www.bing.com/news/search?q={q}&format=rss", "Bing 新闻")
+    for attempt in range(BING_TRIES):
+        entries = rss(f"https://www.bing.com/news/search?q={q}&format=rss", "Bing 新闻")
+        if entries:
+            break
+        if attempt + 1 < BING_TRIES:
+            time.sleep(1)
     for e in entries:
         # Bing 链接是带随机跟踪参数的跳转地址，还原成原文地址
         real = urllib.parse.parse_qs(urllib.parse.urlparse(e.url).query).get("url")

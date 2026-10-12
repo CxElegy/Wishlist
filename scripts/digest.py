@@ -77,6 +77,8 @@ SYSTEM_PROMPT = """你是报纸编辑，把抓取到的新闻条目编成一个�
 - blurb：一句话补充（40 字以内），只给头条和 hero 写，其余留空。
 - refs：这条报道依据的条目编号。
 - Reddit 帖子是玩家讨论（摘要里有赞数、评论数），热度高时可以归纳成一条“社区热议”报道。
+- 来源优先用国外媒体（含港台、日韩、欧美）：同一件事国外媒体也报了，refs 第一个放国外媒体；
+  标了（大陆网站）的条目只在这件事只有大陆网站报道时才用。
 - 外文一律译成中文；传闻要在标题里注明“传闻”。"""
 
 STORY_SCHEMA = {
@@ -121,7 +123,10 @@ def save_json(path, data):
 
 def collect(item, settings):
     lookback = settings.get("lookback_days", 7)
-    langs = item.get("news_langs") or settings.get("news_langs") or ["zh-CN"]
+    langs = list(item.get("news_langs") or settings.get("news_langs") or ["zh-CN"])
+    if "zh-CN" in langs and "zh-TW" not in langs:
+        # 简体版 Google 新闻几乎全是大陆网站（常拦海外服务器、图片防盗链）：再搜一遍繁体版，多些港台媒体可用
+        langs.insert(langs.index("zh-CN"), "zh-TW")
     keywords = item.get("keywords") or [item["name"]]
     use = item.get("use") or ["google", "bing", "reddit"]
 
@@ -213,16 +218,21 @@ def filter_entries(entries, item, settings, seen, now, known=()):
     exclude = [w.lower() for w in item.get("exclude") or []]
     # 新闻搜索会混入不相关结果：标题或摘要里必须出现某个匹配词（忽略大小写和空格）
     match = [_norm(w) for w in item.get("match") or item.get("keywords") or [item["name"]]]
-    # 同一篇文章常同时出现在 Google 和 Bing：每个标题只留一条，优先能直接打开原文的
-    # （Google 是跳转页，拿不到配图）
+    # 同一篇文章常同时出现在 Google 和 Bing：每个标题只留一条，优先国外网站（大陆网站常拦海外服务器、
+    # 图片防盗链），其次能直接打开原文的（Google 是跳转页，拿不到配图）
+    def rank(e):
+        return (not sources.is_domestic(e.url, e.source), "news.google.com" not in e.url)
+
     best = {}
     for e in entries:
         key = title_key(e.title)
-        if key not in best or ("news.google.com" in best[key].url and "news.google.com" not in e.url):
+        if key not in best or rank(e) > rank(best[key]):
             best[key] = e
     out, grams = [], [_title_grams(t, names) for t in known]
     skip_sources = set(settings.get("exclude_sources", ["YouTube"]))
-    for e in sorted(best.values(), key=lambda e: e.published or now, reverse=True):
+    # 标题相近的转载只留先看到的那条：国外网站先看，同一件事有国外报道就不收大陆网站的；最后再按时间排回来
+    for e in sorted(best.values(), key=lambda e: (sources.is_domestic(e.url, e.source),
+                                                  -(e.published or now).timestamp())):
         key = title_key(e.title)
         if e.url in seen or key in seen or e.source in skip_sources:
             continue
@@ -241,6 +251,7 @@ def filter_entries(entries, item, settings, seen, now, known=()):
         grams.append(g)
         out.append(e)
     # Reddit 帖子多且杂（同人图、闲聊），单独限额，不和媒体报道抢名额
+    out.sort(key=lambda e: e.published or now, reverse=True)
     news = [e for e in out if not e.source.startswith("r/") and e.source != "Reddit"]
     posts = [e for e in out if e not in news]
     cap = item.get("max_entries") or settings.get("max_entries_per_item", 30)
@@ -335,7 +346,7 @@ def format_entries(entries):
     lines = []
     for i, e in enumerate(entries, 1):
         date = e.published.strftime("%m-%d") if e.published else "日期未知"
-        line = f"[{i}] {date} | {e.source} | {e.title}"
+        line = f"[{i}] {date} | {e.source}{'（大陆网站）' if sources.is_domestic(e.url, e.source) else ''} | {e.title}"
         if e.summary:
             line += f" | {e.summary}"
         lines.append(line)
@@ -430,7 +441,8 @@ def fallback_stories(entries, item, limit=7):
     - 同一新闻被多家转载时只留一条（标题字符重合度高的视为同一条）
     - 媒体报道优先于 Reddit；Reddit 帖子没命中关键词的不收（多半是同人图、闲聊）
     - 本作只是被顺带提到的（打头的是别的作品）不收
-    - 同等条件下有图的、较新的优先"""
+    - 同等条件下国外来源优先于中国大陆网站（大陆网站常拦海外服务器、防盗链，图片和链接容易失效），
+      再其次有图的、较新的优先"""
     words = [w.lower() for w in item.get("priority_keywords") or []]
     urgent = {i for i, e in enumerate(entries, 1) if is_urgent(e, item)}
     by_heat = bool(item.get("hot_only"))
@@ -441,15 +453,18 @@ def fallback_stories(entries, item, limit=7):
     def hits(e):
         return sum(w in e.title.lower() for w in words)
 
+    def domestic(e):
+        return sources.is_domestic(e.url, e.source)
+
     def heat(i):
         return sum(1 for j in media if j != i and _same_topic(topics[i], topics[j]))
 
     def score(pair):
         i, e = pair
         if by_heat:
-            return (i in urgent, heat(i), not e.source.startswith("r/"), hits(e),
+            return (i in urgent, heat(i), not e.source.startswith("r/"), hits(e), not domestic(e),
                     bool(e.image) or "news.google.com" not in e.url, -i)
-        return (i in urgent, hits(e) > 0, not e.source.startswith("r/"), hits(e),
+        return (i in urgent, hits(e) > 0, not e.source.startswith("r/"), hits(e), not domestic(e),
                 bool(e.image) or "news.google.com" not in e.url, -i)
 
     candidates = [(i, e) for i, e in enumerate(entries, 1)
@@ -479,11 +494,27 @@ def find_image(chosen, refs, url):
 
 def attach_media(stories, entries, cover, name="", stats=None):
     """给每条报道配链接和图（候选、检查和回退见 images.pick），没图的头条用作品封面。
+    一条报道有好几个来源时，国外来源排前面（链接和配图都先用它），中国大陆网站垫后。
+    原文已经删了（404 / 410）的来源不用；来源全删了的报道不出刊。
     出刊时补到的图写回条目（entry.image / image_via），publish 会存回 inbox，下次直接用。
-    每条报道的配图结果打一行日志，stats 记整期汇总。"""
-    for n, s in enumerate(stories):
-        refs = [entries[r - 1] for r in s.pop("refs")]
-        s["url"] = s.get("url") or sources.resolve_url(refs[0].url)
+    每条报道的配图结果打一行日志，stats 记整期汇总。返回要出刊的报道。"""
+    out = []
+    for s in stories:
+        refs = sorted((entries[r - 1] for r in s.pop("refs")), key=lambda e: sources.is_domestic(e.url, e.source))
+        url = s.get("url")
+        if url and images.gone(url):
+            url = None
+        for i, e in enumerate(refs if not url else []):
+            link = sources.resolve_url(e.url)
+            if not images.gone(link):
+                url, refs = link, refs[i:]
+                break
+        if not url:
+            print(f"  [配图] {name} | {s.get('headline', '')[:30]} | 不出刊：原文已删（HTTP 404 / 410）", file=sys.stderr)
+            if stats is not None:
+                stats.drop()
+            continue
+        s["url"] = url
         if refs[0].published:  # 消息本身的日期，卡片上显示、按它排序
             s["date"] = refs[0].published.date().isoformat()
         res = images.pick(s.get("image"), refs, s["url"])
@@ -492,13 +523,14 @@ def attach_media(stories, entries, cover, name="", stats=None):
             s["image_via"] = next((e.image_via for e in refs if e.image == res.image and e.image_via), res.source)
             if res.source not in ("AI 挑选", "条目自带") and not refs[0].image:
                 refs[0].image, refs[0].image_via = res.image, res.source
-        fallback = not s["image"] and n == 0 and bool(cover)
+        fallback = not s["image"] and not out and bool(cover)
         if fallback:
             s["image"], s["image_via"] = cover, "作品封面"
         print(images.log_line(name, s.get("headline", ""), res) + ("（用作品封面）" if fallback else ""), file=sys.stderr)
         if stats is not None:
             stats.add(res, fallback)
-    return stories
+        out.append(s)
+    return out
 
 
 # ---------- 输出 ----------
@@ -963,6 +995,13 @@ def publish(inbox_path=None):
             stories = stories[:item["max_stories"]]
         if not stories and not any(f["changed"] for f in raw["facts"]):
             continue
+        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats)  # 原文已删的报道会被去掉
+        # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
+        for d, e in zip(raw["entries"], entries):
+            if e.image and not d.get("image"):
+                d["image"], d["image_via"], inbox_changed = e.image, e.image_via, True
+        if not stories and not any(f["changed"] for f in raw["facts"]):
+            continue
         blocks.append({
             "name": raw["name"],
             "section": section_of(item),
@@ -970,12 +1009,8 @@ def publish(inbox_path=None):
             "cover": raw.get("cover"),
             "theme": theme.resolve(item, raw.get("cover"), themes),
             "facts": raw["facts"],
-            "stories": attach_media(stories, entries, raw.get("cover"), raw["name"], stats),
+            "stories": stories,
         })
-        # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
-        for d, e in zip(raw["entries"], entries):
-            if e.image and not d.get("image"):
-                d["image"], d["image_via"], inbox_changed = e.image, e.image_via, True
     # 没有新消息的关注项也留一个小栏，排在有消息的后面
     shown = {b["name"] for b in blocks}
     blocks += [quiet_block(i, themes, date) for i in items if i["name"] not in shown]

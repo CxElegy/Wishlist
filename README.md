@@ -154,7 +154,7 @@ python -m unittest discover tests       # 运行测试（本地假网站，不�
 |---|---|
 | `items.yaml` | 关注清单和设置 |
 | `scripts/sources.py` | 各数据源的抓取，新增数据源加在这里 |
-| `scripts/images.py` | 配图：找候选图、实际下载检查、按顺序回退，记录没图的原因（Actions 日志里的 `[配图]` 行和「配图汇总」） |
+| `scripts/images.py` | 配图：找候选图（含 MSN 文章接口、Bing / Google 新闻上的转载和新闻稿原出处）、实际下载检查、按顺序回退，记录没图的原因（Actions 日志里的 `[配图]` 行和「配图汇总」）；国外来源优先，大陆网站的图验证不了时万不得已才用；原文已删（404 / 410）的报道不出刊 |
 | `scripts/digest.py` | 主流程：抓取 → 过滤 → 编辑 → 输出 |
 | `scripts/theme.py` | 从封面图提取板块配色 |
 | `scripts/render.py` | 简报网页的版式 |
