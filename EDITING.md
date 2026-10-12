@@ -5,7 +5,7 @@
 
 ## 步骤
 
-1. 进入仓库 `CxElegy/Wishlist`，分支 `claude/sharp-gauss-osunmb`，先 `git pull --rebase`。
+1. 进入仓库 `CxElegy/Wishlist`，分支 `main`，先 `git pull --rebase`。
 2. 找到最新一份 `inbox/YYYY-MM-DD.json`（不带 `.edit`）。没有就结束。
 3. 读 `items.yaml`，了解每个关注项的 `priority`（读者最关心什么）和 `notes`（背景）。
 4. 读 inbox 里每个关注项的 `entries`（编号 `n`、日期、来源、标题、摘要），按下面的规则编排。
@@ -31,7 +31,7 @@
    ```bash
    git add inbox reports state docs
    git commit -m "编排 YYYY-MM-DD"
-   git pull --rebase && git push origin claude/sharp-gauss-osunmb
+   git pull --rebase && git push origin main
    ```
    推送被拒就再 `git pull --rebase` 一次后重推。不要动 `scripts/`、`items.yaml`、工作流文件。
 

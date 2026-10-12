@@ -9,7 +9,7 @@ on:
     - cron: "17 */2 * * *"   # 每 2 小时（UTC 的偶数点 17 分）
     - cron: "47 0 * * 1"     # 每周一 00:47 UTC = 北京时间 08:47，发周报
   push:
-    branches: [claude/sharp-gauss-osunmb]   # 只有主分支（网页所在分支）；PR 合并进来时才触发，避免未合并的分支先发通知
+    branches: [main]   # 只有 main（网页所在分支）；PR 合并进来时才触发，避免未合并的分支先发通知
     paths: ["items.yaml", "wishlist.yaml", "docs/wishlist/**", "scripts/**", ".github/**", "EDITING.md", ".claude/**", "requirements.txt", "README.md"]
   workflow_dispatch:
     inputs:

@@ -69,7 +69,7 @@ items.yaml
    **A. Workload Identity Federation（推荐，不需要存任何 Key）**
    1. 在 [Claude Console](https://platform.claude.com) → Settings → Workload identity → **Connect workload** → 选 **GitHub Actions**
    2. 按向导填写，匹配条件这样填（只允许这个仓库的默认分支）：
-      - Subject prefix：`repo:CxElegy/Wishlist:ref:refs/heads/claude/sharp-gauss-osunmb`
+      - Subject prefix：`repo:CxElegy/Wishlist:ref:refs/heads/main`
       - Audience：`https://api.anthropic.com`
       - Claims：`repository_owner` = `CxElegy`
    3. 向导完成后会给出 federation rule ID（`fdrl_` 开头）和 service account ID（`svac_` 开头）；organization ID 在 Settings → Organization

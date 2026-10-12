@@ -171,7 +171,7 @@ def wishlist(page_url):
         if img and not img.startswith("http"):
             # 用仓库里的原文件地址：推送后立刻能访问，不用等 GitHub Pages 发布
             repo = os.environ.get("GITHUB_REPOSITORY", "CxElegy/Wishlist")
-            branch = os.environ.get("GITHUB_REF_NAME", "claude/sharp-gauss-osunmb")
+            branch = os.environ.get("GITHUB_REF_NAME", "main")
             img = f"https://raw.githubusercontent.com/{repo}/{branch}/docs/wishlist/{urllib.parse.quote(img)}"
         lines = []
         if x.get("price") not in (None, ""):
