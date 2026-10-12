@@ -778,6 +778,26 @@ def publish(inbox_path=None):
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
 
 
+def new_item_names():
+    """items.yaml 里有、但 state/known_items.json 还没记下的关注项，也就是刚加的。
+    要在 notify-new-items 之前调用（发完通知它会把新项记进去）。"""
+    known = load_json(STATE_DIR / "known_items.json") or []
+    return [i["name"] for i in load_config()[1] if i["name"] not in known]
+
+
+def unedited(only=None):
+    """今天的 inbox 里有条目、但当天的 edit.json 里还没有的关注项。only 给了就只看这些。
+    工作流在推送新关注项后用它判断要不要立刻叫 AI 编辑。今天还没有 inbox 就返回空。"""
+    settings, _ = load_config()
+    today = dt.datetime.now(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
+    path = INBOX_DIR / f"{today}.json"
+    if not path.exists():
+        return []
+    edits = load_edits(path)
+    return [i["name"] for i in load_json(path)["items"]
+            if i["entries"] and i["name"] not in edits and (only is None or i["name"] in only)]
+
+
 PICK_DIR = pathlib.Path(os.environ.get("PICK_DIR", "/tmp/wishlist-pick"))
 
 
@@ -843,14 +863,19 @@ def pick_images(date=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "pick-images"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "pick-images", "unedited", "new-items"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
+    parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
     args = parser.parse_args()
     if args.dry_run:
         ingest(dry_run=True)
     elif args.step == "pick-images":
         pick_images(args.date)
+    elif args.step == "new-items":
+        print("、".join(new_item_names()))
+    elif args.step == "unedited":
+        print("、".join(unedited(args.only.split("、") if args.only is not None else None)))
     elif args.step == "render":
         write_page()
     elif args.step == "ingest":
