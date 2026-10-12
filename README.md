@@ -125,6 +125,7 @@ items.yaml
 - `type`：`game` / `anime` / `show` / `product` / `category`
 - `urgent_patterns`：什么样的标题算要紧消息（正则），命中就当天通知 Discord
 - `theme`：可选，手写配色；不写就从封面自动取色
+- `news_langs`：新闻语言区。中文用 `zh-TW`（港台媒体）；默认不收中国大陆网站（常拦海外服务器、图片防盗链，链接和配图容易失效），某一项确实要大陆新闻时再写上 `zh-CN`
 
 ## 本地运行
 

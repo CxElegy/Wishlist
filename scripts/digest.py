@@ -123,20 +123,22 @@ def save_json(path, data):
 
 def collect(item, settings):
     lookback = settings.get("lookback_days", 7)
-    langs = list(item.get("news_langs") or settings.get("news_langs") or ["zh-CN"])
-    if "zh-CN" in langs and "zh-TW" not in langs:
-        # 简体版 Google 新闻几乎全是大陆网站（常拦海外服务器、图片防盗链）：再搜一遍繁体版，多些港台媒体可用
-        langs.insert(langs.index("zh-CN"), "zh-TW")
+    langs = item.get("news_langs") or settings.get("news_langs") or ["zh-TW"]
+    # 中文新闻默认只要港台媒体（zh-TW）：大陆网站常拦海外服务器、图片防盗链，链接和配图容易失效。
+    # 写了 zh-CN 的关注项才收大陆网站（Google 简体版，以及 Bing 搜回来的大陆网站）
+    domestic_ok = "zh-CN" in langs
     keywords = item.get("keywords") or [item["name"]]
     use = item.get("use") or ["google", "bing", "reddit"]
 
     entries = []
     for kw in keywords:
+        news = []
         if "google" in use:
             for lang in langs:
-                entries += sources.google_news(kw, lookback, NEWS_LANGS[lang])
+                news += sources.google_news(kw, lookback, NEWS_LANGS[lang])
         if "bing" in use:
-            entries += sources.bing_news(kw)
+            news += sources.bing_news(kw)
+        entries += [e for e in news if domestic_ok or not sources.is_domestic(e.url, e.source)]
     for sub in item.get("subreddits") or []:
         entries += sources.reddit_sub(sub)
     if "reddit" in use:

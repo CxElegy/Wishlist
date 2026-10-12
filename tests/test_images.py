@@ -490,11 +490,16 @@ class ImagesTest(unittest.TestCase):
         self.assertIn("[配图] 测试项 | 原文已删 | 不出刊：原文已删", err.getvalue())
         self.assertIn("另有 1 条原文已删，不出刊", stats.summary())
 
-    def test_collect_adds_zh_tw_when_zh_cn(self):
-        calls = []
-        with mock.patch.object(sources, "google_news", lambda q, days, lang: calls.append(lang[0]) or []):
-            digest.collect({"name": "x", "use": ["google"], "news_langs": ["zh-CN", "en-US"]}, {})
-        self.assertEqual(calls, ["zh-TW", "zh-CN", "en-US"])
+    def test_collect_skips_mainland_unless_zh_cn(self):
+        cn = entry(url="https://www.sohu.com/a/1", source="搜狐")
+        hk = entry(url="https://www.hk01.com/x", source="香港01")
+        sina = entry(url="https://news.google.com/rss/articles/x", source="新浪网")  # 繁体版也偶尔混进大陆网站
+        with mock.patch.object(sources, "google_news", lambda q, days, lang: [sina]), \
+                mock.patch.object(sources, "bing_news", lambda q: [cn, hk]):
+            got = digest.collect({"name": "x", "use": ["google", "bing"], "news_langs": ["zh-TW"]}, {})
+            self.assertEqual([e.source for e in got], ["香港01"])
+            got = digest.collect({"name": "x", "use": ["google", "bing"], "news_langs": ["zh-CN"]}, {})
+            self.assertEqual([e.source for e in got], ["新浪网", "搜狐", "香港01"])
 
     def test_filter_entries_prefers_foreign_copy(self):
         now = dt.datetime(2026, 10, 12, tzinfo=dt.timezone.utc)
