@@ -54,6 +54,55 @@
   }
  ],
  "_covered": {
-  "BLEACH Mirrors High": 16
- }
+  "BLEACH Mirrors High": 16,
+  "星巴克马克杯": 34
+ },
+ "星巴克马克杯": [
+  {
+   "headline": "熊本限定马克杯：店员提案的「涩可爱」陶杯",
+   "highlight": "熊本限定",
+   "weight": "lead",
+   "blurb": "星巴克 9 月底推出熊本限定马克杯，由当地店员（partner）的提案做成；Walker plus 10/8 又发了上手体验。",
+   "refs": [
+    11,
+    6
+   ]
+  },
+  {
+   "headline": "出云大社店限定 当地主题马克杯发售",
+   "highlight": "出云大社店限定",
+   "weight": "normal",
+   "blurb": "",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "日本上陆 30 周年：复刻初代 Logo 马克杯",
+   "highlight": "复刻初代 Logo",
+   "weight": "normal",
+   "blurb": "",
+   "refs": [
+    32
+   ]
+  },
+  {
+   "headline": "地域限定马克杯第 3 弹：岐阜、福冈",
+   "highlight": "岐阜、福冈",
+   "weight": "normal",
+   "blurb": "",
+   "refs": [
+    17
+   ]
+  },
+  {
+   "headline": "台湾星巴克万圣黑猫系列 10/7 开卖，含马克杯",
+   "highlight": "10/7",
+   "weight": "normal",
+   "blurb": "",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }
