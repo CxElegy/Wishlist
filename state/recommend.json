@@ -1,6 +1,6 @@
 {
  "images": {
-  "https://collider.com/man-of-tomorrow-new-superman-costume-david-corenswet/": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/09/superman-david-corenswet-1.jpg?w=1200&h=675&fit=crop",
+  "https://koubo.jp/article/130064": "https://koubo-dz7cn3ci.s3.ap-northeast-1.amazonaws.com/strapi/article_130064_keyvisual_97b0dcbf38.jpeg",
   "https://news.infoseek.co.jp/article/inside_189107/": "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_189107_0-enlarge.jpg",
   "https://note.com/yamato_pokemon/n/n51f8de870e31": "https://assets.st-note.com/production/uploads/images/318648466/rectangle_large_type_2_de1d72ecf9a67c49677e1833b2ed7ddd.png?fit=bounds&quality=85&width=1280",
   "https://prtimes.jp/main/html/rd/p/000005141.000019470.html": "https://prcdn.freetls.fastly.net/release_image/19470/5141/19470-5141-32383ee635860226a81c353846642971-3840x2160.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
@@ -103,7 +103,7 @@
    "work": "GTA 6"
   },
   {
-   "because": "ILLIT 演唱会",
+   "because": "ILLIT",
    "date": "2026-10-12",
    "hits": [
     "K-POP 女团日本公演"
@@ -113,7 +113,20 @@
    "source": "PR TIMES",
    "title": "韓国発の実力派ガールズグループ・KISS OF LIFEが「THE FIRST TAKE」出演！メンバーの繊細且つ力強い歌声で『SWEAT (Japanese Ver.)』を一発撮りパフォーマンス！",
    "url": "https://prtimes.jp/main/html/rd/p/000005141.000019470.html",
-   "work": "ILLIT 演唱会"
+   "work": "ILLIT"
+  },
+  {
+   "because": "猫用品",
+   "date": "2026-10-12",
+   "hits": [
+    "猫咪新品"
+   ],
+   "image": "https://koubo-dz7cn3ci.s3.ap-northeast-1.amazonaws.com/strapi/article_130064_keyvisual_97b0dcbf38.jpeg",
+   "kind": "follow",
+   "source": "Koubo",
+   "title": "乃木坂46コラボで限定ライブ当選！黒猫ハロウィンも登場",
+   "url": "https://koubo.jp/article/130064",
+   "work": "猫用品"
   },
   {
    "because": "Astrae Oratio",
@@ -127,19 +140,6 @@
    "title": "美少女×武装艦の新作RPG『深鳶』が中国で配信開始！人気アニメ原作『鎮魂街』新作アクションもテスト間近―日本未上陸の注目ゲーム3選【2026年10月11日】｜Infoseekニュース",
    "url": "https://news.infoseek.co.jp/article/inside_189107/",
    "work": "Astrae Oratio"
-  },
-  {
-   "because": "漫威电影",
-   "date": "2026-10-09",
-   "hits": [
-    "超级英雄电影"
-   ],
-   "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2025/09/superman-david-corenswet-1.jpg?w=1200&h=675&fit=crop",
-   "kind": "follow",
-   "source": "Collider",
-   "title": "Superman Officially Gets a New Look for ‘Man of Tomorrow’",
-   "url": "https://collider.com/man-of-tomorrow-new-superman-costume-david-corenswet/",
-   "work": "漫威电影"
   }
  ]
 }
