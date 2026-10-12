@@ -19,7 +19,11 @@ description: 把用户喜欢的东西加进愿望清单（wishlist.yaml），网
    - 裁完用 Read 看一眼，确认商品完整、没被切掉。
 3. **写进 `wishlist.yaml`**（字段说明在文件顶部），`added` 填今天，`status: 想要`。
    和某个关注项有关（如星巴克马克杯）就填 `watch`，版面上会顺带显示那个关注项的最新消息。
-4. 运行 `python scripts/digest.py render`，截图检查 `docs/wishlist.html`，然后提交并推送。
+4. **写 `likes`（喜好标签）**：从这件东西看出用户喜欢什么，按「标签: [关键词…]」写，主页「我会喜欢？」靠它挑推荐。
+   - 同一个东西的几种写法用 `|` 连成一个词，中日英都写上：`"Snoopy|スヌーピー|史努比"`。
+   - 别用太短、容易误命中的英文（`cat` 会命中 category，写 `black cat|kitty`）。
+   - 只是基本属性的标签（马克杯、限定款）放进 `basics`：照样加分，但推荐去重时不看它们。
+5. 运行 `python scripts/digest.py recommend`，看看推荐合不合理，再，截图检查 `docs/wishlist.html` 和主页的「我会喜欢？」，然后提交并推送。
    不要自己发 Discord：推送触发的工作流会发（`state/known_wishlist.json` 记录已通知的）。
 
 ## 改状态 / 删除

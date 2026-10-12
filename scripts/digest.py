@@ -35,6 +35,7 @@ import theme
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ITEMS_FILE = ROOT / "items.yaml"
 WISHLIST_FILE = ROOT / "wishlist.yaml"
+RECOMMEND_FILE = ROOT / "state" / "recommend.json"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
@@ -521,6 +522,71 @@ def load_wishlist():
     return (yaml.safe_load(WISHLIST_FILE.read_text(encoding="utf-8")) or {}).get("wishlist") or []
 
 
+PICK_COUNT = 5       # 「我会喜欢？」最多几条（1 大 + 4 小正好排满）
+PICK_DAYS = 14       # 从最近几天收集到的消息里挑
+PICK_THRESHOLD = 5   # 每命中一个喜好标签 2 分，和愿望清单同一个关注项再加 1 分；至少 5 分才推荐
+
+
+def _like_hit(keyword, text):
+    """喜好关键词可以用 | 写同一个东西的几种写法（Snoopy|スヌーピー|史努比），命中任意一种就算。"""
+    return any(alt.strip().lower() in text for alt in str(keyword).split("|") if alt.strip())
+
+
+def _like_key(keyword):
+    return str(keyword).split("|")[0].strip().lower()
+
+
+def recommend():
+    """「我会喜欢？」：按愿望清单里每件东西的 likes（喜好标签），从最近收集到的所有消息里打分挑推荐。
+    不让 AI 联网，只用已经收集到的消息；结果写进 state/recommend.json，网页读它。"""
+    wishes = [w for w in load_wishlist() if w.get("likes")]
+    old = load_json(RECOMMEND_FILE) or {}
+    images = old.get("images", {})
+    if not wishes:
+        save_json(RECOMMEND_FILE, {"picks": [], "images": images})
+        return
+    wish_urls = {w.get("url") for w in wishes}
+    pool = []
+    for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]:
+        for item in load_json(path)["items"]:
+            for d in item["entries"]:
+                text = (d["title"] + " " + d.get("summary", "")).lower()
+                best = None
+                for w in wishes:
+                    hits = [label for label, kws in w["likes"].items() if any(_like_hit(k, text) for k in kws)]
+                    words = {_like_key(k) for kws in w["likes"].values() for k in kws if _like_hit(k, text)}
+                    score = 2 * len(hits) + (1 if w.get("watch") == item["name"] else 0)
+                    if not best or score > best[0]:
+                        best = (score, w, hits, words)
+                if best and best[0] >= PICK_THRESHOLD:
+                    pool.append((best[0], d.get("date") or path.stem, d, item["name"], best[1], best[2], best[3]))
+    # 同分时，命中具体喜好（猫、角色造型……）的排在只命中基本属性（限定、马克杯）的前面
+    pool.sort(key=lambda x: (x[0], len(set(x[5]) - set(x[4].get("basics") or [])), x[1]), reverse=True)
+    # 推荐要分散：两条靠同一个具体关键词命中（如都是 Snoopy）只留一条；basics 里的基本属性（限定、马克杯）不算
+    common = {_like_key(k) for w in wishes for label, kws in w["likes"].items()
+              if label in (w.get("basics") or []) for k in kws}
+    picks, grams, used = [], [], set()
+    for score, date, d, work, w, hits, words in pool:
+        g = _title_grams(d["title"], [])
+        key = words - common
+        if any(_similar(g, x) for x in grams) or key & used:
+            continue
+        used |= key
+        url = sources.resolve_url(d["url"])
+        if url in wish_urls or any(p["url"] == url for p in picks):
+            continue
+        if url not in images:
+            images[url] = find_image(d.get("image"), [entry_from_dict(d)], url)
+        grams.append(g)
+        picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
+                      "image": images[url], "because": w["name"], "hits": hits, "score": score})
+        if len(picks) >= PICK_COUNT:
+            break
+    keep = {p["url"] for p in picks}
+    save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep}})
+    print(f"我会喜欢？：{len(picks)} 条（候选 {len(pool)}）", file=sys.stderr)
+
+
 def write_page():
     issues = [load_json(p) for p in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True)[:ISSUES_ON_PAGE]]
     issues = [i for i in issues if i]
@@ -531,7 +597,7 @@ def write_page():
     tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
-                          load_wishlist())
+                          load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []))
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     wishes = load_wishlist()
     if wishes:
@@ -785,6 +851,7 @@ def publish(inbox_path=None):
     no = existing.index(date) + 1 if date in existing else len(existing) + 1
     issue = {"no": no, "date": date, "items": blocks}
     save_json(REPORTS_DIR / f"{date}.json", issue)
+    recommend()
     write_page()
     write_issue_markdown(issue, settings)
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
@@ -875,7 +942,7 @@ def pick_images(date=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "pick-images", "unedited", "new-items"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -897,6 +964,9 @@ def main():
     elif args.step == "notify-urgent":
         import notify
         notify.urgent(pages_url(load_config()[0]))
+    elif args.step == "recommend":
+        recommend()
+        write_page()
     elif args.step == "notify-wishlist":
         import notify
         notify.wishlist(pages_url(load_config()[0]))
