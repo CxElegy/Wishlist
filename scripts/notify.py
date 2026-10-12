@@ -94,7 +94,7 @@ def urgent(page_url):
                     keys.append(key)
             for e in item["entries"]:
                 if e.get("urgent") and e["url"] not in notified:
-                    link = sources.resolve_url(e["url"])
+                    link = e.get("link") or sources.resolve_url(e["url"])
                     lines.append(f"• [{_cut(e['title'], 90)}]({link}) — {e['source']}")
                     keys.append(e["url"])
             if lines:

@@ -23,6 +23,7 @@ import os
 import pathlib
 import re
 import sys
+import urllib.parse
 import urllib.request
 import zoneinfo
 
@@ -494,12 +495,14 @@ def find_image(chosen, refs, url):
     return images.pick(chosen, refs, url).image
 
 
-def attach_media(stories, entries, cover, name="", stats=None):
+def attach_media(stories, entries, cover, name="", stats=None, used=None):
     """给每条报道配链接和图（候选、检查和回退见 images.pick），没图的头条用作品封面。
     一条报道有好几个来源时，国外来源排前面（链接和配图都先用它），中国大陆网站垫后。
     原文已经删了（404 / 410）的来源不用；来源全删了的报道不出刊。
-    出刊时补到的图写回条目（entry.image / image_via），publish 会存回 inbox，下次直接用。
+    出刊时补到的图写回条目（entry.image / image_via），还原出的原文地址写回 entry.link，publish 会存回 inbox，下次直接用。
+    used：这一期已经用掉的图，别的报道不再用（几张卡片同一张图很难看）。
     每条报道的配图结果打一行日志，stats 记整期汇总。返回要出刊的报道。"""
+    used = set() if used is None else used
     out = []
     for s in stories:
         refs = sorted((entries[r - 1] for r in s.pop("refs")), key=lambda e: sources.is_domestic(e.url, e.source))
@@ -507,7 +510,7 @@ def attach_media(stories, entries, cover, name="", stats=None):
         if url and images.gone(url):
             url = None
         for i, e in enumerate(refs if not url else []):
-            link = sources.resolve_url(e.url)
+            link = sources.entry_link(e)
             if not images.gone(link):
                 url, refs = link, refs[i:]
                 break
@@ -519,8 +522,10 @@ def attach_media(stories, entries, cover, name="", stats=None):
         s["url"] = url
         if refs[0].published:  # 消息本身的日期，卡片上显示、按它排序
             s["date"] = refs[0].published.date().isoformat()
-        res = images.pick(s.get("image"), refs, s["url"])
+        res = images.pick(s.get("image"), refs, s["url"], avoid=used)
         s["image"] = res.image
+        if res.image:
+            used.add(res.image)
         if res.image:
             s["image_via"] = next((e.image_via for e in refs if e.image == res.image and e.image_via), res.source)
             if res.source not in ("AI 挑选", "条目自带") and not refs[0].image:
@@ -807,12 +812,14 @@ def entry_to_dict(n, e):
          "title": e.title, "summary": e.summary, "url": e.url, "image": e.image}
     if e.image_via:
         d["image_via"] = e.image_via
+    if e.link:
+        d["link"] = e.link
     return d
 
 
 def entry_from_dict(d):
     return sources.Entry(title=d["title"], url=d["url"], source=d["source"], summary=d.get("summary", ""),
-                         image=d.get("image", ""), image_via=d.get("image_via", ""),
+                         image=d.get("image", ""), image_via=d.get("image_via", ""), link=d.get("link", ""),
                          published=dt.datetime.fromisoformat(d["date"]) if d.get("date") else None)
 
 
@@ -969,7 +976,7 @@ def publish(inbox_path=None):
             print("没有可用的 Claude 凭据，改用关键词规则编排", file=sys.stderr)
     model = settings.get("model", "claude-haiku-5-5")
 
-    blocks, inbox_changed, stats = [], False, images.Stats()
+    blocks, inbox_changed, stats, used = [], False, images.Stats(), set()
     for raw in inbox["items"]:
         item = by_name.get(raw["name"], {"name": raw["name"], "type": "product"})
         if raw.get("backfill"):  # 补抓的旧闻不做“重大”
@@ -1001,11 +1008,13 @@ def publish(inbox_path=None):
             stories = stories[:item["max_stories"]]
         if not stories and not any(f["changed"] for f in raw["facts"]):
             continue
-        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats)  # 原文已删的报道会被去掉
+        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used)  # 原文已删的报道会被去掉
         # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
         for d, e in zip(raw["entries"], entries):
             if e.image and not d.get("image"):
                 d["image"], d["image_via"], inbox_changed = e.image, e.image_via, True
+            if e.link and not d.get("link"):
+                d["link"], inbox_changed = e.link, True
         if not stories and not any(f["changed"] for f in raw["facts"]):
             continue
         blocks.append({
@@ -1082,7 +1091,7 @@ def pick_images(date=None):
             for e in refs[:3]:
                 if e.image and e.image not in urls:
                     urls.append(e.image)
-                p = images.page(sources.resolve_url(e.url))
+                p = images.page(sources.entry_link(e))
                 for u in p.og + p.jsonld + p.body:
                     if u not in urls:
                         urls.append(u)
@@ -1123,16 +1132,84 @@ def pick_images(date=None):
     print(f"候选链接：{PICK_DIR / 'candidates.json'}")
 
 
+def repair_images():
+    """修已经出刊的各期（新的找图规则只管新出刊的，旧几期要补一遍）：
+    - 原文已删（404 / 410）的报道撤掉
+    - 没有自己图的报道重新找图：没图、用作品封面顶替、网站 logo / 默认图、和别的报道同一张图（先出现的那条留着）、
+      图现在下载不了或不合格
+    Google 跳转链接先还原；在 inbox 里找回这条报道的原始条目（原标题、自带图），找转载更准。改完重新生成网页。"""
+    paths = sorted(REPORTS_DIR.glob("????-??-??.json"))
+    reports = [(p, load_json(p)) for p in paths]
+    raw = {}  # 链接 → inbox 里的原始条目
+    for ip in sorted(INBOX_DIR.glob("????-??-??.json")):
+        for it in load_json(ip)["items"]:
+            for d in it["entries"]:
+                for key in (d["url"], d.get("link")):
+                    if key:
+                        raw.setdefault(key, d)
+    first_user = {}  # 图 → 最早用它的报道链接
+    for _, rep_ in reports:
+        for b in rep_["items"]:
+            for st in b["stories"]:
+                if st.get("image") and st.get("image_via") != "作品封面":
+                    first_user.setdefault(st["image"], st["url"])
+    used = set(first_user)
+    fixed = dropped = still = 0
+    for path, rep_ in reports:
+        changed = False
+        for b in rep_["items"]:
+            keep = []
+            for st in b["stories"]:
+                img = st.get("image")
+                bad = (not img or st.get("image_via") == "作品封面" or "验证不了" in (st.get("image_via") or "")
+                       or not images.check(img)[0]  # 图后来被删、或者不合格（太小、打不开）
+                       or images.GENERIC.search(urllib.parse.urlparse(img).path)
+                       or first_user.get(img) not in (None, st["url"]))
+                d = raw.get(st["url"])
+                e = entry_from_dict(d) if d else sources.Entry(title=st["headline"], url=st["url"], published=None, source="")
+                url = sources.entry_link(e) if "news.google.com" in st["url"] else st["url"]
+                if url != st["url"]:
+                    st["url"], changed = url, True
+                if images.gone(url):
+                    print(f"  [修复] {b['name']} | {st['headline'][:30]} | 原文已删，撤掉", file=sys.stderr)
+                    dropped, changed = dropped + 1, True
+                    continue
+                if bad:
+                    if img and img in used and first_user.get(img) == st["url"]:
+                        used.discard(img)
+                    res = images.pick(None, [e], url, avoid=used)
+                    if res.image:
+                        st["image"], st["image_via"], changed = res.image, res.source, True
+                        used.add(res.image)
+                        fixed += 1
+                    elif img and (images.GENERIC.search(urllib.parse.urlparse(img).path) or first_user.get(img) != st["url"]
+                                  or "验证不了" in (st.get("image_via") or "") or not images.check(img)[0]):
+                        st["image"], changed = None, True  # 错的图宁可不放（网页上用作品封面或作品名封面块）
+                        st.pop("image_via", None)
+                        still += 1
+                    else:
+                        still += 1
+                    print(images.log_line(b["name"], st["headline"], res), file=sys.stderr)
+                keep.append(st)
+            b["stories"] = keep
+        if changed:
+            save_json(path, rep_)
+    print(f"修复：{fixed} 条找到自己的图 · {dropped} 条原文已删撤掉 · {still} 条还是没图", file=sys.stderr)
+    write_page()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
     args = parser.parse_args()
     if args.dry_run:
         ingest(dry_run=True)
+    elif args.step == "repair-images":
+        repair_images()
     elif args.step == "pick-images":
         pick_images(args.date)
     elif args.step == "new-items":

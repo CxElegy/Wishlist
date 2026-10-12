@@ -33,6 +33,7 @@ class Entry:
     summary: str = ""
     image: str = ""
     image_via: str = ""  # 配图是出刊时补到的：从哪来（og:image、转载 xxx ……）；收集时自带的为空
+    link: str = ""       # Google 新闻跳转链接还原出的原文地址（出刊时还原，存回 inbox，下次不用再问 Google）
 
 
 def _get(url):
@@ -331,10 +332,7 @@ def steam_price(appid, country):
 
 # ---------- 图片 ----------
 
-def resolve_url(url):
-    """把 Google 新闻的跳转链接还原成原文地址（Google 页面里的签名参数换取真实地址）；失败就原样返回。"""
-    if "news.google.com" not in (url or ""):
-        return url
+def _resolve_once(url):
     try:
         aid = urllib.parse.urlparse(url).path.split("/")[-1]
         page = _get(f"https://news.google.com/rss/articles/{aid}").decode("utf-8", "ignore")
@@ -354,6 +352,35 @@ def resolve_url(url):
         return real if real.startswith("http") else url
     except Exception:
         return url
+
+
+RESOLVE_TRIES = 3   # Google 偶尔拒绝还原（GitHub 服务器上见过整批失败）：失败就隔几秒再试
+_resolved = {}      # 本次运行内缓存：跳转链接 → 原文地址
+
+
+def resolve_url(url):
+    """把 Google 新闻的跳转链接还原成原文地址（Google 页面里的签名参数换取真实地址）；失败就原样返回。"""
+    if "news.google.com" not in (url or ""):
+        return url
+    if url in _resolved:
+        return _resolved[url]
+    for attempt in range(RESOLVE_TRIES):
+        real = _resolve_once(url)
+        if real != url:
+            _resolved[url] = real
+            return real
+        if attempt + 1 < RESOLVE_TRIES:
+            time.sleep(2 * (attempt + 1))
+    return url
+
+
+def entry_link(e):
+    """条目的原文地址：已经还原过的直接用，否则还原一次并记在条目上。"""
+    if not e.link:
+        real = resolve_url(e.url)
+        if real != e.url:
+            e.link = real
+    return e.link or e.url
 
 
 def steam_header(appid):

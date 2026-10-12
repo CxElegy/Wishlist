@@ -121,7 +121,7 @@ class ImagesTest(unittest.TestCase):
         images.clear_cache()
         HITS.clear()
         REFERERS.clear()
-        self.real_bing = sources.bing_news
+        self.real_bing, self.real_resolve = sources.bing_news, sources.resolve_url
         # 测试里不访问外网：Google 跳转还原 / Bing / Reddit 都替换掉
         self.patches = [mock.patch.object(sources, "resolve_url", lambda u: u),
                         mock.patch.object(sources, "bing_news", lambda q: []),
@@ -451,20 +451,12 @@ class ImagesTest(unittest.TestCase):
             found, _ = images.syndicated_candidates(title, self.u("/nothing.html"))
         self.assertEqual([label for label, _ in found], ["转载 127.0.0.1:%d" % self.server.server_port, "转载 www.sohu.com（Bing 缩略图）"])
 
-    def test_domestic_image_blocked_overseas_used_as_last_resort(self):
-        """大陆网站把海外服务器拦掉（EdgeOne 567）：国外的图都不行时才用它；防盗链 403 的不用。"""
+    def test_unverifiable_domestic_image_not_used(self):
+        """大陆网站把海外服务器拦掉（EdgeOne 567）的图验证不了：不用（看网页的人不在大陆就打不开）。"""
         cn_img = "https://i.17173cdn.com/x.jpg"
-        checks = {cn_img: (False, "图片 HTTP 567"), "https://n.sinaimg.cn/y.jpg": (False, "图片 HTTP 403（防机器人：ACCESS DENIED）")}
-        with mock.patch.object(images, "check", lambda u: checks.get(u) or (False, "图片太小 120×80")):
-            res = images.pick(None, [entry(url=self.u("/nothing.html"), image="https://n.sinaimg.cn/y.jpg"),
-                                     entry(url=self.u("/nothing.html"), image=cn_img)], self.u("/nothing.html"))
-        self.assertEqual(res.image, cn_img)
-        self.assertEqual(res.source, "条目自带（大陆网站，服务器验证不了）")
-        images.clear_cache()
-        with mock.patch.object(images, "check", lambda u: checks.get(u) or (True, "640×400")):
-            res = images.pick(None, [entry(url=self.u("/nothing.html"), image=cn_img),
-                                     entry(url=self.u("/og.html"))], self.u("/nothing.html"))
-        self.assertEqual(res.image, self.u("/big.jpg"))  # 有验证过的国外图就不用大陆的
+        with mock.patch.object(images, "check", lambda u: (False, "图片 HTTP 567") if u == cn_img else (False, "图片太小 120×80")):
+            res = images.pick(None, [entry(url=self.u("/nothing.html"), image=cn_img)], self.u("/nothing.html"))
+        self.assertIsNone(res.image)
 
     def test_is_domestic(self):
         self.assertTrue(sources.is_domestic("https://news.17173.com/content/1.shtml"))
@@ -529,20 +521,62 @@ class ImagesTest(unittest.TestCase):
         import render
         html = render._pic({"image": "https://a/1.jpg", "_fbs": ["https://c/cover.jpg", "https://a/2.jpg"], "_work": "x"})
         self.assertIn('src="https://a/1.jpg" data-fb="https://c/cover.jpg https://a/2.jpg"', html)
-        html = render._pic({"image": None, "_fbs": ["https://a/2.jpg"], "_work": "x"})
-        self.assertIn('src="https://a/2.jpg"', html)
+        html = render._pic({"image": None, "_fbs": ["https://c/cover.jpg"], "_work": "x"})
+        self.assertIn('src="https://c/cover.jpg"', html)
         self.assertNotIn("data-fb", html)
         self.assertIn('class="pic none"', render._pic({"image": None, "_fbs": [], "_work": "x"}))
         self.assertIn('data-fb="https://c/cover.jpg"', render._pic({"image": "https://a/1.jpg", "_cover": "https://c/cover.jpg"}))
 
-    def test_render_works_without_cover_use_story_images(self):
+    def test_render_cover_once_and_never_other_story_images(self):
+        """没自己图的报道：作品封面每个版面只用一次，其余显示名字块；不拿别的报道的图来顶（那是另一件事的图）。"""
         import render
-        issue = {"date": "2026-10-12", "items": [{"name": "滑雪", "cover": None, "stories": [
+        issue = {"date": "2026-10-12", "items": [{"name": "网球", "cover": "https://c/cover.jpg", "stories": [
             {"headline": "a", "url": "https://a/1", "image": None, "date": "2026-10-12"},
-            {"headline": "b", "url": "https://a/2", "image": "https://a/2.jpg", "date": "2026-10-11"}]}]}
+            {"headline": "b", "url": "https://a/2", "image": "https://a/2.jpg", "date": "2026-10-11"},
+            {"headline": "c", "url": "https://a/3", "image": None, "date": "2026-10-10"}]}]}
         w = render.collect([issue])[0]
-        self.assertEqual(w["_fbs"], ["https://a/2.jpg"])
-        self.assertEqual(w["stories"][0]["_fbs"], ["https://a/2.jpg"])  # 没图的那条显示同一项另一条报道的图
+        self.assertEqual([x["_fbs"] for x in w["stories"]], [["https://c/cover.jpg"], ["https://c/cover.jpg"], []])
+        issue["items"][0]["stories"][1]["image"] = "https://c/cover.jpg"  # 头条已经用了封面
+        w = render.collect([issue])[0]
+        self.assertEqual([x["_fbs"] for x in w["stories"]], [[], [], []])
+        issue["items"][0]["cover"] = None
+        w = render.collect([issue])[0]
+        self.assertNotIn("https://a/2.jpg", sum((x["_fbs"] for x in w["stories"]), []))
+
+    def test_render_imageless_story_goes_to_text_list(self):
+        """找不到图的报道不做空图卡片，进「其他消息」文字列表；头版头条只挑有图的。"""
+        import render
+        issue = {"date": "2026-10-12", "items": [{"name": "网球", "cover": "https://c/cover.jpg", "section": "运动",
+                                                   "theme": dict(digest.theme.DEFAULT), "facts": [], "stories": [
+            {"headline": "有图", "url": "https://a/1", "image": "https://c/cover.jpg", "image_via": "作品封面", "date": "2026-10-12", "weight": "lead"},
+            {"headline": "没图的消息", "url": "https://a/2", "image": None, "date": "2026-10-12", "weight": "hero"}]}]}
+        page = render.render([issue], order=["网球"])
+        self.assertNotIn('class="pic none"', page)
+        self.assertIn('<div class="brief"><h4>其他消息</h4>', page)
+        self.assertIn('没图的消息</a></li>', page)
+        self.assertIn('class="top" href="https://a/1"', page)  # 没图的 hero 不上头条大图
+
+    def test_generic_and_duplicate_images_skipped(self):
+        refs = [entry(url=self.u("/og.html"), image="https://cdn.example.com/wp-content/uploads/2026/07/Logo.jpg")]
+        with mock.patch.object(images, "check", lambda u: (True, "640×400")):
+            res = images.pick(None, refs, self.u("/og.html"), avoid={self.u("/big.jpg")})
+        self.assertIsNone(res.image)
+        self.assertEqual([r for _, _, r in res.trace], ["网站 logo / 默认图", "和别的报道重复"])
+
+    def test_resolved_link_persisted_in_inbox(self):
+        e = entry(url="https://news.google.com/rss/articles/x")
+        with mock.patch.object(sources, "resolve_url", lambda u: "https://real.example/a"):
+            self.assertEqual(sources.entry_link(e), "https://real.example/a")
+        d = digest.entry_to_dict(1, e)
+        self.assertEqual(d["link"], "https://real.example/a")
+        self.assertEqual(digest.entry_from_dict(d).link, "https://real.example/a")
+        self.assertEqual(sources.entry_link(digest.entry_from_dict(d)), "https://real.example/a")  # 不用再问 Google
+
+    def test_resolve_url_retries(self):
+        calls = []
+        with mock.patch.object(sources, "_resolve_once", lambda u: calls.append(u) or (u if len(calls) < 2 else "https://real/a")):
+            self.assertEqual(self.real_resolve("https://news.google.com/rss/articles/retry"), "https://real/a")
+        self.assertEqual(len(calls), 2)
 
     # ---------- digest.attach_media（旧功能不回归） ----------
 
@@ -604,7 +638,7 @@ class PublishTest(unittest.TestCase):
                         {"headline": "补到了图", "refs": [2]}], "_covered": {item: 2}}
         (tmp / "inbox" / "2026-10-11.edit.json").write_text(json.dumps(edits, ensure_ascii=False))
 
-        def fake_pick(chosen, refs, url):
+        def fake_pick(chosen, refs, url, avoid=()):
             if chosen:
                 return images.Result(chosen, "AI 挑选", [("AI 挑选", chosen, "OK")])
             if url.endswith("/1"):

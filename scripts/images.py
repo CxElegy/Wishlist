@@ -5,8 +5,7 @@ MSN 的公开文章接口、Reddit（官方 API 或公开 RSS）、YouTube oEmbe
 同一篇文章的公开转载和新闻稿原出处。
 请求不带 Referer、不伪装来源；被防盗链、防机器人或登录挡住的图就判为不可用，换下一张，
 都不行时交给网页上的作品封面 / 作品名封面块兜底。
-中国大陆网站的图常把海外服务器整个拦掉（GitHub 上验证不了，国内浏览器却能看）：
-国外的图都不行时，才用这种验证不了的国内图（网页上打不开会自动换成作品封面）。
+验证不了的图（大陆网站把海外服务器整个拦掉的那种）一律不用：看网页的人不在大陆就是一张打不开的图。
 
     res = pick(chosen, refs, url)      # res.image / res.source / res.trace / res.reason
     print(log_line("关注项", "标题", res))
@@ -41,6 +40,8 @@ SYNDICATION_PAGES = 3         # Google 新闻找转载：最多读几篇（每�
 GONE = (404, 410)             # 原文返回这些状态码：页面已经删了，这条报道不出刊
 
 IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|qrcode|/ads?/|\.svg|\.gif|data:", re.I)
+# 网站 logo、全站共用的默认分享图：放在哪条报道上都不对（theouterhaven Logo.jpg、rbbtoday img_ogp.png、fb_um_logo_m.jpg）
+GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder", re.I)
 BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied", re.I)
 
 _pages = {}   # 运行内缓存：网页地址 → Page
@@ -445,7 +446,7 @@ _KINDS = (  # (原因里的关键字, 大类)：从具体到笼统，第一个�
     ("Google 新闻跳转", "原文链接未还原"), ("没有图片元数据", "原文没有图"), ("Reddit 帖子没有图", "原文没有图"),
     ("图片 HTTP", "候选图 HTTP 错误"), ("图片 超时", "候选图超时"), ("图片 网络错误", "候选图网络错误"),
     ("不是图片", "候选图格式错误"), ("太小", "候选图尺寸不合格"), ("图片超过", "候选图过大"),
-    ("地址无效", "候选图地址无效"),
+    ("地址无效", "候选图地址无效"), ("logo / 默认图", "候选图是网站 logo / 默认图"), ("和别的报道重复", "候选图和别的报道重复"),
 )
 
 
@@ -457,29 +458,20 @@ def kind(reason):
     return "其它"
 
 
-UNVERIFIABLE = re.compile(r"HTTP 567|超时|网络错误")  # 大陆网站拦海外服务器的样子（不是防盗链 403）
-
-
-def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None):
+def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
     """一条报道的配图。按顺序检查候选图，第一张可用的就用：
     AI 挑的 > 条目自带图 > 原文（og:image > JSON-LD > 正文图；Reddit 帖子读帖子本身和外链）
     > 其它来源的原文 > Bing / Google 新闻上的同一篇转载。
-    都不行时，用第一张因为拦海外服务器而验证不了的中国大陆网站图片（万不得已）；
-    连这也没有返回 image=None（网页上用作品封面代替）。"""
+    都不行返回 image=None（网页上这条进「其他消息」文字列表，或用这一版面唯一一次的作品封面）。
+    网站 logo / 全站默认分享图不用；avoid 里的图（同一期别的报道已经用了）也不用，免得几张卡片同一张图。"""
     res = Result()
     seen = set()
     deadline = time.monotonic() + (STORY_BUDGET if budget is None else budget)
-    backup = []  # 验证不了的大陆网站图片：(来源, 地址)
-
-    def done():
-        if not res.image and backup:
-            res.image, res.source = backup[0][1], backup[0][0] + "（大陆网站，服务器验证不了）"
-        return res
 
     def stages():
         yield [("AI 挑选", chosen)]
         yield [("条目自带", e.image) for e in refs]
-        pages = [url] + [sources.resolve_url(e.url) for e in refs[1:3]]
+        pages = [url] + [sources.entry_link(e) for e in refs[1:3]]
         for i, link in enumerate(pages):
             if REDDIT_POST.match(link or ""):
                 found, note = reddit_candidates(link)
@@ -503,21 +495,23 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None):
         for label, img in stage:
             if not img or img in seen:
                 continue
+            if GENERIC.search(urllib.parse.urlparse(img).path) or img in avoid:
+                seen.add(img)
+                res.trace.append((label, img, "网站 logo / 默认图" if img not in avoid else "和别的报道重复"))
+                continue
             if time.monotonic() > deadline:
                 res.notes.append(f"找图超过 {STORY_BUDGET if budget is None else budget} 秒，停止")
-                return done()
+                return res
             seen.add(img)
             ok, why = check(img)
             res.trace.append((label, img, why if not ok else "OK"))
             if ok:
                 res.image, res.source = img, label
                 return res
-            if UNVERIFIABLE.search(why) and sources.is_domestic(img):
-                backup.append((label, img))
             if len(seen) >= max_checks:
                 res.notes.append(f"已检查 {max_checks} 张，停止")
-                return done()
-    return done()
+                return res
+    return res
 
 
 def log_line(name, headline, res):

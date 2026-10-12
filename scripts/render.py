@@ -18,6 +18,8 @@ import json
 import re
 import urllib.parse
 
+from images import GENERIC  # 网站 logo / 默认分享图的判断，和找图用同一条规则
+
 FONTS = (
     "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700;900"
     "&family=Noto+Serif+SC:wght@500;700;900&family=Cormorant+Garamond:wght@600"
@@ -270,6 +272,13 @@ html{scroll-behavior:smooth}
 .card.wide h3{margin:0;font-weight:900;font-size:28px;line-height:1.3}
 .card.c8 h3{font-size:28px;line-height:1.3}.card.c6 h3{font-size:24px;line-height:1.35}
 .card.c4 h3,.card.c3 h3{margin:0;font-weight:900;font-size:20px;line-height:1.4}
+.brief{padding:14px 24px 18px;border-top:1px solid var(--line)}
+.brief h4{margin:0 0 8px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.7}
+.brief ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.brief li{display:flex;gap:14px;align-items:baseline;font-size:16px;line-height:1.5}
+.brief .d{font:700 12px 'JetBrains Mono',monospace;opacity:.6;flex:none}
+.brief a{color:inherit;text-decoration:none;font-weight:700}
+.brief a:hover,.brief a:focus-visible{color:var(--acc);text-decoration:underline}
 .older{background:var(--abg);color:var(--afg);border-top:1px solid var(--line)}
 .older .grid{background:color-mix(in srgb,var(--afg) 16%,var(--abg))}
 .older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 24px;
@@ -322,22 +331,25 @@ def _headline(story):
     return text
 
 
+SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest('section'),"
+           "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
+           "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
+           "if(f.length){me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
+           "else{p.classList.add('none');if(b)b.remove();me.remove()}")
+
+
 def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
-    没有图或图打不开（防盗链、网站删图等）时按顺序换：作品封面 → 同一关注项其它报道的图（_fbs）；
-    全都打不开才显示作品名排版的封面块。"""
+    图打不开（防盗链、网站删图等）时按顺序换 _fbs 里的备用图（作品封面）；
+    没有图、也没有备用图时显示作品名排版的封面块。"""
     img, name = story.get("image"), story.get("_work", "")
     fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
     chain = list(dict.fromkeys(u for u in [img, *fbs] if u))  # 第一张是 src，其余按顺序备用
     fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
-    swap = ("var f=(this.dataset.fb||'').split(' ').filter(Boolean);"
-            "if(f.length){this.src=f.shift();this.dataset.fb=f.join(' ')}"
-            "else{this.parentNode.classList.add('none');this.remove()}")
     src = chain[0] if chain else None
-    tag = "".join(
-        f'<img{cls} src="{e(src)}"{fb} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="{swap}">'
-        for cls in (' class="bg"', "")
-    ) if src else ""
+    # 主图打不开：换下一张备用图，但同一版面已经有这张图就跳过（免得两张卡片同一张图）；背景模糊图跟着主图换
+    tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
+           f'<img src="{e(src)}"{fb} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="{e(SWAP_JS)}">') if src else ""
     none = "" if src else " none"
     label = f'<span class="ph">{e(name)}</span>' if name else ""
     return f'<div class="pic{none}">{label}{tag}</div>'
@@ -359,7 +371,6 @@ def _hero(story, side):
 
 
 HOLD_DAYS = 7  # 一周内收到的消息直接显示，更早的收进折叠区
-FALLBACKS = 5  # 每张图打不开时最多依次换几张备用图（作品封面 + 同一关注项其它报道的图）
 SPAN = {"hero": 12, "lead": 8, "normal": 4}
 RANK = {"hero": 0, "lead": 1, "normal": 2}
 
@@ -502,18 +513,34 @@ def _timeline(stories, today):
     return '<div class="grid">' + _render_rows(_layout(keep), today) + "</div>", rest
 
 
-def _older(stories, today, more=0):
-    """折叠区：一周内放不下的（more 条）+ 一周以前的。"""
+def _has_pic(x):
+    return bool(x.get("image") or x.get("_fbs"))
+
+
+def _brief(stories):
+    """找不到图的消息：只列日期和标题（不做空图卡片，也不拿别的图顶替）。"""
     if not stories:
         return ""
+    rows = "".join(f'<li><span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span>'
+                   f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>' for x in stories)
+    return f'<div class="brief"><h4>其他消息</h4><ul>{rows}</ul></div>'
+
+
+def _older(stories, today, more=0, texts=()):
+    """折叠区：一周内放不下的（more 条）+ 一周以前的；没图的一周前消息列在最后。"""
+    if not stories and not texts:
+        return ""
+    if not stories:
+        return (f'<details class="older"><summary>更早的消息 · {len(texts)} 条<span></span></summary>'
+                f'{_brief(texts)}</details>')
     packed = _pack(stories, lambda s: 3)
     first, last = stories[-1].get("date") or stories[-1]["_issue"], stories[0].get("date") or stories[0]["_issue"]
     rng = f"{first[5:].replace('-', '.')} – {last[5:].replace('-', '.')}"
     cards = "".join(_tcard(s, w, i, today, small=True) for i, (s, w) in enumerate(packed))
     label = "更多消息" if more else "更早的消息"
     detail = f"一周内另有 {more} 条" + (f" · 更早 {len(stories) - more} 条" if len(stories) > more else "") if more else rng
-    return (f'<details class="older"><summary>{label} · {len(stories)} 条<span>{detail}</span></summary>'
-            f'<div class="grid">{cards}</div></details>')
+    return (f'<details class="older"><summary>{label} · {len(stories) + len(texts)} 条<span>{detail}</span></summary>'
+            f'<div class="grid">{cards}</div>{_brief(texts)}</details>')
 
 
 def collect(issues, order=None):
@@ -541,16 +568,28 @@ def collect(issues, order=None):
                                      "_cover": w.get("cover") or b.get("cover")})
     for w in works.values():
         w["stories"].sort(key=lambda x: x.get("date") or x["_issue"], reverse=True)  # 按消息本身的日期
-        # 备用图：作品封面，再是这一项最近几条报道的图。没封面的（滑雪、猫用品这类一整类东西）也不会只剩名字块
-        w["_fbs"] = list(dict.fromkeys(u for u in [w.get("cover"), *(x.get("image") for x in w["stories"])] if u))[:FALLBACKS]
+        # 没有自己图的报道：作品封面每个版面只用一次（几张卡片同一张图很难看），其余显示作品名封面块。
+        # 不拿同一项别的报道的图来顶：那是另一件事的图，放上去是错的
+        cover = w.get("cover")
+        if cover and GENERIC.search(urllib.parse.urlparse(cover).path):
+            cover = None  # 封面是品牌 logo（gelato pique）：不拿来顶替报道的图
+        cover_used = any(x.get("image") == cover for x in w["stories"]) if cover else True
+        w["_fbs"] = [cover] if cover else []
+        # 代表整个关注项的小图（目录、暂无新消息小栏）：封面，没有就用它最近一条报道的图
+        w["_thumb"] = cover or next((x["image"] for x in w["stories"] if x.get("image")), None)
         for x in w["stories"]:
-            x["_fbs"] = [u for u in w["_fbs"] if u != x.get("image")]
+            if x.get("image"):
+                x["_fbs"] = [cover] if cover and cover != x["image"] else []  # 自己的图打不开时才换封面
+            elif not cover_used:
+                x["_fbs"], cover_used = [cover], True
+            else:
+                x["_fbs"] = []
     return list(works.values())
 
 
 def _calm(block):
     """没有新消息时的小栏：封面小图、现状、往期最近一条。"""
-    pic = _pic({"image": None, "_fbs": block.get("_fbs") or [block.get("cover")]}) if block.get("_fbs") or block.get("cover") else ""
+    pic = _pic({"image": block.get("_thumb")}) if block.get("_thumb") else ""
     status = f'<span class="status">{_md_links(block["status"])}</span>' if block.get("status") else ""
     last = block.get("last")
     tail = ""
@@ -579,13 +618,19 @@ def _section(block, anchor=""):
         ) + "</div>"
     today = block["_today"]
     cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
-    recent = [x for x in block["stories"] if x["_issue"] >= cutoff]
-    older = [x for x in block["stories"] if x["_issue"] < cutoff]
+    # 有图（自己的图，或这一版面唯一一次的作品封面）的做图片卡片；实在找不到图的不做空卡片，放进「其他消息」文字列表
+    recent = [x for x in block["stories"] if x["_issue"] >= cutoff and _has_pic(x)]
+    older = [x for x in block["stories"] if x["_issue"] < cutoff and _has_pic(x)]
+    texts = [x for x in block["stories"] if x["_issue"] >= cutoff and not _has_pic(x)]
+    old_texts = [x for x in block["stories"] if x["_issue"] < cutoff and not _has_pic(x)]
     if recent:
         grid, more = _timeline(recent, today)
+    elif texts:
+        grid, more = "", []
     else:
         grid, more = _calm({**block, "last": None}), []
-    grid += _older(more + older, today, len(more))
+    grid += _brief(texts) + _older(more + older, today, len(more), old_texts)
+    recent = recent or texts
     quiet = "" if recent else " quiet"
     return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
@@ -603,7 +648,7 @@ def _picks(picks, works, feedback=None):
     feedback 配好了 Supabase（url、key）时，每条下面有 👍 / 👎，投票直接写进数据库，下次出刊时学习。"""
     if not picks:
         return ""
-    covers = {w["name"]: w.get("_fbs") or [w.get("cover")] for w in works}
+    covers = {w["name"]: [w["_thumb"]] if w.get("_thumb") else [] for w in works}
 
     def cards_of(group, big_first):
         return "".join(card(x, big_first and i == 0) for i, x in enumerate(group))
@@ -880,7 +925,8 @@ def _front(works, today, updated):
     板块索引 = 每个作品最新的一条；最新消息 = 所有作品按时间排的前 12 条。"""
     pool = [(w, x) for w in works for x in _recent(w, today)]
     newest = sorted(pool, key=lambda p: p[1].get("date") or p[1]["_issue"], reverse=True)
-    top_w, top = min(newest, key=lambda p: RANK.get(p[1].get("weight"), 2)) if newest else (None, None)
+    pictured = [p for p in newest if _has_pic(p[1])]  # 头条和「其他重要」带大图，只从有图的里挑
+    top_w, top = min(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2)) if pictured else (None, None)
 
     groups = {}
     for w in works:
@@ -891,7 +937,7 @@ def _front(works, today, updated):
             f'<span>更新于 {updated} · {len(pool)} 条</span></div>')
 
     # 头条下面补 3 条次重要的（按重要度，再按新旧），填满左栏
-    ranked = sorted(newest, key=lambda p: RANK.get(p[1].get("weight"), 2))
+    ranked = sorted(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2))
     more = [p for p in ranked if p[1] is not top][:3]
     more_html = "".join(
         f'<a class="more" href="#{_wid(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">{_pic(x)}'
@@ -918,10 +964,11 @@ def _front(works, today, updated):
             rec = _recent(w, today)
             if rec:
                 first = rec[0]
-                text, img, cls = first["headline"], first.get("image") or w.get("cover"), "entry"
+                text, cls = first["headline"], "entry"
+                img = next((x["image"] for x in rec if x.get("image")), None) or w.get("_thumb")
             else:
-                text, img, cls = w.get("status") or "暂无新消息", w.get("cover"), "entry q"
-            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic({"image": img, "_work": w["name"], "_fbs": w.get("_fbs") or [w.get("cover")]})}'
+                text, img, cls = w.get("status") or "暂无新消息", w.get("_thumb"), "entry q"
+            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic({"image": img, "_work": w["name"], "_fbs": []})}'
                         f'<span><span class="nm">{e(w["name"])}</span><b>{e(text)}</b></span></a>')
         body = "".join(rows) or '<div class="none">还没有关注项</div>'
         boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
