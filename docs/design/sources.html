@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关注清单通信 · 情报来源</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500;700;900&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.pg{width:2040px;box-sizing:border-box;padding:32px 40px 48px;background:#EDEBE6;color:#1A1C22;font-family:'Noto Sans SC',sans-serif}
+.mono{font-family:'JetBrains Mono',monospace}
+h1{margin:0;font-size:40px;font-weight:900;line-height:52px}
+.sub{font-size:16px;color:#4A4538;margin-top:6px}
+.legend{display:flex;gap:28px;margin-top:14px;font-size:13px;font-weight:700}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:34px;height:0;border-top:3px solid}
+.big{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
+.big>div{padding:18px 22px;display:flex;flex-direction:column;gap:4px}
+.big .k{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;opacity:.75}
+.big .n{font-size:46px;font-weight:900;line-height:1.05}
+.big .d{font-size:14px;line-height:1.55}
+.sec{border-top:3px double #1A1C22;margin-top:34px;padding-top:14px;display:flex;align-items:baseline;gap:16px}
+.sec h2{margin:0;font-size:28px;font-weight:900}
+.sec span{font-size:14px;color:#4A4538}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:0 34px;margin-top:18px;position:relative}
+.lane{background:#F4F2ED;border:2px solid #1A1C22;padding:12px 12px 14px;display:flex;flex-direction:column;gap:10px;position:relative}
+.lane.ai{background:#DCE8DF;border:2px dashed #2E7D4F}
+.lane.web{background:#F6E3DC;border-color:#B83A17}
+.lane>.hd{font-size:15px;font-weight:900;line-height:20px}
+.lane>.hd small{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#4A4538;margin-top:3px}
+.lane:not(:last-child)::after{content:"";position:absolute;right:-30px;top:150px;width:22px;height:0;border-top:3px solid #1A1C22}
+.lane:not(:last-child)::before{content:"";position:absolute;right:-34px;top:144px;border:7px solid transparent;border-left:10px solid #1A1C22}
+.tag{display:inline-block;padding:1px 8px;background:#2E7D4F;color:#fff;font-size:11px;font-weight:900;line-height:18px;margin-right:6px}
+.tag.y{background:#D99A1E;color:#1A1C22}
+.card{background:#FBFAF7;border:2px solid #1A1C22;padding:8px 10px;font-size:13px;line-height:19px}
+.card b.t{display:block;font-size:15px;line-height:21px}
+.card .m{color:#4A4538}
+.card.g{border-color:#2E7D4F}
+.card.r{border-color:#B83A17;background:#F6E3DC}
+.card.k{background:#1A1C22;color:#F1EEE6;border-color:#1A1C22}
+.card.k .m{color:#C9C2B2}
+.dia{background:#C9C2B2;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);height:96px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-weight:700;line-height:18px;padding:0 44px}
+.yn{font-size:12px;font-weight:700;line-height:17px;margin-top:-4px}
+.yn .no{color:#B83A17}.yn .yes{color:#2E7D4F}
+.num{font-family:'JetBrains Mono',monospace;font-weight:700}
+.ladder{counter-reset:s;display:flex;flex-direction:column;gap:4px}
+.ladder div{background:#FBFAF7;border:1px solid #1A1C22;padding:4px 8px;font-size:12.5px;line-height:17px}
+.ladder div b{font-size:13px}
+.ladder div.new{border:2px solid #2E7D4F}
+.ladder div.last{border:2px solid #B83A17;background:#F6E3DC}
+.ladder div.end{background:#1A1C22;color:#F1EEE6}
+.div{display:grid;grid-template-columns:repeat(6,1fr);gap:0 34px;margin-top:12px}
+.div>div{display:flex;flex-direction:column;gap:6px}
+.keep,.cut{font-size:12.5px;line-height:18px;padding:6px 9px}
+.keep{background:#DCE8DF;border-left:5px solid #2E7D4F}
+.cut{background:#F6E3DC;border-left:5px solid #B83A17}
+.keep b,.cut b{font-size:12px;letter-spacing:.06em}
+.keep b{color:#2E7D4F}.cut b{color:#B83A17}
+.rowlabel{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#4A4538;margin-top:18px;letter-spacing:.12em}
+.charts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:18px}
+.chart{background:#FBFAF7;border:2px solid #1A1C22;padding:14px 16px}
+.chart h3{margin:0 0 4px;font-size:17px;font-weight:900}
+.chart .cap{font-size:12.5px;color:#4A4538;margin-bottom:10px;line-height:18px}
+.bar,.pair,.stack{display:flex;align-items:center;gap:8px;font-size:12.5px;line-height:22px}
+.bl{width:150px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bt{display:inline-block;height:13px;flex:none}
+.bv{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;white-space:nowrap}
+.sb{display:flex;height:14px;flex:none}
+.sb span{display:block;height:14px}
+.lg{display:inline-flex;align-items:center;gap:4px;margin-right:10px;font-size:12px}
+.lg i{display:inline-block;width:12px;height:12px}
+.apx{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:18px}
+.apx>div{background:#FBFAF7;border:2px solid #1A1C22;padding:14px 16px;font-size:13px;line-height:19px}
+.apx>div>b{font-size:17px;display:block;margin-bottom:6px}
+.apx p{margin:8px 0 0}.apx p span{color:#4A4538}
+</style>
+
+</head>
+<body>
+
+<div class="pg">
+ <h1>关注清单通信 · 情报来源</h1>
+ <div class="sub">消息从哪来、每一步留下谁、配图从哪找 · 怎么在不丢图的前提下保持来源多元</div>
+ <div class="legend"><span><i style="border-color:#1A1C22"></i>数据流</span><span><i style="border-color:#2E7D4F"></i>保留多样性 / 这次新加</span><span><i style="border-color:#B83A17"></i>收窄 · 丢掉</span></div>
+
+ <div class="big">
+  <div style="background:#1A1C22;color:#F1EEE6"><span class="k">来源多元</span><span class="n">76 条 · 59 家</span><span class="d">10-12 那期 76 条报道来自 59 个不同网站<br>新配置实测：留下的条目来自 236 家媒体</span></div>
+  <div style="background:#2E7D4F;color:#fff"><span class="k">4 种语言</span><span class="n">繁中 · 英 · 日 · 韩</span><span class="d">每个关键词在 4 个语言区各搜一次<br>+ Bing · Reddit · Steam 官方 · RSS</span></div>
+  <div style="background:#B83A17;color:#fff"><span class="k">大陆网站</span><span class="n">12% → 0%</span><span class="d">收集到的条目里大陆网站的占比<br>它们出刊后 4 条全部没图（拦海外、防盗链）</span></div>
+  <div style="background:#FBFAF7;border:3px solid #1A1C22;padding:15px 19px"><span class="k" style="color:#4A4538">没图的报道</span><span class="n">13 → 0</span><span class="d">10-12 实测：9 条找到图 · 2 条原文已删不出刊<br>· 2 条大陆网站现在不收了</span></div>
+ </div>
+
+ <div class="sec"><h2>流程</h2><span>每个关注项单独走一遍 · 从左往右</span></div>
+ 
+<div class="flow">
+ <div class="lane">
+  <div class="hd">① 去哪搜<small>每 2 小时 :17 · GitHub Actions</small></div>
+  <div><span class="tag">免费</span></div>
+  <div class="card"><b class="t">Google 新闻 × 4 个语言区</b><span class="m">繁中（港台）· 英文 · 日文 · 韩文<br>每个关键词在每个语言区各搜一次</span></div>
+  <div class="card"><b class="t">Bing 新闻</b><span class="m">MSN 聚合各国媒体；自带缩略图<br>空结果自动重搜，最多 3 次</span></div>
+  <div class="card"><b class="t">Reddit</b><span class="m">专门版块 + 全站搜一次<br>玩家讨论，单独名额</span></div>
+  <div class="card"><b class="t">官方渠道</b><span class="m">Steam 官方公告 · 自定 RSS<br>AniList / TMDB 只看播出状态</span></div>
+  <div class="card k"><b class="t">关键词：各语言正式名</b><span class="m">每项 3–6 个，例：GTA 6 / 侠盗猎车手6 / 俠盜獵車手6</span></div>
+ </div>
+
+ <div class="lane">
+  <div class="hd">② 收集时先丢<small>collect()</small></div>
+  <div class="dia">这一项的 news_langs<br>写了 zh-CN？</div>
+  <div class="yn"><span class="no">否（现在所有项）→ 丢掉大陆网站</span><br><span class="yes">是 → 照收</span></div>
+  <div class="card r"><b class="t">丢掉：大陆网站</b><span class="m">Google / Bing 搜回来的<br>新浪、搜狐、腾讯、17173、3DM…<br>本次实测丢掉 <span class="num">67</span> 条</span></div>
+  <div class="card g"><b class="t">留下：MSN 上的转载</b><span class="m">「快科技 on MSN」「一点资讯 on MSN」<br>大陆媒体的内容借 MSN 进来<br>MSN 链接和图在海外都能打开</span></div>
+ </div>
+
+ <div class="lane">
+  <div class="hd">③ 筛选去重<small>filter_entries() · 按顺序</small></div>
+  <div class="card"><b class="t">a · 同一标题只留一条</b><span class="m">国外 › 大陆；直链 › Google 跳转</span></div>
+  <div class="card"><b class="t">b · 见过的不要</b><span class="m">14 天内同链接 / 同标题 / 标题相近</span></div>
+  <div class="card"><b class="t">c · 时间 · 关键词</b><span class="m">7 天内（新项 42 天）· 必须含匹配词 · 排除词丢</span></div>
+  <div class="card"><b class="t">d · 标题相近只留一家</b><span class="m">字符重合 ≥ 75% 算转载<br><b>国外的先看</b>，有国外版就不留大陆版</span></div>
+  <div class="card k"><b class="t">e · 名额</b><span class="m">媒体 30–40 条（新的优先）<br>Reddit 另给 10 条，不互相挤</span></div>
+ </div>
+
+ <div class="lane ai">
+  <div class="hd" style="color:#2E7D4F">④ 编排<small>AI 编辑 12:43 · 23:43 / 关键词规则</small></div>
+  <div><span class="tag y">用 Claude 订阅额度</span></div>
+  <div class="card g"><b class="t">同一件事合成一条</b><span class="m">refs 列出<b>所有</b>报道它的媒体<br>（标题不同、语言不同也能合并）</span></div>
+  <div class="card g"><b class="t">来源国外优先</b><span class="m">refs 第一个放国外媒体<br>标「（大陆网站）」的只在独家时用</span></div>
+  <div class="card"><b class="t">关键词规则（AI 没编到时）</b><span class="m">同等条件：国外 › 大陆 › 有图 › 较新</span></div>
+ </div>
+
+ <div class="lane">
+  <div class="hd">⑤ 出刊 · 选链接<small>attach_media() · 每次出刊</small></div>
+  <div class="card"><b class="t">refs 排序</b><span class="m">国外来源排前面，<br>链接和配图都先用它</span></div>
+  <div class="dia">原文返回<br>404 / 410？</div>
+  <div class="yn"><span class="no">是 → 换下一个来源</span><br><span class="yes">否 → 用它当卡片链接</span></div>
+  <div class="card r"><b class="t">来源全删了 → 不出刊</b><span class="m">403、超时不算删（只是挡机器人）<br>10-12 实测去掉 2 条</span></div>
+ </div>
+
+ <div class="lane web">
+  <div class="hd" style="color:#B83A17">⑥ 配图 · 回退梯<small>images.pick() · 第一张能用的就用</small></div>
+  <div class="ladder">
+   <div><b>1 AI 挑的</b> · pick-images 对照表</div>
+   <div class="new"><b>2 条目自带</b> · RSS 缩略图，<b>含 Bing 缩略图</b></div>
+   <div><b>3 原文</b> · og:image › JSON-LD › 正文大图</div>
+   <div class="new"><b>3′ MSN 原文</b> · 走 MSN 文章接口</div>
+   <div><b>4 其它来源原文</b> · refs 第 2–3 个</div>
+   <div class="new"><b>5 Bing 转载</b> · 含原文自己的 Bing 缩略图</div>
+   <div class="new"><b>6 Google 转载</b> · 新闻稿原出处（PR TIMES…）</div>
+   <div class="last"><b>7 大陆图</b> · 被拦验证不了，万不得已</div>
+   <div class="end"><b>8 作品封面</b> › 作品名封面块</div>
+  </div>
+  <div style="font-size:12px;color:#4A4538;line-height:17px">绿框 = 这次新加 · 每张都实际下载检查（格式、≥200×300、≤8MB）</div>
+ </div>
+</div>
+
+ 
+<div class="rowlabel">每一层：多元化保留了什么 · 在哪里收窄</div>
+<div class="div">
+ <div><div class="keep"><b>保留</b><br>4 种语言 × 各语言正式名；媒体、玩家讨论、官方公告三类来源并存</div>
+      <div class="cut"><b>收窄</b><br>中文只搜港台版（简体版八九成是大陆网站）</div></div>
+ <div><div class="keep"><b>保留</b><br>大陆媒体借 MSN 发的稿仍在；需要时某一项写 zh-CN 就全收</div>
+      <div class="cut"><b>收窄</b><br>大陆网站直链：链接、图在海外常打不开</div></div>
+ <div><div class="keep"><b>保留</b><br>标题不同的同一件事全留（多家视角交给编排）；Reddit 有自己的名额</div>
+      <div class="cut"><b>收窄</b><br>标题几乎一样的转载只留一家；超名额截掉较旧的</div></div>
+ <div><div class="keep"><b>保留</b><br>refs 记下每一家报道它的媒体，合并不丢来源</div>
+      <div class="cut"><b>收窄</b><br>卡片上只显示一家（国外优先）</div></div>
+ <div><div class="keep"><b>保留</b><br>第一家删了还有第二家顶上</div>
+      <div class="cut"><b>收窄</b><br>全删了的报道不出刊</div></div>
+ <div><div class="keep"><b>保留</b><br>原文挡机器人也能从转载、Bing、新闻稿原出处拿图</div>
+      <div class="cut"><b>收窄</b><br>防盗链（新浪 403）的图不用</div></div>
+</div>
+
+
+ <div class="sec"><h2>真实数字</h2><span>msn.com 6 · prtimes.jp 3 · walkerplus.com 3 · gamemeca.com 2 · news.17173.com 2 · news.nicovideo.jp 2 · news.yahoo.co.jp 2 · sanyonews.jp 2 · sportzorg24.tv 2 · samsungmagazine.eu 2（10-12 那期出现最多的网站）</span></div>
+ 
+<div class="charts">
+ <div class="chart"><h3>① 从哪来：各渠道条数</h3>
+  <div class="cap">新配置实测：14 个关注项各收集一次（Google / Bing / Steam / RSS）。<br>灰 = 搜回来的，绿 = 筛完留下的；Reddit 在这台机器被限流，用 inbox 里的实际数</div>
+  <div class="bar"><span class="bl">Google 繁中（港台）</span><span class="bt" style="width:133px;background:#C9C2B2"></span><span class="bv">1005</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:5px;background:#2E7D4F"></span><span class="bv">35</span></div><div class="bar"><span class="bl">Google 英文</span><span class="bt" style="width:300px;background:#C9C2B2"></span><span class="bv">2265</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:15px;background:#2E7D4F"></span><span class="bv">110</span></div><div class="bar"><span class="bl">Google 日文</span><span class="bt" style="width:232px;background:#C9C2B2"></span><span class="bv">1755</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:16px;background:#2E7D4F"></span><span class="bv">120</span></div><div class="bar"><span class="bl">Google 韩文</span><span class="bt" style="width:126px;background:#C9C2B2"></span><span class="bv">951</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:6px;background:#2E7D4F"></span><span class="bv">46</span></div><div class="bar"><span class="bl">Bing 新闻</span><span class="bt" style="width:100px;background:#C9C2B2"></span><span class="bv">754</span></div><div class="bar"><span class="bl">　↳ 筛完留下</span><span class="bt" style="width:10px;background:#2E7D4F"></span><span class="bv">72</span></div><div class="bar"><span class="bl">Reddit（inbox 实际）</span><span class="bt" style="width:38px;background:#5865F2"></span><span class="bv">288（占 15%）</span></div>
+ </div>
+ <div class="chart"><h3>② 大陆网站占比：改前 → 改后</h3>
+  <div class="cap">红条 = 改前（inbox 里已收集的条目，合计 12%）<br>绿字 = 改后（新配置实测，筛完留下的）</div>
+  <div class="pair"><span class="bl">漫威电影</span><span class="bt" style="width:90px;background:#B83A17"></span><span class="bv">24% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">GTA 6</span><span class="bt" style="width:79px;background:#B83A17"></span><span class="bv">21% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">MMORPG 新作</span><span class="bt" style="width:31px;background:#B83A17"></span><span class="bv">8% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 Ultra</span><span class="bt" style="width:15px;background:#B83A17"></span><span class="bv">4% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 系列情报</span><span class="bt" style="width:12px;background:#B83A17"></span><span class="bv">3% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">猫用品</span><span class="bt" style="width:10px;background:#B83A17"></span><span class="bv">3% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">Galaxy S27 Pro</span><span class="bt" style="width:9px;background:#B83A17"></span><span class="bv">2% → <b style="color:#2E7D4F">0%</b></span></div><div class="pair"><span class="bl">ILLIT</span><span class="bt" style="width:5px;background:#B83A17"></span><span class="bv">1% → <b style="color:#2E7D4F">0%</b></span></div>
+ </div>
+ <div class="chart"><h3>③ 留下的条目：语言 · 媒体家数</h3>
+  <div class="cap">新配置实测，按标题文字分语言；右边是条数和不同媒体数<br><span class="lg"><i style="background:#B83A17"></i>中文</span> <span class="lg"><i style="background:#1A1C22"></i>日文</span> <span class="lg"><i style="background:#5865F2"></i>韩文</span> <span class="lg"><i style="background:#2E7D4F"></i>英文等</span></div>
+  <div class="stack"><span class="bl">MMORPG 新作</span><span class="sb"><span title="中文" style="width:10px;background:#B83A17"></span><span title="日文" style="width:116px;background:#1A1C22"></span><span title="韩文" style="width:189px;background:#5865F2"></span><span title="英文等" style="width:105px;background:#2E7D4F"></span></span><span class="bv">40 条 · 33 家</span></div><div class="stack"><span class="bl">漫威电影</span><span class="sb"><span title="中文" style="width:74px;background:#B83A17"></span><span title="日文" style="width:0px;background:#1A1C22"></span><span title="韩文" style="width:0px;background:#5865F2"></span><span title="英文等" style="width:346px;background:#2E7D4F"></span></span><span class="bv">40 条 · 23 家</span></div><div class="stack"><span class="bl">ILLIT</span><span class="sb"><span title="中文" style="width:21px;background:#B83A17"></span><span title="日文" style="width:262px;background:#1A1C22"></span><span title="韩文" style="width:63px;background:#5865F2"></span><span title="英文等" style="width:74px;background:#2E7D4F"></span></span><span class="bv">40 条 · 26 家</span></div><div class="stack"><span class="bl">GTA 6</span><span class="sb"><span title="中文" style="width:126px;background:#B83A17"></span><span title="日文" style="width:0px;background:#1A1C22"></span><span title="韩文" style="width:0px;background:#5865F2"></span><span title="英文等" style="width:294px;background:#2E7D4F"></span></span><span class="bv">30 条 · 27 家</span></div><div class="stack"><span class="bl">日本顶级网球赛事</span><span class="sb"><span title="中文" style="width:0px;background:#B83A17"></span><span title="日文" style="width:406px;background:#1A1C22"></span><span title="韩文" style="width:0px;background:#5865F2"></span><span title="英文等" style="width:14px;background:#2E7D4F"></span></span><span class="bv">30 条 · 22 家</span></div><div class="stack"><span class="bl">Galaxy S27 系列情报</span><span class="sb"><span title="中文" style="width:28px;background:#B83A17"></span><span title="日文" style="width:56px;background:#1A1C22"></span><span title="韩文" style="width:70px;background:#5865F2"></span><span title="英文等" style="width:266px;background:#2E7D4F"></span></span><span class="bv">30 条 · 23 家</span></div><div class="stack"><span class="bl">Galaxy S27 Ultra</span><span class="sb"><span title="中文" style="width:56px;background:#B83A17"></span><span title="日文" style="width:42px;background:#1A1C22"></span><span title="韩文" style="width:112px;background:#5865F2"></span><span title="英文等" style="width:210px;background:#2E7D4F"></span></span><span class="bv">30 条 · 23 家</span></div><div class="stack"><span class="bl">Galaxy S27 Pro</span><span class="sb"><span title="中文" style="width:56px;background:#B83A17"></span><span title="日文" style="width:70px;background:#1A1C22"></span><span title="韩文" style="width:56px;background:#5865F2"></span><span title="英文等" style="width:238px;background:#2E7D4F"></span></span><span class="bv">30 条 · 20 家</span></div><div class="stack"><span class="bl">gelato pique</span><span class="sb"><span title="中文" style="width:0px;background:#B83A17"></span><span title="日文" style="width:420px;background:#1A1C22"></span><span title="韩文" style="width:0px;background:#5865F2"></span><span title="英文等" style="width:0px;background:#2E7D4F"></span></span><span class="bv">30 条 · 15 家</span></div><div class="stack"><span class="bl">Astrae Oratio</span><span class="sb"><span title="中文" style="width:16px;background:#B83A17"></span><span title="日文" style="width:48px;background:#1A1C22"></span><span title="韩文" style="width:323px;background:#5865F2"></span><span title="英文等" style="width:32px;background:#2E7D4F"></span></span><span class="bv">26 条 · 22 家</span></div><div class="stack"><span class="bl">滑雪</span><span class="sb"><span title="中文" style="width:20px;background:#B83A17"></span><span title="日文" style="width:240px;background:#1A1C22"></span><span title="韩文" style="width:0px;background:#5865F2"></span><span title="英文等" style="width:160px;background:#2E7D4F"></span></span><span class="bv">21 条 · 19 家</span></div><div class="stack"><span class="bl">猫用品</span><span class="sb"><span title="中文" style="width:80px;background:#B83A17"></span><span title="日文" style="width:20px;background:#1A1C22"></span><span title="韩文" style="width:0px;background:#5865F2"></span><span title="英文等" style="width:320px;background:#2E7D4F"></span></span><span class="bv">21 条 · 18 家</span></div><div class="stack"><span class="bl">星巴克马克杯</span><span class="sb"><span title="中文" style="width:35px;background:#B83A17"></span><span title="日文" style="width:315px;background:#1A1C22"></span><span title="韩文" style="width:0px;background:#5865F2"></span><span title="英文等" style="width:70px;background:#2E7D4F"></span></span><span class="bv">12 条 · 7 家</span></div><div class="stack"><span class="bl">BLEACH Mirrors High</span><span class="sb"><span title="中文" style="width:0px;background:#B83A17"></span><span title="日文" style="width:0px;background:#1A1C22"></span><span title="韩文" style="width:0px;background:#5865F2"></span><span title="英文等" style="width:420px;background:#2E7D4F"></span></span><span class="bv">3 条 · 3 家</span></div>
+ </div>
+</div>
+
+
+ <div class="sec"><h2>附录</h2><span>判断标准 · 时间 · 费用</span></div>
+ 
+<div class="apx">
+ <div><b>什么算「大陆网站」</b>
+  <p>看网址<br><span>新浪、搜狐、腾讯、网易、17173、3DM、游民星空、驱动之家、cnBeta、.cn 结尾……</span></p>
+  <p>Google 跳转链接看媒体名<br><span>「新浪网」「搜狐」「17173」……</span></p>
+  <p>不算<br><span>港台（Yahoo奇摩、香港01、4Gamers）、MSN 上的转载</span></p>
+ </div>
+ <div><b>什么算「同一篇」</b>
+  <p>收集时<br><span>同链接、同标题；或标题字符重合 ≥ 75%</span></p>
+  <p>找配图转载时<br><span>标题二元组重合 ≥ 80%；Google 用标题前半句搜（标题常被截断、后半句措辞不同）</span></p>
+  <p>编排时<br><span>AI 读标题和摘要判断，跨语言也能合并</span></p>
+ </div>
+ <div><b>「删了」和「打不开」不一样</b>
+  <p>删了：404 / 410<br><span>换下一个来源；都删了不出刊</span></p>
+  <p>打不开：403、captcha、超时<br><span>只是挡机器人，照常出刊，图去转载、Bing 找</span></p>
+  <p>大陆图：567 / 超时<br><span>国内浏览器能看，海外服务器验证不了 → 最后才用；防盗链 403 不用</span></p>
+ </div>
+ <div><b>时间 · 费用</b>
+  <p>每 2 小时 :17<br><span>收集 ①②③ + 出刊 ⑤⑥（GitHub Actions，免费）</span></p>
+  <p>每天 12:43 · 23:43<br><span>AI 编辑 ④（Claude 订阅额度）</span></p>
+  <p>想看大陆新闻<br><span>在那一项的 news_langs 写上 zh-CN</span></p>
+ </div>
+</div>
+
+</div>
+
+</body>
+</html>

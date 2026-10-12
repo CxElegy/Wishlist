@@ -32,6 +32,7 @@
 | 合并图（分支怎么合、合并之后的流程） | [merge.html](https://cxelegy.github.io/Wishlist/design/merge.html) | [merge.png](docs/design/merge.png) |
 | 改动怎么进 main（会话 → 分支 → PR → 合并 → 自动上线；冲突怎么办、黄色横幅是什么） | [pr-flow.html](https://cxelegy.github.io/Wishlist/design/pr-flow.html) | [pr-flow.png](docs/design/pr-flow.png) |
 | 编排逻辑（一条新闻怎么变成网页上的卡片、三条编排路、去重的四道关） | [editing.html](https://cxelegy.github.io/Wishlist/design/editing.html) | [editing.png](docs/design/editing.png) |
+| 情报来源（从哪搜、每一步留下谁、配图回退梯、来源多元化保留了什么 / 在哪收窄，附真实数字） | [sources.html](https://cxelegy.github.io/Wishlist/design/sources.html) | [sources.png](docs/design/sources.png) |
 
 设计稿源文件在 `design/`（Claude 设计画布格式，修改时用）。
 
