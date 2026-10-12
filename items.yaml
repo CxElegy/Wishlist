@@ -344,6 +344,51 @@ items:
       alt_fg: "#FFFFFF"
       alt_accent: "#151515"
 
+  - name: FROM
+    subtitle: 美剧 · MGM+ 恐怖悬疑
+    type: show
+    tmdb: tv/124364
+    keywords: [
+      "FROM season 5", "FROM final season MGM+", "MGM+ From series", "From TV series Harold Perrineau",
+      "美剧 FROM 第五季", "FROM 第五季", "美劇 FROM"
+    ]
+    # 剧名就是英文常用词 from，必须靠这些说法认出是这部剧（匹配时忽略大小写和空格）
+    match: [
+      FROM season, From Season 5, From final season, From series finale, MGM+'s From, "MGM+ series From", "'From'", "“From”",
+      Fromville, Harold Perrineau, Boyd Stevens, John Griffin, Jack Bender,
+      美剧FROM, 美劇FROM, FROM第五季, FROM最终季, FROM最終季, 《FROM》, 《From》
+    ]
+    exclude: [Overwatch, Fortnite, Apex Legends, Call of Duty, Warzone, Destiny, Valorant, Marvel Rivals, Diablo, Rainbow Six, Rocket League]   # 游戏的“from Season N”
+    news_langs: [en-US, zh-TW]
+    max_stories: 4
+    subreddits: [FromTVEpix]
+    priority: 第五季（最终季）什么时候播：首播日期、预告片、拍摄进度和杀青；国内能在哪看
+    priority_keywords: [
+      Season 5, final season, 第五季, 最终季, 最終季, premiere, premiere date, 首播, 开播, 開播, 定档, 定檔,
+      trailer, teaser, 预告, 預告, filming, wrapped, 杀青, 殺青, MGM+, renewed, 续订, 續訂
+    ]
+    urgent_patterns:
+      # 第五季首播日期公布
+      - '(From|FROM).{0,30}(Season 5|final season|第五季|最终季|最終季).{0,30}(premiere date|premieres|release date|date|首播|开播|開播|定档|定檔)'
+      # 第五季预告
+      - '(From|FROM).{0,30}(Season 5|final season|第五季|最终季|最終季).{0,20}(trailer|teaser|预告|預告)'
+    notes: >-
+      MGM+（原 Epix）的超自然恐怖悬疑剧，Harold Perrineau 饰演警长 Boyd Stevens，故事是一座困住所有进入者的小镇（粉丝叫 Fromville）。
+      主创 John Griffin，执行制作 Jack Bender、Jeff Pinkner。第 4 季 2026 年 4 月 19 日开播，6 月下旬播完 10 集；
+      2026 年 4 月官宣续订第 5 季，也是最终季，预计 2027 年播出，具体日期未公布。
+      剧名 From 是常见英文词，只报这部剧的消息；粉丝理论、剧情解析可以做一条「社区：……」，但传闻不当官方消息。
+    status: 第 4 季已于 2026 年 6 月播完 · 第 5 季（最终季）已续订，预计 2027 年，日期未定
+    site: https://www.mgmplus.com/series/from
+    theme:   # 夜里的林中小镇：近黑墨绿 + 护身石的暖黄灯光，对角分割，衬线
+      bg: "#0F1512"
+      fg: "#ECE7DC"
+      accent: "#E3B04B"
+      alt_bg: "#ECE7DC"
+      alt_fg: "#0F1512"
+      alt_accent: "#8C2F1E"
+      split: true
+      font: serif
+
   - name: ILLIT
     subtitle: アイリット · 日本公演特别关注
     type: event
