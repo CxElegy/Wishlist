@@ -253,6 +253,21 @@ html{scroll-behavior:smooth}
 .vote button:disabled{opacity:.5;cursor:wait}
 .vote small{font-size:11px;opacity:.7}
 .pk.down>a{opacity:.35;filter:grayscale(1)}
+.card,.top{position:relative}
+.vt{position:absolute;top:8px;right:8px;z-index:3;display:flex;gap:4px;opacity:.55;transition:opacity .15s}
+.card:hover .vt,.top:hover .vt,.vt:focus-within,.vt.on{opacity:1}
+.vt button{padding:2px 7px;border:1px solid currentColor;background:color-mix(in srgb,var(--bg,#F4EDE4) 85%,transparent);
+ color:inherit;font-size:13px;line-height:1.4;cursor:pointer;border-radius:0}
+.vt button[aria-pressed=true]{background:#B8336A;border-color:#B8336A;color:#FFF}
+.brief li .vt{position:static;opacity:.5;margin-left:auto;flex:none}
+.brief li:hover .vt{opacity:1}
+.downv{opacity:.4;filter:grayscale(.8)}
+.pkbatch[hidden]{display:none}
+.shuffle{margin-left:auto;padding:6px 14px;border:2px solid #1A1C22;background:#1A1C22;color:#F4EDE4;
+ font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.1em;cursor:pointer;border-radius:0;white-space:nowrap}
+.shuffle:hover{background:#B8336A;border-color:#B8336A}
+.shuffle small{font:700 11px 'JetBrains Mono',monospace;opacity:.75;margin-left:6px}
+@media (hover:none){.vt{opacity:.9}}
 @media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}
  .pk:not(.big) .vote button span{display:none}.pk:not(.big) .vote button{padding:4px 14px;font-size:15px}}
 /* ---------- 按时间排列的卡片 ---------- */
@@ -354,7 +369,7 @@ html{scroll-behavior:smooth}
 <header class="mast"><div>
 <div class="logo"><svg width="62" height="62" viewBox="0 0 92 92" aria-hidden="true" fill="none" stroke="#EDEBE6" stroke-width="2"><circle cx="46" cy="46" r="40"/><circle cx="46" cy="46" r="31" stroke-dasharray="3 4"/><path d="M46 18 L51 41 L74 46 L51 51 L46 74 L41 51 L18 46 L41 41 Z" fill="#EDEBE6" stroke="none"/></svg></div>
 <h1>愿望清单</h1>
-<div class="meta"><div class="mono">更新于</div><div class="no">02:57</div><div class="mono">10.14</div></div>
+<div class="meta"><div class="mono">更新于</div><div class="no">03:10</div><div class="mono">10.14</div></div>
 </div></header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

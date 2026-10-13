@@ -55,6 +55,16 @@
      "image_via": "JSON-LD",
      "url": "https://www.sisajournal-e.com/news/articleView.html?idxno=424198",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "From Rock Bottom to a Bright Horizon: My MMO Year",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.y2LvwGW-_ZpwqUtca4IJyg&pid=News&w=711",
+     "image_via": "转载 www.mmorpg.com（Bing 缩略图）",
+     "url": "https://www.mmorpg.com/editorials/from-rock-bottom-to-a-bright-horizon-my-mmo-year-2000139112?amp=true",
+     "weight": "normal"
     }
    ],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
@@ -107,23 +117,22 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-13",
-     "headline": "MCU 101: How to prepare for Avengers Doomsday in a reasonable manner",
-     "highlight": "",
-     "image": null,
-     "source": "The Boar",
-     "source_icon": "https://theboar.org/wp-content/themes/theboar-theme/img/icons/touch.png",
-     "url": "https://theboar.org/2026/10/mcu-101-how-to-prepare-for-avengers-doomsday-in-a-reasonable-manner/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-08",
      "headline": "Marvel Studios NYCC 2026 Panel: Live Updates & Announcements From Comic-Con (Finished)",
      "highlight": "",
      "image": "https://images.thedirect.com/media/article_full/marvel_studios_nycc_2026_panel.jpg",
      "image_via": "og:image",
      "url": "https://thedirect.com/article/marvel-studios-nycc-2026",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "Avengers: Doomsday Unleashes Doctor Doom’s Wild Collection of Marvel Secrets",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.P8B1OOR2frKqtS5VHoU9lg&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://www.comingsoon.net/movies/news/2206563-avengers-doomsday-doctor-doom-marvel-artifacts",
      "weight": "normal"
     }
    ],
@@ -185,6 +194,55 @@
     "bg": "#0E1016",
     "fg": "#EEF1F6",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "FROM",
+   "section": "影视",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-07",
+     "headline": "From Season 5 ending…",
+     "highlight": "",
+     "image": "https://s.yimg.com/lo/mysterio/api/4d48f0119d2baafd0132f481797fe23ca6768d5301009a180c3609c15452eaba/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftechradar_949%2Fc7d241fa11aeca706309f6e384847dea",
+     "image_via": "转载 www.yahoo.com",
+     "url": "https://www.reddit.com/r/FromSeries/comments/1x080dr/from_season_5_ending/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "that damn apollo",
+     "highlight": "",
+     "image": "https://www.audacy.com/media-library/margaret-hamilton.jpg?id=68397708&width=1200&height=600&coordinates=0%2C297%2C0%2C298",
+     "image_via": "转载 www.audacy.com",
+     "url": "https://www.reddit.com/r/RHOA/comments/1x3toff/that_damn_apollo/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-06",
+     "headline": "Season 11 is going to be the one that decides everything.",
+     "highlight": "",
+     "image": "https://preview.redd.it/33b8x2hdxwth1.jpeg?width=320&crop=smart&auto=webp&s=ab2fd6c2bd5530c90a7c4e6a58c65fb01b7727be",
+     "image_via": "条目自带",
+     "url": "https://www.reddit.com/r/marvelrivals/comments/1wzeg63/season_11_is_going_to_be_the_one_that_decides/",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "美剧 · MGM+ 恐怖悬疑",
+   "theme": {
+    "accent": "#E3B04B",
+    "alt_accent": "#8C2F1E",
+    "alt_bg": "#ECE7DC",
+    "alt_fg": "#0F1512",
+    "bg": "#0F1512",
+    "fg": "#ECE7DC",
+    "font": "serif",
     "split": true
    }
   },
@@ -289,31 +347,6 @@
     "bg": "#F4F8FB",
     "fg": "#14233A",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "last": {
-    "date": "2026-10-13",
-    "headline": "《FROM》首次上线 Netflix 美区",
-    "url": "https://businessupturn.com/entertainment/ott/from-is-coming-to-netflix-us-for-the-first-time-everything-to-know-about-the-horror-series/"
-   },
-   "name": "FROM",
-   "quiet": true,
-   "section": "影视",
-   "status": "第 4 季已于 2026 年 6 月播完 · 第 5 季（最终季）已续订，预计 2027 年，日期未定",
-   "stories": [],
-   "subtitle": "美剧 · MGM+ 恐怖悬疑",
-   "theme": {
-    "accent": "#E3B04B",
-    "alt_accent": "#8C2F1E",
-    "alt_bg": "#ECE7DC",
-    "alt_fg": "#0F1512",
-    "bg": "#0F1512",
-    "fg": "#ECE7DC",
-    "font": "serif",
     "split": true
    }
   },
