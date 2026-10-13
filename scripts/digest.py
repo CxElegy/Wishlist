@@ -254,7 +254,9 @@ def filter_entries(entries, item, settings, seen, now, known=()):
         if any(w in e.title.lower() for w in exclude):
             continue
         trusted = e.source in TRUSTED_SOURCES or e.source in {f"r/{s}" for s in item.get("subreddits") or []}
-        if not trusted and not any(w in _norm(e.title + e.summary) for w in match):
+        # Reddit 全站搜索来的帖子：正文是闲聊，「from Season 5」这种说法到处都是，匹配词必须出现在标题里
+        text = e.title if e.source == "Reddit" else e.title + e.summary
+        if not trusted and not any(w in _norm(text) for w in match):
             continue
         grams.append(g)
         out.append(e)
@@ -489,7 +491,7 @@ def fallback_stories(entries, item, limit=None):
     by_heat = bool(item.get("hot_only"))
     names = sorted({item["name"], *(item.get("keywords") or []), *(item.get("match") or [])}, key=len, reverse=True)
     topics = {i: _topic_tokens(e.title, names) for i, e in enumerate(entries, 1)} if by_heat else {}
-    media = [i for i, e in enumerate(entries, 1) if not e.source.startswith("r/")]
+    media = [i for i, e in enumerate(entries, 1) if not sources.is_reddit(e)]
 
     def hits(e):
         return sum(w in e.title.lower() for w in words)
@@ -503,13 +505,13 @@ def fallback_stories(entries, item, limit=None):
     def score(pair):
         i, e = pair
         if by_heat:
-            return (i in urgent, heat(i), not e.source.startswith("r/"), hits(e), not domestic(e),
+            return (i in urgent, heat(i), not sources.is_reddit(e), hits(e), not domestic(e),
                     bool(e.image) or "news.google.com" not in e.url, -i)
-        return (i in urgent, hits(e) > 0, not e.source.startswith("r/"), hits(e), not domestic(e),
+        return (i in urgent, hits(e) > 0, not sources.is_reddit(e), hits(e), not domestic(e),
                 bool(e.image) or "news.google.com" not in e.url, -i)
 
     candidates = [(i, e) for i, e in enumerate(entries, 1)
-                  if (hits(e) or not e.source.startswith("r/")) and not side_mention(e.title, item)]
+                  if (hits(e) or not sources.is_reddit(e)) and not side_mention(e.title, item)]
     events = _event_keys(entries, names)
     picked, grams = [], []
     for i, e in sorted(candidates, key=score, reverse=True):
