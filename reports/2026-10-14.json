@@ -1,0 +1,408 @@
+{
+ "date": "2026-10-14",
+ "items": [
+  {
+   "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg",
+   "facts": [],
+   "name": "GTA 6",
+   "section": "游戏",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "Report indicates 'GTA 6' launching on PC in early 2027",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.oJ_99peRefy3Z-5vjCdk-Q&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://mashable.com/entertainment/gta-grand-theft-auto-6-pc-release-date-2027",
+     "weight": "lead"
+    }
+   ],
+   "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
+   "theme": {
+    "accent": "#FF5FA2",
+    "alt_accent": "#C2185B",
+    "alt_bg": "#FFB25B",
+    "alt_fg": "#1E1033",
+    "bg": "#1E1033",
+    "fg": "#FFF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "MMORPG 新作",
+   "section": "游戏",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-10",
+     "headline": "Outer Ring MMO Lines Up Gear, Trading and Match Fixes Plus New Tournament Tools in Upcoming Patch",
+     "highlight": "",
+     "image": "https://egamers.io/wp-content/uploads/2026/10/outer-ring-mmo-lines-up-gear-trading-and-match-fixes-plus-new-tournament-tools-in-upcoming-patch.jpg",
+     "image_via": "og:image",
+     "url": "https://egamers.io/outer-ring-mmo-lines-up-gear-trading-and-match-fixes-plus-new-tournament-tools-in-upcoming-patch/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-09",
+     "headline": "엔씨 MMORPG 외 장르 힘준다···슈터·서브컬처 글로벌 검증 속도",
+     "highlight": "",
+     "image": "https://cdn.sisajournal-e.com/news/photo/202610/424198_240647_4615.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.sisajournal-e.com/news/articleView.html?idxno=424198",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "近期上线 · 测试 · 新公布的网游",
+   "theme": {
+    "accent": "#E3B341",
+    "alt_accent": "#B794F6",
+    "alt_bg": "#2C2148",
+    "alt_fg": "#F3EEDF",
+    "bg": "#15131F",
+    "fg": "#F3EEDF",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
+   "facts": [],
+   "name": "漫威电影",
+   "section": "影视",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "The 6 Best MCU Movies Released Between 'Endgame' and 'Doomsday'",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.OxXkkwBBBLnCQ8gA4ZxLqg&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://collider.com/best-mcu-movies-between-endgame-and-doomsday/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "Avengers Doomsday viral Doctor Doom video: Is the clip featuring Captain America and Thor real? Truth revealed",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2e9Ad7.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-in/news/other/avengers-doomsday-viral-doctor-doom-video-is-the-clip-featuring-captain-america-and-thor-real-truth-revealed/ar-AA2e9JvW?ocid=BingNewsVerp",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "MCU 101: How to prepare for Avengers Doomsday in a reasonable manner",
+     "highlight": "",
+     "image": null,
+     "source": "The Boar",
+     "source_icon": "https://theboar.org/wp-content/themes/theboar-theme/img/icons/touch.png",
+     "url": "https://theboar.org/2026/10/mcu-101-how-to-prepare-for-avengers-doomsday-in-a-reasonable-manner/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "Avengers: Doomsday Promo Makes First Guardian of the Galaxy Character Mention",
+     "highlight": "",
+     "image": "https://images.thedirect.com/media/article_full/avengers-doomsday-guardians-of-the-galaxy-mcu.jpg",
+     "image_via": "og:image",
+     "url": "https://thedirect.com/article/avengers-doomsday-first-guardian-of-the-galaxy-mention",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "MCU Shocker: Spider-Man 4 Character Presumed Dead Is Alive, Return Reported",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.UyG_WS0EEe07vPBE0Y-HiQ&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://www.yahoo.com/entertainment/movies/articles/mcu-shocker-spider-man-4-160848236.html",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "Marvel Studios · MCU",
+   "theme": {
+    "accent": "#EC1D24",
+    "alt_accent": "#151515",
+    "alt_bg": "#EC1D24",
+    "alt_fg": "#FFFFFF",
+    "bg": "#151515",
+    "fg": "#F5F5F5",
+    "font": "serif",
+    "split": false
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "三星手机",
+   "section": "好物",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "自家晶片無緣機皇？傳三星Galaxy S27 Ultra維持全高通 Exynos 2700有望導入3款機型",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.6r1bcijMogsjjRUqolKbCw&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://tw.news.yahoo.com/%E8%87%AA%E5%AE%B6%E6%99%B6%E7%89%87%E7%84%A1%E7%B7%A3%E6%A9%9F%E7%9A%87-%E5%82%B3%E4%B8%89%E6%98%9Fgalaxy-s27-ultra%E7%B6%AD%E6%8C%81%E5%85%A8%E9%AB%98%E9%80%9A-exynos-022421064.html",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "Advice Galaxy S27 will go into production earlier than expected. The release date may be close",
+     "highlight": "",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-9.jpg",
+     "image_via": "og:image",
+     "url": "https://samsungmagazine.eu/en/2026/10/13/samsung-galaxy-s27-launch-production-december/",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
+   "theme": {
+    "accent": "#4C8DFF",
+    "alt_accent": "#1428A0",
+    "alt_bg": "#C9CDD5",
+    "alt_fg": "#0E1016",
+    "bg": "#0E1016",
+    "fg": "#EEF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "last": {
+    "date": "2026-10-13",
+    "headline": "AGF 2026 主赞助，设 150 台试玩",
+    "url": "https://prtimes.jp/main/html/rd/p/000003078.000001868.html"
+   },
+   "name": "Astrae Oratio",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#8DB8E8",
+    "alt_accent": "#3D6FA8",
+    "alt_bg": "#F2F2F4",
+    "alt_fg": "#1B1B1C",
+    "bg": "#1B1B1C",
+    "fg": "#F2F2F4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-10-13",
+    "headline": "10/27 19:00 特别直播",
+    "url": "https://www.4gamer.net/games/970/G097078/20261013046/"
+   },
+   "name": "BLEACH Mirrors High",
+   "quiet": true,
+   "section": "游戏",
+   "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
+   "stories": [],
+   "subtitle": "死神 新作手游",
+   "theme": {
+    "accent": "#AB1F12",
+    "alt_accent": "#E65224",
+    "alt_bg": "#1A1111",
+    "alt_fg": "#FBF7EE",
+    "bg": "#FBF7EE",
+    "fg": "#1A1111",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-13",
+    "headline": "Yeti 10/23 开放，日本最早滑雪场",
+    "url": "https://tabiris.com/archives/yeti2027open/"
+   },
+   "name": "滑雪",
+   "quiet": true,
+   "section": "运动",
+   "status": "",
+   "stories": [],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-13",
+    "headline": "《FROM》首次上线 Netflix 美区",
+    "url": "https://businessupturn.com/entertainment/ott/from-is-coming-to-netflix-us-for-the-first-time-everything-to-know-about-the-horror-series/"
+   },
+   "name": "FROM",
+   "quiet": true,
+   "section": "影视",
+   "status": "第 4 季已于 2026 年 6 月播完 · 第 5 季（最终季）已续订，预计 2027 年，日期未定",
+   "stories": [],
+   "subtitle": "美剧 · MGM+ 恐怖悬疑",
+   "theme": {
+    "accent": "#E3B04B",
+    "alt_accent": "#8C2F1E",
+    "alt_bg": "#ECE7DC",
+    "alt_fg": "#0F1512",
+    "bg": "#0F1512",
+    "fg": "#ECE7DC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-13",
+    "headline": "入选 2026 MAMA 首批阵容",
+    "url": "https://www.toonippo.co.jp/articles/-/2381654"
+   },
+   "name": "ILLIT",
+   "quiet": true,
+   "section": "演出",
+   "status": "日本安可场 12/23·24·26·27 千叶 LaLa arena TOKYO-BAY",
+   "stories": [],
+   "subtitle": "アイリット · 日本公演特别关注",
+   "theme": {
+    "accent": "#E8394F",
+    "alt_accent": "#FFD1DA",
+    "alt_bg": "#E8394F",
+    "alt_fg": "#FFFFFF",
+    "bg": "#FFF4F6",
+    "fg": "#2A1A20",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-13",
+    "headline": "星巴克×小熊维尼联名 10/19 开卖",
+    "url": "https://www.cosmopolitan.com/tw/lifestyle/hot-topics/g74115069/starbucks-winnie-1013/"
+   },
+   "name": "星巴克马克杯",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
+   "theme": {
+    "accent": "#00704A",
+    "alt_accent": "#C9A27E",
+    "alt_bg": "#1E3932",
+    "alt_fg": "#F6F1E7",
+    "bg": "#F6F1E7",
+    "fg": "#1E3932",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-13",
+    "headline": "Dreame 推智能猫砂机",
+    "url": "https://www.mobilemagazinehk.com/2026/10/dreame-aqua20-ultra-roller-tst.html"
+   },
+   "name": "猫用品",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "猫グッズ · 家里两只猫",
+   "theme": {
+    "accent": "#E8875B",
+    "alt_accent": "#F3B6B0",
+    "alt_bg": "#3A2C24",
+    "alt_fg": "#FBF4EA",
+    "bg": "#FBF4EA",
+    "fg": "#3A2C24",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-12",
+    "headline": "【木下グループジャパンオープン2026】錦織圭｜日程・会場・アクセス・チケット・放送",
+    "url": "https://www.sportzorg24.tv/kinoshita-group-japan-open-2026/"
+   },
+   "name": "日本顶级网球赛事",
+   "quiet": true,
+   "section": "运动",
+   "status": "大阪 WTA250 10/17–25（周末：10/17–18 资格赛、10/24 半决赛、10/25 决赛）· 东京东丽 PPO 10/24–11/1",
+   "stories": [],
+   "subtitle": "ATP・WTA ツアー 日本開催",
+   "theme": {
+    "accent": "#D7F03C",
+    "alt_accent": "#2E7D32",
+    "alt_bg": "#F5F7F2",
+    "alt_fg": "#1F4E79",
+    "bg": "#1F4E79",
+    "fg": "#F5F7F2",
+    "font": "sans",
+    "split": false
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "last": {
+    "date": "2026-10-13",
+    "headline": "Mrs. GREEN APPLE 联名",
+    "url": "https://natalie.mu/music/gallery/news/693125/2982122"
+   },
+   "name": "gelato pique",
+   "quiet": true,
+   "section": "好物",
+   "status": "10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）",
+   "stories": [],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
+    "split": true
+   }
+  }
+ ],
+ "no": 4
+}
