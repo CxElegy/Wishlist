@@ -9,7 +9,8 @@ create table if not exists public.feedback (
   created_at timestamptz not null default now(),
   url        text not null check (length(url) <= 2000),
   vote       smallint not null check (vote in (-1, 0, 1)),
-  kind       text check (kind in ('wish', 'follow')),   -- wish = 按愿望清单挑的，follow = 同类新发现
+  kind       text check (kind in ('wish', 'follow', 'hesitate', 'story')),
+                 -- wish = 按愿望清单挑的，follow = 同类新发现，hesitate = 纠结中那件的同类，story = 版面上的普通消息
   title      text check (length(title) <= 500),
   work       text check (length(work) <= 200),           -- 消息来自哪个关注项
   because    text check (length(because) <= 200),        -- 推荐理由里的那件愿望 / 关注项
@@ -23,3 +24,7 @@ drop policy if exists "网页只能新增投票" on public.feedback;
 create policy "网页只能新增投票" on public.feedback for insert to anon with check (true);
 
 grant insert on public.feedback to anon;
+
+-- 早先建的表（kind 只允许 wish / follow）：运行下面两行放宽
+alter table public.feedback drop constraint if exists feedback_kind_check;
+alter table public.feedback add constraint feedback_kind_check check (kind in ('wish', 'follow', 'hesitate', 'story'));

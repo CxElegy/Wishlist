@@ -31,6 +31,18 @@ class LearnTaste(unittest.TestCase):
         # 角色造型 一赞一踩抵消，不出现
         self.assertEqual(taste, {"猫": 2, "black cat": 1, "ポケモン": -1, "snoopy": 1})
 
+    def test_story_votes_learn_from_title_and_work(self):
+        wishes = [{"name": "黑猫杯", "likes": {"猫": ["猫|black cat"], "马克杯": ["マグ|mug"]}, "basics": ["马克杯"]}]
+        common = {"マグ"}
+        taste = digest.learn_taste([
+            {"url": "a", "vote": 1, "kind": "story", "title": "黒猫ではなく猫のマグ", "work": "星巴克马克杯"},
+            {"url": "b", "vote": -1, "kind": "story", "title": "GTA 6 新预告", "work": "GTA 6"},
+            {"url": "c", "vote": -1, "kind": "follow", "title": "x", "work": "GTA 6", "hits": ["开放世界大作"]},
+        ], wishes, common)
+        # 标题命中「猫」（具体喜好）；「马克杯」是基本属性不学；作品各记一笔；同类新发现不记作品（它不是那个作品本身）
+        # （标签「猫」和关键词「猫」恰好同名，算一笔）
+        self.assertEqual(taste, {"猫": 1, "作品:星巴克马克杯": 1, "作品:GTA 6": -1, "开放世界大作": -1})
+
     def test_bonus_is_clamped_and_explained(self):
         taste = {"猫": 5, "black cat": 3, "ポケモン": -9}
         self.assertEqual(digest.taste_bonus(taste, ["猫", "black cat"]), (4, [["猫", 5], ["black cat", 3]]))
@@ -65,7 +77,8 @@ class VoteButtons(unittest.TestCase):
         self.assertIn('data-vote="1"', out)
         self.assertIn('data-vote="-1"', out)
         self.assertIn("按你的投票：猫 +2", out)
-        self.assertIn('"https://x.supabase.co"', out)
+        # 投票脚本挂在整页最后（所有消息卡片都要用），不在推荐区里
+        self.assertIn('"https://x.supabase.co"', render.VOTE_JS % json.dumps({"url": "https://x.supabase.co", "key": "k"}))
         # data-v 属性里的 JSON 要转义，还原后和推荐一致
         import html, re
         data = json.loads(html.unescape(re.search(r'data-v="([^"]*)"', out).group(1)))
@@ -75,6 +88,26 @@ class VoteButtons(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Shuffle(unittest.TestCase):
+    def pick(self, i, batch, kind="wish"):
+        return {"title": f"t{i}", "url": f"https://e/{i}", "source": "S", "date": "2026-10-12", "work": "w",
+                "image": None, "because": "b", "hits": [], "kind": kind, "batch": batch}
+
+    def test_batches_one_visible_with_button(self):
+        picks = [self.pick(i, i // 5) for i in range(12)] + [self.pick(20 + i, i // 4, "follow") for i in range(6)]
+        out = render._picks(picks, [])
+        self.assertEqual(out.count('class="pkbatch"'), 3)
+        self.assertEqual(out.count('class="pkbatch" data-b="0">'), 1)   # 第一批显示
+        self.assertEqual(out.count(" hidden>"), 2)                       # 其余隐藏
+        self.assertIn("换一批", out)
+        self.assertIn("1/3", out)
+
+    def test_single_batch_has_no_button(self):
+        out = render._picks([self.pick(i, 0) for i in range(3)], [])
+        self.assertNotIn("换一批", out)
+        self.assertNotIn(" hidden>", out)
 
 
 class SyncNews(unittest.TestCase):
