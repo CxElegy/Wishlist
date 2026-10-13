@@ -607,13 +607,14 @@ def load_wishlist():
     return (yaml.safe_load(WISHLIST_FILE.read_text(encoding="utf-8")) or {}).get("wishlist") or []
 
 
-PICK_COUNT = 5       # 「我会喜欢？」最多几条（1 大 + 4 小正好排满）
+PICK_COUNT = 5       # 「我会喜欢？」一批几条（1 大 + 4 小正好排满）
+PICK_BATCHES = 3     # 准备几批，网页上点「换一批」轮着看
 PICK_DAYS = 14       # 从最近几天收集到的消息里挑
 PICK_THRESHOLD = 5   # 每命中一个喜好标签 2 分，和愿望清单同一个关注项再加 1 分；至少 5 分才推荐
 
 
 DISCOVER_HOURS = 12    # 「同类新消息」每隔多久搜一次
-DISCOVER_PICKS = 4     # 「我会喜欢？」里放几条同类新消息（每个关注项最多一条）
+DISCOVER_PICKS = 4     # 「我会喜欢？」每批放几条同类新消息
 
 
 HESITATE = "纠结"   # 愿望清单里还在犹豫买不买的状态：它的 similar 也会每天搜，找类似的好产品
@@ -780,12 +781,36 @@ def load_sizes():
 TASTE_LIMIT = (-6, 4)   # 投票学到的口味最多让一条推荐 -6 ~ +4 分（推荐门槛是 PICK_THRESHOLD）
 
 
-def learn_taste(votes):
-    """从投票学口味：赞过的推荐命中的喜好标签、具体关键词各 +1，踩过的各 -1，累加。
-    「同类新发现」的标签（如 动画风新作手游）也一样。返回 {标签或关键词: 分}。"""
+WORK_KEY = "作品:"   # 口味里按作品（关注项）记的那一类，如「作品:猫用品」
+
+
+def like_tags(text, wishes, common):
+    """一段文字命中愿望清单里哪些具体喜好：(标签, 关键词)，基本属性（马克杯、限定款）不算。"""
+    text = text.lower()
+    hits, words = set(), set()
+    for w in wishes:
+        basics = set(w.get("basics") or [])
+        for label, kws in w["likes"].items():
+            got = {_like_key(k) for k in kws if _like_hit(k, text)} - common
+            if got and label not in basics:
+                hits.add(label)
+                words |= got
+    return hits, words
+
+
+def learn_taste(votes, wishes=(), common=frozenset()):
+    """从投票学口味：赞过的消息命中的喜好标签、具体关键词、所属作品各 +1，踩过的各 -1，累加。
+    推荐卡片带着推荐时算好的标签；普通消息卡片（kind = story）按标题现算。
+    「同类新发现」的标签（如 动画风新作手游）也一样。返回 {标签 / 关键词 / 作品:名字: 分}。"""
     taste = {}
     for r in votes:
-        for k in set(r.get("hits") or []) | set(r.get("words") or []):
+        keys = set(r.get("hits") or []) | set(r.get("words") or [])
+        if r.get("kind") == "story":
+            hits, words = like_tags(r.get("title") or "", wishes, common)
+            keys |= hits | words
+        if r.get("work") and r.get("kind") in ("story", "wish"):
+            keys.add(WORK_KEY + r["work"])
+        for k in keys:
             taste[k] = taste.get(k, 0) + r["vote"]
     return {k: v for k, v in taste.items() if v}
 
@@ -807,7 +832,7 @@ def recommend(force_discover=False):
     images = old.get("images", {})
     wish_urls = {w.get("url") for w in wishes}
     votes = load_feedback()
-    taste = learn_taste(votes)
+    taste = learn_taste(votes, wishes, common)
     disliked = {r["url"] for r in votes if r["vote"] < 0}
     disliked_grams = [_title_grams(r.get("title") or "", []) for r in votes if r["vote"] < 0]
     pool = []
@@ -822,7 +847,8 @@ def recommend(force_discover=False):
                     score = 2 * len(hits) + (1 if w.get("watch") == item["name"] else 0)
                     # 学到的口味只看具体的喜好，基本属性（马克杯、限定款）不跟着投票涨跌
                     basics = set(w.get("basics") or [])
-                    bonus, why = taste_bonus(taste, [h for h in hits if h not in basics] + sorted(words - common))
+                    bonus, why = taste_bonus(taste, [h for h in hits if h not in basics] + sorted(words - common)
+                                             + [WORK_KEY + item["name"]])
                     if hits and (not best or score + bonus > best[0]):
                         best = (score + bonus, w, hits, words, why)
                 if best and best[0] >= PICK_THRESHOLD:
@@ -833,7 +859,9 @@ def recommend(force_discover=False):
     for score, date, d, work, w, hits, words, why in pool:
         g = _title_grams(d["title"], [])
         key = words - common
-        # 推荐要分散：两条靠同一个具体关键词命中（如都是 Snoopy）只留一条；basics 里的基本属性（限定、马克杯）不算
+        if len(picks) % PICK_COUNT == 0:
+            used = set()  # 每一批各自分散
+        # 推荐要分散：同一批里两条靠同一个具体关键词命中（如都是 Snoopy）只留一条；basics 里的基本属性（限定、马克杯）不算
         # 踩过的消息（和别家报道的同一件事）不再推荐
         if any(_similar(g, x) for x in grams) or key & used:
             continue
@@ -846,9 +874,9 @@ def recommend(force_discover=False):
         grams.append(g)
         picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
                       "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish",
-                      "words": sorted(key), "taste": why,
+                      "words": sorted(key), "taste": why, "batch": len(picks) // PICK_COUNT,
                       **({"hesitating": True} if w.get("status") == HESITATE else {})})
-        if len(picks) >= PICK_COUNT:
+        if len(picks) >= PICK_COUNT * PICK_BATCHES:
             break
 
     # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条。
@@ -859,32 +887,32 @@ def recommend(force_discover=False):
     label_of = {x["item"]: x["label"] for x in found}
     names = [n for n in names if taste.get(label_of[n], 0) > -2]
     names.sort(key=lambda n: -taste.get(label_of[n], 0))  # sort 是稳定的：同分时保持按时间
-    follow = []
+    # 每个关注项准备最多 PICK_BATCHES 条（有图的优先），再轮流排：每一批里尽量是不同的关注项
+    cands, seen_urls = {}, {p["url"] for p in picks}
     for name in names:
-        if len(follow) >= DISCOVER_PICKS:
-            break
-        chosen = None
-        for x in [x for x in found if x["item"] == name][:4]:
+        got = []
+        for x in [x for x in found if x["item"] == name][:PICK_BATCHES * 2]:
             url = sources.resolve_url(x["url"])
-            if url in disliked or any(p["url"] == url for p in picks + follow):
+            if url in disliked or url in seen_urls:
                 continue
             if url not in images:
                 images[url] = find_image(x.get("image"), [entry_from_dict(x)], url)
-            if chosen is None or (images[url] and not chosen[1]):  # 有图的优先，都没图就用第一条
-                chosen = (x, images[url], url)
-            if images[url]:
-                break
-        if chosen:
-            x, img, url = chosen
-            follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],
-                           "work": name, "image": img, "because": name, "hits": [x["label"]],
-                           "kind": "hesitate" if x.get("wish") else "follow",
-                           "words": [], "taste": taste_bonus(taste, [x["label"]])[1]})
+            seen_urls.add(url)
+            got.append((x, images[url], url))
+        got.sort(key=lambda c: not c[1])  # 有图的排前面（sort 是稳定的：同样有图时保持按时间）
+        cands[name] = got[:PICK_BATCHES]
+    order = [c for r in range(PICK_BATCHES) for n in names if len(cands[n]) > r for c in [cands[n][r]]]
+    follow = []
+    for x, img, url in order[:DISCOVER_PICKS * PICK_BATCHES]:
+        follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],
+                       "work": x["item"], "image": img, "because": x["item"], "hits": [x["label"]],
+                       "kind": "hesitate" if x.get("wish") else "follow", "batch": len(follow) // DISCOVER_PICKS,
+                       "words": [], "taste": taste_bonus(taste, [x["label"]])[1]})
     picks += follow
     keep = {p["url"] for p in picks}
     save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep}})
-    print(f"我会喜欢？：{len(picks) - len(follow)} 条按愿望清单 + {len(follow)} 条同类新消息"
-          f"（学自 {len(votes)} 次投票）", file=sys.stderr)
+    print(f"我会喜欢？：{len(picks) - len(follow)} 条按愿望清单 + {len(follow)} 条同类新消息，"
+          f"共 {1 + max([p['batch'] for p in picks] or [0])} 批（学自 {len(votes)} 次投票）", file=sys.stderr)
 
 
 def write_page():

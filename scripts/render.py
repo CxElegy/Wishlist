@@ -267,6 +267,21 @@ html{scroll-behavior:smooth}
 .vote button:disabled{opacity:.5;cursor:wait}
 .vote small{font-size:11px;opacity:.7}
 .pk.down>a{opacity:.35;filter:grayscale(1)}
+.card,.top{position:relative}
+.vt{position:absolute;top:8px;right:8px;z-index:3;display:flex;gap:4px;opacity:.55;transition:opacity .15s}
+.card:hover .vt,.top:hover .vt,.vt:focus-within,.vt.on{opacity:1}
+.vt button{padding:2px 7px;border:1px solid currentColor;background:color-mix(in srgb,var(--bg,#F4EDE4) 85%,transparent);
+ color:inherit;font-size:13px;line-height:1.4;cursor:pointer;border-radius:0}
+.vt button[aria-pressed=true]{background:#B8336A;border-color:#B8336A;color:#FFF}
+.brief li .vt{position:static;opacity:.5;margin-left:auto;flex:none}
+.brief li:hover .vt{opacity:1}
+.downv{opacity:.4;filter:grayscale(.8)}
+.pkbatch[hidden]{display:none}
+.shuffle{margin-left:auto;padding:6px 14px;border:2px solid #1A1C22;background:#1A1C22;color:#F4EDE4;
+ font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.1em;cursor:pointer;border-radius:0;white-space:nowrap}
+.shuffle:hover{background:#B8336A;border-color:#B8336A}
+.shuffle small{font:700 11px 'JetBrains Mono',monospace;opacity:.75;margin-left:6px}
+@media (hover:none){.vt{opacity:.9}}
 @media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}
  .pk:not(.big) .vote button span{display:none}.pk:not(.big) .vote button{padding:4px 14px;font-size:15px}}
 /* ---------- 按时间排列的卡片 ---------- */
@@ -689,6 +704,9 @@ def _why_verb(x):
     return "在纠结" if x.get("kind") == "hesitate" or x.get("hesitating") else "想要"
 
 
+WORK_KEY = "作品:"  # 投票学到的口味里，按作品记的那一类（和 digest.WORK_KEY 一致）
+
+
 def _picks(picks, works, feedback=None):
     """「我会喜欢？」角落：按愿望清单的喜好，从收集到的消息里挑的推荐，每条写明推荐理由。
     feedback 配好了 Supabase（url、key）时，每条下面有 👍 / 👎，投票直接写进数据库，下次出刊时学习。"""
@@ -705,7 +723,7 @@ def _picks(picks, works, feedback=None):
                  "_work": (x.get("hits") or [x["work"]])[0] if follow else x["work"]}
         tags = "".join(f"<i>{e(h)}</i>" for h in x.get("hits", []))
         date = e(x["date"][5:].replace("-", ".")) if x.get("date") else ""
-        taste = " · ".join(f"{e(k)} {v:+d}" for k, v in (x.get("taste") or [])[:3])
+        taste = " · ".join(f"{e(k.removeprefix(WORK_KEY))} {v:+d}" for k, v in (x.get("taste") or [])[:3])
         taste = f'<span class="taste">按你的投票：{taste}</span>' if taste else ""
         vote = ""
         if feedback:  # 投票要写进的数据：网页把它原样发给数据库
@@ -721,21 +739,52 @@ def _picks(picks, works, feedback=None):
             f'<span class="why">因为你{_why_verb(x)}「{e(x["because"])}」</span>'
             f'<span class="tags">{tags}</span>{taste}</span></a>{vote}</div>')
 
-    wish = [x for x in picks if x.get("kind") not in ("follow", "hesitate")]
-    follow = [x for x in picks if x.get("kind") in ("follow", "hesitate")]
-    body = f'<div class="pkgrid">{cards_of(wish, True)}</div>' if wish else ""
-    if follow:
-        body += (f'<div class="pksub">同类新发现<span>你关注的作品和纠结的东西之外，同类型的新消息</span></div>'
-                 f'<div class="pkgrid row" style="--n:{len(follow)}">{cards_of(follow, False)}</div>')
+    def batch_of(group):
+        wish = [x for x in group if x.get("kind") not in ("follow", "hesitate")]
+        follow = [x for x in group if x.get("kind") in ("follow", "hesitate")]
+        body = f'<div class="pkgrid">{cards_of(wish, True)}</div>' if wish else ""
+        if follow:
+            body += (f'<div class="pksub">同类新发现<span>你关注的作品和纠结的东西之外，同类型的新消息</span></div>'
+                     f'<div class="pkgrid row" style="--n:{len(follow)}">{cards_of(follow, False)}</div>')
+        return body
+
+    # 「换一批」：推荐按批（batch）分好，网页一次只显示一批，点按钮轮到下一批
+    batches = {}
+    for x in picks:
+        batches.setdefault(x.get("batch", 0), []).append(x)
+    body = "".join(f'<div class="pkbatch" data-b="{i}"{" hidden" if i else ""}>{batch_of(batches[b])}</div>'
+                   for i, b in enumerate(sorted(batches)))
+    shuffle = (f'<button type="button" class="shuffle" aria-label="换一批推荐">换一批<small>1/{len(batches)}</small></button>'
+               if len(batches) > 1 else "")
     return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>我会喜欢<em>？</em></h2>'
             f'<span>根据愿望清单里的喜好和你关注的作品类型挑的{"，点 👍 / 👎 教它你的口味" if feedback else ""}'
-            f' · <a href="wishlist.html">♥ 愿望清单</a></span></div>'
-            f'{body}</section>'
-            + (f"<script>{VOTE_JS % json.dumps(feedback)}</script>" if feedback else ""))
+            f' · <a href="wishlist.html">♥ 愿望清单</a></span>{shuffle}</div>'
+            f'{body}</section>' + (f"<script>{SHUFFLE_JS}</script>" if shuffle else ""))
+
+
+SHUFFLE_JS = """
+(() => {
+  const sec = document.getElementById('picks'), btn = sec.querySelector('.shuffle');
+  const all = [...sec.querySelectorAll('.pkbatch')];
+  let i = 0;
+  const show = n => {
+    i = (n + all.length) % all.length;
+    all.forEach((b, k) => { b.hidden = k !== i; });
+    btn.querySelector('small').textContent = (i + 1) + '/' + all.length;
+  };
+  try { show(Number(sessionStorage.getItem('wishlist-batch')) || 0); } catch (_) {}
+  btn.addEventListener('click', () => {
+    show(i + 1);
+    try { sessionStorage.setItem('wishlist-batch', String(i)); } catch (_) {}
+  });
+})();
+"""
 
 
 # 投票：直接写进 Supabase 的 feedback 表（只能新增，见 db/feedback.sql）。
 # 每次点击新增一行，同一条消息以最后一票为准；再点一次已选中的按钮 = 撤销（写一行 vote 0）。
+# 「我会喜欢？」的卡片下面有带文字的按钮（数据在 data-v 里）；其余所有消息卡片由脚本在右上角加上小按钮，
+# 作品名取所在版面的 data-k，标题取卡片里的标题。同一条消息在几处出现时，按钮状态一起变。
 # 本机记住投过什么，刷新后按钮状态还在；学习在下次出刊时进行（每 2 小时）
 VOTE_JS = """
 (() => {
@@ -744,15 +793,19 @@ VOTE_JS = """
   try { mine = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_) {}
   const headers = { apikey: cfg.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' };
   if (cfg.key.startsWith('eyJ')) headers.Authorization = 'Bearer ' + cfg.key;
-  const show = (box, v) => {
+  const boxes = [];   // [控件, 数据, 投踩后变淡的元素, 提示文字]
+  const paint = url => boxes.forEach(([box, data, dim, tip]) => {
+    if (data.url !== url) return;
+    const v = mine[url] || 0;
     box.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.vote) === v)));
-    box.closest('.pk').classList.toggle('down', v === -1);
-    box.querySelector('small').textContent = v === 1 ? '会多推荐这类' : v === -1 ? '以后少推荐这类' : '';
-  };
-  document.querySelectorAll('.vote').forEach(box => {
-    const data = JSON.parse(box.dataset.v);
-    show(box, mine[data.url] || 0);
-    box.querySelectorAll('button').forEach(btn => btn.addEventListener('click', async () => {
+    box.classList.toggle('on', v !== 0);
+    if (dim) dim.classList.toggle(dim.classList.contains('pk') ? 'down' : 'downv', v === -1);
+    if (tip) tip.textContent = v === 1 ? '会多推荐这类' : v === -1 ? '以后少推荐这类' : '';
+  });
+  const wire = (box, data, dim, tip) => {
+    boxes.push([box, data, dim, tip]);
+    box.querySelectorAll('button').forEach(btn => btn.addEventListener('click', async ev => {
+      ev.preventDefault(); ev.stopPropagation();   // 小按钮在卡片链接里面：别打开链接
       const v = (mine[data.url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
       box.querySelectorAll('button').forEach(b => b.disabled = true);
       try {
@@ -761,15 +814,37 @@ VOTE_JS = """
         if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120));
         mine[data.url] = v;
         try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
-        show(box, v);
+        paint(data.url);
       } catch (err) {
-        box.querySelector('small').textContent = '没存上，稍后再试';
+        if (tip) tip.textContent = '没存上，稍后再试';
+        btn.title = '没存上，稍后再试';
         console.error('投票失败', err);
       } finally {
         box.querySelectorAll('button').forEach(b => b.disabled = false);
       }
     }));
-  });
+  };
+  document.querySelectorAll('.picks .vote').forEach(box =>
+    wire(box, JSON.parse(box.dataset.v), box.closest('.pk'), box.querySelector('small')));
+  const small = () => {
+    const s = document.createElement('span');
+    s.className = 'vt';
+    s.innerHTML = '<button type="button" data-vote="1" aria-pressed="false" title="喜欢，多推荐这类">👍</button>'
+      + '<button type="button" data-vote="-1" aria-pressed="false" title="不感兴趣，少推荐这类">👎</button>';
+    return s;
+  };
+  const story = (link, holder, dim) => {
+    if (!/^https?:/.test(link.getAttribute('href') || '')) return;
+    const w = holder.closest('[data-k]');
+    const t = link.querySelector('h1,h2,h3,h4') || link;   // 标题；别用 b（日期旁的 NEW 也是 b）
+    const box = small();
+    holder.appendChild(box);
+    wire(box, { url: link.href, kind: 'story', title: t.textContent.trim().slice(0, 500),
+                work: (w && w.dataset.k || '').slice(0, 200), hits: [], words: [] }, dim, null);
+  };
+  document.querySelectorAll('.sec a.card, a.top').forEach(a => story(a, a, a));
+  document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
+  new Set(boxes.map(b => b[1].url)).forEach(paint);
 })();
 """
 
@@ -992,7 +1067,7 @@ def _front(works, today, updated):
     if top:
         sc = _sec_color(top_w.get("section"))
         badge = "重 磅" if top.get("weight") == "hero" else "头 条"
-        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener">'
+        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
                     f'<span class="badge">{badge}</span>{_pic(top)}'
                     f'<span class="kicker"><i style="background:{sc}">{e(top_w.get("section") or "")}</i>'
                     f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
@@ -1151,7 +1226,7 @@ def _nav(works, date, wishes=(), picks=()):
             f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
     if picks:
         rail.append(f'<a class="pill" style="--sc:#B8336A" data-for="picks" href="#picks">'
-                    f'<i class="no">?</i><span class="nm">我会喜欢？<small class="cnt">{len(picks)} 条推荐</small></span></a>')
+                    f'<i class="no">?</i><span class="nm">我会喜欢？<small class="cnt">{sum(1 for x in picks if not x.get("batch"))} 条推荐</small></span></a>')
     n = 0
     for name in order:
         sc = _sec_color(name)
@@ -1227,9 +1302,10 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         w["_today"] = latest["date"]
         w["_size"] = (sizes or {}).get(w["name"], "M")
     updated = updated or latest["date"].replace("-", ".")
+    fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
-            + _front(works, latest["date"], updated) + _picks(picks, works, feedback if feedback and feedback.get("url") and feedback.get("key") else None)
+            + _front(works, latest["date"], updated) + _picks(picks, works, fb)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>
@@ -1254,6 +1330,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>
+{f"<script>{VOTE_JS % json.dumps(fb)}</script>" if fb else ""}
 </body>
 </html>
 """
