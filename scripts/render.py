@@ -173,6 +173,12 @@ html{scroll-behavior:smooth}
 .nav select{font:700 12px 'JetBrains Mono',monospace;padding:6px 8px;border-radius:0}
 .nav .bar{display:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav *{transition:none!important}}
+/* 宽屏：目录占左栏从页面最上面开始（报头只在右栏），上下滚动时位置都不动。
+   负的上边距抵掉 .page 的上内边距（40px）和吸顶位置的差，一打开就已经在吸顶的位置；
+   页面底部的留白挪进右栏，滚到底时目录也不会被顶上去 */
+@media (min-width:1001px){
+ .page{padding-bottom:0}.mast{grid-column:2;grid-row:1}.issues{grid-column:2;grid-row:2;padding-bottom:40px}
+ .nav{grid-column:1;grid-row:1/3;margin-top:-24px}}
 /* 窄屏：目录变成顶部横条 */
 @media (max-width:1000px){
  .page{grid-template-columns:minmax(0,1fr)}
@@ -1062,7 +1068,7 @@ def _front(works, today, updated):
 NAV_STYLES = {
     # A 线路图：每个板块一段彩色线路，作品是站点；读到哪站圆点放大，线路按进度填色，读过的站变实心
     "line": """
-.nav{top:0;height:100vh;max-height:none;padding:16px 0}
+.nav{top:0;height:100vh;max-height:none;padding:16px 0;margin-top:-40px}
 .nav .here{display:none}
 .nav .rail{flex:1;padding-left:14px}
 .nav .pill{flex:1 1 auto;min-height:44px;max-height:180px}
