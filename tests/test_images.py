@@ -256,6 +256,63 @@ class ImagesTest(unittest.TestCase):
         self.assertNotIn("/og.html", HITS)  # 标题不像的不算转载
         self.assertIn("原文 HTTP 403（防机器人：Attention Required）", res.notes)
 
+    def test_same_article_needs_whole_title_similar(self):
+        """转载要两个标题整体相近：短标题刚好落在长标题里的不算（FROM 配上了《黑袍纠察队》的图）。"""
+        self.assertFalse(images.same_article(
+            "From Season 5 ending…", "'The Boys' season 5 ending explained: what happens to Homelander and Butcher"))
+        self.assertFalse(images.same_article(
+            "that damn apollo", "Margaret Hamilton, who led a software team for NASA's Apollo program, dies at 90"))
+        self.assertTrue(images.same_article(  # 全角半角不同、末尾带媒体名的，照样算同一篇
+            "【信州 北八ヶ岳標高 1830ｍ：八千穂高原スキー場】シーズン前に購入する事で大変お得な「早割チケット」10月より販売開始！",
+            "【信州 北八ヶ岳標高 1830m：八千穂高原スキー場】シーズン前に購入する事で大変お得な「早割チケット」10月より販売開始 - 時事ドットコム"))
+
+    def test_reddit_search_post_never_uses_syndication(self):
+        """全站搜索来的 Reddit 帖子（来源名是 Reddit，不是 r/xxx）也不找转载。"""
+        title = "From Season 5 ending explained by fans of the series"
+        called = []
+        with mock.patch.object(sources, "bing_news", lambda q: called.append(q) or [entry(title=title, url=self.u("/copy.html"))]), \
+                mock.patch.object(sources, "_reddit_get", lambda path, params: (False, b"<feed/>")):
+            res = images.pick(None, [entry(title=title, url="https://www.reddit.com/r/FromSeries/comments/x/y/", source="Reddit")],
+                              "https://www.reddit.com/r/FromSeries/comments/x/y/")
+        self.assertIsNone(res.image)
+        self.assertEqual(called, [])
+
+    def test_old_syndicated_image_on_reddit_post_dropped(self):
+        """以前给 Reddit 帖子找来的「转载图」写回了 inbox：不再当条目自带图用。"""
+        e = entry(url="https://www.reddit.com/r/FromSeries/comments/x/y/", source="Reddit", image=self.u("/big.jpg"))
+        e.image_via = "转载 www.yahoo.com"
+        with mock.patch.object(sources, "_reddit_get", lambda path, params: (False, b"<feed/>")):
+            res = images.pick(None, [e], e.url)
+        self.assertIsNone(res.image)
+        e.image_via = ""  # 收集时 Reddit 自带的预览图照常用
+        images.clear_cache()
+        with mock.patch.object(sources, "_reddit_get", lambda path, params: (False, b"<feed/>")):
+            self.assertEqual(images.pick(None, [e], e.url).source, "条目自带")
+
+    def test_reddit_search_post_must_name_item_in_title(self):
+        """Reddit 全站搜索的帖子：匹配词要在标题里，正文里随口一句「from Season 5」不算。"""
+        now = dt.datetime(2026, 10, 14, tzinfo=dt.timezone.utc)
+        item = {"name": "FROM", "match": ["From Season 5", "Fromville"]}
+        noise = entry(title="that damn apollo", url="https://www.reddit.com/r/RHOA/comments/1/a/", source="Reddit")
+        noise.summary, noise.published = "I am watching a clip from Season 5 reunion", now
+        real = entry(title="From Season 5 ending…", url="https://www.reddit.com/r/FromSeries/comments/2/b/", source="Reddit")
+        real.published = now
+        news = entry(title="MGM+ renews the horror series", url="https://news.example/a", source="Variety")
+        news.summary, news.published = "From Season 5 will be the last", now
+        got = digest.filter_entries([noise, real, news], item, {}, set(), now)
+        self.assertEqual([e.title for e in got], ["MGM+ renews the horror series", "From Season 5 ending…"])
+
+    def test_fallback_treats_reddit_search_posts_as_reddit(self):
+        """关键词编排：全站搜索来的 Reddit 帖子和版块帖子一样，要命中重点词才上版面，也不排在媒体报道前面。"""
+        item = {"name": "FROM", "priority_keywords": ["Season 5"]}
+        chat = entry(title="Season 11 is going to be the one", url="https://www.reddit.com/r/marvelrivals/comments/1/a/", source="Reddit")
+        post = entry(title="From Season 5 ending", url="https://www.reddit.com/r/FromSeries/comments/2/b/", source="Reddit")
+        picked = digest.fallback_stories([chat, post], item)
+        self.assertEqual([p["refs"] for p in picked], [[2]])
+        self.assertTrue(sources.is_reddit(chat))
+        self.assertTrue(sources.is_reddit(entry(url="https://www.reddit.com/r/x/comments/1/", source="Google")))
+        self.assertFalse(sources.is_reddit(entry(url="https://news.example/a", source="Variety")))
+
     def test_syndicated_copy_is_checked(self):
         title = "八千穂高原スキー場 シーズン前に購入する事で大変お得な早割チケット10月より販売開始"
         bad = entry(title=title, url=self.u("/broken-og.html"))

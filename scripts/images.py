@@ -34,7 +34,7 @@ MIN_LONG_SIDE = 300           # 长边至少这么多像素
 MAX_CHECKS = 12               # 每条报道最多实际检查这么多张候选图
 STORY_BUDGET = 60             # 每条报道找图最多花这么多秒（到点不再开始新的检查）
 BODY_IMAGES = 6               # 每个网页最多取这么多张正文图
-SYNDICATION_SIMILARITY = 0.8  # 转载：标题二元组重合度至少这么高才算同一篇
+SYNDICATION_SIMILARITY = 0.8  # 转载：两个标题的二元组 Dice 系数至少这么高才算同一篇（见 same_article）
 SYNDICATION_DAYS = 30         # Google 新闻找转载：搜最近多少天
 SYNDICATION_PAGES = 3         # Google 新闻找转载：最多读几篇（每篇要还原跳转链接再读网页）
 GONE = (404, 410)             # 原文返回这些状态码：页面已经删了，这条报道不出刊
@@ -407,6 +407,18 @@ def similarity(a, b):
     return len(ga & gb) / max(1, min(len(ga), len(gb)))
 
 
+def same_article(a, b):
+    """转载用：两个标题整体相近才算同一篇（Dice 系数）。只看短标题落在长标题里的比例（similarity）不行：
+    「From Season 5 ending…」会被当成「'The Boys' season 5 ending explained: …」的转载。"""
+    ga, gb = title_grams(_strip_outlet(a)), title_grams(_strip_outlet(b))
+    return 2 * len(ga & gb) / max(1, len(ga) + len(gb)) >= SYNDICATION_SIMILARITY
+
+
+def _strip_outlet(title):
+    """去掉标题末尾的媒体名（Google 新闻的「… - ライブドアニュース」、「… | RBB TODAY」）。"""
+    return re.sub(r"\s+[-|｜–—]\s+[^-|｜–—]{1,30}$", "", (title or "").strip())
+
+
 def search_phrase(title):
     """拿去搜转载的标题前半句：标题常被截断，各家后半句的措辞也常不一样（中日文取前 30 字，其它取前 10 个词）。"""
     t = re.sub(r"\s+", " ", unicodedata.normalize("NFKC", title or "")).strip()
@@ -444,7 +456,7 @@ def syndicated_candidates(title, skip_url=""):
             found.append((f"转载 {host}", u, url))
 
     for e in sources.bing_news(title)[:8]:
-        if similarity(title, e.title) < SYNDICATION_SIMILARITY:
+        if not same_article(title, e.title):
             continue
         host = urllib.parse.urlparse(e.url).netloc
         if e.image:
@@ -453,7 +465,7 @@ def syndicated_candidates(title, skip_url=""):
         if e.url not in read:
             add_page(e.url, host)
     hits = [e for e in sources.google_news(search_phrase(title), SYNDICATION_DAYS, news_lang(title))
-            if similarity(title, e.title) >= SYNDICATION_SIMILARITY]
+            if same_article(title, e.title)]
     hits.sort(key=lambda e: sources.is_domestic(e.url, e.source))
     for e in hits[:SYNDICATION_PAGES]:
         url = sources.resolve_url(e.url)
@@ -528,7 +540,8 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
 
     def stages():
         yield [("AI 挑选", chosen)]
-        yield [("条目自带", e.image) for e in refs]
+        # 以前给 Reddit 帖子找来的「转载图」不要：帖子没有转载，那是别的文章的图
+        yield [("条目自带", e.image) for e in refs if not (sources.is_reddit(e) and (e.image_via or "").startswith("转载"))]
         pages = [url] + [sources.entry_link(e) for e in refs[1:3]]
         for i, link in enumerate(pages):
             if REDDIT_POST.match(link or ""):
@@ -543,7 +556,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
             if note:
                 res.notes.append(note)
             yield found
-        if refs and not refs[0].source.startswith("r/"):
+        if refs and not sources.is_reddit(refs[0]):  # Reddit 帖子是网友发的，没有「转载」
             found, note = syndicated_candidates(refs[0].title, url)
             if note:
                 res.notes.append(note)

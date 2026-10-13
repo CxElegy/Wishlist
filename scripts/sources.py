@@ -96,6 +96,11 @@ DOMESTIC_SOURCES = (
 )
 
 
+def is_reddit(e):
+    """是不是 Reddit 帖子：版块抓来的（来源 r/xxx）和全站搜索来的（来源 Reddit）都算，看链接也认得出。"""
+    return e.source.startswith("r/") or e.source == "Reddit" or "reddit.com/r/" in (e.url or "")
+
+
 def is_domestic(url, source=""):
     """是不是中国大陆网站。看得出网址的看网址，Google 新闻跳转链接看媒体名。"""
     host = urllib.parse.urlparse(url or "").hostname or ""
