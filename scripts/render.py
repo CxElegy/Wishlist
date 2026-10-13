@@ -173,6 +173,12 @@ html{scroll-behavior:smooth}
 .nav select{font:700 12px 'JetBrains Mono',monospace;padding:6px 8px;border-radius:0}
 .nav .bar{display:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav *{transition:none!important}}
+/* 宽屏：目录占左栏从页面最上面开始（报头只在右栏），上下滚动时位置都不动。
+   负的上边距抵掉 .page 的上内边距（40px）和吸顶位置的差，一打开就已经在吸顶的位置；
+   页面底部的留白挪进右栏，滚到底时目录也不会被顶上去 */
+@media (min-width:1001px){
+ .page{padding-bottom:0}.mast{grid-column:2;grid-row:1}.issues{grid-column:2;grid-row:2;padding-bottom:40px}
+ .nav{grid-column:1;grid-row:1/3;margin-top:-24px}}
 /* 窄屏：目录变成顶部横条 */
 @media (max-width:1000px){
  .page{grid-template-columns:minmax(0,1fr)}
@@ -313,6 +319,21 @@ html{scroll-behavior:smooth}
 .older summary span{opacity:.6;letter-spacing:.1em}
 .older .grid .card{padding:16px;gap:10px}
 .older .card.c3 h3{font-size:16px;line-height:1.45}
+/* 一周内的版面要一屏装得下：图限高（底层模糊铺满，图不裁切），标题限行数；普通消息做成左图右字的小卡片 */
+.grid>.hero .pic{aspect-ratio:auto;height:260px}
+.grid>.lead .pic{aspect-ratio:auto;height:240px}.grid>.lead h2{font-size:30px}
+.card.wide{grid-template-columns:4fr 8fr}
+.grid>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.grid>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card.mini{display:grid;grid-template-columns:150px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 16px;padding:14px 18px;align-content:start}
+.mini .pic{grid-row:span 2;align-self:start}
+.mini .pic .ph{font-size:13px}.mini .pic.icon{gap:4px}.mini .pic.icon img.ico{width:min(40px,30%);border-radius:9px;padding:4px}
+.mini .pic.icon .src{font-size:11px}
+.mini h3{margin:0;align-self:start;font-weight:900;font-size:17px;line-height:1.45}
+.side .card.mini{grid-template-columns:120px minmax(0,1fr);gap:6px 14px}
+@media (max-width:760px){
+ .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:24px}
+ .card.mini{grid-template-columns:120px minmax(0,1fr);padding:12px 14px}.mini h3{font-size:16px}}
 @media (max-width:760px){
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr;padding:20px}
  .card.c8 h3,.card.wide h3{font-size:24px}
@@ -459,10 +480,13 @@ def _when(story, today):
     return f'<span class="when">{new}{e(d[5:].replace("-", "."))}</span>'
 
 
-def _tcard(story, span, i, today, small=False):
+def _tcard(story, span, i, today, small=False, mini=False):
     side = "a" if small else "m"  # 不再黑白交替：一周内统一主色底，折叠区统一副色底
     w = story.get("weight", "normal")
     url = e(story["url"])
+    if mini:  # 普通消息：左边小图、右边日期和标题
+        return (f'<a class="card {side} mini c{span}" href="{url}" target="_blank" rel="noopener">{_pic(story)}'
+                f'{_when(story, today)}<h3>{_headline(story)}</h3></a>')
     if span == 12 and w == "hero":
         return (f'<a class="card {side} hero" href="{url}" target="_blank" rel="noopener">{_pic(story)}'
                 f'<div class="txt">{_when(story, today)}<span class="tag">重 大</span><h2>{_headline(story)}</h2>'
@@ -477,24 +501,20 @@ def _tcard(story, span, i, today, small=False):
             f'{_when(story, today)}<{level}>{_headline(story)}</{level}>{blurb}</a>')
 
 
-# 每个作品一周内直接显示的消息最多占多高（像素，按卡片行的大致高度估算），按篇幅（数据库 sizes 表）：
-# S 只放几条（大约一行），M 中等，L 满满一整屏；表里没有的按 M
-SIZE_HEIGHT = {"S": 460, "M": 800, "L": 1400}
-ROW_HEIGHT = {12: 300, 8: 560, 6: 450, 4: 350}  # 一行里最宽那张卡片的宽度 → 这一行大约多高；整行大图另算
+# 每个作品一周内直接显示的消息最多占多高（像素，按桌面版 1200 宽的实际高度估算），按篇幅（数据库 sizes 表）：
+# L 是一屏（900 高的窗口减掉作品名横条和「更多消息」那一行），M 大约半屏，S 大约一行；表里没有的按 M。
+# 同时限条数：小卡片很矮，只按高度算的话没有头条的版面能塞进十几条
+SIZE_HEIGHT = {"S": 300, "M": 400, "L": 760}
+SIZE_COUNT = {"S": 3, "M": 4, "L": 10}
+SIZE_SIDE = {"S": 0, "M": 0, "L": 3}  # 头条右边竖排几条普通消息；0 是头条单独一行（图在左、字在右，矮得多）
 
 
-def _row_height(row):
-    widest = max(row, key=lambda x: x[1])
-    if widest[1] == 12 and widest[0].get("weight") == "hero":
-        return 470
-    return ROW_HEIGHT.get(widest[1], 350)
-
-
-def _layout(stories):
+def _layout(stories, side=SIZE_SIDE["L"]):
     """一周内消息的版式（保持时间顺序）：
-    重大 → 整行大图；头条 → 左 8 栏，右边竖排接下来的两条普通消息（只有一条就两张各占一半）；
-    普通消息三张一排，凑不满时平分整行。返回 [(行类型, 卡片列表)]。"""
-    rows, normals = [], []
+    重大 → 整行大图；头条 → 左 8 栏，右边竖排接下来的最多 side 条普通消息（没有就一张占整行）；
+    一周里每期都有头条，只有最新的那条做大图，更早的头条当普通消息排；
+    普通消息做成左图右字的小卡片，三张一排，凑不满时平分整行。返回 [(行类型, 卡片列表)]。"""
+    rows, normals, led = [], [], False
 
     def flush():
         if normals:
@@ -506,12 +526,13 @@ def _layout(stories):
         if w == "hero":
             flush()
             rows.append(("hero", [x]))
-        elif w == "lead":
+        elif w == "lead" and not led:
             flush()
             rows.append(("lead", [x]))
+            led = True
         else:
             last = rows[-1] if rows and not normals else None
-            if last and last[0] == "lead" and len(last[1]) < 3:
+            if last and last[0] == "lead" and len(last[1]) <= side:
                 last[1].append(x)
             else:
                 normals.append(x)
@@ -522,15 +543,16 @@ def _layout(stories):
 
 
 def _row_h(kind, cards):
+    """这一行在桌面版上大约多高（照实际网页量的，标题按最多行数算）。"""
     if kind == "hero":
-        return 470
+        return 310
     if kind == "lead":
-        return {1: 300, 2: 450, 3: 560}[len(cards)]
-    return {1: 300, 2: 450, 3: 350}[len(cards)]
+        return 260 if len(cards) == 1 else 470
+    return 125
 
 
-def _height(stories):
-    return sum(_row_h(k, c) for k, c in _layout(stories))
+def _height(stories, side=SIZE_SIDE["L"]):
+    return sum(_row_h(k, c) for k, c in _layout(stories, side))
 
 
 def _render_rows(rows, today):
@@ -538,33 +560,38 @@ def _render_rows(rows, today):
     for kind, cards in rows:
         if kind == "hero":
             out.append(_tcard(cards[0], 12, i, today))
-        elif kind == "lead" and len(cards) == 3:
-            out.append(_tcard(cards[0], 8, i, today))
-            out.append('<div class="side">' + "".join(_tcard(c, 4, i, today) for c in cards[1:]) + "</div>")
+        elif kind == "lead":
+            if len(cards) == 1:
+                out.append(_tcard(cards[0], 12, i, today))
+            else:
+                out.append(_tcard(cards[0], 8, i, today))
+                out.append('<div class="side">' + "".join(_tcard(c, 4, i, today, mini=True) for c in cards[1:]) + "</div>")
         else:
             span = {1: 12, 2: 6, 3: 4}[len(cards)]
-            out += [_tcard(c, span, i, today) for c in cards]
+            out += [_tcard(c, span, i, today, mini=True) for c in cards]
         i += 1
     return "".join(out)
 
 
-def _timeline(stories, today, budget=SIZE_HEIGHT["M"]):
-    """一周内的消息，最多放 budget 高（见 SIZE_HEIGHT）。放不下时按重要度挑：重要的先留（同样重要的取新的），
-    放得下就留下；留下的再按时间排列显示，其余返回给折叠区。"""
+def _timeline(stories, today, budget=SIZE_HEIGHT["M"], limit=SIZE_COUNT["M"], side=SIZE_SIDE["M"]):
+    """一周内的消息，最多放 budget 高、limit 条，头条右边最多 side 条（见 SIZE_HEIGHT / SIZE_COUNT / SIZE_SIDE）。放不下时按重要度挑：
+    重要的先留（同样重要的取新的），放得下就留下；留下的再按时间排列显示，其余返回给折叠区。"""
     def newest_first(xs):
         return sorted(xs, key=lambda x: x.get("date") or x["_issue"], reverse=True)
 
     keep = stories
-    if _height(stories) > budget:
+    if len(stories) > limit or _height(stories, side) > budget:
         by_rank = sorted(newest_first(stories), key=lambda x: RANK.get(x.get("weight"), 2))
         keep = []
         for x in by_rank:
+            if len(keep) >= limit:
+                break
             trial = newest_first(keep + [x])
-            if not keep or _height(trial) <= budget:
+            if not keep or _height(trial, side) <= budget:
                 keep = trial
     kept = {id(x) for x in keep}
     rest = [x for x in stories if id(x) not in kept]
-    return '<div class="grid">' + _render_rows(_layout(keep), today) + "</div>", rest
+    return '<div class="grid">' + _render_rows(_layout(keep, side), today) + "</div>", rest
 
 
 def _has_photo(x):
@@ -685,7 +712,8 @@ def _section(block, anchor=""):
     texts = [x for x in block["stories"] if x["_issue"] >= cutoff and not _has_pic(x)]
     old_texts = [x for x in block["stories"] if x["_issue"] < cutoff and not _has_pic(x)]
     if recent:
-        grid, more = _timeline(recent, today, SIZE_HEIGHT.get(block.get("_size"), SIZE_HEIGHT["M"]))
+        size = block.get("_size") if block.get("_size") in SIZE_HEIGHT else "M"
+        grid, more = _timeline(recent, today, SIZE_HEIGHT[size], SIZE_COUNT[size], SIZE_SIDE[size])
     elif texts:
         grid, more = "", []
     else:
@@ -1115,7 +1143,7 @@ def _front(works, today, updated):
 NAV_STYLES = {
     # A 线路图：每个板块一段彩色线路，作品是站点；读到哪站圆点放大，线路按进度填色，读过的站变实心
     "line": """
-.nav{top:0;height:100vh;max-height:none;padding:16px 0}
+.nav{top:0;height:100vh;max-height:none;padding:16px 0;margin-top:-40px}
 .nav .here{display:none}
 .nav .rail{flex:1;padding-left:14px}
 .nav .pill{flex:1 1 auto;min-height:44px;max-height:180px}
