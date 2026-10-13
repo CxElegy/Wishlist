@@ -10,11 +10,11 @@
     {
      "blurb": "",
      "date": "2026-10-13",
-     "headline": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+     "headline": "GTA 6 leaker threatens to release full playable version of game ahead of official launch",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.oJ_99peRefy3Z-5vjCdk-Q&pid=News&w=1200",
+     "image": "https://www.bing.com/th?id=ONUT.9NFme4bZ74H2L3_K3GGnxQ&pid=News&w=1200",
      "image_via": "条目自带",
-     "url": "https://www.tomshardware.com/video-games/pc-gaming/gta-6-could-come-to-pc-as-early-as-q1-2027-leak-claims-january-march-launch-window-a-huge-improvement-over-18-month-gta-v-wait",
+     "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/gta-6-leaker-threatens-release-full-game",
      "weight": "lead"
     }
    ],
@@ -197,11 +197,11 @@
     {
      "blurb": "",
      "date": "2026-10-13",
-     "headline": "6款机型同台！三星Galaxy S27系列完整产品线曝光",
+     "headline": "Galaxy S27 Ultraはプライバシーディスプレイを強化か、画質や視野角の改善に期待",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.-R-Xtiz1GKmp9AG7RxWA9w&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://www.sohu.com/a/1087334059_121117079",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/10/pd-thm_bw83.1920.webp",
+     "image_via": "og:image",
+     "url": "https://sumahodigest.com/?p=73630",
      "weight": "normal"
     }
    ],
@@ -277,6 +277,35 @@
    }
   },
   {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "name": "Astrae Oratio",
+   "section": "游戏",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "'아스트라에 오라티오' AGF 2026 단독 출품",
+     "highlight": "",
+     "image": "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=20261013233059065920cecffa93871223935165.jpg&nmt=19",
+     "image_via": "og:image",
+     "url": "https://www.maniareport.com/view.php?ud=202610132327231901cecffa9387_19",
+     "weight": "lead"
+    }
+   ],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#8DB8E8",
+    "alt_accent": "#3D6FA8",
+    "alt_bg": "#F2F2F4",
+    "alt_fg": "#1B1B1C",
+    "bg": "#1B1B1C",
+    "fg": "#F2F2F4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
@@ -301,31 +330,6 @@
     "alt_fg": "#FBF7EE",
     "bg": "#FBF7EE",
     "fg": "#1A1111",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-   "facts": [],
-   "last": {
-    "date": "2026-10-13",
-    "headline": "AGF 2026 主赞助，设 150 台试玩",
-    "url": "https://prtimes.jp/main/html/rd/p/000003078.000001868.html"
-   },
-   "name": "Astrae Oratio",
-   "quiet": true,
-   "section": "游戏",
-   "status": "",
-   "stories": [],
-   "subtitle": "アストラエ・オラティオ",
-   "theme": {
-    "accent": "#8DB8E8",
-    "alt_accent": "#3D6FA8",
-    "alt_bg": "#F2F2F4",
-    "alt_fg": "#1B1B1C",
-    "bg": "#1B1B1C",
-    "fg": "#F2F2F4",
     "font": "serif",
     "split": true
    }
