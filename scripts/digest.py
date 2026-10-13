@@ -438,6 +438,38 @@ def _same_topic(a, b):
     return len(a & b) >= 2 and len(a & b) / max(1, min(len(a), len(b))) >= 0.25
 
 
+# 跨语言判断「同一件事」：同一批里至少 EVENT_MIN 篇标题都出现的专有词（全大写缩写 3 个字母以上，或字母和数字混在一起，
+# 如 AGF、KINTEX、TGS2026）。日文、韩文、中文报道同一件事时，这类词往往原样出现。常见缩写不算
+EVENT_MIN = 3
+_EVENT_STOP = {"CBT", "OBT", "RPG", "MMO", "MMORPG", "ARPG", "SRPG", "NPC", "PVP", "PVE", "DLC", "CEO", "USD", "JPY", "KRW",
+               "PS4", "PS5", "XBOX", "NEW", "THE", "AND", "FOR", "GAME", "PC", "MV", "PV", "OST", "TV", "AI", "IP",
+               "LIVE", "TOP", "NOW", "SNS", "PR", "AMA", "BETA", "TEST", "OPEN", "INFO", "NEWS", "MAX", "PRO", "ULTRA",
+               "PLUS", "MINI", "LTD", "INC", "CO", "VS", "UPDATE", "PICK", "WTA", "ATP"}
+
+
+def _event_tokens(title, names):
+    t = title
+    for n in names:
+        t = re.sub(re.escape(n), " ", t, flags=re.I)
+    found = set()
+    for w in re.findall(r"[A-Za-z0-9]+", t):
+        if w.isdigit() or w.upper() in _EVENT_STOP:
+            continue
+        if (w.isupper() and len(w) >= 3) or (re.search(r"[A-Za-z]", w) and re.search(r"\d", w) and len(w) >= 4):
+            found.add(w.upper())
+    return found
+
+
+def _event_keys(entries, names):
+    """每篇的专有词里，这一批至少 EVENT_MIN 篇都有的那些。返回 {编号: 词集合}"""
+    toks = {i: _event_tokens(e.title, names) for i, e in enumerate(entries, 1)}
+    count = {}
+    for ts in toks.values():
+        for w in ts:
+            count[w] = count.get(w, 0) + 1
+    return {i: {w for w in ts if count[w] >= EVENT_MIN} for i, ts in toks.items()}
+
+
 HEAT_MIN_OUTLETS = 4  # 设了 hot_only 时，头条以外的报道至少要有几家媒体在报
 
 
@@ -478,10 +510,15 @@ def fallback_stories(entries, item, limit=None):
 
     candidates = [(i, e) for i, e in enumerate(entries, 1)
                   if (hits(e) or not e.source.startswith("r/")) and not side_mention(e.title, item)]
+    events = _event_keys(entries, names)
     picked, grams = [], []
     for i, e in sorted(candidates, key=score, reverse=True):
         g = _bigrams(e.title)
         if any(len(g & h) / max(1, min(len(g), len(h))) > 0.5 for h in grams):
+            continue
+        same = next((p for p in picked if events.get(i) and events[i] & p["_events"]), None)
+        if same:  # 不同语言写的同一件事（共同的专有词），并进那条报道，当作多一个来源
+            same["refs"].append(i)
             continue
         if by_heat and any(i in p["refs"] or any(_same_topic(topics[i], topics[r]) for r in p["refs"]) for p in picked):
             continue  # 已经归进前面某条报道的同一件事
@@ -490,9 +527,12 @@ def fallback_stories(entries, item, limit=None):
         refs = [i] + ([j for j in media if j != i and _same_topic(topics[i], topics[j])] if by_heat else [])
         if by_heat and picked and i not in urgent and len(refs) < HEAT_MIN_OUTLETS:
             continue  # 只有一两家在报的不算“火”，事情少就少写
-        picked.append({"headline": e.title, "highlight": "", "blurb": "", "weight": weight, "refs": refs})
+        picked.append({"headline": e.title, "highlight": "", "blurb": "", "weight": weight, "refs": refs,
+                       "_events": set(events.get(i) or ())})
         if len(picked) == limit:
             break
+    for p in picked:
+        p.pop("_events")
     return picked
 
 
