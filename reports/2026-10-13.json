@@ -618,22 +618,21 @@
     {
      "blurb": "",
      "date": "2026-10-13",
-     "headline": "\"150개 부스로 팬심 공략\"...엔씨, '아스오라' 앞세워 AGF 2026 출격",
-     "highlight": "",
-     "image": null,
-     "source": "ER 이코노믹리뷰",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.econovill.com&sz=128",
-     "url": "https://www.econovill.com/news/articleView.html?idxno=753466",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-13",
      "headline": "AGF 메인 스폰서 엔씨, '아스오라' 들고 서브컬처 팬심 정조준",
      "highlight": "",
      "image": "https://cdn.bloter.net/news/photo/202610/675557_289459_4638.jpg",
      "image_via": "JSON-LD",
      "url": "https://www.bloter.net/news/articleViewAmp.html?idxno=675557",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "➡️Nuevo GRUPO en Astrae Oratio y, cositas... 👀",
+     "highlight": "",
+     "image": "https://preview.redd.it/kihsw32lz6vh1.jpeg?width=640&crop=smart&auto=webp&s=4e083215d42674e062c2993ae8d2ed4c8d73d88c",
+     "image_via": "条目自带",
+     "url": "https://www.reddit.com/r/ElKamiNews/comments/1x4qts7/nuevo_grupo_en_astrae_oratio_y_cositas/",
      "weight": "normal"
     }
    ],
@@ -657,13 +656,53 @@
    "stories": [
     {
      "blurb": "",
+     "date": "2026-10-09",
+     "headline": "アルカラスが14連続失点から逆転！ レヘチュカは安定感抜群のプレーで圧倒！ジャパンOP決勝で対照的な両者が激突＜SMASH＞（THE DIGEST）",
+     "highlight": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261006-00121164-thedigest-000-5-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/9a79f05b75c3a1007017bd793d29c52f564f1590",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-12",
      "headline": "[Kinoshita Japan Open Tennis] I went to watch my first-ever tennis tournament",
      "highlight": "",
      "image": "https://www.bing.com/th?id=ONUT.4QmmrV5M7zYTF86OoiRooQ&pid=News&w=1200",
      "image_via": "条目自带",
      "url": "https://note.com/kipori01/n/n9cdbe26e013a?hl=en",
-     "weight": "lead"
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "イガ・シフィオンテク / 女子テニス選手紹介vol.9",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.8qimvypZAoCj5Rfunr_JEg&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://note.com/ample_robin7948/n/n4d838dc43885",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "Iga Świątek / Women's Tennis Player Introduction Vol. 9",
+     "highlight": "",
+     "image": "https://assets.st-note.com/production/uploads/images/323396955/rectangle_large_type_2_8a2090bc5aea48b22d3d1c764d402223.jpeg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/ample_robin7948/n/n4d838dc43885?hl=en",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "髪型が話題だったアルカラスが今度は“口ヒゲ姿”に！ きっかけはジャパンOP連覇で「みんなで笑い合いながら楽しんでる」＜SMASH＞（THE DIGEST）",
+     "highlight": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261011-00121339-thedigest-000-4-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/7e0bf2582a06fb32de9579138febcb1ec93416ad",
+     "weight": "normal"
     }
    ],
    "subtitle": "ATP・WTA ツアー 日本開催",
