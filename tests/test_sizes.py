@@ -47,8 +47,23 @@ class LoadSizes(unittest.TestCase):
 class SizeOnPage(unittest.TestCase):
     def shown(self, size):
         stories = [story(i) for i in range(12)]
-        grid, rest = render._timeline(stories, "2026-10-12", render.SIZE_HEIGHT[size])
+        grid, rest = render._timeline(stories, "2026-10-12", render.SIZE_HEIGHT[size], render.SIZE_COUNT[size])
         return len(stories) - len(rest)
+
+    def test_each_size_fits_its_height(self):
+        stories = [story(i, "lead" if i % 4 == 0 else "normal") for i in range(16)]
+        for size, budget in render.SIZE_HEIGHT.items():
+            grid, rest = render._timeline(stories, "2026-10-12", budget, render.SIZE_COUNT[size])
+            kept = [x for x in stories if x not in rest]
+            self.assertLessEqual(render._height(kept), budget, size)
+            self.assertLessEqual(len(kept), render.SIZE_COUNT[size], size)
+
+    def test_only_newest_lead_is_big(self):
+        stories = [story(1, "lead"), story(2), story(3, "lead"), story(4)]
+        kinds = [k for k, _ in render._layout(stories)]
+        self.assertEqual(kinds.count("lead"), 1)
+        grid, _ = render._timeline(stories, "2026-10-12", render.SIZE_HEIGHT["L"], render.SIZE_COUNT["L"])
+        self.assertEqual(grid.count("<h2>"), 1)
 
     def test_bigger_size_shows_more(self):
         s, m, l = self.shown("S"), self.shown("M"), self.shown("L")

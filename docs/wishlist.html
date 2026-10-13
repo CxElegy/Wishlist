@@ -278,6 +278,21 @@ html{scroll-behavior:smooth}
 .older summary span{opacity:.6;letter-spacing:.1em}
 .older .grid .card{padding:16px;gap:10px}
 .older .card.c3 h3{font-size:16px;line-height:1.45}
+/* 一周内的版面要一屏装得下：图限高（底层模糊铺满，图不裁切），标题限行数；普通消息做成左图右字的小卡片 */
+.grid>.hero .pic{aspect-ratio:auto;height:260px}
+.grid>.lead .pic{aspect-ratio:auto;height:240px}.grid>.lead h2{font-size:30px}
+.card.wide{grid-template-columns:4fr 8fr}
+.grid>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.grid>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card.mini{display:grid;grid-template-columns:150px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 16px;padding:14px 18px;align-content:start}
+.mini .pic{grid-row:span 2;align-self:start}
+.mini .pic .ph{font-size:13px}.mini .pic.icon{gap:4px}.mini .pic.icon img.ico{width:min(40px,30%);border-radius:9px;padding:4px}
+.mini .pic.icon .src{font-size:11px}
+.mini h3{margin:0;align-self:start;font-weight:900;font-size:17px;line-height:1.45}
+.side .card.mini{grid-template-columns:120px minmax(0,1fr);gap:6px 14px}
+@media (max-width:760px){
+ .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:24px}
+ .card.mini{grid-template-columns:120px minmax(0,1fr);padding:12px 14px}.mini h3{font-size:16px}}
 @media (max-width:760px){
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr;padding:20px}
  .card.c8 h3,.card.wide h3{font-size:24px}
@@ -333,7 +348,7 @@ html{scroll-behavior:smooth}
 <header class="mast"><div>
 <div class="logo"><svg width="62" height="62" viewBox="0 0 92 92" aria-hidden="true" fill="none" stroke="#EDEBE6" stroke-width="2"><circle cx="46" cy="46" r="40"/><circle cx="46" cy="46" r="31" stroke-dasharray="3 4"/><path d="M46 18 L51 41 L74 46 L51 51 L46 74 L41 51 L18 46 L41 41 Z" fill="#EDEBE6" stroke="none"/></svg></div>
 <h1>愿望清单</h1>
-<div class="meta"><div class="mono">更新于</div><div class="no">02:36</div><div class="mono">10.14</div></div>
+<div class="meta"><div class="mono">更新于</div><div class="no">02:45</div><div class="mono">10.14</div></div>
 </div></header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
