@@ -569,25 +569,51 @@ class ImagesTest(unittest.TestCase):
         self.assertIn('<img class="ico" src="https://icons.example/nico.png"', page)
         self.assertIn('<span class="src">ニコニコニュース</span>', page)
         # 以前的报道没存图标：按域名用图标服务，网站名用域名
-        self.assertIn(render.FAVICON_SERVICE.format(host="powder.com").replace("&", "&amp;"), page)
+        self.assertIn(render.FAVICON_SERVICE.format(host="www.powder.com").replace("&", "&amp;"), page)
         self.assertIn('<span class="src">powder.com</span>', page)
         self.assertIn('<div class="brief"><h4>其他消息</h4>', page)
         self.assertIn('看不出来源</a></li>', page)
         self.assertNotIn('没图的消息</a></li>', page)
         self.assertIn('class="top" href="https://a/1"', page)  # 没图的 hero 不上头条大图
 
-    def test_render_icon_only_when_no_image_or_cover(self):
+    def test_render_icon_fallback_order(self):
+        """兜底顺序：自己的图 → 作品封面 → 来源图标（存的 → 完整域名 → 主域名）→ 作品名封面块。"""
         import render
-        self.assertNotIn("ico", render._pic({"image": "https://a/1.jpg", "url": "https://x.example/a"}))
-        self.assertNotIn("ico", render._pic({"image": None, "_fbs": ["https://c/cover.jpg"], "url": "https://x.example/a"}))
-        html = render._pic({"image": None, "_fbs": [], "url": "https://news.yahoo.co.jp/a", "_work": "网球"})
+        svc = render.FAVICON_SERVICE
+        # 有图：图标先不加载，排在 data-icons 里，图全打不开才换上
+        html = render._pic({"image": "https://a/1.jpg", "_fbs": ["https://c/cover.jpg"], "url": "https://news.17173.com/a"})
+        self.assertIn('<div class="pic">', html)
+        self.assertIn('<img class="ico" data-icons="', html)
+        self.assertNotIn('class="ico" src=', html)
+        self.assertIn("p.classList.add(&#x27;icon&#x27;)", html)  # 图全打不开：换成来源图标
+        # 没图：直接显示图标，完整域名在前、主域名在后（news.17173.com 有 32px，17173.com 只有 16px）
+        html = render._pic({"image": None, "_fbs": [], "url": "https://news.17173.com/a", "_work": "MMO"})
         self.assertIn('class="pic icon"', html)
-        self.assertIn("yahoo.co.jp", html)
-        self.assertIn('<span class="ph">网球</span>', html)  # 图标打不开时换成作品名封面块
-        self.assertIn("naturalWidth&lt;32", html)  # 图标服务给的 16px 地球图标也当作打不开
+        full, base = svc.format(host="news.17173.com"), svc.format(host="17173.com")
+        self.assertIn(f'src="{full}"'.replace("&", "&amp;"), html)
+        self.assertIn(f'data-icons="{base}"'.replace("&", "&amp;"), html)
+        self.assertIn('<span class="ph">MMO</span>', html)  # 图标都不行时换成作品名封面块
+        self.assertIn("naturalWidth&lt;32", html)  # 16px 地球图标也当作不行
+        # 出刊时存的图标排第一
+        icons = render._icons({"url": "https://news.nicovideo.jp/a", "source_icon": "https://i/nico.png"})
+        self.assertEqual(icons, ["https://i/nico.png", svc.format(host="news.nicovideo.jp"), svc.format(host="nicovideo.jp")])
         self.assertTrue(render._has_pic({"image": None, "_fbs": [], "url": "https://x.example/a"}))
         self.assertFalse(render._has_photo({"image": None, "_fbs": [], "url": "https://x.example/a"}))
         self.assertFalse(render._has_pic({"image": None, "_fbs": [], "url": "https://news.google.com/rss/articles/x"}))
+        self.assertIn('class="pic none"', render._pic({"image": None, "_fbs": [], "_work": "x"}))  # 没有链接：名字块
+
+    def test_front_board_index_falls_back_to_other_images_and_icon(self):
+        """头版板块索引：这一版面最近几条的图依次备用，再是作品封面，最后是第一条报道的来源图标。"""
+        import render
+        issue = {"date": "2026-10-12", "items": [{"name": "MMO", "cover": "https://c/cover.jpg", "section": "游戏",
+                                                   "theme": dict(digest.theme.DEFAULT), "facts": [], "stories": [
+            {"headline": "a", "url": "https://news.17173.com/a", "image": "http://insecure.example/a.jpg", "date": "2026-10-12"},
+            {"headline": "b", "url": "https://b.example/b", "image": "https://b.example/b.jpg", "date": "2026-10-11"}]}]}
+        page = render.render([issue], order=["MMO"])
+        entry_html = page[page.index('<a class="entry" href="#'):]
+        entry_html = entry_html[:entry_html.index("</a>")]
+        self.assertIn('src="http://insecure.example/a.jpg" data-fb="https://b.example/b.jpg https://c/cover.jpg"', entry_html)
+        self.assertIn("news.17173.com", entry_html)  # 图都打不开：第一条报道的来源图标
 
     # ---------- 来源图标 ----------
 
