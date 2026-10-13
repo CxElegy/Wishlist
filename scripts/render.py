@@ -481,16 +481,16 @@ def _tcard(story, span, i, today, small=False, mini=False):
 
 
 # 每个作品一周内直接显示的消息最多占多高（像素，按桌面版 1200 宽的实际高度估算），按篇幅（数据库 sizes 表）：
-# L 是一屏（900 高的窗口减掉作品名横条和「更多消息」那一行），M 大约三分之二屏，S 大约一行；表里没有的按 M。
+# L 是一屏（900 高的窗口减掉作品名横条和「更多消息」那一行），M 大约半屏，S 大约一行；表里没有的按 M。
 # 同时限条数：小卡片很矮，只按高度算的话没有头条的版面能塞进十几条
-SIZE_HEIGHT = {"S": 300, "M": 600, "L": 760}
-SIZE_COUNT = {"S": 3, "M": 6, "L": 10}
-SIDE_MAX = 3  # 头条右边竖排几条普通消息
+SIZE_HEIGHT = {"S": 300, "M": 400, "L": 760}
+SIZE_COUNT = {"S": 3, "M": 4, "L": 10}
+SIZE_SIDE = {"S": 0, "M": 0, "L": 3}  # 头条右边竖排几条普通消息；0 是头条单独一行（图在左、字在右，矮得多）
 
 
-def _layout(stories):
+def _layout(stories, side=SIZE_SIDE["L"]):
     """一周内消息的版式（保持时间顺序）：
-    重大 → 整行大图；头条 → 左 8 栏，右边竖排接下来的最多三条普通消息（后面没有普通消息就一张占整行）；
+    重大 → 整行大图；头条 → 左 8 栏，右边竖排接下来的最多 side 条普通消息（没有就一张占整行）；
     一周里每期都有头条，只有最新的那条做大图，更早的头条当普通消息排；
     普通消息做成左图右字的小卡片，三张一排，凑不满时平分整行。返回 [(行类型, 卡片列表)]。"""
     rows, normals, led = [], [], False
@@ -511,7 +511,7 @@ def _layout(stories):
             led = True
         else:
             last = rows[-1] if rows and not normals else None
-            if last and last[0] == "lead" and len(last[1]) <= SIDE_MAX:
+            if last and last[0] == "lead" and len(last[1]) <= side:
                 last[1].append(x)
             else:
                 normals.append(x)
@@ -530,8 +530,8 @@ def _row_h(kind, cards):
     return 125
 
 
-def _height(stories):
-    return sum(_row_h(k, c) for k, c in _layout(stories))
+def _height(stories, side=SIZE_SIDE["L"]):
+    return sum(_row_h(k, c) for k, c in _layout(stories, side))
 
 
 def _render_rows(rows, today):
@@ -552,25 +552,25 @@ def _render_rows(rows, today):
     return "".join(out)
 
 
-def _timeline(stories, today, budget=SIZE_HEIGHT["M"], limit=SIZE_COUNT["M"]):
-    """一周内的消息，最多放 budget 高、limit 条（见 SIZE_HEIGHT / SIZE_COUNT）。放不下时按重要度挑：
+def _timeline(stories, today, budget=SIZE_HEIGHT["M"], limit=SIZE_COUNT["M"], side=SIZE_SIDE["M"]):
+    """一周内的消息，最多放 budget 高、limit 条，头条右边最多 side 条（见 SIZE_HEIGHT / SIZE_COUNT / SIZE_SIDE）。放不下时按重要度挑：
     重要的先留（同样重要的取新的），放得下就留下；留下的再按时间排列显示，其余返回给折叠区。"""
     def newest_first(xs):
         return sorted(xs, key=lambda x: x.get("date") or x["_issue"], reverse=True)
 
     keep = stories
-    if len(stories) > limit or _height(stories) > budget:
+    if len(stories) > limit or _height(stories, side) > budget:
         by_rank = sorted(newest_first(stories), key=lambda x: RANK.get(x.get("weight"), 2))
         keep = []
         for x in by_rank:
             if len(keep) >= limit:
                 break
             trial = newest_first(keep + [x])
-            if not keep or _height(trial) <= budget:
+            if not keep or _height(trial, side) <= budget:
                 keep = trial
     kept = {id(x) for x in keep}
     rest = [x for x in stories if id(x) not in kept]
-    return '<div class="grid">' + _render_rows(_layout(keep), today) + "</div>", rest
+    return '<div class="grid">' + _render_rows(_layout(keep, side), today) + "</div>", rest
 
 
 def _has_photo(x):
@@ -692,7 +692,7 @@ def _section(block, anchor=""):
     old_texts = [x for x in block["stories"] if x["_issue"] < cutoff and not _has_pic(x)]
     if recent:
         size = block.get("_size") if block.get("_size") in SIZE_HEIGHT else "M"
-        grid, more = _timeline(recent, today, SIZE_HEIGHT[size], SIZE_COUNT[size])
+        grid, more = _timeline(recent, today, SIZE_HEIGHT[size], SIZE_COUNT[size], SIZE_SIDE[size])
     elif texts:
         grid, more = "", []
     else:
