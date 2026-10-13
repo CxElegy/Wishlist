@@ -78,12 +78,22 @@
     {
      "blurb": "",
      "date": "2026-10-13",
+     "headline": "Avengers: Doomsday Promo Makes First Guardian of the Galaxy Character Mention",
+     "highlight": "",
+     "image": "https://images.thedirect.com/media/article_full/avengers-doomsday-guardians-of-the-galaxy-mcu.jpg",
+     "image_via": "og:image",
+     "url": "https://thedirect.com/article/avengers-doomsday-first-guardian-of-the-galaxy-mention",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
      "headline": "The 6 Best MCU Movies Released Between 'Endgame' and 'Doomsday'",
      "highlight": "",
      "image": "https://www.bing.com/th?id=ONUT.OxXkkwBBBLnCQ8gA4ZxLqg&pid=News&w=1200",
      "image_via": "条目自带",
      "url": "https://collider.com/best-mcu-movies-between-endgame-and-doomsday/",
-     "weight": "lead"
+     "weight": "normal"
     },
     {
      "blurb": "",
@@ -108,22 +118,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-13",
-     "headline": "Avengers: Doomsday Promo Makes First Guardian of the Galaxy Character Mention",
+     "date": "2026-10-08",
+     "headline": "Marvel Studios NYCC 2026 Panel: Live Updates & Announcements From Comic-Con (Finished)",
      "highlight": "",
-     "image": "https://images.thedirect.com/media/article_full/avengers-doomsday-guardians-of-the-galaxy-mcu.jpg",
+     "image": "https://images.thedirect.com/media/article_full/marvel_studios_nycc_2026_panel.jpg",
      "image_via": "og:image",
-     "url": "https://thedirect.com/article/avengers-doomsday-first-guardian-of-the-galaxy-mention",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-13",
-     "headline": "MCU Shocker: Spider-Man 4 Character Presumed Dead Is Alive, Return Reported",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.UyG_WS0EEe07vPBE0Y-HiQ&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://www.yahoo.com/entertainment/movies/articles/mcu-shocker-spider-man-4-160848236.html",
+     "url": "https://thedirect.com/article/marvel-studios-nycc-2026",
      "weight": "normal"
     }
    ],
@@ -140,21 +140,11 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
    "section": "好物",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "自家晶片無緣機皇？傳三星Galaxy S27 Ultra維持全高通 Exynos 2700有望導入3款機型",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.6r1bcijMogsjjRUqolKbCw&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://tw.news.yahoo.com/%E8%87%AA%E5%AE%B6%E6%99%B6%E7%89%87%E7%84%A1%E7%B7%A3%E6%A9%9F%E7%9A%87-%E5%82%B3%E4%B8%89%E6%98%9Fgalaxy-s27-ultra%E7%B6%AD%E6%8C%81%E5%85%A8%E9%AB%98%E9%80%9A-exynos-022421064.html",
-     "weight": "lead"
-    },
     {
      "blurb": "",
      "date": "2026-10-13",
@@ -163,6 +153,26 @@
      "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-9.jpg",
      "image_via": "og:image",
      "url": "https://samsungmagazine.eu/en/2026/10/13/samsung-galaxy-s27-launch-production-december/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "自家晶片無緣機皇？傳三星Galaxy S27 Ultra維持全高通 Exynos 2700有望導入3款機型",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.6r1bcijMogsjjRUqolKbCw&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://tw.news.yahoo.com/%E8%87%AA%E5%AE%B6%E6%99%B6%E7%89%87%E7%84%A1%E7%B7%A3%E6%A9%9F%E7%9A%87-%E5%82%B3%E4%B8%89%E6%98%9Fgalaxy-s27-ultra%E7%B6%AD%E6%8C%81%E5%85%A8%E9%AB%98%E9%80%9A-exynos-022421064.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "6款机型同台！三星Galaxy S27系列完整产品线曝光",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.-R-Xtiz1GKmp9AG7RxWA9w&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://www.sohu.com/a/1087334059_121117079",
      "weight": "normal"
     }
    ],
@@ -174,6 +184,35 @@
     "alt_fg": "#0E1016",
     "bg": "#0E1016",
     "fg": "#EEF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
+   "facts": [],
+   "name": "ILLIT",
+   "section": "演出",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "ILLIT BREAK EVEN — K-Pop Group Stuns in Cold Concept Photos for New Song",
+     "highlight": "",
+     "image": "https://en.koreadaily.com/wp-content/uploads/2026/10/202610130803770818_6acd6a734d2eb.jpg",
+     "image_via": "og:image",
+     "url": "https://en.koreadaily.com/illit-break-even-2/",
+     "weight": "lead"
+    }
+   ],
+   "subtitle": "アイリット · 日本公演特别关注",
+   "theme": {
+    "accent": "#E8394F",
+    "alt_accent": "#FFD1DA",
+    "alt_bg": "#E8394F",
+    "alt_fg": "#FFFFFF",
+    "bg": "#FFF4F6",
+    "fg": "#2A1A20",
     "font": "sans",
     "split": true
    }
@@ -275,31 +314,6 @@
     "bg": "#0F1512",
     "fg": "#ECE7DC",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
-   "facts": [],
-   "last": {
-    "date": "2026-10-13",
-    "headline": "入选 2026 MAMA 首批阵容",
-    "url": "https://www.toonippo.co.jp/articles/-/2381654"
-   },
-   "name": "ILLIT",
-   "quiet": true,
-   "section": "演出",
-   "status": "日本安可场 12/23·24·26·27 千叶 LaLa arena TOKYO-BAY",
-   "stories": [],
-   "subtitle": "アイリット · 日本公演特别关注",
-   "theme": {
-    "accent": "#E8394F",
-    "alt_accent": "#FFD1DA",
-    "alt_bg": "#E8394F",
-    "alt_fg": "#FFFFFF",
-    "bg": "#FFF4F6",
-    "fg": "#2A1A20",
-    "font": "sans",
     "split": true
    }
   },
