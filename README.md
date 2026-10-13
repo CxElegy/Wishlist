@@ -109,10 +109,11 @@ items.yaml
    | `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` | Reddit 常拦截云服务器的匿名请求，用官方 API 才稳定。在 [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) 创建一个 *script* 类型的应用即可（免费） |
    | `TMDB_API_KEY` | 关注影视剧时需要，在 themoviedb.org 的账号设置里免费申请 |
 
-4. **数据库（可选，Supabase / Postgres）**：存「我会喜欢？」的 👍 / 👎 投票和收集到的每条消息。没设置时网页上不显示投票按钮，消息也只存在 `inbox/`。
+4. **数据库（可选，Supabase / Postgres）**：存「我会喜欢？」的 👍 / 👎 投票、收集到的每条消息、编排后的报道、价格 / 状态历史。没设置时网页上不显示投票按钮，消息也只存在 `inbox/`。
    1. 在 [supabase.com](https://supabase.com) 注册（免费），New project 新建一个项目（名字随意，数据库密码自己记下）。
    2. 左侧 **SQL Editor** → 把 [`db/feedback.sql`](db/feedback.sql) 整段粘贴进去 → Run。建好 `feedback` 表：网页只能往里新增投票，读不到也改不了。
       再新建一个查询，把 [`db/news.sql`](db/news.sql) 粘贴进去 → Run。建好 `news` 表：每次收集后写入新消息（同一关注项的同一条链接只存一行），第一次运行会把 `inbox/` 里已有的全部补进去；只有 secret key 能读写。
+      再运行 [`db/history.sql`](db/history.sql)：`stories` 表存编排后的报道（某期重新编排就整期替换），`price_history` 表存价格 / 状态的变化（Steam 价格、播出状态、愿望清单里写的价格，值变了才新增一行）。
       再把 [`db/sizes.sql`](db/sizes.sql) 粘贴进去 → Run。建好 `sizes` 表：每个关注项的篇幅 **S**（少，每期最多 3 条、网页上约一行）/ **M**（中等，5 条）/ **L**（多，8 条、满满一整屏），表里没有的按 M。
       以后在 Table Editor 里改 `size` 那一格就行，下次出刊生效；网页上不显示篇幅。
    3. 项目的 **Connect** 按钮（或 Project Settings → Data API）里复制 Project URL；Project Settings → **API Keys** 里复制 publishable key（`sb_publishable_` 开头）和 secret key（`sb_secret_` 开头）。
@@ -120,7 +121,7 @@ items.yaml
    5. secret key 放进 GitHub 仓库 Settings → Secrets and variables → Actions → **Secrets**，名字 `SUPABASE_SERVICE_KEY`。**不要**写进任何文件。
 
    投票在每次出刊（每 2 小时）时读出来学习，同时存一份到 `state/feedback.json`。
-   消息每次收集后写进 `news` 表，已同步到哪一期记在 `state/db_news.json`；数据库连不上不影响出刊，下次运行再补。想手动补一次：`SUPABASE_SERVICE_KEY=… python scripts/digest.py sync-db`。
+   消息、报道、价格每次运行后写进数据库，已同步到哪记在 `state/db_news.json`、`db_stories.json`、`db_prices.json`；数据库连不上不影响出刊，下次运行再补。想手动补一次：`SUPABASE_SERVICE_KEY=… python scripts/digest.py sync-db`。
    注意：网页是公开的，知道网址的人理论上也能投票（只能新增）；真有乱投，在 Supabase 的 Table Editor 里删掉那几行即可。
 
 5. **运行**：Actions → 关注清单通信 → Run workflow（勾选“顺便发一次周报”可以测试 Discord）。之后会自动运行；想改频率，改 `.github/workflows/digest.yml` 里的 `cron`。
@@ -147,7 +148,7 @@ python scripts/digest.py publish     # 只出刊（用最新一份 inbox，有 .
 python scripts/digest.py render      # 改了版式后，用已有数据重新生成网页
 python scripts/digest.py notify-urgent   # 把还没通知过的要紧消息发到 Discord
 python scripts/digest.py notify-weekly   # 发过去 7 天的周报
-python scripts/digest.py sync-db         # 把 inbox/ 里的消息写进数据库（需要 SUPABASE_SERVICE_KEY）
+python scripts/digest.py sync-db         # 把消息、报道、价格历史写进数据库（需要 SUPABASE_SERVICE_KEY）
 python -m unittest discover tests       # 运行测试（本地假网站，不联网）
 ```
 
@@ -176,5 +177,5 @@ python -m unittest discover tests       # 运行测试（本地假网站，不�
 | `docs/` | 简报网页，由 GitHub Pages 发布；`docs/design/` 是流程图和架构图 |
 | `design/` | 流程图、架构图、简报样式的设计稿源文件 |
 | `EDITING.md` | AI 编辑的工作规则 |
-| `db/feedback.sql`、`db/news.sql`、`db/sizes.sql` | 数据库（Supabase）的建表语句：投票、收集到的消息、每个关注项的篇幅 |
+| `db/feedback.sql`、`db/news.sql`、`db/history.sql`、`db/sizes.sql` | 数据库（Supabase）的建表语句：投票、收集到的消息、编排后的报道和价格历史、每个关注项的篇幅 |
 | `state/` | 已报道的链接、上期状态、配色缓存，请勿手动修改 |
