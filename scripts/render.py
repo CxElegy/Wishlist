@@ -77,7 +77,7 @@ a{color:inherit;text-decoration:none}
  background:#FFFFFF;border-radius:14px;padding:6px;box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .pic.icon .src{max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
  font:600 13px 'JetBrains Mono','Noto Sans SC',monospace;opacity:.75}
-.pic.icon.none{background:none}.pic.icon.none .src{display:none}
+.pic:not(.icon) img.ico,.pic:not(.icon) .src{display:none}
 .pic img.bg{object-fit:cover;filter:blur(18px) brightness(.8);transform:scale(1.15)}
 .hero{grid-column:span 12;display:grid;grid-template-columns:7fr 5fr;gap:24px;padding:24px}
 .hero .pic{align-self:center}
@@ -338,26 +338,30 @@ def _headline(story):
     return text
 
 
+# 主图打不开：换下一张备用图（同一版面已经有这张图就跳过，免得两张卡片同一张图），背景模糊图跟着换；
+# 备用图也用完了：有来源图标就换成来源图标，没有才显示作品名封面块
 SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest('section'),"
            "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
            "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
            "if(f.length){me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
-           "else{p.classList.add('none');if(b)b.remove();me.remove()}")
+           "else{var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
+           "if(ic){p.classList.add('icon');var l=ic.dataset.icons.split(' ');ic.src=l.shift();ic.dataset.icons=l.join(' ')}"
+           "else{p.classList.add('none')}}")
+# 来源图标打不开、或者只有 16px（Google 图标服务查不到时给的地球图标）：换下一个，都不行才是作品名封面块
+ICON_NEXT_JS = ("var l=(this.dataset.icons||'').split(' ').filter(Boolean);"
+                "if(l.length){this.src=l.shift();this.dataset.icons=l.join(' ')}"
+                "else{var p=this.closest('.pic');p.classList.remove('icon');p.classList.add('none');this.remove()}")
+ICON_LOAD_JS = "if(this.naturalWidth<32){" + ICON_NEXT_JS + "}"
 
 
-ICON_FAIL_JS = "var p=this.closest('.pic');p.classList.add('none');this.remove()"
-ICON_LOAD_JS = "if(this.naturalWidth<32){" + ICON_FAIL_JS + "}"  # Google 图标服务查不到时给的是 16px 地球图标
-
-
-def _icon(story):
-    """拿不到配图的报道用来源网站的图标：出刊时找好、检查过的；以前的报道没存，就按链接的域名
-    用 Google 的公开网站图标服务（打不开或太小，网页上自动换成作品名封面块）。"""
-    if story.get("source_icon"):
-        return story["source_icon"]
+def _icons(story):
+    """来源网站图标的候选，按顺序试：出刊时找好、检查过的；然后用 Google 的公开网站图标服务，
+    先完整域名再主域名（news.17173.com 有 32px 的，17173.com 只有 16px）。看不出来源的返回空。"""
     host = (urllib.parse.urlparse(story.get("url") or "").hostname or "").lower()
     if not host or host == "news.google.com":
-        return None
-    return FAVICON_SERVICE.format(host=base_domain(host))
+        return []
+    found = [story.get("source_icon")] + [FAVICON_SERVICE.format(host=h) for h in (host, base_domain(host))]
+    return list(dict.fromkeys(u for u in found if u))
 
 
 def _source_name(story):
@@ -367,24 +371,25 @@ def _source_name(story):
 
 def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
-    图打不开（防盗链、网站删图等）时按顺序换 _fbs 里的备用图（作品封面）；
-    没有图、也没有备用图时显示作品名排版的封面块。"""
+    兜底顺序：自己的图 → _fbs 里的备用图（作品封面）→ 来源网站的图标和网站名 → 作品名排版的封面块。
+    前一个打不开（防盗链、网站删图、图标太小……）网页上自动换下一个。"""
     img, name = story.get("image"), story.get("_work", "")
     fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
     chain = list(dict.fromkeys(u for u in [img, *fbs] if u))  # 第一张是 src，其余按顺序备用
     fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
     src = chain[0] if chain else None
-    # 主图打不开：换下一张备用图，但同一版面已经有这张图就跳过（免得两张卡片同一张图）；背景模糊图跟着主图换
     tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
            f'<img src="{e(src)}"{fb} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="{e(SWAP_JS)}">') if src else ""
     label = f'<span class="ph">{e(name)}</span>' if name else ""
-    icon = None if src else _icon(story)
-    if icon:  # 没有配图、也没有作品封面：配图位置显示来源网站的图标和网站名
-        return (f'<div class="pic icon">{label}<img class="ico" src="{e(icon)}" alt="" loading="lazy" '
-                f'referrerpolicy="no-referrer" onload="{e(ICON_LOAD_JS)}" onerror="{e(ICON_FAIL_JS)}">'
-                f'<span class="src">{e(_source_name(story))}</span></div>')
-    none = "" if src else " none"
-    return f'<div class="pic{none}">{label}{tag}</div>'
+    icons = _icons(story)
+    icon = ""
+    if icons:  # 有图时先不加载图标（data-icons 里排着），图全打不开才换上；没图就直接显示图标
+        first, rest = (None, icons) if src else (icons[0], icons[1:])
+        icon = (f'<img class="ico"{f" src={chr(34)}{e(first)}{chr(34)}" if first else ""} data-icons="{e(" ".join(rest))}" '
+                f'alt="" loading="lazy" referrerpolicy="no-referrer" onload="{e(ICON_LOAD_JS)}" onerror="{e(ICON_NEXT_JS)}">'
+                f'<span class="src">{e(_source_name(story))}</span>')
+    cls = "" if src else " icon" if icons else " none"
+    return f'<div class="pic{cls}">{label}{tag}{icon}</div>'
 
 
 def _card(story, cls, side, level="h3", blurb=False):
@@ -554,7 +559,7 @@ def _has_photo(x):
 
 def _has_pic(x):
     """能做成卡片：有图，或者至少有来源网站的图标。"""
-    return _has_photo(x) or bool(_icon(x))
+    return _has_photo(x) or bool(_icons(x))
 
 
 def _brief(stories):
@@ -1006,10 +1011,15 @@ def _front(works, today, updated):
             if rec:
                 first = rec[0]
                 text, cls = first["headline"], "entry"
-                img = next((x["image"] for x in rec if x.get("image")), None) or w.get("_thumb")
+                # 代表这个版面的小图：最近几条报道的图、作品封面，一张打不开换下一张；都不行用第一条的来源图标
+                imgs = list(dict.fromkeys([x["image"] for x in rec if x.get("image")][:3] + [w.get("_thumb")]))
+                imgs = [u for u in imgs if u]
+                pic = {"image": imgs[0] if imgs else None, "_fbs": imgs[1:], "_work": w["name"],
+                       **{k: first.get(k) for k in ("url", "source", "source_icon")}}
             else:
-                text, img, cls = w.get("status") or "暂无新消息", w.get("_thumb"), "entry q"
-            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic({"image": img, "_work": w["name"], "_fbs": []})}'
+                text, cls = w.get("status") or "暂无新消息", "entry q"
+                pic = {"image": w.get("_thumb"), "_work": w["name"], "_fbs": []}
+            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic(pic)}'
                         f'<span><span class="nm">{e(w["name"])}</span><b>{e(text)}</b></span></a>')
         body = "".join(rows) or '<div class="none">还没有关注项</div>'
         boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
