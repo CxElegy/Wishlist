@@ -131,6 +131,11 @@ class SyncNews(unittest.TestCase):
                 if test.fail:
                     self.wfile.write(b'{"code":"PGRST205"}')
 
+            def do_DELETE(self):
+                test.posts.append((self.path, {k.lower(): v for k, v in self.headers.items()}, None))
+                self.send_response(404 if test.fail else 204)
+                self.end_headers()
+
             def log_message(self, *a):
                 pass
 
@@ -145,7 +150,23 @@ class SyncNews(unittest.TestCase):
         (tmp / "inbox" / "2026-10-12.json").write_text(json.dumps({"date": "2026-10-12", "items": [
             {"name": "猫用品", "backfill": True, "entries": [entry(1, "u1", "新标题")]},
             {"name": "GTA 6", "entries": [{**entry(1, "u1", "C"), "urgent": True}]}]}), encoding="utf-8")
+        (tmp / "reports").mkdir()
+        (tmp / "reports" / "2026-10-12.json").write_text(json.dumps({"date": "2026-10-12", "items": [
+            {"name": "猫用品", "stories": [
+                {"headline": "黑猫杯开卖", "highlight": "开卖", "blurb": "", "weight": "lead", "url": "u1",
+                 "image": "", "date": "2026-10-11"},
+                {"headline": "第二条", "highlight": "", "blurb": "", "weight": "normal", "url": "u2", "image": "i"}]}]}),
+            encoding="utf-8")
+        (tmp / "facts.json").write_text(json.dumps({
+            "steam:1": {"text": "¥ 98（-50%）", "stable": "98", "item": "游戏A", "label": "Steam 价格"},
+            "tmdb:tv/1": {"text": "旧格式", "stable": "x"}}), encoding="utf-8")
+        self.wishes = [{"name": "黑猫杯", "price": 850, "currency": "NT$"}, {"name": "没价格"}]
         self.patches = [
+            mock.patch.object(digest, "REPORTS_DIR", tmp / "reports"),
+            mock.patch.object(digest, "STORIES_SYNC_FILE", tmp / "state" / "db_stories.json"),
+            mock.patch.object(digest, "PRICES_SYNC_FILE", tmp / "state" / "db_prices.json"),
+            mock.patch.object(digest, "FACTS_FILE", tmp / "facts.json"),
+            mock.patch.object(digest, "load_wishlist", side_effect=lambda: self.wishes),
             mock.patch.object(digest, "INBOX_DIR", tmp / "inbox"),
             mock.patch.object(digest, "NEWS_SYNC_FILE", tmp / "state" / "db_news.json"),
             mock.patch.object(digest, "load_config", return_value=(
@@ -195,3 +216,48 @@ class SyncNews(unittest.TestCase):
         self.fail = False
         digest.sync_news()
         self.assertEqual(len(self.posts), 2)
+
+
+class SyncHistory(SyncNews):
+    """编排后的报道、价格 / 状态历史写进数据库（沿用 SyncNews 的假服务器）。"""
+
+    def test_upserts_all_once_then_only_changes(self):
+        pass  # 父类的测试，这里不重复
+
+    def test_failure_retries_next_time(self):
+        pass
+
+    def test_stories_replace_whole_issue_once(self):
+        digest.sync_stories()
+        self.assertEqual([x[0] for x in self.posts], ["/rest/v1/stories?issue_date=eq.2026-10-12", "/rest/v1/stories"])
+        rows = self.posts[1][2]
+        self.assertEqual([(r["item"], r["pos"], r["headline"]) for r in rows], [("猫用品", 0, "黑猫杯开卖"), ("猫用品", 1, "第二条")])
+        self.assertEqual(rows[0]["story_date"], "2026-10-11")
+        self.assertIsNone(rows[1]["story_date"])
+        self.assertIsNone(rows[0]["image"])            # 空字符串存成 NULL
+        self.assertEqual(len({tuple(sorted(r)) for r in rows}), 1, "批量写入的每行字段要一样")
+        digest.sync_stories()                           # 没变化：不再写
+        self.assertEqual(len(self.posts), 2)
+
+    def test_prices_only_when_changed(self):
+        digest.sync_prices()
+        rows = self.posts[0][2]
+        self.assertEqual({(r["kind"], r["item"], r["value"]) for r in rows},
+                         {("steam", "游戏A", "¥ 98（-50%）"), ("wishlist", "黑猫杯", "NT$ 850")})  # 旧格式的状态先跳过
+        self.assertEqual([r["amount"] for r in rows if r["kind"] == "wishlist"], [850])
+        digest.sync_prices()
+        self.assertEqual(len(self.posts), 1)            # 没变化：不再写
+        self.wishes[0]["price"] = 790
+        digest.sync_prices()
+        self.assertEqual([(r["item"], r["value"]) for r in self.posts[1][2]], [("黑猫杯", "NT$ 790")])
+
+    def test_failure_is_retried(self):
+        self.fail = True
+        digest.sync_stories()
+        digest.sync_prices()
+        self.fail = False
+        digest.sync_stories()
+        digest.sync_prices()
+        self.assertTrue(digest.STORIES_SYNC_FILE.exists())
+        self.assertTrue(digest.PRICES_SYNC_FILE.exists())
+        self.assertEqual(len(self.posts[-1][2]), 2)     # 价格：失败那次没记下，重试时两条都写
