@@ -44,6 +44,8 @@ RECOMMEND_FILE = ROOT / "state" / "recommend.json"
 DISCOVER_FILE = ROOT / "state" / "discover.json"
 FEEDBACK_FILE = ROOT / "state" / "feedback.json"
 NEWS_SYNC_FILE = ROOT / "state" / "db_news.json"
+STORIES_SYNC_FILE = ROOT / "state" / "db_stories.json"
+PRICES_SYNC_FILE = ROOT / "state" / "db_prices.json"
 REPORTS_DIR = ROOT / "reports"
 STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
@@ -298,7 +300,7 @@ def status_facts(item, settings, facts):
         text, stable, img = result
         cover = cover or img
         old = facts.get(key)
-        facts[key] = {"text": text, "stable": stable}
+        facts[key] = {"text": text, "stable": stable, "item": item["name"], "label": label}
         out.append({"label": label, "text": text, "changed": bool(old and old["stable"] != stable)})
     return out, cover
 
@@ -672,7 +674,7 @@ def _like_key(keyword):
     return str(keyword).split("|")[0].strip().lower()
 
 
-def supabase(path, body=None, prefer=None):
+def supabase(path, body=None, prefer=None, method=None):
     """用 secret key（SUPABASE_SERVICE_KEY）调 Supabase 的数据接口。没配置时返回 None。"""
     settings, _ = load_config()
     base, key = (settings.get("supabase_url") or "").rstrip("/"), os.environ.get("SUPABASE_SERVICE_KEY")
@@ -687,7 +689,7 @@ def supabase(path, body=None, prefer=None):
         headers["Content-Type"] = "application/json"
     if prefer:
         headers["Prefer"] = prefer
-    req = urllib.request.Request(f"{base}/rest/v1/{path}", data=data, headers=headers)
+    req = urllib.request.Request(f"{base}/rest/v1/{path}", data=data, headers=headers, method=method)
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             text = resp.read().decode("utf-8")
@@ -738,6 +740,100 @@ def sync_news():
         return
     save_json(NEWS_SYNC_FILE, {"files": {**synced, **todo}})
     print(f"数据库：写入 {len(batch)} 条消息（{'、'.join(sorted(todo))}）", file=sys.stderr)
+
+
+def _file_digest(rows):
+    return hashlib.sha1(json.dumps(rows, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def story_rows(path):
+    """一期 reports 里的报道，转成数据库 stories 表的行。"""
+    data = load_json(path)
+    date = data.get("date") or path.stem
+    rows = []
+    for item in data.get("items", []):
+        for pos, st in enumerate(item.get("stories") or []):
+            day = st.get("date") or ""
+            rows.append({"issue_date": date, "item": item["name"], "pos": pos, "headline": st["headline"],
+                         "highlight": st.get("highlight") or None, "blurb": st.get("blurb") or None,
+                         "weight": st.get("weight"), "url": st.get("url"), "image": st.get("image") or None,
+                         "story_date": day[:10] if re.fullmatch(r"\d{4}-\d{2}-\d{2}.*", day) else None})
+    return rows
+
+
+def sync_stories():
+    """把编排后的报道（reports/，网页上显示的那些）写进数据库 stories 表（建表语句在 db/history.sql）。
+    某一期内容变了（AI 编辑重新编排过）就整期替换；已同步到哪记在 state/db_stories.json。"""
+    synced = (load_json(STORIES_SYNC_FILE) or {}).get("files", {})
+    done = {}
+    for path in sorted(REPORTS_DIR.glob("????-??-??.json")):
+        rows = story_rows(path)
+        digest_ = _file_digest(rows)
+        if synced.get(path.stem) == digest_:
+            continue
+        try:
+            if supabase(f"stories?issue_date=eq.{path.stem}", method="DELETE", prefer="return=minimal") is None:
+                return  # 没配置数据库
+            if rows:
+                supabase("stories", rows, "return=minimal")
+        except Exception as err:
+            hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/history.sql）" if "PGRST205" in str(err) else ""
+            print(f"  [数据库] 写入报道失败，下次再试{hint}：{err}", file=sys.stderr)
+            break
+        done[path.stem] = digest_
+        print(f"数据库：{path.stem} 的报道 {len(rows)} 条", file=sys.stderr)
+    if done:
+        save_json(STORIES_SYNC_FILE, {"files": {**synced, **done}})
+
+
+def _amount(price):
+    """价格里能看出的数字（850、4,378、1.5 万 → 15000）；看不出就 None。"""
+    m = re.search(r"\d[\d,]*(?:\.\d+)?", str(price))
+    if not m:
+        return None
+    n = float(m.group().replace(",", ""))
+    if re.search(r"\d\s*万", str(price)) and "多" not in str(price):
+        n *= 10000
+    elif "万" in str(price):
+        return None  # 「6 万多」这种说不准的不算
+    return int(n) if n == int(n) else n
+
+
+def sync_prices():
+    """价格 / 状态的历史写进数据库 price_history 表：Steam 价格、播出状态（state/facts.json）和
+    愿望清单里写的价格。值变了才新增一行；上次写进去的值记在 state/db_prices.json。"""
+    last = (load_json(PRICES_SYNC_FILE) or {}).get("last", {})
+    now = {}
+    for key, f in (load_json(FACTS_FILE) or {}).items():
+        if f.get("item"):  # 旧格式的状态（没记关注项名字）等下次收集后再记
+            now[key] = {"item": f["item"], "kind": key.split(":")[0], "label": f.get("label"), "value": str(f["text"]),
+                        "amount": None, "currency": None}
+    for w in load_wishlist():
+        if w.get("price") in (None, ""):
+            continue
+        cur = str(w.get("currency") or "").strip()
+        now[f"wishlist:{w['name']}"] = {"item": w["name"], "kind": "wishlist", "label": "愿望清单价格",
+                                        "value": f"{cur} {w['price']}".strip(), "amount": _amount(w["price"]),
+                                        "currency": cur or None}
+    rows = [r for k, r in now.items() if last.get(k) != r["value"]]
+    if not rows:
+        return
+    try:
+        if supabase("price_history", rows, "return=minimal") is None:
+            return
+    except Exception as err:
+        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/history.sql）" if "PGRST205" in str(err) else ""
+        print(f"  [数据库] 写入价格历史失败，下次再试{hint}：{err}", file=sys.stderr)
+        return
+    save_json(PRICES_SYNC_FILE, {"last": {**last, **{k: r["value"] for k, r in now.items()}}})
+    print(f"数据库：价格 / 状态有变化 {len(rows)} 条", file=sys.stderr)
+
+
+def sync_db():
+    """收集到的消息、编排后的报道、价格 / 状态历史都写进数据库。连不上不影响出刊，下次再补。"""
+    sync_news()
+    sync_stories()
+    sync_prices()
 
 
 def load_feedback():
@@ -1388,9 +1484,9 @@ def main():
         write_page()
     elif args.step == "ingest":
         ingest()
-        sync_news()
+        sync_db()
     elif args.step == "sync-db":
-        sync_news()
+        sync_db()
     elif args.step == "publish":
         publish()
     elif args.step == "notify-urgent":
@@ -1414,9 +1510,9 @@ def main():
         notify.weekly(pages_url(load_config()[0]))
     else:
         path = ingest()
-        sync_news()
         if path:
             publish(path)
+        sync_db()
 
 
 if __name__ == "__main__":
