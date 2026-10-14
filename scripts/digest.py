@@ -28,6 +28,7 @@ import sys
 import urllib.parse
 import urllib.error
 import urllib.request
+import unicodedata
 import zoneinfo
 
 import yaml
@@ -1046,6 +1047,97 @@ def taste_bonus(taste, keys):
     return total, [[k, v] for k, v in used]
 
 
+
+# ---------- 「我会喜欢？」去重：同一件事（哪怕不同语言、不同媒体）只留一条 ----------
+
+STORY_STOP = set("""the and for with new from this that will are more just what about your its how why has have
+into after first now gets get you can all out one off not but was his her their they them our who when than then also
+over via per each most much many some any very top best returns return here there see""".split())
+
+
+def _clean_title(title):
+    t = unicodedata.normalize("NFKC", title).lower()
+    t = re.sub(r"[<＜]?画像\s*\d+\s*/\s*\d+[>＞]?", " ", t)       # 图集前缀「画像6 / 15＞」
+    t = re.sub(r"\s*[-|｜–—]\s*[^-|｜–—]{1,40}$", " ", t)          # 结尾的「 - 媒体名」「｜Infoseekニュース」
+    return t
+
+
+def story_tokens(title):
+    """标题里能说明「是哪件事」的词：英文词、数字、片假名词、韩文词、汉字两两一组。"""
+    t, out = _clean_title(title), set()
+    for w in re.findall(r"[a-z][a-z0-9'’\-]{2,}|[a-z]?\d{2,}[a-z]?", t):
+        w = w.strip("'’-")
+        if w not in STORY_STOP and not re.fullmatch(r"\d{1,2}", w):  # 一两位的数字多半是日期、数量，不说明是哪件事
+            out.add(w)
+    out |= set(re.findall(r"[\u30a0-\u30ffー]{3,}", t))
+    out |= set(re.findall(r"[\uac00-\ud7af]{2,}", t))
+    for run in re.findall(r"[\u4e00-\u9fff\u3400-\u4dbf]{2,}", t):
+        out |= {run[i:i + 2] for i in range(len(run) - 1)}
+    return out
+
+
+def _token_weight(tok):
+    return 0.5 if re.fullmatch(r"[\u4e00-\u9fff\u3400-\u4dbf]{2}", tok) else 1.0
+
+
+def generic_tokens(pool_titles, corpus_titles, items):
+    """哪些词太常见、不能拿来认「同一件事」：候选里 8% 以上都有的、最近两周所有消息里 3% 以上都有的、
+    关注项自己的名字（关于 GTA 6 的消息都有 gta，不说明是哪件事）。"""
+    def df(titles):
+        out = {}
+        for t in titles:
+            for x in story_tokens(t):
+                out[x] = out.get(x, 0) + 1
+        return out
+    pool_df, corpus_df = df(pool_titles), df(corpus_titles)
+    generic = {x for x, n in pool_df.items() if n > max(3, len(pool_titles) * 0.08)}
+    generic |= {x for x, n in corpus_df.items() if n > max(20, len(corpus_titles) * 0.03)}
+    for item in items:
+        for w in [item["name"]] + list(item.get("keywords") or []) + list(item.get("match") or []):
+            generic |= story_tokens(str(w))
+    return generic
+
+
+class StoryDeduper:
+    """同一件事只留一条。两条标题共有的「说明是哪件事的词」够多就算同一件事：
+    英文 / 片假名 / 韩文词每个算 1，汉字两两一组算 0.5，合计 2 以上。
+    先把所有候选一起分组（A≈B、B≈C 时三条是同一组，哪怕 A 和 C 没有共同的词，例如中文和英文的报道各自只和中间那条像），
+    再按重要度一条条问 same()：这一组已经出过一条就返回 True。"""
+
+    def __init__(self, generic, titles):
+        self.generic = generic
+        self.toks = {t: story_tokens(t) - generic for t in dict.fromkeys(titles)}
+        names = list(self.toks)
+        parent = {t: t for t in names}
+
+        def find(t):
+            while parent[t] != t:
+                parent[t] = parent[parent[t]]
+                t = parent[t]
+            return t
+        for i, a in enumerate(names):
+            for b in names[i + 1:]:
+                if self._close(self.toks[a], self.toks[b]):
+                    parent[find(b)] = find(a)
+        self.group = {t: find(t) for t in names}
+        self.used = set()
+
+    @staticmethod
+    def _close(a, b):
+        return sum(_token_weight(x) for x in a & b) >= 2
+
+    def same(self, title):
+        g = self.group.get(title)
+        if g is None:  # 不在候选里的标题：和已经出过的各组比
+            toks = story_tokens(title) - self.generic
+            g = next((u for u in self.used if self._close(toks, self.toks.get(u, set()))), title)
+            self.toks.setdefault(title, toks)
+        if g in self.used:
+            return True
+        self.used.add(g)
+        return False
+
+
 def recommend(force_discover=False):
     """「我会喜欢？」：按愿望清单里每件东西的 likes（喜好标签），从最近收集到的所有消息里打分挑推荐。
     不让 AI 联网，只用已经收集到的消息；结果写进 state/recommend.json，网页读它。"""
@@ -1079,6 +1171,17 @@ def recommend(force_discover=False):
                     pool.append((best[0], d.get("date") or path.stem, d, item["name"], *best[1:]))
     # 同分时，命中具体喜好（猫、角色造型……）的排在只命中基本属性（限定、马克杯）的前面
     pool.sort(key=lambda x: (x[0], len(set(x[5]) - set(x[4].get("basics") or [])), x[1]), reverse=True)
+    found = sorted(discover(force_discover), key=lambda x: x.get("date") or "", reverse=True)
+    _, items_conf = load_config()
+    corpus = [d["title"] for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]
+              for item in load_json(path)["items"] for d in item["entries"]]
+    titles = [r["title"] for r in votes if r["vote"] < 0 and r.get("title")] \
+        + [x[2]["title"] for x in pool] + [x["title"] for x in found]
+    dedupe = StoryDeduper(generic_tokens([x[2]["title"] for x in pool] + [x["title"] for x in found], corpus, items_conf),
+                          titles)
+    for r in votes:
+        if r["vote"] < 0 and r.get("title"):
+            dedupe.same(r["title"])  # 踩过的那件事（别家的报道也算）不再推荐
     picks, grams, used = [], list(disliked_grams), set()
     for score, date, d, work, w, hits, words, why in pool:
         g = _title_grams(d["title"], [])
@@ -1089,6 +1192,8 @@ def recommend(force_discover=False):
         # 踩过的消息（和别家报道的同一件事）不再推荐
         if any(_similar(g, x) for x in grams) or key & used:
             continue
+        if dedupe.same(d["title"]):
+            continue  # 同一件事已经有一条了（不同媒体、不同语言的报道）
         explore = score < PICK_THRESHOLD
         if explore and len(picks) < PICK_COUNT * EXPLORE_AFTER:
             continue  # 「换换口味」的只放进后面几批
@@ -1109,7 +1214,6 @@ def recommend(force_discover=False):
 
     # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条。
     # 投票学到的口味决定先后：常赞的同类排前面，净踩两次以上的同类先不推荐
-    found = sorted(discover(force_discover), key=lambda x: x.get("date") or "", reverse=True)
     found = [x for x in found if not any(_similar(_title_grams(x["title"], []), g) for g in disliked_grams)]
     names = list(dict.fromkeys(x["item"] for x in found))
     label_of = {x["item"]: x["label"] for x in found}
@@ -1121,7 +1225,7 @@ def recommend(force_discover=False):
         got = []
         for x in [x for x in found if x["item"] == name][:FOLLOW_PER_ITEM * 2]:
             url = sources.resolve_url(x["url"])
-            if url in disliked or url in seen_urls:
+            if url in disliked or url in seen_urls or dedupe.same(x["title"]):
                 continue
             if url not in images:
                 images[url] = find_image(x.get("image"), [entry_from_dict(x)], url)
@@ -1135,7 +1239,8 @@ def recommend(force_discover=False):
         follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],
                        "work": x["item"], "image": img, "because": x["item"], "hits": [x["label"]],
                        "kind": "hesitate" if x.get("wish") else "follow", "batch": len(follow) // DISCOVER_PICKS,
-                       "words": [], "taste": taste_bonus(taste, [x["label"]])[1]})
+                       "words": sorted(like_tags(x["title"] + " " + (x.get("summary") or ""), wishes, common)[1]),
+                       "taste": taste_bonus(taste, [x["label"]])[1]})
     picks += follow
     keep = {p["url"] for p in picks}
     save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep}})

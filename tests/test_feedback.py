@@ -333,3 +333,41 @@ class TakeWishes(SyncNews):
         before = self.wl.read_text(encoding="utf-8")
         digest.take_wish_requests()
         self.assertEqual(self.wl.read_text(encoding="utf-8"), before)
+
+
+class StoryDedupe(unittest.TestCase):
+    """「我会喜欢？」去重：同一件事（不同媒体、不同语言）只留一条。例子取自真实的推荐池。"""
+
+    TITLES = [
+        "《GTA 6》全新遊戲畫面曝光！六大廣播電台、Bad Bunny 等巨星加盟，首度加入 Podcast 功能",
+        "Why GTA 6's Radio Stations Could Be More Than Just Background Music",
+        "GTA 6 radio stations to be hosted by Robyn, Palms Trax, Bad Bunny, more",
+        "星巴克「小熊維尼聯名周邊」10/19開賣，12款限定新品維尼馬克杯、冷水杯、收納袋、手機掛繩一次看！",
+        "星巴克x小熊維尼100週年「蜂蜜罐馬克杯」12款聯名周邊超萌登場！ 星禮程密技「搶先購+無痛補奶現折20元」",
+        "蜂巢馬克杯太可愛！星巴克小熊維尼聯名登場 蜂蜜罐娃包療癒感直接加倍",
+        "Care BearsＸ星巴克聯名登場！馬克杯、冷水杯、不鏽鋼杯、托特包、吊飾到生活配件都有",
+        "画像6 / 15＞ジェラート ピケ カフェに「スヌーピー」のクレープが登場！ジェラピケのルームウェア着た限定アート雑貨も",
+        "ジェラート ピケ カフェにスヌーピーの“ひんやりクレープ”が登場！マシュマロのスヌーピーが眠るビジュアルがかわいすぎる",
+        "美少女×武装艦の新作RPG『深鳶』が中国で配信開始！人気アニメ原作『鎮魂街』新作アクションもテスト間近―日本未上陸の注目ゲーム3選【2026年10月11日】｜Infoseekニュース",
+        "『Farsight』眼科検診で見る“あの風景”に迷い込むサイコロジカルホラー。子供の視点ならではの不安や恐怖を描く。クローズドβテストが11月13日より開催",
+    ]
+    ITEMS = [{"name": "GTA 6", "keywords": ["GTA 6", "Grand Theft Auto VI"]}, {"name": "星巴克马克杯", "keywords": ["星巴克", "スタバ"]},
+             {"name": "gelato pique", "keywords": ["gelato pique", "ジェラート ピケ"]}]
+
+    def kept(self, titles):
+        dd = digest.StoryDeduper(digest.generic_tokens(titles, [], self.ITEMS), titles)
+        return [i for i, t in enumerate(titles) if not dd.same(t)]
+
+    def test_same_story_kept_once_across_languages(self):
+        # GTA 电台：中文 1 条 + 英文 2 条（中文那条和第 2 条英文只通过第 3 条相连）→ 留 1 条
+        # 维尼联名 3 条 → 1 条；Care Bears 是另一件事；可丽饼 2 条 → 1 条；两款不同的游戏测试各留一条
+        self.assertEqual(self.kept(self.TITLES), [0, 3, 6, 7, 9, 10])
+
+    def test_order_does_not_matter_for_chains(self):
+        titles = [self.TITLES[1], self.TITLES[0], self.TITLES[2]]   # 中文的排在中间也一样
+        self.assertEqual(len(self.kept(titles)), 1)
+
+    def test_numbers_and_gallery_prefix_ignored(self):
+        self.assertNotIn("11", digest.story_tokens("クローズドβテストが11月13日より開催"))
+        self.assertNotIn("画像", digest.story_tokens("画像6 / 15＞スヌーピーのクレープ"))
+        self.assertIn("s27", digest.story_tokens("Galaxy S27 Ultra"))
