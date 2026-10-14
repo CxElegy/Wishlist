@@ -989,13 +989,18 @@ def render_settings(items, db, updated):
 .wiz{{display:flex;flex-direction:column;gap:14px;margin-top:18px;padding:18px 18px 20px;border:2px solid #1A1C22;background:#F7F5F0;scroll-margin-top:16px}}
 .wiz>h2{{margin:0;font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em}}
 .wiz .hint{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
-.trail{{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:13px}}
+.trail{{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}}
 .trail:empty{{display:none}}
-.trail button{{all:unset;cursor:pointer;display:flex;gap:8px;line-height:1.5}}
-.trail button:hover b{{text-decoration:underline}}
+.trail li{{display:flex;align-items:center;gap:8px}}
+.trail li:not(:last-child)::after{{content:"→";font:700 14px 'JetBrains Mono',monospace;opacity:.4}}
+.trail button{{display:flex;flex-direction:column;gap:3px;min-width:96px;max-width:230px;padding:8px 11px;border:2px solid #1A1C22;
+ background:#FFF;color:#1A1C22;text-align:left;cursor:pointer}}
+.trail button.auto{{border-style:dashed}}
+.trail button:hover{{background:#1A1C22;color:#F4EDE4}}
 .trail button:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
-.trail span{{opacity:.6;flex-shrink:0}}
-.trail b{{font-family:'Noto Sans SC',sans-serif}}
+.trail span{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.08em;opacity:.6}}
+.trail b{{font:900 14px/1.4 'Noto Sans SC',sans-serif}}
+.opt.auto{{border-style:dashed}}
 .q{{display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid #1A1C22;background:#FFF}}
 .q .no{{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.6}}
 .q h3{{margin:0;font:900 19px/1.4 'Noto Sans SC',sans-serif}}
@@ -1029,7 +1034,8 @@ def render_settings(items, db, updated):
 .queue{{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:13px}}
 .queue:empty{{display:none}}
 .queue li b{{font-family:'Noto Sans SC',sans-serif}}.queue li span{{opacity:.65}}.queue li em{{font-style:normal;color:#C0392B}}
-@media (max-width:520px){{.st{{display:none}}.seg button{{width:40px}}.rv .two{{grid-template-columns:1fr}}.row{{gap:8px}}}}
+@media (max-width:520px){{.st{{display:none}}.seg button{{width:40px}}.rv .two{{grid-template-columns:1fr}}.row{{gap:8px}}
+ .trail{{gap:6px}}.trail li:not(:last-child)::after{{display:none}}.trail button{{min-width:0;max-width:100%;padding:6px 9px}}.trail b{{font-size:13px}}}}
 </style>
 </head>
 <body>
