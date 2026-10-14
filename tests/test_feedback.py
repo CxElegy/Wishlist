@@ -282,8 +282,46 @@ class SyncHistory(SyncNews):
         self.assertEqual(len(self.posts[-1][2]), 2)     # 价格：失败那次没记下，重试时两条都写
 
 
-class TakeWishes(SyncNews):
-    """新闻里点了「♥ 加入心愿单」：从数据库读出请求，追加进 wishlist.yaml。"""
+class StoryDedupe(unittest.TestCase):
+    """「我会喜欢？」去重：同一件事（不同媒体、不同语言）只留一条。例子取自真实的推荐池。"""
+
+    TITLES = [
+        "《GTA 6》全新遊戲畫面曝光！六大廣播電台、Bad Bunny 等巨星加盟，首度加入 Podcast 功能",
+        "Why GTA 6's Radio Stations Could Be More Than Just Background Music",
+        "GTA 6 radio stations to be hosted by Robyn, Palms Trax, Bad Bunny, more",
+        "星巴克「小熊維尼聯名周邊」10/19開賣，12款限定新品維尼馬克杯、冷水杯、收納袋、手機掛繩一次看！",
+        "星巴克x小熊維尼100週年「蜂蜜罐馬克杯」12款聯名周邊超萌登場！ 星禮程密技「搶先購+無痛補奶現折20元」",
+        "蜂巢馬克杯太可愛！星巴克小熊維尼聯名登場 蜂蜜罐娃包療癒感直接加倍",
+        "Care BearsＸ星巴克聯名登場！馬克杯、冷水杯、不鏽鋼杯、托特包、吊飾到生活配件都有",
+        "画像6 / 15＞ジェラート ピケ カフェに「スヌーピー」のクレープが登場！ジェラピケのルームウェア着た限定アート雑貨も",
+        "ジェラート ピケ カフェにスヌーピーの“ひんやりクレープ”が登場！マシュマロのスヌーピーが眠るビジュアルがかわいすぎる",
+        "美少女×武装艦の新作RPG『深鳶』が中国で配信開始！人気アニメ原作『鎮魂街』新作アクションもテスト間近―日本未上陸の注目ゲーム3選【2026年10月11日】｜Infoseekニュース",
+        "『Farsight』眼科検診で見る“あの風景”に迷い込むサイコロジカルホラー。子供の視点ならではの不安や恐怖を描く。クローズドβテストが11月13日より開催",
+    ]
+    ITEMS = [{"name": "GTA 6", "keywords": ["GTA 6", "Grand Theft Auto VI"]}, {"name": "星巴克马克杯", "keywords": ["星巴克", "スタバ"]},
+             {"name": "gelato pique", "keywords": ["gelato pique", "ジェラート ピケ"]}]
+
+    def kept(self, titles):
+        dd = digest.StoryDeduper(digest.generic_tokens(titles, [], self.ITEMS), titles)
+        return [i for i, t in enumerate(titles) if not dd.same(t)]
+
+    def test_same_story_kept_once_across_languages(self):
+        # GTA 电台：中文 1 条 + 英文 2 条（中文那条和第 2 条英文只通过第 3 条相连）→ 留 1 条
+        # 维尼联名 3 条 → 1 条；Care Bears 是另一件事；可丽饼 2 条 → 1 条；两款不同的游戏测试各留一条
+        self.assertEqual(self.kept(self.TITLES), [0, 3, 6, 7, 9, 10])
+
+    def test_order_does_not_matter_for_chains(self):
+        titles = [self.TITLES[1], self.TITLES[0], self.TITLES[2]]   # 中文的排在中间也一样
+        self.assertEqual(len(self.kept(titles)), 1)
+
+    def test_numbers_and_gallery_prefix_ignored(self):
+        self.assertNotIn("11", digest.story_tokens("クローズドβテストが11月13日より開催"))
+        self.assertNotIn("画像", digest.story_tokens("画像6 / 15＞スヌーピーのクレープ"))
+        self.assertIn("s27", digest.story_tokens("Galaxy S27 Ultra"))
+
+
+class ExportPhotos(SyncNews):
+    """拍照加愿望：新照片导出到 inbox/photos/，愿望清单里已有 photo 编号的标成 done。"""
 
     def test_upserts_all_once_then_only_changes(self):
         pass
@@ -291,45 +329,20 @@ class TakeWishes(SyncNews):
     def test_failure_retries_next_time(self):
         pass
 
-    def setUp(self):
-        super().setUp()
-        for patch in [x for x in self.patches if getattr(x, "attribute", "") == "load_wishlist"]:
-            patch.stop()  # 这里要读真的（临时的）wishlist.yaml
-            self.patches.remove(patch)
-        tmp = pathlib.Path(self.tmp.name)
-        self.wl = tmp / "wishlist.yaml"
-        self.wl.write_text("# 注释要保留\nwishlist:\n  - name: 已有的杯子\n    url: https://e/have\n    status: 想要\n",
-                           encoding="utf-8")
-        for patch in (mock.patch.object(digest, "WISHLIST_FILE", self.wl),
-                      mock.patch.object(digest, "_save_wish_image", side_effect=lambda u: "news-x.jpg" if u else None),
-                      mock.patch.object(digest, "load_config", return_value=(
-                          {"supabase_url": f"http://127.0.0.1:{self.server.server_port}", "timezone": "Asia/Shanghai"},
-                          [{"name": "猫用品"}]))):
-            patch.start()
-            self.patches.append(patch)
-
-    def test_adds_new_and_skips_existing(self):
-        self.get_rows = [
-            {"id": 1, "url": "https://e/new", "title": "黒猫の\"マグ\"発売: 限定", "work": "猫用品", "image": "https://i/1.jpg",
-             "source": "PR TIMES"},
-            {"id": 2, "url": "https://e/have", "title": "重复的", "work": "猫用品", "image": None, "source": None},
-            {"id": 3, "url": "https://e/new", "title": "同一条点了两次", "work": "其他", "image": None, "source": None},
-            {"id": 4, "url": "https://example.com/__setup-test__", "title": "设置测试", "work": None, "image": None,
-             "source": None},
-        ]
-        digest.take_wish_requests()
-        text = self.wl.read_text(encoding="utf-8")
-        self.assertTrue(text.startswith("# 注释要保留\n"))                 # 原来的内容一字不动
-        wishes = digest.load_wishlist()
-        self.assertEqual([w["name"] for w in wishes], ["已有的杯子", '黒猫の"マグ"発売: 限定'])
-        new = wishes[1]
-        self.assertEqual((new["url"], new["image"], new["watch"], new["status"], new["shop"]),
-                         ("https://e/new", "news-x.jpg", "猫用品", "想要", "PR TIMES"))
-        patches = [(path, body["status"]) for path, _, body in self.posts if body and "status" in body]
-        self.assertEqual(patches, [("/rest/v1/wish_requests?id=in.(1)", "done"), ("/rest/v1/wish_requests?id=in.(2,3,4)", "skipped")])
-
-    def test_nothing_pending(self):
-        self.get_rows = []
-        before = self.wl.read_text(encoding="utf-8")
-        digest.take_wish_requests()
-        self.assertEqual(self.wl.read_text(encoding="utf-8"), before)
+    def test_export_and_mark_done(self):
+        import base64
+        jpg = b"\xff\xd8\xff\xe0fakejpeg"
+        img = "data:image/jpeg;base64," + base64.b64encode(jpg).decode()
+        self.get_rows = [{"id": 7, "created_at": "2026-10-14T12:00:00Z", "status": "纠结", "note": "想要黑色", "image": img},
+                         {"id": 6, "created_at": "2026-10-14T11:00:00Z", "status": "想要", "note": None, "image": "not-a-jpeg"}]
+        self.wishes[:] = [{"name": "貓眼溫變馬克杯", "photo": 6}]
+        with mock.patch.object(digest, "PHOTO_DIR", digest.INBOX_DIR / "photos"):
+            digest.export_photos()
+            folder = digest.INBOX_DIR / "photos"
+            self.assertEqual((folder / "7.jpg").read_bytes(), jpg)
+            meta = json.loads((folder / "7.json").read_text(encoding="utf-8"))
+            self.assertEqual((meta["status"], meta["note"]), ("纠结", "想要黑色"))
+            self.assertFalse((folder / "6.jpg").exists())       # 不是 jpeg 的不导出
+        patches = [(path, body) for path, _, body in self.posts if body and "state" in body]
+        self.assertIn(("/rest/v1/photo_inbox?id=eq.6", {"state": "done", "wish_name": "貓眼溫變馬克杯"}), patches)
+        self.assertIn(("/rest/v1/photo_inbox?id=eq.7", {"state": "exported"}), patches)
