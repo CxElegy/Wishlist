@@ -39,6 +39,7 @@ begin
   end if;
   insert into public.item_requests (action, name, config) values (p_action, p_name, p_config)
   returning id into new_id;
+  perform private.kick_github();   -- 立刻叫 GitHub 处理（db/instant.sql）
   return new_id;
 end $$;
 
