@@ -1055,8 +1055,16 @@ into after first now gets get you can all out one off not but was his her their 
 over via per each most much many some any very top best returns return here there see""".split())
 
 
+try:  # 繁体字统一成简体再比（電台 / 电台 是同一个词）
+    from opencc import OpenCC
+    _to_simplified = OpenCC("t2s").convert
+except Exception:  # 没装就不转，照样能用
+    def _to_simplified(text):
+        return text
+
+
 def _clean_title(title):
-    t = unicodedata.normalize("NFKC", title).lower()
+    t = _to_simplified(unicodedata.normalize("NFKC", title)).lower()
     t = re.sub(r"[<＜]?画像\s*\d+\s*/\s*\d+[>＞]?", " ", t)       # 图集前缀「画像6 / 15＞」
     t = re.sub(r"\s*[-|｜–—]\s*[^-|｜–—]{1,40}$", " ", t)          # 结尾的「 - 媒体名」「｜Infoseekニュース」
     return t

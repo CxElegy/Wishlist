@@ -818,27 +818,30 @@ SHUFFLE_JS = """
   try { seen = JSON.parse(localStorage.getItem('wishlist-seen') || '{}'); } catch (_) {}
   let shown = new Set();
   // 加权随机抽 n 张（Efraimidis–Spirakis）：分数越高、看过越少越容易抽到；
-  // 同一批里同一个作品最多 2 张，同一个关键词（如 Snoopy）只 1 张；刚显示过的这次不抽（池子不够时才放回来）
-  const draw = (list, n) => {
-    const fresh = list.filter(el => !shown.has(el));
-    const from = fresh.length >= n ? fresh : list;
-    const keyed = from.map(el => {
+  // 同一批里（推荐和同类新发现合起来）同一个关注项只 1 张、同一个关键词（如 Snoopy）只 1 张——
+  // 后台已经把「同一件事」去掉了，这里再保证同一批里不出现同一个话题；刚显示过的这次不抽（池子不够时才放回来）
+  const draw = (list, n, works, keys) => {
+    const rank = from => from.map(el => {
       const w = Number(el.dataset.s || 4) * (seen[el.dataset.u] ? 1 / (1 + seen[el.dataset.u]) : 2);
       return [Math.pow(Math.random(), 1 / w), el];
-    }).sort((a, b) => b[0] - a[0]);
-    const out = [], works = {}, keys = new Set();
-    for (const [, el] of keyed) {
-      const ks = (el.dataset.key || '').split('|').filter(Boolean);
-      if ((works[el.dataset.w] || 0) >= 2 || ks.some(k => keys.has(k))) continue;
-      out.push(el); works[el.dataset.w] = (works[el.dataset.w] || 0) + 1; ks.forEach(k => keys.add(k));
-      if (out.length >= n) break;
+    }).sort((a, b) => b[0] - a[0]).map(x => x[1]);
+    const out = [];
+    // 先从这次没显示过的里抽，不够再从全部里抽；都不重复话题。实在凑不齐就少放几张，也不重复
+    for (const from of [list.filter(el => !shown.has(el)), list]) {
+      for (const el of rank(from)) {
+        if (out.length >= n) return out;
+        const ks = (el.dataset.key || '').split('|').filter(Boolean);
+        if (out.includes(el) || works.has(el.dataset.w) || ks.some(k => keys.has(k))) continue;
+        out.push(el); works.add(el.dataset.w); ks.forEach(k => keys.add(k));
+      }
     }
-    for (const [, el] of keyed) { if (out.length >= n) break; if (!out.includes(el)) out.push(el); }
     return out;
   };
   const fill = () => {
     cards.forEach(el => { el.classList.remove('big'); pool.appendChild(el); });
-    const w = draw(cards.filter(el => kind.get(el) === 'w'), 5), f = draw(cards.filter(el => kind.get(el) === 'f'), 4);
+    const works = new Set(), keys = new Set();
+    const w = draw(cards.filter(el => kind.get(el) === 'w'), 5, works, keys);
+    const f = draw(cards.filter(el => kind.get(el) === 'f'), 4, works, keys);
     if (wishGrid) w.forEach((el, i) => { el.classList.toggle('big', i === 0); wishGrid.appendChild(el); });
     if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
     shown = new Set([...w, ...f]);
