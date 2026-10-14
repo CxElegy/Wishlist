@@ -1,0 +1,414 @@
+{
+ "date": "2026-10-15",
+ "items": [
+  {
+   "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg",
+   "facts": [],
+   "name": "GTA 6",
+   "section": "游戏",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "‘GTA 6’ Leaker Won’t Release Game Build After Players Crash His Cryptocoin",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.ZZC7xXqYNpi9qk80zWrW2w&pid=News&w=1200",
+     "image_via": "Bing 缩略图",
+     "url": "https://www.forbes.com/sites/paultassi/2026/10/14/gta-6-leaker-wont-release-game-build-after-players-crash-his-cryptocoin/",
+     "weight": "lead"
+    }
+   ],
+   "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
+   "theme": {
+    "accent": "#FF5FA2",
+    "alt_accent": "#C2185B",
+    "alt_bg": "#FFB25B",
+    "alt_fg": "#1E1033",
+    "bg": "#1E1033",
+    "fg": "#FFF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "MMORPG 新作",
+   "section": "游戏",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "Stillmarch, the medieval sandbox MMO from our post two weeks ago, is now on Steam (Unreal Engine 5, pre-alpha)",
+     "highlight": "",
+     "image": null,
+     "source": "r/MMORPG",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.reddit.com&sz=128",
+     "url": "https://www.reddit.com/r/MMORPG/comments/1x5us1f/stillmarch_the_medieval_sandbox_mmo_from_our_post/",
+     "weight": "lead"
+    }
+   ],
+   "subtitle": "近期上线 · 测试 · 新公布的网游",
+   "theme": {
+    "accent": "#E3B341",
+    "alt_accent": "#B794F6",
+    "alt_bg": "#2C2148",
+    "alt_fg": "#F3EEDF",
+    "bg": "#15131F",
+    "fg": "#F3EEDF",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
+   "facts": [],
+   "name": "漫威电影",
+   "section": "影视",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "Avengers: Doomsday Leaked Photo Reveals Three Of The Movie's Biggest Cameos",
+     "highlight": "",
+     "image": "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-leaked-photo-reveals-three-of-the-movies-biggest-cameos-ab230409.jpg",
+     "image_via": "转载 comicbookmovie.com",
+     "url": "https://www.imdb.com/news/ni66062546/?ref_=nmnw_art_perm",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "VisionQuest Doesn’t Address the MCU’s AI Problem",
+     "highlight": "",
+     "image": "https://www.denofgeek.com/wp-content/uploads/2026/10/VisionQuest_TF_2-2.jpg?fit=1200%2C675",
+     "image_via": "og:image",
+     "url": "https://www.denofgeek.com/tv/visionquest-doesnt-address-mcu-ai-problem/",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "Marvel Studios · MCU",
+   "theme": {
+    "accent": "#EC1D24",
+    "alt_accent": "#151515",
+    "alt_bg": "#EC1D24",
+    "alt_fg": "#FFFFFF",
+    "bg": "#151515",
+    "fg": "#F5F5F5",
+    "font": "serif",
+    "split": false
+   }
+  },
+  {
+   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
+   "facts": [
+    {
+     "changed": false,
+     "label": "播出状态",
+     "text": "[《チェンソーマン 刺客篇》](https://anilist.co/anime/204429) · 未开播 · 开播日期未定"
+    }
+   ],
+   "name": "チェーンソーマン",
+   "section": "影视",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-07",
+     "headline": "Chainsaw Man Episode 4 review: Powerful quiet, powerful bombast",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/01/Chainsaw-Man-Episode-4-Where-to-Watch-Release-Date.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/anime/chainsaw-man-episode-4-review-powerful-quiet-powerful-bombast-1973746/",
+     "weight": "lead"
+    }
+   ],
+   "subtitle": "チェンソーマン",
+   "theme": {
+    "accent": "#202BAC",
+    "alt_accent": "#989FEC",
+    "alt_bg": "#1B371C",
+    "alt_fg": "#F2EEE6",
+    "bg": "#E7F3E8",
+    "fg": "#1A1C22",
+    "font": "serif",
+    "split": false
+   }
+  },
+  {
+   "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "서브컬처 ‘아스오라’에 힘 싣는 엔씨…출시 전 국내외 마케팅 총력",
+    "url": "https://m.ceoscoredaily.com/page/view/2026101410473680732"
+   },
+   "name": "Astrae Oratio",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "アストラエ・オラティオ",
+   "theme": {
+    "accent": "#8DB8E8",
+    "alt_accent": "#3D6FA8",
+    "alt_bg": "#F2F2F4",
+    "alt_fg": "#1B1B1C",
+    "bg": "#1B1B1C",
+    "fg": "#F2F2F4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "【ミラハイ】配信日や事前登録など最新情報まとめ【BLEACH Mirrors High】",
+    "url": "https://gamepedia.jp/apps/114315"
+   },
+   "name": "BLEACH Mirrors High",
+   "quiet": true,
+   "section": "游戏",
+   "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
+   "stories": [],
+   "subtitle": "死神 新作手游",
+   "theme": {
+    "accent": "#AB1F12",
+    "alt_accent": "#E65224",
+    "alt_bg": "#1A1111",
+    "alt_fg": "#FBF7EE",
+    "bg": "#FBF7EE",
+    "fg": "#1A1111",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "【北海道】サッポロオープン・ザ・ストリート2026【スノーボード】 結果速報・日程・放送予定（配信）",
+    "url": "https://www.sportzorg24.tv/snowboarding-hokkaido-20261024-r2f4d14-results/"
+   },
+   "name": "滑雪",
+   "quiet": true,
+   "section": "运动",
+   "status": "",
+   "stories": [],
+   "subtitle": "日本雪场 · 雪板装备 · 2026-27",
+   "theme": {
+    "accent": "#D9412B",
+    "alt_accent": "#8EC5E8",
+    "alt_bg": "#14233A",
+    "alt_fg": "#F4F8FB",
+    "bg": "#F4F8FB",
+    "fg": "#14233A",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "From Season 5 ending…",
+    "url": "https://www.reddit.com/r/FromSeries/comments/1x080dr/from_season_5_ending/"
+   },
+   "name": "FROM",
+   "quiet": true,
+   "section": "影视",
+   "status": "第 4 季已于 2026 年 6 月播完 · 第 5 季（最终季）已续订，预计 2027 年，日期未定",
+   "stories": [],
+   "subtitle": "美剧 · MGM+ 恐怖悬疑",
+   "theme": {
+    "accent": "#E3B04B",
+    "alt_accent": "#8C2F1E",
+    "alt_bg": "#ECE7DC",
+    "alt_fg": "#0F1512",
+    "bg": "#0F1512",
+    "fg": "#ECE7DC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "「ILLITによるNewJeansのコンセプト盗用」主張したミン・ヒジン氏、名誉毀損・業務妨害で送致（朝鮮日報日本語版）",
+    "url": "https://news.yahoo.co.jp/articles/cd055196ad9d282cd7b46d28c34eae8174e05c01"
+   },
+   "name": "ILLIT",
+   "quiet": true,
+   "section": "演出",
+   "status": "日本安可场 12/23·24·26·27 千叶 LaLa arena TOKYO-BAY",
+   "stories": [],
+   "subtitle": "アイリット · 日本公演特别关注",
+   "theme": {
+    "accent": "#E8394F",
+    "alt_accent": "#FFD1DA",
+    "alt_bg": "#E8394F",
+    "alt_fg": "#FFFFFF",
+    "bg": "#FFF4F6",
+    "fg": "#2A1A20",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "星巴克x小熊維尼100週年「蜂蜜罐馬克杯」12款聯名周邊超萌登場！ 星禮程密技「搶先購+無痛補奶現折20元」",
+    "url": "https://travel.udn.com/travel/story/7185/9813740"
+   },
+   "name": "星巴克马克杯",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
+   "theme": {
+    "accent": "#00704A",
+    "alt_accent": "#C9A27E",
+    "alt_bg": "#1E3932",
+    "alt_fg": "#F6F1E7",
+    "bg": "#F6F1E7",
+    "fg": "#1E3932",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "留守番時に適した暖房器具は?猫の冬じたくの疑問や注意点を獣医師が解説",
+    "url": "https://www.msn.com/ja-jp/news/other/%E7%95%99%E5%AE%88%E7%95%AA%E6%99%82%E3%81%AB%E9%81%A9%E3%81%97%E3%81%9F%E6%9A%96%E6%88%BF%E5%99%A8%E5%85%B7%E3%81%AF-%E7%8C%AB%E3%81%AE%E5%86%AC%E3%81%98%E3%81%9F%E3%81%8F%E3%81%AE%E7%96%91%E5%95%8F%E3%82%84%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%92%E7%8D%A3%E5%8C%BB%E5%B8%AB%E3%81%8C%E8%A7%A3%E8%AA%AC/ar-AA2echdg"
+   },
+   "name": "猫用品",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "猫グッズ · 家里两只猫",
+   "theme": {
+    "accent": "#E8875B",
+    "alt_accent": "#F3B6B0",
+    "alt_bg": "#3A2C24",
+    "alt_fg": "#FBF4EA",
+    "bg": "#FBF4EA",
+    "fg": "#3A2C24",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "新星バルトゥンコバや元世界2位バドサなどが参戦！ 『木下グループジャパンオープンテニスチャンピオンシップス2026』女子出場予定選手発表",
+    "url": "https://spice.eplus.jp/articles/349632/amp"
+   },
+   "name": "日本顶级网球赛事",
+   "quiet": true,
+   "section": "运动",
+   "status": "大阪 WTA250 10/17–25（周末：10/17–18 资格赛、10/24 半决赛、10/25 决赛）· 东京东丽 PPO 10/24–11/1",
+   "stories": [],
+   "subtitle": "ATP・WTA ツアー 日本開催",
+   "theme": {
+    "accent": "#D7F03C",
+    "alt_accent": "#2E7D32",
+    "alt_bg": "#F5F7F2",
+    "alt_fg": "#1F4E79",
+    "bg": "#1F4E79",
+    "fg": "#F5F7F2",
+    "font": "sans",
+    "split": false
+   }
+  },
+  {
+   "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "Samsung Galaxy S27 Ultra to Launch Next Year With an Improved Privacy Display, Higher Price Tag, Tipster ...",
+    "url": "https://www.gadgets360.com/mobiles/news/samsung-galaxy-s27-ultra-privacy-display-feature-upgrade-price-tipped-specifications-12183935"
+   },
+   "name": "三星手机",
+   "quiet": true,
+   "section": "好物",
+   "status": "未发布 · 传 2027 年 2 月前后发布 · S27 Pro 是新增机型 · 价格未公布",
+   "stories": [],
+   "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
+   "theme": {
+    "accent": "#4C8DFF",
+    "alt_accent": "#1428A0",
+    "alt_bg": "#C9CDD5",
+    "alt_fg": "#0E1016",
+    "bg": "#0E1016",
+    "fg": "#EEF1F6",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売 (2026年10月14日掲載)",
+    "url": "https://news.livedoor.com/topics/detail/32563903/"
+   },
+   "name": "gelato pique",
+   "quiet": true,
+   "section": "好物",
+   "status": "10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）",
+   "stories": [],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-14",
+    "headline": "「ぐでたま」コラボ雑貨全16種がサンキューマートに登場！「外出たくない」「あー…だりぃ…」名言つき（ウォーカープラス）",
+    "url": "https://news.yahoo.co.jp/articles/5ef43b9809bf6dafc569aa53312508bca8dfd0e9"
+   },
+   "name": "ぐでたま",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "Gudetama",
+   "theme": {
+    "accent": "#E0703F",
+    "alt_accent": "#B83A17",
+    "alt_bg": "#F1EEE6",
+    "alt_fg": "#1A1C22",
+    "bg": "#1A1C22",
+    "fg": "#F1EEE6",
+    "font": "sans",
+    "split": false
+   }
+  }
+ ],
+ "no": 5
+}
