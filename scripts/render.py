@@ -290,7 +290,6 @@ html{scroll-behavior:smooth}
 .brief li:hover .vt{opacity:1}
 .downv{opacity:.4;filter:grayscale(.8)}
 .pkbatch[hidden]{display:none}
-.vote .wish[aria-pressed=true],.vt .wish[aria-pressed=true]{background:#1A1C22;border-color:#1A1C22;color:#FFB3CF}
 .shuffle{margin-left:auto;padding:6px 14px;border:2px solid #1A1C22;background:#1A1C22;color:#F4EDE4;
  font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.1em;cursor:pointer;border-radius:0;white-space:nowrap}
 .shuffle:hover{background:#B8336A;border-color:#B8336A}
@@ -729,8 +728,7 @@ def _section(block, anchor=""):
     grid += _brief(texts) + _older(more + older, today, len(more), old_texts)
     recent = recent or texts
     quiet = "" if recent else " quiet"
-    shop = ' data-shop="1"' if block.get("section") == SHOP_SECTION else ""
-    return (f'<section id="{anchor}" data-k="{e(block["name"])}"{shop} class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
             f"{facts}{grid}</section>")
 
@@ -741,7 +739,6 @@ def _why_verb(x):
     return "在纠结" if x.get("kind") == "hesitate" or x.get("hesitating") else "想要"
 
 
-SHOP_SECTION = "好物"  # 这个板块的消息是东西：卡片上有「♥ 加入心愿单」
 WORK_KEY = "作品:"  # 投票学到的口味里，按作品记的那一类（和 digest.WORK_KEY 一致）
 
 
@@ -751,7 +748,6 @@ def _picks(picks, works, feedback=None):
     if not picks:
         return ""
     covers = {w["name"]: [w["_thumb"]] if w.get("_thumb") else [] for w in works}
-    shops = {w["name"] for w in works if w.get("section") == SHOP_SECTION}
 
     def cards_of(group, big_first):
         return "".join(card(x, big_first and i == 0) for i, x in enumerate(group))
@@ -770,8 +766,6 @@ def _picks(picks, works, feedback=None):
             vote = (f'<div class="vote" data-v="{e(json.dumps(data, ensure_ascii=False))}">'
                     f'<button type="button" data-vote="1" aria-pressed="false" title="多推荐这类">👍<span> 喜欢</span></button>'
                     f'<button type="button" data-vote="-1" aria-pressed="false" title="少推荐这类">👎<span> 不感兴趣</span></button>'
-                    + (f'<button type="button" class="wish" aria-pressed="false" data-w="{e(json.dumps({k: x.get(k) for k in ("url", "title", "work", "image", "source")}, ensure_ascii=False))}" '
-                       f'title="加进愿望清单">♥<span> 加入心愿单</span></button>' if x.get("kind") == "wish" and x["work"] in shops else "")
                     + f'<small></small></div>')
         return (
             f'<div class="pk{" big" if big else ""}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
@@ -897,45 +891,8 @@ VOTE_JS = """
       }
     }));
   };
-  // 「♥ 加入心愿单」：写进 wish_requests 表，下次更新（每 2 小时）时加进愿望清单
-  let added = {};
-  try { added = JSON.parse(localStorage.getItem('wishlist-added') || '{}'); } catch (_) {}
-  const wished = new Set(cfg.wished || []);
-  const hearts = [];
-  const showHeart = (btn, url) => {
-    const on = wished.has(url) || added[url];
-    btn.setAttribute('aria-pressed', String(!!on));
-    btn.title = wished.has(url) ? '已经在愿望清单里' : added[url] ? '已加入，下次更新（每 2 小时）时出现在愿望清单' : '加进愿望清单';
-    const label = btn.querySelector('span');
-    if (label) label.textContent = wished.has(url) ? ' 已在心愿单' : added[url] ? ' 已加入' : ' 加入心愿单';
-  };
-  const heart = (btn, data) => {
-    hearts.push([btn, data.url]);
-    showHeart(btn, data.url);
-    btn.addEventListener('click', async ev => {
-      ev.preventDefault(); ev.stopPropagation();
-      if (wished.has(data.url) || added[data.url]) return;
-      btn.disabled = true;
-      try {
-        const r = await fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/wish_requests',
-          { method: 'POST', headers, body: JSON.stringify(data) });
-        if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120));
-        added[data.url] = 1;
-        try { localStorage.setItem('wishlist-added', JSON.stringify(added)); } catch (_) {}
-        hearts.forEach(([b, u]) => { if (u === data.url) showHeart(b, u); });
-      } catch (err) {
-        btn.title = '没加上，稍后再试';
-        console.error('加入心愿单失败', err);
-      } finally {
-        btn.disabled = false;
-      }
-    });
-  };
-  document.querySelectorAll('.picks .vote').forEach(box => {
-    wire(box, JSON.parse(box.dataset.v), box.closest('.pk'), box.querySelector('small'));
-    const h = box.querySelector('.wish');
-    if (h) heart(h, JSON.parse(h.dataset.w));
-  });
+  document.querySelectorAll('.picks .vote').forEach(box =>
+    wire(box, JSON.parse(box.dataset.v), box.closest('.pk'), box.querySelector('small')));
   const small = () => {
     const s = document.createElement('span');
     s.className = 'vt';
@@ -951,13 +908,6 @@ VOTE_JS = """
     holder.appendChild(box);
     const title = t.textContent.trim().slice(0, 500), work = (w && w.dataset.k || '').slice(0, 200);
     wire(box, { url: link.href, kind: 'story', title, work, hits: [], words: [] }, dim, null);
-    if (holder.closest('[data-shop]')) {   // 好物板块的消息是东西：可以加入心愿单
-      const btn = document.createElement('button');
-      btn.type = 'button'; btn.className = 'wish'; btn.textContent = '♥';
-      box.appendChild(btn);
-      const img = link.querySelector('.pic img:not(.bg)'), src = link.querySelector('.src');
-      heart(btn, { url: link.href, title, work, image: img ? img.src : null, source: src ? src.textContent.trim().slice(0, 200) : null });
-    }
   };
   document.querySelectorAll('.sec a.card, a.top').forEach(a => story(a, a, a));
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
@@ -1108,9 +1058,10 @@ def _total(wishes, status):
     return " + ".join(f"{c} {v:,.0f}" for c, v in totals.items()) or "—"
 
 
-def render_wishlist(wishes, works, updated, finds=()):
+def render_wishlist(wishes, works, updated, finds=(), db=None):
     """愿望清单子页面（docs/wishlist.html）：收藏柜式大图网格，可按状态筛选，顶部是件数和想要的总价。
-    「纠结」的东西单独排一栏「纠结名单」，卡片上列出帮你查的同类好产品（alternatives）和每天搜到的新发现（finds）。"""
+    「纠结」的东西单独排一栏「纠结名单」，卡片上列出帮你查的同类好产品（alternatives）和每天搜到的新发现（finds）。
+    db（Supabase 的 url、公开 key）配好时，顶部有「📷 拍照加愿望」：上传照片进收件箱，Claude 定时任务认出物品加进清单。"""
     total = _total(wishes, "想要")
     counts = {k: sum(1 for x in wishes if (x.get("status") or "想要") == k) for k in WISH_STATUSES}
     chips = "".join(f'<button type="button" class="chip" data-f="{k}" aria-pressed="{str(k == "全部").lower()}">'
@@ -1183,6 +1134,7 @@ def render_wishlist(wishes, works, updated, finds=()):
 <div class="stat"><span>想要的合计</span><b>{e(total)}</b></div>
 <div class="chips" role="group" aria-label="按状态筛选">{chips}</div>
 </div>
+{_snap_panel(db)}
 {section}
 </div>
 <script>
@@ -1200,6 +1152,130 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
 </body>
 </html>
 """
+
+
+SNAP_CSS = """
+.snap{background:#FBF8F1;border:3px solid #1A1C22;box-shadow:6px 6px 0 #B8336A;padding:18px 22px;display:flex;flex-direction:column;gap:14px}
+.snap h2{margin:0;font:900 22px/1.2 'Noto Sans SC',sans-serif;letter-spacing:.04em}
+.snap h2 small{font:500 13px 'Noto Serif SC',serif;letter-spacing:0;opacity:.7;margin-left:10px}
+.snap form{display:grid;grid-template-columns:160px minmax(0,1fr);gap:14px 18px;align-items:start}
+.snap .drop{grid-row:span 4;aspect-ratio:1;border:2px dashed #1A1C22;display:grid;place-items:center;text-align:center;cursor:pointer;
+ font:700 13px 'Noto Sans SC',sans-serif;background:#FFF;overflow:hidden;position:relative}
+.snap .drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#FFF}
+.snap .drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.snap .seg{display:flex;gap:8px}
+.snap .seg button,.snap .send{padding:7px 16px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;font:900 13px 'Noto Sans SC',sans-serif;
+ letter-spacing:.12em;cursor:pointer;border-radius:0}
+.snap .seg button[aria-pressed=true]{background:#1A1C22;color:#F4EDE4}
+.snap .seg button[data-v="纠结"][aria-pressed=true]{background:#B5650D;border-color:#B5650D}
+.snap input[type=text],.snap input[type=password]{width:100%;box-sizing:border-box;padding:8px 10px;border:2px solid #1A1C22;
+ font:500 14px 'Noto Sans SC',sans-serif;background:#FFF;border-radius:0}
+.snap .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.snap .send{background:#B8336A;border-color:#B8336A;color:#FFF}
+.snap .send:disabled{opacity:.5;cursor:wait}
+.snap .st{font-size:13px}.snap .st.err{color:#C0392B}.snap .st.ok{color:#1F9D6B}
+.snapq{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.snapq li{display:flex;gap:8px;align-items:center;padding:6px 10px 6px 6px;border:1px solid color-mix(in srgb,#1A1C22 25%,transparent);
+ font-size:12px;background:#FFF;max-width:100%}
+.snapq img{width:44px;height:44px;object-fit:cover;flex:none}
+.snapq b{display:block;font-size:12px}
+.snapq .state{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.1em;opacity:.7}
+@media (max-width:640px){.snap form{grid-template-columns:1fr}.snap .drop{grid-row:auto;aspect-ratio:4/3}}
+"""
+
+# 拍照加愿望：网页先把照片缩到长边 1600（再做一张 240 的缩略图），连同口令交给数据库的 add_photo()；
+# 口令只在数据库里核对（db/photo_inbox.sql），和设置页共用、存在这台设备的浏览器里（wl-pass）
+SNAP_JS = """
+(() => {
+  const CFG = %s, box = document.getElementById('snap');
+  const $ = s => box.querySelector(s);
+  const file = $('#snap-file'), drop = $('.drop'), note = $('#snap-note'), pw = $('#snap-pass'), send = $('.send'), st = $('.st');
+  const store = { get() { try { return localStorage.getItem('wl-pass') || ''; } catch (_) { return ''; } },
+                  set(v) { try { v ? localStorage.setItem('wl-pass', v) : localStorage.removeItem('wl-pass'); } catch (_) {} } };
+  pw.value = store.get();
+  let status = '想要', img = null;
+  box.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    status = b.dataset.v;
+    box.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  }));
+  const say = (t, cls) => { st.textContent = t; st.className = 'st ' + (cls || ''); };
+  const rpc = (fn, body) => fetch(CFG.url.replace(/\\/$/, '') + '/rest/v1/rpc/' + fn,
+    { method: 'POST', headers: { apikey: CFG.key, 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+  const shrink = (im, side, q) => {
+    const k = Math.min(1, side / Math.max(im.naturalWidth, im.naturalHeight));
+    const c = document.createElement('canvas');
+    c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k);
+    const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height);
+    return c.toDataURL('image/jpeg', q);
+  };
+  file.addEventListener('change', () => {
+    const f = file.files[0]; if (!f) return;
+    const url = URL.createObjectURL(f), im = new Image();
+    im.onload = () => {
+      img = im;
+      let p = drop.querySelector('img'); if (!p) { p = document.createElement('img'); drop.appendChild(p); }
+      p.src = url; drop.querySelector('span').hidden = true; say('');
+    };
+    im.onerror = () => say('这张图打不开，换一张试试', 'err');
+    im.src = url;
+  });
+  const STATE = { new: '排队中', exported: 'Claude 处理中', done: '已加入' };
+  const queue = async () => {
+    try {
+      const r = await rpc('get_photo_inbox'); if (!r.ok) return;
+      const list = await r.json();
+      const ul = box.querySelector('.snapq'); ul.innerHTML = '';
+      list.forEach(x => {
+        const li = document.createElement('li');
+        const t = document.createElement('img'); if (x.thumb) t.src = x.thumb; t.alt = '';
+        const d = document.createElement('div');
+        const b = document.createElement('b'); b.textContent = x.state === 'done' && x.wish_name ? x.wish_name : (x.note || '照片 #' + x.id);
+        const s = document.createElement('span'); s.className = 'state';
+        s.textContent = (STATE[x.state] || x.state) + ' · ' + x.status + ' · ' + new Date(x.created_at).toLocaleString('zh-CN', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        d.append(b, s); li.append(t, d); ul.appendChild(li);
+      });
+    } catch (_) {}
+  };
+  send.addEventListener('click', async ev => {
+    ev.preventDefault();
+    if (!img) { say('先选一张照片', 'err'); return; }
+    const pass = pw.value.trim(); if (!pass) { say('先输口令（和设置页一样）', 'err'); pw.focus(); return; }
+    let big = shrink(img, 1600, .85);
+    if (big.length > 2900000) big = shrink(img, 1200, .75);
+    send.disabled = true; say('上传中…');
+    try {
+      const r = await rpc('add_photo', { p_pass: pass, p_image: big, p_thumb: shrink(img, 240, .7), p_status: status, p_note: note.value.trim() });
+      if (r.ok) {
+        store.set(pass); say('收到了 ✓ Claude 定时处理后会出现在下面的清单里（一般几个小时内）', 'ok');
+        img = null; file.value = ''; note.value = ''; drop.querySelector('img')?.remove(); drop.querySelector('span').hidden = false;
+        queue();
+      } else {
+        const err = await r.json().catch(() => ({}));
+        if (err.code === '28P01') { store.set(''); say('口令不对', 'err'); pw.select(); }
+        else say('没传上：' + (err.message || r.status), 'err');
+      }
+    } catch (_) { say('连不上，稍后再试', 'err'); }
+    send.disabled = false;
+  });
+  queue();
+})();
+"""
+
+
+def _snap_panel(db):
+    """愿望清单页顶部的「📷 拍照加愿望」。没配数据库时不显示。"""
+    if not (db and db.get("url") and db.get("key")):
+        return ""
+    return (f'<style>{SNAP_CSS}</style><section class="snap" id="snap"><h2>📷 拍照加愿望'
+            f'<small>上传一张照片，Claude 会认出是什么、整理好加进清单（定时处理，一般几个小时内）</small></h2>'
+            f'<form><label class="drop"><span>点这里选照片<br>或拍一张</span><input type="file" id="snap-file" accept="image/*"></label>'
+            f'<div class="seg" role="group" aria-label="加到哪一栏"><button type="button" data-v="想要" aria-pressed="true">想要</button>'
+            f'<button type="button" data-v="纠结" aria-pressed="false">纠结</button></div>'
+            f'<input type="text" id="snap-note" maxlength="500" placeholder="备注（可不填）：在哪看到的、想要哪个颜色、大概多少钱…">'
+            f'<input type="password" id="snap-pass" autocomplete="current-password" placeholder="口令（和 ⚙ 设置页一样）">'
+            f'<div class="row"><button type="button" class="send">提交</button><span class="st" role="status"></span></div></form>'
+            f'<ul class="snapq" aria-label="最近上传的照片"></ul></section>'
+            f'<script>{SNAP_JS % json.dumps({"url": db["url"], "key": db["key"]})}</script>')
 
 
 FINDS_PER_WISH = 3  # 纠结的东西，卡片上最多列几条每天搜到的新发现
@@ -1308,7 +1384,7 @@ def _front(works, today, updated):
     if top:
         sc = _sec_color(top_w.get("section"))
         badge = "重 磅" if top.get("weight") == "hero" else "头 条"
-        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}"{' data-shop="1"' if top_w.get("section") == SHOP_SECTION else ""}>'
+        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
                     f'<span class="badge">{badge}</span>{_pic(top)}'
                     f'<span class="kicker"><i style="background:{sc}">{e(top_w.get("section") or "")}</i>'
                     f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
@@ -1569,8 +1645,6 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         w["_size"] = (sizes or {}).get(w["name"], "M")
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
-    if fb:
-        fb = {**fb, "wished": [w["url"] for w in wishes if w.get("url")]}
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
             + _front(works, latest["date"], updated) + _picks(picks, works, fb)

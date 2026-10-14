@@ -833,94 +833,43 @@ def sync_prices():
     print(f"数据库：价格 / 状态有变化 {len(rows)} 条", file=sys.stderr)
 
 
-WISH_IMAGE_DIR = DOCS_DIR / "wishlist"
+PHOTO_DIR = INBOX_DIR / "photos"
 
 
-def _save_wish_image(url):
-    """把新闻配图存进 docs/wishlist/（别直接引用外站图，可能防盗链或失效）。存不下来就返回原链接。"""
-    if not url or not url.startswith("http"):
-        return None
-    name = f"news-{hashlib.sha1(url.encode()).hexdigest()[:10]}.jpg"
+def export_photos():
+    """愿望清单页「📷 拍照加愿望」上传的照片：从数据库 photo_inbox 表导出到 inbox/photos/<编号>.jpg / .json，
+    标成 exported，等 Claude 定时任务按 PHOTOS.md 认出物品、加进 wishlist.yaml。
+    wishlist.yaml 里已经有 photo: <编号> 的，标成 done 并记下名字（网页排队列表显示「已加入」）。"""
+    import base64
     try:
-        import io
-        from PIL import Image
-        req = urllib.request.Request(url, headers={"User-Agent": sources.USER_AGENT})
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            img = Image.open(io.BytesIO(resp.read())).convert("RGB")
-        img.thumbnail((1200, 1200))
-        WISH_IMAGE_DIR.mkdir(parents=True, exist_ok=True)
-        img.save(WISH_IMAGE_DIR / name, "JPEG", quality=90)
-        return name
+        rows = supabase("photo_inbox?state=eq.new&select=id,created_at,status,note,image&order=id.asc")
+        if rows is None:
+            return  # 没配置数据库
+        done = {w["photo"]: w["name"] for w in load_wishlist() if w.get("photo")}
+        if done:
+            open_ = supabase("photo_inbox?state=neq.done&select=id") or []
+            for r in open_:
+                if r["id"] in done:
+                    supabase(f"photo_inbox?id=eq.{r['id']}", {"state": "done", "wish_name": done[r["id"]][:300]},
+                             "return=minimal", method="PATCH")
+                    print(f"照片：{r['id']} 已加入愿望清单「{done[r['id']]}」", file=sys.stderr)
     except Exception as err:
-        print(f"  [心愿单] 配图存不下来，用原链接：{err}", file=sys.stderr)
-        return url
-
-
-def wish_entry_yaml(row, image, today, watch):
-    """一条从新闻加进来的愿望，写成 wishlist.yaml 里的一段（字符串都用 JSON 引号，YAML 也认）。"""
-    q = lambda v: json.dumps(v, ensure_ascii=False)
-    lines = [f"  - name: {q(row['title'])}"]
-    if image:
-        lines.append(f"    image: {q(image)}")
-    if row.get("source"):
-        lines.append(f"    shop: {q(row['source'])}")
-    lines.append(f"    url: {q(row['url'])}")
-    lines.append(f"    added: {today}")
-    lines.append("    status: 想要")
-    if watch:
-        lines.append(f"    watch: {q(watch)}")
-    where = f"「{row['work']}」的" if row.get("work") else ""
-    lines.append(f"    note: {q(f'从{where}新闻里点「加入心愿单」加进来的；名字、价格、喜好标签还没整理（跟 Claude 说「整理愿望清单」）')}")
-    return "\n".join(lines) + "\n"
-
-
-def take_wish_requests():
-    """新闻卡片上点了「♥ 加入心愿单」的：从数据库 wish_requests 表读出待处理的，加进 wishlist.yaml
-    （直接在文件末尾追加，不动原来的内容和注释），再标成 done；已经在愿望清单里的标成 skipped。
-    推送后照常会在愿望清单页面出现、发 Discord 通知。"""
-    try:
-        rows = supabase("wish_requests?status=eq.pending&select=id,url,title,work,image,source&order=id.asc")
-    except Exception as err:
-        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/wish_requests.sql）" if "PGRST205" in str(err) else ""
-        print(f"  [心愿单] 读加入请求失败{hint}：{err}", file=sys.stderr)
+        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/photo_inbox.sql）" if "PGRST205" in str(err) else ""
+        print(f"  [照片] 读收件箱失败{hint}：{err}", file=sys.stderr)
         return
-    if not rows:
-        return
-    settings, items = load_config()
-    names = {i["name"] for i in items}
-    today = dt.datetime.now(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
-    have = {w.get("url") for w in load_wishlist()}
-    added, skipped, text = [], [], ""
     for r in rows:
-        host = (urllib.parse.urlsplit(r["url"]).hostname or "").lower()
-        # 已经在愿望清单里的、测试用的保留域名（example.com 之类，RFC 2606，不可能是真新闻）都跳过
-        if r["url"] in have or host.split(".")[-2:] in (["example", "com"], ["example", "org"], ["example", "net"]) \
-                or host.endswith(".example"):
-            skipped.append(r["id"])
+        head, _, data = (r.get("image") or "").partition(",")
+        if head != "data:image/jpeg;base64" or not data:
             continue
-        have.add(r["url"])
-        watch = r.get("work") if r.get("work") in names else None
-        text += "\n" + wish_entry_yaml(r, _save_wish_image(r.get("image")), today, watch)
-        added.append(r)
-    if text:
-        old = WISHLIST_FILE.read_text(encoding="utf-8")
-        new = old.rstrip("\n") + "\n" + text
+        PHOTO_DIR.mkdir(parents=True, exist_ok=True)
+        (PHOTO_DIR / f"{r['id']}.jpg").write_bytes(base64.b64decode(data))
+        save_json(PHOTO_DIR / f"{r['id']}.json", {"id": r["id"], "status": r["status"], "note": r.get("note") or "",
+                                                  "uploaded": r["created_at"]})
         try:
-            assert len((yaml.safe_load(new) or {}).get("wishlist") or []) == len(load_wishlist()) + len(added)
-        except Exception as err:
-            print(f"  [心愿单] 追加后 wishlist.yaml 不对，这次不加：{err}", file=sys.stderr)
-            return
-        WISHLIST_FILE.write_text(new, encoding="utf-8")
-    now = dt.datetime.now(dt.timezone.utc).isoformat()
-    for status, ids in (("done", [r["id"] for r in added]), ("skipped", skipped)):
-        if ids:
-            try:
-                supabase(f"wish_requests?id=in.({','.join(map(str, ids))})", {"status": status, "handled_at": now},
-                         "return=minimal", method="PATCH")
-            except Exception as err:  # 标不上的下次还会读到，但链接已经在愿望清单里了，会被当成 skipped
-                print(f"  [心愿单] 标记请求失败：{err}", file=sys.stderr)
-    for r in added:
-        print(f"心愿单：从新闻加入「{r['title'][:40]}」", file=sys.stderr)
+            supabase(f"photo_inbox?id=eq.{r['id']}", {"state": "exported"}, "return=minimal", method="PATCH")
+        except Exception as err:  # 标不上的下次会再导出一次（同名文件覆盖，不会重复）
+            print(f"  [照片] 标记 {r['id']} 失败：{err}", file=sys.stderr)
+        print(f"照片：导出 {r['id']}（{r['status']}）到 inbox/photos/", file=sys.stderr)
 
 
 def sync_db():
@@ -1273,7 +1222,8 @@ def write_page():
     if wishes:
         works = render.collect(issues, [i["name"] for i in items])
         finds = [x for x in (load_json(DISCOVER_FILE) or {}).get("entries", []) if x.get("wish")]
-        (DOCS_DIR / "wishlist.html").write_text(render.render_wishlist(wishes, works, updated, finds), encoding="utf-8")
+        (DOCS_DIR / "wishlist.html").write_text(render.render_wishlist(wishes, works, updated, finds,
+                                                                      {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), encoding="utf-8")
     (DOCS_DIR / "settings.html").write_text(render.render_settings(
         [{"name": i["name"], "section": section_of(i), "subtitle": i.get("subtitle", ""),
           "size": load_sizes().get(i["name"], "M")} for i in items],
@@ -1712,7 +1662,7 @@ def repair_images():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "take-wishes"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -1755,10 +1705,10 @@ def main():
     elif args.step == "notify-weekly":
         import notify
         notify.weekly(pages_url(load_config()[0]))
-    elif args.step == "take-wishes":
-        take_wish_requests()
+    elif args.step == "photos":
+        export_photos()
     else:
-        take_wish_requests()  # 先把新闻里点了「加入心愿单」的加进愿望清单，这次出刊就能看到
+        export_photos()  # 拍照加愿望：导出新照片给 Claude 定时任务处理
         path = ingest()
         if path:
             publish(path)

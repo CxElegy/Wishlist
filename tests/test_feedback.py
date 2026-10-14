@@ -282,59 +282,6 @@ class SyncHistory(SyncNews):
         self.assertEqual(len(self.posts[-1][2]), 2)     # 价格：失败那次没记下，重试时两条都写
 
 
-class TakeWishes(SyncNews):
-    """新闻里点了「♥ 加入心愿单」：从数据库读出请求，追加进 wishlist.yaml。"""
-
-    def test_upserts_all_once_then_only_changes(self):
-        pass
-
-    def test_failure_retries_next_time(self):
-        pass
-
-    def setUp(self):
-        super().setUp()
-        for patch in [x for x in self.patches if getattr(x, "attribute", "") == "load_wishlist"]:
-            patch.stop()  # 这里要读真的（临时的）wishlist.yaml
-            self.patches.remove(patch)
-        tmp = pathlib.Path(self.tmp.name)
-        self.wl = tmp / "wishlist.yaml"
-        self.wl.write_text("# 注释要保留\nwishlist:\n  - name: 已有的杯子\n    url: https://e/have\n    status: 想要\n",
-                           encoding="utf-8")
-        for patch in (mock.patch.object(digest, "WISHLIST_FILE", self.wl),
-                      mock.patch.object(digest, "_save_wish_image", side_effect=lambda u: "news-x.jpg" if u else None),
-                      mock.patch.object(digest, "load_config", return_value=(
-                          {"supabase_url": f"http://127.0.0.1:{self.server.server_port}", "timezone": "Asia/Shanghai"},
-                          [{"name": "猫用品"}]))):
-            patch.start()
-            self.patches.append(patch)
-
-    def test_adds_new_and_skips_existing(self):
-        self.get_rows = [
-            {"id": 1, "url": "https://e/new", "title": "黒猫の\"マグ\"発売: 限定", "work": "猫用品", "image": "https://i/1.jpg",
-             "source": "PR TIMES"},
-            {"id": 2, "url": "https://e/have", "title": "重复的", "work": "猫用品", "image": None, "source": None},
-            {"id": 3, "url": "https://e/new", "title": "同一条点了两次", "work": "其他", "image": None, "source": None},
-            {"id": 4, "url": "https://example.com/__setup-test__", "title": "设置测试", "work": None, "image": None,
-             "source": None},
-        ]
-        digest.take_wish_requests()
-        text = self.wl.read_text(encoding="utf-8")
-        self.assertTrue(text.startswith("# 注释要保留\n"))                 # 原来的内容一字不动
-        wishes = digest.load_wishlist()
-        self.assertEqual([w["name"] for w in wishes], ["已有的杯子", '黒猫の"マグ"発売: 限定'])
-        new = wishes[1]
-        self.assertEqual((new["url"], new["image"], new["watch"], new["status"], new["shop"]),
-                         ("https://e/new", "news-x.jpg", "猫用品", "想要", "PR TIMES"))
-        patches = [(path, body["status"]) for path, _, body in self.posts if body and "status" in body]
-        self.assertEqual(patches, [("/rest/v1/wish_requests?id=in.(1)", "done"), ("/rest/v1/wish_requests?id=in.(2,3,4)", "skipped")])
-
-    def test_nothing_pending(self):
-        self.get_rows = []
-        before = self.wl.read_text(encoding="utf-8")
-        digest.take_wish_requests()
-        self.assertEqual(self.wl.read_text(encoding="utf-8"), before)
-
-
 class StoryDedupe(unittest.TestCase):
     """「我会喜欢？」去重：同一件事（不同媒体、不同语言）只留一条。例子取自真实的推荐池。"""
 
@@ -371,3 +318,31 @@ class StoryDedupe(unittest.TestCase):
         self.assertNotIn("11", digest.story_tokens("クローズドβテストが11月13日より開催"))
         self.assertNotIn("画像", digest.story_tokens("画像6 / 15＞スヌーピーのクレープ"))
         self.assertIn("s27", digest.story_tokens("Galaxy S27 Ultra"))
+
+
+class ExportPhotos(SyncNews):
+    """拍照加愿望：新照片导出到 inbox/photos/，愿望清单里已有 photo 编号的标成 done。"""
+
+    def test_upserts_all_once_then_only_changes(self):
+        pass
+
+    def test_failure_retries_next_time(self):
+        pass
+
+    def test_export_and_mark_done(self):
+        import base64
+        jpg = b"\xff\xd8\xff\xe0fakejpeg"
+        img = "data:image/jpeg;base64," + base64.b64encode(jpg).decode()
+        self.get_rows = [{"id": 7, "created_at": "2026-10-14T12:00:00Z", "status": "纠结", "note": "想要黑色", "image": img},
+                         {"id": 6, "created_at": "2026-10-14T11:00:00Z", "status": "想要", "note": None, "image": "not-a-jpeg"}]
+        self.wishes[:] = [{"name": "貓眼溫變馬克杯", "photo": 6}]
+        with mock.patch.object(digest, "PHOTO_DIR", digest.INBOX_DIR / "photos"):
+            digest.export_photos()
+            folder = digest.INBOX_DIR / "photos"
+            self.assertEqual((folder / "7.jpg").read_bytes(), jpg)
+            meta = json.loads((folder / "7.json").read_text(encoding="utf-8"))
+            self.assertEqual((meta["status"], meta["note"]), ("纠结", "想要黑色"))
+            self.assertFalse((folder / "6.jpg").exists())       # 不是 jpeg 的不导出
+        patches = [(path, body) for path, _, body in self.posts if body and "state" in body]
+        self.assertIn(("/rest/v1/photo_inbox?id=eq.6", {"state": "done", "wish_name": "貓眼溫變馬克杯"}), patches)
+        self.assertIn(("/rest/v1/photo_inbox?id=eq.7", {"state": "exported"}), patches)
