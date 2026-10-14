@@ -1,0 +1,85 @@
+name: 网页请求
+
+# 设置页上提交的「新增 / 修改关注项」和改过的篇幅 S / M / L：每 5 分钟看一眼数据库，有就马上处理——
+# 写进 items.yaml、重新生成网页并发布；新加的关注项立刻触发「关注清单通信」去收集新闻（不用等每 2 小时那次）。
+# 没有要处理的时候只查两次数据库，几秒钟就结束。
+# GitHub 的定时任务高峰期会晚几分钟，所以从提交到网页更新一般 5–15 分钟。
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write   # 用来立刻触发「关注清单通信」（GITHUB_TOKEN 触发 workflow_dispatch 是允许的）
+
+concurrency:
+  group: requests
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://bzokpnbcjscbcehdxtjq.supabase.co   # 和 items.yaml 的 supabase_url 一样（公开的）
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: 有没有要处理的
+        id: check
+        run: |
+          if [ -z "$SUPABASE_SERVICE_KEY" ]; then echo "没设置 SUPABASE_SERVICE_KEY"; exit 0; fi
+          hdr=(-H "apikey: $SUPABASE_SERVICE_KEY")
+          case "$SUPABASE_SERVICE_KEY" in eyJ*) hdr+=(-H "Authorization: Bearer $SUPABASE_SERVICE_KEY");; esac
+          pending=$(curl -sf "${hdr[@]}" "$SUPABASE_URL/rest/v1/item_requests?status=eq.pending&select=id" | jq length || echo 0); pending=${pending:-0}
+          # 篇幅：数据库里最后一次改的时间，晚于网页最后一次生成就要重新生成
+          size_at=$(curl -sf "${hdr[@]}" "$SUPABASE_URL/rest/v1/sizes?select=updated_at&order=updated_at.desc&limit=1" | jq -r '.[0].updated_at // empty' || true)
+          page_at=$(gh api "repos/$GITHUB_REPOSITORY/commits?path=docs/settings.html&per_page=1" --jq '.[0].commit.committer.date' || true)
+          sizes=0
+          if [ -n "$size_at" ] && [ -n "$page_at" ] && [ "$(date -d "$size_at" +%s)" -gt "$(date -d "$page_at" +%s)" ]; then sizes=1; fi
+          echo "待处理的关注项请求：$pending；篇幅有新改动：$sizes（数据库 $size_at / 网页 $page_at）"
+          if [ "$pending" != "0" ] || [ "$sizes" = "1" ]; then echo "go=1" >> "$GITHUB_OUTPUT"; fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.go
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        if: steps.check.outputs.go
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - if: steps.check.outputs.go
+        run: pip install -r requirements.txt
+
+      - name: 写进关注清单、重新生成网页并发布
+        if: steps.check.outputs.go
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python scripts/digest.py take-items
+          python scripts/digest.py render
+          git add items.yaml docs state
+          git diff --cached --quiet || git commit -q -m "设置页的请求 $(TZ=Asia/Shanghai date +'%F %H:%M')"
+          for i in 1 2 3; do
+            if git pull --rebase -X theirs -q; then
+              python scripts/digest.py render
+              git add docs
+              git diff --cached --quiet || git commit -q -m "重新生成网页"
+              git push && break
+            else
+              git rebase --abort || true
+            fi
+            [ "$i" = 3 ] && exit 1
+            sleep $((i * 5))
+          done
+          echo "NEW_ITEMS=$(python scripts/digest.py new-items)" >> "$GITHUB_ENV"
+
+      # 新加的关注项：马上跑一次完整的收集（收集新闻 → 简报 → Discord「新增关注项」通知 → 叫 AI 编辑）
+      - name: 新关注项 → 立刻收集新闻
+        if: steps.check.outputs.go && env.NEW_ITEMS != ''
+        run: gh workflow run digest.yml --repo "$GITHUB_REPOSITORY" --ref main && echo "已触发收集：$NEW_ITEMS"

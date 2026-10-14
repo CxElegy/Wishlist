@@ -1033,7 +1033,11 @@ def render_settings(items, db, updated):
 .rv details .rv{{gap:12px}}
 .queue{{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:13px}}
 .queue:empty{{display:none}}
-.queue li b{{font-family:'Noto Sans SC',sans-serif}}.queue li span{{opacity:.65}}.queue li em{{font-style:normal;color:#C0392B}}
+.queue li{{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;padding:8px 0;border-top:1px solid color-mix(in srgb,#1A1C22 15%,transparent)}}
+.queue li.qh{{border-top:0;padding:0;font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.05em}}
+.queue li b{{font-family:'Noto Sans SC',sans-serif}}.queue li span{{opacity:.65}}
+.queue li strong{{flex-basis:100%;font:700 13px/1.6 'Noto Sans SC',sans-serif}}
+.queue .st-ok{{color:#1F9D6B}}.queue .st-err{{color:#C0392B}}.queue .st-wait{{color:#B8336A}}
 @media (max-width:520px){{.st{{display:none}}.seg button{{width:40px}}.rv .two{{grid-template-columns:1fr}}.row{{gap:8px}}
  .trail{{gap:6px}}.trail li:not(:last-child)::after{{display:none}}.trail button{{min-width:0;max-width:100%;padding:6px 9px}}.trail b{{font-size:13px}}}}
 </style>
@@ -1042,7 +1046,7 @@ def render_settings(items, db, updated):
 <div class="page">
 <a class="back" href="index.html">← 回到简报</a>
 <header><h1 style="margin:0;font:900 40px/1.1 'Noto Sans SC',sans-serif;letter-spacing:.04em">设置</h1></header>
-<p class="intro">点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，下一次更新（最多 2 小时）生效。</p>
+<p class="intro">点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，一般 5–15 分钟后网页就按新的设置更新（GitHub 每 5 分钟看一次）。</p>
 <dl class="legend"><dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd></dl>
 <div class="cfg">{''.join(rows)}</div>
 <section class="wiz" id="wiz" aria-live="polite"><h2>＋ 新增关注项</h2><p class="hint">正在加载…</p></section>
