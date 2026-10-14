@@ -4,8 +4,9 @@
 --   M  中等：每期最多 5 条（表里没有的关注项也按 M）
 --   L  多：每期最多 8 条，网页上满满一整屏
 --
--- 以后要改，直接在 Supabase 的 Table Editor 里改 size 那一格（或新加一行，item 填 items.yaml 里的 name），
--- 下一次定时任务（每 2 小时）出刊时生效。网页上不显示篇幅。
+-- 只要建一次表。之后不用手动加行：新关注项会自动补进来（items.yaml 写了 size 就用它，没写按 M），
+-- items.yaml 的 size 改了也会自动同步。想自己改就在 Table Editor 里改 size 那一格，下一次出刊（每 2 小时）生效；
+-- items.yaml 不再改这一项，就一直以数据库为准。网页上不显示篇幅。
 -- GitHub Actions 用 secret key（仓库 Secret SUPABASE_SERVICE_KEY）读；网页（publishable key）读不到也写不了。
 
 create table if not exists public.sizes (
