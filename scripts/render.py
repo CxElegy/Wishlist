@@ -283,6 +283,7 @@ html{scroll-behavior:smooth}
 .brief li:hover .vt{opacity:1}
 .downv{opacity:.4;filter:grayscale(.8)}
 .pkbatch[hidden]{display:none}
+.vote .wish[aria-pressed=true],.vt .wish[aria-pressed=true]{background:#1A1C22;border-color:#1A1C22;color:#FFB3CF}
 .shuffle{margin-left:auto;padding:6px 14px;border:2px solid #1A1C22;background:#1A1C22;color:#F4EDE4;
  font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.1em;cursor:pointer;border-radius:0;white-space:nowrap}
 .shuffle:hover{background:#B8336A;border-color:#B8336A}
@@ -721,7 +722,8 @@ def _section(block, anchor=""):
     grid += _brief(texts) + _older(more + older, today, len(more), old_texts)
     recent = recent or texts
     quiet = "" if recent else " quiet"
-    return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
+    shop = ' data-shop="1"' if block.get("section") == SHOP_SECTION else ""
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}"{shop} class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
             f"{facts}{grid}</section>")
 
@@ -732,6 +734,7 @@ def _why_verb(x):
     return "在纠结" if x.get("kind") == "hesitate" or x.get("hesitating") else "想要"
 
 
+SHOP_SECTION = "好物"  # 这个板块的消息是东西：卡片上有「♥ 加入心愿单」
 WORK_KEY = "作品:"  # 投票学到的口味里，按作品记的那一类（和 digest.WORK_KEY 一致）
 
 
@@ -741,6 +744,7 @@ def _picks(picks, works, feedback=None):
     if not picks:
         return ""
     covers = {w["name"]: [w["_thumb"]] if w.get("_thumb") else [] for w in works}
+    shops = {w["name"] for w in works if w.get("section") == SHOP_SECTION}
 
     def cards_of(group, big_first):
         return "".join(card(x, big_first and i == 0) for i, x in enumerate(group))
@@ -759,7 +763,9 @@ def _picks(picks, works, feedback=None):
             vote = (f'<div class="vote" data-v="{e(json.dumps(data, ensure_ascii=False))}">'
                     f'<button type="button" data-vote="1" aria-pressed="false" title="多推荐这类">👍<span> 喜欢</span></button>'
                     f'<button type="button" data-vote="-1" aria-pressed="false" title="少推荐这类">👎<span> 不感兴趣</span></button>'
-                    f'<small></small></div>')
+                    + (f'<button type="button" class="wish" aria-pressed="false" data-w="{e(json.dumps({k: x.get(k) for k in ("url", "title", "work", "image", "source")}, ensure_ascii=False))}" '
+                       f'title="加进愿望清单">♥<span> 加入心愿单</span></button>' if x.get("kind") == "wish" and x["work"] in shops else "")
+                    + f'<small></small></div>')
         return (
             f'<div class="pk{" big" if big else ""}"><a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
@@ -825,14 +831,14 @@ VOTE_JS = """
   const paint = url => boxes.forEach(([box, data, dim, tip]) => {
     if (data.url !== url) return;
     const v = mine[url] || 0;
-    box.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.vote) === v)));
+    box.querySelectorAll('button[data-vote]').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.vote) === v)));
     box.classList.toggle('on', v !== 0);
     if (dim) dim.classList.toggle(dim.classList.contains('pk') ? 'down' : 'downv', v === -1);
     if (tip) tip.textContent = v === 1 ? '会多推荐这类' : v === -1 ? '以后少推荐这类' : '';
   });
   const wire = (box, data, dim, tip) => {
     boxes.push([box, data, dim, tip]);
-    box.querySelectorAll('button').forEach(btn => btn.addEventListener('click', async ev => {
+    box.querySelectorAll('button[data-vote]').forEach(btn => btn.addEventListener('click', async ev => {
       ev.preventDefault(); ev.stopPropagation();   // 小按钮在卡片链接里面：别打开链接
       const v = (mine[data.url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
       box.querySelectorAll('button').forEach(b => b.disabled = true);
@@ -852,8 +858,45 @@ VOTE_JS = """
       }
     }));
   };
-  document.querySelectorAll('.picks .vote').forEach(box =>
-    wire(box, JSON.parse(box.dataset.v), box.closest('.pk'), box.querySelector('small')));
+  // 「♥ 加入心愿单」：写进 wish_requests 表，下次更新（每 2 小时）时加进愿望清单
+  let added = {};
+  try { added = JSON.parse(localStorage.getItem('wishlist-added') || '{}'); } catch (_) {}
+  const wished = new Set(cfg.wished || []);
+  const hearts = [];
+  const showHeart = (btn, url) => {
+    const on = wished.has(url) || added[url];
+    btn.setAttribute('aria-pressed', String(!!on));
+    btn.title = wished.has(url) ? '已经在愿望清单里' : added[url] ? '已加入，下次更新（每 2 小时）时出现在愿望清单' : '加进愿望清单';
+    const label = btn.querySelector('span');
+    if (label) label.textContent = wished.has(url) ? ' 已在心愿单' : added[url] ? ' 已加入' : ' 加入心愿单';
+  };
+  const heart = (btn, data) => {
+    hearts.push([btn, data.url]);
+    showHeart(btn, data.url);
+    btn.addEventListener('click', async ev => {
+      ev.preventDefault(); ev.stopPropagation();
+      if (wished.has(data.url) || added[data.url]) return;
+      btn.disabled = true;
+      try {
+        const r = await fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/wish_requests',
+          { method: 'POST', headers, body: JSON.stringify(data) });
+        if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120));
+        added[data.url] = 1;
+        try { localStorage.setItem('wishlist-added', JSON.stringify(added)); } catch (_) {}
+        hearts.forEach(([b, u]) => { if (u === data.url) showHeart(b, u); });
+      } catch (err) {
+        btn.title = '没加上，稍后再试';
+        console.error('加入心愿单失败', err);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  };
+  document.querySelectorAll('.picks .vote').forEach(box => {
+    wire(box, JSON.parse(box.dataset.v), box.closest('.pk'), box.querySelector('small'));
+    const h = box.querySelector('.wish');
+    if (h) heart(h, JSON.parse(h.dataset.w));
+  });
   const small = () => {
     const s = document.createElement('span');
     s.className = 'vt';
@@ -867,8 +910,15 @@ VOTE_JS = """
     const t = link.querySelector('h1,h2,h3,h4') || link;   // 标题；别用 b（日期旁的 NEW 也是 b）
     const box = small();
     holder.appendChild(box);
-    wire(box, { url: link.href, kind: 'story', title: t.textContent.trim().slice(0, 500),
-                work: (w && w.dataset.k || '').slice(0, 200), hits: [], words: [] }, dim, null);
+    const title = t.textContent.trim().slice(0, 500), work = (w && w.dataset.k || '').slice(0, 200);
+    wire(box, { url: link.href, kind: 'story', title, work, hits: [], words: [] }, dim, null);
+    if (holder.closest('[data-shop]')) {   // 好物板块的消息是东西：可以加入心愿单
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'wish'; btn.textContent = '♥';
+      box.appendChild(btn);
+      const img = link.querySelector('.pic img:not(.bg)'), src = link.querySelector('.src');
+      heart(btn, { url: link.href, title, work, image: img ? img.src : null, source: src ? src.textContent.trim().slice(0, 200) : null });
+    }
   };
   document.querySelectorAll('.sec a.card, a.top').forEach(a => story(a, a, a));
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
@@ -1095,7 +1145,7 @@ def _front(works, today, updated):
     if top:
         sc = _sec_color(top_w.get("section"))
         badge = "重 磅" if top.get("weight") == "hero" else "头 条"
-        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
+        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}"{' data-shop="1"' if top_w.get("section") == SHOP_SECTION else ""}>'
                     f'<span class="badge">{badge}</span>{_pic(top)}'
                     f'<span class="kicker"><i style="background:{sc}">{e(top_w.get("section") or "")}</i>'
                     f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
@@ -1331,6 +1381,8 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         w["_size"] = (sizes or {}).get(w["name"], "M")
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
+    if fb:
+        fb = {**fb, "wished": [w["url"] for w in wishes if w.get("url")]}
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
             + _front(works, latest["date"], updated) + _picks(picks, works, fb)

@@ -118,22 +118,35 @@ class SyncNews(unittest.TestCase):
         import threading
         from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
         os.environ["NO_PROXY"] = os.environ["no_proxy"] = "127.0.0.1,localhost"
-        self.posts, self.fail = [], False
+        self.posts, self.broken = [], False
         test = self
 
         class H(BaseHTTPRequestHandler):
             def do_POST(self):
                 body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
                 test.posts.append((self.path, {k.lower(): v for k, v in self.headers.items()}, body))
-                code = 404 if test.fail else 201
+                code = 404 if test.broken else 201
                 self.send_response(code)
                 self.end_headers()
-                if test.fail:
+                if test.broken:
                     self.wfile.write(b'{"code":"PGRST205"}')
+
+            def do_GET(self):
+                test.posts.append((self.path, {k.lower(): v for k, v in self.headers.items()}, None))
+                body = json.dumps(getattr(test, "get_rows", [])).encode()
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(body)
+
+            def do_PATCH(self):
+                body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+                test.posts.append((self.path, {k.lower(): v for k, v in self.headers.items()}, body))
+                self.send_response(204)
+                self.end_headers()
 
             def do_DELETE(self):
                 test.posts.append((self.path, {k.lower(): v for k, v in self.headers.items()}, None))
-                self.send_response(404 if test.fail else 204)
+                self.send_response(404 if test.broken else 204)
                 self.end_headers()
 
             def log_message(self, *a):
@@ -177,7 +190,7 @@ class SyncNews(unittest.TestCase):
             p.start()
 
     def tearDown(self):
-        for p in self.patches:
+        for p in reversed(self.patches):  # 倒着停：同一个函数被打了两层补丁时才能还原
             p.stop()
         self.server.shutdown()
         self.tmp.cleanup()
@@ -210,10 +223,10 @@ class SyncNews(unittest.TestCase):
         self.assertEqual({r["collected_on"] for r in self.posts[-1][2]}, {"2026-10-12"})
 
     def test_failure_retries_next_time(self):
-        self.fail = True
+        self.broken = True
         digest.sync_news()
         self.assertFalse(digest.NEWS_SYNC_FILE.exists())
-        self.fail = False
+        self.broken = False
         digest.sync_news()
         self.assertEqual(len(self.posts), 2)
 
@@ -252,12 +265,63 @@ class SyncHistory(SyncNews):
         self.assertEqual([(r["item"], r["value"]) for r in self.posts[1][2]], [("黑猫杯", "NT$ 790")])
 
     def test_failure_is_retried(self):
-        self.fail = True
+        self.broken = True
         digest.sync_stories()
         digest.sync_prices()
-        self.fail = False
+        self.broken = False
         digest.sync_stories()
         digest.sync_prices()
         self.assertTrue(digest.STORIES_SYNC_FILE.exists())
         self.assertTrue(digest.PRICES_SYNC_FILE.exists())
         self.assertEqual(len(self.posts[-1][2]), 2)     # 价格：失败那次没记下，重试时两条都写
+
+
+class TakeWishes(SyncNews):
+    """新闻里点了「♥ 加入心愿单」：从数据库读出请求，追加进 wishlist.yaml。"""
+
+    def test_upserts_all_once_then_only_changes(self):
+        pass
+
+    def test_failure_retries_next_time(self):
+        pass
+
+    def setUp(self):
+        super().setUp()
+        for patch in [x for x in self.patches if getattr(x, "attribute", "") == "load_wishlist"]:
+            patch.stop()  # 这里要读真的（临时的）wishlist.yaml
+            self.patches.remove(patch)
+        tmp = pathlib.Path(self.tmp.name)
+        self.wl = tmp / "wishlist.yaml"
+        self.wl.write_text("# 注释要保留\nwishlist:\n  - name: 已有的杯子\n    url: https://e/have\n    status: 想要\n",
+                           encoding="utf-8")
+        for patch in (mock.patch.object(digest, "WISHLIST_FILE", self.wl),
+                      mock.patch.object(digest, "_save_wish_image", side_effect=lambda u: "news-x.jpg" if u else None),
+                      mock.patch.object(digest, "load_config", return_value=(
+                          {"supabase_url": f"http://127.0.0.1:{self.server.server_port}", "timezone": "Asia/Shanghai"},
+                          [{"name": "猫用品"}]))):
+            patch.start()
+            self.patches.append(patch)
+
+    def test_adds_new_and_skips_existing(self):
+        self.get_rows = [
+            {"id": 1, "url": "https://e/new", "title": "黒猫の\"マグ\"発売: 限定", "work": "猫用品", "image": "https://i/1.jpg",
+             "source": "PR TIMES"},
+            {"id": 2, "url": "https://e/have", "title": "重复的", "work": "猫用品", "image": None, "source": None},
+            {"id": 3, "url": "https://e/new", "title": "同一条点了两次", "work": "其他", "image": None, "source": None},
+        ]
+        digest.take_wish_requests()
+        text = self.wl.read_text(encoding="utf-8")
+        self.assertTrue(text.startswith("# 注释要保留\n"))                 # 原来的内容一字不动
+        wishes = digest.load_wishlist()
+        self.assertEqual([w["name"] for w in wishes], ["已有的杯子", '黒猫の"マグ"発売: 限定'])
+        new = wishes[1]
+        self.assertEqual((new["url"], new["image"], new["watch"], new["status"], new["shop"]),
+                         ("https://e/new", "news-x.jpg", "猫用品", "想要", "PR TIMES"))
+        patches = [(path, body["status"]) for path, _, body in self.posts if body and "status" in body]
+        self.assertEqual(patches, [("/rest/v1/wish_requests?id=in.(1)", "done"), ("/rest/v1/wish_requests?id=in.(2,3)", "skipped")])
+
+    def test_nothing_pending(self):
+        self.get_rows = []
+        before = self.wl.read_text(encoding="utf-8")
+        digest.take_wish_requests()
+        self.assertEqual(self.wl.read_text(encoding="utf-8"), before)
