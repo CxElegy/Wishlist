@@ -613,13 +613,15 @@ def load_wishlist():
 
 
 PICK_COUNT = 5       # 「我会喜欢？」一批几条（1 大 + 4 小正好排满）
-PICK_BATCHES = 3     # 准备几批，网页上点「换一批」轮着看
+PICK_BATCHES = 6     # 候选池有几批那么多：网页每次打开随机抽一批（看过的少抽），「换一批」再抽
+EXPLORE_AFTER = 2    # 前几批只放够分的；之后可以放差一点的（少命中一个标签），网页上标「换换口味」
 PICK_DAYS = 14       # 从最近几天收集到的消息里挑
 PICK_THRESHOLD = 5   # 每命中一个喜好标签 2 分，和愿望清单同一个关注项再加 1 分；至少 5 分才推荐
 
 
 DISCOVER_HOURS = 12    # 「同类新消息」每隔多久搜一次
 DISCOVER_PICKS = 4     # 「我会喜欢？」每批放几条同类新消息
+FOLLOW_PER_ITEM = 4    # 同类新消息每个关注项最多准备几条（找配图要花时间，不跟着批数无限加）
 
 
 HESITATE = "纠结"   # 愿望清单里还在犹豫买不买的状态：它的 similar 也会每天搜，找类似的好产品
@@ -1073,7 +1075,7 @@ def recommend(force_discover=False):
                                              + [WORK_KEY + item["name"]])
                     if hits and (not best or score + bonus > best[0]):
                         best = (score + bonus, w, hits, words, why)
-                if best and best[0] >= PICK_THRESHOLD:
+                if best and best[0] >= PICK_THRESHOLD - 1:
                     pool.append((best[0], d.get("date") or path.stem, d, item["name"], *best[1:]))
     # 同分时，命中具体喜好（猫、角色造型……）的排在只命中基本属性（限定、马克杯）的前面
     pool.sort(key=lambda x: (x[0], len(set(x[5]) - set(x[4].get("basics") or [])), x[1]), reverse=True)
@@ -1087,6 +1089,9 @@ def recommend(force_discover=False):
         # 踩过的消息（和别家报道的同一件事）不再推荐
         if any(_similar(g, x) for x in grams) or key & used:
             continue
+        explore = score < PICK_THRESHOLD
+        if explore and len(picks) < PICK_COUNT * EXPLORE_AFTER:
+            continue  # 「换换口味」的只放进后面几批
         url = sources.resolve_url(d["url"])
         if url in wish_urls or url in disliked or any(p["url"] == url for p in picks):
             continue
@@ -1097,6 +1102,7 @@ def recommend(force_discover=False):
         picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
                       "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish",
                       "words": sorted(key), "taste": why, "batch": len(picks) // PICK_COUNT,
+                      **({"explore": True} if explore else {}),
                       **({"hesitating": True} if w.get("status") == HESITATE else {})})
         if len(picks) >= PICK_COUNT * PICK_BATCHES:
             break
@@ -1109,11 +1115,11 @@ def recommend(force_discover=False):
     label_of = {x["item"]: x["label"] for x in found}
     names = [n for n in names if taste.get(label_of[n], 0) > -2]
     names.sort(key=lambda n: -taste.get(label_of[n], 0))  # sort 是稳定的：同分时保持按时间
-    # 每个关注项准备最多 PICK_BATCHES 条（有图的优先），再轮流排：每一批里尽量是不同的关注项
+    # 每个关注项准备最多 FOLLOW_PER_ITEM 条（有图的优先），再轮流排：每一批里尽量是不同的关注项
     cands, seen_urls = {}, {p["url"] for p in picks}
     for name in names:
         got = []
-        for x in [x for x in found if x["item"] == name][:PICK_BATCHES * 2]:
+        for x in [x for x in found if x["item"] == name][:FOLLOW_PER_ITEM * 2]:
             url = sources.resolve_url(x["url"])
             if url in disliked or url in seen_urls:
                 continue
@@ -1122,8 +1128,8 @@ def recommend(force_discover=False):
             seen_urls.add(url)
             got.append((x, images[url], url))
         got.sort(key=lambda c: not c[1])  # 有图的排前面（sort 是稳定的：同样有图时保持按时间）
-        cands[name] = got[:PICK_BATCHES]
-    order = [c for r in range(PICK_BATCHES) for n in names if len(cands[n]) > r for c in [cands[n][r]]]
+        cands[name] = got[:FOLLOW_PER_ITEM]
+    order = [c for r in range(FOLLOW_PER_ITEM) for n in names if len(cands[n]) > r for c in [cands[n][r]]]
     follow = []
     for x, img, url in order[:DISCOVER_PICKS * PICK_BATCHES]:
         follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],

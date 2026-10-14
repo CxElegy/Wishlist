@@ -95,19 +95,25 @@ class Shuffle(unittest.TestCase):
         return {"title": f"t{i}", "url": f"https://e/{i}", "source": "S", "date": "2026-10-12", "work": "w",
                 "image": None, "because": "b", "hits": [], "kind": kind, "batch": batch}
 
-    def test_batches_one_visible_with_button(self):
+    def test_first_batch_visible_rest_in_pool(self):
         picks = [self.pick(i, i // 5) for i in range(12)] + [self.pick(20 + i, i // 4, "follow") for i in range(6)]
         out = render._picks(picks, [])
-        self.assertEqual(out.count('class="pkbatch"'), 3)
-        self.assertEqual(out.count('class="pkbatch" data-b="0">'), 1)   # 第一批显示
-        self.assertEqual(out.count(" hidden>"), 2)                       # 其余隐藏
+        visible, pool = out.split('<div class="pkpool" hidden>')
+        self.assertEqual(visible.count('data-u='), 5 + 4)       # 没有脚本时显示第一批
+        self.assertEqual(pool.count('data-u='), 7 + 2)          # 其余都在隐藏的池子里，脚本随机抽
+        self.assertEqual(out.count("data-f=1"), 6)                # 同类新发现做了标记
         self.assertIn("换一批", out)
-        self.assertIn("1/3", out)
+        self.assertIn("共 18 条", out)
+
+    def test_explore_marked(self):
+        out = render._picks([{**self.pick(1, 0), "explore": True}, self.pick(2, 1)], [])
+        self.assertIn("换换口味 · 因为你想要", out)
+        self.assertIn("data-new=1", out)
 
     def test_single_batch_has_no_button(self):
         out = render._picks([self.pick(i, 0) for i in range(3)], [])
         self.assertNotIn("换一批", out)
-        self.assertNotIn(" hidden>", out)
+        self.assertNotIn("pkpool", out)
 
 
 class SyncNews(unittest.TestCase):
