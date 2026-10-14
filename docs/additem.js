@@ -503,8 +503,8 @@
     return h("div", {class: "q"},
       h("span", {class: "no"}, S.mode === "edit" ? "现在的设置" : "最后一步：看一眼"),
       h("h3", {}, S.mode === "edit" ? `「${S.name}」现在是这样` : "按你的回答，会这样加进关注清单"),
-      h("p", {}, S.mode === "edit" ? "直接改下面的内容，或者「重新问一遍」按问题重新设置。提交后一般 5–15 分钟生效，下面会显示进度。"
-                                   : "都可以直接改。提交后一般 5–15 分钟加进关注清单，马上开始收集新闻（往前补抓 6 周），Discord 会收到通知；下面会显示进度。"),
+      h("p", {}, S.mode === "edit" ? `直接改下面的内容，或者「重新问一遍」按问题重新设置。提交后${eta()}生效，下面会显示进度。`
+                                   : `都可以直接改。提交后${eta()}加进关注清单，接着马上收集新闻（往前补抓 6 周），Discord 会收到通知；下面会显示进度。`),
       form,
       h("div", {class: "wnav"},
         S.mode === "add" ? h("button", {type: "button", onclick: back}, "← 上一步")
@@ -577,7 +577,7 @@
   }
 
   // ---------- 最近提交的（进度，有没处理完的就每 15 秒刷新一次） ----------
-  // GitHub 上的「网页请求」工作流每 5 分钟看一次数据库：处理完标成 done，新增的马上开始收集新闻
+  // 一提交数据库就立刻叫 GitHub 的「网页请求」工作流（事件触发）：处理完标成 done，新增的马上开始收集新闻
   const queueList = h("ul", {class: "queue", "aria-label": "最近提交的，自动刷新"});
   const ago = t => { const m = Math.max(0, Math.round((Date.now() - new Date(t)) / 60000)); return m < 1 ? "刚刚" : m < 60 ? `${m} 分钟前` : `${Math.round(m / 60)} 小时前`; };
   const progress = x => {
@@ -585,10 +585,14 @@
     if (x.status === "done") return ["ok", x.action === "edit" ? "✓ 已改好，网页 1 分钟内更新（刷新本页就能看到）"
                                                             : "✓ 已加进关注清单，正在收集新闻，几分钟后出现在简报上"];
     const m = (Date.now() - new Date(x.created_at)) / 60000;
-    return ["wait", m < 20 ? "已收到 ✓ 等 GitHub 处理（每 5 分钟看一次，一般 5–15 分钟）"
-                           : "已收到 ✓ GitHub 这次有点慢，还在排队（定时任务高峰期会晚一些）"];
+    if (!INSTANT) return ["wait", "已收到 ✓ 还没设 GitHub 令牌，下次每 2 小时的更新时处理"];
+    return ["wait", m < 5 ? "已收到 ✓ 已经叫 GitHub 马上处理，网页正在重新生成"
+                          : "已收到 ✓ GitHub 这次有点慢，还在处理"];
   };
   let timer = null;
+  // 数据库里设了 GitHub 令牌（db/instant.sql）时，提交后立刻叫 GitHub 处理；没设就等每 2 小时的更新
+  let INSTANT = false;
+  const eta = () => INSTANT ? "马上" : "下次更新时（最多 2 小时）";
   function loadQueue() {
     if (!CFG.url || !CFG.key) return;
     fetch(`${CFG.url}/rest/v1/rpc/list_item_requests`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"}, body: "{}"})
@@ -626,4 +630,11 @@
   }
   reset();
   loadQueue();
+  fetch(`${CFG.url}/rest/v1/rpc/instant_enabled`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"}, body: "{}"})
+    .then(r => r.ok ? r.json() : false).then(on => {
+      INSTANT = on === true;
+      const el = document.getElementById("wl-eta");
+      if (el && INSTANT) el.textContent = "马上叫 GitHub 更新网页";
+      if (INSTANT) loadQueue();
+    }).catch(() => {});
 })();

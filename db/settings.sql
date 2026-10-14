@@ -24,6 +24,7 @@ begin
   end if;
   insert into public.sizes (item, size, updated_at) values (p_item, p_size, now())
   on conflict (item) do update set size = excluded.size, updated_at = now();
+  perform private.kick_github();   -- 立刻叫 GitHub 重新生成网页（db/instant.sql）
   return p_size;
 end
 $$;
