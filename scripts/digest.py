@@ -1155,6 +1155,10 @@ def write_page():
         works = render.collect(issues, [i["name"] for i in items])
         finds = [x for x in (load_json(DISCOVER_FILE) or {}).get("entries", []) if x.get("wish")]
         (DOCS_DIR / "wishlist.html").write_text(render.render_wishlist(wishes, works, updated, finds), encoding="utf-8")
+    (DOCS_DIR / "settings.html").write_text(render.render_settings(
+        [{"name": i["name"], "section": section_of(i), "subtitle": i.get("subtitle", ""),
+          "size": load_sizes().get(i["name"], "M")} for i in items],
+        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, updated), encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 

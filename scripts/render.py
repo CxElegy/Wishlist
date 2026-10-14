@@ -239,6 +239,10 @@ html{scroll-behavior:smooth}
 .navwish small{margin-left:auto;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.05em;opacity:.8}
 .navwish:hover{background:#B8336A;color:#FFF}
 @media (max-width:1000px){.navwish{display:none}}
+.mastset{display:flex;align-items:center;justify-content:center;padding:0 16px;border-left:1px solid #1A1C22;
+ font-size:20px;color:#1A1C22;opacity:.55}
+.mastset:hover{opacity:1;background:#1A1C22;color:#F4EDE4}
+@media (max-width:760px){.mastset{padding:0 8px}}
 @media (max-width:760px){.mastwish{padding:0 10px}.mastwish span,.mastwish small{display:none}}
 /* ---------- 我会喜欢？ ---------- */
 .picks{--ac:#B8336A;background:#F4EDE4;color:#1A1C22;border:3px solid #1A1C22;box-shadow:6px 6px 0 #B8336A}
@@ -939,6 +943,127 @@ def _wish_link(wishes, cls):
             f'<small>{want} 件想要</small></a>')
 
 
+def render_settings(items, db, updated):
+    """设置页（docs/settings.html）：在网页上改每个关注项的篇幅 S / M / L。
+    items：[{name, section, subtitle, size}]（items.yaml 的顺序，size 是 items.yaml 写的默认值）；
+    db：{url, key} Supabase 的地址和公开的 publishable key。读用 get_sizes()，改用 set_size(item, size, 口令)，
+    口令只在数据库里核对（db/settings.sql），网页和仓库里都不存。"""
+    groups = {}
+    for it in items:
+        groups.setdefault(it.get("section") or "其他", []).append(it)
+    order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
+    rows = []
+    for name in order:
+        rows.append(f'<h2 style="--sc:{_sec_color(name)}">{e(name)}<small>{SECTION_EN.get(name, "")}</small></h2>')
+        for it in groups[name]:
+            sub = f'<small>{e(it["subtitle"])}</small>' if it.get("subtitle") else ""
+            btns = "".join(f'<button type="button" data-v="{v}" aria-pressed="{str(v == (it.get("size") or "M")).lower()}">'
+                           f'{v}</button>' for v in ("S", "M", "L"))
+            rows.append(f'<div class="row" data-item="{e(it["name"])}"><div class="nm"><b>{e(it["name"])}</b>{sub}</div>'
+                        f'<div class="seg" role="group" aria-label="{e(it["name"])} 的篇幅">{btns}</div>'
+                        f'<span class="st" aria-live="polite"></span></div>')
+    cfg = json.dumps({"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or ""})
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>设置</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{FONTS}">
+<style>{CSS}
+.page{{display:flex;flex-direction:column;gap:18px;max-width:760px;padding-bottom:48px}}
+.back{{display:inline-flex;align-items:center;gap:8px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.15em}}
+.back:hover{{color:#B8336A}}
+.intro{{font-size:14px;line-height:1.7;opacity:.8;margin:0}}
+.pass{{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:14px 16px;border:2px solid #1A1C22}}
+.pass label{{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.15em}}
+.pass input{{flex:1;min-width:180px;padding:8px 10px;border:1px solid #1A1C22;background:#FFF;font:500 15px 'JetBrains Mono',monospace}}
+.pass small{{width:100%;font-size:12px;opacity:.65}}
+.cfg{{align-self:stretch;width:100%;display:block}}
+.cfg h2{{display:flex;align-items:baseline;gap:10px;margin:22px 0 4px;padding-bottom:6px;border-bottom:3px solid var(--sc);
+ font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em;color:var(--sc)}}
+.cfg h2 small{{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.7}}
+.row{{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,#1A1C22 15%,transparent)}}
+.nm{{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}}
+.nm b{{font:900 16px 'Noto Sans SC',sans-serif}}
+.nm small{{font-size:12px;opacity:.6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+.seg{{display:flex;border:2px solid #1A1C22}}
+.seg button{{width:44px;height:36px;border:0;border-left:2px solid #1A1C22;background:transparent;color:#1A1C22;
+ font:900 15px 'JetBrains Mono',monospace;cursor:pointer}}
+.seg button:first-child{{border-left:0}}
+.seg button[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
+.seg button:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
+.seg button:disabled{{cursor:wait;opacity:.6}}
+.st{{width:64px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.05em;text-align:right}}
+.st.ok{{color:#1F9D6B}}.st.err{{color:#C0392B}}
+.legend{{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin:0}}
+.legend dt{{font:900 13px 'JetBrains Mono',monospace}}.legend dd{{margin:0;opacity:.75}}
+@media (max-width:520px){{.st{{display:none}}.seg button{{width:40px}}}}
+</style>
+</head>
+<body>
+<div class="page">
+<a class="back" href="index.html">← 回到简报</a>
+<header><h1 style="margin:0;font:900 40px/1.1 'Noto Sans SC',sans-serif;letter-spacing:.04em">设置</h1></header>
+<p class="intro">每个关注项在简报上占多大篇幅。改完立刻存进数据库，下一次更新（最多 2 小时）网页按新的篇幅排版。</p>
+<dl class="legend"><dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd></dl>
+<div class="pass"><label for="pw">口令</label><input id="pw" type="password" autocomplete="current-password" placeholder="改设置要先输入口令">
+<small>只有输对口令才能改。口令保存在这台设备的浏览器里，下次不用再输。</small></div>
+<div class="cfg">{''.join(rows)}</div>
+<p class="intro" style="font-size:12px">更新于 {e(updated)}</p>
+</div>
+<script>
+(() => {{
+  const CFG = {cfg};
+  const pw = document.getElementById("pw");
+  const store = {{
+    get() {{ try {{ return localStorage.getItem("wl-pass") || ""; }} catch (_) {{ return ""; }} }},
+    set(v) {{ try {{ v ? localStorage.setItem("wl-pass", v) : localStorage.removeItem("wl-pass"); }} catch (_) {{}} }},
+  }};
+  pw.value = store.get();
+  const rpc = (fn, body) => fetch(`${{CFG.url}}/rest/v1/rpc/${{fn}}`, {{
+    method: "POST", headers: {{apikey: CFG.key, "Content-Type": "application/json"}}, body: JSON.stringify(body || {{}}),
+  }});
+  const show = (row, v) => row.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+  const say = (row, text, cls) => {{ const st = row.querySelector(".st"); st.textContent = text; st.className = "st " + (cls || ""); }};
+  if (!CFG.url || !CFG.key) {{
+    document.querySelectorAll(".row").forEach(r => {{ r.querySelectorAll("button").forEach(b => b.disabled = true); say(r, "未连数据库", "err"); }});
+    return;
+  }}
+  rpc("get_sizes").then(r => r.ok ? r.json() : []).then(list => {{
+    const now = Object.fromEntries((list || []).map(x => [x.item, x.size]));
+    document.querySelectorAll(".row").forEach(r => {{ if (now[r.dataset.item]) show(r, now[r.dataset.item]); }});
+  }}).catch(() => {{}});
+  document.querySelector(".cfg").addEventListener("click", async ev => {{
+    const btn = ev.target.closest(".seg button");
+    if (!btn || btn.getAttribute("aria-pressed") === "true") return;
+    const row = btn.closest(".row");
+    const pass = pw.value.trim();
+    if (!pass) {{ say(row, "先输口令", "err"); pw.focus(); return; }}
+    const before = row.querySelector('.seg button[aria-pressed="true"]')?.dataset.v;
+    const btns = row.querySelectorAll(".seg button");
+    show(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, "保存中…");
+    try {{
+      const r = await rpc("set_size", {{p_item: row.dataset.item, p_size: btn.dataset.v, p_pass: pass}});
+      if (r.ok) {{ store.set(pass); say(row, "已保存 ✓", "ok"); }}
+      else {{
+        const err = await r.json().catch(() => ({{}}));
+        if (before) show(row, before);
+        if (err.code === "28P01") {{ store.set(""); say(row, "口令不对", "err"); pw.select(); pw.focus(); }}
+        else say(row, "没存上", "err");
+      }}
+    }} catch (_) {{ if (before) show(row, before); say(row, "连不上", "err"); }}
+    btns.forEach(b => b.disabled = false);
+  }});
+}})();
+</script>
+</body>
+</html>
+"""
+
+
 WISH_STATUSES = ("想要", "纠结", "已入手", "没买到", "已过期")
 
 
@@ -1410,6 +1535,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <div class="logo">{LOGO}</div>
 <h1>关注清单通信</h1>
 {_wish_link(wishes, "mastwish")}
+<a class="mastset" href="settings.html" title="设置" aria-label="设置">⚙</a>
 <div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
 </div></header>
 {_nav(works, latest['date'], wishes, picks)}
