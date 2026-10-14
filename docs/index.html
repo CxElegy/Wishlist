@@ -400,40 +400,65 @@ html{scroll-behavior:smooth}
 (() => {
   const nav = document.querySelector('.nav'), rail = document.getElementById('nav-rail'),
         here = document.getElementById('nav-here');
-  const marks = [...document.querySelectorAll('[data-k]')];
+  // 只认版面级的区块（头版、我会喜欢？、各作品版面），卡片上的 data-k（投票用）不算
+  const marks = [...document.querySelectorAll('.issue > [data-k]')];
   const pills = [...rail.querySelectorAll('.pill')];
+  const byKey = new Map(pills.map((p, i) => [p.dataset.for, i]));
   const firstIssue = document.querySelector('.issue');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let cur = null, ticking = false;
+  let cur = null, curIdx = -2, curProg = -1, ticking = false;
+  // 选中「在屏幕里占得最多」的区块；滚到最底时选最后一个（矮的末尾版面顶边永远到不了屏幕上方）。
+  // 换选中要比当前的多占 6% 屏幕高度，免得两个版面差不多时来回跳
+  function pick(top, bottom) {
+    const h = bottom - top;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) {
+      for (let i = marks.length - 1; i >= 0; i--) if (marks[i].getBoundingClientRect().top < bottom) return marks[i];
+    }
+    let best = null, bestSeen = -1, curSeen = -1;
+    for (const el of marks) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom <= top) continue;
+      if (r.top >= bottom) break;
+      const seen = Math.min(r.bottom, bottom) - Math.max(r.top, top);
+      if (el === cur) curSeen = seen;
+      if (seen > bestSeen) { best = el; bestSeen = seen; }
+    }
+    return cur && curSeen >= 0 && bestSeen - curSeen < h * 0.06 ? cur : best;
+  }
   function update() {
     ticking = false;
     const horizontal = getComputedStyle(rail).flexDirection === 'row';
-    const y = (horizontal ? nav.getBoundingClientRect().bottom : 0) + 40;
-    let m = marks[0];
-    for (const el of marks) { if (el.getBoundingClientRect().top <= y) m = el; else break; }
+    const top = horizontal ? nav.getBoundingClientRect().bottom : 0;
+    const m = pick(top, innerHeight);
     if (!m) return;
+    // 进度：这个区块读了多少（屏幕底边走过了它的几成）
     const r = m.getBoundingClientRect();
-    const prog = Math.min(1, Math.max(0, (y - r.top) / r.height));
-    nav.style.setProperty('--prog', prog.toFixed(3));
-    const today = m.closest('.issue') === firstIssue;
-    let idx = -1;
-    pills.forEach((p, i) => { if (today && p.dataset.for === m.dataset.k) idx = i; });
-    pills.forEach((p, i) => {
-      p.classList.toggle('on', i === idx);
-      p.classList.toggle('past', idx >= 0 && i < idx);
-      p.style.setProperty('--p', i === idx ? prog.toFixed(3) : (idx >= 0 && i < idx ? 1 : 0));
-    });
+    const prog = Math.round(Math.min(1, Math.max(0, (innerHeight - r.top) / r.height)) * 100) / 100;
+    const idx = m.closest('.issue') === firstIssue && byKey.has(m.dataset.k) ? byKey.get(m.dataset.k) : -1;
+    if (idx !== curIdx) {   // 选中项变了才动所有条目的样式
+      pills.forEach((p, i) => {
+        p.classList.toggle('on', i === idx);
+        p.classList.toggle('past', idx >= 0 && i < idx);
+        p.style.setProperty('--p', idx >= 0 && i < idx ? 1 : 0);
+      });
+      curIdx = idx; curProg = -1;
+      const on = pills[idx];
+      nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
+      if (on) {
+        const opt = horizontal ? { left: on.offsetLeft - rail.clientWidth / 2 + on.offsetWidth / 2 }
+                               : { top: on.offsetTop - rail.clientHeight / 2 + on.offsetHeight / 2 };
+        rail.scrollTo({ ...opt, behavior: reduce ? 'auto' : 'smooth' });
+      }
+    }
+    if (prog !== curProg) {  // 平时只更新当前这一项的进度
+      curProg = prog;
+      nav.style.setProperty('--prog', prog);
+      if (pills[idx]) pills[idx].style.setProperty('--p', prog);
+    }
     if (m === cur) return;
     cur = m;
     const issue = m.closest('.issue');
     here.textContent = issue ? issue.dataset.label : '';
-    const on = pills[idx];
-    nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
-    if (on) {
-      const opt = horizontal ? { left: on.offsetLeft - rail.clientWidth / 2 + on.offsetWidth / 2 }
-                             : { top: on.offsetTop - rail.clientHeight / 2 + on.offsetHeight / 2 };
-      rail.scrollTo({ ...opt, behavior: reduce ? 'auto' : 'smooth' });
-    }
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   addEventListener('resize', update);
