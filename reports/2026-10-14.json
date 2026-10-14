@@ -10,12 +10,22 @@
     {
      "blurb": "",
      "date": "2026-10-13",
+     "headline": "PC Gamers, Rejoice: GTA 6 PC Port Could See Release in Early 2027, Report Says",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.oJ_99peRefy3Z-5vjCdk-Q&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://www.cnet.com/tech/gaming/grand-theft-auto-gta-6-pc-port-release-timing/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
      "headline": "GTA 6 leaker threatens to release full playable version of game ahead of official launch",
      "highlight": "",
      "image": "https://www.bing.com/th?id=ONUT.9NFme4bZ74H2L3_K3GGnxQ&pid=News&w=1200",
      "image_via": "条目自带",
      "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/gta-6-leaker-threatens-release-full-game",
-     "weight": "lead"
+     "weight": "normal"
     }
    ],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
@@ -262,6 +272,16 @@
      "image_via": "og:image",
      "url": "https://en.koreadaily.com/illit-break-even-2/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "「ILLITがNewJeansを盗作」と主張したミン・ヒジン前ADOR代表、名誉毀損・業務妨害の疑いで送致",
+     "highlight": "",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/joongangilbo/joongangilbo_356278_0-enlarge.jpg",
+     "image_via": "og:image",
+     "url": "https://news.infoseek.co.jp/article/joongangilbo_356278/",
+     "weight": "normal"
     }
    ],
    "subtitle": "アイリット · 日本公演特别关注",
@@ -291,6 +311,16 @@
      "image_via": "og:image",
      "url": "https://www.maniareport.com/view.php?ud=202610132327231901cecffa9387_19",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "엔씨, ‘아스오라’ 들고 AGF 최대 규모 150부스…게임 시연부터 아트북까지",
+     "highlight": "",
+     "image": "https://cdn.creatorjournal.co.kr/news/photo/202610/2069_3537_2647.jpg",
+     "image_via": "og:image",
+     "url": "https://www.creatorjournal.co.kr/news/articleView.html?idxno=2069",
+     "weight": "normal"
     }
    ],
    "subtitle": "アストラエ・オラティオ",
@@ -337,16 +367,20 @@
   {
    "cover": null,
    "facts": [],
-   "last": {
-    "date": "2026-10-13",
-    "headline": "Yeti 10/23 开放，日本最早滑雪场",
-    "url": "https://tabiris.com/archives/yeti2027open/"
-   },
    "name": "滑雪",
-   "quiet": true,
    "section": "运动",
-   "status": "",
-   "stories": [],
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-13",
+     "headline": "【北海道】サッポロオープン・ザ・ストリート2026【スノーボード】 結果速報・日程・放送予定（配信）",
+     "highlight": "",
+     "image": "https://www.sportzorg24.tv/wp-content/uploads/2026/10/snowboarding-hokkaido-20261024-r2f4d14-header-202610122003-1024x576.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sportzorg24.tv/snowboarding-hokkaido-20261024-r2f4d14-results/",
+     "weight": "lead"
+    }
+   ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -356,6 +390,35 @@
     "bg": "#F4F8FB",
     "fg": "#14233A",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "name": "gelato pique",
+   "section": "好物",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-12",
+     "headline": "ジェラート ピケ カフェにスヌーピーの“ひんやりクレープ”が登場！マシュマロのスヌーピーが眠るビジュアルがかわいすぎる",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/1407492/17648972_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1407492/",
+     "weight": "lead"
+    }
+   ],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
     "split": true
    }
   },
@@ -432,31 +495,6 @@
     "fg": "#F5F7F2",
     "font": "sans",
     "split": false
-   }
-  },
-  {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
-   "facts": [],
-   "last": {
-    "date": "2026-10-13",
-    "headline": "Mrs. GREEN APPLE 联名",
-    "url": "https://natalie.mu/music/gallery/news/693125/2982122"
-   },
-   "name": "gelato pique",
-   "quiet": true,
-   "section": "好物",
-   "status": "10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）",
-   "stories": [],
-   "subtitle": "ジェラート ピケ · ルームウェア",
-   "theme": {
-    "accent": "#EE8FA7",
-    "alt_accent": "#F4B6C6",
-    "alt_bg": "#BFE3DA",
-    "alt_fg": "#3F4F4B",
-    "bg": "#FFF6F3",
-    "fg": "#5A4049",
-    "font": "serif",
-    "split": true
    }
   }
  ],
