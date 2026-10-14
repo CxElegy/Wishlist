@@ -774,10 +774,12 @@ def _picks(picks, works, feedback=None):
                        f'title="加进愿望清单">♥<span> 加入心愿单</span></button>' if x.get("kind") == "wish" and x["work"] in shops else "")
                     + f'<small></small></div>')
         return (
-            f'<div class="pk{" big" if big else ""}"><a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
+            f'<div class="pk{" big" if big else ""}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
+            f'data-w="{e(x["work"])}" data-key="{e("|".join(x.get("words") or []))}"{" data-f=1" if follow else ""}{" data-new=1" if x.get("explore") else ""}>'
+            f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
-            f'<span class="why">因为你{_why_verb(x)}「{e(x["because"])}」</span>'
+            f'<span class="why">{"换换口味 · " if x.get("explore") else ""}因为你{_why_verb(x)}「{e(x["because"])}」</span>'
             f'<span class="tags">{tags}</span>{taste}</span></a>{vote}</div>')
 
     def batch_of(group):
@@ -789,14 +791,15 @@ def _picks(picks, works, feedback=None):
                      f'<div class="pkgrid row" style="--n:{len(follow)}">{cards_of(follow, False)}</div>')
         return body
 
-    # 「换一批」：推荐按批（batch）分好，网页一次只显示一批，点按钮轮到下一批
-    batches = {}
-    for x in picks:
-        batches.setdefault(x.get("batch", 0), []).append(x)
-    body = "".join(f'<div class="pkbatch" data-b="{i}"{" hidden" if i else ""}>{batch_of(batches[b])}</div>'
-                   for i, b in enumerate(sorted(batches)))
-    shuffle = (f'<button type="button" class="shuffle" aria-label="换一批推荐">换一批<small>1/{len(batches)}</small></button>'
-               if len(batches) > 1 else "")
+    # 网页里放下整个候选池：第一批（没有脚本时也能看）+ 其余放进隐藏的池子；
+    # 脚本每次打开随机抽一批（分数高的、没看过的更容易抽到），「换一批」再抽
+    first = [x for x in picks if not x.get("batch")]
+    rest = [x for x in picks if x.get("batch")]
+    body = f'<div class="pkbatch">{batch_of(first)}</div>'
+    if rest:
+        body += f'<div class="pkpool" hidden>{cards_of(rest, False)}</div>'
+    shuffle = (f'<button type="button" class="shuffle" aria-label="换一批推荐">换一批<small>共 {len(picks)} 条</small></button>'
+               if rest else "")
     return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>我会喜欢<em>？</em></h2>'
             f'<span>根据愿望清单里的喜好和你关注的作品类型挑的{"，点 👍 / 👎 教它你的口味" if feedback else ""}'
             f' · <a href="wishlist.html">♥ 愿望清单</a></span>{shuffle}</div>'
@@ -806,18 +809,44 @@ def _picks(picks, works, feedback=None):
 SHUFFLE_JS = """
 (() => {
   const sec = document.getElementById('picks'), btn = sec.querySelector('.shuffle');
-  const all = [...sec.querySelectorAll('.pkbatch')];
-  let i = 0;
-  const show = n => {
-    i = (n + all.length) % all.length;
-    all.forEach((b, k) => { b.hidden = k !== i; });
-    btn.querySelector('small').textContent = (i + 1) + '/' + all.length;
+  const batch = sec.querySelector('.pkbatch'), pool = sec.querySelector('.pkpool');
+  const wishGrid = batch.querySelector('.pkgrid:not(.row)'), followGrid = batch.querySelector('.pkgrid.row');
+  if (!wishGrid && !followGrid) return;
+  const cards = [...sec.querySelectorAll('.pk')];
+  const kind = new Map(cards.map(el => [el, el.dataset.f ? 'f' : 'w']));   // 同类新发现 / 按愿望清单
+  let seen = {};
+  try { seen = JSON.parse(localStorage.getItem('wishlist-seen') || '{}'); } catch (_) {}
+  let shown = new Set();
+  // 加权随机抽 n 张（Efraimidis–Spirakis）：分数越高、看过越少越容易抽到；
+  // 同一批里同一个作品最多 2 张，同一个关键词（如 Snoopy）只 1 张；刚显示过的这次不抽（池子不够时才放回来）
+  const draw = (list, n) => {
+    const fresh = list.filter(el => !shown.has(el));
+    const from = fresh.length >= n ? fresh : list;
+    const keyed = from.map(el => {
+      const w = Number(el.dataset.s || 4) * (seen[el.dataset.u] ? 1 / (1 + seen[el.dataset.u]) : 2);
+      return [Math.pow(Math.random(), 1 / w), el];
+    }).sort((a, b) => b[0] - a[0]);
+    const out = [], works = {}, keys = new Set();
+    for (const [, el] of keyed) {
+      const ks = (el.dataset.key || '').split('|').filter(Boolean);
+      if ((works[el.dataset.w] || 0) >= 2 || ks.some(k => keys.has(k))) continue;
+      out.push(el); works[el.dataset.w] = (works[el.dataset.w] || 0) + 1; ks.forEach(k => keys.add(k));
+      if (out.length >= n) break;
+    }
+    for (const [, el] of keyed) { if (out.length >= n) break; if (!out.includes(el)) out.push(el); }
+    return out;
   };
-  try { show(Number(sessionStorage.getItem('wishlist-batch')) || 0); } catch (_) {}
-  btn.addEventListener('click', () => {
-    show(i + 1);
-    try { sessionStorage.setItem('wishlist-batch', String(i)); } catch (_) {}
-  });
+  const fill = () => {
+    cards.forEach(el => { el.classList.remove('big'); pool.appendChild(el); });
+    const w = draw(cards.filter(el => kind.get(el) === 'w'), 5), f = draw(cards.filter(el => kind.get(el) === 'f'), 4);
+    if (wishGrid) w.forEach((el, i) => { el.classList.toggle('big', i === 0); wishGrid.appendChild(el); });
+    if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
+    shown = new Set([...w, ...f]);
+    shown.forEach(el => { seen[el.dataset.u] = (seen[el.dataset.u] || 0) + 1; });
+    try { localStorage.setItem('wishlist-seen', JSON.stringify(seen)); } catch (_) {}
+  };
+  fill();
+  btn.addEventListener('click', () => { fill(); sec.scrollIntoView({ block: 'start', behavior: 'smooth' }); });
 })();
 """
 
@@ -1435,7 +1464,7 @@ def _nav(works, date, wishes=(), picks=()):
             f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
     if picks:
         rail.append(f'<a class="pill" style="--sc:#B8336A" data-for="picks" href="#picks">'
-                    f'<i class="no">?</i><span class="nm">我会喜欢？<small class="cnt">{sum(1 for x in picks if not x.get("batch"))} 条推荐</small></span></a>')
+                    f'<i class="no">?</i><span class="nm">我会喜欢？<small class="cnt">{len(picks)} 条候选</small></span></a>')
     n = 0
     for name in order:
         sc = _sec_color(name)
