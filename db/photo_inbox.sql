@@ -1,11 +1,13 @@
--- 愿望清单页「📷 拍照加愿望」的照片收件箱。在 Supabase → SQL Editor 里整段粘贴、运行一次即可（需要先运行过 db/settings.sql，用同一个口令）。
+-- 愿望清单页「📷 拍照加愿望」的照片收件箱。在 Supabase → SQL Editor 里整段粘贴、运行一次即可。
 --
 -- 流程：网页上传（口令对了才收）→ GitHub Actions 每 2 小时导出到 inbox/photos/（state: new → exported）
 --      → Claude 定时任务按 PHOTOS.md 认出物品、加进 wishlist.yaml（带 photo: 编号）
 --      → 下一次 Actions 看到 wishlist.yaml 里有这个编号，标成 done 并记下名字。
 -- 网页用公开的 publishable key，所以不直接开放这张表：
---   add_photo(口令, 图片, 缩略图, 想要/纠结, 备注)   口令对了才收
---   get_photo_inbox()                                 网页看排队情况（只给缩略图）
+--   add_photo(不用, 图片, 缩略图, 想要/纠结, 备注)   收一张照片。不要口令（第一个参数留着只是为了兼容，传什么都行）；
+--                                                   待处理（还没加进愿望清单）的最多 20 张，免得被乱传
+--   get_photo_inbox()                               网页看排队情况（只给缩略图）
+-- 网页是公开的，知道网址的人也能传；真被乱传，在 Supabase 的 Table Editor 里删掉那几行即可。
 
 create table if not exists public.photo_inbox (
   id          bigint generated always as identity primary key,
@@ -24,9 +26,8 @@ returns bigint language plpgsql security definer set search_path = ''
 as $$
 declare new_id bigint;
 begin
-  if not exists (select 1 from private.settings_pass p where p.hash = extensions.crypt(p_pass, p.hash)) then
-    perform pg_sleep(1);   -- 拖慢乱猜
-    raise exception '口令不对' using errcode = '28P01';
+  if (select count(*) from public.photo_inbox where state <> 'done') >= 20 then
+    raise exception '待处理的照片已经有 20 张了，等 Claude 处理完再传';
   end if;
   if p_status not in ('想要', '纠结') then raise exception '只能选 想要 / 纠结'; end if;
   if p_image !~ '^data:image/jpeg;base64,' or coalesce(p_thumb, '') !~ '^(data:image/jpeg;base64,.*)?$' then

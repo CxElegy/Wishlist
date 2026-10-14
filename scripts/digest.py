@@ -872,6 +872,211 @@ def export_photos():
         print(f"照片：导出 {r['id']}（{r['status']}）到 inbox/photos/", file=sys.stderr)
 
 
+# 设置页上能新增 / 修改的字段（按写进 items.yaml 的顺序）。值的检查规则：
+#   str:N 不超过 N 字的一句话；list:N:M 最多 N 个、每个不超过 M 字的字符串列表
+ITEM_FIELDS = {
+    "type": "type", "section": "str:20", "size": "size", "subtitle": "str:80",
+    "keywords": "list:12:100", "match": "list:30:100", "exclude": "list:30:100", "news_langs": "langs",
+    "priority": "str:300", "urgent_patterns": "regex", "site": "url",
+    "steam_appid": "int", "anilist_id": "int", "anilist_type": "anilist_type", "tmdb": "tmdb", "notes": "str:1500",
+}
+WEB_ITEM_MARK = "从网页设置页加进来的"
+
+
+def _clean_field(key, value):
+    """检查设置页提交的一个字段。返回清理后的值；None = 删掉这个字段；不合规就抛 ValueError。"""
+    rule = ITEM_FIELDS[key]
+    if value is None or value == "" or value == []:
+        return None
+    if rule.startswith("str:"):
+        if not isinstance(value, str) or len(value.strip()) > int(rule[4:]):
+            raise ValueError(f"{key} 太长或不是文字")
+        return value.strip() or None
+    if rule.startswith("list:") or rule in ("langs", "regex"):
+        if not isinstance(value, list) or not all(isinstance(v, str) for v in value):
+            raise ValueError(f"{key} 要是文字列表")
+        out = list(dict.fromkeys(v.strip() for v in value if v.strip()))
+        if rule.startswith("list:"):
+            most, longest = map(int, rule.split(":")[1:])
+            if len(out) > most or any(len(v) > longest for v in out):
+                raise ValueError(f"{key} 太多或太长")
+        elif rule == "langs":
+            if any(v not in NEWS_LANGS for v in out):
+                raise ValueError(f"news_langs 只支持 {'/'.join(NEWS_LANGS)}")
+        else:
+            if len(out) > 12 or any(len(v) > 600 for v in out):
+                raise ValueError("urgent_patterns 太多或太长")
+            for v in out:
+                try:
+                    re.compile(v)
+                except re.error as err:
+                    raise ValueError(f"要紧消息规则写错了：{v[:40]}（{err}）") from None
+        return out or None
+    if rule == "type":
+        if value not in ITEM_TYPES:
+            raise ValueError(f"type 必须是 {'/'.join(ITEM_TYPES)} 之一")
+        return value
+    if rule == "size":
+        if value not in SIZE_STORIES:
+            raise ValueError("size 只能是 S / M / L")
+        return value
+    if rule == "int":
+        if isinstance(value, str) and value.strip().isdigit():
+            value = int(value.strip())
+        if not isinstance(value, int) or isinstance(value, bool) or value <= 0:
+            raise ValueError(f"{key} 要是数字")
+        return value
+    if rule == "anilist_type":
+        if value not in ("ANIME", "MANGA"):
+            raise ValueError("anilist_type 只能是 ANIME / MANGA")
+        return value
+    if rule == "tmdb":
+        if not isinstance(value, str) or not re.fullmatch(r"(tv|movie)/\d+", value.strip()):
+            raise ValueError("tmdb 要写成 tv/1399 或 movie/693134")
+        return value.strip()
+    if rule == "url":
+        if not isinstance(value, str) or not re.fullmatch(r"https?://\S{3,300}", value.strip()):
+            raise ValueError("site 要是 http(s) 网址")
+        return value.strip()
+    raise ValueError(f"不认识的字段 {key}")
+
+
+def clean_item_config(config):
+    """设置页提交的 config → {字段: 值或 None}（None = 删掉）。不认识的字段忽略；有不合规的抛 ValueError。"""
+    if not isinstance(config, dict):
+        raise ValueError("内容不对")
+    return {k: _clean_field(k, config[k]) for k in ITEM_FIELDS if k in config}
+
+
+def _yaml_field(key, value):
+    """一个字段写成 items.yaml 里的几行（4 格缩进；字符串都用 JSON 引号，YAML 也认）。"""
+    q = lambda v: json.dumps(v, ensure_ascii=False)
+    if isinstance(value, list):
+        if key == "urgent_patterns":
+            return [f"    {key}:"] + [f"      - {q(v)}" for v in value]
+        return [f"    {key}: [{', '.join(q(v) for v in value)}]"]
+    if isinstance(value, int) or key in ("type", "size", "anilist_type"):
+        return [f"    {key}: {value}"]
+    return [f"    {key}: {q(value)}"]
+
+
+def item_entry_yaml(name, fields):
+    """一个新关注项，写成 items.yaml 里的一段。"""
+    lines = [f"  - name: {json.dumps(name, ensure_ascii=False)}"]
+    for key in ITEM_FIELDS:
+        if fields.get(key) is not None:
+            lines += _yaml_field(key, fields[key])
+    return "\n".join(lines) + "\n"
+
+
+def _item_span(lines, name):
+    """items.yaml 里名字是 name 的那一段：返回 (开始行, 结束行)，找不到返回 None。"""
+    start = None
+    for i, line in enumerate(lines):
+        top = re.match(r"^  - name:(.*)$", line)
+        if start is not None and (line.startswith("  - ") or re.match(r"^\S", line)):
+            return start, i
+        if top:
+            try:
+                if yaml.safe_load(top.group(1)) == name:
+                    start = i
+            except yaml.YAMLError:
+                pass
+    return (start, len(lines)) if start is not None else None
+
+
+def set_item_fields(text, name, fields):
+    """只改 items.yaml 里关注项 name 的这几个字段（None = 删掉），别的字段、注释、顺序都不动。返回新的全文。"""
+    lines = text.split("\n")
+    span = _item_span(lines, name)
+    if span is None:
+        raise ValueError(f"items.yaml 里没有「{name}」")
+    start, end = span
+    while end - 1 > start and not lines[end - 1].strip():  # 这一段末尾的空行不算
+        end -= 1
+    block = lines[start:end]
+    for key, value in fields.items():
+        at = next((i for i, l in enumerate(block) if re.match(rf"^    {key}:", l)), None)
+        new = _yaml_field(key, value) if value is not None else []
+        if at is None:
+            block += new
+            continue
+        stop = at + 1   # 这个字段占的行：后面缩进更深的（列表、多行文字），中间的空行也算
+        while stop < len(block) and (not block[stop].strip() or len(block[stop]) - len(block[stop].lstrip()) > 4):
+            stop += 1
+        while stop - 1 > at and not block[stop - 1].strip():
+            stop -= 1
+        block[at:stop] = new
+    return "\n".join(lines[:start] + block + lines[end:])
+
+
+def take_item_requests():
+    """设置页上「新增 / 修改关注项」提交的：从数据库 item_requests 表读出待处理的，写进 items.yaml，再标成 done。
+    新增的追加到文件末尾，修改的只改提交了的字段（不动原来的内容和注释）。
+    名字重复、找不到、内容不对的标成 skipped，原因写在 note 里（设置页上看得到）。
+    新增的这一次运行就会收集新闻（往前补抓 first_lookback_days 天），照常发「新增关注项」通知。"""
+    try:
+        rows = supabase("item_requests?status=eq.pending&select=id,action,name,config&order=id.asc")
+    except Exception as err:
+        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/item_requests.sql）" if "PGRST205" in str(err) else ""
+        print(f"  [关注项] 读新增 / 修改请求失败{hint}：{err}", file=sys.stderr)
+        return
+    if not rows:
+        return
+    settings, items = load_config()
+    today = dt.datetime.now(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
+    text = ITEMS_FILE.read_text(encoding="utf-8")
+    done, skipped = [], {}
+    for r in rows:
+        name = (r.get("name") or "").strip()
+        names = {i["name"] for i in items}
+        try:
+            fields = clean_item_config(r.get("config") or {})
+            if r.get("action") == "edit":
+                if name not in names:
+                    raise ValueError(f"关注清单里没有「{name}」")
+                fields = {k: v for k, v in fields.items() if not (k == "type" and v is None)}
+                if not fields:
+                    raise ValueError("没有要改的")
+                new = set_item_fields(text, name, fields)
+            else:
+                if name in names:
+                    raise ValueError(f"关注清单里已经有「{name}」了")
+                fields["type"] = fields.get("type") or "product"
+                fields["keywords"] = fields.get("keywords") or [name]
+                fields["notes"] = f"{today} {WEB_ITEM_MARK}。" + (fields.get("notes") or "")
+                new = text.rstrip("\n") + "\n\n" + item_entry_yaml(name, fields)
+            got = (yaml.safe_load(new) or {}).get("items") or []
+            mine = next((i for i in got if i.get("name") == name), None)
+            others = [i for i in got if i.get("name") != name]
+            assert others == [i for i in (yaml.safe_load(text) or {}).get("items") or [] if i.get("name") != name], "别的关注项被改动了"
+            assert mine and all(mine.get(k) == v for k, v in fields.items() if v is not None), "写进去的和提交的不一样"
+            assert all(k not in mine for k, v in fields.items() if v is None), "该删的字段还在"
+            for lang in mine.get("news_langs") or []:
+                assert lang in NEWS_LANGS
+        except (ValueError, AssertionError, yaml.YAMLError) as err:
+            skipped[r["id"]] = str(err)[:300] or "内容不对"
+            print(f"  [关注项] 「{name}」没处理：{skipped[r['id']]}", file=sys.stderr)
+            continue
+        text = new
+        items = got
+        done.append(r)
+    if done:
+        ITEMS_FILE.write_text(text if text.endswith("\n") else text + "\n", encoding="utf-8")
+    now = dt.datetime.now(dt.timezone.utc).isoformat()
+    try:
+        if done:
+            supabase(f"item_requests?id=in.({','.join(str(r['id']) for r in done)})",
+                     {"status": "done", "handled_at": now}, "return=minimal", method="PATCH")
+        for rid, why in skipped.items():
+            supabase(f"item_requests?id=eq.{rid}", {"status": "skipped", "handled_at": now, "note": why},
+                     "return=minimal", method="PATCH")
+    except Exception as err:  # 标不上的下次还会读到：新增的会因为名字已存在被跳过，修改的再改一次结果一样
+        print(f"  [关注项] 标记请求失败：{err}", file=sys.stderr)
+    for r in done:
+        print(f"关注项：从设置页{'修改' if r.get('action') == 'edit' else '加入'}「{r['name']}」", file=sys.stderr)
+
+
 def sync_db():
     """收集到的消息、编排后的报道、价格 / 状态历史都写进数据库。连不上不影响出刊，下次再补。"""
     sync_news()
@@ -1226,8 +1431,10 @@ def write_page():
                                                                       {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), encoding="utf-8")
     (DOCS_DIR / "settings.html").write_text(render.render_settings(
         [{"name": i["name"], "section": section_of(i), "subtitle": i.get("subtitle", ""),
-          "size": load_sizes().get(i["name"], "M")} for i in items],
-        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, updated), encoding="utf-8")
+          "size": load_sizes().get(i["name"], "M"),
+          "fields": {**{k: i[k] for k in ITEM_FIELDS if k in i and k != "size"}, "section": section_of(i)}} for i in items],
+        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "langs": settings.get("news_langs") or []},
+        updated), encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 
@@ -1662,7 +1869,7 @@ def repair_images():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -1707,7 +1914,10 @@ def main():
         notify.weekly(pages_url(load_config()[0]))
     elif args.step == "photos":
         export_photos()
+    elif args.step == "take-items":
+        take_item_requests()
     else:
+        take_item_requests()  # 设置页上新增的关注项先写进 items.yaml，这次就开始收集
         export_photos()  # 拍照加愿望：导出新照片给 Claude 定时任务处理
         path = ingest()
         if path:

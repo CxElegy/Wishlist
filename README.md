@@ -10,7 +10,7 @@
 看到喜欢的东西，跟 Claude 说「加进 wishlist」并附上截图或链接就行（做法写在 `.claude/skills/wishlist/SKILL.md`）。
 数据在 `wishlist.yaml`，图片在 `docs/wishlist/`；网页上是单独的子页面（[wishlist.html](https://cxelegy.github.io/Wishlist/wishlist.html)，主页报头右上角有入口，可按 想要 / 已入手 / 没买到 筛选），推送后 Discord 会收到一条带大图的通知。
 填了 `watch`（关联的关注项）的，版面上会顺带显示那个关注项的最新消息。
-愿望清单页顶部有「**📷 拍照加愿望**」：上传一张照片、选「想要」或「纠结」、输入设置页的口令，照片先存进数据库；GitHub Actions 每 2 小时导出到 `inbox/photos/`，Claude 定时任务（「愿望清单 · 照片加愿望」）按 [`PHOTOS.md`](PHOTOS.md) 认出物品、整理好加进 `wishlist.yaml`。网页上能看到每张照片的进度（排队中 → Claude 处理中 → 已加入）。
+愿望清单页顶部有「**📷 拍照加愿望**」：上传一张照片、选「想要」或「纠结」，照片先存进数据库；GitHub Actions 每 2 小时导出到 `inbox/photos/`，Claude 定时任务（「愿望清单 · 照片加愿望」）按 [`PHOTOS.md`](PHOTOS.md) 认出物品、整理好加进 `wishlist.yaml`。网页上能看到每张照片的进度（排队中 → Claude 处理中 → 已加入）。
 主页的「**我会喜欢？**」角落有两部分，每条都写明推荐理由，都不让 AI 联网：
 - 按愿望清单里每件东西的 `likes`（喜好标签），从最近两周收集到的所有消息里挑 5 条；
 - 「同类新发现」：按 `items.yaml` 里每个关注项的 `similar`（同类搜索词），每天搜一次 Google 新闻，去掉已经在关注的作品，每个关注项挑一条（最多 4 条）。
@@ -119,7 +119,7 @@ items.yaml
       再把 [`db/sizes.sql`](db/sizes.sql) 粘贴进去 → Run。建好 `sizes` 表：每个关注项的篇幅 **S**（少，每期最多 3 条、网页上约一行）/ **M**（中等，5 条）/ **L**（多，8 条、满满一整屏），表里没有的按 M。
       只要建一次表：之后新关注项自动补进表里（`items.yaml` 写了 `size` 就用它，没写按 M），`items.yaml` 的 `size` 改了也会自动同步。
       想自己改：打开网页右上角的 **⚙ 设置**（`settings.html`），点 S / M / L 就行，下次出刊生效；简报正文里不显示篇幅。
-      设置页要口令才能改：再把 [`db/settings.sql`](db/settings.sql) 运行一次，按文件开头的说明设一个口令（只存在数据库里，网页和仓库都不存）。
+      设置页不用口令（网页是公开的，知道网址的人也能改；真被乱改，在 Table Editor 里改回来）：把 [`db/settings.sql`](db/settings.sql) 运行一次。
    3. 项目的 **Connect** 按钮（或 Project Settings → Data API）里复制 Project URL；Project Settings → **API Keys** 里复制 publishable key（`sb_publishable_` 开头）和 secret key（`sb_secret_` 开头）。
    4. 把 Project URL 和 publishable key 填进 `items.yaml` 的 `settings` → `supabase_url` / `supabase_key`（publishable key 本来就是公开给网页用的）。
    5. secret key 放进 GitHub 仓库 Settings → Secrets and variables → Actions → **Secrets**，名字 `SUPABASE_SERVICE_KEY`。**不要**写进任何文件。
@@ -132,7 +132,15 @@ items.yaml
 
 ## 添加关注项
 
-编辑 [`items.yaml`](items.yaml)，文件开头有每个字段的说明。最重要的几个：
+**在网页上加**：打开 [⚙ 设置页](https://cxelegy.github.io/Wishlist/settings.html) 最下面的「新增关注项」，只写个名字，然后一问一答：
+是哪一个（自动去维基数据查，补上中日韩英的正式名称、Steam / AniList / TMDB 编号和官网）→ 这是什么 → 关注它的哪方面（比如游戏本体还是电竞比赛）
+→ 哪些消息要当天推 Discord → 不想看什么 → 新闻语言 → 板块（可以起新板块）→ 篇幅，最后汇总成一张表，都能直接改，提交就行。
+已有的关注项点列表里的「改」：直接改汇总表，或者「重新问一遍」。不用口令。
+请求存进数据库 `item_requests` 表（[`db/item_requests.sql`](db/item_requests.sql)），下一次更新（最多 2 小时）写进 `items.yaml`：
+新增的追加到末尾、开始收集（往前补抓 `first_lookback_days` 天），Discord 收到「新增关注项」通知；修改的只改提交了的字段，别的字段和注释不动。
+没处理的（名字重复、规则写错）在设置页上写明原因。想更精细（`status`、配色、背景说明）跟 Claude 说「完善关注项」。
+
+**手动加**：编辑 [`items.yaml`](items.yaml)，文件开头有每个字段的说明。最重要的几个：
 
 - `keywords`：各语言的正式名称都写上
 - `priority`：你最关心它的什么，比如「什么时候能玩」「第二季什么时候播」「什么时候降价」
