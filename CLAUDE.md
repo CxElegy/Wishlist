@@ -7,7 +7,7 @@
 - 连接器已经连上：直接说「可以用 XX 连接器帮你做」，然后去做。
 - 还没连上：说清楚是哪个连接器、能帮上什么，并给出连接地址 https://claude.ai/customize/connectors
   （连好后要开新会话才会加载）。
-- 已连上的连接器：Supabase（项目 `bzokpnbcjscbcehdxtjq`，表 `feedback` / `news` / `sizes`）、GitHub。
+- 已连上的连接器：Supabase（项目 `bzokpnbcjscbcehdxtjq`，表 `feedback` / `news` / `sizes` / `item_requests`）、GitHub。
 
 ## 篇幅 S / M / L
 
@@ -22,3 +22,9 @@
   愿望清单 https://cxelegy.github.io/Wishlist/wishlist.html 、PR 用完整网址。
 - 合并 PR 后网页大约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；
   确认网页已经更新了再告诉我，并附上链接。收集新闻、发通知仍由「关注清单通信」慢慢跑。
+
+## 完善关注项
+
+设置页上「新增关注项」加进来的关注项只有基本字段（`notes` 里写着「从网页设置页加进来的」）。
+我说「完善关注项」时，找出这些项，按 `items.yaml` 开头的字段说明补上 `match`、`urgent_patterns`、`similar`、
+`subtitle`、`status`、`site`，游戏补 `steam_appid`、动画补 `anilist_id`、影视补 `tmdb`，并把 `notes` 改成真正的背景说明。

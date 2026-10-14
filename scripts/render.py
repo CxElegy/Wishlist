@@ -943,6 +943,38 @@ def _wish_link(wishes, cls):
             f'<small>{want} 件想要</small></a>')
 
 
+ITEM_TYPE_NAMES = {"game": "游戏", "anime": "动画 / 漫画", "show": "电影 / 剧集", "product": "具体商品",
+                   "category": "一类产品", "event": "艺人演出"}
+NEWS_LANG_NAMES = {"zh-TW": "中文（港台）", "en-US": "英文", "ja-JP": "日文", "ko-KR": "韩文", "zh-CN": "中文（大陆）"}
+
+
+def _add_item_form(sections):
+    """设置页底部「新增关注项」表单：提交到数据库 add_item()（db/item_requests.sql），下次出刊写进 items.yaml。"""
+    types = "".join(f'<option value="{k}">{v}</option>' for k, v in ITEM_TYPE_NAMES.items())
+    secs = "".join(f'<option value="{e(n)}">{e(n)}</option>' for n in dict.fromkeys(list(SECTIONS) + list(sections)))
+    langs = "".join(f'<label><input type="checkbox" name="langs" value="{k}"{" checked" if k in ("zh-TW", "en-US") else ""}>{v}</label>'
+                    for k, v in NEWS_LANG_NAMES.items())
+    sizes = "".join(f'<label><input type="radio" name="size" value="{v}"{" checked" if v == "M" else ""}>{v}</label>'
+                    for v in ("S", "M", "L"))
+    return f"""<form class="add" id="add" novalidate>
+<h2>＋ 新增关注项</h2>
+<p class="hint">填好提交，下一次更新（最多 2 小时）自动加进关注清单、开始收集新闻（往前补抓 6 周），Discord 会收到通知。
+之后想让它更准（只收相关的、什么算要紧消息、同类推荐），跟 Claude 说「完善关注项」。</p>
+<label>名字<small>简报上显示的名字，也会当作第一个搜索词</small><input type="text" name="name" maxlength="80" required></label>
+<div class="two">
+<label>类型<select name="type">{types}</select></label>
+<label>板块<small>头版上归到哪一栏</small><select name="section"><option value="">按类型自动</option>{secs}<option value="+">新板块…</option></select>
+<input type="text" name="section_new" maxlength="20" placeholder="新板块的名字，如：美食" hidden></label>
+</div>
+<label>搜索关键词<small>各语言的正式名称，一行一个（或用逗号隔开）；不填就只搜名字</small><textarea name="keywords" maxlength="1200"></textarea></label>
+<label>最关心它的什么<small>如「什么时候能玩」「第二季什么时候播」「什么时候降价」，有直接回答的新消息会排最前面</small><input type="text" name="priority" maxlength="300"></label>
+<fieldset><legend>新闻语言</legend>{langs}</fieldset>
+<fieldset><legend>篇幅</legend>{sizes}</fieldset>
+<div class="go"><button type="submit">提交</button><span class="msg" aria-live="polite"></span></div>
+<ul aria-label="最近提交的关注项"></ul>
+</form>"""
+
+
 def render_settings(items, db, updated):
     """设置页（docs/settings.html）：在网页上改每个关注项的篇幅 S / M / L。
     items：[{name, section, subtitle, size}]（items.yaml 的顺序，size 是 items.yaml 写的默认值）；
@@ -1000,18 +1032,40 @@ def render_settings(items, db, updated):
 .st.ok{{color:#1F9D6B}}.st.err{{color:#C0392B}}
 .legend{{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin:0}}
 .legend dt{{font:900 13px 'JetBrains Mono',monospace}}.legend dd{{margin:0;opacity:.75}}
-@media (max-width:520px){{.st{{display:none}}.seg button{{width:40px}}}}
+.add{{display:flex;flex-direction:column;gap:12px;margin-top:18px;padding:18px 18px 20px;border:2px solid #1A1C22;background:#F7F5F0}}
+.add h2{{margin:0;font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em}}
+.add .hint{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
+.add label{{display:flex;flex-direction:column;gap:5px;font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.05em}}
+.add label small{{font:500 12px 'Noto Serif SC',serif;letter-spacing:0;opacity:.6}}
+.add input[type=text],.add select,.add textarea{{width:100%;padding:8px 10px;border:1px solid #1A1C22;background:#FFF;
+ font:500 15px 'Noto Serif SC',serif;color:#1A1C22}}
+.add textarea{{min-height:64px;resize:vertical}}
+.add .two{{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+.add fieldset{{margin:0;padding:0;border:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}}
+.add legend{{padding:0 0 5px;font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.05em}}
+.add fieldset label{{flex-direction:row;align-items:center;gap:5px;font:500 14px 'Noto Serif SC',serif}}
+.add .go{{display:flex;align-items:center;gap:14px}}
+.add .go button{{flex-shrink:0;white-space:nowrap;padding:10px 22px;border:2px solid #1A1C22;background:#1A1C22;color:#F4EDE4;
+ font:900 15px 'Noto Sans SC',sans-serif;letter-spacing:.1em;cursor:pointer}}
+.add .go button:disabled{{cursor:wait;opacity:.6}}
+.add .go button:focus-visible,.add input:focus-visible,.add select:focus-visible,.add textarea:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
+.add .msg{{font:700 13px 'Noto Sans SC',sans-serif}}.add .msg.ok{{color:#1F9D6B}}.add .msg.err{{color:#C0392B}}
+.add ul{{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:13px}}
+.add ul:empty{{display:none}}
+.add li b{{font-family:'Noto Sans SC',sans-serif}}.add li span{{opacity:.6}}
+@media (max-width:520px){{.st{{display:none}}.seg button{{width:40px}}.add .two{{grid-template-columns:1fr}}}}
 </style>
 </head>
 <body>
 <div class="page">
 <a class="back" href="index.html">← 回到简报</a>
 <header><h1 style="margin:0;font:900 40px/1.1 'Noto Sans SC',sans-serif;letter-spacing:.04em">设置</h1></header>
-<p class="intro">每个关注项在简报上占多大篇幅。改完立刻存进数据库，下一次更新（最多 2 小时）网页按新的篇幅排版。</p>
+<p class="intro">每个关注项在简报上占多大篇幅。改完立刻存进数据库，下一次更新（最多 2 小时）网页按新的篇幅排版。想关注新的东西，在最下面「新增关注项」里填。</p>
 <dl class="legend"><dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd></dl>
 <div class="pass"><label for="pw">口令</label><input id="pw" type="password" autocomplete="current-password" placeholder="改设置要先输入口令">
 <small>只有输对口令才能改。口令保存在这台设备的浏览器里，下次不用再输。</small></div>
 <div class="cfg">{''.join(rows)}</div>
+{_add_item_form(order)}
 <p class="intro" style="font-size:12px">更新于 {e(updated)}</p>
 </div>
 <script>
@@ -1030,8 +1084,49 @@ def render_settings(items, db, updated):
   const say = (row, text, cls) => {{ const st = row.querySelector(".st"); st.textContent = text; st.className = "st " + (cls || ""); }};
   if (!CFG.url || !CFG.key) {{
     document.querySelectorAll(".row").forEach(r => {{ r.querySelectorAll("button").forEach(b => b.disabled = true); say(r, "未连数据库", "err"); }});
+    document.querySelector("#add .go button").disabled = true;
     return;
   }}
+  // 新增关注项：口令对了才存进数据库 item_requests，下次更新（最多 2 小时）写进 items.yaml 并开始收集
+  const add = document.getElementById("add"), msg = add.querySelector(".msg"), queue = add.querySelector("ul");
+  const TYPES = {{game: "游戏", anime: "动画漫画", show: "影视剧", product: "商品", category: "一类产品", event: "艺人演出"}};
+  const STATES = {{pending: "等待加入", done: "已加入", skipped: "已存在，没加"}};
+  const sayAdd = (text, cls) => {{ msg.textContent = text; msg.className = "msg " + (cls || ""); }};
+  const loadQueue = () => rpc("get_item_requests").then(r => r.ok ? r.json() : []).then(list => {{
+    queue.replaceChildren(...(list || []).map(x => {{
+      const li = document.createElement("li"), b = document.createElement("b"), sp = document.createElement("span");
+      b.textContent = x.name;
+      sp.textContent = ` · ${{TYPES[x.type] || x.type}} · ${{STATES[x.status] || x.status}} · ${{new Date(x.created_at).toLocaleString("zh-CN", {{month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit"}})}}`;
+      li.append(b, sp); return li;
+    }}));
+  }}).catch(() => {{}});
+  loadQueue();
+  const sec = add.querySelector("[name=section]"), secNew = add.querySelector("[name=section_new]");
+  sec.addEventListener("change", () => {{ secNew.hidden = sec.value !== "+"; if (!secNew.hidden) secNew.focus(); }});
+  add.addEventListener("submit", async ev => {{
+    ev.preventDefault();
+    const f = new FormData(add), pass = pw.value.trim(), name = (f.get("name") || "").trim();
+    if (!pass) {{ sayAdd("先在上面输口令", "err"); pw.focus(); return; }}
+    if (!name) {{ sayAdd("名字要填", "err"); add.querySelector("[name=name]").focus(); return; }}
+    const btn = add.querySelector(".go button"); btn.disabled = true; sayAdd("提交中…");
+    try {{
+      const r = await rpc("add_item", {{
+        p_name: name, p_type: f.get("type"), p_priority: f.get("priority") || "",
+        p_keywords: (f.get("keywords") || "").split(/[\\n,，、]+/).map(x => x.trim()).filter(Boolean),
+        p_section: f.get("section") === "+" ? (f.get("section_new") || "").trim() : f.get("section"),
+        p_size: f.get("size"), p_langs: f.getAll("langs"), p_pass: pass,
+      }});
+      if (r.ok) {{
+        store.set(pass); add.reset(); secNew.hidden = true;
+        sayAdd(`已提交「${{name}}」✓ 下次更新（最多 2 小时）加进关注清单并开始收集新闻`, "ok"); loadQueue();
+      }} else {{
+        const err = await r.json().catch(() => ({{}}));
+        if (err.code === "28P01") {{ store.set(""); sayAdd("口令不对", "err"); pw.select(); pw.focus(); }}
+        else sayAdd("没存上：" + (err.message || r.status), "err");
+      }}
+    }} catch (_) {{ sayAdd("连不上数据库", "err"); }}
+    btn.disabled = false;
+  }});
   rpc("get_sizes").then(r => r.ok ? r.json() : []).then(list => {{
     const now = Object.fromEntries((list || []).map(x => [x.item, x.size]));
     document.querySelectorAll(".row").forEach(r => {{ if (now[r.dataset.item]) show(r, now[r.dataset.item]); }});

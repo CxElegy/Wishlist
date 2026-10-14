@@ -920,6 +920,69 @@ def take_wish_requests():
         print(f"心愿单：从新闻加入「{r['title'][:40]}」", file=sys.stderr)
 
 
+def item_entry_yaml(row, today):
+    """一个从设置页加进来的关注项，写成 items.yaml 里的一段（字符串都用 JSON 引号，YAML 也认）。"""
+    q = lambda v: json.dumps(v, ensure_ascii=False)
+    lines = [f"  - name: {q(row['name'])}", f"    type: {row.get('type') or 'product'}"]
+    if row.get("section"):
+        lines.append(f"    section: {q(row['section'])}")
+    lines.append(f"    size: {row.get('size') or 'M'}")
+    lines.append(f"    keywords: [{', '.join(q(k) for k in row.get('keywords') or [row['name']])}]")
+    if row.get("news_langs"):
+        lines.append(f"    news_langs: [{', '.join(row['news_langs'])}]")
+    if row.get("priority"):
+        lines.append(f"    priority: {q(row['priority'])}")
+    lines.append(f"    notes: {q(f'{today} 从网页设置页加进来的；match、urgent_patterns、similar 等还没写（跟 Claude 说「完善关注项」）')}")
+    return "\n".join(lines) + "\n"
+
+
+def take_item_requests():
+    """设置页上「新增关注项」提交的：从数据库 item_requests 表读出待处理的，追加到 items.yaml 末尾
+    （不动原来的内容和注释），再标成 done；items.yaml 里已经有同名的标成 skipped。
+    之后这一次运行就会收集它的新闻（新关注项往前补抓 first_lookback_days 天），照常发「新增关注项」通知。"""
+    try:
+        rows = supabase("item_requests?status=eq.pending"
+                        "&select=id,name,type,keywords,priority,section,size,news_langs&order=id.asc")
+    except Exception as err:
+        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/item_requests.sql）" if "PGRST205" in str(err) else ""
+        print(f"  [关注项] 读新增请求失败{hint}：{err}", file=sys.stderr)
+        return
+    if not rows:
+        return
+    settings, items = load_config()
+    names = {i["name"] for i in items}
+    today = dt.datetime.now(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
+    added, skipped, text = [], [], ""
+    for r in rows:
+        bad_lang = [l for l in r.get("news_langs") or [] if l not in NEWS_LANGS]
+        if r["name"] in names or r.get("type") not in ITEM_TYPES or bad_lang:
+            skipped.append(r["id"])
+            continue
+        names.add(r["name"])
+        text += "\n" + item_entry_yaml(r, today)
+        added.append(r)
+    if text:
+        old = ITEMS_FILE.read_text(encoding="utf-8")
+        new = old.rstrip("\n") + "\n" + text
+        try:
+            got = (yaml.safe_load(new) or {}).get("items") or []
+            assert [i["name"] for i in got] == [i["name"] for i in items] + [r["name"] for r in added]
+        except Exception as err:
+            print(f"  [关注项] 追加后 items.yaml 不对，这次不加：{err}", file=sys.stderr)
+            return
+        ITEMS_FILE.write_text(new, encoding="utf-8")
+    now = dt.datetime.now(dt.timezone.utc).isoformat()
+    for status, ids in (("done", [r["id"] for r in added]), ("skipped", skipped)):
+        if ids:
+            try:
+                supabase(f"item_requests?id=in.({','.join(map(str, ids))})", {"status": status, "handled_at": now},
+                         "return=minimal", method="PATCH")
+            except Exception as err:  # 标不上的下次还会读到，但名字已经在 items.yaml 里了，会被当成 skipped
+                print(f"  [关注项] 标记请求失败：{err}", file=sys.stderr)
+    for r in added:
+        print(f"关注项：从设置页加入「{r['name']}」", file=sys.stderr)
+
+
 def sync_db():
     """收集到的消息、编排后的报道、价格 / 状态历史都写进数据库。连不上不影响出刊，下次再补。"""
     sync_news()
@@ -1593,7 +1656,7 @@ def repair_images():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "take-wishes"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "take-wishes", "take-items"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -1638,7 +1701,10 @@ def main():
         notify.weekly(pages_url(load_config()[0]))
     elif args.step == "take-wishes":
         take_wish_requests()
+    elif args.step == "take-items":
+        take_item_requests()
     else:
+        take_item_requests()  # 设置页上新增的关注项先写进 items.yaml，这次就开始收集
         take_wish_requests()  # 先把新闻里点了「加入心愿单」的加进愿望清单，这次出刊就能看到
         path = ingest()
         if path:

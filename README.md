@@ -132,7 +132,11 @@ items.yaml
 
 ## 添加关注项
 
-编辑 [`items.yaml`](items.yaml)，文件开头有每个字段的说明。最重要的几个：
+**在网页上加**：打开 [⚙ 设置页](https://cxelegy.github.io/Wishlist/settings.html) 最下面的「新增关注项」，填名字、类型、板块（可以起新板块）、搜索关键词、最关心什么、新闻语言、篇幅，输口令提交。
+请求存进数据库 `item_requests` 表（建表语句 [`db/item_requests.sql`](db/item_requests.sql)，口令和篇幅设置共用），下一次更新（最多 2 小时）自动追加到 `items.yaml` 末尾、开始收集（往前补抓 `first_lookback_days` 天），Discord 收到「新增关注项」通知。
+网页上加的只有基本字段；想更准（`match`、`urgent_patterns`、`similar`、Steam / AniList / TMDB 编号、配色）跟 Claude 说「完善关注项」。
+
+**手动加**：编辑 [`items.yaml`](items.yaml)，文件开头有每个字段的说明。最重要的几个：
 
 - `keywords`：各语言的正式名称都写上
 - `priority`：你最关心它的什么，比如「什么时候能玩」「第二季什么时候播」「什么时候降价」
