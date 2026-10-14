@@ -346,3 +346,106 @@ class ExportPhotos(SyncNews):
         patches = [(path, body) for path, _, body in self.posts if body and "state" in body]
         self.assertIn(("/rest/v1/photo_inbox?id=eq.6", {"state": "done", "wish_name": "貓眼溫變馬克杯"}), patches)
         self.assertIn(("/rest/v1/photo_inbox?id=eq.7", {"state": "exported"}), patches)
+
+
+class LikeHit(unittest.TestCase):
+    def test_exclusions_and_word_boundaries(self):
+        hit = digest._like_hit
+        self.assertFalse(hit("リス|松鼠|-リスト", "やることリストを消化"))
+        self.assertTrue(hit("リス|松鼠|-リスト", "リスくん柄ボトル やることリスト"))  # 排除的词去掉后还有リス
+        self.assertFalse(hit("bunny|-bad bunny", "bad bunny joins gta 6 radio"))
+        self.assertTrue(hit("bunny|-bad bunny", "a bunny mug"))
+        self.assertFalse(hit("tour", "tourism in tokyo"))
+        self.assertTrue(hit("tour", "world tour 2027"))
+        self.assertTrue(hit("mug", "two mugs"))
+        self.assertTrue(hit("moisturi", "moisturizing serum"))   # 长的英文词照样当前缀
+        self.assertTrue(hit("マグ|-マグロ", "スタバのマグカップ"))
+        self.assertFalse(hit("マグ|-マグロ", "マグロ丼"))
+
+
+class Recommend(unittest.TestCase):
+    """推荐来源：已经在版面里的不推荐；只命中摘要的不算；关注版面的其他消息；赞过的写理由、本身不再推荐。"""
+
+    def run_recommend(self, inbox, report_urls, votes=(), probes=()):
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        (tmp / "inbox").mkdir()
+        (tmp / "reports").mkdir()
+        (tmp / "inbox" / "2026-10-14.json").write_text(json.dumps({"date": "2026-10-14", "items": inbox}), encoding="utf-8")
+        report = {"date": "2026-10-14", "no": 1, "items": [{"name": "GTA 6", "stories": [
+            {"url": u, "headline": "版面上的标题"} for u in report_urls]}]}
+        (tmp / "reports" / "2026-10-14.json").write_text(json.dumps(report), encoding="utf-8")
+        wishes = [{"name": "黑猫杯", "likes": {"猫": ["猫|black cat"], "动物 / 角色造型": ["リス|-リスト", "bunny|-bad bunny"],
+                                             "马克杯": ["マグ|mug"]}, "basics": ["马克杯"]}]
+        with mock.patch.object(digest, "INBOX_DIR", tmp / "inbox"), \
+             mock.patch.object(digest, "REPORTS_DIR", tmp / "reports"), \
+             mock.patch.object(digest, "RECOMMEND_FILE", tmp / "rec.json"), \
+             mock.patch.object(digest, "load_wishlist", return_value=wishes), \
+             mock.patch.object(digest, "load_feedback", return_value=list(votes)), \
+             mock.patch.object(digest, "load_config", return_value=({}, [])), \
+             mock.patch.object(digest, "discover", return_value=list(probes)), \
+             mock.patch.object(digest, "find_image", lambda c, r, u: c), \
+             mock.patch.object(digest.sources, "resolve_url", lambda u: u):
+            digest.recommend()
+        return {p["url"]: p for p in json.loads((tmp / "rec.json").read_text(encoding="utf-8"))["picks"]}
+
+    @staticmethod
+    def entry(i, title, summary=""):
+        return {"title": title, "url": f"https://e.com/{i}", "source": "S", "summary": summary, "date": "2026-10-14",
+                "image": f"https://e.com/{i}.jpg"}
+
+    def test_sources_and_reasons(self):
+        inbox = [{"name": "猫用品", "entries": [
+            self.entry(1, "黒猫のマグが新登場"),                               # 两个喜好 → wish
+            self.entry(2, "猫砂盆の新製品が発売"),                              # 关注版面里只命中一个 → board
+            self.entry(3, "猫のリスト", "")]},
+                 {"name": "GTA 6", "entries": [
+            self.entry(4, "GTA 6 新预告公开"),                                  # 已经在版面里
+            self.entry(5, "GTA 6 电台阵容", "Bad Bunny 加盟，bunny mug 附赠"),   # 摘要命中不算 → board
+            self.entry(6, "GTA 6 新地图泄露"),                                  # 赞过的 → 不再推荐
+            {**self.entry(7, "Question about GTA 6"), "source": "r/GTA6", "url": "https://www.reddit.com/r/GTA6/x"}]}]
+        votes = [{"url": "https://e.com/6", "vote": 1, "kind": "story", "title": "GTA 6 新地图泄露", "work": "GTA 6"}]
+        picks = self.run_recommend(inbox, ["https://e.com/4"], votes)
+        self.assertEqual(picks["https://e.com/1"]["kind"], "wish")
+        self.assertEqual(picks["https://e.com/2"]["kind"], "board")
+        self.assertEqual(picks["https://e.com/5"]["kind"], "board")
+        self.assertNotIn("https://e.com/4", picks)   # 版面里已经有了
+        self.assertNotIn("https://e.com/6", picks)   # 赞过 = 看过了
+        self.assertNotIn("https://www.reddit.com/r/GTA6/x", picks)  # 网友的提问帖不当推荐
+        self.assertEqual(picks["https://e.com/5"]["liked"], "GTA 6 新地图泄露")  # 同一个作品赞过
+        out = render._picks(list(picks.values()), [])
+        self.assertIn("你关注的「GTA 6」还有这条 · 你赞过「GTA 6 新地图泄露」", out)
+        self.assertIn("因为你想要「黑猫杯」", out)
+
+    def test_probe_entries_scored_by_title(self):
+        probes = [{**self.entry(8, "Black cat bunny mug collection"), "item": "黑猫杯", "label": "猫", "probe": "黑猫杯"},
+                  {**self.entry(9, "Cat news today"), "item": "黑猫杯", "label": "猫", "probe": "黑猫杯"}]
+        picks = self.run_recommend([], [], probes=probes)
+        self.assertEqual(picks["https://e.com/8"]["kind"], "wish")
+        self.assertNotIn("https://e.com/9", picks)   # 只命中一个喜好（2 分），不够分
+
+
+class Discover(unittest.TestCase):
+    def test_random_seed_changes_queries(self):
+        wishes = [{"name": "黑猫杯", "likes": {"猫": ["猫|black cat"], "动物 / 角色造型": ["リス|-リスト", "Snoopy|スヌーピー"],
+                                             "马克杯": ["マグ|mug"]}, "basics": ["马克杯"]}]
+        import random
+        with mock.patch.object(digest, "load_wishlist", return_value=wishes):
+            runs = [[q["query"] for q in digest.probe_queries(random.Random(seed), {})] for seed in range(6)]
+            again = [q["query"] for q in digest.probe_queries(random.Random(0), {})]
+        self.assertEqual(again, runs[0])                       # 同一个种子可以复现
+        self.assertGreater(len({tuple(r) for r in runs}), 1)   # 不同种子搜的词不一样
+        for r in runs:
+            self.assertFalse(any(q.startswith("-") or " -" in q for q in r))  # 排除词不拿去搜
+            self.assertFalse(any(q.split()[0] in ("マグ", "mug") for q in r))  # 基本属性不单独搜
+        self.assertEqual(digest._lang_of("スヌーピー"), "ja-JP")
+        self.assertEqual(digest._lang_of("black cat"), "en-US")
+
+
+class ShuffleButtons(unittest.TestCase):
+    def test_back_and_next(self):
+        picks = [{"title": f"t{i}", "url": f"https://e/{i}", "source": "S", "date": "2026-10-12", "work": "w",
+                  "image": None, "because": "b", "hits": [], "kind": "wish", "batch": i // 5} for i in range(12)]
+        out = render._picks(picks, [])
+        self.assertIn('class="shuffle back"', out)
+        self.assertIn("上一批", out)
+        self.assertIn("wishlist-seen-v2", out)

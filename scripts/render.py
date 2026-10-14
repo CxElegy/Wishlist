@@ -294,6 +294,8 @@ html{scroll-behavior:smooth}
  font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.1em;cursor:pointer;border-radius:0;white-space:nowrap}
 .shuffle:hover{background:#B8336A;border-color:#B8336A}
 .shuffle small{font:700 11px 'JetBrains Mono',monospace;opacity:.75;margin-left:6px}
+.shuffle+.shuffle{margin-left:8px}.shuffle.back{background:none;color:#1A1C22}
+.shuffle[disabled]{opacity:.3;cursor:default;pointer-events:none}
 @media (hover:none){.vt{opacity:.9}}
 @media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
 /* ---------- 按时间排列的卡片 ---------- */
@@ -740,6 +742,19 @@ def _why_verb(x):
     return "在纠结" if x.get("kind") == "hesitate" or x.get("hesitating") else "想要"
 
 
+def _why(x):
+    """推荐理由：wish 是命中了愿望清单里那件东西的喜好；board 是关注的版面里没上版面的其他消息；
+    follow 是同类新发现。和赞过的某条有关时补一句「你赞过「那条」」。"""
+    if x.get("kind") == "board":
+        why = f'你关注的「{e(x["because"])}」还有这条'
+    else:
+        why = f'{"换换口味 · " if x.get("explore") else ""}因为你{_why_verb(x)}「{e(x["because"])}」'
+    if x.get("liked"):
+        t = x["liked"] if len(x["liked"]) <= 24 else x["liked"][:23] + "…"
+        why += f' · 你赞过「{e(t)}」'
+    return why
+
+
 WORK_KEY = "作品:"  # 投票学到的口味里，按作品记的那一类（和 digest.WORK_KEY 一致）
 
 
@@ -774,7 +789,7 @@ def _picks(picks, works, feedback=None):
             f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
-            f'<span class="why">{"换换口味 · " if x.get("explore") else ""}因为你{_why_verb(x)}「{e(x["because"])}」</span>'
+            f'<span class="why">{_why(x)}</span>'
             f'<span class="tags">{tags}</span>{taste}</span></a>{vote}</div>')
 
     def batch_of(group):
@@ -793,58 +808,86 @@ def _picks(picks, works, feedback=None):
     body = f'<div class="pkbatch">{batch_of(first)}</div>'
     if rest:
         body += f'<div class="pkpool" hidden>{cards_of(rest, False)}</div>'
-    shuffle = (f'<button type="button" class="shuffle" aria-label="换一批推荐">换一批<small>共 {len(picks)} 条</small></button>'
+    shuffle = (f'<button type="button" class="shuffle back" aria-label="回到上一批推荐" disabled>上一批</button>'
+               f'<button type="button" class="shuffle next" aria-label="换一批推荐">换一批<small>共 {len(picks)} 条</small></button>'
                if rest else "")
     return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>我会喜欢<em>？</em></h2>'
-            f'<span>根据愿望清单里的喜好和你关注的作品类型挑的{"，点 👍 / 👎 教它你的口味" if feedback else ""}'
+            f'<span>根据愿望清单的喜好、你关注的版面和你赞过的消息挑的（版面里已经有的不放）{"，点 👍 / 👎 教它你的口味" if feedback else ""}'
             f' · <a href="wishlist.html">♥ 愿望清单</a></span>{shuffle}</div>'
             f'{body}</section>' + (f"<script>{SHUFFLE_JS}</script>" if shuffle else ""))
 
 
 SHUFFLE_JS = """
 (() => {
-  const sec = document.getElementById('picks'), btn = sec.querySelector('.shuffle');
+  const sec = document.getElementById('picks');
+  const next = sec.querySelector('.shuffle.next'), back = sec.querySelector('.shuffle.back');
   const batch = sec.querySelector('.pkbatch'), pool = sec.querySelector('.pkpool');
   const wishGrid = batch.querySelector('.pkgrid:not(.row)'), followGrid = batch.querySelector('.pkgrid.row');
   if (!wishGrid && !followGrid) return;
   const cards = [...sec.querySelectorAll('.pk')];
-  const kind = new Map(cards.map(el => [el, el.dataset.f ? 'f' : 'w']));   // 同类新发现 / 按愿望清单
+  const kind = new Map(cards.map(el => [el, el.dataset.f ? 'f' : 'w']));   // 同类新发现 / 为你挑的
+  // 本机记住每条推荐：t 最后一次出现的时间，o 点开看过。像 B 站首页：每次打开、每次换一批都先放没出现过的，
+  // 出现过的按「多久以前出现的」轮回来，点开看过的放到最后
+  const KEY = 'wishlist-seen-v2';
   let seen = {};
-  try { seen = JSON.parse(localStorage.getItem('wishlist-seen') || '{}'); } catch (_) {}
-  let shown = new Set();
-  // 加权随机抽 n 张（Efraimidis–Spirakis）：分数越高、看过越少越容易抽到；
-  // 同一批里（推荐和同类新发现合起来）同一个关注项只 1 张、同一个关键词（如 Snoopy）只 1 张——
-  // 后台已经把「同一件事」去掉了，这里再保证同一批里不出现同一个话题；刚显示过的这次不抽（池子不够时才放回来）
-  const draw = (list, n, works, keys) => {
-    const rank = from => from.map(el => {
-      const w = Number(el.dataset.s || 4) * (seen[el.dataset.u] ? 1 / (1 + seen[el.dataset.u]) : 2);
-      return [Math.pow(Math.random(), 1 / w), el];
-    }).sort((a, b) => b[0] - a[0]).map(x => x[1]);
-    const out = [];
-    // 先从这次没显示过的里抽，不够再从全部里抽；都不重复话题。实在凑不齐就少放几张，也不重复
-    for (const from of [list.filter(el => !shown.has(el)), list]) {
-      for (const el of rank(from)) {
+  try { seen = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (_) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(seen)); } catch (_) {} };
+  const tier = el => { const s = seen[el.dataset.u]; return !s ? 0 : s.o ? 2 : 1; };
+  // 同一档里：没出现过的按分数加权随机（Efraimidis–Spirakis，每次打开都不一样）；出现过的先放最久以前的
+  const order = list => list.map(el => {
+    const s = seen[el.dataset.u], w = Number(el.dataset.s || 4);
+    return [tier(el), s ? s.t || 0 : -Math.pow(Math.random(), 1 / w), el];
+  }).sort((a, b) => a[0] - b[0] || a[1] - b[1]).map(x => x[2]);
+  // 同一批里同一个关注项只 1 张、同一个关键词（如 Snoopy）只 1 张（为你挑的和同类新发现之间关键词也不重复）；
+  // 刚才那批的不再抽。没看过的凑不满时先放宽关键词、再放宽关注项，还不够才用看过的
+  const draw = (list, n, keys, prev) => {
+    const out = [], works = new Set(), ranked = order(list.filter(el => !prev.has(el)));
+    const fresh = el => !seen[el.dataset.u], any = () => true;
+    // [能用哪些, 关注项不重复, 关键词不重复]
+    const passes = [[fresh, true, true], [fresh, true, false], [fresh, false, false], [any, true, true], [any, false, false]];
+    for (const [ok, oneWork, oneKey] of passes) {
+      for (const el of ranked) {
         if (out.length >= n) return out;
         const ks = (el.dataset.key || '').split('|').filter(Boolean);
-        if (out.includes(el) || works.has(el.dataset.w) || ks.some(k => keys.has(k))) continue;
+        if (out.includes(el) || !ok(el) || (oneWork && works.has(el.dataset.w))
+            || (oneKey && ks.some(k => keys.has(k)))) continue;
         out.push(el); works.add(el.dataset.w); ks.forEach(k => keys.add(k));
       }
     }
     return out;
   };
-  const fill = () => {
+  const history = [];
+  let pos = -1;
+  const show = ([w, f]) => {
     cards.forEach(el => { el.classList.remove('big'); pool.appendChild(el); });
-    const works = new Set(), keys = new Set();
-    const w = draw(cards.filter(el => kind.get(el) === 'w'), 5, works, keys);
-    const f = draw(cards.filter(el => kind.get(el) === 'f'), 4, works, keys);
     if (wishGrid) w.forEach((el, i) => { el.classList.toggle('big', i === 0); wishGrid.appendChild(el); });
     if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
-    shown = new Set([...w, ...f]);
-    shown.forEach(el => { seen[el.dataset.u] = (seen[el.dataset.u] || 0) + 1; });
-    try { localStorage.setItem('wishlist-seen', JSON.stringify(seen)); } catch (_) {}
+    back.disabled = pos <= 0;
+    const fresh = cards.filter(el => !seen[el.dataset.u]).length;
+    next.querySelector('small').textContent = fresh ? `还有 ${fresh} 条没看过` : '都看过了，从最早的轮回来';
   };
-  fill();
-  btn.addEventListener('click', () => { fill(); sec.scrollIntoView({ block: 'start', behavior: 'smooth' }); });
+  const fresh = () => {
+    const prev = new Set(pos >= 0 ? history[pos].flat() : []);
+    const keys = new Set();
+    const w = draw(cards.filter(el => kind.get(el) === 'w'), 5, keys, prev);
+    const f = draw(cards.filter(el => kind.get(el) === 'f'), 4, keys, prev);
+    const now = Date.now();
+    [...w, ...f].forEach((el, i) => { seen[el.dataset.u] = { ...(seen[el.dataset.u] || {}), t: now + i }; });
+    save();
+    history.splice(pos + 1);
+    history.push([w, f]);
+    pos = history.length - 1;
+    show(history[pos]);
+  };
+  fresh();
+  const top = () => sec.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  // 换一批：退回去看过上一批后，先回到原来那批（和浏览器的前进一样），到头了再抽新的
+  next.addEventListener('click', () => { if (pos < history.length - 1) show(history[++pos]); else fresh(); top(); });
+  back.addEventListener('click', () => { if (pos > 0) { show(history[--pos]); top(); } });
+  sec.addEventListener('click', ev => {
+    const a = ev.target.closest('.pk a'), el = a && a.closest('.pk');
+    if (el) { seen[el.dataset.u] = { ...(seen[el.dataset.u] || {}), o: 1 }; save(); }
+  });
 })();
 """
 

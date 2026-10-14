@@ -23,6 +23,7 @@ import hashlib
 import json
 import os
 import pathlib
+import random
 import re
 import sys
 import urllib.parse
@@ -615,12 +616,18 @@ def load_wishlist():
 
 PICK_COUNT = 5       # 「我会喜欢？」一批几条（1 大 + 4 小正好排满）
 PICK_BATCHES = 6     # 候选池有几批那么多：网页每次打开随机抽一批（看过的少抽），「换一批」再抽
-EXPLORE_AFTER = 2    # 前几批只放够分的；之后可以放差一点的（少命中一个标签），网页上标「换换口味」
+EXPLORE_AFTER = 2    # 差一点的（少命中一个标签）不放进前几批（没有脚本时显示的第一批），网页上标「换换口味」
 PICK_DAYS = 14       # 从最近几天收集到的消息里挑
 PICK_THRESHOLD = 5   # 每命中一个喜好标签 2 分，和愿望清单同一个关注项再加 1 分；至少 5 分才推荐
+BOARD_SCORE = 4      # 关注的版面里没上版面的其他消息：基础分（再按投票学到的口味加减），和「换换口味」同一档
+BOARD_PER_ITEM = 2   # 每个关注项最多准备几条这样的消息（找配图要花时间）
+BOARD_DAYS = 3       # 只从最近几天收集到的里挑（新鲜的）
 
 
 DISCOVER_HOURS = 12    # 「同类新消息」每隔多久搜一次
+DISCOVER_SIMILAR = 2   # 每次每个关注项随机搜几条 similar（不是每次都搜同样的词）
+DISCOVER_PROBES = 6    # 每次再随机搜几个喜好关键词 / 赞过的关键词（找按愿望清单推荐的新消息）
+DISCOVER_KEEP = 400    # 搜到的消息跨次累积（一周内的），最多留几条
 DISCOVER_PICKS = 4     # 「我会喜欢？」每批放几条同类新消息
 FOLLOW_PER_ITEM = 4    # 同类新消息每个关注项最多准备几条（找配图要花时间，不跟着批数无限加）
 
@@ -628,50 +635,129 @@ FOLLOW_PER_ITEM = 4    # 同类新消息每个关注项最多准备几条（找�
 HESITATE = "纠结"   # 愿望清单里还在犹豫买不买的状态：它的 similar 也会每天搜，找类似的好产品
 
 
-def discover(force=False):
-    """按 items.yaml 里每个关注项的 similar（同类搜索词）抓 Google 新闻，去掉已经在关注清单里的作品。
-    愿望清单里 status 是「纠结」的东西也一样：按它的 similar 搜类似的好产品（条目带 "wish": true）。
-    结果存 state/discover.json；每 DISCOVER_HOURS 小时最多搜一次。"""
+def discover(force=False, taste=None):
+    """「我会喜欢？」要的新消息，抓 Google 新闻，去掉已经在关注清单里的作品。每次用一个新的随机种子挑搜索词，
+    这样每次搜到的不一样（种子记在 state/discover.json 里，出了问题可以复现）：
+    - 每个关注项的 similar（同类搜索词）随机搜 DISCOVER_SIMILAR 条 → 「同类新发现」；
+      愿望清单里 status 是「纠结」的东西也一样：按它的 similar 搜类似的好产品（条目带 "wish": true）；
+    - 再随机搜 DISCOVER_PROBES 个愿望清单的喜好关键词（赞过的关键词更容易抽到）→ 条目带 "probe"，
+      交给 recommend() 按标题重新打分，够分的才当「因为你想要」推荐。
+    搜到的跨次累积（一周内的，最多 DISCOVER_KEEP 条）；每 DISCOVER_HOURS 小时最多搜一次。"""
     settings, items = load_config()
     old = load_json(DISCOVER_FILE) or {}
     now = dt.datetime.now(dt.timezone.utc)
     if not force and old.get("at") and now - dt.datetime.fromisoformat(old["at"]) < dt.timedelta(hours=DISCOVER_HOURS):
         return old.get("entries", [])
+    seed = random.SystemRandom().randrange(2 ** 32)
+    rng = random.Random(seed)
     tracked = {_norm(w) for i in items for w in (i.get("match") or i.get("keywords") or [i["name"]])}
-    since = now - dt.timedelta(days=settings.get("lookback_days", 7))
-    out, grams = [], []
+    days = settings.get("lookback_days", 7)
+    since = now - dt.timedelta(days=days)
     hesitating = [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE]
+    searches = []  # (搜索词 dict, 来源)
     for item in items + hesitating:
-        for q in item.get("similar") or []:
-            try:
-                found = sources.google_news(q["query"], settings.get("lookback_days", 7), NEWS_LANGS[q.get("lang", "zh-CN")])
-            except Exception as err:
-                print(f"  [同类] {q['query']} 失败：{err}", file=sys.stderr)
+        qs = list(item.get("similar") or [])
+        searches += [(q, item) for q in rng.sample(qs, min(DISCOVER_SIMILAR, len(qs)))]
+    searches += [(q, None) for q in probe_queries(rng, taste or {})]
+    out, grams = [], []
+    for q, item in searches:
+        try:
+            found = sources.google_news(q["query"], days, NEWS_LANGS[q.get("lang", "zh-CN")])
+        except Exception as err:
+            print(f"  [同类] {q['query']} 失败：{err}", file=sys.stderr)
+            continue
+        for e in found[:20]:
+            if e.source == "YouTube" or any(re.search(p, e.title) for p in JUNK_PATTERNS):
                 continue
-            for e in found[:20]:
-                if e.source == "YouTube" or any(re.search(p, e.title) for p in JUNK_PATTERNS):
-                    continue
-                if e.published and e.published < since:
-                    continue
-                if any(w and w in _norm(e.title + e.summary) for w in tracked):  # 已经在关注的不算“新发现”
-                    continue
-                if not all(_like_hit(n, (e.title + " " + e.summary).lower()) for n in q.get("need") or []):
-                    continue
-                g = _title_grams(e.title, [])
-                if any(_similar(g, x) for x in grams):
-                    continue
-                grams.append(g)
-                out.append({"title": e.title, "url": e.url, "source": e.source, "summary": e.summary, "image": e.image,
-                            "date": e.published.isoformat() if e.published else "", "item": item["name"], "label": q["label"],
-                            **({"wish": True} if item.get("_wish") else {})})
-    save_json(DISCOVER_FILE, {"at": now.isoformat(), "entries": out})
-    print(f"同类新消息：{len(out)} 条", file=sys.stderr)
+            if e.published and e.published < since:
+                continue
+            if any(w and w in _norm(e.title + e.summary) for w in tracked):  # 已经在关注的不算“新发现”
+                continue
+            if not all(_like_hit(n, (e.title + " " + e.summary).lower()) for n in q.get("need") or []):
+                continue
+            g = _title_grams(e.title, [])
+            if any(_similar(g, x) for x in grams):
+                continue
+            grams.append(g)
+            meta = ({"item": item["name"], "label": q["label"], **({"wish": True} if item.get("_wish") else {})}
+                    if item else {"item": q["wish"], "label": q["label"], "probe": q["wish"]})
+            out.append({"title": e.title, "url": e.url, "source": e.source, "summary": e.summary, "image": e.image,
+                        "date": e.published.isoformat() if e.published else "", **meta})
+    fresh = len(out)
+    urls = {x["url"] for x in out}
+    for x in old.get("entries", []):  # 以前搜到的、一周内的继续留着：池子越积越大，每次换一批都有新的
+        if x["url"] in urls or (x.get("date") and x["date"] < since.isoformat()):
+            continue
+        if any(_similar(_title_grams(x["title"], []), g) for g in grams):
+            continue
+        urls.add(x["url"])
+        out.append(x)
+    out = out[:DISCOVER_KEEP]
+    save_json(DISCOVER_FILE, {"at": now.isoformat(), "seed": seed, "queries": [q["query"] for q, _ in searches],
+                              "entries": out})
+    print(f"同类新消息：新搜到 {fresh} 条，累计 {len(out)} 条（随机种子 {seed}，搜了 {len(searches)} 个词）", file=sys.stderr)
     return out
 
 
+def _lang_of(text):
+    """搜索词用哪个语言区的 Google 新闻：有假名的日文，有谚文的韩文，汉字分简繁，其余英文。"""
+    if re.search(r"[\u3040-\u30ff]", text):
+        return "ja-JP"
+    if re.search(r"[\uac00-\ud7af]", text):
+        return "ko-KR"
+    if re.search(r"[\u4e00-\u9fff]", text):
+        return "zh-TW" if _to_simplified(text) != text else "zh-CN"
+    return "en-US"
+
+
+def probe_queries(rng, taste):
+    """随机挑几个愿望清单的喜好关键词去搜（基本属性不单独搜）。每个搜索词是「具体喜好的一种写法」
+    加上同一件东西另一个喜好里同语言的一种写法（猫 + マグ），这样搜到的更像那件东西。
+    赞过的关键词（taste 里分数 > 0 的）权重更高，踩过的不搜。"""
+    bank = []
+    for w in load_wishlist():
+        basics = set(w.get("basics") or [])
+        likes = w.get("likes") or {}
+        for label, kws in likes.items():
+            if label in basics:
+                continue
+            for k in kws:
+                score = max(taste.get(_like_key(k), 0), taste.get(label, 0))
+                if score < 0:
+                    continue
+                for alt in (a.strip() for a in str(k).split("|")):
+                    if alt and not alt.startswith("-"):
+                        bank.append((1 + 2 * score, alt, label, w, likes))
+    picked, seen = [], set()
+    while bank and len(picked) < DISCOVER_PROBES:
+        weight, alt, label, w, likes = bank.pop(rng.choices(range(len(bank)), [b[0] for b in bank])[0])
+        if (w["name"], label) in seen:
+            continue  # 同一件东西的同一个喜好只搜一次
+        seen.add((w["name"], label))
+        lang = _lang_of(alt)
+        extra = [a.strip() for lb, kws in likes.items() if lb != label for k in kws for a in str(k).split("|")
+                 if a.strip() and not a.strip().startswith("-") and _lang_of(a.strip()) == lang]
+        query = alt + (" " + rng.choice(extra) if extra else "")
+        picked.append({"query": query, "lang": lang, "label": label, "wish": w["name"]})
+    return picked
+
+
 def _like_hit(keyword, text):
-    """喜好关键词可以用 | 写同一个东西的几种写法（Snoopy|スヌーピー|史努比），命中任意一种就算。"""
-    return any(alt.strip().lower() in text for alt in str(keyword).split("|") if alt.strip())
+    """喜好关键词可以用 | 写同一个东西的几种写法（Snoopy|スヌーピー|史努比），命中任意一种就算。
+    写成 -词 的是排除：リス|-リスト 里「やることリスト」的リス不算（先把排除的词从文字里去掉再找）。
+    英文词要是完整的词（前面不能接着字母数字；5 个字母以内的后面也不能接着，复数 s 除外）：
+    Bad Bunny 不该算 bunny 以外的东西，tour 不该命中 tourism。"""
+    alts = [a.strip().lower() for a in str(keyword).split("|") if a.strip()]
+    for bad in (a[1:] for a in alts if a.startswith("-")):
+        text = text.replace(bad, " ")
+    return any(_alt_hit(a, text) for a in alts if not a.startswith("-"))
+
+
+def _alt_hit(alt, text):
+    if re.fullmatch(r"[a-z0-9][a-z0-9 .+'’-]*", alt):
+        tail = r"(?:e?s)?(?![a-z0-9])" if len(alt) <= 5 else ""
+        return re.search(rf"(?<![a-z0-9]){re.escape(alt)}{tail}", text) is not None
+    return alt in text
 
 
 def _like_key(keyword):
@@ -1187,7 +1273,7 @@ def learn_taste(votes, wishes=(), common=frozenset()):
         if r.get("kind") == "story":
             hits, words = like_tags(r.get("title") or "", wishes, common)
             keys |= hits | words
-        if r.get("work") and r.get("kind") in ("story", "wish"):
+        if r.get("work") and r.get("kind") in ("story", "wish", "board"):
             keys.add(WORK_KEY + r["work"])
         for k in keys:
             taste[k] = taste.get(k, 0) + r["vote"]
@@ -1288,6 +1374,14 @@ class StoryDeduper:
     def _close(a, b):
         return sum(_token_weight(x) for x in a & b) >= 2
 
+    def same_story(self, a, b):
+        """两个标题是不是同一件事（不记账，只比较）。"""
+        ta = self.toks.get(a)
+        tb = self.toks.get(b)
+        ta = story_tokens(a) - self.generic if ta is None else ta
+        tb = story_tokens(b) - self.generic if tb is None else tb
+        return a == b or self.group.get(a, a) == self.group.get(b, b) or self._close(ta, tb)
+
     def same(self, title):
         g = self.group.get(title)
         if g is None:  # 不在候选里的标题：和已经出过的各组比
@@ -1300,9 +1394,24 @@ class StoryDeduper:
         return False
 
 
+def page_stories():
+    """已经在网页各个版面里的消息：链接集合 + 标题（推荐区不再放它们，同一件事别家的报道也不放）。"""
+    urls, titles = set(), []
+    for path in REPORTS_DIR.glob("????-??-??.json"):
+        for b in (load_json(path) or {}).get("items", []):
+            for st in b.get("stories") or []:
+                urls.add(st["url"])
+                titles.append(st.get("headline") or "")
+    return urls, [t for t in titles if t]
+
+
 def recommend(force_discover=False):
-    """「我会喜欢？」：按愿望清单里每件东西的 likes（喜好标签），从最近收集到的所有消息里打分挑推荐。
-    不让 AI 联网，只用已经收集到的消息；结果写进 state/recommend.json，网页读它。"""
+    """「我会喜欢？」：从最近收集到的消息里挑推荐，写进 state/recommend.json，网页读它。四种来源，每条写明真实的理由：
+    - wish：标题命中愿望清单里某件东西的喜好标签（likes），够分才推荐 →「因为你想要「那件东西」」；
+    - board：关注的版面里收集到、但没上版面的其他消息（按投票学到的口味排）→「你关注的「作品」还有这条」；
+    - follow / hesitate：同类新发现（见 discover）；
+    赞过的消息和候选有共同的喜好 / 是同一个作品时，理由写「因为你赞过「那条」」。
+    已经在网页版面里的消息（和别家报道的同一件事）不推荐：版面里已经看得到。不让 AI 联网，只用收集到的消息。"""
     wishes = [w for w in load_wishlist() if w.get("likes")]
     common = {_like_key(k) for w in wishes for label, kws in w["likes"].items()
               if label in (w.get("basics") or []) for k in kws}
@@ -1313,38 +1422,80 @@ def recommend(force_discover=False):
     taste = learn_taste(votes, wishes, common)
     disliked = {r["url"] for r in votes if r["vote"] < 0}
     disliked_grams = [_title_grams(r.get("title") or "", []) for r in votes if r["vote"] < 0]
-    pool = []
-    for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]:
-        for item in load_json(path)["items"]:
-            for d in item["entries"]:
-                text = (d["title"] + " " + d.get("summary", "")).lower()
-                best = None
-                for w in wishes:
-                    hits = [label for label, kws in w["likes"].items() if any(_like_hit(k, text) for k in kws)]
-                    words = {_like_key(k) for kws in w["likes"].values() for k in kws if _like_hit(k, text)}
-                    score = 2 * len(hits) + (1 if w.get("watch") == item["name"] else 0)
-                    # 学到的口味只看具体的喜好，基本属性（马克杯、限定款）不跟着投票涨跌
-                    basics = set(w.get("basics") or [])
-                    bonus, why = taste_bonus(taste, [h for h in hits if h not in basics] + sorted(words - common)
-                                             + [WORK_KEY + item["name"]])
-                    if hits and (not best or score + bonus > best[0]):
-                        best = (score + bonus, w, hits, words, why)
-                if best and best[0] >= PICK_THRESHOLD - 1:
-                    pool.append((best[0], d.get("date") or path.stem, d, item["name"], *best[1:]))
+    liked = [r for r in votes if r["vote"] > 0 and r.get("title")]
+    voted = {r["url"] for r in votes}  # 投过票的都看过了：不再推荐（赞过的拿来找相关的新消息）
+    liked_keys = []
+    for r in liked:
+        keys = set(r.get("hits") or []) | set(r.get("words") or [])
+        if r.get("kind") == "story":
+            keys |= set().union(*like_tags(r["title"], wishes, common))
+        liked_keys.append((r, keys - common - {b for w in wishes for b in w.get("basics") or []}))
+
+    def liked_reason(url, title, keys, work):
+        """赞过的哪一条和这条有关（共同的具体喜好，或者同一个关注的作品）：网页上写「因为你赞过「那条」」。"""
+        for r, rk in liked_keys:
+            if r["url"] == url or dedupe.same_story(r["title"], title):
+                continue
+            if keys & rk or (work and r.get("work") == work and r.get("kind") in ("story", "wish", "board")):
+                return r["title"]
+        return None
+
+    on_page, page_titles = page_stories()
+    found = sorted(discover(force_discover, taste), key=lambda x: x.get("date") or "", reverse=True)
+    probes = [x for x in found if x.get("probe")]
+    found = [x for x in found if not x.get("probe")]
+    entries = [(d, path.stem, item["name"]) for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]
+               for item in load_json(path)["items"] for d in item["entries"]]
+    recent = sorted(INBOX_DIR.glob("????-??-??.json"))[-BOARD_DAYS:]
+    recent = {p.stem for p in recent}
+    pool, board = [], {}
+    for d, day, work in entries + [(x, (x.get("date") or "")[:10], None) for x in probes]:
+        if d["url"] in on_page or d.get("link") in on_page:
+            page_titles.append(d["title"])  # 版面里那条的原标题（版面上是改写过的中文标题）
+            continue
+        # 只看标题：摘要里顺带提到的词（Bad Bunny、某某巡演）不说明这条消息是关于它的
+        text = d["title"].lower()
+        best = None
+        for w in wishes:
+            hits = [label for label, kws in w["likes"].items() if any(_like_hit(k, text) for k in kws)]
+            words = {_like_key(k) for kws in w["likes"].values() for k in kws if _like_hit(k, text)}
+            score = 2 * len(hits) + (1 if work and w.get("watch") == work else 0)
+            # 学到的口味只看具体的喜好，基本属性（马克杯、限定款）不跟着投票涨跌
+            basics = set(w.get("basics") or [])
+            bonus, why = taste_bonus(taste, [h for h in hits if h not in basics] + sorted(words - common)
+                                     + ([WORK_KEY + work] if work else []))
+            # 至少命中一个具体喜好：只命中基本属性（马克杯、限定）的说明不了是因为那件东西
+            # 关注的版面里的消息要命中两个以上喜好才算「因为你想要」（只命中一个的，例如漫威新闻里的 Squirrel Girl，
+            # 和那件东西扯不上关系，当作版面的其他消息推荐）
+            if any(h not in basics for h in hits) and (not work or len(hits) >= 2) \
+                    and (not best or score + bonus > best[0]):
+                best = (score + bonus, w, hits, words, why)
+        if best and best[0] >= PICK_THRESHOLD - 1:
+            pool.append((best[0], d.get("date") or day, d, work or best[1].get("watch") or best[1]["name"], *best[1:]))
+        elif work and day in recent and not sources.is_reddit(entry_from_dict(d)):  # 网友的帖子（提问、闲聊）不当推荐
+            hits, words = like_tags(d["title"], wishes, common)
+            bonus, why = taste_bonus(taste, sorted(hits | words) + [WORK_KEY + work])
+            board.setdefault(work, []).append((BOARD_SCORE + bonus, d.get("date") or day, d, work, hits, words, why))
     # 同分时，命中具体喜好（猫、角色造型……）的排在只命中基本属性（限定、马克杯）的前面
     pool.sort(key=lambda x: (x[0], len(set(x[5]) - set(x[4].get("basics") or [])), x[1]), reverse=True)
-    found = sorted(discover(force_discover), key=lambda x: x.get("date") or "", reverse=True)
+    # 每个关注项先挑最新的几条（有图的优先）再一起去重：候选太多时两两比标题很慢
+    board = [c for cs in board.values()
+             for c in sorted(cs, key=lambda c: (bool(c[2].get("image")), c[1]), reverse=True)[:BOARD_PER_ITEM * 3]]
     _, items_conf = load_config()
-    corpus = [d["title"] for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-PICK_DAYS:]
-              for item in load_json(path)["items"] for d in item["entries"]]
-    titles = [r["title"] for r in votes if r["vote"] < 0 and r.get("title")] \
-        + [x[2]["title"] for x in pool] + [x["title"] for x in found]
-    dedupe = StoryDeduper(generic_tokens([x[2]["title"] for x in pool] + [x["title"] for x in found], corpus, items_conf),
-                          titles)
+    corpus = [d["title"] for d, _, _ in entries]
+    cand_titles = [x[2]["title"] for x in pool] + [x[2]["title"] for x in board] + [x["title"] for x in found]
+    titles = page_titles + [r["title"] for r in votes if r.get("title")] + cand_titles
+    dedupe = StoryDeduper(generic_tokens(cand_titles, corpus, items_conf), titles)
+    for t in page_titles:
+        dedupe.same(t)  # 版面里已经有的那件事（别家的报道也算）不再推荐
     for r in votes:
-        if r["vote"] < 0 and r.get("title"):
-            dedupe.same(r["title"])  # 踩过的那件事（别家的报道也算）不再推荐
+        if r.get("title"):
+            dedupe.same(r["title"])  # 投过票的那件事（别家的报道也算）不再推荐：踩过的不想看，赞过的已经看过了
     picks, grams, used = [], list(disliked_grams), set()
+
+    def taken(url):
+        return url in on_page or url in wish_urls or url in voted or any(p["url"] == url for p in picks)
+
     for score, date, d, work, w, hits, words, why in pool:
         g = _title_grams(d["title"], [])
         key = words - common
@@ -1355,12 +1506,10 @@ def recommend(force_discover=False):
         if any(_similar(g, x) for x in grams) or key & used:
             continue
         if dedupe.same(d["title"]):
-            continue  # 同一件事已经有一条了（不同媒体、不同语言的报道）
-        explore = score < PICK_THRESHOLD
-        if explore and len(picks) < PICK_COUNT * EXPLORE_AFTER:
-            continue  # 「换换口味」的只放进后面几批
-        url = sources.resolve_url(d["url"])
-        if url in wish_urls or url in disliked or any(p["url"] == url for p in picks):
+            continue  # 同一件事已经有一条了（不同媒体、不同语言的报道），或者版面里已经有了
+        explore = score < PICK_THRESHOLD  # 候选按分数排好了，「换换口味」的排在够分的后面
+        url = sources.resolve_url(d.get("link") or d["url"])
+        if taken(url):
             continue
         used |= key
         if url not in images:
@@ -1368,11 +1517,34 @@ def recommend(force_discover=False):
         grams.append(g)
         picks.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
                       "image": images[url], "because": w["name"], "hits": hits, "score": score, "kind": "wish",
-                      "words": sorted(key), "taste": why, "batch": len(picks) // PICK_COUNT,
+                      "words": sorted(key), "taste": why,
+                      "batch": max(len(picks) // PICK_COUNT, EXPLORE_AFTER if explore else 0),  # 没有脚本时不先给看
                       **({"explore": True} if explore else {}),
                       **({"hesitating": True} if w.get("status") == HESITATE else {})})
         if len(picks) >= PICK_COUNT * PICK_BATCHES:
             break
+
+    # 关注的版面里没上版面的其他消息：口味分高的先（赞过同一个作品的加分），每个关注项最多 BOARD_PER_ITEM 条；
+    # 净踩过的作品（口味分把基础分扣到「换换口味」以下）不推荐
+    boards, per = [], {}
+    for score, date, d, work, hits, words, why in sorted(board, key=lambda c: (c[0], c[1]), reverse=True):
+        if score < BOARD_SCORE or per.get(work, 0) >= BOARD_PER_ITEM:
+            continue
+        g = _title_grams(d["title"], [])
+        if any(_similar(g, x) for x in grams) or dedupe.same(d["title"]):
+            continue
+        url = sources.resolve_url(d.get("link") or d["url"])
+        if taken(url) or any(b["url"] == url for b in boards):
+            continue
+        if url not in images:
+            images[url] = find_image(d.get("image"), [entry_from_dict(d)], url)
+        grams.append(g)
+        per[work] = per.get(work, 0) + 1
+        boards.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
+                       "image": images[url], "because": work, "hits": sorted(hits), "score": score, "kind": "board",
+                       "words": sorted(words), "taste": why, "batch": 1 + len(boards) // PICK_COUNT,
+                       **({"liked": t} if (t := liked_reason(url, d["title"], hits | words, work)) else {})})
+    picks += boards
 
     # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条。
     # 投票学到的口味决定先后：常赞的同类排前面，净踩两次以上的同类先不推荐
@@ -1387,7 +1559,7 @@ def recommend(force_discover=False):
         got = []
         for x in [x for x in found if x["item"] == name][:FOLLOW_PER_ITEM * 2]:
             url = sources.resolve_url(x["url"])
-            if url in disliked or url in seen_urls or dedupe.same(x["title"]):
+            if url in voted or url in seen_urls or url in on_page or dedupe.same(x["title"]):
                 continue
             if url not in images:
                 images[url] = find_image(x.get("image"), [entry_from_dict(x)], url)
@@ -1398,16 +1570,17 @@ def recommend(force_discover=False):
     order = [c for r in range(FOLLOW_PER_ITEM) for n in names if len(cands[n]) > r for c in [cands[n][r]]]
     follow = []
     for x, img, url in order[:DISCOVER_PICKS * PICK_BATCHES]:
+        words = sorted(like_tags(x["title"] + " " + (x.get("summary") or ""), wishes, common)[1])
         follow.append({"title": x["title"], "url": url, "source": x["source"], "date": (x.get("date") or "")[:10],
                        "work": x["item"], "image": img, "because": x["item"], "hits": [x["label"]],
                        "kind": "hesitate" if x.get("wish") else "follow", "batch": len(follow) // DISCOVER_PICKS,
-                       "words": sorted(like_tags(x["title"] + " " + (x.get("summary") or ""), wishes, common)[1]),
-                       "taste": taste_bonus(taste, [x["label"]])[1]})
+                       "words": words, "taste": taste_bonus(taste, [x["label"]])[1],
+                       **({"liked": t} if (t := liked_reason(url, x["title"], set(words) | {x["label"]}, None)) else {})})
     picks += follow
     keep = {p["url"] for p in picks}
     save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep}})
-    print(f"我会喜欢？：{len(picks) - len(follow)} 条按愿望清单 + {len(follow)} 条同类新消息，"
-          f"共 {1 + max([p['batch'] for p in picks] or [0])} 批（学自 {len(votes)} 次投票）", file=sys.stderr)
+    print(f"我会喜欢？：{len(picks) - len(follow) - len(boards)} 条按愿望清单 + {len(boards)} 条关注版面的其他消息 + "
+          f"{len(follow)} 条同类新消息（学自 {len(votes)} 次投票，{len(liked)} 次赞）", file=sys.stderr)
 
 
 def with_new_items(issues, items):
