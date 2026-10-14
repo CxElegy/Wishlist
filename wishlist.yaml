@@ -17,6 +17,7 @@
 #   note     可选，一句话备注
 #   likes    可选，从这件东西看出的喜好：「标签: [关键词…]」。主页「我会喜欢？」会用它从收集到的消息里挑推荐
 #            同一个东西的几种写法用 | 连起来写成一个词（"Snoopy|スヌーピー|史努比"），推荐去重时算同一个
+#            写成 -词 的是排除："リス|-リスト" 里「やることリスト」不算命中リス。只看消息标题，英文短词要是完整的词
 #   basics   可选，likes 里哪些标签只是基本属性（如 马克杯、限定款）：照样加分，但推荐去重时不看它们
 #   photo    可选，从愿望清单页上传的照片编号（Claude 定时任务处理照片时填，网页靠它显示「已加入」）
 
@@ -37,9 +38,9 @@ wishlist:
     likes:
       猫: ["猫|貓|ネコ|ねこ|黒猫|black cat|kitty"]
       万圣节: ["ハロウィン|萬聖|万圣|Halloween"]
-      动物 / 角色造型: ["うさぎ|ウサギ|兔|rabbit|bunny", "リス|松鼠|squirrel", "くま|クマ|テディ|teddy bear", "Snoopy|スヌーピー|史努比|Peanuts", "Care Bears|彩虹熊|ケアベア", "ポケモン|Pokémon|Pokemon|宝可梦|寶可夢", "ジブリ|Ghibli|吉卜力|宮崎"]
+      动物 / 角色造型: ["うさぎ|ウサギ|兔|rabbit|bunny|-bad bunny", "リス|松鼠|squirrel|-リスト|-リスク|-リスナー|-イギリス|-クリスマス", "くま|クマ|テディ|teddy bear", "Snoopy|スヌーピー|史努比|Peanuts", "Care Bears|彩虹熊|ケアベア", "ポケモン|Pokémon|Pokemon|宝可梦|寶可夢", "ジブリ|Ghibli|吉卜力|宮崎駿|宫崎骏"]
       限定款: ["限定|限量|limited"]
-      马克杯: ["マグ|馬克杯|马克杯|mug"]
+      马克杯: ["マグ|馬克杯|马克杯|mug|-マグロ|-マグネ|-マグニ|-マグマ"]
     basics: [限定款, 马克杯]
 
   - name: 貓眼溫變馬克杯
@@ -60,7 +61,7 @@ wishlist:
       黑白配色: ["賓士貓|宾士猫|ハチワレ|tuxedo cat|黑白"]
       万圣节: ["ハロウィン|萬聖|万圣|Halloween"]
       温变杯: ["温变|溫變|変色|color changing"]
-      马克杯: ["マグ|馬克杯|马克杯|mug"]
+      马克杯: ["マグ|馬克杯|马克杯|mug|-マグロ|-マグネ|-マグニ|-マグマ"]
     basics: [马克杯]
 
   - name: Louis Vuitton Stella Monogram 围巾（Monogram Stellar Scarf）
