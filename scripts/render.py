@@ -200,8 +200,8 @@ html{scroll-behavior:smooth}
 .wish .band{background:linear-gradient(162deg,#1A1C22 0 42%,var(--bg) 42% 100%)}
 .wish .band .title{font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:40px;color:#F4EDE4;letter-spacing:.08em}
 .wish .band .sub{color:var(--fg);font:700 13px 'JetBrains Mono',monospace;letter-spacing:.25em}
-.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--line)}
-.wcard{position:relative;display:flex;flex-direction:column;background:var(--bg)}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.wcard{position:relative;display:flex;flex-direction:column;background:var(--bg);box-shadow:0 0 0 .5px var(--line)}
 .wcard.solo{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
 .wcard .wimg{position:relative;aspect-ratio:1/1;max-width:100%;background:#FFF;display:grid;place-items:center;overflow:hidden}
 .wcard.solo .wimg{aspect-ratio:auto;min-height:380px}
@@ -213,7 +213,7 @@ html{scroll-behavior:smooth}
 .wcard .wtxt{display:flex;flex-direction:column;gap:14px;padding:24px 26px;min-width:0}
 .wcard.solo .wtxt{justify-content:center;padding:36px 40px;border-left:1px solid var(--line)}
 .wcard .shop{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc)}
-.wcard h3{margin:0;font:900 26px/1.3 'Noto Sans SC',sans-serif;text-wrap:balance}
+.wcard h3{margin:0;font:900 26px/1.3 'Noto Sans SC',sans-serif;text-wrap:pretty}
 .wcard.solo h3{font-size:36px}
 .wcard .price{font:900 30px/1 'Noto Sans SC',sans-serif;letter-spacing:.01em;font-variant-numeric:tabular-nums}
 .wcard .price small{font:700 14px 'JetBrains Mono',monospace;margin-right:6px;opacity:.7}
@@ -266,6 +266,9 @@ html{scroll-behavior:smooth}
 .pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
 .pk .taste{font-size:11px;opacity:.7}
 .vote{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.pk:not(.big) .vote button span{display:none}
+.pk:not(.big) .vote button{padding:4px 12px;font-size:14px}
+.pk.big>a{flex:none}
 .vote button{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border:1.5px solid #1A1C22;background:transparent;
  color:#1A1C22;font:700 12px 'Noto Sans SC',sans-serif;cursor:pointer;border-radius:0;white-space:nowrap}
 .vote button:hover{background:#1A1C22;color:#F4EDE4}
@@ -289,8 +292,7 @@ html{scroll-behavior:smooth}
 .shuffle:hover{background:#B8336A;border-color:#B8336A}
 .shuffle small{font:700 11px 'JetBrains Mono',monospace;opacity:.75;margin-left:6px}
 @media (hover:none){.vt{opacity:.9}}
-@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}
- .pk:not(.big) .vote button span{display:none}.pk:not(.big) .vote button{padding:4px 14px;font-size:15px}}
+@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
@@ -339,6 +341,7 @@ html{scroll-behavior:smooth}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr;padding:20px}
  .card.c8 h3,.card.wide h3{font-size:24px}
  .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}.topcol{border-right:none}
+ .mores .more:nth-of-type(n+4){display:none}
  .more{grid-template-columns:90px 1fr}
  .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
@@ -976,7 +979,8 @@ def render_wishlist(wishes, works, updated, finds=()):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}
-.page{{grid-template-columns:minmax(0,1fr);max-width:1200px}}
+.page{{display:flex;flex-direction:column;align-items:stretch;max-width:1200px;padding-bottom:40px}}
+.sec.wish{{background:none}}
 .back{{display:inline-flex;align-items:center;gap:8px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.15em}}
 .back:hover{{color:#B8336A}}
 .wsum{{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}}
@@ -1135,9 +1139,11 @@ def _front(works, today, updated):
     head = (f'<div class="fbar"><b>头 版</b><span>LATEST · 最近 {HOLD_DAYS} 天</span>'
             f'<span>更新于 {updated} · {len(pool)} 条</span></div>')
 
-    # 头条下面补 3 条次重要的（按重要度，再按新旧），填满左栏
+    # 头条下面补几条次重要的（按重要度，再按新旧），填满左栏：右栏每个作品一行（约 100px）、每个板块一个标题（约 45px），
+    # 头条约占 600px，「其他重要」每条约 85px
     ranked = sorted(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2))
-    more = [p for p in ranked if p[1] is not top][:3]
+    right = 100 * len(works) + 45 * len({w.get("section") or "其他" for w in works})
+    more = [p for p in ranked if p[1] is not top][:max(3, min(10, (right - 600) // 85))]
     more_html = "".join(
         f'<a class="more" href="#{_wid(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">{_pic(x)}'
         f'<span><span class="nm">{e(w["name"])} · {e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span>'
