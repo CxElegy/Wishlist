@@ -1,0 +1,556 @@
+// 设置页的「新增 / 修改关注项」向导：只写个名字，一问一答把关注什么、什么要立刻通知、不想看什么问清楚，
+// 最后汇总成一张可以直接改的表，提交到数据库 submit_item()（db/item_requests.sql），下一次更新时写进 items.yaml。
+// 名字先去维基数据（Wikidata）查一下：猜它是什么、补上各语言的正式名称、Steam / AniList / TMDB 编号和官网。
+// 查不到（没网、被限流、太冷门）也没关系，问题照样一步一步问。
+// 页面里 <script id="wl-cfg"> 给出数据库地址、已有板块和每个关注项现在的设置（scripts/render.py 的 render_settings）。
+(() => {
+  "use strict";
+  const CFG = JSON.parse(document.getElementById("wl-cfg").textContent);
+  const box = document.getElementById("wiz");
+  if (!box) return;
+
+  const LANGS = {"zh-TW": "中文（港台）", "en-US": "英文", "ja-JP": "日文", "ko-KR": "韩文", "zh-CN": "中文（大陆）"};
+  const TYPES = {game: "游戏", anime: "动画 / 漫画", show: "电影 / 剧集", event: "艺人演出", product: "具体商品", category: "一类产品"};
+  const esc = s => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  // 每种东西可以关注的方面。priority 写进「最关心什么」，urgent 是要紧消息的动词（和名字一起拼成正则），
+  // kw 是额外的搜索词（{n} = 名字，{en} / {ja} = 英文 / 日文名），ask 表示还要追问一句
+  const KINDS = {
+    game: {label: "游戏", hint: "手游、主机、PC 游戏", type: "game", section: "游戏", focus: [
+      {id: "play", label: "什么时候能玩", hint: "测试招募、上线日期、预约", priority: "什么时候能玩（测试招募、上线日期、预约）",
+       urgent: "(测试|測試|封測|内测|β|CBT|テスト|事前登録|預約|预约|上線|上线|正式サービス|配信開始|リリース|發售|发售|release date|launch|beta)"},
+      {id: "update", label: "版本更新、活动、新角色", hint: "大版本、周年、联动活动", priority: "大版本更新、新角色、周年活动",
+       urgent: "(新角色|新キャラ|周年|週年|大型アップデート|大版本|新版本|Ver\\.?\\s?\\d)"},
+      {id: "esports", label: "电竞比赛", hint: "赛程、比赛结果、战队", priority: "电竞赛事的日程和结果、战队消息",
+       urgent: "(世界大赛|世界賽|決勝|决赛|總決賽|总决赛|World Championship|Worlds|Major|優勝|冠军|冠軍)",
+       kw: ["{en} esports", "{ja} 大会", "{n} 電競"]},
+      {id: "sale", label: "打折、免费送", hint: "史低、限免", priority: "什么时候打折或限免",
+       urgent: "(セール|特價|特价|折扣|降價|降价|史低|免費|免费|無料|sale)"},
+      {id: "collab", label: "联名、周边", hint: "跨界联动、手办、周边", priority: "联名和周边",
+       urgent: "(コラボ|联名|聯名|collab|グッズ|周边|周邊|フィギュア)"},
+      {id: "story", label: "剧情、角色、世界观", hint: "新剧情、角色设定", priority: "新剧情和角色设定"},
+    ]},
+    anime: {label: "动画 / 漫画", hint: "番剧、漫画、轻小说", type: "anime", section: "影视", focus: [
+      {id: "sequel", label: "新一季 / 续作 / 剧场版", hint: "什么时候官宣、定档", priority: "新一季、续作或剧场版什么时候出",
+       urgent: "(第\\s?[0-9一二三四五六七八九十]+\\s?(季|期)|続編|续篇|續篇|新作|劇場版|剧场版|映画化|放送決定|定档|定檔|製作決定|制作决定|season \\d|sequel)"},
+      {id: "air", label: "播出时间、每集更新", hint: "什么时候播、在哪看", priority: "播出时间和每集更新"},
+      {id: "manga", label: "漫画连载、单行本", hint: "最新话、出刊、完结", priority: "漫画连载和单行本",
+       urgent: "(単行本|单行本|最新刊|最終回|最终话|最終話|完結|完结|休載|休刊)"},
+      {id: "collab", label: "周边、联名、展览", hint: "快闪店、联名商品", priority: "周边、联名和展览",
+       urgent: "(コラボ|联名|聯名|展覧会|展览|展覽|POP ?UP|ポップアップ|快闪)"},
+      {id: "cast", label: "声优、活动、演唱会", hint: "舞台剧、见面会", priority: "声优活动和演唱会",
+       urgent: "(イベント|ライブ|舞台|声優|声优|聲優)"},
+    ]},
+    show: {label: "电影 / 剧集", hint: "美剧、日剧、电影系列", type: "show", section: "影视", focus: [
+      {id: "sequel", label: "新一季 / 续集", hint: "续订、官宣", priority: "新一季或续集什么时候出",
+       urgent: "(第\\s?[0-9一二三四五六七八九十]+\\s?季|新一季|續訂|续订|renewed|season \\d|sequel|續集|续集|続編)"},
+      {id: "date", label: "上映 / 播出日期、在哪看", hint: "定档、上线平台", priority: "上映或播出日期、在哪个平台能看",
+       urgent: "(定档|定檔|上映日|首播|premiere|release date|公開日|配信開始|上線|上线)"},
+      {id: "trailer", label: "预告片", hint: "正式预告、剧照", priority: "预告片", urgent: "(预告|預告|trailer|予告)"},
+      {id: "cast", label: "演员、幕后", hint: "选角、导演、采访", priority: "演员和幕后消息"},
+    ]},
+    artist: {label: "歌手 / 艺人", hint: "乐队、偶像团体、演员", type: "event", section: "演出", focus: [
+      {id: "live", label: "演唱会、巡演", hint: "尤其是日本 / 大阪附近", priority: "演唱会和巡演（尤其是日本、大阪附近的场次）",
+       urgent: "(演唱會|演唱会|巡演|巡迴|ツアー|ライブ|コンサート|concert|tour|公演|ドーム|大阪)"},
+      {id: "ticket", label: "门票：抽选、发售", hint: "先行抽选、一般发售", priority: "门票怎么买（抽选、发售时间）",
+       urgent: "(抽選|抽选|先行|チケット|門票|门票|售票|ticket|一般発売)"},
+      {id: "music", label: "新歌、新专辑、回归", hint: "MV、回归日期", priority: "新歌、新专辑和回归",
+       urgent: "(回归|回歸|컴백|comeback|カムバック|新曲|新歌|新專輯|新专辑|album|リリース|MV)"},
+      {id: "fan", label: "见面会、综艺、粉丝活动", hint: "签售、综艺出演", priority: "见面会、综艺和粉丝活动",
+       urgent: "(見面會|见面会|ファンミ|fan ?meeting|팬미팅|サイン会|签售)"},
+      {id: "collab", label: "联名、代言、周边", hint: "品牌合作", priority: "联名、代言和周边",
+       urgent: "(コラボ|联名|聯名|代言|アンバサダー|ambassador)"},
+    ]},
+    sports: {label: "运动 / 赛事", hint: "比赛、联赛、运动项目", type: "category", section: "运动", focus: [
+      {id: "schedule", label: "赛程、门票", hint: "什么时候比、怎么买票", priority: "赛程和门票",
+       urgent: "(日程|赛程|賽程|チケット|门票|門票|抽選|発売)"},
+      {id: "result", label: "比赛结果", hint: "谁赢了、名次", priority: "比赛结果",
+       urgent: "(優勝|优胜|冠军|冠軍|決勝|决赛|決賽|champion|wins)"},
+      {id: "player", label: "某个选手 / 队伍", hint: "下一步填名字", priority: "", ask: "player"},
+      {id: "watch", label: "转播、在哪看直播", hint: "电视台、网络直播", priority: "在哪看转播和直播"},
+      {id: "join", label: "自己去玩", hint: "场地、装备、季节开放", priority: "自己去玩：场地、装备、开放时间",
+       urgent: "(オープン|開業|开业|開幕|开放|營業|营业|シーズン)"},
+    ]},
+    product: {label: "商品 / 品牌", hint: "手机、杯子、衣服、品牌", type: "product", section: "好物", focus: [
+      {id: "new", label: "新品、新款发售", hint: "新色、新型号", priority: "新品和新款什么时候发售",
+       urgent: "(新品|新作|新款|発売|発表|发售|發售|上市|launch|release|新色)"},
+      {id: "sale", label: "降价、促销", hint: "打折、优惠券", priority: "什么时候降价促销",
+       urgent: "(セール|特價|特价|折扣|降價|降价|sale|値下げ|半額|半价)"},
+      {id: "collab", label: "联名、限定款", hint: "季节限定、地区限定", priority: "联名和限定款",
+       urgent: "(コラボ|联名|聯名|限定|collab)"},
+      {id: "lottery", label: "福袋、抽选、预约", hint: "要抢的东西", priority: "福袋、抽选和预约怎么买",
+       urgent: "(福袋|抽選|抽选|予約|预约|預約|HAPPY ?BOX)"},
+      {id: "cat", label: "猫相关的", hint: "猫柄、猫咪造型、猫用", priority: "猫系商品（猫柄、猫咪造型、猫角色联名）",
+       urgent: "(ねこ|ネコ|猫|貓|キャット|cat)"},
+      {id: "review", label: "评测、好不好用", hint: "开箱、口碑", priority: "评测和口碑"},
+    ]},
+  };
+  const KIND_OF_TYPE = {game: "game", anime: "anime", show: "show", event: "artist", product: "product", category: "product"};
+
+  const EXCLUDES = [
+    {id: "resale", label: "转卖、二手", words: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale"]},
+    {id: "guide", label: "攻略、抽卡教学、排行榜", words: ["攻略", "リセマラ", "ガチャ", "抽卡", "tier list", "最強ランキング"], kinds: ["game", "anime"]},
+    {id: "roundup", label: "带货清单、合集、推荐榜", words: ["おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]},
+    {id: "rumor", label: "传闻、爆料", words: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂"]},
+    {id: "spoiler", label: "剧透", words: ["ネタバレ", "剧透", "劇透", "spoiler"], kinds: ["game", "anime", "show"]},
+  ];
+
+  // ---------- 维基数据 ----------
+  const WD = "https://www.wikidata.org/w/api.php";
+  const WD_LANGS = ["zh", "zh-hans", "zh-cn", "zh-hant", "zh-tw", "zh-hk", "ja", "ko", "en"];
+  const wd = async (params, ms = 8000) => {
+    const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms);
+    try {
+      const r = await fetch(`${WD}?${new URLSearchParams({...params, format: "json", origin: "*"})}`, {signal: ctl.signal});
+      if (!r.ok) throw new Error(r.status);
+      return await r.json();
+    } finally { clearTimeout(t); }
+  };
+  const KIND_BY_QID = {
+    Q7889: "game", Q7058673: "game", Q1107: "anime", Q8274: "anime", Q63952888: "anime", Q21198342: "anime",
+    Q11424: "show", Q5398426: "show", Q24856: "show", Q215380: "artist", Q641066: "artist", Q216337: "artist", Q177220: "artist",
+    Q13406554: "sports", Q18608583: "sports", Q349: "sports", Q431289: "product", Q2424752: "product",
+    Q783794: "product", Q4830453: "product", Q167270: "product",
+  };
+  const KIND_BY_TEXT = [
+    ["game", /游戏|遊戲|ゲーム|video game|game/i],
+    ["anime", /动画|動畫|アニメ|anime|漫画|漫畫|マンガ|manga|轻小说|ライトノベル/i],
+    ["show", /电视剧|電視劇|剧集|劇集|ドラマ|television series|TV series|电影|電影|映画|film|movie/i],
+    ["artist", /歌手|乐队|樂團|组合|組合|团体|團體|偶像|singer|band|girl group|boy band|idol|rapper|アイドル|グループ|歌手|演员|演員|actor|actress/i],
+    ["sports", /锦标赛|錦標賽|公开赛|公開賽|联赛|聯賽|大会|tournament|championship|league|运动|運動|スポーツ|sport|球员|選手|player/i],
+    ["product", /品牌|公司|手机|手機|产品|產品|brand|company|smartphone|product|メーカー|ブランド/i],
+  ];
+  const ORIGIN_LANG = {Q17: "ja-JP", Q884: "ko-KR", Q148: "zh-CN", Q865: "zh-TW", Q8646: "zh-TW", Q30: "en-US", Q145: "en-US"};
+  const claim = (ent, p) => (ent.claims?.[p] || []).map(c => c.mainsnak?.datavalue?.value).filter(v => v != null);
+  const label = (ent, langs) => { for (const l of langs) { const v = ent.labels?.[l]?.value; if (v) return v; } return ""; };
+  const desc = ent => label({labels: ent.descriptions}, ["zh-hans", "zh", "zh-cn", "zh-hant", "zh-tw", "ja", "en"]);
+
+  async function lookup(name) {
+    const found = [];
+    const lists = await Promise.allSettled(["zh", "ja", "en"].map(language =>
+      wd({action: "wbsearchentities", search: name, language, uselang: "zh", type: "item", limit: 5})));
+    for (const l of lists) for (const x of (l.value?.search || [])) if (!found.includes(x.id)) found.push(x.id);
+    if (!found.length) return lists.every(l => l.status === "rejected") ? null : [];
+    const got = await wd({action: "wbgetentities", ids: found.slice(0, 6).join("|"), props: "labels|aliases|descriptions|claims",
+                          languages: WD_LANGS.join("|")});
+    return found.slice(0, 6).map(id => got.entities?.[id]).filter(Boolean).map(ent => facts(ent));
+  }
+
+  function facts(ent) {
+    const zhHant = label(ent, ["zh-tw", "zh-hk", "zh-hant"]), zhHans = label(ent, ["zh-cn", "zh-hans", "zh"]);
+    const ja = label(ent, ["ja"]), ko = label(ent, ["ko"]), en = label(ent, ["en"]);
+    const kinds = claim(ent, "P31").map(v => KIND_BY_QID[v.id]).filter(Boolean);
+    const d = [desc(ent), ent.descriptions?.en?.value || ""].join(" ");
+    const kind = kinds[0] || (KIND_BY_TEXT.find(([, re]) => re.test(d)) || [])[0] || "";
+    const origin = [...claim(ent, "P495"), ...claim(ent, "P17"), ...claim(ent, "P27"), ...claim(ent, "P740")]
+      .map(v => ORIGIN_LANG[v.id]).filter(Boolean);
+    const aliases = Object.entries(ent.aliases || {}).filter(([l]) => WD_LANGS.includes(l))
+      .flatMap(([, list]) => list.map(a => a.value)).filter(a => a.length >= (/[぀-鿿가-힯]/.test(a) ? 2 : 4) && a.length <= 40);
+    const tmdb = claim(ent, "P4983")[0] ? `tv/${claim(ent, "P4983")[0]}` : claim(ent, "P4947")[0] ? `movie/${claim(ent, "P4947")[0]}` : "";
+    return {
+      id: ent.id, title: zhHans || zhHant || en || ja || ent.id, desc: desc(ent) || ent.descriptions?.en?.value || "",
+      names: {zhHans, zhHant, ja, ko, en}, aliases: [...new Set(aliases)].slice(0, 8), kind, origin: [...new Set(origin)],
+      steam: claim(ent, "P1733")[0] || "", anilist: claim(ent, "P8729")[0] || "", anilistManga: claim(ent, "P8731")[0] || "",
+      tmdb, site: claim(ent, "P856")[0] || "",
+    };
+  }
+
+  // ---------- 状态 ----------
+  let S;   // {mode, name, step, ans: {...}, wd, wdState, original, draft}
+  const fresh = () => ({mode: "add", name: "", step: 0, ans: {}, wd: null, wdState: "idle", draft: null, original: null});
+
+  const kindOf = () => KINDS[S.ans.kind] || KINDS.product;
+  const focusOpts = () => kindOf().focus;
+  const chosenFocus = () => focusOpts().filter(f => (S.ans.focus || []).includes(f.id));
+  const wdPick = () => (S.wd || []).find(x => x.id === S.ans.which) || null;
+
+  // 问题清单（add 模式从第 0 问开始；edit 模式「重新问一遍」从 kind 开始）
+  const STEPS = [
+    {id: "name", when: () => S.mode === "add", render: askName},
+    {id: "which", when: () => S.mode === "add" && S.wdState !== "off", render: askWhich},
+    {id: "kind", render: () => single("kind", "这是什么？", guessHint(),
+      Object.entries(KINDS).map(([v, k]) => ({v, label: k.label, hint: k.hint})))},
+    {id: "focus", render: () => multi("focus", `你关注「${S.name}」的哪方面？`, "可以多选。会按这个给消息排序：直接回答这些的新消息排最前面。",
+      focusOpts().map(f => ({v: f.id, label: f.label, hint: f.hint})), {other: "其他（自己写）", min: 1})},
+    {id: "player", when: () => (S.ans.focus || []).includes("player"), render: () => text("player",
+      "关注哪个选手 / 队伍？", "写名字，几个就用逗号隔开。会加进搜索词，只留提到他们的消息。", "如：大坂なおみ, 錦織圭")},
+    {id: "urgent", when: () => chosenFocus().some(f => f.urgent), render: () => multi("urgent",
+      "哪些消息要当天推到 Discord？", "其余的只在简报和每周一的周报里。传闻、Reddit 帖子不算要紧消息。",
+      [...chosenFocus().filter(f => f.urgent).map(f => ({v: f.id, label: f.label, hint: f.hint})),
+       {v: "none", label: "都不用，周报里看就行", only: true}])},
+    {id: "exclude", render: () => multi("exclude", "这些不想看？", "标题里有这些词的直接丢掉。",
+      [...EXCLUDES.filter(x => !x.kinds || x.kinds.includes(S.ans.kind)).map(x => ({v: x.id, label: x.label, hint: x.words.slice(0, 4).join("、")})),
+       {v: "none", label: "都可以看", only: true}])},
+    {id: "langs", render: () => multi("langs", "看哪些语言的新闻？", langHint(),
+      Object.entries(LANGS).map(([v, l]) => ({v, label: l, hint: v === "zh-CN" ? "大陆网站常拦海外、图片防盗链，一般不用" : ""})), {min: 1})},
+    {id: "section", render: () => single("section", "放在头版哪个板块？", "板块就是首页上的分栏。",
+      [...CFG.sections.map(v => ({v, label: v, hint: v === kindOf().section ? "按类型推荐" : ""})), {v: "+", label: "新板块…", hint: "自己起个名字"}])},
+    {id: "size", when: () => S.mode === "add", render: () => single("size", "每期给它多大篇幅？", "以后在上面的列表里随时能改。", [
+      {v: "S", label: "S · 少", hint: "每期最多 3 条，大约一行"}, {v: "M", label: "M · 中等", hint: "每期最多 5 条"},
+      {v: "L", label: "L · 多", hint: "每期最多 8 条，满满一整屏"}])},
+    {id: "review", render: review},
+  ];
+  const live = () => STEPS.filter(s => !s.when || s.when());
+  const LABELS = {name: "名字", which: "是哪个", kind: "这是", focus: "关注", player: "选手 / 队伍", urgent: "立刻通知",
+                  exclude: "不看", langs: "语言", section: "板块", size: "篇幅"};
+
+  function defaults(id) {
+    const pick = wdPick();
+    if (id === "kind") return pick?.kind || (S.original ? KIND_OF_TYPE[S.original.type] : "") || "";
+    if (id === "urgent") return chosenFocus().filter(f => f.urgent).map(f => f.id);
+    if (id === "langs") return [...new Set(["zh-TW", "en-US", ...(pick?.origin || []).filter(l => l !== "zh-CN")])];
+    if (id === "section") return S.original?.section || kindOf().section;
+    if (id === "size") return "M";
+    return undefined;
+  }
+  const guessHint = () => {
+    const p = wdPick();
+    if (p?.kind) return `按维基数据猜是「${KINDS[p.kind].label}」${p.desc ? `（${p.desc}）` : ""}，不对就改。`;
+    return "选最接近的一类，后面的问题会跟着变。";
+  };
+  const langHint = () => {
+    const o = (wdPick()?.origin || []).filter(l => l !== "zh-CN");
+    return o.length ? `它来自${o.map(l => LANGS[l].replace(/（.*）/, "")).join("、")}，已经帮你勾上。` : "中文默认用港台媒体。";
+  };
+
+  // ---------- 画面 ----------
+  const h = (tag, attrs = {}, ...kids) => {
+    const el = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
+      if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+      else if (k === "class") el.className = v;
+      else el.setAttribute(k, v === true ? "" : v);
+    }
+    el.append(...kids.flat().filter(k => k != null && k !== false));
+    return el;
+  };
+
+  function draw() {
+    const steps = live(), step = steps[Math.min(S.step, steps.length - 1)];
+    const title = S.mode === "edit" ? `修改「${S.name}」` : "＋ 新增关注项";
+    const asked = S.mode === "add" || S.ans.focus;   // 修改时直接到汇总的，没有回答过问题
+    const trail = h("ol", {class: "trail", "aria-label": "已经回答的"},
+      (asked ? steps.slice(0, S.step) : []).filter(s => s.id !== "review").map((s, i) => h("li", {}, h("button", {type: "button", onclick: () => go(i)},
+        h("span", {}, LABELS[s.id] || s.id), h("b", {}, answerText(s.id))))));
+    box.replaceChildren(h("h2", {}, title), trail, step.render(), queueList);
+    const first = box.querySelector(".q input[type=text], .q .opt[aria-pressed=true], .q .opt, .rv input, .rv select");
+    if (first && S.touched) first.focus({preventScroll: true});
+  }
+
+  function answerText(id) {
+    const a = S.ans[id];
+    if (id === "name") return S.name;
+    if (id === "which") return wdPick()?.title || "不用查";
+    if (id === "kind") return KINDS[a]?.label || "";
+    if (id === "section") return a === "+" ? S.ans.section_new || "新板块" : a;
+    if (id === "focus") return [...chosenFocus().map(f => f.label), S.ans.focus_other].filter(Boolean).join("、");
+    if (id === "urgent") return (a || []).includes("none") ? "不用" : chosenFocus().filter(f => (a || []).includes(f.id)).map(f => f.label).join("、");
+    if (id === "exclude") return (a || []).includes("none") ? "都看" : EXCLUDES.filter(x => (a || []).includes(x.id)).map(x => x.label).join("、");
+    if (id === "langs") return (a || []).map(l => LANGS[l]).join("、");
+    return Array.isArray(a) ? a.join("、") : a || "";
+  }
+
+  const no = () => { const steps = live().filter(s => s.id !== "review"); return `第 ${S.step + 1} / ${steps.length} 问`; };
+  const go = i => { S.touched = true; S.step = i; draw(); };
+  const next = () => { S.touched = true; S.step = Math.min(S.step + 1, live().length - 1); if (live()[S.step].id === "review") S.draft = build(); draw(); };
+  const back = () => { if (S.step > 0) { S.touched = true; S.step--; draw(); } };
+  const nav = (ok, label = "下一步") => h("div", {class: "wnav"},
+    S.step > 0 ? h("button", {type: "button", onclick: back}, "← 上一步") : null,
+    h("button", {type: "button", class: "main", disabled: !ok, onclick: next}, label),
+    S.mode === "edit" ? h("button", {type: "button", onclick: () => { S.step = live().length - 1; S.draft = build(); draw(); }}, "跳到最后") : null,
+    h("button", {type: "button", onclick: reset}, "取消"));
+
+  function askName() {
+    const input = h("input", {type: "text", maxlength: 80, value: S.name, placeholder: "如：原神、鬼灭之刃、ILLIT、大阪马拉松",
+                              "aria-label": "名字"});
+    const submit = () => {
+      const name = input.value.trim();
+      if (!name) { input.focus(); return; }
+      if (name !== S.name) { S.name = name; S.ans = {}; S.wd = null; S.wdState = "loading"; startLookup(name); }
+      next();
+    };
+    input.addEventListener("keydown", ev => { if (ev.key === "Enter" && !ev.isComposing) { ev.preventDefault(); submit(); } });
+    return h("div", {class: "q"}, h("span", {class: "no"}, "第 1 问"), h("h3", {}, "想关注什么？"),
+      h("p", {}, "只写名字就行。接下来一步一步问你关注它的哪方面、什么要立刻通知、不想看什么，最后汇总给你看，都能改。"),
+      input, h("div", {class: "wnav"}, h("button", {type: "button", class: "main", onclick: submit}, "下一步"),
+      S.name ? h("button", {type: "button", onclick: reset}, "取消") : null));
+  }
+
+  function startLookup(name) {
+    lookup(name).then(list => {
+      if (S.name !== name) return;
+      S.wd = list || []; S.wdState = list === null ? "fail" : "done";
+      if (S.wd.length && S.ans.which == null) S.ans.which = S.wd[0].id;
+      if (live()[S.step]?.id === "which") draw();
+    }).catch(() => { if (S.name === name) { S.wd = []; S.wdState = "fail"; if (live()[S.step]?.id === "which") draw(); } });
+  }
+
+  function askWhich() {
+    const head = [h("span", {class: "no"}, no()), h("h3", {}, `你说的「${S.name}」是哪一个？`)];
+    if (S.wdState === "loading") {
+      return h("div", {class: "q"}, ...head, h("p", {}, "正在维基数据里查各语言的正式名称…"),
+        h("div", {class: "wnav"}, h("button", {type: "button", onclick: back}, "← 上一步"),
+          h("button", {type: "button", class: "main", onclick: () => { S.wdState = "off"; S.ans.which = ""; S.step--; next(); }}, "不查了，直接下一步")));
+    }
+    if (!S.wd?.length) {
+      return h("div", {class: "q"}, ...head,
+        h("p", {}, S.wdState === "fail" ? "维基数据现在连不上，没关系：搜索词就先用名字，最后可以自己补。" : "维基数据里没查到，没关系：搜索词就先用名字，最后可以自己补。"),
+        nav(true));
+    }
+    const opts = [...S.wd.map(x => ({v: x.id, label: x.title + (x.names.ja && x.names.ja !== x.title ? ` · ${x.names.ja}` : ""), hint: x.desc || "（没有说明）"})),
+                  {v: "", label: "都不是", hint: "不用查了，搜索词先用名字"}];
+    return single("which", head[1].textContent, "选对的那个，会自动补上中日韩英的正式名称、官网等。", opts);
+  }
+
+  function options(id, opts, multiSel) {
+    const cur = S.ans[id] ?? defaults(id) ?? (multiSel ? [] : "");
+    if (S.ans[id] == null && cur !== "" && !(Array.isArray(cur) && !cur.length)) S.ans[id] = cur;
+    return h("div", {class: "opts", role: multiSel ? "group" : "radiogroup"}, opts.map(o => h("button", {
+      type: "button", class: "opt", "aria-pressed": String(multiSel ? (S.ans[id] || []).includes(o.v) : S.ans[id] === o.v),
+      onclick: () => {
+        if (!multiSel) { S.ans[id] = o.v; if (o.v === "+") draw(); else next(); return; }
+        let v = [...(S.ans[id] || [])];
+        v = v.includes(o.v) ? v.filter(x => x !== o.v) : o.only ? [o.v] : [...v.filter(x => !opts.find(p => p.v === x)?.only), o.v];
+        S.ans[id] = v; draw();
+      }}, o.label, o.hint ? h("small", {}, o.hint) : null)));
+  }
+
+  function single(id, ask, hint, opts) {
+    const body = [h("span", {class: "no"}, no()), h("h3", {}, ask), hint ? h("p", {}, hint) : null, options(id, opts, false)];
+    if (id === "section" && S.ans.section === "+") {
+      const input = h("input", {type: "text", maxlength: 20, value: S.ans.section_new || "", placeholder: "新板块的名字，如：美食",
+        "aria-label": "新板块的名字", oninput: ev => { S.ans.section_new = ev.target.value.trim(); okBtn.disabled = !S.ans.section_new; }});
+      body.push(input);
+    }
+    const ok = S.ans[id] != null && S.ans[id] !== "+" || (id === "section" && S.ans.section === "+" && !!S.ans.section_new) || (id === "which");
+    const n = nav(ok, "下一步"); const okBtn = n.querySelector(".main");
+    body.push(n);
+    return h("div", {class: "q"}, ...body);
+  }
+
+  function multi(id, ask, hint, opts, {other, min = 0} = {}) {
+    const body = [h("span", {class: "no"}, no()), h("h3", {}, ask), hint ? h("p", {}, hint) : null, options(id, opts, true)];
+    let okBtn;
+    const valid = () => (S.ans[id] || []).length + (other && S.ans[id + "_other"] ? 1 : 0) >= min;
+    if (other) body.push(h("input", {type: "text", maxlength: 200, value: S.ans[id + "_other"] || "", placeholder: other,
+      "aria-label": other, oninput: ev => { S.ans[id + "_other"] = ev.target.value.trim(); okBtn.disabled = !valid(); }}));
+    const n = nav(valid()); okBtn = n.querySelector(".main");
+    body.push(n);
+    return h("div", {class: "q"}, ...body);
+  }
+
+  function text(id, ask, hint, placeholder) {
+    const input = h("input", {type: "text", maxlength: 300, value: S.ans[id] || "", placeholder, "aria-label": ask,
+      oninput: ev => { S.ans[id] = ev.target.value; }});
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, ask), h("p", {}, hint), input, nav(true));
+  }
+
+  // ---------- 回答 → items.yaml 的字段 ----------
+  const uniq = list => [...new Set(list.filter(x => x != null).map(x => String(x).trim()).filter(Boolean))];
+
+  function build() {
+    const pick = wdPick(), base = S.original || {}, names = pick?.names || {};
+    const k = kindOf(), focus = chosenFocus();
+    const players = uniq((S.ans.player || "").split(/[,，、\n]+/));
+    const official = uniq([S.mode === "edit" ? (base.keywords || [])[0] || S.name : S.name,
+                           names.zhHant, names.zhHans, names.ja, names.ko, names.en]);
+    const extra = focus.flatMap(f => f.kw || []).map(t => t.replace("{n}", S.name).replace("{en}", names.en || S.name).replace("{ja}", names.ja || S.name));
+    const keywords = S.mode === "edit" && !pick ? uniq([...(base.keywords || [S.name]), ...extra, ...players])
+                                                : uniq([...official, ...extra, ...players]).slice(0, 12);
+    const match = S.mode === "edit" && !pick ? uniq([...(base.match || base.keywords || [S.name]), ...players])
+                                             : uniq([...official, ...(pick?.aliases || []), ...players]).slice(0, 30);
+    const names4re = S.mode === "edit" && !pick ? uniq(base.match || base.keywords || [S.name]) : uniq([...official, ...(pick?.aliases || [])]);
+    const alias = (players.length ? players : names4re.slice(0, 10)).map(esc).join("|");
+    const urgentIds = (S.ans.urgent || []).includes("none") ? [] : S.ans.urgent || [];
+    const urgent = focus.filter(f => f.urgent && urgentIds.includes(f.id)).map(f => `(${alias}).{0,30}${f.urgent}`);
+    const exclude = uniq(EXCLUDES.filter(x => (S.ans.exclude || []).includes(x.id)).flatMap(x => x.words));
+    const priority = uniq([...focus.map(f => f.id === "player" ? `${players.join("、")}的消息` : f.priority),
+                           S.ans.focus_other || ""]).join("；");
+    const section = S.ans.section === "+" ? S.ans.section_new : S.ans.section;
+    const d = {
+      ...base,
+      type: k.type, section, keywords, match,
+      // 修改时跳过了的问题保留原来的设置
+      priority: focus.length || S.ans.focus_other ? priority : base.priority || "",
+      urgent_patterns: S.ans.urgent ? urgent : base.urgent_patterns || [], exclude: uniq([...(S.mode === "edit" ? base.exclude || [] : []), ...exclude]),
+      news_langs: S.ans.langs || defaults("langs"),
+    };
+    if (S.mode === "add") {
+      d.size = S.ans.size || "M";
+      d.notes = [`关注：${[...focus.map(f => f.label), S.ans.focus_other].filter(Boolean).join("、")}。`,
+                 pick?.desc ? `维基数据：${pick.desc}。` : ""].join("");
+    }
+    if (pick) {
+      const sub = names.ja && names.ja !== S.name ? names.ja : names.en && names.en !== S.name ? names.en : "";
+      if (sub && !d.subtitle) d.subtitle = sub;
+      if (pick.steam && !d.steam_appid) d.steam_appid = Number(pick.steam);
+      if (pick.anilist && !d.anilist_id && S.ans.kind === "anime") d.anilist_id = Number(pick.anilist);
+      else if (pick.anilistManga && !d.anilist_id && S.ans.kind === "anime") { d.anilist_id = Number(pick.anilistManga); d.anilist_type = "MANGA"; }
+      if (pick.tmdb && !d.tmdb && S.ans.kind === "show") d.tmdb = pick.tmdb;
+      if (pick.site && !d.site) d.site = pick.site;
+    }
+    return d;
+  }
+
+  // ---------- 汇总（最后一步；修改时直接从这里开始） ----------
+  const FIELDS = [
+    ["subtitle", "副标题", "板块标题旁的小字，如日文名", "text"],
+    ["keywords", "搜索关键词", "每个词单独搜一次，一行一个；各语言的正式名称都写上", "lines"],
+    ["match", "只留提到这些词的", "标题或摘要里至少有一个，否则丢掉，一行一个；不填就用搜索关键词", "lines"],
+    ["priority", "最关心它的什么", "直接回答这个的新消息排最前面、做成大板块", "area"],
+    ["exclude", "不想看的词", "标题里有这些词的直接丢掉，一行一个", "lines"],
+  ];
+  const ADVANCED = [
+    ["urgent_patterns", "要紧消息规则", "标题命中这些正则的当天推 Discord，一行一条", "code"],
+    ["steam_appid", "Steam 编号", "Steam 商店网址里的数字，用来抓公告和价格", "text"],
+    ["anilist_id", "AniList 编号", "anilist.co 网址里的数字", "text"],
+    ["anilist_type", "AniList 类型", "ANIME 或 MANGA", "text"],
+    ["tmdb", "TMDB", "如 tv/1399 或 movie/693134", "text"],
+    ["site", "官网", "用来找封面图", "text"],
+    ["notes", "给 AI 编辑的背景说明", "读者是谁、已经知道什么、不报什么", "area"],
+  ];
+
+  function review() {
+    const d = S.draft || build();
+    S.draft = d;
+    const field = ([key, name, hint, kind]) => {
+      const v = d[key];
+      const val = Array.isArray(v) ? v.join("\n") : v ?? "";
+      const input = kind === "text" ? h("input", {type: "text", value: val, "data-k": key})
+        : h("textarea", {"data-k": key, class: kind === "code" ? "code" : null, rows: kind === "area" ? 3 : Math.min(8, Math.max(3, String(val).split("\n").length))}, val);
+      return h("label", {}, h("span", {}, name), h("small", {}, hint), input);
+    };
+    const types = h("select", {"data-k": "type"}, Object.entries(TYPES).map(([v, l]) => h("option", {value: v, selected: d.type === v}, l)));
+    const secs = uniq([...CFG.sections, d.section]);
+    const section = h("select", {"data-k": "section"}, secs.map(v => h("option", {value: v, selected: d.section === v}, v)),
+      h("option", {value: "+"}, "新板块…"));
+    const secNew = h("input", {type: "text", maxlength: 20, placeholder: "新板块的名字", hidden: true, "data-k": "section_new"});
+    section.addEventListener("change", () => { secNew.hidden = section.value !== "+"; if (!secNew.hidden) secNew.focus(); });
+    const langs = h("div", {class: "checks"}, Object.entries(LANGS).map(([v, l]) =>
+      h("label", {}, h("input", {type: "checkbox", value: v, checked: (d.news_langs || []).includes(v), "data-lang": ""}), l)));
+    const size = S.mode === "add" ? h("div", {class: "f"}, h("span", {}, "篇幅"), h("div", {class: "checks"}, ["S", "M", "L"].map(v =>
+      h("label", {}, h("input", {type: "radio", name: "wl-size", value: v, checked: d.size === v}), v)))) : null;
+    const msg = h("span", {class: "msg", role: "status"});
+    const send = h("button", {type: "button", class: "main", onclick: () => submit(form, msg, send)}, S.mode === "edit" ? "提交修改" : "提交");
+    const form = h("div", {class: "rv"},
+      S.mode === "add" ? h("label", {}, h("span", {}, "名字"), h("small", {}, "简报上显示的名字"),
+        h("input", {type: "text", value: S.name, maxlength: 80, "data-k": "name"})) : null,
+      h("div", {class: "two"}, h("label", {}, h("span", {}, "类型"), types),
+        h("label", {}, h("span", {}, "板块"), section, secNew)),
+      size,
+      FIELDS.map(field),
+      h("div", {class: "f"}, h("span", {}, "新闻语言"), langs),
+      h("details", {open: S.mode === "edit" ? null : null}, h("summary", {}, "高级：要紧消息规则、编号、官网、背景说明"),
+        h("div", {class: "rv"}, ADVANCED.map(field))));
+    return h("div", {class: "q"},
+      h("span", {class: "no"}, S.mode === "edit" ? "现在的设置" : "最后一步：看一眼"),
+      h("h3", {}, S.mode === "edit" ? `「${S.name}」现在是这样` : "按你的回答，会这样加进关注清单"),
+      h("p", {}, S.mode === "edit" ? "直接改下面的内容，或者「重新问一遍」按问题重新设置。提交后下一次更新（最多 2 小时）生效。"
+                                   : "都可以直接改。提交后下一次更新（最多 2 小时）加进关注清单、往前补抓 6 周的新闻，Discord 会收到通知。"),
+      form,
+      h("div", {class: "wnav"},
+        S.mode === "add" ? h("button", {type: "button", onclick: back}, "← 上一步")
+                         : h("button", {type: "button", onclick: () => { S.step = 0; S.ans = {}; draw(); }}, "重新问一遍"),
+        send, h("button", {type: "button", onclick: reset}, "取消"), msg));
+  }
+
+  function readForm(form) {
+    const d = {...S.draft};
+    form.querySelectorAll("[data-k]").forEach(el => {
+      const k = el.dataset.k, v = el.value.trim();
+      if (k === "name" || k === "section_new") return;
+      const isList = ["keywords", "match", "exclude", "urgent_patterns"].includes(k);
+      d[k] = isList ? uniq(v.split("\n")) : v;
+    });
+    if (d.section === "+") d.section = form.querySelector("[data-k=section_new]").value.trim();
+    d.news_langs = [...form.querySelectorAll("[data-lang]:checked")].map(x => x.value);
+    const size = form.querySelector("input[name=wl-size]:checked");
+    if (size) d.size = size.value;
+    for (const k of ["steam_appid", "anilist_id"]) if (/^\d+$/.test(d[k] ?? "")) d[k] = Number(d[k]);
+    return d;
+  }
+
+  function problems(d, name) {
+    if (!name) return "名字要填";
+    if (!d.section) return "板块要选";
+    if (!d.news_langs.length) return "至少选一种新闻语言";
+    for (const p of d.urgent_patterns || []) { try { new RegExp(p); } catch (_) { return `要紧消息规则写错了：${p.slice(0, 30)}…`; } }
+    for (const k of ["steam_appid", "anilist_id"]) if (d[k] !== "" && d[k] != null && !Number.isInteger(d[k])) return `${k} 要是数字`;
+    if (d.tmdb && !/^(tv|movie)\/\d+$/.test(d.tmdb)) return "TMDB 要写成 tv/1399 或 movie/693134";
+    if (d.site && !/^https?:\/\/\S+$/.test(d.site)) return "官网要是 http(s) 网址";
+    if (d.anilist_type && !["ANIME", "MANGA"].includes(d.anilist_type)) return "AniList 类型只能是 ANIME 或 MANGA";
+    return "";
+  }
+
+  const norm = (k, v) => Array.isArray(v) ? (k === "news_langs" ? [...v].sort() : v) : v ?? "";
+  const same = (k, a, b) => JSON.stringify(norm(k, a ?? (Array.isArray(b) ? [] : ""))) === JSON.stringify(norm(k, b ?? (Array.isArray(a) ? [] : "")));
+  const KEYS = ["type", "section", "size", "subtitle", "keywords", "match", "exclude", "news_langs", "priority", "urgent_patterns",
+                "site", "steam_appid", "anilist_id", "anilist_type", "tmdb", "notes"];
+
+  async function submit(form, msg, btn) {
+    const d = readForm(form);
+    const name = S.mode === "add" ? form.querySelector("[data-k=name]").value.trim() : S.name;
+    const bad = problems(d, name);
+    const sayMsg = (t, cls) => { msg.textContent = t; msg.className = "msg " + (cls || ""); };
+    if (bad) { sayMsg(bad, "err"); return; }
+    if (S.mode === "add" && CFG.items.some(i => i.name === name)) { sayMsg(`关注清单里已经有「${name}」了，在上面的列表里点「改」`, "err"); return; }
+    const config = {};
+    for (const k of KEYS) {
+      if (S.mode === "edit") { if (!same(k, d[k], S.original[k])) config[k] = d[k] ?? null; }
+      else if (d[k] != null && d[k] !== "" && !(Array.isArray(d[k]) && !d[k].length)) config[k] = d[k];
+    }
+    if (S.mode === "edit" && !Object.keys(config).length) { sayMsg("没有改动", "err"); return; }
+    btn.disabled = true; sayMsg("提交中…");
+    try {
+      const r = await fetch(`${CFG.url}/rest/v1/rpc/submit_item`, {method: "POST",
+        headers: {apikey: CFG.key, "Content-Type": "application/json"},
+        body: JSON.stringify({p_action: S.mode, p_name: name, p_config: config})});
+      if (r.ok) {
+        const what = S.mode === "edit" ? `已提交「${name}」的修改 ✓ 下一次更新（最多 2 小时）生效`
+                                       : `已提交「${name}」✓ 下一次更新（最多 2 小时）加进关注清单、开始收集新闻`;
+        reset(); loadQueue();
+        const note = box.querySelector(".hint, .q p"); if (note) { note.textContent = what; note.className = "msg ok"; }
+        return;
+      }
+      const err = await r.json().catch(() => ({}));
+      sayMsg("没存上：" + (err.message || r.status), "err");
+    } catch (_) { sayMsg("连不上数据库", "err"); }
+    btn.disabled = false;
+  }
+
+  // ---------- 最近提交的 ----------
+  const queueList = h("ul", {class: "queue", "aria-label": "最近提交的"});
+  const STATES = {pending: "等待处理（下次更新时）", done: "已写进关注清单", skipped: "没处理"};
+  function loadQueue() {
+    if (!CFG.url || !CFG.key) return;
+    fetch(`${CFG.url}/rest/v1/rpc/list_item_requests`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"}, body: "{}"})
+      .then(r => r.ok ? r.json() : []).then(list => queueList.replaceChildren(...(list || []).map(x => h("li", {},
+        h("b", {}, x.name), h("span", {}, ` · ${x.action === "edit" ? "修改" : "新增"} · ${STATES[x.status] || x.status} · ${
+          new Date(x.created_at).toLocaleString("zh-CN", {month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit"})}`),
+        x.note ? h("em", {}, `：${x.note}`) : null)))).catch(() => {});
+  }
+
+  // ---------- 入口 ----------
+  function reset() { S = fresh(); draw(); }
+
+  window.wlEditItem = name => {
+    const item = CFG.items.find(i => i.name === name);
+    if (!item) return;
+    S = fresh();
+    S.mode = "edit"; S.name = name; S.original = {...item, news_langs: item.news_langs || CFG.langs};
+    S.ans = {kind: KIND_OF_TYPE[item.type] || "product", section: item.section, langs: item.news_langs};
+    if (item.section === "运动" && item.type === "category") S.ans.kind = "sports";
+    S.draft = {...S.original};
+    S.step = live().length - 1;
+    draw();
+    box.scrollIntoView({behavior: "smooth", block: "start"});
+  };
+
+  if (!CFG.url || !CFG.key) {
+    box.replaceChildren(h("h2", {}, "＋ 新增关注项"), h("p", {class: "hint"}, "还没连数据库（items.yaml 的 supabase_url / supabase_key），暂时只能跟 Claude 说。"));
+    return;
+  }
+  reset();
+  loadQueue();
+})();
