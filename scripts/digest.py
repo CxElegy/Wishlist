@@ -1410,6 +1410,22 @@ def recommend(force_discover=False):
           f"共 {1 + max([p['batch'] for p in picks] or [0])} 批（学自 {len(votes)} 次投票）", file=sys.stderr)
 
 
+def with_new_items(issues, items):
+    """刚加的关注项（items.yaml 里有、但还没有任何一期简报收录）：先在最新一期里放一个「正在收集新闻」的小栏，
+    设置页一提交、网页一重新生成，首页上马上就有它的版面；收集完出刊后换成真正的报道。
+    只改这次生成网页用的数据，不写回 reports/。"""
+    shown = {b["name"] for issue in issues for b in issue.get("items", [])}
+    new = [i for i in items if i["name"] not in shown]
+    if not new:
+        return issues
+    themes = load_json(THEMES_FILE) or {}
+    blocks = [{"name": i["name"], "section": section_of(i), "subtitle": i.get("subtitle", ""),
+               "theme": theme.resolve(i, None, themes), "quiet": True, "collecting": True,
+               "status": "刚加进关注清单，正在收集新闻，几分钟后这里会换成报道",
+               "cover": None, "last": None, "facts": [], "stories": []} for i in new]
+    return [{**issues[0], "items": issues[0]["items"] + blocks}] + issues[1:]
+
+
 def write_page():
     issues = [load_json(p) for p in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True)[:ISSUES_ON_PAGE]]
     issues = [i for i in issues if i]
@@ -1419,6 +1435,7 @@ def write_page():
     settings, items = load_config()
     tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
+    issues = with_new_items(issues, items)
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes())

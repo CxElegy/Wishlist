@@ -690,7 +690,8 @@ def _calm(block):
     if last:
         tail = (f'<a class="last" href="{e(last["url"])}" target="_blank" rel="noopener">'
                 f'<span class="mono">最近 · {e(last["date"].replace("-", "."))}</span><b>{e(last["headline"])}</b></a>')
-    return (f'<div class="calm">{pic}<div class="txt"><span class="tag">暂 无 新 消 息</span>{status}</div>'
+    tag = "正 在 收 集" if block.get("collecting") else "暂 无 新 消 息"
+    return (f'<div class="calm">{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
             f"{tail}</div>")
 
 

@@ -583,7 +583,7 @@
   const progress = x => {
     if (x.status === "skipped") return ["err", `没处理：${x.note || "内容不对"}`];
     if (x.status === "done") return ["ok", x.action === "edit" ? "✓ 已改好，网页 1 分钟内更新（刷新本页就能看到）"
-                                                            : "✓ 已加进关注清单，正在收集新闻，几分钟后出现在简报上"];
+                                                            : "✓ 已加进关注清单，首页已经有它的版面，新闻收集完（几分钟）就会出现"];
     const m = (Date.now() - new Date(x.created_at)) / 60000;
     if (!INSTANT) return ["wait", "已收到 ✓ 还没设 GitHub 令牌，下次每 2 小时的更新时处理"];
     return ["wait", m < 5 ? "已收到 ✓ 已经叫 GitHub 马上处理，网页正在重新生成"
