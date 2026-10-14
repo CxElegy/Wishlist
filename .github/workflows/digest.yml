@@ -79,7 +79,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add inbox reports state docs
+          git add inbox reports state docs wishlist.yaml   # wishlist.yaml：新闻里点了「加入心愿单」的
           git diff --cached --quiet || git commit -m "更新 $(TZ=Asia/Shanghai date +'%F %H:%M')"
           # 运行期间别处也推送了（合并 PR、改代码、AI 编辑）：先合并；生成文件冲突时以这次的新数据为准，
           # 再用合并后的代码重新生成网页。最多试 3 次

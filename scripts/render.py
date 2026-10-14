@@ -200,8 +200,8 @@ html{scroll-behavior:smooth}
 .wish .band{background:linear-gradient(162deg,#1A1C22 0 42%,var(--bg) 42% 100%)}
 .wish .band .title{font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:40px;color:#F4EDE4;letter-spacing:.08em}
 .wish .band .sub{color:var(--fg);font:700 13px 'JetBrains Mono',monospace;letter-spacing:.25em}
-.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--line)}
-.wcard{position:relative;display:flex;flex-direction:column;background:var(--bg)}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.wcard{position:relative;display:flex;flex-direction:column;background:var(--bg);box-shadow:0 0 0 .5px var(--line)}
 .wcard.solo{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
 .wcard .wimg{position:relative;aspect-ratio:1/1;max-width:100%;background:#FFF;display:grid;place-items:center;overflow:hidden}
 .wcard.solo .wimg{aspect-ratio:auto;min-height:380px}
@@ -213,7 +213,7 @@ html{scroll-behavior:smooth}
 .wcard .wtxt{display:flex;flex-direction:column;gap:14px;padding:24px 26px;min-width:0}
 .wcard.solo .wtxt{justify-content:center;padding:36px 40px;border-left:1px solid var(--line)}
 .wcard .shop{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc)}
-.wcard h3{margin:0;font:900 26px/1.3 'Noto Sans SC',sans-serif;text-wrap:balance}
+.wcard h3{margin:0;font:900 26px/1.3 'Noto Sans SC',sans-serif;text-wrap:pretty}
 .wcard.solo h3{font-size:36px}
 .wcard .price{font:900 30px/1 'Noto Sans SC',sans-serif;letter-spacing:.01em;font-variant-numeric:tabular-nums}
 .wcard .price small{font:700 14px 'JetBrains Mono',monospace;margin-right:6px;opacity:.7}
@@ -266,6 +266,9 @@ html{scroll-behavior:smooth}
 .pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
 .pk .taste{font-size:11px;opacity:.7}
 .vote{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.pk:not(.big) .vote button span{display:none}
+.pk:not(.big) .vote button{padding:4px 12px;font-size:14px}
+.pk.big>a{flex:none}
 .vote button{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border:1.5px solid #1A1C22;background:transparent;
  color:#1A1C22;font:700 12px 'Noto Sans SC',sans-serif;cursor:pointer;border-radius:0;white-space:nowrap}
 .vote button:hover{background:#1A1C22;color:#F4EDE4}
@@ -283,13 +286,13 @@ html{scroll-behavior:smooth}
 .brief li:hover .vt{opacity:1}
 .downv{opacity:.4;filter:grayscale(.8)}
 .pkbatch[hidden]{display:none}
+.vote .wish[aria-pressed=true],.vt .wish[aria-pressed=true]{background:#1A1C22;border-color:#1A1C22;color:#FFB3CF}
 .shuffle{margin-left:auto;padding:6px 14px;border:2px solid #1A1C22;background:#1A1C22;color:#F4EDE4;
  font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.1em;cursor:pointer;border-radius:0;white-space:nowrap}
 .shuffle:hover{background:#B8336A;border-color:#B8336A}
 .shuffle small{font:700 11px 'JetBrains Mono',monospace;opacity:.75;margin-left:6px}
 @media (hover:none){.vt{opacity:.9}}
-@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}
- .pk:not(.big) .vote button span{display:none}.pk:not(.big) .vote button{padding:4px 14px;font-size:15px}}
+@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
 /* ---------- 按时间排列的卡片 ---------- */
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
@@ -338,6 +341,7 @@ html{scroll-behavior:smooth}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr;padding:20px}
  .card.c8 h3,.card.wide h3{font-size:24px}
  .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}.topcol{border-right:none}
+ .mores .more:nth-of-type(n+4){display:none}
  .more{grid-template-columns:90px 1fr}
  .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
  .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
@@ -721,7 +725,8 @@ def _section(block, anchor=""):
     grid += _brief(texts) + _older(more + older, today, len(more), old_texts)
     recent = recent or texts
     quiet = "" if recent else " quiet"
-    return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
+    shop = ' data-shop="1"' if block.get("section") == SHOP_SECTION else ""
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}"{shop} class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
             f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
             f"{facts}{grid}</section>")
 
@@ -732,6 +737,7 @@ def _why_verb(x):
     return "在纠结" if x.get("kind") == "hesitate" or x.get("hesitating") else "想要"
 
 
+SHOP_SECTION = "好物"  # 这个板块的消息是东西：卡片上有「♥ 加入心愿单」
 WORK_KEY = "作品:"  # 投票学到的口味里，按作品记的那一类（和 digest.WORK_KEY 一致）
 
 
@@ -741,6 +747,7 @@ def _picks(picks, works, feedback=None):
     if not picks:
         return ""
     covers = {w["name"]: [w["_thumb"]] if w.get("_thumb") else [] for w in works}
+    shops = {w["name"] for w in works if w.get("section") == SHOP_SECTION}
 
     def cards_of(group, big_first):
         return "".join(card(x, big_first and i == 0) for i, x in enumerate(group))
@@ -759,7 +766,9 @@ def _picks(picks, works, feedback=None):
             vote = (f'<div class="vote" data-v="{e(json.dumps(data, ensure_ascii=False))}">'
                     f'<button type="button" data-vote="1" aria-pressed="false" title="多推荐这类">👍<span> 喜欢</span></button>'
                     f'<button type="button" data-vote="-1" aria-pressed="false" title="少推荐这类">👎<span> 不感兴趣</span></button>'
-                    f'<small></small></div>')
+                    + (f'<button type="button" class="wish" aria-pressed="false" data-w="{e(json.dumps({k: x.get(k) for k in ("url", "title", "work", "image", "source")}, ensure_ascii=False))}" '
+                       f'title="加进愿望清单">♥<span> 加入心愿单</span></button>' if x.get("kind") == "wish" and x["work"] in shops else "")
+                    + f'<small></small></div>')
         return (
             f'<div class="pk{" big" if big else ""}"><a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
@@ -825,14 +834,14 @@ VOTE_JS = """
   const paint = url => boxes.forEach(([box, data, dim, tip]) => {
     if (data.url !== url) return;
     const v = mine[url] || 0;
-    box.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.vote) === v)));
+    box.querySelectorAll('button[data-vote]').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.vote) === v)));
     box.classList.toggle('on', v !== 0);
     if (dim) dim.classList.toggle(dim.classList.contains('pk') ? 'down' : 'downv', v === -1);
     if (tip) tip.textContent = v === 1 ? '会多推荐这类' : v === -1 ? '以后少推荐这类' : '';
   });
   const wire = (box, data, dim, tip) => {
     boxes.push([box, data, dim, tip]);
-    box.querySelectorAll('button').forEach(btn => btn.addEventListener('click', async ev => {
+    box.querySelectorAll('button[data-vote]').forEach(btn => btn.addEventListener('click', async ev => {
       ev.preventDefault(); ev.stopPropagation();   // 小按钮在卡片链接里面：别打开链接
       const v = (mine[data.url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
       box.querySelectorAll('button').forEach(b => b.disabled = true);
@@ -852,8 +861,45 @@ VOTE_JS = """
       }
     }));
   };
-  document.querySelectorAll('.picks .vote').forEach(box =>
-    wire(box, JSON.parse(box.dataset.v), box.closest('.pk'), box.querySelector('small')));
+  // 「♥ 加入心愿单」：写进 wish_requests 表，下次更新（每 2 小时）时加进愿望清单
+  let added = {};
+  try { added = JSON.parse(localStorage.getItem('wishlist-added') || '{}'); } catch (_) {}
+  const wished = new Set(cfg.wished || []);
+  const hearts = [];
+  const showHeart = (btn, url) => {
+    const on = wished.has(url) || added[url];
+    btn.setAttribute('aria-pressed', String(!!on));
+    btn.title = wished.has(url) ? '已经在愿望清单里' : added[url] ? '已加入，下次更新（每 2 小时）时出现在愿望清单' : '加进愿望清单';
+    const label = btn.querySelector('span');
+    if (label) label.textContent = wished.has(url) ? ' 已在心愿单' : added[url] ? ' 已加入' : ' 加入心愿单';
+  };
+  const heart = (btn, data) => {
+    hearts.push([btn, data.url]);
+    showHeart(btn, data.url);
+    btn.addEventListener('click', async ev => {
+      ev.preventDefault(); ev.stopPropagation();
+      if (wished.has(data.url) || added[data.url]) return;
+      btn.disabled = true;
+      try {
+        const r = await fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/wish_requests',
+          { method: 'POST', headers, body: JSON.stringify(data) });
+        if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120));
+        added[data.url] = 1;
+        try { localStorage.setItem('wishlist-added', JSON.stringify(added)); } catch (_) {}
+        hearts.forEach(([b, u]) => { if (u === data.url) showHeart(b, u); });
+      } catch (err) {
+        btn.title = '没加上，稍后再试';
+        console.error('加入心愿单失败', err);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  };
+  document.querySelectorAll('.picks .vote').forEach(box => {
+    wire(box, JSON.parse(box.dataset.v), box.closest('.pk'), box.querySelector('small'));
+    const h = box.querySelector('.wish');
+    if (h) heart(h, JSON.parse(h.dataset.w));
+  });
   const small = () => {
     const s = document.createElement('span');
     s.className = 'vt';
@@ -867,8 +913,15 @@ VOTE_JS = """
     const t = link.querySelector('h1,h2,h3,h4') || link;   // 标题；别用 b（日期旁的 NEW 也是 b）
     const box = small();
     holder.appendChild(box);
-    wire(box, { url: link.href, kind: 'story', title: t.textContent.trim().slice(0, 500),
-                work: (w && w.dataset.k || '').slice(0, 200), hits: [], words: [] }, dim, null);
+    const title = t.textContent.trim().slice(0, 500), work = (w && w.dataset.k || '').slice(0, 200);
+    wire(box, { url: link.href, kind: 'story', title, work, hits: [], words: [] }, dim, null);
+    if (holder.closest('[data-shop]')) {   // 好物板块的消息是东西：可以加入心愿单
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'wish'; btn.textContent = '♥';
+      box.appendChild(btn);
+      const img = link.querySelector('.pic img:not(.bg)'), src = link.querySelector('.src');
+      heart(btn, { url: link.href, title, work, image: img ? img.src : null, source: src ? src.textContent.trim().slice(0, 200) : null });
+    }
   };
   document.querySelectorAll('.sec a.card, a.top').forEach(a => story(a, a, a));
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
@@ -926,7 +979,8 @@ def render_wishlist(wishes, works, updated, finds=()):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}
-.page{{grid-template-columns:minmax(0,1fr);max-width:1200px}}
+.page{{display:flex;flex-direction:column;align-items:stretch;max-width:1200px;padding-bottom:40px}}
+.sec.wish{{background:none}}
 .back{{display:inline-flex;align-items:center;gap:8px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.15em}}
 .back:hover{{color:#B8336A}}
 .wsum{{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}}
@@ -1085,9 +1139,11 @@ def _front(works, today, updated):
     head = (f'<div class="fbar"><b>头 版</b><span>LATEST · 最近 {HOLD_DAYS} 天</span>'
             f'<span>更新于 {updated} · {len(pool)} 条</span></div>')
 
-    # 头条下面补 3 条次重要的（按重要度，再按新旧），填满左栏
+    # 头条下面补几条次重要的（按重要度，再按新旧），填满左栏：右栏每个作品一行（约 100px）、每个板块一个标题（约 45px），
+    # 头条约占 600px，「其他重要」每条约 85px
     ranked = sorted(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2))
-    more = [p for p in ranked if p[1] is not top][:3]
+    right = 100 * len(works) + 45 * len({w.get("section") or "其他" for w in works})
+    more = [p for p in ranked if p[1] is not top][:max(3, min(10, (right - 600) // 85))]
     more_html = "".join(
         f'<a class="more" href="#{_wid(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">{_pic(x)}'
         f'<span><span class="nm">{e(w["name"])} · {e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span>'
@@ -1095,7 +1151,7 @@ def _front(works, today, updated):
     if top:
         sc = _sec_color(top_w.get("section"))
         badge = "重 磅" if top.get("weight") == "hero" else "头 条"
-        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
+        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}"{' data-shop="1"' if top_w.get("section") == SHOP_SECTION else ""}>'
                     f'<span class="badge">{badge}</span>{_pic(top)}'
                     f'<span class="kicker"><i style="background:{sc}">{e(top_w.get("section") or "")}</i>'
                     f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
@@ -1331,6 +1387,8 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         w["_size"] = (sizes or {}).get(w["name"], "M")
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
+    if fb:
+        fb = {**fb, "wished": [w["url"] for w in wishes if w.get("url")]}
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
             + _front(works, latest["date"], updated) + _picks(picks, works, fb)

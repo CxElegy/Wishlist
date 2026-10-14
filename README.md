@@ -10,6 +10,7 @@
 看到喜欢的东西，跟 Claude 说「加进 wishlist」并附上截图或链接就行（做法写在 `.claude/skills/wishlist/SKILL.md`）。
 数据在 `wishlist.yaml`，图片在 `docs/wishlist/`；网页上是单独的子页面（[wishlist.html](https://cxelegy.github.io/Wishlist/wishlist.html)，主页报头右上角有入口，可按 想要 / 已入手 / 没买到 筛选），推送后 Discord 会收到一条带大图的通知。
 填了 `watch`（关联的关注项）的，版面上会顺带显示那个关注项的最新消息。
+好物板块（马克杯、猫用品、手机……）的新闻卡片和「我会喜欢？」里的好物推荐上有 **♥ 加入心愿单**：点了先存进数据库，下次更新（每 2 小时）时自动加进 `wishlist.yaml`（名字先用新闻标题、配图存进 `docs/wishlist/`），之后跟 Claude 说「整理愿望清单」补上名字、价格和喜好标签。
 主页的「**我会喜欢？**」角落有两部分，每条都写明推荐理由，都不让 AI 联网：
 - 按愿望清单里每件东西的 `likes`（喜好标签），从最近两周收集到的所有消息里挑 5 条；
 - 「同类新发现」：按 `items.yaml` 里每个关注项的 `similar`（同类搜索词），每天搜一次 Google 新闻，去掉已经在关注的作品，每个关注项挑一条（最多 4 条）。
@@ -177,5 +178,5 @@ python -m unittest discover tests       # 运行测试（本地假网站，不�
 | `docs/` | 简报网页，由 GitHub Pages 发布；`docs/design/` 是流程图和架构图 |
 | `design/` | 流程图、架构图、简报样式的设计稿源文件 |
 | `EDITING.md` | AI 编辑的工作规则 |
-| `db/feedback.sql`、`db/news.sql`、`db/history.sql`、`db/sizes.sql` | 数据库（Supabase）的建表语句：投票、收集到的消息、编排后的报道和价格历史、每个关注项的篇幅 |
+| `db/feedback.sql`、`db/news.sql`、`db/history.sql`、`db/wish_requests.sql`、`db/sizes.sql` | 数据库（Supabase）的建表语句：投票、收集到的消息、编排后的报道和价格历史、「加入心愿单」的请求、每个关注项的篇幅 |
 | `state/` | 已报道的链接、上期状态、配色缓存，请勿手动修改 |
