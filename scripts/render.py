@@ -461,7 +461,8 @@ def _wid(name):
 
 
 def _pack(stories, size_of, total=12):
-    """按顺序排成行，不改变时间顺序；一行放不下就换行，剩下的空位分给这一行里最重要的卡片。"""
+    """按顺序排成行，不改变时间顺序；一行放不下就换行，凑不满的行平分整行（和一周内的普通消息一样）。
+    不把空位全给一张：2 条会变成 9 栏 + 3 栏，而样式表没有 c9，那张卡片会缩成一栏宽。"""
     rows, row, used = [], [], 0
     for s in stories:
         w = size_of(s)
@@ -473,10 +474,9 @@ def _pack(stories, size_of, total=12):
     if row:
         rows.append(row)
     for row in rows:
-        left = total - sum(w for _, w in row)
-        if left:
-            best = min(row, key=lambda x: RANK.get(x[0].get("weight"), 2))
-            best[1] += left
+        if sum(w for _, w in row) < total and total % len(row) == 0:
+            for x in row:
+                x[1] = total // len(row)
     return [x for row in rows for x in row]
 
 

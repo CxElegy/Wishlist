@@ -146,3 +146,15 @@ class SettingsPage(unittest.TestCase):
         self.assertRegex(page, r'data-item="FROM".*?data-v="S" aria-pressed="true"')
         self.assertIn("rpc/${fn}", page)
         self.assertNotIn("sb_secret", page)
+
+
+class OlderGrid(unittest.TestCase):
+    def test_rows_split_evenly_with_existing_spans(self):
+        """折叠区每张卡片的宽度都要在样式表里有对应的 cN（2 条以前会排成 9 + 3，c9 没有样式）。"""
+        for n, want in ((1, [12]), (2, [6, 6]), (3, [4, 4, 4]), (4, [3] * 4), (5, [3] * 4 + [12]),
+                        (6, [3] * 4 + [6, 6])):
+            spans = [w for _, w in render._pack([story(i, "lead" if i == 0 else "normal") for i in range(n)],
+                                                lambda s: 3)]
+            self.assertEqual(spans, want, n)
+            for w in spans:
+                self.assertIn(f".c{w}{{grid-column:span {w}}}", render.CSS)
