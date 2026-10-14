@@ -10,6 +10,7 @@
   "https://news.qq.com/rain/a/20261013A09ZIR00": "https://www.bing.com/th?id=ONUT.YDHICSsq_LXc-kDomH2LHw&pid=News&w=640",
   "https://note.com/yamato_pokemon/n/n51f8de870e31": "https://assets.st-note.com/production/uploads/images/318648466/rectangle_large_type_2_de1d72ecf9a67c49677e1833b2ed7ddd.png?fit=bounds&quality=85&width=1280",
   "https://prtimes.jp/main/html/rd/p/000000265.000056056.html": "https://prcdn.freetls.fastly.net/release_image/56056/265/56056-265-446231efad67c9ee8342ab43bd1fe782-1647x1523.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+  "https://sammyguru.com/galaxy-s27-16mp-selfie-camera-rumors/": "https://sammyguru.com/wp-content/uploads/2026/07/Galaxy-Z-Fold-8-Ultra-SammyGuru-54-Punch-Hole-1024x576.jpg",
   "https://udn.com/news/story/7270/9741194": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/09/08/35307288.jpg&M=1&s=Y&x=0&y=0&sw=1107&sh=738&exp=3600",
   "https://www.autoevolution.com/news/avatr-unveils-concept-t09-in-paris-previewing-the-brand-s-upcoming-flagship-lineup-276877.html": "https://s1.cdn.autoevolution.com/images/news/avatr-unveils-concept-t09-in-paris-previewing-the-brand-s-upcoming-flagship-lineup-276877_1.jpg",
   "https://www.beauty321.com/post/73152": "https://il.beauty321.com/gallery/articleIMG/AL_73152.jpg?t=20260908124144",
@@ -23,7 +24,6 @@
   "https://www.gamingbible.com/news/platform/steam/outward-skyrim-alternative-037810-20261012": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt8bbf115aeeaf378d/6acca2bea74b6e1dcafa5b6a/outward.jpg",
   "https://www.imdb.com/news/ni66061524/?ref_=nwc_art_perm": "https://s.yimg.com/lo/mysterio/api/06fa6d141f7c192d7e044dc6f43a17d28a634841da51427738347f5b92565c78/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fslashfilm_articles_873%2F99c70c5ff7e165ad622348d94160c58b.jpg",
   "https://www.msn.com/en-us/news/other/snoopy-returns-to-starbucks-see-the-new-peanuts-collection/ar-AA2ch73g": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cgcQH.img",
-  "https://www.sammobile.com/news/galaxy-s27-plus-not-get-s27-ultra-upgraded-selfie-camera/": "https://www.sammobile.com/wp-content/uploads/2026/02/Galaxy-S26-Plus-display-2.jpg",
   "https://www.walkerland.com.tw/subject/view/425289": "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/10/1791567919277-dbc4da96cc8e48039fde455d8ea83629-850x446.webp",
   "https://www.walkerplus.com/article/1150735/image12049311.html": "https://news.walkerplus.com/article/1150735/12049312_615.jpg",
   "https://www.walkerplus.com/article/1304756/image15600665.html": "https://news.walkerplus.com/article/1304756/15600658_615.jpg"
@@ -360,6 +360,38 @@
    "hits": [
     "三星 Galaxy"
    ],
+   "image": "https://sammyguru.com/wp-content/uploads/2026/07/Galaxy-Z-Fold-8-Ultra-SammyGuru-54-Punch-Hole-1024x576.jpg",
+   "kind": "wish",
+   "score": 7,
+   "source": "SammyGuru",
+   "taste": [
+    [
+     "三星 Galaxy",
+     4
+    ],
+    [
+     "galaxy",
+     4
+    ],
+    [
+     "作品:三星手机",
+     4
+    ]
+   ],
+   "title": "Galaxy S27 and S27+ Could Stick with the Same Old Selfie Camera (No 16MP)",
+   "url": "https://sammyguru.com/galaxy-s27-16mp-selfie-camera-rumors/",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 2,
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-14",
+   "hits": [
+    "三星 Galaxy"
+   ],
    "image": "https://www.bing.com/th?id=ONUT.9iHaukHSXaqJdePhJGfMWA&pid=News&w=1200",
    "kind": "wish",
    "score": 7,
@@ -380,38 +412,6 @@
    ],
    "title": "Samsung Galaxy S27 Ultra to Launch Next Year With an Improved Privacy Display, Higher Price Tag, Tipster ...",
    "url": "https://www.gadgets360.com/mobiles/news/samsung-galaxy-s27-ultra-privacy-display-feature-upgrade-price-tipped-specifications-12183935",
-   "words": [
-    "galaxy"
-   ],
-   "work": "三星手机"
-  },
-  {
-   "batch": 2,
-   "because": "Galaxy S27 Ultra",
-   "date": "2026-10-14",
-   "hits": [
-    "三星 Galaxy"
-   ],
-   "image": "https://www.sammobile.com/wp-content/uploads/2026/02/Galaxy-S26-Plus-display-2.jpg",
-   "kind": "wish",
-   "score": 7,
-   "source": "SamMobile",
-   "taste": [
-    [
-     "三星 Galaxy",
-     4
-    ],
-    [
-     "galaxy",
-     4
-    ],
-    [
-     "作品:三星手机",
-     4
-    ]
-   ],
-   "title": "Galaxy S27 and S27+ to miss out on Galaxy S27 Pro and Ultra front camera upgrade",
-   "url": "https://www.sammobile.com/news/galaxy-s27-plus-not-get-s27-ultra-upgraded-selfie-camera/",
    "words": [
     "galaxy"
    ],
