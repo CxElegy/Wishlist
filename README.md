@@ -136,7 +136,7 @@ items.yaml
 是哪一个（自动去维基数据查，补上中日韩英的正式名称、Steam / AniList / TMDB 编号和官网）→ 这是什么 → 关注它的哪方面（比如游戏本体还是电竞比赛）
 → 哪些消息要当天推 Discord → 不想看什么 → 新闻语言 → 板块（可以起新板块）→ 篇幅，最后汇总成一张表，都能直接改，提交就行。
 已有的关注项点列表里的「改」：直接改汇总表，或者「重新问一遍」。不用口令。
-请求存进数据库 `item_requests` 表（[`db/item_requests.sql`](db/item_requests.sql)），下一次更新（最多 2 小时）写进 `items.yaml`：
+请求存进数据库 `item_requests` 表（[`db/item_requests.sql`](db/item_requests.sql)），GitHub 上的「网页请求」工作流每 5 分钟看一次，一般 5–15 分钟内写进 `items.yaml`（设置页上会显示进度）：
 新增的追加到末尾、开始收集（往前补抓 `first_lookback_days` 天），Discord 收到「新增关注项」通知；修改的只改提交了的字段，别的字段和注释不动。
 没处理的（名字重复、规则写错）在设置页上写明原因。想更精细（`status`、配色、背景说明）跟 Claude 说「完善关注项」。
 

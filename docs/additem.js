@@ -503,8 +503,8 @@
     return h("div", {class: "q"},
       h("span", {class: "no"}, S.mode === "edit" ? "现在的设置" : "最后一步：看一眼"),
       h("h3", {}, S.mode === "edit" ? `「${S.name}」现在是这样` : "按你的回答，会这样加进关注清单"),
-      h("p", {}, S.mode === "edit" ? "直接改下面的内容，或者「重新问一遍」按问题重新设置。提交后下一次更新（最多 2 小时）生效。"
-                                   : "都可以直接改。提交后下一次更新（最多 2 小时）加进关注清单、往前补抓 6 周的新闻，Discord 会收到通知。"),
+      h("p", {}, S.mode === "edit" ? "直接改下面的内容，或者「重新问一遍」按问题重新设置。提交后一般 5–15 分钟生效，下面会显示进度。"
+                                   : "都可以直接改。提交后一般 5–15 分钟加进关注清单，马上开始收集新闻（往前补抓 6 周），Discord 会收到通知；下面会显示进度。"),
       form,
       h("div", {class: "wnav"},
         S.mode === "add" ? h("button", {type: "button", onclick: back}, "← 上一步")
@@ -564,8 +564,8 @@
         headers: {apikey: CFG.key, "Content-Type": "application/json"},
         body: JSON.stringify({p_action: S.mode, p_name: name, p_config: config})});
       if (r.ok) {
-        const what = S.mode === "edit" ? `已提交「${name}」的修改 ✓ 下一次更新（最多 2 小时）生效`
-                                       : `已提交「${name}」✓ 下一次更新（最多 2 小时）加进关注清单、开始收集新闻`;
+        const what = S.mode === "edit" ? `已提交「${name}」的修改 ✓ 进度看下面「最近提交的」，会自动刷新`
+                                       : `已提交「${name}」✓ 进度看下面「最近提交的」，会自动刷新`;
         reset(); loadQueue();
         const note = box.querySelector(".hint, .q p"); if (note) { note.textContent = what; note.className = "msg ok"; }
         return;
@@ -576,16 +576,32 @@
     btn.disabled = false;
   }
 
-  // ---------- 最近提交的 ----------
-  const queueList = h("ul", {class: "queue", "aria-label": "最近提交的"});
-  const STATES = {pending: "等待处理（下次更新时）", done: "已写进关注清单", skipped: "没处理"};
+  // ---------- 最近提交的（进度，有没处理完的就每 15 秒刷新一次） ----------
+  // GitHub 上的「网页请求」工作流每 5 分钟看一次数据库：处理完标成 done，新增的马上开始收集新闻
+  const queueList = h("ul", {class: "queue", "aria-label": "最近提交的，自动刷新"});
+  const ago = t => { const m = Math.max(0, Math.round((Date.now() - new Date(t)) / 60000)); return m < 1 ? "刚刚" : m < 60 ? `${m} 分钟前` : `${Math.round(m / 60)} 小时前`; };
+  const progress = x => {
+    if (x.status === "skipped") return ["err", `没处理：${x.note || "内容不对"}`];
+    if (x.status === "done") return ["ok", x.action === "edit" ? "✓ 已改好，网页 1 分钟内更新（刷新本页就能看到）"
+                                                            : "✓ 已加进关注清单，正在收集新闻，几分钟后出现在简报上"];
+    const m = (Date.now() - new Date(x.created_at)) / 60000;
+    return ["wait", m < 20 ? "已收到 ✓ 等 GitHub 处理（每 5 分钟看一次，一般 5–15 分钟）"
+                           : "已收到 ✓ GitHub 这次有点慢，还在排队（定时任务高峰期会晚一些）"];
+  };
+  let timer = null;
   function loadQueue() {
     if (!CFG.url || !CFG.key) return;
     fetch(`${CFG.url}/rest/v1/rpc/list_item_requests`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"}, body: "{}"})
-      .then(r => r.ok ? r.json() : []).then(list => queueList.replaceChildren(...(list || []).map(x => h("li", {},
-        h("b", {}, x.name), h("span", {}, ` · ${x.action === "edit" ? "修改" : "新增"} · ${STATES[x.status] || x.status} · ${
-          new Date(x.created_at).toLocaleString("zh-CN", {month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit"})}`),
-        x.note ? h("em", {}, `：${x.note}`) : null)))).catch(() => {});
+      .then(r => r.ok ? r.json() : []).then(list => {
+        list = list || [];
+        queueList.replaceChildren(...(list.length ? [h("li", {class: "qh"}, "最近提交的（自动刷新）")] : []), ...list.map(x => {
+          const [cls, text] = progress(x);
+          return h("li", {}, h("b", {}, x.name), h("span", {}, ` · ${x.action === "edit" ? "修改" : "新增"} · ${ago(x.created_at)}`),
+            h("strong", {class: "st-" + cls}, text));
+        }));
+        clearTimeout(timer);
+        if (list.some(x => x.status === "pending")) timer = setTimeout(loadQueue, 15000);
+      }).catch(() => { clearTimeout(timer); timer = setTimeout(loadQueue, 30000); });
   }
 
   // ---------- 入口 ----------
