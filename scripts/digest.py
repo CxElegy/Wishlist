@@ -888,7 +888,10 @@ def take_wish_requests():
     have = {w.get("url") for w in load_wishlist()}
     added, skipped, text = [], [], ""
     for r in rows:
-        if r["url"] in have:
+        host = (urllib.parse.urlsplit(r["url"]).hostname or "").lower()
+        # 已经在愿望清单里的、测试用的保留域名（example.com 之类，RFC 2606，不可能是真新闻）都跳过
+        if r["url"] in have or host.split(".")[-2:] in (["example", "com"], ["example", "org"], ["example", "net"]) \
+                or host.endswith(".example"):
             skipped.append(r["id"])
             continue
         have.add(r["url"])

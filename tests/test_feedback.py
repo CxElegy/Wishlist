@@ -308,6 +308,8 @@ class TakeWishes(SyncNews):
              "source": "PR TIMES"},
             {"id": 2, "url": "https://e/have", "title": "重复的", "work": "猫用品", "image": None, "source": None},
             {"id": 3, "url": "https://e/new", "title": "同一条点了两次", "work": "其他", "image": None, "source": None},
+            {"id": 4, "url": "https://example.com/__setup-test__", "title": "设置测试", "work": None, "image": None,
+             "source": None},
         ]
         digest.take_wish_requests()
         text = self.wl.read_text(encoding="utf-8")
@@ -318,7 +320,7 @@ class TakeWishes(SyncNews):
         self.assertEqual((new["url"], new["image"], new["watch"], new["status"], new["shop"]),
                          ("https://e/new", "news-x.jpg", "猫用品", "想要", "PR TIMES"))
         patches = [(path, body["status"]) for path, _, body in self.posts if body and "status" in body]
-        self.assertEqual(patches, [("/rest/v1/wish_requests?id=in.(1)", "done"), ("/rest/v1/wish_requests?id=in.(2,3)", "skipped")])
+        self.assertEqual(patches, [("/rest/v1/wish_requests?id=in.(1)", "done"), ("/rest/v1/wish_requests?id=in.(2,3,4)", "skipped")])
 
     def test_nothing_pending(self):
         self.get_rows = []
