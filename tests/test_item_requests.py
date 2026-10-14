@@ -151,3 +151,18 @@ class RealItemsFile(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class NewItemPlaceholder(unittest.TestCase):
+    def test_new_item_gets_collecting_block(self):
+        issues = [{"date": "2026-10-14", "items": [{"name": "FROM", "stories": []}]},
+                  {"date": "2026-10-13", "items": [{"name": "ILLIT", "stories": []}]}]
+        items = [{"name": "FROM", "type": "show"}, {"name": "ILLIT", "type": "event"},
+                 {"name": "新的", "type": "game", "subtitle": "副"}]
+        got = digest.with_new_items(issues, items)
+        self.assertEqual([b["name"] for b in got[0]["items"]], ["FROM", "新的"])
+        new = got[0]["items"][-1]
+        self.assertTrue(new["collecting"])
+        self.assertEqual((new["section"], new["subtitle"], new["stories"]), ("游戏", "副", []))
+        self.assertEqual([b["name"] for b in issues[0]["items"]], ["FROM"])  # 原数据没被改
+        self.assertIs(digest.with_new_items(issues, items[:2]), issues)
