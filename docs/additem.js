@@ -13,13 +13,20 @@
   const TYPES = {game: "游戏", anime: "动画 / 漫画", show: "电影 / 剧集", event: "艺人演出", product: "具体商品", category: "一类产品"};
   const esc = s => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-  // 每种东西可以关注的方面。priority 写进「最关心什么」，urgent 是要紧消息的动词（和名字一起拼成正则），
+  // 选项的 when：只在名字 / 维基数据说明里提到这些词时才出现（比如「猫相关的」只给跟猫有关的东西）
+  const about = re => () => re.test(context());
+  function context() {
+    const p = wdPick(), o = S.original || {};
+    return [S.name, p?.desc, ...(p?.aliases || []), ...Object.values(p?.names || {}), ...(o.keywords || []), o.notes || ""].join(" ");
+  }
+
+  // 每种东西可以关注的方面。rec = 「你帮我定」时选它。priority 写进「最关心什么」，urgent 是要紧消息的动词（和名字一起拼成正则），
   // kw 是额外的搜索词（{n} = 名字，{en} / {ja} = 英文 / 日文名），ask 表示还要追问一句
   const KINDS = {
     game: {label: "游戏", hint: "手游、主机、PC 游戏", type: "game", section: "游戏", focus: [
-      {id: "play", label: "什么时候能玩", hint: "测试招募、上线日期、预约", priority: "什么时候能玩（测试招募、上线日期、预约）",
+      {rec: true, id: "play", label: "什么时候能玩", hint: "测试招募、上线日期、预约", priority: "什么时候能玩（测试招募、上线日期、预约）",
        urgent: "(测试|測試|封測|内测|β|CBT|テスト|事前登録|預約|预约|上線|上线|正式サービス|配信開始|リリース|發售|发售|release date|launch|beta)"},
-      {id: "update", label: "版本更新、活动、新角色", hint: "大版本、周年、联动活动", priority: "大版本更新、新角色、周年活动",
+      {rec: true, id: "update", label: "版本更新、活动、新角色", hint: "大版本、周年、联动活动", priority: "大版本更新、新角色、周年活动",
        urgent: "(新角色|新キャラ|周年|週年|大型アップデート|大版本|新版本|Ver\\.?\\s?\\d)"},
       {id: "esports", label: "电竞比赛", hint: "赛程、比赛结果、战队", priority: "电竞赛事的日程和结果、战队消息",
        urgent: "(世界大赛|世界賽|決勝|决赛|總決賽|总决赛|World Championship|Worlds|Major|優勝|冠军|冠軍)",
@@ -31,9 +38,9 @@
       {id: "story", label: "剧情、角色、世界观", hint: "新剧情、角色设定", priority: "新剧情和角色设定"},
     ]},
     anime: {label: "动画 / 漫画", hint: "番剧、漫画、轻小说", type: "anime", section: "影视", focus: [
-      {id: "sequel", label: "新一季 / 续作 / 剧场版", hint: "什么时候官宣、定档", priority: "新一季、续作或剧场版什么时候出",
+      {rec: true, id: "sequel", label: "新一季 / 续作 / 剧场版", hint: "什么时候官宣、定档", priority: "新一季、续作或剧场版什么时候出",
        urgent: "(第\\s?[0-9一二三四五六七八九十]+\\s?(季|期)|続編|续篇|續篇|新作|劇場版|剧场版|映画化|放送決定|定档|定檔|製作決定|制作决定|season \\d|sequel)"},
-      {id: "air", label: "播出时间、每集更新", hint: "什么时候播、在哪看", priority: "播出时间和每集更新"},
+      {rec: true, id: "air", label: "播出时间、每集更新", hint: "什么时候播、在哪看", priority: "播出时间和每集更新"},
       {id: "manga", label: "漫画连载、单行本", hint: "最新话、出刊、完结", priority: "漫画连载和单行本",
        urgent: "(単行本|单行本|最新刊|最終回|最终话|最終話|完結|完结|休載|休刊)"},
       {id: "collab", label: "周边、联名、展览", hint: "快闪店、联名商品", priority: "周边、联名和展览",
@@ -42,19 +49,19 @@
        urgent: "(イベント|ライブ|舞台|声優|声优|聲優)"},
     ]},
     show: {label: "电影 / 剧集", hint: "美剧、日剧、电影系列", type: "show", section: "影视", focus: [
-      {id: "sequel", label: "新一季 / 续集", hint: "续订、官宣", priority: "新一季或续集什么时候出",
+      {rec: true, id: "sequel", label: "新一季 / 续集", hint: "续订、官宣", priority: "新一季或续集什么时候出",
        urgent: "(第\\s?[0-9一二三四五六七八九十]+\\s?季|新一季|續訂|续订|renewed|season \\d|sequel|續集|续集|続編)"},
-      {id: "date", label: "上映 / 播出日期、在哪看", hint: "定档、上线平台", priority: "上映或播出日期、在哪个平台能看",
+      {rec: true, id: "date", label: "上映 / 播出日期、在哪看", hint: "定档、上线平台", priority: "上映或播出日期、在哪个平台能看",
        urgent: "(定档|定檔|上映日|首播|premiere|release date|公開日|配信開始|上線|上线)"},
       {id: "trailer", label: "预告片", hint: "正式预告、剧照", priority: "预告片", urgent: "(预告|預告|trailer|予告)"},
       {id: "cast", label: "演员、幕后", hint: "选角、导演、采访", priority: "演员和幕后消息"},
     ]},
     artist: {label: "歌手 / 艺人", hint: "乐队、偶像团体、演员", type: "event", section: "演出", focus: [
-      {id: "live", label: "演唱会、巡演", hint: "尤其是日本 / 大阪附近", priority: "演唱会和巡演（尤其是日本、大阪附近的场次）",
+      {rec: true, id: "live", label: "演唱会、巡演", hint: "尤其是日本 / 大阪附近", priority: "演唱会和巡演（尤其是日本、大阪附近的场次）",
        urgent: "(演唱會|演唱会|巡演|巡迴|ツアー|ライブ|コンサート|concert|tour|公演|ドーム|大阪)"},
-      {id: "ticket", label: "门票：抽选、发售", hint: "先行抽选、一般发售", priority: "门票怎么买（抽选、发售时间）",
+      {rec: true, id: "ticket", label: "门票：抽选、发售", hint: "先行抽选、一般发售", priority: "门票怎么买（抽选、发售时间）",
        urgent: "(抽選|抽选|先行|チケット|門票|门票|售票|ticket|一般発売)"},
-      {id: "music", label: "新歌、新专辑、回归", hint: "MV、回归日期", priority: "新歌、新专辑和回归",
+      {rec: true, id: "music", label: "新歌、新专辑、回归", hint: "MV、回归日期", priority: "新歌、新专辑和回归",
        urgent: "(回归|回歸|컴백|comeback|カムバック|新曲|新歌|新專輯|新专辑|album|リリース|MV)"},
       {id: "fan", label: "见面会、综艺、粉丝活动", hint: "签售、综艺出演", priority: "见面会、综艺和粉丝活动",
        urgent: "(見面會|见面会|ファンミ|fan ?meeting|팬미팅|サイン会|签售)"},
@@ -62,35 +69,47 @@
        urgent: "(コラボ|联名|聯名|代言|アンバサダー|ambassador)"},
     ]},
     sports: {label: "运动 / 赛事", hint: "比赛、联赛、运动项目", type: "category", section: "运动", focus: [
-      {id: "schedule", label: "赛程、门票", hint: "什么时候比、怎么买票", priority: "赛程和门票",
+      {rec: true, id: "schedule", label: "赛程、门票", hint: "什么时候比、怎么买票", priority: "赛程和门票",
        urgent: "(日程|赛程|賽程|チケット|门票|門票|抽選|発売)"},
-      {id: "result", label: "比赛结果", hint: "谁赢了、名次", priority: "比赛结果",
+      {rec: true, id: "result", label: "比赛结果", hint: "谁赢了、名次", priority: "比赛结果",
        urgent: "(優勝|优胜|冠军|冠軍|決勝|决赛|決賽|champion|wins)"},
       {id: "player", label: "某个选手 / 队伍", hint: "下一步填名字", priority: "", ask: "player"},
       {id: "watch", label: "转播、在哪看直播", hint: "电视台、网络直播", priority: "在哪看转播和直播"},
       {id: "join", label: "自己去玩", hint: "场地、装备、季节开放", priority: "自己去玩：场地、装备、开放时间",
        urgent: "(オープン|開業|开业|開幕|开放|營業|营业|シーズン)"},
     ]},
+    character: {label: "角色 / IP", hint: "三丽鸥、宝可梦、蜡笔小新这类角色", type: "category", section: "好物", focus: [
+      {id: "collab", label: "联名商品", hint: "和服装、杂货、零食品牌的联名", priority: "新的联名商品什么时候出、怎么买", rec: true,
+       urgent: "(コラボ|联名|聯名|collab|×)"},
+      {id: "goods", label: "新周边、新品", hint: "毛绒、文具、扭蛋、一番赏", priority: "新周边和新品", rec: true,
+       urgent: "(新商品|新作|発売|发售|發售|登場|ぬいぐるみ|一番くじ|ガチャ|扭蛋|一番賞|一番赏)"},
+      {id: "popup", label: "快闪店、主题咖啡、展览", hint: "期间限定店、主题餐厅", priority: "快闪店、主题咖啡和展览（尤其是日本、大阪附近）", rec: true,
+       urgent: "(ポップアップ|POP ?UP|快闪|快閃|カフェ|咖啡|展覧会|展览|展覽|期間限定ショップ)"},
+      {id: "lottery", label: "抽选、限定、预约", hint: "要抢的东西", priority: "抽选、限定品和预约怎么买",
+       urgent: "(抽選|抽选|限定|予約|预约|預約|受注)"},
+      {id: "media", label: "动画、活动、周年", hint: "新动画、生日、周年庆", priority: "新动画、活动和周年纪念",
+       urgent: "(アニメ|动画|動畫|周年|週年|アニバーサリー|anniversary|誕生日|生日)"},
+    ]},
     product: {label: "商品 / 品牌", hint: "手机、杯子、衣服、品牌", type: "product", section: "好物", focus: [
-      {id: "new", label: "新品、新款发售", hint: "新色、新型号", priority: "新品和新款什么时候发售",
+      {rec: true, id: "new", label: "新品、新款发售", hint: "新色、新型号", priority: "新品和新款什么时候发售",
        urgent: "(新品|新作|新款|発売|発表|发售|發售|上市|launch|release|新色)"},
-      {id: "sale", label: "降价、促销", hint: "打折、优惠券", priority: "什么时候降价促销",
+      {rec: true, id: "sale", label: "降价、促销", hint: "打折、优惠券", priority: "什么时候降价促销",
        urgent: "(セール|特價|特价|折扣|降價|降价|sale|値下げ|半額|半价)"},
-      {id: "collab", label: "联名、限定款", hint: "季节限定、地区限定", priority: "联名和限定款",
+      {rec: true, id: "collab", label: "联名、限定款", hint: "季节限定、地区限定", priority: "联名和限定款",
        urgent: "(コラボ|联名|聯名|限定|collab)"},
       {id: "lottery", label: "福袋、抽选、预约", hint: "要抢的东西", priority: "福袋、抽选和预约怎么买",
        urgent: "(福袋|抽選|抽选|予約|预约|預約|HAPPY ?BOX)"},
       {id: "cat", label: "猫相关的", hint: "猫柄、猫咪造型、猫用", priority: "猫系商品（猫柄、猫咪造型、猫角色联名）",
-       urgent: "(ねこ|ネコ|猫|貓|キャット|cat)"},
+       urgent: "(ねこ|ネコ|猫|貓|キャット|cat)", when: about(/猫|ねこ|ネコ|貓|キャット|\bcats?\b|kitty|ペット|宠物|寵物|\bpets?\b/i)},
       {id: "review", label: "评测、好不好用", hint: "开箱、口碑", priority: "评测和口碑"},
     ]},
   };
   const KIND_OF_TYPE = {game: "game", anime: "anime", show: "show", event: "artist", product: "product", category: "product"};
 
   const EXCLUDES = [
-    {id: "resale", label: "转卖、二手", words: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale"]},
+    {id: "resale", rec: true, label: "转卖、二手", words: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale"]},
     {id: "guide", label: "攻略、抽卡教学、排行榜", words: ["攻略", "リセマラ", "ガチャ", "抽卡", "tier list", "最強ランキング"], kinds: ["game", "anime"]},
-    {id: "roundup", label: "带货清单、合集、推荐榜", words: ["おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]},
+    {id: "roundup", rec: true, label: "带货清单、合集、推荐榜", words: ["おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]},
     {id: "rumor", label: "传闻、爆料", words: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂"]},
     {id: "spoiler", label: "剧透", words: ["ネタバレ", "剧透", "劇透", "spoiler"], kinds: ["game", "anime", "show"]},
   ];
@@ -111,8 +130,10 @@
     Q11424: "show", Q5398426: "show", Q24856: "show", Q215380: "artist", Q641066: "artist", Q216337: "artist", Q177220: "artist",
     Q13406554: "sports", Q18608583: "sports", Q349: "sports", Q431289: "product", Q2424752: "product",
     Q783794: "product", Q4830453: "product", Q167270: "product",
+    Q95074: "character", Q15773347: "character", Q1114461: "character", Q15632617: "character", Q1569167: "character",
   };
   const KIND_BY_TEXT = [
+    ["character", /角色|キャラクター|character|mascot|吉祥物|マスコット|サンリオ|三丽鸥|三麗鷗|Sanrio/i],
     ["game", /游戏|遊戲|ゲーム|video game|game/i],
     ["anime", /动画|動畫|アニメ|anime|漫画|漫畫|マンガ|manga|轻小说|ライトノベル/i],
     ["show", /电视剧|電視劇|剧集|劇集|ドラマ|television series|TV series|电影|電影|映画|film|movie/i],
@@ -157,10 +178,10 @@
 
   // ---------- 状态 ----------
   let S;   // {mode, name, step, ans: {...}, wd, wdState, original, draft}
-  const fresh = () => ({mode: "add", name: "", step: 0, ans: {}, wd: null, wdState: "idle", draft: null, original: null});
+  const fresh = () => ({mode: "add", name: "", step: 0, ans: {}, auto: {}, wd: null, wdState: "idle", draft: null, original: null});
 
   const kindOf = () => KINDS[S.ans.kind] || KINDS.product;
-  const focusOpts = () => kindOf().focus;
+  const focusOpts = () => kindOf().focus.filter(f => !f.when || f.when());
   const chosenFocus = () => focusOpts().filter(f => (S.ans.focus || []).includes(f.id));
   const wdPick = () => (S.wd || []).find(x => x.id === S.ans.which) || null;
 
@@ -203,6 +224,34 @@
     if (id === "size") return "M";
     return undefined;
   }
+  // 「不确定，你帮我定」：按维基数据的猜测和每类东西最常见的关注点替你选
+  function autoValue(id) {
+    if (id === "which") return S.wd?.[0]?.id || "";
+    if (id === "kind") return defaults("kind") || "product";
+    if (id === "focus") { const r = focusOpts().filter(f => f.rec).map(f => f.id); return r.length ? r : focusOpts().slice(0, 2).map(f => f.id); }
+    if (id === "urgent") { const r = chosenFocus().filter(f => f.urgent && f.rec).map(f => f.id); return r.length ? r : defaults("urgent"); }
+    if (id === "exclude") return EXCLUDES.filter(x => x.rec && (!x.kinds || x.kinds.includes(S.ans.kind))).map(x => x.id);
+    return defaults(id);
+  }
+  function autoText(id) {
+    const v = autoValue(id);
+    if (id === "which") return (S.wd || []).find(x => x.id === v)?.title || "不用查";
+    if (id === "kind") return KINDS[v]?.label || "";
+    if (id === "focus") return focusOpts().filter(f => v.includes(f.id)).map(f => f.label).join("、");
+    if (id === "urgent") return chosenFocus().filter(f => v.includes(f.id)).map(f => f.label).join("、") || "不用";
+    if (id === "exclude") return EXCLUDES.filter(x => v.includes(x.id)).map(x => x.label).join("、") || "都看";
+    if (id === "langs") return v.map(l => LANGS[l]).join("、");
+    return v || "";
+  }
+  const AUTO_STEPS = ["which", "kind", "focus", "urgent", "exclude", "langs", "section", "size"];
+  function autoRest() {   // 「剩下的都交给你」：从这一问开始，没回答的都替你选，直接到汇总
+    for (let i = S.step, steps = live(); i < steps.length; i++, steps = live()) {
+      const id = steps[i].id;
+      if (AUTO_STEPS.includes(id) && (S.ans[id] == null || i === S.step || S.auto[id])) { S.ans[id] = autoValue(id); S.auto[id] = true; }
+    }
+    S.touched = true; S.step = live().length - 1; S.draft = build(); draw();
+  }
+
   const guessHint = () => {
     const p = wdPick();
     if (p?.kind) return `按维基数据猜是「${KINDS[p.kind].label}」${p.desc ? `（${p.desc}）` : ""}，不对就改。`;
@@ -230,9 +279,11 @@
     const steps = live(), step = steps[Math.min(S.step, steps.length - 1)];
     const title = S.mode === "edit" ? `修改「${S.name}」` : "＋ 新增关注项";
     const asked = S.mode === "add" || S.ans.focus;   // 修改时直接到汇总的，没有回答过问题
-    const trail = h("ol", {class: "trail", "aria-label": "已经回答的"},
-      (asked ? steps.slice(0, S.step) : []).filter(s => s.id !== "review").map((s, i) => h("li", {}, h("button", {type: "button", onclick: () => go(i)},
-        h("span", {}, LABELS[s.id] || s.id), h("b", {}, answerText(s.id))))));
+    // 已经回答的：一个问题一个方块，从左到右排（窄屏从上到下），点方块回到那一问重选
+    const trail = h("ol", {class: "trail", "aria-label": "已经回答的，点一下可以改"},
+      (asked ? steps.slice(0, S.step) : []).map((s, i) => s.id === "review" ? null : h("li", {}, h("button", {type: "button", onclick: () => go(i),
+        class: S.auto[s.id] ? "auto" : null, title: "点一下改这一项"},
+        h("span", {}, `${i + 1} · ${LABELS[s.id] || s.id}${S.auto[s.id] ? " · 你帮我定的" : ""}`), h("b", {}, answerText(s.id) || "—")))));
     box.replaceChildren(h("h2", {}, title), trail, step.render(), queueList);
     const first = box.querySelector(".q input[type=text], .q .opt[aria-pressed=true], .q .opt, .rv input, .rv select");
     if (first && S.touched) first.focus({preventScroll: true});
@@ -258,6 +309,7 @@
   const nav = (ok, label = "下一步") => h("div", {class: "wnav"},
     S.step > 0 ? h("button", {type: "button", onclick: back}, "← 上一步") : null,
     h("button", {type: "button", class: "main", disabled: !ok, onclick: next}, label),
+    AUTO_STEPS.includes(live()[S.step]?.id) ? h("button", {type: "button", onclick: autoRest, title: "没回答的问题都按推荐选好，直接看汇总"}, "剩下的都交给你") : null,
     S.mode === "edit" ? h("button", {type: "button", onclick: () => { S.step = live().length - 1; S.draft = build(); draw(); }}, "跳到最后") : null,
     h("button", {type: "button", onclick: reset}, "取消"));
 
@@ -309,11 +361,16 @@
     return h("div", {class: "opts", role: multiSel ? "group" : "radiogroup"}, opts.map(o => h("button", {
       type: "button", class: "opt", "aria-pressed": String(multiSel ? (S.ans[id] || []).includes(o.v) : S.ans[id] === o.v),
       onclick: () => {
+        S.auto[id] = false;
+        if (id === "kind" && S.ans.kind !== o.v) { delete S.ans.focus; delete S.ans.urgent; delete S.ans.exclude; }
         if (!multiSel) { S.ans[id] = o.v; if (o.v === "+") draw(); else next(); return; }
         let v = [...(S.ans[id] || [])];
         v = v.includes(o.v) ? v.filter(x => x !== o.v) : o.only ? [o.v] : [...v.filter(x => !opts.find(p => p.v === x)?.only), o.v];
         S.ans[id] = v; draw();
-      }}, o.label, o.hint ? h("small", {}, o.hint) : null)));
+      }}, o.label, o.hint ? h("small", {}, o.hint) : null)),
+      AUTO_STEPS.includes(id) ? h("button", {type: "button", class: "opt auto", "aria-pressed": String(!!S.auto[id]),
+        onclick: () => { S.ans[id] = autoValue(id); S.auto[id] = true; next(); }},
+        "不确定，你帮我定", h("small", {}, `会选：${autoText(id) || "—"}`)) : null);
   }
 
   function single(id, ask, hint, opts) {
