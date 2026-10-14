@@ -14,3 +14,11 @@
 每个关注项的篇幅存在 Supabase 的 `sizes` 表，我自己在网页的 ⚙ 设置页（docs/settings.html，要口令）也能改。
 我说「把 XX 改成 L」时，用 Supabase 连接器直接改表；
 连接器不可用时改 `items.yaml` 里的 `size`，下次出刊会自动同步进数据库。
+
+## 每次回复都贴链接
+
+- 回复里只要提到网页、PR、设置页，就把可以直接点开的链接贴上：
+  简报 https://cxelegy.github.io/Wishlist/ 、设置页 https://cxelegy.github.io/Wishlist/settings.html 、
+  愿望清单 https://cxelegy.github.io/Wishlist/wishlist.html 、PR 用完整网址。
+- 合并 PR 后网页大约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；
+  确认网页已经更新了再告诉我，并附上链接。收集新闻、发通知仍由「关注清单通信」慢慢跑。

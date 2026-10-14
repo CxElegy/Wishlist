@@ -1,0 +1,46 @@
+name: 网页立即更新
+
+# PR 合并进 main（改了代码、关注清单、愿望清单）时，先花一分钟只重新生成网页并发布，
+# 不用等「关注清单通信」把收集、通知全部跑完（排队时要 20 分钟以上）。收集和通知照旧由那边跑。
+
+on:
+  push:
+    branches: [main]
+    paths: ["items.yaml", "wishlist.yaml", "docs/wishlist/**", "scripts/**", ".github/workflows/render.yml", "requirements.txt"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render
+  cancel-in-progress: true   # 连着合并几个 PR 时只生成最后那次
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # 读篇幅 S / M / L
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: 重新生成网页并发布
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3; do
+            python scripts/digest.py render
+            git add docs
+            git diff --cached --quiet && exit 0
+            git commit -q -m "重新生成网页"
+            git push && exit 0
+            # 期间别处也推送了：丢掉这次生成的，拉最新的再生成一次
+            git reset -q --hard HEAD~1 && git pull -q --rebase
+            sleep $((i * 5))
+          done
+          exit 1
