@@ -294,7 +294,7 @@ html{scroll-behavior:smooth}
  font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.1em;cursor:pointer;border-radius:0;white-space:nowrap}
 .shuffle:hover{background:#B8336A;border-color:#B8336A}
 .shuffle small{font:700 11px 'JetBrains Mono',monospace;opacity:.75;margin-left:6px}
-.shuffle+.shuffle{margin-left:8px}.shuffle.back{background:none;color:#1A1C22}
+.pknav{margin-left:auto;display:flex;gap:8px;white-space:nowrap}.pknav .shuffle{margin-left:0}.shuffle.back{background:none;color:#1A1C22}
 .shuffle[disabled]{opacity:.3;cursor:default;pointer-events:none}
 @media (hover:none){.vt{opacity:.9}}
 @media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
@@ -808,11 +808,11 @@ def _picks(picks, works, feedback=None):
     body = f'<div class="pkbatch">{batch_of(first)}</div>'
     if rest:
         body += f'<div class="pkpool" hidden>{cards_of(rest, False)}</div>'
-    shuffle = (f'<button type="button" class="shuffle back" aria-label="回到上一批推荐" disabled>上一批</button>'
-               f'<button type="button" class="shuffle next" aria-label="换一批推荐">换一批<small>共 {len(picks)} 条</small></button>'
+    shuffle = (f'<div class="pknav"><button type="button" class="shuffle back" aria-label="回到上一批推荐" disabled>上一批</button>'
+               f'<button type="button" class="shuffle next" aria-label="换一批推荐">换一批<small>共 {len(picks)} 条</small></button></div>'
                if rest else "")
     return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>我会喜欢<em>？</em></h2>'
-            f'<span>根据愿望清单的喜好、你关注的版面和你赞过的消息挑的（版面里已经有的不放）{"，点 👍 / 👎 教它你的口味" if feedback else ""}'
+            f'<span>根据愿望清单、你关注的版面和你赞过的消息挑的{"，点 👍 / 👎 教它你的口味" if feedback else ""}'
             f' · <a href="wishlist.html">♥ 愿望清单</a></span>{shuffle}</div>'
             f'{body}</section>' + (f"<script>{SHUFFLE_JS}</script>" if shuffle else ""))
 
