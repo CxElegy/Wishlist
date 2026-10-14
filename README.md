@@ -117,7 +117,8 @@ items.yaml
       再运行 [`db/history.sql`](db/history.sql)：`stories` 表存编排后的报道（某期重新编排就整期替换），`price_history` 表存价格 / 状态的变化（Steam 价格、播出状态、愿望清单里写的价格，值变了才新增一行）。
       再把 [`db/sizes.sql`](db/sizes.sql) 粘贴进去 → Run。建好 `sizes` 表：每个关注项的篇幅 **S**（少，每期最多 3 条、网页上约一行）/ **M**（中等，5 条）/ **L**（多，8 条、满满一整屏），表里没有的按 M。
       只要建一次表：之后新关注项自动补进表里（`items.yaml` 写了 `size` 就用它，没写按 M），`items.yaml` 的 `size` 改了也会自动同步。
-      想自己改就在 Table Editor 里改 `size` 那一格，下次出刊生效；网页上不显示篇幅。
+      想自己改：打开网页右上角的 **⚙ 设置**（`settings.html`），点 S / M / L 就行，下次出刊生效；简报正文里不显示篇幅。
+      设置页要口令才能改：再把 [`db/settings.sql`](db/settings.sql) 运行一次，按文件开头的说明设一个口令（只存在数据库里，网页和仓库都不存）。
    3. 项目的 **Connect** 按钮（或 Project Settings → Data API）里复制 Project URL；Project Settings → **API Keys** 里复制 publishable key（`sb_publishable_` 开头）和 secret key（`sb_secret_` 开头）。
    4. 把 Project URL 和 publishable key 填进 `items.yaml` 的 `settings` → `supabase_url` / `supabase_key`（publishable key 本来就是公开给网页用的）。
    5. secret key 放进 GitHub 仓库 Settings → Secrets and variables → Actions → **Secrets**，名字 `SUPABASE_SERVICE_KEY`。**不要**写进任何文件。

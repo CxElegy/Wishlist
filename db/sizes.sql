@@ -5,7 +5,7 @@
 --   L  多：每期最多 8 条，网页上满满一整屏
 --
 -- 只要建一次表。之后不用手动加行：新关注项会自动补进来（items.yaml 写了 size 就用它，没写按 M），
--- items.yaml 的 size 改了也会自动同步。想自己改就在 Table Editor 里改 size 那一格，下一次出刊（每 2 小时）生效；
+-- items.yaml 的 size 改了也会自动同步。想自己改就在网页的 ⚙ 设置页点（见 db/settings.sql），或在 Table Editor 里改 size 那一格，下一次出刊（每 2 小时）生效；
 -- items.yaml 不再改这一项，就一直以数据库为准。网页上不显示篇幅。
 -- GitHub Actions 用 secret key（仓库 Secret SUPABASE_SERVICE_KEY）读；网页（publishable key）读不到也写不了。
 

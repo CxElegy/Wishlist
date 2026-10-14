@@ -11,5 +11,6 @@
 
 ## 篇幅 S / M / L
 
-每个关注项的篇幅存在 Supabase 的 `sizes` 表。我说「把 XX 改成 L」时，用 Supabase 连接器直接改表；
+每个关注项的篇幅存在 Supabase 的 `sizes` 表，我自己在网页的 ⚙ 设置页（docs/settings.html，要口令）也能改。
+我说「把 XX 改成 L」时，用 Supabase 连接器直接改表；
 连接器不可用时改 `items.yaml` 里的 `size`，下次出刊会自动同步进数据库。
