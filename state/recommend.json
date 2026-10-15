@@ -26,12 +26,12 @@
   "https://www.gameapps.hk/news/71155/into-the-wind-steam-open-world-death-stranding/": "https://image.gameapps.hk/images/202610/08/steam-into-the-wind-gameplay-3_result.jpg",
   "https://www.gamingbible.com/news/platform/steam/outward-skyrim-alternative-037810-20261012": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt8bbf115aeeaf378d/6acca2bea74b6e1dcafa5b6a/outward.jpg",
   "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-rumors-30/": "https://www.bing.com/th?id=ONUT.PHocnNbu0DlL8cjtn1eC5Q&pid=News&w=1200",
+  "https://www.ign.com/articles/gta-6-was-originally-meant-to-release-much-sooner-than-we-realized": "https://www.bing.com/th?id=ONUT.oPpmz_dPRwtD8ENpkIcWrg&pid=News&w=1200",
   "https://www.imdb.com/es/news/ni66055125/?ref_=tt_nwr_1": "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/09160415/best-superhero-team-up-movies-ranking.jpg",
   "https://www.inthesnow.com/gear/k2-mindbender-88-ski-review/": "https://cdn.inthesnow.com/uploads/2026/10/k2-mindbender-88-ski-2026-27-hero.jpg",
   "https://www.juksy.com/article/152956": null,
   "https://www.ludens.com.tw/atmosfar-early-access-october-30/": null,
   "https://www.msn.com/ja-jp/news/other/%E3%82%B9%E3%82%BF%E3%83%90-%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%B0%E3%83%83%E3%82%BA%E3%81%BE%E3%81%A8%E3%82%81-%E3%82%BF%E3%83%B3%E3%83%96%E3%83%A9%E3%83%BC%E3%82%84%E3%82%B9%E3%83%88%E3%83%AD%E3%83%BC%E3%83%9E%E3%82%B0-%E3%82%A8%E3%83%97%E3%83%AD%E3%83%B3%E3%81%AA%E3%81%A9-%E3%82%B3%E3%83%A9%E3%83%9C%E5%85%A8%E7%A8%AE%E9%A1%9E%E8%B2%A9%E5%A3%B2%E5%A0%B4%E6%89%80%E4%B8%80%E8%A6%A7/ar-AA2d1yT6": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2d1oOP.img",
-  "https://www.pcmag.com/news/gta-6-leakers-latest-effort-appears-to-flop-as-groups-meme-coin-declines": "https://www.bing.com/th?id=ONUT.mEvzWKzgvi78KZecz1EtKw&pid=News&w=1120",
   "https://www.phonearena.com/news/galaxy-s27-and-s27-plus-rumored-to-miss-on-an-exciting-camera-upgrade_id184067": "https://www.bing.com/th?id=ONUT.PPUJqrPz8d797tL_vyHSBw&pid=News&w=1200",
   "https://www.playstationlifestyle.net/2026/10/08/forza-horizon-6-playstation-5-release-date": "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/forza-horizon-6.jpg?resize=1200,630",
   "https://www.sakhaparliament.ru/goods/fashion/t025036780": null,
@@ -208,6 +208,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-10-14",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.oPpmz_dPRwtD8ENpkIcWrg&pid=News&w=1200",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "IGN",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "GTA 6 Was Originally Meant to Release Much Sooner Than We Realized",
+   "url": "https://www.ign.com/articles/gta-6-was-originally-meant-to-release-much-sooner-than-we-realized",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "三星手机",
    "date": "2026-10-14",
    "hits": [
@@ -271,27 +292,6 @@
     "galaxy"
    ],
    "work": "三星手机"
-  },
-  {
-   "batch": 1,
-   "because": "GTA 6",
-   "date": "2026-10-14",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.mEvzWKzgvi78KZecz1EtKw&pid=News&w=1120",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "PCMag",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "GTA 6 Leaker's Latest Effort Appears To Flop As Group's Meme Coin Declines",
-   "url": "https://www.pcmag.com/news/gta-6-leakers-latest-effort-appears-to-flop-as-groups-meme-coin-declines",
-   "words": [],
-   "work": "GTA 6"
   },
   {
    "batch": 1,
