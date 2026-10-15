@@ -107,5 +107,29 @@ class Components(unittest.TestCase):
         self.assertEqual(render._agenda([{"name": "A", "stories": []}], "2026-10-15"), "")
 
 
+class Redesign(unittest.TestCase):
+    """2026-10-16 の見た目：作品ごとの装飾、トップのポスターの取色、高さをそろえる最新ニュース。"""
+
+    def test_motif_classes_exist_for_every_motif(self):
+        for name in render.MOTIFS:
+            self.assertIn(f".m-{name}", render.CSS, name)
+
+    def test_unknown_motif_is_ignored(self):
+        block = {"name": "X", "theme": dict(theme.DEFAULT), "stories": [], "_today": "2026-10-16", "_motif": "nope"}
+        self.assertNotIn("m-nope", render._section(block, "w"))
+        block["_motif"] = "manga"
+        self.assertIn('class="sec m-manga', render._section(block, "w"))
+
+    def test_poster_colors_from_cache_are_readable(self):
+        url = "https://e.com/top.jpg"
+        cache = {f"hero|{url}": {"bg": "#201226", "fg": "#F2EEE6", "accent": "#CF636F", "alt_bg": "#F0E7F3",
+                                 "alt_fg": "#1A1C22", "alt_accent": "#BB3A48"}}
+        style = render._poster_colors({"image": url}, cache)
+        self.assertIn("--tint:#F0E7F3", style)
+        deep = style.split("--deep:")[1].split(";")[0]
+        self.assertGreaterEqual(theme.contrast(theme._rgb(deep), theme._rgb("#F0E7F3")), 4.5)
+        self.assertEqual(render._poster_colors({"image": url}, None), "")  # キャッシュなし（テスト）：既定の色
+
+
 if __name__ == "__main__":
     unittest.main()

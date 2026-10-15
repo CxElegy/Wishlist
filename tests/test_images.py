@@ -660,14 +660,14 @@ class ImagesTest(unittest.TestCase):
         self.assertIn('class="pic none"', render._pic({"image": None, "_fbs": [], "_work": "x"}))  # 没有链接：名字块
 
     def test_front_board_index_falls_back_to_other_images_and_icon(self):
-        """头版板块索引：这一版面最近几条的图依次备用，再是作品封面，最后是第一条报道的来源图标。"""
+        """トップのジャンルの棚：この作品の最近の記事の写真を順に予備に、次に作品の表紙、最後に記事の来源アイコン。"""
         import render
         issue = {"date": "2026-10-12", "items": [{"name": "MMO", "cover": "https://c/cover.jpg", "section": "游戏",
                                                    "theme": dict(digest.theme.DEFAULT), "facts": [], "stories": [
             {"headline": "a", "url": "https://news.17173.com/a", "image": "http://insecure.example/a.jpg", "date": "2026-10-12"},
             {"headline": "b", "url": "https://b.example/b", "image": "https://b.example/b.jpg", "date": "2026-10-11"}]}]}
         page = render.render([issue], order=["MMO"])
-        entry_html = page[page.index('<a class="entry" href="#'):]
+        entry_html = page[page.index('<a class="tape" href="#'):]
         entry_html = entry_html[:entry_html.index("</a>")]
         self.assertIn('src="http://insecure.example/a.jpg" data-fb="https://b.example/b.jpg https://c/cover.jpg"', entry_html)
         self.assertIn("news.17173.com", entry_html)  # 图都打不开：第一条报道的来源图标

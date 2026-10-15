@@ -413,7 +413,8 @@ class Recommend(unittest.TestCase):
         self.assertNotIn("https://www.reddit.com/r/GTA6/x", picks)  # 网友的提问帖不当推荐
         self.assertEqual(picks["https://e.com/5"]["liked"], "GTA 6 新地图泄露")  # 同一个作品赞过
         out = render._picks(list(picks.values()), [])
-        self.assertIn("フォロー中の「GTA 6」のほかのニュース · 👍した「GTA 6 新地图泄露」と関連", out)
+        # 理由は POP の手書き：本文に蛍光ペン（mark）、👍 との関連は小さく（small）
+        self.assertIn("<mark>フォロー中の「GTA 6」のほかのニュース</mark><small>👍した「GTA 6 新地图泄露」と関連</small>", out)
         self.assertIn("「黑猫杯」が欲しいから", out)
 
     def test_probe_entries_scored_by_title(self):
