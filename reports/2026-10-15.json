@@ -416,7 +416,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
    "section": "好物",
@@ -660,17 +660,6 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-08",
-     "headline": "ILLIT launches mobile rhythm game inspired by new album 'BREAK EVEN'",
-     "highlight": "",
-     "image": null,
-     "source": "allkpop",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.allkpop.com&sz=128",
-     "url": "https://www.allkpop.com/article/2026/10/illit-launches-mobile-rhythm-game-inspired-by-new-album-break-even",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-15",
      "headline": "ILLIT新曲「I WANT TO CATCH YOU」一部公開、韓流ファンの間で話題に",
      "highlight": "",
@@ -697,6 +686,17 @@
      "image": "https://static.sanyonews.jp/image/article/size1/1/0/1/6/10163e8bc4b56c33bcc85493c8e2556d_1.jpg",
      "image_via": "og:image",
      "url": "https://www.sanyonews.jp/article/1961031?kw=%E7%A6%8F%E7%A5%8F",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "ILLIT launches mobile rhythm game inspired by new album 'BREAK EVEN'",
+     "highlight": "",
+     "image": null,
+     "source": "allkpop",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.allkpop.com&sz=128",
+     "url": "https://www.allkpop.com/article/2026/10/illit-launches-mobile-rhythm-game-inspired-by-new-album-break-even",
      "weight": "normal"
     }
    ],
@@ -857,22 +857,22 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-11",
-     "headline": "알레산드로 페라리(글) & 마테오 피아나/이고르 키미소(그림) 『스타워즈 만달로리안 그래픽 노블 시즌 2』 (스타워즈 코믹 감상 ③)",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.C4oXXagdfnTBgWCRRT_5Dg&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://note.com/cute_tulip490/n/n0297cbd6c492?hl=ko",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-13",
      "headline": "'God of War,' 'Mandalorian & Grogu' Vets on Cinema-Gaming Crossover",
      "highlight": "",
      "image": "https://variety.com/wp-content/uploads/2026/10/View-Conference-cinema-games-panel.-12.10.2026.jpg?w=1000&h=563&crop=1",
      "image_via": "og:image",
      "url": "https://variety.com/2026/artisans/global/god-of-war-mandalorian-grogu-cinema-gaming-view-1236909776/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-11",
+     "headline": "알레산드로 페라리(글) & 마테오 피아나/이고르 키미소(그림) 『스타워즈 만달로리안 그래픽 노블 시즌 2』 (스타워즈 코믹 감상 ③)",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.C4oXXagdfnTBgWCRRT_5Dg&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://note.com/cute_tulip490/n/n0297cbd6c492?hl=ko",
      "weight": "normal"
     }
    ],
