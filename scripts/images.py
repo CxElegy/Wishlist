@@ -71,9 +71,23 @@ class Fetched:
     too_big: bool = False
 
 
+def _ascii_url(url):
+    """地址里有没编码的中日文（/画像/猫.jpg）时先编码，urllib 只收 ASCII（否则报 ordinal not in range(128)）。
+    已经编码过的 %xx 不动；域名是中日文的用 IDNA。"""
+    if url.isascii():
+        return url
+    parts = urllib.parse.urlsplit(url)
+    host = parts.hostname or ""
+    netloc = parts.netloc.replace(host, host.encode("idna").decode()) if host and not host.isascii() else parts.netloc
+    q = lambda x, safe: urllib.parse.quote(x, safe=safe)
+    return urllib.parse.urlunsplit((parts.scheme, netloc, q(parts.path, "/%:@!$&'()*+,;="),
+                                    q(parts.query, "=&%:@!$'()*+,;/?"), q(parts.fragment, "%")))
+
+
 def _fetch(url, limit):
     """GET 一个地址，最多读 limit 字节。只带 User-Agent，不带 Referer / Cookie。"""
     last = Fetched(error="未请求")
+    url = _ascii_url(url)
     for attempt in range(RETRIES + 1):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": sources.USER_AGENT})
