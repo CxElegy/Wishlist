@@ -22,168 +22,394 @@ import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
 FONTS = (
-    "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700;900"
-    "&family=Noto+Serif+SC:wght@500;700;900&family=Cormorant+Garamond:wght@600"
-    "&family=JetBrains+Mono:wght@500;700&display=swap"
+    "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+SC:wght@500;700;900"
+    "&family=Noto+Sans+TC:wght@500;700;900&family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+SC:wght@500;700;900"
+    "&family=Anton&family=Yusei+Magic&family=JetBrains+Mono:wght@500;700&display=swap"
 )
 
 CSS = """
 :root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;
- --font-sans:'Noto Sans SC',sans-serif;--font-serif:'Noto Serif SC',serif;--font-mono:'JetBrains Mono',monospace;
- --fs-label:11px;--fs-tag:10px;--gap:16px}
-
+ --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
+ --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
+ --fs-label:11px;--fs-tag:10px;--gap:16px;--hair:color-mix(in srgb,var(--ink) 16%,transparent);
+ --shadow:4px 4px 0 var(--ink);--shadow-l:8px 8px 0 var(--ink);--tilt:-1.5deg;--skew:-8deg}
+/* デザインの骨格（PRODUCT.md）：文字箱の後ろに硬い影、見出しと枠だけ少し傾ける（-1〜-2.5°）、ラベルは平行四辺形。
+   本文・リスト・作品の版面は傾けない。配色はトークンと版面の色だけ */
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-serif)}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans);-webkit-font-smoothing:antialiased}
+html,body{overflow-x:clip}  /* 傾けた箱・吹き出しの矢印が端からはみ出してもページが横にずれない（sticky は効いたまま） */
 ::selection{background:var(--rose);color:#FFF}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
 a{color:inherit;text-decoration:none}
+button{font-family:inherit}
 .page{max-width:1200px;margin:0 auto;padding:40px 24px;display:flex;flex-direction:column;gap:28px}
-.mast{border:3px solid var(--ink);padding:5px}
-.mast>div{border:1px solid var(--ink);display:flex}
-.mast .logo{width:100px;background:var(--ink);display:flex;align-items:center;justify-content:center}
-.mast h1{flex:1;margin:0;padding:14px 28px;font:900 clamp(34px,3.4vw,52px)/1 var(--font-sans);letter-spacing:.02em;white-space:nowrap}
-.mast .meta{width:190px;border-left:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px}
-.mast .no{font:900 32px/1 var(--font-sans)}
 .mono{font-family:var(--font-mono);font-size:13px}
-.issue{display:flex;flex-direction:column;gap:28px}
-.issue-head{display:flex;align-items:center;gap:16px}
-.issue-head::before,.issue-head::after{content:"";flex:1;border-top:2px solid var(--ink)}
-.issue-head span{font:700 13px var(--font-mono);letter-spacing:.3em}
-.sec{background:var(--bg);color:var(--fg);border:1px solid var(--bg)}
-.band{min-height:92px;display:flex;align-items:center;flex-wrap:wrap;gap:6px 18px;padding:16px 28px;background:var(--bg)}
-.band.split{background:linear-gradient(162deg,var(--abg) 0 55%,var(--bg) 55% 100%)}
-.band .title{font-size:50px;line-height:1;color:var(--fg)}
-.band.split .title{color:var(--afg)}
-.band .sub{margin-left:auto;font-size:15px;letter-spacing:.1em;color:var(--fg);opacity:.85}
-.serif .title{font-family:'Cormorant Garamond',var(--font-serif);font-weight:600}
-.sans .title{font-family:var(--font-sans);font-weight:900;font-size:40px}
-.facts{display:flex;flex-wrap:wrap;gap:1px;background:var(--line)}
-.fact{flex:1 1 280px;padding:14px 22px;background:var(--abg);color:var(--afg);display:flex;flex-direction:column;gap:4px}
-.fact .label{font:700 11px var(--font-mono);letter-spacing:.2em;opacity:.75}
-.fact .new{color:var(--aac);opacity:1}
-.fact a{text-decoration:underline;text-underline-offset:3px}
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1px;background:var(--line)}
-.card{padding:20px;display:flex;flex-direction:column;gap:12px}
-.card.m{background:var(--bg);color:var(--fg);--ac:var(--acc)}
-.card.a{background:var(--abg);color:var(--afg);--ac:var(--aacc)}
-.card:hover h2,.card:hover h3{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
-.hl{color:var(--ac)}
-.pic{position:relative;overflow:hidden;border:1px solid color-mix(in srgb,currentColor 35%,transparent);
- background:repeating-linear-gradient(135deg,color-mix(in srgb,currentColor 7%,transparent) 0 14px,transparent 14px 28px)}
-.pic{aspect-ratio:16/9}
+/* ---------- 共通の部品：ラベル・見出し箱・行ごとの黒箱 ---------- */
+.tg{display:inline-block;flex:none;white-space:nowrap;background:var(--sc,var(--ink));color:#FFF;padding:1px 10px;transform:skewX(var(--skew));
+ font:700 12px/1.55 var(--font-sans);letter-spacing:.04em;font-style:normal}
+.tg>span{display:inline-block;transform:skewX(8deg)}
+.sh{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px}
+.sh>span{display:inline-block;background:var(--ink);color:var(--card);padding:6px 18px 6px 16px;transform:rotate(var(--tilt));
+ box-shadow:4px 4px 0 var(--rose);font:900 24px/1.25 var(--font-sans);letter-spacing:.06em}
+.sh small{font:700 12px/1.5 var(--font-sans);letter-spacing:.06em;opacity:.7}
+.hb{display:inline;background:var(--ink);color:var(--card);padding:3px 12px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* ---------- 画像：縦横比が枠に近い写真は枠いっぱい（.fill、FIT_JS が付ける）。違う写真はぼかしの上に全体を表示 ---------- */
+.pic{position:relative;overflow:hidden;aspect-ratio:16/9;background:color-mix(in srgb,currentColor 8%,transparent)}
 .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.pic.fill img:not(.bg):not(.ico){object-fit:cover}
+.pic.fill img.bg{display:none}
 .pic .ph{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;text-align:center;
- font:600 clamp(18px,3vw,34px)/1.1 'Cormorant Garamond',var(--font-serif);letter-spacing:.04em;color:var(--ac,currentColor);
- background:radial-gradient(circle at 30% 20%,color-mix(in srgb,var(--ac,currentColor) 28%,transparent),transparent 60%),
- color-mix(in srgb,currentColor 8%,transparent)}
+ font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;
+ background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,var(--ac,var(--rose))}
 .pic.none{background:none}
 .pic.none .ph{display:flex}
 .pic.icon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
  background:color-mix(in srgb,currentColor 6%,transparent)}
 .pic.icon img.ico{position:static;width:min(64px,30%);height:auto;aspect-ratio:1;object-fit:contain;
  background:#FFFFFF;border-radius:14px;padding:6px;box-shadow:0 1px 4px rgba(0,0,0,.18)}
-.pic.icon .src{max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
- font:600 13px 'JetBrains Mono','Noto Sans SC',monospace;opacity:.75}
+.pic.icon .src{max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:700 13px var(--font-sans);opacity:.75}
 .pic:not(.icon) img.ico,.pic:not(.icon) .src{display:none}
-.pic img.bg{object-fit:cover;filter:blur(18px) brightness(.8);transform:scale(1.15)}
-.hero{grid-column:span 12;display:grid;grid-template-columns:7fr 5fr;gap:24px;padding:24px}
-.hero .pic{align-self:center}
-.s12 .pic{aspect-ratio:auto;height:260px}.s12 .pic:empty{display:none}
-.hero .txt{display:flex;flex-direction:column;justify-content:center;gap:16px}
-.tag{font:700 12px var(--font-mono);letter-spacing:.25em;color:var(--ac)}
-.hero h2{margin:0;font-weight:900;font-size:34px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
-.lead{grid-column:span 8}
-.lead h2{margin:0;font-weight:900;font-size:36px;line-height:1.25}
-.side{grid-column:span 4;display:flex;flex-direction:column;gap:1px}
-.side .card{flex:1}
-.side h3{margin:0;font-weight:900;font-size:22px;line-height:1.35}
-.row h3{margin:0;font-weight:900;font-size:21px;line-height:1.4}
-.s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
-.blurb{margin:0;font-size:16px;line-height:1.75;opacity:.85}
-.quiet .band{min-height:64px;padding:10px 24px}
-.quiet .band .title{font-size:32px}
-.sans.quiet .band .title{font-size:26px}
-.calm{display:flex;align-items:center;gap:20px;padding:12px 24px;background:var(--bg);color:var(--fg);border-top:3px solid var(--acc)}
-.calm .pic{flex:0 0 120px;height:62px}
-.calm .txt{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
-.calm .tag{color:var(--acc)}
-.calm .status{font-size:15px;line-height:1.6}
-.calm .last{flex:0 1 40%;display:flex;flex-direction:column;gap:2px;font-size:15px;line-height:1.5;border-left:1px solid color-mix(in srgb,currentColor 25%,transparent);padding-left:20px}
-.calm .last .mono{font-size:11px;letter-spacing:.15em;opacity:.7}
-.calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
-/* ---------- 头版 ---------- */
-.front{background:var(--card);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column;
- background-image:radial-gradient(var(--ink) .8px,transparent .9px);background-size:7px 7px;background-position:0 0}
-.front>*{background:var(--card)}
-.fbar{display:flex;align-items:center;gap:14px;padding:8px 18px;background:var(--ink);color:var(--card);font:700 12px var(--font-mono);letter-spacing:.25em}
-.fbar b{font:900 15px var(--font-sans);letter-spacing:.3em;color:var(--gold);white-space:nowrap;flex:none}
-.fbar span:last-child{margin-left:auto;white-space:nowrap}
-.fbody{display:grid;grid-template-columns:7fr 5fr;gap:0;border-bottom:3px solid var(--ink)}
-.top{position:relative;padding:22px;border-right:3px solid var(--ink);display:flex;flex-direction:column;gap:14px;color:var(--ink)}
-.top .pic{border:3px solid var(--ink);color:var(--ink)}
-.top .badge{position:absolute;left:8px;top:8px;z-index:2;padding:6px 14px 6px 12px;background:var(--alert);color:#FFF;
- font:900 20px/1 var(--font-sans);letter-spacing:.08em;clip-path:polygon(0 0,100% 0,88% 100%,0 100%);border:none}
-.top .kicker{display:flex;align-items:center;gap:10px;font:700 12px var(--font-mono);letter-spacing:.2em}
-.top .kicker i{font-style:normal;padding:2px 10px;color:#FFF;letter-spacing:.15em}
-.top h2{margin:0;font:900 34px/1.25 var(--font-sans);color:var(--alert);letter-spacing:.01em;
- display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance;
- text-shadow:2px 2px 0 var(--gold)}
-.top p{margin:0;font-size:16px;line-height:1.75}
-.topcol{display:flex;flex-direction:column;border-right:3px solid var(--ink)}
-.topcol .top{border-right:none}
-.mores{flex:1;display:flex;flex-direction:column;padding:0 22px 18px;gap:0}
-.mores h3{margin:0 0 4px;padding-top:12px;border-top:3px double var(--ink);font:900 13px var(--font-sans);letter-spacing:.3em}
-.more{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px dashed color-mix(in srgb,var(--ink) 35%,transparent);color:var(--ink)}
-.more .pic{aspect-ratio:16/10;border:2px solid var(--ink);--ac:var(--sc)}
-.more .pic .ph{font-size:13px}
-.more .nm{font:700 11px var(--font-mono);letter-spacing:.1em;color:var(--sc)}
-.more b{display:block;margin-top:3px;font-size:16px;line-height:1.45}
-.more:hover b{text-decoration:underline;text-underline-offset:3px}
-.top:hover h2{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
-.boards{display:flex;flex-direction:column}
-.board{border-bottom:3px solid var(--ink);display:flex;flex-direction:column}
-.board:last-child{border-bottom:none;flex:1}
-.board h3{margin:0;display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--sc);color:#FFF;
- font:900 20px/1.2 var(--font-sans);letter-spacing:.3em}
-.board h3 small{margin-left:auto;font:700 11px var(--font-mono);letter-spacing:.2em;opacity:.9}
-.entry{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;padding:10px 16px;border-top:1px dashed color-mix(in srgb,var(--ink) 35%,transparent)}
-.entry:first-of-type{border-top:none}
-.entry .pic{aspect-ratio:16/10;border:2px solid var(--ink);color:var(--ink);--ac:var(--sc)}
-.entry .pic .ph{font-size:13px}
-.entry .nm{font:700 11px var(--font-mono);letter-spacing:.12em;color:var(--sc)}
-.entry b{display:block;font-size:15px;line-height:1.45;margin-top:2px}
-.entry.q b{font-weight:500;opacity:.6}
-.entry:hover b{text-decoration:underline;text-underline-offset:3px}
-.board .none{padding:10px 16px;font-size:13px;opacity:.55}
+.pic img.bg{object-fit:cover;filter:blur(18px) brightness(.85);transform:scale(1.15)}
+/* ---------- 報頭 ---------- */
+.mast{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 20px}
+.mast .mtitle{display:flex;align-items:flex-end;gap:14px;min-width:0}
+.mast h1{margin:0;display:inline-block;background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);transform:rotate(-1deg);
+ padding:10px 22px 8px;font:900 clamp(26px,3.4vw,48px)/1.1 var(--font-sans);letter-spacing:.02em;white-space:nowrap}
+.mast .stamp{padding-bottom:6px;font:700 11px/1.4 var(--font-sans);letter-spacing:.08em;opacity:.65}
+.mast .tools{display:flex;align-items:stretch;gap:10px}
+.mast .meta{display:flex;flex-direction:column;justify-content:center;padding:4px 14px;border:2px solid var(--ink);background:var(--card)}
+.mast .meta small{font:700 10px/1.3 var(--font-sans);letter-spacing:.2em;opacity:.7}
+.mast .meta b{font:26px/1 var(--font-num);letter-spacing:.02em;white-space:nowrap}
+.mastwish{display:flex;align-items:center;gap:8px;padding:8px 14px;border:2px solid var(--rose);background:var(--rose);color:#FFF;
+ box-shadow:var(--shadow);font:900 14px/1.3 var(--font-sans);white-space:nowrap;transition:transform .1s,box-shadow .1s}
+.mastwish small{font:700 11px/1.3 var(--font-sans);background:var(--card);color:var(--rose);padding:1px 7px}
+.mastwish:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.mastset{display:flex;align-items:center;padding:8px 14px;border:2px solid var(--ink);background:var(--card);font:700 13px var(--font-sans);white-space:nowrap}
+.mastset:hover{background:var(--ink);color:var(--card)}
+.navwish{display:flex;align-items:center;gap:8px;margin:10px 0 0 14px;padding:8px 12px;border:2px solid var(--rose);color:var(--rose);
+ font:900 13px var(--font-sans);letter-spacing:.1em;flex:none;box-shadow:3px 3px 0 var(--rose)}
+.navwish small{margin-left:auto;font:700 11px var(--font-sans);opacity:.8}
+.navwish:hover{background:var(--rose);color:#FFF}
+@media (max-width:1000px){.navwish{display:none}}
+.issue{display:flex;flex-direction:column;gap:40px}
+/* ---------- トップ：毎日刷り直すポスター。地色はその日のトップ記事の写真から（--tint / --deep / --hacc） ---------- */
+.front{display:flex;flex-direction:column;gap:40px}
+.poster{position:relative;background:var(--tint,var(--sheet));color:var(--ink);border:2px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 28px 18px}
+.poster::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;
+ background-image:radial-gradient(var(--deep,var(--ink)) .7px,transparent .9px);background-size:6px 6px}
+.poster .marks{position:absolute;inset:10px;pointer-events:none;opacity:.5;background:
+ linear-gradient(var(--ink),var(--ink)) 0 0/16px 1px no-repeat,linear-gradient(var(--ink),var(--ink)) 0 0/1px 16px no-repeat,
+ linear-gradient(var(--ink),var(--ink)) 100% 0/16px 1px no-repeat,linear-gradient(var(--ink),var(--ink)) 100% 0/1px 16px no-repeat,
+ linear-gradient(var(--ink),var(--ink)) 0 100%/16px 1px no-repeat,linear-gradient(var(--ink),var(--ink)) 0 100%/1px 16px no-repeat,
+ linear-gradient(var(--ink),var(--ink)) 100% 100%/16px 1px no-repeat,linear-gradient(var(--ink),var(--ink)) 100% 100%/1px 16px no-repeat}
+.phead{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;font:700 12px/1.4 var(--font-sans);letter-spacing:.06em}
+.phead .lab{background:var(--ink);color:var(--card);padding:3px 12px;transform:skewX(var(--skew))}
+.phead .day{margin-left:auto;font:15px/1 var(--font-num);letter-spacing:.04em;color:var(--deep,var(--ink))}
+.top{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto 1fr;gap:10px 36px;margin-top:14px;color:var(--ink)}
+.pdate{display:flex;align-items:flex-end;gap:14px;padding-top:4px}
+.pdate b{font:clamp(84px,9.5vw,164px)/.86 var(--font-num);color:var(--deep,var(--ink));letter-spacing:-.01em;text-shadow:5px 5px 0 var(--hacc,var(--rose))}
+.pdate span{display:flex;flex-direction:column;align-items:center;padding:8px 12px 6px;background:var(--deep,var(--ink));color:var(--card);
+ transform:rotate(-3deg);box-shadow:var(--shadow);font:40px/1 var(--font-num)}
+.pdate small{font:700 11px/1.4 var(--font-sans);letter-spacing:.2em}
+.frame{grid-column:2;grid-row:1/3;position:relative;align-self:start;margin:12px 8px 8px 0;padding:8px;background:var(--card);
+ border:2px solid var(--ink);box-shadow:var(--shadow-l);transform:rotate(-2deg);transition:transform .2s}
+.top:hover .frame{transform:rotate(-1deg) translateY(-2px)}
+.frame .pic{border:1.5px solid var(--ink);color:var(--ink)}
+.burst{position:absolute;top:-22px;left:-26px;z-index:2;display:grid;place-items:center;width:92px;height:92px;background:var(--alert);color:#FFF;
+ font:900 21px/1 var(--font-sans);letter-spacing:.12em;transform:rotate(8deg);filter:drop-shadow(3px 3px 0 var(--ink));
+ clip-path:polygon(50% 0,61% 13%,77% 6%,80% 23%,97% 25%,89% 40%,100% 50%,89% 60%,97% 75%,80% 77%,77% 94%,61% 87%,50% 100%,39% 87%,23% 94%,20% 77%,3% 75%,11% 60%,0 50%,11% 40%,3% 25%,20% 23%,23% 6%,39% 13%)}
+.ptxt{display:flex;flex-direction:column;gap:16px;align-self:end;padding-bottom:6px;min-width:0}
+.kick{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.kick em{font:16px/1 var(--font-num);font-style:normal;letter-spacing:.04em;color:var(--deep,var(--ink))}
+.top h2{margin:0;max-width:600px;font:900 clamp(21px,2.2vw,31px)/1.55 var(--font-sans);letter-spacing:.01em;transform:rotate(var(--tilt));transform-origin:left top}
+.top:hover .hb{background:var(--deep,var(--ink))}
+.top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pfoot{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;margin-top:16px;padding-top:12px;border-top:1.5px solid var(--ink);
+ font:700 11px/1.4 var(--font-sans);letter-spacing:.06em;color:var(--deep,var(--ink))}
+.cbar{display:inline-block;flex:none;width:112px;height:10px;border:1px solid var(--ink);
+ background:linear-gradient(90deg,var(--sc1,#00B4EE) 0 14%,var(--sc2,#FF3D8B) 14% 28%,var(--gold) 28% 42%,var(--ink) 42% 56%,var(--hacc,var(--rose)) 56% 70%,var(--deep,var(--ink)) 70% 84%,var(--card) 84%)}
+/* ---------- ほかの注目ニュース：写真の壁 ＋ 最新ニュース（高さをそろえる）＋ ジャンルの棚 ---------- */
+.spot{display:flex;flex-direction:column;gap:22px}
+.mgrid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:28px;align-items:stretch}
+.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:22px;align-content:start}
+.wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
+ padding:10px 12px 14px;transition:transform .12s,box-shadow .12s}
+.wc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.wc.lead{grid-column:span 2;grid-row:span 2}
+.wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
+.wc.lead .pic{aspect-ratio:auto;flex:1;min-height:280px}
+.wc .tg{position:absolute;left:-8px;top:18px;z-index:2;box-shadow:2px 2px 0 var(--ink)}
+.wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
+.wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2}
+.wc:hover b{text-decoration:underline;text-underline-offset:3px}
+.mgrid.solo,.mgrid.nolatest{grid-template-columns:minmax(0,1fr)}
+.latest{display:flex;flex-direction:column;height:0;min-height:100%;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:14px 16px 6px}
+.mgrid.solo .latest{height:auto}
+.latest h3{margin:0;display:flex;align-items:baseline;gap:10px;padding-bottom:8px;border-bottom:2px solid var(--ink);font:900 18px/1.3 var(--font-sans);letter-spacing:.04em}
+.latest h3 small{margin-left:auto;font:700 11px var(--font-sans);opacity:.6;letter-spacing:.04em}
+.latest ol{flex:1;min-height:0;overflow-y:auto;list-style:none;margin:0;padding:0;scrollbar-width:thin}
+.latest li{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:4px 8px;align-items:baseline;padding:9px 0;border-bottom:1px dashed var(--hair);font:500 14px/1.5 var(--font-sans)}
+.latest li em{order:-1;font:13px/1 var(--font-num);font-style:normal;opacity:.7}
+.latest li .tg{font-size:11px;padding:0 7px}
+.latest li a{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.latest li a:hover{text-decoration:underline;text-underline-offset:3px}
+/* ジャンルの棚：ジャンルごとに看板、作品ごとに最新の 1 本をテープのように並べる（版面へのリンク） */
+.shelves{display:flex;flex-wrap:wrap;align-items:flex-end;gap:30px 26px;padding-top:6px}
+.shelf{flex:var(--n) 1 calc(var(--n) * 150px);min-width:0;position:relative;padding-top:32px;--sc:var(--ink)}
+.sign{position:absolute;left:0;top:0;margin:0;display:inline-flex;align-items:baseline;gap:10px;padding:5px 14px 4px;background:var(--sc);color:#FFF;
+ transform:rotate(var(--tilt));box-shadow:3px 3px 0 var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.1em;white-space:nowrap}
+.sign small{font:11px/1.3 var(--font-num);letter-spacing:.12em;opacity:.9}
+.tapes{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;padding:0 10px 0 6px}
+.tape{display:grid;grid-template-columns:18px minmax(0,1fr);min-width:0;background:var(--card);border:1.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .12s}
+.tape:hover{transform:translateY(-4px)}
+.tape .spine{grid-row:1/3;writing-mode:vertical-rl;background:var(--sc);color:#FFF;padding:6px 0;text-align:center;font:900 10px/18px var(--font-sans);letter-spacing:.2em;overflow:hidden}
+.tape .pic{margin:6px 6px 0 0;border:1px solid var(--ink);aspect-ratio:4/3;--ac:var(--sc)}
+.tape .lbl{display:flex;flex-direction:column;gap:2px;min-width:0;padding:7px 8px 9px 2px}
+.tape .lbl i{font:700 11px/1.3 var(--font-sans);font-style:normal;color:var(--sc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tape .lbl b{font:700 13px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tape.q .lbl b{font-weight:500;opacity:.65}
+.plank{height:12px;margin-top:-2px;background:var(--ink);box-shadow:0 6px 0 color-mix(in srgb,var(--ink) 30%,transparent)}
 /* ---- 将来のコンテンツ用の部品（_extras / _play / _agenda）。色はトークンと版面の --ac だけを使う ---- */
-.xprice{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:2px;font:700 var(--fs-label) var(--font-mono)}
-.xprice b{font:900 18px var(--font-sans);color:var(--ac,var(--rose))}
-.xprice s{opacity:.7}.xprice i{font-style:normal;padding:1px 6px;background:var(--ac,var(--rose));color:var(--card)}
+.xprice{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:2px;font:700 var(--fs-label) var(--font-sans)}
+.xprice b{font:20px var(--font-num);color:var(--ac,var(--rose))}
+.xprice s{opacity:.7}.xprice i{font-style:normal;padding:1px 6px;background:var(--ac,var(--rose));color:var(--card);transform:skewX(var(--skew))}
 .xprice span{opacity:.8}
-.xevent{display:flex;align-items:baseline;gap:10px;margin-top:2px;padding:6px 10px;border:2px solid currentColor;align-self:flex-start}
-.xevent b{font:900 18px var(--font-mono);letter-spacing:.02em}.xevent span{font:700 12px var(--font-sans)}
+.xevent{display:flex;align-items:baseline;gap:10px;margin-top:2px;padding:5px 10px;border:2px solid currentColor;box-shadow:3px 3px 0 currentColor;align-self:flex-start}
+.xevent b{font:20px var(--font-num);letter-spacing:.02em}.xevent span{font:700 12px var(--font-sans)}
 .xgal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:4px}
 .xgal img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border:1px solid currentColor}
-.xplay{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:2px 10px;background:var(--ink);color:var(--card);font:700 var(--fs-label) var(--font-mono);letter-spacing:.08em}
+.xplay{position:absolute;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:2px 10px;background:var(--ink);color:var(--card);font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em}
 .xplay::after{content:"動画"}
-.agenda{border-top:3px double var(--ink)}
-.agenda h4{margin:0;display:flex;align-items:baseline;gap:14px;padding:10px 18px;border-bottom:2px solid var(--ink);font:900 15px var(--font-sans);letter-spacing:.3em}
-.agenda h4 small{font:700 12px var(--font-mono);letter-spacing:.3em;color:var(--alert)}
-.agenda ol{list-style:none;margin:0;padding:6px 18px 14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:0 32px}
-.agenda li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;padding:8px 0;border-bottom:1px dotted color-mix(in srgb,var(--ink) 40%,transparent)}
-.agenda li b{grid-row:span 2;font:900 20px var(--font-mono);color:var(--sc)}
+.agenda{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:14px 18px 8px}
+.agenda h4{margin:0 0 4px;display:flex;align-items:baseline;gap:14px;font:900 18px var(--font-sans);letter-spacing:.06em}
+.agenda h4 small{font:11px var(--font-num);letter-spacing:.2em;color:var(--alert)}
+.agenda ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:0 32px}
+.agenda li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;padding:8px 0;border-bottom:1px dashed var(--hair)}
+.agenda li b{grid-row:span 2;font:22px var(--font-num);color:var(--sc)}
 .agenda .nm{font:700 var(--fs-label) var(--font-sans);color:var(--sc)}
-.agenda a{color:var(--ink);text-decoration:none;font-weight:700;line-height:1.4}.agenda a:hover{text-decoration:underline}
-.heads{display:flex;flex-direction:column}
-.heads h4{margin:0;display:flex;align-items:baseline;gap:14px;padding:10px 18px;border-bottom:2px solid var(--ink);
- font:900 26px/1 var(--font-sans);letter-spacing:.06em}
-.heads h4 small{font:700 12px var(--font-mono);letter-spacing:.3em;color:var(--alert)}
-.heads ol{list-style:none;margin:0;padding:6px 18px 14px;columns:2;column-gap:32px}
-.heads li{break-inside:avoid;padding:7px 0;border-bottom:1px dotted color-mix(in srgb,var(--ink) 40%,transparent);display:flex;gap:10px;align-items:baseline}
-.heads li i{flex:none;font:900 11px/1.6 var(--font-sans);font-style:normal;color:#FFF;background:var(--sc);padding:0 6px;letter-spacing:.1em}
-.heads li a{flex:1;min-width:0;font-size:15px;line-height:1.5}
-.heads li .d{flex:none;font:700 11px var(--font-mono);opacity:.55;font-variant-numeric:tabular-nums}
-.heads li a:hover{text-decoration:underline;text-underline-offset:3px}
+.agenda a{color:var(--ink);font-weight:700;line-height:1.4}.agenda a:hover{text-decoration:underline}
+/* ---------- 作品の版面：作品の色（封面から取色）＋ 作品ごとの装飾（.m-○○、items.yaml の motif） ---------- */
+.sec{position:relative;background:var(--bg);color:var(--fg);border:2px solid var(--ink);box-shadow:var(--shadow-l)}
+.band{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;padding:20px 26px 4px;min-height:0}
+.band .title{display:inline-block;background:var(--abg);color:var(--afg);padding:8px 22px 8px 18px;transform:rotate(-1deg);
+ box-shadow:5px 5px 0 var(--acc);font:900 30px/1.2 var(--font-sans);letter-spacing:.03em}
+.band .sub{font:700 12px/1.4 var(--font-sans);letter-spacing:.12em;opacity:.85}
+.band .cnt{margin-left:auto;font:700 12px/1.3 var(--font-sans);opacity:.85;white-space:nowrap}
+.band .cnt b{margin-right:6px;font:30px/1 var(--font-num);color:var(--acc)}
+.band .deco{position:absolute;pointer-events:none;font-style:normal}
+.facts{display:flex;flex-wrap:wrap;gap:12px;padding:16px 26px 0}
+.fact{flex:1 1 280px;padding:12px 18px;background:var(--abg);color:var(--afg);box-shadow:4px 4px 0 var(--acc);display:flex;flex-direction:column;gap:4px}
+.fact .label{font:700 11px var(--font-sans);letter-spacing:.14em;opacity:.8}
+.fact .new{color:var(--aac);opacity:1}
+.fact a{text-decoration:underline;text-underline-offset:3px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px 22px;padding:20px 26px 22px}
+.card{position:relative;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.m{color:var(--fg);--ac:var(--acc)}
+.card.a{color:var(--afg);--ac:var(--aacc)}
+.card .pic{border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
+.card:hover h2,.card:hover h3{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.hl{color:var(--ac)}
+.tag{display:inline-block;align-self:flex-start;padding:2px 10px;background:var(--alert);color:#FFF;transform:skewX(var(--skew));font:900 12px/1.4 var(--font-sans);letter-spacing:.2em}
+.card h2,.card h3{margin:0;font-family:var(--font-sans);font-weight:900}
+.hero{grid-column:span 12;display:grid;grid-template-columns:7fr 5fr;gap:24px}
+.hero .pic{align-self:center}
+.hero .txt{display:flex;flex-direction:column;justify-content:center;gap:14px}
+.hero h2{font-size:30px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}
+.lead{grid-column:span 8}
+.lead h2{font-size:28px;line-height:1.4}
+.side{grid-column:span 4;display:flex;flex-direction:column;gap:14px}
+.side h3{font-size:20px;line-height:1.4}
+.s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
+.blurb{margin:0;font-size:15px;line-height:1.75;opacity:.85}
+.quiet .band{padding-bottom:18px}
+.quiet .band .title{font-size:22px;padding:6px 16px}
+.calm{display:flex;align-items:center;gap:20px;padding:4px 26px 20px;color:var(--fg)}
+.calm .pic{flex:0 0 120px;height:62px;aspect-ratio:auto;border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
+.calm .txt{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.calm .tag{background:var(--acc);color:var(--bg);letter-spacing:.12em}
+.calm .status{font-size:15px;line-height:1.6}
+.calm .last{flex:0 1 40%;display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:1.5;border-left:1px solid color-mix(in srgb,currentColor 25%,transparent);padding-left:20px}
+.calm .last .mono{font:13px var(--font-num);letter-spacing:.06em;opacity:.75}
+.calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
+.when{display:flex;align-items:center;gap:8px;font:14px/1 var(--font-num);letter-spacing:.05em;opacity:.85}
+.when b{padding:2px 7px 1px;background:var(--ac);color:var(--bg);font:900 10px/1.4 var(--font-sans);letter-spacing:.14em}
+.card.a .when b{color:var(--abg)}
+.card.wide{display:grid;grid-template-columns:4fr 8fr;gap:24px;align-items:center}
+.card.wide .txt{display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.wide h3{font-size:24px;line-height:1.4}
+.card.c8 h3{font-size:24px;line-height:1.4}.card.c6 h3{font-size:21px;line-height:1.4}
+.card.c4 h3,.card.c3 h3{font-size:17px;line-height:1.45}
+.grid>.hero .pic{aspect-ratio:auto;height:280px}
+.grid>.lead .pic{aspect-ratio:auto;height:260px}
+.grid>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.grid>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card.mini{display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 14px;align-content:start;
+ padding-bottom:14px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
+.mini .pic{grid-row:span 2;align-self:start;aspect-ratio:4/3}
+.mini .pic .ph{font-size:12px}.mini .pic.icon{gap:4px}.mini .pic.icon img.ico{width:min(40px,30%);border-radius:9px;padding:4px}
+.mini .pic.icon .src{font-size:11px}
+.mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}
+.side .card.mini{grid-template-columns:110px minmax(0,1fr)}
+.brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
+.brief h4{margin:0 0 8px;font:900 13px var(--font-sans);letter-spacing:.12em;opacity:.8}
+.brief ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.brief li{display:flex;gap:14px;align-items:baseline;font-size:15px;line-height:1.5}
+.brief .d{font:13px var(--font-num);opacity:.7;flex:none}
+.brief a{color:inherit;font-weight:700}
+.brief a:hover,.brief a:focus-visible{color:var(--acc);text-decoration:underline}
+.older{background:var(--abg);color:var(--afg)}
+.older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
+.older summary::-webkit-details-marker{display:none}
+.older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;background:var(--aacc);color:var(--abg);transform:skewX(var(--skew));
+ font:900 15px/1 var(--font-sans)}
+.older[open] summary::before{content:"−"}
+.older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
+.older summary span{font-weight:700;opacity:.7;letter-spacing:.04em}
+.older .grid{padding-top:8px}
+.older .card.c3 h3{font-size:15px;line-height:1.45}
+/* ---- 作品ごとの装飾（motif）。どれも作品の色（--bg/--acc…）だけで描く。足すときは EDITING.md にも書く ---- */
+.m-retro{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 35%,transparent) 1px,transparent 1.6px),
+ radial-gradient(circle,color-mix(in srgb,var(--acc) 20%,transparent) 1px,transparent 1.6px);background-size:34px 34px,21px 21px;background-position:0 0,11px 7px}
+.m-retro .band .title{border-radius:0 18px 0 18px;box-shadow:5px 5px 0 var(--acc),0 0 0 3px var(--bg),0 0 0 5px var(--acc);letter-spacing:.06em}
+.m-retro .deco{right:34%;top:12px;font-size:34px;color:var(--acc);text-shadow:0 0 14px var(--acc)}
+.m-retro .deco.d2{right:31%;top:50px;font-size:18px}
+.m-retro .card .pic{border:2px solid var(--acc);box-shadow:4px 4px 0 color-mix(in srgb,var(--acc) 45%,transparent)}
+.m-retro .when b{border-radius:999px}
+.m-manga{background-image:radial-gradient(circle,color-mix(in srgb,var(--fg) 26%,transparent) .9px,transparent 1.3px);background-size:5px 5px}
+.m-manga .band .title{transform:rotate(-2deg) skewX(-4deg);box-shadow:6px 6px 0 var(--acc)}
+.m-manga .deco{right:24%;top:-2px;font:900 54px/1 var(--font-sans);color:var(--acc);opacity:.35;transform:rotate(-8deg) skewX(-10deg);letter-spacing:-.04em}
+.m-manga .card .pic{border:3px solid var(--fg)}
+.m-manga .grid>.lead .pic,.m-manga .grid>.hero .pic{clip-path:polygon(0 0,100% 0,100% 100%,3% 100%)}
+.m-manga .card.mini{padding:8px;border:2.5px solid var(--fg);background:color-mix(in srgb,var(--bg) 82%,#FFF)}
+.m-manga .card.mini:nth-child(odd){clip-path:polygon(0 0,100% 0,97% 100%,0 100%)}
+.m-manga .card.mini:nth-child(even){clip-path:polygon(3% 0,100% 0,100% 100%,0 100%)}
+.m-pop{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent) 5px,transparent 5.5px);background-size:46px 46px}
+.m-pop .band .title{border-radius:999px;padding:8px 26px;transform:rotate(-2deg)}
+.m-pop .deco{right:30%;top:8px;font-size:30px;color:var(--acc);transform:rotate(12deg)}
+.m-pop .card .pic{border-radius:14px;border:3px solid var(--acc);box-shadow:4px 4px 0 var(--fg)}
+.m-pop .when b{border-radius:999px}
+.m-film .band{padding-top:30px}
+.m-film .band::before{content:"";position:absolute;left:0;right:0;top:0;height:16px;background:var(--fg);
+ -webkit-mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px) 0 4px/100% 8px no-repeat,linear-gradient(#000,#000) 0 0/100% 4px no-repeat,linear-gradient(#000,#000) 0 12px/100% 4px no-repeat;
+ mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px) 0 4px/100% 8px no-repeat,linear-gradient(#000,#000) 0 0/100% 4px no-repeat,linear-gradient(#000,#000) 0 12px/100% 4px no-repeat}
+.m-film .band .title{letter-spacing:.12em;text-transform:uppercase}
+.m-film .card .pic{border:4px solid var(--fg);border-left-width:10px;border-right-width:10px}
+.m-street .band .title{transform:skewX(-10deg) rotate(-1deg);box-shadow:6px 6px 0 var(--acc)}
+.m-street .band::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;
+ background:repeating-linear-gradient(-45deg,var(--acc) 0 10px,transparent 10px 20px);opacity:.8}
+.m-street .card .pic{clip-path:polygon(0 0,100% 0,100% 88%,94% 100%,0 100%)}
+/* ---------- 気になるかも？：店長のおすすめ POP ---------- */
+.picks{--ac:var(--rose);background:var(--sheet);color:var(--ink);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--rose);padding:22px 26px 28px}
+.pkhead{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.pkhead h2{margin:0;display:inline-block;background:var(--ink);color:var(--card);padding:6px 18px 6px 16px;transform:rotate(var(--tilt));box-shadow:4px 4px 0 var(--rose);
+ font:900 24px/1.25 var(--font-sans);letter-spacing:.06em}
+.pkhead h2 em{font-style:normal;color:var(--gold)}
+.pkhead .flag{position:relative;display:inline-block;padding:8px 14px 7px;background:var(--card);box-shadow:var(--shadow);transform:rotate(-2deg);font:21px/1 var(--font-hand)}
+.pkhead .flag::after{content:"";position:absolute;right:-12px;top:50%;margin-top:-8px;border:8px solid transparent;border-left:12px solid var(--card);border-right:0}
+.pkhead>span:not(.flag){flex-basis:100%;order:3;font-size:13px;opacity:.8}
+.pkhead a{color:var(--rose);font-weight:700;border-bottom:1px solid currentColor}
+.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 22px;margin-top:22px;align-items:start}
+.pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+.pksub{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:34px;font:900 15px var(--font-sans);letter-spacing:.1em}
+.pksub::before{content:"";flex:none;width:18px;height:18px;background:var(--rose);transform:skewX(var(--skew));align-self:center}
+.pksub span{font:500 12px var(--font-sans);letter-spacing:0;opacity:.75}
+.pk{position:relative;display:flex;flex-direction:column;gap:0;min-width:0;color:var(--ink)}
+.pk.big{grid-column:span 2;grid-row:span 2}
+.pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
+.pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
+.pk.big .pic{aspect-ratio:4/3}
+.pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:7px;min-width:0;margin:-18px 10px 0;padding:16px 15px 12px;background:var(--card);
+ box-shadow:var(--shadow);transform:rotate(-1deg)}
+.pk:nth-child(even) .pkt{transform:rotate(1deg)}
+.pk.big .pkt{margin:-40px 24px 0;padding:22px 22px 16px;transform:rotate(-1.2deg)}
+.pk .why{order:-1;font:16px/1.5 var(--font-hand);color:var(--ink)}
+.pk .why mark{color:inherit;background:linear-gradient(transparent 55%,var(--gold) 55% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 2px}
+.pk .why small{display:block;margin-top:3px;font-size:13px;opacity:.75}
+.pk.big .why{font-size:25px;line-height:1.45}
+.pk.big .why small{font-size:15px}
+.pk .src{font:500 12px/1.4 var(--font-sans);opacity:.7}
+.pk b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pk.big b{font-size:20px;font-weight:900;line-height:1.45;-webkit-line-clamp:4}
+.pk .tags{display:flex;flex-wrap:wrap;gap:5px}
+.pk .tags:empty{display:none}
+.pk .tags i{font-style:normal;padding:2px 8px;border:1.5px solid var(--ink);background:#FFF;font:700 11px/1.3 var(--font-sans)}
+.pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
+.pk .taste{font-size:11px;opacity:.7}
+.pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
+.pk.big .vote{margin:12px 24px 0}
+.vote{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.pk:not(.big) .vote button span{display:none}
+.vote button{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);
+ box-shadow:3px 3px 0 var(--ink);font:700 13px var(--font-sans);cursor:pointer;border-radius:0;white-space:nowrap;transition:transform .1s,box-shadow .1s}
+.vote button:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
+.vote button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#FFF}
+.vote button:disabled{opacity:.5;cursor:wait}
+.vote small{font-size:11px;opacity:.7}
+.pk.down>a{opacity:.35;filter:grayscale(1)}
+.card,.top,.wc{position:relative}
+.vt{position:absolute;top:8px;right:8px;z-index:3;display:flex;gap:4px;opacity:.55;transition:opacity .15s}
+.card:hover .vt,.top:hover .vt,.wc:hover .vt,.vt:focus-within,.vt.on{opacity:1}
+.vt button{padding:2px 7px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);box-shadow:2px 2px 0 var(--ink);font-size:13px;line-height:1.4;cursor:pointer;border-radius:0}
+.vt button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#FFF}
+.top .vt{top:auto;bottom:0;right:0}
+.brief li .vt{position:static;opacity:.5;margin-left:auto;flex:none}
+.brief li:hover .vt{opacity:1}
+.downv{opacity:.4;filter:grayscale(.8)}
+.pkbatch[hidden]{display:none}
+.shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
+ font:900 13px var(--font-sans);letter-spacing:.06em;cursor:pointer;border-radius:0;white-space:nowrap}
+.shuffle:hover{background:var(--rose);border-color:var(--rose);box-shadow:3px 3px 0 var(--ink)}
+.shuffle small{margin-left:8px;padding:1px 7px;background:var(--card);color:var(--rose);font:700 11px var(--font-sans)}
+.pknav{margin-left:auto;display:flex;gap:10px;white-space:nowrap}
+.shuffle.back{background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.shuffle[disabled]{opacity:.35;cursor:default;pointer-events:none}
+@media (hover:none){.vt{opacity:.9}}
+@media (hover:hover){.card:not(:hover) .vt:not(.on):not(:focus-within),.wc:not(:hover) .vt:not(.on):not(:focus-within){opacity:0}}  /* 細いカードでは見出しに重なるので、マウスを載せたときだけ */
+/* ---------- 中くらいの幅 ---------- */
+@media (max-width:1200px){
+ .wall{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .pkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pk.big{grid-column:1/-1;grid-row:auto}.pk.big .pic{aspect-ratio:16/9}
+ .pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* ---------- スマホ ---------- */
+@media (max-width:760px){
+ .page{padding:16px 14px 32px}.issue,.front{gap:30px}
+ .mast{gap:12px}.mast .mtitle{width:100%}.mast .stamp{display:none}
+ .mast h1{font-size:clamp(22px,7.2vw,30px);padding:8px 14px 6px;box-shadow:4px 4px 0 var(--ink)}
+ .mast .tools{width:100%;gap:6px}.mast .meta{padding:3px 10px}.mast .meta b{font-size:18px}
+ .mastwish{padding:6px 10px;font-size:12px;gap:5px;box-shadow:3px 3px 0 var(--ink)}.mastwish small{display:none}.mastset{padding:6px 10px;font-size:12px}
+ .poster{padding:16px 14px 14px;box-shadow:5px 5px 0 var(--ink)}
+ .top{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;gap:18px}
+ .pdate b{font-size:84px}.pdate span{font-size:28px;padding:6px 10px 4px}
+ .frame{grid-column:1;grid-row:auto;margin:4px 6px 6px 0;padding:6px;transform:rotate(-1.5deg)}
+ .burst{width:72px;height:72px;font-size:16px;top:-16px;left:-14px}
+ .top h2{font-size:20px;transform:rotate(-1deg)}
+ .mgrid{grid-template-columns:minmax(0,1fr);gap:22px}
+ .wall{grid-template-columns:minmax(0,1fr);gap:16px}.wc.lead{grid-column:auto;grid-row:auto}.wc.lead .pic{min-height:0;aspect-ratio:16/10}
+ .wc:not(.lead){display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:4px 12px;align-items:start}
+ .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:6px;font-size:11px}
+ .latest{height:auto;min-height:0}.latest ol{overflow:visible}
+ .shelves{gap:28px 0}.shelf{flex:none;width:100%}
+ .tapes{display:flex;overflow-x:auto;gap:10px;padding:0 2px 10px;scroll-snap-type:x mandatory;scrollbar-width:none}.tapes::-webkit-scrollbar{display:none}
+ .tape{flex:0 0 150px;scroll-snap-align:start}
+ .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
+ .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{aspect-ratio:16/10}
+ .pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
+ .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt{margin-left:0}.band .deco{display:none}
+ .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}
+ .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
+ .card.c8 h3,.card.wide h3{font-size:21px}
+ .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:22px}
+ .hero{grid-template-columns:1fr}.hero h2,.lead h2{font-size:22px}
+ .lead,.side,.s12,.s6,.s4{grid-column:span 12}
+ .card.mini{grid-template-columns:110px minmax(0,1fr)}
+ .calm{flex-wrap:wrap;gap:12px;padding:4px 14px 16px}.calm .pic{display:none}
+ .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
+}
+/* いちばん小さいスマホ（320px）：報頭が横にはみ出さないように詰める */
+@media (max-width:380px){.mast h1{font-size:21px;padding:7px 10px 5px;letter-spacing:0}.mastwish,.mastset{padding:6px 8px}.mast .meta small{display:none}}
+@media (prefers-reduced-motion:reduce){.wc,.tape,.frame,.vote button,.mastwish{transition:none}}
 /* ---------- 左侧目录（共用骨架；风格见 NAV_STYLES） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
@@ -255,145 +481,8 @@ html{scroll-behavior:smooth}
 .wcard .added{font:700 11px var(--font-mono);opacity:.5;letter-spacing:.1em}
 @media (max-width:760px){.wcard.solo{grid-template-columns:1fr}.wcard.solo .wimg{min-height:0;aspect-ratio:1/1}
  .wcard.solo .wtxt{border-left:0;padding:22px}.wcard.solo h3{font-size:28px}.wish .band .title{font-size:30px}}
-.mastwish{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 22px;
- border-left:1px solid var(--ink);color:var(--rose);transition:background .2s,color .2s}
-.mastwish b{font-size:22px;line-height:1}.mastwish span{font:900 13px var(--font-sans);letter-spacing:.2em;color:var(--ink)}
-.mastwish small{font:700 11px var(--font-mono);letter-spacing:.1em;opacity:.7;color:var(--ink)}
-.mastwish:hover{background:var(--rose)}.mastwish:hover b,.mastwish:hover span,.mastwish:hover small{color:#FFF}
-.navwish{display:flex;align-items:center;gap:8px;margin:10px 0 0 14px;padding:8px 12px;border:2px solid var(--rose);color:var(--rose);
- font:900 13px var(--font-sans);letter-spacing:.15em;flex:none}
-.navwish small{margin-left:auto;font:700 11px var(--font-mono);letter-spacing:.05em;opacity:.8}
-.navwish:hover{background:var(--rose);color:#FFF}
-@media (max-width:1000px){.navwish{display:none}}
-.mastset{display:flex;align-items:center;justify-content:center;padding:0 16px;border-left:1px solid var(--ink);
- font-size:20px;color:var(--ink);opacity:.55}
-.mastset:hover{opacity:1;background:var(--ink);color:var(--sheet)}
-@media (max-width:760px){.mastset{padding:0 8px}}
-@media (max-width:760px){.mastwish{padding:0 10px}.mastwish span,.mastwish small{display:none}}
-/* ---------- 我会喜欢？ ---------- */
-.picks{--ac:var(--rose);background:var(--sheet);color:var(--ink);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--rose)}
-.pkhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;padding:16px 22px 14px;border-bottom:3px solid var(--ink)}
-.pkhead h2{margin:0;font:900 34px/1 var(--font-sans);letter-spacing:.04em}
-.pkhead h2 em{font-style:normal;color:var(--rose);display:inline-block;transform:rotate(12deg) translateY(-2px);margin-left:2px}
-.pkhead span{font-size:13px;opacity:.75}
-.pkhead a{color:var(--rose);font-weight:700;border-bottom:1px solid currentColor}
-.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:color-mix(in srgb,var(--ink) 18%,var(--sheet))}
-.pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
-.pksub{display:flex;align-items:baseline;gap:12px;padding:12px 22px;border-top:3px solid var(--ink);border-bottom:1px solid color-mix(in srgb,var(--ink) 18%,var(--sheet));
- font:900 15px var(--font-sans);letter-spacing:.2em}
-.pksub span{font:500 12px var(--font-serif);letter-spacing:0;opacity:.7}
-.pk{display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--sheet);color:var(--ink);min-width:0}
-.pk.big{grid-column:span 2;grid-row:span 2}
-.pk .pic{background:#FFF;color:var(--ink);border:none}
-.pk .pkt{display:flex;flex-direction:column;gap:6px;min-width:0}
-.pk .src{font:700 11px var(--font-mono);letter-spacing:.08em;opacity:.75}
-.pk b{font-size:15px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.pk.big b{font:900 22px/1.35 var(--font-sans);-webkit-line-clamp:4}
-.pk .why{font-size:12px;color:var(--rose);font-weight:700}
-.pk .tags{display:flex;flex-wrap:wrap;gap:4px}
-.pk .tags i{font-style:normal;font:700 11px var(--font-sans);letter-spacing:.1em;padding:1px 7px;border:1px solid var(--rose);color:var(--rose)}
-.pk>a{display:flex;flex-direction:column;gap:10px;min-width:0;flex:1}
-.pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
-.pk .taste{font-size:11px;opacity:.7}
-.vote{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.pk:not(.big) .vote button span{display:none}
-.pk:not(.big) .vote button{padding:4px 12px;font-size:14px}
-.pk.big>a{flex:none}
-.vote button{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border:1.5px solid var(--ink);background:transparent;
- color:var(--ink);font:700 12px var(--font-sans);cursor:pointer;border-radius:0;white-space:nowrap}
-.vote button:hover{background:var(--ink);color:var(--sheet)}
-.vote button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#FFF}
-.vote button:disabled{opacity:.5;cursor:wait}
-.vote small{font-size:11px;opacity:.7}
-.pk.down>a{opacity:.35;filter:grayscale(1)}
-.card,.top{position:relative}
-.vt{position:absolute;top:8px;right:8px;z-index:3;display:flex;gap:4px;opacity:.55;transition:opacity .15s}
-.card:hover .vt,.top:hover .vt,.vt:focus-within,.vt.on{opacity:1}
-.vt button{padding:2px 7px;border:1px solid currentColor;background:color-mix(in srgb,var(--bg,var(--sheet)) 85%,transparent);
- color:inherit;font-size:13px;line-height:1.4;cursor:pointer;border-radius:0}
-.vt button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#FFF}
-.brief li .vt{position:static;opacity:.5;margin-left:auto;flex:none}
-.brief li:hover .vt{opacity:1}
-.downv{opacity:.4;filter:grayscale(.8)}
-.pkbatch[hidden]{display:none}
-.shuffle{margin-left:auto;padding:6px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--sheet);
- font:900 13px var(--font-sans);letter-spacing:.1em;cursor:pointer;border-radius:0;white-space:nowrap}
-.shuffle:hover{background:var(--rose);border-color:var(--rose)}
-.shuffle small{font:700 11px var(--font-mono);opacity:.75;margin-left:6px}
-.pknav{margin-left:auto;display:flex;gap:8px;white-space:nowrap}.pknav .shuffle{margin-left:0}.shuffle.back{background:none;color:var(--ink)}
-.shuffle[disabled]{opacity:.3;cursor:default;pointer-events:none}
-@media (hover:none){.vt{opacity:.9}}
-@media (max-width:760px){.pkgrid,.pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}.pkhead h2{font-size:26px}}
-/* ---------- 按时间排列的卡片 ---------- */
-.c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
-.when{display:flex;align-items:center;gap:8px;font:700 11px var(--font-mono);letter-spacing:.15em;opacity:.75;font-variant-numeric:tabular-nums}
-.when b{padding:1px 6px;background:var(--ac);color:var(--bg);letter-spacing:.1em;opacity:1}
-.card.a .when b{color:var(--abg)}
-.card.wide{display:grid;grid-template-columns:5fr 7fr;gap:24px;align-items:center;padding:24px}
-.card.wide .txt{display:flex;flex-direction:column;gap:12px;min-width:0}
-.card.wide h3{margin:0;font-weight:900;font-size:28px;line-height:1.3}
-.card.c8 h3{font-size:28px;line-height:1.3}.card.c6 h3{font-size:24px;line-height:1.35}
-.card.c4 h3,.card.c3 h3{margin:0;font-weight:900;font-size:20px;line-height:1.4}
-.brief{padding:14px 24px 18px;border-top:1px solid var(--line)}
-.brief h4{margin:0 0 8px;font:700 12px var(--font-mono);letter-spacing:.2em;opacity:.7}
-.brief ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.brief li{display:flex;gap:14px;align-items:baseline;font-size:16px;line-height:1.5}
-.brief .d{font:700 12px var(--font-mono);opacity:.6;flex:none}
-.brief a{color:inherit;text-decoration:none;font-weight:700}
-.brief a:hover,.brief a:focus-visible{color:var(--acc);text-decoration:underline}
-.older{background:var(--abg);color:var(--afg);border-top:1px solid var(--line)}
-.older .grid{background:color-mix(in srgb,var(--afg) 16%,var(--abg))}
-.older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 24px;
- font:700 12px var(--font-mono);letter-spacing:.2em}
-.older summary::-webkit-details-marker{display:none}
-.older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;border:1.5px solid currentColor;
- font:700 15px/1 var(--font-mono);transition:transform .25s}
-.older[open] summary::before{content:"−"}
-.older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
-.older summary span{opacity:.6;letter-spacing:.1em}
-.older .grid .card{padding:16px;gap:10px}
-.older .card.c3 h3{font-size:16px;line-height:1.45}
-/* 一周内的版面要一屏装得下：图限高（底层模糊铺满，图不裁切），标题限行数；普通消息做成左图右字的小卡片 */
-.grid>.hero .pic{aspect-ratio:auto;height:260px}
-.grid>.lead .pic{aspect-ratio:auto;height:240px}.grid>.lead h2{font-size:30px}
-.card.wide{grid-template-columns:4fr 8fr}
-.grid>.lead h2,.card.wide h3,.mini h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.grid>.lead .blurb,.card.wide .blurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card.mini{display:grid;grid-template-columns:150px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 16px;padding:14px 18px;align-content:start}
-.mini .pic{grid-row:span 2;align-self:start}
-.mini .pic .ph{font-size:13px}.mini .pic.icon{gap:4px}.mini .pic.icon img.ico{width:min(40px,30%);border-radius:9px;padding:4px}
-.mini .pic.icon .src{font-size:11px}
-.mini h3{margin:0;align-self:start;font-weight:900;font-size:17px;line-height:1.45}
-.side .card.mini{grid-template-columns:120px minmax(0,1fr);gap:6px 14px}
-@media (max-width:760px){
- .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:24px}
- .card.mini{grid-template-columns:120px minmax(0,1fr);padding:12px 14px}.mini h3{font-size:16px}}
-@media (max-width:760px){
- .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr;padding:20px}
- .card.c8 h3,.card.wide h3{font-size:24px}
- .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid var(--ink)}.topcol{border-right:none}
- .mores .more:nth-of-type(n+4){display:none}
- .more{grid-template-columns:90px 1fr}
- .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}.fbar{letter-spacing:.12em;padding:8px 12px}
- .page{padding:20px 12px}.mast h1{font-size:20px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
- .band .title{font-size:34px}.band .sub{margin-left:0}
- .band.split{background:var(--abg)}.band.split .sub{color:var(--afg)}
- .hero{grid-template-columns:1fr}
- .hero h2,.lead h2{font-size:28px}
- .lead,.side,.s12,.s6,.s4{grid-column:span 12}
- .quiet .band .title{font-size:26px}
- .calm{flex-wrap:wrap;gap:12px;padding:12px 16px}.calm .pic{display:none}
- .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
-}
-/* いちばん小さいスマホ（320px）：報頭が横にはみ出さないように詰める */
-@media (max-width:380px){.mast h1{font-size:15px;padding:10px 8px;letter-spacing:0}.mastwish{padding:0 6px}.mastset{padding:0 6px}.mast .meta{width:auto;padding:0 8px}.mast .meta .mono:first-child{display:none}.mast .no{font-size:16px}}
 """
 
-LOGO = (
-    '<svg width="62" height="62" viewBox="0 0 92 92" aria-hidden="true" fill="none" stroke="#EDEBE6" stroke-width="2">'
-    '<circle cx="46" cy="46" r="40"/><circle cx="46" cy="46" r="31" stroke-dasharray="3 4"/>'
-    '<path d="M46 18 L51 41 L74 46 L51 51 L46 74 L41 51 L18 46 L41 41 Z" fill="#EDEBE6" stroke="none"/></svg>'
-)
 
 e = html.escape
 
@@ -785,8 +874,8 @@ def _section(block, anchor=""):
     style = (f"--bg:{t['bg']};--fg:{t['fg']};--acc:{t['accent']};--abg:{t['alt_bg']};"
              f"--afg:{t['alt_fg']};--aacc:{t['alt_accent']};--aac:{t['alt_accent']};"
              f"--line:color-mix(in srgb,{t['fg']} 22%,{t['bg']})")
-    band_cls = "band split" if t.get("split") else "band"
     sub = f'<span class="sub">{e(block["subtitle"])}</span>' if block.get("subtitle") else ""
+    motif = block.get("_motif") if block.get("_motif") in MOTIFS else ""
     # 状态只在有变化时上版面，没变化就是不必要的信息
     changed = [f for f in block.get("facts") or [] if f["changed"]]
     facts = ""
@@ -814,9 +903,21 @@ def _section(block, anchor=""):
     grid += _brief(texts) + _older(more + older, today, len(more), old_texts)
     recent = recent or texts
     quiet = "" if recent else " quiet"
-    return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec {"serif" if t.get("font") == "serif" else "sans"}{quiet}" style="{style}">'
-            f'<div class="{band_cls}"><span class="title">{e(block["name"])}</span>{sub}</div>'
+    cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec{" m-" + motif if motif else ""}{quiet}" style="{style}">'
+            f'<div class="band">{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
             f"{facts}{grid}</section>")
+
+
+# 作品ごとの装飾（items.yaml の motif）。名前 → 版面の見出しに添える飾り（なければ空）。見た目は CSS の .m-名前。
+# 色は作品の色（--bg/--acc…）だけを使う。新しい装飾を足すときはここと CSS と EDITING.md に書く
+MOTIFS = {
+    "retro": '<i class="deco" aria-hidden="true">✦</i><i class="deco d2" aria-hidden="true">✦</i>',  # 平成アニメ：星・角丸の題字・ドット
+    "manga": '<i class="deco" aria-hidden="true">ドドド</i>',  # 漫画：網点・斜めのコマ・擬音
+    "pop": '<i class="deco" aria-hidden="true">♥</i>',  # ポップ：水玉・丸い題字・角丸の写真
+    "film": "",  # 映画・ドラマ：フィルムの穴・太い黒枠
+    "street": "",  # ストリート：斜めの題字・警告色のしま・切り欠きの写真
+}
 
 
 def _why_verb(x):
@@ -856,6 +957,8 @@ def _picks(picks, works, feedback=None):
         story = {"image": x.get("image"), "_fbs": [] if follow else covers.get(x["work"], []),
                  "_work": (x.get("hits") or [x["work"]])[0] if follow else x["work"]}
         tags = "".join(f"<i>{e(h)}</i>" for h in x.get("hits", []))
+        main, sep, liked = _why(x).partition(" · 👍した")  # 理由は手書きの POP：本文に蛍光ペン、👍 との関連は小さく
+        why_html = f"<mark>{main}</mark>" + (f"<small>👍した{liked}</small>" if sep else "")
         date = e(x["date"][5:].replace("-", ".")) if x.get("date") else ""
         taste = " · ".join(f"{e(k.removeprefix(WORK_KEY))} {v:+d}" for k, v in (x.get("taste") or [])[:3])
         taste = f'<span class="taste">あなたの投票：{taste}</span>' if taste else ""
@@ -872,7 +975,7 @@ def _picks(picks, works, feedback=None):
             f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
-            f'<span class="why">{_why(x)}</span>'
+            f'<span class="why">{why_html}</span>'
             f'<span class="tags">{tags}</span>{taste}</span></a>{vote}</div>')
 
     def batch_of(group):
@@ -891,10 +994,10 @@ def _picks(picks, works, feedback=None):
     body = f'<div class="pkbatch">{batch_of(first)}</div>'
     if rest:
         body += f'<div class="pkpool" hidden>{cards_of(rest, False)}</div>'
-    shuffle = (f'<div class="pknav"><button type="button" class="shuffle back" aria-label="前のおすすめに戻る" disabled>前へ</button>'
-               f'<button type="button" class="shuffle next" aria-label="ほかのおすすめを見る">入れ替え<small>全 {len(picks)} 件</small></button></div>'
+    shuffle = (f'<div class="pknav"><button type="button" class="shuffle back" aria-label="前のおすすめに戻る" disabled>◀◀ 前へ</button>'
+               f'<button type="button" class="shuffle next" aria-label="ほかのおすすめを見る">▶▶ 入れ替え<small>全 {len(picks)} 件</small></button></div>'
                if rest else "")
-    return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>気になるかも<em>？</em></h2>'
+    return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>気になるかも<em>？</em></h2><span class="flag">店長のおすすめ</span>'
             f'<span>欲しい物リスト・フォロー中の版面・👍したニュースから選びました{"。👍 / 👎 で好みを教えてください" if feedback else ""}'
             f' · <a href="wishlist.html">♥ 欲しい物リスト</a></span>{shuffle}</div>'
             f'{body}</section>' + (f"<script>{SHUFFLE_JS}</script>" if shuffle else ""))
@@ -1036,7 +1139,7 @@ VOTE_JS = """
     const title = t.textContent.trim().slice(0, 500), work = (w && w.dataset.k || '').slice(0, 200);
     wire(box, { url: link.href, kind: 'story', title, work, hits: [], words: [] }, dim, null);
   };
-  document.querySelectorAll('.sec a.card, a.top').forEach(a => story(a, a, a));
+  document.querySelectorAll('.sec a.card, a.top, a.wc').forEach(a => story(a, a, a));
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
   new Set(boxes.map(b => b[1].url)).forEach(paint);
 })();
@@ -1297,11 +1400,10 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
 </head>
 <body>
 <div class="page">
-<header class="mast"><div>
-<div class="logo">{LOGO}</div>
-<h1>愿望清单</h1>
-<div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
-</div></header>
+<header class="mast">
+<div class="mtitle"><h1>愿望清单</h1></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>{e(updated)}</b></div></div>
+</header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
 <div class="stat"><span>共</span><b>{len(wishes)} 件</b></div>
@@ -1548,76 +1650,116 @@ def _recent(w, today):
     return [x for x in w["stories"] if x["_issue"] >= cutoff]
 
 
-def _front(works, today, updated):
-    """头版：最近一周的实时总览。头条 = 最近一周里最重要的一条（同样重要取最新）；
-    板块索引 = 每个作品最新的一条；最新消息 = 所有作品按时间排的前 12 条。"""
+WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
+WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
+SPOT_COUNT = 6  # 「ほかの注目ニュース」の写真の壁：大きい 1 枚 + 小さい 5 枚（3 列 3 段がちょうど埋まる）
+
+
+def _day(story):
+    return (story.get("date") or story["_issue"])[5:].replace("-", ".")
+
+
+def _poster_colors(story, themes):
+    """トップのポスターの色：その日のトップ記事の写真から、作品の版面と同じ方法（theme.from_image）で取る。
+    themes は state/themes.json のキャッシュ（「hero|画像URL」で 1 回だけ取色）。取れないときは紙色の既定。"""
+    url = story.get("image") if story else None
+    t = None
+    if url and themes is not None:
+        key = f"hero|{url}"
+        if key not in themes:
+            themes[key] = theme.from_image(url)
+        t = themes.get(key)
+    if not t:
+        return ""
+    dark = theme._lum(theme._rgb(t["bg"])) < 0.35
+    tint, deep = (t["alt_bg"], t["bg"]) if dark else (t["bg"], t["alt_bg"])
+    acc = t["alt_accent"] if dark else t["accent"]
+    # 大きい日付（deep）と見出し（墨の箱）が淡い地色の上で読めること
+    if theme.contrast(theme._rgb(deep), theme._rgb(tint)) < 4.5:
+        deep = theme._hex(theme._readable(theme._rgb(deep), theme._rgb(tint)))
+    return f"--tint:{tint};--deep:{deep};--hacc:{acc}"
+
+
+def _front(works, today, updated, themes=None):
+    """トップ：直近一週間の総覧。
+    - ポスター：直近一週間でいちばん重要な 1 本（同じ重要度なら新しいほう）。地色はその記事の写真から
+    - ほかの注目ニュース：次に重要な写真つきの記事（SPOT_COUNT 本）と、時間順の最新ニュース（左の壁と同じ高さ）
+    - ジャンルの棚：作品ごとに最新の 1 本（ポスターと壁に出たものはなるべく避ける）。押すとその作品の版面へ"""
     pool = [(w, x) for w in works for x in _recent(w, today)]
     newest = sorted(pool, key=lambda p: p[1].get("date") or p[1]["_issue"], reverse=True)
-    pictured = [p for p in newest if _has_photo(p[1])]  # 头条和「其他重要」带大图，只从有真正配图的里挑（来源图标不算）
+    pictured = [p for p in newest if _has_photo(p[1])]  # ポスターと壁は本物の写真があるものだけ（来源アイコンは数えない）
     top_w, top = min(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2)) if pictured else (None, None)
+    ranked = sorted(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2))
+    more = [p for p in ranked if p[1] is not top][:SPOT_COUNT]
+
+    d = dt.date.fromisoformat(today)
+    head = (f'<div class="phead"><span class="lab">トップ</span><span>直近 {HOLD_DAYS} 日 · {len(pool)} 件</span>'
+            f'<span class="day">{d.year}.{d.month:02d}.{d.day:02d}（{WEEKDAY[d.weekday()]}）</span></div>')
+    foot = (f'<div class="pfoot"><span class="cbar" aria-hidden="true"></span>'
+            f'<span>ウォッチリスト通信 · {e(updated)} 更新 · 2 時間ごとに刷り直します</span></div>')
+    date_html = (f'<div class="pdate"><b>{d.month:02d}.{d.day:02d}</b>'
+                 f'<span>{WEEKDAY_EN[d.weekday()]}<small>{WEEKDAY[d.weekday()]}曜日</small></span></div>')
+    if top:
+        sc = _sec_color(top_w.get("section"))
+        badge = "重大" if top.get("weight") == "hero" else "注目"
+        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
+                    f'{date_html}<div class="frame"><span class="burst">{badge}</span>{_pic(top)}{_play(top)}</div>'
+                    f'<div class="ptxt"><span class="kick"><i class="tg" style="--sc:{sc}"><span>{e(_sec_name(top_w.get("section")))}</span></i>'
+                    f'<i class="tg"><span>{e(top_w["name"])}</span></i><em>{e(_day(top))}</em></span>'
+                    f'<h2><span class="hb">{_headline(top)}</span></h2>'
+                    + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + _extras(top) + "</div></a>")
+        style = f' style="{_poster_colors(top, themes)}"'
+    else:
+        top_html = f'<div class="top">{date_html}<div class="ptxt"><h2><span class="hb">直近 {HOLD_DAYS} 日は新着なし</span></h2></div></div>'
+        style = ""
+    poster = f'<div class="poster"{style}><div class="marks" aria-hidden="true"></div>{head}{top_html}{foot}</div>'
+
+    wall = "".join(
+        f'<a class="wc{" lead" if i == 0 else ""}" href="{e(x["url"])}" target="_blank" rel="noopener" '
+        f'data-k="{e(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">'
+        f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}</em><b>{_headline(x)}</b></a>'
+        for i, (w, x) in enumerate(more))
+    shown = {id(top)} | {id(x) for _, x in more}
+    heads = [f'<li><i class="tg" style="--sc:{_sec_color(w.get("section"))}"><span>{e(_sec_name(w.get("section")))}</span></i>'
+             f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a><em>{e(_day(x))}</em></li>'
+             for w, x in newest if id(x) not in shown][:12]
+    latest = (f'<aside class="latest"><h3>最新ニュース<small>見出しだけ {len(heads)} 本</small></h3><ol>{"".join(heads)}</ol></aside>'
+              if heads else "")
 
     groups = {}
     for w in works:
         groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS] + [n for n in groups if n not in SECTIONS]
-
-    head = (f'<div class="fbar"><b>ト ッ プ</b><span>LATEST · 直近 {HOLD_DAYS} 日</span>'
-            f'<span>更新 {updated} · {len(pool)} 件</span></div>')
-
-    # 头条下面补几条次重要的（按重要度，再按新旧），填满左栏：右栏每个作品一行（约 100px）、每个板块一个标题（约 45px），
-    # 头条约占 600px，「其他重要」每条约 85px
-    ranked = sorted(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2))
-    right = 100 * len(works) + 45 * len({w.get("section") or "其他" for w in works})
-    more = [p for p in ranked if p[1] is not top][:max(3, min(10, (right - 600) // 85))]
-    more_html = "".join(
-        f'<a class="more" href="#{_wid(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">{_pic(x)}'
-        f'<span><span class="nm">{e(w["name"])} · {e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span>'
-        f'<b>{e(x["headline"])}</b></span></a>' for w, x in more)
-    if top:
-        sc = _sec_color(top_w.get("section"))
-        badge = "重 大" if top.get("weight") == "hero" else "注 目"
-        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
-                    f'<span class="badge">{badge}</span>{_pic(top)}'
-                    f'<span class="kicker"><i style="background:{sc}">{e(_sec_name(top_w.get("section")))}</i>'
-                    f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
-                    f'<h2>{e(top["headline"])}</h2>'
-                    + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + "</a>")
-        top_html = f'<div class="topcol">{top_html}<div class="mores"><h3>ほかの注目ニュース</h3>{more_html}</div></div>' if more else top_html
-    else:
-        top_html = f'<div class="top"><h2>直近 {HOLD_DAYS} 日は新着なし</h2></div>'
-
-    boards = []
+    shelves = []
     for name in order:
-        sc = _sec_color(name)
-        rows = []
+        tapes = []
         for w in groups.get(name, []):
             rec = _recent(w, today)
             if rec:
-                first = rec[0]
-                text, cls = first["headline"], "entry"
-                # 代表这个版面的小图：最近几条报道的图、作品封面，一张打不开换下一张；都不行用第一条的来源图标
-                imgs = list(dict.fromkeys([x["image"] for x in rec if x.get("image")][:3] + [w.get("_thumb")]))
-                imgs = [u for u in imgs if u]
+                first = next((x for x in rec if id(x) not in shown), rec[0])
+                text, cls = first["headline"], "tape"
+                # この作品を代表する小さい写真：最近の記事の写真、作品の表紙の順。開けなければ次、全部だめなら来源アイコン
+                imgs = [u for u in dict.fromkeys([first.get("image")] + [x.get("image") for x in rec][:3] + [w.get("_thumb")]) if u]
                 pic = {"image": imgs[0] if imgs else None, "_fbs": imgs[1:], "_work": w["name"],
                        **{k: first.get(k) for k in ("url", "source", "source_icon")}}
             else:
-                text, cls = w.get("status") or "新着なし", "entry q"
+                text, cls = w.get("status") or "新着なし", "tape q"
                 pic = {"image": w.get("_thumb"), "_work": w["name"], "_fbs": []}
-            rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic(pic)}'
-                        f'<span><span class="nm">{e(w["name"])}</span><b>{e(text)}</b></span></a>')
-        body = "".join(rows) or '<div class="none">フォロー中の項目はまだありません</div>'
-        boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(_sec_name(name))}<small>{_sec_en(name)}</small></h3>{body}</div>')
-
-    heads = [f'<li style="--sc:{_sec_color(w.get("section"))}"><i>{e(_sec_name(w.get("section")))}</i>'
-             f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a>'
-             f'<span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span></li>'
-             for w, x in newest if x is not top and all(x is not m for _, m in more)][:12]
-    heads_html = ""
-    if heads:
-        heads_html = (f'<div class="heads"><h4>最新ニュース<small>LATEST HEADLINES</small></h4>'
-                      f'<ol>{"".join(heads)}</ol></div>')
-    return (f'<section class="front" data-k="front" id="front">{head}<div class="fbody">{top_html}'
-            f'<div class="boards">{"".join(boards)}</div></div>{heads_html}{_agenda(works, today)}</section>')
+            tapes.append(f'<a class="{cls}" href="#{_wid(w["name"])}"><span class="spine" aria-hidden="true">{e(_sec_name(name))}</span>'
+                         f'{_pic(pic)}<span class="lbl"><i>{e(w["name"])}</i><b>{e(text)}</b></span></a>')
+        if not tapes:
+            continue
+        en = _sec_en(name)
+        shelves.append(f'<div class="shelf" style="--sc:{_sec_color(name)};--n:{len(tapes)}">'
+                       f'<h3 class="sign">{e(_sec_name(name))}<small>{en + " · " if en else ""}{len(tapes)} 作品</small></h3>'
+                       f'<div class="tapes">{"".join(tapes)}</div><div class="plank"></div></div>')
+    spot = ""
+    if more or heads or shelves:
+        spot = (f'<div class="spot"><h2 class="sh"><span>ほかの注目ニュース</span><small>直近 {HOLD_DAYS} 日から · 下の棚は作品ごとの最新 1 本</small></h2>'
+                + (f'<div class="mgrid{"" if more else " solo"}{"" if heads else " nolatest"}"><div class="wall">{wall}</div>{latest}</div>'
+                   if more or heads else "")
+                + (f'<div class="shelves">{"".join(shelves)}</div>' if shelves else "") + "</div>")
+    return f'<section class="front" data-k="front" id="front">{poster}{spot}{_agenda(works, today)}</section>'
 
 
 AGENDA_MAX = 8
@@ -1782,6 +1924,26 @@ def _nav(works, date, wishes=(), picks=()):
             f'<div class="bar" id="nav-bar"></div></nav>')
 
 
+# 写真の収め方：縦横比が枠とだいたい同じ（±30%）なら枠いっぱいに（.fill）、違えばぼかしの上に全体を表示（既定）。
+# どんな記事の写真でも同じ型に収まる。スクリプトがないときは全部「全体を表示」
+FIT_JS = """
+(() => {
+  const fit = img => {
+    const p = img.closest('.pic');
+    if (!p || !img.naturalWidth || !p.clientHeight) return;
+    const r = (img.naturalWidth / img.naturalHeight) / (p.clientWidth / p.clientHeight);
+    p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.27);
+  };
+  document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
+    img.addEventListener('load', () => fit(img));
+    if (img.complete) fit(img);
+  });
+  let t;
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit), 200); });
+})();
+"""
+
+
 NAV_JS = """
 (() => {
   const nav = document.querySelector('.nav'), rail = document.getElementById('nav-rail'),
@@ -1853,19 +2015,22 @@ NAV_JS = """
 """
 
 
-def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None):
+def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
+           motifs=None, themes=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
-    order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。"""
+    order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
+    motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。"""
     latest = issues[0]
     works = collect(issues, order)
     for w in works:
         w["_today"] = latest["date"]
         w["_size"] = (sizes or {}).get(w["name"], "M")
+        w["_motif"] = (motifs or {}).get(w["name"], "")
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新 {updated}">'
-            + _front(works, latest["date"], updated) + _picks(picks, works, fb)
+            + _front(works, latest["date"], updated, themes) + _picks(picks, works, fb)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>
@@ -1880,17 +2045,17 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 </head>
 <body>
 <div class="page">
-<header class="mast"><div>
-<div class="logo">{LOGO}</div>
-<h1>ウォッチリスト通信</h1>
+<header class="mast">
+<div class="mtitle"><h1>ウォッチリスト通信</h1><span class="stamp">2 時間ごとに自動更新</span></div>
+<div class="tools"><div class="meta"><small>更新</small><b>{e(updated)}</b></div>
 {_wish_link(wishes, "mastwish")}
-<a class="mastset" href="settings.html" title="設定" aria-label="設定">⚙</a>
-<div class="meta"><div class="mono">更新</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
-</div></header>
+<a class="mastset" href="settings.html" title="設定">⚙ 設定</a></div>
+</header>
 {_nav(works, latest['date'], wishes, picks)}
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>
+<script>{FIT_JS}</script>
 {f"<script>{VOTE_JS % json.dumps(fb)}</script>" if fb else ""}
 </body>
 </html>

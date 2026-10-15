@@ -68,6 +68,7 @@ settings:
 
 items:
   - name: Astrae Oratio
+    motif: retro          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     subtitle: アストラエ・オラティオ
     size: L
     type: game
@@ -112,6 +113,7 @@ items:
       font: serif
 
   - name: BLEACH Mirrors High
+    motif: manga          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     subtitle: 死神 新作手游
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -150,6 +152,7 @@ items:
       font: serif
 
   - name: GTA 6
+    motif: street          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     subtitle: Grand Theft Auto VI · 侠盗猎车手 6
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -297,6 +300,7 @@ items:
       font: sans
 
   - name: 漫威电影
+    motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     subtitle: Marvel Studios · MCU
     type: show
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -350,6 +354,7 @@ items:
       alt_accent: "#151515"
 
   - name: FROM
+    motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     subtitle: 美剧 · MGM+ 恐怖悬疑
     size: S
     type: show
@@ -396,6 +401,7 @@ items:
       font: serif
 
   - name: ILLIT
+    motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     subtitle: アイリット · 日本公演特别关注
     size: L
     type: event
@@ -709,6 +715,7 @@ items:
       font: sans
 
   - name: gelato pique
+    motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     subtitle: ジェラート ピケ · ルームウェア
     type: category
     section: 好物
@@ -766,6 +773,7 @@ items:
       font: serif
 
   - name: "ぐでたま"
+    motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     type: category
     section: "好物"
     size: M
@@ -782,6 +790,7 @@ items:
     notes: "2026-10-14 从网页设置页加进来的。关注：联名商品、新周边、新品、快闪店、主题咖啡、展览、抽选、限定、预约、动画、活动、周年。维基数据：日本三麗鷗公司於2013年創作的卡通人物。"
 
   - name: "チェーンソーマン"
+    motif: manga          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     type: anime
     section: "影视"
     size: M
@@ -797,6 +806,7 @@ items:
     notes: "2026-10-14 从网页设置页加进来的。关注：新一季 / 续作 / 剧场版、播出时间、每集更新。维基数据：日本電視動畫系列。"
 
   - name: "The Mandalorian"
+    motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     type: show
     section: "影视"
     size: M
