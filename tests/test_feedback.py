@@ -76,7 +76,7 @@ class VoteButtons(unittest.TestCase):
         out = render._picks([self.PICK], [], {"url": "https://x.supabase.co", "key": "sb_publishable_k"})
         self.assertIn('data-vote="1"', out)
         self.assertIn('data-vote="-1"', out)
-        self.assertIn("按你的投票：猫 +2", out)
+        self.assertIn("あなたの投票：猫 +2", out)
         # 投票脚本挂在整页最后（所有消息卡片都要用），不在推荐区里
         self.assertIn('"https://x.supabase.co"', render.VOTE_JS % json.dumps({"url": "https://x.supabase.co", "key": "k"}))
         # data-v 属性里的 JSON 要转义，还原后和推荐一致
@@ -102,17 +102,17 @@ class Shuffle(unittest.TestCase):
         self.assertEqual(visible.count('data-u='), 5 + 4)       # 没有脚本时显示第一批
         self.assertEqual(pool.count('data-u='), 7 + 2)          # 其余都在隐藏的池子里，脚本随机抽
         self.assertEqual(out.count("data-f=1"), 6)                # 同类新发现做了标记
-        self.assertIn("换一批", out)
-        self.assertIn("共 18 条", out)
+        self.assertIn("入れ替え", out)
+        self.assertIn("全 18 件", out)
 
     def test_explore_marked(self):
         out = render._picks([{**self.pick(1, 0), "explore": True}, self.pick(2, 1)], [])
-        self.assertIn("换换口味 · 因为你想要", out)
+        self.assertIn("気分転換 · 「b」が欲しいから", out)
         self.assertIn("data-new=1", out)
 
     def test_single_batch_has_no_button(self):
         out = render._picks([self.pick(i, 0) for i in range(3)], [])
-        self.assertNotIn("换一批", out)
+        self.assertNotIn("入れ替え", out)
         self.assertNotIn("pkpool", out)
 
 
@@ -413,8 +413,8 @@ class Recommend(unittest.TestCase):
         self.assertNotIn("https://www.reddit.com/r/GTA6/x", picks)  # 网友的提问帖不当推荐
         self.assertEqual(picks["https://e.com/5"]["liked"], "GTA 6 新地图泄露")  # 同一个作品赞过
         out = render._picks(list(picks.values()), [])
-        self.assertIn("你关注的「GTA 6」还有这条 · 你赞过「GTA 6 新地图泄露」", out)
-        self.assertIn("因为你想要「黑猫杯」", out)
+        self.assertIn("フォロー中の「GTA 6」のほかのニュース · 👍した「GTA 6 新地图泄露」と関連", out)
+        self.assertIn("「黑猫杯」が欲しいから", out)
 
     def test_probe_entries_scored_by_title(self):
         probes = [{**self.entry(8, "Black cat bunny mug collection"), "item": "黑猫杯", "label": "猫", "probe": "黑猫杯"},
@@ -447,5 +447,5 @@ class ShuffleButtons(unittest.TestCase):
                   "image": None, "because": "b", "hits": [], "kind": "wish", "batch": i // 5} for i in range(12)]
         out = render._picks(picks, [])
         self.assertIn('class="shuffle back"', out)
-        self.assertIn("上一批", out)
+        self.assertIn("前へ", out)
         self.assertIn("wishlist-seen-v2", out)

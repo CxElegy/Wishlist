@@ -34,7 +34,7 @@ a{color:inherit;text-decoration:none}
 .mast{border:3px solid #1A1C22;padding:5px}
 .mast>div{border:1px solid #1A1C22;display:flex}
 .mast .logo{width:100px;background:#1A1C22;display:flex;align-items:center;justify-content:center}
-.mast h1{flex:1;margin:0;padding:14px 28px;font:900 56px/1 'Noto Sans SC',sans-serif;letter-spacing:.04em}
+.mast h1{flex:1;margin:0;padding:14px 28px;font:900 clamp(34px,3.4vw,52px)/1 'Noto Sans SC',sans-serif;letter-spacing:.02em;white-space:nowrap}
 .mast .meta{width:190px;border-left:1px solid #1A1C22;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px}
 .mast .no{font:900 32px/1 'Noto Sans SC',sans-serif}
 .mono{font-family:'JetBrains Mono',monospace;font-size:13px}
@@ -109,7 +109,7 @@ a{color:inherit;text-decoration:none}
  background-image:radial-gradient(#1A1C22 .8px,transparent .9px);background-size:7px 7px;background-position:0 0}
 .front>*{background:#FBF8F1}
 .fbar{display:flex;align-items:center;gap:14px;padding:8px 18px;background:#1A1C22;color:#FBF8F1;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.25em}
-.fbar b{font:900 15px 'Noto Sans SC',sans-serif;letter-spacing:.3em;color:#FFD23F}
+.fbar b{font:900 15px 'Noto Sans SC',sans-serif;letter-spacing:.3em;color:#FFD23F;white-space:nowrap;flex:none}
 .fbar span:last-child{margin-left:auto}
 .fbody{display:grid;grid-template-columns:7fr 5fr;gap:0;border-bottom:3px solid #1A1C22}
 .top{position:relative;padding:22px;border-right:3px solid #1A1C22;display:flex;flex-direction:column;gap:14px;color:#1A1C22}
@@ -349,7 +349,7 @@ html{scroll-behavior:smooth}
  .mores .more:nth-of-type(n+4){display:none}
  .more{grid-template-columns:90px 1fr}
  .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
- .page{padding:20px 12px}.mast h1{font-size:30px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
+ .page{padding:20px 12px}.mast h1{font-size:20px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
  .band .title{font-size:34px}.band .sub{margin-left:0}
  .band.split{background:var(--abg)}.band.split .sub{color:var(--afg)}
  .hero{grid-template-columns:1fr}
@@ -619,7 +619,7 @@ def _brief(stories):
         return ""
     rows = "".join(f'<li><span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span>'
                    f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>' for x in stories)
-    return f'<div class="brief"><h4>其他消息</h4><ul>{rows}</ul></div>'
+    return f'<div class="brief"><h4>その他のニュース</h4><ul>{rows}</ul></div>'
 
 
 def _older(stories, today, more=0, texts=()):
@@ -627,15 +627,15 @@ def _older(stories, today, more=0, texts=()):
     if not stories and not texts:
         return ""
     if not stories:
-        return (f'<details class="older"><summary>更早的消息 · {len(texts)} 条<span></span></summary>'
+        return (f'<details class="older"><summary>過去のニュース · {len(texts)} 件<span></span></summary>'
                 f'{_brief(texts)}</details>')
     packed = _pack(stories, lambda s: 3)
     first, last = stories[-1].get("date") or stories[-1]["_issue"], stories[0].get("date") or stories[0]["_issue"]
     rng = f"{first[5:].replace('-', '.')} – {last[5:].replace('-', '.')}"
     cards = "".join(_tcard(s, w, i, today, small=True) for i, (s, w) in enumerate(packed))
-    label = "更多消息" if more else "更早的消息"
-    detail = f"一周内另有 {more} 条" + (f" · 更早 {len(stories) - more} 条" if len(stories) > more else "") if more else rng
-    return (f'<details class="older"><summary>{label} · {len(stories) + len(texts)} 条<span>{detail}</span></summary>'
+    label = "もっと見る" if more else "過去のニュース"
+    detail = f"今週ほかに {more} 件" + (f" · それ以前 {len(stories) - more} 件" if len(stories) > more else "") if more else rng
+    return (f'<details class="older"><summary>{label} · {len(stories) + len(texts)} 件<span>{detail}</span></summary>'
             f'<div class="grid">{cards}</div>{_brief(texts)}</details>')
 
 
@@ -691,8 +691,8 @@ def _calm(block):
     tail = ""
     if last:
         tail = (f'<a class="last" href="{e(last["url"])}" target="_blank" rel="noopener">'
-                f'<span class="mono">最近 · {e(last["date"].replace("-", "."))}</span><b>{e(last["headline"])}</b></a>')
-    tag = "正 在 收 集" if block.get("collecting") else "暂 无 新 消 息"
+                f'<span class="mono">直近 · {e(last["date"].replace("-", "."))}</span><b>{e(last["headline"])}</b></a>')
+    tag = "収 集 中" if block.get("collecting") else "新 着 な し"
     return (f'<div class="calm">{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
             f"{tail}</div>")
 
@@ -710,7 +710,7 @@ def _section(block, anchor=""):
     if changed:
         facts = '<div class="facts">' + "".join(
             f'<div class="fact"><span class="label{" new" if f["changed"] else ""}">'
-            f'{e(f["label"])}{" · 有变化" if f["changed"] else ""}</span><span>{_md_links(f["text"])}</span></div>'
+            f'{e(f["label"])}{" · 変更あり" if f["changed"] else ""}</span><span>{_md_links(f["text"])}</span></div>'
             for f in changed
         ) + "</div>"
     today = block["_today"]
@@ -738,20 +738,20 @@ def _section(block, anchor=""):
 
 def _why_verb(x):
     if x.get("kind") == "follow":
-        return "关注"
-    return "在纠结" if x.get("kind") == "hesitate" or x.get("hesitating") else "想要"
+        return "をフォローしている"
+    return "で迷っている" if x.get("kind") == "hesitate" or x.get("hesitating") else "が欲しい"
 
 
 def _why(x):
     """推荐理由：wish 是命中了愿望清单里那件东西的喜好；board 是关注的版面里没上版面的其他消息；
     follow 是同类新发现。和赞过的某条有关时补一句「你赞过「那条」」。"""
     if x.get("kind") == "board":
-        why = f'你关注的「{e(x["because"])}」还有这条'
+        why = f'フォロー中の「{e(x["because"])}」のほかのニュース'
     else:
-        why = f'{"换换口味 · " if x.get("explore") else ""}因为你{_why_verb(x)}「{e(x["because"])}」'
+        why = f'{"気分転換 · " if x.get("explore") else ""}「{e(x["because"])}」{_why_verb(x)}から'
     if x.get("liked"):
         t = x["liked"] if len(x["liked"]) <= 24 else x["liked"][:23] + "…"
-        why += f' · 你赞过「{e(t)}」'
+        why += f' · 👍した「{e(t)}」と関連'
     return why
 
 
@@ -775,13 +775,13 @@ def _picks(picks, works, feedback=None):
         tags = "".join(f"<i>{e(h)}</i>" for h in x.get("hits", []))
         date = e(x["date"][5:].replace("-", ".")) if x.get("date") else ""
         taste = " · ".join(f"{e(k.removeprefix(WORK_KEY))} {v:+d}" for k, v in (x.get("taste") or [])[:3])
-        taste = f'<span class="taste">按你的投票：{taste}</span>' if taste else ""
+        taste = f'<span class="taste">あなたの投票：{taste}</span>' if taste else ""
         vote = ""
         if feedback:  # 投票要写进的数据：网页把它原样发给数据库
             data = {k: x.get(k) for k in ("url", "kind", "title", "work", "because", "hits", "words")}
             vote = (f'<div class="vote" data-v="{e(json.dumps(data, ensure_ascii=False))}">'
-                    f'<button type="button" data-vote="1" aria-pressed="false" title="多推荐这类">👍<span> 喜欢</span></button>'
-                    f'<button type="button" data-vote="-1" aria-pressed="false" title="少推荐这类">👎<span> 不感兴趣</span></button>'
+                    f'<button type="button" data-vote="1" aria-pressed="false" title="この種類を増やす">👍<span> 好き</span></button>'
+                    f'<button type="button" data-vote="-1" aria-pressed="false" title="この種類を減らす">👎<span> 興味なし</span></button>'
                     + f'<small></small></div>')
         return (
             f'<div class="pk{" big" if big else ""}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
@@ -797,7 +797,7 @@ def _picks(picks, works, feedback=None):
         follow = [x for x in group if x.get("kind") in ("follow", "hesitate")]
         body = f'<div class="pkgrid">{cards_of(wish, True)}</div>' if wish else ""
         if follow:
-            body += (f'<div class="pksub">同类新发现<span>你关注的作品和纠结的东西之外，同类型的新消息</span></div>'
+            body += (f'<div class="pksub">似たジャンルの新着<span>フォロー中の作品や迷っているもの以外の、同じジャンルのニュース</span></div>'
                      f'<div class="pkgrid row" style="--n:{len(follow)}">{cards_of(follow, False)}</div>')
         return body
 
@@ -808,12 +808,12 @@ def _picks(picks, works, feedback=None):
     body = f'<div class="pkbatch">{batch_of(first)}</div>'
     if rest:
         body += f'<div class="pkpool" hidden>{cards_of(rest, False)}</div>'
-    shuffle = (f'<div class="pknav"><button type="button" class="shuffle back" aria-label="回到上一批推荐" disabled>上一批</button>'
-               f'<button type="button" class="shuffle next" aria-label="换一批推荐">换一批<small>共 {len(picks)} 条</small></button></div>'
+    shuffle = (f'<div class="pknav"><button type="button" class="shuffle back" aria-label="前のおすすめに戻る" disabled>前へ</button>'
+               f'<button type="button" class="shuffle next" aria-label="ほかのおすすめを見る">入れ替え<small>全 {len(picks)} 件</small></button></div>'
                if rest else "")
-    return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>我会喜欢<em>？</em></h2>'
-            f'<span>根据愿望清单、你关注的版面和你赞过的消息挑的{"，点 👍 / 👎 教它你的口味" if feedback else ""}'
-            f' · <a href="wishlist.html">♥ 愿望清单</a></span>{shuffle}</div>'
+    return (f'<section class="picks" id="picks" data-k="picks"><div class="pkhead"><h2>気になるかも<em>？</em></h2>'
+            f'<span>欲しい物リスト・フォロー中の版面・👍したニュースから選びました{"。👍 / 👎 で好みを教えてください" if feedback else ""}'
+            f' · <a href="wishlist.html">♥ 欲しい物リスト</a></span>{shuffle}</div>'
             f'{body}</section>' + (f"<script>{SHUFFLE_JS}</script>" if shuffle else ""))
 
 
@@ -864,7 +864,7 @@ SHUFFLE_JS = """
     if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
     back.disabled = pos <= 0;
     const fresh = cards.filter(el => !seen[el.dataset.u]).length;
-    next.querySelector('small').textContent = fresh ? `还有 ${fresh} 条没看过` : '都看过了，从最早的轮回来';
+    next.querySelector('small').textContent = fresh ? `未読 ${fresh} 件` : '全部見ました。古い順にもう一度';
   };
   const fresh = () => {
     const prev = new Set(pos >= 0 ? history[pos].flat() : []);
@@ -911,7 +911,7 @@ VOTE_JS = """
     box.querySelectorAll('button[data-vote]').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.vote) === v)));
     box.classList.toggle('on', v !== 0);
     if (dim) dim.classList.toggle(dim.classList.contains('pk') ? 'down' : 'downv', v === -1);
-    if (tip) tip.textContent = v === 1 ? '会多推荐这类' : v === -1 ? '以后少推荐这类' : '';
+    if (tip) tip.textContent = v === 1 ? 'この種類を増やします' : v === -1 ? 'この種類を減らします' : '';
   });
   const wire = (box, data, dim, tip) => {
     boxes.push([box, data, dim, tip]);
@@ -927,8 +927,8 @@ VOTE_JS = """
         try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
         paint(data.url);
       } catch (err) {
-        if (tip) tip.textContent = '没存上，稍后再试';
-        btn.title = '没存上，稍后再试';
+        if (tip) tip.textContent = '保存できませんでした。後でもう一度';
+        btn.title = '保存できませんでした。後でもう一度';
         console.error('投票失败', err);
       } finally {
         box.querySelectorAll('button').forEach(b => b.disabled = false);
@@ -940,8 +940,8 @@ VOTE_JS = """
   const small = () => {
     const s = document.createElement('span');
     s.className = 'vt';
-    s.innerHTML = '<button type="button" data-vote="1" aria-pressed="false" title="喜欢，多推荐这类">👍</button>'
-      + '<button type="button" data-vote="-1" aria-pressed="false" title="不感兴趣，少推荐这类">👎</button>';
+    s.innerHTML = '<button type="button" data-vote="1" aria-pressed="false" title="好き：この種類を増やす">👍</button>'
+      + '<button type="button" data-vote="-1" aria-pressed="false" title="興味なし：この種類を減らす">👎</button>';
     return s;
   };
   const story = (link, holder, dim) => {
@@ -965,8 +965,8 @@ def _wish_link(wishes, cls):
     if not wishes:
         return ""
     want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
-    return (f'<a class="{cls}" href="wishlist.html"><b>♥</b><span>愿望清单</span>'
-            f'<small>{want} 件想要</small></a>')
+    return (f'<a class="{cls}" href="wishlist.html"><b>♥</b><span>{"欲しい物" if cls == "navwish" else "欲しい物リスト"}</span>'
+            f'<small>欲しい {want} 件</small></a>')
 
 
 def render_settings(items, db, updated):
@@ -1430,6 +1430,12 @@ def _wish_section(wishes, works, finds=()):
 # 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
 SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "演出": "#D6336C", "好物": "#E07A1F"}
 SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
+# 网页上显示的板块名（数据里的板块名照旧是中文，items.yaml / 设置页不变）
+SECTION_JA = {"游戏": "ゲーム", "影视": "映像", "运动": "スポーツ", "演出": "ライブ", "好物": "グッズ", "其他": "その他"}
+
+
+def _sec_name(name):
+    return SECTION_JA.get(name or "", name or "")
 
 
 def _sec_color(name):
@@ -1454,8 +1460,8 @@ def _front(works, today, updated):
         groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS] + [n for n in groups if n not in SECTIONS]
 
-    head = (f'<div class="fbar"><b>头 版</b><span>LATEST · 最近 {HOLD_DAYS} 天</span>'
-            f'<span>更新于 {updated} · {len(pool)} 条</span></div>')
+    head = (f'<div class="fbar"><b>ト ッ プ</b><span>LATEST · 直近 {HOLD_DAYS} 日</span>'
+            f'<span>更新 {updated} · {len(pool)} 件</span></div>')
 
     # 头条下面补几条次重要的（按重要度，再按新旧），填满左栏：右栏每个作品一行（约 100px）、每个板块一个标题（约 45px），
     # 头条约占 600px，「其他重要」每条约 85px
@@ -1468,16 +1474,16 @@ def _front(works, today, updated):
         f'<b>{e(x["headline"])}</b></span></a>' for w, x in more)
     if top:
         sc = _sec_color(top_w.get("section"))
-        badge = "重 磅" if top.get("weight") == "hero" else "头 条"
+        badge = "重 大" if top.get("weight") == "hero" else "注 目"
         top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
                     f'<span class="badge">{badge}</span>{_pic(top)}'
-                    f'<span class="kicker"><i style="background:{sc}">{e(top_w.get("section") or "")}</i>'
+                    f'<span class="kicker"><i style="background:{sc}">{e(_sec_name(top_w.get("section")))}</i>'
                     f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
                     f'<h2>{e(top["headline"])}</h2>'
                     + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + "</a>")
-        top_html = f'<div class="topcol">{top_html}<div class="mores"><h5>其他重要</h5>{more_html}</div></div>' if more else top_html
+        top_html = f'<div class="topcol">{top_html}<div class="mores"><h5>ほかの注目ニュース</h5>{more_html}</div></div>' if more else top_html
     else:
-        top_html = f'<div class="top"><h2>最近 {HOLD_DAYS} 天没有新消息</h2></div>'
+        top_html = f'<div class="top"><h2>直近 {HOLD_DAYS} 日は新着なし</h2></div>'
 
     boards = []
     for name in order:
@@ -1494,20 +1500,20 @@ def _front(works, today, updated):
                 pic = {"image": imgs[0] if imgs else None, "_fbs": imgs[1:], "_work": w["name"],
                        **{k: first.get(k) for k in ("url", "source", "source_icon")}}
             else:
-                text, cls = w.get("status") or "暂无新消息", "entry q"
+                text, cls = w.get("status") or "新着なし", "entry q"
                 pic = {"image": w.get("_thumb"), "_work": w["name"], "_fbs": []}
             rows.append(f'<a class="{cls}" href="#{_wid(w["name"])}">{_pic(pic)}'
                         f'<span><span class="nm">{e(w["name"])}</span><b>{e(text)}</b></span></a>')
-        body = "".join(rows) or '<div class="none">还没有关注项</div>'
-        boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(name)}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
+        body = "".join(rows) or '<div class="none">フォロー中の項目はまだありません</div>'
+        boards.append(f'<div class="board" style="--sc:{sc}"><h3>{e(_sec_name(name))}<small>{SECTION_EN.get(name, "")}</small></h3>{body}</div>')
 
-    heads = [f'<li style="--sc:{_sec_color(w.get("section"))}"><i>{e(w.get("section") or "")}</i>'
+    heads = [f'<li style="--sc:{_sec_color(w.get("section"))}"><i>{e(_sec_name(w.get("section")))}</i>'
              f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a>'
              f'<span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span></li>'
              for w, x in newest if x is not top and all(x is not m for _, m in more)][:12]
     heads_html = ""
     if heads:
-        heads_html = (f'<div class="heads"><h4>最新消息<small>LATEST HEADLINES</small></h4>'
+        heads_html = (f'<div class="heads"><h4>最新ニュース<small>LATEST HEADLINES</small></h4>'
                       f'<ol>{"".join(heads)}</ol></div>')
     return (f'<section class="front" data-k="front" id="front">{head}<div class="fbody">{top_html}'
             f'<div class="boards">{"".join(boards)}</div></div>{heads_html}</section>')
@@ -1625,26 +1631,26 @@ def _nav(works, date, wishes=(), picks=()):
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#front">'
-            f'<i class="no">00</i><span class="nm">头版<small class="cnt">FRONT PAGE</small></span></a>']
+            f'<i class="no">00</i><span class="nm">トップ<small class="cnt">FRONT PAGE</small></span></a>']
     if picks:
         rail.append(f'<a class="pill" style="--sc:#B8336A" data-for="picks" href="#picks">'
-                    f'<i class="no">?</i><span class="nm">我会喜欢？<small class="cnt">{len(picks)} 条候选</small></span></a>')
+                    f'<i class="no">?</i><span class="nm">気になるかも？<small class="cnt">候補 {len(picks)} 件</small></span></a>')
     n = 0
     for name in order:
         sc = _sec_color(name)
-        rail.append(f'<div class="grp" style="--sc:{sc}"><b>{e(name)}</b><small>{SECTION_EN.get(name, "")}</small></div>')
+        rail.append(f'<div class="grp" style="--sc:{sc}"><b>{e(_sec_name(name))}</b><small>{SECTION_EN.get(name, "")}</small></div>')
         for w in groups[name]:
             n += 1
             recent = [x for x in w["stories"] if x["_issue"] >= cutoff]
             img = next((x.get("image") for x in recent if x.get("image")), None) or w.get("cover") \
                 or next((x.get("image") for x in w["stories"] if x.get("image")), None)
             css_img = f";--img:url({urllib.parse.quote(img, safe=':/?&=%#@+,;~')})" if img else ""
-            cnt = f"一周 {len(recent)} 条" if recent else "暂无新消息"
+            cnt = f"今週 {len(recent)} 件" if recent else "新着なし"
             rail.append(f'<a class="pill" style="--sc:{sc}{e(css_img)}" data-for="{e(w["name"])}" '
                         f'href="#{_wid(w["name"])}"><i class="no">{n:02d}</i>'
                         f'<span class="nm">{e(w["name"])}<small class="cnt">{cnt}</small></span></a>')
-    return (f'<nav class="nav" aria-label="目录">'
-            f'<div class="here"><b>目录</b><small>INDEX</small><span id="nav-here"></span></div>'
+    return (f'<nav class="nav" aria-label="目次">'
+            f'<div class="here"><b>目次</b><small>INDEX</small><span id="nav-here"></span></div>'
             f'<div class="rail" id="nav-rail">{"".join(rail)}</div>{_wish_link(wishes, "navwish")}'
             f'<div class="bar" id="nav-bar"></div></nav>')
 
@@ -1731,16 +1737,16 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
     # id 保留 issue-日期：Discord 通知里的链接指向这里
-    body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新于 {updated}">'
+    body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新 {updated}">'
             + _front(works, latest["date"], updated) + _picks(picks, works, fb)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>关注清单通信</title>
+<title>ウォッチリスト通信</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
@@ -1749,10 +1755,10 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <div class="page">
 <header class="mast"><div>
 <div class="logo">{LOGO}</div>
-<h1>关注清单通信</h1>
+<h1>ウォッチリスト通信</h1>
 {_wish_link(wishes, "mastwish")}
-<a class="mastset" href="settings.html" title="设置" aria-label="设置">⚙</a>
-<div class="meta"><div class="mono">更新于</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
+<a class="mastset" href="settings.html" title="設定" aria-label="設定">⚙</a>
+<div class="meta"><div class="mono">更新</div><div class="no">{updated.split(" ")[-1]}</div><div class="mono">{updated.split(" ")[0]}</div></div>
 </div></header>
 {_nav(works, latest['date'], wishes, picks)}
 <main class="issues">{''.join(parts)}</main>

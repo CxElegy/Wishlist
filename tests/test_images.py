@@ -628,7 +628,7 @@ class ImagesTest(unittest.TestCase):
         # 以前的报道没存图标：按域名用图标服务，网站名用域名
         self.assertIn(render.FAVICON_SERVICE.format(host="www.powder.com").replace("&", "&amp;"), page)
         self.assertIn('<span class="src">powder.com</span>', page)
-        self.assertIn('<div class="brief"><h4>其他消息</h4>', page)
+        self.assertIn('<div class="brief"><h4>その他のニュース</h4>', page)
         self.assertIn('看不出来源</a></li>', page)
         self.assertNotIn('没图的消息</a></li>', page)
         self.assertIn('class="top" href="https://a/1"', page)  # 没图的 hero 不上头条大图
