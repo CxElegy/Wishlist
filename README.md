@@ -36,43 +36,19 @@
 
 ## 流程
 
-**图解**（架构图在最上面；点「网页版」看大图）：
-
-### 流程图
-
-含时间轴、费用、GitHub 限制附录 · [网页版](https://cxelegy.github.io/Wishlist/design/flow.html)
+**流程图**：什么时候跑、隔多久、最快多久看到结果、哪些要钱（[网页版](https://cxelegy.github.io/Wishlist/design/flow.html)）
 
 ![流程图](docs/design/flow.png)
 
-### 工作流程图解
+其他图解想细看时再点开：
 
-一页看懂：什么时候发生什么、一条消息走过的路 · [网页版](https://cxelegy.github.io/Wishlist/design/guide.html)
-
-![工作流程图解](docs/design/guide.png)
-
-### 编排逻辑
-
-一条新闻怎么变成网页上的卡片、三条编排路、去重的四道关 · [网页版](https://cxelegy.github.io/Wishlist/design/editing.html)
-
-![编排逻辑](docs/design/editing.png)
-
-### 情报来源
-
-从哪搜、每一步留下谁、配图回退梯、来源多元化（附 10-12 的真实数字） · [网页版](https://cxelegy.github.io/Wishlist/design/sources.html)
-
-![情报来源](docs/design/sources.png)
-
-### 改动怎么进 main
-
-会话 → 分支 → PR → 合并 → 自动上线；冲突怎么办 · [网页版](https://cxelegy.github.io/Wishlist/design/pr-flow.html)
-
-![改动怎么进 main](docs/design/pr-flow.png)
-
-### 合并图
-
-10-12 那一次合并的记录（当时的默认分支，现在是 main） · [网页版](https://cxelegy.github.io/Wishlist/design/merge.html)
-
-![合并图](docs/design/merge.png)
+| 图 | 讲什么 |
+|---|---|
+| [编排逻辑](https://cxelegy.github.io/Wishlist/design/editing.html)（[图片](docs/design/editing.png)） | 一条新闻怎么变成网页上的卡片、去重的四道关 |
+| [情报来源](https://cxelegy.github.io/Wishlist/design/sources.html)（[图片](docs/design/sources.png)） | 从哪搜、每一步留下谁、配图回退梯 |
+| [改动怎么进 main](https://cxelegy.github.io/Wishlist/design/pr-flow.html)（[图片](docs/design/pr-flow.png)） | 会话 → 分支 → PR → 合并 → 自动上线 |
+| [工作流程图解](https://cxelegy.github.io/Wishlist/design/guide.html)（[图片](docs/design/guide.png)） | 流程图的长页版，适合手机上看 |
+| [合并图](https://cxelegy.github.io/Wishlist/design/merge.html)（[图片](docs/design/merge.png)） | 10-12 那一次合并的记录 |
 
 设计稿源文件在 `design/`（Claude 设计画布格式，修改时用）。
 
