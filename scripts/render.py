@@ -18,6 +18,7 @@ import json
 import re
 import urllib.parse
 
+import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
 FONTS = (
@@ -29,6 +30,8 @@ FONTS = (
 CSS = """
 *{box-sizing:border-box}
 body{margin:0;background:#EDEBE6;color:#1A1C22;font-family:'Noto Serif SC',serif}
+::selection{background:#B8336A;color:#FFF}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #B8336A;outline-offset:2px}
 a{color:inherit;text-decoration:none}
 .page{max-width:1200px;margin:0 auto;padding:40px 24px;display:flex;flex-direction:column;gap:28px}
 .mast{border:3px solid #1A1C22;padding:5px}
@@ -110,7 +113,7 @@ a{color:inherit;text-decoration:none}
 .front>*{background:#FBF8F1}
 .fbar{display:flex;align-items:center;gap:14px;padding:8px 18px;background:#1A1C22;color:#FBF8F1;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.25em}
 .fbar b{font:900 15px 'Noto Sans SC',sans-serif;letter-spacing:.3em;color:#FFD23F;white-space:nowrap;flex:none}
-.fbar span:last-child{margin-left:auto}
+.fbar span:last-child{margin-left:auto;white-space:nowrap}
 .fbody{display:grid;grid-template-columns:7fr 5fr;gap:0;border-bottom:3px solid #1A1C22}
 .top{position:relative;padding:22px;border-right:3px solid #1A1C22;display:flex;flex-direction:column;gap:14px;color:#1A1C22}
 .top .pic{border:3px solid #1A1C22;color:#1A1C22}
@@ -125,7 +128,7 @@ a{color:inherit;text-decoration:none}
 .topcol{display:flex;flex-direction:column;border-right:3px solid #1A1C22}
 .topcol .top{border-right:none}
 .mores{flex:1;display:flex;flex-direction:column;padding:0 22px 18px;gap:0}
-.mores h5{margin:0 0 4px;padding-top:12px;border-top:3px double #1A1C22;font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
+.mores h3{margin:0 0 4px;padding-top:12px;border-top:3px double #1A1C22;font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
 .more{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px dashed color-mix(in srgb,#1A1C22 35%,transparent);color:#1A1C22}
 .more .pic{aspect-ratio:16/10;border:2px solid #1A1C22;--ac:var(--sc)}
 .more .pic .ph{font-size:13px}
@@ -232,11 +235,11 @@ html{scroll-behavior:smooth}
 .mastwish{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 22px;
  border-left:1px solid #1A1C22;color:#B8336A;transition:background .2s,color .2s}
 .mastwish b{font-size:22px;line-height:1}.mastwish span{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.2em;color:#1A1C22}
-.mastwish small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.1em;opacity:.7;color:#1A1C22}
+.mastwish small{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.1em;opacity:.7;color:#1A1C22}
 .mastwish:hover{background:#B8336A}.mastwish:hover b,.mastwish:hover span,.mastwish:hover small{color:#FFF}
 .navwish{display:flex;align-items:center;gap:8px;margin:10px 0 0 14px;padding:8px 12px;border:2px solid #B8336A;color:#B8336A;
  font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.15em;flex:none}
-.navwish small{margin-left:auto;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.05em;opacity:.8}
+.navwish small{margin-left:auto;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.05em;opacity:.8}
 .navwish:hover{background:#B8336A;color:#FFF}
 @media (max-width:1000px){.navwish{display:none}}
 .mastset{display:flex;align-items:center;justify-content:center;padding:0 16px;border-left:1px solid #1A1C22;
@@ -260,12 +263,12 @@ html{scroll-behavior:smooth}
 .pk.big{grid-column:span 2;grid-row:span 2}
 .pk .pic{background:#FFF;color:#1A1C22;border:none}
 .pk .pkt{display:flex;flex-direction:column;gap:6px;min-width:0}
-.pk .src{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;opacity:.6}
+.pk .src{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.08em;opacity:.75}
 .pk b{font-size:15px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pk.big b{font:900 22px/1.35 'Noto Sans SC',sans-serif;-webkit-line-clamp:4}
 .pk .why{font-size:12px;color:#B8336A;font-weight:700}
 .pk .tags{display:flex;flex-wrap:wrap;gap:4px}
-.pk .tags i{font-style:normal;font:700 10px 'Noto Sans SC',sans-serif;letter-spacing:.1em;padding:1px 7px;border:1px solid #B8336A;color:#B8336A}
+.pk .tags i{font-style:normal;font:700 11px 'Noto Sans SC',sans-serif;letter-spacing:.1em;padding:1px 7px;border:1px solid #B8336A;color:#B8336A}
 .pk>a{display:flex;flex-direction:column;gap:10px;min-width:0;flex:1}
 .pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
 .pk .taste{font-size:11px;opacity:.7}
@@ -323,7 +326,7 @@ html{scroll-behavior:smooth}
 .older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;border:1.5px solid currentColor;
  font:700 15px/1 'JetBrains Mono',monospace;transition:transform .25s}
 .older[open] summary::before{content:"−"}
-.older summary:hover,.older summary:focus-visible{color:var(--acc);outline:none}
+.older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
 .older summary span{opacity:.6;letter-spacing:.1em}
 .older .grid .card{padding:16px;gap:10px}
 .older .card.c3 h3{font-size:16px;line-height:1.45}
@@ -348,7 +351,7 @@ html{scroll-behavior:smooth}
  .fbody{grid-template-columns:1fr}.top{border-right:none;border-bottom:3px solid #1A1C22}.topcol{border-right:none}
  .mores .more:nth-of-type(n+4){display:none}
  .more{grid-template-columns:90px 1fr}
- .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}
+ .top h2{font-size:30px}.heads ol{columns:1}.fbar span:nth-child(2){display:none}.fbar{letter-spacing:.12em;padding:8px 12px}
  .page{padding:20px 12px}.mast h1{font-size:20px;padding:12px}.mast .logo{display:none}.mast .meta{width:110px}.mast .no{font-size:20px}
  .band .title{font-size:34px}.band .sub{margin-left:0}
  .band.split{background:var(--abg)}.band.split .sub{color:var(--afg)}
@@ -359,6 +362,8 @@ html{scroll-behavior:smooth}
  .calm{flex-wrap:wrap;gap:12px;padding:12px 16px}.calm .pic{display:none}
  .calm .last{flex:1 1 100%;border-left:0;padding-left:0}
 }
+/* いちばん小さいスマホ（320px）：報頭が横にはみ出さないように詰める */
+@media (max-width:380px){.mast h1{font-size:15px;padding:10px 8px;letter-spacing:0}.mastwish{padding:0 6px}.mastset{padding:0 6px}.mast .meta{width:auto;padding:0 8px}.mast .meta .mono:first-child{display:none}.mast .no{font-size:16px}}
 """
 
 LOGO = (
@@ -697,8 +702,24 @@ def _calm(block):
             f"{tail}</div>")
 
 
+def _legible(t):
+    """版面配色的文字和强调色在各自底色上至少 4.5:1（封面取色已经保证；items.yaml 手写的 theme 可能没有）。"""
+    t = dict(t)
+    ok = lambda a, b: theme.contrast(theme._rgb(t[a]), theme._rgb(t[b])) >= 4.5
+    for fg, bg in (("fg", "bg"), ("alt_fg", "alt_bg"), ("accent", "bg"), ("alt_accent", "alt_bg")):
+        try:
+            if not ok(fg, bg):
+                t[fg] = theme._hex(theme._readable(theme._rgb(t[fg]), theme._rgb(t[bg])))
+            if not ok(fg, bg) and fg.endswith("fg"):
+                # 白字已经不能再亮（漫威的红底白字）：把底色压暗一点，品牌色基本不变
+                t[bg] = theme._hex(theme._readable(theme._rgb(t[bg]), theme._rgb(t[fg])))
+        except (KeyError, ValueError, TypeError):
+            pass
+    return t
+
+
 def _section(block, anchor=""):
-    t = block["theme"]
+    t = _legible(block["theme"])
     style = (f"--bg:{t['bg']};--fg:{t['fg']};--acc:{t['accent']};--abg:{t['alt_bg']};"
              f"--afg:{t['alt_fg']};--aacc:{t['alt_accent']};--aac:{t['alt_accent']};"
              f"--line:color-mix(in srgb,{t['fg']} 22%,{t['bg']})")
@@ -1428,7 +1449,8 @@ def _wish_section(wishes, works, finds=()):
 
 
 # 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
-SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#1F9D6B", "演出": "#D6336C", "好物": "#E07A1F"}
+# 板块色：白字、浅底（#EDEBE6）上的小字都要过 WCAG AA 4.5:1（绿、粉、橙原来太浅，白字只有 2.9–4.4）
+SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#156A48", "演出": "#BB265A", "好物": "#985315"}
 SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
 # 网页上显示的板块名（数据里的板块名照旧是中文，items.yaml / 设置页不变）
 SECTION_JA = {"游戏": "ゲーム", "影视": "映像", "运动": "スポーツ", "演出": "ライブ", "好物": "グッズ", "其他": "その他"}
@@ -1481,7 +1503,7 @@ def _front(works, today, updated):
                     f'{e(top_w["name"])} · {e((top.get("date") or top["_issue"])[5:].replace("-", "."))}</span>'
                     f'<h2>{e(top["headline"])}</h2>'
                     + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + "</a>")
-        top_html = f'<div class="topcol">{top_html}<div class="mores"><h5>ほかの注目ニュース</h5>{more_html}</div></div>' if more else top_html
+        top_html = f'<div class="topcol">{top_html}<div class="mores"><h3>ほかの注目ニュース</h3>{more_html}</div></div>' if more else top_html
     else:
         top_html = f'<div class="top"><h2>直近 {HOLD_DAYS} 日は新着なし</h2></div>'
 
@@ -1530,8 +1552,8 @@ NAV_STYLES = {
 .nav .grp{flex:none}
 .nav .grp{display:flex;align-items:baseline;gap:8px;padding:16px 0 4px 26px;color:var(--sc)}
 .nav .grp b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
-.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.25em;opacity:.75}
-.nav .pill{padding:9px 0 9px 26px;font:700 14px/1.3 'Noto Sans SC',sans-serif;color:rgba(26,28,34,.5);
+.nav .grp small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.25em;opacity:.75}
+.nav .pill{padding:9px 0 9px 26px;font:700 14px/1.3 'Noto Sans SC',sans-serif;color:rgba(26,28,34,.66);
  transition:color .2s,font-size .3s cubic-bezier(.2,.9,.3,1),padding .3s cubic-bezier(.2,.9,.3,1)}
 .nav .pill::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:3px;
  background:linear-gradient(var(--sc) calc(var(--p,0)*100%),rgba(26,28,34,.13) 0)}
@@ -1540,7 +1562,7 @@ NAV_STYLES = {
  transition:width .35s cubic-bezier(.3,1.5,.5,1),height .35s cubic-bezier(.3,1.5,.5,1),margin .35s cubic-bezier(.3,1.5,.5,1),left .35s cubic-bezier(.3,1.5,.5,1),border-color .2s}
 .nav .pill .no{display:none}
 .nav .pill .nm{display:flex;flex-direction:column;gap:3px}
-.nav .pill .cnt{display:none;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--sc)}
+.nav .pill .cnt{display:none;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--sc)}
 .nav .pill:hover{color:#1A1C22}
 .nav .pill.past{color:rgba(26,28,34,.72)}
 .nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
@@ -1561,7 +1583,7 @@ NAV_STYLES = {
 .nav .rail{padding:4px 0 10px}
 .nav .grp{display:flex;align-items:center;gap:8px;margin:12px 12px 4px;padding:3px 8px;background:var(--sc);color:#FFF}
 .nav .grp b{font:900 13px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
-.nav .grp small{margin-left:auto;font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.9}
+.nav .grp small{margin-left:auto;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.9}
 .nav .pill{margin:0 12px;padding:7px 8px;font:700 14px/1.35 'Noto Serif SC',serif;border-bottom:1px dotted rgba(26,28,34,.35);
  transition:background .2s,color .2s,font-size .2s,padding .2s}
 .nav .pill .no{color:var(--sc);min-width:18px}
@@ -1585,7 +1607,7 @@ NAV_STYLES = {
 .nav .rail{gap:5px;padding:4px 0 8px;overflow-x:visible}
 .nav .grp{display:flex;align-items:baseline;gap:6px;padding:10px 4px 2px;color:var(--sc)}
 .nav .grp b{font:900 12px 'Noto Sans SC',sans-serif;letter-spacing:.3em}
-.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em}
+.nav .grp small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em}
 .nav .pill{margin-left:28px;padding:10px 12px;background:color-mix(in srgb,var(--sc) 22%,#FBF8F1);color:#1A1C22;
  border:2px solid #1A1C22;border-right:none;font:900 14px/1.25 'Noto Sans SC',sans-serif;
  clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px),0 10px);
@@ -1609,7 +1631,7 @@ NAV_STYLES = {
 .nav .rail{padding:8px 0;mask-image:linear-gradient(transparent,#000 6%,#000 94%,transparent)}
 .nav .grp{display:flex;gap:6px;align-items:baseline;padding:14px 0 2px;color:var(--sc)}
 .nav .grp b{font:900 11px 'Noto Sans SC',sans-serif;letter-spacing:.4em}
-.nav .grp small{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.8}
+.nav .grp small{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.8}
 .nav .pill{flex-direction:column;align-items:flex-start;gap:0;padding:5px 0;color:rgba(26,28,34,.38);
  font:900 15px/1.15 'Noto Sans SC',sans-serif;letter-spacing:-.01em;transition:font-size .35s cubic-bezier(.2,.9,.3,1),color .25s,padding .35s}
 .nav .pill .no{font-size:10px;color:inherit}

@@ -158,3 +158,16 @@ class OlderGrid(unittest.TestCase):
             self.assertEqual(spans, want, n)
             for w in spans:
                 self.assertIn(f".c{w}{{grid-column:span {w}}}", render.CSS)
+
+
+class Legible(unittest.TestCase):
+    def test_section_colors_reach_aa(self):
+        import theme
+        t = render._legible({"bg": "#151515", "fg": "#F5F5F5", "accent": "#EF4348",
+                             "alt_bg": "#EC1D24", "alt_fg": "#FFFFFF", "alt_accent": "#FFFFFF"})
+        for a, b in (("fg", "bg"), ("accent", "bg"), ("alt_fg", "alt_bg"), ("alt_accent", "alt_bg")):
+            self.assertGreaterEqual(theme.contrast(theme._rgb(t[a]), theme._rgb(t[b])), 4.5, (a, b, t))
+        self.assertEqual(t["alt_fg"], "#FFFFFF")   # 白字不变，压暗的是底色
+        for name, color in render.SECTIONS.items():   # 板块色：白字、浅底上都过 AA
+            self.assertGreaterEqual(theme.contrast(theme._rgb(color), (255, 255, 255)), 4.5, name)
+            self.assertGreaterEqual(theme.contrast(theme._rgb(color), theme._rgb("#EDEBE6")), 4.5, name)
