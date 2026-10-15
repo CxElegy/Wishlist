@@ -40,12 +40,12 @@ jobs:
           echo "待处理的关注项请求：$pending；篇幅有新改动：$sizes（数据库 $size_at / 网页 $page_at）"
           if [ "$pending" != "0" ] || [ "$sizes" = "1" ]; then echo "go=1" >> "$GITHUB_OUTPUT"; fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: steps.check.outputs.go
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         if: steps.check.outputs.go
         with:
           python-version: "3.12"

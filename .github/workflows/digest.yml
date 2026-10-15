@@ -37,11 +37,11 @@ jobs:
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # 读「我会喜欢？」的投票
       IS_WEEKLY: ${{ github.event.schedule == '47 0 * * 1' || inputs.weekly == true }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0   # 功能更新通知要读提交记录
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip

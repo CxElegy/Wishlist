@@ -829,3 +829,53 @@ class PublishTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RedditBreaker(unittest.TestCase):
+    """Reddit 限流后，这次运行后面的 Reddit 请求直接跳过，不再每次等十几秒。"""
+
+    def setUp(self):
+        sources._reddit_limited = None
+        self.addCleanup(setattr, sources, "_reddit_limited", None)
+
+    def test_second_request_skipped_after_429(self):
+        import urllib.error
+        calls = []
+
+        def fake(req, timeout=None):
+            calls.append(req.full_url)
+            raise urllib.error.HTTPError(req.full_url, 429, "Too Many Requests", None, None)
+        with mock.patch.object(sources.urllib.request, "urlopen", fake), \
+             mock.patch.object(sources.time, "sleep", lambda s: None), \
+             mock.patch.dict(os.environ, {"REDDIT_CLIENT_ID": "", "REDDIT_CLIENT_SECRET": ""}):
+            self.assertEqual(sources.reddit_sub("A"), [])      # 第一次：请求两次（重试一次）都 429
+            self.assertEqual(len(calls), 2)
+            self.assertEqual(sources.reddit_search("B"), [])   # 之后：不再请求
+            self.assertEqual(len(calls), 2)
+            with self.assertRaises(urllib.error.HTTPError) as cm:
+                sources._reddit_get("/r/C/new", {})
+            self.assertEqual(cm.exception.code, 429)            # 配图那边照样按 429 写原因
+        images.clear_cache()
+        self.assertIsNone(sources._reddit_limited)
+
+    def test_other_errors_do_not_trip(self):
+        import urllib.error
+
+        def fake(req, timeout=None):
+            raise urllib.error.HTTPError(req.full_url, 404, "Not Found", None, None)
+        with mock.patch.object(sources.urllib.request, "urlopen", fake), \
+             mock.patch.object(sources.time, "sleep", lambda s: None):
+            sources.reddit_sub("A")
+        self.assertIsNone(sources._reddit_limited)
+
+
+class NetworkReason(unittest.TestCase):
+    def test_string_reason_is_written_out(self):
+        import urllib.error
+
+        def fake(req, timeout=None):
+            raise urllib.error.URLError("no host given")
+        with mock.patch.object(images.urllib.request, "urlopen", fake), \
+             mock.patch.object(images.time, "sleep", lambda s: None):
+            f = images._fetch("http://x/y.jpg", 100)
+        self.assertEqual(f.error, "网络错误 no host given")

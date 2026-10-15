@@ -192,6 +192,7 @@ def bing_news(query):
 
 
 _reddit_token = None
+_reddit_limited = None  # 本次运行里 Reddit 已经限流（429，重试后还是）：后面的请求直接跳过，不再每次等十几秒
 
 
 def _reddit_oauth():
@@ -215,7 +216,12 @@ def _reddit_oauth():
 
 
 def _reddit_get(path, params):
-    """先用官方 API；没配置就用 RSS。Reddit 限流很严：每次请求间隔 2 秒，遇到 429 等 10 秒重试一次。"""
+    """先用官方 API；没配置就用 RSS。Reddit 限流很严：每次请求间隔 2 秒，遇到 429 等 10 秒重试一次。
+    重试后还是 429，就记下来：这次运行后面的 Reddit 请求直接报同样的错（云服务器的匿名请求一被限流，
+    这一轮都不会恢复，每个关注项再等十几秒只是白等）。"""
+    global _reddit_limited
+    if _reddit_limited:
+        raise urllib.error.HTTPError(_reddit_limited, 429, "Too Many Requests（本次运行已跳过后续 Reddit 请求）", None, None)
     try:
         token = _reddit_oauth()
     except Exception as e:
@@ -234,6 +240,8 @@ def _reddit_get(path, params):
             with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=TIMEOUT) as resp:
                 return token is not None, resp.read()
         except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt:
+                _reddit_limited = url
             if e.code != 429 or attempt:
                 raise
             time.sleep(10)
