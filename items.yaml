@@ -795,3 +795,20 @@ items:
     site: "https://chainsawman.dog/"
     anilist_id: 127230
     notes: "2026-10-14 从网页设置页加进来的。关注：新一季 / 续作 / 剧场版、播出时间、每集更新。维基数据：日本電視動畫系列。"
+
+  - name: "The Mandalorian"
+    type: show
+    section: "影视"
+    size: M
+    subtitle: "ザ・マンダロリアン"
+    keywords: ["The Mandalorian", "曼達洛人", "ザ・マンダロリアン", "만달로리안"]
+    match: ["The Mandalorian", "曼達洛人", "ザ・マンダロリアン", "만달로리안", "Mandalorian"]
+    exclude: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale", "おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]
+    news_langs: ["en-US", "ja-JP", "zh-CN"]
+    priority: "新一季或续集什么时候出；上映或播出日期、在哪个平台能看；预告片；演员和幕后消息"
+    urgent_patterns:
+      - "(The Mandalorian|曼達洛人|ザ・マンダロリアン|만달로리안|Mandalorian).{0,30}(第\\s?[0-9一二三四五六七八九十]+\\s?季|新一季|續訂|续订|renewed|season \\d|sequel|續集|续集|続編)"
+      - "(The Mandalorian|曼達洛人|ザ・マンダロリアン|만달로리안|Mandalorian).{0,30}(定档|定檔|上映日|首播|premiere|release date|公開日|配信開始|上線|上线)"
+    site: "https://disneyplusoriginals.disney.com/show/the-mandalorian"
+    tmdb: "tv/82856"
+    notes: "2026-10-15 从网页设置页加进来的。关注：新一季 / 续集、上映 / 播出日期、在哪看、预告片、演员、幕后。维基数据：美國太空歌劇網路影集。"
