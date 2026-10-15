@@ -879,3 +879,18 @@ class NetworkReason(unittest.TestCase):
              mock.patch.object(images.time, "sleep", lambda s: None):
             f = images._fetch("http://x/y.jpg", 100)
         self.assertEqual(f.error, "网络错误 no host given")
+
+
+class AsciiUrl(unittest.TestCase):
+    def test_non_ascii_is_encoded(self):
+        self.assertEqual(images._ascii_url("https://e.com/画像/猫 1.jpg?q=猫&a=1"),
+                         "https://e.com/%E7%94%BB%E5%83%8F/%E7%8C%AB%201.jpg?q=%E7%8C%AB&a=1")
+        self.assertEqual(images._ascii_url("https://e.com/a%20b.jpg?x=1"), "https://e.com/a%20b.jpg?x=1")  # 已编码的不动
+        self.assertEqual(images._ascii_url("https://例え.jp/a.jpg"), "https://xn--r8jz45g.jp/a.jpg")
+
+    def test_fetch_non_ascii_path(self):
+        with mock.patch.object(images.urllib.request, "urlopen") as op:
+            op.side_effect = lambda req, timeout=None: (_ for _ in ()).throw(AssertionError(req.full_url))
+            f = images._fetch("http://127.0.0.1:1/画像.jpg", 100)
+        self.assertNotIn("ordinal", f.error)
+        self.assertIn("%E7%94%BB", op.call_args[0][0].full_url)
