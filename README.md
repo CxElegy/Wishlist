@@ -36,17 +36,43 @@
 
 ## 流程
 
-**图解**（开启 GitHub Pages 后可直接打开网页版）：
+**图解**（架构图在最上面；点「网页版」看大图）：
 
-| 图 | 网页 | 图片 |
-|---|---|---|
-| 流程图（含时间轴、费用、GitHub 限制附录） | [flow.html](https://cxelegy.github.io/Wishlist/design/flow.html) | [flow.png](docs/design/flow.png) |
-| 架构图（哪个任务在哪个环境） | [architecture.html](https://cxelegy.github.io/Wishlist/design/architecture.html) | [architecture.png](docs/design/architecture.png) |
-| 工作流程图解 | [guide.html](https://cxelegy.github.io/Wishlist/design/guide.html) | [guide.png](docs/design/guide.png) |
-| 合并图（分支怎么合、合并之后的流程） | [merge.html](https://cxelegy.github.io/Wishlist/design/merge.html) | [merge.png](docs/design/merge.png) |
-| 改动怎么进 main（会话 → 分支 → PR → 合并 → 自动上线；冲突怎么办、黄色横幅是什么） | [pr-flow.html](https://cxelegy.github.io/Wishlist/design/pr-flow.html) | [pr-flow.png](docs/design/pr-flow.png) |
-| 编排逻辑（一条新闻怎么变成网页上的卡片、三条编排路、去重的四道关） | [editing.html](https://cxelegy.github.io/Wishlist/design/editing.html) | [editing.png](docs/design/editing.png) |
-| 情报来源（从哪搜、每一步留下谁、配图回退梯、来源多元化保留了什么 / 在哪收窄，附真实数字） | [sources.html](https://cxelegy.github.io/Wishlist/design/sources.html) | [sources.png](docs/design/sources.png) |
+### 流程图
+
+含时间轴、费用、GitHub 限制附录 · [网页版](https://cxelegy.github.io/Wishlist/design/flow.html)
+
+![流程图](docs/design/flow.png)
+
+### 工作流程图解
+
+一页看懂：什么时候发生什么、一条消息走过的路 · [网页版](https://cxelegy.github.io/Wishlist/design/guide.html)
+
+![工作流程图解](docs/design/guide.png)
+
+### 编排逻辑
+
+一条新闻怎么变成网页上的卡片、三条编排路、去重的四道关 · [网页版](https://cxelegy.github.io/Wishlist/design/editing.html)
+
+![编排逻辑](docs/design/editing.png)
+
+### 情报来源
+
+从哪搜、每一步留下谁、配图回退梯、来源多元化（附 10-12 的真实数字） · [网页版](https://cxelegy.github.io/Wishlist/design/sources.html)
+
+![情报来源](docs/design/sources.png)
+
+### 改动怎么进 main
+
+会话 → 分支 → PR → 合并 → 自动上线；冲突怎么办 · [网页版](https://cxelegy.github.io/Wishlist/design/pr-flow.html)
+
+![改动怎么进 main](docs/design/pr-flow.png)
+
+### 合并图
+
+10-12 那一次合并的记录（当时的默认分支，现在是 main） · [网页版](https://cxelegy.github.io/Wishlist/design/merge.html)
+
+![合并图](docs/design/merge.png)
 
 设计稿源文件在 `design/`（Claude 设计画布格式，修改时用）。
 
