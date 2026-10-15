@@ -57,6 +57,7 @@ def clear_cache():
     _checks.clear()
     _icons.clear()
     _reddit_blocked.clear()
+    sources._reddit_limited = None
 
 
 # ---------- 下载 ----------
@@ -93,8 +94,10 @@ def _fetch(url, limit):
                 return last
         except Exception as e:  # 超时、连接被重置、DNS ……
             reason = getattr(e, "reason", e)
+            # reason 有时就是一句话（URLError("no host given")），这时写出那句话，不写类型名 str
+            name = reason[:60] if isinstance(reason, str) else type(reason).__name__
             last = Fetched(error="超时" if "timed out" in str(reason).lower() or isinstance(reason, TimeoutError)
-                           else f"网络错误 {type(reason).__name__}")
+                           else f"网络错误 {name}")
         if attempt < RETRIES:
             time.sleep(1)
     return last
