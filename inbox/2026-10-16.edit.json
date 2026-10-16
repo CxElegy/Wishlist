@@ -123,6 +123,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "ニセコのリフト券は10年で2倍に。「JAPOW」ブームの答え合わせ",
+   "highlight": "10年で2倍",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "漫威电影": [
@@ -152,7 +161,8 @@
     56,
     42,
     13,
-    47
+    47,
+    68
    ]
   },
   {
@@ -162,7 +172,8 @@
    "weight": "normal",
    "refs": [
     22,
-    20
+    20,
+    67
    ]
   },
   {
@@ -172,7 +183,8 @@
    "weight": "normal",
    "refs": [
     21,
-    26
+    26,
+    70
    ]
   },
   {
@@ -220,7 +232,11 @@
     46,
     23,
     60,
-    61
+    61,
+    63,
+    64,
+    65,
+    68
    ]
   },
   {
@@ -245,7 +261,8 @@
     11,
     14,
     29,
-    35
+    35,
+    69
    ]
   },
   {
@@ -255,7 +272,8 @@
    "weight": "normal",
    "refs": [
     7,
-    26
+    26,
+    66
    ]
   },
   {
@@ -411,7 +429,10 @@
    "refs": [
     5,
     8,
-    11
+    11,
+    13,
+    15,
+    12
    ]
   }
  ],
@@ -584,6 +605,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "10/16 あつ森の美術品、見分けられる？ 真贋チェッカーを本気でやってみた",
+   "highlight": "真贋チェッカー",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    39
+   ]
   }
  ],
  "Vaundy": [
@@ -648,7 +678,10 @@
     163,
     158,
     189,
-    142
+    142,
+    235,
+    236,
+    237
    ]
   },
   {
@@ -669,7 +702,9 @@
     140,
     127,
     138,
-    7
+    7,
+    241,
+    242
    ]
   },
   {
@@ -698,24 +733,224 @@
   }
  ],
  "_covered": {
-  "GTA 6": 106,
+  "GTA 6": 112,
   "MMORPG 新作": 22,
-  "滑雪": 6,
-  "漫威电影": 61,
+  "滑雪": 10,
+  "漫威电影": 71,
   "日本顶级网球赛事": 4,
-  "三星手机": 62,
+  "三星手机": 69,
   "gelato pique": 4,
   "チェーンソーマン": 15,
-  "The Mandalorian": 10,
+  "The Mandalorian": 11,
   "Astrae Oratio": 4,
   "FROM": 5,
-  "ILLIT": 11,
+  "ILLIT": 17,
   "猫用品": 6,
   "ぐでたま": 2,
   "星巴克马克杯": 3,
   "哈利波特剧集": 42,
-  "あつ森": 38,
+  "あつ森": 40,
   "Vaundy": 36,
-  "周杰伦": 232
- }
+  "周杰伦": 242,
+  "绝区零": 65,
+  "dota2": 61,
+  "A2O LITE": 30
+ },
+ "绝区零": [
+  {
+   "headline": "10/9 『ゼンレスゾーンゼロ』Ver.3.3が10月21日(水)にリリース",
+   "highlight": "10月21日(水)にリリース",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    45,
+    55,
+    57,
+    61,
+    62,
+    63,
+    47,
+    65
+   ],
+   "event": {
+    "date": "2026-10-21",
+    "label": "配信日"
+   }
+  },
+  {
+   "headline": "10/10 ゼンレスゾーンゼロに崩壊：スターレイルのカフカ、ロビンが登場",
+   "highlight": "カフカ、ロビン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    60,
+    59,
+    56,
+    32
+   ]
+  },
+  {
+   "headline": "10/11 『ゼンゼロ』より「リン 夏色ブルースカイVer.」フィギュアが予約受付中",
+   "highlight": "フィギュアが予約受付中",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    46
+   ]
+  },
+  {
+   "headline": "10/12 '젠존제', 3.3 버전 '다시 하늘을 향해' 21일 업데이트…11월 ’지스타 2026' 참가",
+   "highlight": "지스타 2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    38,
+    23,
+    41,
+    42
+   ]
+  },
+  {
+   "headline": "10/15 库克到访米哈游，亲测折叠屏iPhone体验游戏《绝区零》",
+   "highlight": "库克",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    6,
+    7,
+    8,
+    2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "10/10 Team Tidebound returns to Dota 2 with new veteran roster under xiao8",
+   "highlight": "xiao8",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    54,
+    53,
+    51
+   ]
+  },
+  {
+   "headline": "10/11 Dota 2 online peak breaks million players after release of Terror Trove",
+   "highlight": "online peak",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    52,
+    50,
+    59
+   ]
+  },
+  {
+   "headline": "10/12 Team Yandex claims second post-TI 15 title with Dota 2 BLAST Slam 8 victory",
+   "highlight": "BLAST Slam 8",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    47,
+    46,
+    39
+   ]
+  },
+  {
+   "headline": "10/13 DOTA2 BLAST SLAM IX中国区预选今天开战",
+   "highlight": "BLAST SLAM IX",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    40
+   ]
+  },
+  {
+   "headline": "10/15 Malr1ne to Team Liquid confirmed: Ex-Team Falcons player reveals his new Dota 2 team",
+   "highlight": "Malr1ne to Team Liquid",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16,
+    21,
+    31,
+    9
+   ]
+  },
+  {
+   "headline": "10/15 Dota 2 pro forced to play in front of police to prove who he is",
+   "highlight": "police",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22,
+    11,
+    23,
+    12,
+    15,
+    33,
+    20,
+    4
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "10/15 Lee Soo-man's A2O Lite tops Melon in record 29 hours",
+   "highlight": "Melon",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    21,
+    22,
+    28,
+    2,
+    1,
+    17,
+    15
+   ]
+  },
+  {
+   "headline": "10/15 A2O groups debut with young, multinational lineup and old-school K-pop formula",
+   "highlight": "multinational lineup",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    29,
+    24
+   ]
+  },
+  {
+   "headline": "10/15 A2O LITE、「Mカ」初登場！デビュー曲「NEON」披露",
+   "highlight": "初登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    26
+   ]
+  },
+  {
+   "headline": "10/15 「A2O LITE」の”リトルBoA”AIJING、実母が謝罪",
+   "highlight": "実母が謝罪",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23,
+    19,
+    7
+   ]
+  },
+  {
+   "headline": "10/16 밈까지 터진 A2O LITE 'NEON’…'미혼앤비혼'에서 '올드보이' 군무까지",
+   "highlight": "NEON",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    16
+   ]
+  }
+ ]
 }

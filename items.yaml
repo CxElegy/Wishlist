@@ -1017,6 +1017,14 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：演唱会、巡演、门票：抽选、发售、新歌、新专辑、回归。维基数据：台湾男歌手、流行歌曲作家、演员。"
 
   - name: "绝区零"
+    motif: street          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：都市・ストリート
+    like_fx: street          # 👍 の演出（scripts/likefx.py）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Ellen Joe", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e3/Agent_Ellen_Joe_Portrait.png/revision/latest/scale-to-width-down/400?cb=20241007222138", page: "https://zenless-zone-zero.fandom.com/wiki/Ellen_Joe", shape: "cutout"}
+      - {subject: "Belle", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/6/6e/Agent_Belle_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002545", page: "https://zenless-zone-zero.fandom.com/wiki/Belle", shape: "cutout"}
+      - {subject: "Wise", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e8/Agent_Wise_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002534", page: "https://zenless-zone-zero.fandom.com/wiki/Wise", shape: "cutout"}
+      - {subject: "Zhu Yuan", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/0/07/Agent_Zhu_Yuan_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240708205906", page: "https://zenless-zone-zero.fandom.com/wiki/Zhu_Yuan", shape: "cutout"}
+    theme: {bg: "#1E1516", fg: "#F4EEE4", accent: "#A9898A", alt_bg: "#F2EDEE", alt_fg: "#1E1A18", alt_accent: "#856062", split: true}  # 小元素「Ellen Joe」の色に合わせた配色（scripts/emblem.py）
     type: game
     section: "游戏"
     size: M
@@ -1034,6 +1042,9 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：版本更新、活动、新角色、打折、免费送、联名、周边、剧情、角色、世界观。维基数据：2024年电子游戏。"
 
   - name: "dota2"
+    motif: sport          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：対戦・スピード感
+    emblem_skip: "Wiki で取れる画像がゲーム内アイコン・モデル図ばかりで、代表キャラの立ち絵として使えない"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
+    theme: {bg: "#17100F", fg: "#F4EEE4", accent: "#E0503C", alt_bg: "#F6EDEA", alt_fg: "#1E1A18", alt_accent: "#A63A28", split: true}  # 自选：Dota 2 の赤（Radiant の対極、炎の赤）+ 墨黒
     type: game
     section: "游戏"
     size: L
@@ -1048,6 +1059,9 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
 
   - name: "A2O LITE"
+    motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：新人ガールズグループ
+    emblem_skip: "デビュー直後で公式画像の取れる Wiki がなく、メンバー写真を勝手に貼らない"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
+    theme: {bg: "#FBEFF4", fg: "#1E1A18", accent: "#B5285F", alt_bg: "#1E1218", alt_fg: "#F4EEE4", alt_accent: "#F07AA8", split: true}  # 自选：ネオンピンク + 墨紫（デビュー曲「NEON」）
     type: product
     section: "演出"
     size: M
