@@ -295,6 +295,8 @@ button{font-family:inherit}
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
 .when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em;opacity:.85}
 .from{min-width:0;overflow-wrap:break-word;font:500 11px/1.3 var(--font-sans);letter-spacing:.02em;opacity:.75}  /* 省略しない：入らなければ次の行へ */
+.brief .d{display:flex;flex-direction:column;gap:2px;max-width:9em}.brief .d .from{font-size:11px;opacity:.85}
+.nm .from,.mono .from,.watch span .from{margin-left:8px;letter-spacing:.02em;color:inherit;font-weight:500}
 .wc em,.kick em{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;min-width:0}
 .when b{padding:2px 7px 1px;background:var(--ac);color:var(--bg);font:900 10px/1.4 var(--font-sans);letter-spacing:.14em}
 .card.a .when b{color:var(--abg)}
@@ -376,6 +378,10 @@ button{font-family:inherit}
 .vote small{font-size:11px;opacity:.7}
 .pk.down>a{opacity:.35;filter:grayscale(1)}
 .card,.top,.wc{position:relative}
+.lk{position:absolute;inset:0;z-index:1}  /* 原文链接 = 卡片全体を覆う透明な層 */
+.lk:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+:is(.card,.top,.wc) :not(.lk,.vt,.vt *){pointer-events:none}  /* クリックは必ず .lk か 👍/👎 に届く */
+:is(.card,.top,.wc) :is(.vt,.vt *){pointer-events:auto}  /* pointer-events は継承されるので明示的に戻す */
 /* 👍/👎 = 日付の行の右端に置く小さな印。普段は線の拇指だけ（枠なし）、押すと「NEW」と同じ塗りの札になる */
 .vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;align-items:center;gap:2px;flex:none}
 .vt{position:absolute;right:-6px;top:0;height:var(--vth,28px);padding:0 4px 0 12px;z-index:2;font-size:0;cursor:default;-webkit-tap-highlight-color:transparent;touch-action:manipulation}  /* 周りの余白も按钮区：按偏了也不会打开原文 */
@@ -391,16 +397,23 @@ button{font-family:inherit}
 .vt button:focus-visible,.vote button:focus-visible{outline:2px solid currentColor;outline-offset:1px}
 .vt button[aria-pressed=true],.vote button[aria-pressed=true]{opacity:1;background:var(--vc);color:var(--vt)}
 .vt button[data-vote="-1"][aria-pressed=true],.vote button[data-vote="-1"][aria-pressed=true]{background:var(--vf)}  /* 踩 = 文字色の札（アクセント色は「好き」だけ） */
-.vt[aria-busy=true] button,.vote[aria-busy=true] button{opacity:.35;cursor:wait}
 .card:has(.vt:hover) :is(h2,h3),.brief li:has(.vt:hover) a{text-decoration:none}.top:has(.vt:hover) .hb{background:var(--ink)}.wc:has(.vt:hover){transform:none;box-shadow:var(--shadow)}  /* 指在按钮上时，原文链接不做悬停反应 */
 .vt button span,.pk:not(.big) .vote button span{display:none}
 /* 👍/👎 は日付の行の右端に固定（absolute）、その幅だけ右を空ける。出典が長ければ出典だけ次の行に回り、ボタンを押し出さない */
-.when:has(.vt),.kick:has(.vt),.wc em:has(.vt){position:relative;flex-wrap:wrap;row-gap:4px;align-content:center;min-height:var(--vth,28px);padding-right:var(--vtw,70px);align-self:stretch}
+.when:has(.vt),.kick:has(.vt),.wc em:has(.vt){position:relative;z-index:2;flex-wrap:wrap;row-gap:4px;align-content:center;min-height:var(--vth,28px);padding-right:var(--vtw,70px);align-self:stretch}
 .vt button{min-height:var(--vth,28px)}  /* 按钮的高度 = 日期行的高度：按钮区不会伸到标题上 */
 /* 出典が日付の横に入らないとき（JS が .two を付ける）：出典だけ次の行に全幅で。1 行目の右はボタンの分だけ空ける */
 .when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
+.boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
+.boom svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
+ filter:drop-shadow(4px 4px 0 var(--ink));transform:translate(-50%,-50%) scale(.2);opacity:0}
+.boom.no svg{width:64px;height:64px;fill:var(--card)}
+.boom b{position:absolute;left:0;top:-82px}  /* 👍 がいちばん高い位置の中心 */
+.boom i{position:absolute;left:0;top:0;width:28px;height:6px;margin:-3px 0 0;background:var(--c);box-shadow:2px 2px 0 var(--ink);transform-origin:0 50%;
+ transform:rotate(var(--a)) translateX(40px) scaleX(0);animation:spark .5s cubic-bezier(.2,.8,.3,1) .12s both}
+@keyframes spark{55%{transform:rotate(var(--a)) translateX(70px) scaleX(1)}100%{transform:rotate(var(--a)) translateX(92px) scaleX(0)}}
 .downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
@@ -694,6 +707,12 @@ def _extras(story):
     return out
 
 
+def _lk(story):
+    """卡片的原文链接：透明一层盖满整张卡片（卡片本身不是 <a>），👍/👎 浮在它上面、不在链接里面。"""
+    return (f'<a class="lk" href="{e(story["url"])}" target="_blank" rel="noopener" '
+            f'aria-label="{e(story["headline"])}"></a>')
+
+
 def _play(story):
     """動画のある記事：画像の上に ▶ を重ねる（リンク先は記事のまま）。"""
     return '<span class="xplay" aria-label="動画あり">▶</span>' if _safe_url(story.get("video")) else ""
@@ -704,20 +723,20 @@ def _tcard(story, span, i, today, small=False, mini=False):
     w = story.get("weight", "normal")
     url = e(story["url"])
     if mini:  # 普通消息：左边小图、右边日期和标题
-        return (f'<a class="card {side} mini c{span}" href="{url}" target="_blank" rel="noopener">{_pic(story)}{_play(story)}'
-                f'{_when(story, today)}<h3>{_headline(story)}</h3>{_extras(story)}</a>')
+        return (f'<article class="card {side} mini c{span}">{_lk(story)}{_pic(story)}{_play(story)}'
+                f'{_when(story, today)}<h3>{_headline(story)}</h3>{_extras(story)}</article>')
     if span == 12 and w == "hero":
-        return (f'<a class="card {side} hero" href="{url}" target="_blank" rel="noopener">{_pic(story)}{_play(story)}'
+        return (f'<article class="card {side} hero">{_lk(story)}{_pic(story)}{_play(story)}'
                 f'<div class="txt">{_when(story, today)}<span class="tag">重 大</span><h2>{_headline(story)}</h2>'
-                + (f'<p class="blurb">{e(story["blurb"])}</p>' if story.get("blurb") else "") + _extras(story) + "</div></a>")
+                + (f'<p class="blurb">{e(story["blurb"])}</p>' if story.get("blurb") else "") + _extras(story) + "</div></article>")
     blurb = f'<p class="blurb">{e(story["blurb"])}</p>' if story.get("blurb") and not small and w != "normal" else ""
     if span == 12 and not small:
-        return (f'<a class="card {side} wide c12" href="{url}" target="_blank" rel="noopener">{_pic(story)}{_play(story)}'
-                f'<div class="txt">{_when(story, today)}<h3>{_headline(story)}</h3>{blurb}{_extras(story)}</div></a>')
+        return (f'<article class="card {side} wide c12">{_lk(story)}{_pic(story)}{_play(story)}'
+                f'<div class="txt">{_when(story, today)}<h3>{_headline(story)}</h3>{blurb}{_extras(story)}</div></article>')
     level = "h2" if w == "lead" and span >= 8 and not small else "h3"
     cls = f"c{span}" + (" lead" if level == "h2" else "")
-    return (f'<a class="card {side} {cls}" href="{url}" target="_blank" rel="noopener">{_pic(story)}{_play(story)}'
-            f'{_when(story, today)}<{level}>{_headline(story)}</{level}>{blurb}{_extras(story)}</a>')
+    return (f'<article class="card {side} {cls}">{_lk(story)}{_pic(story)}{_play(story)}'
+            f'{_when(story, today)}<{level}>{_headline(story)}</{level}>{blurb}{_extras(story)}</article>')
 
 
 # 每个作品一周内直接显示的消息最多占多高（像素，按桌面版 1200 宽的实际高度估算），按篇幅（数据库 sizes 表）：
@@ -827,7 +846,7 @@ def _brief(stories):
     """连来源图标都没有的消息：只列日期和标题（不做空图卡片，也不拿别的图顶替）。"""
     if not stories:
         return ""
-    rows = "".join(f'<li><span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}</span>'
+    rows = "".join(f'<li><span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}{_from(x)}</span>'
                    f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>' for x in stories)
     return f'<div class="brief"><h4>その他のニュース</h4><ul>{rows}</ul></div>'
 
@@ -901,7 +920,7 @@ def _calm(block):
     tail = ""
     if last:
         tail = (f'<a class="last" href="{e(last["url"])}" target="_blank" rel="noopener">'
-                f'<span class="mono">直近 · {e(last["date"].replace("-", "."))}</span><b>{e(last["headline"])}</b></a>')
+                f'<span class="mono">直近 · {e(last["date"].replace("-", "."))}{_from(last)}</span><b>{e(last["headline"])}</b></a>')
     tag = "収 集 中" if block.get("collecting") else "新 着 な し"
     return (f'<div class="calm">{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
             f"{tail}</div>")
@@ -1179,7 +1198,7 @@ def _vote_buttons():
 
 VOTE_JS = """
 (() => {
-  const cfg = %s, KEY = 'wishlist-votes';
+  const cfg = __CFG__, KEY = 'wishlist-votes';
   let mine = {};
   try { mine = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_) {}
   const headers = { apikey: cfg.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' };
@@ -1193,29 +1212,56 @@ VOTE_JS = """
     if (dim) dim.classList.toggle(dim.classList.contains('pk') ? 'down' : 'downv', v === -1);
     if (tip) tip.textContent = v === 1 ? 'この種類を増やします' : v === -1 ? 'この種類を減らします' : '';
   });
+  // 押した瞬間に画面を変える（楽観的更新）。保存は裏で、同じ記事の票は順番に送る。失敗したら元に戻す
+  const saved = { ...mine }, queue = {}, touched = new Set();
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const send = (data, v) => fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/feedback',
+    { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v }), keepalive: true })
+    .then(async r => { if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120)); });
+  const boom = (btn, v) => {   // 大きな 👍 が飛び出して、すぐ戻る
+    btn.animate([{ scale: 1 }, { scale: 1.45 }, { scale: .9 }, { scale: 1 }], { duration: 320, easing: 'ease-out' });
+    if (reduce || v === 0) return;
+    const r = btn.getBoundingClientRect(), up = v > 0;
+    const el = document.createElement('div');
+    el.className = 'boom' + (up ? '' : ' no');
+    el.style.left = (r.left + r.width / 2) + 'px';
+    el.style.top = (r.top + r.height / 2) + 'px';
+    el.style.setProperty('--c', getComputedStyle(btn).getPropertyValue('--vc').trim() || 'var(--rose)');
+    el.innerHTML = __THUMB__ + (up ? '<b>' + '<i></i>'.repeat(8) + '</b>' : '');
+    el.querySelectorAll('i').forEach((i, n) => i.style.setProperty('--a', (n * 45 + 22) + 'deg'));
+    document.body.appendChild(el);
+    const g = el.querySelector('svg');
+    const k = up
+      ? [{ transform: 'translate(-50%,-50%) scale(.2) rotate(-25deg)', opacity: 0, easing: 'cubic-bezier(.2,1.4,.4,1)' },
+         { transform: 'translate(-50%,-125%) scale(1.25) rotate(10deg)', opacity: 1, offset: .3, easing: 'ease-in-out' },
+         { transform: 'translate(-50%,-118%) scale(1) rotate(-5deg)', opacity: 1, offset: .52, easing: 'ease-in-out' },
+         { transform: 'translate(-50%,-118%) scale(1.05) rotate(0)', opacity: 1, offset: .7, easing: 'cubic-bezier(.6,0,.9,.5)' },
+         { transform: 'translate(-50%,-50%) scale(.12) rotate(0)', opacity: 0 }]
+      : [{ transform: 'translate(-50%,-50%) scale(.3,-.3)', opacity: 0, easing: 'ease-out' },
+         { transform: 'translate(-50%,-110%) scale(.8,-.8)', opacity: 1, offset: .3, easing: 'ease-in' },
+         { transform: 'translate(-50%,-30%) scale(.35,-.35) rotate(-12deg)', opacity: 0 }];   // 下向き（上下反転）
+    g.animate(k, { duration: up ? 760 : 480 }).finished.finally(() => el.remove());
+  };
   const wire = (box, data, dim, tip) => {
     boxes.push([box, data, dim, tip]);
-    // 按钮在卡片链接里面：整个按钮区都拦住点击（按偏一点、点到两个按钮之间、保存中再点，都不会打开原文）
-    box.addEventListener('click', async ev => {
+    box.addEventListener('click', ev => {
       ev.preventDefault(); ev.stopPropagation();
       const btn = ev.target.closest('button[data-vote]');
-      if (!btn || box.getAttribute('aria-busy') === 'true') return;
-      const v = (mine[data.url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
-      box.setAttribute('aria-busy', 'true');
-      try {
-        const r = await fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/feedback',
-          { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v }) });
-        if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120));
-        mine[data.url] = v;
+      if (!btn) return;
+      const url = data.url, v = (mine[url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
+      mine[url] = v; touched.add(url);
+      try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
+      paint(url); boom(btn, v);
+      queue[url] = (queue[url] || Promise.resolve()).then(() => send(data, v)).then(() => { saved[url] = v; }, err => {
+        console.error('投票失败', err);
+        if (mine[url] !== v) return;   // もう次の票を押している
+        mine[url] = saved[url] || 0;
         try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
-        paint(data.url);
-      } catch (err) {
+        paint(url);
         if (tip) tip.textContent = '保存できませんでした。後でもう一度';
         btn.title = '保存できませんでした。後でもう一度';
-        console.error('投票失败', err);
-      } finally {
-        box.removeAttribute('aria-busy');
-      }
+        box.animate([{ translate: '0' }, { translate: '-4px' }, { translate: '4px' }, { translate: '0' }], { duration: 240 });
+      });
     });
   };
   document.querySelectorAll('.picks .vote').forEach(box =>
@@ -1229,14 +1275,14 @@ VOTE_JS = """
   const story = (link, holder, dim) => {
     if (!/^https?:/.test(link.getAttribute('href') || '')) return;
     const w = holder.closest('[data-k]');
-    const t = link.querySelector('h1,h2,h3,h4') || link;   // 标题；别用 b（日期旁的 NEW 也是 b）
+    const t = link.getAttribute('aria-label') || link.textContent;   // 标题（卡片的 .lk 带 aria-label，列表就是链接文字）
     const box = small();
     // 放在日期那一行的右端（版面卡片 .when、头条 .kick、照片墙 em）；没有日期行的放在最后
     (holder.querySelector('.when, .kick, :scope > em') || holder).appendChild(box);
-    const title = t.textContent.trim().slice(0, 500), work = (w && w.dataset.k || '').slice(0, 200);
+    const title = t.trim().slice(0, 500), work = (w && w.dataset.k || '').slice(0, 200);
     wire(box, { url: link.href, kind: 'story', title, work, hits: [], words: [] }, dim, null);
   };
-  document.querySelectorAll('.sec a.card, a.top, a.wc').forEach(a => story(a, a, a));
+  document.querySelectorAll('.sec .card, .top, .wc').forEach(c => { const a = c.querySelector(':scope > .lk'); if (a) story(a, c, c); });
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
   new Set(boxes.map(b => b[1].url)).forEach(paint);
   // 数据库里「我点过的票」为准：换浏览器、换手机、清了缓存也显示成按过的样子（db/my_votes.sql）
@@ -1245,7 +1291,8 @@ VOTE_JS = """
     .then(rows => {
       const old = mine;
       mine = {};
-      rows.forEach(r => { mine[r.url] = r.vote; });
+      rows.forEach(r => { mine[r.url] = r.vote; saved[r.url] = r.vote; });
+      touched.forEach(u => { mine[u] = old[u]; });   // 読み込み中に押した票はそのまま
       try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
       new Set(Object.keys(old).concat(Object.keys(mine))).forEach(paint);
     })
@@ -1262,7 +1309,8 @@ VOTE_JS = """
   let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 150); });
 })();
 """
-VOTE_JS = VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
+VOTE_JS = (VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
+           .replace("__THUMB__", json.dumps(_THUMB)))
 
 
 def _wish_link(wishes, cls):
@@ -1713,7 +1761,7 @@ def _wish_section(wishes, works, finds=()):
             st = latest.get(x["watch"])
             if st:
                 watch = (f'<a class="watch" href="{e(st["url"])}" target="_blank" rel="noopener"><span>相关最新 · '
-                         f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}</span>{e(st["headline"])}</a>')
+                         f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}{_from(st)}</span>{e(st["headline"])}</a>')
         added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
         cards.append(
             f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}">'
@@ -1908,12 +1956,12 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     if top:
         sc = _sec_color(top_w.get("section"))
         badge = "重大" if top.get("weight") == "hero" else "注目"
-        top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
+        top_html = (f'<article class="top" data-k="{e(top_w["name"])}">{_lk(top)}'
                     f'{date_html}<div class="frame"><span class="burst">{badge}</span>{_pic(top)}{_play(top)}</div>'
                     f'<div class="ptxt"><span class="kick"><i class="tg" style="--sc:{sc}"><span>{e(_sec_name(top_w.get("section")))}</span></i>'
                     f'<i class="tg"><span>{e(top_w["name"])}</span></i><em>{e(_day(top))}{_from(top)}</em></span>'
                     f'<h2><span class="hb">{_headline(top)}</span></h2>'
-                    + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + _extras(top) + "</div></a>")
+                    + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + _extras(top) + "</div></article>")
         style = f' style="{_poster_colors(top, themes)}"'
     else:
         top_html = f'<div class="top">{date_html}<div class="ptxt"><h2><span class="hb">直近 {HOLD_DAYS} 日は新着なし</span></h2></div></div>'
@@ -1921,9 +1969,8 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     poster = f'<div class="poster"{style}><div class="marks" aria-hidden="true"></div>{head}{top_html}{foot}</div>'
 
     wall = "".join(
-        f'<a class="wc{" lead" if i == 0 else ""}" href="{e(x["url"])}" target="_blank" rel="noopener" '
-        f'data-k="{e(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">'
-        f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b></a>'
+        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">{_lk(x)}'
+        f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b></article>'
         for i, (w, x) in enumerate(more))
     shown = {id(top)} | {id(x) for _, x in more}
     groups = {}
@@ -1988,7 +2035,7 @@ def _agenda(works, today, limit=None):
     rows.sort(key=lambda r: r[0])
     items = "".join(
         f'<li style="--sc:{_sec_color(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
-        f'<span class="nm">{e(w["name"])}{" · " + e(ev["label"]) if ev.get("label") else ""}</span>'
+        f'<span class="nm">{e(w["name"])}{" · " + e(ev["label"]) if ev.get("label") else ""}{_from(x)}</span>'
         f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>'
         for d, w, x, ev in rows[:limit or AGENDA_MAX])
     return f'<div class="agenda"><h4>これからの予定<small>UPCOMING</small></h4><ol>{items}</ol></div>'
@@ -2264,7 +2311,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 </div>
 <script>{NAV_JS}</script>
 <script>{FIT_JS}</script>
-{f"<script>{VOTE_JS % json.dumps(fb)}</script>" if fb else ""}
+{f"<script>{VOTE_JS.replace('__CFG__', json.dumps(fb))}</script>" if fb else ""}
 </body>
 </html>
 """
