@@ -40,38 +40,50 @@ main{padding:24px 0 60vh}
 .nav .find{display:flex;align-items:center;gap:8px;margin:0 8px 10px 0;padding:7px 10px;border:2px solid var(--ink);background:var(--card);
  box-shadow:3px 3px 0 var(--ink);font:700 13px var(--font-sans);color:var(--muted)}
 .nav .find kbd{margin-left:auto;font:700 11px var(--font-mono);border:1px solid var(--hair);padding:0 5px}
-.rail{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:0 8px 12px 0}
-.rail .pill{display:flex;align-items:center;gap:8px;width:100%;min-height:30px;padding:3px 6px 3px 8px;position:relative;isolation:isolate;
+/* 目次の本体。作品が多いときは「板块ごとの固定の枠」（.slot）を画面の高さいっぱいに等分して並べる。
+   いまの板块がひらくときに要る高さは、すぐ近くの板块の余白からだけ借りる → 遠くの板块は 1px も動かない */
+.rail{flex:1;min-height:0;position:relative;overflow:hidden;margin-right:8px}
+.rail.flat{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:thin}
+.rail.flat .pill{flex:1 1 0;max-height:40px}
+.pill{display:flex;align-items:center;gap:8px;width:100%;height:28px;padding:0 6px 0 8px;position:relative;isolation:isolate;flex:none;
  text-align:left;color:rgba(26,28,34,.78);font:700 13px/1.35 var(--font-sans)}
-.rail .pill::before{content:"";position:absolute;inset:1px -2px 1px -4px;z-index:-1;transform:skewX(var(--skew))}
-.rail .pill:hover::before{background:rgba(26,28,34,.08)}
-.rail .pill .no{font:700 10px var(--font-mono);color:var(--sc);min-width:2.4em}
-.rail .pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rail .pill .new{flex:none;font:700 10px var(--font-mono);color:var(--alert)}
-.rail .pill.on{color:var(--card);font-weight:900}
-.rail .pill.on::before{background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
-.rail .pill.on .no{color:var(--gold)}
-.rail .pill.on .new{color:var(--gold)}
-/* 板块の行：色の平行四辺形 + 件数 + 新着の割合バー。たたんでも「どこに新着があるか」が見える */
-.sec{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 8px;width:100%;margin-top:10px;padding:4px 4px 4px 0;text-align:left}
+.pill::before{content:"";position:absolute;inset:1px -2px 1px -4px;z-index:-1;transform:skewX(var(--skew));transition:background .15s}
+.pill:hover::before{background:rgba(26,28,34,.08)}
+.pill .no{font:700 10px var(--font-mono);color:var(--sc);min-width:2.4em}
+.pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill .new{flex:none;font:700 10px var(--font-mono);color:var(--alert)}
+.pill.on{color:var(--card);font-weight:900}
+.pill.on::before{background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
+.pill.on .no,.pill.on .new{color:var(--gold)}
+.slot{position:absolute;left:0;right:0;overflow:hidden;transition:top .34s cubic-bezier(.2,.8,.2,1),height .34s cubic-bezier(.2,.8,.2,1)}
+.slot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--hair)}
+.sec{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 8px;width:100%;height:38px;padding:6px 4px 0 0;text-align:left}
+.sec .tg{transform-origin:left center;transition:transform .34s cubic-bezier(.2,.8,.2,1),box-shadow .34s}
+.slot.cur .sec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
+.slot.cur .sec .en{opacity:0}
 .sec .cnt{font:700 11px var(--font-mono);color:var(--muted);text-align:right}
-.sec .chev{font:700 11px var(--font-mono);color:var(--sc);transition:transform .15s}
-.sec[aria-expanded=true] .chev{transform:rotate(90deg)}
 .sec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
 .sec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
-.sec .en{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--muted)}
-.sec.cur .tg{box-shadow:3px 3px 0 var(--ink)}
-.subs{margin:2px 0 4px 6px;border-left:2px solid var(--sc);padding-left:6px}
-.sub{display:flex;align-items:center;gap:8px;width:100%;padding:3px 4px;text-align:left;font:700 12px/1.4 var(--font-sans);color:var(--muted)}
-.sub .cnt{margin-left:auto;font:700 10px var(--font-mono)}
-.sub:hover{color:var(--ink)}
-.sub[aria-expanded=true]{color:var(--sc);font-weight:900}
-.sub .chev{font:700 10px var(--font-mono);transition:transform .15s}
-.sub[aria-expanded=true] .chev{transform:rotate(90deg)}
-.items{margin:0 0 4px}
-.more{display:block;width:100%;padding:3px 8px 3px 40px;text-align:left;font:700 12px var(--font-sans);color:var(--sc)}
+.sec .en{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--muted);transition:opacity .2s}
+.peek{display:flex;gap:6px;align-items:baseline;padding:6px 4px 0 2px;font:700 12px/1.4 var(--font-sans);color:var(--muted);white-space:nowrap;overflow:hidden;transition:opacity .2s}
+.peek b{flex:none;font:700 10px var(--font-mono);color:var(--alert)}
+.peek span{overflow:hidden;text-overflow:ellipsis}
+.slot.cur .peek,.slot.tight .peek{opacity:0}
+.body{position:absolute;left:0;right:0;top:44px;opacity:0;transition:opacity .2s}
+.slot.cur .body{opacity:1;transition-delay:.14s}
+/* 小分類は横に並べた小さな札（縦に並べると高さを食うので） */
+.subs{display:flex;flex-wrap:wrap;gap:4px 6px;margin:0 0 6px 2px}
+.sub{display:flex;align-items:center;gap:5px;height:22px;padding:0 7px;border:1px solid var(--hair);font:700 11px/1 var(--font-sans);color:var(--muted);white-space:nowrap}
+.sub .cnt{font:700 9px var(--font-mono)}
+.sub:hover{color:var(--ink);border-color:var(--ink)}
+.sub.cur{background:var(--sc);border-color:var(--sc);color:#FFF}
+.more{display:block;width:100%;height:24px;padding:0 8px 0 40px;text-align:left;font:700 12px var(--font-sans);color:var(--sc)}
 .more:hover{text-decoration:underline}
-.grp-h{display:flex;align-items:center;gap:8px;margin:12px 0 2px;font:900 11px var(--font-mono);letter-spacing:.2em;color:var(--alert)}
+.flat .grp{display:flex;align-items:center;gap:8px;margin:10px 0 2px;flex:none}
+.flat .grp small{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--muted)}
+.hot{margin:0 8px 6px 0;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.hot:empty{display:none}
+.grp-h{display:flex;align-items:center;gap:8px;margin:2px 0;font:900 11px var(--font-mono);letter-spacing:.2em;color:var(--alert)}
 
 /* ---------- 本文（テスト用のダミー版面） ---------- */
 .shead{height:84px;display:flex;align-items:flex-end;gap:12px;padding-bottom:12px}
@@ -109,7 +121,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
  .wrap{display:block;padding:0 16px}
  .nav{top:0;height:auto;z-index:20;margin:0 -16px;padding:6px 0 0;border-left:0;background:var(--ink);color:var(--card)}
  .nav .find{display:none}
- .rail{display:none}
+ .rail,.hot{display:none}
  .mrow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px 16px 8px}
  .mrow::-webkit-scrollbar{display:none}
  .mrow .tg{padding:4px 12px;font-size:13px;opacity:.55}
@@ -133,11 +145,12 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     <button data-n="20">20</button><button data-n="100">100</button><button data-n="1000">1000</button>
   </div>
   <label><input type="checkbox" id="onlynew">目次は新着ありだけ</label>
-  <p class="note">作品はダミーです。〜24 件：全部ひらく（今と同じ）／ 25〜：いま読んでいる板块だけひらく ／ 板块が 12 件を超えると「小分類」の段が入る ／ 小分類が 8 件を超えると新着順に 8 件＋「ほか N 件」。全部は 🔍（キー「/」）から。</p>
+  <p class="note">作品はダミーです。〜24 件：全部ひらく（今と同じ）／ 25〜：板块ごとの枠は定位置。いま読んでいる板块だけ大きくなり、近い 4 つの板块の余白だけ借りる（それより遠い板块は動かない）／ 板块が 12 件を超えると「小分類」の段が入る ／ 小分類が 8 件を超えると新着順に 8 件＋「ほか N 件」。全部と「いま話題」は 🔍（キー「/」）から。</p>
 </header>
 <div class="wrap">
   <nav class="nav" aria-label="目次">
     <button class="find" id="findbtn" type="button">🔍 作品をさがす<kbd>/</kbd></button>
+    <div class="hot" id="hot"></div>
     <div class="rail" id="rail"></div>
     <div class="mrow" id="mrow1"></div>
     <div class="mrow items2" id="mrow2"></div>
@@ -198,14 +211,16 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
   // ---------- しきい値 ----------
   const FLAT_MAX = 24,     // これ以下なら全部ひらく（今のやり方）
         SUB_MIN = 13,      // 板块の作品がこれ以上なら「小分類」の段を入れる
-        CAP = 8,           // ひらいた小分類で一度に見せる作品の数（新着順、今の作品は必ず入る）
-        HOT_TOP = 5;       // 「いま話題」に出す数
+        CAPI = 10,         // ひらいた小分類で見せたい作品の数（新着順、今の作品は必ず入る）。高さが足りなければ減らす
+        HOT_TOP = 10,      // 🔍 の「いま話題」に出す数
+        DONORS = 4,        // 高さを貸すのは近い順に 4 つの板块まで（それより遠い板块は絶対に動かない）
+        SEC_H = 44, SUBS_H = 54, ITEM_H = 28, MORE_H = 24, MIN_H = 40;   // 行の高さ（CSS と同じ。SUBS_H は札 2 段の見込み）
 
   const $ = id => document.getElementById(id), e = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
-  const rail = $('rail'), main = $('main'), m1 = $('mrow1'), m2 = $('mrow2'), dlg = $('finder');
-  let D, cur = 0, open = new Set(), openSub = new Set(), tops = [], onlyNew = false;
+  const rail = $('rail'), hotEl = $('hot'), main = $('main'), m1 = $('mrow1'), m2 = $('mrow2'), dlg = $('finder');
+  let D, cur = 0, tops = [], onlyNew = false, flat = false, slots = [], curSec = null, curSub = null;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sid = s => s.id, subKey = w => w.sec.id + '/' + w.sub;
+  const subKey = w => w.sec.id + '/' + w.sub;
 
   function load(N) {
     D = build(N);
@@ -217,58 +232,120 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
          + `<h3><span class="no">${w.no}</span>${e(w.name)}</h3><div class="cards"><i></i><i></i><i></i></div></section>`;
     }
     main.innerHTML = h;
-    measure(); cur = -1; open.clear(); openSub.clear();
-    scrollTo(0, 0); spy(true);
+    measure(); cur = -1; curSec = curSub = null;
+    scrollTo(0, 0);
+    build_nav();
+    spy(true);
   }
   function measure() { tops = D.works.map(w => document.getElementById('w' + w.i).offsetTop); }
 
-  // ---------- 目次を描く ----------
   function pill(w) {
     return `<a class="pill${w.i === cur ? ' on' : ''}" style="--sc:${w.sec.c}" href="#w${w.i}" data-i="${w.i}">`
          + `<i class="no">${w.no}</i><span class="nm">${e(w.name)}</span>${w.hot ? `<span class="new">+${w.hot}</span>` : ''}</a>`;
   }
-  function visible(list) {
-    // 新着の多い順に CAP 件。今読んでいる作品は必ず入れる。並びは版面の順に戻す
-    let pick = (onlyNew ? list.filter(w => w.hot) : list).slice().sort((a, b) => b.hot - a.hot || a.i - b.i).slice(0, CAP);
-    const c = list.find(w => w.i === cur);
-    if (c && !pick.includes(c)) pick = pick.slice(0, CAP - 1).concat(c);
-    return pick.sort((a, b) => a.i - b.i);
+  const ofSec = s => D.works.filter(w => w.sec === s && (!onlyNew || w.hot || w.i === cur));
+  const hasSubs = s => D.works.filter(w => w.sec === s).length >= SUB_MIN;
+  const subsOf = s => s.subs.filter(sub => D.works.some(w => w.sec === s && w.sub === sub));
+
+  // ---------- 目次の骨組み（作品数を切り替えたときだけ作る） ----------
+  function build_nav() {
+    flat = D.works.length <= FLAT_MAX;
+    rail.classList.toggle('flat', flat);
+    if (flat) {
+      hotEl.innerHTML = '';
+      rail.innerHTML = D.secs.map(s => `<div class="grp" style="--sc:${s.c}"><span class="tg">${e(s.ja)}</span><small>${s.en}</small></div>`
+        + D.works.filter(w => w.sec === s).map(pill).join('')).join('');
+      return;
+    }
+    hotEl.innerHTML = '';
+    rail.innerHTML = D.secs.map(s => {
+      const all = D.works.filter(w => w.sec === s), nn = all.filter(w => w.hot).length,
+            top = all.slice().sort((a, b) => b.hot - a.hot)[0];
+      return `<div class="slot" style="--sc:${s.c}" data-slot="${s.id}">`
+        + `<button class="sec" data-sec="${s.id}"><span class="tg">${e(s.ja)}</span><span class="en">${s.en}</span>`
+        + `<span class="cnt">新着 ${nn}／${all.length}</span><span class="meter"><i style="width:${Math.round(nn / all.length * 100)}%"></i></span></button>`
+        + (top && top.hot ? `<div class="peek"><b>+${top.hot}</b><span>${e(top.name)}</span></div>` : '')
+        + `<div class="body"></div></div>`;
+    }).join('');
+    slots = [...rail.querySelectorAll('.slot')];
   }
-  function draw() {
-    const W = D.works, flat = W.length <= FLAT_MAX, cw = W[cur];
-    let h = '';
-    if (!flat) {
-      const hot = W.filter(w => w.hot).sort((a, b) => b.hot - a.hot).slice(0, HOT_TOP);
-      h += `<div class="grp-h">● いま話題</div>` + hot.map(pill).join('');
-    }
-    for (const s of D.secs) {
-      const list = W.filter(w => w.sec === s), nn = list.filter(w => w.hot).length;
-      const isCur = cw && cw.sec === s, ex = flat || open.has(s.id) || isCur;
-      h += `<button class="sec${isCur ? ' cur' : ''}" style="--sc:${s.c}" data-sec="${s.id}" aria-expanded="${ex}">`
-         + `<span class="tg">${e(s.ja)}</span><span class="en">${s.en}</span><span class="cnt">${flat ? list.length : `新着 ${nn}／${list.length} <span class="chev">▸</span>`}</span>`
-         + (flat ? '' : `<span class="meter"><i style="width:${Math.round(nn / list.length * 100)}%"></i></span>`) + `</button>`;
-      if (!ex) continue;
-      if (flat || list.length < SUB_MIN) {
-        const show = flat ? list : (onlyNew ? list.filter(w => w.hot || w.i === cur) : list);
-        h += `<div class="items">${show.map(pill).join('')}</div>`;
-        continue;
+
+  // ひらいた板块が「ほしい」高さ。板块の中で小分類が変わっても同じ高さ（= 読んでいる間は枠が動かない）
+  function want(s) {
+    const list = ofSec(s);
+    if (!hasSubs(s)) return SEC_H + Math.min(list.length, CAPI) * ITEM_H + (list.length > CAPI ? MORE_H : 0) + 8;
+    const subs = subsOf(s), big = Math.max(...subs.map(sub => list.filter(w => w.sub === sub).length));
+    return SEC_H + SUBS_H + Math.min(big, CAPI) * ITEM_H + MORE_H + 8;
+  }
+
+  // ---------- 枠の配置：等分した「定位置」から、いまの板块のぶんだけ近い順に借りる ----------
+  function layout() {
+    if (flat || !rail.clientHeight) return;
+    const H = rail.clientHeight, n = slots.length, home = H / n;
+    const k = D.secs.indexOf(curSec), hs = new Array(n).fill(home);
+    if (k >= 0) {
+      let need = Math.max(0, Math.min(want(curSec), H - (n - 1) * MIN_H) - home);
+      // 距離 1, 2, 3 … の順に、上下交互に余白を借りる。借りきったらそこで止める（それより遠い枠は定位置のまま）
+      let donors = 0;
+      for (let d = 1; need > 0.5 && d < n && donors < DONORS; d++) {
+        for (const j of [k + d, k - d]) {
+          if (j < 0 || j >= n || need <= 0.5 || donors >= DONORS) continue;
+          donors++;
+          const t = Math.min(hs[j] - MIN_H, need);
+          hs[j] -= t; hs[k] += t; need -= t;
+        }
       }
-      h += `<div class="subs" style="--sc:${s.c}">`;
-      for (const sub of s.subs) {
-        const sl = list.filter(w => w.sub === sub);
-        if (!sl.length) continue;
-        const k = s.id + '/' + sub, sex = openSub.has(k) || (cw && subKey(cw) === k);
-        h += `<button class="sub" data-sub="${e(k)}" aria-expanded="${!!sex}"><span class="chev">▸</span>${e(sub)}<span class="cnt">${sl.filter(w => w.hot).length}／${sl.length}</span></button>`;
-        if (!sex) continue;
-        const v = visible(sl);
-        h += `<div class="items">${v.map(pill).join('')}`
-           + (sl.length > v.length ? `<button class="more" data-scope="${e(k)}">ほか ${sl.length - v.length} 件をさがす →</button>` : '') + `</div>`;
-      }
-      h += `</div>`;
     }
-    rail.innerHTML = h;
-    const on = [...rail.querySelectorAll('.pill.on')].pop();   // 「いま話題」にも同じ作品が出ることがあるので、板块の中のほう
-    if (on) rail.scrollTo({top: on.offsetTop - rail.clientHeight / 2 + on.offsetHeight / 2, behavior: 'auto'});
+    let y = 0;
+    slots.forEach((el, i) => {
+      el.style.top = y + 'px'; el.style.height = hs[i] + 'px'; y += hs[i];
+      el.classList.toggle('cur', i === k);
+      el.classList.toggle('tight', hs[i] < 72);
+    });
+    return hs[k];
+  }
+
+  // いまの板块の中身。高さ h に入るぶんだけ作品を出す（新着の多い順、今の作品は必ず入れる、並びは版面の順）
+  function fill(h) {
+    const s = curSec, el = slots[D.secs.indexOf(s)].querySelector('.body'), list = ofSec(s);
+    const fit = (room, sl) => {
+      let n = Math.max(1, Math.floor(room / ITEM_H));
+      if (sl.length > n) n = Math.max(1, Math.floor((room - MORE_H) / ITEM_H));
+      let pick = sl.slice().sort((a, b) => b.hot - a.hot || a.i - b.i).slice(0, n);
+      const c = sl.find(w => w.i === cur);
+      if (c && !pick.includes(c)) pick = pick.slice(0, n - 1).concat(c);
+      return {pick: pick.sort((a, b) => a.i - b.i), rest: sl.length - pick.length};
+    };
+    if (!hasSubs(s)) {
+      const {pick, rest} = fit(h - SEC_H - 8, list);
+      el.innerHTML = pick.map(pill).join('') + (rest ? `<button class="more" data-scope="${s.id}">ほか ${rest} 件をさがす →</button>` : '');
+      return;
+    }
+    el.innerHTML = `<div class="subs">` + subsOf(s).map(sub => {
+      const sl = list.filter(w => w.sub === sub);
+      return `<button class="sub${sub === curSub ? ' cur' : ''}" data-sub="${e(s.id + '/' + sub)}">${e(sub)}<span class="cnt">${sl.length}</span></button>`;
+    }).join('') + `</div><div class="its"></div>`;
+    const k = s.id + '/' + curSub, {pick, rest} = fit(h - SEC_H - 8 - el.firstChild.offsetHeight - 6, list.filter(w => w.sub === curSub));
+    el.lastChild.innerHTML = pick.map(pill).join('') + (rest ? `<button class="more" data-scope="${e(k)}">ほか ${rest} 件をさがす →</button>` : '');
+  }
+
+  // 読んでいる作品が変わったとき：板块が変わったら枠を動かす、小分類が変わったら中身だけ、同じなら印だけ
+  function draw(force) {
+    const cw = D.works[cur];
+    if (flat) {
+      rail.querySelectorAll('.pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur));
+    } else {
+      hotEl.querySelectorAll('.pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur));
+      if (force || cw.sec !== curSec) {
+        curSec = cw.sec; curSub = cw.sub;
+        fill(layout());
+      } else if (cw.sub !== curSub || onlyNew) {
+        curSub = cw.sub;
+        fill(slots[D.secs.indexOf(curSec)].offsetHeight);   // 枠の高さは変えない
+      } else {
+        rail.querySelectorAll('.body .pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur));
+      }
+    }
     drawMobile();
   }
   function drawMobile() {
@@ -291,7 +368,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     const nav = document.querySelector('.nav'), y = scrollY + (innerWidth <= 760 ? nav.offsetHeight : 0) + 90;
     let lo = 0, hi = tops.length - 1, k = 0;
     while (lo <= hi) { const m = (lo + hi) >> 1; if (tops[m] <= y) { k = m; lo = m + 1; } else hi = m - 1; }
-    if (k !== cur || force) { cur = k; draw(); }
+    if (k !== cur || force) { cur = k; draw(force); }
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => spy()); } }, {passive: true});
   addEventListener('resize', () => { measure(); spy(true); });
@@ -310,14 +387,11 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     if (t.dataset.i != null) { if (dlg.open) dlg.close(); return go(+t.dataset.i); }
     if (t.dataset.scope) return finder(t.dataset.scope);
     if (t.dataset.jumpSec) return go(D.works.find(w => w.sec.id === t.dataset.jumpSec).i);
-    if (t.dataset.sec) {   // 板块の行：たたむ / ひらく（今の板块は常にひらいたまま）
-      const id = t.dataset.sec;
-      open.has(id) ? open.delete(id) : open.add(id);
-      return draw();
-    }
-    if (t.dataset.sub) { const k = t.dataset.sub; openSub.has(k) ? openSub.delete(k) : openSub.add(k); return draw(); }
+    // 板块・小分類の行：その最初の作品へ飛ぶ（ひらくのは読んでいる場所に合わせて自動）
+    if (t.dataset.sec) return go(D.works.find(w => w.sec.id === t.dataset.sec).i);
+    if (t.dataset.sub) return go(D.works.find(w => subKey(w) === t.dataset.sub).i);
   });
-  $('onlynew').addEventListener('change', ev => { onlyNew = ev.target.checked; draw(); });
+  $('onlynew').addEventListener('change', ev => { onlyNew = ev.target.checked; draw(true); });
 
   // ---------- 🔍 全作品の一覧 ----------
   let fsec = null;
@@ -335,6 +409,11 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
   function list() {
     const q = $('q').value.trim().toLowerCase();
     let h = '', total = 0;
+    if (!q && !fsec) {
+      const hot = D.works.filter(w => w.hot).sort((a, b) => b.hot - a.hot).slice(0, HOT_TOP);
+      h += `<h4 style="--sc:var(--alert)"><span class="tg">いま話題</span>新着の多い順</h4><div class="grid">`
+         + hot.map(w => `<a href="#w${w.i}" data-i="${w.i}"><span>${e(w.name)}</span><span class="new">+${w.hot}</span></a>`).join('') + `</div>`;
+    }
     for (const s of D.secs) {
       if (fsec && s.id !== fsec) continue;
       for (const sub of s.subs) {
