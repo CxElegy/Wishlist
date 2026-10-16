@@ -147,7 +147,7 @@ button{font-family:inherit}
 .fside{display:flex;flex-direction:column;gap:20px;min-width:0}
 .sbox{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:12px 14px 12px}
 .sbox h4,.fside .agenda h4{margin:0 0 6px;display:flex;align-items:baseline;gap:10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
-.sbox h4 small{margin-left:auto;font:700 11px var(--font-sans);opacity:.6}
+.sbox h4 small{margin-left:auto;font:500 11px var(--font-sans)}
 .sbox h4 a:hover{color:var(--rose)}
 .swish ol,.shot ol{list-style:none;margin:0;padding:0}
 .swish li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--hair)}
@@ -295,8 +295,8 @@ button{font-family:inherit}
 .calm .last .mono{font:13px var(--font-num);letter-spacing:.06em;opacity:.75}
 .calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
-.when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em;color:color-mix(in srgb,currentColor 88%,transparent)}  /* 薄めるのは日付の文字だけ（NEW の札まで薄めると読めなくなる） */
-.from{min-width:0;overflow-wrap:break-word;font:500 11px/1.3 var(--font-sans);letter-spacing:.02em;opacity:.75}  /* 省略しない：入らなければ次の行へ */
+.when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em}  /* 薄めるのは日付の文字だけ（NEW の札まで薄めると読めなくなる） */
+.from{min-width:0;overflow-wrap:break-word;font:400 11px/1.3 var(--font-sans);letter-spacing:.02em}  /* 省略しない：入らなければ次の行へ */
 .brief .d{display:flex;flex-direction:column;gap:2px;max-width:9em}.brief .d .from{font-size:11px;opacity:.85}
 .nm .from,.mono .from,.watch span .from{margin-left:8px;letter-spacing:.02em;color:inherit;font-weight:500}
 .wc em,.kick em{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;min-width:0}
@@ -332,7 +332,7 @@ button{font-family:inherit}
  font:900 15px/1 var(--font-sans)}
 .older[open] summary::before{content:"−"}
 .older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
-.older summary span{font-weight:700;opacity:.7;letter-spacing:.04em}
+.older summary span{font-weight:500;letter-spacing:.04em}
 .older .grid{padding-top:8px}
 .older .card.c3 h3{font-size:15px;line-height:1.45}
 /* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */
@@ -345,7 +345,7 @@ button{font-family:inherit}
 .pkhead .flag{position:relative;display:inline-block;padding:8px 14px 7px;background:var(--card);box-shadow:var(--shadow);transform:rotate(-2deg);font:21px/1 var(--font-hand)}
 .pkhead .flag::after{content:"";position:absolute;right:-12px;top:50%;margin-top:-8px;border:8px solid transparent;border-left:12px solid var(--card);border-right:0}
 .pkhead>span:not(.flag){flex-basis:100%;order:3;font-size:13px;opacity:.8}
-.pkhead a{color:var(--rose);font-weight:700;border-bottom:1px solid currentColor}
+.pkhead a{color:color-mix(in srgb,var(--rose) 72%,var(--ink));font-weight:700;border-bottom:1px solid currentColor}  /* バラ色のままだと地の上で 4.5:1 に届かない */
 .pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 22px;margin-top:22px;align-items:start}
 .pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
 .pksub{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:34px;font:900 15px var(--font-sans);letter-spacing:.1em}
@@ -419,7 +419,7 @@ button{font-family:inherit}
  filter:drop-shadow(2.5px 0 0 var(--card)) drop-shadow(-2.5px 0 0 var(--card)) drop-shadow(0 2.5px 0 var(--card)) drop-shadow(0 -2.5px 0 var(--card))
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}
-.emb img.badge{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--card)}
+.emb img.badge{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid var(--card)}  /* 縦長の写真は顔が上にあることが多い：上寄りで丸く切る */
 .emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45)}
 .emb-js .emb:not(.in) img{--sx:0px;--sy:0px}
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
@@ -967,7 +967,7 @@ def _emblem(items, ring="accent"):
     first = alts[0]
     return (f'<div class="emb ring-{ring}" aria-hidden="true" data-alts="{e(json.dumps(alts, ensure_ascii=False))}">'
             f'<div class="emb-in"><img class="{first["shape"]}" src="{e(first["src"])}" alt="" loading="lazy" decoding="async" '
-            f'referrerpolicy="no-referrer" onerror="this.closest(\'.emb\').remove()"></div></div>')
+            f'referrerpolicy="no-referrer" onerror="var s=this.closest(\'.sec\');if(s)s.classList.remove(\'has-emb\');this.closest(\'.emb\').remove()"></div></div>')
 
 
 def _section(block, anchor=""):
@@ -2314,7 +2314,7 @@ NAV_JS = """
 
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None, taste=(), heat=None, emblems=None):
+           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
@@ -2325,7 +2325,9 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         w["_today"] = latest["date"]
         w["_size"] = (sizes or {}).get(w["name"], "M")
         w["_motif"] = (motifs or {}).get(w["name"], "")
-        _FX_OF[w["name"]] = TEMPLATE_FX.get(w["_motif"], "pop")
+        # 👍 の演出：items.yaml の like_fx（版面ごとに AI が決める）＞ テーマの fx
+        own = (like_fx or {}).get(w["name"])
+        _FX_OF[w["name"]] = own if own in likefx.FX else TEMPLATE_FX.get(w["_motif"], "pop")
         w["_emblems"], w["_ring"] = (emblems or {}).get(w["name"]) or ([], "accent")
         w["_heat"] = (heat or {}).get(w["name"])  # 話題度（heat.compute）
     updated = updated or latest["date"].replace("-", ".")

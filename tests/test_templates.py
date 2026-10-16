@@ -77,6 +77,11 @@ class Templates(unittest.TestCase):
             self.assertIn(t.get("fx"), likefx.FX, f"{t['id']} 的 fx")
         self.assertEqual(len(self.index), 30)
         # 版面带 data-fx，网页里有演出脚本
+        # items.yaml の like_fx はテーマの fx より優先、知らない名前ならテーマの fx
+        _, items = digest.load_config()
+        for item in items:
+            if item.get("like_fx"):
+                self.assertIn(item["like_fx"], likefx.FX, f"{item['name']} 的 like_fx")
         render._FX_OF["测试"] = "stamp"
         self.assertEqual(render._fx("测试"), ' data-fx="stamp"')
         self.assertIn("window.likeFx", render.LIKEFX_JS)
@@ -122,6 +127,13 @@ class Templates(unittest.TestCase):
         h = lambda c: __import__("colorsys").rgb_to_hls(*(v / 255 for v in theme._rgb(c)))[0]
         self.assertLess(abs(h(th["accent"]) - h("#D97441")), 0.04)   # 強調色は代表色と同じ色相
 
+
+    def test_functional_text_not_faded(self):
+        # 読ませる小さな文字（出典・日付・件数・注記）は透明度で薄くしない（配色によっては 4.5:1 を割る）
+        for sel in (".from{", ".when{", ".older summary span{", ".sbox h4 small{"):
+            rule = render.CSS.split("\n" + sel, 1)[1].split("}", 1)[0]
+            self.assertNotIn("opacity", rule, sel)
+            self.assertNotIn("transparent", rule, sel)
 
 if __name__ == "__main__":
     unittest.main()
