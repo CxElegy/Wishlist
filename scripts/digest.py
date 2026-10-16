@@ -635,6 +635,30 @@ FOLLOW_PER_ITEM = 4    # 同类新消息每个关注项最多准备几条（找�
 HESITATE = "纠结"   # 愿望清单里还在犹豫买不买的状态：它的 similar 也会每天搜，找类似的好产品
 
 
+def _need_text(title, summary=""):
+    """检查 need 用的文字：去掉标题结尾的「 - 媒体名」（「- 遊戲新聞」里的「遊戲」不说明这条消息和游戏有关）。"""
+    # 只认「横线 + 空格 + 媒体名」结尾（「週邊- 遊戲新聞」「… - 4Gamer」）；open-world、Team-Up 这种词里的横线不算
+    return (re.sub(r"\s*[-–—]\s+[^-–—]{1,30}$", "", title) + " " + (summary or "")).lower()
+
+
+def _need_checker(items, hesitating):
+    """按现在 items.yaml / 愿望清单里的 similar 重新检查一条「同类新发现」：标题和摘要要满足它那条搜索词的 need。
+    累积下来的旧条目也要过一遍——need 改严以后，以前放进来的不合格条目（如 IVE 新专辑被当成超级英雄电影）要去掉；
+    搜索词已经删掉的也去掉。按喜好关键词搜的（probe）由 recommend() 重新打分，这里不管。"""
+    needs = {}
+    for it in list(items) + list(hesitating):
+        for q in it.get("similar") or []:
+            needs.setdefault((it["name"], q["label"]), []).append(q.get("need") or [])
+
+    def ok(x):
+        if x.get("probe"):
+            return True
+        groups = needs.get((x.get("item"), x.get("label")))
+        text = _need_text(x.get("title", ""), x.get("summary"))
+        return bool(groups) and any(all(_like_hit(n, text) for n in need) for need in groups)
+    return ok
+
+
 def discover(force=False, taste=None):
     """「我会喜欢？」要的新消息，抓 Google 新闻，去掉已经在关注清单里的作品。每次用一个新的随机种子挑搜索词，
     这样每次搜到的不一样（种子记在 state/discover.json 里，出了问题可以复现）：
@@ -646,8 +670,9 @@ def discover(force=False, taste=None):
     settings, items = load_config()
     old = load_json(DISCOVER_FILE) or {}
     now = dt.datetime.now(dt.timezone.utc)
+    ok = _need_checker(items, [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE])
     if not force and old.get("at") and now - dt.datetime.fromisoformat(old["at"]) < dt.timedelta(hours=DISCOVER_HOURS):
-        return old.get("entries", [])
+        return [x for x in old.get("entries", []) if ok(x)]
     seed = random.SystemRandom().randrange(2 ** 32)
     rng = random.Random(seed)
     tracked = {_norm(w) for i in items for w in (i.get("match") or i.get("keywords") or [i["name"]])}
@@ -673,7 +698,7 @@ def discover(force=False, taste=None):
                 continue
             if any(w and w in _norm(e.title + e.summary) for w in tracked):  # 已经在关注的不算“新发现”
                 continue
-            if not all(_like_hit(n, (e.title + " " + e.summary).lower()) for n in q.get("need") or []):
+            if not all(_like_hit(n, _need_text(e.title, e.summary)) for n in q.get("need") or []):
                 continue
             g = _title_grams(e.title, [])
             if any(_similar(g, x) for x in grams):
@@ -686,7 +711,7 @@ def discover(force=False, taste=None):
     fresh = len(out)
     urls = {x["url"] for x in out}
     for x in old.get("entries", []):  # 以前搜到的、一周内的继续留着：池子越积越大，每次换一批都有新的
-        if x["url"] in urls or (x.get("date") and x["date"] < since.isoformat()):
+        if x["url"] in urls or (x.get("date") and x["date"] < since.isoformat()) or not ok(x):
             continue
         if any(_similar(_title_grams(x["title"], []), g) for g in grams):
             continue
@@ -1425,10 +1450,12 @@ def recommend(force_discover=False):
     liked = [r for r in votes if r["vote"] > 0 and r.get("title")]
     voted = {r["url"] for r in votes}  # 投过票的都看过了：不再推荐（赞过的拿来找相关的新消息）
     liked_keys = []
+    # 「和你赞过的哪条有关」只看具体的关键词（Snoopy、Galaxy……）：喜好标签、同类的大类（动物 / 角色造型、超级英雄电影）太宽，
+    # 同一类的每条都会说成和赞过的那条有关（IVE 的新专辑被说成和 Clayface 有关）。大类的口味加分另外显示在「あなたの投票」里
     for r in liked:
-        keys = set(r.get("hits") or []) | set(r.get("words") or [])
+        keys = set(r.get("words") or [])
         if r.get("kind") == "story":
-            keys |= set().union(*like_tags(r["title"], wishes, common))
+            keys |= like_tags(r["title"], wishes, common)[1]
         liked_keys.append((r, keys - common - {b for w in wishes for b in w.get("basics") or []}))
 
     def liked_reason(url, title, keys, work):
@@ -1543,7 +1570,7 @@ def recommend(force_discover=False):
         boards.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
                        "image": images[url], "because": work, "hits": sorted(hits), "score": score, "kind": "board",
                        "words": sorted(words), "taste": why, "batch": 1 + len(boards) // PICK_COUNT,
-                       **({"liked": t} if (t := liked_reason(url, d["title"], hits | words, work)) else {})})
+                       **({"liked": t} if (t := liked_reason(url, d["title"], set(words), work)) else {})})
     picks += boards
 
     # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条。
@@ -1575,7 +1602,7 @@ def recommend(force_discover=False):
                        "work": x["item"], "image": img, "because": x["item"], "hits": [x["label"]],
                        "kind": "hesitate" if x.get("wish") else "follow", "batch": len(follow) // DISCOVER_PICKS,
                        "words": words, "taste": taste_bonus(taste, [x["label"]])[1],
-                       **({"liked": t} if (t := liked_reason(url, x["title"], set(words) | {x["label"]}, None)) else {})})
+                       **({"liked": t} if (t := liked_reason(url, x["title"], set(words), None)) else {})})
     picks += follow
     keep = {p["url"] for p in picks}
     # 投票から学んだ口味の上位（トップの右の「あなたの好み」に出す）
