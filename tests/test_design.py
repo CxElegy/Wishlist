@@ -220,5 +220,12 @@ class HeatPage(unittest.TestCase):
         self.assertIn('href="heat.html#h-' + render._wid("A") + '"', render._section(block, "w"))
 
 
+    def test_css_comments_closed(self):
+        # 閉じていない CSS コメントは、後ろの規則を飲み込んで消してしまう
+        import re
+        css = re.sub(r"/\*.*?\*/", "", render.CSS, flags=re.S)
+        self.assertNotIn("/*", css)
+        self.assertNotIn("*/", css)
+
 if __name__ == "__main__":
     unittest.main()
