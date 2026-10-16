@@ -197,11 +197,12 @@ button{font-family:inherit}
  transform:rotate(var(--tilt));box-shadow:3px 3px 0 var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.1em;white-space:nowrap}
 .sign small{font:11px/1.3 var(--font-num);letter-spacing:.12em;opacity:.9}
 .tapes{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;padding:0 10px 0 6px}
-.tape{display:grid;grid-template-columns:18px minmax(0,1fr);min-width:0;background:var(--card);border:1.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .12s}
+.tape{display:grid;grid-template-columns:6px minmax(0,1fr);min-width:0;background:var(--card);border:1.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .12s}
 .tape:hover{transform:translateY(-4px)}
-.tape .spine{grid-row:1/3;writing-mode:vertical-rl;background:var(--sc);color:#FFF;padding:6px 0;text-align:center;font:900 10px/18px var(--font-sans);letter-spacing:.2em;overflow:hidden}
-.tape .pic{margin:6px 6px 0 0;border:1px solid var(--ink);aspect-ratio:4/3;--ac:var(--sc)}
-.tape .lbl{display:flex;flex-direction:column;gap:2px;min-width:0;padding:7px 8px 9px 2px}
+/* 背の色だけでジャンルを示す（ジャンル名は棚の看板に 1 回だけ書く） */
+.tape .spine{grid-row:1/3;background:var(--sc)}
+.tape .pic{margin:6px 6px 0 8px;border:1px solid var(--ink);aspect-ratio:4/3;--ac:var(--sc)}
+.tape .lbl{display:flex;flex-direction:column;gap:2px;min-width:0;padding:7px 8px 9px 8px}
 .tape .lbl i{font:700 11px/1.3 var(--font-sans);font-style:normal;color:var(--sc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tape .lbl b{font:700 13px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .tape.q .lbl b{font-weight:500;opacity:.65}
@@ -443,7 +444,7 @@ button{font-family:inherit}
   .fside{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
  .shelves{gap:28px 0}.shelf{flex:none;width:100%}
  .tapes{grid-template-columns:minmax(0,1fr);gap:10px;padding:0 4px 0 0}
- .tape{grid-template-columns:18px 110px minmax(0,1fr);align-items:start}.tape .spine{grid-row:auto;align-self:stretch}
+ .tape{grid-template-columns:6px 110px minmax(0,1fr);align-items:start}.tape .spine{grid-row:auto;align-self:stretch}
  .tape .pic{margin:6px 0 6px 6px}.tape .lbl{padding:7px 10px 9px}
  .tape:nth-child(n+4){display:none}  /* スマホは各ジャンル 3 作品まで（ほかは下の各版面で） */
  .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
@@ -1976,7 +1977,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
             else:
                 text, cls = w.get("status") or "新着なし", "tape q"
                 pic = {"image": w.get("_thumb"), "_work": w["name"], "_fbs": []}
-            tapes.append(f'<a class="{cls}" href="#{_wid(w["name"])}"><span class="spine" aria-hidden="true">{e(_sec_name(name))}</span>'
+            tapes.append(f'<a class="{cls}" href="#{_wid(w["name"])}"><span class="spine" aria-hidden="true"></span>'
                          f'{_pic(pic)}<span class="lbl"><i>{e(w["name"])}</i><b>{e(text)}</b></span></a>')
         if not tapes:
             continue
