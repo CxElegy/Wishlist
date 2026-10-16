@@ -81,9 +81,8 @@
      "date": "2026-10-15",
      "headline": "Monster-Taming MMORPG ‘World of Slime’ Joins Steam Next Fest With Major Demo Update",
      "highlight": "",
-     "image": null,
-     "source": "Noisy Pixel",
-     "source_icon": "https://www.google.com/s2/favicons?domain=noisypixel.net&sz=128",
+     "image": "https://noisypixel.net/wp-content/uploads/2026/10/world-of-slimes.jpg",
+     "image_via": "og:image",
      "url": "https://noisypixel.net/world-of-slime-steam-next-fest-demo-update-october-2026/",
      "weight": "lead"
     },
@@ -207,6 +206,16 @@
    "stories": [
     {
      "blurb": "",
+     "date": "2026-10-16",
+     "headline": "Avengers: Doomsday gets a brand new trailer update 2 months before release",
+     "highlight": "",
+     "image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_317,y_13,w_1294,h_727/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m51ybkryx5rdw73887.jpg",
+     "image_via": "og:image",
+     "url": "https://bamsmackpow.com/marvel-avengers-doomsday-trailer-update-2-months-before-release-date",
+     "weight": "hero"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-15",
      "headline": "Did a New York Comic-Con Booth Just Spoil ‘Doomsday’?",
      "highlight": "",
@@ -243,16 +252,6 @@
      "image": "https://www.comicbasics.com/wp-content/uploads/2025/11/Magneto-Doomsday.webp",
      "image_via": "转载 www.comicbasics.com",
      "url": "https://www.imdb.com/news/ni66064704/?ref_=nmnw_art_perm",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-15",
-     "headline": "Avengers: Doomsday & Secret War Rumor Reveals Young Avengers & Scarlet Witch’s Roles in MCU Movies",
-     "highlight": "",
-     "image": "https://s.yimg.com/lo/mysterio/api/376cc52863dbd96985df92d02c138b201788b505a09b64084cccc0c4d8fcebfb/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmandatory_995%2F0d00690934f58bcac3e8461cf31abf28.png",
-     "image_via": "转载 www.yahoo.com",
-     "url": "https://www.superherohype.com/news/700022-avengers-doomsday-secret-wars-rumor-young-avengers-scarlet-witch",
      "weight": "normal"
     }
    ],
@@ -559,16 +558,6 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-16",
-     "headline": "遂に衝動買い！めちゃくちゃかっこいい！360度楽しめるデザイン！ファン歓喜！ローソン限定『チェンソーマン』タンブラー！",
-     "highlight": "",
-     "image": "https://www.baby-babys.com/wp-content/uploads/2026/10/IMG_9313.jpg",
-     "image_via": "og:image",
-     "url": "https://www.baby-babys.com/entry/chainsawman-20260930-er21/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-14",
      "headline": "See All Listings | Chainsaw Man SR** [UA53BT-CSM-1-048](Booster Pack \"Chainsaw Man\")",
      "highlight": "",
@@ -576,18 +565,28 @@
      "image_via": "og:image",
      "url": "https://snkrdunk.com/en/trading-cards/824755/used?condition=like_new",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "遂に衝動買い！めちゃくちゃかっこいい！360度楽しめるデザイン！ファン歓喜！ローソン限定『チェンソーマン』タンブラー！",
+     "highlight": "",
+     "image": "https://www.baby-babys.com/wp-content/uploads/2026/10/IMG_9313.jpg",
+     "image_via": "og:image",
+     "url": "https://www.baby-babys.com/entry/chainsawman-20260930-er21/",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
    "theme": {
-    "accent": "#202BAC",
-    "alt_accent": "#989FEC",
-    "alt_bg": "#1B371C",
-    "alt_fg": "#F2EEE6",
-    "bg": "#E7F3E8",
-    "fg": "#1A1C22",
+    "accent": "#DD8355",
+    "alt_accent": "#AE5223",
+    "alt_bg": "#F7EDE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211712",
+    "fg": "#F4EEE4",
     "font": "serif",
-    "split": false
+    "split": true
    }
   },
   {
@@ -908,12 +907,12 @@
    ],
    "subtitle": "Gudetama",
    "theme": {
-    "accent": "#B86E00",
-    "alt_accent": "#8A4B00",
-    "alt_bg": "#F7C948",
-    "alt_fg": "#3B2A1A",
-    "bg": "#FFF8E6",
-    "fg": "#3B2A1A",
+    "accent": "#885D0C",
+    "alt_accent": "#EEB444",
+    "alt_bg": "#211C12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F2E9",
+    "fg": "#1E1A18",
     "font": "sans",
     "split": true
    }
@@ -1096,14 +1095,14 @@
    ],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
-    "accent": "#E0703F",
-    "alt_accent": "#B83A17",
-    "alt_bg": "#F1EEE6",
-    "alt_fg": "#1A1C22",
-    "bg": "#1A1C22",
-    "fg": "#F1EEE6",
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
     "font": "sans",
-    "split": false
+    "split": true
    }
   },
   {
