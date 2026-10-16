@@ -389,13 +389,18 @@ button{font-family:inherit}
 .vote small{font-size:11px;opacity:.7}
 .pk.down>a{opacity:.35;filter:grayscale(1)}
 .card,.top,.wc{position:relative}
-.vt{position:absolute;top:8px;right:8px;z-index:3;display:flex;gap:4px;opacity:.55;transition:opacity .15s}
-.card:hover .vt,.top:hover .vt,.wc:hover .vt,.vt:focus-within,.vt.on{opacity:1}
-.vt button{padding:2px 7px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);box-shadow:2px 2px 0 var(--ink);font-size:13px;line-height:1.4;cursor:pointer;border-radius:0}
+/* 消息卡片的 👍/👎：和「気になるかも？」一样放在正文下面一行，不再浮在标题上 */
+.vt{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:auto;padding-top:4px;align-self:flex-start}
+.vt button{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:3px 10px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);
+ box-shadow:2px 2px 0 var(--ink);font:700 12px/1.3 var(--font-sans);cursor:pointer;border-radius:0;transition:transform .12s,box-shadow .12s}
+.vt button:hover{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
 .vt button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#FFF}
-.top .vt{top:auto;bottom:0;right:0}
-.brief li .vt{position:static;opacity:.5;margin-left:auto;flex:none}
-.brief li:hover .vt{opacity:1}
+.vt button:disabled{opacity:.5;cursor:wait}
+.mini .vt{grid-column:2;margin-top:0;align-self:start}
+.card.mini:has(>.vt){grid-template-rows:auto auto 1fr}.mini:has(>.vt) .pic{grid-row:span 3}  /* 按钮紧跟标题，不空一大块 */
+.card.c3 .vt span,.card.c4 .vt span,.mini .vt span,.wc:not(.lead) .vt span,.brief .vt span,.older .vt span{display:none}
+.brief li .vt{margin:0 0 0 auto;padding:0;flex:none;align-self:center}
+.brief li .vt button{min-height:30px;padding:2px 8px}
 .downv{opacity:.4;filter:grayscale(.8)}
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
@@ -405,10 +410,9 @@ button{font-family:inherit}
 .pknav{margin-left:auto;display:flex;gap:10px;white-space:nowrap}
 .shuffle.back{background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .shuffle[disabled]{opacity:.35;cursor:default;pointer-events:none}
-@media (hover:none){.vt{opacity:.9}.vt button{padding:6px 10px;font-size:14px}}  /* 指で押せる大きさ（約 40×32） */
+@media (hover:none){.vt button{min-height:36px;padding:4px 12px;font-size:14px}}  /* 指で押せる大きさ */
 .vote button:active,.shuffle:active,.vt button:active,.mastwish:active{transform:translate(3px,3px);box-shadow:none}  /* 押した感触：影の分だけ沈む */
 .pk .vote button{min-height:36px}
-@media (hover:hover){.card:not(:hover) .vt:not(.on):not(:focus-within),.wc:not(:hover) .vt:not(.on):not(:focus-within){opacity:0}}  /* 細いカードでは見出しに重なるので、マウスを載せたときだけ */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
  .mgrid{grid-template-columns:minmax(0,1fr)}.mgrid>.wall{align-content:start}.fside>:last-child{flex:none}.fside{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
@@ -682,7 +686,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.16</b></div>
-<div class="meta"><small>更新</small><b>10.16 14:04</b></div></div>
+<div class="meta"><small>更新</small><b>10.16 14:10</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
