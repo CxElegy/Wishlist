@@ -231,8 +231,11 @@ def filter_entries(entries, item, settings, seen, now, known=()):
     names = [item["name"], *(item.get("keywords") or []), *(item.get("match") or [])]
     since = now - dt.timedelta(days=settings.get("lookback_days", 7))
     exclude = [w.lower() for w in item.get("exclude") or []]
-    # 新闻搜索会混入不相关结果：标题或摘要里必须出现某个匹配词（忽略大小写和空格）
-    match = [_norm(w) for w in item.get("match") or item.get("keywords") or [item["name"]]]
+    # 新闻搜索会混入不相关结果：标题或摘要里必须出现某个匹配词（忽略大小写和空格）。
+    # 「re:」开头的是正则，区分大小写、照原文匹配：剧名是常用词时（FROM）用它认出全大写或标题开头的写法
+    words = item.get("match") or item.get("keywords") or [item["name"]]
+    match = [_norm(w) for w in words if not w.startswith("re:")]
+    match_re = [re.compile(w[3:]) for w in words if w.startswith("re:")]
     # 同一篇文章常同时出现在 Google 和 Bing：每个标题只留一条，优先国外网站（大陆网站常拦海外服务器、
     # 图片防盗链），其次能直接打开原文的（Google 是跳转页，拿不到配图）
     def rank(e):
@@ -263,7 +266,7 @@ def filter_entries(entries, item, settings, seen, now, known=()):
         trusted = e.source in TRUSTED_SOURCES or e.source in {f"r/{s}" for s in item.get("subreddits") or []}
         # Reddit 全站搜索来的帖子：正文是闲聊，「from Season 5」这种说法到处都是，匹配词必须出现在标题里
         text = e.title if e.source == "Reddit" else e.title + e.summary
-        if not trusted and not any(w in _norm(text) for w in match):
+        if not trusted and not any(w in _norm(text) for w in match) and not any(r.search(text) for r in match_re):
             continue
         grams.append(g)
         out.append(e)

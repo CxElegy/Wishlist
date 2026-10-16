@@ -5,6 +5,7 @@
 #   type         product 商品 / category 一类产品 / game 游戏 / anime 动画漫画 / show 影视剧 / event 艺人演出，默认 product
 #   keywords     搜索关键词，每个词单独搜一次；建议写上各语言的正式名称
 #   match        可选，标题或摘要必须包含其中一个词才保留，默认用 keywords
+#                「re:」开头的写正则，区分大小写（如 're:^From Season \d'），名字是常用英文词时用它
 #   exclude      可选，标题包含这些词的条目直接丢掉
 #   news_langs   可选，单独为这一项指定新闻语言区，会覆盖下面 settings 里的设置
 #   priority          你最关心这一项的什么（用 AI 时生效）。AI 按它给报道排序，直接回答它的新消息会做成整行大板块
@@ -372,12 +373,15 @@ items:
       "FROM season 5", "FROM final season MGM+", "MGM+ From series", "From TV series Harold Perrineau",
       "美剧 FROM 第五季", "FROM 第五季", "美劇 FROM"
     ]
-    # 剧名就是英文常用词 from，必须靠这些说法认出是这部剧（匹配时忽略大小写和空格）
+    # 剧名就是英文常用词 from：「from season 2 of …」这种普通句子到处都是（曾混进 Knife Edge、Contender Series 等），
+    # 所以不用「From season」这类词。普通词忽略大小写；re: 开头的正则区分大小写，只认全大写的 FROM、标题开头的「From Season N」
     match: [
-      FROM season, From Season 5, From final season, From series finale, MGM+'s From, "MGM+ series From", "'From'", "“From”",
-      Fromville, Harold Perrineau, Boyd Stevens, John Griffin, Jack Bender,
-      美剧FROM, 美劇FROM, FROM第五季, FROM最终季, FROM最終季, 《FROM》, 《From》
+      MGM+'s From, "MGM+ series From", "'From'", "“From”", "‘From’",
+      Fromville, Harold Perrineau, Boyd Stevens, John Griffin, Jack Bender, Jeff Pinkner,
+      美剧FROM, 美劇FROM, FROM第五季, FROM最终季, FROM最終季, 《FROM》, 《From》,
+      're:\bFROM\b', 're:^From (Season|season|S)\s?\d', 're:(MGM\+|MGM Plus|Epix)[^.]{0,40}\bFrom\b'
     ]
+    use: [google, bing]   # Reddit 全站搜「FROM season 5」只会搜到别的剧的帖子，社区讨论只看 r/FromTVEpix
     exclude: [Overwatch, Fortnite, Apex Legends, Call of Duty, Warzone, Destiny, Valorant, Marvel Rivals, Diablo, Rainbow Six, Rocket League]   # 游戏的“from Season N”
     news_langs: [en-US, zh-TW]
     max_stories: 4
