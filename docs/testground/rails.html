@@ -88,6 +88,37 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .sub.cur{background:var(--sc);border-color:var(--sc);color:#FFF}
 .more{display:block;width:100%;height:24px;padding:0 8px 0 40px;text-align:left;font:700 12px var(--font-sans);color:var(--sc)}
 .more:hover{text-decoration:underline}
+/* ---------- 作品・板块のアイコン ---------- */
+/* 作品：items.yaml の emblem（なければ最近の記事の写真）。画像がないときは板块色の丸に頭文字 */
+.ic{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;overflow:hidden;
+ background:var(--img,none) center/cover no-repeat,var(--sc);color:#FFF;font:900 10px/1 var(--font-sans);font-style:normal}
+.ic.has{color:transparent;background-color:var(--card)}
+.sec .si{width:16px;height:16px;margin-right:-2px}
+.sec{grid-template-columns:auto auto 1fr auto}
+.sec .meter{grid-column:1/-1}
+.flat .grp .si{width:16px;height:16px}
+.sec:has(.si) .en{display:none}   /* アイコンがあるときは英字を省いて、件数が折り返さないように */
+
+/* ---------- 見た目「線路」（原版）：板块ごとの線路に作品が駅として並ぶ。読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が色で埋まる ---------- */
+.st-line .pill{padding-left:34px}
+.st-line .pill .no{display:none}
+.st-line .pill::before{inset:0 auto 0 14px;width:3px;transform:none;background:rgba(26,28,34,.13);box-shadow:none}
+.st-line .pill:hover::before{background:rgba(26,28,34,.13)}
+.st-line .pill:hover{color:var(--ink)}
+.st-line .pill.past::before{background:var(--sc)}
+.st-line .pill.on::before{background:linear-gradient(var(--sc) 50%,rgba(26,28,34,.13) 0);box-shadow:none}
+.st-line .pill .ic{position:absolute;left:6px;top:50%;width:19px;height:19px;margin-top:-9.5px;border:2px solid var(--paper);
+ box-shadow:0 0 0 1px rgba(26,28,34,.3);
+ transition:width .35s cubic-bezier(.3,1.5,.5,1),height .35s cubic-bezier(.3,1.5,.5,1),margin .35s cubic-bezier(.3,1.5,.5,1),left .35s cubic-bezier(.3,1.5,.5,1),box-shadow .2s}
+.st-line .pill.past .ic{box-shadow:0 0 0 2px var(--sc)}
+.st-line .pill.on{color:var(--ink);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:50px}
+.st-line .pill.on .ic{width:40px;height:40px;margin-top:-20px;left:-4px;border:3px solid var(--sc);font-size:17px;
+ box-shadow:0 0 0 5px color-mix(in srgb,var(--sc) 20%,transparent),0 6px 14px rgba(26,28,34,.25)}
+.st-line .pill.on .nm{display:flex;flex-direction:column;gap:1px}
+.st-line .pill.on .cnt{display:block;color:var(--sc)}
+.st-line .pill.on .new{color:var(--alert)}
+.st-line .body .pill.on{height:calc(var(--ih,28px) + 22px)}
+.st-line .rail.flat .pill.on{flex:0 0 54px;max-height:none}
 @media (max-width:600px){.board{padding:16px;gap:24px}.ctl{padding:12px 16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -97,9 +128,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   <h1><small>TESTGROUND</small>目次の見比べ</h1>
   <div class="seg">画面の高さ<div id="hs"><button data-h="600">600</button><button data-h="720">720</button><button data-h="900">900</button></div></div>
   <div class="seg">作品が少ないとき<div id="ms"><button data-m="auto">全部ひらく</button><button data-m="fold">たたむ</button></div></div>
+  <div class="seg">見た目<div id="ls"><button data-l="line">線路（原版）</button><button data-l="p5">P5</button></div></div>
   <button class="go" id="play" type="button" aria-pressed="false">▶ 全部いっせいに読み進める</button>
   <p class="note">左の目次だけを並べた見本です（本文は省略）。各見本の下のつまみを動かすと「下へスクロールした」ときの動きになります。作品名をクリックするとそこへ飛びます。
-    「全部ひらく」= 24 件以下は今の本番と同じく全部並べる ／「たたむ」= 件数に関係なく、読んでいる板块だけひらく。1 本だけで試すなら <a href="nav.html">nav.html</a>。</p>
+    「全部ひらく」= 24 件以下は今の本番と同じく全部並べる ／「たたむ」= 件数に関係なく、読んでいる板块だけひらく。1 本だけで試すなら <a href="nav.html">nav.html</a>、版（v1〜v5）の見比べは <a href="compare.html">compare.html</a>。</p>
 </header>
 <div class="board" id="board"></div>
 <script>
@@ -166,6 +198,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   // ---------- 目次 1 本ぶん（nav.html と同じルール） ----------
   const FLAT_MAX = 24, SUB_MIN = 13, SEC_H = 44, ITEM_H = 28, MORE_H = 24, MIN_H = 40;
   const e = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+  const ICON = {"Astrae Oratio": "../emblems/astrae-oratio-erin-tanaka.webp", "BLEACH Mirrors High": "../emblems/bleach-mirrors-high-ichigo-kurosaki.webp", "GTA 6": "../emblems/gta-6-jason-duval.webp", "MMORPG 新作": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f6e1.svg", "滑雪": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26f7.svg", "漫威电影": "../emblems/steve-rogers.webp", "FROM": "https://creepycatalog.com/wp-content/uploads/sites/2/2026/10/stephen-king-says-horror-fans-who-aren-t-watching-from-should-get-with-it-and-al.jpg?w=1024", "哈利波特剧集": "../emblems/dominic-mclaughlin.webp", "ILLIT": "../emblems/illit-yunah.webp", "星巴克马克杯": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png", "猫用品": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f408.svg", "日本顶级网球赛事": "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3be.svg", "三星手机": "https://fdn.gsmarena.com/imgroot/news/26/10/samsung-runs-into-issues-with-snapdragon-8-ee-gen-6/-952x498w6/gsmarena_000.jpg", "gelato pique": "https://assets.hldycdn.com/7a4c1091-a0f5-4bbf-ad01-e3ba7048f54f.jpeg", "ぐでたま": "../emblems/gudetama2018ranking-png.webp", "チェーンソーマン": "../emblems/pochita.webp", "The Mandalorian": "../emblems/the-mandalorian-din-djarin.webp", "あつ森": "../emblems/tom-nook.webp", "Vaundy": "../emblems/vaundy-vaundy.webp", "周杰伦": "../emblems/be881111.webp", "绝区零": "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e3/Agent_Ellen_Joe_Portrait.png/revision/latest/scale-to-width-down/400?cb=20241007222138", "dota2": "https://hawk.live/storage/images/posts/larl-highlights-best-mid-laners-pgl-wallachia-season-7-24254.jpg"};
+  // 板块のアイコン（twemoji）
+  const TW = c => 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/' + c + '.svg';
+  const SECIC = {GAMES:'1f3ae', SCREEN:'1f3ac', GOODS:'1f6cd', LIVE:'1f3a4', SPORTS:'26bd', ANIME:'1f4fa', MUSIC:'1f3b5', BOOKS:'1f4da',
+                 OTHER:'1f4e6', TRAVEL:'2708', FOOD:'1f35c', CARS:'1f697'};
+  const secIc = s => SECIC[s.en] ? `<img class="si" src="${TW(SECIC[s.en])}" alt="" loading="lazy">` : '';
+  const ICON_OF = typeof ICON === 'undefined' ? {} : ICON;
+  const icOf = w => { const u = ICON_OF[w.name]; return u ? `<i class="ic has" style="--img:url('${u}')"></i>` : `<i class="ic">${e([...w.name][0])}</i>`; };
+  let look = 'line';
+  const EXTRA = () => look === 'line' ? 22 : 0;   // 線路の見た目では読んでいる駅が 22px 高い
   let mode = 'auto';
 
   function Rail(box, cs) {
@@ -180,7 +222,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     let cur = 0, flat, slots = [], curSec = null, curSub = null;
     const hasSubs = s => W.filter(w => w.sec === s).length >= SUB_MIN && s.subs.length > 1;
     const subsOf = s => s.subs.filter(sub => W.some(w => w.sec === s && w.sub === sub));
-    const pill = w => `<a class="pill${w.i === cur ? ' on' : ''}" style="--sc:${w.sec.c}" href="#" data-i="${w.i}"><i class="no">${w.no}</i>`
+    const pill = w => `<a class="pill${w.i === cur ? ' on' : w.i < cur ? ' past' : ''}" style="--sc:${w.sec.c}" href="#" data-i="${w.i}"><i class="no">${w.no}</i>${icOf(w)}`
       + `<span class="nm">${e(w.name)}<small class="cnt">${w.hot ? `今週 ${w.hot} 件` : '新着なし'}</small></span>${w.hot ? `<span class="new">+${w.hot}</span>` : ''}</a>`;
 
     function build() {
@@ -188,13 +230,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       rail.classList.toggle('flat', flat);
       curSec = curSub = null;
       if (flat) {
-        rail.innerHTML = secs.map(s => `<div class="grp" style="--sc:${s.c}"><span class="tg">${e(s.ja)}</span><small>${s.en}</small></div>`
+        rail.innerHTML = secs.map(s => `<div class="grp" style="--sc:${s.c}">${secIc(s)}<span class="tg">${e(s.ja)}</span><small>${s.en}</small></div>`
           + W.filter(w => w.sec === s).map(pill).join('')).join('');
         return;
       }
       rail.innerHTML = secs.map(s => {
         const all = W.filter(w => w.sec === s), nn = all.filter(w => w.hot).length;
-        return `<div class="slot" style="--sc:${s.c}"><button class="sec" data-sec="${s.id}"><span class="tg">${e(s.ja)}</span><span class="en">${s.en}</span>`
+        return `<div class="slot" style="--sc:${s.c}"><button class="sec" data-sec="${s.id}">${secIc(s)}<span class="tg">${e(s.ja)}</span><span class="en">${s.en}</span>`
           + `<span class="cnt">新着 ${nn}／${all.length}</span><span class="meter"><i style="width:${Math.round(nn / all.length * 100)}%"></i></span></button><div class="body"></div></div>`;
       }).join('');
       slots = [...rail.querySelectorAll('.slot')];
@@ -209,6 +251,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     function fill(h) {
       const s = curSec, el = slots[secs.indexOf(s)].querySelector('.body'), list = W.filter(w => w.sec === s);
       const fit = (room, sl) => {
+        room -= EXTRA();
         let n = Math.max(1, Math.floor(room / ITEM_H));
         if (sl.length > n) n = Math.max(1, Math.floor((room - MORE_H) / ITEM_H));
         let pick = sl.slice().sort((a, b) => b.hot - a.hot || a.i - b.i).slice(0, n);
@@ -233,10 +276,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       const cw = W[cur];
       range.value = cur;
       pos.textContent = `${cur + 1}/${W.length}`;
-      if (flat) { rail.querySelectorAll('.pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur)); return; }
+      if (flat) { rail.querySelectorAll('.pill').forEach(p => { p.classList.toggle('on', +p.dataset.i === cur); p.classList.toggle('past', +p.dataset.i < cur); }); return; }
       if (force || cw.sec !== curSec) { curSec = cw.sec; curSub = cw.sub; fill(layout()); }
       else if (cw.sub !== curSub) { curSub = cw.sub; fill(slots[secs.indexOf(curSec)].offsetHeight); }
-      else rail.querySelectorAll('.body .pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur));
+      else rail.querySelectorAll('.body .pill').forEach(p => { p.classList.toggle('on', +p.dataset.i === cur); p.classList.toggle('past', +p.dataset.i < cur); });
     }
     function set(i) { cur = Math.max(0, Math.min(W.length - 1, i)); draw(); }
     range.addEventListener('input', () => set(+range.value));
@@ -268,6 +311,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   function pick(id, attr, v) { document.querySelectorAll(`#${id} button`).forEach(b => b.setAttribute('aria-pressed', b.dataset[attr] === String(v))); }
   function setH(h) { document.documentElement.style.setProperty('--rh', h + 'px'); pick('hs', 'h', h); }
   function setM(m) { mode = m; pick('ms', 'm', m); rails.forEach(r => r.reset()); }
+  function setL(l) { look = l; document.body.classList.toggle('st-line', l === 'line'); pick('ls', 'l', l); rails.forEach(r => r.reset()); }
+  document.getElementById('ls').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setL(b.dataset.l); });
   document.getElementById('hs').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setH(+b.dataset.h); });
   document.getElementById('ms').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setM(b.dataset.m); });
   let timer = null;
@@ -280,6 +325,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   const q = new URLSearchParams(location.search);
   setH([600, 720, 900].includes(+q.get('h')) ? +q.get('h') : 720);
   setM(q.get('m') === 'fold' ? 'fold' : 'auto');
+  setL(q.get('l') === 'p5' ? 'p5' : 'line');
 })();
 </script>
 </body>

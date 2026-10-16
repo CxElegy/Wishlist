@@ -80,6 +80,37 @@ main{padding:24px 0 60vh}
 .sub.cur{background:var(--sc);border-color:var(--sc);color:#FFF}
 .more{display:block;width:100%;height:24px;padding:0 8px 0 40px;text-align:left;font:700 12px var(--font-sans);color:var(--sc)}
 .more:hover{text-decoration:underline}
+/* ---------- 作品・板块のアイコン ---------- */
+/* 作品：items.yaml の emblem（なければ最近の記事の写真）。画像がないときは板块色の丸に頭文字 */
+.ic{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;overflow:hidden;
+ background:var(--img,none) center/cover no-repeat,var(--sc);color:#FFF;font:900 10px/1 var(--font-sans);font-style:normal}
+.ic.has{color:transparent;background-color:var(--card)}
+.sec .si{width:16px;height:16px;margin-right:-2px}
+.sec{grid-template-columns:auto auto 1fr auto}
+.sec .meter{grid-column:1/-1}
+.flat .grp .si{width:16px;height:16px}
+.sec:has(.si) .en{display:none}   /* アイコンがあるときは英字を省いて、件数が折り返さないように */
+
+/* ---------- 見た目「線路」（原版）：板块ごとの線路に作品が駅として並ぶ。読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が色で埋まる ---------- */
+.st-line .pill{padding-left:34px}
+.st-line .pill .no{display:none}
+.st-line .pill::before{inset:0 auto 0 14px;width:3px;transform:none;background:rgba(26,28,34,.13);box-shadow:none}
+.st-line .pill:hover::before{background:rgba(26,28,34,.13)}
+.st-line .pill:hover{color:var(--ink)}
+.st-line .pill.past::before{background:var(--sc)}
+.st-line .pill.on::before{background:linear-gradient(var(--sc) 50%,rgba(26,28,34,.13) 0);box-shadow:none}
+.st-line .pill .ic{position:absolute;left:6px;top:50%;width:19px;height:19px;margin-top:-9.5px;border:2px solid var(--paper);
+ box-shadow:0 0 0 1px rgba(26,28,34,.3);
+ transition:width .35s cubic-bezier(.3,1.5,.5,1),height .35s cubic-bezier(.3,1.5,.5,1),margin .35s cubic-bezier(.3,1.5,.5,1),left .35s cubic-bezier(.3,1.5,.5,1),box-shadow .2s}
+.st-line .pill.past .ic{box-shadow:0 0 0 2px var(--sc)}
+.st-line .pill.on{color:var(--ink);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:50px}
+.st-line .pill.on .ic{width:40px;height:40px;margin-top:-20px;left:-4px;border:3px solid var(--sc);font-size:17px;
+ box-shadow:0 0 0 5px color-mix(in srgb,var(--sc) 20%,transparent),0 6px 14px rgba(26,28,34,.25)}
+.st-line .pill.on .nm{display:flex;flex-direction:column;gap:1px}
+.st-line .pill.on .cnt{display:block;color:var(--sc)}
+.st-line .pill.on .new{color:var(--alert)}
+.st-line .body .pill.on{height:calc(var(--ih,28px) + 22px)}
+.st-line .rail.flat .pill.on{flex:0 0 54px;max-height:none}
 .flat .grp{display:flex;align-items:center;gap:8px;margin:10px 0 2px;flex:none}
 .flat .grp small{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--muted)}
 .hot{margin:0 8px 6px 0;padding-bottom:6px;border-bottom:2px solid var(--ink)}
@@ -145,6 +176,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
   <div class="seg" role="group" aria-label="作品の数">
     <button data-n="20">20</button><button data-n="100">100</button><button data-n="1000">1000</button>
   </div>
+  <div class="seg" id="ls" role="group" aria-label="見た目"><button data-l="line">線路（原版）</button><button data-l="p5">P5</button></div>
   <label><input type="checkbox" id="onlynew">目次は新着ありだけ</label>
   <p class="note">作品はダミーです。〜24 件：全部ひらく（今と同じ）／ 25〜：ほかの板块は見出し 1 行にたたみ、空いた高さは全部いま読んでいる板块へ（上の板块は上、下の板块は下に詰めるので、切り替えで動くのは境目の 1 行だけ）／ 板块が 12 件を超えると「小分類」の札が入る ／ 入りきらない作品は新着順に入るだけ＋「ほか N 件」。全部と「いま話題」は 🔍（キー「/」）から。</p>
 </header>
@@ -216,6 +248,15 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
         SEC_H = 44, ITEM_H = 28, MORE_H = 24, MIN_H = 40;   // 行の高さ（CSS と同じ）
 
   const $ = id => document.getElementById(id), e = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+  // 板块のアイコン（twemoji）
+  const TW = c => 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/' + c + '.svg';
+  const SECIC = {GAMES:'1f3ae', SCREEN:'1f3ac', GOODS:'1f6cd', LIVE:'1f3a4', SPORTS:'26bd', ANIME:'1f4fa', MUSIC:'1f3b5', BOOKS:'1f4da',
+                 OTHER:'1f4e6', TRAVEL:'2708', FOOD:'1f35c', CARS:'1f697'};
+  const secIc = s => SECIC[s.en] ? `<img class="si" src="${TW(SECIC[s.en])}" alt="" loading="lazy">` : '';
+  const ICON_OF = typeof ICON === 'undefined' ? {} : ICON;
+  const icOf = w => { const u = ICON_OF[w.name]; return u ? `<i class="ic has" style="--img:url('${u}')"></i>` : `<i class="ic">${e([...w.name][0])}</i>`; };
+  let look = 'line';
+  const EXTRA = () => look === 'line' ? 22 : 0;   // 線路の見た目では読んでいる駅が 22px 高い
   const rail = $('rail'), hotEl = $('hot'), main = $('main'), m1 = $('mrow1'), m2 = $('mrow2'), dlg = $('finder');
   let D, cur = 0, tops = [], onlyNew = false, flat = false, slots = [], curSec = null, curSub = null;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -223,7 +264,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
 
   function load(N) {
     D = build(N);
-    document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.n == N));
+    document.querySelectorAll('.seg button[data-n]').forEach(b => b.setAttribute('aria-pressed', b.dataset.n == N));
     let h = '', last = null;
     for (const w of D.works) {
       if (w.sec !== last) { last = w.sec; h += `<div class="shead" style="--sc:${w.sec.c}"><span class="tg">${e(w.sec.ja)}</span><small>${w.sec.en}</small></div>`; }
@@ -239,8 +280,8 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
   function measure() { tops = D.works.map(w => document.getElementById('w' + w.i).offsetTop); }
 
   function pill(w) {
-    return `<a class="pill${w.i === cur ? ' on' : ''}" style="--sc:${w.sec.c}" href="#w${w.i}" data-i="${w.i}">`
-         + `<i class="no">${w.no}</i><span class="nm">${e(w.name)}<small class="cnt">${w.hot ? `今週 ${w.hot} 件` : '新着なし'}</small></span>${w.hot ? `<span class="new">+${w.hot}</span>` : ''}</a>`;
+    return `<a class="pill${w.i === cur ? ' on' : w.i < cur ? ' past' : ''}" style="--sc:${w.sec.c}" href="#w${w.i}" data-i="${w.i}">`
+         + `<i class="no">${w.no}</i>${icOf(w)}<span class="nm">${e(w.name)}<small class="cnt">${w.hot ? `今週 ${w.hot} 件` : '新着なし'}</small></span>${w.hot ? `<span class="new">+${w.hot}</span>` : ''}</a>`;
   }
   const ofSec = s => D.works.filter(w => w.sec === s && (!onlyNew || w.hot || w.i === cur));
   const hasSubs = s => D.works.filter(w => w.sec === s).length >= SUB_MIN;
@@ -252,7 +293,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     rail.classList.toggle('flat', flat);
     if (flat) {
       hotEl.innerHTML = '';
-      rail.innerHTML = D.secs.map(s => `<div class="grp" style="--sc:${s.c}"><span class="tg">${e(s.ja)}</span><small>${s.en}</small></div>`
+      rail.innerHTML = D.secs.map(s => `<div class="grp" style="--sc:${s.c}">${secIc(s)}<span class="tg">${e(s.ja)}</span><small>${s.en}</small></div>`
         + D.works.filter(w => w.sec === s).map(pill).join('')).join('');
       return;
     }
@@ -260,7 +301,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     rail.innerHTML = D.secs.map(s => {
       const all = D.works.filter(w => w.sec === s), nn = all.filter(w => w.hot).length;
       return `<div class="slot" style="--sc:${s.c}" data-slot="${s.id}">`
-        + `<button class="sec" data-sec="${s.id}"><span class="tg">${e(s.ja)}</span><span class="en">${s.en}</span>`
+        + `<button class="sec" data-sec="${s.id}">${secIc(s)}<span class="tg">${e(s.ja)}</span><span class="en">${s.en}</span>`
         + `<span class="cnt">新着 ${nn}／${all.length}</span><span class="meter"><i style="width:${Math.round(nn / all.length * 100)}%"></i></span></button>`
         + `<div class="body"></div></div>`;
     }).join('');
@@ -285,6 +326,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
   function fill(h) {
     const s = curSec, el = slots[D.secs.indexOf(s)].querySelector('.body'), list = ofSec(s);
     const fit = (room, sl) => {
+      room -= EXTRA();
       let n = Math.max(1, Math.floor(room / ITEM_H));
       if (sl.length > n) n = Math.max(1, Math.floor((room - MORE_H) / ITEM_H));
       let pick = sl.slice().sort((a, b) => b.hot - a.hot || a.i - b.i).slice(0, n);
@@ -313,9 +355,9 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
   function draw(force) {
     const cw = D.works[cur];
     if (flat) {
-      rail.querySelectorAll('.pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur));
+      rail.querySelectorAll('.pill').forEach(p => { p.classList.toggle('on', +p.dataset.i === cur); p.classList.toggle('past', +p.dataset.i < cur); });
     } else {
-      hotEl.querySelectorAll('.pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur));
+      hotEl.querySelectorAll('.pill').forEach(p => { p.classList.toggle('on', +p.dataset.i === cur); p.classList.toggle('past', +p.dataset.i < cur); });
       if (force || cw.sec !== curSec) {
         curSec = cw.sec; curSub = cw.sub;
         fill(layout());
@@ -323,7 +365,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
         curSub = cw.sub;
         fill(slots[D.secs.indexOf(curSec)].offsetHeight);   // 枠の高さは変えない
       } else {
-        rail.querySelectorAll('.body .pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur));
+        rail.querySelectorAll('.body .pill').forEach(p => { p.classList.toggle('on', +p.dataset.i === cur); p.classList.toggle('past', +p.dataset.i < cur); });
       }
     }
     drawMobile();
@@ -362,9 +404,9 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
 
   // ---------- クリック ----------
   document.addEventListener('click', ev => {
-    const t = ev.target.closest('[data-i],[data-sec],[data-sub],[data-scope],[data-jump-sec],.seg button');
+    const t = ev.target.closest('[data-i],[data-sec],[data-sub],[data-scope],[data-jump-sec],.seg button[data-n]');
     if (!t) return;
-    if (t.matches('.seg button')) return load(+t.dataset.n);
+    if (t.matches('.seg button[data-n]')) return load(+t.dataset.n);
     ev.preventDefault();
     if (t.dataset.i != null) { if (dlg.open) dlg.close(); return go(+t.dataset.i); }
     if (t.dataset.scope) return finder(t.dataset.scope);
@@ -373,6 +415,12 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     if (t.dataset.sec) return go(D.works.find(w => w.sec.id === t.dataset.sec).i);
     if (t.dataset.sub) return go(D.works.find(w => subKey(w) === t.dataset.sub).i);
   });
+  function setL(l) {
+    look = l; document.body.classList.toggle('st-line', l === 'line');
+    document.querySelectorAll('#ls button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === l));
+    if (D) { build_nav(); draw(true); }
+  }
+  $('ls').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setL(b.dataset.l); });
   $('onlynew').addEventListener('change', ev => { onlyNew = ev.target.checked; draw(true); });
 
   // ---------- 🔍 全作品の一覧 ----------
@@ -421,6 +469,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     if (ev.key === '/' && !dlg.open && document.activeElement.tagName !== 'INPUT') { ev.preventDefault(); finder(); }
   });
 
+  setL(new URLSearchParams(location.search).get('l') === 'p5' ? 'p5' : 'line');
   const n0 = +(new URLSearchParams(location.search).get('n')) || 100;
   load([20, 100, 1000].includes(n0) ? n0 : 100);
 })();
