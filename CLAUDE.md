@@ -79,7 +79,8 @@
 - **版面主题（motif）**：`items.yaml` 里给作品写 `motif:`，主题在 `templates/`（`index.yaml` 一览 + 每套一份 `<id>.css`，只用作品自己的配色变量）。
   现在有 **30 套**（背景花纹、题字形状、照片边框、标题旁装饰字），每套带一个 **👍 演出**（`fx`，`scripts/likefx.py` 的 20 种：大拇指的动作 + 飞散的形状 + 文字）。
   一览和试玩：テーマ見本 https://cxelegy.github.io/Wishlist/themes.html （`render.render_themes`）。
-  **每个新关注项加进来时都要设计主题**：先从库里挑，挑不到就新做一套（`TEMPLATES.md`），相似的合并；
+  **每个新关注项加进来时，AI 都要把版面设计一遍**（`TEMPLATES.md` 开头的表）：① 主题 `motif` ② 配色 `theme`（暗底 / 浅底按作品气质，字一定要看得清）
+  ③ 作品小元素 `emblem`（`scripts/emblem.py` 找现有的、认得出的图，可多张、每次打开随机一张；不自己画、不改原图）④ 点 👍 的演出 `like_fx`（不写就用主题的 fx）；
   设置页加进来的由「AI 编辑」设计（工作流在加进来后叫它）；设计好之前先按 `type` 借用 `index.yaml` 里 `defaults` 对得上的主题。
   点 👍 的演出按版面（`data-fx`）选：同一套主题的版面演出一样。新演出：在 `likefx.py` 的 `FX_JS` 和 `FX` 各加一行。
   **演出别自己从零做**：粒子用 canvas-confetti、擬音按漫画的作法（Dela Gothic One・双层描边・ウニフラ・逐字砸下・震动），参照成熟的前端设计。

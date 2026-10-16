@@ -7,7 +7,8 @@
 ## 步骤
 
 1. 进入仓库 `CxElegy/Wishlist`，分支 `main`，先 `git pull --rebase`。
-   **先做版面模版**：`items.yaml` 里 `notes` 有「从网页设置页加进来的」、但还没有 `motif` 的关注项，按 `TEMPLATES.md` 给它设计版面主题（从 30 套里挑最合气质的，挑不到就新做一套；每套带点 👍 的演出）。没有就跳过。
+   **先做版面设计**：`items.yaml` 里 `notes` 有「从网页设置页加进来的」、但还没有 `motif` 的关注项，按 `TEMPLATES.md` 开头的表把版面设计一遍：
+   ① 主题 `motif`、② 配色 `theme`（暗底 / 浅底按气质）、③ 小元素 `emblem`（`scripts/emblem.py`）、④ 点 👍 的演出 `like_fx`。没有就跳过。
 2. 找到最新一份 `inbox/YYYY-MM-DD.json`（不带 `.edit`）。没有就结束。
 3. 读 `items.yaml`，了解每个关注项的 `priority`（读者最关心什么）和 `notes`（背景）。
 4. 读 inbox 里每个关注项的 `entries`（编号 `n`、日期、来源、标题、摘要），按下面的规则编排。

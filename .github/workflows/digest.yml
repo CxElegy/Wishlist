@@ -110,7 +110,7 @@ jobs:
           git pull -q --rebase || true
           names=$(python scripts/digest.py unedited --only "$NEW_ITEMS")
           if [ -z "$names" ]; then echo "新关注项还没有消息或已编排过，不用叫 AI 编辑"; exit 0; fi
-          body=$(python -c 'import json,sys; print(json.dumps({"text": "新加的关注项：" + sys.argv[1] + "。先按 TEMPLATES.md 给它们设计版面主题（从 30 套里挑最合气质的，挑不到就新做；含点 👍 的演出），再按 EDITING.md 整份重新编排今天的报道（今天的 edit.json 里还没有它们）。"}, ensure_ascii=False))' "$names")
+          body=$(python -c 'import json,sys; print(json.dumps({"text": "新加的关注项：" + sys.argv[1] + "。先按 TEMPLATES.md 开头的表把它们的版面设计一遍（主题 motif、配色 theme、小元素 emblem〔scripts/emblem.py〕、点 👍 的演出 like_fx），再按 EDITING.md 整份重新编排今天的报道（今天的 edit.json 里还没有它们）。"}, ensure_ascii=False))' "$names")
           curl -fsS -X POST "https://api.anthropic.com/v1/claude_code/routines/$ROUTINE_ID/fire" \
             -H "Authorization: Bearer $ROUTINE_FIRE_TOKEN" \
             -H "anthropic-beta: experimental-cc-routine-2026-04-01" \

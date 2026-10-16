@@ -419,7 +419,7 @@ button{font-family:inherit}
  filter:drop-shadow(2.5px 0 0 var(--card)) drop-shadow(-2.5px 0 0 var(--card)) drop-shadow(0 2.5px 0 var(--card)) drop-shadow(0 -2.5px 0 var(--card))
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}
-.emb img.badge{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--card)}
+.emb img.badge{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:50% 15%;border:4px solid var(--card)}  /* 縦長の写真は顔が上にあることが多い：上寄りで丸く切る */
 .emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45)}
 .emb-js .emb:not(.in) img{--sx:0px;--sy:0px}
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
@@ -2314,7 +2314,7 @@ NAV_JS = """
 
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None, taste=(), heat=None, emblems=None):
+           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
@@ -2325,7 +2325,9 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         w["_today"] = latest["date"]
         w["_size"] = (sizes or {}).get(w["name"], "M")
         w["_motif"] = (motifs or {}).get(w["name"], "")
-        _FX_OF[w["name"]] = TEMPLATE_FX.get(w["_motif"], "pop")
+        # 👍 の演出：items.yaml の like_fx（版面ごとに AI が決める）＞ テーマの fx
+        own = (like_fx or {}).get(w["name"])
+        _FX_OF[w["name"]] = own if own in likefx.FX else TEMPLATE_FX.get(w["_motif"], "pop")
         w["_emblems"], w["_ring"] = (emblems or {}).get(w["name"]) or ([], "accent")
         w["_heat"] = (heat or {}).get(w["name"])  # 話題度（heat.compute）
     updated = updated or latest["date"].replace("-", ".")

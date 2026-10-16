@@ -17,7 +17,10 @@
      地の明るさは作品の気質で決める（--tone）：熱血・暴力・ホラー・SF は墨の地（dark）、かわいい・癒やし・日常は米白の地（light）。
      一律に米白にしない。文字はどれも 4.5:1 以上（theme._readable）、網页に出したあと実際の重なりでも確かめる。
      キャラが入れ替わっても浮かないように、どの絵にも版面の強調色のフチと墨の硬い影を付ける（emblem_ring）。
+     人物・製品の写真（色がばらつく）は --palette keep で今の配色のまま。強調色のフチで版面とつなぐ。
+     絵として認識できる主題がない分類（「MMORPG 新作」「滑雪」のような総合カテゴリ）は無理に貼らない。
   5. items.yaml に emblem（リスト：subject / why / image / page / shape）と theme を書く。
+  ※ AniList にないゲームなどは --category（Wiki の分類でリンクの多い順）で主要キャラを決める。
 
 使い方：
   python scripts/emblem.py "チェーンソーマン" --api https://chainsaw-man.fandom.com/api.php \
@@ -31,6 +34,7 @@ import json
 import pathlib
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -44,9 +48,17 @@ MIN_SIDE = 160
 
 
 def _get(url, limit=MAX_BYTES):
+    import time
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-        data = r.read(limit + 1)
+    for wait in (0, 3, 8, 20):   # Wikipedia などの「多すぎ」（429）は少し待って取り直す
+        time.sleep(wait)
+        try:
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+                data = r.read(limit + 1)
+            break
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or wait == 20:
+                raise
     if len(data) > limit:
         raise ValueError("画像が大きすぎる")
     return data
@@ -54,11 +66,14 @@ def _get(url, limit=MAX_BYTES):
 
 def page_image(api, title):
     """MediaWiki の pageimages：そのページの代表画像の網址と、ページの網址。"""
-    q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "pageimages|info", "piprop": "original",
-                                "inprop": "url", "format": "json", "redirects": 1})
+    q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "pageimages|info", "piprop": "original|thumbnail",
+                                "pithumbsize": 500, "inprop": "url", "format": "json", "redirects": 1})
     pages = json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"]
     page = next(iter(pages.values()))
     src = (page.get("original") or {}).get("source")
+    # Wikimedia（Wikipedia）は原寸を引かず、決まったサイズの縮小版を使う決まり（https://w.wiki/GHai）
+    if src and "wikimedia.org" in src and (page.get("thumbnail") or {}).get("source"):
+        src = page["thumbnail"]["source"]
     if not src:
         raise LookupError(f"{title}：代表画像がない")
     return src, page.get("fullurl") or ""
@@ -140,6 +155,24 @@ def anilist_main(media_id, n):
     return [x["name"]["full"] for x in nodes]
 
 
+def category_top(api, category, n):
+    """Wiki の分類（例：Wizards）のキャラを「ほかのページからのリンク数」→「記事の長さ」の順に多い n 人。
+    物語の中心にいるキャラほど多くのページから参照される（AniList にないゲームなどで主要キャラを決める基準）。"""
+    q = urllib.parse.urlencode({"action": "query", "list": "categorymembers", "cmtitle": f"Category:{category}",
+                                "cmlimit": 200, "cmnamespace": 0, "format": "json"})
+    titles = [m["title"] for m in json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["categorymembers"]]
+    counts, length = {}, {}
+    for t in titles:
+        q = urllib.parse.urlencode({"action": "query", "titles": t, "prop": "linkshere|info", "lhlimit": 500,
+                                    "lhnamespace": 0, "lhshow": "!redirect", "format": "json"})
+        pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
+        counts[t], length[t] = len(pg.get("linkshere", [])), pg.get("length", 0)
+    # リンク数が同じ（ナビ欄で全員つながっているだけ）のときは、記事の長さ（主要キャラほど長い）で決める
+    ranked = sorted(titles, key=lambda t: (-counts[t], -length[t]))
+    print("  リンク数・記事の長さ：" + "、".join(f"{t} {counts[t]}/{length[t]}" for t in ranked[:n + 3]), file=sys.stderr)
+    return ranked[:n]
+
+
 def gallery(api, page, match, n):
     """キャラが一人の作品：そのページに載っている画像から、名前が match に合う別シーンを n 枚（切り抜きを優先）。"""
     q = urllib.parse.urlencode({"action": "query", "titles": page, "prop": "images", "imlimit": 200, "format": "json", "redirects": 1})
@@ -172,12 +205,14 @@ def one(api, title):
     return {"subject": title, "image": url, "page": page, "shape": shape, "key": theme._hex(key)}
 
 
-def collect(api, titles=(), anilist=None, gallery_page=None, match=None, n=6, why="", tone="light"):
+def collect(api, titles=(), anilist=None, gallery_page=None, match=None, n=6, why="", tone="light", category=None):
     """候補を集めて使えるものだけ残す。先頭がいちばん代表的な一枚（配色の基準）。"""
     found, seen = [], set()
     names = [(t, why or "AI が選んだ代表キャラ") for t in titles]
     if anilist:
         names += [(t, "AniList の主役（お気に入り順）") for t in anilist_main(anilist, n)]
+    if category:
+        names += [(t, f"Wiki の分類「{category}」でリンクの多いキャラ") for t in category_top(api, category, n)]
     for t, reason in names:
         if t in seen or len(found) >= n:
             continue
@@ -190,7 +225,7 @@ def collect(api, titles=(), anilist=None, gallery_page=None, match=None, n=6, wh
         found += [{**x, "why": f"{gallery_page} の別シーン（Wiki の画像）"} for x in gallery(api, gallery_page, match or gallery_page, n - len(found))]
     if not found:
         raise LookupError("使える画像が見つからない")
-    return found, palette(theme._rgb(found[0]["key"]), tone)
+    return found, (palette(theme._rgb(found[0]["key"]), tone) if tone else None)
 
 
 def _flow(d):
@@ -205,10 +240,10 @@ def write_item(name, emblems, th):
     end = next((i for i in range(start + 1, len(lines)) if lines[i].startswith("  - name:")), len(lines))
     block, skip = [], False
     for l in lines[start + 1:end]:
-        if re.match(r"^    (emblem|theme):", l):
-            skip = l.startswith("    emblem:")
+        if re.match(r"^    emblem:", l) or (th and re.match(r"^    theme:", l)):
+            skip = True   # この行と、その下の字下げされた続き（複数行で書いた theme や emblem のリスト）を消す
             continue
-        if skip and l.startswith("      - "):
+        if skip and (l.startswith("      ") or not l.strip()):
             continue
         skip = False
         block.append(l)
@@ -216,7 +251,7 @@ def write_item(name, emblems, th):
     keep = ("subject", "why", "image", "page", "shape")
     block[at:at] = (["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"]
                     + [f"      - {_flow({k: x[k] for k in keep})}" for x in emblems]
-                    + [f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"])
+                    + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
     lines[start + 1:end] = block
     path.write_text("\n".join(lines), encoding="utf-8")
 
@@ -231,11 +266,16 @@ def main():
     ap.add_argument("--gallery", help="キャラが一人の作品：このページの画像から別シーンを集める")
     ap.add_argument("--match", help="--gallery で使う画像ファイル名の正規表現")
     ap.add_argument("--max", type=int, default=6, help="最大の枚数")
-    ap.add_argument("--tone", choices=["light", "dark"], required=True,
+    ap.add_argument("--category", help="Wiki の分類：リンクの多いキャラから足す（AniList にない作品の主要キャラ）")
+    ap.add_argument("--tone", choices=["light", "dark"],
                     help="作品の気質：dark＝熱血・暴力・ホラー・SF（墨の地）、light＝かわいい・癒やし・日常（米白の地）")
+    ap.add_argument("--palette", choices=["emblem", "keep"], default="emblem",
+                    help="emblem＝絵の代表色から配色を作る（キャラの絵）／keep＝今の配色のまま（人物・製品の写真は色がばらつくため）")
     ap.add_argument("--write", action="store_true", help="items.yaml に書く")
     a = ap.parse_args()
-    found, th = collect(a.api, a.titles, a.anilist, a.gallery, a.match, a.max, a.why, a.tone)
+    if a.palette == "emblem" and not a.tone:
+        ap.error("--palette emblem のときは --tone が要る")
+    found, th = collect(a.api, a.titles, a.anilist, a.gallery, a.match, a.max, a.why, a.tone if a.palette == "emblem" else None, a.category)
     print(json.dumps({"emblem": found, "theme": th}, ensure_ascii=False, indent=2))
     if a.write:
         write_item(a.name, found, th)

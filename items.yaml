@@ -77,6 +77,13 @@ settings:
 items:
   - name: Astrae Oratio
     motif: retro          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Erin Tanaka", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/7/7c/Erin_render.webp/revision/latest/scale-to-width-down/400?cb=20260701184815", page: "https://astrae-oratio.fandom.com/wiki/Erin_Tanaka", shape: "cutout"}
+      - {subject: "Anna M. Battenberg", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/0/09/Anna_render.webp/revision/latest/scale-to-width-down/400?cb=20260704001520", page: "https://astrae-oratio.fandom.com/wiki/Anna_M._Battenberg", shape: "cutout"}
+      - {subject: "Mai Asakura", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/1/19/Mai_Asakura_render.webp/revision/latest/scale-to-width-down/400?cb=20260805220733", page: "https://astrae-oratio.fandom.com/wiki/Mai_Asakura", shape: "cutout"}
+      - {subject: "Aizumi Yuzuki", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/b/b6/Aizumi_render.webp/revision/latest/scale-to-width-down/400?cb=20260926033647", page: "https://astrae-oratio.fandom.com/wiki/Aizumi_Yuzuki", shape: "cutout"}
+      - {subject: "Akina Akitsu", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/2/2c/Akina_render.webp/revision/latest/scale-to-width-down/400?cb=20260805210959", page: "https://astrae-oratio.fandom.com/wiki/Akina_Akitsu", shape: "cutout"}
+    theme: {bg: "#211212", fg: "#F4EEE4", accent: "#C27270", alt_bg: "#F6EAE9", alt_fg: "#1E1A18", alt_accent: "#A14744", split: true}  # 小元素「Erin Tanaka」の色に合わせた配色（scripts/emblem.py）
     subtitle: アストラエ・オラティオ
     size: L
     type: game
@@ -110,18 +117,16 @@ items:
       NC 发行、Dynamis One 开发的新传奇魔法 RPG，舞台是架空的 1989 年东京。
       预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。
     site: https://astraeoratio.plaync.com/
-    theme:   # 取自官方主视觉：黑白对角分割 + 衬线 + “dream” 的淡蓝
-      bg: "#1B1B1C"
-      fg: "#F2F2F4"
-      accent: "#8DB8E8"
-      alt_bg: "#F2F2F4"
-      alt_fg: "#1B1B1C"
-      alt_accent: "#3D6FA8"
-      split: true
-      font: serif
-
   - name: BLEACH Mirrors High
     motif: ink          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Ichigo Kurosaki", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/4/41/NBFHIchigo_profile.png/revision/latest/scale-to-width-down/400?cb=20260410211133&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ichigo_Kurosaki", shape: "badge"}
+      - {subject: "Rukia Kuchiki", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/2/23/NBFHRukia_profile.png/revision/latest/scale-to-width-down/400?cb=20230903201912&path-prefix=en", page: "https://bleach.fandom.com/wiki/Rukia_Kuchiki", shape: "badge"}
+      - {subject: "Orihime Inoue", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/9/94/686Post-War_Orihime.png/revision/latest/scale-to-width-down/400?cb=20190523143321&path-prefix=en", page: "https://bleach.fandom.com/wiki/Orihime_Inoue", shape: "badge"}
+      - {subject: "Renji Abarai", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/6/65/685Renji_profile.png/revision/latest/scale-to-width-down/400?cb=20200322080519&path-prefix=en", page: "https://bleach.fandom.com/wiki/Renji_Abarai", shape: "badge"}
+      - {subject: "Uryuu Ishida", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/0/05/Ep344UryuProfile3.png/revision/latest/scale-to-width-down/400?cb=20230125214916&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ury%C5%AB_Ishida", shape: "badge"}
+      - {subject: "Yasutora Sado", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/4/4b/686Post-War_Sado.png/revision/latest/scale-to-width-down/400?cb=20190523143253&path-prefix=en", page: "https://bleach.fandom.com/wiki/Yasutora_Sado", shape: "badge"}
+    theme: {bg: "#F7F0E9", fg: "#1E1A18", accent: "#9A550E", alt_bg: "#211A12", alt_fg: "#F4EEE4", alt_accent: "#EE9944", split: true}  # 小元素「Ichigo Kurosaki」の色に合わせた配色（scripts/emblem.py）
     subtitle: 死神 新作手游
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -149,18 +154,12 @@ items:
       2026 年 7 月 22–29 日进行过封闭测试，8 月 29 日开放事前登录，官方称 2026 年内上线，具体日期未定。
     status: 事前登录中 · 官方称 2026 年内上线，具体日期未定
     site: https://bleach-mh.bn-ent.net/
-    theme:   # 取自官方主视觉：米白纸底 + 墨黑 + 血红笔刷，标题条做成墨黑 / 米白对角分割
-      bg: "#FBF7EE"
-      fg: "#1A1111"
-      accent: "#AB1F12"
-      alt_bg: "#1A1111"
-      alt_fg: "#FBF7EE"
-      alt_accent: "#E65224"
-      split: true
-      font: serif
-
   - name: GTA 6
     motif: neon          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Jason Duval", why: "GTA6 の二人の主人公", image: "https://static.wikia.nocookie.net/gtawiki/images/d/de/JasonDuval-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145706", page: "https://gta.fandom.com/wiki/Jason_Duval", shape: "badge"}
+      - {subject: "Lucia Caminos", why: "GTA6 の二人の主人公", image: "https://static.wikia.nocookie.net/gtawiki/images/2/2a/LuciaCaminos-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145927", page: "https://gta.fandom.com/wiki/Lucia_Caminos", shape: "badge"}
+    theme: {bg: "#211A12", fg: "#F4EEE4", accent: "#D39E5F", alt_bg: "#F7F0E9", alt_fg: "#1E1A18", alt_accent: "#946329", split: true}  # 小元素「Jason Duval」の色に合わせた配色（scripts/emblem.py）
     subtitle: Grand Theft Auto VI · 侠盗猎车手 6
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -199,15 +198,6 @@ items:
       PC 版尚未公布。网上传闻和“内鬼爆料”极多，没有 Rockstar / Take-Two 官方确认的都按传闻处理。
     status: 定于 2026 年 11 月 19 日发售（PS5 / Xbox Series X|S）· PC 版未公布
     site: https://www.rockstargames.com/VI
-    theme:   # 取自官方主视觉：Vice City 黄昏，深紫夜空 + 霓虹粉 + 落日橙，标题条做成深紫 / 落日对角分割
-      bg: "#1E1033"
-      fg: "#FFF1F6"
-      accent: "#FF5FA2"
-      alt_bg: "#FFB25B"
-      alt_fg: "#1E1033"
-      alt_accent: "#C2185B"
-      split: true
-      font: sans
     wiki: ["en:Grand Theft Auto VI", "ja:グランド・セフト・オートVI"]
 
   - name: MMORPG 新作
@@ -313,6 +303,11 @@ items:
 
   - name: 漫威电影
     motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Victor von Doom", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/0/07/Doctor_Doom_Infobox.png/revision/latest/scale-to-width-down/400?cb=20260726013713", page: "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Doom", shape: "badge"}
+      - {subject: "Steve Rogers", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b7/Steve_Rogers_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20260712215245", page: "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers", shape: "badge"}
+      - {subject: "Thor", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/2/2b/Thor_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20231021012616", page: "https://marvelcinematicuniverse.fandom.com/wiki/Thor", shape: "badge"}
+      - {subject: "Sam Wilson", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9d/Captain_America_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20250117164205", page: "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America", shape: "badge"}
     subtitle: Marvel Studios · MCU
     type: show
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -423,6 +418,10 @@ items:
 
   - name: 哈利波特剧集
     motif: magic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Harry Potter", why: "物語の中心の三人", image: "https://static.wikia.nocookie.net/harrypotter/images/c/ce/Harry_Potter_DHF1.jpg/revision/latest/scale-to-width-down/400?cb=20140603201724", page: "https://harrypotter.fandom.com/wiki/Harry_Potter", shape: "badge"}
+      - {subject: "Hermione Granger", why: "物語の中心の三人", image: "https://static.wikia.nocookie.net/harrypotter/images/3/34/Hermione_Granger.jpg/revision/latest/scale-to-width-down/400?cb=20251206062840", page: "https://harrypotter.fandom.com/wiki/Hermione_Granger", shape: "badge"}
+      - {subject: "Ronald Weasley", why: "物語の中心の三人", image: "https://static.wikia.nocookie.net/harrypotter/images/4/44/Ronald_Weasley_DHF1.jpg/revision/latest/scale-to-width-down/400?cb=20101104210200", page: "https://harrypotter.fandom.com/wiki/Ronald_Weasley", shape: "badge"}
     subtitle: HBO「Harry Potter」· ドラマ版ハリー・ポッター
     size: M
     type: show
@@ -484,6 +483,12 @@ items:
 
   - name: ILLIT
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Yunah", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/5/56/ILLIT_Yunah_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Yunah", shape: "badge"}
+      - {subject: "Minju (ILLIT)", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/e/ec/ILLIT_Minju_Break_Even_concept_photo_7.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Minju_(ILLIT)", shape: "badge"}
+      - {subject: "Moka (ILLIT)", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/6/69/ILLIT_Moka_I_Got_Your_Back_concept_photo_4.png/revision/latest/scale-to-width-down/400?cb=20260626104728", page: "https://kpop.fandom.com/wiki/Moka_(ILLIT)", shape: "badge"}
+      - {subject: "Wonhee (ILLIT)", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/e/eb/ILLIT_Wonhee_Break_Even_concept_photo_7.png/revision/latest/scale-to-width-down/400?cb=20261006122426", page: "https://kpop.fandom.com/wiki/Wonhee_(ILLIT)", shape: "badge"}
+      - {subject: "Iroha", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/e/e0/ILLIT_Iroha_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122426", page: "https://kpop.fandom.com/wiki/Iroha", shape: "badge"}
     subtitle: アイリット · 日本公演特别关注
     size: L
     type: event
@@ -669,6 +674,8 @@ items:
 
   - name: 日本顶级网球赛事
     motif: court          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "錦織圭", why: "日本開催の大会でいちばん注目される日本人選手", image: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Nishikori_RG18_%2856%29_%2842077294635%29.jpg?utm_source=ja.wikipedia.org&utm_campaign=api&utm_content=original", page: "https://ja.wikipedia.org/wiki/%E9%8C%A6%E7%B9%94%E5%9C%AD", shape: "badge"}
     subtitle: ATP・WTA ツアー 日本開催
     size: L
     type: category
@@ -916,6 +923,10 @@ items:
 
   - name: "The Mandalorian"
     motif: beskar          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Din Djarin", why: "作品の主人公と、その相棒（作品の顔）", image: "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest/scale-to-width-down/400?cb=20241206044557", page: "https://starwars.fandom.com/wiki/Din_Djarin", shape: "badge"}
+      - {subject: "Grogu", why: "作品の主人公と、その相棒（作品の顔）", image: "https://static.wikia.nocookie.net/starwars/images/0/06/Grogu-BoBFBox.png/revision/latest/scale-to-width-down/400?cb=20251105060853", page: "https://starwars.fandom.com/wiki/Din_Grogu", shape: "badge"}
+    theme: {bg: "#1B1A18", fg: "#F4EEE4", accent: "#9E9B94", alt_bg: "#F0F0EF", alt_fg: "#1E1A18", alt_accent: "#6D6A64", split: true}  # 小元素「Din Djarin」の色に合わせた配色（scripts/emblem.py）
     type: show
     section: "影视"
     size: M
@@ -959,6 +970,8 @@ items:
 
   - name: "Vaundy"
     motif: concert          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Vaundy", why: "本人", image: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Vaundy_2025.jpg?utm_source=ja.wikipedia.org&utm_campaign=api&utm_content=original", page: "https://ja.wikipedia.org/wiki/Vaundy", shape: "badge"}
     type: event
     section: "演出"
     size: S

@@ -77,6 +77,11 @@ class Templates(unittest.TestCase):
             self.assertIn(t.get("fx"), likefx.FX, f"{t['id']} 的 fx")
         self.assertEqual(len(self.index), 30)
         # 版面带 data-fx，网页里有演出脚本
+        # items.yaml の like_fx はテーマの fx より優先、知らない名前ならテーマの fx
+        _, items = digest.load_config()
+        for item in items:
+            if item.get("like_fx"):
+                self.assertIn(item["like_fx"], likefx.FX, f"{item['name']} 的 like_fx")
         render._FX_OF["测试"] = "stamp"
         self.assertEqual(render._fx("测试"), ' data-fx="stamp"')
         self.assertIn("window.likeFx", render.LIKEFX_JS)
