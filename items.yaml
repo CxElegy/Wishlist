@@ -119,7 +119,6 @@ items:
     site: https://astraeoratio.plaync.com/
   - name: BLEACH Mirrors High
     motif: ink          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
-    like_fx: manga          # 👍 の演出（scripts/likefx.py）：少年漫画の熱さ：擬音「ドン！」
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Ichigo Kurosaki", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/4/41/NBFHIchigo_profile.png/revision/latest/scale-to-width-down/400?cb=20260410211133&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ichigo_Kurosaki", shape: "badge"}
       - {subject: "Rukia Kuchiki", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/2/23/NBFHRukia_profile.png/revision/latest/scale-to-width-down/400?cb=20230903201912&path-prefix=en", page: "https://bleach.fandom.com/wiki/Rukia_Kuchiki", shape: "badge"}
@@ -128,6 +127,7 @@ items:
       - {subject: "Uryuu Ishida", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/0/05/Ep344UryuProfile3.png/revision/latest/scale-to-width-down/400?cb=20230125214916&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ury%C5%AB_Ishida", shape: "badge"}
       - {subject: "Yasutora Sado", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/4/4b/686Post-War_Sado.png/revision/latest/scale-to-width-down/400?cb=20190523143253&path-prefix=en", page: "https://bleach.fandom.com/wiki/Yasutora_Sado", shape: "badge"}
     theme: {bg: "#F7F0E9", fg: "#1E1A18", accent: "#9A550E", alt_bg: "#211A12", alt_fg: "#F4EEE4", alt_accent: "#EE9944", split: true}  # 小元素「Ichigo Kurosaki」の色に合わせた配色（scripts/emblem.py）
+    like_fx: manga          # 👍 の演出（scripts/likefx.py）：少年漫画の熱さ：擬音「ドン！」
     subtitle: 死神 新作手游
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
