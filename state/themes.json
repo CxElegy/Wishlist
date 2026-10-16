@@ -79,6 +79,16 @@
   "font": "serif",
   "split": false
  },
+ "Vaundy|https://vaundy.jp/og_image.png": {
+  "accent": "#E65A4C",
+  "alt_accent": "#C42B1C",
+  "alt_bg": "#F3E7E7",
+  "alt_fg": "#1A1C22",
+  "bg": "#261212",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "gelato pique|http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718": {
   "accent": "#2C1FAD",
   "alt_accent": "#8F86E9",
@@ -150,6 +160,16 @@
   "split": false
  },
  "三星手机|https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
+ "周杰伦|None": {
   "accent": "#E0703F",
   "alt_accent": "#B83A17",
   "alt_bg": "#F1EEE6",

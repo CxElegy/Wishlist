@@ -81,8 +81,9 @@
      "date": "2026-10-15",
      "headline": "Monster-Taming MMORPG ‘World of Slime’ Joins Steam Next Fest With Major Demo Update",
      "highlight": "",
-     "image": "https://noisypixel.net/wp-content/uploads/2026/10/world-of-slimes.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "Noisy Pixel",
+     "source_icon": "https://www.google.com/s2/favicons?domain=noisypixel.net&sz=128",
      "url": "https://noisypixel.net/world-of-slime-steam-next-fest-demo-update-october-2026/",
      "weight": "lead"
     },
@@ -1015,16 +1016,6 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-16",
-     "headline": "画像21 / 27＞「あつ森」で卒業式！「はんなんだいがく島」に行ってみたら学生時代のノスタルジーが満載だった",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/1023819/10211254_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/1023819/image10211619.html",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-15",
      "headline": "＜画像6 / 23＞【編集部が体験】話題の「あつ森」マイデザインで歴代仮面ライダーを作ってみた！",
      "highlight": "",
@@ -1045,16 +1036,124 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-13",
-     "headline": "【あつ森】釣り大会(2026)の景品一覧とやり方・いつ開催される？【あつまれどうぶつの森】",
+     "date": "2026-10-14",
+     "headline": "画像11 / 27＞「あつ森」で卒業式！「はんなんだいがく島」に行ってみたら学生時代のノスタルジーが満載だった",
      "highlight": "",
-     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/193317.png?date=1593482420",
+     "image": "https://news.walkerplus.com/article/1023819/10211254_615.jpg",
      "image_via": "og:image",
-     "url": "https://gamewith.jp/atsumori/article/show/193317",
+     "url": "https://www.walkerplus.com/article/1023819/image10211252.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "【あつ森】固定化のやり方 | 採石場の作り方【あつまれどうぶつの森】",
+     "highlight": "",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/203565.png?date=1591063864",
+     "image_via": "og:image",
+     "url": "https://gamewith.jp/atsumori/article/show/203565",
      "weight": "normal"
     }
    ],
    "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#E0703F",
+    "alt_accent": "#B83A17",
+    "alt_bg": "#F1EEE6",
+    "alt_fg": "#1A1C22",
+    "bg": "#1A1C22",
+    "fg": "#F1EEE6",
+    "font": "sans",
+    "split": false
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "name": "Vaundy",
+   "section": "演出",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "KO1KEYZ’s Debut Single ‘KO1KEYZ’ Tops Japan Hot 100, Vaundy’s Film Theme ‘Shiwaawase’ Enters Top 10",
+     "highlight": "",
+     "image": "https://s.yimg.com/lo/mysterio/api/f1341a86c9dfbe1e96a3f9fe011e291c9d2d367a51bf9ea5583df16286e1a382/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbillboard_547%2F24a9e15fd0064d25de063a6a4288620f.jpg",
+     "image_via": "og:image",
+     "url": "https://www.yahoo.com/entertainment/music/articles/ko1keyz-debut-single-ko1keyz-tops-175937971.html",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "#19 [Adjacent Territory of the Plain Glasses Kingdom] AKASAKI and the Vaundy Faction",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.wXdJAH5hoIBj4oJQp6OF0g&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://note.com/mr_herriman/n/n7b9b90561ce5?hl=en",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-08",
+     "headline": "[Vaundy] 2026 Latest News, New Songs, and Live Information Summary",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.dNmmbx-F8XA6U_n0pOttSg&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://note.com/c8c/n/n02feb3eb9fd5?hl=en",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#E65A4C",
+    "alt_accent": "#C42B1C",
+    "alt_bg": "#F3E7E7",
+    "alt_fg": "#1A1C22",
+    "bg": "#261212",
+    "fg": "#F2EEE6",
+    "font": "serif",
+    "split": false
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "name": "周杰伦",
+   "section": "演出",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-15",
+     "headline": "走在路上竟遇周杰倫彈琴！這座城市街頭變舞台 歌迷喊：換我的城市啦",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.2ACVD7YA0ivmDwNC6lU5CQ&pid=News&w=656",
+     "image_via": "转载 www.chinatimes.com（Bing 缩略图）",
+     "url": "https://tw.news.yahoo.com/%E8%B5%B0%E5%9C%A8%E8%B7%AF%E4%B8%8A%E7%AB%9F%E9%81%87%E5%91%A8%E6%9D%B0%E5%80%AB%E5%BD%88%E7%90%B4-%E9%80%99%E5%BA%A7%E5%9F%8E%E5%B8%82%E8%A1%97%E9%A0%AD%E8%AE%8A%E8%88%9E%E5%8F%B0-%E6%AD%8C%E8%BF%B7%E5%96%8A-%E6%8F%9B%E6%88%91%E7%9A%84%E5%9F%8E%E5%B8%82%E5%95%A6-112913672.html",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-15",
+     "headline": "周杰倫一家「認養長頸鹿夫妻」暖舉曝！昆凌還親畫1物 園方二度致謝",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.XsTOiNn1t_MzoXOd1Ynk8g&pid=News&w=734",
+     "image_via": "条目自带",
+     "url": "https://star.ettoday.net/news/3254984",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "周杰倫代言也留不住？上線僅2年《極速快感：集結》宣布12月28日停運",
+     "highlight": "",
+     "image": "https://cars-asset.tvbs.com.tw/images/uploads/2026/10/loaM7B457cScrGCUNVO2se76CoDMsbdecN32a4jG.jpg",
+     "image_via": "og:image",
+     "url": "https://cars.tvbs.com.tw/life/342284",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "周杰倫",
    "theme": {
     "accent": "#E0703F",
     "alt_accent": "#B83A17",
