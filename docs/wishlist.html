@@ -383,27 +383,30 @@ button{font-family:inherit}
 .vote small{font-size:11px;opacity:.7}
 .pk.down>a{opacity:.35;filter:grayscale(1)}
 .card,.top,.wc{position:relative}
-/* 👍/👎 = 日付の行の右端に置く小さな印。普段は線の拇指だけ（枠なし）、押すと「NEW」と同じ塗りの札になる */
-.vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;align-items:center;gap:2px;flex:none}
-.vt{margin-left:auto;position:relative;z-index:2;font-size:0}
+/* 👍/👎 = 平行四辺形の二連スタンプ（.tg と同じ傾き）。地の色の上に線だけで載せ、押すと作品のアクセント色で塗る */
+.vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;flex:none;align-self:flex-start}
+.vt{position:relative;z-index:2;margin-top:auto;padding-top:2px}
 .card.a .vt{--vt:var(--abg);--vf:var(--afg)}
 .wc .vt{--vc:var(--sc,var(--ink));--vt:#FFF;--vf:var(--ink)}
 .top .vt{--vc:var(--deep,var(--ink));--vt:var(--card);--vf:var(--ink)}
 .picks .vote>span{--vc:var(--rose);--vt:#FFF;--vf:var(--ink)}
-.vt button,.vote button{display:inline-flex;align-items:center;gap:4px;min-height:26px;padding:0 6px;border:0;background:none;color:inherit;opacity:.6;
- font:900 11px/1 var(--font-sans);letter-spacing:.1em;cursor:pointer;border-radius:0;transform:skewX(var(--skew));transition:opacity .12s,background .12s}
-.vt button>i,.vote button>i{display:inline-flex;align-items:center;gap:4px;font-style:normal;transform:skewX(8deg)}
+.vt button,.vote button{display:inline-flex;align-items:center;min-height:30px;padding:0 11px;border:1.5px solid color-mix(in srgb,currentColor 50%,transparent);
+ background:transparent;color:inherit;font:900 11px/1 var(--font-sans);letter-spacing:.08em;cursor:pointer;border-radius:0;
+ transform:skewX(var(--skew));transition:background .12s,border-color .12s,box-shadow .12s,transform .12s}
+.vt button+button,.vote button+button{margin-left:-1.5px}
+.vt button>i,.vote button>i{display:inline-flex;align-items:center;gap:5px;font-style:normal;transform:skewX(8deg)}
 .vt svg,.vote svg{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.vt button:hover,.vote button:hover,.vt button:focus-visible,.vote button:focus-visible{opacity:1}
-.vt button:focus-visible,.vote button:focus-visible{outline:2px solid currentColor;outline-offset:1px}
-.vt button[aria-pressed=true],.vote button[aria-pressed=true]{opacity:1;background:var(--vc);color:var(--vt)}
-.vt button[data-vote="-1"][aria-pressed=true],.vote button[data-vote="-1"][aria-pressed=true]{background:var(--vf)}  /* 踩 = 文字色の札（アクセント色は「好き」だけ） */
-.vt button:disabled,.vote button:disabled{opacity:.35;cursor:wait}
-.vt button span,.pk:not(.big) .vote button span{display:none}
-.when:has(.vt),.kick:has(.vt),.wc em:has(.vt){display:flex;align-items:center;align-self:stretch}
-.vote button{opacity:.75}
-.brief li .vt{align-self:center}
-.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
+.vt button:hover,.vote button:hover{background:color-mix(in srgb,currentColor 12%,transparent);border-color:currentColor;position:relative}
+.vt button[aria-pressed=true],.vote button[aria-pressed=true]{position:relative;z-index:1;background:var(--vc);border-color:var(--vc);color:var(--vt);box-shadow:3px 3px 0 var(--ink)}
+.vt button[data-vote="-1"][aria-pressed=true],.vote button[data-vote="-1"][aria-pressed=true]{background:var(--vf);border-color:var(--vf);color:var(--vt)}  /* 踩 = 文字色で塗る（アクセント色は「好き」だけ） */
+.vt button:disabled,.vote button:disabled{opacity:.5;cursor:wait}
+.vt button:focus-visible,.vote button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.mini .vt{grid-column:2;margin-top:0;align-self:start}
+.card.mini:has(>.vt){grid-template-rows:auto auto 1fr}.mini:has(>.vt) .pic{grid-row:span 3}  /* 按钮紧跟标题，不空一大块 */
+.card.c3 .vt button span,.card.c4 .vt button span,.mini .vt button span,.wc:not(.lead) .vt button span,.brief .vt button span,.older .vt button span,.pk:not(.big) .vote button span{display:none}
+.brief li .vt{margin:0 0 0 auto;padding:0;align-self:center}
+.brief li .vt button{min-height:26px;padding:0 8px}
+.downv>:not(.vt,.txt,.ptxt),.downv>:is(.txt,.ptxt)>:not(.vt){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
  font:900 13px var(--font-sans);letter-spacing:.06em;cursor:pointer;border-radius:0;white-space:nowrap}
@@ -412,7 +415,7 @@ button{font-family:inherit}
 .pknav{margin-left:auto;display:flex;gap:10px;white-space:nowrap}
 .shuffle.back{background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .shuffle[disabled]{opacity:.35;cursor:default;pointer-events:none}
-@media (hover:none){.vt button,.vote button{min-height:34px;padding:0 9px;opacity:.75}}  /* 指で押せる大きさ */
+@media (hover:none){.vt button,.vote button{min-height:36px;padding:0 13px}.brief li .vt button{min-height:32px}}  /* 指で押せる大きさ */
 .shuffle:active,.mastwish:active{transform:translate(3px,3px);box-shadow:none}  /* 押した感触：影の分だけ沈む */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
@@ -570,7 +573,7 @@ html{scroll-behavior:smooth}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.16 16:36</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.16 16:38</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

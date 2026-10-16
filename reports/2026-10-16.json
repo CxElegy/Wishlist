@@ -81,9 +81,8 @@
      "date": "2026-10-15",
      "headline": "Monster-Taming MMORPG ‘World of Slime’ Joins Steam Next Fest With Major Demo Update",
      "highlight": "",
-     "image": null,
-     "source": "Noisy Pixel",
-     "source_icon": "https://www.google.com/s2/favicons?domain=noisypixel.net&sz=128",
+     "image": "https://noisypixel.net/wp-content/uploads/2026/10/world-of-slimes.jpg",
+     "image_via": "og:image",
      "url": "https://noisypixel.net/world-of-slime-steam-next-fest-demo-update-october-2026/",
      "weight": "lead"
     },
@@ -126,6 +125,16 @@
    "name": "滑雪",
    "section": "运动",
    "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-15",
+     "headline": "長野県HAKUBA VALLEY【つがいけマウンテンリゾート】 2026-27シーズン12月1日オープン決定！最新鋭降雪機18基を新たに導入！",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.33JkEQ_dNrs3fb4-UKRF7g&pid=News&w=650",
+     "image_via": "条目自带",
+     "url": "https://www.agara.co.jp/article/700167",
+     "weight": "hero"
+    },
     {
      "blurb": "",
      "date": "2026-10-14",
@@ -266,24 +275,23 @@
    "stories": [
     {
      "blurb": "",
-     "date": "2026-10-14",
-     "headline": "第5日 シングルス準々決勝 【木下グループジャパンオープンテニスウィメンズ】",
-     "highlight": "",
-     "image": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
-     "image_via": "作品封面",
-     "source": "ABEMA",
-     "source_icon": "https://www.google.com/s2/favicons?domain=abema.tv&sz=128",
-     "url": "https://abema.tv/live-event/c84bcfa1-fe0c-429a-9b25-f2f833afab47",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-16",
      "headline": "【東京都】東レ パン パシフィック オープンテニス 2026(東京・WTA500) 結果速報・トーナメント表(ドロー)・日程・放送予定（配信）｜スポーツニッポン新聞社",
      "highlight": "",
      "image": "https://www.sportzorg24.tv/wp-content/uploads/2026/10/tennis-tokyo-20261024-r4bd0d6-header-1024x576.jpg",
      "image_via": "og:image",
      "url": "https://www.sportzorg24.tv/tennis-tokyo-2026/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "第5日 シングルス準々決勝 【木下グループジャパンオープンテニスウィメンズ】",
+     "highlight": "",
+     "image": null,
+     "source": "ABEMA",
+     "source_icon": "https://www.google.com/s2/favicons?domain=abema.tv&sz=128",
+     "url": "https://abema.tv/live-event/c84bcfa1-fe0c-429a-9b25-f2f833afab47",
      "weight": "normal"
     },
     {
@@ -348,6 +356,16 @@
     {
      "blurb": "",
      "date": "2026-10-15",
+     "headline": "Samsung Galaxy S27 Ultra may use Exynos processor as 5 GHz Snapdragon chipset runs hot",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.cgzGkUusqTl1kIYkv6Z-Vw&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://www.notebookcheck.net/Samsung-Galaxy-S27-Ultra-may-use-Exynos-processor-as-5-GHz-Snapdragon-chipset-runs-hot.1425806.0.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-15",
      "headline": "存储器成本压力难解 Exynos 2700良率不差仍无缘三星S27 Ultra",
      "highlight": "",
      "image": "https://img.digitimes.com/newsimg/2026/1016/771682-1-7op0p_l.jpg",
@@ -393,16 +411,6 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA28Qgwo.img",
      "image_via": "转载 www.msn.com",
      "url": "https://www.gadgets360.com/mobiles/news/samsung-galaxy-s27-series-a38-a58-chip-upgrade-2027-product-lineup-tipped-12193315",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "三星Galaxy S27 Ultra芯片方案再生变！Exynos 2700有望重返Ultra系列",
-     "highlight": "",
-     "image": "https://img1.mydrivers.com/img/20261016/Se37c1d24-a22b-4141-9f4f-5e58697f82dd.png",
-     "image_via": "正文图",
-     "url": "https://news.mydrivers.com/1/1157/1157960.htm",
      "weight": "normal"
     }
    ],
@@ -727,16 +735,6 @@
      "image": "https://cdn.nc.press/news/photo/202610/628679_864834_712.jpg",
      "image_via": "og:image",
      "url": "https://www.nc.press/news/articleView.html?idxno=628679",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "[EVENT] 아일릿(ILLIT) 5th Mini Album ‘BREAK EVEN’ 팬사인회 안내 (애플뮤직)",
-     "highlight": "",
-     "image": "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414",
-     "image_via": "og:image",
-     "url": "https://weverse.io/illit/notice/40114",
      "weight": "normal"
     },
     {
