@@ -567,10 +567,18 @@ button{font-family:inherit}
 .fx-note,.fx-heart{font:900 28px/1 var(--font-sans);color:var(--c);text-shadow:2px 2px 0 var(--ink)}
 .fx-emb{width:38px;height:38px;filter:drop-shadow(2px 2px 0 var(--ink))}
 .fx-emb svg{width:100%;height:100%;display:block}
-.fx-txt{position:absolute;left:0;top:-150px;white-space:nowrap;font:900 34px/1 var(--font-sans);letter-spacing:.04em;color:var(--c);
- -webkit-text-stroke:1.5px var(--ink);text-shadow:4px 4px 0 var(--ink);opacity:0}
-.fx-txt.stamp{top:-96px;padding:4px 14px;border:5px solid var(--alert);color:var(--alert);background:color-mix(in srgb,var(--card) 85%,transparent);
- -webkit-text-stroke:0;text-shadow:none;font-family:var(--font-serif);border-radius:6px}
+/* 擬音：ウニフラ（トゲの吹き出し、白＋墨のフチ＋色の影）の上に、一文字ずつ叩きつける極太の文字 */
+.fx-sfx{position:absolute;left:0;top:-160px;width:0;height:0}
+.fx-sfx svg{position:absolute;left:-95px;top:-62px;width:190px;height:124px;overflow:visible;opacity:0}
+.fx-sfx .burst{fill:var(--card);stroke:var(--ink);stroke-width:5;stroke-linejoin:round}
+.fx-sfx .burst2{fill:var(--c);stroke:var(--ink);stroke-width:5;stroke-linejoin:round}
+.fx-sfx span{position:absolute;left:0;top:0;display:flex;transform:translate(-50%,-50%) rotate(-9deg);white-space:nowrap}
+.fx-sfx i{display:block;font:400 48px/1 "Dela Gothic One",var(--font-sans);font-style:normal;color:var(--c);letter-spacing:-.02em;
+ -webkit-text-stroke:9px var(--ink);paint-order:stroke fill;text-shadow:5px 6px 0 var(--ink);opacity:0}
+.fx-sfx.game span{transform:translate(-50%,-50%)}
+.fx-sfx.game i{color:var(--gold);font-size:44px}
+.fx-sfx.stamp span{padding:6px 16px 4px;border:5px double var(--alert);border-radius:8px;background:color-mix(in srgb,var(--card) 88%,transparent);transform:translate(-50%,-50%) rotate(-12deg)}
+.fx-sfx.stamp i{color:var(--alert);-webkit-text-stroke:0;text-shadow:none;font-size:38px;letter-spacing:.08em;opacity:1}
 .downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
@@ -738,7 +746,7 @@ html{scroll-behavior:smooth}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.16 18:20</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.16 18:28</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
