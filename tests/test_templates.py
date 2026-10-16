@@ -135,5 +135,19 @@ class Templates(unittest.TestCase):
             self.assertNotIn("opacity", rule, sel)
             self.assertNotIn("transparent", rule, sel)
 
+    def test_emblem_card_crop(self):
+        # 立ち絵がない写真はカード：crop があれば 4:5 の窓に顔の範囲だけ。おかしな値は無視（ふつうのカード）
+        html_ = render._emblem([{"image": "https://a/p.jpg", "shape": "badge", "crop": [0.1, 0.05, 0.6], "ar": 1.4}])
+        self.assertIn('<span class="crop" style="--cx:0.1;--cy:0.05;--cw:0.6;--ar:1.4">', html_)
+        bad = render._emblem([{"image": "https://a/p.jpg", "shape": "badge", "crop": [2, "x", 0]}])
+        self.assertNotIn('class="crop"', bad)
+        self.assertIn('class="badge"', bad)
+        self.assertNotIn("border-radius:50%", render.CSS.split(".emb img.badge{", 1)[1].split("}", 1)[0])   # 丸くしない
+        import emblem
+        from PIL import Image
+        crop, ar = emblem.face_crop(Image.new("RGBA", (400, 600), (200, 200, 200, 255)))   # 顔がない：上寄りの中央
+        self.assertEqual(ar, 1.5)
+        self.assertAlmostEqual(crop[2] * 400 / (crop[2] * 400 / 0.8), 0.8)
+
 if __name__ == "__main__":
     unittest.main()

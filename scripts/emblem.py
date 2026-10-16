@@ -204,6 +204,45 @@ def gallery(api, page, match, n):
     return picked[:n]
 
 
+CARD = 4 / 5   # カードの縦横比（幅 / 高さ）
+
+
+def face_crop(img):
+    """四角い写真をカードにするときの取景：顔を見つけて、頭と肩が入るように 4:5 で切る（絵の中身は変えない、見せる範囲だけ）。
+    → [左, 上, 幅]（画像に対する割合）。顔が見つからなければ上寄りの中央。
+    写真は OpenCV の顔検出、アニメ・漫画の絵は lbpcascade_animeface（MIT、scripts/data/）。OpenCV がなければ上寄りの中央。"""
+    w, h = img.size
+    box = None
+    try:
+        import cv2
+        import numpy as np
+        gray = cv2.cvtColor(np.array(img.convert("RGB")), cv2.COLOR_RGB2GRAY)
+        gray = cv2.equalizeHist(gray)
+        found = []
+        for path in (cv2.data.haarcascades + "haarcascade_frontalface_default.xml",
+                     str(pathlib.Path(__file__).resolve().parent / "data" / "lbpcascade_animeface.xml")):
+            c = cv2.CascadeClassifier(path)
+            if not c.empty():
+                found += [tuple(map(int, f)) for f in c.detectMultiScale(gray, 1.1, 5, minSize=(max(24, w // 12), max(24, w // 12)))]
+        if found:
+            # いちばん大きい顔。ただし顔はふつう上のほうにあるので、下半分の検出（服のロゴなどの誤検出）は軽く見る
+            box = max(found, key=lambda f: f[2] * f[3] * (1.0 if f[1] + f[3] / 2 < h * 0.55 else 0.25))
+    except ImportError:
+        print("  [取景] OpenCV がないので上寄りの中央で切る（pip install opencv-python-headless<5：5 以降は顔検出が別パッケージ）", file=sys.stderr)
+    if box:
+        fx, fy, fw, fh = box
+        ch = min(h, fh * 3.0)                  # 顔の 3 倍の高さ：頭から肩まで
+        cw = min(w, ch * CARD)
+        ch = cw / CARD
+        x = min(max(0, fx + fw / 2 - cw / 2), w - cw)
+        y = min(max(0, fy + fh / 2 - ch * 0.4), h - ch)   # 顔が上から 4 割の位置
+    else:
+        cw = min(w, h * CARD)
+        ch = cw / CARD
+        x, y = (w - cw) / 2, min(h - ch, h * 0.04)
+    return [round(x / w, 4), round(max(0, y) / h, 4), round(cw / w, 4)], round(h / w, 4)
+
+
 def cutout_on_page(api, title, limit=25):
     """そのページに載っている画像から、透明背景の立ち絵（切り抜き）を探す。名前に人物名を含むものを優先し、大きい順。
     代表画像が背景つき（四角い写真）のときに使う。人物は丸や四角より、輪郭どおりのほうが良いので。"""
@@ -235,7 +274,8 @@ def cutout_on_page(api, title, limit=25):
 def one(api, title):
     src, page = page_image(api, title)
     url = small_url(src)
-    shape, key, _ = inspect(_get(url))
+    shape, key, img = inspect(_get(url))
+    out = {"subject": title, "image": url, "page": page, "shape": shape, "key": theme._hex(key)}
     if shape == "badge":   # 代表画像が四角い写真なら、同じページの透明な立ち絵を探す
         try:
             found = cutout_on_page(api, title)
@@ -243,9 +283,11 @@ def one(api, title):
             found = None
             print(f"  [切り抜き探し失敗] {title}：{e}", file=sys.stderr)
         if found:
-            _, url, _, key = found
-            shape = "cutout"
-    return {"subject": title, "image": url, "page": page, "shape": shape, "key": theme._hex(key)}
+            _, out["image"], _, key = found
+            out.update(shape="cutout", key=theme._hex(key))
+        else:   # 立ち絵がない写真はカードに：顔が入るように取景
+            out["crop"], out["ar"] = face_crop(img)
+    return out
 
 
 def collect(api, titles=(), anilist=None, gallery_page=None, match=None, n=6, why="", tone="light", category=None):
@@ -291,15 +333,42 @@ def write_item(name, emblems, th):
         skip = False
         block.append(l)
     at = next((i + 1 for i, l in enumerate(block) if l.startswith("    motif:")), 0)
-    keep = ("subject", "why", "image", "page", "shape")
+    keep = ("subject", "why", "image", "page", "shape", "crop", "ar")
     block[at:at] = (["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"]
-                    + [f"      - {_flow({k: x[k] for k in keep})}" for x in emblems]
+                    + [f"      - {_flow({k: x[k] for k in keep if k in x})}" for x in emblems]
                     + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
     lines[start + 1:end] = block
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def recrop(name):
+    """items.yaml のその関注項の「カード」（badge）の小元素だけ、画像を取り直して取景（crop）を付け直す。"""
+    import yaml
+    path = ROOT / "items.yaml"
+    item = next(i for i in yaml.safe_load(path.read_text(encoding="utf-8"))["items"] if i["name"] == name)
+    ems = item.get("emblem") or []
+    for x in ems:
+        if x.get("shape") == "badge":
+            try:
+                _, _, img = inspect(_get(x["image"]))
+                x["crop"], x["ar"] = face_crop(img)
+                print(f"  {x['subject']}：crop {x['crop']}", file=sys.stderr)
+            except Exception as e:
+                print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
+    lines = path.read_text(encoding="utf-8").split("\n")
+    start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
+    j = next(i for i in range(start, len(lines)) if lines[i].startswith("    emblem:"))
+    k = j + 1
+    while k < len(lines) and lines[k].startswith("      - "):
+        k += 1
+    keep = ("subject", "why", "image", "page", "shape", "crop", "ar")
+    lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def main():
+    if len(sys.argv) == 3 and sys.argv[1] == "--recrop":
+        return recrop(sys.argv[2])
     ap = argparse.ArgumentParser(description="作品の小元素を探して配色を合わせる")
     ap.add_argument("name", help="items.yaml の関注項の名前")
     ap.add_argument("--api", required=True, help="MediaWiki の api.php（例 https://chainsaw-man.fandom.com/api.php）")
