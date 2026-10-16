@@ -131,5 +131,19 @@ class Redesign(unittest.TestCase):
         self.assertEqual(render._poster_colors({"image": url}, None), "")  # キャッシュなし（テスト）：既定の色
 
 
+class FrontSide(unittest.TestCase):
+    def test_side_column_parts_and_empty(self):
+        works = [{"name": "A", "section": "游戏", "stories": [{"url": "u", "headline": "h", "_issue": "2026-10-16"}]}]
+        wishes = [{"name": "マグ", "price": 850, "currency": "NT$", "image": "mug.jpg"}, {"name": "済み", "status": "已入手"}]
+        out = render._side(works, "2026-10-16", wishes, [["作品:A", 3]])
+        self.assertIn("欲しい物リスト", out)
+        self.assertIn('src="wishlist/mug.jpg"', out)
+        self.assertNotIn("済み", out)                       # 入手済みは出さない
+        self.assertIn("今週にぎやかな作品", out)
+        self.assertIn("<span>A</span><b>+3</b>", out)      # 作品: の接頭辞は外す
+        self.assertNotIn("これからの予定", out)             # 日付のある記事がなければ出さない
+        self.assertEqual(render._side([], "2026-10-16"), "")
+
+
 if __name__ == "__main__":
     unittest.main()
