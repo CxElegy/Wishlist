@@ -445,7 +445,7 @@ class Discover(unittest.TestCase):
 
     def test_old_entries_rechecked_with_current_rules(self):
         """条件（need）を直したら、前に拾ったものも今の条件で見直す：合う別のラベルに付け替え、合わなければ捨てる。"""
-        items = [{"name": "BLEACH", "similar": [{"label": "动漫改编新手游", "query": "q1", "need": ["推出|上市", "動畫|アニメ", "手遊|ゲーム"]}]},
+        items = [{"name": "BLEACH", "similar": [{"label": "动漫改编新手游", "query": "q1", "need": ["推出|上市", "動畫|アニメ|原作", "手遊|ゲーム"]}]},
                  {"name": "鏈鋸人", "similar": [{"label": "新作动画・动画化", "query": "q2", "need": ["動畫版|アニメ化", "確定|決定"]}]}]
         now = dt.datetime.now(dt.timezone.utc).isoformat()
         old = {"at": "2026-01-01T00:00:00+00:00", "entries": [
@@ -474,3 +474,41 @@ class ShuffleButtons(unittest.TestCase):
         self.assertIn('class="shuffle back"', out)
         self.assertIn("前へ", out)
         self.assertIn("wishlist-seen-v2", out)
+
+
+class SimilarNeed(unittest.TestCase):
+    """「同类新发现」的筛选：标题要满足那条搜索词的 need；累积的旧条目也重新检查。例子取自真实的搜索结果。"""
+
+    ITEMS = [
+        {"name": "漫威电影", "similar": [{"label": "超级英雄电影", "need": [
+            "superhero|超級英雄|Batman|Superman",
+            "電影|movie|film|trailer|上映|DCU|Marvel|Batman|Superman|蝙蝠俠|超人"]}]},
+        {"name": "BLEACH Mirrors High", "similar": [{"label": "动漫改编新手游", "need": [
+            "事前登録|配信|上市|推出", "アニメ|原作|動畫|漫畫", "手遊|スマホ|ゲーム|game|遊戲|游戏|RPG"]}]},
+    ]
+
+    def ok(self, label, item, title, summary=""):
+        check = digest._need_checker(self.ITEMS, [])
+        return check({"item": item, "label": label, "title": title, "summary": summary})
+
+    def test_generic_word_alone_is_not_enough(self):
+        self.assertFalse(self.ok("超级英雄电影", "漫威电影", "IVE 新專輯《Looks Can Kill》變身超級英雄，首爾街頭都能看到她們身影"))
+        self.assertTrue(self.ok("超级英雄电影", "漫威电影", "Ben Affleck Reveals Why He Scrapped THE BATMAN, Turned Down STAR WARS"))
+        self.assertTrue(self.ok("超级英雄电影", "漫威电影", "The 7 Greatest Superhero Team-Up Movies of the Last 25 Years, Ranked"))
+
+    def test_anime_news_is_not_a_mobile_game(self):
+        self.assertFalse(self.ok("动漫改编新手游", "BLEACH Mirrors High", "《對馬戰鬼》動畫版確定 2028 年推出 虛淵玄執筆、Kamikaze Douga 製作"))
+        # 结尾的「- 遊戲新聞」是媒体名，不说明这条和游戏有关
+        self.assertFalse(self.ok("动漫改编新手游", "BLEACH Mirrors High",
+                                 "抽籤堂推出《魔力女管家》線上抽獎由動畫版角色設計高村和宏打造全新圖繪週邊- 遊戲新聞"))
+        self.assertTrue(self.ok("动漫改编新手游", "BLEACH Mirrors High",
+                                "『重兵装型女子高生』アニメ化に続きゲーム化が発表。放置系RPGスマホ向けに配信決定"))
+
+    def test_removed_search_and_probes(self):
+        check = digest._need_checker(self.ITEMS, [])
+        self.assertFalse(check({"item": "漫威电影", "label": "已经删掉的搜索词", "title": "Superman movie"}))
+        self.assertTrue(check({"item": "x", "label": "y", "probe": "某件愿望", "title": "随便"}))   # 按关键词搜的交给打分
+
+    def test_source_suffix_only(self):
+        self.assertNotIn("遊戲新聞", digest._need_text("新品週邊- 遊戲新聞"))
+        self.assertIn("open-world", digest._need_text("This 100-hour Steam RPG is an open-world alternative to Skyrim"))

@@ -635,27 +635,36 @@ FOLLOW_PER_ITEM = 4    # 同类新消息每个关注项最多准备几条（找�
 HESITATE = "纠结"   # 愿望清单里还在犹豫买不买的状态：它的 similar 也会每天搜，找类似的好产品
 
 
-def _similar_rules(items):
-    """{关注项: {标签: [need, …]}}：各关注项 similar 的现在的条件。"""
-    rules = {}
-    for item in items:
-        for q in item.get("similar") or []:
-            rules.setdefault(item["name"], {}).setdefault(q["label"], []).append(q.get("need") or [])
-    return rules
+def _need_text(title, summary=""):
+    """检查 need 用的文字：去掉标题结尾的「 - 媒体名」（「- 遊戲新聞」里的「遊戲」不说明这条消息和游戏有关）。"""
+    # 只认「横线 + 空格 + 媒体名」结尾（「週邊- 遊戲新聞」「… - 4Gamer」）；open-world、Team-Up 这种词里的横线不算
+    return (re.sub(r"\s*[-–—]\s+[^-–—]{1,30}$", "", title) + " " + (summary or "")).lower()
 
 
-def _recheck(x, rules):
-    """以前搜到的「同类新发现」按现在的条件（need）再看一遍：条件改了以后，旧的错标签不留着。
-    不合原来的标签时，换成条件对得上的别的标签（先找同一关注项，再找别的）；都对不上返回 None（丢掉）。
-    愿望清单关键词的搜索（probe）和已经删掉的关注项不管。"""
-    labels = rules.get(x.get("item"), {}) if not x.get("probe") else {}
-    text = (x.get("title", "") + " " + (x.get("summary") or "")).lower()
-    fits = lambda needs: any(all(_like_hit(n, text) for n in need) for need in needs)
-    if not labels or fits(labels.get(x.get("label"), [[]])):
-        return x
-    other = next(((it, lb) for it in [x["item"]] + [n for n in rules if n != x["item"]]
-                  for lb, needs in rules[it].items() if lb != x.get("label") and fits(needs)), None)
-    return {**x, "item": other[0], "label": other[1]} if other else None
+def _need_checker(items, hesitating):
+    """按现在 items.yaml / 愿望清单里的 similar 重新检查一条「同类新发现」：标题和摘要要满足它那条搜索词的 need。
+    累积下来的旧条目也要过一遍——need 改严以后，以前放进来的不合格条目（如 IVE 新专辑被当成超级英雄电影）要去掉；
+    别的搜索词的条件对得上时换成那个标签；搜索词已经删掉的也去掉。按喜好关键词搜的（probe）由 recommend() 重新打分，这里不管。"""
+    needs = {}
+    for it in list(items) + list(hesitating):
+        for q in it.get("similar") or []:
+            needs.setdefault((it["name"], q["label"]), []).append(q.get("need") or [])
+
+    def fits(x, key):
+        text = _need_text(x.get("title", ""), x.get("summary"))
+        return any(all(_like_hit(n, text) for n in need) for need in needs.get(key) or [])
+
+    def ok(x):
+        """合格ならそのまま、元のラベルに合わなければ条件の合う別のラベルに付け替えて返す（先に同じ関注項、次に別の項）。
+        どれにも合わなければ None（「動畫版確定」は手遊ではなく新作动画・动画化に）。"""
+        if x.get("probe") or fits(x, (x.get("item"), x.get("label"))):
+            return x
+        if (x.get("item"), x.get("label")) not in needs:   # 搜索词ごと消したもの：付け替えずに捨てる
+            return None
+        keys = sorted((k for k in needs if k != (x.get("item"), x.get("label"))), key=lambda k: k[0] != x.get("item"))
+        other = next((k for k in keys if fits(x, k)), None)
+        return {**x, "item": other[0], "label": other[1]} if other else None
+    return ok
 
 
 def discover(force=False, taste=None):
@@ -669,15 +678,15 @@ def discover(force=False, taste=None):
     settings, items = load_config()
     old = load_json(DISCOVER_FILE) or {}
     now = dt.datetime.now(dt.timezone.utc)
-    hesitating = [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE]
-    rules = _similar_rules(items + hesitating)
+    ok = _need_checker(items, [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE])
     if not force and old.get("at") and now - dt.datetime.fromisoformat(old["at"]) < dt.timedelta(hours=DISCOVER_HOURS):
-        return [y for y in (_recheck(x, rules) for x in old.get("entries", [])) if y]
+        return [y for y in map(ok, old.get("entries", [])) if y]
     seed = random.SystemRandom().randrange(2 ** 32)
     rng = random.Random(seed)
     tracked = {_norm(w) for i in items for w in (i.get("match") or i.get("keywords") or [i["name"]])}
     days = settings.get("lookback_days", 7)
     since = now - dt.timedelta(days=days)
+    hesitating = [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE]
     searches = []  # (搜索词 dict, 来源)
     for item in items + hesitating:
         qs = list(item.get("similar") or [])
@@ -697,7 +706,7 @@ def discover(force=False, taste=None):
                 continue
             if any(w and w in _norm(e.title + e.summary) for w in tracked):  # 已经在关注的不算“新发现”
                 continue
-            if not all(_like_hit(n, (e.title + " " + e.summary).lower()) for n in q.get("need") or []):
+            if not all(_like_hit(n, _need_text(e.title, e.summary)) for n in q.get("need") or []):
                 continue
             g = _title_grams(e.title, [])
             if any(_similar(g, x) for x in grams):
@@ -712,7 +721,7 @@ def discover(force=False, taste=None):
     for x in old.get("entries", []):  # 以前搜到的、一周内的继续留着：池子越积越大，每次换一批都有新的
         if x["url"] in urls or (x.get("date") and x["date"] < since.isoformat()):
             continue
-        x = _recheck(x, rules)
+        x = ok(x)
         if not x:
             continue
         if any(_similar(_title_grams(x["title"], []), g) for g in grams):
@@ -1452,10 +1461,12 @@ def recommend(force_discover=False):
     liked = [r for r in votes if r["vote"] > 0 and r.get("title")]
     voted = {r["url"] for r in votes}  # 投过票的都看过了：不再推荐（赞过的拿来找相关的新消息）
     liked_keys = []
+    # 「和你赞过的哪条有关」只看具体的关键词（Snoopy、Galaxy……）：喜好标签、同类的大类（动物 / 角色造型、超级英雄电影）太宽，
+    # 同一类的每条都会说成和赞过的那条有关（IVE 的新专辑被说成和 Clayface 有关）。大类的口味加分另外显示在「あなたの投票」里
     for r in liked:
-        keys = set(r.get("hits") or []) | set(r.get("words") or [])
+        keys = set(r.get("words") or [])
         if r.get("kind") == "story":
-            keys |= set().union(*like_tags(r["title"], wishes, common))
+            keys |= like_tags(r["title"], wishes, common)[1]
         liked_keys.append((r, keys - common - {b for w in wishes for b in w.get("basics") or []}))
 
     def liked_reason(url, title, keys, work):
@@ -1570,7 +1581,7 @@ def recommend(force_discover=False):
         boards.append({"title": d["title"], "url": url, "source": d["source"], "date": date[:10], "work": work,
                        "image": images[url], "because": work, "hits": sorted(hits), "score": score, "kind": "board",
                        "words": sorted(words), "taste": why, "batch": 1 + len(boards) // PICK_COUNT,
-                       **({"liked": t} if (t := liked_reason(url, d["title"], hits | words, work)) else {})})
+                       **({"liked": t} if (t := liked_reason(url, d["title"], set(words), work)) else {})})
     picks += boards
 
     # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条。
@@ -1602,7 +1613,7 @@ def recommend(force_discover=False):
                        "work": x["item"], "image": img, "because": x["item"], "hits": [x["label"]],
                        "kind": "hesitate" if x.get("wish") else "follow", "batch": len(follow) // DISCOVER_PICKS,
                        "words": words, "taste": taste_bonus(taste, [x["label"]])[1],
-                       **({"liked": t} if (t := liked_reason(url, x["title"], set(words) | {x["label"]}, None)) else {})})
+                       **({"liked": t} if (t := liked_reason(url, x["title"], set(words), None)) else {})})
     picks += follow
     keep = {p["url"] for p in picks}
     # 投票から学んだ口味の上位（トップの右の「あなたの好み」に出す）
