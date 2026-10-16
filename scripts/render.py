@@ -2152,35 +2152,33 @@ def _agenda(works, today, limit=None):
 NAV_STYLES = {
     # A 线路图：每个板块一段彩色线路，作品是站点；读到哪站圆点放大，线路按进度填色，读过的站变实心
     "line": """
-.nav{top:0;height:100vh;max-height:none;padding:16px 0;margin-top:-40px}
+/* P5 风：墨黑的斜切面板，站点是编号 + 斜切标签；当前站点反白、带红色硬阴影和进度条。不滚动：站点按画面高度平分 */
+.nav{top:0;height:100vh;max-height:none;margin-top:-40px;padding:18px 22px 14px 14px;background:var(--ink);color:var(--card);
+ border-left:6px solid var(--alert);clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%)}
 .nav .here{display:none}
-/* 目录不滚动：站点按画面高度平分（flex:1 1 0），板块标题、字号随高度收缩；当前站点占自己需要的高度 */
-.nav .rail{flex:1;padding-left:14px;overflow:hidden}
-.nav .pill{flex:1 1 0;min-height:0;max-height:64px}
-.nav .grp{flex:none}
-.nav .grp{display:flex;align-items:baseline;gap:8px;padding:clamp(3px,1.2vh,16px) 0 clamp(1px,.4vh,4px) 26px;color:var(--sc)}
-.nav .grp b{font:900 13px var(--font-sans);letter-spacing:.3em}
-.nav .grp small{font:700 10px var(--font-mono);letter-spacing:.25em;opacity:.75}
-.nav .pill{padding:0 0 0 26px;font:700 clamp(11px,1.65vh,14px)/1.3 var(--font-sans);color:rgba(26,28,34,.66);
- transition:color .2s,font-size .3s cubic-bezier(.2,.9,.3,1),padding .3s cubic-bezier(.2,.9,.3,1)}
-.nav .pill::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:3px;
- background:linear-gradient(var(--sc) calc(var(--p,0)*100%),rgba(26,28,34,.13) 0)}
-.nav .pill::after{content:"";position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;
- background:var(--paper);border:2px solid rgba(26,28,34,.35);
- transition:width .35s cubic-bezier(.3,1.5,.5,1),height .35s cubic-bezier(.3,1.5,.5,1),margin .35s cubic-bezier(.3,1.5,.5,1),left .35s cubic-bezier(.3,1.5,.5,1),border-color .2s}
-.nav .pill .no{display:none}
-.nav .pill .nm{display:flex;flex-direction:column;gap:3px}
-.nav .pill .cnt{display:none;font:700 11px var(--font-mono);letter-spacing:.12em;color:var(--sc)}
-.nav .pill:hover{color:var(--ink)}
-.nav .pill.past{color:rgba(26,28,34,.72)}
-.nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
-.nav .pill.on{color:var(--ink);font-size:clamp(15px,2.4vh,21px);font-weight:900;letter-spacing:-.01em;padding:clamp(6px,1.6vh,16px) 0 clamp(6px,1.6vh,16px) 40px;flex:0 0 auto;max-height:none}
+.nav .rail{flex:1;padding:0 6px 0 0;overflow:hidden}
+.nav .grp{flex:none;display:flex;align-items:center;gap:8px;margin:clamp(3px,1.2vh,14px) 0 clamp(1px,.4vh,4px)}
+.nav .grp b{display:inline-block;background:var(--sc);color:#FFF;padding:0 10px;transform:skewX(var(--skew));font:900 12px/1.5 var(--font-sans);letter-spacing:.25em}
+.nav .grp small{font:700 10px var(--font-mono);letter-spacing:.25em;color:rgba(251,248,241,.6)}
+.nav .pill{flex:1 1 0;min-height:0;max-height:64px;gap:8px;padding:0 6px 0 8px;isolation:isolate;color:rgba(251,248,241,.74);
+ font:800 clamp(11px,1.6vh,14px)/1.3 var(--font-sans);transition:color .15s,transform .25s cubic-bezier(.3,1.4,.5,1)}
+.nav .pill .no{display:inline;font:700 clamp(9px,1.2vh,10px) var(--font-mono);letter-spacing:.05em;color:color-mix(in srgb,var(--sc) 55%,#FFF)}
+.nav .pill .nm{display:flex;flex-direction:column;gap:2px}
+.nav .pill .cnt{display:none;font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--alert)}
+.nav .pill::before{content:"";position:absolute;inset:1px -4px 1px -6px;z-index:-1;transform:skewX(var(--skew));transition:background .15s}
+.nav .pill:hover{color:#FFF}
+.nav .pill:hover::before{background:rgba(251,248,241,.14)}
+.nav .pill.past{color:rgba(251,248,241,.92)}
+.nav .pill.on{flex:0 0 auto;max-height:none;color:var(--ink);font-size:clamp(14px,2.1vh,18px);font-weight:900;
+ padding:clamp(5px,1.2vh,10px) 6px clamp(5px,1.2vh,10px) 12px;transform:translateX(10px)}
+.nav .pill.on::before{background:var(--card);box-shadow:4px 4px 0 var(--alert)}
+.nav .pill.on::after{content:"";position:absolute;left:-2px;bottom:1px;z-index:-1;height:3px;width:calc(var(--p,0)*100%);background:var(--alert);transform:skewX(var(--skew))}
+.nav .pill.on .no{color:var(--alert)}
 .nav .pill.on .cnt{display:block}
-.nav .pill.on::after{width:38px;height:38px;margin-top:-19px;left:-9px;
- background:var(--img,none) center/cover no-repeat,var(--paper);border:3px solid var(--sc);
- box-shadow:0 0 0 5px color-mix(in srgb,var(--sc) 20%,transparent),0 6px 14px rgba(26,28,34,.25)}
-.nav select{margin:14px 0 0 26px;align-self:flex-start;background:transparent;color:var(--ink);border:1px solid rgba(26,28,34,.35)}
-@media (max-height:700px){.nav{padding:8px 0}.nav .grp{padding-top:2px;padding-bottom:0}.nav .pill.on{padding-top:4px;padding-bottom:4px}.nav .pill.on::after{width:28px;height:28px;margin-top:-14px}.nav .pill.on .cnt{display:none}}
+.nav select{margin:14px 0 0 10px;align-self:flex-start;background:transparent;color:var(--card);border:1px solid rgba(251,248,241,.4)}
+.nav .navwish{margin:8px 6px 0 0;border-color:var(--card);color:var(--card);box-shadow:3px 3px 0 var(--alert);transform:skewX(var(--skew))}
+.nav .navwish:hover{background:var(--alert);border-color:var(--alert)}
+@media (max-height:700px){.nav{padding-top:10px;padding-bottom:8px}.nav .grp{margin-top:2px;margin-bottom:0}.nav .pill.on{padding-top:3px;padding-bottom:3px}.nav .pill.on .cnt{display:none}}
 """,
     # B 报纸索引栏：米色纸面、双线，条目带编号和引导点；当前条目反白成板块色色块并放大
     "index": """
