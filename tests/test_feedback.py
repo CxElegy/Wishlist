@@ -7,6 +7,7 @@ import json
 import pathlib
 import sys
 import tempfile
+import datetime as dt
 import unittest
 from unittest import mock
 
@@ -440,6 +441,29 @@ class Discover(unittest.TestCase):
             self.assertFalse(any(q.split()[0] in ("マグ", "mug") for q in r))  # 基本属性不单独搜
         self.assertEqual(digest._lang_of("スヌーピー"), "ja-JP")
         self.assertEqual(digest._lang_of("black cat"), "en-US")
+
+
+    def test_old_entries_rechecked_with_current_rules(self):
+        """条件（need）を直したら、前に拾ったものも今の条件で見直す：合う別のラベルに付け替え、合わなければ捨てる。"""
+        items = [{"name": "BLEACH", "similar": [{"label": "动漫改编新手游", "query": "q1", "need": ["推出|上市", "動畫|アニメ", "手遊|ゲーム"]}]},
+                 {"name": "鏈鋸人", "similar": [{"label": "新作动画・动画化", "query": "q2", "need": ["動畫版|アニメ化", "確定|決定"]}]}]
+        now = dt.datetime.now(dt.timezone.utc).isoformat()
+        old = {"at": "2026-01-01T00:00:00+00:00", "entries": [
+            {"title": "《對馬戰鬼》動畫版確定 2028 年推出", "url": "https://e/1", "item": "BLEACH", "label": "动漫改编新手游", "date": now},
+            {"title": "人気アニメ原作の新作ゲームを上市", "url": "https://e/2", "item": "BLEACH", "label": "动漫改编新手游", "date": now},
+            {"title": "まったく関係ない話", "url": "https://e/3", "item": "BLEACH", "label": "动漫改编新手游", "date": now}]}
+        saved = {}
+        with mock.patch.object(digest, "load_config", return_value=({}, items)), \
+             mock.patch.object(digest, "load_json", return_value=old), \
+             mock.patch.object(digest, "load_wishlist", return_value=[]), \
+             mock.patch.object(digest, "save_json", side_effect=lambda p, d: saved.update(d)), \
+             mock.patch.object(digest, "probe_queries", return_value=[]), \
+             mock.patch.object(digest.sources, "google_news", return_value=[]):
+            out = digest.discover(force=True)
+        got = {x["url"]: (x["item"], x["label"]) for x in out}
+        self.assertEqual(got["https://e/1"], ("鏈鋸人", "新作动画・动画化"))   # アニメのニュース：手遊とは呼ばない
+        self.assertEqual(got["https://e/2"], ("BLEACH", "动漫改编新手游"))
+        self.assertNotIn("https://e/3", got)
 
 
 class ShuffleButtons(unittest.TestCase):

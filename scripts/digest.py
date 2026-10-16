@@ -635,6 +635,29 @@ FOLLOW_PER_ITEM = 4    # 同类新消息每个关注项最多准备几条（找�
 HESITATE = "纠结"   # 愿望清单里还在犹豫买不买的状态：它的 similar 也会每天搜，找类似的好产品
 
 
+def _similar_rules(items):
+    """{关注项: {标签: [need, …]}}：各关注项 similar 的现在的条件。"""
+    rules = {}
+    for item in items:
+        for q in item.get("similar") or []:
+            rules.setdefault(item["name"], {}).setdefault(q["label"], []).append(q.get("need") or [])
+    return rules
+
+
+def _recheck(x, rules):
+    """以前搜到的「同类新发现」按现在的条件（need）再看一遍：条件改了以后，旧的错标签不留着。
+    不合原来的标签时，换成条件对得上的别的标签（先找同一关注项，再找别的）；都对不上返回 None（丢掉）。
+    愿望清单关键词的搜索（probe）和已经删掉的关注项不管。"""
+    labels = rules.get(x.get("item"), {}) if not x.get("probe") else {}
+    text = (x.get("title", "") + " " + (x.get("summary") or "")).lower()
+    fits = lambda needs: any(all(_like_hit(n, text) for n in need) for need in needs)
+    if not labels or fits(labels.get(x.get("label"), [[]])):
+        return x
+    other = next(((it, lb) for it in [x["item"]] + [n for n in rules if n != x["item"]]
+                  for lb, needs in rules[it].items() if lb != x.get("label") and fits(needs)), None)
+    return {**x, "item": other[0], "label": other[1]} if other else None
+
+
 def discover(force=False, taste=None):
     """「我会喜欢？」要的新消息，抓 Google 新闻，去掉已经在关注清单里的作品。每次用一个新的随机种子挑搜索词，
     这样每次搜到的不一样（种子记在 state/discover.json 里，出了问题可以复现）：
@@ -646,14 +669,15 @@ def discover(force=False, taste=None):
     settings, items = load_config()
     old = load_json(DISCOVER_FILE) or {}
     now = dt.datetime.now(dt.timezone.utc)
+    hesitating = [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE]
+    rules = _similar_rules(items + hesitating)
     if not force and old.get("at") and now - dt.datetime.fromisoformat(old["at"]) < dt.timedelta(hours=DISCOVER_HOURS):
-        return old.get("entries", [])
+        return [y for y in (_recheck(x, rules) for x in old.get("entries", [])) if y]
     seed = random.SystemRandom().randrange(2 ** 32)
     rng = random.Random(seed)
     tracked = {_norm(w) for i in items for w in (i.get("match") or i.get("keywords") or [i["name"]])}
     days = settings.get("lookback_days", 7)
     since = now - dt.timedelta(days=days)
-    hesitating = [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE]
     searches = []  # (搜索词 dict, 来源)
     for item in items + hesitating:
         qs = list(item.get("similar") or [])
@@ -687,6 +711,9 @@ def discover(force=False, taste=None):
     urls = {x["url"] for x in out}
     for x in old.get("entries", []):  # 以前搜到的、一周内的继续留着：池子越积越大，每次换一批都有新的
         if x["url"] in urls or (x.get("date") and x["date"] < since.isoformat()):
+            continue
+        x = _recheck(x, rules)
+        if not x:
             continue
         if any(_similar(_title_grams(x["title"], []), g) for g in grams):
             continue
