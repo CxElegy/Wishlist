@@ -87,10 +87,9 @@ class VoteButtons(unittest.TestCase):
         self.assertEqual(data["words"], ["black cat"])
 
     def test_story_buttons_sit_below_text(self):
-        # 消息卡片的小按钮放在正文下面一行，不能再浮在标题上（absolute 会盖住细卡片的标题）
-        import re
-        rule = re.search(r"\n\.vt\{([^}]*)\}", render.CSS).group(1)
-        self.assertNotIn("absolute", rule)
+        # 消息卡片的小按钮固定在日期行右端：日期行给按钮留出宽度、高度和按钮一样，按钮区不会盖住标题
+        self.assertIn("padding-right:var(--vtw,70px)", render.CSS)
+        self.assertIn("min-height:var(--vth,28px)", render.CSS)
         self.assertNotIn("opacity:0", render.CSS.split(".vt{", 1)[1].split(".downv", 1)[0])
         self.assertIn("'.when, .kick, :scope > em'", render.VOTE_JS)
         # 整个按钮区拦住点击（按偏了也不打开原文），保存中不用 disabled（disabled 的按钮会把点击漏给链接）
