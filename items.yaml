@@ -932,3 +932,19 @@ items:
       - "(Vaundy|바운디|バウンディ).{0,30}(回归|回歸|컴백|comeback|カムバック|新曲|新歌|新專輯|新专辑|album|リリース|MV)"
     site: "https://vaundy.jp/"
     notes: "2026-10-16 从网页设置页加进来的。关注：演唱会、巡演、门票：抽选、发售、新歌、新专辑、回归。维基数据：日本創作歌手。"
+
+  - name: "周杰伦"
+    type: event
+    section: "演出"
+    size: S
+    subtitle: "周杰倫"
+    keywords: ["周杰伦", "周杰倫", "저우제룬", "Jay Chou"]
+    match: ["周杰伦", "周杰倫", "저우제룬", "Jay Chou", "Chou Chieh-lun", "President Chou", "Zhou Jielun", "周董", "ジェイ・チョウ"]
+    exclude: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale", "おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]
+    news_langs: ["zh-TW", "zh-CN"]
+    priority: "演唱会和巡演（尤其是日本、大阪附近的场次）；门票怎么买（抽选、发售时间）；新歌、新专辑和回归"
+    urgent_patterns:
+      - "(周杰伦|周杰倫|저우제룬|Jay Chou|Chou Chieh-lun|President Chou|Zhou Jielun|周董|ジェイ・チョウ).{0,30}(演唱會|演唱会|巡演|巡迴|ツアー|ライブ|コンサート|concert|tour|公演|ドーム|大阪)"
+      - "(周杰伦|周杰倫|저우제룬|Jay Chou|Chou Chieh-lun|President Chou|Zhou Jielun|周董|ジェイ・チョウ).{0,30}(抽選|抽选|先行|チケット|門票|门票|售票|ticket|一般発売)"
+      - "(周杰伦|周杰倫|저우제룬|Jay Chou|Chou Chieh-lun|President Chou|Zhou Jielun|周董|ジェイ・チョウ).{0,30}(回归|回歸|컴백|comeback|カムバック|新曲|新歌|新專輯|新专辑|album|リリース|MV)"
+    notes: "2026-10-16 从网页设置页加进来的。关注：演唱会、巡演、门票：抽选、发售、新歌、新专辑、回归。维基数据：台湾男歌手、流行歌曲作家、演员。"
