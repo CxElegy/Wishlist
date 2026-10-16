@@ -412,13 +412,15 @@ button{font-family:inherit}
    高さを決めて幅は絵なり（全身の縦長の絵も小さくならない）。スクロールで飛び出し、そのあと影が伸びて立体に */
 @property --sx{syntax:"<length>";inherits:true;initial-value:8px}
 @property --sy{syntax:"<length>";inherits:true;initial-value:8px}
-.emb{--ring:var(--acc);position:absolute;right:clamp(12px,4%,52px);top:-58px;z-index:5;height:156px;pointer-events:none;transform:rotate(-6deg)}
+.emb{--ring:var(--acc);position:absolute;right:clamp(12px,4%,52px);bottom:8px;z-index:5;height:156px;pointer-events:none;transform:rotate(-6deg);transform-origin:50% 100%}  /* 見出しの帯の中に置き、下端を帯にそろえる：上には版面の外へはみ出してよいが、下のニュースには重ならない */
 .emb.ring-white{--ring:var(--card)}.emb.ring-none{--ring:transparent}
 .emb-in{height:100%;width:max-content;transition:transform .6s cubic-bezier(.2,1.5,.4,1),opacity .2s,--sx .35s ease-out .45s,--sy .35s ease-out .45s;
  filter:drop-shadow(2.5px 0 0 var(--card)) drop-shadow(-2.5px 0 0 var(--card)) drop-shadow(0 2.5px 0 var(--card)) drop-shadow(0 -2.5px 0 var(--card))
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
-.emb img{display:block;height:100%;width:auto;max-width:220px;object-fit:contain}
+.emb-in{display:flex;align-items:flex-end}
+.emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:220px;object-fit:contain}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
+.emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
@@ -431,7 +433,7 @@ button{font-family:inherit}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:210px}
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;top:-38px;right:8px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
+@media (max-width:600px){.emb{height:100px;right:8px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
@@ -961,9 +963,14 @@ def _legible(t):
     return t
 
 
+FACE_SHARE = 0.32   # emblem.FACE_SHARE と同じ：顔が小元素の高さのこの割合になる大きさで表示する
+
+
 def _emblem_img(a):
-    """小元素 1 枚の HTML。カード（badge）で取景（crop）があれば 4:5 の窓にその範囲だけを見せる。"""
-    img = (f'<img class="{a["shape"]}" src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
+    """小元素 1 枚の HTML。カード（badge）で取景（crop）があれば 4:5 の窓にその範囲だけを見せる。
+    顔の割合（fs）が基準より大きい（アップの）ものは小さく表示して、どの版面でも顔が同じくらいの大きさに見えるように。"""
+    k = f' style="--k:{min(1, FACE_SHARE / a["fs"]):.3f}"' if a.get("fs") else ""
+    img = (f'<img class="{a["shape"]}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
            f'onerror="var s=this.closest(\'.sec\');if(s)s.classList.remove(\'has-emb\');this.closest(\'.emb\').remove()">')
     c = a.get("crop")
     if a["shape"] == "badge" and c:
@@ -984,6 +991,11 @@ def _emblem(items, ring="accent"):
         c = x.get("crop")
         if isinstance(c, list) and len(c) == 3 and all(isinstance(v, (int, float)) and 0 <= v <= 1 for v in c) and c[2] > 0:
             a.update(crop=c, ar=float(x.get("ar") or 1))
+        fs = x.get("fs")
+        if isinstance(fs, (int, float)) and 0.05 < fs <= 1:
+            a["fs"] = float(fs)
+        if x.get("shape") in ("logo", "icon"):
+            a["shape"] = x["shape"]
         alts.append(a)
     if not alts:
         return ""
@@ -1030,7 +1042,7 @@ def _section(block, anchor=""):
     cnt = _heat_badge(block) + cnt
     emb_html = _emblem(block.get("_emblems") or [], block.get("_ring") or "accent")
     return (f'<section id="{anchor}" data-k="{e(block["name"])}"{_fx(block["name"])} class="sec{" m-" + motif if motif else ""}{" has-emb" if emb_html else ""}{quiet}" style="{style}">'
-            f'{emb_html}<div class="band">{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
+            f'<div class="band">{emb_html}{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
             f"{facts}{grid}</section>")
 
 
@@ -1366,7 +1378,7 @@ EMB_JS = """
     const inner = el.querySelector('.emb-in'), img = el.querySelector('img');
     if (alts.length > 1 && inner && img) {
       const a = alts[Math.floor(Math.random() * alts.length)];
-      const n = img.cloneNode(); n.className = a.shape; n.src = a.src;
+      const n = img.cloneNode(); n.className = a.shape; n.src = a.src; n.style.cssText = a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
       if (a.shape === 'badge' && a.crop) {
         const c = document.createElement('span'); c.className = 'crop';
         c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1);

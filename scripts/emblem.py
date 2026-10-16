@@ -382,7 +382,7 @@ def cut_out(url, slug, drawn=True):
     img = Image.open(io.BytesIO(_get(url))).convert("RGB")
     out = remove(img, session=_session("birefnet-general-lite"))   # 絵も写真もいちばん輪郭がきれいだった（isnet-anime・u2net と比べた）
     out = check_whole(out)
-    out = out.crop(out.getchannel("A").getbbox())
+    out, _ = upper_body(out)   # 縦長の全身は上半身に（小さく貼ると顔が見えない）
     out.thumbnail((420, 520))
     EMB_DIR.mkdir(parents=True, exist_ok=True)
     out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
@@ -476,6 +476,148 @@ def slugify(name, subject):
     return base[:60]
 
 
+def main_parts(img, share=0.15):
+    """いちばん大きいまとまりと、その share 以上の大きさのまとまり（離れた手・持ち物）だけ残す。"""
+    import numpy as np
+    import cv2
+    from PIL import Image
+    a = np.array(img.getchannel("A"))
+    n, labels, stats, _ = cv2.connectedComponentsWithStats((a > 128).astype("uint8"), 8)
+    if n <= 2:
+        return img
+    big = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
+    keep = np.isin(labels, [i for i in range(1, n) if stats[i, cv2.CC_STAT_AREA] >= share * stats[big, cv2.CC_STAT_AREA]])
+    out = img.copy()
+    out.putalpha(Image.fromarray(np.where(keep, a, 0).astype("uint8")))
+    return out
+
+
+def upper_body(img, keep=0.46, force=None, ratio=1.75):
+    """全身の立ち絵は、頭から腰あたりまで（上から keep の割合）だけにする。版面には小さく貼るので、全身だと顔が見えないため。
+    自動の判定：足まで入っている（framing が full）で、高さが幅の ratio 倍以上（等身の高い人物）。
+    頭の大きいキャラ（ポチタ・たぬきち・グローグー）や胸像はそのまま。自動で外れるもの（小道具で横に広い人物、
+    縦長だけど頭の大きいキャラ）は、AI が items.yaml の小元素に upper: true / false を書いて決める（force）。"""
+    img = main_parts(img)   # 周りのきらきら・小さな飾り（離れた小さなまとまり）は消してから測る
+    img = img.crop(img.getchannel("A").getbbox())
+    w, h = img.size
+    cut = force if force is not None else (framing(img) == "full" and h >= w * ratio)
+    if not cut:
+        return img, False
+    img = img.crop((0, 0, w, int(h * keep)))
+    return img.crop(img.getchannel("A").getbbox()), True
+
+
+FACE_SHARE = 0.32   # 顔の高さ ÷ 小元素の高さ。どの版面でも顔が同じくらいの大きさに見えるようにする基準
+
+
+def face_fit(img, share=FACE_SHARE):
+    """人物の小元素を、顔の大きさがそろうように整える。→ (画像, 顔の割合 fs〔顔が見つからなければ None〕)
+    顔が小さい（全身など）ときは、頭の上から「顔の高さ ÷ share」までで下を切る。顔が大きい（アップ）ときは切らずに fs を返し、
+    網页のほうで小さく表示する（render の --k）。顔が見つからないもの（横顔・覆面・マスコット）は upper_body の規則で。"""
+    img = main_parts(img)
+    img = img.crop(img.getchannel("A").getbbox())
+    f = face_box(img)
+    w, h = img.size
+    if not f or f[1] + f[3] / 2 > h * 0.35:   # 顔は上 35% にあるはず（下のほうの検出は手や服の誤検出）
+        return None, None
+    fy, fh = f[1], f[3]
+    if fh / h < share:
+        bottom = max(fh / share, fy + fh * 1.6)   # 顔が share になる高さ。ただし顔の下（あご・首）は必ず入れる
+        img = img.crop((0, 0, w, min(h, int(bottom))))
+        img = img.crop(img.getchannel("A").getbbox())
+        h = img.size[1]
+    return img, round(fh / h, 3)
+
+
+def fit_all(name):
+    """その関注項の人物の小元素を、顔の大きさがそろうように整えて docs/emblems/ に保存し、fs（顔の割合）を書く。
+    ロゴ・物のアイコン（shape: logo / icon）はそのまま。"""
+    import yaml
+    from PIL import Image
+    path = ROOT / "items.yaml"
+    item = next(i for i in yaml.safe_load(path.read_text(encoding="utf-8"))["items"] if i["name"] == name)
+    ems = item.get("emblem") or []
+    for x in ems:
+        if x.get("shape") in ("logo", "icon"):
+            continue
+        try:
+            src = x.get("source")
+            img = None
+            if src:   # 元が透明な立ち絵なら、そこから整え直す（切り詰める前の全身から）
+                cand = Image.open(io.BytesIO(_get(src))).convert("RGBA")
+                if inspect(_get(src))[0] == "cutout":
+                    img = cand
+            if img is None:
+                img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
+                       else Image.open(io.BytesIO(_get(x["image"])))).convert("RGBA")
+            out, fs = face_fit(img)
+            if out is None:
+                out, _ = upper_body(img, force=x.get("upper"))
+            slug = slugify(name, x["subject"])
+            out.thumbnail((420, 520))
+            EMB_DIR.mkdir(parents=True, exist_ok=True)
+            out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
+            if not x["image"].startswith("emblems/"):
+                x["source"] = x["image"]
+            x["image"], x["shape"] = f"emblems/{slug}.webp", "cutout"
+            if fs:
+                x["fs"] = fs
+            else:
+                x.pop("fs", None)
+            print(f"  {x['subject']}：顔 {fs if fs else '見つからない（上半身の規則）'}", file=sys.stderr)
+        except Exception as e:
+            print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
+    _write_emblems(name, ems)
+
+
+def _write_emblems(name, ems):
+    path = ROOT / "items.yaml"
+    lines = path.read_text(encoding="utf-8").split("\n")
+    start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
+    j = next(i for i in range(start, len(lines)) if lines[i].startswith("    emblem:"))
+    k = j + 1
+    while k < len(lines) and lines[k].startswith("      - "):
+        k += 1
+    keep = ("subject", "why", "image", "source", "page", "shape", "upper", "fs")
+    lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def upper_all(name):
+    """その関注項の小元素のうち、縦長の全身を上半身にして docs/emblems/ に保存する（元の網址は source）。"""
+    import yaml
+    from PIL import Image
+    path = ROOT / "items.yaml"
+    item = next(i for i in yaml.safe_load(path.read_text(encoding="utf-8"))["items"] if i["name"] == name)
+    ems = item.get("emblem") or []
+    for x in ems:
+        src = x["image"]
+        try:
+            img = (Image.open(ROOT / "docs" / src) if src.startswith("emblems/") else Image.open(io.BytesIO(_get(src)))).convert("RGBA")
+            out, cut = upper_body(img, force=x.get("upper"))
+            if not cut:
+                continue
+            slug = slugify(name, x["subject"])
+            out.thumbnail((420, 520))
+            EMB_DIR.mkdir(parents=True, exist_ok=True)
+            out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
+            if not src.startswith("emblems/"):
+                x["source"] = src
+            x["image"], x["shape"] = f"emblems/{slug}.webp", "cutout"
+            print(f"  {x['subject']} → 上半身 {x['image']}", file=sys.stderr)
+        except Exception as e:
+            print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
+    lines = path.read_text(encoding="utf-8").split("\n")
+    start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
+    j = next(i for i in range(start, len(lines)) if lines[i].startswith("    emblem:"))
+    k = j + 1
+    while k < len(lines) and lines[k].startswith("      - "):
+        k += 1
+    keep = ("subject", "why", "image", "source", "page", "shape", "upper")
+    lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def keep_framing(ems):
     """同じ版面の小元素は取景をそろえる：胸像が一枚でもあれば、全身のもの（比率が浮く）は外す。全部全身ならそのまま。
     透明な立ち絵（もとから切り抜き）は docs/emblems にないので、元の画像で判定する。"""
@@ -525,12 +667,16 @@ def cut_all(name, drawn):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def main():
+    if len(sys.argv) == 3 and sys.argv[1] == "--fit":   # --fit 関注項：顔の大きさをそろえる
+        return fit_all(sys.argv[2])
+    if len(sys.argv) == 3 and sys.argv[1] == "--upper":   # --upper 関注項：縦長の全身を上半身に
+        return upper_all(sys.argv[2])
     if len(sys.argv) == 4 and sys.argv[1] == "--cut":   # --cut 関注項 drawn|photo
         return cut_all(sys.argv[2], sys.argv[3] == "drawn")
     if len(sys.argv) == 3 and sys.argv[1] == "--recrop":
