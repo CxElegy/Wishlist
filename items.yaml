@@ -861,7 +861,7 @@ items:
       - {subject: "Gudetama2018ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/4/41/Gudetama2018ranking.png/revision/latest/scale-to-width-down/400?cb=20260228135811", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2018ranking.png", shape: "cutout"}
       - {subject: "Gudetama2019ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/9/98/Gudetama2019ranking.png/revision/latest/scale-to-width-down/400?cb=20260302104646", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2019ranking.png", shape: "cutout"}
       - {subject: "Gudetama2020ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/c/c2/Gudetama2020ranking.png/revision/latest/scale-to-width-down/400?cb=20260211060247", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2020ranking.png", shape: "cutout"}
-    theme: {bg: "#F7F2E9", fg: "#1E1A18", accent: "#885D0C", alt_bg: "#262117", alt_fg: "#F4EEE4", alt_accent: "#EEB444", split: true}  # 小元素「Gudetama」の色に合わせた配色（scripts/emblem.py）
+    theme: {bg: "#F7F2E9", fg: "#1E1A18", accent: "#885D0C", alt_bg: "#211C12", alt_fg: "#F4EEE4", alt_accent: "#EEB444", split: true}  # 小元素「Gudetama」の色に合わせた配色（scripts/emblem.py）
     type: category
     section: "好物"
     size: M
@@ -886,7 +886,7 @@ items:
       - {subject: "Denji", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/chainsaw-man/images/b/b0/Denji_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250324010006", page: "https://chainsaw-man.fandom.com/wiki/Denji", shape: "cutout"}
       - {subject: "Power", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/chainsaw-man/images/a/ac/Power_anime_design_2.png/revision/latest/scale-to-width-down/400?cb=20231006042039", page: "https://chainsaw-man.fandom.com/wiki/Power", shape: "cutout"}
       - {subject: "Aki Hayakawa", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/chainsaw-man/images/c/cb/Aki_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073818", page: "https://chainsaw-man.fandom.com/wiki/Aki_Hayakawa", shape: "cutout"}
-    theme: {bg: "#F7EDE9", fg: "#1E1A18", accent: "#AE5223", alt_bg: "#261C17", alt_fg: "#F4EEE4", alt_accent: "#DD8355", split: true}  # 小元素「Pochita」の色に合わせた配色（scripts/emblem.py）
+    theme: {bg: "#211712", fg: "#F4EEE4", accent: "#DD8355", alt_bg: "#F7EDE9", alt_fg: "#1E1A18", alt_accent: "#AE5223", split: true}  # 小元素「Pochita」の色に合わせた配色（scripts/emblem.py）
     type: anime
     section: "影视"
     size: M
@@ -932,7 +932,7 @@ items:
       - {subject: "K.K. Slider", why: "シリーズでいちばん知られた住人（AI が選定）", image: "https://static.wikia.nocookie.net/animalcrossing/images/8/81/K.K._Slider_NH.png/revision/latest/scale-to-width-down/400?cb=20210113095442", page: "https://animalcrossing.fandom.com/wiki/K.K._Slider", shape: "cutout"}
       - {subject: "Timmy and Tommy", why: "シリーズでいちばん知られた住人（AI が選定）", image: "https://static.wikia.nocookie.net/animalcrossing/images/6/6c/Timmy_and_Tommy_NH.png/revision/latest/scale-to-width-down/400?cb=20200828185411", page: "https://animalcrossing.fandom.com/wiki/Timmy_and_Tommy", shape: "cutout"}
       - {subject: "Blathers", why: "シリーズでいちばん知られた住人（AI が選定）", image: "https://static.wikia.nocookie.net/animalcrossing/images/1/1b/Blathers_NH.png/revision/latest/scale-to-width-down/400?cb=20200229053519", page: "https://animalcrossing.fandom.com/wiki/Blathers", shape: "cutout"}
-    theme: {bg: "#F7EFE9", fg: "#1E1A18", accent: "#9B5A22", alt_bg: "#261E17", alt_fg: "#F4EEE4", alt_accent: "#DA9558", split: true}  # 小元素「Tom Nook」の色に合わせた配色（scripts/emblem.py）
+    theme: {bg: "#F7EFE9", fg: "#1E1A18", accent: "#9B5A22", alt_bg: "#211912", alt_fg: "#F4EEE4", alt_accent: "#DA9558", split: true}  # 小元素「Tom Nook」の色に合わせた配色（scripts/emblem.py）
     type: game
     section: "游戏"
     size: M

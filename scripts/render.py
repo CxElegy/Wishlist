@@ -294,7 +294,7 @@ button{font-family:inherit}
 .calm .last .mono{font:13px var(--font-num);letter-spacing:.06em;opacity:.75}
 .calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
-.when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em;opacity:.85}
+.when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em;color:color-mix(in srgb,currentColor 88%,transparent)}  /* 薄めるのは日付の文字だけ（NEW の札まで薄めると読めなくなる） */
 .from{min-width:0;overflow-wrap:break-word;font:500 11px/1.3 var(--font-sans);letter-spacing:.02em;opacity:.75}  /* 省略しない：入らなければ次の行へ */
 .brief .d{display:flex;flex-direction:column;gap:2px;max-width:9em}.brief .d .from{font-size:11px;opacity:.85}
 .nm .from,.mono .from,.watch span .from{margin-left:8px;letter-spacing:.02em;color:inherit;font-weight:500}

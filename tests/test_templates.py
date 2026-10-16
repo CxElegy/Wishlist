@@ -113,9 +113,12 @@ class Templates(unittest.TestCase):
     def test_emblem_palette(self):
         # 小元素の代表色 → 配色：地は米白、強調は代表色（読める濃さ）、どれも 4.5:1 以上
         import emblem, theme
-        th = emblem.palette(theme._rgb("#D97441"))   # ポチタのオレンジ
-        for a, b in (("fg", "bg"), ("accent", "bg"), ("alt_fg", "alt_bg"), ("alt_accent", "alt_bg")):
-            self.assertGreaterEqual(theme.contrast(theme._rgb(th[a]), theme._rgb(th[b])), 4.5, (a, b))
+        for tone in ("light", "dark"):
+            th = emblem.palette(theme._rgb("#D97441"), tone)   # ポチタのオレンジ
+            for a, b in (("fg", "bg"), ("accent", "bg"), ("alt_fg", "alt_bg"), ("alt_accent", "alt_bg")):
+                self.assertGreaterEqual(theme.contrast(theme._rgb(th[a]), theme._rgb(th[b])), 4.5, (tone, a, b))
+        self.assertLess(theme._lum(theme._rgb(emblem.palette(theme._rgb("#D97441"), "dark")["bg"])), 0.05)   # 暗い地
+        th = emblem.palette(theme._rgb("#D97441"))
         h = lambda c: __import__("colorsys").rgb_to_hls(*(v / 255 for v in theme._rgb(c)))[0]
         self.assertLess(abs(h(th["accent"]) - h("#D97441")), 0.04)   # 強調色は代表色と同じ色相
 

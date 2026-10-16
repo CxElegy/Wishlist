@@ -13,15 +13,16 @@
      Fandom にページがなければ別の Wiki（Sanrio 系・Nookipedia・Wikipedia）を試す。
   3. 使えるか確かめる：短い辺が 160px 以上。縁の 90% 以上が透明なら「切り抜き」（輪郭どおりのステッカー）、
      そうでなければ「バッジ」（丸く切って貼る。絵の中身はそのまま）。使えないものは飛ばす。
-  4. 版面の配色を合わせる：先頭（いちばん代表的な一枚）の代表色（不透明な部分で「面積 × 鮮やかさ²」が最大の色）を
-     強調色に、その色寄りの米白を地、墨色を副面にする。文字はどれも 4.5:1 以上（theme._readable）。
+  4. 版面の配色を合わせる：先頭（いちばん代表的な一枚）の代表色（不透明な部分で「面積 × 鮮やかさ²」が最大の色）を強調色に。
+     地の明るさは作品の気質で決める（--tone）：熱血・暴力・ホラー・SF は墨の地（dark）、かわいい・癒やし・日常は米白の地（light）。
+     一律に米白にしない。文字はどれも 4.5:1 以上（theme._readable）、網页に出したあと実際の重なりでも確かめる。
      キャラが入れ替わっても浮かないように、どの絵にも版面の強調色のフチと墨の硬い影を付ける（emblem_ring）。
   5. items.yaml に emblem（リスト：subject / why / image / page / shape）と theme を書く。
 
 使い方：
   python scripts/emblem.py "チェーンソーマン" --api https://chainsaw-man.fandom.com/api.php \
-      --titles Pochita --why "作品の顔のマスコット" --anilist 127230 --max 5 [--write]
-  python scripts/emblem.py "ぐでたま" --api https://hellokitty.fandom.com/api.php --gallery Gudetama --match Gudetama --max 4
+      --titles Pochita --why "作品の顔のマスコット" --anilist 127230 --max 5 --tone dark [--write]
+  python scripts/emblem.py "ぐでたま" --api https://hellokitty.fandom.com/api.php --gallery Gudetama --match Gudetama --max 4 --tone light
 """
 
 import argparse
@@ -110,14 +111,19 @@ def key_color(img):
     return max(vivid or colors, key=lambda nc: nc[0] * theme._chroma(nc[1]) ** 2)[1]
 
 
-def palette(key):
-    """代表色 → 版面の配色。地は代表色寄りの米白、強調は代表色（読める濃さに）、副面は代表色寄りの墨。"""
-    bg = theme._shift(key, 0.94, max_sat=0.45)
-    fg = (30, 26, 24)
-    accent = theme._readable(theme._shift(key, 0.45, max_sat=0.85), bg)
-    alt_bg = theme._shift(key, 0.12, max_sat=0.25)
-    alt_fg = (244, 238, 228)
-    alt_accent = theme._readable(theme._shift(key, 0.6, max_sat=0.85), alt_bg)
+def palette(key, tone="light"):
+    """代表色 → 版面の配色。tone は作品の気質で決める：
+    light（かわいい・癒やし・日常）＝代表色寄りの米白の地に、読める濃さの代表色。
+    dark（熱血・暴力・ホラー・SF）＝代表色寄りの墨の地に、明るくした代表色。
+    どちらも副面は反対の明るさ。文字と強調色はどれも 4.5:1 以上（theme._readable）。"""
+    cream, ink = theme._shift(key, 0.94, max_sat=0.45), theme._shift(key, 0.1, max_sat=0.3)
+    on_cream, on_ink = (30, 26, 24), (244, 238, 228)
+    acc_cream = theme._readable(theme._shift(key, 0.45, max_sat=0.85), cream)
+    acc_ink = theme._readable(theme._shift(key, 0.6, max_sat=0.85), ink)
+    if tone == "dark":
+        bg, fg, accent, alt_bg, alt_fg, alt_accent = ink, on_ink, acc_ink, cream, on_cream, acc_cream
+    else:
+        bg, fg, accent, alt_bg, alt_fg, alt_accent = cream, on_cream, acc_cream, ink, on_ink, acc_ink
     return {"bg": theme._hex(bg), "fg": theme._hex(fg), "accent": theme._hex(accent),
             "alt_bg": theme._hex(alt_bg), "alt_fg": theme._hex(alt_fg), "alt_accent": theme._hex(alt_accent),
             "split": True}
@@ -166,7 +172,7 @@ def one(api, title):
     return {"subject": title, "image": url, "page": page, "shape": shape, "key": theme._hex(key)}
 
 
-def collect(api, titles=(), anilist=None, gallery_page=None, match=None, n=6, why=""):
+def collect(api, titles=(), anilist=None, gallery_page=None, match=None, n=6, why="", tone="light"):
     """候補を集めて使えるものだけ残す。先頭がいちばん代表的な一枚（配色の基準）。"""
     found, seen = [], set()
     names = [(t, why or "AI が選んだ代表キャラ") for t in titles]
@@ -184,7 +190,7 @@ def collect(api, titles=(), anilist=None, gallery_page=None, match=None, n=6, wh
         found += [{**x, "why": f"{gallery_page} の別シーン（Wiki の画像）"} for x in gallery(api, gallery_page, match or gallery_page, n - len(found))]
     if not found:
         raise LookupError("使える画像が見つからない")
-    return found, palette(theme._rgb(found[0]["key"]))
+    return found, palette(theme._rgb(found[0]["key"]), tone)
 
 
 def _flow(d):
@@ -225,9 +231,11 @@ def main():
     ap.add_argument("--gallery", help="キャラが一人の作品：このページの画像から別シーンを集める")
     ap.add_argument("--match", help="--gallery で使う画像ファイル名の正規表現")
     ap.add_argument("--max", type=int, default=6, help="最大の枚数")
+    ap.add_argument("--tone", choices=["light", "dark"], required=True,
+                    help="作品の気質：dark＝熱血・暴力・ホラー・SF（墨の地）、light＝かわいい・癒やし・日常（米白の地）")
     ap.add_argument("--write", action="store_true", help="items.yaml に書く")
     a = ap.parse_args()
-    found, th = collect(a.api, a.titles, a.anilist, a.gallery, a.match, a.max, a.why)
+    found, th = collect(a.api, a.titles, a.anilist, a.gallery, a.match, a.max, a.why, a.tone)
     print(json.dumps({"emblem": found, "theme": th}, ensure_ascii=False, indent=2))
     if a.write:
         write_item(a.name, found, th)
