@@ -92,7 +92,7 @@ class VoteButtons(unittest.TestCase):
         rule = re.search(r"\n\.vt\{([^}]*)\}", render.CSS).group(1)
         self.assertNotIn("absolute", rule)
         self.assertNotIn("opacity:0", render.CSS.split(".vt{", 1)[1].split(".downv", 1)[0])
-        self.assertIn(".txt, :scope > .ptxt", render.VOTE_JS)
+        self.assertIn("'.when, .kick, :scope > em'", render.VOTE_JS)
 
 
 if __name__ == "__main__":
