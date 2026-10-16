@@ -80,7 +80,7 @@ class VoteButtons(unittest.TestCase):
         self.assertIn('data-vote="-1"', out)
         self.assertIn("あなたの投票：猫 +2", out)
         # 投票脚本挂在整页最后（所有消息卡片都要用），不在推荐区里
-        self.assertIn('"https://x.supabase.co"', render.VOTE_JS % json.dumps({"url": "https://x.supabase.co", "key": "k"}))
+        self.assertIn('"https://x.supabase.co"', render.VOTE_JS.replace("__CFG__", json.dumps({"url": "https://x.supabase.co", "key": "k"})))
         # data-v 属性里的 JSON 要转义，还原后和推荐一致
         import html, re
         data = json.loads(html.unescape(re.search(r'data-v="([^"]*)"', out).group(1)))
@@ -91,11 +91,21 @@ class VoteButtons(unittest.TestCase):
         # 消息卡片的小按钮固定在日期行右端：日期行给按钮留出宽度、高度和按钮一样，按钮区不会盖住标题
         self.assertIn("padding-right:var(--vtw,70px)", render.CSS)
         self.assertIn("min-height:var(--vth,28px)", render.CSS)
-        self.assertNotIn("opacity:0", render.CSS.split(".vt{", 1)[1].split(".downv", 1)[0])
+        self.assertNotIn(".vt:not(.on)", render.CSS)   # 不再「鼠标不在就藏起来」
         self.assertIn("'.when, .kick, :scope > em'", render.VOTE_JS)
         # 整个按钮区拦住点击（按偏了也不打开原文），保存中不用 disabled（disabled 的按钮会把点击漏给链接）
         self.assertIn("box.addEventListener('click'", render.VOTE_JS)
         self.assertNotIn("disabled = true", render.VOTE_JS)
+
+    def test_cards_are_not_links(self):
+        # 卡片本身不是 <a>：原文链接是盖满卡片的透明 .lk，👍/👎 不在链接里面
+        out = render._tcard({"url": "https://ex.com/a", "headline": "标题", "date": "2026-10-13", "_issue": "2026-10-13"}, 4, 0, "2026-10-16", mini=True)
+        self.assertTrue(out.startswith('<article class="card'))
+        self.assertIn('<a class="lk" href="https://ex.com/a" target="_blank" rel="noopener" aria-label="标题"></a>', out)
+        self.assertIn(":is(.card,.top,.wc) :is(.vt,.vt *){pointer-events:auto}", render.CSS)
+        # 押した瞬間に画面を変え、保存は裏で（失敗したら戻す）；大きな 👍 のアニメーション
+        self.assertIn("paint(url); boom(btn, v);", render.VOTE_JS)
+        self.assertNotIn("%s", render.VOTE_JS)
 
     def test_votes_loaded_from_database(self):
         # 点过的票从数据库读回（不只靠本机 localStorage）

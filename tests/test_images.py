@@ -631,7 +631,7 @@ class ImagesTest(unittest.TestCase):
         self.assertIn('<div class="brief"><h4>その他のニュース</h4>', page)
         self.assertIn('看不出来源</a></li>', page)
         self.assertNotIn('没图的消息</a></li>', page)
-        self.assertIn('class="top" href="https://a/1"', page)  # 没图的 hero 不上头条大图
+        self.assertRegex(page, r'<article class="top"[^>]*><a class="lk" href="https://a/1"')  # 没图的 hero 不上头条大图
 
     def test_render_icon_fallback_order(self):
         """兜底顺序：自己的图 → 作品封面 → 来源图标（存的 → 完整域名 → 主域名）→ 作品名封面块。"""
