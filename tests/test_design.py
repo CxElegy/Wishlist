@@ -133,16 +133,91 @@ class Redesign(unittest.TestCase):
 
 class FrontSide(unittest.TestCase):
     def test_side_column_parts_and_empty(self):
-        works = [{"name": "A", "section": "游戏", "stories": [{"url": "u", "headline": "h", "_issue": "2026-10-16"}]}]
+        works = [{"name": "A", "section": "游戏", "stories": [{"url": "u", "headline": "h", "_issue": "2026-10-16"}],
+                  "_heat": {"score": 72, "label": "盛り上がり", "delta": 12, "rising": True, "top": "volume",
+                            "dims": [{"key": "volume", "name": "報道量", "weight": 20, "score": 80, "note": "7 日で 9 件"}]}}]
         wishes = [{"name": "マグ", "price": 850, "currency": "NT$", "image": "mug.jpg"}, {"name": "済み", "status": "已入手"}]
         out = render._side(works, "2026-10-16", wishes, [["作品:A", 3]])
         self.assertIn("欲しい物リスト", out)
         self.assertIn('src="wishlist/mug.jpg"', out)
         self.assertNotIn("済み", out)                       # 入手済みは出さない
-        self.assertIn("今週にぎやかな作品", out)
+        self.assertIn("話題度ランキング", out)
+        self.assertIn("<em>急上昇</em>", out)
+        self.assertIn("報道量（7 日で 9 件）", out)            # いちばん効いている指標を title に
         self.assertIn("<span>A</span><b>+3</b>", out)      # 作品: の接頭辞は外す
         self.assertNotIn("これからの予定", out)             # 日付のある記事がなければ出さない
         self.assertEqual(render._side([], "2026-10-16"), "")
+
+
+class HeatBadge(unittest.TestCase):
+    H = {"score": 64, "label": "盛り上がり", "delta": None, "rising": False, "top": "event", "missing": ["一般の関心"],
+         "dims": [{"key": "event", "name": "出来事", "weight": 20, "score": 90, "note": "重要ニュース 2 件 <b>"}]}
+
+    def block(self, h):
+        return {"name": "X", "theme": dict(theme.DEFAULT), "_today": "2026-10-16", "stories": [], "_heat": h}
+
+    def test_badge_with_breakdown(self):
+        out = render._section(self.block(self.H), "w")
+        self.assertIn('<details class="heat">', out)            # 前週比がない：矢印もクラスもなし
+        self.assertIn("<b>64</b>", out)
+        self.assertIn("前週比はデータ集め中", out)
+        self.assertIn("データなし（計算に入れていません）：一般の関心", out)
+        self.assertIn("重要ニュース 2 件 &lt;b&gt;", out)       # 文字は転義
+        self.assertNotIn("急上昇", out)
+
+    def test_trend_and_rising(self):
+        out = render._section(self.block({**self.H, "delta": 15, "rising": True}), "w")
+        self.assertIn('class="heat up"', out)
+        self.assertIn("急上昇", out)
+        self.assertEqual(render._trend(-12)[0], "down")
+        self.assertEqual(render._trend(3)[0], "flat")
+
+    def test_no_badge_without_data(self):
+        self.assertNotIn('class="heat', render._section(self.block(None), "w"))
+        self.assertNotIn('class="heat', render._section(self.block({**self.H, "score": 0}), "w"))
+
+
+class HeatPage(unittest.TestCase):
+    """話題度の分析ページ（docs/heat.html）。"""
+
+    def analysis(self, **over):
+        h = {"score": 64, "label": "盛り上がり", "delta": None, "rising": False, "top": "event", "missing": ["一般の関心"],
+             "dims": [{"key": "event", "name": "出来事", "weight": 20, "score": 90, "note": "<script>x</script>"},
+                      {"key": "volume", "name": "報道量", "weight": 20, "score": 38, "note": "7 日で 3 件"}],
+             "trend": [("2026-10-15", 60), ("2026-10-16", 64)],
+             "articles": [("2026-10-15", 2), ("2026-10-16", 1)], "wiki": [], **over}
+        return {"today": "2026-10-16", "baseline_from": "2026-10-21", "items": {"X": h}}
+
+    def test_page_parts(self):
+        out = render.render_heat(self.analysis(), [{"name": "X", "section": "游戏", "subtitle": "サブ"}], "10.16 12:00")
+        for part in ("話題度アナリシス", 'id="ranking"', 'id="movers"', 'id="method"', 'id="h-' + render._wid("X") + '"',
+                     "準備中", "10/21 から使えます", "サブ", "数値を表で見る"):
+            self.assertIn(part, out, part)
+        self.assertNotIn("<script>x</script>", out)               # 根拠の文字は転義
+        self.assertIn("&lt;script&gt;", out)
+        self.assertIn('class="hm na"', out)                       # データなしの指標は斜線のマス
+        self.assertIn("前週比は、7 日前の時点で", out)             # 前週比がまだない：説明だけ
+        self.assertIn('class="hm q4"', out)                       # 90 点 → いちばん濃い
+        self.assertIn('class="hm q1"', out)                       # 38 点
+
+    def test_movers_and_rising(self):
+        out = render.render_heat(self.analysis(delta=-14, rising=True), [{"name": "X", "section": "游戏"}], "u")
+        self.assertIn('<i class="down"', out)
+        self.assertIn('<em class="rise">急上昇</em>', out)
+
+    def test_chart_text_is_html_and_empty_state(self):
+        out = render._chart([("2026-10-15", 3), ("2026-10-16", 12)], "bar", "--viz-1", "件", partial_last=True, caption="記事")
+        self.assertIn('class="cl yt"', out)                       # 目盛りは HTML（伸ばしてもつぶれない）
+        self.assertNotIn("<text", out)
+        self.assertIn("今日は集計途中", out)
+        self.assertIn("まだデータがありません", render._chart([("2026-10-16", 0)], "bar", "--viz-1", "件", caption="記事"))
+
+    def test_entry_links_from_front_page(self):
+        works = [{"name": "A", "section": "游戏", "stories": [],
+                  "_heat": {"score": 50, "label": "話題", "delta": None, "top": "", "dims": []}}]
+        self.assertIn('href="heat.html"', render._side(works, "2026-10-16"))
+        block = {"name": "A", "theme": dict(theme.DEFAULT), "_today": "2026-10-16", "stories": [], **works[0]}
+        self.assertIn('href="heat.html#h-' + render._wid("A") + '"', render._section(block, "w"))
 
 
 if __name__ == "__main__":

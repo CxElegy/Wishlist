@@ -19,7 +19,7 @@
 
 - 回复里只要提到网页、PR、设置页，就把可以直接点开的链接贴上：
   简报 https://cxelegy.github.io/Wishlist/ 、设置页 https://cxelegy.github.io/Wishlist/settings.html 、
-  愿望清单 https://cxelegy.github.io/Wishlist/wishlist.html 、PR 用完整网址。
+  愿望清单 https://cxelegy.github.io/Wishlist/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/heat.html 、PR 用完整网址。
 - 合并 PR 后网页大约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；
   确认网页已经更新了再告诉我，并附上链接。收集新闻、发通知仍由「关注清单通信」慢慢跑。
 
@@ -27,7 +27,7 @@
 
 设置页上「新增关注项」（一问一答的向导，docs/additem.js）加进来的关注项，`notes` 里写着「从网页设置页加进来的」。
 我说「完善关注项」时，找出这些项，检查向导生成的 `match`、`urgent_patterns`（正则是按选项拼的，可能太宽或太窄），
-补上 `similar`、`status`、`theme`，缺的 `steam_appid` / `anilist_id` / `tmdb` / `site` 也补上，并把 `notes` 改成真正的背景说明。
+补上 `similar`、`status`、`theme`，缺的 `steam_appid` / `anilist_id` / `tmdb` / `site` / `wiki`（维基词条，話題度用）也补上，并把 `notes` 改成真正的背景说明。
 向导的问题和选项（关注哪方面、要紧消息的词、不想看的词）都在 `docs/additem.js` 开头的 KINDS / EXCLUDES 里，要加选项改那里。
 选项上 `rec: true` = 「不确定，你帮我定」时替我选它；`when: about(/…/)` = 只在名字或维基数据说明里有这些词时才出现（比如「猫相关的」只给跟猫有关的东西），别再给所有东西都出同一套选项。
 
@@ -54,4 +54,10 @@
   现在有 `retro` 平成动画的星 / `manga` 网点和斜分格 / `pop` 水玉 / `film` 胶片孔 / `street` 斜体和警示条纹。
   **每个新关注项都设计一个模版，相似的合并成一个**：设置页加进来的关注项，由「AI 编辑」按 `TEMPLATES.md` 设计（工作流在加进来后叫它）；
   设计好之前先按 `type` 借用 `index.yaml` 里 `defaults` 对得上的模版。手写的关注项不写 `motif` 就是普通版面。
+- **話題度（热度指数）**：`scripts/heat.py` 用 6 个维度算 0〜100（報道量・広がり・出来事・勢い・一般の関心〔维基浏览量〕・ファンの反応），
+  每维 = 60% 跟自己平常比 + 40% 同一把尺子；拿不到的维度不算 0 分而是从分母去掉。外部数据随收集存进 `state/heat_signals.json`，
+  分数在生成网页时算（不联网）。网页：各版面标题栏的数字（点开看内訳）+ トップ右列「話題度ランキング」，
+  两处都能进分析页 `docs/heat.html`（`render.render_heat`：KPI・ヒートマップ表・前週比・作品ごとの内訳とグラフ・計算方法）。
+  分析页的图表按 dataviz 规范：颜色只用 `--viz-*`（指标）/ `--seq-*`（点数浓淡）/ `--up` `--down`，文字用 HTML 叠在 SVG 上。
+  改权重 / 满分线 / 等级改 `heat.py` 开头的 `DIMS` / `REF` / `LEVELS`，测试在 `tests/test_heat.py`。
 - **大改视觉**用 impeccable 的 new-work 流程（`/impeccable`），做完写 `DESIGN.md`。

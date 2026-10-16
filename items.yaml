@@ -46,6 +46,11 @@
 #          anilist_type  ANIME（默认）或 MANGA
 #   show   tmdb          themoviedb.org 网址里的那一段，如 tv/1399 或 movie/693134
 #                        需要在仓库 Secrets 里设置 TMDB_API_KEY（免费申请）
+#
+# 話題度（heat index，见 scripts/heat.py）用：
+#   wiki         可选，维基百科词条，「语言:词条名」的列表，如 ["en:Chainsaw Man", "ja:チェンソーマン"]。
+#                几种语言的浏览量加在一起，算进「一般の関心」和「勢い」。没有词条的（一类东西、太小众的）不写，
+#                这一维就不算（不是算 0 分）。词条名写错了收集日志里会有「维基没有词条」
 
 settings:
   lookback_days: 7              # 只看最近 N 天
@@ -200,6 +205,7 @@ items:
       alt_accent: "#C2185B"
       split: true
       font: sans
+    wiki: ["en:Grand Theft Auto VI", "ja:グランド・セフト・オートVI"]
 
   - name: MMORPG 新作
     subtitle: 近期上线 · 测试 · 新公布的网游
@@ -352,6 +358,7 @@ items:
       alt_bg: "#EC1D24"
       alt_fg: "#FFFFFF"
       alt_accent: "#151515"
+    wiki: ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]
 
   - name: FROM
     motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
@@ -399,6 +406,7 @@ items:
       alt_accent: "#8C2F1E"
       split: true
       font: serif
+    wiki: ["en:From (TV series)"]
 
   - name: 哈利波特剧集
     motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
@@ -459,6 +467,7 @@ items:
       alt_accent: "#E7C66B"
       split: true
       font: serif
+    wiki: ["en:Harry Potter (TV series)"]
 
   - name: ILLIT
     motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
@@ -508,6 +517,7 @@ items:
       alt_accent: "#FFD1DA"
       split: true
       font: sans
+    wiki: ["en:Illit", "ko:아일릿", "ja:ILLIT"]
 
   - name: 星巴克马克杯
     subtitle: スターバックス マグ · 日本优先 · 海外好设计
@@ -712,6 +722,7 @@ items:
   # - name: Sony WH-1000XM6
   #   type: product
   #   keywords: ["WH-1000XM6"]
+    wiki: ["en:Japan Open Tennis Championships", "ja:ジャパン・オープン・テニス選手権"]
 
   - name: 三星手机
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
@@ -773,6 +784,7 @@ items:
       alt_accent: "#1428A0"
       split: true
       font: sans
+    wiki: ["en:Samsung Galaxy S series"]
 
   - name: gelato pique
     motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
@@ -848,6 +860,7 @@ items:
       - "(ぐでたま|蛋黃哥|구데타마|Gudetama).{0,30}(新商品|新作|発売|发售|發售|登場|ぬいぐるみ|一番くじ|ガチャ|扭蛋|一番賞|一番赏)"
       - "(ぐでたま|蛋黃哥|구데타마|Gudetama).{0,30}(ポップアップ|POP ?UP|快闪|快閃|カフェ|咖啡|展覧会|展览|展覽|期間限定ショップ)"
     notes: "2026-10-14 从网页设置页加进来的。关注：联名商品、新周边、新品、快闪店、主题咖啡、展览、抽选、限定、预约、动画、活动、周年。维基数据：日本三麗鷗公司於2013年創作的卡通人物。"
+    wiki: ["en:Gudetama", "ja:ぐでたま"]
 
   - name: "チェーンソーマン"
     motif: manga          # 版面の装飾（EDITING.md「作品ごとの装飾」）
@@ -867,6 +880,7 @@ items:
     site: "https://chainsawman.dog/"
     anilist_id: 127230
     notes: "2026-10-14 从网页设置页加进来的。关注：新一季 / 续作 / 剧场版、播出时间、每集更新。维基数据：日本電視動畫系列。"
+    wiki: ["en:Chainsaw Man", "ja:チェンソーマン"]
 
   - name: "The Mandalorian"
     motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
@@ -885,3 +899,4 @@ items:
     site: "https://disneyplusoriginals.disney.com/show/the-mandalorian"
     tmdb: "tv/82856"
     notes: "2026-10-15 从网页设置页加进来的。关注：新一季 / 续集、上映 / 播出日期、在哪看、预告片、演员、幕后。维基数据：美國太空歌劇網路影集。"
+    wiki: ["en:The Mandalorian", "ja:マンダロリアン"]
