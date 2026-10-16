@@ -110,10 +110,12 @@ jobs:
           git pull -q --rebase || true
           names=$(python scripts/digest.py unedited --only "$NEW_ITEMS")
           if [ -z "$names" ]; then echo "新关注项还没有消息或已编排过，不用叫 AI 编辑"; exit 0; fi
-          body=$(python -c 'import json,sys; print(json.dumps({"text": "新加的关注项：" + sys.argv[1] + "。先按 TEMPLATES.md 开头的表把它们的版面设计一遍（主题 motif、配色 theme、小元素 emblem〔scripts/emblem.py〕、点 👍 的演出 like_fx），再按 EDITING.md 整份重新编排今天的报道（今天的 edit.json 里还没有它们）。"}, ensure_ascii=False))' "$names")
+          # 不带说明文字：带文字（text）叫醒时会另开一个没挂仓库的会话，推送会 403。
+          # 指令第 3 条本来就会检查今天有没有没编排进去的新条目，不需要额外说明
+          echo "叫 AI 编辑：$names"
           curl -fsS -X POST "https://api.anthropic.com/v1/claude_code/routines/$ROUTINE_ID/fire" \
             -H "Authorization: Bearer $ROUTINE_FIRE_TOKEN" \
             -H "anthropic-beta: experimental-cc-routine-2026-04-01" \
             -H "anthropic-version: 2023-06-01" \
             -H "Content-Type: application/json" \
-            -d "$body" || echo "::warning::叫 AI 编辑失败，等定时编排"
+            -d '{}' || echo "::warning::叫 AI 编辑失败，等定时编排"

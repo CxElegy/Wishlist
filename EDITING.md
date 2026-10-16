@@ -6,6 +6,9 @@
 
 ## 步骤
 
+> **跑得久的命令（`pick-images`、`publish` 要几分钟）直接在前台运行**，Bash 的 timeout 设 600000。
+> 不要放到后台再用 `pgrep` / `sleep` 循环去等：`pgrep -f "digest.py publish"` 会匹配到等待命令自己，永远等不完（2026-10-16 卡过 10 分钟）。
+
 1. 进入仓库 `CxElegy/Wishlist`，分支 `main`，先 `git pull --rebase`。
    **先做版面设计**：`items.yaml` 里 `notes` 有「从网页设置页加进来的」、但还没有 `motif` 的关注项，按 `TEMPLATES.md` 开头的表把版面设计一遍：
    ① 主题 `motif`、② 配色 `theme`（暗底 / 浅底按气质）、③ 小元素 `emblem`（`scripts/emblem.py`）、④ 点 👍 的演出 `like_fx`。没有就跳过。
