@@ -1,0 +1,9 @@
+/* 版面模版「manga」：漫画：网点底纹、斜着的分格、擬音字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-manga{background-image:radial-gradient(circle,color-mix(in srgb,var(--fg) 26%,transparent) .9px,transparent 1.3px);background-size:5px 5px}
+.m-manga .band .title{transform:rotate(-2deg) skewX(-4deg);box-shadow:6px 6px 0 var(--acc)}
+.m-manga .deco{right:24%;top:-2px;font:900 54px/1 var(--font-sans);color:var(--acc);opacity:.35;transform:rotate(-8deg) skewX(-10deg);letter-spacing:-.04em}
+.m-manga .card .pic{border:3px solid var(--fg)}
+.m-manga .grid>.lead .pic,.m-manga .grid>.hero .pic{clip-path:polygon(0 0,100% 0,100% 100%,3% 100%)}
+.m-manga .card.mini{padding:8px;border:2.5px solid var(--fg);background:color-mix(in srgb,var(--bg) 82%,#FFF)}
+.m-manga .card.mini:nth-child(odd){clip-path:polygon(0 0,100% 0,97% 100%,0 100%)}
+.m-manga .card.mini:nth-child(even){clip-path:polygon(3% 0,100% 0,100% 100%,0 100%)}

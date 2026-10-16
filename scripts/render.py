@@ -16,8 +16,11 @@ import hashlib
 import html
 import json
 import math
+import pathlib
 import re
 import urllib.parse
+
+import yaml
 
 import heat
 import theme
@@ -326,37 +329,7 @@ button{font-family:inherit}
 .older summary span{font-weight:700;opacity:.7;letter-spacing:.04em}
 .older .grid{padding-top:8px}
 .older .card.c3 h3{font-size:15px;line-height:1.45}
-/* ---- 作品ごとの装飾（motif）。どれも作品の色（--bg/--acc…）だけで描く。足すときは EDITING.md にも書く ---- */
-.m-retro{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 35%,transparent) 1px,transparent 1.6px),
- radial-gradient(circle,color-mix(in srgb,var(--acc) 20%,transparent) 1px,transparent 1.6px);background-size:34px 34px,21px 21px;background-position:0 0,11px 7px}
-.m-retro .band .title{border-radius:0 18px 0 18px;box-shadow:5px 5px 0 var(--acc),0 0 0 3px var(--bg),0 0 0 5px var(--acc);letter-spacing:.06em}
-.m-retro .deco{right:34%;top:12px;font-size:34px;color:var(--acc);text-shadow:0 0 14px var(--acc)}
-.m-retro .deco.d2{right:31%;top:50px;font-size:18px}
-.m-retro .card .pic{border:2px solid var(--acc);box-shadow:4px 4px 0 color-mix(in srgb,var(--acc) 45%,transparent)}
-.m-retro .when b{border-radius:999px}
-.m-manga{background-image:radial-gradient(circle,color-mix(in srgb,var(--fg) 26%,transparent) .9px,transparent 1.3px);background-size:5px 5px}
-.m-manga .band .title{transform:rotate(-2deg) skewX(-4deg);box-shadow:6px 6px 0 var(--acc)}
-.m-manga .deco{right:24%;top:-2px;font:900 54px/1 var(--font-sans);color:var(--acc);opacity:.35;transform:rotate(-8deg) skewX(-10deg);letter-spacing:-.04em}
-.m-manga .card .pic{border:3px solid var(--fg)}
-.m-manga .grid>.lead .pic,.m-manga .grid>.hero .pic{clip-path:polygon(0 0,100% 0,100% 100%,3% 100%)}
-.m-manga .card.mini{padding:8px;border:2.5px solid var(--fg);background:color-mix(in srgb,var(--bg) 82%,#FFF)}
-.m-manga .card.mini:nth-child(odd){clip-path:polygon(0 0,100% 0,97% 100%,0 100%)}
-.m-manga .card.mini:nth-child(even){clip-path:polygon(3% 0,100% 0,100% 100%,0 100%)}
-.m-pop{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent) 5px,transparent 5.5px);background-size:46px 46px}
-.m-pop .band .title{border-radius:999px;padding:8px 26px;transform:rotate(-2deg)}
-.m-pop .deco{right:30%;top:8px;font-size:30px;color:var(--acc);transform:rotate(12deg)}
-.m-pop .card .pic{border-radius:14px;border:3px solid var(--acc);box-shadow:4px 4px 0 var(--fg)}
-.m-pop .when b{border-radius:999px}
-.m-film .band{padding-top:30px}
-.m-film .band::before{content:"";position:absolute;left:0;right:0;top:0;height:16px;background:var(--fg);
- -webkit-mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px) 0 4px/100% 8px no-repeat,linear-gradient(#000,#000) 0 0/100% 4px no-repeat,linear-gradient(#000,#000) 0 12px/100% 4px no-repeat;
- mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px) 0 4px/100% 8px no-repeat,linear-gradient(#000,#000) 0 0/100% 4px no-repeat,linear-gradient(#000,#000) 0 12px/100% 4px no-repeat}
-.m-film .band .title{letter-spacing:.12em;text-transform:uppercase}
-.m-film .card .pic{border:4px solid var(--fg);border-left-width:10px;border-right-width:10px}
-.m-street .band .title{transform:skewX(-10deg) rotate(-1deg);box-shadow:6px 6px 0 var(--acc)}
-.m-street .band::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;
- background:repeating-linear-gradient(-45deg,var(--acc) 0 10px,transparent 10px 20px);opacity:.8}
-.m-street .card .pic{clip-path:polygon(0 0,100% 0,100% 88%,94% 100%,0 100%)}
+/* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */
 /* ---------- 気になるかも？：店長のおすすめ POP ---------- */
 .picks{--ac:var(--rose);background:var(--sheet);color:var(--ink);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--rose);padding:22px 26px 28px}
 .pkhead{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
@@ -973,15 +946,42 @@ def _section(block, anchor=""):
             f"{facts}{grid}</section>")
 
 
-# 作品ごとの装飾（items.yaml の motif）。名前 → 版面の見出しに添える飾り（なければ空）。見た目は CSS の .m-名前。
-# 色は作品の色（--bg/--acc…）だけを使う。新しい装飾を足すときはここと CSS と EDITING.md に書く
-MOTIFS = {
-    "retro": '<i class="deco" aria-hidden="true">✦</i><i class="deco d2" aria-hidden="true">✦</i>',  # 平成アニメ：星・角丸の題字・ドット
-    "manga": '<i class="deco" aria-hidden="true">ドドド</i>',  # 漫画：網点・斜めのコマ・擬音
-    "pop": '<i class="deco" aria-hidden="true">♥</i>',  # ポップ：水玉・丸い題字・角丸の写真
-    "film": "",  # 映画・ドラマ：フィルムの穴・太い黒枠
-    "street": "",  # ストリート：斜めの題字・警告色のしま・切り欠きの写真
-}
+# 版面模版（items.yaml の motif）：templates/index.yaml に一覧、見た目は templates/<id>.css（.m-<id>）。
+# 作品の色（--bg/--acc…）だけで描くので、同じ模版でも作品ごとに色が変わる。足し方・合わせ方は TEMPLATES.md
+TEMPLATE_DIR = pathlib.Path(__file__).resolve().parent.parent / "templates"
+
+
+def load_templates():
+    """[{id, name, for, deco, defaults, css}]。CSS ファイルがないものは飛ばす。"""
+    index = TEMPLATE_DIR / "index.yaml"
+    if not index.exists():
+        return []
+    out = []
+    for t in (yaml.safe_load(index.read_text(encoding="utf-8")) or {}).get("templates") or []:
+        path = TEMPLATE_DIR / f"{t.get('id')}.css"
+        if t.get("id") and re.fullmatch(r"[a-z][a-z0-9-]*", t["id"]) and path.exists():
+            out.append({**t, "deco": t.get("deco") or [], "defaults": t.get("defaults") or [],
+                        "css": path.read_text(encoding="utf-8")})
+    return out
+
+
+TEMPLATES = load_templates()
+WEB_ITEM_MARK = "从网页设置页加进来的"  # digest.WEB_ITEM_MARK と同じ
+# 名前 → 版面の見出しに添える飾り（なければ空）
+MOTIFS = {t["id"]: "".join(f'<i class="deco{f" d{k + 1}" if k else ""}" aria-hidden="true">{e(str(c))}</i>'
+                           for k, c in enumerate(t["deco"])) for t in TEMPLATES}
+_TPL_MARK = "/* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */\n"
+CSS = CSS.replace(_TPL_MARK, _TPL_MARK + "".join(t["css"] for t in TEMPLATES))  # 元の位置（スマホ用の @media より前）に入れる
+
+
+def template_for(item):
+    """この関注項の版面模版：items.yaml の motif。まだ設計されていない（motif なし）ものは、
+    type が近い既存の模版（templates/index.yaml の defaults）を仮に使う。どれも合わなければ普通の版面。"""
+    if item.get("motif") in MOTIFS:
+        return item["motif"]
+    if WEB_ITEM_MARK not in str(item.get("notes") or ""):  # 手で書いた関注項で motif なし＝わざと普通の版面
+        return ""
+    return next((t["id"] for t in TEMPLATES if item.get("type", "product") in t["defaults"]), "")
 
 
 def _why_verb(x):

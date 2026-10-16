@@ -270,7 +270,8 @@ button{font-family:inherit}
 .older summary span{font-weight:700;opacity:.7;letter-spacing:.04em}
 .older .grid{padding-top:8px}
 .older .card.c3 h3{font-size:15px;line-height:1.45}
-/* ---- 作品ごとの装飾（motif）。どれも作品の色（--bg/--acc…）だけで描く。足すときは EDITING.md にも書く ---- */
+/* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */
+/* 版面模版「retro」：平成动画：星星、角丸题字、双层圆点底纹、发光的强调色。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
 .m-retro{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 35%,transparent) 1px,transparent 1.6px),
  radial-gradient(circle,color-mix(in srgb,var(--acc) 20%,transparent) 1px,transparent 1.6px);background-size:34px 34px,21px 21px;background-position:0 0,11px 7px}
 .m-retro .band .title{border-radius:0 18px 0 18px;box-shadow:5px 5px 0 var(--acc),0 0 0 3px var(--bg),0 0 0 5px var(--acc);letter-spacing:.06em}
@@ -278,6 +279,7 @@ button{font-family:inherit}
 .m-retro .deco.d2{right:31%;top:50px;font-size:18px}
 .m-retro .card .pic{border:2px solid var(--acc);box-shadow:4px 4px 0 color-mix(in srgb,var(--acc) 45%,transparent)}
 .m-retro .when b{border-radius:999px}
+/* 版面模版「manga」：漫画：网点底纹、斜着的分格、擬音字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
 .m-manga{background-image:radial-gradient(circle,color-mix(in srgb,var(--fg) 26%,transparent) .9px,transparent 1.3px);background-size:5px 5px}
 .m-manga .band .title{transform:rotate(-2deg) skewX(-4deg);box-shadow:6px 6px 0 var(--acc)}
 .m-manga .deco{right:24%;top:-2px;font:900 54px/1 var(--font-sans);color:var(--acc);opacity:.35;transform:rotate(-8deg) skewX(-10deg);letter-spacing:-.04em}
@@ -286,17 +288,20 @@ button{font-family:inherit}
 .m-manga .card.mini{padding:8px;border:2.5px solid var(--fg);background:color-mix(in srgb,var(--bg) 82%,#FFF)}
 .m-manga .card.mini:nth-child(odd){clip-path:polygon(0 0,100% 0,97% 100%,0 100%)}
 .m-manga .card.mini:nth-child(even){clip-path:polygon(3% 0,100% 0,100% 100%,0 100%)}
+/* 版面模版「pop」：流行可爱：水玉底纹、圆角题字和圆角照片。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
 .m-pop{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent) 5px,transparent 5.5px);background-size:46px 46px}
 .m-pop .band .title{border-radius:999px;padding:8px 26px;transform:rotate(-2deg)}
 .m-pop .deco{right:30%;top:8px;font-size:30px;color:var(--acc);transform:rotate(12deg)}
 .m-pop .card .pic{border-radius:14px;border:3px solid var(--acc);box-shadow:4px 4px 0 var(--fg)}
 .m-pop .when b{border-radius:999px}
+/* 版面模版「film」：电影 / 剧集：胶片孔、粗黑边框、全大写题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
 .m-film .band{padding-top:30px}
 .m-film .band::before{content:"";position:absolute;left:0;right:0;top:0;height:16px;background:var(--fg);
  -webkit-mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px) 0 4px/100% 8px no-repeat,linear-gradient(#000,#000) 0 0/100% 4px no-repeat,linear-gradient(#000,#000) 0 12px/100% 4px no-repeat;
  mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px) 0 4px/100% 8px no-repeat,linear-gradient(#000,#000) 0 0/100% 4px no-repeat,linear-gradient(#000,#000) 0 12px/100% 4px no-repeat}
 .m-film .band .title{letter-spacing:.12em;text-transform:uppercase}
 .m-film .card .pic{border:4px solid var(--fg);border-left-width:10px;border-right-width:10px}
+/* 版面模版「street」：街头：斜体题字、警示条纹、切角照片。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
 .m-street .band .title{transform:skewX(-10deg) rotate(-1deg);box-shadow:6px 6px 0 var(--acc)}
 .m-street .band::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;
  background:repeating-linear-gradient(-45deg,var(--acc) 0 10px,transparent 10px 20px);opacity:.8}
@@ -526,7 +531,7 @@ html{scroll-behavior:smooth}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.16 13:15</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.16 13:48</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

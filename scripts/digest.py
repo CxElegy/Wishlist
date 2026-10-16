@@ -85,14 +85,14 @@ SYSTEM_PROMPT = """你是报纸编辑，把抓取到的新闻条目编成一个�
 - 按“对读者最关心的问题有多重要”排序，第一条是头条。
 - weight：直接回答读者最关心的问题、且是新的确切信息（例如公布了测试/上线日期、开放预约）用 "hero"；
   头条用 "lead"；其余 "normal"。hero 宁缺毋滥。
-- headline：中文，22 字以内，像报纸标题，有信息量。
+- headline：原文标题，不翻译：用依据条目里最权威那条的标题，去掉媒体名和宣传噪音，太长就在原来的语言里删减。
 - highlight：headline 里最关键的几个字（日期、数字、结论），必须原样出现在 headline 中；没有就留空。
-- blurb：一句话补充（40 字以内），只给头条和 hero 写，其余留空。
+- blurb：一句话补充，用原文的语言（照摘要精简），只给头条和 hero 写，其余留空。
 - refs：这条报道依据的条目编号。
 - Reddit 帖子是玩家讨论（摘要里有赞数、评论数），热度高时可以归纳成一条“社区热议”报道。
 - 来源优先用国外媒体（含港台、日韩、欧美）：同一件事国外媒体也报了，refs 第一个放国外媒体；
   标了（大陆网站）的条目只在这件事只有大陆网站报道时才用。
-- 外文一律译成中文；传闻要在标题里注明“传闻”。"""
+- 不翻译：标题和摘要都保持原文的语言。"""
 
 STORY_SCHEMA = {
     "type": "object",
@@ -1659,7 +1659,7 @@ def write_page():
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
-                          {i["name"]: i["motif"] for i in items if i.get("motif")}, themes,
+                          {i["name"]: render.template_for(i) for i in items}, themes,
                           (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores)
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
@@ -1823,7 +1823,7 @@ def ingest(dry_run=False):
 
 def load_edits(inbox_path):
     """读取人工 / Claude 写的编排：inbox/YYYY-MM-DD.edit.json，格式：
-    {"关注项名称": [{"headline": "中文标题", "highlight": "标题里要强调的字", "blurb": "一句话",
+    {"关注项名称": [{"headline": "原文标题（不翻译）", "highlight": "标题里要强调的字", "blurb": "一句话",
                     "weight": "hero|lead|normal", "refs": [inbox 里条目的 n]}, ...],
      "_covered": {"关注项名称": 编排时 inbox 里该项的条目数}}
     某个关注项写成空列表 [] 表示本期不出现。详细规则见 EDITING.md。"""

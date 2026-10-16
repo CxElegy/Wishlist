@@ -1,0 +1,6 @@
+/* 版面模版「pop」：流行可爱：水玉底纹、圆角题字和圆角照片。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-pop{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent) 5px,transparent 5.5px);background-size:46px 46px}
+.m-pop .band .title{border-radius:999px;padding:8px 26px;transform:rotate(-2deg)}
+.m-pop .deco{right:30%;top:8px;font-size:30px;color:var(--acc);transform:rotate(12deg)}
+.m-pop .card .pic{border-radius:14px;border:3px solid var(--acc);box-shadow:4px 4px 0 var(--fg)}
+.m-pop .when b{border-radius:999px}
