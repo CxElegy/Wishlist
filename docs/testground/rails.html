@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>目次の見比べ</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* テストグラウンド：いろいろな条件の目次を 1 ページに並べて見比べる（nav.html と同じ部品・同じ配置ルール）。
+   トークンは scripts/render.py の :root と同じ */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--fs-label:11px;
+ --shadow:4px 4px 0 var(--ink);--skew:-8deg;--hair:color-mix(in srgb,var(--ink) 16%,transparent);--muted:rgba(26,28,34,.62);--rh:720px}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.tg{display:inline-block;flex:none;white-space:nowrap;background:var(--sc,var(--ink));color:#FFF;padding:0 9px;transform:skewX(var(--skew));
+ font:900 12px/1.6 var(--font-sans);letter-spacing:.06em}
+
+/* ---------- 上の操作バー ---------- */
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:14px 24px;background:var(--ink);color:var(--card)}
+.ctl h1{margin:0;font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
+.ctl h1 small{display:block;font:700 var(--fs-label) var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+.seg{display:flex;align-items:center;gap:8px;font:700 12px var(--font-sans)}
+.seg div{display:flex;border:2px solid var(--card)}
+.seg button{padding:4px 10px;font:700 12px var(--font-mono)}
+.seg button[aria-pressed=true]{background:var(--gold);color:var(--ink)}
+.ctl .go{padding:5px 12px;border:2px solid var(--gold);color:var(--gold);font:900 13px var(--font-sans)}
+.ctl .go[aria-pressed=true]{background:var(--gold);color:var(--ink)}
+.ctl .note{flex-basis:100%;margin:0;font:500 12px/1.6 var(--font-sans);color:rgba(251,248,241,.75)}
+.ctl a{text-decoration:underline}
+
+/* ---------- 見本を並べる ---------- */
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:28px 22px;padding:24px;max-width:1500px;margin:0 auto}
+.case{display:flex;flex-direction:column;gap:8px;min-width:0}
+.case h2{margin:0;display:flex;align-items:baseline;gap:8px;font:900 15px/1.35 var(--font-sans)}
+.case h2 b{font:700 11px var(--font-mono);color:var(--alert)}
+.case p{margin:0;min-height:3.2em;font:500 12px/1.6 var(--font-sans);color:var(--muted)}
+.frame{height:var(--rh);display:flex;flex-direction:column;border-left:6px solid var(--alert);padding:10px 0 8px 12px;background:var(--paper);
+ box-shadow:inset 0 0 0 1px var(--hair)}
+.frame .find{display:flex;align-items:center;gap:8px;margin:0 8px 8px 0;padding:6px 10px;border:2px solid var(--ink);background:var(--card);
+ box-shadow:3px 3px 0 var(--ink);font:700 12px var(--font-sans);color:var(--muted)}
+.scrub{display:flex;align-items:center;gap:8px;font:700 11px var(--font-mono);color:var(--muted)}
+.scrub input{flex:1;min-width:0;accent-color:var(--alert)}
+.scrub button{width:26px;height:26px;border:1px solid var(--hair);font:700 12px var(--font-mono)}
+
+/* ---------- 目次の部品（nav.html と同じ） ---------- */
+.rail{flex:1;min-height:0;position:relative;overflow:hidden;margin-right:8px}
+.rail.flat{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:thin}
+.rail.flat .pill{flex:1 1 0;max-height:40px;min-height:24px}
+.flat .grp{display:flex;align-items:center;gap:8px;margin:10px 0 2px;flex:none}
+.flat .grp small{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--muted)}
+.pill{display:flex;align-items:center;gap:8px;width:100%;height:28px;padding:0 6px 0 8px;position:relative;isolation:isolate;flex:none;
+ text-align:left;color:rgba(26,28,34,.78);font:700 13px/1.35 var(--font-sans)}
+.pill::before{content:"";position:absolute;inset:1px -2px 1px -4px;z-index:-1;transform:skewX(var(--skew));transition:background .15s}
+.pill:hover::before{background:rgba(26,28,34,.08)}
+.pill .no{font:700 10px var(--font-mono);color:var(--sc);min-width:2.4em}
+.pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill .cnt{display:none;font:700 10px var(--font-mono);letter-spacing:.08em;color:var(--muted)}
+.body .pill{height:var(--ih,28px);transition:height .25s}
+.body.roomy .pill .nm{display:flex;flex-direction:column;gap:1px}
+.body.roomy .pill .cnt{display:block}
+.pill .new{flex:none;font:700 10px var(--font-mono);color:var(--alert)}
+.pill.on{color:var(--card);font-weight:900}
+.pill.on::before{background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
+.pill.on .no,.pill.on .new,.pill.on .cnt{color:var(--gold)}
+.slot{position:absolute;left:0;right:0;overflow:hidden;transition:top .34s cubic-bezier(.2,.8,.2,1),height .34s cubic-bezier(.2,.8,.2,1)}
+.slot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--hair)}
+.sec{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 8px;width:100%;height:38px;padding:6px 4px 0 0;text-align:left}
+.sec .tg{transform-origin:left center;transition:transform .34s cubic-bezier(.2,.8,.2,1),box-shadow .34s}
+.slot.cur .sec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
+.slot.cur .sec .en{opacity:0}
+.sec .cnt{font:700 11px var(--font-mono);color:var(--muted);text-align:right}
+.sec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
+.sec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
+.sec .en{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--muted);transition:opacity .2s}
+.body{position:absolute;left:0;right:0;top:44px;opacity:0;transition:opacity .2s}
+.slot.cur .body{opacity:1;transition-delay:.14s}
+.subs{display:flex;flex-wrap:wrap;gap:4px 6px;margin:0 0 6px 2px}
+.sub{display:flex;align-items:center;gap:5px;height:22px;padding:0 7px;border:1px solid var(--hair);font:700 11px/1 var(--font-sans);color:var(--muted);white-space:nowrap}
+.sub .cnt{font:700 9px var(--font-mono)}
+.sub:hover{color:var(--ink);border-color:var(--ink)}
+.sub.cur{background:var(--sc);border-color:var(--sc);color:#FFF}
+.more{display:block;width:100%;height:24px;padding:0 8px 0 40px;text-align:left;font:700 12px var(--font-sans);color:var(--sc)}
+.more:hover{text-decoration:underline}
+@media (max-width:600px){.board{padding:16px;gap:24px}.ctl{padding:12px 16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="ctl">
+  <h1><small>TESTGROUND</small>目次の見比べ</h1>
+  <div class="seg">画面の高さ<div id="hs"><button data-h="600">600</button><button data-h="720">720</button><button data-h="900">900</button></div></div>
+  <div class="seg">作品が少ないとき<div id="ms"><button data-m="auto">全部ひらく</button><button data-m="fold">たたむ</button></div></div>
+  <button class="go" id="play" type="button" aria-pressed="false">▶ 全部いっせいに読み進める</button>
+  <p class="note">左の目次だけを並べた見本です（本文は省略）。各見本の下のつまみを動かすと「下へスクロールした」ときの動きになります。作品名をクリックするとそこへ飛びます。
+    「全部ひらく」= 24 件以下は今の本番と同じく全部並べる ／「たたむ」= 件数に関係なく、読んでいる板块だけひらく。1 本だけで試すなら <a href="nav.html">nav.html</a>。</p>
+</header>
+<div class="board" id="board"></div>
+<script>
+(() => {
+  const C = {game:'#2F5BD3', screen:'#9B3FB5', goods:'#985315', live:'#BB265A', sports:'#156A48', anime:'#3D5A80', music:'#5B4B8A', books:'#2F6F73', other:'#5B5F6B'};
+  const EX = ['#3D5A80','#7A4E2D','#4A6B2F','#8A3B52','#5B4B8A','#2F6F73','#8C4A1F','#6B5B2E'];
+  const sec = (id, ja, en, c, subs) => ({id, ja, en, c, subs: subs || []});
+  const BASE = [sec('游戏','ゲーム','GAMES',C.game), sec('影视','映像','SCREEN',C.screen), sec('好物','グッズ','GOODS',C.goods),
+                sec('演出','ライブ','LIVE',C.live), sec('运动','スポーツ','SPORTS',C.sports)];
+
+  // ---------- ダミーの作品名 ----------
+  const A = ['星','月','夜','風','海','銀河','鋼','白','黒','紅','蒼','花','雪','炎','森','空','鏡','砂','雷','霧'];
+  const B = ['の王国','クロニクル','ライン','の記憶','ブレイク','アーク','の彼方','ノート','シティ','ガーデン','ゼロ','レコード','の旅','ハウス','タワー'];
+  function rng(seed) { return () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296; }
+  // counts：板块ごとの件数。板块に subs があれば作品を小分類に振り分ける
+  function fake(secs, counts, seed) {
+    const r = rng(seed), used = new Set(), works = [];
+    secs.forEach((s, si) => {
+      for (let k = 0; k < counts[si]; k++) {
+        let name;
+        do { name = A[r() * A.length | 0] + B[r() * B.length | 0]; if (used.has(name)) name += ' ' + (2 + (r() * 8 | 0)); } while (used.has(name));
+        used.add(name);
+        works.push({name, sec: s, sub: s.subs.length ? s.subs[Math.min(s.subs.length - 1, Math.floor(Math.pow(r(), 1.3) * s.subs.length))] : '',
+                    hot: r() < .35 ? 1 + (r() * 9 | 0) : 0});
+      }
+    });
+    return works;
+  }
+  const real = (secs, rows) => rows.map(([si, name, sub, hot]) => ({name, sec: secs[si], sub: sub || '', hot: hot || 0}));
+
+  // ---------- 見本 ----------
+  const SIX = [sec('游戏','ゲーム','GAMES',C.game,['新作・発売前','運営中','eスポーツ']), sec('影视','映像','SCREEN',C.screen,['映画','ドラマ','アニメ']),
+               sec('演出','ライブ','LIVE',C.live,['K-POP','J-POP','華語']), sec('运动','スポーツ','SPORTS',C.sports,['ウィンター','観戦']),
+               sec('好物','グッズ','GOODS',C.goods,['食器・生活','ペット','ガジェット','ファッション','キャラクター']), sec('其他','その他','OTHER',C.other)];
+  const NOW = [ // いまの items.yaml（23 項）。新着の数はダミー
+    [0,'Astrae Oratio','新作・発売前',2],[0,'BLEACH Mirrors High','新作・発売前'],[0,'GTA 6','新作・発売前',6],[0,'MMORPG 新作','新作・発売前',3],
+    [0,'あつ森','運営中'],[0,'绝区零','運営中',4],[0,'dota2','eスポーツ',1],
+    [1,'漫威电影','映画',5],[1,'FROM','ドラマ'],[1,'哈利波特剧集','ドラマ',2],[1,'The Mandalorian','ドラマ'],[1,'チェーンソーマン','アニメ',3],
+    [2,'ILLIT','K-POP',4],[2,'A2O LITE','K-POP'],[2,'Vaundy','J-POP',1],[2,'周杰伦','華語',2],
+    [3,'滑雪','ウィンター',2],[3,'日本顶级网球赛事','観戦'],
+    [4,'星巴克马克杯','食器・生活',1],[4,'猫用品','ペット',2],[4,'三星手机','ガジェット',5],[4,'gelato pique','ファッション'],[4,'ぐでたま','キャラクター',1]];
+  const sixSecs5 = SIX.slice(0, 5);
+  const MANY = Array.from({length: 12}, (_, i) => sec('g' + i, ['ゲーム','映像','グッズ','ライブ','スポーツ','アニメ','音楽','本','旅行','グルメ','車','その他'][i],
+               ['GAMES','SCREEN','GOODS','LIVE','SPORTS','ANIME','MUSIC','BOOKS','TRAVEL','FOOD','CARS','OTHER'][i], i < 5 ? BASE[i].c : EX[i % EX.length]));
+  const BIG = [sec('游戏','ゲーム','GAMES',C.game,['任天堂','PlayStation','PC・Steam','スマホ','インディー']), sec('影视','映像','SCREEN',C.screen,['海外ドラマ','映画','日本ドラマ','ドキュメンタリー']),
+               sec('好物','グッズ','GOODS',C.goods,['文房具','キッチン','猫用品','ガジェット','ファッション']), sec('演出','ライブ','LIVE',C.live,['J-POP','アイドル','フェス','舞台']),
+               sec('运动','スポーツ','SPORTS',C.sports,['サッカー','野球','バスケ','モータースポーツ']), sec('动画','アニメ','ANIME',C.anime,['今期','劇場版','長期シリーズ']),
+               sec('音乐','音楽','MUSIC',C.music,['アーティスト','新譜','レーベル']), sec('书籍','本・マンガ','BOOKS',C.books,['連載マンガ','小説','画集・ムック'])];
+  const LOP = [sec('游戏','ゲーム','GAMES',C.game,['新作・発売前','運営中','eスポーツ','インディー']), ...BASE.slice(1)];
+
+  const CASES = [
+    {t: '板块 2 つ・作品 5 つ', d: 'いちばん少ない場合。全部ひらくと隙間が目立つ？', secs: BASE.slice(0, 2), works: fake(BASE.slice(0, 2), [3, 2], 1)},
+    {t: '板块 2 つ・作品 60', d: '板块は少ないが中身は多い。小分類の札が出る。', secs: [BIG[0], BIG[1]], works: fake([BIG[0], BIG[1]], [36, 24], 2)},
+    {t: 'いまの 23 項', d: 'items.yaml の今の板块と関注項（新着の数はダミー）。', secs: sixSecs5, works: real(sixSecs5, NOW)},
+    {t: '提案：大板块 6 つ ＋ その他', d: 'いまの 23 項を固定の 6 板块に。その他は 1 件だけ。', secs: SIX, works: real(SIX, [...NOW, [5,'（例）京都の紅葉','',1]])},
+    {t: '偏り：1 板块だけ 40', d: 'ゲームだけ多く、ほかは 1〜2 件。', secs: LOP, works: fake(LOP, [40, 2, 1, 2, 1], 3)},
+    {t: '偏り：1 板块だけ 1 件', d: 'ほかは 6〜10 件、スポーツだけ 1 件。', secs: BASE, works: fake(BASE, [8, 10, 6, 7, 1], 4)},
+    {t: '均等：各 20（100 件）', d: '5 板块に 20 件ずつ。', secs: BASE, works: fake(BASE, [20, 20, 20, 20, 20], 5)},
+    {t: '板块 12 個・各 3', d: '板块がとても多い場合。見出しだけで高さを食う。', secs: MANY, works: fake(MANY, MANY.map(() => 3), 6)},
+    {t: '板块 12 個・偏り', d: '多い板块と 1 件の板块が混ざる。', secs: MANY, works: fake(MANY, [30, 18, 12, 9, 6, 4, 3, 2, 2, 1, 1, 1], 7)},
+    {t: '1000 件', d: '8 板块・小分類あり。入りきらないぶんは「ほか N 件」。', secs: BIG, works: fake(BIG, [220, 200, 180, 120, 80, 100, 50, 50], 8)},
+  ];
+
+  // ---------- 目次 1 本ぶん（nav.html と同じルール） ----------
+  const FLAT_MAX = 24, SUB_MIN = 13, SEC_H = 44, ITEM_H = 28, MORE_H = 24, MIN_H = 40;
+  const e = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+  let mode = 'auto';
+
+  function Rail(box, cs) {
+    const W = cs.works.slice().sort((a, b) => cs.secs.indexOf(a.sec) - cs.secs.indexOf(b.sec) || a.sec.subs.indexOf(a.sub) - b.sec.subs.indexOf(b.sub));
+    const secs = cs.secs.filter(s => W.some(w => w.sec === s));
+    const pad = W.length >= 1000 ? 4 : W.length >= 100 ? 3 : 2;
+    W.forEach((w, i) => { w.i = i; w.no = String(i + 1).padStart(pad, '0'); });
+    box.innerHTML = `<h2><b>${String(cs.n).padStart(2, '0')}</b>${e(cs.t)}</h2><p>${e(cs.d)}</p>`
+      + `<div class="frame"><div class="find">🔍 作品をさがす</div><div class="rail"></div></div>`
+      + `<div class="scrub"><button type="button" data-d="-1" aria-label="前の作品">◀</button><input type="range" min="0" max="${W.length - 1}" value="0" aria-label="読んでいる位置"><button type="button" data-d="1" aria-label="次の作品">▶</button><span class="pos"></span></div>`;
+    const rail = box.querySelector('.rail'), range = box.querySelector('input'), pos = box.querySelector('.pos');
+    let cur = 0, flat, slots = [], curSec = null, curSub = null;
+    const hasSubs = s => W.filter(w => w.sec === s).length >= SUB_MIN && s.subs.length > 1;
+    const subsOf = s => s.subs.filter(sub => W.some(w => w.sec === s && w.sub === sub));
+    const pill = w => `<a class="pill${w.i === cur ? ' on' : ''}" style="--sc:${w.sec.c}" href="#" data-i="${w.i}"><i class="no">${w.no}</i>`
+      + `<span class="nm">${e(w.name)}<small class="cnt">${w.hot ? `今週 ${w.hot} 件` : '新着なし'}</small></span>${w.hot ? `<span class="new">+${w.hot}</span>` : ''}</a>`;
+
+    function build() {
+      flat = mode === 'auto' && W.length <= FLAT_MAX;
+      rail.classList.toggle('flat', flat);
+      curSec = curSub = null;
+      if (flat) {
+        rail.innerHTML = secs.map(s => `<div class="grp" style="--sc:${s.c}"><span class="tg">${e(s.ja)}</span><small>${s.en}</small></div>`
+          + W.filter(w => w.sec === s).map(pill).join('')).join('');
+        return;
+      }
+      rail.innerHTML = secs.map(s => {
+        const all = W.filter(w => w.sec === s), nn = all.filter(w => w.hot).length;
+        return `<div class="slot" style="--sc:${s.c}"><button class="sec" data-sec="${s.id}"><span class="tg">${e(s.ja)}</span><span class="en">${s.en}</span>`
+          + `<span class="cnt">新着 ${nn}／${all.length}</span><span class="meter"><i style="width:${Math.round(nn / all.length * 100)}%"></i></span></button><div class="body"></div></div>`;
+      }).join('');
+      slots = [...rail.querySelectorAll('.slot')];
+    }
+    function layout() {
+      const H = Math.floor(rail.getBoundingClientRect().height), n = slots.length, k = secs.indexOf(curSec);
+      const hs = slots.map((_, i) => i === k ? Math.max(MIN_H, H - (n - 1) * MIN_H) : MIN_H);
+      let y = 0;
+      slots.forEach((el, i) => { el.style.top = y + 'px'; el.style.height = hs[i] + 'px'; y += hs[i]; el.classList.toggle('cur', i === k); });
+      return hs[k];
+    }
+    function fill(h) {
+      const s = curSec, el = slots[secs.indexOf(s)].querySelector('.body'), list = W.filter(w => w.sec === s);
+      const fit = (room, sl) => {
+        let n = Math.max(1, Math.floor(room / ITEM_H));
+        if (sl.length > n) n = Math.max(1, Math.floor((room - MORE_H) / ITEM_H));
+        let pick = sl.slice().sort((a, b) => b.hot - a.hot || a.i - b.i).slice(0, n);
+        const c = sl.find(w => w.i === cur);
+        if (c && !pick.includes(c)) pick = pick.slice(0, n - 1).concat(c);
+        const ih = sl.length <= n ? Math.max(ITEM_H, Math.min(56, Math.floor(room / Math.max(1, pick.length)))) : ITEM_H;
+        el.style.setProperty('--ih', ih + 'px');
+        el.classList.toggle('roomy', ih >= 48);
+        return {pick: pick.sort((a, b) => a.i - b.i), rest: sl.length - pick.length};
+      };
+      if (!hasSubs(s)) {
+        const {pick, rest} = fit(h - SEC_H - 8, list);
+        el.innerHTML = pick.map(pill).join('') + (rest ? `<button class="more">ほか ${rest} 件をさがす →</button>` : '');
+        return;
+      }
+      el.innerHTML = `<div class="subs">` + subsOf(s).map(sub => `<button class="sub${sub === curSub ? ' cur' : ''}" data-sub="${e(sub)}">${e(sub)}<span class="cnt">${list.filter(w => w.sub === sub).length}</span></button>`).join('')
+        + `</div><div class="its"></div>`;
+      const {pick, rest} = fit(h - SEC_H - 8 - el.firstChild.offsetHeight - 6, list.filter(w => w.sub === curSub));
+      el.lastChild.innerHTML = pick.map(pill).join('') + (rest ? `<button class="more">ほか ${rest} 件をさがす →</button>` : '');
+    }
+    function draw(force) {
+      const cw = W[cur];
+      range.value = cur;
+      pos.textContent = `${cur + 1}/${W.length}`;
+      if (flat) { rail.querySelectorAll('.pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur)); return; }
+      if (force || cw.sec !== curSec) { curSec = cw.sec; curSub = cw.sub; fill(layout()); }
+      else if (cw.sub !== curSub) { curSub = cw.sub; fill(slots[secs.indexOf(curSec)].offsetHeight); }
+      else rail.querySelectorAll('.body .pill').forEach(p => p.classList.toggle('on', +p.dataset.i === cur));
+    }
+    function set(i) { cur = Math.max(0, Math.min(W.length - 1, i)); draw(); }
+    range.addEventListener('input', () => set(+range.value));
+    box.addEventListener('click', ev => {
+      const t = ev.target.closest('[data-i],[data-sec],[data-sub],[data-d]');
+      if (!t) return;
+      ev.preventDefault();
+      if (t.dataset.i != null) return set(+t.dataset.i);
+      if (t.dataset.d) return set(cur + +t.dataset.d);
+      if (t.dataset.sec) return set(W.find(w => w.sec.id === t.dataset.sec).i);
+      if (t.dataset.sub) return set(W.find(w => w.sec === curSec && w.sub === t.dataset.sub).i);
+    });
+    new ResizeObserver(() => { if (!flat && curSec) fill(layout()); }).observe(rail);
+    return {
+      reset() { build(); draw(true); },
+      step() { set(cur + 1 >= W.length ? 0 : cur + Math.max(1, Math.round(W.length / 40))); },
+    };
+  }
+
+  const board = document.getElementById('board');
+  const rails = CASES.map((cs, i) => {
+    cs.n = i + 1;
+    const box = document.createElement('section');
+    box.className = 'case';
+    board.appendChild(box);
+    return Rail(box, cs);
+  });
+
+  function pick(id, attr, v) { document.querySelectorAll(`#${id} button`).forEach(b => b.setAttribute('aria-pressed', b.dataset[attr] === String(v))); }
+  function setH(h) { document.documentElement.style.setProperty('--rh', h + 'px'); pick('hs', 'h', h); }
+  function setM(m) { mode = m; pick('ms', 'm', m); rails.forEach(r => r.reset()); }
+  document.getElementById('hs').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setH(+b.dataset.h); });
+  document.getElementById('ms').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setM(b.dataset.m); });
+  let timer = null;
+  const play = document.getElementById('play');
+  play.addEventListener('click', () => {
+    if (timer) { clearInterval(timer); timer = null; } else timer = setInterval(() => rails.forEach(r => r.step()), 700);
+    play.setAttribute('aria-pressed', !!timer);
+    play.textContent = timer ? '■ 止める' : '▶ 全部いっせいに読み進める';
+  });
+  const q = new URLSearchParams(location.search);
+  setH([600, 720, 900].includes(+q.get('h')) ? +q.get('h') : 720);
+  setM(q.get('m') === 'fold' ? 'fold' : 'auto');
+})();
+</script>
+</body>
+</html>
