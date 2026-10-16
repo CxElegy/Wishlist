@@ -15,9 +15,11 @@ import datetime as dt
 import hashlib
 import html
 import json
+import math
 import re
 import urllib.parse
 
+import heat
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
@@ -32,7 +34,10 @@ CSS = """
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
  --fs-label:11px;--fs-tag:10px;--gap:16px;--hair:color-mix(in srgb,var(--ink) 16%,transparent);
- --shadow:4px 4px 0 var(--ink);--shadow-l:8px 8px 0 var(--ink);--tilt:-1.5deg;--skew:-8deg}
+ --shadow:4px 4px 0 var(--ink);--shadow-l:8px 8px 0 var(--ink);--tilt:-1.5deg;--skew:-8deg;
+ /* 話題度の分析ページのグラフ（dataviz の検証済みパレット）：指標 6 色・点数の濃淡 5 段・前週比の上下 */
+ --viz-1:#2a78d6;--viz-2:#eb6834;--viz-3:#1baf7a;--viz-4:#eda100;--viz-5:#e87ba4;--viz-6:#008300;
+ --seq-0:#cde2fb;--seq-1:#9ec5f4;--seq-2:#5598e7;--seq-3:#256abf;--seq-4:#104281;--up:#e34948;--down:#2a78d6}
 /* デザインの骨格（PRODUCT.md）：文字箱の後ろに硬い影、見出しと枠だけ少し傾ける（-1〜-2.5°）、ラベルは平行四辺形。
    本文・リスト・作品の版面は傾けない。配色はトークンと版面の色だけ */
 *{box-sizing:border-box}
@@ -156,6 +161,11 @@ button{font-family:inherit}
 .shot .bn{font:700 12px/1.3 var(--font-sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .shot .bar{height:12px;width:calc(var(--v) * 100%);background:var(--sc);transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--ink)}
 .shot b{font:16px var(--font-num);text-align:right}
+.shot li a{grid-template-columns:96px minmax(0,1fr) 28px 14px}
+.shot .bn em{display:block;font:900 var(--fs-tag)/1.3 var(--font-sans);font-style:normal;color:var(--alert);letter-spacing:.08em}
+.shot i{font:900 13px var(--font-sans);font-style:normal;text-align:center}
+.shot i.up{color:var(--alert)}.shot i.flat{opacity:.45}.shot i.down{opacity:.6}
+.snote{margin:6px 0 8px;font-size:12px;line-height:1.5;opacity:.75}
 .shot li a:hover .bn{text-decoration:underline}
 .staste ul{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .staste li{display:inline-flex;align-items:baseline;gap:5px;padding:3px 9px;border:1.5px solid var(--ink);background:#FFF;font:700 12px var(--font-sans)}
@@ -220,6 +230,31 @@ button{font-family:inherit}
 .band .cnt{margin-left:auto;font:700 12px/1.3 var(--font-sans);opacity:.85;white-space:nowrap}
 .band .cnt b{margin-right:6px;font:30px/1 var(--font-num);color:var(--acc)}
 .band .deco{position:absolute;pointer-events:none;font-style:normal}
+/* 話題度（_heat_badge）：見出しの右に数字、押すと内訳のカード。数字の色は版面の --acc、カードは紙とインク */
+.heat{position:relative;margin-left:auto}
+.heat+.cnt{margin-left:0}
+.heat summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:6px;white-space:nowrap;font:700 12px/1.3 var(--font-sans)}
+.heat summary::-webkit-details-marker{display:none}
+.heat summary small{font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em;opacity:.85}
+.heat summary b{font:30px/1 var(--font-num);color:var(--acc);border-bottom:2px dotted color-mix(in srgb,var(--fg) 45%,transparent)}
+.heat summary i{font:900 16px/1 var(--font-sans);font-style:normal}
+.heat.flat summary i{opacity:.5}.heat.down summary i{opacity:.7}
+.heat summary em{font:700 var(--fs-label) var(--font-sans);font-style:normal;opacity:.85}
+.heat .hx-rise{display:inline-block;padding:1px 8px;background:var(--alert);color:#FFF;transform:skewX(var(--skew));font:900 var(--fs-label)/1.4 var(--font-sans);letter-spacing:.1em}
+.heat summary:hover b{border-bottom-style:solid}
+.hx{position:absolute;right:0;top:calc(100% + 10px);z-index:6;width:min(420px,calc(100vw - 32px));padding:14px 16px 12px;
+ background:var(--card);color:var(--ink);border:2px solid var(--ink);box-shadow:var(--shadow);white-space:normal}
+.hx-head{margin:0 0 8px;padding-bottom:6px;border-bottom:2px solid var(--ink);font:700 12px/1.4 var(--font-sans)}
+.hx-head b{font:900 15px var(--font-sans)}
+.hx ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.hx li{display:grid;grid-template-columns:84px minmax(0,1fr) 30px;gap:2px 8px;align-items:center}
+.hx-n{font:700 12px/1.3 var(--font-sans)}
+.hx-bar{height:10px;background:linear-gradient(90deg,var(--rose) calc(var(--v) * 100%),color-mix(in srgb,var(--ink) 12%,transparent) 0);transform:skewX(var(--skew))}
+.hx li b{font:16px var(--font-num);text-align:right}
+.hx li small{grid-column:2/4;font:500 var(--fs-label)/1.45 var(--font-sans);opacity:.8}
+.hx-miss,.hx-note{margin:8px 0 0;font:500 12px/1.55 var(--font-sans);opacity:.8}
+.hx-more{display:block;margin-top:10px;padding:6px;text-align:center;background:var(--ink);color:var(--card);font:900 12px var(--font-sans);letter-spacing:.06em}
+.hx-more:hover{background:var(--rose)}
 .facts{display:flex;flex-wrap:wrap;gap:12px;padding:16px 26px 0}
 .fact{flex:1 1 280px;padding:12px 18px;background:var(--abg);color:var(--afg);box-shadow:4px 4px 0 var(--acc);display:flex;flex-direction:column;gap:4px}
 .fact .label{font:700 11px var(--font-sans);letter-spacing:.14em;opacity:.8}
@@ -423,7 +458,8 @@ button{font-family:inherit}
  .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
  .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/10}
  .pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
- .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt{margin-left:0}.band .deco{display:none}
+ .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
+ .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
  .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
@@ -931,6 +967,7 @@ def _section(block, anchor=""):
     recent = recent or texts
     quiet = "" if recent else " quiet"
     cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
+    cnt = _heat_badge(block) + cnt
     return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec{" m-" + motif if motif else ""}{quiet}" style="{style}">'
             f'<div class="band">{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
             f"{facts}{grid}</section>")
@@ -1677,6 +1714,44 @@ def _recent(w, today):
     return [x for x in w["stories"] if x["_issue"] >= cutoff]
 
 
+
+HEAT_NOTE = ("6 つの指標の加重平均。各指標は「この作品のいつも」と比べて 6 割、全作品共通の物差しで 4 割"
+             "（出来事は事件の大きさ、勢いは自分との比較だけ）。データのない指標は除いて計算し、👍 / 👎 は入れていません。")
+
+
+def _trend(delta):
+    """前週比 → (クラス, 矢印, 説明)。比べられない（データ不足）ときは矢印なし。"""
+    if delta is None:
+        return "", "", "前週比はデータ集め中"
+    if delta >= 10:
+        return "up", "↑", f"前週比 +{delta}"
+    if delta <= -10:
+        return "down", "↓", f"前週比 {delta}"
+    return "flat", "→", f"前週比 {delta:+d}"
+
+
+def _heat_badge(w):
+    """版面の見出しの話題度（heat.py が計算）。押すと 6 つの指標の内訳。データがなければ出さない。"""
+    h = w.get("_heat")
+    if not h or not h.get("score"):
+        return ""
+    cls, arrow, why = _trend(h.get("delta"))
+    rows = "".join(
+        f'<li style="--v:{d["score"] / 100:.2f}"><span class="hx-n">{e(d["name"])}</span>'
+        f'<span class="hx-bar" aria-hidden="true"></span><b>{d["score"]}</b><small>{e(d["note"])}</small></li>'
+        for d in h.get("dims") or [])
+    miss = (f'<p class="hx-miss">データなし（計算に入れていません）：{e("・".join(h["missing"]))}</p>'
+            if h.get("missing") else "")
+    hot = '<span class="hx-rise">急上昇</span>' if h.get("rising") else ""
+    tip = f'話題度 {h["score"]}（{h["label"]}）· {why} · 押すと内訳'
+    return (f'<details class="heat{" " + cls if cls else ""}"><summary title="{e(tip)}">'
+            f'<small>話題度</small><b>{h["score"]}</b>{f'<i aria-hidden="true">{arrow}</i>' if arrow else ""}'
+            f'<em>{e(h["label"])}</em>{hot}</summary>'
+            f'<div class="hx"><p class="hx-head"><b>話題度 {h["score"]}</b> / 100 · {e(h["label"])} · {e(why)}</p>'
+            f'<ol>{rows}</ol>{miss}<p class="hx-note">{e(HEAT_NOTE)}</p>'
+            f'<a class="hx-more" href="heat.html#h-{_wid(w["name"])}">分析ページで詳しく →</a></div></details>')
+
+
 WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
 WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
 SPOT_COUNT = 6  # 「ほかの注目ニュース」の写真の壁：大きい 1 枚 + 小さい 5 枚（3 列 3 段がちょうど埋まる）
@@ -1734,12 +1809,21 @@ def _side(works, today, wishes=(), taste=()):
         out.append(f'<div class="sbox swish"><h4><a href="wishlist.html">欲しい物リスト</a><small>{len(want)} 件</small></h4><ol>{"".join(rows)}</ol>'
                    f'<p class="stot"><span>欲しいものの合計</span><b>{e(total)}</b></p>'
                    f'<a class="smore" href="wishlist.html">♥ 全部見る</a></div>')
-    counts = sorted(((len(_recent(w, today)), w) for w in works if _recent(w, today)), key=lambda c: -c[0])[:6]
-    if counts:
-        top = counts[0][0]
-        bars = "".join(f'<li style="--sc:{_sec_color(w.get("section"))};--v:{n / top:.3f}"><a href="#{_wid(w["name"])}">'
-                       f'<span class="bn">{e(w["name"])}</span><span class="bar"></span><b>{n}</b></a></li>' for n, w in counts)
-        out.append(f'<div class="sbox shot"><h4>今週にぎやかな作品<small>記事の数</small></h4><ol>{bars}</ol></div>')
+    hot = sorted((w for w in works if (w.get("_heat") or {}).get("score")), key=lambda w: -w["_heat"]["score"])[:6]
+    if hot:
+        rows = []
+        for w in hot:
+            h = w["_heat"]
+            cls, arrow, why = _trend(h.get("delta"))
+            top = next((d for d in h.get("dims") or [] if d["key"] == h.get("top")), None)
+            tip = f'{h["label"]} · {why}' + (f' · いちばん効いている：{top["name"]}（{top["note"]}）' if top else "")
+            rows.append(f'<li style="--sc:{_sec_color(w.get("section"))};--v:{h["score"] / 100:.3f}"><a href="#{_wid(w["name"])}" title="{e(tip)}">'
+                        f'<span class="bn">{e(w["name"])}{"<em>急上昇</em>" if h.get("rising") else ""}</span>'
+                        f'<span class="bar"></span><b>{h["score"]}</b>'
+                        f'<i class="{cls}"{f' aria-label="{e(why)}"' if arrow else ' aria-hidden="true"'}>{arrow}</i></a></li>')
+        out.append(f'<div class="sbox shot"><h4><a href="heat.html">話題度ランキング</a><small>100 点満点</small></h4><ol>{"".join(rows)}</ol>'
+                   f'<p class="snote">報道量・広がり・出来事・勢い・Wikipedia・ファンの反応から計算。各作品の見出しの数字を押すと内訳</p>'
+                   f'<a class="smore" href="heat.html">詳しい分析 →</a></div>')
     if taste:
         chips = "".join(f'<li><span>{e(k.removeprefix(WORK_KEY))}</span><b>+{v}</b></li>' for k, v in taste[:8])
         out.append(f'<div class="sbox staste"><h4>あなたの好み<small>👍 から学習</small></h4><ul>{chips}</ul>'
@@ -2083,16 +2167,18 @@ NAV_JS = """
 
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None, taste=()):
+           motifs=None, themes=None, taste=(), heat=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
-    motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。"""
+    motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
+    heat：{作品: 話題度}（heat.compute 的结果，版面的见出し和トップの右の列に出す）。"""
     latest = issues[0]
     works = collect(issues, order)
     for w in works:
         w["_today"] = latest["date"]
         w["_size"] = (sizes or {}).get(w["name"], "M")
         w["_motif"] = (motifs or {}).get(w["name"], "")
+        w["_heat"] = (heat or {}).get(w["name"])  # 話題度（heat.compute）
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
     # id 保留 issue-日期：Discord 通知里的链接指向这里
@@ -2124,6 +2210,499 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <script>{NAV_JS}</script>
 <script>{FIT_JS}</script>
 {f"<script>{VOTE_JS % json.dumps(fb)}</script>" if fb else ""}
+</body>
+</html>
+"""
+
+
+# ---------- 話題度の分析ページ（docs/heat.html）----------
+# heat.analyze の結果を、ランキング（ヒートマップ表）・前週比・作品ごとの内訳とグラフ・計算方法の順に並べる。
+# グラフはサーバー側で書く SVG（ライブラリなし）。色はトークン（--viz-* = 指標、--seq-* = 点数の濃淡、--up / --down = 前週比）だけ。
+# ツールチップは補助：値は表（「表で見る」）からも全部読める
+
+HEAT_DIM_COLOR = {"volume": "--viz-1", "breadth": "--viz-2", "event": "--viz-3",
+                  "momentum": "--viz-4", "public": "--viz-5", "fandom": "--viz-6"}
+HEAT_DIM_ABOUT = {  # 指標 → (何を測るか, データ)
+    "volume": ("直近 7 日の報道の量。新しい記事ほど重く数える", "収集したニュース記事（Google ニュース・Bing・RSS）"),
+    "breadth": ("どれだけ広く報じられたか。媒体の数 × 言語圏（日・中・韓・英）が 1 つ増えるごとに +25%", "収集したニュース記事の媒体名と見出しの言語"),
+    "event": ("出来事そのものの大きさ。重要ニュース（発売日決定など）・状態の変化・14 日以内の予定・大きな記事", "重要ニュースの判定（作品ごとの条件）、AniList / TMDB の状態、記事の予定日"),
+    "momentum": ("上り調子か下り坂か。昨日まで 2 日の速さ ÷ その前 5 日の速さ（今日は集計途中なので除く）", "記事の数、Wikipedia の閲覧数"),
+    "public": ("ファン以外の一般の人の関心", "Wikipedia の閲覧数（人間のみ、複数言語の合計）"),
+    "fandom": ("ファンコミュニティの反応", "Reddit の投稿数、AniList トレンド、TMDB 人気度、Steam 同時接続"),
+}
+HEAT_REF_LABEL = {  # 共通の物差しの満点：(名前, 書き方)
+    "volume": ("報道量", "週 {} 件"), "breadth": ("広がり", "{}（媒体数 × 言語圏係数）"), "wiki": ("Wikipedia", "1 日 {} 回"),
+    "reddit": ("Reddit", "週 {} 件"), "steam": ("Steam", "同時接続 {}"), "anilist": ("AniList", "トレンド {}"), "tmdb": ("TMDB", "人気度 {}")}
+
+
+def _compact(n):
+    """12,345 → 1.2万（グラフの目盛り・ツールチップ）。"""
+    n = float(n)
+    if n >= 10000:
+        return f"{n / 10000:.1f}".rstrip("0").rstrip(".") + "万"
+    return f"{n:,.0f}"
+
+
+def _md_day(d):
+    return f"{int(d[5:7])}/{int(d[8:10])}"
+
+
+def _seq(score):
+    """点数 → ヒートマップの濃さ（5 段階、0〜19 がいちばん淡い）。"""
+    return f"q{min(4, max(0, int(score) // 20))}"
+
+
+def _nice(v):
+    """目盛りの上限：1 / 2 / 5 × 10^n に切り上げ。"""
+    if v <= 0:
+        return 1
+    p = 10 ** math.floor(math.log10(v))
+    return next(m * p for m in (1, 2, 5, 10) if m * p >= v)
+
+
+def _spark(trend):
+    """表の中の小さい折れ線（話題度の推移、縦軸は 0〜100 で全作品共通）。最後の点だけ強調。"""
+    if len(trend) < 2:
+        return '<span class="na" title="推移はデータが 2 日分そろってから">—</span>'
+    w, h, p = 112, 30, 4
+    xs = [p + i * (w - 2 * p) / (len(trend) - 1) for i in range(len(trend))]
+    ys = [h - p - s / 100 * (h - 2 * p) for _, s in trend]
+    pts = " ".join(f"{x:.1f},{y:.1f}" for x, y in zip(xs, ys))
+    label = f"{_md_day(trend[0][0])} {trend[0][1]} → {_md_day(trend[-1][0])} {trend[-1][1]}"
+    return (f'<svg class="spark" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="推移 {e(label)}">'
+            f'<polyline points="{pts}"/><circle cx="{xs[-1]:.1f}" cy="{ys[-1]:.1f}" r="4"/></svg>')
+
+
+def _chart(points, kind, color, unit, ymax=None, bands=(), partial_last=False, caption=""):
+    """日ごとのグラフ。kind = "bar"（記事数）/ "line"（話題度・閲覧数）。points = [(日付, 値)]。
+    図形は SVG を枠いっぱいに伸ばし（preserveAspectRatio="none"）、文字と端の点は HTML を % で重ねる：
+    どの幅でも文字がつぶれない。縦軸は 1 本だけ、目盛りはきりのいい数、細い実線のグリッド。
+    各日に透明な当たり判定（data-tip）を重ねる。"""
+    if not points or not any(v for _, v in points):
+        return f'<p class="empty">{e(caption)}：まだデータがありません</p>'
+    W, H, L, R, T, B = 640, 168, 40, 44, 10, 24
+    pw, ph = W - L - R, H - T - B
+    top = ymax or _nice(max(v for _, v in points))
+    n = len(points)
+    band = pw / n
+    y = lambda v: T + ph - v / top * ph
+    svg, labels = [], []
+    lab = lambda cls, x, yy, text: labels.append(
+        f'<span class="cl {cls}" style="left:{x / W * 100:.2f}%;top:{yy / H * 100:.2f}%">{e(text)}</span>')
+    for v, name in bands:  # 等級の境目（話題度）
+        svg.append(f'<line class="band" x1="{L}" x2="{L + pw}" y1="{y(v):.1f}" y2="{y(v):.1f}"/>')
+        lab("bl", L + pw + 4, y(v), name)
+    for t in ([0, 50, 100] if bands else [0, top / 2, top]):
+        svg.append(f'<line class="grid" x1="{L}" x2="{L + pw}" y1="{y(t):.1f}" y2="{y(t):.1f}"/>')
+        lab("yt", L - 6, y(t), _compact(t))
+    for i, (d, _) in enumerate(points):
+        if i == 0 or i == n - 1 or (n - 1 - i) % 7 == 0:
+            lab("xt", L + band * (i + .5), H - B + 6, _md_day(d))
+    if kind == "bar":
+        bw = min(24, band - 2)
+        for i, (d, v) in enumerate(points):
+            if not v:
+                continue
+            x, top_y, base = L + band * i + (band - bw) / 2, y(v), T + ph
+            r = min(4, base - top_y, bw / 2)
+            cls = ' class="part"' if partial_last and i == n - 1 else ""
+            svg.append(f'<path{cls} style="fill:var({color})" d="M{x:.1f},{base:.1f}V{top_y + r:.1f}Q{x:.1f},{top_y:.1f} {x + r:.1f},{top_y:.1f}'
+                       f'H{x + bw - r:.1f}Q{x + bw:.1f},{top_y:.1f} {x + bw:.1f},{top_y + r:.1f}V{base:.1f}Z"/>')
+    else:
+        xs = [L + band * (i + .5) for i in range(n)]
+        pts = [(x, y(v)) for x, (_, v) in zip(xs, points)]
+        line = " ".join(f"{a:.1f},{b:.1f}" for a, b in pts)
+        svg.append(f'<polygon class="wash" style="fill:var({color})" points="{pts[0][0]:.1f},{T + ph} {line} {pts[-1][0]:.1f},{T + ph}"/>'
+                   f'<polyline class="ln" style="stroke:var({color})" points="{line}"/>')
+        labels.append(f'<span class="cd" style="left:{pts[-1][0] / W * 100:.2f}%;top:{pts[-1][1] / H * 100:.2f}%;background:var({color})"></span>')
+        lab("end", pts[-1][0] + 8, pts[-1][1], _compact(points[-1][1]))
+    for i, (d, v) in enumerate(points):  # 当たり判定：その日の列全体
+        note = "（今日は集計途中）" if partial_last and i == n - 1 else ""
+        svg.append(f'<rect class="hit" x="{L + band * i:.1f}" y="{T}" width="{band:.1f}" height="{ph}" '
+                   f'data-tip="{_compact(v)} {e(unit)}{note}&#10;{_md_day(d)}"/>')
+    return (f'<figure class="fig"><figcaption>{e(caption)}</figcaption><div class="plot">'
+            f'<svg class="chart" viewBox="0 0 {W} {H}" role="img" aria-label="{e(caption)}" preserveAspectRatio="none">{"".join(svg)}</svg>'
+            f'{"".join(labels)}</div></figure>')
+
+
+def _contrib(h):
+    """話題度の内訳：各指標の寄与（点数 × 重み ÷ 重みの合計）を横に積む。合計がそのまま話題度。凡例つき。"""
+    dims = h.get("dims") or []
+    total_w = sum(d["weight"] for d in dims) or 1
+    parts = [(d, d["score"] * d["weight"] / total_w) for d in dims]
+    segs = "".join(f'<span class="seg" style="width:{c:.2f}%;background:var({HEAT_DIM_COLOR[d["key"]]})" '
+                   f'data-tip="+{c:.1f} 点&#10;{e(d["name"])}（{d["score"]} 点 × 重み {d["weight"]}）"></span>'
+                   for d, c in parts if c > 0)
+    legend = "".join(
+        f'<li><i style="background:var({HEAT_DIM_COLOR[d["key"]]})"></i><span class="dn">{e(d["name"])}</span>'
+        f'<b>{d["score"]}</b><span class="dc">+{c:.1f}</span><small>{e(d["note"])}</small></li>' for d, c in parts)
+    miss = (f'<p class="miss">データなし（計算から除外）：{e("・".join(h["missing"]))}</p>' if h.get("missing") else "")
+    return (f'<div class="stack" role="img" aria-label="内訳">{segs}</div>'
+            f'<ol class="legend"><li class="lh"><span></span><span class="dn">指標</span><b>点数</b><span class="dc">寄与</span><small>根拠</small></li>'
+            f'{legend}</ol>{miss}')
+
+
+def _delta_text(d):
+    if d is None:
+        return "—"
+    return f"+{d}" if d > 0 else str(d)
+
+
+def _heat_kpis(rows, a):
+    scored = [h for _, h in rows if h["score"]]
+    avg = sum(h["score"] for h in scored) / len(scored) if scored else 0
+    deltas = [h["delta"] for h in scored if h.get("delta") is not None]
+    avg_d = (f'<span class="kd">前週比 {_delta_text(round(sum(deltas) / len(deltas)))}</span>' if deltas
+             else '<span class="kd">前週比はデータ集め中</span>')
+    top_w, top_h = rows[0] if rows else (None, None)
+    rising = [w["name"] for w, h in rows if h.get("rising")]
+    wiki = sum(1 for _, h in rows if "public" in [d["key"] for d in h.get("dims") or []])
+    fan = sum(1 for _, h in rows if "fandom" in [d["key"] for d in h.get("dims") or []])
+    base = a.get("baseline_from")
+    base_txt = ("4 週間の平常と比較" if base and base <= a["today"] else
+                f'{_md_day(base)} から使えます' if base else "—")
+    tiles = [
+        ("対象", f"{len(rows)}", "作品", ""),
+        ("平均話題度", f"{avg:.0f}", "/ 100", avg_d),
+        ("首位", f'{top_h["score"]}' if top_h else "—", e(top_w["name"]) if top_w else "", ""),
+        ("急上昇", f"{len(rising)}", "作品", f'<span class="kd">{e("・".join(rising[:3]))}</span>' if rising else '<span class="kd">なし</span>'),
+        ("外部データ", f"{wiki}", f"/ {len(rows)} 作品", f'<span class="kd">Wikipedia あり · ファン指標 {fan} 作品</span>'),
+        ("平常との比較", "準備中" if not (base and base <= a["today"]) else "有効", "", f'<span class="kd">{e(base_txt)}</span>'),
+    ]
+    return '<div class="kpis">' + "".join(
+        f'<div class="kpi"><span class="kl">{k}</span><span class="kv"><b>{v}</b><small>{u}</small></span>{extra}</div>'
+        for k, v, u, extra in tiles) + "</div>"
+
+
+def _heat_table(rows):
+    head = "".join(f'<th scope="col" class="hm"><button type="button" data-sort="{k}">{e(lab)}<small>×{w}</small></button></th>'
+                   for k, lab, w in heat.DIMS)
+    body = []
+    for i, (w, h) in enumerate(rows, 1):
+        dims = {d["key"]: d for d in h.get("dims") or []}
+        cells = "".join(
+            (f'<td class="hm {_seq(dims[k]["score"])}" data-label="{e(lab)}" data-v="{dims[k]["score"]}" '
+             f'data-tip="{dims[k]["score"]}&#10;{e(lab)} · {e(dims[k]["note"])}">{dims[k]["score"]}</td>') if k in dims else
+            f'<td class="hm na" data-label="{e(lab)}" data-v="-1" data-tip="—&#10;{e(lab)} · データなし（計算から除外）">—</td>'
+            for k, lab, _ in heat.DIMS)
+        cls, arrow, why = _trend(h.get("delta"))
+        rise = '<em class="rise">急上昇</em>' if h.get("rising") else ""
+        body.append(
+            f'<tr data-score="{h["score"]}" data-delta="{h["delta"] if h.get("delta") is not None else -999}" data-rank="{i}">'
+            f'<td class="rk">{i}</td>'
+            f'<th scope="row" class="nm"><a href="#h-{_wid(w["name"])}">{e(w["name"])}</a>'
+            f'<small><i style="background:{_sec_color(w.get("section"))}"></i>{e(_sec_name(w.get("section")))}</small>{rise}</th>'
+            f'<td class="sc"><b>{h["score"]}</b><span class="mt" style="--v:{h["score"] / 100:.2f}" aria-hidden="true"></span>'
+            f'<small>{e(h["label"] or "—")}</small></td>'
+            f'<td class="dl {cls}" title="{e(why)}">{_delta_text(h.get("delta"))}</td>'
+            f"{cells}<td class=\"sp\">{_spark(h.get('trend') or [])}</td></tr>")
+    return (f'<div class="tw"><table class="rank"><thead><tr><th scope="col" class="rk">#</th><th scope="col" class="nm">作品</th>'
+            f'<th scope="col" class="sc"><button type="button" data-sort="score" aria-pressed="true">話題度</button></th>'
+            f'<th scope="col" class="dl"><button type="button" data-sort="delta">前週比</button></th>{head}'
+            f'<th scope="col" class="sp">推移</th></tr></thead><tbody>{"".join(body)}</tbody></table></div>'
+            f'<div class="scale" aria-hidden="true"><span>指標の点数</span>'
+            + "".join(f'<i class="{_seq(v)}">{v}〜</i>' for v in (0, 20, 40, 60, 80)) + '<i class="na">—</i><span>データなし</span></div>')
+
+
+def _heat_movers(rows):
+    """前週比のダイバージング棒（上がった＝赤、下がった＝青、真ん中が 0）。比べられないときは説明だけ。"""
+    have = sorted(((w, h) for w, h in rows if h.get("delta") is not None), key=lambda r: -r[1]["delta"])
+    if not have:
+        return ('<p class="empty">前週比は、7 日前の時点で 1 週間分の連続した収集データがそろってから出します。'
+                'それまでの比較相手は、さかのぼって集めた古い記事だけで数が少なく、実際より上がって見えるためです。</p>')
+    span = max(abs(h["delta"]) for _, h in have) or 1
+    items = []
+    for w, h in have:
+        d = h["delta"]
+        pct = abs(d) / span * 50
+        side = "up" if d > 0 else "down" if d < 0 else "zero"
+        items.append(f'<li data-tip="{_delta_text(d)}&#10;{e(w["name"])} · {h["score"]} 点"><span class="mn">{e(w["name"])}</span>'
+                     f'<span class="mbar"><i class="{side}" style="width:{pct:.1f}%"></i></span><b>{_delta_text(d)}</b></li>')
+    return f'<ol class="movers">{"".join(items)}</ol>'
+
+
+def _heat_card(w, h):
+    cls, arrow, why = _trend(h.get("delta"))
+    rise = '<em class="rise">急上昇</em>' if h.get("rising") else ""
+    trend = h.get("trend") or []
+    charts = _chart(trend, "line", "--ink", "点", ymax=100,
+                    bands=[(low, lab) for low, lab in heat.LEVELS if low > 1], caption="話題度の推移（連続収集を始めた日から）")
+    charts += _chart(h.get("articles") or [], "bar", "--viz-1", "件", partial_last=True, caption=f"1 日の記事数（直近 {heat.TREND_DAYS} 日）")
+    if h.get("wiki"):
+        charts += _chart(h["wiki"], "line", "--viz-5", "回", caption="Wikipedia の閲覧数（1 日・集計は 1〜2 日遅れ）")
+    by_day = {}
+    for col, series in ((0, trend), (1, h.get("articles") or []), (2, h.get("wiki") or [])):
+        for d, v in series:
+            by_day.setdefault(d, ["—", "—", "—"])[col] = _compact(v)
+    table = "".join(f"<tr><th scope=\"row\">{_md_day(d)}</th><td>{a}</td><td>{b}</td><td>{c}</td></tr>"
+                    for d, (a, b, c) in sorted(by_day.items(), reverse=True))
+    return (f'<article class="hcard" id="h-{_wid(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">'
+            f'<header><div class="ht"><span class="hsec"><i></i>{e(_sec_name(w.get("section")))}</span>'
+            f'<h3>{e(w["name"])}</h3>' + (f'<span class="hsub">{e(w["subtitle"])}</span>' if w.get("subtitle") else "") + '</div>'
+            f'<div class="hs"><b>{h["score"]}</b><span><em>{e(h["label"] or "—")}</em><small class="{cls}">{e(why)}</small>{rise}</span></div>'
+            f'<a class="jump" href="./#{_wid(w["name"])}">記事を見る →</a></header>'
+            f'<div class="hbody"><div class="hl">{_contrib(h)}</div><div class="hr">{charts}'
+            f'<details class="tv"><summary>数値を表で見る</summary><table><thead><tr><th scope="col">日付</th><th scope="col">話題度</th>'
+            f'<th scope="col">記事数</th><th scope="col">閲覧数</th></tr></thead><tbody>{table}</tbody></table></details></div></div></article>')
+
+
+def _heat_method(a):
+    dims = "".join(
+        f'<tr><td><i style="background:var({HEAT_DIM_COLOR[k]})"></i>{e(lab)}</td><td class="n">{w}</td>'
+        f'<td>{e(HEAT_DIM_ABOUT[k][0])}</td><td>{e(HEAT_DIM_ABOUT[k][1])}</td></tr>' for k, lab, w in heat.DIMS)
+    refs = "".join(f'<li><span>{e(HEAT_REF_LABEL[k][0])}</span><b>{e(HEAT_REF_LABEL[k][1].format(_compact(v)))}</b></li>'
+                   for k, v in heat.REF.items() if k in HEAT_REF_LABEL)
+    levels = " · ".join(f"{low} 点以上「{lab}」" for low, lab in heat.LEVELS if low > 1) + " · それ未満「静か」"
+    rel = round(heat.REL_SHARE * 100)
+    return f"""<div class="method">
+<div class="mcol">
+<h3>計算式</h3>
+<p class="eq">話題度 = Σ（指標の点数 × 重み）÷ Σ（使えた指標の重み）</p>
+<p>各指標（出来事・勢い以外）の点数 = <b>{rel}%</b>「この作品のいつも」との比較 + <b>{100 - rel}%</b>「全作品共通の物差し」。</p>
+<ul class="fx">
+<li><span>いつもとの比較</span><code>50 + 25 × log₂（(今週 + 1) ÷ (平常 + 1)）</code><small>平常並み 50 点、2 倍 75 点、4 倍で満点。今週ゼロは 0 点。平常 = 過去 4 週間の週平均</small></li>
+<li><span>共通の物差し</span><code>100 × log(1 + 値) ÷ log(1 + 満点の値)</code><small>対数目盛り。作品数が増減しても変わらないので、日をまたいで比べられる</small></li>
+<li><span>出来事</span><code>重要ニュース 40〜60 + 状態の変化 30 + 予定 0〜30 + 大きな記事 0〜20</code><small>上限 100。予定は近いほど高い（{heat.EVENT_SOON} 日前から）</small></li>
+<li><span>勢い</span><code>50 + 25 × log₂（昨日まで 2 日の速さ ÷ その前 5 日の速さ）</code><small>記事と Wikipedia の平均。{heat.RISING} 点以上かつ話題度 30 以上で「急上昇」</small></li>
+</ul>
+<p>等級：{e(levels)}。データのない指標は 0 点にせず、計算から外して残りの重みで割ります（各作品の内訳に明記）。
+自分の 👍 / 👎 は入れていません。話題度は世の中の盛り上がりだけを表します。</p>
+</div>
+<div class="mcol">
+<h3>指標と重み</h3>
+<table class="dims"><thead><tr><th scope="col">指標</th><th scope="col">重み</th><th scope="col">何を測るか</th><th scope="col">データ</th></tr></thead><tbody>{dims}</tbody></table>
+<h3>共通の物差しの満点</h3>
+<ul class="refs">{refs}</ul>
+<h3>更新と限界</h3>
+<ul class="notes">
+<li>記事・Steam・AniList・TMDB は 2 時間ごと、Wikipedia は 1 日 1 回取得。点数はページを作るたびに計算し直します。</li>
+<li>「平常」は連続して収集を始めた日から数えます（{e(_md_day(a["baseline_from"])) + " ごろから" if a.get("baseline_from") else "準備中"}使えます）。それまでは「いつもとの比較」を平常並み（50 点）として扱います。</li>
+<li>収集は 1 回あたり最大 30 記事なので、非常に報道の多い作品では記事数が頭打ちになります。</li>
+<li>Reddit の投稿が一度もない作品はファンの反応を計算に入れません（日本の商品などは Reddit で話題になりにくいため）。</li>
+</ul>
+</div>
+</div>"""
+
+
+HEAT_PAGE_CSS = """
+.page{display:flex;flex-direction:column;align-items:stretch;max-width:1240px}
+.back{display:inline-flex;align-items:center;gap:8px;font:700 12px var(--font-mono);letter-spacing:.12em}.back:hover{color:var(--rose)}
+.lede{margin:0;max-width:760px;font-size:15px;line-height:1.8}
+.panel{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:20px 22px}
+.panel>h2.sh{margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow)}
+.kpi{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-left:1px solid var(--hair);min-width:0}
+.kpi:first-child{border-left:0}
+.kl{font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em;opacity:.8}
+.kv{display:flex;align-items:baseline;gap:6px;min-width:0}
+.kv b{font:700 34px/1.1 var(--font-sans);letter-spacing:-.01em}
+.kv small{font:700 12px var(--font-sans);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kd{font:500 12px/1.45 var(--font-sans);opacity:.75}
+.tw{overflow:visible}
+table.rank{width:100%;border-collapse:collapse;font-size:13px}
+.rank th,.rank td{padding:7px 6px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:middle}
+.rank thead th{font:700 var(--fs-label) var(--font-sans);letter-spacing:.04em;border-bottom:2px solid var(--ink);white-space:nowrap}
+.rank thead button{all:unset;cursor:pointer;display:inline-flex;align-items:baseline;gap:3px}
+.rank thead button small{font:500 var(--fs-tag) var(--font-mono);opacity:.8}
+.rank thead button:hover,.rank thead button[aria-pressed="true"]{text-decoration:underline;text-underline-offset:4px}
+.rank thead button:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.rank td.rk{width:28px;font:700 13px var(--font-mono);font-variant-numeric:tabular-nums;opacity:.8}
+.rank .nm{min-width:150px}
+.rank .nm a{font:900 14px/1.35 var(--font-sans)}.rank .nm a:hover{color:var(--rose);text-decoration:underline}
+.rank .nm small{display:flex;align-items:center;gap:5px;margin-top:2px;font:500 var(--fs-label) var(--font-sans);opacity:.75}
+.rank .nm small i,.hsec i,.method td i{display:inline-block;width:8px;height:8px;border-radius:2px;flex:none}
+.rise{display:inline-block;margin-top:3px;padding:0 7px;background:var(--alert);color:#FFF;font:900 var(--fs-tag)/1.6 var(--font-sans);font-style:normal;letter-spacing:.08em}
+.rank td.sc{width:132px;white-space:nowrap}
+.rank td.sc b{display:inline-block;width:30px;font:700 18px var(--font-mono);font-variant-numeric:tabular-nums}
+.rank td.sc .mt{display:inline-block;vertical-align:middle;width:56px;height:8px;border-radius:0 4px 4px 0;
+ background:linear-gradient(90deg,var(--ink) calc(var(--v) * 100%),color-mix(in srgb,var(--ink) 10%,transparent) 0)}
+.rank td.sc small{display:block;font:500 var(--fs-label) var(--font-sans);opacity:.8}
+.rank td.dl{width:58px;font:700 13px var(--font-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.rank td.dl.up{color:var(--alert)}
+.rank td.hm{width:62px;text-align:center;font:700 13px var(--font-mono);font-variant-numeric:tabular-nums;border:2px solid var(--card)}
+.q0{background:var(--seq-0);color:var(--ink)}.q1{background:var(--seq-1);color:var(--ink)}.q2{background:var(--seq-2);color:var(--ink)}
+.q3{background:var(--seq-3);color:#FFF}.q4{background:var(--seq-4);color:#FFF}
+td.na,.scale i.na{background:repeating-linear-gradient(45deg,transparent 0 4px,color-mix(in srgb,var(--ink) 9%,transparent) 4px 5px);color:color-mix(in srgb,var(--ink) 55%,transparent)}
+.rank td.hm:hover{outline:2px solid var(--ink);outline-offset:-2px}
+.rank td.sp{width:120px}
+.spark{display:block}.spark polyline{fill:none;stroke:color-mix(in srgb,var(--ink) 55%,transparent);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.spark circle{fill:var(--rose);stroke:var(--card);stroke-width:2}
+.na{opacity:.5}
+.scale{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;font:500 var(--fs-label) var(--font-sans)}
+.scale i{display:inline-block;min-width:40px;padding:1px 6px;text-align:center;font:700 var(--fs-label) var(--font-mono);font-style:normal}
+.scale span{opacity:.75}
+.movers{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-width:760px}
+.movers li{display:grid;grid-template-columns:150px minmax(0,1fr) 44px;gap:10px;align-items:center;font-size:13px}
+.mn{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mbar{position:relative;height:14px;background:linear-gradient(90deg,transparent calc(50% - .5px),var(--ink) calc(50% - .5px) calc(50% + .5px),transparent 0)}
+.mbar i{position:absolute;top:2px;height:10px}
+.mbar i.up{left:50%;background:var(--up);border-radius:0 4px 4px 0}
+.mbar i.down{right:50%;background:var(--down);border-radius:4px 0 0 4px}
+.movers b{font:700 13px var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+.empty{margin:0;padding:14px 16px;border:1px dashed var(--hair);font-size:13px;line-height:1.7;opacity:.85}
+.cards{display:flex;flex-direction:column;gap:22px}
+.hcard{background:var(--card);border:2px solid var(--ink);border-top:6px solid var(--sc);box-shadow:var(--shadow);scroll-margin-top:16px}
+.hcard header{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;padding:16px 20px 14px;border-bottom:1px solid var(--hair)}
+.ht{display:flex;flex-direction:column;gap:2px;min-width:0}
+.hsec{display:inline-flex;align-items:center;gap:6px;font:700 var(--fs-label) var(--font-sans);letter-spacing:.06em;opacity:.8}
+.hsec i{background:var(--sc)}
+.hcard h3{margin:0;font:900 22px/1.3 var(--font-sans)}
+.hsub{font:700 12px/1.4 var(--font-sans);opacity:.8}
+.hs{display:flex;align-items:center;gap:12px;margin-left:auto}
+.hs b{font:700 48px/1 var(--font-sans);letter-spacing:-.02em}
+.hs span{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.hs em{font:900 14px var(--font-sans);font-style:normal}
+.hs small{font:500 12px var(--font-sans);opacity:.75}.hs small.up{color:var(--alert);opacity:1}
+.jump{font:700 12px var(--font-sans);border-bottom:1.5px solid currentColor}.jump:hover{color:var(--rose)}
+.hbody{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 28px;padding:18px 20px 16px}
+.stack{display:flex;height:16px;background:color-mix(in srgb,var(--ink) 8%,transparent);border-radius:0 4px 4px 0;overflow:hidden}
+.seg{height:100%;border-right:2px solid var(--card)}
+.seg:last-child{border-radius:0 4px 4px 0}
+.seg:hover{filter:brightness(1.1)}
+.legend{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column}
+.legend li{display:grid;grid-template-columns:12px 84px 32px 44px minmax(0,1fr);gap:4px 8px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--hair);font-size:13px}
+.legend li i{width:10px;height:10px;border-radius:2px;align-self:center}
+.legend .lh{font:700 var(--fs-label) var(--font-sans);opacity:.8;border-bottom:1.5px solid var(--ink)}
+.legend .lh b,.legend .lh .dc{font:700 var(--fs-label) var(--font-sans)}
+.dn{font-weight:700}
+.legend b{font:700 13px var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+.dc{font:500 12px var(--font-mono);font-variant-numeric:tabular-nums;text-align:right;opacity:.75}
+.legend small{font:500 12px/1.5 var(--font-sans);opacity:.8}
+.miss{margin:10px 0 0;font:500 12px/1.5 var(--font-sans);opacity:.75}
+.fig{margin:0 0 12px}
+.fig figcaption{font:700 12px var(--font-sans);margin-bottom:2px}
+.plot{position:relative}
+.chart{display:block;width:100%;height:168px;overflow:visible}
+.cl{position:absolute;font:500 11px/1 var(--font-mono);color:color-mix(in srgb,var(--ink) 70%,transparent);white-space:nowrap;pointer-events:none}
+.cl.yt{transform:translate(-100%,-50%)}.cl.xt{transform:translate(-50%,0)}.cl.bl{transform:translate(0,-50%);font-family:var(--font-sans)}
+.cl.end{transform:translate(0,-50%);color:var(--ink);font-weight:700}
+.cd{position:absolute;width:8px;height:8px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 2px var(--card);pointer-events:none}
+.chart .grid{stroke:color-mix(in srgb,var(--ink) 12%,transparent);stroke-width:1;vector-effect:non-scaling-stroke}
+.chart .band{stroke:color-mix(in srgb,var(--ink) 22%,transparent);stroke-width:1;vector-effect:non-scaling-stroke}
+.chart .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.chart .wash{fill-opacity:.1}
+.chart .part{fill-opacity:.4}
+.chart .hit{fill:transparent}.chart .hit:hover{fill:color-mix(in srgb,var(--ink) 7%,transparent)}
+.tv summary{cursor:pointer;font:700 12px var(--font-sans);opacity:.8}
+.tv table{margin-top:8px;border-collapse:collapse;font:500 12px var(--font-mono);font-variant-numeric:tabular-nums}
+.tv th,.tv td{padding:3px 12px 3px 0;text-align:right;border-bottom:1px solid var(--hair)}
+.tv thead th{font-family:var(--font-sans);font-weight:700}
+.method{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 36px;font-size:14px;line-height:1.75}
+.method h3{margin:0 0 8px;font:900 15px var(--font-sans);padding-bottom:4px;border-bottom:1.5px solid var(--ink)}
+.method h3:not(:first-child){margin-top:20px}
+.method p{margin:0 0 10px}
+.eq{font:700 14px var(--font-mono);padding:10px 12px;background:var(--sheet);border-left:4px solid var(--ink)}
+.fx{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:10px}
+.fx li{display:flex;flex-direction:column;gap:2px}
+.fx span{font:700 13px var(--font-sans)}
+.fx code{font:500 13px var(--font-mono);overflow-wrap:anywhere}
+.fx small{font-size:12px;opacity:.75}
+table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
+.dims th,.dims td{padding:6px 6px 6px 0;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+.dims thead th{border-bottom:1.5px solid var(--ink);white-space:nowrap}
+.dims td:first-child{white-space:nowrap;font-weight:700}.dims td i{margin-right:6px}
+.dims td.n{font:700 12px var(--font-mono);text-align:right;padding-right:12px}
+.refs,.notes{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:13px}
+.refs li{display:flex;justify-content:space-between;gap:12px;padding:3px 0 4px;border-bottom:1px dashed var(--hair)}
+.refs span{font:500 12px var(--font-mono);opacity:.75}
+.notes li{padding-left:14px;position:relative}.notes li::before{content:"";position:absolute;left:0;top:.75em;width:6px;height:2px;background:var(--ink)}
+.vtip{position:fixed;z-index:20;pointer-events:none;display:flex;flex-direction:column;gap:2px;max-width:280px;padding:7px 10px;
+ background:var(--ink);color:var(--card);font:500 12px/1.45 var(--font-sans);box-shadow:3px 3px 0 var(--rose)}
+.vtip b{font:700 16px var(--font-mono)}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.kpi:nth-child(4){border-left:0}.kpi:nth-child(n+4){border-top:1px solid var(--hair)}
+ .hbody,.method{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){
+ .rank thead{display:none}
+ .rank,.rank tbody{display:block}
+ /* スマホ：1 作品 = 3 段（名前・話題度・前週比 / 6 指標のマス / 推移）。横にスクロールさせない */
+ .rank tr{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px 3px;padding:12px 0;border-bottom:1px solid var(--hair)}
+ .rank th,.rank td{border:0;padding:0}
+ .rank td.rk{display:none}
+ .rank .nm{grid-column:1/5;min-width:0}
+ .rank td.sc{grid-column:5/6;width:auto;text-align:right}.rank td.sc b{width:auto}.rank td.sc .mt{display:none}
+ .rank td.dl{grid-column:6/7;width:auto;text-align:right;padding-top:3px}
+ .rank td.hm{width:auto;border:0;padding:3px 0 4px;font-size:12px}
+ .rank td.hm::before{content:attr(data-label);display:block;font:700 var(--fs-tag)/1.3 var(--font-sans);letter-spacing:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 2px}
+ .rank td.sp{grid-column:1/-1;width:auto}
+ .panel{padding:16px 14px}.hbody{padding:14px}.hcard header{padding:14px}
+ .movers li{grid-template-columns:96px minmax(0,1fr) 40px}
+ .cl.bl{display:none}  /* 狭い画面では等級の名前を省く（線は残す。等級は計算方法に書いてある） */
+ .legend li{grid-template-columns:12px 76px 28px 40px minmax(0,1fr)}
+}
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi{border-left:0!important;border-top:1px solid var(--hair)}.kpi:nth-child(-n+2){border-top:0}
+ .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
+ .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
+"""
+
+HEAT_PAGE_JS = """
+(function(){
+  var tip=document.createElement('div');tip.className='vtip';tip.hidden=true;document.body.appendChild(tip);
+  function show(el,x,y){
+    var lines=(el.getAttribute('data-tip')||'').split('\\n');tip.textContent='';
+    var b=document.createElement('b');b.textContent=lines[0];tip.appendChild(b);
+    lines.slice(1).forEach(function(s){var d=document.createElement('span');d.textContent=s;tip.appendChild(d);});
+    tip.hidden=false;var r=tip.getBoundingClientRect();
+    var nx=Math.max(8,Math.min(x+14,innerWidth-r.width-8)),ny=y-r.height-12;if(ny<8)ny=y+18;
+    tip.style.left=nx+'px';tip.style.top=ny+'px';
+  }
+  document.addEventListener('pointermove',function(ev){
+    var el=ev.target.closest&&ev.target.closest('[data-tip]');if(!el){tip.hidden=true;return;}show(el,ev.clientX,ev.clientY);
+  });
+  document.addEventListener('scroll',function(){tip.hidden=true;},{passive:true});
+  // 表の並べ替え：話題度・前週比・各指標（同点は今の順位のまま）
+  var tbody=document.querySelector('.rank tbody');
+  document.querySelectorAll('.rank thead button[data-sort]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var k=btn.dataset.sort,rows=[].slice.call(tbody.rows);
+      var val=function(tr){
+        if(k==='score')return +tr.dataset.score;if(k==='delta')return +tr.dataset.delta;
+        var i=[].indexOf.call(btn.closest('tr').children,btn.closest('th'));return +tr.children[i].dataset.v;
+      };
+      rows.sort(function(a,b){return val(b)-val(a)||(+a.dataset.rank)-(+b.dataset.rank);});
+      rows.forEach(function(tr,i){tr.children[0].textContent=i+1;tbody.appendChild(tr);});
+      document.querySelectorAll('.rank thead button').forEach(function(x){x.setAttribute('aria-pressed',String(x===btn));});
+    });
+  });
+})();
+"""
+
+
+def render_heat(analysis, works, updated):
+    """話題度の分析ページ（docs/heat.html）。analysis = heat.analyze の結果、works = collect の結果（名前・ジャンルの順）。"""
+    items = analysis.get("items") or {}
+    rows = sorted(((w, items[w["name"]]) for w in works if w["name"] in items),
+                  key=lambda r: (-r[1]["score"], r[0]["name"]))
+    today = analysis.get("today") or ""
+    cards = "".join(_heat_card(w, h) for w, h in rows)
+    return f"""<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>話題度アナリシス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{FONTS}">
+<style>{CSS}{HEAT_PAGE_CSS}</style>
+</head>
+<body>
+<div class="page">
+<header class="mast">
+<div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
+<div class="tools"><div class="meta"><small>基準日</small><b>{e(today.replace("-", "."))}</b></div>
+<div class="meta"><small>更新</small><b>{e(updated)}</b></div></div>
+</header>
+<a class="back" href="./">← ウォッチリスト通信に戻る</a>
+<p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
+報道量・広がり・出来事・勢い・一般の関心（Wikipedia）・ファンの反応の 6 つの指標から計算します。数字にカーソルを合わせると根拠が出ます。</p>
+{_heat_kpis(rows, analysis)}
+<section class="panel" id="ranking"><h2 class="sh"><span>ランキング</span><small>指標の列見出しで並べ替え · ×は重み</small></h2>{_heat_table(rows)}</section>
+<section class="panel" id="movers"><h2 class="sh"><span>前週比</span><small>7 日前の話題度との差</small></h2>{_heat_movers(rows)}</section>
+<section id="detail"><h2 class="sh"><span>作品ごとの内訳</span><small>点数の内訳・推移・記事数・閲覧数</small></h2></section>
+<div class="cards">{cards}</div>
+<section class="panel" id="method"><h2 class="sh"><span>計算方法</span><small>METHODOLOGY</small></h2>{_heat_method(analysis)}</section>
+</div>
+<script>{HEAT_PAGE_JS}</script>
 </body>
 </html>
 """

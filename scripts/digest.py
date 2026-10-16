@@ -34,6 +34,7 @@ import zoneinfo
 
 import yaml
 
+import heat
 import images
 import render
 import sources
@@ -53,6 +54,7 @@ STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
 SIZES_FILE = STATE_DIR / "sizes.json"
+HEAT_FILE = STATE_DIR / "heat_signals.json"  # 話題度用的外部数据（维基浏览量、Steam 在线、AniList / TMDB 人气），见 heat.py
 SIZES_PUSHED_FILE = STATE_DIR / "sizes_pushed.json"   # items.yaml 里的 size 上次同步进数据库时是什么
 INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = ROOT / "docs"
@@ -1651,13 +1653,18 @@ def write_page():
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     issues = with_new_items(issues, items)
     themes = load_json(THEMES_FILE) or {}
+    analysis = heat.analyze(items, sorted(INBOX_DIR.glob("????-??-??.json")), issues, load_json(HEAT_FILE) or {},
+                            issues[0]["date"])
+    heat_scores = analysis["items"]
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
                           {i["name"]: i["motif"] for i in items if i.get("motif")}, themes,
-                          (load_json(RECOMMEND_FILE) or {}).get("taste", []))
+                          (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores)
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
+    (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, [i["name"] for i in items]), updated),
+                                        encoding="utf-8")
     wishes = load_wishlist()
     if wishes:
         works = render.collect(issues, [i["name"] for i in items])
@@ -1744,6 +1751,14 @@ def merge_inbox(old, new):
         cur["facts"] = [{**f, "changed": f["changed"] or f["label"] in changed_before} for f in item["facts"]] or cur["facts"]
         cur["cover"] = cur.get("cover") or item.get("cover")
     return old
+
+
+def update_heat():
+    """話題度用的外部数据：维基浏览量（一天一次）、Steam 在线、AniList / TMDB 人气。取不到的下次再取。"""
+    settings, items = load_config()
+    today = dt.datetime.now(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
+    print("話題度：取外部数据", file=sys.stderr)
+    save_json(HEAT_FILE, heat.fetch_signals(items, load_json(HEAT_FILE) or {}, today))
 
 
 def ingest(dry_run=False):
@@ -2104,7 +2119,7 @@ def repair_images():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -2123,7 +2138,11 @@ def main():
         write_page()
     elif args.step == "ingest":
         ingest()
+        update_heat()
         sync_db()
+    elif args.step == "heat":
+        update_heat()
+        write_page()
     elif args.step == "sync-db":
         sync_db()
     elif args.step == "publish":
@@ -2155,6 +2174,7 @@ def main():
         take_item_requests()  # 设置页上新增的关注项先写进 items.yaml，这次就开始收集
         export_photos()  # 拍照加愿望：导出新照片给 Claude 定时任务处理
         path = ingest()
+        update_heat()
         if path:
             publish(path)
         sync_db()
