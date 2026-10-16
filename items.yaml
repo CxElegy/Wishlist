@@ -1015,3 +1015,20 @@ items:
       - "(周杰伦|周杰倫|저우제룬|Jay Chou|Chou Chieh-lun|President Chou|Zhou Jielun|周董|ジェイ・チョウ).{0,30}(抽選|抽选|先行|チケット|門票|门票|售票|ticket|一般発売)"
       - "(周杰伦|周杰倫|저우제룬|Jay Chou|Chou Chieh-lun|President Chou|Zhou Jielun|周董|ジェイ・チョウ).{0,30}(回归|回歸|컴백|comeback|カムバック|新曲|新歌|新專輯|新专辑|album|リリース|MV)"
     notes: "2026-10-16 从网页设置页加进来的。关注：演唱会、巡演、门票：抽选、发售、新歌、新专辑、回归。维基数据：台湾男歌手、流行歌曲作家、演员。"
+
+  - name: "绝区零"
+    type: game
+    section: "游戏"
+    size: M
+    subtitle: "ゼンレスゾーンゼロ"
+    keywords: ["绝区零", "絕區零", "ゼンレスゾーンゼロ", "젠레스 존 제로", "Zenless Zone Zero"]
+    match: ["绝区零", "絕區零", "ゼンレスゾーンゼロ", "젠레스 존 제로", "Zenless Zone Zero", "zzzero", "ゼンゼロ", "젠존제", "젠제로"]
+    news_langs: ["ja-JP", "zh-CN"]
+    priority: "大版本更新、新角色、周年活动；什么时候打折或限免；联名和周边；新剧情和角色设定"
+    urgent_patterns:
+      - "(绝区零|絕區零|ゼンレスゾーンゼロ|젠레스 존 제로|Zenless Zone Zero|zzzero|ゼンゼロ|젠존제|젠제로).{0,30}(新角色|新キャラ|周年|週年|大型アップデート|大版本|新版本|Ver\\.?\\s?\\d)"
+      - "(绝区零|絕區零|ゼンレスゾーンゼロ|젠레스 존 제로|Zenless Zone Zero|zzzero|ゼンゼロ|젠존제|젠제로).{0,30}(セール|特價|特价|折扣|降價|降价|史低|免費|免费|無料|sale)"
+      - "(绝区零|絕區零|ゼンレスゾーンゼロ|젠레스 존 제로|Zenless Zone Zero|zzzero|ゼンゼロ|젠존제|젠제로).{0,30}(コラボ|联名|聯名|collab|グッズ|周边|周邊|フィギュア)"
+    site: "https://zenless.hoyoverse.com"
+    steam_appid: 4162040
+    notes: "2026-10-16 从网页设置页加进来的。关注：版本更新、活动、新角色、打折、免费送、联名、周边、剧情、角色、世界观。维基数据：2024年电子游戏。"
