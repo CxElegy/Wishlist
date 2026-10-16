@@ -1,0 +1,7 @@
+/* 版面模版「film」：电影 / 剧集：胶片孔、粗黑边框、全大写题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-film .band{padding-top:30px}
+.m-film .band::before{content:"";position:absolute;left:0;right:0;top:0;height:16px;background:var(--fg);
+ -webkit-mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px) 0 4px/100% 8px no-repeat,linear-gradient(#000,#000) 0 0/100% 4px no-repeat,linear-gradient(#000,#000) 0 12px/100% 4px no-repeat;
+ mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 24px) 0 4px/100% 8px no-repeat,linear-gradient(#000,#000) 0 0/100% 4px no-repeat,linear-gradient(#000,#000) 0 12px/100% 4px no-repeat}
+.m-film .band .title{letter-spacing:.12em;text-transform:uppercase}
+.m-film .card .pic{border:4px solid var(--fg);border-left-width:10px;border-right-width:10px}

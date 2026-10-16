@@ -6,6 +6,7 @@
 ## 步骤
 
 1. 进入仓库 `CxElegy/Wishlist`，分支 `main`，先 `git pull --rebase`。
+   **先做版面模版**：`items.yaml` 里 `notes` 有「从网页设置页加进来的」、但还没有 `motif` 的关注项，按 `TEMPLATES.md` 给它设计版面模版（和已有的相似就合并）。没有就跳过。
 2. 找到最新一份 `inbox/YYYY-MM-DD.json`（不带 `.edit`）。没有就结束。
 3. 读 `items.yaml`，了解每个关注项的 `priority`（读者最关心什么）和 `notes`（背景）。
 4. 读 inbox 里每个关注项的 `entries`（编号 `n`、日期、来源、标题、摘要），按下面的规则编排。
@@ -33,7 +34,8 @@
    git commit -m "编排 YYYY-MM-DD"
    git pull --rebase && git push origin main
    ```
-   推送被拒就再 `git pull --rebase` 一次后重推。不要动 `scripts/`、`items.yaml`、工作流文件。
+   推送被拒就再 `git pull --rebase` 一次后重推。做了版面模版的，`git add` 再加上 `templates items.yaml`。
+   不要动 `scripts/`、工作流文件；`items.yaml` 只能改版面模版那一步说的 `motif`、`theme`、`notes`。
 
 ## 编排规则
 

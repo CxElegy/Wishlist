@@ -1,0 +1,40 @@
+# 版面模版：每个关注项的版面用哪一套装饰。items.yaml 里关注项的 motif 写这里的 id。
+# 每个模版一份 CSS：templates/<id>.css（只用作品自己的配色变量，所以同一个模版换个作品就是另一套颜色）。
+# 怎么设计、什么时候合并：见 TEMPLATES.md。
+#
+#   id        文件名，也是 items.yaml 的 motif
+#   name      中文名
+#   for       适合什么题材（AI 设计新关注项时，先拿这个判断能不能直接用）
+#   deco      版面标题旁的装饰字（可以没有）；第 2 个起加 d2、d3… 的 class，CSS 里可以分别定位
+#   defaults  新关注项还没设计模版时，这几种 type 先借用它（game / anime / show / event / product / category）
+
+templates:
+  - id: retro
+    name: 平成动画
+    for: 二次元手游、平成风格的动画——星星、角丸题字、发光的强调色
+    deco: ["✦", "✦"]
+    defaults: [game]
+
+  - id: manga
+    name: 漫画
+    for: 少年漫画、热血动画——网点底纹、斜分格、擬音字
+    deco: ["ドドド"]
+    defaults: [anime]
+
+  - id: pop
+    name: 流行可爱
+    for: 偶像、可爱角色、居家小物——水玉、圆角
+    deco: ["♥"]
+    defaults: [event, product, category]
+
+  - id: film
+    name: 电影剧集
+    for: 美剧、电影系列、悬疑剧——胶片孔、粗黑边框、大写题字
+    deco: []
+    defaults: [show]
+
+  - id: street
+    name: 街头
+    for: 开放世界、犯罪、都市题材——斜体题字、警示条纹、切角照片
+    deco: []
+    defaults: []
