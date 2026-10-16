@@ -51,6 +51,11 @@ main{padding:24px 0 60vh}
 .pill:hover::before{background:rgba(26,28,34,.08)}
 .pill .no{font:700 10px var(--font-mono);color:var(--sc);min-width:2.4em}
 .pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill .cnt{display:none;font:700 10px var(--font-mono);letter-spacing:.08em;color:var(--muted)}
+.body .pill{height:var(--ih,28px);transition:height .25s}
+.body.roomy .pill .nm{display:flex;flex-direction:column;gap:1px}
+.body.roomy .pill .cnt{display:block}
+.pill.on .cnt{color:var(--gold)}
 .pill .new{flex:none;font:700 10px var(--font-mono);color:var(--alert)}
 .pill.on{color:var(--card);font-weight:900}
 .pill.on::before{background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
@@ -65,10 +70,6 @@ main{padding:24px 0 60vh}
 .sec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
 .sec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
 .sec .en{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--muted);transition:opacity .2s}
-.peek{display:flex;gap:6px;align-items:baseline;padding:6px 4px 0 2px;font:700 12px/1.4 var(--font-sans);color:var(--muted);white-space:nowrap;overflow:hidden;transition:opacity .2s}
-.peek b{flex:none;font:700 10px var(--font-mono);color:var(--alert)}
-.peek span{overflow:hidden;text-overflow:ellipsis}
-.slot.cur .peek,.slot.tight .peek{opacity:0}
 .body{position:absolute;left:0;right:0;top:44px;opacity:0;transition:opacity .2s}
 .slot.cur .body{opacity:1;transition-delay:.14s}
 /* 小分類は横に並べた小さな札（縦に並べると高さを食うので） */
@@ -145,7 +146,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     <button data-n="20">20</button><button data-n="100">100</button><button data-n="1000">1000</button>
   </div>
   <label><input type="checkbox" id="onlynew">目次は新着ありだけ</label>
-  <p class="note">作品はダミーです。〜24 件：全部ひらく（今と同じ）／ 25〜：板块ごとの枠は定位置。いま読んでいる板块だけ大きくなり、近い 4 つの板块の余白だけ借りる（それより遠い板块は動かない）／ 板块が 12 件を超えると「小分類」の段が入る ／ 小分類が 8 件を超えると新着順に 8 件＋「ほか N 件」。全部と「いま話題」は 🔍（キー「/」）から。</p>
+  <p class="note">作品はダミーです。〜24 件：全部ひらく（今と同じ）／ 25〜：ほかの板块は見出し 1 行にたたみ、空いた高さは全部いま読んでいる板块へ（上の板块は上、下の板块は下に詰めるので、切り替えで動くのは境目の 1 行だけ）／ 板块が 12 件を超えると「小分類」の札が入る ／ 入りきらない作品は新着順に入るだけ＋「ほか N 件」。全部と「いま話題」は 🔍（キー「/」）から。</p>
 </header>
 <div class="wrap">
   <nav class="nav" aria-label="目次">
@@ -211,10 +212,8 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
   // ---------- しきい値 ----------
   const FLAT_MAX = 24,     // これ以下なら全部ひらく（今のやり方）
         SUB_MIN = 13,      // 板块の作品がこれ以上なら「小分類」の段を入れる
-        CAPI = 10,         // ひらいた小分類で見せたい作品の数（新着順、今の作品は必ず入る）。高さが足りなければ減らす
         HOT_TOP = 10,      // 🔍 の「いま話題」に出す数
-        DONORS = 4,        // 高さを貸すのは近い順に 4 つの板块まで（それより遠い板块は絶対に動かない）
-        SEC_H = 44, SUBS_H = 54, ITEM_H = 28, MORE_H = 24, MIN_H = 40;   // 行の高さ（CSS と同じ。SUBS_H は札 2 段の見込み）
+        SEC_H = 44, ITEM_H = 28, MORE_H = 24, MIN_H = 40;   // 行の高さ（CSS と同じ）
 
   const $ = id => document.getElementById(id), e = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
   const rail = $('rail'), hotEl = $('hot'), main = $('main'), m1 = $('mrow1'), m2 = $('mrow2'), dlg = $('finder');
@@ -241,7 +240,7 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
 
   function pill(w) {
     return `<a class="pill${w.i === cur ? ' on' : ''}" style="--sc:${w.sec.c}" href="#w${w.i}" data-i="${w.i}">`
-         + `<i class="no">${w.no}</i><span class="nm">${e(w.name)}</span>${w.hot ? `<span class="new">+${w.hot}</span>` : ''}</a>`;
+         + `<i class="no">${w.no}</i><span class="nm">${e(w.name)}<small class="cnt">${w.hot ? `今週 ${w.hot} 件` : '新着なし'}</small></span>${w.hot ? `<span class="new">+${w.hot}</span>` : ''}</a>`;
   }
   const ofSec = s => D.works.filter(w => w.sec === s && (!onlyNew || w.hot || w.i === cur));
   const hasSubs = s => D.works.filter(w => w.sec === s).length >= SUB_MIN;
@@ -259,48 +258,25 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
     }
     hotEl.innerHTML = '';
     rail.innerHTML = D.secs.map(s => {
-      const all = D.works.filter(w => w.sec === s), nn = all.filter(w => w.hot).length,
-            top = all.slice().sort((a, b) => b.hot - a.hot)[0];
+      const all = D.works.filter(w => w.sec === s), nn = all.filter(w => w.hot).length;
       return `<div class="slot" style="--sc:${s.c}" data-slot="${s.id}">`
         + `<button class="sec" data-sec="${s.id}"><span class="tg">${e(s.ja)}</span><span class="en">${s.en}</span>`
         + `<span class="cnt">新着 ${nn}／${all.length}</span><span class="meter"><i style="width:${Math.round(nn / all.length * 100)}%"></i></span></button>`
-        + (top && top.hot ? `<div class="peek"><b>+${top.hot}</b><span>${e(top.name)}</span></div>` : '')
         + `<div class="body"></div></div>`;
     }).join('');
     slots = [...rail.querySelectorAll('.slot')];
   }
 
-  // ひらいた板块が「ほしい」高さ。板块の中で小分類が変わっても同じ高さ（= 読んでいる間は枠が動かない）
-  function want(s) {
-    const list = ofSec(s);
-    if (!hasSubs(s)) return SEC_H + Math.min(list.length, CAPI) * ITEM_H + (list.length > CAPI ? MORE_H : 0) + 8;
-    const subs = subsOf(s), big = Math.max(...subs.map(sub => list.filter(w => w.sub === sub).length));
-    return SEC_H + SUBS_H + Math.min(big, CAPI) * ITEM_H + MORE_H + 8;
-  }
-
-  // ---------- 枠の配置：等分した「定位置」から、いまの板块のぶんだけ近い順に借りる ----------
+  // ---------- 枠の配置：たたんだ板块は見出し 1 行だけ、残りの高さは全部いまの板块へ ----------
+  // いまの板块より上の板块は上に、下の板块は下に詰める。板块が変わっても動くのは境目の 1 行だけ
   function layout() {
     if (flat || !rail.clientHeight) return;
-    const H = rail.clientHeight, n = slots.length, home = H / n;
-    const k = D.secs.indexOf(curSec), hs = new Array(n).fill(home);
-    if (k >= 0) {
-      let need = Math.max(0, Math.min(want(curSec), H - (n - 1) * MIN_H) - home);
-      // 距離 1, 2, 3 … の順に、上下交互に余白を借りる。借りきったらそこで止める（それより遠い枠は定位置のまま）
-      let donors = 0;
-      for (let d = 1; need > 0.5 && d < n && donors < DONORS; d++) {
-        for (const j of [k + d, k - d]) {
-          if (j < 0 || j >= n || need <= 0.5 || donors >= DONORS) continue;
-          donors++;
-          const t = Math.min(hs[j] - MIN_H, need);
-          hs[j] -= t; hs[k] += t; need -= t;
-        }
-      }
-    }
+    const H = Math.floor(rail.getBoundingClientRect().height), n = slots.length, k = D.secs.indexOf(curSec);
+    const hs = slots.map((_, i) => i === k ? H - (n - 1) * MIN_H : MIN_H);
     let y = 0;
     slots.forEach((el, i) => {
       el.style.top = y + 'px'; el.style.height = hs[i] + 'px'; y += hs[i];
       el.classList.toggle('cur', i === k);
-      el.classList.toggle('tight', hs[i] < 72);
     });
     return hs[k];
   }
@@ -314,6 +290,10 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
       let pick = sl.slice().sort((a, b) => b.hot - a.hot || a.i - b.i).slice(0, n);
       const c = sl.find(w => w.i === cur);
       if (c && !pick.includes(c)) pick = pick.slice(0, n - 1).concat(c);
+      // 全部入って高さが余るときは、行を高くして余白を埋める（56px まで。48px 以上なら 2 行目に今週の件数）
+      const ih = sl.length <= n ? Math.max(ITEM_H, Math.min(56, Math.floor(room / Math.max(1, pick.length)))) : ITEM_H;
+      el.style.setProperty('--ih', ih + 'px');
+      el.classList.toggle('roomy', ih >= 48);
       return {pick: pick.sort((a, b) => a.i - b.i), rest: sl.length - pick.length};
     };
     if (!hasSubs(s)) {
@@ -372,6 +352,8 @@ dialog::backdrop{background:rgba(26,28,34,.55)}
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => spy()); } }, {passive: true});
   addEventListener('resize', () => { measure(); spy(true); });
+  // 字体の読み込みなどで目次の高さが変わったら枠を置き直す（中身も高さに合わせて入れ直す）
+  new ResizeObserver(() => { if (D && !flat && curSec) fill(layout()); }).observe(rail);
 
   function go(i) {
     const el = document.getElementById('w' + i), off = innerWidth <= 760 ? document.querySelector('.nav').offsetHeight + 8 : 16;
