@@ -798,6 +798,17 @@ html{scroll-behavior:smooth}
   document.querySelectorAll('.sec a.card, a.top, a.wc').forEach(a => story(a, a, a));
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
   new Set(boxes.map(b => b[1].url)).forEach(paint);
+  // 数据库里「我点过的票」为准：换浏览器、换手机、清了缓存也显示成按过的样子（db/my_votes.sql）
+  fetch(cfg.url.replace(/\/$/, '') + '/rest/v1/rpc/my_votes', { method: 'POST', headers, body: '{}' })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(rows => {
+      const old = mine;
+      mine = {};
+      rows.forEach(r => { mine[r.url] = r.vote; });
+      try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
+      new Set(Object.keys(old).concat(Object.keys(mine))).forEach(paint);
+    })
+    .catch(err => console.warn('读不到数据库里的投票，先用本机记录', err));
   // 日付の行が 2 行になった（出典が入らない）ときは .two：出典を次の行に全幅で出す（途中で切らない）
   const fit = () => document.querySelectorAll('.when, .wc em').forEach(r => {
     const v = r.querySelector(':scope > .vt');
