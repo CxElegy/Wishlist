@@ -6,6 +6,8 @@
 
 ## 步骤
 
+> 跑得久的命令直接在前台运行（Bash 的 timeout 设 600000），不要放到后台再用 `pgrep` / `sleep` 循环去等。
+
 1. 进入仓库 `CxElegy/Wishlist`，分支 `main`，先 `git pull --rebase origin main`，再 `pip install -q -r requirements.txt`。
 2. 看 `inbox/photos/` 里有没有 `.json`。**没有就什么都不改，直接结束。**
 3. 每一张照片：
