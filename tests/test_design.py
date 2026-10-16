@@ -108,7 +108,7 @@ class Components(unittest.TestCase):
 
 
 class Redesign(unittest.TestCase):
-    """2026-10-16 の見た目：作品ごとの装飾、トップのポスターの取色、高さをそろえる最新ニュース。"""
+    """2026-10-16 の見た目：作品ごとの装飾、トップのポスターの取色。"""
 
     def test_motif_classes_exist_for_every_motif(self):
         for name in render.MOTIFS:
