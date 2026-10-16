@@ -411,7 +411,8 @@ def face_box(img):
                  str(pathlib.Path(__file__).resolve().parent / "data" / "lbpcascade_animeface.xml")):
         c = cv2.CascadeClassifier(path)
         if not c.empty():
-            found += [tuple(map(int, f)) for f in c.detectMultiScale(gray, 1.1, 4, minSize=(max(24, w // 10),) * 2)]
+            m = max(24, min(gray.shape) // 12)   # 短い辺で決める（横長の宣伝画像でも小さめの顔を拾う）
+            found += [tuple(map(int, f)) for f in c.detectMultiScale(gray, 1.1, 4, minSize=(m, m))]
     return max(found, key=lambda f: f[2] * f[3]) if found else None
 
 
@@ -508,6 +509,7 @@ def upper_body(img, keep=0.46, force=None, ratio=1.75):
 
 
 FACE_SHARE = 0.32   # 顔の高さ ÷ 小元素の高さ。どの版面でも顔が同じくらいの大きさに見えるようにする基準
+CLOSEUP = 0.5       # 顔がこれより大きい（顔だけのアップ）は使わず、同じキャラのページから胸像を探す（find_bust）
 
 
 def face_fit(img, share=FACE_SHARE):
@@ -523,10 +525,51 @@ def face_fit(img, share=FACE_SHARE):
     fy, fh = f[1], f[3]
     if fh / h < share:
         bottom = max(fh / share, fy + fh * 1.6)   # 顔が share になる高さ。ただし顔の下（あご・首）は必ず入れる
-        img = img.crop((0, 0, w, min(h, int(bottom))))
+        fx = f[0]
+        bw = fh / share * 1.1                      # 胸像の幅：横に広がる武器・ポーズは顔を中心にこの幅で切る
+        left = 0 if w <= bw else int(min(max(0, fx + f[2] / 2 - bw / 2), w - bw))
+        img = img.crop((left, 0, min(w, int(left + bw)) if w > bw else w, min(h, int(bottom))))
+        img = main_parts(img)
         img = img.crop(img.getchannel("A").getbbox())
         h = img.size[1]
+        f2 = face_box(img)
+        if f2:
+            fh = f2[3]
     return img, round(fh / h, 3)
+
+
+def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45):
+    """顔のアップ（顔が高さの 5 割を超える）しかないとき：同じページに載っている画像から、切り抜いて胸像になるもの
+    （顔がはっきり見えて、顔の割合 fs が lo〜hi）を探す。名前に人物名を含む画像を先に、大きい順。→ (網址, 切り抜き画像, fs) か None"""
+    from PIL import Image
+    from rembg import remove
+    q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "images", "imlimit": 300, "format": "json", "redirects": 1})
+    pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
+    word = (word or re.split(r"[\s(]", title)[0]).lower()
+    files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|jpe?g|webp)$", x["title"], re.I)
+             and word in x["title"].lower()
+             # アイコン類と、季節イベントの衣装（水着・ハロウィン…：いつもの姿ではない）は除く
+             and not re.search(r"icon|logo|favicon|signature|kanji|swimsuit|halloween|christmas|valentine|summer|bunny|wedding|new ?year", x["title"], re.I)]
+    infos = []
+    for i in range(0, len(files), 40):
+        q = urllib.parse.urlencode({"action": "query", "titles": "|".join(files[i:i + 40]), "prop": "imageinfo",
+                                    "iiprop": "url|size", "iiurlwidth": 600, "format": "json"})
+        for p in json.loads(_get(f"{api}?{q}", 4_000_000))["query"]["pages"].values():
+            info = (p.get("imageinfo") or [{}])[0]
+            if info.get("width", 0) >= 300 and info.get("height", 0) >= 300:
+                infos.append((info["width"] * info["height"], info.get("thumburl") or info["url"], p["title"]))
+    for _, url, t in sorted(infos, reverse=True)[:limit]:
+        try:
+            img = Image.open(io.BytesIO(_get(url))).convert("RGB")
+            out = check_whole(remove(img, session=_session("birefnet-general-lite")))
+            fitted, fs = face_fit(out)
+            if fs and lo <= fs <= hi:
+                print(f"  [胸像] {t}：顔 {fs}", file=sys.stderr)
+                return url, fitted, fs
+            print(f"  [合わない] {t}：顔 {fs}", file=sys.stderr)
+        except Exception as e:
+            print(f"  [合わない] {t}：{e}", file=sys.stderr)
+    return None
 
 
 def fit_all(name):
@@ -551,6 +594,13 @@ def fit_all(name):
                 img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
                        else Image.open(io.BytesIO(_get(x["image"])))).convert("RGBA")
             out, fs = face_fit(img)
+            if fs and fs > CLOSEUP and x.get("page"):   # 顔だけのアップは浮くので、同じキャラのページから胸像を探す
+                m = re.match(r"^(https://[^/]+)/wiki/(.+)$", x["page"])
+                found = m and find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "),
+                                        word=re.split(r"[\s(]", x["subject"])[0])
+                if found:
+                    x["image"], out, fs = found[0], found[1], found[2]
+                    x.pop("source", None)
             if out is None:
                 out, _ = upper_body(img, force=x.get("upper"))
             slug = slugify(name, x["subject"])
