@@ -1032,3 +1032,17 @@ items:
     site: "https://zenless.hoyoverse.com"
     steam_appid: 4162040
     notes: "2026-10-16 从网页设置页加进来的。关注：版本更新、活动、新角色、打折、免费送、联名、周边、剧情、角色、世界观。维基数据：2024年电子游戏。"
+
+  - name: "dota2"
+    type: game
+    section: "游戏"
+    size: L
+    subtitle: "Dota 2"
+    keywords: ["dota2", "Dota 2", "도타 2", "Dota 2 esports", "Dota 2 大会", "dota2 電競"]
+    match: ["dota2", "Dota 2", "도타 2", "刀塔2", "DOTA2", "DotA 2", "Defense of the Ancients 2"]
+    exclude: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂"]
+    news_langs: ["zh-TW", "en-US", "ja-JP", "zh-CN"]
+    priority: "电竞赛事的日程和结果、战队消息"
+    site: "http://www.dota2.com/"
+    steam_appid: 570
+    notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
