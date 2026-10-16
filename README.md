@@ -204,3 +204,8 @@ python -m unittest discover tests       # 运行测试（本地假网站，不�
 | `EDITING.md` | AI 编辑的工作规则 |
 | `db/feedback.sql`、`db/news.sql`、`db/history.sql`、`db/photo_inbox.sql`、`db/sizes.sql` | 数据库（Supabase）的建表语句：投票、收集到的消息、编排后的报道和价格历史、拍照加愿望的照片收件箱、每个关注项的篇幅 |
 | `state/` | 已报道的链接、上期状态、配色缓存，请勿手动修改 |
+
+## 素材のクレジット
+
+- 版面の物のアイコン（テニスボール・ネコ・スキーヤー・剣と盾）：[Twemoji](https://github.com/jdecked/twemoji)（CC-BY 4.0）
+- 作品の小元素の画像は各ファン Wiki・Wikipedia の画像。切り抜いたものは `docs/emblems/`、元の網址は `items.yaml` の `source`。

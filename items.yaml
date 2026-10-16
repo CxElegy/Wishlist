@@ -78,11 +78,11 @@ items:
   - name: Astrae Oratio
     motif: retro          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Erin Tanaka", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/7/7c/Erin_render.webp/revision/latest/scale-to-width-down/400?cb=20260701184815", page: "https://astrae-oratio.fandom.com/wiki/Erin_Tanaka", shape: "cutout"}
-      - {subject: "Anna M. Battenberg", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/0/09/Anna_render.webp/revision/latest/scale-to-width-down/400?cb=20260704001520", page: "https://astrae-oratio.fandom.com/wiki/Anna_M._Battenberg", shape: "cutout"}
-      - {subject: "Mai Asakura", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/1/19/Mai_Asakura_render.webp/revision/latest/scale-to-width-down/400?cb=20260805220733", page: "https://astrae-oratio.fandom.com/wiki/Mai_Asakura", shape: "cutout"}
-      - {subject: "Aizumi Yuzuki", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/b/b6/Aizumi_render.webp/revision/latest/scale-to-width-down/400?cb=20260926033647", page: "https://astrae-oratio.fandom.com/wiki/Aizumi_Yuzuki", shape: "cutout"}
-      - {subject: "Akina Akitsu", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "https://static.wikia.nocookie.net/astrae-oratio/images/2/2c/Akina_render.webp/revision/latest/scale-to-width-down/400?cb=20260805210959", page: "https://astrae-oratio.fandom.com/wiki/Akina_Akitsu", shape: "cutout"}
+      - {subject: "Erin Tanaka", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "emblems/astrae-oratio-erin-tanaka.webp", source: "https://static.wikia.nocookie.net/astrae-oratio/images/7/7c/Erin_render.webp/revision/latest/scale-to-width-down/400?cb=20260701184815", page: "https://astrae-oratio.fandom.com/wiki/Erin_Tanaka", shape: "cutout", upper: true, fs: 0.32}
+      - {subject: "Anna M. Battenberg", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "emblems/astrae-oratio-anna-m-battenberg.webp", source: "https://static.wikia.nocookie.net/astrae-oratio/images/0/09/Anna_render.webp/revision/latest/scale-to-width-down/400?cb=20260704001520", page: "https://astrae-oratio.fandom.com/wiki/Anna_M._Battenberg", shape: "cutout", upper: true, fs: 0.321}
+      - {subject: "Mai Asakura", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "emblems/astrae-oratio-mai-asakura.webp", source: "https://static.wikia.nocookie.net/astrae-oratio/images/1/19/Mai_Asakura_render.webp/revision/latest/scale-to-width-down/400?cb=20260805220733", page: "https://astrae-oratio.fandom.com/wiki/Mai_Asakura", shape: "cutout", fs: 0.321}
+      - {subject: "Aizumi Yuzuki", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "emblems/astrae-oratio-aizumi-yuzuki.webp", source: "https://static.wikia.nocookie.net/astrae-oratio/images/b/b6/Aizumi_render.webp/revision/latest/scale-to-width-down/400?cb=20260926033647", page: "https://astrae-oratio.fandom.com/wiki/Aizumi_Yuzuki", shape: "cutout", fs: 0.321}
+      - {subject: "Akina Akitsu", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "emblems/astrae-oratio-akina-akitsu.webp", source: "https://static.wikia.nocookie.net/astrae-oratio/images/2/2c/Akina_render.webp/revision/latest/scale-to-width-down/400?cb=20260805210959", page: "https://astrae-oratio.fandom.com/wiki/Akina_Akitsu", shape: "cutout", fs: 0.321}
     theme: {bg: "#211212", fg: "#F4EEE4", accent: "#C27270", alt_bg: "#F6EAE9", alt_fg: "#1E1A18", alt_accent: "#A14744", split: true}  # 小元素「Erin Tanaka」の色に合わせた配色（scripts/emblem.py）
     subtitle: アストラエ・オラティオ
     size: L
@@ -120,9 +120,9 @@ items:
   - name: BLEACH Mirrors High
     motif: ink          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Ichigo Kurosaki", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-ichigo-kurosaki.webp", source: "https://static.wikia.nocookie.net/bleach/images/4/41/NBFHIchigo_profile.png/revision/latest/scale-to-width-down/400?cb=20260410211133&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ichigo_Kurosaki", shape: "cutout"}
-      - {subject: "Rukia Kuchiki", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-rukia-kuchiki.webp", source: "https://static.wikia.nocookie.net/bleach/images/2/23/NBFHRukia_profile.png/revision/latest/scale-to-width-down/400?cb=20230903201912&path-prefix=en", page: "https://bleach.fandom.com/wiki/Rukia_Kuchiki", shape: "cutout"}
-      - {subject: "Orihime Inoue", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-orihime-inoue.webp", source: "https://static.wikia.nocookie.net/bleach/images/9/94/686Post-War_Orihime.png/revision/latest/scale-to-width-down/400?cb=20190523143321&path-prefix=en", page: "https://bleach.fandom.com/wiki/Orihime_Inoue", shape: "cutout"}
+      - {subject: "Ichigo Kurosaki", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-ichigo-kurosaki.webp", source: "https://static.wikia.nocookie.net/bleach/images/4/41/NBFHIchigo_profile.png/revision/latest/scale-to-width-down/400?cb=20260410211133&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ichigo_Kurosaki", shape: "cutout", fs: 0.624}
+      - {subject: "Rukia Kuchiki", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-rukia-kuchiki.webp", source: "https://static.wikia.nocookie.net/bleach/images/2/23/NBFHRukia_profile.png/revision/latest/scale-to-width-down/400?cb=20230903201912&path-prefix=en", page: "https://bleach.fandom.com/wiki/Rukia_Kuchiki", shape: "cutout", fs: 0.74}
+      - {subject: "Orihime Inoue", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-orihime-inoue.webp", source: "https://static.wikia.nocookie.net/bleach/images/9/94/686Post-War_Orihime.png/revision/latest/scale-to-width-down/400?cb=20190523143321&path-prefix=en", page: "https://bleach.fandom.com/wiki/Orihime_Inoue", shape: "cutout", fs: 0.663}
       - {subject: "Renji Abarai", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-renji-abarai.webp", source: "https://static.wikia.nocookie.net/bleach/images/6/65/685Renji_profile.png/revision/latest/scale-to-width-down/400?cb=20200322080519&path-prefix=en", page: "https://bleach.fandom.com/wiki/Renji_Abarai", shape: "cutout"}
     theme: {bg: "#F7F0E9", fg: "#1E1A18", accent: "#9A550E", alt_bg: "#211A12", alt_fg: "#F4EEE4", alt_accent: "#EE9944", split: true}  # 小元素「Ichigo Kurosaki」の色に合わせた配色（scripts/emblem.py）
     like_fx: manga          # 👍 の演出（scripts/likefx.py）：少年漫画の熱さ：擬音「ドン！」
@@ -156,8 +156,8 @@ items:
   - name: GTA 6
     motif: neon          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Jason Duval", why: "GTA6 の二人の主人公", image: "emblems/gta-6-jason-duval.webp", source: "https://static.wikia.nocookie.net/gtawiki/images/d/de/JasonDuval-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145706", page: "https://gta.fandom.com/wiki/Jason_Duval", shape: "cutout"}
-      - {subject: "Lucia Caminos", why: "GTA6 の二人の主人公", image: "emblems/gta-6-lucia-caminos.webp", source: "https://static.wikia.nocookie.net/gtawiki/images/2/2a/LuciaCaminos-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145927", page: "https://gta.fandom.com/wiki/Lucia_Caminos", shape: "cutout"}
+      - {subject: "Jason Duval", why: "GTA6 の二人の主人公", image: "emblems/gta-6-jason-duval.webp", source: "https://static.wikia.nocookie.net/gtawiki/images/d/de/JasonDuval-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145706", page: "https://gta.fandom.com/wiki/Jason_Duval", shape: "cutout", fs: 0.32}
+      - {subject: "Lucia Caminos", why: "GTA6 の二人の主人公", image: "emblems/gta-6-lucia-caminos.webp", source: "https://static.wikia.nocookie.net/gtawiki/images/2/2a/LuciaCaminos-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145927", page: "https://gta.fandom.com/wiki/Lucia_Caminos", shape: "cutout", fs: 0.32}
     theme:   # 取自官方主视觉：Vice City 黄昏，深紫夜空 + 霓虹粉 + 落日橙，标题条做成深紫 / 落日对角分割
       bg: "#1E1033"
       fg: "#FFF1F6"
@@ -209,7 +209,9 @@ items:
 
   - name: MMORPG 新作
     motif: rune          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
-    emblem_skip: "いろいろな新作ゲームの総合カテゴリで、ひと目で分かる一つの主題がない"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "剣と盾", why: "版面の主題（RPG）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f6e1.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "交差した剣", why: "版面の主題（RPG）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2694.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 近期上线 · 测试 · 新公布的网游
     type: category
     section: 游戏
@@ -256,7 +258,8 @@ items:
 
   - name: 滑雪
     motif: snow          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
-    emblem_skip: "スキー全般の総合カテゴリで、ひと目で分かる一つの主題がない"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "スキーヤー", why: "版面の主題（スキー）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26f7.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 日本雪场 · 雪板装备 · 2026-27
     size: L
     type: category
@@ -314,7 +317,7 @@ items:
     motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     like_fx: manga          # 👍 の演出（scripts/likefx.py）：アメコミの擬音（ドカーン）の勢い
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Steve Rogers", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "emblems/steve-rogers.webp", source: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b7/Steve_Rogers_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20260712215245", page: "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers", shape: "cutout"}
+      - {subject: "Steve Rogers", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "emblems/steve-rogers.webp", source: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b7/Steve_Rogers_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20260712215245", page: "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers", shape: "cutout", fs: 0.32}
     subtitle: Marvel Studios · MCU
     type: show
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -428,7 +431,7 @@ items:
     motif: magic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Dominic McLaughlin", why: "HBO ドラマ版のハリー・ハーマイオニー・ロン役（映画版ではない）", image: "emblems/dominic-mclaughlin.webp", source: "https://static.wikia.nocookie.net/harrypotter/images/f/fd/Dominic_McLaughlin.jpeg/revision/latest/scale-to-width-down/400?cb=20250527154650", page: "https://harrypotter.fandom.com/wiki/Dominic_McLaughlin", shape: "cutout"}
-      - {subject: "Alastair Stout", why: "HBO ドラマ版のハリー・ハーマイオニー・ロン役（映画版ではない）", image: "emblems/alastair-stout.webp", source: "https://static.wikia.nocookie.net/harrypotter/images/3/31/Alastair_Stout.jpg/revision/latest/scale-to-width-down/400?cb=20250527155414", page: "https://harrypotter.fandom.com/wiki/Alastair_Stout", shape: "cutout"}
+      - {subject: "Alastair Stout", why: "HBO ドラマ版のハリー・ハーマイオニー・ロン役（映画版ではない）", image: "emblems/alastair-stout.webp", source: "https://static.wikia.nocookie.net/harrypotter/images/3/31/Alastair_Stout.jpg/revision/latest/scale-to-width-down/400?cb=20250527155414", page: "https://harrypotter.fandom.com/wiki/Alastair_Stout", shape: "cutout", fs: 0.45}
     subtitle: HBO「Harry Potter」· ドラマ版ハリー・ポッター
     size: M
     type: show
@@ -491,8 +494,8 @@ items:
   - name: ILLIT
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Yunah", why: "ILLIT のメンバー", image: "emblems/illit-yunah.webp", source: "https://static.wikia.nocookie.net/kpop/images/5/56/ILLIT_Yunah_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Yunah", shape: "cutout"}
-      - {subject: "Wonhee (ILLIT)", why: "ILLIT のメンバー", image: "emblems/illit-wonhee-illit.webp", source: "https://static.wikia.nocookie.net/kpop/images/e/eb/ILLIT_Wonhee_Break_Even_concept_photo_7.png/revision/latest/scale-to-width-down/400?cb=20261006122426", page: "https://kpop.fandom.com/wiki/Wonhee_(ILLIT)", shape: "cutout"}
+      - {subject: "Yunah", why: "ILLIT のメンバー", image: "emblems/illit-yunah.webp", source: "https://static.wikia.nocookie.net/kpop/images/5/56/ILLIT_Yunah_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Yunah", shape: "cutout", fs: 0.525}
+      - {subject: "Wonhee (ILLIT)", why: "ILLIT のメンバー", image: "emblems/illit-wonhee-illit.webp", source: "https://static.wikia.nocookie.net/kpop/images/e/eb/ILLIT_Wonhee_Break_Even_concept_photo_7.png/revision/latest/scale-to-width-down/400?cb=20261006122426", page: "https://kpop.fandom.com/wiki/Wonhee_(ILLIT)", shape: "cutout", fs: 0.427}
     subtitle: アイリット · 日本公演特别关注
     size: L
     type: event
@@ -543,6 +546,8 @@ items:
 
   - name: 星巴克马克杯
     motif: cafe          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "スターバックスのロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png", page: "https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg", shape: "logo"}
     subtitle: スターバックス マグ · 日本优先 · 海外好设计
     type: category
     section: 好物
@@ -592,6 +597,8 @@ items:
 
   - name: 猫用品
     motif: paw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "ネコ", why: "版面の主題（猫）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f408.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 猫グッズ · 家里两只猫
     type: category
     section: 好物
@@ -678,6 +685,8 @@ items:
 
   - name: 日本顶级网球赛事
     motif: court          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "テニスボール", why: "版面の主題（テニス）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3be.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: ATP・WTA ツアー 日本開催
     size: L
     type: category
@@ -875,9 +884,9 @@ items:
   - name: "ぐでたま"
     motif: lazy          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Gudetama2018ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/4/41/Gudetama2018ranking.png/revision/latest/scale-to-width-down/400?cb=20260228135811", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2018ranking.png", shape: "cutout"}
-      - {subject: "Gudetama2019ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/9/98/Gudetama2019ranking.png/revision/latest/scale-to-width-down/400?cb=20260302104646", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2019ranking.png", shape: "cutout"}
-      - {subject: "Gudetama2020ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/c/c2/Gudetama2020ranking.png/revision/latest/scale-to-width-down/400?cb=20260211060247", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2020ranking.png", shape: "cutout"}
+      - {subject: "Gudetama2018ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "emblems/gudetama2018ranking-png.webp", source: "https://static.wikia.nocookie.net/hellokitty/images/4/41/Gudetama2018ranking.png/revision/latest/scale-to-width-down/400?cb=20260228135811", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2018ranking.png", shape: "cutout"}
+      - {subject: "Gudetama2019ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "emblems/gudetama2019ranking-png.webp", source: "https://static.wikia.nocookie.net/hellokitty/images/9/98/Gudetama2019ranking.png/revision/latest/scale-to-width-down/400?cb=20260302104646", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2019ranking.png", shape: "cutout"}
+      - {subject: "Gudetama2020ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "emblems/gudetama2020ranking-png.webp", source: "https://static.wikia.nocookie.net/hellokitty/images/c/c2/Gudetama2020ranking.png/revision/latest/scale-to-width-down/400?cb=20260211060247", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2020ranking.png", shape: "cutout"}
     theme: {bg: "#F7F2E9", fg: "#1E1A18", accent: "#885D0C", alt_bg: "#211C12", alt_fg: "#F4EEE4", alt_accent: "#EEB444", split: true}  # 小元素「Gudetama」の色に合わせた配色（scripts/emblem.py）
     type: category
     section: "好物"
@@ -898,11 +907,11 @@ items:
   - name: "チェーンソーマン"
     motif: chainsaw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Pochita", why: "作品の顔のマスコット（デンジの相棒）", image: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Pochita_anime_design.png/revision/latest/scale-to-width-down/400?cb=20220919121110", page: "https://chainsaw-man.fandom.com/wiki/Pochita", shape: "cutout"}
-      - {subject: "Makima", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Makima_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073730", page: "https://chainsaw-man.fandom.com/wiki/Makima", shape: "cutout"}
-      - {subject: "Denji", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/chainsaw-man/images/b/b0/Denji_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250324010006", page: "https://chainsaw-man.fandom.com/wiki/Denji", shape: "cutout"}
-      - {subject: "Power", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/chainsaw-man/images/a/ac/Power_anime_design_2.png/revision/latest/scale-to-width-down/400?cb=20231006042039", page: "https://chainsaw-man.fandom.com/wiki/Power", shape: "cutout"}
-      - {subject: "Aki Hayakawa", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/chainsaw-man/images/c/cb/Aki_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073818", page: "https://chainsaw-man.fandom.com/wiki/Aki_Hayakawa", shape: "cutout"}
+      - {subject: "Pochita", why: "作品の顔のマスコット（デンジの相棒）", image: "emblems/pochita.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Pochita_anime_design.png/revision/latest/scale-to-width-down/400?cb=20220919121110", page: "https://chainsaw-man.fandom.com/wiki/Pochita", shape: "cutout"}
+      - {subject: "Makima", why: "AniList の主役（お気に入り順）", image: "emblems/makima.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Makima_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073730", page: "https://chainsaw-man.fandom.com/wiki/Makima", shape: "cutout", fs: 0.321}
+      - {subject: "Denji", why: "AniList の主役（お気に入り順）", image: "emblems/denji-af013adf.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/b/b0/Denji_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250324010006", page: "https://chainsaw-man.fandom.com/wiki/Denji", shape: "cutout"}
+      - {subject: "Power", why: "AniList の主役（お気に入り順）", image: "emblems/power-5cb6d16c.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/a/ac/Power_anime_design_2.png/revision/latest/scale-to-width-down/400?cb=20231006042039", page: "https://chainsaw-man.fandom.com/wiki/Power", shape: "cutout", fs: 0.32}
+      - {subject: "Aki Hayakawa", why: "AniList の主役（お気に入り順）", image: "emblems/aki-hayakawa.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/c/cb/Aki_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073818", page: "https://chainsaw-man.fandom.com/wiki/Aki_Hayakawa", shape: "cutout", fs: 0.32}
     theme: {bg: "#211712", fg: "#F4EEE4", accent: "#DD8355", alt_bg: "#F7EDE9", alt_fg: "#1E1A18", alt_accent: "#AE5223", split: true}  # 小元素「Pochita」の色に合わせた配色（scripts/emblem.py）
     type: anime
     section: "影视"
@@ -947,11 +956,11 @@ items:
   - name: "あつ森"
     motif: island          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Tom Nook", why: "シリーズでいちばん知られた住人（AI が選定）", image: "https://static.wikia.nocookie.net/animalcrossing/images/e/e3/Tom_Nook_NH.png/revision/latest/scale-to-width-down/400?cb=20191228193640", page: "https://animalcrossing.fandom.com/wiki/Tom_Nook", shape: "cutout"}
-      - {subject: "Isabelle", why: "シリーズでいちばん知られた住人（AI が選定）", image: "https://static.wikia.nocookie.net/animalcrossing/images/9/95/Isabelle_NH.png/revision/latest/scale-to-width-down/400?cb=20200610024111", page: "https://animalcrossing.fandom.com/wiki/Isabelle", shape: "cutout"}
-      - {subject: "K.K. Slider", why: "シリーズでいちばん知られた住人（AI が選定）", image: "https://static.wikia.nocookie.net/animalcrossing/images/8/81/K.K._Slider_NH.png/revision/latest/scale-to-width-down/400?cb=20210113095442", page: "https://animalcrossing.fandom.com/wiki/K.K._Slider", shape: "cutout"}
-      - {subject: "Timmy and Tommy", why: "シリーズでいちばん知られた住人（AI が選定）", image: "https://static.wikia.nocookie.net/animalcrossing/images/6/6c/Timmy_and_Tommy_NH.png/revision/latest/scale-to-width-down/400?cb=20200828185411", page: "https://animalcrossing.fandom.com/wiki/Timmy_and_Tommy", shape: "cutout"}
-      - {subject: "Blathers", why: "シリーズでいちばん知られた住人（AI が選定）", image: "https://static.wikia.nocookie.net/animalcrossing/images/1/1b/Blathers_NH.png/revision/latest/scale-to-width-down/400?cb=20200229053519", page: "https://animalcrossing.fandom.com/wiki/Blathers", shape: "cutout"}
+      - {subject: "Tom Nook", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/tom-nook.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/e/e3/Tom_Nook_NH.png/revision/latest/scale-to-width-down/400?cb=20191228193640", page: "https://animalcrossing.fandom.com/wiki/Tom_Nook", shape: "cutout"}
+      - {subject: "Isabelle", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/isabelle.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/9/95/Isabelle_NH.png/revision/latest/scale-to-width-down/400?cb=20200610024111", page: "https://animalcrossing.fandom.com/wiki/Isabelle", shape: "cutout", upper: false, fs: 0.487}
+      - {subject: "K.K. Slider", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/k-k-slider.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/8/81/K.K._Slider_NH.png/revision/latest/scale-to-width-down/400?cb=20210113095442", page: "https://animalcrossing.fandom.com/wiki/K.K._Slider", shape: "cutout"}
+      - {subject: "Timmy and Tommy", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/timmy-and-tommy.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/6/6c/Timmy_and_Tommy_NH.png/revision/latest/scale-to-width-down/400?cb=20200828185411", page: "https://animalcrossing.fandom.com/wiki/Timmy_and_Tommy", shape: "cutout"}
+      - {subject: "Blathers", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/blathers.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/1/1b/Blathers_NH.png/revision/latest/scale-to-width-down/400?cb=20200229053519", page: "https://animalcrossing.fandom.com/wiki/Blathers", shape: "cutout"}
     theme: {bg: "#F7EFE9", fg: "#1E1A18", accent: "#9B5A22", alt_bg: "#211912", alt_fg: "#F4EEE4", alt_accent: "#DA9558", split: true}  # 小元素「Tom Nook」の色に合わせた配色（scripts/emblem.py）
     type: game
     section: "游戏"
@@ -991,7 +1000,7 @@ items:
   - name: "周杰伦"
     motif: porcelain          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "周杰倫", why: "本人", image: "emblems/be881111.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Jay_Chou_in_Shanghai_2023_%283%29.jpg/500px-Jay_Chou_in_Shanghai_2023_%283%29.jpg?utm_source=ja.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://ja.wikipedia.org/wiki/%E5%91%A8%E6%9D%B0%E5%80%AB", shape: "cutout"}
+      - {subject: "周杰倫", why: "本人", image: "emblems/be881111.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Jay_Chou_in_Shanghai_2023_%283%29.jpg/500px-Jay_Chou_in_Shanghai_2023_%283%29.jpg?utm_source=ja.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://ja.wikipedia.org/wiki/%E5%91%A8%E6%9D%B0%E5%80%AB", shape: "cutout", fs: 0.494}
     type: event
     section: "演出"
     size: S

@@ -105,7 +105,7 @@ class Templates(unittest.TestCase):
                 self.assertRegex(x.get("image", ""), r"^(https://|emblems/[a-z0-9-]+\.webp$)", item["name"])
                 if x["image"].startswith("emblems/"):
                     self.assertTrue((ROOT / "docs" / x["image"]).exists(), x["image"])
-                self.assertIn(x.get("shape"), ("cutout", "badge"), item["name"])
+                self.assertIn(x.get("shape"), ("cutout", "badge", "logo", "icon"), item["name"])
                 self.assertTrue(x.get("why") and x.get("subject"), item["name"])
         html_ = render._emblem([{"image": "https://a/1.png", "shape": "cutout"}, {"image": "javascript:x", "shape": "badge"},
                                 {"image": "https://a/2.png", "shape": "badge"}], "accent")
@@ -169,6 +169,19 @@ class Templates(unittest.TestCase):
         self.assertIn('src="emblems/a-b.webp"', render._emblem([{"image": "emblems/a-b.webp", "shape": "cutout"}]))
         self.assertEqual(render._emblem([{"image": "../x.webp", "shape": "cutout"}]), "")
         self.assertIn("classList.add('out')", render.EMB_JS)
+
+    def test_emblem_face_size_and_place(self):
+        # 顔の大きさをそろえる：fs（顔の割合）が基準より大きいものは小さく表示。ロゴ・アイコンはそのまま。帯の中に置く（ニュースに重ならない）
+        html_ = render._emblem([{"image": "emblems/a-b.webp", "shape": "cutout", "fs": 0.64}])
+        self.assertIn('style="--k:0.500"', html_)
+        self.assertIn("--k:1.000", render._emblem([{"image": "emblems/a-b.webp", "shape": "cutout", "fs": 0.2}]))   # 顔が小さいものは縮めない
+        self.assertIn('class="logo"', render._emblem([{"image": "https://a/logo.png", "shape": "logo"}]))
+        block = {"name": "测", "theme": {"bg": "#111111", "fg": "#EEEEEE", "accent": "#FF8800", "alt_bg": "#EEEEEE", "alt_fg": "#111111", "alt_accent": "#AA4400"},
+                 "stories": [], "_today": "2026-10-16", "_emblems": [{"image": "https://a/1.png", "shape": "cutout"}]}
+        self.assertIn('<div class="band"><div class="emb', render._section(block, "x"))
+        rule = render.CSS.split("\n.emb{", 1)[1].split("}", 1)[0]
+        self.assertIn("bottom:", rule)
+        self.assertNotIn("top:-", rule)
 
 if __name__ == "__main__":
     unittest.main()
