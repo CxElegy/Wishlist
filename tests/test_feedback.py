@@ -86,6 +86,14 @@ class VoteButtons(unittest.TestCase):
         self.assertEqual(data["url"], self.PICK["url"])
         self.assertEqual(data["words"], ["black cat"])
 
+    def test_story_buttons_sit_below_text(self):
+        # 消息卡片的小按钮放在正文下面一行，不能再浮在标题上（absolute 会盖住细卡片的标题）
+        import re
+        rule = re.search(r"\n\.vt\{([^}]*)\}", render.CSS).group(1)
+        self.assertNotIn("absolute", rule)
+        self.assertNotIn("opacity:0", render.CSS.split(".vt{", 1)[1].split(".downv", 1)[0])
+        self.assertIn(".txt, :scope > .ptxt", render.VOTE_JS)
+
 
 if __name__ == "__main__":
     unittest.main()
