@@ -9,7 +9,7 @@
 
 哪个任务在哪个环境跑、数据怎么流、哪些要钱（[网页版](https://cxelegy.github.io/Wishlist/design/architecture.html)，其他图解见下面「流程」）：
 
-![架构图：互联网来源 → GitHub Actions → 仓库 → GitHub Pages；Claude 定时任务做中文编排；Supabase 存投票和设置页请求；Discord 发通知](docs/design/architecture.png)
+![架构图：互联网来源 → GitHub Actions → 仓库 → GitHub Pages；Claude 定时任务做编排（保留原文语言）；Supabase 存投票和设置页请求；Discord 发通知](docs/design/architecture.png)
 
 ## 愿望清单
 
@@ -61,7 +61,7 @@ GitHub Actions 的安排：
 | PR 合并进 main 时 | 约 1 分钟：只重新生成网页并发布（`render.yml`），不用等收集跑完 |
 | 每 2 小时 | 收集 → 更新当天的简报网页 → 命中 `urgent_patterns` 的要紧消息立刻发 Discord（发过的不重发） |
 | 每周一 08:47（北京时间） | 发 Discord 周报：过去 7 天每个关注项的要点 + 网页链接 |
-| 每天 12:43 · 23:43（北京时间） | Claude 定时任务（AI 编辑）把当天的条目编成中文报道、合并同一件事 |
+| 每天 12:43 · 23:43（北京时间） | Claude 定时任务（AI 编辑）挑出值得报的条目、合并同一件事（标题保留原文语言，不翻译） |
 | 新加关注项推送后 | 收集到消息就立刻叫 AI 编辑编一次，不等定时（需要仓库 Secret `ROUTINE_FIRE_TOKEN`：claude.ai/code/routines → 「关注清单通信 · AI 编辑」→ 编辑 → 添加触发器 → API → 生成令牌） |
 
 ```
@@ -181,7 +181,7 @@ python -m unittest discover tests       # 运行测试（本地假网站，不�
 
 默认完全免费：收集、关键词编排、配图、取色都不调用任何付费接口。
 
-想让 AI 把标题翻成中文、按关注重点挑选和合并，有两种方式：
+想让 AI 按关注重点挑选和合并（标题保留原文，不翻译），有两种方式：
 - 在 Claude 里让 Claude 读 `inbox/` 写 `.edit.json`（用你的 Claude 订阅，不另外付费）
 - 打开 `summarize: true` 并配置 Claude API（按量付费，默认 `claude-haiku-5-5`，十几个关注项每周大约几美分）
 
