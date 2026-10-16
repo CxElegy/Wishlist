@@ -14,13 +14,13 @@
   "https://lp.p.pia.jp/article/news/514748/photo-gallery/index.html?id=26": "https://lp.p.pia.jp/shared/materials/d53fc73d-78f6-40a1-a7c9-9e4110fe04ed/origin.jpg",
   "https://media.unisba.ac.id/0c1d8055/8625ad9cN6tWRSdsyzk/?share=telegram&nb=1": null,
   "https://rocketnews24.com/2026/10/14/2811673/": "https://rocketnews24.com/wp-content/uploads/sites/2/2026/10/collage1_6e330b.jpg?w=1200&h=630&crop=1",
+  "https://saiganak.com/zh/news/gta6-new-trailer-oct2026/amp/": "https://i.ytimg.com/vi/rz1B4B2yBZY/hqdefault.jpg",
   "https://sammyguru.com/galaxy-s27-series-china-miit-uwb-listing/": "https://sammyguru.com/wp-content/uploads/2026/10/Galaxy-S27-Series-Case-Featured.jpg",
   "https://sounova.com/game/asora-agf-2026-nc-game-demo": "https://cdn.sounova.com/upload/iLdy5yozMM3nhO9fYwg_Z.webp",
   "https://stories.starbucks.com/asia/stories/2026/black-cat-energy/": null,
   "https://tver.jp/episodes/eppj4t190z": null,
   "https://www.aol.com/articles/wonder-man-ben-kingsley-mcu-155940000.html": "https://hermes.media.transform.aol.com/ea11986456cd9fd91da2c320d082958cb72e7ac3/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/15/57f40bce-ca2a-3730-ac60-2e74ae177229/a0a07c96-94ed-4838-91dc-7b0b5bf097c6.jpg",
   "https://www.cjnavi.co.jp/event/20261011-562matsuri/": "https://www.cjnavi.co.jp/assets/uploads/2025/10/5893d35f338436bae970da9b3947fa09.jpg",
-  "https://www.cnet.com/tech/gaming/grand-theft-auto-6-gta6-trailer/": "https://www.bing.com/th?id=ONUT.AnjizHiqGAbQw8f7lw7ssA&pid=News&w=1185",
   "https://www.comingsoon.net/movies/news/2208605-avengers-doomsday-robert-downey-jr-doctor-doom-arts": "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/MixCollage-16-Oct-2026-09-52-AM-7941.jpg?resize=1200,630",
   "https://www.gamingbible.com/news/platform/steam/outward-skyrim-alternative-037810-20261012": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt8bbf115aeeaf378d/6acca2bea74b6e1dcafa5b6a/outward.jpg",
   "https://www.jedinews.com/film-music-tv/articles/who-can-resist-grogus-adorable-face-lego-star-wars-the-mandalorian-star-wars-kids/": "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-26.jpg",
@@ -339,6 +339,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-10-16",
+   "hits": [],
+   "image": "https://i.ytimg.com/vi/rz1B4B2yBZY/hqdefault.jpg",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "Saiga NAK",
+   "taste": [
+    [
+     "作品:GTA 6",
+     7
+    ]
+   ],
+   "title": "系列最新作《GTA6》上市預告片正式公開！電子音樂雙人組 「Justice」全新創作曲也首度曝光",
+   "url": "https://saiganak.com/zh/news/gta6-new-trailer-oct2026/amp/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "三星手机",
    "date": "2026-10-15",
    "hits": [
@@ -402,27 +423,6 @@
     "galaxy"
    ],
    "work": "三星手机"
-  },
-  {
-   "batch": 1,
-   "because": "GTA 6",
-   "date": "2026-10-15",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.AnjizHiqGAbQw8f7lw7ssA&pid=News&w=1185",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "CNET",
-   "taste": [
-    [
-     "作品:GTA 6",
-     7
-    ]
-   ],
-   "title": "Grand Theft Auto 6: The Release Trailer You’ve Been Waiting For",
-   "url": "https://www.cnet.com/tech/gaming/grand-theft-auto-6-gta6-trailer/",
-   "words": [],
-   "work": "GTA 6"
   },
   {
    "batch": 1,
@@ -855,11 +855,11 @@
    6
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    5
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    5
   ],
   [
