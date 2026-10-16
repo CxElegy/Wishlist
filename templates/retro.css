@@ -1,0 +1,8 @@
+/* 版面模版「retro」：平成动画：星星、角丸题字、双层圆点底纹、发光的强调色。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-retro{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 35%,transparent) 1px,transparent 1.6px),
+ radial-gradient(circle,color-mix(in srgb,var(--acc) 20%,transparent) 1px,transparent 1.6px);background-size:34px 34px,21px 21px;background-position:0 0,11px 7px}
+.m-retro .band .title{border-radius:0 18px 0 18px;box-shadow:5px 5px 0 var(--acc),0 0 0 3px var(--bg),0 0 0 5px var(--acc);letter-spacing:.06em}
+.m-retro .deco{right:34%;top:12px;font-size:34px;color:var(--acc);text-shadow:0 0 14px var(--acc)}
+.m-retro .deco.d2{right:31%;top:50px;font-size:18px}
+.m-retro .card .pic{border:2px solid var(--acc);box-shadow:4px 4px 0 color-mix(in srgb,var(--acc) 45%,transparent)}
+.m-retro .when b{border-radius:999px}

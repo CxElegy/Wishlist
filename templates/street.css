@@ -1,0 +1,5 @@
+/* 版面模版「street」：街头：斜体题字、警示条纹、切角照片。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-street .band .title{transform:skewX(-10deg) rotate(-1deg);box-shadow:6px 6px 0 var(--acc)}
+.m-street .band::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;
+ background:repeating-linear-gradient(-45deg,var(--acc) 0 10px,transparent 10px 20px);opacity:.8}
+.m-street .card .pic{clip-path:polygon(0 0,100% 0,100% 88%,94% 100%,0 100%)}

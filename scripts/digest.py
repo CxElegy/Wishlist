@@ -1654,7 +1654,7 @@ def write_page():
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
-                          {i["name"]: i["motif"] for i in items if i.get("motif")}, themes,
+                          {i["name"]: render.template_for(i) for i in items}, themes,
                           (load_json(RECOMMEND_FILE) or {}).get("taste", []))
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
