@@ -1,0 +1,5 @@
+/* 版面模版「lazy」：慵懒蛋黄：荷包蛋、融化的题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-lazy{background-image:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--acc) 24%,transparent) 0 20px,color-mix(in srgb,var(--fg) 9%,transparent) 21px 38px,transparent 39px),radial-gradient(circle at 75% 70%,color-mix(in srgb,var(--acc) 20%,transparent) 0 14px,color-mix(in srgb,var(--fg) 7%,transparent) 15px 28px,transparent 29px);background-size:260px 220px,200px 240px}
+.m-lazy .band .title{border-radius:40% 60% 34% 66%/60% 40% 70% 30%;transform:rotate(2deg);padding-bottom:12px}
+.m-lazy .deco{right:28%;top:12px;font:900 26px/1 var(--font-sans);color:var(--acc);opacity:.6;letter-spacing:.2em}
+.m-lazy .card .pic{border-radius:26px 26px 40px 12px}

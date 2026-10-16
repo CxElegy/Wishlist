@@ -1,0 +1,5 @@
+/* 版面模版「beskar」：金属铠甲：拉丝金属、斜光、切角题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-beskar{background-image:linear-gradient(115deg,transparent 38%,color-mix(in srgb,var(--fg) 8%,transparent) 50%,transparent 62%),repeating-linear-gradient(0deg,color-mix(in srgb,var(--fg) 4%,transparent) 0 1px,transparent 1px 3px)}
+.m-beskar .band .title{transform:none;clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,14px 100%,0 50%);padding:8px 30px;box-shadow:none;letter-spacing:.1em}
+.m-beskar .card .pic{clip-path:polygon(0 0,100% 0,100% 85%,85% 100%,0 100%);border-color:var(--acc)}
+.m-beskar .when b{clip-path:polygon(4px 0,100% 0,calc(100% - 4px) 100%,0 100%)}

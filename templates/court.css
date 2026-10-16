@@ -1,0 +1,5 @@
+/* 版面模版「court」：球场：场地白线、球色胶囊题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-court{box-shadow:var(--shadow-l),inset 0 0 0 16px var(--bg),inset 0 0 0 18px color-mix(in srgb,var(--fg) 28%,transparent);background-image:linear-gradient(90deg,transparent calc(50% - 1px),color-mix(in srgb,var(--fg) 16%,transparent) calc(50% - 1px) calc(50% + 1px),transparent 0),linear-gradient(transparent 33%,color-mix(in srgb,var(--fg) 12%,transparent) 33% calc(33% + 2px),transparent 0)}
+.m-court .band .title{border-radius:999px;transform:none;background:var(--acc);color:var(--bg);box-shadow:4px 4px 0 var(--fg)}
+.m-court .card .pic{border-radius:6px}
+.m-court .when b{border-radius:999px}

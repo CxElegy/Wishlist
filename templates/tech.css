@@ -1,0 +1,6 @@
+/* 版面模版「tech」：科技：细网格、切角照片、等宽题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-tech{background-image:linear-gradient(color-mix(in srgb,var(--fg) 6%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--fg) 6%,transparent) 1px,transparent 1px),linear-gradient(135deg,transparent 48%,color-mix(in srgb,var(--acc) 12%,transparent) 48% 52%,transparent 52%);background-size:24px 24px,24px 24px,240px 240px}
+.m-tech .band .title{font-family:var(--font-mono);letter-spacing:.06em;transform:none;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);box-shadow:none}
+.m-tech .deco{right:28%;top:8px;font:700 30px/1 var(--font-mono);color:var(--acc);opacity:.5}
+.m-tech .card .pic{clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.m-tech .when b{font-family:var(--font-mono)}

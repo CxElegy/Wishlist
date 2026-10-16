@@ -1,0 +1,6 @@
+/* 版面模版「chainsaw」：电锯：锯齿边、飞溅墨点、粗暴斜题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-chainsaw{background-image:radial-gradient(circle at 22% 34%,color-mix(in srgb,var(--acc) 18%,transparent) 0 9px,transparent 10px),radial-gradient(circle at 26% 30%,color-mix(in srgb,var(--acc) 14%,transparent) 0 4px,transparent 5px),radial-gradient(ellipse 22px 9px at 70% 66%,color-mix(in srgb,var(--acc) 14%,transparent) 98%,transparent),radial-gradient(circle at 64% 22%,color-mix(in srgb,var(--fg) 10%,transparent) 0 3px,transparent 4px);background-size:300px 260px,300px 260px,340px 300px,180px 160px}
+.m-chainsaw .band{background-image:linear-gradient(135deg,var(--acc) 25%,transparent 25%),linear-gradient(225deg,var(--acc) 25%,transparent 25%);background-size:18px 18px;background-position:0 100%,0 100%;background-repeat:repeat-x;padding-bottom:20px}
+.m-chainsaw .band .title{transform:rotate(-3deg) skewX(-8deg);box-shadow:6px 6px 0 var(--acc)}
+.m-chainsaw .deco{right:26%;top:-6px;font:900 44px/1 var(--font-sans);color:var(--acc);opacity:.4;transform:rotate(-6deg) skewX(-12deg);letter-spacing:-.06em}
+.m-chainsaw .card .pic{clip-path:polygon(0 4%,4% 0,100% 0,100% 96%,96% 100%,0 100%)}

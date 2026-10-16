@@ -1,0 +1,5 @@
+/* 版面模版「cloud」：云朵睡衣：粉彩竖条、云边、大圆角。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-cloud{background-image:radial-gradient(circle at 50% 100%,color-mix(in srgb,var(--abg) 45%,transparent) 17px,transparent 18px),repeating-linear-gradient(90deg,color-mix(in srgb,var(--acc) 8%,transparent) 0 22px,transparent 22px 44px);background-size:36px 20px,auto;background-repeat:repeat-x,repeat;background-position:0 0,0 0}
+.m-cloud .band .title{border-radius:999px;transform:none;box-shadow:4px 4px 0 color-mix(in srgb,var(--acc) 60%,transparent)}
+.m-cloud .deco{right:28%;top:0;font:400 42px/1 var(--font-sans);color:var(--acc);opacity:.5}
+.m-cloud .card .pic{border-radius:22px;border-width:2px}

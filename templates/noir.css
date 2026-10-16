@@ -1,0 +1,6 @@
+/* 版面模版「noir」：黑色悬疑：斜雨线、暗角、褪色照片。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-noir{background-image:radial-gradient(ellipse at 50% 40%,transparent 50%,color-mix(in srgb,#000 30%,transparent) 100%),repeating-linear-gradient(104deg,color-mix(in srgb,var(--fg) 7%,transparent) 0 1px,transparent 1px 23px)}
+.m-noir .band .title{transform:none;letter-spacing:.18em;text-transform:uppercase;box-shadow:none;border-bottom:4px solid var(--acc);font-family:var(--font-serif)}
+.m-noir .card .pic img{filter:saturate(.55) contrast(1.12)}
+.m-noir .card:hover .pic img{filter:none}
+.m-noir .when b{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}

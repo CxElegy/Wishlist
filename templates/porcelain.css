@@ -1,0 +1,5 @@
+/* 版面模版「porcelain」：青花瓷：青海波纹、双线框题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-porcelain{background-image:radial-gradient(circle at 100% 150%,transparent 24%,color-mix(in srgb,var(--acc) 16%,transparent) 24% 27%,transparent 27% 35%,color-mix(in srgb,var(--acc) 13%,transparent) 35% 38%,transparent 38% 46%,color-mix(in srgb,var(--acc) 10%,transparent) 46% 49%,transparent 49%),radial-gradient(circle at 0 150%,transparent 24%,color-mix(in srgb,var(--acc) 16%,transparent) 24% 27%,transparent 27% 35%,color-mix(in srgb,var(--acc) 13%,transparent) 35% 38%,transparent 38% 46%,color-mix(in srgb,var(--acc) 10%,transparent) 46% 49%,transparent 49%);background-size:60px 30px}
+.m-porcelain .band .title{font-family:var(--font-serif);transform:none;border:3px double var(--abg);outline:2px solid var(--acc);outline-offset:-8px;box-shadow:5px 5px 0 var(--acc)}
+.m-porcelain .deco{right:28%;top:2px;font:400 36px/1 var(--font-serif);color:var(--acc);opacity:.5}
+.m-porcelain .card .pic{border:2px solid var(--acc);border-radius:4px}

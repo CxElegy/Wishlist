@@ -1,0 +1,5 @@
+/* 版面模版「island」：小岛：叶子、海浪底边、缝线题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-island{background-image:radial-gradient(ellipse 10px 5px at 30% 30%,color-mix(in srgb,var(--acc) 22%,transparent) 98%,transparent),radial-gradient(ellipse 5px 10px at 70% 64%,color-mix(in srgb,var(--acc) 18%,transparent) 98%,transparent),radial-gradient(circle at 50% 0,transparent 14px,color-mix(in srgb,var(--aacc) 18%,transparent) 15px);background-size:90px 80px,110px 96px,40px 20px;background-repeat:repeat,repeat,repeat-x;background-position:0 0,30px 20px,0 100%}
+.m-island .band .title{border-radius:14px;transform:rotate(-1deg);outline:2px dashed color-mix(in srgb,var(--afg) 60%,transparent);outline-offset:-7px}
+.m-island .deco{right:28%;top:0;font:400 40px/1 var(--font-sans);color:var(--acc);opacity:.55}
+.m-island .card .pic{border-radius:12px}

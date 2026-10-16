@@ -1,0 +1,6 @@
+/* 版面模版「idol」：偶像：斜缎带、两色圆点、双线题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-idol{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 20%,transparent) 3px,transparent 3.5px),radial-gradient(circle,color-mix(in srgb,var(--aacc) 30%,transparent) 2px,transparent 2.5px),repeating-linear-gradient(-30deg,transparent 0 60px,color-mix(in srgb,var(--acc) 7%,transparent) 60px 74px);background-size:40px 40px,40px 40px,auto;background-position:0 0,20px 20px,0 0}
+.m-idol .band .title{border-radius:999px;transform:rotate(-1.5deg);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--acc)}
+.m-idol .deco{right:28%;top:0;font:400 38px/1 var(--font-sans);color:var(--acc);opacity:.6}
+.m-idol .deco.d2{right:23%;top:28px;font-size:20px}
+.m-idol .card .pic{border-radius:14px}

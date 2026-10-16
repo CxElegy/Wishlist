@@ -23,6 +23,7 @@ import urllib.parse
 import yaml
 
 import heat
+import likefx
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
@@ -406,15 +407,7 @@ button{font-family:inherit}
 .when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
-.boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
-.boom svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
- filter:drop-shadow(4px 4px 0 var(--ink));transform:translate(-50%,-50%) scale(.2);opacity:0}
-.boom.no svg{width:64px;height:64px;fill:var(--card)}
-.boom b{position:absolute;left:0;top:-82px}  /* 👍 がいちばん高い位置の中心 */
-.boom i{position:absolute;left:0;top:0;width:28px;height:6px;margin:-3px 0 0;background:var(--c);box-shadow:2px 2px 0 var(--ink);transform-origin:0 50%;
- transform:rotate(var(--a)) translateX(40px) scaleX(0);animation:spark .5s cubic-bezier(.2,.8,.3,1) .12s both}
-@keyframes spark{55%{transform:rotate(var(--a)) translateX(70px) scaleX(1)}100%{transform:rotate(var(--a)) translateX(92px) scaleX(0)}}
-.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
+/*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
  font:900 13px var(--font-sans);letter-spacing:.06em;cursor:pointer;border-radius:0;white-space:nowrap}
@@ -978,7 +971,7 @@ def _section(block, anchor=""):
     quiet = "" if recent else " quiet"
     cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
     cnt = _heat_badge(block) + cnt
-    return (f'<section id="{anchor}" data-k="{e(block["name"])}" class="sec{" m-" + motif if motif else ""}{quiet}" style="{style}">'
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}"{_fx(block["name"])} class="sec{" m-" + motif if motif else ""}{quiet}" style="{style}">'
             f'<div class="band">{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
             f"{facts}{grid}</section>")
 
@@ -1008,7 +1001,17 @@ WEB_ITEM_MARK = "从网页设置页加进来的"  # digest.WEB_ITEM_MARK と同�
 MOTIFS = {t["id"]: "".join(f'<i class="deco{f" d{k + 1}" if k else ""}" aria-hidden="true">{e(str(c))}</i>'
                            for k, c in enumerate(t["deco"])) for t in TEMPLATES}
 _TPL_MARK = "/* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */\n"
-CSS = CSS.replace(_TPL_MARK, _TPL_MARK + "".join(t["css"] for t in TEMPLATES))  # 元の位置（スマホ用の @media より前）に入れる
+CSS = CSS.replace(_TPL_MARK, _TPL_MARK + "".join(t["css"] for t in TEMPLATES))
+CSS = CSS.replace("/*LIKEFX*/", likefx.FX_CSS.strip() + "\n")  # 👍 の演出（20 種）
+# テーマ → 👍 の演出（templates/index.yaml の fx）。作品 → 演出は render() のたびに作る
+TEMPLATE_FX = {t["id"]: t.get("fx") if t.get("fx") in likefx.FX else "pop" for t in TEMPLATES}
+_FX_OF = {}
+
+
+def _fx(name):
+    """作品名 → data-fx 属性（その版面のテーマの 👍 演出）。"""
+    return f' data-fx="{_FX_OF.get(name, "pop")}"'
+  # 元の位置（スマホ用の @media より前）に入れる
 
 
 def template_for(item):
@@ -1071,7 +1074,7 @@ def _picks(picks, works, feedback=None):
                     + f'<small></small></div>')
         return (
             f'<div class="pk{" big" if big else ""}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
-            f'data-w="{e(x["work"])}" data-key="{e("|".join(x.get("words") or []))}"{" data-f=1" if follow else ""}{" data-new=1" if x.get("explore") else ""}>'
+            f'data-w="{e(x["work"])}"{_fx(x["work"])} data-key="{e("|".join(x.get("words") or []))}"{" data-f=1" if follow else ""}{" data-new=1" if x.get("explore") else ""}>'
             f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{_pic(story)}'
             f'<span class="pkt"><span class="src">{e(x["source"])}{" · " + date if date else ""}</span>'
             f'<b>{e(x["title"])}</b>'
@@ -1214,34 +1217,10 @@ VOTE_JS = """
   });
   // 押した瞬間に画面を変える（楽観的更新）。保存は裏で、同じ記事の票は順番に送る。失敗したら元に戻す
   const saved = { ...mine }, queue = {}, touched = new Set();
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const send = (data, v) => fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/feedback',
     { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v }), keepalive: true })
     .then(async r => { if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120)); });
-  const boom = (btn, v) => {   // 大きな 👍 が飛び出して、すぐ戻る
-    btn.animate([{ scale: 1 }, { scale: 1.45 }, { scale: .9 }, { scale: 1 }], { duration: 320, easing: 'ease-out' });
-    if (reduce || v === 0) return;
-    const r = btn.getBoundingClientRect(), up = v > 0;
-    const el = document.createElement('div');
-    el.className = 'boom' + (up ? '' : ' no');
-    el.style.left = (r.left + r.width / 2) + 'px';
-    el.style.top = (r.top + r.height / 2) + 'px';
-    el.style.setProperty('--c', getComputedStyle(btn).getPropertyValue('--vc').trim() || 'var(--rose)');
-    el.innerHTML = __THUMB__ + (up ? '<b>' + '<i></i>'.repeat(8) + '</b>' : '');
-    el.querySelectorAll('i').forEach((i, n) => i.style.setProperty('--a', (n * 45 + 22) + 'deg'));
-    document.body.appendChild(el);
-    const g = el.querySelector('svg');
-    const k = up
-      ? [{ transform: 'translate(-50%,-50%) scale(.2) rotate(-25deg)', opacity: 0, easing: 'cubic-bezier(.2,1.4,.4,1)' },
-         { transform: 'translate(-50%,-125%) scale(1.25) rotate(10deg)', opacity: 1, offset: .3, easing: 'ease-in-out' },
-         { transform: 'translate(-50%,-118%) scale(1) rotate(-5deg)', opacity: 1, offset: .52, easing: 'ease-in-out' },
-         { transform: 'translate(-50%,-118%) scale(1.05) rotate(0)', opacity: 1, offset: .7, easing: 'cubic-bezier(.6,0,.9,.5)' },
-         { transform: 'translate(-50%,-50%) scale(.12) rotate(0)', opacity: 0 }]
-      : [{ transform: 'translate(-50%,-50%) scale(.3,-.3)', opacity: 0, easing: 'ease-out' },
-         { transform: 'translate(-50%,-110%) scale(.8,-.8)', opacity: 1, offset: .3, easing: 'ease-in' },
-         { transform: 'translate(-50%,-30%) scale(.35,-.35) rotate(-12deg)', opacity: 0 }];   // 下向き（上下反転）
-    g.animate(k, { duration: up ? 760 : 480 }).finished.finally(() => el.remove());
-  };
+  const fxOf = el => (el.closest('[data-fx]') || {}).dataset?.fx || 'pop';   // 版面のテーマの演出（likefx.py）
   const wire = (box, data, dim, tip) => {
     boxes.push([box, data, dim, tip]);
     box.addEventListener('click', ev => {
@@ -1251,7 +1230,7 @@ VOTE_JS = """
       const url = data.url, v = (mine[url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
       mine[url] = v; touched.add(url);
       try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
-      paint(url); boom(btn, v);
+      paint(url); window.likeFx(btn, v, fxOf(btn));
       queue[url] = (queue[url] || Promise.resolve()).then(() => send(data, v)).then(() => { saved[url] = v; }, err => {
         console.error('投票失败', err);
         if (mine[url] !== v) return;   // もう次の票を押している
@@ -1311,6 +1290,7 @@ VOTE_JS = """
 """
 VOTE_JS = (VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
            .replace("__THUMB__", json.dumps(_THUMB)))
+LIKEFX_JS = likefx.FX_JS.replace("__THUMB__", json.dumps(_THUMB))
 
 
 def _wish_link(wishes, cls):
@@ -1443,6 +1423,7 @@ def render_settings(items, db, updated):
 <div class="page">
 <a class="back" href="index.html">← 回到简报</a>
 <header><h1 style="margin:0;font:900 40px/1.1 'Noto Sans SC',sans-serif;letter-spacing:.04em">设置</h1></header>
+<p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a></p>
 <p class="intro">点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。</p>
 <dl class="legend"><dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd></dl>
 <div class="cfg">{''.join(rows)}</div>
@@ -1956,7 +1937,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     if top:
         sc = _sec_color(top_w.get("section"))
         badge = "重大" if top.get("weight") == "hero" else "注目"
-        top_html = (f'<article class="top" data-k="{e(top_w["name"])}">{_lk(top)}'
+        top_html = (f'<article class="top" data-k="{e(top_w["name"])}"{_fx(top_w["name"])}>{_lk(top)}'
                     f'{date_html}<div class="frame"><span class="burst">{badge}</span>{_pic(top)}{_play(top)}</div>'
                     f'<div class="ptxt"><span class="kick"><i class="tg" style="--sc:{sc}"><span>{e(_sec_name(top_w.get("section")))}</span></i>'
                     f'<i class="tg"><span>{e(top_w["name"])}</span></i><em>{e(_day(top))}{_from(top)}</em></span>'
@@ -1969,7 +1950,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     poster = f'<div class="poster"{style}><div class="marks" aria-hidden="true"></div>{head}{top_html}{foot}</div>'
 
     wall = "".join(
-        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">{_lk(x)}'
+        f'<article class="wc{" lead" if i == 0 else ""}" data-k="{e(w["name"])}"{_fx(w["name"])} style="--sc:{_sec_color(w.get("section"))}">{_lk(x)}'
         f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b></article>'
         for i, (w, x) in enumerate(more))
     shown = {id(top)} | {id(x) for _, x in more}
@@ -2280,6 +2261,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         w["_today"] = latest["date"]
         w["_size"] = (sizes or {}).get(w["name"], "M")
         w["_motif"] = (motifs or {}).get(w["name"], "")
+        _FX_OF[w["name"]] = TEMPLATE_FX.get(w["_motif"], "pop")
         w["_heat"] = (heat or {}).get(w["name"])  # 話題度（heat.compute）
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
@@ -2311,7 +2293,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 </div>
 <script>{NAV_JS}</script>
 <script>{FIT_JS}</script>
-{f"<script>{VOTE_JS.replace('__CFG__', json.dumps(fb))}</script>" if fb else ""}
+{f"<script>{LIKEFX_JS}</script><script>{VOTE_JS.replace('__CFG__', json.dumps(fb))}</script>" if fb else ""}
 </body>
 </html>
 """
@@ -2586,6 +2568,21 @@ def _heat_method(a):
 </div>"""
 
 
+THEMES_PAGE_CSS = """
+.tlist{display:grid;gap:34px;margin:18px 0 40px}
+.tlist .sec{scroll-margin-top:16px}
+.tlist .pic{aspect-ratio:16/9}
+.tlist .mini .pic{aspect-ratio:4/3}
+.tuse{margin:0;padding:0 26px 20px;font-size:13px;line-height:1.7;opacity:.85}
+.tuse b{font:700 var(--fs-label) var(--font-sans);letter-spacing:.1em;margin-right:6px}
+.fxlist{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;--ac:var(--rose);--bg:var(--card);--fg:var(--ink)}
+.fxlist li{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:2px 12px;align-items:center;padding:12px 14px;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow)}
+.fxlist .vt{position:static;grid-row:span 2;margin:0;padding:0;height:auto}
+.fxlist .vt button{min-height:36px;padding:0 8px;opacity:.85}
+.fxlist b{font:900 15px/1.3 var(--font-sans)}
+.fxlist small{font-size:11px;line-height:1.4;opacity:.75}
+@media (max-width:600px){.tuse{padding:0 14px 16px}}
+"""
 HEAT_PAGE_CSS = """
 .page{display:flex;flex-direction:column;align-items:stretch;max-width:1240px}
 .back{display:inline-flex;align-items:center;gap:8px;font:700 12px var(--font-mono);letter-spacing:.12em}.back:hover{color:var(--rose)}
@@ -2767,6 +2764,80 @@ HEAT_PAGE_JS = """
     });
   });
 })();
+"""
+
+
+# テーマ見本（docs/themes.html）：30 のテーマと 20 の 👍 演出を、本物の版面と同じ部品で並べる
+SAMPLE_THEMES = [  # まだどの作品も使っていないテーマの見本の色
+    {"bg": "#14161F", "fg": "#F1EEE6", "accent": "#F2B544", "alt_bg": "#F1EEE6", "alt_fg": "#14161F", "alt_accent": "#B5452B"},
+    {"bg": "#F7F3EA", "fg": "#1F2430", "accent": "#C2402F", "alt_bg": "#1F2430", "alt_fg": "#F7F3EA", "alt_accent": "#F29E8E"},
+    {"bg": "#0F2A3D", "fg": "#EEF4F7", "accent": "#5FD3C6", "alt_bg": "#EEF4F7", "alt_fg": "#0F2A3D", "alt_accent": "#1F7A72"},
+    {"bg": "#FFF3F6", "fg": "#3A1F2B", "accent": "#C93C6E", "alt_bg": "#C93C6E", "alt_fg": "#FFFFFF", "alt_accent": "#FFD3E1"},
+]
+THEMES_PAGE_JS = """
+document.querySelectorAll('.vt').forEach(box => box.addEventListener('click', ev => {
+  const btn = ev.target.closest('button[data-vote]'); if (!btn) return;
+  ev.preventDefault();
+  const on = btn.getAttribute('aria-pressed') !== 'true';
+  box.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', 'false'));
+  btn.setAttribute('aria-pressed', String(on));
+  window.likeFx(btn, on ? Number(btn.dataset.vote) : 0, (btn.closest('[data-fx]') || {}).dataset.fx, null);
+}));
+"""
+
+
+def render_themes(items, updated):
+    """テーマ見本ページ。items = [{name, motif, theme}]（items.yaml）。押しても保存しない、試すだけの 👍。"""
+    users = {}
+    for it in items:
+        if it.get("motif") in MOTIFS:
+            users.setdefault(it["motif"], []).append(it)
+    btns = f'<span class="vt">{_vote_buttons()}</span>'
+    secs = []
+    for k, t in enumerate(TEMPLATES):
+        used = users.get(t["id"], [])
+        pal = next((u["theme"] for u in used if isinstance(u.get("theme"), dict)), None) or SAMPLE_THEMES[k % len(SAMPLE_THEMES)]
+        c = _legible({**SAMPLE_THEMES[0], **pal})
+        style = (f"--bg:{c['bg']};--fg:{c['fg']};--acc:{c['accent']};--abg:{c['alt_bg']};--afg:{c['alt_fg']};--aacc:{c['alt_accent']};"
+                 f"--line:color-mix(in srgb,{c['fg']} 22%,{c['bg']})")
+        fx = TEMPLATE_FX.get(t["id"], "pop")
+        who = "・".join(u["name"] for u in used) or "まだ使っていません"
+        card = lambda cls, h: (f'<article class="card m {cls}"><div class="pic"><span class="ph">{e(t.get("ja") or t["id"])}</span></div>'
+                               f'<span class="when"><b>NEW</b>10.16<span class="from">example.com</span>{btns}</span><h3>{h}</h3></article>')
+        secs.append(
+            f'<section class="sec m-{t["id"]}" data-fx="{fx}" style="{style}" id="t-{t["id"]}">'
+            f'<div class="band">{MOTIFS.get(t["id"], "")}<span class="title">{e(t["id"])}</span>'
+            f'<span class="sub">{e(t.get("ja") or t["id"])} · 👍「{e(likefx.FX[fx][0])}」</span></div>'
+            f'<div class="grid">{card("c8 lead", "見出しのサンプル：ここにニュースの見出しが入ります")}'
+            f'<div class="side">{card("mini c4", "小さいカードの見出し")}{card("mini c4", "もう一つの見出し")}</div></div>'
+            f'<p class="tuse"><b>使っている作品</b> {e(who)}</p></section>')
+    fxs = "".join(f'<li data-fx="{k}"><span class="vt">{_vote_buttons()}</span><b>{e(v[0])}</b><small>{e(k)} · {e(v[1])}</small></li>'
+                  for k, v in likefx.FX.items())
+    return f"""<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>テーマ見本</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{FONTS}">
+<style>{CSS}{HEAT_PAGE_CSS}{THEMES_PAGE_CSS}</style>
+</head>
+<body>
+<div class="page">
+<header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
+<div class="tools"><div class="meta"><small>テーマ</small><b>{len(TEMPLATES)}</b></div><div class="meta"><small>👍 演出</small><b>{len(likefx.FX)}</b></div>
+<div class="meta"><small>更新</small><b>{e(updated)}</b></div></div></header>
+<a class="back" href="./">← ウォッチリスト通信に戻る</a>
+<p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
+色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
+<section class="panel" id="fx"><h2 class="sh"><span>👍 の演出</span><small>{len(likefx.FX)} 種類 · 押して試す</small></h2><ul class="fxlist">{fxs}</ul></section>
+<h2 class="sh"><span>テーマ一覧</span><small>{len(TEMPLATES)} 種類</small></h2>
+<div class="tlist">{"".join(secs)}</div>
+</div>
+<script>{LIKEFX_JS}</script><script>{THEMES_PAGE_JS}</script>
+</body>
+</html>
 """
 
 

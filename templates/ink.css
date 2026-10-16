@@ -1,0 +1,5 @@
+/* 版面模版「ink」：水墨：圆相墨圈、淡墨笔触、毛边题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-ink{background-image:radial-gradient(circle at 88% 16%,transparent 62px,color-mix(in srgb,var(--acc) 20%,transparent) 64px 72px,transparent 76px),radial-gradient(ellipse 340px 70px at 10% 92%,color-mix(in srgb,var(--fg) 8%,transparent),transparent 70%),radial-gradient(ellipse 200px 40px at 60% 8%,color-mix(in srgb,var(--fg) 6%,transparent),transparent 70%);background-repeat:no-repeat}
+.m-ink .band .title{font-family:var(--font-serif);border-radius:3px 14px 4px 18px/18px 4px 14px 3px;transform:rotate(-1.5deg);box-shadow:5px 5px 0 var(--acc)}
+.m-ink .deco{right:26%;top:-8px;font:900 60px/1 var(--font-serif);color:var(--acc);opacity:.3}
+.m-ink .card .pic{border:2.5px solid var(--fg);border-radius:2px 10px 3px 12px}

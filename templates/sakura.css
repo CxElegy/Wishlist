@@ -1,0 +1,5 @@
+/* 版面模版「sakura」：樱花：花瓣飘落、胶囊题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-sakura{background-image:radial-gradient(ellipse 8px 5px at 22% 30%,color-mix(in srgb,var(--acc) 26%,transparent) 98%,transparent),radial-gradient(ellipse 5px 8px at 64% 58%,color-mix(in srgb,var(--acc) 20%,transparent) 98%,transparent),radial-gradient(ellipse 7px 4px at 84% 18%,color-mix(in srgb,var(--aacc) 30%,transparent) 98%,transparent);background-size:120px 110px,150px 130px,170px 160px}
+.m-sakura .band .title{border-radius:999px;transform:rotate(-1deg)}
+.m-sakura .deco{right:28%;top:2px;font:400 36px/1 var(--font-sans);color:var(--acc);opacity:.55}
+.m-sakura .card .pic{border-radius:10px}
