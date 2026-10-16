@@ -2154,13 +2154,14 @@ NAV_STYLES = {
     "line": """
 .nav{top:0;height:100vh;max-height:none;padding:16px 0;margin-top:-40px}
 .nav .here{display:none}
-.nav .rail{flex:1;padding-left:14px}
-.nav .pill{flex:1 1 auto;min-height:44px;max-height:180px}
+/* 目录不滚动：站点按画面高度平分（flex:1 1 0），板块标题、字号随高度收缩；当前站点占自己需要的高度 */
+.nav .rail{flex:1;padding-left:14px;overflow:hidden}
+.nav .pill{flex:1 1 0;min-height:0;max-height:64px}
 .nav .grp{flex:none}
-.nav .grp{display:flex;align-items:baseline;gap:8px;padding:16px 0 4px 26px;color:var(--sc)}
+.nav .grp{display:flex;align-items:baseline;gap:8px;padding:clamp(3px,1.2vh,16px) 0 clamp(1px,.4vh,4px) 26px;color:var(--sc)}
 .nav .grp b{font:900 13px var(--font-sans);letter-spacing:.3em}
 .nav .grp small{font:700 10px var(--font-mono);letter-spacing:.25em;opacity:.75}
-.nav .pill{padding:9px 0 9px 26px;font:700 14px/1.3 var(--font-sans);color:rgba(26,28,34,.66);
+.nav .pill{padding:0 0 0 26px;font:700 clamp(11px,1.65vh,14px)/1.3 var(--font-sans);color:rgba(26,28,34,.66);
  transition:color .2s,font-size .3s cubic-bezier(.2,.9,.3,1),padding .3s cubic-bezier(.2,.9,.3,1)}
 .nav .pill::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:3px;
  background:linear-gradient(var(--sc) calc(var(--p,0)*100%),rgba(26,28,34,.13) 0)}
@@ -2173,12 +2174,13 @@ NAV_STYLES = {
 .nav .pill:hover{color:var(--ink)}
 .nav .pill.past{color:rgba(26,28,34,.72)}
 .nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
-.nav .pill.on{color:var(--ink);font-size:21px;font-weight:900;letter-spacing:-.01em;padding:16px 0 16px 40px}
+.nav .pill.on{color:var(--ink);font-size:clamp(15px,2.4vh,21px);font-weight:900;letter-spacing:-.01em;padding:clamp(6px,1.6vh,16px) 0 clamp(6px,1.6vh,16px) 40px;flex:0 0 auto;max-height:none}
 .nav .pill.on .cnt{display:block}
 .nav .pill.on::after{width:38px;height:38px;margin-top:-19px;left:-9px;
  background:var(--img,none) center/cover no-repeat,var(--paper);border:3px solid var(--sc);
  box-shadow:0 0 0 5px color-mix(in srgb,var(--sc) 20%,transparent),0 6px 14px rgba(26,28,34,.25)}
 .nav select{margin:14px 0 0 26px;align-self:flex-start;background:transparent;color:var(--ink);border:1px solid rgba(26,28,34,.35)}
+@media (max-height:700px){.nav{padding:8px 0}.nav .grp{padding-top:2px;padding-bottom:0}.nav .pill.on{padding-top:4px;padding-bottom:4px}.nav .pill.on::after{width:28px;height:28px;margin-top:-14px}.nav .pill.on .cnt{display:none}}
 """,
     # B 报纸索引栏：米色纸面、双线，条目带编号和引导点；当前条目反白成板块色色块并放大
     "index": """
