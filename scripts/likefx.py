@@ -60,7 +60,7 @@ FX_CSS = """
 .fx-stripe{width:300px;height:30px;background:repeating-linear-gradient(-45deg,var(--c) 0 16px,var(--ink) 16px 32px);box-shadow:3px 3px 0 var(--ink)}
 .fx-note,.fx-heart{font:900 28px/1 var(--font-sans);color:var(--c);text-shadow:2px 2px 0 var(--ink)}
 .fx-emb{width:38px;height:38px;filter:drop-shadow(2px 2px 0 var(--ink))}
-.fx-emb svg{width:100%;height:100%;display:block}
+.fx-emb svg,.fx-emb img{width:100%;height:100%;display:block;object-fit:contain}
 /* 擬音：ウニフラ（トゲの吹き出し、白＋墨のフチ＋色の影）の上に、一文字ずつ叩きつける極太の文字 */
 .fx-sfx{position:absolute;left:0;top:-160px;width:0;height:0}
 .fx-sfx svg{position:absolute;left:-95px;top:-62px;width:190px;height:124px;overflow:visible;opacity:0}
