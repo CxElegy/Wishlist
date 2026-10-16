@@ -293,7 +293,9 @@ button{font-family:inherit}
 .calm .last .mono{font:13px var(--font-num);letter-spacing:.06em;opacity:.75}
 .calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
-.when{display:flex;align-items:center;gap:8px;font:14px/1 var(--font-num);letter-spacing:.05em;opacity:.85}
+.when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em;opacity:.85}
+.from{min-width:0;overflow-wrap:break-word;font:500 11px/1.3 var(--font-sans);letter-spacing:.02em;opacity:.75}  /* 省略しない：入らなければ次の行へ */
+.wc em,.kick em{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;min-width:0}
 .when b{padding:2px 7px 1px;background:var(--ac);color:var(--bg);font:900 10px/1.4 var(--font-sans);letter-spacing:.14em}
 .card.a .when b{color:var(--abg)}
 .card.wide{display:grid;grid-template-columns:4fr 8fr;gap:24px;align-items:center}
@@ -370,13 +372,13 @@ button{font-family:inherit}
 .pk .taste{font-size:11px;opacity:.7}
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
-.vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .vote small{font-size:11px;opacity:.7}
 .pk.down>a{opacity:.35;filter:grayscale(1)}
 .card,.top,.wc{position:relative}
 /* 👍/👎 = 日付の行の右端に置く小さな印。普段は線の拇指だけ（枠なし）、押すと「NEW」と同じ塗りの札になる */
 .vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;align-items:center;gap:2px;flex:none}
-.vt{margin-left:auto;position:relative;z-index:2;font-size:0}
+.vt{position:absolute;right:-6px;top:0;height:var(--vth,28px);padding:0 4px 0 12px;z-index:2;font-size:0;cursor:default;-webkit-tap-highlight-color:transparent;touch-action:manipulation}  /* 周りの余白も按钮区：按偏了也不会打开原文 */
 .card.a .vt{--vt:var(--abg);--vf:var(--afg)}
 .wc .vt{--vc:var(--sc,var(--ink));--vt:#FFF;--vf:var(--ink)}
 .top .vt{--vc:var(--deep,var(--ink));--vt:var(--card);--vf:var(--ink)}
@@ -389,12 +391,17 @@ button{font-family:inherit}
 .vt button:focus-visible,.vote button:focus-visible{outline:2px solid currentColor;outline-offset:1px}
 .vt button[aria-pressed=true],.vote button[aria-pressed=true]{opacity:1;background:var(--vc);color:var(--vt)}
 .vt button[data-vote="-1"][aria-pressed=true],.vote button[data-vote="-1"][aria-pressed=true]{background:var(--vf)}  /* 踩 = 文字色の札（アクセント色は「好き」だけ） */
-.vt button:disabled,.vote button:disabled{opacity:.35;cursor:wait}
+.vt[aria-busy=true] button,.vote[aria-busy=true] button{opacity:.35;cursor:wait}
+.card:has(.vt:hover) :is(h2,h3),.brief li:has(.vt:hover) a{text-decoration:none}.top:has(.vt:hover) .hb{background:var(--ink)}.wc:has(.vt:hover){transform:none;box-shadow:var(--shadow)}  /* 指在按钮上时，原文链接不做悬停反应 */
 .vt button span,.pk:not(.big) .vote button span{display:none}
-.when:has(.vt),.kick:has(.vt),.wc em:has(.vt){display:flex;align-items:center;align-self:stretch}
+/* 👍/👎 は日付の行の右端に固定（absolute）、その幅だけ右を空ける。出典が長ければ出典だけ次の行に回り、ボタンを押し出さない */
+.when:has(.vt),.kick:has(.vt),.wc em:has(.vt){position:relative;flex-wrap:wrap;row-gap:4px;align-content:center;min-height:var(--vth,28px);padding-right:var(--vtw,70px);align-self:stretch}
+.vt button{min-height:var(--vth,28px)}  /* 按钮的高度 = 日期行的高度：按钮区不会伸到标题上 */
+/* 出典が日付の横に入らないとき（JS が .two を付ける）：出典だけ次の行に全幅で。1 行目の右はボタンの分だけ空ける */
+.when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
 .vote button{opacity:.75}
-.brief li .vt{align-self:center}
-.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
+.brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
+.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
  font:900 13px var(--font-sans);letter-spacing:.06em;cursor:pointer;border-radius:0;white-space:nowrap}
@@ -403,7 +410,7 @@ button{font-family:inherit}
 .pknav{margin-left:auto;display:flex;gap:10px;white-space:nowrap}
 .shuffle.back{background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .shuffle[disabled]{opacity:.35;cursor:default;pointer-events:none}
-@media (hover:none){.vt button,.vote button{min-height:34px;padding:0 9px;opacity:.75}}  /* 指で押せる大きさ */
+@media (hover:none){.vt button,.vote button{padding:0 9px;opacity:.75}.vote button{min-height:34px}.when,.kick,.wc em,.brief li{--vth:36px;--vtw:82px}}  /* 指で押せる大きさ */
 .shuffle:active,.mastwish:active{transform:translate(3px,3px);box-shadow:none}  /* 押した感触：影の分だけ沈む */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
@@ -644,7 +651,13 @@ def _when(story, today):
     d = story.get("date") or story["_issue"]
     # NEW 只给最近 24 小时左右发布的消息（按消息本身的日期，不是收集到的日期）
     new = "<b>NEW</b>" if d >= (dt.date.fromisoformat(today) - dt.timedelta(days=1)).isoformat() else ""
-    return f'<span class="when">{new}{e(d[5:].replace("-", "."))}</span>'
+    return f'<span class="when">{new}{e(d[5:].replace("-", "."))}{_from(story)}</span>'
+
+
+def _from(story):
+    """日期后面的浅色小字：消息来源（媒体名）。"""
+    name = _source_name(story).strip()
+    return f'<span class="from">{e(name[:40])}</span>' if name else ""
 
 
 def _safe_url(u):
@@ -1182,10 +1195,13 @@ VOTE_JS = """
   });
   const wire = (box, data, dim, tip) => {
     boxes.push([box, data, dim, tip]);
-    box.querySelectorAll('button[data-vote]').forEach(btn => btn.addEventListener('click', async ev => {
-      ev.preventDefault(); ev.stopPropagation();   // 小按钮在卡片链接里面：别打开链接
+    // 按钮在卡片链接里面：整个按钮区都拦住点击（按偏一点、点到两个按钮之间、保存中再点，都不会打开原文）
+    box.addEventListener('click', async ev => {
+      ev.preventDefault(); ev.stopPropagation();
+      const btn = ev.target.closest('button[data-vote]');
+      if (!btn || box.getAttribute('aria-busy') === 'true') return;
       const v = (mine[data.url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
-      box.querySelectorAll('button').forEach(b => b.disabled = true);
+      box.setAttribute('aria-busy', 'true');
       try {
         const r = await fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/feedback',
           { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v }) });
@@ -1198,9 +1214,9 @@ VOTE_JS = """
         btn.title = '保存できませんでした。後でもう一度';
         console.error('投票失败', err);
       } finally {
-        box.querySelectorAll('button').forEach(b => b.disabled = false);
+        box.removeAttribute('aria-busy');
       }
-    }));
+    });
   };
   document.querySelectorAll('.picks .vote').forEach(box =>
     wire(box, JSON.parse(box.dataset.v), box.closest('.pk'), box.querySelector('small')));
@@ -1223,6 +1239,16 @@ VOTE_JS = """
   document.querySelectorAll('.sec a.card, a.top, a.wc').forEach(a => story(a, a, a));
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
   new Set(boxes.map(b => b[1].url)).forEach(paint);
+  // 日付の行が 2 行になった（出典が入らない）ときは .two：出典を次の行に全幅で出す（途中で切らない）
+  const fit = () => document.querySelectorAll('.when, .wc em').forEach(r => {
+    const v = r.querySelector(':scope > .vt');
+    if (!v || !r.querySelector(':scope > .from')) return;
+    r.classList.remove('two');
+    if (r.offsetHeight > v.offsetHeight + 1) r.classList.add('two');
+  });
+  fit();
+  if (document.fonts) document.fonts.ready.then(fit);
+  let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 150); });
 })();
 """
 VOTE_JS = VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
@@ -1874,7 +1900,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
         top_html = (f'<a class="top" href="{e(top["url"])}" target="_blank" rel="noopener" data-k="{e(top_w["name"])}">'
                     f'{date_html}<div class="frame"><span class="burst">{badge}</span>{_pic(top)}{_play(top)}</div>'
                     f'<div class="ptxt"><span class="kick"><i class="tg" style="--sc:{sc}"><span>{e(_sec_name(top_w.get("section")))}</span></i>'
-                    f'<i class="tg"><span>{e(top_w["name"])}</span></i><em>{e(_day(top))}</em></span>'
+                    f'<i class="tg"><span>{e(top_w["name"])}</span></i><em>{e(_day(top))}{_from(top)}</em></span>'
                     f'<h2><span class="hb">{_headline(top)}</span></h2>'
                     + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + _extras(top) + "</div></a>")
         style = f' style="{_poster_colors(top, themes)}"'
@@ -1886,7 +1912,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     wall = "".join(
         f'<a class="wc{" lead" if i == 0 else ""}" href="{e(x["url"])}" target="_blank" rel="noopener" '
         f'data-k="{e(w["name"])}" style="--sc:{_sec_color(w.get("section"))}">'
-        f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}</em><b>{_headline(x)}</b></a>'
+        f'<i class="tg"><span>{e(w["name"])}</span></i>{_pic(x)}{_play(x)}<em>{e(_day(x))}{_from(x)}</em><b>{_headline(x)}</b></a>'
         for i, (w, x) in enumerate(more))
     shown = {id(top)} | {id(x) for _, x in more}
     groups = {}

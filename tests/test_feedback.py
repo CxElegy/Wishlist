@@ -93,6 +93,15 @@ class VoteButtons(unittest.TestCase):
         self.assertNotIn("absolute", rule)
         self.assertNotIn("opacity:0", render.CSS.split(".vt{", 1)[1].split(".downv", 1)[0])
         self.assertIn("'.when, .kick, :scope > em'", render.VOTE_JS)
+        # 整个按钮区拦住点击（按偏了也不打开原文），保存中不用 disabled（disabled 的按钮会把点击漏给链接）
+        self.assertIn("box.addEventListener('click'", render.VOTE_JS)
+        self.assertNotIn("disabled = true", render.VOTE_JS)
+
+    def test_source_after_date(self):
+        out = render._when({"date": "2026-10-13", "url": "https://www.gamewith.jp/a", "source": "GameWith <b>"}, "2026-10-16")
+        self.assertIn('10.13<span class="from">GameWith &lt;b&gt;</span>', out)
+        out = render._when({"date": "2026-10-13", "url": "https://www.gamewith.jp/a"}, "2026-10-16")
+        self.assertIn('<span class="from">gamewith.jp</span>', out)
 
 
 if __name__ == "__main__":
