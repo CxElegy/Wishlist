@@ -268,7 +268,7 @@ button{font-family:inherit}
 .calm .last .mono{font:13px var(--font-num);letter-spacing:.06em;opacity:.75}
 .calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
-.when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em;opacity:.85}
+.when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em;color:color-mix(in srgb,currentColor 88%,transparent)}  /* 薄めるのは日付の文字だけ（NEW の札まで薄めると読めなくなる） */
 .from{min-width:0;overflow-wrap:break-word;font:500 11px/1.3 var(--font-sans);letter-spacing:.02em;opacity:.75}  /* 省略しない：入らなければ次の行へ */
 .brief .d{display:flex;flex-direction:column;gap:2px;max-width:9em}.brief .d .from{font-size:11px;opacity:.85}
 .nm .from,.mono .from,.watch span .from{margin-left:8px;letter-spacing:.02em;color:inherit;font-weight:500}
@@ -546,6 +546,26 @@ button{font-family:inherit}
 .when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
+/* 作品の小元素：右上で枠からはみ出すステッカー。白いフチ → 版面の強調色のフチ（emblem_ring）→ 墨の硬い影。
+   高さを決めて幅は絵なり（全身の縦長の絵も小さくならない）。スクロールで飛び出し、そのあと影が伸びて立体に */
+@property --sx{syntax:"<length>";inherits:true;initial-value:8px}
+@property --sy{syntax:"<length>";inherits:true;initial-value:8px}
+.emb{--ring:var(--acc);position:absolute;right:clamp(12px,4%,52px);top:-58px;z-index:5;height:156px;pointer-events:none;transform:rotate(-6deg)}
+.emb.ring-white{--ring:var(--card)}.emb.ring-none{--ring:transparent}
+.emb-in{height:100%;transition:transform .6s cubic-bezier(.2,1.5,.4,1),opacity .2s}
+.emb img{display:block;height:100%;width:auto;max-width:220px;object-fit:contain;transition:--sx .35s ease-out .45s,--sy .35s ease-out .45s;
+ filter:drop-shadow(2.5px 0 0 var(--card)) drop-shadow(-2.5px 0 0 var(--card)) drop-shadow(0 2.5px 0 var(--card)) drop-shadow(0 -2.5px 0 var(--card))
+  drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
+  drop-shadow(var(--sx) var(--sy) 0 var(--ink))}
+.emb img.badge{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--card)}
+.emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45)}
+.emb-js .emb:not(.in) img{--sx:0px;--sy:0px}
+@supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
+@keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
+.has-emb .band{padding-right:210px}
+.has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
+@media (max-width:600px){.emb{height:100px;top:-38px;right:8px}.emb img{max-width:140px}.emb img.badge{width:96px;height:96px}.has-emb .band{padding-right:118px}}
+@media (prefers-reduced-motion:reduce){.emb,.emb-in,.emb img{animation:none;transition:none}}
 .boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
 .boom>svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
  filter:drop-shadow(4px 4px 0 var(--ink));transform:translate(-50%,-50%) scale(.2);opacity:0}
@@ -567,7 +587,7 @@ button{font-family:inherit}
 .fx-stripe{width:300px;height:30px;background:repeating-linear-gradient(-45deg,var(--c) 0 16px,var(--ink) 16px 32px);box-shadow:3px 3px 0 var(--ink)}
 .fx-note,.fx-heart{font:900 28px/1 var(--font-sans);color:var(--c);text-shadow:2px 2px 0 var(--ink)}
 .fx-emb{width:38px;height:38px;filter:drop-shadow(2px 2px 0 var(--ink))}
-.fx-emb svg{width:100%;height:100%;display:block}
+.fx-emb svg,.fx-emb img{width:100%;height:100%;display:block;object-fit:contain}
 /* 擬音：ウニフラ（トゲの吹き出し、白＋墨のフチ＋色の影）の上に、一文字ずつ叩きつける極太の文字 */
 .fx-sfx{position:absolute;left:0;top:-160px;width:0;height:0}
 .fx-sfx svg{position:absolute;left:-95px;top:-62px;width:190px;height:124px;overflow:visible;opacity:0}
@@ -747,7 +767,7 @@ html{scroll-behavior:smooth}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.16 18:50</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.16 18:56</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
