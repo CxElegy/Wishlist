@@ -130,7 +130,11 @@ button{font-family:inherit}
  background:linear-gradient(90deg,var(--sc1,#00B4EE) 0 14%,var(--sc2,#FF3D8B) 14% 28%,var(--gold) 28% 42%,var(--ink) 42% 56%,var(--hacc,var(--rose)) 56% 70%,var(--deep,var(--ink)) 70% 84%,var(--card) 84%)}
 /* ---------- ほかの注目ニュース：写真の壁 ＋ ジャンルの棚 ---------- */
 .spot{display:flex;flex-direction:column;gap:22px}
-.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:start}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:stretch}
+/* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
+.mgrid>.wall{align-content:stretch}
+.mgrid .wc{justify-content:flex-start}.mgrid .wc .pic{flex:1 0 auto}
+.fside>:last-child{flex:1}
 .fside{display:flex;flex-direction:column;gap:20px;min-width:0}
 .sbox{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:12px 14px 12px}
 .sbox h4,.fside .agenda h4{margin:0 0 6px;display:flex;align-items:baseline;gap:10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
@@ -334,7 +338,8 @@ button{font-family:inherit}
 .pksub::before{content:"";flex:none;width:18px;height:18px;background:var(--rose);transform:skewX(var(--skew));align-self:center}
 .pksub span{font:500 12px var(--font-sans);letter-spacing:0;opacity:.75}
 .pk{position:relative;display:flex;flex-direction:column;gap:0;min-width:0;color:var(--ink)}
-.pk.big{grid-column:span 2;grid-row:span 2}
+.pk.big{grid-column:span 2;grid-row:span 2;align-self:stretch}
+.pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:280px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
 .pk.big .pic{aspect-ratio:4/3}
@@ -389,9 +394,9 @@ button{font-family:inherit}
 @media (hover:hover){.card:not(:hover) .vt:not(.on):not(:focus-within),.wc:not(:hover) .vt:not(.on):not(:focus-within){opacity:0}}  /* 細いカードでは見出しに重なるので、マウスを載せたときだけ */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
- .mgrid{grid-template-columns:minmax(0,1fr)}.fside{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+ .mgrid{grid-template-columns:minmax(0,1fr)}.mgrid>.wall{align-content:start}.fside>:last-child{flex:none}.fside{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
  .wall{grid-template-columns:repeat(2,minmax(0,1fr))}
- .pkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pk.big{grid-column:1/-1;grid-row:auto}.pk.big .pic{aspect-ratio:16/9}
+ .pkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pk.big{grid-column:1/-1;grid-row:auto}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/9}
  .pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* ---------- スマホ ---------- */
 @media (max-width:760px){
@@ -416,7 +421,7 @@ button{font-family:inherit}
  .tape .pic{margin:6px 0 6px 6px}.tape .lbl{padding:7px 10px 9px}
  .tape:nth-child(n+4){display:none}  /* スマホは各ジャンル 3 作品まで（ほかは下の各版面で） */
  .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
- .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{aspect-ratio:16/10}
+ .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/10}
  .pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
  .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt{margin-left:0}.band .deco{display:none}
  .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}

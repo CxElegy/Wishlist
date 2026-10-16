@@ -795,6 +795,9 @@ items:
     section: "影视"
     size: M
     subtitle: "チェンソーマン"
+    similar:   # 「気になるかも？」用：アニメ化・新作アニメの発表（2026-10-16「這種新聞很好」）
+      - {label: 新作动画・动画化, lang: zh-TW, query: "動畫化 確定 製作", need: ["動畫化|动画化|アニメ化|動畫版|动画版|アニメ版|TV アニメ|TVアニメ|新番|劇場版|剧场版|anime adaptation|애니메이션화", "確定|确定|決定|製作|制作|定檔|定档|公開|放送|開播|开播|announced|확정"]}
+      - {label: 新作动画・动画化, lang: ja-JP, query: "アニメ化決定 制作 放送", need: ["動畫化|动画化|アニメ化|動畫版|动画版|アニメ版|TV アニメ|TVアニメ|新番|劇場版|剧场版|anime adaptation|애니메이션화", "確定|确定|決定|製作|制作|定檔|定档|公開|放送|開播|开播|announced|확정"]}
     keywords: ["チェーンソーマン", "鏈鋸人", "チェンソーマン", "체인소 맨", "Chainsaw Man"]
     match: ["チェーンソーマン", "鏈鋸人", "チェンソーマン", "체인소 맨", "Chainsaw Man", "Chainsawman", "체인소맨"]
     news_langs: ["zh-TW", "en-US", "ja-JP"]

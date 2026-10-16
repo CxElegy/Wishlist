@@ -644,18 +644,26 @@ def _need_text(title, summary=""):
 def _need_checker(items, hesitating):
     """按现在 items.yaml / 愿望清单里的 similar 重新检查一条「同类新发现」：标题和摘要要满足它那条搜索词的 need。
     累积下来的旧条目也要过一遍——need 改严以后，以前放进来的不合格条目（如 IVE 新专辑被当成超级英雄电影）要去掉；
-    搜索词已经删掉的也去掉。按喜好关键词搜的（probe）由 recommend() 重新打分，这里不管。"""
+    别的搜索词的条件对得上时换成那个标签；搜索词已经删掉的也去掉。按喜好关键词搜的（probe）由 recommend() 重新打分，这里不管。"""
     needs = {}
     for it in list(items) + list(hesitating):
         for q in it.get("similar") or []:
             needs.setdefault((it["name"], q["label"]), []).append(q.get("need") or [])
 
-    def ok(x):
-        if x.get("probe"):
-            return True
-        groups = needs.get((x.get("item"), x.get("label")))
+    def fits(x, key):
         text = _need_text(x.get("title", ""), x.get("summary"))
-        return bool(groups) and any(all(_like_hit(n, text) for n in need) for need in groups)
+        return any(all(_like_hit(n, text) for n in need) for need in needs.get(key) or [])
+
+    def ok(x):
+        """合格ならそのまま、元のラベルに合わなければ条件の合う別のラベルに付け替えて返す（先に同じ関注項、次に別の項）。
+        どれにも合わなければ None（「動畫版確定」は手遊ではなく新作动画・动画化に）。"""
+        if x.get("probe") or fits(x, (x.get("item"), x.get("label"))):
+            return x
+        if (x.get("item"), x.get("label")) not in needs:   # 搜索词ごと消したもの：付け替えずに捨てる
+            return None
+        keys = sorted((k for k in needs if k != (x.get("item"), x.get("label"))), key=lambda k: k[0] != x.get("item"))
+        other = next((k for k in keys if fits(x, k)), None)
+        return {**x, "item": other[0], "label": other[1]} if other else None
     return ok
 
 
@@ -672,7 +680,7 @@ def discover(force=False, taste=None):
     now = dt.datetime.now(dt.timezone.utc)
     ok = _need_checker(items, [dict(w, _wish=True) for w in load_wishlist() if w.get("status") == HESITATE])
     if not force and old.get("at") and now - dt.datetime.fromisoformat(old["at"]) < dt.timedelta(hours=DISCOVER_HOURS):
-        return [x for x in old.get("entries", []) if ok(x)]
+        return [y for y in map(ok, old.get("entries", [])) if y]
     seed = random.SystemRandom().randrange(2 ** 32)
     rng = random.Random(seed)
     tracked = {_norm(w) for i in items for w in (i.get("match") or i.get("keywords") or [i["name"]])}
@@ -711,7 +719,10 @@ def discover(force=False, taste=None):
     fresh = len(out)
     urls = {x["url"] for x in out}
     for x in old.get("entries", []):  # 以前搜到的、一周内的继续留着：池子越积越大，每次换一批都有新的
-        if x["url"] in urls or (x.get("date") and x["date"] < since.isoformat()) or not ok(x):
+        if x["url"] in urls or (x.get("date") and x["date"] < since.isoformat()):
+            continue
+        x = ok(x)
+        if not x:
             continue
         if any(_similar(_title_grams(x["title"], []), g) for g in grams):
             continue
