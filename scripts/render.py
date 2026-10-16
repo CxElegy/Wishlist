@@ -421,6 +421,9 @@ button{font-family:inherit}
 .emb img{display:block;height:100%;width:auto;max-width:220px;object-fit:contain}
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
+.emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
+.emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
+ margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
 .emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45);--sx:0px;--sy:0px}
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
@@ -956,18 +959,34 @@ def _legible(t):
     return t
 
 
+def _emblem_img(a):
+    """小元素 1 枚の HTML。カード（badge）で取景（crop）があれば 4:5 の窓にその範囲だけを見せる。"""
+    img = (f'<img class="{a["shape"]}" src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
+           f'onerror="var s=this.closest(\'.sec\');if(s)s.classList.remove(\'has-emb\');this.closest(\'.emb\').remove()">')
+    c = a.get("crop")
+    if a["shape"] == "badge" and c:
+        return f'<span class="crop" style="--cx:{c[0]};--cy:{c[1]};--cw:{c[2]};--ar:{a.get("ar", 1)}">{img}</span>'
+    return img
+
+
 def _emblem(items, ring="accent"):
     """作品の小元素（items.yaml の emblem、scripts/emblem.py が探した既存の画像）。版面の右上に、枠からはみ出して貼る。
-    候補が何枚あっても、網页を開くたびに 1 枚をランダムに（JS がなければ先頭）。画像は元の網址を直接引用（倉庫に保存しない）。"""
-    alts = [{"src": x["image"], "shape": "badge" if x.get("shape") == "badge" else "cutout"}
-            for x in items if isinstance(x, dict) and _safe_url(x.get("image"))]
+    候補が何枚あっても、網页を開くたびに 1 枚をランダムに（JS がなければ先頭）。画像は元の網址を直接引用（倉庫に保存しない）。
+    人物は透明な立ち絵（輪郭どおり）、立ち絵がない写真は P5 風の傾いたカードに顔が入るよう取景（crop）して貼る。"""
+    alts = []
+    for x in items:
+        if not (isinstance(x, dict) and _safe_url(x.get("image"))):
+            continue
+        a = {"src": x["image"], "shape": "badge" if x.get("shape") == "badge" else "cutout"}
+        c = x.get("crop")
+        if isinstance(c, list) and len(c) == 3 and all(isinstance(v, (int, float)) and 0 <= v <= 1 for v in c) and c[2] > 0:
+            a.update(crop=c, ar=float(x.get("ar") or 1))
+        alts.append(a)
     if not alts:
         return ""
     ring = ring if ring in ("accent", "white", "none") else "accent"
-    first = alts[0]
     return (f'<div class="emb ring-{ring}" aria-hidden="true" data-alts="{e(json.dumps(alts, ensure_ascii=False))}">'
-            f'<div class="emb-in"><img class="{first["shape"]}" src="{e(first["src"])}" alt="" loading="lazy" decoding="async" '
-            f'referrerpolicy="no-referrer" onerror="var s=this.closest(\'.sec\');if(s)s.classList.remove(\'has-emb\');this.closest(\'.emb\').remove()"></div></div>')
+            f'<div class="emb-in">{_emblem_img(alts[0])}</div></div>')
 
 
 def _section(block, anchor=""):
@@ -1341,8 +1360,16 @@ EMB_JS = """
   // 開くたびに候補から 1 枚をランダムに
   els.forEach(el => {
     let alts = []; try { alts = JSON.parse(el.dataset.alts || '[]'); } catch (_) {}
-    const img = el.querySelector('img');
-    if (alts.length > 1 && img) { const a = alts[Math.floor(Math.random() * alts.length)]; img.className = a.shape; img.src = a.src; }
+    const inner = el.querySelector('.emb-in'), img = el.querySelector('img');
+    if (alts.length > 1 && inner && img) {
+      const a = alts[Math.floor(Math.random() * alts.length)];
+      const n = img.cloneNode(); n.className = a.shape; n.src = a.src;
+      if (a.shape === 'badge' && a.crop) {
+        const c = document.createElement('span'); c.className = 'crop';
+        c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1);
+        c.appendChild(n); inner.replaceChildren(c);
+      } else inner.replaceChildren(n);
+    }
   });
   if (!els.length || !document.documentElement.classList.contains('emb-js')) return;
   const io = new IntersectionObserver(es => es.forEach(en => {
