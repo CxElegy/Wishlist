@@ -120,12 +120,10 @@ items:
   - name: BLEACH Mirrors High
     motif: ink          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Ichigo Kurosaki", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/4/41/NBFHIchigo_profile.png/revision/latest/scale-to-width-down/400?cb=20260410211133&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ichigo_Kurosaki", shape: "badge", crop: [0.0, 0.0566, 1.0], ar: 1.325}
-      - {subject: "Rukia Kuchiki", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/2/23/NBFHRukia_profile.png/revision/latest/scale-to-width-down/400?cb=20230903201912&path-prefix=en", page: "https://bleach.fandom.com/wiki/Rukia_Kuchiki", shape: "badge", crop: [0.1667, 0.0, 0.684], ar: 0.855}
-      - {subject: "Orihime Inoue", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/9/94/686Post-War_Orihime.png/revision/latest/scale-to-width-down/400?cb=20190523143321&path-prefix=en", page: "https://bleach.fandom.com/wiki/Orihime_Inoue", shape: "badge", crop: [0.1888, 0.0, 0.6144], ar: 0.768}
-      - {subject: "Renji Abarai", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/6/65/685Renji_profile.png/revision/latest/scale-to-width-down/400?cb=20200322080519&path-prefix=en", page: "https://bleach.fandom.com/wiki/Renji_Abarai", shape: "badge", crop: [0.0824, 0.0, 0.8352], ar: 1.044}
-      - {subject: "Uryuu Ishida", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/0/05/Ep344UryuProfile3.png/revision/latest/scale-to-width-down/400?cb=20230125214916&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ury%C5%AB_Ishida", shape: "badge", crop: [0.1862, 0.0, 0.6], ar: 0.75}
-      - {subject: "Yasutora Sado", why: "AniList の主役（お気に入り順）", image: "https://static.wikia.nocookie.net/bleach/images/4/4b/686Post-War_Sado.png/revision/latest/scale-to-width-down/400?cb=20190523143253&path-prefix=en", page: "https://bleach.fandom.com/wiki/Yasutora_Sado", shape: "badge", crop: [0.1304, 0.0, 0.7392], ar: 0.924}
+      - {subject: "Ichigo Kurosaki", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-ichigo-kurosaki.webp", source: "https://static.wikia.nocookie.net/bleach/images/4/41/NBFHIchigo_profile.png/revision/latest/scale-to-width-down/400?cb=20260410211133&path-prefix=en", page: "https://bleach.fandom.com/wiki/Ichigo_Kurosaki", shape: "cutout"}
+      - {subject: "Rukia Kuchiki", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-rukia-kuchiki.webp", source: "https://static.wikia.nocookie.net/bleach/images/2/23/NBFHRukia_profile.png/revision/latest/scale-to-width-down/400?cb=20230903201912&path-prefix=en", page: "https://bleach.fandom.com/wiki/Rukia_Kuchiki", shape: "cutout"}
+      - {subject: "Orihime Inoue", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-orihime-inoue.webp", source: "https://static.wikia.nocookie.net/bleach/images/9/94/686Post-War_Orihime.png/revision/latest/scale-to-width-down/400?cb=20190523143321&path-prefix=en", page: "https://bleach.fandom.com/wiki/Orihime_Inoue", shape: "cutout"}
+      - {subject: "Renji Abarai", why: "AniList の主役（お気に入り順）", image: "emblems/bleach-mirrors-high-renji-abarai.webp", source: "https://static.wikia.nocookie.net/bleach/images/6/65/685Renji_profile.png/revision/latest/scale-to-width-down/400?cb=20200322080519&path-prefix=en", page: "https://bleach.fandom.com/wiki/Renji_Abarai", shape: "cutout"}
     theme: {bg: "#F7F0E9", fg: "#1E1A18", accent: "#9A550E", alt_bg: "#211A12", alt_fg: "#F4EEE4", alt_accent: "#EE9944", split: true}  # 小元素「Ichigo Kurosaki」の色に合わせた配色（scripts/emblem.py）
     like_fx: manga          # 👍 の演出（scripts/likefx.py）：少年漫画の熱さ：擬音「ドン！」
     subtitle: 死神 新作手游
@@ -158,8 +156,8 @@ items:
   - name: GTA 6
     motif: neon          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Jason Duval", why: "GTA6 の二人の主人公", image: "https://static.wikia.nocookie.net/gtawiki/images/d/de/JasonDuval-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145706", page: "https://gta.fandom.com/wiki/Jason_Duval", shape: "badge", crop: [0.135, 0.0, 0.6], ar: 1.0}
-      - {subject: "Lucia Caminos", why: "GTA6 の二人の主人公", image: "https://static.wikia.nocookie.net/gtawiki/images/2/2a/LuciaCaminos-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145927", page: "https://gta.fandom.com/wiki/Lucia_Caminos", shape: "badge", crop: [0.14, 0.0, 0.54], ar: 1.0}
+      - {subject: "Jason Duval", why: "GTA6 の二人の主人公", image: "emblems/gta-6-jason-duval.webp", source: "https://static.wikia.nocookie.net/gtawiki/images/d/de/JasonDuval-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145706", page: "https://gta.fandom.com/wiki/Jason_Duval", shape: "cutout"}
+      - {subject: "Lucia Caminos", why: "GTA6 の二人の主人公", image: "emblems/gta-6-lucia-caminos.webp", source: "https://static.wikia.nocookie.net/gtawiki/images/2/2a/LuciaCaminos-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145927", page: "https://gta.fandom.com/wiki/Lucia_Caminos", shape: "cutout"}
     theme:   # 取自官方主视觉：Vice City 黄昏，深紫夜空 + 霓虹粉 + 落日橙，标题条做成深紫 / 落日对角分割
       bg: "#1E1033"
       fg: "#FFF1F6"
@@ -316,10 +314,7 @@ items:
     motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     like_fx: manga          # 👍 の演出（scripts/likefx.py）：アメコミの擬音（ドカーン）の勢い
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Victor von Doom", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/0/07/Doctor_Doom_Infobox.png/revision/latest/scale-to-width-down/400?cb=20260726013713", page: "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Doom", shape: "badge", crop: [0.0, 0.04, 1.0], ar: 1.465}
-      - {subject: "Steve Rogers", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b7/Steve_Rogers_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20260712215245", page: "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers", shape: "badge", crop: [0.0, 0.0, 1.0], ar: 1.7975}
-      - {subject: "Thor", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/2/2b/Thor_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20231021012616", page: "https://marvelcinematicuniverse.fandom.com/wiki/Thor", shape: "badge", crop: [0.3585, 0.0023, 0.348], ar: 1.535}
-      - {subject: "Sam Wilson", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9d/Captain_America_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20250117164205", page: "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America", shape: "badge", crop: [0.321, 0.0, 0.348], ar: 1.4225}
+      - {subject: "Steve Rogers", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "emblems/steve-rogers.webp", source: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b7/Steve_Rogers_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20260712215245", page: "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers", shape: "cutout"}
     subtitle: Marvel Studios · MCU
     type: show
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -432,9 +427,8 @@ items:
   - name: 哈利波特剧集
     motif: magic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Harry Potter", why: "物語の中心の三人", image: "https://static.wikia.nocookie.net/harrypotter/images/c/ce/Harry_Potter_DHF1.jpg/revision/latest/scale-to-width-down/400?cb=20140603201724", page: "https://harrypotter.fandom.com/wiki/Harry_Potter", shape: "badge", crop: [0.0, 0.0625, 1.0], ar: 1.3333}
-      - {subject: "Hermione Granger", why: "物語の中心の三人", image: "https://static.wikia.nocookie.net/harrypotter/images/3/34/Hermione_Granger.jpg/revision/latest/scale-to-width-down/400?cb=20251206062840", page: "https://harrypotter.fandom.com/wiki/Hermione_Granger", shape: "badge", crop: [0.0, 0.0637, 1.0], ar: 1.335}
-      - {subject: "Ronald Weasley", why: "物語の中心の三人", image: "https://static.wikia.nocookie.net/harrypotter/images/4/44/Ronald_Weasley_DHF1.jpg/revision/latest/scale-to-width-down/400?cb=20101104210200", page: "https://harrypotter.fandom.com/wiki/Ronald_Weasley", shape: "badge", crop: [0.0, 0.0625, 1.0], ar: 1.3333}
+      - {subject: "Dominic McLaughlin", why: "HBO ドラマ版のハリー・ハーマイオニー・ロン役（映画版ではない）", image: "emblems/dominic-mclaughlin.webp", source: "https://static.wikia.nocookie.net/harrypotter/images/f/fd/Dominic_McLaughlin.jpeg/revision/latest/scale-to-width-down/400?cb=20250527154650", page: "https://harrypotter.fandom.com/wiki/Dominic_McLaughlin", shape: "cutout"}
+      - {subject: "Alastair Stout", why: "HBO ドラマ版のハリー・ハーマイオニー・ロン役（映画版ではない）", image: "emblems/alastair-stout.webp", source: "https://static.wikia.nocookie.net/harrypotter/images/3/31/Alastair_Stout.jpg/revision/latest/scale-to-width-down/400?cb=20250527155414", page: "https://harrypotter.fandom.com/wiki/Alastair_Stout", shape: "cutout"}
     subtitle: HBO「Harry Potter」· ドラマ版ハリー・ポッター
     size: M
     type: show
@@ -497,11 +491,8 @@ items:
   - name: ILLIT
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Yunah", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/5/56/ILLIT_Yunah_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Yunah", shape: "badge", crop: [0.0, 0.0268, 1.0], ar: 1.4}
-      - {subject: "Minju (ILLIT)", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/e/ec/ILLIT_Minju_Break_Even_concept_photo_7.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Minju_(ILLIT)", shape: "badge", crop: [0.0, 0.04, 1.0], ar: 1.4}
-      - {subject: "Moka (ILLIT)", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/6/69/ILLIT_Moka_I_Got_Your_Back_concept_photo_4.png/revision/latest/scale-to-width-down/400?cb=20260626104728", page: "https://kpop.fandom.com/wiki/Moka_(ILLIT)", shape: "badge", crop: [0.0, 0.04, 1.0], ar: 1.5}
-      - {subject: "Wonhee (ILLIT)", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/e/eb/ILLIT_Wonhee_Break_Even_concept_photo_7.png/revision/latest/scale-to-width-down/400?cb=20261006122426", page: "https://kpop.fandom.com/wiki/Wonhee_(ILLIT)", shape: "badge", crop: [0.0, 0.0089, 1.0], ar: 1.4}
-      - {subject: "Iroha", why: "ILLIT のメンバー", image: "https://static.wikia.nocookie.net/kpop/images/e/e0/ILLIT_Iroha_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122426", page: "https://kpop.fandom.com/wiki/Iroha", shape: "badge", crop: [0.0, 0.0, 1.0], ar: 1.4}
+      - {subject: "Yunah", why: "ILLIT のメンバー", image: "emblems/illit-yunah.webp", source: "https://static.wikia.nocookie.net/kpop/images/5/56/ILLIT_Yunah_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Yunah", shape: "cutout"}
+      - {subject: "Wonhee (ILLIT)", why: "ILLIT のメンバー", image: "emblems/illit-wonhee-illit.webp", source: "https://static.wikia.nocookie.net/kpop/images/e/eb/ILLIT_Wonhee_Break_Even_concept_photo_7.png/revision/latest/scale-to-width-down/400?cb=20261006122426", page: "https://kpop.fandom.com/wiki/Wonhee_(ILLIT)", shape: "cutout"}
     subtitle: アイリット · 日本公演特别关注
     size: L
     type: event
@@ -884,7 +875,6 @@ items:
   - name: "ぐでたま"
     motif: lazy          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Gudetama", why: "作品そのもののキャラ", image: "https://static.wikia.nocookie.net/hellokitty/images/b/b5/Sanrio_Characters_Gudetama_Image005.png/revision/latest/scale-to-width-down/400?cb=20170403223437", page: "https://hellokitty.fandom.com/wiki/Gudetama", shape: "badge", crop: [0.1, 0.0, 0.8], ar: 1.0}
       - {subject: "Gudetama2018ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/4/41/Gudetama2018ranking.png/revision/latest/scale-to-width-down/400?cb=20260228135811", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2018ranking.png", shape: "cutout"}
       - {subject: "Gudetama2019ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/9/98/Gudetama2019ranking.png/revision/latest/scale-to-width-down/400?cb=20260302104646", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2019ranking.png", shape: "cutout"}
       - {subject: "Gudetama2020ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "https://static.wikia.nocookie.net/hellokitty/images/c/c2/Gudetama2020ranking.png/revision/latest/scale-to-width-down/400?cb=20260211060247", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2020ranking.png", shape: "cutout"}
@@ -935,8 +925,8 @@ items:
   - name: "The Mandalorian"
     motif: beskar          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Din Djarin", why: "作品の主人公と、その相棒（作品の顔）", image: "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest/scale-to-width-down/400?cb=20241206044557", page: "https://starwars.fandom.com/wiki/Din_Djarin", shape: "badge", crop: [0.003, 0.0, 0.994], ar: 1.2425}
-      - {subject: "Grogu", why: "作品の主人公と、その相棒（作品の顔）", image: "https://static.wikia.nocookie.net/starwars/images/0/06/Grogu-BoBFBox.png/revision/latest/scale-to-width-down/400?cb=20251105060853", page: "https://starwars.fandom.com/wiki/Din_Grogu", shape: "badge", crop: [0.144, 0.0, 0.712], ar: 0.89}
+      - {subject: "Din Djarin", why: "作品の主人公と、その相棒（作品の顔）", image: "emblems/the-mandalorian-din-djarin.webp", source: "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest/scale-to-width-down/400?cb=20241206044557", page: "https://starwars.fandom.com/wiki/Din_Djarin", shape: "cutout"}
+      - {subject: "Grogu", why: "作品の主人公と、その相棒（作品の顔）", image: "emblems/the-mandalorian-grogu.webp", source: "https://static.wikia.nocookie.net/starwars/images/0/06/Grogu-BoBFBox.png/revision/latest/scale-to-width-down/400?cb=20251105060853", page: "https://starwars.fandom.com/wiki/Din_Grogu", shape: "cutout"}
     type: show
     section: "影视"
     size: M
@@ -981,7 +971,7 @@ items:
   - name: "Vaundy"
     motif: concert          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Vaundy", why: "本人", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg", page: "https://ja.wikipedia.org/wiki/Vaundy", shape: "badge", crop: [0.0, 0.0385, 1.0], ar: 1.3}
+      - {subject: "Vaundy", why: "本人", image: "emblems/vaundy-vaundy.webp", source: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg", page: "https://ja.wikipedia.org/wiki/Vaundy", shape: "cutout"}
     type: event
     section: "演出"
     size: S
@@ -1001,7 +991,7 @@ items:
   - name: "周杰伦"
     motif: porcelain          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "周杰倫", why: "本人", image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Jay_Chou_in_Shanghai_2023_%283%29.jpg/500px-Jay_Chou_in_Shanghai_2023_%283%29.jpg?utm_source=ja.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://ja.wikipedia.org/wiki/%E5%91%A8%E6%9D%B0%E5%80%AB", shape: "badge", crop: [0.0, 0.04, 1.0], ar: 1.394}
+      - {subject: "周杰倫", why: "本人", image: "emblems/be881111.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Jay_Chou_in_Shanghai_2023_%283%29.jpg/500px-Jay_Chou_in_Shanghai_2023_%283%29.jpg?utm_source=ja.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://ja.wikipedia.org/wiki/%E5%91%A8%E6%9D%B0%E5%80%AB", shape: "cutout"}
     type: event
     section: "演出"
     size: S
