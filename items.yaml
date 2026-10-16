@@ -117,8 +117,8 @@ items:
     subtitle: 死神 新作手游
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
-      - {label: 动漫改编新手游, lang: ja-JP, query: "人気アニメ 原作 新作 スマホゲーム 事前登録", need: ["事前登録|预约|預約|配信|上线|リリース|定档", "アニメ|原作|动漫|改编|漫画"]}
-      - {label: 动漫改编新手游, lang: zh-TW, query: "動畫改編 手遊 上市", need: ["事前登録|预约|預約|配信|上线|上線|上市|推出|リリース|定档|定檔", "アニメ|原作|动漫|動漫|動畫|改编|改編|漫画|漫畫"]}
+      - {label: 动漫改编新手游, lang: ja-JP, query: "人気アニメ 原作 新作 スマホゲーム 事前登録", need: ["事前登録|预约|預約|配信|上线|リリース|定档", "アニメ|原作|动漫|改编|漫画", "手遊|手游|スマホゲーム|スマホ|ゲーム|game|遊戲|游戏|RPG|アプリ|App"]}
+      - {label: 动漫改编新手游, lang: zh-TW, query: "動畫改編 手遊 上市", need: ["事前登録|预约|預約|配信|上线|上線|上市|推出|リリース|定档|定檔", "アニメ|原作|动漫|動漫|動畫|改编|改編|漫画|漫畫", "手遊|手游|スマホゲーム|スマホ|ゲーム|game|遊戲|游戏|RPG|アプリ|App"]}
     keywords: ["BLEACH Mirrors High", "死神 Mirrors High", "ブリーチ ミラーズハイ"]
     match: [Mirrors High, ミラーズハイ, ミラハイ]
     news_langs: [zh-TW, en-US, ja-JP]
@@ -304,8 +304,8 @@ items:
     subtitle: Marvel Studios · MCU
     type: show
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
-      - {label: 超级英雄电影, lang: zh-TW, query: "超級英雄電影 預告", need: ["superhero|超级英雄|超級英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|蝙蝠俠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠|蜘蛛俠|蜘蛛人"]}
-      - {label: 超级英雄电影, lang: en-US, query: "superhero movie release date trailer", need: ["superhero|超级英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠"]}
+      - {label: 超级英雄电影, lang: zh-TW, query: "超級英雄電影 預告", need: ["superhero|超级英雄|超級英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|蝙蝠俠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠|蜘蛛俠|蜘蛛人", "電影|电影|movie|film|映画|預告|预告|trailer|上映|票房|box office|cast|sequel|続編|續集|DCU|MCU|Marvel|DC Studios|James Gunn|Batman|Superman|Supergirl|Wonder Woman|Spider-Man|Wolverine|Avengers|X-Men|蝙蝠侠|蝙蝠俠|超人|女超人|蜘蛛侠|蜘蛛俠|蜘蛛人|金鋼狼|金刚狼|復仇者|复仇者|正義聯盟|正义联盟"]}
+      - {label: 超级英雄电影, lang: en-US, query: "superhero movie release date trailer", need: ["superhero|超级英雄|超英|DC Studios|Batman|Superman|蝙蝠侠|超人|Supergirl|女超人|Wonder Woman|Spider-Man|蜘蛛侠", "電影|电影|movie|film|映画|預告|预告|trailer|上映|票房|box office|cast|sequel|続編|續集|DCU|MCU|Marvel|DC Studios|James Gunn|Batman|Superman|Supergirl|Wonder Woman|Spider-Man|Wolverine|Avengers|X-Men|蝙蝠侠|蝙蝠俠|超人|女超人|蜘蛛侠|蜘蛛俠|蜘蛛人|金鋼狼|金刚狼|復仇者|复仇者|正義聯盟|正义联盟"]}
     keywords: [
       "漫威 电影", "复仇者联盟5", "复仇者联盟：毁灭之日", "复仇者联盟6 秘密战争",
       "Marvel Studios movie", "Avengers: Doomsday", "Avengers: Secret Wars", "MCU movie"
@@ -658,8 +658,8 @@ items:
     type: product
     section: 好物
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
-      - {label: 安卓旗舰新机, lang: zh-CN, query: "安卓 旗舰 新机 发布 2027", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市"]}
-      - {label: 安卓旗舰新机, lang: en-US, query: "flagship Android phone launch 2027", need: ["flagship|旗舰|旗艦", "launch|announce|release|unveil"]}
+      - {label: 安卓旗舰新机, lang: zh-CN, query: "安卓 旗舰 新机 发布 2027", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市", "手机|手機|phone|smartphone|スマホ|スマートフォン|폰|스마트폰|Galaxy|iPhone|Pixel|Xiaomi|小米|OPPO|vivo|一加|OnePlus|Honor|荣耀|榮耀|华为|華為|Huawei|Nothing|Motorola"]}
+      - {label: 安卓旗舰新机, lang: en-US, query: "flagship Android phone launch 2027", need: ["flagship|旗舰|旗艦", "launch|announce|release|unveil", "手机|手機|phone|smartphone|スマホ|スマートフォン|폰|스마트폰|Galaxy|iPhone|Pixel|Xiaomi|小米|OPPO|vivo|一加|OnePlus|Honor|荣耀|榮耀|华为|華為|Huawei|Nothing|Motorola"]}
     keywords: [
       "Galaxy S27 Ultra", "Galaxy S27 Pro", "Galaxy S27", "Galaxy S27 Unpacked",
       "三星 S27 Ultra", "三星 S27 Pro", "갤럭시 S27 울트라", "갤럭시 S27 프로", "갤럭시 S27 언팩",
