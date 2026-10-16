@@ -80,7 +80,12 @@ def page_image(api, title):
 
 
 def small_url(src, width=400):
-    """Fandom の画像は縮小版の網址にする（網页で 130px ほどにしか出さないので、重い原寸は引かない）。"""
+    """縮小版の網址にする（網页で 130px ほどにしか出さないので、重い原寸は引かない）。
+    Fandom は scale-to-width-down、Wikimedia は決まったサイズの thumb（https://w.wiki/GHai）。"""
+    m = re.match(r"^(https://upload\.wikimedia\.org/wikipedia/[^/]+)/([0-9a-f])/([0-9a-f]{2})/([^/?]+)(?:\?.*)?$", src)
+    if m and not m.group(4).lower().endswith(".svg"):
+        base, a, ab, name = m.groups()
+        return f"{base}/thumb/{a}/{ab}/{name}/500px-{name}"
     if "static.wikia.nocookie.net" in src and "/revision/latest" in src and "scale-to-width" not in src:
         return src.replace("/revision/latest", f"/revision/latest/scale-to-width-down/{width}", 1)
     return src

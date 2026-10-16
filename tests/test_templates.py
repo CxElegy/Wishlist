@@ -128,5 +128,12 @@ class Templates(unittest.TestCase):
         self.assertLess(abs(h(th["accent"]) - h("#D97441")), 0.04)   # 強調色は代表色と同じ色相
 
 
+    def test_functional_text_not_faded(self):
+        # 読ませる小さな文字（出典・日付・件数・注記）は透明度で薄くしない（配色によっては 4.5:1 を割る）
+        for sel in (".from{", ".when{", ".older summary span{", ".sbox h4 small{"):
+            rule = render.CSS.split("\n" + sel, 1)[1].split("}", 1)[0]
+            self.assertNotIn("opacity", rule, sel)
+            self.assertNotIn("transparent", rule, sel)
+
 if __name__ == "__main__":
     unittest.main()
