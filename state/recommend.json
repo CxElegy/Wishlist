@@ -16,7 +16,6 @@
   "https://www.aol.com/articles/wonder-man-ben-kingsley-mcu-155940000.html": "https://hermes.media.transform.aol.com/ea11986456cd9fd91da2c320d082958cb72e7ac3/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/15/57f40bce-ca2a-3730-ac60-2e74ae177229/a0a07c96-94ed-4838-91dc-7b0b5bf097c6.jpg",
   "https://www.cjnavi.co.jp/event/20261011-562matsuri/": "https://www.cjnavi.co.jp/assets/uploads/2025/10/5893d35f338436bae970da9b3947fa09.jpg",
   "https://www.comingsoon.net/movies/news/2208605-avengers-doomsday-robert-downey-jr-doctor-doom-arts": "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/MixCollage-16-Oct-2026-09-52-AM-7941.jpg?resize=1200,630",
-  "https://www.gamingbible.com/news/platform/steam/outward-skyrim-alternative-037810-20261012": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt8bbf115aeeaf378d/6acca2bea74b6e1dcafa5b6a/outward.jpg",
   "https://www.gizbot.com/gaming/news/activision-says-gta-6-will-drive-more-players-to-call-of-duty-modern-warfare-4-here-is-why-129207.html": "https://images.gizbot.com/img/2026/10/gta-main1-76221792124725.jpg",
   "https://www.jedinews.com/film-music-tv/articles/who-can-resist-grogus-adorable-face-lego-star-wars-the-mandalorian-star-wars-kids/": "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-26.jpg",
   "https://www.mirror.co.uk/lifestyle/cat-owners-warned-vet-never-37750938": "https://i2-prod.mirror.co.uk/article37750936.ece/ALTERNATES/s1200d/0_Woman-with-cute-cat-resting-at-home.jpg",
@@ -480,27 +479,6 @@
   },
   {
    "batch": 0,
-   "because": "GTA 6",
-   "date": "2026-10-12",
-   "hits": [
-    "开放世界大作"
-   ],
-   "image": "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt8bbf115aeeaf378d/6acca2bea74b6e1dcafa5b6a/outward.jpg",
-   "kind": "follow",
-   "source": "GAMINGbible",
-   "taste": [
-    [
-     "开放世界大作",
-     3
-    ]
-   ],
-   "title": "This 100-hour Steam RPG just dropped to $2 and is an open-world alternative to Skyrim",
-   "url": "https://www.gamingbible.com/news/platform/steam/outward-skyrim-alternative-037810-20261012",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 0,
    "because": "gelato pique",
    "date": "2026-10-16",
    "hits": [
@@ -545,7 +523,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 1,
+   "batch": 0,
    "because": "Astrae Oratio",
    "date": "2026-10-09",
    "hits": [
@@ -624,7 +602,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "漫威电影",
    "date": "2026-10-13",
    "hits": [
@@ -659,11 +637,11 @@
    5
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    5
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    5
   ],
   [
@@ -675,7 +653,7 @@
    5
   ],
   [
-   "旗舰手机",
+   "旗舰",
    4
   ]
  ]
