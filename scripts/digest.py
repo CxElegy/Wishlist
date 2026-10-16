@@ -1688,6 +1688,79 @@ def with_manual_themes(issues, items):
               for b in issues[0].get("items", [])]
     return [{**issues[0], "items": blocks}] + issues[1:]
 
+ADMIN_ID_BY_TYPE = {"game": "steam_appid", "anime": "anilist_id", "show": "tmdb"}  # 種類ごとに、あると話題度・現状が取れる ID
+
+
+def admin_data(items, issues, analysis, tz, updated):
+    """管理ページ（docs/admin.html）に書き込む数字：収集・編集の状況、作品ごとの記事数と未設定の項目、投票。"""
+    today = dt.datetime.now(tz).date()
+    inbox = sorted(INBOX_DIR.glob("????-??-??.json"))
+    week, urgent, last = {}, {}, {}
+    today_n = week_n = 0
+    for path in inbox:
+        day = dt.date.fromisoformat(path.stem)
+        recent = (today - day).days < 7
+        for block in (load_json(path) or {}).get("items", []):
+            entries = block.get("entries") or []
+            name = block.get("name")
+            if recent:
+                week[name] = week.get(name, 0) + len(entries)
+                urgent[name] = urgent.get(name, 0) + sum(1 for x in entries if x.get("urgent"))
+                week_n += len(entries)
+                if day == today:
+                    today_n += len(entries)
+            for x in entries:
+                d = (x.get("date") or "")[:10] or path.stem
+                if d <= today.isoformat() and d > last.get(name, ""):
+                    last[name] = d
+    unedited = [p.stem for p in inbox[-7:] if not (INBOX_DIR / f"{p.stem}.edit.json").exists()]
+    heat_items = (analysis or {}).get("items") or {}
+    rows = []
+    for i in items:
+        name = i["name"]
+        need = ["motif", "emblem", "wiki", "status", "similar"]
+        if ADMIN_ID_BY_TYPE.get(i.get("type")):
+            need.append(ADMIN_ID_BY_TYPE[i["type"]])
+        h = heat_items.get(name)
+        rows.append({"name": name, "section": section_of(i), "type": i.get("type"), "size": load_sizes().get(name, "M"),
+                     "week": week.get(name, 0), "urgent": urgent.get(name, 0),
+                     "last_days": (today - dt.date.fromisoformat(last[name])).days if name in last else None,
+                     "heat": {"score": h["score"], "delta": h.get("delta")} if h else None,
+                     "missing": [k for k in need if not i.get(k)], "web": WEB_ITEM_MARK in str(i.get("notes") or "")})
+    beat = (STATE_DIR / "heartbeat.txt")
+    pipeline = {"report": issues[0]["date"] if issues else None, "inbox": inbox[-1].stem if inbox else None,
+                "today_entries": today_n, "week_entries": week_n, "unedited": unedited, "updated": updated,
+                "items": len(items), "stale": sum(1 for r in rows if r["last_days"] is None or r["last_days"] >= render.ADMIN_STALE_DAYS),
+                "weekly": " ".join(beat.read_text(encoding="utf-8").split()[:2])[5:].replace("-", "/") if beat.exists() else None}
+    # 投票：同じ記事は最後の一票。作品ごとの 👍 / 👎 と、最近押したもの
+    raw = (load_json(FEEDBACK_FILE) or {}).get("rows", [])
+    latest = {}
+    for r in raw:
+        if r.get("url") and r.get("vote") in (-1, 0, 1):
+            latest[r["url"]] = r
+    now_votes = [r for r in latest.values() if r["vote"]]
+    by_work = {}
+    for r in now_votes:
+        k = r.get("work") or r.get("because") or "（その他）"
+        a, b = by_work.get(k, (0, 0))
+        by_work[k] = (a + (r["vote"] > 0), b + (r["vote"] < 0))
+
+    def stamp(s):
+        try:
+            return dt.datetime.fromisoformat(str(s).replace("Z", "+00:00")).astimezone(tz)
+        except ValueError:
+            return None
+    times = [t for t in (stamp(r.get("created_at")) for r in raw) if t]
+    recent = sorted(now_votes, key=lambda r: str(r.get("created_at") or ""), reverse=True)[:10]
+    votes = {"total": len(now_votes), "up": sum(1 for r in now_votes if r["vote"] > 0),
+             "down": sum(1 for r in now_votes if r["vote"] < 0),
+             "week": sum(1 for t in times if (today - t.date()).days < 7),
+             "last": max(times).strftime("%m/%d %H:%M") if times else None,
+             "works": sorted(((k, a, b) for k, (a, b) in by_work.items()), key=lambda x: (-(x[1] + x[2]), x[0]))[:10],
+             "recent": [{**{k: r.get(k) for k in ("url", "title", "work", "kind", "vote")},
+                         "when": t.strftime("%m/%d %H:%M") if (t := stamp(r.get("created_at"))) else ""} for r in recent]}
+    return {"pipeline": pipeline, "items": rows, "votes": votes}
+
 
 def write_page():
     issues = [load_json(p) for p in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True)[:ISSUES_ON_PAGE]]
@@ -1728,6 +1801,9 @@ def write_page():
           "fields": {**{k: i[k] for k in ITEM_FIELDS if k in i and k != "size"}, "section": section_of(i)}} for i in items],
         {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "langs": settings.get("news_langs") or []},
         updated), encoding="utf-8")
+    (DOCS_DIR / "admin.html").write_text(render.render_admin(  # 管理ページ（見るだけ）
+        admin_data(items, issues, analysis, tz, updated),
+        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, updated), encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 

@@ -227,5 +227,35 @@ class HeatPage(unittest.TestCase):
         self.assertNotIn("/*", css)
         self.assertNotIn("*/", css)
 
+class AdminPage(unittest.TestCase):
+    DATA = {"pipeline": {"report": "2026-10-16", "inbox": "2026-10-16", "unedited": ["2026-10-15"], "items": 2, "stale": 1},
+            "items": [{"name": "A<b>", "section": "游戏", "type": "game", "size": "L", "week": 5, "urgent": 1, "last_days": 0,
+                       "heat": {"score": 40, "delta": 3}, "missing": ["wiki"], "web": True},
+                      {"name": "B", "section": "新ジャンル", "type": "show", "size": "S", "week": 0, "last_days": None,
+                       "heat": None, "missing": []}],
+            "votes": {"total": 2, "up": 1, "down": 1, "week": 3, "last": "10/16 12:00", "works": [["A<b>", 1, 1]],
+                      "recent": [{"url": "javascript:alert(1)", "title": "<i>t</i>", "vote": 1, "when": "10/16"}]}}
+
+    def test_parts_and_escaping(self):
+        out = render.render_admin(self.DATA, {"url": "https://x.supabase.co", "key": "k"}, "10.16 12:00")
+        for part in ('id="status"', 'id="queue"', 'id="items"', 'id="votes"', "設定ページから追加", "+3", "記事なし",
+                     'class="last stale"', "そろっている", "list_item_requests", "get_photo_inbox"):
+            self.assertIn(part, out, part)
+        self.assertNotIn("<i>t</i>", out)
+        self.assertNotIn("A<b>", out)
+        self.assertNotIn('href="javascript:', out)
+        self.assertNotIn("<button", out)                          # 見るだけ：操作するボタンはない
+
+    def test_empty(self):
+        out = render.render_admin({}, {}, "u")
+        self.assertIn("まだ投票がありません", out)
+        self.assertIn("ウォッチ項目がありません", out)
+
+    def test_admin_css_follows_rules(self):
+        sizes = [int(x) for x in re.findall(r"font(?:-size)?:[^;}]*?\b(\d+)px", render.ADMIN_PAGE_CSS)]
+        self.assertGreaterEqual(min(sizes), 10)
+        self.assertNotRegex(render.ADMIN_PAGE_CSS, r"#[0-9A-Fa-f]{3,6}\b")
+
+
 if __name__ == "__main__":
     unittest.main()
