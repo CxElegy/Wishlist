@@ -1645,6 +1645,17 @@ def with_new_items(issues, items):
     return [{**issues[0], "items": issues[0]["items"] + blocks}] + issues[1:]
 
 
+def with_manual_themes(issues, items):
+    """items.yaml に手で書いた theme（小元素に合わせた配色など）を、次の収集を待たずに網页へ反映する。
+    版面の見た目は最新の一期で決まるので、最新の一期の版面だけを上書きする。reports/ には書き戻さない。"""
+    manual = {i["name"]: i["theme"] for i in items if isinstance(i.get("theme"), dict)}
+    if not manual or not issues:
+        return issues
+    blocks = [{**b, "theme": {**(b.get("theme") or {}), **manual[b["name"]]}} if b.get("name") in manual else b
+              for b in issues[0].get("items", [])]
+    return [{**issues[0], "items": blocks}] + issues[1:]
+
+
 def write_page():
     issues = [load_json(p) for p in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True)[:ISSUES_ON_PAGE]]
     issues = [i for i in issues if i]
@@ -1654,7 +1665,7 @@ def write_page():
     settings, items = load_config()
     tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
-    issues = with_new_items(issues, items)
+    issues = with_manual_themes(with_new_items(issues, items), items)
     themes = load_json(THEMES_FILE) or {}
     analysis = heat.analyze(items, sorted(INBOX_DIR.glob("????-??-??.json")), issues, load_json(HEAT_FILE) or {},
                             issues[0]["date"])
@@ -1663,7 +1674,8 @@ def write_page():
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
                           {i["name"]: render.template_for(i) for i in items}, themes,
-                          (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores)
+                          (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores,
+                          {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)})
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, [i["name"] for i in items]), updated),

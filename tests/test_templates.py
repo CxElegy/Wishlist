@@ -67,10 +67,6 @@ class Templates(unittest.TestCase):
         self.assertIn('class="deco d2"', render.MOTIFS["retro"])
         self.assertEqual(render.MOTIFS["film"], "")
 
-
-if __name__ == "__main__":
-    unittest.main()
-
     def test_like_fx(self):
         # 20 种演出：likefx.FX（名字）和 FX_JS 里的定义一一对应；每个模版的 fx 都是其中之一
         import likefx
@@ -96,3 +92,33 @@ if __name__ == "__main__":
         self.assertIn(likefx.CONFETTI_JS, render.LIKEFX_HEAD)
         self.assertIn("burstPath", likefx.FX_JS)
 
+    def test_emblems(self):
+        # 作品の小元素：既存の画像の網址（http(s)）だけ。何枚でもよく、網页で 1 枚をランダムに。色のフチは emblem_ring
+        _, items = digest.load_config()
+        for item in items:
+            for x in item.get("emblem") or []:
+                self.assertRegex(x.get("image", ""), r"^https://", item["name"])
+                self.assertIn(x.get("shape"), ("cutout", "badge"), item["name"])
+                self.assertTrue(x.get("why") and x.get("subject"), item["name"])
+        html_ = render._emblem([{"image": "https://a/1.png", "shape": "cutout"}, {"image": "javascript:x", "shape": "badge"},
+                                {"image": "https://a/2.png", "shape": "badge"}], "accent")
+        self.assertIn('class="emb ring-accent"', html_)
+        self.assertIn('src="https://a/1.png"', html_)
+        self.assertNotIn("javascript", html_)
+        self.assertIn("https://a/2.png", html_)   # 候補（data-alts）
+        self.assertEqual(render._emblem([]), "")
+        self.assertIn('ring-accent', render._emblem([{"image": "https://a/1.png"}], "nope"))
+        self.assertIn("Math.random()", render.EMB_JS)
+
+    def test_emblem_palette(self):
+        # 小元素の代表色 → 配色：地は米白、強調は代表色（読める濃さ）、どれも 4.5:1 以上
+        import emblem, theme
+        th = emblem.palette(theme._rgb("#D97441"))   # ポチタのオレンジ
+        for a, b in (("fg", "bg"), ("accent", "bg"), ("alt_fg", "alt_bg"), ("alt_accent", "alt_bg")):
+            self.assertGreaterEqual(theme.contrast(theme._rgb(th[a]), theme._rgb(th[b])), 4.5, (a, b))
+        h = lambda c: __import__("colorsys").rgb_to_hls(*(v / 255 for v in theme._rgb(c)))[0]
+        self.assertLess(abs(h(th["accent"]) - h("#D97441")), 0.04)   # 強調色は代表色と同じ色相
+
+
+if __name__ == "__main__":
+    unittest.main()

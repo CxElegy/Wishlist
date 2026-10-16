@@ -407,6 +407,25 @@ button{font-family:inherit}
 .when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
+/* 作品の小元素：右上で枠からはみ出すステッカー。白いフチ → 版面の強調色のフチ（emblem_ring）→ 墨の硬い影。
+   高さを決めて幅は絵なり（全身の縦長の絵も小さくならない）。スクロールで飛び出し、そのあと影が伸びて立体に */
+@property --sx{syntax:"<length>";inherits:true;initial-value:8px}
+@property --sy{syntax:"<length>";inherits:true;initial-value:8px}
+.emb{--ring:var(--acc);position:absolute;right:clamp(12px,4%,52px);top:-58px;z-index:5;height:156px;pointer-events:none;transform:rotate(-6deg)}
+.emb.ring-white{--ring:var(--card)}.emb.ring-none{--ring:transparent}
+.emb-in{height:100%;transition:transform .6s cubic-bezier(.2,1.5,.4,1),opacity .2s}
+.emb img{display:block;height:100%;width:auto;max-width:220px;object-fit:contain;transition:--sx .35s ease-out .45s,--sy .35s ease-out .45s;
+ filter:drop-shadow(2.5px 0 0 var(--card)) drop-shadow(-2.5px 0 0 var(--card)) drop-shadow(0 2.5px 0 var(--card)) drop-shadow(0 -2.5px 0 var(--card))
+  drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
+  drop-shadow(var(--sx) var(--sy) 0 var(--ink))}
+.emb img.badge{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--card)}
+.emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45)}
+.emb-js .emb:not(.in) img{--sx:0px;--sy:0px}
+@supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
+@keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
+.has-emb .band{padding-right:210px}
+@media (max-width:600px){.emb{height:100px;top:-38px;right:8px}.emb img{max-width:140px}.emb img.badge{width:96px;height:96px}.has-emb .band{padding-right:118px}}
+@media (prefers-reduced-motion:reduce){.emb,.emb-in,.emb img{animation:none;transition:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
@@ -935,6 +954,20 @@ def _legible(t):
     return t
 
 
+def _emblem(items, ring="accent"):
+    """作品の小元素（items.yaml の emblem、scripts/emblem.py が探した既存の画像）。版面の右上に、枠からはみ出して貼る。
+    候補が何枚あっても、網页を開くたびに 1 枚をランダムに（JS がなければ先頭）。画像は元の網址を直接引用（倉庫に保存しない）。"""
+    alts = [{"src": x["image"], "shape": "badge" if x.get("shape") == "badge" else "cutout"}
+            for x in items if isinstance(x, dict) and _safe_url(x.get("image"))]
+    if not alts:
+        return ""
+    ring = ring if ring in ("accent", "white", "none") else "accent"
+    first = alts[0]
+    return (f'<div class="emb ring-{ring}" aria-hidden="true" data-alts="{e(json.dumps(alts, ensure_ascii=False))}">'
+            f'<div class="emb-in"><img class="{first["shape"]}" src="{e(first["src"])}" alt="" loading="lazy" decoding="async" '
+            f'referrerpolicy="no-referrer" onerror="this.closest(\'.emb\').remove()"></div></div>')
+
+
 def _section(block, anchor=""):
     t = _legible(block["theme"])
     style = (f"--bg:{t['bg']};--fg:{t['fg']};--acc:{t['accent']};--abg:{t['alt_bg']};"
@@ -971,8 +1004,9 @@ def _section(block, anchor=""):
     quiet = "" if recent else " quiet"
     cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
     cnt = _heat_badge(block) + cnt
-    return (f'<section id="{anchor}" data-k="{e(block["name"])}"{_fx(block["name"])} class="sec{" m-" + motif if motif else ""}{quiet}" style="{style}">'
-            f'<div class="band">{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
+    emb_html = _emblem(block.get("_emblems") or [], block.get("_ring") or "accent")
+    return (f'<section id="{anchor}" data-k="{e(block["name"])}"{_fx(block["name"])} class="sec{" m-" + motif if motif else ""}{" has-emb" if emb_html else ""}{quiet}" style="{style}">'
+            f'{emb_html}<div class="band">{MOTIFS.get(motif, "")}<span class="title">{e(block["name"])}</span>{sub}{cnt}</div>'
             f"{facts}{grid}</section>")
 
 
@@ -1221,6 +1255,11 @@ VOTE_JS = """
     { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v }), keepalive: true })
     .then(async r => { if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120)); });
   const fxOf = el => (el.closest('[data-fx]') || {}).dataset?.fx || 'pop';   // 版面のテーマの演出（likefx.py）
+  const embOf = el => {   // いまその作品の版面に出ている小元素の画像（👍 の演出で一緒に飛ぶ）
+    const k = (el.closest('[data-k]') || {}).dataset?.k;
+    const img = k && document.querySelector('.sec[data-k="' + CSS.escape(k) + '"] .emb img');
+    return img && img.complete && img.naturalWidth ? '<img src="' + img.src + '" alt="" referrerpolicy="no-referrer">' : null;
+  };
   const wire = (box, data, dim, tip) => {
     boxes.push([box, data, dim, tip]);
     box.addEventListener('click', ev => {
@@ -1230,7 +1269,7 @@ VOTE_JS = """
       const url = data.url, v = (mine[url] || 0) === Number(btn.dataset.vote) ? 0 : Number(btn.dataset.vote);
       mine[url] = v; touched.add(url);
       try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (_) {}
-      paint(url); window.likeFx(btn, v, fxOf(btn));
+      paint(url); window.likeFx(btn, v, fxOf(btn), embOf(btn));
       queue[url] = (queue[url] || Promise.resolve()).then(() => send(data, v)).then(() => { saved[url] = v; }, err => {
         console.error('投票失败', err);
         if (mine[url] !== v) return;   // もう次の票を押している
@@ -1291,6 +1330,26 @@ VOTE_JS = """
 VOTE_JS = (VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
            .replace("__THUMB__", json.dumps(_THUMB)))
 LIKEFX_JS = likefx.FX_JS.replace("__THUMB__", json.dumps(_THUMB))
+# 作品の小元素：アニメーションできるときだけ最初は隠し（<head> で html に emb-js）、版面がスクロールで入ってきたら .in で飛び出す
+EMB_HEAD_JS = ("if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)"
+               "document.documentElement.classList.add('emb-js')")
+EMB_JS = """
+(() => {
+  const els = [...document.querySelectorAll('.emb')];
+  // 開くたびに候補から 1 枚をランダムに
+  els.forEach(el => {
+    let alts = []; try { alts = JSON.parse(el.dataset.alts || '[]'); } catch (_) {}
+    const img = el.querySelector('img');
+    if (alts.length > 1 && img) { const a = alts[Math.floor(Math.random() * alts.length)]; img.className = a.shape; img.src = a.src; }
+  });
+  if (!els.length || !document.documentElement.classList.contains('emb-js')) return;
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    // 見えた（または読み飛ばしてもう上にある）ら一度だけ飛び出す
+    if (en.isIntersecting || en.boundingClientRect.bottom < 0) { en.target.classList.add('in'); io.unobserve(en.target); }
+  }), { rootMargin: '0px 0px -15% 0px', threshold: .5 });
+  els.forEach(el => io.observe(el));
+})();
+"""
 # 擬音の書体（使う文字だけ）と粒のライブラリ canvas-confetti（読めなくても演出は自作の粒で動く）
 LIKEFX_HEAD = (f'<link rel="stylesheet" href="{e(likefx.SFX_FONT)}">'
                f'<script src="{likefx.CONFETTI_JS}" defer crossorigin="anonymous"></script>')
@@ -2253,7 +2312,7 @@ NAV_JS = """
 
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None, taste=(), heat=None):
+           motifs=None, themes=None, taste=(), heat=None, emblems=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
@@ -2265,6 +2324,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         w["_size"] = (sizes or {}).get(w["name"], "M")
         w["_motif"] = (motifs or {}).get(w["name"], "")
         _FX_OF[w["name"]] = TEMPLATE_FX.get(w["_motif"], "pop")
+        w["_emblems"], w["_ring"] = (emblems or {}).get(w["name"]) or ([], "accent")
         w["_heat"] = (heat or {}).get(w["name"])  # 話題度（heat.compute）
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
@@ -2283,6 +2343,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
 {LIKEFX_HEAD if fb else ""}
+<script>{EMB_HEAD_JS}</script>
 </head>
 <body>
 <div class="page">
@@ -2298,6 +2359,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <script>{NAV_JS}</script>
 <script>{FIT_JS}</script>
 {f"<script>{LIKEFX_JS}</script><script>{VOTE_JS.replace('__CFG__', json.dumps(fb))}</script>" if fb else ""}
+<script>{EMB_JS}</script>
 </body>
 </html>
 """
