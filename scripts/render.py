@@ -139,10 +139,10 @@ button{font-family:inherit}
  background:linear-gradient(90deg,var(--sc1,#00B4EE) 0 14%,var(--sc2,#FF3D8B) 14% 28%,var(--gold) 28% 42%,var(--ink) 42% 56%,var(--hacc,var(--rose)) 56% 70%,var(--deep,var(--ink)) 70% 84%,var(--card) 84%)}
 /* ---------- ほかの注目ニュース：写真の壁 ＋ ジャンルの棚 ---------- */
 .spot{display:flex;flex-direction:column;gap:22px}
-.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:stretch}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:start}
 /* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
-.mgrid>.wall{align-content:stretch}
-.mgrid .wc{justify-content:flex-start}.mgrid .wc .pic{flex:1 0 auto}
+.mgrid>.wall{align-content:start}
+.mgrid .wc{justify-content:flex-start}
 .fside>:last-child{flex:1}
 .fside{display:flex;flex-direction:column;gap:20px;min-width:0}
 .sbox{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:12px 14px 12px}
@@ -184,7 +184,8 @@ button{font-family:inherit}
 .wc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
 .wc.lead{grid-column:span 2;grid-row:span 2}
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
-.wc.lead .pic{aspect-ratio:auto;flex:1;min-height:280px}
+.wall{align-items:start}  /* カードは中身の高さ（隣の列に合わせて引き伸ばさない：空いた枠を作らない） */
+.wc.lead{align-self:stretch}.wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
 .wc .tg{position:absolute;left:-8px;top:18px;z-index:2;box-shadow:2px 2px 0 var(--ink)}
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
 .wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -465,7 +466,7 @@ button{font-family:inherit}
  .frame{grid-column:1;grid-row:auto;margin:4px 6px 6px 0;padding:6px;transform:rotate(-1.5deg)}
  .burst{width:72px;height:72px;font-size:16px;top:-16px;left:-14px}
  .top h2{font-size:20px;transform:rotate(-1deg)}
-  .wall{grid-template-columns:minmax(0,1fr);gap:16px}.wc.lead{grid-column:auto;grid-row:auto}.wc.lead .pic{min-height:0;aspect-ratio:16/10}
+  .wall{grid-template-columns:minmax(0,1fr);gap:16px}.wall>.wc:nth-child(n+7){display:none}.wc.lead{grid-column:auto;grid-row:auto}.wc.lead .pic{min-height:0;aspect-ratio:16/10}
  .wc:not(.lead){display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:4px 12px;align-items:start}
  .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:6px;font-size:11px}
   .fside{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
@@ -613,13 +614,21 @@ def _source_name(story):
     return story.get("source") or host.removeprefix("www.")
 
 
+def _img_url(u):
+    """配図の網址を整える。Bing ニュースの縮小画像（bing.com/th?id=…&w=1200）は、元が小さいと
+    指定の幅まで白い余白を足して返すので、w / h を外して元の大きさで取る（枠の中に白い帯ができない）。"""
+    if isinstance(u, str) and re.match(r"^https://(www\.)?bing\.com/th\?", u):
+        u = re.sub(r"&(amp;)?[wh]=\d+", "", u)
+    return u
+
+
 def _pic(story):
     """配图。底层模糊铺满，上层完整显示：图片不裁切，也不留空白条。
     兜底顺序：自己的图 → _fbs 里的备用图（作品封面）→ 来源网站的图标和网站名 → 作品名排版的封面块。
     前一个打不开（防盗链、网站删图、图标太小……）网页上自动换下一个。"""
     img, name = story.get("image"), story.get("_work", "")
     fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
-    chain = list(dict.fromkeys(u for u in [img, *fbs] if u))  # 第一张是 src，其余按顺序备用
+    chain = list(dict.fromkeys(_img_url(u) for u in [img, *fbs] if u))  # 第一张是 src，其余按顺序备用
     fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
     src = chain[0] if chain else None
     tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
@@ -1946,7 +1955,7 @@ def _heat_badge(w):
 
 WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
 WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
-SPOT_COUNT = 6  # 「ほかの注目ニュース」の写真の壁：大きい 1 枚 + 小さい 5 枚（3 列 3 段がちょうど埋まる）
+SPOT_COUNT = 12  # 「ほかの注目ニュース」の写真の壁：大きい 1 枚（2×2）+ 小さい 11 枚（3 列 5 段、右の列と高さが近い）。スマホは 6 枚まで
 
 
 def _day(story):
@@ -2255,7 +2264,7 @@ def _nav(works, date, wishes=(), picks=()):
             recent = [x for x in w["stories"] if x["_issue"] >= cutoff]
             img = next((x.get("image") for x in recent if x.get("image")), None) or w.get("cover") \
                 or next((x.get("image") for x in w["stories"] if x.get("image")), None)
-            css_img = f";--img:url({urllib.parse.quote(img, safe=':/?&=%#@+,;~')})" if img else ""
+            css_img = f";--img:url({urllib.parse.quote(_img_url(img), safe=':/?&=%#@+,;~')})" if img else ""
             cnt = f"今週 {len(recent)} 件" if recent else "新着なし"
             rail.append(f'<a class="pill" style="--sc:{sc}{e(css_img)}" data-for="{e(w["name"])}" '
                         f'href="#{_wid(w["name"])}"><i class="no">{n:02d}</i>'
@@ -2273,8 +2282,12 @@ FIT_JS = """
   const fit = img => {
     const p = img.closest('.pic');
     if (!p || !img.naturalWidth || !p.clientHeight) return;
-    const r = (img.naturalWidth / img.naturalHeight) / (p.clientWidth / p.clientHeight);
-    p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.27);
+    const nat = img.naturalWidth / img.naturalHeight;
+    // 写真の壁のカード：枠を写真の比率に合わせる（ぼかしの余白を作らない）。極端な縦長・横長だけは少し切る
+    if (p.closest('.wc') && !(p.closest('.wc.lead') && innerWidth > 760)) { p.style.aspectRatio = Math.min(2, Math.max(0.8, nat)).toFixed(3); p.classList.add('fill'); return; }
+    const r = nat / (p.clientWidth / p.clientHeight);
+    // そのほかの枠は、比率が近いときだけ埋める（遠いときはぼかしの上に全体を見せる）
+    p.classList.toggle('fill', Math.abs(Math.log(r)) < (p.closest('.wc.lead') ? 0.6 : 0.27));   // 大きい一枚は写真の 55% 以上見えるなら埋める
   };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     img.addEventListener('load', () => fit(img));
