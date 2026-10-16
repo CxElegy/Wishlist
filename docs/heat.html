@@ -267,7 +267,9 @@ button{font-family:inherit}
 .calm .last .mono{font:13px var(--font-num);letter-spacing:.06em;opacity:.75}
 .calm a.last:hover b{text-decoration:underline;text-underline-offset:4px}
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
-.when{display:flex;align-items:center;gap:8px;font:14px/1 var(--font-num);letter-spacing:.05em;opacity:.85}
+.when{display:flex;align-items:center;gap:8px;min-width:0;font:14px/1 var(--font-num);letter-spacing:.05em;opacity:.85}
+.from{min-width:0;overflow-wrap:break-word;font:500 11px/1.3 var(--font-sans);letter-spacing:.02em;opacity:.75}  /* 省略しない：入らなければ次の行へ */
+.wc em,.kick em{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;min-width:0}
 .when b{padding:2px 7px 1px;background:var(--ac);color:var(--bg);font:900 10px/1.4 var(--font-sans);letter-spacing:.14em}
 .card.a .when b{color:var(--abg)}
 .card.wide{display:grid;grid-template-columns:4fr 8fr;gap:24px;align-items:center}
@@ -379,13 +381,13 @@ button{font-family:inherit}
 .pk .taste{font-size:11px;opacity:.7}
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
-.vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .vote small{font-size:11px;opacity:.7}
 .pk.down>a{opacity:.35;filter:grayscale(1)}
 .card,.top,.wc{position:relative}
 /* 👍/👎 = 日付の行の右端に置く小さな印。普段は線の拇指だけ（枠なし）、押すと「NEW」と同じ塗りの札になる */
 .vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;align-items:center;gap:2px;flex:none}
-.vt{margin-left:auto;position:relative;z-index:2;font-size:0}
+.vt{position:absolute;right:-6px;top:0;height:var(--vth,28px);padding:0 4px 0 12px;z-index:2;font-size:0;cursor:default;-webkit-tap-highlight-color:transparent;touch-action:manipulation}  /* 周りの余白も按钮区：按偏了也不会打开原文 */
 .card.a .vt{--vt:var(--abg);--vf:var(--afg)}
 .wc .vt{--vc:var(--sc,var(--ink));--vt:#FFF;--vf:var(--ink)}
 .top .vt{--vc:var(--deep,var(--ink));--vt:var(--card);--vf:var(--ink)}
@@ -398,12 +400,17 @@ button{font-family:inherit}
 .vt button:focus-visible,.vote button:focus-visible{outline:2px solid currentColor;outline-offset:1px}
 .vt button[aria-pressed=true],.vote button[aria-pressed=true]{opacity:1;background:var(--vc);color:var(--vt)}
 .vt button[data-vote="-1"][aria-pressed=true],.vote button[data-vote="-1"][aria-pressed=true]{background:var(--vf)}  /* 踩 = 文字色の札（アクセント色は「好き」だけ） */
-.vt button:disabled,.vote button:disabled{opacity:.35;cursor:wait}
+.vt[aria-busy=true] button,.vote[aria-busy=true] button{opacity:.35;cursor:wait}
+.card:has(.vt:hover) :is(h2,h3),.brief li:has(.vt:hover) a{text-decoration:none}.top:has(.vt:hover) .hb{background:var(--ink)}.wc:has(.vt:hover){transform:none;box-shadow:var(--shadow)}  /* 指在按钮上时，原文链接不做悬停反应 */
 .vt button span,.pk:not(.big) .vote button span{display:none}
-.when:has(.vt),.kick:has(.vt),.wc em:has(.vt){display:flex;align-items:center;align-self:stretch}
+/* 👍/👎 は日付の行の右端に固定（absolute）、その幅だけ右を空ける。出典が長ければ出典だけ次の行に回り、ボタンを押し出さない */
+.when:has(.vt),.kick:has(.vt),.wc em:has(.vt){position:relative;flex-wrap:wrap;row-gap:4px;align-content:center;min-height:var(--vth,28px);padding-right:var(--vtw,70px);align-self:stretch}
+.vt button{min-height:var(--vth,28px)}  /* 按钮的高度 = 日期行的高度：按钮区不会伸到标题上 */
+/* 出典が日付の横に入らないとき（JS が .two を付ける）：出典だけ次の行に全幅で。1 行目の右はボタンの分だけ空ける */
+.when.two,.wc em.two{padding-right:0;align-content:flex-start;row-gap:0}.two>.from{order:2;flex-basis:100%}.two::before{content:"";order:1;flex:0 0 var(--vtw,70px);height:var(--vth,28px);margin-left:auto}
 .vote button{opacity:.75}
-.brief li .vt{align-self:center}
-.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
+.brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
+.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
  font:900 13px var(--font-sans);letter-spacing:.06em;cursor:pointer;border-radius:0;white-space:nowrap}
@@ -412,7 +419,7 @@ button{font-family:inherit}
 .pknav{margin-left:auto;display:flex;gap:10px;white-space:nowrap}
 .shuffle.back{background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .shuffle[disabled]{opacity:.35;cursor:default;pointer-events:none}
-@media (hover:none){.vt button,.vote button{min-height:34px;padding:0 9px;opacity:.75}}  /* 指で押せる大きさ */
+@media (hover:none){.vt button,.vote button{padding:0 9px;opacity:.75}.vote button{min-height:34px}.when,.kick,.wc em,.brief li{--vth:36px;--vtw:82px}}  /* 指で押せる大きさ */
 .shuffle:active,.mastwish:active{transform:translate(3px,3px);box-shadow:none}  /* 押した感触：影の分だけ沈む */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
@@ -687,7 +694,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.16</b></div>
-<div class="meta"><small>更新</small><b>10.16 17:19</b></div></div>
+<div class="meta"><small>更新</small><b>10.16 17:28</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
