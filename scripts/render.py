@@ -414,20 +414,20 @@ button{font-family:inherit}
 @property --sy{syntax:"<length>";inherits:true;initial-value:8px}
 .emb{--ring:var(--acc);position:absolute;right:clamp(12px,4%,52px);top:-58px;z-index:5;height:156px;pointer-events:none;transform:rotate(-6deg)}
 .emb.ring-white{--ring:var(--card)}.emb.ring-none{--ring:transparent}
-.emb-in{height:100%;transition:transform .6s cubic-bezier(.2,1.5,.4,1),opacity .2s}
-.emb img{display:block;height:100%;width:auto;max-width:220px;object-fit:contain;transition:--sx .35s ease-out .45s,--sy .35s ease-out .45s;
+.emb-in{height:100%;width:max-content;transition:transform .6s cubic-bezier(.2,1.5,.4,1),opacity .2s,--sx .35s ease-out .45s,--sy .35s ease-out .45s;
  filter:drop-shadow(2.5px 0 0 var(--card)) drop-shadow(-2.5px 0 0 var(--card)) drop-shadow(0 2.5px 0 var(--card)) drop-shadow(0 -2.5px 0 var(--card))
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
-  drop-shadow(var(--sx) var(--sy) 0 var(--ink))}
-.emb img.badge{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid var(--card)}  /* 縦長の写真は顔が上にあることが多い：上寄りで丸く切る */
-.emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45)}
-.emb-js .emb:not(.in) img{--sx:0px;--sy:0px}
+  drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
+.emb img{display:block;height:100%;width:auto;max-width:220px;object-fit:contain}
+/* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
+.emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
+.emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45);--sx:0px;--sy:0px}
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:210px}
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;top:-38px;right:8px}.emb img{max-width:140px}.emb img.badge{width:96px;height:96px}.has-emb .band{padding-right:118px}}
-@media (prefers-reduced-motion:reduce){.emb,.emb-in,.emb img{animation:none;transition:none}}
+@media (max-width:600px){.emb{height:100px;top:-38px;right:8px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
+@media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);

@@ -11,8 +11,9 @@
      ・キャラが一人だけの作品（ぐでたま）：その Wiki ページに載っている画像から、有名な別シーンを何枚か（--gallery）
   2. その作品のファン Wiki（Fandom など MediaWiki）で、キャラのページの代表画像（pageimages）を取る。
      Fandom にページがなければ別の Wiki（Sanrio 系・Nookipedia・Wikipedia）を試す。
-  3. 使えるか確かめる：短い辺が 160px 以上。縁の 90% 以上が透明なら「切り抜き」（輪郭どおりのステッカー）、
-     そうでなければ「バッジ」（丸く切って貼る。絵の中身はそのまま）。使えないものは飛ばす。
+  3. 使えるか確かめる：短い辺が 160px 以上。縁の 90% 以上が透明なら「切り抜き」（輪郭どおりのステッカー）。
+     代表画像が四角い写真なら、同じページに載っている透明な立ち絵を探す（人物は輪郭どおりが基本。丸いバッジにはしない）。
+     それでもなければ「カード」（P5 風の傾いた四辺形に切って貼る。絵の中身はそのまま）。使えないものは飛ばす。
   4. 版面の配色を合わせる：先頭（いちばん代表的な一枚）の代表色（不透明な部分で「面積 × 鮮やかさ²」が最大の色）を強調色に。
      地の明るさは作品の気質で決める（--tone）：熱血・暴力・ホラー・SF は墨の地（dark）、かわいい・癒やし・日常は米白の地（light）。
      一律に米白にしない。文字はどれも 4.5:1 以上（theme._readable）、網页に出したあと実際の重なりでも確かめる。
@@ -203,10 +204,47 @@ def gallery(api, page, match, n):
     return picked[:n]
 
 
+def cutout_on_page(api, title, limit=25):
+    """そのページに載っている画像から、透明背景の立ち絵（切り抜き）を探す。名前に人物名を含むものを優先し、大きい順。
+    代表画像が背景つき（四角い写真）のときに使う。人物は丸や四角より、輪郭どおりのほうが良いので。"""
+    q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "images", "imlimit": 200, "format": "json", "redirects": 1})
+    pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
+    files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|webp)$", x["title"], re.I)]
+    word = re.split(r"[\s(]", title)[0].lower()
+    files.sort(key=lambda f: (word not in f.lower(), "icon" in f.lower() or "logo" in f.lower()))
+    best = None
+    for i in range(0, min(len(files), limit), 20):
+        q = urllib.parse.urlencode({"action": "query", "titles": "|".join(files[i:i + 20]), "prop": "imageinfo",
+                                    "iiprop": "url|size", "iiurlwidth": 400, "format": "json"})
+        for p in json.loads(_get(f"{api}?{q}", 4_000_000))["query"]["pages"].values():
+            info = (p.get("imageinfo") or [{}])[0]
+            url = info.get("thumburl") or info.get("url")
+            if not url or word not in p["title"].lower():
+                continue
+            try:
+                shape, key, img = inspect(_get(url))
+            except Exception:
+                continue
+            if shape == "cutout" and img.size[1] >= img.size[0] * 0.8:   # 立ち絵・バストアップ（横長の集合絵は除く）
+                area = info.get("width", 0) * info.get("height", 0)
+                if not best or area > best[0]:
+                    best = (area, url, info.get("descriptionurl", ""), key)
+    return best
+
+
 def one(api, title):
     src, page = page_image(api, title)
     url = small_url(src)
     shape, key, _ = inspect(_get(url))
+    if shape == "badge":   # 代表画像が四角い写真なら、同じページの透明な立ち絵を探す
+        try:
+            found = cutout_on_page(api, title)
+        except Exception as e:
+            found = None
+            print(f"  [切り抜き探し失敗] {title}：{e}", file=sys.stderr)
+        if found:
+            _, url, _, key = found
+            shape = "cutout"
     return {"subject": title, "image": url, "page": page, "shape": shape, "key": theme._hex(key)}
 
 
