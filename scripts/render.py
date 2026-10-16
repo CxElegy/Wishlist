@@ -34,7 +34,7 @@ FONTS = (
 )
 
 CSS = """
-:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--good:#1F7A55;
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
  --fs-label:11px;--fs-tag:10px;--gap:16px;--hair:color-mix(in srgb,var(--ink) 16%,transparent);
@@ -1549,7 +1549,7 @@ def render_settings(items, db, updated):
 <div class="page">
 <a class="back" href="index.html">← 回到简报</a>
 <header><h1 style="margin:0;font:900 40px/1.1 'Noto Sans SC',sans-serif;letter-spacing:.04em">设置</h1></header>
-<p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a></p>
+<p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a>　<a href="admin.html">管理页（运行状况・投票・各关注项的记事数）→</a></p>
 <p class="intro">点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。</p>
 <dl class="legend"><dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd></dl>
 <div class="cfg">{''.join(rows)}</div>
@@ -3037,6 +3037,234 @@ def render_heat(analysis, works, updated):
 <section class="panel" id="method"><h2 class="sh"><span>計算方法</span><small>METHODOLOGY</small></h2>{_heat_method(analysis)}</section>
 </div>
 <script>{HEAT_PAGE_JS}</script>
+</body>
+</html>
+"""
+
+
+# ---------- 管理ページ（docs/admin.html）：見るだけ。口令なし・ボタンで何かを変えることはしない ----------
+# 生成時に分かるもの（収集・編集の状況、作品ごとの記事数、投票）は HTML に書き込み、
+# その場で変わるもの（GitHub Actions の実行結果、設定ページの依頼、写真の受付）はページを開いたときに読む。
+ADMIN_WORKFLOWS = {"digest.yml": "収集・出刊", "render.yml": "ページの再生成", "requests.yml": "設定ページの依頼", "ci.yml": "テスト"}
+ADMIN_STALE_DAYS = 3  # 最新の記事がこれより古い作品は「止まっているかも」
+
+
+def _ago(days):
+    if days is None:
+        return "記事なし"
+    return "今日" if days <= 0 else "昨日" if days == 1 else f"{days} 日前"
+
+
+def _admin_pipeline(p):
+    edits = p.get("unedited") or []
+    tiles = [
+        ("最新号", e(_md_day(p["report"])) if p.get("report") else "—", "", f'<span class="kd">更新 {e(p.get("updated") or "")}</span>'),
+        ("収集", e(_md_day(p["inbox"])) if p.get("inbox") else "—", "",
+         f'<span class="kd">今日 {p.get("today_entries", 0)} 件 · 7 日 {p.get("week_entries", 0)} 件</span>'),
+        ("AI 編集", "済" if not edits else f"{len(edits)}", "" if not edits else "日分 未編集",
+         '<span class="kd">' + (e("・".join(_md_day(d) for d in edits[:4])) if edits else "最新の収集まで編集済み") + "</span>"),
+        ("止まっている作品", f'{p.get("stale", 0)}', f'/ {p.get("items", 0)} 作品',
+         f'<span class="kd">{ADMIN_STALE_DAYS} 日以上 新しい記事なし</span>'),
+        ("週報", e(p.get("weekly") or "—"), "", '<span class="kd">Discord に最後に送った日時</span>'),
+    ]
+    return '<div class="kpis">' + "".join(
+        f'<div class="kpi"><span class="kl">{k}</span><span class="kv"><b>{v}</b><small>{u}</small></span>{x}</div>'
+        for k, v, u, x in tiles) + "</div>"
+
+
+def _admin_items(rows):
+    if not rows:
+        return '<p class="empty">ウォッチ項目がありません。</p>'
+    out = []
+    for r in rows:
+        sc = _sec_color(r.get("section") or "其他")
+        heat_ = r.get("heat")
+        heat_txt = (f'<b>{heat_["score"]}</b><small>{_delta_text(heat_["delta"])}</small>' if heat_ and heat_.get("delta") is not None
+                    else f'<b>{heat_["score"]}</b>' if heat_ else '<span class="na">—</span>')
+        miss = "".join(f'<i class="chip">{e(m)}</i>' for m in r.get("missing") or []) or '<span class="ok">そろっている</span>'
+        web = '<i class="chip web">設定ページから追加</i>' if r.get("web") else ""
+        stale = r.get("last_days") is None or r["last_days"] >= ADMIN_STALE_DAYS
+        out.append(
+            f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a>'
+            f'<small><i style="background:{sc}"></i>{e(_sec_name(r.get("section") or "其他"))} · {e(r.get("type") or "")}</small></td>'
+            f'<td class="sz" data-label="篇幅">{e(r.get("size") or "M")}</td>'
+            f'<td class="n" data-label="7 日">{r.get("week", 0)}</td>'
+            f'<td class="n" data-label="速報">{r.get("urgent", 0) or "—"}</td>'
+            f'<td class="last{" stale" if stale else ""}" data-label="最新">{e(_ago(r.get("last_days")))}</td>'
+            f'<td class="hz" data-label="話題度">{heat_txt}</td>'
+            f'<td class="ms">{web}{miss}</td></tr>')
+    return ('<div class="tw"><table class="adm"><thead><tr><th>作品</th><th>篇幅</th><th>7 日の記事</th><th>速報</th>'
+            '<th>最新の記事</th><th>話題度</th><th>未設定の項目</th></tr></thead><tbody>' + "".join(out) + "</tbody></table></div>")
+
+
+def _admin_votes(v):
+    if not v.get("total"):
+        return '<p class="empty">まだ投票がありません。</p>'
+    tiles = [("👍", f'{v["up"]}', "件", ""), ("👎", f'{v["down"]}', "件", ""),
+             ("この 7 日", f'{v["week"]}', "回", '<span class="kd">取り消しも含む押した回数</span>'),
+             ("最後の投票", e(v.get("last") or "—"), "", "")]
+    kp = '<div class="kpis k4">' + "".join(
+        f'<div class="kpi"><span class="kl">{k}</span><span class="kv"><b>{val}</b><small>{u}</small></span>{x}</div>'
+        for k, val, u, x in tiles) + "</div>"
+    peak = max((a + b for _, a, b in v.get("works") or []), default=1) or 1
+    works = "".join(
+        f'<li><span class="mn">{e(n)}</span><span class="vbar"><i class="vu" style="width:{a / peak * 100:.1f}%"></i>'
+        f'<i class="vd" style="width:{b / peak * 100:.1f}%"></i></span><b>{a}<small> / {b}</small></b></li>'
+        for n, a, b in v.get("works") or [])
+    recent = "".join(
+        f'<li><span class="vv {"up" if r["vote"] > 0 else "down"}">{"👍" if r["vote"] > 0 else "👎"}</span>'
+        f'<a href="{e(_safe_url(r.get("url")) or "#")}" target="_blank" rel="noopener noreferrer">{e(r.get("title") or r.get("url") or "")}</a>'
+        f'<small>{e(r.get("work") or r.get("kind") or "")} · {e(r.get("when") or "")}</small></li>'
+        for r in v.get("recent") or [])
+    return (kp + '<div class="two"><div><h3 class="h3">作品ごと <small>👍 / 👎（今の票）</small></h3>'
+            f'<ul class="vworks">{works or "<li class=empty>—</li>"}</ul></div>'
+            f'<div><h3 class="h3">最近の投票</h3><ul class="vrecent">{recent}</ul></div></div>')
+
+
+ADMIN_PAGE_CSS = """
+.h3{margin:0 0 10px;font:900 15px var(--font-sans);padding-bottom:4px;border-bottom:1.5px solid var(--ink)}
+.h3 small{font:500 var(--fs-label) var(--font-sans);opacity:.75;margin-left:6px}
+.kpis.k4{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}
+.kpis:not(.k4){grid-template-columns:repeat(5,minmax(0,1fr))}
+.kv b{font-size:30px}
+.two{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px 32px}
+table.adm{width:100%;border-collapse:collapse;font-size:13px}
+.adm th,.adm td{padding:8px 6px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:middle}
+.adm thead th{font:700 var(--fs-label) var(--font-sans);letter-spacing:.04em;border-bottom:2px solid var(--ink);white-space:nowrap}
+.adm .nm{min-width:150px}
+.adm .nm a{font:900 14px/1.35 var(--font-sans)}.adm .nm a:hover{color:var(--rose);text-decoration:underline}
+.adm .nm small{display:flex;align-items:center;gap:5px;margin-top:2px;font:500 var(--fs-label) var(--font-sans);opacity:.75}
+.adm .nm small i{display:inline-block;width:8px;height:8px;border-radius:2px;flex:none}
+.adm .sz,.adm .n{font:700 13px var(--font-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.adm .last{white-space:nowrap;font-weight:700}
+.adm .last.stale{color:var(--alert)}
+.adm .hz{white-space:nowrap}.adm .hz b{font:700 15px var(--font-mono);margin-right:6px}.adm .hz small{font:500 var(--fs-label) var(--font-mono);opacity:.8}
+.adm .ms{line-height:1.9}
+.chip{display:inline-block;margin:0 4px 0 0;padding:0 7px;border:1px solid var(--hair);font:500 var(--fs-label)/1.6 var(--font-mono);font-style:normal;white-space:nowrap}
+.chip.web{border-color:var(--rose);color:var(--rose);font-family:var(--font-sans);font-weight:700}
+.ok{font:500 12px var(--font-sans);opacity:.7}
+.vworks,.vrecent,.runs,.qlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.vworks li{display:grid;grid-template-columns:120px minmax(0,1fr) 64px;gap:10px;align-items:center;padding:5px 0;font-size:13px}
+.vbar{display:flex;height:12px;background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.vbar i{display:block;height:100%}.vbar .vu{background:var(--viz-1)}.vbar .vd{background:var(--viz-2)}
+.vworks b{font:700 13px var(--font-mono);text-align:right;white-space:nowrap}.vworks b small{font-size:var(--fs-label);opacity:.7}
+.vrecent li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:0 8px;padding:7px 0;border-bottom:1px solid var(--hair);font-size:13px;line-height:1.5}
+.vrecent a{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}.vrecent a:hover{color:var(--rose);text-decoration:underline}
+.vrecent small{grid-column:2;font-size:var(--fs-label);opacity:.75}
+.vv{grid-row:span 2}
+.runs li,.qlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--hair);font-size:13px}
+.runs b,.qlist b{font:900 14px var(--font-sans)}
+.runs small,.qlist small{grid-column:1/-1;font-size:var(--fs-label);opacity:.75}
+.runs a:hover{color:var(--rose);text-decoration:underline}
+.qlist li.ph{grid-template-columns:48px minmax(0,1fr) auto}.qlist li.ph small{grid-column:2/-1}
+.qlist img{grid-row:span 2;width:48px;height:48px;object-fit:cover;border:1px solid var(--hair)}
+.st{display:inline-block;padding:0 8px;font:700 var(--fs-label)/1.7 var(--font-sans);white-space:nowrap;border:1.5px solid currentColor}
+.st.good{color:var(--good)}.st.bad{color:var(--alert)}.st.wait{color:var(--rose)}.st.idle{opacity:.7}
+.live .empty{margin-top:4px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px}
+@media (max-width:1100px){.kpis:not(.k4){grid-template-columns:repeat(3,minmax(0,1fr))}.grid3{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){
+ .two{grid-template-columns:minmax(0,1fr)}
+ .adm thead{display:none}
+ .adm,.adm tbody{display:block}
+ .adm tr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px 6px;padding:12px 0;border-bottom:1px solid var(--hair)}
+ .adm td{border:0;padding:0}
+ .adm .nm{grid-column:1/-1;min-width:0}
+ .adm td[data-label]::before{content:attr(data-label);display:block;font:700 var(--fs-tag)/1.4 var(--font-sans);opacity:.7}
+ .adm .ms{grid-column:1/-1}
+ .kpis.k4{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .vworks li{grid-template-columns:96px minmax(0,1fr) 56px}
+}
+@media (max-width:560px){.kpis:not(.k4){grid-template-columns:repeat(2,minmax(0,1fr))}
+ .adm tr{grid-template-columns:repeat(3,minmax(0,1fr))}}
+"""
+
+ADMIN_PAGE_JS = """
+(function(){
+  var CFG=JSON.parse(document.getElementById('adm-cfg').textContent);
+  function el(tag,cls,text){var x=document.createElement(tag);if(cls)x.className=cls;if(text!=null)x.textContent=text;return x;}
+  function when(s){var d=new Date(s);if(isNaN(d))return '';var m=Math.round((Date.now()-d)/60000);
+    if(m<1)return 'たった今';if(m<60)return m+' 分前';if(m<1440)return Math.round(m/60)+' 時間前';return Math.round(m/1440)+' 日前';}
+  function badge(text,cls){return el('span','st '+cls,text);}
+  function fail(box,msg){box.textContent='';box.appendChild(el('p','empty',msg));}
+  // GitHub Actions：ワークフローごとに最新の実行
+  var runs=document.getElementById('runs');
+  fetch('https://api.github.com/repos/'+CFG.repo+'/actions/runs?per_page=60').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
+    var seen={},ul=el('ul','runs');
+    (j.workflow_runs||[]).forEach(function(w){
+      var f=(w.path||'').split('/').pop();if(!CFG.flows[f]||seen[f])return;seen[f]=1;
+      var li=el('li'),a=el('a',null,CFG.flows[f]);var http=/^https:\\/\\/github\\.com\\//.test(w.html_url||'');
+      if(http){a.href=w.html_url;a.target='_blank';a.rel='noopener noreferrer';}
+      var b=el('b');b.appendChild(a);li.appendChild(b);
+      var c=w.status!=='completed'?['実行中','wait']:w.conclusion==='success'?['成功','good']:w.conclusion==='cancelled'||w.conclusion==='skipped'?['取消','idle']:['失敗','bad'];
+      li.appendChild(badge(c[0],c[1]));li.appendChild(el('small',null,when(w.created_at)+' · '+(w.event||'')));ul.appendChild(li);
+    });
+    runs.textContent='';if(ul.children.length)runs.appendChild(ul);else fail(runs,'最近の実行がありません。');
+  }).catch(function(){fail(runs,'GitHub から読めませんでした（1 時間に 60 回までの制限かもしれません）。');});
+  if(!CFG.url||!CFG.key){['reqs','photos'].forEach(function(id){fail(document.getElementById(id),'データベースに未接続です。');});return;}
+  function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:'{}'})
+    .then(function(r){if(!r.ok)throw 0;return r.json();});}
+  var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
+  // 設定ページの依頼（ウォッチ項目の追加・修正）：待ちのものと、3 日以内に処理したもの
+  var reqs=document.getElementById('reqs');
+  rpc('list_item_requests').then(function(list){
+    reqs.textContent='';if(!list||!list.length){fail(reqs,'依頼はありません。');return;}
+    var ul=el('ul','qlist');list.forEach(function(x){var li=el('li');
+      li.appendChild(el('b',null,(x.action==='edit'?'修正：':'追加：')+x.name));var s=ST[x.status]||[x.status,'idle'];li.appendChild(badge(s[0],s[1]));
+      li.appendChild(el('small',null,when(x.created_at)+(x.note?' · '+x.note:'')));ul.appendChild(li);});
+    reqs.appendChild(ul);
+  }).catch(function(){fail(reqs,'読めませんでした。');});
+  // ウィッシュリストの写真の受付
+  var photos=document.getElementById('photos');
+  rpc('get_photo_inbox').then(function(list){
+    photos.textContent='';if(!list||!list.length){fail(photos,'写真はありません。');return;}
+    var ul=el('ul','qlist');list.slice(0,12).forEach(function(x){var li=el('li','ph');
+      if(/^data:image\\/jpeg;base64,/.test(x.thumb||'')){var im=el('img');im.src=x.thumb;im.alt='';im.loading='lazy';li.appendChild(im);}else li.appendChild(el('span'));
+      li.appendChild(el('b',null,x.wish_name||('#'+x.id+' '+(x.status||''))));var s=x.state==='done'?['追加済み','good']:(ST[x.state]||[x.state,'idle']);li.appendChild(badge(s[0],s[1]));
+      li.appendChild(el('small',null,when(x.created_at)+(x.note?' · '+x.note:'')));ul.appendChild(li);});
+    photos.appendChild(ul);
+  }).catch(function(){fail(photos,'読めませんでした。');});
+})();
+"""
+
+
+def render_admin(data, db, updated):
+    """管理ページ（docs/admin.html）。見るだけ・口令なし。
+    data = {"pipeline": {...}, "items": [行], "votes": {...}}（digest.admin_data が作る）；
+    db = {url, key}（公開の publishable key。依頼と写真の受付をページを開いたときに読む）。"""
+    cfg = json.dumps({"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
+                      "repo": (db or {}).get("repo") or "CxElegy/Wishlist", "flows": ADMIN_WORKFLOWS},
+                     ensure_ascii=False).replace("</", "<\\/")
+    return f"""<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>管理ページ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{FONTS}">
+<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}</style>
+</head>
+<body>
+<div class="page">
+<header class="mast">
+<div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信</span></div>
+<div class="tools"><div class="meta"><small>更新</small><b>{e(updated)}</b></div></div>
+</header>
+<a class="back" href="./">← ウォッチリスト通信に戻る</a>
+<p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
+見るだけで、ここから何かを変えることはできません。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
+<section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
+<section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いたときに読み込み</small></h2>
+<div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
+<div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
+<div><h3 class="h3">写真の受付</h3><div id="photos"><p class="empty">読み込み中…</p></div></div></div></section>
+<section class="panel" id="items"><h2 class="sh"><span>ウォッチ項目</span><small>赤い「最新の記事」= {ADMIN_STALE_DAYS} 日以上 新しい記事なし</small></h2>{_admin_items(data.get("items") or [])}</section>
+<section class="panel" id="votes"><h2 class="sh"><span>投票</span><small>👍 / 👎 · 前回の収集時点</small></h2>{_admin_votes(data.get("votes") or {})}</section>
+</div>
+<script type="application/json" id="adm-cfg">{cfg}</script>
+<script>{ADMIN_PAGE_JS}</script>
 </body>
 </html>
 """
