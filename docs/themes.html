@@ -555,11 +555,10 @@ button{font-family:inherit}
 .emb-in{height:100%;width:max-content;transition:transform .6s cubic-bezier(.2,1.5,.4,1),opacity .2s,--sx .35s ease-out .45s,--sy .35s ease-out .45s;
  filter:drop-shadow(2.5px 0 0 var(--card)) drop-shadow(-2.5px 0 0 var(--card)) drop-shadow(0 2.5px 0 var(--card)) drop-shadow(0 -2.5px 0 var(--card))
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
-  drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
-.emb img{display:block;height:100%;width:auto;max-width:220px;object-fit:contain}
-/* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
-.emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
-.emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45);--sx:0px;--sy:0px}
+  drop-shadow(var(--sx) var(--sy) 0 var(--ink))}
+.emb img.badge{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid var(--card)}  /* 縦長の写真は顔が上にあることが多い：上寄りで丸く切る */
+.emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45)}
+.emb-js .emb:not(.in) img{--sx:0px;--sy:0px}
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:210px}
@@ -898,7 +897,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.16 19:39</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.16 19:40</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
