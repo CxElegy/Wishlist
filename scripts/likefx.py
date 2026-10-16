@@ -2,6 +2,8 @@
 
 一つの演出 = 大きな 👍 の動き（MOTION）＋ 飛び散るもの（形 × 動き × 数）＋ 文字（任意）。
 押した瞬間に再生し（保存は裏）、prefers-reduced-motion のときは大きな演出をしない。
+粒（紙吹雪・星・ハート・花びら・音符・水玉・ドット）は自作せず canvas-confetti（CONFETTI_JS）に任せる。
+擬音（ドン！など）は漫画の作法：極太書体 Dela Gothic One・白と黒の二重フチ・ウニフラ（トゲの吹き出し）・一文字ずつ叩きつけ・画面の揺れ。
 新しい演出を足すとき：FX_JS の FX に一行足し、必要なら形（.fx-○○）か動き（MOVES）を足して、下の FX にも名前を書く。
 見本：docs/themes.html。
 """
@@ -30,6 +32,12 @@ FX = {
     "stamp":     ("スタンプ", "「いいね」の判子を押す"),
 }
 
+# 擬音の書体（使う文字だけ読み込む）と粒のライブラリ。どちらも演出のあるページだけで読む
+SFX_TEXT = "ドン！イイネナス+1いね"
+SFX_FONT = ("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap&text="
+            + "".join(f"%{b:02X}" for b in SFX_TEXT.encode("utf-8")))
+CONFETTI_JS = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
+
 FX_CSS = """
 .boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
 .boom>svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
@@ -53,10 +61,18 @@ FX_CSS = """
 .fx-note,.fx-heart{font:900 28px/1 var(--font-sans);color:var(--c);text-shadow:2px 2px 0 var(--ink)}
 .fx-emb{width:38px;height:38px;filter:drop-shadow(2px 2px 0 var(--ink))}
 .fx-emb svg{width:100%;height:100%;display:block}
-.fx-txt{position:absolute;left:0;top:-150px;white-space:nowrap;font:900 34px/1 var(--font-sans);letter-spacing:.04em;color:var(--c);
- -webkit-text-stroke:1.5px var(--ink);text-shadow:4px 4px 0 var(--ink);opacity:0}
-.fx-txt.stamp{top:-96px;padding:4px 14px;border:5px solid var(--alert);color:var(--alert);background:color-mix(in srgb,var(--card) 85%,transparent);
- -webkit-text-stroke:0;text-shadow:none;font-family:var(--font-serif);border-radius:6px}
+/* 擬音：ウニフラ（トゲの吹き出し、白＋墨のフチ＋色の影）の上に、一文字ずつ叩きつける極太の文字 */
+.fx-sfx{position:absolute;left:0;top:-160px;width:0;height:0}
+.fx-sfx svg{position:absolute;left:-95px;top:-62px;width:190px;height:124px;overflow:visible;opacity:0}
+.fx-sfx .burst{fill:var(--card);stroke:var(--ink);stroke-width:5;stroke-linejoin:round}
+.fx-sfx .burst2{fill:var(--c);stroke:var(--ink);stroke-width:5;stroke-linejoin:round}
+.fx-sfx span{position:absolute;left:0;top:0;display:flex;transform:translate(-50%,-50%) rotate(-9deg);white-space:nowrap}
+.fx-sfx i{display:block;font:400 48px/1 "Dela Gothic One",var(--font-sans);font-style:normal;color:var(--c);letter-spacing:-.02em;
+ -webkit-text-stroke:9px var(--ink);paint-order:stroke fill;text-shadow:5px 6px 0 var(--ink);opacity:0}
+.fx-sfx.game span{transform:translate(-50%,-50%)}
+.fx-sfx.game i{color:var(--gold);font-size:44px}
+.fx-sfx.stamp span{padding:6px 16px 4px;border:5px double var(--alert);border-radius:8px;background:color-mix(in srgb,var(--card) 88%,transparent);transform:translate(-50%,-50%) rotate(-12deg)}
+.fx-sfx.stamp i{color:var(--alert);-webkit-text-stroke:0;text-shadow:none;font-size:38px;letter-spacing:.08em;opacity:1}
 """
 
 # __THUMB__（👍 の SVG）を差し込んでから使う。window.likeFx(ボタン, 票, 演出 id, 作品の小元素 SVG〔なければ省略〕)
@@ -150,6 +166,21 @@ window.likeFx = (() => {
     stamp: ['stamp', [], 'いいね'],
   };
   const TEXT = { note: ['♪', '♫'], heart: ['♥'] };
+  // 粒は canvas-confetti に任せる（https://github.com/catdad/canvas-confetti の公式サンプルの設定を元に、色だけ版面に合わせる）
+  const hex = (() => { const cx = document.createElement('canvas').getContext('2d'); return c => { cx.fillStyle = '#000'; cx.fillStyle = c; return cx.fillStyle; }; })();
+  const tok = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const CONFETTI = {
+    confetti: (o, cs) => confetti({ ...o, particleCount: 90, spread: 75, startVelocity: 38, colors: cs }),
+    stars: (o, cs) => [0, 120].forEach(d => setTimeout(() => confetti({ ...o, shapes: ['star'], colors: cs, spread: 360, ticks: 60, gravity: 0, decay: .94, startVelocity: 26, particleCount: 26, scalar: 1.2 }), d)),
+    sparkle: (o, cs) => confetti({ ...o, shapes: ['star'], colors: cs, spread: 360, ticks: 50, gravity: 0, decay: .92, startVelocity: 18, particleCount: 30, scalar: .8 }),
+    dots: (o, cs) => confetti({ ...o, shapes: ['circle'], colors: cs, spread: 100, particleCount: 50, startVelocity: 30, scalar: 1.1 }),
+    pixel: (o, cs) => confetti({ ...o, shapes: ['square'], colors: cs, spread: 90, particleCount: 50, startVelocity: 34, flat: true }),
+    hearts: (o, cs) => confetti({ ...o, shapes: [confetti.shapeFromText({ text: '❤️', scalar: 2 })], scalar: 2, spread: 80, particleCount: 18, startVelocity: 26, gravity: .6, ticks: 90 }),
+    petals: (o, cs) => confetti({ ...o, shapes: [confetti.shapeFromText({ text: '🌸', scalar: 2 })], scalar: 2, spread: 120, particleCount: 22, startVelocity: 22, gravity: .35, drift: .6, ticks: 160 }),
+    notes: (o, cs) => confetti({ ...o, shapes: ['♪', '♫'].map(t => confetti.shapeFromText({ text: t, scalar: 2, color: cs[0] })), scalar: 2, spread: 70, particleCount: 16, startVelocity: 24, gravity: -.15, ticks: 110 }),
+  };
+  const burstPath = (n, r1, r2) => { let d = ''; for (let i = 0; i < n * 2; i++) { const a = i / (n * 2) * 6.283, r = (i % 2 ? r2 * R(.85, 1.1) : r1 * R(.9, 1.12));
+    d += (i ? 'L' : 'M') + (95 + Math.cos(a) * r * 1.45).toFixed(1) + ' ' + (62 + Math.sin(a) * r).toFixed(1); } return d + 'Z'; };
   const PAPER = ['var(--c)', 'var(--gold)', 'var(--rose)', 'var(--card)'];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const play = (btn, v, name, emblem) => {
@@ -168,7 +199,14 @@ window.likeFx = (() => {
     if (up) {
       const [mname, parts, text] = fx, [mdur, mkf] = MOTION[mname] || MOTION.pop;
       go(el.firstChild, mkf, mdur, 0);
-      const layer = el.querySelector('b'), all = parts.slice();
+      const layer = el.querySelector('b');
+      const viaLib = window.confetti && CONFETTI[name];
+      if (viaLib) {
+        const c = hex(getComputedStyle(btn).getPropertyValue('--vc').trim() || tok('--rose'));
+        CONFETTI[name]({ origin: { x: (r.left + r.width / 2) / innerWidth, y: (r.top - 70) / innerHeight }, zIndex: 70, disableForReducedMotion: true },
+          [c, hex(tok('--gold')), hex(tok('--rose')), hex(tok('--card'))]);
+      }
+      const all = viaLib ? [] : parts.slice();
       if (emblem) all.push(['emb', 3, 'rise']);   // 作品の小元素も一緒に飛ぶ
       all.forEach(([shape, n, move]) => { for (let i = 0; i < n; i++) {
         const p = document.createElement('i');
@@ -181,13 +219,40 @@ window.likeFx = (() => {
         const [kf, dur, delay] = MOVES[move](i, n);
         go(p, kf, dur, delay);
       } });
-      if (text) {
-        const t = document.createElement('i');
-        t.className = 'fx-txt' + (name === 'stamp' ? ' stamp' : '');
-        t.textContent = text;
+      if (text) {   // 擬音：ウニフラ → 一文字ずつ叩きつけ → 揺れ → ぱっと消える
+        const kind = name === 'stamp' ? 'stamp' : name === 'combo' ? 'game' : 'manga';
+        const t = document.createElement('div');
+        t.className = 'fx-sfx ' + kind;
+        if (kind === 'manga') {   // 吹き出しの幅は文字数に合わせる
+          const bw = 80 + [...text].length * 46, bh = 132;
+          t.innerHTML = '<svg viewBox="0 0 190 124" preserveAspectRatio="none" style="width:' + bw + 'px;height:' + bh + 'px;left:' + (-bw / 2) + 'px;top:' + (-bh / 2) + 'px">'
+            + '<path class="burst2" d="' + burstPath(16, 52, 36) + '" transform="translate(6 6)"/><path class="burst" d="' + burstPath(16, 52, 36) + '"/></svg>';
+        }
+        const line = document.createElement('span');
+        [...text].forEach(ch => { const i = document.createElement('i'); i.textContent = ch; line.appendChild(i); });
+        t.appendChild(line);
         el.appendChild(t);
-        go(t, [{ transform: C + 'scale(0) rotate(-24deg)', opacity: 0, easing: UP }, { transform: C + 'scale(1.15) rotate(-8deg)', opacity: 1, offset: .25 },
-          { transform: C + 'scale(1) rotate(-8deg)', opacity: 1, offset: .7 }, { transform: C + 'scale(.6) rotate(-8deg)', opacity: 0 }], mdur, 60);
+        const svg = t.querySelector('svg');
+        if (svg) go(svg, [{ transform: 'scale(.2) rotate(-25deg)', opacity: 0, easing: 'cubic-bezier(.2,1.6,.4,1)' }, { transform: 'scale(1.08) rotate(3deg)', opacity: 1, offset: .2 },
+          { transform: 'scale(1) rotate(0deg)', opacity: 1, offset: .32 }, { transform: 'scale(1) rotate(0deg)', opacity: 1, offset: .78 }, { transform: 'scale(1.25)', opacity: 0 }], mdur + 120, 40);
+        if (kind === 'game') {
+          go(line, [{ transform: 'translate(-50%,-10%) scale(.6)', opacity: 0, easing: 'cubic-bezier(.2,1.5,.4,1)' }, { transform: 'translate(-50%,-50%) scale(1.15)', opacity: 1, offset: .25 },
+            { transform: 'translate(-50%,-90%) scale(1)', opacity: 1, offset: .75 }, { transform: 'translate(-50%,-130%) scale(1)', opacity: 0 }], mdur + 200, 60);
+          line.querySelectorAll('i').forEach(i => { i.style.opacity = 1; });
+        } else if (kind === 'stamp') {
+          go(line, [{ transform: 'translate(-50%,-50%) rotate(-24deg) scale(2.4)', opacity: 0, easing: 'cubic-bezier(.5,0,.8,.4)' }, { transform: 'translate(-50%,-50%) rotate(-12deg) scale(.94)', opacity: 1, offset: .16 },
+            { transform: 'translate(-50%,-50%) rotate(-12deg) scale(1)', opacity: 1, offset: .24 }, { transform: 'translate(-50%,-50%) rotate(-12deg) scale(1)', opacity: 1, offset: .8 },
+            { transform: 'translate(-50%,-50%) rotate(-12deg) scale(1.05)', opacity: 0 }], mdur + 200, 0);
+        } else {
+          line.querySelectorAll('i').forEach((i, n) => go(i, [{ transform: `scale(2.8) rotate(${R(-30, 30).toFixed(0)}deg)`, opacity: 0, easing: 'cubic-bezier(.5,0,.75,0)' },
+            { transform: `scale(.88) rotate(${R(-6, 6).toFixed(0)}deg)`, opacity: 1, offset: .14, easing: 'cubic-bezier(.3,1.6,.5,1)' },
+            { transform: 'scale(1) rotate(0deg)', opacity: 1, offset: .22 }, { transform: 'scale(1) rotate(0deg)', opacity: 1, offset: .78 },
+            { transform: 'scale(1.2) rotate(0deg)', opacity: 0 }], mdur + 160, 90 + n * 70));
+        }
+        // 叩きつけた瞬間に、押したカード（なければ版面）が揺れる
+        const hit = btn.closest('.card,.top,.wc,.pk,li') || btn.closest('section');
+        if (hit && kind !== 'game') setTimeout(() => hit.animate([{ translate: '0 0' }, { translate: '-5px 3px' }, { translate: '4px -3px' }, { translate: '-3px 1px' }, { translate: '0 0' }],
+          { duration: 240, easing: 'linear' }), kind === 'stamp' ? 140 : 150);
       }
     } else {
       go(el.firstChild, [{ transform: 'translate(-50%,-50%) scale(.3,-.3)', opacity: 0, easing: 'ease-out' },

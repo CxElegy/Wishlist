@@ -1291,6 +1291,9 @@ VOTE_JS = """
 VOTE_JS = (VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
            .replace("__THUMB__", json.dumps(_THUMB)))
 LIKEFX_JS = likefx.FX_JS.replace("__THUMB__", json.dumps(_THUMB))
+# 擬音の書体（使う文字だけ）と粒のライブラリ canvas-confetti（読めなくても演出は自作の粒で動く）
+LIKEFX_HEAD = (f'<link rel="stylesheet" href="{e(likefx.SFX_FONT)}">'
+               f'<script src="{likefx.CONFETTI_JS}" defer crossorigin="anonymous"></script>')
 
 
 def _wish_link(wishes, cls):
@@ -2279,6 +2282,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
+{LIKEFX_HEAD if fb else ""}
 </head>
 <body>
 <div class="page">
@@ -2822,6 +2826,7 @@ def render_themes(items, updated):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}{THEMES_PAGE_CSS}</style>
+{LIKEFX_HEAD}
 </head>
 <body>
 <div class="page">
