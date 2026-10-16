@@ -370,29 +370,34 @@ button{font-family:inherit}
 .pk .taste{font-size:11px;opacity:.7}
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
-.vote{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.pk:not(.big) .vote button span{display:none}
-.vote button{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);
- box-shadow:3px 3px 0 var(--ink);font:700 13px var(--font-sans);cursor:pointer;border-radius:0;white-space:nowrap;transition:transform .1s,box-shadow .1s}
-.vote button:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
-.vote button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#FFF}
-.vote button:disabled{opacity:.5;cursor:wait}
+.vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
 .vote small{font-size:11px;opacity:.7}
 .pk.down>a{opacity:.35;filter:grayscale(1)}
 .card,.top,.wc{position:relative}
-/* 消息卡片的 👍/👎：和「気になるかも？」一样放在正文下面一行，不再浮在标题上 */
-.vt{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:auto;padding-top:4px;align-self:flex-start}
-.vt button{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:3px 10px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);
- box-shadow:2px 2px 0 var(--ink);font:700 12px/1.3 var(--font-sans);cursor:pointer;border-radius:0;transition:transform .12s,box-shadow .12s}
-.vt button:hover{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
-.vt button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#FFF}
-.vt button:disabled{opacity:.5;cursor:wait}
+/* 👍/👎 = 平行四辺形の二連スタンプ（.tg と同じ傾き）。地の色の上に線だけで載せ、押すと作品のアクセント色で塗る */
+.vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;flex:none;align-self:flex-start}
+.vt{position:relative;z-index:2;margin-top:auto;padding-top:2px}
+.card.a .vt{--vt:var(--abg);--vf:var(--afg)}
+.wc .vt{--vc:var(--sc,var(--ink));--vt:#FFF;--vf:var(--ink)}
+.top .vt{--vc:var(--deep,var(--ink));--vt:var(--card);--vf:var(--ink)}
+.picks .vote>span{--vc:var(--rose);--vt:#FFF;--vf:var(--ink)}
+.vt button,.vote button{display:inline-flex;align-items:center;min-height:30px;padding:0 11px;border:1.5px solid color-mix(in srgb,currentColor 50%,transparent);
+ background:transparent;color:inherit;font:900 11px/1 var(--font-sans);letter-spacing:.08em;cursor:pointer;border-radius:0;
+ transform:skewX(var(--skew));transition:background .12s,border-color .12s,box-shadow .12s,transform .12s}
+.vt button+button,.vote button+button{margin-left:-1.5px}
+.vt button>i,.vote button>i{display:inline-flex;align-items:center;gap:5px;font-style:normal;transform:skewX(8deg)}
+.vt svg,.vote svg{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vt button:hover,.vote button:hover{background:color-mix(in srgb,currentColor 12%,transparent);border-color:currentColor;position:relative}
+.vt button[aria-pressed=true],.vote button[aria-pressed=true]{position:relative;z-index:1;background:var(--vc);border-color:var(--vc);color:var(--vt);box-shadow:3px 3px 0 var(--ink)}
+.vt button[data-vote="-1"][aria-pressed=true],.vote button[data-vote="-1"][aria-pressed=true]{background:var(--vf);border-color:var(--vf);color:var(--vt)}  /* 踩 = 文字色で塗る（アクセント色は「好き」だけ） */
+.vt button:disabled,.vote button:disabled{opacity:.5;cursor:wait}
+.vt button:focus-visible,.vote button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .mini .vt{grid-column:2;margin-top:0;align-self:start}
 .card.mini:has(>.vt){grid-template-rows:auto auto 1fr}.mini:has(>.vt) .pic{grid-row:span 3}  /* 按钮紧跟标题，不空一大块 */
-.card.c3 .vt span,.card.c4 .vt span,.mini .vt span,.wc:not(.lead) .vt span,.brief .vt span,.older .vt span{display:none}
-.brief li .vt{margin:0 0 0 auto;padding:0;flex:none;align-self:center}
-.brief li .vt button{min-height:30px;padding:2px 8px}
-.downv{opacity:.4;filter:grayscale(.8)}
+.card.c3 .vt button span,.card.c4 .vt button span,.mini .vt button span,.wc:not(.lead) .vt button span,.brief .vt button span,.older .vt button span,.pk:not(.big) .vote button span{display:none}
+.brief li .vt{margin:0 0 0 auto;padding:0;align-self:center}
+.brief li .vt button{min-height:26px;padding:0 8px}
+.downv>:not(.vt,.txt,.ptxt),.downv>:is(.txt,.ptxt)>:not(.vt){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
  font:900 13px var(--font-sans);letter-spacing:.06em;cursor:pointer;border-radius:0;white-space:nowrap}
@@ -401,9 +406,8 @@ button{font-family:inherit}
 .pknav{margin-left:auto;display:flex;gap:10px;white-space:nowrap}
 .shuffle.back{background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .shuffle[disabled]{opacity:.35;cursor:default;pointer-events:none}
-@media (hover:none){.vt button{min-height:36px;padding:4px 12px;font-size:14px}}  /* 指で押せる大きさ */
-.vote button:active,.shuffle:active,.vt button:active,.mastwish:active{transform:translate(3px,3px);box-shadow:none}  /* 押した感触：影の分だけ沈む */
-.pk .vote button{min-height:36px}
+@media (hover:none){.vt button,.vote button{min-height:36px;padding:0 13px}.brief li .vt button{min-height:32px}}  /* 指で押せる大きさ */
+.shuffle:active,.mastwish:active{transform:translate(3px,3px);box-shadow:none}  /* 押した感触：影の分だけ沈む */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
  .mgrid{grid-template-columns:minmax(0,1fr)}.mgrid>.wall{align-content:start}.fside>:last-child{flex:none}.fside{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
@@ -449,7 +453,7 @@ button{font-family:inherit}
 }
 /* いちばん小さいスマホ（320px）：報頭が横にはみ出さないように詰める */
 @media (max-width:380px){.mast h1{font-size:21px;padding:7px 10px 5px;letter-spacing:0}.mastwish,.mastset{padding:6px 8px}.mast .meta small{display:none}}
-@media (prefers-reduced-motion:reduce){.wc,.tape,.frame,.vote button,.mastwish{transition:none}}
+@media (prefers-reduced-motion:reduce){.wc,.tape,.frame,.vote button,.vt button,.mastwish{transition:none}}
 /* ---------- 左侧目录（共用骨架；风格见 NAV_STYLES） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
@@ -1034,8 +1038,7 @@ def _picks(picks, works, feedback=None):
         if feedback:  # 投票要写进的数据：网页把它原样发给数据库
             data = {k: x.get(k) for k in ("url", "kind", "title", "work", "because", "hits", "words")}
             vote = (f'<div class="vote" data-v="{e(json.dumps(data, ensure_ascii=False))}">'
-                    f'<button type="button" data-vote="1" aria-pressed="false" title="この種類を増やす">👍<span> 好き</span></button>'
-                    f'<button type="button" data-vote="-1" aria-pressed="false" title="この種類を減らす">👎<span> 興味なし</span></button>'
+                    + f'<span>{_vote_buttons()}</span>'
                     + f'<small></small></div>')
         return (
             f'<div class="pk{" big" if big else ""}" data-u="{e(x["url"])}" data-s="{x.get("score") or 4}" '
@@ -1151,6 +1154,19 @@ SHUFFLE_JS = """
 # 「我会喜欢？」的卡片下面有带文字的按钮（数据在 data-v 里）；其余所有消息卡片由脚本在右上角加上小按钮，
 # 作品名取所在版面的 data-k，标题取卡片里的标题。同一条消息在几处出现时，按钮状态一起变。
 # 本机记住投过什么，刷新后按钮状态还在；学习在下次出刊时进行（每 2 小时）
+_THUMB = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56'
+          'l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>')
+_THUMB_DOWN = _THUMB.replace('<svg ', '<svg style="transform:scaleY(-1)" ', 1)  # 同じ形を上下反転
+
+
+def _vote_buttons():
+    """👍/👎 两个按钮（「気になるかも？」和各消息卡片共用同一套外观）。"""
+    return ('<button type="button" data-vote="1" aria-pressed="false" aria-label="好き" title="好き：この種類を増やす">'
+            f'<i>{_THUMB}<span>好き</span></i></button>'
+            '<button type="button" data-vote="-1" aria-pressed="false" aria-label="興味なし" title="興味なし：この種類を減らす">'
+            f'<i>{_THUMB_DOWN}<span>興味なし</span></i></button>')
+
+
 VOTE_JS = """
 (() => {
   const cfg = %s, KEY = 'wishlist-votes';
@@ -1194,8 +1210,7 @@ VOTE_JS = """
   const small = () => {
     const s = document.createElement('span');
     s.className = 'vt';
-    s.innerHTML = '<button type="button" data-vote="1" aria-pressed="false" title="好き：この種類を増やす">👍<span>好き</span></button>'
-      + '<button type="button" data-vote="-1" aria-pressed="false" title="興味なし：この種類を減らす">👎<span>興味なし</span></button>';
+    s.innerHTML = __BTNS__;
     return s;
   };
   const story = (link, holder, dim) => {
@@ -1212,6 +1227,7 @@ VOTE_JS = """
   new Set(boxes.map(b => b[1].url)).forEach(paint);
 })();
 """
+VOTE_JS = VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=False))
 
 
 def _wish_link(wishes, cls):
