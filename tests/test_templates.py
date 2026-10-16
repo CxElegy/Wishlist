@@ -86,3 +86,13 @@ if __name__ == "__main__":
         self.assertIn("window.likeFx", render.LIKEFX_JS)
         self.assertNotIn("__THUMB__", render.LIKEFX_JS)
 
+    def test_like_fx_uses_libraries(self):
+        # 粒は canvas-confetti、擬音は Dela Gothic One（使う文字だけ読む）。どちらも演出のあるページの <head> に入る
+        import likefx
+        self.assertIn("canvas-confetti@", likefx.CONFETTI_JS)
+        self.assertIn("family=Dela+Gothic+One", likefx.SFX_FONT)
+        for ch in "ドン！イイネナス+1いね":
+            self.assertIn("".join(f"%{b:02X}" for b in ch.encode()), likefx.SFX_FONT)
+        self.assertIn(likefx.CONFETTI_JS, render.LIKEFX_HEAD)
+        self.assertIn("burstPath", likefx.FX_JS)
+
