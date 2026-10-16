@@ -29,7 +29,7 @@
 
 - 回复里只要提到网页、PR、设置页，就把可以直接点开的链接贴上：
   简报 https://cxelegy.github.io/Wishlist/ 、设置页 https://cxelegy.github.io/Wishlist/settings.html 、
-  愿望清单 https://cxelegy.github.io/Wishlist/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/heat.html 、PR 用完整网址。
+  愿望清单 https://cxelegy.github.io/Wishlist/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/themes.html 、PR 用完整网址。
 - 合并 PR 后网页大约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；
   确认网页已经更新了再告诉我，并附上链接。收集新闻、发通知仍由「关注清单通信」慢慢跑。
 
@@ -60,10 +60,12 @@
   标签是平行四辺形（`.tg`，`--skew`）。正文、列表、作品版面不倾斜。トップ是「每天刷新的海报」：底色由当天头条的配图取色
   （`_poster_colors`，缓存在 `state/themes.json` 的 `hero|图片URL`）；「ほかの注目ニュース」= 照片墙 + 各板块的「棚」（不放纯文字列表；手机上棚竖着叠、每个板块最多 3 个作品，不横向滚动）；
   「気になるかも？」是店长 POP 卡。图片规则：比例接近框的铺满，不接近的放在模糊底上完整显示（`FIT_JS`），所以任何配图都能放进同一个模板。
-- **版面模版（motif）**：`items.yaml` 里给作品写 `motif:`，模版在 `templates/`（`index.yaml` 一览 + 每个模版一份 `<id>.css`，只用作品自己的配色变量）。
-  现在有 `retro` 平成动画的星 / `manga` 网点和斜分格 / `pop` 水玉 / `film` 胶片孔 / `street` 斜体和警示条纹。
-  **每个新关注项都设计一个模版，相似的合并成一个**：设置页加进来的关注项，由「AI 编辑」按 `TEMPLATES.md` 设计（工作流在加进来后叫它）；
-  设计好之前先按 `type` 借用 `index.yaml` 里 `defaults` 对得上的模版。手写的关注项不写 `motif` 就是普通版面。
+- **版面主题（motif）**：`items.yaml` 里给作品写 `motif:`，主题在 `templates/`（`index.yaml` 一览 + 每套一份 `<id>.css`，只用作品自己的配色变量）。
+  现在有 **30 套**（背景花纹、题字形状、照片边框、标题旁装饰字），每套带一个 **👍 演出**（`fx`，`scripts/likefx.py` 的 20 种：大拇指的动作 + 飞散的形状 + 文字）。
+  一览和试玩：テーマ見本 https://cxelegy.github.io/Wishlist/themes.html （`render.render_themes`）。
+  **每个新关注项加进来时都要设计主题**：先从库里挑，挑不到就新做一套（`TEMPLATES.md`），相似的合并；
+  设置页加进来的由「AI 编辑」设计（工作流在加进来后叫它）；设计好之前先按 `type` 借用 `index.yaml` 里 `defaults` 对得上的主题。
+  点 👍 的演出按版面（`data-fx`）选：同一套主题的版面演出一样。新演出：在 `likefx.py` 的 `FX_JS` 和 `FX` 各加一行。
 - **話題度（热度指数）**：`scripts/heat.py` 用 6 个维度算 0〜100（報道量・広がり・出来事・勢い・一般の関心〔维基浏览量〕・ファンの反応），
   每维 = 60% 跟自己平常比 + 40% 同一把尺子；拿不到的维度不算 0 分而是从分母去掉。外部数据随收集存进 `state/heat_signals.json`，
   分数在生成网页时算（不联网）。网页：各版面标题栏的数字（点开看内訳）+ トップ右列「話題度ランキング」，

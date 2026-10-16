@@ -1,0 +1,4 @@
+/* 版面模版「paw」：猫咪：肉球脚印、圆角题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-paw{background-image:radial-gradient(ellipse 9px 8px at 30px 34px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent),radial-gradient(circle 3.6px at 20px 22px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent),radial-gradient(circle 3.6px at 28px 17px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent),radial-gradient(circle 3.6px at 37px 18px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent),radial-gradient(circle 3.6px at 43px 25px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent);background-size:110px 96px}
+.m-paw .band .title{border-radius:20px 20px 20px 4px;transform:rotate(-1.5deg)}
+.m-paw .card .pic{border-radius:16px}

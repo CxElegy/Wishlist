@@ -1,0 +1,5 @@
+/* 版面模版「concert」：演唱会：舞台光束、人群剪影点、双线题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-concert{background-image:conic-gradient(from 168deg at 28% -8%,transparent 0 6deg,color-mix(in srgb,var(--acc) 14%,transparent) 6deg 18deg,transparent 18deg),conic-gradient(from 170deg at 72% -8%,transparent 0 4deg,color-mix(in srgb,var(--aacc) 14%,transparent) 4deg 16deg,transparent 16deg),radial-gradient(circle at 50% 100%,color-mix(in srgb,var(--fg) 10%,transparent) 0 7px,transparent 8px);background-size:auto,auto,22px 14px;background-repeat:no-repeat,no-repeat,repeat-x;background-position:0 0,0 0,0 100%}
+.m-concert .band .title{transform:rotate(-1deg);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--acc),6px 6px 0 5px var(--acc)}
+.m-concert .deco{right:30%;top:0;font:400 38px/1 var(--font-sans);color:var(--acc);opacity:.6}
+.m-concert .deco.d2{right:25%;top:24px;font-size:26px;color:var(--aacc)}

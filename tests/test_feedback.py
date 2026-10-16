@@ -104,7 +104,7 @@ class VoteButtons(unittest.TestCase):
         self.assertIn('<a class="lk" href="https://ex.com/a" target="_blank" rel="noopener" aria-label="标题"></a>', out)
         self.assertIn(":is(.card,.top,.wc) :is(.vt,.vt *){pointer-events:auto}", render.CSS)
         # 押した瞬間に画面を変え、保存は裏で（失敗したら戻す）；大きな 👍 のアニメーション
-        self.assertIn("paint(url); boom(btn, v);", render.VOTE_JS)
+        self.assertIn("paint(url); window.likeFx(btn, v, fxOf(btn));", render.VOTE_JS)
         self.assertNotIn("%s", render.VOTE_JS)
 
     def test_votes_loaded_from_database(self):

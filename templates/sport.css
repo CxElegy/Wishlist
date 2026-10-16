@@ -1,0 +1,5 @@
+/* 版面模版「sport」：运动：斜向速度带、跑道线、斜体题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-sport{background-image:repeating-linear-gradient(-62deg,color-mix(in srgb,var(--fg) 5%,transparent) 0 34px,transparent 34px 68px),repeating-linear-gradient(0deg,transparent 0 46px,color-mix(in srgb,var(--acc) 12%,transparent) 46px 48px)}
+.m-sport .band .title{font-style:italic;text-transform:uppercase;transform:skewX(-14deg);box-shadow:6px 6px 0 var(--acc)}
+.m-sport .deco{right:28%;top:6px;font:900 34px/1 var(--font-sans);color:var(--acc);opacity:.5;font-style:italic}
+.m-sport .card .pic{clip-path:polygon(4% 0,100% 0,96% 100%,0 100%)}

@@ -151,7 +151,7 @@ items.yaml
 新增的追加到末尾、开始收集（往前补抓 `first_lookback_days` 天），Discord 收到「新增关注项」通知；修改的只改提交了的字段，别的字段和注释不动。
 没处理的（名字重复、规则写错）在设置页上写明原因。想更精细（`status`、配色、背景说明）跟 Claude 说「完善关注项」。
 
-**版面模版**：每个新关注项都由「AI 编辑」按 [`TEMPLATES.md`](TEMPLATES.md) 设计一套版面模版（底纹、题字形状、照片边框），和已有的相似就合并；模版库在 [`templates/`](templates/)（`index.yaml` 一览 + 每个模版一份 CSS，只用作品自己的配色）。设计好之前先按类型借用相近的模版。
+**版面主题**：每个新关注项都由「AI 编辑」按 [`TEMPLATES.md`](TEMPLATES.md) 设计版面主题（背景花纹、题字形状、照片边框、点 👍 的演出），先从库里的 30 套挑，挑不到就新做，相似的合并；主题库在 [`templates/`](templates/)（`index.yaml` 一览 + 每套一份 CSS，只用作品自己的配色），👍 演出 20 种在 [`scripts/likefx.py`](scripts/likefx.py)。一览和试玩：[テーマ見本](https://cxelegy.github.io/Wishlist/themes.html)。设计好之前先按类型借用相近的主题。
 
 **手动加**：编辑 [`items.yaml`](items.yaml)，文件开头有每个字段的说明。最重要的几个：
 

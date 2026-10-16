@@ -1,0 +1,5 @@
+/* 版面模版「cafe」：咖啡店：杯印圆环、拍立得照片、贴纸题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-cafe{background-image:radial-gradient(circle at 18% 26%,transparent 36px,color-mix(in srgb,var(--acc) 16%,transparent) 37px 40px,transparent 41px),radial-gradient(circle at 82% 72%,transparent 28px,color-mix(in srgb,var(--acc) 12%,transparent) 29px 31px,transparent 32px),repeating-linear-gradient(0deg,color-mix(in srgb,var(--fg) 3%,transparent) 0 2px,transparent 2px 5px);background-size:420px 320px,380px 300px,auto}
+.m-cafe .band .title{border-radius:10px;transform:rotate(-2deg);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--acc)}
+.m-cafe .deco{right:30%;top:-4px;font:700 40px/1 var(--font-serif);color:var(--acc);opacity:.4}
+.m-cafe .card .pic{border:6px solid color-mix(in srgb,var(--bg) 40%,#FFF);border-bottom-width:16px;box-shadow:3px 3px 0 color-mix(in srgb,var(--fg) 25%,transparent)}

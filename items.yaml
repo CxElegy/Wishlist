@@ -73,7 +73,7 @@ settings:
 
 items:
   - name: Astrae Oratio
-    motif: retro          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: retro          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: アストラエ・オラティオ
     size: L
     type: game
@@ -118,7 +118,7 @@ items:
       font: serif
 
   - name: BLEACH Mirrors High
-    motif: manga          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: ink          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: 死神 新作手游
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -157,7 +157,7 @@ items:
       font: serif
 
   - name: GTA 6
-    motif: street          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: neon          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: Grand Theft Auto VI · 侠盗猎车手 6
     type: game
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -208,6 +208,7 @@ items:
     wiki: ["en:Grand Theft Auto VI", "ja:グランド・セフト・オートVI"]
 
   - name: MMORPG 新作
+    motif: rune          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: 近期上线 · 测试 · 新公布的网游
     type: category
     section: 游戏
@@ -253,6 +254,7 @@ items:
       font: serif
 
   - name: 滑雪
+    motif: snow          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: 日本雪场 · 雪板装备 · 2026-27
     size: L
     type: category
@@ -306,7 +308,7 @@ items:
       font: sans
 
   - name: 漫威电影
-    motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: Marvel Studios · MCU
     type: show
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -361,7 +363,7 @@ items:
     wiki: ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]
 
   - name: FROM
-    motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: noir          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: 美剧 · MGM+ 恐怖悬疑
     size: S
     type: show
@@ -409,7 +411,7 @@ items:
     wiki: ["en:From (TV series)"]
 
   - name: 哈利波特剧集
-    motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: magic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: HBO「Harry Potter」· ドラマ版ハリー・ポッター
     size: M
     type: show
@@ -470,7 +472,7 @@ items:
     wiki: ["en:Harry Potter (TV series)"]
 
   - name: ILLIT
-    motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: アイリット · 日本公演特别关注
     size: L
     type: event
@@ -520,6 +522,7 @@ items:
     wiki: ["en:Illit", "ko:아일릿", "ja:ILLIT"]
 
   - name: 星巴克马克杯
+    motif: cafe          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: スターバックス マグ · 日本优先 · 海外好设计
     type: category
     section: 好物
@@ -567,6 +570,7 @@ items:
       font: serif
 
   - name: 猫用品
+    motif: paw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: 猫グッズ · 家里两只猫
     type: category
     section: 好物
@@ -651,6 +655,7 @@ items:
       font: sans
 
   - name: 日本顶级网球赛事
+    motif: court          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: ATP・WTA ツアー 日本開催
     size: L
     type: category
@@ -725,6 +730,7 @@ items:
     wiki: ["en:Japan Open Tennis Championships", "ja:ジャパン・オープン・テニス選手権"]
 
   - name: 三星手机
+    motif: tech          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
     type: product
     section: 好物
@@ -787,7 +793,7 @@ items:
     wiki: ["en:Samsung Galaxy S series"]
 
   - name: gelato pique
-    motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: cloud          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: ジェラート ピケ · ルームウェア
     type: category
     section: 好物
@@ -845,11 +851,12 @@ items:
       font: serif
 
   - name: "ぐでたま"
-    motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: lazy          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     type: category
     section: "好物"
     size: M
     subtitle: "Gudetama"
+    theme: {bg: "#FFF8E6", fg: "#3B2A1A", accent: "#B86E00", alt_bg: "#F7C948", alt_fg: "#3B2A1A", alt_accent: "#8A4B00", split: true, font: sans}  # 蛋白 + 蛋黄（版面テーマ lazy）
     keywords: ["ぐでたま", "蛋黃哥", "구데타마", "Gudetama"]
     match: ["ぐでたま", "蛋黃哥", "구데타마", "Gudetama"]
     exclude: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale", "おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]
@@ -863,7 +870,7 @@ items:
     wiki: ["en:Gudetama", "ja:ぐでたま"]
 
   - name: "チェーンソーマン"
-    motif: manga          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: chainsaw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     type: anime
     section: "影视"
     size: M
@@ -883,7 +890,7 @@ items:
     wiki: ["en:Chainsaw Man", "ja:チェンソーマン"]
 
   - name: "The Mandalorian"
-    motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    motif: beskar          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     type: show
     section: "影视"
     size: M
@@ -902,6 +909,7 @@ items:
     wiki: ["en:The Mandalorian", "ja:マンダロリアン"]
 
   - name: "あつ森"
+    motif: island          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     type: game
     section: "游戏"
     size: M
@@ -918,6 +926,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：什么时候能玩、版本更新、活动、新角色。维基数据：動物森友會系列的第七部作品。"
 
   - name: "Vaundy"
+    motif: concert          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     type: event
     section: "演出"
     size: S
@@ -935,6 +944,7 @@ items:
     subtitle: "演唱会"
 
   - name: "周杰伦"
+    motif: porcelain          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     type: event
     section: "演出"
     size: S

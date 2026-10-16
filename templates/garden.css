@@ -1,0 +1,5 @@
+/* 版面模版「garden」：野餐格纹：格子布、缝线题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-garden{background-image:repeating-linear-gradient(0deg,color-mix(in srgb,var(--acc) 8%,transparent) 0 14px,transparent 14px 28px),repeating-linear-gradient(90deg,color-mix(in srgb,var(--acc) 8%,transparent) 0 14px,transparent 14px 28px)}
+.m-garden .band .title{border-radius:8px;transform:rotate(-1deg);outline:2px dashed color-mix(in srgb,var(--afg) 55%,transparent);outline-offset:-6px}
+.m-garden .deco{right:28%;top:2px;font:400 34px/1 var(--font-sans);color:var(--acc);opacity:.55}
+.m-garden .card .pic{border-radius:8px}

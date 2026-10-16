@@ -1,0 +1,6 @@
+/* 版面模版「magic」：魔法：星空、星座线、金边题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-magic{background-image:radial-gradient(1.5px 1.5px at 12% 18%,color-mix(in srgb,var(--acc) 70%,transparent),transparent),radial-gradient(1px 1px at 72% 12%,color-mix(in srgb,var(--fg) 60%,transparent),transparent),radial-gradient(1.5px 1.5px at 40% 64%,color-mix(in srgb,var(--acc) 60%,transparent),transparent),radial-gradient(1px 1px at 88% 78%,color-mix(in srgb,var(--fg) 50%,transparent),transparent),linear-gradient(28deg,transparent 49.8%,color-mix(in srgb,var(--acc) 14%,transparent) 50%,transparent 50.2%);background-size:180px 160px,220px 190px,160px 210px,250px 230px,360px 240px}
+.m-magic .band .title{font-family:var(--font-serif);border:2px solid var(--acc);outline:2px solid var(--acc);outline-offset:3px;box-shadow:none;transform:rotate(-1deg)}
+.m-magic .deco{right:30%;top:6px;font:400 34px/1 var(--font-serif);color:var(--acc);opacity:.7}
+.m-magic .deco.d2{right:26%;top:30px;font-size:18px}
+.m-magic .card .pic{border:1.5px solid var(--acc);outline:1px solid color-mix(in srgb,var(--acc) 40%,transparent);outline-offset:3px}

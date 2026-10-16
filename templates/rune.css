@@ -1,0 +1,6 @@
+/* 版面模版「rune」：奇幻符文：菱形格、金边装饰题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-rune{background-image:repeating-linear-gradient(45deg,color-mix(in srgb,var(--acc) 9%,transparent) 0 1px,transparent 1px 28px),repeating-linear-gradient(-45deg,color-mix(in srgb,var(--acc) 9%,transparent) 0 1px,transparent 1px 28px)}
+.m-rune .band .title{font-family:var(--font-serif);letter-spacing:.08em;transform:none;border:2px solid var(--acc);box-shadow:0 0 0 4px var(--abg),0 0 0 6px var(--acc)}
+.m-rune .deco{right:28%;top:6px;font:400 28px/1 var(--font-serif);color:var(--acc);opacity:.6}
+.m-rune .deco.d2{right:20%;top:6px;font-size:28px}
+.m-rune .card .pic{border:2px solid var(--acc);outline:1px solid color-mix(in srgb,var(--acc) 45%,transparent);outline-offset:-6px}

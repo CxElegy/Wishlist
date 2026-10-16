@@ -1,0 +1,5 @@
+/* 版面模版「space」：宇宙：轨道圆环、小星星、圆角题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-space{background-image:radial-gradient(circle at 86% 20%,transparent 54px,color-mix(in srgb,var(--fg) 12%,transparent) 55px 56px,transparent 57px 96px,color-mix(in srgb,var(--fg) 8%,transparent) 97px 98px,transparent 99px),radial-gradient(1.5px 1.5px at 30% 40%,color-mix(in srgb,var(--fg) 60%,transparent),transparent),radial-gradient(1px 1px at 70% 80%,color-mix(in srgb,var(--fg) 50%,transparent),transparent);background-size:auto,140px 120px,170px 150px;background-repeat:no-repeat,repeat,repeat}
+.m-space .band .title{border-radius:16px;transform:rotate(-1deg);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--acc)}
+.m-space .deco{right:28%;top:2px;font:400 36px/1 var(--font-sans);color:var(--acc);opacity:.55}
+.m-space .card .pic{border-radius:50% 50% 12px 12px/18% 18% 12px 12px}

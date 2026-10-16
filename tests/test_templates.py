@@ -29,7 +29,7 @@ class Templates(unittest.TestCase):
         for t in self.index:
             self.assertRegex(t["id"], r"^[a-z][a-z0-9-]*$")
             self.assertTrue((ROOT / f"templates/{t['id']}.css").exists(), t["id"])
-            self.assertTrue(t.get("name") and t.get("for"), f"{t['id']} 要写 name 和 for")
+            self.assertTrue(t.get("name") and t.get("for") and t.get("ja"), f"{t['id']} 要写 name、ja 和 for")
             self.assertLessEqual(set(t.get("defaults") or []), TYPES, t["id"])
             self.assertIn(f".m-{t['id']}", render.CSS)
         self.assertEqual(sorted(render.MOTIFS), sorted(ids))
@@ -70,3 +70,19 @@ class Templates(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+    def test_like_fx(self):
+        # 20 种演出：likefx.FX（名字）和 FX_JS 里的定义一一对应；每个模版的 fx 都是其中之一
+        import likefx
+        js_ids = re.findall(r"^    (\w+): \['", likefx.FX_JS.split("const FX = {", 1)[1].split("};", 1)[0], flags=re.M)
+        self.assertEqual(js_ids, list(likefx.FX))
+        self.assertEqual(len(likefx.FX), 20)
+        for t in self.index:
+            self.assertIn(t.get("fx"), likefx.FX, f"{t['id']} 的 fx")
+        self.assertEqual(len(self.index), 30)
+        # 版面带 data-fx，网页里有演出脚本
+        render._FX_OF["测试"] = "stamp"
+        self.assertEqual(render._fx("测试"), ' data-fx="stamp"')
+        self.assertIn("window.likeFx", render.LIKEFX_JS)
+        self.assertNotIn("__THUMB__", render.LIKEFX_JS)
+

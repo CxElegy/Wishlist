@@ -1,0 +1,4 @@
+/* 版面模版「neon」：霓虹合成波：夕阳圆、透视网格、错色题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-neon{background-image:radial-gradient(circle at 84% 22%,color-mix(in srgb,var(--acc) 26%,transparent) 0 70px,transparent 71px),repeating-linear-gradient(color-mix(in srgb,var(--acc) 18%,transparent) 0 1px,transparent 1px 22px),linear-gradient(90deg,color-mix(in srgb,var(--acc) 18%,transparent) 1px,transparent 1px);background-size:auto,100% 38%,44px 38%;background-repeat:no-repeat,no-repeat,repeat-x;background-position:0 0,0 100%,0 100%}
+.m-neon .band .title{font-style:italic;transform:skewX(-12deg);text-shadow:3px 0 0 var(--acc),-3px 0 0 var(--aacc);box-shadow:none;border-bottom:4px solid var(--acc)}
+.m-neon .card .pic{box-shadow:6px 6px 0 var(--acc);border-color:var(--acc)}

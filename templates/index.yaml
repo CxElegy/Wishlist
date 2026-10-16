@@ -4,37 +4,249 @@
 #
 #   id        文件名，也是 items.yaml 的 motif
 #   name      中文名
+#   ja        日语名（网页「テーマ見本」上显示）
 #   for       适合什么题材（AI 设计新关注项时，先拿这个判断能不能直接用）
 #   deco      版面标题旁的装饰字（可以没有）；第 2 个起加 d2、d3… 的 class，CSS 里可以分别定位
 #   defaults  新关注项还没设计模版时，这几种 type 先借用它（game / anime / show / event / product / category）
+#   fx        点 👍 时的演出（scripts/likefx.py 的 20 种之一）。见本 docs/themes.html
 
 templates:
   - id: retro
     name: 平成动画
+    ja: 平成アニメ
     for: 二次元手游、平成风格的动画——星星、角丸题字、发光的强调色
     deco: ["✦", "✦"]
     defaults: [game]
+    fx: stars
 
   - id: manga
     name: 漫画
+    ja: 漫画
     for: 少年漫画、热血动画——网点底纹、斜分格、擬音字
     deco: ["ドドド"]
     defaults: [anime]
+    fx: manga
 
   - id: pop
     name: 流行可爱
+    ja: ポップ
     for: 偶像、可爱角色、居家小物——水玉、圆角
     deco: ["♥"]
     defaults: [event, product, category]
+    fx: dots
 
   - id: film
     name: 电影剧集
-    for: 美剧、电影系列、悬疑剧——胶片孔、粗黑边框、大写题字
+    ja: 映画・ドラマ
+    for: 美剧、电影系列——胶片孔、粗黑边框、大写题字
     deco: []
     defaults: [show]
+    fx: film
 
   - id: street
     name: 街头
-    for: 开放世界、犯罪、都市题材——斜体题字、警示条纹、切角照片
+    ja: ストリート
+    for: 都市题材、潮流——斜体题字、警示条纹、切角照片
     deco: []
     defaults: []
+    fx: street
+
+  - id: noir
+    name: 黑色悬疑
+    ja: ノワール
+    for: 恐怖、悬疑、犯罪剧——斜雨线、暗角、褪色照片（鼠标放上去恢复颜色）
+    deco: []
+    defaults: []
+    fx: shock
+
+  - id: magic
+    name: 魔法
+    ja: 魔法
+    for: 魔法世界、奇幻剧——星空、星座线、金边双线题字
+    deco: ["✧", "☾"]
+    defaults: []
+    fx: sparkle
+
+  - id: snow
+    name: 雪山
+    ja: 雪山
+    for: 滑雪、冬季运动、户外——飘雪、山形锯齿、冷色斜题字
+    deco: ["❄"]
+    defaults: []
+    fx: petals
+
+  - id: court
+    name: 球场
+    ja: コート
+    for: 网球、羽毛球、篮球等球场运动——场地白线、球色胶囊题字
+    deco: []
+    defaults: []
+    fx: goal
+
+  - id: cafe
+    name: 咖啡店
+    ja: カフェ
+    for: 咖啡、杯子、餐具、生活杂货——杯印圆环、拍立得照片
+    deco: ["≋"]
+    defaults: []
+    fx: stamp
+
+  - id: paw
+    name: 猫咪
+    ja: 肉球
+    for: 宠物、猫狗用品——肉球脚印、圆角题字
+    deco: []
+    defaults: []
+    fx: hearts
+
+  - id: tech
+    name: 科技
+    ja: テック
+    for: 手机、电脑、数码产品——细网格、切角照片、等宽题字
+    deco: ["//"]
+    defaults: []
+    fx: glitch
+
+  - id: cloud
+    name: 云朵睡衣
+    ja: 雲とパジャマ
+    for: 家居服、软萌品牌——粉彩竖条、云边、大圆角
+    deco: ["☁"]
+    defaults: []
+    fx: jelly
+
+  - id: lazy
+    name: 慵懒蛋黄
+    ja: ぐでっと
+    for: 懒洋洋的角色、治愈系——荷包蛋、融化的题字
+    deco: ["zzz"]
+    defaults: []
+    fx: jelly
+
+  - id: chainsaw
+    name: 电锯
+    ja: チェンソー
+    for: 暴力美学的少年漫画、恶魔题材——锯齿边、飞溅墨点、粗暴斜题字
+    deco: ["ヴィィン"]
+    defaults: []
+    fx: manga
+
+  - id: beskar
+    name: 金属铠甲
+    ja: 金属の鎧
+    for: 科幻、星际、机甲——拉丝金属、斜光、切角题字
+    deco: []
+    defaults: []
+    fx: rocket
+
+  - id: island
+    name: 小岛
+    ja: 無人島
+    for: 悠闲的生活模拟游戏、度假——叶子、海浪底边、缝线题字
+    deco: ["✿"]
+    defaults: []
+    fx: confetti
+
+  - id: concert
+    name: 演唱会
+    ja: ライブ
+    for: 歌手、乐队、演唱会——舞台光束、人群剪影、双线题字
+    deco: ["♪", "♫"]
+    defaults: []
+    fx: spotlight
+
+  - id: porcelain
+    name: 青花瓷
+    ja: 青花磁器
+    for: 华语歌手、中国风——青海波纹、双线框题字
+    deco: ["◈"]
+    defaults: []
+    fx: notes
+
+  - id: neon
+    name: 霓虹合成波
+    ja: ネオン
+    for: 开放世界、都市夜晚、80 年代风——夕阳圆、透视网格、错色题字
+    deco: []
+    defaults: []
+    fx: combo
+
+  - id: comic
+    name: 美漫
+    ja: アメコミ
+    for: 超级英雄、美式漫画——大网点、放射线、粗框照片
+    deco: ["バーン"]
+    defaults: []
+    fx: pop
+
+  - id: pixel
+    name: 像素
+    ja: ドット絵
+    for: 复古游戏、独立游戏——8 位方格、阶梯阴影
+    deco: ["▮▮▮"]
+    defaults: []
+    fx: pixel
+
+  - id: rune
+    name: 奇幻符文
+    ja: ルーン
+    for: MMORPG、奇幻 RPG——菱形格、金边装饰题字
+    deco: ["◆", "◆"]
+    defaults: []
+    fx: sparkle
+
+  - id: idol
+    name: 偶像
+    ja: アイドル
+    for: 女团、偶像组合——斜缎带、两色圆点、双线题字
+    deco: ["♡", "✦"]
+    defaults: []
+    fx: hearts
+
+  - id: ink
+    name: 水墨
+    ja: 墨
+    for: 和风、剑戟、武侠——圆相墨圈、淡墨笔触、毛边题字
+    deco: ["墨"]
+    defaults: []
+    fx: stamp
+
+  - id: sakura
+    name: 樱花
+    ja: 桜
+    for: 校园、恋爱、日常系动画——花瓣飘落、胶囊题字
+    deco: ["❀"]
+    defaults: []
+    fx: petals
+
+  - id: sport
+    name: 运动
+    ja: スポーツ
+    for: 综合体育、赛车、田径——斜向速度带、跑道线、斜体题字
+    deco: ["≫"]
+    defaults: []
+    fx: goal
+
+  - id: garden
+    name: 野餐格纹
+    ja: ギンガム
+    for: 食品、家居、手作——格子布、缝线题字
+    deco: ["✿"]
+    defaults: []
+    fx: confetti
+
+  - id: notebook
+    name: 笔记本
+    ja: ノート
+    for: 文具、学习、资讯合集——横线、页边线、纸胶带题字
+    deco: ["✎"]
+    defaults: []
+    fx: stamp
+
+  - id: space
+    name: 宇宙
+    ja: 宇宙
+    for: 太空、科幻电影——轨道圆环、小星星、圆角题字
+    deco: ["☄"]
+    defaults: []
+    fx: rocket
