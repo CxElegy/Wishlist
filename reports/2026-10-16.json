@@ -381,9 +381,8 @@
      "date": "2026-10-16",
      "headline": "Galaxy S27 Ultra、Snapdragon 8 Elite Extreme Gen6の発熱問題でExynos 2700に変更の可能性",
      "highlight": "",
-     "image": null,
-     "source": "スマホダイジェスト",
-     "source_icon": "https://www.google.com/s2/favicons?domain=sumahodigest.com&sz=128",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-16-085142.jpg",
+     "image_via": "og:image",
      "url": "https://sumahodigest.com/?p=74002",
      "weight": "normal"
     }
@@ -633,17 +632,6 @@
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "ILLIT、5th Mini Albumの最後のコンセプトを公開！ 「MAD」バージョン、怒りと冷静さを経て現実を自覚する段階を表現… キッチュな金髪ビジュアルに注目",
-     "highlight": "",
-     "image": null,
-     "source": "K-PLAZA",
-     "source_icon": "https://www.google.com/s2/favicons?domain=k-plaza.com&sz=128",
-     "url": "https://k-plaza.com/2026/10/illit-261016.html",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
      "headline": "ILLIT showcases a different charm through a new release concept",
      "highlight": "",
      "image": "https://images.khan.co.kr/article/2026/10/16/news-p.v1.20261016.a3aa4afc89904df1965bac9e03def952_P1.jpg",
@@ -669,6 +657,26 @@
      "image": "https://cdn.atstar1.com/news/thumbnail/202610/6039509_119115_165_v150.jpg",
      "image_via": "og:image",
      "url": "http://www.atstar1.com/news/articleView.html?idxno=6039509",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "ILLIT、5th Mini Albumの最後のコンセプトを公開！ 「MAD」バージョン、怒りと冷静さを経て現実を自覚する段階を表現… キッチュな金髪ビジュアルに注目",
+     "highlight": "",
+     "image": "https://k-plaza.com/wp-content/uploads/2026/10/ILLIT-3-1.jpg",
+     "image_via": "og:image",
+     "url": "https://k-plaza.com/2026/10/illit-261016.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "ILLIT、活動休止中モカが新アルバム動画で5人揃ってファンに笑顔",
+     "highlight": "",
+     "image": "https://pbs.twimg.com/media/HUpiWqqbcAAWzBh?format=webp&name=medium",
+     "image_via": "og:image",
+     "url": "https://x.com/i/trending/2111027948132135138",
      "weight": "normal"
     }
    ],
@@ -1039,6 +1047,75 @@
     "bg": "#1A1C22",
     "fg": "#F1EEE6",
     "font": "sans",
+    "split": false
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/285a6967d0efc7e37dad0e6a2d5ec3f0139915fc/header_alt_assets_1.jpg?t=1788905636",
+   "facts": [],
+   "name": "绝区零",
+   "section": "游戏",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-15",
+     "headline": "Zenless Zone Zero, Summoners War, Blue Archive - We've Gacha Covered",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.uGCz3VpMmu0eZ5WgofOeAg&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://www.pocketgamer.com/weve-gacha-covered/october-15th-2026/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "‘젠레스 존 제로’, 3.3 버전 내달 21일 업데이트… 메카 전투 및 지스타 참가 예고",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2efWXX.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ko-kr/news/techandscience/%EC%A0%A0%EB%A0%88%EC%8A%A4-%EC%A1%B4-%EC%A0%9C%EB%A1%9C-33-%EB%B2%84%EC%A0%84-%EB%82%B4%EB%8B%AC-21%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%A9%94%EC%B9%B4-%EC%A0%84%ED%88%AC-%EB%B0%8F-%EC%A7%80%EC%8A%A4%ED%83%80-%EC%B0%B8%EA%B0%80-%EC%98%88%EA%B3%A0/ar-AA2efA6P",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
+     "highlight": "",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/550723.png?date=1780295102",
+     "image_via": "og:image",
+     "url": "https://gamewith.jp/zenless/550723",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "【ゼンゼロ】セヴェリアンはいつ実装？性能と声優は？【ゼンレスゾーンゼロ】",
+     "highlight": "",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/560560.png?date=1789447875",
+     "image_via": "og:image",
+     "url": "https://gamewith.jp/zenless/560560",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "【ゼンゼロ】フィオニー無凸評価・最強編成ガイド！おすすめ音動機・ディスク・育成方法を徹底解説",
+     "highlight": "",
+     "image": "https://assets.mmoexp.com/images/202609/d1bc0f44ac2c34739074a26025e26f7fe194850c.png",
+     "image_via": "正文图",
+     "url": "https://www.mmoexp.com/News/zenless-zone-zero-fiony-review-best-team-guide-best-w-engines-drive-discs-and-build-tips.html",
+     "weight": "normal"
+    }
+   ],
+   "subtitle": "ゼンレスゾーンゼロ",
+   "theme": {
+    "accent": "#D16761",
+    "alt_accent": "#AE3A32",
+    "alt_bg": "#F1EAEC",
+    "alt_fg": "#1A1C22",
+    "bg": "#21171A",
+    "fg": "#F2EEE6",
+    "font": "serif",
     "split": false
    }
   },
