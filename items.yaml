@@ -1046,3 +1046,18 @@ items:
     site: "http://www.dota2.com/"
     steam_appid: 570
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
+
+  - name: "A2O LITE"
+    type: product
+    section: "好物"
+    size: M
+    keywords: ["A2O LITE"]
+    match: ["A2O LITE"]
+    exclude: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale", "おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]
+    news_langs: ["ja-JP", "ko-KR", "zh-CN"]
+    priority: "新品和新款什么时候发售；什么时候降价促销；联名和限定款"
+    urgent_patterns:
+      - "(A2O LITE).{0,30}(新品|新作|新款|発売|発表|发售|發售|上市|launch|release|新色)"
+      - "(A2O LITE).{0,30}(セール|特價|特价|折扣|降價|降价|sale|値下げ|半額|半价)"
+      - "(A2O LITE).{0,30}(コラボ|联名|聯名|限定|collab)"
+    notes: "2026-10-16 从网页设置页加进来的。关注：新品、新款发售、降价、促销、联名、限定款。"
