@@ -8,12 +8,22 @@
 - 还没连上：说清楚是哪个连接器、能帮上什么，并给出连接地址 https://claude.ai/customize/connectors
   （连好后要开新会话才会加载）。
 - 已连上的连接器：Supabase（项目 `bzokpnbcjscbcehdxtjq`，表 `feedback` / `news` / `sizes` / `item_requests`）、GitHub。
+  （函数 `my_votes()` = 网页读回我的投票）
 
 ## 篇幅 S / M / L
 
 每个关注项的篇幅存在 Supabase 的 `sizes` 表，我自己在网页的 ⚙ 设置页（docs/settings.html，不用口令）也能改。
 我说「把 XX 改成 L」时，用 Supabase 连接器直接改表；
 连接器不可用时改 `items.yaml` 里的 `size`，下次出刊会自动同步进数据库。
+
+## 改完自动合并
+
+- 改动做完、测试通过后，**直接开 PR 并合并**，不用再问我「要不要合并」。合并后确认网页已更新，再附链接告诉我。
+
+## 我的 👍 / 👎 要记住
+
+- 投票存在 Supabase 的 `feedback` 表；网页打开时用 `my_votes()`（`db/my_votes.sql`）读回每条消息的最后一票，按钮显示成按过的样子，
+  换浏览器、换手机也一样。改投票相关的代码时别丢掉这一步；推荐（`digest.py recommend`）也用这些票学习喜好。
 
 ## 每次回复都贴链接
 

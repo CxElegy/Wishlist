@@ -8,6 +8,7 @@ import pathlib
 import sys
 import tempfile
 import datetime as dt
+import os
 import unittest
 from unittest import mock
 
@@ -95,6 +96,13 @@ class VoteButtons(unittest.TestCase):
         # 整个按钮区拦住点击（按偏了也不打开原文），保存中不用 disabled（disabled 的按钮会把点击漏给链接）
         self.assertIn("box.addEventListener('click'", render.VOTE_JS)
         self.assertNotIn("disabled = true", render.VOTE_JS)
+
+    def test_votes_loaded_from_database(self):
+        # 点过的票从数据库读回（不只靠本机 localStorage）
+        self.assertIn("/rest/v1/rpc/my_votes", render.VOTE_JS)
+        sql = open(os.path.join(os.path.dirname(__file__), "..", "db", "my_votes.sql"), encoding="utf-8").read()
+        self.assertIn("security definer", sql)
+        self.assertIn("grant execute on function public.my_votes() to anon", sql)
 
     def test_source_after_date(self):
         out = render._when({"date": "2026-10-13", "url": "https://www.gamewith.jp/a", "source": "GameWith <b>"}, "2026-10-16")
