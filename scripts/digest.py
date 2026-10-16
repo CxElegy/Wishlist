@@ -227,15 +227,51 @@ def has_history(name):
     return False
 
 
+def match_hit(item, e):
+    """这条消息靠哪个匹配词算进这个关注项（返回那个词）；不算就返回 None。
+    新闻搜索会混入不相关结果：标题或摘要里必须出现某个匹配词（忽略大小写和空格）。
+    「re:」开头的是正则，区分大小写、照原文匹配：名字是常用词（FROM、MCU）或泛词要和主题词同时出现时用它。
+    写法规则见 CLAUDE.md「匹配词（match）的写法」；python scripts/digest.py audit-match 可以检查。"""
+    if e.source in TRUSTED_SOURCES or e.source in {f"r/{s}" for s in item.get("subreddits") or []}:
+        return "(可信来源)"
+    # Reddit 全站搜索来的帖子：正文是闲聊，「from Season 5」这种说法到处都是，匹配词必须出现在标题里
+    text = e.title if e.source == "Reddit" else e.title + e.summary
+    for w in item.get("match") or item.get("keywords") or [item["name"]]:
+        if w.startswith("re:") and re.search(w[3:], text) or not w.startswith("re:") and _norm(w) in _norm(text):
+            return w
+    return None
+
+
+def audit_match(days=4, only=None):
+    """检查误收：最近几天 inbox 里每个关注项的条目按「靠哪个匹配词进来的」分组列出来，
+    并标出按现在的 match / exclude 已经不会再收的（✗）。加关注项、改匹配词之后跑一次，看有没有不相关的混进来。"""
+    _, items = load_config()
+    paths = sorted(p for p in INBOX_DIR.glob("????-??-??.json"))[-days:]
+    for item in items:
+        if only and item["name"] not in only:
+            continue
+        exclude = [w.lower() for w in item.get("exclude") or []]
+        groups = {}
+        for path in paths:
+            for raw in load_json(path).get("items", []):
+                if raw["name"] != item["name"]:
+                    continue
+                for d in raw["entries"]:
+                    e = entry_from_dict(d)
+                    hit = match_hit(item, e)
+                    gone = hit is None or any(w in e.title.lower() for w in exclude)
+                    groups.setdefault(hit or "(不再匹配)", []).append(("✗ " if gone else "  ") + e.title[:90])
+        print(f"===== {item['name']}（{sum(len(v) for v in groups.values())} 条）")
+        for w, titles in sorted(groups.items(), key=lambda kv: -len(kv[1])):
+            print(f"  [{w}] {len(titles)}")
+            for t in titles[:8]:
+                print(f"     {t}")
+
+
 def filter_entries(entries, item, settings, seen, now, known=()):
     names = [item["name"], *(item.get("keywords") or []), *(item.get("match") or [])]
     since = now - dt.timedelta(days=settings.get("lookback_days", 7))
     exclude = [w.lower() for w in item.get("exclude") or []]
-    # 新闻搜索会混入不相关结果：标题或摘要里必须出现某个匹配词（忽略大小写和空格）。
-    # 「re:」开头的是正则，区分大小写、照原文匹配：剧名是常用词时（FROM）用它认出全大写或标题开头的写法
-    words = item.get("match") or item.get("keywords") or [item["name"]]
-    match = [_norm(w) for w in words if not w.startswith("re:")]
-    match_re = [re.compile(w[3:]) for w in words if w.startswith("re:")]
     # 同一篇文章常同时出现在 Google 和 Bing：每个标题只留一条，优先国外网站（大陆网站常拦海外服务器、
     # 图片防盗链），其次能直接打开原文的（Google 是跳转页，拿不到配图）
     def rank(e):
@@ -263,10 +299,7 @@ def filter_entries(entries, item, settings, seen, now, known=()):
             continue
         if any(w in e.title.lower() for w in exclude):
             continue
-        trusted = e.source in TRUSTED_SOURCES or e.source in {f"r/{s}" for s in item.get("subreddits") or []}
-        # Reddit 全站搜索来的帖子：正文是闲聊，「from Season 5」这种说法到处都是，匹配词必须出现在标题里
-        text = e.title if e.source == "Reddit" else e.title + e.summary
-        if not trusted and not any(w in _norm(text) for w in match) and not any(r.search(text) for r in match_re):
+        if match_hit(item, e) is None:
             continue
         grams.append(g)
         out.append(e)
@@ -2124,9 +2157,9 @@ def repair_images():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
-    parser.add_argument("--only", help="unedited 用：只看这些关注项（用「、」分隔）")
+    parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
     args = parser.parse_args()
     if args.dry_run:
@@ -2145,6 +2178,8 @@ def main():
         ingest()
         update_heat()
         sync_db()
+    elif args.step == "audit-match":
+        audit_match(only=args.only.split("、") if args.only else None)
     elif args.step == "heat":
         update_heat()
         write_page()

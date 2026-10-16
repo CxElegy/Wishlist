@@ -39,5 +39,18 @@ class MatchTest(unittest.TestCase):
         self.assertEqual(self.kept(titles), [])
 
 
+    def test_both_words_required(self):
+        # 泛词（マグ）必须和主题词（星巴克）同时出现：用 (?=…)(?=…) 写在一条 re: 里
+        item = {"name": "星巴克马克杯", "match": ["re:(?is)(?=.*(スタバ|starbucks))(?=.*(マグ|mug))"]}
+        es = [entry("スタバの新マグカップは八角形", 1), entry("GODIVA×marimekkoの花柄マグカップ", 2),
+              entry("Starbucks Singapore unveils mugs", 3)]
+        kept = [e.title for e in digest.filter_entries(es, item, {}, set(), NOW)]
+        self.assertEqual(kept, ["スタバの新マグカップは八角形", "Starbucks Singapore unveils mugs"])
+
+    def test_match_hit_names_the_word(self):
+        self.assertEqual(digest.match_hit(FROM, entry("Theories about Fromville", 1)), "Fromville")
+        self.assertIsNone(digest.match_hit(FROM, entry("Top 5 prospects from season 10", 2)))
+
+
 if __name__ == "__main__":
     unittest.main()

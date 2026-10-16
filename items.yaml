@@ -5,7 +5,9 @@
 #   type         product 商品 / category 一类产品 / game 游戏 / anime 动画漫画 / show 影视剧 / event 艺人演出，默认 product
 #   keywords     搜索关键词，每个词单独搜一次；建议写上各语言的正式名称
 #   match        可选，标题或摘要必须包含其中一个词才保留，默认用 keywords
-#                「re:」开头的写正则，区分大小写（如 're:^From Season \d'），名字是常用英文词时用它
+#                「re:」开头的写正则，区分大小写（如 're:^From Season \d'），名字是常用英文词时用它；
+#                泛词要和主题词同时出现时写 're:(?is)(?=.*(星巴克…))(?=.*(马克杯…))'。写法规则见 CLAUDE.md「匹配词（match）的写法」，
+#                改完跑 python scripts/digest.py audit-match 看有没有误收
 #   exclude      可选，标题包含这些词的条目直接丢掉
 #   news_langs   可选，单独为这一项指定新闻语言区，会覆盖下面 settings 里的设置
 #   priority          你最关心这一项的什么（用 AI 时生效）。AI 按它给报道排序，直接回答它的新消息会做成整行大板块
@@ -273,7 +275,8 @@ items:
     ]
     exclude: [
       ジャンプ, W杯, World Cup, 五輪, Olympic, 選手, 選抜, Team, X Games, World Tour,
-      競馬, JET SKI, 知事選, 求人, 中古, 画像・写真
+      競馬, JET SKI, 知事選, 求人, 中古, 画像・写真,
+      COUNTDOWN, CDJ, 平野歩夢, ハンバーガー, 漢堡   # 「26/27」也是音乐节 COUNTDOWN JAPAN 26/27；Niseko 也是店名
     ]
     news_langs: [zh-TW, ja-JP, en-US]
     max_entries: 40
@@ -323,7 +326,11 @@ items:
       漫威, 復仇者, 复仇者, 复联, 復聯, 毁灭之日, 毀滅之日, 末日博士, 秘密战争, 秘密戰爭,
       Marvel, MCU, Avengers, Doomsday, Secret Wars, Doctor Doom, Kevin Feige, 凯文·费奇
     ]
-    exclude: [Marvel Rivals, 漫威争锋, 漫威爭鋒, Marvel Snap, 漫威终极逆转, Marvel Contest, LEGO, 乐高, 手办, Funko]
+    exclude: [
+      Marvel Rivals, 漫威争锋, 漫威爭鋒, Marvel Snap, 漫威终极逆转, Marvel Contest, LEGO, 乐高, 手办, Funko, Hasbro, adidas,
+      MPU, 微控制器, 晶片, 芯片, 半導體, 半导体, 飆股, 供應商, 供应商, Chancellor, University,   # MCU 也是微控制器、大学的缩写
+      小學館, 小学馆   # 「小學館復仇者聯盟」是漫画家
+    ]
     news_langs: [zh-TW, en-US]
     max_entries: 40
     max_stories: 5   # 漫威新闻多、传闻多，只挑最火的几件
@@ -536,7 +543,8 @@ items:
       "Starbucks new mug", "Starbucks mug collection 2026"
     ]
     # 只要马克杯：标题或摘要里必须有「马克杯」类的词；标题里只有保温杯 / 冷杯这类的直接丢掉
-    match: [マグ, 马克杯, 馬克杯, 머그, mug, 陶瓷杯, 陶杯]
+    # 光有「マグ / mug」会混进别家（GODIVA×marimekko、收藏家趣闻），星巴克和马克杯必须同时出现
+    match: ['re:(?is)(?=.*(スタバ|スターバックス|星巴克|스타벅스|starbucks))(?=.*(マグ|马克杯|馬克杯|머그|mug|陶瓷杯|陶杯))']
     exclude: [Stanley, 求人, 中古, メルカリ, 株価, stock price]
     news_langs: [ja-JP, zh-TW, ko-KR, en-US]
     max_entries: 30
@@ -601,12 +609,13 @@ items:
     # 标题或摘要里要有和猫用品 / 猫健康 / 猫活动 / 猫周边相关的词；光有「猫」的趣闻不收
     match: [
       猫粮, 貓糧, 猫砂, 貓砂, 猫罐, 貓罐, 猫条, 猫用, 貓用, 猫咪用品, 貓咪用品, 养猫, 養貓, 猫爬架, 貓跳台, 猫抓板, 貓抓板,
-      喂食器, 餵食器, 饮水机, 飲水機, 宠物用品, 寵物用品, 宠物家电, 智能宠物, 猫咪健康, 猫病, 兽医, 獸醫, 猫博, 貓博,
-      キャットフード, 猫トイレ, 自動トイレ, 給水器, 給餌器, 爪とぎ, キャットタワー, ちゅ～る, ペット用品, ペット家電,
-      獣医, 動物病院, 感染症, ワクチン, 腎臓, 尿路結石, FIP, SFTS, 猫エイズ, 猫風邪,
-      ねこ展, 猫展, ねこ祭, 猫まつり, 猫フェス, 猫の祭典, インターペット, ペット博,
-      猫グッズ, ねこグッズ, ネコグッズ, 猫雑貨, ねこ雑貨, 黒猫グッズ, 猫柄, 肉球, 猫咪周边, 貓咪周邊, 猫周边, 猫の健康, 猫の病気, 科普,
-      cat food, cat litter, litter box, cat tree, cat toy, cat feeder, cat fountain, feline, cat health, cat owner
+      猫咪健康, 猫病, 猫博, 貓博,
+      キャットフード, 猫トイレ, 爪とぎ, キャットタワー, 猫エイズ, 猫風邪,
+      ねこ展, 猫展, ねこ祭, 猫まつり, 猫フェス, 猫の祭典,
+      猫グッズ, ねこグッズ, ネコグッズ, 猫雑貨, ねこ雑貨, 黒猫グッズ, 猫柄, 猫咪周边, 貓咪周邊, 猫周边, 猫の健康, 猫の病気,
+      cat food, cat litter, litter box, cat tree, cat toy, cat feeder, cat fountain, feline, cat health, cat owner,
+      # 宠物 / 兽医 / 疾病这类泛词：单独出现会混进防蚊告示、狗零食、肉球形防晒印章，必须和「猫」同时出现
+      're:(?is)(?=.*(猫|貓|ねこ|ネコ|キャット|にゃん|\bcats?\b|feline))(?=.*(喂食器|餵食器|饮水机|飲水機|宠物用品|寵物用品|宠物家电|智能宠物|兽医|獸醫|自動トイレ|給水器|給餌器|ちゅ～る|ペット用品|ペット家電|獣医|動物病院|感染症|ワクチン|腎臓|尿路結石|FIP|SFTS|インターペット|ペット博|肉球|科普))'
     ]
     exclude: [
       スタバ, スターバックス, 星巴克, Starbucks, フラペチーノ, 星冰樂,   # 星巴克有自己的板块；饮品不算周边
@@ -809,7 +818,7 @@ items:
     ]
     # 「ジェラート」单独会混进冰淇淋，必须是完整的牌子名
     match: [ジェラートピケ, ジェラート・ピケ, ジェラピケ, gelato pique, gelatopique, ジェラートピケカフェ]
-    exclude: [求人, 中古, メルカリ, 転売, 株価, stock price, 闲鱼, 二手, 代购]
+    exclude: [求人, 中古, メルカリ, 転売, 株価, stock price, 闲鱼, 二手, 代购, 本物, 定番新品, au PAY, PayPayフリマ, ラクマ, Yahoo!ショッピング]   # 后面几个是网店 / 二手的商品页
     news_langs: [ja-JP, zh-TW]
     max_entries: 30
     max_stories: 5
