@@ -563,6 +563,8 @@ button{font-family:inherit}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
 .emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45);--sx:0px;--sy:0px}
+.emb-js .emb.out .emb-in{transition:transform .38s cubic-bezier(.6,0,.9,.4),opacity .3s ease-in .08s,--sx .15s,--sy .15s;
+ transform:translate(18px,70px) rotate(-18deg) scale(.55)}  /* 上へ戻ったとき：影が縮んで、下へ沈みながら消える */
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:210px}
@@ -887,7 +889,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.16</b></div>
-<div class="meta"><small>更新</small><b>10.16 20:38</b></div></div>
+<div class="meta"><small>更新</small><b>10.16 20:39</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
