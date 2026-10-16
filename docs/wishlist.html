@@ -11,7 +11,10 @@
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
  --fs-label:11px;--fs-tag:10px;--gap:16px;--hair:color-mix(in srgb,var(--ink) 16%,transparent);
- --shadow:4px 4px 0 var(--ink);--shadow-l:8px 8px 0 var(--ink);--tilt:-1.5deg;--skew:-8deg}
+ --shadow:4px 4px 0 var(--ink);--shadow-l:8px 8px 0 var(--ink);--tilt:-1.5deg;--skew:-8deg;
+ /* 話題度の分析ページのグラフ（dataviz の検証済みパレット）：指標 6 色・点数の濃淡 5 段・前週比の上下 */
+ --viz-1:#2a78d6;--viz-2:#eb6834;--viz-3:#1baf7a;--viz-4:#eda100;--viz-5:#e87ba4;--viz-6:#008300;
+ --seq-0:#cde2fb;--seq-1:#9ec5f4;--seq-2:#5598e7;--seq-3:#256abf;--seq-4:#104281;--up:#e34948;--down:#2a78d6}
 /* デザインの骨格（PRODUCT.md）：文字箱の後ろに硬い影、見出しと枠だけ少し傾ける（-1〜-2.5°）、ラベルは平行四辺形。
    本文・リスト・作品の版面は傾けない。配色はトークンと版面の色だけ */
 *{box-sizing:border-box}
@@ -135,6 +138,11 @@ button{font-family:inherit}
 .shot .bn{font:700 12px/1.3 var(--font-sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .shot .bar{height:12px;width:calc(var(--v) * 100%);background:var(--sc);transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--ink)}
 .shot b{font:16px var(--font-num);text-align:right}
+.shot li a{grid-template-columns:96px minmax(0,1fr) 28px 14px}
+.shot .bn em{display:block;font:900 var(--fs-tag)/1.3 var(--font-sans);font-style:normal;color:var(--alert);letter-spacing:.08em}
+.shot i{font:900 13px var(--font-sans);font-style:normal;text-align:center}
+.shot i.up{color:var(--alert)}.shot i.flat{opacity:.45}.shot i.down{opacity:.6}
+.snote{margin:6px 0 8px;font-size:12px;line-height:1.5;opacity:.75}
 .shot li a:hover .bn{text-decoration:underline}
 .staste ul{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .staste li{display:inline-flex;align-items:baseline;gap:5px;padding:3px 9px;border:1.5px solid var(--ink);background:#FFF;font:700 12px var(--font-sans)}
@@ -199,6 +207,31 @@ button{font-family:inherit}
 .band .cnt{margin-left:auto;font:700 12px/1.3 var(--font-sans);opacity:.85;white-space:nowrap}
 .band .cnt b{margin-right:6px;font:30px/1 var(--font-num);color:var(--acc)}
 .band .deco{position:absolute;pointer-events:none;font-style:normal}
+/* 話題度（_heat_badge）：見出しの右に数字、押すと内訳のカード。数字の色は版面の --acc、カードは紙とインク */
+.heat{position:relative;margin-left:auto}
+.heat+.cnt{margin-left:0}
+.heat summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:6px;white-space:nowrap;font:700 12px/1.3 var(--font-sans)}
+.heat summary::-webkit-details-marker{display:none}
+.heat summary small{font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em;opacity:.85}
+.heat summary b{font:30px/1 var(--font-num);color:var(--acc);border-bottom:2px dotted color-mix(in srgb,var(--fg) 45%,transparent)}
+.heat summary i{font:900 16px/1 var(--font-sans);font-style:normal}
+.heat.flat summary i{opacity:.5}.heat.down summary i{opacity:.7}
+.heat summary em{font:700 var(--fs-label) var(--font-sans);font-style:normal;opacity:.85}
+.heat .hx-rise{display:inline-block;padding:1px 8px;background:var(--alert);color:#FFF;transform:skewX(var(--skew));font:900 var(--fs-label)/1.4 var(--font-sans);letter-spacing:.1em}
+.heat summary:hover b{border-bottom-style:solid}
+.hx{position:absolute;right:0;top:calc(100% + 10px);z-index:6;width:min(420px,calc(100vw - 32px));padding:14px 16px 12px;
+ background:var(--card);color:var(--ink);border:2px solid var(--ink);box-shadow:var(--shadow);white-space:normal}
+.hx-head{margin:0 0 8px;padding-bottom:6px;border-bottom:2px solid var(--ink);font:700 12px/1.4 var(--font-sans)}
+.hx-head b{font:900 15px var(--font-sans)}
+.hx ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.hx li{display:grid;grid-template-columns:84px minmax(0,1fr) 30px;gap:2px 8px;align-items:center}
+.hx-n{font:700 12px/1.3 var(--font-sans)}
+.hx-bar{height:10px;background:linear-gradient(90deg,var(--rose) calc(var(--v) * 100%),color-mix(in srgb,var(--ink) 12%,transparent) 0);transform:skewX(var(--skew))}
+.hx li b{font:16px var(--font-num);text-align:right}
+.hx li small{grid-column:2/4;font:500 var(--fs-label)/1.45 var(--font-sans);opacity:.8}
+.hx-miss,.hx-note{margin:8px 0 0;font:500 12px/1.55 var(--font-sans);opacity:.8}
+.hx-more{display:block;margin-top:10px;padding:6px;text-align:center;background:var(--ink);color:var(--card);font:900 12px var(--font-sans);letter-spacing:.06em}
+.hx-more:hover{background:var(--rose)}
 .facts{display:flex;flex-wrap:wrap;gap:12px;padding:16px 26px 0}
 .fact{flex:1 1 280px;padding:12px 18px;background:var(--abg);color:var(--afg);box-shadow:4px 4px 0 var(--acc);display:flex;flex-direction:column;gap:4px}
 .fact .label{font:700 11px var(--font-sans);letter-spacing:.14em;opacity:.8}
@@ -407,7 +440,8 @@ button{font-family:inherit}
  .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
  .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/10}
  .pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
- .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt{margin-left:0}.band .deco{display:none}
+ .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
+ .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
  .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
@@ -531,7 +565,7 @@ html{scroll-behavior:smooth}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.16 13:48</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.16 13:59</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
