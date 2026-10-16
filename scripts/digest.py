@@ -1578,7 +1578,10 @@ def recommend(force_discover=False):
                        **({"liked": t} if (t := liked_reason(url, x["title"], set(words) | {x["label"]}, None)) else {})})
     picks += follow
     keep = {p["url"] for p in picks}
-    save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep}})
+    # 投票から学んだ口味の上位（トップの右の「あなたの好み」に出す）
+    top = sorted(((k, v) for k, v in taste.items() if v > 0), key=lambda kv: -kv[1])[:8]
+    save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep},
+                               "taste": [[k, v] for k, v in top]})
     print(f"我会喜欢？：{len(picks) - len(follow) - len(boards)} 条按愿望清单 + {len(boards)} 条关注版面的其他消息 + "
           f"{len(follow)} 条同类新消息（学自 {len(votes)} 次投票，{len(liked)} 次赞）", file=sys.stderr)
 
@@ -1613,7 +1616,8 @@ def write_page():
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
-                          {i["name"]: i["motif"] for i in items if i.get("motif")}, themes)
+                          {i["name"]: i["motif"] for i in items if i.get("motif")}, themes,
+                          (load_json(RECOMMEND_FILE) or {}).get("taste", []))
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     wishes = load_wishlist()

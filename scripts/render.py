@@ -130,6 +130,36 @@ button{font-family:inherit}
  background:linear-gradient(90deg,var(--sc1,#00B4EE) 0 14%,var(--sc2,#FF3D8B) 14% 28%,var(--gold) 28% 42%,var(--ink) 42% 56%,var(--hacc,var(--rose)) 56% 70%,var(--deep,var(--ink)) 70% 84%,var(--card) 84%)}
 /* ---------- ほかの注目ニュース：写真の壁 ＋ ジャンルの棚 ---------- */
 .spot{display:flex;flex-direction:column;gap:22px}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:start}
+.fside{display:flex;flex-direction:column;gap:20px;min-width:0}
+.sbox{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:12px 14px 12px}
+.sbox h4,.fside .agenda h4{margin:0 0 6px;display:flex;align-items:baseline;gap:10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font:900 16px/1.3 var(--font-sans);letter-spacing:.04em}
+.sbox h4 small{margin-left:auto;font:700 11px var(--font-sans);opacity:.6}
+.sbox h4 a:hover{color:var(--rose)}
+.swish ol,.shot ol{list-style:none;margin:0;padding:0}
+.swish li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--hair)}
+.wthumb{width:48px;height:48px;background:#FFF;border:1.5px solid var(--ink);display:grid;place-items:center;overflow:hidden}
+.wthumb img{width:90%;height:90%;object-fit:contain}
+.wt{display:flex;flex-direction:column;min-width:0}
+.wt b{font:700 13px/1.4 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wt em{font:15px/1.2 var(--font-num);font-style:normal;color:var(--rose)}
+.swish .tg{font-size:11px;padding:0 7px}
+.stot{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:8px 0 6px;font:700 11px var(--font-sans);opacity:.85}
+.stot b{font:20px var(--font-num);color:var(--ink)}
+.smore{display:block;text-align:center;padding:6px;background:var(--rose);color:#FFF;font:900 13px var(--font-sans);letter-spacing:.06em;box-shadow:3px 3px 0 var(--ink)}
+.smore:hover{background:var(--ink)}
+.shot li a{display:grid;grid-template-columns:96px minmax(0,1fr) 28px;gap:8px;align-items:center;padding:5px 0}
+.shot .bn{font:700 12px/1.3 var(--font-sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot .bar{height:12px;width:calc(var(--v) * 100%);background:var(--sc);transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--ink)}
+.shot b{font:16px var(--font-num);text-align:right}
+.shot li a:hover .bn{text-decoration:underline}
+.staste ul{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.staste li{display:inline-flex;align-items:baseline;gap:5px;padding:3px 9px;border:1.5px solid var(--ink);background:#FFF;font:700 12px var(--font-sans)}
+.staste li b{font:13px var(--font-num);color:var(--rose)}
+.staste p{margin:8px 0 0;font-size:11px;opacity:.7}
+.fside .agenda{padding:12px 14px 8px}
+.fside .agenda ol{grid-template-columns:minmax(0,1fr)}
+.agenda li b small{display:block;font:700 11px var(--font-sans);color:var(--ink);opacity:.7}
 .wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:22px;align-content:start}
 .wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
  padding:10px 12px 14px;transition:transform .12s,box-shadow .12s}
@@ -359,6 +389,7 @@ button{font-family:inherit}
 @media (hover:hover){.card:not(:hover) .vt:not(.on):not(:focus-within),.wc:not(:hover) .vt:not(.on):not(:focus-within){opacity:0}}  /* 細いカードでは見出しに重なるので、マウスを載せたときだけ */
 /* ---------- 中くらいの幅 ---------- */
 @media (max-width:1200px){
+ .mgrid{grid-template-columns:minmax(0,1fr)}.fside{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
  .wall{grid-template-columns:repeat(2,minmax(0,1fr))}
  .pkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pk.big{grid-column:1/-1;grid-row:auto}.pk.big .pic{aspect-ratio:16/9}
  .pkgrid.row{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -378,7 +409,8 @@ button{font-family:inherit}
   .wall{grid-template-columns:minmax(0,1fr);gap:16px}.wc.lead{grid-column:auto;grid-row:auto}.wc.lead .pic{min-height:0;aspect-ratio:16/10}
  .wc:not(.lead){display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:4px 12px;align-items:start}
  .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:6px;font-size:11px}
-  .shelves{gap:28px 0}.shelf{flex:none;width:100%}
+  .fside{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
+ .shelves{gap:28px 0}.shelf{flex:none;width:100%}
  .tapes{grid-template-columns:minmax(0,1fr);gap:10px;padding:0 4px 0 0}
  .tape{grid-template-columns:18px 110px minmax(0,1fr);align-items:start}.tape .spine{grid-row:auto;align-self:stretch}
  .tape .pic{margin:6px 0 6px 6px}.tape .lbl{padding:7px 10px 9px}
@@ -1670,7 +1702,47 @@ def _poster_colors(story, themes):
     return f"--tint:{tint};--deep:{deep};--hacc:{acc}"
 
 
-def _front(works, today, updated, themes=None):
+def _side(works, today, wishes=(), taste=()):
+    """トップの右の列（PC だけ。スマホでは消す）。上から：
+    これからの予定（日付のある記事があるときだけ）・欲しい物リスト・今週にぎやかな作品・投票から学んだあなたの好み。
+    どれもデータがなければ出さない。"""
+    out = []
+    ag = _agenda(works, today, 4)
+    if ag:
+        out.append(ag)
+    want = [x for x in wishes if (x.get("status") or "想要") in ("想要", "纠结")]
+    if want:
+        rows = []
+        for x in want[:4]:
+            img = x.get("image") or ""
+            if img and not img.startswith("http"):
+                img = "wishlist/" + img
+            price = (f'{e(str(x.get("currency", "")))} {x["price"]:,.0f}' if isinstance(x.get("price"), (int, float))
+                     else e(str(x.get("price") or "")))
+            torn = (x.get("status") == "纠结")
+            pic = (f'<img src="{e(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
+                   if _safe_url(img) or img.startswith("wishlist/") else "")
+            rows.append(f'<li><span class="wthumb">{pic}</span>'
+                        f'<span class="wt"><b>{e(x["name"])}</b><em>{price}</em></span>'
+                        f'<i class="tg" style="--sc:{"#985315" if torn else "var(--rose)"}"><span>{"迷い中" if torn else "欲しい"}</span></i></li>')
+        total = _total(wishes, "想要")
+        out.append(f'<div class="sbox swish"><h4><a href="wishlist.html">欲しい物リスト</a><small>{len(want)} 件</small></h4><ol>{"".join(rows)}</ol>'
+                   f'<p class="stot"><span>欲しいものの合計</span><b>{e(total)}</b></p>'
+                   f'<a class="smore" href="wishlist.html">♥ 全部見る</a></div>')
+    counts = sorted(((len(_recent(w, today)), w) for w in works if _recent(w, today)), key=lambda c: -c[0])[:6]
+    if counts:
+        top = counts[0][0]
+        bars = "".join(f'<li style="--sc:{_sec_color(w.get("section"))};--v:{n / top:.3f}"><a href="#{_wid(w["name"])}">'
+                       f'<span class="bn">{e(w["name"])}</span><span class="bar"></span><b>{n}</b></a></li>' for n, w in counts)
+        out.append(f'<div class="sbox shot"><h4>今週にぎやかな作品<small>記事の数</small></h4><ol>{bars}</ol></div>')
+    if taste:
+        chips = "".join(f'<li><span>{e(k.removeprefix(WORK_KEY))}</span><b>+{v}</b></li>' for k, v in taste[:8])
+        out.append(f'<div class="sbox staste"><h4>あなたの好み<small>👍 から学習</small></h4><ul>{chips}</ul>'
+                   f'<p>「気になるかも？」はこの順に選んでいます</p></div>')
+    return f'<aside class="fside">{"".join(out)}</aside>' if out else ""
+
+
+def _front(works, today, updated, themes=None, wishes=(), taste=()):
     """トップ：直近一週間の総覧。
     - ポスター：直近一週間でいちばん重要な 1 本（同じ重要度なら新しいほう）。地色はその記事の写真から
     - ほかの注目ニュース：次に重要な写真つきの記事（SPOT_COUNT 本）の写真の壁（文字だけの一覧は出さない）
@@ -1737,18 +1809,25 @@ def _front(works, today, updated, themes=None):
         shelves.append(f'<div class="shelf" style="--sc:{_sec_color(name)};--n:{len(tapes)}">'
                        f'<h3 class="sign">{e(_sec_name(name))}<small>{en + " · " if en else ""}{len(tapes)} 作品</small></h3>'
                        f'<div class="tapes">{"".join(tapes)}</div><div class="plank"></div></div>')
+    side = _side(works, today, wishes, taste)
     spot = ""
     if more or shelves:
         spot = (f'<div class="spot"><h2 class="sh"><span>ほかの注目ニュース</span><small>直近 {HOLD_DAYS} 日から · 下の棚は作品ごとの最新 1 本</small></h2>'
-                + (f'<div class="wall">{wall}</div>' if more else "")
+                + (f'<div class="mgrid"><div class="wall">{wall}</div>{side}</div>' if more else "")
                 + (f'<div class="shelves">{"".join(shelves)}</div>' if shelves else "") + "</div>")
-    return f'<section class="front" data-k="front" id="front">{poster}{spot}{_agenda(works, today)}</section>'
+    return f'<section class="front" data-k="front" id="front">{poster}{spot}</section>'
 
 
 AGENDA_MAX = 8
 
 
-def _agenda(works, today):
+def _left(d, today):
+    """あと何日（当日は「今日」）。"""
+    n = (dt.date.fromisoformat(d[:10]) - dt.date.fromisoformat(today)).days
+    return "今日" if n == 0 else f"あと {n} 日"
+
+
+def _agenda(works, today, limit=None):
     """これからの予定：記事に event（日程）があるものを、今日以降・日付順に最大 AGENDA_MAX 件。
     同じ日・同じ見出しは 1 回だけ。予定が 1 件もなければ何も出さない。"""
     rows, seen = [], set()
@@ -1764,10 +1843,10 @@ def _agenda(works, today):
         return ""
     rows.sort(key=lambda r: r[0])
     items = "".join(
-        f'<li style="--sc:{_sec_color(w.get("section"))}"><b>{e(_md(d))}</b>'
+        f'<li style="--sc:{_sec_color(w.get("section"))}"><b>{e(_md(d))}<small>{_left(d, today)}</small></b>'
         f'<span class="nm">{e(w["name"])}{" · " + e(ev["label"]) if ev.get("label") else ""}</span>'
         f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>'
-        for d, w, x, ev in rows[:AGENDA_MAX])
+        for d, w, x, ev in rows[:limit or AGENDA_MAX])
     return f'<div class="agenda"><h4>これからの予定<small>UPCOMING</small></h4><ol>{items}</ol></div>'
 
 
@@ -1999,7 +2078,7 @@ NAV_JS = """
 
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None):
+           motifs=None, themes=None, taste=()):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。"""
@@ -2013,7 +2092,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新 {updated}">'
-            + _front(works, latest["date"], updated, themes) + _picks(picks, works, fb)
+            + _front(works, latest["date"], updated, themes, wishes, taste) + _picks(picks, works, fb)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
     return f"""<!doctype html>
