@@ -184,12 +184,13 @@ button{font-family:inherit}
 .wc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
 .wc.lead{grid-column:span 2;grid-row:span 2}
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
-.wall{align-items:start}  /* カードは中身の高さ（隣の列に合わせて引き伸ばさない：空いた枠を作らない） */
-.wc.lead{align-self:stretch}.wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
+.wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
+.wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
+.wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
 .wc .tg{position:absolute;left:-8px;top:18px;z-index:2;box-shadow:2px 2px 0 var(--ink)}
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
-.wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2}
+.wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.5em}  /* 3 行分：段のカードの高さがそろう */
+.wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
 .wc:hover b{text-decoration:underline;text-underline-offset:3px}
 /* ジャンルの棚：ジャンルごとに看板、作品ごとに最新の 1 本をテープのように並べる（版面へのリンク） */
 .shelves{display:flex;flex-wrap:wrap;align-items:flex-end;gap:30px 26px;padding-top:6px}
@@ -318,6 +319,7 @@ button{font-family:inherit}
 .mini .pic .ph{font-size:12px}.mini .pic.icon{gap:4px}.mini .pic.icon img.ico{width:min(40px,30%);border-radius:9px;padding:4px}
 .mini .pic.icon .src{font-size:11px}
 .mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}
+.card.mini>:is(.xprice,.xevent,.xgal){grid-column:2}.card.mini>:is(.xprice,.xevent){justify-self:start}.xevent span{white-space:nowrap}  /* 日程・価格は字の下に（写真の下の空きに落とさない） */
 .side .card.mini{grid-template-columns:110px minmax(0,1fr)}
 .brief{padding:12px 26px 18px;border-top:1px solid var(--line)}
 .brief h4{margin:0 0 8px;font:900 13px var(--font-sans);letter-spacing:.12em;opacity:.8}
@@ -781,12 +783,19 @@ def _layout(stories, side=SIZE_SIDE["L"]):
     """一周内消息的版式（保持时间顺序）：
     重大 → 整行大图；头条 → 左 8 栏，右边竖排接下来的最多 side 条普通消息（没有就一张占整行）；
     一周里每期都有头条，只有最新的那条做大图，更早的头条当普通消息排；
-    普通消息做成左图右字的小卡片，三张一排，凑不满时平分整行。返回 [(行类型, 卡片列表)]。"""
+    普通消息做成左图右字的小卡片，一排最多三张，连着的几张平均分行（4 张 = 2+2）；只有一张时做成横长的大卡片。返回 [(行类型, 卡片列表)]。"""
     rows, normals, led = [], [], False
 
     def flush():
-        if normals:
-            rows.append(("normal", normals[:]))
+        # 连着的普通消息平均分行（一行最多 3 张）：4 张是 2+2、5 张是 3+2，不留下孤零零的一张占整行
+        n = len(normals)
+        if n:
+            k = -(-n // 3)
+            at = 0
+            for r in range(k):
+                c = n // k + (r < n % k)
+                rows.append(("normal", normals[at:at + c]))
+                at += c
             normals.clear()
 
     for x in stories:
@@ -804,8 +813,6 @@ def _layout(stories, side=SIZE_SIDE["L"]):
                 last[1].append(x)
             else:
                 normals.append(x)
-                if len(normals) == 3:
-                    flush()
     flush()
     return rows
 
@@ -816,7 +823,7 @@ def _row_h(kind, cards):
         return 310
     if kind == "lead":
         return 260 if len(cards) == 1 else 470
-    return 125
+    return 200 if len(cards) == 1 else 125
 
 
 def _height(stories, side=SIZE_SIDE["L"]):
@@ -834,8 +841,10 @@ def _render_rows(rows, today):
             else:
                 out.append(_tcard(cards[0], 8, i, today))
                 out.append('<div class="side">' + "".join(_tcard(c, 4, i, today, mini=True) for c in cards[1:]) + "</div>")
+        elif len(cards) == 1:  # 只有一张：小卡片占整行会空出一大片，做成左图右字的横长卡片
+            out.append(_tcard(cards[0], 12, i, today))
         else:
-            span = {1: 12, 2: 6, 3: 4}[len(cards)]
+            span = {2: 6, 3: 4}[len(cards)]
             out += [_tcard(c, span, i, today, mini=True) for c in cards]
         i += 1
     return "".join(out)
@@ -1955,7 +1964,7 @@ def _heat_badge(w):
 
 WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
 WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
-SPOT_COUNT = 12  # 「ほかの注目ニュース」の写真の壁：大きい 1 枚（2×2）+ 小さい 11 枚（3 列 5 段、右の列と高さが近い）。スマホは 6 枚まで
+SPOT_COUNT = 15  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 14 枚。WALL_JS が右の列の高さに収まる段数だけ出す。スマホは 6 枚まで
 
 
 def _day(story):
@@ -2283,8 +2292,7 @@ FIT_JS = """
     const p = img.closest('.pic');
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     const nat = img.naturalWidth / img.naturalHeight;
-    // 写真の壁のカード：枠を写真の比率に合わせる（ぼかしの余白を作らない）。極端な縦長・横長だけは少し切る
-    if (p.closest('.wc') && !(p.closest('.wc.lead') && innerWidth > 760)) { p.style.aspectRatio = Math.min(2, Math.max(0.8, nat)).toFixed(3); p.classList.add('fill'); return; }
+    if (p.closest('.wc') && !(p.closest('.wc.lead') && innerWidth > 760)) { p.classList.add('fill'); return; }   // 写真の壁：枠 16:10 にそろえて埋める（段の高さがそろう）
     const r = nat / (p.clientWidth / p.clientHeight);
     // そのほかの枠は、比率が近いときだけ埋める（遠いときはぼかしの上に全体を見せる）
     p.classList.toggle('fill', Math.abs(Math.log(r)) < (p.closest('.wc.lead') ? 0.6 : 0.27));   // 大きい一枚は写真の 55% 以上見えるなら埋める
@@ -2294,7 +2302,35 @@ FIT_JS = """
     if (img.complete) fit(img);
   });
   let t;
-  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit), 200); });
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(fit); wall(); }, 200); });
+  // 写真の壁を右の列とそろえる：右の列の高さに収まる段数だけカードを出し、残りの数十 px は各段の写真枠に等分して足す（空白を作らない）
+  const wall = () => {
+    const w = document.querySelector('.mgrid > .wall'), side = document.querySelector('.mgrid > .fside');
+    if (!w) return;
+    const cards = [...w.querySelectorAll(':scope > .wc')];
+    cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p) p.style.height = ''; });
+    if (!side || innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
+    const target = side.getBoundingClientRect().height;
+    // 大きい 1 枚＋横の 2 枚で 2 段、そのあと 3 枚ずつ 1 段
+    let rows = 2;
+    const show = r => cards.forEach((c, i) => { c.hidden = i >= 3 + (r - 2) * 3; });
+    show(rows);
+    while (3 + (rows - 1) * 3 <= cards.length) {
+      show(rows + 1);
+      if (w.getBoundingClientRect().height > target) { show(rows); break; }
+      rows++;
+    }
+    const gap = target - w.getBoundingClientRect().height;
+    if (gap > 0) {
+      const add = gap / rows;
+      cards.filter(c => !c.hidden && !c.classList.contains('lead')).forEach(c => {
+        const p = c.querySelector('.pic'); if (p) p.style.height = (p.getBoundingClientRect().height + add) + 'px';
+      });
+    }
+  };
+  wall();
+  if (document.fonts) document.fonts.ready.then(wall);
+  addEventListener('load', wall);
 })();
 """
 
@@ -2310,23 +2346,20 @@ NAV_JS = """
   const firstIssue = document.querySelector('.issue');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let cur = null, curIdx = -2, curProg = -1, ticking = false;
-  // 选中「在屏幕里占得最多」的区块；滚到最底时选最后一个（矮的末尾版面顶边永远到不了屏幕上方）。
-  // 换选中要比当前的多占 6% 屏幕高度，免得两个版面差不多时来回跳
+  // 选中「屏幕里露出标题的、最靠上的」区块（上一个版面只剩尾巴时就算到下一个）；
+  // 屏幕里一个标题都没有（在读长版面的中间）时选盖住屏幕顶边的那个。滚到最底时选最后一个
   function pick(top, bottom) {
-    const h = bottom - top;
     if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) {
       for (let i = marks.length - 1; i >= 0; i--) if (marks[i].getBoundingClientRect().top < bottom) return marks[i];
     }
-    let best = null, bestSeen = -1, curSeen = -1;
+    let covering = null;
     for (const el of marks) {
       const r = el.getBoundingClientRect();
-      if (r.bottom <= top) continue;
+      if (r.top >= top - 4 && r.top < bottom - 80) return el;   // 标题露出来了
+      if (r.top < top && r.bottom > top) covering = el;
       if (r.top >= bottom) break;
-      const seen = Math.min(r.bottom, bottom) - Math.max(r.top, top);
-      if (el === cur) curSeen = seen;
-      if (seen > bestSeen) { best = el; bestSeen = seen; }
     }
-    return cur && curSeen >= 0 && bestSeen - curSeen < h * 0.06 ? cur : best;
+    return covering;
   }
   function update() {
     ticking = false;
