@@ -343,6 +343,136 @@ button{font-family:inherit}
 .m-street .band::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;
  background:repeating-linear-gradient(-45deg,var(--acc) 0 10px,transparent 10px 20px);opacity:.8}
 .m-street .card .pic{clip-path:polygon(0 0,100% 0,100% 88%,94% 100%,0 100%)}
+/* 版面模版「noir」：黑色悬疑：斜雨线、暗角、褪色照片。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-noir{background-image:radial-gradient(ellipse at 50% 40%,transparent 50%,color-mix(in srgb,#000 30%,transparent) 100%),repeating-linear-gradient(104deg,color-mix(in srgb,var(--fg) 7%,transparent) 0 1px,transparent 1px 23px)}
+.m-noir .band .title{transform:none;letter-spacing:.18em;text-transform:uppercase;box-shadow:none;border-bottom:4px solid var(--acc);font-family:var(--font-serif)}
+.m-noir .card .pic img{filter:saturate(.55) contrast(1.12)}
+.m-noir .card:hover .pic img{filter:none}
+.m-noir .when b{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}
+/* 版面模版「magic」：魔法：星空、星座线、金边题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-magic{background-image:radial-gradient(1.5px 1.5px at 12% 18%,color-mix(in srgb,var(--acc) 70%,transparent),transparent),radial-gradient(1px 1px at 72% 12%,color-mix(in srgb,var(--fg) 60%,transparent),transparent),radial-gradient(1.5px 1.5px at 40% 64%,color-mix(in srgb,var(--acc) 60%,transparent),transparent),radial-gradient(1px 1px at 88% 78%,color-mix(in srgb,var(--fg) 50%,transparent),transparent),linear-gradient(28deg,transparent 49.8%,color-mix(in srgb,var(--acc) 14%,transparent) 50%,transparent 50.2%);background-size:180px 160px,220px 190px,160px 210px,250px 230px,360px 240px}
+.m-magic .band .title{font-family:var(--font-serif);border:2px solid var(--acc);outline:2px solid var(--acc);outline-offset:3px;box-shadow:none;transform:rotate(-1deg)}
+.m-magic .deco{right:30%;top:6px;font:400 34px/1 var(--font-serif);color:var(--acc);opacity:.7}
+.m-magic .deco.d2{right:26%;top:30px;font-size:18px}
+.m-magic .card .pic{border:1.5px solid var(--acc);outline:1px solid color-mix(in srgb,var(--acc) 40%,transparent);outline-offset:3px}
+/* 版面模版「snow」：雪山：飘雪、山形锯齿、冷色斜纹。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-snow{background-image:radial-gradient(circle at 20% 30%,color-mix(in srgb,var(--fg) 14%,transparent) 0 2px,transparent 2.5px),radial-gradient(circle at 70% 60%,color-mix(in srgb,var(--fg) 10%,transparent) 0 3px,transparent 3.5px),conic-gradient(from 135deg at 50% 0,color-mix(in srgb,var(--acc) 10%,transparent) 90deg,transparent 0);background-size:46px 46px,74px 74px,90px 46px;background-position:0 0,20px 30px,0 100%;background-repeat:repeat,repeat,repeat-x}
+.m-snow .band .title{border-radius:2px;transform:skewX(-10deg);box-shadow:5px 5px 0 var(--acc)}
+.m-snow .deco{right:28%;top:2px;font:400 46px/1 var(--font-sans);color:var(--acc);opacity:.45}
+.m-snow .card .pic{clip-path:polygon(0 0,100% 0,100% 88%,88% 100%,0 100%)}
+/* 版面模版「court」：球场：场地白线、球色胶囊题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-court{box-shadow:var(--shadow-l),inset 0 0 0 16px var(--bg),inset 0 0 0 18px color-mix(in srgb,var(--fg) 28%,transparent);background-image:linear-gradient(90deg,transparent calc(50% - 1px),color-mix(in srgb,var(--fg) 16%,transparent) calc(50% - 1px) calc(50% + 1px),transparent 0),linear-gradient(transparent 33%,color-mix(in srgb,var(--fg) 12%,transparent) 33% calc(33% + 2px),transparent 0)}
+.m-court .band .title{border-radius:999px;transform:none;background:var(--acc);color:var(--bg);box-shadow:4px 4px 0 var(--fg)}
+.m-court .card .pic{border-radius:6px}
+.m-court .when b{border-radius:999px}
+/* 版面模版「cafe」：咖啡店：杯印圆环、拍立得照片、贴纸题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-cafe{background-image:radial-gradient(circle at 18% 26%,transparent 36px,color-mix(in srgb,var(--acc) 16%,transparent) 37px 40px,transparent 41px),radial-gradient(circle at 82% 72%,transparent 28px,color-mix(in srgb,var(--acc) 12%,transparent) 29px 31px,transparent 32px),repeating-linear-gradient(0deg,color-mix(in srgb,var(--fg) 3%,transparent) 0 2px,transparent 2px 5px);background-size:420px 320px,380px 300px,auto}
+.m-cafe .band .title{border-radius:10px;transform:rotate(-2deg);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--acc)}
+.m-cafe .deco{right:30%;top:-4px;font:700 40px/1 var(--font-serif);color:var(--acc);opacity:.4}
+.m-cafe .card .pic{border:6px solid color-mix(in srgb,var(--bg) 40%,#FFF);border-bottom-width:16px;box-shadow:3px 3px 0 color-mix(in srgb,var(--fg) 25%,transparent)}
+/* 版面模版「paw」：猫咪：肉球脚印、圆角题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-paw{background-image:radial-gradient(ellipse 9px 8px at 30px 34px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent),radial-gradient(circle 3.6px at 20px 22px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent),radial-gradient(circle 3.6px at 28px 17px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent),radial-gradient(circle 3.6px at 37px 18px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent),radial-gradient(circle 3.6px at 43px 25px,color-mix(in srgb,var(--acc) 16%,transparent) 98%,transparent);background-size:110px 96px}
+.m-paw .band .title{border-radius:20px 20px 20px 4px;transform:rotate(-1.5deg)}
+.m-paw .card .pic{border-radius:16px}
+/* 版面模版「tech」：科技：细网格、切角照片、等宽题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-tech{background-image:linear-gradient(color-mix(in srgb,var(--fg) 6%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--fg) 6%,transparent) 1px,transparent 1px),linear-gradient(135deg,transparent 48%,color-mix(in srgb,var(--acc) 12%,transparent) 48% 52%,transparent 52%);background-size:24px 24px,24px 24px,240px 240px}
+.m-tech .band .title{font-family:var(--font-mono);letter-spacing:.06em;transform:none;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);box-shadow:none}
+.m-tech .deco{right:28%;top:8px;font:700 30px/1 var(--font-mono);color:var(--acc);opacity:.5}
+.m-tech .card .pic{clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.m-tech .when b{font-family:var(--font-mono)}
+/* 版面模版「cloud」：云朵睡衣：粉彩竖条、云边、大圆角。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-cloud{background-image:radial-gradient(circle at 50% 100%,color-mix(in srgb,var(--abg) 45%,transparent) 17px,transparent 18px),repeating-linear-gradient(90deg,color-mix(in srgb,var(--acc) 8%,transparent) 0 22px,transparent 22px 44px);background-size:36px 20px,auto;background-repeat:repeat-x,repeat;background-position:0 0,0 0}
+.m-cloud .band .title{border-radius:999px;transform:none;box-shadow:4px 4px 0 color-mix(in srgb,var(--acc) 60%,transparent)}
+.m-cloud .deco{right:28%;top:0;font:400 42px/1 var(--font-sans);color:var(--acc);opacity:.5}
+.m-cloud .card .pic{border-radius:22px;border-width:2px}
+/* 版面模版「lazy」：慵懒蛋黄：荷包蛋、融化的题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-lazy{background-image:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--acc) 24%,transparent) 0 20px,color-mix(in srgb,var(--fg) 9%,transparent) 21px 38px,transparent 39px),radial-gradient(circle at 75% 70%,color-mix(in srgb,var(--acc) 20%,transparent) 0 14px,color-mix(in srgb,var(--fg) 7%,transparent) 15px 28px,transparent 29px);background-size:260px 220px,200px 240px}
+.m-lazy .band .title{border-radius:40% 60% 34% 66%/60% 40% 70% 30%;transform:rotate(2deg);padding-bottom:12px}
+.m-lazy .deco{right:28%;top:12px;font:900 26px/1 var(--font-sans);color:var(--acc);opacity:.6;letter-spacing:.2em}
+.m-lazy .card .pic{border-radius:26px 26px 40px 12px}
+/* 版面模版「chainsaw」：电锯：锯齿边、飞溅墨点、粗暴斜题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-chainsaw{background-image:radial-gradient(circle at 22% 34%,color-mix(in srgb,var(--acc) 18%,transparent) 0 9px,transparent 10px),radial-gradient(circle at 26% 30%,color-mix(in srgb,var(--acc) 14%,transparent) 0 4px,transparent 5px),radial-gradient(ellipse 22px 9px at 70% 66%,color-mix(in srgb,var(--acc) 14%,transparent) 98%,transparent),radial-gradient(circle at 64% 22%,color-mix(in srgb,var(--fg) 10%,transparent) 0 3px,transparent 4px);background-size:300px 260px,300px 260px,340px 300px,180px 160px}
+.m-chainsaw .band{background-image:linear-gradient(135deg,var(--acc) 25%,transparent 25%),linear-gradient(225deg,var(--acc) 25%,transparent 25%);background-size:18px 18px;background-position:0 100%,0 100%;background-repeat:repeat-x;padding-bottom:20px}
+.m-chainsaw .band .title{transform:rotate(-3deg) skewX(-8deg);box-shadow:6px 6px 0 var(--acc)}
+.m-chainsaw .deco{right:26%;top:-6px;font:900 44px/1 var(--font-sans);color:var(--acc);opacity:.4;transform:rotate(-6deg) skewX(-12deg);letter-spacing:-.06em}
+.m-chainsaw .card .pic{clip-path:polygon(0 4%,4% 0,100% 0,100% 96%,96% 100%,0 100%)}
+/* 版面模版「beskar」：金属铠甲：拉丝金属、斜光、切角题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-beskar{background-image:linear-gradient(115deg,transparent 38%,color-mix(in srgb,var(--fg) 8%,transparent) 50%,transparent 62%),repeating-linear-gradient(0deg,color-mix(in srgb,var(--fg) 4%,transparent) 0 1px,transparent 1px 3px)}
+.m-beskar .band .title{transform:none;clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,14px 100%,0 50%);padding:8px 30px;box-shadow:none;letter-spacing:.1em}
+.m-beskar .card .pic{clip-path:polygon(0 0,100% 0,100% 85%,85% 100%,0 100%);border-color:var(--acc)}
+.m-beskar .when b{clip-path:polygon(4px 0,100% 0,calc(100% - 4px) 100%,0 100%)}
+/* 版面模版「island」：小岛：叶子、海浪底边、缝线题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-island{background-image:radial-gradient(ellipse 10px 5px at 30% 30%,color-mix(in srgb,var(--acc) 22%,transparent) 98%,transparent),radial-gradient(ellipse 5px 10px at 70% 64%,color-mix(in srgb,var(--acc) 18%,transparent) 98%,transparent),radial-gradient(circle at 50% 0,transparent 14px,color-mix(in srgb,var(--aacc) 18%,transparent) 15px);background-size:90px 80px,110px 96px,40px 20px;background-repeat:repeat,repeat,repeat-x;background-position:0 0,30px 20px,0 100%}
+.m-island .band .title{border-radius:14px;transform:rotate(-1deg);outline:2px dashed color-mix(in srgb,var(--afg) 60%,transparent);outline-offset:-7px}
+.m-island .deco{right:28%;top:0;font:400 40px/1 var(--font-sans);color:var(--acc);opacity:.55}
+.m-island .card .pic{border-radius:12px}
+/* 版面模版「concert」：演唱会：舞台光束、人群剪影点、双线题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-concert{background-image:conic-gradient(from 168deg at 28% -8%,transparent 0 6deg,color-mix(in srgb,var(--acc) 14%,transparent) 6deg 18deg,transparent 18deg),conic-gradient(from 170deg at 72% -8%,transparent 0 4deg,color-mix(in srgb,var(--aacc) 14%,transparent) 4deg 16deg,transparent 16deg),radial-gradient(circle at 50% 100%,color-mix(in srgb,var(--fg) 10%,transparent) 0 7px,transparent 8px);background-size:auto,auto,22px 14px;background-repeat:no-repeat,no-repeat,repeat-x;background-position:0 0,0 0,0 100%}
+.m-concert .band .title{transform:rotate(-1deg);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--acc),6px 6px 0 5px var(--acc)}
+.m-concert .deco{right:30%;top:0;font:400 38px/1 var(--font-sans);color:var(--acc);opacity:.6}
+.m-concert .deco.d2{right:25%;top:24px;font-size:26px;color:var(--aacc)}
+/* 版面模版「porcelain」：青花瓷：青海波纹、双线框题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-porcelain{background-image:radial-gradient(circle at 100% 150%,transparent 24%,color-mix(in srgb,var(--acc) 16%,transparent) 24% 27%,transparent 27% 35%,color-mix(in srgb,var(--acc) 13%,transparent) 35% 38%,transparent 38% 46%,color-mix(in srgb,var(--acc) 10%,transparent) 46% 49%,transparent 49%),radial-gradient(circle at 0 150%,transparent 24%,color-mix(in srgb,var(--acc) 16%,transparent) 24% 27%,transparent 27% 35%,color-mix(in srgb,var(--acc) 13%,transparent) 35% 38%,transparent 38% 46%,color-mix(in srgb,var(--acc) 10%,transparent) 46% 49%,transparent 49%);background-size:60px 30px}
+.m-porcelain .band .title{font-family:var(--font-serif);transform:none;border:3px double var(--abg);outline:2px solid var(--acc);outline-offset:-8px;box-shadow:5px 5px 0 var(--acc)}
+.m-porcelain .deco{right:28%;top:2px;font:400 36px/1 var(--font-serif);color:var(--acc);opacity:.5}
+.m-porcelain .card .pic{border:2px solid var(--acc);border-radius:4px}
+/* 版面模版「neon」：霓虹合成波：夕阳圆、透视网格、错色题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-neon{background-image:radial-gradient(circle at 84% 22%,color-mix(in srgb,var(--acc) 26%,transparent) 0 70px,transparent 71px),repeating-linear-gradient(color-mix(in srgb,var(--acc) 18%,transparent) 0 1px,transparent 1px 22px),linear-gradient(90deg,color-mix(in srgb,var(--acc) 18%,transparent) 1px,transparent 1px);background-size:auto,100% 38%,44px 38%;background-repeat:no-repeat,no-repeat,repeat-x;background-position:0 0,0 100%,0 100%}
+.m-neon .band .title{font-style:italic;transform:skewX(-12deg);text-shadow:3px 0 0 var(--acc),-3px 0 0 var(--aacc);box-shadow:none;border-bottom:4px solid var(--acc)}
+.m-neon .card .pic{box-shadow:6px 6px 0 var(--acc);border-color:var(--acc)}
+/* 版面模版「comic」：美漫：大网点、放射线、粗框照片。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-comic{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent) 2px,transparent 2.6px),repeating-conic-gradient(from 0deg at 100% 0,color-mix(in srgb,var(--fg) 6%,transparent) 0 5deg,transparent 5deg 10deg);background-size:12px 12px,auto}
+.m-comic .band .title{text-transform:uppercase;letter-spacing:.04em;transform:rotate(-2deg);box-shadow:6px 6px 0 var(--acc);border:3px solid var(--fg)}
+.m-comic .deco{right:26%;top:-4px;font:900 40px/1 var(--font-sans);color:var(--acc);opacity:.45;transform:rotate(-10deg)}
+.m-comic .card .pic{border:4px solid var(--fg)}
+.m-comic .card:nth-child(even) .pic{transform:rotate(1deg)}
+/* 版面模版「pixel」：像素：8 位方格、阶梯阴影、方块照片框。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-pixel{background-image:conic-gradient(color-mix(in srgb,var(--fg) 5%,transparent) 25%,transparent 0 50%,color-mix(in srgb,var(--fg) 5%,transparent) 0 75%,transparent 0);background-size:16px 16px}
+.m-pixel .band .title{font-family:var(--font-mono);transform:none;box-shadow:4px 0 0 var(--acc),0 4px 0 var(--acc),4px 4px 0 var(--acc),8px 8px 0 var(--fg)}
+.m-pixel .deco{right:28%;top:10px;font:700 22px/1 var(--font-mono);color:var(--acc);opacity:.55;letter-spacing:.1em}
+.m-pixel .card .pic{border:4px solid var(--fg);clip-path:polygon(0 6px,6px 6px,6px 0,calc(100% - 6px) 0,calc(100% - 6px) 6px,100% 6px,100% calc(100% - 6px),calc(100% - 6px) calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,6px calc(100% - 6px),0 calc(100% - 6px))}
+/* 版面模版「rune」：奇幻符文：菱形格、金边装饰题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-rune{background-image:repeating-linear-gradient(45deg,color-mix(in srgb,var(--acc) 9%,transparent) 0 1px,transparent 1px 28px),repeating-linear-gradient(-45deg,color-mix(in srgb,var(--acc) 9%,transparent) 0 1px,transparent 1px 28px)}
+.m-rune .band .title{font-family:var(--font-serif);letter-spacing:.08em;transform:none;border:2px solid var(--acc);box-shadow:0 0 0 4px var(--abg),0 0 0 6px var(--acc)}
+.m-rune .deco{right:28%;top:6px;font:400 28px/1 var(--font-serif);color:var(--acc);opacity:.6}
+.m-rune .deco.d2{right:20%;top:6px;font-size:28px}
+.m-rune .card .pic{border:2px solid var(--acc);outline:1px solid color-mix(in srgb,var(--acc) 45%,transparent);outline-offset:-6px}
+/* 版面模版「idol」：偶像：斜缎带、两色圆点、双线题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-idol{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 20%,transparent) 3px,transparent 3.5px),radial-gradient(circle,color-mix(in srgb,var(--aacc) 30%,transparent) 2px,transparent 2.5px),repeating-linear-gradient(-30deg,transparent 0 60px,color-mix(in srgb,var(--acc) 7%,transparent) 60px 74px);background-size:40px 40px,40px 40px,auto;background-position:0 0,20px 20px,0 0}
+.m-idol .band .title{border-radius:999px;transform:rotate(-1.5deg);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--acc)}
+.m-idol .deco{right:28%;top:0;font:400 38px/1 var(--font-sans);color:var(--acc);opacity:.6}
+.m-idol .deco.d2{right:23%;top:28px;font-size:20px}
+.m-idol .card .pic{border-radius:14px}
+/* 版面模版「ink」：水墨：圆相墨圈、淡墨笔触、毛边题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-ink{background-image:radial-gradient(circle at 88% 16%,transparent 62px,color-mix(in srgb,var(--acc) 20%,transparent) 64px 72px,transparent 76px),radial-gradient(ellipse 340px 70px at 10% 92%,color-mix(in srgb,var(--fg) 8%,transparent),transparent 70%),radial-gradient(ellipse 200px 40px at 60% 8%,color-mix(in srgb,var(--fg) 6%,transparent),transparent 70%);background-repeat:no-repeat}
+.m-ink .band .title{font-family:var(--font-serif);border-radius:3px 14px 4px 18px/18px 4px 14px 3px;transform:rotate(-1.5deg);box-shadow:5px 5px 0 var(--acc)}
+.m-ink .deco{right:26%;top:-8px;font:900 60px/1 var(--font-serif);color:var(--acc);opacity:.3}
+.m-ink .card .pic{border:2.5px solid var(--fg);border-radius:2px 10px 3px 12px}
+/* 版面模版「sakura」：樱花：花瓣飘落、胶囊题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-sakura{background-image:radial-gradient(ellipse 8px 5px at 22% 30%,color-mix(in srgb,var(--acc) 26%,transparent) 98%,transparent),radial-gradient(ellipse 5px 8px at 64% 58%,color-mix(in srgb,var(--acc) 20%,transparent) 98%,transparent),radial-gradient(ellipse 7px 4px at 84% 18%,color-mix(in srgb,var(--aacc) 30%,transparent) 98%,transparent);background-size:120px 110px,150px 130px,170px 160px}
+.m-sakura .band .title{border-radius:999px;transform:rotate(-1deg)}
+.m-sakura .deco{right:28%;top:2px;font:400 36px/1 var(--font-sans);color:var(--acc);opacity:.55}
+.m-sakura .card .pic{border-radius:10px}
+/* 版面模版「sport」：运动：斜向速度带、跑道线、斜体题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-sport{background-image:repeating-linear-gradient(-62deg,color-mix(in srgb,var(--fg) 5%,transparent) 0 34px,transparent 34px 68px),repeating-linear-gradient(0deg,transparent 0 46px,color-mix(in srgb,var(--acc) 12%,transparent) 46px 48px)}
+.m-sport .band .title{font-style:italic;text-transform:uppercase;transform:skewX(-14deg);box-shadow:6px 6px 0 var(--acc)}
+.m-sport .deco{right:28%;top:6px;font:900 34px/1 var(--font-sans);color:var(--acc);opacity:.5;font-style:italic}
+.m-sport .card .pic{clip-path:polygon(4% 0,100% 0,96% 100%,0 100%)}
+/* 版面模版「garden」：野餐格纹：格子布、缝线题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-garden{background-image:repeating-linear-gradient(0deg,color-mix(in srgb,var(--acc) 8%,transparent) 0 14px,transparent 14px 28px),repeating-linear-gradient(90deg,color-mix(in srgb,var(--acc) 8%,transparent) 0 14px,transparent 14px 28px)}
+.m-garden .band .title{border-radius:8px;transform:rotate(-1deg);outline:2px dashed color-mix(in srgb,var(--afg) 55%,transparent);outline-offset:-6px}
+.m-garden .deco{right:28%;top:2px;font:400 34px/1 var(--font-sans);color:var(--acc);opacity:.55}
+.m-garden .card .pic{border-radius:8px}
+/* 版面模版「notebook」：笔记本：横线、红色页边线、纸胶带题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-notebook{background-image:linear-gradient(90deg,transparent 46px,color-mix(in srgb,var(--acc) 30%,transparent) 46px 48px,transparent 48px),repeating-linear-gradient(0deg,transparent 0 27px,color-mix(in srgb,var(--fg) 10%,transparent) 27px 28px)}
+.m-notebook .band .title{transform:rotate(-2deg);background:color-mix(in srgb,var(--acc) 85%,var(--bg));color:var(--bg);clip-path:polygon(2% 8%,0 0,100% 4%,98% 50%,100% 100%,0 96%,3% 50%);box-shadow:none}
+.m-notebook .deco{right:28%;top:4px;font:400 32px/1 var(--font-serif);color:var(--acc);opacity:.5}
+.m-notebook .card .pic{transform:rotate(-1deg);box-shadow:3px 3px 0 color-mix(in srgb,var(--fg) 20%,transparent)}
+/* 版面模版「space」：宇宙：轨道圆环、小星星、圆角题字。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
+.m-space{background-image:radial-gradient(circle at 86% 20%,transparent 54px,color-mix(in srgb,var(--fg) 12%,transparent) 55px 56px,transparent 57px 96px,color-mix(in srgb,var(--fg) 8%,transparent) 97px 98px,transparent 99px),radial-gradient(1.5px 1.5px at 30% 40%,color-mix(in srgb,var(--fg) 60%,transparent),transparent),radial-gradient(1px 1px at 70% 80%,color-mix(in srgb,var(--fg) 50%,transparent),transparent);background-size:auto,140px 120px,170px 150px;background-repeat:no-repeat,repeat,repeat}
+.m-space .band .title{border-radius:16px;transform:rotate(-1deg);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--acc)}
+.m-space .deco{right:28%;top:2px;font:400 36px/1 var(--font-sans);color:var(--acc);opacity:.55}
+.m-space .card .pic{border-radius:50% 50% 12px 12px/18% 18% 12px 12px}
 /* ---------- 気になるかも？：店長のおすすめ POP ---------- */
 .picks{--ac:var(--rose);background:var(--sheet);color:var(--ink);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--rose);padding:22px 26px 28px}
 .pkhead{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
@@ -416,13 +546,31 @@ button{font-family:inherit}
 .vote button{opacity:.75}
 .brief li .vt{position:static;margin:-6px -6px -6px auto;align-self:center}
 .boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
-.boom svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
+.boom>svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
  filter:drop-shadow(4px 4px 0 var(--ink));transform:translate(-50%,-50%) scale(.2);opacity:0}
-.boom.no svg{width:64px;height:64px;fill:var(--card)}
-.boom b{position:absolute;left:0;top:-82px}  /* 👍 がいちばん高い位置の中心 */
-.boom i{position:absolute;left:0;top:0;width:28px;height:6px;margin:-3px 0 0;background:var(--c);box-shadow:2px 2px 0 var(--ink);transform-origin:0 50%;
- transform:rotate(var(--a)) translateX(40px) scaleX(0);animation:spark .5s cubic-bezier(.2,.8,.3,1) .12s both}
-@keyframes spark{55%{transform:rotate(var(--a)) translateX(70px) scaleX(1)}100%{transform:rotate(var(--a)) translateX(92px) scaleX(0)}}
+.boom.no>svg{width:64px;height:64px;fill:var(--card)}
+.boom>b{position:absolute;left:0;top:-82px}  /* 👍 がいちばん高い位置の中心。飛び散るものはここから */
+.fx-p{position:absolute;left:0;top:0;display:block;opacity:0;font-style:normal}
+.fx-bar{width:28px;height:6px;background:var(--c);box-shadow:2px 2px 0 var(--ink)}
+.fx-line{width:70px;height:3px;background:var(--c)}
+.fx-dot{width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:2px 2px 0 var(--ink)}
+.fx-square{width:10px;height:10px;background:var(--c);box-shadow:3px 3px 0 var(--ink)}
+.fx-star{width:22px;height:22px;background:var(--c);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.fx-diamond{width:14px;height:14px;background:var(--c);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.fx-petal{width:16px;height:11px;background:var(--c);border-radius:80% 0 80% 0}
+.fx-paper{width:9px;height:15px;background:var(--c)}
+.fx-ring{width:70px;height:70px;border-radius:50%;border:5px solid var(--c)}
+.fx-beam{width:34px;height:180px;background:linear-gradient(transparent,color-mix(in srgb,var(--c) 55%,transparent));clip-path:polygon(40% 0,60% 0,100% 100%,0 100%)}
+.fx-slice{width:110px;height:9px;background:linear-gradient(90deg,var(--c) 0 60%,var(--ink) 60% 75%,var(--card) 75%)}
+.fx-strip{width:260px;height:44px;background:var(--ink);border-top:8px dotted var(--card);border-bottom:8px dotted var(--card);box-sizing:border-box}
+.fx-stripe{width:300px;height:30px;background:repeating-linear-gradient(-45deg,var(--c) 0 16px,var(--ink) 16px 32px);box-shadow:3px 3px 0 var(--ink)}
+.fx-note,.fx-heart{font:900 28px/1 var(--font-sans);color:var(--c);text-shadow:2px 2px 0 var(--ink)}
+.fx-emb{width:38px;height:38px;filter:drop-shadow(2px 2px 0 var(--ink))}
+.fx-emb svg{width:100%;height:100%;display:block}
+.fx-txt{position:absolute;left:0;top:-150px;white-space:nowrap;font:900 34px/1 var(--font-sans);letter-spacing:.04em;color:var(--c);
+ -webkit-text-stroke:1.5px var(--ink);text-shadow:4px 4px 0 var(--ink);opacity:0}
+.fx-txt.stamp{top:-96px;padding:4px 14px;border:5px solid var(--alert);color:var(--alert);background:color-mix(in srgb,var(--card) 85%,transparent);
+ -webkit-text-stroke:0;text-shadow:none;font-family:var(--font-serif);border-radius:6px}
 .downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
@@ -590,7 +738,7 @@ html{scroll-behavior:smooth}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.16 18:01</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.16 18:12</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
