@@ -900,3 +900,19 @@ items:
     tmdb: "tv/82856"
     notes: "2026-10-15 从网页设置页加进来的。关注：新一季 / 续集、上映 / 播出日期、在哪看、预告片、演员、幕后。维基数据：美國太空歌劇網路影集。"
     wiki: ["en:The Mandalorian", "ja:マンダロリアン"]
+
+  - name: "あつ森"
+    type: game
+    section: "游戏"
+    size: M
+    subtitle: "あつまれ どうぶつの森"
+    keywords: ["あつ森", "集合啦！动物森友会", "あつまれ どうぶつの森", "모여봐요 동물의 숲", "Animal Crossing: New Horizons"]
+    match: ["あつ森", "集合啦！动物森友会", "あつまれ どうぶつの森", "모여봐요 동물의 숲", "Animal Crossing: New Horizons", "Animal Crossing New Horizons", "ACNH", "AC:NH", "Animal Crossing: NH", "Animal Crossing NH", "모동숲"]
+    exclude: ["転売", "メルカリ", "中古", "二手", "轉賣", "转卖", "resale", "おすすめ", "まとめ", "合集", "懶人包", "懒人包", "ランキング", "推薦"]
+    news_langs: ["ja-JP"]
+    priority: "什么时候能玩（测试招募、上线日期、预约）；大版本更新、新角色、周年活动"
+    urgent_patterns:
+      - "(あつ森|集合啦！动物森友会|あつまれ どうぶつの森|모여봐요 동물의 숲|Animal Crossing: New Horizons|Animal Crossing New Horizons|ACNH|AC:NH|Animal Crossing: NH|Animal Crossing NH).{0,30}(测试|測試|封測|内测|β|CBT|テスト|事前登録|預約|预约|上線|上线|正式サービス|配信開始|リリース|發售|发售|release date|launch|beta)"
+      - "(あつ森|集合啦！动物森友会|あつまれ どうぶつの森|모여봐요 동물의 숲|Animal Crossing: New Horizons|Animal Crossing New Horizons|ACNH|AC:NH|Animal Crossing: NH|Animal Crossing NH).{0,30}(新角色|新キャラ|周年|週年|大型アップデート|大版本|新版本|Ver\\.?\\s?\\d)"
+    site: "http://www.animal-crossing.com/new-horizons"
+    notes: "2026-10-16 从网页设置页加进来的。关注：什么时候能玩、版本更新、活动、新角色。维基数据：動物森友會系列的第七部作品。"
