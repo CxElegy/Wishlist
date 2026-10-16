@@ -400,6 +400,66 @@ items:
       split: true
       font: serif
 
+  - name: 哈利波特剧集
+    motif: film          # 版面の装飾（EDITING.md「作品ごとの装飾」）
+    subtitle: HBO「Harry Potter」· ドラマ版ハリー・ポッター
+    size: M
+    type: show
+    tmdb: tv/224377
+    keywords: [
+      "HBO Harry Potter series", "Harry Potter HBO Max", "Harry Potter TV series premiere", "Harry Potter series trailer",
+      "ハリー・ポッター ドラマ HBO", "ドラマ版 ハリー・ポッター", "哈利波特 剧集 HBO", "HBO 哈利波特 影集"
+    ]
+    # 单写 Harry Potter 会混进电影、游戏、周边、主题乐园，必须带上剧集 / HBO / 新演员这些说法（匹配时忽略大小写和空格）
+    match: [
+      Harry Potter series, Harry Potter TV, Harry Potter show, HBO's Harry Potter, HBO Harry Potter, Harry Potter HBO,
+      Dominic McLaughlin, Arabella Stanton, Alastair Stout, Francesca Gardiner, Paapa Essiedu,
+      ドラマ版ハリー, ハリー・ポッタードラマ, ドラマ「ハリー・ポッター」, HBO版, 哈利波特剧集, 哈利波特影集, 哈利波特劇集, HBO版哈利
+    ]
+    exclude: [
+      Hogwarts Legacy, ホグワーツ・レガシー, 霍格沃茨之遗, 霍格華茲的傳承, LEGO, レゴ, USJ, ユニバーサル, Universal Studios, 環球影城, 环球影城,
+      Cursed Child, 呪いの子, 被詛咒的孩子, 被诅咒的孩子, メルカリ, 中古, 二手
+    ]
+    news_langs: [en-US, ja-JP, zh-CN, zh-TW]
+    max_stories: 5
+    priority: >-
+      第一季 12 月 25 日首播能不能按时看到：日本在哪个平台、哪天能看（U-NEXT 等），中文地区的播出；
+      首播日期有没有变、每周更新还是一次放出；新预告片、海报、剧照；其次是第二季（密室）的拍摄进度和档期、主要演员消息
+    priority_keywords: [
+      premiere, premiere date, release date, 首播, 开播, 開播, 定档, 定檔, 配信, 配信開始, 配信日, 放送, 日本,
+      U-NEXT, HBO Max, trailer, teaser, 预告, 預告, 予告, 特報, poster, ポスター, 剧照, first look,
+      Season 2, 第二季, シーズン2, Chamber of Secrets, 秘密の部屋, 密室, filming, 撮影, 拍摄, 杀青
+    ]
+    urgent_patterns:
+      # 日本配信决定（版面只收剧集的消息，所以这里不用再区分电影）
+      - '(ハリー・ポッター|Harry Potter).{0,40}(U-NEXT|日本配信|国内配信|配信日|配信開始|配信決定|独占配信)'
+      - '(U-NEXT).{0,30}(ハリー・ポッター|Harry Potter)'
+      # 首播日期变更 / 延期
+      - '(HBO|HBO Max).{0,30}Harry Potter.{0,40}(delay(ed)?|postpone[sd]?|pushed|moved|延期|推迟|延後)'
+      - 'Harry Potter (series|show|TV series).{0,40}(delay(ed)?|postpone[sd]?|pushed (back|to)|new (premiere|release) date)'
+      # 新预告片
+      - '(HBO|HBO Max).{0,30}Harry Potter.{0,30}(trailer|予告|预告|預告)'
+      - '(official trailer|new trailer|final trailer|trailer|予告|预告|預告).{0,30}(Harry Potter (series|show|TV)|HBO.{0,10}Harry Potter)'
+    notes: >-
+      HBO 把七本原著拍成七季的剧集，一本一季。主创 Francesca Gardiner，Mark Mylod 执导多集，在 Leavesden 华纳片场拍摄。
+      Dominic McLaughlin 演哈利，Arabella Stanton 演赫敏，Alastair Stout 演罗恩；John Lithgow（邓布利多）、Paapa Essiedu（斯内普）、
+      Janet McTeer（麦格）、Nick Frost（海格）。已知背景（2026/10）：第一季《魔法石》8 集，2026 年 12 月 25 日在 HBO / HBO Max 首播
+      （原先说 2027 年，预告片里改成了圣诞节），一次放出还是每周更新未公布；第二季《密室》已确认，2026 年秋开拍，档期未定。
+      日本还没官宣在哪看，HBO 在日本的合作平台是 U-NEXT（只是推测，不要当消息写）。
+      只报这部剧：电影系列、游戏（Hogwarts Legacy 等）、舞台剧《被诅咒的孩子》、主题乐园和周边都不报；
+      选角传闻、网友争议没有官方确认的按传闻处理，演员遭受网暴这类消息只在官方回应时报一条。
+    status: 第一季《魔法石》2026/12/25 HBO 首播 · 日本配信未公布
+    site: https://www.hbo.com/harry-potter
+    theme:   # 霍格沃茨的夜：深藏青 + 格兰芬多酒红 + 烛光金，对角分割，衬线
+      bg: "#121826"
+      fg: "#F1E9D6"
+      accent: "#D4A646"
+      alt_bg: "#740001"
+      alt_fg: "#F1E9D6"
+      alt_accent: "#E7C66B"
+      split: true
+      font: serif
+
   - name: ILLIT
     motif: pop          # 版面の装飾（EDITING.md「作品ごとの装飾」）
     subtitle: アイリット · 日本公演特别关注
