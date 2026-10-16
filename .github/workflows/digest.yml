@@ -98,13 +98,13 @@ jobs:
 
       # 新加的关注项已经收集到消息、但当天还没被 AI 编辑过：立刻叫 Claude 定时任务（Routine）编一次，
       # 不用等 12:43 / 23:43。必须在推送之后，Routine 拉仓库时才看得到新条目。
-      # 需要仓库 Secret ROUTINE_FIRE_TOKEN（claude.ai/code/routines → AI 编辑 → 编辑 → 添加触发器 → API → 生成令牌）；
+      # 需要仓库 Secret ROUTINE_FIRE_TOKEN（claude.ai/code/routines → AI 编辑（新）→ 编辑 → 添加触发器 → API → 生成令牌）；
       # 没设置就跳过，照旧等定时编排
       - name: 新关注项 → 立刻 AI 编辑
         if: env.NEW_ITEMS != ''
         env:
           ROUTINE_FIRE_TOKEN: ${{ secrets.ROUTINE_FIRE_TOKEN }}
-          ROUTINE_ID: trig_01QyUjFidUCUR1sngyt8wdBt
+          ROUTINE_ID: trig_01Ly92RcW35cBwZ9amWZr11j   # 「关注清单通信 · AI 编辑（新）」：在挂着本仓库的会话里跑，才推得上去
         run: |
           if [ -z "$ROUTINE_FIRE_TOKEN" ]; then echo "没设置 ROUTINE_FIRE_TOKEN，等定时编排"; exit 0; fi
           git pull -q --rebase || true
