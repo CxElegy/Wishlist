@@ -21,15 +21,35 @@
 ⑤ 同一版面取景要统一：有半身像就去掉全身像。抠完一定要用眼睛看一遍（侧脸、蒙面等检测不到脸的会提示「目で確認」）。
 实拍剧 / 电影翻拍：用**这一版的演员页**的照片，不用角色页（多是旧版的剧照）。
 
-小元素选什么（按版面的种类）：
-- **有角色 / 人物的作品** → 人物按轮廓抠出（`--cut`）。**脸的大小要统一**：`python scripts/emblem.py --fit 作品名` 测出脸，
-  脸小的（全身）往下裁到「脸约占贴纸高度的 32%」，脸大的（特写）记下 `fs`，网页上缩小显示。测不到脸的（侧脸、面具、吉祥物）：
-  细长的全身照只留上半身（`upper_body`，自动判断不对时在小元素上写 `upper: true / false`）。选图时优先脸清楚、正面的图。
-  **不要只有脸的特写**（脸超过贴纸高度一半）：`--fit` 会自动在同一角色的页面里找半身像（`find_bust`）。
-  优先找官方立绘（游戏的宣传图等），排除活动服装（泳装、万圣节、女仆…不是平常的样子）和背景杂乱的动画截图；找不到合适的就不放这个角色。
-- **品牌**（星巴克、三星、gelato pique…）→ 官方 Logo（Wikimedia 的 Logo 文件，`shape: logo`）。
-- **主题类别**（网球、滑雪、猫用品、MMORPG…）→ 代表主题的物品图标（Twemoji，`shape: icon`，CC-BY 4.0，README 有署名）。
-- 小元素放在标题栏里、下端对齐标题栏：可以往上超出版面，但**不能盖住下面的新闻**。做完在 1400 / 390 px 截图看一遍，并量网页上的文字对比度（见「配色的协调」）。一览和试玩：テーマ見本页。
+小元素选什么（按作品的种类，枚数的规矩在 `scripts/emblem_fill.py` 的 `RULES`，管理页「小元素」能看到每个版面的现状）：
+
+| 种类（`emblem_kind`） | 收什么 | 目标枚数（最少〜最大） |
+|---|---|---|
+| `person` 本人（周杰伦、Vaundy） | 同一个人的**不同照片**（年代、造型、场合） | 6（3〜10） |
+| `group` 偶像团（ILLIT、A2O LITE） | **所有主要成员**各 1 张，名字写在 `emblem_who` | 成员数（3〜10） |
+| `character` 动画 / 游戏 / 剧 | 动画：主角团 + 人气高的角色（AniList）；游戏、剧：主要角色 / 主要演员，名字写在 `emblem_who`（实拍剧用这一版的演员） | 6（3〜10；`emblem_who` 里挑出几个就是几个） |
+| `brand` 品牌 | 官方 Logo，1 种就够 | 1 |
+| `topic` 主题 / 赛事 | 主题的专属物：Logo、奖杯、官方用球、场地，最后用 Twemoji 图标垫底 | 3（2〜5） |
+
+- 默认每个版面最多 6 张，人物多的（团、角色多的作品）最多 10 张（`emblem_max` 可改）。
+- **不再有 `emblem_skip` 这条退路**：种类的取法顺序里最后是 Twemoji 图标，所以不会是 0 张。取不到好图就换下一种取法，不是放弃。
+- 在 `items.yaml` 里写：`emblem_kind`（种类）、`emblem_who`（要收的名字：成员 / 角色 / 演员）、`emblem_subject`（本人或品牌的搜索名）、
+  `emblem_fandom` / `emblem_api`（Fandom 的 wiki 名 / 其他 MediaWiki 的 api.php）、`emblem_icon`（Twemoji 的编码，空格分隔）、`emblem_urls`（直接指定的官方图）。
+  没写 `emblem_kind` 时按 `type` 推定（anime / game / show → character，event → person，product → brand，category → topic）。
+
+### 补齐的流程（AI 编辑每次都先做；流程图在管理页「プロセス → 小元素の選定」）
+
+```bash
+python scripts/emblem_fill.py --audit                  # 全部版面：种类、目标、现有枚数（足りない順）
+python scripts/emblem_fill.py "作品名"                  # 候选图 → /tmp/wishlist-emblem/<名>.jpg（带编号的一览）和 .json
+python scripts/emblem_fill.py "作品名" --commit 1,3,5   # 看过一览后选编号：写进 items.yaml，人物自动抠图、统一脸的大小（--replace 置换）
+python scripts/emblem_fill.py --auto                   # 不看一览，按固定顺序选（Web 搜索只是最后手段）
+```
+
+取法的顺序（足りるまで次へ）：直接指定 → AniList → Fandom → Wikipedia → Commons → 集めた新闻的配图 → 公式サイト → Web 图片搜索 → Twemoji。
+**本人确认**（`scripts/face_id.py`）：人物 / 团体的照片要检测到脸，并且和记事的代表图是同一个人（YuNet + SFace，相似度 ≥ 0.363；代表图不对时按「最大的同脸集团」多数决）。
+观众席、画作、荧光棒、别人的照片会自动落掉。**还要用眼睛看一览图再选号码**：Web 搜索和新闻配图的出处不确定，别人 / 广告图也会混进来。
+刚出道的团（Wiki 没有）：先用集めた新闻的配图（标题里有成员名）和公式サイト，成员名写进 `emblem_who`。
 
 ## 什么时候做
 

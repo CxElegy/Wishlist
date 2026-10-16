@@ -102,3 +102,8 @@
 只看不改、不用口令（`render.render_admin` + `digest.admin_data`）：运行状况（最新一期、收集条数、哪几天还没 AI 编辑、几天没新消息的关注项、周报）、
 打开时实时读取的 GitHub Actions 结果 / 设置页的关注项请求（`list_item_requests()`）/ 照片收件箱（`get_photo_inbox()`）、
 各关注项的篇幅・7 天记事数・速報数・最新记事・話題度・缺的字段、投票统计（来自 `state/feedback.json`）。要加新数字就在 `admin_data` 里算、在 `render_admin` 里显示。
+- **プロセス一覧**（管理ページ上部）：站点背后的每个仕组み（小元素の選定・ニュース収集・AI 編集・ページ生成・設定ページの依頼・写真から愿望…）是 `scripts/processes.py` 里的一项数据，
+  点缩图就打开详细的流程（手顺、判断的条件、从哪里取、在哪里运行、费用）。**新加一个仕组み就在 `PROCESSES` 里加一项**，管理页自动出缩图和流程；改了某个仕组み的逻辑，也同步改这里的流程。
+- **小元素（emblem）**：每个版面右上的贴纸。规矩（种类 → 目标枚数 → 取法的顺序 → 本人确认）在 `scripts/emblem_fill.py`、`scripts/face_id.py`，说明在 `TEMPLATES.md`；
+  管理页「小元素」列出每个版面的种类・目标・现有枚数，没到目标的 AI 编辑会自动补（`python scripts/emblem_fill.py --audit`）。
+

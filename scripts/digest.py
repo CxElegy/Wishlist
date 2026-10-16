@@ -1691,6 +1691,18 @@ def with_manual_themes(issues, items):
 ADMIN_ID_BY_TYPE = {"game": "steam_appid", "anime": "anilist_id", "show": "tmdb"}  # 種類ごとに、あると話題度・現状が取れる ID
 
 
+def emblem_status(item):
+    """管理ページ用：小元素の種類・目標・枚数・内訳（scripts/emblem_fill.py と同じ規則）。"""
+    import emblem_fill
+    st = emblem_fill.status(item)
+    shapes = {}
+    for x in item.get("emblem") or []:
+        if isinstance(x, dict):
+            k = {"cutout": "切り抜き", "badge": "カード", "logo": "ロゴ", "icon": "アイコン"}.get(x.get("shape"), x.get("shape") or "?")
+            shapes[k] = shapes.get(k, 0) + 1
+    return {**st, "kind_ja": emblem_fill.KIND_JA[st["kind"]], "shapes": shapes}
+
+
 def admin_data(items, issues, analysis, tz, updated):
     """管理ページ（docs/admin.html）に書き込む数字：収集・編集の状況、作品ごとの記事数と未設定の項目、投票。"""
     today = dt.datetime.now(tz).date()
@@ -1726,7 +1738,8 @@ def admin_data(items, issues, analysis, tz, updated):
                      "week": week.get(name, 0), "urgent": urgent.get(name, 0),
                      "last_days": (today - dt.date.fromisoformat(last[name])).days if name in last else None,
                      "heat": {"score": h["score"], "delta": h.get("delta")} if h else None,
-                     "missing": [k for k in need if not i.get(k)], "web": WEB_ITEM_MARK in str(i.get("notes") or "")})
+                     "missing": [k for k in need if not i.get(k)], "web": WEB_ITEM_MARK in str(i.get("notes") or ""),
+                     "emblem": emblem_status(i)})
     beat = (STATE_DIR / "heartbeat.txt")
     pipeline = {"report": issues[0]["date"] if issues else None, "inbox": inbox[-1].stem if inbox else None,
                 "today_entries": today_n, "week_entries": week_n, "unedited": unedited, "updated": updated,

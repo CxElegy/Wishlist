@@ -23,6 +23,7 @@ import urllib.parse
 import yaml
 
 import heat
+import processes
 import likefx
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
@@ -3097,6 +3098,33 @@ def _admin_items(rows):
             '<th>最新の記事</th><th>話題度</th><th>未設定の項目</th></tr></thead><tbody>' + "".join(out) + "</tbody></table></div>")
 
 
+def _admin_emblems(rows):
+    """小元素（版面右上のステッカー）の状況：種類・目標・いまの枚数。足りないものを上に。"""
+    rows = [r for r in rows if r.get("emblem")]
+    if not rows:
+        return '<p class="empty">データがありません。</p>'
+    order = {"none": 0, "low": 1, "ok": 2}
+    rows = sorted(rows, key=lambda r: (order[r["emblem"]["state"]], r["name"]))
+    gap = sum(1 for r in rows if r["emblem"]["state"] != "ok")
+    lab = {"ok": "そろっている", "low": "足りない", "none": "ない"}
+    out = []
+    for r in rows:
+        m = r["emblem"]
+        pct = min(100, round(100 * m["have"] / max(1, m["target"])))
+        shapes = " ".join(f'<i class="chip">{e(k)} {v}</i>' for k, v in (m.get("shapes") or {}).items())
+        out.append(
+            f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a></td>'
+            f'<td data-label="種類">{e(m["kind_ja"])}</td>'
+            f'<td class="em-n" data-label="枚数"><span class="em-bar"><i style="width:{pct}%"></i></span>'
+            f'<b>{m["have"]}</b> / {m["target"]}<small>最大 {m["hi"]}</small></td>'
+            f'<td data-label="状態"><span class="em-{m["state"]}">{lab[m["state"]]}</span></td>'
+            f'<td class="ms">{shapes}</td></tr>')
+    note = (f'<p class="empty">{gap} 件が目標に届いていません。次の AI 編集で、決まった順に取り方を変えながら自動で埋めます。</p>'
+            if gap else '<p class="empty">すべての版面が目標の枚数に届いています。</p>')
+    return (note + '<div class="tw"><table class="adm"><thead><tr><th>作品</th><th>種類</th><th>枚数 / 目標</th><th>状態</th><th>内訳</th></tr></thead><tbody>'
+            + "".join(out) + "</tbody></table></div>")
+
+
 def _admin_votes(v):
     if not v.get("total"):
         return '<p class="empty">まだ投票がありません。</p>'
@@ -3122,6 +3150,10 @@ def _admin_votes(v):
 
 
 ADMIN_PAGE_CSS = """
+.em-n{white-space:nowrap}.em-n small{margin-left:8px;opacity:.65}
+.em-bar{display:inline-block;width:70px;height:10px;margin-right:8px;background:var(--sheet);border:1px solid var(--ink);vertical-align:middle;position:relative}
+.em-bar i{position:absolute;inset:0 auto 0 0;background:var(--good)}
+.em-ok{color:var(--good);font-weight:900}.em-low{color:var(--ink);font-weight:900;background:var(--gold);padding:0 6px}.em-none{color:var(--card);background:var(--alert);font-weight:900;padding:0 6px}
 .h3{margin:0 0 10px;font:900 15px var(--font-sans);padding-bottom:4px;border-bottom:1.5px solid var(--ink)}
 .h3 small{font:500 var(--fs-label) var(--font-sans);opacity:.75;margin-left:6px}
 .kpis.k4{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}
@@ -3244,7 +3276,7 @@ def render_admin(data, db, updated):
 <title>管理ページ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
-<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}</style>
+<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}</style>
 </head>
 <body>
 <div class="page">
@@ -3256,15 +3288,18 @@ def render_admin(data, db, updated):
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 見るだけで、ここから何かを変えることはできません。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
+<section class="panel" id="procs"><h2 class="sh"><span>プロセス</span><small>縮図をクリックすると流れが開く</small></h2>{processes.render()}</section>
 <section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いたときに読み込み</small></h2>
 <div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">写真の受付</h3><div id="photos"><p class="empty">読み込み中…</p></div></div></div></section>
 <section class="panel" id="items"><h2 class="sh"><span>ウォッチ項目</span><small>赤い「最新の記事」= {ADMIN_STALE_DAYS} 日以上 新しい記事なし</small></h2>{_admin_items(data.get("items") or [])}</section>
+<section class="panel" id="emblems"><h2 class="sh"><span>小元素</span><small>版面右上のステッカー · 種類ごとの目標枚数</small></h2>{_admin_emblems(data.get("items") or [])}</section>
 <section class="panel" id="votes"><h2 class="sh"><span>投票</span><small>👍 / 👎 · 前回の収集時点</small></h2>{_admin_votes(data.get("votes") or {})}</section>
 </div>
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
+<script>{processes.JS}</script>
 </body>
 </html>
 """

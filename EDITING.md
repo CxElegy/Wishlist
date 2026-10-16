@@ -12,8 +12,11 @@
 1. 进入仓库 `CxElegy/Wishlist`，分支 `main`，先 `git pull --rebase`。
    **先做版面设计**：`items.yaml` 里 `notes` 有「从网页设置页加进来的」、但还没有 `motif` 的关注项，按 `TEMPLATES.md` 开头的表把版面设计一遍：
    ① 主题 `motif`、② 配色 `theme`（暗底 / 浅底按气质）、③ 小元素 `emblem`（`scripts/emblem.py`）、④ 点 👍 的演出 `like_fx`。没有就跳过。
-   另外：已有的关注项里 **既没有 `emblem` 也没有 `emblem_skip`** 的（上次 Wikipedia 拒绝访问没取到），用 `scripts/emblem.py` 再找一次；
-   还是取不到就留到下次。认不出主题、不该贴的写 `emblem_skip: "理由"`。
+   另外：**小元素补齐**——先 `pip install -q -r requirements.txt "rembg[cpu]" "opencv-python-headless<5"`（抠图和本人确认用，第一次会下载模型），再 `python scripts/emblem_fill.py --audit`，
+   `✗`（0 张）和 `△`（没到目标）的关注项，按 `TEMPLATES.md`「补齐的流程」逐个补：先写好 `emblem_kind` / `emblem_who`，
+   `emblem_fill.py "名" ` 出候选一览，**看图**选号码 `--commit`。不要写 `emblem_skip`（没有这条退路了）。
+   新的关注项（设置页加进来的）也一样：设计版面时顺便定好 `emblem_kind`，补到目标为止。
+
 2. 找到最新一份 `inbox/YYYY-MM-DD.json`（不带 `.edit`）。没有就结束。
 3. 读 `items.yaml`，了解每个关注项的 `priority`（读者最关心什么）和 `notes`（背景）。
 4. 读 inbox 里每个关注项的 `entries`（编号 `n`、日期、来源、标题、摘要），按下面的规则编排。
