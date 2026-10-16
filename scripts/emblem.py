@@ -5,7 +5,9 @@
 スクロールで飛び出す効果だけを CSS で付ける。一つの版面に何枚あってもよく、網页を開くたびに 1 枚をランダムに出す。
 
 探し方（AI 編集が新しい関注項を設計するときに使う）：
-  1. 何を貼るか決める ── 枚数は「主要キャラの数」に合わせる：
+  1. 何を貼るか決める ── 枚数は「主要キャラの数」に合わせる。追っている「その作品版」の絵であること：
+     ・実写のドラマ・映画のリメイクは、キャラのページ（旧作の写真が多い）ではなく、その作品の出演者のページの写真を使う
+       （例：HBO の「Harry Potter」ドラマ → Dominic McLaughlin などのページ。映画版の Daniel Radcliffe は使わない）
      ・アニメ・漫画：AniList の主役（role MAIN、お気に入り順）。作品の顔になっているマスコットがいれば先頭に足す（例：ポチタ）
      ・ゲーム・ドラマなど AniList にないもの：シリーズでいちばん知られたキャラを AI が選んで --titles に並べる（理由を書く）
      ・キャラが一人だけの作品（ぐでたま）：その Wiki ページに載っている画像から、有名な別シーンを何枚か（--gallery）
@@ -13,7 +15,8 @@
      Fandom にページがなければ別の Wiki（Sanrio 系・Nookipedia・Wikipedia）を試す。
   3. 使えるか確かめる：短い辺が 160px 以上。縁の 90% 以上が透明なら「切り抜き」（輪郭どおりのステッカー）。
      代表画像が四角い写真なら、同じページに載っている透明な立ち絵を探す（人物は輪郭どおりが基本。丸いバッジにはしない）。
-     それでもなければ「カード」（P5 風の傾いた四辺形に切って貼る。絵の中身はそのまま）。使えないものは飛ばす。
+     それでもなければ「カード」で取っておき、--cut で人物だけを切り抜く（rembg の birefnet-general-lite）。
+     切り抜いた画像は docs/emblems/ に保存（元の網址は source に残す）。枠や丸で囲まない。使えないものは飛ばす。
   4. 版面の配色を合わせる：先頭（いちばん代表的な一枚）の代表色（不透明な部分で「面積 × 鮮やかさ²」が最大の色）を強調色に。
      地の明るさは作品の気質で決める（--tone）：熱血・暴力・ホラー・SF は墨の地（dark）、かわいい・癒やし・日常は米白の地（light）。
      一律に米白にしない。文字はどれも 4.5:1 以上（theme._readable）、網页に出したあと実際の重なりでも確かめる。
@@ -366,7 +369,170 @@ def recrop(name):
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+EMB_DIR = ROOT / "docs" / "emblems"   # 切り抜いた画像（網页と同じ場所に置く。倉庫は公開なので画像も公開になる）
+
+
+def cut_out(url, slug, drawn=True):
+    """背景のある画像から人物だけを切り抜いて docs/emblems/<slug>.webp に保存し、網页から読む相対パスを返す。
+    rembg の birefnet-general-lite（絵も写真も）。輪郭の外側の余白は切り詰める。中身（人物）は変えない。
+    暗い背景に暗い人物・網点の漫画コマなど、輪郭がにじむものは切り抜いた結果を目で見て、だめなら外す。"""
+    from PIL import Image
+    from rembg import new_session, remove
+
+    img = Image.open(io.BytesIO(_get(url))).convert("RGB")
+    out = remove(img, session=_session("birefnet-general-lite"))   # 絵も写真もいちばん輪郭がきれいだった（isnet-anime・u2net と比べた）
+    out = check_whole(out)
+    out = out.crop(out.getchannel("A").getbbox())
+    out.thumbnail((420, 520))
+    EMB_DIR.mkdir(parents=True, exist_ok=True)
+    out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
+    return f"emblems/{slug}.webp"
+
+
+def framing(img):
+    """bust（胸像：下の端で切れている）か full（全身：足まで入っている）か。"""
+    import numpy as np
+    a = np.array(img.getchannel("A")) > 128
+    return "bust" if a[-1, :].mean() > 0.08 else "full"
+
+
+def face_box(img):
+    """いちばん大きい顔 (x, y, w, h)。写真は OpenCV の顔検出、絵は lbpcascade_animeface。なければ None。"""
+    try:
+        import cv2
+        import numpy as np
+    except ImportError:
+        return None
+    rgb = np.array(img.convert("RGB"))
+    gray = cv2.equalizeHist(cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY))
+    w = gray.shape[1]
+    found = []
+    for path in (cv2.data.haarcascades + "haarcascade_frontalface_default.xml",
+                 str(pathlib.Path(__file__).resolve().parent / "data" / "lbpcascade_animeface.xml")):
+        c = cv2.CascadeClassifier(path)
+        if not c.empty():
+            found += [tuple(map(int, f)) for f in c.detectMultiScale(gray, 1.1, 4, minSize=(max(24, w // 10),) * 2)]
+    return max(found, key=lambda f: f[2] * f[3]) if found else None
+
+
+def check_whole(out):
+    """切り抜いた結果を確かめる：人物の全体が見えていること。
+    ・いちばん大きいまとまりだけ残す（横に残った小さな切れ端を消す）
+    ・左右の端の上 65% に当たっている（体が枠で切れている）ものは使わない。下の端と左右の端の下 35%（胸像の肩）は可
+    ・上の端に当たっていても、顔が全部入っていれば可（髪の上だけ切れている）。顔まで切れているものは使わない
+    ・人物の面積が小さすぎる、または半透明が多い（背景と混ざって輪郭がにじんだ）ものは使わない"""
+    import numpy as np
+    import cv2
+    from PIL import Image
+    a = np.array(out.getchannel("A"))
+    mask = (a > 128).astype("uint8")
+    n, labels, stats, _ = cv2.connectedComponentsWithStats(mask, 8)
+    if n <= 1:
+        raise ValueError("人物が見つからない")
+    big = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
+    keep = labels == big
+    for i in range(1, n):   # 大きいまとまりの 15% 以上あるもの（離れた手・持ち物）は残す
+        if i != big and stats[i, cv2.CC_STAT_AREA] >= 0.15 * stats[big, cv2.CC_STAT_AREA]:
+            keep |= labels == i
+    a = np.where(keep, a, 0).astype("uint8")
+    h, w = a.shape
+    solid = a > 128
+    upper = solid[:int(h * 0.65)]   # 下 35%（肩から下）は左右の端に当たってもよい（胸像）
+    top, left, right = solid[0, :].mean(), upper[:, 0].mean(), upper[:, -1].mean()
+    if top > 0.03:
+        # 上の端で切れていても、顔が全部入っていれば（髪の上だけが切れている：恋次のような絵）よい
+        f = face_box(out)
+        if f and f[1] < h * 0.04:
+            raise ValueError(f"顔が上の端で切れている（{top:.0%}）")
+        if not f:   # 横顔・覆面などで顔が見つからない：外さずに残し、目で確かめる
+            print(f"  [目で確認] 上の端に当たっていて顔が見つからない（{top:.0%}）", file=sys.stderr)
+    if max(left, right) > 0.10:
+        raise ValueError(f"体が左右の端で切れている（左 {left:.0%}・右 {right:.0%}）")
+    if solid.mean() < 0.12:
+        raise ValueError("人物が小さすぎる")
+    soft = ((a > 24) & (a < 200)).sum() / max(1, (a > 24).sum())
+    if soft > 0.18:
+        raise ValueError(f"輪郭がにじんでいる（半透明 {soft:.0%}）")
+    out = out.copy()
+    out.putalpha(Image.fromarray(a))
+    return out
+
+
+_SESSIONS = {}
+
+
+def _session(name):
+    from rembg import new_session
+    if name not in _SESSIONS:
+        _SESSIONS[name] = new_session(name)
+    return _SESSIONS[name]
+
+
+def slugify(name, subject):
+    base = re.sub(r"[^a-z0-9]+", "-", f"{name}-{subject}".lower()).strip("-")
+    if len(base) < 6:   # 漢字・かなだけの名前
+        import hashlib
+        base = (base + "-" if base else "") + hashlib.sha1(f"{name}|{subject}".encode()).hexdigest()[:8]
+    return base[:60]
+
+
+def keep_framing(ems):
+    """同じ版面の小元素は取景をそろえる：胸像が一枚でもあれば、全身のもの（比率が浮く）は外す。全部全身ならそのまま。
+    透明な立ち絵（もとから切り抜き）は docs/emblems にないので、元の画像で判定する。"""
+    from PIL import Image
+    for x in ems:
+        if "_framing" not in x:
+            try:
+                img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
+                       else Image.open(io.BytesIO(_get(x["image"]))).convert("RGBA"))
+                x["_framing"] = framing(img)
+            except Exception:
+                x["_framing"] = "full"
+    if any(x["_framing"] == "bust" for x in ems):
+        for x in ems:
+            if x["_framing"] == "full":
+                print(f"  [取景をそろえる] {x['subject']} は全身なので外す（ほかは胸像）", file=sys.stderr)
+                if x["image"].startswith("emblems/"):
+                    (ROOT / "docs" / x["image"]).unlink(missing_ok=True)
+        ems = [x for x in ems if x["_framing"] == "bust"]
+    return ems
+
+
+def cut_all(name, drawn):
+    """items.yaml のその関注項の「カード」（badge）の小元素を全部切り抜きに替える（source に元の網址を残す）。"""
+    import yaml
+    path = ROOT / "items.yaml"
+    item = next(i for i in yaml.safe_load(path.read_text(encoding="utf-8"))["items"] if i["name"] == name)
+    ems = item.get("emblem") or []
+    for x in ems:
+        if x.get("shape") != "badge":
+            continue
+        try:
+            src = x.get("source") or x["image"]
+            x["image"] = cut_out(src, slugify(name, x["subject"]), drawn)
+            from PIL import Image
+            x["_framing"] = framing(Image.open(ROOT / "docs" / x["image"]))
+            x["source"], x["shape"] = src, "cutout"
+            x.pop("crop", None); x.pop("ar", None)
+            print(f"  {x['subject']} → {x['image']}", file=sys.stderr)
+        except Exception as e:
+            x["_drop"] = True
+            print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
+    ems = keep_framing([x for x in ems if not x.get("_drop")])
+    lines = path.read_text(encoding="utf-8").split("\n")
+    start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
+    j = next(i for i in range(start, len(lines)) if lines[i].startswith("    emblem:"))
+    k = j + 1
+    while k < len(lines) and lines[k].startswith("      - "):
+        k += 1
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar")
+    lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def main():
+    if len(sys.argv) == 4 and sys.argv[1] == "--cut":   # --cut 関注項 drawn|photo
+        return cut_all(sys.argv[2], sys.argv[3] == "drawn")
     if len(sys.argv) == 3 and sys.argv[1] == "--recrop":
         return recrop(sys.argv[2])
     ap = argparse.ArgumentParser(description="作品の小元素を探して配色を合わせる")

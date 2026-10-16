@@ -425,6 +425,8 @@ button{font-family:inherit}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
 .emb-js .emb:not(.in) .emb-in{opacity:0;transform:translate(56px,44px) rotate(26deg) scale(.45);--sx:0px;--sy:0px}
+.emb-js .emb.out .emb-in{transition:transform .38s cubic-bezier(.6,0,.9,.4),opacity .3s ease-in .08s,--sx .15s,--sy .15s;
+ transform:translate(18px,70px) rotate(-18deg) scale(.55)}  /* 上へ戻ったとき：影が縮んで、下へ沈みながら消える */
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:210px}
@@ -975,8 +977,9 @@ def _emblem(items, ring="accent"):
     人物は透明な立ち絵（輪郭どおり）、立ち絵がない写真は P5 風の傾いたカードに顔が入るよう取景（crop）して貼る。"""
     alts = []
     for x in items:
-        if not (isinstance(x, dict) and _safe_url(x.get("image"))):
-            continue
+        local = isinstance(x, dict) and re.fullmatch(r"emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))
+        if not (isinstance(x, dict) and (_safe_url(x.get("image")) or local)):
+            continue   # 網址（http(s)）か、切り抜いて倉庫に置いた画像（docs/emblems/）だけ
         a = {"src": x["image"], "shape": "badge" if x.get("shape") == "badge" else "cutout"}
         c = x.get("crop")
         if isinstance(c, list) and len(c) == 3 and all(isinstance(v, (int, float)) and 0 <= v <= 1 for v in c) and c[2] > 0:
@@ -1372,9 +1375,11 @@ EMB_JS = """
     }
   });
   if (!els.length || !document.documentElement.classList.contains('emb-js')) return;
+  // 下へスクロールして見えたら飛び出す（.in）。上へ戻って版面が画面の下へ消えたら、引っ込んで消える（.out）→ もう一度下へ来るとまた飛び出す
   const io = new IntersectionObserver(es => es.forEach(en => {
-    // 見えた（または読み飛ばしてもう上にある）ら一度だけ飛び出す
-    if (en.isIntersecting || en.boundingClientRect.bottom < 0) { en.target.classList.add('in'); io.unobserve(en.target); }
+    const el = en.target;
+    if (en.isIntersecting || en.boundingClientRect.bottom < 0) { el.classList.remove('out'); el.classList.add('in'); }
+    else if (en.boundingClientRect.top > 0 && el.classList.contains('in')) { el.classList.remove('in'); el.classList.add('out'); }
   }), { rootMargin: '0px 0px -15% 0px', threshold: .5 });
   els.forEach(el => io.observe(el));
 })();

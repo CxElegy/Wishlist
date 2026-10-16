@@ -102,7 +102,9 @@ class Templates(unittest.TestCase):
         _, items = digest.load_config()
         for item in items:
             for x in item.get("emblem") or []:
-                self.assertRegex(x.get("image", ""), r"^https://", item["name"])
+                self.assertRegex(x.get("image", ""), r"^(https://|emblems/[a-z0-9-]+\.webp$)", item["name"])
+                if x["image"].startswith("emblems/"):
+                    self.assertTrue((ROOT / "docs" / x["image"]).exists(), x["image"])
                 self.assertIn(x.get("shape"), ("cutout", "badge"), item["name"])
                 self.assertTrue(x.get("why") and x.get("subject"), item["name"])
         html_ = render._emblem([{"image": "https://a/1.png", "shape": "cutout"}, {"image": "javascript:x", "shape": "badge"},
@@ -148,6 +150,25 @@ class Templates(unittest.TestCase):
         crop, ar = emblem.face_crop(Image.new("RGBA", (400, 600), (200, 200, 200, 255)))   # 顔がない：上寄りの中央
         self.assertEqual(ar, 1.5)
         self.assertAlmostEqual(crop[2] * 400 / (crop[2] * 400 / 0.8), 0.8)
+
+    def test_cutout_check(self):
+        # 抠图的检查：脸以外切掉可以，身体在左右上部被切掉不行；离开的小碎块去掉；版面里有半身像就去掉全身像
+        import emblem
+        from PIL import Image, ImageDraw
+        def fig(box, extra=None, size=(200, 300)):
+            im = Image.new("RGBA", size, (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+            d.rectangle(box, fill=(200, 80, 60, 255))
+            if extra: d.rectangle(extra, fill=(200, 80, 60, 255))
+            return im
+        ok = emblem.check_whole(fig((40, 20, 160, 299), extra=(2, 280, 8, 290)))   # 胸像＋左下の小さな切れ端
+        self.assertEqual(ok.getchannel("A").getpixel((5, 285)), 0)                 # 切れ端は消える
+        self.assertEqual(emblem.framing(ok), "bust")
+        with self.assertRaises(ValueError):
+            emblem.check_whole(fig((0, 20, 160, 299)))                              # 左の端で体が切れている
+        self.assertEqual(emblem.framing(fig((40, 20, 160, 250))), "full")
+        self.assertIn('src="emblems/a-b.webp"', render._emblem([{"image": "emblems/a-b.webp", "shape": "cutout"}]))
+        self.assertEqual(render._emblem([{"image": "../x.webp", "shape": "cutout"}]), "")
+        self.assertIn("classList.add('out')", render.EMB_JS)
 
 if __name__ == "__main__":
     unittest.main()
