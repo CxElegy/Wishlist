@@ -550,13 +550,15 @@ button{font-family:inherit}
    高さを決めて幅は絵なり（全身の縦長の絵も小さくならない）。スクロールで飛び出し、そのあと影が伸びて立体に */
 @property --sx{syntax:"<length>";inherits:true;initial-value:8px}
 @property --sy{syntax:"<length>";inherits:true;initial-value:8px}
-.emb{--ring:var(--acc);position:absolute;right:clamp(12px,4%,52px);top:-58px;z-index:5;height:156px;pointer-events:none;transform:rotate(-6deg)}
+.emb{--ring:var(--acc);position:absolute;right:clamp(12px,4%,52px);bottom:8px;z-index:5;height:156px;pointer-events:none;transform:rotate(-6deg);transform-origin:50% 100%}  /* 見出しの帯の中に置き、下端を帯にそろえる：上には版面の外へはみ出してよいが、下のニュースには重ならない */
 .emb.ring-white{--ring:var(--card)}.emb.ring-none{--ring:transparent}
 .emb-in{height:100%;width:max-content;transition:transform .6s cubic-bezier(.2,1.5,.4,1),opacity .2s,--sx .35s ease-out .45s,--sy .35s ease-out .45s;
  filter:drop-shadow(2.5px 0 0 var(--card)) drop-shadow(-2.5px 0 0 var(--card)) drop-shadow(0 2.5px 0 var(--card)) drop-shadow(0 -2.5px 0 var(--card))
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
-.emb img{display:block;height:100%;width:auto;max-width:220px;object-fit:contain}
+.emb-in{display:flex;align-items:flex-end}
+.emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:220px;object-fit:contain}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
+.emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
@@ -569,7 +571,7 @@ button{font-family:inherit}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:210px}
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;top:-38px;right:8px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
+@media (max-width:600px){.emb{height:100px;right:8px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
 .boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
 .boom>svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
@@ -772,7 +774,7 @@ html{scroll-behavior:smooth}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.16 20:51</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.16 20:54</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
