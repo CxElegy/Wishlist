@@ -33,7 +33,6 @@
   "https://shop.parkplace-oita.com/news/measis/12465": "https://shop.parkplace-oita.com/images/common/OGP.jpg",
   "https://sports.khan.co.kr/en/article/202610162212007": "https://images.khan.co.kr/article/2026/10/16/news-p.v1.20261016.a3aa4afc89904df1965bac9e03def952_P1.jpg",
   "https://stories.starbucks.com/asia/stories/2026/black-cat-energy/": null,
-  "https://thedirect.com/article/avengers-doomsday-vanessa-kirby-invisible-woman-powers-mcu-movie": "https://www.bing.com/th?id=ONUT.B7soqBiI6CjMdzF41lthEw&pid=News&w=1200",
   "https://topics.smt.docomo.ne.jp/amp/article/cocotte/trend/cocotte-638363": "https://img.topics.smt.news.goo.ne.jp/picture/cocotte/m_cocotte-638363.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/hokkaido/region/hokkaido-1391169": "https://img.topics.smt.news.goo.ne.jp/picture/hokkaido/m_hokkaido-1391169.jpg",
   "https://tw.news.yahoo.com/%E9%9B%BB%E7%AB%B6%E6%88%B0%E9%9A%8A%E5%9C%A8%E5%AE%B6%E4%B9%9F%E5%87%BA%E4%BA%8B%EF%BC%81%E9%A6%AC%E4%BE%86%E8%A5%BF%E4%BA%9E%E3%80%8Adota2%E3%80%8B%E8%A2%AB%E5%88%91%E8%AD%A6%E5%85%89%E9%A1%A7%E4%B8%8A%E9%8A%AC-%E9%81%B8%E6%89%8B%E9%82%84%E8%A6%AA%E8%87%AA%E7%8E%A9%E4%B8%80%E5%A0%B4%E3%80%8C%E8%AD%89%E6%98%8E%E5%AF%A6%E5%8A%9B%E3%80%8D-073859649.html": "https://www.bing.com/th?id=ONUT.x_YhkghSJgbcY_-l0Wihxg&pid=News&w=1200",
@@ -50,6 +49,7 @@
   "https://www.haveagood-holiday.com/zh-CN/articles/magical-chiikawa-fuwamochi-gororin-hug-plush-preorder": "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg",
   "https://www.lutontoday.co.uk/news/people/hbo-harry-potter-series-trailer-features-magical-scene-at-luton-park-9291806": "https://www.lutontoday.co.uk/webimg/b25lY21zOmQyZDM5ZGYxLTJjM2UtNGVjNS05MTFkLThiOWMzYTNlZmJhYjplNzU2Njc5Ny1hM2Y5LTRkZTktOWM5ZC1kODU1MGFiYjAyN2Y=.jpg?width=1200&auto=webp&quality=75&crop=3:2,smart&trim=",
   "https://www.mmoexp.com/News/zenless-zone-zero-fiony-review-best-team-guide-best-w-engines-drive-discs-and-build-tips.html": "https://assets.mmoexp.com/images/202609/d1bc0f44ac2c34739074a26025e26f7fe194850c.png",
+  "https://www.msn.com/en-us/news/other/another-new-avengers-team-revealed-for-avengers-doomsday-secret-wars/vi-AA2ep6Z1": null,
   "https://www.msn.com/en-us/news/other/i-got-an-early-look-at-the-mandalorian-grogu-set-heres-whats-there/vi-AA27XrW4": "https://www.bing.com/th?id=ONUT.f1E46G67auPpxWK_IDQvrw&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/john-waynes-grandson-has-been-playing-the-mandalorian-for-years-but-many-fans-dont-know-his-name/vi-AA2e80eS": "https://www.bing.com/th?id=ONUT.lZS05K8smmr6VU-bnJNqTA&pid=News&w=1200",
   "https://www.news10.com/news/entertainment/ap-can-dc-blend-horror-with-a-superhero-movie-clayface-wants-to-blur-genres/": "https://www.bing.com/th?id=ONUT.HL17zw0Socrz7uuJ15pl2g&pid=News&w=768",
@@ -1148,6 +1148,27 @@
   },
   {
    "batch": 3,
+   "because": "漫威电影",
+   "date": "2026-10-16",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "YouTube on MSN",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Another new Avengers team revealed for Avengers Doomsday / Secret Wars!",
+   "url": "https://www.msn.com/en-us/news/other/another-new-avengers-team-revealed-for-avengers-doomsday-secret-wars/vi-AA2ep6Z1",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 3,
    "because": "The Mandalorian",
    "date": "2026-10-16",
    "hits": [],
@@ -1168,7 +1189,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "漫威电影",
    "date": "2026-10-16",
    "hits": [],
@@ -1185,27 +1206,6 @@
    ],
    "title": "Elizabeth Olsen Defends Scarlet Witch's Worst Decision In The MCU",
    "url": "https://www.yahoo.com/entertainment/movies/articles/elizabeth-olsen-defends-scarlet-witchs-134500599.html",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 4,
-   "because": "漫威电影",
-   "date": "2026-10-16",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.B7soqBiI6CjMdzF41lthEw&pid=News&w=1200",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "The Direct",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "A new piece of Avengers: Doomsday merchandise depicts Vanessa Kirby's Invisible Woman unleashing her impressive powers.",
-   "url": "https://thedirect.com/article/avengers-doomsday-vanessa-kirby-invisible-woman-powers-mcu-movie",
    "words": [],
    "work": "漫威电影"
   },
