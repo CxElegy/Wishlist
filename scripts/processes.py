@@ -276,7 +276,10 @@ def architecture(processes=None):
     """全体の構成図：どの仕組みがどこで動き、データがどう流れるか。プロセスの部品をクリックすると、その流れ（detail）が開く。
     矢印は JS（ARCH_JS）が部品の位置から描く。狭い画面では矢印の代わりに番号つきの一覧を読む。"""
     by = {p["id"]: p for p in PROCESSES + list(processes or [])}   # 図の部品はいつもの PROCESSES から
-    zones = "".join(_arch_zone(z, by) for z in ARCH)
+    placed = {n.get(k) for z in ARCH for n in z["nodes"] for k in ("proc", "sub")}
+    extra = [p for p in PROCESSES if p["id"] not in placed]   # ARCH にまだ置いていない仕組みは「そのほか」に（図から開けないものを作らない）
+    zones = "".join(_arch_zone(z, by) for z in ARCH + ([{"id": "etc", "title": "そのほかの仕組み", "note": "図の場所がまだ決まっていないもの",
+                                                           "style": "keep", "nodes": [{"id": f"p-{p['id']}", "proc": p["id"]} for p in extra]}] if extra else []))
     edges = json.dumps([list(x) for x in EDGES], ensure_ascii=False).replace("</", "<\\/")
     legend = "".join(f'<span class="ae-{k}"><i></i>{e(v)}</span>' for k, v in EDGE_JA.items())
     names = {}
@@ -372,7 +375,7 @@ CSS = """
 .arch-list li.ae-data em{background:var(--ink)}.arch-list li.ae-web em{background:var(--rose)}.arch-list li.ae-ai em{background:var(--good)}
 .arch-list li.ae-notify em{background:var(--discord)}.arch-list li.ae-db em{background:var(--viz-1)}
 .arch-list li em{color:var(--card)}.arch-list li small{font-size:var(--fs-label);opacity:.8}
-.az-you{grid-column:1/-1}
+.az-you{grid-column:1/-1}.az[data-z=etc]{grid-column:1/-1}.az[data-z=etc]>.az-b{flex-direction:row;flex-wrap:wrap}
 @media (max-width:980px){
  .arch{grid-template-columns:minmax(0,1fr);grid-template-areas:"src" "act" "repo" "ai" "db" "pages" "dc" "you";gap:16px}
  .arch-svg{display:none}

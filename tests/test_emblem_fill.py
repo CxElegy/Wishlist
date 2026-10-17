@@ -335,6 +335,14 @@ class Processes(unittest.TestCase):
         shown = {p["id"] for p in processes.PROCESSES if f'data-open="proc-{p["id"]}"' in out}
         self.assertEqual(shown, {p["id"] for p in processes.PROCESSES})   # 全部のプロセスが図から開ける
         self.assertIn('id="arch-edges"', out)
+        try:   # ARCH に置いていない新しい仕組みも「そのほか」から開ける
+            processes.PROCESSES.append({"id": "zz", "name": "新しい仕組み", "en": "ZZ", "lane": "web", "trigger": "t", "summary": "s",
+                                        "flow": [{"id": "a", "kind": "step", "lane": "web", "title": "x"}]})
+            out2 = processes.render()
+        finally:
+            processes.PROCESSES.pop()
+        self.assertIn('data-open="proc-zz"', out2)
+        self.assertIn("そのほかの仕組み", out2)
 
     def test_render_and_escape(self):
         evil = [{"id": "x", "name": "<b>x</b>", "en": "X", "lane": "ai", "trigger": "t", "summary": "s",
