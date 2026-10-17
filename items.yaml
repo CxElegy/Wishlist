@@ -858,6 +858,8 @@ items:
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Samsung
     motif: tech          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Samsung のロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20wordmark.svg?width=500", page: "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg", shape: "logo"}
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
     type: product
     section: 好物
@@ -1111,6 +1113,7 @@ items:
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Vaundy", why: "本人", image: "emblems/vaundy-vaundy.webp", source: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg", page: "https://ja.wikipedia.org/wiki/Vaundy", shape: "cutout"}
       - {subject: "Vaundy", why: "Vaundy（Wikipedia の記事の画像）", image: "emblems/vaundy-vaundy.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Vaundy", shape: "cutout"}
+      - {subject: "Vaundy", why: "Vaundy（Wikidata の代表画像）", image: "emblems/vaundy-vaundy.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/Vaundy%202025.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Vaundy_2025.jpg", shape: "cutout"}
     type: event
     section: "演出"
     size: S
@@ -1136,7 +1139,7 @@ items:
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "周杰倫 1", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/1-7808deab.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg/500px-%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Jay_Chou", shape: "cutout"}
       - {subject: "周杰倫 2", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/2-6cb3220b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg/500px-1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg", shape: "cutout"}
-      - {subject: "周杰倫 3", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/3-bf01ca7b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Jay_Chou.JPG/500px-Jay_Chou.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Jay_Chou.JPG", shape: "cutout", fs: 0.327}
+      - {subject: "周杰倫 3", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/3-bf01ca7b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Jay_Chou.JPG/500px-Jay_Chou.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Jay_Chou.JPG", shape: "cutout", fs: 0.32}
       - {subject: "周杰倫 1", why: "周杰倫（Wikidata の代表画像）", image: "emblems/1-7808deab.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8%20%2825%29.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%2825%29.jpg", shape: "cutout"}
       - {subject: "周杰倫 2", why: "周杰倫（Wikidata の代表画像）", image: "emblems/2-6cb3220b.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8%20%EF%BC%888%EF%BC%89.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg", shape: "cutout"}
     type: event

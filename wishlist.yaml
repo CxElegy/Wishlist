@@ -258,14 +258,23 @@ wishlist:
       手机: ["smartphone|スマホ|スマートフォン|手机|手機|스마트폰"]
     basics: [手机]
 
-  - name: "星巴克x小熊維尼100週年「蜂蜜罐馬克杯」12款聯名周邊超萌登場！ 星禮程密技「搶先購+無痛補奶現折20元」"
-    image: "news-e875584c36.jpg"
-    shop: "travel.udn.com"
-    url: "https://travel.udn.com/travel/story/7185/9813740"
+  - name: 小熊維尼蜂蜜罐馬克杯（Winnie the Pooh 聯名系列）
+    image: starbucks-tw-pooh-honeypot-mug.jpg
+    specs:
+      系列: 星巴克 × 小熊維尼 100 週年聯名（Disney × Starbucks）
+      造型: 蜂蜜罐形状，杯身后面露出维尼的屁股，内侧墨绿色
+    shop: 台湾星巴克
+    url: https://travel.udn.com/travel/story/7185/9813740
     added: 2026-10-14
     status: 想要
     watch: "星巴克马克杯"
-    note: "从「星巴克马克杯」的新闻里点「加入心愿单」加进来的；名字、价格、喜好标签还没整理（跟 Claude 说「整理愿望清单」）"
+    photo: 3
+    note: 先从「星巴克马克杯」的新闻加进来，10/17 又拍照确认是这款（starbucks.com.tw 的商品图）；价格照片里没有，等官方公布
+    likes:
+      小熊维尼: ["Winnie the Pooh|Pooh|プーさん|小熊維尼|小熊维尼|维尼|維尼"]
+      星巴克: ["Starbucks|スタバ|スターバックス|星巴克"]
+      马克杯: ["マグ|-マグロ|mug|馬克杯|马克杯"]
+    basics: [马克杯]
 
   - name: ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）
     image: chiikawa-magical-gororin-plush.jpg
@@ -283,3 +292,38 @@ wishlist:
       まじかるちいかわ: ["まじかる|魔法少女|magical"]
       抱枕玩偶: ["ぬいぐるみ|抱きぬい|玩偶|毛绒|plush"]
     basics: [抱枕玩偶]
+
+  - name: EVA 初号机配色的车（紫 × 绿车身贴）
+    image: eva-unit01-car-wrap.jpg
+    specs:
+      配色: 紫色车身 + 荧光绿条纹 + 黑色车顶（EVA 初号机）
+      图案: 「01 初號機」、NERV、WARNING 等标志
+      车型: 照片里像极氪 007 一类的溜背轿车（推断，没有写明）
+    shop: 车身改色贴膜（EVA 主题）
+    added: 2026-10-17
+    status: 想要
+    photo: 2
+    note: 以后买车想要这种配色；照片是网友晒车的截图，车型和贴膜店都是推断
+    likes:
+      EVA: ["エヴァ|エヴァンゲリオン|Evangelion|EVA|福音战士|新世紀福音戰士|初号機|初号机|初號機"]
+      汽车: ["クルマ|車|汽车|汽車|car|EV"]
+    basics: [汽车]
+
+  - name: Aesop アンドラム アロマティック ハンドウォッシュ
+    image: aesop-andrum-hand-wash.jpg
+    price: 5940
+    currency: ¥
+    specs:
+      容量: 500 mL（带泵头）
+      香调: 柑橘、木质、草本（橘皮・迷迭香叶・雪松）
+      无泵头版: ¥5,830（税込）
+    shop: Aesop 日本官网
+    url: https://www.aesop.com/jp/
+    added: 2026-10-17
+    status: 想要
+    photo: 4
+    note: 价格是官网 500 mL 带泵头的税込价；同系列有 75 mL 护手霜（官网推荐的组合）
+    likes:
+      Aesop: ["Aesop|イソップ|伊索"]
+      洗手液: ["ハンドウォッシュ|ハンドソープ|hand wash|洗手液"]
+    basics: [洗手液]
