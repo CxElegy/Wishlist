@@ -327,15 +327,17 @@ class LiveUpdate(unittest.TestCase):
         self.assertNotRegex(render.LIVE_CSS, r"#[0-9A-Fa-f]{6}\b")
 
     def test_busy_plan(self):
-        plan = render.busy_plan({"edit": {"items": ["GTA 6"]}, "emblem-cron": {"items": []}})
+        plan = render.busy_plan({"edit": {"items": ["GTA 6"]}, "emblem-cron": {"items": []}, "collect": {"items": []}},
+                                ["GTA 6", "あつ森"], {"url": "https://x.supabase.co", "key": "k"})
         by = {p["id"]: p for p in plan["procs"]}
-        self.assertEqual(by["collect"]["boards"], "*")
-        self.assertEqual(by["collect"]["wf"], "digest.yml")
-        self.assertEqual(by["edit"]["boards"], [render._wid("GTA 6")])
-        self.assertNotIn("emblem-cron", by)   # 待ち行列が空なら帯は出さない
+        self.assertEqual(set(by), {"edit"})   # 収集は Supabase の版面ごとの状態、ページ生成は帯なし、空の待ち行列も帯なし
+        self.assertEqual(by["edit"]["boards"], [render._wid("GTA 6")])   # 待ち行列の版面だけ
+        self.assertEqual(plan["ids"]["あつ森"], render._wid("あつ森"))
         self.assertTrue(by["edit"]["slots"])
+        self.assertIn("rpc/live_status", render.BUSY_JS)
         self.assertNotRegex(render.BUSY_CSS, r"#[0-9A-Fa-f]{6}\b")   # 色は版面の --acc / --bg / --fg だけ
+        self.assertIn("z-index:4", render.BUSY_CSS)   # 小元素（z-index 5）の下
         tag = render._busy_tag(plan, "2026-10-17T00:00:00+00:00")
         self.assertIn('id="wl-busy"', tag)
         self.assertIn('"gen": "2026-10-17T00:00:00+00:00"', tag)
-        self.assertEqual(render._busy_tag({"procs": []}, ""), "")
+        self.assertEqual(render._busy_tag(None, ""), "")

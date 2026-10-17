@@ -816,7 +816,7 @@ html{scroll-behavior:smooth}
 .nav .navwish{margin:8px 8px 0 0}
 }</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer crossorigin="anonymous"></script>
-<meta name="wl-ver" data-page="index" content="ee92ad873240"><style>
+<meta name="wl-ver" data-page="index" content="e8f7853ddc44"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -831,7 +831,7 @@ section.fresh{position:relative}
 @media (prefers-reduced-motion:no-preference){.fresh{animation:wlfresh 1.6s ease-out 3}}
 @keyframes wlfresh{50%{outline-color:var(--rose)}}
 </style><style>
-.sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:7;pointer-events:none;overflow:visible}
+.sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:4;pointer-events:none;overflow:visible}
 .busy .bf{position:absolute;left:0;top:0;bottom:0;width:var(--bp,0%);background:color-mix(in srgb,var(--acc) 45%,transparent);transition:width 1s}
 .busy .br{position:absolute;top:0;bottom:0;width:24%;left:0;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
 .busy .bt{position:absolute;left:18px;top:-10px;white-space:nowrap;background:var(--bg);color:var(--fg);border:1.5px solid var(--acc);
@@ -1480,36 +1480,31 @@ window.likeFx = (() => {
   setTimeout(check,3000);
 })();
 </script>
-<script type="application/json" id="wl-busy">{"repo": "CxElegy/Wishlist", "procs": [{"id": "collect", "label": "記事を集めています", "min": 9, "wf": "digest.yml", "slots": [[0, 17], [2, 17], [4, 17], [6, 17], [8, 17], [10, 17], [12, 17], [14, 17], [16, 17], [18, 17], [20, 17], [22, 17]], "boards": "*"}, {"id": "render", "label": "ページを作り直しています", "min": 2, "wf": "render.yml", "slots": [], "boards": "*"}, {"id": "edit", "label": "AI が編集しています", "min": 30, "wf": "", "slots": [[4, 43], [15, 43]], "boards": ["w-bf928230", "w-34f2ed9f", "w-c2dcfb63", "w-79b3c280", "w-3f993d04", "w-edd2b6ae", "w-65d60fb4", "w-5417e9f1"]}], "gen": "2026-10-17T01:24:31+00:00"}</script><script>
+<script type="application/json" id="wl-busy">{"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "ids": {"Astrae Oratio": "w-bf928230", "BLEACH Mirrors High": "w-c1c3e0ed", "GTA 6": "w-34f2ed9f", "MMORPG 新作": "w-c2dcfb63", "滑雪": "w-79b3c280", "漫威电影": "w-3f993d04", "FROM": "w-9cb26dba", "哈利波特剧集": "w-e62bf5cd", "ILLIT": "w-edd2b6ae", "星巴克马克杯": "w-65d60fb4", "猫用品": "w-130724c0", "日本顶级网球赛事": "w-5417e9f1", "三星手机": "w-6676e624", "gelato pique": "w-d06e9f3e", "ぐでたま": "w-2309d720", "チェーンソーマン": "w-cdea10ae", "The Mandalorian": "w-d3621ce3", "あつ森": "w-b867582f", "Vaundy": "w-da15ac21", "周杰伦": "w-7a894105", "绝区零": "w-f303ad09", "dota2": "w-0242c181", "A2O LITE": "w-577b9e00"}, "procs": [{"id": "edit", "label": "AI が編集しています", "min": 30, "slots": [[4, 43], [15, 43]], "boards": ["w-bf928230", "w-34f2ed9f", "w-c2dcfb63", "w-79b3c280", "w-3f993d04", "w-edd2b6ae", "w-65d60fb4", "w-5417e9f1"]}], "gen": "2026-10-17T01:24:35+00:00"}</script><script>
 (function(){
-  var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen),act=null,MIN=60000;
-  function two(n){return ('0'+n).slice(-2);}
+  var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen)||0,live=[],MIN=60000;
   function lastSlot(sl,now){var pv=0;for(var k=-1;k<=0;k++)sl.forEach(function(s){var t=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]);if(t<=+now&&t>pv)pv=t;});return pv;}
-  // GitHub Actions：ワークフローごとに、いま動いている回の開始時刻と、最近の成功した回の長さの中央値
-  function actions(){if(document.hidden)return;fetch('https://api.github.com/repos/'+B.repo+'/actions/runs?per_page=30').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
-    var o={};(j.workflow_runs||[]).forEach(function(w){var f=(w.path||'').split('/').pop(),x=o[f]||(o[f]={len:[]});
-      if(w.status!=='completed'){if(!x.run)x.run={start:Date.parse(w.run_started_at||w.created_at),queued:w.status!=='in_progress'};}
-      else if(w.conclusion==='success'&&w.run_started_at&&w.updated_at)x.len.push(Date.parse(w.updated_at)-Date.parse(w.run_started_at));});
-    Object.keys(o).forEach(function(f){var l=o[f].len.sort(function(a,b){return a-b;});o[f].est=l.length?l[l.length>>1]+MIN:0;});
-    act=o;paint();}).catch(function(){act=null;paint();});}
-  function state(p,now){
-    if(p.wf&&act){var a=act[p.wf];if(!a||!a.run)return null;return {start:a.run.start,est:a.est||p.min*MIN,queued:a.run.queued};}
-    if(p.wf&&!p.slots.length)return null;
-    var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return null;
-    return {start:pv,est:p.min*MIN};}
+  // ニュース収集：版面ごとの実際の状態（Supabase）。このページより前に始まった回はもう反映済み
+  function read(){if(document.hidden||!B.url||!B.key)return;
+    fetch(B.url+'/rest/v1/rpc/live_status',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:'{}'})
+      .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){live=l||[];paint();}).catch(function(){});}
   function paint(){var now=Date.now(),on={};
-    B.procs.forEach(function(p){var s=state(p,now);if(!s)return;
-      (p.boards==='*'?Array.prototype.map.call(document.querySelectorAll('section.sec[id]'),function(x){return x.id;}):p.boards).forEach(function(id){
-        var cur=on[id];if(!cur||s.start<cur.s.start)on[id]={p:p,s:s};});});
+    function put(id,o){if(id&&(!on[id]||o.start<on[id].start))on[id]=o;}
+    live.forEach(function(x){var st=Date.parse(x.started_at),eta=Date.parse(x.eta_at)||0;if(st<GEN-MIN)return;
+      if(x.state==='fetch')put(B.ids[x.board],{start:st,text:'記事を探しています',pc:null});
+      else if(x.state==='found'){var left=eta-now;put(B.ids[x.board],{start:st,pc:eta>st?(now-st)/(eta-st):null,
+        text:'新着 '+x.found+' 件 · '+(left>MIN?'反映まであと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});}});
+    B.procs.forEach(function(p){var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return;
+      var left=pv+p.min*MIN-now;p.boards.forEach(function(id){put(id,{start:pv,pc:(now-pv)/(p.min*MIN),
+        text:p.label+' · '+(left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});});});
     Array.prototype.forEach.call(document.querySelectorAll('section.sec[id]'),function(sec){var o=on[sec.id],bar=sec.querySelector(':scope>.busy');
       if(!o){if(bar)bar.remove();return;}
       if(!bar){bar=document.createElement('div');bar.className='busy';bar.setAttribute('role','status');
         bar.innerHTML='<i class="bf"></i><i class="br"></i><span class="bt"></span>';sec.insertBefore(bar,sec.firstChild);}
-      var left=o.s.start+o.s.est-now,pc=o.s.queued?0:Math.max(3,Math.min(97,(now-o.s.start)/o.s.est*100));
-      bar.style.setProperty('--bp',pc.toFixed(1)+'%');
-      bar.querySelector('.bt').textContent=o.p.label+' · '+(o.s.queued?'順番待ち':left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映');});}
-  paint();setInterval(paint,20000);actions();setInterval(actions,120000);
-  document.addEventListener('visibilitychange',function(){if(!document.hidden)actions();});
+      bar.style.setProperty('--bp',o.pc==null?'0%':Math.max(3,Math.min(97,o.pc*100)).toFixed(1)+'%');
+      bar.querySelector('.bt').textContent=o.text;});}
+  paint();read();setInterval(paint,20000);setInterval(read,30000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)read();});
 })();
 </script>
 </body>

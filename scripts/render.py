@@ -2653,18 +2653,20 @@ LIVE_JS = """
 """.replace("__EVERY__", str(LIVE_EVERY)).replace("__IDLE__", str(LIVE_IDLE))
 
 
-# 版面の「更新中」の帯：裏の仕組みがその版面を作り直しているあいだ、版面の上の枠に細い帯を往復させ、
-# 予想の進み具合（いまの経過 ÷ いつもかかる時間）を塗り、「あと約 N 分」を小さく出す。色は版面の --acc。
-# どの版面か：収集・ページ生成 = 全部 / AI 編集・小元素 = 待ち行列（digest.backend_todo）の版面。
-# 動いているか：GitHub Actions の仕組み（収集・ページ生成）は Actions の API で実際の開始時刻を読み（2 分ごと・表のときだけ）、
-# かかる時間は最近の成功した回の中央値。Claude の定時タスク（AI 編集・小元素）はブラウザから見えないので、
-# 定時（UTC）からの経過で推定し、ページがその定時より後に作られていれば終わったとみなす。終われば LIVE_JS が新しい版を出す。
-BUSY_MIN = {"collect": 9, "render": 2, "edit": 30, "emblem-cron": 45}  # Actions から読めないときの「いつもかかる時間」（分）
-BUSY_LABEL = {"collect": "記事を集めています", "render": "ページを作り直しています", "edit": "AI が編集しています",
-              "emblem-cron": "小元素を集めています"}
+# 版面の「更新中」の帯：裏の仕組みがその版面を作り直しているあいだ、**その版面だけ**、上の枠に細い帯を往復させ、
+# 予想の進み具合を塗り、「あと約 N 分」を小さく出す。色は版面の --acc。
+# 重なり：帯（z-index 4）は版面の上、小元素（.emb、z-index 5）の下。小元素は版面の外にはみ出して帯に重なってよい。
+#   ニュース収集：版面ごとの実際の状態を Supabase の live_status()（digest.live_mark が書く）から 30 秒ごとに読む。
+#     探し始め →「記事を探しています」/ 新着なし → 帯が消える / 新着あり →「新着 N 件 · 反映まであと約 N 分」。
+#   AI 編集・小元素：Claude の定時タスクはブラウザから見えないので、定時（UTC）からの経過で推定。
+#     対象は待ち行列（digest.backend_todo）の版面だけ（小元素は同時に動く 4 版面）。ページがその定時より後に作られていれば終わったとみなす。
+#   ページ生成（コードの変更）は版面の中身を変えないので帯は出さない（LIVE_JS の帯で新しい版を知らせる）。
+BUSY_MIN = {"edit": 30, "emblem-cron": 45}  # 定時からいつもかかる時間（分）
+BUSY_BOARDS = {"edit": 8, "emblem-cron": 4}  # 待ち行列の先頭から何版面に出すか（小元素は 4 本並列）
+BUSY_LABEL = {"edit": "AI が編集しています", "emblem-cron": "小元素を集めています"}
 
 BUSY_CSS = """
-.sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:7;pointer-events:none;overflow:visible}
+.sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:4;pointer-events:none;overflow:visible}
 .busy .bf{position:absolute;left:0;top:0;bottom:0;width:var(--bp,0%);background:color-mix(in srgb,var(--acc) 45%,transparent);transition:width 1s}
 .busy .br{position:absolute;top:0;bottom:0;width:24%;left:0;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
 .busy .bt{position:absolute;left:18px;top:-10px;white-space:nowrap;background:var(--bg);color:var(--fg);border:1.5px solid var(--acc);
@@ -2675,60 +2677,54 @@ BUSY_CSS = """
 
 BUSY_JS = """
 (function(){
-  var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen),act=null,MIN=60000;
-  function two(n){return ('0'+n).slice(-2);}
+  var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen)||0,live=[],MIN=60000;
   function lastSlot(sl,now){var pv=0;for(var k=-1;k<=0;k++)sl.forEach(function(s){var t=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]);if(t<=+now&&t>pv)pv=t;});return pv;}
-  // GitHub Actions：ワークフローごとに、いま動いている回の開始時刻と、最近の成功した回の長さの中央値
-  function actions(){if(document.hidden)return;fetch('https://api.github.com/repos/'+B.repo+'/actions/runs?per_page=30').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
-    var o={};(j.workflow_runs||[]).forEach(function(w){var f=(w.path||'').split('/').pop(),x=o[f]||(o[f]={len:[]});
-      if(w.status!=='completed'){if(!x.run)x.run={start:Date.parse(w.run_started_at||w.created_at),queued:w.status!=='in_progress'};}
-      else if(w.conclusion==='success'&&w.run_started_at&&w.updated_at)x.len.push(Date.parse(w.updated_at)-Date.parse(w.run_started_at));});
-    Object.keys(o).forEach(function(f){var l=o[f].len.sort(function(a,b){return a-b;});o[f].est=l.length?l[l.length>>1]+MIN:0;});
-    act=o;paint();}).catch(function(){act=null;paint();});}
-  function state(p,now){
-    if(p.wf&&act){var a=act[p.wf];if(!a||!a.run)return null;return {start:a.run.start,est:a.est||p.min*MIN,queued:a.run.queued};}
-    if(p.wf&&!p.slots.length)return null;
-    var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return null;
-    return {start:pv,est:p.min*MIN};}
+  // ニュース収集：版面ごとの実際の状態（Supabase）。このページより前に始まった回はもう反映済み
+  function read(){if(document.hidden||!B.url||!B.key)return;
+    fetch(B.url+'/rest/v1/rpc/live_status',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:'{}'})
+      .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){live=l||[];paint();}).catch(function(){});}
   function paint(){var now=Date.now(),on={};
-    B.procs.forEach(function(p){var s=state(p,now);if(!s)return;
-      (p.boards==='*'?Array.prototype.map.call(document.querySelectorAll('section.sec[id]'),function(x){return x.id;}):p.boards).forEach(function(id){
-        var cur=on[id];if(!cur||s.start<cur.s.start)on[id]={p:p,s:s};});});
+    function put(id,o){if(id&&(!on[id]||o.start<on[id].start))on[id]=o;}
+    live.forEach(function(x){var st=Date.parse(x.started_at),eta=Date.parse(x.eta_at)||0;if(st<GEN-MIN)return;
+      if(x.state==='fetch')put(B.ids[x.board],{start:st,text:'記事を探しています',pc:null});
+      else if(x.state==='found'){var left=eta-now;put(B.ids[x.board],{start:st,pc:eta>st?(now-st)/(eta-st):null,
+        text:'新着 '+x.found+' 件 · '+(left>MIN?'反映まであと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});}});
+    B.procs.forEach(function(p){var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return;
+      var left=pv+p.min*MIN-now;p.boards.forEach(function(id){put(id,{start:pv,pc:(now-pv)/(p.min*MIN),
+        text:p.label+' · '+(left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});});});
     Array.prototype.forEach.call(document.querySelectorAll('section.sec[id]'),function(sec){var o=on[sec.id],bar=sec.querySelector(':scope>.busy');
       if(!o){if(bar)bar.remove();return;}
       if(!bar){bar=document.createElement('div');bar.className='busy';bar.setAttribute('role','status');
         bar.innerHTML='<i class="bf"></i><i class="br"></i><span class="bt"></span>';sec.insertBefore(bar,sec.firstChild);}
-      var left=o.s.start+o.s.est-now,pc=o.s.queued?0:Math.max(3,Math.min(97,(now-o.s.start)/o.s.est*100));
-      bar.style.setProperty('--bp',pc.toFixed(1)+'%');
-      bar.querySelector('.bt').textContent=o.p.label+' · '+(o.s.queued?'順番待ち':left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映');});}
-  paint();setInterval(paint,20000);actions();setInterval(actions,120000);
-  document.addEventListener('visibilitychange',function(){if(!document.hidden)actions();});
+      bar.style.setProperty('--bp',o.pc==null?'0%':Math.max(3,Math.min(97,o.pc*100)).toFixed(1)+'%');
+      bar.querySelector('.bt').textContent=o.text;});}
+  paint();read();setInterval(paint,20000);setInterval(read,30000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)read();});
 })();
 """
 
 
 def _busy_tag(busy, generated):
-    if not busy or not busy.get("procs"):
+    if not busy:
         return ""
     cfg = json.dumps({**busy, "gen": generated or ""}, ensure_ascii=False).replace("</", "<\\/")
     return f'<script type="application/json" id="wl-busy">{cfg}</script><script>{BUSY_JS}</script>'
 
 
-def busy_plan(todo=None, repo="CxElegy/Wishlist"):
-    """版面の「更新中」の帯の設定（BUSY_JS が読む）。todo = digest.backend_todo（どの版面を次に処理するか）。"""
+def busy_plan(todo=None, names=(), db=None):
+    """版面の「更新中」の帯の設定（BUSY_JS が読む）。todo = digest.backend_todo（AI 編集・小元素が次に処理する版面）；
+    names = 全部の関注項の名前（Supabase の版面名 → 版面の id）；db = {url, key}（公開の publishable key）。"""
     by = {p["id"]: p for p in processes.PROCESSES}
     todo = todo or {}
-    out = []
-    for pid in ("collect", "render", "edit", "emblem-cron"):
+    procs = []
+    for pid in ("edit", "emblem-cron"):
         p = by.get(pid)
-        if not p:
-            continue
-        boards = "*" if pid in ("collect", "render") else [_wid(n) for n in (todo.get(pid) or {}).get("items", [])][:8]
-        if not boards:
-            continue
-        out.append({"id": pid, "label": BUSY_LABEL[pid], "min": BUSY_MIN[pid], "wf": p.get("workflow") or "",
-                    "slots": [list(x) for x in processes.slots(p)], "boards": boards})
-    return {"repo": repo, "procs": out}
+        boards = [_wid(n) for n in (todo.get(pid) or {}).get("items", [])][:BUSY_BOARDS[pid]]
+        if p and boards:
+            procs.append({"id": pid, "label": BUSY_LABEL[pid], "min": BUSY_MIN[pid],
+                          "slots": [list(x) for x in processes.slots(p)], "boards": boards})
+    return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
+            "ids": {n: _wid(n) for n in names}, "procs": procs}
 
 
 def _live_head(page):
