@@ -27,5 +27,23 @@
 "disk_free": 91662159872,
 "peak": 76120064
 }
+},
+{
+"at": "2026-10-17T01:20:15+00:00",
+"text": "新着 15 件（6 版面）：GTA 6 10、三星手机 1、日本顶级网球赛事 1、The Mandalorian 1、dota2 1",
+"level": "ok",
+"count": 15,
+"secs": 288,
+"workers": 6,
+"res": {
+"cpu": 4,
+"load": 0.01,
+"mem_total": 16765374464,
+"mem_free": 15689900032,
+"disk_used": 63215566848,
+"disk_free": 91661844480,
+"disk_total": 154877411328,
+"peak": 76574720
+}
 }
 ]
