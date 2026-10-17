@@ -2015,7 +2015,8 @@ def write_page():
                           {i["name"]: str(i["sub"]) for i in items if i.get("sub")}, settings.get("nav_hide", render.NAV_HIDE),
                           {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
                           render.busy_plan(adm.get("todo"), [i["name"] for i in items],
-                                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated)
+                                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
+                          {i["name"]: str(i["parent"]) for i in items if i.get("parent")})
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
