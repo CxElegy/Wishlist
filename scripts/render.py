@@ -2378,7 +2378,7 @@ NAV_STYLES = {
 
 .nav .flame svg{position:absolute;left:0;bottom:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;
  transform:scale(calc(.42 + var(--h) * .98));transition:transform .5s cubic-bezier(.2,.8,.2,1);
- filter:brightness(calc(.9 + var(--hc) * .25))}
+ filter:brightness(calc(.9 + var(--hc) * .25 + var(--fx,0) * .45))}   /* --fx：ぶわっ（燃え上がる瞬間）の明るさ */
 /* 後ろの光：話題度が高いほど広く濃く、ゆっくり息をする */
 .nav .flame .blue{opacity:clamp(0,(var(--hc) - .75) * 2.6,.55)}   /* 沸騰に近づくと底に青い炎 */
 .nav .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(16px + var(--h) * 84px);aspect-ratio:1;translate:-50% 0;border-radius:50%;
@@ -2551,6 +2551,7 @@ FLAME_SVG = (
     + "".join(f'<path class="L" data-k="{k}" d="{_TONGUE if k in ("tl", "tr") else _TEAR}" fill="url(#navfl-{g})"/>'
               for k, g in (("tl", "m"), ("tr", "m"), ("o", "o"), ("m", "m"), ("i", "i"), ("c", "c")))
     + '<ellipse class="blue" cx="50" cy="130" rx="15" ry="5" fill="url(#navfl-b)"/>'
+    + '<ellipse class="puff" cx="50" cy="80" rx="0" ry="0" fill="url(#navfl-m)" opacity="0"/>'
     + '</g></svg>' + '<i class="em"></i>' * 16 + '</span>')
 
 
@@ -2852,38 +2853,60 @@ NAV_JS = """
   const logo = nav.querySelector('.logo'), fl = logo && logo.querySelector('.flame');
   const LV = (() => { try { return JSON.parse(nav.dataset.levels || '[]'); } catch (_) { return []; } })();
   const maxHeat = Math.max(0, ...pills.map(p => +p.dataset.heat || 0));
-  const FL = {h: .3, target: .3, t: Math.random() * 50, run: false};
+  const FL = {h: .3, target: .3, t: Math.random() * 50, run: false, sg: null, first: true};
   const SPEC = {tl: [.5, -17, -16, 1.4, 1.25], tr: [.46, 17, 15, 1.4, 1.1], o: [1, 0, 0, 1, .9], m: [.8, 0, 0, 1.1, 1.05],
                 i: [.56, 0, 0, 1.2, 1.3], c: [.3, 0, 0, 1, 1.5]};   // 大きさ・横の位置・傾き・揺れの大きさ・速さ
   const layers = fl ? [...fl.querySelectorAll('.L')].map(n => ({n, k: n.dataset.k, s: SPEC[n.dataset.k], ph: Math.random() * 100})) : [];
   const turb = fl && fl.querySelector('feTurbulence'), disp = fl && fl.querySelector('feDisplacementMap');
-  const ems = fl ? [...fl.querySelectorAll('.em')].map(e => ({e, life: Math.random(), dur: 1, dx: 0, sway: 0, ph: 0})) : [];
+  const ems = fl ? [...fl.querySelectorAll('.em')].map(e => ({e, life: Math.random(), dur: 1, dx: 0, sway: 0, ph: 0, b: 0})) : [];
+  const glow = fl && fl.querySelector('.glow'), puff = fl && fl.querySelector('.puff');
+  // ぶわっ：話題度が上がる切り替えのときだけ。本物の火に燃料が入ったときのように 0.07 秒で一気に何倍にも伸び上がり、
+  // 火の玉が上へ抜け、火の粉が散って、1 秒ほどで新しい強さに落ち着く（上がり幅が大きいほど強い。testground/flame.html）
+  const UP = {tl: 1.5, tr: 1.5, o: 2.3, m: 2.1, i: 1.7, c: 1.4};   // 縦に伸びる倍率（外側ほど高く）
+  const env = t => t < .07 ? 1 - (1 - t / .07) ** 2 : Math.exp(-(t - .07) * 3.1) * (1 + .12 * Math.sin((t - .07) * 34));
+  function flare(up) {
+    const k = Math.min(1.5, .45 + up * 1.6);
+    FL.sg = {t: 0, k: Math.max(k, FL.sg ? FL.sg.k * .6 : 0)};
+    ems.forEach((m, i) => { if (i < Math.round(6 + k * 7)) { m.life = Math.random() * .15; m.dur = .45 + Math.random() * .5; m.dx = (Math.random() - .5) * 4.5; m.sway = Math.random() * 4; m.ph = Math.random() * 6; m.b = k; } });
+  }
   const wob = (t, p) => Math.sin(t * 1.13 + p) * .45 + Math.sin(t * 2.71 + p * 1.7) * .3 + Math.sin(t * 5.87 + p * 2.3) * .17 + Math.sin(t * 11.3 + p * .7) * .08;
   let flLast = 0;
   function burn(now) {
     const dt = Math.min(.05, (now - (flLast || now)) / 1000); flLast = now;
     FL.h += (FL.target - FL.h) * Math.min(1, dt * 4);
-    fl.style.setProperty('--hc', FL.h.toFixed(3));   // 色は毎フレーム滑らかに
-    const h = FL.h, amp = .18 + h * 1.5;
-    FL.t += dt * (.6 + h * 3.8);
+    let E = 0;   // ぶわっの強さ（0〜1.5）
+    if (FL.sg) { FL.sg.t += dt; E = env(FL.sg.t) * FL.sg.k; if (FL.sg.t > 1.6) FL.sg = null; }
+    fl.style.setProperty('--hc', Math.min(1, FL.h + E * .35).toFixed(3));   // 色は毎フレーム滑らかに（燃え上がる瞬間は熱く白く）
+    fl.style.setProperty('--fx', E.toFixed(3));
+    glow.style.scale = (1 + E * 1.3).toFixed(3);
+    const h = FL.h, amp = .18 + h * 1.5 + E * .8;
+    FL.t += dt * (.6 + h * 3.8 + E * 4);
     for (const L of layers) {
       const [sz0, x0, rot0, la, sp] = L.s, side = L.k === 'tl' || L.k === 'tr';
       const sz = L.k === 'i' || L.k === 'c' ? sz0 * (.65 + h * .7) : sz0;   // 熱いほど白い芯が大きい
       const on = side ? Math.min(1.25, Math.max(0, (h - .25) / .45)) : 1, tt = FL.t * sp + L.ph;
-      const sy = sz * (1 + (wob(tt, 1) * .16 + Math.max(0, wob(tt * 1.7, 4)) * .14) * amp * la) * (side ? .6 + on * .5 : 1);
-      const sx = sz * (1 - wob(tt, 1) * .06 * amp), skew = wob(tt * .8, 7) * 9 * amp * la;
+      const sy = sz * (1 + (wob(tt, 1) * .16 + Math.max(0, wob(tt * 1.7, 4)) * .14) * amp * la) * (side ? .6 + on * .5 : 1) * (1 + E * UP[L.k]);
+      const sx = sz * (1 - wob(tt, 1) * .06 * amp) * (1 + E * .3), skew = wob(tt * .8, 7) * 9 * amp * la;
       const rot = rot0 * on + wob(tt * .6, 3) * 3 * amp, x = x0 * (side ? .8 + on * .4 : 1) + wob(tt * .9, 9) * 1.6 * amp;
       L.n.setAttribute('transform', `translate(${(50 + x).toFixed(2)} 132) rotate(${rot.toFixed(2)}) skewX(${skew.toFixed(2)}) scale(${sx.toFixed(3)} ${sy.toFixed(3)}) translate(-50 -132)`);
-      if (side) L.n.style.opacity = on.toFixed(2);
+      if (side) L.n.style.opacity = Math.min(1, on + E).toFixed(2);
     }
+    // 火の玉：根元からちぎれて上へ抜け、広がりながら消える
+    if (FL.sg && FL.sg.t < 1.1) {
+      const p = FL.sg.t / 1.1, r = (10 + p * 22) * Math.min(1, FL.sg.k);
+      puff.setAttribute('cy', (70 - p * (120 + FL.sg.k * 60)).toFixed(1));
+      puff.setAttribute('rx', (r * .85).toFixed(1)); puff.setAttribute('ry', r.toFixed(1));
+      puff.setAttribute('opacity', (p < .12 ? p / .12 : (1 - p) ** 1.5).toFixed(2));
+    } else puff.setAttribute('opacity', 0);
     turb.setAttribute('baseFrequency', `${(.03 + wob(FL.t * .3, 2) * .006).toFixed(4)} ${(.07 + wob(FL.t * .4, 5) * .015).toFixed(4)}`);
-    disp.setAttribute('scale', (3 + h * 24 + wob(FL.t, 8) * 2).toFixed(1));
+    disp.setAttribute('scale', (3 + h * 24 + E * 26 + wob(FL.t, 8) * 2).toFixed(1));
     const n = Math.round(h * h * ems.length);
     ems.forEach((m, k) => {
-      if (k >= n) { m.e.style.opacity = 0; return; }
+      if (k >= n && !m.b) { m.e.style.opacity = 0; return; }
       m.life += dt / m.dur;
-      if (m.life >= 1) { m.life = 0; m.dur = .9 + Math.random() * .9 - h * .4; m.dx = (Math.random() - .5) * 2; m.sway = Math.random() * 6; m.ph = Math.random() * 6; }
-      const l = m.life, y = -(8 + l * (18 + h * 80)), x = m.dx * l * 12 + Math.sin(l * 9 + m.ph) * m.sway;
+      if (m.life >= 1) { m.life = 0; m.b = 0; m.dur = .9 + Math.random() * .9 - h * .4; m.dx = (Math.random() - .5) * 2; m.sway = Math.random() * 6; m.ph = Math.random() * 6; }
+      if (k >= n && !m.b) { m.e.style.opacity = 0; return; }
+      const l = m.life, y = -(8 + l * (18 + h * 80) * (1 + m.b * 1.4)), x = m.dx * l * 12 + Math.sin(l * 9 + m.ph) * m.sway;
       m.e.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${(1 - l * .7).toFixed(2)})`;
       m.e.style.opacity = (l < .1 ? l * 10 : 1 - (l - .1) / .9).toFixed(2);
     });
@@ -2902,7 +2925,9 @@ NAV_JS = """
     if (!fl) return;
     const own = on && on.dataset.heat != null ? +on.dataset.heat || 0 : null;
     const v = own == null ? maxHeat : own;
-    FL.target = own == null ? Math.min(.35, v / 100) : v / 100;
+    const to = own == null ? Math.min(.35, v / 100) : v / 100;
+    if (!FL.first && to - FL.target > .04 && FL.run) flare(to - FL.target);   // 強くなる切り替えだけ ぶわっ（開いた直後・止まっているときは出さない）
+    FL.first = false; FL.target = to;
     nav.style.setProperty('--heat', FL.target.toFixed(2));
     logo.querySelector('.hv').textContent = v ? String(v) : '';
     logo.querySelector('.hl').textContent = own == null ? (v ? '今日の最高' : '') : ((LV.find(l => v >= l[0]) || [0, ''])[1] || '話題度');
