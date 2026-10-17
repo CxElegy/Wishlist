@@ -2208,7 +2208,7 @@ NAV_STYLES = {
 /* v6（testground/compare.html）：板块ごとの枠を画面の高さいっぱいに並べる。作品が少ないうちは何も隠さず行の間隔を広げ、
    増えたら NAV_JS が ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。
    見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
-.nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--alert);color:var(--ink)}
+.nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--cur,var(--alert));color:var(--ink);transition:border-color .3s}   /* 左の縦線は読んでいる板块の色 */
 .nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
 .nav .nhead .pill{flex:none;height:30px;padding-left:4px;font-size:13px}
 .nav .nhead .pill.on{padding-left:58px;padding-right:12px}
@@ -2229,13 +2229,13 @@ NAV_STYLES = {
 .nav .pill::after{content:"";position:absolute;left:9px;top:50%;width:14px;height:8px;margin-top:-4px;transform:skewX(var(--skew));
  background:var(--paper);border:2px solid rgba(26,28,34,.32);transition:background .2s,border-color .2s}
 .nav .pill:hover{color:var(--ink)}
-.nav .pill:hover::after{border-color:var(--alert)}
+.nav .pill:hover::after{border-color:var(--sc)}
 .nav .pill.past::before{background:var(--sc)}
 .nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
 /* アイコンは読んでいる作品だけ：P5 のカットインのように、白フチ＋墨の硬い影で少し傾けて貼る。ほかの行には出さない */
 .nav .pill .ic{display:none}
 /* 読んでいる作品：原版（P5）の黒い斜めの箱＋赤い硬い影 */
-.nav .pill.on::before{inset:4px -2px 4px 24px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
+.nav .pill.on::before{inset:4px -2px 4px 24px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--sc)}   /* 硬い影は板块の色 */
 .nav .pill.on::after{display:none}
 .nav .pill.on{color:var(--card);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:58px}
 .nav .pill.on .ic{display:grid;position:absolute;left:2px;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:0;
@@ -2302,10 +2302,10 @@ NAV_STYLES = {
 /* 読んでいる作品：黒い斜めの箱の右端に黄色の斜線、名前は大きく・赤い影。頭の 1 文字だけさらに大きく */
 .nav .nbody .pill.on .nm{transform:rotate(-2deg) translateY(-1px)}
 .nav .pill.on{font-size:18px}
-.nav .pill.on .nm{text-shadow:2px 2px 0 var(--alert);letter-spacing:.01em}
+.nav .pill.on .nm{text-shadow:2px 2px 0 var(--sc);letter-spacing:.01em}
 .nav .pill.on .nm::first-letter{font-size:1.3em}
 .nav .pill.on .cnt{text-shadow:none;letter-spacing:.1em}
-.nav .pill.on .new{font-size:20px;color:var(--gold);text-shadow:2px 2px 0 var(--alert)}
+.nav .pill.on .new{font-size:20px;color:var(--gold);text-shadow:2px 2px 0 var(--sc)}
 .nav .pill.on::after{display:block;content:"";position:absolute;left:auto;right:4px;top:-3px;bottom:-3px;width:9px;height:auto;margin:0;border:0;
  background:var(--gold);transform:skewX(-24deg);box-shadow:2px 2px 0 var(--ink)}
 .nav .pill.on .new{margin-right:14px}
@@ -2602,7 +2602,7 @@ NAV_JS = """
         p.classList.toggle('past', !!on && num(p) > 0 && num(p) < n0);
       });
       curIdx = idx; curProg = -1;
-      nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
+      nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : 'var(--alert)');   // トップ・気になるかも？を読んでいるときは赤
       nav.classList.toggle('insec', k >= 0);
       tabs.forEach(t => t.classList.toggle('on', t.dataset.sec === (k >= 0 ? S[k].nsec : '')));
       if (wide.matches) layout(force); else narrow(k);
