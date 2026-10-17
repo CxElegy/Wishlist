@@ -80,7 +80,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .sec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
 .sec .en{font:700 10px var(--font-mono);letter-spacing:.2em;color:var(--muted);transition:opacity .2s}
 .body{position:absolute;left:0;right:0;top:44px;opacity:0;transition:opacity .2s}
-.slot.cur .body{opacity:1;transition-delay:.14s}
+.slot.cur .body,.slot.open .body{opacity:1;transition-delay:.14s}
 .subs{display:flex;flex-wrap:wrap;gap:4px 6px;margin:0 0 6px 2px}
 .sub{display:flex;align-items:center;gap:5px;height:22px;padding:0 7px;border:1px solid var(--hair);font:700 11px/1 var(--font-sans);color:var(--muted);white-space:nowrap}
 .sub .cnt{font:700 9px var(--font-mono)}
@@ -123,8 +123,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* ---------- 版の見比べ用 ---------- */
-.board{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
-.case p{min-height:6.6em}
+.board{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:28px 18px}
+.case p{min-height:9.8em}
+.lvl{align-self:flex-start;padding:1px 8px;background:var(--ink);color:var(--gold);font:700 11px var(--font-sans)}
+.lvl.ghost{visibility:hidden}
+.case h2{min-height:2.7em}
+.case .sec .en{display:none}
+.case .sec .cnt{grid-column:-2}   /* 列が細いので英字は省く（件数が折り返さないように） */
 .case p .pr{font:700 11px var(--font-mono);color:var(--alert)}
 .cases{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%}
 .cases button{padding:3px 9px;border:1px solid rgba(251,248,241,.4);font:700 12px var(--font-sans)}
@@ -160,7 +165,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   <button class="go" id="play" type="button" aria-pressed="false">▶ 読み進める</button>
   <div class="scrub"><button type="button" id="prev" aria-label="前の作品">◀</button><input type="range" id="pos" min="0" value="0" aria-label="読んでいる位置"><button type="button" id="next" aria-label="次の作品">▶</button><span id="post"></span></div>
   <div class="cases" id="cases"></div>
-  <p class="note">同じ作品・同じ読む位置で、目次の各版を横に並べています（本文は省略）。つまみを動かすと全部の版がいっしょに「下へスクロール」します。上の札で条件を切り替え。
+  <p class="note">同じ作品・同じ読む位置で、目次の各版（v1〜v6）を横に並べています（本文は省略）。つまみを動かすと全部の版がいっしょに「下へスクロール」します。上の札で条件を切り替え。
     パターンごとに 1 本ずつ見るなら <a href="rails.html">rails.html</a>、本文つきで 1 本なら <a href="nav.html">nav.html</a>。</p>
 </header>
 <div class="board" id="board"></div>
@@ -246,7 +251,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
      d: '原版の「駅が弾んで大きくなる」線路と、作品・板块のアイコン。配置は v3 と同じ。'},
     {v: 5, pr: 99, t: 'v4 ＋ 入るなら全部・余りは均等', mode: 'even', look: 'line', icons: true, all: true,
      d: '板块の作品が全部入るなら小分類で絞らず全部見せる。それでも余る高さは全板块に均等に配る（下に詰めない）。'},
+    {v: 6, pr: 100, t: '少ないうちは隠さない（段階的に隠す）', mode: 'steps', look: 'line', icons: true,
+     d: '全部入るなら何も隠さない。入らなくなったら ①ほかの板块を新着順に数件へ ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。'},
   ];
+  const STEP = ['全部見せる', '① ほかの板块は新着順に数件', '② ほかは見出しだけ', '③ いまの小分類だけ', '④ 入るだけ＋ほか N 件'];
 
   // ---------- 目次 1 本ぶん ----------
   const FLAT_MAX = 24, SUB_MIN = 13, SEC_H = 44, ITEM_H = 28, MORE_H = 24, MIN_H = 40, LAB_H = 20, CAP1 = 8, DONORS = 4;
@@ -261,6 +269,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     box.classList.toggle('st-line', V.look === 'line');
     box.classList.toggle('noic', !V.icons);
     box.innerHTML = `<h2><b>v${V.v}</b>${e(V.t)}</h2><p>${e(V.d)}<br><span class="pr">PR #${V.pr}</span></p>`
+      + (V.mode === 'steps' ? `<div class="lvl"></div>` : `<div class="lvl ghost">—</div>`)
       + `<div class="frame"><div class="find">🔍 作品をさがす</div><div class="rail"></div></div>`;
     const rail = box.querySelector('.rail');
     let cur = 0, flat, slots = [], curSec = null, curSub = null;
@@ -357,7 +366,68 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       return SEC_H + 54 + Math.min(big, 10) * ITEM_H + MORE_H + 8 + EXTRA;
     }
 
+    // v6：何も隠さない → ①〜④ の順に、入るところまで隠していく
+    const chipsHtml = s => { const list = W.filter(w => w.sec === s);
+      return `<div class="subs">` + subsOf(s).map(sub => `<button class="sub${sub === curSub ? ' cur' : ''}" data-sub="${e(sub)}">${e(sub)}<span class="cnt">${list.filter(w => w.sub === sub).length}</span></button>`).join('') + `</div>`; };
+    const topN = (l, n) => l.slice().sort((a, b) => b.hot - a.hot || a.i - b.i).slice(0, n).sort((a, b) => a.i - b.i);
+    function layoutSteps() {
+      const H = Math.floor(rail.getBoundingClientRect().height), n = slots.length, k = secs.indexOf(curSec);
+      const L = secs.map(s => W.filter(w => w.sec === s)), subsK = hasSubs(curSec) ? subsOf(curSec) : [];
+      let chipsH = 0;
+      if (subsK.length) {   // 小分類の札の高さを実際に測る
+        const pr = document.createElement('div');
+        pr.className = 'body'; pr.style.visibility = 'hidden'; pr.innerHTML = chipsHtml(curSec);
+        slots[k].appendChild(pr); chipsH = pr.firstChild.offsetHeight + 6; pr.remove();
+      }
+      const labsH = subsK.length * LAB_H;
+      // 板块 1 つぶんの高さ：見出し＋作品＋「ほか N 件」＋（いまの板块なら）読んでいる駅の大きさ・小分類の見出しや札
+      const hOf = (x, i) => !x ? MIN_H : SEC_H + 6 + x.items.length * ITEM_H + (x.more ? MORE_H : 0)
+        + (i === k ? EXTRA + (x.labs ? labsH : 0) + (x.chips ? chipsH : 0) : 0);
+      const sum = p => p.reduce((a, x, i) => a + hOf(x, i), 0);
+      const full = i => ({items: L[i], more: 0, labs: i === k && subsK.length > 0});
+      let plan = L.map((_, i) => full(i)), lvl = 0;
+      if (sum(plan) > H) {
+        lvl = -1;
+        const maxLen = Math.max(0, ...L.map((l, i) => i === k ? 0 : l.length));
+        for (let kk = maxLen - 1; kk >= 1 && lvl < 0; kk--) {   // ① ほかの板块は新着の多い順に kk 件まで
+          const p = L.map((l, i) => i === k || l.length <= kk ? full(i) : {items: topN(l, kk), more: l.length - kk});
+          if (sum(p) <= H) { plan = p; lvl = 1; }
+        }
+        if (lvl < 0) {   // ② ほかは見出しだけ、いまの板块は全部
+          const p = L.map((_, i) => i === k ? full(i) : null);
+          if (sum(p) <= H) { plan = p; lvl = 2; }
+        }
+        if (lvl < 0 && subsK.length) {   // ③ 小分類の札＋いまの小分類を全部
+          const p = L.map((l, i) => i === k ? {items: l.filter(w => w.sub === curSub), more: 0, chips: true} : null);
+          if (sum(p) <= H) { plan = p; lvl = 3; }
+        }
+        if (lvl < 0) {   // ④ 入るだけ＋「ほか N 件」
+          const sl = subsK.length ? L[k].filter(w => w.sub === curSub) : L[k];
+          const room = H - (n - 1) * MIN_H - SEC_H - 6 - EXTRA - (subsK.length ? chipsH : 0) - MORE_H;
+          const items = pickN(sl, Math.max(1, Math.floor(room / ITEM_H)));
+          plan = L.map((_, i) => i === k ? {items, more: sl.length - items.length, chips: subsK.length > 0} : null);
+          lvl = 4;
+        }
+      }
+      // 余った高さは全板块に均等に
+      const spare = Math.max(0, H - sum(plan)) / n;
+      place(plan.map((x, i) => hOf(x, i) + spare), k);
+      slots.forEach((el, i) => {
+        const x = plan[i], body = el.querySelector('.body');
+        el.classList.toggle('open', !!x);
+        body.style.setProperty('--ih', ITEM_H + 'px'); body.classList.remove('roomy');
+        if (!x) { body.innerHTML = ''; return; }
+        const s = secs[i];
+        body.innerHTML = (x.chips ? chipsHtml(s) : '')
+          + (x.labs ? subsOf(s).map(sub => `<div class="sublab" style="--sc:${s.c}">${e(sub)}</div>` + x.items.filter(w => w.sub === sub).map(pill).join('')).join('')
+                    : x.items.map(pill).join(''))
+          + (x.more ? `<button class="more" data-sec="${s.id}">ほか ${x.more} 件${i === k ? 'をさがす' : ''} →</button>` : '');
+      });
+      box.querySelector('.lvl').textContent = '隠し方：' + STEP[lvl];
+    }
+
     function layout() {
+      if (V.mode === 'steps') return layoutSteps();
       const H = Math.floor(rail.getBoundingClientRect().height), n = slots.length, k = secs.indexOf(curSec);
       let hs;
       if (V.mode === 'borrow') {
@@ -396,6 +466,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       const cw = W[cur];
       if (flat) { rail.querySelectorAll('.pill').forEach(p => { p.classList.toggle('on', +p.dataset.i === cur); p.classList.toggle('past', +p.dataset.i < cur); }); return; }
       if (V.mode === 'scroll') return drawScroll();
+      if (V.mode === 'steps') { curSec = cw.sec; curSub = cw.sub; return layoutSteps(); }
       if (force || cw.sec !== curSec) { curSec = cw.sec; curSub = cw.sub; layout(); return; }
       if (cw.sub !== curSub) {
         curSub = cw.sub;
