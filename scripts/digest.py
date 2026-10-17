@@ -2217,7 +2217,8 @@ def merge_inbox(old, new):
             old["items"].append(item)
             continue
         start = len(cur["entries"])
-        for k, entry in enumerate(item["entries"], 1):
+        # 垃圾页不接进来（同一天的旧版 inbox 和这次的合并时，别的回收集的结果里可能还留着）
+        for k, entry in enumerate([d for d in item["entries"] if not is_spam(d.get("title", ""))], 1):
             cur["entries"].append({**entry, "n": start + k})
         changed_before = {f["label"] for f in cur["facts"] if f["changed"]}
         cur["facts"] = [{**f, "changed": f["changed"] or f["label"] in changed_before} for f in item["facts"]] or cur["facts"]
@@ -2470,6 +2471,7 @@ def publish(inbox_path=None):
             stories = stories[:item["max_stories"]]
         if not stories and not any(f["changed"] for f in raw["facts"]):
             continue
+        stories = [s for s in stories if not is_spam(s.get("headline", ""))]  # 收集后才进 inbox 的垃圾页（合并的旧版）也不出刊
         stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used)  # 原文已删的报道会被去掉
         # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
         for d, e in zip(raw["entries"], entries):
@@ -2651,6 +2653,7 @@ def repair_images():
             for st in b["stories"]:
                 img = st.get("image")
                 bad = (not img or st.get("image_via") == "作品封面" or "验证不了" in (st.get("image_via") or "")
+                       or images.is_bing_thumb(img)  # Bing 的缩略图是 Bing 裁过的（横长的图变成竖的一截），先找原文的图
                        or not images.check(img)[0]  # 图后来被删、或者不合格（太小、打不开）
                        or images.GENERIC.search(urllib.parse.urlparse(img).path)
                        or first_user.get(img) not in (None, st["url"]))

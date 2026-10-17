@@ -17,6 +17,10 @@ on:
         description: "顺便发一次周报（测试用）"
         type: boolean
         default: false
+      repair_images:
+        description: "重新给已出刊的报道找配图（Bing 缩略图・作品封面・坏图换成原文的图）"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -51,6 +55,10 @@ jobs:
       - name: 收集并更新简报
         if: env.IS_WEEKLY != 'true' || github.event_name == 'workflow_dispatch'
         run: python scripts/digest.py
+
+      - name: 重新找配图（手动，repair_images）
+        if: inputs.repair_images == true
+        run: python scripts/digest.py repair-images
 
       - name: 功能更新 → Discord
         run: python scripts/digest.py notify-changes

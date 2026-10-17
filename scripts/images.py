@@ -545,10 +545,19 @@ def kind(reason):
     return "其它"
 
 
+BING_THUMB = re.compile(r"^https?://(www\.)?bing\.com/th\?")
+
+
+def is_bing_thumb(u):
+    """Bing ニュースの縮小画像（bing.com/th?id=…）。Bing が自分で切った一部分のことがある（横長のバナーが縦の一切れになる）。"""
+    return bool(isinstance(u, str) and BING_THUMB.match(u))
+
+
 def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
     """一条报道的配图。按顺序检查候选图，第一张可用的就用：
     AI 挑的 > 条目自带图 > 原文（og:image > JSON-LD > 正文图；Reddit 帖子读帖子本身和外链）
-    > 其它来源的原文 > Bing / Google 新闻上的同一篇转载。
+    > 其它来源的原文 > 条目自带的 Bing 缩略图 > Bing / Google 新闻上的同一篇转载。
+    Bing 缩略图是 Bing 裁过的一部分（横长的图会变成竖的一截），所以排在原文的图后面，原文拿不到图时才用。
     都不行返回 image=None（网页上这条进「其他消息」文字列表，或用这一版面唯一一次的作品封面）。
     网站 logo / 全站默认分享图不用；avoid 里的图（同一期别的报道已经用了）也不用，免得几张卡片同一张图。"""
     res = Result()
@@ -558,7 +567,8 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
     def stages():
         yield [("AI 挑选", chosen)]
         # 以前给 Reddit 帖子找来的「转载图」不要：帖子没有转载，那是别的文章的图
-        yield [("条目自带", e.image) for e in refs if not (sources.is_reddit(e) and (e.image_via or "").startswith("转载"))]
+        own = [("条目自带", e.image) for e in refs if not (sources.is_reddit(e) and (e.image_via or "").startswith("转载"))]
+        yield [x for x in own if not is_bing_thumb(x[1])]
         pages = [url] + [sources.entry_link(e) for e in refs[1:3]]
         for i, link in enumerate(pages):
             if REDDIT_POST.match(link or ""):
@@ -573,6 +583,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
             if note:
                 res.notes.append(note)
             yield found
+        yield [("条目自带（Bing 缩略图）", u) for _, u in own if is_bing_thumb(u)]
         if refs and not sources.is_reddit(refs[0]):  # Reddit 帖子是网友发的，没有「转载」
             found, note = syndicated_candidates(refs[0].title, url)
             if note:

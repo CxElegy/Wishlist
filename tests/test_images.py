@@ -894,3 +894,29 @@ class AsciiUrl(unittest.TestCase):
             f = images._fetch("http://127.0.0.1:1/画像.jpg", 100)
         self.assertNotIn("ordinal", f.error)
         self.assertIn("%E7%94%BB", op.call_args[0][0].full_url)
+
+
+class BingThumbOrderTest(unittest.TestCase):
+    """Bing の縮小画像は Bing が切った一部分（2026-10-17 サンリオハウスの横長バナーが縦の一切れに）：原文の図を先に試す。"""
+
+    def test_bing_thumb_after_article_images(self):
+        import images
+        order = []
+        with mock.patch.object(images, "check", side_effect=lambda u: (order.append(u), (False, "x"))[1]), \
+             mock.patch.object(images, "page", return_value=images.Page(url="https://news.example.jp/a", ok=True, og=["https://news.example.jp/og.jpg"])), \
+             mock.patch.object(images, "syndicated_candidates", return_value=([], "")):
+            e = sources.Entry(title="t", url="https://news.example.jp/a", source="s", summary="",
+                              image="https://www.bing.com/th?id=ONUT.x&pid=News", published=None)
+            images.pick(None, [e], "https://news.example.jp/a")
+        self.assertEqual(order, ["https://news.example.jp/og.jpg", "https://www.bing.com/th?id=ONUT.x&pid=News"])
+        self.assertTrue(images.is_bing_thumb("https://bing.com/th?id=1"))
+        self.assertFalse(images.is_bing_thumb("https://news.example.jp/og.jpg"))
+
+
+class SpamOnPageTest(unittest.TestCase):
+    def test_render_hides_spam_left_in_old_issues(self):
+        import render
+        issue = {"date": "2026-10-17", "items": [{"name": "绝区零", "stories": [
+            {"headline": "绝区零艾莲被爆❌挤奶歪歪在线高清完整-爱看高清网", "url": "https://hurun.net/1", "image": None},
+            {"headline": "绝区零 3.3", "url": "https://a/2", "image": None}]}]}
+        self.assertEqual([x["headline"] for x in render.collect([issue])[0]["stories"]], ["绝区零 3.3"])
