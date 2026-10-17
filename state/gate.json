@@ -1,37 +1,50 @@
 {
  "changed": true,
- "checked": "2026-10-17T05:50:30+00:00",
+ "checked": "2026-10-17T05:51:01+00:00",
+ "fired": {
+  "at": "2026-10-17T05:51:01+00:00",
+  "results": {
+   "edit": "Claude を起こした",
+   "photos": "仕事なし（起こさない）"
+  }
+ },
  "jobs": {
   "edit": {
    "claude": true,
+   "fired": {
+    "at": "2026-10-17T05:51:01+00:00",
+    "sig": "6bf000e12cb6"
+   },
    "items": [
     "A2O LITE",
     "GTA 6",
     "The Mandalorian",
+    "dota2",
+    "あつ森",
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "漫威电影"
    ],
    "need": true,
-   "sig": "d3d956c48524",
-   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）"
+   "sig": "6bf000e12cb6",
+   "why": "整理待ちの記事 13 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "A2O LITE",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "Astrae Oratio",
     "Vaundy",
     "哈利波特剧集",
-    "Astrae Oratio",
     "チェーンソーマン",
+    "A2O LITE",
     "漫威电影",
     "FROM"
    ],
-   "need": true,
-   "sig": "b115855dd249",
-   "waiting": [],
-   "why": "足りない 7 版面（Actions で Python が埋める）"
+   "why": "失敗 7 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 20:42 から）"
   },
   "photos": {
    "claude": true,
