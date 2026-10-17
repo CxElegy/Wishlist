@@ -1237,7 +1237,9 @@ items:
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["YOUNG", "HIMEKI", "VORA", "XILI", "RADA", "MERCI", "AYUNE", "OA", "AIJING"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：新人ガールズグループ
-    emblem_skip: "デビュー直後で公式画像の取れる Wiki がなく、メンバー写真を勝手に貼らない"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "AIJING", why: "AIJING（ユーザーが一覧で選んだ・新聞の配図）", image: "emblems/a2o-lite-aijing.webp", source: "https://www.bing.com/th?id=ONUT.8ea5sIwVX4ukWAGlU7zFgA&pid=News", page: "", shape: "cutout"}
+      - {subject: "A2O LITE", why: "A2O LITE（ユーザーが一覧で選んだ・記事のページ）", image: "emblems/a2o-lite-a2o-lite.webp", source: "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/15/30001093689_16v9.jpg", page: "", shape: "cutout"}
     theme: {bg: "#FBEFF4", fg: "#1E1A18", accent: "#B5285F", alt_bg: "#1E1218", alt_fg: "#F4EEE4", alt_accent: "#F07AA8", split: true}  # 自选：ネオンピンク + 墨紫（デビュー曲「NEON」）
     type: product
     section: "演出"

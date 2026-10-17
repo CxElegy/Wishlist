@@ -631,6 +631,17 @@ class CheckWhole(unittest.TestCase):
 class EmblemDetail(unittest.TestCase):
     """管理ページ「小元素の探し方」：取り方の順・次の回・助言・図。"""
 
+    def test_youtube_titles_need_group_and_name(self):
+        data = {"contents": [{"videoRenderer": {"videoId": "a1", "title": {"runs": [{"text": "OA travel vlog"}]}}},
+                             {"videoRenderer": {"videoId": "b2", "title": {"runs": [{"text": "A2O LITE OA debut trailer"}]}}},
+                             {"videoRenderer": {"videoId": "c3", "title": {"runs": [{"text": "[직캠] A2O LITE OA FanCam"}]}}}]}
+        html = "<script>var ytInitialData = " + json.dumps(data) + ";</script>"
+        self.assertEqual([v for v, _ in ef.parse_youtube(html)], ["a1", "b2", "c3"])
+        with mock.patch.object(ef, "_get", return_value=html.encode()):
+            rows = ef.youtube_images("A2O LITE", "OA")
+        self.assertEqual([r["image"] for r in rows], ["https://i.ytimg.com/vi/c3/hq720.jpg", "https://i.ytimg.com/vi/b2/hq720.jpg"])   # 名前だけの動画は外す・직캠を先に
+        self.assertEqual(ef.parse_youtube("<html></html>"), [])
+
     def test_source_chain_matches_gather(self):
         chain = [s for s, _ in ef.source_chain({"type": "event", "emblem_kind": "group"})]
         self.assertNotIn("Wikidata", chain)   # グループは Wikidata を使わない（gather は本人だけ）
