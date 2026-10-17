@@ -1893,7 +1893,8 @@ def write_page():
                           {i["name"]: render.template_for(i) for i in items}, themes,
                           (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
-                          {i["name"]: i["like_fx"] for i in items if i.get("like_fx")})
+                          {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
+                          {i["name"]: str(i["sub"]) for i in items if i.get("sub")}, settings.get("nav_hide", render.NAV_HIDE))
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, [i["name"] for i in items]), updated),

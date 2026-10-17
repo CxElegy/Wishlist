@@ -262,3 +262,37 @@ class AdminPage(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Nav(unittest.TestCase):
+    """左の目次（v6、testground/compare.html で決めた形）：板块ごとの枠、小分類の札、アイコン、隠し始める件数。"""
+
+    def works(self):
+        st = lambda d: {"url": "https://x/" + d, "title": "t", "_issue": d}
+        return [{"name": "A<b>", "section": "游戏", "stories": [st("2026-10-16")], "_thumb": "https://img/a.jpg"},
+                {"name": "B", "section": "游戏", "stories": [], "_emblems": [{"image": "emblems/b-x.webp"}]},
+                {"name": "C", "section": "影视", "stories": [st("2026-09-01")]}]
+
+    def test_slots_icons_and_escaping(self):
+        out = render._nav(self.works(), "2026-10-16")
+        self.assertEqual(out.count('class="nslot"'), 2)               # 板块ごとに 1 枠
+        self.assertIn('data-hide="24"', out)                          # 既定は 24 件まで隠さない
+        self.assertIn("A&lt;b&gt;", out)
+        self.assertNotIn("A<b>", out)
+        self.assertIn("emblems/b-x.webp", out)                        # emblem が作品アイコン
+        self.assertIn("https://img/a.jpg", out)                       # なければ記事の写真
+        self.assertIn('<i class="ic">C</i>', out)                     # それもなければ頭文字
+        self.assertIn('data-hot="1"', out)                            # 今週の件数（新着順に残すとき使う）
+        self.assertIn("新着 1／2", out)
+        self.assertNotIn('class="nsubs"', out)                         # 小分類がなければ札は出さない
+
+    def test_sub_chips_and_hide_setting(self):
+        out = render._nav(self.works(), "2026-10-16", subs={"A<b>": "新作", "B": "運営中"}, hide="auto")
+        self.assertIn('class="nsubs"', out)                            # 小分類が 2 つ以上なら札
+        self.assertEqual(out.count('class="nlab"'), 2)
+        self.assertIn('data-hide="auto"', out)
+
+    def test_nav_css_follows_rules(self):
+        css = render.NAV_STYLES["line"]
+        for cls in (".nav .nslot", ".nav .nsec", ".nav .nsubs", ".nav .x"):
+            self.assertIn(cls, css + render.CSS, cls)
