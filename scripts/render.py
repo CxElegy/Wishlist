@@ -2852,6 +2852,7 @@ NAV_JS = """
       nav.classList.toggle('insec', k >= 0);
       tabs.forEach(t => t.classList.toggle('on', t.dataset.sec === (k >= 0 ? S[k].sec : '')));
       flame(on);
+      kindle(on ? m : null, on ? +on.dataset.heat || 0 : 0);
       if (wide.matches) layout(force); else narrow(k);
     }
     if (prog !== curProg) { curProg = prog; nav.style.setProperty('--prog', prog); }
@@ -2909,9 +2910,7 @@ NAV_JS = """
     const x = FX.cx; x.fillStyle = '#000'; x.fillStyle = c; const h = x.fillStyle;
     return h[0] === '#' ? [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) : (h.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
   }
-  function blast(from, k, big) {
-    const now = performance.now();
-    if (now - FX.at < 500) return; FX.at = now;   // 速くスクロールして続けて上がっても 0.5 秒に 1 回
+  function fxInit() {   // canvas は初めて使うときに作る（ぶわっ・版面の火の粉で共用）
     if (!FX.cv) {
       FX.cv = fxCanvas('sparkfx'); FX.cx = FX.cv.getContext('2d');
       const cs = getComputedStyle(document.documentElement), tok = v => cs.getPropertyValue(v).trim() || '#FF7A1A';
@@ -2921,7 +2920,14 @@ NAV_JS = """
     const W = innerWidth, H = innerHeight, dpr = Math.min(2, devicePixelRatio || 1);
     if (FX.cv.width !== Math.round(W * dpr) || FX.cv.height !== Math.round(H * dpr)) { FX.cv.width = Math.round(W * dpr); FX.cv.height = Math.round(H * dpr); }
     FX.cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const r = from.getBoundingClientRect(), R = Math.random, n = Math.round((big ? 80 + k * 60 : 30 + k * 30) * (.7 + R() * .6)), a0 = (R() - .5) * 60;   // 数と向きは毎回くじ
+  }
+  function fxRun() { FX.cv.style.display = 'block'; if (!FX.run) { FX.run = true; FX.last = 0; requestAnimationFrame(fxLoop); } }
+  function blast(from, k, big) {
+    const now = performance.now();
+    if (now - FX.at < 500) return; FX.at = now;   // 速くスクロールして続けて上がっても 0.5 秒に 1 回
+    fxInit();
+    const W = innerWidth, H = innerHeight;
+    const r = from.getBoundingClientRect(), R = Math.random, n = big ? Math.round(150 + k * 150) : Math.round(36 + k * 30);
     FX.ox = r.left + r.width / 2; FX.oy = r.top + r.height * .55;
     for (let i = 0; i < n; i++) {
       const burst = !big || i < n * .75, s = {life: 0, dur: big ? .9 + R() * 1.4 : .5 + R() * .6, w: (big ? 1.3 : 1) + R() * 2, c: FX.col[i % FX.col.length], ph: R() * 6, burst, near: !big};
@@ -2975,8 +2981,8 @@ NAV_JS = """
     c.lineCap = 'round';
     for (const s of FX.sp) {   // 火の粉：熱いので浮き上がり、ゆらゆら
       if (s.life < 0) continue;
-      const drag = Math.exp(-(s.near ? 3.2 : s.burst ? 1.7 : .6) * dt);
-      s.vx = s.vx * drag + Math.sin(now / 160 + s.ph) * 40 * dt; s.vy = s.vy * drag - (s.near ? 60 : 160) * dt;
+      const drag = Math.exp(-(s.slow ? .5 : s.near ? 3.2 : s.burst ? 1.7 : .6) * dt);   // slow：版面から昇る熾火の粉（ゆっくり漂う）
+      s.vx = s.vx * drag + Math.sin(now / (s.slow ? 420 : 160) + s.ph) * (s.slow ? 22 : 40) * dt; s.vy = s.vy * drag - (s.slow ? 18 : s.near ? 60 : 160) * dt;
       s.x += s.vx * dt; s.y += s.vy * dt;
       const a = s.life < .08 ? s.life / .08 : (1 - s.life) ** 1.3, tl = s.near ? .03 : .05, tx = s.x - s.vx * tl, ty = s.y - s.vy * tl;
       c.strokeStyle = s.c;
@@ -2986,6 +2992,41 @@ NAV_JS = """
     c.globalAlpha = 1;
     if (FX.sp.length || FX.sm.length || FX.ring || FX.flash > .01) requestAnimationFrame(fxLoop);
     else { FX.run = false; c.clearRect(0, 0, W, H); FX.cv.style.display = 'none'; }
+  }
+  // 版面も炎と一緒に燃える：入った版面の上辺を火が左から右へ走り（導火線、0.7 秒）、火の粉が上へ散る（画面のどこへ飛んでもよい）。
+  // 読んでいる間は上辺が熾火のように炎と同じ揺れで明滅し、版面の見えている下のほうから時々火の粉が昇る。強さはその作品の話題度（炎と同じ値）
+  const SF = {sec: null, line: null, k: 0, acc: 0, sweep: null};
+  function kindle(sec, heat) {
+    if (SF.line) { const old = SF.line; old.classList.add('out'); setTimeout(() => old.remove(), 700); SF.line = null; }
+    SF.sec = sec && sec.classList.contains('sec') ? sec : null;
+    SF.k = Math.min(1, Math.max(0, (heat || 0) / 100)); SF.acc = 0;
+    if (!SF.sec || !FL.run) return;   // 宽屏・動きを減らす設定でない・タブが見えているときだけ（炎と同じ）
+    const ln = document.createElement('i');
+    ln.className = 'secfire'; ln.setAttribute('aria-hidden', 'true'); ln.style.setProperty('--k', SF.k.toFixed(2));
+    SF.sec.appendChild(ln); SF.line = ln;
+    SF.sweep = {t: 0, n: Math.round(12 + SF.k * 48), sent: 0};
+  }
+  function secBurn(dt, E) {
+    if (!SF.line) return;
+    const r = SF.sec.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    fxInit();
+    const k = SF.k, R = Math.random, col = FX.col;
+    const add = s => { if (FX.sp.length < 180) FX.sp.push(Object.assign({life: 0, ph: R() * 6, c: col[(R() * col.length) | 0], near: true}, s)); };
+    if (SF.sweep) {   // 導火線：先端から上と横へ火の粉
+      const w = SF.sweep; w.t += dt / .7;
+      const p = Math.min(1, w.t), x = r.left + r.width * p;
+      SF.line.style.setProperty('--sw', p.toFixed(3));
+      for (const want = Math.round(w.n * p); w.sent < want; w.sent++)
+        add({x: x - R() * 18, y: r.top, vx: (R() - .35) * 220, vy: -(110 + R() ** .6 * (220 + k * 380)), dur: .55 + R() * .75, w: 1 + R() * 1.8, burst: true});
+      if (p >= 1) SF.sweep = null;
+    }
+    SF.line.style.setProperty('--burn', Math.min(1, .3 + k * .45 + wob(FL.t * 1.3, 11) * (.12 + k * .14) + E * .3).toFixed(3));
+    SF.acc += dt * (.25 + 4.5 * k ** 1.5);   // 1 秒あたり 0.25（冷めた作品）〜 4.75 粒（沸騰）
+    for (; SF.acc >= 1; SF.acc--)
+      add({x: r.left + R() * r.width, y: Math.min(r.bottom, innerHeight) - 2, vx: (R() - .5) * 24, vy: -(35 + R() * (50 + k * 60)),
+           dur: 1.6 + R() * 1.8, w: .8 + R() * (1 + k), slow: true});
+    if (FX.sp.length) fxRun();
   }
   const wob = (t, p) => Math.sin(t * 1.13 + p) * .45 + Math.sin(t * 2.71 + p * 1.7) * .3 + Math.sin(t * 5.87 + p * 2.3) * .17 + Math.sin(t * 11.3 + p * .7) * .08;
   let flLast = 0;
@@ -3034,6 +3075,7 @@ NAV_JS = """
       m.e.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${(1 - l * .7).toFixed(2)})`;
       m.e.style.opacity = (l < .1 ? l * 10 : 1 - (l - .1) / .9).toFixed(2);
     });
+    secBurn(dt, E);
     if (FL.run) requestAnimationFrame(burn);
   }
   // 宽屏で、動きを減らす設定でなく、タブが見えているときだけ回す（それ以外は止めて電池を使わない）
@@ -3042,6 +3084,7 @@ NAV_JS = """
     const go = !!fl && wide.matches && !still.matches && !document.hidden;
     if (go && !FL.run) { FL.run = true; flLast = 0; requestAnimationFrame(burn); }
     else if (!go) { FL.run = false; if (fl && still.matches) { FL.h = FL.target; flLast = 0; burn(performance.now()); } }
+    if (!go && SF.line) { SF.line.remove(); SF.line = null; }
   }
   document.addEventListener('visibilitychange', burnning);
   wide.addEventListener && wide.addEventListener('change', burnning);
@@ -3245,6 +3288,14 @@ LIVE_JS = """
 #   このページより前に始まった作業はもう反映済みなので出さない。
 
 BUSY_CSS = """
+/* 版面の火（NAV_JS の kindle / secBurn）：上辺を左から右へ火が走り、そのあと熾火のように明滅。下に火の照り返し */
+.sec>.secfire{position:absolute;left:-2px;right:-2px;top:-2px;height:3px;z-index:3;pointer-events:none;transform-origin:0 50%;
+ transform:scaleX(var(--sw,0));opacity:var(--burn,0);background:linear-gradient(90deg,var(--alert),var(--flame) 45%,var(--gold) 85%,var(--card));
+ box-shadow:0 0 calc(5px + var(--k,0) * 12px) var(--flame),0 0 calc(12px + var(--k,0) * 26px) color-mix(in oklab,var(--flame) 45%,transparent)}
+.sec>.secfire::after{content:"";position:absolute;left:0;right:0;top:100%;height:calc(14px + var(--k,0) * 46px);
+ background:linear-gradient(color-mix(in oklab,var(--flame) calc(14% + var(--k,0) * 22%),transparent),transparent)}
+.sec>.secfire.out{opacity:0;transition:opacity .6s}
+@media (prefers-reduced-motion:reduce){.sec>.secfire{display:none}}
 .sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:4;pointer-events:none;overflow:visible}
 .busy .bf{position:absolute;left:0;top:0;bottom:0;width:var(--bp,0%);background:color-mix(in srgb,var(--acc) 45%,transparent);transition:width 1s}
 .busy .br{position:absolute;top:0;bottom:0;width:24%;left:0;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
