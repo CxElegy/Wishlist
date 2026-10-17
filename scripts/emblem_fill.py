@@ -6,11 +6,13 @@ emblem_skip で逃げる (3) 何枚あれば足りるかの基準がなく、1 �
 ここでは「種類 → 目標の枚数 → 取り方の順番（フォールバック）」を決め、足りないものを自動で見つけて埋める。
 
 種類（items.yaml の emblem_kind。なければ type から推定）と目標の枚数：
+  上限は「その内容の主要な要素の数」で決まる（1 要素 1 枚、CEIL まで）。キャラの多いゲームは多く、メンバー 5 人のグループは 5 枚。
+  要素の数は emblem_pool（roster() が AniList の主役・Wiki の分類 emblem_category から数えて書く）・emblem_who・emblem_examples の多いほう。
   person     本人の別の写真        目標 6（最少 3、最大 10）
-  group      メンバー全員          目標 = メンバー数（最少 3、最大 10）
-  character  主役級のキャラ        目標 6（最少 3、最大 10。人気のキャラが多いものは emblem_max で 10 まで）
+  group      メンバー全員          目標 = メンバー数（最大 20）
+  character  主要なキャラ          目標 = 主要キャラの数（最大 20。わからないときは 6）
   brand      公式ロゴ              1
-  topic      主題を表す物          目標 3（最少 2、最大 5）：ロゴ・トロフィー・ボール・場所・絵文字アイコン
+  topic      主題の下の一段        目標 = 代表作の数（最大 10。ないときは 3）：代表作 → ロゴ・トロフィー・場所 → 絵文字アイコン
 
 取り方（上から順に試す。足りるまで次へ）：
   0. emblem_urls     items.yaml に直接書いた画像（公式の立ち絵など）
@@ -108,6 +110,8 @@ RULES = {
     "brand": (1, 1, 1),
     "topic": (2, 3, 5),
 }
+# 主要な要素の数で決まる上限の天井（1 つの版面に何十枚もあっても、毎回 1 枚しか出ないので 20 で足りる）
+CEIL = {"person": 10, "group": 20, "character": 20, "brand": 1, "topic": 10}
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -130,18 +134,33 @@ def kind_of(item):
     return k if k in RULES else KIND_BY_TYPE.get(item.get("type"), "topic")
 
 
+def pool(item):
+    """その内容の主要な要素の数（キャラ・メンバー・代表作）。上限はこれで決まる。わからなければ None。
+    emblem_pool（roster() が数えて書いた数）・emblem_who（集める名前）・emblem_examples（主題の代表作）の多いほう。
+    本人（別の写真）とブランド（ロゴ 1 枚）は要素を数えるものではないので None。"""
+    kind = kind_of(item)
+    if kind in ("person", "brand"):
+        return None
+    n = max(int(item.get("emblem_pool") or 0), len(item.get("emblem_who") or []))
+    if kind == "topic":
+        n = max(n, len(item.get("emblem_examples") or []))
+    return n or None
+
+
 def rule(item):
-    """→ (種類, 最少, 目標, 最大)。"""
+    """→ (種類, 最少, 目標, 最大)。最大 = 主要な要素の数（CEIL まで）。要素の数がわからないときは RULES の既定。
+    emblem_max を書いたものはそれが最大（ぐでたま：キャラが 1 体だけなので別の場面 3 枚）。"""
     kind = kind_of(item)
     lo, target, hi = RULES[kind]
-    hi = min(10, int(item.get("emblem_max") or hi))
+    n = pool(item)
+    if n:   # 1 要素 1 枚：キャラ 60 人のゲームは 20（天井）、2 人しかいない作品は 2
+        hi = target = min(CEIL[kind], n)
+    if item.get("emblem_max"):
+        hi = min(CEIL[kind] if kind != "brand" else 10, int(item["emblem_max"]))
+    target = hi if target is None else target
     who = item.get("emblem_who") or []
-    if target is None:
-        target = max(lo, min(hi, len(who) or 5))
-    elif who and kind in ("character", "group"):   # 対象を名前で挙げたものは、その全員が目標
-        target = min(len(who), hi)
-    elif kind == "topic" and item.get("emblem_examples"):   # 代表作を挙げた主題は、その作品数が目標（記号の Twemoji は垫底）
-        target = min(max(target, len(item["emblem_examples"])), hi)
+    if n and who and kind in ("character", "group"):   # 1 人 1 枚なので、名前を挙げた人数より多くは集められない（足りない名前は roster が足す）
+        target = min(target, len(who))
     return kind, min(lo, hi, target), min(target, hi), hi
 
 
@@ -433,6 +452,51 @@ def subjects(item, kind, hi):
     if kind == "character" and item.get("anilist_id"):
         return anilist_names(item["anilist_id"], hi)
     return [item.get("emblem_subject") or item["name"]]
+
+
+def roster(item, log=print):
+    """主要な要素（キャラ）の名簿を数えて items.yaml に書く：emblem_pool（数）と、足りない分の emblem_who（名前、上位から）。
+    数え方：emblem_category（Fandom などの分類。例：絶区零は Playable Agents、あつ森は Special characters）があればその人数、
+    なければ anilist_id の主役（role MAIN）の人数。どちらもなければ何もしない（emblem_who の人数が要素の数）。
+    → 数えた数か None。"""
+    if kind_of(item) != "character":
+        return None
+    who = list(item.get("emblem_who") or [])
+    api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
+    names, how = [], ""
+    if item.get("emblem_category") and api:
+        names = emblem.category_top(api, item["emblem_category"], 999)   # 物語の中心にいる（ほかのページから多く参照される）順
+        how = f"分類「{item['emblem_category']}」の人数"
+    elif item.get("anilist_id"):
+        names = emblem.anilist_main(item["anilist_id"], 50)
+        how = "AniList の主役（role MAIN）の人数"
+    if not names:
+        return None
+    n = len(names)
+    add = [x for x in names if x not in who][:max(0, min(CEIL["character"], n) - len(who))]
+    with WRITE_LOCK:
+        _set_field(item["name"], "emblem_pool", f"{n}   # 主要な要素の数＝小元素の上限（{how}、scripts/emblem_fill.py の roster）")
+        if add:
+            _set_field(item["name"], "emblem_who", json.dumps(who + add, ensure_ascii=False)
+                       + "   # 集める対象（メンバー・キャラ・出演者）")
+    log(f"  [名簿] {item['name']}：{how} {n} → 上限 {min(CEIL['character'], n)}、名前を {len(add)} 人足した")
+    return n
+
+
+def _set_field(name, key, value):
+    """items.yaml のその関注項の「    key: …」の行を書き換える（なければ emblem_kind の下に足す）。"""
+    path = ROOT / "items.yaml"
+    lines = path.read_text(encoding="utf-8").split("\n")
+    start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
+    end = next((i for i in range(start + 1, len(lines)) if lines[i].startswith("  - name:")), len(lines))
+    row = f"    {key}: {value}"
+    at = next((i for i in range(start + 1, end) if lines[i].startswith(f"    {key}:")), None)
+    if at is not None:
+        lines[at] = row
+    else:
+        k = next((i for i in range(start + 1, end) if lines[i].startswith("    emblem_kind:")), start)
+        lines.insert(k + 1, row)
+    path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def wiki_titles(item):
@@ -878,7 +942,7 @@ def commit(item, good, picks, replace=False, log=print):
     emblem.write_item(name, merged, None)
     log(f"→ 「{name}」に {len(merged)} 枚（目標 {target}、最大 {hi}）")
     if kind in ("person", "group", "character"):
-        emblem.cut_all(name, not needs_face(item))   # 実在の人（本人・グループ・出演者）は写真として切る
+        emblem.cut_all(name, not needs_face(item), [x["image"] for x in old])   # 実在の人は写真として切る。前からの小元素は取景で外さない
         emblem.fit_all(name)
     return merged
 
@@ -1123,6 +1187,12 @@ def fill_one(item, log=print):
     取り方の段（STRATEGIES）を、目標に届くまで同じ回の中で順に上がる：① 標準 → ② 名前を広げる → ③ 公式・記事のページ。
     各段で 集める → 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）→ 選ぶ（auto_pick）→ 書いて切り抜く。
     → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わるか 6 時間後にもう一度）。"""
+    if not item.get("emblem_pool") and (item.get("emblem_category") or item.get("anilist_id")):
+        try:   # 主要な要素の数がまだわからない：先に数える（上限と集める名前が決まる）
+            if roster(item, log):
+                item = next(i for i in load_items() if i["name"] == item["name"])
+        except Exception as e:
+            log(f"  [名簿] {item['name']}：{e}")
     before = status(item)["have"]
     if needs_face(item) and face_id.engine() is None:
         return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "tried": {}}
@@ -1320,6 +1390,7 @@ def main():
     ap.add_argument("--background", action="store_true", help="定時の後台：時間の予算の中で足りない順に埋め、進捗を残す")
     ap.add_argument("--minutes", type=float, default=40, help="--background の時間の予算（分）")
     ap.add_argument("--workers", type=int, default=WORKERS, help="--background で同時に処理する関注項の数")
+    ap.add_argument("--roster", action="store_true", help="主要な要素（キャラ）を数えて emblem_pool と emblem_who を書く（上限が決まる）")
     ap.add_argument("--progress", action="store_true", help="items.yaml の今の枚数を進捗ファイルに写すだけ（ネットに出ない）")
     a = ap.parse_args()
     items = load_items()
@@ -1355,6 +1426,9 @@ def main():
     item = next((i for i in items if i["name"] == a.name), None)
     if not item:
         ap.error(f"items.yaml に「{a.name}」がない")
+    if a.roster:
+        print(roster(item))
+        return
     if a.commit:   # 一覧を作ったときの候補（json）から選ぶ。集め直すと順番が変わるので
         jp = _sheet_path(item["name"]).with_suffix(".json")
         good = json.loads(jp.read_text(encoding="utf-8"))
