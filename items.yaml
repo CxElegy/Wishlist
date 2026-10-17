@@ -1063,7 +1063,7 @@ items:
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Din Djarin", why: "作品の主人公と、その相棒（作品の顔）", image: "emblems/the-mandalorian-din-djarin.webp", source: "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest/scale-to-width-down/400?cb=20241206044557", page: "https://starwars.fandom.com/wiki/Din_Djarin", shape: "cutout"}
       - {subject: "Grogu", why: "作品の主人公と、その相棒（作品の顔）", image: "emblems/the-mandalorian-grogu.webp", source: "https://static.wikia.nocookie.net/starwars/images/0/06/Grogu-BoBFBox.png/revision/latest/scale-to-width-down/400?cb=20251105060853", page: "https://starwars.fandom.com/wiki/Din_Grogu", shape: "cutout"}
-      - {subject: "Katee Sackhoff", why: "Katee Sackhoff（作品名つきで検索）", image: "emblems/the-mandalorian-katee-sackhoff.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Katee_Sackhoff_Dragon_Con_September_5_2026_0339.JPG/500px-Katee_Sackhoff_Dragon_Con_September_5_2026_0339.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Katee_Sackhoff", shape: "cutout", fs: 0.375}
+      - {subject: "Katee Sackhoff", why: "Katee Sackhoff（作品名つきで検索）", image: "emblems/the-mandalorian-katee-sackhoff.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Katee_Sackhoff_Dragon_Con_September_5_2026_0339.JPG/500px-Katee_Sackhoff_Dragon_Con_September_5_2026_0339.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Katee_Sackhoff", shape: "cutout", fs: 0.371}
     type: show
     section: "影视"
     size: M

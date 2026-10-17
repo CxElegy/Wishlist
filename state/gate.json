@@ -1,33 +1,18 @@
 {
  "changed": true,
- "checked": "2026-10-17T05:05:36+00:00",
+ "checked": "2026-10-17T05:08:50+00:00",
  "jobs": {
   "edit": {
    "claude": true,
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
-    "dota2",
-    "gelato pique",
-    "あつ森",
-    "ぐでたま",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "三星手机"
    ],
    "need": true,
-   "sig": "5cd71a5b04e0",
-   "why": "未編集の記事 352 件（19 版面）"
+   "sig": "cd681c95149c",
+   "why": "未編集の記事 5 件（4 版面）"
   },
   "emblem": {
    "claude": false,
@@ -37,13 +22,13 @@
    "waiting": [
     "Vaundy",
     "哈利波特剧集",
-    "チェーンソーマン",
     "Astrae Oratio",
-    "The Mandalorian",
     "ILLIT",
     "FROM",
     "漫威电影",
-    "A2O LITE"
+    "チェーンソーマン",
+    "A2O LITE",
+    "The Mandalorian"
    ],
    "why": "失敗 9 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:58 から）"
   },
