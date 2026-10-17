@@ -39,8 +39,9 @@ def snapshot(path=None):
     if m.get("MemTotal"):
         snap["mem_total"], snap["mem_free"] = m["MemTotal"], m.get("MemAvailable", m.get("MemFree", 0))
     try:
+        # total はマシン全体（ほかのセッションと共有）。このセッションで使えるのは「使った量 + 空き」なので、そちらを上限にする
         d = shutil.disk_usage(path or ROOT)
-        snap["disk_total"], snap["disk_free"] = d.total, d.free
+        snap["disk_used"], snap["disk_free"], snap["disk_total"] = d.used, d.free, d.used + d.free
     except OSError:
         pass
     try:

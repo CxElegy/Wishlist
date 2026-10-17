@@ -23,171 +23,306 @@ e = html.escape
 
 LANES = {
     "actions": ("GitHub Actions", "無料", "free"),
-    "ai": ("Claude（AI 編集）", "サブスク枠", "ai"),
+    "ai": ("Claude（定時タスク）", "サブスク枠", "ai"),
     "repo": ("リポジトリ", "無料", "free"),
     "web": ("ウェブ・Supabase", "無料", "free"),
+    "ext": ("外のサービス", "無料", "free"),
+}
+
+# 部品：仕組みが使うモデル・アルゴリズム・API・ルール。name は正確な名前、spec は数字（大きさ・しきい値・同時にいくつ）。
+# 図の札（chip）と流れの図に出る。数字を変えたらここも変える（コードの場所は what に書く）。
+KIND_LABEL = {"model": "MODEL", "algo": "ALGO", "api": "API", "rule": "RULE"}
+COMPONENTS = {
+    # ---- モデル
+    "rembg": {"kind": "model", "name": "rembg birefnet-general-lite", "spec": "ONNX 224MB · 1 枚ずつ · 出力 420×520 WEBP",
+              "what": "人物・キャラを背景から切り抜く（emblem.cut_out）。onnxruntime のメモリ池は切ってある"},
+    "yunet": {"kind": "model", "name": "YuNet face_detection_yunet_2023mar", "spec": "入力 320×320 · score 0.8 · NMS 0.3",
+              "what": "顔を見つける（face_id.py、OpenCV FaceDetectorYN、HuggingFace から）"},
+    "sface": {"kind": "model", "name": "SFace face_recognition_sface_2021dec", "spec": "128 次元 · cos ≥ 0.363 で本人",
+              "what": "顔の特徴量で同じ人か比べる（face_id.py）。基準 = 記事の代表画像、合わなければ多数決"},
+    "haar": {"kind": "model", "name": "OpenCV Haar frontalface + LBP animeface", "spec": "scale 1.1 · minNeighbors 4〜5",
+             "what": "切り抜きの構図と顔の位置（emblem.face_box / face_crop）。顔モデルがないときの代わり"},
+    "claude": {"kind": "model", "name": "Claude（定時タスク）", "spec": "編集・写真の認識・一覧の目視 · サブスク枠",
+               "what": "AI 編集・写真から愿望・小元素の要確認を、画面を見て判断する"},
+    "claude-api": {"kind": "model", "name": "Claude API claude-haiku-5-5", "spec": "summarize: false（いまは使わない）· 4000 tokens",
+                   "what": "Actions から編集するときだけ（digest.edit_stories）。使ったトークンは数える"},
+    # ---- アルゴリズム
+    "pace": {"kind": "algo", "name": "サイトごとの間隔（全スレッド共有）", "spec": "Reddit 2 秒 · Google / Bing 0.5 秒 · Wiki 1.3 秒",
+             "what": "sources._pace / emblem_fill._throttled_get。並列でもサイトから見た間隔は同じ"},
+    "dedupe": {"kind": "algo", "name": "タイトルの重複判定", "spec": "完全一致 + 文字 bigram 重なり > 0.75 · 14 日分",
+               "what": "digest.filter_entries：作品名を除いて比べる。転載・題名の切れ端も 1 件に"},
+    "match": {"kind": "rule", "name": "match / exclude", "spec": "部分一致（空白・大小無視）· re: は正規表現",
+              "what": "items.yaml の match にある語がタイトルか要約にないと収めない（digest.match_hit）"},
+    "urgent": {"kind": "rule", "name": "要紧の判定 urgent_patterns", "spec": "タイトルに正規表現 · Reddit・補完分は除く",
+               "what": "当日 Discord に送る記事（digest.is_urgent）"},
+    "fallback": {"kind": "algo", "name": "キーワード編集 fallback_stories", "spec": "重複 bigram > 0.5 · 4 媒体以上で話題 · 最大 7 件",
+                 "what": "AI 編集がまだの新着を、規則で記事にまとめる"},
+    "imgpick": {"kind": "algo", "name": "配図の選び方 images.pick", "spec": "短辺 ≥200 · 長辺 ≥300 · 8MB まで · 1 件 60 秒・12 枚まで",
+                "what": "AI 指定 → 記事の画像 → og:image → JSON-LD → 本文 → 転載ページ。ロゴ・既定画像は除く"},
+    "heat": {"kind": "algo", "name": "話題度 6 次元", "spec": "報道量 20・広がり 15・出来事 20・勢い 15・一般の関心 20・ファン 10",
+             "what": "heat.py：各次元 = 60% 自分の平常比 + 40% 共通の尺度。取れない次元は分母から外す"},
+    "octree": {"kind": "algo", "name": "減色 FASTOCTREE 16 色", "spec": "背景 = 最多色 · 強調 = 彩度^1.5 · WCAG 4.5:1",
+               "what": "theme.from_image：Pillow quantize。読めるまで明るさを ±0.04 ずつ動かす"},
+    "fit": {"kind": "algo", "name": "写真のはめ方 FIT_JS", "spec": "|ln(画像比 / 枠比)| < 0.27 は裁ち切り · ほかはぼかし背景",
+            "what": "render.py：どんな比率の配図でも同じ枠に入れる"},
+    "ahash": {"kind": "algo", "name": "差分ハッシュ 9×8", "spec": "ハミング距離 ≤ 4 は同じ画像",
+              "what": "emblem_fill._hash：網址が違う同じ写真を 1 枚に"},
+    "cutcheck": {"kind": "algo", "name": "切り抜きの検査 check_whole", "spec": "左右の端 >10% · 面積 <12% · 半透明 >18% は外す",
+                 "what": "emblem.check_whole：体が枠で切れた・輪郭がにじんだものを使わない"},
+    "facefit": {"kind": "algo", "name": "顔の大きさをそろえる", "spec": "顔 = 高さの 32% · 全身は上 46% · 胸像があれば全身は外す",
+                "what": "emblem.face_fit / upper_body / keep_framing"},
+    "taste": {"kind": "algo", "name": "好みの学習", "spec": "ラベルごと ±1 · 上限 −6〜+4 · 出すのは 5 点以上",
+              "what": "digest.learn_taste：👍👎 の最後の一票から"},
+    "storydedupe": {"kind": "algo", "name": "StoryDeduper union-find + OpenCC", "spec": "共有トークン ≥ 2（漢字 2 文字 = 0.5）· 繁→簡",
+                    "what": "おすすめの同じ話をまとめる。どこにでも出る語は数えない"},
+    "crop": {"kind": "algo", "name": "Pillow の切り取り", "spec": "モデルなし · 品質 90",
+             "what": "写真から愿望：物の範囲を Claude が決めて切り取る"},
+    # ---- API・外のサービス
+    "gnews": {"kind": "api", "name": "Google ニュース RSS", "spec": "5 言語 · 7 日（初回 42 日）",
+              "what": "sources.google_news。リンクは batchexecute で原文に戻す（3 回まで）"},
+    "bing": {"kind": "api", "name": "Bing ニュース RSS", "spec": "空なら 3 回まで · 画像 1200px",
+             "what": "sources.bing_news"},
+    "reddit": {"kind": "api", "name": "Reddit OAuth / RSS", "spec": "25 件 · 429 が 2 回で今回は止める",
+               "what": "sources.reddit_search / reddit_sub"},
+    "steam": {"kind": "api", "name": "Steam Web API", "spec": "ニュース 10 件 · 価格 · 同時接続",
+              "what": "GetNewsForApp・appdetails・GetNumberOfCurrentPlayers"},
+    "anilist": {"kind": "api", "name": "AniList GraphQL", "spec": "続編 10 期まで · 人気・トレンド",
+                "what": "放送状態・主役キャラ・話題度"},
+    "tmdb": {"kind": "api", "name": "TMDB API", "spec": "放送状態 · popularity", "what": "ドラマ・映画の状態と話題度"},
+    "wikipv": {"kind": "api", "name": "Wikipedia 閲覧数", "spec": "60 日分 · 50 記事ずつ · 1 日 1 回",
+               "what": "話題度の「一般の関心」"},
+    "wiki": {"kind": "api", "name": "Wikidata / Wikipedia / Commons", "spec": "P154 ロゴ · P18 写真 · ≥300×300",
+             "what": "小元素の候補（en / ja / zh / ko）"},
+    "fandom": {"kind": "api", "name": "Fandom MediaWiki API", "spec": "キャラのページの代表画像", "what": "絵のキャラの小元素"},
+    "twemoji": {"kind": "api", "name": "Twemoji 15.1.0", "spec": "SVG アイコン · 0 枚を防ぐ最後の砦", "what": "主題の小元素"},
+    "bingimg": {"kind": "api", "name": "Bing 画像検索", "spec": "一覧に載せるだけ · 自動では選ばない", "what": "出所が不確かなので目で見る"},
+    "supabase": {"kind": "api", "name": "Supabase REST / RPC", "spec": "news を 500 件ずつ upsert · my_votes · set_size",
+                 "what": "投票・篇幅・依頼・写真・記事の控え"},
+    "pgnet": {"kind": "api", "name": "pg_net → GitHub dispatch", "spec": "20 秒に 1 回まで", "what": "設定ページの依頼ですぐ Actions を起こす"},
+    "discord": {"kind": "api", "name": "Discord Webhook", "spec": "要紧 ≤6 行 · 埋め込み ≤10 · 30 日は二重に送らない",
+                "what": "notify.py"},
+    "confetti": {"kind": "api", "name": "canvas-confetti 1.9.3", "spec": "👍 の演出 20 種", "what": "likefx.py"},
 }
 
 PROCESSES = [
     {
-        "id": "emblem", "name": "小元素の選定", "en": "EMBLEM", "lane": "ai",
-        "schedule": "edit",
-        "when": "AI 編集の最初",
+        "id": "emblem", "name": "小元素の選定", "en": "EMBLEM", "lane": "ai", "schedule": "edit", "when": "AI 編集の最初",
         "trigger": "新しい関注項が入ったとき ／ AI 編集の最初に毎回（足りない関注項だけ）",
-        "summary": "各版面の右上に貼るステッカーを、作品の種類に合わせて自動で集める。足りない関注項を見つけて、決まった順で取り方を変えながら埋める。",
+        "summary": "各版面の右上に貼るステッカーを、作品の種類に合わせて集める。AI 編集の中で、足りない関注項だけ。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py"], "doc": "TEMPLATES.md",
+        "uses": ["wiki", "fandom", "yunet", "sface", "rembg"],
         "flow": [
-            {"id": "audit", "kind": "step", "lane": "ai", "title": "状況を調べる（--audit）",
-             "text": "全関注項の「種類・目標の枚数・いまの枚数」を出す。足りないものから順に処理する。"},
-            {"id": "need", "kind": "decision", "lane": "ai", "title": "目標に届いている？", "text": "いまの枚数 ≥ 目標",
-             "yes": "何もしない（その関注項は終わり）", "no": "次へ（emblem_skip は理由にならない）"},
-            {"id": "kind", "kind": "table", "lane": "ai", "title": "種類で目標を決める",
-             "text": "emblem_kind（なければ type から推定）。人物の多いものは最大 10 枚、ふつうは 6 枚まで。",
-             "rows": [("person 本人", "別の写真 6（3〜10）"), ("group グループ", "メンバー全員（3〜10）"),
-                      ("character キャラ・出演者", "6（3〜10。emblem_who で挙げた全員）"),
-                      ("brand ブランド", "公式ロゴ 1"), ("topic 主題", "ロゴ・トロフィー・ボール・場所 3（2〜5）")]},
-            {"id": "src", "kind": "fan", "lane": "ai", "title": "候補を集める（上から順、足りるまで）",
-             "items": [("0", "直接指定", "emblem_urls に書いた公式画像"), ("1", "AniList", "アニメ・漫画の主役（人気順）"),
-                       ("2", "Fandom", "キャラのページの代表画像"), ("3", "Wikidata / Wikipedia", "公式ロゴ（P154）・本人・メンバーの記事の画像"),
-                       ("4", "Commons", "同じ名前の写真（ライセンス付き）"), ("5", "新聞の配図", "集めた記事の写真（題名に名前）"),
-                       ("6", "公式サイト", "og:image と大きい画像"), ("7", "Web 画像検索", "最後の手段（要確認）"),
-                       ("8", "Twemoji", "絵文字アイコン（0 枚を防ぐ最後の砦）")]},
-            {"id": "ok", "kind": "step", "lane": "ai", "title": "使える画像か確かめる",
-             "text": "短辺 160px 以上・開ける。ほぼ同じ画像（平均ハッシュ）は 1 枚に。"},
-            {"id": "who", "kind": "decision", "lane": "ai", "title": "人物・グループ？", "text": "顔で確かめる対象か",
-             "yes": "本人確認（下）", "no": "ロゴ・主題：ファイル名か記事名に名前が入っていること"},
-            {"id": "face", "kind": "step", "lane": "ai", "title": "本人確認（face_id）",
-             "text": "顔を検出（YuNet）→ 特徴量（SFace）。記事の代表画像と似ている（類似度 ≥ 0.363）ものだけ残す。"
-                     "代表画像が合わないときは「いちばん大きい同じ顔の集まり」を本人とする。顔がない・別人・遠景は落とす。"},
-            {"id": "pick", "kind": "step", "lane": "ai", "title": "一覧を作って選ぶ",
-             "text": "番号付きの候補一覧を作る。AI が目で確かめて番号を選ぶ（--commit）。自動のとき（--auto）は上の順で選ぶ。"},
-            {"id": "cut", "kind": "step", "lane": "ai", "title": "抠图して整える",
-             "text": "rembg（birefnet）で人物だけ切り抜く。顔の大きさをそろえ、全身は上半身に、体が端で切れたものは外す。"},
-            {"id": "done", "kind": "decision", "lane": "ai", "title": "目標に届いた？", "text": "届くまで次の取り方へ",
-             "yes": "書き込みへ", "no": "上の「候補を集める」の次の取り方に戻る。最後は Twemoji で必ず 1 枚以上"},
-            {"id": "write", "kind": "store", "lane": "repo", "title": "items.yaml に書く",
-             "text": "emblem（出所つき）・theme。抠图した画像は docs/emblems/*.webp に保存。"},
-            {"id": "page", "kind": "step", "lane": "web", "title": "網页に貼る",
-             "text": "版面の右上に表示。開くたびにランダムで 1 枚。この管理ページの「小元素」で枚数を見られる。"},
+            {"id": "audit", "kind": "step", "lane": "ai", "title": "缺口を調べる --audit", "text": "種類・目標・いまの枚数"},
+            {"id": "need", "kind": "decision", "lane": "ai", "title": "目標に届いていない？", "no": "その版面は終わり"},
+            {"id": "kind", "kind": "table", "lane": "ai", "title": "種類 → 目標の枚数（最少〜最大）",
+             "rows": [("本人", "6（3〜10）"), ("グループ", "全員（3〜10）"), ("キャラ・出演者", "6 か emblem_who 全員"),
+                      ("ブランド", "公式ロゴ 1"), ("主題", "3（2〜5）")]},
+            {"id": "src", "kind": "fan", "lane": "ai", "title": "候補を集める", "mode": "上から順に · 足りるまで",
+             "items": [("0", "直接指定", "emblem_urls"), ("1", "Fandom", "キャラ", "fandom"), ("2", "Wikidata", "P154・P18", "wiki"),
+                       ("3", "Wikipedia", "記事 ≤10", "wiki"), ("4", "Commons", "≤8", "wiki"), ("5", "記事の配図", "14 日 ≤12"),
+                       ("6", "公式サイト", "og:image"), ("7", "Twemoji", "主題", "twemoji"), ("8", "Bing 画像", "目で見るだけ", "bingimg")]},
+            {"id": "ok", "kind": "step", "lane": "ai", "title": "使える画像か", "text": "6MB まで · 短辺 160 · 白紙・同じ画像を除く", "uses": ["ahash"]},
+            {"id": "face", "kind": "step", "lane": "ai", "title": "本人確認（人物だけ）", "uses": ["yunet", "sface"]},
+            {"id": "pick", "kind": "step", "lane": "ai", "title": "一覧を目で見て番号を選ぶ", "uses": ["claude"]},
+            {"id": "cut", "kind": "step", "lane": "ai", "title": "切り抜いて顔の大きさをそろえる", "uses": ["rembg", "cutcheck", "facefit"]},
+            {"id": "write", "kind": "store", "lane": "repo", "title": "items.yaml · docs/emblems/*.webp"},
         ],
     },
     {
         "id": "emblem-cron", "name": "小元素の自動補完（定時）", "en": "EMBLEM CRON", "lane": "ai",
         "schedule": [(h, 40) for h in range(0, 24, 4)],   # UTC（日本時間 1・5・9・13・17・21 時 40 分）。定時タスク「小元素 · 后台补全」
         "when": "4 時間ごと · 40 分 · 4 本並列",
-        "trigger": "定時タスク（Claude のスケジュール）が呼ぶたび。1 回あたり約 40 分の予算",
-        "summary": "目標の枚数に届いていない版面の小元素を、時間の予算の中で足りない順に埋める。確かな画像だけ自動で書き、"
-                   "決めきれないものは「要確認」として AI が候補の一覧を目で見て選ぶ。進捗はこの管理ページの「小元素 → 進捗」。",
-        "files": ["scripts/emblem_fill.py", "scripts/face_id.py", "state/emblem_progress.json"], "doc": "TEMPLATES.md",
+        "trigger": "定時タスク（Claude のスケジュール）が 4 時間ごとに呼ぶ。1 回あたり約 40 分の予算",
+        "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。確かな画像だけ自動で書き、"
+                   "決めきれないものは「要確認」として Claude が一覧を目で見て選ぶ。進捗は管理ページの「小元素 → 進捗」。",
+        "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "state/emblem_progress.json"], "doc": "TEMPLATES.md",
+        "uses": ["rembg", "yunet", "sface", "wiki", "fandom"],
         "flow": [
-            {"id": "b1", "kind": "step", "lane": "ai", "title": "main を最新にして準備",
-             "text": "抠图（rembg）と顔のモデル（YuNet・SFace、HuggingFace から）を入れる。--audit で全版面の缺口を見る。"},
-            {"id": "b2", "kind": "step", "lane": "ai", "title": "後台モード（--background --minutes 40）",
-             "text": "足りない枚数の多い順に、4 本並列（--workers、コンテナの 4 コアに合わせる）。候補集め・本人確認は同時に、"
-                     "items.yaml への書き込みと抠图は 1 本ずつ。残り 2 分を切ったら次に入らず、続きは次の回。"},
-            {"id": "b2l", "kind": "table", "lane": "ai", "title": "並列の限り（速さを決めるもの）",
-             "text": "並列にしても、外のサイトの決まりは超えない。",
-             "rows": [("Wikipedia・Wikidata・Commons", "同じサイトへは全スレッド合わせて 1.3 秒に 1 回。429 が続いたら 5 分休む"),
-                      ("抠图（rembg）・items.yaml", "1 本ずつ（同時に書くと壊れる）"),
-                      ("コンテナ", "4 コア・メモリ 15GB → 4 本まで"),
-                      ("定時タスク", "最短 1 時間ごと・1 回 1 つのコンテナ（いまは 4 時間ごと）")]},
-            {"id": "b3", "kind": "decision", "lane": "ai", "title": "24 時間以内に失敗した？", "text": "進捗の failed_at",
-             "yes": "今回は飛ばす", "no": "候補を集める（「小元素の選定」と同じ順）"},
-            {"id": "b4", "kind": "table", "lane": "ai", "title": "自動で選ぶ規則",
-             "text": "Web 画像検索の結果は自動では使わない（出所が不確か）。",
-             "rows": [("本人・グループ・出演者", "本人確認（face_id）を通ったものだけ"),
-                      ("brand ブランド", "Wikidata の公式ロゴ（P154）→ 公式サイトのロゴ"),
-                      ("topic 主題", "Wikidata → Commons → Twemoji"),
-                      ("絵のキャラ", "直接指定（公式の立ち絵）・Fandom だけ、1 人 1 枚")]},
-            {"id": "b5", "kind": "decision", "lane": "ai", "title": "目標に届いた？", "text": "自動で書いたあとの枚数",
-             "yes": "そろっている", "no": "残りの候補があれば一覧を作り直して「要確認」、なければ「失敗」（24 時間後に再挑戦）"},
-            {"id": "b6", "kind": "step", "lane": "ai", "title": "要確認を目で選ぶ",
-             "text": "AI が一覧（/tmp/wishlist-emblem/<名>.jpg）を見て、本人・本作のものだけ番号で --commit。広告・別人・白紙は選ばない。"},
-            {"id": "b7", "kind": "store", "lane": "repo", "title": "state/emblem_progress.json",
-             "text": "版面ごとの状態・枚数・試した取り方・最近の結果、全体の開始時刻と最近の実行。1 版面ごとに保存。"
-                     "1 行ずつの記録は state/log/emblem.json（管理ページ「バックグラウンド → ログ」）。"},
-            {"id": "b8", "kind": "step", "lane": "ai", "title": "render して main に push",
-             "text": "items.yaml・docs・state をコミット。網页と管理ページの進捗が更新される。"},
+            {"id": "b1", "kind": "step", "lane": "ai", "title": "準備", "text": "main を最新に · モデルを入れる（初回だけダウンロード）",
+             "uses": ["rembg", "yunet", "sface"]},
+            {"id": "b2", "kind": "decision", "lane": "ai", "title": "やってよい？", "text": "目標未満 · 24 時間以内の失敗なし",
+             "no": "今回は飛ばす"},
+            {"id": "b3", "kind": "fan", "lane": "ai", "title": "候補を集める", "x": "×4 版面を同時に", "mode": "上から順に · 足りるまで",
+             "items": [("0", "直接指定", "公式の立ち絵"), ("1", "Fandom", "キャラ", "fandom"), ("2", "Wikidata", "P154・P18", "wiki"),
+                       ("3", "Wikipedia", "≤10", "wiki"), ("4", "Commons", "≤8", "wiki"), ("5", "記事の配図", "≤12"),
+                       ("6", "公式サイト", "ロゴ"), ("7", "Twemoji", "主題", "twemoji"), ("8", "Bing 画像", "一覧だけ", "bingimg")],
+             "uses": ["pace"]},
+            {"id": "b4", "kind": "step", "lane": "ai", "title": "使える画像か", "text": "6MB まで · 短辺 160（横長ロゴは長辺 300）· 白紙を除く",
+             "uses": ["ahash"]},
+            {"id": "b5", "kind": "step", "lane": "ai", "title": "本人確認", "x": "モデル 1 つを順番に", "text": "人物・グループ・出演者だけ",
+             "uses": ["yunet", "sface"]},
+            {"id": "b6", "kind": "decision", "lane": "ai", "title": "確かな取り方？", "text": "人物 = 本人確認済み · キャラ = 直接指定・Fandom · Web は除く",
+             "no": "一覧に残す → 要確認"},
+            {"id": "b7", "kind": "step", "lane": "repo", "title": "書いて切り抜く", "x": "1 枚ずつ（WRITE_LOCK）",
+             "uses": ["rembg", "cutcheck", "facefit"]},
+            {"id": "b8", "kind": "decision", "lane": "ai", "title": "目標に届いた？", "no": "候補あり → 要確認 / なし → 失敗（24 時間後）"},
+            {"id": "b9", "kind": "store", "lane": "repo", "title": "items.yaml · docs/emblems · state/emblem_progress.json · state/log"},
+            {"id": "b10", "kind": "step", "lane": "ai", "title": "要確認を目で選ぶ", "text": "別人・広告・白紙・重複は emblem_reject へ",
+             "uses": ["claude"]},
         ],
     },
     {
         "id": "collect", "name": "ニュース収集", "en": "COLLECT", "lane": "actions",
-        "schedule": [(h, 17) for h in range(0, 24, 2)], "workflow": "digest.yml",
-        "when": "2 時間ごと · 6 本並列",
+        "schedule": [(h, 17) for h in range(0, 24, 2)], "workflow": "digest.yml", "when": "2 時間ごと · 6 本並列",
         "trigger": "2 時間ごと（日本時間 奇数時 17 分）／ 毎週月曜 9:47 に周報",
-        "summary": "関注項ごとにニュース・ SNS・価格を集めて inbox に溜め、簡報を出刊する。要紧消息は当日 Discord へ。",
+        "summary": "関注項ごとにニュース・SNS・価格を集めて inbox に溜め、出刊・通知・ページ生成までつなぐ。",
         "files": [".github/workflows/digest.yml", "scripts/digest.py", "scripts/sources.py"], "doc": "README.md",
+        "uses": ["gnews", "bing", "reddit", "steam", "dedupe", "match"],
         "flow": [
-            {"id": "c1", "kind": "step", "lane": "actions", "title": "収集して簡報を更新",
-             "text": "関注項 6 本並列で抓取（同じサイトの間隔はスレッド全部で共有：Reddit 2 秒・Google / Bing 0.5 秒）。"
-                     "去重は元の順番で。match / exclude の規則で拾い、heat 用の外部データも保存。"},
-            {"id": "c2", "kind": "store", "lane": "repo", "title": "inbox/日付.json", "text": "その日の条目。AI 編集が読む元データ。"},
-            {"id": "c3", "kind": "decision", "lane": "actions", "title": "要紧消息がある？", "text": "urgent_patterns に合う条目",
-             "yes": "当日 Discord に通知", "no": "通知なし"},
-            {"id": "c4", "kind": "step", "lane": "actions", "title": "Discord へ", "text": "機能更新・愿望清单・新関注項・周報（月曜）もここで。"},
-            {"id": "c5", "kind": "step", "lane": "actions", "title": "コミット → GitHub Pages", "text": "docs/ を公開。"},
-            {"id": "c6", "kind": "decision", "lane": "actions", "title": "新しい関注項が入った？", "text": "known_items にない名前",
-             "yes": "AI 編集（Routine）をすぐ起動", "no": "定時の編排を待つ"},
+            {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 30 分まで · 同時に 1 本"},
+            {"id": "c2", "kind": "fan", "lane": "ext", "title": "記事を集める", "x": "×6 関注項を同時に", "mode": "それぞれのサイトへ",
+             "items": [("G", "Google ニュース", "5 言語", "gnews"), ("B", "Bing ニュース", "3 回まで", "bing"),
+                       ("R", "Reddit", "25 件", "reddit"), ("S", "Steam", "10 件", "steam"), ("F", "RSS", "feeds")],
+             "uses": ["pace"]},
+            {"id": "c3", "kind": "step", "lane": "actions", "title": "重複を落とす", "x": "元の順番で", "uses": ["dedupe"]},
+            {"id": "c4", "kind": "step", "lane": "actions", "title": "その作品の記事か", "uses": ["match"]},
+            {"id": "c5", "kind": "decision", "lane": "actions", "title": "新しい記事・状態の変化がある？", "no": "その関注項は書かない"},
+            {"id": "c6", "kind": "step", "lane": "ext", "title": "いまの状態", "text": "価格・放送・状態の変化", "uses": ["steam", "anilist", "tmdb"]},
+            {"id": "c7", "kind": "store", "lane": "repo", "title": "inbox/日付.json", "text": "1 関注項 30 件・Reddit 10 件まで"},
+            {"id": "c8", "kind": "step", "lane": "actions", "title": "話題度の数字・Supabase に控え", "uses": ["wikipv", "supabase"]},
+            {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す",
+             "uses": ["fallback", "discord"]},
         ],
     },
     {
-        "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai",
-        "schedule": [(4, 43), (15, 43)],   # 日本時間 13:43 / 0:43（北京時間 12:43 / 23:43）
+        "id": "heat", "name": "話題度", "en": "HEAT", "lane": "actions", "when": "収集のたびに数字 · ページ生成で計算",
+        "trigger": "数字は収集のとき（1 日 1 回）、点数はページを作るとき（ネットに出ない）",
+        "summary": "作品ごとの盛り上がりを 0〜100 で出す。6 つの次元を、自分の平常と比べた分と共通の尺度で混ぜる。",
+        "files": ["scripts/heat.py", "state/heat_signals.json"], "doc": "CLAUDE.md", "uses": ["heat", "wikipv", "steam", "anilist", "tmdb"],
+        "flow": [
+            {"id": "h1", "kind": "fan", "lane": "ext", "title": "外の数字を取る", "mode": "1 日 1 回 · 70 日分残す",
+             "items": [("W", "Wikipedia 閲覧数", "60 日", "wikipv"), ("S", "Steam 同時接続", "", "steam"),
+                       ("A", "AniList 人気", "", "anilist"), ("T", "TMDB 人気", "", "tmdb")]},
+            {"id": "h2", "kind": "store", "lane": "repo", "title": "state/heat_signals.json"},
+            {"id": "h3", "kind": "table", "lane": "actions", "title": "6 つの次元（重み）",
+             "rows": [("報道量 20", "記事数（新しいほど重い）"), ("広がり 15", "媒体 × 地域"), ("出来事 20", "要紧・状態の変化・予定"),
+                      ("勢い 15", "直近 2 日 ÷ その前 5 日"), ("一般の関心 20", "Wikipedia 閲覧数"), ("ファン 10", "Reddit・Steam・AniList・TMDB")]},
+            {"id": "h4", "kind": "step", "lane": "actions", "title": "各次元 = 60% 自分比 + 40% 共通の尺度",
+             "text": "自分比 = 50 + 25·log2((今+1)/(平常 4 週+1)) · 共通 = 100·log10(1+x)/log10(1+満点線)", "uses": ["heat"]},
+            {"id": "h5", "kind": "decision", "lane": "actions", "title": "その次元の数字が取れた？", "no": "0 点ではなく分母から外す"},
+            {"id": "h6", "kind": "table", "lane": "web", "title": "等級", "rows": [("≥85", "沸騰"), ("≥60", "盛り上がり"), ("≥30", "話題"), ("≥1", "静か")]},
+            {"id": "h7", "kind": "step", "lane": "web", "title": "版面の数字・ランキング・分析ページ"},
+        ],
+    },
+    {
+        "id": "notify", "name": "Discord 通知", "en": "NOTIFY", "lane": "actions", "when": "収集のあと · 月曜に周報",
+        "trigger": "収集のたび（要紧・変更・愿望・新関注項）／ 毎週月曜 9:47 に周報",
+        "summary": "要紧の記事は当日、ほかは周報で。同じものは 30 日のあいだ二重に送らない。",
+        "files": ["scripts/notify.py", "state/notified.json"], "doc": "README.md", "uses": ["urgent", "discord"],
+        "flow": [
+            {"id": "n1", "kind": "decision", "lane": "actions", "title": "要紧の記事・状態の変化がある？", "text": "直近 2 回の収集から",
+             "uses": ["urgent"], "no": "周報まで待つ"},
+            {"id": "n2", "kind": "decision", "lane": "repo", "title": "30 日以内に送っていない？", "text": "state/notified.json", "no": "送らない"},
+            {"id": "n3", "kind": "step", "lane": "ext", "title": "Discord に送る", "text": "6 行・埋め込み 10 まで · メンション", "uses": ["discord"]},
+            {"id": "n4", "kind": "table", "lane": "ext", "title": "ほかに送るもの",
+             "rows": [("機能の更新", "機能のコミット"), ("愿望清单", "新しい愿望 10 件まで"), ("新関注項", "増えた・減った"), ("周報", "月曜・直近 7 日")]},
+        ],
+    },
+    {
+        "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai", "schedule": [(4, 43), (15, 43)],   # 日本時間 13:43 / 0:43（北京時間 12:43 / 23:43）
         "when": "毎日 13:43 · 0:43（日本時間）",
         "trigger": "毎日 2 回（日本時間 13:43 / 0:43）／ 新しい関注項が入ったとき",
-        "summary": "inbox の条目から重要なものを選び、同じ件を合わせて、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。",
-        "files": ["EDITING.md", "scripts/digest.py", "TEMPLATES.md"], "doc": "EDITING.md",
+        "summary": "inbox の記事から重要なものを選び、同じ件を合わせて、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。",
+        "files": ["EDITING.md", "scripts/digest.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "fallback"],
         "flow": [
-            {"id": "e1", "kind": "step", "lane": "ai", "title": "版面の設計と小元素の補完", "text": "motif・theme・like_fx を決め、小元素が足りない関注項を埋める（「小元素の選定」）。"},
-            {"id": "e2", "kind": "decision", "lane": "ai", "title": "編排が必要？", "text": "最新の inbox が今日で、新しい条目がある",
-             "yes": "編排へ", "no": "何も変えずに終わり"},
-            {"id": "e3", "kind": "step", "lane": "ai", "title": "編排して edit.json を書く", "text": "priority と notes を読み、同じ件を合わせ、見出しは原文のまま。篇幅は S / M / L に従う。"},
-            {"id": "e4", "kind": "step", "lane": "ai", "title": "配図を選ぶ", "text": "候補の一覧を目で見て、顔が切れない・内容に合う 1 枚。"},
-            {"id": "e5", "kind": "step", "lane": "ai", "title": "出刊してプッシュ", "text": "digest.py publish → inbox / reports / state / docs をコミット。"},
+            {"id": "e1", "kind": "step", "lane": "ai", "title": "最新の inbox を読む"},
+            {"id": "e2", "kind": "decision", "lane": "ai", "title": "今日の新着がある？", "text": "_covered より新しい記事", "no": "何も変えずに終わり"},
+            {"id": "e3", "kind": "step", "lane": "ai", "title": "版面の設計・小元素", "text": "motif・theme・like_fx · 足りない小元素（「小元素の選定」）"},
+            {"id": "e4", "kind": "step", "lane": "ai", "title": "編集して edit.json", "text": "同じ件を合わせる · 見出しは原文 · S 3 / M 5 / L 8 件",
+             "uses": ["claude"]},
+            {"id": "e5", "kind": "step", "lane": "ai", "title": "配図を目で選ぶ", "text": "1 件 12 枚まで · 4 列の一覧", "uses": ["imgpick", "claude"]},
+            {"id": "e6", "kind": "step", "lane": "actions", "title": "出刊 publish", "text": "AI のあとに来た新着は規則で", "uses": ["fallback"]},
+            {"id": "e7", "kind": "store", "lane": "repo", "title": "inbox/*.edit.json · reports/"},
         ],
     },
     {
-        "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions",
-        "workflow": "render.yml",
-        "when": "push のたび",
+        "id": "images", "name": "記事の配図", "en": "IMAGES", "lane": "actions", "when": "出刊のたび",
+        "trigger": "出刊のとき（1 件ずつ）。AI 編集は候補の一覧を見て選ぶ",
+        "summary": "記事ごとに、顔や内容が切れない 1 枚を選ぶ。号の中で同じ画像は使わない。",
+        "files": ["scripts/images.py", "scripts/digest.py"], "doc": "EDITING.md", "uses": ["imgpick"],
+        "flow": [
+            {"id": "i1", "kind": "fan", "lane": "ext", "title": "候補の順", "mode": "上から順に · 1 件 60 秒・12 枚まで",
+             "items": [("1", "AI の指定", ""), ("2", "記事の画像", ""), ("3", "og:image", ""), ("4", "JSON-LD", ""),
+                       ("5", "本文の img", "6 枚"), ("6", "転載ページ", "Bing 8 · Google")]},
+            {"id": "i2", "kind": "step", "lane": "actions", "title": "検査", "text": "8MB まで · 短辺 200 · 長辺 300 · Pillow で開ける · ロゴ・既定画像を除く",
+             "uses": ["imgpick"]},
+            {"id": "i3", "kind": "decision", "lane": "actions", "title": "見つかった？", "no": "その作品の表紙"},
+            {"id": "i4", "kind": "step", "lane": "actions", "title": "号の中で同じ画像を使わない", "text": "海外の出所を先に"},
+            {"id": "i5", "kind": "step", "lane": "web", "title": "枠にはめる", "uses": ["fit"]},
+        ],
+    },
+    {
+        "id": "colors", "name": "トップの配色", "en": "COLORS", "lane": "actions", "when": "ページ生成のたび",
+        "trigger": "ページを作るとき。同じ画像の色は state/themes.json に残して使い回す",
+        "summary": "その日の頭条の写真から、トップの地色と強調色を取る。字が必ず読めるように明るさを直す。",
+        "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "CLAUDE.md", "uses": ["octree"],
+        "flow": [
+            {"id": "t1", "kind": "step", "lane": "actions", "title": "頭条の写真", "text": "200×200 に縮める"},
+            {"id": "t2", "kind": "decision", "lane": "repo", "title": "前に取った色がない？", "text": "state/themes.json の hero|URL", "no": "それを使う"},
+            {"id": "t3", "kind": "step", "lane": "actions", "title": "16 色に減らす", "uses": ["octree"]},
+            {"id": "t4", "kind": "table", "lane": "actions", "title": "色の決め方",
+             "rows": [("地色", "いちばん多い色 · 明るさ 0.11 か 0.93"), ("強調色", "彩度^1.5 ×（0.5 + 0.5√割合）が最大")]},
+            {"id": "t5", "kind": "step", "lane": "actions", "title": "読めるまで明るさを動かす", "text": "±0.04 ずつ · WCAG 4.5:1"},
+        ],
+    },
+    {
+        "id": "recommend", "name": "おすすめ", "en": "RECOMMEND", "lane": "actions", "when": "収集のたび",
+        "trigger": "収集のたび（新しい候補を探すのは 12 時間ごと）",
+        "summary": "👍👎 から好みを学び、関注項の外も探して「気になるかも？」に出す。同じ話はまとめる。",
+        "files": ["scripts/digest.py", "state/recommend.json"], "doc": "CLAUDE.md", "uses": ["taste", "storydedupe", "gnews"],
+        "flow": [
+            {"id": "r1", "kind": "step", "lane": "web", "title": "👍👎 を読む", "text": "記事ごとに最後の一票", "uses": ["supabase"]},
+            {"id": "r2", "kind": "step", "lane": "actions", "title": "好みを学ぶ", "uses": ["taste"]},
+            {"id": "r3", "kind": "step", "lane": "ext", "title": "外を探す", "x": "6 本 · 20 件ずつ", "text": "ランダムな種 · 好みの重み", "uses": ["gnews"]},
+            {"id": "r4", "kind": "step", "lane": "actions", "title": "同じ話をまとめる", "uses": ["storydedupe"]},
+            {"id": "r5", "kind": "decision", "lane": "actions", "title": "点数 ≥ 5？", "text": "好みの語 2 点 · 同じ作品 +1", "no": "出さない（探索枠は ≥4）"},
+            {"id": "r6", "kind": "store", "lane": "repo", "title": "state/recommend.json", "text": "5 件 × 6 組"},
+        ],
+    },
+    {
+        "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
-        "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。",
-        "files": [".github/workflows/render.yml", "scripts/render.py"], "doc": "CLAUDE.md",
+        "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。",
+        "files": [".github/workflows/render.yml", "scripts/render.py"], "doc": "CLAUDE.md", "uses": ["heat", "octree", "fit", "confetti"],
         "flow": [
-            {"id": "r1", "kind": "step", "lane": "actions", "title": "PR を main に合流", "text": "scripts / templates / items.yaml などが変わったとき。"},
-            {"id": "r2", "kind": "step", "lane": "actions", "title": "render だけ実行", "text": "篇幅（S / M / L）を Supabase から読み、docs/*.html を作る。"},
-            {"id": "r3", "kind": "store", "lane": "repo", "title": "GitHub Pages に公開", "text": "約 1 分で反映。連続で合流したときは最後の 1 回だけ。"},
+            {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める"},
+            {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
+            {"id": "p3", "kind": "step", "lane": "actions", "title": "話題度を計算", "uses": ["heat"]},
+            {"id": "p4", "kind": "step", "lane": "actions", "title": "トップの配色", "uses": ["octree"]},
+            {"id": "p5", "kind": "table", "lane": "actions", "title": "版面の組み方",
+             "rows": [("写真の壁", "15 枚（スマホ 6）· 16:10"), ("普通の記事", "1 行 3 枚まで · 4 枚 = 2 + 2"), ("篇幅", "S 3 / M 4 / L 10 件")]},
+            {"id": "p6", "kind": "store", "lane": "repo", "title": "docs/*.html"},
+            {"id": "p7", "kind": "step", "lane": "web", "title": "GitHub Pages に公開", "text": "約 1 分", "uses": ["fit", "confetti"]},
         ],
     },
     {
-        "id": "requests", "name": "設定ページの依頼", "en": "REQUESTS", "lane": "web",
-        "workflow": "requests.yml",
-        "when": "依頼のたび",
+        "id": "requests", "name": "設定ページの依頼", "en": "REQUESTS", "lane": "web", "workflow": "requests.yml", "when": "依頼のたび · 待ちなし",
         "trigger": "設定ページで関注項の追加・変更・篇幅の変更を送ったとき（待ち時間なし）",
-        "summary": "設定ページの依頼を Supabase が受け、GitHub Actions を起こして items.yaml に反映する。",
-        "files": [".github/workflows/requests.yml", "docs/additem.js", "db/instant.sql"], "doc": "CLAUDE.md",
+        "summary": "設定ページの依頼を Supabase が受け、すぐ GitHub Actions を起こして items.yaml に反映する。",
+        "files": [".github/workflows/requests.yml", "docs/additem.js", "db/instant.sql"], "doc": "CLAUDE.md", "uses": ["supabase", "pgnet"],
         "flow": [
-            {"id": "q1", "kind": "step", "lane": "web", "title": "設定ページで送信", "text": "一問一答のウィザードで関注項を作る。"},
-            {"id": "q2", "kind": "store", "lane": "web", "title": "Supabase item_requests", "text": "依頼を保存し、GitHub を起動。"},
-            {"id": "q3", "kind": "step", "lane": "actions", "title": "items.yaml に書いて render", "text": "写真・熱度など他の設定もここで。"},
-            {"id": "q4", "kind": "decision", "lane": "actions", "title": "新しい関注項？", "text": "名前が既存にない",
-             "yes": "すぐ収集 → AI 編集が版面を設計", "no": "網页の更新だけ"},
+            {"id": "q1", "kind": "step", "lane": "web", "title": "設定ページで送る", "text": "一問一答のウィザード", "uses": ["supabase"]},
+            {"id": "q2", "kind": "step", "lane": "web", "title": "Supabase が GitHub を起こす", "uses": ["pgnet"]},
+            {"id": "q3", "kind": "decision", "lane": "actions", "title": "待ちの依頼がある？", "no": "何もしない"},
+            {"id": "q4", "kind": "step", "lane": "actions", "title": "検査して items.yaml に書く", "text": "使える項目だけ · 済み・見送りを返す"},
+            {"id": "q5", "kind": "decision", "lane": "actions", "title": "新しい関注項？", "no": "ページ生成だけ"},
+            {"id": "q6", "kind": "step", "lane": "actions", "title": "すぐ収集 → AI 編集が版面を設計"},
         ],
     },
     {
-        "id": "photos", "name": "写真から愿望", "en": "PHOTOS", "lane": "ai",
-        "schedule": [(1, 47), (5, 47), (9, 47), (13, 47)],   # 日本時間 10 / 14 / 18 / 22 時 47 分
+        "id": "photos", "name": "写真から愿望", "en": "PHOTOS", "lane": "ai", "schedule": [(1, 47), (5, 47), (9, 47), (13, 47)],   # 日本時間 10 / 14 / 18 / 22 時 47 分
         "when": "1 日 4 回",
         "trigger": "愿望清单ページで撮った写真が溜まったとき（Actions が 2 時間ごとに書き出し）",
-        "summary": "写真に写っているものを認識して、愿望清单に 1 件として整理する。",
-        "files": ["PHOTOS.md", "wishlist.yaml"], "doc": "PHOTOS.md",
+        "summary": "写真に写っているものを Claude が見て認識し、愿望清单に 1 件として整理する。",
+        "files": ["PHOTOS.md", "wishlist.yaml"], "doc": "PHOTOS.md", "uses": ["claude", "crop", "supabase"],
         "flow": [
-            {"id": "p1", "kind": "step", "lane": "web", "title": "写真を撮って送る", "text": "「想要 / 纠结」を選ぶ。Supabase に保存。"},
-            {"id": "p2", "kind": "store", "lane": "actions", "title": "inbox/photos/", "text": "Actions が写真（.jpg）と .json を書き出す。"},
-            {"id": "p3", "kind": "decision", "lane": "ai", "title": "写真がある？", "text": ".json が 1 つ以上",
-             "yes": "認識へ", "no": "何も変えずに終わり"},
-            {"id": "p4", "kind": "step", "lane": "ai", "title": "認識して wishlist.yaml に追加", "text": "名前・価格・規格・タグ。写真は物だけ切り抜く。"},
-            {"id": "p5", "kind": "step", "lane": "actions", "title": "写真を消して push", "text": "「已加入」の印は次の Actions が付ける。"},
+            {"id": "f1", "kind": "step", "lane": "web", "title": "写真を撮って送る", "text": "長辺 1600（2.9MB 超は 1200）· 縮図 240", "uses": ["supabase"]},
+            {"id": "f2", "kind": "store", "lane": "web", "title": "photo_inbox", "x": "未処理 20 枚まで"},
+            {"id": "f3", "kind": "step", "lane": "actions", "title": "inbox/photos に書き出す", "text": "収集のたびに"},
+            {"id": "f4", "kind": "decision", "lane": "ai", "title": "写真がある？", "no": "何も変えずに終わり"},
+            {"id": "f5", "kind": "step", "lane": "ai", "title": "見て認識する", "text": "名前・価格・規格・タグ", "uses": ["claude"]},
+            {"id": "f6", "kind": "step", "lane": "ai", "title": "物だけ切り取る", "uses": ["crop"]},
+            {"id": "f7", "kind": "store", "lane": "repo", "title": "wishlist.yaml"},
         ],
     },
 ]
@@ -198,53 +333,62 @@ PROCESSES = [
 # 枠の中の部品：proc = プロセスの id（クリックで流れが開く）、それ以外は保存先・外部サービス（説明だけ）。
 # 矢印（EDGES）：(番号, 元, 先, 説明, 色)。色 = data（収集）/ web（網页）/ ai（AI）/ notify（Discord）/ db（データベース）。
 ARCH = [
-    {"id": "src", "title": "インターネット", "note": "ニュースと画像の出どころ", "cost": "無料", "style": "ext", "nodes": [
-        {"id": "n-news", "label": "ニュース", "text": "Google ニュース・Bing・Reddit・RSS"},
-        {"id": "n-api", "label": "作品データ", "text": "Steam・AniList・TMDB・Wikipedia 閲覧数"},
-        {"id": "n-img", "label": "画像", "text": "Wikidata・Commons・Fandom・公式サイト"},
+    {"id": "src", "title": "インターネット", "note": "ニュース・数字・画像・モデルの出どころ", "cost": "無料", "style": "ext", "nodes": [
+        {"id": "n-news", "label": "ニュース", "text": "記事の一覧（RSS・API）", "uses": ["gnews", "bing", "reddit"]},
+        {"id": "n-api", "label": "作品データ", "text": "価格・放送・人気・閲覧数", "uses": ["steam", "anilist", "tmdb", "wikipv"]},
+        {"id": "n-img", "label": "画像", "text": "小元素の候補", "uses": ["wiki", "fandom", "twemoji", "bingimg"]},
+        {"id": "n-model", "label": "モデルの配布元", "text": "GitHub Releases（rembg）・HuggingFace（顔のモデル）"},
     ]},
-    {"id": "act", "title": "GitHub Actions", "note": "毎回新しいサーバー · 終わったら消える", "cost": "無料", "style": "temp", "nodes": [
-        {"id": "p-collect", "proc": "collect"}, {"id": "p-requests", "proc": "requests"}, {"id": "p-render", "proc": "render"}]},
+    {"id": "act", "title": "GitHub Actions", "note": "毎回新しいサーバー（4 コア）· 終わったら消える", "cost": "無料", "style": "temp", "nodes": [
+        {"id": "p-collect", "proc": "collect", "subs": ["heat", "recommend", "notify", "images"]},
+        {"id": "p-requests", "proc": "requests"},
+        {"id": "p-render", "proc": "render", "subs": ["colors"]}]},
     {"id": "repo", "title": "GitHub リポジトリ", "note": "ずっと残る · 全部の元データ", "cost": "無料", "style": "keep", "nodes": [
         {"id": "s-inbox", "label": "inbox/", "text": "集めた記事・edit.json・写真"},
         {"id": "s-items", "label": "items.yaml", "text": "関注項・版面・小元素"},
         {"id": "s-wish", "label": "wishlist.yaml", "text": "愿望清单"},
-        {"id": "s-state", "label": "state/", "text": "進捗・ログ・話題度・投票の控え"}]},
-    {"id": "ai", "title": "Anthropic · Claude", "note": "定時タスク · 毎回新しいコンテナ（4 コア）", "cost": "サブスク枠", "style": "temp", "nodes": [
-        {"id": "p-edit", "proc": "edit", "sub": "emblem"}, {"id": "p-emblem-cron", "proc": "emblem-cron"}, {"id": "p-photos", "proc": "photos"}]},
+        {"id": "s-state", "label": "state/", "text": "進捗・ログ・話題度・おすすめ・通知済み"}]},
+    {"id": "ai", "title": "Anthropic · Claude", "note": "定時タスク · 毎回新しいコンテナ（4 コア · 15GB）", "cost": "サブスク枠", "style": "temp", "nodes": [
+        {"id": "p-edit", "proc": "edit", "subs": ["emblem"]}, {"id": "p-emblem-cron", "proc": "emblem-cron"}, {"id": "p-photos", "proc": "photos"},
+        {"id": "s-model", "label": "画像のモデル（コンテナに毎回入れる）", "text": "抠图は 1 枚ずつ · 顔のモデルは 1 つを順番に",
+         "uses": ["rembg", "yunet", "sface", "haar"], "model": True}]},
     {"id": "db", "title": "Supabase", "note": "データベース", "cost": "無料枠", "style": "keep", "nodes": [
-        {"id": "s-db", "label": "feedback · sizes · item_requests · photo_inbox", "text": "👍👎・篇幅・設定ページの依頼・写真"}]},
+        {"id": "s-db", "label": "feedback · sizes · item_requests · photo_inbox · news", "text": "👍👎・篇幅・依頼・写真・記事の控え",
+         "uses": ["supabase", "pgnet"]}]},
     {"id": "pages", "title": "GitHub Pages", "note": "公開の網页", "cost": "無料", "style": "keep", "nodes": [
-        {"id": "s-pages", "label": "網页", "text": "簡報・設定・愿望清单・管理ページ"}]},
+        {"id": "s-pages", "label": "網页", "text": "簡報・設定・愿望清单・話題度・管理ページ", "uses": ["fit", "confetti"]}]},
     {"id": "dc", "title": "Discord", "note": "通知", "cost": "無料", "style": "ext", "nodes": [
-        {"id": "s-discord", "label": "あなたのチャンネル", "text": "要紧消息は当日・周報は月曜"}]},
+        {"id": "s-discord", "label": "あなたのチャンネル", "text": "要紧は当日・周報は月曜", "uses": ["discord"]}]},
     {"id": "you", "title": "あなた", "note": "スマホ・パソコン", "cost": "", "style": "you", "nodes": [
         {"id": "s-you", "label": "見る・押す・撮る", "text": "簡報を読む・👍👎・関注項の追加・写真"}]},
 ]
 EDGES = [
-    (1, "n-news", "p-collect", "記事を集める", "data"),
+    (1, "n-news", "p-collect", "記事を集める（6 本並列）", "data"),
     (2, "n-api", "p-collect", "話題度・現状", "data"),
     (3, "p-collect", "s-inbox", "inbox に書く", "data"),
-    (4, "p-collect", "s-discord", "要紧消息", "notify"),
+    (4, "p-notify", "s-discord", "要紧・周報", "notify"),
     (5, "s-inbox", "p-edit", "読む", "ai"),
     (6, "p-edit", "s-inbox", "edit.json・出刊", "ai"),
-    (7, "n-img", "p-emblem-cron", "画像を探す", "ai"),
+    (7, "n-img", "p-emblem-cron", "画像を探す（4 本並列）", "ai"),
     (8, "p-emblem-cron", "s-items", "小元素を書く", "ai"),
     (9, "s-items", "p-render", "push", "web"),
     (10, "p-render", "s-pages", "公開", "web"),
     (11, "s-pages", "s-you", "見る", "web"),
     (12, "s-you", "s-db", "👍・設定・写真", "db"),
-    (13, "s-db", "p-requests", "依頼", "db"),
+    (13, "s-db", "p-requests", "依頼（pg_net）", "db"),
     (14, "p-requests", "s-items", "items.yaml に反映", "db"),
     (15, "s-db", "p-collect", "写真・投票を取り込む", "db"),
     (16, "s-inbox", "p-photos", "写真", "ai"),
     (17, "p-photos", "s-wish", "愿望を足す", "ai"),
     (18, "s-discord", "s-you", "通知", "notify"),
+    (19, "n-model", "s-model", "ダウンロード", "ai"),
+    (20, "s-model", "p-emblem-cron", "抠图・本人確認", "ai"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
     ("ニュース収集", "6 本並列", "GitHub Actions のサーバーは 4 コア。待ちが多いので 6 本。同じサイトの間隔は全スレッドで共有（Reddit 2 秒・Google / Bing 0.5 秒）"),
     ("小元素の自動補完", "4 本並列", "定時タスクのコンテナは 4 コア・メモリ 15GB。抠图（rembg）と items.yaml への書き込みは 1 本ずつ"),
+    ("抠图のモデル（rembg）", "1 枚ずつ", "birefnet は 1 枚で数 GB のメモリを使う。onnxruntime のメモリ池を切って、1 枚ごとに返す（前は 13GB まで溜まった）"),
     ("Wikipedia・Wikidata・Commons", "1.3 秒に 1 回", "全スレッド合わせて。続けて叩くと 429（多すぎ）になり、続いたら 5 分休む → ここは並列でも速くならない"),
     ("Claude の定時タスク", "1 回 1 コンテナ", "最短 1 時間ごと。1 回の中で並列はできるが、同じタスクを同時に 2 つは動かない（いまは 4 時間ごと・40 分）"),
     ("GitHub Actions", "同じワークフローは 1 本ずつ", "収集・依頼は前の回が終わるまで待つ（concurrency）。ページ生成は新しい回が来たら古い回を止める"),
@@ -253,45 +397,71 @@ LIMITS = [
 EDGE_JA = {"data": "収集", "web": "網页", "ai": "AI", "notify": "Discord", "db": "データベース"}
 
 
+def _chips(ids):
+    """部品（モデル・アルゴリズム・API）の札。名前と数字（大きさ・しきい値・同時にいくつ）。"""
+    out = []
+    for cid in ids or []:
+        c = COMPONENTS.get(cid)
+        if not c:
+            continue
+        out.append(f'<span class="cp cp-{e(c["kind"])}" title="{e(c.get("what", ""))}"><em>{e(KIND_LABEL[c["kind"]])}</em>'
+                   f'<b>{e(c["name"])}</b>' + (f'<i>{e(c["spec"])}</i>' if c.get("spec") else "") + "</span>")
+    return f'<span class="cps">{"".join(out)}</span>' if out else ""
+
+
+def _own(p):
+    """構成図のプロセスの箱に出す札：その仕組み自身のアルゴリズム・ルール（と Claude）。API は外のサービスの箱、
+    画像のモデルは「画像のモデル」の箱に出しているので、ここでは重ねない（流れの図には全部出る）。"""
+    return [c for c in p.get("uses", []) if c in COMPONENTS and (COMPONENTS[c]["kind"] in ("algo", "rule") or c in ("claude", "claude-api"))]
+
+
 def _arch_node(n, by):
     if n.get("proc"):
         p = by[n["proc"]]
-        sub = by.get(n.get("sub")) if n.get("sub") else None
-        subb = (f'<button type="button" class="an-sub" data-open="proc-{e(sub["id"])}">＋ {e(sub["name"])}'
-                f'<small>{e(sub.get("when", ""))}</small></button>') if sub else ""
+        subs = "".join(
+            f'<button type="button" class="an-sub" id="p-{e(q["id"])}" data-open="proc-{e(q["id"])}">＋ {e(q["name"])}'
+            f'<small>{e(q.get("when", ""))}</small>{_chips(_own(q))}</button>'
+            for q in (by.get(x) for x in n.get("subs", [])) if q)
         return (f'<div class="an an-p" id="{e(n["id"])}"><button type="button" class="an-b" data-open="proc-{e(p["id"])}">'
-                f'<b>{e(p["name"])}</b><small>{e(p.get("when", ""))}</small><i>流れを見る ›</i></button>{subb}</div>')
-    return f'<div class="an an-s" id="{e(n["id"])}"><b>{e(n["label"])}</b><small>{e(n["text"])}</small></div>'
+                f'<b>{e(p["name"])}</b><small>{e(p.get("when", ""))}</small>{_chips(_own(p))}<i>流れの図を見る ›</i></button>{subs}</div>')
+    return (f'<div class="an an-s{" an-m" if n.get("model") else ""}" id="{e(n["id"])}"><b>{e(n["label"])}</b>'
+            f'<small>{e(n["text"])}</small>{_chips(n.get("uses"))}</div>')
 
 
 def _arch_zone(z, by):
     head = (f'<div class="az-h"><b>{e(z["title"])}</b><small>{e(z.get("note", ""))}</small>'
             + (f'<span class="az-c{" ai" if "サブスク" in z.get("cost", "") else ""}">{e(z["cost"])}</span>' if z.get("cost") else "") + "</div>")
     inner = "".join(_arch_node(n, by) for n in z.get("nodes", []))
-    inner += "".join(_arch_zone(b, by) for b in z.get("boxes", []))
     return f'<section class="az az-{e(z["style"])}" style="grid-area:{e(z["id"])}" data-z="{e(z["id"])}">{head}<div class="az-b">{inner}</div></section>'
 
 
+def _edges_json(edges):
+    return json.dumps(edges, ensure_ascii=False).replace("</", "<\\/")
+
+
 def architecture(processes=None):
-    """全体の構成図：どの仕組みがどこで動き、データがどう流れるか。プロセスの部品をクリックすると、その流れ（detail）が開く。
-    矢印は JS（ARCH_JS）が部品の位置から描く。狭い画面では矢印の代わりに番号つきの一覧を読む。"""
+    """全体の構成図：どの仕組みがどこで動き、データがどう流れるか。部品には使うモデル・アルゴリズムと数字の札。
+    プロセスの部品をクリックすると、その流れの図（detail）が開く。矢印は JS（DG）が部品の位置から描く。"""
     by = {p["id"]: p for p in PROCESSES + list(processes or [])}   # 図の部品はいつもの PROCESSES から
-    placed = {n.get(k) for z in ARCH for n in z["nodes"] for k in ("proc", "sub")}
+    placed = {n.get("proc") for z in ARCH for n in z["nodes"]} | {x for z in ARCH for n in z["nodes"] for x in n.get("subs", [])}
     extra = [p for p in PROCESSES if p["id"] not in placed]   # ARCH にまだ置いていない仕組みは「そのほか」に（図から開けないものを作らない）
     zones = "".join(_arch_zone(z, by) for z in ARCH + ([{"id": "etc", "title": "そのほかの仕組み", "note": "図の場所がまだ決まっていないもの",
                                                            "style": "keep", "nodes": [{"id": f"p-{p['id']}", "proc": p["id"]} for p in extra]}] if extra else []))
-    edges = json.dumps([list(x) for x in EDGES], ensure_ascii=False).replace("</", "<\\/")
     legend = "".join(f'<span class="ae-{k}"><i></i>{e(v)}</span>' for k, v in EDGE_JA.items())
+    kinds = "".join(f'<span class="cp cp-{k}"><em>{e(v)}</em></span>' for k, v in KIND_LABEL.items())
     names = {}
     for z in ARCH:
-        for n in z.get("nodes", []) + [m for b in z.get("boxes", []) for m in b["nodes"]]:
+        for n in z["nodes"]:
             names[n["id"]] = by[n["proc"]]["name"] if n.get("proc") else n["label"]
+            for x in n.get("subs", []):
+                names[f"p-{x}"] = by[x]["name"]
     lst = "".join(f'<li class="ae-{c}"><em>{i}</em>{e(names[a])} → {e(names[b])}<small>{e(t)}</small></li>' for i, a, b, t, c in EDGES)
     return (f'<p class="arch-lg"><span class="lg-z temp">破線 = その都度立ち上がる環境</span><span class="lg-z keep">実線 = ずっと残る場所</span>{legend}'
-            '<span>番号の矢印 = データの流れ · 四角い部品をクリックで流れ</span></p>'
-            f'<div class="arch" id="arch"><svg class="arch-svg" aria-hidden="true"></svg>{zones}</div>'
+            f'<span class="lg-k">{kinds} = 使っているモデル・アルゴリズム・API（数字つき）</span>'
+            '<span>番号の矢印 = データの流れ · 四角い部品をクリックで流れの図</span></p>'
+            f'<div class="arch dgb" id="arch" data-edges="arch-edges"><svg class="dg-svg" aria-hidden="true"></svg>{zones}</div>'
             f'<details class="arch-list"><summary>矢印の一覧（{len(EDGES)}）</summary><ol>{lst}</ol></details>'
-            f'<script type="application/json" id="arch-edges">{edges}</script>')
+            f'<script type="application/json" id="arch-edges">{_edges_json([list(x) for x in EDGES])}</script>')
 
 
 def _lane_tag(lane):
@@ -299,19 +469,63 @@ def _lane_tag(lane):
     return f'<span class="pl pl-{kind}">{e(name)}</span>'
 
 
-def _node(i, n):
-    k = n["kind"]
-    head = f'<div class="pn-h"><em>{i}</em><b>{e(n["title"])}</b>{_lane_tag(n.get("lane"))}</div>'
-    body = f'<p>{e(n["text"])}</p>' if n.get("text") else ""
+def _dg_node(pid, n, row, col, ncols):
+    """流れの図の 1 つの部品（手順・判断・並べて試す・表・保存先）。"""
+    k, nid = n["kind"], f'dg-{pid}-{n["id"]}'
+    badge = f'<span class="dn-x">{e(n["x"])}</span>' if n.get("x") else ""
+    head = f'<b class="dn-t">{e(n["title"])}</b>{badge}'
+    text = f'<small class="dn-s">{e(n["text"])}</small>' if n.get("text") else ""
+    span = f"grid-row:{row};grid-column:{'1 / -1' if k in ('fan', 'table') else col}"
+    lane = f'<span class="dn-l">{e(LANES.get(n.get("lane"), (n.get("lane") or "",))[0])}</span>'
+    if k == "fan":
+        items = "".join(
+            f'<li id="{nid}-{j}"><i>{e(it[0])}</i><b>{e(it[1])}</b><small>{e(it[2])}</small>{_chips(it[3:4] and [it[3]])}</li>'
+            for j, it in enumerate(n["items"]))
+        mode = n.get("mode", "上から順に · 足りるまで")
+        return (f'<div class="dn dn-fan" id="{nid}" style="{span}">{lane}<div class="dn-h">{head}<span class="dn-m">{e(mode)}</span></div>'
+                f'{text}<ol class="dn-row">{items}</ol>{_chips(n.get("uses"))}</div>')
+    if k == "table":
+        rows = "".join(f'<div class="dt-c"><b>{e(a)}</b><span>{e(b)}</span></div>' for a, b in n["rows"])
+        return f'<div class="dn dn-table" id="{nid}" style="{span}">{lane}<div class="dn-h">{head}</div>{text}<div class="dt">{rows}</div>{_chips(n.get("uses"))}</div>'
+    shape = {"decision": "dn-dec", "store": "dn-store"}.get(k, "dn-step")
+    inner = f'{lane}<div class="dn-h">{head}</div>{text}{_chips(n.get("uses"))}'
     if k == "decision":
-        body += (f'<div class="pn-br"><span class="pn-y"><i>はい</i>{e(n["yes"])}</span>'
-                 f'<span class="pn-n"><i>いいえ</i>{e(n["no"])}</span></div>')
-    elif k == "fan":
-        body += '<ol class="pn-opts">' + "".join(
-            f'<li><i>{e(a)}</i><b>{e(b)}</b><span>{e(c)}</span></li>' for a, b, c in n["items"]) + "</ol>"
-    elif k == "table":
-        body += '<dl class="pn-tbl">' + "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in n["rows"]) + "</dl>"
-    return f'<li class="pn pn-{k}">{head}{body}</li>'
+        inner = f'{lane}<div class="dn-dia"><span>{head}{text}</span></div>{_chips(n.get("uses"))}'
+    out = f'<div class="dn {shape}" id="{nid}" style="{span}">{inner}</div>'
+    if k == "decision":   # いいえ の行き先：となりの列に小さな箱
+        bcol = ncols
+        out += f'<div class="dn dn-no" id="{nid}-no" style="grid-row:{row};grid-column:{bcol}"><i>いいえ</i><span>{e(n["no"])}</span></div>'
+    return out
+
+
+def flow_diagram(p):
+    """プロセスの流れを図にする：列 = どこで動くか（レーン）、行 = 順番。判断はひし形（はい = 下へ、いいえ = 右の箱へ）、
+    「上から順に試す / 並列」は横に並べた箱、使うモデル・アルゴリズムは札。矢印は JS（DG）が描く。"""
+    pid, flow = p["id"], p["flow"]
+    lanes = []
+    for n in flow:
+        if n.get("lane") not in lanes:
+            lanes.append(n.get("lane"))
+    has_no = any(n["kind"] == "decision" for n in flow)
+    ncols = len(lanes) + (1 if has_no else 0)
+    heads = "".join(f'<div class="dg-lh" style="grid-column:{i + 1}">{_lane_tag(l)}</div>' for i, l in enumerate(lanes))
+    if has_no:
+        heads += f'<div class="dg-lh dg-lh-no" style="grid-column:{ncols}"><span class="pl">分かれ道</span></div>'
+    cells, edges = [], []
+    for i, n in enumerate(flow):
+        cells.append(_dg_node(pid, n, i + 2, lanes.index(n.get("lane")) + 1, ncols))
+        nid = f'dg-{pid}-{n["id"]}'
+        if i + 1 < len(flow):
+            label = "はい" if n["kind"] == "decision" else (n.get("out") or "")
+            edges.append([None, nid, f'dg-{pid}-{flow[i + 1]["id"]}', label, "ai" if n.get("lane") == "ai" else "data", 0])
+        if n["kind"] == "decision":
+            edges.append([None, nid, f"{nid}-no", "いいえ", "web", 1])
+            if n.get("no_to"):
+                edges.append([None, f"{nid}-no", f'dg-{pid}-{n["no_to"]}', "戻る", "web", 1])
+    cols = " ".join(["minmax(0,1fr)"] * len(lanes) + (["minmax(120px,.7fr)"] if has_no else []))
+    eid = f"dge-{pid}"
+    return (f'<div class="dg dgb" data-edges="{eid}" style="grid-template-columns:{cols}"><svg class="dg-svg" aria-hidden="true"></svg>'
+            f'{heads}{"".join(cells)}</div><script type="application/json" id="{eid}">{_edges_json(edges)}</script>')
 
 
 def detail(p):
@@ -323,12 +537,12 @@ def detail(p):
             f'<p class="pd-sum">{e(p["summary"])}</p>'
             f'<div class="pd-meta"><span><b>いつ</b>{e(p["trigger"])}</span>'
             f'<span><b>どこで</b>{e(lane[0])}</span><span><b>費用</b>{e(lane[1])}</span></div>'
-            f'<ol class="pd-flow">{"".join(_node(i + 1, n) for i, n in enumerate(p["flow"]))}</ol>'
-            f'<p class="pd-files"><b>仕組みの場所</b>{files}</p></dialog>')
+            + (f'<div class="pd-uses"><b>使うもの</b>{_chips(p.get("uses"))}</div>' if p.get("uses") else "")
+            + f'{flow_diagram(p)}<p class="pd-files"><b>仕組みの場所</b>{files}</p></dialog>')
 
 
 def render(processes=None):
-    """管理ページに入れる HTML（全体の構成図 + 各プロセスの詳細ダイアログ）。"""
+    """管理ページに入れる HTML（全体の構成図 + 各プロセスの流れの図のダイアログ）。"""
     processes = processes or PROCESSES
     return architecture(processes) + "".join(detail(p) for p in processes)
 
@@ -341,7 +555,6 @@ CSS = """
 .ae-data{color:var(--ink)}.ae-web{color:var(--rose)}.ae-ai{color:var(--good)}.ae-notify{color:var(--discord)}.ae-db{color:var(--viz-1)}
 .arch{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
  grid-template-areas:"src act repo ai" "db pages repo dc" "you you you you";gap:40px 64px;align-items:start}
-.arch-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
 .az{border:2px solid var(--ink);background:var(--paper);padding:10px 12px 12px;min-width:0}
 .az-temp{border-style:dashed;background:var(--sheet)}
 .az-ext{border-style:dotted;border-width:3px}
@@ -359,15 +572,12 @@ CSS = """
 .an-p:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
 .an-b,.an-sub{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:2px;width:100%;padding:9px 11px;cursor:pointer}
 .an-b b{font:900 14px/1.35 var(--font-sans)}.an-b small,.an-sub small{font:500 var(--fs-label)/1.45 var(--font-sans);opacity:.85}
-.an-b i{font:700 var(--fs-label) var(--font-sans);font-style:normal;color:var(--rose)}
+.an-b>i{font:700 var(--fs-label) var(--font-sans);font-style:normal;color:var(--rose)}
 .an-sub{border-top:1.5px dashed var(--ink);font:700 12px/1.4 var(--font-sans);background:var(--sheet)}
 .an-b:focus-visible,.an-sub:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
 .an-b:hover b,.an-sub:hover{text-decoration:underline}
 .az-you .an{background:transparent;color:var(--card);border-color:var(--card)}
 .arch .hl{outline:3px solid var(--gold);outline-offset:2px}
-.arch-svg path{fill:none;stroke-width:2.2}
-.arch-svg .dim{opacity:.15}
-.arch-svg text{font:900 11px var(--font-mono);fill:var(--card);text-anchor:middle;dominant-baseline:central}
 .arch-list{margin-top:14px;font-size:13px}.arch-list summary{cursor:pointer;font:700 13px var(--font-sans)}
 .arch-list ol{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:4px 16px}
 .arch-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;padding:4px 0;border-bottom:1px solid var(--hair);color:var(--ink)}
@@ -378,22 +588,13 @@ CSS = """
 .az-you{grid-column:1/-1}.az[data-z=etc]{grid-column:1/-1}.az[data-z=etc]>.az-b{flex-direction:row;flex-wrap:wrap}
 @media (max-width:980px){
  .arch{grid-template-columns:minmax(0,1fr);grid-template-areas:"src" "act" "repo" "ai" "db" "pages" "dc" "you";gap:16px}
- .arch-svg{display:none}
+ .arch .dg-svg{display:none}
  .az[data-z=you]>.az-b{flex-direction:column}
 }
-.pcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
-.pc{display:flex;flex-direction:column;gap:4px;text-align:left;padding:10px 12px 12px;background:var(--card);color:var(--ink);cursor:pointer;
  border:2px solid var(--ink);box-shadow:var(--shadow);font:inherit;transition:transform .1s,box-shadow .1s}
-.pc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
-.pc:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.pc-t svg{display:block;width:100%;height:100%}
-.pc-t{display:block;height:150px;overflow:hidden;background:var(--sheet);border:1px solid var(--ink);padding:4px;color:var(--ink)}
-.pc b{font:900 15px/1.3 var(--font-sans);margin-top:4px}
-.pc small{font:700 10px var(--font-mono);letter-spacing:.2em;opacity:.7}
-.pc-w{font-size:12px;line-height:1.5;opacity:.85}
 .pl{display:inline-block;align-self:flex-start;font:700 10px var(--font-mono);letter-spacing:.04em;padding:1px 8px;transform:skewX(var(--skew));background:var(--ink);color:var(--card);white-space:nowrap}
 .pl-ai{background:var(--gold);color:var(--ink)}.pl-free{background:var(--good);color:var(--card)}
-.pdlg{width:min(860px,calc(100vw - 24px));max-height:calc(100vh - 24px);padding:0;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);background:var(--paper);color:var(--ink)}
+.pdlg{width:min(1100px,calc(100vw - 24px));max-height:calc(100vh - 24px);padding:0;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);background:var(--paper);color:var(--ink)}
 .pdlg::backdrop{background:rgba(26,28,34,.55)}
 .pd-h{display:flex;justify-content:space-between;gap:12px;padding:14px 18px;background:var(--ink);color:var(--card);position:sticky;top:0;z-index:2}
 .pd-h small{font:700 10px var(--font-mono);letter-spacing:.3em;opacity:.7}
@@ -403,77 +604,119 @@ CSS = """
 .pd-sum{margin:0;padding:14px 18px 6px;font-size:14px;line-height:1.7}
 .pd-meta{display:flex;flex-wrap:wrap;gap:6px 18px;padding:0 18px 14px;font-size:13px}
 .pd-meta b{font:700 10px var(--font-mono);letter-spacing:.15em;margin-right:6px;padding:1px 6px;background:var(--ink);color:var(--card)}
-.pd-flow{list-style:none;margin:0;padding:6px 18px 8px;display:flex;flex-direction:column;gap:0}
-.pn{position:relative;background:var(--card);border:2px solid var(--ink);padding:10px 14px 12px;margin-bottom:22px;box-shadow:var(--shadow)}
-.pn::after{content:"▼";position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);font-size:12px;color:var(--alert)}
-.pn:last-child{margin-bottom:6px}.pn:last-child::after{display:none}
-.pn-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.pn-h em{font:900 13px var(--font-mono);font-style:normal;background:var(--ink);color:var(--card);min-width:26px;height:26px;display:grid;place-items:center;transform:skewX(var(--skew))}
-.pn-h b{font:900 15px/1.4 var(--font-sans);flex:1;min-width:0}
-.pn p{margin:6px 0 0;font-size:13px;line-height:1.7}
-.pn-decision{background:var(--sheet);border-style:dashed}
-.pn-br{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-.pn-br span{display:flex;flex-direction:column;gap:2px;font-size:13px;padding:6px 10px;border:2px solid var(--ink);background:var(--card)}
-.pn-br i{font:700 10px var(--font-mono);font-style:normal;letter-spacing:.1em}
-.pn-y i{color:var(--good)}.pn-n i{color:var(--alert)}
-.pn-opts{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
-.pn-opts li{display:grid;grid-template-columns:22px 92px 1fr;gap:6px;align-items:baseline;font-size:12px;line-height:1.5;padding:4px 8px;border:1px solid var(--ink);background:var(--paper)}
-.pn-opts i{font:900 11px var(--font-mono);font-style:normal;color:var(--alert)}.pn-opts b{font-weight:900}
-.pn-tbl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:8px 0 0;font-size:13px}
-.pn-tbl dt{font-weight:900}.pn-tbl dd{margin:0}
 .pd-files{margin:0;padding:6px 18px 16px;font-size:12px;display:flex;gap:6px 10px;flex-wrap:wrap;align-items:baseline}
 .pd-files b{font:700 10px var(--font-mono);letter-spacing:.15em}
 .pd-files code{font:700 11px var(--font-mono);background:var(--card);border:1px solid var(--ink);padding:0 6px}
-@media (max-width:640px){.pdlg{width:100vw;max-width:100vw;height:100vh;max-height:100vh;margin:0;border-width:0}.pn-br{grid-template-columns:1fr}.pn-opts li{grid-template-columns:22px 82px 1fr}}
+@media (max-width:640px){.pdlg{width:100vw;max-width:100vw;height:100vh;max-height:100vh;margin:0;border-width:0}}
+.dgb{position:relative}
+.dg-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}
+.dg-svg path{fill:none;stroke-width:2.2}.dg-svg .dash{stroke-dasharray:6 4}
+.dg-svg .dim{opacity:.15}
+.dg-svg text{font:900 11px var(--font-mono);fill:var(--card);text-anchor:middle;dominant-baseline:central}
+.dg-svg .lbl rect{fill:var(--card);stroke:currentColor;stroke-width:1.5}.dg-svg .lbl text{fill:currentColor;font:700 11px var(--font-sans)}
+.cps{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.cp{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:0 6px;max-width:100%;padding:2px 7px;border:1.5px solid var(--ink);background:var(--paper);
+ font:500 var(--fs-label)/1.45 var(--font-sans);color:var(--ink);text-align:left}
+.cp em{font:900 var(--fs-tag)/1.6 var(--font-mono);font-style:normal;letter-spacing:.06em;padding:0 4px;color:var(--card);background:var(--ink)}
+.cp b{font:700 var(--fs-label)/1.45 var(--font-mono)}.cp i{font-style:normal;opacity:.85}
+.cp-model em{background:var(--rose)}.cp-algo em{background:var(--good)}.cp-api em{background:var(--viz-1)}.cp-rule em{background:var(--ink)}
+.cp-model{border-color:var(--rose)}
+.lg-k{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px}.lg-k .cp{padding:0 2px}
+.an-m{border-color:var(--rose);border-width:3px}
+.pd-uses{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;padding:0 18px 12px}
+.pd-uses>b{font:700 10px var(--font-mono);letter-spacing:.15em;padding:1px 6px;background:var(--ink);color:var(--card)}
+.pd-uses .cps{margin:0}
+.dg{display:grid;gap:30px 26px;padding:6px 18px 18px;align-items:start}
+.dg-lh{grid-row:1;position:sticky;top:66px;z-index:4;padding:4px 0;border-bottom:3px double var(--ink);background:var(--paper)}
+.dg-lh-no .pl{background:var(--alert);color:var(--card)}
+.dn{position:relative;z-index:3;background:var(--card);border:2px solid var(--ink);padding:8px 10px;min-width:0;box-shadow:var(--shadow)}
+.dn-l{display:none;font:700 var(--fs-tag) var(--font-mono);letter-spacing:.06em;opacity:.7}
+.dn-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.dn-t{font:900 14px/1.35 var(--font-sans)}
+.dn-x{font:700 var(--fs-label) var(--font-mono);padding:0 6px;background:var(--gold);color:var(--ink);transform:skewX(var(--skew))}
+.dn-m{font:700 var(--fs-label) var(--font-sans);color:var(--rose)}
+.dn-s{display:block;margin-top:3px;font:500 12px/1.55 var(--font-sans)}
+.dn-store{border-radius:14px/10px;background:var(--sheet);box-shadow:none;border-style:solid}
+.dn-dec{background:transparent;border:0;box-shadow:none;padding:0}
+.dn-dia{position:relative;display:grid;place-items:center;min-height:96px;padding:16px 34px;text-align:center}
+.dn-dia::before{content:"";position:absolute;inset:0;background:var(--gold);border:2px solid var(--ink);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);z-index:-1}
+.dn-dia::after{content:"";position:absolute;inset:-2px;background:var(--ink);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%,0 50%,2.4% 50%,50% 97%,97.6% 50%,50% 3%,2.4% 50%,0 50%);z-index:-1}
+.dn-dia span{display:block;max-width:260px}.dn-dia .dn-t{font-size:13px}.dn-dia .dn-s{font-size:var(--fs-label)}
+.dn-no{background:var(--paper);border:2px dashed var(--alert);box-shadow:none;font:500 12px/1.5 var(--font-sans);align-self:center}
+.dn-no i{display:block;font:900 var(--fs-label) var(--font-mono);font-style:normal;color:var(--alert)}
+.dn-fan,.dn-table{background:var(--paper)}
+.dn-row{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.dn-row li{position:relative;padding:6px 8px;background:var(--card);border:1.5px solid var(--ink);display:flex;flex-direction:column;gap:1px;min-width:0}
+.dn-row li:not(:last-child)::after{content:"›";position:absolute;right:-8px;top:50%;transform:translate(50%,-50%);font:900 14px var(--font-mono);color:var(--rose)}
+.dn-row i{font:900 var(--fs-label) var(--font-mono);font-style:normal;color:var(--rose)}
+.dn-row b{font:900 12px/1.3 var(--font-sans)}.dn-row small{font:500 var(--fs-label)/1.4 var(--font-sans);opacity:.85}
+.dn-row .cps{margin-top:3px}.dn-row .cp i{display:none}
+.dt{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;margin-top:8px}
+.dt-c{display:flex;flex-direction:column;padding:5px 8px;border:1.5px solid var(--ink);background:var(--card)}
+.dt-c b{font:900 12px var(--font-sans)}.dt-c span{font:500 var(--fs-label)/1.45 var(--font-sans)}
+@media (max-width:640px){
+ .dg{grid-template-columns:minmax(0,1fr)!important;gap:26px}
+ .dg-lh{display:none}.dn-l{display:block}
+ .dg>.dn{grid-column:1!important;grid-row:auto!important}
+ .dn-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .dn-row li::after{display:none}
+ .dg>.dn-no{justify-self:end;width:46%}
+}
 """
 
 JS = """
 (() => {
-  // 構成図の矢印：部品の位置から、直角に折れる線を描く。番号の丸は線の途中。部品にマウスを乗せると関係する線だけ濃く
-  const arch = document.getElementById('arch'), data = document.getElementById('arch-edges');
-  if (arch && data) {
-    const EDGES = JSON.parse(data.textContent), svg = arch.querySelector('.arch-svg'), NS = 'http://www.w3.org/2000/svg';
-    const COL = {data: 'var(--ink)', web: 'var(--rose)', ai: 'var(--good)', notify: 'var(--discord)', db: 'var(--viz-1)'};
-    const draw = () => {
-      if (getComputedStyle(svg).display === 'none') return;
-      const box = arch.getBoundingClientRect();
-      svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
-      let defs = '<defs>' + Object.keys(COL).map(k => `<marker id="ah-${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:${COL[k]};stroke:none"/></marker>`).join('') + '</defs>';
-      const seen = {}, placed = [];
-      const out = EDGES.map(([n, a, b, label, c]) => {
-        const A = document.getElementById(a), B = document.getElementById(b);
-        if (!A || !B) return '';
-        const r1 = A.getBoundingClientRect(), r2 = B.getBoundingClientRect();
-        const s = {l: r1.left - box.left, r: r1.right - box.left, t: r1.top - box.top, b: r1.bottom - box.top};
-        const d = {l: r2.left - box.left, r: r2.right - box.left, t: r2.top - box.top, b: r2.bottom - box.top};
-        const key = [a, b].sort().join('|'), off = (seen[key] = (seen[key] || 0) + 1) > 1 ? 14 : 0;   // 行きと帰りは少しずらす
-        let p, mx, my;
-        if (s.r + 8 < d.l || d.r + 8 < s.l) {   // 左右に離れている：横から出て、真ん中で縦に折れる
-          const x1 = s.r < d.l ? s.r : s.l, x2 = s.r < d.l ? d.l : d.r;
-          const y1 = (s.t + s.b) / 2 + off, y2 = (d.t + d.b) / 2 + off;
-          mx = (x1 + x2) / 2 + off; my = (y1 + y2) / 2;
-          p = `M${x1} ${y1}H${mx}V${y2}H${x2}`;
-        } else {   // 上下：縦に出て、真ん中で横に折れる
-          const down = s.b < d.t, y1 = down ? s.b : s.t, y2 = down ? d.t : d.b;
-          const x1 = (s.l + s.r) / 2 + off, x2 = (d.l + d.r) / 2 + off;
-          my = (y1 + y2) / 2 + off; mx = (x1 + x2) / 2;
-          p = `M${x1} ${y1}V${my}H${x2}V${y2}`;
-        }
-        while (placed.some(([x, y]) => Math.abs(x - mx) < 22 && Math.abs(y - my) < 22)) my += 24;   // 番号の丸が重ならないように
-        placed.push([mx, my]);
-        return `<g data-a="${a}" data-b="${b}"><path d="${p}" style="stroke:${COL[c]}" marker-end="url(#ah-${c})"/>` +
-               `<circle cx="${mx}" cy="${my}" r="10" style="fill:${COL[c]}"/><text x="${mx}" y="${my}">${n}</text><title>${n}. ${label}</title></g>`;
-      });
-      svg.innerHTML = defs + out.join('');
-    };
-    const hl = id => svg.querySelectorAll('g').forEach(g => g.classList.toggle('dim', !!id && g.dataset.a !== id && g.dataset.b !== id));
-    arch.querySelectorAll('.an').forEach(n => { n.addEventListener('mouseenter', () => hl(n.id)); n.addEventListener('mouseleave', () => hl(null)); });
-    draw(); addEventListener('resize', draw); if (document.fonts) document.fonts.ready.then(draw);
-    if (window.ResizeObserver) new ResizeObserver(draw).observe(arch);
-  }
+  // 図の矢印（全体の構成図・流れの図で共通）：data-edges の JSON = [番号 or null, 元の id, 先の id, 説明, 色, 破線]。
+  // 部品の位置から直角に折れる線を描く。番号は丸、番号なしは説明の札。部品にマウスを乗せると関係する線だけ濃く
+  const COL = {data: 'var(--ink)', web: 'var(--rose)', ai: 'var(--good)', notify: 'var(--discord)', db: 'var(--viz-1)'};
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+  const draw = box => {
+    const svg = box.querySelector(':scope > .dg-svg'), data = document.getElementById(box.dataset.edges);
+    if (!svg || !data || getComputedStyle(svg).display === 'none' || !box.offsetWidth) return;
+    const B = box.getBoundingClientRect(), EDGES = JSON.parse(data.textContent), seen = {}, placed = [];
+    svg.setAttribute('viewBox', `0 0 ${B.width} ${B.height}`);
+    const defs = '<defs>' + Object.keys(COL).map(k => `<marker id="ah-${k}-${box.dataset.edges}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:${COL[k]};stroke:none"/></marker>`).join('') + '</defs>';
+    const out = EDGES.map(([n, a, b, label, c, dash]) => {
+      const A = document.getElementById(a), Z = document.getElementById(b);
+      if (!A || !Z || !A.offsetWidth || !Z.offsetWidth) return '';
+      const r1 = A.getBoundingClientRect(), r2 = Z.getBoundingClientRect();
+      const s = {l: r1.left - B.left, r: r1.right - B.left, t: r1.top - B.top, b: r1.bottom - B.top};
+      const d = {l: r2.left - B.left, r: r2.right - B.left, t: r2.top - B.top, b: r2.bottom - B.top};
+      const key = [a, b].sort().join('|'), off = (seen[key] = (seen[key] || 0) + 1) > 1 ? 14 : 0;   // 行きと帰りは少しずらす
+      let p, mx, my;
+      if (s.r + 8 < d.l || d.r + 8 < s.l) {   // 左右に離れている：横から出て、真ん中で縦に折れる
+        const x1 = s.r < d.l ? s.r : s.l, x2 = s.r < d.l ? d.l : d.r;
+        const y1 = (s.t + s.b) / 2 + off, y2 = (d.t + d.b) / 2 + off;
+        mx = (x1 + x2) / 2 + off; my = (y1 + y2) / 2;
+        p = `M${x1} ${y1}H${mx}V${y2}H${x2}`;
+      } else {   // 上下：縦に出て、真ん中で横に折れる
+        const down = s.b < d.t, y1 = down ? s.b : s.t, y2 = down ? d.t : d.b;
+        const x1 = (Math.max(s.l, d.l) + Math.min(s.r, d.r)) / 2 + off, x2 = x1;   // 重なっている幅の真ん中をまっすぐ
+        my = (y1 + y2) / 2; mx = x1;
+        p = (Math.min(s.r, d.r) - Math.max(s.l, d.l) > 20) ? `M${x1} ${y1}V${y2}`
+          : `M${(s.l + s.r) / 2 + off} ${y1}V${my}H${(d.l + d.r) / 2 + off}V${y2}`;
+      }
+      while (placed.some(([x, y]) => Math.abs(x - mx) < 24 && Math.abs(y - my) < 20)) my += 22;   // 札が重ならないように
+      placed.push([mx, my]);
+      const tag = n != null ? `<circle cx="${mx}" cy="${my}" r="10" style="fill:${COL[c]}"/><text x="${mx}" y="${my}">${n}</text>`
+        : (label ? `<g class="lbl" style="color:${COL[c]}"><rect x="${mx - (label.length * 6 + 8)}" y="${my - 9}" width="${label.length * 12 + 16}" height="18" rx="9"/><text x="${mx}" y="${my}">${esc(label)}</text></g>` : '');
+      return `<g data-a="${a}" data-b="${b}"><path class="${dash ? 'dash' : ''}" d="${p}" style="stroke:${COL[c]}" marker-end="url(#ah-${c}-${box.dataset.edges})"/>${tag}<title>${n != null ? n + '. ' : ''}${esc(label)}</title></g>`;
+    });
+    svg.innerHTML = defs + out.join('');
+  };
+  const all = () => document.querySelectorAll('[data-edges]').forEach(draw);
+  document.querySelectorAll('[data-edges]').forEach(box => {
+    const svg = box.querySelector(':scope > .dg-svg');
+    box.querySelectorAll('.an,.dn').forEach(n => {
+      n.addEventListener('mouseenter', () => svg && svg.querySelectorAll('g[data-a]').forEach(g => g.classList.toggle('dim', g.dataset.a !== n.id && g.dataset.b !== n.id)));
+      n.addEventListener('mouseleave', () => svg && svg.querySelectorAll('g[data-a]').forEach(g => g.classList.remove('dim')));
+    });
+    if (window.ResizeObserver) new ResizeObserver(() => draw(box)).observe(box);
+  });
+  all(); addEventListener('resize', all); if (document.fonts) document.fonts.ready.then(all);
   document.addEventListener('click', ev => {
     const open = ev.target.closest('[data-open]');
-    if (open) { const d = document.getElementById(open.dataset.open); if (d && d.showModal) d.showModal(); return; }
+    if (open) { const d = document.getElementById(open.dataset.open); if (d && d.showModal) { d.showModal(); d.querySelectorAll('[data-edges]').forEach(draw); } return; }
     if (ev.target.closest('[data-close]')) { const d = ev.target.closest('dialog'); if (d) d.close(); return; }
     if (ev.target.tagName === 'DIALOG') ev.target.close();   // 外側（暗い部分）をクリックしても閉じる
   });

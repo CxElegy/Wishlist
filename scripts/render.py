@@ -3308,10 +3308,10 @@ def _admin_resources(res):
     rows = []
     for proc, r in (res.get("runs") or {}).items():
         x = r.get("res") or {}
-        mem = (_meter("メモリ（使用中）", x["mem_total"] - x.get("mem_free", 0), x["mem_total"],
-                      f'空き {_mb(x.get("mem_free", 0))} · この処理のピーク {_mb(x.get("peak", 0))}') if x.get("mem_total") else "")
-        disk = (_meter("ディスク（マシン全体）", x["disk_total"] - x.get("disk_free", 0), x["disk_total"],
-                       f'残り {_mb(x.get("disk_free", 0))} · Claude のセッションは別に割り当ての上限がある', warn_at=None)
+        mem = (_meter("メモリ（この処理のピーク）", x.get("peak", 0), x["mem_total"],
+                      f'終わったときの空き {_mb(x.get("mem_free", 0))}') if x.get("mem_total") else "")
+        used = x.get("disk_used", x.get("disk_total", 0) - x.get("disk_free", 0))   # 古い記録（disk_used なし）はマシン全体の値
+        disk = (_meter("ディスク（このセッション）", used, used + x.get("disk_free", 0), f'残り {_mb(x.get("disk_free", 0))}')
                 if x.get("disk_total") else "")
         secs = r.get("secs")
         meta = " · ".join(v for v in (e(r.get("when") or ""), f'{secs // 60} 分 {secs % 60} 秒' if isinstance(secs, int) else "",
