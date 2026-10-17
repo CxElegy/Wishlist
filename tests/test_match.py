@@ -70,6 +70,16 @@ class SpamTest(unittest.TestCase):
                   "2026绝区零简被爆❌挤奶歪歪在线看-绝区零简被爆❌挤奶歪歪最新超清版39.847 全集版-爱看高清网"]
         self.assertEqual(self.kept(titles), [])
 
+    def test_ad_stuffed_url_is_spam(self):
+        """正规网站（新浪）的网址参数里塞着「伴游…添加微信」：标题是真的旧文章，也要丢。"""
+        bad = ("https://finance.sina.cn/consume/shxf/2026-06-05/detail-iniaiyyn2826244.d.html?oid=%E8%8B%8F%E5%B7%9E"
+               "%E5%A7%91%E8%8B%8F%E5%8C%BA%E4%BC%B4%E6%B8%B8%E6%A8%A1%E7%89%B9%EF%BC%88%E9%87%91%E7%89%8C%E7%BB%8F%E7%BA%AA"
+               "%EF%BC%89%E6%B7%BB%E5%8A%A0%E5%BF%AB%E4%B9%90%E5%BE%AE%E4%BF%A1(88%E2%91%A1%E2%91%A26881)&vt=4")
+        self.assertTrue(digest.is_spam("周杰伦北京演唱会抢票火爆，买演出门票别踩坑", bad))
+        self.assertFalse(digest.is_spam("周杰伦北京演唱会抢票火爆，买演出门票别踩坑",
+                                         "https://finance.sina.cn/consume/shxf/2026-06-05/detail-iniaiyyn2826244.d.html?vt=4"))
+        self.assertFalse(digest.is_spam("微信公众号发布新功能", "https://news.qq.com/a/1.html"))   # 标题里的「微信」不算
+
     def test_real_news_and_collabs_are_kept(self):
         titles = ["绝区零3.3版本10月21日上线 新角色登场",
                   "【ゼンゼロ】ゼンゼロ×ローソン コラボ開催",

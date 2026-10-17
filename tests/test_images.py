@@ -68,6 +68,8 @@ ROUTES = {
         '<meta property="og:image" content="/forbidden.jpg">',
         '<article><img src="/icon.png"><img src="/small.jpg"><img data-src="/big.jpg"></article>')),
     "/nothing.html": (200, "text/html", html_page(body="<p>text only</p>")),
+    # 虎扑の視頻帖：og:image も本文の図もなく、<video poster> だけ（小さい既定アバターは除く）
+    "/video.html": (200, "text/html", html_page(body='<img src="/small.png"><video src="/v.mp4" poster="/big.jpg"></video>')),
     "/icons.html": (200, "text/html", html_page(
         '<link rel="icon" href="/fav/tiny-site"><link rel="mask-icon" href="/mask.svg">'
         '<link rel="apple-touch-icon" href="/fav/site-180">')),
@@ -243,6 +245,11 @@ class ImagesTest(unittest.TestCase):
         self.assertEqual((res.image, res.source), (self.u("/big.jpg"), "正文图"))
         self.assertEqual([r for _, _, r in res.trace], ["图片 HTTP 403", "图片太小 120×80", "OK"])
         self.assertNotIn(self.u("/icon.png"), [u for _, u, _ in res.trace])  # 图标被跳过
+
+    def test_video_poster_when_no_og(self):
+        self.assertEqual(images.page(self.u("/video.html")).poster, [self.u("/big.jpg")])
+        res = images.pick(None, [entry(url=self.u("/video.html"))], self.u("/video.html"))
+        self.assertEqual((res.image, res.source), (self.u("/big.jpg"), "视频封面"))
 
     def test_second_ref_page_used(self):
         refs = [entry(url=self.u("/nothing.html")), entry(url=self.u("/og.html"))]

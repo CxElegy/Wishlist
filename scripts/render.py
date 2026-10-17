@@ -1016,10 +1016,10 @@ def _older(stories, today, more=0, texts=()):
             f'<div class="grid">{cards}</div>{_brief(texts)}</details>')
 
 
-def _spam(title):
+def _spam(title, url=""):
     """垃圾页（digest.is_spam）。収集・出刊で落としているが、古い号に残ったものもページに出さない。"""
     import digest  # digest が render を import しているので、使うときに読む
-    return digest.is_spam(title)
+    return digest.is_spam(title, url)
 
 
 def collect(issues, order=None):
@@ -1040,7 +1040,7 @@ def collect(issues, order=None):
             if w is None:  # 已经从关注清单里删掉的不再显示
                 continue
             for st in b.get("stories") or []:
-                if st["url"] in w["_seen"] or _spam(st.get("headline", "")):
+                if st["url"] in w["_seen"] or _spam(st.get("headline", ""), st["url"]):
                     continue
                 w["_seen"].add(st["url"])
                 w["stories"].append({**st, "_issue": issue["date"], "_work": b["name"],

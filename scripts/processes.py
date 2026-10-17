@@ -62,7 +62,7 @@ COMPONENTS = {
                "what": "digest.filter_entries：作品名を除いて比べる。転載・題名の切れ端も 1 件に"},
     "match": {"kind": "rule", "name": "match / exclude", "spec": "部分一致（空白・大小無視）· re: は正規表現",
               "what": "items.yaml の match にある語がタイトルか要約にないと収めない（digest.match_hit）"},
-    "spam": {"kind": "rule", "name": "スパム判定 SPAM_PATTERNS", "spec": "漢字の間の ❌ · 在线看・高清完整・免费全集 等 · 末尾「〜网」· exclude_sources · 収集・inbox の合併・出刊・ページ生成の 4 か所で落とす",
+    "spam": {"kind": "rule", "name": "スパム判定 SPAM_PATTERNS", "spec": "漢字の間の ❌ · 在线看・高清完整・免费全集 等 · 末尾「〜网」· 網址の参数に「伴游・微信・加V」など（SPAM_URL）· exclude_sources · 収集・inbox の合併・出刊・ページ生成の 4 か所で落とす",
              "what": "digest.is_spam：乗っ取られたサイトの成人・海賊版「在线看」ページを捨てる（作品名を詰めているので match を通ってしまう）"},
     "taxonomy": {"kind": "rule", "name": "板块の対号入座 sections.yaml", "spec": "板块 17（IAB Content Taxonomy 3.1 の大類から）· 各 2 つの分け方と常用の値 · 上から先に当たった語",
                  "what": "維基データの説明・名前の語で板块と小分類を推す（taxonomy.classify / guess_subs、ウィザードも同じ表）。新しい板块は臨時に作らない、当たらなければ「その他」"},
@@ -73,7 +73,7 @@ COMPONENTS = {
     "pending": {"kind": "rule", "name": "整理待ち split_unedited", "spec": "_covered より後 · edit.json にない版面 → 版面に載せない · 原題 20 件まで表示",
                 "what": "digest.split_unedited / render._pending：版面には AI 編集が整理した記事だけ。未整理の新着は版面の下の折りたたみ「整理待ち N 件」に原題・出典だけ"},
     "imgpick": {"kind": "algo", "name": "配図の選び方 images.pick", "spec": "短辺 ≥200 · 長辺 ≥300 · 8MB まで · 1 件 60 秒・12 枚まで · TLS は ALPN http/1.1（ブラウザと同じ。ないと i0.wp.com が 404）· おすすめの「図なし」は翌日もう一度探す",
-                "what": "AI 指定 → 記事の画像 → og:image → JSON-LD → 本文 → Bing の縮小画像 → 転載ページ。ロゴ・既定画像は除く。"
+                "what": "AI 指定 → 記事の画像 → og:image → JSON-LD → 動画の表紙（<video poster>：虎扑の動画帖など）→ 本文 → Bing の縮小画像 → 転載ページ。ロゴ・既定画像は除く。"
                         "Bing の縮小画像（bing.com/th）は Bing が切った一部分なので原文の図の後ろ。repair-images（収集の手動実行）で既刊も直す"},
     "imgsharp": {"kind": "rule", "name": "より大きい予告画像 / 防盗链の再試行", "spec": "og:image・JSON-LD の長辺 < 1000 なら同じページの大きい方 · 403 は原文ページを Referer に 3 枚まで",
                  "what": "images.pick：同じ記事の大きい版（JSON-LD の 1920×1080 など）を先に。新浪 sinaimg など Referer がないと 403 の図は「（本站保存）」として hdimg が本站に置く"},
@@ -328,7 +328,8 @@ PROCESSES = [
         "flow": [
             {"id": "i1", "kind": "fan", "lane": "ext", "title": "候補の順", "mode": "上から順に · 1 件 60 秒・12 枚まで",
              "items": [("1", "AI の指定", ""), ("2", "記事の画像", "Bing の縮小画像は除く"), ("3", "og:image", ""), ("4", "JSON-LD", ""),
-                       ("5", "本文の img", "6 枚"), ("6", "Bing の縮小画像", "Bing が切った一部分"), ("7", "転載ページ", "Bing 8 · Google")]},
+                       ("5", "動画の表紙", "<video poster>"),
+                       ("6", "本文の img", "6 枚"), ("7", "Bing の縮小画像", "Bing が切った一部分"), ("8", "転載ページ", "Bing 8 · Google")]},
             {"id": "i2", "kind": "step", "lane": "actions", "title": "検査", "text": "8MB まで · 短辺 200 · 長辺 300 · Pillow で開ける · ロゴ・既定画像を除く",
              "uses": ["imgpick"]},
             {"id": "i2b", "kind": "decision", "lane": "actions", "title": "予告画像が小さい？", "text": "長辺 < 1000",
