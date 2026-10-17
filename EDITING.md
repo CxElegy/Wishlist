@@ -18,6 +18,8 @@
    新的关注项（设置页加进来的）也一样：设计版面时顺便定好 `emblem_kind`，补到目标为止。
 
 2. 找到最新一份 `inbox/YYYY-MM-DD.json`（不带 `.edit`）。没有就结束。
+   有的话**先运行 `python scripts/digest.py live-edit`**：网页上今天还没编的版面出「AI が編集しています · あと約 N 分」的条，读者知道在更新、可以等一下。
+   之后 `pick-images`・`publish` 会自动把条推进到「配図を選んでいます」「反映を待っています」，不用再做什么。
 3. 读 `items.yaml`，了解每个关注项的 `priority`（读者最关心什么）和 `notes`（背景）。
 4. 读 inbox 里每个关注项的 `entries`（编号 `n`、日期、来源、标题、摘要），按下面的规则编排。
 5. 写 `inbox/YYYY-MM-DD.edit.json`（格式见下）。已经有这个文件时**整份重写**，覆盖当天所有条目。

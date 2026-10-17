@@ -26,6 +26,7 @@ import pathlib
 import random
 import re
 import sys
+import time
 import urllib.parse
 import urllib.error
 import urllib.request
@@ -2088,23 +2089,25 @@ def write_page():
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
                           {n: v for n, v in own_sub.items() if v}, settings.get("nav_hide", render.NAV_HIDE),
                           {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
-                          render.busy_plan(adm.get("todo"), [i["name"] for i in items],
+                          render.busy_plan([i["name"] for i in items],
                                            {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
                           {i["name"]: str(i["parent"]) for i in items if i.get("parent")},
                           {k: v["score"] for k, v in sub_heat.items()})
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
-    (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, order), updated),
-                                        encoding="utf-8")
+    heat_html, ver_heat = render.stamp(render.render_heat(analysis, render.collect(issues, order), updated), updated)
+    (DOCS_DIR / "heat.html").write_text(heat_html, encoding="utf-8")
     (DOCS_DIR / "themes.html").write_text(render.render_themes(  # テーマ見本（30 のテーマと 👍 の演出）
         [{"name": i["name"], "motif": render.template_for(i), "theme": i.get("theme")} for i in items], updated), encoding="utf-8")
     wishes = load_wishlist()
+    vers = {}
     if wishes:
         works = render.collect(issues, [i["name"] for i in items])
         finds = [x for x in (load_json(DISCOVER_FILE) or {}).get("entries", []) if x.get("wish")]
-        (DOCS_DIR / "wishlist.html").write_text(render.render_wishlist(wishes, works, updated, finds,
-                                                                      {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), encoding="utf-8")
+        wish_html, vers["wishlist"] = render.stamp(render.render_wishlist(wishes, works, updated, finds,
+                                                                        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), updated)
+        (DOCS_DIR / "wishlist.html").write_text(wish_html, encoding="utf-8")
     (DOCS_DIR / "settings.html").write_text(render.render_settings(
         [{"name": i["name"], "section": section_of(i), "subtitle": i.get("subtitle", ""),
           "size": load_sizes().get(i["name"], "M"),
@@ -2115,7 +2118,7 @@ def write_page():
         adm, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), updated)
     (DOCS_DIR / "admin.html").write_text(admin_html, encoding="utf-8")
     # 開いたままのページはこれを 1 分ごとに読み、自分の指紋と違えば新しい内容を出す（render.LIVE_JS）
-    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "updated": updated})
+    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "heat": ver_heat, **vers, "updated": updated})
     (DOCS_DIR / ".nojekyll").touch()
 
 
@@ -2201,7 +2204,14 @@ def update_heat():
 
 
 COLLECT_WORKERS = 6   # 收集时同时抓几个关注项（GitHub Actions 的机器 4 核；等网络为主，所以比核数多一点）
-LIVE_RUN_MIN = 9      # 收集开始到新网页出现大约几分钟（Actions 约 7 分 + Pages 约 1 分）：版面「更新中」条的预计时间
+LIVE_AFTER_MIN = 3    # 收集・出刊结束后到新网页出现大约几分钟（提交・推送 + Pages 发布）
+LIVE_EDIT_FILE = pathlib.Path("/tmp/wishlist-live-edit.json")  # AI 编辑这一回从几点开始、编哪些版面（同一个容器里用）
+
+
+def _run_min(proc, default_secs):
+    """这个仕组み平常要跑几分钟（state/log 里最近 10 回的中位数；没有记录用 default_secs）。"""
+    import runlog
+    return runlog.typical(proc, "secs", default_secs) / 60
 
 
 def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"):
@@ -2251,8 +2261,10 @@ def ingest(dry_run=False):
             compare = compare + [t for name, ts in known.items() if name != item["name"] for t in ts]
         return compare
 
+    run_min = _run_min("collect", 290) + LIVE_AFTER_MIN  # 最近の収集の長さから（固定値ではない）
+
     def eta():
-        return max(now + dt.timedelta(minutes=LIVE_RUN_MIN), dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=2))
+        return max(now + dt.timedelta(minutes=run_min), dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=2))
 
     shown = {}  # 版面 → 网页上现在显示的新记事件数（None = 条已消失）
 
@@ -2490,6 +2502,32 @@ def unedited(only=None):
 PICK_DIR = pathlib.Path(os.environ.get("PICK_DIR", "/tmp/wishlist-pick"))
 
 
+def live_edit():
+    """AI 编辑开始编排时（EDITING.md 第 2 步）：今天还没编的版面，在网页上出「AI が編集しています · あと約 N 分」的条。
+    预计时间 = 最近几回 AI 编辑的长度（state/log/edit.json 的 secs）。之后 pick-images・publish 会把条往下推进。"""
+    import livestatus
+    boards = unedited()
+    est = _run_min("edit", 1200)
+    LIVE_EDIT_FILE.write_text(json.dumps({"start": time.time(), "boards": boards, "est": est}), encoding="utf-8")
+    for b in boards:
+        livestatus.report(b, "edit", "work", "AI が編集しています", est + LIVE_AFTER_MIN)
+    print(f"網页の帯：{len(boards)} 版面（予想 {est:.0f} 分）", file=sys.stderr)
+
+
+def _live_edit_step(note, left_min=None):
+    """AI 编辑的途中：开始时记下的版面的条，换成新的说明和剩下的时间。"""
+    import livestatus
+    try:
+        run = json.loads(LIVE_EDIT_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    if left_min is None:
+        left_min = max(2, run["est"] - (time.time() - run["start"]) / 60) + LIVE_AFTER_MIN
+    for b in run["boards"]:
+        livestatus.report(b, "edit", "work" if left_min > LIVE_AFTER_MIN else "wait", note, left_min)
+    return run
+
+
 def pick_images(date=None):
     """给 AI 编辑挑图用：按 edit.json 里每条报道，收集原文候选图，拼成带编号的对照图。
     对照图在 PICK_DIR（不进仓库），候选链接写在 PICK_DIR/candidates.json。"""
@@ -2501,6 +2539,7 @@ def pick_images(date=None):
         return
     inbox_path = paths[-1]
     inbox, edits = load_json(inbox_path), load_edits(inbox_path)
+    _live_edit_step("AI が配図を選んでいます")
     PICK_DIR.mkdir(parents=True, exist_ok=True)
     out = {}
     for raw in inbox["items"]:
@@ -2664,14 +2703,16 @@ def logged_publish(path=None):
         edit = load_json(INBOX_DIR / f"{latest.stem}.edit.json")
         n = len([k for k in (edit or {}) if not k.startswith("_")])
         import resources
+        run = _live_edit_step("編集済み · 網页への反映を待っています", LIVE_AFTER_MIN) if proc == "edit" else None
+        took = {"secs": round(time.time() - run["start"])} if run else {}  # 次の回の「あと約 N 分」に使う
         runlog.add(proc, f"{latest.stem} を出刊" + (f"（AI 編集 {n} 版面）" if edit else "（AI 編集なし・キーワードの規則）"), "ok",
-                   res=resources.snapshot(), **({"tokens": TOKENS["in"] + TOKENS["out"], "tokens_in": TOKENS["in"]} if TOKENS["calls"] else {}))
+                   res=resources.snapshot(), **took, **({"tokens": TOKENS["in"] + TOKENS["out"], "tokens_in": TOKENS["in"]} if TOKENS["calls"] else {}))
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -2692,6 +2733,8 @@ def main():
         logged_ingest()
         update_heat()
         sync_db()
+    elif args.step == "live-edit":
+        live_edit()
     elif args.step == "audit-match":
         audit_match(only=args.only.split("、") if args.only else None)
     elif args.step == "heat":

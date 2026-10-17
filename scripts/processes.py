@@ -338,7 +338,7 @@ PROCESSES = [
         "when": "開いている間 · 1 分ごと",
         "trigger": "簡報・管理ページを開いているあいだ、1 分ごと（タブが裏にあるときも戻ったときにすぐ）",
         "summary": "開いたままのページに、新しい記事や数字を自分で出す。裏である版面を作り直している間は、その版面だけ枠に「更新中」の帯と残り時間。",
-        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / busy_plan）", "scripts/digest.py（write_page / live_mark）", "db/live_status.sql", "docs/version.json"], "doc": "CLAUDE.md",
+        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / busy_plan）", "scripts/digest.py（write_page / live_mark / live-edit）", "scripts/livestatus.py", "scripts/runlog.py（typical）", "db/live_status.sql", "docs/version.json"], "doc": "CLAUDE.md",
         "flow": [
             {"id": "l1", "kind": "step", "lane": "actions", "title": "ページを作るたびに指紋を付ける",
              "text": "収集・AI 編集・ページ生成が docs/*.html を書くとき、中身の指紋（「更新」の時刻は除く）を計算。"},
@@ -357,12 +357,13 @@ PROCESSES = [
              "text": "版面ごとに判断。ほかの版面には帯を出さない",
              "yes": "その版面の上の枠に帯（版面の色）＋「あと約 N 分」", "no": "帯なし"},
             {"id": "l9", "kind": "table", "lane": "web", "title": "どの版面に・いつ帯を出すか",
-             "text": "帯は小元素の下（重なったら小元素が上）。ページがその回より後に作られていれば出さない。",
-             "rows": [("ニュース収集", "その版面を探し始めたら「記事を探しています」→ その版面を探し終えたらすぐ：新着なし＝消える／新着あり＝「新着 N 件 · 反映まであと約 N 分」"
-                                    "（収集が Supabase live_status に書き、網页が 30 秒ごとに読む）"),
-                      ("AI 編集", "編集待ちの新着がある版面だけ · 定時から約 30 分"),
-                      ("小元素の自動補完", "待ち行列の先頭 4 版面（4 本並列）· 定時から約 45 分"),
-                      ("ページ生成", "帯なし（中身ではなく見た目の変更。下の「新しい内容があります」で知らせる）")]},
+             "text": "推定はしない：仕組み自身が Supabase live_status に版面ごとに書き、網页が 30 秒ごとに読む（live_boards）。"
+                     "「あと約 N 分」は各仕組みの最近 10 回の実際の長さの中央値（runlog.typical）。帯は小元素の下。ページがその作業より後に作られていれば出さない。",
+             "rows": [("ニュース収集", "探し始め「記事を探しています」→ その版面を探し終えたらすぐ：新着なし＝消える／新着あり＝「新着 N 件 · 反映まであと約 N 分」（secret key で直接）"),
+                      ("AI 編集", "live-edit で今日まだ編集していない版面に「AI が編集しています」→ pick-images「配図を選んでいます」→ publish「反映を待っています」（live_report）"),
+                      ("小元素の自動補完", "処理を始めた版面に「小元素を集めています」→ 増えた版面だけ「反映を待っています」、増えなければ消える（live_report）"),
+                      ("ページ生成", "帯なし（中身ではなく見た目の変更。下の「新しい内容があります」で知らせる）"),
+                      ("live_report の制限", "proc は edit / emblem・版面は sizes にある名前・言葉 40 字・予想 90 分まで（secret key なしで書けるので）")]},
             {"id": "l7", "kind": "table", "lane": "web", "title": "管理ページの「いまの状況」",
              "text": "ページの再読込とは別に、外のデータを開いている間ずっと読み直す。",
              "rows": [("ウォッチ項目の依頼・写真の受付", "Supabase · 1 分ごと"), ("GitHub Actions", "3 分ごと（1 時間 60 回の制限内）"),
@@ -465,6 +466,8 @@ EDGES = [
     (24, "s-db", "p-live", "live_status を 30 秒ごと", "db"),
     (25, "p-gate", "p-edit", "仕事があるときだけ起こす", "ai"),
     (26, "p-gate", "p-photos", "写真があるときだけ起こす", "ai"),
+    (27, "p-edit", "s-db", "編集中の版面（live_report）", "db"),
+    (28, "p-emblem-cron", "s-db", "処理中の版面（live_report）", "db"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [

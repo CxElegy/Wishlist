@@ -138,15 +138,20 @@
 
 ## 页面自动更新（开着的页面自己出新内容）
 
-- 每次生成网页时，`render.stamp` 给简报 / 管理页算「内容指纹」（去掉更新时间），写进页面的 `<meta name="wl-ver">` 和 `docs/version.json`。
+- 每次生成网页时，`render.stamp` 给简报・管理页・愿望清单・話題度分析算「内容指纹」（去掉更新时间），写进页面的 `<meta name="wl-ver">` 和 `docs/version.json`。
   页面（`render.LIVE_JS`）每分钟读 `version.json`，指纹变了就在用户 20 秒没操作（或标签页在后台）时无缝重载：保持阅读位置，
-  简报给新增的记事打「たった今」，管理页给内容变了的面板打「更新」；输入中、开着流程图对话框时等待，底部提示条有「今すぐ表示」。
-- 管理页「いまの状況」开着时一直重读：依頼・写真每 1 分，GitHub Actions 每 3 分（未登录 API 每小时 60 次）。
-- **版面的「更新中」条**（`render.BUSY_JS` / `busy_plan`）：**只在正在更新的那个版面**上边框出一条用版面 `--acc` 色往返的细条 + 预估进度 + 「あと約 N 分」，其他版面不出。
-  图层：条 z-index 4，在小元素（`.emb`，z-index 5）下面。
-  - 收集：每个版面开始抓取时 `digest.live_mark` 往 Supabase `live_status` 表写「記事を探しています」；**这个版面一抓完就**判断（不等别的版面）：没新记事就删掉（条消失），有新记事改成「新着 N 件 · 反映まであと約 N 分」；之后按顺序去重件数变了再改一次（`tests/test_live.py`）。没有 AI 参与，全是收集脚本直接写、网页直接读。网页 30 秒读一次 `live_status()`（`db/live_status.sql`）。
-  - AI 编辑・小元素：浏览器看不到，按定时推算（`BUSY_MIN`），只出在待ち行列的版面（`BUSY_BOARDS`）。页面生成（代码变更）不出条。
-- 这套逻辑在管理页「全体の構成」里是「ページの自動更新」（`processes.py` 的 `live`，箭头 21〜24），改逻辑时同步改那里。
+  新增的记事 / 愿望打「たった今」（愿望清单页是中文「刚刚」），面板内容变了打「更新」；标签页在后台时标题前出件数「(3) …」，回到页面就消。
+  对话框开着、在输入框里、**有没保存的输入或选好的照片**时等待，底部提示条有「今すぐ表示」。
+- 管理页「いまの状況」开着时一直重读：依頼・写真每 1 分，GitHub Actions 每 3 分（未登录 API 每小时 60 次；所有标签页共用 3 分钟内的结果，`localStorage`）。
+- **版面的「更新中」条**（`render.BUSY_JS` / `busy_plan`）：**只在正在更新的那个版面**上边框出一条用版面 `--acc` 色往返的细条 + 进度 + 「あと約 N 分」，其他版面不出。
+  图层：条 z-index 4，在小元素（`.emb`，z-index 5）下面。**不推算**：各仕组み自己往 Supabase `live_status` 表写，网页 30 秒读一次 `live_boards()`（`db/live_status.sql`）。没有 AI 参与。
+  - 收集（`digest.live_mark`，Actions 有 secret key 直接写）：开始抓「記事を探しています」→ **这个版面一抓完就**判断：没新记事删掉（条消失），有就「新着 N 件 · 反映まであと約 N 分」；按顺序去重后件数变了再改（`tests/test_live.py`）。
+  - AI 编辑（Claude 定时任务，没有 secret key → `scripts/livestatus.py` 调 `live_report()`）：`EDITING.md` 第 2 步 `digest.py live-edit`「AI が編集しています」→ `pick-images`「配図を選んでいます」→ `publish`「反映を待っています」。
+  - 小元素补全（`emblem_fill.background`，同上 `live_report()`）：处理中「小元素を集めています」→ 增加了的版面「反映を待っています」，没增加就删。
+  - `live_report()` 只收 proc = edit / emblem、版面名必须在 `sizes` 表里、文字 40 字・预计 90 分以内（不用密钥就能写，所以限得很窄；被滥用最多是假的条出 45 分钟）。
+  - 「あと約 N 分」= 各仕组み最近 10 回实际用时的中位数（`runlog.typical`：收集 `secs`、AI 编辑 `secs`、小元素每个版面 `item_secs`），越跑越准。页面生成（代码变更）不出条。
+  - 连接器注意：Supabase 连接器执行 `DELETE` / `DROP` 这类破坏性语句要用户确认，云端会话里没人点会超时 → 改表结构用不删东西的写法（`create or replace`、新函数名）。
+- 这套逻辑在管理页「全体の構成」里是「ページの自動更新」（`processes.py` 的 `live`，箭头 21〜24・27・28），改逻辑时同步改那里。
 
 ## 管理ページ（docs/admin.html）
 

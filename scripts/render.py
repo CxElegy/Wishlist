@@ -1779,6 +1779,7 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
 .wish.expired .wimg img{{filter:grayscale(.65) contrast(.95);opacity:.85}}
 .wish.expired .wcard:hover .wimg img{{filter:none;opacity:1}}
 </style>
+{_live_head("wishlist")}
 </head>
 <body>
 <div class="page">
@@ -1807,6 +1808,7 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
   }});
 }}));
 </script>
+<script>{LIVE_JS}</script>
 </body>
 </html>
 """
@@ -1979,7 +1981,7 @@ def _wish_section(wishes, works, finds=()):
                          f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}{_from(st)}</span>{e(st["headline"])}</a>')
         added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
         cards.append(
-            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}">'
+            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}" data-key="{e(x["name"])}">'
             f'<div class="wimg">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else ""}'
             f'<span class="heart {cls}">♥ {e(status)}</span></div>'
             f'<div class="wtxt">' + (f'<span class="shop">{e(x["shop"])}</span>' if x.get("shop") else "")
@@ -2783,13 +2785,21 @@ LIVE_JS = """
           set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
   var touched=Date.now(),pending=null,bar=null;
   ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
-  function keys(){var o={};Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){o[a.getAttribute('href')]=1;});return o;}
+  var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'有 %n 条新内容',m:'%n 处有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新'}
+    :{n:'新しい記事が %n 件 届きました',m:'%n か所が新しくなりました',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新'};
+  function art(a){return a.closest('article');}
+  function keyed(){var l=[];Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){l.push([a.getAttribute('href'),art(a)]);});
+    Array.prototype.forEach.call(document.querySelectorAll('article[data-key]'),function(c){l.push(['k:'+c.getAttribute('data-key'),c]);});return l;}
+  function keys(){var o={};keyed().forEach(function(x){o[x[0]]=1;});return o;}
+  // 裏のタブで新しい記事が届いたら、タブの題に件数を出す（表に戻したら消す）
+  var TITLE=document.title;function badge(n){document.title=n?'('+n+') '+TITLE:TITLE;}
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)badge(0);});
   function marks(){var o={};Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){o[s.id]=s.getAttribute('data-h');});return o;}
   function anchor(){var l=document.querySelectorAll('section[id]');for(var i=0;i<l.length;i++){var r=l[i].getBoundingClientRect();if(r.bottom>0)return [l[i].id,r.top];}return null;}
   function toast(msg,act){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
     bar.textContent='';var t=document.createElement('span');t.textContent=msg;bar.appendChild(t);
-    if(act){var b=document.createElement('button');b.type='button';b.textContent='今すぐ表示';b.onclick=go;bar.appendChild(b);}
-    var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label','閉じる');x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
+    if(act){var b=document.createElement('button');b.type='button';b.textContent=T.b;b.onclick=go;bar.appendChild(b);}
+    var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label',T.x);x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
     bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},8000);}
   // 読み直したあと：見ていた場所に戻し、増えた記事・変わったパネルに印を付ける
   var was=ss.get(KEY);ss.del(KEY);
@@ -2802,20 +2812,24 @@ LIVE_JS = """
     if('scrollRestoration' in history)history.scrollRestoration='manual';
     back();addEventListener('load',back);
     var n=0;
-    Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){if(was.keys&&!was.keys[a.getAttribute('href')]){var c=a.closest('article');
-      if(c&&!c.classList.contains('fresh')){c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='たった今';c.appendChild(t);n++;}}});
+    keyed().forEach(function(x){var c=x[1];if(was.keys&&!was.keys[x[0]]&&c&&!c.classList.contains('fresh')){
+      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;}});
     var m=0;
     if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
-      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='更新';s.appendChild(t);m++;}});
-    toast(n?'新しい記事が '+n+' 件 届きました':m?m+' か所が新しくなりました':'最新の内容にしました');
+      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);m++;}});
+    toast(n?T.n.replace('%n',n):m?T.m.replace('%n',m):T.s);
+    if(document.hidden)badge(n||m);
   }
-  function busy(){var a=document.activeElement;return !!document.querySelector('dialog[open]')||!!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))||!!a&&a.isContentEditable;}
+  // 待つとき：ダイアログを開いている・入力欄にいる・書きかけ／選んだファイルがある（読み直すと消えてしまう）
+  function dirty(){return Array.prototype.some.call(document.querySelectorAll('input,textarea'),function(i){
+    return i.type==='file'?!!(i.files&&i.files.length):!/^(button|submit|checkbox|radio|hidden)$/.test(i.type)&&i.value!==i.defaultValue;});}
+  function busy(){var a=document.activeElement;return !!document.querySelector('dialog[open]')||!!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))||!!a&&a.isContentEditable||dirty();}
   function go(){if(!pending)return;ss.set(KEY,{to:pending,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});
     if('scrollRestoration' in history)history.scrollRestoration='manual';location.reload();}
   function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
       var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
-      if(pending!==v){pending=v;toast('新しい内容があります（操作をやめると自動で表示）',true);}maybe();}).catch(function(){});}
+      if(pending!==v){pending=v;toast(T.p,true);}maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
   setTimeout(check,3000);
@@ -2826,14 +2840,12 @@ LIVE_JS = """
 # 版面の「更新中」の帯：裏の仕組みがその版面を作り直しているあいだ、**その版面だけ**、上の枠に細い帯を往復させ、
 # 予想の進み具合を塗り、「あと約 N 分」を小さく出す。色は版面の --acc。
 # 重なり：帯（z-index 4）は版面の上、小元素（.emb、z-index 5）の下。小元素は版面の外にはみ出して帯に重なってよい。
-#   ニュース収集：版面ごとの実際の状態を Supabase の live_status()（digest.live_mark が書く）から 30 秒ごとに読む。
-#     探し始め →「記事を探しています」/ 新着なし → 帯が消える / 新着あり →「新着 N 件 · 反映まであと約 N 分」。
-#   AI 編集・小元素：Claude の定時タスクはブラウザから見えないので、定時（UTC）からの経過で推定。
-#     対象は待ち行列（digest.backend_todo）の版面だけ（小元素は同時に動く 4 版面）。ページがその定時より後に作られていれば終わったとみなす。
-#   ページ生成（コードの変更）は版面の中身を変えないので帯は出さない（LIVE_JS の帯で新しい版を知らせる）。
-BUSY_MIN = {"edit": 30, "emblem-cron": 45}  # 定時からいつもかかる時間（分）
-BUSY_BOARDS = {"edit": 8, "emblem-cron": 4}  # 待ち行列の先頭から何版面に出すか（小元素は 4 本並列）
-BUSY_LABEL = {"edit": "AI が編集しています", "emblem-cron": "小元素を集めています"}
+# どの版面がいま何をしているかは、仕組み自身が Supabase の live_status 表に書く（推定はしない）。網页は live_boards() を 30 秒ごとに読む。
+#   ニュース収集（digest.live_mark）：探し始め「記事を探しています」→ 探し終えたらすぐ：新着なし＝消える／あり＝「新着 N 件 · 反映まであと約 N 分」
+#   AI 編集（digest live-edit / pick-images / publish）：「AI が編集しています」→「配図を選んでいます」→「反映を待っています」
+#   小元素の自動補完（emblem_fill.background）：処理中の版面に「小元素を集めています」→ 増えた版面だけ「反映を待っています」
+#   「あと約 N 分」はそれぞれの仕組みの最近の実際の長さ（runlog.typical）から。ページ生成（コードの変更）は帯なし。
+#   このページより前に始まった作業はもう反映済みなので出さない。
 
 BUSY_CSS = """
 .sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:4;pointer-events:none;overflow:visible}
@@ -2848,20 +2860,16 @@ BUSY_CSS = """
 BUSY_JS = """
 (function(){
   var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen)||0,live=[],MIN=60000;
-  function lastSlot(sl,now){var pv=0;for(var k=-1;k<=0;k++)sl.forEach(function(s){var t=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]);if(t<=+now&&t>pv)pv=t;});return pv;}
-  // ニュース収集：版面ごとの実際の状態（Supabase）。このページより前に始まった回はもう反映済み
   function read(){if(document.hidden||!B.url||!B.key)return;
-    fetch(B.url+'/rest/v1/rpc/live_status',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:'{}'})
+    fetch(B.url+'/rest/v1/rpc/live_boards',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:'{}'})
       .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){live=l||[];paint();}).catch(function(){});}
+  function left(eta,now){var l=eta-now;return l>MIN?'あと約 '+Math.ceil(l/MIN)+' 分':'まもなく反映';}
   function paint(){var now=Date.now(),on={};
-    function put(id,o){if(id&&(!on[id]||o.start<on[id].start))on[id]=o;}
-    live.forEach(function(x){var st=Date.parse(x.started_at),eta=Date.parse(x.eta_at)||0;if(st<GEN-MIN)return;
-      if(x.state==='fetch')put(B.ids[x.board],{start:st,text:'記事を探しています',pc:null});
-      else if(x.state==='found'){var left=eta-now;put(B.ids[x.board],{start:st,pc:eta>st?(now-st)/(eta-st):null,
-        text:'新着 '+x.found+' 件 · '+(left>MIN?'反映まであと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});}});
-    B.procs.forEach(function(p){var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return;
-      var left=pv+p.min*MIN-now;p.boards.forEach(function(id){put(id,{start:pv,pc:(now-pv)/(p.min*MIN),
-        text:p.label+' · '+(left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});});});
+    live.forEach(function(x){var id=B.ids[x.board],st=Date.parse(x.started_at),eta=Date.parse(x.eta_at)||0,text;
+      if(!id||st<GEN-MIN)return;   // このページより前に始まった作業はもう反映済み
+      if(x.proc==='collect')text=x.state==='fetch'?'記事を探しています':'新着 '+x.found+' 件 · '+(eta-now>MIN?'反映まであと約 '+Math.ceil((eta-now)/MIN)+' 分':'まもなく反映');
+      else text=(x.note||'更新しています')+(eta?' · '+left(eta,now):'');
+      var o={start:st,text:text,pc:eta>st?(now-st)/(eta-st):null};if(!on[id]||st<on[id].start)on[id]=o;});
     Array.prototype.forEach.call(document.querySelectorAll('section.sec[id]'),function(sec){var o=on[sec.id],bar=sec.querySelector(':scope>.busy');
       if(!o){if(bar)bar.remove();return;}
       if(!bar){bar=document.createElement('div');bar.className='busy';bar.setAttribute('role','status');
@@ -2881,20 +2889,10 @@ def _busy_tag(busy, generated):
     return f'<script type="application/json" id="wl-busy">{cfg}</script><script>{BUSY_JS}</script>'
 
 
-def busy_plan(todo=None, names=(), db=None):
-    """版面の「更新中」の帯の設定（BUSY_JS が読む）。todo = digest.backend_todo（AI 編集・小元素が次に処理する版面）；
-    names = 全部の関注項の名前（Supabase の版面名 → 版面の id）；db = {url, key}（公開の publishable key）。"""
-    by = {p["id"]: p for p in processes.PROCESSES}
-    todo = todo or {}
-    procs = []
-    for pid in ("edit", "emblem-cron"):
-        p = by.get(pid)
-        boards = [_wid(n) for n in (todo.get(pid) or {}).get("items", [])][:BUSY_BOARDS[pid]]
-        if p and boards:
-            procs.append({"id": pid, "label": BUSY_LABEL[pid], "min": BUSY_MIN[pid],
-                          "slots": [list(x) for x in processes.slots(p)], "boards": boards})
-    return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
-            "ids": {n: _wid(n) for n in names}, "procs": procs}
+def busy_plan(names=(), db=None):
+    """版面の「更新中」の帯の設定（BUSY_JS が読む）。names = 全部の関注項の名前（live_status の版面名 → 版面の id）；
+    db = {url, key}（公開の publishable key）。"""
+    return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "", "ids": {n: _wid(n) for n in names}}
 
 
 def _live_head(page):
@@ -3475,7 +3473,7 @@ def render_heat(analysis, works, updated):
                   key=lambda r: (-r[1]["score"], r[0]["name"]))
     today = analysis.get("today") or ""
     cards = "".join(_heat_card(w, h) for w, h in rows)
-    return f"""<!doctype html>
+    return _section_marks(f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -3484,6 +3482,7 @@ def render_heat(analysis, works, updated):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}</style>
+{_live_head("heat")}
 </head>
 <body>
 <div class="page">
@@ -3503,9 +3502,10 @@ def render_heat(analysis, works, updated):
 <section class="panel" id="method"><h2 class="sh"><span>計算方法</span><small>METHODOLOGY</small></h2>{_heat_method(analysis)}</section>
 </div>
 <script>{HEAT_PAGE_JS}</script>
+<script>{LIVE_JS}</script>
 </body>
 </html>
-"""
+""", updated)
 
 
 # ---------- 管理ページ（docs/admin.html）：見るだけ。口令なし・ボタンで何かを変えることはしない ----------
@@ -4046,8 +4046,14 @@ ADMIN_PAGE_JS = """
   tick();setInterval(tick,60000);
   // GitHub Actions：ワークフローごとに最新の実行（3 分ごとに読み直す。GitHub は 1 時間 60 回まで）
   var runs=document.getElementById('runs');
+  // GitHub の API はログインなしだと 1 時間 60 回まで。管理ページをいくつ開いていても、3 分以内に誰かが読んだ結果は使い回す（localStorage）
+  function actionsRuns(){var K='wl-actions',c=null;try{c=JSON.parse(localStorage.getItem(K)||'null');}catch(e){}
+    if(c&&Date.now()-c.t<170000)return Promise.resolve(c.j);
+    return fetch('https://api.github.com/repos/'+CFG.repo+'/actions/runs?per_page=60').then(function(r){if(!r.ok)throw 0;return r.json();})
+      .then(function(j){try{localStorage.setItem(K,JSON.stringify({t:Date.now(),j:{workflow_runs:(j.workflow_runs||[]).map(function(w){
+        return {path:w.path,html_url:w.html_url,status:w.status,conclusion:w.conclusion,created_at:w.created_at,event:w.event};})}}));}catch(e){}return j;});}
   function loadRuns(){
-  fetch('https://api.github.com/repos/'+CFG.repo+'/actions/runs?per_page=60').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
+  actionsRuns().then(function(j){
     var seen={},ul=el('ul','runs');
     Array.prototype.forEach.call(document.querySelectorAll('.nx .lvx'),function(x){x.remove();});
     Array.prototype.forEach.call(document.querySelectorAll('.nx.run'),function(x){x.classList.remove('run');});
