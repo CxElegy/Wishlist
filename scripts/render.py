@@ -964,6 +964,12 @@ def _older(stories, today, more=0, texts=()):
             f'<div class="grid">{cards}</div>{_brief(texts)}</details>')
 
 
+def _spam(title):
+    """垃圾页（digest.is_spam）。収集・出刊で落としているが、古い号に残ったものもページに出さない。"""
+    import digest  # digest が render を import しているので、使うときに読む
+    return digest.is_spam(title)
+
+
 def collect(issues, order=None):
     """把各期按作品汇总：外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。
     作品顺序固定：先按板块（游戏 / 影视 / 运动 / 好物 / 其他），同板块内按 order（items.yaml 的顺序）。
@@ -982,7 +988,7 @@ def collect(issues, order=None):
             if w is None:  # 已经从关注清单里删掉的不再显示
                 continue
             for st in b.get("stories") or []:
-                if st["url"] in w["_seen"]:
+                if st["url"] in w["_seen"] or _spam(st.get("headline", "")):
                     continue
                 w["_seen"].add(st["url"])
                 w["stories"].append({**st, "_issue": issue["date"], "_work": b["name"],
