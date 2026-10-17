@@ -1,0 +1,50 @@
+{
+ "changed": true,
+ "checked": "2026-10-17T01:39:06+00:00",
+ "jobs": {
+  "edit": {
+   "claude": true,
+   "items": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "d685f91b6989",
+   "why": "未編集の記事 300 件（18 版面）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "why": "全部そろっているか、24 時間以内に失敗したものだけ"
+  },
+  "photos": {
+   "claude": true,
+   "items": [
+    "2",
+    "3",
+    "4"
+   ],
+   "need": true,
+   "sig": "9e3e0814dc08",
+   "why": "写真 3 枚"
+  }
+ }
+}
