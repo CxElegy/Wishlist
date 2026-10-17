@@ -28,12 +28,11 @@
    "target": 6
   },
   "FROM": {
-   "at": "2026-10-17T00:38:31+00:00",
+   "at": "2026-10-17T00:48:11+00:00",
    "have": 2,
    "kind": "character",
-   "note": "3 枚足した。残りの候補 4 枚は自動で決められないので一覧で確かめる",
-   "sheet": "/tmp/wishlist-emblem/FROM.jpg",
-   "state": "review",
+   "note": "処理中",
+   "state": "running",
    "target": 6,
    "tried": {
     "Web 画像検索": 8,
@@ -50,9 +49,10 @@
    "target": 2
   },
   "ILLIT": {
+   "at": "2026-10-17T00:48:11+00:00",
    "have": 2,
    "kind": "group",
-   "note": "順番待ち",
+   "note": "処理中",
    "state": "running",
    "target": 5
   },
@@ -134,19 +134,19 @@
    "target": 1
   },
   "周杰伦": {
+   "at": "2026-10-17T00:48:11+00:00",
    "have": 3,
    "kind": "person",
-   "note": "順番待ち",
+   "note": "処理中",
    "state": "running",
    "target": 6
   },
   "哈利波特剧集": {
-   "at": "2026-10-17T00:38:30+00:00",
+   "at": "2026-10-17T00:48:11+00:00",
    "have": 2,
    "kind": "character",
-   "note": "0 枚足した。残りの候補 1 枚は自動で決められないので一覧で確かめる",
-   "sheet": "/tmp/wishlist-emblem/e62bf5cd.jpg",
-   "state": "review",
+   "note": "処理中",
+   "state": "running",
    "target": 6,
    "tried": {
     "Web 画像検索": 4,
@@ -203,15 +203,9 @@
   }
  },
  "last_run": {
-  "at": "2026-10-17T00:33:04+00:00",
-  "done": [
-   "漫威电影",
-   "哈利波特剧集",
-   "FROM",
-   "Vaundy"
-  ],
-  "end": "2026-10-17T00:38:58+00:00",
-  "minutes": 4.0,
+  "at": "2026-10-17T00:48:11+00:00",
+  "done": [],
+  "minutes": 38.0,
   "workers": 4
  },
  "started": "2026-10-16T23:48:04+00:00",
