@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-17T05:19:29+00:00",
+ "checked": "2026-10-17T05:29:54+00:00",
  "jobs": {
   "edit": {
    "claude": true,
@@ -8,11 +8,13 @@
     "A2O LITE",
     "The Mandalorian",
     "チェーンソーマン",
-    "三星手机"
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
    ],
    "need": true,
-   "sig": "cd681c95149c",
-   "why": "未編集の記事 5 件（4 版面）"
+   "sig": "c040c7fc5b52",
+   "why": "未編集の記事 8 件（6 版面）"
   },
   "emblem": {
    "claude": false,
@@ -22,13 +24,13 @@
    "waiting": [
     "Astrae Oratio",
     "Vaundy",
-    "チェーンソーマン",
-    "漫威电影",
     "哈利波特剧集",
-    "A2O LITE",
     "FROM",
     "ILLIT",
-    "The Mandalorian"
+    "The Mandalorian",
+    "チェーンソーマン",
+    "漫威电影",
+    "A2O LITE"
    ],
    "why": "失敗 9 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 20:12 から）"
   },
