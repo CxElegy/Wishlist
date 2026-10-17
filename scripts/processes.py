@@ -94,7 +94,8 @@ PROCESSES = [
             {"id": "b6", "kind": "step", "lane": "ai", "title": "要確認を目で選ぶ",
              "text": "AI が一覧（/tmp/wishlist-emblem/<名>.jpg）を見て、本人・本作のものだけ番号で --commit。広告・別人・白紙は選ばない。"},
             {"id": "b7", "kind": "store", "lane": "repo", "title": "state/emblem_progress.json",
-             "text": "版面ごとの状態・枚数・試した取り方・最近の結果、全体の開始時刻と最近の実行。1 版面ごとに保存。"},
+             "text": "版面ごとの状態・枚数・試した取り方・最近の結果、全体の開始時刻と最近の実行。1 版面ごとに保存。"
+                     "1 行ずつの記録は state/log/emblem.json（管理ページ「バックグラウンド → ログ」）。"},
             {"id": "b8", "kind": "step", "lane": "ai", "title": "render して main に push",
              "text": "items.yaml・docs・state をコミット。網页と管理ページの進捗が更新される。"},
         ],

@@ -1774,7 +1774,38 @@ def admin_data(items, issues, analysis, tz, updated):
                          "when": t.strftime("%m/%d %H:%M") if (t := stamp(r.get("created_at"))) else ""} for r in recent]}
     run = emblem_progress(items, tz)
     backend_cells(items, rows, inbox[-1] if inbox else None, run)
-    return {"pipeline": pipeline, "items": rows, "votes": votes, "emblem_run": run}
+    return {"pipeline": pipeline, "items": rows, "votes": votes, "emblem_run": run,
+            "todo": backend_todo(items, rows, run), "log": backend_log(tz)}
+
+
+def backend_todo(items, rows, run):
+    """「待ち行列」：次の回にそれぞれの仕組みが何をするか（版面の名前つき）。"""
+    edit = [r for r in rows if (r.get("bg") or {}).get("edit", {}).get("state") == "wait"]
+    design = [r["name"] for r in rows if (r.get("bg") or {}).get("design", {}).get("state") == "wait"]
+    n_new = sum(int(re.search(r"\d+", r["bg"]["edit"]["text"]).group()) for r in edit if re.search(r"\d+", r["bg"]["edit"]["text"]))
+    queue = run.get("queue") or []
+    review = [n for n, x in (run.get("items") or {}).items() if x["state"] == "review"]
+    return {
+        "collect": {"text": f"全 {len(items)} 版面の記事を集める", "items": []},
+        "edit": {"text": (f"新しい記事 {n_new} 件（{len(edit)} 版面）を編集" if edit else "編集する新着なし")
+                 + (f" · 版面の設計 {len(design)} 件" if design else ""), "items": [r["name"] for r in edit]},
+        "emblem-cron": {"text": (f"足りない {len(queue)} 版面を順に" if queue else "全部そろっている")
+                        + (f" · 要確認 {len(review)}" if review else ""), "items": queue},
+        "photos": {"text": "受付の写真があれば認識して愿望清单へ", "items": []},
+    }
+
+
+def backend_log(tz, n=40):
+    """実行ログ（state/log/*.json）を新しい順に。時刻は表示用に現地時間へ。"""
+    import runlog
+    out = []
+    for r in runlog.recent(n):
+        try:
+            when = dt.datetime.fromisoformat(r["at"]).astimezone(tz).strftime("%m/%d %H:%M")
+        except (KeyError, ValueError):
+            when = ""
+        out.append({"when": when, "proc": r["proc"], "name": r["name"], "level": r.get("level", "info"), "text": r.get("text", "")})
+    return out
 
 
 DESIGN_KEYS = (("motif", "テーマ"), ("theme", "配色"))   # like_fx は書かなければテーマの演出なので要らない
@@ -2323,6 +2354,50 @@ def repair_images():
     write_page()
 
 
+def _inbox_counts(days=3):
+    """最近の inbox の版面ごとの記事数（収集の前後で比べて、新着の数をログに残す）。"""
+    out = {}
+    for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-days:]:
+        for b in (load_json(path) or {}).get("items", []):
+            out[b.get("name")] = out.get(b.get("name"), 0) + len(b.get("entries") or [])
+    return out
+
+
+def logged_ingest():
+    """収集して、新着の数を実行ログ（state/log/collect.json）に書く。"""
+    import runlog
+    before = _inbox_counts()
+    try:
+        path = ingest()
+    except Exception as e:
+        runlog.add("collect", f"収集に失敗：{str(e)[:120]}", "error")
+        raise
+    after = _inbox_counts()
+    new = {k: v - before.get(k, 0) for k, v in after.items() if v > before.get(k, 0)}
+    top = "、".join(f"{k} {v}" for k, v in sorted(new.items(), key=lambda kv: -kv[1])[:5])
+    runlog.add("collect", f"新着 {sum(new.values())} 件（{len(new)} 版面）" + (f"：{top}" if top else ""),
+               "ok" if new else "info", count=sum(new.values()))
+    return path
+
+
+def logged_publish(path=None):
+    """出刊して、実行ログに書く（Actions の自動出刊は publish、Claude の AI 編集は edit に分けて書く）。"""
+    import os
+    import runlog
+    proc = "publish" if os.environ.get("GITHUB_ACTIONS") else "edit"
+    latest = path or (sorted(INBOX_DIR.glob("????-??-??.json")) or [None])[-1]
+    try:
+        publish(path)
+    except Exception as e:
+        runlog.add(proc, f"出刊に失敗：{str(e)[:120]}", "error")
+        raise
+    if latest:
+        latest = pathlib.Path(latest)
+        edit = load_json(INBOX_DIR / f"{latest.stem}.edit.json")
+        n = len([k for k in (edit or {}) if not k.startswith("_")])
+        runlog.add(proc, f"{latest.stem} を出刊" + (f"（AI 編集 {n} 版面）" if edit else "（AI 編集なし・キーワードの規則）"), "ok")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
@@ -2344,7 +2419,7 @@ def main():
     elif args.step == "render":
         write_page()
     elif args.step == "ingest":
-        ingest()
+        logged_ingest()
         update_heat()
         sync_db()
     elif args.step == "audit-match":
@@ -2355,7 +2430,7 @@ def main():
     elif args.step == "sync-db":
         sync_db()
     elif args.step == "publish":
-        publish()
+        logged_publish()
     elif args.step == "notify-urgent":
         import notify
         notify.urgent(pages_url(load_config()[0]))
@@ -2382,10 +2457,10 @@ def main():
     else:
         take_item_requests()  # 设置页上新增的关注项先写进 items.yaml，这次就开始收集
         export_photos()  # 拍照加愿望：导出新照片给 Claude 定时任务处理
-        path = ingest()
+        path = logged_ingest()
         update_heat()
         if path:
-            publish(path)
+            logged_publish(path)
         sync_db()
 
 

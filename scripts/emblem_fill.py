@@ -43,6 +43,7 @@ import urllib.request
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import emblem  # noqa: E402
 import face_id  # noqa: E402
+import runlog  # noqa: E402
 from emblem import ROOT, inspect, small_url  # noqa: E402
 
 _last = {}
@@ -833,6 +834,11 @@ def fill_one(item, log=print):
     return {"state": "failed", "tried": tried, "note": f"{added} 枚足した。使える候補がもうない（{RETRY_HOURS} 時間後にもう一度）"}
 
 
+def fresh_have(item):
+    st = status(item)
+    return f"{st['have']}/{st['target']} 枚"
+
+
 def record(prog, item, result, now):
     """1 つの関注項の結果を進捗に書く。"""
     st = status(item)
@@ -851,7 +857,7 @@ def record(prog, item, result, now):
     return e
 
 
-def background(minutes, log=print, fill=None, clock=time.time, path=None):
+def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None):
     """定時の後台：時間の予算（分）の中で、足りない関注項を順に埋め、state/emblem_progress.json に進捗を残す。
     1 つ終わるごとに保存するので、途中で止まっても、それまでの結果は残る。"""
     fill = fill or fill_one
@@ -865,7 +871,10 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None):
     items = load_items()
     sync_progress(prog, items)
     save_progress(prog, path)
-    for item in due(prog, items, now):
+    queue = due(prog, items, now)
+    runlog.add("emblem", f"開始：予算 {minutes:g} 分・待ち {len(queue)} 版面（{'、'.join(i['name'] for i in queue[:4])}{' …' if len(queue) > 4 else ''}）",
+               log_dir=runlog_dir)
+    for item in queue:
         if clock() > deadline - MARGIN:
             log(f"時間切れ：残りは次の回に（予算 {minutes:g} 分）")
             break
@@ -876,6 +885,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None):
         except OutOfTime:
             log(f"時間切れ：「{item['name']}」の途中で止めた。次の回にやり直す")
             record(prog, item, {"state": "running", "note": "時間切れで途中まで（次の回に続き）"}, _now())
+            runlog.add("emblem", f"{item['name']}：時間切れで途中まで（次の回に続き）", "warn", log_dir=runlog_dir, item=item["name"])
             save_progress(prog, path)
             break
         except Exception as e:   # 1 つの失敗で全体を止めない
@@ -885,10 +895,14 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None):
         record(prog, fresh, result, _now())
         prog["last_run"]["done"].append(item["name"])
         log(f"  → {STATE_JA[result['state']]}：{result.get('note', '')}")
+        runlog.add("emblem", f"{item['name']}：{STATE_JA[result['state']]}（{fresh_have(fresh)}）{result.get('note', '')}",
+                   {"ok": "ok", "review": "warn", "failed": "error"}.get(result["state"], "info"), log_dir=runlog_dir, item=item["name"])
         save_progress(prog, path)
     _deadline[0] = None
     prog["last_run"]["end"] = _now()
     sync_progress(prog, load_items())
+    runlog.add("emblem", f"終了：{len(prog['last_run']['done'])} 版面を処理・そろっている {prog['summary']['ok']} / {prog['summary']['total']}",
+               "ok", log_dir=runlog_dir)
     save_progress(prog, path)
     return prog
 
@@ -951,6 +965,7 @@ def main():
         st = status(fresh)
         record(prog, fresh, {"state": "ok" if st["state"] == "ok" else "review",
                              "note": f"一覧から {len(picks)} 枚を選んだ（{st['have']} / {st['target']}）"}, _now())
+        runlog.add("emblem", f"{item['name']}：一覧から {len(picks)} 枚を選んだ（{st['have']}/{st['target']} 枚）", "ok", item=item["name"])
         save_progress(sync_progress(prog, load_items()))
     else:
         item = {**item, "_web": a.web or bool(a.query), "_query": a.query}

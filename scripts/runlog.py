@@ -1,0 +1,49 @@
+"""裏で動く仕組みの実行ログ（管理ページ「バックグラウンド → ログ」）。
+
+仕組みごとに別のファイル（state/log/<proc>.json）に書く。GitHub Actions と Claude の定時タスクが同じファイルに書くと、
+push のときにぶつかる（rebase の衝突）ので、書く人ごとに分ける：
+  collect  ニュース収集（GitHub Actions）
+  publish  出刊（GitHub Actions の自動出刊）
+  edit     AI 編集の出刊（Claude の定時タスク）
+  emblem   小元素の自動補完（Claude の定時タスク）
+各ファイルは新しい KEEP 件だけ残す。
+"""
+
+import datetime as dt
+import json
+import pathlib
+
+LOG_DIR = pathlib.Path(__file__).resolve().parent.parent / "state" / "log"
+KEEP = 60
+PROCS = {"collect": "ニュース収集", "publish": "出刊", "edit": "AI 編集", "emblem": "小元素の自動補完"}
+
+
+def _now():
+    return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+
+def load(proc, log_dir=None):
+    try:
+        data = json.loads(((log_dir or LOG_DIR) / f"{proc}.json").read_text(encoding="utf-8"))
+        return data if isinstance(data, list) else []
+    except (OSError, ValueError):
+        return []
+
+
+def add(proc, text, level="info", log_dir=None, **extra):
+    """1 行足す。level：info / ok / warn / error。失敗しても本体の処理は止めない。"""
+    try:
+        d = log_dir or LOG_DIR
+        rows = load(proc, d) + [{"at": _now(), "text": str(text)[:200], "level": level, **extra}]
+        d.mkdir(parents=True, exist_ok=True)
+        (d / f"{proc}.json").write_text(json.dumps(rows[-KEEP:], ensure_ascii=False, indent=0) + "\n", encoding="utf-8")
+    except OSError:
+        pass
+
+
+def recent(n=40, log_dir=None):
+    """全部の仕組みのログを新しい順に n 件。各行に proc（仕組みの id）と name（表示名）を付ける。"""
+    rows = []
+    for proc, name in PROCS.items():
+        rows += [{**r, "proc": proc, "name": name} for r in load(proc, log_dir)]
+    return sorted(rows, key=lambda r: r.get("at") or "", reverse=True)[:n]

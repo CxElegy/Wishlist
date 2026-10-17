@@ -16,6 +16,7 @@ import emblem_fill as ef  # noqa: E402
 import face_id  # noqa: E402
 import processes  # noqa: E402
 import render  # noqa: E402
+import runlog  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -147,9 +148,12 @@ class Background(unittest.TestCase):
         self.items = [dict(i) for i in self.ITEMS]
         self._load = ef.load_items
         ef.load_items = lambda: self.items
+        self._logdir = runlog.LOG_DIR
+        runlog.LOG_DIR = pathlib.Path(self.dir.name) / "log"   # 本物の state/log に書かない
 
     def tearDown(self):
         ef.load_items = self._load
+        runlog.LOG_DIR = self._logdir
         self.dir.cleanup()
 
     def test_sync_progress(self):
@@ -195,6 +199,12 @@ class Background(unittest.TestCase):
         again = ef.background(40, log=lambda m: None, fill=fill, path=self.path)
         self.assertEqual(seen, ["brand"])
         self.assertEqual(again["started"], saved["started"])
+        log = runlog.recent(50)
+        self.assertTrue(all(r["proc"] == "emblem" for r in log))
+        texts = [r["text"] for r in log]
+        self.assertTrue(any(t.startswith("開始：予算 40 分・待ち 3 版面") for t in texts))
+        self.assertTrue(any(t.startswith("zero：失敗") for t in texts))
+        self.assertEqual(next(r for r in log if r["text"].startswith("one：")).get("level"), "ok")
 
     def test_background_stops_when_out_of_time(self):
         seen = []
@@ -302,6 +312,20 @@ class Processes(unittest.TestCase):
 class Backend(unittest.TestCase):
     """管理ページ「バックグラウンド」：次の実行（定時）と、版面 × プロセスの表。"""
 
+    def test_runlog_keeps_recent_per_proc(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            for i in range(runlog.KEEP + 5):
+                runlog.add("collect", f"c{i}", log_dir=d)
+            runlog.add("emblem", "e", "warn", log_dir=d)
+            self.assertEqual(len(runlog.load("collect", d)), runlog.KEEP)
+            self.assertEqual(runlog.load("collect", d)[-1]["text"], f"c{runlog.KEEP + 4}")
+            rows = runlog.recent(3, d)
+            self.assertEqual(len(rows), 3)
+            self.assertEqual({r["proc"] for r in rows} <= {"collect", "emblem"}, True)
+            self.assertEqual(next(r for r in runlog.recent(100, d) if r["proc"] == "emblem")["name"], "小元素の自動補完")
+
     def test_slots(self):
         by = {p["id"]: p for p in processes.PROCESSES}
         self.assertEqual(processes.slots(by["edit"]), [[4, 43], [15, 43]])
@@ -340,8 +364,18 @@ class Backend(unittest.TestCase):
     def test_render(self):
         bg = {k: {"state": "wait", "text": "<x>"} for k in ("collect", "edit", "design", "emblem")}
         rows = [{"name": "A", "section": "游戏", "bg": bg}, {"name": "B", "section": "好物", "bg": {**bg, "emblem": {"state": "failed", "text": ""}}}]
-        out = render._admin_backend(rows)
+        todo = {"emblem-cron": {"text": "足りない 2 版面を順に", "items": ["<A>", "B"]}}
+        log = [{"when": "10/17 08:40", "proc": "emblem", "name": "小元素の自動補完", "level": "error", "text": "<b>x</b>"}]
+        out = render._admin_backend(rows, todo, log)
         self.assertIn('class="nxs"', out)
+        self.assertIn('id="bgq"', out)
+        self.assertIn('class="lg-error"', out)
+        self.assertIn("&lt;b&gt;x&lt;/b&gt;", out)
+        cfg = json.loads(out.split('id="bg-cfg">')[1].split("</script>")[0])
+        self.assertEqual(next(x for x in cfg if x["id"] == "emblem-cron")["items"], ["<A>", "B"])   # JS が textContent で入れる
+        self.assertTrue(all(x["slots"] for x in cfg))
+        self.assertIn('class="pbar"', out)
+        self.assertIn("まだ記録がありません", render._admin_backend(rows))
         for p in processes.PROCESSES:   # 定時か Actions で動くものは「次の実行」に出る（AI 編集と同じ回のものは出さない）
             shown = f'data-open="proc-{p["id"]}"' in out
             self.assertEqual(shown, not isinstance(p.get("schedule"), str) and bool(processes.slots(p) or p.get("workflow")), p["id"])
