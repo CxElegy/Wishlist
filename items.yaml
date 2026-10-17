@@ -537,7 +537,7 @@ items:
     wiki: ["en:Harry Potter (TV series)"]
 
   - name: ILLIT
-    icon: {image: "icons/illit.webp", kind: person, why: "グループ：メンバーの集合写真", source: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Illit_in_January_2026.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
+    icon: {image: "icons/illit.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Yunah", "Minju", "Moka", "Wonhee", "Iroha"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
@@ -1084,7 +1084,7 @@ items:
     subtitle: "演唱会"
 
   - name: "周杰伦"
-    icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：本人の顔写真", source: "https://upload.wikimedia.org/wikipedia/commons/9/9b/%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
+    icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：Spotify のアーティスト写真（顔を真ん中に）", source: "https://open.spotify.com/artist/2elBjNSdBE2Y3f0j1mjrql"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: 周杰倫
     motif: porcelain          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
@@ -1172,7 +1172,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
 
   - name: "A2O LITE"
-    icon: {image: "icons/a2o-lite.webp", kind: person, why: "グループ：デビューステージの集合写真", source: "http://news.yule.com.cn/uploadfile/2026/1016/20261016105851726.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
+    icon: {image: "icons/a2o-lite.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/0Vkn28k7P4K95Ce3knN0hQ"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["YOUNG", "HIMEKI", "VORA", "XILI", "RADA", "MERCI", "AYUNE", "OA", "AIJING"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：新人ガールズグループ
