@@ -643,7 +643,7 @@ def same_event(item, refs, entries, headline=""):
     return out[:SIBLINGS]
 
 
-def attach_media(stories, entries, cover, name="", stats=None, used=None, item=None):
+def attach_media(stories, entries, cover, name="", stats=None, used=None, langs=None, item=None):
     """给每条报道配链接和图（候选、检查和回退见 images.pick），没图的头条用作品封面。
     一条报道有好几个来源时，读者的好みの言語（langs：主言語 → 副言語，lang.order）の来源排前面，同じ言語なら国外来源排前面
     （链接和配图都先用它），中国大陆网站垫后。
@@ -2558,7 +2558,7 @@ def publish(inbox_path=None):
         if not stories and not pending and not any(f["changed"] for f in raw["facts"]):
             continue
         stories = [s for s in stories if not is_spam(s.get("headline", ""))]  # 收集后才进 inbox 的垃圾页（合并的旧版）也不出刊
-        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used, item)  # 原文已删的报道会被去掉
+        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used, langs, item)  # 原文已删的报道会被去掉
         stories = [s for s in stories if not is_spam(s.get("headline", ""), s.get("url", ""))]  # 还原后的网址里塞着广告的
         # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
         for d, e in zip(raw["entries"], entries):
