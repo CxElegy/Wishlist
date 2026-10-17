@@ -301,3 +301,41 @@ class Nav(unittest.TestCase):
         w = {"name": "M", "section": "影视", "stories": [], "_icon": "icons/marvel.webp", "_emblems": [{"image": "emblems/x-y.webp"}]}
         self.assertEqual(render._nav_icon(w), "icons/marvel.webp")        # icon（1 作品 1 枚）が emblem より先
         self.assertEqual(render._nav_icon({**w, "_icon": "javascript:x"}), "emblems/x-y.webp")   # 変な値は使わない
+
+class LiveUpdate(unittest.TestCase):
+    """開いたままのページに新しい内容を出す（render.LIVE_JS / stamp / version.json）。"""
+
+    def test_stamp_ignores_update_time(self):
+        a, va = render.stamp(f'<meta content="{render.VER_MARK}"><b>10.17 08:35</b>x', "10.17 08:35")
+        b, vb = render.stamp(f'<meta content="{render.VER_MARK}"><b>10.17 10:35</b>x', "10.17 10:35")
+        c, vc = render.stamp(f'<meta content="{render.VER_MARK}"><b>10.17 10:35</b>y', "10.17 10:35")
+        self.assertEqual(va, vb)
+        self.assertNotEqual(va, vc)
+        self.assertIn(f'content="{va}"', a)
+        self.assertNotIn(render.VER_MARK, a)
+
+    def test_admin_has_live_and_panel_marks(self):
+        out = render.render_admin({"pipeline": {}, "items": [], "votes": {}}, {}, "10.17 08:35")
+        self.assertIn('name="wl-ver" data-page="admin"', out)
+        self.assertIn("version.json", out)
+        self.assertRegex(out, r'<section class="panel" id="status" data-h="[0-9a-f]{8}">')
+        again = render.render_admin({"pipeline": {}, "items": [], "votes": {}}, {}, "10.17 10:35")
+        mark = lambda h, i: re.search(rf'id="{i}" data-h="(\w+)"', h).group(1)
+        self.assertEqual(mark(out, "backend"), mark(again, "backend"))  # 時刻だけ違うパネルは「更新」にしない
+
+    def test_live_css_uses_tokens(self):
+        self.assertNotRegex(render.LIVE_CSS, r"#[0-9A-Fa-f]{6}\b")
+
+    def test_busy_plan(self):
+        plan = render.busy_plan({"edit": {"items": ["GTA 6"]}, "emblem-cron": {"items": []}})
+        by = {p["id"]: p for p in plan["procs"]}
+        self.assertEqual(by["collect"]["boards"], "*")
+        self.assertEqual(by["collect"]["wf"], "digest.yml")
+        self.assertEqual(by["edit"]["boards"], [render._wid("GTA 6")])
+        self.assertNotIn("emblem-cron", by)   # 待ち行列が空なら帯は出さない
+        self.assertTrue(by["edit"]["slots"])
+        self.assertNotRegex(render.BUSY_CSS, r"#[0-9A-Fa-f]{6}\b")   # 色は版面の --acc / --bg / --fg だけ
+        tag = render._busy_tag(plan, "2026-10-17T00:00:00+00:00")
+        self.assertIn('id="wl-busy"', tag)
+        self.assertIn('"gen": "2026-10-17T00:00:00+00:00"', tag)
+        self.assertEqual(render._busy_tag({"procs": []}, ""), "")

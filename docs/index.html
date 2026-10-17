@@ -816,12 +816,35 @@ html{scroll-behavior:smooth}
 .nav .navwish{margin:8px 8px 0 0}
 }</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer crossorigin="anonymous"></script>
+<meta name="wl-ver" data-page="index" content="3e9d49355982"><style>
+.wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
+ transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
+ font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
+.wl-live[hidden]{display:none}
+.wl-live span{flex:1 1 auto;min-width:0}
+.wl-live button{flex:none;border:0;cursor:pointer;background:var(--gold);color:var(--ink);padding:4px 12px;font:700 13px/1.4 var(--font-sans)}
+.wl-live .x{background:none;color:var(--card);padding:4px 6px}
+.fresh{outline:3px solid var(--gold);outline-offset:3px}
+.fresh-tag{position:absolute;top:6px;right:6px;z-index:6;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
+ box-shadow:2px 2px 0 var(--ink);font:900 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.08em;pointer-events:none}
+section.fresh{position:relative}
+@media (prefers-reduced-motion:no-preference){.fresh{animation:wlfresh 1.6s ease-out 3}}
+@keyframes wlfresh{50%{outline-color:var(--rose)}}
+</style><style>
+.sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:7;pointer-events:none;overflow:visible}
+.busy .bf{position:absolute;left:0;top:0;bottom:0;width:var(--bp,0%);background:color-mix(in srgb,var(--acc) 45%,transparent);transition:width 1s}
+.busy .br{position:absolute;top:0;bottom:0;width:24%;left:0;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
+.busy .bt{position:absolute;left:18px;top:-10px;white-space:nowrap;background:var(--bg);color:var(--fg);border:1.5px solid var(--acc);
+ padding:0 8px;font:700 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.04em}
+@media (prefers-reduced-motion:no-preference){.busy .br{animation:wlbusy 1.8s ease-in-out infinite alternate}}
+@keyframes wlbusy{to{left:76%}}
+</style>
 <script>if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('emb-js')</script>
 </head>
 <body>
 <div class="page">
 <header class="mast">
-<div class="mtitle"><h1>ウォッチリスト通信</h1><span class="stamp">2 時間ごとに自動更新</span></div>
+<div class="mtitle"><h1>ウォッチリスト通信</h1><span class="stamp">新着は開いたまま自動で表示</span></div>
 <div class="tools"><div class="meta"><small>更新</small><b>10.17 10:00</b></div>
 <a class="mastwish" href="wishlist.html"><b>♥</b><span>欲しい物リスト</span><small>欲しい 7 件</small></a>
 <a class="mastset" href="settings.html" title="設定">⚙ 設定</a></div>
@@ -1409,6 +1432,84 @@ window.likeFx = (() => {
     else if (en.boundingClientRect.top > 0 && el.classList.contains('in')) { el.classList.remove('in'); el.classList.add('out'); }
   }), { rootMargin: '0px 0px -15% 0px', threshold: .5 });
   els.forEach(el => io.observe(el));
+})();
+</script>
+<script>
+(function(){
+  var M=document.querySelector('meta[name="wl-ver"]');if(!M||!window.fetch||!window.JSON)return;
+  var PAGE=M.getAttribute('data-page'),VER=M.content,KEY='wl-live:'+PAGE,EVERY=60*1000,IDLE=20*1000;
+  var ss={get:function(k){try{return JSON.parse(sessionStorage.getItem(k)||'null');}catch(e){return null;}},
+          set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
+  var touched=Date.now(),pending=null,bar=null;
+  ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
+  function keys(){var o={};Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){o[a.getAttribute('href')]=1;});return o;}
+  function marks(){var o={};Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){o[s.id]=s.getAttribute('data-h');});return o;}
+  function anchor(){var l=document.querySelectorAll('section[id]');for(var i=0;i<l.length;i++){var r=l[i].getBoundingClientRect();if(r.bottom>0)return [l[i].id,r.top];}return null;}
+  function toast(msg,act){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
+    bar.textContent='';var t=document.createElement('span');t.textContent=msg;bar.appendChild(t);
+    if(act){var b=document.createElement('button');b.type='button';b.textContent='今すぐ表示';b.onclick=go;bar.appendChild(b);}
+    var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label','閉じる');x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
+    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},8000);}
+  // 読み直したあと：見ていた場所に戻し、増えた記事・変わったパネルに印を付ける
+  var was=ss.get(KEY);ss.del(KEY);
+  if(location.search.indexOf('wlv=')>=0&&history.replaceState)history.replaceState(null,'',location.pathname+location.hash);
+  if(was){
+    if(was.to&&was.to!==VER&&!was.retry){was.retry=1;ss.set(KEY,was);location.replace(location.pathname+'?wlv='+encodeURIComponent(was.to)+location.hash);return;}
+    if(was.to&&was.to!==VER)ss.set(KEY+':skip',was.to);  // CDN がまだ古い：この版は諦めて次の版を待つ
+    function to(y){try{scrollTo({top:y,behavior:'instant'});}catch(e){scrollTo(0,y);}}
+    function back(){var s=was.at&&document.getElementById(was.at[0]);if(s)to(s.getBoundingClientRect().top+pageYOffset-was.at[1]);else if(was.y)to(was.y);}
+    if('scrollRestoration' in history)history.scrollRestoration='manual';
+    back();addEventListener('load',back);
+    var n=0;
+    Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){if(was.keys&&!was.keys[a.getAttribute('href')]){var c=a.closest('article');
+      if(c&&!c.classList.contains('fresh')){c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='たった今';c.appendChild(t);n++;}}});
+    var m=0;
+    if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
+      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='更新';s.appendChild(t);m++;}});
+    toast(n?'新しい記事が '+n+' 件 届きました':m?m+' か所が新しくなりました':'最新の内容にしました');
+  }
+  function busy(){var a=document.activeElement;return !!document.querySelector('dialog[open]')||!!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))||!!a&&a.isContentEditable;}
+  function go(){if(!pending)return;ss.set(KEY,{to:pending,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});
+    if('scrollRestoration' in history)history.scrollRestoration='manual';location.reload();}
+  function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
+  function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
+      var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
+      if(pending!==v){pending=v;toast('新しい内容があります（操作をやめると自動で表示）',true);}maybe();}).catch(function(){});}
+  setInterval(check,EVERY);setInterval(maybe,5000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
+  setTimeout(check,3000);
+})();
+</script>
+<script type="application/json" id="wl-busy">{"repo": "CxElegy/Wishlist", "procs": [{"id": "collect", "label": "記事を集めています", "min": 9, "wf": "digest.yml", "slots": [[0, 17], [2, 17], [4, 17], [6, 17], [8, 17], [10, 17], [12, 17], [14, 17], [16, 17], [18, 17], [20, 17], [22, 17]], "boards": "*"}, {"id": "render", "label": "ページを作り直しています", "min": 2, "wf": "render.yml", "slots": [], "boards": "*"}, {"id": "edit", "label": "AI が編集しています", "min": 30, "wf": "", "slots": [[4, 43], [15, 43]], "boards": ["w-bf928230", "w-34f2ed9f", "w-c2dcfb63", "w-79b3c280", "w-3f993d04", "w-edd2b6ae", "w-65d60fb4", "w-5417e9f1"]}, {"id": "emblem-cron", "label": "小元素を集めています", "min": 45, "wf": "", "slots": [[0, 40], [4, 40], [8, 40], [12, 40], [16, 40], [20, 40]], "boards": ["w-f303ad09", "w-9cb26dba", "w-d3621ce3", "w-edd2b6ae", "w-5417e9f1", "w-79b3c280", "w-130724c0", "w-bf928230"]}], "gen": "2026-10-17T01:00:19+00:00"}</script><script>
+(function(){
+  var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen),act=null,MIN=60000;
+  function two(n){return ('0'+n).slice(-2);}
+  function lastSlot(sl,now){var pv=0;for(var k=-1;k<=0;k++)sl.forEach(function(s){var t=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]);if(t<=+now&&t>pv)pv=t;});return pv;}
+  // GitHub Actions：ワークフローごとに、いま動いている回の開始時刻と、最近の成功した回の長さの中央値
+  function actions(){if(document.hidden)return;fetch('https://api.github.com/repos/'+B.repo+'/actions/runs?per_page=30').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
+    var o={};(j.workflow_runs||[]).forEach(function(w){var f=(w.path||'').split('/').pop(),x=o[f]||(o[f]={len:[]});
+      if(w.status!=='completed'){if(!x.run)x.run={start:Date.parse(w.run_started_at||w.created_at),queued:w.status!=='in_progress'};}
+      else if(w.conclusion==='success'&&w.run_started_at&&w.updated_at)x.len.push(Date.parse(w.updated_at)-Date.parse(w.run_started_at));});
+    Object.keys(o).forEach(function(f){var l=o[f].len.sort(function(a,b){return a-b;});o[f].est=l.length?l[l.length>>1]+MIN:0;});
+    act=o;paint();}).catch(function(){act=null;paint();});}
+  function state(p,now){
+    if(p.wf&&act){var a=act[p.wf];if(!a||!a.run)return null;return {start:a.run.start,est:a.est||p.min*MIN,queued:a.run.queued};}
+    if(p.wf&&!p.slots.length)return null;
+    var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return null;
+    return {start:pv,est:p.min*MIN};}
+  function paint(){var now=Date.now(),on={};
+    B.procs.forEach(function(p){var s=state(p,now);if(!s)return;
+      (p.boards==='*'?Array.prototype.map.call(document.querySelectorAll('section.sec[id]'),function(x){return x.id;}):p.boards).forEach(function(id){
+        var cur=on[id];if(!cur||s.start<cur.s.start)on[id]={p:p,s:s};});});
+    Array.prototype.forEach.call(document.querySelectorAll('section.sec[id]'),function(sec){var o=on[sec.id],bar=sec.querySelector(':scope>.busy');
+      if(!o){if(bar)bar.remove();return;}
+      if(!bar){bar=document.createElement('div');bar.className='busy';bar.setAttribute('role','status');
+        bar.innerHTML='<i class="bf"></i><i class="br"></i><span class="bt"></span>';sec.insertBefore(bar,sec.firstChild);}
+      var left=o.s.start+o.s.est-now,pc=o.s.queued?0:Math.max(3,Math.min(97,(now-o.s.start)/o.s.est*100));
+      bar.style.setProperty('--bp',pc.toFixed(1)+'%');
+      bar.querySelector('.bt').textContent=o.p.label+' · '+(o.s.queued?'順番待ち':left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映');});}
+  paint();setInterval(paint,20000);actions();setInterval(actions,120000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)actions();});
 })();
 </script>
 </body>
