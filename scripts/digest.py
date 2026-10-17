@@ -1778,6 +1778,35 @@ def emblem_status(item):
     return {**st, "kind_ja": emblem_fill.KIND_JA[st["kind"]], "shapes": shapes}
 
 
+def edit_diff(inbox_path):
+    """管理ページ「AI 編集の前後」：その日の収集（inbox）と AI 編集（edit.json）を比べる。
+    作品ごとに、集めた件数・記事に使った件数（refs）・載せた記事の本数・hero / lead・AI が選んだ配図。"""
+    if not inbox_path:
+        return None
+    raw = load_json(inbox_path) or {}
+    edit_path = inbox_path.with_name(f"{inbox_path.stem}.edit.json")
+    edit = load_json(edit_path) if edit_path.exists() else None
+    if not edit:
+        return {"date": inbox_path.stem, "edited": False, "rows": []}
+    rows = []
+    for block in raw.get("items", []):
+        name = block.get("name")
+        ns = {x.get("n") for x in block.get("entries") or []}
+        total = len(block.get("entries") or [])
+        stories = [x for x in (edit.get(name) or []) if isinstance(x, dict)]
+        used = {r for x in stories for r in x.get("refs") or [] if r in ns}
+        rows.append({"name": name, "total": total, "used": min(len(used), total), "stories": len(stories),
+                     "hero": sum(1 for x in stories if x.get("weight") == "hero"),
+                     "lead": sum(1 for x in stories if x.get("weight") == "lead"),
+                     "images": sum(1 for x in stories if x.get("image")),
+                     "new": max(0, total - int((edit.get("_covered") or {}).get(name) or 0))})
+    rows.sort(key=lambda r: (-r["total"], r["name"]))
+    return {"date": inbox_path.stem, "edited": True, "rows": rows,
+            "total": sum(r["total"] for r in rows), "used": sum(r["used"] for r in rows),
+            "stories": sum(r["stories"] for r in rows), "images": sum(r["images"] for r in rows),
+            "hero": sum(r["hero"] for r in rows)}
+
+
 def admin_data(items, issues, analysis, tz, updated):
     """管理ページ（docs/admin.html）に書き込む数字：収集・編集の状況、作品ごとの記事数と未設定の項目、投票。"""
     today = dt.datetime.now(tz).date()
@@ -1850,6 +1879,7 @@ def admin_data(items, issues, analysis, tz, updated):
     run = emblem_progress(items, tz)
     backend_cells(items, rows, inbox[-1] if inbox else None, run)
     return {"pipeline": pipeline, "items": rows, "votes": votes, "emblem_run": run,
+            "edit_diff": edit_diff(inbox[-1] if inbox else None),
             "todo": backend_todo(items, rows, run), "log": backend_log(tz), "resources": backend_resources(tz)}
 
 

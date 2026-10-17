@@ -160,6 +160,7 @@
 只看不改、不用口令（`render.render_admin` + `digest.admin_data`）：运行状况（最新一期、收集条数、哪几天还没 AI 编辑、几天没新消息的关注项、周报）、
 打开时实时读取的 GitHub Actions 结果 / 设置页的关注项请求（`list_item_requests()`）/ 照片收件箱（`get_photo_inbox()`）、
 各关注项的篇幅・7 天记事数・速報数・最新记事・話題度・缺的字段、投票统计（来自 `state/feedback.json`）。要加新数字就在 `admin_data` 里算、在 `render_admin` 里显示。
+- **AI 編集の前後**（運行状況の下）：最新号で、作品ごとに「集めた件数（横棒）のうち AI 編集が記事に使った件数（青）→ 載せた記事の本数・重大／頭・未編集の新着」を 1 枚の図で見せる（`digest.edit_diff` + `render._admin_edit_diff`，`tests/test_edit_diff.py`）。
 - **バックグラウンド**（管理ページ最上部）：裏で動く仕組みの「次の実行」（前回・次回・あと何分，页面打开时按 `processes.py` 的 `schedule` 实时算）
   + 版面（行）× 流程（列：収集・AI 編集・版面の設計・小元素）的状态表（済 / 待ち / 要確認 / 失敗，小元素写排第几）。数据在 `digest.backend_cells`。
   还有「待ち行列」（之后 24 小时的每次运行、那次要处理哪些版面，`digest.backend_todo`）和「ログ」（`scripts/runlog.py`：
