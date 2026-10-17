@@ -1891,12 +1891,6 @@
   "target": 720,
   "v": 2
  },
- "https://wimg.heraldcorp.com/news/cms/2026/10/15/news-p.v1.20261015.543e4e6991ba4abab5f8aafecb6b4372_P1.jpg": {
-  "w": 1280,
-  "h": 853,
-  "target": 1280,
-  "v": 2
- },
  "https://www.4gamer.net/games/970/G097078/20260831002/SS/001.jpg": {
   "w": 1200,
   "h": 680,
@@ -2042,6 +2036,19 @@
   "out": [
    700,
    393
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.iY3U3dVABvvQ_dK4UJF68g&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 1280,
+  "v": 2,
+  "blur": 0.459,
+  "local": "pics/1a9fc515f67a8146.webp",
+  "out": [
+   1280,
+   862
   ],
   "why": "Bing の小さい縮小画像"
  },
