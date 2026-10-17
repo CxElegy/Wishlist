@@ -40,3 +40,21 @@ class EventMergeTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FrontPickTest(unittest.TestCase):
+    """トップのポスター＋写真の壁：同じ作品の同じ出来事・同じ写真を 2 回出さない（2026-10-17 漫威の予告編が 2 回並んだ）。"""
+
+    def test_one_per_work_first_and_no_same_event(self):
+        import render
+        mv = {"name": "漫威电影", "keywords": ["Avengers: Doomsday"], "match": ["Marvel", "Avengers", "Doomsday"]}
+        gta = {"name": "GTA 6", "keywords": ["GTA 6"], "match": ["GTA"]}
+        s = lambda t, img: {"headline": t, "image": img}
+        ranked = [(mv, s("A New ‘Avengers: Doomsday’ Trailer Just Hit ScreenX Theaters", "a.jpg")),
+                  (mv, s("Avengers: Doomsday gets a brand new trailer update", "b.jpg")),
+                  (gta, s("GTA 6 locks in Nov. 19", "c.jpg")),
+                  (mv, s("Where Can F1 Fans Find the Marvel Avengers: Doomsday Livery", "d.jpg")),
+                  (gta, s("GTA 6 new screenshots", "c.jpg"))]          # 同じ写真
+        got = [x["headline"] for _, x in render._front_pick(ranked, 10)]
+        self.assertEqual(got, ["A New ‘Avengers: Doomsday’ Trailer Just Hit ScreenX Theaters", "GTA 6 locks in Nov. 19",
+                               "Where Can F1 Fans Find the Marvel Avengers: Doomsday Livery"])
