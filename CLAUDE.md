@@ -108,8 +108,16 @@
   每个仕组み写自己的 `state/log/<proc>.json`——收集・出刊（Actions）、AI 编辑、小元素补全——分开写避免 push 冲突）。进度条带条纹动画（减少动画设定时不动）。
   新加定时的仕组み：在 `PROCESSES` 里写 `schedule`（UTC 的 (时, 分)），在 `backend_todo` 写它下次做什么，运行时 `runlog.add("<proc>", "…")`；
   要加一列就在 `render.BG_COLS` 和 `backend_cells` 各加一项。
-- **プロセス一覧**（管理ページ上部）：站点背后的每个仕组み（小元素の選定・ニュース収集・AI 編集・ページ生成・設定ページの依頼・写真から愿望…）是 `scripts/processes.py` 里的一项数据，
-  点缩图就打开详细的流程（手顺、判断的条件、从哪里取、在哪里运行、费用）。**新加一个仕组み就在 `PROCESSES` 里加一项**，管理页自动出缩图和流程；改了某个仕组み的逻辑，也同步改这里的流程。
+- **リソース・並列と制限**（バックグラウンドの中）：容量（リポジトリ・公开页 vs 1GB 上限）、各仕组み最近一次运行时的服务器（内存・磁盘・CPU・用时，
+  `scripts/resources.py` 的 `snapshot()` 附在 runlog 里）、トークン（Claude API 自动数；定时任务的 Claude 结束时自己写：
+  `python scripts/runlog.py emblem "…" --tokens N`；订阅额度的余量程序读不到，只能看 https://claude.ai/settings/usage ）。
+  并行：收集 6 本（`digest.COLLECT_WORKERS`，同一网站的间隔在线程间共享 `sources._pace`）、小元素 4 本（`emblem_fill.WORKERS`，
+  写 items.yaml・抠图用 `WRITE_LOCK` 一本一本来）。限制写在 `processes.LIMITS`，改并行数时一起改。
+- **時刻**：网页上的时间都用 `settings.display_timezone`（现在 Asia/Tokyo，用户住在日本；以后多用户按各自时区）。
+  `settings.timezone`（Asia/Shanghai）只管「每天一期」的日期分界——AI 编辑的定时任务按北京时间判断「今天」，要改得两边一起改。
+- **全体の構成**（管理ページ，原来的プロセス缩图一览）：整体架构图——外部服务・GitHub Actions・仓库・Pages・Claude 定时任务・Supabase・Discord・你，
+  编号箭头是数据流向（`processes.ARCH` / `EDGES`，线由 JS 按部件位置画；手机上看「矢印の一覧」）。点任务的框打开那个仕组み的详细流程（`PROCESSES` 的 flow）。
+  **新加一个仕组み就在 `PROCESSES` 里加一项，再放进 `ARCH` 的某个框、在 `EDGES` 连上线**；改了某个仕组み的逻辑，也同步改它的流程。
 - **小元素（emblem）**：每个版面右上的贴纸。规矩（种类 → 目标枚数 → 取法的顺序 → 本人确认）在 `scripts/emblem_fill.py`、`scripts/face_id.py`，说明在 `TEMPLATES.md`；
   管理页「小元素」列出每个版面的种类・目标・现有枚数，没到目标的 AI 编辑会自动补（`python scripts/emblem_fill.py --audit`）。
 

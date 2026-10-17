@@ -61,7 +61,8 @@ settings:
   news_langs: [zh-TW, en-US]    # 默认的新闻语言区：zh-CN / zh-TW / en-US / ja-JP / ko-KR
                                 # 中文新闻用 zh-TW（港台媒体）：zh-CN 搜回来八九成是大陆网站，常拦海外服务器、图片防盗链。
                                 # 某一项确实要大陆新闻时，在它的 news_langs 里写上 zh-CN（同时也收 Bing 上的大陆网站）
-  timezone: Asia/Shanghai       # 播出时间按这个时区显示
+  timezone: Asia/Shanghai       # 「每天一期」的日期分界（AI 编辑的定时任务按北京时间判断「今天」，要改得一起改）
+  display_timezone: Asia/Tokyo  # 网页上显示的时间（更新时间・播出时间・管理页）。用户住在日本；以后多用户时按各自的时区
   steam_country: cn             # Steam 价格地区
   max_entries_per_item: 30      # 每个关注项每期最多收集几条媒体报道
   max_reddit_per_item: 10       # 每个关注项每期最多收集几条 Reddit 帖子
@@ -329,9 +330,13 @@ items:
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Chris Hemsworth", "Robert Downey Jr.", "Anthony Mackie", "Sebastian Stan", "Chris Evans", "Letitia Wright"]   # 集める対象（メンバー・キャラ・出演者）
     motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
-    like_fx: manga          # 👍 の演出（scripts/likefx.py）：アメコミの擬音（ドカーン）の勢い
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Steve Rogers", why: "『アベンジャーズ／ドゥームズデイ』の中心人物", image: "emblems/steve-rogers.webp", source: "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b7/Steve_Rogers_Infobox.jpg/revision/latest/scale-to-width-down/400?cb=20260712215245", page: "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers", shape: "cutout", fs: 0.32}
+      - {subject: "Chris Hemsworth", why: "Chris Hemsworth（Wikipedia の記事の画像）", image: "emblems/chris-hemsworth.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Chris_Hemsworth_-_Crime_101.jpg/500px-Chris_Hemsworth_-_Crime_101.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Hemsworth", shape: "cutout", fs: 0.401}
+      - {subject: "Robert Downey Jr.", why: "Robert Downey Jr.（Wikipedia の記事の画像）", image: "emblems/robert-downey-jr.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/RobertDowneyJr-byPhilipRomano7_%28cropped%29.jpg/500px-RobertDowneyJr-byPhilipRomano7_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Robert_Downey_Jr.", shape: "cutout"}
+      - {subject: "Anthony Mackie", why: "Anthony Mackie（Wikipedia の記事の画像）", image: "emblems/anthony-mackie.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Anthony_Mackie_on_the_Green_Carpet_at_the_2025_Zurich_Film_Festival_03_%28cropped%29.jpg/500px-Anthony_Mackie_on_the_Green_Carpet_at_the_2025_Zurich_Film_Festival_03_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Anthony_Mackie", shape: "cutout"}
+      - {subject: "Sebastian Stan", why: "Sebastian Stan（Wikipedia の記事の画像）", image: "emblems/sebastian-stan.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Sebastian_Stan-64526.jpg/500px-Sebastian_Stan-64526.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Sebastian_Stan", shape: "cutout", fs: 0.375}
+      - {subject: "Chris Evans", why: "Chris Evans（Wikipedia の記事の画像）", image: "emblems/chris-evans.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg/500px-Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Evans_(actor)", shape: "cutout", fs: 0.358}
+    like_fx: manga          # 👍 の演出（scripts/likefx.py）：アメコミの擬音（ドカーン）の勢い
     subtitle: Marvel Studios · MCU
     type: show
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
@@ -391,10 +396,13 @@ items:
 
   - name: FROM
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg/500px-Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"]   # 目で見て外した画像（切り抜きに穴）。自動補完は選ばない
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Harold Perrineau", "Eion Bailey", "Catalina Sandino Moreno", "Scott McCord", "Avery Konrad", "Elizabeth Saunders"]   # 集める対象（メンバー・キャラ・出演者）
     motif: noir          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
-    emblem_skip: "画像の取れるファン Wiki がなく、ポスターを丸く切るのは不自然"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Catalina Sandino Moreno", why: "Catalina Sandino Moreno（Wikipedia の記事の画像）", image: "emblems/from-catalina-sandino-moreno.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Catalina_Sandino_Moreno_at_the_61st_Cannes_Film_Festival%2C_May_2008.jpg/500px-Catalina_Sandino_Moreno_at_the_61st_Cannes_Film_Festival%2C_May_2008.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Catalina_Sandino_Moreno", shape: "cutout", fs: 0.351}
+      - {subject: "Scott McCord", why: "Scott McCord（Commons の写真）", image: "emblems/from-scott-mccord.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Scott_McCord_%26_The_Bonafide_Truth_%2814054343447%29.jpg/500px-Scott_McCord_%26_The_Bonafide_Truth_%2814054343447%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Scott_McCord_%26_The_Bonafide_Truth_(14054343447).jpg", shape: "cutout", fs: 0.327}
     subtitle: 美剧 · MGM+ 恐怖悬疑
     size: S
     type: show
@@ -1029,6 +1037,7 @@ items:
     motif: concert          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Vaundy", why: "本人", image: "emblems/vaundy-vaundy.webp", source: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg", page: "https://ja.wikipedia.org/wiki/Vaundy", shape: "cutout"}
+      - {subject: "Vaundy", why: "Vaundy（Wikipedia の記事の画像）", image: "emblems/vaundy-vaundy.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Vaundy", shape: "cutout"}
     type: event
     section: "演出"
     size: S

@@ -11,6 +11,7 @@ import json
 import os
 import re
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -36,7 +37,27 @@ class Entry:
     link: str = ""       # Google 新闻跳转链接还原出的原文地址（出刊时还原，存回 inbox，下次不用再问 Google）
 
 
+# 同じサイトへの間隔（秒）。収集は関注項ごとに並列（digest.COLLECT_WORKERS）なので、スレッド全部で共有する
+PACE = {"www.reddit.com": 2.0, "oauth.reddit.com": 2.0, "news.google.com": 0.5, "www.bing.com": 0.5}
+_pace_lock = threading.Lock()
+_pace_next = {}
+
+
+def _pace(url):
+    """そのサイトの次の順番まで待つ（並列でも、サイトから見た間隔は 1 本で順に取ったときと同じ）。"""
+    host = urllib.parse.urlparse(url).netloc
+    gap = PACE.get(host)
+    if not gap:
+        return
+    with _pace_lock:
+        t = max(time.time(), _pace_next.get(host, 0))
+        _pace_next[host] = t + gap
+    if t > time.time():
+        time.sleep(t - time.time())
+
+
 def _get(url):
+    _pace(url)
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
         return resp.read()
@@ -235,7 +256,7 @@ def _reddit_get(path, params):
         url = f"https://www.reddit.com{path}.rss?{query}"
         headers = {"User-Agent": USER_AGENT}
     for attempt in range(2):
-        time.sleep(2)
+        _pace(url)   # 2 秒に 1 回（全スレッド合計）
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=TIMEOUT) as resp:
                 return token is not None, resp.read()

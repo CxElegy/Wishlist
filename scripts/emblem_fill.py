@@ -35,6 +35,7 @@ import json
 import pathlib
 import re
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -47,6 +48,9 @@ import runlog  # noqa: E402
 from emblem import ROOT, inspect, small_url  # noqa: E402
 
 _last = {}
+_host_lock = threading.Lock()
+WRITE_LOCK = threading.RLock()   # items.yaml・docs/emblems への書き込みと抠图（rembg）は 1 本ずつ
+_face_lock = threading.Lock()    # 顔の検出・特徴量（OpenCV のモデルは 1 つを共有するので順番に）
 _cool = {}        # ホスト → この時刻までは叩かない（429 が続いたとき）
 COOL = 300        # 取り直しても 429 なら、そのホストは 5 分休ませる（待ち続けて時間の予算を食わないように）
 _deadline = [None]   # 後台の時間の予算の締め切り（time.time()）。過ぎたら集めるのをやめる
@@ -64,9 +68,11 @@ def _throttled_get(url, limit=emblem.MAX_BYTES):
     if host.endswith("wikipedia.org") or host.endswith("wikimedia.org") or host.endswith("wikidata.org"):
         if _cool.get(host, 0) > time.time():
             raise urllib.error.HTTPError(url, 429, "休ませ中（429 が続いた）", None, None)
-        wait = _last.get(host, 0) + 1.3 - time.time()
-        if wait > 0:
-            time.sleep(wait)
+        with _host_lock:   # 並列（WORKERS）でも同じホストには 1.3 秒に 1 回：順番を予約してから待つ
+            slot = max(time.time(), _last.get(host, 0) + 1.3)
+            _last[host] = slot
+        if slot > time.time():
+            time.sleep(slot - time.time())
         try:
             return _orig_get(url, limit)
         except urllib.error.HTTPError as e:
@@ -80,7 +86,8 @@ def _throttled_get(url, limit=emblem.MAX_BYTES):
                     _cool[host] = time.time() + COOL
                 raise
         finally:
-            _last[host] = time.time()
+            with _host_lock:
+                _last[host] = max(_last.get(host, 0), time.time())
     return _orig_get(url, limit)
 
 
@@ -163,7 +170,9 @@ def _json(url, limit=3_000_000):
         return json.loads(f.read_text(encoding="utf-8"))
     data = json.loads(_get(url, limit))
     _CACHE.mkdir(parents=True, exist_ok=True)
-    f.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    tmp = f.with_suffix(f".{threading.get_ident()}.tmp")   # 並列で同じ網址を書いても壊れないように
+    tmp.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    tmp.replace(f)
     return data
 
 
@@ -554,12 +563,14 @@ def check(cands, log=print, need_face=False):
         drop = set()
         for subj, ids in by.items():
             test = [i for i in ids if dl[i]["source"] != "直接指定"]
-            feats = [face_id.main_face(dl[i]["_img"]) for i in test]
+            with _face_lock:
+                feats = [face_id.main_face(dl[i]["_img"]) for i in test]
             anchor = next((k for k, i in enumerate(test) if dl[i].get("anchor")), None)
             keep = face_id.same_person(feats, anchor)
             if keep is None:   # モデルなし：顔の有無だけ
                 log("  [本人確認なし] 顔モデルが使えないので、顔があるかだけ確かめた")
-                keep = {k for k, i in enumerate(test) if emblem.face_box(dl[i]["_img"].convert("RGB"))}
+                with _face_lock:
+                    keep = {k for k, i in enumerate(test) if emblem.face_box(dl[i]["_img"].convert("RGB"))}
             for k, i in enumerate(test):
                 if k not in keep:
                     drop.add(i)
@@ -684,7 +695,9 @@ def _base_subject(s):
 
 
 def _have_images(item):
-    return {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
+    """今ある小元素の画像と、目で見て外した画像（emblem_reject）。自動ではどちらも選ばない。"""
+    have = {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
+    return have | set(item.get("emblem_reject") or [])
 
 
 def auto_pick(item, good, web=True, strict=False):
@@ -818,9 +831,10 @@ def fill_one(item, log=print):
     tried = {}
     good, _ = run_item(item, log=log, tried=tried)   # Web 画像検索も集める（一覧で目で選ぶ用。自動では選ばない）
     picks = auto_pick(item, good, web=False, strict=True)
-    if picks:
-        commit(item, good, picks, log=log)
-    fresh = next((i for i in load_items() if i["name"] == item["name"]), item)
+    with WRITE_LOCK:
+        if picks:
+            commit(item, good, picks, log=log)
+        fresh = next((i for i in load_items() if i["name"] == item["name"]), item)
     st = status(fresh)
     added = max(0, st["have"] - before)
     have_img = _have_images(fresh)
@@ -857,52 +871,87 @@ def record(prog, item, result, now):
     return e
 
 
-def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None):
-    """定時の後台：時間の予算（分）の中で、足りない関注項を順に埋め、state/emblem_progress.json に進捗を残す。
+WORKERS = 4   # 同時に処理する関注項の数（定時タスクのコンテナは 4 コア。集めるのは待ちが多いので並列で速くなる）
+
+
+def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None, workers=None):
+    """定時の後台：時間の予算（分）の中で、足りない関注項を workers 本並列で埋め、state/emblem_progress.json に進捗を残す。
+    候補集め・本人確認は並列、items.yaml への書き込みと抠图は WRITE_LOCK で 1 本ずつ。
     1 つ終わるごとに保存するので、途中で止まっても、それまでの結果は残る。"""
     fill = fill or fill_one
+    started = time.time()
+    workers = max(1, int(workers or WORKERS))
     deadline = clock() + minutes * 60
     if clock is time.time:
         _deadline[0] = deadline - 60   # 集めるのはここまで（残りの 1 分で書き込みと切り抜き）
     prog = load_progress(path)
     now = _now()
     prog.setdefault("started", now)
-    prog["last_run"] = {"at": now, "minutes": minutes, "done": []}
+    prog["last_run"] = {"at": now, "minutes": minutes, "workers": workers, "done": []}
     items = load_items()
     sync_progress(prog, items)
     save_progress(prog, path)
     queue = due(prog, items, now)
-    runlog.add("emblem", f"開始：予算 {minutes:g} 分・待ち {len(queue)} 版面（{'、'.join(i['name'] for i in queue[:4])}{' …' if len(queue) > 4 else ''}）",
-               log_dir=runlog_dir)
-    for item in queue:
-        if clock() > deadline - MARGIN:
-            log(f"時間切れ：残りは次の回に（予算 {minutes:g} 分）")
-            break
-        record(prog, item, {"state": "running", "note": "処理中"}, _now())
-        save_progress(prog, path)
-        try:
-            result = fill(item, log)
-        except OutOfTime:
-            log(f"時間切れ：「{item['name']}」の途中で止めた。次の回にやり直す")
-            record(prog, item, {"state": "running", "note": "時間切れで途中まで（次の回に続き）"}, _now())
-            runlog.add("emblem", f"{item['name']}：時間切れで途中まで（次の回に続き）", "warn", log_dir=runlog_dir, item=item["name"])
+    runlog.add("emblem", f"開始：予算 {minutes:g} 分・{workers} 本並列・待ち {len(queue)} 版面"
+                         f"（{'、'.join(i['name'] for i in queue[:4])}{' …' if len(queue) > 4 else ''}）", log_dir=runlog_dir)
+    lock = threading.Lock()   # 進捗・ログ・待ち行列
+    stop = threading.Event()
+    todo = list(queue)
+
+    def take():
+        with lock:
+            if stop.is_set() or not todo:
+                return None
+            if clock() > deadline - MARGIN:
+                stop.set()
+                log(f"時間切れ：残りは次の回に（予算 {minutes:g} 分）")
+                return None
+            item = todo.pop(0)
+            record(prog, item, {"state": "running", "note": "処理中"}, _now())
             save_progress(prog, path)
-            break
-        except Exception as e:   # 1 つの失敗で全体を止めない
-            log(f"  [失敗] {item['name']}：{e}")
-            result = {"state": "failed", "note": f"エラー：{str(e)[:80]}"}
-        fresh = next((i for i in load_items() if i["name"] == item["name"]), item)
-        record(prog, fresh, result, _now())
-        prog["last_run"]["done"].append(item["name"])
-        log(f"  → {STATE_JA[result['state']]}：{result.get('note', '')}")
-        runlog.add("emblem", f"{item['name']}：{STATE_JA[result['state']]}（{fresh_have(fresh)}）{result.get('note', '')}",
-                   {"ok": "ok", "review": "warn", "failed": "error"}.get(result["state"], "info"), log_dir=runlog_dir, item=item["name"])
-        save_progress(prog, path)
+            return item
+
+    def worker():
+        while True:
+            item = take()
+            if item is None:
+                return
+            name = item["name"]
+            ilog = (lambda m, n=name: log(f"[{n}] {str(m).strip()}")) if workers > 1 else log
+            try:
+                result = fill(item, ilog)
+            except OutOfTime:
+                with lock:
+                    stop.set()
+                    ilog("時間切れ：途中で止めた。次の回にやり直す")
+                    record(prog, item, {"state": "running", "note": "時間切れで途中まで（次の回に続き）"}, _now())
+                    runlog.add("emblem", f"{name}：時間切れで途中まで（次の回に続き）", "warn", log_dir=runlog_dir, item=name)
+                    save_progress(prog, path)
+                return
+            except Exception as e:   # 1 つの失敗で全体を止めない
+                ilog(f"[失敗] {e}")
+                result = {"state": "failed", "note": f"エラー：{str(e)[:80]}"}
+            with WRITE_LOCK:
+                fresh = next((i for i in load_items() if i["name"] == name), item)
+            with lock:
+                record(prog, fresh, result, _now())
+                prog["last_run"]["done"].append(name)
+                ilog(f"→ {STATE_JA[result['state']]}：{result.get('note', '')}")
+                runlog.add("emblem", f"{name}：{STATE_JA[result['state']]}（{fresh_have(fresh)}）{result.get('note', '')}",
+                           {"ok": "ok", "review": "warn", "failed": "error"}.get(result["state"], "info"), log_dir=runlog_dir, item=name)
+                save_progress(prog, path)
+
+    threads = [threading.Thread(target=worker, name=f"emblem-{n}", daemon=True) for n in range(min(workers, max(1, len(queue))))]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
     _deadline[0] = None
     prog["last_run"]["end"] = _now()
     sync_progress(prog, load_items())
-    runlog.add("emblem", f"終了：{len(prog['last_run']['done'])} 版面を処理・そろっている {prog['summary']['ok']} / {prog['summary']['total']}",
-               "ok", log_dir=runlog_dir)
+    import resources
+    runlog.add("emblem", f"終了：{len(prog['last_run']['done'])} 版面を処理（{workers} 本並列）・そろっている {prog['summary']['ok']} / {prog['summary']['total']}",
+               "ok", log_dir=runlog_dir, secs=round(time.time() - started), workers=workers, res=resources.snapshot())
     save_progress(prog, path)
     return prog
 
@@ -918,11 +967,12 @@ def main():
     ap.add_argument("--auto", action="store_true", help="足りない関注項を決まった順で全部自動で埋める")
     ap.add_argument("--background", action="store_true", help="定時の後台：時間の予算の中で足りない順に埋め、進捗を残す")
     ap.add_argument("--minutes", type=float, default=40, help="--background の時間の予算（分）")
+    ap.add_argument("--workers", type=int, default=WORKERS, help="--background で同時に処理する関注項の数")
     ap.add_argument("--progress", action="store_true", help="items.yaml の今の枚数を進捗ファイルに写すだけ（ネットに出ない）")
     a = ap.parse_args()
     items = load_items()
     if a.background:
-        prog = background(a.minutes)
+        prog = background(a.minutes, workers=a.workers)
         print(f"そろっている {prog['summary']['ok']} / {prog['summary']['total']}")
         for n, x in sorted(prog["items"].items(), key=lambda kv: kv[1]["state"]):
             if x["state"] != "ok":

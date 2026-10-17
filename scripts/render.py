@@ -35,7 +35,7 @@ FONTS = (
 )
 
 CSS = """
-:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--good:#1F7A55;
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--good:#1F7A55;--discord:#5865F2;
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
  --fs-label:11px;--fs-tag:10px;--gap:16px;--hair:color-mix(in srgb,var(--ink) 16%,transparent);
@@ -3219,7 +3219,7 @@ def _slots_attr(pid):
     return e(json.dumps(processes.slots(p))) if p else "[]"
 
 
-def _admin_backend(rows, todo=None, log=None):
+def _admin_backend(rows, todo=None, log=None, res=None):
     """バックグラウンド：裏で動く仕組みの「次の実行」（前回・次回・残り時間はページを開いた端末で計算）と、
     版面（行）× プロセス（列）の今の状態の表。何が待っていて、次にいつ動くかを一目で見る。"""
     cards, plan = [], []
@@ -3261,8 +3261,12 @@ def _admin_backend(rows, todo=None, log=None):
                    f'<span class="lg-p">{e(x.get("name") or "")}</span><span class="lg-t">{e(x.get("text") or "")}</span></li>'
                    for x in (log or []))
     cfg = json.dumps(plan, ensure_ascii=False).replace("</", "<\\/")
-    return (f'<h3 class="h3">次の実行 <small>近い順 · 時刻はこの端末の時計 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
+    return (f'<h3 class="h3">次の実行 <small>近い順 · 時刻は日本時間 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
             f'<ol class="nxs">{"".join(cards)}</ol>'
+            + '<h3 class="h3">リソース <small>サーバーの残り · 容量 · トークン</small></h3>' + _admin_resources(res) +
+            '<h3 class="h3">並列と制限 <small>同時にいくつ動かすか · それ以上速くできない理由</small></h3>'
+            '<ul class="lims">' + "".join(f'<li><b>{e(a)}</b><span class="lim-n">{e(b)}</span><small>{e(c)}</small></li>'
+                                          for a, b, c in processes.LIMITS) + '</ul>'
             '<div class="two bgtwo"><div><h3 class="h3">待ち行列 <small>これから 24 時間の実行と、そのとき処理するもの</small></h3>'
             '<ol class="bgq" id="bgq"><li class="empty">計算中…</li></ol></div>'
             '<div><h3 class="h3">ログ <small>裏で動いた仕組みの記録 · 新しい順</small></h3>'
@@ -3270,6 +3274,57 @@ def _admin_backend(rows, todo=None, log=None):
             f'<script type="application/json" id="bg-cfg">{cfg}</script>'
             '<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦</small></h3>'
             f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>')
+
+
+def _mb(n):
+    return f"{n / 1048576:.1f} MB" if n < 1024 ** 3 else f"{n / 1024 ** 3:.2f} GB"
+
+
+def _meter(label, used, total, note="", warn_at=80):
+    """横長のメーター（使った量 / 上限）。warn_at（%）を超えたら赤。赤にしないもの（マシン全体の値）は warn_at=None。"""
+    if not total:
+        return ""
+    pct = max(0, min(100, round(100 * used / total)))
+    warn = " warn" if warn_at is not None and pct >= warn_at else ""
+    return (f'<div class="mt{warn}"><span class="mt-l">{e(label)}</span><span class="mt-v"><b>{_mb(used)}</b> / {_mb(total)}'
+            f'<small>{pct}%</small></span><span class="mt-bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{pct}">'
+            f'<i style="width:{pct}%"></i></span>' + (f'<small class="mt-n">{e(note)}</small>' if note else "") + "</div>")
+
+
+def _admin_resources(res):
+    """リソース：容量（リポジトリ・公開ページ）、仕組みごとの最近の実行のサーバー（メモリ・ディスク・CPU）、トークン。"""
+    if not res:
+        return ""
+    sz, lim = res.get("sizes") or {}, res.get("limits") or {}
+    cap = (_meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
+           + _meter("公開ページ（docs/）", sz.get("pages", 0), lim.get("pages"),
+                    f'GitHub Pages は 1GB まで · うち小元素の画像 {_mb(sz.get("emblems", 0))}')
+           + f'<p class="mt-x">集めた記事（inbox/） {_mb(sz.get("inbox", 0))} · 記録（state/） {_mb(sz.get("state", 0))}</p>')
+    rows = []
+    for proc, r in (res.get("runs") or {}).items():
+        x = r.get("res") or {}
+        mem = (_meter("メモリ（使用中）", x["mem_total"] - x.get("mem_free", 0), x["mem_total"],
+                      f'空き {_mb(x.get("mem_free", 0))} · この処理のピーク {_mb(x.get("peak", 0))}') if x.get("mem_total") else "")
+        disk = (_meter("ディスク（マシン全体）", x["disk_total"] - x.get("disk_free", 0), x["disk_total"],
+                       f'残り {_mb(x.get("disk_free", 0))} · Claude のセッションは別に割り当ての上限がある', warn_at=None)
+                if x.get("disk_total") else "")
+        secs = r.get("secs")
+        meta = " · ".join(v for v in (e(r.get("when") or ""), f'{secs // 60} 分 {secs % 60} 秒' if isinstance(secs, int) else "",
+                                      f'{r["workers"]} 本並列' if r.get("workers") else "",
+                                      f'CPU {x.get("cpu")} コア · 負荷 {x.get("load")}' if x.get("cpu") else "") if v)
+        rows.append(f'<li><b>{e(r["name"])}</b><small>{meta}</small>{mem}{disk}</li>')
+    srv = (f'<ul class="srv">{"".join(rows)}</ul>' if rows
+           else '<p class="empty">まだ記録がありません。次の実行から、終わったときのサーバーの様子が残ります。</p>')
+    tk = []
+    for proc, t in (res.get("tokens") or {}).items():
+        val = (f'<b>{t["last"]:,}</b><small>最近 · 7 日で {t["week"]:,}（{t["runs"]} 回）</small>' if t.get("last") is not None
+               else '<b class="na">未記録</b>')
+        tk.append(f'<li><span>{e(t["name"])}</span>{val}</li>')
+    return ('<div class="two rsrc"><div><h3 class="h3">容量 <small>上限と比べて · 8 割を超えると赤</small></h3>' + cap
+            + '<h3 class="h3">トークン <small>Claude の使用量</small></h3><ul class="tok">' + "".join(tk) + '</ul>'
+            '<p class="mt-x">Claude API を使ったときは自動で数える。定時タスク（サブスク枠）は Claude が終わりに目安を書く。'
+            'サブスク枠の残りはプログラムから読めないので <a href="https://claude.ai/settings/usage" target="_blank" rel="noopener noreferrer">Claude の設定 → 使用量</a> で。</p></div>'
+            '<div><h3 class="h3">サーバー <small>仕組みごとの最近の実行 · 終わったときの様子</small></h3>' + srv + "</div></div>")
 
 
 def _lane_short(lane):
@@ -3387,8 +3442,28 @@ ADMIN_PAGE_CSS = """
 @keyframes pb-move{to{background-position:17px 0}}
 @keyframes pb-run{0%{left:-40%}100%{left:100%}}
 .emp-bar i{background:repeating-linear-gradient(-45deg,var(--good) 0 8px,color-mix(in srgb,var(--good) 75%,var(--card)) 8px 16px);background-size:22px 22px;animation:pb-move 1.4s linear infinite}
-@media (prefers-reduced-motion:reduce){.pbar i,.emp-bar i,.nx.run .pbar i{animation:none}}
+@media (prefers-reduced-motion:reduce){.pbar i,.emp-bar i,.nx.run .pbar i,.mt-bar i{animation:none}}
 .bgtwo{margin-bottom:20px}
+.rsrc{margin-bottom:20px}
+.mt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;margin:0 0 10px}
+.mt-l{font:700 12px var(--font-sans)}.mt-v{font:500 12px var(--font-mono);white-space:nowrap}.mt-v b{font-weight:700}.mt-v small{margin-left:6px;opacity:.75}
+.mt-bar{grid-column:1/-1;position:relative;height:10px;background:var(--sheet);border:1.5px solid var(--ink);overflow:hidden}
+.mt-bar i{position:absolute;inset:0 auto 0 0;background:repeating-linear-gradient(-45deg,var(--good) 0 6px,color-mix(in srgb,var(--good) 70%,var(--card)) 6px 12px);
+ background-size:17px 17px;animation:pb-move 1.6s linear infinite}
+.mt.warn .mt-bar i{background:repeating-linear-gradient(-45deg,var(--alert) 0 6px,color-mix(in srgb,var(--alert) 70%,var(--card)) 6px 12px);background-size:17px 17px}
+.mt-n{grid-column:1/-1;font:500 var(--fs-label)/1.5 var(--font-sans);opacity:.8}
+.mt-x{margin:0 0 14px;font:500 var(--fs-label)/1.6 var(--font-sans);opacity:.85}.mt-x a{text-decoration:underline}
+.srv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.srv li{padding:10px 12px;background:var(--card);border:1.5px solid var(--ink)}
+.srv li>b{font:900 13px var(--font-sans)}.srv li>small{display:block;margin:2px 0 8px;font:500 var(--fs-label)/1.5 var(--font-sans);opacity:.85}
+.tok{list-style:none;margin:0 0 8px;padding:0}
+.tok li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--hair);font-size:13px}
+.tok b{font:700 15px var(--font-mono);text-align:right}.tok b.na{font:700 12px var(--font-sans);opacity:.6}
+.tok small{grid-column:1/-1;text-align:right;font:500 var(--fs-label) var(--font-sans);opacity:.8}
+.lims{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px 18px}
+.lims li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair)}
+.lims b{font:900 13px/1.4 var(--font-sans)}.lim-n{font:700 12px var(--font-mono);padding:0 6px;background:var(--ink);color:var(--card);white-space:nowrap}
+.lims small{grid-column:1/-1;font:500 var(--fs-label)/1.55 var(--font-sans);opacity:.85}
 .bgq,.blog{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .bgq li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:0 10px;padding:8px 0;border-bottom:1px solid var(--hair);font-size:13px}
 .bgq li.next{background:color-mix(in srgb,var(--gold) 35%,transparent)}
@@ -3480,7 +3555,10 @@ ADMIN_PAGE_JS = """
   function fail(box,msg){box.textContent='';box.appendChild(el('p','empty',msg));}
   // バックグラウンド：定時（UTC の [時,分]）から前回・次回・残り時間。1 分ごとに数え直し、近い順に並べ替える
   function two(n){return ('0'+n).slice(-2);}
-  function hm(t){var d=new Date();var day=t.toDateString()===d.toDateString()?'':(t.getMonth()+1)+'/'+t.getDate()+' ';return day+two(t.getHours())+':'+two(t.getMinutes());}
+  // 時刻は設定の表示時区（display_timezone、いまは日本時間）で出す。端末の時計の時区には左右されない
+  var FMT=new Intl.DateTimeFormat('ja-JP',{timeZone:CFG.tz,month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
+  function parts(t){var o={};FMT.formatToParts(t).forEach(function(p){o[p.type]=p.value;});return o;}
+  function hm(t){var a=parts(t),b=parts(new Date());var day=(a.month===b.month&&a.day===b.day)?'':a.month+'/'+a.day+' ';return day+two(+a.hour)+':'+two(+a.minute);}
   function around(sl){var now=new Date(),nx=null,pv=null;for(var k=-1;k<=1;k++)sl.forEach(function(s){
     var t=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]));
     if(t>now){if(!nx||t<nx)nx=t;}else if(!pv||t>pv)pv=t;});return [pv,nx];}
@@ -3556,7 +3634,8 @@ def render_admin(data, db, updated):
     data = {"pipeline": {...}, "items": [行], "votes": {...}}（digest.admin_data が作る）；
     db = {url, key}（公開の publishable key。依頼と写真の受付をページを開いたときに読む）。"""
     cfg = json.dumps({"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
-                      "repo": (db or {}).get("repo") or "CxElegy/Wishlist", "flows": ADMIN_WORKFLOWS},
+                      "repo": (db or {}).get("repo") or "CxElegy/Wishlist", "flows": ADMIN_WORKFLOWS,
+                      "tz": (db or {}).get("tz") or "Asia/Tokyo"},
                      ensure_ascii=False).replace("</", "<\\/")
     return f"""<!doctype html>
 <html lang="ja">
@@ -3579,8 +3658,8 @@ def render_admin(data, db, updated):
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 見るだけで、ここから何かを変えることはできません。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
-<section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"))}</section>
-<section class="panel" id="procs"><h2 class="sh"><span>プロセス</span><small>縮図をクリックすると流れが開く</small></h2>{processes.render()}</section>
+<section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
+<section class="panel" id="procs"><h2 class="sh"><span>全体の構成</span><small>どこで何が動き、データがどう流れるか · 部品をクリックで詳しい流れ</small></h2>{processes.render()}</section>
 <section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いたときに読み込み</small></h2>
 <div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>

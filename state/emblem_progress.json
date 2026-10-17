@@ -28,12 +28,19 @@
    "target": 6
   },
   "FROM": {
-   "at": "2026-10-17T00:05:18+00:00",
-   "have": 0,
+   "at": "2026-10-17T00:38:31+00:00",
+   "have": 2,
    "kind": "character",
-   "note": "時間切れで途中まで（次の回に続き）",
-   "state": "running",
-   "target": 6
+   "note": "3 枚足した。残りの候補 4 枚は自動で決められないので一覧で確かめる",
+   "sheet": "/tmp/wishlist-emblem/FROM.jpg",
+   "state": "review",
+   "target": 6,
+   "tried": {
+    "Web 画像検索": 8,
+    "Wikimedia Commons": 3,
+    "Wikipedia": 3,
+    "新聞の配図": 0
+   }
   },
   "GTA 6": {
    "have": 2,
@@ -64,11 +71,19 @@
    "target": 4
   },
   "Vaundy": {
-   "have": 1,
+   "at": "2026-10-17T00:38:58+00:00",
+   "failed_at": "2026-10-17T00:38:58+00:00",
+   "have": 2,
    "kind": "person",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "1 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "state": "failed",
+   "target": 6,
+   "tried": {
+    "Wikidata": 1,
+    "Wikimedia Commons": 0,
+    "Wikipedia": 4,
+    "新聞の配図": 5
+   }
   },
   "dota2": {
    "at": "2026-10-17T00:17:30+00:00",
@@ -126,11 +141,19 @@
    "target": 6
   },
   "哈利波特剧集": {
+   "at": "2026-10-17T00:38:30+00:00",
    "have": 2,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "0 枚足した。残りの候補 1 枚は自動で決められないので一覧で確かめる",
+   "sheet": "/tmp/wishlist-emblem/e62bf5cd.jpg",
+   "state": "review",
+   "target": 6,
+   "tried": {
+    "Web 画像検索": 4,
+    "Wikimedia Commons": 3,
+    "Wikipedia": 0,
+    "新聞の配図": 0
+   }
   },
   "日本顶级网球赛事": {
    "have": 1,
@@ -154,11 +177,15 @@
    "target": 3
   },
   "漫威电影": {
-   "have": 1,
+   "at": "2026-10-17T00:38:30+00:00",
+   "have": 5,
    "kind": "character",
    "note": "順番待ち",
    "state": "running",
-   "target": 6
+   "target": 6,
+   "tried": {
+    "Wikipedia": 6
+   }
   },
   "猫用品": {
    "have": 1,
@@ -176,12 +203,16 @@
   }
  },
  "last_run": {
-  "at": "2026-10-17T00:05:49+00:00",
+  "at": "2026-10-17T00:33:04+00:00",
   "done": [
-   "dota2"
+   "漫威电影",
+   "哈利波特剧集",
+   "FROM",
+   "Vaundy"
   ],
-  "end": "2026-10-17T00:12:32+00:00",
-  "minutes": 8.0
+  "end": "2026-10-17T00:38:58+00:00",
+  "minutes": 4.0,
+  "workers": 4
  },
  "started": "2026-10-16T23:48:04+00:00",
  "summary": {
