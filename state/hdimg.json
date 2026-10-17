@@ -1,4 +1,10 @@
 {
+ "http://n.sinaimg.cn/sinakd20261012ac/320/w480h640/20261012/d884-283138846278eaf6a8d3807924e122d5.jpg": {
+  "w": 480,
+  "h": 640,
+  "target": 720,
+  "v": 2
+ },
  "http://n.sinaimg.cn/sinakd20261017ac/533/w480h853/20261017/5551-53c5cc4364453fccee1dcae242ecccec.jpg": {
   "w": 480,
   "h": 853,
@@ -468,6 +474,12 @@
   "target": 720,
   "v": 2
  },
+ "https://en.koreadaily.com/wp-content/uploads/2026/10/202610130803770818_6acd6a734d2eb.jpg": {
+  "w": 650,
+  "h": 487,
+  "target": 720,
+  "v": 2
+ },
  "https://external-preview.redd.it/ls5OcOjkjErs9tph4z4tS3Id06wzZAN9Wgz96c8Fgqw.jpeg?width=640&crop=smart&auto=webp&s=355cc54b5122677450d8ad1fa8953ae523267f4c": {
   "w": 640,
   "h": 360,
@@ -801,6 +813,12 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
+  "v": 2
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2doDkE.img": {
+  "w": 750,
+  "h": 938,
+  "target": 1280,
   "v": 2
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2dutfj.img": {
@@ -1685,6 +1703,12 @@
   "target": 720,
   "v": 2
  },
+ "https://spice.eplus.jp/images/RKx9MTqAucgLSLlNpv09TpJZq3upmlhPMKdRE5wQYlSqCLmLcPDB1seqP9wN5XAm": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 2
+ },
  "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/10/17/galaxy-s27-ultra-leaks-hint-at-samsungs-biggest-redesign-in-years-5cd8c6d055fb4cb69329720d957f143d-394.png?width=0&s=ywnqRx2ihUIusYvfn3ZI7Q": {
   "w": 1650,
   "h": 864,
@@ -2236,6 +2260,12 @@
  "https://www.mobilemagazinehk.com/wp-content/uploads/2026/10/MM1310261607.jpg": {
   "w": 800,
   "h": 499,
+  "target": 720,
+  "v": 2
+ },
+ "https://www.neveitalia.it/static/prodotti/02/600/305679228.jpg": {
+  "w": 600,
+  "h": 600,
   "target": 720,
   "v": 2
  },

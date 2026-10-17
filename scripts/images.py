@@ -51,7 +51,7 @@ IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoj
 # 网站 logo、全站共用的默认分享图：放在哪条报道上都不对（theouterhaven Logo.jpg、rbbtoday img_ogp.png、fb_um_logo_m.jpg）
 GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder"
                      r"|^/default/[0-9a-f]{8}/", re.I)  # 新浪的默认分享图 n.sinaimg.cn/default/2fb77759/…/320X320.png
-BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied", re.I)
+BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied|human verification", re.I)
 
 ICON_MIN = 32                 # 来源图标至少这么多像素（Google 图标服务查不到时给 16px 的地球图标）
 FAVICON_SERVICE = "https://www.google.com/s2/favicons?domain={host}&sz=128"  # Google 的公开网站图标服务
@@ -135,8 +135,8 @@ def _http_reason(f, what):
     if f.error:
         return f"{what} {f.error}"
     note = ""
-    if f.status in (401, 403, 429, 503):
-        text = f.body.decode("utf-8", "ignore") + " " + f.headers.get("server", "")
+    if f.status in (401, 403, 405, 429, 503):   # 405：AWS WAF の人機検証（ナタリー）
+        text = f.body.decode("utf-8", "ignore") + " " + f.headers.get("server", "") + " " + f.headers.get("x-amzn-waf-action", "")
         m = BOT_WALL.search(text)
         if m:
             note = f"（防机器人：{m.group(0)}）"
@@ -482,6 +482,13 @@ def search_phrase(title):
     return " ".join(t.split(" ")[:10])
 
 
+def quoted_title(title):
+    """标题里引用的原标题：「人気画像5位は「Mrs. GREEN APPLEとジェラピケが初コラボ…」より、…」这种画廊・汇总页，
+    整句搜不到同一篇，引号里的才是原文的标题。引号里 12 字以上、而且不是整个标题时才算。"""
+    m = re.search(r"[「『]([^」』]{12,})[」』]", title or "")
+    return m.group(1).strip() if m and len(m.group(0)) < len((title or "").strip()) - 2 else ""
+
+
 def news_lang(title):
     """按标题文字选 Google 新闻的语言版本：(hl, gl, ceid)。"""
     if re.search(r"[\u3040-\u30ff]", title or ""):
@@ -591,12 +598,14 @@ def is_bing_thumb(u):
     return bool(isinstance(u, str) and BING_THUMB.match(u))
 
 
-def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
+def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblings=()):
     """一条报道的配图。按顺序检查候选图，第一张可用的就用：
     AI 挑的 > 条目自带图 > 原文（og:image > JSON-LD > 正文图；Reddit 帖子读帖子本身和外链）
     > 其它来源的原文 > 条目自带的 Bing 缩略图 > Bing / Google 新闻上的同一篇转载。
     Bing 缩略图是 Bing 裁过的一部分（横长的图会变成竖的一截），所以排在原文的图后面，原文拿不到图时才用。
     原文的预览图（og:image / JSON-LD）长边不到 SHARP_LONG 时，同一页后面更大的预览图优先（同一张图的大尺寸版）。
+    原文被挡（防机器人）或没有图时，接着找别的网站：siblings（同一个关注项里报道同一件事的别家记事，digest.same_event 判断）
+    自带的图和网页的预览图，再找同一篇的转载（标题里引用了原标题「…」时，也用引号里的原标题搜）。
     都不行时，原文网页自己的图里被防盗链挡掉（403）的，带原文网页作 Referer 再试（来源名加 SAVED，hdimg.py 存到本站）。
     还不行返回 image=None（网页上这条进「其他消息」文字列表，或用这一版面唯一一次的作品封面）。
     网站 logo / 全站默认分享图不用；avoid 里的图（同一期别的报道已经用了）也不用，免得几张卡片同一张图。"""
@@ -626,11 +635,22 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
                 res.notes.append(note)
             yield found
         yield [("条目自带（Bing 缩略图）", u) for _, u in own if is_bing_thumb(u)]
-        if refs and not sources.is_reddit(refs[0]):  # Reddit 帖子是网友发的，没有「转载」
-            found, note = syndicated_candidates(refs[0].title, url)
-            if note:
-                res.notes.append(note)
+        for e in siblings:   # 同じ出来事の別の記事：自带图 → 那一页的预览图（正文图不用：别的话题的图也多）
+            link = sources.entry_link(e)
+            label = f"同一件事的别家报道 {urllib.parse.urlparse(link).netloc}"
+            found = [(label, e.image)] if e.image and not is_bing_thumb(e.image) else []
+            if not REDDIT_POST.match(link or ""):
+                p = page(link)
+                found += [(label, u) for u in p.og + p.jsonld]
+            if e.image and is_bing_thumb(e.image):
+                found.append((label + "（Bing 缩略图）", e.image))
             yield found
+        if refs and not sources.is_reddit(refs[0]):  # Reddit 帖子是网友发的，没有「转载」
+            for title in dict.fromkeys(t for t in (refs[0].title, quoted_title(refs[0].title)) if t):
+                found, note = syndicated_candidates(title, url)
+                if note:
+                    res.notes.append(note)
+                yield found
 
     def preview(label):
         return label.split("（")[0] in ("og:image", "MSN 接口", "JSON-LD", "视频封面")
