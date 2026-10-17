@@ -1937,6 +1937,7 @@ def write_page():
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
                           {i["name"]: str(i["sub"]) for i in items if i.get("sub")}, settings.get("nav_hide", render.NAV_HIDE),
+                          {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
                           render.busy_plan(adm.get("todo")), generated)
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）

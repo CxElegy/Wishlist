@@ -297,6 +297,10 @@ class Nav(unittest.TestCase):
         for cls in (".nav .nslot", ".nav .nsec", ".nav .nsubs", ".nav .x"):
             self.assertIn(cls, css + render.CSS, cls)
 
+    def test_icon_comes_first(self):
+        w = {"name": "M", "section": "影视", "stories": [], "_icon": "icons/marvel.webp", "_emblems": [{"image": "emblems/x-y.webp"}]}
+        self.assertEqual(render._nav_icon(w), "icons/marvel.webp")        # icon（1 作品 1 枚）が emblem より先
+        self.assertEqual(render._nav_icon({**w, "_icon": "javascript:x"}), "emblems/x-y.webp")   # 変な値は使わない
 
 class LiveUpdate(unittest.TestCase):
     """開いたままのページに新しい内容を出す（render.LIVE_JS / stamp / version.json）。"""
