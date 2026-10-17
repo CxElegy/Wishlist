@@ -125,12 +125,19 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 /* ---------- 版の見比べ用 ---------- */
 .board{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:28px 18px}
 .case p{min-height:11.4em}
-.lvl{align-self:flex-start;padding:1px 8px;background:var(--ink);color:var(--gold);font:700 11px var(--font-sans)}
+.lvl{align-self:flex-start;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:1px 8px;background:var(--ink);color:var(--gold);font:700 11px var(--font-sans)}
 .lvl.ghost{visibility:hidden}
 .case h2{min-height:2.7em}
 .case .sec .en{display:none}
-.case .sec .cnt{grid-column:-2}   /* 列が細いので英字は省く（件数が折り返さないように） */
+.case .sec .cnt{grid-column:-2;white-space:nowrap}   /* 列が細いので英字は省く（件数が折り返さないように） */
 .case p .pr{font:700 11px var(--font-mono);color:var(--alert)}
+.custom{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;flex-basis:100%;padding:8px 10px;border:1px dashed rgba(251,248,241,.4);font:700 12px var(--font-sans)}
+.custom.on{border:1px solid var(--gold)}
+.custom b{color:var(--gold)}
+.custom label{display:flex;align-items:center;gap:6px}
+.custom input[type=range]{width:180px;accent-color:var(--gold)}
+.custom input[type=number],.custom select{width:72px;padding:3px 6px;border:1px solid rgba(251,248,241,.5);background:transparent;color:var(--card);font:700 13px var(--font-mono)}
+.custom select option{color:var(--ink)}
 .cases{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%}
 .cases button{padding:3px 9px;border:1px solid rgba(251,248,241,.4);font:700 12px var(--font-sans)}
 .cases button[aria-pressed=true]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
@@ -165,7 +172,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   <button class="go" id="play" type="button" aria-pressed="false">▶ 読み進める</button>
   <div class="scrub"><button type="button" id="prev" aria-label="前の作品">◀</button><input type="range" id="pos" min="0" value="0" aria-label="読んでいる位置"><button type="button" id="next" aria-label="次の作品">▶</button><span id="post"></span></div>
   <div class="cases" id="cases"></div>
-  <p class="note">同じ作品・同じ読む位置で、目次の各版（v1〜v6）を横に並べています（本文は省略）。つまみを動かすと全部の版がいっしょに「下へスクロール」します。上の札で条件を切り替え。
+  <div class="custom" id="custom"><b>ダミーで試す</b>
+    <label>作品数 <input type="range" id="cn" min="0" max="100" value="62" aria-label="作品数（つまみ）"><input type="number" id="cnn" min="2" max="1000" value="100" aria-label="作品数"></label>
+    <label>板块数 <select id="cs" aria-label="板块数"></select></label>
+    <div class="seg"><div id="ck"><button data-k="even">均等</button><button data-k="skew">ばらつき</button></div></div>
+  </div>
+  <p class="note">同じ作品・同じ読む位置で、目次の各版（v1〜v6）を横に並べています（本文は省略）。つまみを動かすと全部の版がいっしょに「下へスクロール」します。上の札で条件を切り替え、「ダミーで試す」で作品数（2〜1000）・板块数・偏りを自由に変えられます。
     パターンごとに 1 本ずつ見るなら <a href="rails.html">rails.html</a>、本文つきで 1 本なら <a href="nav.html">nav.html</a>。</p>
 </header>
 <div class="board" id="board"></div>
@@ -252,12 +264,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     {v: 5, pr: 99, t: 'v4 ＋ 入るなら全部・余りは均等', mode: 'even', look: 'line', icons: true, all: true,
      d: '板块の作品が全部入るなら小分類で絞らず全部見せる。それでも余る高さは全板块に均等に配る（下に詰めない）。'},
     {v: 6, pr: 100, t: '少ないうちは隠さない（段階的に隠す）', mode: 'steps', look: 'line', icons: true,
-     d: '全部入るなら何も隠さない（少ないうちは行の間隔を広げる）。入らなくなったら ①ほかの板块を新着順に数件へ ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。'},
+     d: '小分類があれば札は必ず出す。全部入るなら何も隠さない（少ないうちは行の間隔を広げ、きついときは行を 22px まで詰める）。それでも入らなくなったら ①ほかの板块を新着順に数件へ ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。'},
   ];
   const STEP = ['全部見せる', '① ほかの板块は新着順に数件', '② ほかは見出しだけ', '③ いまの小分類だけ', '④ 入るだけ＋ほか N 件'];
 
   // ---------- 目次 1 本ぶん ----------
-  const FLAT_MAX = 24, SUB_MIN = 13, SEC_H = 44, ITEM_H = 28, MORE_H = 24, MIN_H = 40, LAB_H = 20, CAP1 = 8, DONORS = 4;
+  const FLAT_MAX = 24, SUB_MIN = 13, SEC_H = 44, ITEM_H = 28, MORE_H = 24, MIN_H = 40, LAB_H = 20, CAP1 = 8, DONORS = 4, R_MIN = 22;   // R_MIN：v6 で隠す前に詰める行の最小の高さ
   let few = 'fold';
 
   function Engine(box, cs, V) {
@@ -372,7 +384,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     const topN = (l, n) => l.slice().sort((a, b) => b.hot - a.hot || a.i - b.i).slice(0, n).sort((a, b) => a.i - b.i);
     function layoutSteps() {
       const H = Math.floor(rail.getBoundingClientRect().height), n = slots.length, k = secs.indexOf(curSec);
-      const L = secs.map(s => W.filter(w => w.sec === s)), subsK = hasSubs(curSec) ? subsOf(curSec) : [];
+      // 小分類の札は、いまの板块に小分類が 2 つ以上あれば件数に関係なく必ず出す
+      const L = secs.map(s => W.filter(w => w.sec === s)), subsK = subsOf(curSec).length > 1 ? subsOf(curSec) : [];
       let chipsH = 0;
       if (subsK.length) {   // 小分類の札の高さを実際に測る
         const pr = document.createElement('div');
@@ -381,38 +394,51 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       }
       const labsH = subsK.length * LAB_H;
       // 板块 1 つぶんの高さ：見出し＋作品＋「ほか N 件」＋（いまの板块なら）読んでいる駅の大きさ・小分類の見出しや札
-      const hOf = (x, i) => !x ? MIN_H : SEC_H + 6 + x.items.length * ITEM_H + (x.more ? MORE_H : 0)
+      const hOf = (x, i, r) => !x ? MIN_H : SEC_H + (i === k ? 6 : 2) + x.items.length * r + (x.more ? MORE_H : 0)
         + (i === k ? EXTRA + (x.labs ? labsH : 0) + (x.chips ? chipsH : 0) : 0);
-      const sum = p => p.reduce((a, x, i) => a + hOf(x, i), 0);
-      const full = i => ({items: L[i], more: 0, labs: i === k && subsK.length > 0});
-      let plan = L.map((_, i) => full(i)), lvl = 0;
-      if (sum(plan) > H) {
+      const sum = (p, r) => p.reduce((a, x, i) => a + hOf(x, i, r), 0);
+      // 隠す前に、まず行を詰めてみる（28px → 22px）。入るいちばん高い行の高さを返す。入らなければ 0
+      const fitR = p => { for (let r = ITEM_H; r >= R_MIN; r--) if (sum(p, r) <= H) return r; return 0; };
+      const full = i => ({items: L[i], more: 0, labs: i === k && subsK.length > 0, chips: i === k && subsK.length > 0});
+      let plan = L.map((_, i) => full(i)), lvl = 0, r = fitR(plan);
+      if (!r && subsK.length) {   // 小分類ごとの小見出しを省けば全部入る？（札は残す）
+        const p = plan.map((x, i) => i === k ? {...x, labs: false} : x);
+        r = fitR(p);
+        if (r) plan = p;
+      }
+      if (!r) {
         lvl = -1;
         const maxLen = Math.max(0, ...L.map((l, i) => i === k ? 0 : l.length));
         for (let kk = maxLen - 1; kk >= 1 && lvl < 0; kk--) {   // ① ほかの板块は新着の多い順に kk 件まで
-          const p = L.map((l, i) => i === k || l.length <= kk ? full(i) : {items: topN(l, kk), more: l.length - kk});
-          if (sum(p) <= H) { plan = p; lvl = 1; }
+          const p = L.map((l, i) => i === k ? {...full(i), labs: false} : l.length <= kk ? full(i) : {items: topN(l, kk), more: l.length - kk});
+          const rr = fitR(p);
+          if (rr) { plan = p; lvl = 1; r = rr; }
         }
         if (lvl < 0) {   // ② ほかは見出しだけ、いまの板块は全部
-          const p = L.map((_, i) => i === k ? full(i) : null);
-          if (sum(p) <= H) { plan = p; lvl = 2; }
+          for (const labs of [true, false]) {   // 小見出しつきで入らなければ小見出しなしで
+            const p = L.map((_, i) => i === k ? {...full(i), labs: labs && subsK.length > 0} : null);
+            const rr = fitR(p);
+            if (rr && lvl < 0) { plan = p; lvl = 2; r = rr; }
+          }
         }
         if (lvl < 0 && subsK.length) {   // ③ 小分類の札＋いまの小分類を全部
           const p = L.map((l, i) => i === k ? {items: l.filter(w => w.sub === curSub), more: 0, chips: true} : null);
-          if (sum(p) <= H) { plan = p; lvl = 3; }
+          const rr = fitR(p);
+          if (rr) { plan = p; lvl = 3; r = rr; }
         }
         if (lvl < 0) {   // ④ 入るだけ＋「ほか N 件」
           const sl = subsK.length ? L[k].filter(w => w.sub === curSub) : L[k];
           const room = H - (n - 1) * MIN_H - SEC_H - 6 - EXTRA - (subsK.length ? chipsH : 0) - MORE_H;
-          const items = pickN(sl, Math.max(1, Math.floor(room / ITEM_H)));
+          r = R_MIN + 2;
+          const items = pickN(sl, Math.max(1, Math.floor(room / r)));
           plan = L.map((_, i) => i === k ? {items, more: sl.length - items.length, chips: subsK.length > 0} : null);
           lvl = 4;
         }
       }
       // 余った高さは、まず作品の行の間隔を広げる（1 行 56px まで。48px 以上で 2 行目に今週の件数）。それでも余れば全板块に均等に
       const shown = plan.reduce((a, x) => a + (x ? x.items.length : 0), 0);
-      const ih = Math.max(ITEM_H, Math.min(56, Math.floor(ITEM_H + Math.max(0, H - sum(plan)) / Math.max(1, shown))));
-      const hOf2 = (x, i) => hOf(x, i) + (x ? x.items.length * (ih - ITEM_H) : 0);
+      const ih = Math.max(r, Math.min(56, Math.floor(r + Math.max(0, H - sum(plan, r)) / Math.max(1, shown))));
+      const hOf2 = (x, i) => hOf(x, i, r) + (x ? x.items.length * (ih - r) : 0);
       const spare = Math.max(0, H - plan.reduce((a, x, i) => a + hOf2(x, i), 0)) / n;
       place(plan.map((x, i) => hOf2(x, i) + spare), k);
       slots.forEach((el, i) => {
@@ -426,7 +452,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
                     : x.items.map(pill).join(''))
           + (x.more ? `<button class="more" data-sec="${s.id}">ほか ${x.more} 件${i === k ? 'をさがす' : ''} →</button>` : '');
       });
-      box.querySelector('.lvl').textContent = '隠し方：' + STEP[lvl];
+      const lv = box.querySelector('.lvl');
+      lv.textContent = lv.title = '隠し方：' + STEP[lvl] + (ih < ITEM_H ? `・行 ${ih}px` : '');
     }
 
     function layout() {
@@ -505,11 +532,47 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     range.value = cur; posT.textContent = `${cur + 1}/${engines[0].n}`;
     engines.forEach(g => g.set(cur));
   }
+  // ---------- ダミーで試す：作品数・板块数・偏りを自由に ----------
+  const POOL = [...BIG, sec('旅行','旅行','TRAVEL',EX[1],['国内','海外','ホテル']), sec('美食','グルメ','FOOD',EX[2],['カフェ','ラーメン','スイーツ']),
+                sec('汽车','車','CARS',EX[3],['新車','EV','レース']), sec('其他','その他','OTHER',C.other)];
+  const nOf = t => Math.round(2 * Math.pow(500, t / 100)), tOf = n => Math.round(Math.log(n / 2) / Math.log(500) * 100);
+  let kind = 'even';
+  function makeCustom() {
+    const n = Math.max(2, Math.min(1000, +document.getElementById('cnn').value || 2));
+    const ns = Math.min(+document.getElementById('cs').value, n), secs = POOL.slice(0, ns);
+    const r = rng(n * 31 + ns), w = secs.map(() => kind === 'even' ? 1 : Math.pow(r(), 2) + .04), tw = w.reduce((a, b) => a + b, 0);
+    const counts = w.map(x => Math.max(1, Math.floor(n * x / tw)));
+    let diff = n - counts.reduce((a, b) => a + b, 0);
+    while (diff !== 0) {   // 端数は多い板块で調整
+      const i = counts.indexOf(Math.max(...counts));
+      if (diff > 0) { counts[i] += diff; diff = 0; } else { const t = Math.min(-diff, counts[i] - 1); counts[i] -= t; diff += t; if (!t) break; }
+    }
+    return {t: 'カスタム', secs, works: fake(secs, counts, n * 7 + ns)};
+  }
+  let ct = null;
+  function loadCustom() {
+    clearTimeout(ct);
+    ct = setTimeout(() => {
+      document.querySelectorAll('#cases button').forEach(b => b.setAttribute('aria-pressed', false));
+      document.getElementById('custom').classList.add('on');
+      loadData(makeCustom());
+    }, 120);
+  }
+  document.getElementById('cs').innerHTML = Array.from({length: 11}, (_, i) => `<option value="${i + 2}"${i + 2 === 8 ? ' selected' : ''}>${i + 2}</option>`).join('');
+  document.getElementById('cn').addEventListener('input', ev => { document.getElementById('cnn').value = nOf(+ev.target.value); loadCustom(); });
+  document.getElementById('cnn').addEventListener('input', ev => { const n = Math.max(2, Math.min(1000, +ev.target.value || 2)); document.getElementById('cn').value = tOf(n); loadCustom(); });
+  document.getElementById('cs').addEventListener('change', loadCustom);
+  document.getElementById('ck').addEventListener('click', ev => { const b = ev.target.closest('button'); if (!b) return; kind = b.dataset.k; pickBtn('ck', 'k', kind); loadCustom(); });
+
   function loadCase(i) {
     ci = i;
     document.querySelectorAll('#cases button').forEach((b, j) => b.setAttribute('aria-pressed', j === i));
+    document.getElementById('custom').classList.remove('on');
+    loadData(CASES[i]);
+  }
+  function loadData(cs) {
     board.innerHTML = '';
-    engines = VERS.map(V => { const box = document.createElement('section'); box.className = 'case'; board.appendChild(box); return Engine(box, CASES[i], V); });
+    engines = VERS.map(V => { const box = document.createElement('section'); box.className = 'case'; board.appendChild(box); return Engine(box, cs, V); });
     range.max = engines[0].n - 1;
     engines.forEach(g => g.reset());
     setAll(Math.floor(engines[0].n * .4));
@@ -535,7 +598,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   const q = new URLSearchParams(location.search);
   setH([600, 720, 900].includes(+q.get('h')) ? +q.get('h') : 720);
   setF(q.get('f') === 'auto' ? 'auto' : 'fold');
-  loadCase(Math.max(0, Math.min(CASES.length - 1, (+q.get('c') || 6) - 1)));
+  pickBtn('ck', 'k', kind);
+  if (q.get('n')) {
+    document.getElementById('cnn').value = Math.max(2, Math.min(1000, +q.get('n')));
+    document.getElementById('cn').value = tOf(+document.getElementById('cnn').value);
+    if (q.get('s')) document.getElementById('cs').value = q.get('s');
+    if (q.get('k') === 'skew') { kind = 'skew'; pickBtn('ck', 'k', kind); }
+    document.getElementById('custom').classList.add('on');
+    loadData(makeCustom());
+  } else loadCase(Math.max(0, Math.min(CASES.length - 1, (+q.get('c') || 6) - 1)));
 })();
 </script>
 </body>
