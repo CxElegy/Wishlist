@@ -110,7 +110,7 @@ COMPONENTS = {
              "what": "小元素の候補（en / ja / zh / ko）"},
     "fandom": {"kind": "api", "name": "Fandom MediaWiki API", "spec": "キャラのページの代表画像", "what": "絵のキャラの小元素"},
     "twemoji": {"kind": "api", "name": "Twemoji 15.1.0", "spec": "SVG アイコン · 0 枚を防ぐ最後の砦", "what": "主題の小元素"},
-    "youtube": {"kind": "api", "name": "YouTube 検索ページ（ytInitialData）", "spec": "1 人 4 本 · 題名にグループ名と名前 · 직캠・fancam を先に · サムネイル hq720（1280px）",
+    "youtube": {"kind": "api", "name": "YouTube 検索ページ（ytInitialData）", "spec": "1 人 4 本 · 題名にグループ名と名前 · 직캠・fancam を先に · 動画の場面 hq1・hq2・hq3（480×360、投稿者のサムネイルは字が載るので使わない）",
                 "what": "メンバー・出演者の写真（Commons にない人）。本人確認は顔の規則"},
     "bingimg": {"kind": "api", "name": "Bing 画像検索", "spec": "一覧に載せるだけ · 自動では選ばない", "what": "出所が不確かなので目で見る"},
     "supabase": {"kind": "api", "name": "Supabase REST / RPC", "spec": "news を 500 件ずつ upsert · my_votes · set_size",

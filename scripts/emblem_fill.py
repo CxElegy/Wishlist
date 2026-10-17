@@ -389,11 +389,12 @@ def parse_youtube(html):
     return out
 
 
+YT_FRAMES = (2, 1, 3)   # 真ん中の場面から
 YT_SOLO = re.compile(r"fancam|직캠|focus|individual|teaser|profile|close.?up|個人|ソロ", re.I)
 
 
 def youtube_images(group, subject, limit=4):
-    """YouTube の動画のサムネイル（1280px の hq720）。グループのメンバー・出演者のように Commons に写真がない人用。
+    """YouTube の動画の場面（自動で取られた 3 枚）。グループのメンバー・出演者のように Commons に写真がない人用。
     検索は「グループ名 + 名前」、題名に名前とグループ名の両方があるものだけ（名前が普通の単語でも別物に当たらない）。
     1 人を映す動画（直캠・fancam・teaser）を先に。本人かどうかは check の顔の規則で確かめる。"""
     q = f"{group} {subject}".strip()
@@ -401,8 +402,10 @@ def youtube_images(group, subject, limit=4):
                 3_000_000).decode("utf-8", "replace")
     rows = [(v, t) for v, t in parse_youtube(html) if relevant(t, subject) and (not group or relevant(t, group))]
     rows.sort(key=lambda r: 0 if YT_SOLO.search(r[1]) else 1)
-    return [{"title": t, "image": f"https://i.ytimg.com/vi/{v}/hq720.jpg", "page": f"https://www.youtube.com/watch?v={v}",
-             "license": "YouTube のサムネイル"} for v, t in rows[:limit]]
+    # 投稿者が作ったサムネイル（hq720）は題名の大きな字が載っていて、切り抜くと字が残る。YouTube が動画から自動で取った
+    # 場面（hq1・hq2・hq3 = 動画の 25%・50%・75% のところ、480×360）を使う。字は載っていない
+    return [{"title": t, "image": f"https://i.ytimg.com/vi/{v}/hq{k}.jpg", "page": f"https://www.youtube.com/watch?v={v}",
+             "license": "YouTube の動画の場面"} for v, t in rows[:limit] for k in YT_FRAMES]
 
 
 def news_images(item_name, subject, anywhere=False, limit=12, days=14, summary=False):
