@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>テストグラウンド</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* テストグラウンドの入口。本番の簡報に入れる前に、部品を試すページを並べておく。トークンは scripts/render.py の :root と同じ */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--shadow:4px 4px 0 var(--ink);--skew:-8deg;--muted:rgba(26,28,34,.62)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.7 var(--font-sans)}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+header{background:var(--ink);color:var(--card);padding:28px 24px}
+header small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+h1{margin:0;font:900 24px/1.3 var(--font-sans)}
+main{max-width:860px;margin:0 auto;padding:28px 24px 60px;display:flex;flex-direction:column;gap:22px}
+.card{display:block;text-decoration:none;background:var(--card);padding:18px 20px;box-shadow:var(--shadow);border-left:6px solid var(--alert)}
+.card:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.card h2{margin:0 0 4px;display:flex;align-items:baseline;gap:10px;font:900 18px/1.4 var(--font-sans)}
+.card h2 code{font:700 12px var(--font-mono);color:var(--muted)}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.tg{display:inline-block;background:var(--alert);color:#FFF;padding:0 9px;transform:skewX(var(--skew));font:900 12px/1.7 var(--font-sans)}
+.note{background:var(--card);padding:16px 20px;border:2px solid var(--ink)}
+.note h2{margin:0 0 6px;font:900 16px var(--font-sans)}
+.note ul{margin:0;padding-left:1.2em}
+</style>
+</head>
+<body>
+<header><small>TESTGROUND</small><h1>テストグラウンド</h1></header>
+<main>
+  <section class="note">
+    <h2><span class="tg">決定</span> 左の目次は v6</h2>
+    <ul>
+      <li>パソコン：v6「少ないうちは隠さない・段階的に隠す」。隠し始めるのは既定 24 件（件数で／自動を選べる）</li>
+      <li>小分類の札は必ず出す。見た目は線路（原版）＋作品・板块のアイコン</li>
+      <li>スマホ：上に 2 段の横帯（板块 → いまの板块の作品）だけの簡単な形</li>
+    </ul>
+  </section>
+  <a class="card" href="compare.html"><h2>目次の版の見比べ <code>compare.html</code></h2>
+    <p>v1〜v6 を同じ条件で横に並べる。10 パターン、画面の高さ、隠し始める基準、「ダミーで試す」（作品数 2〜1000・板块数・偏り）。</p></a>
+  <a class="card" href="rails.html"><h2>目次の見本 10 パターン <code>rails.html</code></h2>
+    <p>いろいろな条件の目次を 1 ページに並べる。見た目（線路／P5）、作品が少ないときの開き方を切り替え。</p></a>
+  <a class="card" href="nav.html"><h2>本文つきで 1 本 <code>nav.html</code></h2>
+    <p>実際にページをスクロールして目次の動きを見る。20 / 100 / 1000 件、🔍 検索、スマホの 2 段の横帯。</p></a>
+</main>
+</body>
+</html>
