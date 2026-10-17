@@ -37,6 +37,7 @@ import yaml
 
 import heat
 import images
+import lang
 import render
 import sources
 import taxonomy
@@ -95,7 +96,9 @@ SYSTEM_PROMPT = """你是报纸编辑，把抓取到的新闻条目编成一个�
 - Reddit 帖子是玩家讨论（摘要里有赞数、评论数），热度高时可以归纳成一条“社区热议”报道。
 - 来源优先用国外媒体（含港台、日韩、欧美）：同一件事国外媒体也报了，refs 第一个放国外媒体；
   标了（大陆网站）的条目只在这件事只有大陆网站报道时才用。
-- 不翻译：标题和摘要都保持原文的语言。"""
+- 不翻译：标题和摘要都保持原文的语言。
+- 语言：读者的主言語是 {primary}，副言語依次是 {secondary}。同一件事有几种语言的报道时只写一条：
+  refs 第一个放主言語的条目，headline 用它的原标题；没有主言語的就按副言語的顺序挑。其他语言的条目不单独成条。"""
 
 STORY_SCHEMA = {
     "type": "object",
@@ -426,7 +429,8 @@ def format_entries(entries):
     lines = []
     for i, e in enumerate(entries, 1):
         date = e.published.strftime("%m-%d") if e.published else "日期未知"
-        line = f"[{i}] {date} | {e.source}{'（大陆网站）' if sources.is_domestic(e.url, e.source) else ''} | {e.title}"
+        line = (f"[{i}] {date} | {lang.detect(e.title) or '?'} | {e.source}{'（大陆网站）' if sources.is_domestic(e.url, e.source) else ''}"
+                f" | {e.title}")
         if e.summary:
             line += f" | {e.summary}"
         lines.append(line)
@@ -436,8 +440,9 @@ def format_entries(entries):
 TOKENS = {"calls": 0, "in": 0, "out": 0}   # この実行で Claude API に使ったトークン（実行ログ・管理ページ「リソース」）
 
 
-def edit_stories(client, model, item, entries):
-    """让 LLM 把条目编成报道；失败返回 None。"""
+def edit_stories(client, model, item, entries, langs=None):
+    """让 LLM 把条目编成报道；失败返回 None。langs：读者的言語（lang.order）。"""
+    langs = langs or lang.order()
     prompt = (
         f"关注项：{item['name']}\n"
         f"类型说明：{ITEM_TYPES[item['type']]}\n"
@@ -452,7 +457,7 @@ def edit_stories(client, model, item, entries):
             model=model,
             max_tokens=4000,
             output_config={"effort": "low", "format": {"type": "json_schema", "schema": STORY_SCHEMA}},
-            system=SYSTEM_PROMPT,
+            system=SYSTEM_PROMPT.format(primary=langs[0], secondary="、".join(langs[1:]) or "なし"),
             messages=[{"role": "user", "content": prompt}],
         )
     except Exception as e:  # API 错误或凭据错误：这一项退回原标题，不影响整期
@@ -621,9 +626,10 @@ def find_image(chosen, refs, url):
     return images.pick(chosen, refs, url).image
 
 
-def attach_media(stories, entries, cover, name="", stats=None, used=None):
+def attach_media(stories, entries, cover, name="", stats=None, used=None, langs=None):
     """给每条报道配链接和图（候选、检查和回退见 images.pick），没图的头条用作品封面。
-    一条报道有好几个来源时，国外来源排前面（链接和配图都先用它），中国大陆网站垫后。
+    一条报道有好几个来源时，读者的好みの言語（langs：主言語 → 副言語，lang.order）の来源排前面，同じ言語なら国外来源排前面
+    （链接和配图都先用它），中国大陆网站垫后。
     原文已经删了（404 / 410）的来源不用；来源全删了的报道不出刊。
     出刊时补到的图写回条目（entry.image / image_via），还原出的原文地址写回 entry.link，publish 会存回 inbox，下次直接用。
     used：这一期已经用掉的图，别的报道不再用（几张卡片同一张图很难看）。
@@ -631,7 +637,8 @@ def attach_media(stories, entries, cover, name="", stats=None, used=None):
     used = set() if used is None else used
     out = []
     for s in stories:
-        refs = sorted((entries[r - 1] for r in s.pop("refs")), key=lambda e: sources.is_domestic(e.url, e.source))
+        refs = sorted((entries[r - 1] for r in s.pop("refs")),
+                      key=lambda e: (lang.rank(lang.detect(e.title), langs) if langs else 0, sources.is_domestic(e.url, e.source)))
         url = s.get("url")
         if url and images.gone(url):
             url = None
@@ -2123,6 +2130,7 @@ def write_page():
     DOCS_DIR.mkdir(exist_ok=True)
     settings, items = load_config()
     tz = display_tz(settings)
+    langs = lang.order(settings)   # 読者の言語（主言語 → 副言語）：言語違いの同じニュースは主言語の 1 本だけ
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     issues = with_manual_themes(with_new_items(issues, items), items)
     themes = load_json(THEMES_FILE) or {}
@@ -2156,18 +2164,18 @@ def write_page():
                           render.busy_plan([i["name"] for i in items],
                                            {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
                           {i["name"]: str(i["parent"]) for i in items if i.get("parent")},
-                          {k: v["score"] for k, v in sub_heat.items()})
+                          {k: v["score"] for k, v in sub_heat.items()}, langs)
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
-    heat_html, ver_heat = render.stamp(render.render_heat(analysis, render.collect(issues, order), updated), updated)
+    heat_html, ver_heat = render.stamp(render.render_heat(analysis, render.collect(issues, order, langs), updated), updated)
     (DOCS_DIR / "heat.html").write_text(heat_html, encoding="utf-8")
     (DOCS_DIR / "themes.html").write_text(render.render_themes(  # テーマ見本（30 のテーマと 👍 の演出）
         [{"name": i["name"], "motif": render.template_for(i), "theme": i.get("theme")} for i in items], updated), encoding="utf-8")
     wishes = load_wishlist()
     vers = {}
     if wishes:
-        works = render.collect(issues, [i["name"] for i in items])
+        works = render.collect(issues, [i["name"] for i in items], langs)
         finds = [x for x in (load_json(DISCOVER_FILE) or {}).get("entries", []) if x.get("wish")]
         wish_html, vers["wishlist"] = render.stamp(render.render_wishlist(wishes, works, updated, finds,
                                                                         {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), updated)
@@ -2484,6 +2492,7 @@ def publish(inbox_path=None):
     edits = load_edits(inbox_path)
     themes = load_json(THEMES_FILE)
     sizes = load_sizes()
+    langs = lang.order(settings)   # 読者の言語：主言語 → 副言語（items.yaml の settings.languages）
 
     client = None
     if settings.get("summarize", False) and any(i["name"] not in edits for i in inbox["items"]):
@@ -2517,17 +2526,21 @@ def publish(inbox_path=None):
         elif entries:
             # 还没被 AI 编辑整理过的关注项：有 API 凭据时当场用 AI 编；没有（GitHub Actions）就等 AI 编辑，
             # 只把要紧消息先放上去，其余放进「整理待ち」（不是空白版面，也不放未整理的原标题报道）
-            stories = edit_stories(client, model, item, entries) if client else None
+            stories = edit_stories(client, model, item, entries, langs) if client else None
             if not stories:
                 stories, pending = split_unedited(list(enumerate(entries, 1)), item)
         else:
             stories = []
+        # 言語（lang.py、ルール）：好みの言語の出典があれば見出しをその原題に；言語違いの同じニュースは主言語の 1 本に。
+        # 主言語・副言語にない言語の記事は載せない。篇幅で切る前にやる（重複で枠を使わない）
+        titles = {n: e.title for n, e in enumerate(entries, 1)}
+        stories = lang.dedupe([lang.prefer_ref(s, titles, langs) for s in stories], langs)
         if item.get("max_stories"):  # 篇幅上限：要紧的排在最前，截掉的是后面次要的
             stories = stories[:item["max_stories"]]
         if not stories and not pending and not any(f["changed"] for f in raw["facts"]):
             continue
         stories = [s for s in stories if not is_spam(s.get("headline", ""))]  # 收集后才进 inbox 的垃圾页（合并的旧版）也不出刊
-        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used)  # 原文已删的报道会被去掉
+        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used, langs)  # 原文已删的报道会被去掉
         stories = [s for s in stories if not is_spam(s.get("headline", ""), s.get("url", ""))]  # 还原后的网址里塞着广告的
         # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
         for d, e in zip(raw["entries"], entries):

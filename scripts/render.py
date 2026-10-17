@@ -23,6 +23,7 @@ import urllib.parse
 import yaml
 
 import heat
+import lang
 import processes
 import likefx
 import taxonomy
@@ -1022,8 +1023,9 @@ def _spam(title, url=""):
     return digest.is_spam(title, url)
 
 
-def collect(issues, order=None):
+def collect(issues, order=None, langs=None):
     """把各期按作品汇总：外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。
+    langs：読者の言語（lang.order，主言語 → 副言語）。違う号に入った言語違いの同じニュースは好みの言語の 1 本だけ残す（lang.dedupe）。
     作品顺序固定：先按板块（sections.yaml 的顺序，其他最后），同板块内按 order（items.yaml 的顺序）。
     这样每天更新只是版面里的消息变化，版面的数量和位置不变。"""
     latest = issues[0]
@@ -1046,6 +1048,8 @@ def collect(issues, order=None):
                 w["stories"].append({**st, "_issue": issue["date"], "_work": b["name"],
                                      "_cover": w.get("cover") or b.get("cover")})
     for w in works.values():
+        w["_langs"] = langs or lang.order()
+        w["stories"] = lang.dedupe(w["stories"], w["_langs"])
         w["stories"].sort(key=lambda x: x.get("date") or x["_issue"], reverse=True)  # 按消息本身的日期
         # 没有自己图的报道：作品封面每个版面只用一次（几张卡片同一张图很难看），其余显示作品名封面块。
         # 不拿同一项别的报道的图来顶：那是另一件事的图，放上去是错的
@@ -2339,15 +2343,18 @@ def _left(d, today):
 
 def _agenda(works, today, limit=None):
     """これからの予定：記事に event（日程）があるものを、今日以降・日付順に最大 AGENDA_MAX 件。
-    同じ日・同じ見出しは 1 回だけ。予定が 1 件もなければ何も出さない。"""
+    同じ日・同じ見出しは 1 回だけ。同じ作品・同じ日・同じラベル（配信日など）も 1 回だけ：言語違いの記事が
+    lang.dedupe をすり抜けても、予定の欄に同じ予定を 2 回出さない（好みの言語の記事を先に見る）。予定が 1 件もなければ何も出さない。"""
     rows, seen = [], set()
     for w in works:
-        for x in w["stories"]:
+        langs = w.get("_langs") or lang.order()
+        for x in sorted(w["stories"], key=lambda x: lang.rank(lang.detect(x["headline"]), langs)):
             ev = x.get("event") if isinstance(x.get("event"), dict) else None
             d = str((ev or {}).get("date") or "")
-            if len(d) < 10 or d[:10] < today or (d[:10], x["headline"]) in seen:
+            same = (d[:10], w["name"], (ev or {}).get("label") or "")
+            if len(d) < 10 or d[:10] < today or (d[:10], x["headline"]) in seen or same in seen:
                 continue
-            seen.add((d[:10], x["headline"]))
+            seen.update({(d[:10], x["headline"]), same})
             rows.append((d[:10], w, x, ev))
     if not rows:
         return ""
@@ -3153,16 +3160,17 @@ def _dedupe_parents(works, parents):
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
            motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE, icons=None,
-           busy=None, generated=None, parents=None, sub_heat=None):
+           busy=None, generated=None, parents=None, sub_heat=None, langs=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     sub_heat：{(板块, 小分類): 話題度}（heat.group_scores。目次の小見出しに出す）。order は heat.heat_order の並び。
     parents：{下級: 上級}（items.yaml の parent。上下級に同じニュースが入ったら下級だけに）。icons：{作品: 目次のアイコン}（items.yaml の icon.image）；subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
     heat：{作品: 話題度}（heat.compute 的结果，版面的见出し和トップの右の列に出す）。
-    busy：busy_plan() の結果（版面の「更新中」の帯）；generated：生成時刻（UTC の ISO。帯が「もう終わった回」を見分ける）。"""
+    busy：busy_plan() の結果（版面の「更新中」の帯）；generated：生成時刻（UTC の ISO。帯が「もう終わった回」を見分ける）。
+    langs：読者の言語（lang.order：主言語 → 副言語）。言語違いの同じニュースは主言語の 1 本だけ。"""
     latest = issues[0]
-    works = _dedupe_parents(collect(issues, order), parents)
+    works = _dedupe_parents(collect(issues, order, langs), parents)
     for w in works:
         w["_today"] = latest["date"]
         w["_size"] = (sizes or {}).get(w["name"], "M")

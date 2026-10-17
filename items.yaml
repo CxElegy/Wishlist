@@ -68,6 +68,9 @@ settings:
   news_langs: [zh-TW, en-US]    # 默认的新闻语言区：zh-CN / zh-TW / en-US / ja-JP / ko-KR
                                 # 中文新闻用 zh-TW（港台媒体）：zh-CN 搜回来八九成是大陆网站，常拦海外服务器、图片防盗链。
                                 # 某一项确实要大陆新闻时，在它的 news_langs 里写上 zh-CN（同时也收 Bing 上的大陆网站）
+  languages:                    # 読者の言語（scripts/lang.py）。いずれ読者ごとに ⚙ 設定ページで選ぶ
+    primary: ja                 # 主言語：同じニュースが何語でも来ていたら、この言語の版だけを載せる。網页の UI もこの言語
+    secondary: [en, zh, ko]     # 副言語：主言語の版がないニュースはこの順で拾う。ここにない言語の記事は載せない
   timezone: Asia/Shanghai       # 「每天一期」的日期分界（AI 编辑的定时任务按北京时间判断「今天」，要改得一起改）
   display_timezone: Asia/Tokyo  # 网页上显示的时间（更新时间・播出时间・管理页）。用户住在日本；以后多用户时按各自的时区
   steam_country: cn             # Steam 价格地区
