@@ -360,6 +360,8 @@ button{font-family:inherit}
 .pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:280px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
+.pk .pic{--pko:18px}.pk.big .pic{--pko:40px}  /* 下に手書きの札（.pkt）が重なる高さ：写真はその上に収め、重なる帯はぼかしだけ */
+.pk .pic img:not(.bg):not(.ico){bottom:var(--pko)}.pk .pic.fill img.bg{display:block}
 .pk.big .pic{aspect-ratio:4/3}
 .pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:7px;min-width:0;margin:-18px 10px 0;padding:16px 15px 12px;background:var(--card);
  box-shadow:var(--shadow);transform:rotate(-1deg)}
@@ -480,7 +482,7 @@ button{font-family:inherit}
  .tape:nth-child(n+4){display:none}  /* スマホは各ジャンル 3 作品まで（ほかは下の各版面で） */
  .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
  .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/10}
- .pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
+ .pk.big .pic{--pko:26px}.pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
  .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
  .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
  .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}
@@ -1303,6 +1305,7 @@ SHUFFLE_JS = """
     cards.forEach(el => { el.classList.remove('big'); pool.appendChild(el); });
     if (wishGrid) w.forEach((el, i) => { el.classList.toggle('big', i === 0); wishGrid.appendChild(el); });
     if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
+    dispatchEvent(new Event('resize'));   // 入れ替えたカードの写真を枠に合わせ直す（FIT_JS）
     back.disabled = pos <= 0;
     const fresh = cards.filter(el => !seen[el.dataset.u]).length;
     next.querySelector('small').textContent = fresh ? `未読 ${fresh} 件` : '全部見ました。古い順にもう一度';
@@ -2475,6 +2478,20 @@ FIT_JS = """
     const p = img.closest('.pic');
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     const nat = img.naturalWidth / img.naturalHeight;
+    const pk = p.closest('.pk');
+    if (pk) {   // 気になるかも？：写真は切らない（文字入りのバナーが多い）。下に重なる札の分（--pko）は写真の外
+      const pko = parseFloat(getComputedStyle(p).getPropertyValue('--pko')) || 0;
+      p.style.height = p.style.aspectRatio = p.style.minHeight = '';
+      if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長すぎ・横長すぎは 1.1〜2.4 倍の範囲でぼかしを足す）
+        const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 2.4), w * 1.1);
+        Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', height: (h + pko) + 'px'});
+        p.classList.remove('fill');
+        return;
+      }
+      const r = nat / (p.clientWidth / Math.max(1, p.clientHeight - pko));
+      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);   // ほぼ同じ比率のときだけ埋める（切れるのは 8% まで）
+      return;
+    }
     if (p.closest('.wc') && !(p.closest('.wc.lead') && innerWidth > 760)) { p.classList.add('fill'); return; }   // 写真の壁：枠 16:10 にそろえて埋める（段の高さがそろう）
     const r = nat / (p.clientWidth / p.clientHeight);
     // そのほかの枠は、比率が近いときだけ埋める（遠いときはぼかしの上に全体を見せる）
