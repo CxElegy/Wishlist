@@ -536,11 +536,17 @@ def _dedupe(cands):
     return out
 
 
-def check(cands, log=print, need_face=False):
-    """ダウンロードして使えるか確かめる（短辺 160px 以上・開ける）。
-    need_face（人物・グループ）：顔の特徴量で「その人」かを確かめる（face_id）。顔がない写真（観客席・絵画・物）と、
-    記事の代表画像と別人の写真を落とす。モデルが使えないときは顔の有無だけ（haar）に下げる。
-    最後に、似すぎた画像（平均ハッシュ）を落とす。"""
+def check(cands, log=print, need_face=False, strict=False, reasons=None):
+    """ダウンロードして使えるか確かめる（短辺 160px 以上・開ける）。落とした理由は reasons（dict）に数える。
+    need_face（人物・グループ・出演者）：顔の特徴量で「その人」かを確かめる（face_id）。目で見ていた判断を規則にしたもの：
+      顔なし（観客席・絵画・物）／遠景（顔が画像の高さの 10% 未満）／何人も写っている（2 番目の顔が 60% 以上）／
+      別人（記事の代表画像と cos < 0.363。strict = 基準がなければ同じ顔 2 枚以上のときだけ本人）
+    モデルが使えないときは顔の有無だけ（haar）に下げる。最後に、似すぎた画像（差分ハッシュ）を落とす。"""
+    reasons = {} if reasons is None else reasons
+
+    def drop(why, c, detail=""):
+        reasons[why] = reasons.get(why, 0) + 1
+        log(f"  [{why}] {c['subject']}（{c['source']}）{detail}")
     dl = []
     for c in cands:
         try:
@@ -551,36 +557,46 @@ def check(cands, log=print, need_face=False):
             shape, key, img = inspect(data)
             from PIL import ImageStat
             if ImageStat.Stat(img.convert("L")).stddev[0] < 6:   # 真っ白・真っ黒のほぼ一色の画像
-                log(f"  [白紙] {c['subject']}（{c['source']}）")
+                drop("白紙", c)
                 continue
             dl.append({**c, "shape": shape, "_img": img})
         except Exception as e:
-            log(f"  [使えない] {c['subject']}（{c['source']}）：{str(e)[:50]}")
+            drop("使えない", c, str(e)[:50])
     if need_face:
         by = {}
         for i, c in enumerate(dl):
             by.setdefault(c["subject"], []).append(i)
-        drop = set()
+        out = set()
         for subj, ids in by.items():
             test = [i for i in ids if dl[i]["source"] != "直接指定"]
             with _face_lock:
-                feats = [face_id.main_face(dl[i]["_img"]) for i in test]
+                got = [face_id.face_info(dl[i]["_img"]) for i in test]
+            feats = []
+            for k, (feat, info) in enumerate(got):
+                why = face_id.photo_problem(info) if info else None
+                if why:
+                    drop(why, dl[test[k]])
+                    out.add(test[k])
+                    feats.append(None)
+                else:
+                    feats.append(feat)
             anchor = next((k for k, i in enumerate(test) if dl[i].get("anchor")), None)
-            keep = face_id.same_person(feats, anchor)
+            keep = face_id.same_person(feats, anchor, strict=strict)
             if keep is None:   # モデルなし：顔の有無だけ
                 log("  [本人確認なし] 顔モデルが使えないので、顔があるかだけ確かめた")
                 with _face_lock:
                     keep = {k for k, i in enumerate(test) if emblem.face_box(dl[i]["_img"].convert("RGB"))}
             for k, i in enumerate(test):
-                if k not in keep:
-                    drop.add(i)
-                    log(f"  [別人・顔なし] {subj}（{dl[i]['source']}）")
-        dl = [c for i, c in enumerate(dl) if i not in drop]
+                if k not in keep and i not in out:
+                    drop("別人", dl[i])
+                    out.add(i)
+        dl = [c for i, c in enumerate(dl) if i not in out]
     good, hashes = [], []
     for c in dl:
         if c["_img"] is not None:
             h = _hash(c["_img"])
             if any(bin(h ^ x).count("1") <= 4 for x in hashes):
+                reasons["同じ画像"] = reasons.get("同じ画像", 0) + 1
                 continue
             hashes.append(h)
         good.append(c)
@@ -645,7 +661,7 @@ def commit(item, good, picks, replace=False, log=print):
     emblem.write_item(name, merged, None)
     log(f"→ 「{name}」に {len(merged)} 枚（目標 {target}、最大 {hi}）")
     if kind in ("person", "group", "character"):
-        emblem.cut_all(name, kind != "person")
+        emblem.cut_all(name, not needs_face(item))   # 実在の人（本人・グループ・出演者）は写真として切る
         emblem.fit_all(name)
     return merged
 
@@ -661,10 +677,10 @@ def needs_face(item):
     return kind_of(item) in ("person", "group") or (kind_of(item) == "character" and bool(item.get("emblem_people")))
 
 
-def run_item(item, auto=False, picks=None, log=print, tried=None):
+def run_item(item, auto=False, picks=None, log=print, tried=None, strict=False, reasons=None):
     log(f"■ {item['name']}（{KIND_JA[kind_of(item)]}）")
     cands = gather(item, log, tried)
-    good = check(cands, log, need_face=needs_face(item))
+    good = check(cands, log, need_face=needs_face(item), strict=strict, reasons=reasons)
     out = _sheet_path(item["name"])
     sheet(good, out)
     (out.with_suffix(".json")).write_text(json.dumps([{k: v for k, v in c.items() if k != "_img"} for c in good],
@@ -839,14 +855,15 @@ def _write_sheet(item, good):
 
 
 def fill_one(item, log=print):
-    """後台で 1 つの関注項を埋める：候補を集めて、確かなもの（Web 画像検索以外・人物は本人確認済み）だけ自動で書き込む。
-    Web 画像検索は、確かな取り方で足りないときだけ集めて、要確認の一覧に載せる。
-    → {state, note, tried, sheet}。目標に届かなければ、残りの候補だけの一覧を作り直して「要確認」（AI が目で見て選ぶ）。"""
+    """後台で 1 つの関注項を埋める。AI も人も見ない：目で見ていた判断は全部規則にしてある。
+      集める（Web 画像検索は使わない）→ 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）
+      → 選ぶ（auto_pick：種類ごとの確かな取り方だけ・同じ人は 1 枚）→ 書いて切り抜く（穴・端で切れたものは落ちる）
+    → {state: ok / failed, note, tried, funnel}。残った候補も「重複」「確かでない取り方」などの理由に振り分ける。"""
     before = status(item)["have"]
     if needs_face(item) and face_id.engine() is None:
         return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "tried": {}}
-    tried = {}
-    good, _ = run_item(item, log=log, tried=tried)   # Web 画像検索も集める（一覧で目で選ぶ用。自動では選ばない）
+    tried, reasons = {}, {}
+    good, _ = run_item({**item, "_no_web": True}, log=log, tried=tried, strict=True, reasons=reasons)
     picks = auto_pick(item, good, web=False, strict=True)
     with WRITE_LOCK:
         if picks:
@@ -854,18 +871,28 @@ def fill_one(item, log=print):
         fresh = next((i for i in load_items() if i["name"] == item["name"]), item)
     st = status(fresh)
     added = max(0, st["have"] - before)
-    have_img = _have_images(fresh)
-    rest = [c for n, c in enumerate(good, 1) if n not in picks and c["image"] not in have_img]
-    # 漏斗：集めた候補 → 使える（開ける・同じでない・本人）→ 自動で書いた → 一覧に残した（管理ページ「小元素の探し方」）
-    funnel = {"found": sum(tried.values()), "usable": len(good), "auto": len(picks), "added": added, "review": len(rest)}
+    if len(picks) > added:   # 書いたが切り抜きの検査（穴・端で切れた・にじみ）で落ちた
+        reasons["切り抜きの検査"] = reasons.get("切り抜きの検査", 0) + len(picks) - added
+    kind = kind_of(item)
+    covered = {_base_subject(x.get("subject")) for x in fresh.get("emblem") or [] if isinstance(x, dict)}
+    for n, c in enumerate(good, 1):   # 選ばなかった候補の理由（前は「要確認」として AI が目で見ていた）
+        if n in picks:
+            continue
+        if not needs_face(item) and c["source"].split("(")[0] not in AUTO_SOURCES.get(kind, ()):
+            why = "確かでない取り方"
+        elif kind in ("group", "character") and c["subject"] in covered:
+            why = "重複（その人はもういる）"
+        elif c["image"] in _have_images(fresh):
+            why = "もう使っている・外した画像"
+        else:
+            why = "目標を超える"
+        reasons[why] = reasons.get(why, 0) + 1
+    funnel = {"found": sum(tried.values()), "usable": len(good), "auto": len(picks), "added": added, "rejected": reasons}
+    top = "・".join(f"{k} {v}" for k, v in sorted(reasons.items(), key=lambda kv: -kv[1])[:3])
     if st["state"] == "ok":
         return {"state": "ok", "note": f"{added} 枚足して目標に届いた", "tried": tried, "funnel": funnel}
-    if rest:
-        out = _write_sheet(fresh, rest)
-        return {"state": "review", "tried": tried, "sheet": str(out), "funnel": funnel,
-                "note": f"{added} 枚足した。残りの候補 {len(rest)} 枚は自動で決められないので一覧で確かめる"}
     return {"state": "failed", "tried": tried, "funnel": funnel,
-            "note": f"{added} 枚足した。使える候補がもうない（{RETRY_HOURS} 時間後にもう一度）"}
+            "note": f"{added} 枚足した。残りは規則で外した（{top or '候補なし'}）。{RETRY_HOURS} 時間後にもう一度"}
 
 
 def fresh_have(item):

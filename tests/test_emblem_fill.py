@@ -467,7 +467,7 @@ class Backend(unittest.TestCase):
     def test_render(self):
         bg = {k: {"state": "wait", "text": "<x>"} for k in ("collect", "edit", "design", "emblem")}
         rows = [{"name": "A", "section": "游戏", "bg": bg}, {"name": "B", "section": "好物", "bg": {**bg, "emblem": {"state": "failed", "text": ""}}}]
-        todo = {"emblem-cron": {"text": "足りない 2 版面を順に", "items": ["<A>", "B"]}}
+        todo = {"gate": {"text": "小元素 2 版面を Python で", "items": ["<A>", "B"]}}
         log = [{"when": "10/17 08:40", "proc": "emblem", "name": "小元素の自動補完", "level": "error", "text": "<b>x</b>"}]
         out = render._admin_backend(rows, todo, log)
         self.assertIn('class="nxs"', out)
@@ -475,10 +475,13 @@ class Backend(unittest.TestCase):
         self.assertIn('class="lg-error"', out)
         self.assertIn("&lt;b&gt;x&lt;/b&gt;", out)
         cfg = json.loads(out.split('id="bg-cfg">')[1].split("</script>")[0])
-        self.assertEqual(next(x for x in cfg if x["id"] == "emblem-cron")["items"], ["<A>", "B"])   # JS が textContent で入れる
+        self.assertEqual(next(x for x in cfg if x["id"] == "gate")["items"], ["<A>", "B"])   # JS が textContent で入れる
         self.assertTrue(all(x["slots"] for x in cfg))
         self.assertIn('class="pbar"', out)
         self.assertIn('class="lims"', out)
+        self.assertIn('class="aiu"', out)
+        for t, k, _ in processes.AI_TASKS:
+            self.assertIn(k, processes.AI_STATE_JA)
         for name, _, _ in processes.LIMITS:
             self.assertIn(name, out)
         self.assertIn("まだ記録がありません", render._admin_backend(rows))
@@ -603,3 +606,87 @@ class EmblemDetail(unittest.TestCase):
         self.assertIn("集めた <b>30</b>", out)
         self.assertIn("&lt;m&gt;", out)
         self.assertNotIn("<m>", out)
+
+
+class Gate(unittest.TestCase):
+    """後台のゲート：仕事があるか・AI が要るかをプログラムだけで決める（scripts/gate.py）。"""
+
+    def setUp(self):
+        import tempfile
+        import gate
+        self.gate = gate
+        self.dir = tempfile.TemporaryDirectory()
+        self.d = pathlib.Path(self.dir.name)
+        self.state = self.d / "gate.json"
+
+    def tearDown(self):
+        self.dir.cleanup()
+
+    def test_edit_work(self):
+        (self.d / "2026-10-17.json").write_text(json.dumps({"items": [{"name": "A", "entries": [{}] * 3},
+                                                                  {"name": "B", "entries": [{}] * 2}]}), encoding="utf-8")
+        self.assertEqual(self.gate.edit_work(self.d, today="2026-10-17"), {"A": 3, "B": 2})   # edit.json なし = 全部未編集
+        (self.d / "2026-10-17.edit.json").write_text(json.dumps({"_covered": {"A": 3, "B": 1}}), encoding="utf-8")
+        self.assertEqual(self.gate.edit_work(self.d, today="2026-10-17"), {"B": 1})
+        self.assertEqual(self.gate.edit_work(self.d, today="2026-10-18"), {})   # 今日の inbox がない
+
+    def test_photo_work(self):
+        (self.d / "photos").mkdir()
+        (self.d / "photos" / "7.json").write_text("{}", encoding="utf-8")
+        (self.d / "photos" / "7.jpg").write_bytes(b"x")
+        self.assertEqual(self.gate.photo_work(self.d), ["7"])
+
+    def test_fire_only_with_work_token_and_new_sig(self):
+        calls = []
+        post = lambda url, token: calls.append((url, token)) or 200
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}, "photos": {"need": False, "sig": "p"}}}, self.state)
+        res = self.gate.fire(self.state, post=post, env={})
+        self.assertEqual(res["edit"], "トークン未設定（定時を待つ）")
+        self.assertEqual(res["photos"], "仕事なし（起こさない）")
+        self.assertEqual(calls, [])
+        res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
+        self.assertEqual(res["edit"], "Claude を起こした")
+        self.assertIn("trig_01Ly92RcW35cBwZ9amWZr11j", calls[0][0])
+        res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
+        self.assertEqual(res["edit"], "同じ仕事で起こし済み")   # 同じ指紋では 2 回起こさない
+        self.assertEqual(len(calls), 1)
+        data = self.gate.load(self.state)
+        data["jobs"]["edit"]["sig"] = "s2"   # 新しい記事が来た
+        self.gate.save(data, self.state)
+        self.assertEqual(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"], "Claude を起こした")
+
+    def test_fire_failure_is_recorded(self):
+        def post(url, token):
+            raise RuntimeError("403")
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}}}, self.state)
+        self.assertTrue(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"].startswith("起こせなかった"))
+
+
+class Rules(unittest.TestCase):
+    """前は Claude が目で見ていた判断を、数で決める規則。"""
+
+    def test_photo_problem(self):
+        self.assertEqual(face_id.photo_problem({"faces": 0}), "顔なし")
+        self.assertEqual(face_id.photo_problem({"faces": 1, "ratio": 0.05, "second": 0}), "遠景")
+        self.assertEqual(face_id.photo_problem({"faces": 2, "ratio": 0.3, "second": 0.8}), "何人も写っている")
+        self.assertIsNone(face_id.photo_problem({"faces": 2, "ratio": 0.3, "second": 0.2}))   # 後ろに小さく写っているのはよい
+
+    def test_strict_identity(self):
+        old = (face_id.engine, face_id.similarity)
+        face_id.engine = lambda: ("det", "rec")
+        face_id.similarity = lambda a, b: 1.0 if a == b else 0.0
+        try:
+            self.assertEqual(face_id.same_person([5], None, strict=True), set())   # 基準なしで 1 枚 = 本人と言えない
+            self.assertEqual(face_id.same_person([5, 5], None, strict=True), {0, 1})
+            self.assertEqual(face_id.same_person([5], None), {0})   # 手動のときは前のまま
+        finally:
+            face_id.engine, face_id.similarity = old
+
+    def test_hole_share(self):
+        import emblem
+        import numpy as np
+        solid = np.zeros((100, 100), bool)
+        solid[20:100, 20:80] = True
+        self.assertEqual(emblem.hole_share(solid), 0.0)
+        solid[70:100, 40:60] = False   # 服の下の方が抜けた（下の端につながる穴）
+        self.assertGreater(emblem.hole_share(solid), emblem.HOLE_MAX)

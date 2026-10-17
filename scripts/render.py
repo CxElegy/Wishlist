@@ -3521,6 +3521,9 @@ def _admin_backend(rows, todo=None, log=None, res=None):
     return (f'<h3 class="h3">次の実行 <small>近い順 · 時刻は日本時間 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
             f'<ol class="nxs">{"".join(cards)}</ol>'
             + '<h3 class="h3">リソース <small>サーバーの残り · 容量 · トークン</small></h3>' + _admin_resources(res) +
+            '<h3 class="h3">AI を使うか <small>前に AI でやっていた判断ごとに · 規則にできたものは AI なし（トークン 0）</small></h3>'
+            '<ul class="aiu">' + "".join(f'<li class="aiu-{k}"><span class="aiu-s">{e(processes.AI_STATE_JA[k])}</span><b>{e(t)}</b><small>{e(why)}</small></li>'
+                                         for t, k, why in processes.AI_TASKS) + '</ul>'
             '<h3 class="h3">並列と制限 <small>同時にいくつ動かすか · それ以上速くできない理由</small></h3>'
             '<ul class="lims">' + "".join(f'<li><b>{e(a)}</b><span class="lim-n">{e(b)}</span><small>{e(c)}</small></li>'
                                           for a, b, c in processes.LIMITS) + '</ul>'
@@ -3596,8 +3599,11 @@ def _emblem_flow(d, state):
                      f'<b>{e(c["src"])}</b><i>{val}</i>{"" if c.get("auto") else "<small>目視</small>"}</li>')
     f = d.get("funnel") or {}
     funnel = (f'<span>集めた <b>{f.get("found", 0)}</b></span><span>使える <b>{f.get("usable", 0)}</b></span>'
-              f'<span>自動で書いた <b>{f.get("auto", 0)}</b></span><span>一覧へ <b>{f.get("review", 0)}</b></span>') if f else ""
-    check = ("本人確認 YuNet + SFace（cos ≥ 0.363）" if d.get("faces") else "名前・取り方の決まりで確認") + \
+              f'<span>書いた <b>{f.get("added", f.get("auto", 0))}</b></span>') if f else ""
+    rej = f.get("rejected") or {}
+    if rej:   # 規則で外した理由（前は目で見ていた）
+        funnel += "".join(f'<span class="ef-rj">{e(k)} <b>{v}</b></span>' for k, v in sorted(rej.items(), key=lambda kv: -kv[1]))
+    check = ("規則：顔の大きさ・人数・本人（YuNet + SFace cos ≥ 0.363）・切り抜きの穴" if d.get("faces") else "規則：取り方の決まり・同じ画像") + \
             (f" · 目で外した {d['rejects']} 枚" if d.get("rejects") else "")
     pct = min(100, round(100 * (d.get("have") or 0) / max(1, d.get("target") or 1)))
     tried = [c for c in d.get("chain") or [] if c.get("n") is not None]
@@ -3776,8 +3782,15 @@ ADMIN_PAGE_CSS = """
 .ef-na{opacity:.45;border-style:dotted!important}
 .ef-eye{border-style:dashed!important}
 .ef-fun{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:var(--fs-label)!important}
-.ef-todo{border-color:var(--rose)}.ef-adv{color:var(--alert);font-weight:700!important}
+.ef-rj{color:var(--alert)}.ef-todo{border-color:var(--rose)}.ef-adv{color:var(--alert);font-weight:700!important}
 @media (max-width:860px){.bgm tr.bgx{display:block;padding:0 0 10px}.bgm tr.bgx td{display:block;padding:0}.ef-box:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%)}.ef-flow{gap:20px}.ef-box{flex-basis:100%}}
+.aiu{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px 18px}
+.aiu li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:7px 10px;border-left:4px solid var(--hair);background:var(--card)}
+.aiu b{font:900 13px/1.4 var(--font-sans)}.aiu small{font:500 var(--fs-label)/1.55 var(--font-sans);opacity:.85}
+.aiu-s{justify-self:start;font:700 var(--fs-label) var(--font-sans);padding:0 6px;border:1.5px solid currentColor}
+.aiu-rule{border-left-color:var(--good)}.aiu-rule .aiu-s{color:var(--good)}
+.aiu-gate{border-left-color:var(--gold)}.aiu-gate .aiu-s{color:var(--ink);background:var(--gold);border-color:var(--ink)}
+.aiu-ai{border-left-color:var(--rose)}.aiu-ai .aiu-s{color:var(--rose)}
 .lims{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px 18px}
 .lims li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair)}
 .lims b{font:900 13px/1.4 var(--font-sans)}.lim-n{font:700 12px var(--font-mono);padding:0 6px;background:var(--ink);color:var(--card);white-space:nowrap}
@@ -3900,7 +3913,7 @@ ADMIN_PAGE_JS = """
     runs.slice(0,12).forEach(function(r,i){var li=el('li',i?null:'next'),tm=el('time',null,hm(r.t));tm.appendChild(el('small',null,left(r.t-now)));li.appendChild(tm);
       var d=el('div');d.appendChild(el('b',null,r.p.name));var first=!seen[r.p.id];seen[r.p.id]=1;
       d.appendChild(el('span','q-t',first||r.p.id!=='emblem-cron'?r.p.text:'（前の回の続き）'));
-      if(first&&r.p.items.length){var w=el('span','q-i');r.p.items.forEach(function(n,j){w.appendChild(el('i',null,(r.p.id==='emblem-cron'?(j+1)+'. ':'')+n));});d.appendChild(w);}
+      if(first&&r.p.items.length){var w=el('span','q-i');r.p.items.forEach(function(n,j){w.appendChild(el('i',null,(r.p.id==='gate'?(j+1)+'. ':'')+n));});d.appendChild(w);}
       li.appendChild(d);q.appendChild(li);});
     if(!runs.length)q.appendChild(el('li','empty','予定がありません。'));}
   tick();setInterval(tick,60000);

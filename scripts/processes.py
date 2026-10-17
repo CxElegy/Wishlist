@@ -71,6 +71,12 @@ COMPONENTS = {
                  "what": "emblem.check_whole：体が枠で切れた・輪郭がにじんだものを使わない"},
     "facefit": {"kind": "algo", "name": "顔の大きさをそろえる", "spec": "顔 = 高さの 32% · 全身は上 46% · 胸像があれば全身は外す",
                 "what": "emblem.face_fit / upper_body / keep_framing"},
+    "facerule": {"kind": "rule", "name": "写真の規則 photo_problem", "spec": "顔の高さ ≥ 10% · 2 番目の顔 < 60% · 基準なしは同じ顔 2 枚以上",
+                 "what": "face_id.py：前は Claude が目で見ていた「遠景・集合写真・別人」を数で判断する"},
+    "holes": {"kind": "rule", "name": "切り抜きの穴 hole_share", "spec": "実在の人の写真で体の中の穴 > 3% は外す（絵は除く）",
+              "what": "emblem.check_whole：服が背景と同じ色で抜けた切り抜きを落とす"},
+    "gate": {"kind": "algo", "name": "ゲート gate.py", "spec": "仕事の指紋が同じなら 6 時間は起こし直さない",
+             "what": "仕事があるか・AI が要るかをプログラムだけで決める。AI の要らない仕事はその場で済ませる"},
     "taste": {"kind": "algo", "name": "好みの学習", "spec": "ラベルごと ±1 · 上限 −6〜+4 · 出すのは 5 点以上",
               "what": "digest.learn_taste：👍👎 の最後の一票から"},
     "storydedupe": {"kind": "algo", "name": "StoryDeduper union-find + OpenCC", "spec": "共有トークン ≥ 2（漢字 2 文字 = 0.5）· 繁→簡",
@@ -129,36 +135,58 @@ PROCESSES = [
         ],
     },
     {
-        "id": "emblem-cron", "name": "小元素の自動補完（定時）", "en": "EMBLEM CRON", "lane": "ai",
-        "schedule": [(h, 40) for h in range(0, 24, 4)],   # UTC（日本時間 1・5・9・13・17・21 時 40 分）。定時タスク「小元素 · 后台补全」
-        "when": "4 時間ごと · 40 分 · 4 本並列",
-        "trigger": "定時タスク（Claude のスケジュール）が 4 時間ごとに呼ぶ。1 回あたり約 40 分の予算",
-        "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。確かな画像だけ自動で書き、"
-                   "決めきれないものは「要確認」として Claude が一覧を目で見て選ぶ。進捗は管理ページの「小元素 → 進捗」。",
-        "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "state/emblem_progress.json"], "doc": "TEMPLATES.md",
-        "uses": ["rembg", "yunet", "sface", "wiki", "fandom"],
+        "id": "emblem-cron", "name": "小元素の自動補完", "en": "EMBLEM", "lane": "actions",
+        "schedule": "gate", "when": "ゲートが仕事ありのとき · 40 分 · 4 本並列 · AI なし",
+        "trigger": "後台のゲート（2 時間ごと）が「足りない版面がある」と判断したとき。GitHub Actions で Python だけで動く",
+        "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。前は Claude が目で見ていた判断（別人・遠景・集合写真・"
+                   "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。",
+        "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", ".github/workflows/background.yml"], "doc": "TEMPLATES.md",
+        "uses": ["rembg", "yunet", "sface", "facerule", "holes", "wiki", "fandom"],
         "flow": [
-            {"id": "b1", "kind": "step", "lane": "ai", "title": "準備", "text": "main を最新に · モデルを入れる（初回だけダウンロード）",
+            {"id": "b1", "kind": "decision", "lane": "actions", "title": "ゲート：足りない版面がある？", "text": "目標未満 · 24 時間以内の失敗なし",
+             "uses": ["gate"], "no": "何もしない（Actions 1 分で終わり）"},
+            {"id": "b2", "kind": "step", "lane": "actions", "title": "準備", "text": "モデルはキャッシュから（初回だけダウンロード）",
              "uses": ["rembg", "yunet", "sface"]},
-            {"id": "b2", "kind": "decision", "lane": "ai", "title": "やってよい？", "text": "目標未満 · 24 時間以内の失敗なし",
-             "no": "今回は飛ばす"},
-            {"id": "b3", "kind": "fan", "lane": "ai", "title": "候補を集める", "x": "×4 版面を同時に", "mode": "上から順に · 足りるまで",
+            {"id": "b3", "kind": "fan", "lane": "ext", "title": "候補を集める", "x": "×4 版面を同時に", "mode": "上から順に · 足りるまで",
              "items": [("0", "直接指定", "公式の立ち絵"), ("1", "Fandom", "キャラ", "fandom"), ("2", "Wikidata", "P154・P18", "wiki"),
                        ("3", "Wikipedia", "≤10", "wiki"), ("4", "Commons", "≤8", "wiki"), ("5", "記事の配図", "≤12"),
-                       ("6", "公式サイト", "ロゴ"), ("7", "Twemoji", "主題", "twemoji"), ("8", "Bing 画像", "一覧だけ", "bingimg")],
+                       ("6", "公式サイト", "ロゴ"), ("7", "Twemoji", "主題", "twemoji")],
              "uses": ["pace"]},
-            {"id": "b4", "kind": "step", "lane": "ai", "title": "使える画像か", "text": "6MB まで · 短辺 160（横長ロゴは長辺 300）· 白紙を除く",
+            {"id": "b4", "kind": "step", "lane": "actions", "title": "使える画像か", "text": "6MB まで · 短辺 160（横長ロゴは長辺 300）· 白紙・同じ画像を除く",
              "uses": ["ahash"]},
-            {"id": "b5", "kind": "step", "lane": "ai", "title": "本人確認", "x": "モデル 1 つを順番に", "text": "人物・グループ・出演者だけ",
-             "uses": ["yunet", "sface"]},
-            {"id": "b6", "kind": "decision", "lane": "ai", "title": "確かな取り方？", "text": "人物 = 本人確認済み · キャラ = 直接指定・Fandom · Web は除く",
-             "no": "一覧に残す → 要確認"},
+            {"id": "b5", "kind": "table", "lane": "actions", "title": "人物の写真の規則（前は目で見ていた）",
+             "rows": [("顔なし", "観客席・絵画・物"), ("遠景", "顔の高さ < 画像の 10%"), ("何人も写っている", "2 番目の顔 ≥ 60%"),
+                      ("別人", "記事の代表画像と cos < 0.363 · 基準なしは同じ顔 2 枚以上")],
+             "uses": ["yunet", "sface", "facerule"]},
+            {"id": "b6", "kind": "decision", "lane": "actions", "title": "確かな取り方？", "text": "人物 = 規則を通った写真 · キャラ = 直接指定・Fandom · 主題 = Wikidata・Commons・Twemoji",
+             "no": "理由をつけて外す（確かでない取り方・重複・目標を超える）"},
             {"id": "b7", "kind": "step", "lane": "repo", "title": "書いて切り抜く", "x": "1 枚ずつ（WRITE_LOCK）",
-             "uses": ["rembg", "cutcheck", "facefit"]},
-            {"id": "b8", "kind": "decision", "lane": "ai", "title": "目標に届いた？", "no": "候補あり → 要確認 / なし → 失敗（24 時間後）"},
-            {"id": "b9", "kind": "store", "lane": "repo", "title": "items.yaml · docs/emblems · state/emblem_progress.json · state/log"},
-            {"id": "b10", "kind": "step", "lane": "ai", "title": "要確認を目で選ぶ", "text": "別人・広告・白紙・重複は emblem_reject へ",
+             "uses": ["rembg", "cutcheck", "holes", "facefit"]},
+            {"id": "b8", "kind": "decision", "lane": "actions", "title": "目標に届いた？", "no": "失敗 → 24 時間後にもう一度 · 管理ページに理由と助言"},
+            {"id": "b9", "kind": "store", "lane": "repo", "title": "items.yaml · docs/emblems · state/emblem_progress.json · state/log",
+             "text": "変わったときだけコミット → ページ生成"},
+        ],
+    },
+    {
+        "id": "gate", "name": "後台のゲート", "en": "GATE", "lane": "actions", "workflow": "background.yml",
+        "schedule": [(h, 47) for h in range(0, 24, 2)],   # UTC（日本時間 奇数時 47 分）＝収集の 30 分後
+        "when": "2 時間ごと · AI が要るときだけ Claude",
+        "trigger": "2 時間ごと（日本時間 奇数時 47 分）。GitHub Actions",
+        "summary": "仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
+                   "AI が要る仕事（AI 編集・写真）は仕事があるときだけ Claude を起こす。Claude は起きるたびにトークンを使うので、空振りをなくす。",
+        "files": ["scripts/gate.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "CLAUDE.md", "uses": ["gate"],
+        "flow": [
+            {"id": "g1", "kind": "fan", "lane": "actions", "title": "仕事を調べる", "mode": "全部を毎回",
+             "items": [("1", "小元素", "目標未満の版面（24 時間以内の失敗は除く）"), ("2", "AI 編集", "今日の inbox で _covered より新しい記事"),
+                       ("3", "写真", "inbox/photos/*.json")]},
+            {"id": "g2", "kind": "decision", "lane": "actions", "title": "小元素の仕事がある？", "no": "飛ばす"},
+            {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 4 本並列", "text": "「小元素の自動補完」"},
+            {"id": "g4", "kind": "decision", "lane": "actions", "title": "AI が要る仕事がある？", "text": "AI 編集・写真", "no": "Claude は起こさない（トークン 0）"},
+            {"id": "g5", "kind": "decision", "lane": "actions", "title": "同じ仕事で 6 時間以内に起こしていない？", "text": "仕事の指紋（sig）を比べる",
+             "uses": ["gate"], "no": "起こさない（二重に使わない）"},
+            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret）が要る · GATE_FIRE=1 のとき",
              "uses": ["claude"]},
+            {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったときだけコミット"},
         ],
     },
     {
@@ -377,6 +405,7 @@ ARCH = [
     ]},
     {"id": "act", "title": "GitHub Actions", "note": "毎回新しいサーバー（4 コア）· 終わったら消える", "cost": "無料", "style": "temp", "nodes": [
         {"id": "p-collect", "proc": "collect", "subs": ["heat", "recommend", "notify", "images"]},
+        {"id": "p-gate", "proc": "gate", "subs": ["emblem-cron"]},
         {"id": "p-requests", "proc": "requests"},
         {"id": "p-render", "proc": "render", "subs": ["colors"]}]},
     {"id": "repo", "title": "GitHub リポジトリ", "note": "ずっと残る · 全部の元データ", "cost": "無料", "style": "keep", "nodes": [
@@ -385,8 +414,8 @@ ARCH = [
         {"id": "s-wish", "label": "wishlist.yaml", "text": "愿望清单"},
         {"id": "s-state", "label": "state/", "text": "進捗・ログ・話題度・おすすめ・通知済み"}]},
     {"id": "ai", "title": "Anthropic · Claude", "note": "定時タスク · 毎回新しいコンテナ（4 コア · 15GB）", "cost": "サブスク枠", "style": "temp", "nodes": [
-        {"id": "p-edit", "proc": "edit", "subs": ["emblem"]}, {"id": "p-emblem-cron", "proc": "emblem-cron"}, {"id": "p-photos", "proc": "photos"},
-        {"id": "s-model", "label": "画像のモデル（コンテナに毎回入れる）", "text": "抠图は 1 枚ずつ · 顔のモデルは 1 つを順番に",
+        {"id": "p-edit", "proc": "edit", "subs": ["emblem"]}, {"id": "p-photos", "proc": "photos"},
+        {"id": "s-model", "label": "画像のモデル（Actions のキャッシュ）", "text": "抠图は 1 枚ずつ · 顔のモデルは 1 つを順番に",
          "uses": ["rembg", "yunet", "sface", "haar"], "model": True}]},
     {"id": "db", "title": "Supabase", "note": "データベース", "cost": "無料枠", "style": "keep", "nodes": [
         {"id": "s-db", "label": "feedback · sizes · item_requests · photo_inbox · news · live_status", "text": "👍👎・篇幅・依頼・写真・記事の控え・版面の更新状態",
@@ -406,8 +435,8 @@ EDGES = [
     (4, "p-notify", "s-discord", "要紧・周報", "notify"),
     (5, "s-inbox", "p-edit", "読む", "ai"),
     (6, "p-edit", "s-inbox", "edit.json・出刊", "ai"),
-    (7, "n-img", "p-emblem-cron", "画像を探す（4 本並列）", "ai"),
-    (8, "p-emblem-cron", "s-items", "小元素を書く", "ai"),
+    (7, "n-img", "p-emblem-cron", "画像を探す（4 本並列・AI なし）", "data"),
+    (8, "p-emblem-cron", "s-items", "小元素を書く", "data"),
     (9, "s-items", "p-render", "push", "web"),
     (10, "p-render", "s-pages", "公開", "web"),
     (11, "s-pages", "s-you", "見る", "web"),
@@ -419,22 +448,40 @@ EDGES = [
     (17, "p-photos", "s-wish", "愿望を足す", "ai"),
     (18, "s-discord", "s-you", "通知", "notify"),
     (19, "n-model", "s-model", "ダウンロード", "ai"),
-    (20, "s-model", "p-emblem-cron", "抠图・本人確認", "ai"),
+    (20, "s-model", "p-emblem-cron", "抠图・本人確認", "data"),
     (21, "s-pages", "p-live", "version.json を 1 分ごと", "web"),
     (22, "p-live", "s-you", "新着を自動で表示・更新中の帯", "web"),
     (23, "p-collect", "s-db", "版面ごとの状態（探している・新着）", "db"),
     (24, "s-db", "p-live", "live_status を 30 秒ごと", "db"),
+    (25, "p-gate", "p-edit", "仕事があるときだけ起こす", "ai"),
+    (26, "p-gate", "p-photos", "写真があるときだけ起こす", "ai"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
     ("ニュース収集", "6 本並列", "GitHub Actions のサーバーは 4 コア。待ちが多いので 6 本。同じサイトの間隔は全スレッドで共有（Reddit 2 秒・Google / Bing 0.5 秒）"),
-    ("小元素の自動補完", "4 本並列", "定時タスクのコンテナは 4 コア・メモリ 15GB。抠图（rembg）と items.yaml への書き込みは 1 本ずつ"),
+    ("小元素の自動補完", "4 本並列", "GitHub Actions（4 コア・16GB・1 回 60 分まで）。抠图（rembg）と items.yaml への書き込みは 1 本ずつ"),
     ("抠图のモデル（rembg）", "1 枚ずつ", "birefnet は 1 枚で数 GB のメモリを使う。onnxruntime のメモリ池を切って、1 枚ごとに返す（前は 13GB まで溜まった）"),
     ("Wikipedia・Wikidata・Commons", "1.3 秒に 1 回", "全スレッド合わせて。続けて叩くと 429（多すぎ）になり、続いたら 5 分休む → ここは並列でも速くならない"),
-    ("Claude の定時タスク", "1 回 1 コンテナ", "最短 1 時間ごと。1 回の中で並列はできるが、同じタスクを同時に 2 つは動かない（いまは 4 時間ごと・40 分）"),
+    ("Claude の定時タスク", "仕事があるときだけ", "起きるたびにトークンを使う。ゲートが仕事を確かめてから起こす（AI 編集・写真）。小元素は AI を使わない"),
     ("GitHub Actions", "同じワークフローは 1 本ずつ", "収集・依頼は前の回が終わるまで待つ（concurrency）。ページ生成は新しい回が来たら古い回を止める"),
     ("AI 編集・写真から愿望", "1 本", "1 日の決まった時刻に 1 回ずつ。同じ inbox を書くので並列にしない"),
 ]
+# AI（Claude）を使うか：前に AI でやっていた判断ごとに、規則（プログラム）にできたか・AI のままか・その理由。
+# (仕事, いま, 判断の理由)。いま = rule（規則にした・AI なし）/ gate（AI のまま、ただし仕事があるときだけ）/ ai（AI のまま）
+AI_TASKS = [
+    ("小元素：候補を集めて選ぶ", "rule", "取り方の順・種類ごとの確かな取り方・同じ人は 1 枚。決まった手順なので規則で足りる"),
+    ("小元素：写真が本人か・使えるか（前は目で見ていた）", "rule", "顔の大きさ < 10% = 遠景、2 番目の顔 ≥ 60% = 何人も、SFace cos < 0.363 = 別人、基準なしは同じ顔 2 枚以上"),
+    ("小元素：切り抜きがきれいか（前は目で見ていた）", "rule", "端で切れた・にじみ・実在の人の写真の穴 > 3% を数で判断"),
+    ("後台：今日やる仕事があるか", "rule", "inbox の _covered・写真のファイル・小元素の缺口を数えるだけ（ゲート）"),
+    ("記事の重複・要紧・おすすめ・配色・配図の候補", "rule", "前から規則（bigram・正規表現・好みの学習・減色・画像の検査）"),
+    ("AI 編集：同じ件を合わせて、どれを載せるか", "gate", "意味の判断（違う言語の同じ件・重要度）は規則だと外れが多い。規則の下書き（fallback_stories）は残し、仕上げは AI。仕事があるときだけ起こす"),
+    ("AI 編集：配図を目で選ぶ", "gate", "候補の検査は規則、顔や内容が切れていないかの最後の確認は AI。頭条だけ AI にする余地あり"),
+    ("写真から愿望：写っている物の認識", "gate", "画像の中身の認識はモデルが要る（Claude が見る）。写真が来たときだけ起こす"),
+    ("新しい関注項の版面の設計（テーマ・配色・小元素の種類）", "ai", "作品の気質の判断。type から借りる既定値は規則であるので、AI は新しい関注項が入ったときだけ"),
+    ("関注項の完善（match の正規表現・誤収の確認）", "ai", "言葉の意味の判断。audit-match（どの語で入ったかの一覧）は規則で出し、直すのは AI"),
+]
+AI_STATE_JA = {"rule": "規則にした（AI なし）", "gate": "AI のまま · 仕事があるときだけ", "ai": "AI のまま"}
+
 EDGE_JA = {"data": "収集", "web": "網页", "ai": "AI", "notify": "Discord", "db": "データベース"}
 
 
