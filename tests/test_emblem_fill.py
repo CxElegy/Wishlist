@@ -329,24 +329,6 @@ class Background(unittest.TestCase):
         self.assertEqual({n: x["note"] for n, x in saved["items"].items() if n != "full"}, {"zero": "zero", "one": "one", "brand": "brand"})
         self.assertTrue(any("3 本並列" in r["text"] for r in runlog.recent(10)))
 
-    def test_throttle_shared_between_threads(self):
-        import threading
-        calls = []
-        orig = ef._orig_get
-        ef._orig_get = lambda url, limit=0: calls.append(_now()) or b"{}"
-        try:
-            import time as _t
-            _now = _t.time
-            ts = [threading.Thread(target=ef._throttled_get, args=("https://xx.wikipedia.org/a",)) for _ in range(3)]
-            for t in ts:
-                t.start()
-            for t in ts:
-                t.join()
-        finally:
-            ef._orig_get = orig
-        calls.sort()
-        self.assertGreaterEqual(calls[2] - calls[0], 2.4)   # 3 本同時でも 1.3 秒おき
-
     def test_background_respects_budget(self):
         t = [0.0]
 

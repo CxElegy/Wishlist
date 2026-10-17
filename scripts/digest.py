@@ -39,6 +39,7 @@ import heat
 import images
 import render
 import sources
+import taxonomy
 import theme
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -1062,7 +1063,7 @@ def export_photos():
 # 设置页上能新增 / 修改的字段（按写进 items.yaml 的顺序）。值的检查规则：
 #   str:N 不超过 N 字的一句话；list:N:M 最多 N 个、每个不超过 M 字的字符串列表
 ITEM_FIELDS = {
-    "type": "type", "section": "str:20", "size": "size", "subtitle": "str:80",
+    "type": "type", "section": "section", "subs": "subs", "size": "size", "subtitle": "str:80",
     "keywords": "list:12:100", "match": "list:30:100", "exclude": "list:30:100", "news_langs": "langs",
     "priority": "str:300", "urgent_patterns": "regex", "site": "url",
     "steam_appid": "int", "anilist_id": "int", "anilist_type": "anilist_type", "tmdb": "tmdb", "notes": "str:1500",
@@ -1099,6 +1100,16 @@ def _clean_field(key, value):
                 except re.error as err:
                     raise ValueError(f"要紧消息规则写错了：{v[:40]}（{err}）") from None
         return out or None
+    if rule == "section":
+        if value not in taxonomy.SECTIONS:
+            raise ValueError(f"板块只能选 sections.yaml 里的：{'/'.join(taxonomy.SECTIONS)}")
+        return value
+    if rule == "subs":
+        if not isinstance(value, dict) or len(value) > 6 or not all(
+                isinstance(k, str) and re.fullmatch(r"[a-z_]{1,20}", k) and isinstance(v, str) and 0 < len(v.strip()) <= 20
+                for k, v in value.items()):
+            raise ValueError("小分类要写成 {分法: 值}，每个值 20 字以内")
+        return {k: v.strip() for k, v in value.items()}
     if rule == "type":
         if value not in ITEM_TYPES:
             raise ValueError(f"type 必须是 {'/'.join(ITEM_TYPES)} 之一")
@@ -1138,6 +1149,8 @@ def clean_item_config(config):
 def _yaml_field(key, value):
     """一个字段写成 items.yaml 里的几行（4 格缩进；字符串都用 JSON 引号，YAML 也认）。"""
     q = lambda v: json.dumps(v, ensure_ascii=False)
+    if isinstance(value, dict):
+        return [f"    {key}: {{{', '.join(f'{k}: {q(v)}' for k, v in value.items())}}}"]
     if isinstance(value, list):
         if key == "urgent_patterns":
             return [f"    {key}:"] + [f"      - {q(v)}" for v in value]
@@ -1321,6 +1334,8 @@ def nav_scheme_rows(settings, items):
     rows = []
     for sec, schemes in (settings.get("sub_schemes") or {}).items():
         ins = [i for i in items if section_of(i) == sec]
+        if not ins:   # 関注項のない板块は網页に出ないので、分け方も選ばせない
+            continue
         opts = []
         for x in schemes or []:
             if not (isinstance(x, dict) and x.get("id")):
@@ -1760,12 +1775,15 @@ def with_new_items(issues, items):
 
 def with_manual_themes(issues, items):
     """items.yaml に手で書いた theme（小元素に合わせた配色など）を、次の収集を待たずに網页へ反映する。
-    版面の見た目は最新の一期で決まるので、最新の一期の版面だけを上書きする。reports/ には書き戻さない。"""
+    版面の見た目は最新の一期で決まるので、最新の一期の版面だけを上書きする。reports/ には書き戻さない。
+    板块（section）も items.yaml の今の値にする（板块を移した関注項が、次の出刊を待たずに新しい板块に出る）。"""
     manual = {i["name"]: i["theme"] for i in items if isinstance(i.get("theme"), dict)}
-    if not manual or not issues:
+    secs = {i["name"]: section_of(i) for i in items}
+    if not issues:
         return issues
     blocks = [{**b, "theme": {**(b.get("theme") or {}), **manual[b["name"]]}} if b.get("name") in manual else b
               for b in issues[0].get("items", [])]
+    blocks = [{**b, "section": secs[b["name"]]} if b.get("name") in secs else b for b in blocks]
     return [{**issues[0], "items": blocks}] + issues[1:]
 
 ADMIN_ID_BY_TYPE = {"game": "steam_appid", "anime": "anilist_id", "show": "tmdb"}  # 種類ごとに、あると話題度・現状が取れる ID
@@ -2181,6 +2199,7 @@ def write_issue_markdown(issue, settings):
 def load_config():
     config = yaml.safe_load(ITEMS_FILE.read_text(encoding="utf-8")) or {}
     settings = config.get("settings") or {}
+    settings["sub_schemes"] = taxonomy.sub_schemes()   # 小分類の分け方は sections.yaml が唯一の元
     items = config.get("items") or []
     for item in items:
         item.setdefault("type", "product")
@@ -2422,12 +2441,9 @@ def last_story(name, before):
     return None
 
 
-SECTION_BY_TYPE = {"game": "游戏", "anime": "影视", "show": "影视", "product": "好物", "category": "好物", "event": "演出"}
-
-
 def section_of(item):
-    """头版上的板块。"""
-    return item.get("section") or SECTION_BY_TYPE.get(item.get("type", "product"), "好物")
+    """头版上的板块（sections.yaml 的 key）。没写 section 的按 type（taxonomy.BY_TYPE）。"""
+    return item.get("section") or taxonomy.BY_TYPE.get(item.get("type", "product"), "好物")
 
 
 def quiet_block(item, themes, date):

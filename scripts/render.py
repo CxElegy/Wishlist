@@ -25,6 +25,7 @@ import yaml
 import heat
 import processes
 import likefx
+import taxonomy
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
@@ -35,7 +36,7 @@ FONTS = (
 )
 
 CSS = """
-:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--good:#1F7A55;--discord:#5865F2;
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
  --by-ai:#6B3FC4;--by-rule:#1F7A55;   /* 流れの図：AI（Claude）が判断する手順 / 規則（プログラム）で決まる手順 */
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
@@ -543,7 +544,7 @@ html{scroll-behavior:smooth}
 @media (max-width:1000px){
  .page{grid-template-columns:minmax(0,1fr)}
  .nav{top:env(safe-area-inset-top,0px);background:var(--ink);color:var(--card);padding:8px 0 0;margin:0 -24px}
- .nav .nhead,.nav .navwish{display:none}
+ .nav .nhead,.nav .navwish,.nav .logo{display:none}
  .nav .mtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 16px 10px}
  .nav .mtabs::-webkit-scrollbar,.nav .rail::-webkit-scrollbar{display:none}
  .nav .mtabs a{flex:none;padding:4px 12px;font-size:13px;opacity:.55;text-decoration:none}
@@ -1023,7 +1024,7 @@ def _spam(title):
 
 def collect(issues, order=None):
     """把各期按作品汇总：外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。
-    作品顺序固定：先按板块（游戏 / 影视 / 运动 / 好物 / 其他），同板块内按 order（items.yaml 的顺序）。
+    作品顺序固定：先按板块（sections.yaml 的顺序，其他最后），同板块内按 order（items.yaml 的顺序）。
     这样每天更新只是版面里的消息变化，版面的数量和位置不变。"""
     latest = issues[0]
     rank = {n: i for i, n in enumerate(order or [])}
@@ -1615,7 +1616,7 @@ def render_settings(items, db, updated, schemes=()):
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     rows = []
     for name in order:
-        rows.append(f'<h2 style="--sc:{_sec_color(name)}">{e(name)}<small>{_sec_en(name)}</small></h2>')
+        rows.append(f'<h2 style="--sc:{_sec_color(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small></h2>')
         for it in groups[name]:
             sub = f'<small>{e(it["subtitle"])}</small>' if it.get("subtitle") else ""
             btns = "".join(f'<button type="button" data-v="{v}" aria-pressed="{str(v == (it.get("size") or "M")).lower()}">'
@@ -1625,7 +1626,7 @@ def render_settings(items, db, updated, schemes=()):
                         f'<button type="button" class="edit" aria-label="修改 {e(it["name"])}">改</button>'
                         f'<span class="st" aria-live="polite"></span></div>')
     data = {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
-            "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": list(dict.fromkeys(list(SECTIONS) + order)),
+            "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": taxonomy.for_page(),
             "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items]}
     cfg = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return f"""<!doctype html>
@@ -1691,6 +1692,8 @@ def render_settings(items, db, updated, schemes=()):
 .q .no{{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.6}}
 .q h3{{margin:0;font:900 19px/1.4 'Noto Sans SC',sans-serif}}
 .q p{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
+.subrow{{display:flex;flex-direction:column;gap:6px}}.subrow h4{{margin:0;font:700 13px 'Noto Sans SC',sans-serif}}
+.subrow .opts{{flex-direction:row;flex-wrap:wrap}}.subrow .opt{{padding:6px 10px;font-size:14px}}
 .opts{{display:flex;flex-direction:column;gap:8px}}
 .opt{{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;
  font:900 15px 'Noto Sans SC',sans-serif;cursor:pointer}}
@@ -2093,12 +2096,11 @@ def _wish_section(wishes, works, finds=()):
             f'<div class="wgrid">{"".join(cards)}</div></section>')
 
 
-# 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
-# 板块色：白字、浅底（#EDEBE6）上的小字都要过 WCAG AA 4.5:1（绿、粉、橙原来太浅，白字只有 2.9–4.4）
-SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#156A48", "演出": "#BB265A", "好物": "#985315"}
-SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
-# 网页上显示的板块名（数据里的板块名照旧是中文，items.yaml / 设置页不变）
-SECTION_JA = {"游戏": "ゲーム", "影视": "映像", "运动": "スポーツ", "演出": "ライブ", "好物": "グッズ", "其他": "その他"}
+# 头版板块：sections.yaml 里事先定全的板块（scripts/taxonomy.py），按表的顺序排，颜色各不相同（白字、浅底上的小字都过 WCAG AA 4.5:1）。
+# 数据里的板块名照旧是中文（items.yaml / 设置页），网页上显示日语名
+SECTIONS = {k: r["color"] for k, r in taxonomy.SECTIONS.items() if k != taxonomy.OTHER}
+SECTION_EN = {k: r["en"] for k, r in taxonomy.SECTIONS.items()}
+SECTION_JA = {k: r["ja"] for k, r in taxonomy.SECTIONS.items()}
 
 
 def _sec_name(name):
@@ -2364,6 +2366,36 @@ NAV_STYLES = {
    増えたら NAV_JS が ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。
    見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
 .nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--cur,var(--alert));color:var(--ink);transition:border-color .15s}   /* 左の縦線は読んでいる板块の色 */
+/* ---------- ロゴ：炎（話題度で燃え方が変わる）＋ 仮の名前 TBD ---------- */
+.nav .logo{flex:none;display:flex;align-items:center;gap:10px;margin:16px 8px 10px 0;text-decoration:none;color:var(--ink)}
+.nav .flame{position:relative;flex:none;width:50px;height:68px;margin:-6px -4px 0 -2px;--h:var(--heat,.3);
+ /* 温度の色：冷めた火（0）＝暗い赤の熾火 → 熱い火（1）＝橙・金・白。--hc は NAV_JS が毎フレーム滑らかに入れる */
+ --hc:var(--h);
+ --fo:color-mix(in oklab,color-mix(in oklab,var(--ember),var(--alert) calc(clamp(0,var(--hc) * 1.8,1) * 100%)),var(--flame) calc(clamp(0,(var(--hc) - .55) * 2.2,1) * 100%));
+ --fm:color-mix(in oklab,color-mix(in oklab,var(--ember),var(--flame) calc(clamp(0,var(--hc) * 1.6,1) * 100%)),var(--gold) calc(clamp(0,(var(--hc) - .5) * 2,1) * 100%));
+ --fi:color-mix(in oklab,var(--flame),var(--gold) calc(clamp(0,var(--hc) * 1.4,1) * 100%));
+ --fc:color-mix(in oklab,var(--gold),var(--card) calc(clamp(.15,var(--hc),1) * 100%))}
+
+.nav .flame svg{position:absolute;left:0;bottom:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;
+ transform:scale(calc(.42 + var(--h) * .98));transition:transform .5s cubic-bezier(.2,.8,.2,1);
+ filter:brightness(calc(.9 + var(--hc) * .25))}
+/* 後ろの光：話題度が高いほど広く濃く、ゆっくり息をする */
+.nav .flame .blue{opacity:clamp(0,(var(--hc) - .75) * 2.6,.55)}   /* 沸騰に近づくと底に青い炎 */
+.nav .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(16px + var(--h) * 84px);aspect-ratio:1;translate:-50% 0;border-radius:50%;
+ background:radial-gradient(closest-side,color-mix(in srgb,var(--fm) 70%,transparent),transparent);opacity:calc(.05 + var(--h) * .9);
+ transition:opacity .5s,width .5s;animation:breathe calc(3s - var(--h) * 2.2s) ease-in-out infinite alternate}
+@keyframes breathe{to{transform:scale(1.12);filter:brightness(1.15)}}
+/* 火の粉：位置・寿命・道筋は NAV_JS が 1 粒ずつ決める */
+.nav .flame .em{position:absolute;left:50%;bottom:22%;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:var(--gold);
+ box-shadow:0 0 4px var(--flame);opacity:0;will-change:transform,opacity}
+.nav .wm{display:flex;flex-direction:column;line-height:1;transform:rotate(-3deg)}
+.nav .wm b{font:30px/.95 var(--font-num);letter-spacing:.04em;font-style:italic;background:var(--ink);color:var(--card);padding:2px 10px 1px 8px;
+ transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--cur,var(--alert))}
+.nav .wm small{margin-top:5px;font:800 10px var(--font-sans);letter-spacing:.18em;color:rgba(26,28,34,.7)}
+.nav .hm{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;line-height:1}
+.nav .hm .hv{font:26px/1 var(--font-num);color:var(--cur,var(--alert))}
+.nav .hm .hl{margin-top:3px;font:900 10px var(--font-sans);letter-spacing:.1em;color:rgba(26,28,34,.7)}
+@media (prefers-reduced-motion:reduce){.nav .flame *{animation:none!important}}
 .nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
 .nav .nhead .pill{flex:none;height:30px;padding-left:4px;font-size:13px}
 .nav .nhead .pill.on{padding-left:58px;padding-right:12px}
@@ -2472,8 +2504,8 @@ NAV_STYLES = {
 }
 
 
-# 板块のアイコン（twemoji）。表にない新しい板块はアイコンなし
-SECTION_ICON = {"游戏": "1f3ae", "影视": "1f3ac", "运动": "26bd", "演出": "1f3a4", "好物": "1f6cd", "其他": "1f4e6"}
+# 板块のアイコン（twemoji、sections.yaml の icon）。表にない板块はアイコンなし
+SECTION_ICON = {k: str(r["icon"]) for k, r in taxonomy.SECTIONS.items() if r.get("icon")}
 TWEMOJI = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/{}.svg"
 NAV_HIDE = 24   # 左の目次で隠し始める作品の数（items.yaml の settings.nav_hide。"auto" なら画面の高さで決める）
 
@@ -2490,6 +2522,36 @@ def _nav_icon(w):
             return img
     t = w.get("_thumb") or next((x.get("image") for x in w.get("stories") or [] if x.get("image")), None)
     return _img_url(t) if t and str(t).startswith("https://") else None
+
+
+# 目次の左上のロゴの炎（testground/flame.html で決めた形）。先の尖った涙形を 4 層（赤・橙・金・白い芯）重ね、話題度が高いと左右に舌が出る。
+# 縁は SVG の乱流（feTurbulence → feDisplacementMap）で揺らし、層ごとの伸び縮み・傾き・揺れは NAV_JS が周期の違う波を足して不規則に動かす。
+# 話題度（heat.py の 0〜100）で 大きさ・揺れの速さと大きさ・舌・光・火の粉の数が変わり、読んでいる間ずっとその強さで燃える
+_TEAR = "M50 6C55 30 66 44 76 60C84 73 86 86 84 98C81 118 67 132 50 132C33 132 19 118 16 98C14 86 16 73 24 60C34 44 45 30 50 6Z"
+_TONGUE = "M50 40C53 60 62 72 66 88C70 104 62 118 50 120C38 118 30 104 34 88C38 72 47 60 50 40Z"
+
+
+def _flame_grad(n, color, mid, top_alpha):
+    return (f'<linearGradient id="navfl-{n}" x1="0" y1="1" x2="0" y2="0"><stop offset="0" style="stop-color:var({color})"/>'
+            f'<stop offset="{mid}" style="stop-color:var({color});stop-opacity:{top_alpha}"/>'
+            f'<stop offset="1" style="stop-color:var({color});stop-opacity:0"/></linearGradient>')
+
+
+FLAME_SVG = (
+    '<span class="flame" aria-hidden="true"><i class="glow"></i><svg viewBox="0 0 100 140"><defs>'
+    '<filter id="navfl-f" x="-30%" y="-30%" width="160%" height="140%">'
+    '<feTurbulence type="fractalNoise" baseFrequency="0.03 0.07" numOctaves="1" seed="13"/>'
+    '<feDisplacementMap in="SourceGraphic" scale="12" xChannelSelector="R" yChannelSelector="G"/>'
+    '<feGaussianBlur stdDeviation=".8"/></filter>'
+    + _flame_grad("o", "--fo", .55, .95) + _flame_grad("m", "--fm", .6, .9)
+    + _flame_grad("i", "--fi", .65, .85) + _flame_grad("c", "--fc", .6, .7)
+    + '<radialGradient id="navfl-b" cx="50%" cy="50%" r="50%"><stop offset="0" style="stop-color:var(--blueflame)"/>'
+      '<stop offset="1" style="stop-color:var(--blueflame);stop-opacity:0"/></radialGradient>'
+    + '</defs><g filter="url(#navfl-f)">'
+    + "".join(f'<path class="L" data-k="{k}" d="{_TONGUE if k in ("tl", "tr") else _TEAR}" fill="url(#navfl-{g})"/>'
+              for k, g in (("tl", "m"), ("tr", "m"), ("o", "o"), ("m", "m"), ("i", "i"), ("c", "c")))
+    + '<ellipse class="blue" cx="50" cy="130" rx="15" ry="5" fill="url(#navfl-b)"/>'
+    + '</g></svg>' + '<i class="em"></i>' * 16 + '</span>')
 
 
 def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=None, sub_heat=None):
@@ -2513,7 +2575,7 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
               else f'<i class="ic">{e(w["name"][:1])}</i>')
         own = subs.get(w["name"], "")
         xref = f'<span class="xref">{e(own)}</span>' if kid and own and own != sub else ""   # 自分の小分類が上級と違うときは小さく
-        return (f'<a class="pill{" kid" if kid else ""}" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" '
+        return (f'<a class="pill{" kid" if kid else ""}" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" data-heat="{int((w.get("_heat") or {}).get("score") or 0)}" '
                 f'data-sub="{e(sub)}" href="#{_wid(w["name"])}"><i class="no">{page_no[w["name"]]:02d}</i>{ic}'
                 + ('<span class="br"></span>' if kid else "")
                 + f'<span class="nm">{e(w["name"])}<small class="cnt">{f"今週 {recent} 件" if recent else "新着なし"}</small></span>'
@@ -2561,8 +2623,12 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
                      f'<span class="cnt">新着 <b>{nn}</b>／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
                      f'<div class="nbody">{body}</div></div>')
     hide = "auto" if str(hide).lower() == "auto" else max(1, int(hide or NAV_HIDE))
-    return (f'<nav class="nav" aria-label="目次" data-hide="{hide}">'
+    levels = json.dumps([[low, lab] for low, lab in heat.LEVELS], ensure_ascii=False)
+    return (f'<nav class="nav" aria-label="目次" data-hide="{hide}" data-levels="{e(levels)}">'
             f'<div class="mtabs">{"".join(tabs)}</div>'
+            f'<a class="logo" href="#front" aria-label="トップへ">{FLAME_SVG}'
+            f'<span class="wm"><b>TBD</b><small>ウォッチリスト通信</small></span>'
+            f'<span class="hm" aria-live="polite"><b class="hv"></b><small class="hl"></small></span></a>'
             f'<div class="nhead">{"".join(head)}</div>'
             f'<div class="rail" id="nav-rail">{"".join(slots)}</div>{_wish_link(wishes, "navwish")}'
             f'<div class="bar" id="nav-bar"></div></nav>')
@@ -2775,10 +2841,72 @@ NAV_JS = """
       curIdx = idx; curProg = -1;
       nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : 'var(--alert)');   // トップ・気になるかも？を読んでいるときは赤
       nav.classList.toggle('insec', k >= 0);
-      tabs.forEach(t => t.classList.toggle('on', t.dataset.sec === (k >= 0 ? S[k].nsec : '')));
+      tabs.forEach(t => t.classList.toggle('on', t.dataset.sec === (k >= 0 ? S[k].sec : '')));
+      flame(on);
       if (wide.matches) layout(force); else narrow(k);
     }
     if (prog !== curProg) { curProg = prog; nav.style.setProperty('--prog', prog); }
+  }
+  // ロゴの炎：読んでいる作品の話題度（0〜100）の強さで燃え続ける（切り替えると 0.5 秒ほどでその強さへ）。トップでは全体の最高点を小さめの火で。
+  // 層ごとの伸び縮み・傾き・揺れは、周期が割り切れない 4 つの波の和（同じ動きの繰り返しに見えない）。火の粉は 1 粒ずつ道筋と寿命が違う
+  const logo = nav.querySelector('.logo'), fl = logo && logo.querySelector('.flame');
+  const LV = (() => { try { return JSON.parse(nav.dataset.levels || '[]'); } catch (_) { return []; } })();
+  const maxHeat = Math.max(0, ...pills.map(p => +p.dataset.heat || 0));
+  const FL = {h: .3, target: .3, t: Math.random() * 50, run: false};
+  const SPEC = {tl: [.5, -17, -16, 1.4, 1.25], tr: [.46, 17, 15, 1.4, 1.1], o: [1, 0, 0, 1, .9], m: [.8, 0, 0, 1.1, 1.05],
+                i: [.56, 0, 0, 1.2, 1.3], c: [.3, 0, 0, 1, 1.5]};   // 大きさ・横の位置・傾き・揺れの大きさ・速さ
+  const layers = fl ? [...fl.querySelectorAll('.L')].map(n => ({n, k: n.dataset.k, s: SPEC[n.dataset.k], ph: Math.random() * 100})) : [];
+  const turb = fl && fl.querySelector('feTurbulence'), disp = fl && fl.querySelector('feDisplacementMap');
+  const ems = fl ? [...fl.querySelectorAll('.em')].map(e => ({e, life: Math.random(), dur: 1, dx: 0, sway: 0, ph: 0})) : [];
+  const wob = (t, p) => Math.sin(t * 1.13 + p) * .45 + Math.sin(t * 2.71 + p * 1.7) * .3 + Math.sin(t * 5.87 + p * 2.3) * .17 + Math.sin(t * 11.3 + p * .7) * .08;
+  let flLast = 0;
+  function burn(now) {
+    const dt = Math.min(.05, (now - (flLast || now)) / 1000); flLast = now;
+    FL.h += (FL.target - FL.h) * Math.min(1, dt * 4);
+    fl.style.setProperty('--hc', FL.h.toFixed(3));   // 色は毎フレーム滑らかに
+    const h = FL.h, amp = .18 + h * 1.5;
+    FL.t += dt * (.6 + h * 3.8);
+    for (const L of layers) {
+      const [sz0, x0, rot0, la, sp] = L.s, side = L.k === 'tl' || L.k === 'tr';
+      const sz = L.k === 'i' || L.k === 'c' ? sz0 * (.65 + h * .7) : sz0;   // 熱いほど白い芯が大きい
+      const on = side ? Math.min(1.25, Math.max(0, (h - .25) / .45)) : 1, tt = FL.t * sp + L.ph;
+      const sy = sz * (1 + (wob(tt, 1) * .16 + Math.max(0, wob(tt * 1.7, 4)) * .14) * amp * la) * (side ? .6 + on * .5 : 1);
+      const sx = sz * (1 - wob(tt, 1) * .06 * amp), skew = wob(tt * .8, 7) * 9 * amp * la;
+      const rot = rot0 * on + wob(tt * .6, 3) * 3 * amp, x = x0 * (side ? .8 + on * .4 : 1) + wob(tt * .9, 9) * 1.6 * amp;
+      L.n.setAttribute('transform', `translate(${(50 + x).toFixed(2)} 132) rotate(${rot.toFixed(2)}) skewX(${skew.toFixed(2)}) scale(${sx.toFixed(3)} ${sy.toFixed(3)}) translate(-50 -132)`);
+      if (side) L.n.style.opacity = on.toFixed(2);
+    }
+    turb.setAttribute('baseFrequency', `${(.03 + wob(FL.t * .3, 2) * .006).toFixed(4)} ${(.07 + wob(FL.t * .4, 5) * .015).toFixed(4)}`);
+    disp.setAttribute('scale', (3 + h * 24 + wob(FL.t, 8) * 2).toFixed(1));
+    const n = Math.round(h * h * ems.length);
+    ems.forEach((m, k) => {
+      if (k >= n) { m.e.style.opacity = 0; return; }
+      m.life += dt / m.dur;
+      if (m.life >= 1) { m.life = 0; m.dur = .9 + Math.random() * .9 - h * .4; m.dx = (Math.random() - .5) * 2; m.sway = Math.random() * 6; m.ph = Math.random() * 6; }
+      const l = m.life, y = -(8 + l * (18 + h * 80)), x = m.dx * l * 12 + Math.sin(l * 9 + m.ph) * m.sway;
+      m.e.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${(1 - l * .7).toFixed(2)})`;
+      m.e.style.opacity = (l < .1 ? l * 10 : 1 - (l - .1) / .9).toFixed(2);
+    });
+    if (FL.run) requestAnimationFrame(burn);
+  }
+  // 宽屏で、動きを減らす設定でなく、タブが見えているときだけ回す（それ以外は止めて電池を使わない）
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  function burnning() {
+    const go = !!fl && wide.matches && !still.matches && !document.hidden;
+    if (go && !FL.run) { FL.run = true; flLast = 0; requestAnimationFrame(burn); }
+    else if (!go) { FL.run = false; if (fl && still.matches) { FL.h = FL.target; flLast = 0; burn(performance.now()); } }
+  }
+  document.addEventListener('visibilitychange', burnning);
+  wide.addEventListener && wide.addEventListener('change', burnning);
+  function flame(on) {
+    if (!fl) return;
+    const own = on && on.dataset.heat != null ? +on.dataset.heat || 0 : null;
+    const v = own == null ? maxHeat : own;
+    FL.target = own == null ? Math.min(.35, v / 100) : v / 100;
+    nav.style.setProperty('--heat', FL.target.toFixed(2));
+    logo.querySelector('.hv').textContent = v ? String(v) : '';
+    logo.querySelector('.hl').textContent = own == null ? (v ? '今日の最高' : '') : ((LV.find(l => v >= l[0]) || [0, ''])[1] || '話題度');
+    burnning();
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => update()); } }, {passive: true});
   addEventListener('resize', () => update(true));
