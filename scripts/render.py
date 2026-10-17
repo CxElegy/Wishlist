@@ -3814,6 +3814,33 @@ def _admin_emblems(rows, run=None):
             + "".join(out) + "</tbody></table></div>")
 
 
+def _admin_edit_diff(d):
+    """「AI 編集の前後」：作品ごとに、集めた記事（横棒の長さ）のうち AI 編集が記事に使ったもの（色）と使わなかったもの（灰）、
+    右に載せた記事の本数。横棒は全作品で同じ目盛り（1 本の軸）。"""
+    if not d:
+        return '<p class="empty">まだ収集がありません。</p>'
+    if not d.get("edited"):
+        return f'<p class="empty">{e(_md(d["date"]))} はまだ AI 編集していません（集めた記事はそのまま原題で載っています）。</p>'
+    rows = d.get("rows") or []
+    mx = max([r["total"] for r in rows] + [1])
+    head = (f'<p class="ed-sum"><b>{d["total"]}</b> 件を集めて → <b>{d["used"]}</b> 件を使い → '
+            f'<b>{d["stories"]}</b> 本の記事に（同じ出来事はまとめ、宣伝・雑談・古い話は落とす）'
+            f'<span>配図を選んだ記事 {d["images"]} 本 · 重大ニュース {d["hero"]} 本</span></p>'
+            '<p class="ed-key"><span><i class="ed-u"></i>記事に使った</span><span><i class="ed-d"></i>使わなかった</span></p>')
+    out = []
+    for r in rows:
+        u, dr = r["used"], r["total"] - r["used"]
+        tip = f'{r["name"]}：集めた {r["total"]} 件のうち {u} 件を使い、{r["stories"]} 本の記事に'
+        badge = ("".join(f'<i class="ed-w">{k}</i>' for k, n in (("重大", r["hero"]), ("頭", r["lead"])) if n)
+                 + (f'<i class="ed-new">未編集 {r["new"]}</i>' if r.get("new") else ""))
+        out.append(
+            f'<li title="{e(tip)}"><span class="ed-n">{e(r["name"])}</span>'
+            f'<span class="ed-bar" style="--w:{100 * r["total"] / mx:.1f}%">'
+            f'<i class="ed-u" style="flex:{u}"></i><i class="ed-d" style="flex:{dr}"></i></span>'
+            f'<span class="ed-v">{u} / {r["total"]} 件 → <b>{r["stories"]}</b> 本{badge}</span></li>')
+    return head + f'<ol class="ed-rows">{"".join(out)}</ol>'
+
+
 def _admin_votes(v):
     if not v.get("total"):
         return '<p class="empty">まだ投票がありません。</p>'
@@ -3839,6 +3866,22 @@ def _admin_votes(v):
 
 
 ADMIN_PAGE_CSS = """
+.ed-sum{margin:0 0 6px;font-size:14px;line-height:1.8}.ed-sum b{font:900 20px var(--font-mono);margin:0 2px}
+.ed-sum span{display:block;font-size:12px;opacity:.75}
+.ed-key{display:flex;gap:16px;margin:0 0 10px;font-size:12px}.ed-key span{display:inline-flex;align-items:center;gap:6px}
+.ed-key i{display:inline-block;width:14px;height:10px;border-radius:2px}
+.ed-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ed-rows li{display:grid;grid-template-columns:150px minmax(0,1fr) 210px;gap:10px;align-items:center;font-size:13px}
+.ed-n{font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ed-bar{display:flex;gap:2px;width:var(--w);min-width:6px;height:14px}
+.ed-bar i{display:block;min-width:0;border-radius:0 4px 4px 0}.ed-bar i:first-child{border-radius:4px 0 0 4px}
+.ed-bar i:only-child,.ed-bar i[style*="flex:0"]{border-radius:4px}
+.ed-u{background:var(--viz-1)}.ed-d{background:color-mix(in srgb,var(--ink) 18%,transparent)}
+.ed-bar i[style*="flex:0"]{display:none}
+.ed-v{font:700 12px var(--font-mono);white-space:nowrap}.ed-v b{font-size:15px}
+.ed-w,.ed-new{display:inline-block;font:700 10px var(--font-sans);font-style:normal;margin-left:6px;padding:0 6px;background:var(--ink);color:var(--card);transform:skewX(var(--skew))}
+.ed-new{background:var(--gold);color:var(--ink)}
+@media (max-width:640px){.ed-rows li{grid-template-columns:1fr;gap:3px}.ed-v{white-space:normal}}
 .em-n{white-space:nowrap}.em-n small{margin-left:8px;opacity:.65}
 .em-bar{display:inline-block;width:70px;height:10px;margin-right:8px;background:var(--sheet);border:1px solid var(--ink);vertical-align:middle;position:relative}
 .em-bar i{position:absolute;inset:0 auto 0 0;background:var(--good)}
@@ -4165,6 +4208,7 @@ def render_admin(data, db, updated):
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
+<section class="panel" id="editdiff"><h2 class="sh"><span>AI 編集の前後</span><small>最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事</small></h2>{_admin_edit_diff(data.get("edit_diff"))}</section>
 <section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
 <section class="panel" id="procs"><h2 class="sh"><span>全体の構成</span><small>どこで何が動き、データがどう流れるか · 部品をクリックで詳しい流れ</small></h2>{processes.render()}</section>
 <section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>
