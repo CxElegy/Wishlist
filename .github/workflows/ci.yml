@@ -13,6 +13,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # 架构图检查要和 main 比
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -20,6 +22,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: 关注清单 / 愿望清单格式正确
         run: python -c "import sys; sys.path.insert(0, 'scripts'); import digest; digest.load_config(); print(len(digest.load_wishlist()), '件愿望')"
+      - name: 改了逻辑就要改架构图
+        run: python scripts/check_arch.py
       - name: 测试
         run: python -m unittest discover -s tests
       - name: 网页能生成
