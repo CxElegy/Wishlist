@@ -3446,7 +3446,13 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                         f'{e(_sec_name(sec or "其他"))}</th></tr>')
         cells = "".join(f'<td class="bgc s-{r["bg"][k]["state"]}" data-label="{e(t)}"><b>{BG_STATES[r["bg"][k]["state"]]}</b>'
                         f'<small>{e(r["bg"][k]["text"])}</small></td>' for k, t, _ in BG_COLS)
-        body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a></td>{cells}</tr>')
+        thumbs = "".join(f'<img src="{e(u)}" alt=""{" class=fit" if sh in ("logo", "icon") else ""}>'
+                         for u, sh in (t if isinstance(t, (list, tuple)) else (t, "") for t in r.get("thumbs") or []))
+        body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a>'
+                    + (f'<span class="bg-th">{thumbs}</span>' if thumbs else "") + f'</td>{cells}</tr>')
+        d = r["bg"]["emblem"].get("detail")
+        if d:
+            body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"])}</td></tr>')
     logs = "".join(f'<li class="lg-{e(x.get("level") or "info")}"><time>{e(x.get("when") or "")}</time>'
                    f'<span class="lg-p">{e(x.get("name") or "")}</span><span class="lg-t">{e(x.get("text") or "")}</span></li>'
                    for x in (log or []))
@@ -3515,6 +3521,38 @@ def _admin_resources(res):
             '<p class="mt-x">Claude API を使ったときは自動で数える。定時タスク（サブスク枠）は Claude が終わりに目安を書く。'
             'サブスク枠の残りはプログラムから読めないので <a href="https://claude.ai/settings/usage" target="_blank" rel="noopener noreferrer">Claude の設定 → 使用量</a> で。</p></div>'
             '<div><h3 class="h3">サーバー <small>仕組みごとの最近の実行 · 終わったときの様子</small></h3>' + srv + "</div></div>")
+
+
+def _emblem_flow(d, state):
+    """「小元素の探し方」：種類 → 目標 → 取り方（順に、試した数）→ 確かめる → 結果 → 次にやること を横一列の図に。
+    閉じているときは 1 行の要約（いまどこで止まっているか）。"""
+    chain = []
+    for c in d.get("chain") or []:
+        n = c.get("n")
+        cls = "na" if n is None else ("zero" if not n else "got")
+        val = "未" if n is None else f"{n}"
+        chain.append(f'<li class="ef-{cls}{"" if c.get("auto") else " ef-eye"}" title="{"自動で選べる" if c.get("auto") else "一覧で目で選ぶだけ"}">'
+                     f'<b>{e(c["src"])}</b><i>{val}</i>{"" if c.get("auto") else "<small>目視</small>"}</li>')
+    f = d.get("funnel") or {}
+    funnel = (f'<span>集めた <b>{f.get("found", 0)}</b></span><span>使える <b>{f.get("usable", 0)}</b></span>'
+              f'<span>自動で書いた <b>{f.get("auto", 0)}</b></span><span>一覧へ <b>{f.get("review", 0)}</b></span>') if f else ""
+    check = ("本人確認 YuNet + SFace（cos ≥ 0.363）" if d.get("faces") else "名前・取り方の決まりで確認") + \
+            (f" · 目で外した {d['rejects']} 枚" if d.get("rejects") else "")
+    pct = min(100, round(100 * (d.get("have") or 0) / max(1, d.get("target") or 1)))
+    tried = [c for c in d.get("chain") or [] if c.get("n") is not None]
+    now_at = ("、".join(f'{c["src"]} {c["n"]}' for c in tried) or "まだ試していない")
+    summary = (f'<span class="ef-k">{e(d.get("kind") or "")}</span>{e(d.get("why") or "")} → 目標 {d.get("target")} 枚'
+               f' · 取り方：{e(now_at)} · <b class="ef-next">次：{e(d.get("todo") or "")}</b>')
+    return (f'<details class="ef ef-st-{e(state)}"><summary>{summary}</summary><div class="ef-flow">'
+            f'<div class="ef-box"><small>① 種類と目標</small><b>{e(d.get("kind") or "")}：{e(d.get("why") or "")}</b>'
+            f'<span>目標 {d.get("target")} 枚（{d.get("lo")}〜{d.get("hi")}）</span></div>'
+            f'<div class="ef-box ef-wide"><small>② 取り方（上から順に・足りるまで · 数字 = 集めた候補）</small><ol class="ef-chain">{"".join(chain)}</ol></div>'
+            f'<div class="ef-box"><small>③ 確かめる</small><b>{e(check)}</b>' + (f'<span class="ef-fun">{funnel}</span>' if funnel else "") + '</div>'
+            f'<div class="ef-box"><small>④ 結果{(" · " + e(d["at"])) if d.get("at") else ""}</small>'
+            f'<b>{d.get("have")} / {d.get("target")} 枚</b><span class="em-bar"><i style="width:{pct}%"></i></span>'
+            + (f'<span>{e(d["note"])}</span>' if d.get("note") else "") + '</div>'
+            f'<div class="ef-box ef-todo"><small>⑤ 次にやること</small><b>{e(d.get("todo") or "")}</b>'
+            + (f'<span class="ef-adv">{e(d["advice"])}</span>' if d.get("advice") else "") + "</div></div></details>")
 
 
 def _lane_short(lane):
@@ -3650,6 +3688,35 @@ ADMIN_PAGE_CSS = """
 .tok li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--hair);font-size:13px}
 .tok b{font:700 15px var(--font-mono);text-align:right}.tok b.na{font:700 12px var(--font-sans);opacity:.6}
 .tok small{grid-column:1/-1;text-align:right;font:500 var(--fs-label) var(--font-sans);opacity:.8}
+.bg-th{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.bg-th img{width:26px;height:26px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}.bg-th img.fit{object-fit:contain;border-radius:4px;padding:2px}
+.bgm tr.bgx td{padding:0 6px 10px;border-bottom:1px solid var(--hair)}
+.bgm tr:has(+ .bgx) td{border-bottom:0}
+.ef summary{cursor:pointer;font:500 12px/1.6 var(--font-sans);list-style:none;padding:4px 8px;background:var(--sheet);border-left:4px solid var(--hair)}
+.ef summary::-webkit-details-marker{display:none}
+.ef summary::before{content:"▸ 小元素の探し方　";font-weight:900}.ef[open] summary::before{content:"▾ 小元素の探し方　"}
+.ef-st-ok summary{border-left-color:var(--good)}.ef-st-review summary{border-left-color:var(--gold)}
+.ef-st-failed summary{border-left-color:var(--alert)}.ef-st-running summary{border-left-color:var(--rose)}
+.ef-k{font:700 var(--fs-label) var(--font-mono);padding:0 5px;margin-right:6px;background:var(--ink);color:var(--card)}
+.ef-next{font-weight:900}
+.ef-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 22px;padding:10px 4px 4px}
+.ef-box{position:relative;flex:1 1 150px;display:flex;flex-direction:column;gap:3px;padding:8px 10px;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);min-width:0}
+.ef-box:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);font:900 15px var(--font-mono);color:var(--rose)}
+.ef-wide{flex:3 1 330px}
+.ef-box>small{font:700 var(--fs-label) var(--font-sans);opacity:.75}.ef-box>b{font:900 13px/1.45 var(--font-sans)}
+.ef-box>span{font:500 12px/1.5 var(--font-sans)}
+.ef-chain{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px}
+.ef-chain li{position:relative;display:flex;align-items:baseline;gap:5px;padding:2px 7px;border:1.5px solid var(--ink);font-size:12px}
+.ef-chain li:not(:last-child)::after{content:"›";position:absolute;right:-11px;font:900 13px var(--font-mono);color:var(--rose)}
+.ef-chain b{font:700 12px var(--font-sans)}.ef-chain i{font:700 12px var(--font-mono);font-style:normal}
+.ef-chain small{font:700 var(--fs-tag) var(--font-sans);padding:0 4px;border:1px dashed currentColor}
+.ef-got{background:color-mix(in srgb,var(--good) 18%,var(--card))}.ef-got i{color:var(--good)}
+.ef-zero{opacity:.75}.ef-zero i{color:var(--alert)}
+.ef-na{opacity:.45;border-style:dotted!important}
+.ef-eye{border-style:dashed!important}
+.ef-fun{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:var(--fs-label)!important}
+.ef-todo{border-color:var(--rose)}.ef-adv{color:var(--alert);font-weight:700!important}
+@media (max-width:860px){.bgm tr.bgx{display:block;padding:0 0 10px}.bgm tr.bgx td{display:block;padding:0}.ef-box:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%)}.ef-flow{gap:20px}.ef-box{flex-basis:100%}}
 .lims{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px 18px}
 .lims li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair)}
 .lims b{font:900 13px/1.4 var(--font-sans)}.lim-n{font:700 12px var(--font-mono);padding:0 6px;background:var(--ink);color:var(--card);white-space:nowrap}

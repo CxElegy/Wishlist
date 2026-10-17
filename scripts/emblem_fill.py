@@ -673,6 +673,23 @@ def run_item(item, auto=False, picks=None, log=print, tried=None):
     return good, out
 
 
+def source_chain(item):
+    """その関注項で候補を探す取り方の順（gather と同じ順）。→ [(取り方, 自動で選んでよいか)]。管理ページ「小元素の探し方」用。"""
+    kind = kind_of(item)
+    if kind == "brand":
+        chain = ["直接指定", "Wikidata", "Wikimedia Commons", "公式サイト", "Wikipedia", "Twemoji"]
+    elif kind == "topic":
+        chain = ["直接指定", "Wikidata", "Wikimedia Commons", "公式サイト", "Wikipedia", WEB, "Twemoji"]
+    elif kind == "character" and not item.get("emblem_people"):
+        chain = ["直接指定", "Fandom", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", WEB]
+    elif kind == "person":
+        chain = ["直接指定", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", WEB]
+    else:   # グループ・出演者：Wikidata は使わない（gather は本人のときだけ）。公式サイトは対象が 1 人のときだけ
+        chain = ["直接指定", "Wikipedia", "Wikimedia Commons", "新聞の配図", WEB]
+    auto = (lambda s: s != WEB) if needs_face(item) else (lambda s: s in AUTO_SOURCES.get(kind, ()))
+    return [(s, auto(s)) for s in chain]
+
+
 # 自動で選ぶときの、取り方の優先順。ブランドは公式ロゴ（Wikidata P154・公式サイト）、主題は Wikidata・Commons・Twemoji を先に
 PICK_ORDER = ["直接指定", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
@@ -839,13 +856,16 @@ def fill_one(item, log=print):
     added = max(0, st["have"] - before)
     have_img = _have_images(fresh)
     rest = [c for n, c in enumerate(good, 1) if n not in picks and c["image"] not in have_img]
+    # 漏斗：集めた候補 → 使える（開ける・同じでない・本人）→ 自動で書いた → 一覧に残した（管理ページ「小元素の探し方」）
+    funnel = {"found": sum(tried.values()), "usable": len(good), "auto": len(picks), "added": added, "review": len(rest)}
     if st["state"] == "ok":
-        return {"state": "ok", "note": f"{added} 枚足して目標に届いた", "tried": tried}
+        return {"state": "ok", "note": f"{added} 枚足して目標に届いた", "tried": tried, "funnel": funnel}
     if rest:
         out = _write_sheet(fresh, rest)
-        return {"state": "review", "tried": tried, "sheet": str(out),
+        return {"state": "review", "tried": tried, "sheet": str(out), "funnel": funnel,
                 "note": f"{added} 枚足した。残りの候補 {len(rest)} 枚は自動で決められないので一覧で確かめる"}
-    return {"state": "failed", "tried": tried, "note": f"{added} 枚足した。使える候補がもうない（{RETRY_HOURS} 時間後にもう一度）"}
+    return {"state": "failed", "tried": tried, "funnel": funnel,
+            "note": f"{added} 枚足した。使える候補がもうない（{RETRY_HOURS} 時間後にもう一度）"}
 
 
 def fresh_have(item):
@@ -860,6 +880,8 @@ def record(prog, item, result, now):
     e.update(kind=st["kind"], have=st["have"], target=st["target"], at=now, state=result["state"], note=result.get("note", ""))
     if "tried" in result:
         e["tried"] = result["tried"]
+    if "funnel" in result:
+        e["funnel"] = result["funnel"]
     if result.get("sheet"):
         e["sheet"] = result["sheet"]
     else:
