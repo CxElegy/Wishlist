@@ -14,11 +14,18 @@
    }
   },
   "Astrae Oratio": {
+   "at": "2026-10-17T01:01:45+00:00",
+   "failed_at": "2026-10-17T01:01:45+00:00",
    "have": 5,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "一覧を目で確認：使える候補なし（別人・重複・漫画のコマ・遠景）。24 時間後に新しい候補で再挑戦",
+   "state": "failed",
+   "target": 6,
+   "tried": {
+    "Wikimedia Commons": 0,
+    "Wikipedia": 0,
+    "新聞の配図": 3
+   }
   },
   "BLEACH Mirrors High": {
    "at": "2026-10-17T00:53:50+00:00",
@@ -32,12 +39,12 @@
    }
   },
   "FROM": {
-   "at": "2026-10-17T00:53:14+00:00",
+   "at": "2026-10-17T01:01:45+00:00",
+   "failed_at": "2026-10-17T01:01:45+00:00",
    "have": 4,
    "kind": "character",
-   "note": "2 枚足した。残りの候補 1 枚は自動で決められないので一覧で確かめる",
-   "sheet": "/tmp/wishlist-emblem/FROM.jpg",
-   "state": "review",
+   "note": "一覧を目で確認：使える候補なし（別人・重複・漫画のコマ・遠景）。24 時間後に新しい候補で再挑戦",
+   "state": "failed",
    "target": 6,
    "tried": {
     "Wikipedia": 6
@@ -51,12 +58,12 @@
    "target": 2
   },
   "ILLIT": {
-   "at": "2026-10-17T00:53:15+00:00",
+   "at": "2026-10-17T01:01:45+00:00",
+   "failed_at": "2026-10-17T01:01:45+00:00",
    "have": 3,
    "kind": "group",
-   "note": "1 枚足した。残りの候補 1 枚は自動で決められないので一覧で確かめる",
-   "sheet": "/tmp/wishlist-emblem/ILLIT.jpg",
-   "state": "review",
+   "note": "一覧を目で確認：使える候補なし（別人・重複・漫画のコマ・遠景）。24 時間後に新しい候補で再挑戦",
+   "state": "failed",
    "target": 5,
    "tried": {
     "Wikimedia Commons": 12,
@@ -64,19 +71,31 @@
    }
   },
   "MMORPG 新作": {
-   "have": 2,
+   "at": "2026-10-17T00:55:31+00:00",
+   "have": 3,
    "kind": "topic",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 3
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
   },
   "The Mandalorian": {
-   "at": "2026-10-17T00:53:14+00:00",
+   "at": "2026-10-17T01:01:45+00:00",
+   "failed_at": "2026-10-17T01:01:45+00:00",
    "have": 2,
    "kind": "character",
-   "note": "処理中",
-   "state": "running",
-   "target": 4
+   "note": "一覧を目で確認：使える候補なし（別人・重複・漫画のコマ・遠景）。24 時間後に新しい候補で再挑戦",
+   "state": "failed",
+   "target": 4,
+   "tried": {
+    "Wikimedia Commons": 6,
+    "Wikipedia": 2
+   }
   },
   "Vaundy": {
    "at": "2026-10-17T00:38:58+00:00",
@@ -107,18 +126,28 @@
    }
   },
   "gelato pique": {
-   "have": 0,
+   "at": "2026-10-17T00:55:31+00:00",
+   "have": 1,
    "kind": "brand",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 1
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 1,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 0,
+    "公式サイト": 2
+   }
   },
   "あつ森": {
-   "have": 5,
+   "at": "2026-10-17T00:56:23+00:00",
+   "have": 6,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 6,
+   "tried": {
+    "Fandom": 6
+   }
   },
   "ぐでたま": {
    "have": 3,
@@ -128,18 +157,31 @@
    "target": 3
   },
   "チェーンソーマン": {
+   "at": "2026-10-17T00:56:23+00:00",
+   "failed_at": "2026-10-17T00:56:23+00:00",
    "have": 5,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "0 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "state": "failed",
+   "target": 6,
+   "tried": {
+    "Fandom": 6
+   }
   },
   "三星手机": {
+   "at": "2026-10-17T00:56:44+00:00",
+   "failed_at": "2026-10-17T00:56:44+00:00",
    "have": 0,
    "kind": "brand",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 1
+   "note": "0 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "state": "failed",
+   "target": 1,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 1,
+    "Wikipedia": 0,
+    "公式サイト": 0
+   }
   },
   "周杰伦": {
    "at": "2026-10-17T00:53:14+00:00",
@@ -170,12 +212,20 @@
    }
   },
   "日本顶级网球赛事": {
-   "at": "2026-10-17T00:53:15+00:00",
-   "have": 1,
+   "at": "2026-10-17T00:55:28+00:00",
+   "have": 3,
    "kind": "topic",
-   "note": "処理中",
-   "state": "running",
-   "target": 3
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 2,
+    "Web 画像検索": 0,
+    "Wikidata": 1,
+    "Wikimedia Commons": 0,
+    "Wikipedia": 1,
+    "公式サイト": 8
+   }
   },
   "星巴克马克杯": {
    "have": 1,
@@ -185,38 +235,58 @@
    "target": 1
   },
   "滑雪": {
-   "at": "2026-10-17T00:53:15+00:00",
-   "have": 1,
+   "at": "2026-10-17T00:55:25+00:00",
+   "have": 3,
    "kind": "topic",
-   "note": "処理中",
-   "state": "running",
-   "target": 3
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 1,
+    "Wikimedia Commons": 0
+   }
   },
   "漫威电影": {
-   "at": "2026-10-17T00:38:30+00:00",
+   "at": "2026-10-17T01:01:45+00:00",
+   "failed_at": "2026-10-17T01:01:45+00:00",
    "have": 5,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
+   "note": "一覧を目で確認：使える候補なし（別人・重複・漫画のコマ・遠景）。24 時間後に新しい候補で再挑戦",
+   "state": "failed",
    "target": 6,
    "tried": {
-    "Wikipedia": 6
+    "Web 画像検索": 0,
+    "Wikimedia Commons": 6,
+    "Wikipedia": 2,
+    "新聞の配図": 3
    }
   },
   "猫用品": {
-   "at": "2026-10-17T00:53:50+00:00",
-   "have": 1,
+   "at": "2026-10-17T00:54:07+00:00",
+   "have": 3,
    "kind": "topic",
-   "note": "処理中",
-   "state": "running",
-   "target": 3
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
   },
   "绝区零": {
-   "have": 4,
+   "at": "2026-10-17T00:54:25+00:00",
+   "have": 6,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 6,
+   "tried": {
+    "Fandom": 6
+   }
   }
  },
  "last_run": {
@@ -226,14 +296,27 @@
    "哈利波特剧集",
    "FROM",
    "ILLIT",
-   "BLEACH Mirrors High"
+   "BLEACH Mirrors High",
+   "猫用品",
+   "绝区零",
+   "滑雪",
+   "日本顶级网球赛事",
+   "MMORPG 新作",
+   "gelato pique",
+   "チェーンソーマン",
+   "あつ森",
+   "The Mandalorian",
+   "Astrae Oratio",
+   "三星手机",
+   "漫威电影"
   ],
+  "end": "2026-10-17T01:00:47+00:00",
   "minutes": 38.0,
   "workers": 4
  },
  "started": "2026-10-16T23:48:04+00:00",
  "summary": {
-  "ok": 4,
+  "ok": 12,
   "total": 23
  }
 }
