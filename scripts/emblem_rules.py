@@ -94,3 +94,43 @@ def rules():
 def reasons():
     """コードが落とすときに使う理由の言葉の一覧（テスト用）。"""
     return {r["reason"] for r in rules() if r.get("reason")}
+
+
+# 判断の例（前 → 後）：管理ページ「小元素の判断の例」に出す。画像は docs/emblems/examples/（本物の判断の結果を残したもの）。
+# rule は rules() の title と同じ言葉（テストが確かめる）。after が空 = その画像は使わなかった（verdict に理由）
+EX = "emblems/examples/"
+EXAMPLES = [
+    {"rule": "コマ・アップの切り抜き", "item": "BLEACH Mirrors High · チャド",
+     "before": [("chad-panel", "Fandom の代表画像 = 漫画のコマ"), ("chad-before", "切り抜くと吹き出しの跡がえぐれる（上の端 82%）")],
+     "after": [("chad-after", "同じページの公式イラスト（Brave Souls）に替えた")],
+     "verdict": "代表画像は外し、同じページの公式イラストで取り直す"},
+    {"rule": "ほかの人が残っている（写真）", "item": "The Mandalorian · Pedro Pascal",
+     "before": [("the-mandalorian-pedro-pascal-before", "後ろの人と番組ロゴも一緒に切れた")],
+     "after": [("the-mandalorian-pedro-pascal-after", "顔が 1 つだけの場面で取り直し")],
+     "verdict": "切り抜きに 2 つ目の顔（いちばん大きい顔の高さの 20% 以上）があれば外す"},
+    {"rule": "YouTube は動画の場面", "item": "ILLIT · Minju",
+     "before": [("illit-minju-before", "投稿者のサムネイル：題名の字が切り抜きに残った")], "after": [],
+     "verdict": "外した。字の載っていない自動の場面（hq1〜3）で取り直す"},
+    {"rule": "YouTube は動画の場面", "item": "FROM · Harold Perrineau",
+     "before": [("from-harold-perrineau-before", "投稿者のサムネイル（hq720）")],
+     "after": [("from-harold-perrineau-after", "動画の場面から。下 18%（字幕の帯）を切ってから切り抜く")],
+     "verdict": "動画の場面に替えた"},
+    {"rule": "顔がない", "item": "周杰伦 · 候補の写真",
+     "before": [("face-none", "応援のペンライト（記事の画像）")], "after": [], "verdict": "顔なし → 外す"},
+    {"rule": "遠景", "item": "周杰伦 · 候補の写真",
+     "before": [("face-far", "舞台の遠景")], "after": [], "verdict": "顔の高さ < 画像の 10% → 外す"},
+    {"rule": "何人も写っている", "item": "周杰伦 · 候補の写真",
+     "before": [("face-crowd", "2 人で写った写真")], "after": [], "verdict": "2 番目の顔 ≥ 60% → 外す"},
+    {"rule": "別人", "item": "周杰伦 · 候補の写真",
+     "before": [("face-anchor", "基準：記事の代表画像（本人）"), ("face-other", "同じ記事に載っていたショパンの肖像")], "after": [],
+     "verdict": "顔の特徴（SFace）が基準と似ていない（< 0.363）→ 外す"},
+    {"rule": "顔の大きさをそろえる", "item": "绝区零 · Belle",
+     "before": [("belle-src", "公式の立ち絵（全身）")], "after": [("belle-after", "顔が高さの 32% になるように下を切る")],
+     "verdict": "どの版面でも顔が同じ大きさに見える"},
+    {"rule": "取景をそろえる", "item": "绝区零 · Astra Yao",
+     "before": [("astra-src", "全身の立ち絵（顔が見つからない）")], "after": [("astra-after", "ほかの多くが胸像なので上半身に切る")],
+     "verdict": "捨てずに、多いほうの取景に合わせる"},
+    {"rule": "代表作の記事", "item": "MMORPG 新作",
+     "before": [("mmorpg-before", "前：主題の記号（Twemoji）だけ")], "after": [("mmorpg-after", "後：代表作（剣霊など 5 作）のキービジュアル・ロゴ")],
+     "verdict": "ジャンルの版面は「下の一段」を貼る。記号は最後の手段"},
+]

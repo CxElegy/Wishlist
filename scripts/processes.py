@@ -646,6 +646,29 @@ def _by_legend(p=None):
             f'{_by_tag("model")}<small>{e(BY["model"][1])}</small></p>')
 
 
+def _ex_fig(f, cap, cls=""):
+    import emblem_rules
+    return (f'<figure class="ex-f{cls}"><span class="ex-i"><img src="{e(emblem_rules.EX + f)}.webp" alt="{e(cap)}" loading="lazy" decoding="async"></span>'
+            f'<figcaption>{e(cap)}</figcaption></figure>')
+
+
+def examples_panel():
+    """管理ページ「小元素の判断の例」：判断ごとに、本物の画像で 前 → 後（使わなかったものは「外す」の札）。"""
+    import emblem_rules
+    by_rule = {r["title"]: r for r in emblem_rules.rules()}
+    cards = []
+    for x in emblem_rules.EXAMPLES:
+        r = by_rule[x["rule"]]
+        before = "".join(_ex_fig(f, c) for f, c in x["before"])
+        after = ("".join(_ex_fig(f, c, " ex-ok") for f, c in x["after"]) if x["after"]
+                 else '<figure class="ex-f ex-no"><span class="ex-i"><b>外す</b></span><figcaption>使わない</figcaption></figure>')
+        cards.append(f'<article class="ex ex-{e(r["by"])}"><header>{_by_tag(r["by"])}<b>{e(r["title"])}</b><small>{e(r["stage"])} · {e(x["item"])}</small></header>'
+                     f'<div class="ex-row"><div class="ex-side"><em>前</em>{before}</div><span class="ex-arrow" aria-hidden="true">→</span>'
+                     f'<div class="ex-side"><em>後</em>{after}</div></div>'
+                     f'<p class="ex-v">{e(x["verdict"])}<small>{e(r["rule"])}</small></p></article>')
+    return f'<div class="exs">{"".join(cards)}</div>'
+
+
 def rules_table(kind):
     """判断の一覧（emblem_rules.py が 1 つだけの元）を、段ごとに AI / ルールの札つきの表にする。"""
     if kind != "emblem":
@@ -861,6 +884,27 @@ CSS = """
 .rt-ai td:first-child{box-shadow:inset 6px 0 0 var(--by-ai)}
 .rt-rule td:first-child,.rt-model td:first-child{box-shadow:inset 6px 0 0 var(--by-rule)}
 @media (max-width:640px){.rt td:last-child{display:none}}
+/* 小元素の判断の例（前 → 後） */
+.exs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:16px}
+.ex{border:2px solid var(--ink);background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0}
+.ex.ex-ai{border-color:var(--by-ai)}
+.ex header{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:8px 10px;border-bottom:1.5px solid var(--hair)}
+.ex header b{font:900 14px/1.35 var(--font-sans)}.ex header small{flex-basis:100%;font:500 var(--fs-label)/1.4 var(--font-sans);opacity:.8}
+.ex-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:6px;padding:10px}
+.ex-side{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start;min-width:0}
+.ex-side>em{flex-basis:100%;font:900 var(--fs-label) var(--font-mono);font-style:normal;letter-spacing:.2em}
+.ex-arrow{font:900 22px var(--font-mono);color:var(--rose)}
+.ex-f{margin:0;flex:1 1 90px;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ex-i{display:grid;place-items:center;aspect-ratio:1;border:2px solid var(--alert);overflow:hidden;
+ background:conic-gradient(var(--sheet) 25%,var(--card) 0 50%,var(--sheet) 0 75%,var(--card) 0) 0 0/14px 14px}
+.ex-ok .ex-i{border-color:var(--by-rule)}
+.ex-i img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.ex-f figcaption{font:500 var(--fs-label)/1.45 var(--font-sans)}
+.ex-no{flex:0 1 110px;align-self:center}
+.ex-no .ex-i{border-style:dashed;background:var(--paper);aspect-ratio:auto;min-height:84px}
+.ex-no b{font:900 20px var(--font-sans);color:var(--alert);transform:rotate(var(--tilt));border:3px solid var(--alert);padding:2px 10px}
+.ex-v{margin:auto 0 0;padding:8px 10px 10px;border-top:1.5px solid var(--hair);font:700 13px/1.5 var(--font-sans)}
+.ex-v small{display:block;font:500 var(--fs-label)/1.45 var(--font-sans);opacity:.8;margin-top:2px}
 .dg{display:grid;gap:30px 26px;padding:6px 18px 18px;align-items:start}
 .dg-lh{grid-row:1;position:sticky;top:66px;z-index:4;padding:4px 0;border-bottom:3px double var(--ink);background:var(--paper)}
 .dg-lh-no .pl{background:var(--alert);color:var(--card)}

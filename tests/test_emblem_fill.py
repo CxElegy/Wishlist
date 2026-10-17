@@ -963,3 +963,14 @@ class JudgeTable(unittest.TestCase):
         self.assertIn('class="by by-ai"', html)
         self.assertIn("dn-by-ai", html)
         self.assertIn("判断の一覧", html)
+
+    def test_examples_are_real_and_linked(self):
+        import emblem_rules
+        titles = {r["title"] for r in emblem_rules.rules()}
+        for x in emblem_rules.EXAMPLES:
+            self.assertIn(x["rule"], titles, x)   # 例は一覧の判断にひもづく
+            for f, _ in x["before"] + x["after"]:
+                self.assertTrue((ROOT / "docs" / f"{emblem_rules.EX}{f}.webp").exists(), f)
+        html = processes.examples_panel()
+        self.assertEqual(html.count('<article class="ex '), len(emblem_rules.EXAMPLES))
+        self.assertIn("外す", html)
