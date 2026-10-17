@@ -30,6 +30,10 @@ def rules():
         {"stage": STAGES[1], "title": "取り方の順", "by": "rule", "code": "emblem_fill.gather / PICK_ORDER",
          "rule": "直接指定 → 代表作 → AniList → Fandom（透明な立ち絵 → 代表画像）→ Wikidata → Wikipedia → Commons → 記事の配図 → 公式サイト → YouTube → Twemoji。"
                  "足りなければ ② 名前を広げる → ③ 公式・記事のページ（同じ回の中で）"},
+        {"stage": STAGES[1], "title": "実写の作品は役の姿", "by": "rule", "code": "emblem_fill.gather_roles",
+         "rule": "剧・映画（emblem_people）は出演者の生活の写真を使わない。出演者 → 役（Fandom の出演者の記事の character/role 欄 → 出演作の表の役の列 → 検索。"
+                 "役の記事に「演じた人 = 出演者」とあるものだけ。実在の人の記事・回の名前・出演者名を含む記事は除く）→ 役の記事の代表画像と剧照・作品の動画の場面（題名に作品名と役名。"
+                 "インタビュー・試写会などは除く）。出演者の写真は本人確認の基準にだけ使う。足りなければ作品の主な画像（ポスター）"},
         {"stage": STAGES[1], "title": "代表作の記事", "by": "rule", "code": "emblem_fill.add_example",
          "rule": "記事名を言語つきで指定。別の言語版は言語間リンクでたどる（検索すると別の記事に当たる）"},
         {"stage": STAGES[1], "title": "YouTube は動画の場面", "by": "rule", "code": "emblem_fill.youtube_images / emblem.video_frame",
@@ -48,6 +52,8 @@ def rules():
          "rule": f"顔の高さ < 画像の {pct(face_id.FACE_MIN_RATIO)}"},
         {"stage": STAGES[3], "title": "何人も写っている", "by": "model", "code": "face_id.photo_problem", "reason": "何人も写っている",
          "rule": f"2 番目の顔 ≥ いちばん大きい顔の {pct(face_id.CROWD_RATIO)}（面積）"},
+        {"stage": STAGES[3], "title": "役の記事の代表画像は顔がなくてもよい", "by": "rule", "code": "emblem_fill.check（trust_noface）",
+         "rule": "兜・仮面の役（Din Djarin・アイアンマン）は顔が見つからない。役の記事の代表画像に限って「顔なし」でも残す（顔が見えて別人なら外す）"},
         {"stage": STAGES[3], "title": "別人", "by": "model", "code": "face_id.same_person（SFace）", "reason": "別人",
          "rule": f"記事の代表画像との類似度 < {face_id.THRESHOLD}。代表画像が合わなければ、いちばん多い同じ顔を本人に"},
         # ⑤ どれを選ぶか
@@ -74,6 +80,8 @@ def rules():
          "rule": f"半透明 > {pct(emblem.SOFT_MAX)}"},
         {"stage": STAGES[5], "title": "ほかの人が残っている（写真）", "by": "model", "code": "emblem.other_faces（YuNet）", "reason": "ほかの人が残っている",
          "rule": f"切り抜きの中に、いちばん大きい顔の高さの {pct(emblem.OTHER_FACE)} 以上の顔がほかにある"},
+        {"stage": STAGES[5], "title": "顔が切り抜きに残っていない（写真）", "by": "model", "code": "emblem.lost_face（YuNet）", "reason": "顔が切り抜きに残っていない",
+         "rule": "元の写真・場面には顔があるのに、切り抜いた結果に顔がない = 手・持ち物・暗い背景を切り抜いた。同じページの別の画像で取り直す"},
         {"stage": STAGES[5], "title": "穴（写真）", "by": "rule", "code": "emblem.hole_share", "reason": "切り抜きに穴",
          "rule": f"体の中の透明な穴 > {emblem.HOLE_MAX:.0%}（服が背景と同じ色で抜けた）"},
         {"stage": STAGES[5], "title": "代表画像がだめなら同じページで", "by": "rule", "code": "emblem.cut_all / find_bust",
@@ -83,6 +91,9 @@ def rules():
          "rule": f"顔 = 高さの {pct(emblem.FACE_SHARE)}。顔が {pct(emblem.CLOSEUP)} を超えるアップは同じページの胸像に替える"},
         {"stage": STAGES[6], "title": "全身か胸像か", "by": "rule", "code": "emblem.want_full",
          "rule": "1 枚ごとの framing → 版面の emblem_framing → 絵のキャラで元が透明背景の公式の立ち絵なら「全身で測ってから上半身」→ それ以外（写真・コマ・場面）は顔で胸像"},
+        {"stage": STAGES[6], "title": "縦に立った人の形だけ測る", "by": "rule", "code": "emblem.STAND_RATIO",
+         "rule": f"輪郭の高さが幅の {emblem.STAND_RATIO} 倍未満（寝そべり・横長のマスコット・場面：ぐでたま）は測らず切らず、全体をふつうの高さで。"
+                 "網页でも全身の高さは上限（200px・スマホ 130px）まで"},
         {"stage": STAGES[6], "title": "全身で測ってから上半身に切る", "by": "rule", "code": "emblem.bust_from_body（BUST_CUT）",
          "rule": f"全身のままだと小さく貼ったとき顔が見えない。目・足の裏（全身で測った目印）で、目から足の裏の {emblem.BUST_CUT:.0%} の高さ（腰のあたり）で切る。"
                  "網页は目から足の裏（画像の外）を同じ長さにそろえるので、どのキャラも体の同じところで切れて同じ大きさ、ほかの胸像とも顔の大きさが合う"},
@@ -98,6 +109,8 @@ def rules():
         {"stage": STAGES[6], "title": "カードは比率が近いときだけ切る", "by": "rule", "code": "render.CARD_AR",
          "rule": f"背景つきの画像を 4:5 の窓で切るのは、縦横比（高さ ÷ 幅）が {emblem.CARD_AR[0]}〜{emblem.CARD_AR[1]} のときだけ。外れたら切らずに全体"},
         # ⑧ 届かなかったら
+        {"stage": STAGES[7], "title": "検査で外れた画像は二度と選ばない", "by": "rule", "code": "emblem_fill.commit",
+         "rule": "選んだのに切り抜きの検査で外れた画像は emblem_reject に書く。次は同じ人の次の候補を選ぶ（同じ画像で何度も失敗しない）"},
         {"stage": STAGES[7], "title": "段を上がる・待つ", "by": "rule", "code": "emblem_fill.fill_one / RETRY_HOURS",
          "rule": f"① 標準 → ② 名前を広げる → ③ 公式・記事のページ。全部だめなら失敗：新しい記事・手がかりが来たらすぐ、来なくても {ef.RETRY_HOURS} 時間後"},
         {"stage": STAGES[7], "title": "目で見て選ぶ（手で頼んだときだけ）", "by": "ai", "code": "emblem_fill.py \"名前\" → --commit",
@@ -145,6 +158,14 @@ EXAMPLES = [
      "before": [("astra-bust", "前：顔で切っていたので、キャラごとに体の切れる場所がばらばら")],
      "after": [("astra-full", "後：全身で目と足の裏を測り、腰のあたり（目から足の 40%）で切る。20 人とも同じところで切れる")],
      "verdict": "全身で測ってから上半身に切る（全身のままだと小さすぎる）"},
+    {"rule": "実写の作品は役の姿", "item": "漫威电影 · Chris Evans",
+     "before": [("actor-before", "前：出演者の写真（映画祭で撮った私服）")],
+     "after": [("role-after", "後：Fandom の役の記事（Steve Rogers）の剧照。出演者の写真は本人確認の基準にだけ使う")],
+     "verdict": "剧・映画は役の姿。生活の写真は使わない"},
+    {"rule": "縦に立った人の形だけ測る", "item": "ぐでたま",
+     "before": [("lying-before", "前：寝そべった横長の絵まで「立った人」として測って切った → 巨大で欠けた")],
+     "after": [("lying-after", "後：高さが幅の 1.3 倍未満なので測らず切らず、全体をふつうの高さで")],
+     "verdict": "人の形でないものは測らない。高さには上限"},
     {"rule": "全身の背の高さをそろえる", "item": "dota2 · ヒーロー 9 人",
      "before": [("height-before", "前：画像の高さでそろえると、武器・羽・しゃがみで背がばらばら")],
      "after": [("height-after", "後：目から足の裏をそろえ、足の裏を線（赤）に。しゃがんだ Slark は大きさで測る")],

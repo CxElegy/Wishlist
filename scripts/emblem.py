@@ -344,7 +344,7 @@ def write_item(name, emblems, th):
         skip = False
         block.append(l)
     at = next((i + 1 for i, l in enumerate(block) if l.startswith("    motif:")), 0)
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "fs")
     block[at:at] = (["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"]
                     + [f"      - {_flow({k: x[k] for k in keep if k in x})}" for x in emblems]
                     + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
@@ -408,6 +408,8 @@ def cut_out(url, slug, drawn=True):
         img = video_frame(img)
     out = remove(img, session=_session("birefnet-general-lite"))   # 絵も写真もいちばん輪郭がきれいだった（isnet-anime・u2net と比べた）
     out = check_whole(out, photo=not drawn)
+    if not drawn and lost_face(img, out):
+        raise ValueError("顔が切り抜きに残っていない（別のもの：手・物・背景を切り抜いた）")
     out, _ = upper_body(out)   # 縦長の全身は上半身に（小さく貼ると顔が見えない）
     out.thumbnail((420, 520))
     EMB_DIR.mkdir(parents=True, exist_ok=True)
@@ -541,6 +543,24 @@ TOP_TOUCH = 0.03   # 上の端にこれ以上当たっていたら、顔まで�
 FACE_TOP = 0.04    # 顔の上端が高さのこの割合より上 = 顔が上の端で切れている
 AREA_MIN = 0.12    # 人物の面積がこれより小さい = 小さすぎる
 SOFT_MAX = 0.18    # 半透明（輪郭がにじんだ）部分がこれより多いものは使わない
+
+
+def lost_face(src, out):
+    """写真：元の画像には顔があるのに、切り抜いた結果に顔がない = 違うもの（手・持ち物・暗い背景）を切り抜いた。
+    顔のモデル（YuNet）がなければ判断しない（False）。兜・仮面で元から顔がないものは False。"""
+    try:
+        import face_id
+        if face_id.engine() is None:
+            return False
+        had = face_id.face_info(src.convert("RGB"))[1] or {}
+        if not had.get("faces"):
+            return False
+        bg = __import__("PIL.Image", fromlist=["Image"]).new("RGBA", out.size, "#FFFFFF")
+        bg.alpha_composite(out.convert("RGBA"))
+        now = face_id.face_info(bg.convert("RGB"))[1] or {}
+        return not now.get("faces")
+    except Exception:
+        return False
 
 
 def check_whole(out, photo=False):
@@ -690,7 +710,7 @@ def face_fit(img, share=FACE_SHARE):
     return img, round(fh / h, 3)
 
 
-def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False):
+def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, photo=False):
     """顔のアップ（顔が高さの 5 割を超える）しかないとき：同じページに載っている画像から、切り抜いて胸像になるもの
     （顔がはっきり見えて、顔の割合 fs が lo〜hi）を探す。名前に人物名を含む画像を先に、大きい順。→ (網址, 切り抜き画像, fs) か None"""
     from PIL import Image
@@ -715,7 +735,9 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False):
     for _, url, t in sorted(infos, reverse=True)[:limit]:
         try:
             img = Image.open(io.BytesIO(_get(url))).convert("RGB")
-            out = check_whole(remove(img, session=_session("birefnet-general-lite")))
+            out = check_whole(remove(img, session=_session("birefnet-general-lite")), photo=photo)
+            if photo and lost_face(img, out):   # 写真：手・物・暗い背景を切り抜いたもの
+                raise ValueError("顔が切り抜きに残っていない")
             fitted, fs = face_fit(out)
             if fs and lo <= fs <= hi:
                 print(f"  [胸像] {t}：顔 {fs}", file=sys.stderr)
@@ -739,7 +761,13 @@ def fit_all(name, drawn=False):
     item = next(i for i in yaml.safe_load(path.read_text(encoding="utf-8"))["items"] if i["name"] == name)
     ems = item.get("emblem") or []
     for x in ems:
-        if x.get("shape") in ("logo", "icon"):
+        if x.get("shape") == "badge" and not x.get("ar") and not x.get("crop"):   # カードの縦横比（窓で切るか全体を見せるかの判断に使う）
+            try:
+                bw, bh = Image.open(io.BytesIO(_get(x["image"]))).size
+                x["ar"] = round(bh / bw, 3)
+            except Exception:
+                pass
+        if x.get("shape") in ("logo", "icon") or x.get("work"):
             continue
         try:
             src = x.get("source")
@@ -760,7 +788,9 @@ def fit_all(name, drawn=False):
                 out = out.crop(out.getchannel("A").getbbox())
                 fs = None
             x.pop("body", None)
-            if full or x.get("upper") is False:   # 目から足の裏までの長さで大きさをそろえてから、上半身に切る（網页の --bl / --bf）
+            if (full or x.get("upper") is False) and out.size[1] < out.size[0] * STAND_RATIO:   # 縦に立った人の形でない（寝そべり・横長のマスコット・場面）
+                pass   # 測らず切らず、全体をふつうの高さで（ぐでたま）
+            elif full or x.get("upper") is False:   # 目から足の裏までの長さで大きさをそろえてから、上半身に切る（網页の --bl / --bf）
                 mk = body_marks(out)
                 if mk:
                     out, body = bust_from_body(out, mk)
@@ -801,7 +831,7 @@ def _write_emblems(name, ems):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "upper", "framing", "body", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     path.write_text("\n".join(lines), encoding="utf-8")
 
@@ -930,6 +960,7 @@ def body_marks(img):
     return round(eye / h, 3), round(foot / h, 3), round(float(cx) / w, 3), round(w / h, 3), round(size, 3), how
 
 
+STAND_RATIO = 1.3   # 背の高さを測って上半身に切るのは、輪郭の高さが幅のこれ倍以上（縦に立った人の形）のときだけ
 BUST_CUT = 0.40   # 全身の立ち絵を「目 + 目から足の裏の長さ × これ」（腰のあたり）で切って上半身にする。どのキャラも体の同じところで切れる
 
 
@@ -1033,7 +1064,7 @@ def cut_all(name, drawn, old=()):
     item = next(i for i in yaml.safe_load(path.read_text(encoding="utf-8"))["items"] if i["name"] == name)
     ems = item.get("emblem") or []
     for x in ems:
-        if x.get("shape") != "badge":
+        if x.get("shape") != "badge" or x.get("work"):   # 作品の主な画像（ポスター）は切り抜かない
             continue
         try:
             src = x.get("source") or x["image"]
@@ -1049,7 +1080,8 @@ def cut_all(name, drawn, old=()):
             found = None
             if m and "/wiki/File:" not in x["page"]:
                 try:
-                    found = find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "), lo=0.12, noface=True)
+                    found = find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "), lo=0.12,
+                                      noface=drawn, photo=not drawn)   # 顔なしの控えは絵のキャラだけ（前髪で目が隠れる）。写真は顔が残っていること
                 except Exception as e2:
                     print(f"  [胸像探し失敗] {x['subject']}：{e2}", file=sys.stderr)
             if found:
@@ -1059,7 +1091,7 @@ def cut_all(name, drawn, old=()):
                 EMB_DIR.mkdir(parents=True, exist_ok=True)
                 img.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
                 x.update(image=f"emblems/{slug}.webp", source=found[0], shape="cutout", _framing=framing(img),
-                         why=f"{x['subject']}（同じページの別の画像。代表画像は切り抜きの検査で外れた）")
+                         why=f"{x.get('why') or x['subject']} → 同じページの別の画像（代表画像は切り抜きの検査で外れた）")   # 元の理由（役の記事など）は残す
                 if found[2]:
                     x["fs"] = found[2]
                 print(f"  {x['subject']} → {x['image']}（同じページの別の画像）", file=sys.stderr)
@@ -1073,7 +1105,7 @@ def cut_all(name, drawn, old=()):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     path.write_text("\n".join(lines), encoding="utf-8")
 

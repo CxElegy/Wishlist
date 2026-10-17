@@ -25,6 +25,7 @@ import yaml
 import heat
 import processes
 import likefx
+import taxonomy
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
@@ -438,10 +439,10 @@ button{font-family:inherit}
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
 .emb-in{display:flex;align-items:flex-end}
 .emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:190px;object-fit:contain;object-position:bottom}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
-.emb{--leg:116px;--legc:330px;--anc:62px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
-.emb img.body{--bh:calc(var(--leg) / var(--bl));height:var(--bh);width:calc(var(--bh) * var(--ba));max-width:none;
- margin-bottom:calc(var(--bh) * (var(--bf) - 1));  /* 足の裏より下（尻尾・武器・裾）は帯の下へ */
- margin-right:calc(var(--anc) - var(--bh) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
+.emb{--leg:116px;--legc:290px;--anc:62px;--bmax:200px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
+.emb img.body{--bh:calc(var(--leg) / var(--bl));--bz:min(var(--bh), var(--bmax));height:var(--bz);width:calc(var(--bz) * var(--ba));max-width:none;
+ margin-bottom:calc(var(--bz) * (var(--bf) - 1));  /* 足の裏より下（尻尾・武器・裾）は帯の下へ。高さは --bmax まで（測り違いで巨大にならない） */
+ margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
 .emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
 .emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
@@ -457,7 +458,7 @@ button{font-family:inherit}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:212px;--anc:40px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
+@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
@@ -1023,7 +1024,7 @@ def _spam(title):
 
 def collect(issues, order=None):
     """把各期按作品汇总：外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。
-    作品顺序固定：先按板块（游戏 / 影视 / 运动 / 好物 / 其他），同板块内按 order（items.yaml 的顺序）。
+    作品顺序固定：先按板块（sections.yaml 的顺序，其他最后），同板块内按 order（items.yaml 的顺序）。
     这样每天更新只是版面里的消息变化，版面的数量和位置不变。"""
     latest = issues[0]
     rank = {n: i for i, n in enumerate(order or [])}
@@ -1615,7 +1616,7 @@ def render_settings(items, db, updated, schemes=()):
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     rows = []
     for name in order:
-        rows.append(f'<h2 style="--sc:{_sec_color(name)}">{e(name)}<small>{_sec_en(name)}</small></h2>')
+        rows.append(f'<h2 style="--sc:{_sec_color(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small></h2>')
         for it in groups[name]:
             sub = f'<small>{e(it["subtitle"])}</small>' if it.get("subtitle") else ""
             btns = "".join(f'<button type="button" data-v="{v}" aria-pressed="{str(v == (it.get("size") or "M")).lower()}">'
@@ -1625,7 +1626,7 @@ def render_settings(items, db, updated, schemes=()):
                         f'<button type="button" class="edit" aria-label="修改 {e(it["name"])}">改</button>'
                         f'<span class="st" aria-live="polite"></span></div>')
     data = {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
-            "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": list(dict.fromkeys(list(SECTIONS) + order)),
+            "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": taxonomy.for_page(),
             "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items]}
     cfg = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return f"""<!doctype html>
@@ -1691,6 +1692,8 @@ def render_settings(items, db, updated, schemes=()):
 .q .no{{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.6}}
 .q h3{{margin:0;font:900 19px/1.4 'Noto Sans SC',sans-serif}}
 .q p{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
+.subrow{{display:flex;flex-direction:column;gap:6px}}.subrow h4{{margin:0;font:700 13px 'Noto Sans SC',sans-serif}}
+.subrow .opts{{flex-direction:row;flex-wrap:wrap}}.subrow .opt{{padding:6px 10px;font-size:14px}}
 .opts{{display:flex;flex-direction:column;gap:8px}}
 .opt{{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;
  font:900 15px 'Noto Sans SC',sans-serif;cursor:pointer}}
@@ -2093,12 +2096,11 @@ def _wish_section(wishes, works, finds=()):
             f'<div class="wgrid">{"".join(cards)}</div></section>')
 
 
-# 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
-# 板块色：白字、浅底（#EDEBE6）上的小字都要过 WCAG AA 4.5:1（绿、粉、橙原来太浅，白字只有 2.9–4.4）
-SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#156A48", "演出": "#BB265A", "好物": "#985315"}
-SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
-# 网页上显示的板块名（数据里的板块名照旧是中文，items.yaml / 设置页不变）
-SECTION_JA = {"游戏": "ゲーム", "影视": "映像", "运动": "スポーツ", "演出": "ライブ", "好物": "グッズ", "其他": "その他"}
+# 头版板块：sections.yaml 里事先定全的板块（scripts/taxonomy.py），按表的顺序排，颜色各不相同（白字、浅底上的小字都过 WCAG AA 4.5:1）。
+# 数据里的板块名照旧是中文（items.yaml / 设置页），网页上显示日语名
+SECTIONS = {k: r["color"] for k, r in taxonomy.SECTIONS.items() if k != taxonomy.OTHER}
+SECTION_EN = {k: r["en"] for k, r in taxonomy.SECTIONS.items()}
+SECTION_JA = {k: r["ja"] for k, r in taxonomy.SECTIONS.items()}
 
 
 def _sec_name(name):
@@ -2502,8 +2504,8 @@ NAV_STYLES = {
 }
 
 
-# 板块のアイコン（twemoji）。表にない新しい板块はアイコンなし
-SECTION_ICON = {"游戏": "1f3ae", "影视": "1f3ac", "运动": "26bd", "演出": "1f3a4", "好物": "1f6cd", "其他": "1f4e6"}
+# 板块のアイコン（twemoji、sections.yaml の icon）。表にない板块はアイコンなし
+SECTION_ICON = {k: str(r["icon"]) for k, r in taxonomy.SECTIONS.items() if r.get("icon")}
 TWEMOJI = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/{}.svg"
 NAV_HIDE = 24   # 左の目次で隠し始める作品の数（items.yaml の settings.nav_hide。"auto" なら画面の高さで決める）
 

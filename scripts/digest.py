@@ -39,6 +39,7 @@ import heat
 import images
 import render
 import sources
+import taxonomy
 import theme
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -1062,7 +1063,7 @@ def export_photos():
 # 设置页上能新增 / 修改的字段（按写进 items.yaml 的顺序）。值的检查规则：
 #   str:N 不超过 N 字的一句话；list:N:M 最多 N 个、每个不超过 M 字的字符串列表
 ITEM_FIELDS = {
-    "type": "type", "section": "str:20", "size": "size", "subtitle": "str:80",
+    "type": "type", "section": "section", "subs": "subs", "size": "size", "subtitle": "str:80",
     "keywords": "list:12:100", "match": "list:30:100", "exclude": "list:30:100", "news_langs": "langs",
     "priority": "str:300", "urgent_patterns": "regex", "site": "url",
     "steam_appid": "int", "anilist_id": "int", "anilist_type": "anilist_type", "tmdb": "tmdb", "notes": "str:1500",
@@ -1099,6 +1100,16 @@ def _clean_field(key, value):
                 except re.error as err:
                     raise ValueError(f"要紧消息规则写错了：{v[:40]}（{err}）") from None
         return out or None
+    if rule == "section":
+        if value not in taxonomy.SECTIONS:
+            raise ValueError(f"板块只能选 sections.yaml 里的：{'/'.join(taxonomy.SECTIONS)}")
+        return value
+    if rule == "subs":
+        if not isinstance(value, dict) or len(value) > 6 or not all(
+                isinstance(k, str) and re.fullmatch(r"[a-z_]{1,20}", k) and isinstance(v, str) and 0 < len(v.strip()) <= 20
+                for k, v in value.items()):
+            raise ValueError("小分类要写成 {分法: 值}，每个值 20 字以内")
+        return {k: v.strip() for k, v in value.items()}
     if rule == "type":
         if value not in ITEM_TYPES:
             raise ValueError(f"type 必须是 {'/'.join(ITEM_TYPES)} 之一")
@@ -1138,6 +1149,8 @@ def clean_item_config(config):
 def _yaml_field(key, value):
     """一个字段写成 items.yaml 里的几行（4 格缩进；字符串都用 JSON 引号，YAML 也认）。"""
     q = lambda v: json.dumps(v, ensure_ascii=False)
+    if isinstance(value, dict):
+        return [f"    {key}: {{{', '.join(f'{k}: {q(v)}' for k, v in value.items())}}}"]
     if isinstance(value, list):
         if key == "urgent_patterns":
             return [f"    {key}:"] + [f"      - {q(v)}" for v in value]
@@ -1321,6 +1334,8 @@ def nav_scheme_rows(settings, items):
     rows = []
     for sec, schemes in (settings.get("sub_schemes") or {}).items():
         ins = [i for i in items if section_of(i) == sec]
+        if not ins:   # 関注項のない板块は網页に出ないので、分け方も選ばせない
+            continue
         opts = []
         for x in schemes or []:
             if not (isinstance(x, dict) and x.get("id")):
@@ -1760,12 +1775,15 @@ def with_new_items(issues, items):
 
 def with_manual_themes(issues, items):
     """items.yaml に手で書いた theme（小元素に合わせた配色など）を、次の収集を待たずに網页へ反映する。
-    版面の見た目は最新の一期で決まるので、最新の一期の版面だけを上書きする。reports/ には書き戻さない。"""
+    版面の見た目は最新の一期で決まるので、最新の一期の版面だけを上書きする。reports/ には書き戻さない。
+    板块（section）も items.yaml の今の値にする（板块を移した関注項が、次の出刊を待たずに新しい板块に出る）。"""
     manual = {i["name"]: i["theme"] for i in items if isinstance(i.get("theme"), dict)}
-    if not manual or not issues:
+    secs = {i["name"]: section_of(i) for i in items}
+    if not issues:
         return issues
     blocks = [{**b, "theme": {**(b.get("theme") or {}), **manual[b["name"]]}} if b.get("name") in manual else b
               for b in issues[0].get("items", [])]
+    blocks = [{**b, "section": secs[b["name"]]} if b.get("name") in secs else b for b in blocks]
     return [{**issues[0], "items": blocks}] + issues[1:]
 
 ADMIN_ID_BY_TYPE = {"game": "steam_appid", "anime": "anilist_id", "show": "tmdb"}  # 種類ごとに、あると話題度・現状が取れる ID
@@ -2181,6 +2199,7 @@ def write_issue_markdown(issue, settings):
 def load_config():
     config = yaml.safe_load(ITEMS_FILE.read_text(encoding="utf-8")) or {}
     settings = config.get("settings") or {}
+    settings["sub_schemes"] = taxonomy.sub_schemes()   # 小分類の分け方は sections.yaml が唯一の元
     items = config.get("items") or []
     for item in items:
         item.setdefault("type", "product")
@@ -2247,6 +2266,9 @@ def merge_inbox(old, new):
         changed_before = {f["label"] for f in cur["facts"] if f["changed"]}
         cur["facts"] = [{**f, "changed": f["changed"] or f["label"] in changed_before} for f in item["facts"]] or cur["facts"]
         cur["cover"] = cur.get("cover") or item.get("cover")
+        if item.get("reddit_cold"):
+            have = {d["url"] for d in cur.get("reddit_cold") or []}
+            cur["reddit_cold"] = (cur.get("reddit_cold") or []) + [d for d in item["reddit_cold"] if d["url"] not in have]
     return old
 
 
@@ -2350,14 +2372,18 @@ def ingest(dry_run=False):
         if backfill:
             print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
         entries = filter_entries(raw, item, conf, seen, now, compare_for(item))
-        print(f"  {item['name']} 新条目 {len(entries)} 条", file=sys.stderr)
+        # 不火的 Reddit 帖子（sources.reddit_hot）不上版面，只记下来给話題度数帖子数；以后上了最热榜还会再收进来
+        cold = [e for e in entries if not getattr(e, "hot", True)]
+        entries = [e for e in entries if getattr(e, "hot", True)]
+        print(f"  {item['name']} 新条目 {len(entries)} 条" + (f"（另有不火的 Reddit {len(cold)} 帖，不上版面）" if cold else ""),
+              file=sys.stderr)
         if live and shown.get(item["name"], -1) != (len(entries) or None):  # 按顺序去重后件数变了（被前面的版面收走）才改
             live_mark(item["name"], "found" if entries else None, len(entries), started.get(item["name"]), eta())
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
             continue
         item_facts, status_cover = status_facts(item, settings, facts)
-        if not entries and not any(f["changed"] for f in item_facts):
+        if not entries and not cold and not any(f["changed"] for f in item_facts):
             continue
         inbox_items.append({
             "name": item["name"],
@@ -2368,6 +2394,8 @@ def ingest(dry_run=False):
             # 补抓的是旧闻，不算要紧，不发 Discord
             "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item)}
                         for n, e in enumerate(entries, 1)],
+            **({"reddit_cold": [{"url": e.url, "date": e.published.isoformat() if e.published else None, "source": e.source}
+                                for e in cold]} if cold else {}),
         })
         for e in entries:
             seen.update((e.url, title_key(e.title)))
@@ -2413,12 +2441,9 @@ def last_story(name, before):
     return None
 
 
-SECTION_BY_TYPE = {"game": "游戏", "anime": "影视", "show": "影视", "product": "好物", "category": "好物", "event": "演出"}
-
-
 def section_of(item):
-    """头版上的板块。"""
-    return item.get("section") or SECTION_BY_TYPE.get(item.get("type", "product"), "好物")
+    """头版上的板块（sections.yaml 的 key）。没写 section 的按 type（taxonomy.BY_TYPE）。"""
+    return item.get("section") or taxonomy.BY_TYPE.get(item.get("type", "product"), "好物")
 
 
 def quiet_block(item, themes, date):
@@ -2530,10 +2555,76 @@ def publish(inbox_path=None):
     issue = {"no": no, "date": date, "items": blocks}
     save_json(REPORTS_DIR / f"{date}.json", issue)
     recommend()
+    prune_reddit()
     hd_images()
     write_page()
     write_issue_markdown(issue, settings)
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
+
+
+REDDIT_CHECK_FILE = STATE_DIR / "reddit_check.json"
+REDDIT_CHECK_DAYS = 8   # 网页显示最近 7 天，多查 1 天
+
+
+def prune_reddit(days=REDDIT_CHECK_DAYS):
+    """已经出刊的 Reddit 帖子每天复查一次（结果记在 state/reddit_check.json）：
+    - 删了（正文 [removed] / [deleted]、帖子 404）→ 从版面撤掉，点开也看不到
+    - 不火了：专门版块（subreddits）的帖子不在那个版块本周最热榜上（sources.reddit_hot_ids）、
+      全站搜索来的帖子不在这个关注项的 Reddit 搜索（按热度排）前 5（和收集时同一个规则）→ 撤掉
+    拿不到结果（Reddit 限流）的这次不判断，下次再查。返回有没有改动。"""
+    _, items = load_config()
+    subs = {i["name"]: {x.lower() for x in i.get("subreddits") or []} for i in items}
+    by_name = {i["name"]: i for i in items}
+    searched = {}
+
+    def search_hot(name):  # 这个关注项的 Reddit 搜索前 5（收集时的规则）；没做全站搜索 / 拿不到 → None
+        item = by_name.get(name) or {}
+        if "reddit" not in (item.get("use") or ["google", "bing", "reddit"]):
+            return None
+        if name not in searched:
+            kw = (item.get("keywords") or [name])[0]
+            found = sources.reddit_search(f'"{kw}"', strict=True)
+            searched[name] = None if found is None else {sources.reddit_id(e.url) for e in found if e.hot}
+        return searched[name]
+    today = dt.date.today().isoformat()
+    checks = load_json(REDDIT_CHECK_FILE) or {}
+    changed_any = False
+    for path in sorted(REPORTS_DIR.glob("????-??-??.json"))[-days:]:
+        rep_, changed = load_json(path), False
+        for b in rep_["items"]:
+            keep = []
+            for st in b.get("stories") or []:
+                url = st.get("url") or ""
+                if not images.REDDIT_POST.match(url):
+                    keep.append(st)
+                    continue
+                c = checks.get(url)
+                if not c or c.get("day") != today:
+                    removed = sources.reddit_removed(url)
+                    m = re.search(r"/r/([^/]+)/", url)
+                    hot = None
+                    in_sub = bool(m) and m.group(1).lower() in subs.get(b["name"], set())
+                    ids = sources.reddit_hot_ids(m.group(1)) if in_sub else search_hot(b["name"])
+                    hot = None if ids is None else sources.reddit_id(url) in ids
+                    # 没删、但该看的榜没拿到（限流）：今天先不记，下次出刊再查（不然一整天都不判断火不火）
+                    checkable = in_sub or "reddit" in ((by_name.get(b["name"]) or {}).get("use") or ["google", "bing", "reddit"])
+                    if removed is None and hot is None or not removed and hot is None and checkable:
+                        keep.append(st)
+                        continue
+                    c = checks[url] = {"day": today, "removed": removed, "hot": hot}
+                if c.get("removed") or c.get("hot") is False:
+                    why = "已删除" if c.get("removed") else "不在本周最热榜上"
+                    print(f"  [Reddit] {b['name']} | {st.get('headline', '')[:30]} | {why}，撤掉", file=sys.stderr)
+                    changed = True
+                    continue
+                keep.append(st)
+            b["stories"] = keep
+        if changed:
+            save_json(path, rep_)
+            changed_any = True
+    cutoff = (dt.date.today() - dt.timedelta(days=days)).isoformat()
+    save_json(REDDIT_CHECK_FILE, {u: c for u, c in checks.items() if c.get("day", "") >= cutoff})
+    return changed_any
 
 
 def hd_images():
@@ -2786,7 +2877,7 @@ def logged_publish(path=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "hd-images"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "hd-images", "prune-reddit"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -2795,6 +2886,9 @@ def main():
         ingest(dry_run=True)
     elif args.step == "repair-images":
         repair_images()
+    elif args.step == "prune-reddit":
+        prune_reddit()
+        write_page()
     elif args.step == "hd-images":
         hd_images()
         write_page()
