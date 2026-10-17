@@ -26,6 +26,7 @@ declare
 begin
   case job
     when 'background' then wf := 'background.yml'; gap := interval '3 minutes'; inputs := '{"retry_now": "true", "minutes": "40"}';
+    when 'tick'       then wf := 'background.yml'; gap := interval '3 minutes'; inputs := '{"minutes": "40"}';   -- Supabase の時計（pg_cron）から。失敗の待ち時間は守る
     when 'collect'    then wf := 'digest.yml';     gap := interval '10 minutes'; inputs := '{}';
     when 'render'     then wf := 'render.yml';     gap := interval '1 minute';   inputs := '{}';
     else return jsonb_build_object('ok', false, 'msg', 'この仕事はボタンから起こせません');
@@ -51,3 +52,9 @@ exception when others then
 end $$;
 revoke all on function public.run_now(text) from public;
 grant execute on function public.run_now(text) to anon, authenticated;
+
+-- GitHub Actions の定時（cron）は混んでいると遅れたり抜けたりする（2026-10-17 に 2 時間まるごと抜けた）。
+-- Supabase の pg_cron を 2 つ目の時計にして、毎時 17 分に後台作業を起こす（GitHub の定時は 47 分。run_now の間隔で二重には動かない）。
+create extension if not exists pg_cron;
+select cron.unschedule(jobid) from cron.job where jobname = 'wishlist-background';
+select cron.schedule('wishlist-background', '17 * * * *', $$select public.run_now('tick')$$);
