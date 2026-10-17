@@ -38,7 +38,11 @@ jobs:
     env:
       EMBLEM_RETRY_NOW: ${{ inputs.retry_now == true && '1' || '' }}
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # 管理页「いま動いているもの」・版面的帯（live_status）
-      GATE_FIRE: "0"   # 1 = 有活时叫 Claude。AI 编辑・照片加愿望 还有自己的定时，两边都叫会更费 token：停掉它们的定时后再改成 1
+      # 有活时叫不叫 Claude：仓库变量 GATE_FIRE（GitHub → Settings → Secrets and variables → Actions → Variables）。
+      #   没设 / 0 = 不叫（只判断和记录）· edit = 只叫 AI 编辑 · 1（或 all、edit,photos）= AI 编辑和照片加愿望都叫
+      # 版面只放 AI 整理过的报道，所以 edit 打开后：收集到新条目 → 这里马上叫 AI 编辑（同一份活 6 小时内不重复叫，两次至少隔 60 分钟）。
+      # AI 编辑・照片加愿望还有自己的定时，两边都跑会更费额度：确认这里叫得起来后，再停掉它们的定时
+      GATE_FIRE: ${{ vars.GATE_FIRE || '0' }}
       ROUTINE_TOKEN_EDIT: ${{ secrets.ROUTINE_FIRE_TOKEN }}
       ROUTINE_TOKEN_PHOTOS: ${{ secrets.ROUTINE_FIRE_TOKEN_PHOTOS }}
     steps:
@@ -79,8 +83,8 @@ jobs:
           python scripts/gate.py check > /tmp/gate2.txt; cat /tmp/gate2.txt
           if grep -q "^emblem  仕事あり" /tmp/gate2.txt; then echo "again=true" >> "$GITHUB_OUTPUT"; fi
 
-      - name: 有需要 AI 的活 → 叫 Claude（GATE_FIRE=1 时）
-        if: env.GATE_FIRE == '1' && (steps.gate.outputs.edit == 'true' || steps.gate.outputs.photos == 'true')
+      - name: 有需要 AI 的活 → 叫 Claude（仓库变量 GATE_FIRE 打开时）
+        if: env.GATE_FIRE != '0' && env.GATE_FIRE != '' && (steps.gate.outputs.edit == 'true' || steps.gate.outputs.photos == 'true')
         run: python scripts/gate.py fire
 
       - name: 提交
@@ -89,7 +93,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add items.yaml docs/emblems state/emblem_progress.json state/log/emblem.json
           # ゲートの記録は、判断が前と変わったときか、Claude を起こしたときだけ（2 時間ごとの同じ記録でコミットを増やさない）
-          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "$GATE_FIRE" = "1" ]; then
+          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || { [ "$GATE_FIRE" != "0" ] && [ -n "$GATE_FIRE" ]; }; then
             git add state/gate.json state/log/gate.json 2>/dev/null || true
           fi
           git diff --cached --quiet && { echo "変化なし：コミットしない"; exit 0; }

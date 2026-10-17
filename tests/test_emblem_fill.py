@@ -3,6 +3,7 @@
     python -m unittest discover tests
 """
 
+import datetime as dt
 import json
 import pathlib
 import sys
@@ -769,7 +770,36 @@ class Gate(unittest.TestCase):
         data = self.gate.load(self.state)
         data["jobs"]["edit"]["sig"] = "s2"   # 新しい記事が来た
         self.gate.save(data, self.state)
+        res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
+        self.assertIn("分以内に起こし済み", res["edit"])   # 編集中かもしれない：MIN_GAP_MIN は重ねて起こさない
+        data = self.gate.load(self.state)
+        at = dt.datetime.fromisoformat(data["jobs"]["edit"]["fired"]["at"]) - dt.timedelta(minutes=self.gate.MIN_GAP_MIN + 1)
+        data["jobs"]["edit"]["fired"]["at"] = at.isoformat()
+        self.gate.save(data, self.state)
         self.assertEqual(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"], "Claude を起こした")
+
+    def test_gate_fire_switch(self):
+        self.assertEqual(self.gate.enabled_jobs(""), set())
+        self.assertEqual(self.gate.enabled_jobs("0"), set())
+        self.assertEqual(self.gate.enabled_jobs("1"), {"edit", "photos"})
+        self.assertEqual(self.gate.enabled_jobs("all"), {"edit", "photos"})
+        self.assertEqual(self.gate.enabled_jobs(" Edit "), {"edit"})
+        self.assertEqual(self.gate.enabled_jobs("edit,photos,bogus"), {"edit", "photos"})
+        calls = []
+        post = lambda url, token: calls.append(url) or 200
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}, "photos": {"need": True, "sig": "p1"}}}, self.state)
+        env = {"GATE_FIRE": "edit", "ROUTINE_TOKEN_EDIT": "t", "ROUTINE_TOKEN_PHOTOS": "t"}
+        res = self.gate.fire(self.state, post=post, env=env)
+        self.assertEqual(res["edit"], "Claude を起こした")   # AI 編集だけ起こす
+        self.assertIn("GATE_FIRE で止めている", res["photos"])
+        self.assertEqual(len(calls), 1)
+
+    def test_unedited_inbox_means_edit_work(self):
+        """版面には AI 編集済みの記事しか載らない：今日の inbox に未整理（_covered より後・edit.json にない版面）があれば AI 編集の仕事。"""
+        (self.d / "2026-10-17.json").write_text(json.dumps({"items": [{"name": "新作", "entries": [{}] * 2},
+                                                                  {"name": "A", "entries": [{}] * 4}]}), encoding="utf-8")
+        (self.d / "2026-10-17.edit.json").write_text(json.dumps({"A": [], "_covered": {"A": 4}}), encoding="utf-8")
+        self.assertEqual(self.gate.edit_work(self.d, today="2026-10-17"), {"新作": 2})
 
     def test_fire_failure_is_recorded(self):
         def post(url, token):
