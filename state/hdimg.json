@@ -80,12 +80,6 @@
   "target": 1280,
   "v": 2
  },
- "https://assets.juksy.com/files/articles/152588/6ac70f5dc1821.jpg": {
-  "w": 1200,
-  "h": 629,
-  "target": 720,
-  "v": 2
- },
  "https://assets.st-note.com/production/uploads/images/318341052/rectangle_large_type_2_68f11d3a9054db36365481db0353ec2c.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -279,6 +273,12 @@
   "target": 720,
   "v": 2
  },
+ "https://cdn.specialtimes.co.kr/news/photo/202610/471862_464160_5217.jpg": {
+  "w": 600,
+  "h": 336,
+  "target": 720,
+  "v": 2
+ },
  "https://cdn.suaragarut.id/media/images/2026/10/THwcTgvxCH.jpeg?location=1&width=1200&height=674&quality=80&watermark=1": {
   "w": 1200,
   "h": 674,
@@ -456,12 +456,6 @@
   "target": 720,
   "v": 2
  },
- "https://en.koreadaily.com/wp-content/uploads/2026/10/202610130803770818_6acd6a734d2eb.jpg": {
-  "w": 650,
-  "h": 487,
-  "target": 720,
-  "v": 2
- },
  "https://external-preview.redd.it/ls5OcOjkjErs9tph4z4tS3Id06wzZAN9Wgz96c8Fgqw.jpeg?width=640&crop=smart&auto=webp&s=355cc54b5122677450d8ad1fa8953ae523267f4c": {
   "w": 640,
   "h": 360,
@@ -534,6 +528,12 @@
   "target": 1280,
   "v": 2
  },
+ "https://hips.hearstapps.com/hmg-prod/images/520276e8-c48d-4ed7-9fbd-9a87703bd43b.jpg?crop=1xw:1xh;center,top&resize=1200:*": {
+  "w": 1200,
+  "h": 600,
+  "target": 720,
+  "v": 2
+ },
  "https://hips.hearstapps.com/hmg-prod/images/844da7c2-420c-43a9-9005-41ca9fecb121.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
@@ -570,6 +570,12 @@
   "target": 720,
   "v": 2
  },
+ "https://i2.hoopchina.com.cn/bbs-editor-web/17922328797491.jpg": {
+  "w": 720,
+  "h": 1152,
+  "target": 1280,
+  "v": 2
+ },
  "https://i3.gamebiz.jp/media/438f2618-6cb6-4bb2-8ba4-ee2e57cfe461.jpg": {
   "w": 640,
   "h": 360,
@@ -580,6 +586,12 @@
   "w": 1020,
   "h": 459,
   "target": 1280,
+  "v": 2
+ },
+ "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2026%2F10%2F12%2Fchainsaw-man-crocs-classic-clog-collection-chainsaw-man-213925-90h-power-213926-90h-pochita-213928-90h-characters-213927-90h-release-info-tw.jpg?w=1080&cbr=1&q=90&fit=max": {
+  "w": 1000,
+  "h": 500,
+  "target": 720,
   "v": 2
  },
  "https://image.gamer.ne.jp/news/2026/20261016/003535f34d18c2d3d2b4e73e64ac0ce48a09/o/1.jpg": {
@@ -1655,12 +1667,6 @@
   "target": 720,
   "v": 2
  },
- "https://spice.eplus.jp/images/RKx9MTqAucgLSLlNpv09TpJZq3upmlhPMKdRE5wQYlSqCLmLcPDB1seqP9wN5XAm": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 2
- },
  "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/10/17/galaxy-s27-ultra-leaks-hint-at-samsungs-biggest-redesign-in-years-5cd8c6d055fb4cb69329720d957f143d-394.png?width=0&s=ywnqRx2ihUIusYvfn3ZI7Q": {
   "w": 1650,
   "h": 864,
@@ -1885,6 +1891,12 @@
   "target": 720,
   "v": 2
  },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/15/news-p.v1.20261015.543e4e6991ba4abab5f8aafecb6b4372_P1.jpg": {
+  "w": 1280,
+  "h": 853,
+  "target": 1280,
+  "v": 2
+ },
  "https://www.4gamer.net/games/970/G097078/20260831002/SS/001.jpg": {
   "w": 1200,
   "h": 680,
@@ -2033,19 +2045,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.iY3U3dVABvvQ_dK4UJF68g&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 1280,
-  "v": 2,
-  "blur": 0.495,
-  "local": "pics/1a9fc515f67a8146.webp",
-  "out": [
-   1280,
-   852
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.pPPytmyAJBdD-nrcvgVvmA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2068,19 +2067,6 @@
   "out": [
    704,
    400
-  ],
-  "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.remJQONGI4FXI8-djkBTlQ&pid=News&w=1000": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 2,
-  "blur": 0.42,
-  "local": "pics/ff03f518f35eee39.webp",
-  "out": [
-   404,
-   313
   ],
   "why": "Bing の小さい縮小画像"
  },
@@ -2228,12 +2214,6 @@
   "target": 720,
   "v": 2
  },
- "https://www.neveitalia.it/static/prodotti/02/600/305679228.jpg": {
-  "w": 600,
-  "h": 600,
-  "target": 720,
-  "v": 2
- },
  "https://www.newscafe.ne.jp/imgs/ogp_f/22865875.jpg": {
   "w": 600,
   "h": 399,
@@ -2262,6 +2242,12 @@
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6LuciaJasonLaunchTrailer.jpg": {
   "w": 2000,
   "h": 1500,
+  "target": 720,
+  "v": 2
+ },
+ "https://www.sammobile.com/wp-content/uploads/2026/03/Galaxy-S26-Ultra-review-display.jpg": {
+  "w": 2560,
+  "h": 1437,
   "target": 720,
   "v": 2
  },
@@ -2352,6 +2338,12 @@
  "https://www.travelvoice.jp/wp-content/uploads/2026/10/9eaa203e-b121-4a80-90c5-24160b43247c.png": {
   "w": 800,
   "h": 636,
+  "target": 720,
+  "v": 2
+ },
+ "https://www.universal-music.co.jp/illit/wp-content/uploads/sites/4041/2026/10/ILLIT_BREAKEVEN_hearttouch_1080×1620_v2.jpg": {
+  "w": 1080,
+  "h": 1620,
   "target": 720,
   "v": 2
  },
