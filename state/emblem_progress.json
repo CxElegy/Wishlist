@@ -21,24 +21,26 @@
    "target": 6
   },
   "BLEACH Mirrors High": {
-   "have": 4,
+   "at": "2026-10-17T00:53:50+00:00",
+   "have": 6,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
-  },
-  "FROM": {
-   "at": "2026-10-17T00:48:11+00:00",
-   "have": 2,
-   "kind": "character",
-   "note": "処理中",
-   "state": "running",
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
    "target": 6,
    "tried": {
-    "Web 画像検索": 8,
-    "Wikimedia Commons": 3,
-    "Wikipedia": 3,
-    "新聞の配図": 0
+    "Fandom": 6
+   }
+  },
+  "FROM": {
+   "at": "2026-10-17T00:53:14+00:00",
+   "have": 4,
+   "kind": "character",
+   "note": "2 枚足した。残りの候補 1 枚は自動で決められないので一覧で確かめる",
+   "sheet": "/tmp/wishlist-emblem/FROM.jpg",
+   "state": "review",
+   "target": 6,
+   "tried": {
+    "Wikipedia": 6
    }
   },
   "GTA 6": {
@@ -49,12 +51,17 @@
    "target": 2
   },
   "ILLIT": {
-   "at": "2026-10-17T00:48:11+00:00",
-   "have": 2,
+   "at": "2026-10-17T00:53:15+00:00",
+   "have": 3,
    "kind": "group",
-   "note": "処理中",
-   "state": "running",
-   "target": 5
+   "note": "1 枚足した。残りの候補 1 枚は自動で決められないので一覧で確かめる",
+   "sheet": "/tmp/wishlist-emblem/ILLIT.jpg",
+   "state": "review",
+   "target": 5,
+   "tried": {
+    "Wikimedia Commons": 12,
+    "Wikipedia": 1
+   }
   },
   "MMORPG 新作": {
    "have": 2,
@@ -64,9 +71,10 @@
    "target": 3
   },
   "The Mandalorian": {
+   "at": "2026-10-17T00:53:14+00:00",
    "have": 2,
    "kind": "character",
-   "note": "順番待ち",
+   "note": "処理中",
    "state": "running",
    "target": 4
   },
@@ -134,31 +142,38 @@
    "target": 1
   },
   "周杰伦": {
-   "at": "2026-10-17T00:48:11+00:00",
-   "have": 3,
+   "at": "2026-10-17T00:53:14+00:00",
+   "failed_at": "2026-10-17T00:53:14+00:00",
+   "have": 5,
    "kind": "person",
-   "note": "処理中",
-   "state": "running",
-   "target": 6
-  },
-  "哈利波特剧集": {
-   "at": "2026-10-17T00:48:11+00:00",
-   "have": 2,
-   "kind": "character",
-   "note": "処理中",
-   "state": "running",
+   "note": "2 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "state": "failed",
    "target": 6,
    "tried": {
-    "Web 画像検索": 4,
-    "Wikimedia Commons": 3,
-    "Wikipedia": 0,
+    "Wikidata": 2,
+    "Wikipedia": 10
+   }
+  },
+  "哈利波特剧集": {
+   "at": "2026-10-17T00:53:14+00:00",
+   "failed_at": "2026-10-17T00:53:14+00:00",
+   "have": 4,
+   "kind": "character",
+   "note": "2 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "state": "failed",
+   "target": 6,
+   "tried": {
+    "Web 画像検索": 0,
+    "Wikimedia Commons": 5,
+    "Wikipedia": 3,
     "新聞の配図": 0
    }
   },
   "日本顶级网球赛事": {
+   "at": "2026-10-17T00:53:15+00:00",
    "have": 1,
    "kind": "topic",
-   "note": "順番待ち",
+   "note": "処理中",
    "state": "running",
    "target": 3
   },
@@ -170,9 +185,10 @@
    "target": 1
   },
   "滑雪": {
+   "at": "2026-10-17T00:53:15+00:00",
    "have": 1,
    "kind": "topic",
-   "note": "順番待ち",
+   "note": "処理中",
    "state": "running",
    "target": 3
   },
@@ -188,9 +204,10 @@
    }
   },
   "猫用品": {
+   "at": "2026-10-17T00:53:50+00:00",
    "have": 1,
    "kind": "topic",
-   "note": "順番待ち",
+   "note": "処理中",
    "state": "running",
    "target": 3
   },
@@ -204,7 +221,13 @@
  },
  "last_run": {
   "at": "2026-10-17T00:48:11+00:00",
-  "done": [],
+  "done": [
+   "周杰伦",
+   "哈利波特剧集",
+   "FROM",
+   "ILLIT",
+   "BLEACH Mirrors High"
+  ],
   "minutes": 38.0,
   "workers": 4
  },
