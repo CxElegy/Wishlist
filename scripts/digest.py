@@ -1832,6 +1832,8 @@ def backend_todo(items, rows, run):
         "emblem-cron": {"text": (f"足りない {len(queue)} 版面を順に" if queue else "全部そろっている")
                         + (f" · 要確認 {len(review)}" if review else ""), "items": queue},
         "photos": {"text": "受付の写真があれば認識して愿望清单へ", "items": []},
+        "gate": {"text": (f"小元素 {len(queue)} 版面を Python で（AI なし）" if queue else "小元素の仕事なし")
+                 + (f" · AI 編集の仕事 {len(edit)} 版面" if edit else "") + " · AI が要る仕事があるときだけ Claude", "items": queue},
     }
 
 
@@ -1938,7 +1940,7 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
     if state == "ok":
         todo = "そろっている（足りなくなったら次の回に）"
     elif state == "review":
-        todo = f"Claude が一覧を見て番号を選ぶ（次の定時 {when}）"
+        todo = f"一覧から手で選べる（python scripts/emblem_fill.py \"{item.get('name')}\" --commit 番号）"
     elif state == "failed":
         todo = f"{when} 以降に再挑戦"
     else:
@@ -1957,7 +1959,7 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
         elif kind == "topic" and not item.get("emblem_icon"):
             advice = "emblem_icon に絵文字を書くと Twemoji で埋まる"
         elif found and not (entry.get("funnel") or {}).get("added"):
-            advice = "候補はあるが本人確認・取り方の決まりで落ちた → 一覧（要確認）で目で選ぶ"
+            advice = "候補はあるが規則で外れた（理由は ③）→ 確かな画像を emblem_urls に書くと確実"
     try:
         at = dt.datetime.fromisoformat(entry["at"]).astimezone(tz).strftime("%m/%d %H:%M") if entry.get("at") else ""
     except ValueError:
