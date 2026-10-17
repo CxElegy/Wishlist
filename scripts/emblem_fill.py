@@ -1168,11 +1168,16 @@ def record(prog, item, result, now):
 WORKERS = 6   # 同時に処理する関注項の数（Actions は 4 コア。集めるのは待ちが多いので 6 本。抠图・書き込みは 1 本ずつ）
 
 
-def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None, workers=None):
+def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None, workers=None, live=None):
     """定時の後台：時間の予算（分）の中で、足りない関注項を workers 本並列で埋め、state/emblem_progress.json に進捗を残す。
     候補集め・本人確認は並列、items.yaml への書き込みと抠图は WRITE_LOCK で 1 本ずつ。
-    1 つ終わるごとに保存するので、途中で止まっても、それまでの結果は残る。"""
+    1 つ終わるごとに保存するので、途中で止まっても、それまでの結果は残る。
+    live：簡報の版面の「更新中」の帯に知らせる関数（livestatus.report と同じ形）。本番（path なし）では livestatus.report。"""
     fill = fill or fill_one
+    if live is None:
+        import livestatus
+        live = livestatus.report if path is None else (lambda *a, **k: None)   # テスト（path あり）はネットに出ない
+    per_board = runlog.typical("emblem", "item_secs", 240, log_dir=runlog_dir) / 60   # 1 版面にかかる時間（最近の中央値）
     started = time.time()
     workers = max(1, int(workers or WORKERS))
     deadline = clock() + minutes * 60
@@ -1212,6 +1217,8 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                 return
             name = item["name"]
             ilog = (lambda m, n=name: log(f"[{n}] {str(m).strip()}")) if workers > 1 else log
+            live(name, "emblem", "work", "小元素を集めています", per_board + 3)
+            t_item, before = time.time(), fresh_have(item)
             try:
                 result = fill(item, ilog)
             except OutOfTime:
@@ -1221,6 +1228,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                     record(prog, item, {"state": "running", "note": "時間切れで途中まで（次の回に続き）"}, _now())
                     runlog.add("emblem", f"{name}：時間切れで途中まで（次の回に続き）", "warn", log_dir=runlog_dir, item=name)
                     save_progress(prog, path)
+                live(name, "emblem", "clear")
                 return
             except Exception as e:   # 1 つの失敗で全体を止めない
                 ilog(f"[失敗] {e}")
@@ -1232,8 +1240,14 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                 prog["last_run"]["done"].append(name)
                 ilog(f"→ {STATE_JA[result['state']]}：{result.get('note', '')}")
                 runlog.add("emblem", f"{name}：{STATE_JA[result['state']]}（{fresh_have(fresh)}）{result.get('note', '')}",
-                           {"ok": "ok", "review": "warn", "failed": "error"}.get(result["state"], "info"), log_dir=runlog_dir, item=name)
+                           {"ok": "ok", "review": "warn", "failed": "error"}.get(result["state"], "info"), log_dir=runlog_dir, item=name,
+                           item_secs=round(time.time() - t_item))
                 save_progress(prog, path)
+            # 小元素が増えた版面は、この回の終わり（push → 網页の生成）に反映される。増えなかった版面は帯を消す
+            if fresh_have(fresh) != before:
+                live(name, "emblem", "wait", "小元素を追加 · 反映を待っています", max(1, (deadline - clock()) / 60) + 3)
+            else:
+                live(name, "emblem", "clear")
 
     threads = [threading.Thread(target=worker, name=f"emblem-{n}", daemon=True) for n in range(min(workers, max(1, len(queue))))]
     for t in threads:

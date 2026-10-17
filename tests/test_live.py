@@ -43,6 +43,33 @@ class LiveMark(unittest.TestCase):
         self.assertEqual(by[-1], ("B", "found", 1))                  # 順番の去重で件数が変わったら直す
         self.assertEqual(by.count(("A", "found", 2)), 1)             # 変わらない版面は 2 回書かない
 
+    def test_ai_edit_moves_the_bar_along(self):
+        """AI 編集：live-edit で今日まだ編集していない版面に「編集中」→ pick-images の途中で「配図」→ 出刊で「反映待ち」。"""
+        import tempfile
+        import livestatus
+        calls = []
+        tmp = pathlib.Path(tempfile.mkdtemp()) / "live-edit.json"
+        with mock.patch.object(digest, "LIVE_EDIT_FILE", tmp), mock.patch.object(digest, "unedited", lambda: ["A", "B"]), \
+                mock.patch.object(digest, "_run_min", lambda proc, d: 20), \
+                mock.patch.object(livestatus, "report", lambda b, p, s, note=None, eta=None: calls.append((b, p, s, note, round(eta)))):
+            digest.live_edit()
+            digest._live_edit_step("AI が配図を選んでいます")
+            run = digest._live_edit_step("編集済み · 網页への反映を待っています", digest.LIVE_AFTER_MIN)
+        self.assertEqual(calls[:2], [("A", "edit", "work", "AI が編集しています", 23), ("B", "edit", "work", "AI が編集しています", 23)])
+        self.assertEqual(calls[2][2:4], ("work", "AI が配図を選んでいます"))
+        self.assertEqual(calls[-1][2], "wait")              # 出刊したら「反映待ち」
+        self.assertEqual(run["boards"], ["A", "B"])          # 出刊の記録に、かかった時間（secs）を付けられる
+
+    def test_typical_minutes_learn_from_runs(self):
+        import tempfile
+        import runlog
+        d = pathlib.Path(tempfile.mkdtemp())
+        self.assertEqual(runlog.typical("collect", "secs", 290, log_dir=d), 290)   # 記録がなければ既定値
+        for secs in (100, 400, 300, 200, 9999):
+            runlog.add("collect", "x", log_dir=d, secs=secs)
+        self.assertEqual(runlog.typical("collect", "secs", 290, log_dir=d), 300)   # 中央値（外れ値に引っぱられない）
+        self.assertEqual(runlog.typical("collect", "secs", 290, n=2, log_dir=d), 9999)   # 最近の n 回だけ
+
 
 if __name__ == "__main__":
     unittest.main()

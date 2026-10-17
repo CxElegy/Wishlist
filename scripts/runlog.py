@@ -43,6 +43,13 @@ def add(proc, text, level="info", log_dir=None, **extra):
         pass
 
 
+def typical(proc, key="secs", default=None, n=10, log_dir=None):
+    """その仕組みの最近 n 回の key（かかった秒数など）の中央値。記録がなければ default。
+    版面の「更新中」の帯の「あと約 N 分」は、固定の値ではなくこれで決める（回を重ねるほど実際に合う）。"""
+    vals = sorted([v for v in (r.get(key) for r in load(proc, log_dir)) if isinstance(v, (int, float)) and v > 0][-n:])
+    return vals[len(vals) // 2] if vals else default
+
+
 def recent(n=40, log_dir=None):
     """全部の仕組みのログを新しい順に n 件。各行に proc（仕組みの id）と name（表示名）を付ける。"""
     rows = []

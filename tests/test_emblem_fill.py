@@ -7,6 +7,7 @@ import json
 import pathlib
 import sys
 import unittest
+from unittest import mock
 
 import yaml
 
@@ -213,6 +214,22 @@ class Background(unittest.TestCase):
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T17:00:00+00:00")
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 6 時間たった
+
+    def test_background_tells_the_page(self):
+        """版面の「更新中」の帯：処理を始めた版面に work、増えた版面は wait、増えなかった・失敗した版面は clear。"""
+        calls, filled = [], set()
+
+        def fill(item, log):
+            if item["name"] == "zero":
+                raise RuntimeError("boom")
+            if item["name"] == "one":
+                filled.add("one")   # items.yaml に 6 枚書いた
+                return {"state": "ok", "note": "", "tried": {}}
+            return {"state": "review", "note": "", "tried": {}}
+        with mock.patch.object(ef, "load_items", side_effect=lambda: [dict(i, emblem=[{}] * 6) if i["name"] in filled else i for i in self.items]):
+            ef.background(40, log=lambda m: None, fill=fill, path=self.path, workers=1,
+                          live=lambda board, proc, state, note=None, eta=None: calls.append((board, state)))
+        self.assertEqual(calls, [("zero", "work"), ("zero", "clear"), ("one", "work"), ("one", "wait"), ("brand", "work"), ("brand", "clear")])
 
     def test_background_records_each_item(self):
         seen = []
