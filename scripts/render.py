@@ -2238,7 +2238,11 @@ NAV_HIDE = 24   # 左の目次で隠し始める作品の数（items.yaml の se
 
 
 def _nav_icon(w):
-    """目次の作品アイコン：items.yaml の emblem（倉庫の切り抜き画像か https の画像）→ 封面・最近の記事の写真。なければ None。"""
+    """目次の作品アイコン：items.yaml の icon（作品・ブランドを一目で表す 1 枚、docs/icons/）→ emblem → 封面・最近の記事の写真。
+    なければ None（頭文字を出す）。"""
+    icon = str(w.get("_icon") or "")
+    if re.fullmatch(r"icons/[a-z0-9-]+\.webp", icon) or icon.startswith("https://"):
+        return icon
     for x in w.get("_emblems") or []:
         img = str(x.get("image") or "") if isinstance(x, dict) else ""
         if re.fullmatch(r"emblems/[a-z0-9-]+\.webp", img) or img.startswith("https://"):
@@ -2513,9 +2517,9 @@ NAV_JS = """
 
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE):
+           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE, icons=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
-    subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
+    icons：{作品: 目次のアイコン}（items.yaml の icon.image）；subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
     heat：{作品: 話題度}（heat.compute 的结果，版面的见出し和トップの右の列に出す）。"""
@@ -2530,6 +2534,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
         _FX_OF[w["name"]] = own if own in likefx.FX else TEMPLATE_FX.get(w["_motif"], "pop")
         w["_emblems"], w["_ring"] = (emblems or {}).get(w["name"]) or ([], "accent")
         w["_heat"] = (heat or {}).get(w["name"])  # 話題度（heat.compute）
+        w["_icon"] = (icons or {}).get(w["name"])  # 目次のアイコン
     updated = updated or latest["date"].replace("-", ".")
     fb = feedback if feedback and feedback.get("url") and feedback.get("key") else None
     # id 保留 issue-日期：Discord 通知里的链接指向这里
