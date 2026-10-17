@@ -82,6 +82,7 @@ items:
   - name: Astrae Oratio
     icon: {image: "icons/astrae-oratio.webp", kind: cover, why: "ゲーム：公式サイトのキービジュアル（タイトルロゴ）", source: "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://preview.redd.it/hkkny5obxevh1.png?width=640&crop=smart&auto=webp&s=64e68cdc84b4113a2307e69b4d09bc1622781a39"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     motif: retro          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Erin Tanaka", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "emblems/astrae-oratio-erin-tanaka.webp", source: "https://static.wikia.nocookie.net/astrae-oratio/images/7/7c/Erin_render.webp/revision/latest/scale-to-width-down/400?cb=20260701184815", page: "https://astrae-oratio.fandom.com/wiki/Erin_Tanaka", shape: "cutout", upper: true, fs: 0.32}
@@ -231,6 +232,7 @@ items:
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "剣と盾", why: "版面の主題（RPG）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f6e1.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
       - {subject: "交差した剣", why: "版面の主題（RPG）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2694.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "1f409 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f409.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 近期上线 · 测试 · 新公布的网游
     type: category
     section: 游戏
@@ -282,6 +284,8 @@ items:
     motif: snow          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "スキーヤー", why: "版面の主題（スキー）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26f7.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "滑雪", why: "主題を表す画像", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Skier-carving-a-turn.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Skier-carving-a-turn.jpg", shape: "badge"}
+      - {subject: "1f3c2 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3c2.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 日本雪场 · 雪板装备 · 2026-27
     size: L
     type: category
@@ -338,15 +342,16 @@ items:
   - name: 漫威电影
     icon: {image: "icons/marvel.webp", kind: logo, why: "フランチャイズ：MARVEL のロゴ（人物は使わない）", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Marvel_Studios_2016_logo.svg/960px-Marvel_Studios_2016_logo.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Chris_Hemsworth_%2836076112092%29.jpg/500px-Chris_Hemsworth_%2836076112092%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://www.bing.com/th?id=ONUT.TjmroaDJXyfYeTM4DwalGg&pid=News", "https://www.bing.com/th?id=ONUT.fu1GP1NhKG0zuckHaQlNQQ&pid=News"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Chris Hemsworth", "Robert Downey Jr.", "Anthony Mackie", "Sebastian Stan", "Chris Evans", "Letitia Wright"]   # 集める対象（メンバー・キャラ・出演者）
     motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Chris Hemsworth", why: "Chris Hemsworth（Wikipedia の記事の画像）", image: "emblems/chris-hemsworth.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Chris_Hemsworth_-_Crime_101.jpg/500px-Chris_Hemsworth_-_Crime_101.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Hemsworth", shape: "cutout", fs: 0.401}
+      - {subject: "Chris Hemsworth", why: "Chris Hemsworth（Wikipedia の記事の画像）", image: "emblems/chris-hemsworth.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Chris_Hemsworth_-_Crime_101.jpg/500px-Chris_Hemsworth_-_Crime_101.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Hemsworth", shape: "cutout", fs: 0.399}
       - {subject: "Robert Downey Jr.", why: "Robert Downey Jr.（Wikipedia の記事の画像）", image: "emblems/robert-downey-jr.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/RobertDowneyJr-byPhilipRomano7_%28cropped%29.jpg/500px-RobertDowneyJr-byPhilipRomano7_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Robert_Downey_Jr.", shape: "cutout"}
       - {subject: "Anthony Mackie", why: "Anthony Mackie（Wikipedia の記事の画像）", image: "emblems/anthony-mackie.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Anthony_Mackie_on_the_Green_Carpet_at_the_2025_Zurich_Film_Festival_03_%28cropped%29.jpg/500px-Anthony_Mackie_on_the_Green_Carpet_at_the_2025_Zurich_Film_Festival_03_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Anthony_Mackie", shape: "cutout"}
-      - {subject: "Sebastian Stan", why: "Sebastian Stan（Wikipedia の記事の画像）", image: "emblems/sebastian-stan.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Sebastian_Stan-64526.jpg/500px-Sebastian_Stan-64526.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Sebastian_Stan", shape: "cutout", fs: 0.375}
-      - {subject: "Chris Evans", why: "Chris Evans（Wikipedia の記事の画像）", image: "emblems/chris-evans.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg/500px-Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Evans_(actor)", shape: "cutout", fs: 0.358}
+      - {subject: "Sebastian Stan", why: "Sebastian Stan（Wikipedia の記事の画像）", image: "emblems/sebastian-stan.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Sebastian_Stan-64526.jpg/500px-Sebastian_Stan-64526.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Sebastian_Stan", shape: "cutout", fs: 0.371}
+      - {subject: "Chris Evans", why: "Chris Evans（Wikipedia の記事の画像）", image: "emblems/chris-evans.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg/500px-Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Evans_(actor)", shape: "cutout", fs: 0.352}
     like_fx: manga          # 👍 の演出（scripts/likefx.py）：アメコミの擬音（ドカーン）の勢い
     subtitle: Marvel Studios · MCU
     type: show
@@ -408,7 +413,7 @@ items:
   - name: FROM
     icon: {image: "icons/from.webp", kind: logo, why: "ドラマ：タイトルカード", source: "https://upload.wikimedia.org/wikipedia/en/f/fa/From_title_card.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
-    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg/500px-Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"]   # 目で見て外した画像（切り抜きに穴）。自動補完は選ばない
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg/500px-Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Scott_McCord_%26_The_Bonafide_Truth.jpg/500px-Scott_McCord_%26_The_Bonafide_Truth.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Harold Perrineau", "Eion Bailey", "Catalina Sandino Moreno", "Scott McCord", "Avery Konrad", "Elizabeth Saunders"]   # 集める対象（メンバー・キャラ・出演者）
     motif: noir          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
@@ -537,8 +542,9 @@ items:
     wiki: ["en:Harry Potter (TV series)"]
 
   - name: ILLIT
-    icon: {image: "icons/illit.webp", kind: person, why: "グループ：メンバーの集合写真", source: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Illit_in_January_2026.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
+    icon: {image: "icons/illit.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg/500px-Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     emblem_who: ["Yunah", "Minju", "Moka", "Wonhee", "Iroha"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -654,6 +660,8 @@ items:
     motif: paw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "ネコ", why: "版面の主題（猫）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f408.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "1f43e アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f43e.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "1f431 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f431.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 猫グッズ · 家里两只猫
     type: category
     section: 好物
@@ -746,6 +754,8 @@ items:
     motif: court          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "テニスボール", why: "版面の主題（テニス）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3be.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "Japan Open Tennis Championships", why: "主題を表す画像", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ariake%20tennis%20park.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Ariake_tennis_park.jpg", shape: "badge"}
+      - {subject: "1f3c6 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3c6.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: ATP・WTA ツアー 日本開催
     size: L
     type: category
@@ -890,6 +900,8 @@ items:
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: "gelato pique"
     motif: cloud          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "gelato pique のロゴ", why: "公式サイトのロゴ", image: "https://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718", page: "https://gelatopique.com/", shape: "badge"}
     subtitle: ジェラート ピケ · ルームウェア
     type: category
     section: 好物
@@ -982,7 +994,7 @@ items:
     motif: chainsaw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Pochita", why: "作品の顔のマスコット（デンジの相棒）", image: "emblems/pochita.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Pochita_anime_design.png/revision/latest/scale-to-width-down/400?cb=20220919121110", page: "https://chainsaw-man.fandom.com/wiki/Pochita", shape: "cutout"}
-      - {subject: "Makima", why: "AniList の主役（お気に入り順）", image: "emblems/makima.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Makima_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073730", page: "https://chainsaw-man.fandom.com/wiki/Makima", shape: "cutout", fs: 0.321}
+      - {subject: "Makima", why: "AniList の主役（お気に入り順）", image: "emblems/makima.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Makima_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073730", page: "https://chainsaw-man.fandom.com/wiki/Makima", shape: "cutout", fs: 0.335}
       - {subject: "Denji", why: "AniList の主役（お気に入り順）", image: "emblems/denji-af013adf.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/b/b0/Denji_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250324010006", page: "https://chainsaw-man.fandom.com/wiki/Denji", shape: "cutout"}
       - {subject: "Power", why: "AniList の主役（お気に入り順）", image: "emblems/power-5cb6d16c.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/a/ac/Power_anime_design_2.png/revision/latest/scale-to-width-down/400?cb=20231006042039", page: "https://chainsaw-man.fandom.com/wiki/Power", shape: "cutout", fs: 0.32}
       - {subject: "Aki Hayakawa", why: "AniList の主役（お気に入り順）", image: "emblems/aki-hayakawa.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/c/cb/Aki_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073818", page: "https://chainsaw-man.fandom.com/wiki/Aki_Hayakawa", shape: "cutout", fs: 0.32}
@@ -1008,6 +1020,7 @@ items:
   - name: "The Mandalorian"
     icon: {image: "icons/the-mandalorian.webp", kind: logo, why: "ドラマ：タイトルロゴ", source: "https://commons.wikimedia.org/wiki/File:The_Mandalorian_black_background.svg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Katee_Sackhoff_%2852957913672%29.jpg/500px-Katee_Sackhoff_%2852957913672%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Katee_Sackhoff_%2852958895305%29.jpg/500px-Katee_Sackhoff_%2852958895305%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Katee_Sackhoff_%2852958895670%29.jpg/500px-Katee_Sackhoff_%2852958895670%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Giancarlo_Esposito_%26_Emily_Swallow_GalaxyCon_Columbus_2023.jpg/500px-Giancarlo_Esposito_%26_Emily_Swallow_GalaxyCon_Columbus_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Pedro Pascal", "Giancarlo Esposito", "Katee Sackhoff", "Emily Swallow"]   # 集める対象（メンバー・キャラ・出演者）
     motif: beskar          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
@@ -1039,10 +1052,11 @@ items:
     motif: island          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Tom Nook", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/tom-nook.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/e/e3/Tom_Nook_NH.png/revision/latest/scale-to-width-down/400?cb=20191228193640", page: "https://animalcrossing.fandom.com/wiki/Tom_Nook", shape: "cutout"}
-      - {subject: "Isabelle", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/isabelle.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/9/95/Isabelle_NH.png/revision/latest/scale-to-width-down/400?cb=20200610024111", page: "https://animalcrossing.fandom.com/wiki/Isabelle", shape: "cutout", upper: false, fs: 0.487}
+      - {subject: "Isabelle", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/isabelle.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/9/95/Isabelle_NH.png/revision/latest/scale-to-width-down/400?cb=20200610024111", page: "https://animalcrossing.fandom.com/wiki/Isabelle", shape: "cutout", upper: false}
       - {subject: "K.K. Slider", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/k-k-slider.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/8/81/K.K._Slider_NH.png/revision/latest/scale-to-width-down/400?cb=20210113095442", page: "https://animalcrossing.fandom.com/wiki/K.K._Slider", shape: "cutout"}
       - {subject: "Timmy and Tommy", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/timmy-and-tommy.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/6/6c/Timmy_and_Tommy_NH.png/revision/latest/scale-to-width-down/400?cb=20200828185411", page: "https://animalcrossing.fandom.com/wiki/Timmy_and_Tommy", shape: "cutout"}
       - {subject: "Blathers", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/blathers.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/1/1b/Blathers_NH.png/revision/latest/scale-to-width-down/400?cb=20200229053519", page: "https://animalcrossing.fandom.com/wiki/Blathers", shape: "cutout"}
+      - {subject: "Mabel", why: "Mabel（Fandom のページ）", image: "emblems/mabel-2dc77c48.webp", source: "https://dodo.ac/np/images/8/80/Mabel_NH.png", page: "https://nookipedia.com/wiki/Mabel", shape: "cutout", fs: 0.297}
     theme: {bg: "#F7EFE9", fg: "#1E1A18", accent: "#9B5A22", alt_bg: "#211912", alt_fg: "#F4EEE4", alt_accent: "#DA9558", split: true}  # 小元素「Tom Nook」の色に合わせた配色（scripts/emblem.py）
     type: game
     section: "游戏"
@@ -1084,7 +1098,7 @@ items:
     subtitle: "演唱会"
 
   - name: "周杰伦"
-    icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：本人の顔写真", source: "https://upload.wikimedia.org/wikipedia/commons/9/9b/%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
+    icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：Spotify のアーティスト写真（顔を真ん中に）", source: "https://open.spotify.com/artist/2elBjNSdBE2Y3f0j1mjrql"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: 周杰倫
     motif: porcelain          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
@@ -1115,12 +1129,14 @@ items:
     emblem_who: ["Ellen Joe", "Belle", "Wise", "Zhu Yuan", "Anby Demara", "Nicole Demara"]   # 集める対象（メンバー・キャラ・出演者）
     emblem_fandom: zenless-zone-zero
     motif: street          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：都市・ストリート
-    like_fx: street          # 👍 の演出（scripts/likefx.py）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Ellen Joe", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e3/Agent_Ellen_Joe_Portrait.png/revision/latest/scale-to-width-down/400?cb=20241007222138", page: "https://zenless-zone-zero.fandom.com/wiki/Ellen_Joe", shape: "cutout"}
-      - {subject: "Belle", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/6/6e/Agent_Belle_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002545", page: "https://zenless-zone-zero.fandom.com/wiki/Belle", shape: "cutout"}
-      - {subject: "Wise", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e8/Agent_Wise_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002534", page: "https://zenless-zone-zero.fandom.com/wiki/Wise", shape: "cutout"}
-      - {subject: "Zhu Yuan", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/0/07/Agent_Zhu_Yuan_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240708205906", page: "https://zenless-zone-zero.fandom.com/wiki/Zhu_Yuan", shape: "cutout"}
+      - {subject: "Ellen Joe", why: "ゼンゼロの主要エージェント・プロキシ", image: "emblems/ellen-joe.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e3/Agent_Ellen_Joe_Portrait.png/revision/latest/scale-to-width-down/400?cb=20241007222138", page: "https://zenless-zone-zero.fandom.com/wiki/Ellen_Joe", shape: "cutout"}
+      - {subject: "Belle", why: "ゼンゼロの主要エージェント・プロキシ", image: "emblems/belle-5279e946.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/6/6e/Agent_Belle_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002545", page: "https://zenless-zone-zero.fandom.com/wiki/Belle", shape: "cutout", fs: 0.389}
+      - {subject: "Wise", why: "ゼンゼロの主要エージェント・プロキシ", image: "emblems/wise-5ccf5e28.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e8/Agent_Wise_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002534", page: "https://zenless-zone-zero.fandom.com/wiki/Wise", shape: "cutout", fs: 0.326}
+      - {subject: "Zhu Yuan", why: "ゼンゼロの主要エージェント・プロキシ", image: "emblems/zhu-yuan.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/0/07/Agent_Zhu_Yuan_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240708205906", page: "https://zenless-zone-zero.fandom.com/wiki/Zhu_Yuan", shape: "cutout", fs: 0.297}
+      - {subject: "Anby Demara", why: "Anby Demara（Fandom のページ）", image: "emblems/anby-demara.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/b/bd/Agent_Anby_Demara_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240706234414", page: "https://zenless-zone-zero.fandom.com/wiki/Anby_Demara", shape: "cutout", fs: 0.312}
+      - {subject: "Nicole Demara", why: "Nicole Demara（Fandom のページ）", image: "emblems/nicole-demara.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/7/7a/Agent_Nicole_Demara_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707011646", page: "https://zenless-zone-zero.fandom.com/wiki/Nicole_Demara", shape: "cutout", fs: 0.321}
+    like_fx: street          # 👍 の演出（scripts/likefx.py）
     theme: {bg: "#1E1516", fg: "#F4EEE4", accent: "#A9898A", alt_bg: "#F2EDEE", alt_fg: "#1E1A18", alt_accent: "#856062", split: true}  # 小元素「Ellen Joe」の色に合わせた配色（scripts/emblem.py）
     type: game
     section: "游戏"
@@ -1172,7 +1188,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
 
   - name: "A2O LITE"
-    icon: {image: "icons/a2o-lite.webp", kind: person, why: "グループ：デビューステージの集合写真", source: "http://news.yule.com.cn/uploadfile/2026/1016/20261016105851726.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
+    icon: {image: "icons/a2o-lite.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/0Vkn28k7P4K95Ce3knN0hQ"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["YOUNG", "HIMEKI", "VORA", "XILI", "RADA", "MERCI", "AYUNE", "OA", "AIJING"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：新人ガールズグループ

@@ -2517,12 +2517,14 @@ NAV_JS = """
 
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE, icons=None):
+           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE, icons=None,
+           busy=None, generated=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     icons：{作品: 目次のアイコン}（items.yaml の icon.image）；subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
-    heat：{作品: 話題度}（heat.compute 的结果，版面的见出し和トップの右の列に出す）。"""
+    heat：{作品: 話題度}（heat.compute 的结果，版面的见出し和トップの右の列に出す）。
+    busy：busy_plan() の結果（版面の「更新中」の帯）；generated：生成時刻（UTC の ISO。帯が「もう終わった回」を見分ける）。"""
     latest = issues[0]
     works = collect(issues, order)
     for w in works:
@@ -2552,12 +2554,13 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
 {LIKEFX_HEAD if fb else ""}
+{_live_head("index")}{f"<style>{BUSY_CSS}</style>" if busy else ""}
 <script>{EMB_HEAD_JS}</script>
 </head>
 <body>
 <div class="page">
 <header class="mast">
-<div class="mtitle"><h1>ウォッチリスト通信</h1><span class="stamp">2 時間ごとに自動更新</span></div>
+<div class="mtitle"><h1>ウォッチリスト通信</h1><span class="stamp">新着は開いたまま自動で表示</span></div>
 <div class="tools"><div class="meta"><small>更新</small><b>{e(updated)}</b></div>
 {_wish_link(wishes, "mastwish")}
 <a class="mastset" href="settings.html" title="設定">⚙ 設定</a></div>
@@ -2569,9 +2572,191 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <script>{FIT_JS}</script>
 {f"<script>{LIKEFX_JS}</script><script>{VOTE_JS.replace('__CFG__', json.dumps(fb))}</script>" if fb else ""}
 <script>{EMB_JS}</script>
+<script>{LIVE_JS}</script>
+{_busy_tag(busy, generated)}
 </body>
 </html>
 """
+
+
+# ---------- 自動更新：開いたままのページに新しい内容を出す（簡報・管理ページ）----------
+# 生成のたびに docs/version.json に「ページごとの内容の指紋」を書く（digest.write_page → stamp）。
+# ページは 1 分ごとにそれを読み、自分の指紋（<meta name="wl-ver">）と違えば、
+# 操作していないとき（20 秒触っていない・タブが裏にある）に読み直す。読み直しの前後で見ていた場所を保ち、
+# 簡報では新しく増えた記事に「たった今」、管理ページでは中身が変わったパネルに「更新」を付ける。
+# 入力中・ダイアログを開いているあいだは待つ。下の帯の「今すぐ表示」でもすぐ読み直せる。
+VER_MARK = "__WL_VER__"
+LIVE_EVERY = 60  # 秒：version.json を見に行く間隔
+LIVE_IDLE = 20   # 秒：この間なにも触っていなければ自動で読み直す
+
+LIVE_CSS = """
+.wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
+ transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
+ font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
+.wl-live[hidden]{display:none}
+.wl-live span{flex:1 1 auto;min-width:0}
+.wl-live button{flex:none;border:0;cursor:pointer;background:var(--gold);color:var(--ink);padding:4px 12px;font:700 13px/1.4 var(--font-sans)}
+.wl-live .x{background:none;color:var(--card);padding:4px 6px}
+.fresh{outline:3px solid var(--gold);outline-offset:3px}
+.fresh-tag{position:absolute;top:6px;right:6px;z-index:6;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
+ box-shadow:2px 2px 0 var(--ink);font:900 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.08em;pointer-events:none}
+section.fresh{position:relative}
+@media (prefers-reduced-motion:no-preference){.fresh{animation:wlfresh 1.6s ease-out 3}}
+@keyframes wlfresh{50%{outline-color:var(--rose)}}
+"""
+
+LIVE_JS = """
+(function(){
+  var M=document.querySelector('meta[name="wl-ver"]');if(!M||!window.fetch||!window.JSON)return;
+  var PAGE=M.getAttribute('data-page'),VER=M.content,KEY='wl-live:'+PAGE,EVERY=__EVERY__*1000,IDLE=__IDLE__*1000;
+  var ss={get:function(k){try{return JSON.parse(sessionStorage.getItem(k)||'null');}catch(e){return null;}},
+          set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
+  var touched=Date.now(),pending=null,bar=null;
+  ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
+  function keys(){var o={};Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){o[a.getAttribute('href')]=1;});return o;}
+  function marks(){var o={};Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){o[s.id]=s.getAttribute('data-h');});return o;}
+  function anchor(){var l=document.querySelectorAll('section[id]');for(var i=0;i<l.length;i++){var r=l[i].getBoundingClientRect();if(r.bottom>0)return [l[i].id,r.top];}return null;}
+  function toast(msg,act){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
+    bar.textContent='';var t=document.createElement('span');t.textContent=msg;bar.appendChild(t);
+    if(act){var b=document.createElement('button');b.type='button';b.textContent='今すぐ表示';b.onclick=go;bar.appendChild(b);}
+    var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label','閉じる');x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
+    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},8000);}
+  // 読み直したあと：見ていた場所に戻し、増えた記事・変わったパネルに印を付ける
+  var was=ss.get(KEY);ss.del(KEY);
+  if(location.search.indexOf('wlv=')>=0&&history.replaceState)history.replaceState(null,'',location.pathname+location.hash);
+  if(was){
+    if(was.to&&was.to!==VER&&!was.retry){was.retry=1;ss.set(KEY,was);location.replace(location.pathname+'?wlv='+encodeURIComponent(was.to)+location.hash);return;}
+    if(was.to&&was.to!==VER)ss.set(KEY+':skip',was.to);  // CDN がまだ古い：この版は諦めて次の版を待つ
+    function to(y){try{scrollTo({top:y,behavior:'instant'});}catch(e){scrollTo(0,y);}}
+    function back(){var s=was.at&&document.getElementById(was.at[0]);if(s)to(s.getBoundingClientRect().top+pageYOffset-was.at[1]);else if(was.y)to(was.y);}
+    if('scrollRestoration' in history)history.scrollRestoration='manual';
+    back();addEventListener('load',back);
+    var n=0;
+    Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){if(was.keys&&!was.keys[a.getAttribute('href')]){var c=a.closest('article');
+      if(c&&!c.classList.contains('fresh')){c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='たった今';c.appendChild(t);n++;}}});
+    var m=0;
+    if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
+      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='更新';s.appendChild(t);m++;}});
+    toast(n?'新しい記事が '+n+' 件 届きました':m?m+' か所が新しくなりました':'最新の内容にしました');
+  }
+  function busy(){var a=document.activeElement;return !!document.querySelector('dialog[open]')||!!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))||!!a&&a.isContentEditable;}
+  function go(){if(!pending)return;ss.set(KEY,{to:pending,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});
+    if('scrollRestoration' in history)history.scrollRestoration='manual';location.reload();}
+  function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
+  function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
+      var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
+      if(pending!==v){pending=v;toast('新しい内容があります（操作をやめると自動で表示）',true);}maybe();}).catch(function(){});}
+  setInterval(check,EVERY);setInterval(maybe,5000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
+  setTimeout(check,3000);
+})();
+""".replace("__EVERY__", str(LIVE_EVERY)).replace("__IDLE__", str(LIVE_IDLE))
+
+
+# 版面の「更新中」の帯：裏の仕組みがその版面を作り直しているあいだ、版面の上の枠に細い帯を往復させ、
+# 予想の進み具合（いまの経過 ÷ いつもかかる時間）を塗り、「あと約 N 分」を小さく出す。色は版面の --acc。
+# どの版面か：収集・ページ生成 = 全部 / AI 編集・小元素 = 待ち行列（digest.backend_todo）の版面。
+# 動いているか：GitHub Actions の仕組み（収集・ページ生成）は Actions の API で実際の開始時刻を読み（2 分ごと・表のときだけ）、
+# かかる時間は最近の成功した回の中央値。Claude の定時タスク（AI 編集・小元素）はブラウザから見えないので、
+# 定時（UTC）からの経過で推定し、ページがその定時より後に作られていれば終わったとみなす。終われば LIVE_JS が新しい版を出す。
+BUSY_MIN = {"collect": 9, "render": 2, "edit": 30, "emblem-cron": 45}  # Actions から読めないときの「いつもかかる時間」（分）
+BUSY_LABEL = {"collect": "記事を集めています", "render": "ページを作り直しています", "edit": "AI が編集しています",
+              "emblem-cron": "小元素を集めています"}
+
+BUSY_CSS = """
+.sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:7;pointer-events:none;overflow:visible}
+.busy .bf{position:absolute;left:0;top:0;bottom:0;width:var(--bp,0%);background:color-mix(in srgb,var(--acc) 45%,transparent);transition:width 1s}
+.busy .br{position:absolute;top:0;bottom:0;width:24%;left:0;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
+.busy .bt{position:absolute;left:18px;top:-10px;white-space:nowrap;background:var(--bg);color:var(--fg);border:1.5px solid var(--acc);
+ padding:0 8px;font:700 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.04em}
+@media (prefers-reduced-motion:no-preference){.busy .br{animation:wlbusy 1.8s ease-in-out infinite alternate}}
+@keyframes wlbusy{to{left:76%}}
+"""
+
+BUSY_JS = """
+(function(){
+  var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen),act=null,MIN=60000;
+  function two(n){return ('0'+n).slice(-2);}
+  function lastSlot(sl,now){var pv=0;for(var k=-1;k<=0;k++)sl.forEach(function(s){var t=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]);if(t<=+now&&t>pv)pv=t;});return pv;}
+  // GitHub Actions：ワークフローごとに、いま動いている回の開始時刻と、最近の成功した回の長さの中央値
+  function actions(){if(document.hidden)return;fetch('https://api.github.com/repos/'+B.repo+'/actions/runs?per_page=30').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
+    var o={};(j.workflow_runs||[]).forEach(function(w){var f=(w.path||'').split('/').pop(),x=o[f]||(o[f]={len:[]});
+      if(w.status!=='completed'){if(!x.run)x.run={start:Date.parse(w.run_started_at||w.created_at),queued:w.status!=='in_progress'};}
+      else if(w.conclusion==='success'&&w.run_started_at&&w.updated_at)x.len.push(Date.parse(w.updated_at)-Date.parse(w.run_started_at));});
+    Object.keys(o).forEach(function(f){var l=o[f].len.sort(function(a,b){return a-b;});o[f].est=l.length?l[l.length>>1]+MIN:0;});
+    act=o;paint();}).catch(function(){act=null;paint();});}
+  function state(p,now){
+    if(p.wf&&act){var a=act[p.wf];if(!a||!a.run)return null;return {start:a.run.start,est:a.est||p.min*MIN,queued:a.run.queued};}
+    if(p.wf&&!p.slots.length)return null;
+    var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return null;
+    return {start:pv,est:p.min*MIN};}
+  function paint(){var now=Date.now(),on={};
+    B.procs.forEach(function(p){var s=state(p,now);if(!s)return;
+      (p.boards==='*'?Array.prototype.map.call(document.querySelectorAll('section.sec[id]'),function(x){return x.id;}):p.boards).forEach(function(id){
+        var cur=on[id];if(!cur||s.start<cur.s.start)on[id]={p:p,s:s};});});
+    Array.prototype.forEach.call(document.querySelectorAll('section.sec[id]'),function(sec){var o=on[sec.id],bar=sec.querySelector(':scope>.busy');
+      if(!o){if(bar)bar.remove();return;}
+      if(!bar){bar=document.createElement('div');bar.className='busy';bar.setAttribute('role','status');
+        bar.innerHTML='<i class="bf"></i><i class="br"></i><span class="bt"></span>';sec.insertBefore(bar,sec.firstChild);}
+      var left=o.s.start+o.s.est-now,pc=o.s.queued?0:Math.max(3,Math.min(97,(now-o.s.start)/o.s.est*100));
+      bar.style.setProperty('--bp',pc.toFixed(1)+'%');
+      bar.querySelector('.bt').textContent=o.p.label+' · '+(o.s.queued?'順番待ち':left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映');});}
+  paint();setInterval(paint,20000);actions();setInterval(actions,120000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)actions();});
+})();
+"""
+
+
+def _busy_tag(busy, generated):
+    if not busy or not busy.get("procs"):
+        return ""
+    cfg = json.dumps({**busy, "gen": generated or ""}, ensure_ascii=False).replace("</", "<\\/")
+    return f'<script type="application/json" id="wl-busy">{cfg}</script><script>{BUSY_JS}</script>'
+
+
+def busy_plan(todo=None, repo="CxElegy/Wishlist"):
+    """版面の「更新中」の帯の設定（BUSY_JS が読む）。todo = digest.backend_todo（どの版面を次に処理するか）。"""
+    by = {p["id"]: p for p in processes.PROCESSES}
+    todo = todo or {}
+    out = []
+    for pid in ("collect", "render", "edit", "emblem-cron"):
+        p = by.get(pid)
+        if not p:
+            continue
+        boards = "*" if pid in ("collect", "render") else [_wid(n) for n in (todo.get(pid) or {}).get("items", [])][:8]
+        if not boards:
+            continue
+        out.append({"id": pid, "label": BUSY_LABEL[pid], "min": BUSY_MIN[pid], "wf": p.get("workflow") or "",
+                    "slots": [list(x) for x in processes.slots(p)], "boards": boards})
+    return {"repo": repo, "procs": out}
+
+
+def _live_head(page):
+    """<head> に入れる：自分の指紋（digest.write_page の stamp が VER_MARK を置き換える）と帯・印の CSS。"""
+    return f'<meta name="wl-ver" data-page="{e(page)}" content="{VER_MARK}"><style>{LIVE_CSS}</style>'
+
+
+def stamp(html_, *volatile):
+    """生成した HTML に指紋を入れて (html, 指紋) を返す。volatile（「更新 10.17 08:35」の時刻など）だけ違うときは同じ指紋。"""
+    body = html_
+    for v in volatile:
+        body = body.replace(v, "") if v else body
+    ver = hashlib.sha1(body.encode("utf-8")).hexdigest()[:12]
+    return html_.replace(VER_MARK, ver), ver
+
+
+def _section_marks(html_, updated=""):
+    """管理ページの各パネルに data-h（中身の指紋）を付ける。読み直したとき、変わったパネルに「更新」を出すため。
+    パネルの中に <section> が入れ子になる（全体の構成図）ので、次のパネルの始まりまでを 1 つと数える。"""
+    parts = re.split(r'(?=<section class="panel[^"]*" id="[^"]+">)', html_)
+    out = []
+    for part in parts:
+        m = re.match(r'<section class="panel([^"]*)" id="([^"]+)">', part)
+        if m:
+            h = hashlib.sha1((part.replace(updated, "") if updated else part).encode("utf-8")).hexdigest()[:8]
+            part = f'<section class="panel{m.group(1)}" id="{m.group(2)}" data-h="{h}">' + part[m.end():]
+        out.append(part)
+    return "".join(out)
 
 
 # ---------- 話題度の分析ページ（docs/heat.html）----------
@@ -3591,10 +3776,13 @@ ADMIN_PAGE_JS = """
       li.appendChild(d);q.appendChild(li);});
     if(!runs.length)q.appendChild(el('li','empty','予定がありません。'));}
   tick();setInterval(tick,60000);
-  // GitHub Actions：ワークフローごとに最新の実行
+  // GitHub Actions：ワークフローごとに最新の実行（3 分ごとに読み直す。GitHub は 1 時間 60 回まで）
   var runs=document.getElementById('runs');
+  function loadRuns(){
   fetch('https://api.github.com/repos/'+CFG.repo+'/actions/runs?per_page=60').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
     var seen={},ul=el('ul','runs');
+    Array.prototype.forEach.call(document.querySelectorAll('.nx .lvx'),function(x){x.remove();});
+    Array.prototype.forEach.call(document.querySelectorAll('.nx.run'),function(x){x.classList.remove('run');});
     (j.workflow_runs||[]).forEach(function(w){
       var f=(w.path||'').split('/').pop();if(!CFG.flows[f]||seen[f])return;seen[f]=1;
       var li=el('li'),a=el('a',null,CFG.flows[f]);var http=/^https:\\/\\/github\\.com\\//.test(w.html_url||'');
@@ -3603,16 +3791,19 @@ ADMIN_PAGE_JS = """
       var c=w.status!=='completed'?['実行中','wait']:w.conclusion==='success'?['成功','good']:w.conclusion==='cancelled'||w.conclusion==='skipped'?['取消','idle']:['失敗','bad'];
       li.appendChild(badge(c[0],c[1]));li.appendChild(el('small',null,when(w.created_at)+' · '+(w.event||'')));ul.appendChild(li);
       var card=document.querySelector('.nx[data-wf="'+f+'"]');if(card&&w.status!=='completed')card.classList.add('run');
-      var lv=document.querySelector('.nx[data-wf="'+f+'"] .lv');if(lv){lv.insertBefore(el('small',null,when(w.created_at)),lv.firstChild);lv.insertBefore(badge(c[0],c[1]),lv.firstChild);}
+      var lv=document.querySelector('.nx[data-wf="'+f+'"] .lv');if(lv){var s1=el('small','lvx',when(w.created_at)),b1=badge(c[0],c[1]);b1.classList.add('lvx');lv.insertBefore(s1,lv.firstChild);lv.insertBefore(b1,lv.firstChild);}
     });
     runs.textContent='';if(ul.children.length)runs.appendChild(ul);else fail(runs,'最近の実行がありません。');
   }).catch(function(){fail(runs,'GitHub から読めませんでした（1 時間に 60 回までの制限かもしれません）。');});
+  }
+  loadRuns();setInterval(function(){if(!document.hidden)loadRuns();},180000);
   if(!CFG.url||!CFG.key){['reqs','photos'].forEach(function(id){fail(document.getElementById(id),'データベースに未接続です。');});return;}
   function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:'{}'})
     .then(function(r){if(!r.ok)throw 0;return r.json();});}
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
   // 設定ページの依頼（ウォッチ項目の追加・修正）：待ちのものと、3 日以内に処理したもの
-  var reqs=document.getElementById('reqs');
+  var reqs=document.getElementById('reqs'),photos=document.getElementById('photos');
+  function loadDb(){
   rpc('list_item_requests').then(function(list){
     reqs.textContent='';if(!list||!list.length){fail(reqs,'依頼はありません。');return;}
     var ul=el('ul','qlist');list.forEach(function(x){var li=el('li');
@@ -3621,7 +3812,6 @@ ADMIN_PAGE_JS = """
     reqs.appendChild(ul);
   }).catch(function(){fail(reqs,'読めませんでした。');});
   // ウィッシュリストの写真の受付
-  var photos=document.getElementById('photos');
   rpc('get_photo_inbox').then(function(list){
     photos.textContent='';if(!list||!list.length){fail(photos,'写真はありません。');return;}
     var ul=el('ul','qlist');list.slice(0,12).forEach(function(x){var li=el('li','ph');
@@ -3630,6 +3820,10 @@ ADMIN_PAGE_JS = """
       li.appendChild(el('small',null,when(x.created_at)+(x.note?' · '+x.note:'')));ul.appendChild(li);});
     photos.appendChild(ul);
   }).catch(function(){fail(photos,'読めませんでした。');});
+  }
+  // 依頼と写真：1 分ごとに読み直す（タブが裏にあるあいだは休み、戻ったらすぐ）
+  loadDb();setInterval(function(){if(!document.hidden)loadDb();},60000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)loadDb();});
 })();
 """
 
@@ -3642,7 +3836,7 @@ def render_admin(data, db, updated):
                       "repo": (db or {}).get("repo") or "CxElegy/Wishlist", "flows": ADMIN_WORKFLOWS,
                       "tz": (db or {}).get("tz") or "Asia/Tokyo"},
                      ensure_ascii=False).replace("</", "<\\/")
-    return f"""<!doctype html>
+    return _section_marks(f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -3652,11 +3846,12 @@ def render_admin(data, db, updated):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}</style>
+{_live_head("admin")}
 </head>
 <body>
 <div class="page">
 <header class="mast">
-<div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信</span></div>
+<div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
 <div class="tools"><div class="meta"><small>更新</small><b>{e(updated)}</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
@@ -3665,7 +3860,7 @@ def render_admin(data, db, updated):
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
 <section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
 <section class="panel" id="procs"><h2 class="sh"><span>全体の構成</span><small>どこで何が動き、データがどう流れるか · 部品をクリックで詳しい流れ</small></h2>{processes.render()}</section>
-<section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いたときに読み込み</small></h2>
+<section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>
 <div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">写真の受付</h3><div id="photos"><p class="empty">読み込み中…</p></div></div></div></section>
@@ -3676,6 +3871,7 @@ def render_admin(data, db, updated):
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
 <script>{processes.JS}</script>
+<script>{LIVE_JS}</script>
 </body>
 </html>
-"""
+""", updated)

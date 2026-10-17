@@ -296,6 +296,39 @@ PROCESSES = [
         ],
     },
     {
+        "id": "live", "name": "ページの自動更新", "en": "LIVE", "lane": "web",
+        "when": "開いている間 · 1 分ごと",
+        "trigger": "簡報・管理ページを開いているあいだ、1 分ごと（タブが裏にあるときも戻ったときにすぐ）",
+        "summary": "開いたままのページに、新しい記事や数字を自分で出す。裏で版面を作り直している間は、その版面の枠に「更新中」の帯と残り時間。",
+        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / busy_plan）", "scripts/digest.py（write_page）", "docs/version.json"], "doc": "CLAUDE.md",
+        "flow": [
+            {"id": "l1", "kind": "step", "lane": "actions", "title": "ページを作るたびに指紋を付ける",
+             "text": "収集・AI 編集・ページ生成が docs/*.html を書くとき、中身の指紋（「更新」の時刻は除く）を計算。"},
+            {"id": "l2", "kind": "store", "lane": "repo", "title": "docs/version.json",
+             "text": "{index: 指紋, admin: 指紋}。ページの <meta name=\"wl-ver\"> にも同じ指紋。"},
+            {"id": "l3", "kind": "step", "lane": "web", "title": "1 分ごとに version.json を見る",
+             "text": "キャッシュを避けて読む（?t=時刻）。タブを表に戻したときもすぐ見る。"},
+            {"id": "l4", "kind": "decision", "lane": "web", "title": "指紋が変わった？", "text": "version.json ≠ 自分の指紋",
+             "yes": "下に「新しい内容があります」の帯", "no": "何もしない"},
+            {"id": "l5", "kind": "decision", "lane": "web", "title": "いま操作していない？",
+             "text": "20 秒触っていない、またはタブが裏。入力中・流れの図を開いているあいだは待つ",
+             "yes": "読み直す", "no": "待つ（帯の「今すぐ表示」で即時）"},
+            {"id": "l6", "kind": "step", "lane": "web", "title": "見ていた場所のまま新しい版に",
+             "text": "読み直す前の位置（見ていた板块）に戻す。簡報は増えた記事に「たった今」、管理ページは変わったパネルに「更新」。"},
+            {"id": "l8", "kind": "decision", "lane": "web", "title": "裏でこの版面を作り直している？",
+             "text": "収集・ページ生成 = Actions の API で実行中か（2 分ごと）。AI 編集・小元素 = 定時から いつもの時間以内で、ページがまだその回より前",
+             "yes": "版面の上の枠に帯（版面の色）＋「あと約 N 分」", "no": "帯なし"},
+            {"id": "l9", "kind": "table", "lane": "web", "title": "どの版面に帯を出すか・何分と見るか",
+             "text": "「あと何分」= いつもの時間 − 経過。いつもの時間は Actions の最近の成功の中央値（読めなければ下の値）。",
+             "rows": [("ニュース収集", "全部の版面 · 約 9 分"), ("ページ生成", "全部の版面 · 約 2 分"),
+                      ("AI 編集", "待ち行列の版面 · 約 30 分"), ("小元素の自動補完", "待ち行列の版面 · 約 45 分")]},
+            {"id": "l7", "kind": "table", "lane": "web", "title": "管理ページの「いまの状況」",
+             "text": "ページの再読込とは別に、外のデータを開いている間ずっと読み直す。",
+             "rows": [("ウォッチ項目の依頼・写真の受付", "Supabase · 1 分ごと"), ("GitHub Actions", "3 分ごと（1 時間 60 回の制限内）"),
+                      ("次の実行・待ち行列", "1 分ごとに数え直し")]},
+        ],
+    },
+    {
         "id": "requests", "name": "設定ページの依頼", "en": "REQUESTS", "lane": "web", "workflow": "requests.yml", "when": "依頼のたび · 待ちなし",
         "trigger": "設定ページで関注項の追加・変更・篇幅の変更を送ったとき（待ち時間なし）",
         "summary": "設定ページの依頼を Supabase が受け、すぐ GitHub Actions を起こして items.yaml に反映する。",
@@ -356,7 +389,8 @@ ARCH = [
         {"id": "s-db", "label": "feedback · sizes · item_requests · photo_inbox · news", "text": "👍👎・篇幅・依頼・写真・記事の控え",
          "uses": ["supabase", "pgnet"]}]},
     {"id": "pages", "title": "GitHub Pages", "note": "公開の網页", "cost": "無料", "style": "keep", "nodes": [
-        {"id": "s-pages", "label": "網页", "text": "簡報・設定・愿望清单・話題度・管理ページ", "uses": ["fit", "confetti"]}]},
+        {"id": "s-pages", "label": "網页", "text": "簡報・設定・愿望清单・話題度・管理ページ・version.json", "uses": ["fit", "confetti"]},
+        {"id": "p-live", "proc": "live"}]},
     {"id": "dc", "title": "Discord", "note": "通知", "cost": "無料", "style": "ext", "nodes": [
         {"id": "s-discord", "label": "あなたのチャンネル", "text": "要紧は当日・周報は月曜", "uses": ["discord"]}]},
     {"id": "you", "title": "あなた", "note": "スマホ・パソコン", "cost": "", "style": "you", "nodes": [
@@ -383,6 +417,8 @@ EDGES = [
     (18, "s-discord", "s-you", "通知", "notify"),
     (19, "n-model", "s-model", "ダウンロード", "ai"),
     (20, "s-model", "p-emblem-cron", "抠图・本人確認", "ai"),
+    (21, "s-pages", "p-live", "version.json を 1 分ごと", "web"),
+    (22, "p-live", "s-you", "新着を自動で表示・更新中の帯", "web"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
@@ -490,7 +526,9 @@ def _dg_node(pid, n, row, col, ncols):
     shape = {"decision": "dn-dec", "store": "dn-store"}.get(k, "dn-step")
     inner = f'{lane}<div class="dn-h">{head}</div>{text}{_chips(n.get("uses"))}'
     if k == "decision":
-        inner = f'{lane}<div class="dn-dia"><span>{head}{text}</span></div>{_chips(n.get("uses"))}'
+        yes = f'<small class="dn-s dn-yes">はい → {e(n["yes"])}</small>' if n.get("yes") else ""
+        inner = (f'{lane}<div class="dn-dia"><span>{head}</span></div>'   # ひし形には問いだけ。条件と「はい」の行き先は下に
+                 + (f'<div class="dn-cap">{text}{yes}</div>' if text or yes else "") + _chips(n.get("uses")))
     out = f'<div class="dn {shape}" id="{nid}" style="{span}">{inner}</div>'
     if k == "decision":   # いいえ の行き先：となりの列に小さな箱
         bcol = ncols
@@ -638,10 +676,10 @@ CSS = """
 .dn-s{display:block;margin-top:3px;font:500 12px/1.55 var(--font-sans)}
 .dn-store{border-radius:14px/10px;background:var(--sheet);box-shadow:none;border-style:solid}
 .dn-dec{background:transparent;border:0;box-shadow:none;padding:0}
-.dn-dia{position:relative;display:grid;place-items:center;min-height:96px;padding:16px 34px;text-align:center}
+.dn-dia{position:relative;display:grid;place-items:center;min-height:84px;padding:14px 40px;text-align:center}
 .dn-dia::before{content:"";position:absolute;inset:0;background:var(--gold);border:2px solid var(--ink);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);z-index:-1}
 .dn-dia::after{content:"";position:absolute;inset:-2px;background:var(--ink);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%,0 50%,2.4% 50%,50% 97%,97.6% 50%,50% 3%,2.4% 50%,0 50%);z-index:-1}
-.dn-dia span{display:block;max-width:260px}.dn-dia .dn-t{font-size:13px}.dn-dia .dn-s{font-size:var(--fs-label)}
+.dn-dia span{display:block;max-width:220px}.dn-cap{margin:4px auto 0;max-width:340px;text-align:center}.dn-yes{color:var(--good);font-weight:700}.dn-dia .dn-t{font-size:13px}.dn-dia .dn-s{font-size:var(--fs-label)}
 .dn-no{background:var(--paper);border:2px dashed var(--alert);box-shadow:none;font:500 12px/1.5 var(--font-sans);align-self:center}
 .dn-no i{display:block;font:900 var(--fs-label) var(--font-mono);font-style:normal;color:var(--alert)}
 .dn-fan,.dn-table{background:var(--paper)}
