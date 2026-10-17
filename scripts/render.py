@@ -3,7 +3,7 @@
 版式规则：
 - 左侧目录（撑满屏幕高度）：按板块分组列出每个作品，滚动时当前所在的一项放大并换成板块色，点击直达
 - 最上面一张「头版」：最近一周的实时总览（最重要的一条做头条 + 各作品最新一条 + 最新消息列表）
-- 版面数量和顺序固定（板块 → items.yaml 顺序）；每天更新只是版面里的消息变化
+- 版面数量固定；顺序：板块固定 → 板块内按小分类的话题度 → 小分类内按作品的话题度（heat.heat_order，左边目录同顺序）
 - 每个关注项一个版面，配色取自该作品（theme.py）。所有日期的消息汇总在一起，按时间排列（新的在前）：
   - 一周内收到的直接显示（最多多高按篇幅 S / M / L，L 约一屏），卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满；
     放不下时先按重要度挑出留下的，留下的再按时间排
@@ -2235,6 +2235,7 @@ NAV_STYLES = {
 .nav .nlab{height:20px;display:flex;align-items:flex-end;gap:4px;padding:0 0 2px 6px;font:900 11px var(--font-sans);letter-spacing:.14em;color:var(--sc);
  transform:rotate(-2deg);transform-origin:left bottom}
 .nav .nlab::before{content:"／";font-weight:900}
+.nav .nlab b{margin-left:4px;font:14px/1 var(--font-num);letter-spacing:.02em;opacity:.8}
 .nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;text-decoration:none}
 .nav .nmore{font:900 12px var(--font-sans);color:var(--sc);letter-spacing:.04em}
 .nav .nmore:hover{color:var(--alert)}
@@ -2290,18 +2291,19 @@ def _nav_icon(w):
     return _img_url(t) if t and str(t).startswith("https://") else None
 
 
-def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=None):
+def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=None, sub_heat=None):
     """左侧目录（v6）：板块ごとの枠に作品を並べる（小分類ごと）。どこを隠すかは NAV_JS が画面の高さで決める。
     subs：{作品: 小分類}（items.yaml の sub）。hide：隠し始める作品の数（"auto" なら画面の高さで決める）。
     parents：{下級: 上級}（items.yaml の parent）。下級は上級の駅のすぐ下に、上級の小分類で、枝線（拐角 └）つきで並ぶ（案 A）。
-    上下級は同じ関注項なので、下級を小さくしたり特別にたたんだりしない。"""
+    上下級は同じ関注項なので、下級を小さくしたり特別にたたんだりしない。
+    並びは works の順（digest が heat.heat_order で「小分類の話題度 → 作品の話題度」に並べて渡す）。sub_heat：{(板块, 小分類): 話題度}。"""
     groups = {}
     for w in works:
         groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     page_no = {w["name"]: i + 1 for i, w in enumerate(works)}   # 版面の順（読んだ印・新着順の同点はこの順）
-    subs, parents = subs or {}, parents or {}
+    subs, parents, sub_heat = subs or {}, parents or {}, sub_heat or {}
 
     def pill(w, sc, sub="", kid=False):
         recent = sum(1 for x in w["stories"] if x["_issue"] >= cutoff)
@@ -2345,7 +2347,9 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
                 f'<a data-sub="{e(sb)}" href="#{_wid(first[sb]["name"])}">{e(sb or "その他")}'
                 f'<small>{sum(1 for _, x, _ in rows if x == sb)}</small></a>' for sb in sub_order) + '</div>')
             for sb in sub_order:
-                body += f'<div class="nlab" data-sub="{e(sb)}">{e(sb or "その他")}</div>'
+                hs = sub_heat.get((name, sb))
+                body += (f'<div class="nlab" data-sub="{e(sb)}">{e(sb or "その他")}'
+                         + (f'<b title="小分類の話題度">{int(hs)}</b>' if isinstance(hs, (int, float)) else "") + '</div>')
                 body += "".join(pill(w, sc, x, kid) for w, x, kid in rows if x == sb)
         else:
             body += "".join(pill(w, sc, x, kid) for w, x, kid in rows)
@@ -2583,8 +2587,9 @@ def _dedupe_parents(works, parents):
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
            motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE, icons=None,
-           busy=None, generated=None, parents=None):
+           busy=None, generated=None, parents=None, sub_heat=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
+    sub_heat：{(板块, 小分類): 話題度}（heat.group_scores。目次の小見出しに出す）。order は heat.heat_order の並び。
     parents：{下級: 上級}（items.yaml の parent。上下級に同じニュースが入ったら下級だけに）。icons：{作品: 目次のアイコン}（items.yaml の icon.image）；subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
@@ -2630,7 +2635,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 {_wish_link(wishes, "mastwish")}
 <a class="mastset" href="settings.html" title="設定">⚙ 設定</a></div>
 </header>
-{_nav(works, latest['date'], wishes, picks, subs, nav_hide, parents)}
+{_nav(works, latest['date'], wishes, picks, subs, nav_hide, parents, sub_heat)}
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>
