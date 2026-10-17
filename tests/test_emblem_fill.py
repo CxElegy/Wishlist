@@ -1058,3 +1058,43 @@ class Framing(unittest.TestCase):
         self.assertGreater(body[1], 1)                    # 足の裏は切った画像の外
         self.assertAlmostEqual((body[1] - body[0]) * out.size[1], foot - eye, delta=2)   # 目から足の長さは全身のときと同じ（そろえる尺度）
 
+
+
+class LiveAction(unittest.TestCase):
+    """実写の作品は役の姿（emblem_fill.role_of / check の anchor_only・trust_noface）。ネットに出ない。"""
+
+    def test_role_from_actor_page_and_validation(self):
+        from unittest import mock
+        pages = {
+            "Chris Evans": "{{Actor|image=Chris Evans.jpg|DOB=1981\n|character = [[Steve Rogers|Steve Rogers/Captain America]]<br>[[Johnny Storm]]\n}}",
+            "Giancarlo Esposito": "{|\n|2019||[[Chapter 1]]||''[[The Mandalorian]]''||[[Moff]] [[Gideon]]\n|2020||[[Chapter 9]]||''The Mandalorian''||[[Moff]] [[Gideon]]\n|}",
+            "Gideon": "{{Character|name=Gideon}}\nGideon was portrayed by [[Giancarlo Esposito]] in the series.",
+            "Moff": "{{Title|name=Moff}}",
+            "Harold Perrineau": "",
+            "Boyd Stevens": "{{Character Info|name=Boyd Stevens|actor=[[Harold Perrineau]]|gender=Male}}",
+            "Lauren Mary Kim": "{{Actor|occupation=Actress|nationality=American}} [[Harold Perrineau]] played with her",
+        }
+        wt = lambda api, titles: {t: pages.get(t, "") for t in titles}
+        search = {"query": {"search": [{"title": t} for t in ["Harold Perrineau", "From", "Lauren Mary Kim", "Boyd Stevens", "Season 2"]]}}
+        with mock.patch.object(ef, "_wikitext", side_effect=wt), mock.patch.object(ef, "_json", return_value=search):
+            self.assertEqual(ef.role_of("x", "Chris Evans", ["Avengers"]), "Steve Rogers")              # 役の欄の最初のリンク
+            self.assertEqual(ef.role_of("x", "Giancarlo Esposito", ["The Mandalorian"]), "Gideon")     # 表の役の列の最後（称号より名前）
+            self.assertEqual(ef.role_of("x", "Harold Perrineau", ["FROM", "From"]), "Boyd Stevens")    # 検索：役の記事の actor 欄（実在の人の記事は除く）
+
+    def test_anchor_only_and_trusted_helmet(self):
+        from unittest import mock
+        from PIL import Image
+        img = Image.effect_noise((300, 300), 60).convert("RGB")   # 一色だと「白紙」で落ちる
+        cands = [{"subject": "Din（P）", "image": "a", "source": "基準（出演者の写真）", "anchor": True, "anchor_only": True},
+                 {"subject": "Din（P）", "image": "b", "source": "役の記事", "trust_noface": True}]
+        info = {"a": ("feat", {"faces": 1, "ratio": 0.5, "second": 0}), "b": (None, {"faces": 0})}
+        with mock.patch.object(ef, "_get", return_value=b"x"), \
+             mock.patch.object(ef, "inspect", side_effect=lambda d: ("badge", (0, 0, 0), img.copy())), \
+             mock.patch.object(ef.face_id, "face_info", side_effect=[info["a"], info["b"]]), \
+             mock.patch.object(ef.face_id, "same_person", return_value={0}):
+            good = ef.check(cands, need_face=True, strict=True)
+        self.assertEqual([c["image"] for c in good], ["b"])   # 基準は選ばない・兜で顔のない役の記事の代表画像は残る
+
+    def test_live_action_skips_actor_photos(self):
+        self.assertTrue(ef.live_action({"type": "show", "emblem_people": True}))
+        self.assertFalse(ef.live_action({"type": "anime"}))

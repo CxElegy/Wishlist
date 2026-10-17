@@ -168,7 +168,10 @@ def status(item):
     """→ {kind, have, lo, target, hi, state}。state：ok（目標に届いている）/ low（足りない）/ none（0 枚）。
     emblem_skip は「足りている」の理由にならない（種類ごとの最後の砦まで試して初めて 0 枚が許される）。"""
     kind, lo, target, hi = rule(item)
-    have = len(item.get("emblem") or []) if isinstance(item.get("emblem"), list) else 0
+    ems = item.get("emblem") if isinstance(item.get("emblem"), list) else []
+    if live_action(item):   # 実写の作品は役の姿・作品の画像だけを数える（出演者の生活の写真は替える対象）
+        ems = [x for x in ems if isinstance(x, dict) and is_role_image(x)]
+    have = len(ems)
     state = "ok" if have >= target else ("none" if have == 0 else "low")
     return {"name": item["name"], "kind": kind, "have": have, "lo": lo, "target": target, "hi": hi, "state": state,
             "skip": bool(item.get("emblem_skip"))}
@@ -389,11 +392,14 @@ def parse_youtube(html):
     return out
 
 
-YT_FRAMES = (2, 1, 3)   # 真ん中の場面から
+YT_FRAMES = (2, 1, 3)
+# 作品の外の動画（インタビュー・ポッドキャスト・試写会・レッドカーペット・メイキング・リアクション）：役の姿ではない
+YT_OFFSCREEN = re.compile(r"interview|podcast|premiere|red ?carpet|behind the scenes|bts|making of|react|q ?& ?a|panel|comic-?con|"
+                          r"talks?|explains|breakdown|press|junket|インタビュー|舞台挨拶|인터뷰|采访|专访", re.I)   # 真ん中の場面から
 YT_SOLO = re.compile(r"fancam|직캠|focus|individual|teaser|profile|close.?up|個人|ソロ", re.I)
 
 
-def youtube_images(group, subject, limit=4):
+def youtube_images(group, subject, limit=4, scene=False):
     """YouTube の動画の場面（自動で取られた 3 枚）。グループのメンバー・出演者のように Commons に写真がない人用。
     検索は「グループ名 + 名前」、題名に名前とグループ名の両方があるものだけ（名前が普通の単語でも別物に当たらない）。
     1 人を映す動画（直캠・fancam・teaser）を先に。本人かどうかは check の顔の規則で確かめる。"""
@@ -401,6 +407,8 @@ def youtube_images(group, subject, limit=4):
     html = _get("https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": q, "hl": "en"}),
                 3_000_000).decode("utf-8", "replace")
     rows = [(v, t) for v, t in parse_youtube(html) if relevant(t, subject) and (not group or relevant(t, group))]
+    if scene:   # 作品の場面だけ：インタビュー・試写会などの動画は役の姿ではない
+        rows = [(v, t) for v, t in rows if not YT_OFFSCREEN.search(t)]
     rows.sort(key=lambda r: 0 if YT_SOLO.search(r[1]) else 1)
     # 投稿者が作ったサムネイル（hq720）は題名の大きな字が載っていて、切り抜くと字が残る。YouTube が動画から自動で取った
     # 場面（hq1・hq2・hq3 = 動画の 25%・50%・75% のところ、480×360）を使う。字は載っていない
@@ -608,6 +616,8 @@ def gather(item, log=print, tried=None):
             cands.append({**twemoji(emoji), "subject": f"{emoji} アイコン", "source": "Twemoji", "why": "版面の主題を表す物"})
         return _dedupe(cands)
 
+    if live_action(item):   # 実写の作品は役の姿（剧照）だけ。演員の生活の写真は集めない
+        return gather_roles(item, log, tried)
     who = subjects(item, kind, hi)
     log(f"  対象（{len(who)}）：{'、'.join(who)}")
     titles = wiki_titles(item)
@@ -681,6 +691,203 @@ def gather(item, log=print, tried=None):
     return _dedupe(cands)
 
 
+# ---------------------------------------------------------------- 実写の作品：役の姿（剧照）
+ROLE_KEY = re.compile(r"character|role|portray|played|performer|cast", re.I)
+ROLE_SKIP = re.compile(r"^(file|image|category|wikipedia|w|template):|disambiguation|/|season|episode|chapter|series|film|movie|award|^\d|"
+                       r"^(january|february|march|april|may|june|july|august|september|october|november|december)\b", re.I)
+
+
+def live_action(item):
+    """実写の作品（出演者で集めるキャラ：emblem_people）。小元素は「役の姿」＝剧照にする。演員の生活の写真は使わない。"""
+    return kind_of(item) == "character" and bool(item.get("emblem_people"))
+
+
+ROLE_WHY = re.compile(r"役の記事|作品の動画の場面|ポスター|キービジュアル")
+
+
+def is_role_image(x):
+    """実写の作品の小元素が「役の姿・作品の画像」か（gather_roles が書いた理由）。出演者の生活の写真は False。"""
+    return bool(x.get("work") or ROLE_WHY.search(str(x.get("why") or "")))
+
+
+def fandom_api(item):
+    """作品の Fandom（emblem_fandom / emblem_api）。書いていなければ名前・記事名から推測して、あるものを使う。"""
+    if item.get("emblem_api"):
+        return item["emblem_api"]
+    names = [item.get("emblem_fandom")] if item.get("emblem_fandom") else []
+    for t in [item["name"]] + [t for t in wiki_titles(item).values()]:
+        slug = re.sub(r"\(.*?\)|[^a-z0-9]", "", str(t).lower())
+        if slug and slug not in names:
+            names.append(slug)
+    for n in names:
+        api = f"https://{n}.fandom.com/api.php"
+        try:
+            _json(f"{api}?action=query&meta=siteinfo&format=json")
+            return api
+        except Exception:
+            continue
+    return None
+
+
+def _wikitext(api, titles):
+    """{記事名: wikitext}（まとめて 1 回で）。"""
+    q = urllib.parse.urlencode({"action": "query", "titles": "|".join(titles), "prop": "revisions", "rvprop": "content",
+                                "rvslots": "main", "format": "json", "redirects": 1})
+    pages = _json(f"{api}?{q}", 6_000_000)["query"]["pages"].values()
+    out = {}
+    for pg in pages:
+        rev = (pg.get("revisions") or [{}])[0]
+        out[pg.get("title", "")] = ((rev.get("slots") or {}).get("main") or {}).get("*") or rev.get("*") or ""
+    return out
+
+
+def role_of(api, actor, work_words=()):
+    """出演者 → 役の記事名（その作品の Fandom で）。規則：
+    1. 出演者の記事の「character / role」の欄と、作品名が出る出演作の表の行にあるリンクのうち、いちばん多く出てくるもの
+    2. なければ検索の上位で、「役者・演じた」の欄に出演者の名前がある記事（出演者本人の記事・回・季は除く）"""
+    text = _wikitext(api, [actor]).get(actor, "")
+    link = re.compile(r"\[\[([^\]|#]+)(?:\|[^\]]*)?\]\]")
+    named_like_work = lambda t: any(w and w.lower() in t.lower() for w in work_words)   # 作品・ゲーム・回（名前に作品名を含む）
+    ok = lambda t: t and actor.lower() not in t.lower() and not ROLE_SKIP.search(t)   # 出演者の名前を含む記事（本人・インタビュー）は役ではない
+    # 1. 出演者の記事の「character / role」の欄：最初のリンク（いちばん主な役。作品と同じ名前の役もある：Harry Potter・Iron Man）
+    for m in re.finditer(r"\|\s*([\w ]*(?:character|role|portray)[\w ]*)=((?:\[\[[^\]]*\]\]|[^|\n])*)", text, re.I):
+        for lm in link.finditer(m.group(2)):
+            if ok(lm.group(1).strip()):
+                return lm.group(1).strip()
+    # 2. 出演作の表で作品名が出る行の、いちばん右の列（役の列）の最後のリンク（「Moff Gideon」は称号より名前）。いちばん多いもの
+    score = {}
+    for l in text.split("\n"):
+        if "||" in l and named_like_work(l):
+            links = [m.group(1).strip() for m in link.finditer(l.split("||")[-1])]
+            links = [t for t in links if ok(t) and not named_like_work(t)]
+            if links:
+                score[links[-1]] = score.get(links[-1], 0) + 1
+    # 役の記事の「演じた人」の欄（actor / portrayed by / played by / performers）。欄の中のリンク・テンプレートは飛ばして読む。
+    # 「cast」（出演者一覧）は回の記事にもあるので見ない
+    pat = re.compile(r"\|\s*[\w ]*(?:actor|portray|played|performer)[\w ]*=(?:\[\[[^\]]*\]\]|\{\{[^}]*\}\}|<[^>]*>|[^|])*?"
+                     + re.escape(actor), re.I)
+    # 欄がない Wiki（Wookieepedia）は本文：同じ文の中に「[[出演者]] … portray / play / cast / perform」
+    prose = re.compile(r"\[\[" + re.escape(actor) + r"(?:\|[^\]]*)?\]\][^.\n]{0,200}?\b(?:portray|play|cast|star|perform|voic)"
+                       r"|\b(?:portrayed|played|performed|voiced|cast)\b[^.\n]{0,120}?\[\[" + re.escape(actor), re.I)
+    # 実在の人（ほかの役者）の記事：職業が役者・声優、または国籍の欄（架空の人物にも「生まれ」の欄はあるので、それでは決めない）
+    person = re.compile(r"\|\s*occupation\s*=[^|\n]*(?:actor|actress|voice)|\|\s*nationality\s*=", re.I)
+    plays = lambda t: bool((pat.search(t) or prose.search(t)) and not person.search(t))
+    if score:   # 表の列は回の名前のこともあるので、役の記事に「演じた人 = 出演者」と書いてあるものだけ
+        top = sorted(score, key=score.get, reverse=True)[:5]
+        texts = _wikitext(api, top)
+        for t in top:
+            if plays(texts.get(t, "")):
+                return t
+    # 3. 検索の上位で、「actor / portrayed by」の欄に出演者の名前がある記事（1 行の infobox も）
+    q = urllib.parse.urlencode({"action": "query", "list": "search", "srsearch": actor, "srlimit": 8, "format": "json"})
+    hits = [h["title"] for h in _json(f"{api}?{q}")["query"]["search"] if ok(h["title"]) and not any(w and w.lower() == h["title"].lower() for w in work_words)]
+    if not hits:
+        return None
+    texts = _wikitext(api, hits[:6])
+    for t in hits[:6]:
+        if plays(texts.get(t, "")):
+            return t
+    return None
+
+
+def role_images(api, role, limit=6):
+    """役の記事の画像：代表画像（infobox）と、記事に載っている画像のうち役の名前（姓か名）がファイル名にあるもの（大きい順）。"""
+    out = []
+    try:
+        src, page = emblem.page_image(api, role)
+        out.append({"title": role, "image": small_url(src), "page": page, "license": "", "infobox": True})
+    except Exception:
+        pass
+    q = urllib.parse.urlencode({"action": "query", "titles": role, "prop": "images", "imlimit": 200, "format": "json", "redirects": 1})
+    pg = next(iter(_json(f"{api}?{q}")["query"]["pages"].values()))
+    words = [w.lower() for w in re.split(r"[\s(),/]+", role) if len(w) >= 3]
+    files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|jpe?g|webp)$", x["title"], re.I)
+             and not re.search(r"icon|logo|symbol|signature", x["title"], re.I) and any(w in x["title"].lower() for w in words)]
+    rows = _files_info(api, files[:40], width=600) if files else []
+    seen = {r["image"] for r in out}
+    for r in sorted(rows, key=lambda r: -r["area"]):
+        if r["image"] not in seen:
+            out.append(r)
+    return out[:limit]
+
+
+def gather_roles(item, log=print, tried=None):
+    """実写の作品：出演者ごとに「役の姿」の剧照を集める。
+    基準：出演者の写真（Fandom の出演者の記事・Wikidata）— 本人確認にだけ使い、小元素には選ばない（anchor_only）。
+    候補：役の記事の画像（代表画像 = 役の姿。兜・仮面で顔が見えなくても役の記事の代表画像は信じる）・役の記事の剧照・
+    YouTube の「作品名 + 役名」の動画の場面。どれも顔で出演者本人か確かめる（旧作の別の役者・別の人物は落ちる）。"""
+    tried = {} if tried is None else tried
+    name = item["name"]
+    api = fandom_api(item)
+    roles = dict(item.get("emblem_roles") or {})
+    words = [name] + [re.sub(r"\s*\(.*?\)", "", t) for t in wiki_titles(item).values()]
+    # 動画の題名は英語のことが多いので、作品名は英語版の記事名（「Harry Potter (TV series)」→ Harry Potter）。なければ関注項の名前
+    work_en = re.sub(r"\s*\(.*?\)", "", wiki_titles(item).get("en", "")) or name
+    cands = []
+    for actor in subjects(item, "character", rule(item)[3]):
+        _check_time()
+        role = roles.get(actor)
+        if not role and api:
+            try:
+                role = role_of(api, actor, words)
+            except Exception as e:
+                log(f"  [役] {actor}：{e}")
+        subj = f"{role}（{actor}）" if role else actor
+        if role:
+            roles[actor] = role
+        log(f"  [役] {actor} → {role or '見つからない'}")
+        if api:
+            try:   # 基準：出演者の記事の写真（選ばない）
+                src, page = emblem.page_image(api, actor)
+                cands.append({"subject": subj, "image": small_url(src), "page": page, "source": "基準（出演者の写真）",
+                              "why": f"{actor} 本人の写真（本人確認の基準。小元素には使わない）", "anchor": True, "anchor_only": True})
+            except Exception:
+                pass
+        if not any(c["subject"] == subj and c.get("anchor") for c in cands):
+            try:
+                for r in wikidata_images(actor, ("P18",), 1)[:1]:
+                    cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "基準（出演者の写真）",
+                                  "why": f"{actor} 本人の写真（本人確認の基準）", "anchor": True, "anchor_only": True})
+            except Exception as e:
+                log(f"  [基準] {actor}：{e}")
+        if role and api:
+            try:
+                rows = role_images(api, role)
+                tried["役の記事"] = tried.get("役の記事", 0) + len(rows)
+                for r in rows:
+                    cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "役の記事",
+                                  "why": f"{role}（{actor}）：Fandom の役の記事の{'代表画像' if r.get('infobox') else '剧照'}",
+                                  "license": "", "trust_noface": bool(r.get("infobox")), "title": r.get("title", "")})
+            except Exception as e:
+                log(f"  [役の記事] {role}：{e}")
+        try:   # 作品の動画の場面（題名に作品名と役名）。役がわからないときは探さない（出演者名だとインタビューばかり）
+            rows = youtube_images(work_en, role, limit=2, scene=True) if role else []
+            tried["作品の動画の場面"] = tried.get("作品の動画の場面", 0) + len(rows)
+            for r in rows:
+                cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "作品の動画の場面",
+                              "why": f"{role or actor}（{actor}）：作品の動画の場面", "license": r.get("license", "")})
+        except Exception as e:
+            log(f"  [動画] {role or actor}：{e}")
+    # 役の姿が足りないときは、作品そのものの主な画像（Wikipedia の記事の代表画像 = ポスター・キービジュアル）で埋める。
+    # 出演者の生活の写真には戻らない（新しい作品は役の剧照がまだ少ない：哈利波特剧集）
+    # 作品の記事：まず作品の Fandom（ポスターが代表画像のことが多い）、次に Wikipedia
+    pages = ([(api, t) for t in wiki_titles(item).values()] if api else []) + \
+            [(f"https://{lang}.wikipedia.org/w/api.php", t) for lang, t in wiki_titles(item).items()]
+    for wapi, title in pages:
+        try:
+            src, page = emblem.page_image(wapi, title, any_license=True)
+            cands.append({"subject": f"{name}（作品）", "image": small_url(src), "page": page, "source": "作品の主な画像",
+                          "why": f"{name} のポスター・キービジュアル（Wikipedia の記事の代表画像）", "license": "", "work": True})
+            tried["作品の主な画像"] = tried.get("作品の主な画像", 0) + 1
+            break
+        except Exception as e:
+            log(f"  [作品の主な画像] {title}：{e}")
+    if roles != (item.get("emblem_roles") or {}):
+        with WRITE_LOCK:
+            _set_field(name, "emblem_roles", json.dumps(roles, ensure_ascii=False) + "   # 出演者 → 役（gather_roles が Fandom の出演者の記事から）")
+    return _dedupe(cands)
+
+
 def article_pages(item_name, subject=None, days=30, limit=10):
     """集めた記事（inbox）のうち、題名か要約に対象の名前がある記事の網址（新しい順）。subject=None なら全部。"""
     out, key = [], (subject or "").lower().replace(" ", "")
@@ -704,6 +911,8 @@ def article_pages(item_name, subject=None, days=30, limit=10):
 
 def gather_wide(item, log=print, tried=None):
     """② 名前を広げる：①で足りなかったとき。作品名を足して検索し、言語・枚数・日数を広げる。"""
+    if live_action(item):   # 実写の作品は役の姿だけ（出演者の名前で探すと生活の写真になる）
+        return []
     kind, lo, target, hi = rule(item)
     name = item["name"]
     tried = {} if tried is None else tried
@@ -756,6 +965,8 @@ def gather_wide(item, log=print, tried=None):
 
 def gather_pages(item, log=print, tried=None):
     """③ 公式・記事のページ：記事の本文ページと公式サイトから、og:image と大きい画像を取る（RSS の配図にない写真）。"""
+    if live_action(item):   # 実写の作品は役の姿だけ（出演者の名前で探すと生活の写真になる）
+        return []
     kind, lo, target, hi = rule(item)
     name = item["name"]
     tried = {} if tried is None else tried
@@ -856,12 +1067,15 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None):
             by.setdefault(c["subject"], []).append(i)
         out = set()
         for subj, ids in by.items():
-            test = [i for i in ids if dl[i]["source"] != "直接指定"]
+            test = [i for i in ids if dl[i]["source"] != "直接指定" and not dl[i].get("work")]   # 作品の主な画像は人の写真ではない
             with _face_lock:
                 got = [face_id.face_info(dl[i]["_img"]) for i in test]
             feats = []
             for k, (feat, info) in enumerate(got):
                 why = face_id.photo_problem(info) if info else None
+                if why == "顔なし" and dl[test[k]].get("trust_noface"):   # 役の記事の代表画像：兜・仮面で顔が見えなくても役の姿
+                    feats.append(None)
+                    continue
                 if why:
                     drop(why, dl[test[k]])
                     out.add(test[k])
@@ -875,10 +1089,11 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None):
                 with _face_lock:
                     keep = {k for k, i in enumerate(test) if emblem.face_box(dl[i]["_img"].convert("RGB"))}
             for k, i in enumerate(test):
-                if k not in keep and i not in out:
+                if k not in keep and i not in out and not (feats[k] is None and dl[i].get("trust_noface")):
                     drop("別人", dl[i])
                     out.add(i)
         dl = [c for i, c in enumerate(dl) if i not in out]
+    dl = [c for c in dl if not c.get("anchor_only")]   # 本人確認の基準（出演者の写真）は小元素には選ばない
     good, hashes = [], []
     for c in dl:
         if c["_img"] is not None:
@@ -948,8 +1163,12 @@ def commit(item, good, picks, replace=False, log=print):
                 log(f"  [ロゴ] {c['subject']}：{e}")
         elif row["shape"] == "badge" and c.get("_img") is not None:
             row["ar"] = round(c["_img"].size[1] / c["_img"].size[0], 3)   # 縦横比：カードの窓に近くなければ切らずに全体を見せる
+        if c.get("work"):   # 作品の主な画像（ポスター）：人を切り抜かず、カードのまま
+            row["work"] = True
         chosen.append(row)
     old = [] if replace else [x for x in (item.get("emblem") or []) if isinstance(x, dict)]
+    if live_action(item):   # 実写の作品：前の規則で入れた出演者の生活の写真は残さない（役の姿・作品の画像だけ）
+        old = [x for x in old if is_role_image(x)]
     seen = {(x["subject"], x["image"]) for x in old}
     merged = old + [x for x in chosen if (x["subject"], x["image"]) not in seen]
     merged = merged[:hi]
@@ -959,6 +1178,15 @@ def commit(item, good, picks, replace=False, log=print):
     if kind in ("person", "group", "character"):
         emblem.cut_all(name, not needs_face(item), [x["image"] for x in old])   # 実在の人は写真として切る。前からの小元素は取景で外さない
         emblem.fit_all(name, not needs_face(item))
+        # 切り抜きの検査で外れた画像は emblem_reject に書く（次は同じ人の次の候補を選ぶ。同じ画像で何度も失敗しない）
+        now = next((i for i in load_items() if i["name"] == name), {})
+        kept = {u for x in now.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source"))}
+        failed = [x["image"] for x in chosen if x["image"] not in kept and x.get("source", x["image"]) not in kept]
+        if failed:
+            rej = list(dict.fromkeys(list(now.get("emblem_reject") or []) + failed))
+            with WRITE_LOCK:
+                _set_field(name, "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+            log(f"  [外した] 切り抜きの検査で外れた {len(failed)} 枚を emblem_reject に（次は別の候補）")
     return merged
 
 
@@ -1003,7 +1231,7 @@ def source_chain(item):
 
 
 # 自動で選ぶときの、取り方の優先順。ブランドは公式ロゴ（Wikidata P154・公式サイト）、主題は Wikidata・Commons・Twemoji を先に
-PICK_ORDER = ["直接指定", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
+PICK_ORDER = ["直接指定", "役の記事", "作品の動画の場面", "作品の主な画像", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
     "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
     "topic": ["直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
