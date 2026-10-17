@@ -42,11 +42,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 .case .lead{margin:0;font:500 13px/1.7 var(--font-sans);color:var(--muted)}
 .case ul{margin:0;padding-left:1.2em;font:500 13px/1.75 var(--font-sans)}
 .case ul b{font-weight:800}
-.frame{height:760px;display:flex;flex-direction:column;border-left:6px solid var(--alert);padding:14px 0 10px 14px;background:var(--paper);
+.frame{display:flex;flex-direction:column;border-left:6px solid var(--alert);padding:14px 0 10px 14px;background:var(--paper);
  box-shadow:inset 0 0 0 1px var(--hair);max-width:300px}
 
 /* ---------- 目次（本番と同じ部品） ---------- */
-.rail{flex:1;min-height:0;overflow:hidden;margin-right:8px}
+.rail{flex:1;min-height:0;margin-right:8px}
 .nsec{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 8px;height:42px;padding:8px 4px 0 0}
 .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:var(--muted)}
 .nsec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
@@ -118,7 +118,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 .mob .tg{padding:4px 12px;font-size:13px;opacity:.55}
 .mob .tg.on{opacity:1;box-shadow:3px 3px 0 var(--gold)}
 .case h3{margin:6px 0 0;font:800 13px var(--font-sans);color:var(--muted)}
-@media (max-width:600px){.board{padding:16px;gap:36px}.ctl{padding:12px 16px}.frame{height:700px}}
+@media (max-width:600px){.board{padding:16px;gap:36px}.ctl{padding:12px 16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -128,7 +128,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   <div class="scrub"><button type="button" id="prev" aria-label="前の作品">◀</button><input type="range" id="pos" min="0" value="0" aria-label="読んでいる作品"><button type="button" id="next" aria-label="次の作品">▶</button><span id="post"></span></div>
   <p class="now" id="now"></p>
   <p class="note">映像の板块に「漫威电影」（親）と、その中の作品「スパイダーマン」「アベンジャーズ」（子）が入った場合の目次です。わざと難しい例として、同じ漫威でもドラマの「デアデビル」（子だが小分類は ドラマ）も入れています。
-    つまみで読む作品を動かすと、両案の目次がどう変わるか見られます。items.yaml では子に <code>parent: 漫威电影</code> を書く想定。</p>
+    つまみで読む作品を動かすと、両案の目次がどう変わるか見られます。この見本は高さの制限なしで全部並べています（画面に入りきらないときの隠し方は本番の v6 のまま）。items.yaml では子に <code>parent: 漫威电影</code> を書く想定。</p>
 </header>
 <div class="board">
   <section class="case A">
@@ -160,11 +160,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 (() => {
   // ---------- 見本の作品（版面の順） ----------
   const SECS = [
-    {id: 'game', ja: 'ゲーム', c: '#2F5BD3', n: 7, nn: 7},
+    {id: 'game', ja: 'ゲーム', c: '#2F5BD3', n: 7, nn: 7, items: ['Astrae Oratio', 'BLEACH Mirrors High', 'GTA 6', 'MMORPG 新作', 'あつ森', '绝区零', 'dota2']},
     {id: 'screen', ja: '映像', c: '#9B3FB5'},
-    {id: 'live', ja: 'ライブ', c: '#BB265A', n: 4, nn: 4},
-    {id: 'sports', ja: 'スポーツ', c: '#156A48', n: 2, nn: 2},
-    {id: 'goods', ja: 'グッズ', c: '#985315', n: 5, nn: 5},
+    {id: 'live', ja: 'ライブ', c: '#BB265A', n: 4, nn: 4, items: ['ILLIT', 'Vaundy', '周杰伦', 'A2O LITE']},
+    {id: 'sports', ja: 'スポーツ', c: '#156A48', n: 2, nn: 2, items: ['滑雪', '日本顶级网球赛事']},
+    {id: 'goods', ja: 'グッズ', c: '#985315', n: 5, nn: 5, items: ['星巴克马克杯', '猫用品', '三星手机', 'gelato pique', 'ぐでたま']},
   ];
   const F = {marvel: {name: '漫威电影', label: 'MARVEL', c: 'var(--marvel)', icon: '../icons/marvel.webp'}};
   // sub：自分の小分類。parent：親の作品（親の小分類に従うかどうかは案ごとに違う）
@@ -192,14 +192,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   const head = (s, cur) => `<div class="nsec${cur ? ' cur' : ''}" style="--sc:${s.c}"><span class="tg"><span>${s.ja}</span></span>`
     + `<span class="cnt">新着 ${s.nn ?? 9}／${s.n ?? 9}</span><span class="meter"><i style="width:${cur ? 100 : 80}%"></i></span></div>`;
   const chips = (curSub) => `<div class="nsubs">` + SUBS.map(s => `<a class="${s === curSub ? 'on' : ''}" style="--sc:${SC}">${s}<small>${W.filter(w => w.sub === s).length}</small></a>`).join('') + `</div>`;
-  const rest = (from) => SECS.slice(from).map(s => `<div class="closed">${head(s)}</div>`).join('');
+  // ほかの板块も作品を全部並べる（何も隠さない。画面に入りきらないときの隠し方は本番の v6 のまま）
+  const others = (s, before) => `<div class="closed">${head(s)}<div class="nbody">` + s.items.map(n =>
+    `<a class="pill${before ? ' past' : ''}" style="--sc:${s.c}"><span class="nm">${e(n)}</span></a>`).join('') + `</div></div>`;
+  const rest = (from) => SECS.slice(from).map(s => others(s, false)).join('');
 
   // ---------- 案 A：子は親の小分類（映画）の、親の駅の下の枝。読んでいないときはたたむ ----------
   function railA() {
     const cw = W[cur], parent = W.find(w => w.isParent);
     const kids = W.filter(w => w.fr === 'marvel' && !w.isParent);
     const subOf = w => w.fr ? parent.sub : w.sub;   // 子の小分類は親に従う
-    let h = `<div class="closed">${head(SECS[0])}</div>` + head(SECS[1], true) + `<div class="nbody">` + chips(subOf(cw));
+    let h = others(SECS[0], true) + head(SECS[1], true) + `<div class="nbody">` + chips(subOf(cw));
     for (const sub of SUBS) {
       h += `<div class="nlab" style="--sc:${SC}">${sub}</div>`;
       for (const w of W.filter(w => !w.fr || w.isParent)) {
@@ -216,7 +219,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   // ---------- 案 B：小分類ごとに、フランチャイズの見出し（ロゴの札）を置き、その下に子 ----------
   function railB() {
     const cw = W[cur];
-    let h = `<div class="closed">${head(SECS[0])}</div>` + head(SECS[1], true) + `<div class="nbody">` + chips(cw.sub);
+    let h = others(SECS[0], true) + head(SECS[1], true) + `<div class="nbody">` + chips(cw.sub);
     for (const sub of SUBS) {
       h += `<div class="nlab" style="--sc:${SC}">${sub}</div>`;
       const inSub = W.filter(w => w.sub === sub);
@@ -244,8 +247,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   function mob(kind) {
     const cw = W[cur];
     const tabs = `<div class="row">` + ['トップ', ...SECS.map(s => s.ja)].map(t => `<span class="tg${t === '映像' ? ' on' : ''}" style="--sc:${t === 'トップ' ? 'var(--ink)' : (SECS.find(s => s.ja === t) || {}).c}"><span>${t}</span></span>`).join('') + `</div>`;
-    const sub = kind === 'A' && cw.fr ? '映画' : cw.sub;
-    const list = W.filter(w => (kind === 'A' && w.fr ? '映画' : w.sub) === sub);
+    // 下の段は本番と同じく「いまの板块の作品を全部」（小分類で絞らない・隠さない）。並びは目次と同じ
+    const order = kind === 'A' ? ['映画', 'ドラマ', 'アニメ'].flatMap(sb => W.filter(w => (w.fr ? '映画' : w.sub) === sb))
+                               : ['映画', 'ドラマ', 'アニメ'].flatMap(sb => W.filter(w => w.sub === sb));
+    const list = order;
     return tabs + `<div class="row">` + list.map(w => `<span class="chip${w.i === cur ? ' on' : ''}">${w.fr && !w.isParent ? '<small>MARVEL›</small>' : ''}${e(w.short || w.name)}</span>`).join('') + `</div>`;
   }
 
