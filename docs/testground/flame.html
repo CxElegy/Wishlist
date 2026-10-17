@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>炎の試作</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* テストグラウンド：目次のロゴの炎。SVG の乱流（feTurbulence）で縁を揺らし、形を雑音の中で上へ流して「燃えている」動きにする。
+   話題度（0〜100）で 大きさ・流れる速さ・揺らぎの強さ・光・火の粉 が連続して変わる（読んでいる間ずっとその強さで燃える）。
+   トークンは scripts/render.py の :root と同じ */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--skew:-8deg}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans)}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:16px 24px;background:var(--ink);color:var(--card)}
+header h1{margin:0;font:900 16px var(--font-sans)}
+header h1 small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header label{display:flex;align-items:center;gap:10px;font:700 13px var(--font-sans);flex:1;min-width:260px}
+header input{flex:1;accent-color:var(--flame)}
+header output{font:28px var(--font-num);color:var(--gold);min-width:2.2em;text-align:right}
+header .note{flex-basis:100%;margin:0;font-size:12px;opacity:.75}
+main{max-width:1100px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:28px}
+.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.cell{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 10px;background:var(--card);box-shadow:4px 4px 0 var(--ink)}
+.cell.dark{background:var(--ink);color:var(--card)}
+.cell small{font:700 11px var(--font-mono);letter-spacing:.1em;opacity:.7}
+.cell b{font:22px var(--font-num)}
+h2{margin:0;font:900 15px var(--font-sans)}
+/* 目次の上のロゴの見本 */
+.navdemo{width:268px;padding:12px 0 12px 14px;border-left:6px solid var(--alert);background:var(--paper);box-shadow:inset 0 0 0 1px rgba(26,28,34,.12)}
+.logo{display:flex;align-items:center;gap:10px;margin-right:8px;color:var(--ink);text-decoration:none}
+.wm{display:flex;flex-direction:column;line-height:1;transform:rotate(-3deg)}
+.wm b{font:30px/.95 var(--font-num);letter-spacing:.04em;font-style:italic;background:var(--ink);color:var(--card);padding:2px 10px 1px 8px;transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--alert)}
+.wm small{margin-top:5px;font:800 10px var(--font-sans);letter-spacing:.18em;color:rgba(26,28,34,.7)}
+.hm{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;line-height:1}
+.hm b{font:26px/1 var(--font-num);color:var(--alert)}
+.hm small{margin-top:3px;font:900 10px var(--font-sans);letter-spacing:.1em;color:rgba(26,28,34,.7)}
+
+/* ---------- 炎（本番の .nav .flame と同じ） ---------- */
+.flame{position:relative;flex:none;width:44px;height:58px;--h:.3}
+.flame svg{position:absolute;left:50%;bottom:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;
+ transform:translateX(-50%) scale(calc(.62 + var(--h) * .55));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+/* 後ろの光：話題度が高いほど広く濃く、ゆっくり息をする */
+.flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(30px + var(--h) * 46px);height:calc(30px + var(--h) * 46px);margin-left:calc((30px + var(--h) * 46px) / -2);
+ border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--flame) 70%,transparent),transparent);
+ opacity:calc(.15 + var(--h) * .6);transition:opacity .5s,width .5s,height .5s,margin .5s;animation:breathe calc(2.6s - var(--h) * 1.4s) ease-in-out infinite alternate}
+@keyframes breathe{to{transform:scale(1.12);filter:brightness(1.15)}}
+/* 火の粉：話題度が高いほど数が多く・速く・高く（JS が数を決める） */
+.flame .em{position:absolute;left:50%;bottom:22%;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:var(--gold);
+ box-shadow:0 0 4px var(--flame);opacity:0;will-change:transform,opacity}
+@media (prefers-reduced-motion:reduce){.flame *{animation:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1><small>TESTGROUND</small>炎の試作（話題度で燃え方が変わる）</h1>
+  <label>話題度 <input type="range" id="h" min="0" max="100" value="67"><output id="hv">67</output></label>
+  <p class="note">つまみを動かすと、上の大きな見本と目次の見本の炎がその強さで燃え続けます（切り替えた瞬間に跳ねるのではなく、0.5 秒かけて強くなりそのまま燃える）。下は 20 / 45 / 67 / 92 の並べて比べる見本。</p>
+</header>
+<main>
+  <div class="row">
+    <div class="cell"><div class="flame big" data-heat="67" style="width:110px;height:150px"></div><small>大きく表示（つまみと連動）</small></div>
+    <div class="cell dark"><div class="flame big" data-heat="67" style="width:110px;height:150px"></div><small>暗い背景</small></div>
+    <div class="cell"><div class="navdemo"><a class="logo"><div class="flame" data-heat="67"></div><span class="wm"><b>TBD</b><small>ウォッチリスト通信</small></span>
+      <span class="hm"><b id="nv">67</b><small id="nl">盛り上がり</small></span></a></div><small>目次の上の実寸</small></div>
+  </div>
+  <h2>並べて比べる</h2>
+  <div class="row" id="fixed"></div>
+</main>
+<script>
+(() => {
+  // ---------- 炎を作る（本番の render.FLAME_SVG / NAV_JS と同じ仕組み） ----------
+  let uid = 0;
+  const LV = [[85, '沸騰'], [60, '盛り上がり'], [30, '話題'], [1, '静か']];
+  // 涙形（先が尖る）。底 (50,132) を基準に、層ごとに縮めて重ねる
+  const TEAR = 'M50 6C55 30 66 44 76 60C84 73 86 86 84 98C81 118 67 132 50 132C33 132 19 118 16 98C14 86 16 73 24 60C34 44 45 30 50 6Z';
+  const TONGUE = 'M50 40C53 60 62 72 66 88C70 104 62 118 50 120C38 118 30 104 34 88C38 72 47 60 50 40Z';
+  function makeFlame(el) {
+    const id = 'fl' + (++uid);
+    const grad = (n, stops) => `<linearGradient id="${id}${n}" x1="0" y1="1" x2="0" y2="0">` +
+      stops.map(([o, c, a]) => `<stop offset="${o}" style="stop-color:var(${c});stop-opacity:${a ?? 1}"/>`).join('') + '</linearGradient>';
+    el.innerHTML = `<i class="glow"></i><svg viewBox="0 0 100 140" aria-hidden="true">
+      <defs>
+        <filter id="${id}f" x="-30%" y="-30%" width="160%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03 0.07" numOctaves="1" seed="${uid * 13}" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation=".8"/>
+        </filter>
+        ${grad('o', [[0, '--alert'], [.55, '--alert', .95], [1, '--alert', 0]])}
+        ${grad('m', [[0, '--flame'], [.6, '--flame', .9], [1, '--flame', 0]])}
+        ${grad('i', [[0, '--gold'], [.65, '--gold', .85], [1, '--gold', 0]])}
+        ${grad('c', [[0, '--card'], [.6, '--card', .7], [1, '--card', 0]])}
+      </defs>
+      <g filter="url(#${id}f)">
+        <path class="L tl" d="${TONGUE}" fill="url(#${id}m)"/>
+        <path class="L tr" d="${TONGUE}" fill="url(#${id}m)"/>
+        <path class="L o" d="${TEAR}" fill="url(#${id}o)"/>
+        <path class="L m" d="${TEAR}" fill="url(#${id}m)"/>
+        <path class="L i" d="${TEAR}" fill="url(#${id}i)"/>
+        <path class="L c" d="${TEAR}" fill="url(#${id}c)"/>
+      </g></svg>` + Array.from({length: 10}, () => '<i class="em"></i>').join('');
+    // 層：基本の大きさ（底からの縮尺）・横の位置・傾き・揺れの大きさ・速さ・位相（全部ばらばら＝不規則）
+    const spec = {tl: [.5, -17, -16, 1.4, 1.25], tr: [.46, 17, 15, 1.4, 1.1], o: [1, 0, 0, 1, .9], m: [.8, 0, 0, 1.1, 1.05],
+                  i: [.56, 0, 0, 1.2, 1.3], c: [.3, 0, 0, 1, 1.5]};
+    const layers = [...el.querySelectorAll('.L')].map(node => {
+      const k = [...node.classList].find(c => spec[c]); const [sz, x, rot, amp, sp] = spec[k];
+      return {node, k, sz, x, rot, amp, sp, ph: Math.random() * 100};
+    });
+    const st = {el, layers, turb: el.querySelector('feTurbulence'), disp: el.querySelector('feDisplacementMap'),
+                ems: [...el.querySelectorAll('.em')].map(e => ({e, life: Math.random(), dur: 1, dx: 0, sway: 0, ph: 0})),
+                t: Math.random() * 50, h: .3, target: .3, seed: Math.random() * 100};
+    set(st, +el.dataset.heat || 0, true);
+    return st;
+  }
+  // 話題度を設定（0.5 秒ほどかけてその強さへ。読んでいる間ずっとその強さで燃える）
+  function set(st, v, now) {
+    st.target = Math.max(0, Math.min(1, v / 100));
+    if (now) st.h = st.target;
+    st.el.style.setProperty('--h', st.target.toFixed(2));
+  }
+  // 不規則な揺れ：周期が割り切れない 4 つの波を足す（同じ動きが繰り返して見えない）
+  const wob = (t, p) => Math.sin(t * 1.13 + p) * .45 + Math.sin(t * 2.71 + p * 1.7) * .3 + Math.sin(t * 5.87 + p * 2.3) * .17 + Math.sin(t * 11.3 + p * .7) * .08;
+  const flames = [...document.querySelectorAll('.flame')].map(makeFlame);
+  const fixed = document.getElementById('fixed');
+  for (const v of [20, 45, 67, 92]) {
+    const c = document.createElement('div'); c.className = 'cell';
+    c.innerHTML = `<div class="flame" style="width:66px;height:90px"></div><b>${v}</b><small>${(LV.find(l => v >= l[0]) || [0, ''])[1]}</small>`;
+    fixed.appendChild(c);
+    const f = c.querySelector('.flame'); f.dataset.heat = v; flames.push(makeFlame(f));
+  }
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let last = performance.now();
+  function tick(now) {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    for (const st of flames) {
+      st.h += (st.target - st.h) * Math.min(1, dt * 4);
+      const h = st.h, speed = .9 + h * 2.2;                 // 揺れの速さ：静か 0.9 → 沸騰 3.1
+      st.t += dt * speed;
+      const t = st.t, amp = .35 + h * .9;                    // 揺れの大きさ
+      for (const L of st.layers) {
+        const side = L.k === 'tl' || L.k === 'tr';
+        const on = side ? Math.max(0, (h - .35) / .5) : 1;   // 横の舌は話題度 35 を超えると出てくる
+        const tt = t * L.sp + L.ph;
+        const sy = L.sz * (1 + (wob(tt, 1) * .16 + Math.max(0, wob(tt * 1.7, 4)) * .14) * amp * L.amp) * (side ? .6 + on * .5 : 1);
+        const sx = L.sz * (1 - wob(tt, 1) * .06 * amp);
+        const skew = wob(tt * .8, 7) * 9 * amp * L.amp;
+        const rot = L.rot * on + wob(tt * .6, 3) * 3 * amp;
+        const x = L.x * (side ? .8 + on * .4 : 1) + wob(tt * .9, 9) * 1.6 * amp;
+        L.node.setAttribute('transform', `translate(${(50 + x).toFixed(2)} 132) rotate(${rot.toFixed(2)}) skewX(${skew.toFixed(2)}) scale(${sx.toFixed(3)} ${sy.toFixed(3)}) translate(-50 -132)`);
+        if (side) L.node.style.opacity = on.toFixed(2);
+      }
+      // 縁の揺らぎ：雑音の細かさをゆっくり変え、強さは話題度で
+      st.turb.setAttribute('baseFrequency', `${(0.03 + wob(t * .3, 2) * .006).toFixed(4)} ${(0.07 + wob(t * .4, 5) * .015).toFixed(4)}`);
+      st.disp.setAttribute('scale', (6 + h * 14 + wob(t, 8) * 2).toFixed(1));
+      // 火の粉：一粒ずつ違う道筋・寿命。話題度が高いほど数が多く・速い
+      const n = Math.round(h * st.ems.length);
+      st.ems.forEach((m, k) => {
+        if (k >= n) { m.e.style.opacity = 0; return; }
+        m.life += dt / m.dur;
+        if (m.life >= 1) { m.life = 0; m.dur = .9 + Math.random() * .9 - h * .4; m.dx = (Math.random() - .5) * 2; m.sway = Math.random() * 6; m.ph = Math.random() * 6; }
+        const L = m.life, y = -(8 + L * (28 + h * 46)), x = m.dx * L * 12 + Math.sin(L * 9 + m.ph) * m.sway;
+        m.e.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${(1 - L * .7).toFixed(2)})`;
+        m.e.style.opacity = (L < .1 ? L * 10 : 1 - (L - .1) / .9).toFixed(2);
+      });
+    }
+    if (!reduce) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  const h = document.getElementById('h');
+  h.addEventListener('input', () => {
+    const v = +h.value;
+    document.getElementById('hv').textContent = v;
+    document.getElementById('nv').textContent = v;
+    document.getElementById('nl').textContent = (LV.find(l => v >= l[0]) || [0, '—'])[1];
+    flames.slice(0, 3).forEach(st => set(st, v));
+  });
+})();
+</script>
+</body>
+</html>
