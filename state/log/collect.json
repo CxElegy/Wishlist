@@ -333,5 +333,23 @@
 "disk_total": 154877411328,
 "peak": 94871552
 }
+},
+{
+"at": "2026-10-17T08:08:20+00:00",
+"text": "新着 10 件（7 版面）：The Mandalorian 2、周杰伦 2、A2O LITE 2、GTA 6 1、日本顶级网球赛事 1",
+"level": "ok",
+"count": 10,
+"secs": 278,
+"workers": 6,
+"res": {
+"cpu": 4,
+"load": 0.19,
+"mem_total": 16766414848,
+"mem_free": 15697195008,
+"disk_used": 63244931072,
+"disk_free": 91632480256,
+"disk_total": 154877411328,
+"peak": 94593024
+}
 }
 ]
