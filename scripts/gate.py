@@ -85,11 +85,11 @@ def photo_work(inbox=INBOX):
 
 
 def emblem_work():
-    """小元素：目標に届いていない版面で、今やってよいもの（24 時間以内の失敗は除く）→ 名前のリスト。AI は要らない。"""
+    """小元素：目標に届いていない版面で、今やってよいもの（6 時間以内の失敗で材料が同じものは除く）→ 名前のリスト。AI は要らない。"""
     import emblem_fill
     items = emblem_fill.load_items()
     prog = emblem_fill.sync_progress(emblem_fill.load_progress(), items)
-    return [i["name"] for i in emblem_fill.due(prog, items, _now().isoformat(timespec="seconds"))]   # EMBLEM_RETRY_NOW=1 なら 24 時間を待たない
+    return [i["name"] for i in emblem_fill.due(prog, items, _now().isoformat(timespec="seconds"))]   # EMBLEM_RETRY_NOW=1 なら 6 時間を待たない
 
 
 def check(tz="Asia/Shanghai", path=None):
@@ -99,7 +99,7 @@ def check(tz="Asia/Shanghai", path=None):
     emblem = emblem_work()
     jobs = {
         "emblem": {"need": bool(emblem), "claude": False, "items": emblem[:20],
-                   "why": f"足りない {len(emblem)} 版面（Actions で Python が埋める）" if emblem else "全部そろっているか、24 時間以内に失敗したものだけ"},
+                   "why": f"足りない {len(emblem)} 版面（Actions で Python が埋める）" if emblem else "全部そろっているか、6 時間以内に失敗したもの（材料も同じ）だけ"},
         "edit": {"need": bool(edit), "claude": True, "items": sorted(edit),
                  "why": f"未編集の記事 {sum(edit.values())} 件（{len(edit)} 版面）" if edit else "今日の新着はすべて編集済み"},
         "photos": {"need": bool(photos), "claude": True, "items": photos,

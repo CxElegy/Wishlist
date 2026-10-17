@@ -1006,7 +1006,7 @@ def sync_progress(prog, items):
 
 def due(prog, items, now):
     """後台で処理する順：目標に届いていないものを、足りない枚数の多い順（同じなら前回の処理が古い順）。
-    24 時間以内に失敗したものは飛ばす。"""
+    RETRY_HOURS（6 時間）以内に失敗して材料も変わっていないものは飛ばす。"""
     rows = []
     for item in items:
         st = status(item)

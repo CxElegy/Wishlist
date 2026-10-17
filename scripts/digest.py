@@ -1952,7 +1952,7 @@ def backend_cells(items, rows, latest, run):
         elif st == "review":
             cells["emblem"] = ("review", f"{count} · 一覧から選ぶ")
         elif st == "failed":
-            cells["emblem"] = ("failed", f"{count} · 24 時間後に再挑戦")
+            cells["emblem"] = ("failed", f"{count} · 新しい材料が来たらすぐ・来なくても {emblem_fill.RETRY_HOURS} 時間後に再挑戦")
         else:
             pos = queue.index(name) + 1 if name in queue else None
             cells["emblem"] = ("wait", f"{count} · 順番 {pos} 番目" if pos else count)
