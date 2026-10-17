@@ -510,7 +510,7 @@ html{scroll-behavior:smooth}
 .nav .ic{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;overflow:hidden;
  background:var(--img,none) center/cover no-repeat,var(--sc);color:#FFF;font:900 10px/1 var(--font-sans);font-style:normal}
 .nav .ic.has{color:transparent;background-color:var(--card)}
-.nav .si{flex:none;width:16px;height:16px}
+.nav .si{flex:none;width:18px;height:18px}
 .nav .x{display:none!important}   /* v6 で隠した行（NAV_JS が付け外し） */
 .nav .bar,.nav .mtabs{display:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav *{transition:none!important}}
@@ -2166,43 +2166,46 @@ NAV_STYLES = {
    見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
 .nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--alert);color:var(--ink)}
 .nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
-.nav .nhead .pill{flex:none}
+.nav .nhead .pill{flex:none;height:30px;padding-left:30px;font-size:13px}
 .nav .nhead .pill::before{display:none}   /* トップ・気になるかも？は横 1 列（線路にはつなげない） */
 .nav .nhead .pill.on .nm{flex-direction:row;align-items:baseline;gap:6px}
 .nav .rail{flex:1;min-height:0;position:relative;overflow:hidden;margin-right:8px;scrollbar-width:thin}
-.nav .pill{height:28px;padding:0 6px 0 34px;color:rgba(26,28,34,.78);font:700 13px/1.35 var(--font-sans)}
-.nav .nbody .pill{height:var(--ih,28px);transition:height .25s}
+.nav .pill{height:34px;padding:0 6px 0 36px;color:rgba(26,28,34,.86);font:800 15px/1.35 var(--font-sans)}
+.nav .nbody .pill{height:var(--ih,34px);transition:height .25s}
 .nav .pill .no{display:none}
 .nav .pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.nav .pill .cnt{display:none;font:700 10px var(--font-mono);letter-spacing:.08em;color:rgba(26,28,34,.62)}
+.nav .pill .cnt{display:none;font:700 11px var(--font-mono);letter-spacing:.06em;color:rgba(26,28,34,.62)}
 .nav .rail.roomy .pill .nm{display:flex;flex-direction:column;gap:1px}
 .nav .rail.roomy .pill .cnt{display:block}
-.nav .pill .new{flex:none;font:700 10px var(--font-mono);color:var(--alert)}
-.nav .pill::before{content:"";position:absolute;inset:0 auto 0 14px;width:3px;z-index:-1;background:rgba(26,28,34,.13)}
+.nav .pill .new{flex:none;font:700 11px var(--font-mono);color:var(--alert)}
+.nav .pill::before{content:"";position:absolute;inset:0 auto 0 14.5px;width:3px;z-index:-1;background:rgba(26,28,34,.13)}
 .nav .pill:hover{color:var(--ink)}
 .nav .pill.past::before{background:var(--sc)}
-.nav .pill.on::before{background:linear-gradient(var(--sc) 50%,rgba(26,28,34,.13) 0)}
-.nav .pill .ic{position:absolute;left:6px;top:50%;width:19px;height:19px;margin-top:-9.5px;border:2px solid var(--paper);
- box-shadow:0 0 0 1px rgba(26,28,34,.3);
+/* 読んでいる作品：原版（P5）の黒い斜めの箱＋赤い硬い影。アイコンは箱の左端で大きく */
+.nav .pill.on::before{inset:4px -2px 4px 22px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
+.nav .pill .ic{position:absolute;left:5px;top:50%;width:21px;height:21px;margin-top:-10.5px;border:2px solid var(--paper);
+ box-shadow:0 0 0 1px rgba(26,28,34,.22);
  transition:width .35s cubic-bezier(.3,1.5,.5,1),height .35s cubic-bezier(.3,1.5,.5,1),margin .35s cubic-bezier(.3,1.5,.5,1),left .35s cubic-bezier(.3,1.5,.5,1),box-shadow .2s}
-.nav .pill.past .ic{box-shadow:0 0 0 2px var(--sc)}
-.nav .pill.on{color:var(--ink);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:50px}
-.nav .pill.on .ic{width:40px;height:40px;margin-top:-20px;left:-4px;border:3px solid var(--sc);font-size:17px;
- box-shadow:0 0 0 5px color-mix(in srgb,var(--sc) 20%,transparent),0 6px 14px rgba(26,28,34,.25)}
+.nav .pill.past .ic{box-shadow:0 0 0 1.5px var(--sc)}
+.nav .pill.on{color:var(--card);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:50px}
+.nav .pill.on .ic{width:40px;height:40px;margin-top:-20px;left:-4px;border:3px solid var(--sc);font-size:16px;
+ box-shadow:0 0 0 3px var(--paper),0 4px 10px rgba(26,28,34,.25)}
 .nav .pill.on .nm{display:flex;flex-direction:column;gap:1px}
-.nav .pill.on .cnt{display:block;color:var(--sc)}
+.nav .pill.on .cnt{display:block;color:var(--gold)}
+.nav .pill.on .new{color:var(--gold)}
 .nav .nhead .pill.on{height:48px}
-.nav .nbody .pill.on{height:calc(var(--ih,28px) + 22px)}
+.nav .nbody .pill.on{height:calc(var(--ih,34px) + 18px)}
 /* 板块の枠：位置と高さは NAV_JS が決める（動くときはなめらかに） */
 .nav .nslot{position:absolute;left:0;right:0;overflow:hidden;transition:top .34s cubic-bezier(.2,.8,.2,1),height .34s cubic-bezier(.2,.8,.2,1)}
 .nav .nslot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--hair)}
-.nav .nsec{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:4px 8px;height:38px;padding:6px 4px 0 0;text-decoration:none;color:var(--ink)}
+.nav .nsec{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:4px 8px;height:42px;padding:8px 4px 0 0;text-decoration:none;color:var(--ink)}
 .nav .nsec .tg{transform-origin:left center;transition:transform .34s cubic-bezier(.2,.8,.2,1),box-shadow .34s}
+.nav .nsec .tg{font-size:14px;padding:1px 12px}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
-.nav .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 11px var(--font-mono);color:rgba(26,28,34,.62)}
+.nav .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:rgba(26,28,34,.62)}
 .nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
 .nav .nsec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
-.nav .nbody{position:absolute;left:0;right:0;top:44px}
+.nav .nbody{position:absolute;left:0;right:0;top:52px}
 /* 小分類の札（横並び）：いまの板块に小分類が 2 つ以上あれば必ず出す。押すとその小分類の最初の作品へ */
 .nav .nsubs{display:flex;flex-wrap:wrap;gap:4px 6px;margin:0 0 6px 2px}
 .nav .nsubs a{display:flex;align-items:center;gap:5px;height:22px;padding:0 7px;border:1px solid var(--hair);color:rgba(26,28,34,.7);
@@ -2211,7 +2214,7 @@ NAV_STYLES = {
 .nav .nsubs a:hover{color:var(--ink);border-color:var(--ink)}
 .nav .nsubs a.on{background:var(--sc);border-color:var(--sc);color:#FFF}
 .nav .nlab{height:20px;display:flex;align-items:flex-end;padding:0 0 2px 2px;font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--sc)}
-.nav .nmore{display:flex;align-items:center;height:24px;padding:0 8px 0 34px;font:700 12px var(--font-sans);color:var(--sc);text-decoration:none}
+.nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 36px;font:800 13px var(--font-sans);color:var(--sc);text-decoration:none}
 .nav .nmore:hover{text-decoration:underline}
 .nav .navwish{margin:8px 8px 0 0}
 """,
@@ -2360,9 +2363,10 @@ NAV_JS = """
   const slotOf = new Map();
   S.forEach((s, i) => s.pills.forEach(p => slotOf.set(p, i)));
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, wide = matchMedia('(min-width: 1001px)');
-  // 隠し始める作品の数（items.yaml の settings.nav_hide、既定 24）。auto なら画面の高さで決める（行を詰めて全部入るうちは隠さない）
+  // 隠し始める作品の数（items.yaml の settings.nav_hide、既定 24）。auto なら画面の高さだけで決める。
+  // どちらでも、行を 30px まで詰めても入らないときは隠す（窮屈にもスクロールにもしない）
   const HIDE = nav.dataset.hide === 'auto' ? 0 : (+nav.dataset.hide || 24), TOTAL = S.reduce((a, s) => a + s.pills.length, 0);
-  const SEC_H = 44, ITEM_H = 28, R_MIN = 22, MORE_H = 24, MIN_H = 40, EXTRA = 22, LAB_H = 20;   // 行の高さ（NAV_STYLES と同じ）
+  const SEC_H = 52, ITEM_H = 34, R_MIN = 30, MORE_H = 26, MIN_H = 46, EXTRA = 18, LAB_H = 20;   // 行の高さ（NAV_STYLES と同じ）
   const hot = p => +p.dataset.hot || 0, num = p => +p.dataset.n || 0, subOf = p => p.dataset.sub || '';
   const topN = (l, n) => l.slice().sort((a, b) => hot(b) - hot(a) || num(a) - num(b)).slice(0, n);
   let curIdx = -2, curProg = -1, ticking = false, lk = null, lsub = null;
@@ -2383,7 +2387,7 @@ NAV_JS = """
     return covering;
   }
 
-  // 宽屏：何も隠さない → 行を 22px まで詰める → ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」
+  // 宽屏：何も隠さない → 行を 30px まで詰める（それ以上は詰めない：窮屈になる）→ ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」
   function layout(force) {
     const on = pills[curIdx], k = on && slotOf.has(on) ? slotOf.get(on) : -1, sub = on ? subOf(on) : '';
     if (!force && k === lk && sub === lsub && !(on && on.classList.contains('x'))) return;
@@ -2399,12 +2403,10 @@ NAV_JS = """
     const sum = (p, r) => p.reduce((a, x, i) => a + hOf(x, i, r), 0);
     const fitR = p => { for (let r = ITEM_H; r >= R_MIN; r--) if (sum(p, r) <= H) return r; return 0; };
     const full = i => ({items: L[i], more: 0, labs: i === k && subsK, chips: i === k && subsK});
-    let plan = L.map((_, i) => full(i)), r = fitR(plan), forced = false, lvl = 0;
+    let plan = L.map((_, i) => full(i)), r = fitR(plan), lvl = 0;
     if (!r && subsK) { const p = plan.map((x, i) => i === k ? {...x, labs: false} : x); r = fitR(p); if (r) plan = p; }
-    if (HIDE) {   // 件数で決めるとき：その件数までは隠さない（入らなければ目次をスクロール）、超えたら隠す
-      if (TOTAL <= HIDE) { if (!r) { r = R_MIN; forced = true; plan = plan.map((x, i) => i === k ? {...x, labs: false} : x); } }
-      else r = 0;
-    }
+    // 件数で決めるとき：その件数を超えたら隠す。件数以内でも、行を詰めても入らない（窮屈になる）なら隠す（＝閾値を自動で下げる）
+    if (HIDE && TOTAL > HIDE) r = 0;
     if (!r) {
       lvl = -1;
       const maxLen = Math.max(0, ...L.map((l, i) => i === k ? 0 : l.length));
@@ -2441,7 +2443,6 @@ NAV_JS = """
     const spare = Math.max(0, H - plan.reduce((a, x, i) => a + hOf2(x, i), 0)) / n;
     rail.style.setProperty('--ih', ih + 'px');
     rail.classList.toggle('roomy', ih >= 48);
-    rail.style.overflowY = forced ? 'auto' : '';
     let y = 0;
     S.forEach((s, i) => {
       const x = plan[i], h = hOf2(x, i) + spare, show = new Set(x ? x.items : []);
@@ -2454,7 +2455,6 @@ NAV_JS = """
       s.more.classList.toggle('x', !(x && x.more));
       if (x && x.more) s.more.textContent = `ほか ${x.more} 件 →`;
     });
-    if (forced && on) rail.scrollTop += on.getBoundingClientRect().top - rail.getBoundingClientRect().top - rail.clientHeight / 2;
   }
 
   // 窄屏：上排の板块のうち読んでいる板块を光らせ、下排にその板块の作品を全部並べる（隠さない）
