@@ -106,8 +106,8 @@
   Bing 新闻缩略图（`bing.com/th?…&w=1200`）原图小时会补白边，`_img_url` 去掉 w/h 用原尺寸。
   **配图清晰度・显示不出来（2026-10-17 定，全是规则、不用 AI）**：`images.pick` 原文的预览图长边 < 1000 时先换同一页更大的版（JSON-LD 的 1920×1080）；
   MSN 的视频（`vi-`）・图集读接口的 `thumbnail` / `slides`；新浪 sinaimg 这类防盗链（不带 Referer 就 403）的原文图，带原文网页作 Referer 再试，来源名加「（本站保存）」。
-  出刊时 `hdimg.py` 用 OpenCV 处理：大位置（各作品最新 2 条・头条）不到 1280px 的 75%、卡片不到 720px 的 75% 的图 → 去噪 NLMeans → Lanczos4 放大（最多 3 倍）→ 亮度 USM；
-  防盗链的图存一份。都放 `docs/pics/`（`state/hdimg.json` 记对应关系，过 8 天删），`render._img_url` 优先用本站的、打不开再用原图。手动：`digest.py hd-images`。
+  出刊时 `hdimg.py` 用 OpenCV 判断「看不清吗」：**原图看得清就不动、不花资源**（用户定的）。只有网页上要放大 1.6 倍以上、而且放到显示大小后模糊度 > 0.42（无参考 re-blur 法）的图
+  才去噪 NLMeans → Lanczos4 放大（最多 3 倍）→ 亮度 USM；Bing 只给 100×100 的缩略图改取 w=1200 版切白边；防盗链的图存一份。都放 `docs/pics/`（`state/hdimg.json` 记对应关系，过 8 天删），`render._img_url` 优先用本站的、打不开再用原图。手动：`digest.py hd-images`。
 - **版面主题（motif）**：`items.yaml` 里给作品写 `motif:`，主题在 `templates/`（`index.yaml` 一览 + 每套一份 `<id>.css`，只用作品自己的配色变量）。
   现在有 **30 套**（背景花纹、题字形状、照片边框、标题旁装饰字），每套带一个 **👍 演出**（`fx`，`scripts/likefx.py` 的 20 种：大拇指的动作 + 飞散的形状 + 文字）。
   一览和试玩：テーマ見本 https://cxelegy.github.io/Wishlist/themes.html （`render.render_themes`）。
