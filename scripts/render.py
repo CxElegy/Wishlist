@@ -35,7 +35,7 @@ FONTS = (
 )
 
 CSS = """
-:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--good:#1F7A55;--discord:#5865F2;
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
  --by-ai:#6B3FC4;--by-rule:#1F7A55;   /* 流れの図：AI（Claude）が判断する手順 / 規則（プログラム）で決まる手順 */
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
@@ -2366,13 +2366,21 @@ NAV_STYLES = {
 .nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--cur,var(--alert));color:var(--ink);transition:border-color .15s}   /* 左の縦線は読んでいる板块の色 */
 /* ---------- ロゴ：炎（話題度で燃え方が変わる）＋ 仮の名前 TBD ---------- */
 .nav .logo{flex:none;display:flex;align-items:center;gap:10px;margin:16px 8px 10px 0;text-decoration:none;color:var(--ink)}
-.nav .flame{position:relative;flex:none;width:50px;height:68px;margin:-6px -4px 0 -2px;--h:var(--heat,.3)}
+.nav .flame{position:relative;flex:none;width:50px;height:68px;margin:-6px -4px 0 -2px;--h:var(--heat,.3);
+ /* 温度の色：冷めた火（0）＝暗い赤の熾火 → 熱い火（1）＝橙・金・白。--hc は NAV_JS が毎フレーム滑らかに入れる */
+ --hc:var(--h);
+ --fo:color-mix(in oklab,color-mix(in oklab,var(--ember),var(--alert) calc(clamp(0,var(--hc) * 1.8,1) * 100%)),var(--flame) calc(clamp(0,(var(--hc) - .55) * 2.2,1) * 100%));
+ --fm:color-mix(in oklab,color-mix(in oklab,var(--ember),var(--flame) calc(clamp(0,var(--hc) * 1.6,1) * 100%)),var(--gold) calc(clamp(0,(var(--hc) - .5) * 2,1) * 100%));
+ --fi:color-mix(in oklab,var(--flame),var(--gold) calc(clamp(0,var(--hc) * 1.4,1) * 100%));
+ --fc:color-mix(in oklab,var(--gold),var(--card) calc(clamp(.15,var(--hc),1) * 100%))}
+
 .nav .flame svg{position:absolute;left:0;bottom:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;
  transform:scale(calc(.42 + var(--h) * .98));transition:transform .5s cubic-bezier(.2,.8,.2,1);
- filter:saturate(calc(.5 + var(--h) * .8)) brightness(calc(.82 + var(--h) * .4))}   /* 冷めた火はくすみ、熱い火は鮮やかに */
+ filter:brightness(calc(.9 + var(--hc) * .25))}
 /* 後ろの光：話題度が高いほど広く濃く、ゆっくり息をする */
+.nav .flame .blue{opacity:clamp(0,(var(--hc) - .75) * 2.6,.55)}   /* 沸騰に近づくと底に青い炎 */
 .nav .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(16px + var(--h) * 84px);aspect-ratio:1;translate:-50% 0;border-radius:50%;
- background:radial-gradient(closest-side,color-mix(in srgb,var(--flame) 70%,transparent),transparent);opacity:calc(.05 + var(--h) * .9);
+ background:radial-gradient(closest-side,color-mix(in srgb,var(--fm) 70%,transparent),transparent);opacity:calc(.05 + var(--h) * .9);
  transition:opacity .5s,width .5s;animation:breathe calc(3s - var(--h) * 2.2s) ease-in-out infinite alternate}
 @keyframes breathe{to{transform:scale(1.12);filter:brightness(1.15)}}
 /* 火の粉：位置・寿命・道筋は NAV_JS が 1 粒ずつ決める */
@@ -2533,11 +2541,14 @@ FLAME_SVG = (
     '<feTurbulence type="fractalNoise" baseFrequency="0.03 0.07" numOctaves="1" seed="13"/>'
     '<feDisplacementMap in="SourceGraphic" scale="12" xChannelSelector="R" yChannelSelector="G"/>'
     '<feGaussianBlur stdDeviation=".8"/></filter>'
-    + _flame_grad("o", "--alert", .55, .95) + _flame_grad("m", "--flame", .6, .9)
-    + _flame_grad("i", "--gold", .65, .85) + _flame_grad("c", "--card", .6, .7)
+    + _flame_grad("o", "--fo", .55, .95) + _flame_grad("m", "--fm", .6, .9)
+    + _flame_grad("i", "--fi", .65, .85) + _flame_grad("c", "--fc", .6, .7)
+    + '<radialGradient id="navfl-b" cx="50%" cy="50%" r="50%"><stop offset="0" style="stop-color:var(--blueflame)"/>'
+      '<stop offset="1" style="stop-color:var(--blueflame);stop-opacity:0"/></radialGradient>'
     + '</defs><g filter="url(#navfl-f)">'
     + "".join(f'<path class="L" data-k="{k}" d="{_TONGUE if k in ("tl", "tr") else _TEAR}" fill="url(#navfl-{g})"/>'
               for k, g in (("tl", "m"), ("tr", "m"), ("o", "o"), ("m", "m"), ("i", "i"), ("c", "c")))
+    + '<ellipse class="blue" cx="50" cy="130" rx="15" ry="5" fill="url(#navfl-b)"/>'
     + '</g></svg>' + '<i class="em"></i>' * 16 + '</span>')
 
 
@@ -2850,6 +2861,7 @@ NAV_JS = """
   function burn(now) {
     const dt = Math.min(.05, (now - (flLast || now)) / 1000); flLast = now;
     FL.h += (FL.target - FL.h) * Math.min(1, dt * 4);
+    fl.style.setProperty('--hc', FL.h.toFixed(3));   // 色は毎フレーム滑らかに
     const h = FL.h, amp = .18 + h * 1.5;
     FL.t += dt * (.6 + h * 3.8);
     for (const L of layers) {
