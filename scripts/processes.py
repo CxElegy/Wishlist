@@ -187,7 +187,7 @@ PROCESSES = [
         "files": ["scripts/gate.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "CLAUDE.md", "uses": ["gate"],
         "flow": [
             {"id": "g1", "kind": "fan", "lane": "actions", "title": "仕事を調べる", "mode": "全部を毎回",
-             "items": [("1", "小元素", "目標未満の版面（24 時間以内の失敗は除く）"), ("2", "AI 編集", "今日の inbox で _covered より新しい記事"),
+             "items": [("1", "小元素", "目標未満の版面（6 時間以内の失敗で材料が同じものは除く）"), ("2", "AI 編集", "今日の inbox で _covered より新しい記事"),
                        ("3", "写真", "inbox/photos/*.json")]},
             {"id": "g2", "kind": "decision", "lane": "actions", "title": "小元素の仕事がある？", "no": "飛ばす"},
             {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 4 本並列", "text": "「小元素の自動補完」"},
