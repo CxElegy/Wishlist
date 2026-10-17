@@ -35,7 +35,7 @@ FONTS = (
 )
 
 CSS = """
-:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--good:#1F7A55;--discord:#5865F2;
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--good:#1F7A55;--discord:#5865F2;
  --by-ai:#6B3FC4;--by-rule:#1F7A55;   /* 流れの図：AI（Claude）が判断する手順 / 規則（プログラム）で決まる手順 */
  --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
  --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
@@ -542,7 +542,7 @@ html{scroll-behavior:smooth}
 @media (max-width:1000px){
  .page{grid-template-columns:minmax(0,1fr)}
  .nav{top:env(safe-area-inset-top,0px);background:var(--ink);color:var(--card);padding:8px 0 0;margin:0 -24px}
- .nav .nhead,.nav .navwish{display:none}
+ .nav .nhead,.nav .navwish,.nav .logo{display:none}
  .nav .mtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 16px 10px}
  .nav .mtabs::-webkit-scrollbar,.nav .rail::-webkit-scrollbar{display:none}
  .nav .mtabs a{flex:none;padding:4px 12px;font-size:13px;opacity:.55;text-decoration:none}
@@ -2362,6 +2362,39 @@ NAV_STYLES = {
    増えたら NAV_JS が ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。
    見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
 .nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--cur,var(--alert));color:var(--ink);transition:border-color .15s}   /* 左の縦線は読んでいる板块の色 */
+/* ---------- ロゴ：炎（話題度で燃え方が変わる）＋ 仮の名前 TBD ---------- */
+.nav .logo{flex:none;display:flex;align-items:center;gap:10px;margin:16px 8px 10px 0;text-decoration:none;color:var(--ink)}
+.nav .flame{position:relative;flex:none;width:42px;height:54px;--h:var(--heat,.3)}
+.nav .flame svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;
+ transform:scale(calc(.55 + var(--h) * .6));transition:transform .25s cubic-bezier(.3,1.6,.5,1);
+ filter:drop-shadow(2px 2px 0 var(--ink))}
+.nav .flame path{stroke:var(--ink);stroke-width:3;stroke-linejoin:round;transform-box:fill-box;transform-origin:50% 100%;
+ animation:flick calc(1.9s - var(--h) * 1.1s) ease-in-out infinite}
+.nav .flame .f-o{fill:var(--alert)}
+.nav .flame .f-m{fill:var(--flame);stroke-width:0;animation-duration:calc(1.4s - var(--h) * .8s);animation-direction:reverse}
+.nav .flame .f-i{fill:var(--gold);stroke-width:0;animation-duration:calc(1s - var(--h) * .5s)}
+@keyframes flick{0%,100%{transform:scale(1,1) skewX(0)}25%{transform:scale(.95,1.06) skewX(-4deg)}50%{transform:scale(1.04,.96) skewX(3deg)}75%{transform:scale(.97,1.05) skewX(-2deg)}}
+/* 切り替えた瞬間：ボッと燃え上がって戻る（話題度が高いほど大きく） */
+.nav .flame.lit svg{animation:flare .6s cubic-bezier(.2,1.5,.4,1)}
+@keyframes flare{0%{transform:scale(calc(.55 + var(--h) * .6))}30%{transform:scale(calc((.55 + var(--h) * .6) * (1.15 + var(--h) * .9))) rotate(-4deg)}
+ 100%{transform:scale(calc(.55 + var(--h) * .6))}}
+.nav .flame .sp{position:absolute;left:50%;bottom:30%;width:6px;height:6px;margin-left:-3px;background:var(--gold);border:1.5px solid var(--ink);
+ transform:rotate(45deg);opacity:0;pointer-events:none}
+.nav .flame.lit .sp{animation:spark .7s ease-out var(--dl) both}
+@keyframes spark{0%{opacity:calc(var(--h) * 1.6 - .3);transform:translate(0,0) rotate(45deg) scale(1)}
+ 100%{opacity:0;transform:translate(calc(var(--dx) * (10px + var(--h) * 34px)),calc(-20px - var(--h) * 56px)) rotate(225deg) scale(.3)}}
+/* 沸騰（85 以上）：炎の後ろに赤い光がドクドク */
+.nav .logo.boil .flame::before{content:"";position:absolute;inset:6px -4px -2px;border-radius:50%;background:var(--alert);opacity:.25;z-index:-1;
+ animation:glow .8s ease-in-out infinite alternate}
+@keyframes glow{to{opacity:.55;transform:scale(1.25)}}
+.nav .wm{display:flex;flex-direction:column;line-height:1;transform:rotate(-3deg)}
+.nav .wm b{font:30px/.95 var(--font-num);letter-spacing:.04em;font-style:italic;background:var(--ink);color:var(--card);padding:2px 10px 1px 8px;
+ transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--cur,var(--alert))}
+.nav .wm small{margin-top:5px;font:800 10px var(--font-sans);letter-spacing:.18em;color:rgba(26,28,34,.7)}
+.nav .hm{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;line-height:1}
+.nav .hm .hv{font:26px/1 var(--font-num);color:var(--cur,var(--alert))}
+.nav .hm .hl{margin-top:3px;font:900 10px var(--font-sans);letter-spacing:.1em;color:rgba(26,28,34,.7)}
+@media (prefers-reduced-motion:reduce){.nav .flame *,.nav .flame svg,.nav .logo .flame::before{animation:none!important}}
 .nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
 .nav .nhead .pill{flex:none;height:30px;padding-left:4px;font-size:13px}
 .nav .nhead .pill.on{padding-left:58px;padding-right:12px}
@@ -2490,6 +2523,17 @@ def _nav_icon(w):
     return _img_url(t) if t and str(t).startswith("https://") else None
 
 
+# 目次の左上のロゴ：漫画っぽい炎（墨のフチ）。読んでいる作品の話題度（heat.py の 0〜100）で大きさと揺れの速さが変わり、
+# 作品が切り替わるたびに「ボッ」と燃え上がる（NAV_JS がクラス lit を付ける。burst はトップの「重大」の札と名前がぶつかるので使わない）。火の粉は 6 粒、話題度が高いほど遠くへ
+FLAME_SVG = (
+    '<span class="flame" aria-hidden="true"><svg viewBox="0 0 64 84">'
+    '<path class="f-o" d="M32 3C41 19 58 29 56 52C54 70 44 80 32 80C18 80 8 70 8 54C8 40 17 31 21 19C24 27 27 31 30 31C30 21 28 13 32 3Z"/>'
+    '<path class="f-m" d="M32 24C38 36 48 42 46 58C45 70 39 76 32 76C24 76 18 70 18 60C18 50 25 44 28 36C30 42 32 42 32 24Z"/>'
+    '<path class="f-i" d="M32 46C36 54 40 58 39 66C38 72 35 74 32 74C28 74 25 71 25 66C25 60 30 56 32 46Z"/>'
+    '</svg>' + "".join(f'<i class="sp" style="--dx:{dx};--dl:{dl}s"></i>' for dx, dl in
+                       ((-1, 0), (.6, .05), (-.4, .1), (1, .02), (-.9, .14), (.2, .08))) + '</span>')
+
+
 def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=None, sub_heat=None):
     """左侧目录（v6）：板块ごとの枠に作品を並べる（小分類ごと）。どこを隠すかは NAV_JS が画面の高さで決める。
     subs：{作品: 小分類}（items.yaml の sub）。hide：隠し始める作品の数（"auto" なら画面の高さで決める）。
@@ -2511,7 +2555,7 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
               else f'<i class="ic">{e(w["name"][:1])}</i>')
         own = subs.get(w["name"], "")
         xref = f'<span class="xref">{e(own)}</span>' if kid and own and own != sub else ""   # 自分の小分類が上級と違うときは小さく
-        return (f'<a class="pill{" kid" if kid else ""}" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" '
+        return (f'<a class="pill{" kid" if kid else ""}" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" data-heat="{int((w.get("_heat") or {}).get("score") or 0)}" '
                 f'data-sub="{e(sub)}" href="#{_wid(w["name"])}"><i class="no">{page_no[w["name"]]:02d}</i>{ic}'
                 + ('<span class="br"></span>' if kid else "")
                 + f'<span class="nm">{e(w["name"])}<small class="cnt">{f"今週 {recent} 件" if recent else "新着なし"}</small></span>'
@@ -2559,8 +2603,12 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
                      f'<span class="cnt">新着 <b>{nn}</b>／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
                      f'<div class="nbody">{body}</div></div>')
     hide = "auto" if str(hide).lower() == "auto" else max(1, int(hide or NAV_HIDE))
-    return (f'<nav class="nav" aria-label="目次" data-hide="{hide}">'
+    levels = json.dumps([[low, lab] for low, lab in heat.LEVELS], ensure_ascii=False)
+    return (f'<nav class="nav" aria-label="目次" data-hide="{hide}" data-levels="{e(levels)}">'
             f'<div class="mtabs">{"".join(tabs)}</div>'
+            f'<a class="logo" href="#front" aria-label="トップへ">{FLAME_SVG}'
+            f'<span class="wm"><b>TBD</b><small>ウォッチリスト通信</small></span>'
+            f'<span class="hm" aria-live="polite"><b class="hv"></b><small class="hl"></small></span></a>'
             f'<div class="nhead">{"".join(head)}</div>'
             f'<div class="rail" id="nav-rail">{"".join(slots)}</div>{_wish_link(wishes, "navwish")}'
             f'<div class="bar" id="nav-bar"></div></nav>')
@@ -2773,10 +2821,28 @@ NAV_JS = """
       curIdx = idx; curProg = -1;
       nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : 'var(--alert)');   // トップ・気になるかも？を読んでいるときは赤
       nav.classList.toggle('insec', k >= 0);
-      tabs.forEach(t => t.classList.toggle('on', t.dataset.sec === (k >= 0 ? S[k].nsec : '')));
+      tabs.forEach(t => t.classList.toggle('on', t.dataset.sec === (k >= 0 ? S[k].sec : '')));
+      flame(on);
       if (wide.matches) layout(force); else narrow(k);
     }
     if (prog !== curProg) { curProg = prog; nav.style.setProperty('--prog', prog); }
+  }
+  // ロゴの炎：読んでいる作品の話題度（0〜100）で燃え方を変え、切り替えるたびにボッと燃え上がる。トップでは全体の最高点を小さめに
+  const logo = nav.querySelector('.logo'), fl = logo && logo.querySelector('.flame');
+  const LV = (() => { try { return JSON.parse(nav.dataset.levels || '[]'); } catch (_) { return []; } })();
+  const maxHeat = Math.max(0, ...pills.map(p => +p.dataset.heat || 0));
+  let lastFlame = null;
+  function flame(on) {
+    if (!fl) return;
+    const own = on && on.dataset.heat != null ? +on.dataset.heat || 0 : null;
+    const v = own == null ? maxHeat : own;
+    nav.style.setProperty('--heat', (own == null ? Math.min(.35, v / 100) : v / 100).toFixed(2));
+    logo.querySelector('.hv').textContent = v ? String(v) : '';
+    logo.querySelector('.hl').textContent = own == null ? (v ? '今日の最高' : '') : ((LV.find(l => v >= l[0]) || [0, ''])[1] || '話題度');
+    logo.classList.toggle('boil', own != null && v >= ((LV[0] || [85])[0]));
+    if (on === lastFlame) return;
+    lastFlame = on;
+    fl.classList.remove('lit'); void fl.offsetWidth; fl.classList.add('lit');   // アニメーションをやり直す
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => update()); } }, {passive: true});
   addEventListener('resize', () => update(true));
