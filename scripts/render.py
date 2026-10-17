@@ -2367,10 +2367,10 @@ NAV_STYLES = {
    見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
 .nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--cur,var(--alert));color:var(--ink);transition:border-color .15s}   /* 左の縦線は読んでいる板块の色 */
 /* ---------- ロゴ：炎（話題度で燃え方が変わる）＋ 仮の名前 TBD ---------- */
-.nav .logo{flex:none;display:flex;align-items:center;gap:10px;margin:16px 8px 10px 0;text-decoration:none;color:var(--ink)}
+.nav .logo{position:relative;z-index:3;flex:none;display:flex;align-items:center;gap:10px;margin:16px 8px 10px 0;text-decoration:none;color:var(--ink)}
 .nav .flame{position:relative;flex:none;width:50px;height:68px;margin:-6px -4px 0 -2px;--h:var(--heat,.3);
  /* 温度の色：冷めた火（0）＝暗い赤の熾火 → 熱い火（1）＝橙・金・白。--hc は NAV_JS が毎フレーム滑らかに入れる */
- --hc:var(--h);
+ --hc:var(--h);transform-origin:50% 45%;
  --fo:color-mix(in oklab,color-mix(in oklab,var(--ember),var(--alert) calc(clamp(0,var(--hc) * 1.8,1) * 100%)),var(--flame) calc(clamp(0,(var(--hc) - .55) * 2.2,1) * 100%));
  --fm:color-mix(in oklab,color-mix(in oklab,var(--ember),var(--flame) calc(clamp(0,var(--hc) * 1.6,1) * 100%)),var(--gold) calc(clamp(0,(var(--hc) - .5) * 2,1) * 100%));
  --fi:color-mix(in oklab,var(--flame),var(--gold) calc(clamp(0,var(--hc) * 1.4,1) * 100%));
@@ -2384,6 +2384,7 @@ NAV_STYLES = {
 .nav .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(16px + var(--h) * 84px);aspect-ratio:1;translate:-50% 0;border-radius:50%;
  background:radial-gradient(closest-side,color-mix(in srgb,var(--fm) 70%,transparent),transparent);opacity:calc(.05 + var(--h) * .9);
  transition:opacity .5s,width .5s;animation:breathe calc(3s - var(--h) * 2.2s) ease-in-out infinite alternate}
+.sparkfx{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:60;display:none}   /* ぶわっの火の粉（NAV_JS） */
 @keyframes breathe{to{transform:scale(1.12);filter:brightness(1.15)}}
 /* 火の粉：位置・寿命・道筋は NAV_JS が 1 粒ずつ決める */
 .nav .flame .em{position:absolute;left:50%;bottom:22%;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:var(--gold);
@@ -2862,12 +2863,61 @@ NAV_JS = """
   const glow = fl && fl.querySelector('.glow'), puff = fl && fl.querySelector('.puff');
   // ぶわっ：話題度が上がる切り替えのときだけ。本物の火に燃料が入ったときのように 0.07 秒で一気に何倍にも伸び上がり、
   // 火の玉が上へ抜け、火の粉が散って、1 秒ほどで新しい強さに落ち着く（上がり幅が大きいほど強い。testground/flame.html）
-  const UP = {tl: 1.5, tr: 1.5, o: 2.3, m: 2.1, i: 1.7, c: 1.4};   // 縦に伸びる倍率（外側ほど高く）
-  const env = t => t < .07 ? 1 - (1 - t / .07) ** 2 : Math.exp(-(t - .07) * 3.1) * (1 + .12 * Math.sin((t - .07) * 34));
+  // 炎ぜんたいが 一瞬で最大 約 3 倍に膨らみ（.flame の scale）、さらに層が縦に伸びる。同時に画面じゅうに火の粉
+  const UP = {tl: .9, tr: .9, o: 1.1, m: 1, i: .8, c: .6};   // 縦に伸びる倍率（外側ほど高く）
+  const env = t => t < .06 ? 1 - (1 - t / .06) ** 2 : t < .22 ? 1 : Math.exp(-(t - .22) * 2.7) * (1 + .12 * Math.sin((t - .22) * 34));   // 0.06 秒で最大・0.16 秒そのまま・揺れながら落ち着く
   function flare(up) {
     const k = Math.min(1.5, .45 + up * 1.6);
-    FL.sg = {t: 0, k: Math.max(k, FL.sg ? FL.sg.k * .6 : 0)};
+    const cur = FL.sg ? env(FL.sg.t) * FL.sg.k : 0;   // 続けて上がったとき：燃え上がっている最中のほうが強ければそのまま（小さい ぶわっ で打ち消さない）
+    if (cur >= k) return;
+    FL.sg = {t: cur > .05 ? .06 : 0, k};
+    sparks(fl, k);
     ems.forEach((m, i) => { if (i < Math.round(6 + k * 7)) { m.life = Math.random() * .15; m.dur = .45 + Math.random() * .5; m.dx = (Math.random() - .5) * 4.5; m.sway = Math.random() * 4; m.ph = Math.random() * 6; m.b = k; } });
+  }
+  // 画面じゅうの火の粉：ぶわっの瞬間、炎から画面いっぱいに弾け飛び、画面の下からも舞い上がる（canvas 1 枚。散り終わったら消す）
+  const SPK = {list: [], cv: null, cx: null, run: false, col: [], at: 0};
+  function sparks(from, k) {
+    if (performance.now() - SPK.at < 500) return; SPK.at = performance.now();   // 速くスクロールして続けて上がっても、火の粉は 0.5 秒に 1 回
+    if (!SPK.cv) {
+      SPK.cv = document.createElement('canvas'); SPK.cv.className = 'sparkfx'; SPK.cv.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(SPK.cv); SPK.cx = SPK.cv.getContext('2d');
+    }
+    const W = innerWidth, H = innerHeight, dpr = Math.min(2, devicePixelRatio || 1);
+    if (SPK.cv.width !== Math.round(W * dpr) || SPK.cv.height !== Math.round(H * dpr)) { SPK.cv.width = Math.round(W * dpr); SPK.cv.height = Math.round(H * dpr); }
+    SPK.cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const cs = getComputedStyle(document.documentElement);
+    SPK.col = ['--gold', '--flame', '--flame', '--alert', '--gold'].map(v => cs.getPropertyValue(v).trim() || '#FF7A1A');
+    const r = from.getBoundingClientRect(), ox = r.left + r.width / 2, oy = r.top + r.height * .55;
+    const n = Math.round(150 + k * 150), R = Math.random;
+    for (let i = 0; i < n; i++) {
+      const burst = i < n * .62, s = {life: 0, dur: .9 + R() * 1.4, w: 1.3 + R() * 2.4, c: SPK.col[i % SPK.col.length], ph: R() * 6, burst};
+      if (burst) {   // 炎から：上・右・下へ扇形に（左上の炎から画面全体へ届く速さ）
+        const a = (-110 + R() * 190) * Math.PI / 180, v = 260 + R() ** .6 * 1500 * (.55 + Math.min(1, k) * .45);
+        Object.assign(s, {x: ox, y: oy, vx: Math.cos(a) * v, vy: Math.sin(a) * v});
+      } else {        // 画面の下から：ばらばらの位置・時間で舞い上がる
+        Object.assign(s, {x: R() * W, y: H + 10 + R() * 60, vx: (R() - .5) * 90, vy: -(220 + R() * 650), life: -R() * .5});
+      }
+      SPK.list.push(s);
+    }
+    SPK.cv.style.display = 'block';
+    if (!SPK.run) { SPK.run = true; SPK.last = 0; requestAnimationFrame(spark); }
+  }
+  function spark(now) {
+    const dt = Math.min(.05, (now - (SPK.last || now)) / 1000), c = SPK.cx; SPK.last = now;
+    c.clearRect(0, 0, innerWidth, innerHeight);
+    SPK.list = SPK.list.filter(s => (s.life += dt / s.dur) < 1);
+    for (const s of SPK.list) {
+      if (s.life < 0) continue;
+      const drag = Math.exp(-(s.burst ? 1.7 : .6) * dt);
+      s.vx = s.vx * drag + Math.sin(now / 160 + s.ph) * 40 * dt; s.vy = s.vy * drag - 160 * dt;   // 熱いので浮き上がり、ゆらゆら
+      s.x += s.vx * dt; s.y += s.vy * dt;
+      const a = s.life < .08 ? s.life / .08 : (1 - s.life) ** 1.3, tx = s.x - s.vx * .05, ty = s.y - s.vy * .05;
+      c.lineCap = 'round'; c.strokeStyle = s.c;
+      c.globalAlpha = a * .25; c.lineWidth = s.w * 3.2; c.beginPath(); c.moveTo(tx, ty); c.lineTo(s.x, s.y); c.stroke();   // 光のにじみ
+      c.globalAlpha = a; c.lineWidth = s.w; c.beginPath(); c.moveTo(tx, ty); c.lineTo(s.x, s.y); c.stroke();
+    }
+    c.globalAlpha = 1;
+    if (SPK.list.length) requestAnimationFrame(spark); else { SPK.run = false; SPK.cv.style.display = 'none'; }
   }
   const wob = (t, p) => Math.sin(t * 1.13 + p) * .45 + Math.sin(t * 2.71 + p * 1.7) * .3 + Math.sin(t * 5.87 + p * 2.3) * .17 + Math.sin(t * 11.3 + p * .7) * .08;
   let flLast = 0;
@@ -2879,6 +2929,7 @@ NAV_JS = """
     fl.style.setProperty('--hc', Math.min(1, FL.h + E * .35).toFixed(3));   // 色は毎フレーム滑らかに（燃え上がる瞬間は熱く白く）
     fl.style.setProperty('--fx', E.toFixed(3));
     glow.style.scale = (1 + E * 1.3).toFixed(3);
+    fl.style.scale = (1 + Math.min(2.1, E * 2.2)).toFixed(3);   // 上がり幅が大きいと 約 3 倍
     const h = FL.h, amp = .18 + h * 1.5 + E * .8;
     FL.t += dt * (.6 + h * 3.8 + E * 4);
     for (const L of layers) {
