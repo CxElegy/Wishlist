@@ -2012,7 +2012,8 @@ def write_page():
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
                           {i["name"]: str(i["sub"]) for i in items if i.get("sub")}, settings.get("nav_hide", render.NAV_HIDE),
                           {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
-                          render.busy_plan(adm.get("todo")), generated,
+                          render.busy_plan(adm.get("todo"), [i["name"] for i in items],
+                                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
                           {i["name"]: str(i["parent"]) for i in items if i.get("parent")})
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
@@ -2123,6 +2124,25 @@ def update_heat():
 
 
 COLLECT_WORKERS = 6   # 收集时同时抓几个关注项（GitHub Actions 的机器 4 核；等网络为主，所以比核数多一点）
+LIVE_RUN_MIN = 9      # 收集开始到新网页出现大约几分钟（Actions 约 7 分 + Pages 约 1 分）：版面「更新中」条的预计时间
+
+
+def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"):
+    """简报网页的版面「更新中」条（render.BUSY_JS 读 Supabase 的 live_status()）：这个版面现在在做什么。
+    state：fetch（正在找新记事）/ found（有新记事、等网页更新）；None = 删掉这一行（没有新记事，条消失）。
+    board=None 且 state=None：删掉这个 proc 的全部行（每次收集开始时清空）。失败也不影响收集本身。"""
+    try:
+        if state is None:
+            q = f"proc=eq.{proc}" + (f"&board=eq.{urllib.parse.quote(board)}" if board else "")
+            supabase(f"live_status?{q}", method="DELETE")
+            return
+        now = dt.datetime.now(dt.timezone.utc)
+        supabase("live_status?on_conflict=board,proc", {
+            "board": board, "proc": proc, "state": state, "found": found,
+            "started_at": (started or now).isoformat(), "eta_at": eta.isoformat() if eta else None,
+            "updated_at": now.isoformat()}, prefer="resolution=merge-duplicates,return=minimal", method="POST")
+    except Exception as err:  # noqa: BLE001  条只是给人看的，出错不能让收集停下
+        print(f"  （版面状态没写进数据库：{err}）", file=sys.stderr)
 
 
 def ingest(dry_run=False):
@@ -2143,8 +2163,16 @@ def ingest(dry_run=False):
     # 去重要按顺序（前面的关注项收过的，后面的不再收），所以抓完后照原来的顺序一项一项处理
     from concurrent.futures import ThreadPoolExecutor
 
+    live = not dry_run
+    started = {}
+    if live:
+        live_mark(None)  # 上一次收集留下的行清掉
+
     def fetch(item):
         print(f"抓取：{item['name']}", file=sys.stderr)
+        if live:  # 网页上只有这个版面出「正在找新记事」的条
+            started[item["name"]] = dt.datetime.now(dt.timezone.utc)
+            live_mark(item["name"], "fetch", started=started[item["name"]])
         return collect(item, confs[item["name"]][1])
     with ThreadPoolExecutor(max_workers=COLLECT_WORKERS) as pool:
         fetched = list(pool.map(fetch, items))
@@ -2159,6 +2187,10 @@ def ingest(dry_run=False):
             compare = compare + [t for name, ts in known.items() if name != item["name"] for t in ts]
         entries = filter_entries(raw, item, conf, seen, now, compare)
         print(f"  {item['name']} 新条目 {len(entries)} 条", file=sys.stderr)
+        if live:  # 没有新记事：条消失；有：「新着 N 件 · 反映まであと約 N 分」，网页更新后自然消失
+            t = dt.datetime.now(dt.timezone.utc)
+            live_mark(item["name"], "found" if entries else None, len(entries), started.get(item["name"]),
+                      max(now + dt.timedelta(minutes=LIVE_RUN_MIN), t + dt.timedelta(minutes=2)))
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
             continue

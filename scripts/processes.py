@@ -299,8 +299,8 @@ PROCESSES = [
         "id": "live", "name": "ページの自動更新", "en": "LIVE", "lane": "web",
         "when": "開いている間 · 1 分ごと",
         "trigger": "簡報・管理ページを開いているあいだ、1 分ごと（タブが裏にあるときも戻ったときにすぐ）",
-        "summary": "開いたままのページに、新しい記事や数字を自分で出す。裏で版面を作り直している間は、その版面の枠に「更新中」の帯と残り時間。",
-        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / busy_plan）", "scripts/digest.py（write_page）", "docs/version.json"], "doc": "CLAUDE.md",
+        "summary": "開いたままのページに、新しい記事や数字を自分で出す。裏である版面を作り直している間は、その版面だけ枠に「更新中」の帯と残り時間。",
+        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / busy_plan）", "scripts/digest.py（write_page / live_mark）", "db/live_status.sql", "docs/version.json"], "doc": "CLAUDE.md",
         "flow": [
             {"id": "l1", "kind": "step", "lane": "actions", "title": "ページを作るたびに指紋を付ける",
              "text": "収集・AI 編集・ページ生成が docs/*.html を書くとき、中身の指紋（「更新」の時刻は除く）を計算。"},
@@ -316,12 +316,15 @@ PROCESSES = [
             {"id": "l6", "kind": "step", "lane": "web", "title": "見ていた場所のまま新しい版に",
              "text": "読み直す前の位置（見ていた板块）に戻す。簡報は増えた記事に「たった今」、管理ページは変わったパネルに「更新」。"},
             {"id": "l8", "kind": "decision", "lane": "web", "title": "裏でこの版面を作り直している？",
-             "text": "収集・ページ生成 = Actions の API で実行中か（2 分ごと）。AI 編集・小元素 = 定時から いつもの時間以内で、ページがまだその回より前",
-             "yes": "版面の上の枠に帯（版面の色）＋「あと約 N 分」", "no": "帯なし"},
-            {"id": "l9", "kind": "table", "lane": "web", "title": "どの版面に帯を出すか・何分と見るか",
-             "text": "「あと何分」= いつもの時間 − 経過。いつもの時間は Actions の最近の成功の中央値（読めなければ下の値）。",
-             "rows": [("ニュース収集", "全部の版面 · 約 9 分"), ("ページ生成", "全部の版面 · 約 2 分"),
-                      ("AI 編集", "待ち行列の版面 · 約 30 分"), ("小元素の自動補完", "待ち行列の版面 · 約 45 分")]},
+             "text": "版面ごとに判断。ほかの版面には帯を出さない",
+             "yes": "その版面の上の枠に帯（版面の色）＋「あと約 N 分」", "no": "帯なし"},
+            {"id": "l9", "kind": "table", "lane": "web", "title": "どの版面に・いつ帯を出すか",
+             "text": "帯は小元素の下（重なったら小元素が上）。ページがその回より後に作られていれば出さない。",
+             "rows": [("ニュース収集", "その版面を探し始めたら「記事を探しています」→ 新着なし：消える／新着あり：「新着 N 件 · 反映まであと約 N 分」"
+                                    "（収集が Supabase live_status に書き、網页が 30 秒ごとに読む）"),
+                      ("AI 編集", "編集待ちの新着がある版面だけ · 定時から約 30 分"),
+                      ("小元素の自動補完", "待ち行列の先頭 4 版面（4 本並列）· 定時から約 45 分"),
+                      ("ページ生成", "帯なし（中身ではなく見た目の変更。下の「新しい内容があります」で知らせる）")]},
             {"id": "l7", "kind": "table", "lane": "web", "title": "管理ページの「いまの状況」",
              "text": "ページの再読込とは別に、外のデータを開いている間ずっと読み直す。",
              "rows": [("ウォッチ項目の依頼・写真の受付", "Supabase · 1 分ごと"), ("GitHub Actions", "3 分ごと（1 時間 60 回の制限内）"),
@@ -386,7 +389,7 @@ ARCH = [
         {"id": "s-model", "label": "画像のモデル（コンテナに毎回入れる）", "text": "抠图は 1 枚ずつ · 顔のモデルは 1 つを順番に",
          "uses": ["rembg", "yunet", "sface", "haar"], "model": True}]},
     {"id": "db", "title": "Supabase", "note": "データベース", "cost": "無料枠", "style": "keep", "nodes": [
-        {"id": "s-db", "label": "feedback · sizes · item_requests · photo_inbox · news", "text": "👍👎・篇幅・依頼・写真・記事の控え",
+        {"id": "s-db", "label": "feedback · sizes · item_requests · photo_inbox · news · live_status", "text": "👍👎・篇幅・依頼・写真・記事の控え・版面の更新状態",
          "uses": ["supabase", "pgnet"]}]},
     {"id": "pages", "title": "GitHub Pages", "note": "公開の網页", "cost": "無料", "style": "keep", "nodes": [
         {"id": "s-pages", "label": "網页", "text": "簡報・設定・愿望清单・話題度・管理ページ・version.json", "uses": ["fit", "confetti"]},
@@ -419,6 +422,8 @@ EDGES = [
     (20, "s-model", "p-emblem-cron", "抠图・本人確認", "ai"),
     (21, "s-pages", "p-live", "version.json を 1 分ごと", "web"),
     (22, "p-live", "s-you", "新着を自動で表示・更新中の帯", "web"),
+    (23, "p-collect", "s-db", "版面ごとの状態（探している・新着）", "db"),
+    (24, "s-db", "p-live", "live_status を 30 秒ごと", "db"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
