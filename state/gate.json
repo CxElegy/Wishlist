@@ -1,11 +1,12 @@
 {
  "changed": true,
- "checked": "2026-10-17T05:29:54+00:00",
+ "checked": "2026-10-17T05:34:19+00:00",
  "jobs": {
   "edit": {
    "claude": true,
    "items": [
     "A2O LITE",
+    "GTA 6",
     "The Mandalorian",
     "チェーンソーマン",
     "三星手机",
@@ -13,8 +14,8 @@
     "漫威电影"
    ],
    "need": true,
-   "sig": "c040c7fc5b52",
-   "why": "未編集の記事 8 件（6 版面）"
+   "sig": "d3d956c48524",
+   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
