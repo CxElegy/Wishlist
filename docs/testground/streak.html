@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>話題度の演出 3 案</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* テストグラウンド：話題度の演出 3 案（炎・氷・金）。Dota 2 の連続キルの演出（連続数が増えるほどヒーローのまわりのオーラが強くなり、1 つ増えるたびにぱっと燃え上がる）を参考に、
+   読んでいる版面の小元素（右上のステッカー）と目次のアイコンに「話題度が高いほど強いオーラ」＋「話題度が上がる切り替えでぶわっ」を付ける。
+   トークンは scripts/render.py の :root と同じ。新しい色（--ice --frost --icedeep --coin --coindark）は採用したら render.py の :root に足す */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;
+ --acc:#E0503C;--sc:#2F5BD3;   /* 見本の作品（Dota 2）の色と板块（ゲーム）の色。本番は版面の --acc と目次の --sc */
+ --ice:#8FD8FF;--frost:#E9F8FF;--icedeep:#2A6FD6;--coin:#C8901A;--coindark:#7A5208;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--skew:-8deg;--shadow:4px 4px 0 var(--ink)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans)}
+header{padding:16px 24px;background:var(--ink);color:var(--card);display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+header h1{margin:0;font:900 16px var(--font-sans)}
+header h1 small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header label{display:flex;align-items:center;gap:10px;font:700 13px var(--font-sans);flex:1;min-width:240px}
+header input[type=range]{flex:1;accent-color:var(--flame)}
+header output{font:28px var(--font-num);color:var(--gold);min-width:2.2em;text-align:right}
+header .btns{display:flex;flex-wrap:wrap;gap:8px}
+header button,header .tog{font:700 12px var(--font-sans);background:var(--card);color:var(--ink);border:0;padding:5px 12px;transform:skewX(var(--skew));cursor:pointer;box-shadow:3px 3px 0 var(--flame)}
+header .tog{display:flex;align-items:center;gap:6px}
+header .note{flex-basis:100%;margin:0;font-size:12px;opacity:.78}
+main{max-width:1320px;margin:0 auto;padding:22px 20px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:22px}
+.col{display:flex;flex-direction:column;gap:12px}
+.col h2{margin:0;display:flex;align-items:baseline;gap:10px;font:900 18px var(--font-sans)}
+.col h2 .tg{background:var(--ink);color:var(--card);padding:0 10px;transform:skewX(var(--skew));font:900 13px/1.8 var(--font-sans)}
+.col ul{margin:0;padding-left:1.1em;font-size:13px;color:rgba(26,28,34,.75)}
+.col select{font:700 12px var(--font-sans);padding:3px 6px;align-self:flex-start}
+/* 版面の見本：見出しの帯 + 右下に小元素 */
+.band{position:relative;height:250px;margin-top:70px;background:var(--bandbg,var(--ink));color:var(--card);box-shadow:var(--shadow)}   /* 小元素は版面の上へはみ出してよい（本番と同じ） */
+.light .band{--bandbg:var(--card);color:var(--ink);box-shadow:var(--shadow),inset 0 0 0 2px var(--ink)}
+.band .title{position:absolute;left:18px;bottom:16px;font:900 28px/1 var(--font-sans);transform:rotate(-2deg)}
+.band .hv{position:absolute;left:18px;top:14px;font:12px var(--font-mono);opacity:.8}
+.band .hv b{font:30px/1 var(--font-num);color:var(--gold);margin-right:6px}
+.emb{position:absolute;right:30px;bottom:8px;transform:rotate(-6deg);transform-origin:50% 100%}
+.emb img{display:block;height:170px;width:auto;position:relative;z-index:1;transition:filter .3s}
+.fxc{position:absolute;pointer-events:none}
+.fxc.back{z-index:0}.fxc.front{z-index:2}
+.emb.jolt img{animation:jolt .6s cubic-bezier(.2,1.4,.4,1)}
+@keyframes jolt{15%{scale:1.12;rotate:-4deg}38%{scale:.96;rotate:3deg}62%{scale:1.03;rotate:-1deg}}
+/* 目次の行の見本：アイコン＋名前＋話題度 */
+.navrow{display:flex;align-items:center;gap:14px;background:var(--paper);padding:14px 16px;border-left:6px solid var(--alert);box-shadow:inset 0 0 0 1px rgba(26,28,34,.15)}
+.navrow .ico{position:relative;width:46px;height:46px;flex:none;transform:rotate(-4deg)}
+.navrow .ico img{display:block;width:46px;height:46px;border:3px solid var(--card);box-shadow:2px 2px 0 var(--ink);position:relative;z-index:1}
+.navrow b{font:900 16px var(--font-sans)}
+.navrow small{margin-left:auto;font:26px var(--font-num);color:var(--alert)}
+@media (prefers-reduced-motion:reduce){.emb.jolt img{animation:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1><small>TESTGROUND</small>話題度の演出 3 案（炎・氷・金）</h1>
+  <label>話題度 <input type="range" id="h" min="0" max="100" value="67"><output id="hv">67</output></label>
+  <div class="btns">
+    <button id="up">上がる（ぶわっ）</button>
+    <button id="auto">自動で切り替え 20 → 45 → 67 → 92</button>
+    <label class="tog"><input type="checkbox" id="light"> 明るい版面</label>
+    <label class="tog">炎の色 <select id="fcol"><option value="board" selected>作品と板块の色（ゆっくり変わる）</option><option value="warm">暖色だけ</option></select></label>
+  </div>
+  <p class="note">Dota 2 の連続キルの演出を参考にした 3 案です。連続数が増えるほどヒーローのまわりのオーラが強くなり、1 つ増えるたびにぱっと燃え上がる、という仕組みを借りています。読んでいる版面の小元素と目次のアイコンに、話題度が高いほど強いオーラを付けます。話題度が上がる切り替えでは、そのたびに「ぶわっ」と弾けます。オーラは小元素の輪郭（透明でないところ）から出ます。下の選択で小元素を替えられます。</p>
+</header>
+<main id="cols"></main>
+<script>
+(() => {
+  const EMBS = [['dota2-axe', 'Dota 2 · Axe'], ['dota2-crystal-maiden', 'Dota 2 · Crystal Maiden'], ['dota2-legion-commander', 'Dota 2 · Legion Commander'],
+                ['dota2-juggernaut', 'Dota 2 · Juggernaut'], ['gta-6-jason-duval', 'GTA 6 · Jason'], ['pochita', 'チェーンソーマン · ポチタ'], ['belle-5279e946', '绝区零 · Belle']];
+  const COLS = [
+    {kind: 'fire', name: '案 1　炎', emb: 'dota2-axe', ico: 'dota-2', pts: [
+      '小元素の輪郭から炎が立ちのぼる（粒の炎を足し合わせて光らせる）。話題度が高いほど炎が高く・多く・速い', '炎の色は作品の色と板块の色の間をゆっくり行き来する（上の「炎の色」で暖色だけにもできる）',
+      '前に火の粉、まわりが火の色に照らされる', 'ぶわっ：炎が一気に高く伸び、火の粉が四方に弾け、小元素が跳ねる']},
+    {kind: 'ice', name: '案 2　氷', emb: 'dota2-crystal-maiden', ico: 'dota-2', pts: [
+      '足もとから氷の結晶が生え、冷気が漂い、輪郭がきらめく。話題度が高いほど結晶が高く・多い',
+      'まわりが青白く光り、小さな雪が舞う', 'ぶわっ：氷のかけらが砕け散り、霜の輪が広がり、小元素が一瞬凍って白く光る']},
+    {kind: 'gold', name: '案 3　金', emb: 'dota2-legion-commander', ico: 'dota-2', pts: [
+      '後ろで金色の光の筋がゆっくり回り、輪郭がきらめく。話題度が高いほど光が強く、コインがときどき跳ねる',
+      'まわりが金色に照らされる', 'ぶわっ：コインが噴き出して落ち、小元素の上を光が走る']},
+  ];
+  const cols = document.getElementById('cols');
+  const R = Math.random;
+  const cs = getComputedStyle(document.documentElement), tok = v => cs.getPropertyValue(v).trim();
+  const px = document.createElement('canvas').getContext('2d');
+  const rgb = c => { px.fillStyle = '#000'; px.fillStyle = c; const h = px.fillStyle; return [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)); };
+  const C = Object.fromEntries(['card', 'gold', 'flame', 'alert', 'ember', 'ice', 'frost', 'icedeep', 'coin', 'coindark', 'ink', 'acc', 'sc'].map(k => [k, rgb(tok('--' + k))]));
+  const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  // 丸いぼかしの粒（色ごとに 1 枚作って使い回す）
+  const spriteCache = new Map();
+  function sprite(c) {
+    const key = c.join(',');
+    if (!spriteCache.has(key)) {
+      const s = document.createElement('canvas'); s.width = s.height = 64; const x = s.getContext('2d');
+      const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, rgba(c, 1)); g.addColorStop(.4, rgba(c, .55)); g.addColorStop(1, rgba(c, 0));
+      x.fillStyle = g; x.fillRect(0, 0, 64, 64); spriteCache.set(key, s);
+    }
+    return spriteCache.get(key);
+  }
+  const star = (x, cx, cy, r, a, c) => {   // 4 つ角のきらめき
+    x.globalAlpha = a; x.fillStyle = rgba(c, 1); x.beginPath();
+    x.moveTo(cx, cy - r); x.quadraticCurveTo(cx, cy, cx + r * .35, cy); x.quadraticCurveTo(cx, cy, cx, cy + r);
+    x.quadraticCurveTo(cx, cy, cx - r * .35, cy); x.quadraticCurveTo(cx, cy, cx, cy - r);
+    x.moveTo(cx - r * .7, cy); x.quadraticCurveTo(cx, cy, cx, cy - r * .25); x.quadraticCurveTo(cx, cy, cx + r * .7, cy);
+    x.quadraticCurveTo(cx, cy, cx, cy + r * .25); x.quadraticCurveTo(cx, cy, cx - r * .7, cy); x.fill();
+  };
+  let LIGHT = false, FCOL = 'board', TINT = C.acc;
+  // 炎の色：白い芯 → 金 → 橙 → 赤 → 熾火 に、作品と板块の色を外側（古い粒）ほど強く混ぜる。色は 16 段に丸めて粒の絵を使い回す
+  const q16 = c => c.map(v => Math.min(255, Math.round(v / 16) * 16));
+  function fireSprite(a, hot) {
+    const st = [C.card, C.gold, C.flame, C.alert, C.ember], f = Math.min(.999, a * 1.05 + (1 - hot) * .15) * 4, j = f | 0;
+    const base = mix(st[j], st[j + 1], f - j);
+    return sprite(q16(FCOL === 'warm' ? base : mix(base, TINT, Math.min(.75, f / 4 * 1.5))));
+  }
+
+  // ---------- 1 つの小元素（またはアイコン）に付ける演出 ----------
+  class Aura {
+    constructor(host, img, kind, sc) {
+      this.host = host; this.img = img; this.kind = kind; this.sc = sc;
+      this.back = Object.assign(document.createElement('canvas'), {className: 'fxc back'});
+      this.front = Object.assign(document.createElement('canvas'), {className: 'fxc front'});
+      host.prepend(this.back); host.append(this.front);
+      this.bx = this.back.getContext('2d'); this.fx = this.front.getContext('2d');
+      this.p = []; this.q = []; this.acc = 0; this.acc2 = 0; this.acc3 = 0; this.h = .67; this.E = 0; this.et = 9; this.ek = 0; this.rot = R() * 6; this.t = 0;
+      this.shards = []; this.shine = null; this.flash = 0;
+      if (img.complete && img.naturalWidth) this.measure(); else img.addEventListener('load', () => this.measure(), {once: true});
+    }
+    measure() {   // 小元素の輪郭：上の縁・左右の縁の点（透明でないところ）
+      const w = Math.round(this.img.offsetWidth), h = Math.round(this.img.offsetHeight); if (!w || !h) return;
+      this.w = w; this.hh = h;
+      const o = document.createElement('canvas'); o.width = w; o.height = h; const x = o.getContext('2d'); x.drawImage(this.img, 0, 0, w, h);
+      const d = x.getImageData(0, 0, w, h).data, A = (X, Y) => d[(Y * w + X) * 4 + 3] > 60;
+      const pts = []; let base = 0;
+      for (let X = 0; X < w; X += 2) for (let Y = 0; Y < h; Y++) if (A(X, Y)) { pts.push({x: X, y: Y, nx: 0, ny: -1, top: 1}); break; }
+      for (let Y = 0; Y < h; Y += 3) {
+        let L = -1, Rr = -1; for (let X = 0; X < w; X++) if (A(X, Y)) { if (L < 0) L = X; Rr = X; }
+        if (L >= 0) { pts.push({x: L, y: Y, nx: -1, ny: -.3, top: 0}); pts.push({x: Rr, y: Y, nx: 1, ny: -.3, top: 0}); base = Y; }
+      }
+      this.pts = pts.length ? pts : [{x: w / 2, y: 0, nx: 0, ny: -1, top: 1}]; this.base = base || h;
+      this.mask = o;
+      const pad = Math.max(w, h) * .9, dpr = Math.min(2, devicePixelRatio || 1);
+      this.ox = pad; this.oy = pad * 1.3; this.cw = w + pad * 2; this.ch = h + pad * 1.3 + pad * .35;
+      for (const c of [this.back, this.front]) {
+        c.width = Math.round(this.cw * dpr); c.height = Math.round(this.ch * dpr);
+        Object.assign(c.style, {left: -this.ox + 'px', top: -this.oy + 'px', width: this.cw + 'px', height: this.ch + 'px'});
+        c.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      this.shards = Array.from({length: 18}, (_, i) => ({x: -w * .15 + R() * w * 1.3, wd: (6 + R() * 12) * this.sc, hm: (24 + R() * 60) * this.sc, lean: (R() - .5) * 14 * this.sc, on: i / 18, cur: 0}));
+    }
+    pick() {   // 輪郭の点を 1 つ（上の縁を多めに）
+      const ps = this.pts; let p = ps[(R() * ps.length) | 0];
+      if (!p.top && R() < .45) p = ps[(R() * ps.length) | 0];
+      return p;
+    }
+    flare(k) {
+      this.et = 0; this.ek = Math.min(1.5, k);
+      this.host.classList.remove('jolt'); void this.host.offsetWidth; this.host.classList.add('jolt');
+      if (!this.w) return;
+      const cx = this.w / 2, cy = this.hh * .45, s = this.sc, n = Math.round((24 + k * 40) * (s < .5 ? .4 : 1) * (.7 + R() * .6));
+      if (this.kind === 'fire') for (let i = 0; i < n; i++) {
+        const a = R() * Math.PI * 2, v = (160 + R() ** .6 * 520) * s;
+        this.q.push({t: 'spark', x: cx, y: cy, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120 * s, life: 0, dur: .5 + R() * .6, w: (1 + R() * 2) * Math.max(.6, s)});
+      }
+      if (this.kind === 'ice') {
+        for (let i = 0; i < n * .7; i++) {
+          const a = R() * Math.PI * 2, v = (180 + R() ** .6 * 480) * s;
+          this.q.push({t: 'shard', x: cx + Math.cos(a) * 20 * s, y: cy + Math.sin(a) * 20 * s, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 160 * s,
+                       rot: R() * 6, vr: (R() - .5) * 14, sz: (5 + R() * 9) * s, life: 0, dur: .7 + R() * .5});
+        }
+        this.flash = 1; this.ring = 0;
+      }
+      if (this.kind === 'gold') {
+        for (let i = 0; i < n * .8; i++) this.coin(true);
+        this.shine = 0;
+      }
+    }
+    coin(burst) {
+      const p = this.pick(), s = this.sc;
+      this.q.push({t: 'coin', x: p.top ? p.x : this.w / 2 + (R() - .5) * this.w * .5, y: p.top ? p.y : this.hh * .2, vx: (R() - .5) * (burst ? 380 : 160) * s,
+                   vy: -(burst ? 260 + R() * 420 : 180 + R() * 220) * s, spin: R() * 6, vs: 6 + R() * 9, r: (5 + R() * 4) * Math.max(.55, s), life: 0, dur: 2.2});
+    }
+    step(dt, heat) {
+      if (!this.w) return;
+      this.h += (heat - this.h) * Math.min(1, dt * 3); this.t += dt;
+      this.et += dt; const e = this.et, E = (e < .06 ? e / .06 : Math.exp(-(e - .06) * 2.2)) * this.ek; this.E = E;
+      const h = this.h, s = this.sc, b = this.bx, f = this.fx, X = this.ox, Y = this.oy, w = this.w;
+      b.clearRect(0, 0, this.cw, this.ch); f.clearRect(0, 0, this.cw, this.ch);
+      b.globalCompositeOperation = f.globalCompositeOperation = LIGHT ? 'source-over' : 'lighter';
+      const K = this.kind;
+      // 輪郭の光（CSS の drop-shadow、ちらつく）
+      const glowC = K === 'fire' ? 'flame' : K === 'ice' ? 'ice' : 'gold', fl = K === 'fire' ? .8 + R() * .4 : 1;
+      this.img.style.filter = `drop-shadow(0 0 ${((3 + h * 12 + E * 14) * s * fl).toFixed(1)}px ${rgba(C[glowC], Math.min(1, .35 + h * .6 + E * .4))})` +
+        (K === 'ice' && this.flash > .02 ? ` brightness(${1 + this.flash * .5}) saturate(${1 - this.flash * .6})` : '');
+      if (K === 'fire') {
+        // 炎：輪郭から粒が昇る（多いほど・高いほど熱い）
+        this.acc += dt * (20 + h * 230 + E * 520) * Math.max(.35, s);
+        for (; this.acc >= 1; this.acc--) {
+          const p = this.pick(), up = (40 + h * 120 + R() * 50) * (1 + E * 1.4) * s;
+          this.p.push({x: p.x + p.nx * 3 * s, y: p.y + 3 * s, vx: p.nx * 18 * s * R() + (R() - .5) * 14 * s, vy: -up, life: 0, dur: (.4 + R() * .45 + h * .35) * (1 + E * .3),
+                       r: (6 + h * 12) * (.6 + R() * .8) * s * (1 + E * .7), ph: R() * 6});
+        }
+        this.p = this.p.filter(q => (q.life += dt / q.dur) < 1);
+        for (const q of this.p) {
+          q.vx += Math.sin(this.t * 7 + q.ph) * 30 * s * dt; q.x += q.vx * dt; q.y += q.vy * dt;
+          const a = q.life, r = q.r * (.55 + Math.sin(Math.PI * Math.min(1, a * 1.3)) * .7);
+          b.globalAlpha = Math.min(1, (1 - a) ** 1.3 * (LIGHT ? .6 : .68));
+          b.drawImage(fireSprite(a, h), X + q.x - r, Y + q.y - r, r * 2, r * 2);
+        }
+        // 前の火の粉
+        this.acc2 += dt * (h * h * 14 + E * 30) * Math.max(.3, s);
+        for (; this.acc2 >= 1; this.acc2--) { const p = this.pick(); this.q.push({t: 'spark', x: p.x, y: p.y, vx: (R() - .5) * 40 * s, vy: -(60 + R() * 120) * s, life: 0, dur: .8 + R() * .8, w: (1 + R() * 1.4) * Math.max(.6, s), slow: 1}); }
+      }
+      if (K === 'ice') {
+        // 冷気：大きくて薄い粒がゆっくり昇る
+        this.acc += dt * (5 + h * 26 + E * 40) * Math.max(.35, s);
+        for (; this.acc >= 1; this.acc--) { const p = this.pick(); this.p.push({x: p.x, y: p.y, vx: p.nx * 14 * s + (R() - .5) * 10 * s, vy: -(14 + R() * 26) * s, life: 0, dur: 1.4 + R() * 1.2, r: (16 + R() * 22) * s}); }
+        this.p = this.p.filter(q => (q.life += dt / q.dur) < 1);
+        for (const q of this.p) {
+          q.x += q.vx * dt; q.y += q.vy * dt; const r = q.r * (1 + q.life);
+          b.globalAlpha = Math.sin(Math.PI * q.life) * (LIGHT ? .3 : .22) * (.5 + h * .7);
+          b.drawImage(sprite(LIGHT ? C.icedeep : C.frost), X + q.x - r, Y + q.y - r, r * 2, r * 2);
+        }
+        // 後ろの青白い光
+        const g = b.createRadialGradient(X + w / 2, Y + this.base * .55, 0, X + w / 2, Y + this.base * .55, Math.max(w, this.hh) * (.6 + h * .5));
+        g.addColorStop(0, rgba(C.ice, .1 + h * .22 + E * .3)); g.addColorStop(1, rgba(C.ice, 0));
+        b.globalAlpha = 1; b.fillStyle = g; b.fillRect(0, 0, this.cw, this.ch);
+        // 足もとの氷の結晶（話題度が高いほど高く・多く。ぶわっで一気に伸びる）
+        f.globalCompositeOperation = 'source-over';
+        for (const sh of this.shards) {
+          const want = sh.on <= .15 + h * .85 ? sh.hm * (.25 + h * .9) * (1 + E * 1.1) : 0;
+          sh.cur += (want - sh.cur) * Math.min(1, dt * (want > sh.cur ? 8 : 2));
+          if (sh.cur < 1) continue;
+          const bx = X + sh.x, by = Y + this.base + 2, tx = bx + sh.lean, ty = by - sh.cur;
+          const gr = f.createLinearGradient(bx, by, tx, ty); gr.addColorStop(0, rgba(C.icedeep, .85)); gr.addColorStop(.6, rgba(C.ice, .8)); gr.addColorStop(1, rgba(C.frost, .95));
+          f.globalAlpha = 1; f.fillStyle = gr; f.beginPath(); f.moveTo(bx - sh.wd / 2, by); f.lineTo(tx, ty); f.lineTo(bx + sh.wd / 2, by); f.closePath(); f.fill();
+          f.strokeStyle = rgba(C.frost, .9); f.lineWidth = 1; f.beginPath(); f.moveTo(bx - sh.wd * .1, by); f.lineTo(tx, ty); f.stroke();   // 稜線の光
+        }
+        // きらめき・雪
+        this.acc2 += dt * (3 + h * 22 + E * 40) * Math.max(.35, s);
+        for (; this.acc2 >= 1; this.acc2--) { const p = this.pick(); this.q.push({t: 'star', x: p.x + (R() - .5) * 8, y: p.y + (R() - .5) * 8, life: 0, dur: .5 + R() * .4, r: (3 + R() * 6) * Math.max(.6, s), c: R() < .6 ? C.frost : C.ice}); }
+        this.acc3 += dt * h * 10 * Math.max(.3, s);
+        for (; this.acc3 >= 1; this.acc3--) this.q.push({t: 'snow', x: -w * .3 + R() * w * 1.6, y: -this.hh * .6 - R() * 20, vx: (R() - .5) * 10, vy: (20 + R() * 30) * s, life: 0, dur: 2.5 + R(), r: (1 + R() * 1.6) * Math.max(.6, s)});
+        if (this.ring != null) {   // 霜の輪（ぎざぎざ）
+          this.ring += dt / .7; const p = this.ring;
+          if (p >= 1) this.ring = null;
+          else { const rr = (20 + (1 - (1 - p) ** 3) * (90 + this.ek * 70)) * s; f.globalAlpha = (1 - p) ** 1.3; f.strokeStyle = rgba(C.frost, 1); f.lineWidth = (1 + 4 * (1 - p)) * Math.max(.6, s);
+            f.beginPath(); for (let i = 0; i <= 28; i++) { const a = i / 28 * Math.PI * 2, j = rr * (i % 2 ? .9 : 1.06); f[i ? 'lineTo' : 'moveTo'](X + w / 2 + Math.cos(a) * j, Y + this.hh * .45 + Math.sin(a) * j); } f.stroke(); }
+        }
+        this.flash *= Math.exp(-dt * 2.4);
+      }
+      if (K === 'gold') {
+        // 後ろの光の筋：ゆっくり回る
+        this.rot += dt * (.12 + h * .35 + E * 1.5);
+        const cx = X + w / 2, cy = Y + this.hh * .42, L = Math.max(w, this.hh) * (.6 + h * .8) * (1 + E * .5), n = 14;
+        const g = b.createRadialGradient(cx, cy, 0, cx, cy, L); g.addColorStop(0, rgba(C.gold, LIGHT ? .55 : .45)); g.addColorStop(1, rgba(C.gold, 0));
+        b.fillStyle = g; b.globalAlpha = Math.min(1, .15 + h * .5 + E * .5);
+        b.beginPath(); for (let i = 0; i < n; i++) { const a = this.rot + i / n * Math.PI * 2, d = Math.PI / n * .45; b.moveTo(cx, cy); b.arc(cx, cy, L, a - d, a + d); b.closePath(); } b.fill();
+        const g2 = b.createRadialGradient(cx, cy, 0, cx, cy, L * .55); g2.addColorStop(0, rgba(C.gold, .35)); g2.addColorStop(1, rgba(C.gold, 0));
+        b.globalAlpha = Math.min(1, .2 + h * .5 + E * .4); b.fillStyle = g2; b.fillRect(0, 0, this.cw, this.ch);
+        this.acc2 += dt * (2 + h * 18 + E * 30) * Math.max(.35, s);
+        for (; this.acc2 >= 1; this.acc2--) { const p = this.pick(); this.q.push({t: 'star', x: p.x + (R() - .5) * 6, y: p.y + (R() - .5) * 6, life: 0, dur: .45 + R() * .4, r: (3 + R() * 6) * Math.max(.6, s), c: R() < .5 ? C.card : C.gold}); }
+        this.acc3 += dt * Math.max(0, h - .3) ** 2 * 6 * Math.max(.3, s);   // 話題度 30 を超えるとコインがときどき跳ねる
+        for (; this.acc3 >= 1; this.acc3--) this.coin(false);
+        if (this.shine != null) {   // 小元素の上を光が走る（輪郭の内側だけ）
+          this.shine += dt / .7; const p = this.shine;
+          if (p >= 1) this.shine = null;
+          else {
+            const o = this.so || (this.so = document.createElement('canvas')); o.width = w; o.height = this.hh; const x = o.getContext('2d');
+            const sx = -w * .6 + p * w * 2.2, gr = x.createLinearGradient(sx, 0, sx + w * .45, this.hh * .3);
+            gr.addColorStop(0, 'rgba(255,255,255,0)'); gr.addColorStop(.5, rgba(C.card, .9)); gr.addColorStop(1, 'rgba(255,255,255,0)');
+            x.fillStyle = gr; x.fillRect(0, 0, w, this.hh); x.globalCompositeOperation = 'destination-in'; x.drawImage(this.mask, 0, 0);
+            f.globalAlpha = 1; f.drawImage(o, X, Y);
+          }
+        }
+      }
+      // 前の粒（火の粉・氷のかけら・きらめき・雪・コイン）
+      this.q = this.q.filter(q => (q.life += dt / q.dur) < 1);
+      for (const q of this.q) {
+        const a = q.life;
+        if (q.t === 'spark') {
+          const drag = Math.exp(-(q.slow ? .6 : 2.6) * dt); q.vx *= drag; q.vy = q.vy * drag - (q.slow ? 30 : 90) * s * dt; q.x += q.vx * dt; q.y += q.vy * dt;
+          f.globalCompositeOperation = LIGHT ? 'source-over' : 'lighter'; f.globalAlpha = (1 - a) ** 1.2; f.strokeStyle = rgba(a < .4 ? C.gold : C.flame, 1); f.lineWidth = q.w; f.lineCap = 'round';
+          f.beginPath(); f.moveTo(X + q.x - q.vx * .03, Y + q.y - q.vy * .03); f.lineTo(X + q.x, Y + q.y); f.stroke();
+        } else if (q.t === 'shard') {
+          q.vy += 700 * s * dt; q.vx *= Math.exp(-.8 * dt); q.x += q.vx * dt; q.y += q.vy * dt; q.rot += q.vr * dt;
+          f.globalCompositeOperation = 'source-over'; f.globalAlpha = Math.min(1, (1 - a) * 1.6);
+          f.save(); f.translate(X + q.x, Y + q.y); f.rotate(q.rot); f.fillStyle = rgba(a < .3 ? C.frost : C.ice, .9); f.strokeStyle = rgba(C.icedeep, .8); f.lineWidth = 1;
+          f.beginPath(); f.moveTo(0, -q.sz); f.lineTo(q.sz * .45, q.sz * .2); f.lineTo(-q.sz * .3, q.sz * .6); f.closePath(); f.fill(); f.stroke(); f.restore();
+        } else if (q.t === 'star') {
+          f.globalCompositeOperation = LIGHT ? 'source-over' : 'lighter'; star(f, X + q.x, Y + q.y, q.r * Math.sin(Math.PI * a), 1, LIGHT && q.c === C.card ? C.gold : q.c);
+        } else if (q.t === 'snow') {
+          q.x += (q.vx + Math.sin(this.t * 2 + q.y * .05) * 8) * dt; q.y += q.vy * dt;
+          f.globalCompositeOperation = 'source-over'; f.globalAlpha = Math.sin(Math.PI * a) * .9; f.fillStyle = rgba(LIGHT ? C.icedeep : C.frost, 1);
+          f.beginPath(); f.arc(X + q.x, Y + q.y, q.r, 0, 7); f.fill();
+        } else if (q.t === 'coin') {
+          q.vy += 900 * s * dt; q.x += q.vx * dt; q.y += q.vy * dt; q.spin += q.vs * dt;
+          if (Y + q.y > this.ch + 20) { q.life = 1; continue; }
+          const cw = Math.abs(Math.cos(q.spin)) * q.r + .6, face = Math.cos(q.spin) > 0;
+          f.globalCompositeOperation = 'source-over'; f.globalAlpha = Math.min(1, (1 - a) * 4);
+          f.fillStyle = rgba(face ? C.gold : C.coin, 1); f.strokeStyle = rgba(C.coindark, 1); f.lineWidth = Math.max(1, q.r * .18);
+          f.beginPath(); f.ellipse(X + q.x, Y + q.y, cw, q.r, 0, 0, 7); f.fill(); f.stroke();
+          if (cw > q.r * .4) { f.beginPath(); f.ellipse(X + q.x, Y + q.y, cw * .62, q.r * .62, 0, 0, 7); f.lineWidth = Math.max(.6, q.r * .1); f.stroke();
+            f.globalAlpha *= .8; f.fillStyle = rgba(C.card, 1); f.beginPath(); f.ellipse(X + q.x - cw * .3, Y + q.y - q.r * .35, cw * .18, q.r * .14, -.5, 0, 7); f.fill(); }
+        }
+      }
+      f.globalAlpha = b.globalAlpha = 1;
+    }
+  }
+
+  // ---------- 3 列を作る ----------
+  const auras = [];
+  for (const c of COLS) {
+    const col = document.createElement('section'); col.className = 'col';
+    col.innerHTML = `<h2><span class="tg">${c.name}</span></h2><ul>${c.pts.map(p => `<li>${p}</li>`).join('')}</ul>
+      <select aria-label="小元素">${EMBS.map(([f, n]) => `<option value="${f}"${f === c.emb ? ' selected' : ''}>${n}</option>`).join('')}</select>
+      <div class="band"><span class="hv"><b class="num">67</b>話題度</span><span class="title">Dota 2</span><div class="emb"><img alt="" src="../emblems/${c.emb}.webp"></div></div>
+      <div class="navrow"><span class="ico"><img alt="" src="../icons/${c.ico}.webp"></span><b>Dota 2</b><small class="num">67</small></div>`;
+    cols.appendChild(col);
+    const emb = col.querySelector('.emb'), ico = col.querySelector('.ico');
+    const big = new Aura(emb, emb.querySelector('img'), c.kind, 1), small = new Aura(ico, ico.querySelector('img'), c.kind, .38);
+    auras.push(big, small);
+    col.querySelector('select').addEventListener('change', ev => {
+      const img = emb.querySelector('img'); img.src = `../emblems/${ev.target.value}.webp`; big.w = 0;
+      img.addEventListener('load', () => big.measure(), {once: true});
+    });
+  }
+
+  // ---------- 話題度・ぶわっ ----------
+  const hs = document.getElementById('h'), hv = document.getElementById('hv');
+  let heat = .67;
+  function setHeat(v, flare) {
+    const to = v / 100, up = to - heat; heat = to; hs.value = v; hv.textContent = v;
+    document.querySelectorAll('.num').forEach(n => n.textContent = v);
+    if (flare && up > .04) auras.forEach(a => a.flare(.45 + up * 1.6));
+  }
+  hs.addEventListener('input', () => setHeat(+hs.value, false));
+  document.getElementById('up').addEventListener('click', () => { const v = +hs.value; heat = Math.max(0, v / 100 - .35); setHeat(v, true); });
+  let timer = null;
+  document.getElementById('auto').addEventListener('click', ev => {
+    if (timer) { clearInterval(timer); timer = null; ev.target.textContent = '自動で切り替え 20 → 45 → 67 → 92'; return; }
+    const seq = [20, 45, 67, 92]; let i = 0; ev.target.textContent = '止める';
+    const go = () => { setHeat(seq[i], true); i = (i + 1) % seq.length; }; go(); timer = setInterval(go, 2600);
+  });
+  document.getElementById('fcol').addEventListener('change', ev => { FCOL = ev.target.value; });
+  document.getElementById('light').addEventListener('change', ev => { LIGHT = ev.target.checked; document.body.classList.toggle('light', LIGHT); });
+
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let last = 0;
+  function tick(now) {
+    const dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
+    TINT = mix(C.acc, C.sc, .5 + .5 * Math.sin(now / 2600 + Math.sin(now / 4100) * 1.5));   // 作品の色と板块の色の間をゆっくり行き来
+    for (const a of auras) a.step(still.matches ? 0 : dt, heat);
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
