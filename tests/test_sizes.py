@@ -171,3 +171,20 @@ class Legible(unittest.TestCase):
         for name, color in render.SECTIONS.items():   # 板块色：白字、浅底上都过 AA
             self.assertGreaterEqual(theme.contrast(theme._rgb(color), (255, 255, 255)), 4.5, name)
             self.assertGreaterEqual(theme.contrast(theme._rgb(color), theme._rgb("#EDEBE6")), 4.5, name)
+
+
+class NavSchemes(unittest.TestCase):
+    """小分類の分け方（⚙ 設定ページで板块ごとに選ぶ）。"""
+
+    def test_sub_of(self):
+        it = {"subs": {"status": "運営中", "platform": "PC"}}
+        self.assertEqual(digest.sub_of(it, "platform"), "PC")
+        self.assertEqual(digest.sub_of(it, "nope"), "運営中")          # 書いていない分け方：最初の値
+        self.assertEqual(digest.sub_of({"sub": "旧"}, "status"), "旧")  # 旧い sub も読む
+
+    def test_choice_falls_back_to_first(self):
+        settings = {"sub_schemes": {"游戏": [{"id": "status"}, {"id": "platform"}], "影视": [{"id": "kind"}]}}
+        with mock.patch.object(digest, "supabase", return_value=[{"section": "游戏", "scheme": "platform"},
+                                                                 {"section": "影视", "scheme": "bogus"}]), \
+             mock.patch.object(digest, "save_json"):
+            self.assertEqual(digest.load_nav_schemes(settings), {"游戏": "platform", "影视": "kind"})
