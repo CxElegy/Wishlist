@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-17T05:02:42+00:00",
+ "checked": "2026-10-17T05:05:36+00:00",
  "jobs": {
   "edit": {
    "claude": true,
@@ -26,25 +26,26 @@
     "绝区零"
    ],
    "need": true,
-   "sig": "f5255045e365",
-   "why": "未編集の記事 345 件（19 版面）"
+   "sig": "5cd71a5b04e0",
+   "why": "未編集の記事 352 件（19 版面）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "A2O LITE",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "Vaundy",
     "哈利波特剧集",
-    "ILLIT",
-    "FROM",
     "チェーンソーマン",
     "Astrae Oratio",
     "The Mandalorian",
-    "漫威电影"
+    "ILLIT",
+    "FROM",
+    "漫威电影",
+    "A2O LITE"
    ],
-   "need": true,
-   "sig": "6a1453b412fb",
-   "why": "足りない 9 版面（Actions で Python が埋める）"
+   "why": "失敗 9 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:58 から）"
   },
   "photos": {
    "claude": true,
