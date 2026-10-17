@@ -3,8 +3,11 @@
 只用公开的网页元数据（og:image / twitter:image / JSON-LD）、正文图片、条目自带图、
 MSN 的公开文章接口、Reddit（官方 API 或公开 RSS）、YouTube oEmbed，以及 Bing / Google 新闻上
 同一篇文章的公开转载和新闻稿原出处。
-请求不带 Referer、不伪装来源；被防盗链、防机器人或登录挡住的图就判为不可用，换下一张，
-都不行时交给网页上的作品封面 / 作品名封面块兜底。
+请求不带 Referer、不伪装来源；被防盗链、防机器人或登录挡住的图就判为不可用，换下一张。
+例外是防盗链：原文网页自己的图（新浪 sinaimg 这类）不带 Referer 都是 403，网页上也显示不出来，
+所以都不行时再带「这张图所在的原文网页」作 Referer 试一次（如实写出图是从哪一页来的，不冒充别的网站）；
+这样拿到的图浏览器直接打不开，由 hdimg.py 存一份到本站（docs/pics/）再显示。
+还是不行时交给网页上的作品封面 / 作品名封面块兜底。
 验证不了的图（大陆网站把海外服务器整个拦掉的那种）一律不用：看网页的人不在大陆就是一张打不开的图。
 
     res = pick(chosen, refs, url)      # res.image / res.source / res.trace / res.reason
@@ -38,10 +41,14 @@ SYNDICATION_SIMILARITY = 0.8  # 转载：两个标题的二元组 Dice 系数至
 SYNDICATION_DAYS = 30         # Google 新闻找转载：搜最近多少天
 SYNDICATION_PAGES = 3         # Google 新闻找转载：最多读几篇（每篇要还原跳转链接再读网页）
 GONE = (404, 410)             # 原文返回这些状态码：页面已经删了，这条报道不出刊
+SHARP_LONG = 1000             # 原文的预览图长边不到这么多：同一页还有更大的预览图（JSON-LD 的 1920×1080 之类）就换大的
+REFERER_TRIES = 3             # 防盗链（403）的原文图，最多带 Referer 重试几张
+SAVED = "（本站保存）"        # 带 Referer 才拿到的图：来源名后面加这个，hdimg.py 存到本站
 
 IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|qrcode|/ads?/|\.svg|\.gif|data:", re.I)
 # 网站 logo、全站共用的默认分享图：放在哪条报道上都不对（theouterhaven Logo.jpg、rbbtoday img_ogp.png、fb_um_logo_m.jpg）
-GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder", re.I)
+GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder"
+                     r"|^/default/[0-9a-f]{8}/", re.I)  # 新浪的默认分享图 n.sinaimg.cn/default/2fb77759/…/320X320.png
 BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied", re.I)
 
 ICON_MIN = 32                 # 来源图标至少这么多像素（Google 图标服务查不到时给 16px 的地球图标）
@@ -84,13 +91,14 @@ def _ascii_url(url):
                                     q(parts.query, "=&%:@!$'()*+,;/?"), q(parts.fragment, "%")))
 
 
-def _fetch(url, limit):
-    """GET 一个地址，最多读 limit 字节。只带 User-Agent，不带 Referer / Cookie。"""
+def _fetch(url, limit, referer=None):
+    """GET 一个地址，最多读 limit 字节。只带 User-Agent，不带 Cookie；referer 只在防盗链重试时给（图所在的原文网页）。"""
     last = Fetched(error="未请求")
     url = _ascii_url(url)
     for attempt in range(RETRIES + 1):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": sources.USER_AGENT})
+            hdr = {"User-Agent": sources.USER_AGENT, **({"Referer": referer} if referer else {})}
+            req = urllib.request.Request(url, headers=hdr)
             with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
                 headers = {k.lower(): v for k, v in resp.headers.items()}
                 length = headers.get("content-length", "")
@@ -134,22 +142,29 @@ def _http_reason(f, what):
 
 # ---------- 图片检查 ----------
 
-def check(url):
+def check(url, referer=None):
     """图片能不能用：返回 (ok, 原因)。实际下载，按文件内容判断格式（不只看 Content-Type），
-    检查大小和尺寸。结果在本次运行内缓存。"""
+    检查大小和尺寸，OK 时原因是「宽×高」。结果在本次运行内缓存。referer 见 _fetch。"""
     if not url or not url.startswith(("http://", "https://")):
         return False, "地址无效"
-    if url in _checks:
-        return _checks[url]
-    f = _fetch(url, IMAGE_LIMIT)
+    key = (url, referer) if referer else url
+    if key in _checks:
+        return _checks[key]
+    f = _fetch(url, IMAGE_LIMIT, referer)
     if f.too_big:
         result = (False, f"图片超过 {IMAGE_LIMIT / 1_000_000:g}MB")
     elif f.status != 200:
         result = (False, _http_reason(f, "图片"))
     else:
         result = _inspect(f.body, f.headers.get("content-type", ""))
-    _checks[url] = result
+    _checks[key] = result
     return result
+
+
+def size_of(why):
+    """check 的 OK 原因「宽×高」→ (宽, 高)；不是这种写法返回 (0, 0)。"""
+    m = re.fullmatch(r"(\d+)×(\d+)", why or "")
+    return (int(m.group(1)), int(m.group(2))) if m else (0, 0)
 
 
 def _inspect(body, content_type):
@@ -278,11 +293,13 @@ def _jsonld_images(node):
                 yield from _jsonld_images(v)
 
 
-MSN_ARTICLE = re.compile(r"https?://(?:www\.)?msn\.(?:com|cn)/([a-z]{2}-[a-z]{2})/.*?/ar-([A-Za-z0-9]+)", re.I)
+# 文章 ar- / 视频 vi- / 图集 ss- / 图集 gm-：都是同一个公开接口
+MSN_ARTICLE = re.compile(r"https?://(?:www\.)?msn\.(?:com|cn)/([a-z]{2}-[a-z]{2})/.*?/(?:ar|vi|ss|gm)-([A-Za-z0-9]+)", re.I)
 
 
 def msn_page(url):
-    """MSN 的文章页是脚本渲染的空壳（HTML 里没有图）：改读 MSN 网页自己用的公开文章接口，取文章里的图。"""
+    """MSN 的文章页是脚本渲染的空壳（HTML 里没有图）：改读 MSN 网页自己用的公开文章接口，取文章里的图。
+    视频（vi-）没有 imageResources，图在 thumbnail（视频的封面）；图集在 slides。"""
     m = MSN_ARTICLE.match(url)
     f = _fetch(f"https://assets.msn.com/content/view/v2/Detail/{m.group(1).lower()}/{m.group(2)}", PAGE_LIMIT)
     if f.status != 200:
@@ -292,8 +309,10 @@ def msn_page(url):
     except ValueError:
         return Page(url, False, "原文 MSN 接口返回格式无法解析")
     p = Page(url, True, og_label="MSN 接口")
-    for im in data.get("imageResources") or []:
-        u = _abs(url, (im or {}).get("url"))
+    thumb = (data.get("thumbnail") or {}).get("image") if isinstance(data.get("thumbnail"), dict) else None
+    slides = [(s or {}).get("image") for s in data.get("slides") or [] if isinstance(s, dict)]
+    for im in [*(data.get("imageResources") or []), thumb, *slides]:
+        u = _abs(url, (im or {}).get("url") if isinstance(im, dict) else None)
         if u and u not in p.og:
             p.og.append(u)
     if not p.og:
@@ -558,10 +577,13 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
     AI 挑的 > 条目自带图 > 原文（og:image > JSON-LD > 正文图；Reddit 帖子读帖子本身和外链）
     > 其它来源的原文 > 条目自带的 Bing 缩略图 > Bing / Google 新闻上的同一篇转载。
     Bing 缩略图是 Bing 裁过的一部分（横长的图会变成竖的一截），所以排在原文的图后面，原文拿不到图时才用。
-    都不行返回 image=None（网页上这条进「其他消息」文字列表，或用这一版面唯一一次的作品封面）。
+    原文的预览图（og:image / JSON-LD）长边不到 SHARP_LONG 时，同一页后面更大的预览图优先（同一张图的大尺寸版）。
+    都不行时，原文网页自己的图里被防盗链挡掉（403）的，带原文网页作 Referer 再试（来源名加 SAVED，hdimg.py 存到本站）。
+    还不行返回 image=None（网页上这条进「其他消息」文字列表，或用这一版面唯一一次的作品封面）。
     网站 logo / 全站默认分享图不用；avoid 里的图（同一期别的报道已经用了）也不用，免得几张卡片同一张图。"""
     res = Result()
     seen = set()
+    from_page = {}  # 原文网页（不是转载）里的候选图 → 那一页的地址：防盗链重试时作 Referer
     deadline = time.monotonic() + (STORY_BUDGET if budget is None else budget)
 
     def stages():
@@ -577,6 +599,8 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
                 p = page(link)
                 found = [(p.og_label, u) for u in p.og] + [("JSON-LD", u) for u in p.jsonld] + \
                         [("正文图", u) for u in p.body]
+                for _, u in found:
+                    from_page.setdefault(u, link)
                 note = p.reason
             if i:
                 found = [(f"{label}（其它来源）", u) for label, u in found]
@@ -590,26 +614,59 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
                 res.notes.append(note)
             yield found
 
-    for stage in stages():
-        for label, img in stage:
-            if not img or img in seen:
-                continue
-            if GENERIC.search(urllib.parse.urlparse(img).path) or img in avoid:
+    def preview(label):
+        return label.split("（")[0] in ("og:image", "MSN 接口", "JSON-LD")
+
+    def scan():
+        for stage in stages():
+            small = None  # 这一段里先找到的、偏小的原文预览图（后面有更大的就换）
+            for label, img in stage:
+                if not img or img in seen:
+                    continue
+                if small and not preview(label):
+                    break
+                if GENERIC.search(urllib.parse.urlparse(img).path) or img in avoid:
+                    seen.add(img)
+                    res.trace.append((label, img, "网站 logo / 默认图" if img not in avoid else "和别的报道重复"))
+                    continue
+                if time.monotonic() > deadline:
+                    res.notes.append(f"找图超过 {STORY_BUDGET if budget is None else budget} 秒，停止")
+                    break
                 seen.add(img)
-                res.trace.append((label, img, "网站 logo / 默认图" if img not in avoid else "和别的报道重复"))
-                continue
-            if time.monotonic() > deadline:
-                res.notes.append(f"找图超过 {STORY_BUDGET if budget is None else budget} 秒，停止")
-                return res
-            seen.add(img)
-            ok, why = check(img)
-            res.trace.append((label, img, why if not ok else "OK"))
-            if ok:
-                res.image, res.source = img, label
-                return res
-            if len(seen) >= max_checks:
-                res.notes.append(f"已检查 {max_checks} 张，停止")
-                return res
+                ok, why = check(img)
+                res.trace.append((label, img, why if not ok else "OK"))
+                if ok:
+                    if small is None and preview(label) and max(size_of(why)) < SHARP_LONG:
+                        small = (label, img, max(size_of(why)))
+                        continue
+                    if small is None or max(size_of(why)) > small[2]:
+                        res.image, res.source = img, label
+                        return True
+                if len(seen) >= max_checks:
+                    res.notes.append(f"已检查 {max_checks} 张，停止")
+                    break
+            if small:
+                res.image, res.source = small[1], small[0]
+                return True
+            if res.notes and res.notes[-1].startswith(("找图超过", "已检查")):
+                return False
+        return False
+
+    if scan():
+        return res
+    # 防盗链：原文网页自己的图，带那一页作 Referer 再试（浏览器打不开，hdimg.py 存到本站）
+    tries = 0
+    for label, img, why in list(res.trace):
+        if tries >= REFERER_TRIES:
+            break
+        if "HTTP 403" not in why or img not in from_page or img in avoid:
+            continue
+        tries += 1
+        ok, why = check(img, referer=from_page[img])
+        res.trace.append((label + SAVED, img, why if not ok else "OK"))
+        if ok:
+            res.image, res.source = img, label + SAVED
+            return res
     return res
 
 

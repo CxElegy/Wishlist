@@ -645,9 +645,19 @@ def _source_name(story):
     return story.get("source") or host.removeprefix("www.")
 
 
-def _img_url(u):
-    """配図の網址を整える。Bing ニュースの縮小画像（bing.com/th?id=…&w=1200）は、元が小さいと
+_LOCAL = []  # [原図の網址 → 本站の高清版（docs/pics/…）]：hdimg.py が作る。最初に使うときに読む
+
+
+def _img_url(u, local=True):
+    """配図の網址を整える。本站に高清版（小さい図を OpenCV で拡大したもの・防盗链で直接は出せない図）があればそれ
+    （local=False で元の網址）。Bing ニュースの縮小画像（bing.com/th?id=…&w=1200）は、元が小さいと
     指定の幅まで白い余白を足して返すので、w / h を外して元の大きさで取る（枠の中に白い帯ができない）。"""
+    if local and isinstance(u, str):
+        if not _LOCAL:
+            import hdimg
+            _LOCAL.append(hdimg.local_map())
+        if u in _LOCAL[0]:
+            return _LOCAL[0][u]
     if isinstance(u, str) and re.match(r"^https://(www\.)?bing\.com/th\?", u):
         u = re.sub(r"&(amp;)?[wh]=\d+", "", u)
     return u
@@ -659,7 +669,8 @@ def _pic(story):
     前一个打不开（防盗链、网站删图、图标太小……）网页上自动换下一个。"""
     img, name = story.get("image"), story.get("_work", "")
     fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
-    chain = list(dict.fromkeys(_img_url(u) for u in [img, *fbs] if u))  # 第一张是 src，其余按顺序备用
+    # 第一张是 src，其余按顺序备用。本站的高清版打不开时还有原图
+    chain = list(dict.fromkeys(v for u in [img, *fbs] if u for v in (_img_url(u), _img_url(u, local=False))))
     fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
     src = chain[0] if chain else None
     tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'

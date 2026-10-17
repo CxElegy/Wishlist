@@ -20,6 +20,18 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 
 USER_AGENT = "Mozilla/5.0 (wishlist-digest; +https://github.com/CxElegy/Wishlist)"
+
+
+def _install_alpn():
+    """所有 urlopen 都和浏览器一样在 TLS 握手里声明 ALPN（http/1.1）。不声明时 WordPress 的图片 CDN（i0.wp.com）
+    一律回 404，浏览器里却打得开：配图检查把能用的图误判成坏图（2026-10-17 韓スタ！的推荐卡没图）。"""
+    import ssl
+    ctx = ssl.create_default_context()
+    ctx.set_alpn_protocols(["http/1.1"])
+    urllib.request.install_opener(urllib.request.build_opener(urllib.request.HTTPSHandler(context=ctx)))
+
+
+_install_alpn()
 TIMEOUT = 20
 ATOM = "{http://www.w3.org/2005/Atom}"
 MEDIA = "{http://search.yahoo.com/mrss/}"
