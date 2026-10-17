@@ -1565,7 +1565,10 @@ def recommend(force_discover=False):
     common = {_like_key(k) for w in wishes for label, kws in w["likes"].items()
               if label in (w.get("basics") or []) for k in kws}
     old = load_json(RECOMMEND_FILE) or {}
-    images = old.get("images", {})
+    # 配图缓存：找到的图一直用；没找到的（None）只当天不再找，第二天重新找（网站修好了、找图规则改进了都能补上）
+    today = dt.date.today().isoformat()
+    misses = {u: d for u, d in (old.get("image_misses") or {}).items() if d == today}
+    images = {u: i for u, i in old.get("images", {}).items() if i or u in misses}
     wish_urls = {w.get("url") for w in wishes}
     votes = load_feedback()
     taste = learn_taste(votes, wishes, common)
@@ -1731,7 +1734,9 @@ def recommend(force_discover=False):
     keep = {p["url"] for p in picks}
     # 投票から学んだ口味の上位（トップの右の「あなたの好み」に出す）
     top = sorted(((k, v) for k, v in taste.items() if v > 0), key=lambda kv: -kv[1])[:8]
+    misses.update({u: today for u, i in images.items() if not i and u not in misses})
     save_json(RECOMMEND_FILE, {"picks": picks, "images": {u: i for u, i in images.items() if u in keep},
+                               "image_misses": {u: d for u, d in misses.items() if u in keep},
                                "taste": [[k, v] for k, v in top]})
     print(f"我会喜欢？：{len(picks) - len(follow) - len(boards)} 条按愿望清单 + {len(boards)} 条关注版面的其他消息 + "
           f"{len(follow)} 条同类新消息（学自 {len(votes)} 次投票，{len(liked)} 次赞）", file=sys.stderr)

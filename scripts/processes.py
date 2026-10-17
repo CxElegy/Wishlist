@@ -61,7 +61,7 @@ COMPONENTS = {
                  "what": "AI 編集がまだの新着のうち、要紧（urgent_patterns）のものだけを規則で「重大」にまとめて先に載せる"},
     "pending": {"kind": "rule", "name": "整理待ち split_unedited", "spec": "_covered より後 · edit.json にない版面 → 版面に載せない · 原題 20 件まで表示",
                 "what": "digest.split_unedited / render._pending：版面には AI 編集が整理した記事だけ。未整理の新着は版面の下の折りたたみ「整理待ち N 件」に原題・出典だけ"},
-    "imgpick": {"kind": "algo", "name": "配図の選び方 images.pick", "spec": "短辺 ≥200 · 長辺 ≥300 · 8MB まで · 1 件 60 秒・12 枚まで",
+    "imgpick": {"kind": "algo", "name": "配図の選び方 images.pick", "spec": "短辺 ≥200 · 長辺 ≥300 · 8MB まで · 1 件 60 秒・12 枚まで · TLS は ALPN http/1.1（ブラウザと同じ。ないと i0.wp.com が 404）· おすすめの「図なし」は翌日もう一度探す",
                 "what": "AI 指定 → 記事の画像 → og:image → JSON-LD → 本文 → Bing の縮小画像 → 転載ページ。ロゴ・既定画像は除く。"
                         "Bing の縮小画像（bing.com/th）は Bing が切った一部分なので原文の図の後ろ。repair-images（収集の手動実行）で既刊も直す"},
     "imgsharp": {"kind": "rule", "name": "より大きい予告画像 / 防盗链の再試行", "spec": "og:image・JSON-LD の長辺 < 1000 なら同じページの大きい方 · 403 は原文ページを Referer に 3 枚まで",
