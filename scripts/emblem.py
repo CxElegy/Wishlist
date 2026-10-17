@@ -760,6 +760,7 @@ def fit_all(name, drawn=False):
     path = ROOT / "items.yaml"
     item = next(i for i in yaml.safe_load(path.read_text(encoding="utf-8"))["items"] if i["name"] == name)
     ems = item.get("emblem") or []
+    cuts = [x["body"][1] > 1 for x in ems if x.get("body")]   # 前に決めた「上半身に切る / 全身」（モデルがないときはこの多数に合わせる）
     for x in ems:
         if x.get("shape") == "badge" and not x.get("ar") and not x.get("crop"):   # カードの縦横比（窓で切るか全体を見せるかの判断に使う）
             try:
@@ -793,9 +794,15 @@ def fit_all(name, drawn=False):
             elif full or x.get("upper") is False:   # 目から足の裏までの長さで大きさをそろえてから、上半身に切る（網页の --bl / --bf）
                 mk = body_marks(out)
                 if mk:
-                    out, body = bust_from_body(out, mk)
+                    real, why = real_body(out, mk)
+                    if real is None:
+                        real = bool(cuts) and sum(cuts) * 2 > len(cuts)
+                    if real:   # ふつうの人の体つきだけ上半身に。頭の大きいキャラ・動物・マスコットは全身のまま（あつ森・ポチタ）
+                        out, body = bust_from_body(out, mk)
+                    else:
+                        body = list(mk[:5])
                     x["body"] = body
-                    print(f"  {x['subject']}：目 {mk[0]} · 足の裏 {mk[1]} · 重心 {mk[2]} · 大きさ {mk[4]}（{mk[5]}）→ 上半身", file=sys.stderr)
+                    print(f"  {x['subject']}：目 {mk[0]} · 足の裏 {mk[1]} · 重心 {mk[2]} · 大きさ {mk[4]}（{mk[5]}）· {why} → {'上半身' if real else '全身'}", file=sys.stderr)
             if fs and fs > CLOSEUP and x.get("page"):   # 顔だけのアップは浮くので、同じキャラのページから胸像を探す
                 m = re.match(r"^(https://[^/]+)/wiki/(.+)$", x["page"])
                 found = m and find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "),
@@ -962,6 +969,46 @@ def body_marks(img):
 
 STAND_RATIO = 1.3   # 背の高さを測って上半身に切るのは、輪郭の高さが幅のこれ倍以上（縦に立った人の形）のときだけ
 BUST_CUT = 0.40   # 全身の立ち絵を「目 + 目から足の裏の長さ × これ」（腰のあたり）で切って上半身にする。どのキャラも体の同じところで切れる
+
+
+HIP_MAX = 0.60   # 腰（姿勢モデルの左右の腰の点）が「頭のてっぺん〜足の裏」のこれより上なら、ふつうの人の体つき（実測 0.43〜0.52）。下なら頭の大きい体つき（ちびキャラ・3D のデフォルメ）
+BODY_CONF = 0.6   # 姿勢モデルの目印の確かさの平均がこれ未満なら「人の体」と見なさない（動物・マスコット：あつ森の住民、ポチタ）
+FACE_REAL = 0.12   # 姿勢モデルが人を見つけられないとき：顔の高さが全体のこれ以下なら、ふつうの人の体つき（武器・髪が多い立ち絵）
+
+
+def real_body(img, mk):
+    """ふつうの人の体つき（頭が全体の 1/7 くらい）か → (True/False, 理由)。上半身に切るのはこのときだけ。
+    頭が大きいキャラ（3D のデフォルメ、ちびキャラ）・人の形でないもの（動物、マスコット）は、上半身に切ると何かわからなくなるので全身のまま。
+    姿勢モデルで腰の高さを測る（周りに余白を足すと見つけやすい）。見つからなければ顔の大きさで。"""
+    import numpy as np
+    from PIL import Image
+    a = np.array(img.convert("RGBA").getchannel("A")) > 128
+    ys = np.nonzero(a)[0]
+    w, h = img.size
+    top, foot = float(ys.min()), mk[1] * h
+    m = _pose_model()
+    if m is None:   # モデルがない（Actions）：決めない。fit_all がこの版面のほかの小元素に合わせる
+        return None, "姿勢モデルなし（ほかの小元素に合わせる）"
+    if m is not None:
+        p = int(max(w, h) * 0.15)
+        bg = Image.new("RGBA", (w + 2 * p, h + 2 * p), "white")
+        bg.alpha_composite(img.convert("RGBA"), (p, p))
+        r = m(bg.convert("RGB"), verbose=False)[0]
+        if r.keypoints is not None and len(r.boxes):
+            i = int(np.argmax(r.boxes.conf.cpu().numpy()))
+            kp, cf = r.keypoints.xy[i].cpu().numpy(), r.keypoints.conf[i].cpu().numpy()
+            hips = [kp[j][1] - p for j in (11, 12) if cf[j] >= POSE_MIN]
+            if cf.mean() >= BODY_CONF and hips:
+                hip = (float(np.mean(hips)) - top) / max(1.0, foot - top)
+                if hip <= HIP_MAX:
+                    return True, f"腰 {hip:.2f}（ふつうの体つき）"
+                return False, f"腰 {hip:.2f}（頭が大きい体つき）"
+    bg = Image.new("RGBA", img.size, "white")
+    bg.alpha_composite(img.convert("RGBA"))
+    f = face_box(bg)
+    if f and f[3] / max(1.0, foot - top) <= FACE_REAL:
+        return True, f"顔 {f[3] / (foot - top):.2f}（ふつうの体つき）"
+    return False, "人の体つきが見つからない（動物・マスコット）"
 
 
 def bust_from_body(img, mk, cut=BUST_CUT):
