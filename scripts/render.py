@@ -2372,10 +2372,10 @@ NAV_STYLES = {
 .nav .flame{position:relative;flex:none;width:50px;height:68px;margin:-6px -4px 0 -2px;--h:var(--heat,.3);
  /* 温度の色：冷めた火（0）＝暗い赤の熾火 → 熱い火（1）＝橙・金・白。--hc は NAV_JS が毎フレーム滑らかに入れる */
  --hc:var(--h);transform-origin:50% 45%;
- /* 作品の色（版面の --acc、NAV_JS が --tint と強さ --tw を滑らかに入れる）を外側ほど強く混ぜる：作品ごとに炎の色が少し違う */
- --fo:color-mix(in oklab,color-mix(in oklab,color-mix(in oklab,var(--ember),var(--alert) calc(clamp(0,var(--hc) * 1.8,1) * 100%)),var(--flame) calc(clamp(0,(var(--hc) - .55) * 2.2,1) * 100%)),var(--tint,var(--flame)) calc(var(--tw,0) * 50%));
- --fm:color-mix(in oklab,color-mix(in oklab,color-mix(in oklab,var(--ember),var(--flame) calc(clamp(0,var(--hc) * 1.6,1) * 100%)),var(--gold) calc(clamp(0,(var(--hc) - .5) * 2,1) * 100%)),var(--tint,var(--flame)) calc(var(--tw,0) * 35%));
- --fi:color-mix(in oklab,color-mix(in oklab,var(--flame),var(--gold) calc(clamp(0,var(--hc) * 1.4,1) * 100%)),var(--tint,var(--flame)) calc(var(--tw,0) * 15%));
+ /* 作品の色（版面の --acc）と板块の色（--sc）を NAV_JS が --tint・強さ --tw に入れ、外側ほど強く混ぜる（白い芯はそのまま）。2 色の間をゆっくり行き来する */
+ --fo:color-mix(in oklab,color-mix(in oklab,color-mix(in oklab,var(--ember),var(--alert) calc(clamp(0,var(--hc) * 1.8,1) * 100%)),var(--flame) calc(clamp(0,(var(--hc) - .55) * 2.2,1) * 100%)),var(--tint,var(--flame)) calc(var(--tw,0) * 70%));
+ --fm:color-mix(in oklab,color-mix(in oklab,color-mix(in oklab,var(--ember),var(--flame) calc(clamp(0,var(--hc) * 1.6,1) * 100%)),var(--gold) calc(clamp(0,(var(--hc) - .5) * 2,1) * 100%)),var(--tint,var(--flame)) calc(var(--tw,0) * 50%));
+ --fi:color-mix(in oklab,color-mix(in oklab,var(--flame),var(--gold) calc(clamp(0,var(--hc) * 1.4,1) * 100%)),var(--tint,var(--flame)) calc(var(--tw,0) * 25%));
  --fc:color-mix(in oklab,var(--gold),var(--card) calc(clamp(.15,var(--hc),1) * 100%))}
 
 .nav .flame svg{position:absolute;left:0;bottom:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;
@@ -2873,16 +2873,17 @@ NAV_JS = """
     return Object.fromEntries(Object.keys(SPEC).map(q => { const t = q[0] === 't'; return [q, [(r() - .5) * (t ? 10 : 5), t ? .72 + r() * .6 : .88 + r() * .26, (r() - .5) * (t ? 16 : 7)]]; }));
   }
   FL.shT = shapeOf('top'); FL.sh = JSON.parse(JSON.stringify(FL.shT));
-  // 作品の色：版面の --acc。色の薄い（灰・白に近い）色は弱く混ぜる
+  // 炎に混ぜる色：作品の色（版面の --acc）と板块の色（目次の --sc）。色の薄い（灰・白に近い）色は弱く混ぜる
   const cvs = document.createElement('canvas').getContext('2d');
-  function tintOf(sec) {
-    const c = sec && getComputedStyle(sec).getPropertyValue('--acc').trim();
+  function tintOf(el, prop) {
+    const c = el && getComputedStyle(el).getPropertyValue(prop).trim();
     if (!c) return [0, [0, 0, 0]];
     cvs.fillStyle = '#000'; cvs.fillStyle = c; const x = cvs.fillStyle;
     const v = x[0] === '#' ? [1, 3, 5].map(i => parseInt(x.slice(i, i + 2), 16)) : (x.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
     return [Math.min(1, (Math.max(...v) - Math.min(...v)) / 255 * 1.6), v];
   }
-  FL.tw = 0; FL.twT = 0; FL.tint = [255, 122, 26]; FL.tintT = FL.tint.slice();
+  FL.tw = 0; FL.tint = [255, 122, 26]; FL.cA = [0, FL.tint]; FL.cB = [0, FL.tint];
+  const GOLD = tintOf(document.documentElement, '--gold')[1], CARD = tintOf(document.documentElement, '--card')[1];
   const layers = fl ? [...fl.querySelectorAll('.L')].map(n => ({n, k: n.dataset.k, s: SPEC[n.dataset.k], ph: Math.random() * 100})) : [];
   const turb = fl && fl.querySelector('feTurbulence'), disp = fl && fl.querySelector('feDisplacementMap');
   const ems = fl ? [...fl.querySelectorAll('.em')].map(e => ({e, life: Math.random(), dur: 1, dx: 0, sway: 0, ph: 0, b: 0})) : [];
@@ -2905,7 +2906,8 @@ NAV_JS = """
     FL.sg = {t: 0, k, att: .04 + R() * .06, hold: .06 + R() * .16, dec: 2.2 + R() * 1.6, wig: 22 + R() * 24,
              af: R() < .55 ? {at: .3 + R() * .35, k: .2 + R() * .3} : null,      // 半分くらいは後からもう一度小さく燃え上がる
              lean: (R() - .5) * 26, wide: .5 + R() * .5, tall: .75 + R() * .6,   // 傾き（±13°）・横への広がり・縦への伸び
-             lay: Object.fromEntries(Object.keys(SPEC).map(q => [q, .5 + R() * 1.1]))};   // 層ごとの伸び方（片方の舌だけ高く跳ねる など）
+             lay: Object.fromEntries(Object.keys(SPEC).map(q => [q, .5 + R() * 1.1])),   // 層ごとの伸び方（片方の舌だけ高く跳ねる など）
+             col: [FL.cA[1], FL.cB[1], GOLD, CARD][(R() * 4) | 0]};   // ぶわっの色もくじ（作品の色・板块の色・金・白）
     if (cur > .05) FL.sg.t = FL.sg.att;   // 燃え上がっている最中なら山から続ける
     blast(fl, k, to >= .85 && FL.target < .85);   // 画面全体を使うのは「沸騰」に上がったときだけ
     logo.classList.remove('quake'); void logo.offsetWidth; logo.classList.add('quake');   // ロゴが小さく揺れる
@@ -3067,8 +3069,12 @@ NAV_JS = """
     fl.style.scale = g ? `${(1 + S * g.wide).toFixed(3)} ${(1 + S * g.tall).toFixed(3)}` : '1';
     fl.style.rotate = g ? (g.lean * E / g.k).toFixed(2) + 'deg' : '0deg';
     for (const q in FL.shT) for (let j = 0; j < 3; j++) FL.sh[q][j] += (FL.shT[q][j] - FL.sh[q][j]) * Math.min(1, dt * 3);   // 作品ごとの形へ滑らかに
-    const mx = Math.min(1, dt * 3); FL.tw += (FL.twT - FL.tw) * mx;   // 作品の色へ滑らかに
-    for (let j = 0; j < 3; j++) FL.tint[j] += (FL.tintT[j] - FL.tint[j]) * mx;
+    // 色：作品の色と板块の色の間をゆっくり行き来（どちらかが薄い色ならもう一方）。ぶわっの瞬間はくじで選んだ色がぱっと差す
+    const [wA, cA] = FL.cA, [wB, cB] = FL.cB, d = wA && wB ? .5 + .5 * Math.sin(now / 2600 + Math.sin(now / 4100) * 1.5) : wB ? 1 : 0;
+    let tw = wA * (1 - d) + wB * d, tc = cA.map((v, j) => v + (cB[j] - v) * d);
+    if (g && g.col) { const m = Math.min(1, E); tc = tc.map((v, j) => v + (g.col[j] - v) * m); tw = Math.max(tw, m * .9); }
+    const mx = Math.min(1, dt * 3); FL.tw += (tw - FL.tw) * mx;
+    for (let j = 0; j < 3; j++) FL.tint[j] += (tc[j] - FL.tint[j]) * mx;
     fl.style.setProperty('--tint', `rgb(${FL.tint.map(Math.round).join(',')})`); fl.style.setProperty('--tw', FL.tw.toFixed(3));
     const h = FL.h, amp = .18 + h * 1.5 + E * .8;
     FL.t += dt * (.6 + h * 3.8 + E * 4);
@@ -3111,10 +3117,10 @@ NAV_JS = """
     const v = own == null ? maxHeat : own;
     const to = own == null ? Math.min(.35, v / 100) : v / 100;
     const go = !FL.first && to - FL.target > .04 && FL.run, hv = logo.querySelector('.hv'), was = +hv.textContent || 0;
+    const sec = on && on.getAttribute('href') && document.querySelector(on.getAttribute('href'));
+    FL.cA = tintOf(sec, '--acc'); FL.cB = tintOf(on, '--sc');   // 先に新しい作品の色にしてから ぶわっ（ぶわっの色のくじに使う）
     if (go) flare(to - FL.target, to);   // 強くなる切り替えだけ ぶわっ（開いた直後・止まっているときは出さない）
     FL.first = false; FL.target = to; FL.shT = shapeOf(on && on.getAttribute('href') || 'top');
-    const sec = on && on.getAttribute('href') && document.querySelector(on.getAttribute('href'));
-    const [tw, tc] = tintOf(sec); FL.twT = tw; if (tw) FL.tintT = tc;
     nav.style.setProperty('--heat', FL.target.toFixed(2));
     hv.textContent = v ? String(v) : '';
     if (go && v) {   // 数字が弾んで、前の点から数え上がる（0.5 秒）
