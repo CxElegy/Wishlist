@@ -105,7 +105,7 @@ jobs:
           exit 1
 
       # 新加的关注项已经收集到消息、但当天还没被 AI 编辑过：立刻叫 Claude 定时任务（Routine）编一次，
-      # 不用等 12:43 / 23:43。必须在推送之后，Routine 拉仓库时才看得到新条目。
+      # 不用等后台ゲート下一回。必须在推送之后，Routine 拉仓库时才看得到新条目。
       # 需要仓库 Secret ROUTINE_FIRE_TOKEN（claude.ai/code/routines → AI 编辑（新）→ 编辑 → 添加触发器 → API → 生成令牌）；
       # 没设置就跳过，照旧等定时编排
       - name: 新关注项 → 立刻 AI 编辑

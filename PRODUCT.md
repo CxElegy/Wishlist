@@ -24,7 +24,7 @@ Every 2 hours it collects the latest news on the watch items from free RSS feeds
 
 ## Operating Context
 
-- GitHub Actions (collect and publish every 2 hours) → GitHub Pages (static HTML). A Claude scheduled task (AI editing) runs twice a day, and the background gate (`scripts/gate.py`) also wakes it after a collection leaves entries waiting (on by default for AI editing; the repository variable `GATE_FIRE=0` turns it off).
+- GitHub Actions (collect and publish every 2 hours) → GitHub Pages (static HTML). A Claude scheduled task (AI editing) no longer runs on a clock (stopped 2026-10-17); the background gate (`scripts/gate.py`) wakes it after a collection leaves entries waiting (on by default for AI editing; the repository variable `GATE_FIRE=0` turns it off).
 - Supabase stores votes, settings-page requests, photo uploads and the news archive. The page writes to it directly with the public key.
 - Discord receives urgent notices and the weekly digest.
 - Article bodies stay in their original languages (Japanese, Simplified Chinese, Traditional Chinese, Korean, English). AI headlines are written in Chinese.
