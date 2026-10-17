@@ -2309,7 +2309,7 @@ NAV_STYLES = {
 /* v6（testground/compare.html）：板块ごとの枠を画面の高さいっぱいに並べる。作品が少ないうちは何も隠さず行の間隔を広げ、
    増えたら NAV_JS が ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。
    見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
-.nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--cur,var(--alert));color:var(--ink);transition:border-color .3s}   /* 左の縦線は読んでいる板块の色 */
+.nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--cur,var(--alert));color:var(--ink);transition:border-color .15s}   /* 左の縦線は読んでいる板块の色 */
 .nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
 .nav .nhead .pill{flex:none;height:30px;padding-left:4px;font-size:13px}
 .nav .nhead .pill.on{padding-left:58px;padding-right:12px}
@@ -2318,7 +2318,7 @@ NAV_STYLES = {
 .nav .nhead .pill.on .nm{flex-direction:row;align-items:baseline;gap:6px}
 .nav .rail{flex:1;min-height:0;position:relative;overflow:hidden;margin-right:8px;scrollbar-width:thin}
 .nav .pill{height:34px;padding:0 6px 0 34px;color:rgba(26,28,34,.86);font:800 15px/1.35 var(--font-sans)}
-.nav .nbody .pill{height:var(--ih,34px);transition:height .25s}
+.nav .nbody .pill{height:var(--ih,34px)}   /* 高さはアニメーションしない（毎フレーム組み直しになって重い） */
 .nav .pill .no{display:none}
 .nav .pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .nav .pill .cnt{display:none;font:700 11px var(--font-mono);letter-spacing:.06em;color:rgba(26,28,34,.62)}
@@ -2341,7 +2341,7 @@ NAV_STYLES = {
 .nav .pill.on{color:var(--card);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:58px}
 .nav .pill.on .ic{display:grid;position:absolute;left:2px;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:0;
  border:3px solid #FFF;box-shadow:3px 3px 0 var(--ink);transform:rotate(-7deg);font-size:18px;
- animation:cutin .35s cubic-bezier(.3,1.5,.5,1)}
+ animation:cutin .2s cubic-bezier(.3,1.4,.5,1)}
 @keyframes cutin{from{transform:rotate(-20deg) scale(.3);opacity:0}to{transform:rotate(-7deg) scale(1);opacity:1}}
 .nav .pill.on .nm{display:flex;flex-direction:column;gap:1px}
 .nav .pill.on .cnt{display:block;color:var(--gold)}
@@ -2351,10 +2351,12 @@ NAV_STYLES = {
 /* 板块のアイコン（twemoji）は宽屏では出さない：板块は色つきの斜めのラベルで十分 */
 .nav .nsec .si{display:none}
 /* 板块の枠：位置と高さは NAV_JS が決める（動くときはなめらかに） */
-.nav .nslot{position:absolute;left:0;right:0;overflow:hidden;transition:top .34s cubic-bezier(.2,.8,.2,1),height .34s cubic-bezier(.2,.8,.2,1)}
+/* 枠の移動は transform だけ（GPU で動くので滑らか）。高さは即座に変え、下の枠が上に重なって隠す（背景は紙の色） */
+.nav .nslot{position:absolute;left:0;right:0;top:0;overflow:hidden;background:var(--paper);will-change:transform;
+ transition:transform .18s cubic-bezier(.2,.9,.3,1)}
 .nav .nslot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--hair)}
 .nav .nsec{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:4px 8px;height:42px;padding:8px 4px 0 0;text-decoration:none;color:var(--ink)}
-.nav .nsec .tg{transform-origin:left center;transition:transform .34s cubic-bezier(.2,.8,.2,1),box-shadow .34s}
+.nav .nsec .tg{transform-origin:left center;transition:transform .18s cubic-bezier(.2,.9,.3,1),box-shadow .18s}
 .nav .nsec .tg{font-size:14px;padding:1px 12px}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
 .nav .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:rgba(26,28,34,.62)}
@@ -2677,7 +2679,7 @@ NAV_JS = """
     let y = 0;
     S.forEach((s, i) => {
       const x = plan[i], h = hOf2(x, i) + spare, show = new Set(x ? x.items : []);
-      s.el.style.top = y + 'px'; s.el.style.height = h + 'px'; y += h;
+      s.el.style.transform = `translateY(${y}px)`; s.el.style.height = h + 'px'; y += h;
       s.el.classList.toggle('cur', i === k);
       s.pills.forEach(p => p.classList.toggle('x', !show.has(p)));
       if (s.subs) s.subs.classList.toggle('x', !(x && x.chips));
@@ -2692,7 +2694,7 @@ NAV_JS = """
   function narrow(k) {
     S.forEach((s, i) => {
       s.el.classList.toggle('cur', i === k);
-      s.el.style.top = s.el.style.height = '';
+      s.el.style.transform = s.el.style.height = '';
       s.pills.forEach(p => p.classList.remove('x'));
     });
     lk = null;
