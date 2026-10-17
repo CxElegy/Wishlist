@@ -886,6 +886,51 @@ def _has_photo(x):
     return bool(x.get("image") or x.get("_fbs"))
 
 
+def _own_photo(x):
+    """报道自己的图（不算借来的作品封面）。トップのポスターは同じ重要度ならこちらを先に。"""
+    return bool(x.get("image")) and not x.get("_borrowed")
+
+
+def _story_key(work, title):
+    """同じ作品の同じ出来事かを見るための語（digest.story_tokens から作品名を除いたもの）。"""
+    import digest  # digest が render を import しているので、使うときに読む
+    names = [work.get("name", "")] + list(work.get("keywords") or []) + list(work.get("match") or [])
+    generic = set().union(*(digest.story_tokens(str(n)) for n in names)) if names else set()
+    return digest.story_tokens(title) - generic - FRONT_COMMON
+
+
+# 見出しによく出るが「どの出来事か」を表さない語（同じ作品の別の記事でも共通）。これ以外の語が重なれば同じ出来事とみなす
+FRONT_COMMON = {"update", "updates", "news", "official", "report", "reports", "release", "date", "revealed", "reveals",
+                "announced", "announces", "confirmed", "confirms", "fans", "movie", "film", "game", "series", "season"}
+
+
+def _front_pick(ranked, n):
+    """ポスター 1 本＋写真の壁 n 本を選ぶ（ranked は重要度・新しさ順の (作品, 記事)）。
+    - 作品ごとに 1 本目を全部出してから 2 本目（同じ作品の記事ばかり並ばない）
+    - 同じ写真は 2 回出さない
+    - 同じ作品の 2 本目以降は、すでに出した記事と「どの出来事か」を表す語（作品名と FRONT_COMMON を除く）が
+      1 つでも重なれば出さない（trailer・doom が重なる＝同じ予告編・同じ人物の話）。迷ったら出さない：
+      同じニュースが 2 回並ぶより、壁が 1 枚少ないほうがいい"""
+    picked, imgs, keys = [], set(), {}
+    for rnd in (1, 2):
+        for w, x in ranked:
+            if len(picked) > n:
+                return picked
+            img = x.get("image") or (x.get("_fbs") or [None])[0]
+            if any(x is y for _, y in picked) or img in imgs:
+                continue
+            name = w["name"]
+            if rnd == 1 and name in keys:
+                continue
+            k = _story_key(w, x["headline"])
+            if any(k & old for old in keys.get(name, [])):
+                continue
+            picked.append((w, x))
+            imgs.add(img)
+            keys.setdefault(name, []).append(k)
+    return picked
+
+
 def _has_pic(x):
     """能做成卡片：有图，或者至少有来源网站的图标。"""
     return _has_photo(x) or bool(_icons(x))
@@ -947,7 +992,15 @@ def collect(issues, order=None):
         cover = w.get("cover")
         if cover and GENERIC.search(urllib.parse.urlparse(cover).path):
             cover = None  # 封面是品牌 logo（gelato pique）：不拿来顶替报道的图
-        cover_used = any(x.get("image") == cover for x in w["stories"]) if cover else True
+        # 收集时没图的报道已经把作品封面写进了 image（image_via「作品封面」）：那不是它自己的图，
+        # 也照「每个版面只用一次」处理，只留最新的一条，其余当作没图（不然几天的报道都是同一张封面）
+        cover_used = not cover
+        for x in w["stories"]:
+            if x.get("image") and (x.get("image_via") == "作品封面" or x["image"] in (cover, w.get("cover"))):
+                x["_borrowed"] = True
+                if cover_used:
+                    x["image"] = None
+                cover_used = True
         w["_fbs"] = [cover] if cover else []
         # 代表整个关注项的小图（目录、暂无新消息小栏）：封面，没有就用它最近一条报道的图
         w["_thumb"] = cover or next((x["image"] for x in w["stories"] if x.get("image")), None)
@@ -956,6 +1009,7 @@ def collect(issues, order=None):
                 x["_fbs"] = [cover] if cover and cover != x["image"] else []  # 自己的图打不开时才换封面
             elif not cover_used:
                 x["_fbs"], cover_used = [cover], True
+                x["_borrowed"] = True
             else:
                 x["_fbs"] = []
     return list(works.values())
@@ -2102,10 +2156,12 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     - ジャンルの棚：作品ごとに最新の 1 本（ポスターと壁に出たものはなるべく避ける）。押すとその作品の版面へ"""
     pool = [(w, x) for w in works for x in _recent(w, today)]
     newest = sorted(pool, key=lambda p: p[1].get("date") or p[1]["_issue"], reverse=True)
-    pictured = [p for p in newest if _has_photo(p[1])]  # ポスターと壁は本物の写真があるものだけ（来源アイコンは数えない）
-    top_w, top = min(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2)) if pictured else (None, None)
-    ranked = sorted(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2))
-    more = [p for p in ranked if p[1] is not top][:SPOT_COUNT]
+    # ポスターと壁は写真があるものだけ（来源アイコンは数えない）。借りた作品の表紙は、同じ重要度なら記事自身の写真の後ろ
+    pictured = [p for p in newest if _has_photo(p[1])]
+    ranked = sorted(pictured, key=lambda p: (RANK.get(p[1].get("weight"), 2), not _own_photo(p[1])))
+    chosen = _front_pick(ranked, SPOT_COUNT)
+    top_w, top = chosen[0] if chosen else (None, None)
+    more = chosen[1:]
 
     d = dt.date.fromisoformat(today)
     head = (f'<div class="phead"><span class="lab">トップ</span><span>直近 {HOLD_DAYS} 日 · {len(pool)} 件</span>'
