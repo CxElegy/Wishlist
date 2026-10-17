@@ -32,6 +32,7 @@ emblem_skip で逃げる (3) 何枚あれば足りるかの基準がなく、1 �
 import argparse
 import io
 import json
+import os
 import pathlib
 import re
 import sys
@@ -840,7 +841,7 @@ def due(prog, items, now):
             continue
         e = prog["items"].get(item["name"]) or {}
         h = _hours_since(e.get("failed_at"), now)
-        if e.get("state") == "failed" and h is not None and h < RETRY_HOURS:
+        if e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW"):   # 手動の試運転だけ待たない
             continue
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
     return [r[3] for r in sorted(rows, key=lambda r: r[:3])]

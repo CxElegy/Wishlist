@@ -12,6 +12,10 @@ on:
       minutes:
         description: "小元素补全的时间预算（分钟）"
         default: "40"
+      retry_now:
+        description: "试运行：不等 24 小时，失败过的版面也马上再试"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -25,6 +29,7 @@ jobs:
     runs-on: ubuntu-latest   # 4 核 · 16GB
     timeout-minutes: 60
     env:
+      EMBLEM_RETRY_NOW: ${{ inputs.retry_now == true && '1' || '' }}
       GATE_FIRE: "0"   # 1 = 有活时叫 Claude。AI 编辑・照片加愿望 还有自己的定时，两边都叫会更费 token：停掉它们的定时后再改成 1
       ROUTINE_TOKEN_EDIT: ${{ secrets.ROUTINE_FIRE_TOKEN }}
       ROUTINE_TOKEN_PHOTOS: ${{ secrets.ROUTINE_FIRE_TOKEN_PHOTOS }}
