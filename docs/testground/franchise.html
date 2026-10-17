@@ -96,13 +96,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 .B .fh .tg{--sc:var(--fc);font-size:12px;padding:0 10px}
 .B .fh small{margin-left:auto;font:700 11px var(--font-mono);color:var(--muted)}
 .B .fh.on .tg{box-shadow:3px 3px 0 var(--alert)}
-.B .fgrp{border-left:3px solid var(--fc);margin-left:15px;padding-left:0}
-.B .fgrp .pill{padding-left:22px}
+.B .fgrp{margin-left:0}
+/* 子の前は案 A と同じ「拐角」：見出しのロゴから下りる線が、子の駅のところで右へ曲がる（└）。続く子の線はつながって見える */
+.B .fgrp .pill{padding-left:52px}
 .B .fgrp .pill::before{display:none}
-.B .fgrp .pill::after{left:-3px}
-.B .fgrp .pill.on{padding-left:46px}
-.B .fgrp .pill.on::before{display:block;inset:4px -2px 4px 12px}
-.B .fgrp .pill.on .ic{left:-10px}
+.B .fgrp .pill .br{position:absolute;left:14px;top:-17px;width:16px;bottom:50%;border-left:2px solid var(--fc);border-bottom:2px solid var(--fc);z-index:-1}
+.B .fgrp .pill::after{left:30px;width:12px;height:7px;margin-top:-3.5px}
+.B .fgrp .pill.on{padding-left:76px}
+.B .fgrp .pill.on::before{display:block;inset:4px -2px 4px 48px}
+.B .fgrp .pill.on .ic{left:26px}
 .B .xref{flex:none;font:700 10px var(--font-mono);letter-spacing:.06em;color:var(--fc);border:1px solid var(--fc);padding:0 4px}
 .B .pill.on .xref{color:var(--gold);border-color:var(--gold)}
 .B .fgrp .whole{font-size:13px;color:var(--muted);font-weight:700}
@@ -144,8 +146,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
     </ul>
   </section>
   <section class="case B">
-    <h2><b>案 B</b>フランチャイズの見出し（グループ）</h2>
-    <p class="lead">小分類の中に、ロゴつきの斜めの札「MARVEL」を見出しとして置き、子はその下にまとめる。親の版面は見出しの下の「全体」の駅。</p>
+    <h2><b>案 B</b>フランチャイズの見出し（グループ）＋拐角の線</h2>
+    <p class="lead">【採用】小分類の中に、ロゴつきの斜めの札「MARVEL」を見出しとして置き、子はその下にまとめる。子の前は案 A と同じ拐角の線（└）。親の版面は見出しの下の「全体」の駅。</p>
     <div class="frame"><div class="rail" id="railB"></div></div>
     <h3>スマホ</h3><div class="mob" id="mobB"></div>
     <ul>
@@ -235,7 +237,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
           const on = grp.some(g => g.i === cur);
           h += `<div class="fh${on ? ' on' : ''}" style="--fc:${F.marvel.c};--img:url('${F.marvel.icon}')"><span class="logo"></span><span class="tg"><span>${F.marvel.label}</span></span>`
             + `<small>${grp.length} 作品</small></div><div class="fgrp" style="--fc:${F.marvel.c}">`
-            + grp.map(g => g.isParent ? pill({...g, short: 'MARVEL 全体（漫威电影）'}, ' whole') : pill(g)).join('') + `</div>`;
+            + grp.map(g => g.isParent ? pill({...g, short: 'MARVEL 全体（漫威电影）'}, ' whole', '<span class="br"></span>') : pill(g, '', '<span class="br"></span>')).join('') + `</div>`;
         } else h += pill(w);
       }
     }
