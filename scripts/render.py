@@ -1438,12 +1438,26 @@ def _wish_link(wishes, cls):
             f'<small>欲しい {want} 件</small></a>')
 
 
-def render_settings(items, db, updated):
+def render_settings(items, db, updated, schemes=()):
     """设置页（docs/settings.html）：改每个关注项的篇幅 S / M / L，新增 / 修改关注项。都不用口令。
     items：[{name, section, subtitle, size, fields}]（items.yaml 的顺序；fields 是网页上能改的那些字段的现值）；
     db：{url, key} Supabase 的地址和公开的 publishable key。篇幅用 get_sizes() 读、set_size() 改；
     新增 / 修改关注项是一问一答的向导（docs/additem.js），提交到 submit_item()（db/item_requests.sql），
-    下一次更新时写进 items.yaml。"""
+    下一次更新时写进 items.yaml。
+    schemes：板块ごとの「小分類の分け方」（digest.nav_scheme_rows）。選ぶと set_nav_scheme()（db/nav_schemes.sql）に保存、網页がすぐ作り直される。"""
+    sch = []
+    for r in schemes or ():
+        btns = "".join(f'<button type="button" data-v="{e(o["id"])}" aria-pressed="{str(o["id"] == r["chosen"]).lower()}">{e(o["label"])}</button>'
+                       for o in r["options"])
+        prev = "".join(f'<p class="pv" data-v="{e(o["id"])}"{"" if o["id"] == r["chosen"] else " hidden"}>'
+                       + " · ".join(f"{e(g)} <b>{n}</b>" for g, n in o["groups"]) + "</p>" for o in r["options"])
+        sch.append(f'<div class="srow" data-sec="{e(r["section"])}" style="--sc:{_sec_color(r["section"])}">'
+                   f'<div class="nm"><b>{e(_sec_name(r["section"]))}</b>{prev}</div>'
+                   f'<div class="seg wide" role="group" aria-label="{e(_sec_name(r["section"]))} 的小分类分法">{btns}</div>'
+                   f'<span class="st" aria-live="polite"></span></div>')
+    sch_html = ('<section class="schemes"><h2>目录的小分类分法</h2>'
+                '<p class="intro">每个板块选一种分法：左边目录的小分类札、板块里版面的排序都按它来。选了网页大约 1 分钟后更新。</p>'
+                + "".join(sch) + '</section>') if sch else ""
     groups = {}
     for it in items:
         groups.setdefault(it.get("section") or "其他", []).append(it)
@@ -1497,6 +1511,14 @@ def render_settings(items, db, updated):
 .seg button:disabled{{cursor:wait;opacity:.6}}
 .st{{width:64px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.05em;text-align:right}}
 .st.ok{{color:#1F9D6B}}.st.err{{color:#C0392B}}
+.schemes{{align-self:stretch;display:flex;flex-direction:column}}
+.schemes h2{{margin:8px 0 4px;font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em}}
+.srow{{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 15%,transparent)}}
+.srow .nm b{{color:var(--sc)}}
+.srow .pv{{margin:0;font-size:12px;opacity:.7}}
+.srow .pv b{{font:700 12px var(--font-mono)}}
+.seg.wide button{{width:auto;min-width:56px;padding:0 10px;font:900 13px 'Noto Sans SC',sans-serif}}
+@media (max-width:600px){{.srow{{flex-wrap:wrap}}.srow .nm{{flex-basis:100%}}}}
 .legend{{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin:0}}
 .legend dt{{font:900 13px 'JetBrains Mono',monospace}}.legend dd{{margin:0;opacity:.75}}
 .wiz{{display:flex;flex-direction:column;gap:14px;margin-top:18px;padding:18px 18px 20px;border:2px solid #1A1C22;background:#F7F5F0;scroll-margin-top:16px}}
@@ -1562,6 +1584,7 @@ def render_settings(items, db, updated):
 <p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a>　<a href="admin.html">管理页（运行状况・投票・各关注项的记事数）→</a></p>
 <p class="intro">点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。</p>
 <dl class="legend"><dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd></dl>
+{sch_html}
 <div class="cfg">{''.join(rows)}</div>
 <section class="wiz" id="wiz" aria-live="polite"><h2>＋ 新增关注项</h2><p class="hint">正在加载…</p></section>
 <p class="intro" style="font-size:12px">更新于 {e(updated)}</p>
@@ -1576,13 +1599,34 @@ def render_settings(items, db, updated):
   const show = (row, v) => row.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
   const say = (row, text, cls) => {{ const st = row.querySelector(".st"); st.textContent = text; st.className = "st " + (cls || ""); }};
   if (!CFG.url || !CFG.key) {{
-    document.querySelectorAll(".row").forEach(r => {{ r.querySelectorAll(".seg button").forEach(b => b.disabled = true); say(r, "未连数据库", "err"); }});
+    document.querySelectorAll(".row, .srow").forEach(r => {{ r.querySelectorAll(".seg button").forEach(b => b.disabled = true); say(r, "未连数据库", "err"); }});
     return;
   }}
   rpc("get_sizes").then(r => r.ok ? r.json() : []).then(list => {{
     const now = Object.fromEntries((list || []).map(x => [x.item, x.size]));
     document.querySelectorAll(".row").forEach(r => {{ if (now[r.dataset.item]) show(r, now[r.dataset.item]); }});
   }}).catch(() => {{}});
+  // 小分類の分け方（板块ごと）
+  rpc("get_nav_schemes").then(r => r.ok ? r.json() : []).then(list => {{
+    (list || []).forEach(x => {{ const row = document.querySelector(`.srow[data-sec="${{CSS.escape(x.section)}}"]`); if (row && row.querySelector(`[data-v="${{CSS.escape(x.scheme)}}"]`)) pick(row, x.scheme); }});
+  }}).catch(() => {{}});
+  const pick = (row, v) => {{
+    row.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+    row.querySelectorAll(".pv").forEach(p => p.hidden = p.dataset.v !== v);
+  }};
+  document.querySelector(".schemes")?.addEventListener("click", async ev => {{
+    const btn = ev.target.closest(".seg button");
+    if (!btn || btn.getAttribute("aria-pressed") === "true") return;
+    const row = btn.closest(".srow"), before = row.querySelector('.seg button[aria-pressed="true"]')?.dataset.v;
+    const btns = row.querySelectorAll(".seg button");
+    pick(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, "保存中…");
+    try {{
+      const r = await rpc("set_nav_scheme", {{p_section: row.dataset.sec, p_scheme: btn.dataset.v}});
+      if (r.ok) say(row, "已保存 ✓", "ok");
+      else {{ if (before) pick(row, before); say(row, "没存上", "err"); }}
+    }} catch (_) {{ if (before) pick(row, before); say(row, "连不上", "err"); }}
+    btns.forEach(b => b.disabled = false);
+  }});
   document.querySelector(".cfg").addEventListener("click", async ev => {{
     const edit = ev.target.closest(".edit");
     if (edit) {{ window.wlEditItem && window.wlEditItem(edit.closest(".row").dataset.item); return; }}

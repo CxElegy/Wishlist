@@ -54,6 +54,7 @@ STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
 SIZES_FILE = STATE_DIR / "sizes.json"
+NAV_SCHEMES_FILE = STATE_DIR / "nav_schemes.json"   # 板块ごとに選んだ小分類の分け方（Supabase の nav_schemes 表の写し）
 HEAT_FILE = STATE_DIR / "heat_signals.json"  # 話題度用的外部数据（维基浏览量、Steam 在线、AniList / TMDB 人气），见 heat.py
 SIZES_PUSHED_FILE = STATE_DIR / "sizes_pushed.json"   # items.yaml 里的 size 上次同步进数据库时是什么
 INBOX_DIR = ROOT / "inbox"
@@ -1280,6 +1281,54 @@ def load_feedback():
 SIZE_STORIES = {"S": 3, "M": 5, "L": 8}   # 篇幅 → 每期最多几条报道（网页上直接显示多高见 render.SIZE_HEIGHT）
 
 
+def load_nav_schemes(settings):
+    """板块ごとに選んだ「小分類の分け方」。⚙ 設定ページで選ぶ → Supabase の nav_schemes 表（db/nav_schemes.sql）。
+    SUPABASE_SERVICE_KEY があれば表を読み、state/nav_schemes.json に写しを残す（読めなければ前回の写し）。
+    候補（settings.sub_schemes）にない値・選んでいない板块は候補の 1 番目。返り値：{板块: 分け方の id}。"""
+    chosen = load_json(NAV_SCHEMES_FILE) or {}
+    try:
+        got = supabase("nav_schemes?select=section,scheme")
+        if got is not None:
+            chosen = {r["section"]: r["scheme"] for r in got if r.get("section") and r.get("scheme")}
+            save_json(NAV_SCHEMES_FILE, chosen)
+    except Exception as err:
+        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/nav_schemes.sql）" if "PGRST205" in str(err) else ""
+        print(f"  [小分類の分け方] 读数据库失败，用上次存的{hint}：{err}", file=sys.stderr)
+    out = {}
+    for sec, schemes in (settings.get("sub_schemes") or {}).items():
+        ids = [x.get("id") for x in schemes or [] if isinstance(x, dict) and x.get("id")]
+        if ids:
+            out[sec] = chosen.get(sec) if chosen.get(sec) in ids else ids[0]
+    return out
+
+
+def nav_scheme_rows(settings, items):
+    """設定ページの「小分類の分け方」：板块ごとに、候補の分け方と、それぞれで分けたときの小分類（件数つき）、いま選んでいるもの。"""
+    chosen = load_nav_schemes(settings)
+    rows = []
+    for sec, schemes in (settings.get("sub_schemes") or {}).items():
+        ins = [i for i in items if section_of(i) == sec]
+        opts = []
+        for x in schemes or []:
+            if not (isinstance(x, dict) and x.get("id")):
+                continue
+            groups = {}
+            for i in ins:
+                g = sub_of(i, x["id"]) or "その他"
+                groups[g] = groups.get(g, 0) + 1
+            opts.append({"id": x["id"], "label": x.get("label") or x["id"], "groups": list(groups.items())})
+        if opts:
+            rows.append({"section": sec, "chosen": chosen.get(sec, opts[0]["id"]), "options": opts})
+    return rows
+
+
+def sub_of(item, scheme):
+    """この関注項の小分類（選んだ分け方で）。subs に無ければ旧い sub、それも無ければ subs の最初の値。"""
+    subs = item.get("subs") if isinstance(item.get("subs"), dict) else {}
+    v = subs.get(scheme) if scheme else None
+    return str(v or item.get("sub") or next(iter(subs.values()), "") or "")
+
+
 @functools.lru_cache(maxsize=None)
 def load_sizes():
     """每个关注项的篇幅 S / M / L，在数据库 sizes 表里管理（建表语句在 db/sizes.sql），网页上不显示。
@@ -2006,9 +2055,10 @@ def write_page():
     # 目次と版面の並び：板块の中は「小分類の話題度」→「作品の話題度」の順（heat.heat_order）。
     # 小分類の話題度は、中の作品の材料をまとめて 1 つとして測る（足し算ではない）。下級は上級の小分類に入れて測る
     names = {i["name"] for i in items}
+    schemes = load_nav_schemes(settings)   # 板块ごとに選んだ小分類の分け方（⚙ 設定ページ）
+    own_sub = {i["name"]: sub_of(i, schemes.get(section_of(i))) for i in items}
     placed = [{"name": i["name"], "section": section_of(i), "parent": i.get("parent"),
-               "sub": str((next((p for p in items if p["name"] == i.get("parent")), None) or i).get("sub") or "")
-               if i.get("parent") in names else str(i.get("sub") or "")} for i in items]
+               "sub": own_sub[i["parent"]] if i.get("parent") in names else own_sub[i["name"]]} for i in items]
     groups = {}
     for i in placed:
         groups.setdefault((i["section"], i["sub"]), []).append(i["name"])
@@ -2024,7 +2074,7 @@ def write_page():
                           (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
-                          {i["name"]: str(i["sub"]) for i in items if i.get("sub")}, settings.get("nav_hide", render.NAV_HIDE),
+                          {n: v for n, v in own_sub.items() if v}, settings.get("nav_hide", render.NAV_HIDE),
                           {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
                           render.busy_plan(adm.get("todo"), [i["name"] for i in items],
                                            {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
@@ -2048,7 +2098,7 @@ def write_page():
           "size": load_sizes().get(i["name"], "M"),
           "fields": {**{k: i[k] for k in ITEM_FIELDS if k in i and k != "size"}, "section": section_of(i)}} for i in items],
         {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "langs": settings.get("news_langs") or []},
-        updated), encoding="utf-8")
+        updated, nav_scheme_rows(settings, items)), encoding="utf-8")
     admin_html, ver_admin = render.stamp(render.render_admin(  # 管理ページ（見るだけ）
         adm, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), updated)
     (DOCS_DIR / "admin.html").write_text(admin_html, encoding="utf-8")
