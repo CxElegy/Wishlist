@@ -136,7 +136,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .custom b{color:var(--gold)}
 .custom label{display:flex;align-items:center;gap:6px}
 .custom input[type=range]{width:180px;accent-color:var(--gold)}
-.custom input[type=number],.custom select{width:72px;padding:3px 6px;border:1px solid rgba(251,248,241,.5);background:transparent;color:var(--card);font:700 13px var(--font-mono)}
+.ctl input[type=number]:disabled{opacity:.4}
+.ctl input[type=number],.custom select{width:72px;padding:3px 6px;border:1px solid rgba(251,248,241,.5);background:transparent;color:var(--card);font:700 13px var(--font-mono)}
 .custom select option{color:var(--ink)}
 .cases{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%}
 .cases button{padding:3px 9px;border:1px solid rgba(251,248,241,.4);font:700 12px var(--font-sans)}
@@ -168,7 +169,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 <header class="ctl">
   <h1><small>TESTGROUND</small>目次の版の見比べ</h1>
   <div class="seg">画面の高さ<div id="hs"><button data-h="600">600</button><button data-h="720">720</button><button data-h="900">900</button></div></div>
-  <div class="seg">作品が 24 件以下のとき<div id="fs"><button data-f="auto">全部ひらく</button><button data-f="fold">たたむ</button></div></div>
+  <div class="seg">v6 で隠し始めるのは<div id="hb"><button data-b="count">件数で</button><button data-b="auto">自動（画面の高さ）</button></div><input type="number" id="hn" value="24" min="1" max="1000" aria-label="隠し始める件数">件を超えたら</div>
+  <div class="seg">v1〜v5：作品が 24 件以下のとき<div id="fs"><button data-f="auto">全部ひらく</button><button data-f="fold">たたむ</button></div></div>
   <button class="go" id="play" type="button" aria-pressed="false">▶ 読み進める</button>
   <div class="scrub"><button type="button" id="prev" aria-label="前の作品">◀</button><input type="range" id="pos" min="0" value="0" aria-label="読んでいる位置"><button type="button" id="next" aria-label="次の作品">▶</button><span id="post"></span></div>
   <div class="cases" id="cases"></div>
@@ -264,13 +266,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     {v: 5, pr: 99, t: 'v4 ＋ 入るなら全部・余りは均等', mode: 'even', look: 'line', icons: true, all: true,
      d: '板块の作品が全部入るなら小分類で絞らず全部見せる。それでも余る高さは全板块に均等に配る（下に詰めない）。'},
     {v: 6, pr: 100, t: '少ないうちは隠さない（段階的に隠す）', mode: 'steps', look: 'line', icons: true,
-     d: '小分類があれば札は必ず出す。全部入るなら何も隠さない（少ないうちは行の間隔を広げ、きついときは行を 22px まで詰める）。それでも入らなくなったら ①ほかの板块を新着順に数件へ ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。'},
+     d: '隠し始める基準は上で設定（既定 24 件・自動も可）。小分類があれば札は必ず出す。全部入るなら何も隠さない（少ないうちは行の間隔を広げ、きついときは行を 22px まで詰める）。それでも入らなくなったら ①ほかの板块を新着順に数件へ ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。'},
   ];
   const STEP = ['全部見せる', '① ほかの板块は新着順に数件', '② ほかは見出しだけ', '③ いまの小分類だけ', '④ 入るだけ＋ほか N 件'];
 
   // ---------- 目次 1 本ぶん ----------
   const FLAT_MAX = 24, SUB_MIN = 13, SEC_H = 44, ITEM_H = 28, MORE_H = 24, MIN_H = 40, LAB_H = 20, CAP1 = 8, DONORS = 4, R_MIN = 22;   // R_MIN：v6 で隠す前に詰める行の最小の高さ
-  let few = 'fold';
+  let few = 'fold', hideBy = 'count', hideN = 24;   // v6：隠し始める基準（件数で／自動）
 
   function Engine(box, cs, V) {
     const W = cs.works.slice().sort((a, b) => cs.secs.indexOf(a.sec) - cs.secs.indexOf(b.sec) || a.sec.subs.indexOf(a.sub) - b.sec.subs.indexOf(b.sub));
@@ -406,6 +408,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
         r = fitR(p);
         if (r) plan = p;
       }
+      // 「隠し始める件数」：件数で決めるときは、その件数までは隠さない（詰めても入らなければ目次をスクロール）、超えたら隠す。
+      // 自動のときは画面の高さで決める（行を詰めて全部入るうちは隠さない）
+      let forced = false;
+      if (hideBy === 'count') {
+        if (W.length <= hideN && !r) {
+          r = R_MIN; forced = true;
+          plan = plan.map((x, i) => i === k ? {...x, labs: false} : x);
+        }
+        else r = 0;
+      }
+      rail.style.overflowY = forced ? 'auto' : '';
       if (!r) {
         lvl = -1;
         const maxLen = Math.max(0, ...L.map((l, i) => i === k ? 0 : l.length));
@@ -452,8 +465,14 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
                     : x.items.map(pill).join(''))
           + (x.more ? `<button class="more" data-sec="${s.id}">ほか ${x.more} 件${i === k ? 'をさがす' : ''} →</button>` : '');
       });
+      if (forced) {   // スクロールしているときは、読んでいる作品が見える位置へ
+        const on = slots[k].querySelector('.pill.on');
+        if (on) rail.scrollTop = slots[k].offsetTop + on.offsetTop + 44 - rail.clientHeight / 2;
+      }
       const lv = box.querySelector('.lvl');
-      lv.textContent = lv.title = '隠し方：' + STEP[lvl] + (ih < ITEM_H ? `・行 ${ih}px` : '');
+      const cap = Math.floor((H - n * (SEC_H + 2) - EXTRA - chipsH) / R_MIN);   // この高さで隠さずに入るおおよその件数
+      lv.textContent = lv.title = (hideBy === 'count' ? `${hideN} 件まで隠さない` : `自動：この高さで約 ${cap} 件まで隠さない`)
+        + '｜' + STEP[lvl] + (forced ? '（スクロール）' : '') + (ih < ITEM_H ? `・行 ${ih}px` : '');
     }
 
     function layout() {
@@ -584,6 +603,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   document.getElementById('next').addEventListener('click', () => setAll(cur + 1));
   const pickBtn = (id, attr, v) => document.querySelectorAll(`#${id} button`).forEach(b => b.setAttribute('aria-pressed', b.dataset[attr] === String(v)));
   function setH(h) { document.documentElement.style.setProperty('--rh', h + 'px'); pickBtn('hs', 'h', h); }
+  function setB(b) { hideBy = b; pickBtn('hb', 'b', b); document.getElementById('hn').disabled = b !== 'count'; if (engines.length) { engines.forEach(g => g.reset()); setAll(cur); } }
+  document.getElementById('hb').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setB(b.dataset.b); });
+  document.getElementById('hn').addEventListener('input', ev => { hideN = Math.max(1, Math.min(1000, +ev.target.value || 1)); if (engines.length) { engines.forEach(g => g.reset()); setAll(cur); } });
   function setF(f) { few = f; pickBtn('fs', 'f', f); if (engines.length) { engines.forEach(g => g.reset()); setAll(cur); } }
   document.getElementById('hs').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setH(+b.dataset.h); });
   document.getElementById('fs').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setF(b.dataset.f); });
@@ -598,6 +620,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   const q = new URLSearchParams(location.search);
   setH([600, 720, 900].includes(+q.get('h')) ? +q.get('h') : 720);
   setF(q.get('f') === 'auto' ? 'auto' : 'fold');
+  if (+q.get('hn')) { hideN = Math.max(1, Math.min(1000, +q.get('hn'))); document.getElementById('hn').value = hideN; }
+  setB(q.get('hb') === 'auto' ? 'auto' : 'count');
   pickBtn('ck', 'k', kind);
   if (q.get('n')) {
     document.getElementById('cnn').value = Math.max(2, Math.min(1000, +q.get('n')));
