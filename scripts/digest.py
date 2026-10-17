@@ -1976,7 +1976,7 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
            "character": (f"出演者 {len(who)} 人" if item.get("emblem_people") else f"キャラ {len(who)} 人") if who else "主役級のキャラ",
            "brand": "公式ロゴ", "topic": "主題を表す物"}.get(kind, "")
     now = dt.datetime.now(dt.timezone.utc)
-    slots = processes.slots(next(p for p in processes.PROCESSES if p["id"] == "emblem-cron"))
+    slots = processes.slots(next(p for p in processes.PROCESSES if p["id"] == "emblem-cron")) or [[h, 47] for h in range(24)]
     after = now
     if state == "failed" and entry.get("failed_at"):
         try:
@@ -1991,7 +1991,7 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
     elif state == "review":
         todo = f"一覧から手で選べる（python scripts/emblem_fill.py \"{item.get('name')}\" --commit 番号）"
     elif state == "failed":
-        todo = f"{when} 以降に再挑戦"
+        todo = f"新しい記事・手がかりが来たらすぐ、来なくても {when} に再挑戦"
     else:
         pos = queue.index(item.get("name")) + 1 if item.get("name") in queue else None
         todo = f"次の回 {when} に" + (f"（順番 {pos} 番目）" if pos else "")

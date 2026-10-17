@@ -136,7 +136,7 @@ def same_person(feats, anchor=None, strict=False):
     if anchor is not None and feats[anchor] is not None:
         base = [anchor]
         keep = {i for i in idx if i == anchor or similarity(feats[anchor], feats[i]) >= THRESHOLD}
-        if len(keep) >= 2:
+        if len(keep) >= 2 or strict:   # strict：基準（題名で確かめた記事の代表画像）を信じる。それと同じ顔だけ残す（多数決に切り替えない）
             return keep
         # 基準の画像が他と合わない（代表画像が別人・集合写真）：多数決に切り替える
     groups = []

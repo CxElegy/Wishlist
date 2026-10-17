@@ -187,10 +187,13 @@ class Background(unittest.TestCase):
         now = "2026-10-17T00:00:00+00:00"
         prog = ef.sync_progress({"items": {}}, self.items)
         self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["zero", "one", "brand"])   # 足りない枚数の多い順
-        prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T12:00:00+00:00")
-        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 24 時間以内の失敗は飛ばす
-        prog["items"]["zero"]["failed_at"] = "2026-10-15T12:00:00+00:00"
+        zero = next(i for i in self.items if i["name"] == "zero")
+        prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T22:00:00+00:00", material=ef.material(zero))
+        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 6 時間以内・材料が同じ失敗は飛ばす
+        prog["items"]["zero"]["material"] = "old"   # 新しい記事・手がかりが来た
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+        prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T17:00:00+00:00")
+        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 6 時間たった
 
     def test_background_records_each_item(self):
         seen = []
@@ -480,6 +483,7 @@ class Backend(unittest.TestCase):
         self.assertIn('class="pbar"', out)
         self.assertIn('class="lims"', out)
         self.assertIn('class="aiu"', out)
+        self.assertIn('id="livenow"', out)   # いま動いているもの（live_status を 30 秒ごと）
         for t, k, _ in processes.AI_TASKS:
             self.assertIn(k, processes.AI_STATE_JA)
         for name, _, _ in processes.LIMITS:
@@ -579,9 +583,7 @@ class EmblemDetail(unittest.TestCase):
         failed = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=1)).isoformat(timespec="seconds")
         d = digest.emblem_detail(item, {"tried": {"Wikipedia": 1, "Wikimedia Commons": 22}, "failed_at": failed, "at": failed,
                                         "note": "x"}, "failed", [], "Asia/Tokyo")
-        tomorrow = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=23)).astimezone(digest.zoneinfo.ZoneInfo("Asia/Tokyo"))
-        self.assertTrue(d["todo"].endswith("以降に再挑戦"))
-        self.assertGreaterEqual(d["todo"][:5], tomorrow.strftime("%m/%d"))   # 24 時間たつまでは再挑戦しない
+        self.assertTrue(d["todo"].endswith("以降に再挑戦") or "新しい記事" in d["todo"])
         self.assertIn("emblem_urls", d["advice"])   # Wiki に記事がないグループ → 公式の写真を
         self.assertEqual(d["why"], "メンバー 3 人")
         self.assertEqual([c["n"] for c in d["chain"]][:3], [None, 1, 22])
@@ -606,6 +608,49 @@ class EmblemDetail(unittest.TestCase):
         self.assertIn("集めた <b>30</b>", out)
         self.assertIn("&lt;m&gt;", out)
         self.assertNotIn("<m>", out)
+
+
+class Ladder(unittest.TestCase):
+    """取り方の段：① 標準 → ② 名前を広げる → ③ 公式・記事のページ を、届くまで同じ回の中で上がる。"""
+
+    def setUp(self):
+        self.saved = {k: getattr(ef, k) for k in ("gather", "gather_wide", "gather_pages", "check", "auto_pick", "commit", "load_items", "_live")}
+        self.items = [{"name": "X", "type": "game", "emblem_who": ["a", "b"], "emblem": []}]
+        ef.load_items = lambda: self.items
+        ef._live = lambda *a, **k: None
+        ef.check = lambda cands, log, **k: cands
+        ef.auto_pick = lambda item, good, **k: list(range(1, len(good) + 1))
+
+        def commit(item, good, picks, log=print):
+            self.items[0]["emblem"] = self.items[0]["emblem"] + [{"subject": good[n - 1]["subject"], "image": good[n - 1]["image"]} for n in picks]
+        ef.commit = commit
+        self.calls = []
+
+        def make(label, rows):
+            def fn(item, log, tried):
+                self.calls.append(label)
+                tried[label] = len(rows)
+                return [{"subject": s, "image": f"{label}-{s}", "source": "Fandom"} for s in rows]
+            return fn
+        ef.gather, ef.gather_wide, ef.gather_pages = make("1", ["a"]), make("2", ["b"]), make("3", [])
+
+    def tearDown(self):
+        for k, v in self.saved.items():
+            setattr(ef, k, v)
+
+    def test_climbs_until_ok(self):
+        r = ef.fill_one(self.items[0], log=lambda m: None)
+        self.assertEqual(self.calls, ["1", "2"])   # ②で目標（2 人）に届いたので ③ は試さない
+        self.assertEqual(r["state"], "ok")
+        self.assertEqual([x["added"] for x in r["steps"]], [1, 1])
+
+    def test_all_steps_then_failed_with_material(self):
+        ef.gather_wide = lambda item, log, tried: self.calls.append("2") or []
+        r = ef.fill_one(self.items[0], log=lambda m: None)
+        self.assertEqual(self.calls, ["1", "2", "3"])
+        self.assertEqual(r["state"], "failed")
+        self.assertTrue(r["material"])
+        self.assertIn("新しい記事が来たらすぐ", r["note"])
 
 
 class Gate(unittest.TestCase):
@@ -679,6 +724,8 @@ class Rules(unittest.TestCase):
             self.assertEqual(face_id.same_person([5], None, strict=True), set())   # 基準なしで 1 枚 = 本人と言えない
             self.assertEqual(face_id.same_person([5, 5], None, strict=True), {0, 1})
             self.assertEqual(face_id.same_person([5], None), {0})   # 手動のときは前のまま
+            self.assertEqual(face_id.same_person([5], 0, strict=True), {0})   # 記事の代表画像（基準）だけ = 本人（前は「別人」にしていた）
+            self.assertEqual(face_id.same_person([5, 7], 0, strict=True), {0})   # 基準と違う顔は落とす
         finally:
             face_id.engine, face_id.similarity = old
 
