@@ -161,6 +161,9 @@
   要和 `gather` 的顺序一致）→ ③ 本人确认・目视排除 → ④ 结果 → ⑤ 下次几点・失败时的建议），数据在 `digest.emblem_detail`。
   新加定时的仕组み：在 `PROCESSES` 里写 `schedule`（UTC 的 (时, 分)），在 `backend_todo` 写它下次做什么，运行时 `runlog.add("<proc>", "…")`；
   要加一列就在 `render.BG_COLS` 和 `backend_cells` 各加一项。
+- **今すぐ実行**（「次の実行」のカードのボタン）：後台作業・ニュース収集・ページ生成を定時を待たずに起こす。网页上没有令牌：
+  按钮 → Supabase `run_now(job)`（`db/run_now.sql`，Vault 的 `github_dispatch_token`）→ GitHub workflow_dispatch。
+  只能起这 3 个，每个有间隔（3 分 / 10 分 / 1 分）。后台作業从按钮起时带 `retry_now`（失败的版面也不等）。加新按钮：`render.RUN_JOBS` 和 `run_now` 的 case 各加一项。
 - **リソース・並列と制限**（バックグラウンドの中）：容量（リポジトリ・公开页 vs 1GB 上限）、各仕组み最近一次运行时的服务器（内存・磁盘・CPU・用时，
   `scripts/resources.py` 的 `snapshot()` 附在 runlog 里）、トークン（Claude API 自动数；定时任务的 Claude 结束时自己写：
   `python scripts/runlog.py emblem "…" --tokens N`；订阅额度的余量程序读不到，只能看 https://claude.ai/settings/usage ）。
