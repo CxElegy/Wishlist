@@ -1015,10 +1015,27 @@ def due(prog, items, now):
         e = prog["items"].get(item["name"]) or {}
         h = _hours_since(e.get("failed_at"), now)
         if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")
-                and e.get("material") in (None, material(item))):   # 材料（新しい記事・手がかり）が変わったら待たない
+                and e.get("material") == material(item)):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない
             continue
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
     return [r[3] for r in sorted(rows, key=lambda r: r[:3])]
+
+
+def waiting(prog, items, now):
+    """失敗して再挑戦を待っている版面 → [(名前, 再挑戦の時刻 ISO)]。材料が変われば時刻を待たずに due() に入る。"""
+    import datetime as dt
+    out = []
+    due_names = {i["name"] for i in due(prog, items, now)}
+    for item in items:
+        e = prog["items"].get(item["name"]) or {}
+        if item["name"] in due_names or e.get("state") != "failed" or status(item)["state"] == "ok":
+            continue
+        try:
+            at = (dt.datetime.fromisoformat(e["failed_at"]) + dt.timedelta(hours=RETRY_HOURS)).isoformat(timespec="seconds")
+        except (KeyError, ValueError):
+            at = ""
+        out.append((item["name"], at))
+    return sorted(out, key=lambda r: r[1])
 
 
 def _write_sheet(item, good):
@@ -1207,7 +1224,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                 return
             except Exception as e:   # 1 つの失敗で全体を止めない
                 ilog(f"[失敗] {e}")
-                result = {"state": "failed", "note": f"エラー：{str(e)[:80]}"}
+                result = {"state": "failed", "note": f"エラー：{str(e)[:80]}", "material": material(item)}
             with WRITE_LOCK:
                 fresh = next((i for i in load_items() if i["name"] == name), item)
             with lock:
