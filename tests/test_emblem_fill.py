@@ -111,6 +111,12 @@ class Sources(unittest.TestCase):
         self.assertEqual(ef.auto_pick(item, good, web=False), [4])
         self.assertEqual(sorted(ef.auto_pick(item, good)), [2, 4])
 
+    def test_auto_pick_skips_rejected(self):
+        item = {"type": "event", "emblem_kind": "person", "emblem_reject": ["https://x.example/bad.jpg"]}
+        good = [{"subject": "A", "source": "Wikipedia", "image": "https://x.example/bad.jpg"},
+                {"subject": "A", "source": "Wikipedia", "image": "https://x.example/ok.jpg"}]
+        self.assertEqual(ef.auto_pick(item, good, web=False, strict=True), [2])
+
     def test_auto_pick_brand_prefers_wikidata_logo(self):
         item = {"type": "product", "emblem_kind": "brand"}
         good = [{"subject": "X", "source": "Wikimedia Commons", "image": "c"}, {"subject": "X", "source": "公式サイト", "image": "s"},
@@ -183,7 +189,7 @@ class Background(unittest.TestCase):
                 item["emblem"] = [{}] * 6   # 目標に届いた
                 return {"state": "ok", "note": "5 枚足した", "tried": {"Fandom": 5}}
             return {"state": "review", "note": "一覧で確かめる", "tried": {"Wikidata": 0}, "sheet": "/tmp/x.jpg"}
-        prog = ef.background(40, log=lambda m: None, fill=fill, path=self.path)
+        prog = ef.background(40, log=lambda m: None, fill=fill, path=self.path, workers=1)
         self.assertEqual(seen, ["zero", "one", "brand"])
         saved = json.loads(self.path.read_text(encoding="utf-8"))
         self.assertEqual(saved["items"]["zero"]["state"], "failed")   # 1 つの失敗で止まらない
@@ -196,13 +202,13 @@ class Background(unittest.TestCase):
         self.assertEqual(prog["summary"], {"ok": 2, "total": 4})
         # 2 回目：失敗したものは飛ばし、開始時刻は最初のまま
         seen.clear()
-        again = ef.background(40, log=lambda m: None, fill=fill, path=self.path)
+        again = ef.background(40, log=lambda m: None, fill=fill, path=self.path, workers=1)
         self.assertEqual(seen, ["brand"])
         self.assertEqual(again["started"], saved["started"])
         log = runlog.recent(50)
         self.assertTrue(all(r["proc"] == "emblem" for r in log))
         texts = [r["text"] for r in log]
-        self.assertTrue(any(t.startswith("開始：予算 40 分・待ち 3 版面") for t in texts))
+        self.assertTrue(any(t.startswith("開始：予算 40 分・1 本並列・待ち 3 版面") for t in texts))
         self.assertTrue(any(t.startswith("zero：失敗") for t in texts))
         self.assertEqual(next(r for r in log if r["text"].startswith("one：")).get("level"), "ok")
 
@@ -212,10 +218,49 @@ class Background(unittest.TestCase):
         def fill(item, log):
             seen.append(item["name"])
             raise ef.OutOfTime("x")
-        prog = ef.background(40, log=lambda m: None, fill=fill, path=self.path)
+        prog = ef.background(40, log=lambda m: None, fill=fill, path=self.path, workers=1)
         self.assertEqual(seen, ["zero"])   # 途中で止めたら次に入らない
         self.assertEqual(prog["items"]["zero"]["state"], "running")
         self.assertNotIn("failed_at", prog["items"]["zero"])   # 失敗ではないので次の回にすぐやり直す
+
+    def test_background_parallel(self):
+        import threading
+        import time as _t
+        live, peak, lock = [0], [0], threading.Lock()
+
+        def fill(item, log):
+            with lock:
+                live[0] += 1
+                peak[0] = max(peak[0], live[0])
+            _t.sleep(0.2)
+            with lock:
+                live[0] -= 1
+            return {"state": "review", "note": item["name"]}
+        prog = ef.background(40, log=lambda m: None, fill=fill, path=self.path, workers=3)
+        self.assertEqual(peak[0], 3)   # 3 つ同時に動いた
+        self.assertEqual(sorted(prog["last_run"]["done"]), ["brand", "one", "zero"])
+        self.assertEqual(prog["last_run"]["workers"], 3)
+        saved = json.loads(self.path.read_text(encoding="utf-8"))
+        self.assertEqual({n: x["note"] for n, x in saved["items"].items() if n != "full"}, {"zero": "zero", "one": "one", "brand": "brand"})
+        self.assertTrue(any("3 本並列" in r["text"] for r in runlog.recent(10)))
+
+    def test_throttle_shared_between_threads(self):
+        import threading
+        calls = []
+        orig = ef._orig_get
+        ef._orig_get = lambda url, limit=0: calls.append(_now()) or b"{}"
+        try:
+            import time as _t
+            _now = _t.time
+            ts = [threading.Thread(target=ef._throttled_get, args=("https://xx.wikipedia.org/a",)) for _ in range(3)]
+            for t in ts:
+                t.start()
+            for t in ts:
+                t.join()
+        finally:
+            ef._orig_get = orig
+        calls.sort()
+        self.assertGreaterEqual(calls[2] - calls[0], 2.4)   # 3 本同時でも 1.3 秒おき
 
     def test_background_respects_budget(self):
         t = [0.0]
@@ -226,7 +271,7 @@ class Background(unittest.TestCase):
         def fill(item, log):
             t[0] += 30 * 60   # 1 つに 30 分かかる
             return {"state": "review", "note": ""}
-        prog = ef.background(40, log=lambda m: None, fill=fill, clock=clock, path=self.path)
+        prog = ef.background(40, log=lambda m: None, fill=fill, clock=clock, path=self.path, workers=1)
         self.assertEqual(prog["last_run"]["done"], ["zero", "one"])   # 30 分後（残り 10 分）は 2 つ目に入り、60 分後は入らない
 
 
@@ -273,6 +318,23 @@ class Processes(unittest.TestCase):
                     self.assertTrue(all(len(x) == 3 for x in n["items"]))
                 if n["kind"] == "table":
                     self.assertTrue(all(len(x) == 2 for x in n["rows"]))
+
+    def test_architecture(self):
+        out = processes.render()
+        ids = set()
+        for z in processes.ARCH:
+            for n in z["nodes"]:
+                ids.add(n["id"])
+                if n.get("proc"):
+                    self.assertIn(n["proc"], {p["id"] for p in processes.PROCESSES})
+        for n, a, b, t, c in processes.EDGES:   # 矢印の両端は図の部品・色は凡例にあるもの
+            self.assertIn(a, ids)
+            self.assertIn(b, ids)
+            self.assertIn(c, processes.EDGE_JA)
+        self.assertEqual([x[0] for x in processes.EDGES], list(range(1, len(processes.EDGES) + 1)))
+        shown = {p["id"] for p in processes.PROCESSES if f'data-open="proc-{p["id"]}"' in out}
+        self.assertEqual(shown, {p["id"] for p in processes.PROCESSES})   # 全部のプロセスが図から開ける
+        self.assertIn('id="arch-edges"', out)
 
     def test_render_and_escape(self):
         evil = [{"id": "x", "name": "<b>x</b>", "en": "X", "lane": "ai", "trigger": "t", "summary": "s",
@@ -375,6 +437,9 @@ class Backend(unittest.TestCase):
         self.assertEqual(next(x for x in cfg if x["id"] == "emblem-cron")["items"], ["<A>", "B"])   # JS が textContent で入れる
         self.assertTrue(all(x["slots"] for x in cfg))
         self.assertIn('class="pbar"', out)
+        self.assertIn('class="lims"', out)
+        for name, _, _ in processes.LIMITS:
+            self.assertIn(name, out)
         self.assertIn("まだ記録がありません", render._admin_backend(rows))
         for p in processes.PROCESSES:   # 定時か Actions で動くものは「次の実行」に出る（AI 編集と同じ回のものは出さない）
             shown = f'data-open="proc-{p["id"]}"' in out
@@ -387,6 +452,64 @@ class Backend(unittest.TestCase):
         page = render.render_admin({"pipeline": {}, "items": rows, "votes": {}}, {}, "u")
         self.assertIn('id="backend"', page)
         self.assertLess(page.index('id="backend"'), page.index('id="procs"'))
+
+
+
+class Resources(unittest.TestCase):
+    """リソース：サーバーの様子・容量・トークン（管理ページ「バックグラウンド → リソース」）。"""
+
+    def test_snapshot(self):
+        import resources
+        x = resources.snapshot()
+        self.assertGreaterEqual(x["cpu"], 1)
+        for k in ("mem_total", "mem_free", "disk_total", "disk_free", "peak"):
+            self.assertIn(k, x)
+            self.assertGreater(x[k], 0)
+        self.assertLessEqual(x["mem_free"], x["mem_total"])
+
+    def test_sizes(self):
+        import resources
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            (d / "docs" / "emblems").mkdir(parents=True)
+            (d / ".git").mkdir()
+            (d / "docs" / "a.html").write_bytes(b"x" * 100)
+            (d / "docs" / "emblems" / "b.webp").write_bytes(b"x" * 50)
+            (d / ".git" / "big").write_bytes(b"x" * 1000)   # .git は数えない
+            sz = resources.repo_sizes(d)
+        self.assertEqual((sz["repo"], sz["pages"], sz["emblems"]), (150, 150, 50))
+
+    def test_render(self):
+        G = 1024 ** 3
+        res = {"sizes": {"repo": 900 * 1024 ** 2, "pages": 100 * 1024 ** 2, "emblems": 5 * 1024 ** 2, "inbox": 1, "state": 1},
+               "limits": {"repo": G, "pages": G},
+               "runs": {"emblem": {"name": "小元素の自動補完", "when": "10/17 09:40", "secs": 2400, "workers": 4,
+                                   "res": {"cpu": 4, "load": 3.1, "mem_total": 16 * G, "mem_free": 12 * G, "peak": 2 * G,
+                                           "disk_total": 30 * G, "disk_free": 1 * G}}},
+               "tokens": {"edit": {"name": "AI 編集", "last": 12345, "week": 50000, "runs": 4},
+                          "collect": {"name": "<収集>", "last": None, "week": 0, "runs": 0}}}
+        out = render._admin_resources(res)
+        self.assertIn('class="mt warn"', out)   # リポジトリ 88% は赤
+        self.assertEqual(out.count('class="mt warn"'), 1)   # ディスク（マシン全体）は赤にしない
+        self.assertIn("40 分 0 秒", out)
+        self.assertIn("4 本並列", out)
+        self.assertIn("12,345", out)
+        self.assertIn("未記録", out)
+        self.assertIn("&lt;収集&gt;", out)
+        self.assertIn("claude.ai/settings/usage", out)
+        self.assertEqual(render._admin_resources(None), "")
+
+    def test_runlog_cli_attaches_snapshot(self):
+        import subprocess
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            code = ("import sys,pathlib;sys.path.insert(0,'scripts');import runlog;runlog.LOG_DIR=pathlib.Path(sys.argv[1]);"
+                    "sys.argv=['runlog','emblem','テスト','--tokens','1234'];runlog.main()")
+            subprocess.run([sys.executable, "-c", code, d], cwd=ROOT, check=True)
+            row = runlog.load("emblem", pathlib.Path(d))[-1]
+        self.assertEqual(row["tokens"], 1234)
+        self.assertIn("mem_total", row["res"])
 
 
 if __name__ == "__main__":

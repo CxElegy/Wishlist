@@ -311,9 +311,14 @@ def filter_entries(entries, item, settings, seen, now, known=()):
     return news[:cap] + posts[: settings.get("max_reddit_per_item", 10)]
 
 
+def display_tz(settings):
+    """网页上显示时间用的时区（display_timezone）。没写就用出刊的 timezone。"""
+    return zoneinfo.ZoneInfo(settings.get("display_timezone") or settings.get("timezone", "Asia/Shanghai"))
+
+
 def status_facts(item, settings, facts):
     """Steam 价格、番剧/剧集播出状态等“当前状态”。返回 (状态列表, 封面图)。"""
-    tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
+    tz = display_tz(settings)
     checks = []
     if item.get("steam_appid"):
         appid = item["steam_appid"]
@@ -406,6 +411,9 @@ def format_entries(entries):
     return "\n".join(lines)
 
 
+TOKENS = {"calls": 0, "in": 0, "out": 0}   # この実行で Claude API に使ったトークン（実行ログ・管理ページ「リソース」）
+
+
 def edit_stories(client, model, item, entries):
     """让 LLM 把条目编成报道；失败返回 None。"""
     prompt = (
@@ -428,6 +436,11 @@ def edit_stories(client, model, item, entries):
     except Exception as e:  # API 错误或凭据错误：这一项退回原标题，不影响整期
         print(f"  [警告] LLM 调用失败：{type(e).__name__}: {e}", file=sys.stderr)
         return None
+    usage = getattr(response, "usage", None)
+    if usage is not None:
+        TOKENS["calls"] += 1
+        TOKENS["in"] += int(getattr(usage, "input_tokens", 0) or 0)
+        TOKENS["out"] += int(getattr(usage, "output_tokens", 0) or 0)
     if response.stop_reason in ("refusal", "max_tokens"):
         print(f"  [警告] LLM 未完成（{response.stop_reason}）", file=sys.stderr)
         return None
@@ -1775,7 +1788,34 @@ def admin_data(items, issues, analysis, tz, updated):
     run = emblem_progress(items, tz)
     backend_cells(items, rows, inbox[-1] if inbox else None, run)
     return {"pipeline": pipeline, "items": rows, "votes": votes, "emblem_run": run,
-            "todo": backend_todo(items, rows, run), "log": backend_log(tz)}
+            "todo": backend_todo(items, rows, run), "log": backend_log(tz), "resources": backend_resources(tz)}
+
+
+def backend_resources(tz, days=7):
+    """「リソース」：リポジトリと公開ページの大きさ（上限と比べる）、仕組みごとの最近の実行のサーバーの様子、トークン。"""
+    import resources
+    import runlog
+    today = dt.datetime.now(dt.timezone.utc)
+    runs, tokens = {}, {}
+    for proc, name in runlog.PROCS.items():
+        rows = runlog.load(proc)
+        last = next((r for r in reversed(rows) if r.get("res")), None)
+        if last:
+            try:
+                when = dt.datetime.fromisoformat(last["at"]).astimezone(tz).strftime("%m/%d %H:%M")
+            except (KeyError, ValueError):
+                when = ""
+            runs[proc] = {"name": name, "when": when, "secs": last.get("secs"), "workers": last.get("workers"), "res": last["res"]}
+        week = []
+        for r in rows:
+            try:
+                if r.get("tokens") and (today - dt.datetime.fromisoformat(r["at"])).days < days:
+                    week.append(int(r["tokens"]))
+            except (KeyError, ValueError):
+                pass
+        tok = [r for r in rows if r.get("tokens")]
+        tokens[proc] = {"name": name, "last": int(tok[-1]["tokens"]) if tok else None, "week": sum(week), "runs": len(week)}
+    return {"sizes": resources.repo_sizes(), "limits": resources.LIMITS, "runs": runs, "tokens": tokens}
 
 
 def backend_todo(items, rows, run):
@@ -1880,7 +1920,7 @@ def write_page():
         return
     DOCS_DIR.mkdir(exist_ok=True)
     settings, items = load_config()
-    tz = zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))
+    tz = display_tz(settings)
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     issues = with_manual_themes(with_new_items(issues, items), items)
     themes = load_json(THEMES_FILE) or {}
@@ -1914,7 +1954,7 @@ def write_page():
         updated), encoding="utf-8")
     (DOCS_DIR / "admin.html").write_text(render.render_admin(  # 管理ページ（見るだけ）
         admin_data(items, issues, analysis, tz, updated),
-        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, updated), encoding="utf-8")
+        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), encoding="utf-8")
     (DOCS_DIR / ".nojekyll").touch()
 
 
@@ -1999,6 +2039,9 @@ def update_heat():
     save_json(HEAT_FILE, heat.fetch_signals(items, load_json(HEAT_FILE) or {}, today))
 
 
+COLLECT_WORKERS = 6   # 收集时同时抓几个关注项（GitHub Actions 的机器 4 核；等网络为主，所以比核数多一点）
+
+
 def ingest(dry_run=False):
     """收集本期原始条目到 inbox/。返回写入的文件路径（没有新内容时返回 None）。"""
     settings, items = load_config()
@@ -2008,19 +2051,31 @@ def ingest(dry_run=False):
     seen, facts = seen_from_inbox(), load_json(FACTS_FILE)
     known = recent_titles()
 
-    inbox_items = []
+    # 新加的关注项第一次收集时往前多看几周，补上加入之前的报道；之后照常只看 lookback_days
+    confs = {}
     for item in items:
-        print(f"抓取：{item['name']}", file=sys.stderr)
-        # 新加的关注项第一次收集时往前多看几周，补上加入之前的报道；之后照常只看 lookback_days
         backfill = not has_history(item["name"])
-        conf = dict(settings, lookback_days=settings.get("first_lookback_days", 42)) if backfill else settings
+        confs[item["name"]] = (backfill, dict(settings, lookback_days=settings.get("first_lookback_days", 42)) if backfill else settings)
+    # 联网抓取最花时间，各关注项互不相干：并行抓（同一网站的间隔由 sources._pace 在线程之间共享）。
+    # 去重要按顺序（前面的关注项收过的，后面的不再收），所以抓完后照原来的顺序一项一项处理
+    from concurrent.futures import ThreadPoolExecutor
+
+    def fetch(item):
+        print(f"抓取：{item['name']}", file=sys.stderr)
+        return collect(item, confs[item["name"]][1])
+    with ThreadPoolExecutor(max_workers=COLLECT_WORKERS) as pool:
+        fetched = list(pool.map(fetch, items))
+
+    inbox_items = []
+    for item, raw in zip(items, fetched):
+        backfill, conf = confs[item["name"]]
         if backfill:
-            print(f"  第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
+            print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
         compare = known.get(item["name"], [])
         if item.get("dedupe_others"):  # 别的关注项已经收过的同一件事，这一项不再重复收
             compare = compare + [t for name, ts in known.items() if name != item["name"] for t in ts]
-        entries = filter_entries(collect(item, conf), item, conf, seen, now, compare)
-        print(f"  新条目 {len(entries)} 条", file=sys.stderr)
+        entries = filter_entries(raw, item, conf, seen, now, compare)
+        print(f"  {item['name']} 新条目 {len(entries)} 条", file=sys.stderr)
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
             continue
@@ -2364,8 +2419,11 @@ def _inbox_counts(days=3):
 
 
 def logged_ingest():
-    """収集して、新着の数を実行ログ（state/log/collect.json）に書く。"""
+    """収集して、新着の数・かかった時間・サーバーの様子を実行ログ（state/log/collect.json）に書く。"""
+    import time
+    import resources
     import runlog
+    t0 = time.time()
     before = _inbox_counts()
     try:
         path = ingest()
@@ -2376,7 +2434,8 @@ def logged_ingest():
     new = {k: v - before.get(k, 0) for k, v in after.items() if v > before.get(k, 0)}
     top = "、".join(f"{k} {v}" for k, v in sorted(new.items(), key=lambda kv: -kv[1])[:5])
     runlog.add("collect", f"新着 {sum(new.values())} 件（{len(new)} 版面）" + (f"：{top}" if top else ""),
-               "ok" if new else "info", count=sum(new.values()))
+               "ok" if new else "info", count=sum(new.values()), secs=round(time.time() - t0), workers=COLLECT_WORKERS,
+               res=resources.snapshot())
     return path
 
 
@@ -2395,7 +2454,9 @@ def logged_publish(path=None):
         latest = pathlib.Path(latest)
         edit = load_json(INBOX_DIR / f"{latest.stem}.edit.json")
         n = len([k for k in (edit or {}) if not k.startswith("_")])
-        runlog.add(proc, f"{latest.stem} を出刊" + (f"（AI 編集 {n} 版面）" if edit else "（AI 編集なし・キーワードの規則）"), "ok")
+        import resources
+        runlog.add(proc, f"{latest.stem} を出刊" + (f"（AI 編集 {n} 版面）" if edit else "（AI 編集なし・キーワードの規則）"), "ok",
+                   res=resources.snapshot(), **({"tokens": TOKENS["in"] + TOKENS["out"], "tokens_in": TOKENS["in"]} if TOKENS["calls"] else {}))
 
 
 def main():

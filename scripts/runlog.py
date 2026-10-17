@@ -15,7 +15,7 @@ import pathlib
 
 LOG_DIR = pathlib.Path(__file__).resolve().parent.parent / "state" / "log"
 KEEP = 60
-PROCS = {"collect": "ニュース収集", "publish": "出刊", "edit": "AI 編集", "emblem": "小元素の自動補完"}
+PROCS = {"collect": "ニュース収集", "publish": "出刊", "edit": "AI 編集", "emblem": "小元素の自動補完", "photos": "写真から愿望"}
 
 
 def _now():
@@ -47,3 +47,24 @@ def recent(n=40, log_dir=None):
     for proc, name in PROCS.items():
         rows += [{**r, "proc": proc, "name": name} for r in load(proc, log_dir)]
     return sorted(rows, key=lambda r: r.get("at") or "", reverse=True)[:n]
+
+
+def main():
+    """Claude の定時タスクから 1 行書く：python scripts/runlog.py <proc> "文" [--tokens N] [--level ok]
+    サーバーの様子（resources.snapshot）を自動で付ける。--tokens はそのセッションで使ったトークンの目安。"""
+    import argparse
+    import resources
+    ap = argparse.ArgumentParser(description="実行ログに 1 行書く")
+    ap.add_argument("proc", choices=sorted(PROCS))
+    ap.add_argument("text")
+    ap.add_argument("--level", default="info", choices=["info", "ok", "warn", "error"])
+    ap.add_argument("--tokens", type=int, help="このセッションで使ったトークン（目安）")
+    a = ap.parse_args()
+    extra = {"res": resources.snapshot()}
+    if a.tokens:
+        extra["tokens"] = a.tokens
+    add(a.proc, a.text, a.level, **extra)
+
+
+if __name__ == "__main__":
+    main()
