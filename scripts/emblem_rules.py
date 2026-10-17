@@ -82,7 +82,10 @@ def rules():
         {"stage": STAGES[6], "title": "顔の大きさをそろえる", "by": "model", "code": "emblem.face_fit（Haar・LBP）",
          "rule": f"顔 = 高さの {pct(emblem.FACE_SHARE)}。顔が {pct(emblem.CLOSEUP)} を超えるアップは同じページの胸像に替える"},
         {"stage": STAGES[6], "title": "全身か胸像か", "by": "rule", "code": "emblem.want_full",
-         "rule": "1 枚ごとの framing → 版面の emblem_framing → 絵のキャラで元が透明背景の公式の立ち絵なら全身（切らない）→ それ以外（写真・コマ・場面）は胸像"},
+         "rule": "1 枚ごとの framing → 版面の emblem_framing → 絵のキャラで元が透明背景の公式の立ち絵なら「全身で測ってから上半身」→ それ以外（写真・コマ・場面）は顔で胸像"},
+        {"stage": STAGES[6], "title": "全身で測ってから上半身に切る", "by": "rule", "code": "emblem.bust_from_body（BUST_CUT）",
+         "rule": f"全身のままだと小さく貼ったとき顔が見えない。目・足の裏（全身で測った目印）で、目から足の裏の {emblem.BUST_CUT:.0%} の高さ（腰のあたり）で切る。"
+                 "網页は目から足の裏（画像の外）を同じ長さにそろえるので、どのキャラも体の同じところで切れて同じ大きさ、ほかの胸像とも顔の大きさが合う"},
         {"stage": STAGES[6], "title": "全身の背の高さをそろえる", "by": "model", "code": "emblem.body_marks（YOLOv8m-pose）/ render._body_len",
          "rule": "目から足の裏までの長さをどのキャラも同じに（網页 116px・スマホ 74px）、足の裏を帯の線に、重心を同じ位置に。"
                  "足の裏は足首から真下にたどる（尻尾・武器・服の裾・影はいちばん下でも足ではない。細いヒールのすき間 3% は越える）。"
@@ -138,9 +141,10 @@ EXAMPLES = [
     {"rule": "顔の大きさをそろえる", "item": "绝区零 · Belle",
      "before": [("belle-src", "公式の立ち絵（全身）")], "after": [("belle-after", "顔が高さの 32% になるように下を切る")],
      "verdict": "どの版面でも顔が同じ大きさに見える"},
-    {"rule": "全身か胸像か", "item": "绝区零 · Astra Yao",
-     "before": [("astra-bust", "前：公式の立ち絵まで上半身に切っていた")], "after": [("astra-full", "後：全身のまま（ほかの 19 人も）")],
-     "verdict": "ゲームの公式の立ち絵は全身で見せる絵。切らない"},
+    {"rule": "全身で測ってから上半身に切る", "item": "绝区零 · Astra Yao",
+     "before": [("astra-bust", "前：顔で切っていたので、キャラごとに体の切れる場所がばらばら")],
+     "after": [("astra-full", "後：全身で目と足の裏を測り、腰のあたり（目から足の 40%）で切る。20 人とも同じところで切れる")],
+     "verdict": "全身で測ってから上半身に切る（全身のままだと小さすぎる）"},
     {"rule": "全身の背の高さをそろえる", "item": "dota2 · ヒーロー 9 人",
      "before": [("height-before", "前：画像の高さでそろえると、武器・羽・しゃがみで背がばらばら")],
      "after": [("height-after", "後：目から足の裏をそろえ、足の裏を線（赤）に。しゃがんだ Slark は大きさで測る")],

@@ -757,11 +757,12 @@ def fit_all(name, drawn=False):
                 out = out.crop(out.getchannel("A").getbbox())
                 fs = None
             x.pop("body", None)
-            if full or x.get("upper") is False:   # 目から足の裏までの長さで大きさをそろえる（網页の --be / --bf）
+            if full or x.get("upper") is False:   # 目から足の裏までの長さで大きさをそろえてから、上半身に切る（網页の --bl / --bf）
                 mk = body_marks(out)
                 if mk:
-                    x["body"] = list(mk[:5])
-                    print(f"  {x['subject']}：目 {mk[0]} · 足の裏 {mk[1]} · 重心 {mk[2]} · 大きさ {mk[4]}（{mk[5]}）", file=sys.stderr)
+                    out, body = bust_from_body(out, mk)
+                    x["body"] = body
+                    print(f"  {x['subject']}：目 {mk[0]} · 足の裏 {mk[1]} · 重心 {mk[2]} · 大きさ {mk[4]}（{mk[5]}）→ 上半身", file=sys.stderr)
             if fs and fs > CLOSEUP and x.get("page"):   # 顔だけのアップは浮くので、同じキャラのページから胸像を探す
                 m = re.match(r"^(https://[^/]+)/wiki/(.+)$", x["page"])
                 found = m and find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "),
@@ -924,6 +925,28 @@ def body_marks(img):
         eye, foot, how = top + (bottom - top) * 0.06, float(bottom), "輪郭"
     size = float(np.sqrt(a[int(eye):int(foot) + 1].sum())) / h   # 体の大きさ（目から足の裏までの面積の平方根）：しゃがんだ・前かがみの体の比べ方に
     return round(eye / h, 3), round(foot / h, 3), round(float(cx) / w, 3), round(w / h, 3), round(size, 3), how
+
+
+BUST_CUT = 0.40   # 全身の立ち絵を「目 + 目から足の裏の長さ × これ」（腰のあたり）で切って上半身にする。どのキャラも体の同じところで切れる
+
+
+def bust_from_body(img, mk, cut=BUST_CUT):
+    """全身の立ち絵を、体の目印（body_marks）で上半身に切る → (画像, body)。
+    全身のままだと小さく貼ったとき顔が見えない（绝区零・チェーンソーマン）。背の高さをそろえる測り方（目から足の裏）は
+    そのまま使い、切った画像に対する割合に直す：body = [目, 足の裏（切った画像の外 = 1 より大きい）, 重心, 幅÷高さ, 体の大きさ]。
+    網页は「目から足の裏」を同じ長さにそろえるので、どのキャラも同じ大きさの上半身になり、ほかの胸像（顔 = 高さの 32%）とも合う。"""
+    w, h = img.size
+    eye, foot = mk[0] * h, mk[1] * h
+    y = int(eye + (foot - eye) * cut)
+    if y >= h - 2:
+        return img, list(mk[:5])
+    part = main_parts(img.crop((0, 0, w, y)))
+    box = part.getchannel("A").getbbox() or (0, 0, w, y)
+    part = part.crop(box)
+    nw, nh = part.size
+    cx = (mk[2] * w - box[0]) / max(1, nw)
+    return part, [round((eye - box[1]) / nh, 3), round((foot - box[1]) / nh, 3), round(min(1, max(0, cx)), 3),
+                  round(nw / nh, 3), round(mk[4] * h / nh, 3)]
 
 
 def official_render(x):

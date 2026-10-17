@@ -1045,3 +1045,16 @@ class Framing(unittest.TestCase):
         near = render._emblem_img({"src": "https://x/a.jpg", "shape": "badge", "ar": 1.25})
         self.assertIn("badge whole", wide)
         self.assertNotIn("whole", near)
+
+    def test_bust_from_body_cuts_at_same_body_point(self):
+        import emblem
+        from unittest import mock
+        with mock.patch.object(emblem, "_pose_model", return_value=None):
+            fig = self._figure(tail=True)
+            mk = emblem.body_marks(fig)
+            out, body = emblem.bust_from_body(fig, mk)
+        eye, foot = mk[0] * 400, mk[1] * 400
+        self.assertAlmostEqual(out.size[1], eye + (foot - eye) * emblem.BUST_CUT - 10, delta=6)   # 頭のてっぺん（y=10）から腰まで
+        self.assertGreater(body[1], 1)                    # 足の裏は切った画像の外
+        self.assertAlmostEqual((body[1] - body[0]) * out.size[1], foot - eye, delta=2)   # 目から足の長さは全身のときと同じ（そろえる尺度）
+
