@@ -3,6 +3,7 @@
     python -m unittest discover tests
 """
 
+import json
 import pathlib
 import sys
 import unittest
@@ -99,6 +100,126 @@ class Sources(unittest.TestCase):
         self.assertEqual(sorted(ef.auto_pick(item, good)), [2, 3])   # 1 人 1 枚、Web 検索より Wiki 系を先に
 
 
+    def test_auto_pick_background_skips_web_and_existing(self):
+        item = {"type": "event", "emblem_kind": "group", "emblem_who": ["A", "B", "C"],
+                "emblem": [{"subject": "A", "image": "emblems/a.webp", "source": "https://x.example/a.jpg"}]}
+        good = [{"subject": "A", "source": "Wikipedia", "image": "https://x.example/a2.jpg"},   # A はもうある
+                {"subject": "B", "source": "Web 画像検索", "image": "https://x.example/b.jpg"},
+                {"subject": "C", "source": "Wikipedia", "image": "https://x.example/a.jpg"},   # 同じ画像はもうある
+                {"subject": "C", "source": "新聞の配図", "image": "https://x.example/c.jpg"}]
+        self.assertEqual(ef.auto_pick(item, good, web=False), [4])
+        self.assertEqual(sorted(ef.auto_pick(item, good)), [2, 4])
+
+    def test_auto_pick_brand_prefers_wikidata_logo(self):
+        item = {"type": "product", "emblem_kind": "brand"}
+        good = [{"subject": "X", "source": "Wikimedia Commons", "image": "c"}, {"subject": "X", "source": "公式サイト", "image": "s"},
+                {"subject": "X", "source": "Wikidata", "image": "w"}]
+        self.assertEqual(ef.auto_pick(item, good, web=False), [3])
+
+    def test_auto_pick_strict_drawn_characters(self):
+        # 絵のキャラは、後台ではキャラ専用の取り方だけ（Commons の「Juggernaut」はバンドの写真だった）
+        item = {"type": "game", "emblem_who": ["Juggernaut", "Axe"]}
+        good = [{"subject": "Juggernaut", "source": "Wikimedia Commons", "image": "c"},
+                {"subject": "Axe", "source": "直接指定", "image": "d"}]
+        self.assertEqual(ef.auto_pick(item, good, web=False, strict=True), [2])
+        people = {"type": "show", "emblem_people": True, "emblem_who": ["A"]}
+        self.assertEqual(ef.auto_pick(people, [{"subject": "A", "source": "Wikimedia Commons", "image": "c"}], web=False, strict=True), [1])
+
+    def test_needs_face(self):
+        self.assertTrue(ef.needs_face({"type": "event"}))
+        self.assertTrue(ef.needs_face({"type": "show", "emblem_people": True}))
+        self.assertFalse(ef.needs_face({"type": "show"}))
+        self.assertFalse(ef.needs_face({"type": "product"}))
+
+
+class Background(unittest.TestCase):
+    """定時の後台（--background）と進捗ファイル。ネットには出ず、fill を差し替える。"""
+
+    ITEMS = [{"name": "full", "type": "game", "emblem_who": ["a"], "emblem": [{"subject": "a", "image": "x"}]},
+             {"name": "one", "type": "game", "emblem": [{}]},
+             {"name": "zero", "type": "game"},
+             {"name": "brand", "type": "product"}]
+
+    def setUp(self):
+        import tempfile
+        self.dir = tempfile.TemporaryDirectory()
+        self.path = pathlib.Path(self.dir.name) / "emblem_progress.json"
+        self.items = [dict(i) for i in self.ITEMS]
+        self._load = ef.load_items
+        ef.load_items = lambda: self.items
+
+    def tearDown(self):
+        ef.load_items = self._load
+        self.dir.cleanup()
+
+    def test_sync_progress(self):
+        prog = ef.sync_progress({"items": {"gone": {"state": "ok"}}}, self.items)
+        self.assertNotIn("gone", prog["items"])
+        self.assertEqual(prog["items"]["full"]["state"], "ok")
+        self.assertEqual(prog["items"]["zero"]["state"], "running")
+        self.assertEqual(prog["summary"], {"ok": 1, "total": 4})
+
+    def test_due_order_and_failed_skip(self):
+        now = "2026-10-17T00:00:00+00:00"
+        prog = ef.sync_progress({"items": {}}, self.items)
+        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["zero", "one", "brand"])   # 足りない枚数の多い順
+        prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T12:00:00+00:00")
+        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 24 時間以内の失敗は飛ばす
+        prog["items"]["zero"]["failed_at"] = "2026-10-15T12:00:00+00:00"
+        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+
+    def test_background_records_each_item(self):
+        seen = []
+
+        def fill(item, log):
+            seen.append(item["name"])
+            if item["name"] == "zero":
+                raise RuntimeError("boom")
+            if item["name"] == "one":
+                item["emblem"] = [{}] * 6   # 目標に届いた
+                return {"state": "ok", "note": "5 枚足した", "tried": {"Fandom": 5}}
+            return {"state": "review", "note": "一覧で確かめる", "tried": {"Wikidata": 0}, "sheet": "/tmp/x.jpg"}
+        prog = ef.background(40, log=lambda m: None, fill=fill, path=self.path)
+        self.assertEqual(seen, ["zero", "one", "brand"])
+        saved = json.loads(self.path.read_text(encoding="utf-8"))
+        self.assertEqual(saved["items"]["zero"]["state"], "failed")   # 1 つの失敗で止まらない
+        self.assertIn("failed_at", saved["items"]["zero"])
+        self.assertEqual(saved["items"]["one"]["state"], "ok")
+        self.assertEqual(saved["items"]["brand"]["state"], "review")
+        self.assertEqual(saved["items"]["brand"]["tried"], {"Wikidata": 0})
+        self.assertEqual(saved["last_run"]["done"], ["zero", "one", "brand"])
+        self.assertTrue(saved["started"] and saved["last_run"]["end"])
+        self.assertEqual(prog["summary"], {"ok": 2, "total": 4})
+        # 2 回目：失敗したものは飛ばし、開始時刻は最初のまま
+        seen.clear()
+        again = ef.background(40, log=lambda m: None, fill=fill, path=self.path)
+        self.assertEqual(seen, ["brand"])
+        self.assertEqual(again["started"], saved["started"])
+
+    def test_background_stops_when_out_of_time(self):
+        seen = []
+
+        def fill(item, log):
+            seen.append(item["name"])
+            raise ef.OutOfTime("x")
+        prog = ef.background(40, log=lambda m: None, fill=fill, path=self.path)
+        self.assertEqual(seen, ["zero"])   # 途中で止めたら次に入らない
+        self.assertEqual(prog["items"]["zero"]["state"], "running")
+        self.assertNotIn("failed_at", prog["items"]["zero"])   # 失敗ではないので次の回にすぐやり直す
+
+    def test_background_respects_budget(self):
+        t = [0.0]
+
+        def clock():
+            return t[0]
+
+        def fill(item, log):
+            t[0] += 30 * 60   # 1 つに 30 分かかる
+            return {"state": "review", "note": ""}
+        prog = ef.background(40, log=lambda m: None, fill=fill, clock=clock, path=self.path)
+        self.assertEqual(prog["last_run"]["done"], ["zero", "one"])   # 30 分後（残り 10 分）は 2 つ目に入り、60 分後は入らない
+
+
 class Identity(unittest.TestCase):
     """face_id.same_person の論理だけ確かめる（モデルなしで、特徴量の代わりに数を使う）。"""
 
@@ -157,8 +278,81 @@ class Processes(unittest.TestCase):
         out = render.render_admin({"pipeline": {}, "items": rows, "votes": {}}, {}, "u")
         for p in processes.PROCESSES:
             self.assertIn(f'data-open="proc-{p["id"]}"', out)
-        self.assertIn("足りない", out)
         self.assertIn('id="emblems"', out)
+        self.assertIn("順番待ち", out)   # 進捗にまだないものは「進行中（順番待ち）」
+
+    def test_admin_emblem_progress(self):
+        rows = [{"name": "A", "section": "游戏", "emblem": {"kind": "group", "kind_ja": "グループ", "have": 2, "target": 5, "hi": 10,
+                                                          "lo": 3, "state": "low", "skip": False, "shapes": {}}},
+                {"name": "B", "section": "游戏", "emblem": {"kind": "brand", "kind_ja": "ブランド", "have": 1, "target": 1, "hi": 1,
+                                                          "lo": 1, "state": "ok", "skip": False, "shapes": {}}}]
+        run = {"ok": 1, "total": 2, "started": "10/16 08:00", "last_run": "10/17 06:00", "minutes": 40, "done": 1,
+               "items": {"A": {"state": "review", "note": "<残り> 3 枚", "at": "10/17 06:10"}, "B": {"state": "ok", "note": "", "at": None}}}
+        out = render.render_admin({"pipeline": {}, "items": rows, "votes": {}, "emblem_run": run}, {}, "u")
+        self.assertIn("<b>1</b> / 2 版面が目標に到達", out)
+        self.assertIn('aria-valuenow="1"', out)
+        self.assertIn("width:50%", out)
+        self.assertIn('class="em-review">要確認', out)
+        self.assertIn("&lt;残り&gt; 3 枚", out)   # 結果の文は転義する
+        self.assertIn("10/17 06:00", out)
+        self.assertLess(out.index(">A<"), out.index(">B<"))   # 要確認が上
+
+
+
+class Backend(unittest.TestCase):
+    """管理ページ「バックグラウンド」：次の実行（定時）と、版面 × プロセスの表。"""
+
+    def test_slots(self):
+        by = {p["id"]: p for p in processes.PROCESSES}
+        self.assertEqual(processes.slots(by["edit"]), [[4, 43], [15, 43]])
+        self.assertEqual(processes.slots(by["emblem"]), processes.slots(by["edit"]))   # 選定は AI 編集の回に
+        self.assertEqual(len(processes.slots(by["collect"])), 12)
+        self.assertEqual(processes.slots(by["render"]), [])
+        for p in processes.PROCESSES:
+            for h, m in processes.slots(p):
+                self.assertTrue(0 <= h < 24 and 0 <= m < 60, p["id"])
+
+    def test_cells(self):
+        import digest
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            d = pathlib.Path(d)
+            (d / "2026-10-17.json").write_text(json.dumps({"items": [{"name": "A", "entries": [{}] * 3},
+                                                                     {"name": "B", "entries": [{}] * 2}]}), encoding="utf-8")
+            (d / "2026-10-17.edit.json").write_text(json.dumps({"_covered": {"A": 3, "B": 1}}), encoding="utf-8")
+            old = digest.INBOX_DIR
+            digest.INBOX_DIR = d
+            try:
+                items = [{"name": "A", "motif": "m", "theme": {"bg": "#000"}}, {"name": "B"}, {"name": "C", "motif": "m", "theme": {"bg": "#000"}}]
+                rows = [{"name": n, "emblem": {"state": st, "have": h, "target": 6}} for n, st, h in
+                        (("A", "ok", 6), ("B", "low", 2), ("C", "low", 1))]
+                run = {"items": {"C": {"state": "review"}}, "queue": ["B"]}
+                digest.backend_cells(items, rows, d / "2026-10-17.json", run)
+            finally:
+                digest.INBOX_DIR = old
+        a, b, c = (r["bg"] for r in rows)
+        self.assertEqual((a["collect"]["state"], a["edit"]["state"], a["design"]["state"], a["emblem"]["state"]), ("ok", "ok", "ok", "ok"))
+        self.assertEqual(b["edit"], {"state": "wait", "text": "新しい 1 件が待ち"})
+        self.assertEqual(b["design"]["state"], "wait")
+        self.assertIn("順番 1 番目", b["emblem"]["text"])
+        self.assertEqual((c["collect"]["state"], c["edit"]["state"], c["emblem"]["state"]), ("idle", "idle", "review"))
+
+    def test_render(self):
+        bg = {k: {"state": "wait", "text": "<x>"} for k in ("collect", "edit", "design", "emblem")}
+        rows = [{"name": "A", "section": "游戏", "bg": bg}, {"name": "B", "section": "好物", "bg": {**bg, "emblem": {"state": "failed", "text": ""}}}]
+        out = render._admin_backend(rows)
+        self.assertIn('class="nxs"', out)
+        for p in processes.PROCESSES:   # 定時か Actions で動くものは「次の実行」に出る（AI 編集と同じ回のものは出さない）
+            shown = f'data-open="proc-{p["id"]}"' in out
+            self.assertEqual(shown, not isinstance(p.get("schedule"), str) and bool(processes.slots(p) or p.get("workflow")), p["id"])
+        self.assertIn('data-wf="digest.yml"', out)
+        self.assertIn("&lt;x&gt;", out)
+        self.assertNotIn("<x>", out)
+        self.assertIn('class="bgc s-failed"', out)
+        self.assertLess(out.index("ゲーム"), out.index("グッズ"))   # 板块の順
+        page = render.render_admin({"pipeline": {}, "items": rows, "votes": {}}, {}, "u")
+        self.assertIn('id="backend"', page)
+        self.assertLess(page.index('id="backend"'), page.index('id="procs"'))
 
 
 if __name__ == "__main__":

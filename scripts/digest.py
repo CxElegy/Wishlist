@@ -1772,7 +1772,74 @@ def admin_data(items, issues, analysis, tz, updated):
              "works": sorted(((k, a, b) for k, (a, b) in by_work.items()), key=lambda x: (-(x[1] + x[2]), x[0]))[:10],
              "recent": [{**{k: r.get(k) for k in ("url", "title", "work", "kind", "vote")},
                          "when": t.strftime("%m/%d %H:%M") if (t := stamp(r.get("created_at"))) else ""} for r in recent]}
-    return {"pipeline": pipeline, "items": rows, "votes": votes}
+    run = emblem_progress(items, tz)
+    backend_cells(items, rows, inbox[-1] if inbox else None, run)
+    return {"pipeline": pipeline, "items": rows, "votes": votes, "emblem_run": run}
+
+
+DESIGN_KEYS = (("motif", "テーマ"), ("theme", "配色"))   # like_fx は書かなければテーマの演出なので要らない
+
+
+def backend_cells(items, rows, latest, run):
+    """管理ページ「バックグラウンド」の表：版面（行）× プロセス（列）の今の状態を rows[i]["bg"] に書く。
+    状態：ok 済 / wait 待ち（次の回で動く）/ review 要確認 / failed 失敗 / idle 対象なし。
+      collect  最新の収集（inbox）にその版面の記事が何件あるか
+      edit     その日の AI 編集（edit.json の _covered）がその件数まで編集したか
+      design   版面の設計（motif・theme）がそろっているか（足りなければ次の AI 編集で）
+      emblem   小元素の自動補完の状態（state/emblem_progress.json）と、順番待ちなら何番目か"""
+    day = latest.stem if latest else None
+    got = {b.get("name"): len(b.get("entries") or []) for b in ((load_json(latest) or {}).get("items") or [])} if latest else {}
+    edit = load_json(INBOX_DIR / f"{day}.edit.json") if day else None
+    covered = (edit or {}).get("_covered") or {}
+    by_name = {i["name"]: i for i in items}
+    eprog = run.get("items") or {}
+    queue = run.get("queue") or []
+    md = (lambda d: f"{int(d[5:7])}/{int(d[8:10])}") if day else (lambda d: "")
+    for r in rows:
+        name, item = r["name"], by_name.get(r["name"]) or {}
+        n = got.get(name, 0)
+        cells = {"collect": ("ok", f"{md(day)} {n} 件") if n else ("idle", f"{md(day)} 新着なし" if day else "まだ収集なし")}
+        if not n:
+            cells["edit"] = ("idle", "編集するものなし")
+        elif edit is None:
+            cells["edit"] = ("wait", f"未編集 {n} 件")
+        else:
+            c = int(covered.get(name) or 0)
+            cells["edit"] = ("ok", f"{n} 件 編集済み") if c >= n else ("wait", f"新しい {n - c} 件が待ち")
+        miss = [ja for k, ja in DESIGN_KEYS if not item.get(k)]
+        cells["design"] = ("ok", "設計済み") if not miss else ("wait", "未設定：" + "・".join(miss))
+        em = r.get("emblem") or {}
+        st = (eprog.get(name) or {}).get("state") or ("ok" if em.get("state") == "ok" else "running")
+        count = f'{em.get("have", 0)}/{em.get("target", 0)} 枚'
+        if st == "ok":
+            cells["emblem"] = ("ok", count)
+        elif st == "review":
+            cells["emblem"] = ("review", f"{count} · 一覧から選ぶ")
+        elif st == "failed":
+            cells["emblem"] = ("failed", f"{count} · 24 時間後に再挑戦")
+        else:
+            pos = queue.index(name) + 1 if name in queue else None
+            cells["emblem"] = ("wait", f"{count} · 順番 {pos} 番目" if pos else count)
+        r["bg"] = {k: {"state": a, "text": b} for k, (a, b) in cells.items()}
+
+
+def emblem_progress(items, tz):
+    """管理ページの「進捗」：小元素の定時の自動補完（emblem_fill.py --background）が残した state/emblem_progress.json。
+    枚数は items.yaml の今の値で数え直す（後で AI が一覧から選んだ分も入る）。時刻は表示用に現地時間へ。"""
+    import emblem_fill
+    prog = emblem_fill.sync_progress(emblem_fill.load_progress(), items)
+
+    def local(s):
+        try:
+            return dt.datetime.fromisoformat(s).astimezone(tz).strftime("%m/%d %H:%M")
+        except (TypeError, ValueError):
+            return None
+    last = prog.get("last_run") or {}
+    now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    return {"queue": [i["name"] for i in emblem_fill.due(prog, items, now)], "ok": prog["summary"]["ok"], "total": prog["summary"]["total"], "started": local(prog.get("started")),
+            "last_run": local(last.get("at")), "minutes": last.get("minutes"), "done": len(last.get("done") or []),
+            "items": {n: {"state": x["state"], "note": x.get("note", ""), "at": local(x.get("at")),
+                          "tried": x.get("tried") or {}} for n, x in prog["items"].items()}}
 
 
 def write_page():

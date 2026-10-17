@@ -1,0 +1,191 @@
+{
+ "items": {
+  "A2O LITE": {
+   "at": "2026-10-17T00:02:52+00:00",
+   "failed_at": "2026-10-17T00:02:52+00:00",
+   "have": 0,
+   "kind": "group",
+   "note": "0 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "state": "failed",
+   "target": 9,
+   "tried": {
+    "Wikimedia Commons": 22,
+    "Wikipedia": 1
+   }
+  },
+  "Astrae Oratio": {
+   "have": 5,
+   "kind": "character",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  },
+  "BLEACH Mirrors High": {
+   "have": 4,
+   "kind": "character",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  },
+  "FROM": {
+   "at": "2026-10-17T00:05:18+00:00",
+   "have": 0,
+   "kind": "character",
+   "note": "時間切れで途中まで（次の回に続き）",
+   "state": "running",
+   "target": 6
+  },
+  "GTA 6": {
+   "have": 2,
+   "kind": "character",
+   "note": "2 / 2 枚で目標に届いた",
+   "state": "ok",
+   "target": 2
+  },
+  "ILLIT": {
+   "have": 2,
+   "kind": "group",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 5
+  },
+  "MMORPG 新作": {
+   "have": 2,
+   "kind": "topic",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 3
+  },
+  "The Mandalorian": {
+   "have": 2,
+   "kind": "character",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 4
+  },
+  "Vaundy": {
+   "have": 1,
+   "kind": "person",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  },
+  "dota2": {
+   "at": "2026-10-17T00:17:30+00:00",
+   "have": 6,
+   "kind": "character",
+   "note": "6 枚足して目標に届いた",
+   "state": "ok",
+   "target": 6,
+   "tried": {
+    "Wikimedia Commons": 3,
+    "Wikipedia": 5,
+    "直接指定": 6
+   }
+  },
+  "gelato pique": {
+   "have": 0,
+   "kind": "brand",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 1
+  },
+  "あつ森": {
+   "have": 5,
+   "kind": "character",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  },
+  "ぐでたま": {
+   "have": 3,
+   "kind": "character",
+   "note": "3 / 3 枚で目標に届いた",
+   "state": "ok",
+   "target": 3
+  },
+  "チェーンソーマン": {
+   "have": 5,
+   "kind": "character",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  },
+  "三星手机": {
+   "have": 0,
+   "kind": "brand",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 1
+  },
+  "周杰伦": {
+   "have": 3,
+   "kind": "person",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  },
+  "哈利波特剧集": {
+   "have": 2,
+   "kind": "character",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  },
+  "日本顶级网球赛事": {
+   "have": 1,
+   "kind": "topic",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 3
+  },
+  "星巴克马克杯": {
+   "have": 1,
+   "kind": "brand",
+   "note": "1 / 1 枚で目標に届いた",
+   "state": "ok",
+   "target": 1
+  },
+  "滑雪": {
+   "have": 1,
+   "kind": "topic",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 3
+  },
+  "漫威电影": {
+   "have": 1,
+   "kind": "character",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  },
+  "猫用品": {
+   "have": 1,
+   "kind": "topic",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 3
+  },
+  "绝区零": {
+   "have": 4,
+   "kind": "character",
+   "note": "順番待ち",
+   "state": "running",
+   "target": 6
+  }
+ },
+ "last_run": {
+  "at": "2026-10-17T00:05:49+00:00",
+  "done": [
+   "dota2"
+  ],
+  "end": "2026-10-17T00:12:32+00:00",
+  "minutes": 8.0
+ },
+ "started": "2026-10-16T23:48:04+00:00",
+ "summary": {
+  "ok": 4,
+  "total": 23
+ }
+}

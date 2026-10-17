@@ -44,7 +44,16 @@ python scripts/emblem_fill.py --audit                  # 全部版面：种类�
 python scripts/emblem_fill.py "作品名"                  # 候选图 → /tmp/wishlist-emblem/<名>.jpg（带编号的一览）和 .json
 python scripts/emblem_fill.py "作品名" --commit 1,3,5   # 看过一览后选编号：写进 items.yaml，人物自动抠图、统一脸的大小（--replace 置换）
 python scripts/emblem_fill.py --auto                   # 不看一览，按固定顺序选（Web 搜索只是最后手段）
+python scripts/emblem_fill.py --background --minutes 40 # 定时任务用：时间预算内按缺口大小依次补，进度写进 state/emblem_progress.json
+python scripts/emblem_fill.py --progress               # 只把 items.yaml 的现有枚数同步进进度文件（不联网）
 ```
+
+**后台模式（定时任务「小元素 · 后台补全」，每 4 小时）**：自动选图只用确かな取法——人物 / 团体 / 演员（`emblem_people: true`）必须过本人识别，
+画的角色只用 `直接指定` / Fandom（名字是普通词的角色在 Wikipedia・Commons 会撞到别的东西，例：dota2 的 Juggernaut 撞到乐队照片），
+brand 先 Wikidata P154 / 官网 Logo，topic 先 Wikidata / Commons / Twemoji。**Web 图片搜索只收集、不自动选**。
+补不到目标的标「要確認」，剩下的候选重新出一览图给 AI 看图挑；没有候选的标「失敗」，24 小时内不再试。
+Wikipedia 连续 429 时那个主机休 5 分钟，不在一个关注项上耗光预算。官方立绘能直接拿到时写进 `emblem_urls`（dota2 用 Steam 的英雄立绘）。
+进度在管理页「バックグラウンド」（版面 × 流程的表、下次几点・还剩几分钟）和「小元素 → 進捗」。
 
 取法的顺序（足りるまで次へ）：直接指定 → AniList → Fandom → Wikipedia → Commons → 集めた新闻的配图 → 公式サイト → Web 图片搜索 → Twemoji。
 **本人确认**（`scripts/face_id.py`）：人物 / 团体的照片要检测到脸，并且和记事的代表图是同一个人（YuNet + SFace，相似度 ≥ 0.363；代表图不对时按「最大的同脸集团」多数决）。

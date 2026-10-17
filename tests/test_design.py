@@ -244,7 +244,10 @@ class AdminPage(unittest.TestCase):
         self.assertNotIn("<i>t</i>", out)
         self.assertNotIn("A<b>", out)
         self.assertNotIn('href="javascript:', out)
-        self.assertNotIn("<button", out)                          # 見るだけ：操作するボタンはない
+        # 見るだけ：ボタンはプロセスの流れを開く・閉じるものだけ（何かを変える操作はない）
+        for b in re.findall(r"<button[^>]*>", out):
+            self.assertRegex(b, r"data-(open|close)", b)
+        self.assertNotIn("<form", out)
 
     def test_empty(self):
         out = render.render_admin({}, {}, "u")

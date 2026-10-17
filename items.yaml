@@ -326,6 +326,7 @@ items:
 
   - name: 漫威电影
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Chris Hemsworth", "Robert Downey Jr.", "Anthony Mackie", "Sebastian Stan", "Chris Evans", "Letitia Wright"]   # 集める対象（メンバー・キャラ・出演者）
     motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     like_fx: manga          # 👍 の演出（scripts/likefx.py）：アメコミの擬音（ドカーン）の勢い
@@ -390,6 +391,7 @@ items:
 
   - name: FROM
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Harold Perrineau", "Eion Bailey", "Catalina Sandino Moreno", "Scott McCord", "Avery Konrad", "Elizabeth Saunders"]   # 集める対象（メンバー・キャラ・出演者）
     motif: noir          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem_skip: "画像の取れるファン Wiki がなく、ポスターを丸く切るのは不自然"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
@@ -444,6 +446,7 @@ items:
 
   - name: 哈利波特剧集
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Dominic McLaughlin", "Alastair Stout", "Arabella Stanton", "Paapa Essiedu", "John Lithgow", "Nick Frost"]   # 集める対象（メンバー・キャラ・出演者）
     motif: magic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -912,7 +915,9 @@ items:
       font: serif
 
   - name: "ぐでたま"
-    emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_max: 3   # キャラが 1 体だけなので、別の場面 3 枚
+    emblem_fandom: hellokitty
     emblem_subject: Gudetama
     motif: lazy          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -968,6 +973,7 @@ items:
 
   - name: "The Mandalorian"
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Pedro Pascal", "Giancarlo Esposito", "Katee Sackhoff", "Emily Swallow"]   # 集める対象（メンバー・キャラ・出演者）
     motif: beskar          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -1094,7 +1100,20 @@ items:
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Invoker", "Pudge", "Crystal Maiden", "Juggernaut", "Axe", "Lina"]   # 集める対象（メンバー・キャラ・出演者）
     motif: sport          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：対戦・スピード感
-    emblem_skip: "Wiki で取れる画像がゲーム内アイコン・モデル図ばかりで、代表キャラの立ち絵として使えない"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Invoker", why: "Invoker（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-invoker.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/invoker.png", page: "https://www.dota2.com/hero/invoker", shape: "cutout"}
+      - {subject: "Pudge", why: "Pudge（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-pudge.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/pudge.png", page: "https://www.dota2.com/hero/pudge", shape: "cutout"}
+      - {subject: "Crystal Maiden", why: "Crystal Maiden（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-crystal-maiden.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/crystal_maiden.png", page: "https://www.dota2.com/hero/crystalmaiden", shape: "cutout", fs: 0.327}
+      - {subject: "Juggernaut", why: "Juggernaut（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-juggernaut.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/juggernaut.png", page: "https://www.dota2.com/hero/juggernaut", shape: "cutout"}
+      - {subject: "Axe", why: "Axe（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-axe.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/axe.png", page: "https://www.dota2.com/hero/axe", shape: "cutout"}
+      - {subject: "Lina", why: "Lina（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-lina.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/lina.png", page: "https://www.dota2.com/hero/lina", shape: "cutout", fs: 0.384}
+    emblem_urls:   # 公式の立ち絵（透明 PNG、Steam の CDN）。ファン Wiki の画像はゲーム内アイコン・横長の splash ばかりなので直接指定
+      - {subject: "Invoker", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/invoker.png", page: "https://www.dota2.com/hero/invoker", why: "Invoker（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Pudge", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/pudge.png", page: "https://www.dota2.com/hero/pudge", why: "Pudge（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Crystal Maiden", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/crystal_maiden.png", page: "https://www.dota2.com/hero/crystalmaiden", why: "Crystal Maiden（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Juggernaut", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/juggernaut.png", page: "https://www.dota2.com/hero/juggernaut", why: "Juggernaut（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Axe", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/axe.png", page: "https://www.dota2.com/hero/axe", why: "Axe（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Lina", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/lina.png", page: "https://www.dota2.com/hero/lina", why: "Lina（公式サイトのヒーローの立ち絵）"}
     theme: {bg: "#17100F", fg: "#F4EEE4", accent: "#E0503C", alt_bg: "#F6EDEA", alt_fg: "#1E1A18", alt_accent: "#A63A28", split: true}  # 自选：Dota 2 の赤（Radiant の対極、炎の赤）+ 墨黒
     type: game
     section: "游戏"

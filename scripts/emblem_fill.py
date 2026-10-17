@@ -46,13 +46,23 @@ import face_id  # noqa: E402
 from emblem import ROOT, inspect, small_url  # noqa: E402
 
 _last = {}
+_cool = {}        # ホスト → この時刻までは叩かない（429 が続いたとき）
+COOL = 300        # 取り直しても 429 なら、そのホストは 5 分休ませる（待ち続けて時間の予算を食わないように）
+_deadline = [None]   # 後台の時間の予算の締め切り（time.time()）。過ぎたら集めるのをやめる
 _orig_get = emblem._get
 
 
+class OutOfTime(Exception):
+    pass
+
+
 def _throttled_get(url, limit=emblem.MAX_BYTES):
-    """Wikipedia / Commons は続けて叩くと 429（多すぎ）になるので、同じホストには 1.3 秒あけ、取れなければ長めに待って取り直す。"""
+    """Wikipedia / Commons は続けて叩くと 429（多すぎ）になるので、同じホストには 1.3 秒あけ、取れなければ長めに待って取り直す。
+    取り直しても 429 なら、そのホストはしばらく休ませる（その間はすぐ失敗にして、次の取り方へ進む）。"""
     host = urllib.parse.urlparse(url).netloc
     if host.endswith("wikipedia.org") or host.endswith("wikimedia.org") or host.endswith("wikidata.org"):
+        if _cool.get(host, 0) > time.time():
+            raise urllib.error.HTTPError(url, 429, "休ませ中（429 が続いた）", None, None)
         wait = _last.get(host, 0) + 1.3 - time.time()
         if wait > 0:
             time.sleep(wait)
@@ -62,10 +72,20 @@ def _throttled_get(url, limit=emblem.MAX_BYTES):
             if e.code != 429:
                 raise
             time.sleep(30)
-            return _orig_get(url, limit)
+            try:
+                return _orig_get(url, limit)
+            except urllib.error.HTTPError as e2:
+                if e2.code == 429:
+                    _cool[host] = time.time() + COOL
+                raise
         finally:
             _last[host] = time.time()
     return _orig_get(url, limit)
+
+
+def _check_time():
+    if _deadline[0] is not None and time.time() > _deadline[0]:
+        raise OutOfTime("時間の予算を使い切った")
 
 
 emblem._get = _throttled_get
@@ -82,6 +102,7 @@ RULES = {
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
+WEB = "Web 画像検索"
 TWEMOJI = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/{}.svg"
 SKIP_NAMES = re.compile(r"logo|icon|signature|flag|map|symbol|commons-|question_book|edit-clear|wikiquote|wikidata|"
                         r"disambig|stub|portal|crystal_clear|ambox|nuvola|folder|sprite|button|badge|banner|\.svg$", re.I)
@@ -355,18 +376,36 @@ def wiki_titles(item):
     return out
 
 
-def gather(item, log=print):
-    """種類に合わせて、上の順で候補を集める。→ [{subject, image, page, why, source, license, kind}]。"""
+def _tracking(log, tried):
+    """gather の log を包んで、エラーになった取り方も「試した」として tried に残す（[Wikidata] … の形のログから）。"""
+    alias = {"Commons": "Wikimedia Commons", "新聞": "新聞の配図", "Web": "Web 画像検索"}
+
+    def out(msg):
+        m = re.match(r"\s*\[([^\]\s]+)", msg)
+        if m and m.group(1) not in ("使えない", "白紙", "別人・顔なし", "本人確認なし"):
+            tried.setdefault(alias.get(m.group(1), m.group(1)), 0)
+        log(msg)
+    return out
+
+
+def gather(item, log=print, tried=None):
+    """種類に合わせて、上の順で候補を集める。→ [{subject, image, page, why, source, license, kind}]。
+    tried（dict）を渡すと、試した取り方ごとの候補数を書き込む（進捗の記録用）。"""
     kind, lo, target, hi = rule(item)
     name = item["name"]
     cands = []
+    tried = {} if tried is None else tried
+    log = _tracking(log, tried)
 
     def add(subject, rows, source, why, per=None):
+        base = source.split("(")[0]
+        tried[base] = tried.get(base, 0) + len(rows[:per] if per else rows)
         for r in rows[:per] if per else rows:
             cands.append({"subject": subject, "image": r["image"], "page": r.get("page", ""), "source": source,
                           "why": why, "license": r.get("license", ""), "anchor": bool(r.get("anchor")), "title": r.get("title", "")})
 
     for u in item.get("emblem_urls") or []:
+        tried["直接指定"] = tried.get("直接指定", 0) + 1
         cands.append({"subject": u.get("subject", name), "image": u["image"], "page": u.get("page", ""), "source": "直接指定",
                       "why": u.get("why", "items.yaml に直接書いた画像"), "license": ""})
     if kind in ("brand", "topic"):
@@ -398,10 +437,12 @@ def gather(item, log=print):
             except Exception as e:
                 log(f"  [Wikidata] {e}")
             try:
-                add(subj, bing_images(f"{subj} 公式 画像", 6), "Web 画像検索", "主題を表す画像（要確認）", 3)
+                if not item.get("_no_web"):
+                    add(subj, bing_images(f"{subj} 公式 画像", 6), "Web 画像検索", "主題を表す画像（要確認）", 3)
             except Exception as e:
                 log(f"  [Web] {e}")
         for emoji in (item.get("emblem_icon") or "").split():
+            tried["Twemoji"] = tried.get("Twemoji", 0) + 1
             cands.append({**twemoji(emoji), "subject": f"{emoji} アイコン", "source": "Twemoji", "why": "版面の主題を表す物"})
         return _dedupe(cands)
 
@@ -410,10 +451,12 @@ def gather(item, log=print):
     titles = wiki_titles(item)
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
     for subj in who:
+        _check_time()
         got = 0
-        if kind == "character" and api:
+        if kind == "character" and api and not item.get("emblem_people"):
             try:
                 r = emblem.page_image(api, subj)
+                tried["Fandom"] = tried.get("Fandom", 0) + 1
                 cands.append({"subject": subj, "image": small_url(r[0]), "page": r[1], "source": "Fandom", "why": f"{subj}（Fandom のページ）", "license": ""})
                 got += 1
             except Exception as e:
@@ -432,6 +475,8 @@ def gather(item, log=print):
                 one_person = len(who) == 1
                 rows = wikipedia_photos(subj, WIKI_LANGS, 10 if kind == "person" else 3, titles if one_person else None,
                                         extra=(kind == "person"), query=f"{subj} {name}" if kind == "group" else None)
+                if kind != "person" and needs_face(item):   # メンバー・出演者：検索で別の記事に当たったもの（題名に名前がない）は基準にしない
+                    rows = [r for r in rows if relevant(r["title"], subj)]
                 add(subj, rows, "Wikipedia", f"{subj}（Wikipedia の記事の画像）", None if kind == "person" else 2)
                 got += len(rows)
             except Exception as e:
@@ -455,7 +500,7 @@ def gather(item, log=print):
                 add(subj, site_images(item["site"], 8), "公式サイト", "公式サイトの画像")
             except Exception as e:
                 log(f"  [公式サイト] {e}")
-        if got < (4 if kind == "person" else 1) or item.get("_web"):
+        if (got < (4 if kind == "person" else 1) or item.get("_web")) and not item.get("_no_web"):
             try:
                 q = item.get("_query") or (f"{subj} {name}" if subj != name else f"{subj} 公式")
                 add(subj, bing_images(q, 8 if kind == "person" else 4), "Web 画像検索", f"{subj}（Web 画像検索・要確認）")
@@ -599,10 +644,15 @@ def _sheet_path(name):
     return pathlib.Path("/tmp/wishlist-emblem") / f"{slug}.jpg"
 
 
-def run_item(item, auto=False, picks=None, log=print):
+def needs_face(item):
+    """顔で本人確認する関注項：本人・グループと、出演者で集めるキャラ（emblem_people: true の実写の作品）。"""
+    return kind_of(item) in ("person", "group") or (kind_of(item) == "character" and bool(item.get("emblem_people")))
+
+
+def run_item(item, auto=False, picks=None, log=print, tried=None):
     log(f"■ {item['name']}（{KIND_JA[kind_of(item)]}）")
-    cands = gather(item, log)
-    good = check(cands, log, need_face=kind_of(item) in ("person", "group"))
+    cands = gather(item, log, tried)
+    good = check(cands, log, need_face=needs_face(item))
     out = _sheet_path(item["name"])
     sheet(good, out)
     (out.with_suffix(".json")).write_text(json.dumps([{k: v for k, v in c.items() if k != "_img"} for c in good],
@@ -611,22 +661,236 @@ def run_item(item, auto=False, picks=None, log=print):
     return good, out
 
 
-def auto_pick(item, good):
-    """自動で選ぶ：Web 画像検索は最後の手段。対象ごとに 1 枚（本人は別の写真を目標まで）。"""
+# 自動で選ぶときの、取り方の優先順。ブランドは公式ロゴ（Wikidata P154・公式サイト）、主題は Wikidata・Commons・Twemoji を先に
+PICK_ORDER = ["直接指定", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "Twemoji", WEB]
+PICK_ORDER_BY_KIND = {
+    "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
+    "topic": ["直接指定", "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
+}
+
+
+# 定時の後台（strict）で自動で選んでよい取り方。絵のキャラは名前が一般的な言葉（Juggernaut・Axe）だと
+# Wikipedia・Commons で別物に当たるので、キャラ専用の取り方だけ。人物（本人確認するもの）は Web 画像検索以外ならよい
+AUTO_SOURCES = {
+    "character": {"直接指定", "Fandom"},
+    "brand": {"直接指定", "Wikidata", "公式サイト", "Wikimedia Commons"},
+    "topic": {"直接指定", "Wikidata", "Wikimedia Commons", "Twemoji"},
+}
+
+
+def _base_subject(s):
+    return re.sub(r" \d+$", "", str(s or ""))
+
+
+def _have_images(item):
+    return {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
+
+
+def auto_pick(item, good, web=True, strict=False):
+    """自動で選ぶ：目標までの足りない分だけ。今ある小元素と同じ画像・同じ人（グループ・キャラは 1 人 1 枚）は選ばない。
+    web=False（定時の後台）は Web 画像検索の結果を選ばない（出所が確かでないので、一覧を目で見て選ぶ）。
+    strict=True（定時の後台）は、種類ごとに確かな取り方（AUTO_SOURCES）だけ。人物は本人確認を通ったものなので Web 以外はよい。"""
     kind, lo, target, hi = rule(item)
-    order = {"直接指定": 0, "Fandom": 1, "Wikipedia": 2, "Wikimedia Commons": 3, "新聞の配図": 4, "公式サイト": 5, "Twemoji": 6, "Web 画像検索": 7}
-    idx = sorted(range(len(good)), key=lambda i: (order.get(good[i]["source"], 9), i))
-    picks, seen = [], {}
+    have = [x for x in item.get("emblem") or [] if isinstance(x, dict)]
+    need = target - len(have)
+    if need <= 0:
+        return []
+    order = PICK_ORDER_BY_KIND.get(kind, PICK_ORDER)
+
+    def rank(src):
+        src = src.split("(")[0]
+        return order.index(src) if src in order else len(order)
+
+    idx = sorted(range(len(good)), key=lambda i: (rank(good[i]["source"]), i))
     per = 99 if kind in ("person", "topic", "brand") else 1
+    seen = {}
+    for x in have:
+        s = _base_subject(x.get("subject"))
+        seen[s] = seen.get(s, 0) + 1
+    images, picks = _have_images(item), []
     for i in idx:
-        s = good[i]["subject"]
+        c = good[i]
+        if (not web and c["source"] == WEB) or c.get("image") in images:
+            continue
+        if strict and not needs_face(item) and c["source"].split("(")[0] not in AUTO_SOURCES.get(kind, ()):
+            continue
+        s = c["subject"]
         if seen.get(s, 0) >= per:
             continue
         seen[s] = seen.get(s, 0) + 1
         picks.append(i + 1)
-        if len(picks) >= target:
+        if len(picks) >= need:
             break
     return picks
+
+
+# ---------------------------------------------------------------- 定時の後台（--background）と進捗
+PROGRESS = ROOT / "state" / "emblem_progress.json"
+RETRY_HOURS = 24          # 失敗した関注項は、この時間は飛ばす
+MARGIN = 120              # 残り時間がこれ（秒）を切ったら、次の関注項に入らない
+STATE_JA = {"ok": "そろっている", "running": "進行中", "review": "要確認", "failed": "失敗"}
+
+
+def _now():
+    import datetime as dt
+    return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+
+def _hours_since(stamp, now):
+    import datetime as dt
+    try:
+        return (dt.datetime.fromisoformat(now) - dt.datetime.fromisoformat(stamp)).total_seconds() / 3600
+    except (TypeError, ValueError):
+        return None
+
+
+def load_progress(path=None):
+    try:
+        data = json.loads(pathlib.Path(path or PROGRESS).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        data = {}
+    data.setdefault("items", {})
+    return data
+
+
+def save_progress(prog, path=None):
+    path = pathlib.Path(path or PROGRESS)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(prog, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def sync_progress(prog, items):
+    """items.yaml の今の枚数を進捗に写す（ネットには出ない）。目標に届いたものは「そろっている」、
+    届いていないのにまだ手を付けていないものは「進行中（順番待ち）」。items.yaml から消えた関注項は消す。"""
+    names = []
+    for item in items:
+        st = status(item)
+        names.append(st["name"])
+        e = prog["items"].setdefault(st["name"], {})
+        e.update(kind=st["kind"], have=st["have"], target=st["target"])
+        if st["state"] == "ok":
+            if e.get("state") != "ok":
+                e["note"] = f"{st['have']} / {st['target']} 枚で目標に届いた"
+            e["state"] = "ok"
+            e.pop("failed_at", None)
+            e.pop("sheet", None)
+        elif e.get("state") in (None, "ok"):
+            e["state"], e["note"] = "running", "順番待ち"
+    for n in list(prog["items"]):
+        if n not in names:
+            del prog["items"][n]
+    prog["summary"] = {"ok": sum(1 for n in names if prog["items"][n]["state"] == "ok"), "total": len(names)}
+    return prog
+
+
+def due(prog, items, now):
+    """後台で処理する順：目標に届いていないものを、足りない枚数の多い順（同じなら前回の処理が古い順）。
+    24 時間以内に失敗したものは飛ばす。"""
+    rows = []
+    for item in items:
+        st = status(item)
+        if st["state"] == "ok":
+            continue
+        e = prog["items"].get(item["name"]) or {}
+        h = _hours_since(e.get("failed_at"), now)
+        if e.get("state") == "failed" and h is not None and h < RETRY_HOURS:
+            continue
+        rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
+    return [r[3] for r in sorted(rows, key=lambda r: r[:3])]
+
+
+def _write_sheet(item, good):
+    out = _sheet_path(item["name"])
+    sheet(good, out)
+    out.with_suffix(".json").write_text(json.dumps([{k: v for k, v in c.items() if k != "_img"} for c in good],
+                                                   ensure_ascii=False, indent=1), encoding="utf-8")
+    return out
+
+
+def fill_one(item, log=print):
+    """後台で 1 つの関注項を埋める：候補を集めて、確かなもの（Web 画像検索以外・人物は本人確認済み）だけ自動で書き込む。
+    Web 画像検索は、確かな取り方で足りないときだけ集めて、要確認の一覧に載せる。
+    → {state, note, tried, sheet}。目標に届かなければ、残りの候補だけの一覧を作り直して「要確認」（AI が目で見て選ぶ）。"""
+    before = status(item)["have"]
+    if needs_face(item) and face_id.engine() is None:
+        return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "tried": {}}
+    tried = {}
+    good, _ = run_item(item, log=log, tried=tried)   # Web 画像検索も集める（一覧で目で選ぶ用。自動では選ばない）
+    picks = auto_pick(item, good, web=False, strict=True)
+    if picks:
+        commit(item, good, picks, log=log)
+    fresh = next((i for i in load_items() if i["name"] == item["name"]), item)
+    st = status(fresh)
+    added = max(0, st["have"] - before)
+    have_img = _have_images(fresh)
+    rest = [c for n, c in enumerate(good, 1) if n not in picks and c["image"] not in have_img]
+    if st["state"] == "ok":
+        return {"state": "ok", "note": f"{added} 枚足して目標に届いた", "tried": tried}
+    if rest:
+        out = _write_sheet(fresh, rest)
+        return {"state": "review", "tried": tried, "sheet": str(out),
+                "note": f"{added} 枚足した。残りの候補 {len(rest)} 枚は自動で決められないので一覧で確かめる"}
+    return {"state": "failed", "tried": tried, "note": f"{added} 枚足した。使える候補がもうない（{RETRY_HOURS} 時間後にもう一度）"}
+
+
+def record(prog, item, result, now):
+    """1 つの関注項の結果を進捗に書く。"""
+    st = status(item)
+    e = prog["items"].setdefault(item["name"], {})
+    e.update(kind=st["kind"], have=st["have"], target=st["target"], at=now, state=result["state"], note=result.get("note", ""))
+    if "tried" in result:
+        e["tried"] = result["tried"]
+    if result.get("sheet"):
+        e["sheet"] = result["sheet"]
+    else:
+        e.pop("sheet", None)
+    if result["state"] == "failed":
+        e["failed_at"] = now
+    else:
+        e.pop("failed_at", None)
+    return e
+
+
+def background(minutes, log=print, fill=None, clock=time.time, path=None):
+    """定時の後台：時間の予算（分）の中で、足りない関注項を順に埋め、state/emblem_progress.json に進捗を残す。
+    1 つ終わるごとに保存するので、途中で止まっても、それまでの結果は残る。"""
+    fill = fill or fill_one
+    deadline = clock() + minutes * 60
+    if clock is time.time:
+        _deadline[0] = deadline - 60   # 集めるのはここまで（残りの 1 分で書き込みと切り抜き）
+    prog = load_progress(path)
+    now = _now()
+    prog.setdefault("started", now)
+    prog["last_run"] = {"at": now, "minutes": minutes, "done": []}
+    items = load_items()
+    sync_progress(prog, items)
+    save_progress(prog, path)
+    for item in due(prog, items, now):
+        if clock() > deadline - MARGIN:
+            log(f"時間切れ：残りは次の回に（予算 {minutes:g} 分）")
+            break
+        record(prog, item, {"state": "running", "note": "処理中"}, _now())
+        save_progress(prog, path)
+        try:
+            result = fill(item, log)
+        except OutOfTime:
+            log(f"時間切れ：「{item['name']}」の途中で止めた。次の回にやり直す")
+            record(prog, item, {"state": "running", "note": "時間切れで途中まで（次の回に続き）"}, _now())
+            save_progress(prog, path)
+            break
+        except Exception as e:   # 1 つの失敗で全体を止めない
+            log(f"  [失敗] {item['name']}：{e}")
+            result = {"state": "failed", "note": f"エラー：{str(e)[:80]}"}
+        fresh = next((i for i in load_items() if i["name"] == item["name"]), item)
+        record(prog, fresh, result, _now())
+        prog["last_run"]["done"].append(item["name"])
+        log(f"  → {STATE_JA[result['state']]}：{result.get('note', '')}")
+        save_progress(prog, path)
+    _deadline[0] = None
+    prog["last_run"]["end"] = _now()
+    sync_progress(prog, load_items())
+    save_progress(prog, path)
+    return prog
 
 
 def main():
@@ -638,8 +902,23 @@ def main():
     ap.add_argument("--web", action="store_true", help="Web 画像検索も必ず使う（足りないとき）")
     ap.add_argument("--query", help="Web 画像検索の言葉（既定は「対象 作品名」）")
     ap.add_argument("--auto", action="store_true", help="足りない関注項を決まった順で全部自動で埋める")
+    ap.add_argument("--background", action="store_true", help="定時の後台：時間の予算の中で足りない順に埋め、進捗を残す")
+    ap.add_argument("--minutes", type=float, default=40, help="--background の時間の予算（分）")
+    ap.add_argument("--progress", action="store_true", help="items.yaml の今の枚数を進捗ファイルに写すだけ（ネットに出ない）")
     a = ap.parse_args()
     items = load_items()
+    if a.background:
+        prog = background(a.minutes)
+        print(f"そろっている {prog['summary']['ok']} / {prog['summary']['total']}")
+        for n, x in sorted(prog["items"].items(), key=lambda kv: kv[1]["state"]):
+            if x["state"] != "ok":
+                print(f"  {STATE_JA[x['state']]:<6} {n}：{x['have']}/{x['target']} {x.get('note', '')}{'  一覧 ' + x['sheet'] if x.get('sheet') else ''}")
+        return
+    if a.progress:
+        prog = sync_progress(load_progress(), items)
+        save_progress(prog)
+        print(f"そろっている {prog['summary']['ok']} / {prog['summary']['total']}")
+        return
     if a.audit:
         for r in audit(items):
             mark = {"ok": "✓", "low": "△", "none": "✗"}[r["state"]]
@@ -665,7 +944,14 @@ def main():
         good = json.loads(jp.read_text(encoding="utf-8"))
         for c in good:
             c.setdefault("_img", None)
-        commit(item, good, [int(x) for x in a.commit.split(",")], a.replace)
+        picks = [int(x) for x in a.commit.split(",")]
+        commit(item, good, picks, a.replace)
+        fresh = next(i for i in load_items() if i["name"] == item["name"])
+        prog = load_progress()
+        st = status(fresh)
+        record(prog, fresh, {"state": "ok" if st["state"] == "ok" else "review",
+                             "note": f"一覧から {len(picks)} 枚を選んだ（{st['have']} / {st['target']}）"}, _now())
+        save_progress(sync_progress(prog, load_items()))
     else:
         item = {**item, "_web": a.web or bool(a.query), "_query": a.query}
         run_item(item)

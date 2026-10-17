@@ -12,6 +12,8 @@ flow は上から下へ読む。ノードの kind：
   store     保存先のファイル・データ
   table     小さな表（rows = [(見出し, 内容)]）
 lane は「どこで動くか」：actions（GitHub Actions）/ ai（Claude・サブスク枠）/ repo（仕組みの置き場）/ web（網页・Supabase）。
+schedule は定時で動くものの時刻（UTC の (時, 分) のリスト。別のプロセスと同じ回に動くものはその id）。管理ページの
+「バックグラウンド」が、ここから前回・次回の時刻と残り時間を出す。workflow は GitHub Actions のファイル名（実行中かを読む）。
 """
 
 import html
@@ -28,6 +30,7 @@ LANES = {
 PROCESSES = [
     {
         "id": "emblem", "name": "小元素の選定", "en": "EMBLEM", "lane": "ai",
+        "schedule": "edit",
         "trigger": "新しい関注項が入ったとき ／ AI 編集の最初に毎回（足りない関注項だけ）",
         "summary": "各版面の右上に貼るステッカーを、作品の種類に合わせて自動で集める。足りない関注項を見つけて、決まった順で取り方を変えながら埋める。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py"], "doc": "TEMPLATES.md",
@@ -43,7 +46,7 @@ PROCESSES = [
                       ("brand ブランド", "公式ロゴ 1"), ("topic 主題", "ロゴ・トロフィー・ボール・場所 3（2〜5）")]},
             {"id": "src", "kind": "fan", "lane": "ai", "title": "候補を集める（上から順、足りるまで）",
              "items": [("0", "直接指定", "emblem_urls に書いた公式画像"), ("1", "AniList", "アニメ・漫画の主役（人気順）"),
-                       ("2", "Fandom", "キャラのページの代表画像"), ("3", "Wikipedia", "本人・メンバー・ロゴの記事の画像"),
+                       ("2", "Fandom", "キャラのページの代表画像"), ("3", "Wikidata / Wikipedia", "公式ロゴ（P154）・本人・メンバーの記事の画像"),
                        ("4", "Commons", "同じ名前の写真（ライセンス付き）"), ("5", "新聞の配図", "集めた記事の写真（題名に名前）"),
                        ("6", "公式サイト", "og:image と大きい画像"), ("7", "Web 画像検索", "最後の手段（要確認）"),
                        ("8", "Twemoji", "絵文字アイコン（0 枚を防ぐ最後の砦）")]},
@@ -67,7 +70,38 @@ PROCESSES = [
         ],
     },
     {
+        "id": "emblem-cron", "name": "小元素の自動補完（定時）", "en": "EMBLEM CRON", "lane": "ai",
+        "schedule": [(h, 40) for h in range(0, 24, 4)],   # UTC。定時タスク「小元素 · 后台补全」
+        "trigger": "定時タスク（Claude のスケジュール）が呼ぶたび。1 回あたり約 40 分の予算",
+        "summary": "目標の枚数に届いていない版面の小元素を、時間の予算の中で足りない順に埋める。確かな画像だけ自動で書き、"
+                   "決めきれないものは「要確認」として AI が候補の一覧を目で見て選ぶ。進捗はこの管理ページの「小元素 → 進捗」。",
+        "files": ["scripts/emblem_fill.py", "scripts/face_id.py", "state/emblem_progress.json"], "doc": "TEMPLATES.md",
+        "flow": [
+            {"id": "b1", "kind": "step", "lane": "ai", "title": "main を最新にして準備",
+             "text": "抠图（rembg）と顔のモデル（YuNet・SFace、HuggingFace から）を入れる。--audit で全版面の缺口を見る。"},
+            {"id": "b2", "kind": "step", "lane": "ai", "title": "後台モード（--background --minutes 40）",
+             "text": "足りない枚数の多い順に 1 版面ずつ。残り 2 分を切ったら次に入らず、続きは次の回。"},
+            {"id": "b3", "kind": "decision", "lane": "ai", "title": "24 時間以内に失敗した？", "text": "進捗の failed_at",
+             "yes": "今回は飛ばす", "no": "候補を集める（「小元素の選定」と同じ順）"},
+            {"id": "b4", "kind": "table", "lane": "ai", "title": "自動で選ぶ規則",
+             "text": "Web 画像検索の結果は自動では使わない（出所が不確か）。",
+             "rows": [("本人・グループ・出演者", "本人確認（face_id）を通ったものだけ"),
+                      ("brand ブランド", "Wikidata の公式ロゴ（P154）→ 公式サイトのロゴ"),
+                      ("topic 主題", "Wikidata → Commons → Twemoji"),
+                      ("キャラ", "Fandom・Wikipedia の代表画像、1 人 1 枚")]},
+            {"id": "b5", "kind": "decision", "lane": "ai", "title": "目標に届いた？", "text": "自動で書いたあとの枚数",
+             "yes": "そろっている", "no": "残りの候補があれば一覧を作り直して「要確認」、なければ「失敗」（24 時間後に再挑戦）"},
+            {"id": "b6", "kind": "step", "lane": "ai", "title": "要確認を目で選ぶ",
+             "text": "AI が一覧（/tmp/wishlist-emblem/<名>.jpg）を見て、本人・本作のものだけ番号で --commit。広告・別人・白紙は選ばない。"},
+            {"id": "b7", "kind": "store", "lane": "repo", "title": "state/emblem_progress.json",
+             "text": "版面ごとの状態・枚数・試した取り方・最近の結果、全体の開始時刻と最近の実行。1 版面ごとに保存。"},
+            {"id": "b8", "kind": "step", "lane": "ai", "title": "render して main に push",
+             "text": "items.yaml・docs・state をコミット。網页と管理ページの進捗が更新される。"},
+        ],
+    },
+    {
         "id": "collect", "name": "ニュース収集", "en": "COLLECT", "lane": "actions",
+        "schedule": [(h, 17) for h in range(0, 24, 2)], "workflow": "digest.yml",
         "trigger": "2 時間ごと（UTC 偶数時 17 分）／ 毎週月曜に周報",
         "summary": "関注項ごとにニュース・ SNS・価格を集めて inbox に溜め、簡報を出刊する。要紧消息は当日 Discord へ。",
         "files": [".github/workflows/digest.yml", "scripts/digest.py", "scripts/sources.py"], "doc": "README.md",
@@ -84,6 +118,7 @@ PROCESSES = [
     },
     {
         "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai",
+        "schedule": [(4, 43), (15, 43)],   # 北京時間 12:43 / 23:43
         "trigger": "毎日 2 回（12:43 / 23:43）／ 新しい関注項が入ったとき",
         "summary": "inbox の条目から重要なものを選び、同じ件を合わせて、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。",
         "files": ["EDITING.md", "scripts/digest.py", "TEMPLATES.md"], "doc": "EDITING.md",
@@ -98,6 +133,7 @@ PROCESSES = [
     },
     {
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions",
+        "workflow": "render.yml",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。",
         "files": [".github/workflows/render.yml", "scripts/render.py"], "doc": "CLAUDE.md",
@@ -109,6 +145,7 @@ PROCESSES = [
     },
     {
         "id": "requests", "name": "設定ページの依頼", "en": "REQUESTS", "lane": "web",
+        "workflow": "requests.yml",
         "trigger": "設定ページで関注項の追加・変更・篇幅の変更を送ったとき（待ち時間なし）",
         "summary": "設定ページの依頼を Supabase が受け、GitHub Actions を起こして items.yaml に反映する。",
         "files": [".github/workflows/requests.yml", "docs/additem.js", "db/instant.sql"], "doc": "CLAUDE.md",
@@ -122,6 +159,7 @@ PROCESSES = [
     },
     {
         "id": "photos", "name": "写真から愿望", "en": "PHOTOS", "lane": "ai",
+        "schedule": [(1, 47), (5, 47), (9, 47), (13, 47)],   # 北京時間 9 / 13 / 17 / 21 時 47 分
         "trigger": "愿望清单ページで撮った写真が溜まったとき（Actions が 2 時間ごとに書き出し）",
         "summary": "写真に写っているものを認識して、愿望清单に 1 件として整理する。",
         "files": ["PHOTOS.md", "wishlist.yaml"], "doc": "PHOTOS.md",
@@ -262,3 +300,11 @@ JS = """
   });
 })();
 """
+
+
+def slots(p):
+    """→ そのプロセスの定時（UTC の [時, 分] のリスト）。別のプロセスと同じ回に動くものはそちらの時刻。"""
+    sch = p.get("schedule")
+    if isinstance(sch, str):
+        sch = next((q.get("schedule") for q in PROCESSES if q["id"] == sch), None)
+    return sorted([list(x) for x in sch]) if isinstance(sch, list) else []

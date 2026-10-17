@@ -336,7 +336,7 @@ def write_item(name, emblems, th):
         skip = False
         block.append(l)
     at = next((i + 1 for i, l in enumerate(block) if l.startswith("    motif:")), 0)
-    keep = ("subject", "why", "image", "page", "shape", "crop", "ar")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "fs")
     block[at:at] = (["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"]
                     + [f"      - {_flow({k: x[k] for k in keep if k in x})}" for x in emblems]
                     + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
