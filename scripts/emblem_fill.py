@@ -349,6 +349,43 @@ def bing_images(query, n=8):
     return parse_bing(html, n)
 
 
+def parse_youtube(html):
+    """YouTube の検索結果ページ（ytInitialData）→ [(videoId, 題名)]。"""
+    m = re.search(r"var ytInitialData = (\{.*?\});</script>", html, re.S)
+    if not m:
+        return []
+    out = []
+
+    def walk(o):
+        if isinstance(o, dict):
+            v = o.get("videoRenderer")
+            if isinstance(v, dict) and v.get("videoId"):
+                out.append((v["videoId"], "".join(r.get("text", "") for r in (v.get("title") or {}).get("runs", []))))
+            for x in o.values():
+                walk(x)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+    walk(json.loads(m.group(1)))
+    return out
+
+
+YT_SOLO = re.compile(r"fancam|직캠|focus|individual|teaser|profile|close.?up|個人|ソロ", re.I)
+
+
+def youtube_images(group, subject, limit=4):
+    """YouTube の動画のサムネイル（1280px の hq720）。グループのメンバー・出演者のように Commons に写真がない人用。
+    検索は「グループ名 + 名前」、題名に名前とグループ名の両方があるものだけ（名前が普通の単語でも別物に当たらない）。
+    1 人を映す動画（直캠・fancam・teaser）を先に。本人かどうかは check の顔の規則で確かめる。"""
+    q = f"{group} {subject}".strip()
+    html = _get("https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": q, "hl": "en"}),
+                3_000_000).decode("utf-8", "replace")
+    rows = [(v, t) for v, t in parse_youtube(html) if relevant(t, subject) and (not group or relevant(t, group))]
+    rows.sort(key=lambda r: 0 if YT_SOLO.search(r[1]) else 1)
+    return [{"title": t, "image": f"https://i.ytimg.com/vi/{v}/hq720.jpg", "page": f"https://www.youtube.com/watch?v={v}",
+             "license": "YouTube のサムネイル"} for v, t in rows[:limit]]
+
+
 def news_images(item_name, subject, anywhere=False, limit=12, days=14, summary=False):
     """集めた新聞（inbox）の配図：その関注項の記事で、題名に対象の名前が入っているもの（anywhere=True なら名前は問わない）。
     人物の別の写真・刚出道のグループの写真は、Wiki よりここのほうが新しくて多い。"""
@@ -550,7 +587,8 @@ def gather(item, log=print, tried=None):
                 log(f"  [Wikipedia] {subj}：{e}")
         if got < (6 if kind == "person" else 1):
             try:
-                rows = commons_photos(subj if len(who) > 1 else f"{subj}", 8 if kind == "person" else 3)
+                # メンバー・出演者は名前だけだと普通の単語（YOUNG・VORA・OA）で村・滝・飛行機に当たるので、作品名をつける
+                rows = commons_photos(f"{subj} {name}" if len(who) > 1 else subj, 8 if kind == "person" else 3)
                 add(subj, rows, "Wikimedia Commons", f"{subj}（Commons の写真）")
                 got += len(rows)
             except Exception as e:
@@ -686,6 +724,12 @@ def gather_pages(item, log=print, tried=None):
             except Exception:
                 pass
         add(subj, rows, "記事のページ", f"{subj}（記事のページの og:image）")
+        if needs_face(item):
+            try:
+                add(subj, youtube_images("" if kind == "person" and len(who) == 1 else name, subj), "YouTube",
+                    f"{subj}（YouTube の動画のサムネイル）")
+            except Exception as e:
+                log(f"  [YouTube] {subj}：{e}")
     return _dedupe(cands)
 
 
@@ -872,15 +916,15 @@ def source_chain(item):
     elif kind == "character" and not item.get("emblem_people"):
         chain = ["直接指定", "Fandom", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", WEB]
     elif kind == "person":
-        chain = ["直接指定", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", WEB]
+        chain = ["直接指定", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", WEB]
     else:   # グループ・出演者：Wikidata は使わない（gather は本人のときだけ）。公式サイトは対象が 1 人のときだけ
-        chain = ["直接指定", "Wikipedia", "Wikimedia Commons", "新聞の配図", WEB]
+        chain = ["直接指定", "Wikipedia", "Wikimedia Commons", "新聞の配図", "YouTube", WEB]
     auto = (lambda s: s != WEB) if needs_face(item) else (lambda s: s in AUTO_SOURCES.get(kind, ()))
     return [(s, auto(s)) for s in chain]
 
 
 # 自動で選ぶときの、取り方の優先順。ブランドは公式ロゴ（Wikidata P154・公式サイト）、主題は Wikidata・Commons・Twemoji を先に
-PICK_ORDER = ["直接指定", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "Twemoji", WEB]
+PICK_ORDER = ["直接指定", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
     "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
     "topic": ["直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
