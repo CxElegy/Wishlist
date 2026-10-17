@@ -3,7 +3,9 @@
 只用公开的网页元数据（og:image / twitter:image / JSON-LD）、正文图片、条目自带图、
 MSN 的公开文章接口、Reddit（官方 API 或公开 RSS）、YouTube oEmbed，以及 Bing / Google 新闻上
 同一篇文章的公开转载和新闻稿原出处。
-请求不带 Referer、不伪装来源；被防盗链、防机器人或登录挡住的图就判为不可用，换下一张。
+请求不带 Referer、不伪装来源；被防盗链、防机器人或登录挡住的图就判为不可用，换下一张
+（Cloudflare 等的防机器人验证不去绕过：那是网站明确不让程序取）。
+视频帖（虎扑之类）没有 og:image 时，用视频封面（<video poster>）。
 例外是防盗链：原文网页自己的图（新浪 sinaimg 这类）不带 Referer 都是 403，网页上也显示不出来，
 所以都不行时再带「这张图所在的原文网页」作 Referer 试一次（如实写出图是从哪一页来的，不冒充别的网站）；
 这样拿到的图浏览器直接打不开，由 hdimg.py 存一份到本站（docs/pics/）再显示。
@@ -196,6 +198,7 @@ class Page:
     status: int | None = None                         # 打不开时的 HTTP 状态码
     og_label: str = "og:image"                        # og 那一栏的来源名（MSN 接口取到的图写「MSN 接口」）
     icons: list = field(default_factory=list)         # 网站声明的图标（apple-touch-icon / icon），大的在前
+    poster: list = field(default_factory=list)        # 视频封面（<video poster>）
 
     @property
     def gone(self):
@@ -243,6 +246,11 @@ def parse_page(url, text):
             u = _abs(url, u)
             if u and u not in p.jsonld:
                 p.jsonld.append(u)
+    for tag in re.findall(r"<video\b[^>]*>", text, re.I):
+        src = re.search(r'poster=["\']([^"\']+)', tag, re.I)
+        u = _abs(url, src.group(1)) if src else ""
+        if u and u not in p.poster:
+            p.poster.append(u)
     m = re.search(r"<article\b.*?</article>", text, re.I | re.S)
     for tag in re.findall(r"<img\b[^>]*>", m.group(0) if m else text, re.I):
         src = re.search(r'(?:data-src|data-original|src)=["\']([^"\']+)', tag, re.I)
@@ -265,7 +273,7 @@ def parse_page(url, text):
         if u and not u.lower().split("?")[0].endswith(".svg"):
             icons.append((size, u))
     p.icons = [u for _, u in sorted(icons, key=lambda x: -x[0])]
-    if not (p.og or p.jsonld or p.body):
+    if not (p.og or p.jsonld or p.body or p.poster):
         p.reason = "原文没有图片元数据，正文也没有图"
     return p
 
@@ -608,8 +616,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
                 found, note = reddit_candidates(link)
             else:
                 p = page(link)
-                found = [(p.og_label, u) for u in p.og] + [("JSON-LD", u) for u in p.jsonld] + \
-                        [("正文图", u) for u in p.body]
+                found = _candidates(p)
                 for _, u in found:
                     from_page.setdefault(u, link)
                 note = p.reason
@@ -626,7 +633,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
             yield found
 
     def preview(label):
-        return label.split("（")[0] in ("og:image", "MSN 接口", "JSON-LD")
+        return label.split("（")[0] in ("og:image", "MSN 接口", "JSON-LD", "视频封面")
 
     def scan():
         for stage in stages():
@@ -679,6 +686,12 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=()):
             res.image, res.source = img, label + SAVED
             return res
     return res
+
+
+def _candidates(p):
+    """网页的候选图，按可信的顺序：预览图（og）> JSON-LD > 视频封面 > 正文图。"""
+    return [(p.og_label, u) for u in p.og] + [("JSON-LD", u) for u in p.jsonld] + \
+        [("视频封面", u) for u in p.poster] + [("正文图", u) for u in p.body]
 
 
 def log_line(name, headline, res):
