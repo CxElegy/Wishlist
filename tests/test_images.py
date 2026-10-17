@@ -770,7 +770,9 @@ class ImagesTest(unittest.TestCase):
     # ---------- digest.attach_media（旧功能不回归） ----------
 
     def test_attach_media_writes_back_and_falls_back_to_cover(self):
-        entries = [entry(url=self.u("/jsonld.html")), entry(url=self.u("/nothing.html"))]
+        # 別の出来事（タイトルに共通の語がない）：同一件事的别家报道としては使わない
+        entries = [entry(title="Release date trailer revealed", url=self.u("/jsonld.html")),
+                   entry(title="Studio interview about soundtrack", url=self.u("/nothing.html"))]
         stories = [{"headline": "头条（原文没图）", "refs": [2]}, {"headline": "第二条", "refs": [1]},
                    {"headline": "第三条（AI 挑了图）", "image": self.u("/big.jpg"), "refs": [2]}]
         stats = images.Stats()
@@ -790,6 +792,27 @@ class ImagesTest(unittest.TestCase):
         self.assertIn("（用作品封面）", log)
         self.assertEqual(stats.counts["无图→作品封面"], 1)
         self.assertIn("有图 2 条", stats.summary())
+
+    def test_blocked_original_uses_same_event_report_from_other_site(self):
+        """原文が人機検証で止められても（ナタリー 405）、同じ出来事を報じた別のサイトの記事の図を使う。"""
+        blocked = entry(title="人気画像5位は「Mrs. GREEN APPLEとジェラピケが初コラボ、グリベアモチーフ」より", url=self.u("/blocked.html"))
+        other = entry(title="Mrs. GREEN APPLE×ジェラート ピケ初コラボ！グリベアのルームウェア", url=self.u("/og.html"))
+        unrelated = entry(title="冬の新作ルームウェアが登場", url=self.u("/copy.html"))
+        sib = digest.same_event({"name": "gelato pique", "keywords": ["ジェラピケ", "ジェラート ピケ"]}, [blocked], [blocked, other, unrelated])
+        self.assertEqual([e.url for e in sib], [self.u("/og.html")])
+        res = images.pick(None, [blocked], self.u("/blocked.html"), siblings=sib)
+        self.assertEqual(res.image, self.u("/big.jpg"))
+        self.assertTrue(res.source.startswith("同一件事的别家报道"))
+
+    def test_quoted_original_title(self):
+        self.assertEqual(images.quoted_title("人気画像5位は「Mrs. GREEN APPLEとジェラピケが初コラボ」より、小物。"),
+                         "Mrs. GREEN APPLEとジェラピケが初コラボ")
+        self.assertEqual(images.quoted_title("「短い」"), "")
+        self.assertEqual(images.quoted_title("「タイトル全体が引用になっている見出しです」"), "")
+
+    def test_405_waf_is_bot_wall(self):
+        f = images.Fetched(405, {"x-amzn-waf-action": "captcha"}, b"<title>Human Verification</title>")
+        self.assertIn("防机器人", images._http_reason(f, "原文"))
 
     def test_find_image_shim_for_recommend(self):
         """「我会喜欢？」推荐用的 digest.find_image 走同一套检查：坏图跳过，最后没图返回 None。"""
@@ -827,7 +850,7 @@ class PublishTest(unittest.TestCase):
                         {"headline": "补到了图", "refs": [2]}], "_covered": {item: 2}}
         (tmp / "inbox" / "2026-10-11.edit.json").write_text(json.dumps(edits, ensure_ascii=False))
 
-        def fake_pick(chosen, refs, url, avoid=()):
+        def fake_pick(chosen, refs, url, avoid=(), siblings=(), **kw):
             if chosen:
                 return images.Result(chosen, "AI 挑选", [("AI 挑选", chosen, "OK")])
             if url.endswith("/1"):
@@ -841,6 +864,10 @@ class PublishTest(unittest.TestCase):
             mock.patch.object(digest, "make_client", lambda: None), mock.patch.object(images, "gone", lambda u: False),
             # publish 最后会重算「我会喜欢？」：它写真实的 state/recommend.json，还会联网搜同类新品，测试里跳过
             mock.patch.object(digest, "recommend", lambda *a, **k: None),
+            # 出刊のあとの後片付け（Reddit の再確認・配図の再探し・高清化）はそれぞれ別のテストで見る。ここでは本物の state/ を書かない
+            mock.patch.object(digest, "prune_reddit", lambda *a, **k: False),
+            mock.patch.object(digest, "retry_images", lambda *a, **k: 0),
+            mock.patch.object(digest, "hd_images", lambda *a, **k: None),
             mock.patch.object(images, "source_icon", lambda u: "https://icons.example/a.png"),
             mock.patch.object(digest, "find_cover", lambda *a, **k: None)]  # 没新消息的项找封面会读作品官网
         for p in patches:

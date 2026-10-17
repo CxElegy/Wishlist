@@ -626,7 +626,24 @@ def find_image(chosen, refs, url):
     return images.pick(chosen, refs, url).image
 
 
-def attach_media(stories, entries, cover, name="", stats=None, used=None, langs=None):
+SIBLINGS = 4   # 找图时最多看几篇「同一件事的别家报道」
+
+
+def same_event(item, refs, entries, headline=""):
+    """同一个关注项里报道同一件事的别家记事（原文被挡・没图时，从别的网站找图用）。
+    判断和 StoryDeduper 一样：标题去掉作品自己的名字后，共有的「说明是哪件事的词」合计 ≥ 2。有图的排前面，最多 SIBLINGS 篇。"""
+    generic = set()
+    for w in [item.get("name", ""), *(item.get("keywords") or []), *(item.get("match") or [])]:
+        generic |= story_tokens(str(w))
+    mine = set().union(*(story_tokens(t) for t in [headline] + [e.title for e in refs])) - generic
+    taken = {e.url for e in refs}
+    out = [e for e in entries if e.url not in taken and not sources.is_reddit(e)
+           and StoryDeduper._close(mine, story_tokens(e.title) - generic)]
+    out.sort(key=lambda e: not e.image)
+    return out[:SIBLINGS]
+
+
+def attach_media(stories, entries, cover, name="", stats=None, used=None, langs=None, item=None):
     """给每条报道配链接和图（候选、检查和回退见 images.pick），没图的头条用作品封面。
     一条报道有好几个来源时，读者的好みの言語（langs：主言語 → 副言語，lang.order）の来源排前面，同じ言語なら国外来源排前面
     （链接和配图都先用它），中国大陆网站垫后。
@@ -655,7 +672,8 @@ def attach_media(stories, entries, cover, name="", stats=None, used=None, langs=
         s["url"] = url
         if refs[0].published:  # 消息本身的日期，卡片上显示、按它排序
             s["date"] = refs[0].published.date().isoformat()
-        res = images.pick(s.get("image"), refs, s["url"], avoid=used)
+        res = images.pick(s.get("image"), refs, s["url"], avoid=used,
+                          siblings=same_event(item or {"name": name}, refs, entries, s.get("headline", "")))
         s["image"] = res.image
         if res.image:
             used.add(res.image)
@@ -2540,7 +2558,7 @@ def publish(inbox_path=None):
         if not stories and not pending and not any(f["changed"] for f in raw["facts"]):
             continue
         stories = [s for s in stories if not is_spam(s.get("headline", ""))]  # 收集后才进 inbox 的垃圾页（合并的旧版）也不出刊
-        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used, langs)  # 原文已删的报道会被去掉
+        stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used, langs, item)  # 原文已删的报道会被去掉
         stories = [s for s in stories if not is_spam(s.get("headline", ""), s.get("url", ""))]  # 还原后的网址里塞着广告的
         # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
         for d, e in zip(raw["entries"], entries):
@@ -2577,10 +2595,73 @@ def publish(inbox_path=None):
     save_json(REPORTS_DIR / f"{date}.json", issue)
     recommend()
     prune_reddit()
+    retry_images()
     hd_images()
     write_page()
     write_issue_markdown(issue, settings)
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
+
+
+IMG_RETRY_FILE = STATE_DIR / "img_retry.json"
+IMG_RETRY_HOURS = 6    # 同一条报道隔几小时再找一次图
+IMG_RETRY_MAX = 6      # 每次出刊最多再找几条（每条最多 IMG_RETRY_BUDGET 秒，别拖慢出刊）
+IMG_RETRY_BUDGET = 25
+IMG_RETRY_DAYS = 8     # 网页显示最近 7 天，多看 1 天
+
+
+def retry_images(days=IMG_RETRY_DAYS):
+    """已经出刊、但没有自己配图的报道（当时原文被挡、限流、网站临时打不开），以后每次出刊自动再找：
+    同一条最多每 IMG_RETRY_HOURS 小时找一次，一次出刊最多 IMG_RETRY_MAX 条，找图顺序和出刊时一样
+    （images.pick，原文 → 同一件事的别家报道 → 转载）。很久没试的先试。找到了就写回报告。返回找到几条。"""
+    _, items = load_config()
+    by_name = {i["name"]: i for i in items}
+    now = dt.datetime.now(dt.timezone.utc)
+    tried = load_json(IMG_RETRY_FILE) or {}
+    paths = sorted(REPORTS_DIR.glob("????-??-??.json"))[-days:]
+    reports = [(p, load_json(p)) for p in paths]
+    used = {st["image"] for _, r in reports for b in r["items"] for st in b.get("stories") or []
+            if st.get("image") and st.get("image_via") != "作品封面"}
+    raw, boards = {}, {}   # 链接 → inbox 里的原始条目；(日期, 关注项) → 那天的全部条目
+    for ip in sorted(INBOX_DIR.glob("????-??-??.json"))[-days - 2:]:
+        for it in load_json(ip).get("items") or []:
+            for d in it["entries"]:
+                for key in (d.get("url"), d.get("link")):
+                    if key:
+                        raw.setdefault(key, (d, ip.stem, it["name"]))
+            boards.setdefault((ip.stem, it["name"]), []).extend(it["entries"])
+    todo = []
+    for path, rep_ in reports:
+        for b in rep_["items"]:
+            for st in b.get("stories") or []:
+                if not st.get("url") or st.get("image") and st.get("image_via") != "作品封面":
+                    continue
+                last = tried.get(st["url"])
+                if last and now - dt.datetime.fromisoformat(last) < dt.timedelta(hours=IMG_RETRY_HOURS):
+                    continue
+                todo.append((last or "", path, rep_, b, st))
+    todo.sort(key=lambda x: x[0])
+    found, changed = 0, set()
+    for _, path, rep_, b, st in todo[:IMG_RETRY_MAX]:
+        hit = raw.get(st["url"])
+        e = entry_from_dict(hit[0]) if hit else sources.Entry(title=st.get("headline", ""), url=st["url"], published=None, source=st.get("source") or "")
+        others = [entry_from_dict(d) for d in boards.get((hit[1], hit[2]), [])] if hit else []
+        res = images.pick(None, [e], st["url"], budget=IMG_RETRY_BUDGET, avoid=used,
+                          siblings=same_event(by_name.get(b["name"], {"name": b["name"]}), [e], others, st.get("headline", "")))
+        tried[st["url"]] = now.isoformat(timespec="seconds")
+        print(images.log_line(b["name"], st.get("headline", ""), res) + "（再找）", file=sys.stderr)
+        if res.image:
+            st["image"], st["image_via"] = res.image, res.source
+            used.add(res.image)
+            found += 1
+            changed.add(path)
+    for path, rep_ in reports:
+        if path in changed:
+            save_json(path, rep_)
+    cutoff = (now - dt.timedelta(days=days)).isoformat()
+    save_json(IMG_RETRY_FILE, {u: t for u, t in tried.items() if t >= cutoff})
+    if todo:
+        print(f"配图再找：试了 {min(len(todo), IMG_RETRY_MAX)} 条（还有 {max(0, len(todo) - IMG_RETRY_MAX)} 条等下次），找到 {found} 条", file=sys.stderr)
+    return found
 
 
 REDDIT_CHECK_FILE = STATE_DIR / "reddit_check.json"
@@ -2898,7 +2979,7 @@ def logged_publish(path=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "hd-images", "prune-reddit"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "hd-images", "prune-reddit", "retry-images"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -2907,6 +2988,9 @@ def main():
         ingest(dry_run=True)
     elif args.step == "repair-images":
         repair_images()
+    elif args.step == "retry-images":
+        retry_images()
+        write_page()
     elif args.step == "prune-reddit":
         prune_reddit()
         write_page()

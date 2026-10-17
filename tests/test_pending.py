@@ -59,6 +59,7 @@ class Publish(unittest.TestCase):
         with mock.patch.multiple(digest, load_config=lambda: ({}, items), load_sizes=lambda: {},
                                  attach_media=lambda stories, *a, **k: stories, recommend=lambda *a, **k: None,
                                  write_page=lambda *a, **k: None, write_issue_markdown=lambda *a, **k: None,
+                                 prune_reddit=lambda *a, **k: False, retry_images=lambda *a, **k: 0, hd_images=lambda *a, **k: None,
                                  REPORTS_DIR=reports, THEMES_FILE=d / "themes.json"), \
                 mock.patch.object(digest.theme, "resolve", lambda *a, **k: {}):
             digest.publish(inbox)
