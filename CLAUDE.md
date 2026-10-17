@@ -46,11 +46,22 @@
 ## 新增关注项时：小分类（subs）必填，分法由用户选
 
 **每个板块、每个领域都一定要有小分类**，加关注项时一定写 `subs`，哪怕某个小分类里只有它一项。
-一个板块有几种「分法」（`items.yaml` 的 `settings.sub_schemes`，例：ゲーム = 状態 / プラットフォーム，映像 = 種類 / 地域，
+一个板块有几种「分法」（`sections.yaml` 的 `schemes`，例：ゲーム = 状態 / プラットフォーム，映像 = 種類 / 地域，
 ライブ = シーン / 形態，スポーツ = 種目 / 楽しみ方，グッズ = 種類 / ブランド・キャラ）。**每种分法都要写**：`subs: {status: 運営中, platform: スマホ}`。
-先用已有的值（`grep "subs:" items.yaml`），放不进去再起新名字（日语，短）。
+先用 `sections.yaml` 里的常用值（`values`），放不进去再起新名字（日语，短）。
 **用哪种分法由用户在 ⚙ 设置页选**（板块ごと，存 Supabase 的 `nav_schemes` 表，`db/nav_schemes.sql`；选了立刻重新生成网页）。没选的板块用第一种。
-要加新的分法：在 `sub_schemes` 里加一项 `{id: 英小写, label: 日语}`，再给这个板块的所有关注项补上这个分法的值。
+要加新的分法：在 `sections.yaml` 这个板块的 `schemes` 里加一项 `{id: 英小写, label: 日语, values: [...]}`，再给这个板块的所有关注项补上这个分法的值。
+
+## 板块一览（sections.yaml，2026-10-17 定）
+
+**板块事先定全，新关注项只是「对号入座」，不临时开新板块、不为建板块叫 AI。**参考 IAB Content Taxonomy 3.1 的大类，按日本网站的叫法合并成 17 个：
+游戏 ゲーム・影视 映像・运动 スポーツ・演出 ライブ・好物 グッズ・时尚 ファッション・书刊 本・マンガ・宠物 ペット・美食 グルメ・数码 テック・
+出行 おでかけ・艺术 アート・爱好 ホビー・家居 暮らし・健康 健康・汽车 乗り物・其他 その他。没有关注项的板块网页上不显示。
+- 每个板块在 `sections.yaml` 里有：日语名・英文标签・颜色（过 AA）・图标・向导的默认类型・**对号入座的词**（`words`）・两种分法和常用值（`schemes`）。
+  `scripts/taxonomy.py` 读它（`render` 的 `SECTIONS` / `SECTION_JA` / `SECTION_EN` / `SECTION_ICON`、`digest` 的 `sub_schemes` 都从这里来），设置页的向导用同一张表。
+- 对号入座（全是规则）：维基数据的说明・名字里的词，按表从上到下先命中的板块（`taxonomy.classify`）；小分类选说明里出现的值，没有就第一个（`guess_subs`，值可以写成 `{v: 雑誌, re: magazine|杂志}` 带外语说法）。都没命中按 type，再没有就「其他」。
+- 设置页提交的 `section` 只收表里的板块，`subs` 一起写进 items.yaml。
+- 判断不准时改 `words` / `re`（加词、调顺序：宠物在美食前面，所以「dog food」是宠物），在 `tests/test_taxonomy.py` 加一个例子。要新板块就在 `sections.yaml` 加一项（颜色先过 AA），不用改代码。
 
 ## 新增关注项时：判断上下级（parent）
 
@@ -88,8 +99,8 @@
 - **产品事实**在 `PRODUCT.md`（读者、语言、原则）；改网页前先看。界面文字（标题、按钮、说明）一律日语，消息内容保持原语言。
 - **颜色、字体**只用 `scripts/render.py` 开头 `:root` 里的设计令牌（`--ink` `--paper` `--rose` `--sheet` `--card` `--gold` `--alert`、
   `--font-sans/serif/mono`、`--fs-label`）。要新颜色先加令牌，不要在 CSS 里直接写十六进制。
-- **新板块（ジャンル）**：只要在 `items.yaml` 的 `section` 写新名字。颜色自动从 `GENRE_EXTRA` 里分配（都过 AA），
-  日语名默认就是写的名字；想要固定的颜色 / 日语名 / 英文标签，加进 `SECTIONS` / `SECTION_JA` / `SECTION_EN`。
+- **新板块（ジャンル）**：板块事先定全在 `sections.yaml`（见上「板块一览」），`items.yaml` 的 `section` 只写表里的 key。
+  真要加板块就在 `sections.yaml` 加一项（日语名・英文标签・颜色・图标・分法），不用改 `render.py`。
 - **新类型的消息信息**（价格、日程、视频、图集）：已经有部件，AI 编辑在 edit.json 里写 `price` / `event` / `video` / `gallery`
   （见 `EDITING.md`「追加字段」）就会显示；头版「これからの予定」自动汇总将来的 `event`。
 - **真正的新部件**：在 `render.py` 里写一个函数（参照 `_extras` / `_agenda`：没有数据就返回空字符串、链接只收 http(s)、文字都转义），
