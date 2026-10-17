@@ -205,6 +205,10 @@ class Background(unittest.TestCase):
         zero = next(i for i in self.items if i["name"] == "zero")
         prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T22:00:00+00:00", material=ef.material(zero))
         self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 6 時間以内・材料が同じ失敗は飛ばす
+        self.assertEqual(ef.waiting(prog, self.items, now), [("zero", "2026-10-17T04:00:00+00:00")])   # 再挑戦待ちとして見える
+        prog["items"]["zero"].pop("material")   # 指紋の記録がない古い失敗は待たない
+        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+        self.assertEqual(ef.waiting(prog, self.items, now), [])
         prog["items"]["zero"]["material"] = "old"   # 新しい記事・手がかりが来た
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T17:00:00+00:00")
@@ -691,6 +695,16 @@ class Ladder(unittest.TestCase):
         self.assertEqual(r["state"], "failed")
         self.assertTrue(r["material"])
         self.assertIn("新しい記事が来たらすぐ", r["note"])
+
+
+class GateWhy(unittest.TestCase):
+    def test_waiting_is_not_silent(self):
+        import gate
+        self.assertEqual(gate._emblem_why([], []), "全部そろっている")
+        why = gate._emblem_why(["a"], [("b", "2026-10-17T08:00:00+00:00")])
+        self.assertIn("足りない 1 版面", why)
+        self.assertIn("失敗 1 版面は再挑戦待ち", why)
+        self.assertIn("17:00", why)   # 日本時間
 
 
 class Gate(unittest.TestCase):

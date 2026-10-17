@@ -85,21 +85,34 @@ def photo_work(inbox=INBOX):
 
 
 def emblem_work():
-    """小元素：目標に届いていない版面で、今やってよいもの（6 時間以内の失敗で材料が同じものは除く）→ 名前のリスト。AI は要らない。"""
+    """小元素：目標に届いていない版面で、今やってよいもの（6 時間以内の失敗で材料が同じものは除く）→ (名前のリスト, 再挑戦待ち)。
+    再挑戦待ち = [(名前, 時刻)]：失敗して、新しい材料も 6 時間もまだ来ていない版面。AI は要らない。"""
     import emblem_fill
     items = emblem_fill.load_items()
     prog = emblem_fill.sync_progress(emblem_fill.load_progress(), items)
-    return [i["name"] for i in emblem_fill.due(prog, items, _now().isoformat(timespec="seconds"))]   # EMBLEM_RETRY_NOW=1 なら 6 時間を待たない
+    now = _now().isoformat(timespec="seconds")
+    return [i["name"] for i in emblem_fill.due(prog, items, now)], emblem_fill.waiting(prog, items, now)   # EMBLEM_RETRY_NOW=1 なら 6 時間を待たない
+
+
+def _emblem_why(todo, wait, tz="Asia/Tokyo"):
+    parts = []
+    if todo:
+        parts.append(f"足りない {len(todo)} 版面（Actions で Python が埋める）")
+    if wait:
+        first = min((t for _, t in wait if t), default="")
+        when = dt.datetime.fromisoformat(first).astimezone(zoneinfo.ZoneInfo(tz)).strftime("%H:%M") if first else "?"
+        parts.append(f"失敗 {len(wait)} 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても {when} から）")
+    return "・".join(parts) or "全部そろっている"
 
 
 def check(tz="Asia/Shanghai", path=None):
     """→ {job: {need, claude, why, items, sig}}。state/gate.json に書く。"""
     edit = edit_work(tz=tz)
     photos = photo_work()
-    emblem = emblem_work()
+    emblem, emblem_wait = emblem_work()
     jobs = {
-        "emblem": {"need": bool(emblem), "claude": False, "items": emblem[:20],
-                   "why": f"足りない {len(emblem)} 版面（Actions で Python が埋める）" if emblem else "全部そろっているか、6 時間以内に失敗したもの（材料も同じ）だけ"},
+        "emblem": {"need": bool(emblem), "claude": False, "items": emblem[:20], "waiting": [n for n, _ in emblem_wait],
+                   "why": _emblem_why(emblem, emblem_wait)},
         "edit": {"need": bool(edit), "claude": True, "items": sorted(edit),
                  "why": f"未編集の記事 {sum(edit.values())} 件（{len(edit)} 版面）" if edit else "今日の新着はすべて編集済み"},
         "photos": {"need": bool(photos), "claude": True, "items": photos,
