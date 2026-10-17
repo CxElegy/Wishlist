@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>名作ライブラリの演出</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="vendor/reactbits.css">
+<style>
+/* テストグラウンド：自分で描かず、GitHub で評判の動く部品集の演出をそのまま使う試作。
+   React Bits（github.com/DavidHDev/react-bits）の ElectricBorder・LightRays・Lightning・GlareHover・ClickSpark は元のコードを改変せずに束ねた vendor/reactbits.js、
+   Magic UI（github.com/magicuidesign/magicui）の Border Beam は元の作り（offset-path で光の玉を枠に沿って走らせ、枠の形に mask）をそのまま CSS に書き写した。
+   話題度でそれぞれの強さの設定（本数・明るさ・乱れ・速さ）を変え、上がる切り替えでは各部品の「クリックしたとき」の演出（電流のうねり・稲妻・光の脈動・きらめきの走り・火花）を、小元素の位置を押したことにして起こす。
+   トークンは scripts/render.py の :root と同じ */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ice:#8FD8FF;
+ --acc:#E0503C;--sc:#2F5BD3;   /* 見本の作品（Dota 2）の色と板块（ゲーム）の色 */
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--skew:-8deg;--shadow:4px 4px 0 var(--ink)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans)}
+header{padding:16px 24px;background:var(--ink);color:var(--card);display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+header h1{margin:0;font:900 16px var(--font-sans)}
+header h1 small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header label{display:flex;align-items:center;gap:10px;font:700 13px var(--font-sans);flex:1;min-width:240px}
+header input[type=range]{flex:1;accent-color:var(--alert)}
+header output{font:28px var(--font-num);color:var(--gold);min-width:2.2em;text-align:right}
+header .btns{display:flex;flex-wrap:wrap;gap:8px}
+header button{font:700 12px var(--font-sans);background:var(--card);color:var(--ink);border:0;padding:5px 12px;transform:skewX(var(--skew));cursor:pointer;box-shadow:3px 3px 0 var(--alert)}
+header .note{flex-basis:100%;margin:0;font-size:12px;opacity:.8}
+header .note a{color:var(--gold)}
+main{max-width:1360px;margin:0 auto;padding:30px 20px 70px;display:grid;grid-template-columns:repeat(auto-fit,minmax(390px,1fr));gap:34px 30px}
+.col{display:flex;flex-direction:column;gap:12px}
+.col h2{margin:0;display:flex;align-items:baseline;gap:10px;font:900 18px var(--font-sans)}
+.col h2 .tg{background:var(--ink);color:var(--card);padding:0 10px;transform:skewX(var(--skew));font:900 13px/1.8 var(--font-sans);box-shadow:3px 3px 0 var(--acc)}
+.col ul{margin:0;padding-left:1.1em;font-size:13px;color:rgba(26,28,34,.78)}
+.col .src{font:700 11px var(--font-mono);color:rgba(26,28,34,.6)}
+/* 版面の見本（本番と同じく四角・墨の影） */
+.band{position:relative;height:270px;margin-top:70px;background:var(--ink);color:var(--card);box-shadow:var(--shadow)}
+.band .bg{position:absolute;inset:0;overflow:hidden;z-index:0}
+.band .title{position:absolute;left:18px;bottom:16px;font:900 28px/1 var(--font-sans);transform:rotate(-2deg);z-index:4}
+.band .hv{position:absolute;left:18px;top:14px;font:12px var(--font-mono);opacity:.85;z-index:4}
+.band .hv b{font:30px/1 var(--font-num);color:var(--gold);margin-right:6px}
+.emb{position:absolute;right:26px;bottom:8px;transform:rotate(-6deg);transform-origin:50% 100%;z-index:3}
+.emb img{display:block;height:180px;width:auto}
+.fx{position:absolute;inset:0;z-index:5;pointer-events:none}
+/* Magic UI の Border Beam（書き写し）：枠の上を光の玉が走る。枠の太さだけ見えるよう mask で抜く */
+.beam{position:absolute;inset:0;z-index:5;pointer-events:none;border:var(--bw,2px) solid transparent;
+ -webkit-mask:linear-gradient(transparent,transparent) padding-box,linear-gradient(#000,#000) border-box;mask:linear-gradient(transparent,transparent) padding-box,linear-gradient(#000,#000) border-box;
+ -webkit-mask-composite:source-in;mask-composite:intersect}
+.beam i{position:absolute;aspect-square:1;width:var(--size,80px);aspect-ratio:1;offset-path:rect(0 auto auto 0 round var(--size,80px));
+ background:linear-gradient(to left,var(--from),var(--to),transparent);animation:beam var(--dur,6s) linear infinite}
+.beam i+i{animation-delay:calc(var(--dur,6s) / -2)}
+@keyframes beam{from{offset-distance:0%}to{offset-distance:100%}}
+@media (prefers-reduced-motion:reduce){.beam i{animation:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1><small>TESTGROUND</small>名作ライブラリの演出（自作しない版）</h1>
+  <label>話題度 <input type="range" id="h" min="0" max="100" value="67"><output id="hv">67</output></label>
+  <div class="btns"><button id="up">上がる（ぶわっ）</button><button id="auto">自動で切り替え 20 → 45 → 67 → 92</button></div>
+  <p class="note">自分では描かず、GitHub で評判の動く部品集の演出をそのまま使いました。
+    <a href="https://github.com/DavidHDev/react-bits">React Bits</a> は元のコードを改変せずに束ね、<a href="https://github.com/magicuidesign/magicui">Magic UI</a> の Border Beam は作りを CSS に書き写しています。
+    話題度では各部品の強さ（本数・明るさ・乱れ・速さ）が変わります。上がる切り替えでは、小元素の位置を押したことにして、各部品のクリックの演出を起こします。版面のどこをクリックしても同じ演出が出ます。</p>
+</header>
+<main id="cols"></main>
+<script src="vendor/reactbits.js"></script>
+<script>
+(() => {
+  const {React, createRoot, ElectricBorder, LightRays, Lightning, GlareHover, ClickSpark} = window.RB;
+  const h = React.createElement;
+  const cs = getComputedStyle(document.documentElement), tok = v => cs.getPropertyValue(v).trim();
+  const C = {acc: tok('--acc'), sc: tok('--sc'), gold: tok('--gold'), flame: tok('--flame'), card: tok('--card'), ice: tok('--ice'), alert: tok('--alert')};
+  const L = (a, b, t) => a + (b - a) * t;   // 話題度 0〜1 で設定を伸ばす
+  const COLS = [
+    {id: 'electric', name: '案 A　電光', src: 'React Bits · ElectricBorder ＋ ClickSpark', emb: 'dota2-axe', pts: [
+      '版面の枠を電流が走る（WebGL）。話題度で筋の数 1〜5・明るさ・乱れ・速さ・枠から飛ぶアーク', '色は作品の色（本番では作品と板块の色）',
+      'ぶわっ：枠をうねりが 3 方向へ駆け、アークが走り、小元素から星の火花']},
+    {id: 'rays', name: '案 B　光芒', src: 'React Bits · LightRays ＋ GlareHover ／ Magic UI · Border Beam', emb: 'dota2-legion-commander', pts: [
+      '版面の右上（小元素の上）から光の筋が差す（WebGL）。話題度で明るさ・長さ・広がり', '枠を光の玉が 2 つ走る（話題度で速く・大きく）',
+      'ぶわっ：光が脈打ち、小元素の上をきらめきが走る']},
+    {id: 'bolt', name: '案 C　稲妻', src: 'React Bits · Lightning ＋ ElectricBorder', emb: 'dota2-juggernaut', pts: [
+      '小元素の後ろで稲妻が鳴る（WebGL）。話題度で本数 1〜3・枝分かれ・明るさ', '話題 60 以上で枠にも細い電流',
+      'ぶわっ：小元素に落雷、枠にうねり']},
+  ];
+  const cols = document.getElementById('cols'), views = [];
+  for (const c of COLS) {
+    const col = document.createElement('section'); col.className = 'col';
+    col.innerHTML = `<h2><span class="tg">${c.name}</span></h2><span class="src">${c.src}</span><ul>${c.pts.map(p => `<li>${p}</li>`).join('')}</ul>
+      <div class="band"><div class="bg"></div><span class="hv"><b class="num">67</b>話題度</span><span class="title">Dota 2</span><div class="emb"></div><div class="fx"></div></div>`;
+    cols.appendChild(col);
+    const band = col.querySelector('.band');
+    views.push({c, band, bg: createRoot(col.querySelector('.bg')), emb: createRoot(col.querySelector('.emb')), fx: createRoot(col.querySelector('.fx')), embEl: col.querySelector('.emb'), spark: React.createRef()});
+  }
+  const img = v => h('img', {src: `../emblems/${v.c.emb}.webp`, alt: '', draggable: false});
+  function draw(heat) {
+    const t = heat / 100;
+    for (const v of views) {
+      const k = v.c.id;
+      if (k === 'electric') {
+        v.bg.render(null);
+        v.emb.render(img(v));
+        v.fx.render(h(React.Fragment, null,
+          h(ElectricBorder, {color: C.acc, glowColor: C.acc, borderRadius: 0, strands: Math.round(L(1, 5, t)), intensity: L(.45, 1.25, t), glow: L(.3, 1.3, t),
+            chaos: L(.25, 1.1, t), spread: L(.35, 1, t), speed: L(.5, 1.7, t), arcs: t < .3 ? 0 : L(.3, 2.5, t), thickness: L(1.1, 2, t), flicker: .5, intro: true,
+            style: {position: 'absolute', inset: 0}}),
+          h(ClickSpark, {ref: v.spark, sparkColor: [C.gold, C.acc, C.card], shape: 'star', sparkCount: Math.round(L(8, 22, t)), sparkRadius: L(50, 130, t), sparkSize: L(10, 20, t),
+            duration: 650, ring: true, glow: .8, easing: 'ease-out', style: {position: 'absolute', inset: 0}})));
+      }
+      if (k === 'rays') {
+        v.bg.render(h(LightRays, {raysOrigin: 'top-right', raysColor: C.gold, raysSpeed: L(.6, 1.6, t), lightSpread: L(.35, .9, t), rayLength: L(1.2, 3.2, t),
+          intensity: L(.35, 1.4, t), glow: L(.3, 1, t), haze: .25, followMouse: false, cursorShadow: false, clickPulse: true, pulsating: t > .6, intro: true}));
+        v.emb.render(h(GlareHover, {mode: 'click', glareColor: C.card, glareOpacity: .75, glareSize: 40, borderRadius: '0', background: 'transparent', rimGlint: false,
+          style: {width: 'auto', height: 'auto', overflow: 'hidden'}}, img(v)));
+        const size = Math.round(L(50, 140, t)), dur = L(9, 2.6, t).toFixed(2) + 's';
+        v.fx.render(h('div', {className: 'beam', style: {'--size': size + 'px', '--dur': dur, '--from': C.gold, '--to': C.acc, '--bw': (t > .6 ? 3 : 2) + 'px'}}, h('i'), t > .3 ? h('i') : null));
+      }
+      if (k === 'bolt') {
+        v.bg.render(h('div', {style: {position: 'absolute', top: 0, bottom: 0, right: 0, width: '62%'}},
+          h(Lightning, {color: C.ice, bolts: Math.max(1, Math.round(L(.6, 3, t))), branches: L(.2, .9, t), intensity: L(.4, 1.3, t), glow: L(.5, 1.4, t),
+            thickness: L(.8, 1.6, t), speed: L(.6, 1.6, t), flicker: .7, spread: .5, mouseInteraction: false, clickStrike: true, intro: true, size: 1.1})));
+        v.emb.render(img(v));
+        v.fx.render(t >= .6 ? h(ElectricBorder, {color: C.ice, glowColor: C.ice, borderRadius: 0, strands: Math.round(L(1, 3, t)), intensity: L(.4, .9, t), glow: .6,
+          chaos: .6, spread: .5, speed: 1.2, arcs: 1, thickness: 1.2, style: {position: 'absolute', inset: 0}}) : null);
+      }
+    }
+  }
+  // ぶわっ：小元素のまんなかを「押した」ことにして、各部品のクリックの演出を起こす（版面を本当にクリックしても同じ）
+  function flare() {
+    for (const v of views) {
+      const e = v.embEl.getBoundingClientRect(), b = v.band.getBoundingClientRect();
+      const pts = [[e.left + e.width / 2, e.top + e.height * .45], [b.left + b.width * .25, b.top + 2], [b.left + 2, b.top + b.height * .6]];
+      const fire = (x, y, target) => target.dispatchEvent(new PointerEvent('pointerdown', {bubbles: true, clientX: x, clientY: y, pointerType: 'mouse', button: 0, isPrimary: true}));
+      const glare = v.embEl.firstElementChild;
+      fire(pts[0][0], pts[0][1], glare || v.band);
+      if (v.c.id !== 'rays') { fire(pts[1][0], pts[1][1], v.band); fire(pts[2][0], pts[2][1], v.band); }
+      if (v.spark.current) v.spark.current.spark(e.left - b.left + e.width / 2, e.top - b.top + e.height * .45);
+    }
+  }
+  const hs = document.getElementById('h'), hv = document.getElementById('hv');
+  let heat = 67;
+  function set(v, up) {
+    const rise = v - heat; heat = v; hs.value = v; hv.textContent = v;
+    document.querySelectorAll('.num').forEach(n => n.textContent = v);
+    draw(v);
+    if (up && rise > 4) requestAnimationFrame(() => requestAnimationFrame(flare));
+  }
+  hs.addEventListener('input', () => set(+hs.value, false));
+  document.getElementById('up').addEventListener('click', () => { flare(); });
+  let timer = null;
+  document.getElementById('auto').addEventListener('click', ev => {
+    if (timer) { clearInterval(timer); timer = null; ev.target.textContent = '自動で切り替え 20 → 45 → 67 → 92'; return; }
+    const seq = [20, 45, 67, 92]; let i = 0; ev.target.textContent = '止める';
+    const go = () => { set(seq[i], true); i = (i + 1) % seq.length; }; go(); timer = setInterval(go, 3000);
+  });
+  draw(heat);
+})();
+</script>
+</body>
+</html>
