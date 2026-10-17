@@ -68,6 +68,14 @@ jobs:
             ~/.cache/wishlist-faces
           key: emblem-models-v1
 
+      - name: Wikimedia の応答のキャッシュ（requests-cache・同じものを取り直さない）
+        if: steps.gate.outputs.emblem == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/wishlist-http
+          key: wishlist-http-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: wishlist-http-
+
       - name: 小元素补全（Python，不用 AI · 6 本并行 · 取法分 3 段）
         if: steps.gate.outputs.emblem == 'true'
         run: |

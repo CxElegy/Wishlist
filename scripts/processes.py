@@ -49,8 +49,13 @@ COMPONENTS = {
     "claude-api": {"kind": "model", "name": "Claude API claude-haiku-5-5", "spec": "summarize: false（いまは使わない）· 4000 tokens",
                    "what": "Actions から編集するときだけ（digest.edit_stories）。使ったトークンは数える"},
     # ---- アルゴリズム
-    "pace": {"kind": "algo", "name": "サイトごとの間隔（全スレッド共有）", "spec": "Reddit 2 秒 · Google / Bing 0.5 秒 · Wiki 1.3 秒",
-             "what": "sources._pace / emblem_fill._throttled_get。並列でもサイトから見た間隔は同じ"},
+    "pace": {"kind": "algo", "name": "サイトごとの間隔（全スレッド共有）", "spec": "Reddit 2 秒 · Google / Bing 0.5 秒 · Wikimedia 同じホスト 1 本ずつ・1.3 秒 + 全体 0.4 秒（毎分 150）",
+             "what": "sources._pace / wikihttp.get。並列でもサイトから見た間隔は同じ"},
+    "wikiua": {"kind": "rule", "name": "Wikimedia の決まり（wikihttp）", "spec": "UA「WishlistEmblemBot/1.1 (repo; Issues) python-requests」· api.php に maxlag=5 · "
+               "429 / 503 / maxlag は Retry-After（なければ 5・15・45 秒）で 3 回まで · Retry-After > 120 秒か続く 429 → そのホスト 5 分休む · titles は 50 件ずつ",
+               "what": "scripts/wikihttp.py。ブラウザのふりの UA（Mozilla/…）は 403、名乗らないと毎分 10 回まで。守ったボットは全サイト合わせて毎分 200"},
+    "httpcache": {"kind": "algo", "name": "requests-cache（SQLite）", "spec": "~/.cache/wishlist-http · api.php 3 日 · 画像 14 日 · 200 だけ（maxlag の断りは残さない）",
+                  "what": "同じ網址は取り直さない。Actions では actions/cache で次の回へ持ち越す"},
     "dedupe": {"kind": "algo", "name": "タイトルの重複判定", "spec": "完全一致 + 文字 bigram 重なり > 0.75 · 14 日分",
                "what": "digest.filter_entries：作品名を除いて比べる。転載・題名の切れ端も 1 件に"},
     "match": {"kind": "rule", "name": "match / exclude", "spec": "部分一致（空白・大小無視）· re: は正規表現",
@@ -157,7 +162,7 @@ PROCESSES = [
                    "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "scripts/emblem_rules.py", ".github/workflows/background.yml"],
         "doc": "TEMPLATES.md", "rules": "emblem",
-        "uses": ["roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "fandom"],
+        "uses": ["roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
         "flow": [
             {"id": "b1", "kind": "decision", "lane": "actions", "title": "ゲート：足りない版面がある？",
              "text": "目標未満 · 失敗した版面は「新しい記事・手がかりが来た」か「6 時間たった」ら対象に戻る",
@@ -177,6 +182,9 @@ PROCESSES = [
                        ("5", "Wikipedia", "≤10", "wiki"), ("6", "Commons", "≤8", "wiki"), ("7", "記事の配図", "≤12"),
                        ("8", "公式サイト", "ロゴ"), ("9", "Twemoji", "主題", "twemoji")],
              "uses": ["pace"]},
+            {"id": "b3w", "kind": "step", "lane": "ext", "title": "Wikimedia は決まりどおりに取る",
+             "text": "名乗った UA · 1 本ずつ · maxlag · Retry-After を待つ · 取ったものはキャッシュ（次の回も）",
+             "uses": ["wikiua", "httpcache", "pace"]},
             {"id": "b4", "kind": "step", "lane": "actions", "title": "使える画像か", "text": "6MB まで · 短辺 160（横長ロゴは長辺 300）· 白紙・同じ画像を除く",
              "uses": ["ahash"]},
             {"id": "b5", "kind": "step", "lane": "actions", "title": "人物の写真の規則（前は目で見ていた）",
@@ -518,7 +526,8 @@ LIMITS = [
     ("ニュース収集", "6 本並列", "GitHub Actions のサーバーは 4 コア。待ちが多いので 6 本。同じサイトの間隔は全スレッドで共有（Reddit 2 秒・Google / Bing 0.5 秒）"),
     ("小元素の自動補完", "6 本並列", "GitHub Actions（4 コア・16GB・1 回 60 分まで、続けて 3 回まで）。集めるのは待ちが多いので 6 本、抠图（rembg）と items.yaml への書き込みは 1 本ずつ"),
     ("抠图のモデル（rembg）", "1 枚ずつ", "birefnet は 1 枚で数 GB のメモリを使う。onnxruntime のメモリ池を切って、1 枚ごとに返す（前は 13GB まで溜まった）"),
-    ("Wikipedia・Wikidata・Commons", "1.3 秒に 1 回", "全スレッド合わせて。続けて叩くと 429（多すぎ）になり、続いたら 5 分休む → ここは並列でも速くならない"),
+    ("Wikipedia・Wikidata・Commons", "ホストごと 1 本ずつ · 全体で毎分 150", "Wikimedia の上限は名乗ったボットで全サイト毎分 200（名乗らないと 10）。"
+     "429 は Retry-After を守り、続いたら 5 分休む → ここは並列でも速くならない。取ったものはキャッシュ（~/.cache/wishlist-http）"),
     ("Claude の定時タスク", "仕事があるときだけ", "起きるたびにトークンを使う。ゲートが仕事を確かめてから起こす（AI 編集・写真）。小元素は AI を使わない"),
     ("GitHub Actions", "同じワークフローは 1 本ずつ", "収集・依頼は前の回が終わるまで待つ（concurrency）。ページ生成は新しい回が来たら古い回を止める。"
                        "定時（cron）は混むと遅れる・抜ける（2 時間抜けたことがある）ので、後台作業は Supabase pg_cron（17 分）も 2 つ目の時計に"),

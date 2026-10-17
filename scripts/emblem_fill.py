@@ -40,7 +40,6 @@ import re
 import sys
 import threading
 import time
-import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -50,48 +49,13 @@ import face_id  # noqa: E402
 import runlog  # noqa: E402
 from emblem import ROOT, inspect, small_url  # noqa: E402
 
-_last = {}
-_host_lock = threading.Lock()
 WRITE_LOCK = threading.RLock()   # items.yaml・docs/emblems への書き込みと抠图（rembg）は 1 本ずつ
 _face_lock = threading.Lock()    # 顔の検出・特徴量（OpenCV のモデルは 1 つを共有するので順番に）
-_cool = {}        # ホスト → この時刻までは叩かない（429 が続いたとき）
-COOL = 300        # 取り直しても 429 なら、そのホストは 5 分休ませる（待ち続けて時間の予算を食わないように）
 _deadline = [None]   # 後台の時間の予算の締め切り（time.time()）。過ぎたら集めるのをやめる
-_orig_get = emblem._get
 
 
 class OutOfTime(Exception):
     pass
-
-
-def _throttled_get(url, limit=emblem.MAX_BYTES):
-    """Wikipedia / Commons は続けて叩くと 429（多すぎ）になるので、同じホストには 1.3 秒あけ、取れなければ長めに待って取り直す。
-    取り直しても 429 なら、そのホストはしばらく休ませる（その間はすぐ失敗にして、次の取り方へ進む）。"""
-    host = urllib.parse.urlparse(url).netloc
-    if host.endswith("wikipedia.org") or host.endswith("wikimedia.org") or host.endswith("wikidata.org"):
-        if _cool.get(host, 0) > time.time():
-            raise urllib.error.HTTPError(url, 429, "休ませ中（429 が続いた）", None, None)
-        with _host_lock:   # 並列（WORKERS）でも同じホストには 1.3 秒に 1 回：順番を予約してから待つ
-            slot = max(time.time(), _last.get(host, 0) + 1.3)
-            _last[host] = slot
-        if slot > time.time():
-            time.sleep(slot - time.time())
-        try:
-            return _orig_get(url, limit)
-        except urllib.error.HTTPError as e:
-            if e.code != 429:
-                raise
-            time.sleep(30)
-            try:
-                return _orig_get(url, limit)
-            except urllib.error.HTTPError as e2:
-                if e2.code == 429:
-                    _cool[host] = time.time() + COOL
-                raise
-        finally:
-            with _host_lock:
-                _last[host] = max(_last.get(host, 0), time.time())
-    return _orig_get(url, limit)
 
 
 def _check_time():
@@ -99,8 +63,7 @@ def _check_time():
         raise OutOfTime("時間の予算を使い切った")
 
 
-emblem._get = _throttled_get
-_get = _throttled_get
+_get = emblem._get   # Wikimedia の間隔・取り直し・休み・キャッシュは wikihttp.get（emblem._get から呼ぶ）
 
 # 種類 → (最少, 目標, 最大)。target が None のものは who（メンバーの人数など）に合わせる
 RULES = {
@@ -237,8 +200,8 @@ def wikipedia_title(lang, query):
 
 def _files_info(api, titles, width=500):
     out = []
-    for i in range(0, len(titles), 30):
-        q = urllib.parse.urlencode({"action": "query", "titles": "|".join(titles[i:i + 30]), "prop": "imageinfo",
+    for i in range(0, len(titles), 50):   # API は titles を | で 50 件まで 1 回に
+        q = urllib.parse.urlencode({"action": "query", "titles": "|".join(titles[i:i + 50]), "prop": "imageinfo",
                                     "iiprop": "url|size|extmetadata", "iiurlwidth": width, "format": "json"})
         for p in _json(f"{api}?{q}", 4_000_000)["query"]["pages"].values():
             info = (p.get("imageinfo") or [{}])[0]
