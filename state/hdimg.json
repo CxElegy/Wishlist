@@ -1,4 +1,16 @@
 {
+ "http://n.sinaimg.cn/sinakd20261017ac/533/w480h853/20261017/5551-53c5cc4364453fccee1dcae242ecccec.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 1280,
+  "v": 2
+ },
+ "http://n.sinaimg.cn/sinakd20261017ac/533/w480h853/20261017/6396-e6efff9035bbbe52141adb988d2e0a47.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 1280,
+  "v": 2
+ },
  "http://www.gameand.co.kr/news/photo/202610/16233_99569_230.jpg": {
   "w": 800,
   "h": 549,
@@ -214,10 +226,10 @@
   "v": 2
  },
  "https://cdn.gamey.kr/news/photo/202610/3019072_171667_244.jpg": {
+  "w": 600,
+  "h": 577,
   "target": 720,
-  "v": 2,
-  "fail": "下载失败或不是图片",
-  "day": "2026-10-17"
+  "v": 2
  },
  "https://cdn.hk01.com/di/media/images/dw/20260902/1171891402804563968016457.jpeg/bdYfUmVFlNbTJxbRETVnBF7P0-pejkDHIubdUCLm3VA": {
   "w": 1200,
@@ -1157,10 +1169,10 @@
   "v": 2
  },
  "https://n.sinaimg.cn/games/crawl/86/w550h336/20261013/8b83-80ec3bc332ebcd1a98f61185b9005d43.png": {
+  "w": 550,
+  "h": 336,
   "target": 720,
-  "v": 2,
-  "fail": "下载失败或不是图片",
-  "day": "2026-10-17"
+  "v": 2
  },
  "https://newportal.portal.auone.jp/media/thumbnails/2026/10/14/https___news_jp_i_1483059612864889836_w700.webp": {
   "w": 700,

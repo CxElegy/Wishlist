@@ -119,6 +119,16 @@
   "font": "serif",
   "split": false
  },
+ "gelato pique|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
  "gelato pique|http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718": {
   "accent": "#2C1FAD",
   "alt_accent": "#8F86E9",
@@ -126,6 +136,16 @@
   "alt_fg": "#F2EEE6",
   "bg": "#EDEDED",
   "fg": "#1A1C22",
+  "font": "serif",
+  "split": false
+ },
+ "hero|http://n.sinaimg.cn/sinakd20261017ac/533/w480h853/20261017/6396-e6efff9035bbbe52141adb988d2e0a47.jpg": {
+  "accent": "#A170EB",
+  "alt_accent": "#7E3BE3",
+  "alt_bg": "#ECE7F3",
+  "alt_fg": "#1A1C22",
+  "bg": "#1B1226",
+  "fg": "#F2EEE6",
   "font": "serif",
   "split": false
  },
