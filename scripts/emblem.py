@@ -44,6 +44,7 @@ import urllib.request
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import theme  # noqa: E402
+import wikihttp  # noqa: E402
 from sources import TIMEOUT, USER_AGENT  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -52,9 +53,11 @@ MIN_SIDE = 160
 
 
 def _get(url, limit=MAX_BYTES):
+    if wikihttp.is_wikimedia(url):   # Wikimedia は決まりどおりの UA・1 本ずつ・Retry-After・キャッシュ
+        return wikihttp.get(url, limit)
     import time
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    for wait in (0, 3, 8, 20):   # Wikipedia などの「多すぎ」（429）は少し待って取り直す
+    for wait in (0, 3, 8, 20):   # Fandom などの「多すぎ」（429）は少し待って取り直す
         time.sleep(wait)
         try:
             with urllib.request.urlopen(req, timeout=TIMEOUT) as r:

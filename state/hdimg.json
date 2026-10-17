@@ -345,12 +345,6 @@
   "target": 720,
   "v": 2
  },
- "https://cogconnected.com/wp-content/uploads/2026/10/EVILGARD-Featured.jpg": {
-  "w": 890,
-  "h": 520,
-  "target": 720,
-  "v": 2
- },
  "https://collabo-cafe.com/wp-content/uploads/chainsawman-fashion-crocs-2026-keyvisual.jpg": {
   "w": 1950,
   "h": 1097,
@@ -468,50 +462,6 @@
   "target": 720,
   "v": 2
  },
- "https://external-preview.redd.it/BtwNx7SL-POUmB6-B2BUKFrcPNkJUqait_3fAi9-Eug.jpeg?width=640&crop=smart&auto=webp&s=740fd11da1f8e498c2b0c4d0c54bf0072f7f225d": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 2
- },
- "https://external-preview.redd.it/FyDZJefxMIfvhWVJEfo5tRv9mzjSwjQyQWAPxWaiPTs.jpeg?width=320&crop=smart&auto=webp&s=627b84dc3f39dbb84a1f8546f2db698d09e8b3bd": {
-  "w": 320,
-  "h": 240,
-  "target": 720,
-  "v": 2,
-  "blur": 0.461,
-  "local": "pics/f94338fe6a14ccf5.webp",
-  "out": [
-   720,
-   540
-  ],
-  "why": "看不清"
- },
- "https://external-preview.redd.it/K7N7ioU2d7csvDIUCYzeTe1ghmkUYsuXT22bFVjyY7s.jpeg?width=320&crop=smart&auto=webp&s=b35d056464ac9cd111b1a250e1b7a84daaa7413c": {
-  "w": 320,
-  "h": 240,
-  "target": 720,
-  "v": 2,
-  "blur": 0.496,
-  "local": "pics/14e881d9871baa46.webp",
-  "out": [
-   720,
-   540
-  ],
-  "why": "看不清"
- },
- "https://external-preview.redd.it/cHN1MXBxMGFycXRoMat8rngEU6i2-d58IrG8iWfkTegWZTSvn81xSv0Y283H.png?width=640&crop=smart&auto=webp&s=89c631467ba88e1ed02e3f2e9b8d7a417ce00f4d": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 2
- },
- "https://external-preview.redd.it/eW1zMnZrdXRwYXVoMXP5Gbyf8S63-faEwbCRYXaKMNvF_msyFClH8zLez6dy.png?width=640&crop=smart&auto=webp&s=76ec5ae18dadff38a706cb351c8ee28bce9952b6": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 2
- },
  "https://external-preview.redd.it/ls5OcOjkjErs9tph4z4tS3Id06wzZAN9Wgz96c8Fgqw.jpeg?width=640&crop=smart&auto=webp&s=355cc54b5122677450d8ad1fa8953ae523267f4c": {
   "w": 640,
   "h": 360,
@@ -606,12 +556,6 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
-  "v": 2
- },
- "https://i.ytimg.com/vi/gnOjwRLGwaM/hqdefault.jpg": {
-  "w": 480,
-  "h": 360,
-  "target": 720,
   "v": 2
  },
  "https://i0.wp.com/capesandtights.com/wp-content/uploads/2026/10/GroguMando.png": {
@@ -966,12 +910,6 @@
  "https://img.eprice.com.hk/img/news_hk/41415/big.jpg": {
   "w": 720,
   "h": 378,
-  "target": 720,
-  "v": 2
- },
- "https://img.frandroid.com/images.frandroid.com/wp-content/uploads/2026/03/samsung-galaxy-s26-ultra-8983.jpg?resize=1600,900&key=ddabe4fa": {
-  "w": 1600,
-  "h": 900,
   "target": 720,
   "v": 2
  },
@@ -1608,21 +1546,9 @@
   "target": 720,
   "v": 2
  },
- "https://preview.redd.it/hkifdixygqth1.jpeg?width=640&crop=smart&auto=webp&s=1d72308bc9e35afbf5faee352dddfd4d717710a0": {
-  "w": 640,
-  "h": 640,
-  "target": 720,
-  "v": 2
- },
  "https://preview.redd.it/oxioj7otn6vh1.jpeg?width=640&crop=smart&auto=webp&s=5ed17f65eb194c528f43a4db2f9c16e62a56c15b": {
   "w": 640,
   "h": 853,
-  "target": 720,
-  "v": 2
- },
- "https://preview.redd.it/qu6es4hti9uh1.jpeg?width=640&crop=smart&auto=webp&s=0c631b40a705768e4913028ba6d47a963b03b360": {
-  "w": 640,
-  "h": 804,
   "target": 720,
   "v": 2
  },
@@ -1631,13 +1557,6 @@
   "h": 952,
   "target": 1280,
   "v": 2
- },
- "https://preview.redd.it/xwlag8joyevh1.png?width=640&crop=smart&auto=webp&s=71b3d1b0bcd435915107d57f9b14828ec43fc3cf": {
-  "w": 640,
-  "h": 371,
-  "target": 1280,
-  "v": 2,
-  "blur": 0.253
  },
  "https://prtimes.jp/img/163718/88/resize/d163718-88-7d7586a93bf22a70eb22-0.jpg": {
   "w": 650,

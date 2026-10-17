@@ -47,6 +47,7 @@ class Entry:
     image: str = ""
     image_via: str = ""  # 配图是出刊时补到的：从哪来（og:image、转载 xxx ……）；收集时自带的为空
     link: str = ""       # Google 新闻跳转链接还原出的原文地址（出刊时还原，存回 inbox，下次不用再问 Google）
+    hot: bool = True     # Reddit 帖子火不火（reddit_hot）：不火的只算話題度的帖子数，不上版面
 
 
 # 同じサイトへの間隔（秒）。収集は関注項ごとに並列（digest.COLLECT_WORKERS）なので、スレッド全部で共有する
@@ -294,13 +295,74 @@ def reddit_links(data):
     return links
 
 
-def _reddit_entries(path, params, name):
+# ---------- Reddit：火不火・删没删 ----------
+# 「火」= 进了 Reddit 自己按投票排的本周最热榜（/top?t=week）的前 REDDIT_HOT_TOP 名：
+#   专门版块（subreddits）看那个版块的榜，全站搜索看「按热度排的搜索结果」的前几名。
+#   拿得到数字时（配了 Reddit 官方 API）还要赞 ≥ REDDIT_MIN_SCORE 或评论 ≥ REDDIT_MIN_COMMENTS（小版块的榜首也可能没人理）。
+#   RSS 没有赞数・评论数，只能看榜。
+REDDIT_HOT_TOP = 5
+REDDIT_MIN_SCORE = 100
+REDDIT_MIN_COMMENTS = 30
+REDDIT_ID = re.compile(r"/comments/([a-z0-9]+)", re.I)
+_hot_lists = {}   # 本次运行内缓存：版块 → 本周最热榜的帖子 id
+
+
+def reddit_id(url):
+    m = REDDIT_ID.search(url or "")
+    return m.group(1).lower() if m else None
+
+
+def reddit_top(subreddit):
+    """版块本周最热榜的前 REDDIT_HOT_TOP 帖（够不上数字门槛的标 hot=False）。拿不到（限流、网络）返回 None。本次运行内缓存。"""
+    if subreddit not in _hot_lists:
+        _hot_lists[subreddit] = _reddit_entries(f"/r/{subreddit}/top", {"t": "week", "limit": REDDIT_HOT_TOP},
+                                                f"r/{subreddit}", strict=True)
+    return _hot_lists[subreddit]
+
+
+def reddit_hot_ids(subreddit):
+    """版块里现在算「火」的帖子 id。榜拿不到返回 None：判断不了，不当成不火（不然一次网络错误就把版面全撤了）。"""
+    top = reddit_top(subreddit)
+    return None if top is None else {reddit_id(e.url) for e in top if e.hot}
+
+
+def reddit_removed(url):
+    """帖子被删了吗：True / False；拿不到（限流、网络）返回 None。读帖子自己的 RSS（或官方 API），
+    正文是 [removed]（版主删）/ [deleted]（作者删），或者帖子页 404 / 410。"""
+    pid = reddit_id(url)
+    if not pid:
+        return None
+    try:
+        is_json, data = _reddit_get(f"/comments/{pid}", {"limit": 1})
+    except urllib.error.HTTPError as e:
+        return True if e.code in (404, 410) else None
+    except Exception:
+        return None
+    if is_json:
+        try:
+            post = json.loads(data)[0]["data"]["children"][0]["data"]
+        except (ValueError, LookupError, TypeError):
+            return None
+        return bool(post.get("removed_by_category")) or (post.get("selftext") or "").strip() in ("[removed]", "[deleted]") \
+            or post.get("author") == "[deleted]"
+    try:
+        first = next(ET.fromstring(data.strip()).iter(f"{ATOM}entry"), None)
+    except ET.ParseError:
+        return None
+    if first is None:
+        return True
+    text = re.sub(r"<[^>]+>", " ", html.unescape(first.findtext(f"{ATOM}content") or "")).strip()
+    return text.startswith(("[removed]", "[deleted]"))
+
+
+def _reddit_entries(path, params, name, strict=False):
+    """strict=True：拿不到时返回 None（「不知道」），不是空列表（「没有」）。"""
     import images  # images 也 import 了 sources，放到函数里避免循环导入
     try:
         is_json, data = _reddit_get(path, params)
     except Exception as e:
         _warn(name, e)
-        return []
+        return None if strict else []
     if not is_json:
         entries = rss_bytes(data, name)
         # 标了剧透 / NSFW 的帖子 RSS 里没有缩略图（网页上是「View spoiler」遮罩），改用帖子外链的预览图
@@ -322,19 +384,42 @@ def _reddit_entries(path, params, name):
             source=f"r/{p['subreddit']}",
             summary=f"赞 {p['score']} · 评论 {p['num_comments']} · " + _clean(p.get("selftext"), 250),
             image=html.unescape(preview),
+            hot=p["score"] >= REDDIT_MIN_SCORE or p["num_comments"] >= REDDIT_MIN_COMMENTS,
         ))
     return entries
 
 
-def reddit_search(query, lookback_days=7):
-    """全站搜索。摘要里带赞数和评论数（官方 API 才有），方便 AI 判断热度。"""
+_search_cache = {}  # 本次运行内缓存：(搜索词, 期间) → 结果
+
+
+def reddit_search(query, lookback_days=7, strict=False):
+    """全站搜索，按热度（赞）排：前 REDDIT_HOT_TOP 帖算火（另外要够数字门槛），其余 hot=False（只算帖子数）。
+    摘要里带赞数和评论数（官方 API 才有）。strict=True 时拿不到返回 None。"""
     period = "week" if lookback_days <= 7 else "month"
-    return _reddit_entries("/search", {"q": query, "sort": "relevance", "t": period, "limit": 25}, "Reddit")
+    key = (query, period)
+    if key not in _search_cache:
+        _search_cache[key] = _reddit_entries("/search", {"q": query, "sort": "top", "t": period, "limit": 25}, "Reddit",
+                                             strict=True)
+    found = [Entry(**e.__dict__) for e in _search_cache[key]] if _search_cache[key] is not None else None
+    if found is None:
+        return None if strict else []
+    for k, e in enumerate(found):
+        e.hot = e.hot and k < REDDIT_HOT_TOP
+    return found
 
 
 def reddit_sub(subreddit):
-    """专门版块的最新帖子（版块本身就是相关的，不再按关键词过滤）。"""
-    return _reddit_entries(f"/r/{subreddit}/new", {"limit": 25}, f"r/{subreddit}")
+    """专门版块的帖子（版块本身就是相关的，不再按关键词过滤）：本周最热榜（hot）＋ 最新 25 帖。
+    最新帖里不在榜上的 hot=False：話題度数帖子数要用，但不上版面。"""
+    top = reddit_top(subreddit) or []  # 榜拿不到：这次新帖都先当不火（不上版面），等下次拿到榜再说
+    hot = {reddit_id(e.url) for e in top if e.hot}
+    out = [Entry(**{**e.__dict__}) for e in top]
+    seen = {reddit_id(e.url) for e in top}
+    for e in _reddit_entries(f"/r/{subreddit}/new", {"limit": 25}, f"r/{subreddit}"):
+        if reddit_id(e.url) not in seen:
+            e.hot = reddit_id(e.url) in hot
+            out.append(e)
+    return out
 
 
 def steam_news(appid, count=10):

@@ -65,6 +65,9 @@ def clear_cache():
     _icons.clear()
     _reddit_blocked.clear()
     sources._reddit_limited = None
+    sources._hot_lists.clear()
+    sources._search_cache.clear()
+    _removed.clear()
 
 
 # ---------- 下载 ----------
@@ -320,10 +323,18 @@ def msn_page(url):
     return p
 
 
+_removed = {}  # 运行内缓存：Reddit 帖子 → 删了吗（True / False / None = 拿不到）
+
+
 def gone(url):
-    """原文是不是已经删了（404 / 410）。Reddit 帖子和没还原的 Google 跳转不判断。"""
-    if not url or "news.google.com" in url or REDDIT_POST.match(url):
+    """原文是不是已经删了：网页 404 / 410；Reddit 帖子看正文是不是 [removed] / [deleted]（sources.reddit_removed，
+    拿不到时不当成删了）。没还原的 Google 跳转不判断。"""
+    if not url or "news.google.com" in url:
         return False
+    if REDDIT_POST.match(url):
+        if url not in _removed:
+            _removed[url] = sources.reddit_removed(url)
+        return _removed[url] is True
     return page(url).gone
 
 

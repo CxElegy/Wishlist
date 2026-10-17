@@ -14,9 +14,10 @@
 #   priority_keywords 不用 AI 时生效：标题含这些词的消息排在最前面做头条
 #   urgent_patterns   要紧消息的判定（正则，匹配标题）。命中的消息当天立刻通知 Discord，并在简报里做成整行“重大”板块。
 #                     Reddit / YouTube 的帖子不算，避免传闻误报
-#   section      可选，头版上归到哪个板块：游戏 / 影视 / 运动 / 好物（也可以自己起新名字）。
-#                不填按 type：game → 游戏，anime / show → 影视，product / category → 好物
-#   subs         必填，板块里的小分类，按「分け方」各写一个：{status: 運営中, platform: スマホ}（分け方见上面 settings.sub_schemes）。
+#   section      可选，头版上归到哪个板块：只能写 sections.yaml 里的 key（游戏 / 影视 / 运动 / 演出 / 好物 / 时尚 / 书刊 / 宠物 / 美食 /
+#                数码 / 出行 / 艺术 / 爱好 / 家居 / 健康 / 汽车 / 其他），不临时开新板块。
+#                不填按 type：game → 游戏，anime / show → 影视，event → 演出，product / category → 好物
+#   subs         必填，板块里的小分类，按「分け方」各写一个：{status: 運営中, platform: スマホ}（分け方和常用的值见 sections.yaml）。
 #                用哪个分け方由 ⚙ 设置页选（板块ごと）。每个分け方都要写，哪怕只有这一项；左边目录一定出小分类的札。（旧的 sub: 也还认）
 #   parent       可选，上级关注项的名字（スパイダーマン → parent: 漫威电影）。只做一层。目录上下级挂在上级下面的支线上（大小一样、不折叠），
 #                同一条新闻上下级都收到时只放进下级的版面。加关注项时先判断上下级，规则见 CLAUDE.md「新增关注项时：判断上下级」
@@ -81,18 +82,11 @@ settings:
   # 这里只放公开的 publishable key（网页本来就要用它，只能新增投票）；读投票用的 secret key 放仓库 Secret SUPABASE_SERVICE_KEY
   supabase_url: "https://bzokpnbcjscbcehdxtjq.supabase.co"           # 形如 https://xxxx.supabase.co
   supabase_key: "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC"           # publishable key（sb_publishable_ 开头）或旧版 anon key
-  # 小分類の分け方（板块ごと）。目次の札・版面の並びにどれを使うかは ⚙ 設定ページで選ぶ（Supabase の nav_schemes 表、db/nav_schemes.sql）。
-  # 選んでいない板块は先頭の分け方。各関注項は subs: {分け方の id: 小分類} に全部の分け方の値を書く（CLAUDE.md「小分类」）
-  sub_schemes:
-    游戏: [{id: status, label: 状態}, {id: platform, label: プラットフォーム}]
-    影视: [{id: kind, label: 種類}, {id: origin, label: 地域}]
-    运动: [{id: sport, label: 種目}, {id: how, label: 楽しみ方}]
-    演出: [{id: scene, label: シーン}, {id: form, label: 形態}]
-    好物: [{id: kind, label: 種類}, {id: owner, label: ブランド・キャラ}]
+  # 小分類の分け方（板块ごと）は sections.yaml。目次の札・版面の並びにどれを使うかは ⚙ 設定ページで選ぶ（Supabase の nav_schemes 表）
 
 items:
   - name: Astrae Oratio
-    subs: {status: 新作・発売前, platform: スマホ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {status: 新作・発売前, platform: スマホ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/astrae-oratio.webp", kind: cover, why: "ゲーム：公式サイトのキービジュアル（タイトルロゴ）", source: "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_reject: ["https://preview.redd.it/hkkny5obxevh1.png?width=640&crop=smart&auto=webp&s=64e68cdc84b4113a2307e69b4d09bc1622781a39"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
@@ -138,7 +132,7 @@ items:
       预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。
     site: https://astraeoratio.plaync.com/
   - name: BLEACH Mirrors High
-    subs: {status: 新作・発売前, platform: スマホ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {status: 新作・発売前, platform: スマホ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/bleach-mirrors-high.webp", kind: logo, why: "ゲーム：公式サイトのタイトルロゴ", source: "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Ichigo Kurosaki", "Rukia Kuchiki", "Renji Abarai", "Uryuu Ishida", "Orihime Inoue", "Yasutora Sado"]   # 集める対象（メンバー・キャラ・出演者）
@@ -181,7 +175,7 @@ items:
     status: 事前登录中 · 官方称 2026 年内上线，具体日期未定
     site: https://bleach-mh.bn-ent.net/
   - name: GTA 6
-    subs: {status: 新作・発売前, platform: 家庭用ゲーム機}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {status: 新作・発売前, platform: 家庭用ゲーム機}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/gta-6.webp", kind: cover, why: "ゲーム：パッケージ画像（ロゴ部分）", source: "https://upload.wikimedia.org/wikipedia/en/4/46/Grand_Theft_Auto_VI.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Jason Duval", "Lucia Caminos"]   # 集める対象（メンバー・キャラ・出演者）
@@ -240,7 +234,7 @@ items:
     wiki: ["en:Grand Theft Auto VI", "ja:グランド・セフト・オートVI"]
 
   - name: MMORPG 新作
-    subs: {status: 新作・発売前, platform: マルチ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {status: 新作・発売前, platform: マルチ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/mmorpg.webp", kind: symbol, why: "カテゴリ：ジャンルを表す記号", source: "https://github.com/jdecked/twemoji（2694 交差した剣）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_icon: "1f6e1 2694 1f409"
@@ -299,7 +293,7 @@ items:
       font: serif
 
   - name: 滑雪
-    subs: {sport: スキー, how: する}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {sport: スキー, how: する}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/ski.webp", kind: symbol, why: "スポーツ：競技の記号", source: "https://github.com/jdecked/twemoji（26f7 スキーヤー）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_icon: "26f7 1f3c2 1f3bf"
@@ -362,7 +356,7 @@ items:
       font: sans
 
   - name: 漫威电影
-    subs: {kind: 映画, origin: 海外}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: 映画, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/marvel.webp", kind: logo, why: "フランチャイズ：MARVEL のロゴ（人物は使わない）", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Marvel_Studios_2016_logo.svg/960px-Marvel_Studios_2016_logo.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_roles: {"Chris Hemsworth": "Thor", "Robert Downey Jr.": "Iron Man", "Anthony Mackie": "Captain America", "Sebastian Stan": "Winter Soldier", "Chris Evans": "Steve Rogers", "Letitia Wright": "Black Panther"}   # 出演者 → 役（gather_roles が Fandom の出演者の記事から）
@@ -436,7 +430,7 @@ items:
     wiki: ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]
 
   - name: FROM
-    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/from.webp", kind: logo, why: "ドラマ：タイトルカード", source: "https://upload.wikimedia.org/wikipedia/en/f/fa/From_title_card.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_roles: {"Harold Perrineau": "Boyd Stevens", "Eion Bailey": "Jim Matthews", "Catalina Sandino Moreno": "Tabitha Matthews", "Scott McCord": "Victor Kavanaugh", "Avery Konrad": "Sara Myers", "Elizabeth Saunders": "Donna Raines"}   # 出演者 → 役（gather_roles が Fandom の出演者の記事から）
@@ -500,7 +494,7 @@ items:
     wiki: ["en:From (TV series)"]
 
   - name: 哈利波特剧集
-    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/harry-potter-hbo.webp", kind: logo, why: "ドラマ：HBO 版のタイトルロゴ", source: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Harry_Potter_TV_series_logo.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_roles: {"Dominic McLaughlin": "Harry Potter", "Alastair Stout": "Ronald Weasley", "Arabella Stanton": "Hermione Granger", "Paapa Essiedu": "Severus Snape", "John Lithgow": "Albus Dumbledore", "Nick Frost": "Rubeus Hagrid"}   # 出演者 → 役（gather_roles が Fandom の出演者の記事から）
@@ -569,7 +563,7 @@ items:
     wiki: ["en:Harry Potter (TV series)"]
 
   - name: ILLIT
-    subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/illit.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
     emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg/500px-Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
@@ -629,7 +623,7 @@ items:
     wiki: ["en:Illit", "ko:아일릿", "ja:ILLIT"]
 
   - name: 星巴克马克杯
-    subs: {kind: 食器・生活, owner: ブランド}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: 食器・生活, owner: ブランド}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/starbucks.webp", kind: logo, why: "ブランド：スターバックスのロゴ", source: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Starbucks
@@ -684,7 +678,7 @@ items:
       font: serif
 
   - name: 猫用品
-    subs: {kind: ペット, owner: ジャンル}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {animal: 猫, kind: 用品}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/cat.webp", kind: symbol, why: "カテゴリ：猫の記号", source: "https://github.com/jdecked/twemoji（1f431 猫の顔）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_icon: "1f408 1f43e 1f431"
@@ -695,7 +689,7 @@ items:
       - {subject: "1f431 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f431.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 猫グッズ · 家里两只猫
     type: category
-    section: 好物
+    section: 宠物
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 猫咪新奇用品, lang: ja-JP, query: "猫 世界初 新製品", need: ["猫|ねこ|ネコ", "世界初|業界初|新発想|新製品|新発売"]}
       - {label: 猫咪新奇用品, lang: zh-TW, query: "貓咪 新品 首款", need: ["猫|貓", "首款|首发|首發|黑科技|全球首|新品"]}
@@ -778,7 +772,7 @@ items:
       font: sans
 
   - name: 日本顶级网球赛事
-    subs: {sport: テニス, how: 観る}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {sport: テニス, how: 観る}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/tennis.webp", kind: symbol, why: "スポーツ：競技の記号", source: "https://github.com/jdecked/twemoji（1f3be テニスボール）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: "Japan Open Tennis Championships"
@@ -862,7 +856,7 @@ items:
     wiki: ["en:Japan Open Tennis Championships", "ja:ジャパン・オープン・テニス選手権"]
 
   - name: 三星手机
-    subs: {kind: ガジェット, owner: ブランド}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: スマホ, owner: ブランド}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/samsung-galaxy.webp", kind: logo, why: "ブランド：Galaxy のロゴ", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Samsung_Galaxy_logo_%28%22Galaxy%22_logo_only%29.svg/960px-Samsung_Galaxy_logo_%28%22Galaxy%22_logo_only%29.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Samsung
@@ -871,7 +865,7 @@ items:
       - {subject: "Samsung のロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20wordmark.svg?width=500", page: "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg", shape: "logo"}
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
     type: product
-    section: 好物
+    section: 数码
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 安卓旗舰新机, lang: zh-CN, query: "安卓 旗舰 新机 发布 2027", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市", "手机|手機|phone|smartphone|スマホ|スマートフォン|폰|스마트폰|Galaxy|iPhone|Pixel|Xiaomi|小米|OPPO|vivo|一加|OnePlus|Honor|荣耀|榮耀|华为|華為|Huawei|Nothing|Motorola"]}
       - {label: 安卓旗舰新机, lang: en-US, query: "flagship Android phone launch 2027", need: ["flagship|旗舰|旗艦", "launch|announce|release|unveil", "手机|手機|phone|smartphone|スマホ|スマートフォン|폰|스마트폰|Galaxy|iPhone|Pixel|Xiaomi|小米|OPPO|vivo|一加|OnePlus|Honor|荣耀|榮耀|华为|華為|Huawei|Nothing|Motorola"]}
@@ -931,7 +925,7 @@ items:
     wiki: ["en:Samsung Galaxy S series"]
 
   - name: gelato pique
-    subs: {kind: ファッション, owner: ブランド}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: ルームウェア, origin: 日本}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/gelato-pique.webp", kind: logo, why: "ブランド：gelato pique のロゴ", source: "https://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: "gelato pique"
@@ -940,7 +934,7 @@ items:
       - {subject: "gelato pique のロゴ", why: "公式サイトのロゴ", image: "emblems/gelato-pique-gelato-pique.webp", source: "https://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718", page: "https://gelatopique.com/", shape: "logo"}
     subtitle: ジェラート ピケ · ルームウェア
     type: category
-    section: 好物
+    section: 时尚
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 可爱居家服新品, lang: ja-JP, query: "ルームウェア 新作 コラボ 発売", need: ["ルームウェア|パジャマ|部屋着", "新作|発売|コラボ|登場"]}
     keywords: [
@@ -995,7 +989,7 @@ items:
       font: serif
 
   - name: "ぐでたま"
-    subs: {kind: キャラクター, owner: キャラクター}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: キャラクター, owner: キャラクター}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/gudetama.webp", kind: character, why: "キャラクター：ぐでたま本人（公式の絵）", source: "https://upload.wikimedia.org/wikipedia/en/b/b1/Gudetama_from_Sanrio.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_max: 3   # キャラが 1 体だけなので、別の場面 3 枚
@@ -1024,7 +1018,7 @@ items:
     wiki: ["en:Gudetama", "ja:ぐでたま"]
 
   - name: "チェーンソーマン"
-    subs: {kind: アニメ, origin: 日本}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: アニメ, origin: 日本}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/chainsaw-man.webp", kind: cover, why: "アニメ：AniList のカバー（チェンソーマンの姿）", source: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127230-DdP4vAdssLoz.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_pool: 4   # 主要な要素の数＝小元素の上限（AniList の主役（role MAIN）の人数、scripts/emblem_fill.py の roster）
@@ -1058,7 +1052,7 @@ items:
     wiki: ["en:Chainsaw Man", "ja:チェンソーマン"]
 
   - name: "The Mandalorian"
-    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/the-mandalorian.webp", kind: logo, why: "ドラマ：タイトルロゴ", source: "https://commons.wikimedia.org/wiki/File:The_Mandalorian_black_background.svg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_roles: {"Pedro Pascal": "Din Djarin", "Giancarlo Esposito": "Gideon", "Emily Swallow": "The Armorer"}   # 出演者 → 役（gather_roles が Fandom の出演者の記事から）
@@ -1090,7 +1084,7 @@ items:
     wiki: ["en:The Mandalorian", "ja:マンダロリアン"]
 
   - name: "あつ森"
-    subs: {status: 運営中, platform: 家庭用ゲーム機}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {status: 運営中, platform: 家庭用ゲーム機}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/animal-crossing-nh.webp", kind: cover, why: "ゲーム：パッケージ画像", source: "https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_pool: 81   # 主要な要素の数＝小元素の上限（分類「Special characters」の人数、scripts/emblem_fill.py の roster）
@@ -1133,7 +1127,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：什么时候能玩、版本更新、活动、新角色。维基数据：動物森友會系列的第七部作品。"
 
   - name: "Vaundy"
-    subs: {scene: J-POP, form: ソロ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {scene: J-POP, form: ソロ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/vaundy.webp", kind: person, why: "音楽家：本人の顔写真", source: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Vaundy_2025.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Vaundy
@@ -1161,7 +1155,7 @@ items:
     subtitle: "演唱会"
 
   - name: "周杰伦"
-    subs: {scene: 華語, form: ソロ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {scene: 華語, form: ソロ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：Spotify のアーティスト写真（顔を真ん中に）", source: "https://open.spotify.com/artist/2elBjNSdBE2Y3f0j1mjrql"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: 周杰倫
@@ -1189,7 +1183,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：演唱会、巡演、门票：抽选、发售、新歌、新专辑、回归。维基数据：台湾男歌手、流行歌曲作家、演员。"
 
   - name: "绝区零"
-    subs: {status: 運営中, platform: マルチ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {status: 運営中, platform: マルチ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/zenless-zone-zero.webp", kind: logo, why: "ゲーム：アプリアイコンにもなっている ZZZ のロゴ", source: "https://thumb.wikimedia.org/wikipedia/en/thumb/d/d2/Zenless_Zone_Zero_curved_box_logo.svg/500px-Zenless_Zone_Zero_curved_box_logo.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_pool: 60   # 主要な要素の数＝小元素の上限（分類「Playable Agents」の人数、scripts/emblem_fill.py の roster）
@@ -1237,7 +1231,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：版本更新、活动、新角色、打折、免费送、联名、周边、剧情、角色、世界观。维基数据：2024年电子游戏。"
 
   - name: "dota2"
-    subs: {status: eスポーツ, platform: PC}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {status: eスポーツ, platform: PC}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/dota-2.webp", kind: cover, why: "ゲーム：Steam のライブラリ画像（ロゴ部分）", source: "https://cdn.akamai.steamstatic.com/steam/apps/570/library_600x900.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_pool: 126   # 主要な要素の数＝小元素の上限（Dota 2 のヒーロー数。天井の 20 まで、人気のヒーローから）
@@ -1300,7 +1294,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
 
   - name: "A2O LITE"
-    subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
+    subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/a2o-lite.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/0Vkn28k7P4K95Ce3knN0hQ"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["YOUNG", "HIMEKI", "VORA", "XILI", "RADA", "MERCI", "AYUNE", "OA", "AIJING"]   # 集める対象（メンバー・キャラ・出演者）
@@ -1309,7 +1303,7 @@ items:
       - {subject: "AIJING", why: "AIJING（ユーザーが一覧で選んだ・新聞の配図）", image: "emblems/a2o-lite-aijing.webp", source: "https://www.bing.com/th?id=ONUT.8ea5sIwVX4ukWAGlU7zFgA&pid=News", page: "", shape: "cutout"}
       - {subject: "A2O LITE", why: "A2O LITE（ユーザーが一覧で選んだ・記事のページ）", image: "emblems/a2o-lite-a2o-lite.webp", source: "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/15/30001093689_16v9.jpg", page: "", shape: "cutout"}
       - {subject: "XILI", why: "XILI（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-xili.webp", source: "https://i.ytimg.com/vi/CaTWuXOqWrE/hq3.jpg", page: "https://www.youtube.com/watch?v=CaTWuXOqWrE", shape: "cutout"}
-      - {subject: "RADA", why: "RADA（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-rada.webp", source: "https://i.ytimg.com/vi/3hUPgNRotSg/hq2.jpg", page: "https://www.youtube.com/watch?v=3hUPgNRotSg", shape: "cutout", fs: 0.594}
+      - {subject: "RADA", why: "RADA（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-rada.webp", source: "https://i.ytimg.com/vi/3hUPgNRotSg/hq2.jpg", page: "https://www.youtube.com/watch?v=3hUPgNRotSg", shape: "cutout", fs: 0.585}
       - {subject: "OA", why: "OA（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-oa.webp", source: "https://i.ytimg.com/vi/MmuU2he4yaU/hq2.jpg", page: "https://www.youtube.com/watch?v=MmuU2he4yaU", shape: "cutout"}
     theme: {bg: "#FBEFF4", fg: "#1E1A18", accent: "#B5285F", alt_bg: "#1E1218", alt_fg: "#F4EEE4", alt_accent: "#F07AA8", split: true}  # 自选：ネオンピンク + 墨紫（デビュー曲「NEON」）
     type: product

@@ -40,7 +40,6 @@
   "https://topics.smt.docomo.ne.jp/amp/article/hokkaido/region/hokkaido-1391169": "https://img.topics.smt.news.goo.ne.jp/picture/hokkaido/m_hokkaido-1391169.jpg",
   "https://www.1039waynefm.com/2026/10/16/ko1keyz-debuts-at-no-1-on-japan-hot-100-as-vaundy-climbs-into-top-10/": "https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/4023/files/2026/10/26308465-1200x675.jpg",
   "https://www.4gamers.com.tw/news/detail/82704/dota-2-pro-23savage-malaysia-police-raid-32-kills-prove-identity": "https://www.bing.com/th?id=ONUT.Q6Cy-fmavjIb_wiYjfqeiw&pid=News&w=1200",
-  "https://www.ajunews.com/amp/20261016173043510": "https://image.ajunews.com/content/image/2026/10/16/20261016173249929991.jpg",
   "https://www.billboard-japan.com/d_news/detail/166561": "https://www.billboard-japan.com/common/sys/img/news/00000166/166561/image.jpg",
   "https://www.biztribune.co.kr/news/articleView.html?idxno=360826": "http://www.biztribune.co.kr/news/thumbnail/202610/360826_266652_1455_v150.jpg",
   "https://www.cbr.com/hbo-harry-potter-reboot-proper-dean-thomas-storyline/": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/10/the-golden-trio-looks-around-a-door-in-harry-potter-and-the-deathly-hallows-part-2.jpg?w=1600&h=900&fit=crop",
@@ -55,6 +54,7 @@
   "https://www.msn.com/en-us/news/other/avengers-doomsdays-costume-reveal-confirms-a-comeback-nobody-fully-expected/vi-AA29VHbw": "https://www.bing.com/th?id=ONUT.4tc8pDMlkeJ02ylpIJcGzg&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/costco-members-can-save-10-on-grand-theft-auto-6-for-playstation-5-heres-how/ar-AA2eoyTW": "https://www.bing.com/th?id=ONUT.OMdMYxRhyi8N7iZDRzQagQ&pid=News&w=780",
   "https://www.msn.com/en-us/news/other/john-waynes-grandson-has-been-playing-the-mandalorian-for-years-but-many-fans-dont-know-his-name/vi-AA2e80eS": "https://www.bing.com/th?id=ONUT.lZS05K8smmr6VU-bnJNqTA&pid=News&w=1200",
+  "https://www.msn.com/en-xl/news/other/j-black-lee-soo-man-asked-for-a2o-lites-intro-choreography-to-be-more-difficult-i-was-worried/ar-AA2eqqML": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2eqI8P.img",
   "https://www.msn.com/ja-jp/news/other/%E8%B6%B3%E5%85%83%E3%81%8B%E3%82%89%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%81%AE%E5%88%83%E3%81%8C%E7%AA%81%E3%81%8D%E5%87%BA%E3%81%99-%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%82%B9-%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%9E%E3%83%B3-%E3%82%B3%E3%83%A9%E3%83%9C%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2eptVE": "https://www.bing.com/th?id=ONUT.Qtqd22-E4u4JeRzP6Th24Q&pid=News&w=800",
   "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90-%EC%82%BC%EC%84%B1-cpu-%EB%93%A4%EC%96%B4%EA%B0%84%EB%8B%A4-%EC%8A%A4%EB%83%85%EB%93%9C%EB%9E%98%EA%B3%A4-%EB%B0%9C%EC%97%B4-%EB%85%BC%EB%9E%80/ar-AA2epXSN": "https://www.bing.com/th?id=ONUT.oQTHqdEUo2o0-SN4LV2RPg&pid=News&w=1200",
   "https://www.news10.com/news/entertainment/ap-can-dc-blend-horror-with-a-superhero-movie-clayface-wants-to-blur-genres/": "https://www.news10.com/wp-content/uploads/sites/64/2026/10/6ad25c2e116b70.01316380.jpeg?w=1280",
@@ -1524,6 +1524,21 @@
   },
   {
    "batch": 6,
+   "because": "A2O LITE",
+   "date": "2026-10-17",
+   "hits": [],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2eqI8P.img",
+   "kind": "board",
+   "score": 4,
+   "source": "Sports Chosun on MSN",
+   "taste": [],
+   "title": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "url": "https://www.msn.com/en-xl/news/other/j-black-lee-soo-man-asked-for-a2o-lites-intro-choreography-to-be-more-difficult-i-was-worried/ar-AA2eqqML",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 6,
    "because": "滑雪",
    "date": "2026-10-16",
    "hits": [],
@@ -1538,7 +1553,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "滑雪",
    "date": "2026-10-16",
    "hits": [],
@@ -1564,21 +1579,6 @@
    "taste": [],
    "title": "グループA2O Liteは、デビューから1日以上経ってMelonチャートで首位を獲得した。",
    "url": "https://www.vietnam.vn/ja/nhom-nhac-a2o-lite-dan-dau-bang-xep-hang-melon-sau-hon-mot-ngay-ra-mat",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 7,
-   "because": "A2O LITE",
-   "date": "2026-10-16",
-   "hits": [],
-   "image": "https://image.ajunews.com/content/image/2026/10/16/20261016173249929991.jpg",
-   "kind": "board",
-   "score": 4,
-   "source": "아주경제",
-   "taste": [],
-   "title": "그 광고 속 소녀였어?…이수만 걸그룹 A2O LITE 멤버 된 16세 보라",
-   "url": "https://www.ajunews.com/amp/20261016173043510",
    "words": [],
    "work": "A2O LITE"
   },
