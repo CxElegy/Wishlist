@@ -137,6 +137,21 @@ class Sources(unittest.TestCase):
                 {"subject": "X", "source": "Wikidata", "image": "w"}]
         self.assertEqual(ef.auto_pick(item, good, web=False), [3])
 
+    def test_topic_examples(self):
+        # ジャンルの版面は「下の一段」（代表作）を 1 作 1 枚、Twemoji の記号より先に
+        item = {"type": "category", "emblem_examples": ["en:Blade & Soul", "en:Aion 2", "en:ArcheAge", "en:Throne and Liberty"]}
+        self.assertEqual(ef.rule(item)[2], 4)
+        good = [{"subject": "🛡 アイコン", "source": "Twemoji", "image": "t"},
+                {"subject": "Blade & Soul", "source": "代表作(Wikipedia)", "image": "b1"},
+                {"subject": "Blade & Soul", "source": "代表作(Wikidata)", "image": "b2"},
+                {"subject": "Aion 2", "source": "代表作(Wikipedia)", "image": "a"}]
+        self.assertEqual(ef.auto_pick(item, good, web=False, strict=True), [2, 4, 1])
+
+    def test_same_name(self):
+        self.assertTrue(ef.same_name("Aion 2 (video game)", "Aion 2"))
+        self.assertTrue(ef.same_name("Blade & Soul", "blade&soul"))
+        self.assertFalse(ef.same_name("Lightning Returns: Final Fantasy XIII", "Odin: Valhalla Rising"))
+
     def test_auto_pick_strict_drawn_characters(self):
         # 絵のキャラは、後台ではキャラ専用の取り方だけ（Commons の「Juggernaut」はバンドの写真だった）
         item = {"type": "game", "emblem_who": ["Juggernaut", "Axe"]}
@@ -569,6 +584,26 @@ class Resources(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CheckWhole(unittest.TestCase):
+    """切り抜きの検査（emblem.check_whole）。rembg は使わず、透明度だけの絵で確かめる。"""
+
+    def _img(self, box):
+        from PIL import Image, ImageDraw
+        im = Image.new("RGBA", (200, 240), (0, 0, 0, 0))
+        ImageDraw.Draw(im).ellipse(box, fill=(120, 90, 60, 255))
+        return im
+
+    def test_panel_crop_rejected(self):
+        try:
+            import cv2  # noqa: F401
+        except ImportError:
+            self.skipTest("opencv がない")
+        import emblem
+        with self.assertRaises(ValueError):   # 上の端の大半が人物：漫画のコマを枠ごと切ったもの（チャド）
+            emblem.check_whole(self._img((10, -300, 190, 200)))
+        emblem.check_whole(self._img((40, 20, 160, 239)))   # 余白のある胸像は通る
 
 
 class EmblemDetail(unittest.TestCase):
