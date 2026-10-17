@@ -2537,8 +2537,8 @@ def publish(inbox_path=None):
 
 
 def hd_images():
-    """配图太小（大位置用不到 1280px 的 75%、卡片用不到 720px 的 75%）就用 OpenCV 放大，
-    防盗链的图（新浪 sinaimg）存一份到本站：都放 docs/pics/，网页优先用它（见 hdimg.py）。出问题也不挡出刊。"""
+    """网页上看不清的配图（要放大 1.6 倍以上而且量出来是糊的）用 OpenCV 处理，看得清的不动；
+    Bing 的小缩略图、防盗链的图（新浪 sinaimg）存一份到本站：都放 docs/pics/，网页优先用它（见 hdimg.py）。出问题也不挡出刊。"""
     import hdimg
     try:
         hdimg.run()

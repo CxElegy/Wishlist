@@ -71,6 +71,33 @@ class PlanTest(unittest.TestCase):
         self.assertEqual(hdimg.plan([rep], "2026-10-17"), {})
 
 
+class ClearTest(unittest.TestCase):
+    def test_blur_score_orders_sharp_and_blurred(self):
+        sharp = photo(800, 450)
+        self.assertLess(hdimg.blur_score(sharp), hdimg.blur_score(cv2.GaussianBlur(sharp, (0, 0), 3)))
+
+    def test_small_but_sharp_left_alone(self):
+        """小さくてもくっきりした図（文字のバナーなど）は、看得清なので触らない。"""
+        need, scale, _ = hdimg.unclear(photo(700, 393), hdimg.BIG_PX)
+        self.assertGreater(scale, hdimg.ENLARGE)
+        self.assertFalse(need)
+
+    def test_small_and_blurry_is_unclear(self):
+        need, _, b = hdimg.unclear(cv2.GaussianBlur(photo(600, 340), (0, 0), 1.5), hdimg.BIG_PX)
+        self.assertTrue(need, b)
+
+    def test_big_soft_photo_not_touched(self):
+        """大きいのにぼやけた写真（背景ぼかし）は撮り方。拡大しないので測りもしない。"""
+        need, _, b = hdimg.unclear(cv2.GaussianBlur(photo(1600, 900), (0, 0), 4), hdimg.BIG_PX)
+        self.assertFalse(need)
+        self.assertIsNone(b)
+
+    def test_trim_white_padding(self):
+        img = np.full((300, 500, 3), 255, np.uint8)
+        img[50:250, 100:400] = photo(300, 200)
+        self.assertEqual(hdimg.trim_white(img).shape[:2], (200, 300))
+
+
 class RunTest(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -87,32 +114,52 @@ class RunTest(unittest.TestCase):
             p.stop()
         self.tmp.cleanup()
 
-    def fake_fetch(self, sizes, hotlink=()):
+    def fake_fetch(self, imgs, hotlink=()):
         def fetch(url, limit, referer=None):
             name = url.rsplit("/", 1)[1]
             if name in hotlink and not referer:
                 return images.Fetched(403, {}, b"hotlink")
-            return images.Fetched(200, {}, cv2.imencode(".jpg", photo(*sizes[name]))[1].tobytes())
+            return images.Fetched(200, {}, cv2.imencode(".png", imgs[name])[1].tobytes())
         return fetch
 
-    def test_small_upscaled_big_left_alone_hotlinked_saved(self):
+    def test_only_unclear_and_hotlinked_are_saved(self):
         rep = {"date": "2026-10-17", "items": [{"name": "w", "stories": [
-            story("small.jpg", "2026-10-17"), story("fine.jpg", "2026-10-16"), story("sina.jpg", "2026-10-15")]}]}
-        sizes = {"small.jpg": (700, 393), "fine.jpg": (1600, 900), "sina.jpg": (690, 460)}
-        with mock.patch.object(images, "_fetch", self.fake_fetch(sizes, hotlink={"sina.jpg"})):
+            story("blurry.jpg", "2026-10-17"), story("sharp.jpg", "2026-10-16"),
+            story("fine.jpg", "2026-10-15"), story("sina.jpg", "2026-10-14")]}]}
+        imgs = {"blurry.jpg": cv2.GaussianBlur(photo(600, 340), (0, 0), 1.5), "sharp.jpg": photo(700, 393),
+                "fine.jpg": photo(1600, 900), "sina.jpg": photo(690, 460)}
+        with mock.patch.object(images, "_fetch", self.fake_fetch(imgs, hotlink={"sina.jpg"})):
             hdimg.run("2026-10-17", [rep])
         st = hdimg.load_state()
-        small = st["https://img.example/small.jpg"]
-        self.assertEqual(small["out"], [1280, 719])
-        self.assertTrue((self.root / "docs" / small["local"]).exists())
+        blurry = st["https://img.example/blurry.jpg"]
+        self.assertEqual((blurry["why"], blurry["out"]), ("看不清", [1280, 725]))
+        self.assertTrue((self.root / "docs" / blurry["local"]).exists())
+        self.assertNotIn("local", st["https://img.example/sharp.jpg"])   # 小さいけど看得清：触らない
         self.assertNotIn("local", st["https://img.example/fine.jpg"])
-        self.assertTrue(st["https://img.example/sina.jpg"]["ref"])  # 防盗链：大きさが足りていても本站に置く
-        self.assertEqual(set(hdimg.local_map()), {"https://img.example/small.jpg", "https://img.example/sina.jpg"})
+        self.assertEqual(st["https://img.example/sina.jpg"]["why"], "防盗链")
+        self.assertEqual(set(hdimg.local_map()), {"https://img.example/blurry.jpg", "https://img.example/sina.jpg"})
+
+    def test_tiny_bing_thumb_replaced_by_wide_one_without_padding(self):
+        url = "https://www.bing.com/th?id=ONUT.abc&pid=News&w=1200"
+        padded = np.full((1686, 1200, 3), 255, np.uint8)
+        padded[300:1386, 200:1000] = photo(800, 1086)
+
+        def fetch(u, limit, referer=None):
+            img = padded if "&w=1200" in u else photo(100, 100)
+            return images.Fetched(200, {}, cv2.imencode(".png", img)[1].tobytes())
+        rep = {"date": "2026-10-17", "items": [{"name": "w", "stories": [
+            {"headline": "h", "url": "https://n.example/1", "image": url, "date": "2026-10-17"}]}]}
+        with mock.patch.object(images, "_fetch", fetch):
+            hdimg.run("2026-10-17", [rep])
+        r = hdimg.load_state()[url]
+        self.assertEqual((r["why"], r["out"]), ("Bing の小さい縮小画像", [800, 1086]))
 
     def test_files_dropped_when_story_leaves_window(self):
-        rep = {"date": "2026-10-17", "items": [{"name": "w", "stories": [story("small.jpg", "2026-10-17")]}]}
-        with mock.patch.object(images, "_fetch", self.fake_fetch({"small.jpg": (500, 300)})):
+        rep = {"date": "2026-10-17", "items": [{"name": "w", "stories": [story("blurry.jpg", "2026-10-17")]}]}
+        imgs = {"blurry.jpg": cv2.GaussianBlur(photo(500, 300), (0, 0), 2)}
+        with mock.patch.object(images, "_fetch", self.fake_fetch(imgs)):
             hdimg.run("2026-10-17", [rep])
+            self.assertEqual(len(list((self.root / "docs" / "pics").glob("*.webp"))), 1)
             hdimg.run("2026-10-30", [rep])
         self.assertEqual(hdimg.load_state(), {})
         self.assertEqual(list((self.root / "docs" / "pics").glob("*.webp")), [])
