@@ -568,7 +568,7 @@ items:
     subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/illit.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
-    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg/500px-Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg/500px-Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://i.ytimg.com/vi/MoezWJrhzUE/hq2.jpg"]   # 目で見て・検査で外した画像。自動補完は選ばない
     emblem_who: ["Yunah", "Minju", "Moka", "Wonhee", "Iroha"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -1308,6 +1308,7 @@ items:
       - {subject: "XILI", why: "XILI（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-xili.webp", source: "https://i.ytimg.com/vi/CaTWuXOqWrE/hq3.jpg", page: "https://www.youtube.com/watch?v=CaTWuXOqWrE", shape: "cutout"}
       - {subject: "RADA", why: "RADA（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-rada.webp", source: "https://i.ytimg.com/vi/3hUPgNRotSg/hq2.jpg", page: "https://www.youtube.com/watch?v=3hUPgNRotSg", shape: "cutout", fs: 0.599}
       - {subject: "OA", why: "OA（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-oa.webp", source: "https://i.ytimg.com/vi/MmuU2he4yaU/hq2.jpg", page: "https://www.youtube.com/watch?v=MmuU2he4yaU", shape: "cutout"}
+      - {subject: "AYUNE", why: "AYUNE（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-ayune.webp", source: "https://i.ytimg.com/vi/fdQw9DapCWI/hq1.jpg", page: "https://www.youtube.com/watch?v=fdQw9DapCWI", shape: "cutout"}
     theme: {bg: "#FBEFF4", fg: "#1E1A18", accent: "#B5285F", alt_bg: "#1E1218", alt_fg: "#F4EEE4", alt_accent: "#F07AA8", split: true}  # 自选：ネオンピンク + 墨紫（デビュー曲「NEON」）
     type: product
     section: "演出"
