@@ -68,6 +68,20 @@ class Rules(unittest.TestCase):
 
 
 class Sources(unittest.TestCase):
+    def test_wide_logo_is_not_too_small(self):
+        import emblem
+        import io as _io
+        from PIL import Image
+
+        def png(w, h):
+            b = _io.BytesIO()
+            Image.new("RGB", (w, h), "white").save(b, "PNG")
+            return b.getvalue()
+        emblem.inspect(png(500, 133))   # 横長のロゴは長い辺 300 以上なら使える
+        for w, h in ((120, 120), (280, 60), (500, 50)):
+            with self.assertRaises(ValueError):
+                emblem.inspect(png(w, h))
+
     def test_parse_bing(self):
         html = ('x murl&quot;:&quot;https://a.example/p/1.jpg&quot; y murl&quot;:&quot;https://a.example/p/1.jpg&quot; '
                 'murl&quot;:&quot;https://b.example/bad name.png&quot; murl&quot;:&quot;https://c.example/2.webp?x=1&quot;')
@@ -188,10 +202,13 @@ class Background(unittest.TestCase):
         now = "2026-10-17T00:00:00+00:00"
         prog = ef.sync_progress({"items": {}}, self.items)
         self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["zero", "one", "brand"])   # 足りない枚数の多い順
-        prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T12:00:00+00:00")
-        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 24 時間以内の失敗は飛ばす
-        prog["items"]["zero"]["failed_at"] = "2026-10-15T12:00:00+00:00"
+        zero = next(i for i in self.items if i["name"] == "zero")
+        prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T22:00:00+00:00", material=ef.material(zero))
+        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 6 時間以内・材料が同じ失敗は飛ばす
+        prog["items"]["zero"]["material"] = "old"   # 新しい記事・手がかりが来た
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+        prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T17:00:00+00:00")
+        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 6 時間たった
 
     def test_background_records_each_item(self):
         seen = []
@@ -328,9 +345,15 @@ class Processes(unittest.TestCase):
                 self.assertIn(n["kind"], ("step", "decision", "fan", "store", "table"), p["id"])
                 self.assertIn(n.get("lane"), processes.LANES, (p["id"], n["id"]))
                 if n["kind"] == "decision":
-                    self.assertTrue(n.get("yes") and n.get("no"), (p["id"], n["id"]))
+                    self.assertTrue(n.get("no"), (p["id"], n["id"]))   # はい = 下へ続く、いいえ = 右の箱
                 if n["kind"] == "fan":
-                    self.assertTrue(all(len(x) == 3 for x in n["items"]))
+                    self.assertTrue(all(len(x) in (3, 4) for x in n["items"]))
+                    for x in n["items"][3:4] and [it[3] for it in n["items"] if len(it) == 4]:
+                        self.assertIn(x, processes.COMPONENTS, (p["id"], n["id"]))
+                for c in n.get("uses", []):
+                    self.assertIn(c, processes.COMPONENTS, (p["id"], n["id"]))
+            for c in p.get("uses", []):
+                self.assertIn(c, processes.COMPONENTS, p["id"])
                 if n["kind"] == "table":
                     self.assertTrue(all(len(x) == 2 for x in n["rows"]))
 
@@ -340,8 +363,11 @@ class Processes(unittest.TestCase):
         for z in processes.ARCH:
             for n in z["nodes"]:
                 ids.add(n["id"])
+                ids |= {f"p-{x}" for x in n.get("subs", [])}
                 if n.get("proc"):
                     self.assertIn(n["proc"], {p["id"] for p in processes.PROCESSES})
+                for c in n.get("uses", []):
+                    self.assertIn(c, processes.COMPONENTS, n["id"])
         for n, a, b, t, c in processes.EDGES:   # 矢印の両端は図の部品・色は凡例にあるもの
             self.assertIn(a, ids)
             self.assertIn(b, ids)
@@ -350,6 +376,15 @@ class Processes(unittest.TestCase):
         shown = {p["id"] for p in processes.PROCESSES if f'data-open="proc-{p["id"]}"' in out}
         self.assertEqual(shown, {p["id"] for p in processes.PROCESSES})   # 全部のプロセスが図から開ける
         self.assertIn('id="arch-edges"', out)
+        for c in processes.COMPONENTS.values():   # モデル・アルゴリズムは名前と数字つき
+            self.assertTrue(c["name"] and c["kind"] in processes.KIND_LABEL)
+        for name in ("rembg birefnet-general-lite", "YuNet", "SFace", "FASTOCTREE", "話題度 6 次元"):
+            self.assertIn(name, out)
+        d = processes.flow_diagram(next(p for p in processes.PROCESSES if p["id"] == "emblem-cron"))
+        edges = json.loads(d.split('id="dge-emblem-cron">')[1].split("</script>")[0])
+        self.assertTrue(any(x[3] == "いいえ" and x[5] for x in edges))   # 判断のいいえは破線の枝
+        self.assertIn("dn-dec", d)
+        self.assertIn("dn-fan", d)
         try:   # ARCH に置いていない新しい仕組みも「そのほか」から開ける
             processes.PROCESSES.append({"id": "zz", "name": "新しい仕組み", "en": "ZZ", "lane": "web", "trigger": "t", "summary": "s",
                                         "flow": [{"id": "a", "kind": "step", "lane": "web", "title": "x"}]})
@@ -390,7 +425,8 @@ class Processes(unittest.TestCase):
         self.assertIn('class="em-review">要確認', out)
         self.assertIn("&lt;残り&gt; 3 枚", out)   # 結果の文は転義する
         self.assertIn("10/17 06:00", out)
-        self.assertLess(out.index(">A<"), out.index(">B<"))   # 要確認が上
+        em = out[out.index('id="emblems"'):]
+        self.assertLess(em.index(">A<"), em.index(">B<"))   # 要確認が上
 
 
 
@@ -449,7 +485,7 @@ class Backend(unittest.TestCase):
     def test_render(self):
         bg = {k: {"state": "wait", "text": "<x>"} for k in ("collect", "edit", "design", "emblem")}
         rows = [{"name": "A", "section": "游戏", "bg": bg}, {"name": "B", "section": "好物", "bg": {**bg, "emblem": {"state": "failed", "text": ""}}}]
-        todo = {"emblem-cron": {"text": "足りない 2 版面を順に", "items": ["<A>", "B"]}}
+        todo = {"gate": {"text": "小元素 2 版面を Python で", "items": ["<A>", "B"]}}
         log = [{"when": "10/17 08:40", "proc": "emblem", "name": "小元素の自動補完", "level": "error", "text": "<b>x</b>"}]
         out = render._admin_backend(rows, todo, log)
         self.assertIn('class="nxs"', out)
@@ -457,10 +493,14 @@ class Backend(unittest.TestCase):
         self.assertIn('class="lg-error"', out)
         self.assertIn("&lt;b&gt;x&lt;/b&gt;", out)
         cfg = json.loads(out.split('id="bg-cfg">')[1].split("</script>")[0])
-        self.assertEqual(next(x for x in cfg if x["id"] == "emblem-cron")["items"], ["<A>", "B"])   # JS が textContent で入れる
+        self.assertEqual(next(x for x in cfg if x["id"] == "gate")["items"], ["<A>", "B"])   # JS が textContent で入れる
         self.assertTrue(all(x["slots"] for x in cfg))
         self.assertIn('class="pbar"', out)
         self.assertIn('class="lims"', out)
+        self.assertIn('class="aiu"', out)
+        self.assertIn('id="livenow"', out)   # いま動いているもの（live_status を 30 秒ごと）
+        for t, k, _ in processes.AI_TASKS:
+            self.assertIn(k, processes.AI_STATE_JA)
         for name, _, _ in processes.LIMITS:
             self.assertIn(name, out)
         self.assertIn("まだ記録がありません", render._admin_backend(rows))
@@ -485,6 +525,7 @@ class Resources(unittest.TestCase):
         import resources
         x = resources.snapshot()
         self.assertGreaterEqual(x["cpu"], 1)
+        self.assertEqual(x["disk_total"], x["disk_used"] + x["disk_free"])   # マシン全体ではなく、使える分
         for k in ("mem_total", "mem_free", "disk_total", "disk_free", "peak"):
             self.assertIn(k, x)
             self.assertGreater(x[k], 0)
@@ -508,13 +549,14 @@ class Resources(unittest.TestCase):
         res = {"sizes": {"repo": 900 * 1024 ** 2, "pages": 100 * 1024 ** 2, "emblems": 5 * 1024 ** 2, "inbox": 1, "state": 1},
                "limits": {"repo": G, "pages": G},
                "runs": {"emblem": {"name": "小元素の自動補完", "when": "10/17 09:40", "secs": 2400, "workers": 4,
-                                   "res": {"cpu": 4, "load": 3.1, "mem_total": 16 * G, "mem_free": 12 * G, "peak": 2 * G,
-                                           "disk_total": 30 * G, "disk_free": 1 * G}}},
+                                   "res": {"cpu": 4, "load": 3.1, "mem_total": 16 * G, "mem_free": 3 * G, "peak": 13 * G,
+                                           "disk_used": 11 * G, "disk_total": 40 * G, "disk_free": 29 * G}}},
                "tokens": {"edit": {"name": "AI 編集", "last": 12345, "week": 50000, "runs": 4},
                           "collect": {"name": "<収集>", "last": None, "week": 0, "runs": 0}}}
         out = render._admin_resources(res)
         self.assertIn('class="mt warn"', out)   # リポジトリ 88% は赤
-        self.assertEqual(out.count('class="mt warn"'), 1)   # ディスク（マシン全体）は赤にしない
+        self.assertEqual(out.count('class="mt warn"'), 2)   # メモリのピーク 81% も赤・ディスク 28% は赤にしない
+        self.assertIn("<b>11.00 GB</b> / 40.00 GB", out)
         self.assertIn("40 分 0 秒", out)
         self.assertIn("4 本並列", out)
         self.assertIn("12,345", out)
@@ -558,3 +600,175 @@ class CheckWhole(unittest.TestCase):
             emblem.check_whole(self._img((10, -300, 190, 200)))
         emblem.check_whole(self._img((40, 20, 160, 239)))   # 余白のある胸像は通る
 
+
+class EmblemDetail(unittest.TestCase):
+    """管理ページ「小元素の探し方」：取り方の順・次の回・助言・図。"""
+
+    def test_source_chain_matches_gather(self):
+        chain = [s for s, _ in ef.source_chain({"type": "event", "emblem_kind": "group"})]
+        self.assertNotIn("Wikidata", chain)   # グループは Wikidata を使わない（gather は本人だけ）
+        self.assertEqual(dict(ef.source_chain({"type": "game"}))["Fandom"], True)
+        self.assertEqual(dict(ef.source_chain({"type": "game"}))["Wikipedia"], False)   # 絵のキャラは目視だけ
+        self.assertEqual(dict(ef.source_chain({"type": "event"}))[ef.WEB], False)
+
+    def test_detail_retry_and_advice(self):
+        import datetime as dt
+        import digest
+        item = {"name": "G", "type": "event", "emblem_kind": "group", "emblem_who": ["a", "b", "c"]}
+        failed = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=1)).isoformat(timespec="seconds")
+        d = digest.emblem_detail(item, {"tried": {"Wikipedia": 1, "Wikimedia Commons": 22}, "failed_at": failed, "at": failed,
+                                        "note": "x"}, "failed", [], "Asia/Tokyo")
+        self.assertTrue(d["todo"].endswith("以降に再挑戦") or "新しい記事" in d["todo"])
+        self.assertIn("emblem_urls", d["advice"])   # Wiki に記事がないグループ → 公式の写真を
+        self.assertEqual(d["why"], "メンバー 3 人")
+        self.assertEqual([c["n"] for c in d["chain"]][:3], [None, 1, 22])
+        brand = digest.emblem_detail({"name": "B", "type": "product"}, {"tried": {"Wikidata": 0}, "at": failed}, "failed", [], "Asia/Tokyo")
+        self.assertIn("P154", brand["advice"])
+        ok = digest.emblem_detail({"name": "K", "type": "game", "emblem": [{}] * 6}, {}, "ok", [], "Asia/Tokyo")
+        self.assertEqual(ok["advice"], "")
+
+    def test_flow_render(self):
+        d = {"kind": "グループ", "why": "<m>", "target": 9, "have": 0, "lo": 3, "hi": 10, "faces": True, "rejects": 2,
+             "chain": [{"src": "直接指定", "auto": True, "n": None}, {"src": "Wikipedia", "auto": True, "n": 0},
+                       {"src": "Wikimedia Commons", "auto": True, "n": 22}, {"src": "Web 画像検索", "auto": False, "n": 8}],
+             "funnel": {"found": 30, "usable": 4, "auto": 0, "review": 4}, "note": "n", "at": "10/17", "todo": "次", "advice": "a"}
+        out = render._emblem_flow(d, "failed")
+        self.assertIn("ef-st-failed", out)
+        self.assertIn('class="ef-na"', out)
+        self.assertIn('class="ef-zero"', out)
+        self.assertIn('class="ef-got"', out)
+        self.assertIn("ef-eye", out)   # Web は目視だけ
+        self.assertIn("SFace", out)
+        self.assertIn("目で外した 2 枚", out)
+        self.assertIn("集めた <b>30</b>", out)
+        self.assertIn("&lt;m&gt;", out)
+        self.assertNotIn("<m>", out)
+
+
+class Ladder(unittest.TestCase):
+    """取り方の段：① 標準 → ② 名前を広げる → ③ 公式・記事のページ を、届くまで同じ回の中で上がる。"""
+
+    def setUp(self):
+        self.saved = {k: getattr(ef, k) for k in ("gather", "gather_wide", "gather_pages", "check", "auto_pick", "commit", "load_items", "_live")}
+        self.items = [{"name": "X", "type": "game", "emblem_who": ["a", "b"], "emblem": []}]
+        ef.load_items = lambda: self.items
+        ef._live = lambda *a, **k: None
+        ef.check = lambda cands, log, **k: cands
+        ef.auto_pick = lambda item, good, **k: list(range(1, len(good) + 1))
+
+        def commit(item, good, picks, log=print):
+            self.items[0]["emblem"] = self.items[0]["emblem"] + [{"subject": good[n - 1]["subject"], "image": good[n - 1]["image"]} for n in picks]
+        ef.commit = commit
+        self.calls = []
+
+        def make(label, rows):
+            def fn(item, log, tried):
+                self.calls.append(label)
+                tried[label] = len(rows)
+                return [{"subject": s, "image": f"{label}-{s}", "source": "Fandom"} for s in rows]
+            return fn
+        ef.gather, ef.gather_wide, ef.gather_pages = make("1", ["a"]), make("2", ["b"]), make("3", [])
+
+    def tearDown(self):
+        for k, v in self.saved.items():
+            setattr(ef, k, v)
+
+    def test_climbs_until_ok(self):
+        r = ef.fill_one(self.items[0], log=lambda m: None)
+        self.assertEqual(self.calls, ["1", "2"])   # ②で目標（2 人）に届いたので ③ は試さない
+        self.assertEqual(r["state"], "ok")
+        self.assertEqual([x["added"] for x in r["steps"]], [1, 1])
+
+    def test_all_steps_then_failed_with_material(self):
+        ef.gather_wide = lambda item, log, tried: self.calls.append("2") or []
+        r = ef.fill_one(self.items[0], log=lambda m: None)
+        self.assertEqual(self.calls, ["1", "2", "3"])
+        self.assertEqual(r["state"], "failed")
+        self.assertTrue(r["material"])
+        self.assertIn("新しい記事が来たらすぐ", r["note"])
+
+
+class Gate(unittest.TestCase):
+    """後台のゲート：仕事があるか・AI が要るかをプログラムだけで決める（scripts/gate.py）。"""
+
+    def setUp(self):
+        import tempfile
+        import gate
+        self.gate = gate
+        self.dir = tempfile.TemporaryDirectory()
+        self.d = pathlib.Path(self.dir.name)
+        self.state = self.d / "gate.json"
+
+    def tearDown(self):
+        self.dir.cleanup()
+
+    def test_edit_work(self):
+        (self.d / "2026-10-17.json").write_text(json.dumps({"items": [{"name": "A", "entries": [{}] * 3},
+                                                                  {"name": "B", "entries": [{}] * 2}]}), encoding="utf-8")
+        self.assertEqual(self.gate.edit_work(self.d, today="2026-10-17"), {"A": 3, "B": 2})   # edit.json なし = 全部未編集
+        (self.d / "2026-10-17.edit.json").write_text(json.dumps({"_covered": {"A": 3, "B": 1}}), encoding="utf-8")
+        self.assertEqual(self.gate.edit_work(self.d, today="2026-10-17"), {"B": 1})
+        self.assertEqual(self.gate.edit_work(self.d, today="2026-10-18"), {})   # 今日の inbox がない
+
+    def test_photo_work(self):
+        (self.d / "photos").mkdir()
+        (self.d / "photos" / "7.json").write_text("{}", encoding="utf-8")
+        (self.d / "photos" / "7.jpg").write_bytes(b"x")
+        self.assertEqual(self.gate.photo_work(self.d), ["7"])
+
+    def test_fire_only_with_work_token_and_new_sig(self):
+        calls = []
+        post = lambda url, token: calls.append((url, token)) or 200
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}, "photos": {"need": False, "sig": "p"}}}, self.state)
+        res = self.gate.fire(self.state, post=post, env={})
+        self.assertEqual(res["edit"], "トークン未設定（定時を待つ）")
+        self.assertEqual(res["photos"], "仕事なし（起こさない）")
+        self.assertEqual(calls, [])
+        res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
+        self.assertEqual(res["edit"], "Claude を起こした")
+        self.assertIn("trig_01Ly92RcW35cBwZ9amWZr11j", calls[0][0])
+        res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
+        self.assertEqual(res["edit"], "同じ仕事で起こし済み")   # 同じ指紋では 2 回起こさない
+        self.assertEqual(len(calls), 1)
+        data = self.gate.load(self.state)
+        data["jobs"]["edit"]["sig"] = "s2"   # 新しい記事が来た
+        self.gate.save(data, self.state)
+        self.assertEqual(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"], "Claude を起こした")
+
+    def test_fire_failure_is_recorded(self):
+        def post(url, token):
+            raise RuntimeError("403")
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}}}, self.state)
+        self.assertTrue(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"].startswith("起こせなかった"))
+
+
+class Rules(unittest.TestCase):
+    """前は Claude が目で見ていた判断を、数で決める規則。"""
+
+    def test_photo_problem(self):
+        self.assertEqual(face_id.photo_problem({"faces": 0}), "顔なし")
+        self.assertEqual(face_id.photo_problem({"faces": 1, "ratio": 0.05, "second": 0}), "遠景")
+        self.assertEqual(face_id.photo_problem({"faces": 2, "ratio": 0.3, "second": 0.8}), "何人も写っている")
+        self.assertIsNone(face_id.photo_problem({"faces": 2, "ratio": 0.3, "second": 0.2}))   # 後ろに小さく写っているのはよい
+
+    def test_strict_identity(self):
+        old = (face_id.engine, face_id.similarity)
+        face_id.engine = lambda: ("det", "rec")
+        face_id.similarity = lambda a, b: 1.0 if a == b else 0.0
+        try:
+            self.assertEqual(face_id.same_person([5], None, strict=True), set())   # 基準なしで 1 枚 = 本人と言えない
+            self.assertEqual(face_id.same_person([5, 5], None, strict=True), {0, 1})
+            self.assertEqual(face_id.same_person([5], None), {0})   # 手動のときは前のまま
+            self.assertEqual(face_id.same_person([5], 0, strict=True), {0})   # 記事の代表画像（基準）だけ = 本人（前は「別人」にしていた）
+            self.assertEqual(face_id.same_person([5, 7], 0, strict=True), {0})   # 基準と違う顔は落とす
+        finally:
+            face_id.engine, face_id.similarity = old
+
+    def test_hole_share(self):
+        import emblem
+        import numpy as np
+        solid = np.zeros((100, 100), bool)
+        solid[20:100, 20:80] = True
+        self.assertEqual(emblem.hole_share(solid), 0.0)
+        solid[70:100, 40:60] = False   # 服の下の方が抜けた（下の端につながる穴）
+        self.assertGreater(emblem.hole_share(solid), emblem.HOLE_MAX)

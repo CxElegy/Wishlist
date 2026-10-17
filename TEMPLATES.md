@@ -56,10 +56,11 @@ python scripts/emblem_fill.py --background --minutes 40 # 定时任务用：时�
 python scripts/emblem_fill.py --progress               # 只把 items.yaml 的现有枚数同步进进度文件（不联网）
 ```
 
-**后台模式（定时任务「小元素 · 后台补全」，每 4 小时）**：自动选图只用确かな取法——人物 / 团体 / 演员（`emblem_people: true`）必须过本人识别，
+**后台模式（GitHub Actions「后台作業」，后台ゲート判断有缺口时，不用 AI）**：自动选图只用确かな取法——人物 / 团体 / 演员（`emblem_people: true`）必须过本人识别，
 画的角色只用 `直接指定` / Fandom（名字是普通词的角色在 Wikipedia・Commons 会撞到别的东西，例：dota2 的 Juggernaut 撞到乐队照片），
 brand 先 Wikidata P154 / 官网 Logo，topic 先 Wikidata / Commons / Twemoji。**Web 图片搜索只收集、不自动选**。
-补不到目标的标「要確認」，剩下的候选重新出一览图给 AI 看图挑；没有候选的标「失敗」，24 小时内不再试。
+补不到目标的标「失敗」（24 小时后再试），没选的候选按规则写明理由（遠景・何人も写っている・別人・切り抜きの穴・重複・確かでない取り方），
+管理页「小元素の探し方」能看到；想手动补就 `emblem_fill.py "名" --commit 番号`，或把确实的图写进 `emblem_urls`。
 Wikipedia 连续 429 时那个主机休 5 分钟，不在一个关注项上耗光预算。官方立绘能直接拿到时写进 `emblem_urls`（dota2 用 Steam 的英雄立绘）。
 看过觉得不行的图（别人、抠图有洞）：从 `emblem` 里删掉，把它的原图网址写进 `emblem_reject`，后台就不会再选它。
 进度在管理页「バックグラウンド」（版面 × 流程的表、下次几点・还剩几分钟）和「小元素 → 進捗」。

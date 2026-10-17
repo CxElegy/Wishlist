@@ -283,7 +283,7 @@ class Nav(unittest.TestCase):
         self.assertIn("https://img/a.jpg", out)                       # なければ記事の写真
         self.assertIn('<i class="ic">C</i>', out)                     # それもなければ頭文字
         self.assertIn('data-hot="1"', out)                            # 今週の件数（新着順に残すとき使う）
-        self.assertIn("新着 1／2", out)
+        self.assertIn("新着 <b>1</b>／2", out)
         self.assertNotIn('class="nsubs"', out)                         # 小分類がなければ札は出さない
 
     def test_sub_chips_and_hide_setting(self):
@@ -301,3 +301,72 @@ class Nav(unittest.TestCase):
         w = {"name": "M", "section": "影视", "stories": [], "_icon": "icons/marvel.webp", "_emblems": [{"image": "emblems/x-y.webp"}]}
         self.assertEqual(render._nav_icon(w), "icons/marvel.webp")        # icon（1 作品 1 枚）が emblem より先
         self.assertEqual(render._nav_icon({**w, "_icon": "javascript:x"}), "emblems/x-y.webp")   # 変な値は使わない
+
+class LiveUpdate(unittest.TestCase):
+    """開いたままのページに新しい内容を出す（render.LIVE_JS / stamp / version.json）。"""
+
+    def test_stamp_ignores_update_time(self):
+        a, va = render.stamp(f'<meta content="{render.VER_MARK}"><b>10.17 08:35</b>x', "10.17 08:35")
+        b, vb = render.stamp(f'<meta content="{render.VER_MARK}"><b>10.17 10:35</b>x', "10.17 10:35")
+        c, vc = render.stamp(f'<meta content="{render.VER_MARK}"><b>10.17 10:35</b>y', "10.17 10:35")
+        self.assertEqual(va, vb)
+        self.assertNotEqual(va, vc)
+        self.assertIn(f'content="{va}"', a)
+        self.assertNotIn(render.VER_MARK, a)
+
+    def test_admin_has_live_and_panel_marks(self):
+        out = render.render_admin({"pipeline": {}, "items": [], "votes": {}}, {}, "10.17 08:35")
+        self.assertIn('name="wl-ver" data-page="admin"', out)
+        self.assertIn("version.json", out)
+        self.assertRegex(out, r'<section class="panel" id="status" data-h="[0-9a-f]{8}">')
+        again = render.render_admin({"pipeline": {}, "items": [], "votes": {}}, {}, "10.17 10:35")
+        mark = lambda h, i: re.search(rf'id="{i}" data-h="(\w+)"', h).group(1)
+        self.assertEqual(mark(out, "backend"), mark(again, "backend"))  # 時刻だけ違うパネルは「更新」にしない
+
+    def test_live_css_uses_tokens(self):
+        self.assertNotRegex(render.LIVE_CSS, r"#[0-9A-Fa-f]{6}\b")
+
+    def test_busy_plan(self):
+        plan = render.busy_plan({"edit": {"items": ["GTA 6"]}, "emblem-cron": {"items": []}, "collect": {"items": []}},
+                                ["GTA 6", "あつ森"], {"url": "https://x.supabase.co", "key": "k"})
+        by = {p["id"]: p for p in plan["procs"]}
+        self.assertEqual(set(by), {"edit"})   # 収集は Supabase の版面ごとの状態、ページ生成は帯なし、空の待ち行列も帯なし
+        self.assertEqual(by["edit"]["boards"], [render._wid("GTA 6")])   # 待ち行列の版面だけ
+        self.assertEqual(plan["ids"]["あつ森"], render._wid("あつ森"))
+        self.assertTrue(by["edit"]["slots"])
+        self.assertIn("rpc/live_status", render.BUSY_JS)
+        self.assertNotRegex(render.BUSY_CSS, r"#[0-9A-Fa-f]{6}\b")   # 色は版面の --acc / --bg / --fg だけ
+        self.assertIn("z-index:4", render.BUSY_CSS)   # 小元素（z-index 5）の下
+        tag = render._busy_tag(plan, "2026-10-17T00:00:00+00:00")
+        self.assertIn('id="wl-busy"', tag)
+        self.assertIn('"gen": "2026-10-17T00:00:00+00:00"', tag)
+        self.assertEqual(render._busy_tag(None, ""), "")
+
+
+
+class NavParents(unittest.TestCase):
+    """目次の小分類（板块ごとに必ず）と上下級（案 A：枝線、同じ大きさ、たたまない）。"""
+
+    def works(self):
+        return Nav.works(self)
+
+    def test_one_sub_still_shows_chips(self):
+        out = render._nav(self.works(), "2026-10-16", subs={"A<b>": "新作", "B": "新作", "C": "ドラマ"})
+        self.assertEqual(out.count('class="nsubs"'), 2)                # 小分類が 1 つだけの板块（映像）でも札を出す
+
+    def test_parent_kid_branch(self):
+        st = lambda u: {"url": u, "title": "t", "_issue": "2026-10-16"}
+        ws = [{"name": "漫威电影", "section": "影视", "stories": [st("a"), st("b")]},
+              {"name": "FROM", "section": "影视", "stories": []},
+              {"name": "Spider", "section": "影视", "stories": [st("b")]},
+              {"name": "Daredevil", "section": "影视", "stories": []}]
+        parents = {"Spider": "漫威电影", "Daredevil": "漫威电影"}
+        out = render._nav(ws, "2026-10-16", subs={"漫威电影": "映画", "FROM": "ドラマ", "Spider": "映画", "Daredevil": "ドラマ"}, parents=parents)
+        order = re.findall(r'data-for="([^"]+)"', out)
+        self.assertEqual(order[order.index("漫威电影"):order.index("漫威电影") + 3], ["漫威电影", "Spider", "Daredevil"])   # 下級は上級のすぐ下
+        self.assertEqual(out.count('class="pill kid"'), 2)
+        self.assertIn('<span class="xref">ドラマ</span>', out)        # 自分の小分類が上級と違う
+        self.assertNotIn("x kid", out)                                # 下級を特別にたたまない
+        works = render._dedupe_parents(ws, parents)                  # 同じニュースは下級だけに
+        self.assertEqual([x["url"] for x in works[0]["stories"]], ["a"])
+        self.assertEqual([x["url"] for x in works[2]["stories"]], ["b"])

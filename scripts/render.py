@@ -3,7 +3,7 @@
 版式规则：
 - 左侧目录（撑满屏幕高度）：按板块分组列出每个作品，滚动时当前所在的一项放大并换成板块色，点击直达
 - 最上面一张「头版」：最近一周的实时总览（最重要的一条做头条 + 各作品最新一条 + 最新消息列表）
-- 版面数量和顺序固定（板块 → items.yaml 顺序）；每天更新只是版面里的消息变化
+- 版面数量固定；顺序：板块固定 → 板块内按小分类的话题度 → 小分类内按作品的话题度（heat.heat_order，左边目录同顺序）
 - 每个关注项一个版面，配色取自该作品（theme.py）。所有日期的消息汇总在一起，按时间排列（新的在前）：
   - 一周内收到的直接显示（最多多高按篇幅 S / M / L，L 约一屏），卡片大小按重要度：hero 整行、lead 8 栏、普通 4 栏，每行自动补满；
     放不下时先按重要度挑出留下的，留下的再按时间排
@@ -535,7 +535,7 @@ html{scroll-behavior:smooth}
  .nav .nsec,.nav .nsubs,.nav .nlab,.nav .nmore{display:none!important}
  .nav .pill{display:flex!important;flex:none;padding:5px 10px;border:1px solid rgba(251,248,241,.35);color:var(--card);
   font:700 13px/1.3 var(--font-sans);white-space:nowrap}
- .nav .pill .no,.nav .pill .ic,.nav .pill .cnt,.nav .pill .new{display:none}
+ .nav .pill .no,.nav .pill .ic,.nav .pill .cnt,.nav .pill .new,.nav .pill .br,.nav .pill .xref{display:none}
  .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
  [data-k]{scroll-margin-top:104px}
@@ -1438,12 +1438,26 @@ def _wish_link(wishes, cls):
             f'<small>欲しい {want} 件</small></a>')
 
 
-def render_settings(items, db, updated):
+def render_settings(items, db, updated, schemes=()):
     """设置页（docs/settings.html）：改每个关注项的篇幅 S / M / L，新增 / 修改关注项。都不用口令。
     items：[{name, section, subtitle, size, fields}]（items.yaml 的顺序；fields 是网页上能改的那些字段的现值）；
     db：{url, key} Supabase 的地址和公开的 publishable key。篇幅用 get_sizes() 读、set_size() 改；
     新增 / 修改关注项是一问一答的向导（docs/additem.js），提交到 submit_item()（db/item_requests.sql），
-    下一次更新时写进 items.yaml。"""
+    下一次更新时写进 items.yaml。
+    schemes：板块ごとの「小分類の分け方」（digest.nav_scheme_rows）。選ぶと set_nav_scheme()（db/nav_schemes.sql）に保存、網页がすぐ作り直される。"""
+    sch = []
+    for r in schemes or ():
+        btns = "".join(f'<button type="button" data-v="{e(o["id"])}" aria-pressed="{str(o["id"] == r["chosen"]).lower()}">{e(o["label"])}</button>'
+                       for o in r["options"])
+        prev = "".join(f'<p class="pv" data-v="{e(o["id"])}"{"" if o["id"] == r["chosen"] else " hidden"}>'
+                       + " · ".join(f"{e(g)} <b>{n}</b>" for g, n in o["groups"]) + "</p>" for o in r["options"])
+        sch.append(f'<div class="srow" data-sec="{e(r["section"])}" style="--sc:{_sec_color(r["section"])}">'
+                   f'<div class="nm"><b>{e(_sec_name(r["section"]))}</b>{prev}</div>'
+                   f'<div class="seg wide" role="group" aria-label="{e(_sec_name(r["section"]))} 的小分类分法">{btns}</div>'
+                   f'<span class="st" aria-live="polite"></span></div>')
+    sch_html = ('<section class="schemes"><h2>目录的小分类分法</h2>'
+                '<p class="intro">每个板块选一种分法：左边目录的小分类札、板块里版面的排序都按它来。选了网页大约 1 分钟后更新。</p>'
+                + "".join(sch) + '</section>') if sch else ""
     groups = {}
     for it in items:
         groups.setdefault(it.get("section") or "其他", []).append(it)
@@ -1497,6 +1511,14 @@ def render_settings(items, db, updated):
 .seg button:disabled{{cursor:wait;opacity:.6}}
 .st{{width:64px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.05em;text-align:right}}
 .st.ok{{color:#1F9D6B}}.st.err{{color:#C0392B}}
+.schemes{{align-self:stretch;display:flex;flex-direction:column}}
+.schemes h2{{margin:8px 0 4px;font:900 20px/1 'Noto Sans SC',sans-serif;letter-spacing:.08em}}
+.srow{{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 15%,transparent)}}
+.srow .nm b{{color:var(--sc)}}
+.srow .pv{{margin:0;font-size:12px;opacity:.7}}
+.srow .pv b{{font:700 12px var(--font-mono)}}
+.seg.wide button{{width:auto;min-width:56px;padding:0 10px;font:900 13px 'Noto Sans SC',sans-serif}}
+@media (max-width:600px){{.srow{{flex-wrap:wrap}}.srow .nm{{flex-basis:100%}}}}
 .legend{{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin:0}}
 .legend dt{{font:900 13px 'JetBrains Mono',monospace}}.legend dd{{margin:0;opacity:.75}}
 .wiz{{display:flex;flex-direction:column;gap:14px;margin-top:18px;padding:18px 18px 20px;border:2px solid #1A1C22;background:#F7F5F0;scroll-margin-top:16px}}
@@ -1562,6 +1584,7 @@ def render_settings(items, db, updated):
 <p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a>　<a href="admin.html">管理页（运行状况・投票・各关注项的记事数）→</a></p>
 <p class="intro">点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。</p>
 <dl class="legend"><dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd></dl>
+{sch_html}
 <div class="cfg">{''.join(rows)}</div>
 <section class="wiz" id="wiz" aria-live="polite"><h2>＋ 新增关注项</h2><p class="hint">正在加载…</p></section>
 <p class="intro" style="font-size:12px">更新于 {e(updated)}</p>
@@ -1576,13 +1599,34 @@ def render_settings(items, db, updated):
   const show = (row, v) => row.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
   const say = (row, text, cls) => {{ const st = row.querySelector(".st"); st.textContent = text; st.className = "st " + (cls || ""); }};
   if (!CFG.url || !CFG.key) {{
-    document.querySelectorAll(".row").forEach(r => {{ r.querySelectorAll(".seg button").forEach(b => b.disabled = true); say(r, "未连数据库", "err"); }});
+    document.querySelectorAll(".row, .srow").forEach(r => {{ r.querySelectorAll(".seg button").forEach(b => b.disabled = true); say(r, "未连数据库", "err"); }});
     return;
   }}
   rpc("get_sizes").then(r => r.ok ? r.json() : []).then(list => {{
     const now = Object.fromEntries((list || []).map(x => [x.item, x.size]));
     document.querySelectorAll(".row").forEach(r => {{ if (now[r.dataset.item]) show(r, now[r.dataset.item]); }});
   }}).catch(() => {{}});
+  // 小分類の分け方（板块ごと）
+  rpc("get_nav_schemes").then(r => r.ok ? r.json() : []).then(list => {{
+    (list || []).forEach(x => {{ const row = document.querySelector(`.srow[data-sec="${{CSS.escape(x.section)}}"]`); if (row && row.querySelector(`[data-v="${{CSS.escape(x.scheme)}}"]`)) pick(row, x.scheme); }});
+  }}).catch(() => {{}});
+  const pick = (row, v) => {{
+    row.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+    row.querySelectorAll(".pv").forEach(p => p.hidden = p.dataset.v !== v);
+  }};
+  document.querySelector(".schemes")?.addEventListener("click", async ev => {{
+    const btn = ev.target.closest(".seg button");
+    if (!btn || btn.getAttribute("aria-pressed") === "true") return;
+    const row = btn.closest(".srow"), before = row.querySelector('.seg button[aria-pressed="true"]')?.dataset.v;
+    const btns = row.querySelectorAll(".seg button");
+    pick(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, "保存中…");
+    try {{
+      const r = await rpc("set_nav_scheme", {{p_section: row.dataset.sec, p_scheme: btn.dataset.v}});
+      if (r.ok) say(row, "已保存 ✓", "ok");
+      else {{ if (before) pick(row, before); say(row, "没存上", "err"); }}
+    }} catch (_) {{ if (before) pick(row, before); say(row, "连不上", "err"); }}
+    btns.forEach(b => b.disabled = false);
+  }});
   document.querySelector(".cfg").addEventListener("click", async ev => {{
     const edit = ev.target.closest(".edit");
     if (edit) {{ window.wlEditItem && window.wlEditItem(edit.closest(".row").dataset.item); return; }}
@@ -2216,16 +2260,56 @@ NAV_STYLES = {
 .nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
 .nav .nsec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
 .nav .nbody{position:absolute;left:0;right:0;top:52px}
+/* 上下級（案 A）：下級は上級の駅から出た枝線（拐角 └）の上の駅。大きさは普通の駅と同じ */
+.nav .pill.kid{padding-left:52px}
+.nav .pill.kid .br{position:absolute;left:14.5px;top:-17px;width:18px;bottom:50%;border-left:2px solid var(--sc);border-bottom:2px solid var(--sc);z-index:-1}
+.nav .pill.kid::after{left:30px}
+.nav .pill.kid.on{padding-left:76px}
+.nav .pill.kid.on::before{inset:4px -2px 4px 48px}
+.nav .pill.kid.on .ic{left:26px}
+.nav .pill .xref{flex:none;font:700 10px var(--font-mono);letter-spacing:.06em;color:var(--sc);border:1px solid var(--sc);padding:0 4px}
+.nav .pill.on .xref{color:var(--gold);border-color:var(--gold)}
 /* 小分類の札（横並び）：いまの板块に小分類が 2 つ以上あれば必ず出す。押すとその小分類の最初の作品へ */
-.nav .nsubs{display:flex;flex-wrap:wrap;gap:4px 6px;margin:0 0 6px 2px}
-.nav .nsubs a{display:flex;align-items:center;gap:5px;height:22px;padding:0 7px;border:1px solid var(--hair);color:rgba(26,28,34,.7);
- font:700 11px/1 var(--font-sans);white-space:nowrap;text-decoration:none}
-.nav .nsubs a small{font:700 10px var(--font-mono)}
+.nav .nsubs{display:flex;flex-wrap:wrap;gap:5px 7px;margin:0 0 6px 4px}
+.nav .nsubs a{display:flex;align-items:center;gap:5px;height:22px;padding:0 8px;border:1.5px solid rgba(26,28,34,.35);color:rgba(26,28,34,.75);
+ font:800 11px/1 var(--font-sans);white-space:nowrap;text-decoration:none;transform:skewX(var(--skew))}
+.nav .nsubs a small{font:12px var(--font-num)}
 .nav .nsubs a:hover{color:var(--ink);border-color:var(--ink)}
-.nav .nsubs a.on{background:var(--sc);border-color:var(--sc);color:#FFF}
-.nav .nlab{height:20px;display:flex;align-items:flex-end;padding:0 0 2px 2px;font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--sc)}
-.nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;font:800 13px var(--font-sans);color:var(--sc);text-decoration:none}
-.nav .nmore:hover{text-decoration:underline}
+.nav .nsubs a.on{background:var(--sc);border-color:var(--ink);color:#FFF;box-shadow:2px 2px 0 var(--ink)}
+.nav .nlab{height:20px;display:flex;align-items:flex-end;gap:4px;padding:0 0 2px 6px;font:900 11px var(--font-sans);letter-spacing:.14em;color:var(--sc);
+ transform:rotate(-2deg);transform-origin:left bottom}
+.nav .nlab::before{content:"／";font-weight:900}
+.nav .nlab b{margin-left:4px;font:14px/1 var(--font-num);letter-spacing:.02em;opacity:.8}
+.nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;text-decoration:none}
+.nav .nmore{font:900 12px var(--font-sans);color:var(--sc);letter-spacing:.04em}
+.nav .nmore:hover{color:var(--alert)}
+/* ---------- P5 の手ざわり：揃えすぎない ----------
+   板块の行：日本語の札は少し傾け、後ろに英字（GAMES…）を大きな透かしで。件数の数字は Anton */
+.nav .nsec{position:relative;isolation:isolate}
+.nav .nsec .tg{font-size:15px;padding:1px 13px;transform:skewX(var(--skew)) rotate(-2deg);box-shadow:2px 2px 0 var(--ink)}
+.nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) rotate(-3deg) scale(1.22);box-shadow:4px 4px 0 var(--ink)}
+.nav .nsec .en{position:absolute;right:46px;top:2px;z-index:-1;font:34px/1 var(--font-num);letter-spacing:.01em;color:var(--sc);opacity:.16;
+ transform:skewX(var(--skew)) rotate(-3deg);white-space:nowrap;pointer-events:none}
+.nav .nslot.cur .nsec .en{opacity:.26}
+.nav .nsec .cnt b{font:19px/1 var(--font-num);color:var(--ink);margin:0 1px}
+.nav .nslot.cur .nsec .cnt b{color:var(--sc)}
+/* 作品の行：名前を 1 行ごとに少しずつずらし・傾ける（線路の駅は揃えたまま）。+N は Anton */
+.nav .nbody .pill .nm{transform-origin:left center}
+.nav .nbody .pill:nth-of-type(3n+1) .nm{transform:rotate(-.9deg)}
+.nav .nbody .pill:nth-of-type(3n+2) .nm{transform:translateX(4px) rotate(.5deg)}
+.nav .nbody .pill:nth-of-type(3n) .nm{transform:translateX(1px) rotate(-.3deg)}
+.nav .pill .new{font:14px/1 var(--font-num);letter-spacing:.02em;color:rgba(26,28,34,.42)}
+/* 読んでいる作品：黒い斜めの箱の右端に黄色の斜線、名前は大きく・赤い影。頭の 1 文字だけさらに大きく */
+.nav .nbody .pill.on .nm{transform:rotate(-2deg) translateY(-1px)}
+.nav .pill.on{font-size:18px}
+.nav .pill.on .nm{text-shadow:2px 2px 0 var(--alert);letter-spacing:.01em}
+.nav .pill.on .nm::first-letter{font-size:1.3em}
+.nav .pill.on .cnt{text-shadow:none;letter-spacing:.1em}
+.nav .pill.on .new{font-size:20px;color:var(--gold);text-shadow:2px 2px 0 var(--alert)}
+.nav .pill.on::after{display:block;content:"";position:absolute;left:auto;right:4px;top:-3px;bottom:-3px;width:9px;height:auto;margin:0;border:0;
+ background:var(--gold);transform:skewX(-24deg);box-shadow:2px 2px 0 var(--ink)}
+.nav .pill.on .new{margin-right:14px}
+.nav .nhead .pill.on::after{display:block}
 .nav .navwish{margin:8px 8px 0 0}
 """,
 }
@@ -2251,26 +2335,32 @@ def _nav_icon(w):
     return _img_url(t) if t and str(t).startswith("https://") else None
 
 
-def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE):
-    """左侧目录（v6）：板块ごとの枠に作品を並べる（小分類があれば小分類ごと）。どこを隠すかは NAV_JS が画面の高さで決める。
-    subs：{作品: 小分類}（items.yaml の sub）。hide：隠し始める作品の数（"auto" なら画面の高さで決める）。"""
+def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=None, sub_heat=None):
+    """左侧目录（v6）：板块ごとの枠に作品を並べる（小分類ごと）。どこを隠すかは NAV_JS が画面の高さで決める。
+    subs：{作品: 小分類}（items.yaml の sub）。hide：隠し始める作品の数（"auto" なら画面の高さで決める）。
+    parents：{下級: 上級}（items.yaml の parent）。下級は上級の駅のすぐ下に、上級の小分類で、枝線（拐角 └）つきで並ぶ（案 A）。
+    上下級は同じ関注項なので、下級を小さくしたり特別にたたんだりしない。
+    並びは works の順（digest が heat.heat_order で「小分類の話題度 → 作品の話題度」に並べて渡す）。sub_heat：{(板块, 小分類): 話題度}。"""
     groups = {}
     for w in works:
         groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     page_no = {w["name"]: i + 1 for i, w in enumerate(works)}   # 版面の順（読んだ印・新着順の同点はこの順）
-    subs = subs or {}
+    subs, parents, sub_heat = subs or {}, parents or {}, sub_heat or {}
 
-    def pill(w, sc):
+    def pill(w, sc, sub="", kid=False):
         recent = sum(1 for x in w["stories"] if x["_issue"] >= cutoff)
         icon = _nav_icon(w)
         ic = (f'<i class="ic has" style="--img:url({e(urllib.parse.quote(icon, safe=":/?&=%#@+,;~"))})"></i>' if icon
               else f'<i class="ic">{e(w["name"][:1])}</i>')
-        return (f'<a class="pill" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" '
-                f'data-sub="{e(subs.get(w["name"], ""))}" href="#{_wid(w["name"])}"><i class="no">{page_no[w["name"]]:02d}</i>{ic}'
-                f'<span class="nm">{e(w["name"])}<small class="cnt">{f"今週 {recent} 件" if recent else "新着なし"}</small></span>'
-                + (f'<span class="new">+{recent}</span>' if recent else "") + '</a>')
+        own = subs.get(w["name"], "")
+        xref = f'<span class="xref">{e(own)}</span>' if kid and own and own != sub else ""   # 自分の小分類が上級と違うときは小さく
+        return (f'<a class="pill{" kid" if kid else ""}" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" '
+                f'data-sub="{e(sub)}" href="#{_wid(w["name"])}"><i class="no">{page_no[w["name"]]:02d}</i>{ic}'
+                + ('<span class="br"></span>' if kid else "")
+                + f'<span class="nm">{e(w["name"])}<small class="cnt">{f"今週 {recent} 件" if recent else "新着なし"}</small></span>'
+                + xref + (f'<span class="new">+{recent}</span>' if recent else "") + '</a>')
 
     head = [f'<a class="pill" style="--sc:#D7261E" data-for="front" data-n="0" href="#front"><i class="no">00</i>'
             f'<i class="ic">★</i><span class="nm">トップ<small class="cnt">FRONT PAGE</small></span></a>']
@@ -2284,22 +2374,34 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE):
         icon = (f'<img class="si" src="{TWEMOJI.format(SECTION_ICON[name])}" alt="" loading="lazy">' if name in SECTION_ICON else "")
         nn = sum(1 for w in ws if any(x["_issue"] >= cutoff for x in w["stories"]))
         tabs.append(f'<a class="tg" style="--sc:{sc}" data-sec="{e(name)}" href="#{_wid(ws[0]["name"])}"><span>{e(_sec_name(name))}</span></a>')
-        sub_order = list(dict.fromkeys(subs.get(w["name"], "") for w in ws))
+        # 上下級：上級が同じ板块にいる下級は、上級のすぐ下に並べる（小分類も上級に従う）
+        names = {w["name"] for w in ws}
+        is_kid = lambda w: parents.get(w["name"]) in names and parents.get(w["name"]) != w["name"]
+        rows = []   # (作品, 目次での小分類, 下級か)
+        for w in ws:
+            if is_kid(w):
+                continue
+            rows.append((w, subs.get(w["name"], ""), False))
+            rows += [(k, subs.get(w["name"], ""), True) for k in ws if is_kid(k) and parents[k["name"]] == w["name"]]
+        sub_order = list(dict.fromkeys(sb for _, sb, _ in rows))
         body = ""
-        if len(sub_order) > 1:   # 小分類が 2 つ以上：札を出し、作品は小分類ごとにまとめる（小見出しつき）
-            first = {s: next(w for w in ws if subs.get(w["name"], "") == s) for s in sub_order}
+        if any(sub_order):   # 小分類があれば（1 つだけでも）必ず札を出し、作品は小分類ごとにまとめる（小見出しつき）
+            first = {sb: next(w for w, x, _ in rows if x == sb) for sb in sub_order}
             body += ('<div class="nsubs">' + "".join(
-                f'<a data-sub="{e(s)}" href="#{_wid(first[s]["name"])}">{e(s or "その他")}'
-                f'<small>{sum(1 for w in ws if subs.get(w["name"], "") == s)}</small></a>' for s in sub_order) + '</div>')
-            for s in sub_order:
-                body += f'<div class="nlab" data-sub="{e(s)}">{e(s or "その他")}</div>'
-                body += "".join(pill(w, sc) for w in ws if subs.get(w["name"], "") == s)
+                f'<a data-sub="{e(sb)}" href="#{_wid(first[sb]["name"])}">{e(sb or "その他")}'
+                f'<small>{sum(1 for _, x, _ in rows if x == sb)}</small></a>' for sb in sub_order) + '</div>')
+            for sb in sub_order:
+                hs = sub_heat.get((name, sb))
+                body += (f'<div class="nlab" data-sub="{e(sb)}">{e(sb or "その他")}'
+                         + (f'<b title="小分類の話題度">{int(hs)}</b>' if isinstance(hs, (int, float)) else "") + '</div>')
+                body += "".join(pill(w, sc, x, kid) for w, x, kid in rows if x == sb)
         else:
-            body += "".join(pill(w, sc) for w in ws)
+            body += "".join(pill(w, sc, x, kid) for w, x, kid in rows)
         body += f'<a class="nmore x" href="#{_wid(ws[0]["name"])}"></a>'
         slots.append(f'<div class="nslot" style="--sc:{sc}" data-sec="{e(name)}">'
                      f'<a class="nsec" href="#{_wid(ws[0]["name"])}">{icon}<span class="tg"><span>{e(_sec_name(name))}</span></span>'
-                     f'<span class="cnt">新着 {nn}／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
+                     f'<span class="en" aria-hidden="true">{e(_sec_en(name))}</span>'
+                     f'<span class="cnt">新着 <b>{nn}</b>／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
                      f'<div class="nbody">{body}</div></div>')
     hide = "auto" if str(hide).lower() == "auto" else max(1, int(hide or NAV_HIDE))
     return (f'<nav class="nav" aria-label="目次" data-hide="{hide}">'
@@ -2408,9 +2510,9 @@ NAV_JS = """
     lk = k; lsub = sub;
     const H = Math.floor(rail.getBoundingClientRect().height), n = S.length;
     if (!n || !H) return;
-    const L = S.map(s => s.pills), subsK = k >= 0 && S[k].chips.length > 1;
+    const L = S.map(s => s.pills), subsK = k >= 0 && S[k].chips.length > 0;
     let chipsH = 0;
-    if (subsK) { S[k].nsubs.classList.remove('x'); chipsH = S[k].nsubs.offsetHeight + 6; }   // 札の高さは実際に測る
+    if (subsK) { S[k].subs.classList.remove('x'); chipsH = S[k].subs.offsetHeight + 6; }   // 札の高さは実際に測る
     const labsH = k >= 0 ? S[k].labs.length * LAB_H : 0;
     const hOf = (x, i, r) => !x ? MIN_H : SEC_H + (i === k ? 6 : 2) + x.items.length * r + (x.more ? MORE_H : 0)
       + (i === k ? EXTRA + (x.labs ? labsH : 0) + (x.chips ? chipsH : 0) : 0);
@@ -2516,15 +2618,29 @@ NAV_JS = """
 """
 
 
+def _dedupe_parents(works, parents):
+    """同じニュースを 2 回出さない（PRODUCT.md 原則 4）：下級（スパイダーマン）のニュースは上級（漫威电影）の match にも当たりやすい。
+    両方に入ったら下級の版面だけに残し、上級の版面からは外す。"""
+    by = {w["name"]: w for w in works}
+    for kid, par in (parents or {}).items():
+        if kid in by and par in by and kid != par:
+            urls = {x["url"] for x in by[kid]["stories"]}
+            by[par]["stories"] = [x for x in by[par]["stories"] if x["url"] not in urls]
+    return works
+
+
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE, icons=None):
+           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE, icons=None,
+           busy=None, generated=None, parents=None, sub_heat=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
-    icons：{作品: 目次のアイコン}（items.yaml の icon.image）；subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
+    sub_heat：{(板块, 小分類): 話題度}（heat.group_scores。目次の小見出しに出す）。order は heat.heat_order の並び。
+    parents：{下級: 上級}（items.yaml の parent。上下級に同じニュースが入ったら下級だけに）。icons：{作品: 目次のアイコン}（items.yaml の icon.image）；subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
-    heat：{作品: 話題度}（heat.compute 的结果，版面的见出し和トップの右の列に出す）。"""
+    heat：{作品: 話題度}（heat.compute 的结果，版面的见出し和トップの右の列に出す）。
+    busy：busy_plan() の結果（版面の「更新中」の帯）；generated：生成時刻（UTC の ISO。帯が「もう終わった回」を見分ける）。"""
     latest = issues[0]
-    works = collect(issues, order)
+    works = _dedupe_parents(collect(issues, order), parents)
     for w in works:
         w["_today"] = latest["date"]
         w["_size"] = (sizes or {}).get(w["name"], "M")
@@ -2552,26 +2668,205 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
 {LIKEFX_HEAD if fb else ""}
+{_live_head("index")}{f"<style>{BUSY_CSS}</style>" if busy else ""}
 <script>{EMB_HEAD_JS}</script>
 </head>
 <body>
 <div class="page">
 <header class="mast">
-<div class="mtitle"><h1>ウォッチリスト通信</h1><span class="stamp">2 時間ごとに自動更新</span></div>
+<div class="mtitle"><h1>ウォッチリスト通信</h1><span class="stamp">新着は開いたまま自動で表示</span></div>
 <div class="tools"><div class="meta"><small>更新</small><b>{e(updated)}</b></div>
 {_wish_link(wishes, "mastwish")}
 <a class="mastset" href="settings.html" title="設定">⚙ 設定</a></div>
 </header>
-{_nav(works, latest['date'], wishes, picks, subs, nav_hide)}
+{_nav(works, latest['date'], wishes, picks, subs, nav_hide, parents, sub_heat)}
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>
 <script>{FIT_JS}</script>
 {f"<script>{LIKEFX_JS}</script><script>{VOTE_JS.replace('__CFG__', json.dumps(fb))}</script>" if fb else ""}
 <script>{EMB_JS}</script>
+<script>{LIVE_JS}</script>
+{_busy_tag(busy, generated)}
 </body>
 </html>
 """
+
+
+# ---------- 自動更新：開いたままのページに新しい内容を出す（簡報・管理ページ）----------
+# 生成のたびに docs/version.json に「ページごとの内容の指紋」を書く（digest.write_page → stamp）。
+# ページは 1 分ごとにそれを読み、自分の指紋（<meta name="wl-ver">）と違えば、
+# 操作していないとき（20 秒触っていない・タブが裏にある）に読み直す。読み直しの前後で見ていた場所を保ち、
+# 簡報では新しく増えた記事に「たった今」、管理ページでは中身が変わったパネルに「更新」を付ける。
+# 入力中・ダイアログを開いているあいだは待つ。下の帯の「今すぐ表示」でもすぐ読み直せる。
+VER_MARK = "__WL_VER__"
+LIVE_EVERY = 60  # 秒：version.json を見に行く間隔
+LIVE_IDLE = 20   # 秒：この間なにも触っていなければ自動で読み直す
+
+LIVE_CSS = """
+.wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
+ transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
+ font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
+.wl-live[hidden]{display:none}
+.wl-live span{flex:1 1 auto;min-width:0}
+.wl-live button{flex:none;border:0;cursor:pointer;background:var(--gold);color:var(--ink);padding:4px 12px;font:700 13px/1.4 var(--font-sans)}
+.wl-live .x{background:none;color:var(--card);padding:4px 6px}
+.fresh{outline:3px solid var(--gold);outline-offset:3px}
+.fresh-tag{position:absolute;top:6px;right:6px;z-index:6;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
+ box-shadow:2px 2px 0 var(--ink);font:900 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.08em;pointer-events:none}
+section.fresh{position:relative}
+@media (prefers-reduced-motion:no-preference){.fresh{animation:wlfresh 1.6s ease-out 3}}
+@keyframes wlfresh{50%{outline-color:var(--rose)}}
+"""
+
+LIVE_JS = """
+(function(){
+  var M=document.querySelector('meta[name="wl-ver"]');if(!M||!window.fetch||!window.JSON)return;
+  var PAGE=M.getAttribute('data-page'),VER=M.content,KEY='wl-live:'+PAGE,EVERY=__EVERY__*1000,IDLE=__IDLE__*1000;
+  var ss={get:function(k){try{return JSON.parse(sessionStorage.getItem(k)||'null');}catch(e){return null;}},
+          set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
+  var touched=Date.now(),pending=null,bar=null;
+  ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
+  function keys(){var o={};Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){o[a.getAttribute('href')]=1;});return o;}
+  function marks(){var o={};Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){o[s.id]=s.getAttribute('data-h');});return o;}
+  function anchor(){var l=document.querySelectorAll('section[id]');for(var i=0;i<l.length;i++){var r=l[i].getBoundingClientRect();if(r.bottom>0)return [l[i].id,r.top];}return null;}
+  function toast(msg,act){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
+    bar.textContent='';var t=document.createElement('span');t.textContent=msg;bar.appendChild(t);
+    if(act){var b=document.createElement('button');b.type='button';b.textContent='今すぐ表示';b.onclick=go;bar.appendChild(b);}
+    var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label','閉じる');x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
+    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},8000);}
+  // 読み直したあと：見ていた場所に戻し、増えた記事・変わったパネルに印を付ける
+  var was=ss.get(KEY);ss.del(KEY);
+  if(location.search.indexOf('wlv=')>=0&&history.replaceState)history.replaceState(null,'',location.pathname+location.hash);
+  if(was){
+    if(was.to&&was.to!==VER&&!was.retry){was.retry=1;ss.set(KEY,was);location.replace(location.pathname+'?wlv='+encodeURIComponent(was.to)+location.hash);return;}
+    if(was.to&&was.to!==VER)ss.set(KEY+':skip',was.to);  // CDN がまだ古い：この版は諦めて次の版を待つ
+    function to(y){try{scrollTo({top:y,behavior:'instant'});}catch(e){scrollTo(0,y);}}
+    function back(){var s=was.at&&document.getElementById(was.at[0]);if(s)to(s.getBoundingClientRect().top+pageYOffset-was.at[1]);else if(was.y)to(was.y);}
+    if('scrollRestoration' in history)history.scrollRestoration='manual';
+    back();addEventListener('load',back);
+    var n=0;
+    Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){if(was.keys&&!was.keys[a.getAttribute('href')]){var c=a.closest('article');
+      if(c&&!c.classList.contains('fresh')){c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='たった今';c.appendChild(t);n++;}}});
+    var m=0;
+    if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
+      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='更新';s.appendChild(t);m++;}});
+    toast(n?'新しい記事が '+n+' 件 届きました':m?m+' か所が新しくなりました':'最新の内容にしました');
+  }
+  function busy(){var a=document.activeElement;return !!document.querySelector('dialog[open]')||!!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))||!!a&&a.isContentEditable;}
+  function go(){if(!pending)return;ss.set(KEY,{to:pending,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});
+    if('scrollRestoration' in history)history.scrollRestoration='manual';location.reload();}
+  function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
+  function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
+      var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
+      if(pending!==v){pending=v;toast('新しい内容があります（操作をやめると自動で表示）',true);}maybe();}).catch(function(){});}
+  setInterval(check,EVERY);setInterval(maybe,5000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
+  setTimeout(check,3000);
+})();
+""".replace("__EVERY__", str(LIVE_EVERY)).replace("__IDLE__", str(LIVE_IDLE))
+
+
+# 版面の「更新中」の帯：裏の仕組みがその版面を作り直しているあいだ、**その版面だけ**、上の枠に細い帯を往復させ、
+# 予想の進み具合を塗り、「あと約 N 分」を小さく出す。色は版面の --acc。
+# 重なり：帯（z-index 4）は版面の上、小元素（.emb、z-index 5）の下。小元素は版面の外にはみ出して帯に重なってよい。
+#   ニュース収集：版面ごとの実際の状態を Supabase の live_status()（digest.live_mark が書く）から 30 秒ごとに読む。
+#     探し始め →「記事を探しています」/ 新着なし → 帯が消える / 新着あり →「新着 N 件 · 反映まであと約 N 分」。
+#   AI 編集・小元素：Claude の定時タスクはブラウザから見えないので、定時（UTC）からの経過で推定。
+#     対象は待ち行列（digest.backend_todo）の版面だけ（小元素は同時に動く 4 版面）。ページがその定時より後に作られていれば終わったとみなす。
+#   ページ生成（コードの変更）は版面の中身を変えないので帯は出さない（LIVE_JS の帯で新しい版を知らせる）。
+BUSY_MIN = {"edit": 30, "emblem-cron": 45}  # 定時からいつもかかる時間（分）
+BUSY_BOARDS = {"edit": 8, "emblem-cron": 4}  # 待ち行列の先頭から何版面に出すか（小元素は 4 本並列）
+BUSY_LABEL = {"edit": "AI が編集しています", "emblem-cron": "小元素を集めています"}
+
+BUSY_CSS = """
+.sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:4;pointer-events:none;overflow:visible}
+.busy .bf{position:absolute;left:0;top:0;bottom:0;width:var(--bp,0%);background:color-mix(in srgb,var(--acc) 45%,transparent);transition:width 1s}
+.busy .br{position:absolute;top:0;bottom:0;width:24%;left:0;background:linear-gradient(90deg,transparent,var(--acc),transparent)}
+.busy .bt{position:absolute;left:18px;top:-10px;white-space:nowrap;background:var(--bg);color:var(--fg);border:1.5px solid var(--acc);
+ padding:0 8px;font:700 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.04em}
+@media (prefers-reduced-motion:no-preference){.busy .br{animation:wlbusy 1.8s ease-in-out infinite alternate}}
+@keyframes wlbusy{to{left:76%}}
+"""
+
+BUSY_JS = """
+(function(){
+  var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen)||0,live=[],MIN=60000;
+  function lastSlot(sl,now){var pv=0;for(var k=-1;k<=0;k++)sl.forEach(function(s){var t=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]);if(t<=+now&&t>pv)pv=t;});return pv;}
+  // ニュース収集：版面ごとの実際の状態（Supabase）。このページより前に始まった回はもう反映済み
+  function read(){if(document.hidden||!B.url||!B.key)return;
+    fetch(B.url+'/rest/v1/rpc/live_status',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:'{}'})
+      .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){live=l||[];paint();}).catch(function(){});}
+  function paint(){var now=Date.now(),on={};
+    function put(id,o){if(id&&(!on[id]||o.start<on[id].start))on[id]=o;}
+    live.forEach(function(x){var st=Date.parse(x.started_at),eta=Date.parse(x.eta_at)||0;if(st<GEN-MIN)return;
+      if(x.state==='fetch')put(B.ids[x.board],{start:st,text:'記事を探しています',pc:null});
+      else if(x.state==='found'){var left=eta-now;put(B.ids[x.board],{start:st,pc:eta>st?(now-st)/(eta-st):null,
+        text:'新着 '+x.found+' 件 · '+(left>MIN?'反映まであと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});}});
+    B.procs.forEach(function(p){var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return;
+      var left=pv+p.min*MIN-now;p.boards.forEach(function(id){put(id,{start:pv,pc:(now-pv)/(p.min*MIN),
+        text:p.label+' · '+(left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});});});
+    Array.prototype.forEach.call(document.querySelectorAll('section.sec[id]'),function(sec){var o=on[sec.id],bar=sec.querySelector(':scope>.busy');
+      if(!o){if(bar)bar.remove();return;}
+      if(!bar){bar=document.createElement('div');bar.className='busy';bar.setAttribute('role','status');
+        bar.innerHTML='<i class="bf"></i><i class="br"></i><span class="bt"></span>';sec.insertBefore(bar,sec.firstChild);}
+      bar.style.setProperty('--bp',o.pc==null?'0%':Math.max(3,Math.min(97,o.pc*100)).toFixed(1)+'%');
+      bar.querySelector('.bt').textContent=o.text;});}
+  paint();read();setInterval(paint,20000);setInterval(read,30000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)read();});
+})();
+"""
+
+
+def _busy_tag(busy, generated):
+    if not busy:
+        return ""
+    cfg = json.dumps({**busy, "gen": generated or ""}, ensure_ascii=False).replace("</", "<\\/")
+    return f'<script type="application/json" id="wl-busy">{cfg}</script><script>{BUSY_JS}</script>'
+
+
+def busy_plan(todo=None, names=(), db=None):
+    """版面の「更新中」の帯の設定（BUSY_JS が読む）。todo = digest.backend_todo（AI 編集・小元素が次に処理する版面）；
+    names = 全部の関注項の名前（Supabase の版面名 → 版面の id）；db = {url, key}（公開の publishable key）。"""
+    by = {p["id"]: p for p in processes.PROCESSES}
+    todo = todo or {}
+    procs = []
+    for pid in ("edit", "emblem-cron"):
+        p = by.get(pid)
+        boards = [_wid(n) for n in (todo.get(pid) or {}).get("items", [])][:BUSY_BOARDS[pid]]
+        if p and boards:
+            procs.append({"id": pid, "label": BUSY_LABEL[pid], "min": BUSY_MIN[pid],
+                          "slots": [list(x) for x in processes.slots(p)], "boards": boards})
+    return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
+            "ids": {n: _wid(n) for n in names}, "procs": procs}
+
+
+def _live_head(page):
+    """<head> に入れる：自分の指紋（digest.write_page の stamp が VER_MARK を置き換える）と帯・印の CSS。"""
+    return f'<meta name="wl-ver" data-page="{e(page)}" content="{VER_MARK}"><style>{LIVE_CSS}</style>'
+
+
+def stamp(html_, *volatile):
+    """生成した HTML に指紋を入れて (html, 指紋) を返す。volatile（「更新 10.17 08:35」の時刻など）だけ違うときは同じ指紋。"""
+    body = html_
+    for v in volatile:
+        body = body.replace(v, "") if v else body
+    ver = hashlib.sha1(body.encode("utf-8")).hexdigest()[:12]
+    return html_.replace(VER_MARK, ver), ver
+
+
+def _section_marks(html_, updated=""):
+    """管理ページの各パネルに data-h（中身の指紋）を付ける。読み直したとき、変わったパネルに「更新」を出すため。
+    パネルの中に <section> が入れ子になる（全体の構成図）ので、次のパネルの始まりまでを 1 つと数える。"""
+    parts = re.split(r'(?=<section class="panel[^"]*" id="[^"]+">)', html_)
+    out = []
+    for part in parts:
+        m = re.match(r'<section class="panel([^"]*)" id="([^"]+)">', part)
+        if m:
+            h = hashlib.sha1((part.replace(updated, "") if updated else part).encode("utf-8")).hexdigest()[:8]
+            part = f'<section class="panel{m.group(1)}" id="{m.group(2)}" data-h="{h}">' + part[m.end():]
+        out.append(part)
+    return "".join(out)
 
 
 # ---------- 話題度の分析ページ（docs/heat.html）----------
@@ -3261,14 +3556,25 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                         f'{e(_sec_name(sec or "其他"))}</th></tr>')
         cells = "".join(f'<td class="bgc s-{r["bg"][k]["state"]}" data-label="{e(t)}"><b>{BG_STATES[r["bg"][k]["state"]]}</b>'
                         f'<small>{e(r["bg"][k]["text"])}</small></td>' for k, t, _ in BG_COLS)
-        body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a></td>{cells}</tr>')
+        thumbs = "".join(f'<img src="{e(u)}" alt=""{" class=fit" if sh in ("logo", "icon") else ""}>'
+                         for u, sh in (t if isinstance(t, (list, tuple)) else (t, "") for t in r.get("thumbs") or []))
+        body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a>'
+                    + (f'<span class="bg-th">{thumbs}</span>' if thumbs else "") + f'</td>{cells}</tr>')
+        d = r["bg"]["emblem"].get("detail")
+        if d:
+            body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"])}</td></tr>')
     logs = "".join(f'<li class="lg-{e(x.get("level") or "info")}"><time>{e(x.get("when") or "")}</time>'
                    f'<span class="lg-p">{e(x.get("name") or "")}</span><span class="lg-t">{e(x.get("text") or "")}</span></li>'
                    for x in (log or []))
     cfg = json.dumps(plan, ensure_ascii=False).replace("</", "<\\/")
-    return (f'<h3 class="h3">次の実行 <small>近い順 · 時刻は日本時間 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
+    return ('<h3 class="h3">いま動いているもの <small>裏で処理中の版面と段 · 30 秒ごとに読み直す</small></h3>'
+            '<div id="livenow" class="livenow"><p class="empty">読み込み中…</p></div>'
+            f'<h3 class="h3">次の実行 <small>近い順 · 時刻は日本時間 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
             f'<ol class="nxs">{"".join(cards)}</ol>'
             + '<h3 class="h3">リソース <small>サーバーの残り · 容量 · トークン</small></h3>' + _admin_resources(res) +
+            '<h3 class="h3">AI を使うか <small>前に AI でやっていた判断ごとに · 規則にできたものは AI なし（トークン 0）</small></h3>'
+            '<ul class="aiu">' + "".join(f'<li class="aiu-{k}"><span class="aiu-s">{e(processes.AI_STATE_JA[k])}</span><b>{e(t)}</b><small>{e(why)}</small></li>'
+                                         for t, k, why in processes.AI_TASKS) + '</ul>'
             '<h3 class="h3">並列と制限 <small>同時にいくつ動かすか · それ以上速くできない理由</small></h3>'
             '<ul class="lims">' + "".join(f'<li><b>{e(a)}</b><span class="lim-n">{e(b)}</span><small>{e(c)}</small></li>'
                                           for a, b, c in processes.LIMITS) + '</ul>'
@@ -3308,10 +3614,10 @@ def _admin_resources(res):
     rows = []
     for proc, r in (res.get("runs") or {}).items():
         x = r.get("res") or {}
-        mem = (_meter("メモリ（使用中）", x["mem_total"] - x.get("mem_free", 0), x["mem_total"],
-                      f'空き {_mb(x.get("mem_free", 0))} · この処理のピーク {_mb(x.get("peak", 0))}') if x.get("mem_total") else "")
-        disk = (_meter("ディスク（マシン全体）", x["disk_total"] - x.get("disk_free", 0), x["disk_total"],
-                       f'残り {_mb(x.get("disk_free", 0))} · Claude のセッションは別に割り当ての上限がある', warn_at=None)
+        mem = (_meter("メモリ（この処理のピーク）", x.get("peak", 0), x["mem_total"],
+                      f'終わったときの空き {_mb(x.get("mem_free", 0))}') if x.get("mem_total") else "")
+        used = x.get("disk_used", x.get("disk_total", 0) - x.get("disk_free", 0))   # 古い記録（disk_used なし）はマシン全体の値
+        disk = (_meter("ディスク（このセッション）", used, used + x.get("disk_free", 0), f'残り {_mb(x.get("disk_free", 0))}')
                 if x.get("disk_total") else "")
         secs = r.get("secs")
         meta = " · ".join(v for v in (e(r.get("when") or ""), f'{secs // 60} 分 {secs % 60} 秒' if isinstance(secs, int) else "",
@@ -3330,6 +3636,41 @@ def _admin_resources(res):
             '<p class="mt-x">Claude API を使ったときは自動で数える。定時タスク（サブスク枠）は Claude が終わりに目安を書く。'
             'サブスク枠の残りはプログラムから読めないので <a href="https://claude.ai/settings/usage" target="_blank" rel="noopener noreferrer">Claude の設定 → 使用量</a> で。</p></div>'
             '<div><h3 class="h3">サーバー <small>仕組みごとの最近の実行 · 終わったときの様子</small></h3>' + srv + "</div></div>")
+
+
+def _emblem_flow(d, state):
+    """「小元素の探し方」：種類 → 目標 → 取り方（順に、試した数）→ 確かめる → 結果 → 次にやること を横一列の図に。
+    閉じているときは 1 行の要約（いまどこで止まっているか）。"""
+    chain = []
+    for c in d.get("chain") or []:
+        n = c.get("n")
+        cls = "na" if n is None else ("zero" if not n else "got")
+        val = "未" if n is None else f"{n}"
+        chain.append(f'<li class="ef-{cls}{"" if c.get("auto") else " ef-eye"}" title="{"自動で選べる" if c.get("auto") else "一覧で目で選ぶだけ"}">'
+                     f'<b>{e(c["src"])}</b><i>{val}</i>{"" if c.get("auto") else "<small>目視</small>"}</li>')
+    f = d.get("funnel") or {}
+    funnel = (f'<span>集めた <b>{f.get("found", 0)}</b></span><span>使える <b>{f.get("usable", 0)}</b></span>'
+              f'<span>書いた <b>{f.get("added", f.get("auto", 0))}</b></span>') if f else ""
+    rej = f.get("rejected") or {}
+    if rej:   # 規則で外した理由（前は目で見ていた）
+        funnel += "".join(f'<span class="ef-rj">{e(k)} <b>{v}</b></span>' for k, v in sorted(rej.items(), key=lambda kv: -kv[1]))
+    check = ("規則：顔の大きさ・人数・本人（YuNet + SFace cos ≥ 0.363）・切り抜きの穴" if d.get("faces") else "規則：取り方の決まり・同じ画像") + \
+            (f" · 目で外した {d['rejects']} 枚" if d.get("rejects") else "")
+    pct = min(100, round(100 * (d.get("have") or 0) / max(1, d.get("target") or 1)))
+    tried = [c for c in d.get("chain") or [] if c.get("n") is not None]
+    now_at = ("、".join(f'{c["src"]} {c["n"]}' for c in tried) or "まだ試していない")
+    summary = (f'<span class="ef-k">{e(d.get("kind") or "")}</span>{e(d.get("why") or "")} → 目標 {d.get("target")} 枚'
+               f' · 取り方：{e(now_at)} · <b class="ef-next">次：{e(d.get("todo") or "")}</b>')
+    return (f'<details class="ef ef-st-{e(state)}"><summary>{summary}</summary><div class="ef-flow">'
+            f'<div class="ef-box"><small>① 種類と目標</small><b>{e(d.get("kind") or "")}：{e(d.get("why") or "")}</b>'
+            f'<span>目標 {d.get("target")} 枚（{d.get("lo")}〜{d.get("hi")}）</span></div>'
+            f'<div class="ef-box ef-wide"><small>② 取り方（上から順に・足りるまで · 数字 = 集めた候補）</small><ol class="ef-chain">{"".join(chain)}</ol></div>'
+            f'<div class="ef-box"><small>③ 確かめる</small><b>{e(check)}</b>' + (f'<span class="ef-fun">{funnel}</span>' if funnel else "") + '</div>'
+            f'<div class="ef-box"><small>④ 結果{(" · " + e(d["at"])) if d.get("at") else ""}</small>'
+            f'<b>{d.get("have")} / {d.get("target")} 枚</b><span class="em-bar"><i style="width:{pct}%"></i></span>'
+            + (f'<span>{e(d["note"])}</span>' if d.get("note") else "") + '</div>'
+            f'<div class="ef-box ef-todo"><small>⑤ 次にやること</small><b>{e(d.get("todo") or "")}</b>'
+            + (f'<span class="ef-adv">{e(d["advice"])}</span>' if d.get("advice") else "") + "</div></div></details>")
 
 
 def _lane_short(lane):
@@ -3465,6 +3806,50 @@ ADMIN_PAGE_CSS = """
 .tok li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--hair);font-size:13px}
 .tok b{font:700 15px var(--font-mono);text-align:right}.tok b.na{font:700 12px var(--font-sans);opacity:.6}
 .tok small{grid-column:1/-1;text-align:right;font:500 var(--fs-label) var(--font-sans);opacity:.8}
+.bg-th{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.bg-th img{width:26px;height:26px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}.bg-th img.fit{object-fit:contain;border-radius:4px;padding:2px}
+.bgm tr.bgx td{padding:0 6px 10px;border-bottom:1px solid var(--hair)}
+.bgm tr:has(+ .bgx) td{border-bottom:0}
+.ef summary{cursor:pointer;font:500 12px/1.6 var(--font-sans);list-style:none;padding:4px 8px;background:var(--sheet);border-left:4px solid var(--hair)}
+.ef summary::-webkit-details-marker{display:none}
+.ef summary::before{content:"▸ 小元素の探し方　";font-weight:900}.ef[open] summary::before{content:"▾ 小元素の探し方　"}
+.ef-st-ok summary{border-left-color:var(--good)}.ef-st-review summary{border-left-color:var(--gold)}
+.ef-st-failed summary{border-left-color:var(--alert)}.ef-st-running summary{border-left-color:var(--rose)}
+.ef-k{font:700 var(--fs-label) var(--font-mono);padding:0 5px;margin-right:6px;background:var(--ink);color:var(--card)}
+.ef-next{font-weight:900}
+.ef-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 22px;padding:10px 4px 4px}
+.ef-box{position:relative;flex:1 1 150px;display:flex;flex-direction:column;gap:3px;padding:8px 10px;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);min-width:0}
+.ef-box:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);font:900 15px var(--font-mono);color:var(--rose)}
+.ef-wide{flex:3 1 330px}
+.ef-box>small{font:700 var(--fs-label) var(--font-sans);opacity:.75}.ef-box>b{font:900 13px/1.45 var(--font-sans)}
+.ef-box>span{font:500 12px/1.5 var(--font-sans)}
+.ef-chain{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px}
+.ef-chain li{position:relative;display:flex;align-items:baseline;gap:5px;padding:2px 7px;border:1.5px solid var(--ink);font-size:12px}
+.ef-chain li:not(:last-child)::after{content:"›";position:absolute;right:-11px;font:900 13px var(--font-mono);color:var(--rose)}
+.ef-chain b{font:700 12px var(--font-sans)}.ef-chain i{font:700 12px var(--font-mono);font-style:normal}
+.ef-chain small{font:700 var(--fs-tag) var(--font-sans);padding:0 4px;border:1px dashed currentColor}
+.ef-got{background:color-mix(in srgb,var(--good) 18%,var(--card))}.ef-got i{color:var(--good)}
+.ef-zero{opacity:.75}.ef-zero i{color:var(--alert)}
+.ef-na{opacity:.45;border-style:dotted!important}
+.ef-eye{border-style:dashed!important}
+.ef-fun{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:var(--fs-label)!important}
+.ef-rj{color:var(--alert)}.ef-todo{border-color:var(--rose)}.ef-adv{color:var(--alert);font-weight:700!important}
+@media (max-width:860px){.bgm tr.bgx{display:block;padding:0 0 10px}.bgm tr.bgx td{display:block;padding:0}.ef-box:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%)}.ef-flow{gap:20px}.ef-box{flex-basis:100%}}
+.aiu{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px 18px}
+.aiu li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:7px 10px;border-left:4px solid var(--hair);background:var(--card)}
+.aiu b{font:900 13px/1.4 var(--font-sans)}.aiu small{font:500 var(--fs-label)/1.55 var(--font-sans);opacity:.85}
+.aiu-s{justify-self:start;font:700 var(--fs-label) var(--font-sans);padding:0 6px;border:1.5px solid currentColor}
+.aiu-rule{border-left-color:var(--good)}.aiu-rule .aiu-s{color:var(--good)}
+.aiu-gate{border-left-color:var(--gold)}.aiu-gate .aiu-s{color:var(--ink);background:var(--gold);border-color:var(--ink)}
+.aiu-ai{border-left-color:var(--rose)}.aiu-ai .aiu-s{color:var(--rose)}
+.livenow{margin:0 0 20px}
+.livenow ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.livenow li{position:relative;display:flex;flex-direction:column;gap:2px;padding:8px 10px 12px;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);overflow:hidden}
+.livenow li b{font:900 13px/1.35 var(--font-sans)}.livenow li small{font:500 var(--fs-label)/1.5 var(--font-sans)}
+.livenow li .ln-p{font:700 var(--fs-label) var(--font-sans);color:var(--rose)}
+.livenow li::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;
+ background:repeating-linear-gradient(-45deg,var(--good) 0 6px,color-mix(in srgb,var(--good) 60%,var(--card)) 6px 12px);background-size:17px 17px;animation:pb-move 1.2s linear infinite}
+@media (prefers-reduced-motion:reduce){.livenow li::after{animation:none}}
 .lims{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px 18px}
 .lims li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair)}
 .lims b{font:900 13px/1.4 var(--font-sans)}.lim-n{font:700 12px var(--font-mono);padding:0 6px;background:var(--ink);color:var(--card);white-space:nowrap}
@@ -3587,14 +3972,17 @@ ADMIN_PAGE_JS = """
     runs.slice(0,12).forEach(function(r,i){var li=el('li',i?null:'next'),tm=el('time',null,hm(r.t));tm.appendChild(el('small',null,left(r.t-now)));li.appendChild(tm);
       var d=el('div');d.appendChild(el('b',null,r.p.name));var first=!seen[r.p.id];seen[r.p.id]=1;
       d.appendChild(el('span','q-t',first||r.p.id!=='emblem-cron'?r.p.text:'（前の回の続き）'));
-      if(first&&r.p.items.length){var w=el('span','q-i');r.p.items.forEach(function(n,j){w.appendChild(el('i',null,(r.p.id==='emblem-cron'?(j+1)+'. ':'')+n));});d.appendChild(w);}
+      if(first&&r.p.items.length){var w=el('span','q-i');r.p.items.forEach(function(n,j){w.appendChild(el('i',null,(r.p.id==='gate'?(j+1)+'. ':'')+n));});d.appendChild(w);}
       li.appendChild(d);q.appendChild(li);});
     if(!runs.length)q.appendChild(el('li','empty','予定がありません。'));}
   tick();setInterval(tick,60000);
-  // GitHub Actions：ワークフローごとに最新の実行
+  // GitHub Actions：ワークフローごとに最新の実行（3 分ごとに読み直す。GitHub は 1 時間 60 回まで）
   var runs=document.getElementById('runs');
+  function loadRuns(){
   fetch('https://api.github.com/repos/'+CFG.repo+'/actions/runs?per_page=60').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
     var seen={},ul=el('ul','runs');
+    Array.prototype.forEach.call(document.querySelectorAll('.nx .lvx'),function(x){x.remove();});
+    Array.prototype.forEach.call(document.querySelectorAll('.nx.run'),function(x){x.classList.remove('run');});
     (j.workflow_runs||[]).forEach(function(w){
       var f=(w.path||'').split('/').pop();if(!CFG.flows[f]||seen[f])return;seen[f]=1;
       var li=el('li'),a=el('a',null,CFG.flows[f]);var http=/^https:\\/\\/github\\.com\\//.test(w.html_url||'');
@@ -3603,16 +3991,29 @@ ADMIN_PAGE_JS = """
       var c=w.status!=='completed'?['実行中','wait']:w.conclusion==='success'?['成功','good']:w.conclusion==='cancelled'||w.conclusion==='skipped'?['取消','idle']:['失敗','bad'];
       li.appendChild(badge(c[0],c[1]));li.appendChild(el('small',null,when(w.created_at)+' · '+(w.event||'')));ul.appendChild(li);
       var card=document.querySelector('.nx[data-wf="'+f+'"]');if(card&&w.status!=='completed')card.classList.add('run');
-      var lv=document.querySelector('.nx[data-wf="'+f+'"] .lv');if(lv){lv.insertBefore(el('small',null,when(w.created_at)),lv.firstChild);lv.insertBefore(badge(c[0],c[1]),lv.firstChild);}
+      var lv=document.querySelector('.nx[data-wf="'+f+'"] .lv');if(lv){var s1=el('small','lvx',when(w.created_at)),b1=badge(c[0],c[1]);b1.classList.add('lvx');lv.insertBefore(s1,lv.firstChild);lv.insertBefore(b1,lv.firstChild);}
     });
     runs.textContent='';if(ul.children.length)runs.appendChild(ul);else fail(runs,'最近の実行がありません。');
   }).catch(function(){fail(runs,'GitHub から読めませんでした（1 時間に 60 回までの制限かもしれません）。');});
-  if(!CFG.url||!CFG.key){['reqs','photos'].forEach(function(id){fail(document.getElementById(id),'データベースに未接続です。');});return;}
+  }
+  loadRuns();setInterval(function(){if(!document.hidden)loadRuns();},180000);
+  if(!CFG.url||!CFG.key){['reqs','photos','livenow'].forEach(function(id){var b=document.getElementById(id);if(b)fail(b,'データベースに未接続です。');});return;}
   function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:'{}'})
     .then(function(r){if(!r.ok)throw 0;return r.json();});}
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
+  // いま動いているもの：live_status()（収集・小元素の補完が版面ごとに書く）を 30 秒ごとに
+  var LP={collect:'ニュース収集',emblem:'小元素の自動補完',edit:'AI 編集'};
+  function liveState(x){if(x.state==='fetch')return '記事を探している';if(x.state==='found')return '新着 '+x.found+' 件 · 網页に反映待ち';
+    var m=/^emblem:(.*)$/.exec(x.state||'');if(m)return '取り方 '+m[1]+'（'+x.found+' / 3 段目）';return x.state;}
+  function loadLive(){var box=document.getElementById('livenow');if(!box)return;
+    rpc('live_status').then(function(list){box.textContent='';if(!list||!list.length){box.appendChild(el('p','empty','いまは何も動いていません（次の実行は下の「次の実行」）。'));return;}
+      var ul=el('ul');list.forEach(function(x){var li=el('li');li.appendChild(el('span','ln-p',LP[x.proc]||x.proc));li.appendChild(el('b',null,x.board));
+        li.appendChild(el('small',null,liveState(x)+' · '+when(x.started_at)+'から'));ul.appendChild(li);});box.appendChild(ul);})
+    .catch(function(){fail(box,'読めませんでした。');});}
+  loadLive();setInterval(loadLive,30000);
   // 設定ページの依頼（ウォッチ項目の追加・修正）：待ちのものと、3 日以内に処理したもの
-  var reqs=document.getElementById('reqs');
+  var reqs=document.getElementById('reqs'),photos=document.getElementById('photos');
+  function loadDb(){
   rpc('list_item_requests').then(function(list){
     reqs.textContent='';if(!list||!list.length){fail(reqs,'依頼はありません。');return;}
     var ul=el('ul','qlist');list.forEach(function(x){var li=el('li');
@@ -3621,7 +4022,6 @@ ADMIN_PAGE_JS = """
     reqs.appendChild(ul);
   }).catch(function(){fail(reqs,'読めませんでした。');});
   // ウィッシュリストの写真の受付
-  var photos=document.getElementById('photos');
   rpc('get_photo_inbox').then(function(list){
     photos.textContent='';if(!list||!list.length){fail(photos,'写真はありません。');return;}
     var ul=el('ul','qlist');list.slice(0,12).forEach(function(x){var li=el('li','ph');
@@ -3630,6 +4030,10 @@ ADMIN_PAGE_JS = """
       li.appendChild(el('small',null,when(x.created_at)+(x.note?' · '+x.note:'')));ul.appendChild(li);});
     photos.appendChild(ul);
   }).catch(function(){fail(photos,'読めませんでした。');});
+  }
+  // 依頼と写真：1 分ごとに読み直す（タブが裏にあるあいだは休み、戻ったらすぐ）
+  loadDb();setInterval(function(){if(!document.hidden)loadDb();},60000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)loadDb();});
 })();
 """
 
@@ -3642,7 +4046,7 @@ def render_admin(data, db, updated):
                       "repo": (db or {}).get("repo") or "CxElegy/Wishlist", "flows": ADMIN_WORKFLOWS,
                       "tz": (db or {}).get("tz") or "Asia/Tokyo"},
                      ensure_ascii=False).replace("</", "<\\/")
-    return f"""<!doctype html>
+    return _section_marks(f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -3652,11 +4056,12 @@ def render_admin(data, db, updated):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}</style>
+{_live_head("admin")}
 </head>
 <body>
 <div class="page">
 <header class="mast">
-<div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信</span></div>
+<div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
 <div class="tools"><div class="meta"><small>更新</small><b>{e(updated)}</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
@@ -3665,7 +4070,7 @@ def render_admin(data, db, updated):
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
 <section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
 <section class="panel" id="procs"><h2 class="sh"><span>全体の構成</span><small>どこで何が動き、データがどう流れるか · 部品をクリックで詳しい流れ</small></h2>{processes.render()}</section>
-<section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いたときに読み込み</small></h2>
+<section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>
 <div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">写真の受付</h3><div id="photos"><p class="empty">読み込み中…</p></div></div></div></section>
@@ -3676,6 +4081,7 @@ def render_admin(data, db, updated):
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
 <script>{processes.JS}</script>
+<script>{LIVE_JS}</script>
 </body>
 </html>
-"""
+""", updated)

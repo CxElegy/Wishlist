@@ -54,6 +54,7 @@ STATE_DIR = ROOT / "state"
 FACTS_FILE = STATE_DIR / "facts.json"
 THEMES_FILE = STATE_DIR / "themes.json"
 SIZES_FILE = STATE_DIR / "sizes.json"
+NAV_SCHEMES_FILE = STATE_DIR / "nav_schemes.json"   # 板块ごとに選んだ小分類の分け方（Supabase の nav_schemes 表の写し）
 HEAT_FILE = STATE_DIR / "heat_signals.json"  # 話題度用的外部数据（维基浏览量、Steam 在线、AniList / TMDB 人气），见 heat.py
 SIZES_PUSHED_FILE = STATE_DIR / "sizes_pushed.json"   # items.yaml 里的 size 上次同步进数据库时是什么
 INBOX_DIR = ROOT / "inbox"
@@ -1280,6 +1281,54 @@ def load_feedback():
 SIZE_STORIES = {"S": 3, "M": 5, "L": 8}   # 篇幅 → 每期最多几条报道（网页上直接显示多高见 render.SIZE_HEIGHT）
 
 
+def load_nav_schemes(settings):
+    """板块ごとに選んだ「小分類の分け方」。⚙ 設定ページで選ぶ → Supabase の nav_schemes 表（db/nav_schemes.sql）。
+    SUPABASE_SERVICE_KEY があれば表を読み、state/nav_schemes.json に写しを残す（読めなければ前回の写し）。
+    候補（settings.sub_schemes）にない値・選んでいない板块は候補の 1 番目。返り値：{板块: 分け方の id}。"""
+    chosen = load_json(NAV_SCHEMES_FILE) or {}
+    try:
+        got = supabase("nav_schemes?select=section,scheme")
+        if got is not None:
+            chosen = {r["section"]: r["scheme"] for r in got if r.get("section") and r.get("scheme")}
+            save_json(NAV_SCHEMES_FILE, chosen)
+    except Exception as err:
+        hint = "（还没建表？在 Supabase 的 SQL Editor 里运行 db/nav_schemes.sql）" if "PGRST205" in str(err) else ""
+        print(f"  [小分類の分け方] 读数据库失败，用上次存的{hint}：{err}", file=sys.stderr)
+    out = {}
+    for sec, schemes in (settings.get("sub_schemes") or {}).items():
+        ids = [x.get("id") for x in schemes or [] if isinstance(x, dict) and x.get("id")]
+        if ids:
+            out[sec] = chosen.get(sec) if chosen.get(sec) in ids else ids[0]
+    return out
+
+
+def nav_scheme_rows(settings, items):
+    """設定ページの「小分類の分け方」：板块ごとに、候補の分け方と、それぞれで分けたときの小分類（件数つき）、いま選んでいるもの。"""
+    chosen = load_nav_schemes(settings)
+    rows = []
+    for sec, schemes in (settings.get("sub_schemes") or {}).items():
+        ins = [i for i in items if section_of(i) == sec]
+        opts = []
+        for x in schemes or []:
+            if not (isinstance(x, dict) and x.get("id")):
+                continue
+            groups = {}
+            for i in ins:
+                g = sub_of(i, x["id"]) or "その他"
+                groups[g] = groups.get(g, 0) + 1
+            opts.append({"id": x["id"], "label": x.get("label") or x["id"], "groups": list(groups.items())})
+        if opts:
+            rows.append({"section": sec, "chosen": chosen.get(sec, opts[0]["id"]), "options": opts})
+    return rows
+
+
+def sub_of(item, scheme):
+    """この関注項の小分類（選んだ分け方で）。subs に無ければ旧い sub、それも無ければ subs の最初の値。"""
+    subs = item.get("subs") if isinstance(item.get("subs"), dict) else {}
+    v = subs.get(scheme) if scheme else None
+    return str(v or item.get("sub") or next(iter(subs.values()), "") or "")
+
+
 @functools.lru_cache(maxsize=None)
 def load_sizes():
     """每个关注项的篇幅 S / M / L，在数据库 sizes 表里管理（建表语句在 db/sizes.sql），网页上不显示。
@@ -1832,6 +1881,8 @@ def backend_todo(items, rows, run):
         "emblem-cron": {"text": (f"足りない {len(queue)} 版面を順に" if queue else "全部そろっている")
                         + (f" · 要確認 {len(review)}" if review else ""), "items": queue},
         "photos": {"text": "受付の写真があれば認識して愿望清单へ", "items": []},
+        "gate": {"text": (f"小元素 {len(queue)} 版面を Python で（AI なし）" if queue else "小元素の仕事なし")
+                 + (f" · AI 編集の仕事 {len(edit)} 版面" if edit else "") + " · AI が要る仕事があるときだけ Claude", "items": queue},
     }
 
 
@@ -1865,6 +1916,8 @@ def backend_cells(items, rows, latest, run):
     by_name = {i["name"]: i for i in items}
     eprog = run.get("items") or {}
     queue = run.get("queue") or []
+    import emblem_fill
+    raw = emblem_fill.load_progress().get("items") or {}   # 時刻（UTC）・failed_at・漏斗の数字はこちらから
     md = (lambda d: f"{int(d[5:7])}/{int(d[8:10])}") if day else (lambda d: "")
     for r in rows:
         name, item = r["name"], by_name.get(r["name"]) or {}
@@ -1892,6 +1945,78 @@ def backend_cells(items, rows, latest, run):
             pos = queue.index(name) + 1 if name in queue else None
             cells["emblem"] = ("wait", f"{count} · 順番 {pos} 番目" if pos else count)
         r["bg"] = {k: {"state": a, "text": b} for k, (a, b) in cells.items()}
+        r["bg"]["emblem"]["detail"] = emblem_detail(item, raw.get(name) or {}, st, queue, run.get("tz"))
+        r["thumbs"] = [(x["image"], x.get("shape") or "") for x in item.get("emblem") or [] if isinstance(x, dict)
+                       and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))][:10]
+
+
+def _next_slot(after, slots):
+    """after（UTC の datetime）より後の、いちばん近い定時（UTC の [時, 分] のリスト）。"""
+    best = None
+    for k in range(0, 3):
+        for h, m in slots:
+            t = (after + dt.timedelta(days=k)).replace(hour=h, minute=m, second=0, microsecond=0)
+            if t > after and (best is None or t < best):
+                best = t
+    return best
+
+
+def emblem_detail(item, entry, state, queue, tz_name=None):
+    """管理ページ「小元素の探し方」：その版面で、何を目標に、どの取り方を順に試し、何枚残り、次に何をするか。
+    取り方の列 = emblem_fill.source_chain（試した数は進捗の tried）。次の回 = 定時（processes の emblem-cron）。"""
+    import emblem_fill
+    import processes
+    tz = zoneinfo.ZoneInfo(tz_name or "Asia/Tokyo")
+    st = emblem_fill.status(item) if item else {}
+    kind = st.get("kind", "topic")
+    tried = entry.get("tried") or {}
+    chain = [{"src": src, "auto": auto, "n": tried.get(src)} for src, auto in emblem_fill.source_chain(item or {})]
+    who = item.get("emblem_who") or []
+    why = {"person": "本人の別の写真", "group": f"メンバー {len(who)} 人" if who else "メンバー全員",
+           "character": (f"出演者 {len(who)} 人" if item.get("emblem_people") else f"キャラ {len(who)} 人") if who else "主役級のキャラ",
+           "brand": "公式ロゴ", "topic": "主題を表す物"}.get(kind, "")
+    now = dt.datetime.now(dt.timezone.utc)
+    slots = processes.slots(next(p for p in processes.PROCESSES if p["id"] == "emblem-cron")) or [[h, 47] for h in range(24)]
+    after = now
+    if state == "failed" and entry.get("failed_at"):
+        try:
+            after = max(now, dt.datetime.fromisoformat(entry["failed_at"]) + dt.timedelta(hours=emblem_fill.RETRY_HOURS))
+        except ValueError:
+            pass
+    nxt = _next_slot(after, slots) if slots and state != "ok" else None
+    when = nxt.astimezone(tz).strftime("%m/%d %H:%M") if nxt else ""
+    found = sum(v for v in tried.values() if v)
+    if state == "ok":
+        todo = "そろっている（足りなくなったら次の回に）"
+    elif state == "review":
+        todo = f"一覧から手で選べる（python scripts/emblem_fill.py \"{item.get('name')}\" --commit 番号）"
+    elif state == "failed":
+        todo = f"新しい記事・手がかりが来たらすぐ、来なくても {when} に再挑戦"
+    else:
+        pos = queue.index(item.get("name")) + 1 if item.get("name") in queue else None
+        todo = f"次の回 {when} に" + (f"（順番 {pos} 番目）" if pos else "")
+    advice = ""
+    if state in ("failed", "review") or (state == "running" and entry.get("at")):
+        if item.get("emblem_urls"):
+            advice = ""
+        elif emblem_fill.needs_face(item) and sum(tried.get(s) or 0 for s in ("Wikidata", "Wikipedia")) <= 1 and not st.get("have"):
+            advice = "Wikipedia・Wikidata に本人の記事・写真がない → 公式サイトの写真を emblem_urls に書くと確実"
+        elif kind == "character" and not item.get("emblem_people") and not item.get("emblem_fandom"):
+            advice = "キャラの Fandom（emblem_fandom）か公式の立ち絵（emblem_urls）を書くと自動で埋まる"
+        elif kind == "brand":
+            advice = "Wikidata に公式ロゴ（P154）がない → 公式サイトのロゴを emblem_urls に"
+        elif kind == "topic" and not item.get("emblem_icon"):
+            advice = "emblem_icon に絵文字を書くと Twemoji で埋まる"
+        elif found and not (entry.get("funnel") or {}).get("added"):
+            advice = "候補はあるが規則で外れた（理由は ③）→ 確かな画像を emblem_urls に書くと確実"
+    try:
+        at = dt.datetime.fromisoformat(entry["at"]).astimezone(tz).strftime("%m/%d %H:%M") if entry.get("at") else ""
+    except ValueError:
+        at = ""
+    return {"kind": emblem_fill.KIND_JA.get(kind, kind), "why": why, "target": st.get("target"), "have": st.get("have"),
+            "lo": st.get("lo"), "hi": st.get("hi"), "chain": chain, "funnel": entry.get("funnel") or {},
+            "faces": emblem_fill.needs_face(item) if item else False, "rejects": len(item.get("emblem_reject") or []),
+            "note": entry.get("note") or "", "at": at, "todo": todo, "advice": advice}
 
 
 def emblem_progress(items, tz):
@@ -1907,7 +2032,7 @@ def emblem_progress(items, tz):
             return None
     last = prog.get("last_run") or {}
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
-    return {"queue": [i["name"] for i in emblem_fill.due(prog, items, now)], "ok": prog["summary"]["ok"], "total": prog["summary"]["total"], "started": local(prog.get("started")),
+    return {"queue": [i["name"] for i in emblem_fill.due(prog, items, now)], "tz": str(tz), "ok": prog["summary"]["ok"], "total": prog["summary"]["total"], "started": local(prog.get("started")),
             "last_run": local(last.get("at")), "minutes": last.get("minutes"), "done": len(last.get("done") or []),
             "items": {n: {"state": x["state"], "note": x.get("note", ""), "at": local(x.get("at")),
                           "tried": x.get("tried") or {}} for n, x in prog["items"].items()}}
@@ -1927,18 +2052,38 @@ def write_page():
     analysis = heat.analyze(items, sorted(INBOX_DIR.glob("????-??-??.json")), issues, load_json(HEAT_FILE) or {},
                             issues[0]["date"])
     heat_scores = analysis["items"]
-    html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
+    # 目次と版面の並び：板块の中は「小分類の話題度」→「作品の話題度」の順（heat.heat_order）。
+    # 小分類の話題度は、中の作品の材料をまとめて 1 つとして測る（足し算ではない）。下級は上級の小分類に入れて測る
+    names = {i["name"] for i in items}
+    schemes = load_nav_schemes(settings)   # 板块ごとに選んだ小分類の分け方（⚙ 設定ページ）
+    own_sub = {i["name"]: sub_of(i, schemes.get(section_of(i))) for i in items}
+    placed = [{"name": i["name"], "section": section_of(i), "parent": i.get("parent"),
+               "sub": own_sub[i["parent"]] if i.get("parent") in names else own_sub[i["name"]]} for i in items]
+    groups = {}
+    for i in placed:
+        groups.setdefault((i["section"], i["sub"]), []).append(i["name"])
+    sub_heat = heat.group_scores(items, sorted(INBOX_DIR.glob("????-??-??.json")), issues, load_json(HEAT_FILE) or {},
+                                 issues[0]["date"], groups)
+    order = heat.heat_order(placed, heat_scores, sub_heat, list(render.SECTIONS))
+    adm = admin_data(items, issues, analysis, tz, updated)  # 管理ページの数字（「待ち行列」は簡報の「更新中」の帯にも使う）
+    generated = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    html_ = render.render(issues, settings.get("nav_style", "line"), order, updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
                           {i["name"]: render.template_for(i) for i in items}, themes,
                           (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
-                          {i["name"]: str(i["sub"]) for i in items if i.get("sub")}, settings.get("nav_hide", render.NAV_HIDE),
-                          {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)})
+                          {n: v for n, v in own_sub.items() if v}, settings.get("nav_hide", render.NAV_HIDE),
+                          {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
+                          render.busy_plan(adm.get("todo"), [i["name"] for i in items],
+                                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
+                          {i["name"]: str(i["parent"]) for i in items if i.get("parent")},
+                          {k: v["score"] for k, v in sub_heat.items()})
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
+    html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
-    (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, [i["name"] for i in items]), updated),
+    (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, order), updated),
                                         encoding="utf-8")
     (DOCS_DIR / "themes.html").write_text(render.render_themes(  # テーマ見本（30 のテーマと 👍 の演出）
         [{"name": i["name"], "motif": render.template_for(i), "theme": i.get("theme")} for i in items], updated), encoding="utf-8")
@@ -1953,10 +2098,12 @@ def write_page():
           "size": load_sizes().get(i["name"], "M"),
           "fields": {**{k: i[k] for k in ITEM_FIELDS if k in i and k != "size"}, "section": section_of(i)}} for i in items],
         {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "langs": settings.get("news_langs") or []},
-        updated), encoding="utf-8")
-    (DOCS_DIR / "admin.html").write_text(render.render_admin(  # 管理ページ（見るだけ）
-        admin_data(items, issues, analysis, tz, updated),
-        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), encoding="utf-8")
+        updated, nav_scheme_rows(settings, items)), encoding="utf-8")
+    admin_html, ver_admin = render.stamp(render.render_admin(  # 管理ページ（見るだけ）
+        adm, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), updated)
+    (DOCS_DIR / "admin.html").write_text(admin_html, encoding="utf-8")
+    # 開いたままのページはこれを 1 分ごとに読み、自分の指紋と違えば新しい内容を出す（render.LIVE_JS）
+    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "updated": updated})
     (DOCS_DIR / ".nojekyll").touch()
 
 
@@ -2042,6 +2189,25 @@ def update_heat():
 
 
 COLLECT_WORKERS = 6   # 收集时同时抓几个关注项（GitHub Actions 的机器 4 核；等网络为主，所以比核数多一点）
+LIVE_RUN_MIN = 9      # 收集开始到新网页出现大约几分钟（Actions 约 7 分 + Pages 约 1 分）：版面「更新中」条的预计时间
+
+
+def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"):
+    """简报网页的版面「更新中」条（render.BUSY_JS 读 Supabase 的 live_status()）：这个版面现在在做什么。
+    state：fetch（正在找新记事）/ found（有新记事、等网页更新）；None = 删掉这一行（没有新记事，条消失）。
+    board=None 且 state=None：删掉这个 proc 的全部行（每次收集开始时清空）。失败也不影响收集本身。"""
+    try:
+        if state is None:
+            q = f"proc=eq.{proc}" + (f"&board=eq.{urllib.parse.quote(board)}" if board else "")
+            supabase(f"live_status?{q}", method="DELETE")
+            return
+        now = dt.datetime.now(dt.timezone.utc)
+        supabase("live_status?on_conflict=board,proc", {
+            "board": board, "proc": proc, "state": state, "found": found,
+            "started_at": (started or now).isoformat(), "eta_at": eta.isoformat() if eta else None,
+            "updated_at": now.isoformat()}, prefer="resolution=merge-duplicates,return=minimal", method="POST")
+    except Exception as err:  # noqa: BLE001  条只是给人看的，出错不能让收集停下
+        print(f"  （版面状态没写进数据库：{err}）", file=sys.stderr)
 
 
 def ingest(dry_run=False):
@@ -2062,9 +2228,39 @@ def ingest(dry_run=False):
     # 去重要按顺序（前面的关注项收过的，后面的不再收），所以抓完后照原来的顺序一项一项处理
     from concurrent.futures import ThreadPoolExecutor
 
+    live = not dry_run
+    started = {}
+    if live:
+        live_mark(None)  # 上一次收集留下的行清掉
+
+    def compare_for(item):
+        compare = known.get(item["name"], [])
+        if item.get("dedupe_others"):  # 别的关注项已经收过的同一件事，这一项不再重复收
+            compare = compare + [t for name, ts in known.items() if name != item["name"] for t in ts]
+        return compare
+
+    def eta():
+        return max(now + dt.timedelta(minutes=LIVE_RUN_MIN), dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=2))
+
+    shown = {}  # 版面 → 网页上现在显示的新记事件数（None = 条已消失）
+
     def fetch(item):
         print(f"抓取：{item['name']}", file=sys.stderr)
-        return collect(item, confs[item["name"]][1])
+        name = item["name"]
+        if live:  # 网页上只有这个版面出「正在找新记事」的条
+            started[name] = dt.datetime.now(dt.timezone.utc)
+            live_mark(name, "fetch", started=started[name])
+        raw = collect(item, confs[name][1])
+        if live:  # 这个版面一抓完就判断：没有新记事 → 条消失；有 → 「新着 N 件」。
+            # 抓取期间 seen / known 都不变（只读），所以在线程里先数一遍；之后按顺序去重时件数变了再改
+            try:
+                n = len(filter_entries(raw, item, confs[name][1], seen, now, compare_for(item)))
+            except Exception:  # noqa: BLE001
+                n = None
+            if n is not None:
+                shown[name] = n or None
+                live_mark(name, "found" if n else None, n, started.get(name), eta())
+        return raw
     with ThreadPoolExecutor(max_workers=COLLECT_WORKERS) as pool:
         fetched = list(pool.map(fetch, items))
 
@@ -2073,11 +2269,10 @@ def ingest(dry_run=False):
         backfill, conf = confs[item["name"]]
         if backfill:
             print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
-        compare = known.get(item["name"], [])
-        if item.get("dedupe_others"):  # 别的关注项已经收过的同一件事，这一项不再重复收
-            compare = compare + [t for name, ts in known.items() if name != item["name"] for t in ts]
-        entries = filter_entries(raw, item, conf, seen, now, compare)
+        entries = filter_entries(raw, item, conf, seen, now, compare_for(item))
         print(f"  {item['name']} 新条目 {len(entries)} 条", file=sys.stderr)
+        if live and shown.get(item["name"], -1) != (len(entries) or None):  # 按顺序去重后件数变了（被前面的版面收走）才改
+            live_mark(item["name"], "found" if entries else None, len(entries), started.get(item["name"]), eta())
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
             continue

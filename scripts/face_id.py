@@ -49,6 +49,50 @@ def engine():
     return _engine["e"]
 
 
+FACE_MIN_RATIO = 0.10   # 顔の高さが画像の高さのこの割合より小さい = 遠景（ステッカーにすると顔が見えない）
+CROWD_RATIO = 0.6       # 2 番目に大きい顔が、いちばん大きい顔のこの割合（面積）以上 = 何人も写っている
+
+
+def face_info(img):
+    """PIL 画像 → (いちばん大きい顔の特徴量 or None, {faces, ratio, second})。
+    ratio = 顔の高さ / 画像の高さ、second = 2 番目の顔の面積 / いちばん大きい顔の面積。目で見ていた「遠景」「集合写真」を数で判断する。"""
+    eng = engine()
+    if eng is None:
+        return None, {}
+    import cv2
+    import numpy as np
+    det, rec = eng
+    rgb = np.array(img.convert("RGB"))
+    bgr = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
+    h, w = bgr.shape[:2]
+    if max(h, w) > 1280:
+        scale = 1280 / max(h, w)
+        bgr = cv2.resize(bgr, (int(w * scale), int(h * scale)))
+        h, w = bgr.shape[:2]
+    det.setInputSize((w, h))
+    _, faces = det.detect(bgr)
+    if faces is None or not len(faces):
+        return None, {"faces": 0}
+    faces = sorted(faces, key=lambda r: -r[2] * r[3])
+    f = faces[0]
+    info = {"faces": len(faces), "ratio": float(f[3]) / h,
+            "second": float(faces[1][2] * faces[1][3]) / float(f[2] * f[3]) if len(faces) > 1 else 0.0}
+    if min(f[2], f[3]) < 40:
+        return None, info
+    return rec.feature(rec.alignCrop(bgr, f)), info
+
+
+def photo_problem(info):
+    """face_info の結果 → 使えない理由（なければ None）。"""
+    if not info.get("faces"):
+        return "顔なし"
+    if info.get("ratio", 0) < FACE_MIN_RATIO:
+        return "遠景"
+    if info.get("second", 0) >= CROWD_RATIO:
+        return "何人も写っている"
+    return None
+
+
 def main_face(img):
     """PIL 画像 → いちばん大きい顔の特徴量（numpy）か None。顔がなければ None。"""
     eng = engine()
@@ -80,9 +124,10 @@ def similarity(a, b):
     return float(engine()[1].match(a, b, cv2.FaceRecognizerSF_FR_COSINE))
 
 
-def same_person(feats, anchor=None):
+def same_person(feats, anchor=None, strict=False):
     """feats：特徴量（顔がなければ None）のリスト。→ 本人と判断した添字の集合。エンジンが使えないとき None。
-    anchor：基準にする添字（記事の代表画像）。顔が取れない・基準がないときは「いちばん大きい同じ顔の集まり」が本人。"""
+    anchor：基準にする添字（記事の代表画像）。顔が取れない・基準がないときは「いちばん大きい同じ顔の集まり」が本人。
+    strict=True（定時の後台）：基準がなければ、同じ顔が 2 枚以上そろったときだけ本人とする。"""
     if engine() is None:
         return None
     idx = [i for i, f in enumerate(feats) if f is not None]
@@ -91,7 +136,7 @@ def same_person(feats, anchor=None):
     if anchor is not None and feats[anchor] is not None:
         base = [anchor]
         keep = {i for i in idx if i == anchor or similarity(feats[anchor], feats[i]) >= THRESHOLD}
-        if len(keep) >= 2:
+        if len(keep) >= 2 or strict:   # strict：基準（題名で確かめた記事の代表画像）を信じる。それと同じ顔だけ残す（多数決に切り替えない）
             return keep
         # 基準の画像が他と合わない（代表画像が別人・集合写真）：多数決に切り替える
     groups = []
@@ -103,4 +148,6 @@ def same_person(feats, anchor=None):
         else:
             groups.append([i])
     best = max(groups, key=len)
+    if strict and len(best) < 2:   # 確かな基準（記事の代表画像）がなく、同じ顔の写真が 1 枚だけ = 本人と言えない（別人を防ぐ）
+        return set()
     return set(best) if len(best) >= 2 or len(idx) == 1 else {best[0]}

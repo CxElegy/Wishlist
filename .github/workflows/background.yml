@@ -1,0 +1,117 @@
+name: 后台作業
+
+# 后台的「ゲート」：先用程序判断有没有活，AI 不需要的活（小元素补全）在这里用 Python 做完，
+# 需要 AI 的活（AI 编辑・照片加愿望）只在有活的时候才叫 Claude 定时任务（省 token）。
+# 判断和结果都写进 state/gate.json・state/log/（管理页「バックグラウンド」能看到）。
+
+on:
+  schedule:
+    - cron: "47 * * * *"     # 每小时 47 分
+  workflow_run:                # 每次收集完（有新记事 = 小元素的新材料）马上跑一次
+    workflows: ["关注清单通信"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: "小元素补全的时间预算（分钟）"
+        default: "40"
+      chain:
+        description: "（自动）接着跑的第几次。时间预算用完还有活时，自己再起一次，最多 3 次"
+        default: "0"
+      retry_now:
+        description: "试运行：不等 24 小时，失败过的版面也马上再试"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write   # 时间用完还有活时，自己再起一次（workflow_dispatch）
+
+concurrency:
+  group: background
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest   # 4 核 · 16GB
+    timeout-minutes: 60
+    env:
+      EMBLEM_RETRY_NOW: ${{ inputs.retry_now == true && '1' || '' }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # 管理页「いま動いているもの」・版面的帯（live_status）
+      GATE_FIRE: "0"   # 1 = 有活时叫 Claude。AI 编辑・照片加愿望 还有自己的定时，两边都叫会更费 token：停掉它们的定时后再改成 1
+      ROUTINE_TOKEN_EDIT: ${{ secrets.ROUTINE_FIRE_TOKEN }}
+      ROUTINE_TOKEN_PHOTOS: ${{ secrets.ROUTINE_FIRE_TOKEN_PHOTOS }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 判断（有没有活、要不要 AI）
+        id: gate
+        run: python scripts/gate.py check
+
+      - name: 模型的缓存（抠图 rembg 224MB・人脸 YuNet / SFace 39MB）
+        if: steps.gate.outputs.emblem == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.rembg
+            ~/.cache/wishlist-faces
+          key: emblem-models-v1
+
+      - name: 小元素补全（Python，不用 AI · 6 本并行 · 取法分 3 段）
+        if: steps.gate.outputs.emblem == 'true'
+        run: |
+          pip install -q "rembg[cpu]>=2.0.60,<3"
+          python scripts/emblem_fill.py --background --minutes "${{ inputs.minutes || '40' }}" --workers 6
+
+      - name: 还有活 → 自己再起一次（最多接着 3 次）
+        id: more
+        if: steps.gate.outputs.emblem == 'true' && fromJSON(inputs.chain || '0') < 3
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/gate.py check > /tmp/gate2.txt; cat /tmp/gate2.txt
+          if grep -q "^emblem  仕事あり" /tmp/gate2.txt; then echo "again=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: 有需要 AI 的活 → 叫 Claude（GATE_FIRE=1 时）
+        if: env.GATE_FIRE == '1' && (steps.gate.outputs.edit == 'true' || steps.gate.outputs.photos == 'true')
+        run: python scripts/gate.py fire
+
+      - name: 提交
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add items.yaml docs/emblems state/emblem_progress.json state/log/emblem.json
+          # ゲートの記録は、判断が前と変わったときか、Claude を起こしたときだけ（2 時間ごとの同じ記録でコミットを増やさない）
+          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "$GATE_FIRE" = "1" ]; then
+            git add state/gate.json state/log/gate.json 2>/dev/null || true
+          fi
+          git diff --cached --quiet && { echo "変化なし：コミットしない"; exit 0; }
+          python scripts/digest.py render
+          git add docs
+          git commit -q -m "后台作業 $(TZ=Asia/Tokyo date +'%F %H:%M')"
+          git stash -q --include-untracked || true   # コミットしなかったゲートの記録（判断が同じ）は捨てる：pull --rebase の邪魔になる
+          for i in 1 2 3; do
+            if git pull --rebase -X theirs -q; then
+              python scripts/digest.py render
+              git add docs
+              git diff --cached --quiet || git commit -q -m "重新生成网页"
+              git push && exit 0
+            else
+              git rebase --abort || true
+            fi
+            sleep $((i * 5))
+          done
+          exit 1
+
+      - name: 接着跑（提交之后）
+        if: steps.more.outputs.again == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run background.yml -f chain=$(( ${{ inputs.chain || '0' }} + 1 )) -f minutes=40

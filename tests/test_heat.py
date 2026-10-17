@@ -169,3 +169,31 @@ class Fetch(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class GroupOrder(unittest.TestCase):
+    """小分類の話題度（材料をまとめて測る）と、板块の中の並び（小分類の話題度 → 作品の話題度、下級は上級のすぐ後ろ）。"""
+
+    def test_order(self):
+        items = [{"name": "a", "section": "S", "sub": "x"}, {"name": "b", "section": "S", "sub": "y"},
+                 {"name": "c", "section": "S", "sub": "y"}, {"name": "k", "section": "S", "sub": "x", "parent": "a"},
+                 {"name": "z", "section": "T", "sub": "q"}]
+        scores = {"a": {"score": 10}, "b": {"score": 20}, "c": {"score": 50}, "k": {"score": 99}, "z": {"score": 1}}
+        sub = {("S", "x"): {"score": 30}, ("S", "y"): {"score": 60}, ("T", "q"): {"score": 5}}
+        self.assertEqual(heat.heat_order(items, scores, sub, ["T", "S"]), ["z", "c", "b", "a", "k"])
+
+    def test_group_is_not_a_sum(self):
+        d = "2026-10-16"
+        inbox = self.tmp_inbox(d, {"a": ["u1", "u2"], "b": ["u2", "u3"]})
+        items = [{"name": "a"}, {"name": "b"}]
+        g = heat.group_scores(items, [inbox], [], {}, d, {("S", "x"): ["a", "b"]})[("S", "x")]
+        self.assertIn("7 日で 3 件", g["dims"][0]["note"])         # 同じ記事（u2）は 1 回だけ
+        self.assertLessEqual(g["score"], 100)
+
+    def tmp_inbox(self, d, by):
+        import json, tempfile
+        f = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8")
+        json.dump({"date": d, "items": [{"name": n, "entries": [{"url": u, "date": d, "title": u, "source": "x.com"} for u in us]}
+                                        for n, us in by.items()]}, f)
+        f.close()
+        return f.name

@@ -1,24 +1,51 @@
 {
  "items": {
   "A2O LITE": {
-   "at": "2026-10-17T00:02:52+00:00",
-   "failed_at": "2026-10-17T00:02:52+00:00",
+   "at": "2026-10-17T01:43:42+00:00",
+   "failed_at": "2026-10-17T01:43:42+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 25,
+    "rejected": {
+     "遠景": 2,
+     "顔なし": 23
+    },
+    "usable": 0
+   },
    "have": 0,
    "kind": "group",
-   "note": "0 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "note": "0 枚足した。残りは規則で外した（顔なし 23・遠景 2）。24 時間後にもう一度",
    "state": "failed",
    "target": 9,
    "tried": {
-    "Wikimedia Commons": 22,
-    "Wikipedia": 1
+    "Wikimedia Commons": 25,
+    "Wikipedia": 0
    }
   },
   "Astrae Oratio": {
+   "at": "2026-10-17T01:44:00+00:00",
+   "failed_at": "2026-10-17T01:44:00+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 3,
+    "rejected": {
+     "使えない": 2,
+     "確かでない取り方": 1
+    },
+    "usable": 1
+   },
    "have": 5,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "0 枚足した。残りは規則で外した（使えない 2・確かでない取り方 1）。24 時間後にもう一度",
+   "state": "failed",
+   "target": 6,
+   "tried": {
+    "Wikimedia Commons": 0,
+    "Wikipedia": 0,
+    "新聞の配図": 3
+   }
   },
   "BLEACH Mirrors High": {
    "at": "2026-10-17T00:53:50+00:00",
@@ -32,12 +59,22 @@
    }
   },
   "FROM": {
-   "at": "2026-10-17T00:53:14+00:00",
+   "at": "2026-10-17T01:42:17+00:00",
+   "failed_at": "2026-10-17T01:42:17+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 6,
+    "rejected": {
+     "別人": 5,
+     "遠景": 1
+    },
+    "usable": 0
+   },
    "have": 4,
    "kind": "character",
-   "note": "2 枚足した。残りの候補 1 枚は自動で決められないので一覧で確かめる",
-   "sheet": "/tmp/wishlist-emblem/FROM.jpg",
-   "state": "review",
+   "note": "0 枚足した。残りは規則で外した（別人 5・遠景 1）。24 時間後にもう一度",
+   "state": "failed",
    "target": 6,
    "tried": {
     "Wikipedia": 6
@@ -51,12 +88,22 @@
    "target": 2
   },
   "ILLIT": {
-   "at": "2026-10-17T00:53:15+00:00",
+   "at": "2026-10-17T01:43:42+00:00",
+   "failed_at": "2026-10-17T01:43:42+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 13,
+    "rejected": {
+     "別人": 3,
+     "顔なし": 10
+    },
+    "usable": 0
+   },
    "have": 3,
    "kind": "group",
-   "note": "1 枚足した。残りの候補 1 枚は自動で決められないので一覧で確かめる",
-   "sheet": "/tmp/wishlist-emblem/ILLIT.jpg",
-   "state": "review",
+   "note": "0 枚足した。残りは規則で外した（顔なし 10・別人 3）。24 時間後にもう一度",
+   "state": "failed",
    "target": 5,
    "tried": {
     "Wikimedia Commons": 12,
@@ -64,33 +111,62 @@
    }
   },
   "MMORPG 新作": {
-   "have": 2,
+   "at": "2026-10-17T00:55:31+00:00",
+   "have": 3,
    "kind": "topic",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 3
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
   },
   "The Mandalorian": {
-   "at": "2026-10-17T00:53:14+00:00",
+   "at": "2026-10-17T01:44:09+00:00",
+   "failed_at": "2026-10-17T01:44:09+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 4,
+    "rejected": {
+     "別人": 4
+    },
+    "usable": 0
+   },
    "have": 2,
    "kind": "character",
-   "note": "処理中",
-   "state": "running",
-   "target": 4
+   "note": "0 枚足した。残りは規則で外した（別人 4）。24 時間後にもう一度",
+   "state": "failed",
+   "target": 4,
+   "tried": {
+    "Wikipedia": 4
+   }
   },
   "Vaundy": {
-   "at": "2026-10-17T00:38:58+00:00",
-   "failed_at": "2026-10-17T00:38:58+00:00",
-   "have": 2,
+   "at": "2026-10-17T01:43:41+00:00",
+   "failed_at": "2026-10-17T01:43:41+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 7,
+    "rejected": {
+     "同じ画像": 5,
+     "顔なし": 1
+    },
+    "usable": 1
+   },
+   "have": 3,
    "kind": "person",
-   "note": "1 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "note": "1 枚足した。残りは規則で外した（同じ画像 5・顔なし 1）。24 時間後にもう一度",
    "state": "failed",
    "target": 6,
    "tried": {
     "Wikidata": 1,
-    "Wikimedia Commons": 0,
-    "Wikipedia": 4,
-    "新聞の配図": 5
+    "Wikimedia Commons": 2,
+    "Wikipedia": 4
    }
   },
   "dota2": {
@@ -107,18 +183,28 @@
    }
   },
   "gelato pique": {
-   "have": 0,
+   "at": "2026-10-17T00:55:31+00:00",
+   "have": 1,
    "kind": "brand",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 1
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 1,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 0,
+    "公式サイト": 2
+   }
   },
   "あつ森": {
-   "have": 5,
+   "at": "2026-10-17T00:56:23+00:00",
+   "have": 6,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 6,
+   "tried": {
+    "Fandom": 6
+   }
   },
   "ぐでたま": {
    "have": 3,
@@ -128,25 +214,70 @@
    "target": 3
   },
   "チェーンソーマン": {
+   "at": "2026-10-17T01:43:50+00:00",
+   "failed_at": "2026-10-17T01:43:50+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 1,
+    "found": 6,
+    "rejected": {
+     "切り抜きの検査": 1,
+     "重複（その人はもういる）": 5
+    },
+    "usable": 6
+   },
    "have": 5,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "0 枚足した。残りは規則で外した（重複（その人はもういる） 5・切り抜きの検査 1）。24 時間後にもう一度",
+   "state": "failed",
+   "target": 6,
+   "tried": {
+    "Fandom": 6
+   }
   },
   "三星手机": {
-   "have": 0,
+   "at": "2026-10-17T01:44:47+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 6,
+    "rejected": {
+     "白紙": 1,
+     "確かでない取り方": 4
+    },
+    "usable": 5
+   },
+   "have": 1,
    "kind": "brand",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 1
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 1,
+   "tried": {
+    "Wikidata": 1,
+    "Wikimedia Commons": 1,
+    "Wikipedia": 4,
+    "公式サイト": 0
+   }
   },
   "周杰伦": {
-   "at": "2026-10-17T00:53:14+00:00",
-   "failed_at": "2026-10-17T00:53:14+00:00",
+   "at": "2026-10-17T01:44:46+00:00",
+   "failed_at": "2026-10-17T01:44:46+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 1,
+    "found": 12,
+    "rejected": {
+     "もう使っている・外した画像": 4,
+     "切り抜きの検査": 1,
+     "別人": 3,
+     "同じ画像": 1,
+     "顔なし": 3
+    },
+    "usable": 5
+   },
    "have": 5,
    "kind": "person",
-   "note": "2 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "note": "0 枚足した。残りは規則で外した（もう使っている・外した画像 4・顔なし 3・別人 3）。24 時間後にもう一度",
    "state": "failed",
    "target": 6,
    "tried": {
@@ -155,27 +286,45 @@
    }
   },
   "哈利波特剧集": {
-   "at": "2026-10-17T00:53:14+00:00",
-   "failed_at": "2026-10-17T00:53:14+00:00",
+   "at": "2026-10-17T01:43:41+00:00",
+   "failed_at": "2026-10-17T01:43:41+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 8,
+    "rejected": {
+     "別人": 3,
+     "遠景": 1,
+     "顔なし": 4
+    },
+    "usable": 0
+   },
    "have": 4,
    "kind": "character",
-   "note": "2 枚足した。使える候補がもうない（24 時間後にもう一度）",
+   "note": "0 枚足した。残りは規則で外した（顔なし 4・別人 3・遠景 1）。24 時間後にもう一度",
    "state": "failed",
    "target": 6,
    "tried": {
-    "Web 画像検索": 0,
     "Wikimedia Commons": 5,
     "Wikipedia": 3,
     "新聞の配図": 0
    }
   },
   "日本顶级网球赛事": {
-   "at": "2026-10-17T00:53:15+00:00",
-   "have": 1,
+   "at": "2026-10-17T00:55:28+00:00",
+   "have": 3,
    "kind": "topic",
-   "note": "処理中",
-   "state": "running",
-   "target": 3
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 2,
+    "Web 画像検索": 0,
+    "Wikidata": 1,
+    "Wikimedia Commons": 0,
+    "Wikipedia": 1,
+    "公式サイト": 8
+   }
   },
   "星巴克马克杯": {
    "have": 1,
@@ -185,55 +334,88 @@
    "target": 1
   },
   "滑雪": {
-   "at": "2026-10-17T00:53:15+00:00",
-   "have": 1,
+   "at": "2026-10-17T00:55:25+00:00",
+   "have": 3,
    "kind": "topic",
-   "note": "処理中",
-   "state": "running",
-   "target": 3
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 1,
+    "Wikimedia Commons": 0
+   }
   },
   "漫威电影": {
-   "at": "2026-10-17T00:38:30+00:00",
+   "at": "2026-10-17T01:44:47+00:00",
+   "failed_at": "2026-10-17T01:44:47+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 6,
+    "rejected": {
+     "別人": 6
+    },
+    "usable": 0
+   },
    "have": 5,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
+   "note": "0 枚足した。残りは規則で外した（別人 6）。24 時間後にもう一度",
+   "state": "failed",
    "target": 6,
    "tried": {
     "Wikipedia": 6
    }
   },
   "猫用品": {
-   "at": "2026-10-17T00:53:50+00:00",
-   "have": 1,
+   "at": "2026-10-17T00:54:07+00:00",
+   "have": 3,
    "kind": "topic",
-   "note": "処理中",
-   "state": "running",
-   "target": 3
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
   },
   "绝区零": {
-   "have": 4,
+   "at": "2026-10-17T00:54:25+00:00",
+   "have": 6,
    "kind": "character",
-   "note": "順番待ち",
-   "state": "running",
-   "target": 6
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 6,
+   "tried": {
+    "Fandom": 6
+   }
   }
  },
  "last_run": {
-  "at": "2026-10-17T00:48:11+00:00",
+  "at": "2026-10-17T01:41:32+00:00",
   "done": [
-   "周杰伦",
-   "哈利波特剧集",
    "FROM",
+   "Vaundy",
+   "哈利波特剧集",
    "ILLIT",
-   "BLEACH Mirrors High"
+   "A2O LITE",
+   "チェーンソーマン",
+   "Astrae Oratio",
+   "The Mandalorian",
+   "周杰伦",
+   "三星手机",
+   "漫威电影"
   ],
-  "minutes": 38.0,
+  "end": "2026-10-17T01:44:47+00:00",
+  "minutes": 8.0,
   "workers": 4
  },
  "started": "2026-10-16T23:48:04+00:00",
  "summary": {
-  "ok": 4,
+  "ok": 13,
   "total": 23
  }
 }

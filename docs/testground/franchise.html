@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>小分類と親子の見比べ</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* テストグラウンド：小分類の中に「親子」の作品（漫威电影 → スパイダーマン）があるときの目次。案 A と案 B を並べる。
+   見た目は本番の目次（scripts/render.py の NAV_STYLES["line"]）に合わせている。トークンも render.py の :root と同じ */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--fs-label:11px;
+ --shadow:4px 4px 0 var(--ink);--skew:-8deg;--hair:color-mix(in srgb,var(--ink) 16%,transparent);--muted:rgba(26,28,34,.62);
+ --marvel:#EC1D24}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.tg{display:inline-block;flex:none;white-space:nowrap;background:var(--sc,var(--ink));color:#FFF;padding:1px 12px;transform:skewX(var(--skew));
+ font:900 14px/1.55 var(--font-sans);letter-spacing:.04em}
+.tg>span{display:inline-block;transform:skewX(8deg)}
+
+/* ---------- 上の操作バー ---------- */
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:14px 24px;background:var(--ink);color:var(--card)}
+.ctl h1{margin:0;font:900 16px/1.3 var(--font-sans)}
+.ctl h1 small{display:block;font:700 var(--fs-label) var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+.scrub{display:flex;align-items:center;gap:8px;flex:1;min-width:240px;font:700 12px var(--font-mono);color:rgba(251,248,241,.75)}
+.scrub input{flex:1;min-width:0;accent-color:var(--alert)}
+.scrub button{width:28px;height:28px;border:1px solid rgba(251,248,241,.4)}
+.ctl .now{flex-basis:100%;margin:0;font:700 13px var(--font-sans);color:var(--gold)}
+.ctl .note{flex-basis:100%;margin:0;font:500 12px/1.7 var(--font-sans);color:rgba(251,248,241,.78)}
+
+/* ---------- 2 案を並べる ---------- */
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:1100px;margin:0 auto;padding:24px}
+.case{display:flex;flex-direction:column;gap:10px;min-width:0}
+.case h2{margin:0;display:flex;align-items:baseline;gap:10px;font:900 18px/1.35 var(--font-sans)}
+.case h2 b{font:900 13px var(--font-mono);color:#FFF;background:var(--alert);padding:1px 8px;transform:skewX(var(--skew))}
+.case .lead{margin:0;font:500 13px/1.7 var(--font-sans);color:var(--muted)}
+.case ul{margin:0;padding-left:1.2em;font:500 13px/1.75 var(--font-sans)}
+.case ul b{font-weight:800}
+.frame{display:flex;flex-direction:column;border-left:6px solid var(--alert);padding:14px 0 10px 14px;background:var(--paper);
+ box-shadow:inset 0 0 0 1px var(--hair);max-width:300px}
+
+/* ---------- 目次（本番と同じ部品） ---------- */
+.rail{flex:1;min-height:0;margin-right:8px}
+.nsec{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 8px;height:42px;padding:8px 4px 0 0}
+.nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:var(--muted)}
+.nsec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
+.nsec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
+.nsec.cur .tg{transform:skewX(var(--skew)) scale(1.22);transform-origin:left center;box-shadow:3px 3px 0 var(--ink)}
+.closed{margin-bottom:6px}
+.nbody{margin:6px 0 10px}
+.nsubs{display:flex;flex-wrap:wrap;gap:4px 6px;margin:0 0 6px 2px}
+.nsubs a{display:flex;align-items:center;gap:5px;height:22px;padding:0 7px;border:1px solid var(--hair);color:rgba(26,28,34,.7);font:700 11px/1 var(--font-sans);white-space:nowrap}
+.nsubs a small{font:700 10px var(--font-mono)}
+.nsubs a.on{background:var(--sc);border-color:var(--sc);color:#FFF}
+.nlab{height:22px;display:flex;align-items:flex-end;padding:0 0 2px 2px;font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--sc)}
+.pill{display:flex;align-items:center;gap:8px;position:relative;isolation:isolate;height:34px;padding:0 6px 0 34px;color:rgba(26,28,34,.86);font:800 15px/1.35 var(--font-sans)}
+.pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill .cnt{display:none;font:700 11px var(--font-mono);color:var(--gold)}
+.pill .new{flex:none;font:700 11px var(--font-mono);color:rgba(26,28,34,.5)}
+.pill::before{content:"";position:absolute;inset:0 auto 0 15px;width:2px;z-index:-1;background:rgba(26,28,34,.13)}
+.pill::after{content:"";position:absolute;left:9px;top:50%;width:14px;height:8px;margin-top:-4px;transform:skewX(var(--skew));background:var(--paper);border:2px solid rgba(26,28,34,.32)}
+.pill.past::before{background:var(--sc)}
+.pill.past::after{background:var(--sc);border-color:var(--sc)}
+.pill .ic{display:none}
+.pill.on{color:var(--card);font-size:17px;font-weight:900;padding-left:58px;height:52px}
+.pill.on::before{inset:4px -2px 4px 24px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
+.pill.on::after{display:none}
+.pill.on .ic{display:block;position:absolute;left:2px;top:50%;width:44px;height:44px;margin-top:-22px;border:3px solid #FFF;box-shadow:3px 3px 0 var(--ink);
+ transform:rotate(-7deg);background:var(--img) center/cover no-repeat,var(--sc);color:#FFF;font:900 18px/38px var(--font-sans);text-align:center;font-style:normal}
+.pill.on .ic.has{color:transparent}
+.pill.on .nm{display:flex;flex-direction:column;gap:1px}
+.pill.on .cnt{display:block}
+.pill.on .new{color:var(--gold)}
+
+/* ---------- 案 A（採用）：親の駅から枝線（拐角）を出し、子は枝の上の駅（大きさは普通の駅と同じ） ---------- */
+.A .pill.kid{padding-left:52px}   /* 子も同じ関注項：大きさ・太さは普通の駅と同じ。違うのは枝線だけ */
+.A .pill.kid::after{left:30px}
+.A .pill.kid .br{position:absolute;left:16px;top:-17px;width:18px;bottom:50%;border-left:2px solid var(--fc);border-bottom:2px solid var(--fc);z-index:-1}
+.A .pill.kid.on{padding-left:72px}
+.A .pill.kid.on::before{inset:4px -2px 4px 44px}
+.A .pill.kid.on .ic{left:22px;width:40px;height:40px;margin-top:-20px}
+.A .xref{flex:none;font:700 10px var(--font-mono);letter-spacing:.06em;color:var(--fc);border:1px solid var(--fc);padding:0 4px}
+.A .pill.on .xref{color:var(--gold);border-color:var(--gold)}
+
+/* ---------- 案 B：フランチャイズは小分類の中の見出し（ロゴつきの斜めの札）。子はその下に普通の駅で並ぶ ---------- */
+.B .fh{display:flex;align-items:center;gap:8px;height:34px;margin:4px 0 0 2px}
+.B .fh .logo{flex:none;width:26px;height:26px;background:var(--img) center/cover no-repeat;border:2px solid #FFF;box-shadow:2px 2px 0 var(--ink);transform:rotate(-6deg)}
+.B .fh .tg{--sc:var(--fc);font-size:12px;padding:0 10px}
+.B .fh small{margin-left:auto;font:700 11px var(--font-mono);color:var(--muted)}
+.B .fh.on .tg{box-shadow:3px 3px 0 var(--alert)}
+.B .fgrp{margin-left:0}
+/* 子の前は案 A と同じ「拐角」：見出しのロゴから下りる線が、子の駅のところで右へ曲がる（└）。続く子の線はつながって見える */
+.B .fgrp .pill{padding-left:52px}
+.B .fgrp .pill::before{display:none}
+.B .fgrp .pill .br{position:absolute;left:14px;top:-17px;width:16px;bottom:50%;border-left:2px solid var(--fc);border-bottom:2px solid var(--fc);z-index:-1}
+.B .fgrp .pill::after{left:30px;width:12px;height:7px;margin-top:-3.5px}
+.B .fgrp .pill.on{padding-left:76px}
+.B .fgrp .pill.on::before{display:block;inset:4px -2px 4px 48px}
+.B .fgrp .pill.on .ic{left:26px}
+.B .xref{flex:none;font:700 10px var(--font-mono);letter-spacing:.06em;color:var(--fc);border:1px solid var(--fc);padding:0 4px}
+.B .pill.on .xref{color:var(--gold);border-color:var(--gold)}
+.B .fgrp .whole{font-size:13px;color:var(--muted);font-weight:700}
+
+/* ---------- スマホの見本（横帯） ---------- */
+.mob{background:var(--ink);color:var(--card);padding:8px 0 0;max-width:390px}
+.mob .row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 12px 8px}
+.mob .row + .row{border-top:1px solid rgba(251,248,241,.18);padding-top:8px}
+.mob .chip{flex:none;padding:5px 10px;border:1px solid rgba(251,248,241,.35);font:700 13px/1.3 var(--font-sans);white-space:nowrap}
+.mob .chip.on{background:var(--card);color:var(--ink);border-color:var(--card)}
+.mob .chip small{font:700 10px var(--font-mono);color:var(--gold);margin-right:4px}
+.mob .chip.on small{color:var(--alert)}
+.mob .tg{padding:4px 12px;font-size:13px;opacity:.55}
+.mob .tg.on{opacity:1;box-shadow:3px 3px 0 var(--gold)}
+.case h3{margin:6px 0 0;font:800 13px var(--font-sans);color:var(--muted)}
+@media (max-width:600px){.board{padding:16px;gap:36px}.ctl{padding:12px 16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="ctl">
+  <h1><small>TESTGROUND</small>小分類と親子の見比べ</h1>
+  <div class="scrub"><button type="button" id="prev" aria-label="前の作品">◀</button><input type="range" id="pos" min="0" value="0" aria-label="読んでいる作品"><button type="button" id="next" aria-label="次の作品">▶</button><span id="post"></span></div>
+  <p class="now" id="now"></p>
+  <p class="note">映像の板块に「漫威电影」（親）と、その中の作品「スパイダーマン」「アベンジャーズ」（子）が入った場合の目次です。わざと難しい例として、同じ漫威でもドラマの「デアデビル」（子だが小分類は ドラマ）も入れています。
+    つまみで読む作品を動かすと、両案の目次がどう変わるか見られます。この見本は高さの制限なしで全部並べています（画面に入りきらないときの隠し方は本番の v6 のまま）。items.yaml では子に <code>parent: 漫威电影</code> を書く想定。</p>
+</header>
+<div class="board">
+  <section class="case A">
+    <h2><b>案 A</b>枝分かれ（親の駅から枝線）・採用</h2>
+    <p class="lead">【採用】親（漫威电影）は普通の駅。子は親の駅から出た枝線（拐角 └）の上に、普通の駅と同じ大きさで並ぶ。親も子も同じ関注項なので、子を小さくしたり特別にたたんだりしない（隠すかどうかは v6 のいつもの決まりどおり）。</p>
+    <div class="frame"><div class="rail" id="railA"></div></div>
+    <h3>スマホ</h3><div class="mob" id="mobA"></div>
+    <ul>
+      <li><b>小分類は親に従う</b>：デアデビルもドラマではなく 映画 › 漫威电影 の枝に入り、小さく「ドラマ」と付く</li>
+      <li><b>子は特別にたたまない</b>：ほかを読んでいるときも子は並んだまま。画面に入りきらないときだけ、v6 の決まり（新着順に数件・見出しだけ…）で隠す</li>
+      <li>親の版面（漫威全体のニュース）と子の版面は別々の駅なので、親も「読む場所」として残る</li>
+      <li>弱点：子が増えると枝が長くなる。親子が 3 段（漫威 › スパイダーマン › 次回作）はやらない</li>
+    </ul>
+  </section>
+  <section class="case B">
+    <h2><b>案 B</b>フランチャイズの見出し（グループ）＋拐角の線（不採用）</h2>
+    <p class="lead">（見送り）小分類の中に、ロゴつきの斜めの札「MARVEL」を見出しとして置き、子はその下にまとめる。子の前は案 A と同じ拐角の線（└）。親の版面は見出しの下の「全体」の駅。</p>
+    <div class="frame"><div class="rail" id="railB"></div></div>
+    <h3>スマホ</h3><div class="mob" id="mobB"></div>
+    <ul>
+      <li><b>子は自分の小分類に残る</b>：デアデビルは ドラマ の中に、ドラマ用の小さな「MARVEL」見出しの下に入る（見出しは小分類ごとに出る）</li>
+      <li>見出しのロゴは目次のアイコン（items.yaml の icon）を使うので、どのフランチャイズか一目でわかる</li>
+      <li>フランチャイズがいくつあっても形が同じ（スター・ウォーズ、ポケモン…も同じ札）</li>
+      <li>弱点：見出しの分だけ 1 行増える。子が 1 つだけのときは見出しを出さず、名前の横に小さく「MARVEL」と付ける</li>
+    </ul>
+  </section>
+</div>
+<script>
+(() => {
+  // ---------- 見本の作品（版面の順） ----------
+  const SECS = [
+    {id: 'game', ja: 'ゲーム', c: '#2F5BD3', n: 7, nn: 7, items: ['Astrae Oratio', 'BLEACH Mirrors High', 'GTA 6', 'MMORPG 新作', 'あつ森', '绝区零', 'dota2']},
+    {id: 'screen', ja: '映像', c: '#9B3FB5'},
+    {id: 'live', ja: 'ライブ', c: '#BB265A', n: 4, nn: 4, items: ['ILLIT', 'Vaundy', '周杰伦', 'A2O LITE']},
+    {id: 'sports', ja: 'スポーツ', c: '#156A48', n: 2, nn: 2, items: ['滑雪', '日本顶级网球赛事']},
+    {id: 'goods', ja: 'グッズ', c: '#985315', n: 5, nn: 5, items: ['星巴克马克杯', '猫用品', '三星手机', 'gelato pique', 'ぐでたま']},
+  ];
+  const F = {marvel: {name: '漫威电影', label: 'MARVEL', c: 'var(--marvel)', icon: '../icons/marvel.webp'}};
+  // sub：自分の小分類。parent：親の作品（親の小分類に従うかどうかは案ごとに違う）
+  const W = [
+    {name: '漫威电影', sub: '映画', fr: 'marvel', isParent: true, hot: 30, icon: '../icons/marvel.webp'},
+    {name: 'スパイダーマン：ブランニューデイ', short: 'スパイダーマン', sub: '映画', fr: 'marvel', hot: 12},
+    {name: 'アベンジャーズ／ドゥームズデイ', short: 'アベンジャーズ', sub: '映画', fr: 'marvel', hot: 9},
+    {name: 'デューン 砂の惑星 PART3', short: 'デューン PART3', sub: '映画', hot: 4},
+    {name: 'FROM', sub: 'ドラマ', hot: 4, icon: '../icons/from.webp'},
+    {name: '哈利波特剧集', sub: 'ドラマ', hot: 5, icon: '../icons/harry-potter-hbo.webp'},
+    {name: 'デアデビル：ボーン・アゲイン', short: 'デアデビル', sub: 'ドラマ', fr: 'marvel', hot: 3},
+    {name: 'The Mandalorian', sub: 'ドラマ', hot: 11, icon: '../icons/the-mandalorian.webp'},
+    {name: 'チェーンソーマン', sub: 'アニメ', hot: 22, icon: '../icons/chainsaw-man.webp'},
+  ];
+  W.forEach((w, i) => w.i = i);
+  const SUBS = ['映画', 'ドラマ', 'アニメ'], SC = '#9B3FB5';
+  const e = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})[c]);
+  let cur = 0;
+
+  const pill = (w, cls, extra) => {
+    const ic = w.icon ? `<i class="ic has" style="--img:url('${w.icon}')"></i>` : `<i class="ic">${e([...(w.short || w.name)][0])}</i>`;
+    return `<a class="pill${cls || ''}${w.i === cur ? ' on' : w.i < cur ? ' past' : ''}" style="--sc:${SC};--fc:${w.fr ? F[w.fr].c : SC}" href="#" data-i="${w.i}">`
+      + `${extra || ''}${ic}<span class="nm">${e(w.short || w.name)}<small class="cnt">今週 ${w.hot} 件</small></span><span class="new">+${w.hot}</span></a>`;
+  };
+  const head = (s, cur) => `<div class="nsec${cur ? ' cur' : ''}" style="--sc:${s.c}"><span class="tg"><span>${s.ja}</span></span>`
+    + `<span class="cnt">新着 ${s.nn ?? 9}／${s.n ?? 9}</span><span class="meter"><i style="width:${cur ? 100 : 80}%"></i></span></div>`;
+  const chips = (curSub) => `<div class="nsubs">` + SUBS.map(s => `<a class="${s === curSub ? 'on' : ''}" style="--sc:${SC}">${s}<small>${W.filter(w => w.sub === s).length}</small></a>`).join('') + `</div>`;
+  // ほかの板块も作品を全部並べる（何も隠さない。画面に入りきらないときの隠し方は本番の v6 のまま）
+  const others = (s, before) => `<div class="closed">${head(s)}<div class="nbody">` + s.items.map(n =>
+    `<a class="pill${before ? ' past' : ''}" style="--sc:${s.c}"><span class="nm">${e(n)}</span></a>`).join('') + `</div></div>`;
+  const rest = (from) => SECS.slice(from).map(s => others(s, false)).join('');
+
+  // ---------- 案 A：子は親の小分類（映画）の、親の駅の下の枝。読んでいないときはたたむ ----------
+  function railA() {
+    const cw = W[cur], parent = W.find(w => w.isParent);
+    const kids = W.filter(w => w.fr === 'marvel' && !w.isParent);
+    const subOf = w => w.fr ? parent.sub : w.sub;   // 子の小分類は親に従う
+    let h = others(SECS[0], true) + head(SECS[1], true) + `<div class="nbody">` + chips(subOf(cw));
+    for (const sub of SUBS) {
+      h += `<div class="nlab" style="--sc:${SC}">${sub}</div>`;
+      for (const w of W.filter(w => !w.fr || w.isParent)) {
+        if (w.sub !== sub) continue;
+        h += pill(w);
+        if (w.isParent) {
+          h += kids.map(k => pill(k, ' kid', `<span class="br"></span>`).replace('<span class="new">', k.sub !== parent.sub ? `<span class="xref">${k.sub}</span><span class="new">` : '<span class="new">')).join('');
+        }
+      }
+    }
+    return h + `</div>` + rest(2);
+  }
+
+  // ---------- 案 B：小分類ごとに、フランチャイズの見出し（ロゴの札）を置き、その下に子 ----------
+  function railB() {
+    const cw = W[cur];
+    let h = others(SECS[0], true) + head(SECS[1], true) + `<div class="nbody">` + chips(cw.sub);
+    for (const sub of SUBS) {
+      h += `<div class="nlab" style="--sc:${SC}">${sub}</div>`;
+      const inSub = W.filter(w => w.sub === sub);
+      const grp = inSub.filter(w => w.fr === 'marvel');
+      let done = false;
+      for (const w of inSub) {
+        if (w.fr === 'marvel' && grp.length === 1 && !w.isParent) {   // 子が 1 つだけ：見出しは出さず、名前の横に小さく MARVEL
+          h += pill(w).replace('<span class="new">', `<span class="xref" style="--fc:${F.marvel.c}">MARVEL</span><span class="new">`);
+          continue;
+        }
+        if (w.fr === 'marvel') {
+          if (done) continue;
+          done = true;
+          const on = grp.some(g => g.i === cur);
+          h += `<div class="fh${on ? ' on' : ''}" style="--fc:${F.marvel.c};--img:url('${F.marvel.icon}')"><span class="logo"></span><span class="tg"><span>${F.marvel.label}</span></span>`
+            + `<small>${grp.length} 作品</small></div><div class="fgrp" style="--fc:${F.marvel.c}">`
+            + grp.map(g => g.isParent ? pill({...g, short: 'MARVEL 全体（漫威电影）'}, ' whole', '<span class="br"></span>') : pill(g, '', '<span class="br"></span>')).join('') + `</div>`;
+        } else h += pill(w);
+      }
+    }
+    return h + `</div>` + rest(2);
+  }
+
+  // ---------- スマホ：上に板块、下にいまの小分類の作品 ----------
+  function mob(kind) {
+    const cw = W[cur];
+    const tabs = `<div class="row">` + ['トップ', ...SECS.map(s => s.ja)].map(t => `<span class="tg${t === '映像' ? ' on' : ''}" style="--sc:${t === 'トップ' ? 'var(--ink)' : (SECS.find(s => s.ja === t) || {}).c}"><span>${t}</span></span>`).join('') + `</div>`;
+    // 下の段は本番と同じく「いまの板块の作品を全部」（小分類で絞らない・隠さない）。並びは目次と同じ
+    const order = kind === 'A' ? ['映画', 'ドラマ', 'アニメ'].flatMap(sb => W.filter(w => (w.fr ? '映画' : w.sub) === sb))
+                               : ['映画', 'ドラマ', 'アニメ'].flatMap(sb => W.filter(w => w.sub === sb));
+    const list = order;
+    return tabs + `<div class="row">` + list.map(w => `<span class="chip${w.i === cur ? ' on' : ''}">${w.fr && !w.isParent ? '<small>MARVEL›</small>' : ''}${e(w.short || w.name)}</span>`).join('') + `</div>`;
+  }
+
+  const range = document.getElementById('pos');
+  range.max = W.length - 1;
+  function draw() {
+    document.getElementById('railA').innerHTML = railA();
+    document.getElementById('railB').innerHTML = railB();
+    document.getElementById('mobA').innerHTML = mob('A');
+    document.getElementById('mobB').innerHTML = mob('B');
+    range.value = cur;
+    document.getElementById('post').textContent = `${cur + 1}/${W.length}`;
+    const w = W[cur];
+    document.getElementById('now').textContent = `いま読んでいる：${w.name}（小分類 ${w.sub}${w.fr ? '・漫威の作品' : ''}）`;
+  }
+  const set = i => { cur = Math.max(0, Math.min(W.length - 1, i)); draw(); };
+  range.addEventListener('input', () => set(+range.value));
+  document.getElementById('prev').addEventListener('click', () => set(cur - 1));
+  document.getElementById('next').addEventListener('click', () => set(cur + 1));
+  document.addEventListener('click', ev => { const a = ev.target.closest('[data-i]'); if (a) { ev.preventDefault(); set(+a.dataset.i); } });
+  set(+(new URLSearchParams(location.search).get('i')) || 1);
+})();
+</script>
+</body>
+</html>

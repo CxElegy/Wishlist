@@ -105,7 +105,8 @@ def inspect(data):
     img.load()
     img = img.convert("RGBA")
     w, h = img.size
-    if min(w, h) < MIN_SIDE:
+    wide = max(w, h) >= 2.2 * min(w, h)   # 横長・縦長のロゴ（Samsung は 500×133）：短い辺ではなく長い辺で見る
+    if (min(w, h) < 64 or max(w, h) < 300) if wide else min(w, h) < MIN_SIDE:
         raise ValueError(f"小さすぎる（{w}×{h}）")
     a = img.getchannel("A")
     edge = [a.getpixel((x, y)) for x in range(0, w, max(1, w // 60)) for y in (0, h - 1)] + \
@@ -385,7 +386,7 @@ def cut_out(url, slug, drawn=True):
 
     img = Image.open(io.BytesIO(_get(url))).convert("RGB")
     out = remove(img, session=_session("birefnet-general-lite"))   # 絵も写真もいちばん輪郭がきれいだった（isnet-anime・u2net と比べた）
-    out = check_whole(out)
+    out = check_whole(out, photo=not drawn)
     out, _ = upper_body(out)   # 縦長の全身は上半身に（小さく貼ると顔が見えない）
     out.thumbnail((420, 520))
     EMB_DIR.mkdir(parents=True, exist_ok=True)
@@ -420,7 +421,24 @@ def face_box(img):
     return max(found, key=lambda f: f[2] * f[3]) if found else None
 
 
-def check_whole(out):
+HOLE_MAX = 0.03   # 実在の人の写真で、体の中の透明な穴（服が背景と同じ色で抜けた）がこれより多いものは使わない（正しい写真は ≈0%）
+
+
+def hole_share(solid):
+    """体（solid：True の所）の中にあいた透明な穴の面積 ÷ 体の面積。上・左・右の端につながる透明は背景、
+    それ以外（下の端だけにつながるものも。胸像は下で切れているので）は穴とみなす。目で見ていた「切り抜きの穴」を数で判断する。"""
+    import numpy as np
+    import cv2
+    clear = (~solid).astype("uint8")
+    n, labels = cv2.connectedComponents(clear, connectivity=4)
+    if n <= 1:
+        return 0.0
+    edge = set(np.unique(labels[0, :])) | set(np.unique(labels[:, 0])) | set(np.unique(labels[:, -1]))
+    hole = clear.astype(bool) & ~np.isin(labels, list(edge))
+    return float(hole.sum()) / max(1, int(solid.sum()))
+
+
+def check_whole(out, photo=False):
     """切り抜いた結果を確かめる：人物の全体が見えていること。
     ・いちばん大きいまとまりだけ残す（横に残った小さな切れ端を消す）
     ・左右の端の上 65% に当たっている（体が枠で切れている）ものは使わない。下の端と左右の端の下 35%（胸像の肩）は可
@@ -461,6 +479,9 @@ def check_whole(out):
     soft = ((a > 24) & (a < 200)).sum() / max(1, (a > 24).sum())
     if soft > 0.18:
         raise ValueError(f"輪郭がにじんでいる（半透明 {soft:.0%}）")
+    holes = hole_share(solid) if photo else 0.0   # 絵は武器・手足のすき間も「穴」に数えてしまう（16% の正しい絵もある）ので、写真だけ
+    if holes > HOLE_MAX:
+        raise ValueError(f"切り抜きに穴（{holes:.1%}）")
     out = out.copy()
     out.putalpha(Image.fromarray(a))
     return out
@@ -470,9 +491,23 @@ _SESSIONS = {}
 
 
 def _session(name):
+    """rembg のセッション（1 回だけ作る）。onnxruntime のメモリ池（arena）を切る：池があると、1 枚の切り抜きで
+    使った数 GB を返さずに持ち続け、何枚も切るうちに 13GB（コンテナの 15GB のほぼ全部）まで溜まった。"""
     from rembg import new_session
     if name not in _SESSIONS:
-        _SESSIONS[name] = new_session(name)
+        import onnxruntime as ort
+        orig = ort.SessionOptions
+
+        def opts():
+            o = orig()
+            o.enable_cpu_mem_arena = False
+            o.enable_mem_pattern = False
+            return o
+        ort.SessionOptions = opts   # rembg は new_session の中で ort.SessionOptions() を作るので、そのときだけ差し替える
+        try:
+            _SESSIONS[name] = new_session(name)
+        finally:
+            ort.SessionOptions = orig
     return _SESSIONS[name]
 
 

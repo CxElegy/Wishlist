@@ -16,7 +16,10 @@
 #                     Reddit / YouTube 的帖子不算，避免传闻误报
 #   section      可选，头版上归到哪个板块：游戏 / 影视 / 运动 / 好物（也可以自己起新名字）。
 #                不填按 type：game → 游戏，anime / show → 影视，product / category → 好物
-#   sub          可选，板块里的小分类（如 ドラマ / 映画）。同一板块有 2 个以上小分类时，左边目录出小分类的札
+#   subs         必填，板块里的小分类，按「分け方」各写一个：{status: 運営中, platform: スマホ}（分け方见上面 settings.sub_schemes）。
+#                用哪个分け方由 ⚙ 设置页选（板块ごと）。每个分け方都要写，哪怕只有这一项；左边目录一定出小分类的札。（旧的 sub: 也还认）
+#   parent       可选，上级关注项的名字（スパイダーマン → parent: 漫威电影）。只做一层。目录上下级挂在上级下面的支线上（大小一样、不折叠），
+#                同一条新闻上下级都收到时只放进下级的版面。加关注项时先判断上下级，规则见 CLAUDE.md「新增关注项时：判断上下级」
 #   icon         可选，左边目录的图标（只给正在读的作品显示，1 个作品 1 张）：{image: icons/xx.webp, kind, why, source}。
 #                和 emblem（版面右上角的角色贴纸，可以多张随机）不同，要的是「一眼认出是哪个作品 / 牌子」的那一张。选法见 CLAUDE.md「目次のアイコン」
 #   similar      可选，主页「我会喜欢？」用：同类新东西的搜索词，每条 {label: 同类名, lang: 语言区, query: 搜索词, need: [...]}。
@@ -77,11 +80,21 @@ settings:
   # 这里只放公开的 publishable key（网页本来就要用它，只能新增投票）；读投票用的 secret key 放仓库 Secret SUPABASE_SERVICE_KEY
   supabase_url: "https://bzokpnbcjscbcehdxtjq.supabase.co"           # 形如 https://xxxx.supabase.co
   supabase_key: "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC"           # publishable key（sb_publishable_ 开头）或旧版 anon key
+  # 小分類の分け方（板块ごと）。目次の札・版面の並びにどれを使うかは ⚙ 設定ページで選ぶ（Supabase の nav_schemes 表、db/nav_schemes.sql）。
+  # 選んでいない板块は先頭の分け方。各関注項は subs: {分け方の id: 小分類} に全部の分け方の値を書く（CLAUDE.md「小分类」）
+  sub_schemes:
+    游戏: [{id: status, label: 状態}, {id: platform, label: プラットフォーム}]
+    影视: [{id: kind, label: 種類}, {id: origin, label: 地域}]
+    运动: [{id: sport, label: 種目}, {id: how, label: 楽しみ方}]
+    演出: [{id: scene, label: シーン}, {id: form, label: 形態}]
+    好物: [{id: kind, label: 種類}, {id: owner, label: ブランド・キャラ}]
 
 items:
   - name: Astrae Oratio
+    subs: {status: 新作・発売前, platform: スマホ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/astrae-oratio.webp", kind: cover, why: "ゲーム：公式サイトのキービジュアル（タイトルロゴ）", source: "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://preview.redd.it/hkkny5obxevh1.png?width=640&crop=smart&auto=webp&s=64e68cdc84b4113a2307e69b4d09bc1622781a39"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     motif: retro          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Erin Tanaka", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "emblems/astrae-oratio-erin-tanaka.webp", source: "https://static.wikia.nocookie.net/astrae-oratio/images/7/7c/Erin_render.webp/revision/latest/scale-to-width-down/400?cb=20260701184815", page: "https://astrae-oratio.fandom.com/wiki/Erin_Tanaka", shape: "cutout", upper: true, fs: 0.32}
@@ -124,6 +137,7 @@ items:
       预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。
     site: https://astraeoratio.plaync.com/
   - name: BLEACH Mirrors High
+    subs: {status: 新作・発売前, platform: スマホ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/bleach-mirrors-high.webp", kind: logo, why: "ゲーム：公式サイトのタイトルロゴ", source: "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Ichigo Kurosaki", "Rukia Kuchiki", "Renji Abarai", "Uryuu Ishida", "Orihime Inoue", "Yasutora Sado"]   # 集める対象（メンバー・キャラ・出演者）
@@ -166,6 +180,7 @@ items:
     status: 事前登录中 · 官方称 2026 年内上线，具体日期未定
     site: https://bleach-mh.bn-ent.net/
   - name: GTA 6
+    subs: {status: 新作・発売前, platform: 家庭用ゲーム機}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/gta-6.webp", kind: cover, why: "ゲーム：パッケージ画像（ロゴ部分）", source: "https://upload.wikimedia.org/wikipedia/en/4/46/Grand_Theft_Auto_VI.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Jason Duval", "Lucia Caminos"]   # 集める対象（メンバー・キャラ・出演者）
@@ -224,6 +239,7 @@ items:
     wiki: ["en:Grand Theft Auto VI", "ja:グランド・セフト・オートVI"]
 
   - name: MMORPG 新作
+    subs: {status: 新作・発売前, platform: マルチ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/mmorpg.webp", kind: symbol, why: "カテゴリ：ジャンルを表す記号", source: "https://github.com/jdecked/twemoji（2694 交差した剣）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_icon: "1f6e1 2694 1f409"
@@ -282,12 +298,15 @@ items:
       font: serif
 
   - name: 滑雪
+    subs: {sport: スキー, how: する}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/ski.webp", kind: symbol, why: "スポーツ：競技の記号", source: "https://github.com/jdecked/twemoji（26f7 スキーヤー）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_icon: "26f7 1f3c2 1f3bf"
     motif: snow          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "スキーヤー", why: "版面の主題（スキー）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26f7.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "滑雪", why: "主題を表す画像", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Skier-carving-a-turn.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Skier-carving-a-turn.jpg", shape: "badge"}
+      - {subject: "1f3c2 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3c2.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 日本雪场 · 雪板装备 · 2026-27
     size: L
     type: category
@@ -342,17 +361,19 @@ items:
       font: sans
 
   - name: 漫威电影
+    subs: {kind: 映画, origin: 海外}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/marvel.webp", kind: logo, why: "フランチャイズ：MARVEL のロゴ（人物は使わない）", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Marvel_Studios_2016_logo.svg/960px-Marvel_Studios_2016_logo.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Chris_Hemsworth_%2836076112092%29.jpg/500px-Chris_Hemsworth_%2836076112092%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://www.bing.com/th?id=ONUT.TjmroaDJXyfYeTM4DwalGg&pid=News", "https://www.bing.com/th?id=ONUT.fu1GP1NhKG0zuckHaQlNQQ&pid=News"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Chris Hemsworth", "Robert Downey Jr.", "Anthony Mackie", "Sebastian Stan", "Chris Evans", "Letitia Wright"]   # 集める対象（メンバー・キャラ・出演者）
     motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Chris Hemsworth", why: "Chris Hemsworth（Wikipedia の記事の画像）", image: "emblems/chris-hemsworth.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Chris_Hemsworth_-_Crime_101.jpg/500px-Chris_Hemsworth_-_Crime_101.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Hemsworth", shape: "cutout", fs: 0.401}
+      - {subject: "Chris Hemsworth", why: "Chris Hemsworth（Wikipedia の記事の画像）", image: "emblems/chris-hemsworth.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Chris_Hemsworth_-_Crime_101.jpg/500px-Chris_Hemsworth_-_Crime_101.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Hemsworth", shape: "cutout", fs: 0.399}
       - {subject: "Robert Downey Jr.", why: "Robert Downey Jr.（Wikipedia の記事の画像）", image: "emblems/robert-downey-jr.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/RobertDowneyJr-byPhilipRomano7_%28cropped%29.jpg/500px-RobertDowneyJr-byPhilipRomano7_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Robert_Downey_Jr.", shape: "cutout"}
       - {subject: "Anthony Mackie", why: "Anthony Mackie（Wikipedia の記事の画像）", image: "emblems/anthony-mackie.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Anthony_Mackie_on_the_Green_Carpet_at_the_2025_Zurich_Film_Festival_03_%28cropped%29.jpg/500px-Anthony_Mackie_on_the_Green_Carpet_at_the_2025_Zurich_Film_Festival_03_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Anthony_Mackie", shape: "cutout"}
-      - {subject: "Sebastian Stan", why: "Sebastian Stan（Wikipedia の記事の画像）", image: "emblems/sebastian-stan.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Sebastian_Stan-64526.jpg/500px-Sebastian_Stan-64526.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Sebastian_Stan", shape: "cutout", fs: 0.375}
-      - {subject: "Chris Evans", why: "Chris Evans（Wikipedia の記事の画像）", image: "emblems/chris-evans.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg/500px-Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Evans_(actor)", shape: "cutout", fs: 0.358}
+      - {subject: "Sebastian Stan", why: "Sebastian Stan（Wikipedia の記事の画像）", image: "emblems/sebastian-stan.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Sebastian_Stan-64526.jpg/500px-Sebastian_Stan-64526.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Sebastian_Stan", shape: "cutout", fs: 0.371}
+      - {subject: "Chris Evans", why: "Chris Evans（Wikipedia の記事の画像）", image: "emblems/chris-evans.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg/500px-Chris_Evans_at_the_2025_Toronto_International_Film_Festival_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Chris_Evans_(actor)", shape: "cutout", fs: 0.352}
     like_fx: manga          # 👍 の演出（scripts/likefx.py）：アメコミの擬音（ドカーン）の勢い
     subtitle: Marvel Studios · MCU
     type: show
@@ -412,9 +433,10 @@ items:
     wiki: ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]
 
   - name: FROM
+    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/from.webp", kind: logo, why: "ドラマ：タイトルカード", source: "https://upload.wikimedia.org/wikipedia/en/f/fa/From_title_card.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
-    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg/500px-Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"]   # 目で見て外した画像（切り抜きに穴）。自動補完は選ばない
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg/500px-Harold_Perrineau%2C_Constantine%2C_2014_Comic_Con_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Scott_McCord_%26_The_Bonafide_Truth.jpg/500px-Scott_McCord_%26_The_Bonafide_Truth.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Harold Perrineau", "Eion Bailey", "Catalina Sandino Moreno", "Scott McCord", "Avery Konrad", "Elizabeth Saunders"]   # 集める対象（メンバー・キャラ・出演者）
     motif: noir          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
@@ -473,6 +495,7 @@ items:
     wiki: ["en:From (TV series)"]
 
   - name: 哈利波特剧集
+    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/harry-potter-hbo.webp", kind: logo, why: "ドラマ：HBO 版のタイトルロゴ", source: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Harry_Potter_TV_series_logo.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_people: true   # 出演者の写真で集める（本人確認する）
@@ -543,8 +566,10 @@ items:
     wiki: ["en:Harry Potter (TV series)"]
 
   - name: ILLIT
+    subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/illit.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg/500px-Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     emblem_who: ["Yunah", "Minju", "Moka", "Wonhee", "Iroha"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -600,6 +625,7 @@ items:
     wiki: ["en:Illit", "ko:아일릿", "ja:ILLIT"]
 
   - name: 星巴克马克杯
+    subs: {kind: 食器・生活, owner: ブランド}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/starbucks.webp", kind: logo, why: "ブランド：スターバックスのロゴ", source: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Starbucks
@@ -654,12 +680,15 @@ items:
       font: serif
 
   - name: 猫用品
+    subs: {kind: ペット, owner: ジャンル}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/cat.webp", kind: symbol, why: "カテゴリ：猫の記号", source: "https://github.com/jdecked/twemoji（1f431 猫の顔）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_icon: "1f408 1f43e 1f431"
     motif: paw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "ネコ", why: "版面の主題（猫）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f408.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "1f43e アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f43e.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "1f431 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f431.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 猫グッズ · 家里两只猫
     type: category
     section: 好物
@@ -745,6 +774,7 @@ items:
       font: sans
 
   - name: 日本顶级网球赛事
+    subs: {sport: テニス, how: 観る}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/tennis.webp", kind: symbol, why: "スポーツ：競技の記号", source: "https://github.com/jdecked/twemoji（1f3be テニスボール）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: "Japan Open Tennis Championships"
@@ -752,6 +782,8 @@ items:
     motif: court          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "テニスボール", why: "版面の主題（テニス）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3be.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
+      - {subject: "Japan Open Tennis Championships", why: "主題を表す画像", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ariake%20tennis%20park.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Ariake_tennis_park.jpg", shape: "badge"}
+      - {subject: "1f3c6 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3c6.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: ATP・WTA ツアー 日本開催
     size: L
     type: category
@@ -826,10 +858,13 @@ items:
     wiki: ["en:Japan Open Tennis Championships", "ja:ジャパン・オープン・テニス選手権"]
 
   - name: 三星手机
+    subs: {kind: ガジェット, owner: ブランド}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/samsung-galaxy.webp", kind: logo, why: "ブランド：Galaxy のロゴ", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Samsung_Galaxy_logo_%28%22Galaxy%22_logo_only%29.svg/960px-Samsung_Galaxy_logo_%28%22Galaxy%22_logo_only%29.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Samsung
     motif: tech          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Samsung のロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20wordmark.svg?width=500", page: "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg", shape: "logo"}
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
     type: product
     section: 好物
@@ -892,10 +927,13 @@ items:
     wiki: ["en:Samsung Galaxy S series"]
 
   - name: gelato pique
+    subs: {kind: ファッション, owner: ブランド}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/gelato-pique.webp", kind: logo, why: "ブランド：gelato pique のロゴ", source: "https://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: "gelato pique"
     motif: cloud          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "gelato pique のロゴ", why: "公式サイトのロゴ", image: "https://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718", page: "https://gelatopique.com/", shape: "badge"}
     subtitle: ジェラート ピケ · ルームウェア
     type: category
     section: 好物
@@ -953,6 +991,7 @@ items:
       font: serif
 
   - name: "ぐでたま"
+    subs: {kind: キャラクター, owner: キャラクター}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/gudetama.webp", kind: character, why: "キャラクター：ぐでたま本人（公式の絵）", source: "https://upload.wikimedia.org/wikipedia/en/b/b1/Gudetama_from_Sanrio.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_max: 3   # キャラが 1 体だけなので、別の場面 3 枚
@@ -981,6 +1020,7 @@ items:
     wiki: ["en:Gudetama", "ja:ぐでたま"]
 
   - name: "チェーンソーマン"
+    subs: {kind: アニメ, origin: 日本}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/chainsaw-man.webp", kind: cover, why: "アニメ：AniList のカバー（チェンソーマンの姿）", source: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127230-DdP4vAdssLoz.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Pochita", "Makima", "Denji", "Power", "Aki Hayakawa", "Kobeni Higashiyama"]   # 集める対象（メンバー・キャラ・出演者）
@@ -988,7 +1028,7 @@ items:
     motif: chainsaw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Pochita", why: "作品の顔のマスコット（デンジの相棒）", image: "emblems/pochita.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Pochita_anime_design.png/revision/latest/scale-to-width-down/400?cb=20220919121110", page: "https://chainsaw-man.fandom.com/wiki/Pochita", shape: "cutout"}
-      - {subject: "Makima", why: "AniList の主役（お気に入り順）", image: "emblems/makima.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Makima_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073730", page: "https://chainsaw-man.fandom.com/wiki/Makima", shape: "cutout", fs: 0.321}
+      - {subject: "Makima", why: "AniList の主役（お気に入り順）", image: "emblems/makima.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Makima_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073730", page: "https://chainsaw-man.fandom.com/wiki/Makima", shape: "cutout", fs: 0.335}
       - {subject: "Denji", why: "AniList の主役（お気に入り順）", image: "emblems/denji-af013adf.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/b/b0/Denji_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250324010006", page: "https://chainsaw-man.fandom.com/wiki/Denji", shape: "cutout"}
       - {subject: "Power", why: "AniList の主役（お気に入り順）", image: "emblems/power-5cb6d16c.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/a/ac/Power_anime_design_2.png/revision/latest/scale-to-width-down/400?cb=20231006042039", page: "https://chainsaw-man.fandom.com/wiki/Power", shape: "cutout", fs: 0.32}
       - {subject: "Aki Hayakawa", why: "AniList の主役（お気に入り順）", image: "emblems/aki-hayakawa.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/c/cb/Aki_Reze_Arc_anime_design.png/revision/latest/scale-to-width-down/400?cb=20250323073818", page: "https://chainsaw-man.fandom.com/wiki/Aki_Hayakawa", shape: "cutout", fs: 0.32}
@@ -1012,8 +1052,10 @@ items:
     wiki: ["en:Chainsaw Man", "ja:チェンソーマン"]
 
   - name: "The Mandalorian"
+    subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/the-mandalorian.webp", kind: logo, why: "ドラマ：タイトルロゴ", source: "https://commons.wikimedia.org/wiki/File:The_Mandalorian_black_background.svg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Katee_Sackhoff_%2852957913672%29.jpg/500px-Katee_Sackhoff_%2852957913672%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Katee_Sackhoff_%2852958895305%29.jpg/500px-Katee_Sackhoff_%2852958895305%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Katee_Sackhoff_%2852958895670%29.jpg/500px-Katee_Sackhoff_%2852958895670%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Giancarlo_Esposito_%26_Emily_Swallow_GalaxyCon_Columbus_2023.jpg/500px-Giancarlo_Esposito_%26_Emily_Swallow_GalaxyCon_Columbus_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"]   # 目で見て外した画像（別人・重複・漫画のコマ・遠景）。自動補完は選ばない
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Pedro Pascal", "Giancarlo Esposito", "Katee Sackhoff", "Emily Swallow"]   # 集める対象（メンバー・キャラ・出演者）
     motif: beskar          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
@@ -1038,6 +1080,7 @@ items:
     wiki: ["en:The Mandalorian", "ja:マンダロリアン"]
 
   - name: "あつ森"
+    subs: {status: 運営中, platform: 家庭用ゲーム機}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/animal-crossing-nh.webp", kind: cover, why: "ゲーム：パッケージ画像", source: "https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Tom Nook", "Isabelle", "K.K. Slider", "Timmy and Tommy", "Blathers", "Mabel"]   # 集める対象（メンバー・キャラ・出演者）
@@ -1045,10 +1088,11 @@ items:
     motif: island          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Tom Nook", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/tom-nook.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/e/e3/Tom_Nook_NH.png/revision/latest/scale-to-width-down/400?cb=20191228193640", page: "https://animalcrossing.fandom.com/wiki/Tom_Nook", shape: "cutout"}
-      - {subject: "Isabelle", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/isabelle.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/9/95/Isabelle_NH.png/revision/latest/scale-to-width-down/400?cb=20200610024111", page: "https://animalcrossing.fandom.com/wiki/Isabelle", shape: "cutout", upper: false, fs: 0.487}
+      - {subject: "Isabelle", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/isabelle.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/9/95/Isabelle_NH.png/revision/latest/scale-to-width-down/400?cb=20200610024111", page: "https://animalcrossing.fandom.com/wiki/Isabelle", shape: "cutout", upper: false}
       - {subject: "K.K. Slider", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/k-k-slider.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/8/81/K.K._Slider_NH.png/revision/latest/scale-to-width-down/400?cb=20210113095442", page: "https://animalcrossing.fandom.com/wiki/K.K._Slider", shape: "cutout"}
       - {subject: "Timmy and Tommy", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/timmy-and-tommy.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/6/6c/Timmy_and_Tommy_NH.png/revision/latest/scale-to-width-down/400?cb=20200828185411", page: "https://animalcrossing.fandom.com/wiki/Timmy_and_Tommy", shape: "cutout"}
       - {subject: "Blathers", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/blathers.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/1/1b/Blathers_NH.png/revision/latest/scale-to-width-down/400?cb=20200229053519", page: "https://animalcrossing.fandom.com/wiki/Blathers", shape: "cutout"}
+      - {subject: "Mabel", why: "Mabel（Fandom のページ）", image: "emblems/mabel-2dc77c48.webp", source: "https://dodo.ac/np/images/8/80/Mabel_NH.png", page: "https://nookipedia.com/wiki/Mabel", shape: "cutout", fs: 0.297}
     theme: {bg: "#F7EFE9", fg: "#1E1A18", accent: "#9B5A22", alt_bg: "#211912", alt_fg: "#F4EEE4", alt_accent: "#DA9558", split: true}  # 小元素「Tom Nook」の色に合わせた配色（scripts/emblem.py）
     type: game
     section: "游戏"
@@ -1066,6 +1110,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：什么时候能玩、版本更新、活动、新角色。维基数据：動物森友會系列的第七部作品。"
 
   - name: "Vaundy"
+    subs: {scene: J-POP, form: ソロ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/vaundy.webp", kind: person, why: "音楽家：本人の顔写真", source: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Vaundy_2025.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Vaundy
@@ -1073,6 +1118,7 @@ items:
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Vaundy", why: "本人", image: "emblems/vaundy-vaundy.webp", source: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg", page: "https://ja.wikipedia.org/wiki/Vaundy", shape: "cutout"}
       - {subject: "Vaundy", why: "Vaundy（Wikipedia の記事の画像）", image: "emblems/vaundy-vaundy.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Vaundy", shape: "cutout"}
+      - {subject: "Vaundy", why: "Vaundy（Wikidata の代表画像）", image: "emblems/vaundy-vaundy.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/Vaundy%202025.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Vaundy_2025.jpg", shape: "cutout"}
     type: event
     section: "演出"
     size: S
@@ -1090,6 +1136,7 @@ items:
     subtitle: "演唱会"
 
   - name: "周杰伦"
+    subs: {scene: 華語, form: ソロ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：Spotify のアーティスト写真（顔を真ん中に）", source: "https://open.spotify.com/artist/2elBjNSdBE2Y3f0j1mjrql"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: 周杰倫
@@ -1097,7 +1144,7 @@ items:
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "周杰倫 1", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/1-7808deab.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg/500px-%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Jay_Chou", shape: "cutout"}
       - {subject: "周杰倫 2", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/2-6cb3220b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg/500px-1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg", shape: "cutout"}
-      - {subject: "周杰倫 3", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/3-bf01ca7b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Jay_Chou.JPG/500px-Jay_Chou.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Jay_Chou.JPG", shape: "cutout", fs: 0.327}
+      - {subject: "周杰倫 3", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/3-bf01ca7b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Jay_Chou.JPG/500px-Jay_Chou.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Jay_Chou.JPG", shape: "cutout", fs: 0.32}
       - {subject: "周杰倫 1", why: "周杰倫（Wikidata の代表画像）", image: "emblems/1-7808deab.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8%20%2825%29.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%2825%29.jpg", shape: "cutout"}
       - {subject: "周杰倫 2", why: "周杰倫（Wikidata の代表画像）", image: "emblems/2-6cb3220b.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8%20%EF%BC%888%EF%BC%89.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg", shape: "cutout"}
     type: event
@@ -1116,17 +1163,20 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：演唱会、巡演、门票：抽选、发售、新歌、新专辑、回归。维基数据：台湾男歌手、流行歌曲作家、演员。"
 
   - name: "绝区零"
+    subs: {status: 運営中, platform: マルチ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/zenless-zone-zero.webp", kind: logo, why: "ゲーム：アプリアイコンにもなっている ZZZ のロゴ", source: "https://thumb.wikimedia.org/wikipedia/en/thumb/d/d2/Zenless_Zone_Zero_curved_box_logo.svg/500px-Zenless_Zone_Zero_curved_box_logo.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Ellen Joe", "Belle", "Wise", "Zhu Yuan", "Anby Demara", "Nicole Demara"]   # 集める対象（メンバー・キャラ・出演者）
     emblem_fandom: zenless-zone-zero
     motif: street          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：都市・ストリート
-    like_fx: street          # 👍 の演出（scripts/likefx.py）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "Ellen Joe", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e3/Agent_Ellen_Joe_Portrait.png/revision/latest/scale-to-width-down/400?cb=20241007222138", page: "https://zenless-zone-zero.fandom.com/wiki/Ellen_Joe", shape: "cutout"}
-      - {subject: "Belle", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/6/6e/Agent_Belle_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002545", page: "https://zenless-zone-zero.fandom.com/wiki/Belle", shape: "cutout"}
-      - {subject: "Wise", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e8/Agent_Wise_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002534", page: "https://zenless-zone-zero.fandom.com/wiki/Wise", shape: "cutout"}
-      - {subject: "Zhu Yuan", why: "ゼンゼロの主要エージェント・プロキシ", image: "https://static.wikia.nocookie.net/zenless-zone-zero/images/0/07/Agent_Zhu_Yuan_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240708205906", page: "https://zenless-zone-zero.fandom.com/wiki/Zhu_Yuan", shape: "cutout"}
+      - {subject: "Ellen Joe", why: "ゼンゼロの主要エージェント・プロキシ", image: "emblems/ellen-joe.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e3/Agent_Ellen_Joe_Portrait.png/revision/latest/scale-to-width-down/400?cb=20241007222138", page: "https://zenless-zone-zero.fandom.com/wiki/Ellen_Joe", shape: "cutout"}
+      - {subject: "Belle", why: "ゼンゼロの主要エージェント・プロキシ", image: "emblems/belle-5279e946.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/6/6e/Agent_Belle_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002545", page: "https://zenless-zone-zero.fandom.com/wiki/Belle", shape: "cutout", fs: 0.389}
+      - {subject: "Wise", why: "ゼンゼロの主要エージェント・プロキシ", image: "emblems/wise-5ccf5e28.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/e/e8/Agent_Wise_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707002534", page: "https://zenless-zone-zero.fandom.com/wiki/Wise", shape: "cutout", fs: 0.326}
+      - {subject: "Zhu Yuan", why: "ゼンゼロの主要エージェント・プロキシ", image: "emblems/zhu-yuan.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/0/07/Agent_Zhu_Yuan_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240708205906", page: "https://zenless-zone-zero.fandom.com/wiki/Zhu_Yuan", shape: "cutout", fs: 0.297}
+      - {subject: "Anby Demara", why: "Anby Demara（Fandom のページ）", image: "emblems/anby-demara.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/b/bd/Agent_Anby_Demara_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240706234414", page: "https://zenless-zone-zero.fandom.com/wiki/Anby_Demara", shape: "cutout", fs: 0.312}
+      - {subject: "Nicole Demara", why: "Nicole Demara（Fandom のページ）", image: "emblems/nicole-demara.webp", source: "https://static.wikia.nocookie.net/zenless-zone-zero/images/7/7a/Agent_Nicole_Demara_Portrait.png/revision/latest/scale-to-width-down/400?cb=20240707011646", page: "https://zenless-zone-zero.fandom.com/wiki/Nicole_Demara", shape: "cutout", fs: 0.321}
+    like_fx: street          # 👍 の演出（scripts/likefx.py）
     theme: {bg: "#1E1516", fg: "#F4EEE4", accent: "#A9898A", alt_bg: "#F2EDEE", alt_fg: "#1E1A18", alt_accent: "#856062", split: true}  # 小元素「Ellen Joe」の色に合わせた配色（scripts/emblem.py）
     type: game
     section: "游戏"
@@ -1145,6 +1195,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：版本更新、活动、新角色、打折、免费送、联名、周边、剧情、角色、世界观。维基数据：2024年电子游戏。"
 
   - name: "dota2"
+    subs: {status: eスポーツ, platform: PC}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/dota-2.webp", kind: cover, why: "ゲーム：Steam のライブラリ画像（ロゴ部分）", source: "https://cdn.akamai.steamstatic.com/steam/apps/570/library_600x900.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["Invoker", "Pudge", "Crystal Maiden", "Juggernaut", "Axe", "Lina"]   # 集める対象（メンバー・キャラ・出演者）
@@ -1178,6 +1229,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
 
   - name: "A2O LITE"
+    subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。settings.sub_schemes、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/a2o-lite.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/0Vkn28k7P4K95Ce3knN0hQ"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
     emblem_who: ["YOUNG", "HIMEKI", "VORA", "XILI", "RADA", "MERCI", "AYUNE", "OA", "AIJING"]   # 集める対象（メンバー・キャラ・出演者）
