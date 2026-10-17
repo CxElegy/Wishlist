@@ -2166,35 +2166,45 @@ NAV_STYLES = {
    見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
 .nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--alert);color:var(--ink)}
 .nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
-.nav .nhead .pill{flex:none;height:30px;padding-left:30px;font-size:13px}
-.nav .nhead .pill::before{display:none}   /* トップ・気になるかも？は横 1 列（線路にはつなげない） */
+.nav .nhead .pill{flex:none;height:30px;padding-left:4px;font-size:13px}
+.nav .nhead .pill.on{padding-left:58px;padding-right:12px}
+.nav .nhead .pill.on::before{display:block}   /* 読んでいるときは黒い斜めの箱を出す */
+.nav .nhead .pill::before,.nav .nhead .pill::after{display:none}   /* トップ・気になるかも？は横 1 列（線路にはつなげない） */
 .nav .nhead .pill.on .nm{flex-direction:row;align-items:baseline;gap:6px}
 .nav .rail{flex:1;min-height:0;position:relative;overflow:hidden;margin-right:8px;scrollbar-width:thin}
-.nav .pill{height:34px;padding:0 6px 0 36px;color:rgba(26,28,34,.86);font:800 15px/1.35 var(--font-sans)}
+.nav .pill{height:34px;padding:0 6px 0 34px;color:rgba(26,28,34,.86);font:800 15px/1.35 var(--font-sans)}
 .nav .nbody .pill{height:var(--ih,34px);transition:height .25s}
 .nav .pill .no{display:none}
 .nav .pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .nav .pill .cnt{display:none;font:700 11px var(--font-mono);letter-spacing:.06em;color:rgba(26,28,34,.62)}
 .nav .rail.roomy .pill .nm{display:flex;flex-direction:column;gap:1px}
 .nav .rail.roomy .pill .cnt{display:block}
-.nav .pill .new{flex:none;font:700 11px var(--font-mono);color:var(--alert)}
-.nav .pill::before{content:"";position:absolute;inset:0 auto 0 14.5px;width:3px;z-index:-1;background:rgba(26,28,34,.13)}
+.nav .pill .new{flex:none;font:700 11px var(--font-mono);color:rgba(26,28,34,.5)}   /* 件数は控えめに（赤は読んでいる作品だけ） */
+/* 線路：板块色の細い線に、駅は P5 の斜めの小さな札（丸は使わない）。読んだ駅は板块色で塗る */
+.nav .pill::before{content:"";position:absolute;inset:0 auto 0 15px;width:2px;z-index:-1;background:rgba(26,28,34,.13)}
+.nav .pill::after{content:"";position:absolute;left:9px;top:50%;width:14px;height:8px;margin-top:-4px;transform:skewX(var(--skew));
+ background:var(--paper);border:2px solid rgba(26,28,34,.32);transition:background .2s,border-color .2s}
 .nav .pill:hover{color:var(--ink)}
+.nav .pill:hover::after{border-color:var(--alert)}
 .nav .pill.past::before{background:var(--sc)}
-/* 読んでいる作品：原版（P5）の黒い斜めの箱＋赤い硬い影。アイコンは箱の左端で大きく */
-.nav .pill.on::before{inset:4px -2px 4px 22px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
-.nav .pill .ic{position:absolute;left:5px;top:50%;width:21px;height:21px;margin-top:-10.5px;border:2px solid var(--paper);
- box-shadow:0 0 0 1px rgba(26,28,34,.22);
- transition:width .35s cubic-bezier(.3,1.5,.5,1),height .35s cubic-bezier(.3,1.5,.5,1),margin .35s cubic-bezier(.3,1.5,.5,1),left .35s cubic-bezier(.3,1.5,.5,1),box-shadow .2s}
-.nav .pill.past .ic{box-shadow:0 0 0 1.5px var(--sc)}
-.nav .pill.on{color:var(--card);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:50px}
-.nav .pill.on .ic{width:40px;height:40px;margin-top:-20px;left:-4px;border:3px solid var(--sc);font-size:16px;
- box-shadow:0 0 0 3px var(--paper),0 4px 10px rgba(26,28,34,.25)}
+.nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
+/* アイコンは読んでいる作品だけ：P5 のカットインのように、白フチ＋墨の硬い影で少し傾けて貼る。ほかの行には出さない */
+.nav .pill .ic{display:none}
+/* 読んでいる作品：原版（P5）の黒い斜めの箱＋赤い硬い影 */
+.nav .pill.on::before{inset:4px -2px 4px 24px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
+.nav .pill.on::after{display:none}
+.nav .pill.on{color:var(--card);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:58px}
+.nav .pill.on .ic{display:grid;position:absolute;left:2px;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:0;
+ border:3px solid #FFF;box-shadow:3px 3px 0 var(--ink);transform:rotate(-7deg);font-size:18px;
+ animation:cutin .35s cubic-bezier(.3,1.5,.5,1)}
+@keyframes cutin{from{transform:rotate(-20deg) scale(.3);opacity:0}to{transform:rotate(-7deg) scale(1);opacity:1}}
 .nav .pill.on .nm{display:flex;flex-direction:column;gap:1px}
 .nav .pill.on .cnt{display:block;color:var(--gold)}
 .nav .pill.on .new{color:var(--gold)}
-.nav .nhead .pill.on{height:48px}
-.nav .nbody .pill.on{height:calc(var(--ih,34px) + 18px)}
+.nav .nhead .pill.on{height:52px}
+.nav .nbody .pill.on{height:calc(var(--ih,34px) + 22px)}
+/* 板块のアイコン（twemoji）は宽屏では出さない：板块は色つきの斜めのラベルで十分 */
+.nav .nsec .si{display:none}
 /* 板块の枠：位置と高さは NAV_JS が決める（動くときはなめらかに） */
 .nav .nslot{position:absolute;left:0;right:0;overflow:hidden;transition:top .34s cubic-bezier(.2,.8,.2,1),height .34s cubic-bezier(.2,.8,.2,1)}
 .nav .nslot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--hair)}
@@ -2214,7 +2224,7 @@ NAV_STYLES = {
 .nav .nsubs a:hover{color:var(--ink);border-color:var(--ink)}
 .nav .nsubs a.on{background:var(--sc);border-color:var(--sc);color:#FFF}
 .nav .nlab{height:20px;display:flex;align-items:flex-end;padding:0 0 2px 2px;font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--sc)}
-.nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 36px;font:800 13px var(--font-sans);color:var(--sc);text-decoration:none}
+.nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;font:800 13px var(--font-sans);color:var(--sc);text-decoration:none}
 .nav .nmore:hover{text-decoration:underline}
 .nav .navwish{margin:8px 8px 0 0}
 """,
@@ -2366,7 +2376,7 @@ NAV_JS = """
   // 隠し始める作品の数（items.yaml の settings.nav_hide、既定 24）。auto なら画面の高さだけで決める。
   // どちらでも、行を 30px まで詰めても入らないときは隠す（窮屈にもスクロールにもしない）
   const HIDE = nav.dataset.hide === 'auto' ? 0 : (+nav.dataset.hide || 24), TOTAL = S.reduce((a, s) => a + s.pills.length, 0);
-  const SEC_H = 52, ITEM_H = 34, R_MIN = 30, MORE_H = 26, MIN_H = 46, EXTRA = 18, LAB_H = 20;   // 行の高さ（NAV_STYLES と同じ）
+  const SEC_H = 52, ITEM_H = 34, R_MIN = 30, MORE_H = 26, MIN_H = 46, EXTRA = 22, LAB_H = 20;   // 行の高さ（NAV_STYLES と同じ）
   const hot = p => +p.dataset.hot || 0, num = p => +p.dataset.n || 0, subOf = p => p.dataset.sub || '';
   const topN = (l, n) => l.slice().sort((a, b) => hot(b) - hot(a) || num(a) - num(b)).slice(0, n);
   let curIdx = -2, curProg = -1, ticking = false, lk = null, lsub = null;
