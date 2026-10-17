@@ -569,7 +569,7 @@ items:
     subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/illit.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
-    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg/500px-Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://i.ytimg.com/vi/MoezWJrhzUE/hq2.jpg"]   # 目で見て・検査で外した画像。自動補完は選ばない
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg/500px-Yun_Kouga_-_Lucca_Comics_%26_Games_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://i.ytimg.com/vi/MoezWJrhzUE/hq2.jpg", "https://i.ytimg.com/vi/MoezWJrhzUE/hq3.jpg"]   # 目で見て・検査で外した画像。自動補完は選ばない
     emblem_who: ["Yunah", "Minju", "Moka", "Wonhee", "Iroha"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
