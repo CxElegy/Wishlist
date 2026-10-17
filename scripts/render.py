@@ -2384,9 +2384,8 @@ NAV_STYLES = {
 .nav .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(16px + var(--h) * 84px);aspect-ratio:1;translate:-50% 0;border-radius:50%;
  background:radial-gradient(closest-side,color-mix(in srgb,var(--fm) 70%,transparent),transparent);opacity:calc(.05 + var(--h) * .9);
  transition:opacity .5s,width .5s;animation:breathe calc(3s - var(--h) * 2.2s) ease-in-out infinite alternate}
-/* ぶわっの演出（NAV_JS）：canvas は画面に重ねるが、ふだんはロゴのまわりにしか描かない。炎の壁は「沸騰」に上がったときだけ */
+/* ぶわっの演出（NAV_JS）：canvas は画面に重ねるが、ふだんはロゴのまわりにしか描かない（「沸騰」に上がったときだけ少し広く） */
 .sparkfx{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:60;display:none}
-.firewall{position:fixed;left:0;bottom:0;width:100vw;height:30vh;pointer-events:none;z-index:59;display:none;filter:blur(2px);-webkit-mask-image:linear-gradient(transparent,#000 45%);mask-image:linear-gradient(transparent,#000 45%)}
 /* 話題度の数字が弾んで数え上がり、ロゴが小さく揺れる */
 .nav .hm .hv.hvpop{animation:hvpop .7s cubic-bezier(.2,1.6,.4,1)}
 @keyframes hvpop{0%{transform:scale(1.9) rotate(-8deg);color:var(--flame);text-shadow:0 0 12px var(--gold)}100%{transform:none}}
@@ -2861,9 +2860,16 @@ NAV_JS = """
   const logo = nav.querySelector('.logo'), fl = logo && logo.querySelector('.flame');
   const LV = (() => { try { return JSON.parse(nav.dataset.levels || '[]'); } catch (_) { return []; } })();
   const maxHeat = Math.max(0, ...pills.map(p => +p.dataset.heat || 0));
-  const FL = {h: .3, target: .3, t: Math.random() * 50, run: false, sg: null, first: true};
+  const FL = {h: .3, target: .3, t: Math.random() * 50, run: false, sg: null, first: true, sh: null, shT: null};
   const SPEC = {tl: [.5, -17, -16, 1.4, 1.25], tr: [.46, 17, 15, 1.4, 1.1], o: [1, 0, 0, 1, .9], m: [.8, 0, 0, 1.1, 1.05],
                 i: [.56, 0, 0, 1.2, 1.3], c: [.3, 0, 0, 1, 1.5]};   // 大きさ・横の位置・傾き・揺れの大きさ・速さ
+  // 作品ごとの炎の形：層ごとに横のずれ・大きさ・傾きを少しずつ変える（作品の名前から決まるので、同じ作品はいつも同じ形）
+  function shapeOf(key) {
+    let s = 7; for (const ch of key) s = (s * 31 + ch.charCodeAt(0)) >>> 0;
+    const r = () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296;
+    return Object.fromEntries(Object.keys(SPEC).map(q => { const t = q[0] === 't'; return [q, [(r() - .5) * (t ? 10 : 5), t ? .72 + r() * .6 : .88 + r() * .26, (r() - .5) * (t ? 16 : 7)]]; }));
+  }
+  FL.shT = shapeOf('top'); FL.sh = JSON.parse(JSON.stringify(FL.shT));
   const layers = fl ? [...fl.querySelectorAll('.L')].map(n => ({n, k: n.dataset.k, s: SPEC[n.dataset.k], ph: Math.random() * 100})) : [];
   const turb = fl && fl.querySelector('feTurbulence'), disp = fl && fl.querySelector('feDisplacementMap');
   const ems = fl ? [...fl.querySelectorAll('.em')].map(e => ({e, life: Math.random(), dur: 1, dx: 0, sway: 0, ph: 0, b: 0})) : [];
@@ -2872,21 +2878,30 @@ NAV_JS = """
   // 火の玉が上へ抜け、火の粉が散って、1 秒ほどで新しい強さに落ち着く（上がり幅が大きいほど強い。testground/flame.html）
   // 炎ぜんたいが 一瞬で最大 約 3 倍に膨らみ（.flame の scale）、さらに層が縦に伸びる。同時に画面じゅうに火の粉
   const UP = {tl: .9, tr: .9, o: 1.1, m: 1, i: .8, c: .6};   // 縦に伸びる倍率（外側ほど高く）
-  const env = t => t < .06 ? 1 - (1 - t / .06) ** 2 : t < .22 ? 1 : Math.exp(-(t - .22) * 2.7) * (1 + .12 * Math.sin((t - .22) * 34));   // 0.06 秒で最大・0.16 秒そのまま・揺れながら落ち着く
+  // 燃え上がり方の曲線。山までの速さ・山の長さ・落ち着く速さ・揺れ・後から来るもう一度の小さな燃え上がり（余震）は ぶわっ ごとにくじで決める
+  const env = (t, g) => {
+    let e = t < g.att ? 1 - (1 - t / g.att) ** 2 : t < g.att + g.hold ? 1 : Math.exp(-(t - g.att - g.hold) * g.dec) * (1 + .12 * Math.sin((t - g.att - g.hold) * g.wig));
+    if (g.af && t > g.af.at) { const u = t - g.af.at; e += g.af.k * (u < .05 ? u / .05 : Math.exp(-(u - .05) * 5)); }
+    return e;
+  };
   function flare(up, to) {
     const k = Math.min(1.5, .45 + up * 1.6);
-    const cur = FL.sg ? env(FL.sg.t) * FL.sg.k : 0;   // 続けて上がったとき：燃え上がっている最中のほうが強ければそのまま（小さい ぶわっ で打ち消さない）
+    const cur = FL.sg ? env(FL.sg.t, FL.sg) * FL.sg.k : 0;   // 続けて上がったとき：燃え上がっている最中のほうが強ければそのまま（小さい ぶわっ で打ち消さない）
     if (cur >= k) return;
-    FL.sg = {t: cur > .05 ? .06 : 0, k};
+    const R = Math.random;
+    FL.sg = {t: 0, k, att: .04 + R() * .06, hold: .06 + R() * .16, dec: 2.2 + R() * 1.6, wig: 22 + R() * 24,
+             af: R() < .55 ? {at: .3 + R() * .35, k: .2 + R() * .3} : null,      // 半分くらいは後からもう一度小さく燃え上がる
+             lean: (R() - .5) * 26, wide: .5 + R() * .5, tall: .75 + R() * .6,   // 傾き（±13°）・横への広がり・縦への伸び
+             lay: Object.fromEntries(Object.keys(SPEC).map(q => [q, .5 + R() * 1.1]))};   // 層ごとの伸び方（片方の舌だけ高く跳ねる など）
+    if (cur > .05) FL.sg.t = FL.sg.att;   // 燃え上がっている最中なら山から続ける
     blast(fl, k, to >= .85 && FL.target < .85);   // 画面全体を使うのは「沸騰」に上がったときだけ
     logo.classList.remove('quake'); void logo.offsetWidth; logo.classList.add('quake');   // ロゴが小さく揺れる
     ems.forEach((m, i) => { if (i < Math.round(6 + k * 7)) { m.life = Math.random() * .15; m.dur = .45 + Math.random() * .5; m.dx = (Math.random() - .5) * 4.5; m.sway = Math.random() * 4; m.ph = Math.random() * 6; m.b = k; } });
   }
   // ぶわっの演出。ふだんはロゴのまわりだけ：炎のまわりの光・小さな衝撃波の輪・近くに散る火の粉・煙（画面全体は使わない）。
-  // 「沸騰」（話題度 85 以上）に上がったときだけ画面全体：画面が橙に照らされふちが火の色でちらつく・画面の下から火の粉と炎の壁
-  // （DOOM の炎＝PSX 版の伝搬アルゴリズム。粗い升目を引き伸ばして柔らかく）。canvas 2 枚、終わったら隠してループも止める
-  const FX = {sp: [], sm: [], ring: null, flash: 0, wall: false, acc: 0, hold: 0, run: false, at: 0, last: 0, ox: 0, oy: 0};
-  const FW = 160, FH = 72;
+  // 「沸騰」（話題度 85 以上）に上がったときだけ画面全体を少し：画面がうすく照らされ、ふちがかすかに火の色・火の粉が遠くまで飛び、下からも少し舞い上がる。
+  // 毎回ちがう：火の粉の向き・数、輪が 1 重か 2 重か、煙の数はその都度くじで決める。canvas 1 枚、終わったら隠してループも止める
+  const FX = {sp: [], sm: [], ring: null, flash: 0, run: false, at: 0, last: 0, ox: 0, oy: 0};
   function fxCanvas(cls) { const c = document.createElement('canvas'); c.className = cls; c.setAttribute('aria-hidden', 'true'); document.body.appendChild(c); return c; }
   const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
   function rgb(c) {   // トークンの色 → [r, g, b]
@@ -2898,38 +2913,28 @@ NAV_JS = """
     if (now - FX.at < 500) return; FX.at = now;   // 速くスクロールして続けて上がっても 0.5 秒に 1 回
     if (!FX.cv) {
       FX.cv = fxCanvas('sparkfx'); FX.cx = FX.cv.getContext('2d');
-      FX.fw = fxCanvas('firewall'); FX.fw.width = FW; FX.fw.height = FH; FX.fc = FX.fw.getContext('2d');
-      FX.fire = new Uint8Array(FW * FH); FX.img = FX.fc.createImageData(FW, FH);
       const cs = getComputedStyle(document.documentElement), tok = v => cs.getPropertyValue(v).trim() || '#FF7A1A';
       FX.col = ['--gold', '--flame', '--flame', '--alert', '--gold'].map(tok);
       [FX.cFlame, FX.cGold, FX.cInk] = ['--flame', '--gold', '--ink'].map(v => rgb(tok(v)));
-      const st = ['--ember', '--alert', '--flame', '--gold', '--card'].map(v => rgb(tok(v)));   // 熾火 → 赤 → 橙 → 金 → 白 の 37 段（0 は透明）
-      FX.pal = Array.from({length: 37}, (_, i) => { const f = i / 36 * 4, j = Math.min(3, Math.floor(f)), u = f - j, a = st[j], b = st[j + 1];
-        return [0, 1, 2].map(n => Math.round(a[n] + (b[n] - a[n]) * u)).concat(Math.round(Math.min(1, i / 16) * 215)); });
     }
     const W = innerWidth, H = innerHeight, dpr = Math.min(2, devicePixelRatio || 1);
     if (FX.cv.width !== Math.round(W * dpr) || FX.cv.height !== Math.round(H * dpr)) { FX.cv.width = Math.round(W * dpr); FX.cv.height = Math.round(H * dpr); }
     FX.cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const r = from.getBoundingClientRect(), R = Math.random, n = big ? Math.round(150 + k * 150) : Math.round(36 + k * 30);
+    const r = from.getBoundingClientRect(), R = Math.random, n = Math.round((big ? 80 + k * 60 : 30 + k * 30) * (.7 + R() * .6)), a0 = (R() - .5) * 60;   // 数と向きは毎回くじ
     FX.ox = r.left + r.width / 2; FX.oy = r.top + r.height * .55;
     for (let i = 0; i < n; i++) {
-      const burst = !big || i < n * .62, s = {life: 0, dur: big ? .9 + R() * 1.4 : .5 + R() * .6, w: (big ? 1.3 : 1) + R() * 2, c: FX.col[i % FX.col.length], ph: R() * 6, burst, near: !big};
+      const burst = !big || i < n * .75, s = {life: 0, dur: big ? .9 + R() * 1.4 : .5 + R() * .6, w: (big ? 1.3 : 1) + R() * 2, c: FX.col[i % FX.col.length], ph: R() * 6, burst, near: !big};
       if (burst) {   // 炎から：ふだんは上と横へ近くだけ（ロゴのまわり 200px ほど）、沸騰は上・右・下へ画面全体まで
-        const a = (big ? -110 + R() * 190 : -165 + R() * 150) * Math.PI / 180, v = big ? 260 + R() ** .6 * 1500 * (.55 + Math.min(1, k) * .45) : 120 + R() ** .6 * 420 * (.6 + Math.min(1, k) * .4);
+        const a = (a0 + (big ? -110 + R() * 190 : -165 + R() * 150)) * Math.PI / 180, v = big ? 220 + R() ** .6 * 900 * (.55 + Math.min(1, k) * .45) : 120 + R() ** .6 * 420 * (.6 + Math.min(1, k) * .4);
         Object.assign(s, {x: FX.ox, y: FX.oy, vx: Math.cos(a) * v, vy: Math.sin(a) * v});
       } else {        // 画面の下から：ばらばらの位置・時間で舞い上がる
-        Object.assign(s, {x: R() * W, y: H + 10 + R() * 60, vx: (R() - .5) * 90, vy: -(220 + R() * 650), life: -R() * .5});
+        Object.assign(s, {x: R() * W, y: H + 10 + R() * 60, vx: (R() - .5) * 90, vy: -(160 + R() * 380), life: -R() * .6});
       }
       FX.sp.push(s);
     }
-    FX.ring = {t: 0, k, big}; FX.flash = Math.min(1, .5 + k * .4); FX.big = big;
-    for (let i = 0; i < (big ? 9 : 5); i++) FX.sm.push({x: FX.ox + (R() - .5) * 30, y: FX.oy - 40 - R() * 30, vx: 20 + R() * 50, vy: -(40 + R() * 70), r: 14 + R() * 16, life: -(.2 + R() * .35), dur: 1.4 + R()});
-    if (big) {   // 沸騰に上がったとき：画面の下から炎の壁が立ち上がり、火元が消えると上から崩れて消える
-      FX.fw.style.height = Math.round(18 + Math.min(1.5, k) * 8) + 'vh';
-      FX.hold = .15 + k * .15; FX.wall = true;
-      FX.fire.fill(36, (FH - 1) * FW);
-    }
-    FX.cv.style.display = 'block'; FX.fw.style.display = FX.wall ? 'block' : 'none';
+    FX.ring = {t: 0, k, big, two: R() < .45, w: .7 + R() * .6}; FX.flash = Math.min(1, .5 + k * .4); FX.big = big;
+    for (let i = 0, m = 3 + (R() * (big ? 6 : 4) | 0); i < m; i++) FX.sm.push({x: FX.ox + (R() - .5) * 30, y: FX.oy - 40 - R() * 30, vx: 20 + R() * 50, vy: -(40 + R() * 70), r: 14 + R() * 16, life: -(.2 + R() * .35), dur: 1.4 + R()});
+    FX.cv.style.display = 'block';
     if (!FX.run) { FX.run = true; FX.last = 0; requestAnimationFrame(fxLoop); }
   }
   function fxLoop(now) {
@@ -2939,17 +2944,18 @@ NAV_JS = """
       const f = FX.flash, R0 = FX.big ? Math.max(W, H) * .9 : 170;
       let g = c.createRadialGradient(FX.ox, FX.oy, 0, FX.ox, FX.oy, R0);
       g.addColorStop(0, rgba(FX.cGold, .9)); g.addColorStop(.3, rgba(FX.cFlame, .5)); g.addColorStop(1, rgba(FX.cFlame, 0));
-      c.globalAlpha = f * .45; c.fillStyle = g; c.fillRect(FX.ox - R0, FX.oy - R0, R0 * 2, R0 * 2);
+      c.globalAlpha = f * (FX.big ? .26 : .45); c.fillStyle = g; c.fillRect(FX.ox - R0, FX.oy - R0, R0 * 2, R0 * 2);
       if (FX.big) g = c.createRadialGradient(W / 2, H / 2, Math.min(W, H) * .3, W / 2, H / 2, Math.hypot(W, H) / 2);
       if (FX.big) { g.addColorStop(0, rgba(FX.cFlame, 0)); g.addColorStop(1, rgba(FX.cFlame, .9));
-        c.globalAlpha = f * (.35 + Math.random() * .2); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+        c.globalAlpha = f * (.14 + Math.random() * .08); c.fillStyle = g; c.fillRect(0, 0, W, H); }
       FX.flash *= Math.exp(-2.4 * dt);
     }
     if (FX.ring) {   // 衝撃波の輪
-      const p = (FX.ring.t += dt / .75);
-      if (p >= 1) FX.ring = null;
-      else {
-        const rad = 14 + (1 - (1 - p) ** 3) * (FX.ring.big ? 260 + FX.ring.k * 420 : 50 + FX.ring.k * 60), lw = FX.ring.big ? 1 : .45;
+      const P = (FX.ring.t += dt / .75);
+      if (P >= 1 + (FX.ring.two ? .18 : 0)) FX.ring = null;
+      else for (const p of FX.ring.two ? [P, P - .18] : [P]) {   // 2 重の輪は 0.13 秒遅れてもう 1 本
+        if (p <= 0 || p >= 1) continue;
+        const rad = 14 + (1 - (1 - p) ** 3) * (FX.ring.big ? 260 + FX.ring.k * 420 : 50 + FX.ring.k * 60), lw = (FX.ring.big ? .8 : .45) * FX.ring.w;
         c.globalAlpha = (1 - p) * .35; c.strokeStyle = rgba(FX.cFlame, 1); c.lineWidth = (6 + 34 * (1 - p)) * lw;
         c.beginPath(); c.arc(FX.ox, FX.oy, rad * .95, 0, 7); c.stroke();
         c.globalAlpha = (1 - p) ** 1.4; c.strokeStyle = rgba(FX.cGold, 1); c.lineWidth = (2 + 10 * (1 - p)) * lw;
@@ -2977,27 +2983,8 @@ NAV_JS = """
       c.globalAlpha = a; c.lineWidth = s.w; c.beginPath(); c.moveTo(tx, ty); c.lineTo(s.x, s.y); c.stroke();
     }
     c.globalAlpha = 1;
-    if (FX.wall) {   // 炎の壁：下の行が火元。1 マス上へ、ランダムに横へずれながら 0〜1 段ずつ冷える（50 回 / 秒）
-      const F = FX.fire;
-      FX.acc += dt;
-      while (FX.acc > .02) {
-        FX.acc -= .02;
-        if (FX.hold > 0) FX.hold -= .02;
-        else for (let i = (FH - 1) * FW; i < FH * FW; i++) F[i] = Math.max(0, F[i] - (Math.random() * 3 | 0));
-        for (let x = 0; x < FW; x++) for (let y = 1; y < FH; y++) {
-          const s = y * FW + x, p = F[s];
-          if (!p) { F[s - FW] = 0; continue; }
-          const q = Math.random() * 4 | 0, d = Math.max(0, Math.min(FW * FH - 1, s - FW - q + 1));
-          F[d] = Math.max(0, p - (q & 1) - (Math.random() < .45 ? 1 : 0));   // 上ほど冷えて、壁の高さの半分ほどで消える
-        }
-      }
-      const D = FX.img.data; let lit = false;
-      for (let i = 0; i < F.length; i++) { const v = F[i], col = FX.pal[v]; if (v) lit = true; D[i * 4] = col[0]; D[i * 4 + 1] = col[1]; D[i * 4 + 2] = col[2]; D[i * 4 + 3] = col[3]; }
-      FX.fc.putImageData(FX.img, 0, 0);
-      if (!lit) { FX.wall = false; FX.fw.style.display = 'none'; }
-    }
-    if (FX.sp.length || FX.sm.length || FX.ring || FX.flash > .01 || FX.wall) requestAnimationFrame(fxLoop);
-    else { FX.run = false; c.clearRect(0, 0, W, H); FX.cv.style.display = 'none'; FX.fw.style.display = 'none'; }
+    if (FX.sp.length || FX.sm.length || FX.ring || FX.flash > .01) requestAnimationFrame(fxLoop);
+    else { FX.run = false; c.clearRect(0, 0, W, H); FX.cv.style.display = 'none'; }
   }
   const wob = (t, p) => Math.sin(t * 1.13 + p) * .45 + Math.sin(t * 2.71 + p * 1.7) * .3 + Math.sin(t * 5.87 + p * 2.3) * .17 + Math.sin(t * 11.3 + p * .7) * .08;
   let flLast = 0;
@@ -3005,18 +2992,23 @@ NAV_JS = """
     const dt = Math.min(.05, (now - (flLast || now)) / 1000); flLast = now;
     FL.h += (FL.target - FL.h) * Math.min(1, dt * 4);
     let E = 0;   // ぶわっの強さ（0〜1.5）
-    if (FL.sg) { FL.sg.t += dt; E = env(FL.sg.t) * FL.sg.k; if (FL.sg.t > 1.6) FL.sg = null; }
+    const g = FL.sg;
+    if (g) { g.t += dt; E = env(g.t, g) * g.k; if (g.t > 2.2) FL.sg = null; }
     fl.style.setProperty('--hc', Math.min(1, FL.h + E * .35).toFixed(3));   // 色は毎フレーム滑らかに（燃え上がる瞬間は熱く白く）
     fl.style.setProperty('--fx', E.toFixed(3));
     glow.style.scale = (1 + E * 1.3).toFixed(3);
-    fl.style.scale = (1 + Math.min(2.1, E * 2.2)).toFixed(3);   // 上がり幅が大きいと 約 3 倍
+    const S = Math.min(2.1, E * 2.2);   // 上がり幅が大きいと 約 3 倍（縦横の比・傾きは毎回ちがう）
+    fl.style.scale = g ? `${(1 + S * g.wide).toFixed(3)} ${(1 + S * g.tall).toFixed(3)}` : '1';
+    fl.style.rotate = g ? (g.lean * E / g.k).toFixed(2) + 'deg' : '0deg';
+    for (const q in FL.shT) for (let j = 0; j < 3; j++) FL.sh[q][j] += (FL.shT[q][j] - FL.sh[q][j]) * Math.min(1, dt * 3);   // 作品ごとの形へ滑らかに
     const h = FL.h, amp = .18 + h * 1.5 + E * .8;
     FL.t += dt * (.6 + h * 3.8 + E * 4);
     for (const L of layers) {
-      const [sz0, x0, rot0, la, sp] = L.s, side = L.k === 'tl' || L.k === 'tr';
+      const [sz1, x1, rot1, la, sp] = L.s, side = L.k === 'tl' || L.k === 'tr', [shx, shs, shr] = FL.sh[L.k];
+      const sz0 = sz1 * shs, x0 = x1 + shx, rot0 = rot1 + shr;
       const sz = L.k === 'i' || L.k === 'c' ? sz0 * (.65 + h * .7) : sz0;   // 熱いほど白い芯が大きい
       const on = side ? Math.min(1.25, Math.max(0, (h - .25) / .45)) : 1, tt = FL.t * sp + L.ph;
-      const sy = sz * (1 + (wob(tt, 1) * .16 + Math.max(0, wob(tt * 1.7, 4)) * .14) * amp * la) * (side ? .6 + on * .5 : 1) * (1 + E * UP[L.k]);
+      const sy = sz * (1 + (wob(tt, 1) * .16 + Math.max(0, wob(tt * 1.7, 4)) * .14) * amp * la) * (side ? .6 + on * .5 : 1) * (1 + E * UP[L.k] * (g ? g.lay[L.k] : 1));
       const sx = sz * (1 - wob(tt, 1) * .06 * amp) * (1 + E * .3), skew = wob(tt * .8, 7) * 9 * amp * la;
       const rot = rot0 * on + wob(tt * .6, 3) * 3 * amp, x = x0 * (side ? .8 + on * .4 : 1) + wob(tt * .9, 9) * 1.6 * amp;
       L.n.setAttribute('transform', `translate(${(50 + x).toFixed(2)} 132) rotate(${rot.toFixed(2)}) skewX(${skew.toFixed(2)}) scale(${sx.toFixed(3)} ${sy.toFixed(3)}) translate(-50 -132)`);
@@ -3059,7 +3051,7 @@ NAV_JS = """
     const to = own == null ? Math.min(.35, v / 100) : v / 100;
     const go = !FL.first && to - FL.target > .04 && FL.run, hv = logo.querySelector('.hv'), was = +hv.textContent || 0;
     if (go) flare(to - FL.target, to);   // 強くなる切り替えだけ ぶわっ（開いた直後・止まっているときは出さない）
-    FL.first = false; FL.target = to;
+    FL.first = false; FL.target = to; FL.shT = shapeOf(on && on.getAttribute('href') || 'top');
     nav.style.setProperty('--heat', FL.target.toFixed(2));
     hv.textContent = v ? String(v) : '';
     if (go && v) {   // 数字が弾んで、前の点から数え上がる（0.5 秒）
