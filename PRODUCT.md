@@ -18,12 +18,13 @@ Every 2 hours it collects the latest news on the watch items from free RSS feeds
 ## Positioning
 
 - **AI doesn't go online:** scripts collect the information, and AI only edits what was collected (merges duplicates, writes Chinese headlines). Token use stays low and there are no made-up facts.
+- **Only AI-edited stories go on a section (decided 2026-10-17):** newly collected entries the AI editor hasn't organised yet don't appear as stories; they wait in a collapsed 「整理待ち N 件」 list (original title + source) at the bottom of the section. The only exception is urgent news (`urgent_patterns`), which goes up at once as 重大. The background gate wakes the AI editor whenever there are waiting entries (at most every 2 hours).
 - **Each item has its own fixed section:** each item keeps the same section in its own colour scheme, and only the news inside changes. It's not a news site's time-ordered feed. Sections (genres) stay in a fixed order; inside a genre, sub-categories and then items are ordered by their heat score, so the hottest come first (the left index uses the same order).
 - **Fed by the wishlist:** the 「気になるかも？」 recommendations combine the wishlist's preference tags, the watched sections, and the user's 👍 votes.
 
 ## Operating Context
 
-- GitHub Actions (collect and publish every 2 hours) → GitHub Pages (static HTML). A Claude scheduled task (AI editing) runs twice a day.
+- GitHub Actions (collect and publish every 2 hours) → GitHub Pages (static HTML). A Claude scheduled task (AI editing) runs twice a day, and the background gate (`scripts/gate.py`) also wakes it after a collection leaves entries waiting (on by default for AI editing; the repository variable `GATE_FIRE=0` turns it off).
 - Supabase stores votes, settings-page requests, photo uploads and the news archive. The page writes to it directly with the public key.
 - Discord receives urgent notices and the weekly digest.
 - Article bodies stay in their original languages (Japanese, Simplified Chinese, Traditional Chinese, Korean, English). AI headlines are written in Chinese.

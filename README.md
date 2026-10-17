@@ -75,7 +75,8 @@ items.yaml
   └─ publish（出刊）
        编排  按优先级：inbox/YYYY-MM-DD.edit.json（人工或 Claude 写的）
                      > Claude API（summarize: true 时）
-                     > 关键词规则 priority_keywords（免费，默认）
+             版面只放 AI 整理过的报道；还没整理的条目不上版面，列在版面底部折叠的「整理待ち N 件」，
+             例外是要紧消息（urgent_patterns）马上做「重大」（关键词规则 fallback_stories）。后台ゲート看到整理待ち就叫 AI 编辑
        配图  Reddit 图 / 文章预览图 / 作品封面；配色取自作品主视觉
        输出  reports/YYYY-MM-DD.json + docs/index.html（GitHub Pages）→ Discord 通知
 ```
@@ -110,7 +111,7 @@ items.yaml
 
    **B. API Key**：在 **Secrets** 标签页添加 `ANTHROPIC_API_KEY`。
 
-   不配置就用关键词规则编排，直接用原标题。
+   不配置时，没被 AI 编辑整理的条目先放在「整理待ち」里，等 Claude 定时任务（AI 编辑）整理后再上版面。
 
 3. **Discord 通知**：在 Discord 频道 → 编辑频道 → 整合 → Webhook → 新建 Webhook → 复制 Webhook 网址，
    然后在 GitHub 仓库 Settings → Secrets and variables → Actions → **Secrets** 添加 `DISCORD_WEBHOOK_URL`。

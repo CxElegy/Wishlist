@@ -260,6 +260,35 @@ class AdminPage(unittest.TestCase):
         self.assertNotRegex(render.ADMIN_PAGE_CSS, r"#[0-9A-Fa-f]{3,6}\b")
 
 
+class PendingWidget(unittest.TestCase):
+    """版面の下の折りたたみ「整理待ち N 件」（render._pending）：AI 編集がまだ整理していない新着の原題。"""
+
+    def test_collapsed_list_with_links(self):
+        html_ = render._pending([{"title": "Astrae Oratio CBT", "url": "https://e.com/a", "source": "4Gamer", "date": "2026-10-17"}])
+        self.assertTrue(html_.startswith('<details class="pend">'))   # ふだんは閉じている（open なし）
+        self.assertIn("整理待ち · 1 件", html_)
+        self.assertIn('href="https://e.com/a"', html_)
+        self.assertIn("10.17 · 4Gamer", html_)
+
+    def test_empty_unsafe_and_escaped(self):
+        self.assertEqual(render._pending(None), "")
+        self.assertEqual(render._pending([]), "")
+        html_ = render._pending([{"title": "<script>x</script>", "url": "javascript:alert(1)", "source": "<b>"}])
+        self.assertNotIn("<script>", html_)
+        self.assertNotIn("javascript:", html_)
+        self.assertIn("&lt;b&gt;", html_)
+
+    def test_long_list_is_capped(self):
+        rows = [{"title": f"t{i}", "url": f"https://e.com/{i}"} for i in range(render.PENDING_SHOW + 5)]
+        html_ = render._pending(rows)
+        self.assertEqual(html_.count("<li>"), render.PENDING_SHOW)
+        self.assertIn("ほか 5 件", html_)
+
+    def test_css_uses_tokens_only(self):
+        css = render.CSS[render.CSS.index(".pend{"):render.CSS.index(".pend li small")]
+        self.assertNotRegex(css, r"#[0-9a-fA-F]{3,6}\b")
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -327,14 +356,10 @@ class LiveUpdate(unittest.TestCase):
         self.assertNotRegex(render.LIVE_CSS, r"#[0-9A-Fa-f]{6}\b")
 
     def test_busy_plan(self):
-        plan = render.busy_plan({"edit": {"items": ["GTA 6"]}, "emblem-cron": {"items": []}, "collect": {"items": []}},
-                                ["GTA 6", "あつ森"], {"url": "https://x.supabase.co", "key": "k"})
-        by = {p["id"]: p for p in plan["procs"]}
-        self.assertEqual(set(by), {"edit"})   # 収集は Supabase の版面ごとの状態、ページ生成は帯なし、空の待ち行列も帯なし
-        self.assertEqual(by["edit"]["boards"], [render._wid("GTA 6")])   # 待ち行列の版面だけ
-        self.assertEqual(plan["ids"]["あつ森"], render._wid("あつ森"))
-        self.assertTrue(by["edit"]["slots"])
-        self.assertIn("rpc/live_status", render.BUSY_JS)
+        plan = render.busy_plan(["GTA 6", "あつ森"], {"url": "https://x.supabase.co", "key": "k"})
+        self.assertEqual(plan["ids"]["あつ森"], render._wid("あつ森"))   # live_status の版面名 → 版面の id
+        self.assertNotIn("procs", plan)   # 推定はしない：仕組み自身が live_status に書いたものだけ
+        self.assertIn("rpc/live_boards", render.BUSY_JS)
         self.assertNotRegex(render.BUSY_CSS, r"#[0-9A-Fa-f]{6}\b")   # 色は版面の --acc / --bg / --fg だけ
         self.assertIn("z-index:4", render.BUSY_CSS)   # 小元素（z-index 5）の下
         tag = render._busy_tag(plan, "2026-10-17T00:00:00+00:00")
@@ -342,7 +367,9 @@ class LiveUpdate(unittest.TestCase):
         self.assertIn('"gen": "2026-10-17T00:00:00+00:00"', tag)
         self.assertEqual(render._busy_tag(None, ""), "")
 
-
+    def test_live_on_wishlist_and_heat(self):
+        self.assertIn("document.title", render.LIVE_JS)   # 裏のタブには件数
+        self.assertIn("dirty()", render.LIVE_JS)          # 書きかけ・選んだ写真があるときは読み直さない
 
 class NavParents(unittest.TestCase):
     """目次の小分類（板块ごとに必ず）と上下級（案 A：枝線、同じ大きさ、たたまない）。"""

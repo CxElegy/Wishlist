@@ -368,6 +368,43 @@ def bing_images(query, n=8):
     return parse_bing(html, n)
 
 
+def parse_youtube(html):
+    """YouTube の検索結果ページ（ytInitialData）→ [(videoId, 題名)]。"""
+    m = re.search(r"var ytInitialData = (\{.*?\});</script>", html, re.S)
+    if not m:
+        return []
+    out = []
+
+    def walk(o):
+        if isinstance(o, dict):
+            v = o.get("videoRenderer")
+            if isinstance(v, dict) and v.get("videoId"):
+                out.append((v["videoId"], "".join(r.get("text", "") for r in (v.get("title") or {}).get("runs", []))))
+            for x in o.values():
+                walk(x)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+    walk(json.loads(m.group(1)))
+    return out
+
+
+YT_SOLO = re.compile(r"fancam|직캠|focus|individual|teaser|profile|close.?up|個人|ソロ", re.I)
+
+
+def youtube_images(group, subject, limit=4):
+    """YouTube の動画のサムネイル（1280px の hq720）。グループのメンバー・出演者のように Commons に写真がない人用。
+    検索は「グループ名 + 名前」、題名に名前とグループ名の両方があるものだけ（名前が普通の単語でも別物に当たらない）。
+    1 人を映す動画（直캠・fancam・teaser）を先に。本人かどうかは check の顔の規則で確かめる。"""
+    q = f"{group} {subject}".strip()
+    html = _get("https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": q, "hl": "en"}),
+                3_000_000).decode("utf-8", "replace")
+    rows = [(v, t) for v, t in parse_youtube(html) if relevant(t, subject) and (not group or relevant(t, group))]
+    rows.sort(key=lambda r: 0 if YT_SOLO.search(r[1]) else 1)
+    return [{"title": t, "image": f"https://i.ytimg.com/vi/{v}/hq720.jpg", "page": f"https://www.youtube.com/watch?v={v}",
+             "license": "YouTube のサムネイル"} for v, t in rows[:limit]]
+
+
 def news_images(item_name, subject, anywhere=False, limit=12, days=14, summary=False):
     """集めた新聞（inbox）の配図：その関注項の記事で、題名に対象の名前が入っているもの（anywhere=True なら名前は問わない）。
     人物の別の写真・刚出道のグループの写真は、Wiki よりここのほうが新しくて多い。"""
@@ -614,7 +651,8 @@ def gather(item, log=print, tried=None):
                 log(f"  [Wikipedia] {subj}：{e}")
         if got < (6 if kind == "person" else 1):
             try:
-                rows = commons_photos(subj if len(who) > 1 else f"{subj}", 8 if kind == "person" else 3)
+                # メンバー・出演者は名前だけだと普通の単語（YOUNG・VORA・OA）で村・滝・飛行機に当たるので、作品名をつける
+                rows = commons_photos(f"{subj} {name}" if len(who) > 1 else subj, 8 if kind == "person" else 3)
                 add(subj, rows, "Wikimedia Commons", f"{subj}（Commons の写真）")
                 got += len(rows)
             except Exception as e:
@@ -750,6 +788,12 @@ def gather_pages(item, log=print, tried=None):
             except Exception:
                 pass
         add(subj, rows, "記事のページ", f"{subj}（記事のページの og:image）")
+        if needs_face(item):
+            try:
+                add(subj, youtube_images("" if kind == "person" and len(who) == 1 else name, subj), "YouTube",
+                    f"{subj}（YouTube の動画のサムネイル）")
+            except Exception as e:
+                log(f"  [YouTube] {subj}：{e}")
     return _dedupe(cands)
 
 
@@ -936,15 +980,15 @@ def source_chain(item):
     elif kind == "character" and not item.get("emblem_people"):
         chain = ["直接指定", "Fandom", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", WEB]
     elif kind == "person":
-        chain = ["直接指定", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", WEB]
+        chain = ["直接指定", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", WEB]
     else:   # グループ・出演者：Wikidata は使わない（gather は本人のときだけ）。公式サイトは対象が 1 人のときだけ
-        chain = ["直接指定", "Wikipedia", "Wikimedia Commons", "新聞の配図", WEB]
+        chain = ["直接指定", "Wikipedia", "Wikimedia Commons", "新聞の配図", "YouTube", WEB]
     auto = (lambda s: s != WEB) if needs_face(item) else (lambda s: s in AUTO_SOURCES.get(kind, ()))
     return [(s, auto(s)) for s in chain]
 
 
 # 自動で選ぶときの、取り方の優先順。ブランドは公式ロゴ（Wikidata P154・公式サイト）、主題は Wikidata・Commons・Twemoji を先に
-PICK_ORDER = ["直接指定", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "Twemoji", WEB]
+PICK_ORDER = ["直接指定", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
     "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
     "topic": ["直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
@@ -1079,10 +1123,27 @@ def due(prog, items, now):
         e = prog["items"].get(item["name"]) or {}
         h = _hours_since(e.get("failed_at"), now)
         if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")
-                and e.get("material") in (None, material(item))):   # 材料（新しい記事・手がかり）が変わったら待たない
+                and e.get("material") == material(item)):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない
             continue
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
     return [r[3] for r in sorted(rows, key=lambda r: r[:3])]
+
+
+def waiting(prog, items, now):
+    """失敗して再挑戦を待っている版面 → [(名前, 再挑戦の時刻 ISO)]。材料が変われば時刻を待たずに due() に入る。"""
+    import datetime as dt
+    out = []
+    due_names = {i["name"] for i in due(prog, items, now)}
+    for item in items:
+        e = prog["items"].get(item["name"]) or {}
+        if item["name"] in due_names or e.get("state") != "failed" or status(item)["state"] == "ok":
+            continue
+        try:
+            at = (dt.datetime.fromisoformat(e["failed_at"]) + dt.timedelta(hours=RETRY_HOURS)).isoformat(timespec="seconds")
+        except (KeyError, ValueError):
+            at = ""
+        out.append((item["name"], at))
+    return sorted(out, key=lambda r: r[1])
 
 
 def _write_sheet(item, good):
@@ -1221,11 +1282,16 @@ def record(prog, item, result, now):
 WORKERS = 6   # 同時に処理する関注項の数（Actions は 4 コア。集めるのは待ちが多いので 6 本。抠图・書き込みは 1 本ずつ）
 
 
-def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None, workers=None):
+def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None, workers=None, live=None):
     """定時の後台：時間の予算（分）の中で、足りない関注項を workers 本並列で埋め、state/emblem_progress.json に進捗を残す。
     候補集め・本人確認は並列、items.yaml への書き込みと抠图は WRITE_LOCK で 1 本ずつ。
-    1 つ終わるごとに保存するので、途中で止まっても、それまでの結果は残る。"""
+    1 つ終わるごとに保存するので、途中で止まっても、それまでの結果は残る。
+    live：簡報の版面の「更新中」の帯に知らせる関数（livestatus.report と同じ形）。本番（path なし）では livestatus.report。"""
     fill = fill or fill_one
+    if live is None:
+        import livestatus
+        live = livestatus.report if path is None else (lambda *a, **k: None)   # テスト（path あり）はネットに出ない
+    per_board = runlog.typical("emblem", "item_secs", 240, log_dir=runlog_dir) / 60   # 1 版面にかかる時間（最近の中央値）
     started = time.time()
     workers = max(1, int(workers or WORKERS))
     deadline = clock() + minutes * 60
@@ -1265,6 +1331,8 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                 return
             name = item["name"]
             ilog = (lambda m, n=name: log(f"[{n}] {str(m).strip()}")) if workers > 1 else log
+            live(name, "emblem", "work", "小元素を集めています", per_board + 3)
+            t_item, before = time.time(), fresh_have(item)
             try:
                 result = fill(item, ilog)
             except OutOfTime:
@@ -1274,10 +1342,11 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                     record(prog, item, {"state": "running", "note": "時間切れで途中まで（次の回に続き）"}, _now())
                     runlog.add("emblem", f"{name}：時間切れで途中まで（次の回に続き）", "warn", log_dir=runlog_dir, item=name)
                     save_progress(prog, path)
+                live(name, "emblem", "clear")
                 return
             except Exception as e:   # 1 つの失敗で全体を止めない
                 ilog(f"[失敗] {e}")
-                result = {"state": "failed", "note": f"エラー：{str(e)[:80]}"}
+                result = {"state": "failed", "note": f"エラー：{str(e)[:80]}", "material": material(item)}
             with WRITE_LOCK:
                 fresh = next((i for i in load_items() if i["name"] == name), item)
             with lock:
@@ -1285,8 +1354,14 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
                 prog["last_run"]["done"].append(name)
                 ilog(f"→ {STATE_JA[result['state']]}：{result.get('note', '')}")
                 runlog.add("emblem", f"{name}：{STATE_JA[result['state']]}（{fresh_have(fresh)}）{result.get('note', '')}",
-                           {"ok": "ok", "review": "warn", "failed": "error"}.get(result["state"], "info"), log_dir=runlog_dir, item=name)
+                           {"ok": "ok", "review": "warn", "failed": "error"}.get(result["state"], "info"), log_dir=runlog_dir, item=name,
+                           item_secs=round(time.time() - t_item))
                 save_progress(prog, path)
+            # 小元素が増えた版面は、この回の終わり（push → 網页の生成）に反映される。増えなかった版面は帯を消す
+            if fresh_have(fresh) != before:
+                live(name, "emblem", "wait", "小元素を追加 · 反映を待っています", max(1, (deadline - clock()) / 60) + 3)
+            else:
+                live(name, "emblem", "clear")
 
     threads = [threading.Thread(target=worker, name=f"emblem-{n}", daemon=True) for n in range(min(workers, max(1, len(queue))))]
     for t in threads:

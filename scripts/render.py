@@ -188,7 +188,7 @@ button{font-family:inherit}
 .wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
 .wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
-.wc .tg{position:absolute;left:-8px;top:18px;z-index:2;box-shadow:2px 2px 0 var(--ink)}
+.wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
 .wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.5em}  /* 3 行分：段のカードの高さがそろう */
 .wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
@@ -338,6 +338,17 @@ button{font-family:inherit}
 .older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
 .older summary span{font-weight:500;letter-spacing:.04em}
 .older .grid{padding-top:8px}
+.pend{border-top:1px dashed var(--line)}
+.pend summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 26px;font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em;opacity:.85}
+.pend summary::-webkit-details-marker{display:none}
+.pend summary::before{content:"…";font-weight:900;color:var(--acc)}
+.pend summary span{font-weight:400;letter-spacing:.02em;opacity:.85}
+.pend summary:hover,.pend summary:focus-visible{opacity:1;color:var(--acc);outline:none}
+.pend ul{list-style:none;margin:0;padding:0 26px 14px;display:grid;gap:6px}
+.pend li{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.pend li a{color:inherit}
+.pend li a:hover,.pend li a:focus-visible{color:var(--acc);text-decoration:underline}
+.pend li small{font:var(--fs-label) var(--font-num);opacity:.7}
 .older .card.c3 h3{font-size:15px;line-height:1.45}
 /* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */
 /* ---------- 気になるかも？：店長のおすすめ POP ---------- */
@@ -360,6 +371,8 @@ button{font-family:inherit}
 .pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:280px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
+.pk .pic{--pko:18px}.pk.big .pic{--pko:40px}  /* 下に手書きの札（.pkt）が重なる高さ：写真はその上に収め、重なる帯はぼかしだけ */
+.pk .pic img:not(.bg):not(.ico){bottom:var(--pko)}.pk .pic.fill img.bg{display:block}
 .pk.big .pic{aspect-ratio:4/3}
 .pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:7px;min-width:0;margin:-18px 10px 0;padding:16px 15px 12px;background:var(--card);
  box-shadow:var(--shadow);transform:rotate(-1deg)}
@@ -471,7 +484,7 @@ button{font-family:inherit}
  .top h2{font-size:20px;transform:rotate(-1deg)}
   .wall{grid-template-columns:minmax(0,1fr);gap:16px}.wall>.wc:nth-child(n+7){display:none}.wc.lead{grid-column:auto;grid-row:auto}.wc.lead .pic{min-height:0;aspect-ratio:16/10}
  .wc:not(.lead){display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:4px 12px;align-items:start}
- .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:6px;font-size:11px}
+ .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:-11px;font-size:11px}
   .fside{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
  .shelves{gap:28px 0}.shelf{flex:none;width:100%}
  .tapes{grid-template-columns:minmax(0,1fr);gap:10px;padding:0 4px 0 0}
@@ -480,10 +493,10 @@ button{font-family:inherit}
  .tape:nth-child(n+4){display:none}  /* スマホは各ジャンル 3 作品まで（ほかは下の各版面で） */
  .picks{padding:18px 14px 22px;box-shadow:5px 5px 0 var(--rose)}.pknav{margin-left:0;width:100%}
  .pkgrid,.pkgrid.row{grid-template-columns:minmax(0,1fr);gap:28px}.pk.big .pic{flex:none;min-height:0;aspect-ratio:16/10}
- .pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
+ .pk.big .pic{--pko:26px}.pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
  .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
  .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
- .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}
+ .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
  .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:22px}
@@ -886,6 +899,51 @@ def _has_photo(x):
     return bool(x.get("image") or x.get("_fbs"))
 
 
+def _own_photo(x):
+    """报道自己的图（不算借来的作品封面）。トップのポスターは同じ重要度ならこちらを先に。"""
+    return bool(x.get("image")) and not x.get("_borrowed")
+
+
+def _story_key(work, title):
+    """同じ作品の同じ出来事かを見るための語（digest.story_tokens から作品名を除いたもの）。"""
+    import digest  # digest が render を import しているので、使うときに読む
+    names = [work.get("name", "")] + list(work.get("keywords") or []) + list(work.get("match") or [])
+    generic = set().union(*(digest.story_tokens(str(n)) for n in names)) if names else set()
+    return digest.story_tokens(title) - generic - FRONT_COMMON
+
+
+# 見出しによく出るが「どの出来事か」を表さない語（同じ作品の別の記事でも共通）。これ以外の語が重なれば同じ出来事とみなす
+FRONT_COMMON = {"update", "updates", "news", "official", "report", "reports", "release", "date", "revealed", "reveals",
+                "announced", "announces", "confirmed", "confirms", "fans", "movie", "film", "game", "series", "season"}
+
+
+def _front_pick(ranked, n):
+    """ポスター 1 本＋写真の壁 n 本を選ぶ（ranked は重要度・新しさ順の (作品, 記事)）。
+    - 作品ごとに 1 本目を全部出してから 2 本目（同じ作品の記事ばかり並ばない）
+    - 同じ写真は 2 回出さない
+    - 同じ作品の 2 本目以降は、すでに出した記事と「どの出来事か」を表す語（作品名と FRONT_COMMON を除く）が
+      1 つでも重なれば出さない（trailer・doom が重なる＝同じ予告編・同じ人物の話）。迷ったら出さない：
+      同じニュースが 2 回並ぶより、壁が 1 枚少ないほうがいい"""
+    picked, imgs, keys = [], set(), {}
+    for rnd in (1, 2):
+        for w, x in ranked:
+            if len(picked) > n:
+                return picked
+            img = x.get("image") or (x.get("_fbs") or [None])[0]
+            if any(x is y for _, y in picked) or img in imgs:
+                continue
+            name = w["name"]
+            if rnd == 1 and name in keys:
+                continue
+            k = _story_key(w, x["headline"])
+            if any(k & old for old in keys.get(name, [])):
+                continue
+            picked.append((w, x))
+            imgs.add(img)
+            keys.setdefault(name, []).append(k)
+    return picked
+
+
 def _has_pic(x):
     """能做成卡片：有图，或者至少有来源网站的图标。"""
     return _has_photo(x) or bool(_icons(x))
@@ -898,6 +956,28 @@ def _brief(stories):
     rows = "".join(f'<li><span class="d">{e((x.get("date") or x["_issue"])[5:].replace("-", "."))}{_from(x)}</span>'
                    f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["headline"])}</a></li>' for x in stories)
     return f'<div class="brief"><h4>その他のニュース</h4><ul>{rows}</ul></div>'
+
+
+PENDING_SHOW = 20   # 「整理待ち」に並べる最大件数（それ以上は「ほか N 件」）
+
+
+def _pending(items):
+    """AI 編集がまだ整理していない新着（digest.split_unedited、報告の block["pending"]）。版面には載せず、
+    版面の下に折りたたんだ「整理待ち N 件」として原題・出典・日付だけを並べる（ふだんは閉じている）。
+    要紧消息はここに入らない（その場で「重大」として版面に載る）。ないときは空文字。リンクは http(s) だけ。"""
+    rows = [x for x in items or [] if isinstance(x, dict) and x.get("title")]
+    if not rows:
+        return ""
+    lis = ""
+    for x in rows[:PENDING_SHOW]:
+        u, src = _safe_url(x.get("url")), str(x.get("source") or "")[:40]
+        title = f'<a href="{e(u)}" target="_blank" rel="noopener">{e(x["title"])}</a>' if u else f'<span>{e(x["title"])}</span>'
+        meta = " · ".join(v for v in (e(_md(x.get("date"))), e(src)) if v)
+        lis += f'<li>{title}{f"<small>{meta}</small>" if meta else ""}</li>'
+    if len(rows) > PENDING_SHOW:
+        lis += f'<li class="more">ほか {len(rows) - PENDING_SHOW} 件</li>'
+    return (f'<details class="pend"><summary>整理待ち · {len(rows)} 件'
+            f'<span>AI 編集がまとめたら記事になります（原題のまま）</span></summary><ul>{lis}</ul></details>')
 
 
 def _older(stories, today, more=0, texts=()):
@@ -915,6 +995,12 @@ def _older(stories, today, more=0, texts=()):
     detail = f"今週ほかに {more} 件" + (f" · それ以前 {len(stories) - more} 件" if len(stories) > more else "") if more else rng
     return (f'<details class="older"><summary>{label} · {len(stories) + len(texts)} 件<span>{detail}</span></summary>'
             f'<div class="grid">{cards}</div>{_brief(texts)}</details>')
+
+
+def _spam(title):
+    """垃圾页（digest.is_spam）。収集・出刊で落としているが、古い号に残ったものもページに出さない。"""
+    import digest  # digest が render を import しているので、使うときに読む
+    return digest.is_spam(title)
 
 
 def collect(issues, order=None):
@@ -935,7 +1021,7 @@ def collect(issues, order=None):
             if w is None:  # 已经从关注清单里删掉的不再显示
                 continue
             for st in b.get("stories") or []:
-                if st["url"] in w["_seen"]:
+                if st["url"] in w["_seen"] or _spam(st.get("headline", "")):
                     continue
                 w["_seen"].add(st["url"])
                 w["stories"].append({**st, "_issue": issue["date"], "_work": b["name"],
@@ -947,7 +1033,15 @@ def collect(issues, order=None):
         cover = w.get("cover")
         if cover and GENERIC.search(urllib.parse.urlparse(cover).path):
             cover = None  # 封面是品牌 logo（gelato pique）：不拿来顶替报道的图
-        cover_used = any(x.get("image") == cover for x in w["stories"]) if cover else True
+        # 收集时没图的报道已经把作品封面写进了 image（image_via「作品封面」）：那不是它自己的图，
+        # 也照「每个版面只用一次」处理，只留最新的一条，其余当作没图（不然几天的报道都是同一张封面）
+        cover_used = not cover
+        for x in w["stories"]:
+            if x.get("image") and (x.get("image_via") == "作品封面" or x["image"] in (cover, w.get("cover"))):
+                x["_borrowed"] = True
+                if cover_used:
+                    x["image"] = None
+                cover_used = True
         w["_fbs"] = [cover] if cover else []
         # 代表整个关注项的小图（目录、暂无新消息小栏）：封面，没有就用它最近一条报道的图
         w["_thumb"] = cover or next((x["image"] for x in w["stories"] if x.get("image")), None)
@@ -956,6 +1050,7 @@ def collect(issues, order=None):
                 x["_fbs"] = [cover] if cover and cover != x["image"] else []  # 自己的图打不开时才换封面
             elif not cover_used:
                 x["_fbs"], cover_used = [cover], True
+                x["_borrowed"] = True
             else:
                 x["_fbs"] = []
     return list(works.values())
@@ -970,7 +1065,7 @@ def _calm(block):
     if last:
         tail = (f'<a class="last" href="{e(last["url"])}" target="_blank" rel="noopener">'
                 f'<span class="mono">直近 · {e(last["date"].replace("-", "."))}{_from(last)}</span><b>{e(last["headline"])}</b></a>')
-    tag = "収 集 中" if block.get("collecting") else "新 着 な し"
+    tag = "収 集 中" if block.get("collecting") else "整 理 待 ち" if block.get("pending") else "新 着 な し"
     return (f'<div class="calm">{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
             f"{tail}</div>")
 
@@ -1063,7 +1158,7 @@ def _section(block, anchor=""):
         grid, more = "", []
     else:
         grid, more = _calm({**block, "last": None}), []
-    grid += _brief(texts) + _older(more + older, today, len(more), old_texts)
+    grid += _brief(texts) + _older(more + older, today, len(more), old_texts) + _pending(block.get("pending"))
     recent = recent or texts
     quiet = "" if recent else " quiet"
     cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
@@ -1249,6 +1344,7 @@ SHUFFLE_JS = """
     cards.forEach(el => { el.classList.remove('big'); pool.appendChild(el); });
     if (wishGrid) w.forEach((el, i) => { el.classList.toggle('big', i === 0); wishGrid.appendChild(el); });
     if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
+    dispatchEvent(new Event('resize'));   // 入れ替えたカードの写真を枠に合わせ直す（FIT_JS）
     back.disabled = pos <= 0;
     const fresh = cards.filter(el => !seen[el.dataset.u]).length;
     next.querySelector('small').textContent = fresh ? `未読 ${fresh} 件` : '全部見ました。古い順にもう一度';
@@ -1725,6 +1821,7 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
 .wish.expired .wimg img{{filter:grayscale(.65) contrast(.95);opacity:.85}}
 .wish.expired .wcard:hover .wimg img{{filter:none;opacity:1}}
 </style>
+{_live_head("wishlist")}
 </head>
 <body>
 <div class="page">
@@ -1753,6 +1850,7 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
   }});
 }}));
 </script>
+<script>{LIVE_JS}</script>
 </body>
 </html>
 """
@@ -1925,7 +2023,7 @@ def _wish_section(wishes, works, finds=()):
                          f'{e((st.get("date") or st["_issue"])[5:].replace("-", "."))}{_from(st)}</span>{e(st["headline"])}</a>')
         added = f'<span class="added">加入于 {e(str(x["added"]).replace("-", "."))}</span>' if x.get("added") else ""
         cards.append(
-            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}">'
+            f'<article class="wcard{" solo" if len(wishes) == 1 else ""}" data-status="{e(status)}" data-key="{e(x["name"])}">'
             f'<div class="wimg">{f"""<img src="{e(img)}" alt="{e(x["name"])}" loading="lazy" referrerpolicy="no-referrer">""" if img else ""}'
             f'<span class="heart {cls}">♥ {e(status)}</span></div>'
             f'<div class="wtxt">' + (f'<span class="shop">{e(x["shop"])}</span>' if x.get("shop") else "")
@@ -2102,10 +2200,12 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     - ジャンルの棚：作品ごとに最新の 1 本（ポスターと壁に出たものはなるべく避ける）。押すとその作品の版面へ"""
     pool = [(w, x) for w in works for x in _recent(w, today)]
     newest = sorted(pool, key=lambda p: p[1].get("date") or p[1]["_issue"], reverse=True)
-    pictured = [p for p in newest if _has_photo(p[1])]  # ポスターと壁は本物の写真があるものだけ（来源アイコンは数えない）
-    top_w, top = min(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2)) if pictured else (None, None)
-    ranked = sorted(pictured, key=lambda p: RANK.get(p[1].get("weight"), 2))
-    more = [p for p in ranked if p[1] is not top][:SPOT_COUNT]
+    # ポスターと壁は写真があるものだけ（来源アイコンは数えない）。借りた作品の表紙は、同じ重要度なら記事自身の写真の後ろ
+    pictured = [p for p in newest if _has_photo(p[1])]
+    ranked = sorted(pictured, key=lambda p: (RANK.get(p[1].get("weight"), 2), not _own_photo(p[1])))
+    chosen = _front_pick(ranked, SPOT_COUNT)
+    top_w, top = chosen[0] if chosen else (None, None)
+    more = chosen[1:]
 
     d = dt.date.fromisoformat(today)
     head = (f'<div class="phead"><span class="lab">トップ</span><span>直近 {HOLD_DAYS} 日 · {len(pool)} 件</span>'
@@ -2208,7 +2308,7 @@ NAV_STYLES = {
 /* v6（testground/compare.html）：板块ごとの枠を画面の高さいっぱいに並べる。作品が少ないうちは何も隠さず行の間隔を広げ、
    増えたら NAV_JS が ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。
    見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
-.nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--alert);color:var(--ink)}
+.nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--cur,var(--alert));color:var(--ink);transition:border-color .3s}   /* 左の縦線は読んでいる板块の色 */
 .nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
 .nav .nhead .pill{flex:none;height:30px;padding-left:4px;font-size:13px}
 .nav .nhead .pill.on{padding-left:58px;padding-right:12px}
@@ -2229,13 +2329,13 @@ NAV_STYLES = {
 .nav .pill::after{content:"";position:absolute;left:9px;top:50%;width:14px;height:8px;margin-top:-4px;transform:skewX(var(--skew));
  background:var(--paper);border:2px solid rgba(26,28,34,.32);transition:background .2s,border-color .2s}
 .nav .pill:hover{color:var(--ink)}
-.nav .pill:hover::after{border-color:var(--alert)}
+.nav .pill:hover::after{border-color:var(--sc)}
 .nav .pill.past::before{background:var(--sc)}
 .nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
 /* アイコンは読んでいる作品だけ：P5 のカットインのように、白フチ＋墨の硬い影で少し傾けて貼る。ほかの行には出さない */
 .nav .pill .ic{display:none}
 /* 読んでいる作品：原版（P5）の黒い斜めの箱＋赤い硬い影 */
-.nav .pill.on::before{inset:4px -2px 4px 24px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
+.nav .pill.on::before{inset:4px -2px 4px 24px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--sc)}   /* 硬い影は板块の色 */
 .nav .pill.on::after{display:none}
 .nav .pill.on{color:var(--card);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:58px}
 .nav .pill.on .ic{display:grid;position:absolute;left:2px;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:0;
@@ -2302,10 +2402,10 @@ NAV_STYLES = {
 /* 読んでいる作品：黒い斜めの箱の右端に黄色の斜線、名前は大きく・赤い影。頭の 1 文字だけさらに大きく */
 .nav .nbody .pill.on .nm{transform:rotate(-2deg) translateY(-1px)}
 .nav .pill.on{font-size:18px}
-.nav .pill.on .nm{text-shadow:2px 2px 0 var(--alert);letter-spacing:.01em}
+.nav .pill.on .nm{text-shadow:2px 2px 0 var(--sc);letter-spacing:.01em}
 .nav .pill.on .nm::first-letter{font-size:1.3em}
 .nav .pill.on .cnt{text-shadow:none;letter-spacing:.1em}
-.nav .pill.on .new{font-size:20px;color:var(--gold);text-shadow:2px 2px 0 var(--alert)}
+.nav .pill.on .new{font-size:20px;color:var(--gold);text-shadow:2px 2px 0 var(--sc)}
 .nav .pill.on::after{display:block;content:"";position:absolute;left:auto;right:4px;top:-3px;bottom:-3px;width:9px;height:auto;margin:0;border:0;
  background:var(--gold);transform:skewX(-24deg);box-shadow:2px 2px 0 var(--ink)}
 .nav .pill.on .new{margin-right:14px}
@@ -2419,10 +2519,24 @@ FIT_JS = """
     const p = img.closest('.pic');
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     const nat = img.naturalWidth / img.naturalHeight;
-    if (p.closest('.wc') && !(p.closest('.wc.lead') && innerWidth > 760)) { p.classList.add('fill'); return; }   // 写真の壁：枠 16:10 にそろえて埋める（段の高さがそろう）
+    const pk = p.closest('.pk');
+    if (pk) {   // 気になるかも？：写真は切らない（文字入りのバナーが多い）。下に重なる札の分（--pko）は写真の外
+      const pko = parseFloat(getComputedStyle(p).getPropertyValue('--pko')) || 0;
+      p.style.height = p.style.aspectRatio = p.style.minHeight = '';
+      if (innerWidth <= 760) {   // 1 列：枠を写真の比率にする（縦長すぎ・横長すぎは 1.1〜2.4 倍の範囲でぼかしを足す）
+        const w = p.clientWidth, h = Math.min(Math.max(w / nat, w / 2.4), w * 1.1);
+        Object.assign(p.style, {aspectRatio: 'auto', minHeight: '0', height: (h + pko) + 'px'});
+        p.classList.remove('fill');
+        return;
+      }
+      const r = nat / (p.clientWidth / Math.max(1, p.clientHeight - pko));
+      p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);   // ほぼ同じ比率のときだけ埋める（切れるのは 8% まで）
+      return;
+    }
+    // 枠の大きさは変えない（写真の壁は 16:10 のまま段の高さがそろう）。写真は切らない：ほぼ同じ比率（切れるのは 8% まで）のときだけ埋め、
+    // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
     const r = nat / (p.clientWidth / p.clientHeight);
-    // そのほかの枠は、比率が近いときだけ埋める（遠いときはぼかしの上に全体を見せる）
-    p.classList.toggle('fill', Math.abs(Math.log(r)) < (p.closest('.wc.lead') ? 0.6 : 0.27));   // 大きい一枚は写真の 55% 以上見えるなら埋める
+    p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);
   };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     img.addEventListener('load', () => fit(img));
@@ -2602,7 +2716,7 @@ NAV_JS = """
         p.classList.toggle('past', !!on && num(p) > 0 && num(p) < n0);
       });
       curIdx = idx; curProg = -1;
-      nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
+      nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : 'var(--alert)');   // トップ・気になるかも？を読んでいるときは赤
       nav.classList.toggle('insec', k >= 0);
       tabs.forEach(t => t.classList.toggle('on', t.dataset.sec === (k >= 0 ? S[k].nsec : '')));
       if (wide.matches) layout(force); else narrow(k);
@@ -2727,13 +2841,21 @@ LIVE_JS = """
           set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
   var touched=Date.now(),pending=null,bar=null;
   ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
-  function keys(){var o={};Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){o[a.getAttribute('href')]=1;});return o;}
+  var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'有 %n 条新内容',m:'%n 处有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新'}
+    :{n:'新しい記事が %n 件 届きました',m:'%n か所が新しくなりました',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新'};
+  function art(a){return a.closest('article');}
+  function keyed(){var l=[];Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){l.push([a.getAttribute('href'),art(a)]);});
+    Array.prototype.forEach.call(document.querySelectorAll('article[data-key]'),function(c){l.push(['k:'+c.getAttribute('data-key'),c]);});return l;}
+  function keys(){var o={};keyed().forEach(function(x){o[x[0]]=1;});return o;}
+  // 裏のタブで新しい記事が届いたら、タブの題に件数を出す（表に戻したら消す）
+  var TITLE=document.title;function badge(n){document.title=n?'('+n+') '+TITLE:TITLE;}
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)badge(0);});
   function marks(){var o={};Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){o[s.id]=s.getAttribute('data-h');});return o;}
   function anchor(){var l=document.querySelectorAll('section[id]');for(var i=0;i<l.length;i++){var r=l[i].getBoundingClientRect();if(r.bottom>0)return [l[i].id,r.top];}return null;}
   function toast(msg,act){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
     bar.textContent='';var t=document.createElement('span');t.textContent=msg;bar.appendChild(t);
-    if(act){var b=document.createElement('button');b.type='button';b.textContent='今すぐ表示';b.onclick=go;bar.appendChild(b);}
-    var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label','閉じる');x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
+    if(act){var b=document.createElement('button');b.type='button';b.textContent=T.b;b.onclick=go;bar.appendChild(b);}
+    var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label',T.x);x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
     bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},8000);}
   // 読み直したあと：見ていた場所に戻し、増えた記事・変わったパネルに印を付ける
   var was=ss.get(KEY);ss.del(KEY);
@@ -2746,20 +2868,24 @@ LIVE_JS = """
     if('scrollRestoration' in history)history.scrollRestoration='manual';
     back();addEventListener('load',back);
     var n=0;
-    Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){if(was.keys&&!was.keys[a.getAttribute('href')]){var c=a.closest('article');
-      if(c&&!c.classList.contains('fresh')){c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='たった今';c.appendChild(t);n++;}}});
+    keyed().forEach(function(x){var c=x[1];if(was.keys&&!was.keys[x[0]]&&c&&!c.classList.contains('fresh')){
+      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;}});
     var m=0;
     if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
-      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent='更新';s.appendChild(t);m++;}});
-    toast(n?'新しい記事が '+n+' 件 届きました':m?m+' か所が新しくなりました':'最新の内容にしました');
+      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);m++;}});
+    toast(n?T.n.replace('%n',n):m?T.m.replace('%n',m):T.s);
+    if(document.hidden)badge(n||m);
   }
-  function busy(){var a=document.activeElement;return !!document.querySelector('dialog[open]')||!!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))||!!a&&a.isContentEditable;}
+  // 待つとき：ダイアログを開いている・入力欄にいる・書きかけ／選んだファイルがある（読み直すと消えてしまう）
+  function dirty(){return Array.prototype.some.call(document.querySelectorAll('input,textarea'),function(i){
+    return i.type==='file'?!!(i.files&&i.files.length):!/^(button|submit|checkbox|radio|hidden)$/.test(i.type)&&i.value!==i.defaultValue;});}
+  function busy(){var a=document.activeElement;return !!document.querySelector('dialog[open]')||!!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))||!!a&&a.isContentEditable||dirty();}
   function go(){if(!pending)return;ss.set(KEY,{to:pending,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});
     if('scrollRestoration' in history)history.scrollRestoration='manual';location.reload();}
   function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
       var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
-      if(pending!==v){pending=v;toast('新しい内容があります（操作をやめると自動で表示）',true);}maybe();}).catch(function(){});}
+      if(pending!==v){pending=v;toast(T.p,true);}maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
   setTimeout(check,3000);
@@ -2770,14 +2896,13 @@ LIVE_JS = """
 # 版面の「更新中」の帯：裏の仕組みがその版面を作り直しているあいだ、**その版面だけ**、上の枠に細い帯を往復させ、
 # 予想の進み具合を塗り、「あと約 N 分」を小さく出す。色は版面の --acc。
 # 重なり：帯（z-index 4）は版面の上、小元素（.emb、z-index 5）の下。小元素は版面の外にはみ出して帯に重なってよい。
-#   ニュース収集：版面ごとの実際の状態を Supabase の live_status()（digest.live_mark が書く）から 30 秒ごとに読む。
-#     探し始め →「記事を探しています」/ 新着なし → 帯が消える / 新着あり →「新着 N 件 · 反映まであと約 N 分」。
-#   AI 編集・小元素：Claude の定時タスクはブラウザから見えないので、定時（UTC）からの経過で推定。
-#     対象は待ち行列（digest.backend_todo）の版面だけ（小元素は同時に動く 4 版面）。ページがその定時より後に作られていれば終わったとみなす。
-#   ページ生成（コードの変更）は版面の中身を変えないので帯は出さない（LIVE_JS の帯で新しい版を知らせる）。
-BUSY_MIN = {"edit": 30, "emblem-cron": 45}  # 定時からいつもかかる時間（分）
-BUSY_BOARDS = {"edit": 8, "emblem-cron": 4}  # 待ち行列の先頭から何版面に出すか（小元素は 4 本並列）
-BUSY_LABEL = {"edit": "AI が編集しています", "emblem-cron": "小元素を集めています"}
+# どの版面がいま何をしているかは、仕組み自身が Supabase の live_status 表に書く（推定はしない）。網页は live_boards() を 30 秒ごとに読む。
+#   ニュース収集（digest.live_mark）：探し始め「記事を探しています」→ 探し終えたらすぐ：新着なし＝消える／あり＝「新着 N 件 · AI 整理待ち · 一覧まで約 N 分」
+#     （新着は AI 編集が整理するまで記事にならず、版面の下の「整理待ち」に並ぶ。要紧消息だけはすぐ「重大」で載る）
+#   AI 編集（digest live-edit / pick-images / publish）：「AI が編集しています」→「配図を選んでいます」→「反映を待っています」
+#   小元素の自動補完（emblem_fill.background）：処理中の版面に「小元素を集めています」→ 増えた版面だけ「反映を待っています」
+#   「あと約 N 分」はそれぞれの仕組みの最近の実際の長さ（runlog.typical）から。ページ生成（コードの変更）は帯なし。
+#   このページより前に始まった作業はもう反映済みなので出さない。
 
 BUSY_CSS = """
 .sec>.busy{position:absolute;left:-2px;right:-2px;top:-2px;height:4px;z-index:4;pointer-events:none;overflow:visible}
@@ -2792,20 +2917,16 @@ BUSY_CSS = """
 BUSY_JS = """
 (function(){
   var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen)||0,live=[],MIN=60000;
-  function lastSlot(sl,now){var pv=0;for(var k=-1;k<=0;k++)sl.forEach(function(s){var t=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]);if(t<=+now&&t>pv)pv=t;});return pv;}
-  // ニュース収集：版面ごとの実際の状態（Supabase）。このページより前に始まった回はもう反映済み
   function read(){if(document.hidden||!B.url||!B.key)return;
-    fetch(B.url+'/rest/v1/rpc/live_status',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:'{}'})
+    fetch(B.url+'/rest/v1/rpc/live_boards',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:'{}'})
       .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){live=l||[];paint();}).catch(function(){});}
+  function left(eta,now){var l=eta-now;return l>MIN?'あと約 '+Math.ceil(l/MIN)+' 分':'まもなく反映';}
   function paint(){var now=Date.now(),on={};
-    function put(id,o){if(id&&(!on[id]||o.start<on[id].start))on[id]=o;}
-    live.forEach(function(x){var st=Date.parse(x.started_at),eta=Date.parse(x.eta_at)||0;if(st<GEN-MIN)return;
-      if(x.state==='fetch')put(B.ids[x.board],{start:st,text:'記事を探しています',pc:null});
-      else if(x.state==='found'){var left=eta-now;put(B.ids[x.board],{start:st,pc:eta>st?(now-st)/(eta-st):null,
-        text:'新着 '+x.found+' 件 · '+(left>MIN?'反映まであと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});}});
-    B.procs.forEach(function(p){var pv=lastSlot(p.slots,new Date(now));if(!pv||GEN>=pv||now-pv>p.min*MIN*1.5)return;
-      var left=pv+p.min*MIN-now;p.boards.forEach(function(id){put(id,{start:pv,pc:(now-pv)/(p.min*MIN),
-        text:p.label+' · '+(left>MIN?'あと約 '+Math.ceil(left/MIN)+' 分':'まもなく反映')});});});
+    live.forEach(function(x){var id=B.ids[x.board],st=Date.parse(x.started_at),eta=Date.parse(x.eta_at)||0,text;
+      if(!id||st<GEN-MIN)return;   // このページより前に始まった作業はもう反映済み
+      if(x.proc==='collect')text=x.state==='fetch'?'記事を探しています':'新着 '+x.found+' 件 · AI 整理待ち'+(eta-now>MIN?' · 一覧まで約 '+Math.ceil((eta-now)/MIN)+' 分':'');
+      else text=(x.note||'更新しています')+(eta?' · '+left(eta,now):'');
+      var o={start:st,text:text,pc:eta>st?(now-st)/(eta-st):null};if(!on[id]||st<on[id].start)on[id]=o;});
     Array.prototype.forEach.call(document.querySelectorAll('section.sec[id]'),function(sec){var o=on[sec.id],bar=sec.querySelector(':scope>.busy');
       if(!o){if(bar)bar.remove();return;}
       if(!bar){bar=document.createElement('div');bar.className='busy';bar.setAttribute('role','status');
@@ -2825,20 +2946,10 @@ def _busy_tag(busy, generated):
     return f'<script type="application/json" id="wl-busy">{cfg}</script><script>{BUSY_JS}</script>'
 
 
-def busy_plan(todo=None, names=(), db=None):
-    """版面の「更新中」の帯の設定（BUSY_JS が読む）。todo = digest.backend_todo（AI 編集・小元素が次に処理する版面）；
-    names = 全部の関注項の名前（Supabase の版面名 → 版面の id）；db = {url, key}（公開の publishable key）。"""
-    by = {p["id"]: p for p in processes.PROCESSES}
-    todo = todo or {}
-    procs = []
-    for pid in ("edit", "emblem-cron"):
-        p = by.get(pid)
-        boards = [_wid(n) for n in (todo.get(pid) or {}).get("items", [])][:BUSY_BOARDS[pid]]
-        if p and boards:
-            procs.append({"id": pid, "label": BUSY_LABEL[pid], "min": BUSY_MIN[pid],
-                          "slots": [list(x) for x in processes.slots(p)], "boards": boards})
-    return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
-            "ids": {n: _wid(n) for n in names}, "procs": procs}
+def busy_plan(names=(), db=None):
+    """版面の「更新中」の帯の設定（BUSY_JS が読む）。names = 全部の関注項の名前（live_status の版面名 → 版面の id）；
+    db = {url, key}（公開の publishable key）。"""
+    return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "", "ids": {n: _wid(n) for n in names}}
 
 
 def _live_head(page):
@@ -3419,7 +3530,7 @@ def render_heat(analysis, works, updated):
                   key=lambda r: (-r[1]["score"], r[0]["name"]))
     today = analysis.get("today") or ""
     cards = "".join(_heat_card(w, h) for w, h in rows)
-    return f"""<!doctype html>
+    return _section_marks(f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -3428,6 +3539,7 @@ def render_heat(analysis, works, updated):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}</style>
+{_live_head("heat")}
 </head>
 <body>
 <div class="page">
@@ -3447,9 +3559,10 @@ def render_heat(analysis, works, updated):
 <section class="panel" id="method"><h2 class="sh"><span>計算方法</span><small>METHODOLOGY</small></h2>{_heat_method(analysis)}</section>
 </div>
 <script>{HEAT_PAGE_JS}</script>
+<script>{LIVE_JS}</script>
 </body>
 </html>
-"""
+""", updated)
 
 
 # ---------- 管理ページ（docs/admin.html）：見るだけ。口令なし・ボタンで何かを変えることはしない ----------
@@ -3741,6 +3854,43 @@ def _admin_emblems(rows, run=None):
             + "".join(out) + "</tbody></table></div>")
 
 
+def _admin_edit_diff(d):
+    """「AI 編集の前後」：作品ごとに、集めた記事（横棒の長さ）のうち AI 編集が記事に使ったもの（色）・使わなかったもの（灰）・
+    まだ整理していないもの（金＝整理待ち：版面には載らず、版面の下の折りたたみに原題だけ並ぶ。要紧消息だけは先に「重大」で載る）、
+    右に載せた記事の本数。横棒は全作品で同じ目盛り（1 本の軸）。"""
+    if not d:
+        return '<p class="empty">まだ収集がありません。</p>'
+    rows = d.get("rows") or []
+    if not rows:
+        return f'<p class="empty">{e(_md(d["date"]))} はまだ AI 編集していません。</p>'
+    mx = max([r["total"] for r in rows] + [1])
+    new, urg = d.get("new") or 0, d.get("urgent") or 0
+    wait = (f'<span>整理待ち {new} 件は版面に載せず、各版面の下の「整理待ち」に原題だけ並べる（次の AI 編集で記事に）'
+            + (f' · うち要紧 {urg} 件は先に「重大」で掲載' if urg else "") + "</span>") if new else ""
+    if d.get("edited"):
+        head = (f'<p class="ed-sum"><b>{d["total"]}</b> 件を集めて → <b>{d["used"]}</b> 件を使い → '
+                f'<b>{d["stories"]}</b> 本の記事に（同じ出来事はまとめ、宣伝・雑談・古い話は落とす）'
+                f'<span>配図を選んだ記事 {d["images"]} 本 · 重大ニュース {d["hero"]} 本</span>{wait}</p>')
+    else:
+        head = (f'<p class="ed-sum">{e(_md(d["date"]))} はまだ AI 編集していません：<b>{d["total"]}</b> 件すべて整理待ち'
+                f'{wait}</p>')
+    head += ('<p class="ed-key"><span><i class="ed-u"></i>記事に使った</span><span><i class="ed-d"></i>使わなかった</span>'
+             '<span><i class="ed-p"></i>整理待ち（版面に載せない）</span></p>')
+    out = []
+    for r in rows:
+        nw = r.get("new") or 0
+        u, dr = r["used"], max(0, r["total"] - r["used"] - nw)
+        tip = f'{r["name"]}：集めた {r["total"]} 件のうち {u} 件を使い、{r["stories"]} 本の記事に' + (f'・整理待ち {nw} 件' if nw else "")
+        badge = ("".join(f'<i class="ed-w">{k}</i>' for k, n in (("重大", r["hero"]), ("頭", r["lead"])) if n)
+                 + (f'<i class="ed-new">整理待ち {nw}</i>' if nw else ""))
+        out.append(
+            f'<li title="{e(tip)}"><span class="ed-n">{e(r["name"])}</span>'
+            f'<span class="ed-bar" style="--w:{100 * r["total"] / mx:.1f}%">'
+            f'<i class="ed-u" style="flex:{u}"></i><i class="ed-d" style="flex:{dr}"></i><i class="ed-p" style="flex:{nw}"></i></span>'
+            f'<span class="ed-v">{u} / {r["total"]} 件 → <b>{r["stories"]}</b> 本{badge}</span></li>')
+    return head + f'<ol class="ed-rows">{"".join(out)}</ol>'
+
+
 def _admin_votes(v):
     if not v.get("total"):
         return '<p class="empty">まだ投票がありません。</p>'
@@ -3766,6 +3916,22 @@ def _admin_votes(v):
 
 
 ADMIN_PAGE_CSS = """
+.ed-sum{margin:0 0 6px;font-size:14px;line-height:1.8}.ed-sum b{font:900 20px var(--font-mono);margin:0 2px}
+.ed-sum span{display:block;font-size:12px;opacity:.75}
+.ed-key{display:flex;gap:16px;margin:0 0 10px;font-size:12px}.ed-key span{display:inline-flex;align-items:center;gap:6px}
+.ed-key i{display:inline-block;width:14px;height:10px;border-radius:2px}
+.ed-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ed-rows li{display:grid;grid-template-columns:150px minmax(0,1fr) 210px;gap:10px;align-items:center;font-size:13px}
+.ed-n{font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ed-bar{display:flex;gap:2px;width:var(--w);min-width:6px;height:14px}
+.ed-bar i{display:block;min-width:0;border-radius:0 4px 4px 0}.ed-bar i:first-child{border-radius:4px 0 0 4px}
+.ed-bar i:only-child,.ed-bar i[style*="flex:0"]{border-radius:4px}
+.ed-u{background:var(--viz-1)}.ed-p{background:var(--gold)}.ed-d{background:color-mix(in srgb,var(--ink) 18%,transparent)}
+.ed-bar i[style*="flex:0"]{display:none}
+.ed-v{font:700 12px var(--font-mono);white-space:nowrap}.ed-v b{font-size:15px}
+.ed-w,.ed-new{display:inline-block;font:700 10px var(--font-sans);font-style:normal;margin-left:6px;padding:0 6px;background:var(--ink);color:var(--card);transform:skewX(var(--skew))}
+.ed-new{background:var(--gold);color:var(--ink)}
+@media (max-width:640px){.ed-rows li{grid-template-columns:1fr;gap:3px}.ed-v{white-space:normal}}
 .em-n{white-space:nowrap}.em-n small{margin-left:8px;opacity:.65}
 .em-bar{display:inline-block;width:70px;height:10px;margin-right:8px;background:var(--sheet);border:1px solid var(--ink);vertical-align:middle;position:relative}
 .em-bar i{position:absolute;inset:0 auto 0 0;background:var(--good)}
@@ -3990,8 +4156,14 @@ ADMIN_PAGE_JS = """
   tick();setInterval(tick,60000);
   // GitHub Actions：ワークフローごとに最新の実行（3 分ごとに読み直す。GitHub は 1 時間 60 回まで）
   var runs=document.getElementById('runs');
+  // GitHub の API はログインなしだと 1 時間 60 回まで。管理ページをいくつ開いていても、3 分以内に誰かが読んだ結果は使い回す（localStorage）
+  function actionsRuns(){var K='wl-actions',c=null;try{c=JSON.parse(localStorage.getItem(K)||'null');}catch(e){}
+    if(c&&Date.now()-c.t<170000)return Promise.resolve(c.j);
+    return fetch('https://api.github.com/repos/'+CFG.repo+'/actions/runs?per_page=60').then(function(r){if(!r.ok)throw 0;return r.json();})
+      .then(function(j){try{localStorage.setItem(K,JSON.stringify({t:Date.now(),j:{workflow_runs:(j.workflow_runs||[]).map(function(w){
+        return {path:w.path,html_url:w.html_url,status:w.status,conclusion:w.conclusion,created_at:w.created_at,event:w.event};})}}));}catch(e){}return j;});}
   function loadRuns(){
-  fetch('https://api.github.com/repos/'+CFG.repo+'/actions/runs?per_page=60').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
+  actionsRuns().then(function(j){
     var seen={},ul=el('ul','runs');
     Array.prototype.forEach.call(document.querySelectorAll('.nx .lvx'),function(x){x.remove();});
     Array.prototype.forEach.call(document.querySelectorAll('.nx.run'),function(x){x.classList.remove('run');});
@@ -4027,7 +4199,7 @@ ADMIN_PAGE_JS = """
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
   // いま動いているもの：live_status()（収集・小元素の補完が版面ごとに書く）を 30 秒ごとに
   var LP={collect:'ニュース収集',emblem:'小元素の自動補完',edit:'AI 編集'};
-  function liveState(x){if(x.state==='fetch')return '記事を探している';if(x.state==='found')return '新着 '+x.found+' 件 · 網页に反映待ち';
+  function liveState(x){if(x.state==='fetch')return '記事を探している';if(x.state==='found')return '新着 '+x.found+' 件 · AI 整理待ち';
     var m=/^emblem:(.*)$/.exec(x.state||'');if(m)return '取り方 '+m[1]+'（'+x.found+' / 3 段目）';return x.state;}
   function loadLive(){var box=document.getElementById('livenow');if(!box)return;
     rpc('live_status').then(function(list){box.textContent='';if(!list||!list.length){box.appendChild(el('p','empty','いまは何も動いていません（次の実行は下の「次の実行」）。'));return;}
@@ -4092,6 +4264,7 @@ def render_admin(data, db, updated):
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
+<section class="panel" id="editdiff"><h2 class="sh"><span>AI 編集の前後</span><small>最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事</small></h2>{_admin_edit_diff(data.get("edit_diff"))}</section>
 <section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
 <section class="panel" id="procs"><h2 class="sh"><span>全体の構成</span><small>どこで何が動き、データがどう流れるか · 部品をクリックで詳しい流れ</small></h2>{processes.render()}</section>
 <section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>

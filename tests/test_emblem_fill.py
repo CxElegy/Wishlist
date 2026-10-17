@@ -3,10 +3,12 @@
     python -m unittest discover tests
 """
 
+import datetime as dt
 import json
 import pathlib
 import sys
 import unittest
+from unittest import mock
 
 import yaml
 
@@ -236,10 +238,30 @@ class Background(unittest.TestCase):
         zero = next(i for i in self.items if i["name"] == "zero")
         prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T22:00:00+00:00", material=ef.material(zero))
         self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 6 時間以内・材料が同じ失敗は飛ばす
+        self.assertEqual(ef.waiting(prog, self.items, now), [("zero", "2026-10-17T04:00:00+00:00")])   # 再挑戦待ちとして見える
+        prog["items"]["zero"].pop("material")   # 指紋の記録がない古い失敗は待たない
+        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+        self.assertEqual(ef.waiting(prog, self.items, now), [])
         prog["items"]["zero"]["material"] = "old"   # 新しい記事・手がかりが来た
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T17:00:00+00:00")
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 6 時間たった
+
+    def test_background_tells_the_page(self):
+        """版面の「更新中」の帯：処理を始めた版面に work、増えた版面は wait、増えなかった・失敗した版面は clear。"""
+        calls, filled = [], set()
+
+        def fill(item, log):
+            if item["name"] == "zero":
+                raise RuntimeError("boom")
+            if item["name"] == "one":
+                filled.add("one")   # items.yaml に 6 枚書いた
+                return {"state": "ok", "note": "", "tried": {}}
+            return {"state": "review", "note": "", "tried": {}}
+        with mock.patch.object(ef, "load_items", side_effect=lambda: [dict(i, emblem=[{}] * 6) if i["name"] in filled else i for i in self.items]):
+            ef.background(40, log=lambda m: None, fill=fill, path=self.path, workers=1,
+                          live=lambda board, proc, state, note=None, eta=None: calls.append((board, state)))
+        self.assertEqual(calls, [("zero", "work"), ("zero", "clear"), ("one", "work"), ("one", "wait"), ("brand", "work"), ("brand", "clear")])
 
     def test_background_records_each_item(self):
         seen = []
@@ -659,6 +681,17 @@ class KeepFraming(unittest.TestCase):
 class EmblemDetail(unittest.TestCase):
     """管理ページ「小元素の探し方」：取り方の順・次の回・助言・図。"""
 
+    def test_youtube_titles_need_group_and_name(self):
+        data = {"contents": [{"videoRenderer": {"videoId": "a1", "title": {"runs": [{"text": "OA travel vlog"}]}}},
+                             {"videoRenderer": {"videoId": "b2", "title": {"runs": [{"text": "A2O LITE OA debut trailer"}]}}},
+                             {"videoRenderer": {"videoId": "c3", "title": {"runs": [{"text": "[직캠] A2O LITE OA FanCam"}]}}}]}
+        html = "<script>var ytInitialData = " + json.dumps(data) + ";</script>"
+        self.assertEqual([v for v, _ in ef.parse_youtube(html)], ["a1", "b2", "c3"])
+        with mock.patch.object(ef, "_get", return_value=html.encode()):
+            rows = ef.youtube_images("A2O LITE", "OA")
+        self.assertEqual([r["image"] for r in rows], ["https://i.ytimg.com/vi/c3/hq720.jpg", "https://i.ytimg.com/vi/b2/hq720.jpg"])   # 名前だけの動画は外す・직캠を先に
+        self.assertEqual(ef.parse_youtube("<html></html>"), [])
+
     def test_source_chain_matches_gather(self):
         chain = [s for s, _ in ef.source_chain({"type": "event", "emblem_kind": "group"})]
         self.assertNotIn("Wikidata", chain)   # グループは Wikidata を使わない（gather は本人だけ）
@@ -743,6 +776,16 @@ class Ladder(unittest.TestCase):
         self.assertIn("新しい記事が来たらすぐ", r["note"])
 
 
+class GateWhy(unittest.TestCase):
+    def test_waiting_is_not_silent(self):
+        import gate
+        self.assertEqual(gate._emblem_why([], []), "全部そろっている")
+        why = gate._emblem_why(["a"], [("b", "2026-10-17T08:00:00+00:00")])
+        self.assertIn("足りない 1 版面", why)
+        self.assertIn("失敗 1 版面は再挑戦待ち", why)
+        self.assertIn("17:00", why)   # 日本時間
+
+
 class Gate(unittest.TestCase):
     """後台のゲート：仕事があるか・AI が要るかをプログラムだけで決める（scripts/gate.py）。"""
 
@@ -788,7 +831,36 @@ class Gate(unittest.TestCase):
         data = self.gate.load(self.state)
         data["jobs"]["edit"]["sig"] = "s2"   # 新しい記事が来た
         self.gate.save(data, self.state)
+        res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
+        self.assertIn("分以内に起こし済み", res["edit"])   # 編集中かもしれない：MIN_GAP_MIN は重ねて起こさない
+        data = self.gate.load(self.state)
+        at = dt.datetime.fromisoformat(data["jobs"]["edit"]["fired"]["at"]) - dt.timedelta(minutes=self.gate.MIN_GAP_MIN + 1)
+        data["jobs"]["edit"]["fired"]["at"] = at.isoformat()
+        self.gate.save(data, self.state)
         self.assertEqual(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"], "Claude を起こした")
+
+    def test_gate_fire_switch(self):
+        self.assertEqual(self.gate.enabled_jobs(""), set())
+        self.assertEqual(self.gate.enabled_jobs("0"), set())
+        self.assertEqual(self.gate.enabled_jobs("1"), {"edit", "photos"})
+        self.assertEqual(self.gate.enabled_jobs("all"), {"edit", "photos"})
+        self.assertEqual(self.gate.enabled_jobs(" Edit "), {"edit"})
+        self.assertEqual(self.gate.enabled_jobs("edit,photos,bogus"), {"edit", "photos"})
+        calls = []
+        post = lambda url, token: calls.append(url) or 200
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}, "photos": {"need": True, "sig": "p1"}}}, self.state)
+        env = {"GATE_FIRE": "edit", "ROUTINE_TOKEN_EDIT": "t", "ROUTINE_TOKEN_PHOTOS": "t"}
+        res = self.gate.fire(self.state, post=post, env=env)
+        self.assertEqual(res["edit"], "Claude を起こした")   # AI 編集だけ起こす
+        self.assertIn("GATE_FIRE で止めている", res["photos"])
+        self.assertEqual(len(calls), 1)
+
+    def test_unedited_inbox_means_edit_work(self):
+        """版面には AI 編集済みの記事しか載らない：今日の inbox に未整理（_covered より後・edit.json にない版面）があれば AI 編集の仕事。"""
+        (self.d / "2026-10-17.json").write_text(json.dumps({"items": [{"name": "新作", "entries": [{}] * 2},
+                                                                  {"name": "A", "entries": [{}] * 4}]}), encoding="utf-8")
+        (self.d / "2026-10-17.edit.json").write_text(json.dumps({"A": [], "_covered": {"A": 4}}), encoding="utf-8")
+        self.assertEqual(self.gate.edit_work(self.d, today="2026-10-17"), {"新作": 2})
 
     def test_fire_failure_is_recorded(self):
         def post(url, token):

@@ -11,6 +11,15 @@ Claude の定時タスクは、仕事がなくても起きるたびにトーク�
 Claude を起こすには、定時タスクごとの API トークンが要る（claude.ai/code/routines → タスク → 編集 → API の触发器 → 令牌）：
   AI 編集     ROUTINE_TOKEN_EDIT（既存の Secret ROUTINE_FIRE_TOKEN をそのまま渡す）
   写真から愿望 ROUTINE_TOKEN_PHOTOS（Secret ROUTINE_FIRE_TOKEN_PHOTOS）
+本当に起こすかは GATE_FIRE で決める（background.yml がリポジトリ変数 vars.GATE_FIRE を渡す。
+GitHub → Settings → Secrets and variables → Actions → Variables）：
+  0           起こさない（判断と記録だけ）
+  edit / 未設定  AI 編集だけ起こす（変数がないときの既定）（写真から愿望は自分の定時のまま）
+  edit,photos / 1 / all   両方起こす
+
+版面には AI 編集が整理した記事しか載らない（未整理の新着は版面の下の「整理待ち」）ので、
+今日の inbox に未整理の記事（_covered より後、または edit.json にない版面）があれば AI 編集を起こす。
+同じ仕事（指紋が同じ）は 6 時間起こし直さない。指紋が変わっても、前に起こしてから MIN_GAP_MIN 分は待つ（編集中に重ねて起こさない）。
 """
 
 import datetime as dt
@@ -29,6 +38,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 STATE = ROOT / "state" / "gate.json"
 INBOX = ROOT / "inbox"
 REFIRE_HOURS = 6   # 同じ仕事（指紋が同じ）では、この時間のあいだ起こし直さない
+MIN_GAP_MIN = 60   # 新着が増えて指紋が変わっても、前に起こしてからこの分数は起こさない（AI 編集 1 回 ≈ 20 分、収集は 2 時間ごと）
 
 # AI が要る仕事 → (定時タスクの id, トークンの環境変数, 名前)
 ROUTINES = {
@@ -59,7 +69,8 @@ def save(data, path=None):
 
 
 def edit_work(inbox=INBOX, tz="Asia/Shanghai", today=None):
-    """今日（出刊の日付の時区）の inbox で、edit.json の _covered より新しい記事がある版面 → {名前: 未編集の件数}。
+    """今日（出刊の日付の時区）の inbox で、AI 編集がまだ整理していない記事がある版面 → {名前: 未整理の件数}。
+    未整理 = edit.json の _covered より後の記事、または edit.json にない版面の全部。版面に載らず「整理待ち」に並んでいるもの。
     AI 編集の定時タスクの「何も変えずに終わり」の条件と同じ。"""
     today = today or _now().astimezone(zoneinfo.ZoneInfo(tz)).date().isoformat()
     path = pathlib.Path(inbox) / f"{today}.json"
@@ -68,12 +79,15 @@ def edit_work(inbox=INBOX, tz="Asia/Shanghai", today=None):
     try:
         blocks = json.loads(path.read_text(encoding="utf-8")).get("items", [])
         edit_path = path.with_name(f"{today}.edit.json")
-        covered = (json.loads(edit_path.read_text(encoding="utf-8")) if edit_path.exists() else {}).get("_covered") or {}
+        edit = (json.loads(edit_path.read_text(encoding="utf-8")) if edit_path.exists() else {}) or {}
+        covered = edit.get("_covered") or {}
     except ValueError:
         return {}
     out = {}
     for b in blocks:
-        n, c = len(b.get("entries") or []), int(covered.get(b.get("name")) or 0)
+        name, n = b.get("name"), len(b.get("entries") or [])
+        # digest.publish と同じ読み方：_covered にない版面は、edit.json にあれば全部編集済み・なければ全部未整理
+        c = int(covered[name] or 0) if name in covered else n if name in edit else 0
         if n > c:
             out[b["name"]] = n - c
     return out
@@ -85,23 +99,36 @@ def photo_work(inbox=INBOX):
 
 
 def emblem_work():
-    """小元素：目標に届いていない版面で、今やってよいもの（6 時間以内の失敗で材料が同じものは除く）→ 名前のリスト。AI は要らない。"""
+    """小元素：目標に届いていない版面で、今やってよいもの（6 時間以内の失敗で材料が同じものは除く）→ (名前のリスト, 再挑戦待ち)。
+    再挑戦待ち = [(名前, 時刻)]：失敗して、新しい材料も 6 時間もまだ来ていない版面。AI は要らない。"""
     import emblem_fill
     items = emblem_fill.load_items()
     prog = emblem_fill.sync_progress(emblem_fill.load_progress(), items)
-    return [i["name"] for i in emblem_fill.due(prog, items, _now().isoformat(timespec="seconds"))]   # EMBLEM_RETRY_NOW=1 なら 6 時間を待たない
+    now = _now().isoformat(timespec="seconds")
+    return [i["name"] for i in emblem_fill.due(prog, items, now)], emblem_fill.waiting(prog, items, now)   # EMBLEM_RETRY_NOW=1 なら 6 時間を待たない
+
+
+def _emblem_why(todo, wait, tz="Asia/Tokyo"):
+    parts = []
+    if todo:
+        parts.append(f"足りない {len(todo)} 版面（Actions で Python が埋める）")
+    if wait:
+        first = min((t for _, t in wait if t), default="")
+        when = dt.datetime.fromisoformat(first).astimezone(zoneinfo.ZoneInfo(tz)).strftime("%H:%M") if first else "?"
+        parts.append(f"失敗 {len(wait)} 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても {when} から）")
+    return "・".join(parts) or "全部そろっている"
 
 
 def check(tz="Asia/Shanghai", path=None):
     """→ {job: {need, claude, why, items, sig}}。state/gate.json に書く。"""
     edit = edit_work(tz=tz)
     photos = photo_work()
-    emblem = emblem_work()
+    emblem, emblem_wait = emblem_work()
     jobs = {
-        "emblem": {"need": bool(emblem), "claude": False, "items": emblem[:20],
-                   "why": f"足りない {len(emblem)} 版面（Actions で Python が埋める）" if emblem else "全部そろっているか、6 時間以内に失敗したもの（材料も同じ）だけ"},
+        "emblem": {"need": bool(emblem), "claude": False, "items": emblem[:20], "waiting": [n for n, _ in emblem_wait],
+                   "why": _emblem_why(emblem, emblem_wait)},
         "edit": {"need": bool(edit), "claude": True, "items": sorted(edit),
-                 "why": f"未編集の記事 {sum(edit.values())} 件（{len(edit)} 版面）" if edit else "今日の新着はすべて編集済み"},
+                 "why": f"整理待ちの記事 {sum(edit.values())} 件（{len(edit)} 版面・AI 編集まで版面に載らない）" if edit else "今日の新着はすべて AI 編集済み"},
         "photos": {"need": bool(photos), "claude": True, "items": photos,
                    "why": f"写真 {len(photos)} 枚" if photos else "受付の写真なし"},
     }
@@ -131,10 +158,21 @@ def _post(url, token):
         return r.status
 
 
+def enabled_jobs(flag):
+    """GATE_FIRE の値 → 起こしてよい仕事の集合。'1' / 'all' = 全部、'edit' や 'edit,photos' = その仕事だけ、'' / '0' = なし。"""
+    flag = str(flag or "").strip().lower()
+    if flag in ("", "0", "false", "off", "no"):
+        return set()
+    if flag in ("1", "true", "all", "on", "yes"):
+        return set(ROUTINES)
+    return {x.strip() for x in flag.split(",") if x.strip() in ROUTINES}
+
+
 def fire(path=None, post=_post, env=None):
     """AI が要る仕事があって、同じ指紋でまだ起こしていなければ、Claude の定時タスクを起こす。
-    → {job: 結果の文}。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。"""
+    → {job: 結果の文}。GATE_FIRE で許されていない仕事は起こさない。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。"""
     env = os.environ if env is None else env
+    allowed = enabled_jobs(env.get("GATE_FIRE", "1"))
     data = load(path)
     now = _now()
     results = {}
@@ -143,13 +181,19 @@ def fire(path=None, post=_post, env=None):
         if not j.get("need"):
             results[job] = "仕事なし（起こさない）"
             continue
+        if job not in allowed:
+            results[job] = "GATE_FIRE で止めている（定時を待つ）"
+            continue
         last = j.get("fired") or {}
         try:
-            recent = last.get("sig") == j.get("sig") and now - dt.datetime.fromisoformat(last["at"]) < dt.timedelta(hours=REFIRE_HOURS)
-        except (KeyError, ValueError):
-            recent = False
-        if recent:
+            ago = now - dt.datetime.fromisoformat(last["at"])
+        except (KeyError, ValueError, TypeError):
+            ago = None
+        if ago is not None and last.get("sig") == j.get("sig") and ago < dt.timedelta(hours=REFIRE_HOURS):
             results[job] = "同じ仕事で起こし済み"
+            continue
+        if ago is not None and ago < dt.timedelta(minutes=MIN_GAP_MIN):
+            results[job] = f"{MIN_GAP_MIN} 分以内に起こし済み（編集中かもしれないので待つ）"
             continue
         token = env.get(var)
         if not token:
