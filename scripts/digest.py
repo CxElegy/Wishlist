@@ -190,7 +190,14 @@ SPAM_PATTERNS = [
 ]
 
 
-def is_spam(title):
+# 正规网站的网址里被塞进广告的（站内搜索・追踪参数被拿去刷 SEO）：标题是真的旧文章，网址的参数里是「伴游…添加微信」。
+# 例：finance.sina.cn/…/detail-xxx.d.html?oid=苏州姑苏区伴游模特（金牌经纪）添加快乐微信(88②③6881)…（2026-10-16，6 月的旧文当新闻）
+SPAM_URL = re.compile(r"微信|威信|薇信|加V|伴游|外围|上门|模特.{0,6}经纪|[①-⑳]{2}")
+
+
+def is_spam(title, url=""):
+    if url and SPAM_URL.search(urllib.parse.unquote(urllib.parse.urlsplit(url).query)):
+        return True
     return any(re.search(p, title) for p in SPAM_PATTERNS)
 # 标题去掉作品名后，字符二元组重合度超过这个值视为同一篇（转载、截断标题、改了后缀的）。
 # 用实际标题校准过：真重复 ≥ 0.8，不同文章 ≤ 0.63
@@ -2521,6 +2528,7 @@ def publish(inbox_path=None):
             continue
         stories = [s for s in stories if not is_spam(s.get("headline", ""))]  # 收集后才进 inbox 的垃圾页（合并的旧版）也不出刊
         stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used)  # 原文已删的报道会被去掉
+        stories = [s for s in stories if not is_spam(s.get("headline", ""), s.get("url", ""))]  # 还原后的网址里塞着广告的
         # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
         for d, e in zip(raw["entries"], entries):
             if e.image and not d.get("image"):
