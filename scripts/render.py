@@ -2226,15 +2226,45 @@ NAV_STYLES = {
 .nav .pill .xref{flex:none;font:700 10px var(--font-mono);letter-spacing:.06em;color:var(--sc);border:1px solid var(--sc);padding:0 4px}
 .nav .pill.on .xref{color:var(--gold);border-color:var(--gold)}
 /* 小分類の札（横並び）：いまの板块に小分類が 2 つ以上あれば必ず出す。押すとその小分類の最初の作品へ */
-.nav .nsubs{display:flex;flex-wrap:wrap;gap:4px 6px;margin:0 0 6px 2px}
-.nav .nsubs a{display:flex;align-items:center;gap:5px;height:22px;padding:0 7px;border:1px solid var(--hair);color:rgba(26,28,34,.7);
- font:700 11px/1 var(--font-sans);white-space:nowrap;text-decoration:none}
-.nav .nsubs a small{font:700 10px var(--font-mono)}
+.nav .nsubs{display:flex;flex-wrap:wrap;gap:5px 7px;margin:0 0 6px 4px}
+.nav .nsubs a{display:flex;align-items:center;gap:5px;height:22px;padding:0 8px;border:1.5px solid rgba(26,28,34,.35);color:rgba(26,28,34,.75);
+ font:800 11px/1 var(--font-sans);white-space:nowrap;text-decoration:none;transform:skewX(var(--skew))}
+.nav .nsubs a small{font:12px var(--font-num)}
 .nav .nsubs a:hover{color:var(--ink);border-color:var(--ink)}
-.nav .nsubs a.on{background:var(--sc);border-color:var(--sc);color:#FFF}
-.nav .nlab{height:20px;display:flex;align-items:flex-end;padding:0 0 2px 2px;font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--sc)}
-.nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;font:800 13px var(--font-sans);color:var(--sc);text-decoration:none}
-.nav .nmore:hover{text-decoration:underline}
+.nav .nsubs a.on{background:var(--sc);border-color:var(--ink);color:#FFF;box-shadow:2px 2px 0 var(--ink)}
+.nav .nlab{height:20px;display:flex;align-items:flex-end;gap:4px;padding:0 0 2px 6px;font:900 11px var(--font-sans);letter-spacing:.14em;color:var(--sc);
+ transform:rotate(-2deg);transform-origin:left bottom}
+.nav .nlab::before{content:"／";font-weight:900}
+.nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;text-decoration:none}
+.nav .nmore{font:900 12px var(--font-sans);color:var(--sc);letter-spacing:.04em}
+.nav .nmore:hover{color:var(--alert)}
+/* ---------- P5 の手ざわり：揃えすぎない ----------
+   板块の行：日本語の札は少し傾け、後ろに英字（GAMES…）を大きな透かしで。件数の数字は Anton */
+.nav .nsec{position:relative;isolation:isolate}
+.nav .nsec .tg{font-size:15px;padding:1px 13px;transform:skewX(var(--skew)) rotate(-2deg);box-shadow:2px 2px 0 var(--ink)}
+.nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) rotate(-3deg) scale(1.22);box-shadow:4px 4px 0 var(--ink)}
+.nav .nsec .en{position:absolute;right:46px;top:2px;z-index:-1;font:34px/1 var(--font-num);letter-spacing:.01em;color:var(--sc);opacity:.16;
+ transform:skewX(var(--skew)) rotate(-3deg);white-space:nowrap;pointer-events:none}
+.nav .nslot.cur .nsec .en{opacity:.26}
+.nav .nsec .cnt b{font:19px/1 var(--font-num);color:var(--ink);margin:0 1px}
+.nav .nslot.cur .nsec .cnt b{color:var(--sc)}
+/* 作品の行：名前を 1 行ごとに少しずつずらし・傾ける（線路の駅は揃えたまま）。+N は Anton */
+.nav .nbody .pill .nm{transform-origin:left center}
+.nav .nbody .pill:nth-of-type(3n+1) .nm{transform:rotate(-.9deg)}
+.nav .nbody .pill:nth-of-type(3n+2) .nm{transform:translateX(4px) rotate(.5deg)}
+.nav .nbody .pill:nth-of-type(3n) .nm{transform:translateX(1px) rotate(-.3deg)}
+.nav .pill .new{font:14px/1 var(--font-num);letter-spacing:.02em;color:rgba(26,28,34,.42)}
+/* 読んでいる作品：黒い斜めの箱の右端に黄色の斜線、名前は大きく・赤い影。頭の 1 文字だけさらに大きく */
+.nav .nbody .pill.on .nm{transform:rotate(-2deg) translateY(-1px)}
+.nav .pill.on{font-size:18px}
+.nav .pill.on .nm{text-shadow:2px 2px 0 var(--alert);letter-spacing:.01em}
+.nav .pill.on .nm::first-letter{font-size:1.3em}
+.nav .pill.on .cnt{text-shadow:none;letter-spacing:.1em}
+.nav .pill.on .new{font-size:20px;color:var(--gold);text-shadow:2px 2px 0 var(--alert)}
+.nav .pill.on::after{display:block;content:"";position:absolute;left:auto;right:4px;top:-3px;bottom:-3px;width:9px;height:auto;margin:0;border:0;
+ background:var(--gold);transform:skewX(-24deg);box-shadow:2px 2px 0 var(--ink)}
+.nav .pill.on .new{margin-right:14px}
+.nav .nhead .pill.on::after{display:block}
 .nav .navwish{margin:8px 8px 0 0}
 """,
 }
@@ -2322,7 +2352,8 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
         body += f'<a class="nmore x" href="#{_wid(ws[0]["name"])}"></a>'
         slots.append(f'<div class="nslot" style="--sc:{sc}" data-sec="{e(name)}">'
                      f'<a class="nsec" href="#{_wid(ws[0]["name"])}">{icon}<span class="tg"><span>{e(_sec_name(name))}</span></span>'
-                     f'<span class="cnt">新着 {nn}／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
+                     f'<span class="en" aria-hidden="true">{e(_sec_en(name))}</span>'
+                     f'<span class="cnt">新着 <b>{nn}</b>／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
                      f'<div class="nbody">{body}</div></div>')
     hide = "auto" if str(hide).lower() == "auto" else max(1, int(hide or NAV_HIDE))
     return (f'<nav class="nav" aria-label="目次" data-hide="{hide}">'

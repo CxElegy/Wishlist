@@ -2170,12 +2170,34 @@ def ingest(dry_run=False):
     if live:
         live_mark(None)  # 上一次收集留下的行清掉
 
+    def compare_for(item):
+        compare = known.get(item["name"], [])
+        if item.get("dedupe_others"):  # 别的关注项已经收过的同一件事，这一项不再重复收
+            compare = compare + [t for name, ts in known.items() if name != item["name"] for t in ts]
+        return compare
+
+    def eta():
+        return max(now + dt.timedelta(minutes=LIVE_RUN_MIN), dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=2))
+
+    shown = {}  # 版面 → 网页上现在显示的新记事件数（None = 条已消失）
+
     def fetch(item):
         print(f"抓取：{item['name']}", file=sys.stderr)
+        name = item["name"]
         if live:  # 网页上只有这个版面出「正在找新记事」的条
-            started[item["name"]] = dt.datetime.now(dt.timezone.utc)
-            live_mark(item["name"], "fetch", started=started[item["name"]])
-        return collect(item, confs[item["name"]][1])
+            started[name] = dt.datetime.now(dt.timezone.utc)
+            live_mark(name, "fetch", started=started[name])
+        raw = collect(item, confs[name][1])
+        if live:  # 这个版面一抓完就判断：没有新记事 → 条消失；有 → 「新着 N 件」。
+            # 抓取期间 seen / known 都不变（只读），所以在线程里先数一遍；之后按顺序去重时件数变了再改
+            try:
+                n = len(filter_entries(raw, item, confs[name][1], seen, now, compare_for(item)))
+            except Exception:  # noqa: BLE001
+                n = None
+            if n is not None:
+                shown[name] = n or None
+                live_mark(name, "found" if n else None, n, started.get(name), eta())
+        return raw
     with ThreadPoolExecutor(max_workers=COLLECT_WORKERS) as pool:
         fetched = list(pool.map(fetch, items))
 
@@ -2184,15 +2206,10 @@ def ingest(dry_run=False):
         backfill, conf = confs[item["name"]]
         if backfill:
             print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
-        compare = known.get(item["name"], [])
-        if item.get("dedupe_others"):  # 别的关注项已经收过的同一件事，这一项不再重复收
-            compare = compare + [t for name, ts in known.items() if name != item["name"] for t in ts]
-        entries = filter_entries(raw, item, conf, seen, now, compare)
+        entries = filter_entries(raw, item, conf, seen, now, compare_for(item))
         print(f"  {item['name']} 新条目 {len(entries)} 条", file=sys.stderr)
-        if live:  # 没有新记事：条消失；有：「新着 N 件 · 反映まであと約 N 分」，网页更新后自然消失
-            t = dt.datetime.now(dt.timezone.utc)
-            live_mark(item["name"], "found" if entries else None, len(entries), started.get(item["name"]),
-                      max(now + dt.timedelta(minutes=LIVE_RUN_MIN), t + dt.timedelta(minutes=2)))
+        if live and shown.get(item["name"], -1) != (len(entries) or None):  # 按顺序去重后件数变了（被前面的版面收走）才改
+            live_mark(item["name"], "found" if entries else None, len(entries), started.get(item["name"]), eta())
         if dry_run:
             print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
             continue
