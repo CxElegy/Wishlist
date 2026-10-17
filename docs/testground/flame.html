@@ -11,7 +11,7 @@
 /* テストグラウンド：目次のロゴの炎。SVG の乱流（feTurbulence）で縁を揺らし、形を雑音の中で上へ流して「燃えている」動きにする。
    話題度（0〜100）で 大きさ・流れる速さ・揺らぎの強さ・光・火の粉 が連続して変わる（読んでいる間ずっとその強さで燃える）。
    トークンは scripts/render.py の :root と同じ */
-:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;
+:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;
  --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--skew:-8deg}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans)}
@@ -40,13 +40,21 @@ h2{margin:0;font:900 15px var(--font-sans)}
 .hm small{margin-top:3px;font:900 10px var(--font-sans);letter-spacing:.1em;color:rgba(26,28,34,.7)}
 
 /* ---------- 炎（本番の .nav .flame と同じ） ---------- */
-.flame{position:relative;flex:none;width:44px;height:58px;--h:.3}
+.flame{position:relative;flex:none;width:44px;height:58px;--h:.3;
+ /* 温度の色：冷めた火（0）＝暗い赤の熾火 → 熱い火（1）＝橙・金・白。--hc は NAV_JS が毎フレーム滑らかに入れる */
+ --hc:var(--h);
+ --fo:color-mix(in oklab,color-mix(in oklab,var(--ember),var(--alert) calc(clamp(0,var(--hc) * 1.8,1) * 100%)),var(--flame) calc(clamp(0,(var(--hc) - .55) * 2.2,1) * 100%));
+ --fm:color-mix(in oklab,color-mix(in oklab,var(--ember),var(--flame) calc(clamp(0,var(--hc) * 1.6,1) * 100%)),var(--gold) calc(clamp(0,(var(--hc) - .5) * 2,1) * 100%));
+ --fi:color-mix(in oklab,var(--flame),var(--gold) calc(clamp(0,var(--hc) * 1.4,1) * 100%));
+ --fc:color-mix(in oklab,var(--gold),var(--card) calc(clamp(.15,var(--hc),1) * 100%))}
+
 .flame svg{position:absolute;left:50%;bottom:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;
  transform:translateX(-50%) scale(calc(.42 + var(--h) * .98));transition:transform .5s cubic-bezier(.2,.8,.2,1);
- filter:saturate(calc(.5 + var(--h) * .8)) brightness(calc(.82 + var(--h) * .4))}   /* 冷めた火はくすみ、熱い火は鮮やかに */
+ filter:brightness(calc(.9 + var(--hc) * .25))}
 /* 後ろの光：話題度が高いほど広く濃く、ゆっくり息をする */
+.flame .blue{opacity:clamp(0,(var(--hc) - .75) * 2.6,.55)}
 .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(16px + var(--h) * 84px);height:calc(30px + var(--h) * 46px);margin-left:calc((30px + var(--h) * 46px) / -2);
- border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--flame) 70%,transparent),transparent);
+ border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--fm) 70%,transparent),transparent);
  opacity:calc(.05 + var(--h) * .9);transition:opacity .5s,width .5s,height .5s,margin .5s;animation:breathe calc(3s - var(--h) * 2.2s) ease-in-out infinite alternate}
 @keyframes breathe{to{transform:scale(1.12);filter:brightness(1.15)}}
 /* 火の粉：話題度が高いほど数が多く・速く・高く（JS が数を決める） */
@@ -90,10 +98,11 @@ h2{margin:0;font:900 15px var(--font-sans)}
           <feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/>
           <feGaussianBlur stdDeviation=".8"/>
         </filter>
-        ${grad('o', [[0, '--alert'], [.55, '--alert', .95], [1, '--alert', 0]])}
-        ${grad('m', [[0, '--flame'], [.6, '--flame', .9], [1, '--flame', 0]])}
-        ${grad('i', [[0, '--gold'], [.65, '--gold', .85], [1, '--gold', 0]])}
-        ${grad('c', [[0, '--card'], [.6, '--card', .7], [1, '--card', 0]])}
+        ${grad('o', [[0, '--fo'], [.55, '--fo', .95], [1, '--fo', 0]])}
+        ${grad('m', [[0, '--fm'], [.6, '--fm', .9], [1, '--fm', 0]])}
+        ${grad('i', [[0, '--fi'], [.65, '--fi', .85], [1, '--fi', 0]])}
+        ${grad('c', [[0, '--fc'], [.6, '--fc', .7], [1, '--fc', 0]])}
+        <radialGradient id="${id}b"><stop offset="0" style="stop-color:var(--blueflame)"/><stop offset="1" style="stop-color:var(--blueflame);stop-opacity:0"/></radialGradient>
       </defs>
       <g filter="url(#${id}f)">
         <path class="L tl" d="${TONGUE}" fill="url(#${id}m)"/>
@@ -102,6 +111,7 @@ h2{margin:0;font:900 15px var(--font-sans)}
         <path class="L m" d="${TEAR}" fill="url(#${id}m)"/>
         <path class="L i" d="${TEAR}" fill="url(#${id}i)"/>
         <path class="L c" d="${TEAR}" fill="url(#${id}c)"/>
+        <ellipse class="blue" cx="50" cy="130" rx="15" ry="5" fill="url(#${id}b)"/>
       </g></svg>` + Array.from({length: 16}, () => '<i class="em"></i>').join('');
     // 層：基本の大きさ（底からの縮尺）・横の位置・傾き・揺れの大きさ・速さ・位相（全部ばらばら＝不規則）
     const spec = {tl: [.5, -17, -16, 1.4, 1.25], tr: [.46, 17, 15, 1.4, 1.1], o: [1, 0, 0, 1, .9], m: [.8, 0, 0, 1.1, 1.05],
@@ -138,6 +148,7 @@ h2{margin:0;font:900 15px var(--font-sans)}
     const dt = Math.min(.05, (now - last) / 1000); last = now;
     for (const st of flames) {
       st.h += (st.target - st.h) * Math.min(1, dt * 4);
+      st.el.style.setProperty('--hc', st.h.toFixed(3));
       const h = st.h, speed = .6 + h * 3.8;                 // 揺れの速さ：静か 0.9 → 沸騰 3.1
       st.t += dt * speed;
       const t = st.t, amp = .18 + h * 1.5;                    // 揺れの大きさ
