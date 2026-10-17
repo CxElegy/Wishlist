@@ -190,7 +190,7 @@
   **后台的ゲート**（`scripts/gate.py` + `.github/workflows/background.yml`）：先数有没有活；小元素补全直接在 Actions 用 Python 做（不用 AI，
   原来要目视的「别人・远景・合照・抠图有洞・重复」都改成规则了）；AI 编辑・照片加愿望只在有活时用 API 叫 Claude（同一份活 6 小时内不重复叫，
   需要各定时任务的 API 令牌 Secret；**仓库变量** `GATE_FIRE`（Settings → Secrets and variables → Actions → Variables）打开才真的叫：
-  没设 / `0` = 不叫、`edit` = 只叫 AI 编辑、`1` = AI 编辑和照片都叫。打开后，那个任务自己的定时由用户确认再停，不然两边都跑反而更费）。
+  没设 = `edit`（默认，2026-10-17 打开）、`0` = 不叫、`edit` = 只叫 AI 编辑、`1` = AI 编辑和照片都叫。打开后，那个任务自己的定时由用户确认再停，不然两边都跑反而更费）。
 - **版面只放 AI 整理过的报道（2026-10-17 定）**：收集（Actions）出刊时，没被 AI 编辑覆盖的条目（编号 > `_covered`、或 edit.json 里没有的关注项）
   不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
   ゲート看到今天有整理待ち（`gate.edit_work`）就叫 AI 编辑（同一份活 6 小时不重复、两次至少隔 60 分钟），所以最多每 2 小时一次 AI 编辑。
