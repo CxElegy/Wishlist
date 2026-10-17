@@ -820,6 +820,10 @@ def _dedupe(cands):
     return out
 
 
+BLANK_STD = 6   # 明るさの標準偏差がこれより小さい = 真っ白・真っ黒のほぼ一色（白紙）
+SAME_BITS = 4   # 差分ハッシュ（64 ビット）の違いがこれ以下 = 同じ画像
+
+
 def check(cands, log=print, need_face=False, strict=False, reasons=None):
     """ダウンロードして使えるか確かめる（短辺 160px 以上・開ける）。落とした理由は reasons（dict）に数える。
     need_face（人物・グループ・出演者）：顔の特徴量で「その人」かを確かめる（face_id）。目で見ていた判断を規則にしたもの：
@@ -840,7 +844,7 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None):
                 continue
             shape, key, img = inspect(data)
             from PIL import ImageStat
-            if ImageStat.Stat(img.convert("L")).stddev[0] < 6:   # 真っ白・真っ黒のほぼ一色の画像
+            if ImageStat.Stat(img.convert("L")).stddev[0] < BLANK_STD:   # 真っ白・真っ黒のほぼ一色の画像
                 drop("白紙", c)
                 continue
             dl.append({**c, "shape": shape, "_img": img})
@@ -879,7 +883,7 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None):
     for c in dl:
         if c["_img"] is not None:
             h = _hash(c["_img"])
-            if any(bin(h ^ x).count("1") <= 4 for x in hashes):
+            if any(bin(h ^ x).count("1") <= SAME_BITS for x in hashes):
                 reasons["同じ画像"] = reasons.get("同じ画像", 0) + 1
                 continue
             hashes.append(h)
