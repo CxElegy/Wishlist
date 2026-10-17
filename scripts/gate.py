@@ -89,7 +89,7 @@ def emblem_work():
     import emblem_fill
     items = emblem_fill.load_items()
     prog = emblem_fill.sync_progress(emblem_fill.load_progress(), items)
-    return [i["name"] for i in emblem_fill.due(prog, items, _now().isoformat(timespec="seconds"))]
+    return [i["name"] for i in emblem_fill.due(prog, items, _now().isoformat(timespec="seconds"))]   # EMBLEM_RETRY_NOW=1 なら 24 時間を待たない
 
 
 def check(tz="Asia/Shanghai", path=None):
