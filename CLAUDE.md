@@ -142,7 +142,7 @@
 - 管理页「いまの状況」开着时一直重读：依頼・写真每 1 分，GitHub Actions 每 3 分（未登录 API 每小时 60 次）。
 - **版面的「更新中」条**（`render.BUSY_JS` / `busy_plan`）：**只在正在更新的那个版面**上边框出一条用版面 `--acc` 色往返的细条 + 预估进度 + 「あと約 N 分」，其他版面不出。
   图层：条 z-index 4，在小元素（`.emb`，z-index 5）下面。
-  - 收集：每个版面开始抓取时 `digest.live_mark` 往 Supabase `live_status` 表写「記事を探しています」；没新记事就删掉（条消失），有新记事改成「新着 N 件 · 反映まであと約 N 分」。网页 30 秒读一次 `live_status()`（`db/live_status.sql`）。
+  - 收集：每个版面开始抓取时 `digest.live_mark` 往 Supabase `live_status` 表写「記事を探しています」；**这个版面一抓完就**判断（不等别的版面）：没新记事就删掉（条消失），有新记事改成「新着 N 件 · 反映まであと約 N 分」；之后按顺序去重件数变了再改一次（`tests/test_live.py`）。没有 AI 参与，全是收集脚本直接写、网页直接读。网页 30 秒读一次 `live_status()`（`db/live_status.sql`）。
   - AI 编辑・小元素：浏览器看不到，按定时推算（`BUSY_MIN`），只出在待ち行列的版面（`BUSY_BOARDS`）。页面生成（代码变更）不出条。
 - 这套逻辑在管理页「全体の構成」里是「ページの自動更新」（`processes.py` 的 `live`，箭头 21〜24），改逻辑时同步改那里。
 
