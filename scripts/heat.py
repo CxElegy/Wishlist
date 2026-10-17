@@ -286,7 +286,8 @@ def load_entries(inbox_files):
                 since[name] = day
             if any(f.get("changed") for f in it.get("facts") or []) and day:
                 changed.setdefault(name, []).append(day)
-            for e in it.get("entries") or []:
+            # reddit_cold：不火、没上版面的 Reddit 帖子（digest.ingest），帖子数照样算进「ファンの反応」
+            for e in (it.get("entries") or []) + (it.get("reddit_cold") or []):
                 key = (name, e.get("url"))
                 if not e.get("url") or key in seen:
                     continue
