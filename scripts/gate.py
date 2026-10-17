@@ -13,8 +13,8 @@ Claude を起こすには、定時タスクごとの API トークンが要る�
   写真から愿望 ROUTINE_TOKEN_PHOTOS（Secret ROUTINE_FIRE_TOKEN_PHOTOS）
 本当に起こすかは GATE_FIRE で決める（background.yml がリポジトリ変数 vars.GATE_FIRE を渡す。
 GitHub → Settings → Secrets and variables → Actions → Variables）：
-  未設定 / 0   起こさない（判断と記録だけ）
-  edit        AI 編集だけ起こす（写真から愿望は自分の定時のまま）
+  0           起こさない（判断と記録だけ）
+  edit / 未設定  AI 編集だけ起こす（変数がないときの既定）（写真から愿望は自分の定時のまま）
   edit,photos / 1 / all   両方起こす
 
 版面には AI 編集が整理した記事しか載らない（未整理の新着は版面の下の「整理待ち」）ので、

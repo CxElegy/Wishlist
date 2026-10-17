@@ -204,7 +204,7 @@ PROCESSES = [
              "uses": ["gate"], "no": "起こさない（二重に使わない）"},
             {"id": "g5b", "kind": "decision", "lane": "actions", "title": "前に起こしてから 60 分たった？", "text": "新着で指紋が変わっても、編集中に重ねない",
              "uses": ["gate"], "no": "次の回まで待つ"},
-            {"id": "g5c", "kind": "decision", "lane": "actions", "title": "GATE_FIRE で開けている？", "text": "リポジトリ変数 · 0 / 未設定 = 閉 · edit = AI 編集だけ · 1 = 全部",
+            {"id": "g5c", "kind": "decision", "lane": "actions", "title": "GATE_FIRE で開けている？", "text": "リポジトリ変数 · 未設定 = edit（AI 編集だけ・既定）· 0 = 閉 · 1 = 全部",
              "no": "起こさない（記録だけ・定時を待つ）"},
             {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret ROUTINE_FIRE_TOKEN など）が要る · 最多 2 時間に 1 回（収集ごと）",
              "uses": ["claude"]},
