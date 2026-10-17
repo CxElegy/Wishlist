@@ -131,7 +131,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
    "section": "好物",
@@ -418,16 +418,6 @@
      "image": "https://www.bing.com/th?id=ONUT.QQnewoNm5hevgoOUcGtY5g&pid=News&w=1200",
      "image_via": "条目自带",
      "url": "https://gaming-age.com/2026/10/zenless-zone-zero-v3-3-journey-to-the-sky-update-revealed/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-10",
-     "headline": "젠레스 존 제로에 붕괴 스타레일 카프카, 로빈 나온다",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.aYrTnhp1QzH-ho9sklrzoA&pid=News&w=715",
-     "image_via": "条目自带",
-     "url": "https://www.gamemeca.com/view.php?gid=1781610",
      "weight": "normal"
     },
     {
@@ -724,13 +714,13 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-14",
-     "headline": "映画『DIGGER ディガー』求められてないトム・クルーズ【ジョン・グッドマン アレハンドロ・ゴンサレス・イニャリトゥ ザンドラ・ヒューラー 映画レビュー 考察 興行収入 興収 Filmarks】 The Mandalorian (wkEZA8MrAX)",
+     "date": "2026-10-16",
+     "headline": "2026年5月6日 オリックス対千葉ロッテ 試合ハイライト The Mandalorian (W7pLtRqZ1W)",
      "highlight": "",
      "image": null,
      "source": "Unisba Media",
      "source_icon": "https://www.google.com/s2/favicons?domain=media.unisba.ac.id&sz=128",
-     "url": "https://media.unisba.ac.id/b4b7b4c9/8b43b7f2mYJf6jBLvlw/?share=telegram&nb=1",
+     "url": "https://media.unisba.ac.id/a8890740/501c85d63JMFHx4TwCU/?share=telegram&nb=1",
      "weight": "normal"
     }
    ],
@@ -754,13 +744,23 @@
    "stories": [
     {
      "blurb": "",
+     "date": "2026-10-17",
+     "headline": "【2026-27】スキー場リフト券の料金を全国比較！1日券の価格と値上げ率を調査",
+     "highlight": "",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/ski-resort-lift-ticket-price-2026-27/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-14",
      "headline": "ベイル・リゾーツ(Vail Resorts)はなぜ、雪が降る前に売上を確保できるのか - Epic Passが変えたスキー場の経営",
      "highlight": "",
      "image": "https://www.bing.com/th?id=ONUT.UkuKyJHp_LRU1AnHpJG_-w&pid=News&w=1200",
      "image_via": "条目自带",
      "url": "https://note.com/black_sheep_club/n/n9456d54277bc",
-     "weight": "lead"
+     "weight": "normal"
     },
     {
      "blurb": "",
@@ -874,9 +874,8 @@
      "date": "2026-10-16",
      "headline": "＜画像4 / 8＞「ぐでたまカフェ」が西武池袋本店に期間限定オープン！",
      "highlight": "",
-     "image": null,
-     "source": "ウォーカープラス",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.walkerplus.com&sz=128",
+     "image": "https://news.walkerplus.com/article/90965/509951_615.jpg",
+     "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/90965/image509956.html",
      "weight": "hero"
     }
