@@ -25,6 +25,7 @@ import yaml
 import heat
 import processes
 import likefx
+import taxonomy
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
@@ -1023,7 +1024,7 @@ def _spam(title):
 
 def collect(issues, order=None):
     """把各期按作品汇总：外观以最新一期为准；消息按链接去重，按时间排列（新的在前）。
-    作品顺序固定：先按板块（游戏 / 影视 / 运动 / 好物 / 其他），同板块内按 order（items.yaml 的顺序）。
+    作品顺序固定：先按板块（sections.yaml 的顺序，其他最后），同板块内按 order（items.yaml 的顺序）。
     这样每天更新只是版面里的消息变化，版面的数量和位置不变。"""
     latest = issues[0]
     rank = {n: i for i, n in enumerate(order or [])}
@@ -1615,7 +1616,7 @@ def render_settings(items, db, updated, schemes=()):
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     rows = []
     for name in order:
-        rows.append(f'<h2 style="--sc:{_sec_color(name)}">{e(name)}<small>{_sec_en(name)}</small></h2>')
+        rows.append(f'<h2 style="--sc:{_sec_color(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small></h2>')
         for it in groups[name]:
             sub = f'<small>{e(it["subtitle"])}</small>' if it.get("subtitle") else ""
             btns = "".join(f'<button type="button" data-v="{v}" aria-pressed="{str(v == (it.get("size") or "M")).lower()}">'
@@ -1625,7 +1626,7 @@ def render_settings(items, db, updated, schemes=()):
                         f'<button type="button" class="edit" aria-label="修改 {e(it["name"])}">改</button>'
                         f'<span class="st" aria-live="polite"></span></div>')
     data = {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
-            "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": list(dict.fromkeys(list(SECTIONS) + order)),
+            "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": taxonomy.for_page(),
             "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items]}
     cfg = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return f"""<!doctype html>
@@ -1691,6 +1692,8 @@ def render_settings(items, db, updated, schemes=()):
 .q .no{{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;opacity:.6}}
 .q h3{{margin:0;font:900 19px/1.4 'Noto Sans SC',sans-serif}}
 .q p{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
+.subrow{{display:flex;flex-direction:column;gap:6px}}.subrow h4{{margin:0;font:700 13px 'Noto Sans SC',sans-serif}}
+.subrow .opts{{flex-direction:row;flex-wrap:wrap}}.subrow .opt{{padding:6px 10px;font-size:14px}}
 .opts{{display:flex;flex-direction:column;gap:8px}}
 .opt{{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;
  font:900 15px 'Noto Sans SC',sans-serif;cursor:pointer}}
@@ -2093,12 +2096,11 @@ def _wish_section(wishes, works, finds=()):
             f'<div class="wgrid">{"".join(cards)}</div></section>')
 
 
-# 头版板块：固定的几个先排，颜色各不相同；items.yaml 里自己起的新板块用灰色
-# 板块色：白字、浅底（#EDEBE6）上的小字都要过 WCAG AA 4.5:1（绿、粉、橙原来太浅，白字只有 2.9–4.4）
-SECTIONS = {"游戏": "#2F5BD3", "影视": "#9B3FB5", "运动": "#156A48", "演出": "#BB265A", "好物": "#985315"}
-SECTION_EN = {"游戏": "GAMES", "影视": "SCREEN", "运动": "SPORTS", "演出": "LIVE", "好物": "GOODS"}
-# 网页上显示的板块名（数据里的板块名照旧是中文，items.yaml / 设置页不变）
-SECTION_JA = {"游戏": "ゲーム", "影视": "映像", "运动": "スポーツ", "演出": "ライブ", "好物": "グッズ", "其他": "その他"}
+# 头版板块：sections.yaml 里事先定全的板块（scripts/taxonomy.py），按表的顺序排，颜色各不相同（白字、浅底上的小字都过 WCAG AA 4.5:1）。
+# 数据里的板块名照旧是中文（items.yaml / 设置页），网页上显示日语名
+SECTIONS = {k: r["color"] for k, r in taxonomy.SECTIONS.items() if k != taxonomy.OTHER}
+SECTION_EN = {k: r["en"] for k, r in taxonomy.SECTIONS.items()}
+SECTION_JA = {k: r["ja"] for k, r in taxonomy.SECTIONS.items()}
 
 
 def _sec_name(name):
@@ -2502,8 +2504,8 @@ NAV_STYLES = {
 }
 
 
-# 板块のアイコン（twemoji）。表にない新しい板块はアイコンなし
-SECTION_ICON = {"游戏": "1f3ae", "影视": "1f3ac", "运动": "26bd", "演出": "1f3a4", "好物": "1f6cd", "其他": "1f4e6"}
+# 板块のアイコン（twemoji、sections.yaml の icon）。表にない板块はアイコンなし
+SECTION_ICON = {k: str(r["icon"]) for k, r in taxonomy.SECTIONS.items() if r.get("icon")}
 TWEMOJI = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/{}.svg"
 NAV_HIDE = 24   # 左の目次で隠し始める作品の数（items.yaml の settings.nav_hide。"auto" なら画面の高さで決める）
 
