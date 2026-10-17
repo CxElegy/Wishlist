@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-17T05:34:19+00:00",
+ "checked": "2026-10-17T05:50:30+00:00",
  "jobs": {
   "edit": {
    "claude": true,
@@ -19,21 +19,19 @@
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "Astrae Oratio",
+   "items": [
+    "A2O LITE",
     "Vaundy",
     "哈利波特剧集",
-    "FROM",
-    "ILLIT",
-    "The Mandalorian",
+    "Astrae Oratio",
     "チェーンソーマン",
     "漫威电影",
-    "A2O LITE"
+    "FROM"
    ],
-   "why": "失敗 9 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 20:12 から）"
+   "need": true,
+   "sig": "b115855dd249",
+   "waiting": [],
+   "why": "足りない 7 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
