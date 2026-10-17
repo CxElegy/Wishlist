@@ -329,7 +329,7 @@ def bing_images(query, n=8):
     return parse_bing(html, n)
 
 
-def news_images(item_name, subject, anywhere=False, limit=12, days=14):
+def news_images(item_name, subject, anywhere=False, limit=12, days=14, summary=False):
     """集めた新聞（inbox）の配図：その関注項の記事で、題名に対象の名前が入っているもの（anywhere=True なら名前は問わない）。
     人物の別の写真・刚出道のグループの写真は、Wiki よりここのほうが新しくて多い。"""
     out, seen = [], set()
@@ -348,7 +348,8 @@ def news_images(item_name, subject, anywhere=False, limit=12, days=14):
                     continue
                 if re.match(r"^https://(www\.)?bing\.com/th\?", u):
                     u = re.sub(r"&(amp;)?[wh]=\d+", "", u)
-                if anywhere or key in (e.get("title") or "").lower().replace(" ", ""):
+                text = (e.get("title") or "") + (" " + (e.get("summary") or "") if summary else "")
+                if anywhere or key in text.lower().replace(" ", ""):
                     seen.add(u)
                     out.append({"title": e.get("source", "新聞"), "image": u, "page": e.get("url", ""),
                                 "license": "新聞の配図", "area": 0})
@@ -518,6 +519,122 @@ def gather(item, log=print, tried=None):
             except Exception as e:
                 log(f"  [Web] {subj}：{e}")
     return _dedupe(cands)
+
+
+def article_pages(item_name, subject=None, days=30, limit=10):
+    """集めた記事（inbox）のうち、題名か要約に対象の名前がある記事の網址（新しい順）。subject=None なら全部。"""
+    out, key = [], (subject or "").lower().replace(" ", "")
+    for path in sorted((ROOT / "inbox").glob("????-??-??.json"), reverse=True)[:days]:
+        try:
+            blocks = json.loads(path.read_text(encoding="utf-8")).get("items", [])
+        except ValueError:
+            continue
+        for b in blocks:
+            if b.get("name") != item_name:
+                continue
+            for e in b.get("entries", []):
+                text = ((e.get("title") or "") + " " + (e.get("summary") or "")).lower().replace(" ", "")
+                u = e.get("url") or ""
+                if u.startswith("http") and u not in out and (not key or key in text) and "reddit.com" not in u:
+                    out.append(u)
+                if len(out) >= limit:
+                    return out
+    return out
+
+
+def gather_wide(item, log=print, tried=None):
+    """② 名前を広げる：①で足りなかったとき。作品名を足して検索し、言語・枚数・日数を広げる。"""
+    kind, lo, target, hi = rule(item)
+    name = item["name"]
+    tried = {} if tried is None else tried
+    log = _tracking(log, tried)
+    cands = []
+
+    def add(subject, rows, source, why):
+        tried[source] = tried.get(source, 0) + len(rows)
+        cands.extend({"subject": subject, "image": r["image"], "page": r.get("page", ""), "source": source, "why": why,
+                      "license": r.get("license", ""), "anchor": bool(r.get("anchor")), "title": r.get("title", "")} for r in rows)
+    if kind in ("brand", "topic"):
+        for kw in [item.get("subtitle")] + list(item.get("keywords") or [])[:3]:
+            if not kw or kw == name:
+                continue
+            _check_time()
+            try:
+                add(f"{kw} のロゴ", wikidata_images(kw, ("P154",) if kind == "brand" else ("P154", "P18"), 2), "Wikidata", f"{kw}（別名で検索）")
+            except Exception as e:
+                log(f"  [Wikidata] {e}")
+        return _dedupe(cands)
+    who = subjects(item, kind, hi)
+    api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
+    for subj in who:
+        _check_time()
+        if kind == "character" and not item.get("emblem_people"):
+            if api:   # 絵のキャラ：Fandom のページ名の別の書き方（名だけ・(character) つき）
+                for t in {subj.split()[0], f"{subj} (character)"} - {subj}:
+                    try:
+                        r = emblem.page_image(api, t)
+                        add(subj, [{"image": small_url(r[0]), "page": r[1]}], "Fandom", f"{subj}（Fandom・{t}）")
+                        break
+                    except Exception:
+                        pass
+            continue
+        try:   # 実在の人：作品名をつけて全言語の Wikipedia → 記事の代表画像を基準に
+            rows = [r for r in wikipedia_photos(subj, WIKI_LANGS, 4, None, extra=False, query=f"{subj} {name}") if relevant(r["title"], subj)]
+            add(subj, rows, "Wikipedia", f"{subj}（作品名つきで検索）")
+        except Exception as e:
+            log(f"  [Wikipedia] {subj}：{e}")
+        try:
+            add(subj, commons_photos(f"{subj} {name}", 12), "Wikimedia Commons", f"{subj}（作品名つきの Commons）")
+        except Exception as e:
+            log(f"  [Commons] {subj}：{e}")
+        try:
+            add(subj, news_images(name, subj, limit=12, days=30, summary=True), "新聞の配図", f"{subj}（30 日分・要約にも名前）")
+        except Exception as e:
+            log(f"  [新聞] {e}")
+    return _dedupe(cands)
+
+
+def gather_pages(item, log=print, tried=None):
+    """③ 公式・記事のページ：記事の本文ページと公式サイトから、og:image と大きい画像を取る（RSS の配図にない写真）。"""
+    kind, lo, target, hi = rule(item)
+    name = item["name"]
+    tried = {} if tried is None else tried
+    log = _tracking(log, tried)
+    cands = []
+
+    def add(subject, rows, source, why):
+        tried[source] = tried.get(source, 0) + len(rows)
+        cands.extend({"subject": subject, "image": r["image"], "page": r.get("page", ""), "source": source, "why": why,
+                      "license": r.get("license", ""), "title": r.get("title", "")} for r in rows)
+    if kind in ("brand", "topic"):
+        if item.get("site"):
+            try:
+                add(f"{name} のロゴ", site_images(item["site"], 4, logo=True), "公式サイト", "公式サイトのロゴ（深く）")
+            except Exception as e:
+                log(f"  [公式サイト] {e}")
+        return _dedupe(cands)
+    who = subjects(item, kind, hi)
+    site_imgs = []
+    if item.get("site"):
+        try:
+            site_imgs = site_images(item["site"], 30)
+        except Exception as e:
+            log(f"  [公式サイト] {e}")
+    for subj in who:
+        _check_time()
+        mine = [r for r in site_imgs if relevant(r["image"].rsplit("/", 1)[-1], subj)] if len(who) > 1 else site_imgs[:8]
+        add(subj, mine, "公式サイト", f"{subj}（公式サイトの画像）")
+        rows = []
+        for url in article_pages(name, subj if len(who) > 1 or kind != "person" else None, limit=8):
+            try:
+                rows += site_images(url, 1)
+            except Exception:
+                pass
+        add(subj, rows, "記事のページ", f"{subj}（記事のページの og:image）")
+    return _dedupe(cands)
+
+
+STRATEGIES = [("標準", "gather"), ("名前を広げる", "gather_wide"), ("公式・記事のページ", "gather_pages")]
 
 
 def _hash(img):
@@ -774,7 +891,7 @@ def auto_pick(item, good, web=True, strict=False):
 
 # ---------------------------------------------------------------- 定時の後台（--background）と進捗
 PROGRESS = ROOT / "state" / "emblem_progress.json"
-RETRY_HOURS = 24          # 失敗した関注項は、この時間は飛ばす
+RETRY_HOURS = 6           # 全部の段で届かなかった関注項は、材料（記事・手がかり）が変わらなければこの時間は飛ばす
 MARGIN = 120              # 残り時間がこれ（秒）を切ったら、次の関注項に入らない
 STATE_JA = {"ok": "そろっている", "running": "進行中", "review": "要確認", "failed": "失敗"}
 
@@ -841,7 +958,8 @@ def due(prog, items, now):
             continue
         e = prog["items"].get(item["name"]) or {}
         h = _hours_since(e.get("failed_at"), now)
-        if e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW"):   # 手動の試運転だけ待たない
+        if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")
+                and e.get("material") in (None, material(item))):   # 材料（新しい記事・手がかり）が変わったら待たない
             continue
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
     return [r[3] for r in sorted(rows, key=lambda r: r[:3])]
@@ -855,45 +973,95 @@ def _write_sheet(item, good):
     return out
 
 
+def material(item):
+    """その関注項の「材料」の指紋：集めた記事の数（直近 30 日）と、小元素の手がかり（emblem_who・urls・fandom・wiki・site・reject）。
+    失敗した版面は、これが変わったら（新しい記事・手がかりが増えた）6 時間を待たずにすぐやり直す。"""
+    import hashlib
+    n = 0
+    for path in sorted((ROOT / "inbox").glob("????-??-??.json"), reverse=True)[:30]:
+        try:
+            for b in json.loads(path.read_text(encoding="utf-8")).get("items", []):
+                if b.get("name") == item.get("name"):
+                    n += len(b.get("entries") or [])
+        except ValueError:
+            pass
+    keys = {k: item.get(k) for k in ("emblem_who", "emblem_urls", "emblem_fandom", "wiki", "site", "emblem_reject", "emblem_kind", "emblem_icon")}
+    return hashlib.sha1(json.dumps([n, keys], sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
+
+
+def _live(board, label=None, step=0):
+    """管理ページ「いま動いているもの」・簡報の帯（Supabase live_status）に、この版面でいま何をしているかを書く。label=None で消す。
+    データベースに書けなくても（鍵がない・ローカル）補完は止めない。"""
+    if not os.environ.get("SUPABASE_SERVICE_KEY"):
+        return
+    try:
+        import digest
+        digest.live_mark(board, f"emblem:{label}" if label else None, found=step, proc="emblem")
+    except Exception:
+        pass
+
+
 def fill_one(item, log=print):
     """後台で 1 つの関注項を埋める。AI も人も見ない：目で見ていた判断は全部規則にしてある。
-      集める（Web 画像検索は使わない）→ 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）
-      → 選ぶ（auto_pick：種類ごとの確かな取り方だけ・同じ人は 1 枚）→ 書いて切り抜く（穴・端で切れたものは落ちる）
-    → {state: ok / failed, note, tried, funnel}。残った候補も「重複」「確かでない取り方」などの理由に振り分ける。"""
+    取り方の段（STRATEGIES）を、目標に届くまで同じ回の中で順に上がる：① 標準 → ② 名前を広げる → ③ 公式・記事のページ。
+    各段で 集める → 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）→ 選ぶ（auto_pick）→ 書いて切り抜く。
+    → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わるか 6 時間後にもう一度）。"""
     before = status(item)["have"]
     if needs_face(item) and face_id.engine() is None:
         return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "tried": {}}
-    tried, reasons = {}, {}
-    good, _ = run_item({**item, "_no_web": True}, log=log, tried=tried, strict=True, reasons=reasons)
-    picks = auto_pick(item, good, web=False, strict=True)
-    with WRITE_LOCK:
-        if picks:
-            commit(item, good, picks, log=log)
-        fresh = next((i for i in load_items() if i["name"] == item["name"]), item)
+    tried, reasons, steps = {}, {}, []
+    funnel = {"found": 0, "usable": 0, "auto": 0}
+    fresh = item
+    try:
+        for n, (label, fn) in enumerate(STRATEGIES, 1):
+            _check_time()
+            _live(item["name"], label, n)
+            log(f"  ── 段 {n}/{len(STRATEGIES)}：{label}")
+            got = {}
+            cands = globals()[fn]({**fresh, "_no_web": True}, log, got)
+            for k, v in got.items():
+                tried[k] = tried.get(k, 0) + v
+            good = check(cands, log, need_face=needs_face(item), strict=True, reasons=reasons)
+            picks = auto_pick(fresh, good, web=False, strict=True)
+            with WRITE_LOCK:
+                before_step = status(fresh)["have"]
+                if picks:
+                    commit(fresh, good, picks, log=log)
+                fresh = next((i for i in load_items() if i["name"] == item["name"]), fresh)
+            added_step = max(0, status(fresh)["have"] - before_step)
+            if len(picks) > added_step:   # 書いたが切り抜きの検査（穴・端で切れた・にじみ）で落ちた
+                reasons["切り抜きの検査"] = reasons.get("切り抜きの検査", 0) + len(picks) - added_step
+            funnel["found"] += sum(got.values())
+            funnel["usable"] += len(good)
+            funnel["auto"] += len(picks)
+            steps.append({"label": label, "found": sum(got.values()), "added": added_step})
+            covered = {_base_subject(x.get("subject")) for x in fresh.get("emblem") or [] if isinstance(x, dict)}
+            kind = kind_of(item)
+            for i, c in enumerate(good, 1):   # 選ばなかった候補の理由（前は「要確認」として AI が目で見ていた）
+                if i in picks:
+                    continue
+                if not needs_face(item) and c["source"].split("(")[0] not in AUTO_SOURCES.get(kind, ()):
+                    why = "確かでない取り方"
+                elif kind in ("group", "character") and c["subject"] in covered:
+                    why = "重複（その人はもういる）"
+                elif c["image"] in _have_images(fresh):
+                    why = "もう使っている・外した画像"
+                else:
+                    why = "目標を超える"
+                reasons[why] = reasons.get(why, 0) + 1
+            if status(fresh)["state"] == "ok":
+                break
+    finally:
+        _live(item["name"], None)
     st = status(fresh)
     added = max(0, st["have"] - before)
-    if len(picks) > added:   # 書いたが切り抜きの検査（穴・端で切れた・にじみ）で落ちた
-        reasons["切り抜きの検査"] = reasons.get("切り抜きの検査", 0) + len(picks) - added
-    kind = kind_of(item)
-    covered = {_base_subject(x.get("subject")) for x in fresh.get("emblem") or [] if isinstance(x, dict)}
-    for n, c in enumerate(good, 1):   # 選ばなかった候補の理由（前は「要確認」として AI が目で見ていた）
-        if n in picks:
-            continue
-        if not needs_face(item) and c["source"].split("(")[0] not in AUTO_SOURCES.get(kind, ()):
-            why = "確かでない取り方"
-        elif kind in ("group", "character") and c["subject"] in covered:
-            why = "重複（その人はもういる）"
-        elif c["image"] in _have_images(fresh):
-            why = "もう使っている・外した画像"
-        else:
-            why = "目標を超える"
-        reasons[why] = reasons.get(why, 0) + 1
-    funnel = {"found": sum(tried.values()), "usable": len(good), "auto": len(picks), "added": added, "rejected": reasons}
+    funnel.update(added=added, rejected=reasons)
+    path = " → ".join(f"{x['label']} +{x['added']}" for x in steps)
     top = "・".join(f"{k} {v}" for k, v in sorted(reasons.items(), key=lambda kv: -kv[1])[:3])
     if st["state"] == "ok":
-        return {"state": "ok", "note": f"{added} 枚足して目標に届いた", "tried": tried, "funnel": funnel}
-    return {"state": "failed", "tried": tried, "funnel": funnel,
-            "note": f"{added} 枚足した。残りは規則で外した（{top or '候補なし'}）。{RETRY_HOURS} 時間後にもう一度"}
+        return {"state": "ok", "note": f"{added} 枚足して目標に届いた（{path}）", "tried": tried, "funnel": funnel, "steps": steps}
+    return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh),
+            "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}。新しい記事が来たらすぐ、来なくても {RETRY_HOURS} 時間後にもう一度"}
 
 
 def fresh_have(item):
@@ -910,6 +1078,9 @@ def record(prog, item, result, now):
         e["tried"] = result["tried"]
     if "funnel" in result:
         e["funnel"] = result["funnel"]
+    for k in ("steps", "material"):
+        if k in result:
+            e[k] = result[k]
     if result.get("sheet"):
         e["sheet"] = result["sheet"]
     else:
@@ -921,7 +1092,7 @@ def record(prog, item, result, now):
     return e
 
 
-WORKERS = 4   # 同時に処理する関注項の数（定時タスクのコンテナは 4 コア。集めるのは待ちが多いので並列で速くなる）
+WORKERS = 6   # 同時に処理する関注項の数（Actions は 4 コア。集めるのは待ちが多いので 6 本。抠图・書き込みは 1 本ずつ）
 
 
 def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None, workers=None):

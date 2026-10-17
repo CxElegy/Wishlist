@@ -3523,7 +3523,9 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                    f'<span class="lg-p">{e(x.get("name") or "")}</span><span class="lg-t">{e(x.get("text") or "")}</span></li>'
                    for x in (log or []))
     cfg = json.dumps(plan, ensure_ascii=False).replace("</", "<\\/")
-    return (f'<h3 class="h3">次の実行 <small>近い順 · 時刻は日本時間 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
+    return ('<h3 class="h3">いま動いているもの <small>裏で処理中の版面と段 · 30 秒ごとに読み直す</small></h3>'
+            '<div id="livenow" class="livenow"><p class="empty">読み込み中…</p></div>'
+            f'<h3 class="h3">次の実行 <small>近い順 · 時刻は日本時間 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
             f'<ol class="nxs">{"".join(cards)}</ol>'
             + '<h3 class="h3">リソース <small>サーバーの残り · 容量 · トークン</small></h3>' + _admin_resources(res) +
             '<h3 class="h3">AI を使うか <small>前に AI でやっていた判断ごとに · 規則にできたものは AI なし（トークン 0）</small></h3>'
@@ -3796,6 +3798,14 @@ ADMIN_PAGE_CSS = """
 .aiu-rule{border-left-color:var(--good)}.aiu-rule .aiu-s{color:var(--good)}
 .aiu-gate{border-left-color:var(--gold)}.aiu-gate .aiu-s{color:var(--ink);background:var(--gold);border-color:var(--ink)}
 .aiu-ai{border-left-color:var(--rose)}.aiu-ai .aiu-s{color:var(--rose)}
+.livenow{margin:0 0 20px}
+.livenow ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.livenow li{position:relative;display:flex;flex-direction:column;gap:2px;padding:8px 10px 12px;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);overflow:hidden}
+.livenow li b{font:900 13px/1.35 var(--font-sans)}.livenow li small{font:500 var(--fs-label)/1.5 var(--font-sans)}
+.livenow li .ln-p{font:700 var(--fs-label) var(--font-sans);color:var(--rose)}
+.livenow li::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;
+ background:repeating-linear-gradient(-45deg,var(--good) 0 6px,color-mix(in srgb,var(--good) 60%,var(--card)) 6px 12px);background-size:17px 17px;animation:pb-move 1.2s linear infinite}
+@media (prefers-reduced-motion:reduce){.livenow li::after{animation:none}}
 .lims{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px 18px}
 .lims li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair)}
 .lims b{font:900 13px/1.4 var(--font-sans)}.lim-n{font:700 12px var(--font-mono);padding:0 6px;background:var(--ink);color:var(--card);white-space:nowrap}
@@ -3943,10 +3953,20 @@ ADMIN_PAGE_JS = """
   }).catch(function(){fail(runs,'GitHub から読めませんでした（1 時間に 60 回までの制限かもしれません）。');});
   }
   loadRuns();setInterval(function(){if(!document.hidden)loadRuns();},180000);
-  if(!CFG.url||!CFG.key){['reqs','photos'].forEach(function(id){fail(document.getElementById(id),'データベースに未接続です。');});return;}
+  if(!CFG.url||!CFG.key){['reqs','photos','livenow'].forEach(function(id){var b=document.getElementById(id);if(b)fail(b,'データベースに未接続です。');});return;}
   function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:'{}'})
     .then(function(r){if(!r.ok)throw 0;return r.json();});}
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
+  // いま動いているもの：live_status()（収集・小元素の補完が版面ごとに書く）を 30 秒ごとに
+  var LP={collect:'ニュース収集',emblem:'小元素の自動補完',edit:'AI 編集'};
+  function liveState(x){if(x.state==='fetch')return '記事を探している';if(x.state==='found')return '新着 '+x.found+' 件 · 網页に反映待ち';
+    var m=/^emblem:(.*)$/.exec(x.state||'');if(m)return '取り方 '+m[1]+'（'+x.found+' / 3 段目）';return x.state;}
+  function loadLive(){var box=document.getElementById('livenow');if(!box)return;
+    rpc('live_status').then(function(list){box.textContent='';if(!list||!list.length){box.appendChild(el('p','empty','いまは何も動いていません（次の実行は下の「次の実行」）。'));return;}
+      var ul=el('ul');list.forEach(function(x){var li=el('li');li.appendChild(el('span','ln-p',LP[x.proc]||x.proc));li.appendChild(el('b',null,x.board));
+        li.appendChild(el('small',null,liveState(x)+' · '+when(x.started_at)+'から'));ul.appendChild(li);});box.appendChild(ul);})
+    .catch(function(){fail(box,'読めませんでした。');});}
+  loadLive();setInterval(loadLive,30000);
   // 設定ページの依頼（ウォッチ項目の追加・修正）：待ちのものと、3 日以内に処理したもの
   var reqs=document.getElementById('reqs'),photos=document.getElementById('photos');
   function loadDb(){

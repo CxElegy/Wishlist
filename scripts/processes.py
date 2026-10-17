@@ -136,18 +136,23 @@ PROCESSES = [
     },
     {
         "id": "emblem-cron", "name": "小元素の自動補完", "en": "EMBLEM", "lane": "actions",
-        "schedule": "gate", "when": "ゲートが仕事ありのとき · 40 分 · 4 本並列 · AI なし",
-        "trigger": "後台のゲート（2 時間ごと）が「足りない版面がある」と判断したとき。GitHub Actions で Python だけで動く",
+        "schedule": "gate", "when": "ゲートが仕事ありのとき · 6 本並列 · 3 段 · AI なし",
+        "trigger": "後台のゲート（毎時・収集のあと）が「足りない版面がある」と判断したとき。GitHub Actions で Python だけで動く",
         "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。前は Claude が目で見ていた判断（別人・遠景・集合写真・"
                    "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", ".github/workflows/background.yml"], "doc": "TEMPLATES.md",
         "uses": ["rembg", "yunet", "sface", "facerule", "holes", "wiki", "fandom"],
         "flow": [
-            {"id": "b1", "kind": "decision", "lane": "actions", "title": "ゲート：足りない版面がある？", "text": "目標未満 · 24 時間以内の失敗なし",
-             "uses": ["gate"], "no": "何もしない（Actions 1 分で終わり）"},
+            {"id": "b1", "kind": "decision", "lane": "actions", "title": "ゲート：足りない版面がある？",
+             "text": "目標未満 · 失敗した版面は「新しい記事・手がかりが来た」か「6 時間たった」ら対象に戻る",
+             "uses": ["gate"], "no": "何もしない（Actions 20 秒で終わり）"},
             {"id": "b2", "kind": "step", "lane": "actions", "title": "準備", "text": "モデルはキャッシュから（初回だけダウンロード）",
              "uses": ["rembg", "yunet", "sface"]},
-            {"id": "b3", "kind": "fan", "lane": "ext", "title": "候補を集める", "x": "×4 版面を同時に", "mode": "上から順に · 足りるまで",
+            {"id": "b2s", "kind": "table", "lane": "actions", "title": "取り方の段（同じ回の中で、届くまで上がる）",
+             "rows": [("① 標準", "下の順（直接指定 → Fandom → Wikidata → Wikipedia → Commons → 記事の配図 → 公式サイト → Twemoji）"),
+                      ("② 名前を広げる", "作品名をつけて全言語の Wikipedia・Commons（12 枚）· 記事 30 日分・要約にも名前 · Fandom の別のページ名"),
+                      ("③ 公式・記事のページ", "公式サイトの画像（メンバー名のファイル）· 名前が出る記事の本文ページの og:image（8 本）")]},
+            {"id": "b3", "kind": "fan", "lane": "ext", "title": "① 標準で候補を集める", "x": "×6 版面を同時に", "mode": "上から順に · 足りるまで",
              "items": [("0", "直接指定", "公式の立ち絵"), ("1", "Fandom", "キャラ", "fandom"), ("2", "Wikidata", "P154・P18", "wiki"),
                        ("3", "Wikipedia", "≤10", "wiki"), ("4", "Commons", "≤8", "wiki"), ("5", "記事の配図", "≤12"),
                        ("6", "公式サイト", "ロゴ"), ("7", "Twemoji", "主題", "twemoji")],
@@ -162,16 +167,21 @@ PROCESSES = [
              "no": "理由をつけて外す（確かでない取り方・重複・目標を超える）"},
             {"id": "b7", "kind": "step", "lane": "repo", "title": "書いて切り抜く", "x": "1 枚ずつ（WRITE_LOCK）",
              "uses": ["rembg", "cutcheck", "holes", "facefit"]},
-            {"id": "b8", "kind": "decision", "lane": "actions", "title": "目標に届いた？", "no": "失敗 → 24 時間後にもう一度 · 管理ページに理由と助言"},
+            {"id": "b8", "kind": "decision", "lane": "actions", "title": "目標に届いた？", "no": "次の段へ（② → ③）。全部だめなら失敗",
+             "no_to": "b2s"},
+            {"id": "b8f", "kind": "table", "lane": "actions", "title": "失敗したら・待っていたら",
+             "rows": [("失敗（3 段とも届かない）", "新しい記事・手がかり（材料の指紋）が来たらすぐ、来なくても 6 時間後に再挑戦 · 管理ページに理由と助言"),
+                      ("順番待ち", "毎時と収集のあとに 6 本並列で処理 · 40 分で終わらなければ続けてもう一度（3 回まで）"),
+                      ("いま処理中", "版面と段（① ② ③）を live_status に書く → 管理ページ「いま動いているもの」に 30 秒ごと")]},
             {"id": "b9", "kind": "store", "lane": "repo", "title": "items.yaml · docs/emblems · state/emblem_progress.json · state/log",
              "text": "変わったときだけコミット → ページ生成"},
         ],
     },
     {
         "id": "gate", "name": "後台のゲート", "en": "GATE", "lane": "actions", "workflow": "background.yml",
-        "schedule": [(h, 47) for h in range(0, 24, 2)],   # UTC（日本時間 奇数時 47 分）＝収集の 30 分後
-        "when": "2 時間ごと · AI が要るときだけ Claude",
-        "trigger": "2 時間ごと（日本時間 奇数時 47 分）。GitHub Actions",
+        "schedule": [(h, 47) for h in range(24)],   # 毎時 47 分（UTC）＋ 収集が終わるたび ＋ 仕事が残れば続けて
+        "when": "毎時 · 収集のあとすぐ · 残れば続けて",
+        "trigger": "毎時 47 分 ／ ニュース収集が終わるたび（新しい材料）／ 時間の予算を使い切って仕事が残っていれば続けてもう一度（3 回まで）",
         "summary": "仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
                    "AI が要る仕事（AI 編集・写真）は仕事があるときだけ Claude を起こす。Claude は起きるたびにトークンを使うので、空振りをなくす。",
         "files": ["scripts/gate.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "CLAUDE.md", "uses": ["gate"],
@@ -459,7 +469,7 @@ EDGES = [
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
     ("ニュース収集", "6 本並列", "GitHub Actions のサーバーは 4 コア。待ちが多いので 6 本。同じサイトの間隔は全スレッドで共有（Reddit 2 秒・Google / Bing 0.5 秒）"),
-    ("小元素の自動補完", "4 本並列", "GitHub Actions（4 コア・16GB・1 回 60 分まで）。抠图（rembg）と items.yaml への書き込みは 1 本ずつ"),
+    ("小元素の自動補完", "6 本並列", "GitHub Actions（4 コア・16GB・1 回 60 分まで、続けて 3 回まで）。集めるのは待ちが多いので 6 本、抠图（rembg）と items.yaml への書き込みは 1 本ずつ"),
     ("抠图のモデル（rembg）", "1 枚ずつ", "birefnet は 1 枚で数 GB のメモリを使う。onnxruntime のメモリ池を切って、1 枚ごとに返す（前は 13GB まで溜まった）"),
     ("Wikipedia・Wikidata・Commons", "1.3 秒に 1 回", "全スレッド合わせて。続けて叩くと 429（多すぎ）になり、続いたら 5 分休む → ここは並列でも速くならない"),
     ("Claude の定時タスク", "仕事があるときだけ", "起きるたびにトークンを使う。ゲートが仕事を確かめてから起こす（AI 編集・写真）。小元素は AI を使わない"),
