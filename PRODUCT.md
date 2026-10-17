@@ -18,7 +18,7 @@ Every 2 hours it collects the latest news on the watch items from free RSS feeds
 ## Positioning
 
 - **AI doesn't go online:** scripts collect the information, and AI only edits what was collected (merges duplicates, writes Chinese headlines). Token use stays low and there are no made-up facts.
-- **Each item has its own fixed section:** each item keeps the same section in its own colour scheme, and only the news inside changes. It's not a news site's time-ordered feed.
+- **Each item has its own fixed section:** each item keeps the same section in its own colour scheme, and only the news inside changes. It's not a news site's time-ordered feed. Sections (genres) stay in a fixed order; inside a genre, sub-categories and then items are ordered by their heat score, so the hottest come first (the left index uses the same order).
 - **Fed by the wishlist:** the 「気になるかも？」 recommendations combine the wishlist's preference tags, the watched sections, and the user's 👍 votes.
 
 ## Operating Context

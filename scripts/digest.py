@@ -2003,9 +2003,21 @@ def write_page():
     analysis = heat.analyze(items, sorted(INBOX_DIR.glob("????-??-??.json")), issues, load_json(HEAT_FILE) or {},
                             issues[0]["date"])
     heat_scores = analysis["items"]
+    # 目次と版面の並び：板块の中は「小分類の話題度」→「作品の話題度」の順（heat.heat_order）。
+    # 小分類の話題度は、中の作品の材料をまとめて 1 つとして測る（足し算ではない）。下級は上級の小分類に入れて測る
+    names = {i["name"] for i in items}
+    placed = [{"name": i["name"], "section": section_of(i), "parent": i.get("parent"),
+               "sub": str((next((p for p in items if p["name"] == i.get("parent")), None) or i).get("sub") or "")
+               if i.get("parent") in names else str(i.get("sub") or "")} for i in items]
+    groups = {}
+    for i in placed:
+        groups.setdefault((i["section"], i["sub"]), []).append(i["name"])
+    sub_heat = heat.group_scores(items, sorted(INBOX_DIR.glob("????-??-??.json")), issues, load_json(HEAT_FILE) or {},
+                                 issues[0]["date"], groups)
+    order = heat.heat_order(placed, heat_scores, sub_heat, list(render.SECTIONS))
     adm = admin_data(items, issues, analysis, tz, updated)  # 管理ページの数字（「待ち行列」は簡報の「更新中」の帯にも使う）
     generated = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
-    html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
+    html_ = render.render(issues, settings.get("nav_style", "line"), order, updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
                           {i["name"]: render.template_for(i) for i in items}, themes,
@@ -2016,11 +2028,12 @@ def write_page():
                           {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
                           render.busy_plan(adm.get("todo"), [i["name"] for i in items],
                                            {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
-                          {i["name"]: str(i["parent"]) for i in items if i.get("parent")})
+                          {i["name"]: str(i["parent"]) for i in items if i.get("parent")},
+                          {k: v["score"] for k, v in sub_heat.items()})
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
-    (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, [i["name"] for i in items]), updated),
+    (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, order), updated),
                                         encoding="utf-8")
     (DOCS_DIR / "themes.html").write_text(render.render_themes(  # テーマ見本（30 のテーマと 👍 の演出）
         [{"name": i["name"], "motif": render.template_for(i), "theme": i.get("theme")} for i in items], updated), encoding="utf-8")

@@ -496,6 +496,75 @@ def compute(items, inbox_files, issues, signals, today):
     return out
 
 
+def group_scores(items, inbox_files, issues, signals, today, groups):
+    """小分類（板块の中のまとまり）の話題度。groups：{まとまりの名前: [関注項の名前]}。
+    中の作品の点数を足すのではなく、中の作品の材料（記事・維基の閲覧・Steam…）を 1 つにまとめて、作品と同じ物差しで 0〜100 点を出す。
+    同じ記事は 1 回だけ。維基・Steam は日ごとに合計、AniList / TMDB は日ごとに大きいほう。返り値：{まとまりの名前: score_item の結果}。"""
+    today = _day(today)
+    entries, changed, since = load_entries(inbox_files)
+    stories = load_stories(issues)
+    by = {i["name"]: i for i in items}
+    out = {}
+    for g, names in groups.items():
+        names = [n for n in names if n in by]
+        if not names:
+            continue
+        seen, ents, sts = set(), [], []
+        for n in names:
+            for x in entries.get(n, []):
+                if x.get("url") not in seen:
+                    seen.add(x.get("url")); ents.append(x)
+            for x in stories.get(n, []):
+                if ("s", x.get("url")) not in seen:
+                    seen.add(("s", x.get("url"))); sts.append(x)
+        chg = [d for n in names for d in changed.get(n, [])]
+        starts = [since[n] for n in names if since.get(n)]
+        key = "\x00group:" + "/".join(map(str, g if isinstance(g, tuple) else (g,)))
+        sig = {}
+        for kind, how in (("wiki", sum), ("steam", sum), ("anilist", None), ("tmdb", max)):
+            merged = {}
+            for n in names:
+                for d, v in ((signals or {}).get(kind, {}).get(n) or {}).items():
+                    if kind == "anilist":   # {trending: n}：大きいほう
+                        if isinstance(v, dict) and (v.get("trending") or 0) >= ((merged.get(d) or {}).get("trending") or 0):
+                            merged[d] = v
+                    elif isinstance(v, (int, float)):
+                        merged[d] = how([merged[d], v]) if d in merged else v
+            if merged:
+                sig[kind] = {key: merged}
+        item = {"name": key, "use": sorted({u for n in names for u in (by[n].get("use") or ["google", "bing", "reddit"])}),
+                "subreddits": [r for n in names for r in (by[n].get("subreddits") or [])]}
+        out[g] = score_item(key, item, today, ents, chg, sts, sig, min(starts) if starts else None)
+    return out
+
+
+def heat_order(items, scores, sub_scores, sections):
+    """板块の中の並び：小分類の話題度が高い順 → 小分類の中は作品の話題度が高い順（同点は items.yaml の順）。
+    下級（parent）は上級のすぐ後ろ（下級どうしは話題度順）。板块の並び（sections の順）は変えない。
+    items の各項目には section（表示用）と sub が入っていること。返り値：関注項の名前の並び。"""
+    pos = {i["name"]: k for k, i in enumerate(items)}
+    sc = lambda n: (scores.get(n) or {}).get("score", -1)
+    names = {i["name"] for i in items}
+    kids = {}
+    for i in items:
+        p = i.get("parent")
+        if p in names and p != i["name"]:
+            kids.setdefault(p, []).append(i)
+    top = [i for i in items if not (i.get("parent") in names and i.get("parent") != i["name"])]
+    rank_sec = {s: k for k, s in enumerate(sections)}
+    out = []
+    for sec in sorted({i["section"] for i in top}, key=lambda s: (rank_sec.get(s, len(sections)), s)):
+        ins = [i for i in top if i["section"] == sec]
+        subs = list(dict.fromkeys(i.get("sub") or "" for i in ins))
+        subs.sort(key=lambda g: (-(sub_scores.get((sec, g)) or {}).get("score", -1),
+                                 min(pos[i["name"]] for i in ins if (i.get("sub") or "") == g)))
+        for g in subs:
+            for i in sorted((i for i in ins if (i.get("sub") or "") == g), key=lambda i: (-sc(i["name"]), pos[i["name"]])):
+                out.append(i["name"])
+                out += [k["name"] for k in sorted(kids.get(i["name"], []), key=lambda k: (-sc(k["name"]), pos[k["name"]]))]
+    return out
+
+
 TREND_DAYS = 28  # 分析页的走势看几天
 
 
