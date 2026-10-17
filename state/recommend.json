@@ -33,7 +33,6 @@
   "https://tw.news.yahoo.com/%E5%BD%B1-%E6%98%86%E5%87%8C-%E5%91%A8%E6%9D%B0%E5%80%AB%E8%AA%8D%E9%A4%8A-%E9%95%B7%E9%A0%B8%E9%B9%BF-%E5%A4%AB%E5%A6%BB-033500230.html": "https://www.bing.com/th?id=ONUT.doA6vIoJtWfGDav1qTBF6Q&pid=News&w=960",
   "https://www.1039waynefm.com/2026/10/16/ko1keyz-debuts-at-no-1-on-japan-hot-100-as-vaundy-climbs-into-top-10/": "https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/4023/files/2026/10/26308465-1200x675.jpg",
   "https://www.ajunews.com/amp/20261016173043510": "https://image.ajunews.com/content/image/2026/10/16/20261016173249929991.jpg",
-  "https://www.baby-babys.com/entry/chainsawman-20260930-er21/": "https://www.baby-babys.com/wp-content/uploads/2026/10/IMG_9313.jpg",
   "https://www.billboard-japan.com/d_news/detail/166561": "https://www.billboard-japan.com/common/sys/img/news/00000166/166561/image.jpg",
   "https://www.cbr.com/hbo-harry-potter-reboot-proper-dean-thomas-storyline/": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/10/the-golden-trio-looks-around-a-door-in-harry-potter-and-the-deathly-hallows-part-2.jpg?w=1600&h=900&fit=crop",
   "https://www.dualshockers.com/gta-6-miami-takeover-faces-backlash-from-officials/": "https://static0.dualshockersimages.com/wordpress/wp-content/uploads/2026/10/gta-6-jason-and-lucia.jpg?w=1600&h=900&fit=crop",
@@ -48,6 +47,7 @@
   "https://www.msn.com/ja-jp/news/other/%E8%B6%B3%E5%85%83%E3%81%8B%E3%82%89%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%81%AE%E5%88%83%E3%81%8C%E7%AA%81%E3%81%8D%E5%87%BA%E3%81%99-%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%82%B9-%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%9E%E3%83%B3-%E3%82%B3%E3%83%A9%E3%83%9C%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2eptVE": "https://www.bing.com/th?id=ONUT.Qtqd22-E4u4JeRzP6Th24Q&pid=News&w=800",
   "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90-%EC%82%BC%EC%84%B1-cpu-%EB%93%A4%EC%96%B4%EA%B0%84%EB%8B%A4-%EC%8A%A4%EB%83%85%EB%93%9C%EB%9E%98%EA%B3%A4-%EB%B0%9C%EC%97%B4-%EB%85%BC%EB%9E%80/ar-AA2epXSN": "https://www.bing.com/th?id=ONUT.oQTHqdEUo2o0-SN4LV2RPg&pid=News&w=1200",
   "https://www.news10.com/news/entertainment/ap-can-dc-blend-horror-with-a-superhero-movie-clayface-wants-to-blur-genres/": "https://www.news10.com/wp-content/uploads/sites/64/2026/10/6ad25c2e116b70.01316380.jpeg?w=1280",
+  "https://www.nownews.com/news/6884238": "https://media.nownews.com/nn_media/thumbnail/2026/10/1792212909361-500d541b328f4c868e27209a232e474d-1200x1023.webp?unShow=false",
   "https://www.saga-s.co.jp/articles/gallery/1802432?ph=1": "https://saga.ismcdn.jp/mwimgs/6/7/1200m/img_6747fd59ddb9041436cb29bc0faaaf8d77493.jpg",
   "https://www.sina.cn/news/detail/5354350915356285.html": null,
   "https://www.sohu.com/a/1088765916_122529751": "https://www.bing.com/th?id=ONUT.moInjsXQV39j-FPFySgJ_w&pid=News&w=650",
@@ -790,6 +790,27 @@
   },
   {
    "batch": 1,
+   "because": "チェーンソーマン",
+   "date": "2026-10-16",
+   "hits": [],
+   "image": "https://media.nownews.com/nn_media/thumbnail/2026/10/1792212909361-500d541b328f4c868e27209a232e474d-1200x1023.webp?unShow=false",
+   "kind": "board",
+   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
+   "score": 8,
+   "source": "今日新聞",
+   "taste": [
+    [
+     "作品:チェーンソーマン",
+     4
+    ]
+   ],
+   "title": "鏈鋸人作者再創佳績！《藤本樹 17-26》入圍國際艾美獎、這裡可看",
+   "url": "https://www.nownews.com/news/6884238",
+   "words": [],
+   "work": "チェーンソーマン"
+  },
+  {
+   "batch": 2,
    "because": "あつ森",
    "date": "2026-10-16",
    "hits": [
@@ -882,27 +903,6 @@
   },
   {
    "batch": 2,
-   "because": "チェーンソーマン",
-   "date": "2026-10-16",
-   "hits": [],
-   "image": "https://www.baby-babys.com/wp-content/uploads/2026/10/IMG_9313.jpg",
-   "kind": "board",
-   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
-   "score": 8,
-   "source": "│BABYDOT（ベイビードット）",
-   "taste": [
-    [
-     "作品:チェーンソーマン",
-     4
-    ]
-   ],
-   "title": "遂に衝動買い！めちゃくちゃかっこいい！360度楽しめるデザイン！ファン歓喜！ローソン限定『チェンソーマン』タンブラー！",
-   "url": "https://www.baby-babys.com/entry/chainsawman-20260930-er21/",
-   "words": [],
-   "work": "チェーンソーマン"
-  },
-  {
-   "batch": 2,
    "because": "绝区零",
    "date": "2026-10-16",
    "hits": [],
@@ -914,7 +914,7 @@
    "taste": [
     [
      "作品:绝区零",
-     5
+     6
     ]
    ],
    "title": "【ゼンゼロ】フィオニー無凸評価・最強編成ガイド！おすすめ音動機・ディスク・育成方法を徹底解説",
@@ -956,7 +956,7 @@
    "taste": [
     [
      "作品:绝区零",
-     5
+     6
     ]
    ],
    "title": "【ゼンゼロ】天才！奇跡！ボンプチップ！の攻略と報酬【ゼンレスゾーンゼロ】",
@@ -1614,10 +1614,6 @@
   ],
   [
    "三星 Galaxy",
-   6
-  ],
-  [
-   "作品:三星手机",
    6
   ],
   [

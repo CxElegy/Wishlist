@@ -322,8 +322,15 @@
      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9JX2VqWmVySVB5QWlVWTNqTDFsWjVQekphY3h4T0plakJwSHdEelR1Z0dnOHhCUlZUbVNuQUNzelhmNzk5VzJvamtKSWlaN3BvN2FMZTgxTHlhUHI3ZUU3bHZTcG1jQ0xkMUJ4V29jZzE?oc=5"
     },
     {
-     "date": "2026-10-14",
+     "date": "2026-10-16",
      "n": 9,
+     "source": "今日新聞",
+     "title": "鏈鋸人作者再創佳績！《藤本樹 17-26》入圍國際艾美獎、這裡可看",
+     "url": "https://www.nownews.com/news/6884238"
+    },
+    {
+     "date": "2026-10-14",
+     "n": 10,
      "source": "Dexerto",
      "title": "Chainsaw Man movie: Everything we know so far",
      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5DZmtTWDhIQ00zRVlpSWZzU1I3RS1BMVpwQm1BRGZYMFRLZnFhYkdWdVdxU2FVVUFoMHl1SGt5TGoyUDdKUGduLUR1N3Zyc2h2VzhUTGZZUXpyY1JFazRiZUVZcUZLR3dFeUZBVlFUYmh0Z2llaXoyTmZGaHJHOGM?oc=5"
@@ -508,6 +515,13 @@
      "source": "Dexerto",
      "title": "Dota 2 ranks explained: Seasonal medals, MMR distribution, & more",
      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQUXQyWnBTMl9OVnFfRk9fQnBaaF9QYVJobkFUUktxSmwzalAxYzRjaXFVdFpkM09SQmU1TXl1QnVweTY0MkI0TGl5cGw2Nk93NmhQZWl2VEZIV0M0bjJLWXBtMGx3WnFwMXhmSjd1dWpxaWFXRGp0elQyWXR5RHBWOWgzTUVLTEtfMURRazA1UTRPeGpLQ3ZkdUNn?oc=5"
+    },
+    {
+     "date": "2026-10-17",
+     "n": 15,
+     "source": "4Gamers",
+     "title": "《Dota 2》泰國選手遭大馬警方上銬盤問2小時 當面打出32殺證明身分獲釋",
+     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOQms2WEJnNXVmd3Flb0FQMEdULTdLeF9zUFpEcTAtQmJYWk9lcFJoUTF3d1dPX0JiSkdmRHgyVXVsbzZ5cEs3aUVMM3J5RkMzNWJ4NEpUdlhWNkZiUklzRFpCQ3FId0xZeDJ5Wm1iMHFWSzUzZVRGS3p0QWFqeG9vWmNWcjJpaVliS0tYRnNqVU9WajJLclpabjJjYWZxN2dQRldfNWdiQncwWElDdUE?oc=5"
     }
    ],
    "section": "游戏",
@@ -834,6 +848,35 @@
    }
   },
   {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "name": "gelato pique",
+   "section": "好物",
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-17",
+     "headline": "GELATO PIQUE KIDS & BABYが旭山動物園とコラボ！ユキヒョウ・キタキツネ・ペンギンの親子アイテムが登場（cocotte）",
+     "highlight": "",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/cocotte/m_cocotte-638504.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/cocotte/trend/cocotte-638504",
+     "weight": "hero"
+    }
+   ],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
@@ -962,31 +1005,6 @@
     "alt_fg": "#F1E9D6",
     "bg": "#121826",
     "fg": "#F1E9D6",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
-   "facts": [],
-   "last": {
-    "date": "2026-10-16",
-    "headline": "ジェラートピケ×サンリオコラボ第二弾、10月21日発売。どこで買えるか調べました。",
-    "url": "https://note.com/aoikenkou/n/na71bcacc4cf4"
-   },
-   "name": "gelato pique",
-   "quiet": true,
-   "section": "好物",
-   "status": "10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）",
-   "stories": [],
-   "subtitle": "ジェラート ピケ · ルームウェア",
-   "theme": {
-    "accent": "#EE8FA7",
-    "alt_accent": "#F4B6C6",
-    "alt_bg": "#BFE3DA",
-    "alt_fg": "#3F4F4B",
-    "bg": "#FFF6F3",
-    "fg": "#5A4049",
     "font": "serif",
     "split": true
    }
