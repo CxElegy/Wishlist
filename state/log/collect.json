@@ -189,5 +189,23 @@
 "disk_total": 154877411328,
 "peak": 92766208
 }
+},
+{
+"at": "2026-10-17T06:07:26+00:00",
+"text": "新着 11 件（10 版面）：三星手机 2、漫威电影 1、チェーンソーマン 1、Astrae Oratio 1、gelato pique 1",
+"level": "ok",
+"count": 11,
+"secs": 294,
+"workers": 6,
+"res": {
+"cpu": 4,
+"load": 0.1,
+"mem_total": 16766414848,
+"mem_free": 15678271488,
+"disk_used": 63221694464,
+"disk_free": 91655716864,
+"disk_total": 154877411328,
+"peak": 96215040
+}
 }
 ]
