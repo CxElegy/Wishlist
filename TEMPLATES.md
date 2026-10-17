@@ -17,8 +17,14 @@
 
 抠图：`python scripts/emblem.py --cut 作品名 drawn`（rembg 的 birefnet-general-lite，存到 `docs/emblems/`，原网址留在 `source`）。
 要装 `pip install "rembg[cpu]" "opencv-python-headless<5"`。抠完自动检查、不合格的不用：
-① 脸被画面边缘切掉（只切掉头发顶部可以）② 身体在左右边缘的上 65% 被切掉 ③ 只留主体，旁边的小碎块去掉 ④ 边缘发虚（半透明多）
+① 脸被画面边缘切掉（只切掉头发顶部可以）；**上边缘一半以上都是人**的也不用——那是漫画格子 / 脸部特写连框一起切的，
+抠掉对话框、背景后会留下奇怪的缺口（チャド的例子）② 身体在左右边缘的上 65% 被切掉 ③ 只留主体，旁边的小碎块去掉 ④ 边缘发虚（半透明多）
 ⑤ 同一版面取景要统一：有半身像就去掉全身像。抠完一定要用眼睛看一遍（侧脸、蒙面等检测不到脸的会提示「目で確認」）。
+
+**选图的顺序（角色）**：Fandom 的角色页，代表图常常是漫画格子或动画截图，不直接用——
+先找同一页里的**透明背景官方立绘**（`cutout_on_page`），再是代表图；代表图检查不合格时，自动在同一页找**官方插画**（游戏立绘、宣传图，
+`find_bust`，名字的姓或名出现在文件名里都算：「Yasutora Sado」→ `BBSSado.png`）抠成胸像。刘海挡住眼睛、检测不到脸的角色，
+取检查合格的最大一张、提示「目で確認」。
 实拍剧 / 电影翻拍：用**这一版的演员页**的照片，不用角色页（多是旧版的剧照）。
 
 小元素选什么（按作品的种类，枚数的规矩在 `scripts/emblem_fill.py` 的 `RULES`，管理页「小元素」能看到每个版面的现状）：
@@ -29,12 +35,14 @@
 | `group` 偶像团（ILLIT、A2O LITE） | **所有主要成员**各 1 张，名字写在 `emblem_who` | 成员数（3〜10） |
 | `character` 动画 / 游戏 / 剧 | 动画：主角团 + 人气高的角色（AniList）；游戏、剧：主要角色 / 主要演员，名字写在 `emblem_who`（实拍剧用这一版的演员） | 6（3〜10；`emblem_who` 里挑出几个就是几个） |
 | `brand` 品牌 | 官方 Logo，1 种就够 | 1 |
-| `topic` 主题 / 赛事 | 主题的专属物：Logo、奖杯、官方用球、场地，最后用 Twemoji 图标垫底 | 3（2〜5） |
+| `topic` 主题 / 赛事 | **先想这个版面「下一层」是什么**：类别（MMORPG 新作）→ 代表作品（剑灵、AION 2…）；运动 → 有名的选手・大会；用品 → 代表品牌。写进 `emblem_examples`（用户喜欢的放第一个），每个取 Logo 或 Wikipedia 记事的主视觉 / 包装图各 1 张；其次是主题的专属物（Logo、奖杯、官方用球、场地），Twemoji 图标只用来垫底 | 3（2〜5）；写了 `emblem_examples` 就是作品数 |
 
 - 默认每个版面最多 6 张，人物多的（团、角色多的作品）最多 10 张（`emblem_max` 可改）。
 - **不再有 `emblem_skip` 这条退路**：种类的取法顺序里最后是 Twemoji 图标，所以不会是 0 张。取不到好图就换下一种取法，不是放弃。
 - 在 `items.yaml` 里写：`emblem_kind`（种类）、`emblem_who`（要收的名字：成员 / 角色 / 演员）、`emblem_subject`（本人或品牌的搜索名）、
-  `emblem_fandom` / `emblem_api`（Fandom 的 wiki 名 / 其他 MediaWiki 的 api.php）、`emblem_icon`（Twemoji 的编码，空格分隔）、`emblem_urls`（直接指定的官方图）。
+  `emblem_fandom` / `emblem_api`（Fandom 的 wiki 名 / 其他 MediaWiki 的 api.php）、`emblem_icon`（Twemoji 的编码，空格分隔）、`emblem_urls`（直接指定的官方图）、
+  `emblem_examples`（主题的下一层：代表作品 / 品牌 / 选手，写成 `en:Blade & Soul` 指定记事；那一版没图时顺着**语言间链接**找同一记事的别的语言版，
+  不用搜索——搜索会撞到别的记事，例：「Odin: Valhalla Rising」搜到 FF13、「Chrono Odyssey」搜到人物）。
   没写 `emblem_kind` 时按 `type` 推定（anime / game / show → character，event → person，product → brand，category → topic）。
 
 ### 补齐的流程（AI 编辑每次都先做；流程图在管理页「プロセス → 小元素の選定」）

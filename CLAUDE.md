@@ -134,6 +134,8 @@
   编号箭头是数据流向（`processes.ARCH` / `EDGES`，线由 JS 按部件位置画；手机上看「矢印の一覧」）。点任务的框打开那个仕组み的详细流程（`PROCESSES` 的 flow）。
   **新加一个仕组み就在 `PROCESSES` 里加一项，再放进 `ARCH` 的某个框、在 `EDGES` 连上线**；改了某个仕组み的逻辑，也同步改它的流程。
 - **小元素（emblem）**：每个版面右上的贴纸。规矩（种类 → 目标枚数 → 取法的顺序 → 本人确认）在 `scripts/emblem_fill.py`、`scripts/face_id.py`，说明在 `TEMPLATES.md`；
+  **选图先想「下一层」**：类别・题材（MMORPG 新作、猫用品、滑雪）贴的是它下面的具体作品 / 品牌 / 选手（`emblem_examples`，我喜欢的放第一个，例：剑灵），
+  记号（Twemoji）只垫底。角色不用漫画格子・截图，先找官方立绘 / 插画；抠图后上边缘一半以上是人（连框切的特写）就不用；
   管理页「小元素」列出每个版面的种类・目标・现有枚数，没到目标的 AI 编辑会自动补（`python scripts/emblem_fill.py --audit`）。
 
 
