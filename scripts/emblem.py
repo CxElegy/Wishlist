@@ -487,6 +487,17 @@ def other_faces(out, keep=None):
         return 0
 
 
+# 切り抜きの検査（check_whole）の数。判断の一覧（emblem_rules.py）もここを読む
+PART_KEEP = 0.15   # いちばん大きいまとまりのこの割合以上の離れた部分（手・持ち物）は残す
+SIDE_ZONE = 0.65   # 左右の端は上のこの割合だけ見る（下は胸像の肩なので当たってよい）
+SIDE_MAX = 0.10    # 左右の端（上 SIDE_ZONE）に人物が当たっている割合がこれを超える = 体が枠で切れている
+TOP_MAX = 0.5      # 上の端の人物の割合がこれを超える = 漫画のコマ・顔のアップを枠ごと切った
+TOP_TOUCH = 0.03   # 上の端にこれ以上当たっていたら、顔まで切れていないか確かめる
+FACE_TOP = 0.04    # 顔の上端が高さのこの割合より上 = 顔が上の端で切れている
+AREA_MIN = 0.12    # 人物の面積がこれより小さい = 小さすぎる
+SOFT_MAX = 0.18    # 半透明（輪郭がにじんだ）部分がこれより多いものは使わない
+
+
 def check_whole(out, photo=False):
     """切り抜いた結果を確かめる：人物の全体が見えていること。
     ・いちばん大きいまとまりだけ残す（横に残った小さな切れ端を消す）
@@ -506,28 +517,28 @@ def check_whole(out, photo=False):
     big = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
     keep = labels == big
     for i in range(1, n):   # 大きいまとまりの 15% 以上あるもの（離れた手・持ち物）は残す
-        if i != big and stats[i, cv2.CC_STAT_AREA] >= 0.15 * stats[big, cv2.CC_STAT_AREA]:
+        if i != big and stats[i, cv2.CC_STAT_AREA] >= PART_KEEP * stats[big, cv2.CC_STAT_AREA]:
             keep |= labels == i
     a = np.where(keep, a, 0).astype("uint8")
     h, w = a.shape
     solid = a > 128
-    upper = solid[:int(h * 0.65)]   # 下 35%（肩から下）は左右の端に当たってもよい（胸像）
+    upper = solid[:int(h * SIDE_ZONE)]   # 下 35%（肩から下）は左右の端に当たってもよい（胸像）
     top, left, right = solid[0, :].mean(), upper[:, 0].mean(), upper[:, -1].mean()
-    if top > 0.5:   # 上の端の半分以上が人物：漫画のコマ・顔のアップを枠ごと切ったもの（吹き出しを消した跡がえぐれる。チャドの例）
+    if top > TOP_MAX:   # 上の端の半分以上が人物：漫画のコマ・顔のアップを枠ごと切ったもの（吹き出しを消した跡がえぐれる。チャドの例）
         raise ValueError(f"頭が上の端で大きく切れている（{top:.0%}：コマ・アップの切り抜き）")
-    if top > 0.03:
+    if top > TOP_TOUCH:
         # 上の端で切れていても、顔が全部入っていれば（髪の上だけが切れている：恋次のような絵）よい
         f = face_box(out)
-        if f and f[1] < h * 0.04:
+        if f and f[1] < h * FACE_TOP:
             raise ValueError(f"顔が上の端で切れている（{top:.0%}）")
         if not f:   # 横顔・覆面などで顔が見つからない：外さずに残し、目で確かめる
             print(f"  [目で確認] 上の端に当たっていて顔が見つからない（{top:.0%}）", file=sys.stderr)
-    if max(left, right) > 0.10:
+    if max(left, right) > SIDE_MAX:
         raise ValueError(f"体が左右の端で切れている（左 {left:.0%}・右 {right:.0%}）")
-    if solid.mean() < 0.12:
+    if solid.mean() < AREA_MIN:
         raise ValueError("人物が小さすぎる")
     soft = ((a > 24) & (a < 200)).sum() / max(1, (a > 24).sum())
-    if soft > 0.18:
+    if soft > SOFT_MAX:
         raise ValueError(f"輪郭がにじんでいる（半透明 {soft:.0%}）")
     if photo:   # 切り抜いた結果にほかの人の顔が残っている（後ろの人・隣の人が体とつながって一緒に切れた）
         others = other_faces(out, keep)

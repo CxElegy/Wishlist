@@ -123,26 +123,21 @@ COMPONENTS = {
 
 PROCESSES = [
     {
-        "id": "emblem", "name": "小元素の選定", "en": "EMBLEM", "lane": "ai", "schedule": "edit", "when": "AI 編集の最初",
-        "trigger": "新しい関注項が入ったとき ／ AI 編集の最初に毎回（足りない関注項だけ）",
-        "summary": "各版面の右上に貼るステッカーを、作品の種類に合わせて集める。AI 編集の中で、足りない関注項だけ。",
-        "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py"], "doc": "TEMPLATES.md",
-        "uses": ["wiki", "fandom", "yunet", "sface", "rembg"],
+        "id": "emblem", "name": "小元素の選定（AI の分）", "en": "EMBLEM", "lane": "ai", "schedule": "edit", "when": "新しい関注項が入ったとき",
+        "trigger": "新しい関注項が入ったとき（AI 編集）／ 手で「この版面の小元素を見て」と頼んだとき",
+        "summary": "AI がするのは「何を集めるか決める」と「手で頼まれたときに一覧を目で見る」の 2 つだけ。集める・確かめる・選ぶ・切り抜くは"
+                   "全部「小元素の自動補完」の規則（下の判断の一覧）で、AI は使わない。",
+        "files": ["scripts/emblem_fill.py", "scripts/emblem_rules.py"], "doc": "TEMPLATES.md", "rules": "emblem",
+        "uses": ["claude", "roster"],
         "flow": [
-            {"id": "audit", "kind": "step", "lane": "ai", "title": "缺口を調べる --audit", "text": "種類・目標・いまの枚数"},
-            {"id": "need", "kind": "decision", "lane": "ai", "title": "目標に届いていない？", "no": "その版面は終わり"},
-            {"id": "kind", "kind": "table", "lane": "ai", "title": "種類 → 目標の枚数（最少〜最大）",
-             "text": "上限 = 内容の主要な要素の数（emblem_pool：Wiki の分類・AniList の主役を数える）。天井 20", "uses": ["roster"],
-             "rows": [("本人", "6（3〜10）"), ("グループ", "メンバー全員（≤20）"), ("キャラ・出演者", "主要キャラの数（≤20、不明は 6）"),
-                      ("ブランド", "公式ロゴ 1"), ("主題", "代表作の数（≤10、不明は 3）")]},
-            {"id": "src", "kind": "fan", "lane": "ai", "title": "候補を集める", "mode": "上から順に · 足りるまで",
-             "items": [("0", "直接指定", "emblem_urls"), ("0", "代表作", "主題の下の一段"), ("1", "Fandom", "立ち絵 → 代表画像", "fandom"), ("2", "Wikidata", "P154・P18", "wiki"),
-                       ("3", "Wikipedia", "記事 ≤10", "wiki"), ("4", "Commons", "≤8 · メンバーは作品名つき", "wiki"), ("5", "記事の配図", "14 日 ≤12"),
-                       ("6", "公式サイト", "og:image"), ("7", "Twemoji", "主題", "twemoji"), ("8", "Bing 画像", "目で見るだけ", "bingimg")]},
-            {"id": "ok", "kind": "step", "lane": "ai", "title": "使える画像か", "text": "6MB まで · 短辺 160 · 白紙・同じ画像を除く", "uses": ["ahash"]},
-            {"id": "face", "kind": "step", "lane": "ai", "title": "本人確認（人物だけ）", "uses": ["yunet", "sface"]},
-            {"id": "pick", "kind": "step", "lane": "ai", "title": "一覧を目で見て番号を選ぶ", "uses": ["claude"]},
-            {"id": "cut", "kind": "step", "lane": "ai", "title": "切り抜いて顔の大きさをそろえる", "uses": ["rembg", "cutcheck", "facefit"]},
+            {"id": "plan", "kind": "step", "lane": "ai", "title": "何を集めるか決める", "by": "ai",
+             "text": "種類（emblem_kind）・名前（emblem_who）・代表作（emblem_examples）・分類（emblem_category）を items.yaml に書く", "uses": ["claude"]},
+            {"id": "count", "kind": "step", "lane": "actions", "title": "主要な要素を数える（--roster）",
+             "text": "分類の人数か AniList の主役の人数 → emblem_pool（上限）", "uses": ["roster"]},
+            {"id": "auto", "kind": "decision", "lane": "actions", "title": "自動補完で目標に届いた？",
+             "text": "「小元素の自動補完」が規則だけで集める", "no": "失敗の理由と助言が管理ページに出る。手で頼まれたら下へ"},
+            {"id": "pick", "kind": "step", "lane": "ai", "title": "一覧を目で見て番号を選ぶ（頼まれたときだけ）", "by": "ai",
+             "text": "外した画像は emblem_reject に書く（二度と自動で選ばれない）", "uses": ["claude"]},
             {"id": "write", "kind": "store", "lane": "repo", "title": "items.yaml · docs/emblems/*.webp"},
         ],
     },
@@ -152,33 +147,36 @@ PROCESSES = [
         "trigger": "後台のゲート（毎時・収集のあと）が「足りない版面がある」と判断したとき。GitHub Actions で Python だけで動く",
         "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。前は Claude が目で見ていた判断（別人・遠景・集合写真・"
                    "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。",
-        "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", ".github/workflows/background.yml"], "doc": "TEMPLATES.md",
-        "uses": ["rembg", "yunet", "sface", "facerule", "holes", "wiki", "fandom"],
+        "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "scripts/emblem_rules.py", ".github/workflows/background.yml"],
+        "doc": "TEMPLATES.md", "rules": "emblem",
+        "uses": ["roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "fandom"],
         "flow": [
             {"id": "b1", "kind": "decision", "lane": "actions", "title": "ゲート：足りない版面がある？",
              "text": "目標未満 · 失敗した版面は「新しい記事・手がかりが来た」か「6 時間たった」ら対象に戻る",
              "uses": ["gate"], "no": "何もしない（Actions 20 秒で終わり）"},
+            {"id": "b1r", "kind": "step", "lane": "actions", "title": "要る枚数を決める", "text": "上限 = 主要な要素の数（まだ数えていなければ先に --roster）",
+             "uses": ["roster"]},
             {"id": "b2", "kind": "step", "lane": "actions", "title": "準備", "text": "モデルはキャッシュから（初回だけダウンロード）",
              "uses": ["rembg", "yunet", "sface"]},
             {"id": "b2s", "kind": "table", "lane": "actions", "title": "取り方の段（同じ回の中で、届くまで上がる）",
              "rows": [("① 標準", "下の順（直接指定 → Fandom → Wikidata → Wikipedia → Commons → 記事の配図 → 公式サイト → Twemoji）"),
                       ("② 名前を広げる", "作品名をつけて全言語の Wikipedia・Commons（12 枚）· 記事 30 日分・要約にも名前 · Fandom の別のページ名"),
-                      ("③ 公式・記事のページ", "公式サイトの画像（メンバー名のファイル）· 名前が出る記事の本文ページの og:image（8 本）· 人物は YouTube のサムネイル（4 本）")],
+                      ("③ 公式・記事のページ", "公式サイトの画像（メンバー名のファイル）· 名前が出る記事の本文ページの og:image（8 本）· 人物は YouTube の動画の場面（字のない hq1〜3）")],
              "uses": ["youtube"]},
             {"id": "b3", "kind": "fan", "lane": "ext", "title": "① 標準で候補を集める", "x": "×6 版面を同時に", "mode": "上から順に · 足りるまで",
-             "items": [("0", "直接指定", "公式の立ち絵"), ("1", "Fandom", "立ち絵 → 代表画像", "fandom"), ("2", "Wikidata", "P154・P18", "wiki"),
-                       ("3", "Wikipedia", "≤10", "wiki"), ("4", "Commons", "≤8", "wiki"), ("5", "記事の配図", "≤12"),
-                       ("6", "公式サイト", "ロゴ"), ("7", "Twemoji", "主題", "twemoji")],
+             "items": [("0", "直接指定", "公式の立ち絵"), ("1", "代表作", "主題の下の一段"), ("2", "AniList", "アニメの主役"),
+                       ("3", "Fandom", "立ち絵 → 代表画像", "fandom"), ("4", "Wikidata", "P154・P18", "wiki"),
+                       ("5", "Wikipedia", "≤10", "wiki"), ("6", "Commons", "≤8", "wiki"), ("7", "記事の配図", "≤12"),
+                       ("8", "公式サイト", "ロゴ"), ("9", "Twemoji", "主題", "twemoji")],
              "uses": ["pace"]},
             {"id": "b4", "kind": "step", "lane": "actions", "title": "使える画像か", "text": "6MB まで · 短辺 160（横長ロゴは長辺 300）· 白紙・同じ画像を除く",
              "uses": ["ahash"]},
-            {"id": "b5", "kind": "table", "lane": "actions", "title": "人物の写真の規則（前は目で見ていた）",
-             "rows": [("顔なし", "観客席・絵画・物"), ("遠景", "顔の高さ < 画像の 10%"), ("何人も写っている", "2 番目の顔 ≥ 60%"),
-                      ("別人", "記事の代表画像と cos < 0.363 · 基準なしは同じ顔 2 枚以上")],
-             "uses": ["yunet", "sface", "facerule"]},
+            {"id": "b5", "kind": "step", "lane": "actions", "title": "人物の写真の規則（前は目で見ていた）",
+             "text": "顔なし・遠景・何人も・別人を数で外す（数は下の「判断の一覧 ④」）", "uses": ["yunet", "sface", "facerule"]},
             {"id": "b6", "kind": "decision", "lane": "actions", "title": "確かな取り方？", "text": "人物 = 規則を通った写真 · キャラ = 直接指定・Fandom · 主題 = Wikidata・Commons・Twemoji",
              "no": "理由をつけて外す（確かでない取り方・重複・目標を超える）"},
             {"id": "b7", "kind": "step", "lane": "repo", "title": "書いて切り抜く", "x": "1 枚ずつ（WRITE_LOCK）",
+             "text": "検査で外れたら同じページの公式イラストで取り直す · 取景は多いほうに合わせる（前からの小元素は触らない）",
              "uses": ["rembg", "cutcheck", "holes", "facefit"]},
             {"id": "b8", "kind": "decision", "lane": "actions", "title": "目標に届いた？", "no": "次の段へ（② → ③）。全部だめなら失敗",
              "no_to": "b2s"},
@@ -290,7 +288,7 @@ PROCESSES = [
         "flow": [
             {"id": "e1", "kind": "step", "lane": "ai", "title": "最新の inbox を読む"},
             {"id": "e2", "kind": "decision", "lane": "ai", "title": "今日の整理待ちがある？", "text": "_covered より後の記事・edit.json にない版面", "no": "何も変えずに終わり"},
-            {"id": "e3", "kind": "step", "lane": "ai", "title": "版面の設計・小元素", "text": "motif・theme・like_fx · 足りない小元素（「小元素の選定」）"},
+            {"id": "e3", "kind": "step", "lane": "ai", "title": "版面の設計・小元素", "by": "ai", "text": "motif・theme・like_fx · 足りない小元素（「小元素の選定」）"},
             {"id": "e4", "kind": "step", "lane": "ai", "title": "編集して edit.json", "text": "同じ件を合わせる · 見出しは原文 · S 3 / M 5 / L 8 件",
              "uses": ["claude"]},
             {"id": "e5", "kind": "step", "lane": "ai", "title": "配図を目で選ぶ", "text": "1 件 12 枚まで · 4 列の一覧", "uses": ["imgpick", "claude"]},
@@ -408,7 +406,7 @@ PROCESSES = [
             {"id": "q3", "kind": "decision", "lane": "actions", "title": "待ちの依頼がある？", "no": "何もしない"},
             {"id": "q4", "kind": "step", "lane": "actions", "title": "検査して items.yaml に書く", "text": "使える項目だけ · 済み・見送りを返す"},
             {"id": "q5", "kind": "decision", "lane": "actions", "title": "新しい関注項？", "no": "ページ生成だけ"},
-            {"id": "q6", "kind": "step", "lane": "actions", "title": "すぐ収集 → AI 編集が版面を設計"},
+            {"id": "q6", "kind": "step", "lane": "actions", "title": "すぐ収集 → AI 編集が版面を設計", "by": "ai"},
         ],
     },
     {
@@ -423,7 +421,7 @@ PROCESSES = [
             {"id": "f3", "kind": "step", "lane": "actions", "title": "inbox/photos に書き出す", "text": "収集のたびに"},
             {"id": "f4", "kind": "decision", "lane": "ai", "title": "写真がある？", "no": "何も変えずに終わり"},
             {"id": "f5", "kind": "step", "lane": "ai", "title": "見て認識する", "text": "名前・価格・規格・タグ", "uses": ["claude"]},
-            {"id": "f6", "kind": "step", "lane": "ai", "title": "物だけ切り取る", "uses": ["crop"]},
+            {"id": "f6", "kind": "step", "lane": "ai", "title": "物だけ切り取る", "by": "ai", "uses": ["crop"]},
             {"id": "f7", "kind": "store", "lane": "repo", "title": "wishlist.yaml"},
         ],
     },
@@ -550,10 +548,10 @@ def _arch_node(n, by):
         p = by[n["proc"]]
         subs = "".join(
             f'<button type="button" class="an-sub" id="p-{e(q["id"])}" data-open="proc-{e(q["id"])}">＋ {e(q["name"])}'
-            f'<small>{e(q.get("when", ""))}</small>{_chips(_own(q))}</button>'
+            f'<small>{e(q.get("when", ""))}</small>{_by_sum(q)}{_chips(_own(q))}</button>'
             for q in (by.get(x) for x in n.get("subs", [])) if q)
         return (f'<div class="an an-p" id="{e(n["id"])}"><button type="button" class="an-b" data-open="proc-{e(p["id"])}">'
-                f'<b>{e(p["name"])}</b><small>{e(p.get("when", ""))}</small>{_chips(_own(p))}<i>流れの図を見る ›</i></button>{subs}</div>')
+                f'<b>{e(p["name"])}</b><small>{e(p.get("when", ""))}</small>{_by_sum(p)}{_chips(_own(p))}<i>流れの図を見る ›</i></button>{subs}</div>')
     return (f'<div class="an an-s{" an-m" if n.get("model") else ""}" id="{e(n["id"])}"><b>{e(n["label"])}</b>'
             f'<small>{e(n["text"])}</small>{_chips(n.get("uses"))}</div>')
 
@@ -588,10 +586,82 @@ def architecture(processes=None):
     lst = "".join(f'<li class="ae-{c}"><em>{i}</em>{e(names[a])} → {e(names[b])}<small>{e(t)}</small></li>' for i, a, b, t, c in EDGES)
     return (f'<p class="arch-lg"><span class="lg-z temp">破線 = その都度立ち上がる環境</span><span class="lg-z keep">実線 = ずっと残る場所</span>{legend}'
             f'<span class="lg-k">{kinds} = 使っているモデル・アルゴリズム・API（数字つき）</span>'
+            f'<span class="lg-by">{_by_tag("ai")} = Claude が判断（トークンを使う） {_by_tag("rule")} = プログラムの規則 {_by_tag("model")} = 学習済みモデルの数値で規則どおりに判断</span>'
             '<span>番号の矢印 = データの流れ · 四角い部品をクリックで流れの図</span></p>'
             f'<div class="arch dgb" id="arch" data-edges="arch-edges"><svg class="dg-svg" aria-hidden="true"></svg>{zones}</div>'
             f'<details class="arch-list"><summary>矢印の一覧（{len(EDGES)}）</summary><ol>{lst}</ol></details>'
             f'<script type="application/json" id="arch-edges">{_edges_json([list(x) for x in EDGES])}</script>')
+
+
+# だれが決めるか：AI（Claude が見て・読んで判断）か、規則（プログラム。学習済みモデルの数値を使うものも、決め方は規則）
+BY = {"ai": ("AI が判断", "Claude が読んで・見て決める（トークンを使う）"),
+      "model": ("ルール＋モデル", "学習済みモデル（顔・切り抜き）の数値を、決まったしきい値で判断する。AI の判断ではない"),
+      "rule": ("ルール", "プログラムの規則・計算で決まる（AI なし・無料）")}
+
+
+def judged_by(n):
+    """流れの図の 1 手順を、だれが決めるか。by を書いていればそれ。保存先は手順ではないので None。
+    使う部品に Claude があれば ai、学習済みモデル（rembg・YuNet・SFace…）があれば model、それ以外は rule。"""
+    if n.get("by"):
+        return n["by"]
+    if n["kind"] == "store":
+        return None
+    uses = list(n.get("uses", [])) + [it[3] for it in n.get("items", []) if len(it) > 3]
+    if {"claude", "claude-api"} & set(uses):
+        return "ai"
+    if any(COMPONENTS.get(c, {}).get("kind") == "model" for c in uses):
+        return "model"
+    return "rule"
+
+
+def _by_tag(by):
+    if not by:
+        return ""
+    label, what = BY[by]
+    return f'<span class="by by-{by}" title="{e(what)}">{e(label)}</span>'
+
+
+def by_count(p):
+    """→ {"ai": n, "rule": n}（model は rule に数える：決め方は規則）。"""
+    out = {"ai": 0, "rule": 0}
+    for n in p["flow"]:
+        b = judged_by(n)
+        if b:
+            out["ai" if b == "ai" else "rule"] += 1
+    return out
+
+
+def _by_sum(p):
+    """構成図の箱に出す「AI n · ルール n」。"""
+    n = by_count(p)
+    ai = f'<span class="by by-ai">AI {n["ai"]}</span>' if n["ai"] else '<span class="by by-none">AI なし</span>'
+    return f'<span class="by-sum">{ai}<span class="by by-rule">ルール {n["rule"]}</span></span>'
+
+
+def _by_legend(p=None):
+    n = by_count(p) if p else None
+    cnt = (lambda k: f'<b>{n[k]}</b>') if n else (lambda k: "")
+    return (f'<p class="by-lg">{_by_tag("ai")}{cnt("ai")}<small>{e(BY["ai"][1])}</small>'
+            f'{_by_tag("rule")}{cnt("rule")}<small>{e(BY["rule"][1])}</small>'
+            f'{_by_tag("model")}<small>{e(BY["model"][1])}</small></p>')
+
+
+def rules_table(kind):
+    """判断の一覧（emblem_rules.py が 1 つだけの元）を、段ごとに AI / ルールの札つきの表にする。"""
+    if kind != "emblem":
+        return ""
+    import emblem_rules
+    rows, cur = [], None
+    for r in emblem_rules.rules():
+        if r["stage"] != cur:
+            cur = r["stage"]
+            rows.append(f'<tr class="rt-s"><th colspan="3">{e(cur)}</th></tr>')
+        rows.append(f'<tr class="rt-{e(r["by"])}"><td>{_by_tag(r["by"])}</td><td><b>{e(r["title"])}</b><small>{e(r["rule"])}</small></td>'
+                    f'<td><code>{e(r["code"])}</code></td></tr>')
+    n = {k: sum(1 for r in emblem_rules.rules() if r["by"] == k) for k in BY}
+    return (f'<details class="rt" open><summary>判断の一覧（全部で {sum(n.values())}：AI が判断 {n["ai"]} · ルール {n["rule"] + n["model"]}）'
+            f'<small>数はコードの定数をそのまま読んでいる（scripts/emblem_rules.py）</small></summary>'
+            f'<div class="rt-w"><table><tbody>{"".join(rows)}</tbody></table></div></details>')
 
 
 def _lane_tag(lane):
@@ -603,7 +673,8 @@ def _dg_node(pid, n, row, col, ncols):
     """流れの図の 1 つの部品（手順・判断・並べて試す・表・保存先）。"""
     k, nid = n["kind"], f'dg-{pid}-{n["id"]}'
     badge = f'<span class="dn-x">{e(n["x"])}</span>' if n.get("x") else ""
-    head = f'<b class="dn-t">{e(n["title"])}</b>{badge}'
+    by = judged_by(n)
+    head = f'{_by_tag(by)}<b class="dn-t">{e(n["title"])}</b>{badge}'
     text = f'<small class="dn-s">{e(n["text"])}</small>' if n.get("text") else ""
     span = f"grid-row:{row};grid-column:{'1 / -1' if k in ('fan', 'table') else col}"
     lane = f'<span class="dn-l">{e(LANES.get(n.get("lane"), (n.get("lane") or "",))[0])}</span>'
@@ -612,18 +683,18 @@ def _dg_node(pid, n, row, col, ncols):
             f'<li id="{nid}-{j}"><i>{e(it[0])}</i><b>{e(it[1])}</b><small>{e(it[2])}</small>{_chips(it[3:4] and [it[3]])}</li>'
             for j, it in enumerate(n["items"]))
         mode = n.get("mode", "上から順に · 足りるまで")
-        return (f'<div class="dn dn-fan" id="{nid}" style="{span}">{lane}<div class="dn-h">{head}<span class="dn-m">{e(mode)}</span></div>'
+        return (f'<div class="dn dn-fan dn-by-{by}" id="{nid}" style="{span}">{lane}<div class="dn-h">{head}<span class="dn-m">{e(mode)}</span></div>'
                 f'{text}<ol class="dn-row">{items}</ol>{_chips(n.get("uses"))}</div>')
     if k == "table":
         rows = "".join(f'<div class="dt-c"><b>{e(a)}</b><span>{e(b)}</span></div>' for a, b in n["rows"])
-        return f'<div class="dn dn-table" id="{nid}" style="{span}">{lane}<div class="dn-h">{head}</div>{text}<div class="dt">{rows}</div>{_chips(n.get("uses"))}</div>'
+        return f'<div class="dn dn-table dn-by-{by}" id="{nid}" style="{span}">{lane}<div class="dn-h">{head}</div>{text}<div class="dt">{rows}</div>{_chips(n.get("uses"))}</div>'
     shape = {"decision": "dn-dec", "store": "dn-store"}.get(k, "dn-step")
     inner = f'{lane}<div class="dn-h">{head}</div>{text}{_chips(n.get("uses"))}'
     if k == "decision":
         yes = f'<small class="dn-s dn-yes">はい → {e(n["yes"])}</small>' if n.get("yes") else ""
         inner = (f'{lane}<div class="dn-dia"><span>{head}</span></div>'   # ひし形には問いだけ。条件と「はい」の行き先は下に
                  + (f'<div class="dn-cap">{text}{yes}</div>' if text or yes else "") + _chips(n.get("uses")))
-    out = f'<div class="dn {shape}" id="{nid}" style="{span}">{inner}</div>'
+    out = f'<div class="dn {shape} dn-by-{by}" id="{nid}" style="{span}">{inner}</div>'
     if k == "decision":   # いいえ の行き先：となりの列に小さな箱
         bcol = ncols
         out += f'<div class="dn dn-no" id="{nid}-no" style="grid-row:{row};grid-column:{bcol}"><i>いいえ</i><span>{e(n["no"])}</span></div>'
@@ -670,7 +741,7 @@ def detail(p):
             f'<div class="pd-meta"><span><b>いつ</b>{e(p["trigger"])}</span>'
             f'<span><b>どこで</b>{e(lane[0])}</span><span><b>費用</b>{e(lane[1])}</span></div>'
             + (f'<div class="pd-uses"><b>使うもの</b>{_chips(p.get("uses"))}</div>' if p.get("uses") else "")
-            + f'{flow_diagram(p)}<p class="pd-files"><b>仕組みの場所</b>{files}</p></dialog>')
+            + f'{_by_legend(p)}{flow_diagram(p)}{rules_table(p.get("rules"))}<p class="pd-files"><b>仕組みの場所</b>{files}</p></dialog>')
 
 
 def render(processes=None):
@@ -758,6 +829,38 @@ CSS = """
 .pd-uses{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;padding:0 18px 12px}
 .pd-uses>b{font:700 10px var(--font-mono);letter-spacing:.15em;padding:1px 6px;background:var(--ink);color:var(--card)}
 .pd-uses .cps{margin:0}
+/* だれが決めるか：AI（紫・太枠・斜線の帯）とルール（緑・左の帯）。ひと目で分かるように枠ごと色を変える */
+.by{display:inline-block;align-self:flex-start;font:900 var(--fs-label)/1.5 var(--font-sans);padding:0 8px;letter-spacing:.04em;
+ transform:skewX(var(--skew));white-space:nowrap}
+.by-ai{background:var(--by-ai);color:var(--card)}
+.by-rule{background:var(--by-rule);color:var(--card)}
+.by-model{background:var(--card);color:var(--by-rule);border:2px solid var(--by-rule)}
+.by-none{background:var(--card);color:var(--ink);border:1.5px dashed var(--ink)}
+.dn-h>.by{order:-1;flex-basis:100%;width:max-content}
+.dn.dn-by-ai{border:4px solid var(--by-ai);box-shadow:6px 6px 0 var(--by-ai);
+ background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--by-ai) 9%,var(--card)) 0 8px,var(--card) 8px 16px)}
+.dn.dn-by-rule,.dn.dn-by-model{border-left:8px solid var(--by-rule)}
+.dn-dec.dn-by-ai .dn-dia::before{background:color-mix(in srgb,var(--by-ai) 35%,var(--gold))}
+.dn-dec.dn-by-rule,.dn-dec.dn-by-model{border-left:0}
+.dn-dia .by{margin-bottom:3px}
+.by-lg{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0;padding:0 18px 12px;font-size:12px}
+.by-lg b{font:900 15px var(--font-num);margin-right:2px}.by-lg small{font:500 var(--fs-label)/1.4 var(--font-sans);margin-right:10px}
+.lg-by{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.by-sum{display:flex;gap:4px;margin:4px 0 2px}
+.rt{margin:4px 18px 14px;border:2px solid var(--ink);background:var(--card)}
+.rt summary{cursor:pointer;padding:8px 12px;font:900 14px var(--font-sans);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.rt summary small{font:500 var(--fs-label) var(--font-sans);opacity:.8}
+.rt-w{overflow-x:auto}
+.rt table{width:100%;border-collapse:collapse;font-size:12px}
+.rt td{padding:6px 10px;border-top:1px solid var(--hair);vertical-align:top}
+.rt td:first-child{width:1%;white-space:nowrap}
+.rt td b{display:block;font:900 13px/1.4 var(--font-sans)}.rt td small{display:block;font:500 12px/1.55 var(--font-sans)}
+.rt td code{font:700 var(--fs-label) var(--font-mono);overflow-wrap:anywhere}
+.rt-s th{text-align:left;padding:8px 10px 4px;font:900 13px var(--font-sans);background:var(--sheet);border-top:2px solid var(--ink)}
+.rt-ai td{background:color-mix(in srgb,var(--by-ai) 10%,var(--card))}
+.rt-ai td:first-child{box-shadow:inset 6px 0 0 var(--by-ai)}
+.rt-rule td:first-child,.rt-model td:first-child{box-shadow:inset 6px 0 0 var(--by-rule)}
+@media (max-width:640px){.rt td:last-child{display:none}}
 .dg{display:grid;gap:30px 26px;padding:6px 18px 18px;align-items:start}
 .dg-lh{grid-row:1;position:sticky;top:66px;z-index:4;padding:4px 0;border-bottom:3px double var(--ink);background:var(--paper)}
 .dg-lh-no .pl{background:var(--alert);color:var(--card)}

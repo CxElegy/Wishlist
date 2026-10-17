@@ -917,3 +917,49 @@ class CutRules(unittest.TestCase):
         self.assertEqual(emblem.hole_share(solid), 0.0)
         solid[70:100, 40:60] = False   # 服の下の方が抜けた（下の端につながる穴）
         self.assertGreater(emblem.hole_share(solid), emblem.HOLE_MAX)
+
+
+class JudgeTable(unittest.TestCase):
+    """判断の一覧（emblem_rules.py）が 1 つだけの元：コードが落とす理由は全部そこにあり、流れの図の手順は全部 AI かルールの札を持つ。"""
+
+    def test_every_drop_reason_is_listed(self):
+        import re
+        import emblem_rules
+        listed = emblem_rules.reasons()
+        src = (ROOT / "scripts" / "emblem.py").read_text(encoding="utf-8")
+        body = src[src.index("def check_whole("):src.index("_SESSIONS = {}")]
+        raised = {re.split(r"[（{]", m)[0] for m in re.findall(r'raise ValueError\(f?"([^"]+)"', body)}
+        fid = (ROOT / "scripts" / "face_id.py").read_text(encoding="utf-8")
+        body = fid[fid.index("def photo_problem("):fid.index("def main_face(")]
+        raised |= set(re.findall(r'return "([^"]+)"', body))
+        fill = (ROOT / "scripts" / "emblem_fill.py").read_text(encoding="utf-8")
+        raised |= set(re.findall(r'drop\("([^"]+)"', fill)) | set(re.findall(r'why = "([^"]+)"', fill))
+        raised |= set(re.findall(r'reasons\["([^"]+)"\]', fill)) - {"切り抜きの検査"}   # 切り抜きの検査は ⑥ の各行の合計
+        self.assertFalse(raised - listed, "emblem_rules.py に書いていない落とす理由")
+
+    def test_numbers_come_from_code(self):
+        import emblem
+        import emblem_rules
+        text = " ".join(r["rule"] for r in emblem_rules.rules())
+        self.assertIn(f"{emblem.TOP_MAX:.0%}", text)
+        self.assertIn(str(face_id.THRESHOLD), text)
+        self.assertIn(f"天井：キャラ・グループ {ef.CEIL['character']}", text)
+        self.assertTrue(all(r["by"] in processes.BY for r in emblem_rules.rules()))
+        self.assertTrue(all(r["stage"] in emblem_rules.STAGES for r in emblem_rules.rules()))
+
+    def test_every_step_says_ai_or_rule(self):
+        for p in processes.PROCESSES:
+            for n in p["flow"]:
+                by = processes.judged_by(n)
+                if n["kind"] == "store":
+                    self.assertIsNone(by)
+                    continue
+                self.assertIn(by, processes.BY, (p["id"], n["id"]))
+                if by == "ai":   # AI の手順は Claude を使う（札）か、by: ai と書いてある
+                    self.assertTrue(n.get("by") == "ai" or {"claude", "claude-api"} & set(n.get("uses", [])), (p["id"], n["id"]))
+        cron = next(p for p in processes.PROCESSES if p["id"] == "emblem-cron")
+        self.assertEqual(processes.by_count(cron)["ai"], 0)   # 自動補完は AI を使わない
+        html = processes.render()
+        self.assertIn('class="by by-ai"', html)
+        self.assertIn("dn-by-ai", html)
+        self.assertIn("判断の一覧", html)
