@@ -1865,6 +1865,8 @@ def backend_cells(items, rows, latest, run):
     by_name = {i["name"]: i for i in items}
     eprog = run.get("items") or {}
     queue = run.get("queue") or []
+    import emblem_fill
+    raw = emblem_fill.load_progress().get("items") or {}   # 時刻（UTC）・failed_at・漏斗の数字はこちらから
     md = (lambda d: f"{int(d[5:7])}/{int(d[8:10])}") if day else (lambda d: "")
     for r in rows:
         name, item = r["name"], by_name.get(r["name"]) or {}
@@ -1892,6 +1894,78 @@ def backend_cells(items, rows, latest, run):
             pos = queue.index(name) + 1 if name in queue else None
             cells["emblem"] = ("wait", f"{count} · 順番 {pos} 番目" if pos else count)
         r["bg"] = {k: {"state": a, "text": b} for k, (a, b) in cells.items()}
+        r["bg"]["emblem"]["detail"] = emblem_detail(item, raw.get(name) or {}, st, queue, run.get("tz"))
+        r["thumbs"] = [(x["image"], x.get("shape") or "") for x in item.get("emblem") or [] if isinstance(x, dict)
+                       and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))][:10]
+
+
+def _next_slot(after, slots):
+    """after（UTC の datetime）より後の、いちばん近い定時（UTC の [時, 分] のリスト）。"""
+    best = None
+    for k in range(0, 3):
+        for h, m in slots:
+            t = (after + dt.timedelta(days=k)).replace(hour=h, minute=m, second=0, microsecond=0)
+            if t > after and (best is None or t < best):
+                best = t
+    return best
+
+
+def emblem_detail(item, entry, state, queue, tz_name=None):
+    """管理ページ「小元素の探し方」：その版面で、何を目標に、どの取り方を順に試し、何枚残り、次に何をするか。
+    取り方の列 = emblem_fill.source_chain（試した数は進捗の tried）。次の回 = 定時（processes の emblem-cron）。"""
+    import emblem_fill
+    import processes
+    tz = zoneinfo.ZoneInfo(tz_name or "Asia/Tokyo")
+    st = emblem_fill.status(item) if item else {}
+    kind = st.get("kind", "topic")
+    tried = entry.get("tried") or {}
+    chain = [{"src": src, "auto": auto, "n": tried.get(src)} for src, auto in emblem_fill.source_chain(item or {})]
+    who = item.get("emblem_who") or []
+    why = {"person": "本人の別の写真", "group": f"メンバー {len(who)} 人" if who else "メンバー全員",
+           "character": (f"出演者 {len(who)} 人" if item.get("emblem_people") else f"キャラ {len(who)} 人") if who else "主役級のキャラ",
+           "brand": "公式ロゴ", "topic": "主題を表す物"}.get(kind, "")
+    now = dt.datetime.now(dt.timezone.utc)
+    slots = processes.slots(next(p for p in processes.PROCESSES if p["id"] == "emblem-cron"))
+    after = now
+    if state == "failed" and entry.get("failed_at"):
+        try:
+            after = max(now, dt.datetime.fromisoformat(entry["failed_at"]) + dt.timedelta(hours=emblem_fill.RETRY_HOURS))
+        except ValueError:
+            pass
+    nxt = _next_slot(after, slots) if slots and state != "ok" else None
+    when = nxt.astimezone(tz).strftime("%m/%d %H:%M") if nxt else ""
+    found = sum(v for v in tried.values() if v)
+    if state == "ok":
+        todo = "そろっている（足りなくなったら次の回に）"
+    elif state == "review":
+        todo = f"Claude が一覧を見て番号を選ぶ（次の定時 {when}）"
+    elif state == "failed":
+        todo = f"{when} 以降に再挑戦"
+    else:
+        pos = queue.index(item.get("name")) + 1 if item.get("name") in queue else None
+        todo = f"次の回 {when} に" + (f"（順番 {pos} 番目）" if pos else "")
+    advice = ""
+    if state in ("failed", "review") or (state == "running" and entry.get("at")):
+        if item.get("emblem_urls"):
+            advice = ""
+        elif emblem_fill.needs_face(item) and sum(tried.get(s) or 0 for s in ("Wikidata", "Wikipedia")) <= 1 and not st.get("have"):
+            advice = "Wikipedia・Wikidata に本人の記事・写真がない → 公式サイトの写真を emblem_urls に書くと確実"
+        elif kind == "character" and not item.get("emblem_people") and not item.get("emblem_fandom"):
+            advice = "キャラの Fandom（emblem_fandom）か公式の立ち絵（emblem_urls）を書くと自動で埋まる"
+        elif kind == "brand":
+            advice = "Wikidata に公式ロゴ（P154）がない → 公式サイトのロゴを emblem_urls に"
+        elif kind == "topic" and not item.get("emblem_icon"):
+            advice = "emblem_icon に絵文字を書くと Twemoji で埋まる"
+        elif found and not (entry.get("funnel") or {}).get("added"):
+            advice = "候補はあるが本人確認・取り方の決まりで落ちた → 一覧（要確認）で目で選ぶ"
+    try:
+        at = dt.datetime.fromisoformat(entry["at"]).astimezone(tz).strftime("%m/%d %H:%M") if entry.get("at") else ""
+    except ValueError:
+        at = ""
+    return {"kind": emblem_fill.KIND_JA.get(kind, kind), "why": why, "target": st.get("target"), "have": st.get("have"),
+            "lo": st.get("lo"), "hi": st.get("hi"), "chain": chain, "funnel": entry.get("funnel") or {},
+            "faces": emblem_fill.needs_face(item) if item else False, "rejects": len(item.get("emblem_reject") or []),
+            "note": entry.get("note") or "", "at": at, "todo": todo, "advice": advice}
 
 
 def emblem_progress(items, tz):
@@ -1907,7 +1981,7 @@ def emblem_progress(items, tz):
             return None
     last = prog.get("last_run") or {}
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
-    return {"queue": [i["name"] for i in emblem_fill.due(prog, items, now)], "ok": prog["summary"]["ok"], "total": prog["summary"]["total"], "started": local(prog.get("started")),
+    return {"queue": [i["name"] for i in emblem_fill.due(prog, items, now)], "tz": str(tz), "ok": prog["summary"]["ok"], "total": prog["summary"]["total"], "started": local(prog.get("started")),
             "last_run": local(last.get("at")), "minutes": last.get("minutes"), "done": len(last.get("done") or []),
             "items": {n: {"state": x["state"], "note": x.get("note", ""), "at": local(x.get("at")),
                           "tried": x.get("tried") or {}} for n, x in prog["items"].items()}}

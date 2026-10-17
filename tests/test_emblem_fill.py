@@ -557,3 +557,49 @@ class Resources(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EmblemDetail(unittest.TestCase):
+    """管理ページ「小元素の探し方」：取り方の順・次の回・助言・図。"""
+
+    def test_source_chain_matches_gather(self):
+        chain = [s for s, _ in ef.source_chain({"type": "event", "emblem_kind": "group"})]
+        self.assertNotIn("Wikidata", chain)   # グループは Wikidata を使わない（gather は本人だけ）
+        self.assertEqual(dict(ef.source_chain({"type": "game"}))["Fandom"], True)
+        self.assertEqual(dict(ef.source_chain({"type": "game"}))["Wikipedia"], False)   # 絵のキャラは目視だけ
+        self.assertEqual(dict(ef.source_chain({"type": "event"}))[ef.WEB], False)
+
+    def test_detail_retry_and_advice(self):
+        import datetime as dt
+        import digest
+        item = {"name": "G", "type": "event", "emblem_kind": "group", "emblem_who": ["a", "b", "c"]}
+        failed = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=1)).isoformat(timespec="seconds")
+        d = digest.emblem_detail(item, {"tried": {"Wikipedia": 1, "Wikimedia Commons": 22}, "failed_at": failed, "at": failed,
+                                        "note": "x"}, "failed", [], "Asia/Tokyo")
+        tomorrow = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=23)).astimezone(digest.zoneinfo.ZoneInfo("Asia/Tokyo"))
+        self.assertTrue(d["todo"].endswith("以降に再挑戦"))
+        self.assertGreaterEqual(d["todo"][:5], tomorrow.strftime("%m/%d"))   # 24 時間たつまでは再挑戦しない
+        self.assertIn("emblem_urls", d["advice"])   # Wiki に記事がないグループ → 公式の写真を
+        self.assertEqual(d["why"], "メンバー 3 人")
+        self.assertEqual([c["n"] for c in d["chain"]][:3], [None, 1, 22])
+        brand = digest.emblem_detail({"name": "B", "type": "product"}, {"tried": {"Wikidata": 0}, "at": failed}, "failed", [], "Asia/Tokyo")
+        self.assertIn("P154", brand["advice"])
+        ok = digest.emblem_detail({"name": "K", "type": "game", "emblem": [{}] * 6}, {}, "ok", [], "Asia/Tokyo")
+        self.assertEqual(ok["advice"], "")
+
+    def test_flow_render(self):
+        d = {"kind": "グループ", "why": "<m>", "target": 9, "have": 0, "lo": 3, "hi": 10, "faces": True, "rejects": 2,
+             "chain": [{"src": "直接指定", "auto": True, "n": None}, {"src": "Wikipedia", "auto": True, "n": 0},
+                       {"src": "Wikimedia Commons", "auto": True, "n": 22}, {"src": "Web 画像検索", "auto": False, "n": 8}],
+             "funnel": {"found": 30, "usable": 4, "auto": 0, "review": 4}, "note": "n", "at": "10/17", "todo": "次", "advice": "a"}
+        out = render._emblem_flow(d, "failed")
+        self.assertIn("ef-st-failed", out)
+        self.assertIn('class="ef-na"', out)
+        self.assertIn('class="ef-zero"', out)
+        self.assertIn('class="ef-got"', out)
+        self.assertIn("ef-eye", out)   # Web は目視だけ
+        self.assertIn("SFace", out)
+        self.assertIn("目で外した 2 枚", out)
+        self.assertIn("集めた <b>30</b>", out)
+        self.assertIn("&lt;m&gt;", out)
+        self.assertNotIn("<m>", out)
