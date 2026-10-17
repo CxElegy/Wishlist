@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-17T05:56:57+00:00",
+ "checked": "2026-10-17T06:11:04+00:00",
  "fired": {
-  "at": "2026-10-17T05:56:57+00:00",
+  "at": "2026-10-17T06:11:04+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -33,19 +33,19 @@
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "A2O LITE",
+    "哈利波特剧集",
     "Astrae Oratio",
     "Vaundy",
-    "哈利波特剧集",
-    "A2O LITE",
+    "あつ森",
     "漫威电影",
-    "FROM",
-    "あつ森"
+    "ILLIT"
    ],
-   "why": "失敗 7 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 20:42 から）"
+   "need": true,
+   "sig": "0c75bec73312",
+   "waiting": [],
+   "why": "足りない 7 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
