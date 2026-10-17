@@ -338,6 +338,17 @@ button{font-family:inherit}
 .older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
 .older summary span{font-weight:500;letter-spacing:.04em}
 .older .grid{padding-top:8px}
+.pend{border-top:1px dashed var(--line)}
+.pend summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 26px;font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em;opacity:.85}
+.pend summary::-webkit-details-marker{display:none}
+.pend summary::before{content:"…";font-weight:900;color:var(--acc)}
+.pend summary span{font-weight:400;letter-spacing:.02em;opacity:.85}
+.pend summary:hover,.pend summary:focus-visible{opacity:1;color:var(--acc);outline:none}
+.pend ul{list-style:none;margin:0;padding:0 26px 14px;display:grid;gap:6px}
+.pend li{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.pend li a{color:inherit}
+.pend li a:hover,.pend li a:focus-visible{color:var(--acc);text-decoration:underline}
+.pend li small{font:var(--fs-label) var(--font-num);opacity:.7}
 .older .card.c3 h3{font-size:15px;line-height:1.45}
 /* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */
 /* ---------- 気になるかも？：店長のおすすめ POP ---------- */
@@ -485,7 +496,7 @@ button{font-family:inherit}
  .pk.big .pic{--pko:26px}.pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
  .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
  .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
- .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}
+ .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
  .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:22px}
@@ -947,6 +958,28 @@ def _brief(stories):
     return f'<div class="brief"><h4>その他のニュース</h4><ul>{rows}</ul></div>'
 
 
+PENDING_SHOW = 20   # 「整理待ち」に並べる最大件数（それ以上は「ほか N 件」）
+
+
+def _pending(items):
+    """AI 編集がまだ整理していない新着（digest.split_unedited、報告の block["pending"]）。版面には載せず、
+    版面の下に折りたたんだ「整理待ち N 件」として原題・出典・日付だけを並べる（ふだんは閉じている）。
+    要紧消息はここに入らない（その場で「重大」として版面に載る）。ないときは空文字。リンクは http(s) だけ。"""
+    rows = [x for x in items or [] if isinstance(x, dict) and x.get("title")]
+    if not rows:
+        return ""
+    lis = ""
+    for x in rows[:PENDING_SHOW]:
+        u, src = _safe_url(x.get("url")), str(x.get("source") or "")[:40]
+        title = f'<a href="{e(u)}" target="_blank" rel="noopener">{e(x["title"])}</a>' if u else f'<span>{e(x["title"])}</span>'
+        meta = " · ".join(v for v in (e(_md(x.get("date"))), e(src)) if v)
+        lis += f'<li>{title}{f"<small>{meta}</small>" if meta else ""}</li>'
+    if len(rows) > PENDING_SHOW:
+        lis += f'<li class="more">ほか {len(rows) - PENDING_SHOW} 件</li>'
+    return (f'<details class="pend"><summary>整理待ち · {len(rows)} 件'
+            f'<span>AI 編集がまとめたら記事になります（原題のまま）</span></summary><ul>{lis}</ul></details>')
+
+
 def _older(stories, today, more=0, texts=()):
     """折叠区：一周内放不下的（more 条）+ 一周以前的；没图的一周前消息列在最后。"""
     if not stories and not texts:
@@ -1026,7 +1059,7 @@ def _calm(block):
     if last:
         tail = (f'<a class="last" href="{e(last["url"])}" target="_blank" rel="noopener">'
                 f'<span class="mono">直近 · {e(last["date"].replace("-", "."))}{_from(last)}</span><b>{e(last["headline"])}</b></a>')
-    tag = "収 集 中" if block.get("collecting") else "新 着 な し"
+    tag = "収 集 中" if block.get("collecting") else "整 理 待 ち" if block.get("pending") else "新 着 な し"
     return (f'<div class="calm">{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
             f"{tail}</div>")
 
@@ -1119,7 +1152,7 @@ def _section(block, anchor=""):
         grid, more = "", []
     else:
         grid, more = _calm({**block, "last": None}), []
-    grid += _brief(texts) + _older(more + older, today, len(more), old_texts)
+    grid += _brief(texts) + _older(more + older, today, len(more), old_texts) + _pending(block.get("pending"))
     recent = recent or texts
     quiet = "" if recent else " quiet"
     cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
@@ -2858,7 +2891,8 @@ LIVE_JS = """
 # 予想の進み具合を塗り、「あと約 N 分」を小さく出す。色は版面の --acc。
 # 重なり：帯（z-index 4）は版面の上、小元素（.emb、z-index 5）の下。小元素は版面の外にはみ出して帯に重なってよい。
 # どの版面がいま何をしているかは、仕組み自身が Supabase の live_status 表に書く（推定はしない）。網页は live_boards() を 30 秒ごとに読む。
-#   ニュース収集（digest.live_mark）：探し始め「記事を探しています」→ 探し終えたらすぐ：新着なし＝消える／あり＝「新着 N 件 · 反映まであと約 N 分」
+#   ニュース収集（digest.live_mark）：探し始め「記事を探しています」→ 探し終えたらすぐ：新着なし＝消える／あり＝「新着 N 件 · AI 整理待ち · 一覧まで約 N 分」
+#     （新着は AI 編集が整理するまで記事にならず、版面の下の「整理待ち」に並ぶ。要紧消息だけはすぐ「重大」で載る）
 #   AI 編集（digest live-edit / pick-images / publish）：「AI が編集しています」→「配図を選んでいます」→「反映を待っています」
 #   小元素の自動補完（emblem_fill.background）：処理中の版面に「小元素を集めています」→ 増えた版面だけ「反映を待っています」
 #   「あと約 N 分」はそれぞれの仕組みの最近の実際の長さ（runlog.typical）から。ページ生成（コードの変更）は帯なし。
@@ -2884,7 +2918,7 @@ BUSY_JS = """
   function paint(){var now=Date.now(),on={};
     live.forEach(function(x){var id=B.ids[x.board],st=Date.parse(x.started_at),eta=Date.parse(x.eta_at)||0,text;
       if(!id||st<GEN-MIN)return;   // このページより前に始まった作業はもう反映済み
-      if(x.proc==='collect')text=x.state==='fetch'?'記事を探しています':'新着 '+x.found+' 件 · '+(eta-now>MIN?'反映まであと約 '+Math.ceil((eta-now)/MIN)+' 分':'まもなく反映');
+      if(x.proc==='collect')text=x.state==='fetch'?'記事を探しています':'新着 '+x.found+' 件 · AI 整理待ち'+(eta-now>MIN?' · 一覧まで約 '+Math.ceil((eta-now)/MIN)+' 分':'');
       else text=(x.note||'更新しています')+(eta?' · '+left(eta,now):'');
       var o={start:st,text:text,pc:eta>st?(now-st)/(eta-st):null};if(!on[id]||st<on[id].start)on[id]=o;});
     Array.prototype.forEach.call(document.querySelectorAll('section.sec[id]'),function(sec){var o=on[sec.id],bar=sec.querySelector(':scope>.busy');
@@ -3815,28 +3849,38 @@ def _admin_emblems(rows, run=None):
 
 
 def _admin_edit_diff(d):
-    """「AI 編集の前後」：作品ごとに、集めた記事（横棒の長さ）のうち AI 編集が記事に使ったもの（色）と使わなかったもの（灰）、
+    """「AI 編集の前後」：作品ごとに、集めた記事（横棒の長さ）のうち AI 編集が記事に使ったもの（色）・使わなかったもの（灰）・
+    まだ整理していないもの（金＝整理待ち：版面には載らず、版面の下の折りたたみに原題だけ並ぶ。要紧消息だけは先に「重大」で載る）、
     右に載せた記事の本数。横棒は全作品で同じ目盛り（1 本の軸）。"""
     if not d:
         return '<p class="empty">まだ収集がありません。</p>'
-    if not d.get("edited"):
-        return f'<p class="empty">{e(_md(d["date"]))} はまだ AI 編集していません（集めた記事はそのまま原題で載っています）。</p>'
     rows = d.get("rows") or []
+    if not rows:
+        return f'<p class="empty">{e(_md(d["date"]))} はまだ AI 編集していません。</p>'
     mx = max([r["total"] for r in rows] + [1])
-    head = (f'<p class="ed-sum"><b>{d["total"]}</b> 件を集めて → <b>{d["used"]}</b> 件を使い → '
-            f'<b>{d["stories"]}</b> 本の記事に（同じ出来事はまとめ、宣伝・雑談・古い話は落とす）'
-            f'<span>配図を選んだ記事 {d["images"]} 本 · 重大ニュース {d["hero"]} 本</span></p>'
-            '<p class="ed-key"><span><i class="ed-u"></i>記事に使った</span><span><i class="ed-d"></i>使わなかった</span></p>')
+    new, urg = d.get("new") or 0, d.get("urgent") or 0
+    wait = (f'<span>整理待ち {new} 件は版面に載せず、各版面の下の「整理待ち」に原題だけ並べる（次の AI 編集で記事に）'
+            + (f' · うち要紧 {urg} 件は先に「重大」で掲載' if urg else "") + "</span>") if new else ""
+    if d.get("edited"):
+        head = (f'<p class="ed-sum"><b>{d["total"]}</b> 件を集めて → <b>{d["used"]}</b> 件を使い → '
+                f'<b>{d["stories"]}</b> 本の記事に（同じ出来事はまとめ、宣伝・雑談・古い話は落とす）'
+                f'<span>配図を選んだ記事 {d["images"]} 本 · 重大ニュース {d["hero"]} 本</span>{wait}</p>')
+    else:
+        head = (f'<p class="ed-sum">{e(_md(d["date"]))} はまだ AI 編集していません：<b>{d["total"]}</b> 件すべて整理待ち'
+                f'{wait}</p>')
+    head += ('<p class="ed-key"><span><i class="ed-u"></i>記事に使った</span><span><i class="ed-d"></i>使わなかった</span>'
+             '<span><i class="ed-p"></i>整理待ち（版面に載せない）</span></p>')
     out = []
     for r in rows:
-        u, dr = r["used"], r["total"] - r["used"]
-        tip = f'{r["name"]}：集めた {r["total"]} 件のうち {u} 件を使い、{r["stories"]} 本の記事に'
+        nw = r.get("new") or 0
+        u, dr = r["used"], max(0, r["total"] - r["used"] - nw)
+        tip = f'{r["name"]}：集めた {r["total"]} 件のうち {u} 件を使い、{r["stories"]} 本の記事に' + (f'・整理待ち {nw} 件' if nw else "")
         badge = ("".join(f'<i class="ed-w">{k}</i>' for k, n in (("重大", r["hero"]), ("頭", r["lead"])) if n)
-                 + (f'<i class="ed-new">未編集 {r["new"]}</i>' if r.get("new") else ""))
+                 + (f'<i class="ed-new">整理待ち {nw}</i>' if nw else ""))
         out.append(
             f'<li title="{e(tip)}"><span class="ed-n">{e(r["name"])}</span>'
             f'<span class="ed-bar" style="--w:{100 * r["total"] / mx:.1f}%">'
-            f'<i class="ed-u" style="flex:{u}"></i><i class="ed-d" style="flex:{dr}"></i></span>'
+            f'<i class="ed-u" style="flex:{u}"></i><i class="ed-d" style="flex:{dr}"></i><i class="ed-p" style="flex:{nw}"></i></span>'
             f'<span class="ed-v">{u} / {r["total"]} 件 → <b>{r["stories"]}</b> 本{badge}</span></li>')
     return head + f'<ol class="ed-rows">{"".join(out)}</ol>'
 
@@ -3876,7 +3920,7 @@ ADMIN_PAGE_CSS = """
 .ed-bar{display:flex;gap:2px;width:var(--w);min-width:6px;height:14px}
 .ed-bar i{display:block;min-width:0;border-radius:0 4px 4px 0}.ed-bar i:first-child{border-radius:4px 0 0 4px}
 .ed-bar i:only-child,.ed-bar i[style*="flex:0"]{border-radius:4px}
-.ed-u{background:var(--viz-1)}.ed-d{background:color-mix(in srgb,var(--ink) 18%,transparent)}
+.ed-u{background:var(--viz-1)}.ed-p{background:var(--gold)}.ed-d{background:color-mix(in srgb,var(--ink) 18%,transparent)}
 .ed-bar i[style*="flex:0"]{display:none}
 .ed-v{font:700 12px var(--font-mono);white-space:nowrap}.ed-v b{font-size:15px}
 .ed-w,.ed-new{display:inline-block;font:700 10px var(--font-sans);font-style:normal;margin-left:6px;padding:0 6px;background:var(--ink);color:var(--card);transform:skewX(var(--skew))}
@@ -4149,7 +4193,7 @@ ADMIN_PAGE_JS = """
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
   // いま動いているもの：live_status()（収集・小元素の補完が版面ごとに書く）を 30 秒ごとに
   var LP={collect:'ニュース収集',emblem:'小元素の自動補完',edit:'AI 編集'};
-  function liveState(x){if(x.state==='fetch')return '記事を探している';if(x.state==='found')return '新着 '+x.found+' 件 · 網页に反映待ち';
+  function liveState(x){if(x.state==='fetch')return '記事を探している';if(x.state==='found')return '新着 '+x.found+' 件 · AI 整理待ち';
     var m=/^emblem:(.*)$/.exec(x.state||'');if(m)return '取り方 '+m[1]+'（'+x.found+' / 3 段目）';return x.state;}
   function loadLive(){var box=document.getElementById('livenow');if(!box)return;
     rpc('live_status').then(function(list){box.textContent='';if(!list||!list.length){box.appendChild(el('p','empty','いまは何も動いていません（次の実行は下の「次の実行」）。'));return;}

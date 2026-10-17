@@ -1780,31 +1780,35 @@ def emblem_status(item):
 
 def edit_diff(inbox_path):
     """管理ページ「AI 編集の前後」：その日の収集（inbox）と AI 編集（edit.json）を比べる。
-    作品ごとに、集めた件数・記事に使った件数（refs）・載せた記事の本数・hero / lead・AI が選んだ配図。"""
+    作品ごとに、集めた件数・記事に使った件数（refs）・載せた記事の本数・hero / lead・AI が選んだ配図、
+    整理待ち（new：_covered より後の、または edit.json にない版面の全件。版面には載らない）と、そのうち要紧で先に載せたもの（urgent）。"""
     if not inbox_path:
         return None
     raw = load_json(inbox_path) or {}
     edit_path = inbox_path.with_name(f"{inbox_path.stem}.edit.json")
-    edit = load_json(edit_path) if edit_path.exists() else None
-    if not edit:
-        return {"date": inbox_path.stem, "edited": False, "rows": []}
+    edit = (load_json(edit_path) if edit_path.exists() else None) or {}
+    covered = edit.get("_covered") or {}
     rows = []
     for block in raw.get("items", []):
         name = block.get("name")
-        ns = {x.get("n") for x in block.get("entries") or []}
-        total = len(block.get("entries") or [])
+        entries = block.get("entries") or []
+        ns = {x.get("n") for x in entries}
+        total = len(entries)
         stories = [x for x in (edit.get(name) or []) if isinstance(x, dict)]
         used = {r for x in stories for r in x.get("refs") or [] if r in ns}
+        cov = min(total, int(covered[name] or 0) if name in covered else total if name in edit else 0)   # publish と同じ読み方
         rows.append({"name": name, "total": total, "used": min(len(used), total), "stories": len(stories),
                      "hero": sum(1 for x in stories if x.get("weight") == "hero"),
                      "lead": sum(1 for x in stories if x.get("weight") == "lead"),
                      "images": sum(1 for x in stories if x.get("image")),
-                     "new": max(0, total - int((edit.get("_covered") or {}).get(name) or 0))})
+                     "new": total - cov,
+                     "urgent": sum(1 for x in entries if x.get("urgent") and int(x.get("n") or 0) > cov)})
     rows.sort(key=lambda r: (-r["total"], r["name"]))
-    return {"date": inbox_path.stem, "edited": True, "rows": rows,
+    return {"date": inbox_path.stem, "edited": bool(edit), "rows": rows,
             "total": sum(r["total"] for r in rows), "used": sum(r["used"] for r in rows),
             "stories": sum(r["stories"] for r in rows), "images": sum(r["images"] for r in rows),
-            "hero": sum(r["hero"] for r in rows)}
+            "hero": sum(r["hero"] for r in rows), "new": sum(r["new"] for r in rows),
+            "urgent": sum(r["urgent"] for r in rows)}
 
 
 def admin_data(items, issues, analysis, tz, updated):
@@ -2208,6 +2212,21 @@ def is_urgent(e, item):
     return any(re.search(p, e.title, re.I) for p in item.get("urgent_patterns") or [])
 
 
+def split_unedited(pairs, item):
+    """AI 编辑还没整理的条目 [(编号, Entry)] → (要紧的报道, 整理待ち)。
+    版面只放 AI 整理过的报道；例外是要紧消息（is_urgent）：等不了，马上以「重大」上版面（Discord 通知另走 notify.urgent）。
+    其余不上版面，只在版面底部折叠的「整理待ち N 件」里列原标题和来源（render._pending），下次 AI 编辑时再整理。"""
+    hot = [(n, e) for n, e in pairs if is_urgent(e, item)]
+    stories = fallback_stories([e for _, e in hot], item) if hot else []
+    for x in stories:
+        x["refs"], x["weight"] = [hot[r - 1][0] for r in x["refs"]], "hero"
+    taken = {r for x in stories for r in x["refs"]}
+    pending = [{"n": n, "title": e.title, "url": e.url, "source": e.source,
+                "date": e.published.date().isoformat() if e.published else ""}
+               for n, e in pairs if n not in taken]
+    return stories, pending
+
+
 def merge_inbox(old, new):
     """同一天多次运行：新条目接在已有条目后面（编号顺延），状态以最新为准但保留“当天有变化”。"""
     by_name = {i["name"]: i for i in old["items"]}
@@ -2246,7 +2265,8 @@ def _run_min(proc, default_secs):
 
 def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"):
     """简报网页的版面「更新中」条（render.BUSY_JS 读 Supabase 的 live_status()）：这个版面现在在做什么。
-    state：fetch（正在找新记事）/ found（有新记事、等网页更新）；None = 删掉这一行（没有新记事，条消失）。
+    state：fetch（正在找新记事）/ found（有新记事：网页上显示「新着 N 件 · AI 整理待ち」——新记事等 AI 编辑整理后才成为报道，
+    出刊后先列在版面底部的「整理待ち」里，要紧消息除外）；None = 删掉这一行（没有新记事，条消失）。
     board=None 且 state=None：删掉这个 proc 的全部行（每次收集开始时清空）。失败也不影响收集本身。"""
     try:
         if state is None:
@@ -2431,7 +2451,7 @@ def publish(inbox_path=None):
     if settings.get("summarize", False) and any(i["name"] not in edits for i in inbox["items"]):
         client = make_client()
         if client is None:
-            print("没有可用的 Claude 凭据，改用关键词规则编排", file=sys.stderr)
+            print("没有可用的 Claude 凭据：未整理的条目等 AI 编辑（要紧消息先上版面）", file=sys.stderr)
     model = settings.get("model", "claude-haiku-5-5")
 
     blocks, inbox_changed, stats, used = [], False, images.Stats(), set()
@@ -2444,31 +2464,29 @@ def publish(inbox_path=None):
         elif not item.get("max_stories"):
             item = {**item, "max_stories": SIZE_STORIES["M"]}
         entries = [entry_from_dict(d) for d in raw["entries"]]
+        pending = []
         if raw["name"] in edits and not raw["name"].startswith("_"):
             stories = [dict(s) for s in edits[raw["name"]]]
             for s in stories:
                 s.setdefault("highlight", ""), s.setdefault("blurb", ""), s.setdefault("weight", "normal")
                 s["refs"] = [r for r in s.get("refs", []) if 0 < r <= len(entries)]
             stories = [s for s in stories if s["refs"]]
-            # 编排写好之后当天又来的消息（编号大于 _covered）：先用关键词规则补上，
-            # 要紧的放最前面做“重大”，其余接在后面；下次 AI 编排时会重写
+            # 编排写好之后当天又来的消息（编号大于 _covered）：不上版面，等下次 AI 编辑整理。
+            # 例外是要紧消息：马上做“重大”放在最前面；其余列进版面底部折叠的「整理待ち」
             covered = edits.get("_covered", {}).get(raw["name"], len(entries))
-            late = [(n, e) for n, e in enumerate(entries, 1) if n > covered]
-            if late:
-                extra = fallback_stories([e for _, e in late], item)
-                for x in extra:
-                    x["refs"] = [late[x["refs"][0] - 1][0]]
-                    if x["weight"] == "lead":
-                        x["weight"] = "normal"
-                stories = [x for x in extra if x["weight"] == "hero"] + stories + \
-                          [x for x in extra if x["weight"] != "hero"]
+            urgent, pending = split_unedited([(n, e) for n, e in enumerate(entries, 1) if n > covered], item)
+            stories = urgent + stories
         elif entries:
-            stories = (edit_stories(client, model, item, entries) if client else None) or fallback_stories(entries, item)
+            # 还没被 AI 编辑整理过的关注项：有 API 凭据时当场用 AI 编；没有（GitHub Actions）就等 AI 编辑，
+            # 只把要紧消息先放上去，其余放进「整理待ち」（不是空白版面，也不放未整理的原标题报道）
+            stories = edit_stories(client, model, item, entries) if client else None
+            if not stories:
+                stories, pending = split_unedited(list(enumerate(entries, 1)), item)
         else:
             stories = []
         if item.get("max_stories"):  # 篇幅上限：要紧的排在最前，截掉的是后面次要的
             stories = stories[:item["max_stories"]]
-        if not stories and not any(f["changed"] for f in raw["facts"]):
+        if not stories and not pending and not any(f["changed"] for f in raw["facts"]):
             continue
         stories = attach_media(stories, entries, raw.get("cover"), raw["name"], stats, used)  # 原文已删的报道会被去掉
         # 出刊时补到的配图写回 inbox，下次出刊直接用，不必再找（Reddit 限流、网站偶尔打不开时也不会丢图）
@@ -2477,7 +2495,7 @@ def publish(inbox_path=None):
                 d["image"], d["image_via"], inbox_changed = e.image, e.image_via, True
             if e.link and not d.get("link"):
                 d["link"], inbox_changed = e.link, True
-        if not stories and not any(f["changed"] for f in raw["facts"]):
+        if not stories and not pending and not any(f["changed"] for f in raw["facts"]):
             continue
         blocks.append({
             "name": raw["name"],
@@ -2487,6 +2505,7 @@ def publish(inbox_path=None):
             "theme": theme.resolve(item, raw.get("cover"), themes),
             "facts": raw["facts"],
             "stories": stories,
+            **({"pending": pending} if pending else {}),
         })
     # 没有新消息的关注项也留一个小栏，排在有消息的后面
     shown = {b["name"] for b in blocks}

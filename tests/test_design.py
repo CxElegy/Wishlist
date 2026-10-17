@@ -260,6 +260,35 @@ class AdminPage(unittest.TestCase):
         self.assertNotRegex(render.ADMIN_PAGE_CSS, r"#[0-9A-Fa-f]{3,6}\b")
 
 
+class PendingWidget(unittest.TestCase):
+    """版面の下の折りたたみ「整理待ち N 件」（render._pending）：AI 編集がまだ整理していない新着の原題。"""
+
+    def test_collapsed_list_with_links(self):
+        html_ = render._pending([{"title": "Astrae Oratio CBT", "url": "https://e.com/a", "source": "4Gamer", "date": "2026-10-17"}])
+        self.assertTrue(html_.startswith('<details class="pend">'))   # ふだんは閉じている（open なし）
+        self.assertIn("整理待ち · 1 件", html_)
+        self.assertIn('href="https://e.com/a"', html_)
+        self.assertIn("10.17 · 4Gamer", html_)
+
+    def test_empty_unsafe_and_escaped(self):
+        self.assertEqual(render._pending(None), "")
+        self.assertEqual(render._pending([]), "")
+        html_ = render._pending([{"title": "<script>x</script>", "url": "javascript:alert(1)", "source": "<b>"}])
+        self.assertNotIn("<script>", html_)
+        self.assertNotIn("javascript:", html_)
+        self.assertIn("&lt;b&gt;", html_)
+
+    def test_long_list_is_capped(self):
+        rows = [{"title": f"t{i}", "url": f"https://e.com/{i}"} for i in range(render.PENDING_SHOW + 5)]
+        html_ = render._pending(rows)
+        self.assertEqual(html_.count("<li>"), render.PENDING_SHOW)
+        self.assertIn("ほか 5 件", html_)
+
+    def test_css_uses_tokens_only(self):
+        css = render.CSS[render.CSS.index(".pend{"):render.CSS.index(".pend li small")]
+        self.assertNotRegex(css, r"#[0-9a-fA-F]{3,6}\b")
+
+
 if __name__ == "__main__":
     unittest.main()
 

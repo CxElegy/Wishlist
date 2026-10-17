@@ -147,7 +147,7 @@
 - 管理页「いまの状況」开着时一直重读：依頼・写真每 1 分，GitHub Actions 每 3 分（未登录 API 每小时 60 次；所有标签页共用 3 分钟内的结果，`localStorage`）。
 - **版面的「更新中」条**（`render.BUSY_JS` / `busy_plan`）：**只在正在更新的那个版面**上边框出一条用版面 `--acc` 色往返的细条 + 进度 + 「あと約 N 分」，其他版面不出。
   图层：条 z-index 4，在小元素（`.emb`，z-index 5）下面。**不推算**：各仕组み自己往 Supabase `live_status` 表写，网页 30 秒读一次 `live_boards()`（`db/live_status.sql`）。没有 AI 参与。
-  - 收集（`digest.live_mark`，Actions 有 secret key 直接写）：开始抓「記事を探しています」→ **这个版面一抓完就**判断：没新记事删掉（条消失），有就「新着 N 件 · 反映まであと約 N 分」；按顺序去重后件数变了再改（`tests/test_live.py`）。
+  - 收集（`digest.live_mark`，Actions 有 secret key 直接写）：开始抓「記事を探しています」→ **这个版面一抓完就**判断：没新记事删掉（条消失），有就「新着 N 件 · AI 整理待ち · 一覧まで約 N 分」（新记事 AI 编辑后才成报道）；按顺序去重后件数变了再改（`tests/test_live.py`）。
   - AI 编辑（Claude 定时任务，没有 secret key → `scripts/livestatus.py` 调 `live_report()`）：`EDITING.md` 第 2 步 `digest.py live-edit`「AI が編集しています」→ `pick-images`「配図を選んでいます」→ `publish`「反映を待っています」。
   - 小元素补全（`emblem_fill.background`，同上 `live_report()`）：处理中「小元素を集めています」→ 增加了的版面「反映を待っています」，没增加就删。
   - `live_report()` 只收 proc = edit / emblem、版面名必须在 `sizes` 表里、文字 40 字・预计 90 分以内（不用密钥就能写，所以限得很窄；被滥用最多是假的条出 45 分钟）。
@@ -189,7 +189,11 @@
   正在处理的版面和段写进 Supabase `live_status`（proc=emblem），管理页「いま動いているもの」每 30 秒读一次。
   **后台的ゲート**（`scripts/gate.py` + `.github/workflows/background.yml`）：先数有没有活；小元素补全直接在 Actions 用 Python 做（不用 AI，
   原来要目视的「别人・远景・合照・抠图有洞・重复」都改成规则了）；AI 编辑・照片加愿望只在有活时用 API 叫 Claude（同一份活 6 小时内不重复叫，
-  需要各定时任务的 API 令牌 Secret；`GATE_FIRE=1` 才真的叫——那两个任务自己的定时停掉后再打开，不然两边都跑反而更费）。
+  需要各定时任务的 API 令牌 Secret；**仓库变量** `GATE_FIRE`（Settings → Secrets and variables → Actions → Variables）打开才真的叫：
+  没设 / `0` = 不叫、`edit` = 只叫 AI 编辑、`1` = AI 编辑和照片都叫。打开后，那个任务自己的定时由用户确认再停，不然两边都跑反而更费）。
+- **版面只放 AI 整理过的报道（2026-10-17 定）**：收集（Actions）出刊时，没被 AI 编辑覆盖的条目（编号 > `_covered`、或 edit.json 里没有的关注项）
+  不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
+  ゲート看到今天有整理待ち（`gate.edit_work`）就叫 AI 编辑（同一份活 6 小时不重复、两次至少隔 60 分钟），所以最多每 2 小时一次 AI 编辑。
 - **架构图・流程图的规矩（用户定的）**：① **精确到算法**：用到的模型、算法、API、规则都要画进去，写正确的名字和数字
   （模型名・大小、阈值、同时处理几个、间隔、每次几张），登记在 `processes.COMPONENTS`，在图上是 MODEL / ALGO / API / RULE 的札；
   改了代码里的数字，同步改这里。② **全部是图**：详细流程也画成泳道图（列 = 在哪里跑，判断 = 菱形「はい ↓ / いいえ →」，
