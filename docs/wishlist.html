@@ -310,6 +310,17 @@ button{font-family:inherit}
 .older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
 .older summary span{font-weight:500;letter-spacing:.04em}
 .older .grid{padding-top:8px}
+.pend{border-top:1px dashed var(--line)}
+.pend summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 26px;font:700 var(--fs-label) var(--font-sans);letter-spacing:.08em;opacity:.85}
+.pend summary::-webkit-details-marker{display:none}
+.pend summary::before{content:"…";font-weight:900;color:var(--acc)}
+.pend summary span{font-weight:400;letter-spacing:.02em;opacity:.85}
+.pend summary:hover,.pend summary:focus-visible{opacity:1;color:var(--acc);outline:none}
+.pend ul{list-style:none;margin:0;padding:0 26px 14px;display:grid;gap:6px}
+.pend li{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.pend li a{color:inherit}
+.pend li a:hover,.pend li a:focus-visible{color:var(--acc);text-decoration:underline}
+.pend li small{font:var(--fs-label) var(--font-num);opacity:.7}
 .older .card.c3 h3{font-size:15px;line-height:1.45}
 /* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */
 /* 版面模版「retro」：平成动画：星星、角丸题字、双层圆点底纹、发光的强调色。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
@@ -656,7 +667,7 @@ button{font-family:inherit}
  .pk.big .pic{--pko:26px}.pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
  .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
  .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
- .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}
+ .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
  .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:22px}
@@ -783,7 +794,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="ad41194d279c"><style>
+<meta name="wl-ver" data-page="wishlist" content="6b98b15c7bda"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -803,7 +814,7 @@ section.fresh{position:relative}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.17 14:32</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.17 14:33</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
