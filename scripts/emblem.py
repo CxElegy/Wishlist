@@ -103,7 +103,8 @@ def inspect(data):
     img.load()
     img = img.convert("RGBA")
     w, h = img.size
-    if min(w, h) < MIN_SIDE:
+    wide = max(w, h) >= 2.2 * min(w, h)   # 横長・縦長のロゴ（Samsung は 500×133）：短い辺ではなく長い辺で見る
+    if (min(w, h) < 64 or max(w, h) < 300) if wide else min(w, h) < MIN_SIDE:
         raise ValueError(f"小さすぎる（{w}×{h}）")
     a = img.getchannel("A")
     edge = [a.getpixel((x, y)) for x in range(0, w, max(1, w // 60)) for y in (0, h - 1)] + \
@@ -463,9 +464,23 @@ _SESSIONS = {}
 
 
 def _session(name):
+    """rembg のセッション（1 回だけ作る）。onnxruntime のメモリ池（arena）を切る：池があると、1 枚の切り抜きで
+    使った数 GB を返さずに持ち続け、何枚も切るうちに 13GB（コンテナの 15GB のほぼ全部）まで溜まった。"""
     from rembg import new_session
     if name not in _SESSIONS:
-        _SESSIONS[name] = new_session(name)
+        import onnxruntime as ort
+        orig = ort.SessionOptions
+
+        def opts():
+            o = orig()
+            o.enable_cpu_mem_arena = False
+            o.enable_mem_pattern = False
+            return o
+        ort.SessionOptions = opts   # rembg は new_session の中で ort.SessionOptions() を作るので、そのときだけ差し替える
+        try:
+            _SESSIONS[name] = new_session(name)
+        finally:
+            ort.SessionOptions = orig
     return _SESSIONS[name]
 
 

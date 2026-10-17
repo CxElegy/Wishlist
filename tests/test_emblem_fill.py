@@ -68,6 +68,20 @@ class Rules(unittest.TestCase):
 
 
 class Sources(unittest.TestCase):
+    def test_wide_logo_is_not_too_small(self):
+        import emblem
+        import io as _io
+        from PIL import Image
+
+        def png(w, h):
+            b = _io.BytesIO()
+            Image.new("RGB", (w, h), "white").save(b, "PNG")
+            return b.getvalue()
+        emblem.inspect(png(500, 133))   # 横長のロゴは長い辺 300 以上なら使える
+        for w, h in ((120, 120), (280, 60), (500, 50)):
+            with self.assertRaises(ValueError):
+                emblem.inspect(png(w, h))
+
     def test_parse_bing(self):
         html = ('x murl&quot;:&quot;https://a.example/p/1.jpg&quot; y murl&quot;:&quot;https://a.example/p/1.jpg&quot; '
                 'murl&quot;:&quot;https://b.example/bad name.png&quot; murl&quot;:&quot;https://c.example/2.webp?x=1&quot;')
@@ -313,9 +327,15 @@ class Processes(unittest.TestCase):
                 self.assertIn(n["kind"], ("step", "decision", "fan", "store", "table"), p["id"])
                 self.assertIn(n.get("lane"), processes.LANES, (p["id"], n["id"]))
                 if n["kind"] == "decision":
-                    self.assertTrue(n.get("yes") and n.get("no"), (p["id"], n["id"]))
+                    self.assertTrue(n.get("no"), (p["id"], n["id"]))   # はい = 下へ続く、いいえ = 右の箱
                 if n["kind"] == "fan":
-                    self.assertTrue(all(len(x) == 3 for x in n["items"]))
+                    self.assertTrue(all(len(x) in (3, 4) for x in n["items"]))
+                    for x in n["items"][3:4] and [it[3] for it in n["items"] if len(it) == 4]:
+                        self.assertIn(x, processes.COMPONENTS, (p["id"], n["id"]))
+                for c in n.get("uses", []):
+                    self.assertIn(c, processes.COMPONENTS, (p["id"], n["id"]))
+            for c in p.get("uses", []):
+                self.assertIn(c, processes.COMPONENTS, p["id"])
                 if n["kind"] == "table":
                     self.assertTrue(all(len(x) == 2 for x in n["rows"]))
 
@@ -325,8 +345,11 @@ class Processes(unittest.TestCase):
         for z in processes.ARCH:
             for n in z["nodes"]:
                 ids.add(n["id"])
+                ids |= {f"p-{x}" for x in n.get("subs", [])}
                 if n.get("proc"):
                     self.assertIn(n["proc"], {p["id"] for p in processes.PROCESSES})
+                for c in n.get("uses", []):
+                    self.assertIn(c, processes.COMPONENTS, n["id"])
         for n, a, b, t, c in processes.EDGES:   # 矢印の両端は図の部品・色は凡例にあるもの
             self.assertIn(a, ids)
             self.assertIn(b, ids)
@@ -335,6 +358,15 @@ class Processes(unittest.TestCase):
         shown = {p["id"] for p in processes.PROCESSES if f'data-open="proc-{p["id"]}"' in out}
         self.assertEqual(shown, {p["id"] for p in processes.PROCESSES})   # 全部のプロセスが図から開ける
         self.assertIn('id="arch-edges"', out)
+        for c in processes.COMPONENTS.values():   # モデル・アルゴリズムは名前と数字つき
+            self.assertTrue(c["name"] and c["kind"] in processes.KIND_LABEL)
+        for name in ("rembg birefnet-general-lite", "YuNet", "SFace", "FASTOCTREE", "話題度 6 次元"):
+            self.assertIn(name, out)
+        d = processes.flow_diagram(next(p for p in processes.PROCESSES if p["id"] == "emblem-cron"))
+        edges = json.loads(d.split('id="dge-emblem-cron">')[1].split("</script>")[0])
+        self.assertTrue(any(x[3] == "いいえ" and x[5] for x in edges))   # 判断のいいえは破線の枝
+        self.assertIn("dn-dec", d)
+        self.assertIn("dn-fan", d)
         try:   # ARCH に置いていない新しい仕組みも「そのほか」から開ける
             processes.PROCESSES.append({"id": "zz", "name": "新しい仕組み", "en": "ZZ", "lane": "web", "trigger": "t", "summary": "s",
                                         "flow": [{"id": "a", "kind": "step", "lane": "web", "title": "x"}]})
@@ -375,7 +407,8 @@ class Processes(unittest.TestCase):
         self.assertIn('class="em-review">要確認', out)
         self.assertIn("&lt;残り&gt; 3 枚", out)   # 結果の文は転義する
         self.assertIn("10/17 06:00", out)
-        self.assertLess(out.index(">A<"), out.index(">B<"))   # 要確認が上
+        em = out[out.index('id="emblems"'):]
+        self.assertLess(em.index(">A<"), em.index(">B<"))   # 要確認が上
 
 
 
@@ -470,6 +503,7 @@ class Resources(unittest.TestCase):
         import resources
         x = resources.snapshot()
         self.assertGreaterEqual(x["cpu"], 1)
+        self.assertEqual(x["disk_total"], x["disk_used"] + x["disk_free"])   # マシン全体ではなく、使える分
         for k in ("mem_total", "mem_free", "disk_total", "disk_free", "peak"):
             self.assertIn(k, x)
             self.assertGreater(x[k], 0)
@@ -493,13 +527,14 @@ class Resources(unittest.TestCase):
         res = {"sizes": {"repo": 900 * 1024 ** 2, "pages": 100 * 1024 ** 2, "emblems": 5 * 1024 ** 2, "inbox": 1, "state": 1},
                "limits": {"repo": G, "pages": G},
                "runs": {"emblem": {"name": "小元素の自動補完", "when": "10/17 09:40", "secs": 2400, "workers": 4,
-                                   "res": {"cpu": 4, "load": 3.1, "mem_total": 16 * G, "mem_free": 12 * G, "peak": 2 * G,
-                                           "disk_total": 30 * G, "disk_free": 1 * G}}},
+                                   "res": {"cpu": 4, "load": 3.1, "mem_total": 16 * G, "mem_free": 3 * G, "peak": 13 * G,
+                                           "disk_used": 11 * G, "disk_total": 40 * G, "disk_free": 29 * G}}},
                "tokens": {"edit": {"name": "AI 編集", "last": 12345, "week": 50000, "runs": 4},
                           "collect": {"name": "<収集>", "last": None, "week": 0, "runs": 0}}}
         out = render._admin_resources(res)
         self.assertIn('class="mt warn"', out)   # リポジトリ 88% は赤
-        self.assertEqual(out.count('class="mt warn"'), 1)   # ディスク（マシン全体）は赤にしない
+        self.assertEqual(out.count('class="mt warn"'), 2)   # メモリのピーク 81% も赤・ディスク 28% は赤にしない
+        self.assertIn("<b>11.00 GB</b> / 40.00 GB", out)
         self.assertIn("40 分 0 秒", out)
         self.assertIn("4 本並列", out)
         self.assertIn("12,345", out)
