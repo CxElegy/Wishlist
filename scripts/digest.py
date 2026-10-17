@@ -1927,6 +1927,8 @@ def write_page():
     analysis = heat.analyze(items, sorted(INBOX_DIR.glob("????-??-??.json")), issues, load_json(HEAT_FILE) or {},
                             issues[0]["date"])
     heat_scores = analysis["items"]
+    adm = admin_data(items, issues, analysis, tz, updated)  # 管理ページの数字（「待ち行列」は簡報の「更新中」の帯にも使う）
+    generated = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     html_ = render.render(issues, settings.get("nav_style", "line"), [i["name"] for i in items], updated,
                           load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
@@ -1934,8 +1936,10 @@ def write_page():
                           (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
-                          {i["name"]: str(i["sub"]) for i in items if i.get("sub")}, settings.get("nav_hide", render.NAV_HIDE))
+                          {i["name"]: str(i["sub"]) for i in items if i.get("sub")}, settings.get("nav_hide", render.NAV_HIDE),
+                          render.busy_plan(adm.get("todo")), generated)
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
+    html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     (DOCS_DIR / "heat.html").write_text(render.render_heat(analysis, render.collect(issues, [i["name"] for i in items]), updated),
                                         encoding="utf-8")
@@ -1953,9 +1957,11 @@ def write_page():
           "fields": {**{k: i[k] for k in ITEM_FIELDS if k in i and k != "size"}, "section": section_of(i)}} for i in items],
         {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "langs": settings.get("news_langs") or []},
         updated), encoding="utf-8")
-    (DOCS_DIR / "admin.html").write_text(render.render_admin(  # 管理ページ（見るだけ）
-        admin_data(items, issues, analysis, tz, updated),
-        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), encoding="utf-8")
+    admin_html, ver_admin = render.stamp(render.render_admin(  # 管理ページ（見るだけ）
+        adm, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), updated)
+    (DOCS_DIR / "admin.html").write_text(admin_html, encoding="utf-8")
+    # 開いたままのページはこれを 1 分ごとに読み、自分の指紋と違えば新しい内容を出す（render.LIVE_JS）
+    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "updated": updated})
     (DOCS_DIR / ".nojekyll").touch()
 
 
