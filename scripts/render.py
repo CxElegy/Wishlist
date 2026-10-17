@@ -2368,11 +2368,12 @@ NAV_STYLES = {
 .nav .logo{flex:none;display:flex;align-items:center;gap:10px;margin:16px 8px 10px 0;text-decoration:none;color:var(--ink)}
 .nav .flame{position:relative;flex:none;width:50px;height:68px;margin:-6px -4px 0 -2px;--h:var(--heat,.3)}
 .nav .flame svg{position:absolute;left:0;bottom:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;
- transform:scale(calc(.62 + var(--h) * .55));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+ transform:scale(calc(.42 + var(--h) * .98));transition:transform .5s cubic-bezier(.2,.8,.2,1);
+ filter:saturate(calc(.5 + var(--h) * .8)) brightness(calc(.82 + var(--h) * .4))}   /* 冷めた火はくすみ、熱い火は鮮やかに */
 /* 後ろの光：話題度が高いほど広く濃く、ゆっくり息をする */
-.nav .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(30px + var(--h) * 46px);aspect-ratio:1;translate:-50% 0;border-radius:50%;
- background:radial-gradient(closest-side,color-mix(in srgb,var(--flame) 70%,transparent),transparent);opacity:calc(.15 + var(--h) * .6);
- transition:opacity .5s,width .5s;animation:breathe calc(2.6s - var(--h) * 1.4s) ease-in-out infinite alternate}
+.nav .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(16px + var(--h) * 84px);aspect-ratio:1;translate:-50% 0;border-radius:50%;
+ background:radial-gradient(closest-side,color-mix(in srgb,var(--flame) 70%,transparent),transparent);opacity:calc(.05 + var(--h) * .9);
+ transition:opacity .5s,width .5s;animation:breathe calc(3s - var(--h) * 2.2s) ease-in-out infinite alternate}
 @keyframes breathe{to{transform:scale(1.12);filter:brightness(1.15)}}
 /* 火の粉：位置・寿命・道筋は NAV_JS が 1 粒ずつ決める */
 .nav .flame .em{position:absolute;left:50%;bottom:22%;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:var(--gold);
@@ -2537,7 +2538,7 @@ FLAME_SVG = (
     + '</defs><g filter="url(#navfl-f)">'
     + "".join(f'<path class="L" data-k="{k}" d="{_TONGUE if k in ("tl", "tr") else _TEAR}" fill="url(#navfl-{g})"/>'
               for k, g in (("tl", "m"), ("tr", "m"), ("o", "o"), ("m", "m"), ("i", "i"), ("c", "c")))
-    + '</g></svg>' + '<i class="em"></i>' * 10 + '</span>')
+    + '</g></svg>' + '<i class="em"></i>' * 16 + '</span>')
 
 
 def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=None, sub_heat=None):
@@ -2849,11 +2850,12 @@ NAV_JS = """
   function burn(now) {
     const dt = Math.min(.05, (now - (flLast || now)) / 1000); flLast = now;
     FL.h += (FL.target - FL.h) * Math.min(1, dt * 4);
-    const h = FL.h, amp = .35 + h * .9;
-    FL.t += dt * (.9 + h * 2.2);
+    const h = FL.h, amp = .18 + h * 1.5;
+    FL.t += dt * (.6 + h * 3.8);
     for (const L of layers) {
-      const [sz, x0, rot0, la, sp] = L.s, side = L.k === 'tl' || L.k === 'tr';
-      const on = side ? Math.max(0, (h - .35) / .5) : 1, tt = FL.t * sp + L.ph;
+      const [sz0, x0, rot0, la, sp] = L.s, side = L.k === 'tl' || L.k === 'tr';
+      const sz = L.k === 'i' || L.k === 'c' ? sz0 * (.65 + h * .7) : sz0;   // 熱いほど白い芯が大きい
+      const on = side ? Math.min(1.25, Math.max(0, (h - .25) / .45)) : 1, tt = FL.t * sp + L.ph;
       const sy = sz * (1 + (wob(tt, 1) * .16 + Math.max(0, wob(tt * 1.7, 4)) * .14) * amp * la) * (side ? .6 + on * .5 : 1);
       const sx = sz * (1 - wob(tt, 1) * .06 * amp), skew = wob(tt * .8, 7) * 9 * amp * la;
       const rot = rot0 * on + wob(tt * .6, 3) * 3 * amp, x = x0 * (side ? .8 + on * .4 : 1) + wob(tt * .9, 9) * 1.6 * amp;
@@ -2861,13 +2863,13 @@ NAV_JS = """
       if (side) L.n.style.opacity = on.toFixed(2);
     }
     turb.setAttribute('baseFrequency', `${(.03 + wob(FL.t * .3, 2) * .006).toFixed(4)} ${(.07 + wob(FL.t * .4, 5) * .015).toFixed(4)}`);
-    disp.setAttribute('scale', (6 + h * 14 + wob(FL.t, 8) * 2).toFixed(1));
-    const n = Math.round(h * ems.length);
+    disp.setAttribute('scale', (3 + h * 24 + wob(FL.t, 8) * 2).toFixed(1));
+    const n = Math.round(h * h * ems.length);
     ems.forEach((m, k) => {
       if (k >= n) { m.e.style.opacity = 0; return; }
       m.life += dt / m.dur;
       if (m.life >= 1) { m.life = 0; m.dur = .9 + Math.random() * .9 - h * .4; m.dx = (Math.random() - .5) * 2; m.sway = Math.random() * 6; m.ph = Math.random() * 6; }
-      const l = m.life, y = -(8 + l * (28 + h * 46)), x = m.dx * l * 12 + Math.sin(l * 9 + m.ph) * m.sway;
+      const l = m.life, y = -(8 + l * (18 + h * 80)), x = m.dx * l * 12 + Math.sin(l * 9 + m.ph) * m.sway;
       m.e.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${(1 - l * .7).toFixed(2)})`;
       m.e.style.opacity = (l < .1 ? l * 10 : 1 - (l - .1) / .9).toFixed(2);
     });
