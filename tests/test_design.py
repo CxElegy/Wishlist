@@ -341,3 +341,32 @@ class LiveUpdate(unittest.TestCase):
         self.assertIn('id="wl-busy"', tag)
         self.assertIn('"gen": "2026-10-17T00:00:00+00:00"', tag)
         self.assertEqual(render._busy_tag(None, ""), "")
+
+
+
+class NavParents(unittest.TestCase):
+    """目次の小分類（板块ごとに必ず）と上下級（案 A：枝線、同じ大きさ、たたまない）。"""
+
+    def works(self):
+        return Nav.works(self)
+
+    def test_one_sub_still_shows_chips(self):
+        out = render._nav(self.works(), "2026-10-16", subs={"A<b>": "新作", "B": "新作", "C": "ドラマ"})
+        self.assertEqual(out.count('class="nsubs"'), 2)                # 小分類が 1 つだけの板块（映像）でも札を出す
+
+    def test_parent_kid_branch(self):
+        st = lambda u: {"url": u, "title": "t", "_issue": "2026-10-16"}
+        ws = [{"name": "漫威电影", "section": "影视", "stories": [st("a"), st("b")]},
+              {"name": "FROM", "section": "影视", "stories": []},
+              {"name": "Spider", "section": "影视", "stories": [st("b")]},
+              {"name": "Daredevil", "section": "影视", "stories": []}]
+        parents = {"Spider": "漫威电影", "Daredevil": "漫威电影"}
+        out = render._nav(ws, "2026-10-16", subs={"漫威电影": "映画", "FROM": "ドラマ", "Spider": "映画", "Daredevil": "ドラマ"}, parents=parents)
+        order = re.findall(r'data-for="([^"]+)"', out)
+        self.assertEqual(order[order.index("漫威电影"):order.index("漫威电影") + 3], ["漫威电影", "Spider", "Daredevil"])   # 下級は上級のすぐ下
+        self.assertEqual(out.count('class="pill kid"'), 2)
+        self.assertIn('<span class="xref">ドラマ</span>', out)        # 自分の小分類が上級と違う
+        self.assertNotIn("x kid", out)                                # 下級を特別にたたまない
+        works = render._dedupe_parents(ws, parents)                  # 同じニュースは下級だけに
+        self.assertEqual([x["url"] for x in works[0]["stories"]], ["a"])
+        self.assertEqual([x["url"] for x in works[2]["stories"]], ["b"])
