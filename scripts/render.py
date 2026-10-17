@@ -188,7 +188,7 @@ button{font-family:inherit}
 .wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
 .wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
-.wc .tg{position:absolute;left:-8px;top:18px;z-index:2;box-shadow:2px 2px 0 var(--ink)}
+.wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
 .wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.5em}  /* 3 行分：段のカードの高さがそろう */
 .wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
@@ -473,7 +473,7 @@ button{font-family:inherit}
  .top h2{font-size:20px;transform:rotate(-1deg)}
   .wall{grid-template-columns:minmax(0,1fr);gap:16px}.wall>.wc:nth-child(n+7){display:none}.wc.lead{grid-column:auto;grid-row:auto}.wc.lead .pic{min-height:0;aspect-ratio:16/10}
  .wc:not(.lead){display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:4px 12px;align-items:start}
- .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:6px;font-size:11px}
+ .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:-11px;font-size:11px}
   .fside{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
  .shelves{gap:28px 0}.shelf{flex:none;width:100%}
  .tapes{grid-template-columns:minmax(0,1fr);gap:10px;padding:0 4px 0 0}
@@ -2494,10 +2494,10 @@ FIT_JS = """
       p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);   // ほぼ同じ比率のときだけ埋める（切れるのは 8% まで）
       return;
     }
-    if (p.closest('.wc') && !(p.closest('.wc.lead') && innerWidth > 760)) { p.classList.add('fill'); return; }   // 写真の壁：枠 16:10 にそろえて埋める（段の高さがそろう）
+    // 枠の大きさは変えない（写真の壁は 16:10 のまま段の高さがそろう）。写真は切らない：ほぼ同じ比率（切れるのは 8% まで）のときだけ埋め、
+    // そうでなければぼかしの上に全体を見せる。配図は文字・ロゴ入りのバナーが多く、端を切ると欠ける（2026-10-17 ユーザー指摘）
     const r = nat / (p.clientWidth / p.clientHeight);
-    // そのほかの枠は、比率が近いときだけ埋める（遠いときはぼかしの上に全体を見せる）
-    p.classList.toggle('fill', Math.abs(Math.log(r)) < (p.closest('.wc.lead') ? 0.6 : 0.27));   // 大きい一枚は写真の 55% 以上見えるなら埋める
+    p.classList.toggle('fill', Math.abs(Math.log(r)) < 0.08);
   };
   document.querySelectorAll('.pic img:not(.bg):not(.ico)').forEach(img => {
     img.addEventListener('load', () => fit(img));
