@@ -1691,6 +1691,18 @@ def with_manual_themes(issues, items):
 ADMIN_ID_BY_TYPE = {"game": "steam_appid", "anime": "anilist_id", "show": "tmdb"}  # 種類ごとに、あると話題度・現状が取れる ID
 
 
+def emblem_status(item):
+    """管理ページ用：小元素の種類・目標・枚数・内訳（scripts/emblem_fill.py と同じ規則）。"""
+    import emblem_fill
+    st = emblem_fill.status(item)
+    shapes = {}
+    for x in item.get("emblem") or []:
+        if isinstance(x, dict):
+            k = {"cutout": "切り抜き", "badge": "カード", "logo": "ロゴ", "icon": "アイコン"}.get(x.get("shape"), x.get("shape") or "?")
+            shapes[k] = shapes.get(k, 0) + 1
+    return {**st, "kind_ja": emblem_fill.KIND_JA[st["kind"]], "shapes": shapes}
+
+
 def admin_data(items, issues, analysis, tz, updated):
     """管理ページ（docs/admin.html）に書き込む数字：収集・編集の状況、作品ごとの記事数と未設定の項目、投票。"""
     today = dt.datetime.now(tz).date()
@@ -1726,7 +1738,8 @@ def admin_data(items, issues, analysis, tz, updated):
                      "week": week.get(name, 0), "urgent": urgent.get(name, 0),
                      "last_days": (today - dt.date.fromisoformat(last[name])).days if name in last else None,
                      "heat": {"score": h["score"], "delta": h.get("delta")} if h else None,
-                     "missing": [k for k in need if not i.get(k)], "web": WEB_ITEM_MARK in str(i.get("notes") or "")})
+                     "missing": [k for k in need if not i.get(k)], "web": WEB_ITEM_MARK in str(i.get("notes") or ""),
+                     "emblem": emblem_status(i)})
     beat = (STATE_DIR / "heartbeat.txt")
     pipeline = {"report": issues[0]["date"] if issues else None, "inbox": inbox[-1].stem if inbox else None,
                 "today_entries": today_n, "week_entries": week_n, "unedited": unedited, "updated": updated,
@@ -1759,7 +1772,105 @@ def admin_data(items, issues, analysis, tz, updated):
              "works": sorted(((k, a, b) for k, (a, b) in by_work.items()), key=lambda x: (-(x[1] + x[2]), x[0]))[:10],
              "recent": [{**{k: r.get(k) for k in ("url", "title", "work", "kind", "vote")},
                          "when": t.strftime("%m/%d %H:%M") if (t := stamp(r.get("created_at"))) else ""} for r in recent]}
-    return {"pipeline": pipeline, "items": rows, "votes": votes}
+    run = emblem_progress(items, tz)
+    backend_cells(items, rows, inbox[-1] if inbox else None, run)
+    return {"pipeline": pipeline, "items": rows, "votes": votes, "emblem_run": run,
+            "todo": backend_todo(items, rows, run), "log": backend_log(tz)}
+
+
+def backend_todo(items, rows, run):
+    """「待ち行列」：次の回にそれぞれの仕組みが何をするか（版面の名前つき）。"""
+    edit = [r for r in rows if (r.get("bg") or {}).get("edit", {}).get("state") == "wait"]
+    design = [r["name"] for r in rows if (r.get("bg") or {}).get("design", {}).get("state") == "wait"]
+    n_new = sum(int(re.search(r"\d+", r["bg"]["edit"]["text"]).group()) for r in edit if re.search(r"\d+", r["bg"]["edit"]["text"]))
+    queue = run.get("queue") or []
+    review = [n for n, x in (run.get("items") or {}).items() if x["state"] == "review"]
+    return {
+        "collect": {"text": f"全 {len(items)} 版面の記事を集める", "items": []},
+        "edit": {"text": (f"新しい記事 {n_new} 件（{len(edit)} 版面）を編集" if edit else "編集する新着なし")
+                 + (f" · 版面の設計 {len(design)} 件" if design else ""), "items": [r["name"] for r in edit]},
+        "emblem-cron": {"text": (f"足りない {len(queue)} 版面を順に" if queue else "全部そろっている")
+                        + (f" · 要確認 {len(review)}" if review else ""), "items": queue},
+        "photos": {"text": "受付の写真があれば認識して愿望清单へ", "items": []},
+    }
+
+
+def backend_log(tz, n=40):
+    """実行ログ（state/log/*.json）を新しい順に。時刻は表示用に現地時間へ。"""
+    import runlog
+    out = []
+    for r in runlog.recent(n):
+        try:
+            when = dt.datetime.fromisoformat(r["at"]).astimezone(tz).strftime("%m/%d %H:%M")
+        except (KeyError, ValueError):
+            when = ""
+        out.append({"when": when, "proc": r["proc"], "name": r["name"], "level": r.get("level", "info"), "text": r.get("text", "")})
+    return out
+
+
+DESIGN_KEYS = (("motif", "テーマ"), ("theme", "配色"))   # like_fx は書かなければテーマの演出なので要らない
+
+
+def backend_cells(items, rows, latest, run):
+    """管理ページ「バックグラウンド」の表：版面（行）× プロセス（列）の今の状態を rows[i]["bg"] に書く。
+    状態：ok 済 / wait 待ち（次の回で動く）/ review 要確認 / failed 失敗 / idle 対象なし。
+      collect  最新の収集（inbox）にその版面の記事が何件あるか
+      edit     その日の AI 編集（edit.json の _covered）がその件数まで編集したか
+      design   版面の設計（motif・theme）がそろっているか（足りなければ次の AI 編集で）
+      emblem   小元素の自動補完の状態（state/emblem_progress.json）と、順番待ちなら何番目か"""
+    day = latest.stem if latest else None
+    got = {b.get("name"): len(b.get("entries") or []) for b in ((load_json(latest) or {}).get("items") or [])} if latest else {}
+    edit = load_json(INBOX_DIR / f"{day}.edit.json") if day else None
+    covered = (edit or {}).get("_covered") or {}
+    by_name = {i["name"]: i for i in items}
+    eprog = run.get("items") or {}
+    queue = run.get("queue") or []
+    md = (lambda d: f"{int(d[5:7])}/{int(d[8:10])}") if day else (lambda d: "")
+    for r in rows:
+        name, item = r["name"], by_name.get(r["name"]) or {}
+        n = got.get(name, 0)
+        cells = {"collect": ("ok", f"{md(day)} {n} 件") if n else ("idle", f"{md(day)} 新着なし" if day else "まだ収集なし")}
+        if not n:
+            cells["edit"] = ("idle", "編集するものなし")
+        elif edit is None:
+            cells["edit"] = ("wait", f"未編集 {n} 件")
+        else:
+            c = int(covered.get(name) or 0)
+            cells["edit"] = ("ok", f"{n} 件 編集済み") if c >= n else ("wait", f"新しい {n - c} 件が待ち")
+        miss = [ja for k, ja in DESIGN_KEYS if not item.get(k)]
+        cells["design"] = ("ok", "設計済み") if not miss else ("wait", "未設定：" + "・".join(miss))
+        em = r.get("emblem") or {}
+        st = (eprog.get(name) or {}).get("state") or ("ok" if em.get("state") == "ok" else "running")
+        count = f'{em.get("have", 0)}/{em.get("target", 0)} 枚'
+        if st == "ok":
+            cells["emblem"] = ("ok", count)
+        elif st == "review":
+            cells["emblem"] = ("review", f"{count} · 一覧から選ぶ")
+        elif st == "failed":
+            cells["emblem"] = ("failed", f"{count} · 24 時間後に再挑戦")
+        else:
+            pos = queue.index(name) + 1 if name in queue else None
+            cells["emblem"] = ("wait", f"{count} · 順番 {pos} 番目" if pos else count)
+        r["bg"] = {k: {"state": a, "text": b} for k, (a, b) in cells.items()}
+
+
+def emblem_progress(items, tz):
+    """管理ページの「進捗」：小元素の定時の自動補完（emblem_fill.py --background）が残した state/emblem_progress.json。
+    枚数は items.yaml の今の値で数え直す（後で AI が一覧から選んだ分も入る）。時刻は表示用に現地時間へ。"""
+    import emblem_fill
+    prog = emblem_fill.sync_progress(emblem_fill.load_progress(), items)
+
+    def local(s):
+        try:
+            return dt.datetime.fromisoformat(s).astimezone(tz).strftime("%m/%d %H:%M")
+        except (TypeError, ValueError):
+            return None
+    last = prog.get("last_run") or {}
+    now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    return {"queue": [i["name"] for i in emblem_fill.due(prog, items, now)], "ok": prog["summary"]["ok"], "total": prog["summary"]["total"], "started": local(prog.get("started")),
+            "last_run": local(last.get("at")), "minutes": last.get("minutes"), "done": len(last.get("done") or []),
+            "items": {n: {"state": x["state"], "note": x.get("note", ""), "at": local(x.get("at")),
+                          "tried": x.get("tried") or {}} for n, x in prog["items"].items()}}
 
 
 def write_page():
@@ -2243,6 +2354,50 @@ def repair_images():
     write_page()
 
 
+def _inbox_counts(days=3):
+    """最近の inbox の版面ごとの記事数（収集の前後で比べて、新着の数をログに残す）。"""
+    out = {}
+    for path in sorted(INBOX_DIR.glob("????-??-??.json"))[-days:]:
+        for b in (load_json(path) or {}).get("items", []):
+            out[b.get("name")] = out.get(b.get("name"), 0) + len(b.get("entries") or [])
+    return out
+
+
+def logged_ingest():
+    """収集して、新着の数を実行ログ（state/log/collect.json）に書く。"""
+    import runlog
+    before = _inbox_counts()
+    try:
+        path = ingest()
+    except Exception as e:
+        runlog.add("collect", f"収集に失敗：{str(e)[:120]}", "error")
+        raise
+    after = _inbox_counts()
+    new = {k: v - before.get(k, 0) for k, v in after.items() if v > before.get(k, 0)}
+    top = "、".join(f"{k} {v}" for k, v in sorted(new.items(), key=lambda kv: -kv[1])[:5])
+    runlog.add("collect", f"新着 {sum(new.values())} 件（{len(new)} 版面）" + (f"：{top}" if top else ""),
+               "ok" if new else "info", count=sum(new.values()))
+    return path
+
+
+def logged_publish(path=None):
+    """出刊して、実行ログに書く（Actions の自動出刊は publish、Claude の AI 編集は edit に分けて書く）。"""
+    import os
+    import runlog
+    proc = "publish" if os.environ.get("GITHUB_ACTIONS") else "edit"
+    latest = path or (sorted(INBOX_DIR.glob("????-??-??.json")) or [None])[-1]
+    try:
+        publish(path)
+    except Exception as e:
+        runlog.add(proc, f"出刊に失敗：{str(e)[:120]}", "error")
+        raise
+    if latest:
+        latest = pathlib.Path(latest)
+        edit = load_json(INBOX_DIR / f"{latest.stem}.edit.json")
+        n = len([k for k in (edit or {}) if not k.startswith("_")])
+        runlog.add(proc, f"{latest.stem} を出刊" + (f"（AI 編集 {n} 版面）" if edit else "（AI 編集なし・キーワードの規則）"), "ok")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
@@ -2264,7 +2419,7 @@ def main():
     elif args.step == "render":
         write_page()
     elif args.step == "ingest":
-        ingest()
+        logged_ingest()
         update_heat()
         sync_db()
     elif args.step == "audit-match":
@@ -2275,7 +2430,7 @@ def main():
     elif args.step == "sync-db":
         sync_db()
     elif args.step == "publish":
-        publish()
+        logged_publish()
     elif args.step == "notify-urgent":
         import notify
         notify.urgent(pages_url(load_config()[0]))
@@ -2302,10 +2457,10 @@ def main():
     else:
         take_item_requests()  # 设置页上新增的关注项先写进 items.yaml，这次就开始收集
         export_photos()  # 拍照加愿望：导出新照片给 Claude 定时任务处理
-        path = ingest()
+        path = logged_ingest()
         update_heat()
         if path:
-            publish(path)
+            logged_publish(path)
         sync_db()
 
 

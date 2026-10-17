@@ -76,6 +76,7 @@ settings:
 
 items:
   - name: Astrae Oratio
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     motif: retro          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Erin Tanaka", why: "Wiki の分類「Wizards」でリンクの多いキャラ", image: "emblems/astrae-oratio-erin-tanaka.webp", source: "https://static.wikia.nocookie.net/astrae-oratio/images/7/7c/Erin_render.webp/revision/latest/scale-to-width-down/400?cb=20260701184815", page: "https://astrae-oratio.fandom.com/wiki/Erin_Tanaka", shape: "cutout", upper: true, fs: 0.32}
@@ -118,6 +119,9 @@ items:
       预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。
     site: https://astraeoratio.plaync.com/
   - name: BLEACH Mirrors High
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_who: ["Ichigo Kurosaki", "Rukia Kuchiki", "Renji Abarai", "Uryuu Ishida", "Orihime Inoue", "Yasutora Sado"]   # 集める対象（メンバー・キャラ・出演者）
+    emblem_fandom: bleach
     motif: ink          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Ichigo Kurosaki", why: "Bleach: Brave Souls の公式イラスト（顔だけのアップではなく胸像）", image: "emblems/bleach-mirrors-high-ichigo-kurosaki.webp", source: "https://static.wikia.nocookie.net/bleach/images/8/87/BBSMaster_Ichigo.png/revision/latest?cb=20230309005603&path-prefix=en", page: "https://bleach.fandom.com/wiki/File:BBSMaster_Ichigo.png", shape: "cutout"}
@@ -154,6 +158,9 @@ items:
     status: 事前登录中 · 官方称 2026 年内上线，具体日期未定
     site: https://bleach-mh.bn-ent.net/
   - name: GTA 6
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_who: ["Jason Duval", "Lucia Caminos"]   # 集める対象（メンバー・キャラ・出演者）
+    emblem_fandom: gtawiki
     motif: neon          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Jason Duval", why: "GTA6 の二人の主人公", image: "emblems/gta-6-jason-duval.webp", source: "https://static.wikia.nocookie.net/gtawiki/images/d/de/JasonDuval-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506145706", page: "https://gta.fandom.com/wiki/Jason_Duval", shape: "cutout", fs: 0.32}
@@ -208,6 +215,8 @@ items:
     wiki: ["en:Grand Theft Auto VI", "ja:グランド・セフト・オートVI"]
 
   - name: MMORPG 新作
+    emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_icon: "1f6e1 2694 1f409"
     motif: rune          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "剣と盾", why: "版面の主題（RPG）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f6e1.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
@@ -257,6 +266,8 @@ items:
       font: serif
 
   - name: 滑雪
+    emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_icon: "26f7 1f3c2 1f3bf"
     motif: snow          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "スキーヤー", why: "版面の主題（スキー）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26f7.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
@@ -314,6 +325,9 @@ items:
       font: sans
 
   - name: 漫威电影
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_people: true   # 出演者の写真で集める（本人確認する）
+    emblem_who: ["Chris Hemsworth", "Robert Downey Jr.", "Anthony Mackie", "Sebastian Stan", "Chris Evans", "Letitia Wright"]   # 集める対象（メンバー・キャラ・出演者）
     motif: comic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     like_fx: manga          # 👍 の演出（scripts/likefx.py）：アメコミの擬音（ドカーン）の勢い
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -376,6 +390,9 @@ items:
     wiki: ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]
 
   - name: FROM
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_people: true   # 出演者の写真で集める（本人確認する）
+    emblem_who: ["Harold Perrineau", "Eion Bailey", "Catalina Sandino Moreno", "Scott McCord", "Avery Konrad", "Elizabeth Saunders"]   # 集める対象（メンバー・キャラ・出演者）
     motif: noir          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem_skip: "画像の取れるファン Wiki がなく、ポスターを丸く切るのは不自然"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
     subtitle: 美剧 · MGM+ 恐怖悬疑
@@ -428,6 +445,9 @@ items:
     wiki: ["en:From (TV series)"]
 
   - name: 哈利波特剧集
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_people: true   # 出演者の写真で集める（本人確認する）
+    emblem_who: ["Dominic McLaughlin", "Alastair Stout", "Arabella Stanton", "Paapa Essiedu", "John Lithgow", "Nick Frost"]   # 集める対象（メンバー・キャラ・出演者）
     motif: magic          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Dominic McLaughlin", why: "HBO ドラマ版のハリー・ハーマイオニー・ロン役（映画版ではない）", image: "emblems/dominic-mclaughlin.webp", source: "https://static.wikia.nocookie.net/harrypotter/images/f/fd/Dominic_McLaughlin.jpeg/revision/latest/scale-to-width-down/400?cb=20250527154650", page: "https://harrypotter.fandom.com/wiki/Dominic_McLaughlin", shape: "cutout"}
@@ -492,6 +512,8 @@ items:
     wiki: ["en:Harry Potter (TV series)"]
 
   - name: ILLIT
+    emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_who: ["Yunah", "Minju", "Moka", "Wonhee", "Iroha"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Yunah", why: "ILLIT のメンバー", image: "emblems/illit-yunah.webp", source: "https://static.wikia.nocookie.net/kpop/images/5/56/ILLIT_Yunah_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Yunah", shape: "cutout", fs: 0.525}
@@ -545,6 +567,8 @@ items:
     wiki: ["en:Illit", "ko:아일릿", "ja:ILLIT"]
 
   - name: 星巴克马克杯
+    emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_subject: Starbucks
     motif: cafe          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "スターバックスのロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png", page: "https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg", shape: "logo"}
@@ -596,6 +620,8 @@ items:
       font: serif
 
   - name: 猫用品
+    emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_icon: "1f408 1f43e 1f431"
     motif: paw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "ネコ", why: "版面の主題（猫）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f408.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
@@ -684,6 +710,9 @@ items:
       font: sans
 
   - name: 日本顶级网球赛事
+    emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_subject: "Japan Open Tennis Championships"
+    emblem_icon: "1f3be 1f3c6"
     motif: court          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "テニスボール", why: "版面の主題（テニス）を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3be.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
@@ -761,6 +790,8 @@ items:
     wiki: ["en:Japan Open Tennis Championships", "ja:ジャパン・オープン・テニス選手権"]
 
   - name: 三星手机
+    emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_subject: Samsung
     motif: tech          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
     type: product
@@ -824,6 +855,8 @@ items:
     wiki: ["en:Samsung Galaxy S series"]
 
   - name: gelato pique
+    emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_subject: "gelato pique"
     motif: cloud          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     subtitle: ジェラート ピケ · ルームウェア
     type: category
@@ -882,6 +915,10 @@ items:
       font: serif
 
   - name: "ぐでたま"
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_max: 3   # キャラが 1 体だけなので、別の場面 3 枚
+    emblem_fandom: hellokitty
+    emblem_subject: Gudetama
     motif: lazy          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Gudetama2018ranking.png", why: "Gudetama の別シーン（Wiki の画像）", image: "emblems/gudetama2018ranking-png.webp", source: "https://static.wikia.nocookie.net/hellokitty/images/4/41/Gudetama2018ranking.png/revision/latest/scale-to-width-down/400?cb=20260228135811", page: "https://hellokitty.fandom.com/wiki/File:Gudetama2018ranking.png", shape: "cutout"}
@@ -905,6 +942,9 @@ items:
     wiki: ["en:Gudetama", "ja:ぐでたま"]
 
   - name: "チェーンソーマン"
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_who: ["Pochita", "Makima", "Denji", "Power", "Aki Hayakawa", "Kobeni Higashiyama"]   # 集める対象（メンバー・キャラ・出演者）
+    emblem_fandom: chainsaw-man
     motif: chainsaw          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Pochita", why: "作品の顔のマスコット（デンジの相棒）", image: "emblems/pochita.webp", source: "https://static.wikia.nocookie.net/chainsaw-man/images/5/54/Pochita_anime_design.png/revision/latest/scale-to-width-down/400?cb=20220919121110", page: "https://chainsaw-man.fandom.com/wiki/Pochita", shape: "cutout"}
@@ -932,6 +972,9 @@ items:
     wiki: ["en:Chainsaw Man", "ja:チェンソーマン"]
 
   - name: "The Mandalorian"
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_people: true   # 出演者の写真で集める（本人確認する）
+    emblem_who: ["Pedro Pascal", "Giancarlo Esposito", "Katee Sackhoff", "Emily Swallow"]   # 集める対象（メンバー・キャラ・出演者）
     motif: beskar          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Din Djarin", why: "作品の主人公と、その相棒（作品の顔）", image: "emblems/the-mandalorian-din-djarin.webp", source: "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest/scale-to-width-down/400?cb=20241206044557", page: "https://starwars.fandom.com/wiki/Din_Djarin", shape: "cutout"}
@@ -954,6 +997,9 @@ items:
     wiki: ["en:The Mandalorian", "ja:マンダロリアン"]
 
   - name: "あつ森"
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_who: ["Tom Nook", "Isabelle", "K.K. Slider", "Timmy and Tommy", "Blathers", "Mabel"]   # 集める対象（メンバー・キャラ・出演者）
+    emblem_api: https://nookipedia.com/w/api.php
     motif: island          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Tom Nook", why: "シリーズでいちばん知られた住人（AI が選定）", image: "emblems/tom-nook.webp", source: "https://static.wikia.nocookie.net/animalcrossing/images/e/e3/Tom_Nook_NH.png/revision/latest/scale-to-width-down/400?cb=20191228193640", page: "https://animalcrossing.fandom.com/wiki/Tom_Nook", shape: "cutout"}
@@ -978,6 +1024,8 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：什么时候能玩、版本更新、活动、新角色。维基数据：動物森友會系列的第七部作品。"
 
   - name: "Vaundy"
+    emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_subject: Vaundy
     motif: concert          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Vaundy", why: "本人", image: "emblems/vaundy-vaundy.webp", source: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Vaundy_2025.jpg/500px-Vaundy_2025.jpg", page: "https://ja.wikipedia.org/wiki/Vaundy", shape: "cutout"}
@@ -998,9 +1046,13 @@ items:
     subtitle: "演唱会"
 
   - name: "周杰伦"
+    emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_subject: 周杰倫
     motif: porcelain          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
-      - {subject: "周杰倫", why: "本人", image: "emblems/be881111.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Jay_Chou_in_Shanghai_2023_%283%29.jpg/500px-Jay_Chou_in_Shanghai_2023_%283%29.jpg?utm_source=ja.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://ja.wikipedia.org/wiki/%E5%91%A8%E6%9D%B0%E5%80%AB", shape: "cutout", fs: 0.494}
+      - {subject: "周杰倫 1", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/1-7808deab.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg/500px-%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Jay_Chou", shape: "cutout"}
+      - {subject: "周杰倫 2", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/2-6cb3220b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg/500px-1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg", shape: "cutout"}
+      - {subject: "周杰倫 3", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/3-bf01ca7b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Jay_Chou.JPG/500px-Jay_Chou.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Jay_Chou.JPG", shape: "cutout", fs: 0.324}
     type: event
     section: "演出"
     size: S
@@ -1017,6 +1069,9 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：演唱会、巡演、门票：抽选、发售、新歌、新专辑、回归。维基数据：台湾男歌手、流行歌曲作家、演员。"
 
   - name: "绝区零"
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_who: ["Ellen Joe", "Belle", "Wise", "Zhu Yuan", "Anby Demara", "Nicole Demara"]   # 集める対象（メンバー・キャラ・出演者）
+    emblem_fandom: zenless-zone-zero
     motif: street          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：都市・ストリート
     like_fx: street          # 👍 の演出（scripts/likefx.py）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -1042,8 +1097,23 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：版本更新、活动、新角色、打折、免费送、联名、周边、剧情、角色、世界观。维基数据：2024年电子游戏。"
 
   - name: "dota2"
+    emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_who: ["Invoker", "Pudge", "Crystal Maiden", "Juggernaut", "Axe", "Lina"]   # 集める対象（メンバー・キャラ・出演者）
     motif: sport          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：対戦・スピード感
-    emblem_skip: "Wiki で取れる画像がゲーム内アイコン・モデル図ばかりで、代表キャラの立ち絵として使えない"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "Invoker", why: "Invoker（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-invoker.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/invoker.png", page: "https://www.dota2.com/hero/invoker", shape: "cutout"}
+      - {subject: "Pudge", why: "Pudge（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-pudge.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/pudge.png", page: "https://www.dota2.com/hero/pudge", shape: "cutout"}
+      - {subject: "Crystal Maiden", why: "Crystal Maiden（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-crystal-maiden.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/crystal_maiden.png", page: "https://www.dota2.com/hero/crystalmaiden", shape: "cutout", fs: 0.327}
+      - {subject: "Juggernaut", why: "Juggernaut（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-juggernaut.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/juggernaut.png", page: "https://www.dota2.com/hero/juggernaut", shape: "cutout"}
+      - {subject: "Axe", why: "Axe（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-axe.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/axe.png", page: "https://www.dota2.com/hero/axe", shape: "cutout"}
+      - {subject: "Lina", why: "Lina（公式サイトのヒーローの立ち絵）", image: "emblems/dota2-lina.webp", source: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/lina.png", page: "https://www.dota2.com/hero/lina", shape: "cutout", fs: 0.384}
+    emblem_urls:   # 公式の立ち絵（透明 PNG、Steam の CDN）。ファン Wiki の画像はゲーム内アイコン・横長の splash ばかりなので直接指定
+      - {subject: "Invoker", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/invoker.png", page: "https://www.dota2.com/hero/invoker", why: "Invoker（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Pudge", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/pudge.png", page: "https://www.dota2.com/hero/pudge", why: "Pudge（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Crystal Maiden", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/crystal_maiden.png", page: "https://www.dota2.com/hero/crystalmaiden", why: "Crystal Maiden（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Juggernaut", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/juggernaut.png", page: "https://www.dota2.com/hero/juggernaut", why: "Juggernaut（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Axe", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/axe.png", page: "https://www.dota2.com/hero/axe", why: "Axe（公式サイトのヒーローの立ち絵）"}
+      - {subject: "Lina", image: "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/lina.png", page: "https://www.dota2.com/hero/lina", why: "Lina（公式サイトのヒーローの立ち絵）"}
     theme: {bg: "#17100F", fg: "#F4EEE4", accent: "#E0503C", alt_bg: "#F6EDEA", alt_fg: "#1E1A18", alt_accent: "#A63A28", split: true}  # 自选：Dota 2 の赤（Radiant の対極、炎の赤）+ 墨黒
     type: game
     section: "游戏"
@@ -1059,6 +1129,8 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
 
   - name: "A2O LITE"
+    emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
+    emblem_who: ["YOUNG", "HIMEKI", "VORA", "XILI", "RADA", "MERCI", "AYUNE", "OA", "AIJING"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：新人ガールズグループ
     emblem_skip: "デビュー直後で公式画像の取れる Wiki がなく、メンバー写真を勝手に貼らない"  # 小元素はわざと付けない（scripts/emblem.py・TEMPLATES.md）
     theme: {bg: "#FBEFF4", fg: "#1E1A18", accent: "#B5285F", alt_bg: "#1E1218", alt_fg: "#F4EEE4", alt_accent: "#F07AA8", split: true}  # 自选：ネオンピンク + 墨紫（デビュー曲「NEON」）

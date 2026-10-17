@@ -23,6 +23,7 @@ import urllib.parse
 import yaml
 
 import heat
+import processes
 import likefx
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
@@ -3097,6 +3098,133 @@ def _admin_items(rows):
             '<th>最新の記事</th><th>話題度</th><th>未設定の項目</th></tr></thead><tbody>' + "".join(out) + "</tbody></table></div>")
 
 
+BG_STATES = {"ok": "済", "wait": "待ち", "review": "要確認", "failed": "失敗", "idle": "—"}
+# 「バックグラウンド」の表の列：(セルのキー, 見出し, 時刻を出すプロセスの id)。版面の設計は AI 編集の回にやる
+BG_COLS = (("collect", "収集", "collect"), ("edit", "AI 編集", "edit"), ("design", "版面の設計", "edit"),
+           ("emblem", "小元素", "emblem-cron"))
+BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき"}
+
+
+def _slots_attr(pid):
+    p = next((x for x in processes.PROCESSES if x["id"] == pid), None)
+    return e(json.dumps(processes.slots(p))) if p else "[]"
+
+
+def _admin_backend(rows, todo=None, log=None):
+    """バックグラウンド：裏で動く仕組みの「次の実行」（前回・次回・残り時間はページを開いた端末で計算）と、
+    版面（行）× プロセス（列）の今の状態の表。何が待っていて、次にいつ動くかを一目で見る。"""
+    cards, plan = [], []
+    for p in processes.PROCESSES:
+        sl = processes.slots(p)
+        if isinstance(p.get("schedule"), str) or not (sl or p.get("workflow")):
+            continue   # 別のプロセスと同じ回に動くもの（小元素の選定＝AI 編集）は出さない
+        when = (f'<b class="nx-t">--:--</b><small class="nx-l"></small><small class="nx-p"></small>' if sl
+                else f'<b class="nx-t ev">{e(BG_ON_EVENT.get(p["id"], "必要なとき"))}</b>')
+        wf = f' data-wf="{e(p["workflow"])}"' if p.get("workflow") else ""
+        td = (todo or {}).get(p["id"]) or {}
+        cards.append(f'<li class="nx" data-slots="{e(json.dumps(sl))}"{wf}>'
+                     f'<button type="button" class="nx-n" data-open="proc-{e(p["id"])}">{e(p["name"])}</button>{when}'
+                     + ('<span class="pbar" aria-hidden="true"><i></i></span>' if sl
+                        else '<span class="pbar ev" aria-hidden="true"><i></i></span>')   # 定時でないものは実行中だけ出す
+                     + (f'<small class="nx-do">{e(td["text"])}</small>' if td.get("text") else "")
+                     + f'<span class="lv">{_lane_short(p["lane"])}</span></li>')
+        if sl:
+            plan.append({"id": p["id"], "name": p["name"], "slots": sl, "text": td.get("text", ""), "items": td.get("items", [])[:12]})
+    rows = [r for r in rows if r.get("bg")]
+    if not rows:
+        return f'<ol class="nxs">{"".join(cards)}</ol><p class="empty">データがありません。</p>'
+    order = list(SECTIONS) + ["其他"]
+    rows = sorted(rows, key=lambda r: (order.index(r.get("section")) if r.get("section") in order else len(order),
+                                       r.get("section") or "", r["name"]))
+    waits = {k: sum(1 for r in rows if r["bg"][k]["state"] in ("wait", "review", "failed")) for k, _, _ in BG_COLS}
+    head = "".join(f'<th><span>{e(t)}</span><small class="nx-h" data-slots="{_slots_attr(pid)}"></small>'
+                   f'<small class="bgw">待ち {waits[k]}</small></th>' for k, t, pid in BG_COLS)
+    body, sec = [], None
+    for r in rows:
+        if r.get("section") != sec:
+            sec = r.get("section")
+            body.append(f'<tr class="bgs"><th colspan="{len(BG_COLS) + 1}"><i style="background:{_sec_color(sec or "其他")}"></i>'
+                        f'{e(_sec_name(sec or "其他"))}</th></tr>')
+        cells = "".join(f'<td class="bgc s-{r["bg"][k]["state"]}" data-label="{e(t)}"><b>{BG_STATES[r["bg"][k]["state"]]}</b>'
+                        f'<small>{e(r["bg"][k]["text"])}</small></td>' for k, t, _ in BG_COLS)
+        body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a></td>{cells}</tr>')
+    logs = "".join(f'<li class="lg-{e(x.get("level") or "info")}"><time>{e(x.get("when") or "")}</time>'
+                   f'<span class="lg-p">{e(x.get("name") or "")}</span><span class="lg-t">{e(x.get("text") or "")}</span></li>'
+                   for x in (log or []))
+    cfg = json.dumps(plan, ensure_ascii=False).replace("</", "<\\/")
+    return (f'<h3 class="h3">次の実行 <small>近い順 · 時刻はこの端末の時計 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
+            f'<ol class="nxs">{"".join(cards)}</ol>'
+            '<div class="two bgtwo"><div><h3 class="h3">待ち行列 <small>これから 24 時間の実行と、そのとき処理するもの</small></h3>'
+            '<ol class="bgq" id="bgq"><li class="empty">計算中…</li></ol></div>'
+            '<div><h3 class="h3">ログ <small>裏で動いた仕組みの記録 · 新しい順</small></h3>'
+            f'<ol class="blog">{logs or "<li class=empty>まだ記録がありません。次の実行から残ります。</li>"}</ol></div></div>'
+            f'<script type="application/json" id="bg-cfg">{cfg}</script>'
+            '<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦</small></h3>'
+            f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>')
+
+
+def _lane_short(lane):
+    name, cost, _ = processes.LANES.get(lane, (lane, "", ""))
+    return f'<small>{e(name)} · {e(cost)}</small>'
+
+
+EMBLEM_STATES = {"ok": "そろっている", "running": "進行中", "review": "要確認", "failed": "失敗"}
+
+
+def _admin_emblem_progress(run):
+    """小元素の「進捗」：目標に届いた版面の数（進捗バー）・状態ごとの数・定時の自動補完の最近の実行。"""
+    ok, total = run.get("ok", 0), run.get("total", 0)
+    pct = round(100 * ok / total) if total else 0
+    counts = {}
+    for x in (run.get("items") or {}).values():
+        counts[x["state"]] = counts.get(x["state"], 0) + 1
+    chips = "".join(f'<span class="em-{k}">{EMBLEM_STATES[k]} {counts[k]}</span>' for k in EMBLEM_STATES if counts.get(k))
+    last = (f'最近の実行 <b>{e(run["last_run"])}</b>（予算 {run.get("minutes") or 0:g} 分 · {run.get("done", 0)} 版面を処理）'
+            if run.get("last_run") else "定時の自動補完はまだ動いていません")
+    since = f' · 開始 {e(run["started"])}' if run.get("started") else ""
+    return (f'<div class="emp"><div class="emp-h"><h3 class="h3">進捗</h3><span class="emp-n"><b>{ok}</b> / {total} 版面が目標に到達'
+            f'<small>{pct}%</small></span></div>'
+            f'<div class="emp-bar" role="progressbar" aria-valuemin="0" aria-valuemax="{total}" aria-valuenow="{ok}"><i style="width:{pct}%"></i></div>'
+            f'<p class="emp-meta"><span class="emp-st">{chips}</span><span>{last}{since}</span></p></div>')
+
+
+def _admin_emblems(rows, run=None):
+    """小元素（版面右上のステッカー）の状況：種類・目標・いまの枚数と、定時の自動補完の進捗。止まっているものを上に。"""
+    rows = [r for r in rows if r.get("emblem")]
+    if not rows:
+        return '<p class="empty">データがありません。</p>'
+    run = run or {}
+    prog = run.get("items") or {}
+
+    def state(r):
+        if r["emblem"]["state"] == "ok":
+            return "ok"
+        return (prog.get(r["name"]) or {}).get("state") or "running"
+    order = {"failed": 0, "review": 1, "running": 2, "ok": 3}
+    rows = sorted(rows, key=lambda r: (order.get(state(r), 2), r["emblem"]["have"] - r["emblem"]["target"], r["name"]))
+    out = []
+    for r in rows:
+        m, st, p = r["emblem"], state(r), prog.get(r["name"]) or {}
+        pct = min(100, round(100 * m["have"] / max(1, m["target"])))
+        shapes = " ".join(f'<i class="chip">{e(k)} {v}</i>' for k, v in (m.get("shapes") or {}).items())
+        note = e(p.get("note") or ("" if st == "ok" else "順番待ち"))
+        when = f'<small>{e(p["at"])}</small>' if p.get("at") else ""
+        out.append(
+            f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a></td>'
+            f'<td data-label="種類">{e(m["kind_ja"])}</td>'
+            f'<td class="em-n" data-label="枚数"><span class="em-bar"><i style="width:{pct}%"></i></span>'
+            f'<b>{m["have"]}</b> / {m["target"]}<small>最大 {m["hi"]}</small></td>'
+            f'<td data-label="状態"><span class="em-{st}">{EMBLEM_STATES[st]}</span></td>'
+            f'<td class="ms em-note" data-label="最近の結果">{note}{when}</td>'
+            f'<td class="ms">{shapes}</td></tr>')
+    gap = sum(1 for r in rows if r["emblem"]["state"] != "ok")
+    note = (f'<p class="empty">{gap} 件が目標に届いていません。定時の自動補完（プロセス「小元素の自動補完（定時）」）が、足りない順に埋めていきます。'
+            '「要確認」は AI が候補の一覧を目で見て選びます。</p>' if gap else '<p class="empty">すべての版面が目標の枚数に届いています。</p>')
+    return (_admin_emblem_progress(run) + note
+            + '<div class="tw"><table class="adm"><thead><tr><th>作品</th><th>種類</th><th>枚数 / 目標</th><th>状態</th><th>最近の結果</th><th>内訳</th></tr></thead><tbody>'
+            + "".join(out) + "</tbody></table></div>")
+
+
 def _admin_votes(v):
     if not v.get("total"):
         return '<p class="empty">まだ投票がありません。</p>'
@@ -3122,6 +3250,57 @@ def _admin_votes(v):
 
 
 ADMIN_PAGE_CSS = """
+.em-n{white-space:nowrap}.em-n small{margin-left:8px;opacity:.65}
+.em-bar{display:inline-block;width:70px;height:10px;margin-right:8px;background:var(--sheet);border:1px solid var(--ink);vertical-align:middle;position:relative}
+.em-bar i{position:absolute;inset:0 auto 0 0;background:var(--good)}
+.em-ok,.em-running,.em-review,.em-failed{display:inline-block;padding:0 6px;font-weight:900;white-space:nowrap;border:1.5px solid currentColor}
+.em-ok{color:var(--good)}.em-running{color:var(--rose)}.em-review{color:var(--ink);background:var(--gold);border-color:var(--ink)}.em-failed{color:var(--card);background:var(--alert);border-color:var(--alert)}
+.em-note{font-size:12px;line-height:1.5}.em-note small{display:block;font:500 var(--fs-label) var(--font-mono);opacity:.7}
+.emp{margin:0 0 14px}
+.emp-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}.emp-h .h3{flex:1 1 auto}
+.emp-n{font:500 13px var(--font-sans)}.emp-n b{font:700 24px var(--font-mono);margin-right:4px}.emp-n small{margin-left:8px;font:700 13px var(--font-mono)}
+.emp-bar{position:relative;height:14px;margin:6px 0 8px;background:var(--sheet);border:1.5px solid var(--ink);box-shadow:var(--shadow)}
+.emp-bar i{position:absolute;inset:0 auto 0 0;background:var(--good)}
+.emp-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;font-size:12px;line-height:1.7}
+.emp-st{display:flex;flex-wrap:wrap;gap:6px}.emp-st span{font-size:var(--fs-label)}
+.nxs{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.nx{display:flex;flex-direction:column;gap:2px;padding:10px 12px;background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow);min-width:0}
+.nx-n{all:unset;cursor:pointer;font:900 14px/1.35 var(--font-sans)}.nx-n:hover,.nx-n:focus-visible{color:var(--rose);text-decoration:underline}
+.nx-t{font:700 22px/1.2 var(--font-mono)}.nx-t.ev{font:700 13px/1.5 var(--font-sans)}
+.nx-l{font:700 12px var(--font-sans);color:var(--rose)}.nx-p,.lv small{font:500 var(--fs-label) var(--font-sans);opacity:.75}
+.nx.soon{background:var(--gold)}.nx.soon .nx-l{color:var(--ink)}
+.nx-do{font:500 12px/1.5 var(--font-sans);margin-top:4px}
+.pbar{position:relative;display:block;height:8px;margin:6px 0 2px;background:var(--sheet);border:1.5px solid var(--ink);overflow:hidden}
+.pbar i{position:absolute;inset:0 auto 0 0;width:0;background:repeating-linear-gradient(-45deg,var(--rose) 0 6px,color-mix(in srgb,var(--rose) 70%,var(--card)) 6px 12px);
+ background-size:17px 17px;animation:pb-move 1.2s linear infinite;transition:width .6s ease}
+.nx.run .pbar i{width:40%!important;animation:pb-move 1.2s linear infinite,pb-run 1.6s ease-in-out infinite;background-color:var(--good)}
+.nx.run{border-color:var(--good)}.pbar.ev{display:none}.nx.run .pbar.ev{display:block}
+@keyframes pb-move{to{background-position:17px 0}}
+@keyframes pb-run{0%{left:-40%}100%{left:100%}}
+.emp-bar i{background:repeating-linear-gradient(-45deg,var(--good) 0 8px,color-mix(in srgb,var(--good) 75%,var(--card)) 8px 16px);background-size:22px 22px;animation:pb-move 1.4s linear infinite}
+@media (prefers-reduced-motion:reduce){.pbar i,.emp-bar i,.nx.run .pbar i{animation:none}}
+.bgtwo{margin-bottom:20px}
+.bgq,.blog{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.bgq li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:0 10px;padding:8px 0;border-bottom:1px solid var(--hair);font-size:13px}
+.bgq li.next{background:color-mix(in srgb,var(--gold) 35%,transparent)}
+.bgq time{font:700 15px/1.3 var(--font-mono)}.bgq time small{display:block;font:700 var(--fs-label) var(--font-sans);color:var(--rose)}
+.bgq b{font:900 13px/1.4 var(--font-sans)}.bgq .q-t{display:block;font-size:12px;line-height:1.5}
+.bgq .q-i{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}.bgq .q-i i{font-style:normal;padding:0 6px;border:1px solid var(--hair);font:500 var(--fs-label)/1.6 var(--font-sans)}
+.blog{max-height:420px;overflow:auto}
+.blog li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 8px;padding:7px 0 7px 8px;border-bottom:1px solid var(--hair);border-left:3px solid var(--hair);font-size:12px;line-height:1.5}
+.blog time{font:700 var(--fs-label) var(--font-mono);white-space:nowrap}.blog .lg-p{font:700 var(--fs-label) var(--font-sans);opacity:.8}
+.blog .lg-t{grid-column:1/-1}
+.blog .lg-ok{border-left-color:var(--good)}.blog .lg-warn{border-left-color:var(--gold)}.blog .lg-error{border-left-color:var(--alert)}
+.lv{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:2px}
+.bgm thead th{vertical-align:bottom}.bgm thead th span{display:block}
+.bgm thead small{display:block;font:500 var(--fs-label)/1.5 var(--font-sans);letter-spacing:0;opacity:.8}
+.bgm thead .bgw{font-weight:700;color:var(--rose);opacity:1}
+.bgm .bgs th{padding:14px 6px 6px;font:900 13px var(--font-sans);border-bottom:2px solid var(--ink);text-align:left}
+.bgm .bgs i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.bgc b{display:inline-block;padding:0 6px;font:900 12px/1.6 var(--font-sans);border:1.5px solid currentColor;white-space:nowrap}
+.bgc small{display:block;margin-top:2px;font:500 var(--fs-label)/1.45 var(--font-sans);opacity:.85}
+.s-ok b{color:var(--good)}.s-wait b{color:var(--rose)}.s-review b{color:var(--ink);background:var(--gold);border-color:var(--ink)}
+.s-failed b{color:var(--card);background:var(--alert);border-color:var(--alert)}.s-idle b{border-color:transparent;opacity:.5}
 .h3{margin:0 0 10px;font:900 15px var(--font-sans);padding-bottom:4px;border-bottom:1.5px solid var(--ink)}
 .h3 small{font:500 var(--fs-label) var(--font-sans);opacity:.75;margin-left:6px}
 .kpis.k4{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}
@@ -3175,8 +3354,11 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
  .kpis.k4{grid-template-columns:repeat(2,minmax(0,1fr))}
  .vworks li{grid-template-columns:96px minmax(0,1fr) 56px}
 }
+@media (max-width:860px){.adm.bgm tr{grid-template-columns:repeat(4,minmax(0,1fr))}.bgm .bgs{display:block}.bgm .bgs th{display:block}}
 @media (max-width:560px){.kpis:not(.k4){grid-template-columns:repeat(2,minmax(0,1fr))}
- .adm tr{grid-template-columns:repeat(3,minmax(0,1fr))}}
+ .adm tr{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .bgm tr{gap:4px}.bgm .bgc b{padding:0 4px;font-size:11px}.bgm .bgc small{font-size:var(--fs-label)}
+ .nxs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 """
 
 ADMIN_PAGE_JS = """
@@ -3187,6 +3369,36 @@ ADMIN_PAGE_JS = """
     if(m<1)return 'たった今';if(m<60)return m+' 分前';if(m<1440)return Math.round(m/60)+' 時間前';return Math.round(m/1440)+' 日前';}
   function badge(text,cls){return el('span','st '+cls,text);}
   function fail(box,msg){box.textContent='';box.appendChild(el('p','empty',msg));}
+  // バックグラウンド：定時（UTC の [時,分]）から前回・次回・残り時間。1 分ごとに数え直し、近い順に並べ替える
+  function two(n){return ('0'+n).slice(-2);}
+  function hm(t){var d=new Date();var day=t.toDateString()===d.toDateString()?'':(t.getMonth()+1)+'/'+t.getDate()+' ';return day+two(t.getHours())+':'+two(t.getMinutes());}
+  function around(sl){var now=new Date(),nx=null,pv=null;for(var k=-1;k<=1;k++)sl.forEach(function(s){
+    var t=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]));
+    if(t>now){if(!nx||t<nx)nx=t;}else if(!pv||t>pv)pv=t;});return [pv,nx];}
+  function left(ms){var m=Math.max(0,Math.ceil(ms/60000));return m<60?'あと '+m+' 分':'あと '+Math.floor(m/60)+' 時間 '+(m%60)+' 分';}
+  function tick(){var list=document.querySelector('.nxs');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-slots]'),function(x){var sl=JSON.parse(x.getAttribute('data-slots')||'[]');
+      if(!sl.length){x._next=Infinity;return;}var a=around(sl);x._next=+a[1];
+      if(x.classList.contains('nx-h')){x.textContent='次回 '+hm(a[1])+'（'+left(a[1]-new Date())+'）';return;}
+      x.querySelector('.nx-t').textContent=hm(a[1]);x.querySelector('.nx-l').textContent=left(a[1]-new Date());
+      x.querySelector('.nx-p').textContent='前回 '+hm(a[0]);x.classList.toggle('soon',a[1]-new Date()<15*60000);});
+    Array.prototype.forEach.call(document.querySelectorAll('.nx[data-slots]'),function(x){var sl=JSON.parse(x.getAttribute('data-slots')||'[]'),b=x.querySelector('.pbar i');
+      if(!b||!sl.length)return;var a=around(sl);b.style.width=Math.min(100,Math.max(2,(new Date()-a[0])/(a[1]-a[0])*100)).toFixed(1)+'%';});
+    if(list)Array.prototype.slice.call(list.children).sort(function(a,b){return a._next-b._next;}).forEach(function(c){list.appendChild(c);});
+    queue();}
+  // 待ち行列：これから 24 時間の実行を時刻順に。最初の回にだけ、処理する版面の名前を付ける
+  var PLAN=JSON.parse((document.getElementById('bg-cfg')||{}).textContent||'[]');
+  function queue(){var q=document.getElementById('bgq');if(!q)return;var now=new Date(),end=+now+864e5,runs=[];
+    PLAN.forEach(function(p){for(var k=0;k<=1;k++)p.slots.forEach(function(s){var t=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+k,s[0],s[1]));
+      if(t>now&&+t<=end)runs.push({t:t,p:p});});});
+    runs.sort(function(a,b){return a.t-b.t;});q.textContent='';var seen={};
+    runs.slice(0,12).forEach(function(r,i){var li=el('li',i?null:'next'),tm=el('time',null,hm(r.t));tm.appendChild(el('small',null,left(r.t-now)));li.appendChild(tm);
+      var d=el('div');d.appendChild(el('b',null,r.p.name));var first=!seen[r.p.id];seen[r.p.id]=1;
+      d.appendChild(el('span','q-t',first||r.p.id!=='emblem-cron'?r.p.text:'（前の回の続き）'));
+      if(first&&r.p.items.length){var w=el('span','q-i');r.p.items.forEach(function(n,j){w.appendChild(el('i',null,(r.p.id==='emblem-cron'?(j+1)+'. ':'')+n));});d.appendChild(w);}
+      li.appendChild(d);q.appendChild(li);});
+    if(!runs.length)q.appendChild(el('li','empty','予定がありません。'));}
+  tick();setInterval(tick,60000);
   // GitHub Actions：ワークフローごとに最新の実行
   var runs=document.getElementById('runs');
   fetch('https://api.github.com/repos/'+CFG.repo+'/actions/runs?per_page=60').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){
@@ -3198,6 +3410,8 @@ ADMIN_PAGE_JS = """
       var b=el('b');b.appendChild(a);li.appendChild(b);
       var c=w.status!=='completed'?['実行中','wait']:w.conclusion==='success'?['成功','good']:w.conclusion==='cancelled'||w.conclusion==='skipped'?['取消','idle']:['失敗','bad'];
       li.appendChild(badge(c[0],c[1]));li.appendChild(el('small',null,when(w.created_at)+' · '+(w.event||'')));ul.appendChild(li);
+      var card=document.querySelector('.nx[data-wf="'+f+'"]');if(card&&w.status!=='completed')card.classList.add('run');
+      var lv=document.querySelector('.nx[data-wf="'+f+'"] .lv');if(lv){lv.insertBefore(el('small',null,when(w.created_at)),lv.firstChild);lv.insertBefore(badge(c[0],c[1]),lv.firstChild);}
     });
     runs.textContent='';if(ul.children.length)runs.appendChild(ul);else fail(runs,'最近の実行がありません。');
   }).catch(function(){fail(runs,'GitHub から読めませんでした（1 時間に 60 回までの制限かもしれません）。');});
@@ -3244,7 +3458,7 @@ def render_admin(data, db, updated):
 <title>管理ページ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
-<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}</style>
+<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}</style>
 </head>
 <body>
 <div class="page">
@@ -3256,15 +3470,19 @@ def render_admin(data, db, updated):
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 見るだけで、ここから何かを変えることはできません。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
+<section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"))}</section>
+<section class="panel" id="procs"><h2 class="sh"><span>プロセス</span><small>縮図をクリックすると流れが開く</small></h2>{processes.render()}</section>
 <section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いたときに読み込み</small></h2>
 <div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">写真の受付</h3><div id="photos"><p class="empty">読み込み中…</p></div></div></div></section>
 <section class="panel" id="items"><h2 class="sh"><span>ウォッチ項目</span><small>赤い「最新の記事」= {ADMIN_STALE_DAYS} 日以上 新しい記事なし</small></h2>{_admin_items(data.get("items") or [])}</section>
+<section class="panel" id="emblems"><h2 class="sh"><span>小元素</span><small>版面右上のステッカー · 種類ごとの目標枚数</small></h2>{_admin_emblems(data.get("items") or [], data.get("emblem_run"))}</section>
 <section class="panel" id="votes"><h2 class="sh"><span>投票</span><small>👍 / 👎 · 前回の収集時点</small></h2>{_admin_votes(data.get("votes") or {})}</section>
 </div>
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
+<script>{processes.JS}</script>
 </body>
 </html>
 """
