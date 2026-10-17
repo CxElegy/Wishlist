@@ -3671,7 +3671,8 @@ BG_COLS = (("collect", "収集", "collect"), ("edit", "AI 編集", "edit"), ("de
 RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
 RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も 6 時間を待たずにやり直す（3 分に 1 回まで）",
              "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）"}
-BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき"}
+BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき",
+               "edit": "整理待ちがあるとき（ゲートが起こす）"}
 
 
 def _slots_attr(pid):
@@ -3685,7 +3686,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
     cards, plan = [], []
     for p in processes.PROCESSES:
         sl = processes.slots(p)
-        if isinstance(p.get("schedule"), str) or not (sl or p.get("workflow")):
+        if isinstance(p.get("schedule"), str) or not (sl or p.get("workflow") or p["id"] in BG_ON_EVENT):
             continue   # 別のプロセスと同じ回に動くもの（小元素の選定＝AI 編集）は出さない
         when = (f'<b class="nx-t">--:--</b><small class="nx-l"></small><small class="nx-p"></small>' if sl
                 else f'<b class="nx-t ev">{e(BG_ON_EVENT.get(p["id"], "必要なとき"))}</b>')
