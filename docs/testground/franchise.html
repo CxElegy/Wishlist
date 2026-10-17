@@ -78,15 +78,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 .pill.on .cnt{display:block}
 .pill.on .new{color:var(--gold)}
 
-/* ---------- 案 A：親の駅から枝線を出し、子は枝の駅（一回り小さく） ---------- */
-.A .pill.kid{height:28px;padding-left:52px;font-size:13px;font-weight:700;color:rgba(26,28,34,.78)}
-.A .pill.kid::after{left:30px;width:10px;height:6px;margin-top:-3px}
-.A .pill.kid .br{position:absolute;left:16px;top:-6px;width:18px;height:20px;border-left:2px solid var(--fc);border-bottom:2px solid var(--fc);z-index:-1}
-.A .pill.kid.on{height:48px;padding-left:72px;font-size:15px;color:var(--card)}
+/* ---------- 案 A（採用）：親の駅から枝線（拐角）を出し、子は枝の上の駅（大きさは普通の駅と同じ） ---------- */
+.A .pill.kid{padding-left:52px}   /* 子も同じ関注項：大きさ・太さは普通の駅と同じ。違うのは枝線だけ */
+.A .pill.kid::after{left:30px}
+.A .pill.kid .br{position:absolute;left:16px;top:-17px;width:18px;bottom:50%;border-left:2px solid var(--fc);border-bottom:2px solid var(--fc);z-index:-1}
+.A .pill.kid.on{padding-left:72px}
 .A .pill.kid.on::before{inset:4px -2px 4px 44px}
 .A .pill.kid.on .ic{left:22px;width:40px;height:40px;margin-top:-20px}
-.A .fold{display:flex;align-items:center;gap:6px;height:24px;padding-left:52px;font:800 12px var(--font-sans);color:var(--fc)}
-.A .fold i{font-style:normal;font:700 10px var(--font-mono);border:1px solid var(--fc);padding:0 5px}
 .A .xref{flex:none;font:700 10px var(--font-mono);letter-spacing:.06em;color:var(--fc);border:1px solid var(--fc);padding:0 4px}
 .A .pill.on .xref{color:var(--gold);border-color:var(--gold)}
 
@@ -134,20 +132,20 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 </header>
 <div class="board">
   <section class="case A">
-    <h2><b>案 A</b>枝分かれ（親の駅から枝線）</h2>
-    <p class="lead">親（漫威电影）は普通の駅。子は親の駅から出た枝線の上に、一回り小さい駅で並ぶ。</p>
+    <h2><b>案 A</b>枝分かれ（親の駅から枝線）・採用</h2>
+    <p class="lead">【採用】親（漫威电影）は普通の駅。子は親の駅から出た枝線（拐角 └）の上に、普通の駅と同じ大きさで並ぶ。親も子も同じ関注項なので、子を小さくしたり特別にたたんだりしない（隠すかどうかは v6 のいつもの決まりどおり）。</p>
     <div class="frame"><div class="rail" id="railA"></div></div>
     <h3>スマホ</h3><div class="mob" id="mobA"></div>
     <ul>
       <li><b>小分類は親に従う</b>：デアデビルもドラマではなく 映画 › 漫威电影 の枝に入り、小さく「ドラマ」と付く</li>
-      <li><b>ほかを読んでいるとき</b>は子をたたんで「▸ 3 作品」の 1 行に（隠し方 v6 の ① と同じ考え）</li>
+      <li><b>子は特別にたたまない</b>：ほかを読んでいるときも子は並んだまま。画面に入りきらないときだけ、v6 の決まり（新着順に数件・見出しだけ…）で隠す</li>
       <li>親の版面（漫威全体のニュース）と子の版面は別々の駅なので、親も「読む場所」として残る</li>
       <li>弱点：子が増えると枝が長くなる。親子が 3 段（漫威 › スパイダーマン › 次回作）はやらない</li>
     </ul>
   </section>
   <section class="case B">
-    <h2><b>案 B</b>フランチャイズの見出し（グループ）＋拐角の線</h2>
-    <p class="lead">【採用】小分類の中に、ロゴつきの斜めの札「MARVEL」を見出しとして置き、子はその下にまとめる。子の前は案 A と同じ拐角の線（└）。親の版面は見出しの下の「全体」の駅。</p>
+    <h2><b>案 B</b>フランチャイズの見出し（グループ）＋拐角の線（不採用）</h2>
+    <p class="lead">（見送り）小分類の中に、ロゴつきの斜めの札「MARVEL」を見出しとして置き、子はその下にまとめる。子の前は案 A と同じ拐角の線（└）。親の版面は見出しの下の「全体」の駅。</p>
     <div class="frame"><div class="rail" id="railB"></div></div>
     <h3>スマホ</h3><div class="mob" id="mobB"></div>
     <ul>
@@ -200,7 +198,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   function railA() {
     const cw = W[cur], parent = W.find(w => w.isParent);
     const kids = W.filter(w => w.fr === 'marvel' && !w.isParent);
-    const inFr = cw.fr === 'marvel';
     const subOf = w => w.fr ? parent.sub : w.sub;   // 子の小分類は親に従う
     let h = `<div class="closed">${head(SECS[0])}</div>` + head(SECS[1], true) + `<div class="nbody">` + chips(subOf(cw));
     for (const sub of SUBS) {
@@ -209,8 +206,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
         if (w.sub !== sub) continue;
         h += pill(w);
         if (w.isParent) {
-          if (inFr) h += kids.map(k => pill(k, ' kid', `<span class="br"></span>`).replace('<span class="new">', k.sub !== parent.sub ? `<span class="xref">${k.sub}</span><span class="new">` : '<span class="new">')).join('');
-          else h += `<div class="fold" style="--fc:${F.marvel.c}">▸ 漫威の作品 <i>${kids.length}</i></div>`;
+          h += kids.map(k => pill(k, ' kid', `<span class="br"></span>`).replace('<span class="new">', k.sub !== parent.sub ? `<span class="xref">${k.sub}</span><span class="new">` : '<span class="new">')).join('');
         }
       }
     }
