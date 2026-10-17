@@ -68,10 +68,12 @@ def _get(url, limit=MAX_BYTES):
     return data
 
 
-def page_image(api, title):
-    """MediaWiki の pageimages：そのページの代表画像の網址と、ページの網址。"""
+def page_image(api, title, any_license=False):
+    """MediaWiki の pageimages：そのページの代表画像の網址と、ページの網址。
+    Wikipedia は既定で自由ライセンスの画像しか返さない。any_license=True はゲームのキービジュアル・パッケージ（非自由）も。"""
     q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "pageimages|info", "piprop": "original|thumbnail",
-                                "pithumbsize": 500, "inprop": "url", "format": "json", "redirects": 1})
+                                "pithumbsize": 500, "inprop": "url", "format": "json", "redirects": 1,
+                                **({"pilicense": "any"} if any_license else {})})
     pages = json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"]
     page = next(iter(pages.values()))
     src = (page.get("original") or {}).get("source")
@@ -253,8 +255,10 @@ def cutout_on_page(api, title, limit=25):
     q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "images", "imlimit": 200, "format": "json", "redirects": 1})
     pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
     files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|webp)$", x["title"], re.I)]
-    word = re.split(r"[\s(]", title)[0].lower()
-    files.sort(key=lambda f: (word not in f.lower(), "icon" in f.lower() or "logo" in f.lower()))
+    # 名前のどれか（姓でも名でも：「Yasutora Sado」のファイルは BBSSado.png）がファイル名に入っているもの
+    words = [w for w in re.split(r"[\s(),]+", title.lower()) if len(w) >= 3] or [title.lower()]
+    named = lambda f: any(w in f.lower().replace("_", " ") for w in words)
+    files.sort(key=lambda f: (not named(f), "icon" in f.lower() or "logo" in f.lower()))
     best = None
     for i in range(0, min(len(files), limit), 20):
         q = urllib.parse.urlencode({"action": "query", "titles": "|".join(files[i:i + 20]), "prop": "imageinfo",
@@ -262,7 +266,7 @@ def cutout_on_page(api, title, limit=25):
         for p in json.loads(_get(f"{api}?{q}", 4_000_000))["query"]["pages"].values():
             info = (p.get("imageinfo") or [{}])[0]
             url = info.get("thumburl") or info.get("url")
-            if not url or word not in p["title"].lower():
+            if not url or not named(p["title"]) or re.search(r"icon|logo|chibi|sprite|swimsuit|halloween|christmas|valentine|summer|bunny|wedding|new ?year", p["title"], re.I):
                 continue
             try:
                 shape, key, img = inspect(_get(url))
@@ -438,7 +442,8 @@ def check_whole(out, photo=False):
     """切り抜いた結果を確かめる：人物の全体が見えていること。
     ・いちばん大きいまとまりだけ残す（横に残った小さな切れ端を消す）
     ・左右の端の上 65% に当たっている（体が枠で切れている）ものは使わない。下の端と左右の端の下 35%（胸像の肩）は可
-    ・上の端に当たっていても、顔が全部入っていれば可（髪の上だけ切れている）。顔まで切れているものは使わない
+    ・上の端に当たっていても、顔が全部入っていれば可（髪の上だけ切れている）。顔まで切れているもの、
+      上の端の半分以上が人物のもの（漫画のコマ・顔のアップを枠ごと切った：吹き出しなどを消した跡がえぐれて残る）は使わない
     ・人物の面積が小さすぎる、または半透明が多い（背景と混ざって輪郭がにじんだ）ものは使わない"""
     import numpy as np
     import cv2
@@ -458,6 +463,8 @@ def check_whole(out, photo=False):
     solid = a > 128
     upper = solid[:int(h * 0.65)]   # 下 35%（肩から下）は左右の端に当たってもよい（胸像）
     top, left, right = solid[0, :].mean(), upper[:, 0].mean(), upper[:, -1].mean()
+    if top > 0.5:   # 上の端の半分以上が人物：漫画のコマ・顔のアップを枠ごと切ったもの（吹き出しを消した跡がえぐれる。チャドの例）
+        raise ValueError(f"頭が上の端で大きく切れている（{top:.0%}：コマ・アップの切り抜き）")
     if top > 0.03:
         # 上の端で切れていても、顔が全部入っていれば（髪の上だけが切れている：恋次のような絵）よい
         f = face_box(out)
@@ -573,16 +580,17 @@ def face_fit(img, share=FACE_SHARE):
     return img, round(fh / h, 3)
 
 
-def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45):
+def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False):
     """顔のアップ（顔が高さの 5 割を超える）しかないとき：同じページに載っている画像から、切り抜いて胸像になるもの
     （顔がはっきり見えて、顔の割合 fs が lo〜hi）を探す。名前に人物名を含む画像を先に、大きい順。→ (網址, 切り抜き画像, fs) か None"""
     from PIL import Image
     from rembg import remove
     q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "images", "imlimit": 300, "format": "json", "redirects": 1})
     pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
-    word = (word or re.split(r"[\s(]", title)[0]).lower()
+    # 名前のどれか（姓でも名でも：「Yasutora Sado」の公式イラストは BBSSado.png）がファイル名に入っているもの
+    words = [w.lower() for w in ([word] if word else []) + re.split(r"[\s(),]+", title) if len(w) >= 3]
     files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|jpe?g|webp)$", x["title"], re.I)
-             and word in x["title"].lower()
+             and any(w in x["title"].lower() for w in words)
              # アイコン類と、季節イベントの衣装（水着・ハロウィン…：いつもの姿ではない）は除く
              and not re.search(r"icon|logo|favicon|signature|kanji|swimsuit|halloween|christmas|valentine|summer|bunny|wedding|new ?year", x["title"], re.I)]
     infos = []
@@ -593,6 +601,7 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45):
             info = (p.get("imageinfo") or [{}])[0]
             if info.get("width", 0) >= 300 and info.get("height", 0) >= 300:
                 infos.append((info["width"] * info["height"], info.get("thumburl") or info["url"], p["title"]))
+    backup = None
     for _, url, t in sorted(infos, reverse=True)[:limit]:
         try:
             img = Image.open(io.BytesIO(_get(url))).convert("RGB")
@@ -601,10 +610,14 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45):
             if fs and lo <= fs <= hi:
                 print(f"  [胸像] {t}：顔 {fs}", file=sys.stderr)
                 return url, fitted, fs
+            if noface and fs is None and backup is None:   # 前髪で目が隠れているキャラ（チャド）は顔が見つからない：きれいに切れた一番大きいものを控えに
+                backup = (url, upper_body(out)[0], None)
             print(f"  [合わない] {t}：顔 {fs}", file=sys.stderr)
         except Exception as e:
             print(f"  [合わない] {t}：{e}", file=sys.stderr)
-    return None
+    if backup:
+        print(f"  [胸像・顔なし] {backup[0][:80]}（目で確認）", file=sys.stderr)
+    return backup
 
 
 def fit_all(name):
@@ -743,8 +756,28 @@ def cut_all(name, drawn):
             x.pop("crop", None); x.pop("ar", None)
             print(f"  {x['subject']} → {x['image']}", file=sys.stderr)
         except Exception as e:
-            x["_drop"] = True
-            print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
+            # 代表画像がだめ（漫画のコマ・枠で切れている）でも、同じページに公式イラストがあればそちらで（チャドの例）
+            m = re.match(r"^(https://[^/]+)/wiki/(.+)$", x.get("page") or "")
+            found = None
+            if m and "/wiki/File:" not in x["page"]:
+                try:
+                    found = find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "), lo=0.12, noface=True)
+                except Exception as e2:
+                    print(f"  [胸像探し失敗] {x['subject']}：{e2}", file=sys.stderr)
+            if found:
+                slug = slugify(name, x["subject"])
+                img = found[1]
+                img.thumbnail((420, 520))
+                EMB_DIR.mkdir(parents=True, exist_ok=True)
+                img.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
+                x.update(image=f"emblems/{slug}.webp", source=found[0], shape="cutout", _framing=framing(img),
+                         why=f"{x['subject']}（同じページの別の画像。代表画像は切り抜きの検査で外れた）")
+                if found[2]:
+                    x["fs"] = found[2]
+                print(f"  {x['subject']} → {x['image']}（同じページの別の画像）", file=sys.stderr)
+            else:
+                x["_drop"] = True
+                print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
     ems = keep_framing([x for x in ems if not x.get("_drop")])
     lines = path.read_text(encoding="utf-8").split("\n")
     start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
@@ -752,7 +785,7 @@ def cut_all(name, drawn):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     path.write_text("\n".join(lines), encoding="utf-8")
 

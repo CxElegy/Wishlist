@@ -112,6 +112,7 @@ KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
 WEB = "Web 画像検索"
+EXAMPLE = "代表作"   # 主題（ジャンル・カテゴリ）の下の一段：emblem_examples に書いた作品・ブランド・選手
 TWEMOJI = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/{}.svg"
 SKIP_NAMES = re.compile(r"logo|icon|signature|flag|map|symbol|commons-|question_book|edit-clear|wikiquote|wikidata|"
                         r"disambig|stub|portal|crystal_clear|ambox|nuvola|folder|sprite|button|badge|banner|\.svg$", re.I)
@@ -139,6 +140,8 @@ def rule(item):
         target = max(lo, min(hi, len(who) or 5))
     elif who and kind in ("character", "group"):   # 対象を名前で挙げたものは、その全員が目標
         target = min(len(who), hi)
+    elif kind == "topic" and item.get("emblem_examples"):   # 代表作を挙げた主題は、その作品数が目標（記号の Twemoji は垫底）
+        target = min(max(target, len(item["emblem_examples"])), hi)
     return kind, min(lo, hi, target), min(target, hi), hi
 
 
@@ -182,6 +185,23 @@ def relevant(title, subject):
     t = re.sub(r"[\W_]+", "", title.lower())
     toks = [x for x in re.split(r"[\s/・（）()]+", subject.lower()) if len(x) >= 2]
     return any(re.sub(r"[\W_]+", "", x) in t for x in toks) if toks else True
+
+
+def same_name(page, name):
+    """検索で当たった記事名が、その名前の記事か（記事名に名前が丸ごと入っている。「Aion 2」→「Aion 2」「Aion 2 (video game)」）。"""
+    norm = lambda x: re.sub(r"[\W_]+", "", x.lower())
+    return bool(norm(name)) and norm(name) in norm(page)
+
+
+def langlinks(lang, title):
+    """その記事のほかの言語版の記事名 {lang: 記事名}（WIKI_LANGS のうち、あるものだけ）。"""
+    q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "langlinks", "lllimit": 500,
+                                "format": "json", "redirects": 1})
+    try:
+        pg = next(iter(_json(f"https://{lang}.wikipedia.org/w/api.php?{q}")["query"]["pages"].values()))
+    except Exception:
+        return {}
+    return {l["lang"]: l["*"] for l in pg.get("langlinks", []) if l["lang"] in WIKI_LANGS}
 
 
 def anilist_names(media_id, n):
@@ -420,6 +440,30 @@ def gather(item, log=print, tried=None):
         tried["直接指定"] = tried.get("直接指定", 0) + 1
         cands.append({"subject": u.get("subject", name), "image": u["image"], "page": u.get("page", ""), "source": "直接指定",
                       "why": u.get("why", "items.yaml に直接書いた画像"), "license": ""})
+    def add_example(ex):
+        """主題の下の一段（ジャンルなら代表作、競技なら有名な選手・大会）：その作品のロゴと、記事の代表画像（キービジュアル・パッケージ）。
+        ex は「en:Blade & Soul」（記事名を言語つきで指定）か名前だけ。"""
+        lang, _, title = ex.partition(":") if re.match(r"^[a-z]{2}:", ex) else ("", "", ex)
+        try:
+            add(title, [r for r in wikidata_images(title, ("P154",), 1) if relevant(r["title"], title)],
+                EXAMPLE + "(Wikidata)", f"この主題の代表作「{title}」のロゴ", 1)
+        except Exception as e:
+            log(f"  [代表作] {title}：{e}")
+        # 指定の言語版に画像がなければ、同じ記事のほかの言語版（言語間リンクでたどる。検索だと別の記事に当たる：
+        # 「Odin: Valhalla Rising」で FF13、「Chrono Odyssey」で人物の記事が出た）
+        pages = {lang: title, **langlinks(lang, title)} if lang else {}
+        for lg in [lang] + [x for x in WIKI_LANGS if x != lang] if lang else WIKI_LANGS:
+            try:
+                page = pages.get(lg) if lang else wikipedia_title(lg, title)
+                if not page or not (lang or same_name(page, title)):
+                    continue
+                src, url = emblem.page_image(f"https://{lg}.wikipedia.org/w/api.php", page, any_license=True)
+                add(title, [{"image": small_url(src), "page": url, "title": page}],
+                    EXAMPLE + "(Wikipedia)", f"この主題の代表作「{title}」の記事の画像（キービジュアル・パッケージ）")
+                break
+            except Exception as e:
+                log(f"  [代表作] {title}（{lg}）：{e}")
+
     if kind in ("brand", "topic"):
         subj = item.get("emblem_subject") or name
         try:
@@ -453,6 +497,8 @@ def gather(item, log=print, tried=None):
                     add(subj, bing_images(f"{subj} 公式 画像", 6), "Web 画像検索", "主題を表す画像（要確認）", 3)
             except Exception as e:
                 log(f"  [Web] {e}")
+        for ex in item.get("emblem_examples") or []:
+            add_example(ex)
         for emoji in (item.get("emblem_icon") or "").split():
             tried["Twemoji"] = tried.get("Twemoji", 0) + 1
             cands.append({**twemoji(emoji), "subject": f"{emoji} アイコン", "source": "Twemoji", "why": "版面の主題を表す物"})
@@ -466,6 +512,15 @@ def gather(item, log=print, tried=None):
         _check_time()
         got = 0
         if kind == "character" and api and not item.get("emblem_people"):
+            try:   # 先に、同じページの透明背景の立ち絵（ゲームの公式イラストなど）。代表画像は漫画のコマ・アニメの場面のことが多い
+                r = emblem.cutout_on_page(api, subj)
+                if r:
+                    tried["Fandom"] = tried.get("Fandom", 0) + 1
+                    cands.append({"subject": subj, "image": r[1], "page": r[2], "source": "Fandom",
+                                  "why": f"{subj}（Fandom の公式の立ち絵・透明背景）", "license": ""})
+                    got += 1
+            except Exception as e:
+                log(f"  [Fandom] {subj}：{e}")
             try:
                 r = emblem.page_image(api, subj)
                 tried["Fandom"] = tried.get("Fandom", 0) + 1
@@ -828,7 +883,7 @@ def source_chain(item):
 PICK_ORDER = ["直接指定", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
     "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
-    "topic": ["直接指定", "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
+    "topic": ["直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
 }
 
 
@@ -837,7 +892,7 @@ PICK_ORDER_BY_KIND = {
 AUTO_SOURCES = {
     "character": {"直接指定", "Fandom"},
     "brand": {"直接指定", "Wikidata", "公式サイト", "Wikimedia Commons"},
-    "topic": {"直接指定", "Wikidata", "Wikimedia Commons", "Twemoji"},
+    "topic": {"直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji"},
 }
 
 
@@ -867,7 +922,8 @@ def auto_pick(item, good, web=True, strict=False):
         return order.index(src) if src in order else len(order)
 
     idx = sorted(range(len(good)), key=lambda i: (rank(good[i]["source"]), i))
-    per = 99 if kind in ("person", "topic", "brand") else 1
+    # 代表作のある主題は 1 作品 1 枚（ロゴか記事の画像のどちらか）。代表作のロゴを優先、なければ記事の画像
+    per = 1 if kind == "topic" and item.get("emblem_examples") else 99 if kind in ("person", "topic", "brand") else 1
     seen = {}
     for x in have:
         s = _base_subject(x.get("subject"))
