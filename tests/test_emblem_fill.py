@@ -502,7 +502,7 @@ class Backend(unittest.TestCase):
 
     def test_slots(self):
         by = {p["id"]: p for p in processes.PROCESSES}
-        self.assertEqual(processes.slots(by["edit"]), [[4, 43], [15, 43]])
+        self.assertEqual(processes.slots(by["edit"]), [])   # 定時は止めた（2026-10-17）：ゲートが起こす
         self.assertEqual(processes.slots(by["emblem"]), processes.slots(by["edit"]))   # 選定は AI 編集の回に
         self.assertEqual(len(processes.slots(by["collect"])), 12)
         self.assertEqual(processes.slots(by["render"]), [])
@@ -564,7 +564,7 @@ class Backend(unittest.TestCase):
         self.assertIn("まだ記録がありません", render._admin_backend(rows))
         for p in processes.PROCESSES:   # 定時か Actions で動くものは「次の実行」に出る（AI 編集と同じ回のものは出さない）
             shown = f'data-open="proc-{p["id"]}"' in out
-            self.assertEqual(shown, not isinstance(p.get("schedule"), str) and bool(processes.slots(p) or p.get("workflow")), p["id"])
+            self.assertEqual(shown, not isinstance(p.get("schedule"), str) and bool(processes.slots(p) or p.get("workflow") or p["id"] in render.BG_ON_EVENT), p["id"])
         self.assertIn('data-wf="digest.yml"', out)
         self.assertIn("&lt;x&gt;", out)
         self.assertNotIn("<x>", out)
