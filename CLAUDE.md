@@ -29,7 +29,7 @@
 
 - 回复里只要提到网页、PR、设置页，就把可以直接点开的链接贴上：
   简报 https://cxelegy.github.io/Wishlist/ 、设置页 https://cxelegy.github.io/Wishlist/settings.html 、
-  愿望清单 https://cxelegy.github.io/Wishlist/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/themes.html 、管理ページ https://cxelegy.github.io/Wishlist/admin.html 、PR 用完整网址。
+  愿望清单 https://cxelegy.github.io/Wishlist/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/themes.html 、管理ページ https://cxelegy.github.io/Wishlist/admin.html 、テストグラウンド https://cxelegy.github.io/Wishlist/testground/ 、PR 用完整网址。
 - 合并 PR 后网页大约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；
   确认网页已经更新了再告诉我，并附上链接。收集新闻、发通知仍由「关注清单通信」慢慢跑。
 
@@ -102,3 +102,11 @@
 只看不改、不用口令（`render.render_admin` + `digest.admin_data`）：运行状况（最新一期、收集条数、哪几天还没 AI 编辑、几天没新消息的关注项、周报）、
 打开时实时读取的 GitHub Actions 结果 / 设置页的关注项请求（`list_item_requests()`）/ 照片收件箱（`get_photo_inbox()`）、
 各关注项的篇幅・7 天记事数・速報数・最新记事・話題度・缺的字段、投票统计（来自 `state/feedback.json`）。要加新数字就在 `admin_data` 里算、在 `render_admin` 里显示。
+
+## テストグラウンド（docs/testground/）
+
+本番の简报に入れる前に部品を試すページ。入口 https://cxelegy.github.io/Wishlist/testground/ （`index.html`）。消さずに残し、新しい試作もここに足す（入口に 1 枚カードを足す）。
+- `compare.html`：左の目次 v1〜v6 の見比べ（条件 10 パターン・画面の高さ・「ダミーで試す」で作品数 2〜1000）
+- `rails.html`：目次の見本 10 パターン ／ `nav.html`：本文つきで 1 本
+- **左の目次は v6 に決定（2026-10-17）**：パソコンは「少ないうちは隠さない・段階的に隠す」（隠し始めるのは既定 24 件、件数で／自動。隠す前に行を 22px まで詰める → ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」）。
+  小分類の札は必ず出す。見た目は線路（原版）＋作品アイコン（emblem → 記事の写真 → 頭文字）＋板块アイコン。スマホは上に 2 段の横帯だけの簡単な形。本番（`render._nav` / `NAV_JS`）に移すときはこの仕様で。
