@@ -377,6 +377,22 @@ def recrop(name):
 EMB_DIR = ROOT / "docs" / "emblems"   # 切り抜いた画像（網页と同じ場所に置く。倉庫は公開なので画像も公開になる）
 
 
+SUBTITLE = 0.18   # 動画の場面の下のこの割合は字幕の帯として切る
+
+
+def video_frame(img):
+    """YouTube の動画の場面（4:3 の枠に 16:9 の動画）→ 上下の黒い帯と、下の字幕の帯を切った画像。
+    字幕は人物の肩に重なると切り抜きに残る（「…했습니다」の例）。下の端で体が切れるのは胸像なのでかまわない。"""
+    import numpy as np
+    g = np.array(img.convert("L"), dtype="float32")
+    rows = np.where(g.mean(axis=1) > 16)[0]
+    if not len(rows):
+        return img
+    top, bottom = int(rows[0]), int(rows[-1]) + 1
+    bottom -= int((bottom - top) * SUBTITLE)
+    return img.crop((0, top, img.width, bottom)) if bottom - top > 80 else img
+
+
 def cut_out(url, slug, drawn=True):
     """背景のある画像から人物だけを切り抜いて docs/emblems/<slug>.webp に保存し、網页から読む相対パスを返す。
     rembg の birefnet-general-lite（絵も写真も）。輪郭の外側の余白は切り詰める。中身（人物）は変えない。
@@ -385,6 +401,8 @@ def cut_out(url, slug, drawn=True):
     from rembg import new_session, remove
 
     img = Image.open(io.BytesIO(_get(url))).convert("RGB")
+    if "i.ytimg.com/" in url:
+        img = video_frame(img)
     out = remove(img, session=_session("birefnet-general-lite"))   # 絵も写真もいちばん輪郭がきれいだった（isnet-anime・u2net と比べた）
     out = check_whole(out, photo=not drawn)
     out, _ = upper_body(out)   # 縦長の全身は上半身に（小さく貼ると顔が見えない）
@@ -438,13 +456,45 @@ def hole_share(solid):
     return float(hole.sum()) / max(1, int(solid.sum()))
 
 
+OTHER_FACE = 0.2   # 切り抜きに残った 2 番目の顔が、いちばん大きい顔の高さのこの割合以上 = ほかの人が残っている
+
+
+def other_faces(out, keep=None):
+    """切り抜いた画像（白の上に置いて）で顔を数え、いちばん大きい顔のほかに目立つ顔がいくつあるか。顔のモデルがなければ 0。"""
+    try:
+        import face_id
+        eng = face_id.engine()
+        if eng is None:
+            return 0
+        import numpy as np
+        import cv2
+        from PIL import Image
+        im = out.convert("RGBA")
+        if keep is not None:
+            a = np.where(keep, np.array(im.getchannel("A")), 0).astype("uint8")
+            im.putalpha(Image.fromarray(a))
+        bg = Image.new("RGBA", im.size, "#FFFFFF")
+        bg.alpha_composite(im)
+        bgr = cv2.cvtColor(np.array(bg.convert("RGB")), cv2.COLOR_RGB2BGR)
+        det = eng[0]
+        det.setInputSize((bgr.shape[1], bgr.shape[0]))
+        _, faces = det.detect(bgr)
+        if faces is None or len(faces) < 2:
+            return 0
+        hs = sorted((float(f[3]) for f in faces), reverse=True)
+        return sum(1 for h in hs[1:] if h >= OTHER_FACE * hs[0])
+    except Exception:
+        return 0
+
+
 def check_whole(out, photo=False):
     """切り抜いた結果を確かめる：人物の全体が見えていること。
     ・いちばん大きいまとまりだけ残す（横に残った小さな切れ端を消す）
     ・左右の端の上 65% に当たっている（体が枠で切れている）ものは使わない。下の端と左右の端の下 35%（胸像の肩）は可
     ・上の端に当たっていても、顔が全部入っていれば可（髪の上だけ切れている）。顔まで切れているもの、
       上の端の半分以上が人物のもの（漫画のコマ・顔のアップを枠ごと切った：吹き出しなどを消した跡がえぐれて残る）は使わない
-    ・人物の面積が小さすぎる、または半透明が多い（背景と混ざって輪郭がにじんだ）ものは使わない"""
+    ・人物の面積が小さすぎる、または半透明が多い（背景と混ざって輪郭がにじんだ）ものは使わない
+    ・写真：切り抜きにほかの人の顔が残っている（いちばん大きい顔の高さの OTHER_FACE 以上）ものは使わない"""
     import numpy as np
     import cv2
     from PIL import Image
@@ -479,6 +529,10 @@ def check_whole(out, photo=False):
     soft = ((a > 24) & (a < 200)).sum() / max(1, (a > 24).sum())
     if soft > 0.18:
         raise ValueError(f"輪郭がにじんでいる（半透明 {soft:.0%}）")
+    if photo:   # 切り抜いた結果にほかの人の顔が残っている（後ろの人・隣の人が体とつながって一緒に切れた）
+        others = other_faces(out, keep)
+        if others:
+            raise ValueError(f"ほかの人が残っている（顔 {others} つ）")
     holes = hole_share(solid) if photo else 0.0   # 絵は武器・手足のすき間も「穴」に数えてしまう（16% の正しい絵もある）ので、写真だけ
     if holes > HOLE_MAX:
         raise ValueError(f"切り抜きに穴（{holes:.1%}）")

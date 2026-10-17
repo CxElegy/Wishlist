@@ -446,7 +446,6 @@ items:
       - {subject: "Scott McCord", why: "Scott McCord（Commons の写真）", image: "emblems/from-scott-mccord.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Scott_McCord_%26_The_Bonafide_Truth_%2814054343447%29.jpg/500px-Scott_McCord_%26_The_Bonafide_Truth_%2814054343447%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Scott_McCord_%26_The_Bonafide_Truth_(14054343447).jpg", shape: "cutout"}
       - {subject: "Avery Konrad", why: "Avery Konrad（Wikipedia の記事の画像）", image: "emblems/from-avery-konrad.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Avery_Konrad_on_AMFM_STUDIOS.jpg/500px-Avery_Konrad_on_AMFM_STUDIOS.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Avery_Konrad", shape: "cutout", fs: 0.484}
       - {subject: "Elizabeth Saunders", why: "Elizabeth Saunders（Wikipedia の記事の画像）", image: "emblems/from-elizabeth-saunders.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Elizabeth_Saunders_at_the_2024_Toronto_International_Film_Festival_3.jpg/500px-Elizabeth_Saunders_at_the_2024_Toronto_International_Film_Festival_3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Elizabeth_Saunders", shape: "cutout", fs: 0.325}
-      - {subject: "Harold Perrineau", why: "Harold Perrineau（YouTube の動画のサムネイル）", image: "emblems/from-harold-perrineau.webp", source: "https://i.ytimg.com/vi/6DotQtUPqXk/hq720.jpg", page: "https://www.youtube.com/watch?v=6DotQtUPqXk", shape: "cutout"}
     subtitle: 美剧 · MGM+ 恐怖悬疑
     size: S
     type: show
@@ -578,8 +577,6 @@ items:
       - {subject: "Yunah", why: "ILLIT のメンバー", image: "emblems/illit-yunah.webp", source: "https://static.wikia.nocookie.net/kpop/images/5/56/ILLIT_Yunah_Break_Even_concept_photo_8.png/revision/latest/scale-to-width-down/400?cb=20261006122441", page: "https://kpop.fandom.com/wiki/Yunah", shape: "cutout"}
       - {subject: "Wonhee (ILLIT)", why: "ILLIT のメンバー", image: "emblems/illit-wonhee-illit.webp", source: "https://static.wikia.nocookie.net/kpop/images/e/eb/ILLIT_Wonhee_Break_Even_concept_photo_7.png/revision/latest/scale-to-width-down/400?cb=20261006122426", page: "https://kpop.fandom.com/wiki/Wonhee_(ILLIT)", shape: "cutout"}
       - {subject: "Wonhee", why: "Wonhee（Wikipedia の記事の画像）", image: "emblems/illit-wonhee.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/ILLIT_WONHEE_CHANEL_Photo_Call_%28cropped%29.png/500px-ILLIT_WONHEE_CHANEL_Photo_Call_%28cropped%29.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Wonhee", shape: "cutout"}
-      - {subject: "Minju", why: "Minju（YouTube の動画のサムネイル）", image: "emblems/illit-minju.webp", source: "https://i.ytimg.com/vi/MoezWJrhzUE/hq720.jpg", page: "https://www.youtube.com/watch?v=MoezWJrhzUE", shape: "cutout"}
-      - {subject: "Moka", why: "Moka（YouTube の動画のサムネイル）", image: "emblems/illit-moka.webp", source: "https://i.ytimg.com/vi/2nyZwX-eMLI/hq720.jpg", page: "https://www.youtube.com/watch?v=2nyZwX-eMLI", shape: "cutout"}
     subtitle: アイリット · 日本公演特别关注
     size: L
     type: event
@@ -1069,7 +1066,6 @@ items:
       - {subject: "Din Djarin", why: "作品の主人公と、その相棒（作品の顔）", image: "emblems/the-mandalorian-din-djarin.webp", source: "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest/scale-to-width-down/400?cb=20241206044557", page: "https://starwars.fandom.com/wiki/Din_Djarin", shape: "cutout"}
       - {subject: "Grogu", why: "作品の主人公と、その相棒（作品の顔）", image: "emblems/the-mandalorian-grogu.webp", source: "https://static.wikia.nocookie.net/starwars/images/0/06/Grogu-BoBFBox.png/revision/latest/scale-to-width-down/400?cb=20251105060853", page: "https://starwars.fandom.com/wiki/Din_Grogu", shape: "cutout"}
       - {subject: "Katee Sackhoff", why: "Katee Sackhoff（作品名つきで検索）", image: "emblems/the-mandalorian-katee-sackhoff.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Katee_Sackhoff_Dragon_Con_September_5_2026_0339.JPG/500px-Katee_Sackhoff_Dragon_Con_September_5_2026_0339.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Katee_Sackhoff", shape: "cutout", fs: 0.373}
-      - {subject: "Pedro Pascal", why: "Pedro Pascal（YouTube の動画のサムネイル）", image: "emblems/the-mandalorian-pedro-pascal.webp", source: "https://i.ytimg.com/vi/ZNtaYfsk-jM/hq720.jpg", page: "https://www.youtube.com/watch?v=ZNtaYfsk-jM", shape: "cutout", fs: 0.34}
     type: show
     section: "影视"
     size: M
