@@ -668,42 +668,51 @@ button{font-family:inherit}
 /* いちばん小さいスマホ（320px）：報頭が横にはみ出さないように詰める */
 @media (max-width:380px){.mast h1{font-size:21px;padding:7px 10px 5px;letter-spacing:0}.mastwish,.mastset{padding:6px 8px}.mast .meta small{display:none}}
 @media (prefers-reduced-motion:reduce){.wc,.tape,.frame,.vote button,.vt button,.mastwish{transition:none}}
-/* ---------- 左侧目录（共用骨架；风格见 NAV_STYLES） ---------- */
+/* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
-.page{max-width:1480px;display:grid;grid-template-columns:236px minmax(0,1fr);gap:28px 32px;align-items:start}
+.page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
 .issues{display:flex;flex-direction:column;gap:28px;min-width:0}
-.nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px);display:flex;flex-direction:column;z-index:50}
-.nav .rail{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;min-height:0}
-.nav .rail::-webkit-scrollbar{display:none}
-.nav .pill{display:flex;align-items:center;gap:8px;position:relative}
+.nav{position:sticky;top:0;display:flex;flex-direction:column;z-index:50}
+.nav .pill{display:flex;align-items:center;gap:8px;position:relative;text-decoration:none}
 .nav .pill .no{font:700 10px var(--font-mono);font-style:normal;font-variant-numeric:tabular-nums}
-.nav .pill:focus-visible,.nav select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.nav select{font:700 12px var(--font-mono);padding:6px 8px;border-radius:0}
-.nav .bar{display:none}
+.nav a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* 作品のアイコン：items.yaml の emblem → 記事の写真 → 板块色の丸に頭文字。板块のアイコンは twemoji */
+.nav .ic{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;overflow:hidden;
+ background:var(--img,none) center/cover no-repeat,var(--sc);color:#FFF;font:900 10px/1 var(--font-sans);font-style:normal}
+.nav .ic.has{color:transparent;background-color:var(--card)}
+.nav .si{flex:none;width:18px;height:18px}
+.nav .x{display:none!important}   /* v6 で隠した行（NAV_JS が付け外し） */
+.nav .bar,.nav .mtabs{display:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav *{transition:none!important}}
 /* 宽屏：目录占左栏从页面最上面开始（报头只在右栏），上下滚动时位置都不动。
-   负的上边距抵掉 .page 的上内边距（40px）和吸顶位置的差，一打开就已经在吸顶的位置；
    页面底部的留白挪进右栏，滚到底时目录也不会被顶上去 */
 @media (min-width:1001px){
  .page{padding-bottom:0}.mast{grid-column:2;grid-row:1}.issues{grid-column:2;grid-row:2;padding-bottom:40px}
- .nav{grid-column:1;grid-row:1/3;margin-top:-24px}}
-/* 窄屏：目录变成顶部横条 */
+ .nav{grid-column:1;grid-row:1/3}}
+/* 窄屏：顶部两排横条。上排是板块，下排是现在这个板块的作品（v6 的隐藏规则不用，简单就好） */
 @media (max-width:1000px){
  .page{grid-template-columns:minmax(0,1fr)}
- .nav{top:env(safe-area-inset-top,0px);max-height:none;flex-direction:row;align-items:center;gap:8px;padding:6px 8px!important;
-  background:var(--ink)!important;color:var(--card)!important;border:none!important;box-shadow:none!important}
- .nav .here,.nav .grp{display:none!important}
- .nav .rail{flex:1;flex-direction:row;overflow-x:auto;gap:6px;padding:6px 4px!important;border:none!important}
- .nav .pill{flex:none;padding:7px 12px!important;margin:0!important;font:700 13px/1.3 var(--font-sans)!important;
-  color:var(--card)!important;background:none!important;border:1px solid rgba(251,248,241,.3)!important;transform:none!important;width:auto!important}
- .nav .pill::before,.nav .pill::after,.nav .pill .no,.nav .pill .cnt{display:none!important}
- .nav .pill.on{background:var(--sc)!important;border-color:var(--sc)!important;transform:scale(1.12)!important;margin:0 4px!important}
- .nav select{background:transparent;color:var(--card);border:1px solid rgba(251,248,241,.3)}
+ .nav{top:env(safe-area-inset-top,0px);background:var(--ink);color:var(--card);padding:8px 0 0;margin:0 -24px}
+ .nav .nhead,.nav .navwish{display:none}
+ .nav .mtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 16px 10px}
+ .nav .mtabs::-webkit-scrollbar,.nav .rail::-webkit-scrollbar{display:none}
+ .nav .mtabs a{flex:none;padding:4px 12px;font-size:13px;opacity:.55;text-decoration:none}
+ .nav .mtabs a.on{opacity:1;box-shadow:3px 3px 0 var(--gold)}
+ .nav .rail{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 16px;border-top:1px solid rgba(251,248,241,.18)}
+ .nav:not(.insec) .rail{display:none}
+ .nav .nslot{display:none}
+ .nav .nslot.cur,.nav .nbody{display:contents}
+ .nav .nsec,.nav .nsubs,.nav .nlab,.nav .nmore{display:none!important}
+ .nav .pill{display:flex!important;flex:none;padding:5px 10px;border:1px solid rgba(251,248,241,.35);color:var(--card);
+  font:700 13px/1.3 var(--font-sans);white-space:nowrap}
+ .nav .pill .no,.nav .pill .ic,.nav .pill .cnt,.nav .pill .new{display:none}
+ .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
- [data-k]{scroll-margin-top:64px}
+ [data-k]{scroll-margin-top:104px}
 }
+@media (max-width:600px){.nav{margin:0 -16px}}
 /* ---------- 愿望清单 ---------- */
 .wish{--bg:var(--sheet);--fg:var(--ink);--acc:var(--rose);--abg:var(--ink);--afg:var(--sheet);--aacc:#F2A7C3;--ac:var(--rose);
  --line:color-mix(in srgb,var(--ink) 18%,var(--sheet));background:var(--bg);color:var(--fg);border:1px solid var(--line)}

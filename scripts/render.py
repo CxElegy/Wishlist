@@ -496,42 +496,51 @@ button{font-family:inherit}
 /* いちばん小さいスマホ（320px）：報頭が横にはみ出さないように詰める */
 @media (max-width:380px){.mast h1{font-size:21px;padding:7px 10px 5px;letter-spacing:0}.mastwish,.mastset{padding:6px 8px}.mast .meta small{display:none}}
 @media (prefers-reduced-motion:reduce){.wc,.tape,.frame,.vote button,.vt button,.mastwish{transition:none}}
-/* ---------- 左侧目录（共用骨架；风格见 NAV_STYLES） ---------- */
+/* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
-.page{max-width:1480px;display:grid;grid-template-columns:236px minmax(0,1fr);gap:28px 32px;align-items:start}
+.page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
 .issues{display:flex;flex-direction:column;gap:28px;min-width:0}
-.nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px);display:flex;flex-direction:column;z-index:50}
-.nav .rail{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;min-height:0}
-.nav .rail::-webkit-scrollbar{display:none}
-.nav .pill{display:flex;align-items:center;gap:8px;position:relative}
+.nav{position:sticky;top:0;display:flex;flex-direction:column;z-index:50}
+.nav .pill{display:flex;align-items:center;gap:8px;position:relative;text-decoration:none}
 .nav .pill .no{font:700 10px var(--font-mono);font-style:normal;font-variant-numeric:tabular-nums}
-.nav .pill:focus-visible,.nav select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.nav select{font:700 12px var(--font-mono);padding:6px 8px;border-radius:0}
-.nav .bar{display:none}
+.nav a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* 作品のアイコン：items.yaml の emblem → 記事の写真 → 板块色の丸に頭文字。板块のアイコンは twemoji */
+.nav .ic{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;overflow:hidden;
+ background:var(--img,none) center/cover no-repeat,var(--sc);color:#FFF;font:900 10px/1 var(--font-sans);font-style:normal}
+.nav .ic.has{color:transparent;background-color:var(--card)}
+.nav .si{flex:none;width:18px;height:18px}
+.nav .x{display:none!important}   /* v6 で隠した行（NAV_JS が付け外し） */
+.nav .bar,.nav .mtabs{display:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav *{transition:none!important}}
 /* 宽屏：目录占左栏从页面最上面开始（报头只在右栏），上下滚动时位置都不动。
-   负的上边距抵掉 .page 的上内边距（40px）和吸顶位置的差，一打开就已经在吸顶的位置；
    页面底部的留白挪进右栏，滚到底时目录也不会被顶上去 */
 @media (min-width:1001px){
  .page{padding-bottom:0}.mast{grid-column:2;grid-row:1}.issues{grid-column:2;grid-row:2;padding-bottom:40px}
- .nav{grid-column:1;grid-row:1/3;margin-top:-24px}}
-/* 窄屏：目录变成顶部横条 */
+ .nav{grid-column:1;grid-row:1/3}}
+/* 窄屏：顶部两排横条。上排是板块，下排是现在这个板块的作品（v6 的隐藏规则不用，简单就好） */
 @media (max-width:1000px){
  .page{grid-template-columns:minmax(0,1fr)}
- .nav{top:env(safe-area-inset-top,0px);max-height:none;flex-direction:row;align-items:center;gap:8px;padding:6px 8px!important;
-  background:var(--ink)!important;color:var(--card)!important;border:none!important;box-shadow:none!important}
- .nav .here,.nav .grp{display:none!important}
- .nav .rail{flex:1;flex-direction:row;overflow-x:auto;gap:6px;padding:6px 4px!important;border:none!important}
- .nav .pill{flex:none;padding:7px 12px!important;margin:0!important;font:700 13px/1.3 var(--font-sans)!important;
-  color:var(--card)!important;background:none!important;border:1px solid rgba(251,248,241,.3)!important;transform:none!important;width:auto!important}
- .nav .pill::before,.nav .pill::after,.nav .pill .no,.nav .pill .cnt{display:none!important}
- .nav .pill.on{background:var(--sc)!important;border-color:var(--sc)!important;transform:scale(1.12)!important;margin:0 4px!important}
- .nav select{background:transparent;color:var(--card);border:1px solid rgba(251,248,241,.3)}
+ .nav{top:env(safe-area-inset-top,0px);background:var(--ink);color:var(--card);padding:8px 0 0;margin:0 -24px}
+ .nav .nhead,.nav .navwish{display:none}
+ .nav .mtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 16px 10px}
+ .nav .mtabs::-webkit-scrollbar,.nav .rail::-webkit-scrollbar{display:none}
+ .nav .mtabs a{flex:none;padding:4px 12px;font-size:13px;opacity:.55;text-decoration:none}
+ .nav .mtabs a.on{opacity:1;box-shadow:3px 3px 0 var(--gold)}
+ .nav .rail{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 16px;border-top:1px solid rgba(251,248,241,.18)}
+ .nav:not(.insec) .rail{display:none}
+ .nav .nslot{display:none}
+ .nav .nslot.cur,.nav .nbody{display:contents}
+ .nav .nsec,.nav .nsubs,.nav .nlab,.nav .nmore{display:none!important}
+ .nav .pill{display:flex!important;flex:none;padding:5px 10px;border:1px solid rgba(251,248,241,.35);color:var(--card);
+  font:700 13px/1.3 var(--font-sans);white-space:nowrap}
+ .nav .pill .no,.nav .pill .ic,.nav .pill .cnt,.nav .pill .new{display:none}
+ .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
- [data-k]{scroll-margin-top:64px}
+ [data-k]{scroll-margin-top:104px}
 }
+@media (max-width:600px){.nav{margin:0 -16px}}
 /* ---------- 愿望清单 ---------- */
 .wish{--bg:var(--sheet);--fg:var(--ink);--acc:var(--rose);--abg:var(--ink);--afg:var(--sheet);--aacc:#F2A7C3;--ac:var(--rose);
  --line:color-mix(in srgb,var(--ink) 18%,var(--sheet));background:var(--bg);color:var(--fg);border:1px solid var(--line)}
@@ -2149,139 +2158,150 @@ def _agenda(works, today, limit=None):
     return f'<div class="agenda"><h4>これからの予定<small>UPCOMING</small></h4><ol>{items}</ol></div>'
 
 
-# 左侧目录的四种风格（items.yaml 的 settings.nav_style 选择）。只在宽屏生效，窄屏统一是顶部横条
+# 左侧目录的宽屏样式（v6）。items.yaml 的 settings.nav_style 以前可选 4 种，现在只有这一种（写别的也用它）
 NAV_STYLES = {
-    # A 线路图：每个板块一段彩色线路，作品是站点；读到哪站圆点放大，线路按进度填色，读过的站变实心
     "line": """
-/* P5 风：底色就是页面背景，站点是编号 + 斜切标签；当前站点反白、带红色硬阴影和进度条。不滚动：站点按画面高度平分 */
-.nav{top:0;height:100vh;max-height:none;margin-top:-40px;padding:18px 14px 14px 14px;background:transparent;color:var(--ink);
- border-left:6px solid var(--alert)}
-.nav .here{display:none}
-.nav .rail{flex:1;padding:0 6px 0 0;overflow:hidden}
-.nav .grp{flex:none;display:flex;align-items:center;gap:8px;margin:clamp(3px,1.2vh,14px) 0 clamp(1px,.4vh,4px)}
-.nav .grp b{display:inline-block;background:var(--sc);color:#FFF;padding:0 10px;transform:skewX(var(--skew));font:900 12px/1.5 var(--font-sans);letter-spacing:.25em}
-.nav .grp small{font:700 10px var(--font-mono);letter-spacing:.25em;color:rgba(26,28,34,.6)}
-.nav .pill{flex:1 1 0;min-height:0;max-height:64px;gap:8px;padding:0 6px 0 8px;isolation:isolate;color:rgba(26,28,34,.74);
- font:800 clamp(11px,1.6vh,14px)/1.3 var(--font-sans);transition:color .15s,transform .25s cubic-bezier(.3,1.4,.5,1)}
-.nav .pill .no{display:inline;font:700 10px var(--font-mono);letter-spacing:.05em;color:var(--sc)}
-.nav .pill .nm{display:flex;flex-direction:column;gap:2px}
-.nav .pill .cnt{display:none;font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--gold)}
-.nav .pill::before{content:"";position:absolute;inset:1px -4px 1px -6px;z-index:-1;transform:skewX(var(--skew));transition:background .15s}
+/* v6（testground/compare.html）：板块ごとの枠を画面の高さいっぱいに並べる。作品が少ないうちは何も隠さず行の間隔を広げ、
+   増えたら NAV_JS が ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。
+   見た目は原版の線路：読んでいる駅のアイコンが弾んで大きくなり、読んだ駅は線が板块色で埋まる */
+.nav{top:0;height:100vh;margin-top:-40px;padding:16px 0 12px 14px;border-left:6px solid var(--alert);color:var(--ink)}
+.nav .nhead{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:0 12px;margin:0 8px 6px 0;padding-bottom:4px;border-bottom:2px solid var(--ink)}
+.nav .nhead .pill{flex:none;height:30px;padding-left:4px;font-size:13px}
+.nav .nhead .pill.on{padding-left:58px;padding-right:12px}
+.nav .nhead .pill.on::before{display:block}   /* 読んでいるときは黒い斜めの箱を出す */
+.nav .nhead .pill::before,.nav .nhead .pill::after{display:none}   /* トップ・気になるかも？は横 1 列（線路にはつなげない） */
+.nav .nhead .pill.on .nm{flex-direction:row;align-items:baseline;gap:6px}
+.nav .rail{flex:1;min-height:0;position:relative;overflow:hidden;margin-right:8px;scrollbar-width:thin}
+.nav .pill{height:34px;padding:0 6px 0 34px;color:rgba(26,28,34,.86);font:800 15px/1.35 var(--font-sans)}
+.nav .nbody .pill{height:var(--ih,34px);transition:height .25s}
+.nav .pill .no{display:none}
+.nav .pill .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav .pill .cnt{display:none;font:700 11px var(--font-mono);letter-spacing:.06em;color:rgba(26,28,34,.62)}
+.nav .rail.roomy .pill .nm{display:flex;flex-direction:column;gap:1px}
+.nav .rail.roomy .pill .cnt{display:block}
+.nav .pill .new{flex:none;font:700 11px var(--font-mono);color:rgba(26,28,34,.5)}   /* 件数は控えめに（赤は読んでいる作品だけ） */
+/* 線路：板块色の細い線に、駅は P5 の斜めの小さな札（丸は使わない）。読んだ駅は板块色で塗る */
+.nav .pill::before{content:"";position:absolute;inset:0 auto 0 15px;width:2px;z-index:-1;background:rgba(26,28,34,.13)}
+.nav .pill::after{content:"";position:absolute;left:9px;top:50%;width:14px;height:8px;margin-top:-4px;transform:skewX(var(--skew));
+ background:var(--paper);border:2px solid rgba(26,28,34,.32);transition:background .2s,border-color .2s}
 .nav .pill:hover{color:var(--ink)}
-.nav .pill:hover::before{background:rgba(26,28,34,.08)}
-.nav .pill.past{color:var(--ink)}
-.nav .pill.on{flex:0 0 auto;max-height:none;color:var(--card);font-size:clamp(14px,2.1vh,18px);font-weight:900;
- padding:clamp(5px,1.2vh,10px) 6px clamp(5px,1.2vh,10px) 12px;transform:translateX(10px)}
-.nav .pill.on::before{background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
-.nav .pill.on::after{content:"";position:absolute;left:-2px;bottom:1px;z-index:-1;height:3px;width:calc(var(--p,0)*100%);background:var(--alert);transform:skewX(var(--skew))}
-.nav .pill.on .no{color:var(--gold)}
-.nav .pill.on .cnt{display:block}
-.nav select{margin:14px 0 0 10px;align-self:flex-start;background:transparent;color:var(--ink);border:1px solid rgba(26,28,34,.4)}
-.nav .navwish{margin:8px 6px 0 0;border-color:var(--ink);color:var(--ink);box-shadow:3px 3px 0 var(--alert);transform:skewX(var(--skew))}
-.nav .navwish:hover{background:var(--alert);border-color:var(--alert);color:#FFF}
-@media (max-height:700px){.nav{padding-top:10px;padding-bottom:8px}.nav .grp{margin-top:2px;margin-bottom:0}.nav .pill.on{padding-top:3px;padding-bottom:3px}.nav .pill.on .cnt{display:none}}
-""",
-    # B 报纸索引栏：米色纸面、双线，条目带编号和引导点；当前条目反白成板块色色块并放大
-    "index": """
-.nav{background:var(--card);color:var(--ink);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:0}
-.nav .here{display:flex;flex-direction:column;gap:2px;padding:14px 16px 12px;border-bottom:3px double var(--ink);text-align:center}
-.nav .here b{font:900 30px/1 var(--font-serif);letter-spacing:.4em;padding-left:.4em}
-.nav .here small{font:700 10px var(--font-mono);letter-spacing:.45em;color:var(--alert)}
-.nav .here span{font:700 11px var(--font-mono);letter-spacing:.1em;opacity:.7}
-.nav .rail{padding:4px 0 10px}
-.nav .grp{display:flex;align-items:center;gap:8px;margin:12px 12px 4px;padding:3px 8px;background:var(--sc);color:#FFF}
-.nav .grp b{font:900 13px var(--font-sans);letter-spacing:.3em}
-.nav .grp small{margin-left:auto;font:700 10px var(--font-mono);letter-spacing:.2em;opacity:.9}
-.nav .pill{margin:0 12px;padding:7px 8px;font:700 14px/1.35 var(--font-serif);border-bottom:1px dotted rgba(26,28,34,.35);
- transition:background .2s,color .2s,font-size .2s,padding .2s}
-.nav .pill .no{color:var(--sc);min-width:18px}
-.nav .pill .nm{flex:1;min-width:0}
-.nav .pill::after{content:"";position:absolute;left:0;bottom:-1px;height:3px;width:calc(var(--p,0)*100%);background:var(--sc)}
-.nav .pill:hover .nm{text-decoration:underline;text-underline-offset:3px}
-.nav .pill.past{opacity:.55}
-.nav .pill.on{background:var(--sc);color:#FFF;font-size:18px;font-weight:900;padding:12px 10px;opacity:1}
-.nav .pill.on .no{color:var(--gold)}
-.nav .pill.on::after{background:var(--gold)}
-.nav select{margin:0 12px 12px;background:var(--card);color:var(--ink);border:2px solid var(--ink)}
-""",
-    # C 活页夹标签：每个作品是一张贴在内容左缘的彩色索引签；当前那张向右抽出、变大
-    "tabs": """
-.nav{padding:0;background:none}
-.page{grid-template-columns:220px minmax(0,1fr);column-gap:0}
-.nav .here{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:0 0 10px 4px}
-.nav .here b{font:900 24px/1 var(--font-sans);letter-spacing:.2em;white-space:nowrap}
-.nav .here small{font:700 10px var(--font-mono);letter-spacing:.3em;color:var(--alert)}
-.nav .here span{flex-basis:100%;font:700 10px var(--font-mono);opacity:.6}
-.nav .rail{gap:5px;padding:4px 0 8px;overflow-x:visible}
-.nav .grp{display:flex;align-items:baseline;gap:6px;padding:10px 4px 2px;color:var(--sc)}
-.nav .grp b{font:900 12px var(--font-sans);letter-spacing:.3em}
-.nav .grp small{font:700 10px var(--font-mono);letter-spacing:.2em}
-.nav .pill{margin-left:28px;padding:10px 12px;background:color-mix(in srgb,var(--sc) 22%,var(--card));color:var(--ink);
- border:2px solid var(--ink);border-right:none;font:900 14px/1.25 var(--font-sans);
- clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px),0 10px);
- transition:margin .3s cubic-bezier(.3,1.5,.5,1),background .2s,color .2s,font-size .2s}
-.nav .pill .no{color:var(--sc)}
-.nav .pill::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:calc(var(--p,0)*100%);background:var(--ink)}
-.nav .pill:hover{margin-left:18px}
-.nav .pill.past{background:color-mix(in srgb,var(--sc) 10%,var(--card));color:rgba(26,28,34,.6)}
-.nav .pill.on{margin-left:0;background:var(--sc);color:#FFF;font-size:17px;padding:14px 14px}
-.nav .pill.on .no{color:var(--gold)}
-.nav .pill.on::after{background:var(--gold)}
-.nav select{margin:6px 0 0 28px;background:var(--card);color:var(--ink);border:2px solid var(--ink)}
-""",
-    # D 大字滚动：没有框，只有字；当前作品放大成巨大的板块色标题，其余缩小变淡，像焦点在移动
-    "type": """
-.nav{padding:4px 0}
-.nav .here{display:flex;flex-direction:column;gap:2px;padding-bottom:12px;border-bottom:3px solid var(--ink)}
-.nav .here b{font:900 13px var(--font-mono);letter-spacing:.5em}
-.nav .here small{display:none}
-.nav .here span{font:700 11px var(--font-mono);opacity:.6}
-.nav .rail{padding:8px 0;mask-image:linear-gradient(transparent,#000 6%,#000 94%,transparent)}
-.nav .grp{display:flex;gap:6px;align-items:baseline;padding:14px 0 2px;color:var(--sc)}
-.nav .grp b{font:900 11px var(--font-sans);letter-spacing:.4em}
-.nav .grp small{font:700 10px var(--font-mono);letter-spacing:.2em;opacity:.8}
-.nav .pill{flex-direction:column;align-items:flex-start;gap:0;padding:5px 0;color:rgba(26,28,34,.38);
- font:900 15px/1.15 var(--font-sans);letter-spacing:-.01em;transition:font-size .35s cubic-bezier(.2,.9,.3,1),color .25s,padding .35s}
-.nav .pill .no{font-size:10px;color:inherit}
-.nav .pill:hover{color:var(--ink)}
-.nav .pill.past{color:rgba(26,28,34,.55)}
-.nav .pill.on{color:var(--sc);font-size:34px;line-height:1.02;padding:10px 0 12px}
-.nav .pill.on .no{color:var(--ink)}
-.nav .pill.on::after{content:"";height:4px;width:calc(var(--p,0)*100%);background:var(--sc);margin-top:8px;transition:width .15s linear}
-.nav select{margin-top:8px;background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.nav .pill:hover::after{border-color:var(--alert)}
+.nav .pill.past::before{background:var(--sc)}
+.nav .pill.past::after{background:var(--sc);border-color:var(--sc)}
+/* アイコンは読んでいる作品だけ：P5 のカットインのように、白フチ＋墨の硬い影で少し傾けて貼る。ほかの行には出さない */
+.nav .pill .ic{display:none}
+/* 読んでいる作品：原版（P5）の黒い斜めの箱＋赤い硬い影 */
+.nav .pill.on::before{inset:4px -2px 4px 24px;width:auto;transform:skewX(var(--skew));background:var(--ink);box-shadow:4px 4px 0 var(--alert)}
+.nav .pill.on::after{display:none}
+.nav .pill.on{color:var(--card);font-size:17px;font-weight:900;letter-spacing:-.01em;padding-left:58px}
+.nav .pill.on .ic{display:grid;position:absolute;left:2px;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:0;
+ border:3px solid #FFF;box-shadow:3px 3px 0 var(--ink);transform:rotate(-7deg);font-size:18px;
+ animation:cutin .35s cubic-bezier(.3,1.5,.5,1)}
+@keyframes cutin{from{transform:rotate(-20deg) scale(.3);opacity:0}to{transform:rotate(-7deg) scale(1);opacity:1}}
+.nav .pill.on .nm{display:flex;flex-direction:column;gap:1px}
+.nav .pill.on .cnt{display:block;color:var(--gold)}
+.nav .pill.on .new{color:var(--gold)}
+.nav .nhead .pill.on{height:52px}
+.nav .nbody .pill.on{height:calc(var(--ih,34px) + 22px)}
+/* 板块のアイコン（twemoji）は宽屏では出さない：板块は色つきの斜めのラベルで十分 */
+.nav .nsec .si{display:none}
+/* 板块の枠：位置と高さは NAV_JS が決める（動くときはなめらかに） */
+.nav .nslot{position:absolute;left:0;right:0;overflow:hidden;transition:top .34s cubic-bezier(.2,.8,.2,1),height .34s cubic-bezier(.2,.8,.2,1)}
+.nav .nslot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--hair)}
+.nav .nsec{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:4px 8px;height:42px;padding:8px 4px 0 0;text-decoration:none;color:var(--ink)}
+.nav .nsec .tg{transform-origin:left center;transition:transform .34s cubic-bezier(.2,.8,.2,1),box-shadow .34s}
+.nav .nsec .tg{font-size:14px;padding:1px 12px}
+.nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
+.nav .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:rgba(26,28,34,.62)}
+.nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
+.nav .nsec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
+.nav .nbody{position:absolute;left:0;right:0;top:52px}
+/* 小分類の札（横並び）：いまの板块に小分類が 2 つ以上あれば必ず出す。押すとその小分類の最初の作品へ */
+.nav .nsubs{display:flex;flex-wrap:wrap;gap:4px 6px;margin:0 0 6px 2px}
+.nav .nsubs a{display:flex;align-items:center;gap:5px;height:22px;padding:0 7px;border:1px solid var(--hair);color:rgba(26,28,34,.7);
+ font:700 11px/1 var(--font-sans);white-space:nowrap;text-decoration:none}
+.nav .nsubs a small{font:700 10px var(--font-mono)}
+.nav .nsubs a:hover{color:var(--ink);border-color:var(--ink)}
+.nav .nsubs a.on{background:var(--sc);border-color:var(--sc);color:#FFF}
+.nav .nlab{height:20px;display:flex;align-items:flex-end;padding:0 0 2px 2px;font:700 10px var(--font-mono);letter-spacing:.12em;color:var(--sc)}
+.nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;font:800 13px var(--font-sans);color:var(--sc);text-decoration:none}
+.nav .nmore:hover{text-decoration:underline}
+.nav .navwish{margin:8px 8px 0 0}
 """,
 }
 
 
-def _nav(works, date, wishes=(), picks=()):
-    """左侧目录：按板块分组列出每个作品。"""
+# 板块のアイコン（twemoji）。表にない新しい板块はアイコンなし
+SECTION_ICON = {"游戏": "1f3ae", "影视": "1f3ac", "运动": "26bd", "演出": "1f3a4", "好物": "1f6cd", "其他": "1f4e6"}
+TWEMOJI = "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/{}.svg"
+NAV_HIDE = 24   # 左の目次で隠し始める作品の数（items.yaml の settings.nav_hide。"auto" なら画面の高さで決める）
+
+
+def _nav_icon(w):
+    """目次の作品アイコン：items.yaml の emblem（倉庫の切り抜き画像か https の画像）→ 封面・最近の記事の写真。なければ None。"""
+    for x in w.get("_emblems") or []:
+        img = str(x.get("image") or "") if isinstance(x, dict) else ""
+        if re.fullmatch(r"emblems/[a-z0-9-]+\.webp", img) or img.startswith("https://"):
+            return img
+    t = w.get("_thumb") or next((x.get("image") for x in w.get("stories") or [] if x.get("image")), None)
+    return _img_url(t) if t and str(t).startswith("https://") else None
+
+
+def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE):
+    """左侧目录（v6）：板块ごとの枠に作品を並べる（小分類があれば小分類ごと）。どこを隠すかは NAV_JS が画面の高さで決める。
+    subs：{作品: 小分類}（items.yaml の sub）。hide：隠し始める作品の数（"auto" なら画面の高さで決める）。"""
     groups = {}
     for w in works:
         groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     cutoff = (dt.date.fromisoformat(date) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
-    rail = [f'<a class="pill front-k" style="--sc:#D7261E" data-for="front" href="#front">'
-            f'<i class="no">00</i><span class="nm">トップ<small class="cnt">FRONT PAGE</small></span></a>']
+    page_no = {w["name"]: i + 1 for i, w in enumerate(works)}   # 版面の順（読んだ印・新着順の同点はこの順）
+    subs = subs or {}
+
+    def pill(w, sc):
+        recent = sum(1 for x in w["stories"] if x["_issue"] >= cutoff)
+        icon = _nav_icon(w)
+        ic = (f'<i class="ic has" style="--img:url({e(urllib.parse.quote(icon, safe=":/?&=%#@+,;~"))})"></i>' if icon
+              else f'<i class="ic">{e(w["name"][:1])}</i>')
+        return (f'<a class="pill" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" '
+                f'data-sub="{e(subs.get(w["name"], ""))}" href="#{_wid(w["name"])}"><i class="no">{page_no[w["name"]]:02d}</i>{ic}'
+                f'<span class="nm">{e(w["name"])}<small class="cnt">{f"今週 {recent} 件" if recent else "新着なし"}</small></span>'
+                + (f'<span class="new">+{recent}</span>' if recent else "") + '</a>')
+
+    head = [f'<a class="pill" style="--sc:#D7261E" data-for="front" data-n="0" href="#front"><i class="no">00</i>'
+            f'<i class="ic">★</i><span class="nm">トップ<small class="cnt">FRONT PAGE</small></span></a>']
     if picks:
-        rail.append(f'<a class="pill" style="--sc:#B8336A" data-for="picks" href="#picks">'
-                    f'<i class="no">?</i><span class="nm">気になるかも？<small class="cnt">候補 {len(picks)} 件</small></span></a>')
-    n = 0
+        head.append(f'<a class="pill" style="--sc:#B8336A" data-for="picks" data-n="0" href="#picks"><i class="no">?</i>'
+                    f'<i class="ic">?</i><span class="nm">気になるかも？<small class="cnt">候補 {len(picks)} 件</small></span></a>')
+    tabs = ['<a class="tg on" style="--sc:var(--ink)" data-sec="" href="#front"><span>トップ</span></a>']
+    slots = []
     for name in order:
-        sc = _sec_color(name)
-        rail.append(f'<div class="grp" style="--sc:{sc}"><b>{e(_sec_name(name))}</b><small>{_sec_en(name)}</small></div>')
-        for w in groups[name]:
-            n += 1
-            recent = [x for x in w["stories"] if x["_issue"] >= cutoff]
-            img = next((x.get("image") for x in recent if x.get("image")), None) or w.get("cover") \
-                or next((x.get("image") for x in w["stories"] if x.get("image")), None)
-            css_img = f";--img:url({urllib.parse.quote(_img_url(img), safe=':/?&=%#@+,;~')})" if img else ""
-            cnt = f"今週 {len(recent)} 件" if recent else "新着なし"
-            rail.append(f'<a class="pill" style="--sc:{sc}{e(css_img)}" data-for="{e(w["name"])}" '
-                        f'href="#{_wid(w["name"])}"><i class="no">{n:02d}</i>'
-                        f'<span class="nm">{e(w["name"])}<small class="cnt">{cnt}</small></span></a>')
-    return (f'<nav class="nav" aria-label="目次">'
-            f'<div class="here"><b>目次</b><small>INDEX</small><span id="nav-here"></span></div>'
-            f'<div class="rail" id="nav-rail">{"".join(rail)}</div>{_wish_link(wishes, "navwish")}'
+        sc, ws = _sec_color(name), groups[name]
+        icon = (f'<img class="si" src="{TWEMOJI.format(SECTION_ICON[name])}" alt="" loading="lazy">' if name in SECTION_ICON else "")
+        nn = sum(1 for w in ws if any(x["_issue"] >= cutoff for x in w["stories"]))
+        tabs.append(f'<a class="tg" style="--sc:{sc}" data-sec="{e(name)}" href="#{_wid(ws[0]["name"])}"><span>{e(_sec_name(name))}</span></a>')
+        sub_order = list(dict.fromkeys(subs.get(w["name"], "") for w in ws))
+        body = ""
+        if len(sub_order) > 1:   # 小分類が 2 つ以上：札を出し、作品は小分類ごとにまとめる（小見出しつき）
+            first = {s: next(w for w in ws if subs.get(w["name"], "") == s) for s in sub_order}
+            body += ('<div class="nsubs">' + "".join(
+                f'<a data-sub="{e(s)}" href="#{_wid(first[s]["name"])}">{e(s or "その他")}'
+                f'<small>{sum(1 for w in ws if subs.get(w["name"], "") == s)}</small></a>' for s in sub_order) + '</div>')
+            for s in sub_order:
+                body += f'<div class="nlab" data-sub="{e(s)}">{e(s or "その他")}</div>'
+                body += "".join(pill(w, sc) for w in ws if subs.get(w["name"], "") == s)
+        else:
+            body += "".join(pill(w, sc) for w in ws)
+        body += f'<a class="nmore x" href="#{_wid(ws[0]["name"])}"></a>'
+        slots.append(f'<div class="nslot" style="--sc:{sc}" data-sec="{e(name)}">'
+                     f'<a class="nsec" href="#{_wid(ws[0]["name"])}">{icon}<span class="tg"><span>{e(_sec_name(name))}</span></span>'
+                     f'<span class="cnt">新着 {nn}／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
+                     f'<div class="nbody">{body}</div></div>')
+    hide = "auto" if str(hide).lower() == "auto" else max(1, int(hide or NAV_HIDE))
+    return (f'<nav class="nav" aria-label="目次" data-hide="{hide}">'
+            f'<div class="mtabs">{"".join(tabs)}</div>'
+            f'<div class="nhead">{"".join(head)}</div>'
+            f'<div class="rail" id="nav-rail">{"".join(slots)}</div>{_wish_link(wishes, "navwish")}'
             f'<div class="bar" id="nav-bar"></div></nav>')
 
 
@@ -2338,15 +2358,29 @@ FIT_JS = """
 
 NAV_JS = """
 (() => {
-  const nav = document.querySelector('.nav'), rail = document.getElementById('nav-rail'),
-        here = document.getElementById('nav-here');
+  // 左の目次（v6・testground/compare.html で決めた形）
+  const nav = document.querySelector('.nav'), rail = document.getElementById('nav-rail');
+  if (!nav || !rail) return;
   // 只认版面级的区块（头版、我会喜欢？、各作品版面），卡片上的 data-k（投票用）不算
   const marks = [...document.querySelectorAll('.issue > [data-k]')];
-  const pills = [...rail.querySelectorAll('.pill')];
+  const pills = [...nav.querySelectorAll('.pill')];
   const byKey = new Map(pills.map((p, i) => [p.dataset.for, i]));
   const firstIssue = document.querySelector('.issue');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let cur = null, curIdx = -2, curProg = -1, ticking = false;
+  const tabs = [...nav.querySelectorAll('.mtabs a')];
+  const S = [...rail.querySelectorAll('.nslot')].map(el => ({el, sec: el.dataset.sec,
+    pills: [...el.querySelectorAll('.nbody .pill')], subs: el.querySelector('.nsubs'), chips: [...el.querySelectorAll('.nsubs a')],
+    labs: [...el.querySelectorAll('.nlab')], more: el.querySelector('.nmore')}));
+  const slotOf = new Map();
+  S.forEach((s, i) => s.pills.forEach(p => slotOf.set(p, i)));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, wide = matchMedia('(min-width: 1001px)');
+  // 隠し始める作品の数（items.yaml の settings.nav_hide、既定 24）。auto なら画面の高さだけで決める。
+  // どちらでも、行を 30px まで詰めても入らないときは隠す（窮屈にもスクロールにもしない）
+  const HIDE = nav.dataset.hide === 'auto' ? 0 : (+nav.dataset.hide || 24), TOTAL = S.reduce((a, s) => a + s.pills.length, 0);
+  const SEC_H = 52, ITEM_H = 34, R_MIN = 30, MORE_H = 26, MIN_H = 46, EXTRA = 22, LAB_H = 20;   // 行の高さ（NAV_STYLES と同じ）
+  const hot = p => +p.dataset.hot || 0, num = p => +p.dataset.n || 0, subOf = p => p.dataset.sub || '';
+  const topN = (l, n) => l.slice().sort((a, b) => hot(b) - hot(a) || num(a) - num(b)).slice(0, n);
+  let curIdx = -2, curProg = -1, ticking = false, lk = null, lsub = null;
+
   // 选中「屏幕里露出标题的、最靠上的」区块（上一个版面只剩尾巴时就算到下一个）；
   // 屏幕里一个标题都没有（在读长版面的中间）时选盖住屏幕顶边的那个。滚到最底时选最后一个
   function pick(top, bottom) {
@@ -2362,51 +2396,126 @@ NAV_JS = """
     }
     return covering;
   }
-  function update() {
+
+  // 宽屏：何も隠さない → 行を 30px まで詰める（それ以上は詰めない：窮屈になる）→ ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」
+  function layout(force) {
+    const on = pills[curIdx], k = on && slotOf.has(on) ? slotOf.get(on) : -1, sub = on ? subOf(on) : '';
+    if (!force && k === lk && sub === lsub && !(on && on.classList.contains('x'))) return;
+    lk = k; lsub = sub;
+    const H = Math.floor(rail.getBoundingClientRect().height), n = S.length;
+    if (!n || !H) return;
+    const L = S.map(s => s.pills), subsK = k >= 0 && S[k].chips.length > 1;
+    let chipsH = 0;
+    if (subsK) { S[k].nsubs.classList.remove('x'); chipsH = S[k].nsubs.offsetHeight + 6; }   // 札の高さは実際に測る
+    const labsH = k >= 0 ? S[k].labs.length * LAB_H : 0;
+    const hOf = (x, i, r) => !x ? MIN_H : SEC_H + (i === k ? 6 : 2) + x.items.length * r + (x.more ? MORE_H : 0)
+      + (i === k ? EXTRA + (x.labs ? labsH : 0) + (x.chips ? chipsH : 0) : 0);
+    const sum = (p, r) => p.reduce((a, x, i) => a + hOf(x, i, r), 0);
+    const fitR = p => { for (let r = ITEM_H; r >= R_MIN; r--) if (sum(p, r) <= H) return r; return 0; };
+    const full = i => ({items: L[i], more: 0, labs: i === k && subsK, chips: i === k && subsK});
+    let plan = L.map((_, i) => full(i)), r = fitR(plan), lvl = 0;
+    if (!r && subsK) { const p = plan.map((x, i) => i === k ? {...x, labs: false} : x); r = fitR(p); if (r) plan = p; }
+    // 件数で決めるとき：その件数を超えたら隠す。件数以内でも、行を詰めても入らない（窮屈になる）なら隠す（＝閾値を自動で下げる）
+    if (HIDE && TOTAL > HIDE) r = 0;
+    if (!r) {
+      lvl = -1;
+      const maxLen = Math.max(0, ...L.map((l, i) => i === k ? 0 : l.length));
+      for (let kk = maxLen - 1; kk >= 1 && lvl < 0; kk--) {   // ① ほかの板块は新着の多い順に kk 件まで
+        const p = L.map((l, i) => i === k ? {...full(i), labs: false} : l.length <= kk ? full(i) : {items: topN(l, kk), more: l.length - kk});
+        const rr = fitR(p);
+        if (rr) { plan = p; r = rr; lvl = 1; }
+      }
+      for (const labs of [true, false]) {   // ② ほかは見出しだけ、いまの板块は全部
+        if (lvl >= 0) break;
+        const p = L.map((_, i) => i === k ? {...full(i), labs: labs && subsK} : null);
+        const rr = fitR(p);
+        if (rr) { plan = p; r = rr; lvl = 2; }
+      }
+      if (lvl < 0 && k < 0) { plan = L.map(() => null); r = ITEM_H; lvl = 2; }
+      if (lvl < 0 && subsK) {   // ③ 小分類の札＋いまの小分類を全部
+        const p = L.map((l, i) => i === k ? {items: l.filter(w => subOf(w) === sub), more: 0, chips: true} : null);
+        const rr = fitR(p);
+        if (rr) { plan = p; r = rr; lvl = 3; }
+      }
+      if (lvl < 0) {   // ④ 入るだけ＋「ほか N 件」（読んでいる作品は必ず入れる）
+        const sl = subsK ? L[k].filter(w => subOf(w) === sub) : L[k];
+        r = R_MIN + 2;
+        const room = H - (n - 1) * MIN_H - SEC_H - 6 - EXTRA - (subsK ? chipsH : 0) - MORE_H;
+        let items = topN(sl, Math.max(1, Math.floor(room / r)));
+        if (on && sl.includes(on) && !items.includes(on)) items = items.slice(0, -1).concat(on);
+        plan = L.map((_, i) => i === k ? {items, more: sl.length - items.length, chips: subsK} : null);
+      }
+    }
+    // 余った高さは、まず行の間隔を広げる（1 行 56px まで。48px 以上で 2 行目に今週の件数）。それでも余れば全板块に均等に
+    const shown = plan.reduce((a, x) => a + (x ? x.items.length : 0), 0);
+    const ih = Math.max(r, Math.min(56, Math.floor(r + Math.max(0, H - sum(plan, r)) / Math.max(1, shown))));
+    const hOf2 = (x, i) => hOf(x, i, r) + (x ? x.items.length * (ih - r) : 0);
+    const spare = Math.max(0, H - plan.reduce((a, x, i) => a + hOf2(x, i), 0)) / n;
+    rail.style.setProperty('--ih', ih + 'px');
+    rail.classList.toggle('roomy', ih >= 48);
+    let y = 0;
+    S.forEach((s, i) => {
+      const x = plan[i], h = hOf2(x, i) + spare, show = new Set(x ? x.items : []);
+      s.el.style.top = y + 'px'; s.el.style.height = h + 'px'; y += h;
+      s.el.classList.toggle('cur', i === k);
+      s.pills.forEach(p => p.classList.toggle('x', !show.has(p)));
+      if (s.subs) s.subs.classList.toggle('x', !(x && x.chips));
+      s.chips.forEach(c => c.classList.toggle('on', i === k && c.dataset.sub === sub));
+      s.labs.forEach(l => l.classList.toggle('x', !(x && x.labs) || !s.pills.some(p => show.has(p) && subOf(p) === l.dataset.sub)));
+      s.more.classList.toggle('x', !(x && x.more));
+      if (x && x.more) s.more.textContent = `ほか ${x.more} 件 →`;
+    });
+  }
+
+  // 窄屏：上排の板块のうち読んでいる板块を光らせ、下排にその板块の作品を全部並べる（隠さない）
+  function narrow(k) {
+    S.forEach((s, i) => {
+      s.el.classList.toggle('cur', i === k);
+      s.el.style.top = s.el.style.height = '';
+      s.pills.forEach(p => p.classList.remove('x'));
+    });
+    lk = null;
+    const center = (row, el) => el && row.scrollTo({left: el.offsetLeft - row.clientWidth / 2 + el.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth'});
+    center(nav.querySelector('.mtabs'), tabs.find(t => t.classList.contains('on')));
+    center(rail, pills[curIdx]);
+  }
+
+  function update(force) {
     ticking = false;
-    const horizontal = getComputedStyle(rail).flexDirection === 'row';
-    const top = horizontal ? nav.getBoundingClientRect().bottom : 0;
+    const top = wide.matches ? 0 : nav.getBoundingClientRect().bottom;
     const m = pick(top, innerHeight);
     if (!m) return;
     // 进度：这个区块读了多少（屏幕底边走过了它的几成）
-    const r = m.getBoundingClientRect();
-    const prog = Math.round(Math.min(1, Math.max(0, (innerHeight - r.top) / r.height)) * 100) / 100;
+    const rc = m.getBoundingClientRect();
+    const prog = Math.round(Math.min(1, Math.max(0, (innerHeight - rc.top) / rc.height)) * 100) / 100;
     const idx = m.closest('.issue') === firstIssue && byKey.has(m.dataset.k) ? byKey.get(m.dataset.k) : -1;
-    if (idx !== curIdx) {   // 选中项变了才动所有条目的样式
-      pills.forEach((p, i) => {
-        p.classList.toggle('on', i === idx);
-        p.classList.toggle('past', idx >= 0 && i < idx);
-        p.style.setProperty('--p', idx >= 0 && i < idx ? 1 : 0);
+    if (idx !== curIdx || force) {   // 选中项变了才动所有条目的样式
+      const on = pills[idx], n0 = on ? num(on) : -1, k = on && slotOf.has(on) ? slotOf.get(on) : -1;
+      pills.forEach(p => {
+        p.classList.toggle('on', p === on);
+        p.classList.toggle('past', !!on && num(p) > 0 && num(p) < n0);
       });
       curIdx = idx; curProg = -1;
-      const on = pills[idx];
       nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : '#8C8678');
-      if (on) {
-        const opt = horizontal ? { left: on.offsetLeft - rail.clientWidth / 2 + on.offsetWidth / 2 }
-                               : { top: on.offsetTop - rail.clientHeight / 2 + on.offsetHeight / 2 };
-        rail.scrollTo({ ...opt, behavior: reduce ? 'auto' : 'smooth' });
-      }
+      nav.classList.toggle('insec', k >= 0);
+      tabs.forEach(t => t.classList.toggle('on', t.dataset.sec === (k >= 0 ? S[k].nsec : '')));
+      if (wide.matches) layout(force); else narrow(k);
     }
-    if (prog !== curProg) {  // 平时只更新当前这一项的进度
-      curProg = prog;
-      nav.style.setProperty('--prog', prog);
-      if (pills[idx]) pills[idx].style.setProperty('--p', prog);
-    }
-    if (m === cur) return;
-    cur = m;
-    const issue = m.closest('.issue');
-    here.textContent = issue ? issue.dataset.label : '';
+    if (prog !== curProg) { curProg = prog; nav.style.setProperty('--prog', prog); }
   }
-  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  addEventListener('resize', update);
-  update();
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => update()); } }, {passive: true});
+  addEventListener('resize', () => update(true));
+  // 字体の読み込みなどで目次の高さが変わったら置き直す
+  if (window.ResizeObserver) new ResizeObserver(() => { if (wide.matches) layout(true); }).observe(rail);
+  update(true);
 })();
 """
 
 
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
-           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None):
+           motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
+    subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
     order：items.yaml 里作品的顺序；updated：网页更新时间（显示用）；sizes：{作品: S / M / L} 篇幅。
     motifs：{作品: 装饰名}（items.yaml 的 motif，见 MOTIFS）；themes：取色キャッシュ（トップのポスターの色を書き足す）。
     heat：{作品: 話題度}（heat.compute 的结果，版面的见出し和トップの右の列に出す）。"""
@@ -2448,7 +2557,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 {_wish_link(wishes, "mastwish")}
 <a class="mastset" href="settings.html" title="設定">⚙ 設定</a></div>
 </header>
-{_nav(works, latest['date'], wishes, picks)}
+{_nav(works, latest['date'], wishes, picks, subs, nav_hide)}
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>
