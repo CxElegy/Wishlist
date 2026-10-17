@@ -178,6 +178,18 @@ def _norm(text):
 
 # 图片画廊、附图页这类“同一篇文章的分页”，标题只差编号，直接丢掉
 JUNK_PATTERNS = [r"^画像ギャラリー", r"\d+枚目の写真", r"写真・画像$", r"^图集", r"^사진\s*\d"]
+# 垃圾站（被黑的网站批量生成的色情 / 盗版「在线看」页面）：标题里塞热门作品名骗搜索，会命中 match。
+# 例：「绝区零艾莲被爆❌…在线高清完整-…免费全集-爱看高清网」（2026-10-16〜17，来源挂着「胡润百富」）
+SPAM_PATTERNS = [
+    r"[一-鿿]\s*❌\s*[一-鿿]",           # 汉字中间夹 ❌ 打码（× 是联名，不算）
+    r"在线看|在线观看|在线播放|在线高清|高清完整|超清版|超清在线|免费全集|全集版|无删减|未删减",
+    r"(爱看|高清|影视|电影|安卓|下载)网$",                 # 「-爱看高清网」「-2265安卓网」这类站名结尾
+    r"涩涩|黄漫",
+]
+
+
+def is_spam(title):
+    return any(re.search(p, title) for p in SPAM_PATTERNS)
 # 标题去掉作品名后，字符二元组重合度超过这个值视为同一篇（转载、截断标题、改了后缀的）。
 # 用实际标题校准过：真重复 ≥ 0.8，不同文章 ≤ 0.63
 SIMILAR = 0.75
@@ -291,7 +303,7 @@ def filter_entries(entries, item, settings, seen, now, known=()):
         key = title_key(e.title)
         if e.url in seen or key in seen or e.source in skip_sources:
             continue
-        if any(re.search(p, e.title) for p in JUNK_PATTERNS):
+        if any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title):
             continue
         g = _title_grams(e.title, names)
         if any(_similar(g, h) for h in grams):
