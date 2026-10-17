@@ -3511,6 +3511,9 @@ BG_STATES = {"ok": "済", "wait": "待ち", "review": "要確認", "failed": "�
 # 「バックグラウンド」の表の列：(セルのキー, 見出し, 時刻を出すプロセスの id)。版面の設計は AI 編集の回にやる
 BG_COLS = (("collect", "収集", "collect"), ("edit", "AI 編集", "edit"), ("design", "版面の設計", "edit"),
            ("emblem", "小元素", "emblem-cron"))
+RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
+RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も 6 時間を待たずにやり直す（3 分に 1 回まで）",
+             "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）"}
 BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき"}
 
 
@@ -3536,6 +3539,9 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                      + ('<span class="pbar" aria-hidden="true"><i></i></span>' if sl
                         else '<span class="pbar ev" aria-hidden="true"><i></i></span>')   # 定時でないものは実行中だけ出す
                      + (f'<small class="nx-do">{e(td["text"])}</small>' if td.get("text") else "")
+                     + (f'<span class="nx-go"><button type="button" class="nx-run" data-run="{RUN_JOBS[p["id"]]}"'
+                        f' title="{e(RUN_TITLE.get(p["id"], "定時を待たずに今すぐ動かす"))}">今すぐ実行</button>'
+                        f'<small class="nx-msg" aria-live="polite"></small></span>' if p["id"] in RUN_JOBS else "")
                      + f'<span class="lv">{_lane_short(p["lane"])}</span></li>')
         if sl:
             plan.append({"id": p["id"], "name": p["name"], "slots": sl, "text": td.get("text", ""), "items": td.get("items", [])[:12]})
@@ -3779,6 +3785,12 @@ ADMIN_PAGE_CSS = """
 .nx-t{font:700 22px/1.2 var(--font-mono)}.nx-t.ev{font:700 13px/1.5 var(--font-sans)}
 .nx-l{font:700 12px var(--font-sans);color:var(--rose)}.nx-p,.lv small{font:500 var(--fs-label) var(--font-sans);opacity:.75}
 .nx.soon{background:var(--gold)}.nx.soon .nx-l{color:var(--ink)}
+.nx-go{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px}
+.nx-run{font:900 12px/1 var(--font-sans);padding:7px 12px;background:var(--ink);color:var(--card);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--rose);cursor:pointer}
+.nx-run:hover:not(:disabled){background:var(--rose);border-color:var(--rose);box-shadow:3px 3px 0 var(--ink)}
+.nx-run:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.nx-run:disabled{opacity:.55;cursor:default}
+.nx-msg{font:700 var(--fs-label)/1.4 var(--font-sans)}.nx-msg.ok{color:var(--good)}.nx-msg.ng{color:var(--alert)}
 .nx-do{font:500 12px/1.5 var(--font-sans);margin-top:4px}
 .pbar{position:relative;display:block;height:8px;margin:6px 0 2px;background:var(--sheet);border:1.5px solid var(--ink);overflow:hidden}
 .pbar i{position:absolute;inset:0 auto 0 0;width:0;background:repeating-linear-gradient(-45deg,var(--rose) 0 6px,color-mix(in srgb,var(--rose) 70%,var(--card)) 6px 12px);
@@ -3997,7 +4009,19 @@ ADMIN_PAGE_JS = """
   }).catch(function(){fail(runs,'GitHub から読めませんでした（1 時間に 60 回までの制限かもしれません）。');});
   }
   loadRuns();setInterval(function(){if(!document.hidden)loadRuns();},180000);
-  if(!CFG.url||!CFG.key){['reqs','photos','livenow'].forEach(function(id){var b=document.getElementById(id);if(b)fail(b,'データベースに未接続です。');});return;}
+  if(!CFG.url||!CFG.key){['reqs','photos','livenow'].forEach(function(id){var b=document.getElementById(id);if(b)fail(b,'データベースに未接続です。');});
+    Array.prototype.forEach.call(document.querySelectorAll('[data-run]'),function(b){b.disabled=true;b.title='データベースに未接続';});return;}
+  // 今すぐ実行：定時を待たずに GitHub Actions を起こす（Supabase の run_now() が Vault の令牌で頼む。網页に令牌は置かない）
+  document.addEventListener('click',function(ev){var b=ev.target.closest('[data-run]');if(!b)return;
+    var msg=b.parentNode.querySelector('.nx-msg'),card=b.closest('.nx');b.disabled=true;b.textContent='起動中…';msg.className='nx-msg';msg.textContent='';
+    fetch(CFG.url+'/rest/v1/rpc/run_now',{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:JSON.stringify({job:b.dataset.run})})
+      .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(x){
+        var nx=x&&x.next_at?new Date(x.next_at):null,left=nx?Math.max(1,Math.ceil((nx-new Date())/60000)):0;
+        if(x&&x.ok){msg.className='nx-msg ok';msg.textContent='起こしました · 数十秒で「実行中」に';if(card)card.classList.add('run');
+          setTimeout(loadRuns,20000);setTimeout(loadRuns,60000);}
+        else{msg.className='nx-msg ng';msg.textContent=(x&&x.msg||'起こせませんでした')+(left?' · あと '+left+' 分で押せます':'');}
+        b.textContent='今すぐ実行';setTimeout(function(){b.disabled=false;},left?left*60000:5000);})
+      .catch(function(){msg.className='nx-msg ng';msg.textContent='起こせませんでした（データベースに届かない）';b.textContent='今すぐ実行';b.disabled=false;});});
   function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:'{}'})
     .then(function(r){if(!r.ok)throw 0;return r.json();});}
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
@@ -4066,7 +4090,7 @@ def render_admin(data, db, updated):
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
-見るだけで、ここから何かを変えることはできません。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
+データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
 <section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
 <section class="panel" id="procs"><h2 class="sh"><span>全体の構成</span><small>どこで何が動き、データがどう流れるか · 部品をクリックで詳しい流れ</small></h2>{processes.render()}</section>

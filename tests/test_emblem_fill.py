@@ -484,6 +484,11 @@ class Backend(unittest.TestCase):
         self.assertIn('class="lims"', out)
         self.assertIn('class="aiu"', out)
         self.assertIn('id="livenow"', out)   # いま動いているもの（live_status を 30 秒ごと）
+        for job in ("background", "collect", "render"):   # 今すぐ実行（db/run_now.sql の job と同じ名前）
+            self.assertIn(f'data-run="{job}"', out)
+        sql = (ROOT / "db" / "run_now.sql").read_text(encoding="utf-8")
+        for job in set(render.RUN_JOBS.values()):
+            self.assertIn(f"when '{job}'", sql)
         for t, k, _ in processes.AI_TASKS:
             self.assertIn(k, processes.AI_STATE_JA)
         for name, _, _ in processes.LIMITS:

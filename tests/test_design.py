@@ -244,9 +244,9 @@ class AdminPage(unittest.TestCase):
         self.assertNotIn("<i>t</i>", out)
         self.assertNotIn("A<b>", out)
         self.assertNotIn('href="javascript:', out)
-        # 見るだけ：ボタンはプロセスの流れを開く・閉じるものだけ（何かを変える操作はない）
+        # データを変える操作はない：ボタンは流れを開く・閉じるものと、裏の仕組みを早く動かす「今すぐ実行」だけ
         for b in re.findall(r"<button[^>]*>", out):
-            self.assertRegex(b, r"data-(open|close)", b)
+            self.assertRegex(b, r"data-(open|close|run)", b)   # 流れを開く・閉じる、または「今すぐ実行」（データは変えない）
         self.assertNotIn("<form", out)
 
     def test_empty(self):
