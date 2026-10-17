@@ -1307,7 +1307,7 @@ items:
       - {subject: "AIJING", why: "AIJING（ユーザーが一覧で選んだ・新聞の配図）", image: "emblems/a2o-lite-aijing.webp", source: "https://www.bing.com/th?id=ONUT.8ea5sIwVX4ukWAGlU7zFgA&pid=News", page: "", shape: "cutout"}
       - {subject: "A2O LITE", why: "A2O LITE（ユーザーが一覧で選んだ・記事のページ）", image: "emblems/a2o-lite-a2o-lite.webp", source: "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/15/30001093689_16v9.jpg", page: "", shape: "cutout"}
       - {subject: "XILI", why: "XILI（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-xili.webp", source: "https://i.ytimg.com/vi/CaTWuXOqWrE/hq3.jpg", page: "https://www.youtube.com/watch?v=CaTWuXOqWrE", shape: "cutout"}
-      - {subject: "RADA", why: "RADA（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-rada.webp", source: "https://i.ytimg.com/vi/3hUPgNRotSg/hq2.jpg", page: "https://www.youtube.com/watch?v=3hUPgNRotSg", shape: "cutout", fs: 0.571}
+      - {subject: "RADA", why: "RADA（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-rada.webp", source: "https://i.ytimg.com/vi/3hUPgNRotSg/hq2.jpg", page: "https://www.youtube.com/watch?v=3hUPgNRotSg", shape: "cutout", fs: 0.585}
       - {subject: "OA", why: "OA（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-oa.webp", source: "https://i.ytimg.com/vi/MmuU2he4yaU/hq2.jpg", page: "https://www.youtube.com/watch?v=MmuU2he4yaU", shape: "cutout"}
     theme: {bg: "#FBEFF4", fg: "#1E1A18", accent: "#B5285F", alt_bg: "#1E1218", alt_fg: "#F4EEE4", alt_accent: "#F07AA8", split: true}  # 自选：ネオンピンク + 墨紫（デビュー曲「NEON」）
     type: product
