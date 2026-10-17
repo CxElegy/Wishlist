@@ -8,14 +8,54 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Rockstar drove a convoy of GTA 6's in-game cars through Miami as part of its launch marketing; 11月19日発売に変更なし。",
      "date": "2026-10-16",
      "headline": "Rockstar Sends GTA 6’s In-Game Cars Through Real Miami Streets",
-     "highlight": "",
+     "highlight": "Real Miami Streets",
      "image": "https://s.yimg.com/lo/mysterio/api/62e029175245181f05bf63ca485eb0ff3fe814a1c656f3132035a323f54759f8/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgadget_review_articles_822%2F54de64f0ee4f71311384de404f51ebdc.jpg",
-     "image_via": "og:image",
+     "image_via": "AI 挑选",
      "url": "https://www.yahoo.com/entertainment/movies/articles/rockstar-sends-gta-6-game-174235801.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "GTA VI 'Vice City' blimp to appear at NASCAR championship weekend",
+     "highlight": "NASCAR championship weekend",
+     "image": "https://cdn-7.motorsport.com/images/amp/2eZxnePY/s6/blimp-2.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.motorsport.com/nascar-cup/news/gta-vi-vice-city-blimp-to-appear-at-nascar-championship-weekend/10865742/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "GTA 6: Sony Officially Confirms 6 Exclusive Features for PS5 Players",
+     "highlight": "6 Exclusive Features",
+     "image": "https://www.bing.com/th?id=ONUT.Zq5swh2htkWDQI0Wk7iF9g&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://fandomwire.com/gta-6-sony-confirms-features-for-ps5/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "GTA 6 Launch Trailer Analysis: Has a Long-Standing Tech Issue Been Fixed?",
+     "highlight": "Long-Standing Tech Issue",
+     "image": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6LuciaJasonLaunchTrailer.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.digitalfoundry.net/features/gta-6-launch-trailer-analysis-has-a-long-standing-tech-issue-been-fixed",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-17",
+     "headline": "《GTA 6》確認數百個室內場景可探索 Rockstar 打造更真實開放世界",
+     "highlight": "數百個室內場景",
+     "image": "https://preview.redd.it/x2kmtlqogvvh1.jpeg?width=640&crop=smart&auto=webp&s=488faf4da85410ca06a831cd547e184145294334",
+     "image_via": "条目自带",
+     "url": "https://www.gameapps.hk/news/71250/gta-6-hundreds-of-explorable-interiors-confirmed/",
+     "weight": "normal"
     }
    ],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
@@ -37,55 +77,61 @@
    "section": "影视",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "A new Avengers: Doomsday trailer is playing in ScreenX theaters ahead of the December 18 release.",
      "date": "2026-10-16",
-     "headline": "A New ‘Avengers: Doomsday’ Trailer Just Hit ScreenX Theaters, and It’s All About the Original X-Men",
-     "highlight": "",
+     "event": {
+      "date": "2026-12-18",
+      "label": "公開日",
+      "place": "北米"
+     },
+     "headline": "A New ‘Avengers: Doomsday’ Trailer Just Hit ScreenX Theaters",
+     "highlight": "ScreenX",
      "image": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
      "image_via": "作品封面",
      "source": "IMDb",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.imdb.com&sz=128",
      "url": "https://www.imdb.com/news/ni66018663/",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "Where Can F1 Fans Find the Marvel Avengers: Doomsday Livery at the US GP?",
-     "highlight": "",
-     "image": "https://s.yimg.com/lo/mysterio/api/ca164f16b34073a1781a33c9c18310197c1470b51a0cd73a81a54ac253b819c9/lightyear_networkapi/resizefill_w768_h512%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmotorbiscuit_articles_333%2Fe717fed2d16875d482133b0463c9262b.jpg",
-     "image_via": "og:image",
-     "url": "https://sports.yahoo.com/articles/where-f1-fans-marvel-avengers-161303434.html",
      "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "VisionQuest Fans Uncover a Massive Avengers: Doomsday Easter Egg You Probably Missed",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.95z9mpMZo1RRiisPIeBhSA&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://www.comingsoon.net/tv/news/2208862-visionquest-avengers-doomsday-easter-egg",
+     "headline": "F1 Meets Marvel with New Avengers: Doomsday Show Car",
+     "highlight": "Show Car",
+     "image": "https://s.yimg.com/lo/mysterio/api/ebecd513f2da7ef5149a1e0abf7afe2d9202782a525d9b505cd5883b896e0ee9/lightyear_networkapi/resizefill_w982_h655%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmotorbiscuit_articles_333%2Fda4757e30bbbbb7553fe03cebed7f252.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.laughingplace.com/disney-entertainment/avengers-doomsday-f1-williams-atlassian/",
      "weight": "normal"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "Marvel's Jonathan Hickman On Midnight X-Men, Avengers: Doomsday",
-     "highlight": "",
-     "image": "https://www.cgmagonline.com/wp-content/uploads/2026/10/lucca-comics-games-marvels-jonathan-hickman-on-midnight-x-men-avengers-doomsday-and-6644.jpg",
-     "image_via": "og:image",
-     "url": "https://www.cgmagonline.com/interviews/marvel-jonathan-hickman-midnight/",
+     "headline": "《復仇者聯盟5：末日降臨》海報曝光，Thor 黃色閃電疑覺醒 Odinforce 硬撼 Doctor Doom",
+     "highlight": "Odinforce",
+     "image": "https://fpimgs.s3.ap-southeast-1.amazonaws.com/uul/2026/10/17/6ad27d8c110d81.61026403.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://ent.fanpiece.com/movieentnews/%E5%BE%A9%E4%BB%87%E8%80%85%E8%81%AF%E7%9B%9F5-%E6%9C%AB%E6%97%A5%E9%99%8D%E8%87%A8-%E6%B5%B7%E5%A0%B1%E6%9B%9D%E5%85%89-Thor-%E9%BB%83%E8%89%B2%E9%96%83%E9%9B%BB%E7%96%91%E8%A6%BA%E9%86%92-Odinforce-%E7%A1%AC%E6%92%BC-Doctor-Doom-c1510709.html",
      "weight": "normal"
     },
     {
      "blurb": "",
-     "date": "2026-10-16",
-     "headline": "Deadpool’s Avengers: Secret Wars Role Gets a Huge Update From MCU Insider",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.7iRyxB2yxln1Z-HUA4RGzQ&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://www.yahoo.com/entertainment/movies/articles/deadpool-avengers-secret-wars-role-183710878.html",
+     "date": "2026-10-17",
+     "headline": "Avengers: Secret Wars Possible Leaked Concept Art May Reveal \"Doctor Doom's Team\"",
+     "highlight": "Concept Art",
+     "image": "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500",
+     "image_via": "转载 www.imdb.com（Bing 缩略图）",
+     "url": "https://www.imdb.com/news/ni66066856/?ref_=ttnw_art_perm",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-14",
+     "headline": "‘Marvel Studios’ Registers Multiple Production LLCs For Their Upcoming Projects",
+     "highlight": "Production LLCs",
+     "image": null,
+     "source": "Knight Edge Media",
+     "source_icon": "https://www.google.com/s2/favicons?domain=knightedgemedia.com&sz=128",
+     "url": "https://knightedgemedia.com/2026/08/marvel-studios-registers-multiple-production-llcs-for-their-upcoming-projects/",
      "weight": "normal"
     }
    ],
@@ -108,24 +154,14 @@
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-13",
-     "headline": "ENHYPEN, ILLIT, INI, NCT WISH,BABYMONSTER, RESCENE「2026 MAMA AWARDS」第一次パフォーミングアーティスト発表！本日より日本特設サイトもオープン",
-     "highlight": "",
-     "image": "https://korepo.com/wp-content/uploads/2026/10/3711-1633-dc565cc4427e8e96710b7e59e4f00e27-1280x853-1.jpg",
-     "image_via": "og:image",
-     "url": "https://korepo.com/archives/1719913",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
+     "blurb": "ILLIT は IVE と同じ日にカムバック予定。日本公演の新しい発表はまだない。",
      "date": "2026-10-17",
-     "headline": "IVEとILLITが同じ日にカムバック予定…トップ級2組でも方向は真逆？ 注目集まる“違いの美学”",
-     "highlight": "",
+     "headline": "IVEとILLITが同じ日にカムバック予定…トップ級2組でも方向は真逆？",
+     "highlight": "同じ日にカムバック",
      "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161299.jpg",
      "image_via": "og:image",
      "url": "https://topics.smt.docomo.ne.jp/article/sportsseoulweb/entertainment/sportsseoulweb-161299",
-     "weight": "normal"
+     "weight": "lead"
     }
    ],
    "subtitle": "アイリット · 日本公演特别关注",
@@ -147,73 +183,63 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Qualcomm denied reports that its Snapdragon 8 Elite Extreme Gen 6 overheats in Galaxy S27 Ultra test units.",
      "date": "2026-10-16",
-     "headline": "The Galaxy S27 Ultra runs into issues with the Snapdragon 8 EE Gen 6, Exynos 2700 may return - GSMArena.com news",
-     "highlight": "",
-     "image": "https://fdn.gsmarena.com/imgroot/news/26/10/samsung-runs-into-issues-with-snapdragon-8-ee-gen-6/-952x498w6/gsmarena_000.jpg",
-     "image_via": "og:image",
-     "url": "https://www.gsmarena.com/the_galaxy_s27_ultra_runs_into_issues_with_the_snapdragon_8_ee_gen_6_exynos_2700_may_return-news-75078.php",
+     "headline": "Qualcomm Insists Its 'Extreme' Flagship Chip Is Not Melting the Galaxy S27 Ultra",
+     "highlight": "Not Melting",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-16-182324.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/news/other/qualcomm-insists-its-extreme-flagship-chip-is-not-melting-the-galaxy-s27-ultra/ar-AA2eoTGQ",
      "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "Android Circuit: S27 Ultra Specs, Fitbit Edge Arrives, RedMagic 12 Pro Launch",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.pA96HOxB_8II3hDQq-hK5A&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://www.forbes.com/sites/ewanspence/2026/10/16/android-news-headlines-galaxy-s27-ultra-fitbit-edge-fairphone-6-redmagic-12-pro-lineageos/",
+     "headline": "Galaxy S27 reportedly skips Snapdragon 8 Elite Extreme Gen 6 due to overheating",
+     "highlight": "skips Snapdragon 8 Elite Extreme Gen 6",
+     "image": "https://9to5google.com/wp-content/uploads/sites/4/2026/09/Snapdragon-8-Elite-Extreme-Gen-6.jpg?quality=82&strip=all&resize=1200,628",
+     "image_via": "AI 挑选",
+     "url": "https://9to5google.com/2026/10/16/samsung-galaxy-s27-snapdragon-overheating-report/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "Samsung Galaxy S27+ might miss out on UWB",
+     "highlight": "UWB",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bqpEG.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.gsmarena.com/samsung_galaxy_s27_might_miss_out_on_uwb-news-75084.php",
      "weight": "normal"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
      "headline": "Samsung Galaxy S27 Price: Will It Cost More, And Is It Worth Waiting?",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.1gDutupzCiwO0tG46s9bgQ&pid=News&w=1200",
-     "image_via": "条目自带",
+     "highlight": "Will It Cost More",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/16/1792169865739_img-14c0fcb120261016231916-jpg-v-2.jpeg",
+     "image_via": "og:image",
      "url": "https://www.knowyourmobile.com/news/samsung-news-2/galaxy-s27-series/samsung-galaxy-s27-price/",
      "weight": "normal"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "갤럭시 S27 가격표 유출: 삼성은 울트라 시리즈 가격을 2,000달러에 근접하게 책정할 준비를 하고 있는 것일까?",
-     "highlight": "",
-     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/16/1792169865739_img-14c0fcb120261016231916-jpg-v-2.jpeg",
-     "image_via": "og:image",
-     "url": "https://www.vietnam.vn/ko/galaxy-s27-ro-ri-bang-gia-moi-samsung-chuan-bi-dua-dong-ultra-len-sat-2-000-usd",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "Galaxy S27の価格表がリーク：サムスンはUltraシリーズの価格を2,000ドルに近づける準備をしているのか？",
-     "highlight": "",
-     "image": "https://vphoto.vietnam.vn/thumb/640x360/vietnam/resource/IMAGE/2026/10/16/1792169865739_img-14c0fcb120261016231916-jpg-v-2.jpeg",
-     "image_via": "JSON-LD",
-     "url": "https://www.vietnam.vn/ja/galaxy-s27-ro-ri-bang-gia-moi-samsung-chuan-bi-dua-dong-ultra-len-sat-2-000-usd",
+     "headline": "Samsung Galaxy S27 Ultra launch timeline, India pricing, camera, display",
+     "highlight": "launch timeline",
+     "image": "https://static.digit.in/Samsung-Galaxy-S27-Ultra-1.png",
+     "image_via": "AI 挑选",
+     "url": "https://www.digit.in/news/mobile-phones/samsung-galaxy-s27-ultra-launch-timeline-india-pricing-camera-display-and-all-other-leaks.html",
      "weight": "normal"
     },
     {
      "blurb": "",
      "date": "2026-10-17",
-     "headline": "Galaxy S27 Ultra向けSnapdragonに発熱問題と報道、採用判断を左右する持続性能",
-     "highlight": "",
-     "image": "https://media.xenospectrum.com/Snapdragon8_Gen5v2_7a92877381.webp",
+     "headline": "Galaxy S27 Ultra leaks hint at Samsung's biggest redesign in years",
+     "highlight": "biggest redesign",
+     "image": "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/10/17/galaxy-s27-ultra-leaks-hint-at-samsungs-biggest-redesign-in-years-5cd8c6d055fb4cb69329720d957f143d-394.png?width=0&s=ywnqRx2ihUIusYvfn3ZI7Q",
      "image_via": "og:image",
-     "url": "https://xenospectrum.com/galaxy-s27-ultra-snapdragon-thermal-issues/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "三星不是认真的！ Galaxy S27+可能会失去一项它多年来一直拥有的功能",
-     "highlight": "",
-     "image": "https://samsungmagazine.eu/wp-content/uploads/2024/04/UWB_2.jpg",
-     "image_via": "og:image",
-     "url": "https://samsungmagazine.eu/zh-CN/2026/10/16/galaxy-s27-plus-uwb/",
+     "url": "https://vietnamnet.vn/en/galaxy-s27-ultra-leaks-hint-at-samsung-s-biggest-redesign-in-years-2565665.html",
      "weight": "normal"
     }
    ],
@@ -242,53 +268,23 @@
    "section": "影视",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "當藤本樹相遇是枝裕和 《驀然回首》真人版走出與動畫版不同的滋味",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.8elKOmT70KwiLBPiHWcwuQ&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://star.ettoday.net/news/3254695",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "Chainsaw Man Singer Kenshi Yonezu Announces World Tour",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.fztf2Wck9ppWpPgXMX6ruQ&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://gamerant.com/chainsaw-man-theme-kenshi-yonezu-world-tour/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
+     "blurb": "漫画『チェンソーマン』は全24巻で完結。",
      "date": "2026-10-14",
-     "headline": "チェンソーマンは全24巻で完結【2026年10月】最新刊24巻の発売日・全巻一覧",
-     "highlight": "",
+     "headline": "チェンソーマンは全24巻で完結　最新刊24巻の発売日・全巻一覧",
+     "highlight": "全24巻で完結",
      "image": "https://charagoo.jp/wp-content/uploads/2026/09/chainsawman-comic-latest-eyecatch-20260930.png",
      "image_via": "og:image",
      "url": "https://charagoo.jp/chainsawman-comic-latest/",
-     "weight": "normal"
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-12",
      "headline": "Chainsaw Man Episode 5 review: Kooky characters and a promising plot",
-     "highlight": "",
+     "highlight": "Episode 5",
      "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg",
      "image_via": "og:image",
      "url": "https://www.dexerto.com/anime/chainsaw-man-episode-5-review-kooky-characters-and-a-promising-plot-1985444/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "足元からチェンソーの刃が突き出す！ クロックス ×『チェンソーマン』コラボが登場",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.Qtqd22-E4u4JeRzP6Th24Q&pid=News&w=800",
-     "image_via": "条目自带",
-     "url": "https://www.msn.com/ja-jp/news/other/%E8%B6%B3%E5%85%83%E3%81%8B%E3%82%89%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%81%AE%E5%88%83%E3%81%8C%E7%AA%81%E3%81%8D%E5%87%BA%E3%81%99-%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%82%B9-%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%9E%E3%83%B3-%E3%82%B3%E3%83%A9%E3%83%9C%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2eptVE",
      "weight": "normal"
     }
    ],
@@ -307,95 +303,14 @@
   {
    "cover": null,
    "facts": [],
-   "name": "あつ森",
-   "section": "游戏",
-   "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "【あつ森】ロウニンアジの値段と釣り方・出現時間【あつまれどうぶつの森】",
-     "highlight": "",
-     "image": "https://img.gamewith.jp/assets/images/games/covers/50cbe0a5b2198fa7f738269d38eb2672.png",
-     "image_via": "JSON-LD",
-     "url": "https://gamewith.jp/atsumori/article/show/192250",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "【あつまれ どうぶつの森】あつ森格付けチェック！！一流Vtuberのままでいられるか！！【七転び八起き黒猫/】",
-     "highlight": "",
-     "image": "https://i.ytimg.com/vi/wPhWdv_0Ym8/maxresdefault.jpg",
-     "image_via": "og:image",
-     "url": "https://t.co/flmq5KYx1y",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "ACNH Treasure Island Dodo Codes: 無料アイテムを素早くゲット",
-     "highlight": "",
-     "image": "https://assets.games.gg/acnh_treasure_island_dodo_codes_get_free_items_fast_og_9159b90d68f1692d61e6442c_09c582f76a.webp",
-     "image_via": "og:image",
-     "url": "https://games.gg/ja/animal-crossing-new-horizons/guides/acnh-treasure-island-dodo-codes-%E7%84%A1%E6%96%99%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E3%82%92%E7%B4%A0%E6%97%A9%E3%81%8F%E3%82%B2%E3%83%83%E3%83%88/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "【あつまれどうぶつの森】いよいよ島クリ開始！！！【長尾景/にじさんじ】 Jesta Group (ebcXaXpNQc)",
-     "highlight": "",
-     "image": null,
-     "source": "Unisba Media",
-     "source_icon": "https://www.google.com/s2/favicons?domain=media.unisba.ac.id&sz=128",
-     "url": "https://media.unisba.ac.id/ecda761a/cdb4eff1jbL-D4eLi6s/?share=telegram&nb=1",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-14",
-     "headline": "【あつ森】ものおき(物置)の入手方法と使い方【あつまれどうぶつの森】",
-     "highlight": "",
-     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/301858.png?date=1635148720",
-     "image_via": "og:image",
-     "url": "https://gamewith.jp/atsumori/article/show/301858",
-     "weight": "normal"
-    }
-   ],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "周杰伦",
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-15",
-     "headline": "两天500 万想看，肖战南京站把周杰伦挤到了第二|肖战|周杰伦|王俊凯|演唱会_新浪新闻",
-     "highlight": "",
-     "image": null,
-     "source": "手机新浪网",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
-     "url": "https://www.sina.cn/news/detail/5354302077930126.html",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
+     "blurb": "周杰伦出任 vivo 品牌影像大使，vivo X500 系列 10 月 30 日在台湾发表前已开始预热活动。",
      "date": "2026-10-14",
      "headline": "重磅官宣！周杰伦出任 vivo 品牌影像大使",
-     "highlight": "",
+     "highlight": "vivo 品牌影像大使",
      "image": "https://mdroid.my/cn/wp-content/uploads/2026/10/X500-x-Jay-Chou-KV.png",
      "image_via": "og:image",
      "url": "https://newswav.com/article/%E9%87%8D%E7%A3%85%E5%AE%98%E5%AE%A3-%E5%91%A8%E6%9D%B0%E4%BC%A6%E5%87%BA%E4%BB%BB-vivo-%E5%93%81%E7%89%8C%E5%BD%B1%E5%83%8F%E5%A4%A7%E4%BD%BF-A2610_ZlV23E",
@@ -403,12 +318,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-14",
-     "headline": "阿信曝光私下聊天記錄！周杰倫「溫馨提醒」笑翻全網",
-     "highlight": "",
-     "image": "https://attach.setn.com/newsimages/2019/11/09/2233175-PH.jpg",
-     "image_via": "og:image",
-     "url": "https://www.setn.com/news/632604",
+     "date": "2026-10-16",
+     "headline": "周杰伦陈奕迅等明星观战费德勒比赛",
+     "highlight": "费德勒比赛",
+     "image": "http://n.sinaimg.cn/sinakd20261016ac/533/w480h853/20261016/a5f0-5be01c5f0f11315fa749754478cf4238.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://k.sina.com.cn/article_6082018114_m16a843b4203301wqty.html",
      "weight": "normal"
     }
    ],
@@ -431,43 +346,28 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-12",
-     "headline": "【ゼンゼロ】おすすめの画面(画質)設定と変更方法・重い時の対処法【ゼンレスゾーンゼロ】",
-     "highlight": "",
-     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/454839.png?date=1720111180",
-     "image_via": "og:image",
-     "url": "https://gamewith.jp/zenless/454839",
+     "blurb": "Zenless Zone Zero v3.3 “Journey to the Sky” was revealed, arriving October 21.",
+     "date": "2026-10-16",
+     "event": {
+      "date": "2026-10-21",
+      "label": "配信日"
+     },
+     "headline": "Zenless Zone Zero v3.3 “Journey to the Sky” update revealed",
+     "highlight": "v3.3",
+     "image": "https://gaming-age.com/wp-content/uploads/2026/10/Zenless-Zone-Zero-v3.3-kv.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://gaming-age.com/2026/10/zenless-zone-zero-v3-3-journey-to-the-sky-update-revealed/",
      "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "Zenless Zone Zero v3.3 “Journey to the Sky” update revealed",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.QQnewoNm5hevgoOUcGtY5g&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://gaming-age.com/2026/10/zenless-zone-zero-v3-3-journey-to-the-sky-update-revealed/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-15",
-     "headline": "【ゼンゼロ】天才！奇跡！ボンプチップ！の攻略と報酬【ゼンレスゾーンゼロ】",
-     "highlight": "",
-     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/564407.png?date=1781848716",
-     "image_via": "og:image",
-     "url": "https://gamewith.jp/zenless/564407",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-10",
-     "headline": "젠레스 존 제로에 붕괴 스타레일 카프카, 로빈 나온다",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.aYrTnhp1QzH-ho9sklrzoA&pid=News&w=715",
-     "image_via": "条目自带",
-     "url": "https://www.gamemeca.com/view.php?gid=1781610",
+     "headline": "蒂姆·库克收到绝区零手办，这 1/7 比例细节有点东西",
+     "highlight": "1/7 比例",
+     "image": null,
+     "source": "手机新浪网",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
+     "url": "https://www.sina.cn/news/detail/5354776058396763.html",
      "weight": "normal"
     }
    ],
@@ -490,88 +390,25 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "BLAST SLAM IX 中国区预选赛进行中，八支队伍争夺唯一一个晋级名额。",
      "date": "2026-10-16",
-     "headline": "Larl shared what change he’s most looking forward to in the new Dota 2 patch",
-     "highlight": "",
-     "image": "https://hawk.live/storage/images/posts/larl-highlights-best-mid-laners-pgl-wallachia-season-7-24254.jpg",
-     "image_via": "og:image",
-     "url": "https://hawk.live/posts/larl-shared-change-hes-looking-forward-new-dota-2-patch",
+     "headline": "24 分钟拿下首局，Team Resilience 轻松晋级半决赛",
+     "highlight": "晋级半决赛",
+     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+     "image_via": "作品封面",
+     "source": "手机新浪网",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
+     "url": "https://www.sina.cn/news/detail/5354658141044737.html",
      "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "m0NESY聊DOTA2：当初没人陪我玩才转投了CS，最爱船长",
-     "highlight": "",
-     "image": null,
-     "source": "5EPlay",
-     "source_icon": "https://static.5eplay.com/images/favicon.ico",
-     "url": "https://csgo.5eplay.com/article/article-1792165562-3274",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "A Dota 2 pro says he talked his way out of a police raid by playing a match for the officers",
-     "highlight": "",
-     "image": "https://www.techspot.com/images2/news/bigimage/2026/10/2026-10-16-image-8.jpg",
+     "headline": "Larl shared what change he’s most looking forward to in the new Dota 2 patch",
+     "highlight": "new Dota 2 patch",
+     "image": "https://hawk.live/storage/images/posts/larl-highlights-best-mid-laners-pgl-wallachia-season-7-24254.jpg",
      "image_via": "og:image",
-     "url": "https://www.techspot.com/news/114233-dota-2-pro-talked-way-out-police-raid.html",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "Team Tidebound vs Team Resilience Prediction & Betting Tip | Dota 2",
-     "highlight": "",
-     "image": null,
-     "source": "EGamersWorld",
-     "source_icon": "https://www.google.com/s2/favicons?domain=egamersworld.com&sz=128",
-     "url": "https://egamersworld.com/dota2/tip/tssxC7syC/team-tidebound-vs-team-resilience-tpSQOQNVz",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-10",
-     "headline": "Dota 2 Maybe Ember Spirit - 17-0-16 Perfect Score! LGD Vs EMPIRE Bruin Capital (rYWauwTO8r)",
-     "highlight": "",
-     "image": null,
-     "source": "Unisba Media",
-     "source_icon": "https://www.google.com/s2/favicons?domain=media.unisba.ac.id&sz=128",
-     "url": "https://media.unisba.ac.id/57e3ba26/8e3b4ac1LxYpAgtJJAQxGic//?share=telegram&nb=1",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "DOTA2-Liquid官宣Malr1ne加盟！",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.moInjsXQV39j-FPFySgJ_w&pid=News&w=650",
-     "image_via": "条目自带",
-     "url": "https://www.sohu.com/a/1088765916_122529751",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "XG 拿下Blast Slam S9 首局，20 比 27 人头比下的胜利|Cloud Downing|XG 电子竞技俱乐部|blast slam s9|dota2_新浪新闻",
-     "highlight": "",
-     "image": null,
-     "source": "手机新浪网",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
-     "url": "https://www.sina.cn/news/detail/5354706626413504.html",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "#DOTA2# Blast第九季中国区预选赛比赛预告，八支队伍争夺唯一一个晋级名额[ok] HOHO-------------------------参赛战队和成员见图一，对阵表见图二，今日赛程见图三，Blast第九季将于11月20日开始比赛，一共有16支战队参加（12支直邀+4支预选晋级）---------------------",
-     "highlight": "",
-     "image": null,
-     "source": "手机新浪网",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
-     "url": "https://www.sina.cn/news/detail/5354570441819888.html",
+     "url": "https://hawk.live/posts/larl-shared-change-hes-looking-forward-new-dota-2-patch",
      "weight": "normal"
     }
    ],
@@ -594,33 +431,33 @@
    "section": "演出",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "李秀满新女团A2O LITE《NEON》席卷音源榜！",
-     "highlight": "",
-     "image": "http://news.yule.com.cn/uploadfile/2026/1016/20261016105851726.jpg",
-     "image_via": "正文图",
-     "url": "http://news.yule.com.cn/html/202610/361779.html",
+     "blurb": "NEON took No. 1 on Melon's Top 100 faster than any girl-group debut and won the Melon daily chart for 10/15.",
+     "date": "2026-10-15",
+     "headline": "A2O Lite tops Melon faster than NewJeans",
+     "highlight": "faster than NewJeans",
+     "image": "https://www.bing.com/th?id=ONUT.iY3U3dVABvvQ_dK4UJF68g&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.koreaherald.com/article/10903806",
      "weight": "lead"
     },
     {
      "blurb": "",
-     "date": "2026-10-15",
-     "headline": "A2O Lite 'Neon' Hits Melon No. 1 in 29 Hours: Fastest Debut",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.LMnlMJlHa8N_STnTufWnFA&pid=News&w=499",
-     "image_via": "条目自带",
-     "url": "https://en.koreaportal.com/articles/54896/20261015/a2o-lite-neon-hits-melon-1-29-hours-fastest-debut.htm",
+     "date": "2026-10-16",
+     "headline": "A2O LITE ‘킬링파트’ 안무 짠 제이블랙 “더 어렵게 해달라더라”",
+     "highlight": "제이블랙",
+     "image": "https://images.khan.co.kr/article/2026/10/14/news-p.v1.20261014.e15dc1b6f9894a25a15b79a4a3d60af2_P1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://sports.khan.co.kr/article/202610170053003",
      "weight": "normal"
     },
     {
      "blurb": "",
-     "date": "2026-10-14",
-     "headline": "Lee Soo Man's New Groups A2O LITE And A2O SOUL Unveil Profile Photos",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.p1AUXiQTj2LeLEwh6WtPBA&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://www.soompi.com/article/1878391wpp/lee-soo-mans-new-groups-a2o-lite-and-a2o-soul-unveil-profile-photos",
+     "date": "2026-10-15",
+     "headline": "Aijing's mother apologizes for unpaid wages, denies daughter involvement",
+     "highlight": "apologizes",
+     "image": "https://biz.chosun.com/resizer/v2/MRSDGOJTGM4WMMJRG44GIMJUGM.jpg?auth=dde128eb71a6881d31630bad6ff1821dd094593c0bce0b3b673b056ffdb0e1fc&width=616",
+     "image_via": "AI 挑选",
+     "url": "https://biz.chosun.com/en/en-entertainment/2026/10/15/65ZJNI2VMRDEJARAR4SS5ZAMWU/",
      "weight": "normal"
     }
    ],
@@ -643,33 +480,37 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Netmarble set an October 27 global launch for its vampire MMORPG VAMPIR.",
      "date": "2026-10-16",
+     "event": {
+      "date": "2026-10-27",
+      "label": "リリース"
+     },
      "headline": "Netmarble sets October 27th global launch for vampire MMORPG VAMPIR",
-     "highlight": "",
+     "highlight": "October 27th global launch",
      "image": "https://static.invenglobal.com/upload/thumb/2026/10/16/c/n1792173110374184.jpg",
      "image_via": "og:image",
      "url": "https://www.invenglobal.com/articles/27307/netmarble-sets-october-27th-global-launch-for-vampire-mmorpg-vampir",
-     "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-15",
-     "headline": "EVILGARD Launches in Early Access This November for Fans of Classic MMORPGs",
-     "highlight": "",
-     "image": "https://cogconnected.com/wp-content/uploads/2026/10/EVILGARD-Featured.jpg",
-     "image_via": "og:image",
-     "url": "https://cogconnected.com/2026/10/evilgard-launches-in-early-access-this-november-for-fans-of-classic-mmorpgs/",
-     "weight": "normal"
+     "weight": "hero"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
      "headline": "출시 50일 지난 제우스 여전히 잘 나간다",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.5dlWPhf6Ssn3gBv-b8zWYw&pid=News&w=1200",
-     "image_via": "条目自带",
+     "highlight": "50일",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2eoCvN.img",
+     "image_via": "AI 挑选",
      "url": "https://www.msn.com/ko-kr/news/other/%EC%B6%9C%EC%8B%9C-50%EC%9D%BC-%EC%A7%80%EB%82%9C-%EC%A0%9C%EC%9A%B0%EC%8A%A4-%EC%97%AC%EC%A0%84%ED%9E%88-%EC%9E%98-%EB%82%98%EA%B0%84%EB%8B%A4/ar-AA2eo6a1",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-15",
+     "headline": "EVILGARD Launches in Early Access This November for Fans of Classic MMORPGs",
+     "highlight": "Early Access This November",
+     "image": "https://www.bing.com/th?id=ONUT.JReXX1AUI6xV7xChDZIADA&pid=News&w=890",
+     "image_via": "条目自带",
+     "url": "https://cogconnected.com/2026/10/evilgard-launches-in-early-access-this-november-for-fans-of-classic-mmorpgs/",
      "weight": "normal"
     }
    ],
@@ -692,24 +533,14 @@
    "section": "运动",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "ジャパンOPの予選が10/17から始まり、日本勢10名が出場。",
      "date": "2026-10-17",
-     "headline": "伊藤あおいはセンターコート第2試合、日本勢10名出場のジャパンOP予選は本日11時30分開始＜女子テニス＞",
-     "highlight": "",
+     "headline": "日本勢10名出場のジャパンOP予選は本日11時30分開始",
+     "highlight": "本日11時30分開始",
      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010000-tennisnet-000-1-view.jpg?exp=10800",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/6631d91419316ab3312e9f313874f2db33b390b4",
      "weight": "lead"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-14",
-     "headline": "エリナ・スビトリーナ / 女子テニス選手紹介vol.10",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.C4H5mdBDOoEGkT1ajmXz2Q&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://note.com/ample_robin7948/n/n333bda59bb23",
-     "weight": "normal"
     }
    ],
    "subtitle": "ATP・WTA ツアー 日本開催",
@@ -731,56 +562,44 @@
    "section": "影视",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Disney acknowledged that The Mandalorian and Grogu underperformed at the box office.",
      "date": "2026-10-16",
-     "headline": "Star Wars Galaxy's Edge Now Offers Two Ways to Encounter The Mandalorian",
-     "highlight": "",
-     "image": "https://d3bo0mk5kk7egf.cloudfront.net/imgstore/ElementGalleryItems/attractions/Fullsize/Star-Wars-Land_Full_68757.jpg",
-     "image_via": "og:image",
-     "url": "https://www.wdwmagic.com/attractions/star-wars-land/news/16oct2026-star-wars-galaxy-s-edge-now-offers-two-ways-to-encounter-the-mandalorian.htm",
+     "headline": "Disney Admits ‘The Mandalorian and Grogu’ Disappointed at Box Office",
+     "highlight": "Disappointed at Box Office",
+     "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1",
+     "image_via": "AI 挑选",
+     "url": "https://www.hollywoodreporter.com/video/disney-admits-mandalorian-and-grogu-disappointed-box-office-video/",
      "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "The Mandalorian and Grogu Meet and Greet Area at Disney’s Hollywood Studios",
-     "highlight": "",
-     "image": "https://d3bo0mk5kk7egf.cloudfront.net/imgstore/ElementGalleryItems/attractions/Fullsize/Star-Wars-Land_Full_68757.jpg;width=1200;height=630;mode=crop;quality=60;encoder=freeimage;progressive=true",
+     "headline": "Star Wars Galaxy's Edge Now Offers Two Ways to Encounter The Mandalorian",
+     "highlight": "Two Ways",
+     "image": "https://d3bo0mk5kk7egf.cloudfront.net/imgstore/ElementGalleryItems/attractions/Fullsize/Star-Wars-Land_Full_68757.jpg",
      "image_via": "og:image",
-     "url": "https://www.wdwmagic.com/attractions/star-wars-land/gallery/16oct2026-the-mandalorian-and-grogu-meet-and-greet-area-at-disney-s-hollywood-studios.htm",
+     "url": "https://www.wdwmagic.com/attractions/star-wars-land/news/16oct2026-star-wars-galaxy-s-edge-now-offers-two-ways-to-encounter-the-mandalorian.htm",
      "weight": "normal"
     },
     {
      "blurb": "",
      "date": "2026-10-16",
-     "headline": "FEATURED 4: The Mandalorian and Grogu - Nightmare on Nevarro #1, ThunderCats #1, and October 21 Comics",
-     "highlight": "",
+     "headline": "I got an early look at the Mandalorian & Grogu set — here's what's there",
+     "highlight": "early look",
+     "image": "https://www.bing.com/th?id=ONUT.f1E46G67auPpxWK_IDQvrw&pid=News&w=1200",
+     "image_via": "条目自带",
+     "url": "https://www.msn.com/en-us/news/other/i-got-an-early-look-at-the-mandalorian-grogu-set-heres-whats-there/vi-AA27XrW4",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "The Mandalorian and Grogu - Nightmare on Nevarro #1",
+     "highlight": "Nightmare on Nevarro",
      "image": null,
      "source": "Capes and Tights",
      "source_icon": "http://capesandtights.com/wp-content/uploads/2024/10/PodcastImage.png",
      "url": "https://capesandtights.com/mandalorian-and-grogu-thundercats-1-october-21/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "【総集編】いつもガラガラなのに潰れない店の秘密【ずんだもん＆ゆっくり解説】【作業用】 The Mandalorian And Grogu (u0lLzSo0Js)",
-     "highlight": "",
-     "image": null,
-     "source": "Unisba Media",
-     "source_icon": "https://www.google.com/s2/favicons?domain=media.unisba.ac.id&sz=128",
-     "url": "https://media.unisba.ac.id/d71c04d1/7b089554I1UDMxlMIysxHAE/?share=telegram&nb=1",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "2026年5月6日 オリックス対千葉ロッテ 試合ハイライト The Mandalorian (W7pLtRqZ1W)",
-     "highlight": "",
-     "image": null,
-     "source": "Unisba Media",
-     "source_icon": "https://www.google.com/s2/favicons?domain=media.unisba.ac.id&sz=128",
-     "url": "https://media.unisba.ac.id/a8890740/501c85d63JMFHx4TwCU/?share=telegram&nb=1",
      "weight": "normal"
     }
    ],
@@ -803,10 +622,10 @@
    "section": "游戏",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "CBT のプレイレポート。次回テスト・リリース日は未発表。",
      "date": "2026-10-17",
-     "headline": "新伝奇魔法RPG『アストラエ・オラティオ』CBTレポート｜「行政×魔法」テーマのストーリーとリアルタイム×コマンドバトルの手触りが楽しい",
-     "highlight": "",
+     "headline": "新伝奇魔法RPG『アストラエ・オラティオ』CBTレポート",
+     "highlight": "CBTレポート",
      "image": "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp",
      "image_via": "og:image",
      "url": "https://appmedia.jp/preceding-play/80489629",
@@ -832,10 +651,10 @@
    "section": "运动",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "2026-27 シーズンのスキー場リフト1日券の料金と値上げ率を全国比較。",
      "date": "2026-10-17",
      "headline": "【2026-27】スキー場リフト券の料金を全国比較！1日券の価格と値上げ率を調査",
-     "highlight": "",
+     "highlight": "全国比較",
      "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png",
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/ski-resort-lift-ticket-price-2026-27/",
@@ -843,42 +662,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-14",
-     "headline": "ベイル・リゾーツ(Vail Resorts)はなぜ、雪が降る前に売上を確保できるのか - Epic Passが変えたスキー場の経営",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.UkuKyJHp_LRU1AnHpJG_-w&pid=News&w=1200",
-     "image_via": "条目自带",
-     "url": "https://note.com/black_sheep_club/n/n9456d54277bc",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
      "date": "2026-10-10",
      "headline": "Capita Ultrafear Review",
-     "highlight": "",
-     "image": "https://www.boardoftheworld.com/wp-content/uploads/2023/08/Capita-Ultrafear-Review.jpg",
-     "image_via": "og:image",
+     "highlight": "Ultrafear",
+     "image": "https://www.boardoftheworld.com/wp-content/uploads/2026/05/CAPiTA-Ultrafear-Snowboard-2027.jpg",
+     "image_via": "AI 挑选",
      "url": "https://www.boardoftheworld.com/capita-ultrafear-review/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "長野縣HAKUBA VALLEY 的栂池高原滑雪場將於12 月 1 日迎接2026-27 雪季，並新增18 台造雪機",
-     "highlight": "",
-     "image": "https://assets.hldycdn.com/777b6e25-1e8d-4d26-b214-b12738c12f21.jpeg",
-     "image_via": "og:image",
-     "url": "https://www.haveagood-holiday.com/zh-TW/articles/tsugaike-mountain-resort-winter-2026-27-opening",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "Best Men’s Ski Jackets 2026/27: Our InTheSnow Picks",
-     "highlight": "",
-     "image": "https://cdn.inthesnow.com/uploads/2025/11/screenshot_18720.jpg",
-     "image_via": "og:image",
-     "url": "https://www.inthesnow.com/gear/best-mens-ski-jackets/",
      "weight": "normal"
     }
    ],
@@ -895,45 +684,16 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
-   "facts": [],
-   "name": "gelato pique",
-   "section": "好物",
-   "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "GELATO PIQUE KIDS & BABY 將於10 月 23 日推出「ASAHIYAMA ZOO GELATO PIQUE」動物聯名系列",
-     "highlight": "",
-     "image": "https://assets.hldycdn.com/7a4c1091-a0f5-4bbf-ad01-e3ba7048f54f.jpeg",
-     "image_via": "og:image",
-     "url": "https://www.haveagood-holiday.com/zh-TW/articles/gelato-pique-kids-baby-asahiyama-zoo-collection",
-     "weight": "lead"
-    }
-   ],
-   "subtitle": "ジェラート ピケ · ルームウェア",
-   "theme": {
-    "accent": "#EE8FA7",
-    "alt_accent": "#F4B6C6",
-    "alt_bg": "#BFE3DA",
-    "alt_fg": "#3F4F4B",
-    "bg": "#FFF6F3",
-    "fg": "#5A4049",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "スターバックスの JIMOTO Made に、備前焼のマグが登場。",
      "date": "2026-10-13",
-     "headline": "スターバックスのJIMOTO Madeに、1000年の伝統を伝える備前焼のマグが誕生(1/2)",
-     "highlight": "",
+     "headline": "スターバックスのJIMOTO Madeに、1000年の伝統を伝える備前焼のマグが誕生",
+     "highlight": "備前焼のマグ",
      "image": "https://image.news.livedoor.com/newsimage/stf/5/e/5e2bd_230_52c597762e148e49ef92b7b93ca03983.jpg",
      "image_via": "转载 news.livedoor.com",
      "url": "https://www.walkerplus.com/article/1216984/",
@@ -955,43 +715,14 @@
   {
    "cover": null,
    "facts": [],
-   "name": "ぐでたま",
-   "section": "好物",
-   "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-16",
-     "headline": "＜画像4 / 8＞「ぐでたまカフェ」が西武池袋本店に期間限定オープン！",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/90965/509951_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/90965/image509956.html",
-     "weight": "hero"
-    }
-   ],
-   "subtitle": "Gudetama",
-   "theme": {
-    "accent": "#885D0C",
-    "alt_accent": "#EEB444",
-    "alt_bg": "#211C12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F2E9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "猫用品",
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "換毛期の抜け毛・毛玉対策を獣医師が解説。",
      "date": "2026-10-17",
-     "headline": "愛猫の換毛期で大変と感じたことは？換毛期のお世話のコツを獣医師が解説（ねこのきもち WEB MAGAZINE）",
-     "highlight": "",
+     "headline": "愛猫の換毛期で大変と感じたことは？換毛期のお世話のコツを獣医師が解説",
+     "highlight": "換毛期のお世話のコツ",
      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00100149-nekomag-000-1-view.jpg?exp=10800",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/ae57878e2110bc30c4c064a3690d30f828d3ad21",
@@ -1036,7 +767,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "last": {
     "date": "2026-10-16",
@@ -1082,6 +813,81 @@
     "bg": "#121826",
     "fg": "#F1E9D6",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "last": {
+    "date": "2026-10-16",
+    "headline": "ジェラートピケ×サンリオコラボ第二弾、10月21日発売。どこで買えるか調べました。",
+    "url": "https://note.com/aoikenkou/n/na71bcacc4cf4"
+   },
+   "name": "gelato pique",
+   "quiet": true,
+   "section": "好物",
+   "status": "10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）",
+   "stories": [],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-16",
+    "headline": "「ぐでたま」がついに宇宙へ！5周年記念コラボカフェが池袋にオープン",
+    "url": "https://www.walkerplus.com/article/150620/"
+   },
+   "name": "ぐでたま",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "Gudetama",
+   "theme": {
+    "accent": "#885D0C",
+    "alt_accent": "#EEB444",
+    "alt_bg": "#211C12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-16",
+    "headline": "10/10 【あつ森】アップデート最新情報【あつまれどうぶつの森】",
+    "url": "https://gamewith.jp/atsumori/article/show/190736"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   },
