@@ -124,7 +124,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 
 /* ---------- 版の見比べ用 ---------- */
 .board{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:28px 18px}
-.case p{min-height:9.8em}
+.case p{min-height:11.4em}
 .lvl{align-self:flex-start;padding:1px 8px;background:var(--ink);color:var(--gold);font:700 11px var(--font-sans)}
 .lvl.ghost{visibility:hidden}
 .case h2{min-height:2.7em}
@@ -252,7 +252,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     {v: 5, pr: 99, t: 'v4 ＋ 入るなら全部・余りは均等', mode: 'even', look: 'line', icons: true, all: true,
      d: '板块の作品が全部入るなら小分類で絞らず全部見せる。それでも余る高さは全板块に均等に配る（下に詰めない）。'},
     {v: 6, pr: 100, t: '少ないうちは隠さない（段階的に隠す）', mode: 'steps', look: 'line', icons: true,
-     d: '全部入るなら何も隠さない。入らなくなったら ①ほかの板块を新着順に数件へ ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。'},
+     d: '全部入るなら何も隠さない（少ないうちは行の間隔を広げる）。入らなくなったら ①ほかの板块を新着順に数件へ ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」の順に隠す。'},
   ];
   const STEP = ['全部見せる', '① ほかの板块は新着順に数件', '② ほかは見出しだけ', '③ いまの小分類だけ', '④ 入るだけ＋ほか N 件'];
 
@@ -409,13 +409,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
           lvl = 4;
         }
       }
-      // 余った高さは全板块に均等に
-      const spare = Math.max(0, H - sum(plan)) / n;
-      place(plan.map((x, i) => hOf(x, i) + spare), k);
+      // 余った高さは、まず作品の行の間隔を広げる（1 行 56px まで。48px 以上で 2 行目に今週の件数）。それでも余れば全板块に均等に
+      const shown = plan.reduce((a, x) => a + (x ? x.items.length : 0), 0);
+      const ih = Math.max(ITEM_H, Math.min(56, Math.floor(ITEM_H + Math.max(0, H - sum(plan)) / Math.max(1, shown))));
+      const hOf2 = (x, i) => hOf(x, i) + (x ? x.items.length * (ih - ITEM_H) : 0);
+      const spare = Math.max(0, H - plan.reduce((a, x, i) => a + hOf2(x, i), 0)) / n;
+      place(plan.map((x, i) => hOf2(x, i) + spare), k);
       slots.forEach((el, i) => {
         const x = plan[i], body = el.querySelector('.body');
         el.classList.toggle('open', !!x);
-        body.style.setProperty('--ih', ITEM_H + 'px'); body.classList.remove('roomy');
+        body.style.setProperty('--ih', ih + 'px'); body.classList.toggle('roomy', ih >= 48);
         if (!x) { body.innerHTML = ''; return; }
         const s = secs[i];
         body.innerHTML = (x.chips ? chipsHtml(s) : '')
