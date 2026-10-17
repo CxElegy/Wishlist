@@ -1008,6 +1008,22 @@ class Framing(unittest.TestCase):
         self.assertAlmostEqual(alts[0]["body"][5], 0.8)
         self.assertGreater(alts[3]["body"][5], 0.5)      # 目から足（0.5）より長く測る = 大きくしすぎない
 
+    def test_cut_and_full_compared_separately(self):
+        import render
+        cut = {"body": [0.2, 2.2, 0.5, 0.6, 0.9]}
+        mascot = {"body": [0.06, 1.0, 0.5, 0.7, 0.73]}   # 全身のままのマスコット（ポチタ）：体が大きくても、切った人と比べてしゃがみ扱いしない
+        alts = [{"body": list(cut["body"])}, {"body": list(cut["body"])}, mascot]
+        render._body_len(alts)
+        self.assertAlmostEqual(mascot["body"][5], 0.94)
+
+    def test_real_body_without_model_follows_board(self):
+        import emblem
+        from unittest import mock
+        with mock.patch.object(emblem, "_pose_model", return_value=None):
+            fig = self._figure()
+            real, why = emblem.real_body(fig, emblem.body_marks(fig))
+        self.assertIsNone(real)   # Actions（モデルなし）では決めず、fit_all が版面の多いほうに合わせる
+
     def test_logo_flat_background(self):
         import emblem
         from PIL import Image, ImageDraw

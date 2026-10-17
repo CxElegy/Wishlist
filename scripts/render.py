@@ -1117,13 +1117,14 @@ def _body_len(alts):
     しゃがんだ・前かがみのキャラ（dota2 の Slark）は目から足が短いので、そのままそろえると大きくなりすぎる。
     同じ版面の中央値と比べて体の大きさ（面積の平方根）が目立って大きいものは、大きさから立ったときの長さを見積もって使う。"""
     import statistics
-    bs = [a["body"] for a in alts if a.get("body")]
-    if not bs:
-        return
-    ratio = statistics.median(b[4] / (b[1] - b[0]) for b in bs)
-    for a in alts:
-        b = a.get("body")
-        if b and len(b) == 5:
+    for cut in (True, False):   # 上半身に切ったもの（人の体つき）と全身のまま（頭の大きいキャラ・マスコット）は体つきが違うので、別々に比べる
+        bs = [a["body"] for a in alts if a.get("body") and (a["body"][1] > 1) == cut]
+        if not bs:
+            continue
+        ratio = statistics.median(b[4] / (b[1] - b[0]) for b in bs)
+        for b in bs:
+            if len(b) != 5:
+                continue
             leg = b[1] - b[0]
             b.append(round(max(leg, b[4] / ratio) if b[4] / leg > ratio * BODY_CROUCH else leg, 3))
 
