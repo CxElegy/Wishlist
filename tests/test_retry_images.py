@@ -59,6 +59,16 @@ class RetryImagesTest(unittest.TestCase):
         self.assertEqual(st["image"], "https://walker.example/3.jpg")
         self.assertEqual(len(self.calls), 1)   # 自己の図があるほうは探さない
 
+    def test_dead_image_is_looked_for_again(self):
+        """図はあるが期限切れで開けなくなった（hdimg が dead と記録）記事も探し直す。"""
+        import hdimg
+        st = json.loads(self.report.read_text())
+        st["items"][0]["stories"][1]["image"] = "https://yimg.example/a.jpg?exp=10800"
+        self.report.write_text(json.dumps(st))
+        with mock.patch.object(hdimg, "load_state", lambda: {"https://yimg.example/a.jpg?exp=10800": {"dead": True}}):
+            digest.retry_images()
+        self.assertIn("https://a.example/2", [c[0] for c in self.calls])
+
     def test_not_retried_again_within_hours(self):
         with mock.patch.object(images, "pick", lambda *a, **k: images.Result(None, "", [], ["原文 HTTP 405"])):
             self.assertEqual(digest.retry_images(), 0)

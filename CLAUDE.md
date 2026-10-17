@@ -129,7 +129,7 @@
   **原文被挡（人机验证・限流・临时打不开）也不停**：接着找同一件事的别家报道（`digest.same_event`，最多 4 篇）的图 → 转载（标题里引用了原标题「…」时也用原标题搜）；还没图的报道，之后每次出刊自动再找（`digest.retry_images`：同一条每 6 小时、一次 6 条、直近 8 天，`state/img_retry.json`）。
   MSN 的视频（`vi-`）・图集读接口的 `thumbnail` / `slides`；新浪 sinaimg 这类防盗链（不带 Referer 就 403）的原文图，带原文网页作 Referer 再试，来源名加「（本站保存）」。
   出刊时 `hdimg.py` 用 OpenCV 判断「看不清吗」：**原图看得清就不动、不花资源**（用户定的）。只有网页上要放大 1.6 倍以上、而且放到显示大小后模糊度 > 0.42（无参考 re-blur 法）的图
-  才去噪 NLMeans → Lanczos4 放大（最多 3 倍）→ 亮度 USM；Bing 只给 100×100 的缩略图改取 w=1200 版切白边；防盗链的图存一份。都放 `docs/pics/`（`state/hdimg.json` 记对应关系，过 8 天删），`render._img_url` 优先用本站的、打不开再用原图。手动：`digest.py hd-images`。
+  才去噪 NLMeans → Lanczos4 放大（最多 3 倍）→ 亮度 USM；Bing 只给 100×100 的缩略图改取 w=1200 版切白边；防盗链的图、期限付きの網址（Yahoo ニュースの `?exp=10800`，几小时后变成 1×1 的白图）存一份；已经打不开・变成空白的图记 `dead`，`retry_images` 去原文重新找；网页上 1×1 的图当作打不开、换下一张。都放 `docs/pics/`（`state/hdimg.json` 记对应关系，过 8 天删），`render._img_url` 优先用本站的、打不开再用原图。手动：`digest.py hd-images`。
 - **版面主题（motif）**：`items.yaml` 里给作品写 `motif:`，主题在 `templates/`（`index.yaml` 一览 + 每套一份 `<id>.css`，只用作品自己的配色变量）。
   现在有 **30 套**（背景花纹、题字形状、照片边框、标题旁装饰字），每套带一个 **👍 演出**（`fx`，`scripts/likefx.py` 的 20 种：大拇指的动作 + 飞散的形状 + 文字）。
   一览和试玩：テーマ見本 https://cxelegy.github.io/Wishlist/themes.html （`render.render_themes`）。
