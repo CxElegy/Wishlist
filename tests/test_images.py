@@ -75,6 +75,10 @@ ROUTES = {
     "/copy.html": (200, "text/html", html_page('<meta property="og:image" content="/big2.jpg">')),
     "/yt-article.html": (200, "text/html", html_page('<meta property="og:image" content="/big.jpg">')),
     "/gone.html": (410, "text/html", b"Gone"),
+    "/small-og.html": (200, "text/html", html_page(
+        '<meta property="og:image" content="/big.jpg">'
+        '<script type="application/ld+json">{"image": ["/huge.jpg"]}</script>', '<article><img src="/big2.jpg"></article>')),
+    "/hotlink.html": (200, "text/html", html_page('<meta property="og:image" content="/referer-only.jpg">')),
     "/edgeone.jpg": (567, "text/html", b"Access Restricted. Protected by Tencent Cloud EdgeOne"),
     "/msn-api/en-us/AA1": (200, "application/json", json.dumps(
         {"title": "t", "imageResources": [{"url": "/big2.jpg", "width": 800, "height": 450}]}).encode()),
@@ -482,6 +486,36 @@ class ImagesTest(unittest.TestCase):
             p = images.page("https://www.msn.com/en-us/news/other/some-title/ar-AA1")
         self.assertEqual(p.og, ["https://www.msn.com/big2.jpg"])
         self.assertEqual(p.og_label, "MSN 接口")
+
+    def test_msn_video_uses_thumbnail(self):
+        """MSN の動画（vi-）は imageResources が空で、図は thumbnail（動画の表紙）にある（2026-10-17 漫威の版面で図が出なかった）。"""
+        api = "https://assets.msn.com/content/view/v2/Detail/en-us/AA2"
+        body = json.dumps({"type": "video", "imageResources": [],
+                           "thumbnail": {"image": {"url": "https://img-s-msn-com.akamaized.net/x/AA3.img"}}}).encode()
+        with mock.patch.object(images, "_fetch", lambda url, limit: images.Fetched(200, {}, body)
+                               if url == api else images.Fetched(error="不该请求 " + url)):
+            p = images.page("https://www.msn.com/en-us/entertainment/general/some-title/vi-AA2")
+        self.assertEqual(p.og, ["https://img-s-msn-com.akamaized.net/x/AA3.img"])
+
+    def test_bigger_preview_on_same_page_preferred(self):
+        """og:image が小さい（長辺 < SHARP_LONG）とき、同じページの JSON-LD の大きい版を使う。本文の別の図には行かない。"""
+        res = images.pick(None, [entry(url=self.u("/small-og.html"))], self.u("/small-og.html"))
+        self.assertEqual((res.image, res.source), (self.u("/huge.jpg"), "JSON-LD"))
+
+    def test_small_preview_kept_when_nothing_bigger(self):
+        res = images.pick(None, [entry(url=self.u("/og.html"))], self.u("/og.html"))
+        self.assertEqual((res.image, res.source), (self.u("/big.jpg"), "og:image"))
+
+    def test_hotlinked_page_image_retried_with_page_as_referer(self):
+        """防盗链（新浪 sinaimg）：ほかに図がないとき、原文ページを Referer にして 1 回だけ再試行し、本站保存の印をつける。"""
+        page_url = self.u("/hotlink.html")
+        res = images.pick(None, [entry(url=page_url)], page_url)
+        self.assertEqual((res.image, res.source), (self.u("/referer-only.jpg"), "og:image" + images.SAVED))
+        self.assertEqual(REFERERS, [page_url])  # Referer は図があったページそのもの
+
+    def test_referer_not_sent_when_plain_image_works(self):
+        images.pick(None, [entry(url=self.u("/og.html"))], self.u("/og.html"))
+        self.assertEqual(REFERERS, [])
 
     def test_bing_thumbnail_of_the_original_itself_is_used(self):
         """原文挡机器人（Forbes captcha），Bing 搜回来的就是原文本身：不再读原文，但用它的 Bing 缩略图。"""

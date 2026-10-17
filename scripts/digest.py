@@ -2525,9 +2525,20 @@ def publish(inbox_path=None):
     issue = {"no": no, "date": date, "items": blocks}
     save_json(REPORTS_DIR / f"{date}.json", issue)
     recommend()
+    hd_images()
     write_page()
     write_issue_markdown(issue, settings)
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
+
+
+def hd_images():
+    """配图太小（大位置用不到 1280px 的 75%、卡片用不到 720px 的 75%）就用 OpenCV 放大，
+    防盗链的图（新浪 sinaimg）存一份到本站：都放 docs/pics/，网页优先用它（见 hdimg.py）。出问题也不挡出刊。"""
+    import hdimg
+    try:
+        hdimg.run()
+    except Exception as ex:
+        print(f"配图高清化失败（照常出刊，用原图）：{type(ex).__name__}: {ex}", file=sys.stderr)
 
 
 def new_item_names():
@@ -2642,6 +2653,11 @@ def pick_images(date=None):
     print(f"候选链接：{PICK_DIR / 'candidates.json'}")
 
 
+def _saved_ref(st):
+    """防盗链、要带原文网页作 Referer 才拿得到的图（来源名带 images.SAVED）：检查时也带上。"""
+    return st.get("url") if images.SAVED in (st.get("image_via") or "") else None
+
+
 def repair_images():
     """修已经出刊的各期（新的找图规则只管新出刊的，旧几期要补一遍）：
     - 原文已删（404 / 410）的报道撤掉
@@ -2673,7 +2689,7 @@ def repair_images():
                 img = st.get("image")
                 bad = (not img or st.get("image_via") == "作品封面" or "验证不了" in (st.get("image_via") or "")
                        or images.is_bing_thumb(img)  # Bing 的缩略图是 Bing 裁过的（横长的图变成竖的一截），先找原文的图
-                       or not images.check(img)[0]  # 图后来被删、或者不合格（太小、打不开）
+                       or not images.check(img, _saved_ref(st))[0]  # 图后来被删、或者不合格（太小、打不开）
                        or images.GENERIC.search(urllib.parse.urlparse(img).path)
                        or first_user.get(img) not in (None, st["url"]))
                 d = raw.get(st["url"])
@@ -2694,7 +2710,7 @@ def repair_images():
                         used.add(res.image)
                         fixed += 1
                     elif img and (images.GENERIC.search(urllib.parse.urlparse(img).path) or first_user.get(img) != st["url"]
-                                  or "验证不了" in (st.get("image_via") or "") or not images.check(img)[0]):
+                                  or "验证不了" in (st.get("image_via") or "") or not images.check(img, _saved_ref(st))[0]):
                         st["image"], changed = None, True  # 错的图宁可不放（网页上用作品封面或作品名封面块）
                         st.pop("image_via", None)
                         still += 1
@@ -2706,6 +2722,7 @@ def repair_images():
         if changed:
             save_json(path, rep_)
     print(f"修复：{fixed} 条找到自己的图 · {dropped} 条原文已删撤掉 · {still} 条还是没图", file=sys.stderr)
+    hd_images()
     write_page()
 
 
@@ -2764,7 +2781,7 @@ def logged_publish(path=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "hd-images"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -2773,6 +2790,9 @@ def main():
         ingest(dry_run=True)
     elif args.step == "repair-images":
         repair_images()
+    elif args.step == "hd-images":
+        hd_images()
+        write_page()
     elif args.step == "pick-images":
         pick_images(args.date)
     elif args.step == "new-items":
