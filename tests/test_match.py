@@ -54,3 +54,29 @@ class MatchTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SpamTest(unittest.TestCase):
+    """被黑网站批量生成的色情 / 盗版「在线看」页面：标题塞作品名会命中 match，要整条丢掉。"""
+    ZZZ = {"name": "绝区零", "type": "game", "match": ["绝区零", "ゼンゼロ"]}
+
+    def kept(self, titles):
+        es = [entry(t, i) for i, t in enumerate(titles)]
+        return [e.title for e in digest.filter_entries(es, self.ZZZ, {}, set(), NOW)]
+
+    def test_spam_pages_are_dropped(self):
+        titles = ["绝区零艾莲被爆❌挤奶歪歪在线高清完整-绝区零艾莲被爆❌挤奶歪歪在线2026超清在线004 免费全集-爱看高清网",
+                  "绝区零艾莲涩涩被❌-绝区零艾莲涩涩被❌2026最新版vv8.3.9 iphone版-2265安卓网",
+                  "2026绝区零简被爆❌挤奶歪歪在线看-绝区零简被爆❌挤奶歪歪最新超清版39.847 全集版-爱看高清网"]
+        self.assertEqual(self.kept(titles), [])
+
+    def test_real_news_and_collabs_are_kept(self):
+        titles = ["绝区零3.3版本10月21日上线 新角色登场",
+                  "【ゼンゼロ】ゼンゼロ×ローソン コラボ開催",
+                  "绝区零 免费领取限定角色活动开启"]
+        self.assertEqual(sorted(self.kept(titles)), sorted(titles))
+
+    def test_blocked_source(self):
+        e = sources.Entry(title="绝区零 新版本", url="https://hurun.net/news/1.sHtML", source="胡润百富",
+                          summary="", image="", published=NOW)
+        self.assertEqual(digest.filter_entries([e], self.ZZZ, {"exclude_sources": ["胡润百富"]}, set(), NOW), [])
