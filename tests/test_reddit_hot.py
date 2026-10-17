@@ -131,6 +131,13 @@ class PruneTest(unittest.TestCase):
         left = [s["headline"] for s in json.loads(self.path.read_text())["items"][0]["stories"]]
         self.assertEqual(left, ["hot", "news", "search hot"])
 
+    def test_unknown_top_list_is_retried_next_time(self):
+        with mock.patch.object(sources, "reddit_hot_ids", lambda sub: None):
+            digest.prune_reddit()
+        checks = json.loads(digest.REDDIT_CHECK_FILE.read_text())
+        self.assertNotIn(post_url("cold1"), checks)   # 榜が取れなかった帖子は記録しない（次の出刊でもう一度）
+        self.assertTrue(checks[post_url("gone1")]["removed"])
+
     def test_checked_once_a_day(self):
         digest.prune_reddit()
         with mock.patch.object(sources, "reddit_removed", side_effect=AssertionError("今日はもう見た")):

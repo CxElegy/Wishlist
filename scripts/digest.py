@@ -2587,12 +2587,12 @@ def prune_reddit(days=REDDIT_CHECK_DAYS):
                     removed = sources.reddit_removed(url)
                     m = re.search(r"/r/([^/]+)/", url)
                     hot = None
-                    if m and m.group(1).lower() in subs.get(b["name"], set()):
-                        ids = sources.reddit_hot_ids(m.group(1))
-                    else:
-                        ids = search_hot(b["name"])
+                    in_sub = bool(m) and m.group(1).lower() in subs.get(b["name"], set())
+                    ids = sources.reddit_hot_ids(m.group(1)) if in_sub else search_hot(b["name"])
                     hot = None if ids is None else sources.reddit_id(url) in ids
-                    if removed is None and hot is None:
+                    # 没删、但该看的榜没拿到（限流）：今天先不记，下次出刊再查（不然一整天都不判断火不火）
+                    checkable = in_sub or "reddit" in ((by_name.get(b["name"]) or {}).get("use") or ["google", "bing", "reddit"])
+                    if removed is None and hot is None or not removed and hot is None and checkable:
                         keep.append(st)
                         continue
                     c = checks[url] = {"day": today, "removed": removed, "hot": hot}
