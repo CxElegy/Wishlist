@@ -438,9 +438,14 @@ button{font-family:inherit}
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
 .emb-in{display:flex;align-items:flex-end}
 .emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:190px;object-fit:contain;object-position:bottom}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
+.emb{--leg:116px;--anc:62px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
+.emb img.body{--bh:calc(var(--leg) / var(--bl));height:var(--bh);width:calc(var(--bh) * var(--ba));max-width:none;
+ margin-bottom:calc(var(--bh) * (var(--bf) - 1));  /* 足の裏より下（尻尾・武器・裾）は帯の下へ */
+ margin-right:calc(var(--anc) - var(--bh) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
 .emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
+.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:var(--card);padding:6px}  /* 横長・縦長すぎる画像は切らずに全体 */
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
@@ -451,7 +456,7 @@ button{font-family:inherit}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;right:8px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
+@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--anc:40px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
@@ -1088,15 +1093,41 @@ def _legible(t):
 
 
 FACE_SHARE = 0.32   # emblem.FACE_SHARE と同じ：顔が小元素の高さのこの割合になる大きさで表示する
+CARD_AR = (0.95, 1.6)   # emblem.CARD_AR と同じ：カード（4:5）の窓で切ってよい縦横比（高さ ÷ 幅）
+
+
+BODY_CROUCH = 1.15   # 「体の大きさ ÷ 目から足の長さ」が版面の中央値のこれ倍を超える = しゃがんでいる・前かがみ
+
+
+def _body_len(alts):
+    """全身の小元素の「そろえる長さ」（高さに対する割合）を a["body"] の 6 番目に足す。ふつうは目から足の裏まで。
+    しゃがんだ・前かがみのキャラ（dota2 の Slark）は目から足が短いので、そのままそろえると大きくなりすぎる。
+    同じ版面の中央値と比べて体の大きさ（面積の平方根）が目立って大きいものは、大きさから立ったときの長さを見積もって使う。"""
+    import statistics
+    bs = [a["body"] for a in alts if a.get("body")]
+    if not bs:
+        return
+    ratio = statistics.median(b[4] / (b[1] - b[0]) for b in bs)
+    for a in alts:
+        b = a.get("body")
+        if b and len(b) == 5:
+            leg = b[1] - b[0]
+            b.append(round(max(leg, b[4] / ratio) if b[4] / leg > ratio * BODY_CROUCH else leg, 3))
 
 
 def _emblem_img(a):
     """小元素 1 枚の HTML。カード（badge）で取景（crop）があれば 4:5 の窓にその範囲だけを見せる。
     顔の割合（fs）が基準より大きい（アップの）ものは小さく表示して、どの版面でも顔が同じくらいの大きさに見えるように。"""
     k = f' style="--k:{min(1, FACE_SHARE / a["fs"]):.3f}"' if a.get("fs") else ""
-    img = (f'<img class="{a["shape"]}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
+    if a.get("body"):   # 全身：目から足の裏までの長さをどのキャラも同じに、足の裏を帯の線に
+        b = a["body"]
+        k = ' style="--bl:{:.3f};--bf:{:.3f};--bc:{:.3f};--ba:{:.3f}"'.format(b[5] if len(b) > 5 else b[1] - b[0], b[1], b[2], b[3])
+    img = (f'<img class="{a["shape"]}{" body" if a.get("body") else ""}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
            f'onerror="var s=this.closest(\'.sec\');if(s)s.classList.remove(\'has-emb\');this.closest(\'.emb\').remove()">')
     c = a.get("crop")
+    ar = a.get("ar")
+    if a["shape"] == "badge" and not c and ar and not (CARD_AR[0] <= float(ar) <= CARD_AR[1]):
+        img = img.replace('class="badge"', 'class="badge whole"', 1)   # 縦横比がカードと離れている：切らずに全体を見せる
     if a["shape"] == "badge" and c:
         return f'<span class="crop" style="--cx:{c[0]};--cy:{c[1]};--cw:{c[2]};--ar:{a.get("ar", 1)}">{img}</span>'
     return img
@@ -1115,12 +1146,19 @@ def _emblem(items, ring="accent"):
         c = x.get("crop")
         if isinstance(c, list) and len(c) == 3 and all(isinstance(v, (int, float)) and 0 <= v <= 1 for v in c) and c[2] > 0:
             a.update(crop=c, ar=float(x.get("ar") or 1))
+        elif isinstance(x.get("ar"), (int, float)) and x["ar"] > 0:
+            a["ar"] = float(x["ar"])
+        b = x.get("body")
+        if (isinstance(b, list) and len(b) == 5 and all(isinstance(v, (int, float)) for v in b)
+                and 0 <= b[0] < b[1] <= 1 and 0 <= b[2] <= 1 and 0 < b[3] < 10 and 0 < b[4] <= 1):
+            a["body"] = [float(v) for v in b]
         fs = x.get("fs")
         if isinstance(fs, (int, float)) and 0.05 < fs <= 1:
             a["fs"] = float(fs)
         if x.get("shape") in ("logo", "icon"):
             a["shape"] = x["shape"]
         alts.append(a)
+    _body_len(alts)
     if not alts:
         return ""
     ring = ring if ring in ("accent", "white", "none") else "accent"
@@ -1503,7 +1541,10 @@ EMB_JS = """
     const inner = el.querySelector('.emb-in'), img = el.querySelector('img');
     if (alts.length > 1 && inner && img) {
       const a = alts[Math.floor(Math.random() * alts.length)];
-      const n = img.cloneNode(); n.className = a.shape; n.src = a.src; n.style.cssText = a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
+      const n = img.cloneNode(); n.src = a.src;
+      const whole = a.shape === 'badge' && !a.crop && a.ar && (a.ar < 0.95 || a.ar > 1.6);   // render.CARD_AR：カードと比率が離れたら切らない
+      n.className = a.shape + (a.body ? ' body' : '') + (whole ? ' whole' : '');
+      n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
       if (a.shape === 'badge' && a.crop) {
         const c = document.createElement('span'); c.className = 'crop';
         c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1);

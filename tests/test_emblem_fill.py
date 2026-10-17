@@ -974,3 +974,74 @@ class JudgeTable(unittest.TestCase):
         html = processes.examples_panel()
         self.assertEqual(html.count('<article class="ex '), len(emblem_rules.EXAMPLES))
         self.assertIn("外す", html)
+
+
+class Framing(unittest.TestCase):
+    """全身か胸像か・全身の背の高さ・ロゴ・カードの比率（emblem.want_full / body_marks / clear_flat_bg、render._body_len）。"""
+
+    def test_want_full_order(self):
+        import emblem
+        from unittest import mock
+        with mock.patch.object(emblem, "official_render", return_value=True):
+            self.assertTrue(emblem.want_full({}, drawn=True))                       # 絵のキャラの公式の立ち絵 → 全身
+            self.assertFalse(emblem.want_full({}, drawn=False))                     # 写真 → 胸像
+            self.assertFalse(emblem.want_full({}, drawn=True, item_framing="bust"))  # 版面の指定が先
+            self.assertTrue(emblem.want_full({"framing": "full"}, drawn=False, item_framing="bust"))   # 1 枚の指定がいちばん先
+        with mock.patch.object(emblem, "official_render", return_value=False):
+            self.assertFalse(emblem.want_full({}, drawn=True))                      # 背景から切り抜いた絵 → 胸像
+
+    def _figure(self, tail=False, base=False):
+        from PIL import Image, ImageDraw
+        im = Image.new("RGBA", (200, 400), (0, 0, 0, 0))
+        d = ImageDraw.Draw(im)
+        d.ellipse((80, 10, 120, 60), fill=(200, 160, 120, 255))     # 頭
+        d.rectangle((75, 60, 125, 220), fill=(40, 40, 120, 255))    # 胴
+        d.rectangle((80, 220, 96, 340), fill=(40, 40, 40, 255))     # 脚
+        d.rectangle((104, 220, 120, 340), fill=(40, 40, 40, 255))
+        if tail:   # 足より下まで垂れた尻尾（横の離れたところ）
+            d.rectangle((10, 200, 30, 395), fill=(90, 90, 90, 255))
+            d.rectangle((30, 200, 75, 215), fill=(90, 90, 90, 255))
+        if base:   # 金の台座
+            d.ellipse((0, 340, 200, 398), fill=(200, 160, 40, 255))
+        return im
+
+    def test_body_marks_ignore_tail_and_pedestal(self):
+        import emblem
+        from unittest import mock
+        with mock.patch.object(emblem, "_pose_model", return_value=None):   # 姿勢モデルなし：輪郭から
+            plain = emblem.body_marks(self._figure())
+            tail = emblem.body_marks(self._figure(tail=True))
+            base = emblem.body_marks(self._figure(base=True))
+        self.assertAlmostEqual(plain[1], 340 / 400, delta=0.01)
+        self.assertAlmostEqual(tail[1], 340 / 400, delta=0.01)    # 尻尾の先（いちばん下）は足ではない
+        self.assertLess(base[1], 0.87)                             # 台座の底でなく、台の上の縁
+        self.assertEqual(len(plain), 6)
+
+    def test_crouching_measured_by_size(self):
+        import render
+        stand = {"body": [0.1, 0.9, 0.5, 0.5, 0.40]}
+        crouch = {"body": [0.4, 0.9, 0.5, 0.9, 0.55]}   # 目から足が短いのに体は大きい
+        alts = [dict(stand), dict(stand), dict(stand), crouch]
+        render._body_len(alts)
+        self.assertAlmostEqual(alts[0]["body"][5], 0.8)
+        self.assertGreater(alts[3]["body"][5], 0.5)      # 目から足（0.5）より長く測る = 大きくしすぎない
+
+    def test_logo_flat_background(self):
+        import emblem
+        from PIL import Image, ImageDraw
+        im = Image.new("RGB", (300, 150), "white")
+        ImageDraw.Draw(im).ellipse((60, 20, 240, 130), outline=(20, 20, 90), width=6)
+        out = emblem.clear_flat_bg(im)
+        self.assertEqual(out.mode, "RGBA")
+        self.assertLess(out.size[0], 200)                  # 余白を切り詰めた
+        self.assertEqual(out.getpixel((0, 0))[3], 0)       # 外の地は透明
+        self.assertEqual(out.getpixel((out.size[0] // 2, out.size[1] // 2))[3], 255)   # 楕円の中の白はロゴの一部なので残る
+        self.assertTrue(emblem.is_logo({"subject": "gelato pique のロゴ"}))
+        self.assertTrue(emblem.is_logo({"subject": "x"}, kind="brand"))
+
+    def test_card_crops_only_close_ratio(self):
+        import render
+        wide = render._emblem_img({"src": "https://x/a.jpg", "shape": "badge", "ar": 0.52})
+        near = render._emblem_img({"src": "https://x/a.jpg", "shape": "badge", "ar": 1.25})
+        self.assertIn("badge whole", wide)
+        self.assertNotIn("whole", near)
