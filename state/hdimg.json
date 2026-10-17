@@ -458,11 +458,6 @@
   "h": 800,
   "target": 720
  },
- "https://fwmedia.fandomwire.com/wp-content/uploads/2026/10/16114649/gta-6-exclusive-to-ps5-features.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720
- },
  "https://gamefragger.com/images/articles/banners/jagex-is-building-a-fourth-runescape-mmo-and-it-starts-in-ashenfall-ab29846.jpg": {
   "w": 1500,
   "h": 844,
@@ -1698,11 +1693,6 @@
   "h": 853,
   "target": 720
  },
- "https://wimg.heraldcorp.com/svc/user/1b869917-07ac-479e-a05a-2421fb9771fa.jpg": {
-  "w": 1024,
-  "h": 921,
-  "target": 1280
- },
  "https://www.4gamer.net/games/970/G097078/20260831002/SS/001.jpg": {
   "w": 1200,
   "h": 680,
@@ -1798,6 +1788,11 @@
    300
   ]
  },
+ "https://www.bing.com/th?id=ONUT.Zq5swh2htkWDQI0Wk7iF9g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720
+ },
  "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500": {
   "w": 100,
   "h": 100,
@@ -1816,6 +1811,16 @@
   "out": [
    300,
    300
+  ]
+ },
+ "https://www.bing.com/th?id=ONUT.iY3U3dVABvvQ_dK4UJF68g&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "local": "pics/1a9fc515f67a8146.webp",
+  "out": [
+   1280,
+   852
   ]
  },
  "https://www.bing.com/th?id=ONUT.pPPytmyAJBdD-nrcvgVvmA&pid=News&w=1200": {
