@@ -66,6 +66,10 @@ COMPONENTS = {
              "what": "digest.is_spam：乗っ取られたサイトの成人・海賊版「在线看」ページを捨てる（作品名を詰めているので match を通ってしまう）"},
     "taxonomy": {"kind": "rule", "name": "板块の対号入座 sections.yaml", "spec": "板块 17（IAB Content Taxonomy 3.1 の大類から）· 各 2 つの分け方と常用の値 · 上から先に当たった語",
                  "what": "維基データの説明・名前の語で板块と小分類を推す（taxonomy.classify / guess_subs、ウィザードも同じ表）。新しい板块は臨時に作らない、当たらなければ「その他」"},
+    "lang": {"kind": "rule", "name": "言語違いの同じニュース lang.dedupe", "spec": "主言語 ja → 副言語 en・zh・ko（settings.languages）· 仮名 2 字 = ja・ハングル 2 字 = ko・漢字 2 字 = zh・ローマ字 3 字 = en · "
+             "同じ作品で 10 日以内かつ（バージョン番号 / 見出しの月日 / 予定の日付＋ラベル）が同じ = 同じニュース · 主言語・副言語以外は載せない",
+             "what": "scripts/lang.py：同じニュースが何語でも来たら主言語の 1 本だけ残し、消す方の重み・予定・出典を引き継ぐ。出刊（号の中）とページ生成（号をまたぐ）の 2 か所。"
+                     "refs に好みの言語の出典があれば見出しをその原題に（lang.prefer_ref）。予定の欄は同じ作品・同じ日・同じラベルも 1 回"},
     "urgent": {"kind": "rule", "name": "要紧の判定 urgent_patterns", "spec": "タイトルに正規表現 · Reddit・補完分は除く",
                "what": "当日 Discord に送る記事（digest.is_urgent）"},
     "fallback": {"kind": "algo", "name": "キーワード編集 fallback_stories", "spec": "重複 bigram > 0.5 · 4 媒体以上で話題 · 最大 7 件",
@@ -306,17 +310,19 @@ PROCESSES = [
         "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai",   # 定時はなし（2026-10-17 に毎日 2 回の定時を止めた）：ゲートが起こす
         "when": "整理待ちがあるとき（収集のあと）",
         "trigger": "ゲート：収集で整理待ちが増えたとき（最多 2 時間に 1 回）／ 新しい関注項が入ったとき",
-        "summary": "inbox の記事から重要なものを選び、同じ件を合わせて、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。"
+        "summary": "inbox の記事から重要なものを選び、同じ件を合わせて（言語違いは主言語の 1 本に）、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。"
                    "版面に載るのは AI 編集が整理した記事だけ（それまでは「整理待ち」、要紧だけ先に載る）。",
-        "files": ["EDITING.md", "scripts/digest.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "pending"],
+        "files": ["EDITING.md", "scripts/digest.py", "scripts/lang.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "pending", "lang"],
         "flow": [
             {"id": "e1", "kind": "step", "lane": "ai", "title": "最新の inbox を読む"},
             {"id": "e2", "kind": "decision", "lane": "ai", "title": "今日の整理待ちがある？", "text": "_covered より後の記事・edit.json にない版面", "no": "何も変えずに終わり"},
             {"id": "e3", "kind": "step", "lane": "ai", "title": "版面の設計・小元素", "by": "ai", "text": "motif・theme・like_fx · 足りない小元素（「小元素の選定」）"},
-            {"id": "e4", "kind": "step", "lane": "ai", "title": "編集して edit.json", "text": "同じ件を合わせる · 見出しは原文 · S 3 / M 5 / L 8 件",
+            {"id": "e4", "kind": "step", "lane": "ai", "title": "編集して edit.json", "text": "同じ件を合わせる（言語違いも 1 本・主言語の原題）· 見出しは原文 · S 3 / M 5 / L 8 件",
              "uses": ["claude"]},
             {"id": "e5", "kind": "step", "lane": "ai", "title": "配図を目で選ぶ", "text": "1 件 12 枚まで · 4 列の一覧", "uses": ["imgpick", "claude"]},
             {"id": "e6", "kind": "step", "lane": "actions", "title": "出刊 publish", "text": "AI のあとに来た新着は「整理待ち」（要紧だけ先に重大）", "uses": ["pending", "fallback"]},
+            {"id": "e6l", "kind": "decision", "lane": "actions", "title": "言語違いの同じニュース？", "text": "バージョン番号・月日・予定の日付が同じ · 10 日以内",
+             "yes": "主言語（ja）の 1 本にまとめる", "no": "そのまま", "uses": ["lang"]},
             {"id": "e6r", "kind": "decision", "lane": "actions", "title": "載っている Reddit 帖子は生きていて火？", "text": "1 日 1 回 · 直近 8 日",
              "no": "版面から撤去", "uses": ["reddithot"]},
             {"id": "e7", "kind": "store", "lane": "repo", "title": "inbox/*.edit.json · reports/"},
@@ -384,12 +390,14 @@ PROCESSES = [
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。",
-        "files": [".github/workflows/render.yml", "scripts/render.py"], "doc": "CLAUDE.md", "uses": ["heat", "octree", "frontpick", "fit", "confetti"],
+        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "CLAUDE.md", "uses": ["heat", "octree", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
             {"id": "p3", "kind": "step", "lane": "actions", "title": "話題度を計算", "uses": ["heat"]},
             {"id": "p4", "kind": "step", "lane": "actions", "title": "トップの配色", "uses": ["octree"]},
+            {"id": "p3l", "kind": "step", "lane": "actions", "title": "号をまたいだ言語違いを 1 本に", "x": "作品ごと",
+             "text": "主言語 → 副言語の順で残す · 予定の欄は同じ日・同じラベル 1 回", "uses": ["lang"]},
             {"id": "p4b", "kind": "step", "lane": "actions", "title": "トップの記事を選ぶ", "x": "直近 7 日の全号から",
              "text": "作品ごとに 1 本目 → 2 本目 · 同じ写真・同じ出来事は 1 回", "uses": ["frontpick"]},
             {"id": "p5", "kind": "table", "lane": "actions", "title": "版面の組み方",
@@ -558,6 +566,7 @@ AI_TASKS = [
     ("記事の重複・要紧・おすすめ・配色・配図の候補", "rule", "前から規則（bigram・正規表現・好みの学習・減色・画像の検査）"),
     ("配図の高清化（小さい・ぼやけた図）", "rule", "AI の超解像は使わない。看不清かは「引き伸ばす倍率」と「表示サイズでの模糊度（re-blur 法）」の 2 つの数で決め、看得清の図は触らない"),
     ("AI 編集：同じ件を合わせて、どれを載せるか", "gate", "意味の判断（違う言語の同じ件・重要度）は規則だと外れが多いので、版面に載るのは AI が整理した記事だけ。収集で整理待ちが増えたときだけ起こす（最多 2 時間に 1 回）"),
+    ("言語違いの同じニュースを 1 本に（主言語を残す）", "rule", "AI 編集にも頼むが、すり抜け・号をまたぐ分は規則で：言語の判定は文字の種類、同じかはバージョン番号・月日・予定の日付（lang.py）"),
     ("AI 編集：配図を目で選ぶ", "gate", "候補の検査は規則、顔や内容が切れていないかの最後の確認は AI。頭条だけ AI にする余地あり"),
     ("写真から愿望：写っている物の認識", "gate", "画像の中身の認識はモデルが要る（Claude が見る）。写真が来たときだけ起こす"),
     ("新しい関注項の板块・小分類を決める", "rule", "板块は sections.yaml に先に全部決めてある（IAB の大類から 17）。維基データの説明・名前の語で対号入座し、新しい板块は作らない"),

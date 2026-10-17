@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>話題度のオーラ v2</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=Dela+Gothic+One&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* テストグラウンド：話題度のオーラ v2（漫画・P5 の作法）。v1（streak.html）は写実的な粒子だったので、こちらはアニメのオーラの描き方：
+   ・小元素の輪郭のまわりに、平らな色の層を重ねる（外から 墨のフチ → 濃い色 → 明るい色 → 白い芯）。層の数は話題度の段階で増える（Dota 2 の連続キルのように段階で強くなる）
+   ・墨の硬い影、網点（ハーフトーン）、動きは 1 秒 12 コマ（手描きアニメの「2 コマ打ち」）でカクカク跳ねる
+   ・上がる切り替え：2 コマのインパクトフレーム（トゲの吹き出し＋集中線、白黒反転）→ 段階の名前の帯が一文字ずつ叩きつけられる
+   トークンは scripts/render.py の :root と同じ。新しい色（--ice --frost --icedeep --coin --coindark）は採用したら render.py の :root に足す */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;
+ --ice:#8FD8FF;--frost:#E9F8FF;--icedeep:#2A6FD6;--coin:#C8901A;--coindark:#7A5208;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-sfx:'Dela Gothic One',var(--font-sans);
+ --skew:-8deg;--shadow:4px 4px 0 var(--ink)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans)}
+header{padding:16px 24px;background:var(--ink);color:var(--card);display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+header h1{margin:0;font:900 16px var(--font-sans)}
+header h1 small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header label{display:flex;align-items:center;gap:10px;font:700 13px var(--font-sans);flex:1;min-width:240px}
+header input[type=range]{flex:1;accent-color:var(--alert)}
+header output{font:28px var(--font-num);color:var(--gold);min-width:2.2em;text-align:right}
+header .btns{display:flex;flex-wrap:wrap;gap:8px}
+header button,header .tog{font:700 12px var(--font-sans);background:var(--card);color:var(--ink);border:0;padding:5px 12px;transform:skewX(var(--skew));cursor:pointer;box-shadow:3px 3px 0 var(--alert)}
+header .tog{display:flex;align-items:center;gap:6px}
+header .note{flex-basis:100%;margin:0;font-size:12px;opacity:.78}
+main{max-width:1320px;margin:0 auto;padding:22px 20px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:26px}
+.col{display:flex;flex-direction:column;gap:12px;--c:var(--alert);--c2:var(--flame)}
+.col.ice{--c:var(--icedeep);--c2:var(--ice)}.col.gold{--c:var(--gold);--c2:var(--coin)}
+.col h2{margin:0;display:flex;align-items:baseline;gap:10px;font:900 18px var(--font-sans)}
+.col h2 .tg{background:var(--ink);color:var(--card);padding:0 10px;transform:skewX(var(--skew));font:900 13px/1.8 var(--font-sans);box-shadow:3px 3px 0 var(--c)}
+.col ul{margin:0;padding-left:1.1em;font-size:13px;color:rgba(26,28,34,.75)}
+.col select{font:700 12px var(--font-sans);padding:3px 6px;align-self:flex-start}
+/* 版面の見本 */
+.band{position:relative;height:260px;margin-top:80px;background:var(--ink);color:var(--card);box-shadow:var(--shadow)}
+.light .band{background:var(--card);color:var(--ink);box-shadow:var(--shadow),inset 0 0 0 2px var(--ink)}
+.band .title{position:absolute;left:18px;bottom:16px;font:900 28px/1 var(--font-sans);transform:rotate(-2deg);z-index:3}
+.band .hv{position:absolute;left:18px;top:14px;font:12px var(--font-mono);opacity:.85;z-index:3}
+.band .hv b{font:30px/1 var(--font-num);color:var(--gold);margin-right:6px}
+.light .band .hv b{color:var(--alert)}
+.emb{position:absolute;right:26px;bottom:8px;transform:rotate(-6deg);transform-origin:50% 100%;z-index:2}
+.emb img{display:block;height:180px;width:auto;position:relative;z-index:1}
+.fxc{position:absolute;pointer-events:none}
+.fxc.back{z-index:0}.fxc.front{z-index:2}
+/* 跳ねる：2 コマ打ちのようにカクカク（steps） */
+.emb.jolt img,.ico.jolt img{animation:jolt .5s steps(6,end)}
+@keyframes jolt{0%{translate:0 0;scale:1}17%{translate:-6px -14px;scale:1.16;rotate:-5deg}34%{translate:4px 2px;scale:.94;rotate:3deg}50%{translate:-2px -4px;scale:1.05;rotate:-1deg}100%{translate:0 0;scale:1;rotate:0deg}}
+/* 版面を横切る斜めの帯（P5 の場面転換） */
+.slash{position:absolute;left:-4%;right:-4%;top:34%;height:34%;background:var(--c);transform:skewY(-6deg) scaleX(0);transform-origin:0 50%;z-index:1;pointer-events:none;opacity:0}
+.slash.go{animation:slash .55s cubic-bezier(.2,.9,.3,1)}
+@keyframes slash{0%{transform:skewY(-6deg) scaleX(0);opacity:1}35%{transform:skewY(-6deg) scaleX(1);opacity:1}100%{transform:skewY(-6deg) scaleX(1) translateX(40%);opacity:0}}
+/* 段階の名前の帯：黒い斜めの箱が拭き取りで出て、文字が一文字ずつ叩きつけられる */
+.tier{position:absolute;left:14px;top:62px;z-index:4;pointer-events:none;opacity:0}
+.tier.on{opacity:1}
+.tier .box{display:inline-flex;flex-direction:column;align-items:flex-start;padding:6px 16px 8px 12px;background:var(--ink);transform:skewX(-10deg) rotate(-5deg);box-shadow:6px 6px 0 var(--c);
+ clip-path:polygon(0 0,0 0,0 100%,0 100%)}
+.light .tier .box{box-shadow:6px 6px 0 var(--c),0 0 0 2px var(--card)}
+.tier.on .box{animation:wipe .16s steps(4,end) forwards}
+@keyframes wipe{to{clip-path:polygon(0 0,104% 0,100% 100%,0 100%)}}
+.tier small{font:14px/1 var(--font-num);letter-spacing:.14em;color:var(--c2);transform:skewX(10deg)}
+.tier b{display:flex;font:400 34px/1.1 var(--font-sfx);color:var(--card);transform:skewX(10deg)}
+.tier b i{font-style:normal;display:block;opacity:0;-webkit-text-stroke:6px var(--ink);paint-order:stroke fill;text-shadow:3px 4px 0 var(--c)}
+.tier.on b i{animation:slam .3s cubic-bezier(.2,1.6,.4,1) forwards}
+@keyframes slam{0%{opacity:0;transform:translateY(-38px) scale(1.8) rotate(-14deg)}55%{opacity:1;transform:translateY(3px) scale(.92)}100%{opacity:1;transform:none}}
+.tier.out{opacity:0;transform:translateX(26px) skewX(-14deg);transition:opacity .22s steps(3,end),transform .22s steps(3,end)}
+/* 目次の行の見本 */
+.navrow{display:flex;align-items:center;gap:14px;background:var(--paper);padding:14px 16px;border-left:6px solid var(--c);box-shadow:inset 0 0 0 1px rgba(26,28,34,.15)}
+.navrow .ico{position:relative;width:46px;height:46px;flex:none;transform:rotate(-4deg)}
+.navrow .ico img{display:block;width:46px;height:46px;border:3px solid var(--card);box-shadow:2px 2px 0 var(--ink);position:relative;z-index:1}
+.navrow b{font:900 16px var(--font-sans)}
+.navrow small{margin-left:auto;font:26px var(--font-num);color:var(--c)}
+.col.gold .navrow small{color:var(--coindark)}
+@media (prefers-reduced-motion:reduce){.emb.jolt img,.ico.jolt img,.slash.go,.tier.on .box,.tier.on b i{animation:none}.tier.on b i{opacity:1}.tier.on .box{clip-path:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1><small>TESTGROUND</small>話題度のオーラ v2（漫画・P5 の作法）</h1>
+  <label>話題度 <input type="range" id="h" min="0" max="100" value="67"><output id="hv">67</output></label>
+  <div class="btns">
+    <button id="up">上がる（ぶわっ）</button>
+    <button id="auto">自動で切り替え 20 → 45 → 67 → 92</button>
+    <label class="tog"><input type="checkbox" id="light"> 明るい版面</label>
+  </div>
+  <p class="note">v1（streak.html）は写実的な粒子でした。v2 はアニメのオーラの描き方です。小元素の輪郭のまわりに平らな色の層を重ね（外から 墨のフチ → 濃い色 → 明るい色 → 白い芯）、墨の硬い影と網点を付けて、1 秒 12 コマでカクカク動かします。Dota 2 の連続キルのように段階で強くなります。静か＝フチだけ、話題＝炎・結晶・光が出る、盛り上がり＝層が増えて横からも、沸騰＝白い芯と粒が加わり最大になります。上がる切り替えでは、2 コマのインパクトフレーム（トゲの吹き出しと集中線を白黒反転）が出たあと、段階の名前が一文字ずつ叩きつけられます。</p>
+</header>
+<main id="cols"></main>
+<script>
+(() => {
+  const EMBS = [['dota2-axe', 'Dota 2 · Axe'], ['dota2-crystal-maiden', 'Dota 2 · Crystal Maiden'], ['dota2-legion-commander', 'Dota 2 · Legion Commander'],
+                ['dota2-juggernaut', 'Dota 2 · Juggernaut'], ['gta-6-jason-duval', 'GTA 6 · Jason'], ['pochita', 'チェーンソーマン · ポチタ'], ['belle-5279e946', '绝区零 · Belle']];
+  const COLS = [
+    {kind: 'fire', name: '案 1　炎', emb: 'dota2-axe', pts: ['輪郭から平らな炎の舌が立つ（墨のフチ・赤・橙・金・白の芯）。舌の形は 1 秒 12 コマで描き替える', 'まわりに菱形の火の粉、後ろに赤い網点', '話題度で舌の数・高さ・層が増える']},
+    {kind: 'ice', name: '案 2　氷', emb: 'dota2-crystal-maiden', pts: ['輪郭から角ばった氷の結晶が突き出す（光の面と影の面の 2 色、墨のフチと影）', '菱形の雪がカクカク舞い、後ろに青い網点', 'ぶわっで結晶がポンと伸び、かけらが飛ぶ']},
+    {kind: 'gold', name: '案 3　金', emb: 'dota2-legion-commander', pts: ['後ろで金と墨の放射線（サンバースト）が 1 コマずつ回る', '平らなコイン（墨のフチ、回ると縁の厚みが見える）ときらめき', 'ぶわっでコインが噴き出す']},
+  ];
+  const LV = [[85, '沸騰', 'ON FIRE'], [60, '盛り上がり', 'HEATING UP'], [30, '話題', 'TRENDING'], [0, '静か', 'QUIET']];
+  const tierOf = v => LV.find(l => v >= l[0]);
+  const R = Math.random, FPS = 12;
+  const cs = getComputedStyle(document.documentElement), tok = v => cs.getPropertyValue(v).trim();
+  const T = Object.fromEntries(['ink', 'card', 'gold', 'alert', 'flame', 'ember', 'ice', 'frost', 'icedeep', 'coin', 'coindark'].map(k => [k, tok('--' + k)]));
+  // 層：[色, フチからの太さ（px、話題度で太る）, 舌・結晶の長さの割合, 出始める話題度]
+  const LAYERS = {
+    fire: [['ink', 9, 1.0, 0], ['alert', 7, .9, 0], ['flame', 5, .7, .3], ['gold', 3.2, .5, .6], ['card', 1.4, .28, .85]],
+    ice: [['ink', 8, 1.0, 0], ['icedeep', 6, .9, 0], ['ice', 4, .7, .3], ['frost', 2, .5, .6]],
+    gold: [['ink', 8, 1.0, 0], ['coindark', 6, 1, 0], ['gold', 4, 1, .3], ['card', 1.6, 1, .6]],
+  };
+  const DOTS = {fire: 'alert', ice: 'icedeep', gold: 'gold'};
+  let LIGHT = false;
+
+  class Aura {
+    constructor(host, img, kind, sc, band) {
+      this.host = host; this.img = img; this.kind = kind; this.sc = sc; this.band = band;
+      this.back = Object.assign(document.createElement('canvas'), {className: 'fxc back'});
+      this.front = Object.assign(document.createElement('canvas'), {className: 'fxc front'});
+      host.prepend(this.back); host.append(this.front);
+      this.h = .67; this.E = 0; this.impact = 0; this.acc = 0; this.frame = 0; this.rot = 0;
+      this.parts = []; this.tongues = []; this.crystals = [];
+      if (img.complete && img.naturalWidth) this.measure(); else img.addEventListener('load', () => this.measure(), {once: true});
+    }
+    measure() {
+      const w = Math.round(this.img.offsetWidth), h = Math.round(this.img.offsetHeight); if (!w || !h) return;
+      this.w = w; this.hh = h;
+      const m = document.createElement('canvas'); m.width = w; m.height = h; const x = m.getContext('2d'); x.drawImage(this.img, 0, 0, w, h);
+      const d = x.getImageData(0, 0, w, h).data, A = (X, Y) => d[(Y * w + X) * 4 + 3] > 80;
+      this.top = []; this.side = [];
+      for (let X = 0; X < w; X += 2) for (let Y = 0; Y < h; Y++) if (A(X, Y)) { this.top.push([X, Y]); break; }
+      for (let Y = 0; Y < h * .85; Y += 3) {
+        let L = -1, Rr = -1; for (let X = 0; X < w; X++) if (A(X, Y)) { if (L < 0) L = X; Rr = X; }
+        if (L >= 0) { this.side.push([L, Y, -1]); this.side.push([Rr, Y, 1]); }
+      }
+      if (!this.top.length) this.top = [[w / 2, 0]];
+      // 色ごとに塗りつぶした輪郭（太らせて層を作る）
+      this.tint = {};
+      for (const k of ['ink', 'alert', 'flame', 'gold', 'card', 'icedeep', 'ice', 'frost', 'coindark']) {
+        const c = document.createElement('canvas'); c.width = w; c.height = h; const y = c.getContext('2d');
+        y.drawImage(m, 0, 0); y.globalCompositeOperation = 'source-in'; y.fillStyle = T[k]; y.fillRect(0, 0, w, h); this.tint[k] = c;
+      }
+      const pad = Math.max(w, h) * .75, dpr = Math.min(2, devicePixelRatio || 1);
+      this.ox = pad; this.oy = pad * 1.15; this.cw = w + pad * 2; this.ch = h + pad * 1.15 + pad * .4;
+      for (const c of [this.back, this.front]) {
+        c.width = Math.round(this.cw * dpr); c.height = Math.round(this.ch * dpr);
+        Object.assign(c.style, {left: -this.ox + 'px', top: -this.oy + 'px', width: this.cw + 'px', height: this.ch + 'px'});
+        c.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      this.boil(true);
+    }
+    // 1 コマ分の形を描き替える（前のコマと半分くらい似せて、カクカクだけど暴れすぎない）
+    boil(first) {
+      const h = this.h, s = this.sc, E = this.E, w = this.w, K = this.kind;
+      if (K === 'fire') {
+        const n = Math.round(3 + h * 11), tp = this.top, old = this.tongues;
+        this.tongues = Array.from({length: n}, (_, i) => {
+          const p = tp[Math.min(tp.length - 1, Math.round((i + .5) / n * (tp.length - 1) + (R() - .5) * tp.length / n * .5))];
+          const o = old[i], f = (.55 + R() * .9) * (o && !first ? .5 : 1) + (o && !first ? o.f * .5 : 0);
+          return {x: p[0], y: p[1] + 4 * s, f, lean: (R() - .5) * .5, bw: Math.max(7, Math.min(28, w / n * .75)) * s / Math.max(.4, s) * (s < .5 ? .5 : 1)};
+        });
+        // 沸騰に近いと横からも
+        if (h > .55) for (let i = 0; i < Math.round((h - .5) * 10); i++) {
+          const p = this.side[(R() * this.side.length) | 0]; if (!p) break;
+          this.tongues.push({x: p[0], y: p[1], f: .35 + R() * .4, lean: p[2] * (.4 + R() * .4), bw: 8 * s, side: 1});
+        }
+      }
+      if (K === 'ice') {
+        const n = Math.round(3 + h * 13);
+        while (this.crystals.length < n) {
+          const useTop = R() < .7, p = useTop ? this.top[(R() * this.top.length) | 0] : this.side[(R() * this.side.length) | 0];
+          if (!p) break;
+          const base = useTop ? -Math.PI / 2 : (p[2] < 0 ? Math.PI : 0) - .5 * p[2];
+          const a = base + (R() - .5) * .9;
+          this.crystals.push({x: p[0], y: p[1], a, L: (.55 + R() * .8), g: 0, wd: .26 + R() * .12});
+        }
+        this.crystals.length = Math.min(this.crystals.length, n);
+        for (const c of this.crystals) c.g = Math.min(4, c.g + 1);   // ポン：0 → 0.6 → 1.15 → 1
+      }
+      this.rot += K === 'gold' ? (.05 + h * .06 + E * .2) : 0;
+    }
+    flare(k, tier) {
+      this.E = Math.min(1.5, k); this.impact = 2;
+      const j = this.host; j.classList.remove('jolt'); void j.offsetWidth; j.classList.add('jolt');
+      if (!this.w) return;
+      const s = this.sc, cx = this.w / 2, cy = this.hh * .45, n = Math.round((14 + k * 16) * (s < .5 ? .4 : 1));
+      for (let i = 0; i < n; i++) {
+        const a = R() * Math.PI * 2, v = (220 + R() * 420) * s;
+        if (this.kind === 'fire') this.parts.push({t: 'dia', x: cx, y: cy, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 120 * s, r: (4 + R() * 6) * Math.max(.5, s), life: 6 + (R() * 6 | 0), rot: R() * 3, c: R() < .5 ? 'gold' : 'alert'});
+        if (this.kind === 'ice') this.parts.push({t: 'shard', x: cx, y: cy, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 160 * s, r: (6 + R() * 8) * Math.max(.5, s), life: 7 + (R() * 5 | 0), rot: R() * 6});
+        if (this.kind === 'gold') this.parts.push({t: 'coin', x: cx + (R() - .5) * 40 * s, y: this.hh * .25, vx: (R() - .5) * 420 * s, vy: -(320 + R() * 420) * s, r: (7 + R() * 4) * Math.max(.5, s), life: 22, ph: (R() * 8) | 0, g: 1});
+      }
+      if (this.kind === 'ice') for (const c of this.crystals) c.g = 0;   // 結晶が生え直す
+    }
+    // ---------- 描く ----------
+    dilate(x, col, r) {   // 輪郭を r だけ太らせて塗る（16 方向にずらして重ねる）
+      const t = this.tint[col], X = this.ox, Y = this.oy;
+      for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2; x.drawImage(t, X + Math.cos(a) * r, Y + Math.sin(a) * r); }
+      x.drawImage(t, X, Y);
+    }
+    tongue(x, t, H, wf, grow) {   // 炎の舌：S 字にうねって尖る
+      const X = this.ox + t.x, Y = this.oy + t.y, bw = t.bw * wf * grow, lean = t.lean * H;
+      x.beginPath(); x.moveTo(X - bw, Y);
+      x.bezierCurveTo(X - bw * 1.1, Y - H * .45, X + lean * .2 - bw * .2, Y - H * .6, X + lean, Y - H);
+      x.bezierCurveTo(X + lean * .3 + bw * .5, Y - H * .55, X + bw * 1.15, Y - H * .3, X + bw, Y);
+      x.closePath(); x.fill();
+    }
+    crystal(x, c, L, wf, col1, col2, outline) {
+      const X = this.ox + c.x, Y = this.oy + c.y, ux = Math.cos(c.a), uy = Math.sin(c.a), px = -uy, py = ux, w = L * c.wd * wf;
+      const A = [X - ux * L * .18, Y - uy * L * .18], B = [X + px * w, Y + py * w], Tt = [X + ux * L, Y + uy * L], C = [X - px * w, Y - py * w];
+      if (outline) { x.fillStyle = col1; x.beginPath(); x.moveTo(...A); x.lineTo(...B); x.lineTo(...Tt); x.lineTo(...C); x.closePath(); x.fill(); return; }
+      x.fillStyle = col1; x.beginPath(); x.moveTo(...A); x.lineTo(...B); x.lineTo(...Tt); x.closePath(); x.fill();
+      x.fillStyle = col2; x.beginPath(); x.moveTo(...A); x.lineTo(...Tt); x.lineTo(...C); x.closePath(); x.fill();
+    }
+    star(x, cx, cy, r, fill) {   // 4 つ角のきらめき（墨のフチ）
+      const p = () => { x.beginPath(); x.moveTo(cx, cy - r); x.lineTo(cx + r * .22, cy - r * .22); x.lineTo(cx + r, cy); x.lineTo(cx + r * .22, cy + r * .22);
+        x.lineTo(cx, cy + r); x.lineTo(cx - r * .22, cy + r * .22); x.lineTo(cx - r, cy); x.lineTo(cx - r * .22, cy - r * .22); x.closePath(); };
+      p(); x.lineWidth = Math.max(1.5, r * .28); x.strokeStyle = T.ink; x.lineJoin = 'round'; x.stroke(); x.fillStyle = fill; x.fill();
+    }
+    halftone(x, col, R0, a) {   // 網点：中心ほど大きい点
+      const cx = this.ox + this.w / 2, cy = this.oy + this.hh * .45, g = Math.max(5, 8 * this.sc);
+      x.fillStyle = col; x.globalAlpha = a;
+      for (let yy = cy - R0; yy < cy + R0; yy += g) for (let xx = cx - R0; xx < cx + R0; xx += g) {
+        const d = Math.hypot(xx - cx, yy - cy) / R0; if (d >= 1) continue;
+        const r = g * .5 * (1 - d) ** 1.2; if (r < .5) continue;
+        x.beginPath(); x.arc(xx + ((yy / g | 0) % 2) * g / 2, yy, r, 0, 7); x.fill();
+      }
+      x.globalAlpha = 1;
+    }
+    impactFrame(x, inv) {   // インパクトフレーム：トゲの吹き出し＋集中線（2 コマ目は白黒反転）
+      const cx = this.ox + this.w / 2, cy = this.oy + this.hh * .45, R0 = Math.max(this.w, this.hh) * .95, acc = T[{fire: 'alert', ice: 'icedeep', gold: 'gold'}[this.kind]];
+      x.fillStyle = inv ? T.card : T.ink;
+      for (let i = 0; i < 46; i++) {   // 集中線
+        const a = i / 46 * Math.PI * 2 + R() * .05, d = .012 + R() * .02;
+        x.beginPath(); x.moveTo(cx + Math.cos(a) * R0 * .7, cy + Math.sin(a) * R0 * .7);
+        x.lineTo(cx + Math.cos(a - d) * R0 * 2, cy + Math.sin(a - d) * R0 * 2); x.lineTo(cx + Math.cos(a + d) * R0 * 2, cy + Math.sin(a + d) * R0 * 2); x.fill();
+      }
+      const spikes = (r1, r2, col) => { x.fillStyle = col; x.beginPath();
+        for (let i = 0; i < 44; i++) { const a = i / 44 * Math.PI * 2, r = i % 2 ? r1 * (.55 + R() * .1) : r1 * (.9 + R() * .25); x[i ? 'lineTo' : 'moveTo'](cx + Math.cos(a) * r, cy + Math.sin(a) * r * .85); }
+        x.closePath(); x.fill(); };
+      spikes(R0 * .95, 0, inv ? T.card : T.ink);
+      spikes(R0 * .8, 0, inv ? T.ink : acc);
+      spikes(R0 * .5, 0, inv ? acc : T.card);
+    }
+    render() {
+      const b = this.back.getContext('2d'), f = this.front.getContext('2d'), s = this.sc, h = this.h, E = this.E, K = this.kind, X = this.ox, Y = this.oy;
+      b.clearRect(0, 0, this.cw, this.ch); f.clearRect(0, 0, this.cw, this.ch);
+      if (this.impact > 0) { this.impactFrame(b, this.impact === 1); return; }
+      const amp = (.35 + h * .9) * (1 + E * .9), big = Math.max(this.w, this.hh);
+      // 網点
+      if (h > .15 || E) this.halftone(b, T[DOTS[K]], big * (.3 + h * .3) * (1 + E * .3), LIGHT ? .5 : .7);
+      // 金：後ろの放射線（金と墨が交互、1 コマずつ回る）
+      if (K === 'gold' && h > .25 && s > .5) {   // 細い金の光の筋（墨のフチ）が 1 コマずつ回る。長さは筋ごとに違う
+        const cx = X + this.w / 2, cy = Y + this.hh * .42, L = big * (.42 + h * .3) * (1 + E * .35), n = 14;
+        for (let i = 0; i < n; i++) {
+          const a = this.rot + i / n * Math.PI * 2, d = Math.PI / n * .38, l = L * [1, .72, .88, .64][i % 4], r0 = big * .2;
+          b.fillStyle = T.gold; b.strokeStyle = T.ink; b.lineWidth = 3; b.lineJoin = 'round';
+          b.beginPath(); b.moveTo(cx + Math.cos(a - d * .3) * r0, cy + Math.sin(a - d * .3) * r0); b.lineTo(cx + Math.cos(a - d) * l, cy + Math.sin(a - d) * l);
+          b.lineTo(cx + Math.cos(a) * l * 1.08, cy + Math.sin(a) * l * 1.08); b.lineTo(cx + Math.cos(a + d) * l, cy + Math.sin(a + d) * l);
+          b.lineTo(cx + Math.cos(a + d * .3) * r0, cy + Math.sin(a + d * .3) * r0); b.closePath(); b.stroke(); b.fill();
+        }
+      }
+      const layers = LAYERS[K].filter(l => h + E * .3 >= l[3]);
+      // 墨の硬い影（いちばん外の層を右下へずらして）
+      const sh = 6 * Math.max(.5, s), outer = layers[0];
+      b.save(); b.translate(sh, sh);
+      this.dilate(b, 'ink', outer[1] * amp * Math.max(.45, s));
+      b.fillStyle = T.ink;
+      if (K === 'fire') for (const t of this.tongues) this.tongue(b, t, (14 + h * 62) * s * t.f * (1 + E * 1.3), 1.25, 1);
+      if (K === 'ice') for (const c of this.crystals) this.crystal(b, c, (14 + h * 48) * s * c.L * [0, .6, 1.15, 1, 1][c.g] * (1 + E * .8), 1.3, T.ink, T.ink, true);
+      b.restore();
+      // 層を外から内へ
+      layers.forEach(([col, r, tf], i) => {
+        const wd = r * amp * Math.max(.45, s);
+        this.dilate(b, col, wd);
+        b.fillStyle = T[col];
+        if (K === 'fire') for (const t of this.tongues) this.tongue(b, t, (14 + h * 62) * s * t.f * tf * (1 + E * 1.3), 1.25 - i * .2, 1);
+        if (K === 'ice' && i === 0) for (const c of this.crystals) this.crystal(b, c, (14 + h * 48) * s * c.L * [0, .6, 1.15, 1, 1][c.g] * (1 + E * .8), 1.3, T.ink, T.ink, true);
+      });
+      if (K === 'ice') for (const c of this.crystals) {   // 結晶の面（光の面＋影の面）
+        const L = (14 + h * 48) * s * c.L * [0, .6, 1.15, 1, 1][c.g] * (1 + E * .8);
+        this.crystal(b, c, L * .9, 1, T.frost, T.ice, false);
+        this.crystal(b, c, L * .55, .6, T.card, T.frost, false);
+      }
+      // 前：粒
+      if (K === 'fire' && (R() < h * h * 1.2 || E)) { const p = this.top[(R() * this.top.length) | 0]; this.parts.push({t: 'dia', x: p[0], y: p[1], vx: (R() - .5) * 40 * s, vy: -(90 + R() * 120) * s, r: (3 + R() * 4) * Math.max(.5, s), life: 6 + (R() * 5 | 0), rot: R() * 3, c: R() < .6 ? 'gold' : 'flame'}); }
+      if (K === 'ice' && R() < .2 + h * .9) this.parts.push({t: 'snow', x: -this.w * .2 + R() * this.w * 1.4, y: -this.hh * .35 + R() * this.hh * .3, vx: (R() - .5) * 20 * s, vy: (30 + R() * 30) * s, r: (2 + R() * 3) * Math.max(.5, s), life: 8 + (R() * 6 | 0), rot: 0});
+      if (K === 'gold') {
+        if (R() < .15 + h * .8) { const p = R() < .6 ? this.top[(R() * this.top.length) | 0] : this.side[(R() * this.side.length) | 0] || [this.w / 2, 0]; this.parts.push({t: 'spark', x: p[0], y: p[1], r: (6 + R() * 8) * Math.max(.5, s), life: 4}); }
+        if (h > .55 && R() < (h - .5) * .5) this.parts.push({t: 'coin', x: this.w * (.2 + R() * .6), y: this.hh * .2, vx: (R() - .5) * 160 * s, vy: -(240 + R() * 200) * s, r: (6 + R() * 3) * Math.max(.5, s), life: 18, ph: (R() * 8) | 0, g: 1});
+      }
+      const dt = 1 / FPS;
+      this.parts = this.parts.filter(p => p.life-- > 0);
+      for (const p of this.parts) {
+        if (p.vx != null) { p.x += p.vx * dt; p.y += p.vy * dt; }
+        if (p.t === 'dia') {   // 菱形の火の粉（墨のフチ、1 コマずつ回る）
+          p.vx *= .82; p.vy = p.vy * .85 - 30 * s; p.rot += .7; const r = p.r * Math.min(1, p.life / 4);
+          f.save(); f.translate(X + p.x, Y + p.y); f.rotate(p.rot); f.lineWidth = Math.max(1.5, r * .4); f.strokeStyle = T.ink; f.fillStyle = T[p.c];
+          f.beginPath(); f.moveTo(0, -r * 1.4); f.lineTo(r * .7, 0); f.lineTo(0, r * 1.4); f.lineTo(-r * .7, 0); f.closePath(); f.stroke(); f.fill(); f.restore();
+        } else if (p.t === 'shard') {
+          p.vx *= .9; p.vy += 700 * s * dt; p.rot += 1.1; const r = p.r;
+          f.save(); f.translate(X + p.x, Y + p.y); f.rotate(p.rot); f.lineWidth = Math.max(1.5, r * .25); f.strokeStyle = T.ink;
+          f.beginPath(); f.moveTo(0, -r); f.lineTo(r * .5, r * .3); f.lineTo(-r * .35, r * .7); f.closePath(); f.stroke();
+          f.fillStyle = T.frost; f.fill(); f.fillStyle = T.ice; f.beginPath(); f.moveTo(0, -r); f.lineTo(r * .5, r * .3); f.lineTo(0, r * .2); f.closePath(); f.fill(); f.restore();
+        } else if (p.t === 'snow') {
+          p.x += Math.sin((p.y + p.x) * .1) * 3; const r = p.r;
+          f.save(); f.translate(X + p.x, Y + p.y); f.rotate(Math.PI / 4); f.fillStyle = LIGHT ? T.icedeep : T.frost; f.fillRect(-r / 2, -r / 2, r, r); f.restore();
+        } else if (p.t === 'spark') {
+          const r = p.r * [0, .4, 1.15, .8, .5][p.life + 1 > 4 ? 4 : p.life + 1];
+          this.star(f, X + p.x, Y + p.y, r, R() < .5 ? T.card : T.gold);
+        } else if (p.t === 'coin') {   // 平らなコイン：8 コマで回る（縁の厚みが見える）
+          p.vy += 1100 * s * dt; p.ph = (p.ph + 1) % 8; const k = [1, .72, .32, .08, .32, .72, 1, 1][p.ph], r = p.r, cw = Math.max(1.2, r * k), th = r * .28 * (1 - k);
+          const cx = X + p.x, cy = Y + p.y; f.lineWidth = Math.max(1.5, r * .22); f.strokeStyle = T.ink;
+          if (th > .5) { f.fillStyle = T.coindark; f.beginPath(); f.ellipse(cx + th, cy, cw, r, 0, 0, 7); f.fill(); f.stroke(); }
+          f.fillStyle = T.gold; f.beginPath(); f.ellipse(cx, cy, cw, r, 0, 0, 7); f.fill(); f.stroke();
+          if (k > .5) { f.lineWidth = Math.max(1, r * .12); f.strokeStyle = T.coindark; f.beginPath(); f.ellipse(cx, cy, cw * .6, r * .6, 0, 0, 7); f.stroke();
+            f.fillStyle = T.card; f.beginPath(); f.ellipse(cx - cw * .35, cy - r * .4, cw * .14, r * .14, 0, 0, 7); f.fill(); }
+        }
+      }
+    }
+    tick(dt, heat) {   // 1 秒 12 コマ：コマが進むときだけ描き替える
+      if (!this.w) return;
+      this.acc += dt; this.h += (heat - this.h) * Math.min(1, dt * 4);
+      if (this.acc < 1 / FPS) return;
+      this.acc %= 1 / FPS; this.frame++;
+      if (this.impact > 0) { this.render(); this.impact--; return; }
+      this.E *= .78; if (this.E < .02) this.E = 0;
+      this.boil(false); this.render();
+    }
+  }
+
+  // ---------- 3 列 ----------
+  const cols = document.getElementById('cols'), auras = [], banners = [];
+  for (const c of COLS) {
+    const col = document.createElement('section'); col.className = 'col ' + c.kind;
+    col.innerHTML = `<h2><span class="tg">${c.name}</span></h2><ul>${c.pts.map(p => `<li>${p}</li>`).join('')}</ul>
+      <select aria-label="小元素">${EMBS.map(([f, n]) => `<option value="${f}"${f === c.emb ? ' selected' : ''}>${n}</option>`).join('')}</select>
+      <div class="band"><i class="slash"></i><span class="hv"><b class="num">67</b>話題度</span><div class="tier"><div class="box"><small></small><b></b></div></div>
+        <span class="title">Dota 2</span><div class="emb"><img alt="" src="../emblems/${c.emb}.webp"></div></div>
+      <div class="navrow"><span class="ico"><img alt="" src="../icons/dota-2.webp"></span><b>Dota 2</b><small class="num">67</small></div>`;
+    cols.appendChild(col);
+    const emb = col.querySelector('.emb'), ico = col.querySelector('.ico');
+    const big = new Aura(emb, emb.querySelector('img'), c.kind, 1), small = new Aura(ico, ico.querySelector('img'), c.kind, .34);
+    auras.push(big, small);
+    banners.push({tier: col.querySelector('.tier'), slash: col.querySelector('.slash')});
+    col.querySelector('select').addEventListener('change', ev => {
+      const img = emb.querySelector('img'); img.src = `../emblems/${ev.target.value}.webp`; big.w = 0; big.crystals = [];
+      img.addEventListener('load', () => big.measure(), {once: true});
+    });
+  }
+  let hideT = null;
+  function announce(v) {   // 段階の名前を叩きつける
+    const [, ja, en] = tierOf(v);
+    clearTimeout(hideT);
+    for (const {tier, slash} of banners) {
+      tier.classList.remove('on', 'out'); slash.classList.remove('go');
+      tier.querySelector('small').textContent = en + ' · ' + v;
+      tier.querySelector('b').innerHTML = [...ja].map((ch, i) => `<i style="animation-delay:${(.12 + i * .06).toFixed(2)}s">${ch}</i>`).join('');
+      void tier.offsetWidth; tier.classList.add('on'); slash.classList.add('go');
+    }
+    hideT = setTimeout(() => banners.forEach(({tier}) => tier.classList.add('out')), 1700);
+  }
+
+  const hs = document.getElementById('h'), hv = document.getElementById('hv');
+  let heat = .67;
+  function setHeat(v, flare) {
+    const to = v / 100, up = to - heat; heat = to; hs.value = v; hv.textContent = v;
+    document.querySelectorAll('.num').forEach(n => n.textContent = v);
+    if (flare && up > .04) { auras.forEach(a => a.flare(.45 + up * 1.6)); announce(v); }
+  }
+  hs.addEventListener('input', () => setHeat(+hs.value, false));
+  document.getElementById('up').addEventListener('click', () => { const v = +hs.value; heat = Math.max(0, v / 100 - .35); setHeat(v, true); });
+  let timer = null;
+  document.getElementById('auto').addEventListener('click', ev => {
+    if (timer) { clearInterval(timer); timer = null; ev.target.textContent = '自動で切り替え 20 → 45 → 67 → 92'; return; }
+    const seq = [20, 45, 67, 92]; let i = 0; ev.target.textContent = '止める';
+    const go = () => { setHeat(seq[i], true); i = (i + 1) % seq.length; }; go(); timer = setInterval(go, 2800);
+  });
+  document.getElementById('light').addEventListener('change', ev => { LIGHT = ev.target.checked; document.body.classList.toggle('light', LIGHT); });
+
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let last = 0;
+  function loop(now) {
+    const dt = Math.min(.1, (now - (last || now)) / 1000); last = now;
+    for (const a of auras) { if (still.matches) { if (a.w && !a.drawn) { a.render(); a.drawn = 1; } } else a.tick(dt, heat); }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
