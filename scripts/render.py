@@ -2384,7 +2384,14 @@ NAV_STYLES = {
 .nav .flame .glow{position:absolute;left:50%;bottom:-6px;width:calc(16px + var(--h) * 84px);aspect-ratio:1;translate:-50% 0;border-radius:50%;
  background:radial-gradient(closest-side,color-mix(in srgb,var(--fm) 70%,transparent),transparent);opacity:calc(.05 + var(--h) * .9);
  transition:opacity .5s,width .5s;animation:breathe calc(3s - var(--h) * 2.2s) ease-in-out infinite alternate}
-.sparkfx{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:60;display:none}   /* ぶわっの火の粉（NAV_JS） */
+/* ぶわっの演出（NAV_JS）：canvas は画面に重ねるが、ふだんはロゴのまわりにしか描かない。炎の壁は「沸騰」に上がったときだけ */
+.sparkfx{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:60;display:none}
+.firewall{position:fixed;left:0;bottom:0;width:100vw;height:30vh;pointer-events:none;z-index:59;display:none;filter:blur(2px);-webkit-mask-image:linear-gradient(transparent,#000 45%);mask-image:linear-gradient(transparent,#000 45%)}
+/* 話題度の数字が弾んで数え上がり、ロゴが小さく揺れる */
+.nav .hm .hv.hvpop{animation:hvpop .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes hvpop{0%{transform:scale(1.9) rotate(-8deg);color:var(--flame);text-shadow:0 0 12px var(--gold)}100%{transform:none}}
+.nav .logo.quake{animation:quake .35s linear}
+@keyframes quake{20%{transform:translate(-2px,1px) rotate(-1deg)}40%{transform:translate(2px,-1px) rotate(1deg)}60%{transform:translate(-1px,-1px)}80%{transform:translate(1px,1px)}}
 @keyframes breathe{to{transform:scale(1.12);filter:brightness(1.15)}}
 /* 火の粉：位置・寿命・道筋は NAV_JS が 1 粒ずつ決める */
 .nav .flame .em{position:absolute;left:50%;bottom:22%;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:var(--gold);
@@ -2866,58 +2873,131 @@ NAV_JS = """
   // 炎ぜんたいが 一瞬で最大 約 3 倍に膨らみ（.flame の scale）、さらに層が縦に伸びる。同時に画面じゅうに火の粉
   const UP = {tl: .9, tr: .9, o: 1.1, m: 1, i: .8, c: .6};   // 縦に伸びる倍率（外側ほど高く）
   const env = t => t < .06 ? 1 - (1 - t / .06) ** 2 : t < .22 ? 1 : Math.exp(-(t - .22) * 2.7) * (1 + .12 * Math.sin((t - .22) * 34));   // 0.06 秒で最大・0.16 秒そのまま・揺れながら落ち着く
-  function flare(up) {
+  function flare(up, to) {
     const k = Math.min(1.5, .45 + up * 1.6);
     const cur = FL.sg ? env(FL.sg.t) * FL.sg.k : 0;   // 続けて上がったとき：燃え上がっている最中のほうが強ければそのまま（小さい ぶわっ で打ち消さない）
     if (cur >= k) return;
     FL.sg = {t: cur > .05 ? .06 : 0, k};
-    sparks(fl, k);
+    blast(fl, k, to >= .85 && FL.target < .85);   // 画面全体を使うのは「沸騰」に上がったときだけ
+    logo.classList.remove('quake'); void logo.offsetWidth; logo.classList.add('quake');   // ロゴが小さく揺れる
     ems.forEach((m, i) => { if (i < Math.round(6 + k * 7)) { m.life = Math.random() * .15; m.dur = .45 + Math.random() * .5; m.dx = (Math.random() - .5) * 4.5; m.sway = Math.random() * 4; m.ph = Math.random() * 6; m.b = k; } });
   }
-  // 画面じゅうの火の粉：ぶわっの瞬間、炎から画面いっぱいに弾け飛び、画面の下からも舞い上がる（canvas 1 枚。散り終わったら消す）
-  const SPK = {list: [], cv: null, cx: null, run: false, col: [], at: 0};
-  function sparks(from, k) {
-    if (performance.now() - SPK.at < 500) return; SPK.at = performance.now();   // 速くスクロールして続けて上がっても、火の粉は 0.5 秒に 1 回
-    if (!SPK.cv) {
-      SPK.cv = document.createElement('canvas'); SPK.cv.className = 'sparkfx'; SPK.cv.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(SPK.cv); SPK.cx = SPK.cv.getContext('2d');
+  // ぶわっの演出。ふだんはロゴのまわりだけ：炎のまわりの光・小さな衝撃波の輪・近くに散る火の粉・煙（画面全体は使わない）。
+  // 「沸騰」（話題度 85 以上）に上がったときだけ画面全体：画面が橙に照らされふちが火の色でちらつく・画面の下から火の粉と炎の壁
+  // （DOOM の炎＝PSX 版の伝搬アルゴリズム。粗い升目を引き伸ばして柔らかく）。canvas 2 枚、終わったら隠してループも止める
+  const FX = {sp: [], sm: [], ring: null, flash: 0, wall: false, acc: 0, hold: 0, run: false, at: 0, last: 0, ox: 0, oy: 0};
+  const FW = 160, FH = 72;
+  function fxCanvas(cls) { const c = document.createElement('canvas'); c.className = cls; c.setAttribute('aria-hidden', 'true'); document.body.appendChild(c); return c; }
+  const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  function rgb(c) {   // トークンの色 → [r, g, b]
+    const x = FX.cx; x.fillStyle = '#000'; x.fillStyle = c; const h = x.fillStyle;
+    return h[0] === '#' ? [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) : (h.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
+  }
+  function blast(from, k, big) {
+    const now = performance.now();
+    if (now - FX.at < 500) return; FX.at = now;   // 速くスクロールして続けて上がっても 0.5 秒に 1 回
+    if (!FX.cv) {
+      FX.cv = fxCanvas('sparkfx'); FX.cx = FX.cv.getContext('2d');
+      FX.fw = fxCanvas('firewall'); FX.fw.width = FW; FX.fw.height = FH; FX.fc = FX.fw.getContext('2d');
+      FX.fire = new Uint8Array(FW * FH); FX.img = FX.fc.createImageData(FW, FH);
+      const cs = getComputedStyle(document.documentElement), tok = v => cs.getPropertyValue(v).trim() || '#FF7A1A';
+      FX.col = ['--gold', '--flame', '--flame', '--alert', '--gold'].map(tok);
+      [FX.cFlame, FX.cGold, FX.cInk] = ['--flame', '--gold', '--ink'].map(v => rgb(tok(v)));
+      const st = ['--ember', '--alert', '--flame', '--gold', '--card'].map(v => rgb(tok(v)));   // 熾火 → 赤 → 橙 → 金 → 白 の 37 段（0 は透明）
+      FX.pal = Array.from({length: 37}, (_, i) => { const f = i / 36 * 4, j = Math.min(3, Math.floor(f)), u = f - j, a = st[j], b = st[j + 1];
+        return [0, 1, 2].map(n => Math.round(a[n] + (b[n] - a[n]) * u)).concat(Math.round(Math.min(1, i / 16) * 215)); });
     }
     const W = innerWidth, H = innerHeight, dpr = Math.min(2, devicePixelRatio || 1);
-    if (SPK.cv.width !== Math.round(W * dpr) || SPK.cv.height !== Math.round(H * dpr)) { SPK.cv.width = Math.round(W * dpr); SPK.cv.height = Math.round(H * dpr); }
-    SPK.cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const cs = getComputedStyle(document.documentElement);
-    SPK.col = ['--gold', '--flame', '--flame', '--alert', '--gold'].map(v => cs.getPropertyValue(v).trim() || '#FF7A1A');
-    const r = from.getBoundingClientRect(), ox = r.left + r.width / 2, oy = r.top + r.height * .55;
-    const n = Math.round(150 + k * 150), R = Math.random;
+    if (FX.cv.width !== Math.round(W * dpr) || FX.cv.height !== Math.round(H * dpr)) { FX.cv.width = Math.round(W * dpr); FX.cv.height = Math.round(H * dpr); }
+    FX.cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const r = from.getBoundingClientRect(), R = Math.random, n = big ? Math.round(150 + k * 150) : Math.round(36 + k * 30);
+    FX.ox = r.left + r.width / 2; FX.oy = r.top + r.height * .55;
     for (let i = 0; i < n; i++) {
-      const burst = i < n * .62, s = {life: 0, dur: .9 + R() * 1.4, w: 1.3 + R() * 2.4, c: SPK.col[i % SPK.col.length], ph: R() * 6, burst};
-      if (burst) {   // 炎から：上・右・下へ扇形に（左上の炎から画面全体へ届く速さ）
-        const a = (-110 + R() * 190) * Math.PI / 180, v = 260 + R() ** .6 * 1500 * (.55 + Math.min(1, k) * .45);
-        Object.assign(s, {x: ox, y: oy, vx: Math.cos(a) * v, vy: Math.sin(a) * v});
+      const burst = !big || i < n * .62, s = {life: 0, dur: big ? .9 + R() * 1.4 : .5 + R() * .6, w: (big ? 1.3 : 1) + R() * 2, c: FX.col[i % FX.col.length], ph: R() * 6, burst, near: !big};
+      if (burst) {   // 炎から：ふだんは上と横へ近くだけ（ロゴのまわり 200px ほど）、沸騰は上・右・下へ画面全体まで
+        const a = (big ? -110 + R() * 190 : -165 + R() * 150) * Math.PI / 180, v = big ? 260 + R() ** .6 * 1500 * (.55 + Math.min(1, k) * .45) : 120 + R() ** .6 * 420 * (.6 + Math.min(1, k) * .4);
+        Object.assign(s, {x: FX.ox, y: FX.oy, vx: Math.cos(a) * v, vy: Math.sin(a) * v});
       } else {        // 画面の下から：ばらばらの位置・時間で舞い上がる
         Object.assign(s, {x: R() * W, y: H + 10 + R() * 60, vx: (R() - .5) * 90, vy: -(220 + R() * 650), life: -R() * .5});
       }
-      SPK.list.push(s);
+      FX.sp.push(s);
     }
-    SPK.cv.style.display = 'block';
-    if (!SPK.run) { SPK.run = true; SPK.last = 0; requestAnimationFrame(spark); }
+    FX.ring = {t: 0, k, big}; FX.flash = Math.min(1, .5 + k * .4); FX.big = big;
+    for (let i = 0; i < (big ? 9 : 5); i++) FX.sm.push({x: FX.ox + (R() - .5) * 30, y: FX.oy - 40 - R() * 30, vx: 20 + R() * 50, vy: -(40 + R() * 70), r: 14 + R() * 16, life: -(.2 + R() * .35), dur: 1.4 + R()});
+    if (big) {   // 沸騰に上がったとき：画面の下から炎の壁が立ち上がり、火元が消えると上から崩れて消える
+      FX.fw.style.height = Math.round(18 + Math.min(1.5, k) * 8) + 'vh';
+      FX.hold = .15 + k * .15; FX.wall = true;
+      FX.fire.fill(36, (FH - 1) * FW);
+    }
+    FX.cv.style.display = 'block'; FX.fw.style.display = FX.wall ? 'block' : 'none';
+    if (!FX.run) { FX.run = true; FX.last = 0; requestAnimationFrame(fxLoop); }
   }
-  function spark(now) {
-    const dt = Math.min(.05, (now - (SPK.last || now)) / 1000), c = SPK.cx; SPK.last = now;
-    c.clearRect(0, 0, innerWidth, innerHeight);
-    SPK.list = SPK.list.filter(s => (s.life += dt / s.dur) < 1);
-    for (const s of SPK.list) {
+  function fxLoop(now) {
+    const dt = Math.min(.05, (now - (FX.last || now)) / 1000), c = FX.cx, W = innerWidth, H = innerHeight; FX.last = now;
+    c.clearRect(0, 0, W, H);
+    if (FX.flash > .01) {   // 閃光：ふだんはロゴのまわりだけ明るく、沸騰は画面全体
+      const f = FX.flash, R0 = FX.big ? Math.max(W, H) * .9 : 170;
+      let g = c.createRadialGradient(FX.ox, FX.oy, 0, FX.ox, FX.oy, R0);
+      g.addColorStop(0, rgba(FX.cGold, .9)); g.addColorStop(.3, rgba(FX.cFlame, .5)); g.addColorStop(1, rgba(FX.cFlame, 0));
+      c.globalAlpha = f * .45; c.fillStyle = g; c.fillRect(FX.ox - R0, FX.oy - R0, R0 * 2, R0 * 2);
+      if (FX.big) g = c.createRadialGradient(W / 2, H / 2, Math.min(W, H) * .3, W / 2, H / 2, Math.hypot(W, H) / 2);
+      if (FX.big) { g.addColorStop(0, rgba(FX.cFlame, 0)); g.addColorStop(1, rgba(FX.cFlame, .9));
+        c.globalAlpha = f * (.35 + Math.random() * .2); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+      FX.flash *= Math.exp(-2.4 * dt);
+    }
+    if (FX.ring) {   // 衝撃波の輪
+      const p = (FX.ring.t += dt / .75);
+      if (p >= 1) FX.ring = null;
+      else {
+        const rad = 14 + (1 - (1 - p) ** 3) * (FX.ring.big ? 260 + FX.ring.k * 420 : 50 + FX.ring.k * 60), lw = FX.ring.big ? 1 : .45;
+        c.globalAlpha = (1 - p) * .35; c.strokeStyle = rgba(FX.cFlame, 1); c.lineWidth = (6 + 34 * (1 - p)) * lw;
+        c.beginPath(); c.arc(FX.ox, FX.oy, rad * .95, 0, 7); c.stroke();
+        c.globalAlpha = (1 - p) ** 1.4; c.strokeStyle = rgba(FX.cGold, 1); c.lineWidth = (2 + 10 * (1 - p)) * lw;
+        c.beginPath(); c.arc(FX.ox, FX.oy, rad, 0, 7); c.stroke();
+      }
+    }
+    FX.sm = FX.sm.filter(s => (s.life += dt / s.dur) < 1);
+    for (const s of FX.sm) {   // 煙：ふくらみながら上へ流れて消える
       if (s.life < 0) continue;
-      const drag = Math.exp(-(s.burst ? 1.7 : .6) * dt);
-      s.vx = s.vx * drag + Math.sin(now / 160 + s.ph) * 40 * dt; s.vy = s.vy * drag - 160 * dt;   // 熱いので浮き上がり、ゆらゆら
       s.x += s.vx * dt; s.y += s.vy * dt;
-      const a = s.life < .08 ? s.life / .08 : (1 - s.life) ** 1.3, tx = s.x - s.vx * .05, ty = s.y - s.vy * .05;
-      c.lineCap = 'round'; c.strokeStyle = s.c;
-      c.globalAlpha = a * .25; c.lineWidth = s.w * 3.2; c.beginPath(); c.moveTo(tx, ty); c.lineTo(s.x, s.y); c.stroke();   // 光のにじみ
+      const rr = s.r * (1 + s.life * 2.5), g = c.createRadialGradient(s.x, s.y, 0, s.x, s.y, rr);
+      g.addColorStop(0, rgba(FX.cInk, .2)); g.addColorStop(1, rgba(FX.cInk, 0));
+      c.globalAlpha = Math.sin(Math.PI * s.life); c.fillStyle = g; c.beginPath(); c.arc(s.x, s.y, rr, 0, 7); c.fill();
+    }
+    FX.sp = FX.sp.filter(s => (s.life += dt / s.dur) < 1);
+    c.lineCap = 'round';
+    for (const s of FX.sp) {   // 火の粉：熱いので浮き上がり、ゆらゆら
+      if (s.life < 0) continue;
+      const drag = Math.exp(-(s.near ? 3.2 : s.burst ? 1.7 : .6) * dt);
+      s.vx = s.vx * drag + Math.sin(now / 160 + s.ph) * 40 * dt; s.vy = s.vy * drag - (s.near ? 60 : 160) * dt;
+      s.x += s.vx * dt; s.y += s.vy * dt;
+      const a = s.life < .08 ? s.life / .08 : (1 - s.life) ** 1.3, tl = s.near ? .03 : .05, tx = s.x - s.vx * tl, ty = s.y - s.vy * tl;
+      c.strokeStyle = s.c;
+      c.globalAlpha = a * .25; c.lineWidth = s.w * 3.2; c.beginPath(); c.moveTo(tx, ty); c.lineTo(s.x, s.y); c.stroke();
       c.globalAlpha = a; c.lineWidth = s.w; c.beginPath(); c.moveTo(tx, ty); c.lineTo(s.x, s.y); c.stroke();
     }
     c.globalAlpha = 1;
-    if (SPK.list.length) requestAnimationFrame(spark); else { SPK.run = false; SPK.cv.style.display = 'none'; }
+    if (FX.wall) {   // 炎の壁：下の行が火元。1 マス上へ、ランダムに横へずれながら 0〜1 段ずつ冷える（50 回 / 秒）
+      const F = FX.fire;
+      FX.acc += dt;
+      while (FX.acc > .02) {
+        FX.acc -= .02;
+        if (FX.hold > 0) FX.hold -= .02;
+        else for (let i = (FH - 1) * FW; i < FH * FW; i++) F[i] = Math.max(0, F[i] - (Math.random() * 3 | 0));
+        for (let x = 0; x < FW; x++) for (let y = 1; y < FH; y++) {
+          const s = y * FW + x, p = F[s];
+          if (!p) { F[s - FW] = 0; continue; }
+          const q = Math.random() * 4 | 0, d = Math.max(0, Math.min(FW * FH - 1, s - FW - q + 1));
+          F[d] = Math.max(0, p - (q & 1) - (Math.random() < .45 ? 1 : 0));   // 上ほど冷えて、壁の高さの半分ほどで消える
+        }
+      }
+      const D = FX.img.data; let lit = false;
+      for (let i = 0; i < F.length; i++) { const v = F[i], col = FX.pal[v]; if (v) lit = true; D[i * 4] = col[0]; D[i * 4 + 1] = col[1]; D[i * 4 + 2] = col[2]; D[i * 4 + 3] = col[3]; }
+      FX.fc.putImageData(FX.img, 0, 0);
+      if (!lit) { FX.wall = false; FX.fw.style.display = 'none'; }
+    }
+    if (FX.sp.length || FX.sm.length || FX.ring || FX.flash > .01 || FX.wall) requestAnimationFrame(fxLoop);
+    else { FX.run = false; c.clearRect(0, 0, W, H); FX.cv.style.display = 'none'; FX.fw.style.display = 'none'; }
   }
   const wob = (t, p) => Math.sin(t * 1.13 + p) * .45 + Math.sin(t * 2.71 + p * 1.7) * .3 + Math.sin(t * 5.87 + p * 2.3) * .17 + Math.sin(t * 11.3 + p * .7) * .08;
   let flLast = 0;
@@ -2977,10 +3057,16 @@ NAV_JS = """
     const own = on && on.dataset.heat != null ? +on.dataset.heat || 0 : null;
     const v = own == null ? maxHeat : own;
     const to = own == null ? Math.min(.35, v / 100) : v / 100;
-    if (!FL.first && to - FL.target > .04 && FL.run) flare(to - FL.target);   // 強くなる切り替えだけ ぶわっ（開いた直後・止まっているときは出さない）
+    const go = !FL.first && to - FL.target > .04 && FL.run, hv = logo.querySelector('.hv'), was = +hv.textContent || 0;
+    if (go) flare(to - FL.target, to);   // 強くなる切り替えだけ ぶわっ（開いた直後・止まっているときは出さない）
     FL.first = false; FL.target = to;
     nav.style.setProperty('--heat', FL.target.toFixed(2));
-    logo.querySelector('.hv').textContent = v ? String(v) : '';
+    hv.textContent = v ? String(v) : '';
+    if (go && v) {   // 数字が弾んで、前の点から数え上がる（0.5 秒）
+      hv.classList.remove('hvpop'); void hv.offsetWidth; hv.classList.add('hvpop');
+      const t0 = performance.now(), cnt = t => { if (FL.target !== to) return; const p = Math.min(1, (t - t0) / 500); hv.textContent = String(Math.round(was + (v - was) * (1 - (1 - p) ** 3))); if (p < 1) requestAnimationFrame(cnt); };
+      requestAnimationFrame(cnt);
+    }
     logo.querySelector('.hl').textContent = own == null ? (v ? '今日の最高' : '') : ((LV.find(l => v >= l[0]) || [0, ''])[1] || '話題度');
     burnning();
   }
