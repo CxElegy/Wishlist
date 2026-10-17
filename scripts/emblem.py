@@ -341,7 +341,7 @@ def write_item(name, emblems, th):
         skip = False
         block.append(l)
     at = next((i + 1 for i, l in enumerate(block) if l.startswith("    motif:")), 0)
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "fs")
     block[at:at] = (["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"]
                     + [f"      - {_flow({k: x[k] for k in keep if k in x})}" for x in emblems]
                     + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
@@ -485,6 +485,48 @@ def other_faces(out, keep=None):
         return sum(1 for h in hs[1:] if h >= OTHER_FACE * hs[0])
     except Exception:
         return 0
+
+
+LOGO_WORD = re.compile(r"ロゴ|logo|wordmark|ワードマーク", re.I)
+FLAT_TOL = 28      # ロゴの地の色：縁の色からこの差（RGB の最大差）までを地として透明にする
+CARD_AR = (0.95, 1.6)   # カード（4:5 の窓）で切ってよい縦横比（高さ ÷ 幅）。外れたら切らずに全体を見せる
+
+
+def is_logo(x, kind=None):
+    """ロゴか（切ってはいけない）。ブランドの小元素、または名前・理由に「ロゴ」とあるもの。"""
+    return kind == "brand" or bool(LOGO_WORD.search(f'{x.get("subject", "")} {x.get("why", "")}'))
+
+
+def clear_flat_bg(img):
+    """縁が一色（白・黒の地）の画像の、縁からつながった地の色を透明にして、余白を切り詰める。地が一色でなければそのまま。
+    ロゴの PNG に白い地と余白がついている（gelato pique の 1200×628）ので、そのままだと四角い白い板になり、カードに入れると字が切れる。"""
+    import numpy as np
+    import cv2
+    from PIL import Image
+    rgba = np.array(img.convert("RGBA"))
+    rgb = rgba[..., :3].astype("int16")
+    edge = np.concatenate([rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]])
+    bg = np.median(edge, axis=0)
+    if (np.abs(edge - bg).max(axis=1) <= FLAT_TOL).mean() < 0.9:   # 縁が一色でない（写真）
+        return img
+    flat = (np.abs(rgb - bg).max(axis=2) <= FLAT_TOL).astype("uint8")
+    n, labels = cv2.connectedComponents(flat, connectivity=4)
+    border = set(np.unique(np.concatenate([labels[0], labels[-1], labels[:, 0], labels[:, -1]]))) - {0}
+    mask = np.isin(labels, list(border)) & (flat == 1)
+    rgba[..., 3] = np.where(mask, 0, rgba[..., 3])
+    out = Image.fromarray(rgba)
+    box = out.getchannel("A").getbbox()
+    return out.crop(box) if box else img
+
+
+def logo_local(url, slug):
+    """ロゴを倉庫に置く：地の色を抜いて余白を切り詰め、docs/emblems/<slug>.webp に。→ 網页から読む相対パス。"""
+    from PIL import Image
+    img = clear_flat_bg(Image.open(io.BytesIO(_get(url))))
+    img.thumbnail((520, 520))
+    EMB_DIR.mkdir(parents=True, exist_ok=True)
+    img.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=90, method=6)
+    return f"emblems/{slug}.webp"
 
 
 # 切り抜きの検査（check_whole）の数。判断の一覧（emblem_rules.py）もここを読む
@@ -685,9 +727,9 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False):
     return backup
 
 
-def fit_all(name):
+def fit_all(name, drawn=False):
     """その関注項の人物の小元素を、顔の大きさがそろうように整えて docs/emblems/ に保存し、fs（顔の割合）を書く。
-    ロゴ・物のアイコン（shape: logo / icon）はそのまま。"""
+    ロゴ・物のアイコン（shape: logo / icon）はそのまま。全身で使うもの（want_full：公式の立ち絵など）は切らずに全身のまま。"""
     import yaml
     from PIL import Image
     path = ROOT / "items.yaml"
@@ -706,11 +748,20 @@ def fit_all(name):
             if img is None:
                 img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
                        else Image.open(io.BytesIO(_get(x["image"])))).convert("RGBA")
+            full = want_full(x, drawn, item.get("emblem_framing"))
+            if full:
+                x.pop("upper", None)   # 前に多数決で書いた「上半身に切る」は、全身と決まったら消す
             out, fs = face_fit(img)
-            if x.get("upper") is False:   # 全身のまま使う（ほかの小元素が全身）：顔で切らない
+            if full or x.get("upper") is False:   # 全身のまま使う（公式の立ち絵・ほかの小元素が全身）：顔で切らない
                 out = main_parts(img)
                 out = out.crop(out.getchannel("A").getbbox())
                 fs = None
+            x.pop("body", None)
+            if full or x.get("upper") is False:   # 目から足の裏までの長さで大きさをそろえる（網页の --be / --bf）
+                mk = body_marks(out)
+                if mk:
+                    x["body"] = list(mk[:5])
+                    print(f"  {x['subject']}：目 {mk[0]} · 足の裏 {mk[1]} · 重心 {mk[2]} · 大きさ {mk[4]}（{mk[5]}）", file=sys.stderr)
             if fs and fs > CLOSEUP and x.get("page"):   # 顔だけのアップは浮くので、同じキャラのページから胸像を探す
                 m = re.match(r"^(https://[^/]+)/wiki/(.+)$", x["page"])
                 found = m and find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "),
@@ -731,7 +782,8 @@ def fit_all(name):
                 x["fs"] = fs
             else:
                 x.pop("fs", None)
-            print(f"  {x['subject']}：顔 {fs if fs else '見つからない（上半身の規則）'}", file=sys.stderr)
+            if not x.get("body"):
+                print(f"  {x['subject']}：顔 {fs if fs else '見つからない（上半身の規則）'}", file=sys.stderr)
         except Exception as e:
             print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
     _write_emblems(name, ems)
@@ -745,7 +797,7 @@ def _write_emblems(name, ems):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "upper", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "upper", "framing", "body", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     path.write_text("\n".join(lines), encoding="utf-8")
 
@@ -785,7 +837,120 @@ def upper_all(name):
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
-def keep_framing(ems, old=()):
+POSE_MODEL = "yolov8m-pose.pt"   # 体の目印（目・足首）。ultralytics があれば使い、なければ輪郭から推定（Actions には入れていない：PyTorch が重い）
+POSE_MIN = 0.5                   # 目印の確かさがこれ未満なら使わない
+PEDESTAL = 1.6                   # いちばん下の段の幅が体の幅のこれ倍を超える = 台座（足の裏は台の上の縁）
+_POSE = []
+
+
+def _pose_model():
+    if not _POSE:
+        try:
+            from ultralytics import YOLO
+            cache = pathlib.Path.home() / ".cache" / "wishlist-pose"
+            cache.mkdir(parents=True, exist_ok=True)
+            _POSE.append(YOLO(str(cache / POSE_MODEL)) if (cache / POSE_MODEL).exists() else YOLO(POSE_MODEL))
+        except Exception:
+            _POSE.append(None)
+    return _POSE[0]
+
+
+def body_marks(img):
+    """全身の立ち絵の「目の高さ」「足の裏」「重心」「体の大きさ」→ (eye, foot, cx, ar, size, how)。eye・foot・size は高さに対する割合、
+    cx は幅に対する割合、ar = 幅 ÷ 高さ。size（面積の平方根）は、しゃがんだ・前かがみのキャラを大きくしすぎないため（render._body_len）。
+    網页では重心を同じ位置に置く（武器・尻尾が横に長くても、体はいつも同じところに立つ）。
+    網页では、目から足の裏までの長さがどのキャラも同じになるように縮め、足の裏を帯の線にそろえる（render の --be / --bf）。
+    画像のいちばん下は足とは限らない（尻尾・武器・服の裾・影）ので、足首の目印（姿勢モデル）から真下に輪郭をたどって足の裏を探す。
+    頭のてっぺんでなく目で測るのは、髪・帽子・耳の高さがキャラごとに違うため。モデルが見つけられなければ輪郭から推定。"""
+    import numpy as np
+    from PIL import Image
+    a = np.array(img.convert("RGBA").getchannel("A")) > 128
+    h, w = a.shape
+    ys, xs = np.nonzero(a)
+    if not len(ys):
+        return None
+    top, bottom = int(ys.min()), int(ys.max())
+    eye = foot = None
+    how = "輪郭"
+    m = _pose_model()
+    if m is not None:
+        bg = Image.new("RGBA", img.size, "white")
+        bg.alpha_composite(img.convert("RGBA"))
+        r = m(bg.convert("RGB"), verbose=False)[0]
+        if r.keypoints is not None and len(r.keypoints.xy):
+            i = int(np.argmax(r.boxes.conf.cpu().numpy()))
+            kp, cf = r.keypoints.xy[i].cpu().numpy(), r.keypoints.conf[i].cpu().numpy()
+            eyes = [kp[j][1] for j in (1, 2) if cf[j] >= POSE_MIN] or ([kp[0][1]] if cf[0] >= POSE_MIN else [])
+            if eyes:
+                eye = float(np.mean(eyes))
+            soles = []
+            for j in (15, 16):   # 足首から真下へ、足首のまわりの細い帯で輪郭が続くところまで = 足の裏
+                if cf[j] < POSE_MIN:
+                    continue
+                x0, y0 = int(kp[j][0]), int(kp[j][1])
+                band = max(3, int(w * 0.04))
+                col = a[:, max(0, x0 - band):x0 + band + 1].any(axis=1)
+                y, gap = min(max(y0, 0), h - 1), max(2, int(h * 0.03))
+                while y + 1 < h and col[y + 1:y + 1 + gap].any():   # 細いヒールのすき間（3% まで）は飛び越える
+                    y += 1 + int(np.argmax(col[y + 1:y + 1 + gap]))
+                soles.append(y)
+            if soles:
+                foot = float(max(soles))
+            if eye is not None or foot is not None:
+                how = "姿勢モデル"
+    if eye is None:   # 頭のてっぺんから、立ち絵の高さの 6% 下あたりが目
+        eye = top + (bottom - top) * 0.06
+    # 重心：体の部分（目の高さから下）の不透明な画素の真ん中。横に長く伸びた武器・尻尾は細いので重心をあまり動かさない
+    lo = int(eye if eye is not None else top + (bottom - top) * 0.06)
+    hi = int(foot if foot is not None else bottom) + 1
+    by, bx = np.nonzero(a[lo:hi])
+    cx = float(bx.mean()) if len(bx) else float(xs.mean())
+    if foot is None:   # 重心を通る縦の帯でいちばん下 = 足の裏（横に広がった尻尾・武器は帯の外）
+        cx = int(cx)
+        band = max(4, int((xs.max() - xs.min()) * 0.2))
+        rows = np.nonzero(a[:, max(0, cx - band):cx + band + 1].any(axis=1))[0]
+        foot = float(rows.max()) if len(rows) else float(bottom)
+        # 台座（大乱闘のフィギュアの金の台）：いちばん下が体よりずっと広ければ、台の上の縁を足の裏に
+        span = np.array([(np.ptp(np.nonzero(r)[0]) if r.any() else 0) for r in a])
+        mid = span[int(foot - (foot - eye) * 0.45):int(foot - (foot - eye) * 0.25)]   # 下半身（台座のすぐ上）の幅。大きな頭の幅は使わない
+        body_w = float(np.median(mid[mid > 0])) if (mid > 0).any() else 0
+        low = int(foot - (foot - eye) * 0.3)   # 下の 30% に、体よりずっと広い段があれば台座（台の底は楕円で細くなるので、上から探す）
+        wide = np.nonzero(span[low:int(foot) + 1] > PEDESTAL * body_w)[0] if body_w else []
+        if len(wide):
+            y = low + int(wide[0]) - 1
+            if foot - y > h * 0.03:
+                foot, how = float(y), "輪郭（台座を除く）"
+    if foot - eye < h * 0.3:   # 目印がおかしい（座っている・寝ている）：輪郭の上下で
+        eye, foot, how = top + (bottom - top) * 0.06, float(bottom), "輪郭"
+    size = float(np.sqrt(a[int(eye):int(foot) + 1].sum())) / h   # 体の大きさ（目から足の裏までの面積の平方根）：しゃがんだ・前かがみの体の比べ方に
+    return round(eye / h, 3), round(foot / h, 3), round(float(cx) / w, 3), round(w / h, 3), round(size, 3), how
+
+
+def official_render(x):
+    """元の画像が透明背景の立ち絵か（ゲーム・アニメの公式の全身イラスト。背景から切り抜いたものではない）。"""
+    src = x.get("source") or x.get("image") or ""
+    if not src.startswith("http"):
+        return False
+    try:
+        return inspect(_get(src))[0] == "cutout"
+    except Exception:
+        return False
+
+
+def want_full(x, drawn, item_framing=None):
+    """この小元素を全身のまま使うか（顔で胸像に切らない）。決め方の順：
+    1. 小元素に framing: full / bust と書いてあればそれ（1 枚ごとの指定）
+    2. 関注項に emblem_framing: full / bust と書いてあればそれ（版面ごとの指定）
+    3. 絵のキャラで、元の画像が透明背景の公式の立ち絵 → 全身（もともと全身で見せる絵。切るともったいない：絶区零・dota2・あつ森）
+    4. それ以外（写真・漫画のコマ・動画の場面・背景つきの絵から切り抜いたもの）→ 胸像（全身は枠で切れたり余計な物が入ったりする）"""
+    if x.get("framing") in ("full", "bust"):
+        return x["framing"] == "full"
+    if item_framing in ("full", "bust"):
+        return item_framing == "full"
+    return bool(drawn) and official_render(x)
+
+
+def keep_framing(ems, old=(), drawn=False, item_framing=None):
     """同じ版面の小元素は取景をそろえる（胸像と全身が混ざると、顔の大きさがばらばらに見える）。多いほうに合わせる：
     ・胸像が多い：全身のものは捨てずに上半身に切る（upper: true → fit_all で上 46%）。要素の多い版面で枚数を減らさない
     前からある小元素（old の画像）は外さないし、切り直しもしない。
@@ -793,10 +958,13 @@ def keep_framing(ems, old=()):
       もとから胸像のものは外す。ただし前からある小元素（old の画像）は外さない
     全身でも、顔が見つかる（face_fit で胸像に切れる）か縦長の立ち絵（upper_body で切れる）なら、もともと胸像に数える。
     前は「胸像が 1 枚でもあれば全身は全部外す」で、新しい 1 枚のために前からの小元素まで消えていた。
-    透明な立ち絵（もとから切り抜き）は docs/emblems にないので、元の画像で判定する。"""
+    透明な立ち絵（もとから切り抜き）は docs/emblems にないので、元の画像で判定する。
+    want_full で全身と決まったもの（公式の立ち絵・framing の指定）は、胸像が多くても切らない。"""
     from PIL import Image
     old = set(old)
     for x in ems:
+        if "_framing" not in x and want_full(x, drawn, item_framing):   # 全身で使うと決まったもの（公式の立ち絵）は、多数決で切らない
+            x["_framing"], x["_fixed"] = "full", True
         if "_framing" not in x:
             try:
                 img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
@@ -813,7 +981,7 @@ def keep_framing(ems, old=()):
         return ems
     if busts >= fulls:
         for x in ems:
-            if x["_framing"] == "full" and x.get("upper") is not False and x["image"] not in old:   # 前からの小元素は切り直さない
+            if x["_framing"] == "full" and x.get("upper") is not False and x["image"] not in old and not x.get("_fixed"):   # 前からの小元素・公式の立ち絵は切り直さない
                 print(f"  [取景をそろえる] {x['subject']} は全身なので上半身に切る（ほかの多くは胸像）", file=sys.stderr)
                 x["upper"] = True
         return ems
@@ -872,21 +1040,21 @@ def cut_all(name, drawn, old=()):
             else:
                 x["_drop"] = True
                 print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
-    ems = keep_framing([x for x in ems if not x.get("_drop")], old)
+    ems = keep_framing([x for x in ems if not x.get("_drop")], old, drawn, item.get("emblem_framing"))
     lines = path.read_text(encoding="utf-8").split("\n")
     start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
     j = next(i for i in range(start, len(lines)) if lines[i].startswith("    emblem:"))
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def main():
-    if len(sys.argv) == 3 and sys.argv[1] == "--fit":   # --fit 関注項：顔の大きさをそろえる
-        return fit_all(sys.argv[2])
+    if len(sys.argv) in (3, 4) and sys.argv[1] == "--fit":   # --fit 関注項 [drawn]：顔の大きさをそろえる（drawn = 絵のキャラ）
+        return fit_all(sys.argv[2], sys.argv[3:] == ["drawn"])
     if len(sys.argv) == 3 and sys.argv[1] == "--upper":   # --upper 関注項：縦長の全身を上半身に
         return upper_all(sys.argv[2])
     if len(sys.argv) == 4 and sys.argv[1] == "--cut":   # --cut 関注項 drawn|photo

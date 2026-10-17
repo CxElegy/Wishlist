@@ -1978,7 +1978,7 @@ def backend_cells(items, rows, latest, run):
         if not n:
             cells["edit"] = ("idle", "編集するものなし")
         elif edit is None:
-            cells["edit"] = ("wait", f"未編集 {n} 件")
+            cells["edit"] = ("wait", f"整理待ち {n} 件")
         else:
             c = int(covered.get(name) or 0)
             cells["edit"] = ("ok", f"{n} 件 編集済み") if c >= n else ("wait", f"新しい {n - c} 件が待ち")

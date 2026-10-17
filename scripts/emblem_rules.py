@@ -81,8 +81,19 @@ def rules():
         # ⑦ 整える
         {"stage": STAGES[6], "title": "顔の大きさをそろえる", "by": "model", "code": "emblem.face_fit（Haar・LBP）",
          "rule": f"顔 = 高さの {pct(emblem.FACE_SHARE)}。顔が {pct(emblem.CLOSEUP)} を超えるアップは同じページの胸像に替える"},
+        {"stage": STAGES[6], "title": "全身か胸像か", "by": "rule", "code": "emblem.want_full",
+         "rule": "1 枚ごとの framing → 版面の emblem_framing → 絵のキャラで元が透明背景の公式の立ち絵なら全身（切らない）→ それ以外（写真・コマ・場面）は胸像"},
+        {"stage": STAGES[6], "title": "全身の背の高さをそろえる", "by": "model", "code": "emblem.body_marks（YOLOv8m-pose）/ render._body_len",
+         "rule": "目から足の裏までの長さをどのキャラも同じに（網页 116px・スマホ 74px）、足の裏を帯の線に、重心を同じ位置に。"
+                 "足の裏は足首から真下にたどる（尻尾・武器・服の裾・影はいちばん下でも足ではない。細いヒールのすき間 3% は越える）。"
+                 f"台座（下の段の幅 > 体の {emblem.PEDESTAL} 倍）は除く。しゃがんだ・前かがみ（体の大きさ ÷ 目から足が版面の中央値の 1.15 倍超）は大きさで測る。"
+                 "姿勢モデルがない・見つからないときは輪郭から推定"},
         {"stage": STAGES[6], "title": "取景をそろえる", "by": "rule", "code": "emblem.keep_framing",
-         "rule": "胸像と全身は多いほうに合わせる：全身は捨てずに上半身に切る／全身の立ち絵は切らずに残す。前からの小元素は外さない・切り直さない"},
+         "rule": "胸像と全身が混ざったら多いほうに合わせる：全身は捨てずに上半身に切る（公式の立ち絵は切らない）。前からの小元素は外さない・切り直さない"},
+        {"stage": STAGES[6], "title": "ロゴは切らない", "by": "rule", "code": "emblem.is_logo / clear_flat_bg",
+         "rule": f"ブランド・名前に「ロゴ」のものは、縁からつながった一色の地（差 {emblem.FLAT_TOL} まで）を透明にして倉庫に置き、全体を見せる"},
+        {"stage": STAGES[6], "title": "カードは比率が近いときだけ切る", "by": "rule", "code": "render.CARD_AR",
+         "rule": f"背景つきの画像を 4:5 の窓で切るのは、縦横比（高さ ÷ 幅）が {emblem.CARD_AR[0]}〜{emblem.CARD_AR[1]} のときだけ。外れたら切らずに全体"},
         # ⑧ 届かなかったら
         {"stage": STAGES[7], "title": "段を上がる・待つ", "by": "rule", "code": "emblem_fill.fill_one / RETRY_HOURS",
          "rule": f"① 標準 → ② 名前を広げる → ③ 公式・記事のページ。全部だめなら失敗：新しい記事・手がかりが来たらすぐ、来なくても {ef.RETRY_HOURS} 時間後"},
@@ -94,3 +105,50 @@ def rules():
 def reasons():
     """コードが落とすときに使う理由の言葉の一覧（テスト用）。"""
     return {r["reason"] for r in rules() if r.get("reason")}
+
+
+# 判断の例（前 → 後）：管理ページ「小元素の判断の例」に出す。画像は docs/emblems/examples/（本物の判断の結果を残したもの）。
+# rule は rules() の title と同じ言葉（テストが確かめる）。after が空 = その画像は使わなかった（verdict に理由）
+EX = "emblems/examples/"
+EXAMPLES = [
+    {"rule": "コマ・アップの切り抜き", "item": "BLEACH Mirrors High · チャド",
+     "before": [("chad-panel", "Fandom の代表画像 = 漫画のコマ"), ("chad-before", "切り抜くと吹き出しの跡がえぐれる（上の端 82%）")],
+     "after": [("chad-after", "同じページの公式イラスト（Brave Souls）に替えた")],
+     "verdict": "代表画像は外し、同じページの公式イラストで取り直す"},
+    {"rule": "ほかの人が残っている（写真）", "item": "The Mandalorian · Pedro Pascal",
+     "before": [("the-mandalorian-pedro-pascal-before", "後ろの人と番組ロゴも一緒に切れた")],
+     "after": [("the-mandalorian-pedro-pascal-after", "顔が 1 つだけの場面で取り直し")],
+     "verdict": "切り抜きに 2 つ目の顔（いちばん大きい顔の高さの 20% 以上）があれば外す"},
+    {"rule": "YouTube は動画の場面", "item": "ILLIT · Minju",
+     "before": [("illit-minju-before", "投稿者のサムネイル：題名の字が切り抜きに残った")], "after": [],
+     "verdict": "外した。字の載っていない自動の場面（hq1〜3）で取り直す"},
+    {"rule": "YouTube は動画の場面", "item": "FROM · Harold Perrineau",
+     "before": [("from-harold-perrineau-before", "投稿者のサムネイル（hq720）")],
+     "after": [("from-harold-perrineau-after", "動画の場面から。下 18%（字幕の帯）を切ってから切り抜く")],
+     "verdict": "動画の場面に替えた"},
+    {"rule": "顔がない", "item": "周杰伦 · 候補の写真",
+     "before": [("face-none", "応援のペンライト（記事の画像）")], "after": [], "verdict": "顔なし → 外す"},
+    {"rule": "遠景", "item": "周杰伦 · 候補の写真",
+     "before": [("face-far", "舞台の遠景")], "after": [], "verdict": "顔の高さ < 画像の 10% → 外す"},
+    {"rule": "何人も写っている", "item": "周杰伦 · 候補の写真",
+     "before": [("face-crowd", "2 人で写った写真")], "after": [], "verdict": "2 番目の顔 ≥ 60% → 外す"},
+    {"rule": "別人", "item": "周杰伦 · 候補の写真",
+     "before": [("face-anchor", "基準：記事の代表画像（本人）"), ("face-other", "同じ記事に載っていたショパンの肖像")], "after": [],
+     "verdict": "顔の特徴（SFace）が基準と似ていない（< 0.363）→ 外す"},
+    {"rule": "顔の大きさをそろえる", "item": "绝区零 · Belle",
+     "before": [("belle-src", "公式の立ち絵（全身）")], "after": [("belle-after", "顔が高さの 32% になるように下を切る")],
+     "verdict": "どの版面でも顔が同じ大きさに見える"},
+    {"rule": "全身か胸像か", "item": "绝区零 · Astra Yao",
+     "before": [("astra-bust", "前：公式の立ち絵まで上半身に切っていた")], "after": [("astra-full", "後：全身のまま（ほかの 19 人も）")],
+     "verdict": "ゲームの公式の立ち絵は全身で見せる絵。切らない"},
+    {"rule": "全身の背の高さをそろえる", "item": "dota2 · ヒーロー 9 人",
+     "before": [("height-before", "前：画像の高さでそろえると、武器・羽・しゃがみで背がばらばら")],
+     "after": [("height-after", "後：目から足の裏をそろえ、足の裏を線（赤）に。しゃがんだ Slark は大きさで測る")],
+     "verdict": "どのキャラも同じ背の高さ・同じ地面に立つ"},
+    {"rule": "ロゴは切らない", "item": "gelato pique",
+     "before": [("logo-before", "前：白い地つきの横長ロゴを 4:5 の窓で切って字が欠けた")], "after": [("logo-after", "後：地を抜いて全体")],
+     "verdict": "ロゴは切らない。一色の地は透明に"},
+    {"rule": "代表作の記事", "item": "MMORPG 新作",
+     "before": [("mmorpg-before", "前：主題の記号（Twemoji）だけ")], "after": [("mmorpg-after", "後：代表作（剣霊など 5 作）のキービジュアル・ロゴ")],
+     "verdict": "ジャンルの版面は「下の一段」を貼る。記号は最後の手段"},
+]

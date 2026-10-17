@@ -940,7 +940,15 @@ def commit(item, good, picks, replace=False, log=print):
         count[c["subject"]] = count.get(c["subject"], 0) + 1
         if sum(1 for m in picks if good[m - 1]["subject"] == c["subject"]) > 1:   # 同じ人の別の写真は名前を分ける（保存ファイル名が重ならないように）
             c = {**c, "subject": f"{c['subject']} {count[c['subject']]}"}
-        chosen.append({"subject": c["subject"], "why": c["why"], "image": c["image"], "page": c["page"], "shape": c["shape"]})
+        row = {"subject": c["subject"], "why": c["why"], "image": c["image"], "page": c["page"], "shape": c["shape"]}
+        if emblem.is_logo(row, kind) and not c["image"].lower().split("?")[0].endswith(".svg"):
+            try:   # ロゴは切らない：地の色を抜いて倉庫に置く（カードの窓で切ると字が欠ける）
+                row.update(image=emblem.logo_local(c["image"], emblem.slugify(name, c["subject"])), source=c["image"], shape="logo")
+            except Exception as e:
+                log(f"  [ロゴ] {c['subject']}：{e}")
+        elif row["shape"] == "badge" and c.get("_img") is not None:
+            row["ar"] = round(c["_img"].size[1] / c["_img"].size[0], 3)   # 縦横比：カードの窓に近くなければ切らずに全体を見せる
+        chosen.append(row)
     old = [] if replace else [x for x in (item.get("emblem") or []) if isinstance(x, dict)]
     seen = {(x["subject"], x["image"]) for x in old}
     merged = old + [x for x in chosen if (x["subject"], x["image"]) not in seen]
@@ -950,7 +958,7 @@ def commit(item, good, picks, replace=False, log=print):
     log(f"→ 「{name}」に {len(merged)} 枚（目標 {target}、最大 {hi}）")
     if kind in ("person", "group", "character"):
         emblem.cut_all(name, not needs_face(item), [x["image"] for x in old])   # 実在の人は写真として切る。前からの小元素は取景で外さない
-        emblem.fit_all(name)
+        emblem.fit_all(name, not needs_face(item))
     return merged
 
 

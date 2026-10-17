@@ -40,6 +40,8 @@ COMPONENTS = {
               "what": "顔を見つける（face_id.py、OpenCV FaceDetectorYN、HuggingFace から）"},
     "sface": {"kind": "model", "name": "SFace face_recognition_sface_2021dec", "spec": "128 次元 · cos ≥ 0.363 で本人",
               "what": "顔の特徴量で同じ人か比べる（face_id.py）。基準 = 記事の代表画像、合わなければ多数決"},
+    "pose": {"kind": "model", "name": "YOLOv8m-pose（ultralytics）", "spec": "53MB · 目・足首の確かさ ≥ 0.5 · なければ輪郭から推定（Actions には入れていない）",
+             "what": "全身の立ち絵の目の高さと足の裏・重心を測り、背の高さをそろえる（emblem.body_marks）"},
     "haar": {"kind": "model", "name": "OpenCV Haar frontalface + LBP animeface", "spec": "scale 1.1 · minNeighbors 4〜5",
              "what": "切り抜きの構図と顔の位置（emblem.face_box / face_crop）。顔モデルがないときの代わり"},
     "claude": {"kind": "model", "name": "Claude（定時タスク）", "spec": "編集・写真の認識・一覧の目視 · サブスク枠",
@@ -80,7 +82,7 @@ COMPONENTS = {
                "what": "Wiki の分類（emblem_category）か AniList の主役を数えて emblem_pool に。名前は参照の多い順に emblem_who へ"},
     "cutcheck": {"kind": "algo", "name": "切り抜きの検査 check_whole", "spec": "上の端 >50%（コマの切り抜き）· 左右の端 >10% · 面積 <12% · 半透明 >18% は外す",
                  "what": "emblem.check_whole：体が枠で切れた・輪郭がにじんだものを使わない"},
-    "facefit": {"kind": "algo", "name": "顔の大きさをそろえる", "spec": "顔 = 高さの 32% · 全身は上 46% · 胸像があれば全身は外す",
+    "facefit": {"kind": "algo", "name": "顔の大きさをそろえる", "spec": "胸像：顔 = 高さの 32% · 公式の立ち絵は全身のまま · 胸像と全身は多いほうに",
                 "what": "emblem.face_fit / upper_body / keep_framing"},
     "facerule": {"kind": "rule", "name": "写真の規則 photo_problem", "spec": "顔の高さ ≥ 10% · 2 番目の顔 < 60% · 基準なしは同じ顔 2 枚以上",
                  "what": "face_id.py：前は Claude が目で見ていた「遠景・集合写真・別人」を数で判断する"},
@@ -180,8 +182,8 @@ PROCESSES = [
             {"id": "b6", "kind": "decision", "lane": "actions", "title": "確かな取り方？", "text": "人物 = 規則を通った写真 · キャラ = 直接指定・Fandom · 主題 = Wikidata・Commons・Twemoji",
              "no": "理由をつけて外す（確かでない取り方・重複・目標を超える）"},
             {"id": "b7", "kind": "step", "lane": "repo", "title": "書いて切り抜く", "x": "1 枚ずつ（WRITE_LOCK）",
-             "text": "検査で外れたら同じページの公式イラストで取り直す · 取景は多いほうに合わせる（前からの小元素は触らない）",
-             "uses": ["rembg", "cutcheck", "holes", "facefit"]},
+             "text": "検査で外れたら同じページの公式イラストで取り直す · 公式の立ち絵は全身のまま、目から足の裏で背の高さをそろえる · ロゴは地を抜いて切らない",
+             "uses": ["rembg", "cutcheck", "holes", "facefit", "pose"]},
             {"id": "b8", "kind": "decision", "lane": "actions", "title": "目標に届いた？", "no": "次の段へ（② → ③）。全部だめなら失敗",
              "no_to": "b2s"},
             {"id": "b8f", "kind": "table", "lane": "actions", "title": "失敗したら・待っていたら",
@@ -283,9 +285,9 @@ PROCESSES = [
         ],
     },
     {
-        "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai", "schedule": [(4, 43), (15, 43)],   # 日本時間 13:43 / 0:43（北京時間 12:43 / 23:43）
-        "when": "毎日 13:43 · 0:43（日本時間）",
-        "trigger": "毎日 2 回（日本時間 13:43 / 0:43）／ 新しい関注項が入ったとき ／ ゲート：収集で整理待ちが増えたとき（GATE_FIRE を開けたら）",
+        "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai",   # 定時はなし（2026-10-17 に毎日 2 回の定時を止めた）：ゲートが起こす
+        "when": "整理待ちがあるとき（収集のあと）",
+        "trigger": "ゲート：収集で整理待ちが増えたとき（最多 2 時間に 1 回）／ 新しい関注項が入ったとき",
         "summary": "inbox の記事から重要なものを選び、同じ件を合わせて、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。"
                    "版面に載るのは AI 編集が整理した記事だけ（それまでは「整理待ち」、要紧だけ先に載る）。",
         "files": ["EDITING.md", "scripts/digest.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "pending"],
@@ -661,6 +663,29 @@ def _by_legend(p=None):
             f'{_by_tag("model")}<small>{e(BY["model"][1])}</small></p>')
 
 
+def _ex_fig(f, cap, cls=""):
+    import emblem_rules
+    return (f'<figure class="ex-f{cls}"><span class="ex-i"><img src="{e(emblem_rules.EX + f)}.webp" alt="{e(cap)}" loading="lazy" decoding="async"></span>'
+            f'<figcaption>{e(cap)}</figcaption></figure>')
+
+
+def examples_panel():
+    """管理ページ「小元素の判断の例」：判断ごとに、本物の画像で 前 → 後（使わなかったものは「外す」の札）。"""
+    import emblem_rules
+    by_rule = {r["title"]: r for r in emblem_rules.rules()}
+    cards = []
+    for x in emblem_rules.EXAMPLES:
+        r = by_rule[x["rule"]]
+        before = "".join(_ex_fig(f, c) for f, c in x["before"])
+        after = ("".join(_ex_fig(f, c, " ex-ok") for f, c in x["after"]) if x["after"]
+                 else '<figure class="ex-f ex-no"><span class="ex-i"><b>外す</b></span><figcaption>使わない</figcaption></figure>')
+        cards.append(f'<article class="ex ex-{e(r["by"])}"><header>{_by_tag(r["by"])}<b>{e(r["title"])}</b><small>{e(r["stage"])} · {e(x["item"])}</small></header>'
+                     f'<div class="ex-row"><div class="ex-side"><em>前</em>{before}</div><span class="ex-arrow" aria-hidden="true">→</span>'
+                     f'<div class="ex-side"><em>後</em>{after}</div></div>'
+                     f'<p class="ex-v">{e(x["verdict"])}<small>{e(r["rule"])}</small></p></article>')
+    return f'<div class="exs">{"".join(cards)}</div>'
+
+
 def rules_table(kind):
     """判断の一覧（emblem_rules.py が 1 つだけの元）を、段ごとに AI / ルールの札つきの表にする。"""
     if kind != "emblem":
@@ -876,6 +901,27 @@ CSS = """
 .rt-ai td:first-child{box-shadow:inset 6px 0 0 var(--by-ai)}
 .rt-rule td:first-child,.rt-model td:first-child{box-shadow:inset 6px 0 0 var(--by-rule)}
 @media (max-width:640px){.rt td:last-child{display:none}}
+/* 小元素の判断の例（前 → 後） */
+.exs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:16px}
+.ex{border:2px solid var(--ink);background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0}
+.ex.ex-ai{border-color:var(--by-ai)}
+.ex header{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:8px 10px;border-bottom:1.5px solid var(--hair)}
+.ex header b{font:900 14px/1.35 var(--font-sans)}.ex header small{flex-basis:100%;font:500 var(--fs-label)/1.4 var(--font-sans);opacity:.8}
+.ex-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:6px;padding:10px}
+.ex-side{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start;min-width:0}
+.ex-side>em{flex-basis:100%;font:900 var(--fs-label) var(--font-mono);font-style:normal;letter-spacing:.2em}
+.ex-arrow{font:900 22px var(--font-mono);color:var(--rose)}
+.ex-f{margin:0;flex:1 1 90px;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ex-i{display:grid;place-items:center;aspect-ratio:1;border:2px solid var(--alert);overflow:hidden;
+ background:conic-gradient(var(--sheet) 25%,var(--card) 0 50%,var(--sheet) 0 75%,var(--card) 0) 0 0/14px 14px}
+.ex-ok .ex-i{border-color:var(--by-rule)}
+.ex-i img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.ex-f figcaption{font:500 var(--fs-label)/1.45 var(--font-sans)}
+.ex-no{flex:0 1 110px;align-self:center}
+.ex-no .ex-i{border-style:dashed;background:var(--paper);aspect-ratio:auto;min-height:84px}
+.ex-no b{font:900 20px var(--font-sans);color:var(--alert);transform:rotate(var(--tilt));border:3px solid var(--alert);padding:2px 10px}
+.ex-v{margin:auto 0 0;padding:8px 10px 10px;border-top:1.5px solid var(--hair);font:700 13px/1.5 var(--font-sans)}
+.ex-v small{display:block;font:500 var(--fs-label)/1.45 var(--font-sans);opacity:.8;margin-top:2px}
 .dg{display:grid;gap:30px 26px;padding:6px 18px 18px;align-items:start}
 .dg-lh{grid-row:1;position:sticky;top:66px;z-index:4;padding:4px 0;border-bottom:3px double var(--ink);background:var(--paper)}
 .dg-lh-no .pl{background:var(--alert);color:var(--card)}
