@@ -34,14 +34,45 @@ class Rules(unittest.TestCase):
         self.assertEqual(ef.rule({"type": "event", "emblem_kind": "person"})[1:], (3, 6, 10))
         self.assertEqual(ef.rule({"type": "category", "emblem_kind": "brand"})[1:], (1, 1, 1))
         self.assertEqual(ef.rule({"type": "category"})[1:], (2, 3, 5))
-        # グループはメンバー全員（最大 10）
+        # グループはメンバー全員（天井 20）
         nine = {"type": "event", "emblem_kind": "group", "emblem_who": [f"m{i}" for i in range(9)]}
-        self.assertEqual(ef.rule(nine)[2], 9)
-        twelve = {**nine, "emblem_who": [f"m{i}" for i in range(12)]}
-        self.assertEqual(ef.rule(twelve)[2], 10)
-        # 名前を挙げたキャラはその全員が目標（2 人の作品は 2 枚で足りる）
+        self.assertEqual(ef.rule(nine)[2:], (9, 9))
+        many = {**nine, "emblem_who": [f"m{i}" for i in range(24)]}
+        self.assertEqual(ef.rule(many)[2:], (20, 20))
+        # 名前を挙げたキャラはその全員が目標（2 人の作品は 2 枚で足りる、上限も 2）
         two = {"type": "game", "emblem_who": ["a", "b"]}
-        self.assertEqual(ef.rule(two)[2], 2)
+        self.assertEqual(ef.rule(two)[1:], (2, 2, 2))
+
+    def test_cap_follows_main_elements(self):
+        # 上限は内容の主要な要素の数：キャラ 60 人のゲームは天井の 20、目標は名前を挙げた人数まで
+        game = {"type": "game", "emblem_pool": 60, "emblem_who": [f"c{i}" for i in range(14)]}
+        self.assertEqual(ef.rule(game)[2:], (14, 20))
+        self.assertEqual(ef.rule({**game, "emblem_who": [f"c{i}" for i in range(30)]})[2:], (20, 20))
+        # 主役が 4 人の作品は 4 枚、要素の数がわからない作品は既定（6、最大 10）
+        self.assertEqual(ef.rule({"type": "anime", "emblem_pool": 4})[2:], (4, 4))
+        self.assertEqual(ef.rule({"type": "anime"})[1:], (3, 6, 10))
+        # 主題は代表作の数、本人は別の写真（要素を数えない）、emblem_max は手で決めた上限（ぐでたま 3）
+        self.assertEqual(ef.rule({"type": "category", "emblem_examples": ["a", "b", "c", "d", "e"]})[2:], (5, 5))
+        self.assertEqual(ef.rule({"type": "event", "emblem_kind": "person", "emblem_pool": 40})[1:], (3, 6, 10))
+        self.assertEqual(ef.rule({"type": "anime", "emblem_max": 3})[1:], (3, 3, 3))
+
+    def test_roster_writes_pool_and_names(self):
+        import tempfile, shutil
+        from unittest import mock
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        try:
+            (tmp / "items.yaml").write_text(
+                'items:\n  - name: G\n    type: game\n    emblem_kind: character\n    emblem_who: ["A"]\n'
+                '    emblem_fandom: g\n    emblem_category: "Playable"\n  - name: H\n    type: game\n', encoding="utf-8")
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "category_top", return_value=["B", "A", "C"]):
+                item = yaml.safe_load((tmp / "items.yaml").read_text())["items"][0]
+                self.assertEqual(ef.roster(item, log=lambda *_: None), 3)
+            got = yaml.safe_load((tmp / "items.yaml").read_text())["items"]
+            self.assertEqual(got[0]["emblem_pool"], 3)
+            self.assertEqual(got[0]["emblem_who"], ["A", "B", "C"])   # 今の名前の後ろに、中心にいる順で足す
+            self.assertNotIn("emblem_pool", got[1])
+        finally:
+            shutil.rmtree(tmp)
 
     def test_status(self):
         base = {"name": "x", "type": "game"}
@@ -61,7 +92,7 @@ class Rules(unittest.TestCase):
         for i in items:
             st = ef.status(i)
             self.assertIn(st["kind"], ef.RULES, i["name"])
-            self.assertLessEqual(st["target"], 10, i["name"])
+            self.assertLessEqual(st["target"], ef.CEIL[st["kind"]], i["name"])   # 上限は要素の数（天井 CEIL）
             self.assertGreaterEqual(st["target"], st["lo"], i["name"])
             if i.get("emblem_kind"):
                 self.assertIn(i["emblem_kind"], ef.RULES, i["name"])
@@ -606,6 +637,25 @@ class CheckWhole(unittest.TestCase):
         emblem.check_whole(self._img((40, 20, 160, 239)))   # 余白のある胸像は通る
 
 
+class KeepFraming(unittest.TestCase):
+    def test_follow_majority_without_losing_old(self):
+        import emblem
+        mk = lambda rows: [{"subject": c, "image": "https://x/" + c, "_framing": f} for c, f in rows]
+        # 全身が多い：新しい胸像は外すが、前からある胸像（old）は残す
+        ems = emblem.keep_framing(mk([("a", "full"), ("b", "full"), ("c", "bust"), ("d", "bust")][:4] + [("e", "full")]),
+                                  old=["https://x/c"])
+        self.assertEqual([x["subject"] for x in ems], ["a", "b", "c", "e"])
+        # 胸像が多い：全身は捨てずに上半身に切る（枚数を減らさない）
+        ems = emblem.keep_framing(mk([("a", "bust"), ("b", "bust"), ("c", "full")]))
+        self.assertEqual([x["subject"] for x in ems], ["a", "b", "c"])
+        self.assertTrue(ems[2]["upper"])
+        # 全身が多い：切れば胸像になる全身の立ち絵は、切らずに全身のまま残す
+        ems = emblem.keep_framing(mk([("a", "full"), ("b", "full"), ("c", "bust")]) + [
+            {"subject": "d", "image": "https://x/d", "_framing": "bust", "_can_full": True}])
+        self.assertEqual([x["subject"] for x in ems], ["a", "b", "d"])
+        self.assertIs(ems[2]["upper"], False)
+
+
 class EmblemDetail(unittest.TestCase):
     """管理ページ「小元素の探し方」：取り方の順・次の回・助言・図。"""
 
@@ -747,7 +797,7 @@ class Gate(unittest.TestCase):
         self.assertTrue(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"].startswith("起こせなかった"))
 
 
-class Rules(unittest.TestCase):
+class CutRules(unittest.TestCase):
     """前は Claude が目で見ていた判断を、数で決める規則。"""
 
     def test_photo_problem(self):

@@ -642,6 +642,10 @@ def fit_all(name):
                 img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
                        else Image.open(io.BytesIO(_get(x["image"])))).convert("RGBA")
             out, fs = face_fit(img)
+            if x.get("upper") is False:   # 全身のまま使う（ほかの小元素が全身）：顔で切らない
+                out = main_parts(img)
+                out = out.crop(out.getchannel("A").getbbox())
+                fs = None
             if fs and fs > CLOSEUP and x.get("page"):   # 顔だけのアップは浮くので、同じキャラのページから胸像を探す
                 m = re.match(r"^(https://[^/]+)/wiki/(.+)$", x["page"])
                 found = m and find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "),
@@ -716,29 +720,54 @@ def upper_all(name):
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
-def keep_framing(ems):
-    """同じ版面の小元素は取景をそろえる：胸像が一枚でもあれば、全身のもの（比率が浮く）は外す。全部全身ならそのまま。
+def keep_framing(ems, old=()):
+    """同じ版面の小元素は取景をそろえる（胸像と全身が混ざると、顔の大きさがばらばらに見える）。多いほうに合わせる：
+    ・胸像が多い：全身のものは捨てずに上半身に切る（upper: true → fit_all で上 46%）。要素の多い版面で枚数を減らさない
+    前からある小元素（old の画像）は外さないし、切り直しもしない。
+    ・全身が多い（あつ森の住民・dota2 のヒーロー）：全身の立ち絵は切らずに全身のまま（upper: false）、
+      もとから胸像のものは外す。ただし前からある小元素（old の画像）は外さない
+    全身でも、顔が見つかる（face_fit で胸像に切れる）か縦長の立ち絵（upper_body で切れる）なら、もともと胸像に数える。
+    前は「胸像が 1 枚でもあれば全身は全部外す」で、新しい 1 枚のために前からの小元素まで消えていた。
     透明な立ち絵（もとから切り抜き）は docs/emblems にないので、元の画像で判定する。"""
     from PIL import Image
+    old = set(old)
     for x in ems:
         if "_framing" not in x:
             try:
                 img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
                        else Image.open(io.BytesIO(_get(x["image"]))).convert("RGBA"))
                 x["_framing"] = framing(img)
+                if x["_framing"] == "full" and (face_fit(img)[1] or upper_body(img, force=x.get("upper"))[1]):
+                    x["_framing"], x["_can_full"] = "bust", True   # あとで胸像に切れる（切らなければ全身のまま使える）
             except Exception:
                 x["_framing"] = "full"
-    if any(x["_framing"] == "bust" for x in ems):
+    # どちらにもなれる（全身の立ち絵で、切れば胸像になる）ものは数えず、決まっているものの多いほうに合わせる
+    busts = sum(x["_framing"] == "bust" and not x.get("_can_full") for x in ems)
+    fulls = sum(x["_framing"] == "full" for x in ems)
+    if not fulls:
+        return ems
+    if busts >= fulls:
         for x in ems:
-            if x["_framing"] == "full":
-                print(f"  [取景をそろえる] {x['subject']} は全身なので外す（ほかは胸像）", file=sys.stderr)
-                if x["image"].startswith("emblems/"):
-                    (ROOT / "docs" / x["image"]).unlink(missing_ok=True)
-        ems = [x for x in ems if x["_framing"] == "bust"]
-    return ems
+            if x["_framing"] == "full" and x.get("upper") is not False and x["image"] not in old:   # 前からの小元素は切り直さない
+                print(f"  [取景をそろえる] {x['subject']} は全身なので上半身に切る（ほかの多くは胸像）", file=sys.stderr)
+                x["upper"] = True
+        return ems
+    keep = []
+    for x in ems:
+        if x["_framing"] == "bust" and x.get("_can_full") and x["image"] not in old:   # 全身の立ち絵：胸像に切らずに全身のまま（dota2 のヒーロー）
+            x["upper"] = False
+            keep.append(x)
+            continue
+        if x["_framing"] == "bust" and x["image"] not in old:
+            print(f"  [取景をそろえる] {x['subject']} は胸像なので外す（ほかの多くは全身）", file=sys.stderr)
+            if x["image"].startswith("emblems/"):
+                (ROOT / "docs" / x["image"]).unlink(missing_ok=True)
+            continue
+        keep.append(x)
+    return keep
 
 
-def cut_all(name, drawn):
+def cut_all(name, drawn, old=()):
     """items.yaml のその関注項の「カード」（badge）の小元素を全部切り抜きに替える（source に元の網址を残す）。"""
     import yaml
     path = ROOT / "items.yaml"
@@ -778,7 +807,7 @@ def cut_all(name, drawn):
             else:
                 x["_drop"] = True
                 print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
-    ems = keep_framing([x for x in ems if not x.get("_drop")])
+    ems = keep_framing([x for x in ems if not x.get("_drop")], old)
     lines = path.read_text(encoding="utf-8").split("\n")
     start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
     j = next(i for i in range(start, len(lines)) if lines[i].startswith("    emblem:"))

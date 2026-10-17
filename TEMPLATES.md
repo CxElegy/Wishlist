@@ -32,12 +32,17 @@
 | 种类（`emblem_kind`） | 收什么 | 目标枚数（最少〜最大） |
 |---|---|---|
 | `person` 本人（周杰伦、Vaundy） | 同一个人的**不同照片**（年代、造型、场合） | 6（3〜10） |
-| `group` 偶像团（ILLIT、A2O LITE） | **所有主要成员**各 1 张，名字写在 `emblem_who` | 成员数（3〜10） |
-| `character` 动画 / 游戏 / 剧 | 动画：主角团 + 人气高的角色（AniList）；游戏、剧：主要角色 / 主要演员，名字写在 `emblem_who`（实拍剧用这一版的演员） | 6（3〜10；`emblem_who` 里挑出几个就是几个） |
+| `group` 偶像团（ILLIT、A2O LITE） | **所有主要成员**各 1 张，名字写在 `emblem_who` | 成员数（最多 20） |
+| `character` 动画 / 游戏 / 剧 | 动画：主角团 + 人气高的角色（AniList）；游戏、剧：主要角色 / 主要演员，名字写在 `emblem_who`（实拍剧用这一版的演员） | **主要角色的数量**（最多 20；不知道时 6） |
 | `brand` 品牌 | 官方 Logo，1 种就够 | 1 |
-| `topic` 主题 / 赛事 | **先想这个版面「下一层」是什么**：类别（MMORPG 新作）→ 代表作品（剑灵、AION 2…）；运动 → 有名的选手・大会；用品 → 代表品牌。写进 `emblem_examples`（用户喜欢的放第一个），每个取 Logo 或 Wikipedia 记事的主视觉 / 包装图各 1 张；其次是主题的专属物（Logo、奖杯、官方用球、场地），Twemoji 图标只用来垫底 | 3（2〜5）；写了 `emblem_examples` 就是作品数 |
+| `topic` 主题 / 赛事 | **先想这个版面「下一层」是什么**：类别（MMORPG 新作）→ 代表作品（剑灵、AION 2…）；运动 → 有名的选手・大会；用品 → 代表品牌。写进 `emblem_examples`（用户喜欢的放第一个），每个取 Logo 或 Wikipedia 记事的主视觉 / 包装图各 1 张；其次是主题的专属物（Logo、奖杯、官方用球、场地），Twemoji 图标只用来垫底 | 代表作的数量（最多 10；没写时 3） |
 
-- 默认每个版面最多 6 张，人物多的（团、角色多的作品）最多 10 张（`emblem_max` 可改）。
+- **上限由内容决定，不按游戏 / 动画写死**：上限 = 这个内容的「主要元素」有多少（1 个元素 1 张），天井 `CEIL`（角色・团 20、主题 10、本人 10、品牌 1）。
+  角色多的游戏（绝区零 60 个可玩角色、dota2 126 个英雄、あつ森 81 个特殊角色）→ 20 张；主角只有 4 人的动画 → 4 张；两个主角的 GTA6 → 2 张。
+  元素数写在 `emblem_pool`，由 `emblem_fill.py --roster` 自动数：`emblem_category`（Fandom 等的分类，例：`Playable Agents`）的人数，
+  没有就数 AniList 的主角（role MAIN）；同时按「被其他页面引用多 → 记事长」的顺序把名字补进 `emblem_who`（目标 = 已列出的名字数）。
+  数不到的（官方站直接给图的 dota2）由 AI 手写 `emblem_pool` 和名字。后台遇到还没有 `emblem_pool` 的版面会先数。
+  `emblem_max` 只用来手动压低（ぐでたま 只有 1 个角色 → 3 个场景）。
 - **不再有 `emblem_skip` 这条退路**：种类的取法顺序里最后是 Twemoji 图标，所以不会是 0 张。取不到好图就换下一种取法，不是放弃。
 - 在 `items.yaml` 里写：`emblem_kind`（种类）、`emblem_who`（要收的名字：成员 / 角色 / 演员）、`emblem_subject`（本人或品牌的搜索名）、
   `emblem_fandom` / `emblem_api`（Fandom 的 wiki 名 / 其他 MediaWiki 的 api.php）、`emblem_icon`（Twemoji 的编码，空格分隔）、`emblem_urls`（直接指定的官方图）、
