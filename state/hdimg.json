@@ -17,6 +17,18 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261018ac/533/w480h853/20261018/5500-3c900af56350d8775af5d0c55601d6e9.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 1280,
+  "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261019ac/533/w480h853/20261019/f34f-4fe9f0f6c64a38b14b8239d20a9bb910.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 1280,
+  "v": 3
+ },
  "http://news.yule.com.cn/uploadfile/2026/1016/20261016105851726.jpg": {
   "w": 647,
   "h": 432,
@@ -41,11 +53,37 @@
   "target": 720,
   "v": 3
  },
+ "http://www.news.cn/tech/20261013/fd75acca11884b39ab5bdf7d21cf8364/zxcode_20261013fd75acca11884b39ab5bdf7d21cf8364.jpg": {
+  "w": 300,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.535,
+  "local": "pics/7f5b2f75810fc4ae.webp",
+  "out": [
+   900,
+   900
+  ],
+  "why": "看不清"
+ },
  "http://www.newsian.co.kr/news/photo/202610/97104_91831_3410.jpg": {
   "w": 960,
   "h": 590,
   "target": 1280,
   "v": 3
+ },
+ "http://wx1.sinaimg.cn/middle/001gSRX0ly1ii6caoqq3yj635s23u1kx02.jpg": {
+  "w": 2000,
+  "h": 1333,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/703621ba3bef9d10.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "防盗链",
+  "ref": true
  },
  "http://wx1.sinaimg.cn/middle/647c8fably1ii4734hamfj21140pmdws.jpg": {
   "w": 1336,
@@ -125,6 +163,12 @@
   "target": 720,
   "v": 3
  },
+ "https://andro-news.com/wp-content/uploads/2026/10/iPhone-18-Pro-materialy.png": {
+  "w": 1917,
+  "h": 1050,
+  "target": 1280,
+  "v": 3
+ },
  "https://animeanime.jp/imgs/ogp_f/942450.jpg": {
   "w": 600,
   "h": 750,
@@ -140,12 +184,6 @@
  "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp": {
   "w": 1000,
   "h": 703,
-  "target": 1280,
-  "v": 3
- },
- "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
-  "w": 1350,
-  "h": 1350,
   "target": 1280,
   "v": 3
  },
@@ -180,12 +218,6 @@
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/323909036/rectangle_large_type_2_206de68bab84cac553600f3301c64689.png?fit=bounds&quality=85&width=1280": {
-  "w": 1280,
-  "h": 670,
-  "target": 720,
-  "v": 3
- },
- "https://assets.st-note.com/production/uploads/images/325365691/rectangle_large_type_2_54e6f9c972017719e8faf4d5feb38417.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
   "target": 720,
@@ -264,12 +296,6 @@
   ],
   "why": "看不清"
  },
- "https://cdn-tor.buminteractif.com/2026/10/08220754/valerie-hotel.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.80.lv/api/upload/meta/50631/images/6acfbcf654d94/contain_1200x630.jpg": {
   "w": 1200,
   "h": 630,
@@ -336,6 +362,19 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://cdn.koreareport.co.kr/news/photo/202610/53623_56651_5039.jpg": {
+  "w": 600,
+  "h": 428,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.506,
+  "local": "pics/59cffe8f9e9cb82a.webp",
+  "out": [
+   1280,
+   913
+  ],
+  "why": "看不清"
  },
  "https://cdn.nc.press/news/photo/202610/628491_864405_4947.png": {
   "w": 600,
@@ -408,6 +447,13 @@
   "h": 676,
   "target": 720,
   "v": 3
+ },
+ "https://ceoscoredaily.com/photos/2026/10/13/2026101317023010291_l.jpg": {
+  "w": 640,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.355
  },
  "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=3&simg=20261013233059065920cecffa93871223935165.jpg&nmt=19": {
   "w": 660,
@@ -852,6 +898,12 @@
   ],
   "why": "看不清"
  },
+ "https://images.tennismagazine.jp/media/article/35723/images/main_da2d479cd4fe39fbf169fc4a9fbc3d1d.jpg": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3
+ },
  "https://images.thedirect.com/media/article_full/avengers-doomsday-guardians-of-the-galaxy-mcu.jpg": {
   "w": 1280,
   "h": 720,
@@ -1118,12 +1170,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.gamewith.jp/article/thumbnail/rectangle/564407.png?date=1781848716": {
-  "w": 600,
-  "h": 315,
-  "target": 720,
-  "v": 3
- },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/11/5602291_3.jpg": {
   "w": 800,
   "h": 450,
@@ -1143,19 +1189,6 @@
   "v": 3,
   "blur": 0.514,
   "local": "pics/94f9f733c8d56e66.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "看不清"
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-189177.jpg": {
-  "w": 560,
-  "h": 560,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.506,
-  "local": "pics/f10fa0e4bb0567fc.webp",
   "out": [
    1280,
    1280
@@ -1226,12 +1259,6 @@
   ],
   "why": "看不清"
  },
- "https://k-tai.watch.impress.co.jp/img/ktw/list/2147/720/s23.jpg": {
-  "w": 1920,
-  "h": 1358,
-  "target": 1280,
-  "v": 3
- },
  "https://kagit-media.atreez.cc/uploads/2026-10-08/jgklsam081uhzxzado2p6glh.png": {
   "w": 629,
   "h": 803,
@@ -1263,12 +1290,6 @@
   "target": 720,
   "v": 3
  },
- "https://kalkinemedia.com/storage/uploads/original/Wirelesstel_09_23_2026_09_56_33_236293.jpg": {
-  "w": 1000,
-  "h": 662,
-  "target": 1280,
-  "v": 3
- },
  "https://korepo.com/wp-content/uploads/2026/10/4a9cdf3e7cb66461ddc6e7037368bfb3.jpg": {
   "w": 680,
   "h": 510,
@@ -1294,7 +1315,7 @@
   "target": 720,
   "v": 3
  },
- "https://lp.p.pia.jp/shared/materials/abd8c264-b8db-4684-9f95-148b473b3aa1/origin.jpg": {
+ "https://lp.p.pia.jp/shared/materials/0a74e045-b07e-4159-b105-db92436660c8/origin.jpg": {
   "w": 1200,
   "h": 900,
   "target": 1280,
@@ -1445,6 +1466,12 @@
   "w": 1200,
   "h": 800,
   "target": 720,
+  "v": 3
+ },
+ "https://news.mynavi.jp/article/20261017-5142746/ogp_images/ogp.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
   "v": 3
  },
  "https://news.walkerplus.com/article/1007171/10055615_615.jpg": {
@@ -1760,6 +1787,19 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/14/35418925.jpg&M=1&s=Y&x=0&y=0&sw=720&sh=480&sl=W&fw=800&exp=3600": {
+  "w": 720,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.453,
+  "local": "pics/00cfc0e4f3b41c18.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "期限付きの網址"
+ },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/14/35418991.jpg&M=1&s=Y&x=0&y=0&sw=1080&sh=599&exp=3600": {
   "w": 1080,
   "h": 599,
@@ -1936,6 +1976,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/4e3238e713fd70fa140c1d7ebbc8cc2c974ea9eb26afa12fec89b8fc1987efda/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fsetn.com.tw%2Ff6ed0eaf155d6cd697540b50e5340dc5.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/57f1fbda6dfb7c7a1f02a50b02caf1014e1a9520eda2c7ea070f2d4efad20bf6/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcinemablend_388%2F72df35e37e2cc4a0fc9faab45255add5.jpg": {
   "w": 1200,
   "h": 675,
@@ -2066,6 +2112,12 @@
  "https://static.sanyonews.jp/image/article/size1/1/0/1/6/10163e8bc4b56c33bcc85493c8e2556d_1.jpg": {
   "w": 640,
   "h": 431,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/3/f/f/2/3ff24c261a165613c93a74b121b9b124_1.jpg": {
+  "w": 640,
+  "h": 426,
   "target": 720,
   "v": 3
  },
@@ -2214,12 +2266,6 @@
   "target": 720,
   "v": 3
  },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/02/26/1772092114477_galaxy-s26-ultra-10-cropped-1772040701806.jpeg": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/09/1791510301377_smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra-3279.png": {
   "w": 1825,
   "h": 977,
@@ -2236,6 +2282,12 @@
   "w": 1920,
   "h": 1280,
   "target": 720,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/15/1792036168797_one-ui-1791689652404954203093-13-0-421-780-crop-1792031551771626665164.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/16/1792120126071_galaxy-s27-lo-gia-gay-soc-ban-ultra-cao-cap-nhat-tien-sat-moc-2-435.png": {
@@ -2335,27 +2387,28 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.AiFFW96xsUWbjCfMEu8UpQ&pid=News&w=1095": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/22325d67c70a5842.webp",
-  "out": [
-   700,
-   367
-  ],
-  "why": "Bing の小さい縮小画像"
- },
  "https://www.bing.com/th?id=ONUT.BpkK8qFVcia2ok_cSryr3w&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.C4H5mdBDOoEGkT1ajmXz2Q&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.DCl7ypaBdA3BGL73kDGUKQ&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.498,
+  "local": "pics/36409a0fb32176ed.webp",
+  "out": [
+   1280,
+   861
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.I1YtvISRg28tRi7sgHoObw&pid=News&w=1200": {
   "w": 700,
-  "h": 366,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -2383,6 +2436,19 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.389,
+  "local": "pics/bd3464c792297da0.webp",
+  "out": [
+   721,
+   434
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.Q6Cy-fmavjIb_wiYjfqeiw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2407,15 +2473,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.RyCQWmUpMvZzigNV2L0hKg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.SBOavHthlDkc8LhDUcILuw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
   "target": 720,
   "v": 3,
-  "local": "pics/64f1015e9e23a11c.webp",
+  "local": "pics/0c407fb92c53f46e.webp",
   "out": [
-   718,
-   416
+   700,
+   525
   ],
   "why": "Bing の小さい縮小画像"
  },
@@ -2459,6 +2525,18 @@
   "out": [
    700,
    393
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.cbLw6ptXL6K_FbP-nfFGbA&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/95478f811df4d441.webp",
+  "out": [
+   700,
+   366
   ],
   "why": "Bing の小さい縮小画像"
  },
@@ -2562,6 +2640,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.uj01IO2vWKIstFWrhgg42g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.y7kCG1VURIHwdKosDLS4Pw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2591,6 +2675,13 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.cityguideny.com/eventpic/600097FFEB0-B18E-4A1B-B943F64A75426C10.jpg?1": {
+  "w": 600,
+  "h": 750,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.386
  },
  "https://www.cnet.com/wp-content/uploads/sites/2/75bc8592-5b67-4ebc-990c-1097dd27f7e7.jpg": {
   "w": 3840,
@@ -2676,6 +2767,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.fashion-press.net/img/news/152154/top.jpg?1792146181": {
+  "w": 1600,
+  "h": 1067,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
@@ -2700,10 +2797,10 @@
   "target": 720,
   "v": 3
  },
- "https://www.masslive.com/resizer/v2/U6ALSGHIF5GMPLHT5P32SQWWBM.png?auth=c0b80449aac46bd38d3ee1356eb532c98b2dae2f41faeae959ff127749a88118&width=1280&smart=true&quality=90": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
+ "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg": {
+  "w": 2560,
+  "h": 1440,
+  "target": 720,
   "v": 3
  },
  "https://www.mobilemagazinehk.com/wp-content/uploads/2026/10/MM1310261607.jpg": {
@@ -2747,6 +2844,12 @@
   "w": 2000,
   "h": 1500,
   "target": 720,
+  "v": 3
+ },
+ "https://www.sheknows.com/wp-content/uploads/2026/10/Starbucks-Black-Cat-Frappuccino-Drops-October-22-Heres-Exactly-How-to-Get-the-Cookie-Before-It-Sells-Out.png?w=1024": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
   "v": 3
  },
  "https://www.shitakoe.com/wp/wp-content/uploads/2026/10/2-7-1024x768.jpg": {
