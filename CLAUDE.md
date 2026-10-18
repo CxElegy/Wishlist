@@ -149,6 +149,8 @@
 
 ## 目次のロゴと炎（2026-10-17）
 
+**炎の演出は保留中（2026-10-18、`PENDING.md`）**：本番では `render.NAV_FLAME = False` で炎・ぶわっ・版面の火を全部止めている（ロゴと話題度の点数だけ出す）。下は再開するときのための仕様。
+
 目次の左上に仮の名前「TBD」のロゴ（サイト名が決まったら `render._nav` の `wm` を差し替え）と炎（`render.FLAME_SVG`、試作は テストグラウンド https://cxelegy.github.io/Wishlist/testground/flame.html ）。
 - 形：先の尖った涙形を 4 層（上へ透ける縦グラデーション）。話題度 25 を超えると左右に舌が出る。
 - **色は温度**：冷めた火＝暗い赤の熾火（`--ember`）→ 赤 → 橙 `--flame` → 金 `--gold` → 白い芯（`--card`）、沸騰に近づくと底に青い炎（`--blueflame`）。層ごとの色は `--fo` `--fm` `--fi` `--fc`（`color-mix`、`--hc` は NAV_JS が毎フレーム滑らかに入れる）。
@@ -262,6 +264,10 @@
   主题按代表作数。元素数是 `emblem_pool`（`emblem_fill.py --roster` 从 `emblem_category` 分类或 AniList 主角数出来，并补名字）；
   管理页「小元素」列出每个版面的种类・目标・现有枚数，没到目标的 AI 编辑会自动补（`python scripts/emblem_fill.py --audit`）。
 
+
+## 保留中のこと
+
+ユーザーが「あとでやる」と決めたものは `PENDING.md` に書く（何を止めたか・なぜ・試作の場所・わかったこと）。本番からは外し、試作はテストグラウンドに残す。
 
 ## テストグラウンド（docs/testground/）
 

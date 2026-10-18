@@ -2460,8 +2460,7 @@ NAV_STYLES = {
 .nav .nsec .tg{font-size:14px;padding:1px 12px}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
 .nav .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:rgba(26,28,34,.62)}
-.nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
-.nav .nsec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
+.nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--sc)}   /* 板块の色の下線（新着の件数は出さない、2026-10-18） */
 .nav .nbody{position:absolute;left:0;right:0;top:52px}
 /* 上下級（案 A）：下級は上級の駅から出た枝線（拐角 └）の上の駅。大きさは普通の駅と同じ */
 .nav .pill.kid{padding-left:52px}
@@ -2551,6 +2550,8 @@ def _flame_grad(n, color, mid, top_alpha):
             f'<stop offset="1" style="stop-color:var({color});stop-opacity:0"/></linearGradient>')
 
 
+# 目次のロゴの炎（と、ぶわっ・版面の火）は保留中（2026-10-18、PENDING.md）：True に戻せば全部また動く
+NAV_FLAME = False
 FLAME_SVG = (
     '<span class="flame" aria-hidden="true"><i class="glow"></i><svg viewBox="0 0 100 140"><defs>'
     '<filter id="navfl-f" x="-30%" y="-30%" width="160%" height="140%">'
@@ -2606,7 +2607,6 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
     for name in order:
         sc, ws = _sec_color(name), groups[name]
         icon = (f'<img class="si" src="{TWEMOJI.format(SECTION_ICON[name])}" alt="" loading="lazy">' if name in SECTION_ICON else "")
-        nn = sum(1 for w in ws if any(x["_issue"] >= cutoff for x in w["stories"]))
         tabs.append(f'<a class="tg" style="--sc:{sc}" data-sec="{e(name)}" href="#{_wid(ws[0]["name"])}"><span>{e(_sec_name(name))}</span></a>')
         # 上下級：上級が同じ板块にいる下級は、上級のすぐ下に並べる（小分類も上級に従う）
         names = {w["name"] for w in ws}
@@ -2635,13 +2635,13 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
         slots.append(f'<div class="nslot" style="--sc:{sc}" data-sec="{e(name)}">'
                      f'<a class="nsec" href="#{_wid(ws[0]["name"])}">{icon}<span class="tg"><span>{e(_sec_name(name))}</span></span>'
                      f'<span class="en" aria-hidden="true">{e(_sec_en(name))}</span>'
-                     f'<span class="cnt">新着 <b>{nn}</b>／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
+                     f'<span class="meter"></span></a>'
                      f'<div class="nbody">{body}</div></div>')
     hide = "auto" if str(hide).lower() == "auto" else max(1, int(hide or NAV_HIDE))
     levels = json.dumps([[low, lab] for low, lab in heat.LEVELS], ensure_ascii=False)
     return (f'<nav class="nav" aria-label="目次" data-hide="{hide}" data-levels="{e(levels)}">'
             f'<div class="mtabs">{"".join(tabs)}</div>'
-            f'<a class="logo" href="#front" aria-label="トップへ">{FLAME_SVG}'
+            f'<a class="logo" href="#front" aria-label="トップへ">{FLAME_SVG if NAV_FLAME else ""}'
             f'<span class="wm"><b>TBD</b><small>ウォッチリスト通信</small></span>'
             f'<span class="hm" aria-live="polite"><b class="hv"></b><small class="hl"></small></span></a>'
             f'<div class="nhead">{"".join(head)}</div>'
@@ -3131,9 +3131,13 @@ NAV_JS = """
   document.addEventListener('visibilitychange', burnning);
   wide.addEventListener && wide.addEventListener('change', burnning);
   function flame(on) {
-    if (!fl) return;
     const own = on && on.dataset.heat != null ? +on.dataset.heat || 0 : null;
     const v = own == null ? maxHeat : own;
+    if (!fl) {   // 炎を出さないとき（NAV_FLAME）も、ロゴの右の点数と等級は入れる
+      if (logo) { logo.querySelector('.hv').textContent = v ? String(v) : '';
+        logo.querySelector('.hl').textContent = own == null ? (v ? '今日の最高' : '') : ((LV.find(l => v >= l[0]) || [0, ''])[1] || '話題度'); }
+      return;
+    }
     const to = own == null ? Math.min(.35, v / 100) : v / 100;
     const go = !FL.first && to - FL.target > .04 && FL.run, hv = logo.querySelector('.hv'), was = +hv.textContent || 0;
     const sec = on && on.getAttribute('href') && document.querySelector(on.getAttribute('href'));

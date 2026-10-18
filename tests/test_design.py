@@ -348,7 +348,7 @@ class Nav(unittest.TestCase):
         self.assertIn("https://img/a.jpg", out)                       # なければ記事の写真
         self.assertIn('<i class="ic">C</i>', out)                     # それもなければ頭文字
         self.assertIn('data-hot="1"', out)                            # 今週の件数（新着順に残すとき使う）
-        self.assertIn("新着 <b>1</b>／2", out)
+        self.assertNotIn("新着 <b>", out)                              # 目次に新着の件数は出さない（2026-10-18）
         self.assertNotIn('class="nsubs"', out)                         # 小分類がなければ札は出さない
 
     def test_sub_chips_and_hide_setting(self):
