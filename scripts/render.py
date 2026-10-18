@@ -26,6 +26,7 @@ import heat
 import lang
 import processes
 import likefx
+import overview
 import taxonomy
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
@@ -4133,7 +4134,7 @@ def render_heat(analysis, works, updated):
 # ---------- 管理ページ（docs/admin.html）：見るだけ。口令なし・ボタンで何かを変えることはしない ----------
 # 生成時に分かるもの（収集・編集の状況、作品ごとの記事数、投票）は HTML に書き込み、
 # その場で変わるもの（GitHub Actions の実行結果、設定ページの依頼、写真の受付）はページを開いたときに読む。
-ADMIN_WORKFLOWS = {"digest.yml": "収集・出刊", "render.yml": "ページの再生成", "requests.yml": "設定ページの依頼", "ci.yml": "テスト"}
+ADMIN_WORKFLOWS = {"digest.yml": "収集・出刊", "background.yml": "後台作業（ゲート・小元素）", "render.yml": "ページの再生成", "requests.yml": "設定ページの依頼", "ci.yml": "テスト"}
 ADMIN_STALE_DAYS = 3  # 最新の記事がこれより古い作品は「止まっているかも」
 
 
@@ -4824,9 +4825,10 @@ ADMIN_PAGE_JS = """
   // いま動いているもの：live_status()（収集・小元素の補完が版面ごとに書く）を 30 秒ごとに
   var LP={collect:'ニュース収集',emblem:'小元素の自動補完',edit:'AI 編集'};
   function liveState(x){if(x.state==='fetch')return '記事を探している';if(x.state==='found')return '新着 '+x.found+' 件 · AI 整理待ち';
+    if(x.note)return x.note+(x.state==='wait'&&Date.now()-new Date(x.started_at)>1800000?'（30 分以上たっている：push が通っていないかも）':'');
     var m=/^emblem:(.*)$/.exec(x.state||'');if(m)return '取り方 '+m[1]+'（'+x.found+' / 3 段目）';return x.state;}
   function loadLive(){var box=document.getElementById('livenow');if(!box)return;
-    rpc('live_status').then(function(list){box.textContent='';if(!list||!list.length){box.appendChild(el('p','empty','いまは何も動いていません（次の実行は下の「次の実行」）。'));return;}
+    rpc('live_boards').then(function(list){box.textContent='';if(!list||!list.length){box.appendChild(el('p','empty','いまは何も動いていません（次の実行は下の「次の実行」）。'));return;}
       var ul=el('ul');list.forEach(function(x){var li=el('li');li.appendChild(el('span','ln-p',LP[x.proc]||x.proc));li.appendChild(el('b',null,x.board));
         li.appendChild(el('small',null,liveState(x)+' · '+when(x.started_at)+'から'));ul.appendChild(li);});box.appendChild(ul);})
     .catch(function(){fail(box,'読めませんでした。');});}
@@ -4875,7 +4877,7 @@ def render_admin(data, db, updated):
 <title>管理ページ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
-<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}</style>
+<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}{overview.CSS}</style>
 {_live_head("admin")}
 </head>
 <body>
@@ -4887,11 +4889,12 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
+<section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
 <section class="panel" id="editdiff"><h2 class="sh"><span>AI 編集の前後</span><small>最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事</small></h2>{_admin_edit_diff(data.get("edit_diff"))}</section>
 <section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
 <section class="panel" id="emblem-ex"><h2 class="sh"><span>小元素の判断の例</span><small>本物の画像で 前 → 後 · 赤枠 = 使わなかった画像 · 緑枠 = 使った画像 · 規則の全部は「全体の構成 → 小元素の自動補完」</small></h2>{processes.examples_panel()}</section>
-<section class="panel" id="procs"><h2 class="sh"><span>全体の構成</span><small>どこで何が動き、データがどう流れるか · 部品をクリックで詳しい流れ</small></h2>{processes.render()}</section>
+<section class="panel" id="procs"><h2 class="sh"><span>全体の構成（詳しい図）</span><small>場所ごとに全部の部品と矢印を 1 枚に · 大きいので、まずは一番上の「しくみの全体図」を</small></h2>{processes.render()}</section>
 <section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>
 <div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
@@ -4902,6 +4905,7 @@ def render_admin(data, db, updated):
 </div>
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
+<script>{overview.JS}</script>
 <script>{processes.JS}</script>
 <script>{LIVE_JS}</script>
 </body>

@@ -16,6 +16,7 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
 
+import processes  # noqa: E402
 import render  # noqa: E402
 import theme  # noqa: E402
 
@@ -243,7 +244,7 @@ class AdminPage(unittest.TestCase):
         self.assertNotIn('href="javascript:', out)
         # データを変える操作はない：ボタンは流れを開く・閉じるものと、裏の仕組みを早く動かす「今すぐ実行」だけ
         for b in re.findall(r"<button[^>]*>", out):
-            self.assertRegex(b, r"data-(open|close|run)", b)   # 流れを開く・閉じる、または「今すぐ実行」（データは変えない）
+            self.assertRegex(b, r"data-(open|close|run|p=)", b)   # 流れを開く・閉じる・図のページ切り替え、または「今すぐ実行」（データは変えない）
         self.assertNotIn("<form", out)
 
     def test_empty(self):
@@ -323,6 +324,44 @@ class BackendTable(unittest.TestCase):
         self.assertIn('data-pre="次の収集のあと "', h)
         self.assertIn("記事 3 件が版面の下の「整理待ち」に", h)
         self.assertIn('class="bgw-d nx-ago" data-at="2026-10-18T00:00:00+00:00"', h)
+
+
+class Overview(unittest.TestCase):
+    """管理ページ一番上の「しくみの全体図」（overview.py）：ページ分け・流れの図へのリンク・待ちの言葉・光る枠の仕組み。"""
+
+    def test_pages_fit_and_link_to_real_flows(self):
+        import overview
+        ids = {p["id"] for p in processes.PROCESSES}
+        for pg in overview.PAGES:
+            self.assertLessEqual(len(pg["cols"]), 8, pg["id"])   # 1 画面に収まる列数
+            for col in pg["cols"]:
+                self.assertLessEqual(len(col), 2, pg["id"])
+                for n in col:
+                    self.assertTrue(n["proc"] is None or n["proc"] in ids, (pg["id"], n["proc"]))   # ダイアログがある仕組みだけにリンク
+        html_ = overview.panel({})
+        self.assertEqual(html_.count('role="tab"'), len(overview.PAGES))
+        self.assertEqual(html_.count(" hidden"), len(overview.PAGES) - 1)   # 最初の 1 ページだけ見える
+        self.assertIn('data-k="collect"', html_)
+
+    def test_waits_in_words(self):
+        import overview
+        data = {"todo": {"edit": {"n": 105, "boards": 18, "state": "gave_up", "why": "3 回起こしたが仕事が減らない"}},
+                "items": [{"name": "A", "bg": {"emblem": {"state": "failed"}, "design": {"state": "wait"}}},
+                          {"name": "<b>B</b>", "bg": {"emblem": {"state": "wait"}, "design": {"state": "ok"}}}]}
+        w = overview.waits(data)
+        self.assertEqual([x[0] for x in w], ["AI 編集", "小元素", "小元素", "版面の設計"])
+        self.assertIn("整理待ち 105 件（18 版面）", w[0][1])
+        self.assertIn("3 回起こしても動かない", w[0][2])
+        self.assertEqual(w[0][3], "edit_now")
+        self.assertIn("いま待っているものはありません", overview.panel({}))
+        self.assertNotIn("<b>B</b>", overview.panel(data))
+
+    def test_admin_has_overview_first_and_css_uses_tokens(self):
+        import overview
+        out = render.render_admin({}, {}, "u")
+        self.assertLess(out.index('id="ov"'), out.index('id="status"'))
+        self.assertNotRegex(overview.CSS, r"#[0-9a-fA-F]{3,6}\b")
+        self.assertIn("prefers-reduced-motion", overview.CSS)   # 動きは減らす設定のときは止める
 
 
 if __name__ == "__main__":
