@@ -1325,7 +1325,8 @@ def _picks(picks, works, feedback=None):
     def card(x, big):
         follow = x.get("kind") in ("follow", "hesitate")  # 同类新发现不是那个作品本身，没图时不能用它的封面
         story = {"image": x.get("image"), "_fbs": [] if follow else covers.get(x["work"], []),
-                 "_work": (x.get("hits") or [x["work"]])[0] if follow else x["work"]}
+                 "_work": (x.get("hits") or [x["work"]])[0] if follow else x["work"],
+                 "url": x.get("url"), "source": x.get("source")}   # 图都打不开时退到来源网站的图标（不再留一个空框）
         tags = "".join(f"<i>{e(h)}</i>" for h in x.get("hits", []))
         main, sep, liked = _why(x).partition(" · 👍した")  # 理由は手書きの POP：本文に蛍光ペン、👍 との関連は小さく
         why_html = f"<mark>{main}</mark>" + (f"<small>👍した{liked}</small>" if sep else "")

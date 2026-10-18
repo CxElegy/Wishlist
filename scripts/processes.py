@@ -76,8 +76,8 @@ COMPONENTS = {
                  "what": "AI 編集がまだの新着のうち、要紧（urgent_patterns）のものだけを規則で「重大」にまとめて先に載せる"},
     "pending": {"kind": "rule", "name": "整理待ち split_unedited", "spec": "_covered より後 · edit.json にない版面 → 版面に載せない · 原題 20 件まで表示",
                 "what": "digest.split_unedited / render._pending：版面には AI 編集が整理した記事だけ。未整理の新着は版面の下の折りたたみ「整理待ち N 件」に原題・出典だけ"},
-    "imgpick": {"kind": "algo", "name": "配図の選び方 images.pick", "spec": "短辺 ≥200 · 長辺 ≥300 · 8MB まで · 1 件 60 秒・12 枚まで · TLS は ALPN http/1.1（ブラウザと同じ。ないと i0.wp.com が 404）· おすすめの「図なし」は翌日もう一度探す",
-                "what": "AI 指定 → 記事の画像 → og:image → JSON-LD → 動画の表紙（<video poster>：虎扑の動画帖など）→ 本文 → Bing の縮小画像 → 転載ページ。ロゴ・既定画像は除く。"
+    "imgpick": {"kind": "algo", "name": "配図の選び方 images.pick", "spec": "短辺 ≥200 · 長辺 ≥300 · 8MB まで · 1 件 60 秒・12 枚まで · TLS は ALPN http/1.1（ブラウザと同じ。ないと i0.wp.com が 404）· おすすめの「図なし」は翌日もう一度探す · おすすめカードは図が全部開けなくても来源サイトの图标に退ける（空の枠にしない）",
+                "what": "AI 指定 → 記事の画像 → og:image → JSON-LD → 動画の表紙（<video poster>：虎扑の動画帖など）→ 本文 → Bing の縮小画像 → 転載ページ。ロゴ・既定画像（logo / noimage / placeholder / default_image / no_photo / NowPrinting / blank.png：サイトの占位図）は除く。作品の表紙にも使わない。"
                         "Bing の縮小画像（bing.com/th）は Bing が切った一部分なので原文の図の後ろ。repair-images（収集の手動実行）で既刊も直す"},
     "imgsibling": {"kind": "rule", "name": "別のサイトへ回る same_event / retry_images", "spec": "同じ出来事 = 作品名を除いた共通の語 ≥ 2（StoryDeduper と同じ）· 別の記事 4 本まで · 引用された原題「…」でも転載を探す · 図なし・図が開けなくなった（dead）は 6 時間ごとに出刊のたび再探し（1 回 6 件・1 件 25 秒・直近 8 日）· 単色の空白図（標準偏差 < 3）は使わない",
                    "what": "原文が人機検証・限流・一時的に開けない（ナタリーの 405 など）ときも止まらず、同じ出来事を報じた別のサイトの記事の図 → 転載へ進む。それでもないものは後の出刊で自動でもう一度（state/img_retry.json）"},
@@ -339,7 +339,7 @@ PROCESSES = [
                        ("5", "動画の表紙", "<video poster>"),
                        ("6", "本文の img", "6 枚"), ("7", "Bing の縮小画像", "Bing が切った一部分"),
                        ("8", "同じ出来事の別のサイトの記事", "4 本まで", "imgsibling"), ("9", "転載ページ", "Bing 8 · Google · 引用された原題でも", "imgsibling")]},
-            {"id": "i2", "kind": "step", "lane": "actions", "title": "検査", "text": "8MB まで · 短辺 200 · 長辺 300 · Pillow で開ける · ロゴ・既定画像を除く",
+            {"id": "i2", "kind": "step", "lane": "actions", "title": "検査", "text": "8MB まで · 短辺 200 · 長辺 300 · Pillow で開ける · ロゴ・サイトの占位図（default_image など）を除く",
              "uses": ["imgpick"]},
             {"id": "i2b", "kind": "decision", "lane": "actions", "title": "予告画像が小さい？", "text": "長辺 < 1000",
              "no": "そのまま", "uses": ["imgsharp"]},
