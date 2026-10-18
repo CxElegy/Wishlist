@@ -344,7 +344,7 @@ def write_item(name, emblems, th):
         skip = False
         block.append(l)
     at = next((i + 1 for i, l in enumerate(block) if l.startswith("    motif:")), 0)
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs")
     block[at:at] = (["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"]
                     + [f"      - {_flow({k: x[k] for k in keep if k in x})}" for x in emblems]
                     + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
@@ -535,25 +535,38 @@ def logo_local(url, slug):
 
 
 def wordmark_local(url, slug):
-    """作品の主な画像がタイトルロゴ（文字だけ・地が透明か一色）なら、地を抜いて倉庫に置く → (相対パス, 高さ÷幅)。写真・ポスターなら None。
-    カードに入れると白い板の中に小さな字が浮くだけ（The Mandalorian）なので、ロゴとして字そのものを大きく貼る。"""
+    """作品の主な画像がタイトルロゴ（文字だけ・地が透明か一色）なら倉庫に置く → (相対パス, 高さ÷幅, 板つきか)。写真・ポスターなら None。
+    カードに入れると白い板の中に小さな字が浮くだけ（The Mandalorian）なので、ロゴそのものを大きく貼る。
+    ・地が透明・白っぽい：地を抜いて字だけ（板 = False）
+    ・地が濃い色（HBO の紫の板に白い字：ハリー・ポッター）：抜くと白い字が白いフチに埋もれて読めないので、地の板ごと残す（板 = True。
+      白いカードには入れず、板そのものに斜めの枠だけ）"""
+    import numpy as np
     from PIL import Image
     src = Image.open(io.BytesIO(_get(url))).convert("RGBA")
     a = src.getchannel("A")
     w, h = src.size
     edge = [a.getpixel((x, y)) for x in range(0, w, max(1, w // 60)) for y in (0, h - 1)] + \
            [a.getpixel((x, y)) for y in range(0, h, max(1, h // 60)) for x in (0, w - 1)]
-    img = clear_flat_bg(src)
-    if sum(v < 16 for v in edge) / len(edge) < WORDMARK_EDGE and img is src:   # 縁が透明でも一色の地でもない = 写真・ポスター
+    clear = sum(v < 16 for v in edge) / len(edge) >= WORDMARK_EDGE
+    img = src if clear else clear_flat_bg(src)
+    if not clear and img is src:   # 縁が透明でも一色の地でもない = 写真・ポスター
         return None
-    box = a.getbbox() or (0, 0, w, h)
+    plate = False
+    if not clear:   # 一色の地：地の明るさで、抜くか板ごと残すか
+        rgb = np.array(src.convert("RGB")).astype("float")
+        ring = np.concatenate([rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]])
+        lum = float(np.median(ring @ [0.299, 0.587, 0.114])) / 255
+        if lum < PLATE_LUM:
+            img, plate = src, True
+    box = img.getchannel("A").getbbox() or (0, 0, w, h)
     img = img.crop(box)
     img.thumbnail((520, 520))
     EMB_DIR.mkdir(parents=True, exist_ok=True)
     img.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=90, method=6)
-    return f"emblems/{slug}.webp", round(img.size[1] / img.size[0], 3)
+    return f"emblems/{slug}.webp", round(img.size[1] / img.size[0], 3), plate
 
 
+PLATE_LUM = 0.8   # ロゴの地の明るさがこれ未満（濃い色の板）なら地を抜かずに板ごと貼る
 WORDMARK_EDGE = 0.6   # 縁のこの割合以上が透明（か縁が一色の地）= タイトルロゴ（文字だけ）。写真・ポスターは縁まで絵がある
 
 
@@ -796,12 +809,17 @@ def fit_all(name, drawn=False):
                 x["ar"] = round(bh / bw, 3)
             except Exception:
                 pass
-        if x.get("work") and x.get("shape") == "badge" and str(x.get("image", "")).startswith("http"):
-            try:   # 作品の主な画像がタイトルロゴなら、カードでなくロゴとして字を大きく
-                got = wordmark_local(x["image"], slugify(name, x["subject"]))
+        if x.get("work") and (str(x.get("image", "")).startswith("http") or x.get("source")):
+            try:   # 作品の主な画像がタイトルロゴなら、白いカードでなくロゴそのものを大きく（濃い地は板ごと）
+                url = x["image"] if str(x["image"]).startswith("http") else x["source"]
+                got = wordmark_local(url, slugify(name, x["subject"]))
                 if got:
-                    x.update(source=x["image"], image=got[0], shape="logo", ar=got[1])
-                    print(f"  {x['subject']}：タイトルロゴ → 地を抜いてロゴとして", file=sys.stderr)
+                    x.update(source=url, image=got[0], shape="badge" if got[2] else "logo", ar=got[1])
+                    if got[2]:
+                        x["plate"] = True
+                    else:
+                        x.pop("plate", None)
+                    print(f"  {x['subject']}：タイトルロゴ → {'板ごと' if got[2] else '地を抜いて'}", file=sys.stderr)
             except Exception as e:
                 print(f"  [ロゴ] {x['subject']}：{e}", file=sys.stderr)
         if x.get("shape") in ("logo", "icon") or x.get("work"):
@@ -874,7 +892,7 @@ def _write_emblems(name, ems):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     path.write_text("\n".join(lines), encoding="utf-8")
 
@@ -1188,7 +1206,7 @@ def cut_all(name, drawn, old=()):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "fs")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     path.write_text("\n".join(lines), encoding="utf-8")
 

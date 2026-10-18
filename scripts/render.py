@@ -1181,7 +1181,7 @@ def _emblem_img(a):
            f'onerror="var s=this.closest(\'.sec\');if(s)s.classList.remove(\'has-emb\');this.closest(\'.emb\').remove()">')
     c = a.get("crop")
     ar = a.get("ar")
-    if a["shape"] == "badge" and not c and ar and not (CARD_AR[0] <= float(ar) <= CARD_AR[1]):
+    if a["shape"] == "badge" and not c and (a.get("plate") or ar and not (CARD_AR[0] <= float(ar) <= CARD_AR[1])):
         img = img.replace('class="badge"', 'class="badge whole"', 1)   # 縦横比がカードと離れている：切らずに全体を見せる
     if a["shape"] == "logo" and ar and float(ar) < WIDE_LOGO:
         img = img.replace('class="logo"', 'class="logo wide"', 1)   # 横長の文字のロゴ（タイトルロゴ）：高さでなく幅で大きく
@@ -1214,6 +1214,8 @@ def _emblem(items, ring="accent"):
             a["fs"] = float(fs)
         if x.get("shape") in ("logo", "icon"):
             a["shape"] = x["shape"]
+        if x.get("plate"):   # 濃い地の板ごとのタイトルロゴ：カードの窓で切らず、板そのものに枠
+            a["plate"] = True
         alts.append(a)
     _body_len(alts)
     if not alts:
@@ -1628,7 +1630,7 @@ EMB_JS = """
     if (alts.length > 1 && inner && img) {
       const a = alts[Math.floor(Math.random() * alts.length)];
       const n = img.cloneNode(); n.src = a.src;
-      const whole = a.shape === 'badge' && !a.crop && a.ar && (a.ar < 0.95 || a.ar > 1.6);   // render.CARD_AR：カードと比率が離れたら切らない
+      const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));   // render.CARD_AR：カードと比率が離れたら切らない
       n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
       n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
       if (a.shape === 'badge' && a.crop) {

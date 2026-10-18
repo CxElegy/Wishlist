@@ -97,7 +97,7 @@ COMPONENTS = {
               "what": "emblem_fill._hash：網址が違う同じ写真を 1 枚に"},
     "roster": {"kind": "rule", "name": "上限 = 主要な要素の数（emblem_fill.roster / rule）", "spec": "キャラ ≤200（主要キャラ全員）· グループ ≤50 · 主題 ≤10 · 本人 10 · ブランド 1 · 1 回の後台で 10 人ずつ足す",
                "what": "Wiki の分類（emblem_category）か AniList の主役を数えて emblem_pool に。名前は参照の多い順に全員 emblem_who へ。まだいない人から 10 人ずつ集める（emblem_fill.STEP）"},
-    "cutcheck": {"kind": "algo", "name": "切り抜きの検査 check_whole", "spec": "上の端 >50%（コマの切り抜き）· 左右の端 >10% · 面積 <12% · 半透明 >18% · 写真は切り抜きに顔が残ること・明るさ ≥16%（暗い場面は使わない）· 外れた画像は emblem_reject へ",
+    "cutcheck": {"kind": "algo", "name": "切り抜きの検査 check_whole", "spec": "上の端 >50%（コマの切り抜き）· 左右の端 >10% · 面積 <12% · 半透明 >18% · 写真は切り抜きに顔が残ること・明るさ ≥16%（暗い場面は使わない）· 外れた画像は emblem_reject へ · 同じファイル（Wikimedia の網址違い）は 1 枚",
                  "what": "emblem.check_whole：体が枠で切れた・輪郭がにじんだものを使わない"},
     "facefit": {"kind": "algo", "name": "顔の大きさをそろえる", "spec": "胸像：顔 = 高さの 32% · 公式の立ち絵は全身のまま · 胸像と全身は多いほうに",
                 "what": "emblem.face_fit / upper_body / keep_framing"},
