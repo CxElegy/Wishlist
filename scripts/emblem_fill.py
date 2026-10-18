@@ -995,13 +995,25 @@ def _hash(img):
     return int("".join("1" if px[r * 9 + c] > px[r * 9 + c + 1] else "0" for r in range(8) for c in range(8)), 2)
 
 
+def file_key(url):
+    """画像の「同じファイル」の鍵。Wikimedia は同じファイルが thumb/…/500px-名前・元の網址・Special:FilePath/名前 のどれでも来る
+    （周杰伦：同じ写真が 2 つの網址で入って 4 枚が同じに見えた）ので、ファイル名だけにする。ほかは ? から後ろを落とす。"""
+    u = urllib.parse.unquote(str(url or ""))
+    m = (re.search(r"wikimedia\.org/wikipedia/[^/]+/(?:thumb/)?[0-9a-f]/[0-9a-f]{2}/([^/?#]+)", u)
+         or re.search(r"Special:FilePath/([^/?#]+)", u) or re.search(r"/wiki/File:([^/?#]+)", u))
+    if m:
+        return "wm:" + m.group(1).replace(" ", "_").lower()
+    return u.split("?")[0]
+
+
 def _dedupe(cands):
-    """同じ画像（網址違い）を落とす。"""
+    """同じ画像（網址違い・Wikimedia の同じファイル）を落とす。"""
     out, seen = [], set()
     for c in cands:
-        if c["image"] in seen:
+        k = file_key(c["image"])
+        if k in seen:
             continue
-        seen.add(c["image"])
+        seen.add(k)
         out.append(c)
     return out
 
@@ -1124,11 +1136,17 @@ def commit(item, good, picks, replace=False, log=print):
     """選んだ番号を items.yaml に書く。人物・キャラは続けて抠图と顔の大きさをそろえる。"""
     kind, lo, target, hi = rule(item)
     name = item["name"]
+    old = [] if replace else [x for x in (item.get("emblem") or []) if isinstance(x, dict)]
+    if live_action(item):   # 実写の作品：前の規則で入れた出演者の生活の写真は残さない（役の姿・作品の画像だけ）
+        old = [x for x in old if is_role_image(x)]
     chosen, count = [], {}
+    for x in old:   # 番号は今ある分の続きから（「周杰倫 1」が 2 つできて同じファイルに上書きされない）
+        b = _base_subject(x.get("subject"))
+        count[b] = count.get(b, 0) + 1
     for n in picks:
         c = good[n - 1]
         count[c["subject"]] = count.get(c["subject"], 0) + 1
-        if sum(1 for m in picks if good[m - 1]["subject"] == c["subject"]) > 1:   # 同じ人の別の写真は名前を分ける（保存ファイル名が重ならないように）
+        if count[c["subject"]] > 1 or sum(1 for m in picks if good[m - 1]["subject"] == c["subject"]) > 1:   # 同じ人の別の写真は名前を分ける（保存ファイル名が重ならないように）
             c = {**c, "subject": f"{c['subject']} {count[c['subject']]}"}
         row = {"subject": c["subject"], "why": c["why"], "image": c["image"], "page": c["page"], "shape": c["shape"]}
         if emblem.is_logo(row, kind) and not c["image"].lower().split("?")[0].endswith(".svg"):
@@ -1143,15 +1161,14 @@ def commit(item, good, picks, replace=False, log=print):
             try:
                 got = emblem.wordmark_local(c["image"], emblem.slugify(name, c["subject"]))
                 if got:
-                    row.update(source=c["image"], image=got[0], shape="logo", ar=got[1])
+                    row.update(source=c["image"], image=got[0], shape="badge" if got[2] else "logo", ar=got[1])
+                    if got[2]:
+                        row["plate"] = True   # 濃い地の板ごとのロゴ：白いカードに入れず、板に斜めの枠だけ
             except Exception as e:
                 log(f"  [ロゴ] {c['subject']}：{e}")
         chosen.append(row)
-    old = [] if replace else [x for x in (item.get("emblem") or []) if isinstance(x, dict)]
-    if live_action(item):   # 実写の作品：前の規則で入れた出演者の生活の写真は残さない（役の姿・作品の画像だけ）
-        old = [x for x in old if is_role_image(x)]
-    seen = {(x["subject"], x["image"]) for x in old}
-    merged = old + [x for x in chosen if (x["subject"], x["image"]) not in seen]
+    seen = {file_key(u) for x in old for u in (x.get("image"), x.get("source")) if u}
+    merged = old + [x for x in chosen if file_key(x["image"]) not in seen]   # 同じファイルは 2 回入れない
     merged = merged[:hi]
     _drop_skip(name)
     emblem.write_item(name, merged, None)
@@ -1235,7 +1252,8 @@ def _base_subject(s):
 def _have_images(item):
     """今ある小元素の画像と、目で見て外した画像（emblem_reject）。自動ではどちらも選ばない。"""
     have = {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
-    return have | set(item.get("emblem_reject") or [])
+    have |= set(item.get("emblem_reject") or [])
+    return have | {file_key(u) for u in have}   # 網址が違っても同じファイルなら同じ画像
 
 
 def auto_pick(item, good, web=True, strict=False):
@@ -1263,7 +1281,7 @@ def auto_pick(item, good, web=True, strict=False):
     images, picks = _have_images(item), []
     for i in idx:
         c = good[i]
-        if (not web and c["source"] == WEB) or c.get("image") in images:
+        if (not web and c["source"] == WEB) or c.get("image") in images or file_key(c.get("image")) in images:
             continue
         if strict and not needs_face(item) and c["source"].split("(")[0] not in AUTO_SOURCES.get(kind, ()):
             continue

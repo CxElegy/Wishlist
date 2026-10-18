@@ -1083,6 +1083,12 @@ class Framing(unittest.TestCase):
         self.assertTrue(emblem.is_logo({"subject": "gelato pique のロゴ"}))
         self.assertTrue(emblem.is_logo({"subject": "x"}, kind="brand"))
 
+    def test_same_wikimedia_file(self):
+        a = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/1203%E5%92%AA.jpg/500px-1203%E5%92%AA.jpg"
+        b = "https://commons.wikimedia.org/wiki/Special:FilePath/1203%E5%92%AA.jpg?width=500"
+        self.assertEqual(ef.file_key(a), ef.file_key(b))
+        self.assertEqual(len(ef._dedupe([{"image": a}, {"image": b}])), 1)
+
     def test_title_logo_not_card(self):
         import emblem, io, tempfile, pathlib, render
         from unittest import mock
@@ -1094,7 +1100,12 @@ class Framing(unittest.TestCase):
             b = io.BytesIO(); im.save(b, "PNG"); return b.getvalue()
         with tempfile.TemporaryDirectory() as d, mock.patch.object(emblem, "EMB_DIR", pathlib.Path(d)):
             with mock.patch.object(emblem, "_get", return_value=png(logo)):
-                path, ar = emblem.wordmark_local("https://x/logo.png", "t")
+                path, ar, plate = emblem.wordmark_local("https://x/logo.png", "t")
+            self.assertFalse(plate)   # 白い地は抜いて字だけ
+            dark = Image.new("RGB", (400, 160), (50, 20, 60))
+            ImageDraw.Draw(dark).rectangle((40, 50, 360, 110), fill="white")   # 濃い紫の板に白い字（HBO）
+            with mock.patch.object(emblem, "_get", return_value=png(dark)):
+                self.assertTrue(emblem.wordmark_local("https://x/hbo.png", "h")[2])   # 抜くと読めないので板ごと
             with mock.patch.object(emblem, "_get", return_value=png(photo)):
                 self.assertIsNone(emblem.wordmark_local("https://x/p.png", "p"))
         self.assertLess(ar, render.WIDE_LOGO)
