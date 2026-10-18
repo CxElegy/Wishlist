@@ -168,6 +168,14 @@ button{font-family:inherit}
 .wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
 .wc:hover b{text-decoration:underline;text-underline-offset:3px}
 /* ジャンルの棚：ジャンルごとに看板、作品ごとに最新の 1 本をテープのように並べる（版面へのリンク） */
+/* 棚は既定でたたむ（トップが長くなりすぎないように）。1 行の帯を押すとひらく */
+.shelfbox>summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:12px;padding:8px 14px;background:var(--card);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font:900 14px var(--font-sans);letter-spacing:.06em}
+.shelfbox>summary::-webkit-details-marker{display:none}
+.shelfbox>summary small{font:700 11px var(--font-sans);opacity:.75}
+.shelfbox>summary span{margin-left:auto;padding:1px 10px;background:var(--ink);color:var(--card);font:700 12px var(--font-sans)}
+.shelfbox>summary:hover span{background:var(--rose)}
+.shelfbox .shclose,.shelfbox[open] .shopen{display:none}.shelfbox[open] .shclose{display:inline}
+.shelfbox[open]>summary{margin-bottom:18px}
 .shelves{display:flex;flex-wrap:wrap;align-items:flex-end;gap:30px 26px;padding-top:6px}
 .shelf{flex:var(--n) 1 calc(var(--n) * 150px);min-width:0;position:relative;padding-top:32px;--sc:var(--ink)}
 .sign{position:absolute;left:0;top:0;margin:0;display:inline-flex;align-items:baseline;gap:10px;padding:5px 14px 4px;background:var(--sc);color:#FFF;
