@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>連続キル風の演出</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Anton&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* テストグラウンド：Dota 2 の「連続キルの特殊効果」（寒冰・火焔・金色）のように、左の目次の頭像（読んでいる作品のアイコン）に枠の光・枠から立ちのぼる炎・舞う光の粒を付ける。
+   作り方はゲームのエフェクトと同じ：WebGL のシェーダーで、枠からの距離（React Bits ElectricBorder の角丸の箱の距離）に、上へ流れる雑音（Ashima の simplex noise、MIT）でゆらぎを付けて炎の形にし、
+   温度で色を引く（外は暗い色 → 明るい色 → 白い芯）。話題度で炎の高さ・明るさ・粒の数、上がる切り替えで炎が一気に伸びて枠が光る。
+   トークンは scripts/render.py の :root と同じ。新しい色（--ice --frost --icedeep --coin）は採用したら render.py の :root に足す */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;
+ --ice:#8FD8FF;--frost:#E9F8FF;--icedeep:#2A6FD6;--coin:#C8901A;--coindark:#7A5208;
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--skew:-8deg;--shadow:4px 4px 0 var(--ink)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.6 var(--font-sans)}
+header{padding:16px 24px;background:var(--ink);color:var(--card);display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+header h1{margin:0;font:900 16px var(--font-sans)}
+header h1 small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header label{display:flex;align-items:center;gap:10px;font:700 13px var(--font-sans);flex:1;min-width:240px}
+header input[type=range]{flex:1;accent-color:var(--flame)}
+header output{font:28px var(--font-num);color:var(--gold);min-width:2.2em;text-align:right}
+header .btns{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+header button,header .tog{font:700 12px var(--font-sans);background:var(--card);color:var(--ink);border:0;padding:5px 12px;transform:skewX(var(--skew));cursor:pointer;box-shadow:3px 3px 0 var(--flame)}
+header .tog{display:flex;align-items:center;gap:6px}
+header select{font:700 12px var(--font-sans)}
+header .note{flex-basis:100%;margin:0;font-size:12px;opacity:.8}
+main{max-width:1320px;margin:0 auto;padding:26px 20px 70px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:30px}
+.col{display:flex;flex-direction:column;gap:14px}
+.col h2{margin:0;font:900 18px var(--font-sans);display:flex;gap:10px;align-items:baseline}
+.col h2 .tg{background:var(--ink);color:var(--card);padding:0 10px;transform:skewX(var(--skew));font:900 13px/1.8 var(--font-sans)}
+.col ul{margin:0;padding-left:1.1em;font-size:13px;color:rgba(26,28,34,.78)}
+/* 大きく見る：暗い台（ゲームの画面）と明るい台（いまの目次の地） */
+.stage{display:flex;gap:14px}
+.pad{flex:1;height:250px;display:grid;place-items:end center;padding-bottom:30px;background:var(--ink);box-shadow:var(--shadow)}
+.pad.lite{background:var(--paper);box-shadow:var(--shadow),inset 0 0 0 1px rgba(26,28,34,.15)}
+.por{position:relative;width:104px;height:104px}
+.por img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover;border:3px solid var(--card);box-shadow:2px 2px 0 var(--ink)}
+.por canvas{position:absolute;pointer-events:none;z-index:2}
+.por canvas.back{z-index:0}
+/* 目次の見本（実寸）：線路の駅と、読んでいる作品の頭像 */
+.nav{background:var(--paper);border-left:6px solid var(--alert);padding:16px 10px 12px 18px;box-shadow:inset 0 0 0 1px rgba(26,28,34,.15);display:flex;flex-direction:column;gap:12px}
+.nav .row{display:flex;align-items:center;gap:12px;font:700 14px var(--font-sans);color:rgba(26,28,34,.75)}
+.nav .row .dot{width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--ink);margin:0 17px}
+.nav .row.on{color:var(--ink);font-weight:900}
+.nav .row.on .por{width:46px;height:46px;transform:rotate(-4deg)}
+.nav .row small{margin-left:auto;font:22px var(--font-num);color:var(--alert)}
+@media (prefers-reduced-motion:reduce){.por canvas{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1><small>TESTGROUND</small>連続キル風の頭像の演出（寒冰・火焔・金色）</h1>
+  <label>話題度 <input type="range" id="h" min="0" max="100" value="67"><output id="hv">67</output></label>
+  <div class="btns">
+    <button id="up">上がる（ぶわっ）</button>
+    <button id="auto">自動で切り替え 20 → 45 → 67 → 92</button>
+    <label class="tog">頭像 <select id="pic">
+      <option value="dota-2">Dota 2</option><option value="zenless-zone-zero">绝区零</option><option value="chainsaw-man">チェーンソーマン</option>
+      <option value="jay-chou">周杰伦</option><option value="marvel">漫威</option><option value="gta-6">GTA 6</option></select></label>
+  </div>
+  <p class="note">Dota 2 の「連続キルの特殊効果」（寒冰・火焔・金色）の見え方を参考にしています。連続キル中は左の頭像の枠が光り、枠から炎が立ちのぼり、光の粒が舞います。これを左の目次の頭像（読んでいる作品のアイコン）に付けます。ゲームのエフェクトと同じ作り方で、WebGL のシェーダーが枠からの距離に上へ流れる雑音でゆらぎを付け、温度で色を引きます。話題度で炎の高さ・明るさ・粒の数が段階的に増え、上がる切り替えでは炎が一気に伸びて枠が光ります。下は大きく見たもの（暗い台・明るい台）と、目次の実寸です。</p>
+</header>
+<main id="cols"></main>
+<script>
+(() => {
+  const KINDS = [
+    {id: 'ice', name: '寒冰', pal: ['icedeep', 'ice', 'frost'], pts: ['青い冷たい炎がゆっくりゆらぐ（流れは遅め、渦が多め）', '枠は水色に光り、白い氷の粒が舞う', 'ぶわっ：冷気が一気に立ちのぼり、枠が白く光る']},
+    {id: 'fire', name: '火焔', pal: ['alert', 'flame', 'gold'], pts: ['赤 → 橙 → 金 → 白い芯の炎が速く立ちのぼる', '枠は橙に光り、火の粉が昇る', 'ぶわっ：炎が一気に高く伸び、枠が金色に光る']},
+    {id: 'gold', name: '金色', pal: ['coin', 'gold', 'card'], pts: ['金色の炎（明るく、きらめきが多い）', '枠は金に光り、金のきらめきが瞬く', 'ぶわっ：金の炎が噴き上がり、きらめきが増える']},
+  ];
+  const cs = getComputedStyle(document.documentElement), px = document.createElement('canvas').getContext('2d');
+  const rgb = v => { px.fillStyle = '#000'; px.fillStyle = cs.getPropertyValue('--' + v).trim(); const h = px.fillStyle; return [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255); };
+
+  const VS = `#version 300 es
+  const vec2 c[3] = vec2[3](vec2(-1.,-1.), vec2(3.,-1.), vec2(-1.,3.));
+  void main(){ gl_Position = vec4(c[gl_VertexID], 0., 1.); }`;
+  // simplex noise：Ashima Arts / Stefan Gustavson（MIT、github.com/ashima/webgl-noise）
+  const FS = `#version 300 es
+  precision highp float;
+  uniform vec2 uSize; uniform float uRatio; uniform vec4 uBox; uniform float uTime, uHeat, uSurge, uMode;
+  uniform vec3 uC0, uC1, uC2;
+  out vec4 o;
+  vec3 mod289(vec3 x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+  vec2 mod289(vec2 x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+  vec3 permute(vec3 x){return mod289(((x*34.0)+10.0)*x);}
+  float snoise(vec2 v){
+    const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+    vec2 i = floor(v + dot(v, C.yy)); vec2 x0 = v - i + dot(i, C.xx);
+    vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+    vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1; i = mod289(i);
+    vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0); m = m*m; m = m*m;
+    vec3 x = 2.0 * fract(p * C.www) - 1.0; vec3 h = abs(x) - 0.5; vec3 ox = floor(x + 0.5); vec3 a0 = x - ox;
+    m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+    vec3 g; g.x = a0.x * x0.x + h.x * x0.y; g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+    return 130.0 * dot(m, g);
+  }
+  float fbm(vec2 p){ float s = 0., a = .5; for (int i = 0; i < 4; i++){ s += a * snoise(p); p = p * 2.03 + 17.1; a *= .5; } return s; }
+  float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+  // 角丸の箱からの距離（外が正）：React Bits ElectricBorder の frameAt と同じ式
+  float box(vec2 p, vec2 b, float r){ vec2 q = abs(p) - b + r; return length(max(q, 0.)) + min(max(q.x, q.y), 0.) - r; }
+  void main(){
+    vec2 p = vec2(gl_FragCoord.x / uRatio, uSize.y - gl_FragCoord.y / uRatio);
+    vec2 c = uBox.xy, hb = uBox.zw; float S = hb.x * 2.;          // 頭像の大きさ（px）を単位に
+    vec2 q = (p - c) / S;                                           // 頭像の中心が 0、1 = 頭像 1 枚ぶん
+    float d = box(p - c, hb, S * .04) / S;
+    float heat = clamp(uHeat + uSurge * .35, 0., 1.4);
+    float speed = uMode < .5 ? .55 : (uMode < 1.5 ? 1.25 : .9);   // 寒冰は遅く、火焔は速く
+    float t = uTime * speed;
+    // 炎：上へ流れる雑音で、枠からの距離をゆがめる。上の辺ほど高く（炎は上へ）
+    float up = clamp(-q.y * 2., 0., 1.);
+    vec2 nq = vec2(q.x * (uMode < .5 ? 3.2 : 4.2), q.y * 2.6 + t * 1.6);
+    float n = fbm(nq) * .5 + .5;
+    float n2 = fbm(nq * 2.1 + vec2(3.7, t * .7)) * .5 + .5;
+    float reach = (.035 + heat * .2) * (1. + up * (1.6 + heat * 1.8)) * (1. + uSurge * .45);
+    float dd = max(d, 0.);
+    float body = clamp(1. - (dd - (n - .45) * reach * .9) / max(reach, 1e-3), 0., 1.);
+    body *= smoothstep(-.02, .02, d + .015);                       // 頭像の中には入れない（枠のすぐ内側だけ少し）
+    float flame = pow(body, 1.6) * (.55 + .45 * n2) * (uMode > 1.5 ? .55 : 1.);   // 金色は炎を薄く、きらめきを多く
+    // 枠そのものの光
+    float rim = exp(-abs(d) / (.012 + heat * .01)) * (.45 + heat * .55 + uSurge * .8) * (d < 0. ? smoothstep(-.03, 0., d) : 1.);
+    float glow = exp(-dd / (.05 + heat * .08)) * (.18 + heat * .3) * (.7 + .3 * n);
+    glow *= smoothstep(-.004, .006, d);                              // 頭像の上には色をかぶせない
+    // 光の粒：上へ流れる格子の中で、ときどき瞬く点
+    float spark = 0.;
+    for (int k = 0; k < 2; k++){
+      float g = k == 0 ? 14. : 9.;
+      vec2 sp = vec2(q.x * g, q.y * g + t * (k == 0 ? 3.2 : 2.1) * (uMode < .5 ? .6 : 1.));
+      vec2 id = floor(sp), f = fract(sp) - .5;
+      float h = hash(id + float(k) * 7.);
+      vec2 jit = vec2(hash(id + 3.1), hash(id + 5.7)) - .5;
+      float on = step(1. - (.05 + heat * .2 + uSurge * .25) * (uMode > 1.5 ? 2.4 : 1.), h) * smoothstep(.0, .05, dd) * exp(-dd / (.25 + heat * .35));
+      float tw = .5 + .5 * sin(uTime * (6. + h * 8.) + h * 30.);
+      spark += on * tw * smoothstep(.09 + h * .06, 0., length(f - jit * .6));
+    }
+    float T = clamp(flame * (1. + heat * .5) + rim * .8 + spark, 0., 1.6);   // 温度
+    vec3 col = T < .5 ? mix(uC0, uC1, T * 2.) : (T < 1. ? mix(uC1, uC2, (T - .5) * 2.) : mix(uC2, vec3(1.), min(1., T - 1.)));
+    float a = clamp(flame * 1.15 + rim + glow + spark, 0., 1.);
+    o = vec4(col * a, a);
+  }`;
+
+  function mk(gl, type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s)); return s; }
+  class Streak {
+    constructor(por, kind) {
+      this.por = por; this.kind = kind; this.cv = document.createElement('canvas'); por.appendChild(this.cv);
+      const gl = this.gl = this.cv.getContext('webgl2', {premultipliedAlpha: true, alpha: true, antialias: false});
+      if (!gl) return;
+      const pr = gl.createProgram(); gl.attachShader(pr, mk(gl, gl.VERTEX_SHADER, VS)); gl.attachShader(pr, mk(gl, gl.FRAGMENT_SHADER, FS)); gl.linkProgram(pr);
+      this.pr = pr; this.u = {}; for (const n of ['uSize', 'uRatio', 'uBox', 'uTime', 'uHeat', 'uSurge', 'uMode', 'uC0', 'uC1', 'uC2']) this.u[n] = gl.getUniformLocation(pr, n);
+      this.vao = gl.createVertexArray(); this.surge = 0; this.h = .67; this.t = Math.random() * 50;
+      this.pal = kind.pal.map(rgb); this.mode = {ice: 0, fire: 1, gold: 2}[kind.id];
+      this.resize();
+    }
+    resize() {   // 頭像の上に 1.6 枚・横と下に 0.6 枚ぶんの余白（炎は上へ伸びる）
+      const s = this.por.offsetWidth, l = s * .6, top = s * 1.6, w = s + l * 2, h = s + top + l * .5, r = Math.min(2, devicePixelRatio || 1);
+      Object.assign(this.cv.style, {left: -l + 'px', top: -top + 'px', width: w + 'px', height: h + 'px'});
+      this.cv.width = Math.round(w * r); this.cv.height = Math.round(h * r);
+      this.geo = {w, h, r: this.cv.width / w, box: [l + s / 2, top + s / 2, s / 2, s / 2]};
+    }
+    flare(k) { this.surge = Math.min(1.5, k); }
+    draw(dt, heat) {
+      const gl = this.gl; if (!gl) return;
+      this.t += dt; this.h += (heat - this.h) * Math.min(1, dt * 3); this.surge *= Math.exp(-dt * 2.2);
+      const g = this.geo, u = this.u;
+      gl.viewport(0, 0, this.cv.width, this.cv.height); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.useProgram(this.pr); gl.bindVertexArray(this.vao);
+      gl.uniform2f(u.uSize, g.w, g.h); gl.uniform1f(u.uRatio, g.r); gl.uniform4f(u.uBox, ...g.box);
+      gl.uniform1f(u.uTime, this.t); gl.uniform1f(u.uHeat, this.h); gl.uniform1f(u.uSurge, this.surge); gl.uniform1f(u.uMode, this.mode);
+      gl.uniform3fv(u.uC0, this.pal[0]); gl.uniform3fv(u.uC1, this.pal[1]); gl.uniform3fv(u.uC2, this.pal[2]);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+  }
+
+  const cols = document.getElementById('cols'), fx = [];
+  const portrait = cls => `<span class="por ${cls}"><img alt="" src="../icons/dota-2.webp"></span>`;
+  for (const k of KINDS) {
+    const col = document.createElement('section'); col.className = 'col';
+    col.innerHTML = `<h2><span class="tg">${k.name}</span>連続キル風</h2><ul>${k.pts.map(p => `<li>${p}</li>`).join('')}</ul>
+      <div class="stage"><div class="pad">${portrait('big')}</div><div class="pad lite">${portrait('big')}</div></div>
+      <div class="nav"><div class="row"><i class="dot"></i>MMORPG 新作<small>51</small></div>
+        <div class="row on">${portrait('')}Dota 2<small class="num">67</small></div><div class="row"><i class="dot"></i>绝区零<small>39</small></div></div>`;
+    cols.appendChild(col);
+    col.querySelectorAll('.por').forEach(p => fx.push(new Streak(p, k)));
+  }
+  addEventListener('resize', () => fx.forEach(f => f.resize()));
+  document.getElementById('pic').addEventListener('change', ev => document.querySelectorAll('.por img').forEach(i => i.src = `../icons/${ev.target.value}.webp`));
+
+  const hs = document.getElementById('h'), hv = document.getElementById('hv');
+  let heat = .67;
+  function set(v, flare) {
+    const to = v / 100, up = to - heat; heat = to; hs.value = v; hv.textContent = v;
+    document.querySelectorAll('.num').forEach(n => n.textContent = v);
+    if (flare && up > .04) fx.forEach(f => f.flare(.45 + up * 1.6));
+  }
+  hs.addEventListener('input', () => set(+hs.value, false));
+  document.getElementById('up').addEventListener('click', () => fx.forEach(f => f.flare(1.1)));
+  let timer = null;
+  document.getElementById('auto').addEventListener('click', ev => {
+    if (timer) { clearInterval(timer); timer = null; ev.target.textContent = '自動で切り替え 20 → 45 → 67 → 92'; return; }
+    const seq = [20, 45, 67, 92]; let i = 0; ev.target.textContent = '止める';
+    const go = () => { set(seq[i], true); i = (i + 1) % seq.length; }; go(); timer = setInterval(go, 2800);
+  });
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let last = 0;
+  function loop(now) {
+    const dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
+    if (!still.matches) fx.forEach(f => f.draw(dt, heat));
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

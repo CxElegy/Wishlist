@@ -197,6 +197,14 @@ button{font-family:inherit}
 .wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
 .wc:hover b{text-decoration:underline;text-underline-offset:3px}
 /* ジャンルの棚：ジャンルごとに看板、作品ごとに最新の 1 本をテープのように並べる（版面へのリンク） */
+/* 棚は既定でたたむ（トップが長くなりすぎないように）。1 行の帯を押すとひらく */
+.shelfbox>summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:12px;padding:8px 14px;background:var(--card);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font:900 14px var(--font-sans);letter-spacing:.06em}
+.shelfbox>summary::-webkit-details-marker{display:none}
+.shelfbox>summary small{font:700 11px var(--font-sans);opacity:.75}
+.shelfbox>summary span{margin-left:auto;padding:1px 10px;background:var(--ink);color:var(--card);font:700 12px var(--font-sans)}
+.shelfbox>summary:hover span{background:var(--rose)}
+.shelfbox .shclose,.shelfbox[open] .shopen{display:none}.shelfbox[open] .shclose{display:inline}
+.shelfbox[open]>summary{margin-bottom:18px}
 .shelves{display:flex;flex-wrap:wrap;align-items:flex-end;gap:30px 26px;padding-top:6px}
 .shelf{flex:var(--n) 1 calc(var(--n) * 150px);min-width:0;position:relative;padding-top:32px;--sc:var(--ink)}
 .sign{position:absolute;left:0;top:0;margin:0;display:inline-flex;align-items:baseline;gap:10px;padding:5px 14px 4px;background:var(--sc);color:#FFF;
@@ -2306,7 +2314,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     for w in works:
         groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS] + [n for n in groups if n not in SECTIONS]
-    shelves = []
+    shelves, n_works = [], 0
     for name in order:
         tapes = []
         for w in groups.get(name, []):
@@ -2326,15 +2334,18 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
         if not tapes:
             continue
         en = _sec_en(name)
+        n_works += len(tapes)
         shelves.append(f'<div class="shelf" style="--sc:{_sec_color(name)};--n:{len(tapes)}">'
                        f'<h3 class="sign">{e(_sec_name(name))}<small>{en + " · " if en else ""}{len(tapes)} 作品</small></h3>'
                        f'<div class="tapes">{"".join(tapes)}</div><div class="plank"></div></div>')
     side = _side(works, today, wishes, taste)
     spot = ""
     if more or shelves:
-        spot = (f'<div class="spot"><h2 class="sh"><span>ほかの注目ニュース</span><small>直近 {HOLD_DAYS} 日から · 下の棚は作品ごとの最新 1 本</small></h2>'
+        spot = (f'<div class="spot"><h2 class="sh"><span>ほかの注目ニュース</span><small>直近 {HOLD_DAYS} 日から · 作品ごとの最新は下の棚（たたんであります）</small></h2>'
                 + (f'<div class="mgrid"><div class="wall">{wall}</div>{side}</div>' if more else "")
-                + (f'<div class="shelves">{"".join(shelves)}</div>' if shelves else "") + "</div>")
+                + (f'<details class="shelfbox"><summary><b>ジャンル別の最新</b><small>{n_works} 作品 · {len(shelves)} ジャンル</small>'
+                   f'<span class="shopen">ひらく</span><span class="shclose">たたむ</span></summary>'
+                   f'<div class="shelves">{"".join(shelves)}</div></details>' if shelves else "") + "</div>")
     return f'<section class="front" data-k="front" id="front">{poster}{spot}</section>'
 
 
