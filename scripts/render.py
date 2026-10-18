@@ -72,8 +72,8 @@ button{font-family:inherit}
 .pic.fill img:not(.bg):not(.ico){object-fit:cover}
 .pic.fill img.bg{display:none}
 .pic .ph{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;text-align:center;
- font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;
- background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,var(--ac,var(--rose))}
+ font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;text-shadow:0 1px 2px color-mix(in srgb,var(--ink) 70%,transparent);
+ background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,linear-gradient(color-mix(in srgb,var(--ink) 34%,transparent),color-mix(in srgb,var(--ink) 34%,transparent)),var(--ac,var(--rose))}   /* 明るい作品色でも白い字が読めるよう墨を 34% 重ねる */
 .pic.none{background:none}
 .pic.none .ph{display:flex}
 .pic.icon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
@@ -348,12 +348,13 @@ button{font-family:inherit}
 .brief a{color:inherit;font-weight:700}
 .brief a:hover,.brief a:focus-visible{color:var(--acc);text-decoration:underline}
 .older{background:var(--abg);color:var(--afg)}
-.older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
+.older summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:2px 12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
 .older summary::-webkit-details-marker{display:none}
 .older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;background:var(--aacc);color:var(--abg);transform:skewX(var(--skew));
  font:900 15px/1 var(--font-sans)}
 .older[open] summary::before{content:"−"}
 .older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
+.older summary .lb{font:inherit;white-space:nowrap}   /* 「もっと見る · 9 件」は途中で折り返さない（狭い画面では内訳が次の行へ） */
 .older summary span{font-weight:500;letter-spacing:.04em}
 .older .grid{padding-top:8px}
 .pend{border-top:1px dashed var(--line)}
@@ -463,7 +464,7 @@ button{font-family:inherit}
 .emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
-.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:var(--card);padding:6px}  /* 横長・縦長すぎる画像は切らずに全体 */
+.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:color-mix(in srgb,var(--fg) 10%,var(--bg));padding:6px}  /* 地は版面の色に寄せる（白い透過ロゴが白い台に消えないように） */  /* 横長・縦長すぎる画像は切らずに全体 */
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
@@ -1028,7 +1029,7 @@ def _older(stories, today, more=0, texts=()):
     cards = "".join(_tcard(s, w, i, today, small=True) for i, (s, w) in enumerate(packed))
     label = "もっと見る" if more else "過去のニュース"
     detail = f"今週ほかに {more} 件" + (f" · それ以前 {len(stories) - more} 件" if len(stories) > more else "") if more else rng
-    return (f'<details class="older"><summary>{label} · {len(stories) + len(texts)} 件<span>{detail}</span></summary>'
+    return (f'<details class="older"><summary><b class="lb">{label} · {len(stories) + len(texts)} 件</b><span>{detail}</span></summary>'
             f'<div class="grid">{cards}</div>{_brief(texts)}</details>')
 
 
@@ -2459,7 +2460,6 @@ NAV_STYLES = {
 .nav .nsec .tg{transform-origin:left center;transition:transform .18s cubic-bezier(.2,.9,.3,1),box-shadow .18s}
 .nav .nsec .tg{font-size:14px;padding:1px 12px}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
-.nav .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:rgba(26,28,34,.62)}
 .nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--sc)}   /* 板块の色の下線（新着の件数は出さない、2026-10-18） */
 .nav .nbody{position:absolute;left:0;right:0;top:52px}
 /* 上下級（案 A）：下級は上級の駅から出た枝線（拐角 └）の上の駅。大きさは普通の駅と同じ */
@@ -2481,20 +2481,18 @@ NAV_STYLES = {
 .nav .nlab{height:20px;display:flex;align-items:flex-end;gap:4px;padding:0 0 2px 6px;font:900 11px var(--font-sans);letter-spacing:.14em;color:var(--sc);
  transform:rotate(-2deg);transform-origin:left bottom}
 .nav .nlab::before{content:"／";font-weight:900}
-.nav .nlab b{margin-left:4px;font:14px/1 var(--font-num);letter-spacing:.02em;opacity:.8}
+.nav .nlab b{margin-left:4px;font:14px/1 var(--font-num);letter-spacing:.02em}
 .nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;text-decoration:none}
 .nav .nmore{font:900 12px var(--font-sans);color:var(--sc);letter-spacing:.04em}
 .nav .nmore:hover{color:var(--alert)}
 /* ---------- P5 の手ざわり：揃えすぎない ----------
-   板块の行：日本語の札は少し傾け、後ろに英字（GAMES…）を大きな透かしで。件数の数字は Anton */
+   板块の行：日本語の札は少し傾け、右端に英字（GAMES…）を透かしで（新着の件数は 2026-10-18 にやめた） */
 .nav .nsec{position:relative;isolation:isolate}
 .nav .nsec .tg{font-size:15px;padding:1px 13px;transform:skewX(var(--skew)) rotate(-2deg);box-shadow:2px 2px 0 var(--ink)}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) rotate(-3deg) scale(1.22);box-shadow:4px 4px 0 var(--ink)}
-.nav .nsec .en{position:absolute;right:46px;top:2px;z-index:-1;font:34px/1 var(--font-num);letter-spacing:.01em;color:var(--sc);opacity:.16;
+.nav .nsec .en{position:absolute;right:2px;top:5px;z-index:-1;font:28px/1 var(--font-num);letter-spacing:.01em;color:var(--sc);opacity:.16;
  transform:skewX(var(--skew)) rotate(-3deg);white-space:nowrap;pointer-events:none}
 .nav .nslot.cur .nsec .en{opacity:.26}
-.nav .nsec .cnt b{font:19px/1 var(--font-num);color:var(--ink);margin:0 1px}
-.nav .nslot.cur .nsec .cnt b{color:var(--sc)}
 /* 作品の行：名前を 1 行ごとに少しずつずらし・傾ける（線路の駅は揃えたまま）。+N は Anton */
 .nav .nbody .pill .nm{transform-origin:left center}
 .nav .nbody .pill:nth-of-type(3n+1) .nm{transform:rotate(-.9deg)}
