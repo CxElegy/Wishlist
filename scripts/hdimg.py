@@ -120,6 +120,20 @@ def trim_white(bgr, tol=4):
     return bgr[rows[0]:rows[-1] + 1, cols[0]:cols[-1] + 1]
 
 
+def plan_picks(picks):
+    """「気になるかも？」の推薦カードの図 → (目標の長辺, 記事のページ)。愿望清单に合ったもの（各批の最初の大きいカード）は BIG_PX、
+    ほかは CARD_PX。報道の図と同じ「看不清」の判定にかける（推薦カードだけ抜けていた：Bing の 100×100 が 7 倍に引き伸ばされて糊）。"""
+    out = {}
+    for x in picks or []:
+        img = x.get("image")
+        if not isinstance(img, str) or not img.startswith(("http://", "https://")):
+            continue
+        target = BIG_PX if x.get("kind") == "wish" else CARD_PX   # 愿望清单类（各批的第一张是大卡片）
+        if out.get(img, (0,))[0] < target:
+            out[img] = (target, x.get("url") or "")
+    return out
+
+
 def plan(reports, today):
     """最近 WINDOW_DAYS 天报道里的配图 → (目标长边, 原文网页)。每个关注项最新 BIG_PER_WORK 条、
     和头条（weight hero / lead）用 BIG_PX，其余 CARD_PX。借来的作品封面不算（那不是报道自己的图）。"""
@@ -242,6 +256,13 @@ def run(today=None, reports=None):
         reports = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(REPORTS_DIR.glob("????-??-??.json"))[-WINDOW_DAYS - 2:]]
     today = today or max((r.get("date", "") for r in reports), default=dt.date.today().isoformat())
     want = plan(reports, today)
+    try:
+        picks = json.loads((ROOT / "state" / "recommend.json").read_text(encoding="utf-8")).get("picks")
+    except (OSError, ValueError):
+        picks = None
+    for img, (target, referer) in plan_picks(picks).items():
+        if want.get(img, (0,))[0] < target:
+            want[img] = (target, referer)
     state = load_state()
     todo = []
     for url, (target, referer) in want.items():
