@@ -38,7 +38,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 STATE = ROOT / "state" / "gate.json"
 INBOX = ROOT / "inbox"
 REFIRE_HOURS = 6   # 同じ仕事（指紋が同じ）では、この時間のあいだ起こし直さない
-MIN_GAP_MIN = 60   # 新着が増えて指紋が変わっても、前に起こしてからこの分数は起こさない（AI 編集 1 回 ≈ 20 分、収集は 2 時間ごと）
+MIN_GAP_MIN = 60   # 前に起こしてからこの分数は、何があっても起こし直さない（AI 編集 1 回 ≈ 20 分、収集は 2 時間ごと）。これを過ぎても仕事が減っていなければ「停滞」
+MAX_ATTEMPTS = 3   # 停滞のとき、仕事が減らないまま起こし直す回数の上限（超えたら REFIRE_HOURS 待つ。管理ページに「止まっている」と出す）
 
 # AI が要る仕事 → (定時タスクの id, トークンの環境変数, 名前)
 ROUTINES = {
@@ -93,6 +94,16 @@ def edit_work(inbox=INBOX, tz="Asia/Shanghai", today=None):
     return out
 
 
+def edit_done(inbox=INBOX, tz="Asia/Shanghai", today=None):
+    """今日の edit.json の _covered の合計。AI 編集が走って書き直すと増える（新着が来ても減らない）＝「本当に進んだか」の目印。"""
+    today = today or _now().astimezone(zoneinfo.ZoneInfo(tz)).date().isoformat()
+    try:
+        covered = (json.loads((pathlib.Path(inbox) / f"{today}.edit.json").read_text(encoding="utf-8")) or {}).get("_covered") or {}
+        return sum(int(v or 0) for v in covered.values())
+    except (OSError, ValueError, TypeError):
+        return 0
+
+
 def photo_work(inbox=INBOX):
     """書き出された写真（inbox/photos/<id>.json）→ id のリスト。"""
     return sorted(p.stem for p in (pathlib.Path(inbox) / "photos").glob("*.json"))
@@ -134,6 +145,9 @@ def check(tz="Asia/Shanghai", path=None):
     }
     for k, j in jobs.items():
         j["sig"] = _sig([k, edit if k == "edit" else photos if k == "photos" else emblem])
+    # 進み具合の目印（prog：大きくなれば進んだ）。起こしたあとに増えていなければ Claude は動いていない（work_state）
+    jobs["edit"]["prog"] = edit_done(tz=tz)
+    jobs["photos"]["prog"] = -len(photos)
     data = load(path)
     prev = data.get("jobs") or {}
     changed = any((prev.get(k) or {}).get("sig") != j["sig"] or (prev.get(k) or {}).get("need") != j["need"] for k, j in jobs.items())
@@ -150,12 +164,39 @@ def check(tz="Asia/Shanghai", path=None):
     return data
 
 
+def work_state(j, now=None):
+    """ゲートが Claude を起こしたあとの様子（API が 200 を返しただけでは「やった」ことにしない）。→ (状態, 説明)
+      none      まだ起こしていない / 仕事がない
+      running   起こして MIN_GAP_MIN 分以内：編集中かもしれない
+      progress  起こしたあと編集済みの数（prog）が増えた（動いている）
+      stalled   起こして MIN_GAP_MIN 分たったのに prog が増えていない（Claude が動いていない）→ 起こし直す
+      gave_up   動かないまま MAX_ATTEMPTS 回起こした：REFIRE_HOURS 待って、管理ページで人に知らせる"""
+    last = (j or {}).get("fired") or {}
+    if not (j or {}).get("need") or not last.get("at"):
+        return "none", ""
+    now = now or _now()
+    try:
+        ago = now - dt.datetime.fromisoformat(last["at"])
+    except (ValueError, TypeError):
+        return "none", ""
+    prog, was = j.get("prog"), last.get("prog")
+    mins = int(ago.total_seconds() // 60)
+    if was is not None and prog is not None and prog > was:
+        return "progress", f"{mins} 分前に起こして、編集済みが {was} → {prog} 件に進んだ"
+    if ago < dt.timedelta(minutes=MIN_GAP_MIN):
+        return "running", f"{mins} 分前に起こした（編集中のはず）"
+    n = int(last.get("attempts") or 1)
+    if n >= MAX_ATTEMPTS:
+        return "gave_up", f"{n} 回起こしたが仕事が減らない（{mins} 分前が最後）"
+    return "stalled", f"{mins} 分前に起こしたが仕事が減っていない"
+
+
 def _post(url, token):
     req = urllib.request.Request(url, data=b"{}", method="POST", headers={
         "Authorization": f"Bearer {token}", "anthropic-beta": "experimental-cc-routine-2026-04-01",
         "anthropic-version": "2023-06-01", "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as r:
-        return r.status
+        return r.status, r.read(2000).decode("utf-8", "replace")   # 本文に会話の id などが入る：記録して、動いたか調べる手がかりにする
 
 
 def enabled_jobs(flag):
@@ -168,11 +209,24 @@ def enabled_jobs(flag):
     return {x.strip() for x in flag.split(",") if x.strip() in ROUTINES}
 
 
+def _resp(out):
+    """_post の返り値（テストでは int のこともある）→ 記録用の短い文字列。"""
+    body = out[1] if isinstance(out, tuple) and len(out) > 1 else ""
+    try:
+        d = json.loads(body)
+        return str(d.get("claude_code_session_id") or d.get("session_id") or d.get("id") or d.get("session_url") or "")[:80]
+    except (ValueError, AttributeError):
+        return str(body)[:80]
+
+
 def fire(path=None, post=_post, env=None):
-    """AI が要る仕事があって、同じ指紋でまだ起こしていなければ、Claude の定時タスクを起こす。
-    → {job: 結果の文}。GATE_FIRE で許されていない仕事は起こさない。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。"""
+    """AI が要る仕事があるとき、Claude の定時タスクを起こす。起こしたあとに仕事が減ったかを次の回で見て（work_state）、
+    減っていなければ「停滞」として MIN_GAP_MIN 分あけて起こし直す（最大 MAX_ATTEMPTS 回。そのあとは REFIRE_HOURS 待つ）。
+    → {job: 結果の文}。GATE_FIRE で許されていない仕事は起こさない（GATE_FORCE に名前があれば別：管理ページの「もう一度起こす」で、
+    間隔・停滞の判断を飛ばして今すぐ起こす）。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。"""
     env = os.environ if env is None else env
-    allowed = enabled_jobs(env.get("GATE_FIRE", "1"))
+    force = {x.strip() for x in str(env.get("GATE_FORCE", "")).split(",") if x.strip() in ROUTINES}
+    allowed = enabled_jobs(env.get("GATE_FIRE", "1")) | force
     data = load(path)
     now = _now()
     results = {}
@@ -185,24 +239,33 @@ def fire(path=None, post=_post, env=None):
             results[job] = "GATE_FIRE で止めている（定時を待つ）"
             continue
         last = j.get("fired") or {}
-        try:
-            ago = now - dt.datetime.fromisoformat(last["at"])
-        except (KeyError, ValueError, TypeError):
-            ago = None
-        if ago is not None and last.get("sig") == j.get("sig") and ago < dt.timedelta(hours=REFIRE_HOURS):
-            results[job] = "同じ仕事で起こし済み"
-            continue
-        if ago is not None and ago < dt.timedelta(minutes=MIN_GAP_MIN):
+        state, why = work_state(j, now)
+        attempts = 1
+        if job in force:
+            pass
+        elif state == "running" or (state == "progress" and (now - dt.datetime.fromisoformat(last["at"])) < dt.timedelta(minutes=MIN_GAP_MIN)):
             results[job] = f"{MIN_GAP_MIN} 分以内に起こし済み（編集中かもしれないので待つ）"
             continue
+        elif state == "stalled":
+            attempts = int(last.get("attempts") or 1) + 1   # 動いていない：もう一度
+        elif state == "gave_up":
+            try:
+                ago = now - dt.datetime.fromisoformat(last["at"])
+            except (KeyError, ValueError, TypeError):
+                ago = dt.timedelta(0)
+            if ago < dt.timedelta(hours=REFIRE_HOURS):
+                results[job] = f"停滞：{why}（{REFIRE_HOURS} 時間待つ・管理ページで確認）"
+                continue
+        # progress（60 分たって、進んだがまだ残りがある）→ 新しい状況として attempts=1 で起こす
         token = env.get(var)
         if not token:
             results[job] = "トークン未設定（定時を待つ）"
             continue
         try:
-            post(f"https://api.anthropic.com/v1/claude_code/routines/{rid}/fire", token)
-            j["fired"] = {"at": now.isoformat(timespec="seconds"), "sig": j.get("sig")}
-            results[job] = "Claude を起こした"
+            out = post(f"https://api.anthropic.com/v1/claude_code/routines/{rid}/fire", token)
+            j["fired"] = {"at": now.isoformat(timespec="seconds"), "sig": j.get("sig"), "prog": j.get("prog"),
+                          "attempts": attempts, "resp": _resp(out), **({"forced": True} if job in force else {})}
+            results[job] = "Claude を起こした" + (f"（{attempts} 回目：前は動かなかった）" if attempts > 1 else "")
         except Exception as e:   # 起こせなくても、定時のほうで拾われる
             results[job] = f"起こせなかった：{str(e)[:80]}"
         data.setdefault("jobs", {})[job] = j
