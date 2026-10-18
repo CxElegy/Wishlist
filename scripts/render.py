@@ -186,7 +186,13 @@ button{font-family:inherit}
 .wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
 .wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
  padding:8px 10px 11px;transition:transform .12s,box-shadow .12s}
-.wc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.wc{transform:rotate(var(--r,0deg))}
+.wc:hover{transform:rotate(var(--r,0deg)) translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+/* P5 の手法：上下の端はそろえ、中のカードだけ 0.4〜1.2° ずつ不ぞろいに傾ける（同じ向きが続かない） */
+.mgrid .wc:nth-child(1){--r:-.6deg}.mgrid .wc:nth-child(2){--r:1.1deg}.mgrid .wc:nth-child(3){--r:-.8deg}
+.mgrid .wc:nth-child(4){--r:.5deg}.mgrid .wc:nth-child(5){--r:-1.2deg}.mgrid .wc:nth-child(6){--r:.9deg}
+.mgrid .wc:nth-child(7){--r:-.4deg}.mgrid .wc:nth-child(8){--r:1deg}.mgrid .wc:nth-child(9){--r:-.7deg}
+.fside .agenda{transform:rotate(.7deg)}.fside .swish{transform:rotate(-.9deg)}
 .wc.lead{grid-column:span 2;grid-row:span 2}
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
 .wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
@@ -2684,6 +2690,7 @@ FIT_JS = """
     if (!w) return;
     const cards = [...w.querySelectorAll(':scope > .wc')];
     cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p) p.style.height = ''; });
+    if (side) side.style.minHeight = '';
     if (innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
     // 「ほかの注目ニュース」全体を L 版面の高さ（760px）に収める：見出しの分を引いた高さが壁と右の列の上限
     const target = Math.max(380, 760 - (document.querySelector('.spot > .sh')?.getBoundingClientRect().height || 56) - 44);
@@ -2703,7 +2710,10 @@ FIT_JS = """
       if (w.getBoundingClientRect().height > target) { show(rows); break; }
       rows++;
     }
-    const gap = target - w.getBoundingClientRect().height;
+    // 左の壁と右の列の上端・下端をそろえる：高いほうに合わせ、壁は各段の写真枠に等分して足し、右の列は最後の箱が伸びる
+    const H = Math.max(w.getBoundingClientRect().height, side ? side.getBoundingClientRect().height : 0);
+    if (side) side.style.minHeight = H + 'px';
+    const gap = H - w.getBoundingClientRect().height;
     if (gap > 0) {
       const add = gap / rows;
       cards.filter(c => !c.hidden && !c.classList.contains('lead')).forEach(c => {
