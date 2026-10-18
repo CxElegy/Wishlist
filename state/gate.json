@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-10-18T12:29:33+00:00",
+ "changed": true,
+ "checked": "2026-10-18T12:30:07+00:00",
  "fired": {
-  "at": "2026-10-18T12:29:34+00:00",
+  "at": "2026-10-18T12:30:07+00:00",
   "results": {
    "edit": "停滞：3 回起こしたが仕事が減らない（132 分前が最後）（6 時間待つ・管理ページで確認）",
    "photos": "仕事なし（起こさない）"
@@ -46,17 +46,17 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "あつ森",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "Astrae Oratio",
     "哈利波特剧集",
     "A2O LITE",
-    "Astrae Oratio",
+    "あつ森",
     "Vaundy"
    ],
-   "need": true,
-   "sig": "70273cbf7ef4",
-   "waiting": [],
-   "why": "足りない 5 版面（Actions で Python が埋める）"
+   "why": "失敗 5 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 03:28 から）"
   },
   "photos": {
    "claude": true,
