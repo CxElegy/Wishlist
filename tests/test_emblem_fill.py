@@ -512,7 +512,7 @@ class Backend(unittest.TestCase):
                 digest.INBOX_DIR = old
         a, b, c = (r["bg"] for r in rows)
         self.assertEqual((a["collect"]["state"], a["edit"]["state"], a["design"]["state"], a["emblem"]["state"]), ("ok", "ok", "ok", "ok"))
-        self.assertEqual(b["edit"], {"state": "wait", "text": "新しい 1 件が待ち"})
+        self.assertEqual(b["edit"], {"state": "wait", "text": "整理待ち 1 件（今日 2 件のうち）"})
         self.assertEqual(b["design"]["state"], "wait")
         self.assertIn("順番 1 番目", b["emblem"]["text"])
         self.assertEqual((c["collect"]["state"], c["edit"]["state"], c["emblem"]["state"]), ("idle", "idle", "review"))

@@ -289,6 +289,36 @@ class PendingWidget(unittest.TestCase):
         self.assertNotRegex(css, r"#[0-9a-fA-F]{3,6}\b")
 
 
+class BackendTable(unittest.TestCase):
+    """管理ページ「版面ごとの状態」：小元素は全部見える・失敗は再挑戦ボタンと残り時間・AI 編集の列に倒数。"""
+
+    def _rows(self, n=14, state="failed"):
+        thumbs = [(f"https://e.com/{i}.png", "") for i in range(n)]
+        det = {"kind": "キャラ", "why": "x", "target": n, "have": n, "chain": [], "funnel": {}, "todo": "t", "next_at": "2026-10-18T01:47:00+00:00"}
+        bg = {k: {"state": "ok", "text": "済"} for k in ("collect", "edit", "design")}
+        bg["emblem"] = {"state": state, "text": "5/6", "detail": det}
+        return [{"name": "A", "section": "游戏", "bg": bg, "thumbs": thumbs}]
+
+    def test_all_thumbs_after_open_and_row_capped(self):
+        h = render._admin_backend(self._rows(14), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
+        row = h[h.index('<span class="bg-th">'):h.index("</span>", h.index('<span class="bg-th">'))]
+        self.assertEqual(row.count("<img"), render.BG_THUMBS)
+        self.assertIn("+4", row)
+        self.assertEqual(h[h.index('class="ef-pics"'):].split("</span>")[0].count("<img"), 14)   # 開くと全部
+
+    def test_retry_button_only_when_failed(self):
+        failed = render._admin_backend(self._rows(state="failed"))
+        self.assertIn('class="nx-run bg-redo" data-run="background"', failed)
+        self.assertIn('class="bg-cd" data-at="2026-10-18T01:47:00+00:00"', failed)
+        self.assertNotIn("bg-redo\"", render._admin_backend(self._rows(state="ok")).replace("bg-redo{", ""))
+
+    def test_edit_column_countdown(self):
+        h = render._admin_backend(self._rows(), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
+        self.assertIn('data-pre="次の収集のあと "', h)
+        self.assertIn("記事 3 件が版面の下の「整理待ち」に", h)
+        self.assertIn('class="bgw-d nx-ago" data-at="2026-10-18T00:00:00+00:00"', h)
+
+
 if __name__ == "__main__":
     unittest.main()
 
