@@ -729,5 +729,23 @@
 "disk_total": 154877411328,
 "peak": 98590720
 }
+},
+{
+"at": "2026-10-18T12:52:12+00:00",
+"text": "新着 21 件（8 版面）：漫威电影 7、GTA 6 4、ILLIT 3、dota2 2、A2O LITE 2",
+"level": "ok",
+"count": 21,
+"secs": 308,
+"workers": 6,
+"res": {
+"cpu": 4,
+"load": 0.11,
+"mem_total": 16765378560,
+"mem_free": 15678058496,
+"disk_used": 63259246592,
+"disk_free": 91618164736,
+"disk_total": 154877411328,
+"peak": 102830080
+}
 }
 ]
