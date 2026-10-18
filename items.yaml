@@ -1165,7 +1165,7 @@ items:
     subs: {scene: 華語, form: ソロ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：Spotify のアーティスト写真（顔を真ん中に）", source: "https://open.spotify.com/artist/2elBjNSdBE2Y3f0j1mjrql"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
-    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Jay_Chou_Opus_Tour_Hong_Kong_2013_IMG_2355w_%289788660355%29_%28cropped%29.jpg/500px-Jay_Chou_Opus_Tour_Hong_Kong_2013_IMG_2355w_%289788660355%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://i.ytimg.com/vi/CcfnZOJpbM4/hq1.jpg"]   # 目で見て・検査で外した画像。自動補完は選ばない
+    emblem_reject: ["https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Jay_Chou_Opus_Tour_Hong_Kong_2013_IMG_2355w_%289788660355%29_%28cropped%29.jpg/500px-Jay_Chou_Opus_Tour_Hong_Kong_2013_IMG_2355w_%289788660355%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://i.ytimg.com/vi/CcfnZOJpbM4/hq1.jpg", "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Jay_Chou_Opus_Tour_Hong_Kong_2013_IMG_2511w_%289788670546%29_%28cropped%29.jpg/500px-Jay_Chou_Opus_Tour_Hong_Kong_2013_IMG_2511w_%289788670546%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"]   # 目で見て・検査で外した画像。自動補完は選ばない
     emblem_subject: 周杰倫
     motif: porcelain          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -1174,6 +1174,7 @@ items:
       - {subject: "周杰倫 3", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/3-bf01ca7b.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg/500px-%E5%91%A8%E6%9D%B0%E5%80%AB_Jay_Chou_in_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail", page: "https://en.wikipedia.org/wiki/Jay_Chou", shape: "cutout"}
       - {subject: "周杰倫 4", why: "周杰倫（Wikipedia の記事の画像）", image: "emblems/4-d910cacf.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Jay_Chou.JPG/500px-Jay_Chou.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Jay_Chou.JPG", shape: "cutout", fs: 0.327}
       - {subject: "周杰倫 5", why: "周杰倫（YouTube の動画のサムネイル）", image: "emblems/5-01638fc0.webp", source: "https://i.ytimg.com/vi/lSgKYQME6rQ/hq3.jpg", page: "https://www.youtube.com/watch?v=lSgKYQME6rQ", shape: "cutout"}
+      - {subject: "周杰倫 6", why: "周杰倫（YouTube の動画のサムネイル）", image: "emblems/6-1e63dfe1.webp", source: "https://i.ytimg.com/vi/ZLldhJXp7iw/hq1.jpg", page: "https://www.youtube.com/watch?v=ZLldhJXp7iw", shape: "cutout"}
     type: event
     section: "演出"
     size: S
