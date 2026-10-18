@@ -1769,6 +1769,10 @@ def render_settings(items, db, updated, schemes=()):
 .q p{{margin:0;font-size:13px;line-height:1.7;opacity:.75}}
 .subrow{{display:flex;flex-direction:column;gap:6px}}.subrow h4{{margin:0;font:700 13px 'Noto Sans SC',sans-serif}}
 .subrow .opts{{flex-direction:row;flex-wrap:wrap}}.subrow .opt{{padding:6px 10px;font-size:14px}}
+.facets .fh{{display:flex;flex-wrap:wrap;align-items:center;gap:8px}}.facets .fh i{{font:700 11px 'JetBrains Mono',monospace;font-style:normal;letter-spacing:.06em;padding:1px 6px;border:1px solid currentColor}}
+.facets .fh .frec{{background:#FFD23F;color:#1A1C22;border-color:#FFD23F}}.simnote{{padding:8px 10px;border-left:3px solid #B8336A;background:#FFF}}
+.kids{{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border:1px dashed #1A1C22}}.kids>span{{font-weight:700;font-size:13px}}
+.kids .kid{{display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:center}}.kids .kid small{{grid-column:2;opacity:.7;font-size:12px;line-height:1.5}}
 .opts.secgrid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}}.opts.secgrid .opt{{padding:8px 10px}}
 .alsoh{{margin:6px 0 0;font:900 14px 'Noto Sans SC',sans-serif}}.alsobox{{display:flex;flex-direction:column;gap:8px}}.alsobox>span{{font-weight:700;font-size:13px}}
 .opts{{display:flex;flex-direction:column;gap:8px}}

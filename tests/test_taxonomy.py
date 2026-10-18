@@ -134,3 +134,23 @@ class AlsoSections(unittest.TestCase):
         screen = html[html.index('data-sec="影视"><a class="nsec"'):html.index('data-sec="好物"><a class="nsec"')]
         self.assertIn('data-x="ちいかわ"', screen)                             # 映像の目次にちいかわの乗換駅
         self.assertIn('data-sub="アニメ"', screen)
+
+
+class Facets(unittest.TestCase):
+    """题材型（「猫」）の「面」：sections.yaml の facets、なければ第一の分け方の値。"""
+
+    def test_pet_facets_written(self):
+        fs = taxonomy.facets("宠物")
+        self.assertEqual([f["id"] for f in fs][:2], ["goods", "food"])
+        self.assertTrue(all(f["sec"] in taxonomy.SECTIONS and f.get("kw") and f.get("re") for f in fs))
+        self.assertIn("出行", {f["sec"] for f in fs})                 # 猫カフェはおでかけ
+        for f in fs:
+            re.compile(f["re"])
+
+    def test_fallback_from_first_scheme(self):
+        fs = taxonomy.facets("美食")
+        self.assertEqual(fs[0]["subs"], {"kind": "カフェ・スイーツ"})
+        self.assertEqual(fs[0]["kw"], ["カフェ", "スイーツ"])
+        self.assertTrue(re.search(fs[0]["re"], "新作スイーツ"))
+        self.assertNotIn("その他", [f["id"] for f in taxonomy.facets("其他")])
+        self.assertEqual(len(taxonomy.for_page()), len(taxonomy.SECTIONS))
