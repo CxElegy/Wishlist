@@ -2647,7 +2647,9 @@ def retry_images(days=IMG_RETRY_DAYS):
     for path, rep_ in reports:
         for b in rep_["items"]:
             for st in b.get("stories") or []:
-                if not st.get("url") or st.get("image") and st.get("image_via") != "作品封面" and st["image"] not in dead:
+                img = st.get("image")
+                generic = bool(img) and bool(images.GENERIC.search(urllib.parse.urlparse(img).path))   # 後から広げた「網站の既定画像」の規則に当たるもの
+                if not st.get("url") or img and st.get("image_via") != "作品封面" and img not in dead and not generic:
                     continue
                 last = tried.get(st["url"])
                 if last and now - dt.datetime.fromisoformat(last) < dt.timedelta(hours=IMG_RETRY_HOURS):

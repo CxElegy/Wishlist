@@ -191,5 +191,26 @@ class RenderTest(unittest.TestCase):
         self.assertIn('data-fb="https://img.example/a.jpg"', html)
 
 
+class PickPlanTest(unittest.TestCase):
+    def test_recommendation_cards_go_through_the_same_check(self):
+        """推薦カードの図も「看不清」の判定にかける（Bing の 100×100 が大きいカードで 7 倍に伸びて糊だった）。愿望清单类は大きい枠の基準。"""
+        p = hdimg.plan_picks([
+            {"image": "https://www.bing.com/th?id=ONUT.a&pid=News&w=1200", "url": "https://n.example/1", "kind": "wish", "batch": 1},
+            {"image": "https://x.example/b.jpg", "url": "https://n.example/2", "kind": "follow"},
+            {"image": None, "url": "https://n.example/3", "kind": "wish"}])
+        self.assertEqual(p, {"https://www.bing.com/th?id=ONUT.a&pid=News&w=1200": (hdimg.BIG_PX, "https://n.example/1"),
+                             "https://x.example/b.jpg": (hdimg.CARD_PX, "https://n.example/2")})
+
+
+class PickCardTest(unittest.TestCase):
+    def test_recommendation_card_falls_back_to_source_icon(self):
+        """「気になるかも？」の推薦カード：図が全部開けなくても来源サイトの图标に退ける（空の枠にしない）。"""
+        html = render._picks([{"title": "t", "url": "https://www.sammobile.com/news/a/", "source": "SamMobile", "date": "2026-10-13",
+                               "work": "三星手机", "image": "https://x.example/a.jpg", "because": "w", "kind": "wish", "hits": []}],
+                             [{"name": "三星手机"}])
+        self.assertIn("data-icons", html)
+        self.assertIn("sammobile.com", html)
+
+
 if __name__ == "__main__":
     unittest.main()

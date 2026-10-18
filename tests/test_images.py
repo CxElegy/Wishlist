@@ -183,6 +183,14 @@ class ImagesTest(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("不是图片", why)
 
+    def test_site_default_images_are_generic(self):
+        """網站自己的占位图（Samsung 官网的 default_image.png 等）不是这篇报道的图。"""
+        import urllib.parse
+        for u in ("https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
+                  "https://x.example/img/no_photo.jpg", "https://x.example/NowPrinting.png", "https://x.example/a/blank.gif"):
+            self.assertTrue(images.GENERIC.search(urllib.parse.urlparse(u).path), u)
+        self.assertFalse(images.GENERIC.search(urllib.parse.urlparse("https://x.example/photos/image_01.jpg").path))
+
     def test_rejects_blank_placeholder(self):
         """期限切れの図の代わりに返ってくる空白（白一色）は使わない。"""
         self.assertEqual(images.check(self.u("/blank.jpg")), (False, "空白图 800×450"))
