@@ -130,6 +130,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
+  "w": 1350,
+  "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.hldycdn.com/777b6e25-1e8d-4d26-b214-b12738c12f21.jpeg": {
   "w": 2752,
   "h": 1536,
@@ -583,12 +589,6 @@
  "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-92fda49af86e1960342cd1590aeeb716-20261016-9df79b.jpg": {
   "w": 1600,
   "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://eeo.today/media/wp-content/uploads/2026/10/20261016_bouken-4.jpg": {
-  "w": 1023,
-  "h": 1446,
   "target": 720,
   "v": 3
  },
@@ -1407,12 +1407,6 @@
   "target": 1280,
   "v": 3
  },
- "https://media.eiga.com/images/movie/105109/photo/48db1bb8de88d0b8.jpg": {
-  "w": 800,
-  "h": 533,
-  "target": 720,
-  "v": 3
- },
  "https://media.loom-app.com/roomie/dist/images/2026/10/IMG_2554-1-scaled-1.jpeg?w=1200": {
   "w": 1200,
   "h": 675,
@@ -1812,18 +1806,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010000-piaeigat-000-1-view.jpg?exp=10800": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3,
-  "local": "pics/75eeaf419088fe18.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010000-tennisnet-000-2-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1541,
@@ -1846,30 +1828,6 @@
   "out": [
    1280,
    1280
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00010017-realsound-000-1-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 619,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/ed0207be71e27ebe.webp",
-  "out": [
-   1200,
-   619
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-03658138-clc_korea-000-1-view.jpg?exp=10800": {
-  "w": 1024,
-  "h": 553,
-  "target": 720,
-  "v": 3,
-  "local": "pics/9e86263108c97a28.webp",
-  "out": [
-   1024,
-   553
   ],
   "why": "期限付きの網址"
  },
@@ -1991,12 +1949,6 @@
  "https://prcdn.freetls.fastly.net/release_image/23444/653/23444-653-a0954d6663f7b305db00f0d1f3661349-1356x1039.png?width=536&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff": {
   "w": 536,
   "h": 411,
-  "target": 720,
-  "v": 3
- },
- "https://prcdn.freetls.fastly.net/release_image/51825/826/51825-826-4a49f270db8a7f13093950434cedd1be-1920x1080.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 1920,
-  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -2221,12 +2173,6 @@
  "https://static.sanyonews.jp/image/article/size1/d/c/f/5/dcf55eaa8654730e4a8ee3bd59cda670_1.jpg": {
   "w": 640,
   "h": 480,
-  "target": 720,
-  "v": 3
- },
- "https://static.sanyonews.jp/image/article/size1/d/d/3/a/dd3a4b09008966e0eeb6c24230409aa2_1.jpg": {
-  "w": 452,
-  "h": 640,
   "target": 720,
   "v": 3
  },
@@ -2460,12 +2406,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.8DQMVLENw4ErwwqLTJXPBg&pid=News&w=700": {
-  "w": 700,
-  "h": 467,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.9HNkO23mU3knPnT4qSUFNg&pid=News&w=640": {
   "w": 100,
   "h": 100,
@@ -2503,18 +2443,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.APYkQ3xbNPzyQJNfysbGDw&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/a9f82a5ce32104e9.webp",
-  "out": [
-   706,
-   480
-  ],
-  "why": "Bing の小さい縮小画像"
- },
  "https://www.bing.com/th?id=ONUT.Af-LicZsBars0GHuStTGXQ&pid=News&w=640": {
   "w": 100,
   "h": 100,
@@ -2532,24 +2460,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.FpDlEhgnlXHQII_vvqK1qg&pid=News&w=640": {
-  "w": 640,
-  "h": 380,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.IIrCtoF-Tvj6OrjDJjC-9g&pid=News&w=640": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/b923b5648b386d59.webp",
-  "out": [
-   652,
-   350
-  ],
-  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.IRpG3JsPh2fOJnHQylD3iA&pid=News&w=1200": {
   "w": 700,
@@ -2772,12 +2682,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.nMRhsqQ2C4JIRPMRsIpO5Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 483,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.pPPytmyAJBdD-nrcvgVvmA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2800,18 +2704,6 @@
   "out": [
    704,
    400
-  ],
-  "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.vtJVyr4ff8LriBE8vI6kNA&pid=News&w=640": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/aa3fb514ba2172a4.webp",
-  "out": [
-   640,
-   426
   ],
   "why": "Bing の小さい縮小画像"
  },
