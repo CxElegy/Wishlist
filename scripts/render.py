@@ -26,6 +26,7 @@ import heat
 import lang
 import processes
 import likefx
+import overview
 import taxonomy
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
@@ -475,10 +476,11 @@ button{font-family:inherit}
  margin-bottom:calc(var(--bz) * (var(--bf) - 1));  /* 足の裏より下（尻尾・武器・裾）は帯の下へ。高さは --bmax まで（測り違いで巨大にならない） */
  margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
 .emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
-.emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
+.emb img.logo{height:62%;max-width:150px}.emb img.logo.wide{height:auto;width:220px;max-width:220px;margin-bottom:12%}  /* 横長の文字のロゴは幅で大きく */
+.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
-.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:color-mix(in srgb,var(--fg) 10%,var(--bg));padding:6px}  /* 地は版面の色に寄せる（白い透過ロゴが白い台に消えないように） */  /* 横長・縦長すぎる画像は切らずに全体 */
+.emb img.badge.whole{aspect-ratio:auto;height:auto;width:auto;max-width:210px;max-height:100%;object-fit:contain;background:color-mix(in srgb,var(--fg) 10%,var(--bg));padding:0;border:5px solid var(--card);box-sizing:content-box;clip-path:polygon(1.5% 0,100% 2.5%,98.5% 100%,0 97.5%)}  /* 横長・縦長すぎる画像は切らず、余白なしで写真そのままに斜めの枠だけ */
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
@@ -489,7 +491,7 @@ button{font-family:inherit}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
+@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}}
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
@@ -1164,6 +1166,9 @@ def _body_len(alts):
             b.append(round(max(leg, b[4] / ratio) if b[4] / leg > ratio * BODY_CROUCH else leg, 3))
 
 
+WIDE_LOGO = 0.5   # ロゴの 高さ÷幅 がこれ未満 = 横長の文字のロゴ。高さでそろえると字が小さすぎる（The Mandalorian）ので幅で大きく
+
+
 def _emblem_img(a):
     """小元素 1 枚の HTML。カード（badge）で取景（crop）があれば 4:5 の窓にその範囲だけを見せる。
     顔の割合（fs）が基準より大きい（アップの）ものは小さく表示して、どの版面でも顔が同じくらいの大きさに見えるように。"""
@@ -1178,6 +1183,8 @@ def _emblem_img(a):
     ar = a.get("ar")
     if a["shape"] == "badge" and not c and ar and not (CARD_AR[0] <= float(ar) <= CARD_AR[1]):
         img = img.replace('class="badge"', 'class="badge whole"', 1)   # 縦横比がカードと離れている：切らずに全体を見せる
+    if a["shape"] == "logo" and ar and float(ar) < WIDE_LOGO:
+        img = img.replace('class="logo"', 'class="logo wide"', 1)   # 横長の文字のロゴ（タイトルロゴ）：高さでなく幅で大きく
     if a["shape"] == "badge" and c:
         return f'<span class="crop" style="--cx:{c[0]};--cy:{c[1]};--cw:{c[2]};--ar:{a.get("ar", 1)}">{img}</span>'
     return img
@@ -1622,7 +1629,7 @@ EMB_JS = """
       const a = alts[Math.floor(Math.random() * alts.length)];
       const n = img.cloneNode(); n.src = a.src;
       const whole = a.shape === 'badge' && !a.crop && a.ar && (a.ar < 0.95 || a.ar > 1.6);   // render.CARD_AR：カードと比率が離れたら切らない
-      n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : '') + (whole ? ' whole' : '');
+      n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
       n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
       if (a.shape === 'badge' && a.crop) {
         const c = document.createElement('span'); c.className = 'crop';
@@ -4128,7 +4135,7 @@ def render_heat(analysis, works, updated):
 # ---------- 管理ページ（docs/admin.html）：見るだけ。口令なし・ボタンで何かを変えることはしない ----------
 # 生成時に分かるもの（収集・編集の状況、作品ごとの記事数、投票）は HTML に書き込み、
 # その場で変わるもの（GitHub Actions の実行結果、設定ページの依頼、写真の受付）はページを開いたときに読む。
-ADMIN_WORKFLOWS = {"digest.yml": "収集・出刊", "render.yml": "ページの再生成", "requests.yml": "設定ページの依頼", "ci.yml": "テスト"}
+ADMIN_WORKFLOWS = {"digest.yml": "収集・出刊", "background.yml": "後台作業（ゲート・小元素）", "render.yml": "ページの再生成", "requests.yml": "設定ページの依頼", "ci.yml": "テスト"}
 ADMIN_STALE_DAYS = 3  # 最新の記事がこれより古い作品は「止まっているかも」
 
 
@@ -4819,9 +4826,10 @@ ADMIN_PAGE_JS = """
   // いま動いているもの：live_status()（収集・小元素の補完が版面ごとに書く）を 30 秒ごとに
   var LP={collect:'ニュース収集',emblem:'小元素の自動補完',edit:'AI 編集'};
   function liveState(x){if(x.state==='fetch')return '記事を探している';if(x.state==='found')return '新着 '+x.found+' 件 · AI 整理待ち';
+    if(x.note)return x.note+(x.state==='wait'&&Date.now()-new Date(x.started_at)>1800000?'（30 分以上たっている：push が通っていないかも）':'');
     var m=/^emblem:(.*)$/.exec(x.state||'');if(m)return '取り方 '+m[1]+'（'+x.found+' / 3 段目）';return x.state;}
   function loadLive(){var box=document.getElementById('livenow');if(!box)return;
-    rpc('live_status').then(function(list){box.textContent='';if(!list||!list.length){box.appendChild(el('p','empty','いまは何も動いていません（次の実行は下の「次の実行」）。'));return;}
+    rpc('live_boards').then(function(list){box.textContent='';if(!list||!list.length){box.appendChild(el('p','empty','いまは何も動いていません（次の実行は下の「次の実行」）。'));return;}
       var ul=el('ul');list.forEach(function(x){var li=el('li');li.appendChild(el('span','ln-p',LP[x.proc]||x.proc));li.appendChild(el('b',null,x.board));
         li.appendChild(el('small',null,liveState(x)+' · '+when(x.started_at)+'から'));ul.appendChild(li);});box.appendChild(ul);})
     .catch(function(){fail(box,'読めませんでした。');});}
@@ -4870,7 +4878,7 @@ def render_admin(data, db, updated):
 <title>管理ページ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
-<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}</style>
+<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}{overview.CSS}</style>
 {_live_head("admin")}
 </head>
 <body>
@@ -4882,11 +4890,12 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
+<section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
 <section class="panel" id="editdiff"><h2 class="sh"><span>AI 編集の前後</span><small>最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事</small></h2>{_admin_edit_diff(data.get("edit_diff"))}</section>
 <section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
 <section class="panel" id="emblem-ex"><h2 class="sh"><span>小元素の判断の例</span><small>本物の画像で 前 → 後 · 赤枠 = 使わなかった画像 · 緑枠 = 使った画像 · 規則の全部は「全体の構成 → 小元素の自動補完」</small></h2>{processes.examples_panel()}</section>
-<section class="panel" id="procs"><h2 class="sh"><span>全体の構成</span><small>どこで何が動き、データがどう流れるか · 部品をクリックで詳しい流れ</small></h2>{processes.render()}</section>
+<section class="panel" id="procs"><h2 class="sh"><span>全体の構成（詳しい図）</span><small>場所ごとに全部の部品と矢印を 1 枚に · 大きいので、まずは一番上の「しくみの全体図」を</small></h2>{processes.render()}</section>
 <section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>
 <div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
 <div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
@@ -4897,6 +4906,7 @@ def render_admin(data, db, updated):
 </div>
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
+<script>{overview.JS}</script>
 <script>{processes.JS}</script>
 <script>{LIVE_JS}</script>
 </body>
