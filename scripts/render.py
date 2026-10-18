@@ -3200,7 +3200,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
             + _front(works, latest["date"], updated, themes, wishes, taste) + _picks(picks, works, fb)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
-    return f"""<!doctype html>
+    return _board_marks(f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -3232,7 +3232,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 {_busy_tag(busy, generated)}
 </body>
 </html>
-"""
+""", updated)
 
 
 # ---------- 自動更新：開いたままのページに新しい内容を出す（簡報・管理ページ）----------
@@ -3254,6 +3254,8 @@ LIVE_CSS = """
 .wl-live button{flex:none;border:0;cursor:pointer;background:var(--gold);color:var(--ink);padding:4px 12px;font:700 13px/1.4 var(--font-sans)}
 .wl-live .x{background:none;color:var(--card);padding:4px 6px}
 .fresh{outline:3px solid var(--gold);outline-offset:3px}
+.wl-live .wl-to{color:var(--gold);text-decoration:underline;text-underline-offset:3px;font-weight:900}
+.wl-live span{min-width:0}
 .fresh-tag{position:absolute;top:6px;right:6px;z-index:6;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
  box-shadow:2px 2px 0 var(--ink);font:900 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.08em;pointer-events:none}
 section.fresh{position:relative}
@@ -3269,8 +3271,10 @@ LIVE_JS = """
           set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
   var touched=Date.now(),pending=null,bar=null;
   ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
-  var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'有 %n 条新内容',m:'%n 处有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新'}
-    :{n:'新しい記事が %n 件 届きました',m:'%n か所が新しくなりました',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新'};
+  var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'新增 %n 条',m:'有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新',more:'等 %n 处',sep:'：'}
+    :{n:'新着 %n 件',m:'更新',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新',more:'ほか %n か所',sep:'：'};
+  // 版面・パネルの名前（data-k か見出し）。ここでの id は section の id
+  function label(s){var k=s.getAttribute('data-k');if(k)return {front:'トップ',picks:'気になるかも？',wishlist:'愿望清单'}[k]||k;var h=s.querySelector('.sh>span');return h?h.textContent:s.id;}
   function art(a){return a.closest('article');}
   function keyed(){var l=[];Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){l.push([a.getAttribute('href'),art(a)]);});
     Array.prototype.forEach.call(document.querySelectorAll('article[data-key]'),function(c){l.push(['k:'+c.getAttribute('data-key'),c]);});return l;}
@@ -3280,11 +3284,15 @@ LIVE_JS = """
   document.addEventListener('visibilitychange',function(){if(!document.hidden)badge(0);});
   function marks(){var o={};Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){o[s.id]=s.getAttribute('data-h');});return o;}
   function anchor(){var l=document.querySelectorAll('section[id]');for(var i=0;i<l.length;i++){var r=l[i].getBoundingClientRect();if(r.bottom>0)return [l[i].id,r.top];}return null;}
-  function toast(msg,act){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
-    bar.textContent='';var t=document.createElement('span');t.textContent=msg;bar.appendChild(t);
+  // items = [[名前, 詳しい言葉, セクションの id]]：名前をクリックするとその版面へ飛ぶ
+  function toast(msg,act,items){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
+    bar.textContent='';var t=document.createElement('span');t.appendChild(document.createTextNode(msg));
+    (items||[]).forEach(function(it,i){t.appendChild(document.createTextNode(i?'、':T.sep));var a=document.createElement('a');a.href='#'+it[2];a.textContent=it[0];a.className='wl-to';t.appendChild(a);
+      if(it[1])t.appendChild(document.createTextNode(' '+it[1]));});
+    bar.appendChild(t);
     if(act){var b=document.createElement('button');b.type='button';b.textContent=T.b;b.onclick=go;bar.appendChild(b);}
     var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label',T.x);x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
-    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},8000);}
+    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},16000);}
   // 読み直したあと：見ていた場所に戻し、増えた記事・変わったパネルに印を付ける
   var was=ss.get(KEY);ss.del(KEY);
   if(location.search.indexOf('wlv=')>=0&&history.replaceState)history.replaceState(null,'',location.pathname+location.hash);
@@ -3295,14 +3303,19 @@ LIVE_JS = """
     function back(){var s=was.at&&document.getElementById(was.at[0]);if(s)to(s.getBoundingClientRect().top+pageYOffset-was.at[1]);else if(was.y)to(was.y);}
     if('scrollRestoration' in history)history.scrollRestoration='manual';
     back();addEventListener('load',back);
-    var n=0;
+    var n=0,by={},order=[];   // by[版面の id] = 新しい記事の数
     keyed().forEach(function(x){var c=x[1];if(was.keys&&!was.keys[x[0]]&&c&&!c.classList.contains('fresh')){
-      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;}});
-    var m=0;
+      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;
+      var sec=c.closest('section[id]');if(sec){if(!by[sec.id]){by[sec.id]=0;order.push(sec);}by[sec.id]++;}}});
+    var other=[];   // 新しい記事はないが中身が変わった版面・パネル（話題度・小元素・順位など）
     if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
-      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);m++;}});
-    toast(n?T.n.replace('%n',n):m?T.m.replace('%n',m):T.s);
-    if(document.hidden)badge(n||m);
+      if(h&&h!==s.getAttribute('data-h')){if(!by[s.id]){other.push(s);}
+        if(s.classList.contains('panel')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);}}});
+    var items=order.map(function(s){return [label(s),T.n.replace('%n',by[s.id]),s.id];}).concat(other.map(function(s){return [label(s),T.m,s.id];}));
+    var shown=items.slice(0,4),rest=items.length-shown.length;
+    toast(items.length?(n?(ZH?'有新内容':'更新しました'):(ZH?'有更新':'更新しました')):T.s,false,shown);
+    if(rest>0){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',rest);bar.firstChild.appendChild(r);}
+    if(document.hidden)badge(n||other.length);
   }
   // 待つとき：ダイアログを開いている・入力欄にいる・書きかけ／選んだファイルがある（読み直すと消えてしまう）
   function dirty(){return Array.prototype.some.call(document.querySelectorAll('input,textarea'),function(i){
@@ -3313,7 +3326,12 @@ LIVE_JS = """
   function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
       var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
-      if(pending!==v){pending=v;toast(T.p,true);}maybe();}).catch(function(){});}
+      if(pending!==v){pending=v;
+        // version.json の <ページ>_marks と自分の data-h を見比べて、どの版面が変わったかを先に言う
+        var mk=j[PAGE+'_marks']||{},mine=marks(),ch=[];Object.keys(mk).forEach(function(id){if(mine[id]&&mine[id]!==mk[id][1])ch.push([mk[id][0],'',id]);});
+        var sh=ch.slice(0,3);toast(T.p,true,sh);
+        if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}
+      maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
   setTimeout(check,3000);
@@ -3414,6 +3432,41 @@ def _section_marks(html_, updated=""):
             part = f'<section class="panel{m.group(1)}" id="{m.group(2)}" data-h="{h}">' + part[m.end():]
         out.append(part)
     return "".join(out)
+
+
+BOARD_LABEL = {"front": "トップ", "picks": "気になるかも？", "wishlist": "愿望清单"}
+
+
+def _board_marks(html_, updated=""):
+    """簡報の各版面・トップ・気になるかも（data-k を持つ <section>）に data-h（中身の指紋）を付ける。
+    開いたままのページが「どの版面が変わったか」を読み直す前から言えるように（version.json の *_marks と見比べる）。"""
+    parts = re.split(r'(?=<section\b[^>]*\bdata-k=")', html_)
+    out = []
+    for part in parts:
+        m = re.match(r'<section\b[^>]*\bdata-k="', part)
+        if m and 'id="' in part[:part.index(">")]:
+            h = hashlib.sha1((part.replace(updated, "") if updated else part).encode("utf-8")).hexdigest()[:8]
+            part = f'<section data-h="{h}"' + part[len("<section"):]
+        out.append(part)
+    return "".join(out)
+
+
+def page_marks(html_):
+    """生成した HTML の {版面・パネルの id: [表示名, 指紋]}。docs/version.json の <ページ>_marks に入れる。
+    ページ側（LIVE_JS）は、自分の data-h と見比べて「どの版面が変わったか」を新着の通知に出す。"""
+    out = {}
+    for m in re.finditer(r'<section\b([^>]*)>', html_):
+        attrs = m.group(1)
+        i, h = re.search(r'\bid="([^"]+)"', attrs), re.search(r'\bdata-h="(\w+)"', attrs)
+        if not (i and h):
+            continue
+        k = re.search(r'\bdata-k="([^"]*)"', attrs)
+        name = BOARD_LABEL.get(k.group(1)) if k and k.group(1) in BOARD_LABEL else (html.unescape(k.group(1)) if k else None)
+        if not name:  # 管理ページのパネル：見出しの文字
+            t = re.search(r'<h2 class="sh"><span>([^<]+)</span>', html_[m.end():m.end() + 400])
+            name = html.unescape(t.group(1)) if t else i.group(1)
+        out[i.group(1)] = [name, h.group(1)]
+    return out
 
 
 # ---------- 話題度の分析ページ（docs/heat.html）----------
