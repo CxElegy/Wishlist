@@ -453,6 +453,7 @@ PROCESSES = [
         "files": [".github/workflows/requests.yml", "docs/additem.js", "db/instant.sql", "sections.yaml", "scripts/taxonomy.py"], "doc": "CLAUDE.md", "uses": ["supabase", "pgnet", "taxonomy"],
         "flow": [
             {"id": "qp", "kind": "step", "lane": "web", "title": "上級を推す", "text": "今ある・上級のない関注項の名前・搜索词が新項の名前・維基データに出てくる → 推薦（1 層だけ）"},
+            {"id": "qa", "kind": "step", "lane": "web", "title": "ほかの板块（also）を推す", "text": "選んだ関心に板块の印（ちいかわ「动画、电影、活动」→ 映像・アニメ）· 複数選べる · 版面は主板块に 1 つ、ほかは目次の乗換駅"},
             {"id": "q0", "kind": "step", "lane": "web", "title": "板块・小分類を推す", "text": "上級があれば上級の板块・ほかの分け方も上級と同じ、1 つ目の分け方は自分の類別 · なければ「角色 / IP」はグッズ、ほかは維基データの説明・名前の語 → sections.yaml の表（当たらなければ type → その他）", "uses": ["taxonomy"]},
             {"id": "q1", "kind": "step", "lane": "web", "title": "設定ページで送る", "text": "一問一答のウィザード", "uses": ["supabase"]},
             {"id": "q2", "kind": "step", "lane": "web", "title": "Supabase が GitHub を起こす", "uses": ["pgnet"]},
