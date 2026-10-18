@@ -1249,6 +1249,22 @@ def set_item_fields(text, name, fields):
     return "\n".join(lines[:start] + block + lines[end:])
 
 
+def delete_item(text, name):
+    """items.yaml から関注項 name の 1 段を消す（前の空行も 1 つ）。下級だったものは parent を外して残す。返り値：新しい全文。"""
+    lines = text.split("\n")
+    span = _item_span(lines, name)
+    if span is None:
+        raise ValueError(f"关注清单里没有「{name}」")
+    start, end = span
+    while start > 0 and not lines[start - 1].strip():
+        start -= 1
+    new = "\n".join(lines[:start] + lines[end:])
+    for i in (yaml.safe_load(new) or {}).get("items") or []:
+        if i.get("parent") == name:
+            new = set_item_fields(new, i["name"], {"parent": None})
+    return new
+
+
 def take_item_requests():
     """设置页上「新增 / 修改关注项」提交的：从数据库 item_requests 表读出待处理的，写进 items.yaml，再标成 done。
     新增的追加到文件末尾，修改的只改提交了的字段（不动原来的内容和注释）。
@@ -1270,6 +1286,14 @@ def take_item_requests():
         name = (r.get("name") or "").strip()
         names = {i["name"] for i in items}
         try:
+            if r.get("action") == "edit" and (r.get("config") or {}).get("_delete") is True:   # 設定ページの「删」
+                new = delete_item(text, name)
+                got = (yaml.safe_load(new) or {}).get("items") or []
+                assert name not in {i.get("name") for i in got}, "没删掉"
+                assert len(got) == len(items) - 1, "删多了"
+                text, items = new, got
+                done.append(r)
+                continue
             fields = clean_item_config(r.get("config") or {})
             if fields.get("parent"):   # 上級は今ある、自分には上級のない関注項だけ（1 層だけ）。板块は書いてなければ上級と同じ
                 top = next((i for i in items if i["name"] == fields["parent"]), None)
@@ -1322,7 +1346,8 @@ def take_item_requests():
     except Exception as err:  # 标不上的下次还会读到：新增的会因为名字已存在被跳过，修改的再改一次结果一样
         print(f"  [关注项] 标记请求失败：{err}", file=sys.stderr)
     for r in done:
-        print(f"关注项：从设置页{'修改' if r.get('action') == 'edit' else '加入'}「{r['name']}」", file=sys.stderr)
+        what = "删除" if (r.get("config") or {}).get("_delete") is True else "修改" if r.get("action") == "edit" else "加入"
+        print(f"关注项：从设置页{what}「{r['name']}」", file=sys.stderr)
 
 
 def sync_db():
@@ -1824,14 +1849,15 @@ def with_new_items(issues, items):
 def with_manual_themes(issues, items):
     """items.yaml に手で書いた theme（小元素に合わせた配色など）を、次の収集を待たずに網页へ反映する。
     版面の見た目は最新の一期で決まるので、最新の一期の版面だけを上書きする。reports/ には書き戻さない。
-    板块（section）も items.yaml の今の値にする（板块を移した関注項が、次の出刊を待たずに新しい板块に出る）。"""
+    板块（section）も items.yaml の今の値にする（板块を移した関注項が、次の出刊を待たずに新しい板块に出る）。
+    設定ページで消した関注項の版面も次の出刊を待たずに消える。"""
     manual = {i["name"]: i["theme"] for i in items if isinstance(i.get("theme"), dict)}
     secs = {i["name"]: section_of(i) for i in items}
     if not issues:
         return issues
     blocks = [{**b, "theme": {**(b.get("theme") or {}), **manual[b["name"]]}} if b.get("name") in manual else b
               for b in issues[0].get("items", [])]
-    blocks = [{**b, "section": secs[b["name"]]} if b.get("name") in secs else b for b in blocks]
+    blocks = [{**b, "section": secs[b["name"]]} for b in blocks if b.get("name") in secs]   # 消した関注項の版面は出さない
     return [{**issues[0], "items": blocks}] + issues[1:]
 
 ADMIN_ID_BY_TYPE = {"game": "steam_appid", "anime": "anilist_id", "show": "tmdb"}  # 種類ごとに、あると話題度・現状が取れる ID
