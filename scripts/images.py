@@ -49,7 +49,7 @@ SAVED = "（本站保存）"        # 带 Referer 才拿到的图：来源名后
 
 IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|qrcode|/ads?/|\.svg|\.gif|data:", re.I)
 # 网站 logo、全站共用的默认分享图：放在哪条报道上都不对（theouterhaven Logo.jpg、rbbtoday img_ogp.png、fb_um_logo_m.jpg）
-GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder"
+GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder|default[_-]?image|no[_-]?photo|dummy[_-]?image|now[_-]?printing|/blank\.(?:png|jpe?g|gif)$"
                      r"|^/default/[0-9a-f]{8}/", re.I)  # 新浪的默认分享图 n.sinaimg.cn/default/2fb77759/…/320X320.png
 BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied|human verification", re.I)
 

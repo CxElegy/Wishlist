@@ -191,5 +191,15 @@ class RenderTest(unittest.TestCase):
         self.assertIn('data-fb="https://img.example/a.jpg"', html)
 
 
+class PickCardTest(unittest.TestCase):
+    def test_recommendation_card_falls_back_to_source_icon(self):
+        """「気になるかも？」の推薦カード：図が全部開けなくても来源サイトの图标に退ける（空の枠にしない）。"""
+        html = render._picks([{"title": "t", "url": "https://www.sammobile.com/news/a/", "source": "SamMobile", "date": "2026-10-13",
+                               "work": "三星手机", "image": "https://x.example/a.jpg", "because": "w", "kind": "wish", "hits": []}],
+                             [{"name": "三星手机"}])
+        self.assertIn("data-icons", html)
+        self.assertIn("sammobile.com", html)
+
+
 if __name__ == "__main__":
     unittest.main()
