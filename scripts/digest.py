@@ -1974,12 +1974,18 @@ def backend_todo(items, rows, run):
     edit = [r for r in rows if (r.get("bg") or {}).get("edit", {}).get("state") == "wait"]
     design = [r["name"] for r in rows if (r.get("bg") or {}).get("design", {}).get("state") == "wait"]
     n_new = sum(int(re.search(r"\d+", r["bg"]["edit"]["text"]).group()) for r in edit if re.search(r"\d+", r["bg"]["edit"]["text"]))
+    import gate
+    gj = (gate.load().get("jobs") or {}).get("edit") or {}
+    fired = gj.get("fired") or {}   # ゲートが最後に AI 編集を起こした記録
+    gstate, gwhy = gate.work_state(gj)   # 起こしたあとに本当に進んだか（running / progress / stalled / gave_up）
     queue = run.get("queue") or []
     review = [n for n, x in (run.get("items") or {}).items() if x["state"] == "review"]
     return {
         "collect": {"text": f"全 {len(items)} 版面の記事を集める", "items": []},
         "edit": {"text": (f"新しい記事 {n_new} 件（{len(edit)} 版面）を編集" if edit else "編集する新着なし")
-                 + (f" · 版面の設計 {len(design)} 件" if design else ""), "items": [r["name"] for r in edit]},
+                 + (f" · 版面の設計 {len(design)} 件" if design else ""), "items": [r["name"] for r in edit],
+                 "n": n_new, "boards": len(edit), "fired": fired.get("at") or "",
+                 "state": gstate, "why": gwhy, "attempts": int(fired.get("attempts") or 0), "resp": fired.get("resp") or ""},
         "emblem-cron": {"text": (f"足りない {len(queue)} 版面を順に" if queue else "全部そろっている")
                         + (f" · 要確認 {len(review)}" if review else ""), "items": queue},
         "photos": {"text": "受付の写真があれば認識して愿望清单へ", "items": []},
@@ -2028,10 +2034,10 @@ def backend_cells(items, rows, latest, run):
         if not n:
             cells["edit"] = ("idle", "編集するものなし")
         elif edit is None:
-            cells["edit"] = ("wait", f"整理待ち {n} 件")
+            cells["edit"] = ("wait", f"整理待ち {n} 件（今日まだ AI 編集なし）")
         else:
             c = int(covered.get(name) or 0)
-            cells["edit"] = ("ok", f"{n} 件 編集済み") if c >= n else ("wait", f"新しい {n - c} 件が待ち")
+            cells["edit"] = ("ok", f"{n} 件 編集済み") if c >= n else ("wait", f"整理待ち {n - c} 件（今日 {n} 件のうち）")
         miss = [ja for k, ja in DESIGN_KEYS if not item.get(k)]
         cells["design"] = ("ok", "設計済み") if not miss else ("wait", "未設定：" + "・".join(miss))
         em = r.get("emblem") or {}
@@ -2049,7 +2055,7 @@ def backend_cells(items, rows, latest, run):
         r["bg"] = {k: {"state": a, "text": b} for k, (a, b) in cells.items()}
         r["bg"]["emblem"]["detail"] = emblem_detail(item, raw.get(name) or {}, st, queue, run.get("tz"))
         r["thumbs"] = [(x["image"], x.get("shape") or "") for x in item.get("emblem") or [] if isinstance(x, dict)
-                       and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))][:10]
+                       and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]   # 全部（表の行は先頭だけ、「小元素の探し方」を開くと全部）
 
 
 def _next_slot(after, slots):
@@ -2118,7 +2124,8 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
     return {"kind": emblem_fill.KIND_JA.get(kind, kind), "why": why, "target": st.get("target"), "have": st.get("have"),
             "lo": st.get("lo"), "hi": st.get("hi"), "chain": chain, "funnel": entry.get("funnel") or {},
             "faces": emblem_fill.needs_face(item) if item else False, "rejects": len(item.get("emblem_reject") or []),
-            "note": entry.get("note") or "", "at": at, "todo": todo, "advice": advice}
+            "note": entry.get("note") or "", "at": at, "todo": todo, "advice": advice,
+            "next_at": nxt.isoformat() if nxt and state == "failed" else ""}   # 失敗の自動の再挑戦（管理ページで残り時間を数える）
 
 
 def emblem_progress(items, tz):
@@ -2208,7 +2215,10 @@ def write_page():
         adm, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), updated)
     (DOCS_DIR / "admin.html").write_text(admin_html, encoding="utf-8")
     # 開いたままのページはこれを 1 分ごとに読み、自分の指紋と違えば新しい内容を出す（render.LIVE_JS）
-    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "heat": ver_heat, **vers, "updated": updated})
+    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "heat": ver_heat, **vers, "updated": updated,
+                                          # どの版面・パネルが変わったか（開いたままのページが通知に名前を出す：render.LIVE_JS）
+                                          "index_marks": render.page_marks(html_), "admin_marks": render.page_marks(admin_html),
+                                          "heat_marks": render.page_marks(heat_html)})
     (DOCS_DIR / ".nojekyll").touch()
 
 
@@ -2595,8 +2605,9 @@ def publish(inbox_path=None):
     save_json(REPORTS_DIR / f"{date}.json", issue)
     recommend()
     prune_reddit()
-    retry_images()
-    hd_images()
+    hd_images()            # 配图看不清・期限付き → 本站保存；打不开了的记 dead
+    if retry_images():     # 没图・dead 的报道去原文重新找图
+        hd_images()        # 新找到的图（期限付きの網址など）也存一份
     write_page()
     write_issue_markdown(issue, settings)
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
@@ -2610,7 +2621,8 @@ IMG_RETRY_DAYS = 8     # 网页显示最近 7 天，多看 1 天
 
 
 def retry_images(days=IMG_RETRY_DAYS):
-    """已经出刊、但没有自己配图的报道（当时原文被挡、限流、网站临时打不开），以后每次出刊自动再找：
+    """已经出刊、但没有自己配图的报道（当时原文被挡、限流、网站临时打不开），和配图后来打不开了的报道
+    （期限付きの網址が切れた・削除された，hdimg 记的 dead），以后每次出刊自动再找：
     同一条最多每 IMG_RETRY_HOURS 小时找一次，一次出刊最多 IMG_RETRY_MAX 条，找图顺序和出刊时一样
     （images.pick，原文 → 同一件事的别家报道 → 转载）。很久没试的先试。找到了就写回报告。返回找到几条。"""
     _, items = load_config()
@@ -2619,8 +2631,10 @@ def retry_images(days=IMG_RETRY_DAYS):
     tried = load_json(IMG_RETRY_FILE) or {}
     paths = sorted(REPORTS_DIR.glob("????-??-??.json"))[-days:]
     reports = [(p, load_json(p)) for p in paths]
+    import hdimg
+    dead = {u for u, r in hdimg.load_state().items() if isinstance(r, dict) and r.get("dead")}   # 期限切れ・削除で開けなくなった図
     used = {st["image"] for _, r in reports for b in r["items"] for st in b.get("stories") or []
-            if st.get("image") and st.get("image_via") != "作品封面"}
+            if st.get("image") and st.get("image_via") != "作品封面"} | dead
     raw, boards = {}, {}   # 链接 → inbox 里的原始条目；(日期, 关注项) → 那天的全部条目
     for ip in sorted(INBOX_DIR.glob("????-??-??.json"))[-days - 2:]:
         for it in load_json(ip).get("items") or []:
@@ -2633,7 +2647,7 @@ def retry_images(days=IMG_RETRY_DAYS):
     for path, rep_ in reports:
         for b in rep_["items"]:
             for st in b.get("stories") or []:
-                if not st.get("url") or st.get("image") and st.get("image_via") != "作品封面":
+                if not st.get("url") or st.get("image") and st.get("image_via") != "作品封面" and st["image"] not in dead:
                     continue
                 last = tried.get(st["url"])
                 if last and now - dt.datetime.fromisoformat(last) < dt.timedelta(hours=IMG_RETRY_HOURS):

@@ -141,10 +141,8 @@ class FrontSide(unittest.TestCase):
         self.assertIn("欲しい物リスト", out)
         self.assertIn('src="wishlist/mug.jpg"', out)
         self.assertNotIn("済み", out)                       # 入手済みは出さない
-        self.assertIn("話題度ランキング", out)
-        self.assertIn("<em>急上昇</em>", out)
-        self.assertIn("報道量（7 日で 9 件）", out)            # いちばん効いている指標を title に
-        self.assertIn("<span>A</span><b>+3</b>", out)      # 作品: の接頭辞は外す
+        self.assertNotIn("話題度ランキング", out)           # 2026-10-18：右の列は予定と欲しい物だけ
+        self.assertNotIn("あなたの好み", out)
         self.assertNotIn("これからの予定", out)             # 日付のある記事がなければ出さない
         self.assertEqual(render._side([], "2026-10-16"), "")
 
@@ -215,7 +213,6 @@ class HeatPage(unittest.TestCase):
     def test_entry_links_from_front_page(self):
         works = [{"name": "A", "section": "游戏", "stories": [],
                   "_heat": {"score": 50, "label": "話題", "delta": None, "top": "", "dims": []}}]
-        self.assertIn('href="heat.html"', render._side(works, "2026-10-16"))
         block = {"name": "A", "theme": dict(theme.DEFAULT), "_today": "2026-10-16", "stories": [], **works[0]}
         self.assertIn('href="heat.html#h-' + render._wid("A") + '"', render._section(block, "w"))
 
@@ -289,6 +286,45 @@ class PendingWidget(unittest.TestCase):
         self.assertNotRegex(css, r"#[0-9a-fA-F]{3,6}\b")
 
 
+class BackendTable(unittest.TestCase):
+    """管理ページ「版面ごとの状態」：小元素は全部見える・失敗は再挑戦ボタンと残り時間・AI 編集の列に倒数。"""
+
+    def _rows(self, n=14, state="failed"):
+        thumbs = [(f"https://e.com/{i}.png", "") for i in range(n)]
+        det = {"kind": "キャラ", "why": "x", "target": n, "have": n, "chain": [], "funnel": {}, "todo": "t", "next_at": "2026-10-18T01:47:00+00:00"}
+        bg = {k: {"state": "ok", "text": "済"} for k in ("collect", "edit", "design")}
+        bg["emblem"] = {"state": state, "text": "5/6", "detail": det}
+        return [{"name": "A", "section": "游戏", "bg": bg, "thumbs": thumbs}]
+
+    def test_all_thumbs_after_open_and_row_capped(self):
+        h = render._admin_backend(self._rows(14), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
+        row = h[h.index('<span class="bg-th">'):h.index("</span>", h.index('<span class="bg-th">'))]
+        self.assertEqual(row.count("<img"), render.BG_THUMBS)
+        self.assertIn("+4", row)
+        self.assertEqual(h[h.index('class="ef-pics"'):].split("</span>")[0].count("<img"), 14)   # 開くと全部
+
+    def test_retry_button_only_when_failed(self):
+        failed = render._admin_backend(self._rows(state="failed"))
+        self.assertIn('class="nx-run bg-redo" data-run="background"', failed)
+        self.assertIn('class="bg-cd" data-at="2026-10-18T01:47:00+00:00"', failed)
+        self.assertNotIn("bg-redo\"", render._admin_backend(self._rows(state="ok")).replace("bg-redo{", ""))
+
+    def test_edit_column_state_and_force_button(self):
+        todo = {"edit": {"text": "", "n": 105, "fired": "2026-10-18T00:00:00+00:00", "state": "gave_up",
+                         "why": "3 回起こしたが仕事が減らない", "attempts": 3, "resp": "s"}}
+        h = render._admin_backend(self._rows(), todo)
+        self.assertIn("起こしても動かない", h)
+        self.assertIn("（3 回目）", h)
+        self.assertIn('data-run="edit_now" data-label="AI 編集をもう一度起こす"', h)
+        self.assertNotIn("AI 編集をもう一度起こす", render._admin_backend(self._rows(), {"edit": {"text": "", "n": 0}}))   # 整理待ちがなければボタンなし
+
+    def test_edit_column_countdown(self):
+        h = render._admin_backend(self._rows(), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
+        self.assertIn('data-pre="次の収集のあと "', h)
+        self.assertIn("記事 3 件が版面の下の「整理待ち」に", h)
+        self.assertIn('class="bgw-d nx-ago" data-at="2026-10-18T00:00:00+00:00"', h)
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -312,7 +348,7 @@ class Nav(unittest.TestCase):
         self.assertIn("https://img/a.jpg", out)                       # なければ記事の写真
         self.assertIn('<i class="ic">C</i>', out)                     # それもなければ頭文字
         self.assertIn('data-hot="1"', out)                            # 今週の件数（新着順に残すとき使う）
-        self.assertIn("新着 <b>1</b>／2", out)
+        self.assertNotIn("新着 <b>", out)                              # 目次に新着の件数は出さない（2026-10-18）
         self.assertNotIn('class="nsubs"', out)                         # 小分類がなければ札は出さない
 
     def test_sub_chips_and_hide_setting(self):
@@ -397,3 +433,16 @@ class NavParents(unittest.TestCase):
         works = render._dedupe_parents(ws, parents)                  # 同じニュースは下級だけに
         self.assertEqual([x["url"] for x in works[0]["stories"]], ["a"])
         self.assertEqual([x["url"] for x in works[2]["stories"]], ["b"])
+
+    def test_board_marks_name_what_changed(self):
+        """通知に「どの版面が変わったか」を出すための指紋：版面ごとに data-h、version.json 用の page_marks。"""
+        a = '<section id="w-1" data-k="GTA 6" class="sec">x 10.18 09:00</section><section class="front" data-k="front" id="front">f</section>'
+        m1 = render._board_marks(a, "10.18 09:00")
+        m2 = render._board_marks(a.replace("x 10.18", "y 10.18"), "10.18 09:00")
+        marks1, marks2 = render.page_marks(m1), render.page_marks(m2)
+        self.assertEqual(marks1["front"][0], "トップ")                   # 名前は日本語に
+        self.assertEqual(marks1["w-1"][0], "GTA 6")
+        self.assertEqual(marks1["front"][1], marks2["front"][1])        # 変わっていない版面は同じ指紋
+        self.assertNotEqual(marks1["w-1"][1], marks2["w-1"][1])         # 中身が変わった版面だけ違う
+        self.assertIn("_marks", render.LIVE_JS)                          # 読み直す前にも名前を出す
+        self.assertIn("wl-to", render.LIVE_JS)                           # 名前から版面へ飛べる

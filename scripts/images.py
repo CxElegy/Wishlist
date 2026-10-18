@@ -53,6 +53,15 @@ GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_
                      r"|^/default/[0-9a-f]{8}/", re.I)  # 新浪的默认分享图 n.sinaimg.cn/default/2fb77759/…/320X320.png
 BOT_WALL = re.compile(r"cloudflare|cloudfront|datadome|akamai|captcha|attention required|request blocked|access denied|human verification", re.I)
 
+# 期限付きの網址（Yahoo ニュースの ?exp=10800 など）：数時間で 404 と 1×1 の空白に変わる。出刊時に hdimg が本站に保存する
+EXPIRING = re.compile(r"[?&](exp|expires|x-amz-expires|x-goog-expires)=", re.I)
+BLANK_STD = 3                 # 色のばらつき（標準偏差）がこれ未満の図は空白・単色（代わりの図）とみなす
+
+
+def expiring(url):
+    return bool(isinstance(url, str) and EXPIRING.search(url))
+
+
 ICON_MIN = 32                 # 来源图标至少这么多像素（Google 图标服务查不到时给 16px 的地球图标）
 FAVICON_SERVICE = "https://www.google.com/s2/favicons?domain={host}&sz=128"  # Google 的公开网站图标服务
 
@@ -182,7 +191,21 @@ def _inspect(body, content_type):
         return False, f"不是图片（{kind}）"
     if min(w, h) < MIN_SHORT_SIDE or max(w, h) < MIN_LONG_SIDE:
         return False, f"图片太小 {w}×{h}"
+    if blank(body):
+        return False, f"空白图 {w}×{h}"
     return True, f"{w}×{h}"
+
+
+def blank(body):
+    """整张几乎一个颜色（白图・灰图）：网站的占位图，放上去就是一片空白。"""
+    from PIL import Image, ImageStat
+    try:
+        with Image.open(io.BytesIO(body)) as im:
+            im = im.convert("RGB")
+            im.thumbnail((64, 64))
+            return max(ImageStat.Stat(im).stddev) < BLANK_STD
+    except Exception:
+        return False
 
 
 # ---------- 网页里的候选图 ----------
@@ -578,7 +601,7 @@ _KINDS = (  # (原因里的关键字, 大类)：从具体到笼统，第一个�
     ("Google 新闻跳转", "原文链接未还原"), ("没有图片元数据", "原文没有图"), ("Reddit 帖子没有图", "原文没有图"),
     ("图片 HTTP", "候选图 HTTP 错误"), ("图片 超时", "候选图超时"), ("图片 网络错误", "候选图网络错误"),
     ("不是图片", "候选图格式错误"), ("太小", "候选图尺寸不合格"), ("图片超过", "候选图过大"),
-    ("地址无效", "候选图地址无效"), ("logo / 默认图", "候选图是网站 logo / 默认图"), ("和别的报道重复", "候选图和别的报道重复"),
+    ("地址无效", "候选图地址无效"), ("空白图", "候选图是空白"), ("logo / 默认图", "候选图是网站 logo / 默认图"), ("和别的报道重复", "候选图和别的报道重复"),
 )
 
 

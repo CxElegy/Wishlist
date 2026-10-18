@@ -72,8 +72,8 @@ button{font-family:inherit}
 .pic.fill img:not(.bg):not(.ico){object-fit:cover}
 .pic.fill img.bg{display:none}
 .pic .ph{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;text-align:center;
- font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;
- background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,var(--ac,var(--rose))}
+ font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;text-shadow:0 1px 2px color-mix(in srgb,var(--ink) 70%,transparent);
+ background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,linear-gradient(color-mix(in srgb,var(--ink) 34%,transparent),color-mix(in srgb,var(--ink) 34%,transparent)),var(--ac,var(--rose))}   /* 明るい作品色でも白い字が読めるよう墨を 34% 重ねる */
 .pic.none{background:none}
 .pic.none .ph{display:flex}
 .pic.icon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
@@ -143,7 +143,7 @@ button{font-family:inherit}
  background:linear-gradient(90deg,var(--sc1,#00B4EE) 0 14%,var(--sc2,#FF3D8B) 14% 28%,var(--gold) 28% 42%,var(--ink) 42% 56%,var(--hacc,var(--rose)) 56% 70%,var(--deep,var(--ink)) 70% 84%,var(--card) 84%)}
 /* ---------- ほかの注目ニュース：写真の壁 ＋ ジャンルの棚 ---------- */
 .spot{display:flex;flex-direction:column;gap:22px}
-.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:start}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:22px;align-items:start}
 /* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
 .mgrid>.wall{align-content:start}
 .mgrid .wc{justify-content:flex-start}
@@ -154,6 +154,7 @@ button{font-family:inherit}
 .sbox h4 small{margin-left:auto;font:500 11px var(--font-sans)}
 .sbox h4 a:hover{color:var(--rose)}
 .swish ol,.shot ol{list-style:none;margin:0;padding:0}
+.swish li[hidden],.agenda li[hidden]{display:none}
 .swish li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--hair)}
 .wthumb{width:48px;height:48px;background:#FFF;border:1.5px solid var(--ink);display:grid;place-items:center;overflow:hidden}
 .wthumb img{width:90%;height:90%;object-fit:contain}
@@ -182,10 +183,16 @@ button{font-family:inherit}
 .fside .agenda{padding:12px 14px 8px}
 .fside .agenda ol{grid-template-columns:minmax(0,1fr)}
 .agenda li b small{display:block;font:700 11px var(--font-sans);color:var(--ink);opacity:.7}
-.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:22px;align-content:start}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
 .wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
- padding:10px 12px 14px;transition:transform .12s,box-shadow .12s}
-.wc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+ padding:8px 10px 11px;transition:transform .12s,box-shadow .12s}
+.wc{transform:rotate(var(--r,0deg))}
+.wc:hover{transform:rotate(var(--r,0deg)) translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+/* P5 の手法：上下の端はそろえ、中のカードだけ 0.4〜1.2° ずつ不ぞろいに傾ける（同じ向きが続かない） */
+.mgrid .wc:nth-child(1){--r:-.6deg}.mgrid .wc:nth-child(2){--r:1.1deg}.mgrid .wc:nth-child(3){--r:-.8deg}
+.mgrid .wc:nth-child(4){--r:.5deg}.mgrid .wc:nth-child(5){--r:-1.2deg}.mgrid .wc:nth-child(6){--r:.9deg}
+.mgrid .wc:nth-child(7){--r:-.4deg}.mgrid .wc:nth-child(8){--r:1deg}.mgrid .wc:nth-child(9){--r:-.7deg}
+.fside .agenda{transform:rotate(.7deg)}.fside .swish{transform:rotate(-.9deg)}
 .wc.lead{grid-column:span 2;grid-row:span 2}
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
 .wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
@@ -193,8 +200,8 @@ button{font-family:inherit}
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
 .wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
-.wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.5em}  /* 3 行分：段のカードの高さがそろう */
-.wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
+.wc b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.35em}  /* 3 行分：段のカードの高さがそろう */
+.wc.lead b{font-size:20px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
 .wc:hover b{text-decoration:underline;text-underline-offset:3px}
 /* ジャンルの棚：ジャンルごとに看板、作品ごとに最新の 1 本をテープのように並べる（版面へのリンク） */
 /* 棚は既定でたたむ（トップが長くなりすぎないように）。1 行の帯を押すとひらく */
@@ -341,12 +348,13 @@ button{font-family:inherit}
 .brief a{color:inherit;font-weight:700}
 .brief a:hover,.brief a:focus-visible{color:var(--acc);text-decoration:underline}
 .older{background:var(--abg);color:var(--afg)}
-.older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
+.older summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:2px 12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
 .older summary::-webkit-details-marker{display:none}
 .older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;background:var(--aacc);color:var(--abg);transform:skewX(var(--skew));
  font:900 15px/1 var(--font-sans)}
 .older[open] summary::before{content:"−"}
 .older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
+.older summary .lb{font:inherit;white-space:nowrap}   /* 「もっと見る · 9 件」は途中で折り返さない（狭い画面では内訳が次の行へ） */
 .older summary span{font-weight:500;letter-spacing:.04em}
 .older .grid{padding-top:8px}
 .pend{border-top:1px dashed var(--line)}
@@ -372,36 +380,50 @@ button{font-family:inherit}
 .pkhead .flag::after{content:"";position:absolute;right:-12px;top:50%;margin-top:-8px;border:8px solid transparent;border-left:12px solid var(--card);border-right:0}
 .pkhead>span:not(.flag){flex-basis:100%;order:3;font-size:13px;opacity:.8}
 .pkhead a{color:color-mix(in srgb,var(--rose) 72%,var(--ink));font-weight:700;border-bottom:1px solid currentColor}  /* バラ色のままだと地の上で 4.5:1 に届かない */
-.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 22px;margin-top:22px;align-items:start}
+.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 22px;margin-top:18px;align-items:start}
 .pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
-.pksub{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:34px;font:900 15px var(--font-sans);letter-spacing:.1em}
+.pksub{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:22px;font:900 15px var(--font-sans);letter-spacing:.1em}
 .pksub::before{content:"";flex:none;width:18px;height:18px;background:var(--rose);transform:skewX(var(--skew));align-self:center}
 .pksub span{font:500 12px var(--font-sans);letter-spacing:0;opacity:.75}
 .pk{position:relative;display:flex;flex-direction:column;gap:0;min-width:0;color:var(--ink)}
 .pk.big{grid-column:span 2;grid-row:span 2;align-self:stretch}
-.pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:280px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
+.pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:160px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
 .pk .pic{--pko:18px}.pk.big .pic{--pko:40px}  /* 下に手書きの札（.pkt）が重なる高さ：写真はその上に収め、重なる帯はぼかしだけ */
 .pk .pic img:not(.bg):not(.ico){bottom:var(--pko)}.pk .pic.fill img.bg{display:block}
 .pk.big .pic{aspect-ratio:4/3}
-.pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:7px;min-width:0;margin:-18px 10px 0;padding:16px 15px 12px;background:var(--card);
+.pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:5px;min-width:0;margin:-18px 10px 0;padding:14px 14px 10px;background:var(--card);
  box-shadow:var(--shadow);transform:rotate(-1deg)}
 .pk:nth-child(even) .pkt{transform:rotate(1deg)}
 .pk.big .pkt{margin:-40px 24px 0;padding:22px 22px 16px;transform:rotate(-1.2deg)}
-.pk .why{order:-1;font:16px/1.5 var(--font-hand);color:var(--ink)}
+.pk .why{order:-1;font:15px/1.45 var(--font-hand);color:var(--ink)}
 .pk .why mark{color:inherit;background:linear-gradient(transparent 55%,var(--gold) 55% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 2px}
-.pk .why small{display:block;margin-top:3px;font-size:13px;opacity:.75}
-.pk.big .why{font-size:25px;line-height:1.45}
+.pk .why small{display:block;margin-top:3px;font-size:12px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk.big .why{font-size:22px;line-height:1.4}
 .pk.big .why small{font-size:15px}
 .pk .src{font:500 12px/1.4 var(--font-sans);opacity:.7}
-.pk b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.pk.big b{font-size:20px;font-weight:900;line-height:1.45;-webkit-line-clamp:4}
+.pk b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pk.big b{font-size:19px;font-weight:900;line-height:1.4;-webkit-line-clamp:3}
 .pk .tags{display:flex;flex-wrap:wrap;gap:5px}
 .pk .tags:empty{display:none}
 .pk .tags i{font-style:normal;padding:2px 8px;border:1.5px solid var(--ink);background:#FFF;font:700 11px/1.3 var(--font-sans)}
 .pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
-.pk .taste{font-size:11px;opacity:.7}
+.pk .taste{font-size:11px;opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pkgrid[style*='--pkh'] .pk:not(.big) .pic{height:var(--pkh);aspect-ratio:auto}  /* fitPk が 1 画面に収めるため写真枠の高さを決めることがある */
+.pkgrid[style*='--pkbig'] .pk.big .pic{height:var(--pkbig);flex:none;aspect-ratio:auto}
+/* PC の「似たジャンルの新着」は横長の小さいカード（写真を左、文字を右）：上の段と形を変え、1 段を低く */
+@media (min-width:761px){
+ .pkgrid.row .pk>a{flex-direction:row;align-items:flex-start}
+ .pkgrid.row .pk .pic{flex:none;width:88px;aspect-ratio:1;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+ .pkgrid.row .pk:nth-child(even) .pic{transform:rotate(2deg)}
+ .pkgrid.row .pk .pkt{flex:1;margin:10px 0 0 -8px;padding:10px 12px 9px}
+ .pkgrid.row .pk .tags,.pkgrid.row .pk .taste,.pkgrid.row .pk .why small{display:none}
+ .pkgrid.row .pk .why{font-size:13px}.pkgrid.row .pk b{font-size:13px}
+ .pkgrid.row .pk .vote{margin:4px 0 0 96px}
+ .pkgrid:not(.row) .pk:not(.big) .taste{display:none}  /* 「あなたの投票」は大きい 1 枚だけ */
+}
+@media (min-width:761px) and (max-height:1000px){.pkgrid:not(.row) .pk:not(.big) .tags{display:none}}
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
 .vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -457,7 +479,7 @@ button{font-family:inherit}
 .emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
-.emb img.badge.whole{aspect-ratio:auto;height:auto;width:auto;max-width:210px;max-height:100%;object-fit:contain;background:none;padding:0;border:5px solid var(--card);box-sizing:content-box;clip-path:polygon(1.5% 0,100% 2.5%,98.5% 100%,0 97.5%)}  /* 横長・縦長すぎる画像は切らず、余白なしで写真そのままに斜めの枠だけ */
+.emb img.badge.whole{aspect-ratio:auto;height:auto;width:auto;max-width:210px;max-height:100%;object-fit:contain;background:color-mix(in srgb,var(--fg) 10%,var(--bg));padding:0;border:5px solid var(--card);box-sizing:content-box;clip-path:polygon(1.5% 0,100% 2.5%,98.5% 100%,0 97.5%)}  /* 横長・縦長すぎる画像は切らず、余白なしで写真そのままに斜めの枠だけ */
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
@@ -1022,7 +1044,7 @@ def _older(stories, today, more=0, texts=()):
     cards = "".join(_tcard(s, w, i, today, small=True) for i, (s, w) in enumerate(packed))
     label = "もっと見る" if more else "過去のニュース"
     detail = f"今週ほかに {more} 件" + (f" · それ以前 {len(stories) - more} 件" if len(stories) > more else "") if more else rng
-    return (f'<details class="older"><summary>{label} · {len(stories) + len(texts)} 件<span>{detail}</span></summary>'
+    return (f'<details class="older"><summary><b class="lb">{label} · {len(stories) + len(texts)} 件</b><span>{detail}</span></summary>'
             f'<div class="grid">{cards}</div>{_brief(texts)}</details>')
 
 
@@ -1410,12 +1432,40 @@ SHUFFLE_JS = """
     }
     return out;
   };
+  // 「気になるかも？」全体を 1 画面に収める（PC だけ）：はみ出す分を小さいカードの写真枠から段ごとに等分して削る（最低 72px）。
+  // 大きい 1 枚は 2 段分の高さに合わせて一緒に縮む
+  const fitPk = () => {
+    // 高さは CSS 変数で渡す（写真が開けず FIT_JS が .pic を作り直しても効くように）
+    if (!wishGrid) return;
+    wishGrid.style.removeProperty('--pkh'); wishGrid.style.removeProperty('--pkbig');
+    if (innerWidth <= 760) return;
+    const q = sel => [...wishGrid.querySelectorAll(sel)];
+    const over = sec.getBoundingClientRect().height - (innerHeight - 16);
+    const sm = q('.pk:not(.big)'), big = wishGrid.querySelector('.pk.big'), bigPic = big && big.querySelector('.pic');
+    if (over > 0 && sm.length > 1) {
+      const h = Math.max(...sm.map(k => k.querySelector('.pic')?.getBoundingClientRect().height || 0));
+      wishGrid.style.setProperty('--pkh', Math.max(72, h - over / 2) + 'px');
+    }
+    // 大きい 1 枚は横の 2 段とちょうど同じ高さに（下端をそろえる）
+    if (bigPic && sm.length >= 3) {
+      // 大きい 1 枚が高いと段そのものが伸びるので、横のカード自身の高さ（2 枚ずつの大きいほう）＋段の間で測る
+      const hk = k => k ? k.getBoundingClientRect().height : 0;
+      const want = Math.max(hk(sm[0]), hk(sm[1])) + parseFloat(getComputedStyle(wishGrid).rowGap) + Math.max(hk(sm[2]), hk(sm[3]));
+      const h = bigPic.getBoundingClientRect().height - (big.getBoundingClientRect().height - want);
+      wishGrid.style.setProperty('--pkbig', Math.max(140, h) + 'px');
+    }
+  };
+  let rt;
+  addEventListener('resize', ev => { if (ev.isTrusted) { clearTimeout(rt); rt = setTimeout(fitPk, 200); } });
+  if (document.fonts) document.fonts.ready.then(fitPk);
+  addEventListener('load', fitPk);
   const history = [];
   let pos = -1;
   const show = ([w, f]) => {
     cards.forEach(el => { el.classList.remove('big'); pool.appendChild(el); });
     if (wishGrid) w.forEach((el, i) => { el.classList.toggle('big', i === 0); wishGrid.appendChild(el); });
     if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
+    fitPk();
     dispatchEvent(new Event('resize'));   // 入れ替えたカードの写真を枠に合わせ直す（FIT_JS）
     back.disabled = pos <= 0;
     const fresh = cards.filter(el => !seen[el.dataset.u]).length;
@@ -2192,7 +2242,7 @@ def _heat_badge(w):
 
 WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
 WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
-SPOT_COUNT = 15  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 14 枚。WALL_JS が右の列の高さに収まる段数だけ出す。スマホは 6 枚まで
+SPOT_COUNT = 24  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 23 枚。列の数は幅しだい（1 列 220px 以上）、WALL_JS が画面の高さに収まる段数だけ出す。スマホは 6 枚まで
 
 
 def _day(story):
@@ -2221,17 +2271,16 @@ def _poster_colors(story, themes):
 
 
 def _side(works, today, wishes=(), taste=()):
-    """トップの右の列（PC だけ。スマホでは消す）。上から：
-    これからの予定（日付のある記事があるときだけ）・欲しい物リスト・今週にぎやかな作品・投票から学んだあなたの好み。
-    どれもデータがなければ出さない。"""
+    """トップの右の列（PC だけ。スマホでは消す）：これからの予定（日付のある記事があるときだけ）と欲しい物リスト（2026-10-18 に話題度ランキングとあなたの好みは外した）。
+    どちらもデータがなければ出さず、両方なければ列ごと消えて写真の壁が横いっぱいになる。"""
     out = []
-    ag = _agenda(works, today, 4)
+    ag = _agenda(works, today, 6)
     if ag:
         out.append(ag)
     want = [x for x in wishes if (x.get("status") or "想要") in ("想要", "纠结")]
     if want:
         rows = []
-        for x in want[:4]:
+        for x in want[:7]:  # 入りきらない分は WALL_JS が下から隠す
             img = x.get("image") or ""
             if img and not img.startswith("http"):
                 img = "wishlist/" + img
@@ -2247,25 +2296,6 @@ def _side(works, today, wishes=(), taste=()):
         out.append(f'<div class="sbox swish"><h4><a href="wishlist.html">欲しい物リスト</a><small>{len(want)} 件</small></h4><ol>{"".join(rows)}</ol>'
                    f'<p class="stot"><span>欲しいものの合計</span><b>{e(total)}</b></p>'
                    f'<a class="smore" href="wishlist.html">♥ 全部見る</a></div>')
-    hot = sorted((w for w in works if (w.get("_heat") or {}).get("score")), key=lambda w: -w["_heat"]["score"])[:6]
-    if hot:
-        rows = []
-        for w in hot:
-            h = w["_heat"]
-            cls, arrow, why = _trend(h.get("delta"))
-            top = next((d for d in h.get("dims") or [] if d["key"] == h.get("top")), None)
-            tip = f'{h["label"]} · {why}' + (f' · いちばん効いている：{top["name"]}（{top["note"]}）' if top else "")
-            rows.append(f'<li style="--sc:{_sec_color(w.get("section"))};--v:{h["score"] / 100:.3f}"><a href="#{_wid(w["name"])}" title="{e(tip)}">'
-                        f'<span class="bn">{e(w["name"])}{"<em>急上昇</em>" if h.get("rising") else ""}</span>'
-                        f'<span class="bar"></span><b>{h["score"]}</b>'
-                        f'<i class="{cls}"{f' aria-label="{e(why)}"' if arrow else ' aria-hidden="true"'}>{arrow}</i></a></li>')
-        out.append(f'<div class="sbox shot"><h4><a href="heat.html">話題度ランキング</a><small>100 点満点</small></h4><ol>{"".join(rows)}</ol>'
-                   f'<p class="snote">報道量・広がり・出来事・勢い・Wikipedia・ファンの反応から計算。各作品の見出しの数字を押すと内訳</p>'
-                   f'<a class="smore" href="heat.html">詳しい分析 →</a></div>')
-    if taste:
-        chips = "".join(f'<li><span>{e(k.removeprefix(WORK_KEY))}</span><b>+{v}</b></li>' for k, v in taste[:8])
-        out.append(f'<div class="sbox staste"><h4>あなたの好み<small>👍 から学習</small></h4><ul>{chips}</ul>'
-                   f'<p>「気になるかも？」はこの順に選んでいます</p></div>')
     return f'<aside class="fside">{"".join(out)}</aside>' if out else ""
 
 
@@ -2478,9 +2508,7 @@ NAV_STYLES = {
 .nav .nsec .tg{transform-origin:left center;transition:transform .18s cubic-bezier(.2,.9,.3,1),box-shadow .18s}
 .nav .nsec .tg{font-size:14px;padding:1px 12px}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
-.nav .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:rgba(26,28,34,.62)}
-.nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
-.nav .nsec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
+.nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--sc)}   /* 板块の色の下線（新着の件数は出さない、2026-10-18） */
 .nav .nbody{position:absolute;left:0;right:0;top:52px}
 /* 上下級（案 A）：下級は上級の駅から出た枝線（拐角 └）の上の駅。大きさは普通の駅と同じ */
 .nav .pill.kid{padding-left:52px}
@@ -2501,20 +2529,18 @@ NAV_STYLES = {
 .nav .nlab{height:20px;display:flex;align-items:flex-end;gap:4px;padding:0 0 2px 6px;font:900 11px var(--font-sans);letter-spacing:.14em;color:var(--sc);
  transform:rotate(-2deg);transform-origin:left bottom}
 .nav .nlab::before{content:"／";font-weight:900}
-.nav .nlab b{margin-left:4px;font:14px/1 var(--font-num);letter-spacing:.02em;opacity:.8}
+.nav .nlab b{margin-left:4px;font:14px/1 var(--font-num);letter-spacing:.02em}
 .nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;text-decoration:none}
 .nav .nmore{font:900 12px var(--font-sans);color:var(--sc);letter-spacing:.04em}
 .nav .nmore:hover{color:var(--alert)}
 /* ---------- P5 の手ざわり：揃えすぎない ----------
-   板块の行：日本語の札は少し傾け、後ろに英字（GAMES…）を大きな透かしで。件数の数字は Anton */
+   板块の行：日本語の札は少し傾け、右端に英字（GAMES…）を透かしで（新着の件数は 2026-10-18 にやめた） */
 .nav .nsec{position:relative;isolation:isolate}
 .nav .nsec .tg{font-size:15px;padding:1px 13px;transform:skewX(var(--skew)) rotate(-2deg);box-shadow:2px 2px 0 var(--ink)}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) rotate(-3deg) scale(1.22);box-shadow:4px 4px 0 var(--ink)}
-.nav .nsec .en{position:absolute;right:46px;top:2px;z-index:-1;font:34px/1 var(--font-num);letter-spacing:.01em;color:var(--sc);opacity:.16;
+.nav .nsec .en{position:absolute;right:2px;top:5px;z-index:-1;font:28px/1 var(--font-num);letter-spacing:.01em;color:var(--sc);opacity:.16;
  transform:skewX(var(--skew)) rotate(-3deg);white-space:nowrap;pointer-events:none}
 .nav .nslot.cur .nsec .en{opacity:.26}
-.nav .nsec .cnt b{font:19px/1 var(--font-num);color:var(--ink);margin:0 1px}
-.nav .nslot.cur .nsec .cnt b{color:var(--sc)}
 /* 作品の行：名前を 1 行ごとに少しずつずらし・傾ける（線路の駅は揃えたまま）。+N は Anton */
 .nav .nbody .pill .nm{transform-origin:left center}
 .nav .nbody .pill:nth-of-type(3n+1) .nm{transform:rotate(-.9deg)}
@@ -2570,6 +2596,8 @@ def _flame_grad(n, color, mid, top_alpha):
             f'<stop offset="1" style="stop-color:var({color});stop-opacity:0"/></linearGradient>')
 
 
+# 目次のロゴの炎（と、ぶわっ・版面の火）は保留中（2026-10-18、PENDING.md）：True に戻せば全部また動く
+NAV_FLAME = False
 FLAME_SVG = (
     '<span class="flame" aria-hidden="true"><i class="glow"></i><svg viewBox="0 0 100 140"><defs>'
     '<filter id="navfl-f" x="-30%" y="-30%" width="160%" height="140%">'
@@ -2625,7 +2653,6 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
     for name in order:
         sc, ws = _sec_color(name), groups[name]
         icon = (f'<img class="si" src="{TWEMOJI.format(SECTION_ICON[name])}" alt="" loading="lazy">' if name in SECTION_ICON else "")
-        nn = sum(1 for w in ws if any(x["_issue"] >= cutoff for x in w["stories"]))
         tabs.append(f'<a class="tg" style="--sc:{sc}" data-sec="{e(name)}" href="#{_wid(ws[0]["name"])}"><span>{e(_sec_name(name))}</span></a>')
         # 上下級：上級が同じ板块にいる下級は、上級のすぐ下に並べる（小分類も上級に従う）
         names = {w["name"] for w in ws}
@@ -2654,13 +2681,13 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
         slots.append(f'<div class="nslot" style="--sc:{sc}" data-sec="{e(name)}">'
                      f'<a class="nsec" href="#{_wid(ws[0]["name"])}">{icon}<span class="tg"><span>{e(_sec_name(name))}</span></span>'
                      f'<span class="en" aria-hidden="true">{e(_sec_en(name))}</span>'
-                     f'<span class="cnt">新着 <b>{nn}</b>／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
+                     f'<span class="meter"></span></a>'
                      f'<div class="nbody">{body}</div></div>')
     hide = "auto" if str(hide).lower() == "auto" else max(1, int(hide or NAV_HIDE))
     levels = json.dumps([[low, lab] for low, lab in heat.LEVELS], ensure_ascii=False)
     return (f'<nav class="nav" aria-label="目次" data-hide="{hide}" data-levels="{e(levels)}">'
             f'<div class="mtabs">{"".join(tabs)}</div>'
-            f'<a class="logo" href="#front" aria-label="トップへ">{FLAME_SVG}'
+            f'<a class="logo" href="#front" aria-label="トップへ">{FLAME_SVG if NAV_FLAME else ""}'
             f'<span class="wm"><b>TBD</b><small>ウォッチリスト通信</small></span>'
             f'<span class="hm" aria-live="polite"><b class="hv"></b><small class="hl"></small></span></a>'
             f'<div class="nhead">{"".join(head)}</div>'
@@ -2674,6 +2701,8 @@ FIT_JS = """
 (() => {
   const fit = img => {
     const p = img.closest('.pic');
+    // 期限切れ・削除された図の代わりに返ってくる 1×1 の空白（Yahoo の exp= 付き画像など）は「開けない」と同じ扱い：次の候補へ
+    if (img.naturalWidth && img.naturalWidth < 3 && img.naturalHeight < 3 && img.onerror) { img.onerror(); return; }
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     const nat = img.naturalWidth / img.naturalHeight;
     const pk = p.closest('.pk');
@@ -2707,18 +2736,36 @@ FIT_JS = """
     if (!w) return;
     const cards = [...w.querySelectorAll(':scope > .wc')];
     cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p) p.style.height = ''; });
-    if (!side || innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
-    const target = side.getBoundingClientRect().height;
-    // 大きい 1 枚＋横の 2 枚で 2 段、そのあと 3 枚ずつ 1 段
+    if (side) side.style.minHeight = '';
+    if (innerWidth <= 760) return;
+    // 2 列しか入らない幅（右の列が下に回る）では大きい 1 枚＋4 枚まで
+    if (getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) { cards.forEach((c, i) => { c.hidden = i >= 5; }); return; }
+    // 「ほかの注目ニュース」全体（見出し・棚の帯まで）を 1 画面に収める：画面の高さから見出しと棚の帯の分を引いたのが壁と右の列の上限
+    const hh = sel => document.querySelector(sel)?.getBoundingClientRect().height || 0;
+    const target = Math.max(520, innerHeight - (hh('.spot > .sh') || 56) - (hh('.spot > .shelfbox > summary') || 44) - 22 * 2 - 24);
+    if (side) {
+      // 入りきらないときは欲しい物（3 件目以降）→ 予定（4 件目以降）→ 欲しい物（2 件目）→ 予定（2・3 件目）の順に下から隠す
+      const rows = sel => [...side.querySelectorAll(sel)];
+      const ag = rows('.agenda li'), wi = rows('.swish li');
+      const order = [...wi.slice(2).reverse(), ...ag.slice(3).reverse(), ...wi.slice(1, 2), ...ag.slice(1, 3).reverse()];
+      [...ag, ...wi].forEach(l => l.hidden = false);
+      for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
+    }
+    // 大きい 1 枚（2 列 × 2 段）＋横の (列数 − 2) × 2 枚で 2 段、そのあと列数ずつ 1 段
+    const cols = getComputedStyle(w).gridTemplateColumns.split(' ').length;
+    const upto = r => 1 + (cols - 2) * 2 + (r - 2) * cols;
     let rows = 2;
-    const show = r => cards.forEach((c, i) => { c.hidden = i >= 3 + (r - 2) * 3; });
+    const show = r => cards.forEach((c, i) => { c.hidden = i >= upto(r); });
     show(rows);
-    while (3 + (rows - 1) * 3 <= cards.length) {
+    while (upto(rows + 1) <= cards.length) {
       show(rows + 1);
       if (w.getBoundingClientRect().height > target) { show(rows); break; }
       rows++;
     }
-    const gap = target - w.getBoundingClientRect().height;
+    // 左の壁と右の列の上端・下端をそろえる：高いほうに合わせ、壁は各段の写真枠に等分して足し、右の列は最後の箱が伸びる
+    const H = Math.max(w.getBoundingClientRect().height, side ? side.getBoundingClientRect().height : 0);
+    if (side) side.style.minHeight = H + 'px';
+    const gap = H - w.getBoundingClientRect().height;
     if (gap > 0) {
       const add = gap / rows;
       cards.filter(c => !c.hidden && !c.classList.contains('lead')).forEach(c => {
@@ -3136,9 +3183,13 @@ NAV_JS = """
   document.addEventListener('visibilitychange', burnning);
   wide.addEventListener && wide.addEventListener('change', burnning);
   function flame(on) {
-    if (!fl) return;
     const own = on && on.dataset.heat != null ? +on.dataset.heat || 0 : null;
     const v = own == null ? maxHeat : own;
+    if (!fl) {   // 炎を出さないとき（NAV_FLAME）も、ロゴの右の点数と等級は入れる
+      if (logo) { logo.querySelector('.hv').textContent = v ? String(v) : '';
+        logo.querySelector('.hl').textContent = own == null ? (v ? '今日の最高' : '') : ((LV.find(l => v >= l[0]) || [0, ''])[1] || '話題度'); }
+      return;
+    }
     const to = own == null ? Math.min(.35, v / 100) : v / 100;
     const go = !FL.first && to - FL.target > .04 && FL.run, hv = logo.querySelector('.hv'), was = +hv.textContent || 0;
     const sec = on && on.getAttribute('href') && document.querySelector(on.getAttribute('href'));
@@ -3205,7 +3256,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
             + _front(works, latest["date"], updated, themes, wishes, taste) + _picks(picks, works, fb)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
-    return f"""<!doctype html>
+    return _board_marks(f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -3237,7 +3288,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 {_busy_tag(busy, generated)}
 </body>
 </html>
-"""
+""", updated)
 
 
 # ---------- 自動更新：開いたままのページに新しい内容を出す（簡報・管理ページ）----------
@@ -3259,6 +3310,8 @@ LIVE_CSS = """
 .wl-live button{flex:none;border:0;cursor:pointer;background:var(--gold);color:var(--ink);padding:4px 12px;font:700 13px/1.4 var(--font-sans)}
 .wl-live .x{background:none;color:var(--card);padding:4px 6px}
 .fresh{outline:3px solid var(--gold);outline-offset:3px}
+.wl-live .wl-to{color:var(--gold);text-decoration:underline;text-underline-offset:3px;font-weight:900}
+.wl-live span{min-width:0}
 .fresh-tag{position:absolute;top:6px;right:6px;z-index:6;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
  box-shadow:2px 2px 0 var(--ink);font:900 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.08em;pointer-events:none}
 section.fresh{position:relative}
@@ -3274,8 +3327,10 @@ LIVE_JS = """
           set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
   var touched=Date.now(),pending=null,bar=null;
   ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
-  var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'有 %n 条新内容',m:'%n 处有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新'}
-    :{n:'新しい記事が %n 件 届きました',m:'%n か所が新しくなりました',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新'};
+  var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'新增 %n 条',m:'有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新',more:'等 %n 处',sep:'：'}
+    :{n:'新着 %n 件',m:'更新',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新',more:'ほか %n か所',sep:'：'};
+  // 版面・パネルの名前（data-k か見出し）。ここでの id は section の id
+  function label(s){var k=s.getAttribute('data-k');if(k)return {front:'トップ',picks:'気になるかも？',wishlist:'愿望清单'}[k]||k;var h=s.querySelector('.sh>span');return h?h.textContent:s.id;}
   function art(a){return a.closest('article');}
   function keyed(){var l=[];Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){l.push([a.getAttribute('href'),art(a)]);});
     Array.prototype.forEach.call(document.querySelectorAll('article[data-key]'),function(c){l.push(['k:'+c.getAttribute('data-key'),c]);});return l;}
@@ -3285,11 +3340,15 @@ LIVE_JS = """
   document.addEventListener('visibilitychange',function(){if(!document.hidden)badge(0);});
   function marks(){var o={};Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){o[s.id]=s.getAttribute('data-h');});return o;}
   function anchor(){var l=document.querySelectorAll('section[id]');for(var i=0;i<l.length;i++){var r=l[i].getBoundingClientRect();if(r.bottom>0)return [l[i].id,r.top];}return null;}
-  function toast(msg,act){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
-    bar.textContent='';var t=document.createElement('span');t.textContent=msg;bar.appendChild(t);
+  // items = [[名前, 詳しい言葉, セクションの id]]：名前をクリックするとその版面へ飛ぶ
+  function toast(msg,act,items){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
+    bar.textContent='';var t=document.createElement('span');t.appendChild(document.createTextNode(msg));
+    (items||[]).forEach(function(it,i){t.appendChild(document.createTextNode(i?'、':T.sep));var a=document.createElement('a');a.href='#'+it[2];a.textContent=it[0];a.className='wl-to';t.appendChild(a);
+      if(it[1])t.appendChild(document.createTextNode(' '+it[1]));});
+    bar.appendChild(t);
     if(act){var b=document.createElement('button');b.type='button';b.textContent=T.b;b.onclick=go;bar.appendChild(b);}
     var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label',T.x);x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
-    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},8000);}
+    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},16000);}
   // 読み直したあと：見ていた場所に戻し、増えた記事・変わったパネルに印を付ける
   var was=ss.get(KEY);ss.del(KEY);
   if(location.search.indexOf('wlv=')>=0&&history.replaceState)history.replaceState(null,'',location.pathname+location.hash);
@@ -3300,14 +3359,19 @@ LIVE_JS = """
     function back(){var s=was.at&&document.getElementById(was.at[0]);if(s)to(s.getBoundingClientRect().top+pageYOffset-was.at[1]);else if(was.y)to(was.y);}
     if('scrollRestoration' in history)history.scrollRestoration='manual';
     back();addEventListener('load',back);
-    var n=0;
+    var n=0,by={},order=[];   // by[版面の id] = 新しい記事の数
     keyed().forEach(function(x){var c=x[1];if(was.keys&&!was.keys[x[0]]&&c&&!c.classList.contains('fresh')){
-      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;}});
-    var m=0;
+      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;
+      var sec=c.closest('section[id]');if(sec){if(!by[sec.id]){by[sec.id]=0;order.push(sec);}by[sec.id]++;}}});
+    var other=[];   // 新しい記事はないが中身が変わった版面・パネル（話題度・小元素・順位など）
     if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
-      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);m++;}});
-    toast(n?T.n.replace('%n',n):m?T.m.replace('%n',m):T.s);
-    if(document.hidden)badge(n||m);
+      if(h&&h!==s.getAttribute('data-h')){if(!by[s.id]){other.push(s);}
+        if(s.classList.contains('panel')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);}}});
+    var items=order.map(function(s){return [label(s),T.n.replace('%n',by[s.id]),s.id];}).concat(other.map(function(s){return [label(s),T.m,s.id];}));
+    var shown=items.slice(0,4),rest=items.length-shown.length;
+    toast(items.length?(n?(ZH?'有新内容':'更新しました'):(ZH?'有更新':'更新しました')):T.s,false,shown);
+    if(rest>0){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',rest);bar.firstChild.appendChild(r);}
+    if(document.hidden)badge(n||other.length);
   }
   // 待つとき：ダイアログを開いている・入力欄にいる・書きかけ／選んだファイルがある（読み直すと消えてしまう）
   function dirty(){return Array.prototype.some.call(document.querySelectorAll('input,textarea'),function(i){
@@ -3318,7 +3382,12 @@ LIVE_JS = """
   function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
       var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
-      if(pending!==v){pending=v;toast(T.p,true);}maybe();}).catch(function(){});}
+      if(pending!==v){pending=v;
+        // version.json の <ページ>_marks と自分の data-h を見比べて、どの版面が変わったかを先に言う
+        var mk=j[PAGE+'_marks']||{},mine=marks(),ch=[];Object.keys(mk).forEach(function(id){if(mine[id]&&mine[id]!==mk[id][1])ch.push([mk[id][0],'',id]);});
+        var sh=ch.slice(0,3);toast(T.p,true,sh);
+        if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}
+      maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
   setTimeout(check,3000);
@@ -3419,6 +3488,41 @@ def _section_marks(html_, updated=""):
             part = f'<section class="panel{m.group(1)}" id="{m.group(2)}" data-h="{h}">' + part[m.end():]
         out.append(part)
     return "".join(out)
+
+
+BOARD_LABEL = {"front": "トップ", "picks": "気になるかも？", "wishlist": "愿望清单"}
+
+
+def _board_marks(html_, updated=""):
+    """簡報の各版面・トップ・気になるかも（data-k を持つ <section>）に data-h（中身の指紋）を付ける。
+    開いたままのページが「どの版面が変わったか」を読み直す前から言えるように（version.json の *_marks と見比べる）。"""
+    parts = re.split(r'(?=<section\b[^>]*\bdata-k=")', html_)
+    out = []
+    for part in parts:
+        m = re.match(r'<section\b[^>]*\bdata-k="', part)
+        if m and 'id="' in part[:part.index(">")]:
+            h = hashlib.sha1((part.replace(updated, "") if updated else part).encode("utf-8")).hexdigest()[:8]
+            part = f'<section data-h="{h}"' + part[len("<section"):]
+        out.append(part)
+    return "".join(out)
+
+
+def page_marks(html_):
+    """生成した HTML の {版面・パネルの id: [表示名, 指紋]}。docs/version.json の <ページ>_marks に入れる。
+    ページ側（LIVE_JS）は、自分の data-h と見比べて「どの版面が変わったか」を新着の通知に出す。"""
+    out = {}
+    for m in re.finditer(r'<section\b([^>]*)>', html_):
+        attrs = m.group(1)
+        i, h = re.search(r'\bid="([^"]+)"', attrs), re.search(r'\bdata-h="(\w+)"', attrs)
+        if not (i and h):
+            continue
+        k = re.search(r'\bdata-k="([^"]*)"', attrs)
+        name = BOARD_LABEL.get(k.group(1)) if k and k.group(1) in BOARD_LABEL else (html.unescape(k.group(1)) if k else None)
+        if not name:  # 管理ページのパネル：見出しの文字
+            t = re.search(r'<h2 class="sh"><span>([^<]+)</span>', html_[m.end():m.end() + 400])
+            name = html.unescape(t.group(1)) if t else i.group(1)
+        out[i.group(1)] = [name, h.group(1)]
+    return out
 
 
 # ---------- 話題度の分析ページ（docs/heat.html）----------
@@ -4065,9 +4169,12 @@ BG_STATES = {"ok": "済", "wait": "待ち", "review": "要確認", "failed": "�
 # 「バックグラウンド」の表の列：(セルのキー, 見出し, 時刻を出すプロセスの id)。版面の設計は AI 編集の回にやる
 BG_COLS = (("collect", "収集", "collect"), ("edit", "AI 編集", "edit"), ("design", "版面の設計", "edit"),
            ("emblem", "小元素", "emblem-cron"))
-RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
+RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render", "edit": "edit_now"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
 RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も 6 時間を待たずにやり直す（3 分に 1 回まで）",
-             "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）"}
+             "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）",
+             "edit": "整理待ちがあれば AI 編集を、間隔・停滞の判断を飛ばして今すぐ起こす（10 分に 1 回まで）"}
+EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "stalled": ("止まっている？", "ng"),
+              "gave_up": ("起こしても動かない", "ng")}
 BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき",
                "edit": "整理待ちがあるとき（ゲートが起こす）"}
 
@@ -4075,6 +4182,27 @@ BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ペ
 def _slots_attr(pid):
     p = next((x for x in processes.PROCESSES if x["id"] == pid), None)
     return e(json.dumps(processes.slots(p))) if p else "[]"
+
+
+BG_THUMBS = 10   # 表の行に並べる小元素の数。残りは「+N」、全部は「小元素の探し方」を開くと見える
+BG_AFTER_COLLECT = ("edit", "design")   # 定時のない列：ゲートが収集のあとに AI 編集を起こす
+
+
+def _bg_thumb(t):
+    u, sh = t if isinstance(t, (list, tuple)) else (t, "")
+    return f'<img src="{e(u)}" alt="" loading="lazy"{" class=fit" if sh in ("logo", "icon") else ""}>'
+
+
+def _bg_retry(k, r):
+    """失敗した小元素の格子：自動の再挑戦までの残り時間と「今すぐ再挑戦」ボタン（run_now('background') = retry_now つきの後台作業。
+    失敗した版面は 6 時間を待たずにやり直す。3 分に 1 回まで）。ほかの格子は空。"""
+    if k != "emblem" or r["bg"][k]["state"] != "failed":
+        return ""
+    at = (r["bg"][k].get("detail") or {}).get("next_at") or ""
+    cd = f'<small class="bg-cd" data-at="{e(at)}"></small>' if at else ""
+    return (f'{cd}<span class="nx-go"><button type="button" class="nx-run bg-redo" data-run="{RUN_JOBS["gate"]}" data-label="今すぐ再挑戦"'
+            f' title="失敗した版面を 6 時間待たずにやり直す（後台作業を今すぐ。3 分に 1 回まで）">今すぐ再挑戦</button>'
+            f'<small class="nx-msg" aria-live="polite"></small></span>')
 
 
 def _admin_backend(rows, todo=None, log=None, res=None):
@@ -4107,8 +4235,28 @@ def _admin_backend(rows, todo=None, log=None, res=None):
     rows = sorted(rows, key=lambda r: (order.index(r.get("section")) if r.get("section") in order else len(order),
                                        r.get("section") or "", r["name"]))
     waits = {k: sum(1 for r in rows if r["bg"][k]["state"] in ("wait", "review", "failed")) for k, _, _ in BG_COLS}
-    head = "".join(f'<th><span>{e(t)}</span><small class="nx-h" data-slots="{_slots_attr(pid)}"></small>'
-                   f'<small class="bgw">待ち {waits[k]}</small></th>' for k, t, pid in BG_COLS)
+    ed = (todo or {}).get("edit") or {}
+
+    def th(k, t, pid):
+        if k in BG_AFTER_COLLECT:   # 定時なし：ゲートが収集のあとに起こす（AI 編集・版面の設計）→ 次の収集までの残り時間
+            when = f'<small class="nx-h" data-slots="{_slots_attr("collect")}" data-pre="次の収集のあと "></small>'
+        else:
+            when = f'<small class="nx-h" data-slots="{_slots_attr(pid)}"></small>'
+        extra = ""
+        if k == "edit":
+            if ed.get("n"):
+                extra += f'<small class="bgw-d">記事 {ed["n"]} 件が版面の下の「整理待ち」に</small>'
+            if ed.get("fired"):
+                extra += f'<small class="bgw-d nx-ago" data-at="{e(ed["fired"])}"></small>'
+            lab, cls = EDIT_STATE.get(ed.get("state"), ("", ""))
+            if lab:
+                extra += (f'<small class="bgw-d es-{cls}"><b>{e(lab)}</b> {e(ed.get("why") or "")}'
+                          + (f'（{ed["attempts"]} 回目）' if ed.get("attempts", 0) > 1 else "") + '</small>')
+            if ed.get("n"):   # 動いていなくても人が押せる：間隔・停滞の判断を飛ばして起こす
+                extra += (f'<span class="nx-go"><button type="button" class="nx-run bg-redo" data-run="{RUN_JOBS["edit"]}" data-label="AI 編集をもう一度起こす"'
+                          f' title="{e(RUN_TITLE["edit"])}">AI 編集をもう一度起こす</button><small class="nx-msg" aria-live="polite"></small></span>')
+        return f'<th><span>{e(t)}</span>{when}<small class="bgw">待ち {waits[k]}{" 版面" if k == "edit" else ""}</small>{extra}</th>'
+    head = "".join(th(k, t, pid) for k, t, pid in BG_COLS)
     body, sec = [], None
     for r in rows:
         if r.get("section") != sec:
@@ -4116,14 +4264,14 @@ def _admin_backend(rows, todo=None, log=None, res=None):
             body.append(f'<tr class="bgs"><th colspan="{len(BG_COLS) + 1}"><i style="background:{_sec_color(sec or "其他")}"></i>'
                         f'{e(_sec_name(sec or "其他"))}</th></tr>')
         cells = "".join(f'<td class="bgc s-{r["bg"][k]["state"]}" data-label="{e(t)}"><b>{BG_STATES[r["bg"][k]["state"]]}</b>'
-                        f'<small>{e(r["bg"][k]["text"])}</small></td>' for k, t, _ in BG_COLS)
-        thumbs = "".join(f'<img src="{e(u)}" alt=""{" class=fit" if sh in ("logo", "icon") else ""}>'
-                         for u, sh in (t if isinstance(t, (list, tuple)) else (t, "") for t in r.get("thumbs") or []))
+                        f'<small>{e(r["bg"][k]["text"])}</small>{_bg_retry(k, r)}</td>' for k, t, _ in BG_COLS)
+        pics = [_bg_thumb(t) for t in r.get("thumbs") or []]
+        more = f'<small class="bg-more">+{len(pics) - BG_THUMBS}</small>' if len(pics) > BG_THUMBS else ""
         body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a>'
-                    + (f'<span class="bg-th">{thumbs}</span>' if thumbs else "") + f'</td>{cells}</tr>')
+                    + (f'<span class="bg-th">{"".join(pics[:BG_THUMBS])}{more}</span>' if pics else "") + f'</td>{cells}</tr>')
         d = r["bg"]["emblem"].get("detail")
         if d:
-            body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"])}</td></tr>')
+            body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"], pics)}</td></tr>')
     logs = "".join(f'<li class="lg-{e(x.get("level") or "info")}"><time>{e(x.get("when") or "")}</time>'
                    f'<span class="lg-p">{e(x.get("name") or "")}</span><span class="lg-t">{e(x.get("text") or "")}</span></li>'
                    for x in (log or []))
@@ -4199,9 +4347,9 @@ def _admin_resources(res):
             '<div><h3 class="h3">サーバー <small>仕組みごとの最近の実行 · 終わったときの様子</small></h3>' + srv + "</div></div>")
 
 
-def _emblem_flow(d, state):
+def _emblem_flow(d, state, pics=()):
     """「小元素の探し方」：種類 → 目標 → 取り方（順に、試した数）→ 確かめる → 結果 → 次にやること を横一列の図に。
-    閉じているときは 1 行の要約（いまどこで止まっているか）。"""
+    閉じているときは 1 行の要約（いまどこで止まっているか）。開くと、いまある小元素を全部（pics：_bg_thumb の img）。"""
     chain = []
     for c in d.get("chain") or []:
         n = c.get("n")
@@ -4231,7 +4379,9 @@ def _emblem_flow(d, state):
             f'<b>{d.get("have")} / {d.get("target")} 枚</b><span class="em-bar"><i style="width:{pct}%"></i></span>'
             + (f'<span>{e(d["note"])}</span>' if d.get("note") else "") + '</div>'
             f'<div class="ef-box ef-todo"><small>⑤ 次にやること</small><b>{e(d.get("todo") or "")}</b>'
-            + (f'<span class="ef-adv">{e(d["advice"])}</span>' if d.get("advice") else "") + "</div></div></details>")
+            + (f'<span class="ef-adv">{e(d["advice"])}</span>' if d.get("advice") else "") + "</div></div>"
+            + (f'<div class="ef-all"><small>いまの小元素 · {len(pics)} 枚</small><span class="ef-pics">{"".join(pics)}</span></div>' if pics else "")
+            + "</details>")
 
 
 def _lane_short(lane):
@@ -4426,7 +4576,15 @@ ADMIN_PAGE_CSS = """
 .tok li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--hair);font-size:13px}
 .tok b{font:700 15px var(--font-mono);text-align:right}.tok b.na{font:700 12px var(--font-sans);opacity:.6}
 .tok small{grid-column:1/-1;text-align:right;font:500 var(--fs-label) var(--font-sans);opacity:.8}
-.bg-th{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.bg-th{display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin-top:4px}.bg-more{font:700 var(--fs-label) var(--font-mono);opacity:.7}
+.ef-all{padding:10px 12px 12px;border-top:1px dashed var(--hair)}.ef-all>small{display:block;font:700 var(--fs-label) var(--font-sans);margin-bottom:6px;opacity:.8}
+.ef-pics{display:flex;flex-wrap:wrap;gap:6px}.ef-pics img{width:44px;height:44px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}
+.ef-pics img.fit{object-fit:contain;border-radius:6px;padding:3px}
+.bgw-d{display:block;font-weight:400;font-size:var(--fs-label);opacity:.75}
+.bgw-d.es-ng{opacity:1;color:var(--alert)}.bgw-d b{font-weight:900}
+th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:6px;font-weight:400}
+.bgc .bg-cd{display:block;font:700 var(--fs-label) var(--font-mono);color:var(--alert)}
+.bgc .nx-go{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px}.bg-redo{padding:5px 10px}
 .bg-th img{width:26px;height:26px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}.bg-th img.fit{object-fit:contain;border-radius:4px;padding:2px}
 .bgm tr.bgx td{padding:0 6px 10px;border-bottom:1px solid var(--hair)}
 .bgm tr:has(+ .bgx) td{border-bottom:0}
@@ -4576,11 +4734,15 @@ ADMIN_PAGE_JS = """
   function tick(){var list=document.querySelector('.nxs');
     Array.prototype.forEach.call(document.querySelectorAll('[data-slots]'),function(x){var sl=JSON.parse(x.getAttribute('data-slots')||'[]');
       if(!sl.length){x._next=Infinity;return;}var a=around(sl);x._next=+a[1];
-      if(x.classList.contains('nx-h')){x.textContent='次回 '+hm(a[1])+'（'+left(a[1]-new Date())+'）';return;}
+      if(x.classList.contains('nx-h')){x.textContent=(x.getAttribute('data-pre')||'次回 ')+hm(a[1])+'（'+left(a[1]-new Date())+'）';return;}
       x.querySelector('.nx-t').textContent=hm(a[1]);x.querySelector('.nx-l').textContent=left(a[1]-new Date());
       x.querySelector('.nx-p').textContent='前回 '+hm(a[0]);x.classList.toggle('soon',a[1]-new Date()<15*60000);});
     Array.prototype.forEach.call(document.querySelectorAll('.nx[data-slots]'),function(x){var sl=JSON.parse(x.getAttribute('data-slots')||'[]'),b=x.querySelector('.pbar i');
       if(!b||!sl.length)return;var a=around(sl);b.style.width=Math.min(100,Math.max(2,(new Date()-a[0])/(a[1]-a[0])*100)).toFixed(1)+'%';});
+    // 失敗した小元素の自動の再挑戦まで（data-at）・ゲートが前回 AI 編集を起こした時刻
+    Array.prototype.forEach.call(document.querySelectorAll('.bgc .bg-cd[data-at]'),function(x){var t=new Date(x.getAttribute('data-at'));
+      x.textContent=t>new Date()?'自動の再挑戦 '+hm(t)+'（'+left(t-new Date())+'）':'まもなく自動で再挑戦';});
+    Array.prototype.forEach.call(document.querySelectorAll('.nx-ago[data-at]'),function(x){x.textContent='ゲートが前回起こした '+hm(new Date(x.getAttribute('data-at')));});
     if(list)Array.prototype.slice.call(list.children).sort(function(a,b){return a._next-b._next;}).forEach(function(c){list.appendChild(c);});
     queue();}
   // 待ち行列：これから 24 時間の実行を時刻順に。最初の回にだけ、処理する版面の名前を付ける
@@ -4634,8 +4796,8 @@ ADMIN_PAGE_JS = """
         if(x&&x.ok){msg.className='nx-msg ok';msg.textContent='起こしました · 数十秒で「実行中」に';if(card)card.classList.add('run');
           setTimeout(loadRuns,20000);setTimeout(loadRuns,60000);}
         else{msg.className='nx-msg ng';msg.textContent=(x&&x.msg||'起こせませんでした')+(left?' · あと '+left+' 分で押せます':'');}
-        b.textContent='今すぐ実行';setTimeout(function(){b.disabled=false;},left?left*60000:5000);})
-      .catch(function(){msg.className='nx-msg ng';msg.textContent='起こせませんでした（データベースに届かない）';b.textContent='今すぐ実行';b.disabled=false;});});
+        b.textContent=b.dataset.label||'今すぐ実行';setTimeout(function(){b.disabled=false;},left?left*60000:5000);})
+      .catch(function(){msg.className='nx-msg ng';msg.textContent='起こせませんでした（データベースに届かない）';b.textContent=b.dataset.label||'今すぐ実行';b.disabled=false;});});
   function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:'{}'})
     .then(function(r){if(!r.ok)throw 0;return r.json();});}
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
