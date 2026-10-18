@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-10-18T00:26:41+00:00",
+ "changed": false,
+ "checked": "2026-10-18T00:45:12+00:00",
  "fired": {
-  "at": "2026-10-18T00:26:41+00:00",
+  "at": "2026-10-18T00:45:12+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -12,8 +12,11 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-17T23:31:11+00:00",
-    "sig": "0158bf5f1db6"
+    "at": "2026-10-18T00:33:00+00:00",
+    "attempts": 2,
+    "prog": 0,
+    "resp": "cse_01MZ4931SAkH3khRqLFW7d3x",
+    "sig": "3407aaf71008"
    },
    "items": [
     "A2O LITE",
@@ -36,8 +39,9 @@
     "绝区零"
    ],
    "need": true,
-   "sig": "ae97186250d8",
-   "why": "整理待ちの記事 111 件（18 版面・AI 編集まで版面に載らない）"
+   "prog": 0,
+   "sig": "15e7f442a77b",
+   "why": "整理待ちの記事 112 件（18 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -45,18 +49,19 @@
    "need": false,
    "sig": "b1312ab4623e",
    "waiting": [
-    "Astrae Oratio",
-    "哈利波特剧集",
     "Vaundy",
     "A2O LITE",
-    "あつ森"
+    "あつ森",
+    "Astrae Oratio",
+    "哈利波特剧集"
    ],
-   "why": "失敗 5 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 09:38 から）"
+   "why": "失敗 5 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 13:28 から）"
   },
   "photos": {
    "claude": true,
    "items": [],
    "need": false,
+   "prog": 0,
    "sig": "09bc248e4ef4",
    "why": "受付の写真なし"
   }

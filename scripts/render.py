@@ -72,8 +72,8 @@ button{font-family:inherit}
 .pic.fill img:not(.bg):not(.ico){object-fit:cover}
 .pic.fill img.bg{display:none}
 .pic .ph{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;text-align:center;
- font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;
- background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,var(--ac,var(--rose))}
+ font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;text-shadow:0 1px 2px color-mix(in srgb,var(--ink) 70%,transparent);
+ background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,linear-gradient(color-mix(in srgb,var(--ink) 34%,transparent),color-mix(in srgb,var(--ink) 34%,transparent)),var(--ac,var(--rose))}   /* 明るい作品色でも白い字が読めるよう墨を 34% 重ねる */
 .pic.none{background:none}
 .pic.none .ph{display:flex}
 .pic.icon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
@@ -183,7 +183,7 @@ button{font-family:inherit}
 .fside .agenda{padding:12px 14px 8px}
 .fside .agenda ol{grid-template-columns:minmax(0,1fr)}
 .agenda li b small{display:block;font:700 11px var(--font-sans);color:var(--ink);opacity:.7}
-.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
 .wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
  padding:8px 10px 11px;transition:transform .12s,box-shadow .12s}
 .wc{transform:rotate(var(--r,0deg))}
@@ -348,12 +348,13 @@ button{font-family:inherit}
 .brief a{color:inherit;font-weight:700}
 .brief a:hover,.brief a:focus-visible{color:var(--acc);text-decoration:underline}
 .older{background:var(--abg);color:var(--afg)}
-.older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
+.older summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:2px 12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
 .older summary::-webkit-details-marker{display:none}
 .older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;background:var(--aacc);color:var(--abg);transform:skewX(var(--skew));
  font:900 15px/1 var(--font-sans)}
 .older[open] summary::before{content:"−"}
 .older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
+.older summary .lb{font:inherit;white-space:nowrap}   /* 「もっと見る · 9 件」は途中で折り返さない（狭い画面では内訳が次の行へ） */
 .older summary span{font-weight:500;letter-spacing:.04em}
 .older .grid{padding-top:8px}
 .pend{border-top:1px dashed var(--line)}
@@ -379,36 +380,50 @@ button{font-family:inherit}
 .pkhead .flag::after{content:"";position:absolute;right:-12px;top:50%;margin-top:-8px;border:8px solid transparent;border-left:12px solid var(--card);border-right:0}
 .pkhead>span:not(.flag){flex-basis:100%;order:3;font-size:13px;opacity:.8}
 .pkhead a{color:color-mix(in srgb,var(--rose) 72%,var(--ink));font-weight:700;border-bottom:1px solid currentColor}  /* バラ色のままだと地の上で 4.5:1 に届かない */
-.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 22px;margin-top:22px;align-items:start}
+.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 22px;margin-top:18px;align-items:start}
 .pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
-.pksub{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:34px;font:900 15px var(--font-sans);letter-spacing:.1em}
+.pksub{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:22px;font:900 15px var(--font-sans);letter-spacing:.1em}
 .pksub::before{content:"";flex:none;width:18px;height:18px;background:var(--rose);transform:skewX(var(--skew));align-self:center}
 .pksub span{font:500 12px var(--font-sans);letter-spacing:0;opacity:.75}
 .pk{position:relative;display:flex;flex-direction:column;gap:0;min-width:0;color:var(--ink)}
 .pk.big{grid-column:span 2;grid-row:span 2;align-self:stretch}
-.pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:280px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
+.pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:160px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
 .pk .pic{--pko:18px}.pk.big .pic{--pko:40px}  /* 下に手書きの札（.pkt）が重なる高さ：写真はその上に収め、重なる帯はぼかしだけ */
 .pk .pic img:not(.bg):not(.ico){bottom:var(--pko)}.pk .pic.fill img.bg{display:block}
 .pk.big .pic{aspect-ratio:4/3}
-.pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:7px;min-width:0;margin:-18px 10px 0;padding:16px 15px 12px;background:var(--card);
+.pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:5px;min-width:0;margin:-18px 10px 0;padding:14px 14px 10px;background:var(--card);
  box-shadow:var(--shadow);transform:rotate(-1deg)}
 .pk:nth-child(even) .pkt{transform:rotate(1deg)}
 .pk.big .pkt{margin:-40px 24px 0;padding:22px 22px 16px;transform:rotate(-1.2deg)}
-.pk .why{order:-1;font:16px/1.5 var(--font-hand);color:var(--ink)}
+.pk .why{order:-1;font:15px/1.45 var(--font-hand);color:var(--ink)}
 .pk .why mark{color:inherit;background:linear-gradient(transparent 55%,var(--gold) 55% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 2px}
-.pk .why small{display:block;margin-top:3px;font-size:13px;opacity:.75}
-.pk.big .why{font-size:25px;line-height:1.45}
+.pk .why small{display:block;margin-top:3px;font-size:12px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk.big .why{font-size:22px;line-height:1.4}
 .pk.big .why small{font-size:15px}
 .pk .src{font:500 12px/1.4 var(--font-sans);opacity:.7}
-.pk b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.pk.big b{font-size:20px;font-weight:900;line-height:1.45;-webkit-line-clamp:4}
+.pk b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pk.big b{font-size:19px;font-weight:900;line-height:1.4;-webkit-line-clamp:3}
 .pk .tags{display:flex;flex-wrap:wrap;gap:5px}
 .pk .tags:empty{display:none}
 .pk .tags i{font-style:normal;padding:2px 8px;border:1.5px solid var(--ink);background:#FFF;font:700 11px/1.3 var(--font-sans)}
 .pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
-.pk .taste{font-size:11px;opacity:.7}
+.pk .taste{font-size:11px;opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pkgrid[style*='--pkh'] .pk:not(.big) .pic{height:var(--pkh);aspect-ratio:auto}  /* fitPk が 1 画面に収めるため写真枠の高さを決めることがある */
+.pkgrid[style*='--pkbig'] .pk.big .pic{height:var(--pkbig);flex:none;aspect-ratio:auto}
+/* PC の「似たジャンルの新着」は横長の小さいカード（写真を左、文字を右）：上の段と形を変え、1 段を低く */
+@media (min-width:761px){
+ .pkgrid.row .pk>a{flex-direction:row;align-items:flex-start}
+ .pkgrid.row .pk .pic{flex:none;width:88px;aspect-ratio:1;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+ .pkgrid.row .pk:nth-child(even) .pic{transform:rotate(2deg)}
+ .pkgrid.row .pk .pkt{flex:1;margin:10px 0 0 -8px;padding:10px 12px 9px}
+ .pkgrid.row .pk .tags,.pkgrid.row .pk .taste,.pkgrid.row .pk .why small{display:none}
+ .pkgrid.row .pk .why{font-size:13px}.pkgrid.row .pk b{font-size:13px}
+ .pkgrid.row .pk .vote{margin:4px 0 0 96px}
+ .pkgrid:not(.row) .pk:not(.big) .taste{display:none}  /* 「あなたの投票」は大きい 1 枚だけ */
+}
+@media (min-width:761px) and (max-height:1000px){.pkgrid:not(.row) .pk:not(.big) .tags{display:none}}
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
 .vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -463,7 +478,7 @@ button{font-family:inherit}
 .emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
-.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:var(--card);padding:6px}  /* 横長・縦長すぎる画像は切らずに全体 */
+.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:color-mix(in srgb,var(--fg) 10%,var(--bg));padding:6px}  /* 地は版面の色に寄せる（白い透過ロゴが白い台に消えないように） */  /* 横長・縦長すぎる画像は切らずに全体 */
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
@@ -536,6 +551,7 @@ button{font-family:inherit}
 /* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
+.spot,.front .poster{scroll-margin-top:16px}
 .page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
 .issues{display:flex;flex-direction:column;gap:28px;min-width:0}
@@ -1028,7 +1044,7 @@ def _older(stories, today, more=0, texts=()):
     cards = "".join(_tcard(s, w, i, today, small=True) for i, (s, w) in enumerate(packed))
     label = "もっと見る" if more else "過去のニュース"
     detail = f"今週ほかに {more} 件" + (f" · それ以前 {len(stories) - more} 件" if len(stories) > more else "") if more else rng
-    return (f'<details class="older"><summary>{label} · {len(stories) + len(texts)} 件<span>{detail}</span></summary>'
+    return (f'<details class="older"><summary><b class="lb">{label} · {len(stories) + len(texts)} 件</b><span>{detail}</span></summary>'
             f'<div class="grid">{cards}</div>{_brief(texts)}</details>')
 
 
@@ -1412,12 +1428,40 @@ SHUFFLE_JS = """
     }
     return out;
   };
+  // 「気になるかも？」全体を 1 画面に収める（PC だけ）：はみ出す分を小さいカードの写真枠から段ごとに等分して削る（最低 72px）。
+  // 大きい 1 枚は 2 段分の高さに合わせて一緒に縮む
+  const fitPk = () => {
+    // 高さは CSS 変数で渡す（写真が開けず FIT_JS が .pic を作り直しても効くように）
+    if (!wishGrid) return;
+    wishGrid.style.removeProperty('--pkh'); wishGrid.style.removeProperty('--pkbig');
+    if (innerWidth <= 760) return;
+    const q = sel => [...wishGrid.querySelectorAll(sel)];
+    const over = sec.getBoundingClientRect().height - (innerHeight - 16);
+    const sm = q('.pk:not(.big)'), big = wishGrid.querySelector('.pk.big'), bigPic = big && big.querySelector('.pic');
+    if (over > 0 && sm.length > 1) {
+      const h = Math.max(...sm.map(k => k.querySelector('.pic')?.getBoundingClientRect().height || 0));
+      wishGrid.style.setProperty('--pkh', Math.max(72, h - over / 2) + 'px');
+    }
+    // 大きい 1 枚は横の 2 段とちょうど同じ高さに（下端をそろえる）
+    if (bigPic && sm.length >= 3) {
+      // 大きい 1 枚が高いと段そのものが伸びるので、横のカード自身の高さ（2 枚ずつの大きいほう）＋段の間で測る
+      const hk = k => k ? k.getBoundingClientRect().height : 0;
+      const want = Math.max(hk(sm[0]), hk(sm[1])) + parseFloat(getComputedStyle(wishGrid).rowGap) + Math.max(hk(sm[2]), hk(sm[3]));
+      const h = bigPic.getBoundingClientRect().height - (big.getBoundingClientRect().height - want);
+      wishGrid.style.setProperty('--pkbig', Math.max(140, h) + 'px');
+    }
+  };
+  let rt;
+  addEventListener('resize', ev => { if (ev.isTrusted) { clearTimeout(rt); rt = setTimeout(fitPk, 200); } });
+  if (document.fonts) document.fonts.ready.then(fitPk);
+  addEventListener('load', fitPk);
   const history = [];
   let pos = -1;
   const show = ([w, f]) => {
     cards.forEach(el => { el.classList.remove('big'); pool.appendChild(el); });
     if (wishGrid) w.forEach((el, i) => { el.classList.toggle('big', i === 0); wishGrid.appendChild(el); });
     if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
+    fitPk();
     dispatchEvent(new Event('resize'));   // 入れ替えたカードの写真を枠に合わせ直す（FIT_JS）
     back.disabled = pos <= 0;
     const fresh = cards.filter(el => !seen[el.dataset.u]).length;
@@ -2194,7 +2238,7 @@ def _heat_badge(w):
 
 WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
 WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
-SPOT_COUNT = 13  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 14 枚。WALL_JS が右の列の高さに収まる段数だけ出す。スマホは 6 枚まで
+SPOT_COUNT = 24  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 23 枚。列の数は幅しだい（1 列 220px 以上）、WALL_JS が画面の高さに収まる段数だけ出す。スマホは 6 枚まで
 
 
 def _day(story):
@@ -2226,7 +2270,7 @@ def _side(works, today, wishes=(), taste=()):
     """トップの右の列（PC だけ。スマホでは消す）：これからの予定（日付のある記事があるときだけ）と欲しい物リスト（2026-10-18 に話題度ランキングとあなたの好みは外した）。
     どちらもデータがなければ出さず、両方なければ列ごと消えて写真の壁が横いっぱいになる。"""
     out = []
-    ag = _agenda(works, today, 2)
+    ag = _agenda(works, today, 6)
     if ag:
         out.append(ag)
     want = [x for x in wishes if (x.get("status") or "想要") in ("想要", "纠结")]
@@ -2460,9 +2504,7 @@ NAV_STYLES = {
 .nav .nsec .tg{transform-origin:left center;transition:transform .18s cubic-bezier(.2,.9,.3,1),box-shadow .18s}
 .nav .nsec .tg{font-size:14px;padding:1px 12px}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
-.nav .nsec .cnt{grid-column:-2;white-space:nowrap;font:700 12px var(--font-mono);color:rgba(26,28,34,.62)}
-.nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--hair);position:relative}
-.nav .nsec .meter i{position:absolute;inset:0 auto 0 0;background:var(--sc)}
+.nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--sc)}   /* 板块の色の下線（新着の件数は出さない、2026-10-18） */
 .nav .nbody{position:absolute;left:0;right:0;top:52px}
 /* 上下級（案 A）：下級は上級の駅から出た枝線（拐角 └）の上の駅。大きさは普通の駅と同じ */
 .nav .pill.kid{padding-left:52px}
@@ -2483,20 +2525,18 @@ NAV_STYLES = {
 .nav .nlab{height:20px;display:flex;align-items:flex-end;gap:4px;padding:0 0 2px 6px;font:900 11px var(--font-sans);letter-spacing:.14em;color:var(--sc);
  transform:rotate(-2deg);transform-origin:left bottom}
 .nav .nlab::before{content:"／";font-weight:900}
-.nav .nlab b{margin-left:4px;font:14px/1 var(--font-num);letter-spacing:.02em;opacity:.8}
+.nav .nlab b{margin-left:4px;font:14px/1 var(--font-num);letter-spacing:.02em}
 .nav .nmore{display:flex;align-items:center;height:26px;padding:0 8px 0 34px;text-decoration:none}
 .nav .nmore{font:900 12px var(--font-sans);color:var(--sc);letter-spacing:.04em}
 .nav .nmore:hover{color:var(--alert)}
 /* ---------- P5 の手ざわり：揃えすぎない ----------
-   板块の行：日本語の札は少し傾け、後ろに英字（GAMES…）を大きな透かしで。件数の数字は Anton */
+   板块の行：日本語の札は少し傾け、右端に英字（GAMES…）を透かしで（新着の件数は 2026-10-18 にやめた） */
 .nav .nsec{position:relative;isolation:isolate}
 .nav .nsec .tg{font-size:15px;padding:1px 13px;transform:skewX(var(--skew)) rotate(-2deg);box-shadow:2px 2px 0 var(--ink)}
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) rotate(-3deg) scale(1.22);box-shadow:4px 4px 0 var(--ink)}
-.nav .nsec .en{position:absolute;right:46px;top:2px;z-index:-1;font:34px/1 var(--font-num);letter-spacing:.01em;color:var(--sc);opacity:.16;
+.nav .nsec .en{position:absolute;right:2px;top:5px;z-index:-1;font:28px/1 var(--font-num);letter-spacing:.01em;color:var(--sc);opacity:.16;
  transform:skewX(var(--skew)) rotate(-3deg);white-space:nowrap;pointer-events:none}
 .nav .nslot.cur .nsec .en{opacity:.26}
-.nav .nsec .cnt b{font:19px/1 var(--font-num);color:var(--ink);margin:0 1px}
-.nav .nslot.cur .nsec .cnt b{color:var(--sc)}
 /* 作品の行：名前を 1 行ごとに少しずつずらし・傾ける（線路の駅は揃えたまま）。+N は Anton */
 .nav .nbody .pill .nm{transform-origin:left center}
 .nav .nbody .pill:nth-of-type(3n+1) .nm{transform:rotate(-.9deg)}
@@ -2552,6 +2592,8 @@ def _flame_grad(n, color, mid, top_alpha):
             f'<stop offset="1" style="stop-color:var({color});stop-opacity:0"/></linearGradient>')
 
 
+# 目次のロゴの炎（と、ぶわっ・版面の火）は保留中（2026-10-18、PENDING.md）：True に戻せば全部また動く
+NAV_FLAME = False
 FLAME_SVG = (
     '<span class="flame" aria-hidden="true"><i class="glow"></i><svg viewBox="0 0 100 140"><defs>'
     '<filter id="navfl-f" x="-30%" y="-30%" width="160%" height="140%">'
@@ -2607,7 +2649,6 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
     for name in order:
         sc, ws = _sec_color(name), groups[name]
         icon = (f'<img class="si" src="{TWEMOJI.format(SECTION_ICON[name])}" alt="" loading="lazy">' if name in SECTION_ICON else "")
-        nn = sum(1 for w in ws if any(x["_issue"] >= cutoff for x in w["stories"]))
         tabs.append(f'<a class="tg" style="--sc:{sc}" data-sec="{e(name)}" href="#{_wid(ws[0]["name"])}"><span>{e(_sec_name(name))}</span></a>')
         # 上下級：上級が同じ板块にいる下級は、上級のすぐ下に並べる（小分類も上級に従う）
         names = {w["name"] for w in ws}
@@ -2636,13 +2677,13 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
         slots.append(f'<div class="nslot" style="--sc:{sc}" data-sec="{e(name)}">'
                      f'<a class="nsec" href="#{_wid(ws[0]["name"])}">{icon}<span class="tg"><span>{e(_sec_name(name))}</span></span>'
                      f'<span class="en" aria-hidden="true">{e(_sec_en(name))}</span>'
-                     f'<span class="cnt">新着 <b>{nn}</b>／{len(ws)}</span><span class="meter"><i style="width:{round(nn / len(ws) * 100)}%"></i></span></a>'
+                     f'<span class="meter"></span></a>'
                      f'<div class="nbody">{body}</div></div>')
     hide = "auto" if str(hide).lower() == "auto" else max(1, int(hide or NAV_HIDE))
     levels = json.dumps([[low, lab] for low, lab in heat.LEVELS], ensure_ascii=False)
     return (f'<nav class="nav" aria-label="目次" data-hide="{hide}" data-levels="{e(levels)}">'
             f'<div class="mtabs">{"".join(tabs)}</div>'
-            f'<a class="logo" href="#front" aria-label="トップへ">{FLAME_SVG}'
+            f'<a class="logo" href="#front" aria-label="トップへ">{FLAME_SVG if NAV_FLAME else ""}'
             f'<span class="wm"><b>TBD</b><small>ウォッチリスト通信</small></span>'
             f'<span class="hm" aria-live="polite"><b class="hv"></b><small class="hl"></small></span></a>'
             f'<div class="nhead">{"".join(head)}</div>'
@@ -2692,21 +2733,27 @@ FIT_JS = """
     const cards = [...w.querySelectorAll(':scope > .wc')];
     cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p) p.style.height = ''; });
     if (side) side.style.minHeight = '';
-    if (innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
-    // 「ほかの注目ニュース」全体を L 版面の高さ（760px）に収める：見出しの分を引いた高さが壁と右の列の上限
-    const target = Math.max(380, 760 - (document.querySelector('.spot > .sh')?.getBoundingClientRect().height || 56) - 44);
+    if (innerWidth <= 760) return;
+    // 2 列しか入らない幅（右の列が下に回る）では大きい 1 枚＋4 枚まで
+    if (getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) { cards.forEach((c, i) => { c.hidden = i >= 5; }); return; }
+    // 「ほかの注目ニュース」全体（見出し・棚の帯まで）を 1 画面に収める：画面の高さから見出しと棚の帯の分を引いたのが壁と右の列の上限
+    const hh = sel => document.querySelector(sel)?.getBoundingClientRect().height || 0;
+    const target = Math.max(520, innerHeight - (hh('.spot > .sh') || 56) - (hh('.spot > .shelfbox > summary') || 44) - 22 * 2 - 24);
     if (side) {
-      // 入りきらないときは欲しい物（3 件目以降）→ 予定（2 件目）→ 欲しい物（2 件目）の順に下から隠す
+      // 入りきらないときは欲しい物（3 件目以降）→ 予定（4 件目以降）→ 欲しい物（2 件目）→ 予定（2・3 件目）の順に下から隠す
       const rows = sel => [...side.querySelectorAll(sel)];
-      const order = [...rows('.swish li').slice(2).reverse(), ...rows('.agenda li').slice(1).reverse(), ...rows('.swish li').slice(1, 2)];
-      rows('.swish li, .agenda li').forEach(l => l.hidden = false);
+      const ag = rows('.agenda li'), wi = rows('.swish li');
+      const order = [...wi.slice(2).reverse(), ...ag.slice(3).reverse(), ...wi.slice(1, 2), ...ag.slice(1, 3).reverse()];
+      [...ag, ...wi].forEach(l => l.hidden = false);
       for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
     }
-    // 大きい 1 枚＋横の 2 枚で 2 段、そのあと 3 枚ずつ 1 段
+    // 大きい 1 枚（2 列 × 2 段）＋横の (列数 − 2) × 2 枚で 2 段、そのあと列数ずつ 1 段
+    const cols = getComputedStyle(w).gridTemplateColumns.split(' ').length;
+    const upto = r => 1 + (cols - 2) * 2 + (r - 2) * cols;
     let rows = 2;
-    const show = r => cards.forEach((c, i) => { c.hidden = i >= 3 + (r - 2) * 3; });
+    const show = r => cards.forEach((c, i) => { c.hidden = i >= upto(r); });
     show(rows);
-    while (3 + (rows - 1) * 3 <= cards.length) {
+    while (upto(rows + 1) <= cards.length) {
       show(rows + 1);
       if (w.getBoundingClientRect().height > target) { show(rows); break; }
       rows++;
@@ -2725,6 +2772,25 @@ FIT_JS = """
   wall();
   if (document.fonts) document.fonts.ready.then(wall);
   addEventListener('load', wall);
+  // 軽い吸着（PC だけ）：スクロールが止まったとき、版面などの上端が画面の上から 72px 以内なら、そこへそっと合わせる。
+  // それより離れていれば何もしない（CSS の scroll-snap は吸い付く範囲がブラウザまかせで強すぎるので使わない）
+  const SNAP = 72, snapAt = () => document.querySelectorAll('.front .poster, .spot, .picks, .sec');
+  let st, snapping = false;
+  const snap = () => {
+    if (snapping) { snapping = false; return; }
+    if (innerWidth <= 760 || document.querySelector('dialog[open]') || document.activeElement?.matches('input, textarea, select')) return;
+    let best = null;
+    for (const el of snapAt()) {
+      const d = el.getBoundingClientRect().top - (parseFloat(getComputedStyle(el).scrollMarginTop) || 16);
+      if (Math.abs(d) <= SNAP && (best === null || Math.abs(d) < Math.abs(best))) best = d;
+    }
+    if (best !== null && Math.abs(best) >= 2) {
+      snapping = true;
+      scrollBy({ top: best, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  };
+  if ('onscrollend' in window) addEventListener('scrollend', snap);
+  else addEventListener('scroll', () => { clearTimeout(st); st = setTimeout(snap, 160); }, { passive: true });
 })();
 """
 
@@ -3132,9 +3198,13 @@ NAV_JS = """
   document.addEventListener('visibilitychange', burnning);
   wide.addEventListener && wide.addEventListener('change', burnning);
   function flame(on) {
-    if (!fl) return;
     const own = on && on.dataset.heat != null ? +on.dataset.heat || 0 : null;
     const v = own == null ? maxHeat : own;
+    if (!fl) {   // 炎を出さないとき（NAV_FLAME）も、ロゴの右の点数と等級は入れる
+      if (logo) { logo.querySelector('.hv').textContent = v ? String(v) : '';
+        logo.querySelector('.hl').textContent = own == null ? (v ? '今日の最高' : '') : ((LV.find(l => v >= l[0]) || [0, ''])[1] || '話題度'); }
+      return;
+    }
     const to = own == null ? Math.min(.35, v / 100) : v / 100;
     const go = !FL.first && to - FL.target > .04 && FL.run, hv = logo.querySelector('.hv'), was = +hv.textContent || 0;
     const sec = on && on.getAttribute('href') && document.querySelector(on.getAttribute('href'));
