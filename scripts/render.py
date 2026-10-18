@@ -552,6 +552,7 @@ button{font-family:inherit}
 /* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
+.spot,.front .poster{scroll-margin-top:16px}
 .page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
 .issues{display:flex;flex-direction:column;gap:28px;min-width:0}
@@ -2776,6 +2777,25 @@ FIT_JS = """
   wall();
   if (document.fonts) document.fonts.ready.then(wall);
   addEventListener('load', wall);
+  // 軽い吸着（PC だけ）：スクロールが止まったとき、版面などの上端が画面の上から 72px 以内なら、そこへそっと合わせる。
+  // それより離れていれば何もしない（CSS の scroll-snap は吸い付く範囲がブラウザまかせで強すぎるので使わない）
+  const SNAP = 72, snapAt = () => document.querySelectorAll('.front .poster, .spot, .picks, .sec');
+  let st, snapping = false;
+  const snap = () => {
+    if (snapping) { snapping = false; return; }
+    if (innerWidth <= 760 || document.querySelector('dialog[open]') || document.activeElement?.matches('input, textarea, select')) return;
+    let best = null;
+    for (const el of snapAt()) {
+      const d = el.getBoundingClientRect().top - (parseFloat(getComputedStyle(el).scrollMarginTop) || 16);
+      if (Math.abs(d) <= SNAP && (best === null || Math.abs(d) < Math.abs(best))) best = d;
+    }
+    if (best !== null && Math.abs(best) >= 2) {
+      snapping = true;
+      scrollBy({ top: best, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  };
+  if ('onscrollend' in window) addEventListener('scrollend', snap);
+  else addEventListener('scroll', () => { clearTimeout(st); st = setTimeout(snap, 160); }, { passive: true });
 })();
 """
 
