@@ -429,6 +429,13 @@
   "target": 720,
   "v": 3
  },
+ "https://ceoscoredaily.com/photos/2026/10/13/2026101317023010291_l.jpg": {
+  "w": 640,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.355
+ },
  "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=3&simg=20261013233059065920cecffa93871223935165.jpg&nmt=19": {
   "w": 660,
   "h": 464,
@@ -1839,18 +1846,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00007763-tennisc-000-1-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3,
-  "local": "pics/330cd025a7b5ab9e.webp",
-  "out": [
-   1200,
-   800
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsimg.koreatimes.co.kr/2026/10/14/d9177408-f52d-48e1-afd1-af8bf9ae741b.jpg": {
   "w": 1920,
   "h": 1280,
@@ -1861,6 +1856,12 @@
   "w": 1199,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://pbs.twimg.com/media/HU3fjjzaoAAAado?format=webp&name=large": {
+  "w": 894,
+  "h": 554,
+  "target": 720,
   "v": 3
  },
  "https://pbs.twimg.com/media/HUpiWqqbcAAWzBh?format=webp&name=medium": {
@@ -2078,6 +2079,12 @@
  "https://s.yimg.com/lo/mysterio/api/ebecd513f2da7ef5149a1e0abf7afe2d9202782a525d9b505cd5883b896e0ee9/lightyear_networkapi/resizefill_w982_h655%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmotorbiscuit_articles_333%2Fda4757e30bbbbb7553fe03cebed7f252.jpg": {
   "w": 982,
   "h": 655,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
