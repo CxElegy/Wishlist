@@ -143,7 +143,7 @@ button{font-family:inherit}
  background:linear-gradient(90deg,var(--sc1,#00B4EE) 0 14%,var(--sc2,#FF3D8B) 14% 28%,var(--gold) 28% 42%,var(--ink) 42% 56%,var(--hacc,var(--rose)) 56% 70%,var(--deep,var(--ink)) 70% 84%,var(--card) 84%)}
 /* ---------- ほかの注目ニュース：写真の壁 ＋ ジャンルの棚 ---------- */
 .spot{display:flex;flex-direction:column;gap:22px}
-.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:start}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:22px;align-items:start}
 /* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
 .mgrid>.wall{align-content:start}
 .mgrid .wc{justify-content:flex-start}
@@ -154,6 +154,7 @@ button{font-family:inherit}
 .sbox h4 small{margin-left:auto;font:500 11px var(--font-sans)}
 .sbox h4 a:hover{color:var(--rose)}
 .swish ol,.shot ol{list-style:none;margin:0;padding:0}
+.swish li[hidden],.agenda li[hidden]{display:none}
 .swish li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--hair)}
 .wthumb{width:48px;height:48px;background:#FFF;border:1.5px solid var(--ink);display:grid;place-items:center;overflow:hidden}
 .wthumb img{width:90%;height:90%;object-fit:contain}
@@ -182,10 +183,16 @@ button{font-family:inherit}
 .fside .agenda{padding:12px 14px 8px}
 .fside .agenda ol{grid-template-columns:minmax(0,1fr)}
 .agenda li b small{display:block;font:700 11px var(--font-sans);color:var(--ink);opacity:.7}
-.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:22px;align-content:start}
+.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
 .wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
- padding:10px 12px 14px;transition:transform .12s,box-shadow .12s}
-.wc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+ padding:8px 10px 11px;transition:transform .12s,box-shadow .12s}
+.wc{transform:rotate(var(--r,0deg))}
+.wc:hover{transform:rotate(var(--r,0deg)) translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+/* P5 の手法：上下の端はそろえ、中のカードだけ 0.4〜1.2° ずつ不ぞろいに傾ける（同じ向きが続かない） */
+.mgrid .wc:nth-child(1){--r:-.6deg}.mgrid .wc:nth-child(2){--r:1.1deg}.mgrid .wc:nth-child(3){--r:-.8deg}
+.mgrid .wc:nth-child(4){--r:.5deg}.mgrid .wc:nth-child(5){--r:-1.2deg}.mgrid .wc:nth-child(6){--r:.9deg}
+.mgrid .wc:nth-child(7){--r:-.4deg}.mgrid .wc:nth-child(8){--r:1deg}.mgrid .wc:nth-child(9){--r:-.7deg}
+.fside .agenda{transform:rotate(.7deg)}.fside .swish{transform:rotate(-.9deg)}
 .wc.lead{grid-column:span 2;grid-row:span 2}
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
 .wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
@@ -193,8 +200,8 @@ button{font-family:inherit}
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
 .wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
-.wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.5em}  /* 3 行分：段のカードの高さがそろう */
-.wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
+.wc b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.35em}  /* 3 行分：段のカードの高さがそろう */
+.wc.lead b{font-size:20px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
 .wc:hover b{text-decoration:underline;text-underline-offset:3px}
 /* ジャンルの棚：ジャンルごとに看板、作品ごとに最新の 1 本をテープのように並べる（版面へのリンク） */
 /* 棚は既定でたたむ（トップが長くなりすぎないように）。1 行の帯を押すとひらく */
@@ -2186,7 +2193,7 @@ def _heat_badge(w):
 
 WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
 WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
-SPOT_COUNT = 15  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 14 枚。WALL_JS が右の列の高さに収まる段数だけ出す。スマホは 6 枚まで
+SPOT_COUNT = 13  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 14 枚。WALL_JS が右の列の高さに収まる段数だけ出す。スマホは 6 枚まで
 
 
 def _day(story):
@@ -2215,17 +2222,16 @@ def _poster_colors(story, themes):
 
 
 def _side(works, today, wishes=(), taste=()):
-    """トップの右の列（PC だけ。スマホでは消す）。上から：
-    これからの予定（日付のある記事があるときだけ）・欲しい物リスト・今週にぎやかな作品・投票から学んだあなたの好み。
-    どれもデータがなければ出さない。"""
+    """トップの右の列（PC だけ。スマホでは消す）：これからの予定（日付のある記事があるときだけ）と欲しい物リスト（2026-10-18 に話題度ランキングとあなたの好みは外した）。
+    どちらもデータがなければ出さず、両方なければ列ごと消えて写真の壁が横いっぱいになる。"""
     out = []
-    ag = _agenda(works, today, 4)
+    ag = _agenda(works, today, 2)
     if ag:
         out.append(ag)
     want = [x for x in wishes if (x.get("status") or "想要") in ("想要", "纠结")]
     if want:
         rows = []
-        for x in want[:4]:
+        for x in want[:7]:  # 入りきらない分は WALL_JS が下から隠す
             img = x.get("image") or ""
             if img and not img.startswith("http"):
                 img = "wishlist/" + img
@@ -2241,25 +2247,6 @@ def _side(works, today, wishes=(), taste=()):
         out.append(f'<div class="sbox swish"><h4><a href="wishlist.html">欲しい物リスト</a><small>{len(want)} 件</small></h4><ol>{"".join(rows)}</ol>'
                    f'<p class="stot"><span>欲しいものの合計</span><b>{e(total)}</b></p>'
                    f'<a class="smore" href="wishlist.html">♥ 全部見る</a></div>')
-    hot = sorted((w for w in works if (w.get("_heat") or {}).get("score")), key=lambda w: -w["_heat"]["score"])[:6]
-    if hot:
-        rows = []
-        for w in hot:
-            h = w["_heat"]
-            cls, arrow, why = _trend(h.get("delta"))
-            top = next((d for d in h.get("dims") or [] if d["key"] == h.get("top")), None)
-            tip = f'{h["label"]} · {why}' + (f' · いちばん効いている：{top["name"]}（{top["note"]}）' if top else "")
-            rows.append(f'<li style="--sc:{_sec_color(w.get("section"))};--v:{h["score"] / 100:.3f}"><a href="#{_wid(w["name"])}" title="{e(tip)}">'
-                        f'<span class="bn">{e(w["name"])}{"<em>急上昇</em>" if h.get("rising") else ""}</span>'
-                        f'<span class="bar"></span><b>{h["score"]}</b>'
-                        f'<i class="{cls}"{f' aria-label="{e(why)}"' if arrow else ' aria-hidden="true"'}>{arrow}</i></a></li>')
-        out.append(f'<div class="sbox shot"><h4><a href="heat.html">話題度ランキング</a><small>100 点満点</small></h4><ol>{"".join(rows)}</ol>'
-                   f'<p class="snote">報道量・広がり・出来事・勢い・Wikipedia・ファンの反応から計算。各作品の見出しの数字を押すと内訳</p>'
-                   f'<a class="smore" href="heat.html">詳しい分析 →</a></div>')
-    if taste:
-        chips = "".join(f'<li><span>{e(k.removeprefix(WORK_KEY))}</span><b>+{v}</b></li>' for k, v in taste[:8])
-        out.append(f'<div class="sbox staste"><h4>あなたの好み<small>👍 から学習</small></h4><ul>{chips}</ul>'
-                   f'<p>「気になるかも？」はこの順に選んでいます</p></div>')
     return f'<aside class="fside">{"".join(out)}</aside>' if out else ""
 
 
@@ -2703,8 +2690,17 @@ FIT_JS = """
     if (!w) return;
     const cards = [...w.querySelectorAll(':scope > .wc')];
     cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p) p.style.height = ''; });
-    if (!side || innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
-    const target = side.getBoundingClientRect().height;
+    if (side) side.style.minHeight = '';
+    if (innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
+    // 「ほかの注目ニュース」全体を L 版面の高さ（760px）に収める：見出しの分を引いた高さが壁と右の列の上限
+    const target = Math.max(380, 760 - (document.querySelector('.spot > .sh')?.getBoundingClientRect().height || 56) - 44);
+    if (side) {
+      // 入りきらないときは欲しい物（3 件目以降）→ 予定（2 件目）→ 欲しい物（2 件目）の順に下から隠す
+      const rows = sel => [...side.querySelectorAll(sel)];
+      const order = [...rows('.swish li').slice(2).reverse(), ...rows('.agenda li').slice(1).reverse(), ...rows('.swish li').slice(1, 2)];
+      rows('.swish li, .agenda li').forEach(l => l.hidden = false);
+      for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
+    }
     // 大きい 1 枚＋横の 2 枚で 2 段、そのあと 3 枚ずつ 1 段
     let rows = 2;
     const show = r => cards.forEach((c, i) => { c.hidden = i >= 3 + (r - 2) * 3; });
@@ -2714,7 +2710,10 @@ FIT_JS = """
       if (w.getBoundingClientRect().height > target) { show(rows); break; }
       rows++;
     }
-    const gap = target - w.getBoundingClientRect().height;
+    // 左の壁と右の列の上端・下端をそろえる：高いほうに合わせ、壁は各段の写真枠に等分して足し、右の列は最後の箱が伸びる
+    const H = Math.max(w.getBoundingClientRect().height, side ? side.getBoundingClientRect().height : 0);
+    if (side) side.style.minHeight = H + 'px';
+    const gap = H - w.getBoundingClientRect().height;
     if (gap > 0) {
       const add = gap / rows;
       cards.filter(c => !c.hidden && !c.classList.contains('lead')).forEach(c => {
@@ -3201,7 +3200,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
             + _front(works, latest["date"], updated, themes, wishes, taste) + _picks(picks, works, fb)
             + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
     parts = [body]
-    return f"""<!doctype html>
+    return _board_marks(f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -3233,7 +3232,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 {_busy_tag(busy, generated)}
 </body>
 </html>
-"""
+""", updated)
 
 
 # ---------- 自動更新：開いたままのページに新しい内容を出す（簡報・管理ページ）----------
@@ -3255,6 +3254,8 @@ LIVE_CSS = """
 .wl-live button{flex:none;border:0;cursor:pointer;background:var(--gold);color:var(--ink);padding:4px 12px;font:700 13px/1.4 var(--font-sans)}
 .wl-live .x{background:none;color:var(--card);padding:4px 6px}
 .fresh{outline:3px solid var(--gold);outline-offset:3px}
+.wl-live .wl-to{color:var(--gold);text-decoration:underline;text-underline-offset:3px;font-weight:900}
+.wl-live span{min-width:0}
 .fresh-tag{position:absolute;top:6px;right:6px;z-index:6;background:var(--alert);color:#FFF;padding:1px 9px;transform:skewX(var(--skew));
  box-shadow:2px 2px 0 var(--ink);font:900 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.08em;pointer-events:none}
 section.fresh{position:relative}
@@ -3270,8 +3271,10 @@ LIVE_JS = """
           set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
   var touched=Date.now(),pending=null,bar=null;
   ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
-  var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'有 %n 条新内容',m:'%n 处有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新'}
-    :{n:'新しい記事が %n 件 届きました',m:'%n か所が新しくなりました',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新'};
+  var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'新增 %n 条',m:'有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新',more:'等 %n 处',sep:'：'}
+    :{n:'新着 %n 件',m:'更新',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新',more:'ほか %n か所',sep:'：'};
+  // 版面・パネルの名前（data-k か見出し）。ここでの id は section の id
+  function label(s){var k=s.getAttribute('data-k');if(k)return {front:'トップ',picks:'気になるかも？',wishlist:'愿望清单'}[k]||k;var h=s.querySelector('.sh>span');return h?h.textContent:s.id;}
   function art(a){return a.closest('article');}
   function keyed(){var l=[];Array.prototype.forEach.call(document.querySelectorAll('article a.lk[href]'),function(a){l.push([a.getAttribute('href'),art(a)]);});
     Array.prototype.forEach.call(document.querySelectorAll('article[data-key]'),function(c){l.push(['k:'+c.getAttribute('data-key'),c]);});return l;}
@@ -3281,11 +3284,15 @@ LIVE_JS = """
   document.addEventListener('visibilitychange',function(){if(!document.hidden)badge(0);});
   function marks(){var o={};Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){o[s.id]=s.getAttribute('data-h');});return o;}
   function anchor(){var l=document.querySelectorAll('section[id]');for(var i=0;i<l.length;i++){var r=l[i].getBoundingClientRect();if(r.bottom>0)return [l[i].id,r.top];}return null;}
-  function toast(msg,act){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
-    bar.textContent='';var t=document.createElement('span');t.textContent=msg;bar.appendChild(t);
+  // items = [[名前, 詳しい言葉, セクションの id]]：名前をクリックするとその版面へ飛ぶ
+  function toast(msg,act,items){if(!bar){bar=document.createElement('div');bar.className='wl-live';bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');document.body.appendChild(bar);}
+    bar.textContent='';var t=document.createElement('span');t.appendChild(document.createTextNode(msg));
+    (items||[]).forEach(function(it,i){t.appendChild(document.createTextNode(i?'、':T.sep));var a=document.createElement('a');a.href='#'+it[2];a.textContent=it[0];a.className='wl-to';t.appendChild(a);
+      if(it[1])t.appendChild(document.createTextNode(' '+it[1]));});
+    bar.appendChild(t);
     if(act){var b=document.createElement('button');b.type='button';b.textContent=T.b;b.onclick=go;bar.appendChild(b);}
     var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label',T.x);x.onclick=function(){bar.hidden=true;};bar.appendChild(x);
-    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},8000);}
+    bar.hidden=false;clearTimeout(bar._t);if(!act)bar._t=setTimeout(function(){bar.hidden=true;},16000);}
   // 読み直したあと：見ていた場所に戻し、増えた記事・変わったパネルに印を付ける
   var was=ss.get(KEY);ss.del(KEY);
   if(location.search.indexOf('wlv=')>=0&&history.replaceState)history.replaceState(null,'',location.pathname+location.hash);
@@ -3296,14 +3303,19 @@ LIVE_JS = """
     function back(){var s=was.at&&document.getElementById(was.at[0]);if(s)to(s.getBoundingClientRect().top+pageYOffset-was.at[1]);else if(was.y)to(was.y);}
     if('scrollRestoration' in history)history.scrollRestoration='manual';
     back();addEventListener('load',back);
-    var n=0;
+    var n=0,by={},order=[];   // by[版面の id] = 新しい記事の数
     keyed().forEach(function(x){var c=x[1];if(was.keys&&!was.keys[x[0]]&&c&&!c.classList.contains('fresh')){
-      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;}});
-    var m=0;
+      c.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.tag;c.appendChild(t);n++;
+      var sec=c.closest('section[id]');if(sec){if(!by[sec.id]){by[sec.id]=0;order.push(sec);}by[sec.id]++;}}});
+    var other=[];   // 新しい記事はないが中身が変わった版面・パネル（話題度・小元素・順位など）
     if(was.marks)Array.prototype.forEach.call(document.querySelectorAll('section[id][data-h]'),function(s){var h=was.marks[s.id];
-      if(h&&h!==s.getAttribute('data-h')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);m++;}});
-    toast(n?T.n.replace('%n',n):m?T.m.replace('%n',m):T.s);
-    if(document.hidden)badge(n||m);
+      if(h&&h!==s.getAttribute('data-h')){if(!by[s.id]){other.push(s);}
+        if(s.classList.contains('panel')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);}}});
+    var items=order.map(function(s){return [label(s),T.n.replace('%n',by[s.id]),s.id];}).concat(other.map(function(s){return [label(s),T.m,s.id];}));
+    var shown=items.slice(0,4),rest=items.length-shown.length;
+    toast(items.length?(n?(ZH?'有新内容':'更新しました'):(ZH?'有更新':'更新しました')):T.s,false,shown);
+    if(rest>0){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',rest);bar.firstChild.appendChild(r);}
+    if(document.hidden)badge(n||other.length);
   }
   // 待つとき：ダイアログを開いている・入力欄にいる・書きかけ／選んだファイルがある（読み直すと消えてしまう）
   function dirty(){return Array.prototype.some.call(document.querySelectorAll('input,textarea'),function(i){
@@ -3314,7 +3326,12 @@ LIVE_JS = """
   function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
       var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
-      if(pending!==v){pending=v;toast(T.p,true);}maybe();}).catch(function(){});}
+      if(pending!==v){pending=v;
+        // version.json の <ページ>_marks と自分の data-h を見比べて、どの版面が変わったかを先に言う
+        var mk=j[PAGE+'_marks']||{},mine=marks(),ch=[];Object.keys(mk).forEach(function(id){if(mine[id]&&mine[id]!==mk[id][1])ch.push([mk[id][0],'',id]);});
+        var sh=ch.slice(0,3);toast(T.p,true,sh);
+        if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}
+      maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
   setTimeout(check,3000);
@@ -3415,6 +3432,41 @@ def _section_marks(html_, updated=""):
             part = f'<section class="panel{m.group(1)}" id="{m.group(2)}" data-h="{h}">' + part[m.end():]
         out.append(part)
     return "".join(out)
+
+
+BOARD_LABEL = {"front": "トップ", "picks": "気になるかも？", "wishlist": "愿望清单"}
+
+
+def _board_marks(html_, updated=""):
+    """簡報の各版面・トップ・気になるかも（data-k を持つ <section>）に data-h（中身の指紋）を付ける。
+    開いたままのページが「どの版面が変わったか」を読み直す前から言えるように（version.json の *_marks と見比べる）。"""
+    parts = re.split(r'(?=<section\b[^>]*\bdata-k=")', html_)
+    out = []
+    for part in parts:
+        m = re.match(r'<section\b[^>]*\bdata-k="', part)
+        if m and 'id="' in part[:part.index(">")]:
+            h = hashlib.sha1((part.replace(updated, "") if updated else part).encode("utf-8")).hexdigest()[:8]
+            part = f'<section data-h="{h}"' + part[len("<section"):]
+        out.append(part)
+    return "".join(out)
+
+
+def page_marks(html_):
+    """生成した HTML の {版面・パネルの id: [表示名, 指紋]}。docs/version.json の <ページ>_marks に入れる。
+    ページ側（LIVE_JS）は、自分の data-h と見比べて「どの版面が変わったか」を新着の通知に出す。"""
+    out = {}
+    for m in re.finditer(r'<section\b([^>]*)>', html_):
+        attrs = m.group(1)
+        i, h = re.search(r'\bid="([^"]+)"', attrs), re.search(r'\bdata-h="(\w+)"', attrs)
+        if not (i and h):
+            continue
+        k = re.search(r'\bdata-k="([^"]*)"', attrs)
+        name = BOARD_LABEL.get(k.group(1)) if k and k.group(1) in BOARD_LABEL else (html.unescape(k.group(1)) if k else None)
+        if not name:  # 管理ページのパネル：見出しの文字
+            t = re.search(r'<h2 class="sh"><span>([^<]+)</span>', html_[m.end():m.end() + 400])
+            name = html.unescape(t.group(1)) if t else i.group(1)
+        out[i.group(1)] = [name, h.group(1)]
+    return out
 
 
 # ---------- 話題度の分析ページ（docs/heat.html）----------

@@ -141,10 +141,8 @@ class FrontSide(unittest.TestCase):
         self.assertIn("欲しい物リスト", out)
         self.assertIn('src="wishlist/mug.jpg"', out)
         self.assertNotIn("済み", out)                       # 入手済みは出さない
-        self.assertIn("話題度ランキング", out)
-        self.assertIn("<em>急上昇</em>", out)
-        self.assertIn("報道量（7 日で 9 件）", out)            # いちばん効いている指標を title に
-        self.assertIn("<span>A</span><b>+3</b>", out)      # 作品: の接頭辞は外す
+        self.assertNotIn("話題度ランキング", out)           # 2026-10-18：右の列は予定と欲しい物だけ
+        self.assertNotIn("あなたの好み", out)
         self.assertNotIn("これからの予定", out)             # 日付のある記事がなければ出さない
         self.assertEqual(render._side([], "2026-10-16"), "")
 
@@ -215,7 +213,6 @@ class HeatPage(unittest.TestCase):
     def test_entry_links_from_front_page(self):
         works = [{"name": "A", "section": "游戏", "stories": [],
                   "_heat": {"score": 50, "label": "話題", "delta": None, "top": "", "dims": []}}]
-        self.assertIn('href="heat.html"', render._side(works, "2026-10-16"))
         block = {"name": "A", "theme": dict(theme.DEFAULT), "_today": "2026-10-16", "stories": [], **works[0]}
         self.assertIn('href="heat.html#h-' + render._wid("A") + '"', render._section(block, "w"))
 
@@ -427,3 +424,16 @@ class NavParents(unittest.TestCase):
         works = render._dedupe_parents(ws, parents)                  # 同じニュースは下級だけに
         self.assertEqual([x["url"] for x in works[0]["stories"]], ["a"])
         self.assertEqual([x["url"] for x in works[2]["stories"]], ["b"])
+
+    def test_board_marks_name_what_changed(self):
+        """通知に「どの版面が変わったか」を出すための指紋：版面ごとに data-h、version.json 用の page_marks。"""
+        a = '<section id="w-1" data-k="GTA 6" class="sec">x 10.18 09:00</section><section class="front" data-k="front" id="front">f</section>'
+        m1 = render._board_marks(a, "10.18 09:00")
+        m2 = render._board_marks(a.replace("x 10.18", "y 10.18"), "10.18 09:00")
+        marks1, marks2 = render.page_marks(m1), render.page_marks(m2)
+        self.assertEqual(marks1["front"][0], "トップ")                   # 名前は日本語に
+        self.assertEqual(marks1["w-1"][0], "GTA 6")
+        self.assertEqual(marks1["front"][1], marks2["front"][1])        # 変わっていない版面は同じ指紋
+        self.assertNotEqual(marks1["w-1"][1], marks2["w-1"][1])         # 中身が変わった版面だけ違う
+        self.assertIn("_marks", render.LIVE_JS)                          # 読み直す前にも名前を出す
+        self.assertIn("wl-to", render.LIVE_JS)                           # 名前から版面へ飛べる
