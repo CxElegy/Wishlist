@@ -1690,7 +1690,9 @@ def render_settings(items, db, updated, schemes=()):
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     rows = []
     for name in order:
-        rows.append(f'<h2 style="--sc:{_sec_color(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small></h2>')
+        rows.append(f'<h2 style="--sc:{_sec_color(name)}" data-sec="{e(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small>'
+                    f'<button type="button" class="secdel" aria-label="删除板块 {e(_sec_name(name))} 里的全部关注项">删除这个板块</button>'
+                    f'<span class="st" aria-live="polite"></span></h2>')
         for it in groups[name]:
             sub = f'<small>{e(it["subtitle"])}</small>' if it.get("subtitle") else ""
             also = (it.get("fields") or {}).get("also") or {}
@@ -1701,6 +1703,7 @@ def render_settings(items, db, updated, schemes=()):
             rows.append(f'<div class="row" data-item="{e(it["name"])}"><div class="nm"><b>{e(it["name"])}</b>{sub}</div>'
                         f'<div class="seg" role="group" aria-label="{e(it["name"])} 的篇幅">{btns}</div>'
                         f'<button type="button" class="edit" aria-label="修改 {e(it["name"])}">改</button>'
+                        f'<button type="button" class="del" aria-label="删除 {e(it["name"])}">删</button>'
                         f'<span class="st" aria-live="polite"></span></div>')
     data = {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
             "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": taxonomy.for_page(),
@@ -1736,6 +1739,11 @@ def render_settings(items, db, updated, schemes=()):
 .row .edit{{height:36px;padding:0 12px;border:2px solid #1A1C22;background:transparent;color:#1A1C22;
  font:900 14px 'Noto Sans SC',sans-serif;cursor:pointer}}
 .row .edit:hover{{background:#1A1C22;color:#F4EDE4}}
+.row .del{{height:36px;padding:0 10px;border:2px solid #B8336A;background:transparent;color:#B8336A;font:900 14px 'Noto Sans SC',sans-serif;cursor:pointer}}
+.row .del:hover,.secdel:hover{{background:#B8336A;color:#FBF8F1}}
+.secdel{{margin-left:auto;height:28px;padding:0 10px;border:1.5px solid #B8336A;background:transparent;color:#B8336A;font:700 12px 'Noto Sans SC',sans-serif;cursor:pointer}}
+.row.gone .nm{{text-decoration:line-through;opacity:.5}}
+.row .del:focus-visible,.secdel:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
 .seg button:focus-visible,.row .edit:focus-visible{{outline:2px solid #B8336A;outline-offset:2px}}
 .seg button:disabled{{cursor:wait;opacity:.6}}
 .st{{width:64px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.05em;text-align:right}}
@@ -1864,7 +1872,36 @@ def render_settings(items, db, updated, schemes=()):
     }} catch (_) {{ if (before) pick(row, before); say(row, "连不上", "err"); }}
     btns.forEach(b => b.disabled = false);
   }});
+  // 删除：关注项 1 个（删）／板块里的全部（删除这个板块）。数据库只收「修改」请求，所以写成 edit + {{_delete: true}}，
+  // 下次处理请求时从 items.yaml 删掉（下级去掉 parent 留下，digest.delete_item）。板块是事先定好的，没有关注项就不显示
+  const delItem = name => rpc("submit_item", {{p_action: "edit", p_name: name, p_config: {{_delete: true}}}});
+  const gone = row => {{ row.classList.add("gone"); row.querySelectorAll("button").forEach(b => b.disabled = true); }};
   document.querySelector(".cfg").addEventListener("click", async ev => {{
+    const del = ev.target.closest(".del"), secdel = ev.target.closest(".secdel");
+    if (del) {{
+      const row = del.closest(".row"), name = row.dataset.item;
+      const kids = CFG.items.filter(i => i.parent === name).map(i => `「${{i.name}}」`).join("");
+      if (!confirm(`删除「${{name}}」？\\n版面和设置都会删掉（下次更新时，通常几分钟）。` + (kids ? `\\n下级 ${{kids}} 会留下，变成单独的版面。` : ""))) return;
+      say(row, "提交中…");
+      try {{ const r = await delItem(name); if (r.ok) {{ gone(row); say(row, "已提交删除 ✓", "ok"); }} else say(row, "没提交上", "err"); }}
+      catch (_) {{ say(row, "连不上", "err"); }}
+      return;
+    }}
+    if (secdel) {{
+      const h2 = secdel.closest("h2"), rows = [];
+      for (let el = h2.nextElementSibling; el && el.classList.contains("row"); el = el.nextElementSibling) if (!el.classList.contains("gone")) rows.push(el);
+      if (!rows.length) return;
+      const names = rows.map(r => r.dataset.item);
+      if (!confirm(`删除「${{h2.firstChild.textContent}}」板块里的 ${{names.length}} 个关注项？\\n${{names.map(n => `・${{n}}`).join("\\n")}}\\n\\n版面和设置都会删掉（下次更新时）。`)) return;
+      say(h2, "提交中…");
+      let ok = 0;
+      for (const row of rows) {{
+        try {{ const r = await delItem(row.dataset.item); if (r.ok) {{ ok++; gone(row); say(row, "已提交删除 ✓", "ok"); }} else say(row, "没提交上", "err"); }}
+        catch (_) {{ say(row, "连不上", "err"); }}
+      }}
+      say(h2, ok === rows.length ? `已提交删除 ${{ok}} 项 ✓` : `提交了 ${{ok}} / ${{rows.length}} 项`, ok === rows.length ? "ok" : "err");
+      return;
+    }}
     const edit = ev.target.closest(".edit");
     if (edit) {{ window.wlEditItem && window.wlEditItem(edit.closest(".row").dataset.item); return; }}
     const btn = ev.target.closest(".seg button");

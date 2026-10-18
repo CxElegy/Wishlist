@@ -79,6 +79,24 @@ class TakeItemRequests(unittest.TestCase):
         settings, items = digest.load_config()
         self.assertEqual({i["name"]: digest.section_of(i) for i in items}["FROM 映像"], "影视")
 
+    def test_delete_removes_block_and_unparents_children(self):
+        """設定ページの「删」：edit + {_delete: true}。その 1 段だけ消え、下級は parent を外して残る。"""
+        self.run_with({"action": "add", "name": "FROM 映像", "config": {"type": "show", "parent": "FROM"}})
+        self.calls = []
+        patched = self.run_with({"action": "edit", "name": "FROM", "config": {"_delete": True}},
+                                {"action": "edit", "name": "没有这个", "config": {"_delete": True}})
+        got = self.items()
+        self.assertEqual(set(got), {"ILLIT", "FROM 映像"})
+        self.assertNotIn("parent", got["FROM 映像"])
+        self.assertTrue(self.file.read_text(encoding="utf-8").startswith("# 注释要留着"))
+        self.assertEqual(patched["item_requests?id=in.(1)"]["status"], "done")
+        self.assertIn("没有", patched["item_requests?id=eq.2"]["note"])
+
+    def test_deleted_item_leaves_the_page_at_once(self):
+        issues = [{"date": "2026-10-18", "items": [{"name": "FROM", "section": "影视"}, {"name": "消えた", "section": "好物"}]}]
+        out = digest.with_manual_themes(issues, [{"name": "FROM", "type": "show"}])
+        self.assertEqual([b["name"] for b in out[0]["items"]], ["FROM"])
+
     def test_add_appends_and_keeps_everything_else(self):
         patched = self.run_with({"action": "add", "name": "鬼灭之刃", "config": {
             "type": "anime", "section": "影视", "size": "L", "keywords": ["鬼灭之刃", "鬼滅の刃", 'Demon "Slayer"'],
