@@ -580,7 +580,8 @@ button{font-family:inherit}
  margin-bottom:calc(var(--bz) * (var(--bf) - 1));  /* 足の裏より下（尻尾・武器・裾）は帯の下へ。高さは --bmax まで（測り違いで巨大にならない） */
  margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
 .emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
-.emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
+.emb img.logo{height:62%;max-width:150px}.emb img.logo.wide{height:auto;width:220px;max-width:220px;margin-bottom:12%}  /* 横長の文字のロゴは幅で大きく */
+.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:var(--card);padding:6px}  /* 横長・縦長すぎる画像は切らずに全体 */
@@ -594,7 +595,7 @@ button{font-family:inherit}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
+@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}}
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
 .boom{position:fixed;z-index:60;width:0;height:0;pointer-events:none}
 .boom>svg{position:absolute;left:0;top:0;width:110px;height:110px;fill:var(--c);stroke:var(--card);stroke-width:1.8;stroke-linejoin:round;
@@ -937,7 +938,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.18 08:47</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.18 09:00</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>

@@ -36,20 +36,28 @@ class Rules(unittest.TestCase):
         self.assertEqual(ef.rule({"type": "event", "emblem_kind": "person"})[1:], (3, 6, 10))
         self.assertEqual(ef.rule({"type": "category", "emblem_kind": "brand"})[1:], (1, 1, 1))
         self.assertEqual(ef.rule({"type": "category"})[1:], (2, 3, 5))
-        # グループはメンバー全員（天井 20）
+        # グループはメンバー全員（天井 50）
         nine = {"type": "event", "emblem_kind": "group", "emblem_who": [f"m{i}" for i in range(9)]}
         self.assertEqual(ef.rule(nine)[2:], (9, 9))
         many = {**nine, "emblem_who": [f"m{i}" for i in range(24)]}
-        self.assertEqual(ef.rule(many)[2:], (20, 20))
+        self.assertEqual(ef.rule(many)[2:], (24, 24))
         # 名前を挙げたキャラはその全員が目標（2 人の作品は 2 枚で足りる、上限も 2）
         two = {"type": "game", "emblem_who": ["a", "b"]}
         self.assertEqual(ef.rule(two)[1:], (2, 2, 2))
 
     def test_cap_follows_main_elements(self):
-        # 上限は内容の主要な要素の数：キャラ 60 人のゲームは天井の 20、目標は名前を挙げた人数まで
+        # 上限は内容の主要な要素の数：キャラ 60 人のゲームは 60 枚（用户定的）、目標は名前を挙げた人数まで
         game = {"type": "game", "emblem_pool": 60, "emblem_who": [f"c{i}" for i in range(14)]}
-        self.assertEqual(ef.rule(game)[2:], (14, 20))
-        self.assertEqual(ef.rule({**game, "emblem_who": [f"c{i}" for i in range(30)]})[2:], (20, 20))
+        self.assertEqual(ef.rule(game)[2:], (14, 60))
+        self.assertEqual(ef.rule({**game, "emblem_who": [f"c{i}" for i in range(60)]})[2:], (60, 60))
+
+    def test_subjects_step_by_step(self):
+        # 主要な要素が多いときは、まだいない人から STEP 人ずつ（いる人は集め直さない）
+        who = [f"c{i}" for i in range(60)]
+        item = {"type": "game", "emblem_pool": 60, "emblem_who": who, "emblem": [{"subject": f"c{i}"} for i in range(20)]}
+        got = ef.subjects(item, "character", 60)
+        self.assertEqual(len(got), ef.STEP)
+        self.assertTrue(all(int(x[1:]) >= 20 for x in got))
         # 主役が 4 人の作品は 4 枚、要素の数がわからない作品は既定（6、最大 10）
         self.assertEqual(ef.rule({"type": "anime", "emblem_pool": 4})[2:], (4, 4))
         self.assertEqual(ef.rule({"type": "anime"})[1:], (3, 6, 10))
@@ -1036,6 +1044,23 @@ class Framing(unittest.TestCase):
         self.assertEqual(out.getpixel((out.size[0] // 2, out.size[1] // 2))[3], 255)   # 楕円の中の白はロゴの一部なので残る
         self.assertTrue(emblem.is_logo({"subject": "gelato pique のロゴ"}))
         self.assertTrue(emblem.is_logo({"subject": "x"}, kind="brand"))
+
+    def test_title_logo_not_card(self):
+        import emblem, io, tempfile, pathlib, render
+        from unittest import mock
+        from PIL import Image, ImageDraw
+        logo = Image.new("RGB", (400, 100), "white")
+        ImageDraw.Draw(logo).rectangle((40, 30, 360, 70), fill="black")   # 白い地に横長の字
+        photo = Image.effect_noise((300, 300), 60).convert("RGB")           # 縁まで絵がある写真
+        def png(im):
+            b = io.BytesIO(); im.save(b, "PNG"); return b.getvalue()
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(emblem, "EMB_DIR", pathlib.Path(d)):
+            with mock.patch.object(emblem, "_get", return_value=png(logo)):
+                path, ar = emblem.wordmark_local("https://x/logo.png", "t")
+            with mock.patch.object(emblem, "_get", return_value=png(photo)):
+                self.assertIsNone(emblem.wordmark_local("https://x/p.png", "p"))
+        self.assertLess(ar, render.WIDE_LOGO)
+        self.assertIn('class="logo wide"', render._emblem_img({"src": "emblems/t.webp", "shape": "logo", "ar": ar}))
 
     def test_card_crops_only_close_ratio(self):
         import render

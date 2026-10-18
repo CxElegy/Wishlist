@@ -534,6 +534,29 @@ def logo_local(url, slug):
     return f"emblems/{slug}.webp"
 
 
+def wordmark_local(url, slug):
+    """作品の主な画像がタイトルロゴ（文字だけ・地が透明か一色）なら、地を抜いて倉庫に置く → (相対パス, 高さ÷幅)。写真・ポスターなら None。
+    カードに入れると白い板の中に小さな字が浮くだけ（The Mandalorian）なので、ロゴとして字そのものを大きく貼る。"""
+    from PIL import Image
+    src = Image.open(io.BytesIO(_get(url))).convert("RGBA")
+    a = src.getchannel("A")
+    w, h = src.size
+    edge = [a.getpixel((x, y)) for x in range(0, w, max(1, w // 60)) for y in (0, h - 1)] + \
+           [a.getpixel((x, y)) for y in range(0, h, max(1, h // 60)) for x in (0, w - 1)]
+    img = clear_flat_bg(src)
+    if sum(v < 16 for v in edge) / len(edge) < WORDMARK_EDGE and img is src:   # 縁が透明でも一色の地でもない = 写真・ポスター
+        return None
+    box = a.getbbox() or (0, 0, w, h)
+    img = img.crop(box)
+    img.thumbnail((520, 520))
+    EMB_DIR.mkdir(parents=True, exist_ok=True)
+    img.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=90, method=6)
+    return f"emblems/{slug}.webp", round(img.size[1] / img.size[0], 3)
+
+
+WORDMARK_EDGE = 0.6   # 縁のこの割合以上が透明（か縁が一色の地）= タイトルロゴ（文字だけ）。写真・ポスターは縁まで絵がある
+
+
 # 切り抜きの検査（check_whole）の数。判断の一覧（emblem_rules.py）もここを読む
 PART_KEEP = 0.15   # いちばん大きいまとまりのこの割合以上の離れた部分（手・持ち物）は残す
 SIDE_ZONE = 0.65   # 左右の端は上のこの割合だけ見る（下は胸像の肩なので当たってよい）
@@ -768,6 +791,14 @@ def fit_all(name, drawn=False):
                 x["ar"] = round(bh / bw, 3)
             except Exception:
                 pass
+        if x.get("work") and x.get("shape") == "badge" and str(x.get("image", "")).startswith("http"):
+            try:   # 作品の主な画像がタイトルロゴなら、カードでなくロゴとして字を大きく
+                got = wordmark_local(x["image"], slugify(name, x["subject"]))
+                if got:
+                    x.update(source=x["image"], image=got[0], shape="logo", ar=got[1])
+                    print(f"  {x['subject']}：タイトルロゴ → 地を抜いてロゴとして", file=sys.stderr)
+            except Exception as e:
+                print(f"  [ロゴ] {x['subject']}：{e}", file=sys.stderr)
         if x.get("shape") in ("logo", "icon") or x.get("work"):
             continue
         try:

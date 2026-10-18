@@ -97,6 +97,9 @@ def rules():
         {"stage": STAGES[6], "title": "全身で測ってから上半身に切る", "by": "rule", "code": "emblem.bust_from_body（BUST_CUT）",
          "rule": f"全身のままだと小さく貼ったとき顔が見えない。目・足の裏（全身で測った目印）で、目から足の裏の {emblem.BUST_CUT:.0%} の高さ（腰のあたり）で切る。"
                  "網页は目から足の裏（画像の外）を同じ長さにそろえるので、どのキャラも体の同じところで切れて同じ大きさ、ほかの胸像とも顔の大きさが合う"},
+        {"stage": STAGES[6], "title": "タイトルロゴはカードにしない", "by": "rule", "code": "emblem.wordmark_local（WORDMARK_EDGE）/ render.WIDE_LOGO",
+         "rule": f"作品の主な画像の縁が透明か一色の地（文字だけのタイトルロゴ：The Mandalorian）なら、地を抜いてロゴとして貼る（カードの白い板に小さな字が浮かない）。"
+                 f"高さ÷幅が {0.5} 未満の横長は、高さでなく幅で大きく（220px・スマホ 130px）。縁まで絵がある写真・ポスターは今まで通りカード"},
         {"stage": STAGES[6], "title": "上半身に切るのはふつうの体つきだけ", "by": "model", "code": "emblem.real_body（YOLOv8m-pose・HIP_MAX）",
          "rule": f"姿勢モデルで腰の高さを測り、頭のてっぺん〜足の裏の {emblem.HIP_MAX:.0%} より上ならふつうの人の体つき（実測 43〜52%）→ 上半身に切る。"
                  f"下なら頭の大きい体つき（3D のデフォルメ・ちびキャラ）、目印の確かさが {emblem.BODY_CONF} 未満なら人の体でない（動物・マスコット：あつ森の住民、ポチタ）→ 全身のまま。"
