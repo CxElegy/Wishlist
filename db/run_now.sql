@@ -11,6 +11,7 @@ create table if not exists private.run_log (
 
 -- job → (ワークフロー, 間隔, 渡す inputs)
 --   background  后台作業（ゲート → 小元素の補完）。ボタンからは失敗した版面の待ち時間（6 時間）も待たない
+--   edit_now    AI 編集をもう一度：整理待ちがあれば、間隔・停滞の判断を飛ばして Claude を起こす（background.yml の force_edit）
 --   collect     ニュース収集（関注清单通信）
 --   render      ページ生成（网页立即更新）
 create or replace function public.run_now(job text)
@@ -27,6 +28,7 @@ begin
   case job
     when 'background' then wf := 'background.yml'; gap := interval '3 minutes'; inputs := '{"retry_now": "true", "minutes": "40"}';
     when 'tick'       then wf := 'background.yml'; gap := interval '3 minutes'; inputs := '{"minutes": "40"}';   -- Supabase の時計（pg_cron）から。失敗の待ち時間は守る
+    when 'edit_now'   then wf := 'background.yml'; gap := interval '10 minutes'; inputs := '{"force_edit": "true", "minutes": "5"}';   -- AI 編集をもう一度：整理待ちがあれば間隔・停滞の判断を飛ばして Claude を起こす
     when 'collect'    then wf := 'digest.yml';     gap := interval '10 minutes'; inputs := '{}';
     when 'render'     then wf := 'render.yml';     gap := interval '1 minute';   inputs := '{}';
     else return jsonb_build_object('ok', false, 'msg', 'この仕事はボタンから起こせません');

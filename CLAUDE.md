@@ -149,6 +149,8 @@
 
 ## 目次のロゴと炎（2026-10-17）
 
+**炎の演出は保留中（2026-10-18、`PENDING.md`）**：本番では `render.NAV_FLAME = False` で炎・ぶわっ・版面の火を全部止めている（ロゴと話題度の点数だけ出す）。下は再開するときのための仕様。
+
 目次の左上に仮の名前「TBD」のロゴ（サイト名が決まったら `render._nav` の `wm` を差し替え）と炎（`render.FLAME_SVG`、試作は テストグラウンド https://cxelegy.github.io/Wishlist/testground/flame.html ）。
 - 形：先の尖った涙形を 4 層（上へ透ける縦グラデーション）。話題度 25 を超えると左右に舌が出る。
 - **色は温度**：冷めた火＝暗い赤の熾火（`--ember`）→ 赤 → 橙 `--flame` → 金 `--gold` → 白い芯（`--card`）、沸騰に近づくと底に青い炎（`--blueflame`）。層ごとの色は `--fo` `--fm` `--fi` `--fc`（`color-mix`、`--hc` は NAV_JS が毎フレーム滑らかに入れる）。
@@ -204,10 +206,12 @@
   + 版面（行）× 流程（列：収集・AI 編集・版面の設計・小元素）的状态表（済 / 待ち / 要確認 / 失敗，小元素写排第几）。数据在 `digest.backend_cells`。
   还有「待ち行列」（之后 24 小时的每次运行、那次要处理哪些版面，`digest.backend_todo`）和「ログ」（`scripts/runlog.py`：
   每个仕组み写自己的 `state/log/<proc>.json`——收集・出刊（Actions）、AI 编辑、小元素补全——分开写避免 push 冲突）。进度条带条纹动画（减少动画设定时不动）。
-  版面ごとの状態 的每行：现有小元素的缩略图 + 折叠的「小元素の探し方」（① 种类・目标 → ② 取法按顺序・各自找到几张（`emblem_fill.source_chain`，
+  版面ごとの状態 的每行：现有小元素的缩略图（行内最多 10 张 + 「+N」，展开「小元素の探し方」后看全部）+ 折叠的「小元素の探し方」（① 种类・目标 → ② 取法按顺序・各自找到几张（`emblem_fill.source_chain`，
   要和 `gather` 的顺序一致）→ ③ 本人确认・目视排除 → ④ 结果 → ⑤ 下次几点・失败时的建议），数据在 `digest.emblem_detail`。
   新加定时的仕组み：在 `PROCESSES` 里写 `schedule`（UTC 的 (时, 分)），在 `backend_todo` 写它下次做什么，运行时 `runlog.add("<proc>", "…")`；
   要加一列就在 `render.BG_COLS` 和 `backend_cells` 各加一项。
+- **AI 编辑列的倒计时・失败的「今すぐ再挑戦」**：AI 编辑・版面の設計列没有定时，表头显示「次の収集のあと HH:MM（あと N 分）」+ 整理待ち件数 + ゲート前回叫起的时刻（`backend_todo` 的 edit.n / fired）；
+  小元素「失败」的格子显示自动再挑战的时刻和倒计时，并有「今すぐ再挑戦」按钮（= `run_now('background')`，带 retry_now，失败的版面不等 6 小时；3 分钟 1 次）。
 - **今すぐ実行**（「次の実行」のカードのボタン）：後台作業・ニュース収集・ページ生成を定時を待たずに起こす。网页上没有令牌：
   按钮 → Supabase `run_now(job)`（`db/run_now.sql`，Vault 的 `github_dispatch_token`）→ GitHub workflow_dispatch。
   只能起这 3 个，每个有间隔（3 分 / 10 分 / 1 分）。GitHub 的定时（cron）忙时会迟到・漏掉（2026-10-17 漏了 2 小时），
@@ -232,7 +236,10 @@
   没设 = `edit`（默认，2026-10-17 打开）、`0` = 不叫、`edit` = 只叫 AI 编辑、`1` = AI 编辑和照片都叫。AI 编辑自己的定时 2026-10-17 已停（cron 改成只在 2/29 跑），现在只靠ゲート叫）。
 - **版面只放 AI 整理过的报道（2026-10-17 定）**：收集（Actions）出刊时，没被 AI 编辑覆盖的条目（编号 > `_covered`、或 edit.json 里没有的关注项）
   不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
-  ゲート看到今天有整理待ち（`gate.edit_work`）就叫 AI 编辑（同一份活 6 小时不重复、两次至少隔 60 分钟），所以最多每 2 小时一次 AI 编辑。
+  ゲート看到今天有整理待ち（`gate.edit_work`）就叫 AI 编辑，所以最多每 2 小时一次 AI 编辑。
+  **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。
+  所以 `gate.work_state` 看「叫起后编辑済み数（edit.json 的 _covered 合计）有没有增加」：60 分钟内 = 编辑中；60 分钟后没增加 = 停滞 → 再叫（最多 3 次，之后等 6 小时，管理页写「起こしても動かない」）。
+  叫起时记下 API 返回的会话 id（`fired.resp`）。管理页 AI 编辑列有「AI 编辑をもう一度起こす」按钮 = `run_now('edit_now')` → `background.yml` 的 `force_edit` → `GATE_FORCE=edit`（不看 `GATE_FIRE`・间隔・停滞判断）。
 - **流程图每一步都标「AI が判断」还是「ルール」（用户定的）**：`processes.judged_by` 自动判断（用到 Claude = AI，用学习模型 = 「ルール＋モデル」，其他 = ルール），
   AI 的步骤是紫色粗框斜线底、规则是绿色左边条，构成图的框里写「AI n · ルール n」。Claude 判断但没挂 `claude` 札的步骤写 `"by": "ai"`。
   小元素的判断只有一张表 `scripts/emblem_rules.py`（流程图下的「判断の一覧」），新判断加在那里，不要在别处另写一套。
@@ -257,6 +264,10 @@
   主题按代表作数。元素数是 `emblem_pool`（`emblem_fill.py --roster` 从 `emblem_category` 分类或 AniList 主角数出来，并补名字）；
   管理页「小元素」列出每个版面的种类・目标・现有枚数，没到目标的 AI 编辑会自动补（`python scripts/emblem_fill.py --audit`）。
 
+
+## 保留中のこと
+
+ユーザーが「あとでやる」と決めたものは `PENDING.md` に書く（何を止めたか・なぜ・試作の場所・わかったこと）。本番からは外し、試作はテストグラウンドに残す。
 
 ## テストグラウンド（docs/testground/）
 

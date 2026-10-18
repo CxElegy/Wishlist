@@ -286,6 +286,45 @@ class PendingWidget(unittest.TestCase):
         self.assertNotRegex(css, r"#[0-9a-fA-F]{3,6}\b")
 
 
+class BackendTable(unittest.TestCase):
+    """管理ページ「版面ごとの状態」：小元素は全部見える・失敗は再挑戦ボタンと残り時間・AI 編集の列に倒数。"""
+
+    def _rows(self, n=14, state="failed"):
+        thumbs = [(f"https://e.com/{i}.png", "") for i in range(n)]
+        det = {"kind": "キャラ", "why": "x", "target": n, "have": n, "chain": [], "funnel": {}, "todo": "t", "next_at": "2026-10-18T01:47:00+00:00"}
+        bg = {k: {"state": "ok", "text": "済"} for k in ("collect", "edit", "design")}
+        bg["emblem"] = {"state": state, "text": "5/6", "detail": det}
+        return [{"name": "A", "section": "游戏", "bg": bg, "thumbs": thumbs}]
+
+    def test_all_thumbs_after_open_and_row_capped(self):
+        h = render._admin_backend(self._rows(14), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
+        row = h[h.index('<span class="bg-th">'):h.index("</span>", h.index('<span class="bg-th">'))]
+        self.assertEqual(row.count("<img"), render.BG_THUMBS)
+        self.assertIn("+4", row)
+        self.assertEqual(h[h.index('class="ef-pics"'):].split("</span>")[0].count("<img"), 14)   # 開くと全部
+
+    def test_retry_button_only_when_failed(self):
+        failed = render._admin_backend(self._rows(state="failed"))
+        self.assertIn('class="nx-run bg-redo" data-run="background"', failed)
+        self.assertIn('class="bg-cd" data-at="2026-10-18T01:47:00+00:00"', failed)
+        self.assertNotIn("bg-redo\"", render._admin_backend(self._rows(state="ok")).replace("bg-redo{", ""))
+
+    def test_edit_column_state_and_force_button(self):
+        todo = {"edit": {"text": "", "n": 105, "fired": "2026-10-18T00:00:00+00:00", "state": "gave_up",
+                         "why": "3 回起こしたが仕事が減らない", "attempts": 3, "resp": "s"}}
+        h = render._admin_backend(self._rows(), todo)
+        self.assertIn("起こしても動かない", h)
+        self.assertIn("（3 回目）", h)
+        self.assertIn('data-run="edit_now" data-label="AI 編集をもう一度起こす"', h)
+        self.assertNotIn("AI 編集をもう一度起こす", render._admin_backend(self._rows(), {"edit": {"text": "", "n": 0}}))   # 整理待ちがなければボタンなし
+
+    def test_edit_column_countdown(self):
+        h = render._admin_backend(self._rows(), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
+        self.assertIn('data-pre="次の収集のあと "', h)
+        self.assertIn("記事 3 件が版面の下の「整理待ち」に", h)
+        self.assertIn('class="bgw-d nx-ago" data-at="2026-10-18T00:00:00+00:00"', h)
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -309,7 +348,7 @@ class Nav(unittest.TestCase):
         self.assertIn("https://img/a.jpg", out)                       # なければ記事の写真
         self.assertIn('<i class="ic">C</i>', out)                     # それもなければ頭文字
         self.assertIn('data-hot="1"', out)                            # 今週の件数（新着順に残すとき使う）
-        self.assertIn("新着 <b>1</b>／2", out)
+        self.assertNotIn("新着 <b>", out)                              # 目次に新着の件数は出さない（2026-10-18）
         self.assertNotIn('class="nsubs"', out)                         # 小分類がなければ札は出さない
 
     def test_sub_chips_and_hide_setting(self):

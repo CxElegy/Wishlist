@@ -603,5 +603,41 @@
 "disk_total": 154877411328,
 "peak": 96817152
 }
+},
+{
+"at": "2026-10-18T00:30:59+00:00",
+"text": "新着 4 件（4 版面）：GTA 6 1、日本顶级网球赛事 1、ILLIT 1、あつ森 1",
+"level": "ok",
+"count": 4,
+"secs": 294,
+"workers": 6,
+"res": {
+"cpu": 4,
+"load": 0.05,
+"mem_total": 16765378560,
+"mem_free": 15648505856,
+"disk_used": 63253790720,
+"disk_free": 91623620608,
+"disk_total": 154877411328,
+"peak": 101765120
+}
+},
+{
+"at": "2026-10-18T00:43:42+00:00",
+"text": "新着 1 件（1 版面）：The Mandalorian 1",
+"level": "ok",
+"count": 1,
+"secs": 277,
+"workers": 6,
+"res": {
+"cpu": 4,
+"load": 0.2,
+"mem_total": 16766414848,
+"mem_free": 15679016960,
+"disk_used": 63254335488,
+"disk_free": 91623075840,
+"disk_total": 154877411328,
+"peak": 100077568
+}
 }
 ]
