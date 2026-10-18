@@ -1095,7 +1095,7 @@ def export_photos():
 # 设置页上能新增 / 修改的字段（按写进 items.yaml 的顺序）。值的检查规则：
 #   str:N 不超过 N 字的一句话；list:N:M 最多 N 个、每个不超过 M 字的字符串列表
 ITEM_FIELDS = {
-    "type": "type", "section": "section", "subs": "subs", "size": "size", "subtitle": "str:80",
+    "type": "type", "parent": "str:80", "section": "section", "subs": "subs", "size": "size", "subtitle": "str:80",
     "keywords": "list:12:100", "match": "list:30:100", "exclude": "list:30:100", "news_langs": "langs",
     "priority": "str:300", "urgent_patterns": "regex", "site": "url",
     "steam_appid": "int", "anilist_id": "int", "anilist_type": "anilist_type", "tmdb": "tmdb", "notes": "str:1500",
@@ -1264,6 +1264,13 @@ def take_item_requests():
         names = {i["name"] for i in items}
         try:
             fields = clean_item_config(r.get("config") or {})
+            if fields.get("parent"):   # 上級は今ある、自分には上級のない関注項だけ（1 層だけ）。板块は上級と同じにする
+                top = next((i for i in items if i["name"] == fields["parent"]), None)
+                if top is None or top["name"] == name or top.get("parent"):
+                    raise ValueError(f"上级「{fields['parent']}」不对：要是已有的、自己没有上级的关注项")
+                if any(i.get("parent") == name for i in items):
+                    raise ValueError(f"「{name}」下面已经有下级了，不能再挂到别人下面（只做一层）")
+                fields["section"] = section_of(top)
             if r.get("action") == "edit":
                 if name not in names:
                     raise ValueError(f"关注清单里没有「{name}」")
@@ -2244,6 +2251,11 @@ def load_config():
     settings = config.get("settings") or {}
     settings["sub_schemes"] = taxonomy.sub_schemes()   # 小分類の分け方は sections.yaml が唯一の元
     items = config.get("items") or []
+    by_name = {i.get("name"): i for i in items}
+    for item in items:   # 下級は上級と同じ板块（目次で上級の下の支線に並ぶ。CLAUDE.md「判断上下级」）
+        top = by_name.get(item.get("parent"))
+        if top is not None and top is not item:
+            item["section"] = top.get("section") or taxonomy.BY_TYPE.get(top.get("type", "product"), "好物")
     for item in items:
         item.setdefault("type", "product")
         if item["type"] not in ITEM_TYPES:

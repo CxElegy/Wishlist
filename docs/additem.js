@@ -146,18 +146,40 @@
     if (typeof v === "object") { try { if (v.re && new RegExp(v.re, "i").test(t)) return true; } catch (_) {} v = v.v; }
     return String(v).split(/[・/]/).filter(Boolean).some(p => /^[\x00-\x7f]+$/.test(p) ? new RegExp(`\\b${esc(p)}\\b`, "i").test(t) : t.includes(p));
   }
-  // 说明・名字里的词 → 板块（表从上到下，先命中的算）；都没命中按「这是什么」
-  function guessSection() {
+  // 它自己本来是哪个板块：「角色 / IP」一定是グッズ（ちいかわ的维基说明是「漫画」，但关注的是联名・周边）；
+  // 其他按说明・名字里的词（表从上到下，先命中的算）；都没命中按「这是什么」
+  function naturalSection() {
+    if (S.ans.kind === "character") return "好物";
     const t = context();
     const hit = SECS.find(x => { const re = secRe(x); return re && re.test(t); });
     return hit ? hit.key : kindOf().section;
   }
+  // 有上级就跟着上级的板块（目录上挂在上级下面），没有就是它自己本来的板块
+  const parentItem = () => S.ans.parent ? (CFG.items || []).find(i => i.name === S.ans.parent) : null;
+  const guessSection = () => parentItem()?.section || naturalSection();
+  // 上级候补：已有的、自己没有上级的关注项里，名字或搜索词出现在新项的名字・维基数据里的（「ちいかわ 映像」→ ちいかわ）
+  const tops = () => (CFG.items || []).filter(i => !i.parent && i.name !== S.name);
+  function parentCandidates() {
+    const t = context().toLowerCase();
+    return tops().filter(i => [i.name, ...(i.keywords || [])].some(w => w && w.length >= 2 && t.includes(String(w).toLowerCase())));
+  }
   // 每种分法选一个值：说明・名字里出现了的，没有就第一个
   function guessSubs(key) {
     const t = context(), out = {};
+    // 挂在别的板块的上级下面时（ちいかわ アニメ → グッズ），第一种分法写它自己本来的类别（アニメ），目录上名字旁标出来
+    const nat = naturalSection();
+    if (parentItem() && nat !== key) {
+      const own = Object.values(guessSubs(nat))[0];
+      const first = (secOf(key).schemes || [])[0];
+      if (own && first) out[first.id] = own;
+    }
+    // 其他的分法跟上级一样（あつ森 映画 → プラットフォームはあつ森と同じ）
+    for (const [k, v] of Object.entries(parentItem()?.subs || {})) if (!out[k] && parentItem().section === key) out[k] = v;
     for (const sc of secOf(key).schemes || []) {
+      if (out[sc.id]) continue;
       const vals = sc.values || [];
-      const pick = vals.find(v => says(v, t)) ?? vals[0];
+      // 「角色 / IP」はキャラクターという値があればそれ（ちいかわ → グッズ・キャラクター）
+      const pick = (S.ans.kind === "character" ? vals.find(v => vOf(v) === "キャラクター") : null) ?? vals.find(v => says(v, t)) ?? vals[0];
       if (pick != null) out[sc.id] = vOf(pick);
     }
     return out;
@@ -262,7 +284,8 @@
        {v: "none", label: "都可以看", only: true}])},
     {id: "langs", render: () => multi("langs", "看哪些语言的新闻？", langHint(),
       Object.entries(LANGS).map(([v, l]) => ({v, label: l, hint: v === "zh-CN" ? "大陆网站常拦海外、图片防盗链，一般不用" : ""})), {min: 1})},
-    {id: "section", render: () => single("section", "放在头版哪个板块？", "板块是事先定好的一整套（没有关注项的板块网页上不显示）。按维基数据的说明和名字推荐了一个，不对就改。",
+    {id: "parent", when: () => tops().length > 0, render: askParent},
+    {id: "section", when: () => !S.ans.parent, render: () => single("section", "放在头版哪个板块？", "板块是事先定好的一整套（没有关注项的板块网页上不显示）。按维基数据的说明和名字推荐了一个，不对就改。",
       SECS.map(x => ({v: x.key, label: x.ja, hint: x.key === guessSection() ? "推荐" : ""})))},
     {id: "subs", render: askSubs},
     {id: "size", when: () => S.mode === "add", render: () => single("size", "每期给它多大篇幅？", "以后在上面的列表里随时能改。", [
@@ -272,15 +295,17 @@
   ];
   const live = () => STEPS.filter(s => !s.when || s.when());
   const LABELS = {name: "名字", which: "是哪个", kind: "这是", focus: "关注", player: "选手 / 队伍", urgent: "立刻通知",
-                  exclude: "不看", langs: "语言", section: "板块", subs: "小分类", size: "篇幅"};
+                  exclude: "不看", langs: "语言", parent: "上级", section: "板块", subs: "小分类", size: "篇幅"};
 
   function defaults(id) {
     const pick = wdPick();
     if (id === "kind") return pick?.kind || (S.original ? KIND_OF_TYPE[S.original.type] : "") || "";
     if (id === "urgent") return chosenFocus().filter(f => f.urgent).map(f => f.id);
     if (id === "langs") return [...new Set(["zh-TW", "en-US", ...(pick?.origin || []).filter(l => l !== "zh-CN")])];
-    if (id === "section") return S.original?.section || guessSection();
-    if (id === "subs") return S.ans.section === S.original?.section && S.original?.subs ? {...S.original.subs} : guessSubs(S.ans.section);
+    if (id === "section") return S.ans.parent ? guessSection() : S.original?.section || guessSection();
+    if (id === "parent") return S.original ? S.original.parent || "" : parentCandidates()[0]?.name || "";
+    if (id === "subs") { const sec = S.ans.section || guessSection();
+                         return sec === S.original?.section && S.original?.subs ? {...S.original.subs} : guessSubs(sec); }
     if (id === "size") return "M";
     return undefined;
   }
@@ -302,10 +327,11 @@
     if (id === "exclude") return EXCLUDES.filter(x => v.includes(x.id)).map(x => x.label).join("、") || "都看";
     if (id === "langs") return v.map(l => LANGS[l]).join("、");
     if (id === "section") return secOf(v).ja;
+    if (id === "parent") return v || "不属于";
     if (id === "subs") return Object.values(v || {}).join(" · ");
     return v || "";
   }
-  const AUTO_STEPS = ["which", "kind", "focus", "urgent", "exclude", "langs", "section", "subs", "size"];
+  const AUTO_STEPS = ["which", "kind", "focus", "urgent", "exclude", "langs", "parent", "section", "subs", "size"];
   function autoRest() {   // 「剩下的都交给你」：从这一问开始，没回答的都替你选，直接到汇总
     for (let i = S.step, steps = live(); i < steps.length; i++, steps = live()) {
       const id = steps[i].id;
@@ -357,6 +383,7 @@
     if (id === "which") return wdPick()?.title || "不用查";
     if (id === "kind") return KINDS[a]?.label || "";
     if (id === "section") return a ? secOf(a).ja : "";
+    if (id === "parent") return a || "不属于";
     if (id === "subs") return Object.values(a || {}).join(" · ");
     if (id === "focus") return [...chosenFocus().map(f => f.label), S.ans.focus_other].filter(Boolean).join("、");
     if (id === "urgent") return (a || []).includes("none") ? "不用" : chosenFocus().filter(f => (a || []).includes(f.id)).map(f => f.label).join("、");
@@ -427,6 +454,7 @@
         S.auto[id] = false;
         if (id === "kind" && S.ans.kind !== o.v) { delete S.ans.focus; delete S.ans.urgent; delete S.ans.exclude; }
         if (id === "section" && S.ans.section !== o.v) delete S.ans.subs;
+        if (id === "parent" && S.ans.parent !== o.v) { delete S.ans.subs; S.ans.section = o.v ? (CFG.items.find(i => i.name === o.v) || {}).section : undefined; }
         if (!multiSel) { S.ans[id] = o.v; next(); return; }
         let v = [...(S.ans[id] || [])];
         v = v.includes(o.v) ? v.filter(x => x !== o.v) : o.only ? [o.v] : [...v.filter(x => !opts.find(p => p.v === x)?.only), o.v];
@@ -443,8 +471,28 @@
     return h("div", {class: "q"}, ...body);
   }
 
+  // 上级：同一系列 / 品牌 / IP 里的一部作品、一个商品（ちいかわ アニメ → ちいかわ）。只做一层，所以候补只有自己没有上级的。
+  // 名字・维基数据里出现了的已有项排前面并推荐；其他的从下拉里选
+  function askParent() {
+    const cand = parentCandidates(), rest = tops().filter(i => !cand.includes(i));
+    if (S.ans.parent == null) S.ans.parent = defaults("parent");
+    const pick = v => { S.ans.parent = v; S.auto.parent = false; delete S.ans.subs;
+                        S.ans.section = v ? (CFG.items.find(i => i.name === v) || {}).section : undefined; };
+    const opts = [...cand.map(i => ({v: i.name, label: i.name, hint: `推荐 · 跟着它放在「${secOf(i.section).ja}」`})),
+                  {v: "", label: "不属于任何一个", hint: "单独一个版面"}];
+    const sel = h("select", {"aria-label": "从全部关注项里选上级", onchange: ev => { if (ev.target.value) { pick(ev.target.value); next(); } }},
+      h("option", {value: ""}, "其他关注项…"), rest.map(i => h("option", {value: i.name, selected: S.ans.parent === i.name}, `${i.name}（${secOf(i.section).ja}）`)));
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, `「${S.name}」属于哪个已有的关注项？`),
+      h("p", {}, "同一个 IP、系列、品牌里的一部作品或一个商品，挂在它下面（比如「ちいかわ アニメ」挂在「ちいかわ」下面）。" +
+                 "放在同一个板块，同一条新闻只出现在下级的版面。只做一层。"),
+      h("div", {class: "opts", role: "radiogroup"}, opts.map(o => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.parent === o.v),
+        onclick: () => { pick(o.v); next(); }}, o.label, h("small", {}, o.hint)))),
+      rest.length ? sel : null, nav(true));
+  }
+
   // 小分类：板块的每种分法各选一个（sections.yaml 的常用值；放不进去就自己写，日语、短）
   function askSubs() {
+    if (!S.ans.section) S.ans.section = guessSection();
     const sec = secOf(S.ans.section);
     if (S.ans.subs == null) S.ans.subs = defaults("subs");
     const subs = S.ans.subs;
@@ -505,10 +553,11 @@
     const exclude = uniq(EXCLUDES.filter(x => (S.ans.exclude || []).includes(x.id)).flatMap(x => x.words));
     const priority = uniq([...focus.map(f => f.id === "player" ? `${players.join("、")}的消息` : f.priority),
                            S.ans.focus_other || ""]).join("；");
-    const section = S.ans.section || base.section || guessSection();
+    const parent = S.ans.parent ?? base.parent ?? "";
+    const section = (parent && (CFG.items.find(i => i.name === parent) || {}).section) || S.ans.section || base.section || guessSection();
     const d = {
       ...base,
-      type: k.type, section, subs: S.ans.subs || base.subs || guessSubs(section), keywords, match,
+      type: k.type, parent, section, subs: S.ans.subs || base.subs || guessSubs(section), keywords, match,
       // 修改时跳过了的问题保留原来的设置
       priority: focus.length || S.ans.focus_other ? priority : base.priority || "",
       urgent_patterns: S.ans.urgent ? urgent : base.urgent_patterns || [], exclude: uniq([...(S.mode === "edit" ? base.exclude || [] : []), ...exclude]),
@@ -560,7 +609,14 @@
       return h("label", {}, h("span", {}, name), h("small", {}, hint), input);
     };
     const types = h("select", {"data-k": "type"}, Object.entries(TYPES).map(([v, l]) => h("option", {value: v, selected: d.type === v}, l)));
-    const section = h("select", {"data-k": "section"}, SECS.map(x => h("option", {value: x.key, selected: d.section === x.key}, x.ja)));
+    const section = h("select", {"data-k": "section", disabled: !!d.parent}, SECS.map(x => h("option", {value: x.key, selected: d.section === x.key}, x.ja)));
+    const parentSel = h("select", {"data-k": "parent"}, h("option", {value: ""}, "不属于（单独一个版面）"),
+      tops().map(i => h("option", {value: i.name, selected: d.parent === i.name}, `${i.name}（${secOf(i.section).ja}）`)));
+    parentSel.addEventListener("change", () => {   // 上级を選んだら板块は上級と同じ（変えられない）
+      const p = (CFG.items || []).find(i => i.name === parentSel.value);
+      section.disabled = !!p;
+      if (p) { section.value = p.section; drawSubs(p.section); }
+    });
     // 小分类：分法ごとに 1 つ（常用值から選ぶ。放不进去的自己写った値も残す）。板块を変えたら作り直す
     const subsBox = h("div", {class: "two subs"});
     const drawSubs = key => {
@@ -584,6 +640,7 @@
         h("input", {type: "text", value: S.name, maxlength: 80, "data-k": "name"})) : null,
       h("div", {class: "two"}, h("label", {}, h("span", {}, "类型"), types),
         h("label", {}, h("span", {}, "板块"), section)),
+      tops().length ? h("label", {}, h("span", {}, "上级"), h("small", {}, "同一个 IP・系列・品牌里的作品或商品，挂在它下面；板块跟着上级"), parentSel) : null,
       subsBox,
       size,
       FIELDS.map(field),
@@ -633,7 +690,7 @@
 
   const norm = (k, v) => Array.isArray(v) ? (k === "news_langs" ? [...v].sort() : v) : v ?? "";
   const same = (k, a, b) => JSON.stringify(norm(k, a ?? (Array.isArray(b) ? [] : ""))) === JSON.stringify(norm(k, b ?? (Array.isArray(a) ? [] : "")));
-  const KEYS = ["type", "section", "subs", "size", "subtitle", "keywords", "match", "exclude", "news_langs", "priority", "urgent_patterns",
+  const KEYS = ["type", "parent", "section", "subs", "size", "subtitle", "keywords", "match", "exclude", "news_langs", "priority", "urgent_patterns",
                 "site", "steam_appid", "anilist_id", "anilist_type", "tmdb", "notes"];
 
   async function submit(form, msg, btn) {
@@ -707,7 +764,7 @@
     if (!item) return;
     S = fresh();
     S.mode = "edit"; S.name = name; S.original = {...item, news_langs: item.news_langs || CFG.langs};
-    S.ans = {kind: KIND_OF_TYPE[item.type] || "product", section: item.section, subs: item.subs ? {...item.subs} : undefined, langs: item.news_langs};
+    S.ans = {kind: KIND_OF_TYPE[item.type] || "product", section: item.section, parent: item.parent || "", subs: item.subs ? {...item.subs} : undefined, langs: item.news_langs};
     if (item.section === "运动" && item.type === "category") S.ans.kind = "sports";
     S.draft = {...S.original};
     S.step = live().length - 1;

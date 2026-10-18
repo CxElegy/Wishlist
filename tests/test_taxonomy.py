@@ -51,6 +51,8 @@ class Classify(unittest.TestCase):
             ("韓国のガールズグループ", "演出", {"scene": "K-POP", "form": "グループ"}),
             ("theme park in Osaka, Japan", "出行", {"kind": "テーマパーク", "area": "関西"}),
             ("American television series", "影视", {"kind": "ドラマ", "origin": "海外"}),
+            ("Chiikawa Japanese anime television series", "影视", {"kind": "アニメ", "origin": "日本"}),   # series より anime を先に
+            ("ちいかわ 劇場版", "影视", {"kind": "映画"}),
             ("Nintendo Switch game", "游戏", {"platform": "家庭用ゲーム機"}),
         ]
         for text, sec, subs in cases:

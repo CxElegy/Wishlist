@@ -31,9 +31,9 @@ sections:
     color: "#9B3FB5"
     icon: 1f3ac
     kind: show
-    words: 电视剧|電視劇|剧集|劇集|ドラマ|television series|TV series|电影|電影|映画|film|movie|动画|動畫|アニメ|anime|animated
+    words: 劇場版|剧场版|上映|电视剧|電視劇|剧集|劇集|ドラマ|television series|TV series|电影|電影|映画|film|movie|动画|動畫|アニメ|anime|animated
     schemes:
-      - {id: kind, label: 種類, values: [{v: 映画, re: '\bfilm\b|movie|电影|電影'}, {v: ドラマ, re: 'series|电视剧|電視劇|剧集|劇集'}, {v: アニメ, re: 'anime|animated|动画|動畫'}, バラエティ, ドキュメンタリー]}
+      - {id: kind, label: 種類, values: [{v: 映画, re: '\bfilm\b|movie|电影|電影|劇場版|剧场版'}, {v: アニメ, re: 'anime|animated|动画|動畫|アニメ'}, {v: ドラマ, re: 'series|电视剧|電視劇|剧集|劇集|ドラマ'}, バラエティ, ドキュメンタリー]}
       - {id: origin, label: 地域, values: [{v: 日本, re: 'Japan|日本'}, {v: 海外, re: 'America|British|\bUS\b|\bUK\b|Hollywood|France|French|Italy|Italian|美国|美國|英国|英國|アメリカ|イギリス|欧米|海外'}, {v: 韓国, re: 'Korea|韩国|韓國|한국'}, {v: 中華圏, re: 'China|Chinese|Taiwan|Hong Kong|中国|中國|台湾|台灣|香港'}]}
 
   - key: 运动
