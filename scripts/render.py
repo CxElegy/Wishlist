@@ -4113,9 +4113,12 @@ BG_STATES = {"ok": "済", "wait": "待ち", "review": "要確認", "failed": "�
 # 「バックグラウンド」の表の列：(セルのキー, 見出し, 時刻を出すプロセスの id)。版面の設計は AI 編集の回にやる
 BG_COLS = (("collect", "収集", "collect"), ("edit", "AI 編集", "edit"), ("design", "版面の設計", "edit"),
            ("emblem", "小元素", "emblem-cron"))
-RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
+RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render", "edit": "edit_now"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
 RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も 6 時間を待たずにやり直す（3 分に 1 回まで）",
-             "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）"}
+             "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）",
+             "edit": "整理待ちがあれば AI 編集を、間隔・停滞の判断を飛ばして今すぐ起こす（10 分に 1 回まで）"}
+EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "stalled": ("止まっている？", "ng"),
+              "gave_up": ("起こしても動かない", "ng")}
 BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき",
                "edit": "整理待ちがあるとき（ゲートが起こす）"}
 
@@ -4123,6 +4126,27 @@ BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ペ
 def _slots_attr(pid):
     p = next((x for x in processes.PROCESSES if x["id"] == pid), None)
     return e(json.dumps(processes.slots(p))) if p else "[]"
+
+
+BG_THUMBS = 10   # 表の行に並べる小元素の数。残りは「+N」、全部は「小元素の探し方」を開くと見える
+BG_AFTER_COLLECT = ("edit", "design")   # 定時のない列：ゲートが収集のあとに AI 編集を起こす
+
+
+def _bg_thumb(t):
+    u, sh = t if isinstance(t, (list, tuple)) else (t, "")
+    return f'<img src="{e(u)}" alt="" loading="lazy"{" class=fit" if sh in ("logo", "icon") else ""}>'
+
+
+def _bg_retry(k, r):
+    """失敗した小元素の格子：自動の再挑戦までの残り時間と「今すぐ再挑戦」ボタン（run_now('background') = retry_now つきの後台作業。
+    失敗した版面は 6 時間を待たずにやり直す。3 分に 1 回まで）。ほかの格子は空。"""
+    if k != "emblem" or r["bg"][k]["state"] != "failed":
+        return ""
+    at = (r["bg"][k].get("detail") or {}).get("next_at") or ""
+    cd = f'<small class="bg-cd" data-at="{e(at)}"></small>' if at else ""
+    return (f'{cd}<span class="nx-go"><button type="button" class="nx-run bg-redo" data-run="{RUN_JOBS["gate"]}" data-label="今すぐ再挑戦"'
+            f' title="失敗した版面を 6 時間待たずにやり直す（後台作業を今すぐ。3 分に 1 回まで）">今すぐ再挑戦</button>'
+            f'<small class="nx-msg" aria-live="polite"></small></span>')
 
 
 def _admin_backend(rows, todo=None, log=None, res=None):
@@ -4155,8 +4179,28 @@ def _admin_backend(rows, todo=None, log=None, res=None):
     rows = sorted(rows, key=lambda r: (order.index(r.get("section")) if r.get("section") in order else len(order),
                                        r.get("section") or "", r["name"]))
     waits = {k: sum(1 for r in rows if r["bg"][k]["state"] in ("wait", "review", "failed")) for k, _, _ in BG_COLS}
-    head = "".join(f'<th><span>{e(t)}</span><small class="nx-h" data-slots="{_slots_attr(pid)}"></small>'
-                   f'<small class="bgw">待ち {waits[k]}</small></th>' for k, t, pid in BG_COLS)
+    ed = (todo or {}).get("edit") or {}
+
+    def th(k, t, pid):
+        if k in BG_AFTER_COLLECT:   # 定時なし：ゲートが収集のあとに起こす（AI 編集・版面の設計）→ 次の収集までの残り時間
+            when = f'<small class="nx-h" data-slots="{_slots_attr("collect")}" data-pre="次の収集のあと "></small>'
+        else:
+            when = f'<small class="nx-h" data-slots="{_slots_attr(pid)}"></small>'
+        extra = ""
+        if k == "edit":
+            if ed.get("n"):
+                extra += f'<small class="bgw-d">記事 {ed["n"]} 件が版面の下の「整理待ち」に</small>'
+            if ed.get("fired"):
+                extra += f'<small class="bgw-d nx-ago" data-at="{e(ed["fired"])}"></small>'
+            lab, cls = EDIT_STATE.get(ed.get("state"), ("", ""))
+            if lab:
+                extra += (f'<small class="bgw-d es-{cls}"><b>{e(lab)}</b> {e(ed.get("why") or "")}'
+                          + (f'（{ed["attempts"]} 回目）' if ed.get("attempts", 0) > 1 else "") + '</small>')
+            if ed.get("n"):   # 動いていなくても人が押せる：間隔・停滞の判断を飛ばして起こす
+                extra += (f'<span class="nx-go"><button type="button" class="nx-run bg-redo" data-run="{RUN_JOBS["edit"]}" data-label="AI 編集をもう一度起こす"'
+                          f' title="{e(RUN_TITLE["edit"])}">AI 編集をもう一度起こす</button><small class="nx-msg" aria-live="polite"></small></span>')
+        return f'<th><span>{e(t)}</span>{when}<small class="bgw">待ち {waits[k]}{" 版面" if k == "edit" else ""}</small>{extra}</th>'
+    head = "".join(th(k, t, pid) for k, t, pid in BG_COLS)
     body, sec = [], None
     for r in rows:
         if r.get("section") != sec:
@@ -4164,14 +4208,14 @@ def _admin_backend(rows, todo=None, log=None, res=None):
             body.append(f'<tr class="bgs"><th colspan="{len(BG_COLS) + 1}"><i style="background:{_sec_color(sec or "其他")}"></i>'
                         f'{e(_sec_name(sec or "其他"))}</th></tr>')
         cells = "".join(f'<td class="bgc s-{r["bg"][k]["state"]}" data-label="{e(t)}"><b>{BG_STATES[r["bg"][k]["state"]]}</b>'
-                        f'<small>{e(r["bg"][k]["text"])}</small></td>' for k, t, _ in BG_COLS)
-        thumbs = "".join(f'<img src="{e(u)}" alt=""{" class=fit" if sh in ("logo", "icon") else ""}>'
-                         for u, sh in (t if isinstance(t, (list, tuple)) else (t, "") for t in r.get("thumbs") or []))
+                        f'<small>{e(r["bg"][k]["text"])}</small>{_bg_retry(k, r)}</td>' for k, t, _ in BG_COLS)
+        pics = [_bg_thumb(t) for t in r.get("thumbs") or []]
+        more = f'<small class="bg-more">+{len(pics) - BG_THUMBS}</small>' if len(pics) > BG_THUMBS else ""
         body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a>'
-                    + (f'<span class="bg-th">{thumbs}</span>' if thumbs else "") + f'</td>{cells}</tr>')
+                    + (f'<span class="bg-th">{"".join(pics[:BG_THUMBS])}{more}</span>' if pics else "") + f'</td>{cells}</tr>')
         d = r["bg"]["emblem"].get("detail")
         if d:
-            body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"])}</td></tr>')
+            body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"], pics)}</td></tr>')
     logs = "".join(f'<li class="lg-{e(x.get("level") or "info")}"><time>{e(x.get("when") or "")}</time>'
                    f'<span class="lg-p">{e(x.get("name") or "")}</span><span class="lg-t">{e(x.get("text") or "")}</span></li>'
                    for x in (log or []))
@@ -4247,9 +4291,9 @@ def _admin_resources(res):
             '<div><h3 class="h3">サーバー <small>仕組みごとの最近の実行 · 終わったときの様子</small></h3>' + srv + "</div></div>")
 
 
-def _emblem_flow(d, state):
+def _emblem_flow(d, state, pics=()):
     """「小元素の探し方」：種類 → 目標 → 取り方（順に、試した数）→ 確かめる → 結果 → 次にやること を横一列の図に。
-    閉じているときは 1 行の要約（いまどこで止まっているか）。"""
+    閉じているときは 1 行の要約（いまどこで止まっているか）。開くと、いまある小元素を全部（pics：_bg_thumb の img）。"""
     chain = []
     for c in d.get("chain") or []:
         n = c.get("n")
@@ -4279,7 +4323,9 @@ def _emblem_flow(d, state):
             f'<b>{d.get("have")} / {d.get("target")} 枚</b><span class="em-bar"><i style="width:{pct}%"></i></span>'
             + (f'<span>{e(d["note"])}</span>' if d.get("note") else "") + '</div>'
             f'<div class="ef-box ef-todo"><small>⑤ 次にやること</small><b>{e(d.get("todo") or "")}</b>'
-            + (f'<span class="ef-adv">{e(d["advice"])}</span>' if d.get("advice") else "") + "</div></div></details>")
+            + (f'<span class="ef-adv">{e(d["advice"])}</span>' if d.get("advice") else "") + "</div></div>"
+            + (f'<div class="ef-all"><small>いまの小元素 · {len(pics)} 枚</small><span class="ef-pics">{"".join(pics)}</span></div>' if pics else "")
+            + "</details>")
 
 
 def _lane_short(lane):
@@ -4474,7 +4520,15 @@ ADMIN_PAGE_CSS = """
 .tok li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--hair);font-size:13px}
 .tok b{font:700 15px var(--font-mono);text-align:right}.tok b.na{font:700 12px var(--font-sans);opacity:.6}
 .tok small{grid-column:1/-1;text-align:right;font:500 var(--fs-label) var(--font-sans);opacity:.8}
-.bg-th{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.bg-th{display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin-top:4px}.bg-more{font:700 var(--fs-label) var(--font-mono);opacity:.7}
+.ef-all{padding:10px 12px 12px;border-top:1px dashed var(--hair)}.ef-all>small{display:block;font:700 var(--fs-label) var(--font-sans);margin-bottom:6px;opacity:.8}
+.ef-pics{display:flex;flex-wrap:wrap;gap:6px}.ef-pics img{width:44px;height:44px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}
+.ef-pics img.fit{object-fit:contain;border-radius:6px;padding:3px}
+.bgw-d{display:block;font-weight:400;font-size:var(--fs-label);opacity:.75}
+.bgw-d.es-ng{opacity:1;color:var(--alert)}.bgw-d b{font-weight:900}
+th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:6px;font-weight:400}
+.bgc .bg-cd{display:block;font:700 var(--fs-label) var(--font-mono);color:var(--alert)}
+.bgc .nx-go{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px}.bg-redo{padding:5px 10px}
 .bg-th img{width:26px;height:26px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}.bg-th img.fit{object-fit:contain;border-radius:4px;padding:2px}
 .bgm tr.bgx td{padding:0 6px 10px;border-bottom:1px solid var(--hair)}
 .bgm tr:has(+ .bgx) td{border-bottom:0}
@@ -4624,11 +4678,15 @@ ADMIN_PAGE_JS = """
   function tick(){var list=document.querySelector('.nxs');
     Array.prototype.forEach.call(document.querySelectorAll('[data-slots]'),function(x){var sl=JSON.parse(x.getAttribute('data-slots')||'[]');
       if(!sl.length){x._next=Infinity;return;}var a=around(sl);x._next=+a[1];
-      if(x.classList.contains('nx-h')){x.textContent='次回 '+hm(a[1])+'（'+left(a[1]-new Date())+'）';return;}
+      if(x.classList.contains('nx-h')){x.textContent=(x.getAttribute('data-pre')||'次回 ')+hm(a[1])+'（'+left(a[1]-new Date())+'）';return;}
       x.querySelector('.nx-t').textContent=hm(a[1]);x.querySelector('.nx-l').textContent=left(a[1]-new Date());
       x.querySelector('.nx-p').textContent='前回 '+hm(a[0]);x.classList.toggle('soon',a[1]-new Date()<15*60000);});
     Array.prototype.forEach.call(document.querySelectorAll('.nx[data-slots]'),function(x){var sl=JSON.parse(x.getAttribute('data-slots')||'[]'),b=x.querySelector('.pbar i');
       if(!b||!sl.length)return;var a=around(sl);b.style.width=Math.min(100,Math.max(2,(new Date()-a[0])/(a[1]-a[0])*100)).toFixed(1)+'%';});
+    // 失敗した小元素の自動の再挑戦まで（data-at）・ゲートが前回 AI 編集を起こした時刻
+    Array.prototype.forEach.call(document.querySelectorAll('.bgc .bg-cd[data-at]'),function(x){var t=new Date(x.getAttribute('data-at'));
+      x.textContent=t>new Date()?'自動の再挑戦 '+hm(t)+'（'+left(t-new Date())+'）':'まもなく自動で再挑戦';});
+    Array.prototype.forEach.call(document.querySelectorAll('.nx-ago[data-at]'),function(x){x.textContent='ゲートが前回起こした '+hm(new Date(x.getAttribute('data-at')));});
     if(list)Array.prototype.slice.call(list.children).sort(function(a,b){return a._next-b._next;}).forEach(function(c){list.appendChild(c);});
     queue();}
   // 待ち行列：これから 24 時間の実行を時刻順に。最初の回にだけ、処理する版面の名前を付ける
@@ -4682,8 +4740,8 @@ ADMIN_PAGE_JS = """
         if(x&&x.ok){msg.className='nx-msg ok';msg.textContent='起こしました · 数十秒で「実行中」に';if(card)card.classList.add('run');
           setTimeout(loadRuns,20000);setTimeout(loadRuns,60000);}
         else{msg.className='nx-msg ng';msg.textContent=(x&&x.msg||'起こせませんでした')+(left?' · あと '+left+' 分で押せます':'');}
-        b.textContent='今すぐ実行';setTimeout(function(){b.disabled=false;},left?left*60000:5000);})
-      .catch(function(){msg.className='nx-msg ng';msg.textContent='起こせませんでした（データベースに届かない）';b.textContent='今すぐ実行';b.disabled=false;});});
+        b.textContent=b.dataset.label||'今すぐ実行';setTimeout(function(){b.disabled=false;},left?left*60000:5000);})
+      .catch(function(){msg.className='nx-msg ng';msg.textContent='起こせませんでした（データベースに届かない）';b.textContent=b.dataset.label||'今すぐ実行';b.disabled=false;});});
   function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:'{}'})
     .then(function(r){if(!r.ok)throw 0;return r.json();});}
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
