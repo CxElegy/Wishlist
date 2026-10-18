@@ -83,7 +83,7 @@ COMPONENTS = {
                    "what": "原文が人機検証・限流・一時的に開けない（ナタリーの 405 など）ときも止まらず、同じ出来事を報じた別のサイトの記事の図 → 転載へ進む。それでもないものは後の出刊で自動でもう一度（state/img_retry.json）"},
     "imgsharp": {"kind": "rule", "name": "より大きい予告画像 / 防盗链の再試行", "spec": "og:image・JSON-LD の長辺 < 1000 なら同じページの大きい方 · 403 は原文ページを Referer に 3 枚まで",
                  "what": "images.pick：同じ記事の大きい版（JSON-LD の 1920×1080 など）を先に。新浪 sinaimg など Referer がないと 403 の図は「（本站保存）」として hdimg が本站に置く"},
-    "hdimg": {"kind": "algo", "name": "看不清の判定と OpenCV 高清化 hdimg", "spec": "表示で 1.6 倍以上に引き伸ばす かつ 表示サイズでの模糊度 > 0.42（Crété-Roffet re-blur 法・1×9 平均）· 大きい枠 1280px・カード 720px · NLMeans h=3 → Lanczos4（最大 3 倍）→ 輝度 USM 0.7 · webp 82 · 6 並列",
+    "hdimg": {"kind": "algo", "name": "看不清の判定と OpenCV 高清化 hdimg", "spec": "表示で 1.6 倍以上に引き伸ばす かつ 表示サイズでの模糊度 > 0.42（Crété-Roffet re-blur 法・1×9 平均）· 大きい枠 1280px（各作品の新しい 2 本・頭条・おすすめカード）・カード 720px · NLMeans h=3 → Lanczos4（最大 3 倍）→ 輝度 USM 0.7 · webp 82 · 6 並列",
               "what": "hdimg.py：看得清の図は触らない（ファイルも作らない）。Bing の 100×100 縮小画像は w=1200 版を取り白い余白を切る。防盗链の図と期限付きの網址（Yahoo の ?exp=）は出刊時に本站に置く。開けなくなった図（404・1×1 の空白）は dead にして探し直しへ。docs/pics/ を render が元の網址の前に差し込む。8 日を過ぎた図は消す"},
     "reddithot": {"kind": "rule", "name": "Reddit の「火」と削除 reddit_hot / reddit_removed", "spec": "版块の今週の人気 上位 5 · 全站検索は人気順の上位 5 · API の数字があれば 赞 ≥100 か 评论 ≥30 · 本文 [removed]/[deleted]・404 は削除",
                   "what": "火でない帖子は版面に載せず reddit_cold として帖子数（話題度のファンの反応）だけに数える。載った帖子は毎日 1 回、削除・人気から落ちたかを見て撤去（prune_reddit · state/reddit_check.json）"},
