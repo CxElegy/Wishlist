@@ -1,6 +1,5 @@
 {
  "image_misses": {
-  "https://ceoscoredaily.com/page/view/2026101314151357726": "2026-10-18",
   "https://media.unisba.ac.id/075754f8/deed2575XlUrPSlZMQ0hOgE": "2026-10-18",
   "https://media.unisba.ac.id/1b3cc035/1ddbb41eLDcOWABKGjsGNjc": "2026-10-18",
   "https://www.cbs19.tv/video/news/local/wingstop-teams-with-sour-patch-kids-for-limited-time-halloween-flavor/501-5fb772ea-1f20-41d7-935a-a0347e07d715": "2026-10-18",
@@ -12,10 +11,9 @@
   "http://www.excite.co.jp/news/article/Allabout_131155/": "https://www.bing.com/th?id=ONUT.g0utra38X7kxxQIbEAVYVw&pid=News&w=728",
   "http://www.excite.co.jp/news/article/bg_mania_703579/": "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200",
   "http://www.gamey.kr/news/articleViewAmp.html?idxno=3019008": "http://www.gamey.kr/news/photo/202610/3019008_171489_3813.jpg",
-  "https://abema.tv/live-event/c84bcfa1-fe0c-429a-9b25-f2f833afab47": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227367/thumb001.png?height=720&quality=75&version=1791968473&width=1280",
   "https://animeanime.jp/article/2026/10/14/103780.html": "https://animeanime.jp/imgs/ogp_f/942211.jpg",
   "https://animeanime.jp/article/2026/10/17/103903.html": "https://animeanime.jp/imgs/ogp_f/942450.jpg",
-  "https://ceoscoredaily.com/page/view/2026101314151357726": null,
+  "https://ceoscoredaily.com/page/view/2026101314151357726": "https://ceoscoredaily.com/photos/2026/10/13/2026101317023010291_l.jpg",
   "https://charagoo.jp/prize/item/8579a5c3aa1c/": "https://charagoo.jp/wp-content/uploads/2025/08/276af211-79e1-4559-8006-8a12ce92b863_p_01_ja.jpg",
   "https://collabo-cafe.com/events/collabo/hellokitty-aimys-room-donki-roomwear-2026/": "https://collabo-cafe.com/wp-content/uploads/hellokitty-aimys-room-donki-roomwear-eyecatch.jpg",
   "https://collabo-cafe.com/events/collabo/shirotan-fashion-avail-1017-2026/": "https://collabo-cafe.com/wp-content/uploads/shirotan-fashion-avail-1017-2026-lineup.jpg",
@@ -42,6 +40,7 @@
   "https://phandroid.com/2026/10/14/microsofts-new-xbox-controller-is-comfortably-compact/": "https://www.bing.com/th?id=ONUT.Ka7ilac8h81thQa09VvWvA&pid=News&w=640",
   "https://rocketnews24.com/2026/10/14/2811673/": "https://rocketnews24.com/wp-content/uploads/sites/2/2026/10/collage1_6e330b.jpg?w=1200&h=630&crop=1",
   "https://sports.khan.co.kr/en/article/202610162212007": "https://images.khan.co.kr/article/2026/10/16/news-p.v1.20261016.a3aa4afc89904df1965bac9e03def952_P1.jpg",
+  "https://sports.yahoo.co.jp/tennis/match/135997": "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png",
   "https://t.co/flmq5KYx1y": "https://i.ytimg.com/vi/wPhWdv_0Ym8/maxresdefault.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/hokkaido/region/hokkaido-1391169": "https://img.topics.smt.news.goo.ne.jp/picture/hokkaido/m_hokkaido-1391169.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/insidegames/trend/insidegames-189177": "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-189177.jpg",
@@ -501,7 +500,7 @@
     "三星 Galaxy",
     "手机"
    ],
-   "image": null,
+   "image": "https://ceoscoredaily.com/photos/2026/10/13/2026101317023010291_l.jpg",
    "kind": "wish",
    "score": 8,
    "source": "CEO스코어데일리",
@@ -1449,6 +1448,27 @@
   },
   {
    "batch": 5,
+   "because": "漫威电影",
+   "date": "2026-10-17",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.5VyC_5U-2oPjKED6T_30Tw&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "The Direct",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Marvel Studios Chooses Its First Gay X-Men Hero for Reboot Movie",
+   "url": "https://thedirect.com/article/marvel-studios-x-men-hero-reboot-movie-choose",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
    "because": "The Mandalorian",
    "date": "2026-10-17",
    "hits": [],
@@ -1704,6 +1724,21 @@
    "because": "日本顶级网球赛事",
    "date": "2026-10-17",
    "hits": [],
+   "image": "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png",
+   "kind": "board",
+   "score": 4,
+   "source": "スポーツナビ",
+   "taste": [],
+   "title": "テニス - 木下グループジャパンオープンテニスチャンピオンシップス - リリ タガー vs. リュドミラ サムソノワ- 試合対戦データ",
+   "url": "https://sports.yahoo.co.jp/tennis/match/135997",
+   "words": [],
+   "work": "日本顶级网球赛事"
+  },
+  {
+   "batch": 7,
+   "because": "日本顶级网球赛事",
+   "date": "2026-10-17",
+   "hits": [],
    "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00007763-tennisc-000-1-view.jpg?exp=10800",
    "kind": "board",
    "score": 4,
@@ -1715,7 +1750,7 @@
    "work": "日本顶级网球赛事"
   },
   {
-   "batch": 7,
+   "batch": 8,
    "because": "滑雪",
    "date": "2026-10-16",
    "hits": [],
@@ -1758,21 +1793,6 @@
    "url": "https://collider.com/from-prime-video-sci-fi-mystery-peak-horror/",
    "words": [],
    "work": "FROM"
-  },
-  {
-   "batch": 8,
-   "because": "日本顶级网球赛事",
-   "date": "2026-10-14",
-   "hits": [],
-   "image": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227367/thumb001.png?height=720&quality=75&version=1791968473&width=1280",
-   "kind": "board",
-   "score": 4,
-   "source": "ABEMA",
-   "taste": [],
-   "title": "第5日 シングルス準々決勝 【木下グループジャパンオープンテニスウィメンズ】",
-   "url": "https://abema.tv/live-event/c84bcfa1-fe0c-429a-9b25-f2f833afab47",
-   "words": [],
-   "work": "日本顶级网球赛事"
   },
   {
    "batch": 0,
@@ -2026,15 +2046,15 @@
    8
   ],
   [
+   "作品:三星手机",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "作品:三星手机",
    7
   ],
   [
