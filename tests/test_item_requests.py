@@ -62,6 +62,21 @@ class TakeItemRequests(unittest.TestCase):
     def items(self):
         return {i["name"]: i for i in yaml.safe_load(self.file.read_text(encoding="utf-8"))["items"]}
 
+    def test_child_follows_parent_section(self):
+        """上级（parent）：板块は上級と同じに直す。上級は今ある・自分に上級のない関注項だけ（1 層）。"""
+        patched = self.run_with(
+            {"action": "add", "name": "FROM 映像", "config": {"type": "show", "parent": "FROM", "section": "好物",
+                                                             "subs": {"kind": "ドラマ"}}},
+            {"action": "add", "name": "孙", "config": {"type": "show", "parent": "FROM 映像"}},
+            {"action": "add", "name": "没这个上级", "config": {"type": "show", "parent": "不存在"}})
+        got = self.items()
+        self.assertEqual((got["FROM 映像"]["parent"], got["FROM 映像"]["section"]), ("FROM", "影视"))
+        self.assertNotIn("孙", got)
+        self.assertNotIn("没这个上级", got)
+        self.assertIn("上级", patched["item_requests?id=eq.2"]["note"])
+        settings, items = digest.load_config()
+        self.assertEqual({i["name"]: digest.section_of(i) for i in items}["FROM 映像"], "影视")
+
     def test_add_appends_and_keeps_everything_else(self):
         patched = self.run_with({"action": "add", "name": "鬼灭之刃", "config": {
             "type": "anime", "section": "影视", "size": "L", "keywords": ["鬼灭之刃", "鬼滅の刃", 'Demon "Slayer"'],
