@@ -154,6 +154,24 @@ class RunTest(unittest.TestCase):
         r = hdimg.load_state()[url]
         self.assertEqual((r["why"], r["out"]), ("Bing の小さい縮小画像", [800, 1086]))
 
+    def test_expiring_url_saved_and_dead_ones_marked(self):
+        """Yahoo の ?exp= 付きは出刊時に本站へ保存。期限切れ（404・1×1 の空白）は dead にして探し直しへ回す。"""
+        rep = {"date": "2026-10-17", "items": [{"name": "w", "stories": [
+            story("yahoo.jpg?exp=10800", "2026-10-17"), story("gone.jpg", "2026-10-16"), story("white.jpg", "2026-10-15")]}]}
+
+        def fetch(url, limit, referer=None):
+            name = url.rsplit("/", 1)[1]
+            if name == "gone.jpg":
+                return images.Fetched(404, {}, b"")
+            img = np.full((1, 1, 3), 255, np.uint8) if name == "white.jpg" else photo(1600, 900)
+            return images.Fetched(200, {}, cv2.imencode(".png", img)[1].tobytes())
+        with mock.patch.object(images, "_fetch", fetch):
+            hdimg.run("2026-10-17", [rep])
+        st = hdimg.load_state()
+        self.assertEqual(st["https://img.example/yahoo.jpg?exp=10800"]["why"], "期限付きの網址")
+        self.assertTrue(st["https://img.example/gone.jpg"]["dead"])
+        self.assertTrue(st["https://img.example/white.jpg"]["dead"])
+
     def test_files_dropped_when_story_leaves_window(self):
         rep = {"date": "2026-10-17", "items": [{"name": "w", "stories": [story("blurry.jpg", "2026-10-17")]}]}
         imgs = {"blurry.jpg": cv2.GaussianBlur(photo(500, 300), (0, 0), 2)}

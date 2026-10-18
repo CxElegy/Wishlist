@@ -26,8 +26,18 @@ import sources  # noqa: E402
 
 
 def jpeg(w, h):
+    """带图案的假照片（纯色块会被当成空白图，见 images.blank）。"""
+    from PIL import ImageDraw
+    im = Image.new("RGB", (w, h), (200, 80, 40))
+    ImageDraw.Draw(im).rectangle([w // 4, h // 4, w * 3 // 4, h * 3 // 4], fill=(30, 60, 160))
     buf = io.BytesIO()
-    Image.new("RGB", (w, h), (200, 80, 40)).save(buf, "JPEG")
+    im.save(buf, "JPEG")
+    return buf.getvalue()
+
+
+def blank_jpeg(w, h):
+    buf = io.BytesIO()
+    Image.new("RGB", (w, h), (255, 255, 255)).save(buf, "JPEG")
     return buf.getvalue()
 
 
@@ -57,6 +67,7 @@ ROUTES = {
     "/fake.jpg": (200, "image/jpeg", html_page(body="not an image")),
     "/forbidden.jpg": (403, "text/html", b"Forbidden"),
     "/huge.jpg": (200, "image/jpeg", jpeg(2000, 2000)),
+    "/blank.jpg": (200, "image/jpeg", blank_jpeg(800, 450)),
     # 网页
     "/og.html": (200, "text/html", html_page('<meta property="og:image" content="/big.jpg">')),
     "/og-reversed.html": (200, "text/html", html_page('<meta content="/big2.jpg" name="twitter:image">')),
@@ -171,6 +182,15 @@ class ImagesTest(unittest.TestCase):
         ok, why = images.check(self.u("/fake.jpg"))
         self.assertFalse(ok)
         self.assertIn("不是图片", why)
+
+    def test_rejects_blank_placeholder(self):
+        """期限切れの図の代わりに返ってくる空白（白一色）は使わない。"""
+        self.assertEqual(images.check(self.u("/blank.jpg")), (False, "空白图 800×450"))
+
+    def test_expiring_urls(self):
+        self.assertTrue(images.expiring("https://newsatcl-pctr.c.yimg.jp/t/amd-img/x-view.jpg?exp=10800"))
+        self.assertTrue(images.expiring("https://s3.example/a.jpg?X-Amz-Expires=600&x=1"))
+        self.assertFalse(images.expiring("https://a.example/export=1/a.jpg"))
 
     def test_rejects_403(self):
         self.assertEqual(images.check(self.u("/forbidden.jpg")), (False, "图片 HTTP 403"))

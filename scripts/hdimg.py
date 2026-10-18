@@ -1,11 +1,13 @@
 """配图的高清化・本站保存：用 OpenCV 的规则处理（不用 AI、不叫外部服务）。
 
-原图看得清就不动（不花资源）。只有这三种情况把报道的配图存一份到 docs/pics/（网页优先用这份，打不开再用原图）：
+原图看得清就不动（不花资源）。只有这四种情况把报道的配图存一份到 docs/pics/（网页优先用这份，打不开再用原图）：
   1. 看不清：网页上要放大 ENLARGE 倍以上才铺满（大位置 BIG_PX、卡片 CARD_PX，按 2 倍屏算），
      而且放到显示大小后量出来是糊的（blur > BLUR）→ 去噪・放大・锐化。
      两个条件都要：图小但锐利（文字横幅）放大一点也看得清；糊但够大的（背景虚化的照片）是拍法，不是看不清。
   2. Bing 的小缩略图：去掉 w 只给 100×100（看不清），带 w 又补一圈白边 → 取带 w 的，用 OpenCV 切掉白边
   3. 防盗链：浏览器打不开（新浪 sinaimg 这类，不带 Referer 就 403）→ 带原文网页作 Referer 下载，存一份
+  4. 期限付きの網址（Yahoo ニュースの ?exp=10800 など，images.expiring）：数时间后变成 404 + 1×1 的空白 → 出刊时（还有效）存一份
+已经打不开・变成空白的图记 dead：digest.retry_images 去原文重新找图（原文给的是新的有效地址，再由这里存一份）。
 
 糊不糊（blur）：无参考的模糊度（Crété-Roffet 2007，re-blur 法）。把图缩放到显示大小（浏览器那样双线性），
   自己再用 1×9 的均值模糊一次，看相邻像素的差少了多少：本来就糊的图再模糊也几乎不变（接近 1），清楚的图会掉很多（接近 0）。
@@ -51,7 +53,7 @@ QUALITY = 82        # webp 质量
 WINDOW_DAYS = 8     # 网页显示最近 7 天（render.HOLD_DAYS），多留 1 天
 WORKERS = 6         # 同时下载几张
 RETRY_DAYS = 1      # 下载失败的图隔几天再试
-VERSION = 2         # 判断规则的版本：改了规则就加 1，state 里旧版的记录重新判断一次
+VERSION = 3         # 判断规则的版本：改了规则就加 1，state 里旧版的记录重新判断一次
 BING_WH = re.compile(r"&(amp;)?[wh]=\d+")
 BING_WIDE = 1200    # 2. Bing 的小缩略图改取这个宽度（再切白边）
 SINA_SIZE = re.compile(r"(sinaimg\.cn)/(?:thumbnail|thumb\d+|small|bmiddle|middle|orj\d+|mw\d+)/")
@@ -188,15 +190,17 @@ def process(url, target, referer):
     import cv2
     body, ref = _download(url, referer)
     bgr = _decode(body)
-    if bgr is None:
-        return {"target": target, "v": VERSION, "fail": "下载失败或不是图片"}
+    if bgr is None:   # 打不开了（期限切れの 404・削除）：dead → digest.retry_images が原文から図を探し直す
+        return {"target": target, "v": VERSION, "fail": "下载失败或不是图片", "dead": True}
     h, w = bgr.shape[:2]
     rec = {"w": w, "h": h, "target": target, "v": VERSION}
-    why = "防盗链" if ref else ""
+    why = "防盗链" if ref else "期限付きの網址" if images.expiring(url) else ""
     if images.is_bing_thumb(url) and max(w, h) < images.MIN_LONG_SIDE:
         wide = _decode(images._fetch(BING_WH.sub("", url) + f"&w={BING_WIDE}", images.IMAGE_LIMIT).body)
         if wide is not None:
             bgr, why = trim_white(wide), "Bing の小さい縮小画像"
+    if max(bgr.shape[:2]) < images.MIN_LONG_SIDE or float(bgr.std(axis=(0, 1)).max()) < images.BLANK_STD:
+        return {**rec, "dead": True}   # 1×1 の空白・単色の代わりの図に変わっていた
     need, scale, b = unclear(bgr, target)
     if b is not None:
         rec["blur"] = round(b, 3)
