@@ -2208,7 +2208,10 @@ def write_page():
         adm, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), updated)
     (DOCS_DIR / "admin.html").write_text(admin_html, encoding="utf-8")
     # 開いたままのページはこれを 1 分ごとに読み、自分の指紋と違えば新しい内容を出す（render.LIVE_JS）
-    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "heat": ver_heat, **vers, "updated": updated})
+    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "heat": ver_heat, **vers, "updated": updated,
+                                          # どの版面・パネルが変わったか（開いたままのページが通知に名前を出す：render.LIVE_JS）
+                                          "index_marks": render.page_marks(html_), "admin_marks": render.page_marks(admin_html),
+                                          "heat_marks": render.page_marks(heat_html)})
     (DOCS_DIR / ".nojekyll").touch()
 
 
