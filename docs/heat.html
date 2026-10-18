@@ -156,7 +156,13 @@ button{font-family:inherit}
 .wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
 .wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
  padding:8px 10px 11px;transition:transform .12s,box-shadow .12s}
-.wc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.wc{transform:rotate(var(--r,0deg))}
+.wc:hover{transform:rotate(var(--r,0deg)) translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+/* P5 の手法：上下の端はそろえ、中のカードだけ 0.4〜1.2° ずつ不ぞろいに傾ける（同じ向きが続かない） */
+.mgrid .wc:nth-child(1){--r:-.6deg}.mgrid .wc:nth-child(2){--r:1.1deg}.mgrid .wc:nth-child(3){--r:-.8deg}
+.mgrid .wc:nth-child(4){--r:.5deg}.mgrid .wc:nth-child(5){--r:-1.2deg}.mgrid .wc:nth-child(6){--r:.9deg}
+.mgrid .wc:nth-child(7){--r:-.4deg}.mgrid .wc:nth-child(8){--r:1deg}.mgrid .wc:nth-child(9){--r:-.7deg}
+.fside .agenda{transform:rotate(.7deg)}.fside .swish{transform:rotate(-.9deg)}
 .wc.lead{grid-column:span 2;grid-row:span 2}
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
 .wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
@@ -926,7 +932,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="c1e408e31b2b"><style>
+<meta name="wl-ver" data-page="heat" content="0d85ebba3365"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -947,7 +953,7 @@ section.fresh{position:relative}
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.18</b></div>
-<div class="meta"><small>更新</small><b>10.18 09:18</b></div></div>
+<div class="meta"><small>更新</small><b>10.18 09:20</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
