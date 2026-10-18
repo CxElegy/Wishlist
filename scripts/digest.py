@@ -1095,7 +1095,7 @@ def export_photos():
 # 设置页上能新增 / 修改的字段（按写进 items.yaml 的顺序）。值的检查规则：
 #   str:N 不超过 N 字的一句话；list:N:M 最多 N 个、每个不超过 M 字的字符串列表
 ITEM_FIELDS = {
-    "type": "type", "parent": "str:80", "section": "section", "subs": "subs", "size": "size", "subtitle": "str:80",
+    "type": "type", "parent": "str:80", "section": "section", "subs": "subs", "also": "also", "size": "size", "subtitle": "str:80",
     "keywords": "list:12:100", "match": "list:30:100", "exclude": "list:30:100", "news_langs": "langs",
     "priority": "str:300", "urgent_patterns": "regex", "site": "url",
     "steam_appid": "int", "anilist_id": "int", "anilist_type": "anilist_type", "tmdb": "tmdb", "notes": "str:1500",
@@ -1136,6 +1136,11 @@ def _clean_field(key, value):
         if value not in taxonomy.SECTIONS:
             raise ValueError(f"板块只能选 sections.yaml 里的：{'/'.join(taxonomy.SECTIONS)}")
         return value
+    if rule == "also":   # ほかの板块：{板块: {分け方: 小分類}}（版面は section に 1 つ、ここに書いた板块には目次の乗換駅）
+        if not isinstance(value, dict) or len(value) > 4 or not all(k in taxonomy.SECTIONS for k in value):
+            raise ValueError(f"also 的板块只能选 sections.yaml 里的：{'/'.join(taxonomy.SECTIONS)}")
+        first = lambda k: taxonomy.SECTIONS[k]["schemes"][0]
+        return {k: _clean_field("subs", v or {first(k)["id"]: taxonomy.values(first(k))[0]}) for k, v in value.items()} or None
     if rule == "subs":
         if not isinstance(value, dict) or len(value) > 6 or not all(
                 isinstance(k, str) and re.fullmatch(r"[a-z_]{1,20}", k) and isinstance(v, str) and 0 < len(v.strip()) <= 20
@@ -1181,8 +1186,9 @@ def clean_item_config(config):
 def _yaml_field(key, value):
     """一个字段写成 items.yaml 里的几行（4 格缩进；字符串都用 JSON 引号，YAML 也认）。"""
     q = lambda v: json.dumps(v, ensure_ascii=False)
-    if isinstance(value, dict):
-        return [f"    {key}: {{{', '.join(f'{k}: {q(v)}' for k, v in value.items())}}}"]
+    if isinstance(value, dict):   # flow mapping 1 行（also は {板块: {分け方: 小分類}} の 2 段）
+        flow = lambda d: "{" + ", ".join(f"{k}: {flow(v) if isinstance(v, dict) else q(v)}" for k, v in d.items()) + "}"
+        return [f"    {key}: {flow(value)}"]
     if isinstance(value, list):
         if key == "urgent_patterns":
             return [f"    {key}:"] + [f"      - {q(v)}" for v in value]
@@ -1271,6 +1277,8 @@ def take_item_requests():
                 if any(i.get("parent") == name for i in items):
                     raise ValueError(f"「{name}」下面已经有下级了，不能再挂到别人下面（只做一层）")
                 fields["section"] = section_of(top)
+            if fields.get("also") and fields.get("section"):
+                fields["also"] = {k: v for k, v in fields["also"].items() if k != fields["section"]} or None
             if r.get("action") == "edit":
                 if name not in names:
                     raise ValueError(f"关注清单里没有「{name}」")
@@ -2196,7 +2204,7 @@ def write_page():
                           render.busy_plan([i["name"] for i in items],
                                            {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
                           {i["name"]: str(i["parent"]) for i in items if i.get("parent")},
-                          {k: v["score"] for k, v in sub_heat.items()}, langs)
+                          {k: v["score"] for k, v in sub_heat.items()}, langs, also_map(items, schemes))
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
@@ -2256,6 +2264,10 @@ def load_config():
         top = by_name.get(item.get("parent"))
         if top is not None and top is not item:
             item["section"] = top.get("section") or taxonomy.BY_TYPE.get(top.get("type", "product"), "好物")
+    for item in items:   # also：本来の板块と同じもの・表にないものは捨てる
+        if isinstance(item.get("also"), dict):
+            mine = item.get("section") or taxonomy.BY_TYPE.get(item.get("type", "product"), "好物")
+            item["also"] = {k: v if isinstance(v, dict) else {} for k, v in item["also"].items() if k in taxonomy.SECTIONS and k != mine}
     for item in items:
         item.setdefault("type", "product")
         if item["type"] not in ITEM_TYPES:
@@ -2494,6 +2506,19 @@ def last_story(name, before):
                 s = min(block["stories"], key=lambda s: {"hero": 0, "lead": 1}.get(s.get("weight"), 2))
                 return {"headline": s["headline"], "url": s["url"], "date": path.stem}
     return None
+
+
+def also_map(items, schemes):
+    """目次の乗換駅：{作品: [(ほかの板块, その板块で選んでいる分け方の小分類)]}（items.yaml の also）。"""
+    out = {}
+    for i in items:
+        for sec, subs in (i.get("also") or {}).items():
+            if sec == section_of(i) or sec not in taxonomy.SECTIONS:
+                continue
+            first = taxonomy.SECTIONS[sec]["schemes"][0]
+            sb = (subs or {}).get(schemes.get(sec) or first["id"]) or next(iter((subs or {}).values()), "") or taxonomy.values(first)[0]
+            out.setdefault(i["name"], []).append((sec, sb))
+    return out
 
 
 def section_of(item):

@@ -102,3 +102,35 @@ class WebRequests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AlsoSections(unittest.TestCase):
+    """also：版面は本来の板块に 1 つ、ほかの板块の目次には乗換の駅（ちいかわ：グッズ ＋ 映像）。"""
+
+    def test_clean_and_write(self):
+        also = digest.clean_item_config({"also": {"影视": {"kind": "アニメ", "origin": "日本"}, "书刊": {}}})["also"]
+        self.assertEqual(also["影视"], {"kind": "アニメ", "origin": "日本"})
+        self.assertEqual(also["书刊"], {"kind": "マンガ"})                      # 空なら最初の分け方の最初の値
+        text = "items:\n" + digest.item_entry_yaml("ちいかわ", {"type": "category", "section": "好物", "also": also})
+        self.assertIn('    also: {影视: {kind: "アニメ", origin: "日本"}, 书刊: {kind: "マンガ"}}', text)
+        self.assertEqual(yaml.safe_load(text)["items"][0]["also"], also)
+        with self.assertRaises(ValueError):
+            digest.clean_item_config({"also": {"新板块": {}}})
+        self.assertIsNone(digest.clean_item_config({"also": {}})["also"])
+
+    def test_also_map_uses_chosen_scheme(self):
+        items = [{"name": "ちいかわ", "section": "好物", "also": {"影视": {"kind": "アニメ", "origin": "日本"}, "好物": {}}}]
+        self.assertEqual(digest.also_map(items, {"影视": "origin"}), {"ちいかわ": [("影视", "日本")]})   # 本来の板块は除く
+        self.assertEqual(digest.also_map(items, {}), {"ちいかわ": [("影视", "アニメ")]})
+
+    def test_nav_has_transfer_station(self):
+        w = {"name": "ちいかわ", "section": "好物", "stories": [], "_heat": {}}
+        g = {"name": "FROM", "section": "影视", "stories": [], "_heat": {}}
+        html = render._nav([g, w], "2026-10-18", subs={"ちいかわ": "キャラクター", "FROM": "ドラマ"},
+                           also={"ちいかわ": [("影视", "アニメ")]})
+        self.assertEqual(html.count('data-for="ちいかわ"'), 1)                 # 版面への本来の駅は 1 つ
+        self.assertIn('class="pill xfer"', html)
+        self.assertIn("⇄ グッズ", html)
+        screen = html[html.index('data-sec="影视"><a class="nsec"'):html.index('data-sec="好物"><a class="nsec"')]
+        self.assertIn('data-x="ちいかわ"', screen)                             # 映像の目次にちいかわの乗換駅
+        self.assertIn('data-sub="アニメ"', screen)

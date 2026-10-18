@@ -21,7 +21,8 @@
     return [S.name, p?.desc, ...(p?.aliases || []), ...Object.values(p?.names || {}), ...(o.keywords || []), o.notes || ""].join(" ");
   }
 
-  // 每种东西可以关注的方面。rec = 「你帮我定」时选它。priority 写进「最关心什么」，urgent 是要紧消息的动词（和名字一起拼成正则），
+  // 每种东西可以关注的方面。sec = 选了它就推荐「也放在」这个板块（[板块, 小分类的预设]，ちいかわ选「动画」→ 映像・アニメ）。
+  // rec = 「你帮我定」时选它。priority 写进「最关心什么」，urgent 是要紧消息的动词（和名字一起拼成正则），
   // kw 是额外的搜索词（{n} = 名字，{en} / {ja} = 英文 / 日文名），ask 表示还要追问一句
   const KINDS = {
     game: {label: "游戏", hint: "手游、主机、PC 游戏", type: "game", section: "游戏", focus: [
@@ -34,7 +35,7 @@
        kw: ["{en} esports", "{ja} 大会", "{n} 電競"]},
       {id: "sale", label: "打折、免费送", hint: "史低、限免", priority: "什么时候打折或限免",
        urgent: "(セール|特價|特价|折扣|降價|降价|史低|免費|免费|無料|sale)"},
-      {id: "collab", label: "联名、周边", hint: "跨界联动、手办、周边", priority: "联名和周边",
+      {sec: ["好物", {kind: "キャラクター", owner: "キャラクター"}], id: "collab", label: "联名、周边", hint: "跨界联动、手办、周边", priority: "联名和周边",
        urgent: "(コラボ|联名|聯名|collab|グッズ|周边|周邊|フィギュア)"},
       {id: "story", label: "剧情、角色、世界观", hint: "新剧情、角色设定", priority: "新剧情和角色设定"},
     ]},
@@ -42,9 +43,9 @@
       {rec: true, id: "sequel", label: "新一季 / 续作 / 剧场版", hint: "什么时候官宣、定档", priority: "新一季、续作或剧场版什么时候出",
        urgent: "(第\\s?[0-9一二三四五六七八九十]+\\s?(季|期)|続編|续篇|續篇|新作|劇場版|剧场版|映画化|放送決定|定档|定檔|製作決定|制作决定|season \\d|sequel)"},
       {rec: true, id: "air", label: "播出时间、每集更新", hint: "什么时候播、在哪看", priority: "播出时间和每集更新"},
-      {id: "manga", label: "漫画连载、单行本", hint: "最新话、出刊、完结", priority: "漫画连载和单行本",
+      {sec: ["书刊", {kind: "マンガ"}], id: "manga", label: "漫画连载、单行本", hint: "最新话、出刊、完结", priority: "漫画连载和单行本",
        urgent: "(単行本|单行本|最新刊|最終回|最终话|最終話|完結|完结|休載|休刊)"},
-      {id: "collab", label: "周边、联名、展览", hint: "快闪店、联名商品", priority: "周边、联名和展览",
+      {sec: ["好物", {kind: "キャラクター", owner: "キャラクター"}], id: "collab", label: "周边、联名、展览", hint: "快闪店、联名商品", priority: "周边、联名和展览",
        urgent: "(コラボ|联名|聯名|展覧会|展览|展覽|POP ?UP|ポップアップ|快闪)"},
       {id: "cast", label: "声优、活动、演唱会", hint: "舞台剧、见面会", priority: "声优活动和演唱会",
        urgent: "(イベント|ライブ|舞台|声優|声优|聲優)"},
@@ -88,7 +89,7 @@
        urgent: "(ポップアップ|POP ?UP|快闪|快閃|カフェ|咖啡|展覧会|展览|展覽|期間限定ショップ)"},
       {id: "lottery", label: "抽选、限定、预约", hint: "要抢的东西", priority: "抽选、限定品和预约怎么买",
        urgent: "(抽選|抽选|限定|予約|预约|預約|受注)"},
-      {id: "media", label: "动画、活动、周年", hint: "新动画、生日、周年庆", priority: "新动画、活动和周年纪念",
+      {sec: ["影视", {kind: "アニメ"}], id: "media", label: "动画、电影、活动", hint: "新动画、剧场版、生日、周年庆", priority: "新动画、活动和周年纪念",
        urgent: "(アニメ|动画|動畫|周年|週年|アニバーサリー|anniversary|誕生日|生日)"},
     ]},
     book: {label: "书 / 杂志 / 漫画单行本", hint: "杂志、小说、漫画、写真集", type: "product", section: "书刊", focus: [
@@ -183,6 +184,16 @@
       if (pick != null) out[sc.id] = vOf(pick);
     }
     return out;
+  }
+
+  // 「也放在」的推荐：选了的关注方面带 sec 的板块（ちいかわ：选「动画、电影、活动」→ 映像）。主板块（版面所在）除外
+  const alsoRec = main => [...new Set(chosenFocus().filter(f => f.sec && f.sec[0] !== main).map(f => f.sec[0]))];
+  const secsNow = () => S.ans.sections || [S.ans.section || guessSection(), ...alsoRec(S.ans.section || guessSection())];
+  // 也放在的板块里的小分类：按关注方面的预设，其他按说明・名字
+  function alsoSubs(key) {
+    const pre = chosenFocus().find(f => f.sec && f.sec[0] === key)?.sec[1] || {};
+    const base = guessSubs(key);
+    return Object.fromEntries((secOf(key).schemes || []).map(sc => [sc.id, pre[sc.id] || base[sc.id]]));
   }
 
   const EXCLUDES = [
@@ -285,8 +296,7 @@
     {id: "langs", render: () => multi("langs", "看哪些语言的新闻？", langHint(),
       Object.entries(LANGS).map(([v, l]) => ({v, label: l, hint: v === "zh-CN" ? "大陆网站常拦海外、图片防盗链，一般不用" : ""})), {min: 1})},
     {id: "parent", when: () => tops().length > 0, render: askParent},
-    {id: "section", when: () => !S.ans.parent, render: () => single("section", "放在头版哪个板块？", "板块是事先定好的一整套（没有关注项的板块网页上不显示）。按维基数据的说明和名字推荐了一个，不对就改。",
-      SECS.map(x => ({v: x.key, label: x.ja, hint: x.key === guessSection() ? "推荐" : ""})))},
+    {id: "section", when: () => !S.ans.parent, render: askSections},
     {id: "subs", render: askSubs},
     {id: "size", when: () => S.mode === "add", render: () => single("size", "每期给它多大篇幅？", "以后在上面的列表里随时能改。", [
       {v: "S", label: "S · 少", hint: "每期最多 3 条，大约一行"}, {v: "M", label: "M · 中等", hint: "每期最多 5 条"},
@@ -303,6 +313,7 @@
     if (id === "urgent") return chosenFocus().filter(f => f.urgent).map(f => f.id);
     if (id === "langs") return [...new Set(["zh-TW", "en-US", ...(pick?.origin || []).filter(l => l !== "zh-CN")])];
     if (id === "section") return S.ans.parent ? guessSection() : S.original?.section || guessSection();
+    if (id === "sections") return S.original ? [S.original.section, ...Object.keys(S.original.also || {})] : secsNow();
     if (id === "parent") return S.original ? S.original.parent || "" : parentCandidates()[0]?.name || "";
     if (id === "subs") { const sec = S.ans.section || guessSection();
                          return sec === S.original?.section && S.original?.subs ? {...S.original.subs} : guessSubs(sec); }
@@ -326,7 +337,7 @@
     if (id === "urgent") return chosenFocus().filter(f => v.includes(f.id)).map(f => f.label).join("、") || "不用";
     if (id === "exclude") return EXCLUDES.filter(x => v.includes(x.id)).map(x => x.label).join("、") || "都看";
     if (id === "langs") return v.map(l => LANGS[l]).join("、");
-    if (id === "section") return secOf(v).ja;
+    if (id === "section") return [v, ...alsoRec(v)].map(k => secOf(k).ja).join(" ＋ ");
     if (id === "parent") return v || "不属于";
     if (id === "subs") return Object.values(v || {}).join(" · ");
     return v || "";
@@ -335,7 +346,10 @@
   function autoRest() {   // 「剩下的都交给你」：从这一问开始，没回答的都替你选，直接到汇总
     for (let i = S.step, steps = live(); i < steps.length; i++, steps = live()) {
       const id = steps[i].id;
-      if (AUTO_STEPS.includes(id) && (S.ans[id] == null || i === S.step || S.auto[id])) { S.ans[id] = autoValue(id); S.auto[id] = true; }
+      if (AUTO_STEPS.includes(id) && (S.ans[id] == null || i === S.step || S.auto[id])) {
+        S.ans[id] = autoValue(id); S.auto[id] = true;
+        if (id === "section") { S.ans.sections = [S.ans.section, ...alsoRec(S.ans.section)]; delete S.ans.also; }
+      }
     }
     S.touched = true; S.step = live().length - 1; S.draft = build(); draw();
   }
@@ -382,7 +396,7 @@
     if (id === "name") return S.name;
     if (id === "which") return wdPick()?.title || "不用查";
     if (id === "kind") return KINDS[a]?.label || "";
-    if (id === "section") return a ? secOf(a).ja : "";
+    if (id === "section") return a ? [a, ...(S.ans.sections || []).filter(k => k !== a)].map(k => secOf(k).ja).join(" ＋ ") : "";
     if (id === "parent") return a || "不属于";
     if (id === "subs") return Object.values(a || {}).join(" · ");
     if (id === "focus") return [...chosenFocus().map(f => f.label), S.ans.focus_other].filter(Boolean).join("、");
@@ -471,6 +485,30 @@
     return h("div", {class: "q"}, ...body);
   }
 
+  // 板块：可以多选。版面只有一个，放在「主板块」；其他板块的目录里放「乗換」的站，点了跳到同一个版面（同一条新闻只出现一次）。
+  // 推荐：它自己本来的板块 ＋ 选了的关注方面带的板块（ちいかわ：グッズ ＋「动画、电影、活动」→ 映像）
+  function askSections() {
+    if (!S.ans.sections) S.ans.sections = defaults("sections");
+    if (!S.ans.section || !S.ans.sections.includes(S.ans.section)) S.ans.section = S.ans.sections[0];
+    const rec = new Set([guessSection(), ...alsoRec(guessSection())]);
+    const toggle = k => {
+      const cur = S.ans.sections;
+      S.ans.sections = cur.includes(k) ? cur.filter(x => x !== k) : [...cur, k];
+      if (!S.ans.sections.includes(S.ans.section)) S.ans.section = S.ans.sections[0];
+      S.auto.section = false; delete S.ans.subs; delete S.ans.also; draw();
+    };
+    const chosen = S.ans.sections;
+    const main = chosen.length > 1 ? h("div", {class: "subrow"}, h("h4", {}, "版面放在哪个？（主板块）"),
+      h("div", {class: "opts", role: "radiogroup"}, chosen.map(k => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.section === k),
+        onclick: () => { S.ans.section = k; delete S.ans.subs; delete S.ans.also; draw(); }}, secOf(k).ja)))) : null;
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, "放在头版哪个板块？可以多选"),
+      h("p", {}, "比如 ちいかわ 既是周边又有动画，就选「グッズ」和「映像」。版面只有一个，放在主板块；其他板块的目录里放一个「⇄ 乗換」的站，" +
+                 "点了跳到同一个版面，同一条新闻不会出现两次。推荐的是按维基数据的说明、名字和你选的关注方面定的。"),
+      h("div", {class: "opts secgrid", role: "group"}, SECS.map(x => h("button", {type: "button", class: "opt", "aria-pressed": String(chosen.includes(x.key)),
+        onclick: () => toggle(x.key)}, x.ja, rec.has(x.key) ? h("small", {}, "推荐") : null))),
+      main, nav(chosen.length > 0));
+  }
+
   // 上级：同一系列 / 品牌 / IP 里的一部作品、一个商品（ちいかわ アニメ → ちいかわ）。只做一层，所以候补只有自己没有上级的。
   // 名字・维基数据里出现了的已有项排前面并推荐；其他的从下拉里选
   function askParent() {
@@ -507,6 +545,18 @@
         h("input", {type: "text", maxlength: 20, value: own, placeholder: "放不进去就自己写（日语、短）", "aria-label": `${sc.label}：自己写`,
           oninput: ev => { const t = ev.target.value.trim(); if (t) subs[sc.id] = t; else subs[sc.id] = vals[0]; S.auto.subs = false; okBtn.disabled = !done(); }}));
     });
+    // 也放在的板块：各自的小分类（乗換の駅がその板块のどの小分類に並ぶか）
+    const others = S.ans.parent ? [] : (S.ans.sections || []).filter(k => k !== S.ans.section);
+    S.ans.also = Object.fromEntries(others.map(k => [k, S.ans.also?.[k] || alsoSubs(k)]));
+    for (const k of others) {
+      rows.push(h("h4", {class: "alsoh"}, `⇄「${secOf(k).ja}」里的小分类（乗換の站）`));
+      for (const sc of secOf(k).schemes || []) {
+        const vals = (sc.values || []).map(vOf), cur = S.ans.also[k];
+        rows.push(h("div", {class: "subrow"}, h("h4", {}, sc.label),
+          h("div", {class: "opts", role: "radiogroup", "aria-label": `${secOf(k).ja}・${sc.label}`}, uniq([...vals, cur[sc.id]]).map(v => h("button", {type: "button", class: "opt",
+            "aria-pressed": String(cur[sc.id] === v), onclick: () => { cur[sc.id] = v; draw(); }}, v)))));
+      }
+    }
     const n = nav(done()); okBtn = n.querySelector(".main");
     return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, `「${sec.ja}」里的小分类`),
       h("p", {}, "左边目录按它分组。每种分法各选一个，用哪种分法在本页上面的「目录的小分类分法」选。"), ...rows,
@@ -557,7 +607,9 @@
     const section = (parent && (CFG.items.find(i => i.name === parent) || {}).section) || S.ans.section || base.section || guessSection();
     const d = {
       ...base,
-      type: k.type, parent, section, subs: S.ans.subs || base.subs || guessSubs(section), keywords, match,
+      type: k.type, parent, section, subs: S.ans.subs || base.subs || guessSubs(section),
+      also: parent ? {} : S.ans.also || (S.ans.sections ? Object.fromEntries(S.ans.sections.filter(x => x !== section).map(x => [x, alsoSubs(x)])) : base.also || {}),
+      keywords, match,
       // 修改时跳过了的问题保留原来的设置
       priority: focus.length || S.ans.focus_other ? priority : base.priority || "",
       urgent_patterns: S.ans.urgent ? urgent : base.urgent_patterns || [], exclude: uniq([...(S.mode === "edit" ? base.exclude || [] : []), ...exclude]),
@@ -627,8 +679,20 @@
           h("select", {"data-sub": sc.id}, vals.map(v => h("option", {value: v, selected: cur[sc.id] === v}, v))));
       }));
     };
+    // 也放在（乗換の駅）：板块ごとにチェック、チェックした板块の小分類
+    const alsoBox = h("div", {class: "alsobox"});
+    const drawAlso = () => {
+      const main = section.value, cur = d.also || {};
+      alsoBox.replaceChildren(h("span", {}, "也放在（目录里放 ⇄ 乗換的站，版面只有一个）"),
+        h("div", {class: "checks"}, SECS.filter(x => x.key !== main).map(x => h("label", {}, h("input", {type: "checkbox", value: x.key,
+          checked: !!cur[x.key], "data-also": "", onchange: ev => { if (ev.target.checked) cur[x.key] = cur[x.key] || alsoSubs(x.key); else delete cur[x.key]; d.also = cur; drawAlso(); }}), x.ja))),
+        ...Object.keys(cur).filter(k => k !== main).map(k => h("div", {class: "two subs"}, (secOf(k).schemes || []).map(sc =>
+          h("label", {}, h("span", {}, `⇄ ${secOf(k).ja}・${sc.label}`),
+            h("select", {"data-also-sub": `${k}|${sc.id}`}, uniq([...(sc.values || []).map(vOf), cur[k][sc.id]]).map(v => h("option", {value: v, selected: cur[k][sc.id] === v}, v))))))));
+    };
     drawSubs(d.section);
-    section.addEventListener("change", () => drawSubs(section.value));
+    drawAlso();
+    section.addEventListener("change", () => { drawSubs(section.value); drawAlso(); });
     const langs = h("div", {class: "checks"}, Object.entries(LANGS).map(([v, l]) =>
       h("label", {}, h("input", {type: "checkbox", value: v, checked: (d.news_langs || []).includes(v), "data-lang": ""}), l)));
     const size = S.mode === "add" ? h("div", {class: "f"}, h("span", {}, "篇幅"), h("div", {class: "checks"}, ["S", "M", "L"].map(v =>
@@ -640,6 +704,7 @@
         h("input", {type: "text", value: S.name, maxlength: 80, "data-k": "name"})) : null,
       h("div", {class: "two"}, h("label", {}, h("span", {}, "类型"), types),
         h("label", {}, h("span", {}, "板块"), section)),
+      d.parent ? null : alsoBox,
       tops().length ? h("label", {}, h("span", {}, "上级"), h("small", {}, "同一个 IP・系列・品牌里的作品或商品，挂在它下面；板块跟着上级"), parentSel) : null,
       subsBox,
       size,
@@ -668,6 +733,12 @@
       d[k] = isList ? uniq(v.split("\n")) : v;
     });
     d.subs = Object.fromEntries([...form.querySelectorAll("[data-sub]")].map(el => [el.dataset.sub, el.value]));
+    const also = {};
+    if (!d.parent) {
+      for (const el of form.querySelectorAll("[data-also]:checked")) if (el.value !== d.section) also[el.value] = {};
+      for (const el of form.querySelectorAll("[data-also-sub]")) { const [k, id] = el.dataset.alsoSub.split("|"); if (also[k]) also[k][id] = el.value; }
+    }
+    d.also = also;
     d.news_langs = [...form.querySelectorAll("[data-lang]:checked")].map(x => x.value);
     const size = form.querySelector("input[name=wl-size]:checked");
     if (size) d.size = size.value;
@@ -679,6 +750,7 @@
     if (!name) return "名字要填";
     if (!d.section) return "板块要选";
     if ((secOf(d.section).schemes || []).some(sc => !(d.subs || {})[sc.id])) return "小分类每种分法都要选";
+    for (const [k, v] of Object.entries(d.also || {})) if ((secOf(k).schemes || []).some(sc => !v[sc.id])) return `「${secOf(k).ja}」的小分类每种分法都要选`;
     if (!d.news_langs.length) return "至少选一种新闻语言";
     for (const p of d.urgent_patterns || []) { try { new RegExp(p); } catch (_) { return `要紧消息规则写错了：${p.slice(0, 30)}…`; } }
     for (const k of ["steam_appid", "anilist_id"]) if (d[k] !== "" && d[k] != null && !Number.isInteger(d[k])) return `${k} 要是数字`;
@@ -690,7 +762,7 @@
 
   const norm = (k, v) => Array.isArray(v) ? (k === "news_langs" ? [...v].sort() : v) : v ?? "";
   const same = (k, a, b) => JSON.stringify(norm(k, a ?? (Array.isArray(b) ? [] : ""))) === JSON.stringify(norm(k, b ?? (Array.isArray(a) ? [] : "")));
-  const KEYS = ["type", "parent", "section", "subs", "size", "subtitle", "keywords", "match", "exclude", "news_langs", "priority", "urgent_patterns",
+  const KEYS = ["type", "parent", "section", "subs", "also", "size", "subtitle", "keywords", "match", "exclude", "news_langs", "priority", "urgent_patterns",
                 "site", "steam_appid", "anilist_id", "anilist_type", "tmdb", "notes"];
 
   async function submit(form, msg, btn) {
@@ -764,7 +836,8 @@
     if (!item) return;
     S = fresh();
     S.mode = "edit"; S.name = name; S.original = {...item, news_langs: item.news_langs || CFG.langs};
-    S.ans = {kind: KIND_OF_TYPE[item.type] || "product", section: item.section, parent: item.parent || "", subs: item.subs ? {...item.subs} : undefined, langs: item.news_langs};
+    S.ans = {kind: KIND_OF_TYPE[item.type] || "product", section: item.section, parent: item.parent || "", subs: item.subs ? {...item.subs} : undefined, langs: item.news_langs,
+             sections: [item.section, ...Object.keys(item.also || {})], also: item.also ? JSON.parse(JSON.stringify(item.also)) : undefined};
     if (item.section === "运动" && item.type === "category") S.ans.kind = "sports";
     S.draft = {...S.original};
     S.step = live().length - 1;
