@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-18T00:32:26+00:00",
+ "changed": true,
+ "checked": "2026-10-18T00:33:00+00:00",
  "fired": {
-  "at": "2026-10-18T00:32:26+00:00",
+  "at": "2026-10-18T00:33:00+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "Claude を起こした（2 回目：前は動かなかった）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,11 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-18T00:32:26+00:00",
-    "attempts": 1,
-    "forced": true,
+    "at": "2026-10-18T00:33:00+00:00",
+    "attempts": 2,
     "prog": 0,
-    "resp": "cse_01GM1eahP7Q5ahpge6kgjBnX",
-    "sig": "ae97186250d8"
+    "resp": "cse_01MZ4931SAkH3khRqLFW7d3x",
+    "sig": "3407aaf71008"
    },
    "items": [
     "A2O LITE",
@@ -41,7 +40,7 @@
    ],
    "need": true,
    "prog": 0,
-   "sig": "ae97186250d8",
+   "sig": "3407aaf71008",
    "why": "整理待ちの記事 111 件（18 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
