@@ -2595,8 +2595,9 @@ def publish(inbox_path=None):
     save_json(REPORTS_DIR / f"{date}.json", issue)
     recommend()
     prune_reddit()
-    retry_images()
-    hd_images()
+    hd_images()            # 配图看不清・期限付き → 本站保存；打不开了的记 dead
+    if retry_images():     # 没图・dead 的报道去原文重新找图
+        hd_images()        # 新找到的图（期限付きの網址など）也存一份
     write_page()
     write_issue_markdown(issue, settings)
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
@@ -2610,7 +2611,8 @@ IMG_RETRY_DAYS = 8     # 网页显示最近 7 天，多看 1 天
 
 
 def retry_images(days=IMG_RETRY_DAYS):
-    """已经出刊、但没有自己配图的报道（当时原文被挡、限流、网站临时打不开），以后每次出刊自动再找：
+    """已经出刊、但没有自己配图的报道（当时原文被挡、限流、网站临时打不开），和配图后来打不开了的报道
+    （期限付きの網址が切れた・削除された，hdimg 记的 dead），以后每次出刊自动再找：
     同一条最多每 IMG_RETRY_HOURS 小时找一次，一次出刊最多 IMG_RETRY_MAX 条，找图顺序和出刊时一样
     （images.pick，原文 → 同一件事的别家报道 → 转载）。很久没试的先试。找到了就写回报告。返回找到几条。"""
     _, items = load_config()
@@ -2619,8 +2621,10 @@ def retry_images(days=IMG_RETRY_DAYS):
     tried = load_json(IMG_RETRY_FILE) or {}
     paths = sorted(REPORTS_DIR.glob("????-??-??.json"))[-days:]
     reports = [(p, load_json(p)) for p in paths]
+    import hdimg
+    dead = {u for u, r in hdimg.load_state().items() if isinstance(r, dict) and r.get("dead")}   # 期限切れ・削除で開けなくなった図
     used = {st["image"] for _, r in reports for b in r["items"] for st in b.get("stories") or []
-            if st.get("image") and st.get("image_via") != "作品封面"}
+            if st.get("image") and st.get("image_via") != "作品封面"} | dead
     raw, boards = {}, {}   # 链接 → inbox 里的原始条目；(日期, 关注项) → 那天的全部条目
     for ip in sorted(INBOX_DIR.glob("????-??-??.json"))[-days - 2:]:
         for it in load_json(ip).get("items") or []:
@@ -2633,7 +2637,7 @@ def retry_images(days=IMG_RETRY_DAYS):
     for path, rep_ in reports:
         for b in rep_["items"]:
             for st in b.get("stories") or []:
-                if not st.get("url") or st.get("image") and st.get("image_via") != "作品封面":
+                if not st.get("url") or st.get("image") and st.get("image_via") != "作品封面" and st["image"] not in dead:
                     continue
                 last = tried.get(st["url"])
                 if last and now - dt.datetime.fromisoformat(last) < dt.timedelta(hours=IMG_RETRY_HOURS):

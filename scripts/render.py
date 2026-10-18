@@ -2668,6 +2668,8 @@ FIT_JS = """
 (() => {
   const fit = img => {
     const p = img.closest('.pic');
+    // 期限切れ・削除された図の代わりに返ってくる 1×1 の空白（Yahoo の exp= 付き画像など）は「開けない」と同じ扱い：次の候補へ
+    if (img.naturalWidth && img.naturalWidth < 3 && img.naturalHeight < 3 && img.onerror) { img.onerror(); return; }
     if (!p || !img.naturalWidth || !p.clientHeight) return;
     const nat = img.naturalWidth / img.naturalHeight;
     const pk = p.closest('.pk');
