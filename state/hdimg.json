@@ -658,6 +658,12 @@
   "target": 720,
   "v": 3
  },
+ "https://helios-i.mashable.com/imagery/articles/00CxZsu54H1AWmcIjcmp1ge/hero-image.fill.size_1200x675.v1785926173.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://helios-i.mashable.com/imagery/articles/03sZ0A4BYrf77U0A6HR6KhF/hero-image.fill.size_1200x675.v1791815910.jpg": {
   "w": 1200,
   "h": 675,
@@ -757,12 +763,6 @@
  "https://i3.gamebiz.jp/media/cad0aca2-af45-4e4e-963a-179b7413bf5f.jpg": {
   "w": 1020,
   "h": 459,
-  "target": 1280,
-  "v": 3
- },
- "https://i3.hoopchina.com.cn/bbs-editor-web/17922619531988.jpg": {
-  "w": 1080,
-  "h": 1920,
   "target": 1280,
   "v": 3
  },
@@ -1094,12 +1094,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2epnyW.img": {
   "w": 1280,
   "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2eqcKb.img": {
-  "w": 700,
-  "h": 400,
   "target": 720,
   "v": 3
  },
@@ -2260,6 +2254,12 @@
   "target": 720,
   "v": 3
  },
+ "https://today-obs.line-scdn.net/0hz7gw5W_4JRhaDjmux4daT2JYKWlpaD8ReGloenkIKy9zImYcY292eygHeDQkazBLemBoKioHcilxbGZIZg/w1200": {
+  "w": 1080,
+  "h": 1920,
+  "target": 1280,
+  "v": 3
+ },
  "https://tokorozawanavi.com/wp-content/uploads/2026/09/134339-67-571f8cd3625d05d52bf74f8609ebeea6-960x72011-1.jpg": {
   "w": 960,
   "h": 482,
@@ -2455,6 +2455,18 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.AiFFW96xsUWbjCfMEu8UpQ&pid=News&w=1095": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/22325d67c70a5842.webp",
+  "out": [
+   700,
+   367
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.BpkK8qFVcia2ok_cSryr3w&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2466,18 +2478,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Il9UQ3SMJtRP8JnE9vOiMQ&pid=News&w=660": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/2eff3cbdbb1ebd04.webp",
-  "out": [
-   680,
-   384
-  ],
-  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.JQGRH8tESTgLRyWZAXyOMg&pid=News&w=1200": {
   "w": 100,
@@ -2551,18 +2551,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.VZC6e1tazwZlgDVM2fy7yw&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/1bb8482c0e95db39.webp",
-  "out": [
-   700,
-   393
-  ],
-  "why": "Bing の小さい縮小画像"
- },
  "https://www.bing.com/th?id=ONUT.YUmg4wPATP6ki-nBVPpJQg&pid=News&w=961": {
   "w": 100,
   "h": 100,
@@ -2595,6 +2583,18 @@
   "target": 720,
   "v": 3,
   "local": "pics/2c9ffcca195df082.webp",
+  "out": [
+   700,
+   393
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.bI_AysTKlRav1k7tlaAn9w&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/58cb57cad9dad59b.webp",
   "out": [
    700,
    393
