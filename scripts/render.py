@@ -4113,9 +4113,12 @@ BG_STATES = {"ok": "済", "wait": "待ち", "review": "要確認", "failed": "�
 # 「バックグラウンド」の表の列：(セルのキー, 見出し, 時刻を出すプロセスの id)。版面の設計は AI 編集の回にやる
 BG_COLS = (("collect", "収集", "collect"), ("edit", "AI 編集", "edit"), ("design", "版面の設計", "edit"),
            ("emblem", "小元素", "emblem-cron"))
-RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
+RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render", "edit": "edit_now"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
 RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も 6 時間を待たずにやり直す（3 分に 1 回まで）",
-             "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）"}
+             "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）",
+             "edit": "整理待ちがあれば AI 編集を、間隔・停滞の判断を飛ばして今すぐ起こす（10 分に 1 回まで）"}
+EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "stalled": ("止まっている？", "ng"),
+              "gave_up": ("起こしても動かない", "ng")}
 BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき",
                "edit": "整理待ちがあるとき（ゲートが起こす）"}
 
@@ -4189,6 +4192,13 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                 extra += f'<small class="bgw-d">記事 {ed["n"]} 件が版面の下の「整理待ち」に</small>'
             if ed.get("fired"):
                 extra += f'<small class="bgw-d nx-ago" data-at="{e(ed["fired"])}"></small>'
+            lab, cls = EDIT_STATE.get(ed.get("state"), ("", ""))
+            if lab:
+                extra += (f'<small class="bgw-d es-{cls}"><b>{e(lab)}</b> {e(ed.get("why") or "")}'
+                          + (f'（{ed["attempts"]} 回目）' if ed.get("attempts", 0) > 1 else "") + '</small>')
+            if ed.get("n"):   # 動いていなくても人が押せる：間隔・停滞の判断を飛ばして起こす
+                extra += (f'<span class="nx-go"><button type="button" class="nx-run bg-redo" data-run="{RUN_JOBS["edit"]}" data-label="AI 編集をもう一度起こす"'
+                          f' title="{e(RUN_TITLE["edit"])}">AI 編集をもう一度起こす</button><small class="nx-msg" aria-live="polite"></small></span>')
         return f'<th><span>{e(t)}</span>{when}<small class="bgw">待ち {waits[k]}{" 版面" if k == "edit" else ""}</small>{extra}</th>'
     head = "".join(th(k, t, pid) for k, t, pid in BG_COLS)
     body, sec = [], None
@@ -4515,6 +4525,8 @@ ADMIN_PAGE_CSS = """
 .ef-pics{display:flex;flex-wrap:wrap;gap:6px}.ef-pics img{width:44px;height:44px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}
 .ef-pics img.fit{object-fit:contain;border-radius:6px;padding:3px}
 .bgw-d{display:block;font-weight:400;font-size:var(--fs-label);opacity:.75}
+.bgw-d.es-ng{opacity:1;color:var(--alert)}.bgw-d b{font-weight:900}
+th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:6px;font-weight:400}
 .bgc .bg-cd{display:block;font:700 var(--fs-label) var(--font-mono);color:var(--alert)}
 .bgc .nx-go{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px}.bg-redo{padding:5px 10px}
 .bg-th img{width:26px;height:26px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}.bg-th img.fit{object-fit:contain;border-radius:4px;padding:2px}

@@ -309,6 +309,15 @@ class BackendTable(unittest.TestCase):
         self.assertIn('class="bg-cd" data-at="2026-10-18T01:47:00+00:00"', failed)
         self.assertNotIn("bg-redo\"", render._admin_backend(self._rows(state="ok")).replace("bg-redo{", ""))
 
+    def test_edit_column_state_and_force_button(self):
+        todo = {"edit": {"text": "", "n": 105, "fired": "2026-10-18T00:00:00+00:00", "state": "gave_up",
+                         "why": "3 回起こしたが仕事が減らない", "attempts": 3, "resp": "s"}}
+        h = render._admin_backend(self._rows(), todo)
+        self.assertIn("起こしても動かない", h)
+        self.assertIn("（3 回目）", h)
+        self.assertIn('data-run="edit_now" data-label="AI 編集をもう一度起こす"', h)
+        self.assertNotIn("AI 編集をもう一度起こす", render._admin_backend(self._rows(), {"edit": {"text": "", "n": 0}}))   # 整理待ちがなければボタンなし
+
     def test_edit_column_countdown(self):
         h = render._admin_backend(self._rows(), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
         self.assertIn('data-pre="次の収集のあと "', h)

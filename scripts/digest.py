@@ -1975,14 +1975,17 @@ def backend_todo(items, rows, run):
     design = [r["name"] for r in rows if (r.get("bg") or {}).get("design", {}).get("state") == "wait"]
     n_new = sum(int(re.search(r"\d+", r["bg"]["edit"]["text"]).group()) for r in edit if re.search(r"\d+", r["bg"]["edit"]["text"]))
     import gate
-    fired = ((gate.load().get("jobs") or {}).get("edit") or {}).get("fired") or {}   # ゲートが最後に AI 編集を起こした時刻
+    gj = (gate.load().get("jobs") or {}).get("edit") or {}
+    fired = gj.get("fired") or {}   # ゲートが最後に AI 編集を起こした記録
+    gstate, gwhy = gate.work_state(gj)   # 起こしたあとに本当に進んだか（running / progress / stalled / gave_up）
     queue = run.get("queue") or []
     review = [n for n, x in (run.get("items") or {}).items() if x["state"] == "review"]
     return {
         "collect": {"text": f"全 {len(items)} 版面の記事を集める", "items": []},
         "edit": {"text": (f"新しい記事 {n_new} 件（{len(edit)} 版面）を編集" if edit else "編集する新着なし")
                  + (f" · 版面の設計 {len(design)} 件" if design else ""), "items": [r["name"] for r in edit],
-                 "n": n_new, "boards": len(edit), "fired": fired.get("at") or ""},
+                 "n": n_new, "boards": len(edit), "fired": fired.get("at") or "",
+                 "state": gstate, "why": gwhy, "attempts": int(fired.get("attempts") or 0), "resp": fired.get("resp") or ""},
         "emblem-cron": {"text": (f"足りない {len(queue)} 版面を順に" if queue else "全部そろっている")
                         + (f" · 要確認 {len(review)}" if review else ""), "items": queue},
         "photos": {"text": "受付の写真があれば認識して愿望清单へ", "items": []},

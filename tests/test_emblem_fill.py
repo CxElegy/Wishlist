@@ -816,8 +816,8 @@ class Gate(unittest.TestCase):
 
     def test_fire_only_with_work_token_and_new_sig(self):
         calls = []
-        post = lambda url, token: calls.append((url, token)) or 200
-        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}, "photos": {"need": False, "sig": "p"}}}, self.state)
+        post = lambda url, token: calls.append((url, token)) or (200, '{"claude_code_session_id": "session_x"}')
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1", "prog": 0}, "photos": {"need": False, "sig": "p"}}}, self.state)
         res = self.gate.fire(self.state, post=post, env={})
         self.assertEqual(res["edit"], "トークン未設定（定時を待つ）")
         self.assertEqual(res["photos"], "仕事なし（起こさない）")
@@ -825,19 +825,57 @@ class Gate(unittest.TestCase):
         res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
         self.assertEqual(res["edit"], "Claude を起こした")
         self.assertIn("trig_01Ly92RcW35cBwZ9amWZr11j", calls[0][0])
+        fired = self.gate.load(self.state)["jobs"]["edit"]["fired"]
+        self.assertEqual((fired["attempts"], fired["resp"]), (1, "session_x"))   # 返事の id を記録する
         res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
-        self.assertEqual(res["edit"], "同じ仕事で起こし済み")   # 同じ指紋では 2 回起こさない
+        self.assertIn("分以内に起こし済み", res["edit"])   # 直後は編集中のはず：重ねて起こさない
         self.assertEqual(len(calls), 1)
-        data = self.gate.load(self.state)
-        data["jobs"]["edit"]["sig"] = "s2"   # 新しい記事が来た
-        self.gate.save(data, self.state)
-        res = self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})
-        self.assertIn("分以内に起こし済み", res["edit"])   # 編集中かもしれない：MIN_GAP_MIN は重ねて起こさない
-        data = self.gate.load(self.state)
-        at = dt.datetime.fromisoformat(data["jobs"]["edit"]["fired"]["at"]) - dt.timedelta(minutes=self.gate.MIN_GAP_MIN + 1)
-        data["jobs"]["edit"]["fired"]["at"] = at.isoformat()
-        self.gate.save(data, self.state)
-        self.assertEqual(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"], "Claude を起こした")
+
+    def _aged(self, minutes, **job):
+        """edit を minutes 分前に起こした状態にする。"""
+        at = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(minutes=minutes)).isoformat(timespec="seconds")
+        fired = {"at": at, "sig": "s1", "prog": 10, "attempts": job.pop("attempts", 1)}
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1", "prog": job.pop("prog", 10), **job, "fired": fired}}}, self.state)
+
+    def test_stalled_fire_is_retried_then_gives_up(self):
+        """起こしたのに編集済みの数が増えない（Claude が動いていない）→ 60 分あとに起こし直す。3 回で止め、6 時間待つ。"""
+        calls = []
+        post = lambda url, token: calls.append(url) or 200
+        env = {"ROUTINE_TOKEN_EDIT": "t"}
+        self._aged(70)
+        self.assertEqual(self.gate.work_state(self.gate.load(self.state)["jobs"]["edit"])[0], "stalled")
+        self.assertIn("2 回目", self.gate.fire(self.state, post=post, env=env)["edit"])
+        self.assertEqual(self.gate.load(self.state)["jobs"]["edit"]["fired"]["attempts"], 2)
+        self._aged(70, attempts=3)
+        self.assertEqual(self.gate.work_state(self.gate.load(self.state)["jobs"]["edit"])[0], "gave_up")
+        self.assertIn("停滞", self.gate.fire(self.state, post=post, env=env)["edit"])
+        self.assertEqual(len(calls), 1)   # 3 回目まで叫んだあとは叫ばない
+        self._aged(60 * self.gate.REFIRE_HOURS + 5, attempts=3)
+        self.assertEqual(self.gate.fire(self.state, post=post, env=env)["edit"], "Claude を起こした")   # 6 時間たったら 1 回目から
+
+    def test_progress_is_not_stall(self):
+        """編集済みの数が増えていれば動いている：新着が来て仕事の量が同じでも停滞とは言わない。"""
+        self._aged(30, prog=25)
+        self.assertEqual(self.gate.work_state(self.gate.load(self.state)["jobs"]["edit"])[0], "progress")
+        self._aged(30)
+        self.assertEqual(self.gate.work_state(self.gate.load(self.state)["jobs"]["edit"])[0], "running")
+        calls = []
+        self._aged(90, prog=25)   # 進んだが残りがある → 新しい状況として起こす
+        self.assertEqual(self.gate.fire(self.state, post=lambda u, t: calls.append(u) or 200, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"], "Claude を起こした")
+        self.assertEqual(self.gate.load(self.state)["jobs"]["edit"]["fired"]["attempts"], 1)
+
+    def test_force_skips_gap_and_switch(self):
+        calls = []
+        post = lambda url, token: calls.append(url) or 200
+        self._aged(5)   # 5 分前に起こしたばかり + GATE_FIRE=0 でも、管理ページのボタン（GATE_FORCE）は起こす
+        res = self.gate.fire(self.state, post=post, env={"GATE_FIRE": "0", "GATE_FORCE": "edit", "ROUTINE_TOKEN_EDIT": "t"})
+        self.assertEqual(res["edit"], "Claude を起こした")
+        self.assertTrue(self.gate.load(self.state)["jobs"]["edit"]["fired"]["forced"])
+
+    def test_edit_done_counts_covered(self):
+        (self.d / "2026-10-17.edit.json").write_text(json.dumps({"_covered": {"A": 3, "B": 2}}), encoding="utf-8")
+        self.assertEqual(self.gate.edit_done(self.d, today="2026-10-17"), 5)
+        self.assertEqual(self.gate.edit_done(self.d, today="2026-10-18"), 0)
 
     def test_gate_fire_switch(self):
         self.assertEqual(self.gate.enabled_jobs(""), set())
