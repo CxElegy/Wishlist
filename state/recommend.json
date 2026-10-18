@@ -10,6 +10,7 @@
   "http://www.excite.co.jp/news/article/Allabout_131155/": "https://www.bing.com/th?id=ONUT.g0utra38X7kxxQIbEAVYVw&pid=News&w=728",
   "http://www.excite.co.jp/news/article/bg_mania_703579/": "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200",
   "http://www.gamey.kr/news/articleViewAmp.html?idxno=3019008": "http://www.gamey.kr/news/photo/202610/3019008_171489_3813.jpg",
+  "https://abema.tv/live-event/c84bcfa1-fe0c-429a-9b25-f2f833afab47": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227367/thumb001.png?height=720&quality=75&version=1791968473&width=1280",
   "https://animeanime.jp/article/2026/10/14/103780.html": "https://animeanime.jp/imgs/ogp_f/942211.jpg",
   "https://animeanime.jp/article/2026/10/17/103903.html": "https://animeanime.jp/imgs/ogp_f/942450.jpg",
   "https://ceoscoredaily.com/page/view/2026101314151357726": "https://ceoscoredaily.com/photos/2026/10/13/2026101317023010291_l.jpg",
@@ -33,7 +34,6 @@
   "https://media.unisba.ac.id/1b3cc035/1ddbb41eLDcOWABKGjsGNjc": null,
   "https://news.mynavi.jp/article/20261014-5128144/": "https://news.mynavi.jp/article/20261014-5128144/ogp_images/ogp.jpg",
   "https://news.pchome.com.tw/expense/cardu/20261014/index-17919190012713341013.html": "https://news.pchome.com.tw/newsdata/expense/cardu/20261014/17919190012713341013_original.jpg",
-  "https://news.yahoo.co.jp/articles/519586563db12a394c204b6aa61258afad586b2b": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00007763-tennisc-000-1-view.jpg?exp=10800",
   "https://note.com/yshiba110/n/n1ec4b1714a19?hl=ko": "https://assets.st-note.com/production/uploads/images/325365691/rectangle_large_type_2_54e6f9c972017719e8faf4d5feb38417.jpeg?fit=bounds&quality=85&width=1280",
   "https://phandroid.com/2026/10/14/microsofts-new-xbox-controller-is-comfortably-compact/": "https://www.bing.com/th?id=ONUT.Ka7ilac8h81thQa09VvWvA&pid=News&w=640",
   "https://rocketnews24.com/2026/10/14/2811673/": "https://rocketnews24.com/wp-content/uploads/sites/2/2026/10/collage1_6e330b.jpg?w=1200&h=630&crop=1",
@@ -1714,21 +1714,6 @@
   },
   {
    "batch": 7,
-   "because": "日本顶级网球赛事",
-   "date": "2026-10-17",
-   "hits": [],
-   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00007763-tennisc-000-1-view.jpg?exp=10800",
-   "kind": "board",
-   "score": 4,
-   "source": "Yahoo!ニュース",
-   "taste": [],
-   "title": "「20歳でGS予選にかかる位置へ」18歳・沢代榎音、トップ100との差を糧に誓う成長[木下グループジャパンオープン]【テニス】",
-   "url": "https://news.yahoo.co.jp/articles/519586563db12a394c204b6aa61258afad586b2b",
-   "words": [],
-   "work": "日本顶级网球赛事"
-  },
-  {
-   "batch": 8,
    "because": "滑雪",
    "date": "2026-10-16",
    "hits": [],
@@ -1771,6 +1756,21 @@
    "url": "https://collider.com/from-prime-video-sci-fi-mystery-peak-horror/",
    "words": [],
    "work": "FROM"
+  },
+  {
+   "batch": 8,
+   "because": "日本顶级网球赛事",
+   "date": "2026-10-14",
+   "hits": [],
+   "image": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227367/thumb001.png?height=720&quality=75&version=1791968473&width=1280",
+   "kind": "board",
+   "score": 4,
+   "source": "ABEMA",
+   "taste": [],
+   "title": "第5日 シングルス準々決勝 【木下グループジャパンオープンテニスウィメンズ】",
+   "url": "https://abema.tv/live-event/c84bcfa1-fe0c-429a-9b25-f2f833afab47",
+   "words": [],
+   "work": "日本顶级网球赛事"
   },
   {
    "batch": 0,
@@ -2024,7 +2024,7 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
