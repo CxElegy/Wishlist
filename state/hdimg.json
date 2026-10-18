@@ -1849,18 +1849,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00010016-realsound-000-1-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 1698,
-  "target": 720,
-  "v": 3,
-  "local": "pics/289ca039f0069f07.webp",
-  "out": [
-   905,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00010017-realsound-000-1-view.jpg?exp=10800": {
   "w": 1200,
   "h": 619,
@@ -1870,6 +1858,18 @@
   "out": [
    1200,
    619
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-03658138-clc_korea-000-1-view.jpg?exp=10800": {
+  "w": 1024,
+  "h": 553,
+  "target": 720,
+  "v": 3,
+  "local": "pics/9e86263108c97a28.webp",
+  "out": [
+   1024,
+   553
   ],
   "why": "期限付きの網址"
  },
@@ -2500,6 +2500,18 @@
   "out": [
    583,
    473
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.APYkQ3xbNPzyQJNfysbGDw&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/a9f82a5ce32104e9.webp",
+  "out": [
+   706,
+   480
   ],
   "why": "Bing の小さい縮小画像"
  },
