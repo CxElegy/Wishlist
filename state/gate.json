@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-10-18T15:17:20+00:00",
+ "changed": true,
+ "checked": "2026-10-18T16:01:16+00:00",
  "fired": {
   "at": "2026-10-18T15:17:20+00:00",
   "results": {
@@ -18,32 +18,11 @@
     "resp": "cse_01Ep3dKvXmSCFVJBdEsX8zw5",
     "sig": "9495d594e402"
    },
-   "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "gelato pique",
-    "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
-   ],
-   "need": true,
+   "items": [],
+   "need": false,
    "prog": 0,
-   "sig": "16606b11ef75",
-   "why": "整理待ちの記事 256 件（20 版面・AI 編集まで版面に載らない）"
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
