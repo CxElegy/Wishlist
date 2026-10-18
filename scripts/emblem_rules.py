@@ -78,6 +78,10 @@ def rules():
          "rule": f"人物の面積 < {pct(emblem.AREA_MIN)}"},
         {"stage": STAGES[5], "title": "輪郭がにじんでいる", "by": "rule", "code": "emblem.check_whole", "reason": "輪郭がにじんでいる",
          "rule": f"半透明 > {pct(emblem.SOFT_MAX)}"},
+        {"stage": STAGES[5], "title": "暗すぎる（写真・場面）", "by": "rule", "code": "emblem.check_whole（DARK_MAX）", "reason": "暗すぎて見えない",
+         "rule": f"人物部分の平均の明るさ < {pct(emblem.DARK_MAX)}（黒くつぶれて何かわからない暗い場面）。役の記事の画像は、ポスター・宣伝用の絵（名前に poster・promo・render など）を場面のスクリーンショットより先に使う"},
+        {"stage": STAGES[5], "title": "横長・縦長の写真は余白なしで", "by": "rule", "code": "render.CARD_AR（badge.whole）",
+         "rule": "カード（4:5）と縦横比が離れた写真（コート全景・スキーヤー）は、白い余白つきのカードにせず、写真そのままに斜めの枠だけ"},
         {"stage": STAGES[5], "title": "ほかの人が残っている（写真）", "by": "model", "code": "emblem.other_faces（YuNet）", "reason": "ほかの人が残っている",
          "rule": f"切り抜きの中に、いちばん大きい顔の高さの {pct(emblem.OTHER_FACE)} 以上の顔がほかにある"},
         {"stage": STAGES[5], "title": "顔が切り抜きに残っていない（写真）", "by": "model", "code": "emblem.lost_face（YuNet）", "reason": "顔が切り抜きに残っていない",
@@ -97,6 +101,9 @@ def rules():
         {"stage": STAGES[6], "title": "全身で測ってから上半身に切る", "by": "rule", "code": "emblem.bust_from_body（BUST_CUT）",
          "rule": f"全身のままだと小さく貼ったとき顔が見えない。目・足の裏（全身で測った目印）で、目から足の裏の {emblem.BUST_CUT:.0%} の高さ（腰のあたり）で切る。"
                  "網页は目から足の裏（画像の外）を同じ長さにそろえるので、どのキャラも体の同じところで切れて同じ大きさ、ほかの胸像とも顔の大きさが合う"},
+        {"stage": STAGES[6], "title": "タイトルロゴはカードにしない", "by": "rule", "code": "emblem.wordmark_local（WORDMARK_EDGE）/ render.WIDE_LOGO",
+         "rule": f"作品の主な画像の縁が透明か一色の地（文字だけのタイトルロゴ：The Mandalorian）なら、地を抜いてロゴとして貼る（カードの白い板に小さな字が浮かない）。"
+                 f"高さ÷幅が {0.5} 未満の横長は、高さでなく幅で大きく（220px・スマホ 130px）。縁まで絵がある写真・ポスターは今まで通りカード"},
         {"stage": STAGES[6], "title": "上半身に切るのはふつうの体つきだけ", "by": "model", "code": "emblem.real_body（YOLOv8m-pose・HIP_MAX）",
          "rule": f"姿勢モデルで腰の高さを測り、頭のてっぺん〜足の裏の {emblem.HIP_MAX:.0%} より上ならふつうの人の体つき（実測 43〜52%）→ 上半身に切る。"
                  f"下なら頭の大きい体つき（3D のデフォルメ・ちびキャラ）、目印の確かさが {emblem.BODY_CONF} 未満なら人の体でない（動物・マスコット：あつ森の住民、ポチタ）→ 全身のまま。"

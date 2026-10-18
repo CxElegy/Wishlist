@@ -476,10 +476,11 @@ button{font-family:inherit}
  margin-bottom:calc(var(--bz) * (var(--bf) - 1));  /* 足の裏より下（尻尾・武器・裾）は帯の下へ。高さは --bmax まで（測り違いで巨大にならない） */
  margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
 .emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
-.emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
+.emb img.logo{height:62%;max-width:150px}.emb img.logo.wide{height:auto;width:220px;max-width:220px;margin-bottom:12%}  /* 横長の文字のロゴは幅で大きく */
+.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
-.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:color-mix(in srgb,var(--fg) 10%,var(--bg));padding:6px}  /* 地は版面の色に寄せる（白い透過ロゴが白い台に消えないように） */  /* 横長・縦長すぎる画像は切らずに全体 */
+.emb img.badge.whole{aspect-ratio:auto;height:auto;width:auto;max-width:210px;max-height:100%;object-fit:contain;background:color-mix(in srgb,var(--fg) 10%,var(--bg));padding:0;border:5px solid var(--card);box-sizing:content-box;clip-path:polygon(1.5% 0,100% 2.5%,98.5% 100%,0 97.5%)}  /* 横長・縦長すぎる画像は切らず、余白なしで写真そのままに斜めの枠だけ */
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
@@ -490,7 +491,7 @@ button{font-family:inherit}
 @keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.has-emb .band{padding-right:118px}}
+@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}}
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
@@ -552,6 +553,7 @@ button{font-family:inherit}
 /* ---------- 左侧目录（v6：testground/compare.html で決めた形。宽屏的样子见 NAV_STYLES，窄屏是顶部两排横条） ---------- */
 html{scroll-behavior:smooth}
 [data-k]{scroll-margin-top:24px}
+.spot,.front .poster{scroll-margin-top:16px}
 .page{max-width:1480px;display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px 32px;align-items:start}
 .mast{grid-column:1/-1}
 .issues{display:flex;flex-direction:column;gap:28px;min-width:0}
@@ -1164,6 +1166,9 @@ def _body_len(alts):
             b.append(round(max(leg, b[4] / ratio) if b[4] / leg > ratio * BODY_CROUCH else leg, 3))
 
 
+WIDE_LOGO = 0.5   # ロゴの 高さ÷幅 がこれ未満 = 横長の文字のロゴ。高さでそろえると字が小さすぎる（The Mandalorian）ので幅で大きく
+
+
 def _emblem_img(a):
     """小元素 1 枚の HTML。カード（badge）で取景（crop）があれば 4:5 の窓にその範囲だけを見せる。
     顔の割合（fs）が基準より大きい（アップの）ものは小さく表示して、どの版面でも顔が同じくらいの大きさに見えるように。"""
@@ -1178,6 +1183,8 @@ def _emblem_img(a):
     ar = a.get("ar")
     if a["shape"] == "badge" and not c and ar and not (CARD_AR[0] <= float(ar) <= CARD_AR[1]):
         img = img.replace('class="badge"', 'class="badge whole"', 1)   # 縦横比がカードと離れている：切らずに全体を見せる
+    if a["shape"] == "logo" and ar and float(ar) < WIDE_LOGO:
+        img = img.replace('class="logo"', 'class="logo wide"', 1)   # 横長の文字のロゴ（タイトルロゴ）：高さでなく幅で大きく
     if a["shape"] == "badge" and c:
         return f'<span class="crop" style="--cx:{c[0]};--cy:{c[1]};--cw:{c[2]};--ar:{a.get("ar", 1)}">{img}</span>'
     return img
@@ -1621,7 +1628,7 @@ EMB_JS = """
       const a = alts[Math.floor(Math.random() * alts.length)];
       const n = img.cloneNode(); n.src = a.src;
       const whole = a.shape === 'badge' && !a.crop && a.ar && (a.ar < 0.95 || a.ar > 1.6);   // render.CARD_AR：カードと比率が離れたら切らない
-      n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : '') + (whole ? ' whole' : '');
+      n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
       n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
       if (a.shape === 'badge' && a.crop) {
         const c = document.createElement('span'); c.className = 'crop';
@@ -2771,6 +2778,25 @@ FIT_JS = """
   wall();
   if (document.fonts) document.fonts.ready.then(wall);
   addEventListener('load', wall);
+  // 軽い吸着（PC だけ）：スクロールが止まったとき、版面などの上端が画面の上から 72px 以内なら、そこへそっと合わせる。
+  // それより離れていれば何もしない（CSS の scroll-snap は吸い付く範囲がブラウザまかせで強すぎるので使わない）
+  const SNAP = 72, snapAt = () => document.querySelectorAll('.front .poster, .spot, .picks, .sec');
+  let st, snapping = false;
+  const snap = () => {
+    if (snapping) { snapping = false; return; }
+    if (innerWidth <= 760 || document.querySelector('dialog[open]') || document.activeElement?.matches('input, textarea, select')) return;
+    let best = null;
+    for (const el of snapAt()) {
+      const d = el.getBoundingClientRect().top - (parseFloat(getComputedStyle(el).scrollMarginTop) || 16);
+      if (Math.abs(d) <= SNAP && (best === null || Math.abs(d) < Math.abs(best))) best = d;
+    }
+    if (best !== null && Math.abs(best) >= 2) {
+      snapping = true;
+      scrollBy({ top: best, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  };
+  if ('onscrollend' in window) addEventListener('scrollend', snap);
+  else addEventListener('scroll', () => { clearTimeout(st); st = setTimeout(snap, 160); }, { passive: true });
 })();
 """
 

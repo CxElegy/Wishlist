@@ -73,8 +73,10 @@ RULES = {
     "brand": (1, 1, 1),
     "topic": (2, 3, 5),
 }
-# 主要な要素の数で決まる上限の天井（1 つの版面に何十枚もあっても、毎回 1 枚しか出ないので 20 で足りる）
-CEIL = {"person": 10, "group": 20, "character": 20, "brand": 1, "topic": 10}
+# 主要な要素の数で決まる上限の天井。キャラ・メンバーは主要な要素を全部（绝区零 60 人なら 60 枚、用户定的）。
+# 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
+CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
+STEP = 10
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -421,6 +423,13 @@ def twemoji(emoji):
 def subjects(item, kind, hi):
     """収集する対象の名前。emblem_who（メンバー・キャラの名前）があればそれ、なければ種類ごとの決め方。"""
     who = list(item.get("emblem_who") or [])
+    if who and kind in ("character", "group"):   # まだ小元素のいない人から STEP 人。足りない人が多いときは回ごとにずらす（見つからない人で止まらない）
+        have = {_base_subject(x.get("subject")) for x in item.get("emblem") or [] if isinstance(x, dict)}
+        rest = [w for w in who[:hi] if w not in have]
+        if len(rest) <= STEP:
+            return rest or who[:1]
+        k = int(time.time() // 3600) * STEP % len(rest)
+        return (rest[k:] + rest[:k])[:STEP]
     if who:
         return who[:hi]
     if kind == "character" and item.get("anilist_id"):
@@ -753,6 +762,9 @@ def role_of(api, actor, work_words=()):
     return None
 
 
+POSTER_NAME = re.compile(r"poster|promo|key.?art|teaser|banner|portrait|render|cgi|concept|character.?art|official", re.I)
+
+
 def role_images(api, role, limit=6):
     """役の記事の画像：代表画像（infobox）と、記事に載っている画像のうち役の名前（姓か名）がファイル名にあるもの（大きい順）。"""
     out = []
@@ -768,7 +780,7 @@ def role_images(api, role, limit=6):
              and not re.search(r"icon|logo|symbol|signature", x["title"], re.I) and any(w in x["title"].lower() for w in words)]
     rows = _files_info(api, files[:40], width=600) if files else []
     seen = {r["image"] for r in out}
-    for r in sorted(rows, key=lambda r: -r["area"]):
+    for r in sorted(rows, key=lambda r: (not POSTER_NAME.search(r["title"]), -r["area"])):   # ポスター風（宣伝用の絵）を先に。場面のスクリーンショットは暗くて何かわからないことが多い
         if r["image"] not in seen:
             out.append(r)
     return out[:limit]
@@ -1126,8 +1138,14 @@ def commit(item, good, picks, replace=False, log=print):
                 log(f"  [ロゴ] {c['subject']}：{e}")
         elif row["shape"] == "badge" and c.get("_img") is not None:
             row["ar"] = round(c["_img"].size[1] / c["_img"].size[0], 3)   # 縦横比：カードの窓に近くなければ切らずに全体を見せる
-        if c.get("work"):   # 作品の主な画像（ポスター）：人を切り抜かず、カードのまま
+        if c.get("work"):   # 作品の主な画像（ポスター）：人を切り抜かず、カードのまま。タイトルロゴ（文字だけ）はロゴとして字を大きく
             row["work"] = True
+            try:
+                got = emblem.wordmark_local(c["image"], emblem.slugify(name, c["subject"]))
+                if got:
+                    row.update(source=c["image"], image=got[0], shape="logo", ar=got[1])
+            except Exception as e:
+                log(f"  [ロゴ] {c['subject']}：{e}")
         chosen.append(row)
     old = [] if replace else [x for x in (item.get("emblem") or []) if isinstance(x, dict)]
     if live_action(item):   # 実写の作品：前の規則で入れた出演者の生活の写真は残さない（役の姿・作品の画像だけ）
@@ -1393,13 +1411,17 @@ def fill_one(item, log=print):
     取り方の段（STRATEGIES）を、目標に届くまで同じ回の中で順に上がる：① 標準 → ② 名前を広げる → ③ 公式・記事のページ。
     各段で 集める → 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）→ 選ぶ（auto_pick）→ 書いて切り抜く。
     → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わるか 6 時間後にもう一度）。"""
-    if not item.get("emblem_pool") and (item.get("emblem_category") or item.get("anilist_id")):
+    pooln = int(item.get("emblem_pool") or 0)
+    if (item.get("emblem_category") or item.get("anilist_id")) and (
+            not pooln or len(item.get("emblem_who") or []) < min(CEIL.get(kind_of(item), 0), pooln)):
         try:   # 主要な要素の数がまだわからない：先に数える（上限と集める名前が決まる）
             if roster(item, log):
                 item = next(i for i in load_items() if i["name"] == item["name"])
         except Exception as e:
             log(f"  [名簿] {item['name']}：{e}")
     before = status(item)["have"]
+    have0 = {_base_subject(x.get("subject")) for x in item.get("emblem") or [] if isinstance(x, dict)}
+    queued = len([w for w in item.get("emblem_who") or [] if w not in have0])   # まだいない人の数。STEP を超えれば今回は一部だけ
     if needs_face(item) and face_id.engine() is None:
         return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "tried": {}}
     tried, reasons, steps = {}, {}, []
@@ -1453,6 +1475,9 @@ def fill_one(item, log=print):
     top = "・".join(f"{k} {v}" for k, v in sorted(reasons.items(), key=lambda kv: -kv[1])[:3])
     if st["state"] == "ok":
         return {"state": "ok", "note": f"{added} 枚足して目標に届いた（{path}）", "tried": tried, "funnel": funnel, "steps": steps}
+    if added and queued > STEP and kind_of(item) in ("character", "group"):   # STEP 人ずつ足している途中：失敗ではなく進行中。次の回に続き
+        return {"state": "running", "tried": tried, "funnel": funnel, "steps": steps,
+                "note": f"{added} 枚足した（{path}）。あと {st['target'] - st['have']} 枚、次の回に続きの {STEP} 人"}
     return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh),
             "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}。新しい記事が来たらすぐ、来なくても {RETRY_HOURS} 時間後にもう一度"}
 
