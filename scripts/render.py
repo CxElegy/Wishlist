@@ -143,7 +143,7 @@ button{font-family:inherit}
  background:linear-gradient(90deg,var(--sc1,#00B4EE) 0 14%,var(--sc2,#FF3D8B) 14% 28%,var(--gold) 28% 42%,var(--ink) 42% 56%,var(--hacc,var(--rose)) 56% 70%,var(--deep,var(--ink)) 70% 84%,var(--card) 84%)}
 /* ---------- ほかの注目ニュース：写真の壁 ＋ ジャンルの棚 ---------- */
 .spot{display:flex;flex-direction:column;gap:22px}
-.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px;align-items:start}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:22px;align-items:start}
 /* 左の壁と右の列の下端をそろえる：短いほうが伸びる（壁は各段が均等に伸び、右の列は最後の箱が伸びる） */
 .mgrid>.wall{align-content:start}
 .mgrid .wc{justify-content:flex-start}
@@ -154,6 +154,7 @@ button{font-family:inherit}
 .sbox h4 small{margin-left:auto;font:500 11px var(--font-sans)}
 .sbox h4 a:hover{color:var(--rose)}
 .swish ol,.shot ol{list-style:none;margin:0;padding:0}
+.swish li[hidden],.agenda li[hidden]{display:none}
 .swish li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--hair)}
 .wthumb{width:48px;height:48px;background:#FFF;border:1.5px solid var(--ink);display:grid;place-items:center;overflow:hidden}
 .wthumb img{width:90%;height:90%;object-fit:contain}
@@ -182,9 +183,9 @@ button{font-family:inherit}
 .fside .agenda{padding:12px 14px 8px}
 .fside .agenda ol{grid-template-columns:minmax(0,1fr)}
 .agenda li b small{display:block;font:700 11px var(--font-sans);color:var(--ink);opacity:.7}
-.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:22px;align-content:start}
+.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
 .wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
- padding:10px 12px 14px;transition:transform .12s,box-shadow .12s}
+ padding:8px 10px 11px;transition:transform .12s,box-shadow .12s}
 .wc:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
 .wc.lead{grid-column:span 2;grid-row:span 2}
 .wc .pic{border:1.5px solid var(--ink);aspect-ratio:16/10;--ac:var(--sc)}
@@ -193,8 +194,8 @@ button{font-family:inherit}
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
 .wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
-.wc b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.5em}  /* 3 行分：段のカードの高さがそろう */
-.wc.lead b{font-size:22px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
+.wc b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.35em}  /* 3 行分：段のカードの高さがそろう */
+.wc.lead b{font-size:20px;font-weight:900;line-height:1.45;-webkit-line-clamp:2;min-height:2.9em}
 .wc:hover b{text-decoration:underline;text-underline-offset:3px}
 /* ジャンルの棚：ジャンルごとに看板、作品ごとに最新の 1 本をテープのように並べる（版面へのリンク） */
 /* 棚は既定でたたむ（トップが長くなりすぎないように）。1 行の帯を押すとひらく */
@@ -2186,7 +2187,7 @@ def _heat_badge(w):
 
 WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
 WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
-SPOT_COUNT = 15  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 14 枚。WALL_JS が右の列の高さに収まる段数だけ出す。スマホは 6 枚まで
+SPOT_COUNT = 13  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 14 枚。WALL_JS が右の列の高さに収まる段数だけ出す。スマホは 6 枚まで
 
 
 def _day(story):
@@ -2215,17 +2216,16 @@ def _poster_colors(story, themes):
 
 
 def _side(works, today, wishes=(), taste=()):
-    """トップの右の列（PC だけ。スマホでは消す）。上から：
-    これからの予定（日付のある記事があるときだけ）・欲しい物リスト・今週にぎやかな作品・投票から学んだあなたの好み。
-    どれもデータがなければ出さない。"""
+    """トップの右の列（PC だけ。スマホでは消す）：これからの予定（日付のある記事があるときだけ）と欲しい物リスト（2026-10-18 に話題度ランキングとあなたの好みは外した）。
+    どちらもデータがなければ出さず、両方なければ列ごと消えて写真の壁が横いっぱいになる。"""
     out = []
-    ag = _agenda(works, today, 4)
+    ag = _agenda(works, today, 2)
     if ag:
         out.append(ag)
     want = [x for x in wishes if (x.get("status") or "想要") in ("想要", "纠结")]
     if want:
         rows = []
-        for x in want[:4]:
+        for x in want[:7]:  # 入りきらない分は WALL_JS が下から隠す
             img = x.get("image") or ""
             if img and not img.startswith("http"):
                 img = "wishlist/" + img
@@ -2241,25 +2241,6 @@ def _side(works, today, wishes=(), taste=()):
         out.append(f'<div class="sbox swish"><h4><a href="wishlist.html">欲しい物リスト</a><small>{len(want)} 件</small></h4><ol>{"".join(rows)}</ol>'
                    f'<p class="stot"><span>欲しいものの合計</span><b>{e(total)}</b></p>'
                    f'<a class="smore" href="wishlist.html">♥ 全部見る</a></div>')
-    hot = sorted((w for w in works if (w.get("_heat") or {}).get("score")), key=lambda w: -w["_heat"]["score"])[:6]
-    if hot:
-        rows = []
-        for w in hot:
-            h = w["_heat"]
-            cls, arrow, why = _trend(h.get("delta"))
-            top = next((d for d in h.get("dims") or [] if d["key"] == h.get("top")), None)
-            tip = f'{h["label"]} · {why}' + (f' · いちばん効いている：{top["name"]}（{top["note"]}）' if top else "")
-            rows.append(f'<li style="--sc:{_sec_color(w.get("section"))};--v:{h["score"] / 100:.3f}"><a href="#{_wid(w["name"])}" title="{e(tip)}">'
-                        f'<span class="bn">{e(w["name"])}{"<em>急上昇</em>" if h.get("rising") else ""}</span>'
-                        f'<span class="bar"></span><b>{h["score"]}</b>'
-                        f'<i class="{cls}"{f' aria-label="{e(why)}"' if arrow else ' aria-hidden="true"'}>{arrow}</i></a></li>')
-        out.append(f'<div class="sbox shot"><h4><a href="heat.html">話題度ランキング</a><small>100 点満点</small></h4><ol>{"".join(rows)}</ol>'
-                   f'<p class="snote">報道量・広がり・出来事・勢い・Wikipedia・ファンの反応から計算。各作品の見出しの数字を押すと内訳</p>'
-                   f'<a class="smore" href="heat.html">詳しい分析 →</a></div>')
-    if taste:
-        chips = "".join(f'<li><span>{e(k.removeprefix(WORK_KEY))}</span><b>+{v}</b></li>' for k, v in taste[:8])
-        out.append(f'<div class="sbox staste"><h4>あなたの好み<small>👍 から学習</small></h4><ul>{chips}</ul>'
-                   f'<p>「気になるかも？」はこの順に選んでいます</p></div>')
     return f'<aside class="fside">{"".join(out)}</aside>' if out else ""
 
 
@@ -2701,8 +2682,16 @@ FIT_JS = """
     if (!w) return;
     const cards = [...w.querySelectorAll(':scope > .wc')];
     cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p) p.style.height = ''; });
-    if (!side || innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
-    const target = side.getBoundingClientRect().height;
+    if (innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
+    // 「ほかの注目ニュース」全体を L 版面の高さ（760px）に収める：見出しの分を引いた高さが壁と右の列の上限
+    const target = Math.max(380, 760 - (document.querySelector('.spot > .sh')?.getBoundingClientRect().height || 56) - 44);
+    if (side) {
+      // 入りきらないときは欲しい物（3 件目以降）→ 予定（2 件目）→ 欲しい物（2 件目）の順に下から隠す
+      const rows = sel => [...side.querySelectorAll(sel)];
+      const order = [...rows('.swish li').slice(2).reverse(), ...rows('.agenda li').slice(1).reverse(), ...rows('.swish li').slice(1, 2)];
+      rows('.swish li, .agenda li').forEach(l => l.hidden = false);
+      for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
+    }
     // 大きい 1 枚＋横の 2 枚で 2 段、そのあと 3 枚ずつ 1 段
     let rows = 2;
     const show = r => cards.forEach((c, i) => { c.hidden = i >= 3 + (r - 2) * 3; });
