@@ -183,7 +183,7 @@ button{font-family:inherit}
 .fside .agenda{padding:12px 14px 8px}
 .fside .agenda ol{grid-template-columns:minmax(0,1fr)}
 .agenda li b small{display:block;font:700 11px var(--font-sans);color:var(--ink);opacity:.7}
-.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-flow:dense;gap:18px;align-content:start}
 .wc{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
  padding:8px 10px 11px;transition:transform .12s,box-shadow .12s}
 .wc{transform:rotate(var(--r,0deg))}
@@ -379,36 +379,50 @@ button{font-family:inherit}
 .pkhead .flag::after{content:"";position:absolute;right:-12px;top:50%;margin-top:-8px;border:8px solid transparent;border-left:12px solid var(--card);border-right:0}
 .pkhead>span:not(.flag){flex-basis:100%;order:3;font-size:13px;opacity:.8}
 .pkhead a{color:color-mix(in srgb,var(--rose) 72%,var(--ink));font-weight:700;border-bottom:1px solid currentColor}  /* バラ色のままだと地の上で 4.5:1 に届かない */
-.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 22px;margin-top:22px;align-items:start}
+.pkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 22px;margin-top:18px;align-items:start}
 .pkgrid.row{grid-template-columns:repeat(var(--n),minmax(0,1fr))}
-.pksub{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:34px;font:900 15px var(--font-sans);letter-spacing:.1em}
+.pksub{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:22px;font:900 15px var(--font-sans);letter-spacing:.1em}
 .pksub::before{content:"";flex:none;width:18px;height:18px;background:var(--rose);transform:skewX(var(--skew));align-self:center}
 .pksub span{font:500 12px var(--font-sans);letter-spacing:0;opacity:.75}
 .pk{position:relative;display:flex;flex-direction:column;gap:0;min-width:0;color:var(--ink)}
 .pk.big{grid-column:span 2;grid-row:span 2;align-self:stretch}
-.pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:280px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
+.pk.big>a{flex:1}.pk.big .pic{flex:1 1 auto;aspect-ratio:auto;min-height:160px}  /* 大きいカードは 2 段分の高さまで写真を伸ばす（下に空白を残さない） */
 .pk>a{display:flex;flex-direction:column;min-width:0;flex:1}
 .pk .pic{background:#FFF;color:var(--ink);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);aspect-ratio:16/10}
 .pk .pic{--pko:18px}.pk.big .pic{--pko:40px}  /* 下に手書きの札（.pkt）が重なる高さ：写真はその上に収め、重なる帯はぼかしだけ */
 .pk .pic img:not(.bg):not(.ico){bottom:var(--pko)}.pk .pic.fill img.bg{display:block}
 .pk.big .pic{aspect-ratio:4/3}
-.pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:7px;min-width:0;margin:-18px 10px 0;padding:16px 15px 12px;background:var(--card);
+.pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:5px;min-width:0;margin:-18px 10px 0;padding:14px 14px 10px;background:var(--card);
  box-shadow:var(--shadow);transform:rotate(-1deg)}
 .pk:nth-child(even) .pkt{transform:rotate(1deg)}
 .pk.big .pkt{margin:-40px 24px 0;padding:22px 22px 16px;transform:rotate(-1.2deg)}
-.pk .why{order:-1;font:16px/1.5 var(--font-hand);color:var(--ink)}
+.pk .why{order:-1;font:15px/1.45 var(--font-hand);color:var(--ink)}
 .pk .why mark{color:inherit;background:linear-gradient(transparent 55%,var(--gold) 55% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 2px}
-.pk .why small{display:block;margin-top:3px;font-size:13px;opacity:.75}
-.pk.big .why{font-size:25px;line-height:1.45}
+.pk .why small{display:block;margin-top:3px;font-size:12px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk.big .why{font-size:22px;line-height:1.4}
 .pk.big .why small{font-size:15px}
 .pk .src{font:500 12px/1.4 var(--font-sans);opacity:.7}
-.pk b{font:700 15px/1.5 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.pk.big b{font-size:20px;font-weight:900;line-height:1.45;-webkit-line-clamp:4}
+.pk b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pk.big b{font-size:19px;font-weight:900;line-height:1.4;-webkit-line-clamp:3}
 .pk .tags{display:flex;flex-wrap:wrap;gap:5px}
 .pk .tags:empty{display:none}
 .pk .tags i{font-style:normal;padding:2px 8px;border:1.5px solid var(--ink);background:#FFF;font:700 11px/1.3 var(--font-sans)}
 .pk>a:hover b{text-decoration:underline;text-underline-offset:3px}
-.pk .taste{font-size:11px;opacity:.7}
+.pk .taste{font-size:11px;opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pkgrid[style*='--pkh'] .pk:not(.big) .pic{height:var(--pkh);aspect-ratio:auto}  /* fitPk が 1 画面に収めるため写真枠の高さを決めることがある */
+.pkgrid[style*='--pkbig'] .pk.big .pic{height:var(--pkbig);flex:none;aspect-ratio:auto}
+/* PC の「似たジャンルの新着」は横長の小さいカード（写真を左、文字を右）：上の段と形を変え、1 段を低く */
+@media (min-width:761px){
+ .pkgrid.row .pk>a{flex-direction:row;align-items:flex-start}
+ .pkgrid.row .pk .pic{flex:none;width:88px;aspect-ratio:1;--pko:0px;box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+ .pkgrid.row .pk:nth-child(even) .pic{transform:rotate(2deg)}
+ .pkgrid.row .pk .pkt{flex:1;margin:10px 0 0 -8px;padding:10px 12px 9px}
+ .pkgrid.row .pk .tags,.pkgrid.row .pk .taste,.pkgrid.row .pk .why small{display:none}
+ .pkgrid.row .pk .why{font-size:13px}.pkgrid.row .pk b{font-size:13px}
+ .pkgrid.row .pk .vote{margin:4px 0 0 96px}
+ .pkgrid:not(.row) .pk:not(.big) .taste{display:none}  /* 「あなたの投票」は大きい 1 枚だけ */
+}
+@media (min-width:761px) and (max-height:1000px){.pkgrid:not(.row) .pk:not(.big) .tags{display:none}}
 .pk .vote{position:relative;z-index:2;margin:8px 10px 0;padding:0 2px}
 .pk.big .vote{margin:12px 24px 0}
 .vote{display:flex;flex-wrap:wrap;align-items:center;gap:10px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -1411,12 +1425,40 @@ SHUFFLE_JS = """
     }
     return out;
   };
+  // 「気になるかも？」全体を 1 画面に収める（PC だけ）：はみ出す分を小さいカードの写真枠から段ごとに等分して削る（最低 72px）。
+  // 大きい 1 枚は 2 段分の高さに合わせて一緒に縮む
+  const fitPk = () => {
+    // 高さは CSS 変数で渡す（写真が開けず FIT_JS が .pic を作り直しても効くように）
+    if (!wishGrid) return;
+    wishGrid.style.removeProperty('--pkh'); wishGrid.style.removeProperty('--pkbig');
+    if (innerWidth <= 760) return;
+    const q = sel => [...wishGrid.querySelectorAll(sel)];
+    const over = sec.getBoundingClientRect().height - (innerHeight - 16);
+    const sm = q('.pk:not(.big)'), big = wishGrid.querySelector('.pk.big'), bigPic = big && big.querySelector('.pic');
+    if (over > 0 && sm.length > 1) {
+      const h = Math.max(...sm.map(k => k.querySelector('.pic')?.getBoundingClientRect().height || 0));
+      wishGrid.style.setProperty('--pkh', Math.max(72, h - over / 2) + 'px');
+    }
+    // 大きい 1 枚は横の 2 段とちょうど同じ高さに（下端をそろえる）
+    if (bigPic && sm.length >= 3) {
+      // 大きい 1 枚が高いと段そのものが伸びるので、横のカード自身の高さ（2 枚ずつの大きいほう）＋段の間で測る
+      const hk = k => k ? k.getBoundingClientRect().height : 0;
+      const want = Math.max(hk(sm[0]), hk(sm[1])) + parseFloat(getComputedStyle(wishGrid).rowGap) + Math.max(hk(sm[2]), hk(sm[3]));
+      const h = bigPic.getBoundingClientRect().height - (big.getBoundingClientRect().height - want);
+      wishGrid.style.setProperty('--pkbig', Math.max(140, h) + 'px');
+    }
+  };
+  let rt;
+  addEventListener('resize', ev => { if (ev.isTrusted) { clearTimeout(rt); rt = setTimeout(fitPk, 200); } });
+  if (document.fonts) document.fonts.ready.then(fitPk);
+  addEventListener('load', fitPk);
   const history = [];
   let pos = -1;
   const show = ([w, f]) => {
     cards.forEach(el => { el.classList.remove('big'); pool.appendChild(el); });
     if (wishGrid) w.forEach((el, i) => { el.classList.toggle('big', i === 0); wishGrid.appendChild(el); });
     if (followGrid) { f.forEach(el => followGrid.appendChild(el)); followGrid.style.setProperty('--n', f.length); }
+    fitPk();
     dispatchEvent(new Event('resize'));   // 入れ替えたカードの写真を枠に合わせ直す（FIT_JS）
     back.disabled = pos <= 0;
     const fresh = cards.filter(el => !seen[el.dataset.u]).length;
@@ -2193,7 +2235,7 @@ def _heat_badge(w):
 
 WEEKDAY = ("月", "火", "水", "木", "金", "土", "日")
 WEEKDAY_EN = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
-SPOT_COUNT = 13  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 14 枚。WALL_JS が右の列の高さに収まる段数だけ出す。スマホは 6 枚まで
+SPOT_COUNT = 24  # 「ほかの注目ニュース」の写真の壁の候補：大きい 1 枚（2×2）+ 小さい 23 枚。列の数は幅しだい（1 列 220px 以上）、WALL_JS が画面の高さに収まる段数だけ出す。スマホは 6 枚まで
 
 
 def _day(story):
@@ -2225,7 +2267,7 @@ def _side(works, today, wishes=(), taste=()):
     """トップの右の列（PC だけ。スマホでは消す）：これからの予定（日付のある記事があるときだけ）と欲しい物リスト（2026-10-18 に話題度ランキングとあなたの好みは外した）。
     どちらもデータがなければ出さず、両方なければ列ごと消えて写真の壁が横いっぱいになる。"""
     out = []
-    ag = _agenda(works, today, 2)
+    ag = _agenda(works, today, 6)
     if ag:
         out.append(ag)
     want = [x for x in wishes if (x.get("status") or "想要") in ("想要", "纠结")]
@@ -2691,21 +2733,27 @@ FIT_JS = """
     const cards = [...w.querySelectorAll(':scope > .wc')];
     cards.forEach(c => { c.hidden = false; const p = c.querySelector('.pic'); if (p) p.style.height = ''; });
     if (side) side.style.minHeight = '';
-    if (innerWidth <= 760 || getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) return;
-    // 「ほかの注目ニュース」全体を L 版面の高さ（760px）に収める：見出しの分を引いた高さが壁と右の列の上限
-    const target = Math.max(380, 760 - (document.querySelector('.spot > .sh')?.getBoundingClientRect().height || 56) - 44);
+    if (innerWidth <= 760) return;
+    // 2 列しか入らない幅（右の列が下に回る）では大きい 1 枚＋4 枚まで
+    if (getComputedStyle(w).gridTemplateColumns.split(' ').length < 3) { cards.forEach((c, i) => { c.hidden = i >= 5; }); return; }
+    // 「ほかの注目ニュース」全体（見出し・棚の帯まで）を 1 画面に収める：画面の高さから見出しと棚の帯の分を引いたのが壁と右の列の上限
+    const hh = sel => document.querySelector(sel)?.getBoundingClientRect().height || 0;
+    const target = Math.max(520, innerHeight - (hh('.spot > .sh') || 56) - (hh('.spot > .shelfbox > summary') || 44) - 22 * 2 - 24);
     if (side) {
-      // 入りきらないときは欲しい物（3 件目以降）→ 予定（2 件目）→ 欲しい物（2 件目）の順に下から隠す
+      // 入りきらないときは欲しい物（3 件目以降）→ 予定（4 件目以降）→ 欲しい物（2 件目）→ 予定（2・3 件目）の順に下から隠す
       const rows = sel => [...side.querySelectorAll(sel)];
-      const order = [...rows('.swish li').slice(2).reverse(), ...rows('.agenda li').slice(1).reverse(), ...rows('.swish li').slice(1, 2)];
-      rows('.swish li, .agenda li').forEach(l => l.hidden = false);
+      const ag = rows('.agenda li'), wi = rows('.swish li');
+      const order = [...wi.slice(2).reverse(), ...ag.slice(3).reverse(), ...wi.slice(1, 2), ...ag.slice(1, 3).reverse()];
+      [...ag, ...wi].forEach(l => l.hidden = false);
       for (const l of order) { if (side.getBoundingClientRect().height <= target) break; l.hidden = true; }
     }
-    // 大きい 1 枚＋横の 2 枚で 2 段、そのあと 3 枚ずつ 1 段
+    // 大きい 1 枚（2 列 × 2 段）＋横の (列数 − 2) × 2 枚で 2 段、そのあと列数ずつ 1 段
+    const cols = getComputedStyle(w).gridTemplateColumns.split(' ').length;
+    const upto = r => 1 + (cols - 2) * 2 + (r - 2) * cols;
     let rows = 2;
-    const show = r => cards.forEach((c, i) => { c.hidden = i >= 3 + (r - 2) * 3; });
+    const show = r => cards.forEach((c, i) => { c.hidden = i >= upto(r); });
     show(rows);
-    while (3 + (rows - 1) * 3 <= cards.length) {
+    while (upto(rows + 1) <= cards.length) {
       show(rows + 1);
       if (w.getBoundingClientRect().height > target) { show(rows); break; }
       rows++;
