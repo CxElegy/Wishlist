@@ -453,6 +453,9 @@ PROCESSES = [
         "files": [".github/workflows/requests.yml", "docs/additem.js", "db/instant.sql", "sections.yaml", "scripts/taxonomy.py"], "doc": "CLAUDE.md", "uses": ["supabase", "pgnet", "taxonomy"],
         "flow": [
             {"id": "qp", "kind": "step", "lane": "web", "title": "上級を推す", "text": "今ある・上級のない関注項の名前・搜索词が新項の名前・維基データに出てくる → 推薦（1 層だけ）"},
+            {"id": "qf", "kind": "step", "lane": "web", "title": "「面」を全部並べて推す", "text": "作品・IP 型：アニメ・映画・ドラマ・漫画・ゲーム・グッズ・イベントの 7 面、維基データの同名の条目（AniList / TMDB / Steam の番号・説明の語）で依拠のある面を推薦、具体的な作品名も検索語に。2 面以上あればグッズも推薦 · 題材型（短い普通の語「猫」）：sections.yaml の facets（なければ第一の分け方の値）、名前と面の語が同時に出たときだけ収める · 全部選べる", "uses": ["taxonomy"]},
+            {"id": "qs", "kind": "decision", "lane": "web", "title": "面が 2 つ以上の板块にまたがる？", "no": "1 つの版面にまとめる（ほかの板块は乗換駅）"},
+            {"id": "qk", "kind": "step", "lane": "web", "title": "面ごとに版面（下級）", "text": "主面は「名前」、ほかは「名前 アニメ」…を parent つきで各自の板块へ。兄弟の言葉は不想看（アニメは映画の語を除く）· 主項の後に続けて送る"},
             {"id": "qa", "kind": "step", "lane": "web", "title": "ほかの板块（also）を推す", "text": "選んだ関心に板块の印（ちいかわ「动画、电影、活动」→ 映像・アニメ）· 複数選べる · 版面は主板块に 1 つ、ほかは目次の乗換駅"},
             {"id": "q0", "kind": "step", "lane": "web", "title": "板块・小分類を推す", "text": "上級があれば上級の板块・ほかの分け方も上級と同じ、1 つ目の分け方は自分の類別 · なければ「角色 / IP」はグッズ、ほかは維基データの説明・名前の語 → sections.yaml の表（当たらなければ type → その他）", "uses": ["taxonomy"]},
             {"id": "q1", "kind": "step", "lane": "web", "title": "設定ページで送る", "text": "一問一答のウィザード", "uses": ["supabase"]},

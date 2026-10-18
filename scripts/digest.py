@@ -1118,7 +1118,8 @@ def _clean_field(key, value):
         out = list(dict.fromkeys(v.strip() for v in value if v.strip()))
         if rule.startswith("list:"):
             most, longest = map(int, rule.split(":")[1:])
-            if len(out) > most or any(len(v) > longest for v in out):
+            # re: の規則（「名前」と「面の言葉」が同時に出る、の先読み）は長くなるので 600 字まで
+            if len(out) > most or any(len(v) > (600 if v.startswith("re:") else longest) for v in out):
                 raise ValueError(f"{key} 太多或太长")
         elif rule == "langs":
             if any(v not in NEWS_LANGS for v in out):
@@ -1270,13 +1271,13 @@ def take_item_requests():
         names = {i["name"] for i in items}
         try:
             fields = clean_item_config(r.get("config") or {})
-            if fields.get("parent"):   # 上級は今ある、自分には上級のない関注項だけ（1 層だけ）。板块は上級と同じにする
+            if fields.get("parent"):   # 上級は今ある、自分には上級のない関注項だけ（1 層だけ）。板块は書いてなければ上級と同じ
                 top = next((i for i in items if i["name"] == fields["parent"]), None)
                 if top is None or top["name"] == name or top.get("parent"):
                     raise ValueError(f"上级「{fields['parent']}」不对：要是已有的、自己没有上级的关注项")
                 if any(i.get("parent") == name for i in items):
                     raise ValueError(f"「{name}」下面已经有下级了，不能再挂到别人下面（只做一层）")
-                fields["section"] = section_of(top)
+                fields["section"] = fields.get("section") or section_of(top)
             if fields.get("also") and fields.get("section"):
                 fields["also"] = {k: v for k, v in fields["also"].items() if k != fields["section"]} or None
             if r.get("action") == "edit":
@@ -2260,9 +2261,9 @@ def load_config():
     settings["sub_schemes"] = taxonomy.sub_schemes()   # 小分類の分け方は sections.yaml が唯一の元
     items = config.get("items") or []
     by_name = {i.get("name"): i for i in items}
-    for item in items:   # 下級は上級と同じ板块（目次で上級の下の支線に並ぶ。CLAUDE.md「判断上下级」）
-        top = by_name.get(item.get("parent"))
-        if top is not None and top is not item:
+    for item in items:   # 下級は上級と同じ板块（目次で上級の下の支線に並ぶ。CLAUDE.md「判断上下级」）。
+        top = by_name.get(item.get("parent"))   # section を自分で書いた下級（面ごとに分けた「ちいかわ アニメ」→ 映像）はそのまま
+        if top is not None and top is not item and not item.get("section"):
             item["section"] = top.get("section") or taxonomy.BY_TYPE.get(top.get("type", "product"), "好物")
     for item in items:   # also：本来の板块と同じもの・表にないものは捨てる
         if isinstance(item.get("also"), dict):

@@ -101,6 +101,15 @@ sections:
     schemes:
       - {id: animal, label: 動物, values: [{v: 猫, re: '\bcats?\b|ねこ|ネコ|貓'}, {v: 犬, re: '\bdogs?\b|いぬ|イヌ|狗'}, 小動物, 鳥, 魚・水生]}
       - {id: kind, label: 種類, values: [用品, {v: フード, re: '\bfood\b|粮|糧|ごはん'}, 健康・医療, 情報・イベント]}
+    # 题材型（「猫」「犬」这种普通词）加关注项时推荐的「面」：每个面 = 一套关键词（kw 和名字拼成搜索词，re 和名字同时出现才收）
+    # ＋ 放哪个板块（sec，不写 = 这个板块）＋ 小分类。rec = 默认勾上。没写 facets 的板块用第一种分法的值当面（scripts/taxonomy.py）
+    facets:
+      - {id: goods, label: 用品・グッズ, kw: [グッズ, 用品 新商品], re: 'グッズ|用品|新商品|新発売|用具|玩具|おもちゃ', subs: {kind: 用品}, rec: true}
+      - {id: food, label: フード・おやつ, kw: [フード 新発売, おやつ], re: 'フード|おやつ|ごはん|food|粮|糧|ちゅ〜る', subs: {kind: フード}, rec: true}
+      - {id: health, label: 健康・病気, kw: [病気, 健康], re: '病気|健康|ワクチン|動物病院|獣医|兽医|病院|感染', subs: {kind: 健康・医療}}
+      - {id: cafe, label: カフェ・イベント, kw: [カフェ, 展 イベント], re: 'カフェ|イベント|写真展|展覧会|フェス|ふれあい', sec: 出行, subs: {kind: 季節イベント}}
+      - {id: collab, label: モチーフのコラボ商品, kw: [コラボ 新作, モチーフ 雑貨], re: 'コラボ|モチーフ|柄|デザイン', sec: 好物, subs: {kind: 食器・生活, owner: ジャンル}}
+      - {id: adopt, label: 保護・譲渡, kw: [保護, 譲渡会], re: '保護|譲渡|里親|殺処分', subs: {kind: 情報・イベント}}
 
   - key: 美食
     ja: グルメ

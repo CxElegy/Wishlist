@@ -67,7 +67,24 @@ def guess_subs(section, text=""):
     return out
 
 
+def facets(key):
+    """题材型（「猫」这种普通词）的「面」：sections.yaml 的 facets，没写就用第一种分法的值（每个值 = 一个面，关键词就是这个值）。"""
+    r = SECTIONS.get(key) or SECTIONS[OTHER]
+    if r.get("facets"):
+        return [{**f, "sec": f.get("sec") or key} for f in r["facets"]]
+    first = (r.get("schemes") or [{}])[0]
+    out = []
+    for v in first.get("values") or []:
+        name = v["v"] if isinstance(v, dict) else v
+        if name == "その他":
+            continue
+        words = [p for p in re.split(r"[・/]", name) if p]
+        out.append({"id": name, "label": name, "kw": words[:2], "sec": key, "subs": {first["id"]: name},
+                    "re": "|".join([re.escape(w) for w in words] + ([v["re"]] if isinstance(v, dict) and v.get("re") else []))})
+    return out
+
+
 def for_page():
-    """设置页的向导用（render_settings 的 wl-cfg）：板块的日语名、颜色、默认的「这是什么」、对号入座的词、分法和常用值。"""
+    """设置页的向导用（render_settings 的 wl-cfg）：板块的日语名、颜色、默认的「这是什么」、对号入座的词、分法和常用值、题材型的面。"""
     return [{"key": k, "ja": r["ja"], "color": r["color"], "kind": r.get("kind") or "product", "words": r.get("words") or "",
-             "schemes": r.get("schemes") or []} for k, r in SECTIONS.items()]
+             "schemes": r.get("schemes") or [], "facets": facets(k)} for k, r in SECTIONS.items()]

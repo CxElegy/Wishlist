@@ -65,15 +65,17 @@ class TakeItemRequests(unittest.TestCase):
     def test_child_follows_parent_section(self):
         """上级（parent）：板块は上級と同じに直す。上級は今ある・自分に上級のない関注項だけ（1 層）。"""
         patched = self.run_with(
-            {"action": "add", "name": "FROM 映像", "config": {"type": "show", "parent": "FROM", "section": "好物",
-                                                             "subs": {"kind": "ドラマ"}}},
+            {"action": "add", "name": "FROM 映像", "config": {"type": "show", "parent": "FROM", "subs": {"kind": "ドラマ"}}},
+            {"action": "add", "name": "FROM グッズ", "config": {"type": "category", "parent": "FROM", "section": "好物",   # 面ごとの下級：自分の板块
+                                                              "match": ["re:(?is)(?=.*(FROM))(?=.*(" + "グッズ|" * 60 + "コラボ))"]}},
             {"action": "add", "name": "孙", "config": {"type": "show", "parent": "FROM 映像"}},
             {"action": "add", "name": "没这个上级", "config": {"type": "show", "parent": "不存在"}})
         got = self.items()
         self.assertEqual((got["FROM 映像"]["parent"], got["FROM 映像"]["section"]), ("FROM", "影视"))
+        self.assertEqual(got["FROM グッズ"]["section"], "好物")
         self.assertNotIn("孙", got)
         self.assertNotIn("没这个上级", got)
-        self.assertIn("上级", patched["item_requests?id=eq.2"]["note"])
+        self.assertIn("上级", patched["item_requests?id=eq.3"]["note"])
         settings, items = digest.load_config()
         self.assertEqual({i["name"]: digest.section_of(i) for i in items}["FROM 映像"], "影视")
 
