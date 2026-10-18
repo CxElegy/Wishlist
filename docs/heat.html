@@ -42,8 +42,8 @@ button{font-family:inherit}
 .pic.fill img:not(.bg):not(.ico){object-fit:cover}
 .pic.fill img.bg{display:none}
 .pic .ph{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;text-align:center;
- font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;
- background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,var(--ac,var(--rose))}
+ font:900 clamp(15px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;color:#FFF;text-shadow:0 1px 2px color-mix(in srgb,var(--ink) 70%,transparent);
+ background:radial-gradient(circle,color-mix(in srgb,#000 22%,transparent) 1px,transparent 1.5px) 0 0/7px 7px,linear-gradient(color-mix(in srgb,var(--ink) 34%,transparent),color-mix(in srgb,var(--ink) 34%,transparent)),var(--ac,var(--rose))}   /* 明るい作品色でも白い字が読めるよう墨を 34% 重ねる */
 .pic.none{background:none}
 .pic.none .ph{display:flex}
 .pic.icon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
@@ -318,12 +318,13 @@ button{font-family:inherit}
 .brief a{color:inherit;font-weight:700}
 .brief a:hover,.brief a:focus-visible{color:var(--acc);text-decoration:underline}
 .older{background:var(--abg);color:var(--afg)}
-.older summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
+.older summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:2px 12px;padding:12px 26px;font:900 13px var(--font-sans);letter-spacing:.1em}
 .older summary::-webkit-details-marker{display:none}
 .older summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;background:var(--aacc);color:var(--abg);transform:skewX(var(--skew));
  font:900 15px/1 var(--font-sans)}
 .older[open] summary::before{content:"−"}
 .older summary:hover,.older summary:focus-visible{color:var(--aacc);outline:none}  /* 折叠区是副色底：用副色的强调色 */
+.older summary .lb{font:inherit;white-space:nowrap}   /* 「もっと見る · 9 件」は途中で折り返さない（狭い画面では内訳が次の行へ） */
 .older summary span{font-weight:500;letter-spacing:.04em}
 .older .grid{padding-top:8px}
 .pend{border-top:1px dashed var(--line)}
@@ -612,7 +613,7 @@ button{font-family:inherit}
 .emb img.logo{height:62%;max-width:150px}.emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
-.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:var(--card);padding:6px}  /* 横長・縦長すぎる画像は切らずに全体 */
+.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:color-mix(in srgb,var(--fg) 10%,var(--bg));padding:6px}  /* 地は版面の色に寄せる（白い透過ロゴが白い台に消えないように） */  /* 横長・縦長すぎる画像は切らずに全体 */
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */
@@ -946,7 +947,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="690b63727225"><style>
+<meta name="wl-ver" data-page="heat" content="e3e33c73664b"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -969,7 +970,7 @@ section.fresh{position:relative}
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.18</b></div>
-<div class="meta"><small>更新</small><b>10.18 09:38</b></div></div>
+<div class="meta"><small>更新</small><b>10.18 09:39</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
