@@ -141,10 +141,8 @@ class FrontSide(unittest.TestCase):
         self.assertIn("欲しい物リスト", out)
         self.assertIn('src="wishlist/mug.jpg"', out)
         self.assertNotIn("済み", out)                       # 入手済みは出さない
-        self.assertIn("話題度ランキング", out)
-        self.assertIn("<em>急上昇</em>", out)
-        self.assertIn("報道量（7 日で 9 件）", out)            # いちばん効いている指標を title に
-        self.assertIn("<span>A</span><b>+3</b>", out)      # 作品: の接頭辞は外す
+        self.assertNotIn("話題度ランキング", out)           # 2026-10-18：右の列は予定と欲しい物だけ
+        self.assertNotIn("あなたの好み", out)
         self.assertNotIn("これからの予定", out)             # 日付のある記事がなければ出さない
         self.assertEqual(render._side([], "2026-10-16"), "")
 
@@ -215,7 +213,6 @@ class HeatPage(unittest.TestCase):
     def test_entry_links_from_front_page(self):
         works = [{"name": "A", "section": "游戏", "stories": [],
                   "_heat": {"score": 50, "label": "話題", "delta": None, "top": "", "dims": []}}]
-        self.assertIn('href="heat.html"', render._side(works, "2026-10-16"))
         block = {"name": "A", "theme": dict(theme.DEFAULT), "_today": "2026-10-16", "stories": [], **works[0]}
         self.assertIn('href="heat.html#h-' + render._wid("A") + '"', render._section(block, "w"))
 
