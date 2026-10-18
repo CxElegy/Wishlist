@@ -565,6 +565,7 @@ TOP_MAX = 0.5      # 上の端の人物の割合がこれを超える = 漫画�
 TOP_TOUCH = 0.03   # 上の端にこれ以上当たっていたら、顔まで切れていないか確かめる
 FACE_TOP = 0.04    # 顔の上端が高さのこの割合より上 = 顔が上の端で切れている
 AREA_MIN = 0.12    # 人物の面積がこれより小さい = 小さすぎる
+DARK_MAX = 0.16    # 写真・場面の切り抜きの明るさ（人物部分の平均）がこれ未満 = 暗すぎて何かわからない
 SOFT_MAX = 0.18    # 半透明（輪郭がにじんだ）部分がこれより多いものは使わない
 
 
@@ -632,6 +633,10 @@ def check_whole(out, photo=False):
         others = other_faces(out, keep)
         if others:
             raise ValueError(f"ほかの人が残っている（顔 {others} つ）")
+    if photo:   # 暗い場面の切り抜き（顔も体も黒くつぶれて何かわからない）
+        lum = float(np.array(out.convert("L"))[solid].mean()) / 255
+        if lum < DARK_MAX:
+            raise ValueError(f"暗すぎて見えない（明るさ {lum:.0%}）")
     holes = hole_share(solid) if photo else 0.0   # 絵は武器・手足のすき間も「穴」に数えてしまう（16% の正しい絵もある）ので、写真だけ
     if holes > HOLE_MAX:
         raise ValueError(f"切り抜きに穴（{holes:.1%}）")

@@ -457,7 +457,7 @@ button{font-family:inherit}
 .emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
 /* 透明な立ち絵が見つからない写真は、丸ではなく P5 風の傾いた四辺形のカードに（中身はそのまま、顔が入るよう上寄り） */
 .emb img.badge{width:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
-.emb img.badge.whole{object-fit:contain;object-position:50% 50%;background:var(--card);padding:6px}  /* 横長・縦長すぎる画像は切らずに全体 */
+.emb img.badge.whole{aspect-ratio:auto;height:auto;width:auto;max-width:210px;max-height:100%;object-fit:contain;background:none;padding:0;border:5px solid var(--card);box-sizing:content-box;clip-path:polygon(1.5% 0,100% 2.5%,98.5% 100%,0 97.5%)}  /* 横長・縦長すぎる画像は切らず、余白なしで写真そのままに斜めの枠だけ */
 .emb .crop{display:block;height:100%;aspect-ratio:4/5;overflow:hidden;clip-path:polygon(8% 0,100% 5%,92% 100%,0 94%)}
 .emb .crop img{width:calc(100% / var(--cw));max-width:none;height:auto;aspect-ratio:auto;object-fit:fill;clip-path:none;
  margin-left:calc(-100% * var(--cx) / var(--cw));margin-top:calc(-100% * var(--cy) * var(--ar) / var(--cw))}  /* 顔が入る範囲だけ（emblem.py の crop） */

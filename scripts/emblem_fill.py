@@ -762,6 +762,9 @@ def role_of(api, actor, work_words=()):
     return None
 
 
+POSTER_NAME = re.compile(r"poster|promo|key.?art|teaser|banner|portrait|render|cgi|concept|character.?art|official", re.I)
+
+
 def role_images(api, role, limit=6):
     """役の記事の画像：代表画像（infobox）と、記事に載っている画像のうち役の名前（姓か名）がファイル名にあるもの（大きい順）。"""
     out = []
@@ -777,7 +780,7 @@ def role_images(api, role, limit=6):
              and not re.search(r"icon|logo|symbol|signature", x["title"], re.I) and any(w in x["title"].lower() for w in words)]
     rows = _files_info(api, files[:40], width=600) if files else []
     seen = {r["image"] for r in out}
-    for r in sorted(rows, key=lambda r: -r["area"]):
+    for r in sorted(rows, key=lambda r: (not POSTER_NAME.search(r["title"]), -r["area"])):   # ポスター風（宣伝用の絵）を先に。場面のスクリーンショットは暗くて何かわからないことが多い
         if r["image"] not in seen:
             out.append(r)
     return out[:limit]
