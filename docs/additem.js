@@ -203,18 +203,24 @@
   //   找到依据的默认勾上并写出依据，具体作品名也变成关键词。
   // 题材型（「猫」这种普通词）：它的板块在 sections.yaml 写的 facets 全部列出（rec 的默认勾上）。名字太泛，每个面用「名字＋面的词」同时出现才收。
   // 每个面 = 一套关键词 ＋ 一个板块。勾了几个就放进几个板块（版面一个＋乗換駅，或者每个面一个版面）。都是规则，不用 AI。
+  // MECE（用户定的）：面は 2 層に分けて重ならない・漏れない。
+  //   作品（漫画・アニメ・映画・ドラマ・ゲーム・舞台）＝ 維基データに条目があるかで確かめられる
+  //   展開（グッズ・イベント）＝ 維基データにはまず載らない → ルールで推定（2 媒体以上の作品・キャラクター IP には出る）
+  // 面ごとの語（re）はほかの面と重ならない（tests/test_taxonomy.py の MECE で確かめる）。8 面は毎回全部確かめて、状態は必ず 1 つ：
+  //   確認（見つかった）・推定（展開のルール）・情報少なめ（あるがメインより冷門）・見つからず（一覧には出さず最後に名前だけ）
+  const LAYER = {manga: "作品", anime: "作品", movie: "作品", drama: "作品", game: "作品", live: "作品", goods: "展開", event: "展開"};
   const MEDIA = {
     goods: {label: "グッズ・コラボ", hint: "联名、周边、一番赏、快闪店", kind: "character", sec: "好物", subs: {kind: "キャラグッズ", owner: "キャラクター"},
-            kw: ["コラボ", "グッズ 新作", "一番くじ", "ポップアップ"], re: "コラボ|グッズ|一番くじ|ポップアップ|フェア|POP ?UP|联名|聯名|周边|周邊|merch|collab|figure|フィギュア",
+            kw: ["コラボ", "グッズ 新作", "一番くじ"], re: "コラボ(?!カフェ)|グッズ|一番くじ|フィギュア|ぬいぐるみ|联名|聯名|周边|周邊|merch|collab|figure",
             tail: "グッズ", hit: /キャラクター|character|mascot|マスコット|角色|吉祥物/i},
     anime: {label: "アニメ", hint: "电视动画、配信、声优", kind: "anime", sec: "影视", subs: {kind: "アニメ"},
-            kw: ["アニメ", "アニメ 放送"], re: "アニメ|anime|動畫|动画|放送|配信|animated series", tail: "アニメ",
+            kw: ["アニメ", "アニメ 放送"], re: "アニメ(?!映画)|anime(?! film)|動畫|动画(?!电影)|animated series", tail: "アニメ",
             hit: /アニメ|anime|animated (television|TV|series)|动画|動畫/i},
     movie: {label: "映画", hint: "剧场版、电影：定档、预告、票房", kind: "show", sec: "影视", subs: {kind: "映画"},
             kw: ["映画", "劇場版"], re: "映画|劇場版|剧场版|電影|电影|movie|film|box office|興行", tail: "映画",
             hit: /映画|劇場|film|movie|电影|電影/i},
     drama: {label: "ドラマ・実写", hint: "电视剧、网剧、实写版", kind: "show", sec: "影视", subs: {kind: "ドラマ"},
-            kw: ["ドラマ", "実写"], re: "ドラマ|実写|drama|series|电视剧|電視劇|剧集|劇集", tail: "ドラマ",
+            kw: ["ドラマ", "実写"], re: "ドラマ|実写|drama|电视剧|電視劇|剧集|劇集", tail: "ドラマ",
             hit: /ドラマ|television (drama|series)|TV series|电视剧|電視劇|剧集/i},
     manga: {label: "漫画・本", hint: "连载、单行本、画集", kind: "book", sec: "影视", subs: {kind: "マンガ"},
             kw: ["単行本", "最新刊"], re: "漫画|漫畫|マンガ|manga|comic|単行本|单行本|最新刊|連載|连载|画集", tail: "漫画",
@@ -224,7 +230,7 @@
            hit: /ゲーム|video game|游戏|遊戲/i},
     // 联名咖啡・展览・快闪店 = 出かけて行くもの → おでかけ・アート（2026-10-19 用户的树状图）。舞台・ミュージカル・演唱会は音楽・ライブ
     event: {label: "イベント・カフェ・展示", hint: "联名咖啡、展览、快闪店", kind: "place", sec: "出行", subs: {kind: "季節イベント"},
-            kw: ["コラボカフェ", "展", "ポップアップ"], re: "コラボカフェ|カフェ|展覧会|展示|ポップアップ|POP ?UP|イベント|フェア|展", tail: "イベント",
+            kw: ["コラボカフェ", "展", "ポップアップ"], re: "コラボカフェ|カフェ|展覧会|展示|ポップアップ|POP ?UP|イベント|フェア|展(?!開)", tail: "イベント",
             hit: /exhibition|展覧会|展示会|テーマパーク|theme park|attraction/i},
     live: {label: "舞台・ライブ", hint: "舞台、音乐剧、演唱会", kind: "artist", sec: "演出", subs: {scene: "舞台・ミュージカル", form: "舞台"},
            kw: ["舞台", "ミュージカル"], re: "ライブ|舞台|ミュージカル|コンサート|concert|musical|stage", tail: "舞台",
@@ -262,8 +268,11 @@
     }
     // アニメ・漫画・映画・ゲームのうち 2 つ以上ある作品（ちいかわ）はグッズ・コラボもまず出ている → 推荐（依据は見つかった面）
     const media = ["anime", "manga", "movie", "game"].filter(k => ev[k]);
-    if (!ev.goods && media.length >= 2) ev.goods = [{title: `${media.map(k => MEDIA[k].label).join("・")}がある作品`, desc: "", names: {},
-      links: Math.max(0, ...media.flatMap(k => ev[k].map(x => x.links ?? THIN)))}];
+    // 展開の層（グッズ・イベント）は推定：2 媒体以上の作品かキャラクター IP なら、どちらも出ていると見る
+    const links = Math.max(0, ...media.flatMap(k => ev[k].map(x => x.links ?? 0)));
+    const big = media.length >= 2 || !!ev.goods;
+    if (!ev.goods && media.length >= 2) ev.goods = [{title: `${media.map(k => MEDIA[k].label).join("・")}がある作品`, desc: "", names: {}, links, inferred: true}];
+    if (!ev.event && big) ev.event = [{title: "グッズが出ている作品（コラボカフェ・展示も開かれる）", desc: "", names: {}, links, inferred: true}];
     return ev;
   }
   // 名字是普通词吗（「猫」「犬」「咖啡」）：短的普通词，或维基数据说是动物・食物・概念这类
@@ -276,7 +285,10 @@
     const isChar = (S.ans.kind || wdPick()?.kind) === "character" || !!ev.goods;
     if (Object.keys(ev).length >= 1 && (Object.keys(ev).length >= 2 || isChar || ["anime", "manga", "movie"].some(k => ev[k]))) {
       // 維基データで見つかった面だけ出す（用户定的：ちいかわ に舞台・実写はない → 出さない）。グッズは 2 媒体以上の作品の推定も依拠に数える
-      plan = {key, type: "media", list: Object.entries(MEDIA).filter(([k]) => ev[k]).map(([k, f]) => ({key: k, ...f, rec: !!ev[k] && !thin(ev[k], wdPick()?.links), thin: thin(ev[k], wdPick()?.links), ev: ev[k] || [],
+      const state = k => !ev[k] ? "none" : thin(ev[k], wdPick()?.links) ? "thin" : ev[k].every(x => x.inferred) ? "inferred" : "found";
+      plan = {key, type: "media", missing: Object.keys(MEDIA).filter(k => state(k) === "none").map(k => MEDIA[k].label),
+        list: Object.entries(MEDIA).filter(([k]) => state(k) !== "none").map(([k, f]) => ({key: k, ...f, layer: LAYER[k], state: state(k),
+          rec: ["found", "inferred"].includes(state(k)), thin: state(k) === "thin", ev: ev[k] || [],
         titles: uniq((ev[k] || []).flatMap(x => [x.names?.ja, x.names?.en]).map(t => String(t || "").replace(/\s*[(（][^)）]*[)）]\s*$/, "").trim())
           .filter(t => t && !relatedNames().includes(normName(t)))).slice(0, 4)}))};
     } else if (generic()) {
@@ -774,16 +786,18 @@
     const pick = wdPick(), isMain = f => !!pick && (f.ev || []).some(x => x.id === pick.id);
     const secs = uniq(plan.list.map(f => f.sec)).sort((a, b) => plan.list.some(f => f.sec === b && isMain(f)) - plan.list.some(f => f.sec === a && isMain(f)));
     const btn = f => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.facets.includes(f.key)), onclick: () => toggle(f.key)},
-      h("span", {class: "fh"}, f.label, isMain(f) ? h("i", {class: "frec"}, "メイン") : null, f.rec && !isMain(f) ? h("i", {class: "frec"}, "推荐") : null,
+      h("span", {class: "fh"}, f.label, isMain(f) ? h("i", {class: "frec"}, "メイン") : null, f.state === "found" && !isMain(f) ? h("i", {class: "frec"}, "推荐") : null,
+        f.state === "inferred" ? h("i", {class: "frec"}, "推定") : null,
         f.thin ? h("i", {}, THIN_TAG) : null),
       f.thin ? h("small", {}, THIN_NOTE) : null,
-      h("small", {}, f.ev?.length ? `依据：${f.ev.slice(0, 2).map(x => x.title + (x.desc ? `（${x.desc}）` : "")).join("、")}` : (f.hint || "")),
+      h("small", {}, f.state === "inferred" ? `推定：${f.ev[0].title}` : f.ev?.length ? `依据：${f.ev.slice(0, 2).map(x => x.title + (x.desc ? `（${x.desc}）` : "")).join("、")}` : (f.hint || "")),
       h("small", {}, `搜索词：${kwOf(f)}`));
     return h("div", {class: "tree facets", role: "group", "aria-label": `「${S.name}」的面`},
       h("span", {class: "t-h"}, `「${S.name}」`, pick?.desc ? h("small", {class: "t-root"}, `メイン：${pick.title}（${pick.desc}）`) : null),
       h("ul", {}, secs.map(sec => h("li", {class: "t-sec", style: `--sc:${secOf(sec).color || "#1A1C22"}`},
         h("b", {class: "t-tag"}, secOf(sec).ja),
-        h("ul", {}, plan.list.filter(f => f.sec === sec).sort((a, b) => isMain(b) - isMain(a)).map(f => h("li", {class: "t-it"}, btn(f))))))));
+        h("ul", {}, plan.list.filter(f => f.sec === sec).sort((a, b) => isMain(b) - isMain(a)).map(f => h("li", {class: "t-it"}, btn(f))))))),
+      plan.missing?.length ? h("small", {class: "t-root"}, `没找到的面：${plan.missing.join("、")}（${Object.keys(MEDIA).length} 个面全部查过：作品 ${Object.values(LAYER).filter(x => x === "作品").length} ＋ 展开 ${Object.values(LAYER).filter(x => x === "展開").length}）`) : null);
   }
   // 面：全部列出，有依据的默认勾上（依据写在下面）。勾了几个就放进几个板块
   function askFacets() {
@@ -796,7 +810,7 @@
     return h("div", {class: "q"}, h("span", {class: "no"}, no()),
       h("h3", {}, plan.type === "media" ? `「${S.name}」的哪几面要关注？可以多选` : `「${S.name}」关注哪几方面？可以多选`),
       h("p", {}, plan.type === "media"
-        ? "只列出维基数据里找到了的面（找到的条目写在「依据」里），没找到的不列。每个面会自动加一套搜索词，放进对应的板块。"
+        ? "作品（漫画・アニメ・映画・ドラマ・ゲーム・舞台）按维基数据确认，展开（グッズ・イベント）按规则推定，每个面只属于一种、互不重叠。找到的・推定的列在下面，没找到的写在最后。每个面会自动加一套搜索词，放进对应的板块。"
         : "名字是普通词，只用名字会收进很多不相关的新闻，所以按面来收：每个面的词和名字同时出现才收。推荐的已经勾上。"),
       sim.length ? h("p", {class: "simnote"}, `已经有相近的关注项：${sim.map(i => `「${i.name}」`).join("")}。想往里加，可以在上面的列表里点「改」；也可以在后面「属于哪个」一问挂到它下面。`) : null,
       facetTree(plan, toggle, kwOf),
