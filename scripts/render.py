@@ -1033,7 +1033,7 @@ def _pending(items):
     """AI 編集がまだ整理していない新着（digest.split_unedited、報告の block["pending"]）。版面には載せず、
     版面の下に折りたたんだ「整理待ち N 件」として原題・出典・日付だけを並べる（ふだんは閉じている）。
     要紧消息はここに入らない（その場で「重大」として版面に載る）。ないときは空文字。リンクは http(s) だけ。"""
-    rows = [x for x in items or [] if isinstance(x, dict) and x.get("title")]
+    rows = [x for x in items or [] if isinstance(x, dict) and x.get("title") and not _spam(x["title"], x.get("url") or "")]   # 古い号に残った垃圾页も出さない
     if not rows:
         return ""
     lis = ""
