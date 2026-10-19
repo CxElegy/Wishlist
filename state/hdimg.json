@@ -48,12 +48,6 @@
   "target": 720,
   "v": 3
  },
- "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad0d9f9aeb7e64efe95fd5f/1792182493226/Screenshot%2B%281375%29.webp?format=1500w": {
-  "w": 1197,
-  "h": 671,
-  "target": 720,
-  "v": 3
- },
  "http://www.gameand.co.kr/news/photo/202610/16233_99569_230.jpg": {
   "w": 800,
   "h": 549,
@@ -590,6 +584,12 @@
   "target": 720,
   "v": 3
  },
+ "https://explosionnetwork.com/wp-content/uploads/2026/10/raising-superheroes-news-fi.png": {
+  "w": 1280,
+  "h": 676,
+  "target": 720,
+  "v": 3
+ },
  "https://external-preview.redd.it/ls5OcOjkjErs9tph4z4tS3Id06wzZAN9Wgz96c8Fgqw.jpeg?width=640&crop=smart&auto=webp&s=355cc54b5122677450d8ad1fa8953ae523267f4c": {
   "w": 640,
   "h": 360,
@@ -863,6 +863,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://images.tennisclassic.jp/media/article/7766/images/main_26f81308abb511f3ab6afd46d22b6070.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
  },
  "https://images.thedirect.com/media/article_full/avengers-doomsday-guardians-of-the-galaxy-mcu.jpg": {
   "w": 1280,
@@ -2328,6 +2334,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.3zW-8_KfSBZkcoDIq0uc_g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.5unc9EPQvoH7kkubFBFiwA&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2339,6 +2351,12 @@
    393
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.8amaV8GDZZY_Hs_RiPZU8A&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.91Lk_Lp9Z3Lu7fubNIvcpg&pid=News&w=640": {
   "w": 640,
@@ -2423,18 +2441,6 @@
   "out": [
    711,
    472
-  ],
-  "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.G_QUaeI2vPBTSJEUU3WFJg&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/a38ddf28b8523ba0.webp",
-  "out": [
-   720,
-   412
   ],
   "why": "Bing の小さい縮小画像"
  },
@@ -2594,18 +2600,6 @@
   "out": [
    1280,
    719
-  ],
-  "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.egTzSxZnEq95RIILXTjJAA&pid=News&w=500": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/f3569c2613ab33ed.webp",
-  "out": [
-   520,
-   288
   ],
   "why": "Bing の小さい縮小画像"
  },
