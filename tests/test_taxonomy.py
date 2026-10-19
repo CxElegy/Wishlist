@@ -173,3 +173,33 @@ class Facets(unittest.TestCase):
         self.assertEqual(len(page), len(taxonomy.SECTIONS))
         self.assertIn("ペット", page["生活"]["facets"])
         self.assertTrue(page["运动"]["facets_any"])
+
+
+class SeriesInNav(unittest.TestCase):
+    """シリーズの中身（items.yaml の media）を目次の枝に、たたんだ板块の空きに作品名、本文に小分類の区切り。"""
+
+    def works(self):
+        st = lambda h: {"url": h, "headline": h, "blurb": "", "_issue": "2026-10-18"}
+        return [{"name": "チェーンソーマン", "section": "影视", "stories": [st("劇場版 レゼ篇 興行収入"), st("最新刊 発売")], "_heat": {}},
+                {"name": "FROM", "section": "影视", "stories": [], "_heat": {}},
+                {"name": "猫用品", "section": "生活", "stories": [], "_heat": {}}]
+
+    def test_media_branches(self):
+        html = render._nav(self.works(), "2026-10-18", subs={"チェーンソーマン": "シリーズ", "FROM": "ドラマ", "猫用品": "ペット"},
+                           media={"チェーンソーマン": ["マンガ", "アニメ", "映画"]})
+        self.assertEqual(html.count('class="pill kid media"'), 3)
+        self.assertEqual(html.count('data-for="チェーンソーマン"'), 1)          # 読んでいる印は作品の駅だけ
+        self.assertIn('data-hot="1" data-sub="シリーズ" href="#', html)        # 映画の記事 1 件
+        self.assertIn('<small>1</small>', html)                                 # 小分類の件数に枝は数えない
+        self.assertIn('<div class="nsum x">', html)
+
+    def test_sub_heads(self):
+        ws = self.works()
+        from unittest import mock
+        with mock.patch.object(render, "_section", lambda w, wid: f'<section id="{wid}"></section>'):
+            out = render._sub_heads([ws[1], ws[2], ws[0]], {"チェーンソーマン": "シリーズ", "FROM": "ドラマ", "猫用品": "ペット"}, {})
+        heads = re.findall(r'<div class="subhead"[^>]*>(.*?)</div>', out)
+        self.assertEqual(len(heads), 3)
+        self.assertIn("作品", heads[0])                                          # 板块が変わる所だけ板块の札
+        self.assertNotIn('class="tg"', heads[1])
+        self.assertLess(out.index('id="' + render._wid("FROM")), out.index('id="' + render._wid("猫用品")))   # 同じ板块はまとまる

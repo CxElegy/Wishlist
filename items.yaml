@@ -431,6 +431,7 @@ items:
       alt_fg: "#FFFFFF"
       alt_accent: "#151515"
     wiki: ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]
+    media: ["映画", "ドラマ"]
 
   - name: FROM
     subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
@@ -1057,6 +1058,7 @@ items:
     anilist_id: 127230
     notes: "2026-10-14 从网页设置页加进来的。关注：新一季 / 续作 / 剧场版、播出时间、每集更新。维基数据：日本電視動畫系列。"
     wiki: ["en:Chainsaw Man", "ja:チェンソーマン"]
+    media: ["マンガ", "アニメ", "映画"]
 
   - name: "The Mandalorian"
     subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
