@@ -283,6 +283,10 @@
   **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。
   所以 `gate.work_state` 看「叫起后编辑済み数（edit.json 的 _covered 合计）有没有增加」：60 分钟内 = 编辑中；60 分钟后没增加 = 停滞 → 再叫（最多 3 次，之后等 6 小时，管理页写「起こしても動かない」）。
   叫起时记下 API 返回的会话 id（`fired.resp`）。管理页 AI 编辑列有「AI 编辑をもう一度起こす」按钮 = `run_now('edit_now')` → `background.yml` 的 `force_edit` → `GATE_FORCE=edit`（不看 `GATE_FIRE`・间隔・停滞判断）。
+- **AI 编辑推上去了、网页却没变（2026-10-19 修）**：收集（digest.yml）排队时是用触发时的提交 checkout 的，等它跑完，AI 编辑早把 `edit.json` push 上去了；
+  收集的 `git pull --rebase -X theirs` 之后只 `render`（只从 reports 生成），reports 是没有编排的旧版，网页就一直是「整理待ち」。
+  现在：① digest.yml 的 checkout 取 `github.ref`（main 的最新）② 出刊时把 `edit.json` 的指纹写进报告（`edit_sig`）③ `digest.py render` 先看 `stale_report()`，
+  报告没取进最新的 `edit.json` 就先 `publish(heal=True)`（只取进编排，不重找配图）再生成。所以任何一次 render（render.yml・收集后）都会自己补上。
 - **AI 编辑分批・token 记录（2026-10-19，用户定的）**：AI 编辑按 `digest.py edit-queue`（整理待ち多的先，5 个版面一批）一批一批「编排 → 配图 → 出刊 → push」，推完 1〜2 分钟网页上这几个版面就更新（推送不花 token）。
   每批出刊时 `_log_edit_batch` 把这批编完的版面・本数・**这批用掉的 token**（`usage.py`：读 Claude Code 会话记录 `~/.claude/projects/*/*.jsonl` 里每条回复的 usage，真实数字，前一批之后的差）写进 `state/log/edit.json`，
   管理页「AI 編集のトークン」（今天・7 天・每回每批）和「ライブログ」显示。**省 token**：AI 读的是 `edit-brief`（不含网址的短一览），只给 hero・lead 看候选图（`PICK_WEIGHTS`，一张一览 ≈ 570 token），普通报道配图交给规则。

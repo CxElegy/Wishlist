@@ -2621,7 +2621,27 @@ def quiet_block(item, themes, date):
     }
 
 
-def publish(inbox_path=None):
+def edit_sig(inbox_path):
+    """その日の edit.json の指紋（なければ ""）。出刊した報告に書いておき、あとで edit.json と見比べる。"""
+    p = pathlib.Path(inbox_path).with_suffix(".edit.json")
+    return hashlib.sha1(p.read_bytes()).hexdigest()[:12] if p.exists() else ""
+
+
+def stale_report():
+    """最新の inbox の報告が、いまの edit.json を取り込んでいなければその inbox のパス（古い＝網页に AI 編集が出ていない）。
+    起きる場面：収集（Actions）が古い checkout で出刊している間に AI 編集が edit.json を push する／push 競合で
+    報告ファイルだけ相手側が残る。どちらも `render` は報告から作るだけなので、edit.json があるのに網页が変わらなかった。"""
+    cands = sorted(INBOX_DIR.glob("????-??-??.json"))
+    if not cands:
+        return None
+    rep = load_json(REPORTS_DIR / f"{cands[-1].stem}.json")
+    if rep and rep.get("edit_sig", "") != edit_sig(cands[-1]):
+        return cands[-1]
+    return None
+
+
+def publish(inbox_path=None, heal=False):
+    """heal=True：edit.json を取り込み直すだけの出刊（おすすめ・Reddit・配図の再探しは飛ばして速く）。"""
     settings, items = load_config()
     by_name = {i["name"]: i for i in items}
     if inbox_path is None:
@@ -2716,13 +2736,14 @@ def publish(inbox_path=None):
         return
     existing = sorted(p.stem for p in REPORTS_DIR.glob("????-??-??.json"))
     no = existing.index(date) + 1 if date in existing else len(existing) + 1
-    issue = {"no": no, "date": date, "items": blocks}
+    issue = {"no": no, "date": date, "edit_sig": edit_sig(inbox_path), "items": blocks}
     save_json(REPORTS_DIR / f"{date}.json", issue)
-    recommend()
-    prune_reddit()
-    hd_images()            # 配图看不清・期限付き → 本站保存；打不开了的记 dead
-    if retry_images():     # 没图・dead 的报道去原文重新找图
-        hd_images()        # 新找到的图（期限付きの網址など）也存一份
+    if not heal:
+        recommend()
+        prune_reddit()
+        hd_images()            # 配图看不清・期限付き → 本站保存；打不开了的记 dead
+        if retry_images():     # 没图・dead 的报道去原文重新找图
+            hd_images()        # 新找到的图（期限付きの網址など）也存一份
     write_page()
     write_issue_markdown(issue, settings)
     print(f"第 {no} 期：reports/{date}.json → docs/index.html", file=sys.stderr)
@@ -3230,7 +3251,12 @@ def main():
     elif args.step == "unedited":
         print("、".join(unedited(args.only.split("、") if args.only is not None else None)))
     elif args.step == "render":
-        write_page()
+        stale = stale_report()
+        if stale:   # edit.json が報告に入っていない（競合で落ちた）→ 出刊し直してから網页を作る
+            print(f"{stale.stem} の報告が最新の edit.json を取り込んでいない → 出刊し直します", file=sys.stderr)
+            publish(stale, heal=True)
+        else:
+            write_page()
     elif args.step == "ingest":
         logged_ingest()
         update_heat()
