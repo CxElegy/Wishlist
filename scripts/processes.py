@@ -105,7 +105,7 @@ COMPONENTS = {
                  "what": "face_id.py：前は Claude が目で見ていた「遠景・集合写真・別人」を数で判断する"},
     "holes": {"kind": "rule", "name": "切り抜きの穴 hole_share", "spec": "実在の人の写真で体の中の穴 > 3% は外す（絵は除く）",
               "what": "emblem.check_whole：服が背景と同じ色で抜けた切り抜きを落とす"},
-    "gate": {"kind": "algo", "name": "ゲート gate.py", "spec": "起こして 60 分あけて、編集済みが増えなければ「停滞」→ 起こし直す（3 回まで・そのあと 6 時間待つ）· 変数 GATE_FIRE = edit / 1",
+    "gate": {"kind": "algo", "name": "ゲート gate.py", "spec": "AI 編集は前から 20 時間あける（1 日 1 回ぐらい）· 起こして 60 分あけて、編集済みが増えなければ「停滞」→ 起こし直す（3 回まで・そのあと 6 時間待つ）· 変数 GATE_FIRE = edit / 1",
              "what": "仕事があるか・AI が要るかをプログラムだけで決める。AI の要らない仕事はその場で済ませる"},
     "taste": {"kind": "algo", "name": "好みの学習", "spec": "ラベルごと ±1 · 上限 −6〜+4 · 出すのは 5 点以上",
               "what": "digest.learn_taste：👍👎 の最後の一票から"},
@@ -237,7 +237,7 @@ PROCESSES = [
              "uses": ["gate"], "yes": "動いている → 残りがあれば新しい状況として起こす", "no": "停滞：3 回まで起こし直す・そのあと 6 時間待つ（管理ページに「起こしても動かない」）"},
             {"id": "g5c", "kind": "decision", "lane": "actions", "title": "GATE_FIRE で開けている？", "text": "リポジトリ変数 · 未設定 = edit（AI 編集だけ・既定）· 0 = 閉 · 1 = 全部 · 管理ページの「AI 編集をもう一度起こす」は変数・間隔・停滞の判断を飛ばす",
              "no": "起こさない（記録だけ・定時を待つ）"},
-            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret ROUTINE_FIRE_TOKEN など）が要る · 最多 2 時間に 1 回（収集ごと）",
+            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret ROUTINE_FIRE_TOKEN など）が要る · AI 編集は 1 日 1 回ぐらい（DAILY_JOBS・前から 20 時間あける。停滞の起こし直しは別）",
              "uses": ["claude"]},
             {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったときだけコミット"},
         ],
@@ -310,7 +310,7 @@ PROCESSES = [
     {
         "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai",   # 定時はなし（2026-10-17 に毎日 2 回の定時を止めた）：ゲートが起こす
         "when": "整理待ちがあるとき（収集のあと）",
-        "trigger": "ゲート：収集で整理待ちが増えたとき（最多 2 時間に 1 回・動かなければ 60 分あけて起こし直す）／ 管理ページの「AI 編集をもう一度起こす」／ 新しい関注項が入ったとき",
+        "trigger": "ゲート：収集で整理待ちが増えたとき（1 日 1 回ぐらい＝前から 20 時間あける・動かなければ 60 分あけて起こし直す）／ 管理ページの「AI 編集をもう一度起こす」／ 新しい関注項が入ったとき",
         "summary": "inbox の記事から重要なものを選び、同じ件を合わせて（言語違いは主言語の 1 本に）、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。"
                    "版面に載るのは AI 編集が整理した記事だけ（それまでは「整理待ち」、要紧だけ先に載る）。",
         "files": ["EDITING.md", "scripts/digest.py", "scripts/lang.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "pending", "lang"],

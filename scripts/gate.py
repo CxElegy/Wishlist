@@ -39,6 +39,7 @@ STATE = ROOT / "state" / "gate.json"
 INBOX = ROOT / "inbox"
 REFIRE_HOURS = 6   # 同じ仕事（指紋が同じ）では、この時間のあいだ起こし直さない
 MIN_GAP_MIN = 60   # 前に起こしてからこの分数は、何があっても起こし直さない（AI 編集 1 回 ≈ 20 分、収集は 2 時間ごと）。これを過ぎても仕事が減っていなければ「停滞」
+DAILY_JOBS = {"edit": 20}   # AI 編集は省トークンのため 1 日 1 回ぐらい：前に起こしてからこの時間は、仕事が残っていても（動いた後なら）起こし直さない
 MAX_ATTEMPTS = 3   # 停滞のとき、仕事が減らないまま起こし直す回数の上限（超えたら REFIRE_HOURS 待つ。管理ページに「止まっている」と出す）
 
 # AI が要る仕事 → (定時タスクの id, トークンの環境変数, 名前)
@@ -255,6 +256,14 @@ def fire(path=None, post=_post, env=None):
                 ago = dt.timedelta(0)
             if ago < dt.timedelta(hours=REFIRE_HOURS):
                 results[job] = f"停滞：{why}（{REFIRE_HOURS} 時間待つ・管理ページで確認）"
+                continue
+        if state in ("progress", "none") and job in DAILY_JOBS and last.get("at"):
+            try:
+                since = now - dt.datetime.fromisoformat(last["at"])
+            except (ValueError, TypeError):
+                since = None
+            if since is not None and since < dt.timedelta(hours=DAILY_JOBS[job]):
+                results[job] = f"1 日 1 回ぐらいにしている（前は {int(since.total_seconds() // 3600)} 時間前）。次は {DAILY_JOBS[job]} 時間たってから"
                 continue
         # progress（60 分たって、進んだがまだ残りがある）→ 新しい状況として attempts=1 で起こす
         token = env.get(var)
