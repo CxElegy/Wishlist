@@ -1,4 +1,10 @@
 {
+ "https://cimg.kgl-systems.io/camion/files/91400/ogp_zKQA.jpg?x=1280": {
+  "w": 1280,
+  "h": 674,
+  "target": 720,
+  "v": 3
+ },
  "https://contents.oricon.co.jp/upimg/news/2488000/2487320/20261019_133212_p_o_15239275.jpg": {
   "w": 1200,
   "h": 1200,
@@ -8,6 +14,31 @@
  "https://external-preview.redd.it/kK9-96taYUndwCQ-41Nua9o1DYmSJt9UkJFdboqSKls.jpeg?width=640&crop=smart&auto=webp&s=37928024937371ce148c3db09feb6fd3d8472c1d": {
   "w": 640,
   "h": 915,
+  "target": 720,
+  "v": 3
+ },
+ "https://ix-news.aacdn.jp/aa_news/article/2026/10/19/6ad5f648138bb.jpg?im=AspectCrop=(16,9);Resize=(1600,900)": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnS3oMyz4EOL3ULke9hKJ0rye-jPJ6T6QFxzHG2cReu5eXGaXqJ9KAjsK936awlDKwttzLP0mP4638s90VeeeO7L_jtWV5rfpJGGLdZD7WSD2": {
+  "w": 934,
+  "h": 504,
+  "target": 720,
+  "v": 3
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnW2-nCEksrNwJuDZJAYIdXVcx1HVxbjUvGC5Ka8pH4AZjEGy00lPSuIb3rbFGStCuZZdwGOmbcc_9yOpIxPnOTLjVC7VNIzM_c26VCSYw6CA": {
+  "w": 700,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.362
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnb0iLE5yLaLfl9wtstCKbdO4M-zNq3OItjjHh2t2VbR8NyUe9P1h4-jX6LyXP9BVQ6Z6JA4-_GL0xGM6j48_TSJix0O7-Jo5uJ4bsMOLMBKkVIJn2YiXyCKjJQFGSAa1gg==": {
+  "w": 934,
+  "h": 625,
   "target": 720,
   "v": 3
  },
