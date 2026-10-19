@@ -209,6 +209,13 @@
   // 面ごとの語（re）はほかの面と重ならない（tests/test_taxonomy.py の MECE で確かめる）。8 面は毎回全部確かめて、状態は必ず 1 つ：
   //   確認（見つかった）・推定（展開のルール）・情報少なめ（あるがメインより冷門）・見つからず（一覧には出さず最後に名前だけ）
   const LAYER = {manga: "作品", anime: "作品", movie: "作品", drama: "作品", game: "作品", live: "作品", goods: "展開", event: "展開"};
+  // 維基百科の節の見出し → 面（この順で最初に当たった 1 つだけ。「アニメ映画」は映画）
+  const SECT_ORDER = ["movie", "anime", "drama", "manga", "game", "live", "event", "goods"];
+  const SECT = {movie: /映画|劇場版|film|movie/i, anime: /アニメ|anime|animated/i, drama: /ドラマ|実写|live-action|drama/i,
+    manga: /漫画|マンガ|書籍|単行本|manga|book/i, game: /ゲーム|game/i, live: /舞台|ミュージカル|ライブ|コンサート|stage|musical|concert/i,
+    event: /イベント|展|カフェ|パーク|ショップ|ストア|ポップアップ|event|exhibition|caf[eé]|park|store/i,
+    goods: /グッズ|コラボ|商品|一番くじ|merchandise|collaboration|goods/i};
+  const SECT_SKIP = /脚注|出典|参考|外部リンク|関連項目|References|Notes|External links|See also/i;
   const MEDIA = {
     goods: {label: "グッズ・コラボ", hint: "联名、周边、一番赏、快闪店", kind: "character", sec: "好物", subs: {kind: "キャラグッズ", owner: "キャラクター"},
             kw: ["コラボ", "グッズ 新作", "一番くじ"], re: "コラボ(?!カフェ)|グッズ|一番くじ|フィギュア|ぬいぐるみ|联名|聯名|周边|周邊|merch|collab|figure",
@@ -231,7 +238,7 @@
     // 联名咖啡・展览・快闪店 = 出かけて行くもの → おでかけ・アート（2026-10-19 用户的树状图）。舞台・ミュージカル・演唱会は音楽・ライブ
     event: {label: "イベント・カフェ・展示", hint: "联名咖啡、展览、快闪店", kind: "place", sec: "出行", subs: {kind: "季節イベント"},
             kw: ["コラボカフェ", "展", "ポップアップ"], re: "コラボカフェ|カフェ|展覧会|展示|ポップアップ|POP ?UP|イベント|フェア|展(?!開)", tail: "イベント",
-            hit: /exhibition|展覧会|展示会|テーマパーク|theme park|attraction/i},
+            hit: /exhibition|展覧会|展示会|テーマパーク|theme park|attraction|amusement|施設|facility|パーク|museum|博物館|美術館|カフェ|café|cafe|ポップアップ|pop-up|イベント|event/i},
     live: {label: "舞台・ライブ", hint: "舞台、音乐剧、演唱会", kind: "artist", sec: "演出", subs: {scene: "舞台・ミュージカル", form: "舞台"},
            kw: ["舞台", "ミュージカル"], re: "ライブ|舞台|ミュージカル|コンサート|concert|musical|stage", tail: "舞台",
            hit: /ミュージカル|musical|舞台|stage|concert|ライブ/i},
@@ -242,7 +249,8 @@
     const n = normName(S.name);
     if (!n) return [];
     // 選んだ条目から維基データの関係でつながる派生作品（アニメ化・映画化…）は名前が違っても依拠に入れる
-    const derived = (S.derived || []).filter(x => x.via === S.ans.which);
+    const has = x => [x.title, ...Object.values(x.names || {}), ...(x.aliases || [])].some(t => normName(t).includes(n));
+    const derived = (S.derived || []).filter(x => x.via === S.ans.which || (x.via === "name" && has(x)));
     return derived.concat((S.wd || []).filter(x => [x.title, ...Object.values(x.names || {}), ...(x.aliases || [])].some(t => {
       const m = normName(t); return m && (m.includes(n) || (m.length >= 2 && n.includes(m)));
     })).filter(x => !derived.some(d => d.id === x.id)));
@@ -254,10 +262,9 @@
     const ev = {};
     for (const x of relatedHits()) {
       const text = `${x.title} ${Object.values(x.names || {}).join(" ")} ${x.desc}`;
-      const got = new Set(Object.entries(MEDIA).filter(([, f]) => f.hit.test(text)).map(([k]) => k));
-      // 同じ条目の中の順：映画（アニメ映画も映画）＞ アニメ（「TV series」でもアニメならドラマにしない）＞ ドラマ
-      if (got.has("movie")) { got.delete("anime"); got.delete("drama"); }
-      if (got.has("anime")) got.delete("drama");
+      // 説明の語では 1 つの面だけ（MECE）：SECT_ORDER の順で最初に当たった面（アニメ映画 → 映画、TV アニメ → アニメ）
+      const first = SECT_ORDER.find(k => MEDIA[k].hit.test(text));
+      const got = new Set(first ? [first] : []);
       if (x.anilist) got.add("anime");
       if (x.anilistManga) got.add("manga");
       if (x.tmdb?.startsWith("movie/")) got.add("movie");
@@ -266,6 +273,12 @@
       if (x.kind === "character") got.add("goods");
       for (const k of got) (ev[k] = ev[k] || []).push(x);
     }
+    // 維基百科の目次で見つかった面（選んだ条目の記事の節）
+    for (const sc of (S.wsec || {})[S.ans.which] || [])
+      // 作品の層で自分の条目がなく記事の節にしかないもの（小さなゲームなど）は冷門と見る（言語 1 つ分）。展開の層は条目がないのが普通なので見ない。
+      // 節の見出しに名前が入っていれば（ちいかわパーク）具体名として検索語に
+      (ev[sc.facet] = ev[sc.facet] || []).push({title: sc.line, desc: `维基百科「${sc.title}」的章节`, links: LAYER[sc.facet] === "作品" ? 1 : undefined,
+        names: normName(sc.line).includes(normName(S.name)) && normName(sc.line) !== normName(S.name) ? {ja: sc.line} : {}});
     // アニメ・漫画・映画・ゲームのうち 2 つ以上ある作品（ちいかわ）はグッズ・コラボもまず出ている → 推荐（依据は見つかった面）
     const media = ["anime", "manga", "movie", "game"].filter(k => ev[k]);
     // 展開の層（グッズ・イベント）は推定：2 媒体以上の作品かキャラクター IP なら、どちらも出ていると見る
@@ -434,6 +447,7 @@
       names: {zhHans, zhHant, ja, ko, en}, aliases: [...new Set(aliases)].slice(0, 8), kind, origin: [...new Set(origin)],
       steam: claim(ent, "P1733")[0] || "", anilist: claim(ent, "P8729")[0] || "", anilistManga: claim(ent, "P8731")[0] || "",
       tmdb, site: claim(ent, "P856")[0] || "", links: Object.keys(ent.sitelinks || {}).length,
+      wiki: {ja: ent.sitelinks?.jawiki?.title, en: ent.sitelinks?.enwiki?.title, zh: ent.sitelinks?.zhwiki?.title},
       // 属于哪个系列：系列（P179）・媒体系列（P8345）・是…的一部分（P361）。名字在 seriesLookup 里另外查
       derivIds: claim(ent, "P4969").map(v => v.id).filter(Boolean).slice(0, 10),   // 派生作品（P4969）
       seriesIds: [...new Set([...claim(ent, "P179"), ...claim(ent, "P8345"), ...claim(ent, "P361")].map(v => v.id).filter(Boolean))].slice(0, 3),
@@ -641,13 +655,17 @@
     if (!base.length) return;
     try {
       const got = await Promise.allSettled(base.map(x => wd({action: "query", list: "search", srnamespace: 0, srlimit: 20,
-        srsearch: "haswbstatement:" + ["P144", "P8345", "P179"].map(p => `${p}=${x.id}`).join("|")})));
+        srsearch: "haswbstatement:" + ["P144", "P8345", "P179", "P361", "P921"].map(p => `${p}=${x.id}`).join("|")}))
+        // 名前の全文検索（ラベルのどこかに名前が入っている条目：ちいかわぽけっと・ちいかわパーク…）。上位 5 件の名前検索から漏れるもの
+        .concat([wd({action: "query", list: "search", srnamespace: 0, srlimit: 30, srsearch: `"${name}"`})]));
+      wikiSections(name, base);
       const via = {};
       base.forEach((x, i) => {
         for (const r of got[i].value?.query?.search || []) if (/^Q\d+$/.test(r.title) && !via[r.title]) via[r.title] = x.id;
         for (const id of x.derivIds || []) if (!via[id]) via[id] = x.id;
       });
-      const own = new Set((S.wd || []).map(x => x.id)), ids = Object.keys(via).filter(id => !own.has(id)).slice(0, 40);
+      for (const r of got[base.length].value?.query?.search || []) if (/^Q\d+$/.test(r.title) && !via[r.title]) via[r.title] = "name";
+      const own = new Set((S.wd || []).map(x => x.id)), ids = Object.keys(via).filter(id => !own.has(id)).slice(0, 50);
       if (!ids.length || S.name !== name) return;
       const ents = await wd({action: "wbgetentities", ids: ids.join("|"), props: "labels|aliases|descriptions|claims|sitelinks", languages: WD_LANGS.join("|")});
       if (S.name !== name) return;
@@ -657,6 +675,34 @@
       const cur = live()[S.step]?.id;
       if (cur === "facets" || cur === "which") { if (S.ans.facets && S.auto.facets !== false) S.ans.facets = defaults("facets"); draw(); }
     } catch (_) {}
+  }
+  // 維基百科の目次（全部ルール）：選べる条目（上位 3 つ）の日本語版（なければ英語・中国語）の節の見出しを読む。
+  // 「ゲーム」「イベント」節の下の「ちいかわぽけっと」「ちいかわパーク」のように、維基データに条目がないものも面の依拠になる。
+  // 見出しは SECT_ORDER の順で最初に当たった面 1 つだけに入れる（MECE）。当たらない小見出しは親の節の面を継ぐ
+  async function wikiSections(name, base) {
+    S.wsec = S.wsec || {};
+    await Promise.allSettled(base.map(async x => {
+      const [lang, title] = [["ja", x.wiki?.ja], ["en", x.wiki?.en], ["zh", x.wiki?.zh]].find(([, t]) => t) || [];
+      if (!title) return;
+      const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 8000);
+      try {
+        const r = await fetch(`https://${lang}.wikipedia.org/w/api.php?${new URLSearchParams({action: "parse", page: title, prop: "sections", redirects: 1,
+          format: "json", origin: "*"})}`, {signal: ctl.signal});
+        const secs = (await r.json()).parse?.sections || [];
+        const byNo = {};
+        S.wsec[x.id] = secs.map(sc => {
+          const line = String(sc.line || "").replace(/<[^>]+>/g, "").trim();
+          const own = SECT_ORDER.find(k => SECT[k].test(line));
+          const facet = own || byNo[String(sc.number || "").split(".").slice(0, -1).join(".")] || null;
+          byNo[sc.number] = facet;
+          return {line, facet, lang, title};
+        }).filter(sc => sc.facet && !SECT_SKIP.test(sc.line));
+      } catch (_) {} finally { clearTimeout(t); }
+    }));
+    if (S.name !== name) return;
+    S._plan = null;
+    const cur = live()[S.step]?.id;
+    if (cur === "facets" || cur === "which") { if (S.ans.facets && S.auto.facets !== false) S.ans.facets = defaults("facets"); draw(); }
   }
   // 上级系列：查到的条目里写着「属于哪个系列」的，把系列的名字・说明也查出来（一次请求，查不到就算了）
   async function seriesLookup(name) {
