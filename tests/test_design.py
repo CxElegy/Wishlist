@@ -146,7 +146,11 @@ class FrontSide(unittest.TestCase):
         self.assertNotIn("話題度ランキング", out)           # 2026-10-18：右の列は予定と欲しい物だけ
         self.assertNotIn("あなたの好み", out)
         self.assertNotIn("これからの予定", out)             # 日付のある記事がなければ出さない
-        self.assertEqual(render._side([], "2026-10-16"), "")
+        empty = render._side([], "2026-10-16")              # 欲しい物が 0 件でも入口の箱は出す（新しいアカウント）
+        self.assertIn("まだありません", empty)
+        self.assertIn('href="wishlist.html#snap"', empty)
+        self.assertNotIn("これからの予定", empty)
+        self.assertIn("まだ 0 件", render._wish_link([], "mastwish"))
 
 
 class HeatBadge(unittest.TestCase):
