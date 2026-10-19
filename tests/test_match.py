@@ -140,3 +140,13 @@ class SpamNotCountedTest(unittest.TestCase):
                      "date": "2026-10-18T00:00:00+00:00"}]}]}, f)
             entries, _, _ = heat.load_entries([p])
         self.assertEqual([e["url"] for e in entries["x"]], ["https://a/1"])
+
+
+    def test_render_drops_spam_from_stale_recommendations(self):
+        """recommend.json が古い内容で書き戻されても、ページ生成の側で垃圾页は出さない。"""
+        import render
+        html = render._picks([
+            {"title": "#ぽかぽか The Mandalorian (gQvzdvbtKG)", "url": "https://media.unisba.ac.id/1bf3fd14/x", "source": "Unisba Media",
+             "date": "2026-10-19", "work": "The Mandalorian", "image": None, "because": "w", "kind": "board", "hits": []}],
+            [{"name": "The Mandalorian"}])
+        self.assertEqual(html, "")

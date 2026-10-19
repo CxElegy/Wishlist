@@ -1365,6 +1365,9 @@ WORK_KEY = "作品:"  # 投票学到的口味里，按作品记的那一类（�
 def _picks(picks, works, feedback=None):
     """「我会喜欢？」角落：按愿望清单的喜好，从收集到的消息里挑的推荐，每条写明推荐理由。
     feedback 配好了 Supabase（url、key）时，每条下面有 👍 / 👎，投票直接写进数据库，下次出刊时学习。"""
+    # 垃圾页（digest.is_spam）はここでも落とす：recommend.json は別の仕組み（後台作業）が古い内容で書き戻すことがあり、
+    # 作る側で除いていても古いファイルから戻ってくる（2026-10-19 Unisba Media が推薦に残った）
+    picks = [x for x in picks or [] if not _spam(x.get("title") or "", x.get("url") or "")]
     if not picks:
         return ""
     covers = {w["name"]: [w["_thumb"]] if w.get("_thumb") else [] for w in works}
