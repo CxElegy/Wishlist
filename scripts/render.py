@@ -3109,7 +3109,7 @@ NAV_JS = """
     const c = el && getComputedStyle(el).getPropertyValue(prop).trim();
     if (!c) return [0, [0, 0, 0]];
     cvs.fillStyle = '#000'; cvs.fillStyle = c; const x = cvs.fillStyle;
-    const v = x[0] === '#' ? [1, 3, 5].map(i => parseInt(x.slice(i, i + 2), 16)) : (x.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
+    const v = x[0] === '#' ? [1, 3, 5].map(i => parseInt(x.slice(i, i + 2), 16)) : (x.match(/[\\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
     return [Math.min(1, (Math.max(...v) - Math.min(...v)) / 255 * 1.6), v];
   }
   FL.tw = 0; FL.tint = [255, 122, 26]; FL.cA = [0, FL.tint]; FL.cB = [0, FL.tint];
@@ -3151,7 +3151,7 @@ NAV_JS = """
   const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
   function rgb(c) {   // トークンの色 → [r, g, b]
     const x = FX.cx; x.fillStyle = '#000'; x.fillStyle = c; const h = x.fillStyle;
-    return h[0] === '#' ? [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) : (h.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
+    return h[0] === '#' ? [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) : (h.match(/[\\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
   }
   function fxInit() {   // canvas は初めて使うときに作る（ぶわっ・版面の火の粉で共用）
     if (!FX.cv) {
