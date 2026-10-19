@@ -1791,6 +1791,21 @@ def render_settings(items, db, updated, schemes=()):
 .kids .kid{{display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:center}}.kids .kid small{{grid-column:2;opacity:.7;font-size:12px;line-height:1.5}}
 .opts.secgrid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}}.opts.secgrid .opt{{padding:8px 10px}}
 .alsoh{{margin:6px 0 0;font:900 14px 'Noto Sans SC',sans-serif}}.alsobox{{display:flex;flex-direction:column;gap:8px}}.alsobox>span{{font-weight:700;font-size:13px}}
+/* 加进去以后的目录（树状图预览）：板块的色签 → 小分类 → 关注项，枝用细线 */
+.tree{{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border:2px dashed #1A1C22;background:#FBF8F1}}
+.tree .t-h{{font:900 14px 'Noto Sans SC',sans-serif}}
+.tree ul{{list-style:none;margin:0;padding:0}}
+.tree .t-sec{{margin-top:6px}}.tree .t-tag{{display:inline-block;padding:1px 10px;background:var(--sc);color:#FFF;font:900 13px 'Noto Sans SC',sans-serif;transform:skewX(-8deg)}}
+.tree .t-sec>ul,.tree .t-sub>ul,.tree .t-it>ul{{margin-left:9px;padding-left:14px;border-left:2px solid color-mix(in srgb,var(--sc) 55%,transparent)}}
+.tree .t-sub,.tree .t-it{{position:relative;padding-top:4px}}
+.tree .t-sub::before,.tree .t-it::before{{content:"";position:absolute;left:-14px;top:15px;width:10px;border-top:2px solid color-mix(in srgb,var(--sc) 55%,transparent)}}
+.tree .t-sn{{font:700 13px 'Noto Sans SC',sans-serif;color:#1A1C22}}
+.tree .t-nm{{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;font:900 14px 'Noto Sans SC',sans-serif}}
+.tree .t-nm i{{font:700 11px 'Noto Sans SC',sans-serif;font-style:normal;padding:0 6px;background:#FFD23F;color:#1A1C22}}
+.tree .t-it.xfer .t-nm i{{background:#FFF;border:1px solid #1A1C22}}
+.tree .t-it small{{display:block;font-size:12px;color:#5A5D66}}
+.tree .t-it.old>.t-nm{{font-weight:500;color:#5A5D66}}.tree .t-it.more>.t-nm{{font-size:12px}}
+.tree .t-md{{font:500 13px 'Noto Sans SC',sans-serif;color:#3A3D46}}
 .opts{{display:flex;flex-direction:column;gap:8px}}
 .opt{{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;
  font:900 15px 'Noto Sans SC',sans-serif;cursor:pointer}}
