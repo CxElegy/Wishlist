@@ -47,5 +47,25 @@
    "edit": false,
    "photos": false
   }
+ },
+ {
+  "at": "2026-10-19T15:42:16+00:00",
+  "text": "判断：emblem あり（足りない 1 版面（Actions で Python が埋める）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
+  "level": "info",
+  "jobs": {
+   "emblem": true,
+   "edit": false,
+   "photos": false
+  }
+ },
+ {
+  "at": "2026-10-19T15:43:27+00:00",
+  "text": "判断：emblem なし（失敗 1 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:42 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
+  "level": "info",
+  "jobs": {
+   "emblem": false,
+   "edit": false,
+   "photos": false
+  }
  }
 ]
