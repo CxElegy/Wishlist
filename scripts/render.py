@@ -5136,7 +5136,7 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
-<section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist")}</section>
+<section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in data.get("items") or [] if x.get("name")])}</section>
 <section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>

@@ -901,6 +901,16 @@ class Gate(unittest.TestCase):
         self._at("2026-10-19 09:05")
         self.assertEqual(self._fire_at("2026-10-19 13:00", calls, {"ROUTINE_TOKEN_EDIT": "t", "GATE_FORCE": "edit"}), "Claude を起こした")
 
+    def test_pause_blocks_schedule_but_not_button(self):
+        """管理ページで一時停止中は 9:00 / 18:00 でも起こさない。ボタン（GATE_FORCE）は起こす（整理待ちがなくても：やり直しのため）。"""
+        calls = []
+        self.gate.save({"jobs": {"edit": {"need": True, "items": ["A"], "sig": "s1", "prog": 0}}}, self.state)
+        self.assertIn("一時停止中", self._fire_at("2026-10-20 09:00", calls, {"ROUTINE_TOKEN_EDIT": "t", "EDIT_MODE": "pause"}))
+        self.gate.save({"jobs": {"edit": {"need": False, "items": [], "sig": "s1", "prog": 0}}}, self.state)
+        self.assertEqual(self._fire_at("2026-10-20 09:00", calls, {"ROUTINE_TOKEN_EDIT": "t", "EDIT_MODE": "pause", "GATE_FORCE": "edit"}),
+                         "Claude を起こした")
+        self.assertEqual(len(calls), 1)
+
     def test_slots(self):
         jst = zoneinfo.ZoneInfo("Asia/Tokyo")
         now = dt.datetime(2026, 10, 19, 13, 0, tzinfo=jst)

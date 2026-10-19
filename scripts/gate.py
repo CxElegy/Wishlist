@@ -225,6 +225,24 @@ def _post(url, token):
         return r.status, r.read(2000).decode("utf-8", "replace")   # 本文に会話の id などが入る：記録して、動いたか調べる手がかりにする
 
 
+def edit_mode(env=None):
+    """管理ページの AI 編集の開関（Supabase edit_control_get()）の mode：run / step / pause。読めなければ run。
+    テストや手元では env の EDIT_MODE を優先（ネットに出ない）。"""
+    env = os.environ if env is None else env
+    if env.get("EDIT_MODE"):
+        return env["EDIT_MODE"]
+    try:
+        import livestatus
+        url, key = livestatus._db()
+        if not (url and key) or env is not os.environ:
+            return "run"
+        req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_get", data=b"{}", method="POST",
+                                     headers={"apikey": key, "Content-Type": "application/json"})
+        return (json.loads(urllib.request.urlopen(req, timeout=15).read() or b"{}") or {}).get("mode") or "run"
+    except Exception:  # noqa: BLE001
+        return "run"
+
+
 def enabled_jobs(flag):
     """GATE_FIRE の値 → 起こしてよい仕事の集合。'1' / 'all' = 全部、'edit' や 'edit,photos' = その仕事だけ、'' / '0' = なし。"""
     flag = str(flag or "").strip().lower()
@@ -258,8 +276,11 @@ def fire(path=None, post=_post, env=None):
     results = {}
     for job, (rid, var, name) in ROUTINES.items():
         j = (data.get("jobs") or {}).get(job) or {}
-        if not j.get("need") and not (job in force and j.get("items")):
+        if not j.get("need") and job not in force:   # ボタン（GATE_FORCE）は整理待ちがなくても起こす（やり直しだけのときもある）
             results[job] = "仕事なし（起こさない）"
+            continue
+        if job == "edit" and job not in force and edit_mode(env) == "pause":
+            results[job] = "管理ページで一時停止中（起こさない）"
             continue
         if job not in allowed:
             results[job] = "GATE_FIRE で止めている（定時を待つ）"

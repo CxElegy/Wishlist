@@ -245,7 +245,7 @@ class AdminPage(unittest.TestCase):
         self.assertNotIn('href="javascript:', out)
         # データを変える操作はない：ボタンは流れを開く・閉じるものと、裏の仕組みを早く動かす「今すぐ実行」だけ
         for b in re.findall(r"<button[^>]*>", out):
-            self.assertRegex(b, r"data-(open|close|run|p=)|id=\"term-pause\"", b)   # 流れを開く・閉じる・図のページ切り替え・ログの一時停止、または「今すぐ実行」（データは変えない）
+            self.assertRegex(b, r"data-(open|close|run|ectl|p=)|id=\"term-pause\"", b)   # 流れを開く・閉じる・図のページ切り替え・ログの一時停止、または「今すぐ実行」（データは変えない）
         self.assertNotIn("<form", out)
 
     def test_empty(self):
@@ -380,6 +380,15 @@ class LiveLog(unittest.TestCase):
         out = render.render_admin({"log": log}, {}, "u")
         self.assertLess(out.index('id="term-panel"'), out.index('id="ov"'))     # しくみの全体図より上
         self.assertNotIn('<ol class="blog">', out)                               # 下の古いログは移した
+
+    def test_edit_control_buttons(self):
+        import livelog
+        h = livelog.panel([], boards=["GTA 6", "<x>"])
+        for k in ("run", "step", "pause", "redo"):
+            self.assertIn(f'data-ectl="{k}"', h)
+        self.assertIn('<option value="&lt;x&gt;">', h)
+        self.assertIn('表示を止める', h)               # ログの表示を止めるボタンは AI の一時停止と別の名前
+        self.assertLess(h.index('id="ectl"'), h.index('id="term"'))
 
     def test_css_tokens_and_motion(self):
         import livelog
