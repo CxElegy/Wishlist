@@ -2991,7 +2991,8 @@ NAV_JS = """
   const SEC_H = 52, ITEM_H = 34, R_MIN = 30, MORE_H = 26, MIN_H = 46, EXTRA = 22, LAB_H = 20;   // 行の高さ（NAV_STYLES と同じ）
   const hot = p => +p.dataset.hot || 0, num = p => +p.dataset.n || 0, subOf = p => p.dataset.sub || '';
   const topN = (l, n) => l.slice().sort((a, b) => hot(b) - hot(a) || num(a) - num(b)).slice(0, n);
-  let curIdx = -2, curProg = -1, ticking = false, lk = null, lsub = null;
+  let curIdx = -2, curProg = -1, ticking = false, lk = null, lsub = null, lon = null;
+  const isMed = p => p.classList.contains('media');   // シリーズの中身の枝：読んでいる作品の分だけ開く
 
   // 选中「屏幕里露出标题的、最靠上的」区块（上一个版面只剩尾巴时就算到下一个）；
   // 屏幕里一个标题都没有（在读长版面的中间）时选盖住屏幕顶边的那个。滚到最底时选最后一个
@@ -3012,15 +3013,17 @@ NAV_JS = """
   // 宽屏：何も隠さない → 行を 30px まで詰める（それ以上は詰めない：窮屈になる）→ ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」
   function layout(force) {
     const on = pills[curIdx], k = on && slotOf.has(on) ? slotOf.get(on) : -1, sub = on ? subOf(on) : '';
-    if (!force && k === lk && sub === lsub && !(on && on.classList.contains('x'))) return;
-    lk = k; lsub = sub;
+    if (!force && k === lk && sub === lsub && on === lon && !(on && on.classList.contains('x'))) return;
+    lk = k; lsub = sub; lon = on;
     const H = Math.floor(rail.getBoundingClientRect().height), n = S.length;
     if (!n || !H) return;
-    const L = S.map(s => s.pills), subsK = k >= 0 && S[k].chips.length > 0;
+    const L = S.map(s => s.pills.filter(p => !isMed(p))), subsK = k >= 0 && S[k].chips.length > 0;
     let chipsH = 0;
     if (subsK) { S[k].subs.classList.remove('x'); chipsH = S[k].subs.offsetHeight + 6; }   // 札の高さは実際に測る
     const labsH = k >= 0 ? S[k].labs.length * LAB_H : 0;
-    const hOf = (x, i, r) => !x ? MIN_H : SEC_H + (i === k ? 6 : 2) + x.items.length * r + (x.more ? MORE_H : 0)
+    const med = k >= 0 && on ? S[k].pills.filter(p => isMed(p) && p.dataset.x === on.dataset.for) : [];   // 読んでいる作品の枝
+    const cnt = (x, i) => x.items.length + (i === k ? med.length : 0);
+    const hOf = (x, i, r) => !x ? MIN_H : SEC_H + (i === k ? 6 : 2) + cnt(x, i) * r + (x.more ? MORE_H : 0)
       + (i === k ? EXTRA + (x.labs ? labsH : 0) + (x.chips ? chipsH : 0) : 0);
     const sum = (p, r) => p.reduce((a, x, i) => a + hOf(x, i, r), 0);
     const fitR = p => { for (let r = ITEM_H; r >= R_MIN; r--) if (sum(p, r) <= H) return r; return 0; };
@@ -3059,15 +3062,15 @@ NAV_JS = """
       }
     }
     // 余った高さは、まず行の間隔を広げる（1 行 56px まで。48px 以上で 2 行目に今週の件数）。それでも余れば全板块に均等に
-    const shown = plan.reduce((a, x) => a + (x ? x.items.length : 0), 0);
+    const shown = plan.reduce((a, x, i) => a + (x ? cnt(x, i) : 0), 0);
     const ih = Math.max(r, Math.min(56, Math.floor(r + Math.max(0, H - sum(plan, r)) / Math.max(1, shown))));
-    const hOf2 = (x, i) => hOf(x, i, r) + (x ? x.items.length * (ih - r) : 0);
+    const hOf2 = (x, i) => hOf(x, i, r) + (x ? cnt(x, i) * (ih - r) : 0);
     const spare = Math.max(0, H - plan.reduce((a, x, i) => a + hOf2(x, i), 0)) / n;
     rail.style.setProperty('--ih', ih + 'px');
     rail.classList.toggle('roomy', ih >= 48);
     let y = 0;
     S.forEach((s, i) => {
-      const x = plan[i], h = hOf2(x, i) + spare, show = new Set(x ? x.items : []);
+      const x = plan[i], h = hOf2(x, i) + spare, show = new Set(x ? x.items.concat(i === k ? med : []) : []);
       s.el.style.transform = `translateY(${y}px)`; s.el.style.height = h + 'px'; y += h;
       s.el.classList.toggle('cur', i === k);
       s.pills.forEach(p => p.classList.toggle('x', !show.has(p)));
