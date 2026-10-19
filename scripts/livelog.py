@@ -5,7 +5,7 @@
   ・Supabase の live_boards()（20 秒ごと）……前回との差：版面が現れた＝始めた、言葉が変わった＝次の段、消えた＝終わった
   ・GitHub Actions の実行（3 分ごと、管理ページの「いまの状況」と同じ localStorage を使い回す）……始まった・成功・失敗
   ・リポジトリの state/log/*.json（raw.githubusercontent.com、2 分ごと）……新しく書かれた実行ログ（出刊・AI 編集・ゲート…）
-見た行は localStorage（wl-term、最新 300 行）に残すので、ページが自動で読み直されても流れは途切れない。
+見た行は localStorage（wl-term-test2、最新 300 行。test1 と同じドメインなので鍵を分ける）に残すので、ページが自動で読み直されても流れは途切れない。
 色は render.py の設計令牌だけ（地は --ink）。
 """
 
@@ -102,7 +102,7 @@ JS = """
 (function(){
   var C=document.getElementById('term-cfg');if(!C)return;var T=JSON.parse(C.textContent),A=JSON.parse(document.getElementById('adm-cfg').textContent);
   var body=document.getElementById('term-body'),st=document.getElementById('term-st'),foot=document.getElementById('term-foot'),pbtn=document.getElementById('term-pause');
-  var K='wl-term',MAX=300,ev=[],seen={},paused=false,stick=true;
+  var K='wl-term-test2',MAX=300,ev=[],seen={},paused=false,stick=true;
   var FMT=new Intl.DateTimeFormat('ja-JP',{timeZone:A.tz||'Asia/Tokyo',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});
   function ts(s){var d=new Date(s);if(isNaN(d))return '';var o={};FMT.formatToParts(d).forEach(function(p){o[p.type]=p.value;});return o.month+'/'+o.day+' '+o.hour+':'+o.minute+':'+o.second;}
   function key(x){return x.at+'|'+x.p+'|'+x.b+'|'+x.t;}
@@ -144,14 +144,14 @@ JS = """
       .catch(function(){st.textContent='再接続中…';st.className='term-st ng';});}
   // ② GitHub Actions：実行の始まり・終わり
   var WF={'digest.yml':['collect','ニュース収集'],'background.yml':['background','後台作業（ゲート・小元素）'],'render.yml':['render','ページ生成'],'requests.yml':['background','設定ページの依頼']};
-  var runSeen={};try{runSeen=JSON.parse(localStorage.getItem('wl-term-runs')||'{}');}catch(e){}
+  var runSeen={};try{runSeen=JSON.parse(localStorage.getItem('wl-term-runs-test2')||'{}');}catch(e){}
   function loadRuns(){var c=null;try{c=JSON.parse(localStorage.getItem('wl-actions')||'null');}catch(e){}
     var p=(c&&Date.now()-c.t<170000)?Promise.resolve(c.j):fetch('https://api.github.com/repos/'+A.repo+'/actions/runs?per_page=30').then(function(r){if(!r.ok)throw 0;return r.json();});
     p.then(function(j){(j.workflow_runs||[]).slice().reverse().forEach(function(w){var f=WF[(w.path||'').split('/').pop()];if(!f)return;
       var id=w.html_url||w.created_at,s=w.status==='completed'?(w.conclusion||'done'):'run';if(runSeen[id]===s)return;var first=!(id in runSeen);runSeen[id]=s;
       if(s==='run')add({at:w.created_at,p:f[0],b:'',t:f[1]+' 開始（'+(w.event||'')+'）',lv:'info'},!first);
       else add({at:w.updated_at||w.created_at,p:f[0],b:'',t:f[1]+(s==='success'?' 成功':s==='cancelled'||s==='skipped'?' 取り消し':' 失敗'),lv:s==='success'?'ok':s==='failure'?'error':'info'},!first);});
-      try{localStorage.setItem('wl-term-runs',JSON.stringify(runSeen));}catch(e){}}).catch(function(){});}
+      try{localStorage.setItem('wl-term-runs-test2',JSON.stringify(runSeen));}catch(e){}}).catch(function(){});}
   // ③ 実行ログ（リポジトリの state/log）：出刊・AI 編集・ゲートの判断など、仕組みが自分で書いた行
   function loadLogs(){T.files.forEach(function(f){fetch('https://raw.githubusercontent.com/'+A.repo+'/main/state/log/'+f+'.json',{cache:'no-store'})
     .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(rows){(rows||[]).slice(-30).forEach(function(r){

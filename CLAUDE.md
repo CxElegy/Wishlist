@@ -41,6 +41,9 @@
 - **test1** = 2026-10-19 以前的版，冻结在 `docs/test1/`（页面原样，`scripts/freeze_test1.py` 加了「アーカイブ」的帯、拦住写 Supabase 的调用）。不再生成、后台不跑。数据存档在 `archive/test1/`（items.yaml・reports・inbox・state）。ちいかわ 等 test1 的关注项不动。
 - **test2** = 现在用的版，从空开始：`items.yaml` 的 `items:` 空着，设置页向导加进来。网页生成・小元素・本站保存的图・愿望清单的图都写 `docs/test2/`（`scripts/sitedir.py` 的 `SITE_DIR`，改位置只改那里）。根 `docs/index.html` 是手写的入口，旧网址（settings.html 等）跳到 test2。
 - Supabase 的表 test1・test2 共用；设置页・管理页「最近的请求」只显示 `sitedir.SINCE` 之后的。
+- **test2 里不留 test1 的痕迹**（用户定的，2026-10-19）：投票只用 `SINCE` 之后的（`digest.test2_rows`，推荐・管理页都是）；运行日志 `state/log/*.json` 只留 test2 的（test1 的在 `archive/test1/state/log/`）；
+  愿望清单的 `watch` 指向现在没有的版面时不出「版面 →」、不拿来推荐（`load_wishlist`）；「気になるかも？」不出 test1 版面的候选（`current_picks`）；
+  「小元素の判断の例」只出现在关注项的例子（其他链到 test1 的管理页）；ライブログ的浏览器缓存键是 `wl-term-test2`（同一个域名，和 test1 分开）；说明文字里的例子不写 test1 的作品名。
 - **test2 的加关注项规则（只改逻辑）**：一个名字默认只开一个版面，放在它「本身是什么」的板块（选的维基数据条目当依据的面的板块：ちいかわ = 漫画条目 → 作品 › シリーズ）；
   其他面（グッズ・イベント…）只扩大搜索词、在目录里是枝（`media`）；不放乗換站（板块一问只选一个）；确认画面上默认不勾的「グッズ・イベントを別の版面にする」勾了才把其他板块的面做成下级（parent = 本体，和本体同一个板块）。
 

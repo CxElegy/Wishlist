@@ -720,9 +720,13 @@ def pages_url(settings):
 
 
 def load_wishlist():
+    """愿望清单（test1・test2 で共通の自分のもの）。watch（どの版面のニュースから来たか）は今の関注清单にある版面だけ残す：
+    test1 の版面（星巴克马克杯…）を指したまま「版面 →」の行き止まりリンクや「○○のほかのニュース」の推薦を出さない（読むだけ、書き戻さない）。"""
     if not WISHLIST_FILE.exists():
         return []
-    return (yaml.safe_load(WISHLIST_FILE.read_text(encoding="utf-8")) or {}).get("wishlist") or []
+    wishes = (yaml.safe_load(WISHLIST_FILE.read_text(encoding="utf-8")) or {}).get("wishlist") or []
+    names = {i["name"] for i in (yaml.safe_load(ITEMS_FILE.read_text(encoding="utf-8")) or {}).get("items") or []}
+    return [w if not w.get("watch") or w["watch"] in names else {k: v for k, v in w.items() if k != "watch"} for w in wishes]
 
 
 PICK_COUNT = 5       # 「我会喜欢？」一批几条（1 大 + 4 小正好排满）
@@ -1386,10 +1390,23 @@ def load_feedback():
     except Exception as err:
         print(f"  [投票] 读数据库失败，用上次存的：{err}", file=sys.stderr)
     latest = {}
-    for r in rows:
+    for r in test2_rows(rows):
         if r.get("url") and r.get("vote") in (-1, 0, 1):
             latest[r["url"]] = r
     return [r for r in latest.values() if r["vote"]]
+
+
+def current_picks(items):
+    """「気になるかも？」の候補のうち、今の関注清单にない版面（test1 の版面）に結び付いたものは出さない。
+    推薦は収集のたびに作り直すので、これは作り直す前に残っている古い候補の掃除（作り直した後は何も落とさない）。"""
+    names = {i["name"] for i in items}
+    return [p for p in (load_json(RECOMMEND_FILE) or {}).get("picks", []) if not p.get("work") or p["work"] in names]
+
+
+def test2_rows(rows):
+    """test2 を始めた後（sitedir.SINCE 以降）の投票だけ。test1 の投票は Supabase に残るが、test2 の推薦・管理ページには使わない（用户定的：test1 の跡を残さない）。"""
+    since = sitedir.SINCE.replace("Z", "+00:00")
+    return [r for r in rows if not r.get("created_at") or r["created_at"] >= since]   # 時刻のない行（テスト・手で足したもの）は残す
 
 
 SIZE_STORIES = {"S": 3, "M": 5, "L": 8}   # 篇幅 → 每期最多几条报道（网页上直接显示多高见 render.SIZE_HEIGHT）
@@ -1968,7 +1985,7 @@ def admin_data(items, issues, analysis, tz, updated):
                 "items": len(items), "stale": sum(1 for r in rows if r["last_days"] is None or r["last_days"] >= render.ADMIN_STALE_DAYS),
                 "weekly": " ".join(beat.read_text(encoding="utf-8").split()[:2])[5:].replace("-", "/") if beat.exists() else None}
     # 投票：同じ記事は最後の一票。作品ごとの 👍 / 👎 と、最近押したもの
-    raw = (load_json(FEEDBACK_FILE) or {}).get("rows", [])
+    raw = test2_rows((load_json(FEEDBACK_FILE) or {}).get("rows", []))
     latest = {}
     for r in raw:
         if r.get("url") and r.get("vote") in (-1, 0, 1):
@@ -2267,10 +2284,11 @@ def write_page():
     adm = admin_data(items, issues, analysis, tz, updated)  # 管理ページの数字（「待ち行列」は簡報の「更新中」の帯にも使う）
     generated = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     html_ = render.render(issues, settings.get("nav_style", "line"), order, updated,
-                          load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
+                          load_wishlist(), current_picks(items),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
                           {i["name"]: render.template_for(i) for i in items}, themes,
-                          (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores,
+                          [x for x in (load_json(RECOMMEND_FILE) or {}).get("taste", [])
+                           if not str(x[0]).startswith(WORK_KEY) or str(x[0])[len(WORK_KEY):] in {i["name"] for i in items}], heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
                           {n: v for n, v in own_sub.items() if v}, settings.get("nav_hide", render.NAV_HIDE),

@@ -91,6 +91,8 @@ class Items(unittest.TestCase):
                 self.assertTrue((it.get("subs") or {}).get(x["id"]), f"{it['name']} の subs に {x['id']} がない")
 
     def test_moved_items(self):
+        # 旧い板块名から移した実例は test1 の関注項（archive/test1）にある
+        ITEMS = yaml.safe_load((_ROOT / "archive" / "test1" / "items.yaml").read_text(encoding="utf-8"))["items"]
         by = {i["name"]: digest.section_of(i) for i in ITEMS}
         self.assertEqual(by["猫用品"], "生活")
         self.assertEqual(by["三星手机"], "好物")

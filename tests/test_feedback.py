@@ -59,9 +59,16 @@ class LoadFeedback(unittest.TestCase):
             path = pathlib.Path(tmp) / "feedback.json"
             path.write_text(json.dumps({"rows": rows}), encoding="utf-8")
             with mock.patch.object(digest, "FEEDBACK_FILE", path), \
+                 mock.patch.object(digest.sitedir, "SINCE", "2000-01-01T00:00:00Z"), \
                  mock.patch.object(digest, "load_config", return_value=({}, [])):
                 votes = digest.load_feedback()
         self.assertEqual({r["url"]: r["vote"] for r in votes}, {"a": -1, "c": -1})
+
+    def test_test1_votes_are_not_used(self):
+        """test2 を始める前（sitedir.SINCE より前）の投票は推薦・管理ページに使わない。"""
+        rows = [dict(row("old", 1), created_at="2026-10-12T00:00:00+00:00"), dict(row("new", 1), created_at="2026-10-20T00:00:00+00:00")]
+        with mock.patch.object(digest.sitedir, "SINCE", "2026-10-19T12:36:00Z"):
+            self.assertEqual([r["url"] for r in digest.test2_rows(rows)], ["new"])
 
 
 class VoteButtons(unittest.TestCase):
