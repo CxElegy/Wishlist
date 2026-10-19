@@ -272,7 +272,8 @@
     let plan = {key, type: "", list: []};
     const isChar = (S.ans.kind || wdPick()?.kind) === "character" || !!ev.goods;
     if (Object.keys(ev).length >= 1 && (Object.keys(ev).length >= 2 || isChar || ["anime", "manga", "movie"].some(k => ev[k]))) {
-      plan = {key, type: "media", list: Object.entries(MEDIA).map(([k, f]) => ({key: k, ...f, rec: !!ev[k], ev: ev[k] || [],
+      // 維基データで見つかった面だけ出す（用户定的：ちいかわ に舞台・実写はない → 出さない）。グッズは 2 媒体以上の作品の推定も依拠に数える
+      plan = {key, type: "media", list: Object.entries(MEDIA).filter(([k]) => ev[k]).map(([k, f]) => ({key: k, ...f, rec: !!ev[k], ev: ev[k] || [],
         titles: uniq((ev[k] || []).flatMap(x => [x.names?.ja, x.names?.en]).map(t => String(t || "").replace(/\s*[(（][^)）]*[)）]\s*$/, "").trim())
           .filter(t => t && !relatedNames().includes(normName(t)))).slice(0, 4)}))};
     } else if (generic()) {
@@ -741,7 +742,7 @@
     return h("div", {class: "q"}, h("span", {class: "no"}, no()),
       h("h3", {}, plan.type === "media" ? `「${S.name}」的哪几面要关注？可以多选` : `「${S.name}」关注哪几方面？可以多选`),
       h("p", {}, plan.type === "media"
-        ? "按维基数据找到的条目推荐（有依据的已经勾上），其他的也能勾。每个面会自动加一套搜索词，放进对应的板块。"
+        ? "只列出维基数据里找到了的面（找到的条目写在「依据」里），没找到的不列。每个面会自动加一套搜索词，放进对应的板块。"
         : "名字是普通词，只用名字会收进很多不相关的新闻，所以按面来收：每个面的词和名字同时出现才收。推荐的已经勾上。"),
       sim.length ? h("p", {class: "simnote"}, `已经有相近的关注项：${sim.map(i => `「${i.name}」`).join("")}。想往里加，可以在上面的列表里点「改」；也可以在后面「属于哪个」一问挂到它下面。`) : null,
       h("div", {class: "opts facets", role: "group"}, plan.list.map(f => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.facets.includes(f.key)),
