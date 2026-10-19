@@ -90,7 +90,7 @@ WIKI_LANGS = ("en", "ja", "zh", "ko")
 
 def load_items():
     import yaml
-    return yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["items"]
+    return yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["items"] or []   # test2 を空から始めた直後は「items:」だけ（None）
 
 
 def kind_of(item):
