@@ -155,6 +155,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
+  "w": 1350,
+  "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.hldycdn.com/777b6e25-1e8d-4d26-b214-b12738c12f21.jpeg": {
   "w": 2752,
   "h": 1536,
@@ -650,6 +656,12 @@
   "target": 720,
   "v": 3
  },
+ "https://hermes.media.static.aol.com/media/2026/10/14/9cad928f-c6ee-3705-9a00-7653f62c246d/e1e3a7de-1160-4a28-b3e1-d3bbd02d6cb4.jpg": {
+  "w": 2945,
+  "h": 1921,
+  "target": 1280,
+  "v": 3
+ },
  "https://hermes.media.static.aol.com/media/2026/10/14/e0a70dfe-6604-3cea-83b8-c319c02bb690/7fdc4e2f-5915-4ded-b631-4852b662f1c0.jpeg": {
   "w": 3000,
   "h": 1500,
@@ -831,6 +843,12 @@
   "w": 1200,
   "h": 669,
   "target": 720,
+  "v": 3
+ },
+ "https://images-tw.girlstyle.com/wp-content/uploads/2026/10/33e6a91a.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://images.khan.co.kr/article/2026/10/14/news-p.v1.20261014.e15dc1b6f9894a25a15b79a4a3d60af2_P1.jpg": {
@@ -1051,13 +1069,6 @@
   "h": 1080,
   "target": 1280,
   "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fy3qB.img": {
-  "w": 768,
-  "h": 768,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.372
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2dIaSV.img": {
   "w": 1242,
@@ -1679,6 +1690,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261015-00132577-futaman-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 2200,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/54c4250c67876e41.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261016-00010000-tennisnet-000-1-view.jpg?exp=10800": {
   "w": 2000,
   "h": 1500,
@@ -1728,18 +1751,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00010017-realsound-000-1-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 619,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/ed0207be71e27ebe.webp",
-  "out": [
-   1200,
-   619
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00100157-nekomag-000-1-view.jpg?exp=10800": {
   "w": 700,
   "h": 467,
@@ -1785,19 +1796,6 @@
   "out": [
    799,
    532
-  ],
-  "why": "期限付きの網址"
- },
- "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/14/35418925.jpg&M=1&s=Y&x=0&y=0&sw=720&sh=480&sl=W&fw=800&exp=3600": {
-  "w": 720,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.453,
-  "local": "pics/00cfc0e4f3b41c18.webp",
-  "out": [
-   1280,
-   853
   ],
   "why": "期限付きの網址"
  },
@@ -2005,6 +2003,12 @@
   "w": 982,
   "h": 655,
   "target": 720,
+  "v": 3
+ },
+ "https://sammyguru.com/wp-content/uploads/2026/08/Galaxy-Z-Fold-8-pistachio-and-Z-Fold-8-ultra-Graphite.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://sammyguru.com/wp-content/uploads/2026/10/Galaxy-S27-Series-Case-Featured.jpg": {
@@ -2364,12 +2368,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.91Lk_Lp9Z3Lu7fubNIvcpg&pid=News&w=640": {
-  "w": 640,
-  "h": 640,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.9HNkO23mU3knPnT4qSUFNg&pid=News&w=640": {
   "w": 100,
   "h": 100,
@@ -2441,6 +2439,12 @@
  "https://www.bing.com/th?id=ONUT.IyHCHx_oCcsTIz_JJ8Eg6w&pid=News&w=640": {
   "w": 640,
   "h": 330,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.JA6HAGiBknVyQSKLPC7W2w&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -2572,6 +2576,18 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.aRujr_DOLeiwwmQRn1tyPg&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/51f830edd9c155a8.webp",
+  "out": [
+   700,
+   366
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500": {
   "w": 100,
   "h": 100,
@@ -2696,19 +2712,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.tr8Y9j_U17aoZiuzy8OLRA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.499,
-  "local": "pics/8affb40c70b760e2.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.uj01IO2vWKIstFWrhgg42g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2768,13 +2771,6 @@
   "h": 700,
   "target": 720,
   "v": 3
- },
- "https://www.cityguideny.com/eventpic/600097FFEB0-B18E-4A1B-B943F64A75426C10.jpg?1": {
-  "w": 600,
-  "h": 750,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.386
  },
  "https://www.cnet.com/wp-content/uploads/sites/2/75bc8592-5b67-4ebc-990c-1097dd27f7e7.jpg": {
   "w": 3840,
@@ -2937,12 +2933,6 @@
   "w": 2000,
   "h": 1500,
   "target": 720,
-  "v": 3
- },
- "https://www.sheknows.com/wp-content/uploads/2026/10/Starbucks-Black-Cat-Frappuccino-Drops-October-22-Heres-Exactly-How-to-Get-the-Cookie-Before-It-Sells-Out.png?w=1024": {
-  "w": 1024,
-  "h": 576,
-  "target": 1280,
   "v": 3
  },
  "https://www.shitakoe.com/wp/wp-content/uploads/2026/10/2-7-1024x768.jpg": {
