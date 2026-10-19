@@ -253,7 +253,7 @@ JS = """
       :'いまは何も動いていません。待っているものは下の一覧に。';
     now.classList.toggle('busy',!!ks.length);}
   function loadBoards(){if(!A.url||!A.key){nowT.textContent='データベースに未接続です。';return;}
-    fetch(A.url+'/rest/v1/rpc/live_boards',{method:'POST',headers:{apikey:A.key,'Content-Type':'application/json'},body:'{}'})
+    fetch(A.url+'/rest/v1/rpc/live_boards',{method:'POST',headers:{apikey:A.key,'Content-Type':'application/json'},body:JSON.stringify({p_account:window.WL_ACCOUNT})})
       .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){boards=l||[];paint();}).catch(function(){});}
   // Actions の実行中：管理ページの「いまの状況」と同じ localStorage の結果を使い回す（未登録 API は 1 時間 60 回まで）
   function loadRuns(){var c=null;try{c=JSON.parse(localStorage.getItem('wl-actions')||'null');}catch(e){}

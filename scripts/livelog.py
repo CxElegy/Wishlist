@@ -133,7 +133,7 @@ JS = """
   function done(x){if(x.proc==='collect')return x.state==='fetch'?'探し終わり（新着なし）':'収集完了 · 新着 '+x.found+' 件を inbox へ';
     if(x.proc==='edit')return 'AI 編集 完了 · 網页に反映';if(x.proc==='emblem')return '小元素 終わり（増えた分は網页に反映）';return '終わり';}
   function loadBoards(){if(!A.url||!A.key){st.textContent='データベース未接続';st.className='term-st ng';return;}
-    fetch(A.url+'/rest/v1/rpc/live_boards',{method:'POST',headers:{apikey:A.key,'Content-Type':'application/json'},body:'{}'})
+    fetch(A.url+'/rest/v1/rpc/live_boards',{method:'POST',headers:{apikey:A.key,'Content-Type':'application/json'},body:JSON.stringify({p_account:window.WL_ACCOUNT})})
       .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){var cur={};st.textContent='● ライブ';st.className='term-st on';
         (l||[]).forEach(function(x){var k=x.board+'|'+x.proc;cur[k]=x;var w=words(x);
           if(!prev){add({at:x.started_at,p:x.proc,b:x.board,t:'進行中：'+w,lv:'info'},false);return;}
@@ -163,7 +163,8 @@ JS = """
   // AI 編集のコントロール（db/edit_control.sql）
   var MODES=JSON.parse(document.getElementById('ectl-cfg').textContent),em=document.getElementById('ectl-mode'),ew=document.getElementById('ectl-why'),
       er=document.getElementById('ectl-redo'),emsg=document.getElementById('ectl-msg'),eb=document.getElementById('ectl-board');
-  function rpc(fn,body){return fetch(A.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:A.key,'Content-Type':'application/json'},body:JSON.stringify(body||{})})
+  function rpc(fn,body){body=body||{};if(fn!=='run_now')body.p_account=window.WL_ACCOUNT;   // run_now（Actions を起こす）だけはアカウントに関係ない
+    return fetch(A.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:A.key,'Content-Type':'application/json'},body:JSON.stringify(body)})
     .then(function(r){if(!r.ok)throw 0;return r.json();});}
   function showCtl(c){if(!c)return;var m=MODES[c.mode]||[c.mode,''];em.textContent=m[0];em.className=c.mode;ew.textContent=m[1];
     er.textContent=(c.redo&&c.redo.length)?'やり直し待ち：'+c.redo.join('、'):'やり直し待ちなし';}

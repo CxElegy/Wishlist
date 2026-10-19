@@ -1,9 +1,9 @@
 {
- "admin": "10f0067ca6be",
+ "admin": "230d4bd7dd7a",
  "admin_marks": {
   "backend": [
    "バックグラウンド",
-   "a5bbdb2f"
+   "b8aa1f9c"
   ],
   "editdiff": [
    "AI 編集の前後",
@@ -19,7 +19,7 @@
   ],
   "items": [
    "ウォッチ項目",
-   "c7d3ec71"
+   "78037b79"
   ],
   "ov": [
    "しくみの全体図",
@@ -27,7 +27,7 @@
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "c6e7a12c"
+   "57f5398b"
   ],
   "queue": [
    "いまの状況",
@@ -35,7 +35,7 @@
   ],
   "status": [
    "運行状況",
-   "c16476d8"
+   "38f96b13"
   ],
   "term-panel": [
    "ライブログ",
@@ -47,10 +47,10 @@
   ],
   "votes": [
    "投票",
-   "a469ede5"
+   "74ad8cec"
   ]
  },
- "heat": "2aaf5a41319c",
+ "heat": "7ae676baa776",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -65,14 +65,10 @@
    "57ae3209"
   ]
  },
- "index": "27586edbe41e",
+ "index": "41447afce318",
  "index_marks": {
   "front": [
    "トップ",
-   "da39a3ee"
-  ],
-  "picks": [
-   "気になるかも？",
    "da39a3ee"
   ],
   "w-dcddcbd7": [
@@ -80,6 +76,6 @@
    "da39a3ee"
   ]
  },
- "updated": "10.19 23:33",
- "wishlist": "854931197105"
+ "updated": "10.20 00:34",
+ "wishlist": "4fbd88e31e74"
 }

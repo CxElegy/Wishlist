@@ -14,6 +14,9 @@ import urllib.request
 
 import yaml
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import sitedir  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
@@ -30,7 +33,7 @@ def report(board, proc, state, note=None, eta_min=None):
     url, key = _db()
     if not (url and key):
         return
-    body = {"p_board": board, "p_proc": proc, "p_state": state, "p_note": note,
+    body = {"p_account": sitedir.NAME, "p_board": board, "p_proc": proc, "p_state": state, "p_note": note,
             "p_eta_min": None if eta_min is None else max(1, round(eta_min))}
     req = urllib.request.Request(f"{url}/rest/v1/rpc/live_report", data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
                                  headers={"apikey": key, "Content-Type": "application/json"}, method="POST")

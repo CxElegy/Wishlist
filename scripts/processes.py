@@ -144,7 +144,7 @@ COMPONENTS = {
     "youtube": {"kind": "api", "name": "YouTube 検索ページ（ytInitialData）", "spec": "1 人 4 本 · 題名にグループ名と名前 · 직캠・fancam を先に · 動画の場面 hq1・hq2・hq3（480×360、投稿者のサムネイルは字が載るので使わない）",
                 "what": "メンバー・出演者の写真（Commons にない人）。本人確認は顔の規則"},
     "bingimg": {"kind": "api", "name": "Bing 画像検索", "spec": "一覧に載せるだけ · 自動では選ばない", "what": "出所が不確かなので目で見る"},
-    "supabase": {"kind": "api", "name": "Supabase REST / RPC", "spec": "news を 500 件ずつ upsert · my_votes · set_size",
+    "supabase": {"kind": "api", "name": "Supabase REST / RPC", "spec": "アカウントごと（account 列・p_account つきの関数、db/accounts.sql：test1 / test2 は別のアカウント）· news を 500 件ずつ upsert · my_votes · set_size",
                  "what": "投票・篇幅・依頼・写真・記事の控え"},
     "pgnet": {"kind": "api", "name": "pg_net → GitHub dispatch", "spec": "20 秒に 1 回まで", "what": "設定ページの依頼ですぐ Actions を起こす"},
     "discord": {"kind": "api", "name": "Discord Webhook", "spec": "要紧 ≤6 行 · 埋め込み ≤10 · 30 日は二重に送らない",
