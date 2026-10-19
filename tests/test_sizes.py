@@ -188,3 +188,23 @@ class NavSchemes(unittest.TestCase):
                                                                  {"section": "影视", "scheme": "bogus"}]), \
              mock.patch.object(digest, "save_json"):
             self.assertEqual(digest.load_nav_schemes(settings), {"游戏": "platform", "影视": "kind"})
+
+
+class SoftenLoudAlt(unittest.TestCase):
+    """副色が原色の作品（漫威の赤など）は、折叠区の広い面を落ち着いた色にする。"""
+
+    def test_loud_detection(self):
+        for loud in ("#EC1D24", "#E2131A", "#FFB25B", "#DE1A33"):
+            self.assertTrue(render._loud(loud), loud)
+        for calm in ("#740001", "#1E3932", "#F1EEE6", "#C9CDD5", "#BFE3DA", "#14233A", "nonsense"):
+            self.assertFalse(render._loud(calm), calm)
+
+    def test_section_gets_softalt_only_when_loud(self):
+        def page(alt_bg, alt_fg):
+            issue = {"no": 1, "date": "2026-10-12", "items": [{
+                "name": "X", "section": "影视", "subtitle": "", "cover": None, "facts": [],
+                "theme": {"bg": "#151515", "fg": "#F5F5F5", "accent": "#EC1D24", "alt_bg": alt_bg, "alt_fg": alt_fg, "alt_accent": "#FFFFFF"},
+                "stories": [story(i) for i in range(12)]}]}
+            return render.render([issue], order=["X"])
+        self.assertRegex(page("#EC1D24", "#FFFFFF"), r'<section[^>]*class="sec[^"]*\bsoftalt\b')
+        self.assertNotRegex(page("#F1EEE6", "#1A1C22"), r'<section[^>]*class="sec[^"]*\bsoftalt\b')

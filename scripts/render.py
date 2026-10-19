@@ -375,6 +375,15 @@ button{font-family:inherit}
 .pend li a:hover,.pend li a:focus-visible{color:var(--acc);text-decoration:underline}
 .pend li small{font:var(--fs-label) var(--font-num);opacity:.7}
 .older .card.c3 h3{font-size:15px;line-height:1.45}
+/* 副色が鮮やかな作品（漫威の赤など）：「もっと見る」の広い面は主面の色に副色を薄く混ぜた落ち着いた色にして、
+   副色そのものは上の細い線と＋ボタンだけに使う（広い面積に原色の赤・黄・ピンクを塗ると目が疲れる） */
+.softalt .older{background:color-mix(in srgb,var(--abg) 20%,var(--bg));color:var(--fg);border-top:3px solid var(--abg)}
+.softalt .older summary::before{background:var(--abg);color:var(--afg)}
+.softalt .older summary:hover,.softalt .older summary:focus-visible{color:var(--acc)}
+.softalt .older .card.a{color:var(--fg);--ac:var(--acc)}
+.softalt .older .card.a .when b{color:var(--bg)}
+.softalt .older .card.a .vt{--vt:var(--bg);--vf:var(--fg)}
+.softalt .older .hl{color:color-mix(in srgb,var(--acc) 65%,var(--fg))}  /* 強調色は背景が少し明るくなった分だけ本文色に寄せる（文字として 4.5:1 以上） */
 /* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */
 /* ---------- 気になるかも？：店長のおすすめ POP ---------- */
 .picks{--ac:var(--rose);background:var(--sheet);color:var(--ink);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--rose);padding:22px 26px 28px}
@@ -1148,6 +1157,15 @@ def _legible(t):
     return t
 
 
+def _loud(hex_):
+    """副色の背景が「鮮やか」か：色度が高く、しかも暗くない（原色の赤・黄・ピンクなど）。暗い赤（#740001）や淡い色は対象外。"""
+    try:
+        rgb = theme._rgb(hex_)
+    except (ValueError, TypeError):
+        return False
+    return theme._chroma(rgb) >= 0.45 and theme._lum(rgb) >= 0.12
+
+
 FACE_SHARE = 0.32   # emblem.FACE_SHARE と同じ：顔が小元素の高さのこの割合になる大きさで表示する
 CARD_AR = (0.95, 1.6)   # emblem.CARD_AR と同じ：カード（4:5）の窓で切ってよい縦横比（高さ ÷ 幅）
 
@@ -1265,6 +1283,7 @@ def _section(block, anchor=""):
     grid += _brief(texts) + _older(more + older, today, len(more), old_texts) + _pending(block.get("pending"))
     recent = recent or texts
     quiet = "" if recent else " quiet"
+    quiet += " softalt" if _loud(t["alt_bg"]) else ""
     cnt = f'<span class="cnt"><b>{len(recent)}</b>今週</span>' if recent else ""
     cnt = _heat_badge(block) + cnt
     emb_html = _emblem(block.get("_emblems") or [], block.get("_ring") or "accent")
