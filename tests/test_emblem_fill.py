@@ -559,7 +559,7 @@ class Backend(unittest.TestCase):
         self.assertIn("&lt;x&gt;", out)
         self.assertNotIn("<x>", out)
         self.assertIn('class="bgc s-failed"', out)
-        self.assertLess(out.index("ゲーム"), out.index("グッズ"))   # 板块の順
+        self.assertLess(out.index("ゲーム"), out.index("ショッピング"))   # 板块の順
         page = render.render_admin({"pipeline": {}, "items": rows, "votes": {}}, {}, "u")
         self.assertIn('id="backend"', page)
         self.assertLess(page.index('id="backend"'), page.index('id="procs"'))

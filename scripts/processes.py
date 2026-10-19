@@ -64,7 +64,7 @@ COMPONENTS = {
               "what": "items.yaml の match にある語がタイトルか要約にないと収めない（digest.match_hit）"},
     "spam": {"kind": "rule", "name": "スパム判定 SPAM_PATTERNS", "spec": "漢字の間の ❌ · 在线看・高清完整・免费全集 等 · 末尾「〜网」· 網址の参数に「伴游・微信・加V」など（SPAM_URL）· exclude_sources · 収集・inbox の合併・出刊・ページ生成の 4 か所で落とす",
              "what": "digest.is_spam：乗っ取られたサイトの成人・海賊版「在线看」ページを捨てる（作品名を詰めているので match を通ってしまう）"},
-    "taxonomy": {"kind": "rule", "name": "板块の対号入座 sections.yaml", "spec": "板块 17（IAB Content Taxonomy 3.1 の大類から）· 各 2 つの分け方と常用の値 · 上から先に当たった語",
+    "taxonomy": {"kind": "rule", "name": "板块の対号入座 sections.yaml", "spec": "大類 8（IAB Content Taxonomy 3.1 の大類を 2026-10-19 にまとめた：作品・ゲーム・音楽・スポーツ・ショッピング・暮らし・おでかけ・その他）· 各 2 つの分け方と常用の値 · ゲームを先に（prio）、あとは上から先に当たった語 · 旧い 17 板块の名前は LEGACY で大類へ · 同じ板块に媒体 2 つ以上 = 小分類「シリーズ」",
                  "what": "維基データの説明・名前の語で板块と小分類を推す（taxonomy.classify / guess_subs、ウィザードも同じ表）。新しい板块は臨時に作らない、当たらなければ「その他」"},
     "lang": {"kind": "rule", "name": "言語違いの同じニュース lang.dedupe", "spec": "主言語 ja → 副言語 en・zh・ko（settings.languages）· 仮名 2 字 = ja・ハングル 2 字 = ko・漢字 2 字 = zh・ローマ字 3 字 = en · "
              "同じ作品で 10 日以内かつ（バージョン番号 / 見出しの月日 / 予定の日付＋ラベル）が同じ = 同じニュース · 主言語・副言語以外は載せない",
@@ -452,7 +452,7 @@ PROCESSES = [
         "summary": "設定ページの依頼を Supabase が受け、すぐ GitHub Actions を起こして items.yaml に反映する。",
         "files": [".github/workflows/requests.yml", "docs/additem.js", "db/instant.sql", "sections.yaml", "scripts/taxonomy.py"], "doc": "CLAUDE.md", "uses": ["supabase", "pgnet", "taxonomy"],
         "flow": [
-            {"id": "qp", "kind": "step", "lane": "web", "title": "上級を推す", "text": "今ある・上級のない関注項の名前・搜索词が新項の名前・維基データに出てくる → 推薦（1 層だけ）"},
+            {"id": "qp", "kind": "step", "lane": "web", "title": "上級を推す", "text": "今ある・上級のない関注項の名前・搜索词が新項の名前・維基データに出てくる → 推薦 · 維基データの系列（P179 / P8345 / P361）がまだ関注清单になければ「上級の系列も一緒に追加」を選べる（系列 → この項の順に送る、系列は小分類シリーズ）· 1 層だけ"},
             {"id": "qf", "kind": "step", "lane": "web", "title": "「面」を全部並べて推す", "text": "作品・IP 型：アニメ・映画・ドラマ・漫画・ゲーム・グッズ・イベントの 7 面、維基データの同名の条目（AniList / TMDB / Steam の番号・説明の語）で依拠のある面を推薦、具体的な作品名も検索語に。2 面以上あればグッズも推薦 · 題材型（短い普通の語「猫」）：sections.yaml の facets（なければ第一の分け方の値）、名前と面の語が同時に出たときだけ収める · 全部選べる", "uses": ["taxonomy"]},
             {"id": "qs", "kind": "decision", "lane": "web", "title": "面が 2 つ以上の板块にまたがる？", "no": "1 つの版面にまとめる（ほかの板块は乗換駅）"},
             {"id": "qk", "kind": "step", "lane": "web", "title": "板块ごとに版面 1 つ（下級）", "text": "同じ板块の面は派生の順（漫画 → アニメ → ドラマ → 映画）で 1 つにまとめ、名前はいちばん元の面。主面の板块は「名前」、ほかは「名前 アニメ」…を parent つきで各自の板块へ · 主項の後に続けて送る"},
