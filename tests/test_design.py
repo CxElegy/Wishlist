@@ -474,14 +474,18 @@ class NavParents(unittest.TestCase):
         self.assertEqual([x["url"] for x in works[2]["stories"]], ["b"])
 
     def test_board_marks_name_what_changed(self):
-        """通知に「どの版面が変わったか」を出すための指紋：版面ごとに data-h、version.json 用の page_marks。"""
-        a = '<section id="w-1" data-k="GTA 6" class="sec">x 10.18 09:00</section><section class="front" data-k="front" id="front">f</section>'
-        m1 = render._board_marks(a, "10.18 09:00")
-        m2 = render._board_marks(a.replace("x 10.18", "y 10.18"), "10.18 09:00")
-        marks1, marks2 = render.page_marks(m1), render.page_marks(m2)
-        self.assertEqual(marks1["front"][0], "トップ")                   # 名前は日本語に
-        self.assertEqual(marks1["w-1"][0], "GTA 6")
-        self.assertEqual(marks1["front"][1], marks2["front"][1])        # 変わっていない版面は同じ指紋
-        self.assertNotEqual(marks1["w-1"][1], marks2["w-1"][1])         # 中身が変わった版面だけ違う
+        """通知に「どの版面が変わったか」を出すための指紋：AI 編集が整理した記事（<article>）だけで決まる。"""
+        art = '<article class="card"><a class="lk" href="https://a/1"></a><h3>記事</h3></article>'
+        pend = '<details class="pend"><summary>整理待ち · 2 件</summary><ul><li>新着</li></ul></details>'
+        board = lambda inner, heat="36": f'<section id="w-1" data-k="GTA 6" class="sec"><b>話題度 {heat}</b>{inner}</section><section class="front" data-k="front" id="front">f</section>'
+        base = render.page_marks(render._board_marks(board(art + pend)))
+        self.assertEqual(base["front"][0], "トップ")                      # 名前は日本語に
+        self.assertEqual(base["w-1"][0], "GTA 6")
+        # 整理待ち・話題度の数字が変わっても、版面は更新されたことにしない（AI 編集が整理するまで読者には見せない）
+        self.assertEqual(render.page_marks(render._board_marks(board(art + pend.replace("2 件", "9 件"), "40"))), base)
+        # AI 編集が記事を増やしたら、その版面だけ変わる
+        more = render.page_marks(render._board_marks(board(art + art.replace("a/1", "a/2") + pend)))
+        self.assertNotEqual(more["w-1"][1], base["w-1"][1])
+        self.assertEqual(more["front"][1], base["front"][1])
         self.assertIn("_marks", render.LIVE_JS)                          # 読み直す前にも名前を出す
         self.assertIn("wl-to", render.LIVE_JS)                           # 名前から版面へ飛べる
