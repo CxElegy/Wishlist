@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-19T15:43:27+00:00",
+ "checked": "2026-10-19T16:17:43+00:00",
  "fired": {
-  "at": "2026-10-19T14:29:20+00:00",
+  "at": "2026-10-19T16:17:43+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "Claude を起こした（2 回目：前は動かなかった）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,18 +12,19 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-19T14:29:20+00:00",
-    "attempts": 1,
-    "forced": true,
+    "at": "2026-10-19T16:17:43+00:00",
+    "attempts": 2,
     "prog": 0,
-    "resp": "cse_01VuqdyZYHQuvq9TaiASoyrK",
+    "resp": "cse_01QfpxyRSmeUuZA2SsWaBZNm",
     "sig": "f30faab3b066"
    },
-   "items": [],
-   "need": false,
-   "prog": 31,
-   "sig": "c0c8b76adcd9",
-   "why": "今日の新着はすべて AI 編集済み"
+   "items": [
+    "ちいかわ"
+   ],
+   "need": true,
+   "prog": 0,
+   "sig": "f30faab3b066",
+   "why": "整理待ちの記事 31 件（1 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -33,7 +34,7 @@
    "waiting": [
     "ちいかわ"
    ],
-   "why": "失敗 1 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:42 から）"
+   "why": "失敗 1 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 07:17 から）"
   },
   "photos": {
    "claude": true,
