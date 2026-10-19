@@ -1,9 +1,9 @@
 {
- "admin": "0188291a224a",
+ "admin": "1aa3af3bdaac",
  "admin_marks": {
   "backend": [
    "バックグラウンド",
-   "128fb495"
+   "74b17085"
   ],
   "editdiff": [
    "AI 編集の前後",
@@ -15,15 +15,15 @@
   ],
   "emblems": [
    "小元素",
-   "a39c3973"
+   "e35ca5cd"
   ],
   "items": [
    "ウォッチ項目",
-   "2d9ee1d8"
+   "1c55443d"
   ],
   "ov": [
    "しくみの全体図",
-   "735d82ef"
+   "dd7e71ad"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -35,11 +35,11 @@
   ],
   "status": [
    "運行状況",
-   "3f260de6"
+   "b2c5716f"
   ],
   "term-panel": [
    "ライブログ",
-   "3caae64b"
+   "8e92d46d"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -50,7 +50,7 @@
    "7945a846"
   ]
  },
- "heat": "85871b9d8223",
+ "heat": "17537045edbb",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -58,20 +58,24 @@
   ],
   "movers": [
    "前週比",
-   "d38fcfa9"
+   "bc24d274"
   ],
   "ranking": [
    "ランキング",
-   "6cd051a3"
+   "7a628c3c"
   ]
  },
- "index": "0ec303e02d6d",
+ "index": "9cf1827525fe",
  "index_marks": {
   "front": [
    "トップ",
    "da39a3ee"
+  ],
+  "w-dcddcbd7": [
+   "ちいかわ",
+   "da39a3ee"
   ]
  },
- "updated": "10.19 23:17",
+ "updated": "10.19 23:25",
  "wishlist": "9de1603e67d4"
 }
