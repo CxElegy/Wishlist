@@ -1827,6 +1827,8 @@ def render_settings(items, db, updated, schemes=()):
 .tree .t-root{{display:block;font:500 12px/1.5 'Noto Sans SC',sans-serif;color:#5A5D66}}
 .tree .t-it>.opt{{margin:4px 0;width:100%}}
 .tree .t-md{{font:500 13px 'Noto Sans SC',sans-serif;color:#3A3D46}}
+.selall{{align-self:flex-start;padding:6px 14px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;font:900 14px 'Noto Sans SC',sans-serif;cursor:pointer}}
+.selall[aria-pressed="true"]{{background:#1A1C22;color:#F4EDE4}}
 .opts{{display:flex;flex-direction:column;gap:8px}}
 .opt{{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;
  font:900 15px 'Noto Sans SC',sans-serif;cursor:pointer}}

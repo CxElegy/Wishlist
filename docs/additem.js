@@ -495,7 +495,8 @@
     {id: "parent", when: () => (tops().length > 0 || newSeries().length > 0) && S.ans.arrange !== "split", render: askParent},
     {id: "related", when: () => S.mode === "add" && related().length > 0, render: askRelated},
     {id: "section", when: () => !S.ans.parent && !(S.ans.facets || []).length, render: askSections},
-    {id: "subs", render: askSubs},
+    // 面を選んでいれば小分類は規則で決まっている（applyFacets：シリーズ判断・各板块の分け方）。確認の画面で直せる
+    {id: "subs", when: () => !(S.ans.facets || []).length, render: askSubs},
     {id: "size", when: () => S.mode === "add", render: () => single("size", "每期给它多大篇幅？", "以后在上面的列表里随时能改。", [
       {v: "S", label: "S · 少", hint: "每期最多 3 条，大约一行"}, {v: "M", label: "M · 中等", hint: "每期最多 5 条"},
       {v: "L", label: "L · 多", hint: "每期最多 8 条，满满一整屏"}])},
@@ -503,11 +504,12 @@
   ];
   const live = () => STEPS.filter(s => !s.when || s.when());
   const LABELS = {name: "名字", which: "是哪个", facets: "关注的面", arrange: "怎么放", kind: "这是", focus: "关注", player: "选手 / 队伍", urgent: "立刻通知",
-                  exclude: "不看", langs: "语言", parent: "上级", section: "板块", subs: "小分类", size: "篇幅"};
+                  exclude: "不看", langs: "语言", parent: "上级", related: "同系列", section: "板块", subs: "小分类", size: "篇幅"};
 
   function defaults(id) {
     const pick = wdPick();
     if (id === "kind") return pick?.kind || (S.original ? KIND_OF_TYPE[S.original.type] : "") || "";
+    if (id === "focus") return focusOpts().filter(f => f.id !== "player" && !f.id.endsWith(".player")).map(f => f.id);   // 默认全要（用户定的）。選手の名前を聞く「player」だけは除く
     if (id === "urgent") return chosenFocus().filter(f => f.urgent).map(f => f.id);
     if (id === "langs") return [...new Set(["zh-TW", "en-US", ...(pick?.origin || []).filter(l => l !== "zh-CN")])];
     if (id === "section") return S.ans.parent ? guessSection() : S.original?.section || guessSection();
@@ -580,7 +582,16 @@
     return el;
   };
 
+  // 面が決まったら板块・小分類・乗換…は規則で決める（面の既定の勾も同じ）。面・置き方・主面が変わったときだけ計算し直す
+  function ensureFacets() {
+    if (S.mode !== "add" || !(S.ans.facets || []).length) return;
+    const sig = JSON.stringify([S.ans.facets, S.ans.arrange, S.ans.mainFacet, (S.derived || []).length, (S.wsec || {}) && Object.keys(S.wsec || {}).length]);
+    if (S._appliedSig === sig) return;
+    S._appliedSig = sig;
+    applyFacets();
+  }
   function draw() {
+    ensureFacets();
     const steps = live(), step = steps[Math.min(S.step, steps.length - 1)];
     const title = S.mode === "edit" ? `修改「${S.name}」` : "＋ 新增关注项";
     const asked = S.mode === "add" || S.ans.focus;   // 修改时直接到汇总的，没有回答过问题
@@ -769,7 +780,10 @@
   // 今選んでいる条目の系列のものだけ。板块ごとに 4 件まで（系列の印があるもの → 名前だけのもの）、ほかの板块（おでかけ・ショッピング…）を先に
   const related = () => {
     const ids = new Set(seriesOfPick().map(x => x.id)), mine = S.ans.section || naturalSection();
-    const list = (S.related || []).filter(r => ids.has(r.of));
+    // 「面」で出したもの（依拠の条目・同じ面に入るもの）は聞き直さない：同じ面は 1 つだけ（MECE）。ちいかわ → 映画ちいかわ 人魚の島のひみつ は映画の面にある
+    const plan = facetPlan(), used = new Set(plan.list.flatMap(f => (f.ev || []).map(x => x.id)).filter(Boolean));
+    const covered = r => plan.type === "media" && plan.list.some(f => f.key === SECT_ORDER.find(k => MEDIA[k].hit.test(`${r.title} ${Object.values(r.names || {}).join(" ")} ${r.desc}`)));
+    const list = (S.related || []).filter(r => ids.has(r.of) && !used.has(r.id) && !covered(r));
     const secs = uniq(list.map(r => r.sec)).sort((a, b) => (a === mine) - (b === mine) || SECS.findIndex(x => x.key === a) - SECS.findIndex(x => x.key === b));
     return secs.flatMap(sec => list.filter(r => r.sec === sec).sort((a, b) => a.thin - b.thin || b.strong - a.strong).slice(0, 4));
   };
@@ -1051,7 +1065,12 @@
   }
 
   function multi(id, ask, hint, opts, {other, min = 0} = {}) {
-    const body = [h("span", {class: "no"}, no()), h("h3", {}, ask), hint ? h("p", {}, hint) : null, options(id, opts, true)];
+    // 全选：「都不用」のような単独の選択肢（only）以外を全部。全部入っていれば「取消全选」
+    const pickable = opts.filter(o => !o.only).map(o => o.v), now = S.ans[id] || [];
+    const all = pickable.length >= 2 && pickable.every(v => now.includes(v));
+    const selAll = pickable.length >= 2 ? h("button", {type: "button", class: "selall", "aria-pressed": String(all),
+      onclick: () => { S.auto[id] = false; S.ans[id] = all ? [] : [...pickable]; draw(); }}, all ? "取消全选" : `全选（${pickable.length}）`) : null;
+    const body = [h("span", {class: "no"}, no()), h("h3", {}, ask), hint ? h("p", {}, hint) : null, selAll, options(id, opts, true)];
     let okBtn;
     const valid = () => (S.ans[id] || []).length + (other && S.ans[id + "_other"] ? 1 : 0) >= min;
     if (other) body.push(h("input", {type: "text", maxlength: 200, value: S.ans[id + "_other"] || "", placeholder: other,
