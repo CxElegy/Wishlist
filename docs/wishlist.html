@@ -848,7 +848,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="7f4e91f3c66b"><style>
+<meta name="wl-ver" data-page="wishlist" content="62ae14d2b051"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1039,8 +1039,8 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
         if(s.classList.contains('panel')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);}}});
     var items=order.map(function(s){return [label(s),T.n.replace('%n',by[s.id]),s.id];}).concat(other.map(function(s){return [label(s),T.m,s.id];}));
     var shown=items.slice(0,4),rest=items.length-shown.length;
-    toast(items.length?(n?(ZH?'有新内容':'更新しました'):(ZH?'有更新':'更新しました')):T.s,false,shown);
-    if(rest>0){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',rest);bar.firstChild.appendChild(r);}
+    if(items.length||n){toast(ZH?'有新内容':'更新しました',false,shown);
+      if(rest>0){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',rest);bar.firstChild.appendChild(r);}}
     if(document.hidden)badge(n||other.length);
   }
   // 待つとき：ダイアログを開いている・入力欄にいる・書きかけ／選んだファイルがある（読み直すと消えてしまう）
@@ -1055,8 +1055,9 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
       if(pending!==v){pending=v;
         // version.json の <ページ>_marks と自分の data-h を見比べて、どの版面が変わったかを先に言う
         var mk=j[PAGE+'_marks']||{},mine=marks(),ch=[];Object.keys(mk).forEach(function(id){if(mine[id]&&mine[id]!==mk[id][1])ch.push([mk[id][0],'',id]);});
-        var sh=ch.slice(0,3);toast(T.p,true,sh);
-        if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}
+        // 名前を挙げられる変化（AI 編集が整理した記事の増減など）がないときは何も出さない。静かに（操作していないとき）読み直すだけ
+        if(ch.length){var sh=ch.slice(0,3);toast(T.p,true,sh);
+          if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}}
       maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
