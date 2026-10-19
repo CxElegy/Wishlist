@@ -66,23 +66,23 @@
   ],
   "why": "期限付きの網址"
  },
- "https://www.bing.com/th?id=ONUT.aRujr_DOLeiwwmQRn1tyPg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.S7VEsSBW6ehFoVPC3tCVlQ&pid=News&w=640": {
+  "w": 640,
+  "h": 321,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ynKfXz7pCC8-r02gESV4zw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
   "target": 720,
   "v": 3,
-  "local": "pics/51f830edd9c155a8.webp",
+  "local": "pics/0fcf627e4a4616d8.webp",
   "out": [
-   700,
-   366
+   712,
+   405
   ],
   "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.umsbk9N_UbzeuU-6NAfn0A&pid=News&w=724": {
-  "w": 494,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.j-cast.com/images/origin/2026/10/news_20261019110936.jpg": {
   "w": 1200,
