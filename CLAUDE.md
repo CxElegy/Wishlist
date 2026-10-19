@@ -121,6 +121,8 @@
 - **名字是常用词的作品不做 Reddit 全站搜索**：`use: [google, bing]`，社区讨论只看它自己的版块（`subreddits`）。
 - **Reddit 只放真的火的帖子（用户定的，2026-10-17）**：版块看本周最热榜（`/top?t=week`）前 5，全站搜索看按热度排的前 5；配了 Reddit API 时还要赞 ≥100 或评论 ≥30。
   不火的不上版面，只记进 inbox 的 `reddit_cold` 给話題度数帖子数。已经上了版面的帖子每天复查一次：被删（[removed]/[deleted]）或掉出榜就撤掉（`digest.prune_reddit`）。
+- **垃圾站**（被黑的网站批量生成的页面，标题塞作品名骗搜索，会命中 match）：`digest.is_spam` 按标题写法（「在线看」、末尾 10 位随机码 `(gQvzdvbtKG)`）和链接网域（`SPAM_HOSTS`，Unisba Media = `unisba.ac.id`）认；
+  收集・整理待ち・出刊・页面・推荐・話題度的报道量都过这一个函数，新发现一个垃圾站就在那里加写法 / 网域，在 `tests/test_match.py` 加真实标题。
 - **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」）写进 `exclude`。
 - **检查**：`python scripts/digest.py audit-match`（`--only "名字、名字"` 只看几项）把最近几天收进来的条目按「靠哪个词进来的」列出来，
   ✗ 是按现在的规则已经不会再收的。每组看一眼标题，有不相关的就收紧那个词；误收已经上了版面的，

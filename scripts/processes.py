@@ -64,8 +64,8 @@ COMPONENTS = {
                "what": "digest.filter_entries：作品名を除いて比べる。転載・題名の切れ端も 1 件に"},
     "match": {"kind": "rule", "name": "match / exclude", "spec": "部分一致（空白・大小無視）· re: は正規表現",
               "what": "items.yaml の match にある語がタイトルか要約にないと収めない（digest.match_hit）"},
-    "spam": {"kind": "rule", "name": "スパム判定 SPAM_PATTERNS", "spec": "漢字の間の ❌ · 在线看・高清完整・免费全集 等 · 末尾「〜网」· 網址の参数に「伴游・微信・加V」など（SPAM_URL）· exclude_sources · 収集・inbox の合併・出刊・ページ生成の 4 か所で落とす",
-             "what": "digest.is_spam：乗っ取られたサイトの成人・海賊版「在线看」ページを捨てる（作品名を詰めているので match を通ってしまう）"},
+    "spam": {"kind": "rule", "name": "スパム判定 SPAM_PATTERNS", "spec": "漢字の間の ❌ · 在线看・高清完整・免费全集 等 · 末尾「〜网」· 網址の参数に「伴游・微信・加V」など（SPAM_URL）· 末尾の「(10 桁の随機コード)」（小文字あり・大文字＋数字 3 以上）· リンクが垃圾サイトの網域（SPAM_HOSTS = unisba.ac.id）· exclude_sources · 収集・inbox の合併・整理待ち・出刊・ページ生成・おすすめ・話題度の報道量から落とす",
+             "what": "digest.is_spam：乗っ取られたサイトの垃圾ページ（成人・海賊版「在线看」、Unisba Media の「別の記事の標題 + 作品名 + 随機コード」）を捨てる（作品名を詰めているので match を通ってしまう）。AI 編集は末尾の随機コードを削るので、リンクの網域でも見る"},
     "taxonomy": {"kind": "rule", "name": "板块の対号入座 sections.yaml", "spec": "大類 8（IAB Content Taxonomy 3.1 の大類を 2026-10-19 にまとめた：作品・ゲーム・音楽・スポーツ・ショッピング・暮らし・おでかけ・その他）· 各 2 つの分け方と常用の値 · ゲームを先に（prio）、あとは上から先に当たった語 · 旧い 17 板块の名前は LEGACY で大類へ · 同じ板块に媒体 2 つ以上 = 小分類「シリーズ」",
                  "what": "維基データの説明・名前の語で板块と小分類を推す（taxonomy.classify / guess_subs、ウィザードも同じ表）。新しい板块は臨時に作らない、当たらなければ「その他」"},
     "lang": {"kind": "rule", "name": "言語違いの同じニュース lang.dedupe", "spec": "主言語 ja → 副言語 en・zh・ko（settings.languages）· 仮名 2 字 = ja・ハングル 2 字 = ko・漢字 2 字 = zh・ローマ字 3 字 = en · "
