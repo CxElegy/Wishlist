@@ -1668,13 +1668,6 @@
   "target": 720,
   "v": 3
  },
- "https://news.pchome.com.tw/newsdata/expense/pcnews/20261019/79239640452524204013_original.jpg": {
-  "w": 720,
-  "h": 540,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.373
- },
  "https://news.walkerplus.com/article/1007171/10055615_615.jpg": {
   "w": 615,
   "h": 517,
@@ -2736,12 +2729,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.8amaV8GDZZY_Hs_RiPZU8A&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.9HNkO23mU3knPnT4qSUFNg&pid=News&w=640": {
   "w": 100,
   "h": 100,
@@ -3097,6 +3084,18 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.rr7CdSR5m_tlj3vnSQtg3A&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/3be94836961e532c.webp",
+  "out": [
+   712,
+   400
+  ],
+  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.uj01IO2vWKIstFWrhgg42g&pid=News&w=1200": {
   "w": 700,
