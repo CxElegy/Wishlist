@@ -850,22 +850,49 @@
 
   // 選ぶときもツリーで：根 = メインのテーマ（選んだ条目そのもの）、枝 = 板块 → 面。メインの条目が依拠になっている面に「メイン」の札。
   // メインの面の板块を先に、ほかは板块の順。情報少なめの面はメインと比べて冷門なもの（thin）
+  // 第 3 问（test2，用户定的：推荐太多・看不清 → 重新设计）：上面是「加进去以后的样子」（1 个版面 + 目录的枝，勾一下马上变），
+  // 下面按层（作品＝维基数据确认 / 展开＝规则推定）一行一个面：勾选框・名字・只在需要时出一个札（メイン / 推定 / 情報少なめ）・找到的东西 1 行。
+  // 「推荐」不再写札：默认勾上的就是推荐的。搜索词收进最后的「详细」里
   function facetTree(plan, toggle, kwOf) {
     const pick = wdPick(), isMain = f => !!pick && (f.ev || []).some(x => x.id === pick.id);
-    const secs = uniq(plan.list.map(f => f.sec)).sort((a, b) => plan.list.some(f => f.sec === b && isMain(f)) - plan.list.some(f => f.sec === a && isMain(f)));
-    const btn = f => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.facets.includes(f.key)), onclick: () => toggle(f.key)},
-      h("span", {class: "fh"}, f.label, isMain(f) ? h("i", {class: "frec"}, "メイン") : null, f.state === "found" && !isMain(f) ? h("i", {class: "frec"}, "推荐") : null,
-        f.state === "inferred" ? h("i", {class: "frec"}, "推定") : null,
+    const on = f => S.ans.facets.includes(f.key);
+    const found = f => {
+      if (f.state === "inferred") return `推定：${(f.ev[0] || {}).title || ""}`;
+      // 条目は日本語の名前を先に、維基百科の目次の節は「（目次）」を付けて後ろに
+      const ev = [...(f.ev || [])].sort((a, b) => /章节/.test(a.desc || "") - /章节/.test(b.desc || ""));
+      const ts = uniq(ev.map(x => /章节/.test(x.desc || "") ? `${x.title}（目次）` : String(x.names?.ja || x.title || "")));
+      return ts.length ? `找到：${ts.slice(0, 2).join("、")}${ts.length > 2 ? ` 等 ${ts.length} 个` : ""}` : (f.hint || "");
+    };
+    const row = f => h("li", {}, h("label", {class: "fr" + (on(f) ? " on" : "") + (f.thin ? " thin" : "")},
+      h("input", {type: "checkbox", checked: on(f), onchange: () => toggle(f.key)}),
+      h("span", {class: "fn"}, f.label,
+        isMain(f) ? h("i", {class: "fmain"}, "メイン") : null,
+        f.state === "inferred" ? h("i", {}, "推定") : null,
         f.thin ? h("i", {}, THIN_TAG) : null),
-      f.thin ? h("small", {}, THIN_NOTE) : null,
-      h("small", {}, f.state === "inferred" ? `推定：${f.ev[0].title}` : f.ev?.length ? `依据：${f.ev.slice(0, 2).map(x => x.title + (x.desc ? `（${x.desc}）` : "")).join("、")}` : (f.hint || "")),
-      h("small", {}, `搜索词：${kwOf(f)}`));
-    return h("div", {class: "tree facets", role: "group", "aria-label": `「${S.name}」的面`},
-      h("span", {class: "t-h"}, `「${S.name}」`, pick?.desc ? h("small", {class: "t-root"}, `メイン：${pick.title}（${pick.desc}）`) : null),
-      h("ul", {}, secs.map(sec => h("li", {class: "t-sec", style: `--sc:${secOf(sec).color || "#1A1C22"}`},
-        h("b", {class: "t-tag"}, secOf(sec).ja),
-        h("ul", {}, plan.list.filter(f => f.sec === sec).sort((a, b) => isMain(b) - isMain(a)).map(f => h("li", {class: "t-it"}, btn(f))))))),
-      plan.missing?.length ? h("small", {class: "t-root"}, `没找到的面：${plan.missing.join("、")}（${Object.keys(MEDIA).length} 个面全部查过：作品 ${Object.values(LAYER).filter(x => x === "作品").length} ＋ 展开 ${Object.values(LAYER).filter(x => x === "展開").length}）`) : null);
+      h("small", {}, found(f) + (f.thin ? ` · ${THIN_NOTE}` : ""))));
+    const groups = plan.type === "media"
+      ? [["作品", "维基数据里确认有的作品"], ["展開", "按规则推定的周边・活动"]].map(([k, note]) => [k, note, plan.list.filter(f => f.layer === k)])
+      : [["", "", plan.list]];
+    const fs = chosenFacets(), main = fs.length ? facetOf(mainFacet()) : null;
+    const branches = fs.length ? mediaOf(fs) : [];
+    const sub = main ? firstSub(main.sec, withSeries(main.sec, facetSubs(main), fs.filter(f => f.sec === main.sec).length)) : "";
+    // 加进去以后：作品 › シリーズ › 「ちいかわ」└ マンガ · アニメ …
+    const preview = h("div", {class: "fprev", style: `--sc:${main ? secOf(main.sec).color || "#1A1C22" : "#1A1C22"}`},
+      h("span", {class: "fp-h"}, "加进去以后"),
+      main ? h("div", {class: "fp-path"}, h("b", {class: "t-tag"}, secOf(main.sec).ja), sub ? h("span", {}, `› ${sub}`) : null)
+           : h("div", {class: "fp-path"}, "（一个都没勾）"),
+      main ? h("div", {class: "fp-st"}, h("b", {}, S.name), h("small", {}, "版面 1 个")) : null,
+      branches.length >= 2 ? h("ul", {class: "fp-br"}, branches.map(b => h("li", {}, b))) : null,
+      main ? h("small", {class: "fp-note"}, branches.length >= 2 ? "勾的面在目录里是这个版面下面的枝，新闻都收进同一个版面" : "") : null);
+    const kws = h("details", {class: "fkw"}, h("summary", {}, "每个面加的搜索词"),
+      h("ul", {}, plan.list.filter(on).map(f => h("li", {}, h("b", {}, f.label), `：${kwOf(f)}`))));
+    return h("div", {class: "facets2", role: "group", "aria-label": `「${S.name}」的面`},
+      preview,
+      groups.filter(g => g[2].length).map(([k, note, list]) => h("section", {class: "fgrp"},
+        k ? h("h4", {}, k, h("small", {}, note)) : null,
+        h("ul", {}, list.sort((a, b) => isMain(b) - isMain(a)).map(row)))),
+      plan.missing?.length ? h("p", {class: "fmiss"}, `没找到：${plan.missing.join("、")}（${Object.keys(MEDIA).length} 个面都查过）`) : null,
+      kws);
   }
   // 面：全部列出，有依据的默认勾上（依据写在下面）。勾了几个就放进几个板块
   function askFacets() {
@@ -876,10 +903,14 @@
                           S.auto.facets = false; delete S.ans.focus; delete S.ans.urgent; applyFacets(); draw(); };
     const kwOf = f => uniq([...(f.titles || []), ...(f.kw || []).slice(0, 2).map(w => `${S.name} ${w}`)]).slice(0, 3).join(" / ");
     return h("div", {class: "q"}, h("span", {class: "no"}, no()),
-      h("h3", {}, plan.type === "media" ? `「${S.name}」的哪几面要关注？可以多选` : `「${S.name}」关注哪几方面？可以多选`),
+      h("h3", {}, plan.type === "media" ? `「${S.name}」的版面里收哪些新闻？` : `「${S.name}」关注哪几方面？可以多选`),
       h("p", {}, plan.type === "media"
-        ? "作品（漫画・アニメ・映画・ドラマ・ゲーム・舞台）按维基数据确认，展开（グッズ・イベント）按规则推定，每个面只属于一种、互不重叠。找到的・推定的列在下面，没找到的写在最后。每个面会自动加一套搜索词，放进对应的板块。"
+        ? `只开「${S.name}」一个版面。勾的面 = 这个版面里收哪些新闻（多勾只是多收，不会多开版面）。找到依据的已经勾上，冷门的（情報少なめ）没勾。`
         : "名字是普通词，只用名字会收进很多不相关的新闻，所以按面来收：每个面的词和名字同时出现才收。推荐的已经勾上。"),
+      (() => { const keys = plan.list.map(f => f.key), all = keys.every(k => S.ans.facets.includes(k));
+        return keys.length >= 2 ? h("button", {type: "button", class: "selall", "aria-pressed": String(all),
+          onclick: () => { S.ans.facets = all ? [] : [...keys]; S.auto.facets = false; delete S.ans.focus; delete S.ans.urgent; applyFacets(); draw(); }},
+          all ? "取消全选" : `全选（${keys.length}）`) : null; })(),
       sim.length ? h("p", {class: "simnote"}, `已经有相近的关注项：${sim.map(i => `「${i.name}」`).join("")}。想往里加，可以在上面的列表里点「改」；也可以在后面「属于哪个」一问挂到它下面。`) : null,
       facetTree(plan, toggle, kwOf),
       nav(S.ans.facets.length > 0));
