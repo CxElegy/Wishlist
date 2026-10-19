@@ -25,7 +25,6 @@
   "https://correiodesintra.pt/products/bd546161716301": null,
   "https://dtimes.jp/post-1418966/": "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-92fda49af86e1960342cd1590aeeb716-20261016-9df79b.jpg",
   "https://finance.sina.com.cn/wm/2026-10-16/doc-inivmtxh1631265.shtml": "https://n.sinaimg.cn/front20261016ac/198/w499h499/20261016/367f-1cc9e33511af8b97b74e51f3b2e316be.jpg",
-  "https://finance.yahoo.com/markets/stocks/articles/rockstar-rebuilt-ground-gta-6-034000086.html": "https://www.bing.com/th?id=ONUT.8lhMAEXOuJ_ZQ7vwNgjGnQ&pid=News&w=1200",
   "https://gamewith.jp/zenless/583220": "https://img.gamewith.jp/article/thumbnail/rectangle_l/583220.png?date=1792397080",
   "https://geektyrant.com/news/spider-man-brand-new-day-vfx-boss-says-finishing-445-shots-in-one-week-may-have-been-a-big-mistake": "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6ad0d9f9aeb7e64efe95fd5f/1792182493226/Screenshot%2B%281375%29.webp?format=1500w",
   "https://getnews.jp/archives/3749764": "https://editor.magazinesummit.jp/_wp/wp-content/uploads/2026/10/%E3%81%BF%E3%81%A1%E3%82%87%E3%81%B1%E5%90%89%E6%9D%91%E3%81%AE%E3%83%9E%E3%83%96%E3%83%9E%E3%83%96TV%E3%83%A1%E3%82%A4%E3%83%B3.jpg",
@@ -66,6 +65,7 @@
   "https://www.koreareport.co.kr/news/articleView.html?idxno=53623": "https://cdn.koreareport.co.kr/news/photo/202610/53623_56651_5039.jpg",
   "https://www.mito-hollyhock.net/news/p=55367/": "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg",
   "https://www.mrjjxw.com/articles/2026-10-18/4607822.html": "https://image.mrjjxw.com/uploads/articles/thumbnails/1923427/open-uri20261018-19778-v7mba5.x_large.jpg",
+  "https://www.msn.com/en-gb/gaming/pc-games/gta-6-alternative-surfaces-as-pc-users-say-there-s-no-reason-to-starve/ar-AA2fzHLh": "https://www.bing.com/th?id=ONUT.j-482YLEFQTC-WJuqY8vXw&pid=News&w=1200",
   "https://www.msn.com/en-us/entertainment/celebrities/steve-rogers-has-a-new-logo-in-avengers-doomsday-and-it-isn-t-the-shield/ar-AA2f9OyH": "https://www.bing.com/th?id=ONUT.ZfVoV7H40irv_TP60yWsuQ&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/gta-6-can-you-cheat-on-someone-with-a-video-game-character/ar-AA2evRZi": "https://www.bing.com/th?id=ONUT.G_QUaeI2vPBTSJEUU3WFJg&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/i-played-chainsaw-man-op-on-piano/vi-AA2evs2F": "https://www.bing.com/th?id=ONUT.uj01IO2vWKIstFWrhgg42g&pid=News&w=1200",
@@ -1021,6 +1021,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-10-19",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.j-482YLEFQTC-WJuqY8vXw&pid=News&w=1200",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "gamingbible.com on MSN",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "GTA 6 alternative surfaces as PC users say there's no reason to starve",
+   "url": "https://www.msn.com/en-gb/gaming/pc-games/gta-6-alternative-surfaces-as-pc-users-say-there-s-no-reason-to-starve/ar-AA2fzHLh",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "三星手机",
    "date": "2026-10-19",
    "hits": [
@@ -1053,7 +1074,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "ILLIT",
    "date": "2026-10-19",
    "hits": [],
@@ -1174,27 +1195,6 @@
    ],
    "title": "GTA 6: Can you cheat on someone with a video game character?",
    "url": "https://www.msn.com/en-us/news/other/gta-6-can-you-cheat-on-someone-with-a-video-game-character/ar-AA2evRZi",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 2,
-   "because": "GTA 6",
-   "date": "2026-10-18",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.8lhMAEXOuJ_ZQ7vwNgjGnQ&pid=News&w=1200",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Yahoo Finance",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "Rockstar Rebuilt From Ground Up for GTA 6: Will Wall Street Buy It Nov. 19?",
-   "url": "https://finance.yahoo.com/markets/stocks/articles/rockstar-rebuilt-ground-gta-6-034000086.html",
    "words": [],
    "work": "GTA 6"
   },
@@ -1978,7 +1978,7 @@
    9
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
@@ -1986,7 +1986,7 @@
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
