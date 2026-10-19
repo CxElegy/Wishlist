@@ -1147,6 +1147,7 @@ items:
       - {subject: "Vaundy", why: "Vaundy（Wikidata の代表画像）", image: "emblems/vaundy-vaundy.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/Vaundy%202025.jpg?width=500", page: "https://commons.wikimedia.org/wiki/File:Vaundy_2025.jpg", shape: "cutout"}
       - {subject: "Vaundy 1", why: "Vaundy（YouTube の動画のサムネイル）", image: "emblems/vaundy-vaundy-1.webp", source: "https://i.ytimg.com/vi/NuPVr1BxqU8/hq1.jpg", page: "https://www.youtube.com/watch?v=NuPVr1BxqU8", shape: "cutout"}
       - {subject: "Vaundy 2", why: "Vaundy（YouTube の動画のサムネイル）", image: "emblems/vaundy-vaundy-2.webp", source: "https://i.ytimg.com/vi/NuPVr1BxqU8/hq3.jpg", page: "https://www.youtube.com/watch?v=NuPVr1BxqU8", shape: "cutout"}
+      - {subject: "Vaundy 6", why: "Vaundy（YouTube の動画のサムネイル）", image: "emblems/vaundy-vaundy-6.webp", source: "https://i.ytimg.com/vi/7HgJIAUtICU/hq2.jpg", page: "https://www.youtube.com/watch?v=7HgJIAUtICU", shape: "cutout"}
     type: event
     section: "演出"
     size: S
