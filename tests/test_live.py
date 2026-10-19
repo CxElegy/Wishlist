@@ -100,6 +100,7 @@ class EditBatches(unittest.TestCase):
         run = d / "run.json"
         run.write_text(json.dumps({"start": 1, "batch": 0}), encoding="utf-8")
         with mock.patch.object(digest, "INBOX_DIR", d), mock.patch.object(digest, "LIVE_EDIT_FILE", run), \
+                mock.patch.object(digest, "undesigned", lambda *a: []), \
                 mock.patch.object(runlog, "add", lambda *a, **k: None):
             self.assertEqual(digest.edit_next(), ("NEXT", "B"))              # 整理待ちの多い順に 1 つずつ
             self.assertEqual(json.loads(run.read_text())["current"], "B")
