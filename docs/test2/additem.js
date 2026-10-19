@@ -1443,7 +1443,7 @@
       const series = first && (first.values || []).map(vOf).includes("シリーズ") ? {[first.id]: "シリーズ"} : {};
       try {
         const rp = await fetch(`${CFG.url}/rest/v1/rpc/submit_item`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"},
-          body: JSON.stringify({p_action: "add", p_name: np.name, p_config: {type: d.type, section: d.section, subs: {...d.subs, ...series},
+          body: JSON.stringify({p_account: window.WL_ACCOUNT, p_action: "add", p_name: np.name, p_config: {type: d.type, section: d.section, subs: {...d.subs, ...series},
             keywords: names.slice(0, 8), match: names, news_langs: d.news_langs, size: "M",
             notes: `维基数据：${np.title}${np.desc ? `（${np.desc}）` : ""}。设置页加「${name}」时一起加的上级系列。`}})});
         if (!rp.ok) { const err = await rp.json().catch(() => ({})); sayMsg("上级系列没存上：" + (err.message || rp.status), "err"); btn.disabled = false; return; }
@@ -1452,14 +1452,14 @@
     try {
       const r = await fetch(`${CFG.url}/rest/v1/rpc/submit_item`, {method: "POST",
         headers: {apikey: CFG.key, "Content-Type": "application/json"},
-        body: JSON.stringify({p_action: S.mode, p_name: name, p_config: config})});
+        body: JSON.stringify({p_account: window.WL_ACCOUNT, p_action: S.mode, p_name: name, p_config: config})});
       if (r.ok) {
         // 下级（每个面一个版面）：主项之后按顺序提交（处理时上级已经在了）
         const kids = (S.kids || []).filter(x => x.on && x.name && !CFG.items.some(i => i.name === x.name));
         const done = [];
         for (const x of kids) {
           const rr = await fetch(`${CFG.url}/rest/v1/rpc/submit_item`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"},
-            body: JSON.stringify({p_action: "add", p_name: x.name, p_config: {...x.config, parent: name}})}).catch(() => null);
+            body: JSON.stringify({p_account: window.WL_ACCOUNT, p_action: "add", p_name: x.name, p_config: {...x.config, parent: name}})}).catch(() => null);
           if (rr?.ok) done.push(x.name);
         }
         // 同じ系列のほかのもの（選んだぶん）：それぞれ自分の板块に。系列が関注清单にある（か今一緒に足した）ならその下級
@@ -1467,7 +1467,7 @@
           if (CFG.items.some(i => i.name === r.name) || done.includes(r.name)) continue;
           const names = uniq([r.name, ...Object.values(r.names), ...(r.aliases || [])]).slice(0, 10);
           const rr = await fetch(`${CFG.url}/rest/v1/rpc/submit_item`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"},
-            body: JSON.stringify({p_action: "add", p_name: r.name, p_config: {type: KINDS[secOf(r.sec).kind]?.type || "product", section: r.sec, subs: r.subs,
+            body: JSON.stringify({p_account: window.WL_ACCOUNT, p_action: "add", p_name: r.name, p_config: {type: KINDS[secOf(r.sec).kind]?.type || "product", section: r.sec, subs: r.subs,
               parent: relParent(r) || undefined, keywords: names.slice(0, 8), match: names.filter(n => n.length >= 3), news_langs: d.news_langs, size: "M",
               notes: `维基数据：${r.title}（${r.desc}）。设置页加「${name}」时一起加的同系列。`}})}).catch(() => null);
           if (rr?.ok) done.push(r.name);
@@ -1503,9 +1503,9 @@
   const eta = () => INSTANT ? "马上" : "下次更新时（最多 2 小时）";
   function loadQueue() {
     if (!CFG.url || !CFG.key) return;
-    fetch(`${CFG.url}/rest/v1/rpc/list_item_requests`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"}, body: "{}"})
+    fetch(`${CFG.url}/rest/v1/rpc/list_item_requests`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"}, body: JSON.stringify({p_account: window.WL_ACCOUNT})})
       .then(r => r.ok ? r.json() : []).then(list => {
-        list = (list || []).filter(x => !CFG.since || new Date(x.created_at) >= new Date(CFG.since));   // test2 を始める前（test1）の依頼は出さない
+        list = list || [];
         queueList.replaceChildren(...(list.length ? [h("li", {class: "qh"}, "最近提交的（自动刷新）")] : []), ...list.map(x => {
           const [cls, text] = progress(x);
           return h("li", {}, h("b", {}, x.name), h("span", {}, ` · ${x.action === "edit" ? "修改" : "新增"} · ${ago(x.created_at)}`),

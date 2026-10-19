@@ -33,6 +33,7 @@ import zoneinfo
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import runlog  # noqa: E402
+import sitedir  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 STATE = ROOT / "state" / "gate.json"
@@ -236,7 +237,8 @@ def edit_mode(env=None):
         url, key = livestatus._db()
         if not (url and key) or env is not os.environ:
             return "run"
-        req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_get", data=b"{}", method="POST",
+        req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_get", method="POST",
+                                     data=json.dumps({"p_account": sitedir.NAME}).encode("utf-8"),
                                      headers={"apikey": key, "Content-Type": "application/json"})
         return (json.loads(urllib.request.urlopen(req, timeout=15).read() or b"{}") or {}).get("mode") or "run"
     except Exception:  # noqa: BLE001

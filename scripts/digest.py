@@ -720,9 +720,13 @@ def pages_url(settings):
 
 
 def load_wishlist():
+    """愿望清单（test1・test2 で共通の自分のもの）。watch（どの版面のニュースから来たか）は今の関注清单にある版面だけ残す：
+    test1 の版面（星巴克马克杯…）を指したまま「版面 →」の行き止まりリンクや「○○のほかのニュース」の推薦を出さない（読むだけ、書き戻さない）。"""
     if not WISHLIST_FILE.exists():
         return []
-    return (yaml.safe_load(WISHLIST_FILE.read_text(encoding="utf-8")) or {}).get("wishlist") or []
+    wishes = (yaml.safe_load(WISHLIST_FILE.read_text(encoding="utf-8")) or {}).get("wishlist") or []
+    names = {i["name"] for i in (yaml.safe_load(ITEMS_FILE.read_text(encoding="utf-8")) or {}).get("items") or []}
+    return [w if not w.get("watch") or w["watch"] in names else {k: v for k, v in w.items() if k != "watch"} for w in wishes]
 
 
 PICK_COUNT = 5       # 「我会喜欢？」一批几条（1 大 + 4 小正好排满）
@@ -911,8 +915,28 @@ def _like_key(keyword):
     return str(keyword).split("|")[0].strip().lower()
 
 
+# アカウントごとの表（db/accounts.sql）：読む・消す・直すときは自分のアカウントの行だけ、書くときは account を付ける
+ACCOUNT_TABLES = {"feedback", "sizes", "nav_schemes", "item_requests", "photo_inbox", "live_status", "news", "stories", "price_history"}
+
+
+def scope_account(path, body=None, method=None, account=None):
+    """supabase() の path・body に自分のアカウント（sitedir.NAME）を入れる。表がアカウントごとでなければそのまま。"""
+    account = account or sitedir.NAME
+    table, _, query = path.partition("?")
+    if table not in ACCOUNT_TABLES:
+        return path, body
+    if body is not None and (method or "POST") == "POST":   # 書く：行に account、on_conflict に account
+        body = [{**r, "account": account} for r in body] if isinstance(body, list) else {**body, "account": account}
+        query = re.sub(r"on_conflict=", "on_conflict=account,", query)
+    else:                                                 # 読む・消す・直す：自分の行だけ
+        query = f"account=eq.{account}" + (f"&{query}" if query else "")
+    return f"{table}?{query}" if query else table, body
+
+
 def supabase(path, body=None, prefer=None, method=None):
-    """用 secret key（SUPABASE_SERVICE_KEY）调 Supabase 的数据接口。没配置时返回 None。"""
+    """用 secret key（SUPABASE_SERVICE_KEY）调 Supabase 的数据接口。没配置时返回 None。
+    アカウントごとの表は自分のアカウントの行だけを読み書きする（scope_account）。"""
+    path, body = scope_account(path, body, method)
     settings, _ = load_config()
     base, key = (settings.get("supabase_url") or "").rstrip("/"), os.environ.get("SUPABASE_SERVICE_KEY")
     if not (base and key):
@@ -1390,6 +1414,13 @@ def load_feedback():
         if r.get("url") and r.get("vote") in (-1, 0, 1):
             latest[r["url"]] = r
     return [r for r in latest.values() if r["vote"]]
+
+
+def current_picks(items):
+    """「気になるかも？」の候補のうち、今の関注清单にない版面（test1 の版面）に結び付いたものは出さない。
+    推薦は収集のたびに作り直すので、これは作り直す前に残っている古い候補の掃除（作り直した後は何も落とさない）。"""
+    names = {i["name"] for i in items}
+    return [p for p in (load_json(RECOMMEND_FILE) or {}).get("picks", []) if not p.get("work") or p["work"] in names]
 
 
 SIZE_STORIES = {"S": 3, "M": 5, "L": 8}   # 篇幅 → 每期最多几条报道（网页上直接显示多高见 render.SIZE_HEIGHT）
@@ -2267,10 +2298,11 @@ def write_page():
     adm = admin_data(items, issues, analysis, tz, updated)  # 管理ページの数字（「待ち行列」は簡報の「更新中」の帯にも使う）
     generated = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     html_ = render.render(issues, settings.get("nav_style", "line"), order, updated,
-                          load_wishlist(), (load_json(RECOMMEND_FILE) or {}).get("picks", []),
+                          load_wishlist(), current_picks(items),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
                           {i["name"]: render.template_for(i) for i in items}, themes,
-                          (load_json(RECOMMEND_FILE) or {}).get("taste", []), heat_scores,
+                          [x for x in (load_json(RECOMMEND_FILE) or {}).get("taste", [])
+                           if not str(x[0]).startswith(WORK_KEY) or str(x[0])[len(WORK_KEY):] in {i["name"] for i in items}], heat_scores,
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
                           {i["name"]: i["like_fx"] for i in items if i.get("like_fx")},
                           {n: v for n, v in own_sub.items() if v}, settings.get("nav_hide", render.NAV_HIDE),
@@ -2289,12 +2321,12 @@ def write_page():
         [{"name": i["name"], "motif": render.template_for(i), "theme": i.get("theme")} for i in items], updated), encoding="utf-8")
     wishes = load_wishlist()
     vers = {}
-    if wishes:
-        works = render.collect(issues, [i["name"] for i in items], langs)
-        finds = [x for x in (load_json(DISCOVER_FILE) or {}).get("entries", []) if x.get("wish")]
-        wish_html, vers["wishlist"] = render.stamp(render.render_wishlist(wishes, works, updated, finds,
-                                                                        {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), updated)
-        (DOCS_DIR / "wishlist.html").write_text(wish_html, encoding="utf-8")
+    # 愿望清单が空でも（新しいアカウント）ページは作る：写真を送って最初の 1 件を足す入口になる
+    works = render.collect(issues, [i["name"] for i in items], langs)
+    finds = [x for x in (load_json(DISCOVER_FILE) or {}).get("entries", []) if x.get("wish")]
+    wish_html, vers["wishlist"] = render.stamp(render.render_wishlist(wishes, works, updated, finds,
+                                                                    {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), updated)
+    (DOCS_DIR / "wishlist.html").write_text(wish_html, encoding="utf-8")
     (DOCS_DIR / "settings.html").write_text(render.render_settings(
         [{"name": i["name"], "section": section_of(i), "subtitle": i.get("subtitle", ""),
           "size": load_sizes().get(i["name"], "M"),
@@ -2939,7 +2971,8 @@ def edit_control():
     url, key = livestatus._db()
     if not (url and key):
         return {"mode": "run", "redo": []}
-    req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_get", data=b"{}", method="POST",
+    req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_get", method="POST",
+                                 data=json.dumps({"p_account": sitedir.NAME}).encode("utf-8"),
                                  headers={"apikey": key, "Content-Type": "application/json"})
     try:
         d = json.loads(urllib.request.urlopen(req, timeout=15).read() or b"{}") or {}
@@ -2955,7 +2988,7 @@ def set_edit_control(mode=None, redo_clear=None):
     url, key = livestatus._db()
     if not (url and key):
         return
-    body = json.dumps({"p_mode": mode, "p_redo_add": None, "p_redo_clear": redo_clear}, ensure_ascii=False).encode("utf-8")
+    body = json.dumps({"p_account": sitedir.NAME, "p_mode": mode, "p_redo_add": None, "p_redo_clear": redo_clear}, ensure_ascii=False).encode("utf-8")
     req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_set", data=body, method="POST",
                                  headers={"apikey": key, "Content-Type": "application/json"})
     try:

@@ -7,6 +7,7 @@ description: 把用户喜欢的东西加进愿望清单（wishlist.yaml），网
 
 数据在仓库根目录的 `wishlist.yaml`，图片放在 `docs/test2/wishlist/`。推送到 `main` 后，
 工作流会自动重新生成网页（子页面 `docs/test2/wishlist.html`，主页报头右上角和左侧目录底部有入口）并在 Discord 发一条带大图的通知。
+这是现在的 account（test2）的愿望清单；test1 的在 `archive/test1/wishlist.yaml`，不动。还空着时是 `wishlist: []`，加第一件时换成列表。
 
 ## 加一件
 

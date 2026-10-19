@@ -1569,7 +1569,7 @@ VOTE_JS = """
   // 押した瞬間に画面を変える（楽観的更新）。保存は裏で、同じ記事の票は順番に送る。失敗したら元に戻す
   const saved = { ...mine }, queue = {}, touched = new Set();
   const send = (data, v) => fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/feedback',
-    { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v }), keepalive: true })
+    { method: 'POST', headers, body: JSON.stringify({ ...data, vote: v, account: window.WL_ACCOUNT || 'test1' }), keepalive: true })
     .then(async r => { if (!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0, 120)); });
   const fxOf = el => (el.closest('[data-fx]') || {}).dataset?.fx || 'pop';   // 版面のテーマの演出（likefx.py）
   const embOf = el => {   // いまその作品の版面に出ている小元素の画像（👍 の演出で一緒に飛ぶ）
@@ -1621,7 +1621,7 @@ VOTE_JS = """
   document.querySelectorAll('.sec .brief li').forEach(li => { const a = li.querySelector('a'); if (a) story(a, li, li); });
   new Set(boxes.map(b => b[1].url)).forEach(paint);
   // 数据库里「我点过的票」为准：换浏览器、换手机、清了缓存也显示成按过的样子（db/my_votes.sql）
-  fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/rpc/my_votes', { method: 'POST', headers, body: '{}' })
+  fetch(cfg.url.replace(/\\/$/, '') + '/rest/v1/rpc/my_votes', { method: 'POST', headers, body: JSON.stringify({ p_account: window.WL_ACCOUNT || 'test1' }) })
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(rows => {
       const old = mine;
@@ -1746,12 +1746,13 @@ def render_settings(items, db, updated, schemes=()):
                         f'<span class="st" aria-live="polite"></span></div>')
     data = {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
             "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": taxonomy.for_page(),
-            "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items], "since": sitedir.SINCE}
+            "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items]}
     cfg = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+{_account_tag()}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>设置</title>
@@ -1926,8 +1927,8 @@ def render_settings(items, db, updated, schemes=()):
 (() => {{
   const CFG = JSON.parse(document.getElementById("wl-cfg").textContent);
   const rpc = (fn, body) => fetch(`${{CFG.url}}/rest/v1/rpc/${{fn}}`, {{
-    method: "POST", headers: {{apikey: CFG.key, "Content-Type": "application/json"}}, body: JSON.stringify(body || {{}}),
-  }});
+    method: "POST", headers: {{apikey: CFG.key, "Content-Type": "application/json"}}, body: JSON.stringify({{...(body || {{}}), p_account: window.WL_ACCOUNT}}),
+  }});   // どの関数も自分のアカウント（db/accounts.sql）
   const show = (row, v) => row.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
   const say = (row, text, cls) => {{ const st = row.querySelector(".st"); st.textContent = text; st.className = "st " + (cls || ""); }};
   if (!CFG.url || !CFG.key) {{
@@ -2164,7 +2165,7 @@ SNAP_JS = """
   }));
   const say = (t, cls) => { st.textContent = t; st.className = 'st ' + (cls || ''); };
   const rpc = (fn, body) => fetch(CFG.url.replace(/\\/$/, '') + '/rest/v1/rpc/' + fn,
-    { method: 'POST', headers: { apikey: CFG.key, 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+    { method: 'POST', headers: { apikey: CFG.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ ...(body || {}), p_account: window.WL_ACCOUNT }) });
   const shrink = (im, side, q) => {
     const k = Math.min(1, side / Math.max(im.naturalWidth, im.naturalHeight));
     const c = document.createElement('canvas');
@@ -3140,7 +3141,7 @@ NAV_JS = """
     if (idx !== curIdx || force) {   // 选中项变了才动所有条目的样式
       const on = pills[idx], k = on && slotOf.has(on) ? slotOf.get(on) : -1;
       // 通り過ぎた駅＝目次（線路）の上で読んでいる駅より前の駅。版面の番号（data-n）は目次の並び（板块 → 小分類）と違うことがあるので、
-      // 目次の並びで決める（番号で決めていたら、シリーズの「ちいかわ 漫画」が前にあるのに白いままだった）
+      // 目次の並びで決める（番号で決めていたら、目次で前にある駅が白いままのことがあった）
       pills.forEach((p, i) => {
         p.classList.toggle('on', p === on);
         p.classList.toggle('past', !!on && num(p) > 0 && i < idx);
@@ -3684,7 +3685,7 @@ BUSY_JS = """
 (function(){
   var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen)||0,live=[],MIN=60000;
   function read(){if(document.hidden||!B.url||!B.key)return;
-    fetch(B.url+'/rest/v1/rpc/live_boards',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:'{}'})
+    fetch(B.url+'/rest/v1/rpc/live_boards',{method:'POST',headers:{apikey:B.key,'Content-Type':'application/json'},body:JSON.stringify({p_account:window.WL_ACCOUNT})})
       .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){live=l||[];paint();}).catch(function(){});}
   function left(eta,now){var l=eta-now;return l>MIN?'あと約 '+Math.ceil(l/MIN)+' 分':'まもなく反映';}
   function paint(){var now=Date.now(),on={};
@@ -3718,9 +3719,14 @@ def busy_plan(names=(), db=None):
     return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "", "ids": {n: _wid(n) for n in names}}
 
 
+def _account_tag():
+    """網页が Supabase に渡すアカウント（db/accounts.sql の p_account）。ページごとの JS は window.WL_ACCOUNT を読む。"""
+    return f'<script>window.WL_ACCOUNT={json.dumps(sitedir.NAME)};</script>'
+
+
 def _live_head(page):
-    """<head> に入れる：自分の指紋（digest.write_page の stamp が VER_MARK を置き換える）と帯・印の CSS。"""
-    return f'<meta name="wl-ver" data-page="{e(page)}" content="{VER_MARK}"><style>{LIVE_CSS}</style>'
+    """<head> に入れる：自分の指紋（digest.write_page の stamp が VER_MARK を置き換える）と帯・印の CSS・アカウント。"""
+    return f'<meta name="wl-ver" data-page="{e(page)}" content="{VER_MARK}"><style>{LIVE_CSS}</style>{_account_tag()}'
 
 
 def stamp(html_, *volatile):
@@ -5098,7 +5104,7 @@ ADMIN_PAGE_JS = """
         else{msg.className='nx-msg ng';msg.textContent=(x&&x.msg||'起こせませんでした')+(left?' · あと '+left+' 分で押せます':'');}
         b.textContent=b.dataset.label||'今すぐ実行';setTimeout(function(){b.disabled=false;},left?left*60000:5000);})
       .catch(function(){msg.className='nx-msg ng';msg.textContent='起こせませんでした（データベースに届かない）';b.textContent=b.dataset.label||'今すぐ実行';b.disabled=false;});});
-  function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:'{}'})
+  function rpc(fn){return fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},body:JSON.stringify({p_account:window.WL_ACCOUNT})})
     .then(function(r){if(!r.ok)throw 0;return r.json();});}
   var ST={pending:['待ち','wait'],done:['反映済み','good'],skipped:['見送り','bad'],'new':['受付','wait'],exported:['認識待ち','wait']};
   // いま動いているもの：live_status()（収集・小元素の補完が版面ごとに書く）を 30 秒ごとに
@@ -5116,7 +5122,6 @@ ADMIN_PAGE_JS = """
   var reqs=document.getElementById('reqs'),photos=document.getElementById('photos');
   function loadDb(){
   rpc('list_item_requests').then(function(list){
-    list=(list||[]).filter(function(x){return !CFG.since||new Date(x.created_at)>=new Date(CFG.since);});
     reqs.textContent='';if(!list||!list.length){fail(reqs,'依頼はありません。');return;}
     var ul=el('ul','qlist');list.forEach(function(x){var li=el('li');
       li.appendChild(el('b',null,(x.action==='edit'?'修正：':'追加：')+x.name));var s=ST[x.status]||[x.status,'idle'];li.appendChild(badge(s[0],s[1]));
@@ -5146,7 +5151,7 @@ def render_admin(data, db, updated):
     db = {url, key}（公開の publishable key。依頼と写真の受付をページを開いたときに読む）。"""
     cfg = json.dumps({"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
                       "repo": (db or {}).get("repo") or "CxElegy/Wishlist", "flows": ADMIN_WORKFLOWS,
-                      "tz": (db or {}).get("tz") or "Asia/Tokyo", "since": sitedir.SINCE},
+                      "tz": (db or {}).get("tz") or "Asia/Tokyo"},
                      ensure_ascii=False).replace("</", "<\\/")
     return _section_marks(f"""<!doctype html>
 <html lang="ja">
@@ -5175,7 +5180,7 @@ def render_admin(data, db, updated):
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
 <section class="panel" id="editdiff"><h2 class="sh"><span>AI 編集の前後</span><small>最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事</small></h2>{_admin_edit_diff(data.get("edit_diff"))}</section>
 <section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
-<section class="panel" id="emblem-ex"><h2 class="sh"><span>小元素の判断の例</span><small>本物の画像で 前 → 後 · 赤枠 = 使わなかった画像 · 緑枠 = 使った画像 · 規則の全部は「全体の構成 → 小元素の自動補完」</small></h2>{processes.examples_panel()}</section>
+<section class="panel" id="emblem-ex"><h2 class="sh"><span>小元素の判断の例</span><small>本物の画像で 前 → 後 · 赤枠 = 使わなかった画像 · 緑枠 = 使った画像 · 規則の全部は「全体の構成 → 小元素の自動補完」</small></h2>{processes.examples_panel({r.get("name") for r in data.get("items") or []})}</section>
 <section class="panel" id="procs"><h2 class="sh"><span>全体の構成（詳しい図）</span><small>場所ごとに全部の部品と矢印を 1 枚に · 大きいので、まずは一番上の「しくみの全体図」を</small></h2>{processes.render()}</section>
 <section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>
 <div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>

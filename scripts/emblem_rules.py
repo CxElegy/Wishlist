@@ -98,7 +98,7 @@ def rules():
         {"stage": STAGES[6], "title": "全身か胸像か", "by": "rule", "code": "emblem.want_full",
          "rule": "1 枚ごとの framing → 版面の emblem_framing → 絵のキャラで元が透明背景の公式の立ち絵なら「全身で測ってから上半身」→ それ以外（写真・コマ・場面）は顔で胸像"},
         {"stage": STAGES[6], "title": "縦に立った人の形だけ測る", "by": "rule", "code": "emblem.STAND_RATIO",
-         "rule": f"輪郭の高さが幅の {emblem.STAND_RATIO} 倍未満（寝そべり・横長のマスコット・場面：ぐでたま）は測らず切らず、全体をふつうの高さで。"
+         "rule": f"輪郭の高さが幅の {emblem.STAND_RATIO} 倍未満（寝そべり・横長のマスコット・場面）は測らず切らず、全体をふつうの高さで。"
                  "網页でも全身の高さは上限（200px・スマホ 130px）まで"},
         {"stage": STAGES[6], "title": "全身で測ってから上半身に切る", "by": "rule", "code": "emblem.bust_from_body（BUST_CUT）",
          "rule": f"全身のままだと小さく貼ったとき顔が見えない。目・足の裏（全身で測った目印）で、目から足の裏の {emblem.BUST_CUT:.0%} の高さ（腰のあたり）で切る。"
@@ -108,7 +108,7 @@ def rules():
                  f"高さ÷幅が {0.5} 未満の横長は、高さでなく幅で大きく（220px・スマホ 130px）。縁まで絵がある写真・ポスターは今まで通りカード"},
         {"stage": STAGES[6], "title": "上半身に切るのはふつうの体つきだけ", "by": "model", "code": "emblem.real_body（YOLOv8m-pose・HIP_MAX）",
          "rule": f"姿勢モデルで腰の高さを測り、頭のてっぺん〜足の裏の {emblem.HIP_MAX:.0%} より上ならふつうの人の体つき（実測 43〜52%）→ 上半身に切る。"
-                 f"下なら頭の大きい体つき（3D のデフォルメ・ちびキャラ）、目印の確かさが {emblem.BODY_CONF} 未満なら人の体でない（動物・マスコット：あつ森の住民、ポチタ）→ 全身のまま。"
+                 f"下なら頭の大きい体つき（3D のデフォルメ・ちびキャラ）、目印の確かさが {emblem.BODY_CONF} 未満なら人の体でない（動物・マスコット）→ 全身のまま。"
                  f"人が見つからないときは顔の高さが全体の {emblem.FACE_REAL:.0%} 以下ならふつうの体つき。モデルがないとき（Actions）は版面のほかの小元素の多いほうに合わせる"},
         {"stage": STAGES[6], "title": "全身の背の高さをそろえる", "by": "model", "code": "emblem.body_marks（YOLOv8m-pose）/ render._body_len",
          "rule": "目から足の裏までの長さをどのキャラも同じに（網页 116px・スマホ 74px）、足の裏を帯の線に、重心を同じ位置に。"

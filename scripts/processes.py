@@ -18,6 +18,7 @@ schedule は定時で動くものの時刻（UTC の (時, 分) のリスト。�
 
 import html
 import json
+import re
 
 e = html.escape
 
@@ -143,7 +144,7 @@ COMPONENTS = {
     "youtube": {"kind": "api", "name": "YouTube 検索ページ（ytInitialData）", "spec": "1 人 4 本 · 題名にグループ名と名前 · 직캠・fancam を先に · 動画の場面 hq1・hq2・hq3（480×360、投稿者のサムネイルは字が載るので使わない）",
                 "what": "メンバー・出演者の写真（Commons にない人）。本人確認は顔の規則"},
     "bingimg": {"kind": "api", "name": "Bing 画像検索", "spec": "一覧に載せるだけ · 自動では選ばない", "what": "出所が不確かなので目で見る"},
-    "supabase": {"kind": "api", "name": "Supabase REST / RPC", "spec": "news を 500 件ずつ upsert · my_votes · set_size",
+    "supabase": {"kind": "api", "name": "Supabase REST / RPC", "spec": "アカウントごと（account 列・p_account つきの関数、db/accounts.sql：test1 / test2 は別のアカウント）· news を 500 件ずつ upsert · my_votes · set_size",
                  "what": "投票・篇幅・依頼・写真・記事の控え"},
     "pgnet": {"kind": "api", "name": "pg_net → GitHub dispatch", "spec": "20 秒に 1 回まで", "what": "設定ページの依頼ですぐ Actions を起こす"},
     "discord": {"kind": "api", "name": "Discord Webhook", "spec": "要紧 ≤6 行 · 埋め込み ≤10 · 30 日は二重に送らない",
@@ -412,7 +413,7 @@ PROCESSES = [
             {"id": "p3", "kind": "step", "lane": "actions", "title": "話題度を計算", "uses": ["heat"]},
             {"id": "p4", "kind": "step", "lane": "actions", "title": "トップの配色", "uses": ["octree"]},
             {"id": "p4c", "kind": "step", "lane": "actions", "title": "版面の副色が鮮やかなら広い面を落ち着かせる", "x": "作品ごと",
-             "text": "「もっと見る」の背景 = 主面 + 副色 20%（漫威・GTA 6・ILLIT）", "uses": ["softalt"]},
+             "text": "「もっと見る」の背景 = 主面 + 副色 20%（例：濃い色の版面）", "uses": ["softalt"]},
             {"id": "p3l", "kind": "step", "lane": "actions", "title": "号をまたいだ言語違いを 1 本に", "x": "作品ごと",
              "text": "主言語 → 副言語の順で残す · 予定の欄は同じ日・同じラベル 1 回", "uses": ["lang"]},
             {"id": "p4b", "kind": "step", "lane": "actions", "title": "トップの記事を選ぶ", "x": "直近 7 日の全号から",
@@ -442,12 +443,12 @@ PROCESSES = [
             {"id": "l3", "kind": "step", "lane": "web", "title": "1 分ごとに version.json を見る",
              "text": "キャッシュを避けて読む（?t=時刻）。タブを表に戻したときもすぐ見る。"},
             {"id": "l4", "kind": "decision", "lane": "web", "title": "指紋が変わった？", "text": "version.json ≠ 自分の指紋",
-             "yes": "名前を挙げられる変化（AI 編集した記事の増減）があれば、下に「新しい内容があります：GTA 6、あつ森…」の帯（クリックでその版面へ）。なければ帯を出さず、静かに読み直すだけ", "no": "何もしない"},
+             "yes": "名前を挙げられる変化（AI 編集した記事の増減）があれば、下に「新しい内容があります：作品 A、作品 B…」の帯（クリックでその版面へ）。なければ帯を出さず、静かに読み直すだけ", "no": "何もしない"},
             {"id": "l5", "kind": "decision", "lane": "web", "title": "いま操作していない？",
              "text": "20 秒触っていない、またはタブが裏。入力中・流れの図を開いているあいだは待つ",
              "yes": "読み直す", "no": "待つ（帯の「今すぐ表示」で即時）"},
             {"id": "l6", "kind": "step", "lane": "web", "title": "見ていた場所のまま新しい版に",
-             "text": "読み直す前の位置（見ていた板块）に戻す。増えた記事に「たった今」を付け、帯に「更新しました：GTA 6 新着 2 件、あつ森 新着 1 件、绝区零 更新」"
+             "text": "読み直す前の位置（見ていた板块）に戻す。増えた記事に「たった今」を付け、帯に「更新しました：作品 A 新着 2 件、作品 B 新着 1 件、作品 C 更新」"
                      "（記事が増えた版面は件数、記事は同じで中身だけ変わった版面・パネルは「更新」。名前をクリックでその版面へ）。"},
             {"id": "l8", "kind": "decision", "lane": "web", "title": "裏でこの版面を作り直している？",
              "text": "版面ごとに判断。ほかの版面には帯を出さない",
@@ -740,12 +741,15 @@ def _ex_fig(f, cap, cls=""):
             f'<figcaption>{e(cap)}</figcaption></figure>')
 
 
-def examples_panel():
-    """管理ページ「小元素の判断の例」：判断ごとに、本物の画像で 前 → 後（使わなかったものは「外す」の札）。"""
+def examples_panel(names=None):
+    """管理ページ「小元素の判断の例」：判断ごとに、本物の画像で 前 → 後（使わなかったものは「外す」の札）。
+    names = 今の関注清单の名前：test2 では今ある版面の例だけ出す（test1 の版面の例は test1 の管理ページで見る）。"""
     import emblem_rules
     by_rule = {r["title"]: r for r in emblem_rules.rules()}
     cards = []
     for x in emblem_rules.EXAMPLES:
+        if names is not None and not any(n in names for n in re.split(r"\s*[·・（）()]\s*", x["item"]) if n):
+            continue
         r = by_rule[x["rule"]]
         before = "".join(_ex_fig(f, c) for f, c in x["before"])
         after = ("".join(_ex_fig(f, c, " ex-ok") for f, c in x["after"]) if x["after"]
@@ -754,6 +758,9 @@ def examples_panel():
                      f'<div class="ex-row"><div class="ex-side"><em>前</em>{before}</div><span class="ex-arrow" aria-hidden="true">→</span>'
                      f'<div class="ex-side"><em>後</em>{after}</div></div>'
                      f'<p class="ex-v">{e(x["verdict"])}<small>{e(r["rule"])}</small></p></article>')
+    if not cards:
+        return ('<p class="ex-none">いまの関注項にはまだ例がありません。判断の規則は下の「判断の一覧」、'
+                'test1 の版面の例は <a href="../test1/admin.html#emblem-ex">test1 の管理ページ</a>。</p>')
     return f'<div class="exs">{"".join(cards)}</div>'
 
 

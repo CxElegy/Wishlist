@@ -63,6 +63,17 @@ class LoadFeedback(unittest.TestCase):
                 votes = digest.load_feedback()
         self.assertEqual({r["url"]: r["vote"] for r in votes}, {"a": -1, "c": -1})
 
+    def test_rows_are_scoped_to_the_account(self):
+        """アカウントごとの表は自分の行だけ読み、書く行には account を付ける（db/accounts.sql）。"""
+        self.assertEqual(digest.scope_account("feedback?select=url", account="test2"), ("feedback?account=eq.test2&select=url", None))
+        self.assertEqual(digest.scope_account("sizes?on_conflict=item", [{"item": "a"}], account="test2"),
+                         ("sizes?on_conflict=account,item", [{"item": "a", "account": "test2"}]))
+        self.assertEqual(digest.scope_account("photo_inbox?id=eq.3", {"state": "done"}, "PATCH", account="test2"),
+                         ("photo_inbox?account=eq.test2&id=eq.3", {"state": "done"}))
+        self.assertEqual(digest.scope_account("stories?issue_date=eq.2026-10-19", None, "DELETE", account="test2")[0],
+                         "stories?account=eq.test2&issue_date=eq.2026-10-19")
+        self.assertEqual(digest.scope_account("run_log", [{"x": 1}], account="test2"), ("run_log", [{"x": 1}]))
+
 
 class VoteButtons(unittest.TestCase):
     PICK = {"title": "黒猫マグ", "url": "https://example.com/a?x=1&y=\"2\"", "source": "S", "date": "2026-10-12",
@@ -240,7 +251,7 @@ class SyncNews(unittest.TestCase):
         digest.sync_news()
         self.assertEqual(len(self.posts), 1)
         path, headers, rows = self.posts[0]
-        self.assertEqual(path, "/rest/v1/news?on_conflict=item,url")
+        self.assertEqual(path, "/rest/v1/news?on_conflict=account,item,url")
         self.assertIn("merge-duplicates", headers["prefer"])
         self.assertEqual(headers["apikey"], "sb_secret_test")
         self.assertNotIn("authorization", headers)
@@ -283,7 +294,7 @@ class SyncHistory(SyncNews):
 
     def test_stories_replace_whole_issue_once(self):
         digest.sync_stories()
-        self.assertEqual([x[0] for x in self.posts], ["/rest/v1/stories?issue_date=eq.2026-10-12", "/rest/v1/stories"])
+        self.assertEqual([x[0] for x in self.posts], ["/rest/v1/stories?account=eq.test2&issue_date=eq.2026-10-12", "/rest/v1/stories"])
         rows = self.posts[1][2]
         self.assertEqual([(r["item"], r["pos"], r["headline"]) for r in rows], [("猫用品", 0, "黑猫杯开卖"), ("猫用品", 1, "第二条")])
         self.assertEqual(rows[0]["story_date"], "2026-10-11")
@@ -379,8 +390,8 @@ class ExportPhotos(SyncNews):
             self.assertEqual((meta["status"], meta["note"]), ("纠结", "想要黑色"))
             self.assertFalse((folder / "6.jpg").exists())       # 不是 jpeg 的不导出
         patches = [(path, body) for path, _, body in self.posts if body and "state" in body]
-        self.assertIn(("/rest/v1/photo_inbox?id=eq.6", {"state": "done", "wish_name": "貓眼溫變馬克杯"}), patches)
-        self.assertIn(("/rest/v1/photo_inbox?id=eq.7", {"state": "exported"}), patches)
+        self.assertIn(("/rest/v1/photo_inbox?account=eq.test2&id=eq.6", {"state": "done", "wish_name": "貓眼溫變馬克杯"}), patches)
+        self.assertIn(("/rest/v1/photo_inbox?account=eq.test2&id=eq.7", {"state": "exported"}), patches)
 
 
 class LikeHit(unittest.TestCase):
