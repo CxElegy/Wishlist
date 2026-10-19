@@ -1689,6 +1689,15 @@ def _wish_link(wishes, cls):
             f'<small>欲しい {want} 件</small></a>')
 
 
+def _asset_ver(name):
+    """docs/ のファイルの中身の指紋（8 桁）。<script src="…?v=指紋"> にして、中身が変わったら必ず新しい版を読ませる
+    （GitHub Pages は 10 分キャッシュ、スマホのブラウザはもっと長く古い版を使い続ける）。"""
+    try:
+        return hashlib.sha1((pathlib.Path(__file__).resolve().parent.parent / "docs" / name).read_bytes()).hexdigest()[:8]
+    except OSError:
+        return "0"
+
+
 def render_settings(items, db, updated, schemes=()):
     """设置页（docs/settings.html）：改每个关注项的篇幅 S / M / L，新增 / 修改关注项。都不用口令。
     items：[{name, section, subtitle, size, fields}]（items.yaml 的顺序；fields 是网页上能改的那些字段的现值）；
@@ -1963,7 +1972,7 @@ def render_settings(items, db, updated, schemes=()):
   }});
 }})();
 </script>
-<script src="additem.js"></script>
+<script src="additem.js?v={_asset_ver("additem.js")}"></script>
 </body>
 </html>
 """
