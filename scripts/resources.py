@@ -10,6 +10,10 @@
 import os
 import pathlib
 import shutil
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import sitedir  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MB = 1024 * 1024
@@ -67,5 +71,5 @@ def dir_size(path):
 def repo_sizes(root=None):
     """リポジトリ（.git を除く作業ツリー）・公開ページ（docs/）・小元素の画像・集めた記事の大きさ（バイト）。"""
     root = pathlib.Path(root or ROOT)
-    return {"repo": dir_size(root), "pages": dir_size(root / "docs"), "emblems": dir_size(root / "docs" / "emblems"),
+    return {"repo": dir_size(root), "pages": dir_size(root / "docs"), "emblems": dir_size(root / "docs" / sitedir.NAME / "emblems"),
             "inbox": dir_size(root / "inbox"), "state": dir_size(root / "state")}

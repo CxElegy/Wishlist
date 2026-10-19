@@ -43,6 +43,7 @@ import urllib.parse
 import urllib.request
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import sitedir  # noqa: E402
 import theme  # noqa: E402
 import wikihttp  # noqa: E402
 from sources import TIMEOUT, USER_AGENT  # noqa: E402
@@ -377,7 +378,7 @@ def recrop(name):
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
-EMB_DIR = ROOT / "docs" / "emblems"   # 切り抜いた画像（網页と同じ場所に置く。倉庫は公開なので画像も公開になる）
+EMB_DIR = sitedir.SITE_DIR / "emblems"   # 切り抜いた画像（網页と同じ場所に置く。倉庫は公開なので画像も公開になる）
 
 
 SUBTITLE = 0.18   # 動画の場面の下のこの割合は字幕の帯として切る
@@ -832,7 +833,7 @@ def fit_all(name, drawn=False):
                 if inspect(_get(src))[0] == "cutout":
                     img = cand
             if img is None:
-                img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
+                img = (Image.open(sitedir.SITE_DIR / x["image"]) if x["image"].startswith("emblems/")
                        else Image.open(io.BytesIO(_get(x["image"])))).convert("RGBA")
             full = want_full(x, drawn, item.get("emblem_framing"))
             if full:
@@ -907,7 +908,7 @@ def upper_all(name):
     for x in ems:
         src = x["image"]
         try:
-            img = (Image.open(ROOT / "docs" / src) if src.startswith("emblems/") else Image.open(io.BytesIO(_get(src)))).convert("RGBA")
+            img = (Image.open(sitedir.SITE_DIR / src) if src.startswith("emblems/") else Image.open(io.BytesIO(_get(src)))).convert("RGBA")
             out, cut = upper_body(img, force=x.get("upper"))
             if not cut:
                 continue
@@ -1125,7 +1126,7 @@ def keep_framing(ems, old=(), drawn=False, item_framing=None):
             x["_framing"], x["_fixed"] = "full", True
         if "_framing" not in x:
             try:
-                img = (Image.open(ROOT / "docs" / x["image"]) if x["image"].startswith("emblems/")
+                img = (Image.open(sitedir.SITE_DIR / x["image"]) if x["image"].startswith("emblems/")
                        else Image.open(io.BytesIO(_get(x["image"]))).convert("RGBA"))
                 x["_framing"] = framing(img)
                 if x["_framing"] == "full" and (face_fit(img)[1] or upper_body(img, force=x.get("upper"))[1]):
@@ -1152,7 +1153,7 @@ def keep_framing(ems, old=(), drawn=False, item_framing=None):
         if x["_framing"] == "bust" and x["image"] not in old:
             print(f"  [取景をそろえる] {x['subject']} は胸像なので外す（ほかの多くは全身）", file=sys.stderr)
             if x["image"].startswith("emblems/"):
-                (ROOT / "docs" / x["image"]).unlink(missing_ok=True)
+                (sitedir.SITE_DIR / x["image"]).unlink(missing_ok=True)
             continue
         keep.append(x)
     return keep
@@ -1171,7 +1172,7 @@ def cut_all(name, drawn, old=()):
             src = x.get("source") or x["image"]
             x["image"] = cut_out(src, slugify(name, x["subject"]), drawn)
             from PIL import Image
-            x["_framing"] = framing(Image.open(ROOT / "docs" / x["image"]))
+            x["_framing"] = framing(Image.open(sitedir.SITE_DIR / x["image"]))
             x["source"], x["shape"] = src, "cutout"
             x.pop("crop", None); x.pop("ar", None)
             print(f"  {x['subject']} → {x['image']}", file=sys.stderr)

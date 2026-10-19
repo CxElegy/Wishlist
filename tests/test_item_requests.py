@@ -173,6 +173,8 @@ class RealItemsFile(unittest.TestCase):
     def test_every_item_can_be_edited_in_place(self):
         """真的 items.yaml：每一项改 priority 都只改到它自己。"""
         text = digest.ITEMS_FILE.read_text(encoding="utf-8")
+        if not yaml.safe_load(text)["items"]:  # test2 が空のあいだは test1 の写し（archive/test1）で確かめる
+            text = (digest.ROOT / "archive" / "test1" / "items.yaml").read_text(encoding="utf-8")
         before = yaml.safe_load(text)["items"]
         for item in before:
             after = yaml.safe_load(digest.set_item_fields(text, item["name"], {"priority": "测试", "size": "S"}))["items"]

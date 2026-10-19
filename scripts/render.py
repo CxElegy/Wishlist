@@ -28,6 +28,7 @@ import processes
 import likefx
 import livelog
 import overview
+import sitedir
 import taxonomy
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
@@ -1697,7 +1698,7 @@ def _asset_ver(name):
     """docs/ のファイルの中身の指紋（8 桁）。<script src="…?v=指紋"> にして、中身が変わったら必ず新しい版を読ませる
     （GitHub Pages は 10 分キャッシュ、スマホのブラウザはもっと長く古い版を使い続ける）。"""
     try:
-        return hashlib.sha1((pathlib.Path(__file__).resolve().parent.parent / "docs" / name).read_bytes()).hexdigest()[:8]
+        return hashlib.sha1((sitedir.SITE_DIR / name).read_bytes()).hexdigest()[:8]
     except OSError:
         return "0"
 
@@ -1745,7 +1746,7 @@ def render_settings(items, db, updated, schemes=()):
                         f'<span class="st" aria-live="polite"></span></div>')
     data = {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
             "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": taxonomy.for_page(),
-            "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items]}
+            "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items], "since": sitedir.SINCE}
     cfg = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -3108,10 +3109,12 @@ NAV_JS = """
     const prog = Math.round(Math.min(1, Math.max(0, (innerHeight - rc.top) / rc.height)) * 100) / 100;
     const idx = m.closest('.issue') === firstIssue && byKey.has(m.dataset.k) ? byKey.get(m.dataset.k) : -1;
     if (idx !== curIdx || force) {   // 选中项变了才动所有条目的样式
-      const on = pills[idx], n0 = on ? num(on) : -1, k = on && slotOf.has(on) ? slotOf.get(on) : -1;
-      pills.forEach(p => {
+      const on = pills[idx], k = on && slotOf.has(on) ? slotOf.get(on) : -1;
+      // 通り過ぎた駅＝目次（線路）の上で読んでいる駅より前の駅。版面の番号（data-n）は目次の並び（板块 → 小分類）と違うことがあるので、
+      // 目次の並びで決める（番号で決めていたら、シリーズの「ちいかわ 漫画」が前にあるのに白いままだった）
+      pills.forEach((p, i) => {
         p.classList.toggle('on', p === on);
-        p.classList.toggle('past', !!on && num(p) > 0 && num(p) < n0);
+        p.classList.toggle('past', !!on && num(p) > 0 && i < idx);
       });
       curIdx = idx; curProg = -1;
       nav.style.setProperty('--cur', on ? getComputedStyle(on).getPropertyValue('--sc') : 'var(--alert)');   // トップ・気になるかも？を読んでいるときは赤
@@ -5084,6 +5087,7 @@ ADMIN_PAGE_JS = """
   var reqs=document.getElementById('reqs'),photos=document.getElementById('photos');
   function loadDb(){
   rpc('list_item_requests').then(function(list){
+    list=(list||[]).filter(function(x){return !CFG.since||new Date(x.created_at)>=new Date(CFG.since);});
     reqs.textContent='';if(!list||!list.length){fail(reqs,'依頼はありません。');return;}
     var ul=el('ul','qlist');list.forEach(function(x){var li=el('li');
       li.appendChild(el('b',null,(x.action==='edit'?'修正：':'追加：')+x.name));var s=ST[x.status]||[x.status,'idle'];li.appendChild(badge(s[0],s[1]));
@@ -5113,7 +5117,7 @@ def render_admin(data, db, updated):
     db = {url, key}（公開の publishable key。依頼と写真の受付をページを開いたときに読む）。"""
     cfg = json.dumps({"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
                       "repo": (db or {}).get("repo") or "CxElegy/Wishlist", "flows": ADMIN_WORKFLOWS,
-                      "tz": (db or {}).get("tz") or "Asia/Tokyo"},
+                      "tz": (db or {}).get("tz") or "Asia/Tokyo", "since": sitedir.SINCE},
                      ensure_ascii=False).replace("</", "<\\/")
     return _section_marks(f"""<!doctype html>
 <html lang="ja">
