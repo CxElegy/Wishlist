@@ -260,7 +260,9 @@
   // 作品・IP 型：每个媒体面找到的依据（条目）
   function mediaEvidence() {
     const ev = {};
-    for (const x of relatedHits()) {
+    // 選んだ条目そのものは名前が違っても（「ハリー・ポッター TV」→「ハリー・ポッター (テレビドラマ)」）必ず自分の面の依拠（版面の置き場所＝それ自身が何か）
+    const pick = wdPick(), hits = relatedHits();
+    for (const x of pick && !hits.some(y => y.id === pick.id) ? [pick, ...hits] : hits) {
       const text = `${x.title} ${Object.values(x.names || {}).join(" ")} ${x.desc}`;
       // 説明の語では 1 つの面だけ（MECE）：SECT_ORDER の順で最初に当たった面（アニメ映画 → 映画、TV アニメ → アニメ）
       const first = SECT_ORDER.find(k => MEDIA[k].hit.test(text));
@@ -341,7 +343,13 @@
     // test2（用户定的）：版面は「選んだ条目そのものが何か」の板块に 1 つ（ちいかわ = 漫画の条目 → 作品 › シリーズ）。種類はその板块の面の MAIN_ORDER（アニメ > 漫画…）
     const pick = wdPick(), own = pick ? chosenFacets().find(f => (f.ev || []).some(x => x.id === pick.id)) : null;
     if (own) return [...facetGroups()[own.sec]].sort((a, b) => rank(a.key) - rank(b.key))[0].key;
-    const best = Object.values(facetGroups()).sort((a, b) => b.length - a.length || rank(a[0].key) - rank(b[0].key))[0];
+    // 選んだ条目が依拠に入っていない：条目の説明が何の作品か（「テレビドラマ」→ ドラマ）。キャラ・マスコットなら グッズ
+    const desc = `${pick?.title || ""} ${pick?.desc || ""}`;
+    const byDesc = SECT_ORDER.find(k => fs.includes(k) && MEDIA[k] && (MEDIA[k].hit || new RegExp(MEDIA[k].re, "i")).test(desc));
+    if (byDesc) return [...facetGroups()[MEDIA[byDesc].sec]].sort((a, b) => rank(a.key) - rank(b.key))[0].key;
+    // それでも分からない：作品の層を先に（グッズ・イベントは展開なので、作品の面があればそちらが本体）
+    const layerRank = g => g.some(f => LAYER[f.key] === "作品") ? 0 : 1;
+    const best = Object.values(facetGroups()).sort((a, b) => layerRank(a) - layerRank(b) || b.length - a.length || rank(a[0].key) - rank(b[0].key))[0];
     return best?.[0]?.key || MAIN_ORDER.find(k => fs.includes(k)) || fs[0];
   };
   // シリーズの下にある媒体（items.yaml の media、目次の枝）。面の key → 目次の名前
@@ -465,10 +473,17 @@
   // 关注哪方面：作品・IP 型勾了几个面，就把每个面（アニメ・映画・グッズ……）的选项都列出来（id 前加面，如 anime.sequel）
   const focusOpts = () => {
     const fs = S.ans.facets?.length && facetPlan().type === "media" ? chosenFacets() : [];
-    if (fs.length) return fs.flatMap(f => (KINDS[f.kind]?.focus || []).filter(o => !o.when || o.when())
-      .map(o => ({...o, id: `${f.key}.${o.id}`, facet: f.key, sec: null, hint: `${f.label} · ${o.hint || ""}`})));
+    // 1 つの版面になったので、同じことを何度も聞かない（MECE）：ほかの勾いた面の話（アニメの下の「周边、联名」＝グッズ）はその面だけに置く
+    const keys = fs.map(f => f.key), about = (o, k) => FOCUS_WORDS[k] && FOCUS_WORDS[k].test(o.label);
+    if (fs.length) return [...fs].sort((a, b) => BRANCH_ORDER.indexOf(a.key) - BRANCH_ORDER.indexOf(b.key))
+      .flatMap(f => (KINDS[f.kind]?.focus || []).filter(o => !o.when || o.when())
+        .filter(o => about(o, f.key) || !keys.some(k => k !== f.key && about(o, k)))
+        .map(o => ({...o, id: `${f.key}.${o.id}`, facet: f.key, sec: null, hint: o.hint || ""})));
     return kindOf().focus.filter(f => !f.when || f.when());
   };
+  // 关注点の言葉がどの面の話か（中文の選択肢用。MEDIA の re は日本語・英語の記事用）
+  const FOCUS_WORDS = {goods: /周边|联名|一番赏|手办|新品/, anime: /动画|新一季|播出|每集/, movie: /电影|剧场版|上映|预告/, drama: /剧集|实写|演员/,
+    manga: /漫画|连载|单行本|新刊|付录/, game: /游戏|版本|活动卡池/, live: /演唱会|舞台|公演/, event: /展览|快闪|咖啡|门票|开业|闭馆/};
   const chosenFocus = () => focusOpts().filter(f => (S.ans.focus || []).includes(f.id));
   const wdPick = () => (S.wd || []).find(x => x.id === S.ans.which) || null;
 
@@ -482,7 +497,7 @@
     {id: "arrange", when: () => false, render: askArrange},
     {id: "kind", when: () => !(S.ans.facets || []).length || facetPlan().type === "topic", render: () => single("kind", "这是什么？", guessHint(),
       Object.entries(KINDS).map(([v, k]) => ({v, label: k.label, hint: k.hint})))},
-    {id: "focus", render: () => multi("focus", `你关注「${S.name}」的哪方面？`, "可以多选。会按这个给消息排序：直接回答这些的新消息排最前面。",
+    {id: "focus", render: () => chosenFacets().length && facetPlan().type === "media" ? askFocusGrouped() : multi("focus", `你关注「${S.name}」的哪方面？`, "可以多选。会按这个给消息排序：直接回答这些的新消息排最前面。",
       focusOpts().map(f => ({v: f.id, label: f.label, hint: f.hint})), {other: "其他（自己写）", min: 1})},
     {id: "player", when: () => (S.ans.focus || []).includes("player"), render: () => text("player",
       "关注哪个选手 / 队伍？", "写名字，几个就用逗号隔开。会加进搜索词，只留提到他们的消息。", "如：大坂なおみ, 錦織圭")},
@@ -850,6 +865,29 @@
 
   // 選ぶときもツリーで：根 = メインのテーマ（選んだ条目そのもの）、枝 = 板块 → 面。メインの条目が依拠になっている面に「メイン」の札。
   // メインの面の板块を先に、ほかは板块の順。情報少なめの面はメインと比べて冷門なもの（thin）
+  // 第 4 问（test2）：1 つの版面の中で何を前に出すか。目次の枝（面）ごとに小さな勾選框を並べる（同じ話は 1 回だけ）
+  function askFocusGrouped() {
+    const opts = focusOpts(), ids = opts.map(o => o.id);
+    if (!S.ans.focus) S.ans.focus = defaults("focus");
+    const cur = () => S.ans.focus || [];
+    const all = ids.every(v => cur().includes(v));
+    const set = v => { S.auto.focus = false; S.ans.focus = v; draw(); };
+    const groups = uniq(opts.map(o => o.facet)).map(k => [k, opts.filter(o => o.facet === k)]);
+    let okBtn;
+    const n = nav(cur().length + (S.ans.focus_other ? 1 : 0) >= 1); okBtn = n.querySelector(".main");
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()),
+      h("h3", {}, `「${S.name}」的新闻，哪些排在最前面？`),
+      h("p", {}, "新闻已经按上一问的面收进同一个版面。这里只决定顺序：勾的这些一出来就排最前面、做成大的报道。默认全勾。"),
+      h("button", {type: "button", class: "selall", "aria-pressed": String(all), onclick: () => set(all ? [] : [...ids])}, all ? "取消全选" : `全选（${ids.length}）`),
+      h("div", {class: "fgrid"}, groups.map(([k, list]) => h("section", {class: "fgrp"},
+        h("h4", {}, MEDIA_LABEL[k] || facetOf(k)?.label || k, h("small", {}, `${list.filter(o => cur().includes(o.id)).length} / ${list.length}`)),
+        h("ul", {class: "fchips"}, list.map(o => h("li", {}, h("label", {class: "fc" + (cur().includes(o.id) ? " on" : ""), title: o.hint || ""},
+          h("input", {type: "checkbox", checked: cur().includes(o.id), onchange: () => set(cur().includes(o.id) ? cur().filter(x => x !== o.id) : [...cur(), o.id])}),
+          o.label))))))),
+      h("input", {type: "text", maxlength: 200, value: S.ans.focus_other || "", placeholder: "其他（自己写）", "aria-label": "其他（自己写）",
+        oninput: ev => { S.ans.focus_other = ev.target.value.trim(); okBtn.disabled = !(cur().length || S.ans.focus_other); }}),
+      n);
+  }
   // 第 3 问（test2，用户定的：推荐太多・看不清 → 重新设计）：上面是「加进去以后的样子」（1 个版面 + 目录的枝，勾一下马上变），
   // 下面按层（作品＝维基数据确认 / 展开＝规则推定）一行一个面：勾选框・名字・只在需要时出一个札（メイン / 推定 / 情報少なめ）・找到的东西 1 行。
   // 「推荐」不再写札：默认勾上的就是推荐的。搜索词收进最后的「详细」里
@@ -925,11 +963,12 @@
       const mainFs = split ? fs.filter(f => f.sec === mainSec) : fs;
       rows.push({sec: mainSec, sub: firstSub(mainSec, withSeries(mainSec, facetSubs(facetOf(mainFacet())), mainFs.length)), name: S.name, role: "main",
                  media: mainFs.length >= 2 && facetPlan().type === "media" ? mediaOf(mainFs) : []});
+      // test2：分けないときは 1 つの版面だけ（枝 = 勾いた面全部、乗換駅は置かない）。分けたときは下級も本体と同じ板块
+      if (!split) rows[0].media = fs.length >= 2 && facetPlan().type === "media" ? mediaOf(fs) : [];
       for (const [sec, g] of Object.entries(facetGroups())) {
-        if (sec === mainSec) continue;
-        if (split) rows.push({sec, sub: firstSub(sec, withSeries(sec, facetSubs(g[0]), g.length)), name: `${S.name} ${g[0].tail || g[0].label}`,
-                              role: "kid", of: S.name, media: g.length >= 2 && facetPlan().type === "media" ? mediaOf(g) : []});
-        else rows.push({sec, sub: firstSub(sec, (S.ans.also || {})[sec] || facetSubs(g[0])), name: S.name, role: "xfer", home: mainSec});
+        if (sec === mainSec || !split) continue;
+        rows.push({sec: mainSec, sub: g.map(f => MEDIA_LABEL[f.key] || f.label).join("・"), name: `${S.name} ${g[0].tail || g[0].label}`,
+                   role: "kid", of: S.name, media: g.length >= 2 && facetPlan().type === "media" ? mediaOf(g) : []});
       }
       return rows.concat(relRows());
     }
@@ -1141,8 +1180,10 @@
     // 分开时主项只管主面所在板块的面（和不属于任何面的选项）；其他板块的面给下级
     const focus = chosenFocus().filter(f => !split || !f.facet || facetOf(f.facet)?.sec === mainSec);
     const players = uniq((S.ans.player || "").split(/[,，、\n]+/));
+    // 維基の曖昧さ回避の括弧（「(テレビドラマ)」「(TV series)」）は検索語に要らない
+    const bare = s => String(s || "").replace(/\s*[(（][^)）]*[)）]\s*$/, "").trim();
     const official = uniq([S.mode === "edit" ? (base.keywords || [])[0] || S.name : S.name,
-                           names.zhHant, names.zhHans, names.ja, names.ko, names.en]);
+                           names.zhHant, names.zhHans, names.ja, names.ko, names.en].map(bare));
     const extra = focus.flatMap(f => f.kw || []).map(t => t.replace("{n}", S.name).replace("{en}", names.en || S.name).replace("{ja}", names.ja || S.name));
     const names4re = S.mode === "edit" && !pick ? uniq(base.match || base.keywords || [S.name]) : uniq([...official, ...(pick?.aliases || [])]);
     // 面：主项用的面（分开时只有主面）的搜索词・匹配规则
