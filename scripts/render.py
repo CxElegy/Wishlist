@@ -162,6 +162,7 @@ button{font-family:inherit}
 .sbox h4 small{margin-left:auto;font:500 11px var(--font-sans)}
 .sbox h4 a:hover{color:var(--rose)}
 .swish ol,.shot ol{list-style:none;margin:0;padding:0}
+.swish .sempty{margin:6px 0 10px;font-size:13px;line-height:1.6;color:color-mix(in srgb,var(--ink) 72%,transparent)}
 .swish li[hidden],.agenda li[hidden]{display:none}
 .swish li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--hair)}
 .wthumb{width:48px;height:48px;background:#FFF;border:1.5px solid var(--ink);display:grid;place-items:center;overflow:hidden}
@@ -1686,12 +1687,10 @@ LIKEFX_HEAD = (f'<link rel="stylesheet" href="{e(likefx.SFX_FONT)}">'
 
 
 def _wish_link(wishes, cls):
-    """主页面上去愿望清单子页面的入口（报头右上角、左侧目录底部）。"""
-    if not wishes:
-        return ""
+    """主页面上去愿望清单子页面的入口（报头右上角、左侧目录底部）。0 件でも出す（新しいアカウントが最初の 1 件を足す入口）。"""
     want = sum(1 for x in wishes if (x.get("status") or "想要") == "想要")
     return (f'<a class="{cls}" href="wishlist.html"><b>♥</b><span>{"欲しい物" if cls == "navwish" else "欲しい物リスト"}</span>'
-            f'<small>欲しい {want} 件</small></a>')
+            f'<small>{f"欲しい {want} 件" if wishes else "まだ 0 件"}</small></a>')
 
 
 def _asset_ver(name):
@@ -2417,7 +2416,11 @@ def _side(works, today, wishes=(), taste=()):
     if ag:
         out.append(ag)
     want = [x for x in wishes if (x.get("status") or "想要") in ("想要", "纠结")]
-    if want:
+    if not want:   # 0 件でも箱は出す：ここから最初の 1 件を足せる
+        out.append('<div class="sbox swish"><h4><a href="wishlist.html">欲しい物リスト</a><small>0 件</small></h4>'
+                   '<p class="sempty">まだありません。欲しい物の写真を送ると、ここに並びます。</p>'
+                   '<a class="smore" href="wishlist.html#snap">♥ 欲しい物を足す</a></div>')
+    else:
         rows = []
         for x in want[:7]:  # 入りきらない分は WALL_JS が下から隠す
             img = x.get("image") or ""
