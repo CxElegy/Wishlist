@@ -1822,8 +1822,10 @@ def render_settings(items, db, updated, schemes=()):
 .tree .t-nm{{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;font:900 14px 'Noto Sans SC',sans-serif}}
 .tree .t-nm i{{font:700 11px 'Noto Sans SC',sans-serif;font-style:normal;padding:0 6px;background:#FFD23F;color:#1A1C22}}
 .tree .t-it.xfer .t-nm i{{background:#FFF;border:1px solid #1A1C22}}
-.tree .t-it small{{display:block;font-size:12px;color:#5A5D66}}
+.tree .t-it>small{{display:block;font-size:12px;color:#5A5D66}}
 .tree .t-it.old>.t-nm{{font-weight:500;color:#5A5D66}}.tree .t-it.more>.t-nm{{font-size:12px}}
+.tree .t-root{{display:block;font:500 12px/1.5 'Noto Sans SC',sans-serif;color:#5A5D66}}
+.tree .t-it>.opt{{margin:4px 0;width:100%}}
 .tree .t-md{{font:500 13px 'Noto Sans SC',sans-serif;color:#3A3D46}}
 .opts{{display:flex;flex-direction:column;gap:8px}}
 .opt{{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:2px solid #1A1C22;background:#FFF;color:#1A1C22;

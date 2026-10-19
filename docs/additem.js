@@ -235,9 +235,11 @@
   function relatedHits() {
     const n = normName(S.name);
     if (!n) return [];
-    return (S.wd || []).filter(x => [x.title, ...Object.values(x.names || {}), ...(x.aliases || [])].some(t => {
+    // 選んだ条目から維基データの関係でつながる派生作品（アニメ化・映画化…）は名前が違っても依拠に入れる
+    const derived = (S.derived || []).filter(x => x.via === S.ans.which);
+    return derived.concat((S.wd || []).filter(x => [x.title, ...Object.values(x.names || {}), ...(x.aliases || [])].some(t => {
       const m = normName(t); return m && (m.includes(n) || (m.length >= 2 && n.includes(m)));
-    }));
+    })).filter(x => !derived.some(d => d.id === x.id)));
   }
   // 名字本身（各语言）：搜索词的组合用（スパイダーマン コラボ・Spider-Man collab）
   const relatedNames = () => uniq([S.name, ...Object.values(wdPick()?.names || {})]).map(normName);
@@ -260,20 +262,21 @@
     }
     // アニメ・漫画・映画・ゲームのうち 2 つ以上ある作品（ちいかわ）はグッズ・コラボもまず出ている → 推荐（依据は見つかった面）
     const media = ["anime", "manga", "movie", "game"].filter(k => ev[k]);
-    if (!ev.goods && media.length >= 2) ev.goods = [{title: `${media.map(k => MEDIA[k].label).join("・")}がある作品`, desc: "", names: {}}];
+    if (!ev.goods && media.length >= 2) ev.goods = [{title: `${media.map(k => MEDIA[k].label).join("・")}がある作品`, desc: "", names: {},
+      links: Math.max(0, ...media.flatMap(k => ev[k].map(x => x.links ?? THIN)))}];
     return ev;
   }
   // 名字是普通词吗（「猫」「犬」「咖啡」）：短的普通词，或维基数据说是动物・食物・概念这类
   const generic = () => normName(S.name).length <= 2 || /動物|动物|animal|species|食べ物|食物|food|概念|concept|スポーツ|sport|飲み物|beverage/i.test(wdPick()?.desc || "");
   // 这个名字的「面」一览。type = media（作品・IP）/ topic（题材）/ ""（只有一面，照普通的流程）
   function facetPlan() {
-    if (S._plan && S._plan.key === S.name + "|" + (S.ans.which ?? "") + "|" + (S.wd || []).length) return S._plan;
-    const ev = mediaEvidence(), key = S.name + "|" + (S.ans.which ?? "") + "|" + (S.wd || []).length;
+    if (S._plan && S._plan.key === S.name + "|" + (S.ans.which ?? "") + "|" + (S.wd || []).length + "|" + (S.derived || []).length) return S._plan;
+    const ev = mediaEvidence(), key = S.name + "|" + (S.ans.which ?? "") + "|" + (S.wd || []).length + "|" + (S.derived || []).length;
     let plan = {key, type: "", list: []};
     const isChar = (S.ans.kind || wdPick()?.kind) === "character" || !!ev.goods;
     if (Object.keys(ev).length >= 1 && (Object.keys(ev).length >= 2 || isChar || ["anime", "manga", "movie"].some(k => ev[k]))) {
       // 維基データで見つかった面だけ出す（用户定的：ちいかわ に舞台・実写はない → 出さない）。グッズは 2 媒体以上の作品の推定も依拠に数える
-      plan = {key, type: "media", list: Object.entries(MEDIA).filter(([k]) => ev[k]).map(([k, f]) => ({key: k, ...f, rec: !!ev[k], ev: ev[k] || [],
+      plan = {key, type: "media", list: Object.entries(MEDIA).filter(([k]) => ev[k]).map(([k, f]) => ({key: k, ...f, rec: !!ev[k] && !thin(ev[k], wdPick()?.links), thin: thin(ev[k], wdPick()?.links), ev: ev[k] || [],
         titles: uniq((ev[k] || []).flatMap(x => [x.names?.ja, x.names?.en]).map(t => String(t || "").replace(/\s*[(（][^)）]*[)）]\s*$/, "").trim())
           .filter(t => t && !relatedNames().includes(normName(t)))).slice(0, 4)}))};
     } else if (generic()) {
@@ -382,6 +385,13 @@
   const ORIGIN_LANG = {Q17: "ja-JP", Q884: "ko-KR", Q148: "zh-CN", Q865: "zh-TW", Q8646: "zh-TW", Q30: "en-US", Q145: "en-US"};
   const claim = (ent, p) => (ent.claims?.[p] || []).map(c => c.mainsnak?.datavalue?.value).filter(v => v != null);
   const label = (ent, langs) => { for (const l of langs) { const v = ent.labels?.[l]?.value; if (v) return v; } return ""; };
+  // 情報少なめ（全体の決まり、用户定的）：あることはあるが、メインのテーマよりずっと知られていない（ちいかわのゲーム）。
+  // 人気の目安 = 維基百科でその条目を書いている言語の数。いちばん知られている条目でもメインの 1/THIN_RATIO 未満なら印を付け、最初から勾は付けない
+  // （面はメイン＝選んだ条目と、同じ系列のものはメイン＝系列と比べる。全部同じ基準）
+  const THIN_RATIO = 4;
+  const thin = (list, base) => { const n = (list || []).map(x => x.links).filter(v => v != null);
+    return n.length > 0 && base > 0 && Math.max(...n) * THIN_RATIO < base; };
+  const THIN_TAG = "情報少なめ", THIN_NOTE = "比主题本身冷门得多，新闻可能不多";
   const desc = ent => label({labels: ent.descriptions}, ["zh-hans", "zh", "zh-cn", "zh-hant", "zh-tw", "ja", "en"]);
 
   async function lookup(name) {
@@ -390,7 +400,7 @@
       wd({action: "wbsearchentities", search: name, language, uselang: "zh", type: "item", limit: 5})));
     for (const l of lists) for (const x of (l.value?.search || [])) if (!found.includes(x.id)) found.push(x.id);
     if (!found.length) return lists.every(l => l.status === "rejected") ? null : [];
-    const got = await wd({action: "wbgetentities", ids: found.slice(0, 6).join("|"), props: "labels|aliases|descriptions|claims",
+    const got = await wd({action: "wbgetentities", ids: found.slice(0, 6).join("|"), props: "labels|aliases|descriptions|claims|sitelinks",
                           languages: WD_LANGS.join("|")});
     return found.slice(0, 6).map(id => got.entities?.[id]).filter(Boolean).map(ent => facts(ent));
   }
@@ -411,8 +421,9 @@
       id: ent.id, title: zhHans || zhHant || en || ja || ent.id, desc: desc(ent) || ent.descriptions?.en?.value || "",
       names: {zhHans, zhHant, ja, ko, en}, aliases: [...new Set(aliases)].slice(0, 8), kind, origin: [...new Set(origin)],
       steam: claim(ent, "P1733")[0] || "", anilist: claim(ent, "P8729")[0] || "", anilistManga: claim(ent, "P8731")[0] || "",
-      tmdb, site: claim(ent, "P856")[0] || "",
+      tmdb, site: claim(ent, "P856")[0] || "", links: Object.keys(ent.sitelinks || {}).length,
       // 属于哪个系列：系列（P179）・媒体系列（P8345）・是…的一部分（P361）。名字在 seriesLookup 里另外查
+      derivIds: claim(ent, "P4969").map(v => v.id).filter(Boolean).slice(0, 10),   // 派生作品（P4969）
       seriesIds: [...new Set([...claim(ent, "P179"), ...claim(ent, "P8345"), ...claim(ent, "P361")].map(v => v.id).filter(Boolean))].slice(0, 3),
     };
   }
@@ -606,20 +617,46 @@
       if (S.wd.length && S.ans.which == null) S.ans.which = S.wd[0].id;
       if (live()[S.step]?.id === "which") draw();
       seriesLookup(name);
+      derivedLookup(name);
     }).catch(() => { if (S.name === name) { S.wd = []; S.wdState = "fail"; if (live()[S.step]?.id === "which") draw(); } });
   }
 
+  // 派生作品（全部ルール）：見つかった条目（上位 3 つ）それぞれについて、維基データで
+  // それを「原作 P144・媒体系列 P8345・系列 P179」に持つ条目（haswbstatement）＋ 自分の「派生作品 P4969」を集める。
+  // 名前検索の上位 5 件に入らないアニメ・映画（ちいかわ → TV アニメ・映画ちいかわ）も面の依拠になる
+  async function derivedLookup(name) {
+    const base = (S.wd || []).slice(0, 3);
+    if (!base.length) return;
+    try {
+      const got = await Promise.allSettled(base.map(x => wd({action: "query", list: "search", srnamespace: 0, srlimit: 20,
+        srsearch: "haswbstatement:" + ["P144", "P8345", "P179"].map(p => `${p}=${x.id}`).join("|")})));
+      const via = {};
+      base.forEach((x, i) => {
+        for (const r of got[i].value?.query?.search || []) if (/^Q\d+$/.test(r.title) && !via[r.title]) via[r.title] = x.id;
+        for (const id of x.derivIds || []) if (!via[id]) via[id] = x.id;
+      });
+      const own = new Set((S.wd || []).map(x => x.id)), ids = Object.keys(via).filter(id => !own.has(id)).slice(0, 40);
+      if (!ids.length || S.name !== name) return;
+      const ents = await wd({action: "wbgetentities", ids: ids.join("|"), props: "labels|aliases|descriptions|claims|sitelinks", languages: WD_LANGS.join("|")});
+      if (S.name !== name) return;
+      S.derived = ids.map(id => ents.entities?.[id]).filter(Boolean).filter(ent => !claim(ent, "P31").some(v => REL_SKIP.has(v.id)))
+        .map(ent => ({...facts(ent), via: via[ent.id]}));
+      S._plan = null;
+      const cur = live()[S.step]?.id;
+      if (cur === "facets" || cur === "which") { if (S.ans.facets && S.auto.facets !== false) S.ans.facets = defaults("facets"); draw(); }
+    } catch (_) {}
+  }
   // 上级系列：查到的条目里写着「属于哪个系列」的，把系列的名字・说明也查出来（一次请求，查不到就算了）
   async function seriesLookup(name) {
     const ids = [...new Set((S.wd || []).flatMap(x => x.seriesIds || []))].slice(0, 6);
     if (!ids.length) return;
     try {
-      const got = await wd({action: "wbgetentities", ids: ids.join("|"), props: "labels|aliases|descriptions", languages: WD_LANGS.join("|")});
+      const got = await wd({action: "wbgetentities", ids: ids.join("|"), props: "labels|aliases|descriptions|sitelinks", languages: WD_LANGS.join("|")});
       if (S.name !== name) return;
       S.series = ids.map(id => got.entities?.[id]).filter(Boolean).map(ent => {
         const zhHans = label(ent, ["zh-cn", "zh-hans", "zh"]), zhHant = label(ent, ["zh-tw", "zh-hk", "zh-hant"]);
         const ja = label(ent, ["ja"]), en = label(ent, ["en"]);
-        return {id: ent.id, title: zhHans || zhHant || ja || en || ent.id, desc: desc(ent) || ent.descriptions?.en?.value || "",
+        return {id: ent.id, title: zhHans || zhHant || ja || en || ent.id, desc: desc(ent) || ent.descriptions?.en?.value || "", links: Object.keys(ent.sitelinks || {}).length,
                 names: {zhHans, zhHant, ja, ko: label(ent, ["ko"]), en}};
       });
       if (live()[S.step]?.id === "parent") draw();
@@ -647,7 +684,7 @@
     const found = uniq(got.flatMap(r => (r.value?.query?.search || []).map(x => x.title))).filter(id => /^Q\d+$/.test(id) && !own.has(id)).slice(0, 50);
     if (!found.length || S.name !== name) return;
     try {
-      const ents = await wd({action: "wbgetentities", ids: found.join("|"), props: "labels|aliases|descriptions|claims", languages: WD_LANGS.join("|")});
+      const ents = await wd({action: "wbgetentities", ids: found.join("|"), props: "labels|aliases|descriptions|claims|sitelinks", languages: WD_LANGS.join("|")});
       if (S.name !== name) return;
       const serNames = ser.flatMap(x => Object.values(x.names)).filter(Boolean).map(normName);
       S.related = found.map(id => ents.entities?.[id]).filter(Boolean).flatMap(ent => {
@@ -659,7 +696,7 @@
         const of = ser.find(x => [...REL_PROPS, "P179"].some(p => claim(ent, p).some(v => v.id === x.id))) || ser[0];
         const text = `${f.title} ${names.join(" ")} ${f.desc} ${ent.descriptions?.en?.value || ""}`;
         const sec = (SECS_BY_PRIO.find(x => { const re = secRe(x); return re && re.test(text); }) || {}).key || naturalSection();
-        return [{...f, of: of.id, sec, subs: relSubs(sec, text), strong: byStmt.has(ent.id), name: f.names.ja || f.title}];
+        return [{...f, of: of.id, sec, subs: relSubs(sec, text), strong: byStmt.has(ent.id), thin: thin([f], of.links), name: f.names.ja || f.title}];
       }).filter(r => !(CFG.items || []).some(i => [i.name, ...(i.keywords || [])].some(w => normName(w) === normName(r.name))));
       if (live()[S.step]?.id === "related" || live()[S.step]?.id === "parent") draw();
     } catch (_) {}
@@ -674,7 +711,7 @@
     const ids = new Set(seriesOfPick().map(x => x.id)), mine = S.ans.section || naturalSection();
     const list = (S.related || []).filter(r => ids.has(r.of));
     const secs = uniq(list.map(r => r.sec)).sort((a, b) => (a === mine) - (b === mine) || SECS.findIndex(x => x.key === a) - SECS.findIndex(x => x.key === b));
-    return secs.flatMap(sec => list.filter(r => r.sec === sec).sort((a, b) => b.strong - a.strong).slice(0, 4));
+    return secs.flatMap(sec => list.filter(r => r.sec === sec).sort((a, b) => a.thin - b.thin || b.strong - a.strong).slice(0, 4));
   };
   // 関連の項の上級：系列が関注清单にある（か一緒に足す）ならその系列、なければ単独
   const relParent = r => {
@@ -731,6 +768,23 @@
     return h("div", {class: "q"}, ...body);
   }
 
+  // 選ぶときもツリーで：根 = メインのテーマ（選んだ条目そのもの）、枝 = 板块 → 面。メインの条目が依拠になっている面に「メイン」の札。
+  // メインの面の板块を先に、ほかは板块の順。情報少なめの面はメインと比べて冷門なもの（thin）
+  function facetTree(plan, toggle, kwOf) {
+    const pick = wdPick(), isMain = f => !!pick && (f.ev || []).some(x => x.id === pick.id);
+    const secs = uniq(plan.list.map(f => f.sec)).sort((a, b) => plan.list.some(f => f.sec === b && isMain(f)) - plan.list.some(f => f.sec === a && isMain(f)));
+    const btn = f => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.facets.includes(f.key)), onclick: () => toggle(f.key)},
+      h("span", {class: "fh"}, f.label, isMain(f) ? h("i", {class: "frec"}, "メイン") : null, f.rec && !isMain(f) ? h("i", {class: "frec"}, "推荐") : null,
+        f.thin ? h("i", {}, THIN_TAG) : null),
+      f.thin ? h("small", {}, THIN_NOTE) : null,
+      h("small", {}, f.ev?.length ? `依据：${f.ev.slice(0, 2).map(x => x.title + (x.desc ? `（${x.desc}）` : "")).join("、")}` : (f.hint || "")),
+      h("small", {}, `搜索词：${kwOf(f)}`));
+    return h("div", {class: "tree facets", role: "group", "aria-label": `「${S.name}」的面`},
+      h("span", {class: "t-h"}, `「${S.name}」`, pick?.desc ? h("small", {class: "t-root"}, `メイン：${pick.title}（${pick.desc}）`) : null),
+      h("ul", {}, secs.map(sec => h("li", {class: "t-sec", style: `--sc:${secOf(sec).color || "#1A1C22"}`},
+        h("b", {class: "t-tag"}, secOf(sec).ja),
+        h("ul", {}, plan.list.filter(f => f.sec === sec).sort((a, b) => isMain(b) - isMain(a)).map(f => h("li", {class: "t-it"}, btn(f))))))));
+  }
   // 面：全部列出，有依据的默认勾上（依据写在下面）。勾了几个就放进几个板块
   function askFacets() {
     const plan = facetPlan();
@@ -745,11 +799,7 @@
         ? "只列出维基数据里找到了的面（找到的条目写在「依据」里），没找到的不列。每个面会自动加一套搜索词，放进对应的板块。"
         : "名字是普通词，只用名字会收进很多不相关的新闻，所以按面来收：每个面的词和名字同时出现才收。推荐的已经勾上。"),
       sim.length ? h("p", {class: "simnote"}, `已经有相近的关注项：${sim.map(i => `「${i.name}」`).join("")}。想往里加，可以在上面的列表里点「改」；也可以在后面「属于哪个」一问挂到它下面。`) : null,
-      h("div", {class: "opts facets", role: "group"}, plan.list.map(f => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.facets.includes(f.key)),
-        onclick: () => toggle(f.key)},
-        h("span", {class: "fh"}, f.label, h("i", {class: "fsec"}, secOf(f.sec).ja), f.rec ? h("i", {class: "frec"}, "推荐") : null),
-        h("small", {}, f.ev?.length ? `依据：${f.ev.slice(0, 2).map(x => x.title + (x.desc ? `（${x.desc}）` : "")).join("、")}` : (f.hint || "")),
-        h("small", {}, `搜索词：${kwOf(f)}`)))),
+      facetTree(plan, toggle, kwOf),
       nav(S.ans.facets.length > 0));
   }
   // 加进去以后的目录（树状图）：板块 → 小分类 → 关注项。新的加粗、下级挂在上级的枝上、乗換站带「⇄」，
@@ -891,7 +941,7 @@
       body.push(h("h4", {class: "alsoh"}, secOf(sec).ja));
       body.push(h("div", {class: "opts", role: "group", "aria-label": secOf(sec).ja}, list.filter(r => r.sec === sec).map(r =>
         h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.related.includes(r.id)), onclick: () => toggle(r.id)},
-          r.name, h("small", {}, `${Object.values(r.subs)[0] || ""} · ${r.desc}`)))));
+          r.name, h("small", {}, (r.thin ? `${THIN_TAG}（${THIN_NOTE}）· ` : "") + `${Object.values(r.subs)[0] || ""} · ${r.desc}`)))));
     }
     const par = list.length ? relParent(list[0]) : "";
     return h("div", {class: "q"}, h("span", {class: "no"}, no()),
