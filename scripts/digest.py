@@ -2061,7 +2061,7 @@ def backend_log(tz, n=40):
             when = dt.datetime.fromisoformat(r["at"]).astimezone(tz).strftime("%m/%d %H:%M")
         except (KeyError, ValueError):
             when = ""
-        out.append({"when": when, "proc": r["proc"], "name": r["name"], "level": r.get("level", "info"), "text": r.get("text", "")})
+        out.append({"when": when, "at": r.get("at") or "", "proc": r["proc"], "name": r["name"], "level": r.get("level", "info"), "text": r.get("text", "")})
     return out
 
 

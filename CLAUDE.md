@@ -246,7 +246,9 @@
   要和 `gather` 的顺序一致）→ ③ 本人确认・目视排除 → ④ 结果 → ⑤ 下次几点・失败时的建议），数据在 `digest.emblem_detail`。
   新加定时的仕组み：在 `PROCESSES` 里写 `schedule`（UTC 的 (时, 分)），在 `backend_todo` 写它下次做什么，运行时 `runlog.add("<proc>", "…")`；
   要加一列就在 `render.BG_COLS` 和 `backend_cells` 各加一项。
-- **管理页最上面的「しくみの全体図」**（`scripts/overview.py`，2026-10-18）：5 页（全体 / ニュース収集 / AI 編集 / 小元素 / ページ更新），每页 ≤ 8 列、一屏放得下；点部品开 `processes.detail` 的详细流程。
+- **管理页最上面的「ライブログ」**（`scripts/livelog.py`，2026-10-19，用户定的）：像终端一样自己滚的小窗口。版面开始・进到下一段・完成（`live_boards()` 每 20 秒比前一次）、Actions 开始・成功・失败（每 3 分）、仓库 `state/log/*.json` 的新行（raw.githubusercontent.com 每 2 分）都一行一行流出来；
+  看过的行存在 localStorage（`wl-term`，300 行），页面自动重载也不断。有「一時停止」，往上翻时不自动滚到底。原来「バックグラウンド」里的「ログ」列表移到这里。
+- **管理页的「しくみの全体図」**（`scripts/overview.py`，2026-10-18）：5 页（全体 / ニュース収集 / AI 編集 / 小元素 / ページ更新），每页 ≤ 8 列、一屏放得下；点部品开 `processes.detail` 的详细流程。
   动效：`live_boards()` 每 30 秒 + Actions 实行中每 3 分，动着的部品光圈 + 斜线条（`prefers-reduced-motion` 时不动），AI 编辑／小元素按阶段（note 里的词、`found=1〜3`）分别发光；
   「反映待ち」超过 30 分的标红「止まっているかも」（push 没通的话会这样）。下方「いま待っているもの」用话说清 什么・为什么・怎么办（`overview.waits`，带「AI 编辑をもう一度起こす」「今すぐ再挑戦」按钮）。
   新增仕组み／步骤时：在 `overview.PAGES` 加部件（`proc` 必须是 `PROCESSES` 里有的），测试在 `tests/test_design.py` 的 Overview。旧的大图（「全体の構成（詳しい図）」）还在下面。

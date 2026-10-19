@@ -26,6 +26,7 @@ import heat
 import lang
 import processes
 import likefx
+import livelog
 import overview
 import taxonomy
 import theme
@@ -4503,9 +4504,6 @@ def _admin_backend(rows, todo=None, log=None, res=None):
         d = r["bg"]["emblem"].get("detail")
         if d:
             body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"], pics)}</td></tr>')
-    logs = "".join(f'<li class="lg-{e(x.get("level") or "info")}"><time>{e(x.get("when") or "")}</time>'
-                   f'<span class="lg-p">{e(x.get("name") or "")}</span><span class="lg-t">{e(x.get("text") or "")}</span></li>'
-                   for x in (log or []))
     cfg = json.dumps(plan, ensure_ascii=False).replace("</", "<\\/")
     return ('<h3 class="h3">いま動いているもの <small>裏で処理中の版面と段 · 30 秒ごとに読み直す</small></h3>'
             '<div id="livenow" class="livenow"><p class="empty">読み込み中…</p></div>'
@@ -4520,8 +4518,8 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                                           for a, b, c in processes.LIMITS) + '</ul>'
             '<div class="two bgtwo"><div><h3 class="h3">待ち行列 <small>これから 24 時間の実行と、そのとき処理するもの</small></h3>'
             '<ol class="bgq" id="bgq"><li class="empty">計算中…</li></ol></div>'
-            '<div><h3 class="h3">ログ <small>裏で動いた仕組みの記録 · 新しい順</small></h3>'
-            f'<ol class="blog">{logs or "<li class=empty>まだ記録がありません。次の実行から残ります。</li>"}</ol></div></div>'
+            '<div><h3 class="h3">ログ <small>ページの一番上の「ライブログ」に移しました（自動で流れる）</small></h3>'
+            '<p class="empty"><a href="#term-panel">↑ ライブログを見る</a></p></div></div>'
             f'<script type="application/json" id="bg-cfg">{cfg}</script>'
             '<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦</small></h3>'
             f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>')
@@ -5087,7 +5085,7 @@ def render_admin(data, db, updated):
 <title>管理ページ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
-<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}{overview.CSS}</style>
+<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}{overview.CSS}{livelog.CSS}</style>
 {_live_head("admin")}
 </head>
 <body>
@@ -5099,6 +5097,7 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
+<section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist")}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
 <section class="panel" id="editdiff"><h2 class="sh"><span>AI 編集の前後</span><small>最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事</small></h2>{_admin_edit_diff(data.get("edit_diff"))}</section>
@@ -5116,6 +5115,7 @@ def render_admin(data, db, updated):
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
 <script>{overview.JS}</script>
+<script>{livelog.JS}</script>
 <script>{processes.JS}</script>
 <script>{LIVE_JS}</script>
 </body>
