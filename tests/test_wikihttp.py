@@ -41,6 +41,7 @@ class FakeSession:
     def get(self, url, timeout=None, **kw):
         with self.lock:
             self.calls.append((time.time(), url))
+            self.auth = getattr(self, "auth", []) + [(kw.get("headers") or {}).get("Authorization")]
             if self.headers["User-Agent"].startswith("Mozilla/"):   # ブラウザのふりの UA は 403（実際にあった）
                 return _resp(403, b"Please set a user-agent and respect our robot policy")
             r = self.replies.pop(0) if self.replies else _resp()
@@ -56,8 +57,11 @@ class WikiHttpTest(unittest.TestCase):
         wikihttp._cool.clear()
         wikihttp._last.clear()
         wikihttp._all[0] = 0.0
+        self._token = wikihttp._token[0]
+        wikihttp._token[0] = ""
 
     def tearDown(self):
+        wikihttp._token[0] = self._token
         wikihttp.sleep = self._sleep
         wikihttp._session[0] = self._sess
         wikihttp._cool.clear()
@@ -97,6 +101,8 @@ class WikiHttpTest(unittest.TestCase):
         self.assertEqual(wikihttp.with_maxlag("https://en.wikipedia.org/w/api.php?maxlag=3"), "https://en.wikipedia.org/w/api.php?maxlag=3")
         u = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/A.jpg/500px-A.jpg"
         self.assertEqual(wikihttp.with_maxlag(u), u)
+        w = "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=x"   # WDQS の遅れまで数えるので付けない
+        self.assertEqual(wikihttp.with_maxlag(w), w)
 
     def test_429_waits_retry_after_then_200(self):
         s = self.use(_resp(429, headers={"Retry-After": "7"}), _resp(200, b'{"ok":1}'))
@@ -107,7 +113,7 @@ class WikiHttpTest(unittest.TestCase):
     def test_maxlag_error_is_retried(self):
         lag = _resp(200, b'{"error":{"code":"maxlag","info":"Waiting for 10.64.0.1: 6 seconds lagged"}}', {"Retry-After": "5"})
         s = self.use(lag, _resp(200, b'{"query":{}}'))
-        self.assertEqual(wikihttp.get("https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1"), b'{"query":{}}')
+        self.assertEqual(wikihttp.get("https://commons.wikimedia.org/w/api.php?action=query&titles=File:A.jpg"), b'{"query":{}}')
         self.assertEqual(len(s.calls), 2)
         self.assertIn(5.0, self.waits)
         self.assertFalse(wikihttp._cacheable(lag))   # 断られた応答はキャッシュに残さない
@@ -160,6 +166,26 @@ class WikiHttpTest(unittest.TestCase):
         wikihttp.get("https://en.wikipedia.org/w/api.php?a=1")
         wikihttp.get("https://www.wikidata.org/w/api.php?a=1")   # 別のホストでも毎分 200 の枠は共通
         self.assertTrue(any(0.3 < w <= wikihttp.ALL_GAP for w in self.waits), self.waits)
+
+    def test_token_is_sent_to_apis_not_images(self):
+        """共有 IP の 429 を避ける：WIKIMEDIA_TOKEN があれば API には Bearer を付ける（上限がアカウントごとになる）。"""
+        wikihttp._token[0] = "tok123"
+        s = self.use()
+        wikihttp.get("https://www.wikidata.org/w/api.php?action=wbsearchentities&search=x")
+        wikihttp.get("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/A.jpg/500px-A.jpg")
+        self.assertEqual(s.auth, ["Bearer tok123", None])
+
+    def test_rejected_token_is_dropped(self):
+        wikihttp._token[0] = "bad"
+        s = self.use(_resp(401, b'{"error":{"code":"mwoauth-invalid-authorization"}}'), _resp(200, b'{"ok":1}'))
+        self.assertEqual(wikihttp.get("https://en.wikipedia.org/w/api.php?action=query"), b'{"ok":1}')
+        self.assertEqual(s.auth, ["Bearer bad", None])
+        self.assertEqual(wikihttp.token(), "")   # 以後は付けない
+
+    def test_no_token_no_header(self):
+        s = self.use()
+        wikihttp.get("https://en.wikipedia.org/w/api.php?action=query")
+        self.assertEqual(s.auth, [None])
 
     def test_emblem_get_routes_wikimedia(self):
         s = self.use(_resp(200, b"img"))
