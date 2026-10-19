@@ -470,6 +470,7 @@
   const wdPick = () => (S.wd || []).find(x => x.id === S.ans.which) || null;
 
   // 问题清单（add 模式从第 0 问开始；edit 模式「重新问一遍」从 kind 开始）
+  const URGENT_ASK = false;   // true に戻せば「哪些消息要当天推到 Discord？」の質問が復活する
   const STEPS = [
     {id: "name", when: () => S.mode === "add", render: askName},
     {id: "which", when: () => S.mode === "add" && S.wdState !== "off", render: askWhich},
@@ -481,7 +482,8 @@
       focusOpts().map(f => ({v: f.id, label: f.label, hint: f.hint})), {other: "其他（自己写）", min: 1})},
     {id: "player", when: () => (S.ans.focus || []).includes("player"), render: () => text("player",
       "关注哪个选手 / 队伍？", "写名字，几个就用逗号隔开。会加进搜索词，只留提到他们的消息。", "如：大坂なおみ, 錦織圭")},
-    {id: "urgent", when: () => chosenFocus().some(f => f.urgent), render: () => multi("urgent",
+    // Discord 通知の質問は保留中（PENDING.md）：聞かない。urgent_patterns は新規は空、修正は今のまま（S.ans.urgent が空なので上書きしない）
+    {id: "urgent", when: () => URGENT_ASK && chosenFocus().some(f => f.urgent), render: () => multi("urgent",
       "哪些消息要当天推到 Discord？", "其余的只在简报和每周一的周报里。传闻、Reddit 帖子不算要紧消息。",
       [...chosenFocus().filter(f => f.urgent).map(f => ({v: f.id, label: f.label, hint: f.hint})),
        {v: "none", label: "都不用，周报里看就行", only: true}])},
