@@ -222,8 +222,12 @@
     game: {label: "ゲーム", hint: "游戏、手游的新作和更新", kind: "game", sec: "游戏", subs: {},
            kw: ["ゲーム", "game"], re: "ゲーム|game|游戏|遊戲|アプリ|Switch|PS5|Steam", tail: "ゲーム",
            hit: /ゲーム|video game|游戏|遊戲/i},
-    live: {label: "イベント・ライブ", hint: "展览、舞台、演唱会", kind: "artist", sec: "演出", subs: {scene: "舞台・ミュージカル", form: "舞台"},
-           kw: ["イベント", "展"], re: "イベント|展覧会|展示|ライブ|舞台|ミュージカル|コンサート|展|concert|musical", tail: "イベント",
+    // 联名咖啡・展览・快闪店 = 出かけて行くもの → おでかけ・アート（2026-10-19 用户的树状图）。舞台・ミュージカル・演唱会は音楽・ライブ
+    event: {label: "イベント・カフェ・展示", hint: "联名咖啡、展览、快闪店", kind: "place", sec: "出行", subs: {kind: "季節イベント"},
+            kw: ["コラボカフェ", "展", "ポップアップ"], re: "コラボカフェ|カフェ|展覧会|展示|ポップアップ|POP ?UP|イベント|フェア|展", tail: "イベント",
+            hit: /exhibition|展覧会|展示会|テーマパーク|theme park|attraction/i},
+    live: {label: "舞台・ライブ", hint: "舞台、音乐剧、演唱会", kind: "artist", sec: "演出", subs: {scene: "舞台・ミュージカル", form: "舞台"},
+           kw: ["舞台", "ミュージカル"], re: "ライブ|舞台|ミュージカル|コンサート|concert|musical|stage", tail: "舞台",
            hit: /ミュージカル|musical|舞台|stage|concert|ライブ/i},
   };
   const normName = t => String(t || "").toLowerCase().replace(/[\s・:：!！?？\-–—.,'"「」『』()（）]/g, "");
@@ -288,10 +292,10 @@
     return Object.fromEntries((secOf(f.sec).schemes || []).map(sc => [sc.id, (f.subs || {})[sc.id] || base[sc.id]]));
   }
   // 主面（版面放的地方）：周边（角色 IP 的本体）→ アニメ → 漫画 → ゲーム → 映画 → 其他按勾的顺序
-  const MAIN_ORDER = ["goods", "anime", "manga", "game", "movie", "drama", "live"];
+  const MAIN_ORDER = ["goods", "anime", "manga", "game", "movie", "drama", "live", "event"];
   // 一个题材可以放进几个板块，但同一个板块里只有一个版面（用户定的）：同一个板块的面合成一个版面，按「派生」归到一起——
   // 原作（漫画）→ アニメ → ドラマ・実写 → 映画（剧场版是动画・剧的派生），版面名用最「元」的面（ちいかわ アニメ 里也收映画）
-  const DERIVE = ["goods", "manga", "anime", "drama", "movie", "game", "live"];
+  const DERIVE = ["goods", "manga", "anime", "drama", "movie", "game", "live", "event"];
   function facetGroups() {   // {板块: [面…]}（派生の順）
     const g = {};
     for (const f of chosenFacets()) (g[f.sec] = g[f.sec] || []).push(f);
