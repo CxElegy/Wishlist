@@ -66,12 +66,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://www.bing.com/th?id=ONUT.Fx2kMpucZgRg52uCutGL9Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.aRujr_DOLeiwwmQRn1tyPg&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -83,6 +77,12 @@
    366
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.umsbk9N_UbzeuU-6NAfn0A&pid=News&w=724": {
+  "w": 494,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.j-cast.com/images/origin/2026/10/news_20261019110936.jpg": {
   "w": 1200,
