@@ -1824,6 +1824,31 @@ def render_settings(items, db, updated, schemes=()):
 .kids .kid{{display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:center}}.kids .kid small{{grid-column:2;opacity:.7;font-size:12px;line-height:1.5}}
 .opts.secgrid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}}.opts.secgrid .opt{{padding:8px 10px}}
 .alsoh{{margin:6px 0 0;font:900 14px 'Noto Sans SC',sans-serif}}.alsobox{{display:flex;flex-direction:column;gap:8px}}.alsobox>span{{font-weight:700;font-size:13px}}
+/* 第 3 问「版面里收哪些新闻」（test2）：上＝加进去以后的样子（1 个版面＋枝），下＝按层一行一个面（勾选框・札・找到的东西） */
+.facets2{{display:flex;flex-direction:column;gap:14px}}
+.fprev{{display:grid;gap:6px;padding:12px 14px;border:2px solid #1A1C22;background:#FBF8F1;box-shadow:4px 4px 0 #1A1C22}}
+.fprev .fp-h{{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.16em;opacity:.6}}
+.fprev .fp-path{{display:flex;align-items:center;gap:8px;font:700 13px 'Noto Sans SC',sans-serif}}
+.fprev .t-tag{{display:inline-block;padding:1px 10px;background:var(--sc);color:#FFF;font:900 13px 'Noto Sans SC',sans-serif;transform:skewX(-8deg)}}
+.fprev .fp-st{{display:flex;align-items:baseline;gap:10px;margin-left:9px;padding-left:14px;border-left:3px solid var(--sc)}}
+.fprev .fp-st b{{font:900 18px 'Noto Sans SC',sans-serif}}.fprev .fp-st small{{font-size:12px;opacity:.65}}
+.fprev .fp-br{{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 0 9px;padding:0 0 0 14px;list-style:none;border-left:3px solid var(--sc)}}
+.fprev .fp-br li{{position:relative;padding-left:14px;font:700 13px 'Noto Sans SC',sans-serif;color:#3A3D46}}
+.fprev .fp-br li::before{{content:"";position:absolute;left:0;top:.65em;width:9px;border-top:2px solid var(--sc)}}
+.fprev .fp-note{{font-size:12px;opacity:.65}}
+.fgrp h4{{display:flex;align-items:baseline;gap:8px;margin:0 0 6px;font:900 14px 'Noto Sans SC',sans-serif}}
+.fgrp h4 small{{font:500 12px 'Noto Sans SC',sans-serif;opacity:.6}}
+.fgrp ul{{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}}
+.fr{{display:grid;grid-template-columns:20px 1fr;gap:2px 10px;align-items:center;padding:9px 12px;border:1px solid #C9C6BE;background:#FFF;cursor:pointer}}
+.fr:hover{{border-color:#1A1C22}}.fr.on{{border-color:#1A1C22;box-shadow:inset 4px 0 0 #1A1C22}}
+.fr input{{width:18px;height:18px;margin:0;accent-color:#1A1C22}}
+.fr .fn{{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:900 15px 'Noto Sans SC',sans-serif}}
+.fr .fn i{{font:700 11px 'Noto Sans SC',sans-serif;font-style:normal;padding:0 6px;border:1px solid #1A1C22}}
+.fr .fn .fmain{{background:#FFD23F;border-color:#FFD23F}}
+.fr small{{grid-column:2;font-size:12px;line-height:1.5;color:#5A5D66;overflow-wrap:anywhere}}
+.fr.thin:not(.on) .fn{{color:#5A5D66}}
+.fmiss{{font-size:12px!important}}
+.fkw summary{{cursor:pointer;font-size:12px;font-weight:700}}.fkw ul{{margin:6px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#5A5D66}}
 /* 加进去以后的目录（树状图预览）：板块的色签 → 小分类 → 关注项，枝用细线 */
 .tree{{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border:2px dashed #1A1C22;background:#FBF8F1}}
 .tree .t-h{{font:900 14px 'Noto Sans SC',sans-serif}}
