@@ -945,5 +945,23 @@
 "disk_total": 154877411328,
 "peak": 103358464
 }
+},
+{
+"at": "2026-10-19T07:39:10+00:00",
+"text": "新着 1 件（1 版面）：The Mandalorian 1",
+"level": "ok",
+"count": 1,
+"secs": 299,
+"workers": 6,
+"res": {
+"cpu": 4,
+"load": 0.18,
+"mem_total": 16766414848,
+"mem_free": 15666008064,
+"disk_used": 63263580160,
+"disk_free": 91613831168,
+"disk_total": 154877411328,
+"peak": 104103936
+}
 }
 ]
