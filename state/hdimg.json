@@ -79,12 +79,6 @@
   ],
   "why": "看不清"
  },
- "http://www.newsian.co.kr/news/photo/202610/97104_91831_3410.jpg": {
-  "w": 960,
-  "h": 590,
-  "target": 1280,
-  "v": 3
- },
  "http://wx1.sinaimg.cn/middle/647c8fably1ii4734hamfj21140pmdws.jpg": {
   "w": 1336,
   "h": 922,
@@ -159,6 +153,12 @@
  "https://animeanime.jp/imgs/ogp_f/942450.jpg": {
   "w": 600,
   "h": 750,
+  "target": 720,
+  "v": 3
+ },
+ "https://animeanime.jp/imgs/ogp_f/944741.jpg": {
+  "w": 600,
+  "h": 844,
   "target": 720,
   "v": 3
  },
@@ -350,6 +350,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.hk01.com/di/media/images/dw/20261015/1187429559872524288789204.jpeg/E-sa0EsKRY3G-unBBjDF3hHP_IOc7UXF0-yjgNPso4A": {
+  "w": 1365,
+  "h": 768,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.inthesnow.com/uploads/2026/03/AdobeStock_313183659-resized-to-large.jpeg": {
   "w": 1500,
   "h": 1000,
@@ -361,19 +367,6 @@
   "h": 700,
   "target": 720,
   "v": 3
- },
- "https://cdn.koreareport.co.kr/news/photo/202610/53623_56651_5039.jpg": {
-  "w": 600,
-  "h": 428,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.506,
-  "local": "pics/59cffe8f9e9cb82a.webp",
-  "out": [
-   1280,
-   913
-  ],
-  "why": "看不清"
  },
  "https://cdn.nc.press/news/photo/202610/628491_864405_4947.png": {
   "w": 600,
@@ -402,6 +395,12 @@
  "https://cdn.snkrdunk.com/uploads/media/1ccdb1a8-8d0b-4fe8-b741-d45612a16455.jpeg": {
   "w": 1200,
   "h": 790,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.sounova.com/upload/XU9tun0jGntZA0UXfDiS3.webp": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -446,13 +445,6 @@
   "h": 676,
   "target": 720,
   "v": 3
- },
- "https://ceoscoredaily.com/photos/2026/10/13/2026101317023010291_l.jpg": {
-  "w": 640,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.355
  },
  "https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=3&simg=20261013233059065920cecffa93871223935165.jpg&nmt=19": {
   "w": 660,
@@ -500,12 +492,6 @@
   "w": 1824,
   "h": 1026,
   "target": 720,
-  "v": 3
- },
- "https://collabo-cafe.com/wp-content/uploads/hypnosismic-shop-tieup-karaoke-manekineko-2026-keyvisual.jpg": {
-  "w": 1747,
-  "h": 830,
-  "target": 1280,
   "v": 3
  },
  "https://collabo-cafe.com/wp-content/uploads/shirotan-fashion-avail-1017-2026-lineup.jpg": {
@@ -876,6 +862,12 @@
   "w": 1200,
   "h": 669,
   "target": 720,
+  "v": 3
+ },
+ "https://images-tw.girlstyle.com/wp-content/uploads/2026/10/33e6a91a.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://images.khan.co.kr/article/2026/10/14/news-p.v1.20261014.e15dc1b6f9894a25a15b79a4a3d60af2_P1.jpg": {
@@ -1252,6 +1244,12 @@
   ],
   "why": "看不清"
  },
+ "https://k-tai.watch.impress.co.jp/img/ktw/list/2147/765/00.jpg": {
+  "w": 1440,
+  "h": 960,
+  "target": 1280,
+  "v": 3
+ },
  "https://kagit-media.atreez.cc/uploads/2026-10-08/jgklsam081uhzxzado2p6glh.png": {
   "w": 629,
   "h": 803,
@@ -1394,19 +1392,6 @@
   "target": 720,
   "v": 3
  },
- "https://newportal.portal.auone.jp/media/thumbnails/2026/10/15/https___news_jp_i_1483301251298116530_w400.webp": {
-  "w": 400,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.722,
-  "local": "pics/6f8532d8ad04f041.webp",
-  "out": [
-   1200,
-   1200
-  ],
-  "why": "看不清"
- },
  "https://news-images.tvbs.com.tw/api/v1/image/01a13a2c-176d-73ee-ba02-69f9e159370a.jpg?t=16x9&c=0,41,1080,649&w=1200&h=675": {
   "w": 1200,
   "h": 675,
@@ -1465,12 +1450,6 @@
   "w": 1200,
   "h": 800,
   "target": 720,
-  "v": 3
- },
- "https://news.mynavi.jp/article/20261017-5142746/ogp_images/ogp.jpg": {
-  "w": 1200,
-  "h": 800,
-  "target": 1280,
   "v": 3
  },
  "https://news.pchome.com.tw/newsdata/expense/pcnews/20261019/79239640452524204013_original.jpg": {
@@ -1749,15 +1728,15 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010000-piaeigat-000-1-view.jpg?exp=10800": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261016-10172853-it_nlab-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1826,
+  "target": 1280,
   "v": 3,
-  "local": "pics/75eeaf419088fe18.webp",
+  "local": "pics/2e3aefee8b931daa.webp",
   "out": [
    1280,
-   720
+   1062
   ],
   "why": "期限付きの網址"
  },
@@ -1817,10 +1796,22 @@
   "target": 720,
   "v": 3
  },
+ "https://p.potaufeu.asahi.com/d416-p/picture/31451038/72243b8d2254b36daa8010677f8b393f.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://p2.bahamut.com.tw/B/2KU/57/e8ed9726d2792963168af33c2420q0t5.JPG": {
   "w": 1199,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://pbs.twimg.com/media/HU3fjjzaoAAAado?format=webp&name=large": {
+  "w": 894,
+  "h": 554,
+  "target": 720,
   "v": 3
  },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/07/28/35175924.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
@@ -2000,6 +1991,12 @@
   "target": 720,
   "v": 3
  },
+ "https://realsound.jp/wp-content/uploads/2026/10/20261019-nurumeta-01.jpg": {
+  "w": 1200,
+  "h": 1688,
+  "target": 720,
+  "v": 3
+ },
  "https://resource.hanteonews.com/content/post/2026/10/01/06413c55-e5dc-4568-88ea-bb34c3e66e2f.png": {
   "w": 1606,
   "h": 904,
@@ -2010,18 +2007,6 @@
   "w": 1024,
   "h": 576,
   "target": 720,
-  "v": 3
- },
- "https://rocketnews24.com/wp-content/uploads/sites/2/2026/10/collage1_6e330b.jpg?w=1200&h=630&crop=1": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/4e3238e713fd70fa140c1d7ebbc8cc2c974ea9eb26afa12fec89b8fc1987efda/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fsetn.com.tw%2Ff6ed0eaf155d6cd697540b50e5340dc5.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/57f1fbda6dfb7c7a1f02a50b02caf1014e1a9520eda2c7ea070f2d4efad20bf6/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcinemablend_388%2F72df35e37e2cc4a0fc9faab45255add5.jpg": {
@@ -2054,9 +2039,21 @@
   "target": 720,
   "v": 3
  },
+ "https://sammyguru.com/wp-content/uploads/2026/08/Galaxy-Z-Fold-8-pistachio-and-Z-Fold-8-ultra-Graphite.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://sammyguru.com/wp-content/uploads/2026/10/Galaxy-S27-Series-Case-Featured.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://sammyguru.com/wp-content/uploads/2026/10/Samsung-at-GMIF2026.jpg": {
+  "w": 1267,
+  "h": 721,
   "target": 1280,
   "v": 3
  },
@@ -2081,6 +2078,12 @@
  "https://scontent-sjc3-1.xx.fbcdn.net/v/t51.71878-15/851829434_1657957355672157_598019026852783350_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a27664&_nc_ohc=XESh10ENtgQQ7kNvwHwjkEv&_nc_oc=AdpHdtP0XK3OSJY87Q8TC3pKl37FqpNUKxsnj59ZVQebdWCO3zKWnOjEJo1IKj6tW8Q&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=MQDd2UZ85GS8kyjARWEcJQ&_nc_ss=7820f&oh=00_AQP9Ih7pa7105IIRgsbNoMOpS6GOl8CHZu5WD8WB-Kr2LQ&oe=6ADA6225": {
   "w": 640,
   "h": 1136,
+  "target": 720,
+  "v": 3
+ },
+ "https://scontent-sjc6-1.xx.fbcdn.net/v/t39.99422-6/854482567_1128764872938442_5347361320336136322_n.png?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=p600x600&_nc_cat=1&ccb=1-7&_nc_sid=cae128&_nc_ohc=xddnlh3hbWQQ7kNvwHqGNcN&_nc_oc=AdrhmBiH_pnQlRsww_Jg3IXrllisHtdjRPNap5nwZuLCruROUR5RCDqTEMFvNtca52U&_nc_zt=14&_nc_ht=scontent-sjc6-1.xx&_nc_gid=zQX2Mm8zXXDP4ymZUBhUHg&_nc_ss=7820f&oh=00_AQONWJhmK269mm659W-ArbEvusqF8hD83AfJtneA7BRj3g&oe=6ADBA6FD": {
+  "w": 600,
+  "h": 800,
   "target": 720,
   "v": 3
  },
@@ -2374,6 +2377,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.91Lk_Lp9Z3Lu7fubNIvcpg&pid=News&w=640": {
+  "w": 640,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.9HNkO23mU3knPnT4qSUFNg&pid=News&w=640": {
   "w": 100,
   "h": 100,
@@ -2485,10 +2494,16 @@
   "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.KKPhqk_odic0m6gbXwMUaA&pid=News&w=640": {
-  "w": 640,
-  "h": 360,
+  "w": 100,
+  "h": 100,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "local": "pics/f6f13e7886715d7e.webp",
+  "out": [
+   656,
+   384
+  ],
+  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200": {
   "w": 100,
@@ -2504,10 +2519,16 @@
   "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.OO8VYFY4L4D16bVvrmfJhg&pid=News&w=1200": {
-  "w": 700,
-  "h": 468,
+  "w": 100,
+  "h": 100,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "local": "pics/9ac7940a87083a3a.webp",
+  "out": [
+   700,
+   468
+  ],
+  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.Q6Cy-fmavjIb_wiYjfqeiw&pid=News&w=1200": {
   "w": 700,
@@ -2538,6 +2559,30 @@
   "h": 364,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.VJIFnjOnAgkGz_6a3HK2Mg&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/1ceceac79d1138e2.webp",
+  "out": [
+   700,
+   393
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.WODkXkMTnDspkBVe3IGdng&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/90a169ee1b66c52d.webp",
+  "out": [
+   700,
+   366
+  ],
+  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.ZZC7xXqYNpi9qk80zWrW2w&pid=News&w=1200": {
   "w": 100,
@@ -2658,6 +2703,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640": {
+  "w": 640,
+  "h": 333,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.m-teaGj4MfqBDGsnICv-RQ&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2718,6 +2769,19 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.tr8Y9j_U17aoZiuzy8OLRA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.499,
+  "local": "pics/8affb40c70b760e2.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.uj01IO2vWKIstFWrhgg42g&pid=News&w=1200": {
   "w": 700,
@@ -2850,6 +2914,12 @@
   "w": 1600,
   "h": 900,
   "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://www.digitaltrends.com/tachyon/2026/06/samsung-galaxy-s26-ultra-smartphone-11.jpg?resize=1200%2C630": {
