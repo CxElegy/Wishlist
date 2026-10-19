@@ -891,6 +891,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.tennismagazine.jp/media/article/35727/images/main_8b5058780dbee423e5b420f25ffa8002.jpg": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3
+ },
  "https://images.thedirect.com/media/article_full/avengers-doomsday-guardians-of-the-galaxy-mcu.jpg": {
   "w": 1280,
   "h": 720,
@@ -1516,6 +1522,12 @@
  "https://news.walkerplus.com/article/1407492/17648972_615.jpg": {
   "w": 615,
   "h": 769,
+  "target": 720,
+  "v": 3
+ },
+ "https://news.walkerplus.com/article/1430865/18178181_615.jpg": {
+  "w": 615,
+  "h": 401,
   "target": 720,
   "v": 3
  },
@@ -2178,12 +2190,6 @@
   "w": 1280,
   "h": 853,
   "target": 1280,
-  "v": 3
- },
- "https://tennis.jp/atsuhiko-takei/wp-content/uploads/sites/71/2026/10/C794A5FA-83F1-4AA6-AE1E-ED02911DA936-1024x768.jpg": {
-  "w": 1024,
-  "h": 768,
-  "target": 720,
   "v": 3
  },
  "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=780,fit=cover,f=auto,quality=high,sharpen=2,g=face/21/2026/10/2026101522493126583_1.jpg": {
