@@ -344,6 +344,15 @@ button{font-family:inherit}
 .pend li a:hover,.pend li a:focus-visible{color:var(--acc);text-decoration:underline}
 .pend li small{font:var(--fs-label) var(--font-num);opacity:.7}
 .older .card.c3 h3{font-size:15px;line-height:1.45}
+/* 副色が鮮やかな作品（漫威の赤など）：「もっと見る」の広い面は主面の色に副色を薄く混ぜた落ち着いた色にして、
+   副色そのものは上の細い線と＋ボタンだけに使う（広い面積に原色の赤・黄・ピンクを塗ると目が疲れる） */
+.softalt .older{background:color-mix(in srgb,var(--abg) 20%,var(--bg));color:var(--fg);border-top:3px solid var(--abg)}
+.softalt .older summary::before{background:var(--abg);color:var(--afg)}
+.softalt .older summary:hover,.softalt .older summary:focus-visible{color:var(--acc)}
+.softalt .older .card.a{color:var(--fg);--ac:var(--acc)}
+.softalt .older .card.a .when b{color:var(--bg)}
+.softalt .older .card.a .vt{--vt:var(--bg);--vf:var(--fg)}
+.softalt .older .hl{color:color-mix(in srgb,var(--acc) 65%,var(--fg))}  /* 強調色は背景が少し明るくなった分だけ本文色に寄せる（文字として 4.5:1 以上） */
 /* ---- 作品ごとの装飾（motif = 版面模版）は templates/*.css から読み込んで、ここに入れる ---- */
 /* 版面模版「retro」：平成动画：星星、角丸题字、双层圆点底纹、发光的强调色。只用作品的配色变量（--bg/--fg/--acc/--abg/--afg/--aacc/--line），说明见 TEMPLATES.md */
 .m-retro{background-image:radial-gradient(circle,color-mix(in srgb,var(--acc) 35%,transparent) 1px,transparent 1.6px),
@@ -975,7 +984,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.19 13:17</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.19 13:21</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
