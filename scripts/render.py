@@ -3592,8 +3592,8 @@ LIVE_JS = """
         if(s.classList.contains('panel')){s.classList.add('fresh');var t=document.createElement('span');t.className='fresh-tag';t.textContent=T.upd;s.appendChild(t);}}});
     var items=order.map(function(s){return [label(s),T.n.replace('%n',by[s.id]),s.id];}).concat(other.map(function(s){return [label(s),T.m,s.id];}));
     var shown=items.slice(0,4),rest=items.length-shown.length;
-    toast(items.length?(n?(ZH?'有新内容':'更新しました'):(ZH?'有更新':'更新しました')):T.s,false,shown);
-    if(rest>0){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',rest);bar.firstChild.appendChild(r);}
+    if(items.length||n){toast(ZH?'有新内容':'更新しました',false,shown);
+      if(rest>0){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',rest);bar.firstChild.appendChild(r);}}
     if(document.hidden)badge(n||other.length);
   }
   // 待つとき：ダイアログを開いている・入力欄にいる・書きかけ／選んだファイルがある（読み直すと消えてしまう）
@@ -3608,8 +3608,9 @@ LIVE_JS = """
       if(pending!==v){pending=v;
         // version.json の <ページ>_marks と自分の data-h を見比べて、どの版面が変わったかを先に言う
         var mk=j[PAGE+'_marks']||{},mine=marks(),ch=[];Object.keys(mk).forEach(function(id){if(mine[id]&&mine[id]!==mk[id][1])ch.push([mk[id][0],'',id]);});
-        var sh=ch.slice(0,3);toast(T.p,true,sh);
-        if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}
+        // 名前を挙げられる変化（AI 編集が整理した記事の増減など）がないときは何も出さない。静かに（操作していないとき）読み直すだけ
+        if(ch.length){var sh=ch.slice(0,3);toast(T.p,true,sh);
+          if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}}
       maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
@@ -3716,16 +3717,24 @@ def _section_marks(html_, updated=""):
 BOARD_LABEL = {"front": "トップ", "picks": "気になるかも？", "wishlist": "愿望清单"}
 
 
+def _board_hash(part):
+    """版面の「中身の指紋」：**AI 編集が整理した記事（<article>）だけ**を見る。
+    整理待ち（<details class="pend">）・話題度の数字・小元素・帯などが変わっても、版面が更新されたことにはしない
+    （まだ AI が整理していない新着は、読者に見せる更新ではないから）。記事が 1 本もない版面は一定の指紋。"""
+    body = re.sub(r'<details class="pend">.*?</details>', "", part, flags=re.S)
+    arts = re.findall(r'<article\b.*?</article>', body, flags=re.S)
+    return hashlib.sha1("".join(arts).encode("utf-8")).hexdigest()[:8]
+
+
 def _board_marks(html_, updated=""):
-    """簡報の各版面・トップ・気になるかも（data-k を持つ <section>）に data-h（中身の指紋）を付ける。
+    """簡報の各版面・トップ・気になるかも（data-k を持つ <section>）に data-h（AI 編集した記事の指紋）を付ける。
     開いたままのページが「どの版面が変わったか」を読み直す前から言えるように（version.json の *_marks と見比べる）。"""
     parts = re.split(r'(?=<section\b[^>]*\bdata-k=")', html_)
     out = []
     for part in parts:
         m = re.match(r'<section\b[^>]*\bdata-k="', part)
         if m and 'id="' in part[:part.index(">")]:
-            h = hashlib.sha1((part.replace(updated, "") if updated else part).encode("utf-8")).hexdigest()[:8]
-            part = f'<section data-h="{h}"' + part[len("<section"):]
+            part = f'<section data-h="{_board_hash(part)}"' + part[len("<section"):]
         out.append(part)
     return "".join(out)
 
