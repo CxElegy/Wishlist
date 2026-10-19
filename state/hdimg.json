@@ -736,12 +736,6 @@
   "target": 720,
   "v": 3
  },
- "https://hermes.media.static.aol.com/media/2026/10/14/9cad928f-c6ee-3705-9a00-7653f62c246d/e1e3a7de-1160-4a28-b3e1-d3bbd02d6cb4.jpg": {
-  "w": 2945,
-  "h": 1921,
-  "target": 1280,
-  "v": 3
- },
  "https://hermes.media.static.aol.com/media/2026/10/14/e0a70dfe-6604-3cea-83b8-c319c02bb690/7fdc4e2f-5915-4ded-b631-4852b662f1c0.jpeg": {
   "w": 3000,
   "h": 1500,
@@ -934,18 +928,6 @@
  "https://image.sunmedia.tw/banners/32fbbdbe-8f8b-4bcc-8ed3-c7c046545038.jpeg": {
   "w": 1200,
   "h": 669,
-  "target": 720,
-  "v": 3
- },
- "https://images-tw.girlstyle.com/wp-content/uploads/2026/10/33e6a91a.png": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
- "https://images.entertainment.ie/uploads/2021/02/04114544/don-cheadle-war-machine.jpg?w=1280&h=768&q=high": {
-  "w": 1280,
-  "h": 768,
   "target": 720,
   "v": 3
  },
@@ -1541,6 +1523,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg": {
+  "w": 2000,
+  "h": 2000,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.loom-app.com/roomie/dist/images/2026/10/IMG_2554-1-scaled-1.jpeg?w=1200": {
   "w": 1200,
   "h": 675,
@@ -1947,18 +1935,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261015-00132577-futaman-000-1-view.jpg?exp=10800": {
-  "w": 2200,
-  "h": 2200,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/54c4250c67876e41.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261016-00010000-tennisnet-000-1-view.jpg?exp=10800": {
   "w": 2000,
   "h": 1500,
@@ -2347,12 +2323,6 @@
   "w": 982,
   "h": 655,
   "target": 720,
-  "v": 3
- },
- "https://sammyguru.com/wp-content/uploads/2026/08/Galaxy-Z-Fold-8-pistachio-and-Z-Fold-8-ultra-Graphite.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://sammyguru.com/wp-content/uploads/2026/10/Galaxy-S27-Series-Case-Featured.jpg": {
@@ -2781,6 +2751,18 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.C_NGscnruYKUmveizPm9RQ&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/deaea120bc183c76.webp",
+  "out": [
+   700,
+   393
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.DCl7ypaBdA3BGL73kDGUKQ&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2940,18 +2922,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.cbLw6ptXL6K_FbP-nfFGbA&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/95478f811df4d441.webp",
-  "out": [
-   700,
-   366
-  ],
-  "why": "Bing の小さい縮小画像"
- },
  "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500": {
   "w": 100,
   "h": 100,
@@ -3074,11 +3044,11 @@
   "h": 100,
   "target": 1280,
   "v": 3,
-  "blur": 0.439,
+  "blur": 0.499,
   "local": "pics/8affb40c70b760e2.webp",
   "out": [
    1280,
-   734
+   719
   ],
   "why": "Bing の小さい縮小画像"
  },
@@ -3304,12 +3274,6 @@
   "w": 2000,
   "h": 1500,
   "target": 720,
-  "v": 3
- },
- "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Samsung-Galaxy-S27.jpeg": {
-  "w": 2000,
-  "h": 1566,
-  "target": 1280,
   "v": 3
  },
  "https://www.sheknows.com/wp-content/uploads/2026/10/Starbucks-Black-Cat-Frappuccino-Drops-October-22-Heres-Exactly-How-to-Get-the-Cookie-Before-It-Sells-Out.png?w=1024": {
