@@ -106,6 +106,11 @@ button{font-family:inherit}
 .navwish:hover{background:var(--rose);color:#FFF}
 @media (max-width:1000px){.navwish{display:none}}
 .issue{display:flex;flex-direction:column;gap:40px}
+/* 本文の小分類の区切り（目次と同じ「板块 → 小分類」。目立たせない：細い線と小さな字だけ） */
+.subhead{display:flex;align-items:center;gap:10px;margin:0 0 -22px;padding-bottom:5px;border-bottom:2px solid color-mix(in srgb,var(--sc) 40%,transparent)}
+.subhead .tg{font:800 var(--fs-label) var(--font-sans);padding:1px 9px}
+.subhead b{font:800 15px var(--font-sans);color:var(--ink)}
+.subhead small{font:700 11px var(--font-mono);color:var(--ink);opacity:.62;margin-left:auto}
 /* ---------- トップ：毎日刷り直すポスター。地色はその日のトップ記事の写真から（--tint / --deep / --hacc） ---------- */
 .front{display:flex;flex-direction:column;gap:40px}
 .poster{position:relative;background:var(--tint,var(--sheet));color:var(--ink);border:2px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 28px 18px}
@@ -591,6 +596,7 @@ html{scroll-behavior:smooth}
  .nav .pill{display:flex!important;flex:none;padding:5px 10px;border:1px solid rgba(251,248,241,.35);color:var(--card);
   font:700 13px/1.3 var(--font-sans);white-space:nowrap}
  .nav .pill .no,.nav .pill .ic,.nav .pill .cnt,.nav .pill .new,.nav .pill .br,.nav .pill .xref{display:none}
+ .nav .pill.media,.nav .nsum{display:none!important}   /* スマホの横帯にはシリーズの中身・作品名の行を出さない */
  .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
  [data-k]{scroll-margin-top:104px}
@@ -2561,8 +2567,15 @@ NAV_STYLES = {
 .nav .nslot.cur .nsec .tg{transform:skewX(var(--skew)) scale(1.22);box-shadow:3px 3px 0 var(--ink)}
 .nav .nsec .meter{grid-column:1/-1;height:4px;background:var(--sc)}   /* 板块の色の下線（新着の件数は出さない、2026-10-18） */
 .nav .nbody{position:absolute;left:0;right:0;top:52px}
+.nav .nsum{margin:0 4px 0 6px;font:500 11px/1.55 var(--font-sans);color:rgba(26,28,34,.5);
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}   /* たたんだ板块の作品名：目立たせない */
+.nav .nsum a{color:inherit;text-decoration:none}.nav .nsum a:hover{color:var(--ink);text-decoration:underline}
+.nav .nsum b{margin-left:2px;font:700 10px var(--font-mono);color:var(--sc)}.nav .nsum span{margin-left:4px;opacity:.8}
+.nav .nsum.x{display:none}
 /* 上下級（案 A）：下級は上級の駅から出た枝線（拐角 └）の上の駅。大きさは普通の駅と同じ */
 .nav .pill.kid{padding-left:52px}
+.nav .pill.media .nm{font-size:13px;font-weight:700;color:rgba(26,28,34,.62)}   /* シリーズの中身：作品より小さめの字 */
+.nav .pill.media::after{width:10px;height:6px;margin-top:-3px;left:32px}
 .nav .pill.kid .br{position:absolute;left:14.5px;top:-17px;width:18px;bottom:50%;border-left:2px solid var(--sc);border-bottom:2px solid var(--sc);z-index:-1}
 .nav .pill.kid::after{left:30px}
 .nav .pill.kid.on{padding-left:76px}
@@ -2669,14 +2682,30 @@ FLAME_SVG = (
     + '</g></svg>' + '<i class="em"></i>' * 16 + '</span>')
 
 
-def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=None, sub_heat=None, also=None):
+# シリーズの中身（items.yaml の media）：目次でシリーズの駅の下に枝で出す媒体と、その媒体の記事を数える語
+MEDIA_WORDS = {
+    "マンガ": "漫画|漫畫|マンガ|manga|comic|単行本|单行本|連載|连载|最新刊|最新話",
+    "アニメ": "アニメ|anime|动画|動畫|TVアニメ|放送|配信",
+    "映画": "映画|劇場版|剧场版|電影|电影|movie|film|興行|公開",
+    "ドラマ": "ドラマ|drama|電視劇|电视剧|剧集|劇集|実写|series",
+    "小説・ラノベ": "小説|小说|小說|novel|ラノベ|ライトノベル",
+    "ゲーム": "ゲーム|game|游戏|遊戲|アプリ",
+    "グッズ": "グッズ|コラボ|一番くじ|フィギュア|ぬいぐるみ|周边|周邊|联名|聯名|merch",
+    "イベント": "イベント|展覧会|展示|カフェ|ポップアップ|POP ?UP|フェア",
+    "舞台・ライブ": "舞台|ミュージカル|ライブ|コンサート|musical|concert",
+}
+
+
+def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=None, sub_heat=None, also=None, media=None):
     """左侧目录（v6）：板块ごとの枠に作品を並べる（小分類ごと）。どこを隠すかは NAV_JS が画面の高さで決める。
     subs：{作品: 小分類}（items.yaml の sub）。hide：隠し始める作品の数（"auto" なら画面の高さで決める）。
     parents：{下級: 上級}（items.yaml の parent）。下級は上級の駅のすぐ下に、上級の小分類で、枝線（拐角 └）つきで並ぶ（案 A）。
     上下級は同じ関注項なので、下級を小さくしたり特別にたたんだりしない。
     並びは works の順（digest が heat.heat_order で「小分類の話題度 → 作品の話題度」に並べて渡す）。sub_heat：{(板块, 小分類): 話題度}。
     also：{作品: [(ほかの板块, その板块での小分類)]}（items.yaml の also）。版面は本来の板块に 1 つだけ。ほかの板块には「乗換」の駅
-    （.pill.xfer、「⇄ 本来の板块」の札）を置き、押すと同じ版面へ飛ぶ。同じニュースは 1 回しか出ない。"""
+    （.pill.xfer、「⇄ 本来の板块」の札）を置き、押すと同じ版面へ飛ぶ。同じニュースは 1 回しか出ない。
+    media：{作品: [媒体…]}（items.yaml の media、シリーズの中身）。その駅の下に枝（└ マンガ / アニメ / 映画）で出し、
+    直近の記事のうちその媒体の語（MEDIA_WORDS）が見出し・要約にある件数を「+n」で。押すと同じ版面へ。"""
     groups, xfers = {}, {}
     for w in works:
         groups.setdefault(w.get("section") or "其他", []).append(w)
@@ -2691,6 +2720,13 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
     subs, parents, sub_heat = subs or {}, parents or {}, sub_heat or {}
 
     def pill(w, sc, sub="", kid=False):
+        if isinstance(kid, str) and kid.startswith("m:"):   # シリーズの中身の枝：data-for は付けない（読んでいる印は作品の駅に）
+            lab = kid[2:]
+            rx = re.compile(MEDIA_WORDS.get(lab) or re.escape(lab), re.I)
+            n = sum(1 for x in w["stories"] if x["_issue"] >= cutoff and rx.search(f'{x.get("headline", "")} {x.get("blurb", "")}'))
+            return (f'<a class="pill kid media" style="--sc:{sc}" data-x="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{n}" '
+                    f'data-sub="{e(sub)}" href="#{_wid(w["name"])}" title="{e(w["name"])} の{e(lab)}"><span class="br"></span>'
+                    f'<span class="nm">{e(lab)}</span>' + (f'<span class="new">+{n}</span>' if n else "") + '</a>')
         recent = sum(1 for x in w["stories"] if x["_issue"] >= cutoff)
         icon = _nav_icon(w)
         ic = (f'<i class="ic has" style="--img:url({e(urllib.parse.quote(icon, safe=":/?&=%#@+,;~"))})"></i>' if icon
@@ -2728,7 +2764,11 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
             if is_kid(w):
                 continue
             rows.append((w, subs.get(w["name"], ""), False))
-            rows += [(k, subs.get(w["name"], ""), True) for k in ws if is_kid(k) and parents[k["name"]] == w["name"]]
+            rows += [(w, subs.get(w["name"], ""), "m:" + m) for m in (media or {}).get(w["name"], ())]   # シリーズの中身
+            for k in ws:
+                if is_kid(k) and parents[k["name"]] == w["name"]:
+                    rows.append((k, subs.get(w["name"], ""), True))
+                    rows += [(k, subs.get(w["name"], ""), "m:" + m) for m in (media or {}).get(k["name"], ())]
         rows += [(w, sb, "x") for w, sb in xfers.get(name, ())]   # ほかの板块の作品の乗換駅（その板块での小分類に入れる）
         if not rows:
             continue
@@ -2740,7 +2780,7 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
             first = {sb: next(w for w, x, _ in rows if x == sb) for sb in sub_order}
             body += ('<div class="nsubs">' + "".join(
                 f'<a data-sub="{e(sb)}" href="#{_wid(first[sb]["name"])}">{e(sb or "その他")}'
-                f'<small>{sum(1 for _, x, _ in rows if x == sb)}</small></a>' for sb in sub_order) + '</div>')
+                f'<small>{sum(1 for _, x, kd in rows if x == sb and not (isinstance(kd, str) and kd.startswith("m:")))}</small></a>' for sb in sub_order) + '</div>')
             for sb in sub_order:
                 hs = sub_heat.get((name, sb))
                 body += (f'<div class="nlab" data-sub="{e(sb)}">{e(sb or "その他")}'
@@ -2749,6 +2789,14 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
         else:
             body += "".join(pill(w, sc, x, kid) for w, x, kid in rows)
         body += f'<a class="nmore x" href="#{top_href}"></a>'
+        # 板块が見出しだけにたたまれたときの空きに、中の作品名を薄い小さな字で 1〜2 行（新着の多い順・+n）。メインは板块なので目立たせない
+        own = [w for w, _, kd in rows if kd in (False, True)]
+        cnt = {w["name"]: sum(1 for x in w["stories"] if x["_issue"] >= cutoff) for w in own}
+        own.sort(key=lambda w: (-cnt[w["name"]], page_no[w["name"]]))
+        if own:
+            body = ('<div class="nsum x">' + "・".join(
+                f'<a href="#{_wid(w["name"])}">{e(w["name"])}' + (f'<b>+{cnt[w["name"]]}</b>' if cnt[w["name"]] else "") + '</a>'
+                for w in own[:8]) + (f'<span>ほか {len(own) - 8} 件</span>' if len(own) > 8 else "") + '</div>') + body
         slots.append(f'<div class="nslot" style="--sc:{sc}" data-sec="{e(name)}">'
                      f'<a class="nsec" href="#{top_href}">{icon}<span class="tg"><span>{e(_sec_name(name))}</span></span>'
                      f'<span class="en" aria-hidden="true">{e(_sec_en(name))}</span>'
@@ -2883,7 +2931,7 @@ NAV_JS = """
   const tabs = [...nav.querySelectorAll('.mtabs a')];
   const S = [...rail.querySelectorAll('.nslot')].map(el => ({el, sec: el.dataset.sec,
     pills: [...el.querySelectorAll('.nbody .pill')], subs: el.querySelector('.nsubs'), chips: [...el.querySelectorAll('.nsubs a')],
-    labs: [...el.querySelectorAll('.nlab')], more: el.querySelector('.nmore')}));
+    labs: [...el.querySelectorAll('.nlab')], more: el.querySelector('.nmore'), sum: el.querySelector('.nsum')}));
   const slotOf = new Map();
   S.forEach((s, i) => s.pills.forEach(p => slotOf.set(p, i)));
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, wide = matchMedia('(min-width: 1001px)');
@@ -2978,6 +3026,8 @@ NAV_JS = """
       s.labs.forEach(l => l.classList.toggle('x', !(x && x.labs) || !s.pills.some(p => show.has(p) && subOf(p) === l.dataset.sub)));
       s.more.classList.toggle('x', !(x && x.more));
       if (x && x.more) s.more.textContent = `ほか ${x.more} 件 →`;
+      // 見出しだけになった板块の空き（作品の駅が 1 つも出ていない・字が入る高さがある）にだけ、作品名の薄い 1〜2 行
+      if (s.sum) s.sum.classList.toggle('x', show.size > 0 || h < 84);
     });
   }
 
@@ -3316,9 +3366,37 @@ def _dedupe_parents(works, parents):
     return works
 
 
+def _sub_heads(works, subs, parents):
+    """本文の版面を目次と同じ「板块 → 小分類」で区切る：小分類が変わる所に細い見出し（板块が変わる所は板块の札も）。
+    目立たせない（メインは各版面）。下級は上級の小分類（目次と同じ）。小分類がなければ区切らない。"""
+    subs, parents = subs or {}, parents or {}
+    sec_of = {w["name"]: w.get("section") or "其他" for w in works}
+    def sub_of(w):
+        par = parents.get(w["name"])
+        return subs.get(par, "") if par in sec_of and sec_of[par] == sec_of[w["name"]] else subs.get(w["name"], "")
+    first = {}
+    for w in works:   # 板块の中は小分類ごとにまとめる（小分類の並びは最初に出た順、作品の並びはそのまま）
+        first.setdefault((sec_of[w["name"]], sub_of(w)), len(first))
+    sec_first = {}
+    for k in first:
+        sec_first.setdefault(k[0], first[k])
+    works = sorted(works, key=lambda w: (sec_first[sec_of[w["name"]]], first[(sec_of[w["name"]], sub_of(w))]))
+    keys = [(sec_of[w["name"]], sub_of(w)) for w in works]
+    out, prev = [], (None, None)
+    for w, key in zip(works, keys):
+        if key != prev and any(k[1] for k in keys if k[0] == key[0]):
+            sec, sb = key
+            tag = (f'<span class="tg"><span>{e(_sec_name(sec))}</span></span>' if sec != prev[0] else "")
+            out.append(f'<div class="subhead" style="--sc:{_sec_color(sec)}">{tag}'
+                       f'<b>{e(sb or "その他")}</b><small>{keys.count(key)} 件</small></div>')
+        prev = key
+        out.append(_section(w, _wid(w["name"])))
+    return "".join(out)
+
+
 def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=(), feedback=None, sizes=None,
            motifs=None, themes=None, taste=(), heat=None, emblems=None, like_fx=None, subs=None, nav_hide=NAV_HIDE, icons=None,
-           busy=None, generated=None, parents=None, sub_heat=None, langs=None, also=None):
+           busy=None, generated=None, parents=None, sub_heat=None, langs=None, also=None, media=None):
     """issues：按时间倒序的各期数据（全部）。nav_style：左侧目录风格，见 NAV_STYLES。
     sub_heat：{(板块, 小分類): 話題度}（heat.group_scores。目次の小見出しに出す）。order は heat.heat_order の並び。
     parents：{下級: 上級}（items.yaml の parent。上下級に同じニュースが入ったら下級だけに）。icons：{作品: 目次のアイコン}（items.yaml の icon.image）；subs：{作品: 小分類}（items.yaml 的 sub，目次の札）；nav_hide：目次で隠し始める作品の数（"auto" なら画面の高さ）。
@@ -3345,7 +3423,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
     # id 保留 issue-日期：Discord 通知里的链接指向这里
     body = (f'<div class="issue" id="issue-{latest["date"]}" data-label="更新 {updated}">'
             + _front(works, latest["date"], updated, themes, wishes, taste) + _picks(picks, works, fb)
-            + "".join(_section(w, _wid(w["name"])) for w in works) + "</div>")
+            + _sub_heads(works, subs, parents) + "</div>")
     parts = [body]
     return _board_marks(f"""<!doctype html>
 <html lang="ja">
@@ -3368,7 +3446,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 {_wish_link(wishes, "mastwish")}
 <a class="mastset" href="settings.html" title="設定">⚙ 設定</a></div>
 </header>
-{_nav(works, latest['date'], wishes, picks, subs, nav_hide, parents, sub_heat, also)}
+{_nav(works, latest['date'], wishes, picks, subs, nav_hide, parents, sub_heat, also, media)}
 <main class="issues">{''.join(parts)}</main>
 </div>
 <script>{NAV_JS}</script>

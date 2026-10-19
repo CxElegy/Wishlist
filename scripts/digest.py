@@ -1095,7 +1095,7 @@ def export_photos():
 # 设置页上能新增 / 修改的字段（按写进 items.yaml 的顺序）。值的检查规则：
 #   str:N 不超过 N 字的一句话；list:N:M 最多 N 个、每个不超过 M 字的字符串列表
 ITEM_FIELDS = {
-    "type": "type", "parent": "str:80", "section": "section", "subs": "subs", "also": "also", "size": "size", "subtitle": "str:80",
+    "type": "type", "parent": "str:80", "section": "section", "subs": "subs", "also": "also", "media": "list:8:20", "size": "size", "subtitle": "str:80",
     "keywords": "list:12:100", "match": "list:30:100", "exclude": "list:30:100", "news_langs": "langs",
     "priority": "str:300", "urgent_patterns": "regex", "site": "url",
     "steam_appid": "int", "anilist_id": "int", "anilist_type": "anilist_type", "tmdb": "tmdb", "notes": "str:1500",
@@ -2233,7 +2233,8 @@ def write_page():
                           render.busy_plan([i["name"] for i in items],
                                            {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}), generated,
                           {i["name"]: str(i["parent"]) for i in items if i.get("parent")},
-                          {k: v["score"] for k, v in sub_heat.items()}, langs, also_map(items, schemes))
+                          {k: v["score"] for k, v in sub_heat.items()}, langs, also_map(items, schemes),
+                          {i["name"]: [str(m) for m in i["media"]] for i in items if isinstance(i.get("media"), list) and i["media"]})
     save_json(THEMES_FILE, themes)  # トップのポスターの取色を書き足した分
     html_, ver_index = render.stamp(html_, updated, generated)  # 自動更新の指紋（開いたままのページが version.json と見比べる）
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
