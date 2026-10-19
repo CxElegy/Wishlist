@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-19T12:23:03+00:00",
+ "checked": "2026-10-19T14:02:50+00:00",
  "fired": {
   "at": "2026-10-19T12:23:03+00:00",
   "results": {
@@ -19,38 +19,19 @@
     "resp": "cse_017qa3xx2G8qxaLYLVosegs7",
     "sig": "a548e7b594f6"
    },
-   "items": [
-    "A2O LITE",
-    "GTA 6",
-    "あつ森",
-    "ちいかわ",
-    "ちいかわ イベント",
-    "ちいかわ 漫画",
-    "三星手机",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "漫威电影"
-   ],
-   "need": true,
-   "prog": 613,
-   "sig": "631aa98f2790",
-   "why": "整理待ちの記事 79 件（10 版面・AI 編集まで版面に載らない）"
+   "items": [],
+   "need": false,
+   "prog": 0,
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
    "items": [],
    "need": false,
    "sig": "b1312ab4623e",
-   "waiting": [
-    "哈利波特剧集",
-    "Astrae Oratio",
-    "あつ森",
-    "ちいかわ",
-    "ちいかわ イベント",
-    "ちいかわ 漫画",
-    "A2O LITE"
-   ],
-   "why": "失敗 7 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:52 から）"
+   "waiting": [],
+   "why": "全部そろっている"
   },
   "photos": {
    "claude": true,
