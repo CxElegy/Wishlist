@@ -39,6 +39,7 @@ import heat
 import images
 import lang
 import render
+import sitedir
 import sources
 import taxonomy
 import theme
@@ -61,7 +62,7 @@ NAV_SCHEMES_FILE = STATE_DIR / "nav_schemes.json"   # 板块ごとに選んだ�
 HEAT_FILE = STATE_DIR / "heat_signals.json"  # 話題度用的外部数据（维基浏览量、Steam 在线、AniList / TMDB 人气），见 heat.py
 SIZES_PUSHED_FILE = STATE_DIR / "sizes_pushed.json"   # items.yaml 里的 size 上次同步进数据库时是什么
 INBOX_DIR = ROOT / "inbox"
-DOCS_DIR = ROOT / "docs"
+DOCS_DIR = sitedir.SITE_DIR   # 公開ページ（docs/test2/，test1 は凍結）
 ISSUES_ON_PAGE = 3650  # 网页汇总所有期：消息永远保留，一周前的收进折叠区
 
 NEWS_LANGS = {
@@ -2237,10 +2238,11 @@ def emblem_progress(items, tz):
 def write_page():
     issues = [load_json(p) for p in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True)[:ISSUES_ON_PAGE]]
     issues = [i for i in issues if i]
-    if not issues:
-        return
-    DOCS_DIR.mkdir(exist_ok=True)
     settings, items = load_config()
+    if not issues:   # まだ一期も出ていない（test2 を空から始めた直後）：空の号で入口・設定・管理ページだけ作る
+        issues = [{"date": dt.datetime.now(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat(),
+                   "no": 0, "items": []}]
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
     tz = display_tz(settings)
     langs = lang.order(settings)   # 読者の言語（主言語 → 副言語）：言語違いの同じニュースは主言語の 1 本だけ
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")

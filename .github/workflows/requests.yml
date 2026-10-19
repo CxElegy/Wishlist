@@ -34,7 +34,7 @@ jobs:
           pending=$(curl -sf "${hdr[@]}" "$SUPABASE_URL/rest/v1/item_requests?status=eq.pending&select=id" | jq length || echo 0); pending=${pending:-0}
           # 篇幅：数据库里最后一次改的时间，晚于网页最后一次生成就要重新生成
           size_at=$(curl -sf "${hdr[@]}" "$SUPABASE_URL/rest/v1/sizes?select=updated_at&order=updated_at.desc&limit=1" | jq -r '.[0].updated_at // empty' || true)
-          page_at=$(gh api "repos/$GITHUB_REPOSITORY/commits?path=docs/settings.html&per_page=1" --jq '.[0].commit.committer.date' || true)
+          page_at=$(gh api "repos/$GITHUB_REPOSITORY/commits?path=docs/test2/settings.html&per_page=1" --jq '.[0].commit.committer.date' || true)
           sizes=0
           if [ -n "$size_at" ] && [ -n "$page_at" ] && [ "$(date -d "$size_at" +%s)" -gt "$(date -d "$page_at" +%s)" ]; then sizes=1; fi
           echo "待处理的关注项请求：$pending；篇幅有新改动：$sizes（数据库 $size_at / 网页 $page_at）"

@@ -6,7 +6,7 @@ name: 网页立即更新
 on:
   push:
     branches: [main]
-    paths: ["items.yaml", "sections.yaml", "wishlist.yaml", "docs/wishlist/**", "scripts/**", "templates/**", ".github/workflows/render.yml", "requirements.txt"]
+    paths: ["items.yaml", "sections.yaml", "wishlist.yaml", "docs/test2/wishlist/**", "scripts/**", "templates/**", ".github/workflows/render.yml", "requirements.txt"]
   workflow_dispatch:
 
 permissions:

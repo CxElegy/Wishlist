@@ -34,9 +34,10 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import images  # noqa: E402
+import sitedir  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PICS_DIR = ROOT / "docs" / "pics"
+PICS_DIR = sitedir.SITE_DIR / "pics"   # 本站保存の写真。公開ページの場所は PICS_DIR.parent
 STATE_FILE = ROOT / "state" / "hdimg.json"
 REPORTS_DIR = ROOT / "reports"
 
@@ -230,7 +231,7 @@ def process(url, target, referer):
     ok, buf = cv2.imencode(".webp", out, [cv2.IMWRITE_WEBP_QUALITY, QUALITY])
     if not ok:
         return {**rec, "fail": "webp 保存失败"}
-    (ROOT / "docs" / name).write_bytes(buf.tobytes())
+    (PICS_DIR.parent / name).write_bytes(buf.tobytes())
     rec.update(local=name, out=list(out.shape[1::-1]), why=why)
     if ref:
         rec["ref"] = True
@@ -247,7 +248,7 @@ def load_state():
 def local_map():
     """render 用：原图地址 → 本站文件（docs/ 下的相对路径），只给文件真的在的。"""
     return {u: r["local"] for u, r in load_state().items()
-            if isinstance(r, dict) and r.get("local") and (ROOT / "docs" / r["local"]).exists()}
+            if isinstance(r, dict) and r.get("local") and (PICS_DIR.parent / r["local"]).exists()}
 
 
 def run(today=None, reports=None):
@@ -268,7 +269,7 @@ def run(today=None, reports=None):
     for url, (target, referer) in want.items():
         r = state.get(url)
         if isinstance(r, dict) and r.get("v") == VERSION and r.get("target", 0) >= target and not r.get("fail") \
-                and (not r.get("local") or (ROOT / "docs" / r["local"]).exists()):
+                and (not r.get("local") or (PICS_DIR.parent / r["local"]).exists()):
             continue
         if isinstance(r, dict) and r.get("fail") and r.get("day", "") > (
                 dt.date.fromisoformat(today) - dt.timedelta(days=RETRY_DAYS)).isoformat():

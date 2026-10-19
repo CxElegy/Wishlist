@@ -868,7 +868,7 @@ class PublishTest(unittest.TestCase):
         tmp = pathlib.Path(tempfile.mkdtemp())
         for d in ("inbox", "reports", "state", "docs"):
             (tmp / d).mkdir()
-        item = digest.load_config()[1][0]["name"]
+        item = "テスト作品"
         e1 = digest.entry_to_dict(1, entry(title="第一条新闻标题", url="https://a.example/1"))
         e2 = digest.entry_to_dict(2, entry(title="第二条新闻标题", url="https://a.example/2"))
         inbox = {"date": "2026-10-11", "items": [{"name": item, "entries": [e1, e2], "facts": [], "cover": "https://c.example/cover.jpg"}]}
