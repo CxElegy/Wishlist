@@ -1848,6 +1848,10 @@ def render_settings(items, db, updated, schemes=()):
 .fr small{{grid-column:2;font-size:12px;line-height:1.5;color:#5A5D66;overflow-wrap:anywhere}}
 .fr.thin:not(.on) .fn{{color:#5A5D66}}
 .fmiss{{font-size:12px!important}}
+.fgrid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}}
+.fchips{{display:flex!important;flex-direction:row!important;flex-wrap:wrap;gap:6px!important}}
+.fc{{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid #C9C6BE;background:#FFF;font:700 13px 'Noto Sans SC',sans-serif;cursor:pointer}}
+.fc:hover,.fc.on{{border-color:#1A1C22}}.fc.on{{box-shadow:inset 0 -3px 0 #1A1C22}}.fc input{{width:15px;height:15px;margin:0;accent-color:#1A1C22}}
 .fkw summary{{cursor:pointer;font-size:12px;font-weight:700}}.fkw ul{{margin:6px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#5A5D66}}
 /* 加进去以后的目录（树状图预览）：板块的色签 → 小分类 → 关注项，枝用细线 */
 .tree{{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border:2px dashed #1A1C22;background:#FBF8F1}}
