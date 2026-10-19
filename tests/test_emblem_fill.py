@@ -536,8 +536,7 @@ class Backend(unittest.TestCase):
         out = render._admin_backend(rows, todo, log)
         self.assertIn('class="nxs"', out)
         self.assertIn('id="bgq"', out)
-        self.assertIn('class="lg-error"', out)
-        self.assertIn("&lt;b&gt;x&lt;/b&gt;", out)
+        self.assertIn('href="#term-panel"', out)   # ログは一番上のライブログ（livelog.py）に移した
         cfg = json.loads(out.split('id="bg-cfg">')[1].split("</script>")[0])
         self.assertEqual(next(x for x in cfg if x["id"] == "gate")["items"], ["<A>", "B"])   # JS が textContent で入れる
         self.assertTrue(all(x["slots"] for x in cfg))
@@ -554,7 +553,7 @@ class Backend(unittest.TestCase):
             self.assertIn(k, processes.AI_STATE_JA)
         for name, _, _ in processes.LIMITS:
             self.assertIn(name, out)
-        self.assertIn("まだ記録がありません", render._admin_backend(rows))
+        self.assertIn("ライブログを見る", render._admin_backend(rows))
         for p in processes.PROCESSES:   # 定時か Actions で動くものは「次の実行」に出る（AI 編集と同じ回のものは出さない）
             shown = f'data-open="proc-{p["id"]}"' in out
             self.assertEqual(shown, not isinstance(p.get("schedule"), str) and bool(processes.slots(p) or p.get("workflow") or p["id"] in render.BG_ON_EVENT), p["id"])

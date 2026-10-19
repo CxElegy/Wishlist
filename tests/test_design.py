@@ -10,6 +10,7 @@ What is checked (see PRODUCT.md, Accessibility & Inclusion):
 """
 
 import pathlib
+import json
 import re
 import sys
 import unittest
@@ -244,7 +245,7 @@ class AdminPage(unittest.TestCase):
         self.assertNotIn('href="javascript:', out)
         # データを変える操作はない：ボタンは流れを開く・閉じるものと、裏の仕組みを早く動かす「今すぐ実行」だけ
         for b in re.findall(r"<button[^>]*>", out):
-            self.assertRegex(b, r"data-(open|close|run|p=)", b)   # 流れを開く・閉じる・図のページ切り替え、または「今すぐ実行」（データは変えない）
+            self.assertRegex(b, r"data-(open|close|run|p=)|id=\"term-pause\"", b)   # 流れを開く・閉じる・図のページ切り替え・ログの一時停止、または「今すぐ実行」（データは変えない）
         self.assertNotIn("<form", out)
 
     def test_empty(self):
@@ -362,6 +363,29 @@ class Overview(unittest.TestCase):
         self.assertLess(out.index('id="ov"'), out.index('id="status"'))
         self.assertNotRegex(overview.CSS, r"#[0-9a-fA-F]{3,6}\b")
         self.assertIn("prefers-reduced-motion", overview.CSS)   # 動きは減らす設定のときは止める
+
+
+class LiveLog(unittest.TestCase):
+    """管理ページ一番上の「ライブログ」（livelog.py）：ターミナル風の窓。最初の行は実行ログ、あとは JS が流す。"""
+
+    def test_panel_first_and_seeded(self):
+        import livelog
+        log = [{"at": "2026-10-19T09:02:00+00:00", "proc": "publish", "level": "ok", "text": "<b>出刊</b>"},
+               {"at": "2026-10-19T08:00:00+00:00", "proc": "gate", "level": "info", "text": "判断"}]
+        html_ = livelog.panel(log)
+        cfg = json.loads(re.search(r'id="term-cfg">(.*?)</script>', html_).group(1))
+        self.assertEqual([r["p"] for r in cfg["seed"]], ["gate", "publish"])   # 古い順に流す
+        self.assertNotIn("<b>出刊</b>", html_)                                   # 文字は JSON の中だけ（JS が textContent で出す）
+        self.assertIn('role="log"', html_)
+        out = render.render_admin({"log": log}, {}, "u")
+        self.assertLess(out.index('id="term-panel"'), out.index('id="ov"'))     # しくみの全体図より上
+        self.assertNotIn('<ol class="blog">', out)                               # 下の古いログは移した
+
+    def test_css_tokens_and_motion(self):
+        import livelog
+        self.assertNotRegex(livelog.CSS, r"#[0-9a-fA-F]{3,6}\b")
+        self.assertIn("prefers-reduced-motion", livelog.CSS)
+        self.assertEqual(sorted(livelog.LOG_FILES), sorted(__import__("runlog").PROCS))   # 実行ログのファイルを全部読む
 
 
 if __name__ == "__main__":
