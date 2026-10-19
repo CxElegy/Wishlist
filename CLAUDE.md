@@ -45,6 +45,8 @@
   Supabase 的自己的表（投票 `feedback`・篇幅 `sizes`・目录分法 `nav_schemes`・请求 `item_requests`・照片 `photo_inbox`・AI 编辑开关 `edit_control`・更新中的条 `live_status`・记事的副本 `news`/`stories`/`price_history`）都有 `account` 列（`db/accounts.sql`）。
   网页只用带 `p_account` 的函数（`window.WL_ACCOUNT`，`render._account_tag`），Actions 的 `digest.supabase` 经 `scope_account` 只读写自己 account 的行；旧的不带 `p_account` 的函数只给冻结的 test1 用。
   现在的 account 名 = `sitedir.NAME`。新加一个 account：在 `sitedir` 换名字、Supabase 不用改表（行按 account 分开）。
+  **以后加 Google 登录时（用户定的，2026-10-19）**：① 分 account 的列统一成登录的号码（`user_id`），现在的 `account` 只是测试用的过渡；
+  ② test1 的内容（关注项・623 张投票・愿望清单等）算作用户本人（管理者）的东西；③ 网址（入口・`/test1/`・`/test2/`）只是现在测试用的分法，以后可以改。
 - test2 的页面里也不留 test1 的痕迹：运行日志只有 test2 的（test1 的在 `archive/test1/state/log/`）；愿望清单的 `watch` 指向现在没有的版面时不出「版面 →」；「気になるかも？」不出别的版面的候选（`current_picks`）；
   「小元素の判断の例」只出现在关注项的例子（其他链到 test1 的管理页）；ライブログ的浏览器缓存键是 `wl-term-test2`（同一个域名）；说明文字里的例子不写具体作品名。
 - **test2 的加关注项规则（只改逻辑）**：一个名字默认只开一个版面，放在它「本身是什么」的板块（选的维基数据条目当依据的面的板块：ちいかわ = 漫画条目 → 作品 › シリーズ）；
