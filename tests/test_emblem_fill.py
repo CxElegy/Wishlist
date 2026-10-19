@@ -868,7 +868,10 @@ class Gate(unittest.TestCase):
         self._aged(30)
         self.assertEqual(self.gate.work_state(self.gate.load(self.state)["jobs"]["edit"])[0], "running")
         calls = []
-        self._aged(90, prog=25)   # 進んだが残りがある → 新しい状況として起こす
+        self._aged(90, prog=25)   # 進んだが残りがある：AI 編集は 1 日 1 回ぐらい（DAILY_JOBS）なのでまだ起こさない
+        self.assertIn("1 日 1 回", self.gate.fire(self.state, post=lambda u, t: calls.append(u) or 200, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"])
+        self.assertEqual(calls, [])
+        self._aged(60 * 21, prog=25)   # 20 時間たったら新しい状況として起こす
         self.assertEqual(self.gate.fire(self.state, post=lambda u, t: calls.append(u) or 200, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"], "Claude を起こした")
         self.assertEqual(self.gate.load(self.state)["jobs"]["edit"]["fired"]["attempts"], 1)
 
