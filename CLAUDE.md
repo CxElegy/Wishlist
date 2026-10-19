@@ -248,7 +248,7 @@
   动效：`live_boards()` 每 30 秒 + Actions 实行中每 3 分，动着的部品光圈 + 斜线条（`prefers-reduced-motion` 时不动），AI 编辑／小元素按阶段（note 里的词、`found=1〜3`）分别发光；
   「反映待ち」超过 30 分的标红「止まっているかも」（push 没通的话会这样）。下方「いま待っているもの」用话说清 什么・为什么・怎么办（`overview.waits`，带「AI 编辑をもう一度起こす」「今すぐ再挑戦」按钮）。
   新增仕组み／步骤时：在 `overview.PAGES` 加部件（`proc` 必须是 `PROCESSES` 里有的），测试在 `tests/test_design.py` 的 Overview。旧的大图（「全体の構成（詳しい図）」）还在下面。
-- **AI 编辑列的倒计时・失败的「今すぐ再挑戦」**：AI 编辑・版面の設計列没有定时，表头显示「次の収集のあと HH:MM（あと N 分）」+ 整理待ち件数 + ゲート前回叫起的时刻（`backend_todo` 的 edit.n / fired）；
+- **AI 编辑列的倒计时・失败的「今すぐ再挑戦」**：AI 编辑列表头显示「次回 9:00 / 18:00（あと N 分）」，版面の設計列显示「次の収集のあと HH:MM」+ 整理待ち件数 + ゲート前回叫起的时刻（`backend_todo` 的 edit.n / fired）；
   小元素「失败」的格子显示自动再挑战的时刻和倒计时，并有「今すぐ再挑戦」按钮（= `run_now('background')`，带 retry_now，失败的版面不等 6 小时；3 分钟 1 次）。
 - **今すぐ実行**（「次の実行」のカードのボタン）：後台作業・ニュース収集・ページ生成を定時を待たずに起こす。网页上没有令牌：
   按钮 → Supabase `run_now(job)`（`db/run_now.sql`，Vault 的 `github_dispatch_token`）→ GitHub workflow_dispatch。
@@ -274,7 +274,8 @@
   没设 = `edit`（默认，2026-10-17 打开）、`0` = 不叫、`edit` = 只叫 AI 编辑、`1` = AI 编辑和照片都叫。AI 编辑自己的定时 2026-10-17 已停（cron 改成只在 2/29 跑），现在只靠ゲート叫）。
 - **版面只放 AI 整理过的报道（2026-10-17 定）**：收集（Actions）出刊时，没被 AI 编辑覆盖的条目（编号 > `_covered`、或 edit.json 里没有的关注项）
   不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
-  ゲート看到今天有整理待ち（`gate.edit_work`）就叫 AI 编辑，所以最多每 2 小时一次 AI 编辑。
+  **AI 编辑一天 2 次（用户定的，2026-10-19）**：日本时间 9:00 和 18:00（`gate.SLOTS`，`background.yml` 在 0:00 / 9:00 UTC 有定时），那一回还没叫过、今天有整理待ち（`gate.edit_work`）就叫；
+  管理页「次の実行」AI 編集卡片的「今すぐ実行」和「AI 编辑をもう一度起こす」随时强制叫（`run_now('edit_now')`）。
   **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。
   所以 `gate.work_state` 看「叫起后编辑済み数（edit.json 的 _covered 合计）有没有增加」：60 分钟内 = 编辑中；60 分钟后没增加 = 停滞 → 再叫（最多 3 次，之后等 6 小时，管理页写「起こしても動かない」）。
   叫起时记下 API 返回的会话 id（`fired.resp`）。管理页 AI 编辑列有「AI 编辑をもう一度起こす」按钮 = `run_now('edit_now')` → `background.yml` 的 `force_edit` → `GATE_FORCE=edit`（不看 `GATE_FIRE`・间隔・停滞判断）。

@@ -107,7 +107,7 @@ COMPONENTS = {
                  "what": "face_id.py：前は Claude が目で見ていた「遠景・集合写真・別人」を数で判断する"},
     "holes": {"kind": "rule", "name": "切り抜きの穴 hole_share", "spec": "実在の人の写真で体の中の穴 > 3% は外す（絵は除く）",
               "what": "emblem.check_whole：服が背景と同じ色で抜けた切り抜きを落とす"},
-    "gate": {"kind": "algo", "name": "ゲート gate.py", "spec": "AI 編集は前から 20 時間あける（1 日 1 回ぐらい）· 起こして 60 分あけて、編集済みが増えなければ「停滞」→ 起こし直す（3 回まで・そのあと 6 時間待つ）· 変数 GATE_FIRE = edit / 1",
+    "gate": {"kind": "algo", "name": "ゲート gate.py", "spec": "AI 編集は 1 日 2 回（日本時間 9:00・18:00、その回にまだなら）· 起こして 60 分あけて、編集済みが増えなければ「停滞」→ 起こし直す（3 回まで・そのあと 6 時間待つ）· 変数 GATE_FIRE = edit / 1",
              "what": "仕事があるか・AI が要るかをプログラムだけで決める。AI の要らない仕事はその場で済ませる"},
     "taste": {"kind": "algo", "name": "好みの学習", "spec": "ラベルごと ±1 · 上限 −6〜+4 · 出すのは 5 点以上",
               "what": "digest.learn_taste：👍👎 の最後の一票から"},
@@ -221,7 +221,7 @@ PROCESSES = [
     },
     {
         "id": "gate", "name": "後台のゲート", "en": "GATE", "lane": "actions", "workflow": "background.yml",
-        "schedule": [(h, m) for h in range(24) for m in (17, 47)],   # 17 分 = Supabase pg_cron、47 分 = GitHub の定時（抜けることがあるので 2 つの時計）
+        "schedule": sorted([(h, m) for h in range(24) for m in (17, 47)] + [(0, 0), (9, 0)]),   # 17 分 = Supabase pg_cron、47 分 = GitHub の定時（抜けることがあるので 2 つの時計）、0:00 / 9:00 UTC = AI 編集の回
         "when": "毎時 · 収集のあとすぐ · 残れば続けて",
         "trigger": "毎時 17 分（Supabase pg_cron）と 47 分（GitHub の定時）／ ニュース収集が終わるたび（新しい材料）／ 時間の予算を使い切って仕事が残っていれば続けてもう一度（3 回まで）／ 管理ページの「今すぐ実行」・失敗した版面の「今すぐ再挑戦」（失敗の待ち時間を飛ばす）",
         "summary": "仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
@@ -242,7 +242,7 @@ PROCESSES = [
              "uses": ["gate"], "yes": "動いている → 残りがあれば新しい状況として起こす", "no": "停滞：3 回まで起こし直す・そのあと 6 時間待つ（管理ページに「起こしても動かない」）"},
             {"id": "g5c", "kind": "decision", "lane": "actions", "title": "GATE_FIRE で開けている？", "text": "リポジトリ変数 · 未設定 = edit（AI 編集だけ・既定）· 0 = 閉 · 1 = 全部 · 管理ページの「AI 編集をもう一度起こす」は変数・間隔・停滞の判断を飛ばす",
              "no": "起こさない（記録だけ・定時を待つ）"},
-            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret ROUTINE_FIRE_TOKEN など）が要る · AI 編集は 1 日 1 回ぐらい（DAILY_JOBS・前から 20 時間あける。停滞の起こし直しは別）",
+            {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret ROUTINE_FIRE_TOKEN など）が要る · AI 編集は 1 日 2 回（SLOTS：9:00・18:00 の回ごとに 1 度。停滞の起こし直しと管理ページのボタンは別）",
              "uses": ["claude"]},
             {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったときだけコミット"},
         ],
@@ -313,9 +313,10 @@ PROCESSES = [
         ],
     },
     {
-        "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai",   # 定時はなし（2026-10-17 に毎日 2 回の定時を止めた）：ゲートが起こす
-        "when": "整理待ちがあるとき（収集のあと）",
-        "trigger": "ゲート：収集で整理待ちが増えたとき（1 日 1 回ぐらい＝前から 20 時間あける・動かなければ 60 分あけて起こし直す）／ 管理ページの「AI 編集をもう一度起こす」／ 新しい関注項が入ったとき",
+        "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai",
+        "schedule": [(0, 0), (9, 0)],   # 日本時間 9:00 / 18:00（ユーザーが決めた）。ゲート（gate.SLOTS）が整理待ちがあるときだけ起こす
+        "when": "毎日 9:00 · 18:00（日本時間）",
+        "trigger": "毎日 9:00 と 18:00（日本時間）、整理待ちがあればゲートが起こす（動かなければ 60 分あけて起こし直す）／ 管理ページの「今すぐ実行」「AI 編集をもう一度起こす」でいつでも ／ 新しい関注項が入ったとき",
         "summary": "inbox の記事から重要なものを選び、同じ件を合わせて（言語違いは主言語の 1 本に）、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。"
                    "版面に載るのは AI 編集が整理した記事だけ（それまでは「整理待ち」、要紧だけ先に載る）。",
         "files": ["EDITING.md", "scripts/digest.py", "scripts/lang.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "pending", "lang"],
@@ -559,7 +560,7 @@ EDGES = [
     (22, "p-live", "s-you", "新着を自動で表示・更新中の帯", "web"),
     (23, "p-collect", "s-db", "版面ごとの状態（探している・新着）", "db"),
     (24, "s-db", "p-live", "live_status を 30 秒ごと", "db"),
-    (25, "p-gate", "p-edit", "整理待ちがあるときだけ起こす（収集のすぐ後）", "ai"),
+    (25, "p-gate", "p-edit", "9:00・18:00 に、整理待ちがあれば起こす", "ai"),
     (26, "p-gate", "p-photos", "写真があるときだけ起こす", "ai"),
     (27, "p-edit", "s-db", "編集中の版面（live_report）", "db"),
     (28, "p-emblem-cron", "s-db", "処理中の版面（live_report）", "db"),

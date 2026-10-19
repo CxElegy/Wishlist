@@ -39,7 +39,32 @@ STATE = ROOT / "state" / "gate.json"
 INBOX = ROOT / "inbox"
 REFIRE_HOURS = 6   # 同じ仕事（指紋が同じ）では、この時間のあいだ起こし直さない
 MIN_GAP_MIN = 60   # 前に起こしてからこの分数は、何があっても起こし直さない（AI 編集 1 回 ≈ 20 分、収集は 2 時間ごと）。これを過ぎても仕事が減っていなければ「停滞」
-DAILY_JOBS = {"edit": 20}   # AI 編集は省トークンのため 1 日 1 回ぐらい：前に起こしてからこの時間は、仕事が残っていても（動いた後なら）起こし直さない
+# AI 編集は 1 日 2 回（ユーザーが決めた：日本時間 9:00 と 18:00）。その時刻を過ぎて、その回にまだ起こしていなければ起こす。
+# 整理待ちがなければ起こさない。停滞（起こしたのに動かない）の起こし直しは別（MAX_ATTEMPTS）。管理ページのボタン（GATE_FORCE）はいつでも
+SLOTS = {"edit": [(9, 0), (18, 0)]}
+SLOT_TZ = "Asia/Tokyo"
+
+
+def last_slot(job, now=None):
+    """その仕事のいちばん最近の定時（UTC の datetime）。定時のない仕事は None。"""
+    if job not in SLOTS:
+        return None
+    now = now or _now()
+    tz = zoneinfo.ZoneInfo(SLOT_TZ)
+    local = now.astimezone(tz)
+    cands = [dt.datetime.combine(local.date() - dt.timedelta(days=d), dt.time(h, m), tz) for d in (0, 1) for h, m in SLOTS[job]]
+    return max(c for c in cands if c <= now).astimezone(dt.timezone.utc)
+
+
+def next_slot(job, now=None):
+    """その仕事の次の定時（UTC の datetime）。"""
+    if job not in SLOTS:
+        return None
+    now = now or _now()
+    tz = zoneinfo.ZoneInfo(SLOT_TZ)
+    local = now.astimezone(tz)
+    cands = [dt.datetime.combine(local.date() + dt.timedelta(days=d), dt.time(h, m), tz) for d in (0, 1) for h, m in SLOTS[job]]
+    return min(c for c in cands if c > now).astimezone(dt.timezone.utc)
 MAX_ATTEMPTS = 3   # 停滞のとき、仕事が減らないまま起こし直す回数の上限（超えたら REFIRE_HOURS 待つ。管理ページに「止まっている」と出す）
 
 # AI が要る仕事 → (定時タスクの id, トークンの環境変数, 名前)
@@ -173,7 +198,7 @@ def work_state(j, now=None):
       stalled   起こして MIN_GAP_MIN 分たったのに prog が増えていない（Claude が動いていない）→ 起こし直す
       gave_up   動かないまま MAX_ATTEMPTS 回起こした：REFIRE_HOURS 待って、管理ページで人に知らせる"""
     last = (j or {}).get("fired") or {}
-    if not (j or {}).get("need") or not last.get("at"):
+    if not ((j or {}).get("need") or (j or {}).get("items")) or not last.get("at"):
         return "none", ""
     now = now or _now()
     try:
@@ -233,7 +258,7 @@ def fire(path=None, post=_post, env=None):
     results = {}
     for job, (rid, var, name) in ROUTINES.items():
         j = (data.get("jobs") or {}).get(job) or {}
-        if not j.get("need"):
+        if not j.get("need") and not (job in force and j.get("items")):
             results[job] = "仕事なし（起こさない）"
             continue
         if job not in allowed:
@@ -257,13 +282,14 @@ def fire(path=None, post=_post, env=None):
             if ago < dt.timedelta(hours=REFIRE_HOURS):
                 results[job] = f"停滞：{why}（{REFIRE_HOURS} 時間待つ・管理ページで確認）"
                 continue
-        if state in ("progress", "none") and job in DAILY_JOBS and last.get("at"):
+        if job not in force and state in ("progress", "none") and job in SLOTS:
             try:
-                since = now - dt.datetime.fromisoformat(last["at"])
+                at = dt.datetime.fromisoformat(last["at"]) if last.get("at") else None
             except (ValueError, TypeError):
-                since = None
-            if since is not None and since < dt.timedelta(hours=DAILY_JOBS[job]):
-                results[job] = f"1 日 1 回ぐらいにしている（前は {int(since.total_seconds() // 3600)} 時間前）。次は {DAILY_JOBS[job]} 時間たってから"
+                at = None
+            if at is not None and at >= last_slot(job, now):   # この回（9:00 / 18:00）はもう起こした
+                nxt = next_slot(job, now).astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime("%H:%M")
+                results[job] = f"1 日 2 回（{' と '.join(f'{h}:{m:02d}' for h, m in SLOTS[job])}）。次は {nxt}"
                 continue
         # progress（60 分たって、進んだがまだ残りがある）→ 新しい状況として attempts=1 で起こす
         token = env.get(var)
