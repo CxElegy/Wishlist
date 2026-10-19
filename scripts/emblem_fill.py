@@ -274,8 +274,8 @@ def wikidata_images(query, props=("P154", "P18"), limit=3):
                                     "format": "json", "limit": 2})
         hits = _json(f"https://www.wikidata.org/w/api.php?{q}").get("search", [])
         for h in hits[:1]:
-            q2 = urllib.parse.urlencode({"action": "wbgetentities", "ids": h["id"], "props": "claims", "format": "json"})
-            claims = _json(f"https://www.wikidata.org/w/api.php?{q2}", 4_000_000)["entities"][h["id"]].get("claims", {})
+            # 項目の中身は Special:EntityData（CDN のキャッシュから返る。api.php の wbgetentities より 429 になりにくい）
+            claims = _json(f"https://www.wikidata.org/wiki/Special:EntityData/{h['id']}.json", 4_000_000)["entities"][h["id"]].get("claims", {})
             for prop in props:
                 for c in claims.get(prop, [])[:limit]:
                     fn = (c.get("mainsnak", {}).get("datavalue") or {}).get("value")

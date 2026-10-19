@@ -6,6 +6,12 @@ https://www.mediawiki.org/wiki/API:Etiquette 、https://www.mediawiki.org/wiki/M
 - 同じサイトには 1 本ずつ（並列にしない）。読む API は api.php に maxlag=5 を付け、混んでいたら Retry-After だけ待つ
 - 429 / 503 は Retry-After を守って取り直す。同じものは取り直さずキャッシュを使う
 キャッシュは requests-cache（SQLite、~/.cache/wishlist-http、Actions では actions/cache で次の回へ持ち越す）。
+
+名乗らない（ログインしない）リクエストの上限は IP ごとに数えられる（https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits ）。
+Claude のクラウドのコンテナ・GitHub Actions は IP をほかの人と共有しているので、1 回目から 429 になることがある。
+環境変数 WIKIMEDIA_TOKEN（OAuth 2.0 の owner-only クライアントのアクセストークン。期限なし・読むだけなら基本権限で足りる）
+があれば API（api.php・rest.php）に Authorization: Bearer を付け、上限はアカウントごとに数えられる（IP に左右されない）。
+画像（upload.wikimedia.org）には付けない。トークンが拒まれたら（401 / 403）付けずに続ける。
 """
 import os
 import pathlib
@@ -29,7 +35,9 @@ EXPIRE = {   # 網址の形 → キャッシュの持ち時間（記事・Wikida
     "*/w/api.php*": timedelta(days=3),
     "upload.wikimedia.org/*": timedelta(days=14),
     "*/wiki/Special:FilePath/*": timedelta(days=14),
+    "*/wiki/Special:EntityData/*": timedelta(days=3),
 }
+NO_AUTH = ("upload.wikimedia.org", "thumb.wikimedia.org")   # 画像のサーバー：トークンは使わない
 MAXLAG = 5       # 秒。サーバーの複製の遅れがこれより大きいと「maxlag」で断られる（Retry-After だけ待つ）
 GAP = 1.3        # 同じホストへは前の応答から 1.3 秒あける（並列のスレッドでも 1 本ずつ）
 ALL_GAP = 0.4    # Wikimedia 全体でも 0.4 秒に 1 回まで（= 毎分 150。UA を守ったボットの上限は全サイト合わせて毎分 200：
@@ -44,6 +52,7 @@ _last = {}       # ホスト → 前の応答が終わった時刻
 _all = [0.0]     # Wikimedia 全体で次に出してよい時刻
 _cool = {}       # ホスト → この時刻までは叩かない
 _session = [None]
+_token = [None]  # WIKIMEDIA_TOKEN（拒まれたら "" にして以後付けない）
 sleep = time.sleep   # テストで差し替える
 
 
@@ -76,9 +85,21 @@ def session():
     return _session[0]
 
 
+def token():
+    if _token[0] is None:
+        _token[0] = (os.environ.get("WIKIMEDIA_TOKEN") or "").strip()
+    return _token[0]
+
+
+def _auth(host):
+    t = token()
+    return {"Authorization": f"Bearer {t}"} if t and host not in NO_AUTH else {}
+
+
 def with_maxlag(url):
     p = urllib.parse.urlsplit(url)
-    if not p.path.endswith("/api.php") or "maxlag=" in p.query:
+    # Wikidata の maxlag はクエリサービス（WDQS）の更新の遅れも含み、よく数分になる（読むだけには関係ない）ので付けない
+    if not p.path.endswith("/api.php") or "maxlag=" in p.query or p.netloc == "www.wikidata.org":
         return url
     return urllib.parse.urlunsplit(p._replace(query=(p.query + "&" if p.query else "") + f"maxlag={MAXLAG}"))
 
@@ -100,13 +121,15 @@ def _error(url, resp, lag=False):
     return urllib.error.HTTPError(url, code, "maxlag" if lag else (resp.reason or ""), resp.headers, None)
 
 
-def get(url, limit=6_000_000):
-    """→ 中身（bytes）。失敗は urllib.error.HTTPError（code 429 / 403 など）で、今までの _get と同じように扱える。"""
+def get(url, limit=6_000_000, ttl=None):
+    """→ 中身（bytes）。失敗は urllib.error.HTTPError（code 429 / 403 など）で、今までの _get と同じように扱える。
+    ttl（timedelta）はキャッシュの持ち時間をこの網址だけ変える（話題度の閲覧数は 12 時間）。"""
     url = with_maxlag(url)
     host = urllib.parse.urlparse(url).netloc
     s = session()
+    kw = {"expire_after": ttl} if ttl is not None and hasattr(s, "cache") else {}
     if hasattr(s, "cache"):   # キャッシュにあれば待たない・数えない
-        hit = s.get(url, only_if_cached=True, timeout=TIMEOUT)
+        hit = s.get(url, only_if_cached=True, timeout=TIMEOUT, **kw)
         if hit.status_code == 200:
             return _body(url, hit, limit)
     if _cool.get(host, 0) > time.time():
@@ -122,7 +145,12 @@ def get(url, limit=6_000_000):
             if slot > time.time():
                 sleep(slot - time.time())
             try:
-                resp = s.get(url, timeout=TIMEOUT)
+                auth = _auth(host)
+                resp = s.get(url, timeout=TIMEOUT, headers=auth, **kw)
+                if auth and resp.status_code in (401, 403):   # トークンが無効・取り消された：付けずに続ける
+                    print(f"  [Wikimedia] WIKIMEDIA_TOKEN が拒まれた（HTTP {resp.status_code}）。トークンなしで続ける")
+                    _token[0] = ""
+                    resp = s.get(url, timeout=TIMEOUT, **kw)
             finally:
                 _last[host] = time.time()
             lag = resp.status_code == 200 and b'"maxlag"' in resp.content[:300]

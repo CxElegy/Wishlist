@@ -43,6 +43,7 @@ jobs:
       EMBLEM_RETRY_NOW: ${{ inputs.retry_now == true && '1' || '' }}
       GATE_FORCE: ${{ inputs.force_edit == true && 'edit' || '' }}   # 不看 GATE_FIRE 和间隔，马上叫（gate.py fire）
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # 管理页「いま動いているもの」・版面的帯（live_status）
+      WIKIMEDIA_TOKEN: ${{ secrets.WIKIMEDIA_TOKEN }}   # Wikimedia の上限を IP（共有）ではなくアカウントごとに（scripts/wikihttp.py）
       # 有活时叫不叫 Claude：仓库变量 GATE_FIRE（GitHub → Settings → Secrets and variables → Actions → Variables）。
       #   没设 = edit（默认，2026-10-17 用户要求打开）· 0 = 不叫（只判断和记录）· edit = 只叫 AI 编辑 · 1（或 all、edit,photos）= AI 编辑和照片加愿望都叫
       # 版面只放 AI 整理过的报道，所以 edit 打开后：收集到新条目 → 这里马上叫 AI 编辑（同一份活 6 小时内不重复叫，两次至少隔 60 分钟）。

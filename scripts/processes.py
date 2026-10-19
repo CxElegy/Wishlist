@@ -53,9 +53,11 @@ COMPONENTS = {
     # ---- アルゴリズム
     "pace": {"kind": "algo", "name": "サイトごとの間隔（全スレッド共有）", "spec": "Reddit 2 秒 · Google / Bing 0.5 秒 · Wikimedia 同じホスト 1 本ずつ・1.3 秒 + 全体 0.4 秒（毎分 150）",
              "what": "sources._pace / wikihttp.get。並列でもサイトから見た間隔は同じ"},
-    "wikiua": {"kind": "rule", "name": "Wikimedia の決まり（wikihttp）", "spec": "UA「WishlistEmblemBot/1.1 (repo; Issues) python-requests」· api.php に maxlag=5 · "
+    "wikiua": {"kind": "rule", "name": "Wikimedia の決まり（wikihttp）", "spec": "UA「WishlistEmblemBot/1.1 (repo; Issues) python-requests」· WIKIMEDIA_TOKEN があれば API に OAuth 2.0 Bearer（上限が共有 IP でなくアカウントごと）· "
+               "Wikidata の項目は Special:EntityData（CDN）· api.php に maxlag=5（Wikidata は WDQS の遅れまで数えるので付けない）· "
                "429 / 503 / maxlag は Retry-After（なければ 5・15・45 秒）で 3 回まで · Retry-After > 120 秒か続く 429 → そのホスト 5 分休む · titles は 50 件ずつ",
-               "what": "scripts/wikihttp.py。ブラウザのふりの UA（Mozilla/…）は 403、名乗らないと毎分 10 回まで。守ったボットは全サイト合わせて毎分 200"},
+               "what": "scripts/wikihttp.py（小元素・話題度の閲覧数）。ブラウザのふりの UA（Mozilla/…）は 403、名乗らないと毎分 10 回まで。守ったボットは全サイト合わせて毎分 200。"
+                       "クラウドのコンテナ・Actions は IP を共有していて 1 回目から 429 のことがあるので、トークンで名乗る"},
     "httpcache": {"kind": "algo", "name": "requests-cache（SQLite）", "spec": "~/.cache/wishlist-http · api.php 3 日 · 画像 14 日 · 200 だけ（maxlag の断りは残さない）",
                   "what": "同じ網址は取り直さない。Actions では actions/cache で次の回へ持ち越す"},
     "dedupe": {"kind": "algo", "name": "タイトルの重複判定", "spec": "完全一致 + 文字 bigram 重なり > 0.75 · 14 日分",
@@ -130,7 +132,7 @@ COMPONENTS = {
     "anilist": {"kind": "api", "name": "AniList GraphQL", "spec": "続編 10 期まで · 人気・トレンド",
                 "what": "放送状態・主役キャラ・話題度"},
     "tmdb": {"kind": "api", "name": "TMDB API", "spec": "放送状態 · popularity", "what": "ドラマ・映画の状態と話題度"},
-    "wikipv": {"kind": "api", "name": "Wikipedia 閲覧数", "spec": "60 日分 · 50 記事ずつ · 1 日 1 回",
+    "wikipv": {"kind": "api", "name": "Wikipedia 閲覧数", "spec": "60 日分 · 50 記事ずつ · 1 日 1 回 · wikihttp 経由（トークン・Retry-After・12 時間キャッシュ）",
                "what": "話題度の「一般の関心」"},
     "wiki": {"kind": "api", "name": "Wikidata / Wikipedia / Commons", "spec": "P154 ロゴ · P18 写真 · ≥300×300",
              "what": "小元素の候補（en / ja / zh / ko）"},
@@ -280,7 +282,7 @@ PROCESSES = [
         "id": "heat", "name": "話題度", "en": "HEAT", "lane": "actions", "when": "収集のたびに数字 · ページ生成で計算",
         "trigger": "数字は収集のとき（1 日 1 回）、点数はページを作るとき（ネットに出ない）",
         "summary": "作品ごとの盛り上がりを 0〜100 で出す。6 つの次元を、自分の平常と比べた分と共通の尺度で混ぜる。",
-        "files": ["scripts/heat.py", "state/heat_signals.json"], "doc": "CLAUDE.md", "uses": ["heat", "wikipv", "steam", "anilist", "tmdb"],
+        "files": ["scripts/heat.py", "state/heat_signals.json"], "doc": "CLAUDE.md", "uses": ["heat", "wikipv", "wikiua", "steam", "anilist", "tmdb"],
         "flow": [
             {"id": "h1", "kind": "fan", "lane": "ext", "title": "外の数字を取る", "mode": "1 日 1 回 · 70 日分残す",
              "items": [("W", "Wikipedia 閲覧数", "60 日", "wikipv"), ("S", "Steam 同時接続", "", "steam"),

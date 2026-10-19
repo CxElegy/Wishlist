@@ -142,6 +142,7 @@ def wiki_views(titles, days=60, log=sys.stderr):
     """维基百科每天的浏览量（真人），一种语言一次请求（MediaWiki action API 的 pageviews，自动跟随重定向）。
     titles 形如 ["en:Chainsaw Man", "ja:チェンソーマン"] → ({"en:Chainsaw Man": {"2026-10-15": 1799, ...}, ...}, 没取到的语言)。
     找不到的词条打一行日志（items.yaml 的 wiki 写错了），不放进结果。"""
+    import wikihttp  # 収集のときだけ使う（ページ生成は通信しない）
     by_lang = {}
     for t in titles:
         lang, _, title = str(t).partition(":")
@@ -154,7 +155,9 @@ def wiki_views(titles, days=60, log=sys.stderr):
             q = urllib.parse.urlencode({"action": "query", "prop": "pageviews", "pvipdays": days, "redirects": 1,
                                         "format": "json", "formatversion": 2, "titles": "|".join(chunk)})
             try:
-                d = _get_json(f"https://{lang}.wikipedia.org/w/api.php?{q}").get("query") or {}
+                # wikihttp：名乗った UA・Retry-After・WIKIMEDIA_TOKEN（共有 IP の 429 を避ける）。閲覧数は毎日変わるのでキャッシュは 12 時間
+                d = json.loads(wikihttp.get(f"https://{lang}.wikipedia.org/w/api.php?{q}", 2_000_000,
+                                            ttl=dt.timedelta(hours=12))).get("query") or {}
             except Exception as err:  # 一种语言取不到（限流等）不影响别的语言，下次再取
                 print(f"  [話題度] 维基 {lang}：{err}", file=log)
                 failed.add(lang)
