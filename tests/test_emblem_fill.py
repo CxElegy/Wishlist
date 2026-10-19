@@ -4,6 +4,7 @@
 """
 
 import datetime as dt
+import zoneinfo
 import json
 import pathlib
 import sys
@@ -492,7 +493,9 @@ class Backend(unittest.TestCase):
 
     def test_slots(self):
         by = {p["id"]: p for p in processes.PROCESSES}
-        self.assertEqual(processes.slots(by["edit"]), [])   # 定時は止めた（2026-10-17）：ゲートが起こす
+        self.assertEqual(processes.slots(by["edit"]), [[0, 0], [9, 0]])   # 日本時間 9:00 / 18:00（gate.SLOTS と同じ）
+        import gate
+        self.assertEqual(sorted(((h - 9) % 24, m) for h, m in gate.SLOTS["edit"]), [tuple(x) for x in processes.slots(by["edit"])])
         self.assertEqual(processes.slots(by["emblem"]), processes.slots(by["edit"]))   # 選定は AI 編集の回に
         self.assertEqual(len(processes.slots(by["collect"])), 12)
         self.assertEqual(processes.slots(by["render"]), [])
@@ -867,13 +870,46 @@ class Gate(unittest.TestCase):
         self.assertEqual(self.gate.work_state(self.gate.load(self.state)["jobs"]["edit"])[0], "progress")
         self._aged(30)
         self.assertEqual(self.gate.work_state(self.gate.load(self.state)["jobs"]["edit"])[0], "running")
+
+    def _at(self, fired_jst, prog_now=25, attempts=1):
+        """edit を日本時間 fired_jst（'2026-10-19 09:05'）に起こした状態にする。"""
+        jst = zoneinfo.ZoneInfo("Asia/Tokyo")
+        at = dt.datetime.strptime(fired_jst, "%Y-%m-%d %H:%M").replace(tzinfo=jst).astimezone(dt.timezone.utc).isoformat()
+        self.gate.save({"jobs": {"edit": {"need": True, "items": ["A"], "sig": "s1", "prog": prog_now,
+                                          "fired": {"at": at, "sig": "s1", "prog": 10, "attempts": attempts}}}}, self.state)
+
+    def _fire_at(self, now_jst, calls, env=None):
+        jst = zoneinfo.ZoneInfo("Asia/Tokyo")
+        now = dt.datetime.strptime(now_jst, "%Y-%m-%d %H:%M").replace(tzinfo=jst).astimezone(dt.timezone.utc)
+        with mock.patch.object(self.gate, "_now", lambda: now):
+            return self.gate.fire(self.state, post=lambda u, t: calls.append(u) or 200,
+                                  env=env or {"ROUTINE_TOKEN_EDIT": "t"})["edit"]
+
+    def test_twice_a_day_at_9_and_18(self):
+        """AI 編集は日本時間 9:00 と 18:00 の 1 日 2 回。その回にもう起こしていれば、整理待ちが残っていても次の回まで待つ。"""
         calls = []
-        self._aged(90, prog=25)   # 進んだが残りがある：AI 編集は 1 日 1 回ぐらい（DAILY_JOBS）なのでまだ起こさない
-        self.assertIn("1 日 1 回", self.gate.fire(self.state, post=lambda u, t: calls.append(u) or 200, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"])
+        self._at("2026-10-19 09:05")   # 9:00 の回で起こして、動いた（prog 10 → 25）
+        self.assertIn("次は 18:00", self._fire_at("2026-10-19 13:00", calls))
         self.assertEqual(calls, [])
-        self._aged(60 * 21, prog=25)   # 20 時間たったら新しい状況として起こす
-        self.assertEqual(self.gate.fire(self.state, post=lambda u, t: calls.append(u) or 200, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"], "Claude を起こした")
-        self.assertEqual(self.gate.load(self.state)["jobs"]["edit"]["fired"]["attempts"], 1)
+        self.assertEqual(self._fire_at("2026-10-19 18:17", calls), "Claude を起こした")   # 18:00 の回
+        self._at("2026-10-19 18:17")
+        self.assertIn("次は 09:00", self._fire_at("2026-10-19 23:47", calls))   # 夜のうちは起こさない
+        self.assertEqual(self._fire_at("2026-10-20 09:00", calls), "Claude を起こした")
+        self.assertEqual(len(calls), 2)
+
+    def test_button_fires_any_time(self):
+        calls = []
+        self._at("2026-10-19 09:05")
+        self.assertEqual(self._fire_at("2026-10-19 13:00", calls, {"ROUTINE_TOKEN_EDIT": "t", "GATE_FORCE": "edit"}), "Claude を起こした")
+
+    def test_slots(self):
+        jst = zoneinfo.ZoneInfo("Asia/Tokyo")
+        now = dt.datetime(2026, 10, 19, 13, 0, tzinfo=jst)
+        self.assertEqual(self.gate.last_slot("edit", now).astimezone(jst).hour, 9)
+        self.assertEqual(self.gate.next_slot("edit", now).astimezone(jst).hour, 18)
+        now = dt.datetime(2026, 10, 19, 7, 0, tzinfo=jst)   # 朝 7 時：最近の回は前日の 18:00
+        self.assertEqual(self.gate.last_slot("edit", now).astimezone(jst).day, 18)
+        self.assertIsNone(self.gate.last_slot("photos", now))
 
     def test_force_skips_gap_and_switch(self):
         calls = []

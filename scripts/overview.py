@@ -36,7 +36,7 @@ PAGES = [
          [N("collect", "ニュース収集", "2 時間ごと · 6 本並列", "actions", "collect")],
          [N(None, "inbox/", "集めた記事の置き場", "repo")],
          [N("gate", "後台のゲート", "毎時 · 仕事があるか数える", "actions", "gate")],
-         [N("edit", "AI 編集", "整理待ちがあるとき", "ai", "edit"),
+         [N("edit", "AI 編集", "毎日 9:00・18:00", "ai", "edit"),
           N("emblem", "小元素の補完", "足りない版面 · AI なし", "actions", "emblem-cron")],
          [N("render", "ページ生成", "push のたび", "actions", "render")],
          [N(None, "公開ページ", "簡報・管理ページ", "web")],
@@ -122,7 +122,7 @@ def waits(data):
                "progress": "AI 編集が動いている。終わった分から版面に載る",
                "stalled": "起こしたのに動いていない。ゲートが次の回で起こし直す（最大 3 回）",
                "gave_up": "3 回起こしても動かない。定時タスクの設定（仓库を使えるか）を見る必要がある"}.get(
-            ed.get("state"), "次の収集のあと、ゲートが AI 編集を起こす。それまで版面には載らず「整理待ち」にいる")
+            ed.get("state"), "次の 9:00 か 18:00 にゲートが AI 編集を起こす（ボタンで今すぐ）。それまで版面には載らず「整理待ち」にいる")
         extra = f"（{ed['why']}）" if ed.get("why") and ed.get("state") in ("progress", "stalled", "gave_up") else ""
         out.append(("AI 編集", f"整理待ち {ed['n']} 件（{ed.get('boards', 0)} 版面）", why + extra, "edit_now"))
     failed = [r["name"] for r in rows if (r.get("bg") or {}).get("emblem", {}).get("state") == "failed"]

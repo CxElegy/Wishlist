@@ -4391,11 +4391,11 @@ BG_COLS = (("collect", "収集", "collect"), ("edit", "AI 編集", "edit"), ("de
 RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render", "edit": "edit_now"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
 RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も 6 時間を待たずにやり直す（3 分に 1 回まで）",
              "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）",
-             "edit": "整理待ちがあれば AI 編集を、間隔・停滞の判断を飛ばして今すぐ起こす（10 分に 1 回まで）"}
+             "edit": "9:00・18:00 を待たずに、整理待ちがあれば AI 編集を今すぐ起こす（10 分に 1 回まで）"}
 EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "stalled": ("止まっている？", "ng"),
               "gave_up": ("起こしても動かない", "ng")}
-BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき",
-               "edit": "整理待ちがあるとき（ゲートが起こす）"}
+RUN_LABEL = {"edit": "今すぐ AI 整理"}   # ボタンの文字（ないものは「今すぐ実行」）
+BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき"}
 
 
 def _slots_attr(pid):
@@ -4404,7 +4404,7 @@ def _slots_attr(pid):
 
 
 BG_THUMBS = 10   # 表の行に並べる小元素の数。残りは「+N」、全部は「小元素の探し方」を開くと見える
-BG_AFTER_COLLECT = ("edit", "design")   # 定時のない列：ゲートが収集のあとに AI 編集を起こす
+BG_AFTER_COLLECT = ("design",)   # 定時のない列：ゲートが収集のあとに AI 編集を起こす
 
 
 def _bg_thumb(t):
@@ -4442,7 +4442,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                         else '<span class="pbar ev" aria-hidden="true"><i></i></span>')   # 定時でないものは実行中だけ出す
                      + (f'<small class="nx-do">{e(td["text"])}</small>' if td.get("text") else "")
                      + (f'<span class="nx-go"><button type="button" class="nx-run" data-run="{RUN_JOBS[p["id"]]}"'
-                        f' title="{e(RUN_TITLE.get(p["id"], "定時を待たずに今すぐ動かす"))}">今すぐ実行</button>'
+                        f' data-label="{e(RUN_LABEL.get(p["id"], "今すぐ実行"))}" title="{e(RUN_TITLE.get(p["id"], "定時を待たずに今すぐ動かす"))}">{e(RUN_LABEL.get(p["id"], "今すぐ実行"))}</button>'
                         f'<small class="nx-msg" aria-live="polite"></small></span>' if p["id"] in RUN_JOBS else "")
                      + f'<span class="lv">{_lane_short(p["lane"])}</span></li>')
         if sl:
