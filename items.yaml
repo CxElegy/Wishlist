@@ -1375,6 +1375,8 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：新品、新款发售、降价、促销、联名、限定款。"
 
   - name: "ちいかわ"
+    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
+      - {subject: "ちいかわ のロゴ", why: "ブランドの顔（公式ロゴ）", image: "emblems/efbf7f0f.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/ChiikawaLogo.png?width=500", page: "https://commons.wikimedia.org/wiki/File:ChiikawaLogo.png", shape: "logo"}
     type: category
     section: "好物"
     subs: {kind: "キャラグッズ", owner: "キャラクター"}

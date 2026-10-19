@@ -1,12 +1,12 @@
 {
  "items": {
   "A2O LITE": {
-   "at": "2026-10-19T09:44:41+00:00",
-   "failed_at": "2026-10-19T09:44:41+00:00",
+   "at": "2026-10-19T09:51:54+00:00",
+   "failed_at": "2026-10-19T09:51:54+00:00",
    "funnel": {
     "added": 0,
     "auto": 0,
-    "found": 23,
+    "found": 26,
     "rejected": {
      "何人も写っている": 4,
      "使えない": 2,
@@ -18,7 +18,7 @@
    },
    "have": 7,
    "kind": "group",
-   "material": "f1a3798f6083",
+   "material": "c93a0f181f23",
    "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：顔なし 8・別人 5・何人も写っている 4。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
    "state": "failed",
    "steps": [
@@ -34,7 +34,7 @@
     },
     {
      "added": 0,
-     "found": 21,
+     "found": 24,
      "label": "公式・記事のページ"
     }
    ],
@@ -42,7 +42,7 @@
    "tried": {
     "Wikimedia Commons": 0,
     "Wikipedia": 0,
-    "YouTube": 18,
+    "YouTube": 21,
     "公式サイト": 0,
     "新聞の配図": 2,
     "記事のページ": 3
@@ -383,6 +383,123 @@
    "state": "ok",
    "target": 3
   },
+  "ちいかわ": {
+   "at": "2026-10-19T09:51:50+00:00",
+   "failed_at": "2026-10-19T09:51:50+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 5,
+    "rejected": {
+     "もう使っている・外した画像": 1
+    },
+    "usable": 2
+   },
+   "have": 1,
+   "kind": "topic",
+   "material": "2a930ce960b7",
+   "note": "1 枚足した（標準 +1 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：もう使っている・外した画像 1。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 1,
+     "found": 2,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 3,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 3,
+   "tried": {
+    "Wikidata": 5,
+    "Wikimedia Commons": 0,
+    "公式サイト": 0
+   }
+  },
+  "ちいかわ イベント": {
+   "at": "2026-10-19T09:52:13+00:00",
+   "failed_at": "2026-10-19T09:52:13+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 0,
+    "rejected": {},
+    "usable": 0
+   },
+   "have": 0,
+   "kind": "topic",
+   "material": "c3e0592e2ec4",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：候補なし。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 0,
+     "found": 0,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 3,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
+  },
+  "ちいかわ 漫画": {
+   "at": "2026-10-19T09:52:14+00:00",
+   "failed_at": "2026-10-19T09:52:14+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 0,
+    "rejected": {},
+    "usable": 0
+   },
+   "have": 0,
+   "kind": "brand",
+   "material": "c3e0592e2ec4",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：候補なし。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 0,
+     "found": 0,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 1,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
+  },
   "チェーンソーマン": {
    "at": "2026-10-17T05:56:16+00:00",
    "funnel": {
@@ -648,18 +765,20 @@
   }
  },
  "last_run": {
-  "at": "2026-10-19T09:44:18+00:00",
+  "at": "2026-10-19T09:51:29+00:00",
   "done": [
-   "Astrae Oratio",
-   "A2O LITE"
+   "ちいかわ",
+   "A2O LITE",
+   "ちいかわ イベント",
+   "ちいかわ 漫画"
   ],
-  "end": "2026-10-19T09:44:42+00:00",
+  "end": "2026-10-19T09:52:15+00:00",
   "minutes": 40.0,
   "workers": 6
  },
  "started": "2026-10-16T23:48:04+00:00",
  "summary": {
   "ok": 19,
-  "total": 23
+  "total": 26
  }
 }
