@@ -75,6 +75,11 @@ button{font-family:inherit}
 .navwish:hover{background:var(--rose);color:#FFF}
 @media (max-width:1000px){.navwish{display:none}}
 .issue{display:flex;flex-direction:column;gap:40px}
+/* 本文の小分類の区切り（目次と同じ「板块 → 小分類」。目立たせない：細い線と小さな字だけ） */
+.subhead{display:flex;align-items:center;gap:10px;margin:0 0 -22px;padding-bottom:5px;border-bottom:2px solid color-mix(in srgb,var(--sc) 40%,transparent)}
+.subhead .tg{font:800 var(--fs-label) var(--font-sans);padding:1px 9px}
+.subhead b{font:800 15px var(--font-sans);color:var(--ink)}
+.subhead small{font:700 11px var(--font-mono);color:var(--ink);opacity:.62;margin-left:auto}
 /* ---------- トップ：毎日刷り直すポスター。地色はその日のトップ記事の写真から（--tint / --deep / --hacc） ---------- */
 .front{display:flex;flex-direction:column;gap:40px}
 .poster{position:relative;background:var(--tint,var(--sheet));color:var(--ink);border:2px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 28px 18px}
@@ -759,6 +764,7 @@ html{scroll-behavior:smooth}
  .nav .pill{display:flex!important;flex:none;padding:5px 10px;border:1px solid rgba(251,248,241,.35);color:var(--card);
   font:700 13px/1.3 var(--font-sans);white-space:nowrap}
  .nav .pill .no,.nav .pill .ic,.nav .pill .cnt,.nav .pill .new,.nav .pill .br,.nav .pill .xref{display:none}
+ .nav .pill.media,.nav .nsum{display:none!important}   /* スマホの横帯にはシリーズの中身・作品名の行を出さない */
  .nav .pill.on{background:var(--card);color:var(--ink);border-color:var(--card)}
  .nav .bar{display:block;position:absolute;left:0;bottom:0;height:3px;background:var(--cur,var(--alert));width:calc(var(--prog,0) * 100%)}
  [data-k]{scroll-margin-top:104px}
@@ -833,7 +839,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="ce89d192310d"><style>
+<meta name="wl-ver" data-page="wishlist" content="3638105d973c"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -855,7 +861,7 @@ section.fresh{position:relative}
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.19 09:26</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.19 09:30</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
