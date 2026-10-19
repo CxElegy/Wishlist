@@ -240,6 +240,12 @@
   "target": 720,
   "v": 3
  },
+ "https://biz.chosun.com/resizer/v2/HBSDEMLCHA2GEOBSMMZDMOLDGM.jpg?auth=bfba2bc4607bf2e8dcb952cb95b746e3b9de4b0e258d9d84715f1b45a2da9a83&width=900&height=472&smart=true": {
+  "w": 900,
+  "h": 472,
+  "target": 720,
+  "v": 3
+ },
  "https://biz.chosun.com/resizer/v2/MRSDGOJTGM4WMMJRG44GIMJUGM.jpg?auth=dde128eb71a6881d31630bad6ff1821dd094593c0bce0b3b673b056ffdb0e1fc&width=616": {
   "w": 616,
   "h": 435,
@@ -1875,12 +1881,6 @@
  "https://pimg.mk.co.kr/news/cms/202610/16/news-p.v1.20261016.6a6ef7ed5e18472a951cd924a1051932_R.jpg": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://pimg.mk.co.kr/news/cms/202610/19/news-p.v1.20261019.e714b565ac1a468c90e729aaa096c449_R.jpg": {
-  "w": 1000,
-  "h": 818,
   "target": 720,
   "v": 3
  },
