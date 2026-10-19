@@ -475,7 +475,8 @@
     {id: "name", when: () => S.mode === "add", render: askName},
     {id: "which", when: () => S.mode === "add" && S.wdState !== "off", render: askWhich},
     {id: "facets", when: () => S.mode === "add" && facetPlan().type !== "", render: askFacets},
-    {id: "arrange", when: () => S.mode === "add" && multiSec(), render: askArrange},
+    // 「怎么放」は聞かない（用户定的、2026-10-19）：規則で固定＝板块ごとに版面 1 つ（同じ板块の面は 1 つにまとめる・主面の板块に主項、ほかは下級）
+    {id: "arrange", when: () => false, render: askArrange},
     {id: "kind", when: () => !(S.ans.facets || []).length || facetPlan().type === "topic", render: () => single("kind", "这是什么？", guessHint(),
       Object.entries(KINDS).map(([v, k]) => ({v, label: k.label, hint: k.hint})))},
     {id: "focus", render: () => multi("focus", `你关注「${S.name}」的哪方面？`, "可以多选。会按这个给消息排序：直接回答这些的新消息排最前面。",
@@ -585,6 +586,7 @@
   // 面が決まったら板块・小分類・乗換…は規則で決める（面の既定の勾も同じ）。面・置き方・主面が変わったときだけ計算し直す
   function ensureFacets() {
     if (S.mode !== "add" || !(S.ans.facets || []).length) return;
+    S.ans.arrange = multiSec() ? "split" : "merge";   // 板块ごとに 1 つ（面が 1 つの板块だけなら 1 つの版面）
     const sig = JSON.stringify([S.ans.facets, S.ans.arrange, S.ans.mainFacet, (S.derived || []).length, (S.wsec || {}) && Object.keys(S.wsec || {}).length]);
     if (S._appliedSig === sig) return;
     S._appliedSig = sig;
