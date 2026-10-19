@@ -283,6 +283,9 @@
   **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。
   所以 `gate.work_state` 看「叫起后编辑済み数（edit.json 的 _covered 合计）有没有增加」：60 分钟内 = 编辑中；60 分钟后没增加 = 停滞 → 再叫（最多 3 次，之后等 6 小时，管理页写「起こしても動かない」）。
   叫起时记下 API 返回的会话 id（`fired.resp`）。管理页 AI 编辑列有「AI 编辑をもう一度起こす」按钮 = `run_now('edit_now')` → `background.yml` 的 `force_edit` → `GATE_FORCE=edit`（不看 `GATE_FIRE`・间隔・停滞判断）。
+- **AI 编辑分批・token 记录（2026-10-19，用户定的）**：AI 编辑按 `digest.py edit-queue`（整理待ち多的先，5 个版面一批）一批一批「编排 → 配图 → 出刊 → push」，推完 1〜2 分钟网页上这几个版面就更新（推送不花 token）。
+  每批出刊时 `_log_edit_batch` 把这批编完的版面・本数・**这批用掉的 token**（`usage.py`：读 Claude Code 会话记录 `~/.claude/projects/*/*.jsonl` 里每条回复的 usage，真实数字，前一批之后的差）写进 `state/log/edit.json`，
+  管理页「AI 編集のトークン」（今天・7 天・每回每批）和「ライブログ」显示。**省 token**：AI 读的是 `edit-brief`（不含网址的短一览），只给 hero・lead 看候选图（`PICK_WEIGHTS`，一张一览 ≈ 570 token），普通报道配图交给规则。
 - **流程图每一步都标「AI が判断」还是「ルール」（用户定的）**：`processes.judged_by` 自动判断（用到 Claude = AI，用学习模型 = 「ルール＋モデル」，其他 = ルール），
   AI 的步骤是紫色粗框斜线底、规则是绿色左边条，构成图的框里写「AI n · ルール n」。Claude 判断但没挂 `claude` 札的步骤写 `"by": "ai"`。
   小元素的判断只有一张表 `scripts/emblem_rules.py`（流程图下的「判断の一覧」），新判断加在那里，不要在别处另写一套。

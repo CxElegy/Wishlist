@@ -22,9 +22,20 @@
    有的话**先运行 `python scripts/digest.py live-edit`**：网页上今天还没编的版面出「AI が編集しています · あと約 N 分」的条，读者知道在更新、可以等一下。
    之后 `pick-images`・`publish` 会自动把条推进到「配図を選んでいます」「反映を待っています」，不用再做什么。
 3. 读 `items.yaml`，了解每个关注项的 `priority`（读者最关心什么）和 `notes`（背景）。
-4. 读 inbox 里每个关注项的 `entries`（编号 `n`、日期、来源、标题、摘要），按下面的规则编排。
-5. 写 `inbox/YYYY-MM-DD.edit.json`（格式见下）。已经有这个文件时**整份重写**，覆盖当天所有条目。
-6. **挑配图**：
+4. **分批编排（2026-10-19，用户定的：编好一批就上网页，不等全部编完）**。先看顺序：
+   ```bash
+   python scripts/digest.py edit-queue
+   ```
+   它按「整理待ち多的先」每 5 个版面分一批（第 1 批：GTA 6（51）、…）。**一批一批做下面的 ①〜④，每批做完就推送**，
+   推完 1〜2 分钟网页上这几个版面就换成整理好的报道（开着的页面会自己刷新、提示「更新しました：GTA 6 新着 3 件…」），读者不用等全部编完。
+   ① **用短一览读这批版面**（省 token：不要直接读 inbox 的 JSON，那里有很长的网址和摘要）：
+   ```bash
+   python scripts/digest.py edit-brief --only N     # N = 第几批；一行一条：编号 日期 出典｜标题｜摘要（120 字）
+   ```
+   按下面的规则编排，写进 `inbox/YYYY-MM-DD.edit.json`：
+     **只改这批的版面**（每个版面整版重写，`_covered` 写这个版面现在的条目数），别的版面原样留着（前几批编好的、还没轮到的都不动）。
+     还没有这个文件就新建（只写这批）。
+   ② **挑配图**（省 token：**只有 hero・lead 的报道**出候选图让你看，普通报道由出刊的规则自动配图；前几批选好的不再出。看图很费 token，别为普通报道去找图）：
    ```bash
    pip install -q -r requirements.txt
    python scripts/digest.py pick-images
@@ -37,17 +48,19 @@
    - 避开纯 UI 教学截图、图标、大段文字、广告、和本作无关的图；
    - 同一期里尽量不重复用同一张图。
    都不合适就不写 `image`，系统会用原文预览图。
-7. 出刊：
+   ③ 出刊（还没轮到的版面照旧是「整理待ち」，不会被弄乱）：
    ```bash
    python scripts/digest.py publish
    ```
-8. 提交并推送：
+   ④ 提交并推送（提交信息写这一批的版面）：
    ```bash
    git add inbox reports state docs
-   git commit -m "编排 YYYY-MM-DD"
+   git commit -m "编排 YYYY-MM-DD（第 N 批：GTA 6、ILLIT…）"
    git pull --rebase && git push origin main
    ```
-   推送被拒就再 `git pull --rebase` 一次后重推。做了版面模版的，`git add` 再加上 `templates items.yaml`。
+   推送被拒就再 `git pull --rebase` 一次后重推（`docs/` 冲突时以重新生成为准：`python scripts/digest.py render` 后再提交）。做了版面模版的，`git add` 再加上 `templates items.yaml`。
+   **推送失败（403 等权限错误）就停下**，不要接着编下一批，把错误原文写出来。
+   全部批次做完再跑一次 `python scripts/digest.py edit-queue`：没有输出 = 今天的整理待ち都编完了。
    不要动 `scripts/`、工作流文件；`items.yaml` 只能改版面模版那一步说的 `motif`、`theme`、`notes`。
 
 ## 编排规则
@@ -117,7 +130,7 @@
 `_covered` 必须写：之后当天又收集到的新条目（编号大于它的）**不上版面**，只列在版面底部折叠的「整理待ち N 件」里（原标题 + 来源），
 等你下次编排时整理（后台ゲート看到整理待ち就会叫你，最多每 2 小时一次）。还没写进 edit.json 的关注项也一样，整个都是整理待ち。
 例外是要紧消息（命中 `urgent_patterns`）：等不了，出刊时马上用原标题做「重大」放在最前面，Discord 也照常通知；你编排时把它正式编进去即可。
-所以**版面上的普通报道全部来自你的 edit.json**：每次都要覆盖当天所有条目，`_covered` 写成编排时 entries 的条目数。
+所以**版面上的普通报道全部来自你的 edit.json**：每个版面编的时候整版重写，`_covered` 写成编排时这个版面 entries 的条目数（分批：每批只动这批的版面）。
 
 ## 不要做的事
 

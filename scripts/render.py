@@ -4712,6 +4712,38 @@ def _admin_edit_diff(d):
     return head + f'<ol class="ed-rows">{"".join(out)}</ol>'
 
 
+def _tk(n):
+    n = int(n or 0)
+    return f"{n / 10000:.1f}万" if n >= 10000 else f"{n:,}"
+
+
+def _admin_edit_tokens(d):
+    """「AI 編集のトークン」：AI 編集の回ごと・バッチ（5 版面ずつ編集 → 出刊 → push）ごとに使ったトークン（本物の数字、usage.py）。
+    新規入力（キャッシュ書きを含む）・キャッシュ読み（安い）・出力。棒はその回でいちばん多いバッチを 100% に。"""
+    runs = (d or {}).get("runs") or []
+    if not runs:
+        return ('<p class="empty">まだ記録がありません。次の AI 編集から、バッチ（5 版面）ごとに使ったトークンが残ります。</p>')
+    def kp(label, u):
+        u = u or {}
+        return (f'<div class="kpi"><span class="kl">{e(label)}</span><span class="kv"><b>{_tk(int(u.get("in", 0)) + int(u.get("cw", 0)) + int(u.get("out", 0)))}</b>'
+                f'<small>新規入力＋出力</small></span><span class="kd">キャッシュ読み {_tk(u.get("cr"))}</span></div>')
+    out = '<div class="kpis k2">' + kp("今日", d.get("today")) + kp("この 7 日", d.get("week")) + "</div>"
+    for g in runs:
+        peak = max([b["total"] for b in g["batches"]] + [1])
+        rows = "".join(
+            f'<li><span class="tk-w">{e(b["when"])} · 第 {e(str(b.get("batch") or "?"))} バッチ</span>'
+            f'<span class="tk-b">{e("、".join(b["boards"][:5]) + (" ほか" if len(b["boards"]) > 5 else "")) or "—"}'
+            f'<small>{len(b["boards"])} 版面・{e(str(b.get("stories") or 0))} 本</small></span>'
+            f'<span class="tk-bar"><i style="width:{100 * b["total"] / peak:.1f}%"></i></span>'
+            f'<span class="tk-n">入力 {_tk(int(b["tok"].get("in", 0)) + int(b["tok"].get("cw", 0)))} · 読み {_tk(b["tok"].get("cr"))} · 出力 {_tk(b["tok"].get("out"))}</span></li>'
+            for b in g["batches"])
+        sm = g["sum"]
+        out += (f'<h3 class="h3">{e(g["when"])} の回 <small>{len(g["batches"])} バッチ · 新規入力 {_tk(sm.get("in", 0) + sm.get("cw", 0))}'
+                f' · キャッシュ読み {_tk(sm.get("cr"))} · 出力 {_tk(sm.get("out"))}</small></h3><ol class="tks">{rows}</ol>')
+    return out + ('<p class="mt-x">数字は Claude のセッションの記録から（推定ではない）。キャッシュ読みは料金がずっと安い。'
+                  'サブスク枠の残りは <a href="https://claude.ai/settings/usage" target="_blank" rel="noopener noreferrer">Claude の設定 → 使用量</a> で。</p>')
+
+
 def _admin_votes(v):
     if not v.get("total"):
         return '<p class="empty">まだ投票がありません。</p>'
@@ -4737,6 +4769,13 @@ def _admin_votes(v):
 
 
 ADMIN_PAGE_CSS = """
+.kpis.k2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tks{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:6px}
+.tks li{display:grid;grid-template-columns:150px minmax(0,1fr) 160px 260px;gap:4px 12px;align-items:center;font-size:13px}
+.tk-w{font:700 12px var(--font-mono)}.tk-b{overflow-wrap:anywhere}.tk-b small{display:block;opacity:.7;font-size:var(--fs-label)}
+.tk-bar{height:10px;background:color-mix(in srgb,var(--ink) 10%,transparent)}.tk-bar i{display:block;height:100%;background:var(--viz-5)}
+.tk-n{font:500 12px var(--font-mono)}
+@media (max-width:860px){.tks li{grid-template-columns:minmax(0,1fr)}}
 .ed-sum{margin:0 0 6px;font-size:14px;line-height:1.8}.ed-sum b{font:900 20px var(--font-mono);margin:0 2px}
 .ed-sum span{display:block;font-size:12px;opacity:.75}
 .ed-key{display:flex;gap:16px;margin:0 0 10px;font-size:12px}.ed-key span{display:inline-flex;align-items:center;gap:6px}
@@ -5098,6 +5137,7 @@ def render_admin(data, db, updated):
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
 <section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist")}</section>
+<section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>
 <section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
 <section class="panel" id="editdiff"><h2 class="sh"><span>AI 編集の前後</span><small>最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事</small></h2>{_admin_edit_diff(data.get("edit_diff"))}</section>
