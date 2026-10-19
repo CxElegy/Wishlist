@@ -12,6 +12,24 @@ FILE = pathlib.Path(__file__).resolve().parent.parent / "sections.yaml"
 OTHER = "其他"
 # 向导「这是什么？」的答案 → 没有词命中时的板块（和以前的 SECTION_BY_TYPE 一样）
 BY_TYPE = {"game": "游戏", "anime": "影视", "show": "影视", "product": "好物", "category": "好物", "event": "演出"}
+# 以前的 17 个板块 → 现在的 8 个大类（2026-10-19 合并）。items.yaml・设置页的请求里写着旧名字的照这个换
+LEGACY = {"时尚": "好物", "数码": "好物", "汽车": "好物", "书刊": "影视",
+          "宠物": "生活", "美食": "生活", "爱好": "生活", "家居": "生活", "健康": "生活", "艺术": "出行"}
+SERIES = "シリーズ"   # 方法 4：同一个板块里有两种以上媒体的作品（ちいかわ = 漫画・アニメ・映画）的小分类
+# 题材型的面：板块里没写 facets 的（「咖啡」「滑雪板」…）用这一套。sec 不写 = 这个板块
+GENERIC_FACETS = [
+    {"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": True},
+    {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": True},
+    {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展",
+     "sec": "出行", "subs": {"kind": "季節イベント"}},
+    {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}},
+    {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣"},
+]
+
+
+def canonical(key):
+    """旧い板块名（宠物・时尚…）は今の大類に。"""
+    return LEGACY.get(key, key)
 
 
 def _load():
@@ -32,8 +50,8 @@ def _hit(words, text):
 
 
 def classify(text, type_=None):
-    """说明・名字里的词 → 板块（sections.yaml 从上到下，先命中的算）；都没命中按 type；还没有就「其他」。"""
-    for key, r in SECTIONS.items():
+    """说明・名字里的词 → 板块（prio の小さい順、同じなら sections.yaml の順。先命中的算）；都没命中按 type；还没有就「其他」。"""
+    for key, r in sorted(SECTIONS.items(), key=lambda kv: kv[1].get("prio", 50)):
         if _hit(r.get("words"), text or ""):
             return key
     return BY_TYPE.get(type_ or "", OTHER)
@@ -67,24 +85,18 @@ def guess_subs(section, text=""):
     return out
 
 
-def facets(key):
-    """题材型（「猫」这种普通词）的「面」：sections.yaml 的 facets，没写就用第一种分法的值（每个值 = 一个面，关键词就是这个值）。"""
+def facets(key, kind=None):
+    """题材型（「猫」这种普通词）的「面」：sections.yaml 的 facets[第一种分法的值]（ペット：用品・フード・健康…），
+    没写就用 GENERIC_FACETS（新商品・お店・イベント・コラボ・セール）。sec・subs が書いてなければこの板块・この値。"""
     r = SECTIONS.get(key) or SECTIONS[OTHER]
-    if r.get("facets"):
-        return [{**f, "sec": f.get("sec") or key} for f in r["facets"]]
     first = (r.get("schemes") or [{}])[0]
-    out = []
-    for v in first.get("values") or []:
-        name = v["v"] if isinstance(v, dict) else v
-        if name == "その他":
-            continue
-        words = [p for p in re.split(r"[・/]", name) if p]
-        out.append({"id": name, "label": name, "kw": words[:2], "sec": key, "subs": {first["id"]: name},
-                    "re": "|".join([re.escape(w) for w in words] + ([v["re"]] if isinstance(v, dict) and v.get("re") else []))})
-    return out
+    got = (r.get("facets") or {}).get(kind) if kind else None
+    return [{**f, "sec": f.get("sec") or key, "subs": f.get("subs") or ({first.get("id"): kind} if kind else {})}
+            for f in (got or GENERIC_FACETS)]
 
 
 def for_page():
     """设置页的向导用（render_settings 的 wl-cfg）：板块的日语名、颜色、默认的「这是什么」、对号入座的词、分法和常用值、题材型的面。"""
     return [{"key": k, "ja": r["ja"], "color": r["color"], "kind": r.get("kind") or "product", "words": r.get("words") or "",
-             "schemes": r.get("schemes") or [], "facets": facets(k)} for k, r in SECTIONS.items()]
+             "schemes": r.get("schemes") or [], "prio": r.get("prio", 50),
+             "facets": {v: facets(k, v) for v in (r.get("facets") or {})}, "facets_any": facets(k)} for k, r in SECTIONS.items()]

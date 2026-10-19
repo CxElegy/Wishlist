@@ -14,8 +14,8 @@
 #   priority_keywords 不用 AI 时生效：标题含这些词的消息排在最前面做头条
 #   urgent_patterns   要紧消息的判定（正则，匹配标题）。命中的消息当天立刻通知 Discord，并在简报里做成整行“重大”板块。
 #                     Reddit / YouTube 的帖子不算，避免传闻误报
-#   section      可选，头版上归到哪个板块：只能写 sections.yaml 里的 key（游戏 / 影视 / 运动 / 演出 / 好物 / 时尚 / 书刊 / 宠物 / 美食 /
-#                数码 / 出行 / 艺术 / 爱好 / 家居 / 健康 / 汽车 / 其他），不临时开新板块。
+#   section      可选，头版上归到哪个板块：只能写 sections.yaml 里的 key（8 个大类：影视 作品 / 游戏 / 演出 音楽・ライブ / 运动 /
+#                好物 ショッピング / 生活 暮らし・趣味 / 出行 おでかけ・アート / 其他），不临时开新板块。旧的 17 个板块名会自动换成大类
 #                不填按 type：game → 游戏，anime / show → 影视，event → 演出，product / category → 好物
 #   subs         必填，板块里的小分类，按「分け方」各写一个：{status: 運営中, platform: スマホ}（分け方和常用的值见 sections.yaml）。
 #                用哪个分け方由 ⚙ 设置页选（板块ごと）。每个分け方都要写，哪怕只有这一项；左边目录一定出小分类的札。（旧的 sub: 也还认）
@@ -359,7 +359,7 @@ items:
       font: sans
 
   - name: 漫威电影
-    subs: {kind: 映画, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
+    subs: {kind: "シリーズ", origin: "海外"}
     icon: {image: "icons/marvel.webp", kind: logo, why: "フランチャイズ：MARVEL のロゴ（人物は使わない）", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Marvel_Studios_2016_logo.svg/960px-Marvel_Studios_2016_logo.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_roles: {"Chris Hemsworth": "Thor", "Robert Downey Jr.": "Iron Man", "Anthony Mackie": "Captain America", "Sebastian Stan": "Winter Soldier", "Chris Evans": "Steve Rogers", "Letitia Wright": "Black Panther"}   # 出演者 → 役（gather_roles が Fandom の出演者の記事から）
@@ -630,7 +630,7 @@ items:
     wiki: ["en:Illit", "ko:아일릿", "ja:ILLIT"]
 
   - name: 星巴克马克杯
-    subs: {kind: 食器・生活, owner: ブランド}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
+    subs: {kind: "雑貨・食器", owner: "ブランド"}
     icon: {image: "icons/starbucks.webp", kind: logo, why: "ブランド：スターバックスのロゴ", source: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/500px-Starbucks_Corporation_Logo_2011.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Starbucks
@@ -685,7 +685,7 @@ items:
       font: serif
 
   - name: 猫用品
-    subs: {animal: 猫, kind: 用品}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
+    subs: {kind: "ペット", how: "買う"}
     icon: {image: "icons/cat.webp", kind: symbol, why: "カテゴリ：猫の記号", source: "https://github.com/jdecked/twemoji（1f431 猫の顔）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
     emblem_icon: "1f408 1f43e 1f431"
@@ -696,7 +696,7 @@ items:
       - {subject: "1f431 アイコン", why: "版面の主題を表す物", image: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f431.svg", page: "https://github.com/jdecked/twemoji", shape: "icon"}
     subtitle: 猫グッズ · 家里两只猫
     type: category
-    section: 宠物
+    section: "生活"
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 猫咪新奇用品, lang: ja-JP, query: "猫 世界初 新製品", need: ["猫|ねこ|ネコ", "世界初|業界初|新発想|新製品|新発売"]}
       - {label: 猫咪新奇用品, lang: zh-TW, query: "貓咪 新品 首款", need: ["猫|貓", "首款|首发|首發|黑科技|全球首|新品"]}
@@ -863,7 +863,7 @@ items:
     wiki: ["en:Japan Open Tennis Championships", "ja:ジャパン・オープン・テニス選手権"]
 
   - name: 三星手机
-    subs: {kind: スマホ, owner: ブランド}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
+    subs: {kind: "ガジェット・家電", owner: "ブランド"}
     icon: {image: "icons/samsung-galaxy.webp", kind: logo, why: "ブランド：Galaxy のロゴ", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Samsung_Galaxy_logo_%28%22Galaxy%22_logo_only%29.svg/960px-Samsung_Galaxy_logo_%28%22Galaxy%22_logo_only%29.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: Samsung
@@ -872,7 +872,7 @@ items:
       - {subject: "Samsung のロゴ", why: "ブランドの顔（公式ロゴ）", image: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung%20wordmark.svg?width=500", page: "https://commons.wikimedia.org/wiki/File:Samsung_wordmark.svg", shape: "logo"}
     subtitle: Galaxy S27 Ultra · S27 Pro · 系列情报
     type: product
-    section: 数码
+    section: "好物"
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 安卓旗舰新机, lang: zh-CN, query: "安卓 旗舰 新机 发布 2027", need: ["旗舰|旗艦|flagship|フラッグシップ|플래그십", "发布|發表|発表|launch|출시|上市", "手机|手機|phone|smartphone|スマホ|スマートフォン|폰|스마트폰|Galaxy|iPhone|Pixel|Xiaomi|小米|OPPO|vivo|一加|OnePlus|Honor|荣耀|榮耀|华为|華為|Huawei|Nothing|Motorola"]}
       - {label: 安卓旗舰新机, lang: en-US, query: "flagship Android phone launch 2027", need: ["flagship|旗舰|旗艦", "launch|announce|release|unveil", "手机|手機|phone|smartphone|スマホ|スマートフォン|폰|스마트폰|Galaxy|iPhone|Pixel|Xiaomi|小米|OPPO|vivo|一加|OnePlus|Honor|荣耀|榮耀|华为|華為|Huawei|Nothing|Motorola"]}
@@ -932,7 +932,7 @@ items:
     wiki: ["en:Samsung Galaxy S series"]
 
   - name: gelato pique
-    subs: {kind: ルームウェア, origin: 日本}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
+    subs: {kind: "ファッション・コスメ", owner: "ブランド"}
     icon: {image: "icons/gelato-pique.webp", kind: logo, why: "ブランド：gelato pique のロゴ", source: "https://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
     emblem_subject: "gelato pique"
@@ -941,7 +941,7 @@ items:
       - {subject: "gelato pique のロゴ", why: "公式サイトのロゴ", image: "emblems/gelato-pique-gelato-pique.webp", source: "https://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718", page: "https://gelatopique.com/", shape: "logo"}
     subtitle: ジェラート ピケ · ルームウェア
     type: category
-    section: 时尚
+    section: "好物"
     similar:   # 「我会喜欢？」用：同类的新消息（不在关注清单里的），每天搜一次
       - {label: 可爱居家服新品, lang: ja-JP, query: "ルームウェア 新作 コラボ 発売", need: ["ルームウェア|パジャマ|部屋着", "新作|発売|コラボ|登場"]}
     keywords: [
@@ -996,7 +996,7 @@ items:
       font: serif
 
   - name: "ぐでたま"
-    subs: {kind: キャラクター, owner: キャラクター}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
+    subs: {kind: "キャラグッズ", owner: "キャラクター"}
     icon: {image: "icons/gudetama.webp", kind: character, why: "キャラクター：ぐでたま本人（公式の絵）", source: "https://upload.wikimedia.org/wikipedia/en/b/b1/Gudetama_from_Sanrio.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_max: 3   # キャラが 1 体だけなので、別の場面 3 枚
@@ -1025,7 +1025,7 @@ items:
     wiki: ["en:Gudetama", "ja:ぐでたま"]
 
   - name: "チェーンソーマン"
-    subs: {kind: アニメ, origin: 日本}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
+    subs: {kind: "シリーズ", origin: "日本"}
     icon: {image: "icons/chainsaw-man.webp", kind: cover, why: "アニメ：AniList のカバー（チェンソーマンの姿）", source: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127230-DdP4vAdssLoz.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
     emblem_pool: 4   # 主要な要素の数＝小元素の上限（AniList の主役（role MAIN）の人数、scripts/emblem_fill.py の roster）

@@ -28,12 +28,20 @@ class Table(unittest.TestCase):
             if r.get("words"):
                 re.compile(r["words"])
 
-    def test_render_uses_the_table(self):
-        self.assertEqual(render._sec_name("时尚"), "ファッション")
-        self.assertEqual(render._sec_en("宠物"), "PETS")
-        self.assertEqual(render._sec_color("数码"), taxonomy.SECTIONS["数码"]["color"])
-        self.assertIn("书刊", render.SECTION_ICON)
-        self.assertEqual(list(render.SECTIONS)[:5], ["游戏", "影视", "运动", "演出", "好物"])   # 以前からの並びは変えない
+    def test_eight_sections(self):
+        """2026-10-19：17 → 8 大類（用户定的）。並びは 作品・ゲーム・音楽・スポーツ・ショッピング・暮らし・おでかけ・その他。"""
+        self.assertEqual(list(taxonomy.SECTIONS), ["影视", "游戏", "演出", "运动", "好物", "生活", "出行", "其他"])
+        self.assertEqual(render._sec_name("影视"), "作品")
+        self.assertEqual(render._sec_en("生活"), "LIFE")
+        self.assertEqual(render._sec_color("好物"), taxonomy.SECTIONS["好物"]["color"])
+        self.assertIn("生活", render.SECTION_ICON)
+        self.assertIn("シリーズ", taxonomy.values(taxonomy.SECTIONS["影视"]["schemes"][0]))   # 方法 4
+
+    def test_legacy_keys(self):
+        for old, new in {"时尚": "好物", "数码": "好物", "汽车": "好物", "书刊": "影视", "宠物": "生活", "美食": "生活",
+                         "爱好": "生活", "家居": "生活", "健康": "生活", "艺术": "出行", "游戏": "游戏"}.items():
+            self.assertEqual(taxonomy.canonical(old), new)
+            self.assertEqual(digest.section_of({"section": old}), new)
 
     def test_sub_schemes_come_from_the_table(self):
         settings, _ = digest.load_config()
@@ -43,16 +51,21 @@ class Table(unittest.TestCase):
 class Classify(unittest.TestCase):
     def test_examples(self):
         cases = [
-            ("日本のファッション雑誌", "时尚", {"kind": "雑誌", "origin": "日本"}),
-            ("Japanese fashion magazine", "时尚", {"kind": "雑誌", "origin": "日本"}),
-            ("韩国三星电子推出的智能手机系列", "数码", {"kind": "スマホ"}),
-            ("猫用品", "宠物", {"animal": "猫", "kind": "用品"}),
-            ("dog food brand", "宠物", {"animal": "犬", "kind": "フード"}),       # food でもグルメにしない
+            ("日本のファッション雑誌", "好物", {"kind": "ファッション・コスメ"}),                 # 雑誌でも作品にしない
+            ("韩国三星电子推出的智能手机系列", "好物", {"kind": "ガジェット・家電"}),
+            ("Hello Kitty character", "好物", {"kind": "キャラグッズ", "owner": "キャラクター"}),
+            ("猫用品", "生活", {"kind": "ペット"}),
+            ("dog food brand", "生活", {"kind": "ペット"}),
+            ("咖啡连锁店", "生活", {"kind": "グルメ"}),
             ("韓国のガールズグループ", "演出", {"scene": "K-POP", "form": "グループ"}),
             ("theme park in Osaka, Japan", "出行", {"kind": "テーマパーク", "area": "関西"}),
+            ("museum in Tokyo", "出行", {"kind": "展覧会・美術館", "area": "関東"}),
             ("American television series", "影视", {"kind": "ドラマ", "origin": "海外"}),
-            ("Chiikawa Japanese anime television series", "影视", {"kind": "アニメ", "origin": "日本"}),   # series より anime を先に
+            ("Chiikawa Japanese anime television series", "影视", {"kind": "アニメ", "origin": "日本"}),
+            ("Japanese manga series", "影视", {"kind": "マンガ"}),                             # 「series」でもドラマにしない
             ("ちいかわ 劇場版", "影视", {"kind": "映画"}),
+            ("Spider-Man media franchise", "影视", {"kind": "シリーズ"}),
+            ("漫画原作のゲーム video game", "游戏", {}),                                        # ゲームを先に見る（prio）
             ("Nintendo Switch game", "游戏", {"platform": "家庭用ゲーム機"}),
         ]
         for text, sec, subs in cases:
@@ -64,8 +77,7 @@ class Classify(unittest.TestCase):
         self.assertEqual(taxonomy.classify("Japanese public figure", "event"), "演出")   # 词没命中 → type
         self.assertEqual(taxonomy.classify("Japanese public figure"), "其他")
         self.assertEqual(taxonomy.guess_subs("其他"), {"kind": "その他"})
-        self.assertEqual(taxonomy.guess_subs("数码", "said the AI"), {"kind": "AI・ソフト", "owner": "ブランド"})
-        self.assertEqual(taxonomy.guess_subs("数码", "Thailand")["kind"], "スマホ")   # AI が単語の途中に入っても拾わない
+        self.assertEqual(taxonomy.guess_subs("好物", "Thailand")["kind"], "キャラグッズ")   # 何も当たらなければ最初の値
 
 
 class Items(unittest.TestCase):
@@ -78,21 +90,25 @@ class Items(unittest.TestCase):
 
     def test_moved_items(self):
         by = {i["name"]: digest.section_of(i) for i in ITEMS}
-        self.assertEqual(by["猫用品"], "宠物")
-        self.assertEqual(by["三星手机"], "数码")
-        self.assertEqual(by["gelato pique"], "时尚")
+        self.assertEqual(by["猫用品"], "生活")
+        self.assertEqual(by["三星手机"], "好物")
+        self.assertEqual(by["gelato pique"], "好物")
+        subs = {i["name"]: i.get("subs") for i in ITEMS}
+        self.assertEqual(subs["漫威电影"]["kind"], "シリーズ")            # 方法 4：映画＋ドラマ
+        self.assertEqual(subs["チェーンソーマン"]["kind"], "シリーズ")      # 漫画＋アニメ＋劇場版
+        self.assertEqual(subs["FROM"]["kind"], "ドラマ")
 
 
 class WebRequests(unittest.TestCase):
     def test_section_must_be_in_the_table(self):
-        self.assertEqual(digest.clean_item_config({"section": "书刊"}), {"section": "书刊"})
+        self.assertEqual(digest.clean_item_config({"section": "书刊"}), {"section": "影视"})   # 旧い名前は今の大類に
         with self.assertRaises(ValueError):
             digest.clean_item_config({"section": "新板块"})
 
     def test_subs_written_as_flow_mapping(self):
         subs = digest.clean_item_config({"subs": {"kind": " 雑誌 ", "origin": "日本"}})["subs"]
         self.assertEqual(subs, {"kind": "雑誌", "origin": "日本"})
-        text = "items:\n" + digest.item_entry_yaml("VOGUE JAPAN", {"type": "product", "section": "时尚", "subs": subs})
+        text = "items:\n" + digest.item_entry_yaml("VOGUE JAPAN", {"type": "product", "section": "好物", "subs": subs})
         self.assertIn('    subs: {kind: "雑誌", origin: "日本"}', text)
         self.assertEqual(yaml.safe_load(text)["items"][0]["subs"], subs)
         for bad in ({"Kind": "x"}, {"kind": ""}, {"kind": "x" * 21}, ["雑誌"]):
@@ -108,11 +124,11 @@ class AlsoSections(unittest.TestCase):
     """also：版面は本来の板块に 1 つ、ほかの板块の目次には乗換の駅（ちいかわ：グッズ ＋ 映像）。"""
 
     def test_clean_and_write(self):
-        also = digest.clean_item_config({"also": {"影视": {"kind": "アニメ", "origin": "日本"}, "书刊": {}}})["also"]
+        also = digest.clean_item_config({"also": {"影视": {"kind": "アニメ", "origin": "日本"}, "宠物": {}}})["also"]
         self.assertEqual(also["影视"], {"kind": "アニメ", "origin": "日本"})
-        self.assertEqual(also["书刊"], {"kind": "マンガ"})                      # 空なら最初の分け方の最初の値
+        self.assertEqual(also["生活"], {"kind": "ペット"})                      # 旧い名前は大類に、空なら最初の分け方の最初の値
         text = "items:\n" + digest.item_entry_yaml("ちいかわ", {"type": "category", "section": "好物", "also": also})
-        self.assertIn('    also: {影视: {kind: "アニメ", origin: "日本"}, 书刊: {kind: "マンガ"}}', text)
+        self.assertIn('    also: {影视: {kind: "アニメ", origin: "日本"}, 生活: {kind: "ペット"}}', text)
         self.assertEqual(yaml.safe_load(text)["items"][0]["also"], also)
         with self.assertRaises(ValueError):
             digest.clean_item_config({"also": {"新板块": {}}})
@@ -130,27 +146,30 @@ class AlsoSections(unittest.TestCase):
                            also={"ちいかわ": [("影视", "アニメ")]})
         self.assertEqual(html.count('data-for="ちいかわ"'), 1)                 # 版面への本来の駅は 1 つ
         self.assertIn('class="pill xfer"', html)
-        self.assertIn("⇄ グッズ", html)
+        self.assertIn("⇄ ショッピング", html)
         screen = html[html.index('data-sec="影视"><a class="nsec"'):html.index('data-sec="好物"><a class="nsec"')]
         self.assertIn('data-x="ちいかわ"', screen)                             # 映像の目次にちいかわの乗換駅
         self.assertIn('data-sub="アニメ"', screen)
 
 
 class Facets(unittest.TestCase):
-    """题材型（「猫」）の「面」：sections.yaml の facets、なければ第一の分け方の値。"""
+    """题材型（「猫」）の「面」：sections.yaml の facets[第一の分け方の値]、なければ GENERIC_FACETS。"""
 
     def test_pet_facets_written(self):
-        fs = taxonomy.facets("宠物")
+        fs = taxonomy.facets("生活", "ペット")
         self.assertEqual([f["id"] for f in fs][:2], ["goods", "food"])
         self.assertTrue(all(f["sec"] in taxonomy.SECTIONS and f.get("kw") and f.get("re") for f in fs))
         self.assertIn("出行", {f["sec"] for f in fs})                 # 猫カフェはおでかけ
+        self.assertIn("好物", {f["sec"] for f in fs})                 # 猫モチーフのコラボ商品はショッピング
         for f in fs:
             re.compile(f["re"])
 
-    def test_fallback_from_first_scheme(self):
-        fs = taxonomy.facets("美食")
-        self.assertEqual(fs[0]["subs"], {"kind": "カフェ・スイーツ"})
-        self.assertEqual(fs[0]["kw"], ["カフェ", "スイーツ"])
-        self.assertTrue(re.search(fs[0]["re"], "新作スイーツ"))
-        self.assertNotIn("その他", [f["id"] for f in taxonomy.facets("其他")])
-        self.assertEqual(len(taxonomy.for_page()), len(taxonomy.SECTIONS))
+    def test_generic_fallback(self):
+        fs = taxonomy.facets("生活", "グルメ")                         # グルメ用の面は書いていない → 共通の面
+        self.assertEqual([f["id"] for f in fs], [f["id"] for f in taxonomy.GENERIC_FACETS])
+        self.assertEqual(fs[0]["subs"], {"kind": "グルメ"})
+        self.assertEqual(fs[2]["sec"], "出行")
+        page = {x["key"]: x for x in taxonomy.for_page()}
+        self.assertEqual(len(page), len(taxonomy.SECTIONS))
+        self.assertIn("ペット", page["生活"]["facets"])
+        self.assertTrue(page["运动"]["facets_any"])

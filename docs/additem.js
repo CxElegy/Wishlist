@@ -21,7 +21,7 @@
     return [S.name, p?.desc, ...(p?.aliases || []), ...Object.values(p?.names || {}), ...(o.keywords || []), o.notes || ""].join(" ");
   }
 
-  // 每种东西可以关注的方面。sec = 选了它就推荐「也放在」这个板块（[板块, 小分类的预设]，ちいかわ选「动画」→ 映像・アニメ）。
+  // 每种东西可以关注的方面。sec = 选了它就推荐「也放在」这个板块（[板块, 小分类的预设]，ちいかわ选「动画」→ 作品・アニメ）。
   // rec = 「你帮我定」时选它。priority 写进「最关心什么」，urgent 是要紧消息的动词（和名字一起拼成正则），
   // kw 是额外的搜索词（{n} = 名字，{en} / {ja} = 英文 / 日文名），ask 表示还要追问一句
   const KINDS = {
@@ -35,7 +35,7 @@
        kw: ["{en} esports", "{ja} 大会", "{n} 電競"]},
       {id: "sale", label: "打折、免费送", hint: "史低、限免", priority: "什么时候打折或限免",
        urgent: "(セール|特價|特价|折扣|降價|降价|史低|免費|免费|無料|sale)"},
-      {sec: ["好物", {kind: "キャラクター", owner: "キャラクター"}], id: "collab", label: "联名、周边", hint: "跨界联动、手办、周边", priority: "联名和周边",
+      {sec: ["好物", {kind: "キャラグッズ", owner: "キャラクター"}], id: "collab", label: "联名、周边", hint: "跨界联动、手办、周边", priority: "联名和周边",
        urgent: "(コラボ|联名|聯名|collab|グッズ|周边|周邊|フィギュア)"},
       {id: "story", label: "剧情、角色、世界观", hint: "新剧情、角色设定", priority: "新剧情和角色设定"},
     ]},
@@ -43,9 +43,9 @@
       {rec: true, id: "sequel", label: "新一季 / 续作 / 剧场版", hint: "什么时候官宣、定档", priority: "新一季、续作或剧场版什么时候出",
        urgent: "(第\\s?[0-9一二三四五六七八九十]+\\s?(季|期)|続編|续篇|續篇|新作|劇場版|剧场版|映画化|放送決定|定档|定檔|製作決定|制作决定|season \\d|sequel)"},
       {rec: true, id: "air", label: "播出时间、每集更新", hint: "什么时候播、在哪看", priority: "播出时间和每集更新"},
-      {sec: ["书刊", {kind: "マンガ"}], id: "manga", label: "漫画连载、单行本", hint: "最新话、出刊、完结", priority: "漫画连载和单行本",
+      {sec: ["影视", {kind: "マンガ"}], id: "manga", label: "漫画连载、单行本", hint: "最新话、出刊、完结", priority: "漫画连载和单行本",
        urgent: "(単行本|单行本|最新刊|最終回|最终话|最終話|完結|完结|休載|休刊)"},
-      {sec: ["好物", {kind: "キャラクター", owner: "キャラクター"}], id: "collab", label: "周边、联名、展览", hint: "快闪店、联名商品", priority: "周边、联名和展览",
+      {sec: ["好物", {kind: "キャラグッズ", owner: "キャラクター"}], id: "collab", label: "周边、联名、展览", hint: "快闪店、联名商品", priority: "周边、联名和展览",
        urgent: "(コラボ|联名|聯名|展覧会|展览|展覽|POP ?UP|ポップアップ|快闪)"},
       {id: "cast", label: "声优、活动、演唱会", hint: "舞台剧、见面会", priority: "声优活动和演唱会",
        urgent: "(イベント|ライブ|舞台|声優|声优|聲優)"},
@@ -92,7 +92,7 @@
       {sec: ["影视", {kind: "アニメ"}], id: "media", label: "动画、电影、活动", hint: "新动画、剧场版、生日、周年庆", priority: "新动画、活动和周年纪念",
        urgent: "(アニメ|动画|動畫|周年|週年|アニバーサリー|anniversary|誕生日|生日)"},
     ]},
-    book: {label: "书 / 杂志 / 漫画单行本", hint: "杂志、小说、漫画、写真集", type: "product", section: "书刊", focus: [
+    book: {label: "书 / 杂志 / 漫画单行本", hint: "杂志、小说、漫画、写真集", type: "product", section: "影视", focus: [
       {rec: true, id: "release", label: "发售日、新刊", hint: "下一期、新卷什么时候出", priority: "发售日和新刊",
        urgent: "(発売日|発売|最新号|最新刊|新刊|新卷|发售|發售|release|on sale|刊行)"},
       {rec: true, id: "furoku", label: "付录、限定版", hint: "附赠品、特装版", priority: "付录和限定版（附赠什么、怎么买）",
@@ -104,7 +104,7 @@
       {id: "event", label: "签售、展览、活动", hint: "作者签售、原画展", priority: "签售、展览和活动",
        urgent: "(サイン会|签售|簽售|原画展|展覧会|展览|展覽|イベント)"},
     ]},
-    food: {label: "吃的 / 喝的", hint: "咖啡店、甜点、餐厅、零食", type: "product", section: "美食", focus: [
+    food: {label: "吃的 / 喝的", hint: "咖啡店、甜点、餐厅、零食", type: "product", section: "生活", focus: [
       {rec: true, id: "new", label: "新品、季节限定", hint: "新口味、季节菜单", priority: "新品和季节限定",
        urgent: "(新作|新品|新発売|新発売|新商品|季節限定|期間限定|限定|新口味|新菜单|新菜單|new menu)"},
       {rec: true, id: "collab", label: "联名", hint: "和动画、角色的联名", priority: "联名", urgent: "(コラボ|联名|聯名|collab)"},
@@ -139,6 +139,7 @@
 
   // ---------- 板块（sections.yaml）：对号入座 ----------
   const SECS = CFG.sections || [];
+  const SECS_BY_PRIO = [...SECS].sort((a, b) => (a.prio ?? 50) - (b.prio ?? 50));   // 对号入座的顺序（ゲーム先看）
   const secOf = key => SECS.find(x => x.key === key) || SECS.find(x => x.key === "其他") || {key, ja: key, schemes: []};
   const secRe = x => { try { return x.words ? new RegExp(x.words, "i") : null; } catch (_) { return null; } };
   const vOf = v => typeof v === "object" ? v.v : v;
@@ -152,7 +153,7 @@
   function naturalSection() {
     if (S.ans.kind === "character") return "好物";
     const t = context();
-    const hit = SECS.find(x => { const re = secRe(x); return re && re.test(t); });
+    const hit = SECS_BY_PRIO.find(x => { const re = secRe(x); return re && re.test(t); });
     return hit ? hit.key : kindOf().section;
   }
   // 有上级就跟着上级的板块（目录上挂在上级下面），没有就是它自己本来的板块
@@ -162,7 +163,8 @@
   const tops = () => (CFG.items || []).filter(i => !i.parent && i.name !== S.name);
   function parentCandidates() {
     const t = context().toLowerCase();
-    return tops().filter(i => [i.name, ...(i.keywords || [])].some(w => w && w.length >= 2 && t.includes(String(w).toLowerCase())));
+    const bySeries = seriesOfPick().map(seriesItem).filter(Boolean);   // 维基数据说它属于这个系列（已经在关注清单里）
+    return [...new Set([...bySeries, ...tops().filter(i => [i.name, ...(i.keywords || [])].some(w => w && w.length >= 2 && t.includes(String(w).toLowerCase())))])];
   }
   // 每种分法选一个值：说明・名字里出现了的，没有就第一个
   function guessSubs(key, extra = "") {
@@ -180,13 +182,13 @@
       if (out[sc.id]) continue;
       const vals = sc.values || [];
       // 「角色 / IP」はキャラクターという値があればそれ（ちいかわ → グッズ・キャラクター）
-      const pick = (S.ans.kind === "character" ? vals.find(v => vOf(v) === "キャラクター") : null) ?? vals.find(v => says(v, t)) ?? vals[0];
+      const pick = (S.ans.kind === "character" ? vals.find(v => /^キャラ/.test(vOf(v))) : null) ?? vals.find(v => says(v, t)) ?? vals[0];
       if (pick != null) out[sc.id] = vOf(pick);
     }
     return out;
   }
 
-  // 「也放在」的推荐：选了的关注方面带 sec 的板块（ちいかわ：选「动画、电影、活动」→ 映像）。主板块（版面所在）除外
+  // 「也放在」的推荐：选了的关注方面带 sec 的板块（ちいかわ：选「动画、电影、活动」→ 作品）。主板块（版面所在）除外
   const alsoRec = main => [...new Set(chosenFocus().filter(f => f.sec && f.sec[0] !== main).map(f => f.sec[0]))];
   const secsNow = () => S.ans.sections || [S.ans.section || guessSection(), ...alsoRec(S.ans.section || guessSection())];
   // 也放在的板块里的小分类：按关注方面的预设，其他按说明・名字
@@ -202,7 +204,7 @@
   // 题材型（「猫」这种普通词）：它的板块在 sections.yaml 写的 facets 全部列出（rec 的默认勾上）。名字太泛，每个面用「名字＋面的词」同时出现才收。
   // 每个面 = 一套关键词 ＋ 一个板块。勾了几个就放进几个板块（版面一个＋乗換駅，或者每个面一个版面）。都是规则，不用 AI。
   const MEDIA = {
-    goods: {label: "グッズ・コラボ", hint: "联名、周边、一番赏、快闪店", kind: "character", sec: "好物", subs: {kind: "キャラクター", owner: "キャラクター"},
+    goods: {label: "グッズ・コラボ", hint: "联名、周边、一番赏、快闪店", kind: "character", sec: "好物", subs: {kind: "キャラグッズ", owner: "キャラクター"},
             kw: ["コラボ", "グッズ 新作", "一番くじ", "ポップアップ"], re: "コラボ|グッズ|一番くじ|ポップアップ|フェア|POP ?UP|联名|聯名|周边|周邊|merch|collab|figure|フィギュア",
             tail: "グッズ", hit: /キャラクター|character|mascot|マスコット|角色|吉祥物/i},
     anime: {label: "アニメ", hint: "电视动画、配信、声优", kind: "anime", sec: "影视", subs: {kind: "アニメ"},
@@ -214,7 +216,7 @@
     drama: {label: "ドラマ・実写", hint: "电视剧、网剧、实写版", kind: "show", sec: "影视", subs: {kind: "ドラマ"},
             kw: ["ドラマ", "実写"], re: "ドラマ|実写|drama|series|电视剧|電視劇|剧集|劇集", tail: "ドラマ",
             hit: /ドラマ|television (drama|series)|TV series|电视剧|電視劇|剧集/i},
-    manga: {label: "漫画・本", hint: "连载、单行本、画集", kind: "book", sec: "书刊", subs: {kind: "マンガ"},
+    manga: {label: "漫画・本", hint: "连载、单行本、画集", kind: "book", sec: "影视", subs: {kind: "マンガ"},
             kw: ["単行本", "最新刊"], re: "漫画|漫畫|マンガ|manga|comic|単行本|单行本|最新刊|連載|连载|画集", tail: "漫画",
             hit: /漫画|漫畫|マンガ|manga|comic/i},
     game: {label: "ゲーム", hint: "游戏、手游的新作和更新", kind: "game", sec: "游戏", subs: {},
@@ -270,7 +272,9 @@
         titles: uniq((ev[k] || []).flatMap(x => [x.names?.ja, x.names?.en]).map(t => String(t || "").replace(/\s*[(（][^)）]*[)）]\s*$/, "").trim())
           .filter(t => t && !relatedNames().includes(normName(t)))).slice(0, 4)}))};
     } else if (generic()) {
-      plan = {key, type: "topic", list: (secOf(naturalSection()).facets || []).map(f => ({key: f.id, ...f, kind: secOf(f.sec).kind,
+      const ns = secOf(naturalSection()), first = (ns.schemes || [])[0];   // 板块の第一の分け方の値（ペット・グルメ…）で面を選ぶ
+      const kv = first ? guessSubs(ns.key)[first.id] : null;
+      plan = {key, type: "topic", list: ((ns.facets || {})[kv] || ns.facets_any || []).map(f => ({key: f.id, ...f, kind: secOf(f.sec).kind,
         hint: `${secOf(f.sec).ja} · ${(f.kw || []).map(w => `${S.name} ${w}`).slice(0, 2).join(" / ")}`, ev: []}))};
     }
     S._plan = plan;
@@ -296,11 +300,19 @@
     return g;
   }
   const multiSec = () => Object.keys(facetGroups()).length >= 2;
+  // 主面：面がいちばん多い板块（ちいかわ：作品に漫画・アニメ・映画 → 作品の「シリーズ」が主項）。同じ数なら MAIN_ORDER
   const mainFacet = () => {
     const fs = S.ans.facets || [];
     if (fs.includes(S.ans.mainFacet)) return S.ans.mainFacet;
-    return MAIN_ORDER.find(k => fs.includes(k)) || fs[0];
+    const rank = k => (MAIN_ORDER.indexOf(k) + 1) || 99;
+    const best = Object.values(facetGroups()).sort((a, b) => b.length - a.length || rank(a[0].key) - rank(b[0].key))[0];
+    return best?.[0]?.key || MAIN_ORDER.find(k => fs.includes(k)) || fs[0];
   };
+  // 方法 4（用户定的）：同じ板块に 2 つ以上の媒体がある作品は小分類「シリーズ」（その板块の第一の分け方にシリーズがあるとき）
+  function withSeries(sec, subs, n) {
+    const first = (secOf(sec).schemes || [])[0];
+    return n >= 2 && first && (first.values || []).map(vOf).includes("シリーズ") ? {...subs, [first.id]: "シリーズ"} : subs;
+  }
   // 勾的面 → 板块・小分类・也放在（合成一个版面）；分开时主项只放主面
   function applyFacets() {
     const fs = chosenFacets();
@@ -310,7 +322,8 @@
     if (!multiSec()) S.ans.arrange = "merge";   // 全部同じ板块 = 1 つの版面
     if (facetPlan().type === "media") S.ans.kind = main.kind;
     S.ans.section = main.sec;
-    S.ans.subs = facetSubs(main);
+    // 1 つの版面にまとめる：全部の面の数、板块ごと：主面の板块の面の数で「シリーズ」か決める
+    S.ans.subs = withSeries(main.sec, facetSubs(main), S.ans.arrange === "split" ? fs.filter(f => f.sec === main.sec).length : fs.length);
     const also = {};
     if (S.ans.arrange !== "split") for (const f of fs) if (f.sec !== main.sec && !also[f.sec]) also[f.sec] = facetSubs(f);
     S.ans.also = also;
@@ -379,7 +392,7 @@
     const ja = label(ent, ["ja"]), ko = label(ent, ["ko"]), en = label(ent, ["en"]);
     const kinds = claim(ent, "P31").map(v => KIND_BY_QID[v.id]).filter(Boolean);
     const d = [desc(ent), ent.descriptions?.en?.value || ""].join(" ");
-    const bySec = SECS.find(x => { const re = secRe(x); return re && re.test(d); });
+    const bySec = SECS_BY_PRIO.find(x => { const re = secRe(x); return re && re.test(d); });
     const kind = kinds[0] || (KIND_BY_TEXT.find(([, re]) => re.test(d)) || [])[0] || (bySec && KINDS[bySec.kind] ? bySec.kind : "");
     const origin = [...claim(ent, "P495"), ...claim(ent, "P17"), ...claim(ent, "P27"), ...claim(ent, "P740")]
       .map(v => ORIGIN_LANG[v.id]).filter(Boolean);
@@ -391,6 +404,8 @@
       names: {zhHans, zhHant, ja, ko, en}, aliases: [...new Set(aliases)].slice(0, 8), kind, origin: [...new Set(origin)],
       steam: claim(ent, "P1733")[0] || "", anilist: claim(ent, "P8729")[0] || "", anilistManga: claim(ent, "P8731")[0] || "",
       tmdb, site: claim(ent, "P856")[0] || "",
+      // 属于哪个系列：系列（P179）・媒体系列（P8345）・是…的一部分（P361）。名字在 seriesLookup 里另外查
+      seriesIds: [...new Set([...claim(ent, "P179"), ...claim(ent, "P8345"), ...claim(ent, "P361")].map(v => v.id).filter(Boolean))].slice(0, 3),
     };
   }
 
@@ -430,7 +445,7 @@
        {v: "none", label: "都可以看", only: true}])},
     {id: "langs", render: () => multi("langs", "看哪些语言的新闻？", langHint(),
       Object.entries(LANGS).map(([v, l]) => ({v, label: l, hint: v === "zh-CN" ? "大陆网站常拦海外、图片防盗链，一般不用" : ""})), {min: 1})},
-    {id: "parent", when: () => tops().length > 0 && S.ans.arrange !== "split", render: askParent},
+    {id: "parent", when: () => (tops().length > 0 || newSeries().length > 0) && S.ans.arrange !== "split", render: askParent},
     {id: "section", when: () => !S.ans.parent && !(S.ans.facets || []).length, render: askSections},
     {id: "subs", render: askSubs},
     {id: "size", when: () => S.mode === "add", render: () => single("size", "每期给它多大篇幅？", "以后在上面的列表里随时能改。", [
@@ -581,8 +596,30 @@
       S.wd = list || []; S.wdState = list === null ? "fail" : "done";
       if (S.wd.length && S.ans.which == null) S.ans.which = S.wd[0].id;
       if (live()[S.step]?.id === "which") draw();
+      seriesLookup(name);
     }).catch(() => { if (S.name === name) { S.wd = []; S.wdState = "fail"; if (live()[S.step]?.id === "which") draw(); } });
   }
+
+  // 上级系列：查到的条目里写着「属于哪个系列」的，把系列的名字・说明也查出来（一次请求，查不到就算了）
+  async function seriesLookup(name) {
+    const ids = [...new Set((S.wd || []).flatMap(x => x.seriesIds || []))].slice(0, 6);
+    if (!ids.length) return;
+    try {
+      const got = await wd({action: "wbgetentities", ids: ids.join("|"), props: "labels|aliases|descriptions", languages: WD_LANGS.join("|")});
+      if (S.name !== name) return;
+      S.series = ids.map(id => got.entities?.[id]).filter(Boolean).map(ent => {
+        const zhHans = label(ent, ["zh-cn", "zh-hans", "zh"]), zhHant = label(ent, ["zh-tw", "zh-hk", "zh-hant"]);
+        const ja = label(ent, ["ja"]), en = label(ent, ["en"]);
+        return {id: ent.id, title: zhHans || zhHant || ja || en || ent.id, desc: desc(ent) || ent.descriptions?.en?.value || "",
+                names: {zhHans, zhHant, ja, ko: label(ent, ["ko"]), en}};
+      });
+      if (live()[S.step]?.id === "parent") draw();
+    } catch (_) {}
+  }
+  // 这一项所属的系列（选的那个条目的 P179 / P8345 / P361）。已经在关注清单里的 → 推荐挂上去；没有的 → 给「一起加上级」的选项
+  const seriesOfPick = () => (S.series || []).filter(x => (wdPick()?.seriesIds || []).includes(x.id));
+  const seriesItem = x => tops().find(i => [i.name, ...(i.keywords || [])].some(w => Object.values(x.names).filter(Boolean).some(n => normName(n) === normName(w))));
+  const newSeries = () => seriesOfPick().filter(x => !seriesItem(x) && normName(x.title) !== normName(S.name));
 
   function askWhich() {
     const head = [h("span", {class: "no"}, no()), h("h3", {}, `你说的「${S.name}」是哪一个？`)];
@@ -659,7 +696,7 @@
     const split = h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.arrange === "split"), onclick: () => set("arrange", "split")},
       "每个板块一个版面" + (rec === "split" ? "（推荐）" : ""),
       h("small", {}, groups.map(([sec, g]) => `「${nameOf([sec, g])}」→ ${secOf(sec).ja}（${g.map(f => f.label).join("・")}）`).join("、")),
-      h("small", {}, "每个板块都看得到对应的新闻。同一个板块里只有一个版面：同一板块的面合在一起（映画是アニメ的派生，放进同一个版面）；同一条新闻只出现在一个版面。"));
+      h("small", {}, "每个板块都看得到对应的新闻。同一个板块里只有一个版面：同一板块的面合在一起（漫画・アニメ・映画都在「作品」里 → 一个版面，小分类「シリーズ」）；同一条新闻只出现在一个版面。"));
     const merge = h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.arrange !== "split"), onclick: () => set("arrange", "merge")},
       "全部合成一个版面" + (rec === "merge" ? "（推荐）" : ""),
       h("small", {}, `新闻都在「${secOf(mainSec).ja}」的一个版面里` + (others.length ? `；${others.join("・")}的目录里放「⇄ 乗換」站，点了跳过去。` : "。")));
@@ -672,7 +709,7 @@
   }
 
   // 板块：可以多选。版面只有一个，放在「主板块」；其他板块的目录里放「乗換」的站，点了跳到同一个版面（同一条新闻只出现一次）。
-  // 推荐：它自己本来的板块 ＋ 选了的关注方面带的板块（ちいかわ：グッズ ＋「动画、电影、活动」→ 映像）
+  // 推荐：它自己本来的板块 ＋ 选了的关注方面带的板块（ちいかわ：ショッピング ＋「动画、电影、活动」→ 作品）
   function askSections() {
     if (!S.ans.sections) S.ans.sections = defaults("sections");
     if (!S.ans.section || !S.ans.sections.includes(S.ans.section)) S.ans.section = S.ans.sections[0];
@@ -688,7 +725,7 @@
       h("div", {class: "opts", role: "radiogroup"}, chosen.map(k => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.section === k),
         onclick: () => { S.ans.section = k; delete S.ans.subs; delete S.ans.also; draw(); }}, secOf(k).ja)))) : null;
     return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, "放在头版哪个板块？可以多选"),
-      h("p", {}, "比如 ちいかわ 既是周边又有动画，就选「グッズ」和「映像」。版面只有一个，放在主板块；其他板块的目录里放一个「⇄ 乗換」的站，" +
+      h("p", {}, "比如 ちいかわ 既是周边又有动画，就选「ショッピング」和「作品」。版面只有一个，放在主板块；其他板块的目录里放一个「⇄ 乗換」的站，" +
                  "点了跳到同一个版面，同一条新闻不会出现两次。推荐的是按维基数据的说明、名字和你选的关注方面定的。"),
       h("div", {class: "opts secgrid", role: "group"}, SECS.map(x => h("button", {type: "button", class: "opt", "aria-pressed": String(chosen.includes(x.key)),
         onclick: () => toggle(x.key)}, x.ja, rec.has(x.key) ? h("small", {}, "推荐") : null))),
@@ -700,17 +737,24 @@
   function askParent() {
     const cand = parentCandidates(), rest = tops().filter(i => !cand.includes(i));
     if (S.ans.parent == null) S.ans.parent = defaults("parent");
-    const pick = v => { S.ans.parent = v; S.auto.parent = false; delete S.ans.subs;
+    const pick = v => { S.ans.parent = v; S.auto.parent = false; delete S.ans.subs; S.ans.newParent = null;
                         S.ans.section = v ? (CFG.items.find(i => i.name === v) || {}).section : undefined; };
-    const opts = [...cand.map(i => ({v: i.name, label: i.name, hint: `推荐 · 跟着它放在「${secOf(i.section).ja}」`})),
+    const pickNew = x => { const nm = x.names.ja || x.title; S.ans.parent = nm; S.ans.newParent = {...x, name: nm}; S.auto.parent = false;
+                           delete S.ans.subs; S.ans.section = undefined; };
+    const fresh = newSeries();
+    const opts = [...cand.map(i => ({v: i.name, label: i.name, hint: `推荐 · 跟着它放在「${secOf(i.section).ja}」` +
+                    (seriesOfPick().some(x => seriesItem(x) === i) ? "（维基数据：属于这个系列）" : "")})),
+                  ...fresh.map(x => ({v: "new:" + x.id, x, label: `一起添加上级「${x.names.ja || x.title}」`,
+                    hint: `维基数据：「${S.name}」属于这个系列${x.desc ? `（${x.desc}）` : ""}。会先加它，再把「${S.name}」挂在它下面`})),
                   {v: "", label: "不属于任何一个", hint: "单独一个版面"}];
+    const cur = S.ans.newParent ? "new:" + S.ans.newParent.id : S.ans.parent;
     const sel = h("select", {"aria-label": "从全部关注项里选上级", onchange: ev => { if (ev.target.value) { pick(ev.target.value); next(); } }},
       h("option", {value: ""}, "其他关注项…"), rest.map(i => h("option", {value: i.name, selected: S.ans.parent === i.name}, `${i.name}（${secOf(i.section).ja}）`)));
-    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, `「${S.name}」属于哪个已有的关注项？`),
+    return h("div", {class: "q"}, h("span", {class: "no"}, no()), h("h3", {}, fresh.length ? `「${S.name}」属于哪个系列？` : `「${S.name}」属于哪个已有的关注项？`),
       h("p", {}, "同一个 IP、系列、品牌里的一部作品或一个商品，挂在它下面（比如「ちいかわ アニメ」挂在「ちいかわ」下面）。" +
                  "放在同一个板块，同一条新闻只出现在下级的版面。只做一层。"),
-      h("div", {class: "opts", role: "radiogroup"}, opts.map(o => h("button", {type: "button", class: "opt", "aria-pressed": String(S.ans.parent === o.v),
-        onclick: () => { pick(o.v); next(); }}, o.label, h("small", {}, o.hint)))),
+      h("div", {class: "opts", role: "radiogroup"}, opts.map(o => h("button", {type: "button", class: "opt", "aria-pressed": String(cur === o.v),
+        onclick: () => { if (o.x) pickNew(o.x); else pick(o.v); next(); }}, o.label, h("small", {}, o.hint)))),
       rest.length ? sel : null, nav(true));
   }
 
@@ -848,7 +892,7 @@
       const focus = chosenFocus().filter(o => keys.includes(o.facet));
       const titles = uniq(g.flatMap(f => f.titles || []));
       const c = {
-        type: KINDS[head.kind]?.type || "product", parent: S.name, section: sec, subs: facetSubs(head),
+        type: KINDS[head.kind]?.type || "product", parent: S.name, section: sec, subs: withSeries(sec, facetSubs(head), g.length),
         also: {[d.section]: {...d.subs}},
         keywords: uniq([...ws.flatMap(w => w.kw), ...official.map(n => `${n} ${head.tail || head.kw?.[0] || ""}`.trim())]).slice(0, 12),
         match: topic ? ws.flatMap(w => w.match) : [`re:(?is)(?=.*(${alias}))(?=.*(${g.map(f => f.re).join("|")}))`, ...titles],
@@ -899,7 +943,9 @@
     };
     const types = h("select", {"data-k": "type"}, Object.entries(TYPES).map(([v, l]) => h("option", {value: v, selected: d.type === v}, l)));
     const section = h("select", {"data-k": "section", disabled: !!d.parent}, SECS.map(x => h("option", {value: x.key, selected: d.section === x.key}, x.ja)));
+    const np = S.ans.newParent && d.parent === S.ans.newParent.name ? S.ans.newParent : null;
     const parentSel = h("select", {"data-k": "parent"}, h("option", {value: ""}, "不属于（单独一个版面）"),
+      np ? h("option", {value: np.name, selected: true}, `${np.name}（新加的上级系列，和这一项放在同一个板块）`) : null,
       tops().map(i => h("option", {value: i.name, selected: d.parent === i.name}, `${i.name}（${secOf(i.section).ja}）`)));
     parentSel.addEventListener("change", () => {   // 上级を選んだら板块は上級と同じ（変えられない）
       const p = (CFG.items || []).find(i => i.name === parentSel.value);
@@ -951,7 +997,7 @@
       h("div", {class: "two"}, h("label", {}, h("span", {}, "类型"), types),
         h("label", {}, h("span", {}, "板块"), section)),
       d.parent || S.kids.length ? null : alsoBox,
-      tops().length && !S.kids.length ? h("label", {}, h("span", {}, "上级"), h("small", {}, "同一个 IP・系列・品牌里的作品或商品，挂在它下面；板块跟着上级"), parentSel) : null,
+      (tops().length || np) && !S.kids.length ? h("label", {}, h("span", {}, "上级"), h("small", {}, "同一个 IP・系列・品牌里的作品或商品，挂在它下面；板块跟着上级"), parentSel) : null,
       subsBox,
       size,
       FIELDS.map(field),
@@ -1025,6 +1071,20 @@
     }
     if (S.mode === "edit" && !Object.keys(config).length) { sayMsg("没有改动", "err"); return; }
     btn.disabled = true; sayMsg("提交中…");
+    // 一起添加的上级系列（维基数据的 P179 / P8345 / P361）：先加系列，处理时它已经在了，这一项才能挂上去
+    const np = S.mode === "add" && S.ans.newParent && d.parent === S.ans.newParent.name && !CFG.items.some(i => i.name === d.parent) ? S.ans.newParent : null;
+    if (np) {
+      const names = uniq([np.name, ...Object.values(np.names || {})]);
+      const first = (secOf(d.section).schemes || [])[0];
+      const series = first && (first.values || []).map(vOf).includes("シリーズ") ? {[first.id]: "シリーズ"} : {};
+      try {
+        const rp = await fetch(`${CFG.url}/rest/v1/rpc/submit_item`, {method: "POST", headers: {apikey: CFG.key, "Content-Type": "application/json"},
+          body: JSON.stringify({p_action: "add", p_name: np.name, p_config: {type: d.type, section: d.section, subs: {...d.subs, ...series},
+            keywords: names.slice(0, 8), match: names, news_langs: d.news_langs, size: "M",
+            notes: `维基数据：${np.title}${np.desc ? `（${np.desc}）` : ""}。设置页加「${name}」时一起加的上级系列。`}})});
+        if (!rp.ok) { const err = await rp.json().catch(() => ({})); sayMsg("上级系列没存上：" + (err.message || rp.status), "err"); btn.disabled = false; return; }
+      } catch (_) { sayMsg("连不上数据库", "err"); btn.disabled = false; return; }
+    }
     try {
       const r = await fetch(`${CFG.url}/rest/v1/rpc/submit_item`, {method: "POST",
         headers: {apikey: CFG.key, "Content-Type": "application/json"},
@@ -1039,7 +1099,7 @@
           if (rr?.ok) done.push(x.name);
         }
         const what = S.mode === "edit" ? `已提交「${name}」的修改 ✓ 进度看下面「最近提交的」，会自动刷新`
-                                       : `已提交「${name}」${done.length ? `和 ${done.map(n => `「${n}」`).join("")}` : ""} ✓ 进度看下面「最近提交的」，会自动刷新`;
+                                       : `已提交${np ? `上级「${np.name}」和` : ""}「${name}」${done.length ? `和 ${done.map(n => `「${n}」`).join("")}` : ""} ✓ 进度看下面「最近提交的」，会自动刷新`;
         reset(); loadQueue();
         const note = box.querySelector(".hint, .q p"); if (note) { note.textContent = what; note.className = "msg ok"; }
         return;

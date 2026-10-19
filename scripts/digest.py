@@ -1134,10 +1134,12 @@ def _clean_field(key, value):
                     raise ValueError(f"要紧消息规则写错了：{v[:40]}（{err}）") from None
         return out or None
     if rule == "section":
+        value = taxonomy.canonical(value) if isinstance(value, str) else value
         if value not in taxonomy.SECTIONS:
             raise ValueError(f"板块只能选 sections.yaml 里的：{'/'.join(taxonomy.SECTIONS)}")
         return value
     if rule == "also":   # ほかの板块：{板块: {分け方: 小分類}}（版面は section に 1 つ、ここに書いた板块には目次の乗換駅）
+        value = {taxonomy.canonical(k): v for k, v in value.items()} if isinstance(value, dict) else value
         if not isinstance(value, dict) or len(value) > 4 or not all(k in taxonomy.SECTIONS for k in value):
             raise ValueError(f"also 的板块只能选 sections.yaml 里的：{'/'.join(taxonomy.SECTIONS)}")
         first = lambda k: taxonomy.SECTIONS[k]["schemes"][0]
@@ -2287,6 +2289,11 @@ def load_config():
     settings["sub_schemes"] = taxonomy.sub_schemes()   # 小分類の分け方は sections.yaml が唯一の元
     items = config.get("items") or []
     by_name = {i.get("name"): i for i in items}
+    for item in items:   # 以前の 17 板块の名前（宠物・时尚…）は今の 8 大類に（taxonomy.LEGACY）
+        if item.get("section"):
+            item["section"] = taxonomy.canonical(item["section"])
+        if isinstance(item.get("also"), dict):
+            item["also"] = {taxonomy.canonical(k): v for k, v in item["also"].items()}
     for item in items:   # 下級は上級と同じ板块（目次で上級の下の支線に並ぶ。CLAUDE.md「判断上下级」）。
         top = by_name.get(item.get("parent"))   # section を自分で書いた下級（面ごとに分けた「ちいかわ アニメ」→ 映像）はそのまま
         if top is not None and top is not item and not item.get("section"):
@@ -2550,7 +2557,7 @@ def also_map(items, schemes):
 
 def section_of(item):
     """头版上的板块（sections.yaml 的 key）。没写 section 的按 type（taxonomy.BY_TYPE）。"""
-    return item.get("section") or taxonomy.BY_TYPE.get(item.get("type", "product"), "好物")
+    return taxonomy.canonical(item.get("section") or taxonomy.BY_TYPE.get(item.get("type", "product"), "好物"))
 
 
 def quiet_block(item, themes, date):

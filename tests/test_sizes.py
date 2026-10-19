@@ -141,7 +141,7 @@ class SettingsPage(unittest.TestCase):
         page = render.render_settings(
             [{"name": "GTA 6", "section": "游戏", "size": "M"}, {"name": "FROM", "section": "影视", "subtitle": "美剧", "size": "S"}],
             {"url": "https://x.supabase.co", "key": "sb_publishable_x"}, "10.14 19:00")
-        self.assertLess(page.index("游戏"), page.index("影视"))
+        self.assertLess(page.index("影视"), page.index("游戏"))   # 8 大類：作品が先
         self.assertIn('data-item="FROM"', page)
         self.assertRegex(page, r'data-item="FROM".*?data-v="S" aria-pressed="true"')
         self.assertIn("rpc/${fn}", page)

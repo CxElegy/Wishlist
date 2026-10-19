@@ -1,40 +1,55 @@
 # 头版的板块（ジャンル）一览：事先定全，新关注项只是「对号入座」，不临时开新板块。
 # 参考 IAB Tech Lab Content Taxonomy 3.1 的大类（37 个，去掉政治・犯罪・灾害・法律・房地产・职业・宗教等不适合个人兴趣简报的），
-# 按日本新闻网站的叫法合并。没有关注项的板块网页上不显示。
+# 按日本新闻网站的叫法合并成 8 个大类（2026-10-19 用户定的：分得粗一点，细的靠小分类）。没有关注项的板块网页上不显示。
 #
 # 每个板块：
-#   key      数据里的名字（items.yaml 的 section 写这个；中文，和以前一样）
+#   key      数据里的名字（items.yaml 的 section 写这个；中文）。以前的 17 个板块的 key 由 taxonomy.LEGACY 换成现在的
 #   ja / en  网页上显示的日语名 / 英文标签
 #   color    板块色（白字、浅底上的小字都要过 WCAG AA 4.5:1，tests/test_design.py 检查）
 #   icon     twemoji 的编号（目录的板块图标）
 #   kind     设置页向导「这是什么？」的默认答案（docs/additem.js 的 KINDS）
-#   words    对号入座用的词（正则，不分大小写）：维基数据的说明、名字里有这些词就推荐这个板块。按从上到下的顺序，先命中的算
+#   prio     对号入座时先看哪个（小的先，默认 50）：ゲーム先看（「漫画原作のゲーム」はゲーム）
+#   words    对号入座用的词（正则，不分大小写）：维基数据的说明、名字里有这些词就推荐这个板块
 #   schemes  小分类的分法（第一种是默认），values 是常用的值（向导里直接选；放不进去再起新名字，日语、短）
+#   facets   题材型（「猫」这种普通词）加关注项时推荐的「面」，按第一种分法的值分（没写的用 taxonomy.GENERIC_FACETS）
 #
+# 「シリーズ」（方法 4，用户定的）：一个作品在同一个板块里有两种以上的媒体（ちいかわ = 漫画・アニメ・映画）→ 合成一个版面，小分类写「シリーズ」。
 # 加新板块：在这里加一项（颜色先过 AA），不用改代码。改了分法，给这个板块的所有关注项补上 subs。
 
 sections:
+  - key: 影视
+    ja: 作品
+    en: WORKS
+    color: "#9B3FB5"
+    icon: 1f3ac
+    kind: show
+    words: 'media franchise|franchise|メディアミックス|劇場版|剧场版|上映|电视剧|電視劇|剧集|劇集|ドラマ|television series|TV series|电影|電影|映画|film|movie|动画|動畫|アニメ|anime|animated|漫画|漫畫|マンガ|manga|comic|小说|小說|小説|novel|ライトノベル|light novel|书籍|書籍|\bbooks?\b|写真集|画集|絵本|作家|author|writer'
+    schemes:
+      - {id: kind, label: 種類, values: [{v: 映画, re: '\bfilm\b|movie|电影|電影|劇場版|剧场版'}, {v: アニメ, re: 'anime|animated|动画|動畫|アニメ'}, {v: ドラマ, re: 'television series|TV series|drama|电视剧|電視劇|剧集|劇集|ドラマ'}, {v: マンガ, re: 'manga|comic|漫画|漫畫|マンガ'}, {v: 小説・ラノベ, re: 'novel|小说|小說|小説|ライトノベル|light novel|轻小说|輕小說'}, {v: シリーズ, re: 'media franchise|franchise|メディアミックス|フランチャイズ'}, {v: 雑誌・写真集, re: 'magazine|雑誌|杂志|雜誌|写真集|画集|photobook'}, バラエティ, ドキュメンタリー]}
+      - {id: origin, label: 地域, values: [{v: 日本, re: 'Japan|日本'}, {v: 海外, re: 'America|British|\bUS\b|\bUK\b|Hollywood|France|French|Italy|Italian|美国|美國|英国|英國|アメリカ|イギリス|欧米|海外'}, {v: 韓国, re: 'Korea|韩国|韓國|한국'}, {v: 中華圏, re: 'China|Chinese|Taiwan|Hong Kong|中国|中國|台湾|台灣|香港'}]}
+
   - key: 游戏
     ja: ゲーム
     en: GAMES
     color: "#2F5BD3"
     icon: 1f3ae
     kind: game
-    words: 游戏|遊戲|ゲーム|video game|\bgame\b|esports|eスポーツ|電競|电竞
+    prio: 10
+    words: '游戏|遊戲|ゲーム|video game|\bgame\b|esports|eスポーツ|電競|电竞'
     schemes:
       - {id: status, label: 状態, values: [新作・発売前, 運営中, 発売済み, eスポーツ]}
-      - {id: platform, label: プラットフォーム, values: [{v: スマホ, re: 'mobile|iOS|Android|手游|手遊'}, {v: 家庭用ゲーム機, re: 'Switch|PlayStation|PS5|Xbox|console'}, {v: PC, re: '\bPC\b|Steam|Windows'}, マルチ]}
+      - {id: platform, label: プラットフォーム, values: [{re: mobile|iOS|Android|手游|手遊, v: スマホ}, {re: Switch|PlayStation|PS5|Xbox|console, v: 家庭用ゲーム機}, {re: \bPC\b|Steam|Windows, v: PC}, マルチ]}
 
-  - key: 影视
-    ja: 映像
-    en: SCREEN
-    color: "#9B3FB5"
-    icon: 1f3ac
-    kind: show
-    words: 劇場版|剧场版|上映|电视剧|電視劇|剧集|劇集|ドラマ|television series|TV series|电影|電影|映画|film|movie|动画|動畫|アニメ|anime|animated
+  - key: 演出
+    ja: 音楽・ライブ
+    en: LIVE
+    color: "#BB265A"
+    icon: 1f3a4
+    kind: artist
+    words: 'ガールズグループ|ボーイズグループ|K-POP|J-POP|バンド|歌手|乐队|樂團|组合|組合|团体|團體|偶像|singer|recording artist|band|girl group|boy band|idol|rapper|アイドル|musician|音乐家|音樂家|ミュージカル|musical|演唱会|コンサート|concert|festival|フェス|お笑い|comedian'
     schemes:
-      - {id: kind, label: 種類, values: [{v: 映画, re: '\bfilm\b|movie|电影|電影|劇場版|剧场版'}, {v: アニメ, re: 'anime|animated|动画|動畫|アニメ'}, {v: ドラマ, re: 'series|电视剧|電視劇|剧集|劇集|ドラマ'}, バラエティ, ドキュメンタリー]}
-      - {id: origin, label: 地域, values: [{v: 日本, re: 'Japan|日本'}, {v: 海外, re: 'America|British|\bUS\b|\bUK\b|Hollywood|France|French|Italy|Italian|美国|美國|英国|英國|アメリカ|イギリス|欧米|海外'}, {v: 韓国, re: 'Korea|韩国|韓國|한국'}, {v: 中華圏, re: 'China|Chinese|Taiwan|Hong Kong|中国|中國|台湾|台灣|香港'}]}
+      - {id: scene, label: シーン, values: [J-POP, {re: Korea|韓国|韩国|韓國|한국, v: K-POP}, {re: Chinese|Taiwan|Mandopop|Cantopop|中国|中國|台湾|台灣|香港|华语|華語, v: 華語}, {re: America|British|English-language|アメリカ|イギリス, v: 洋楽}, アニソン, クラシック, 舞台・ミュージカル, お笑い]}
+      - {id: form, label: 形態, values: [ソロ, {re: group|band|グループ|バンド|组合|組合|团体|團體|乐队|樂團, v: グループ}, フェス, 舞台]}
 
   - key: 运动
     ja: スポーツ
@@ -42,162 +57,51 @@ sections:
     color: "#156A48"
     icon: 26bd
     kind: sports
-    words: 锦标赛|錦標賽|公开赛|公開賽|联赛|聯賽|tournament|championship|league|运动|運動|スポーツ|sport|球队|球隊|marathon|马拉松|マラソン
+    words: '锦标赛|錦標賽|公开赛|公開賽|联赛|聯賽|tournament|championship|league|运动|運動|スポーツ|sport|球队|球隊|marathon|马拉松|マラソン'
     schemes:
       - {id: sport, label: 種目, values: [サッカー, 野球, バスケ, テニス, スキー, 格闘技, モータースポーツ, 陸上, その他]}
       - {id: how, label: 楽しみ方, values: [観る, する]}
 
-  - key: 演出
-    ja: ライブ
-    en: LIVE
-    color: "#BB265A"
-    icon: 1f3a4
-    kind: artist
-    words: ガールズグループ|ボーイズグループ|K-POP|J-POP|バンド|歌手|乐队|樂團|组合|組合|团体|團體|偶像|singer|recording artist|band|girl group|boy band|idol|rapper|アイドル|musician|音乐家|音樂家|ミュージカル|musical|演唱会|コンサート|concert|festival|フェス|お笑い|comedian
-    schemes:
-      - {id: scene, label: シーン, values: [J-POP, {v: K-POP, re: 'Korea|韓国|韩国|韓國|한국'}, {v: 華語, re: 'Chinese|Taiwan|Mandopop|Cantopop|中国|中國|台湾|台灣|香港|华语|華語'}, {v: 洋楽, re: 'America|British|English-language|アメリカ|イギリス'}, アニソン, クラシック, 舞台・ミュージカル, お笑い]}
-      - {id: form, label: 形態, values: [ソロ, {v: グループ, re: 'group|band|グループ|バンド|组合|組合|团体|團體|乐队|樂團'}, フェス, 舞台]}
-
   - key: 好物
-    ja: グッズ
-    en: GOODS
+    ja: ショッピング
+    en: SHOP
     color: "#985315"
     icon: 1f6cd
     kind: product
-    words: マスコット|mascot|吉祥物|サンリオ|三丽鸥|三麗鷗|Sanrio|キャラクター|character|雑貨|杂货|雜貨|食器|tableware|mug|マグ|文具|文房具|stationery|玩具|おもちゃ|toy
+    words: 'マスコット|mascot|吉祥物|サンリオ|三丽鸥|三麗鷗|Sanrio|キャラクター|character|雑貨|杂货|雜貨|食器|tableware|mug|マグ|文具|文房具|stationery|玩具|おもちゃ|toy|ファッション|fashion|时装|時裝|时尚|時尚|服装|服裝|アパレル|apparel|clothing|衣料|ルームウェア|loungewear|化粧品|コスメ|cosmetic|美妆|美妝|makeup|skincare|香水|perfume|ジュエリー|jewelry|珠宝|珠寶|ファッション雑誌|fashion magazine|时装杂志|手机|手機|スマートフォン|スマホ|smartphone|mobile phone|电脑|電腦|パソコン|computer|laptop|tablet|タブレット|耳机|耳機|イヤホン|headphone|earbuds|camera|カメラ|相机|相機|ウェアラブル|wearable|smartwatch|家電|家电|electronics|半导体|半導體|semiconductor|\bAI\b|人工智能|software|ソフトウェア|汽车|汽車|自動車|automobile|\bcars?\b|vehicle|摩托|オートバイ|バイク|motorcycle|鉄道|铁道|鐵道|railway|列车|列車|\btrains?\b|新幹線|shinkansen|飛行機|飞机|飛機|aircraft|airline|航空|自転車|自行车|bicycle|\bEV\b|电动车|電動車'
     schemes:
-      - {id: kind, label: 種類, values: [キャラクター, 食器・生活, 文具, おもちゃ・フィギュア, 食品]}
-      - {id: owner, label: ブランド・キャラ, values: [ブランド, キャラクター, ジャンル]}
+      - {id: kind, label: 種類, values: [{v: キャラグッズ, re: 'キャラクター|character|mascot|マスコット|吉祥物|サンリオ|三丽鸥|三麗鷗|Sanrio|一番くじ|コラボ'}, {v: ファッション・コスメ, re: 'ファッション|fashion|时装|時裝|服|アパレル|apparel|clothing|ルームウェア|loungewear|コスメ|cosmetic|化粧品|美妆|美妝|jewelry|ジュエリー|雑誌|magazine'}, {v: ガジェット・家電, re: 'smartphone|phone|スマホ|スマートフォン|手机|手機|laptop|computer|tablet|camera|カメラ|家電|家电|electronics|wearable|headphone'}, {v: 雑貨・食器, re: 'mug|マグ|マグカップ|食器|tableware|雑貨|杂货|雜貨|文具|stationery|杯'}, {v: 車・乗り物, re: 'automobile|\bcars?\b|vehicle|バイク|motorcycle|鉄道|railway|自転車|bicycle|汽车|汽車'}, {v: おもちゃ・フィギュア, re: 'toy|おもちゃ|玩具|フィギュア|figure'}, 食品]}
+      - {id: owner, label: ブランド・キャラ, values: [ブランド, {v: キャラクター, re: 'character|mascot|マスコット|キャラ|吉祥物'}, ジャンル]}
 
-  - key: 时尚
-    ja: ファッション
-    en: FASHION
-    color: "#B02E7A"
-    icon: 1f457
-    kind: product
-    words: ファッション|fashion|时装|時裝|时尚|時尚|服装|服裝|アパレル|apparel|clothing|衣料|ルームウェア|loungewear|化粧品|コスメ|cosmetic|美妆|美妝|makeup|skincare|香水|perfume|ジュエリー|jewelry|珠宝|珠寶|ファッション雑誌|fashion magazine|时装杂志
-    schemes:
-      - {id: kind, label: 種類, values: [服, {v: ルームウェア, re: 'loungewear|roomwear|pajama|パジャマ|家居服'}, {v: 雑誌, re: 'magazine|杂志|雜誌'}, コスメ, アクセサリー, バッグ・靴, コレクション]}
-      - {id: origin, label: 地域, values: [{v: 日本, re: 'Japan|日本'}, {v: 海外, re: 'America|British|\bUS\b|\bUK\b|Hollywood|France|French|Italy|Italian|美国|美國|英国|英國|アメリカ|イギリス|欧米|海外'}, {v: 韓国, re: 'Korea|韩国|韓國|한국'}, {v: 中華圏, re: 'China|Chinese|Taiwan|Hong Kong|中国|中國|台湾|台灣|香港'}]}
-
-  - key: 书刊
-    ja: 本・マンガ
-    en: BOOKS
-    color: "#5A4FB0"
-    icon: 1f4da
-    kind: book
-    words: 杂志|雜誌|雑誌|magazine|漫画|漫畫|マンガ|manga|comic|小说|小說|小説|novel|ライトノベル|light novel|书籍|書籍|\bbooks?\b|写真集|画集|絵本|作家|author|writer
-    schemes:
-      - {id: kind, label: 種類, values: [{v: マンガ, re: 'manga|comic|漫画|漫畫'}, {v: 小説, re: 'novel|小说|小說'}, {v: ライトノベル, re: 'light novel|轻小说|輕小說'}, {v: 雑誌, re: 'magazine|杂志|雜誌'}, 写真集・画集, 絵本]}
-      - {id: origin, label: 地域, values: [{v: 日本, re: 'Japan|日本'}, {v: 海外, re: 'America|British|\bUS\b|\bUK\b|Hollywood|France|French|Italy|Italian|美国|美國|英国|英國|アメリカ|イギリス|欧米|海外'}, {v: 韓国, re: 'Korea|韩国|韓國|한국'}, {v: 中華圏, re: 'China|Chinese|Taiwan|Hong Kong|中国|中國|台湾|台灣|香港'}]}
-
-  - key: 宠物
-    ja: ペット
-    en: PETS
+  - key: 生活
+    ja: 暮らし・趣味
+    en: LIFE
     color: "#6E6A12"
-    icon: 1f43e
+    icon: 1f3e1
     kind: product
-    words: 宠物|寵物|ペット|\bpets?\b|猫|ねこ|ネコ|貓|\bcats?\b|犬|いぬ|イヌ|\bdogs?\b|兽医|獸醫|獣医|veterinar
+    words: '宠物|寵物|ペット|\bpets?\b|猫|ねこ|ネコ|貓|\bcats?\b|犬|いぬ|イヌ|\bdogs?\b|兽医|獸醫|獣医|veterinar|餐厅|餐廳|レストラン|restaurant|咖啡|カフェ|cafe|coffee|甜点|甜點|スイーツ|dessert|confectionery|お菓子|零食|snack|饮料|飲料|beverage|drink|酒类|酒類|お酒|ビール|beer|wine|ワイン|food|食品|美食|グルメ|ラーメン|ramen|bakery|パン|プラモデル|plastic model|模型|model kit|フィギュア|action figure|手办|手辦|ガンプラ|gunpla|トレーディングカード|trading card|集换式|集換式|board game|ボードゲーム|桌游|桌遊|手芸|手工|craft|楽器|乐器|樂器|musical instrument|ラジコン|LEGO|レゴ|乐高|樂高|收藏|コレクション|collect|家具|furniture|インテリア|interior|家居|收纳|收納|収納|storage|キッチン|kitchen|厨具|廚具|调理|園芸|园艺|園藝|gardening|植物|plant|寝具|bedding|日用品|household|フィットネス|fitness|健身|ジム|gym|ヨガ|yoga|瑜伽|ダイエット|diet|减肥|減肥|筋トレ|workout|睡眠|sleep|健康|health|ストレッチ|ピラティス|pilates|サプリ|supplement|保健'
     schemes:
-      - {id: animal, label: 動物, values: [{v: 猫, re: '\bcats?\b|ねこ|ネコ|貓'}, {v: 犬, re: '\bdogs?\b|いぬ|イヌ|狗'}, 小動物, 鳥, 魚・水生]}
-      - {id: kind, label: 種類, values: [用品, {v: フード, re: '\bfood\b|粮|糧|ごはん'}, 健康・医療, 情報・イベント]}
-    # 题材型（「猫」「犬」这种普通词）加关注项时推荐的「面」：每个面 = 一套关键词（kw 和名字拼成搜索词，re 和名字同时出现才收）
-    # ＋ 放哪个板块（sec，不写 = 这个板块）＋ 小分类。rec = 默认勾上。没写 facets 的板块用第一种分法的值当面（scripts/taxonomy.py）
+      - {id: kind, label: 種類, values: [{v: ペット, re: '宠物|寵物|ペット|\bpets?\b|猫|ねこ|ネコ|貓|\bcats?\b|犬|いぬ|イヌ|\bdogs?\b|獣医|兽医'}, {v: グルメ, re: 'グルメ|food|食品|餐厅|餐廳|レストラン|restaurant|カフェ|cafe|coffee|咖啡|スイーツ|dessert|お菓子|snack|ラーメン|ramen|beer|wine|お酒'}, {v: ホビー, re: 'プラモデル|模型|model kit|ガンプラ|trading card|ボードゲーム|board game|手芸|craft|楽器|LEGO|レゴ'}, {v: インテリア, re: '家具|furniture|インテリア|interior|収納|キッチン|kitchen|園芸|gardening|寝具'}, {v: 健康, re: 'フィットネス|fitness|健身|ジム|gym|ヨガ|yoga|ダイエット|diet|睡眠|sleep|健康|health|サプリ'}]}
+      - {id: how, label: 楽しみ方, values: [買う, 作る・する, 知る]}
     facets:
-      - {id: goods, label: 用品・グッズ, kw: [グッズ, 用品 新商品], re: 'グッズ|用品|新商品|新発売|用具|玩具|おもちゃ', subs: {kind: 用品}, rec: true}
-      - {id: food, label: フード・おやつ, kw: [フード 新発売, おやつ], re: 'フード|おやつ|ごはん|food|粮|糧|ちゅ〜る', subs: {kind: フード}, rec: true}
-      - {id: health, label: 健康・病気, kw: [病気, 健康], re: '病気|健康|ワクチン|動物病院|獣医|兽医|病院|感染', subs: {kind: 健康・医療}}
-      - {id: cafe, label: カフェ・イベント, kw: [カフェ, 展 イベント], re: 'カフェ|イベント|写真展|展覧会|フェス|ふれあい', sec: 出行, subs: {kind: 季節イベント}}
-      - {id: collab, label: モチーフのコラボ商品, kw: [コラボ 新作, モチーフ 雑貨], re: 'コラボ|モチーフ|柄|デザイン', sec: 好物, subs: {kind: 食器・生活, owner: ジャンル}}
-      - {id: adopt, label: 保護・譲渡, kw: [保護, 譲渡会], re: '保護|譲渡|里親|殺処分', subs: {kind: 情報・イベント}}
-
-  - key: 美食
-    ja: グルメ
-    en: FOOD
-    color: "#A63A12"
-    icon: 1f370
-    kind: food
-    words: 餐厅|餐廳|レストラン|restaurant|咖啡|カフェ|cafe|coffee|甜点|甜點|スイーツ|dessert|confectionery|お菓子|零食|snack|饮料|飲料|beverage|drink|酒类|酒類|お酒|ビール|beer|wine|ワイン|food|食品|美食|グルメ|ラーメン|ramen|bakery|パン
-    schemes:
-      - {id: kind, label: 種類, values: [カフェ・スイーツ, レストラン, お菓子・食品, 飲み物・お酒, チェーン店]}
-      - {id: owner, label: ブランド・ジャンル, values: [ブランド, 店, ジャンル]}
-
-  - key: 数码
-    ja: テック
-    en: TECH
-    color: "#2E6E8E"
-    icon: 1f4f1
-    kind: product
-    words: 手机|手機|スマートフォン|スマホ|smartphone|mobile phone|电脑|電腦|パソコン|computer|laptop|tablet|タブレット|耳机|耳機|イヤホン|headphone|earbuds|camera|カメラ|相机|相機|ウェアラブル|wearable|smartwatch|家電|家电|electronics|半导体|半導體|semiconductor|\bAI\b|人工智能|software|ソフトウェア
-    schemes:
-      - {id: kind, label: 種類, values: [{v: スマホ, re: 'smartphone|phone|手机|手機|スマートフォン'}, {v: PC・タブレット, re: 'laptop|computer|tablet|电脑|電腦|パソコン'}, オーディオ, カメラ, ウェアラブル, 家電, AI・ソフト]}
-      - {id: owner, label: ブランド・ジャンル, values: [ブランド, ジャンル]}
+      ペット:
+        - {id: goods, kw: [グッズ, 用品 新商品], label: 用品・グッズ, re: グッズ|用品|新商品|新発売|用具|玩具|おもちゃ, rec: true, subs: {how: 買う, kind: ペット}}
+        - {id: food, kw: [フード 新発売, おやつ], label: フード・おやつ, re: フード|おやつ|ごはん|food|粮|糧|ちゅ〜る, rec: true, subs: {how: 買う, kind: ペット}}
+        - {id: health, kw: [病気, 健康], label: 健康・病気, re: 病気|健康|ワクチン|動物病院|獣医|兽医|病院|感染, subs: {how: 買う, kind: ペット}}
+        - {id: cafe, kw: [カフェ, 展 イベント], label: カフェ・イベント, re: カフェ|イベント|写真展|展覧会|フェス|ふれあい, sec: 出行, subs: {kind: 季節イベント}}
+        - {id: collab, kw: [コラボ 新作, モチーフ 雑貨], label: モチーフのコラボ商品, re: コラボ|モチーフ|柄|デザイン, sec: 好物, subs: {kind: 雑貨・食器, owner: ジャンル}}
+        - {id: adopt, kw: [保護, 譲渡会], label: 保護・譲渡, re: 保護|譲渡|里親|殺処分, subs: {how: 買う, kind: ペット}}
 
   - key: 出行
-    ja: おでかけ
-    en: TRAVEL
+    ja: おでかけ・アート
+    en: OUTING
     color: "#0F6B78"
     icon: 1f9f3
     kind: place
-    words: テーマパーク|theme park|游乐园|遊樂園|遊園地|amusement park|观光|觀光|観光|tourist|tourism|旅行|travel|ホテル|hotel|酒店|旅館|温泉|onsen|hot spring|空港|airport|机场|機場|水族館|aquarium|动物园|動物園|zoo
+    words: 'テーマパーク|theme park|游乐园|遊樂園|遊園地|amusement park|观光|觀光|観光|tourist|tourism|旅行|travel|ホテル|hotel|酒店|旅館|温泉|onsen|hot spring|空港|airport|机场|機場|水族館|aquarium|动物园|動物園|zoo|美术馆|美術館|博物馆|博物館|museum|展覧会|展览|展覽|exhibition|art gallery|ギャラリー|画家|畫家|painter|artist|艺术家|藝術家|アーティスト|芸術|艺术|藝術|\bart\b|写真家|photographer|建築|architecture|建筑|デザイナー|designer'
     schemes:
-      - {id: kind, label: 種類, values: [{v: テーマパーク, re: 'theme park|amusement park|遊園地|游乐园|遊樂園'}, {v: 観光地, re: 'tourist|観光|观光|觀光|sightseeing'}, {v: 宿・温泉, re: 'hotel|ryokan|onsen|hot spring|酒店|ホテル|旅館|温泉'}, 交通, 季節イベント]}
-      - {id: area, label: エリア, values: [日本各地, {v: 関西, re: 'Osaka|Kyoto|Kobe|Nara|大阪|京都|神戸|神户|奈良|関西|关西'}, {v: 関東, re: 'Tokyo|Yokohama|Chiba|東京|东京|横浜|千葉|関東|关东'}, {v: 海外, re: 'Korea|China|Taiwan|Hawaii|France|Paris|London|New York|USA'}]}
-
-  - key: 艺术
-    ja: アート
-    en: ART
-    color: "#9A3A3A"
-    icon: 1f3a8
-    kind: place
-    words: 美术馆|美術館|博物馆|博物館|museum|展覧会|展览|展覽|exhibition|art gallery|ギャラリー|画家|畫家|painter|artist|艺术家|藝術家|アーティスト|芸術|艺术|藝術|\bart\b|写真家|photographer|建築|architecture|建筑|デザイナー|designer
-    schemes:
-      - {id: kind, label: 種類, values: [展覧会, 美術館・博物館, 作家, 写真, 建築・デザイン]}
-      - {id: area, label: エリア, values: [日本各地, {v: 関西, re: 'Osaka|Kyoto|Kobe|Nara|大阪|京都|神戸|神户|奈良|関西|关西'}, {v: 関東, re: 'Tokyo|Yokohama|Chiba|東京|东京|横浜|千葉|関東|关东'}, {v: 海外, re: 'Korea|China|Taiwan|Hawaii|France|Paris|London|New York|USA'}]}
-
-  - key: 爱好
-    ja: ホビー
-    en: HOBBY
-    color: "#3F6A1E"
-    icon: 1f9e9
-    kind: product
-    words: プラモデル|plastic model|模型|model kit|フィギュア|action figure|手办|手辦|ガンプラ|gunpla|トレーディングカード|trading card|集换式|集換式|board game|ボードゲーム|桌游|桌遊|手芸|手工|craft|楽器|乐器|樂器|musical instrument|ラジコン|LEGO|レゴ|乐高|樂高|收藏|コレクション|collect
-    schemes:
-      - {id: kind, label: 種類, values: [プラモ・模型, フィギュア, カード・ボードゲーム, 手芸・クラフト, 楽器, コレクション]}
-      - {id: how, label: 楽しみ方, values: [作る, 集める, 遊ぶ]}
-
-  - key: 家居
-    ja: 暮らし
-    en: HOME
-    color: "#8A4B2A"
-    icon: 1f3e0
-    kind: product
-    words: 家具|furniture|インテリア|interior|家居|收纳|收納|収納|storage|キッチン|kitchen|厨具|廚具|调理|園芸|园艺|園藝|gardening|植物|plant|寝具|bedding|日用品|household
-    schemes:
-      - {id: kind, label: 種類, values: [家具・インテリア, キッチン, 収納・掃除, 寝具, 園芸・植物]}
-      - {id: owner, label: ブランド・ジャンル, values: [ブランド, ジャンル]}
-
-  - key: 健康
-    ja: 健康
-    en: HEALTH
-    color: "#246B5A"
-    icon: 1f4aa
-    kind: product
-    words: フィットネス|fitness|健身|ジム|gym|ヨガ|yoga|瑜伽|ダイエット|diet|减肥|減肥|筋トレ|workout|睡眠|sleep|健康|health|ストレッチ|ピラティス|pilates|サプリ|supplement|保健
-    schemes:
-      - {id: kind, label: 種類, values: [フィットネス, ヨガ・ストレッチ, 食事・サプリ, 睡眠, ケア]}
-      - {id: how, label: 楽しみ方, values: [する, 知る]}
-
-  - key: 汽车
-    ja: 乗り物
-    en: RIDE
-    color: "#4A5568"
-    icon: 1f697
-    kind: product
-    words: 汽车|汽車|自動車|automobile|\bcars?\b|vehicle|摩托|オートバイ|バイク|motorcycle|鉄道|铁道|鐵道|railway|列车|列車|\btrains?\b|新幹線|shinkansen|飛行機|飞机|飛機|aircraft|airline|航空|自転車|自行车|bicycle|\bEV\b|电动车|電動車
-    schemes:
-      - {id: kind, label: 種類, values: [車, バイク, 鉄道, 飛行機, 自転車]}
-      - {id: owner, label: メーカー・ジャンル, values: [メーカー, ジャンル]}
+      - {id: kind, label: 種類, values: [{v: テーマパーク, re: 'theme park|amusement park|遊園地|游乐园|遊樂園'}, {v: 展覧会・美術館, re: 'museum|美術館|美术馆|博物館|博物馆|展覧会|展览|展覽|exhibition|gallery|ギャラリー|art\b'}, {v: 観光地, re: 'tourist|観光|观光|觀光|sightseeing'}, {v: 宿・温泉, re: 'hotel|ryokan|onsen|hot spring|酒店|ホテル|旅館|温泉'}, 交通, 季節イベント]}
+      - {id: area, label: エリア, values: [日本各地, {re: Osaka|Kyoto|Kobe|Nara|大阪|京都|神戸|神户|奈良|関西|关西, v: 関西}, {re: Tokyo|Yokohama|Chiba|東京|东京|横浜|千葉|関東|关东, v: 関東}, {re: Korea|China|Taiwan|Hawaii|France|Paris|London|New York|USA, v: 海外}]}
 
   - key: 其他
     ja: その他
@@ -205,6 +109,6 @@ sections:
     color: "#5B5F6B"
     icon: 1f4e6
     kind: product
-    words: ""
+    words: ''
     schemes:
       - {id: kind, label: 種類, values: [その他]}
