@@ -1416,11 +1416,18 @@ def load_feedback():
     return [r for r in latest.values() if r["vote"]]
 
 
+def pack_batches(picks):
+    """「気になるかも？」の頁（batch）を 0 から詰める。愿望清单がまだない新しいアカウントでは「欲しい物から」の候補（0 頁目）が
+    1 件もなく、版面のほかのニュース（1 頁目〜）だけになる → 最初の頁が空の箱にならないように、前後の順はそのまま番号だけ詰める。"""
+    order = sorted({p.get("batch") or 0 for p in picks})
+    return [{**p, "batch": order.index(p.get("batch") or 0)} for p in picks]
+
+
 def current_picks(items):
     """「気になるかも？」の候補のうち、今の関注清单にない版面（test1 の版面）に結び付いたものは出さない。
     推薦は収集のたびに作り直すので、これは作り直す前に残っている古い候補の掃除（作り直した後は何も落とさない）。"""
     names = {i["name"] for i in items}
-    return [p for p in (load_json(RECOMMEND_FILE) or {}).get("picks", []) if not p.get("work") or p["work"] in names]
+    return pack_batches([p for p in (load_json(RECOMMEND_FILE) or {}).get("picks", []) if not p.get("work") or p["work"] in names])
 
 
 SIZE_STORIES = {"S": 3, "M": 5, "L": 8}   # 篇幅 → 每期最多几条报道（网页上直接显示多高见 render.SIZE_HEIGHT）
@@ -1835,6 +1842,7 @@ def recommend(force_discover=False):
                        "words": sorted(words), "taste": why, "batch": 1 + len(boards) // PICK_COUNT,
                        **({"liked": t} if (t := liked_reason(url, d["title"], set(words), work)) else {})})
     picks += boards
+    picks = pack_batches(picks)
 
     # 同类新消息：按关注项轮流取最新的一条（有图的优先），每个关注项最多一条。
     # 投票学到的口味决定先后：常赞的同类排前面，净踩两次以上的同类先不推荐
@@ -3011,8 +3019,14 @@ def edit_queue(date=None, batch=EDIT_BATCH, ctl=None):
     return [order[i:i + batch] for i in range(0, len(order), batch)]
 
 
+def undesigned(items=None):
+    """設定ページで足したのに、まだ AI が版面を設計していない関注項（DESIGN_KEYS のどれかが空）。"""
+    items = items if items is not None else load_config()[1]
+    return [i["name"] for i in items if WEB_ITEM_MARK in str(i.get("notes") or "") and any(not i.get(k) for k, _ in DESIGN_KEYS)]
+
+
 def edit_next(ctl=None):
-    """AI 编辑每编一个版面之前问一次（EDITING.md 第 4 步）：→ ("NEXT", 版面) / ("STOP", 理由) / ("DONE", "")。
+    """AI 编辑每编一个版面之前问一次（EDITING.md 第 4 步）：→ ("DESIGN", 版面) / ("NEXT", 版面) / ("STOP", 理由) / ("DONE", "")。
     管理页的开关：pause = 停（正在编的那个版面已经编完）；step = 这次会话只编 1 个版面，编完自动变 pause。"""
     import runlog
     ctl = ctl if ctl is not None else edit_control()
@@ -3027,6 +3041,11 @@ def edit_next(ctl=None):
         set_edit_control(mode="pause")
         runlog.add("edit", "1 版面ずつ：この版面で止めた（管理ページの「次の 1 版面」で続き）", "info")
         return "STOP", "1 版面ずつ：1 つ終わったので止める"
+    # 版面の設計が済んでいない関注項（設定ページで足したもの）が先：設計（motif・theme・emblem…、EDITING.md 第 1 步）を
+    # 終えるまで記事の編集には進ませない（説明書に書くだけでは飛ばされた、2026-10-19）
+    todo = undesigned()
+    if todo:
+        return "DESIGN", f"{todo[0]}（未設定：{'・'.join(ja for k, ja in DESIGN_KEYS if not next(i for i in load_config()[1] if i['name'] == todo[0]).get(k))}）"
     q = edit_queue(ctl=ctl)
     if not q:
         return "DONE", ""

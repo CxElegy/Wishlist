@@ -557,3 +557,20 @@ class SimilarNeed(unittest.TestCase):
     def test_source_suffix_only(self):
         self.assertNotIn("遊戲新聞", digest._need_text("新品週邊- 遊戲新聞"))
         self.assertIn("open-world", digest._need_text("This 100-hour Steam RPG is an open-world alternative to Skyrim"))
+
+
+class NewAccount(unittest.TestCase):
+    """新しいアカウント（何もない状態）でも使えること。"""
+
+    def test_pick_pages_start_at_zero(self):
+        picks = digest.pack_batches([{"batch": 1, "t": "a"}, {"batch": 3, "t": "b"}, {"batch": 1, "t": "c"}])
+        self.assertEqual([p["batch"] for p in picks], [0, 1, 0])
+
+    def test_design_comes_before_editing(self):
+        items = [{"name": "A", "notes": digest.WEB_ITEM_MARK, "motif": "manga"},
+                 {"name": "B", "notes": "手で書いた"},
+                 {"name": "C", "notes": "2026 " + digest.WEB_ITEM_MARK, "motif": "manga", "theme": {"bg": "#000"}}]
+        self.assertEqual(digest.undesigned(items), ["A"])
+        with mock.patch.object(digest, "undesigned", return_value=["A"]), \
+             mock.patch.object(digest, "load_config", return_value=({}, items)):
+            self.assertEqual(digest.edit_next(ctl={"mode": "run", "redo": []})[0], "DESIGN")

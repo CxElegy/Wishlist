@@ -327,7 +327,7 @@ PROCESSES = [
             {"id": "e1", "kind": "step", "lane": "ai", "title": "最新の inbox を読む"},
             {"id": "e2", "kind": "decision", "lane": "ai", "title": "今日の整理待ちがある？", "text": "_covered より後の記事・edit.json にない版面", "no": "何も変えずに終わり"},
             {"id": "e3", "kind": "step", "lane": "ai", "title": "版面の設計・小元素", "by": "ai", "text": "motif・theme・like_fx · 足りない小元素（「小元素の選定」）"},
-            {"id": "e3q", "kind": "decision", "lane": "actions", "title": "次の版面は？ edit-next", "text": "管理ページの開関（edit_control）：一時停止 → 止める · 1 版面ずつで 1 つ済 → 止めて pause に · やり直しの版面が最初、あとは整理待ちの多い順に 1 版面（規則・トークン 0）",
+            {"id": "e3q", "kind": "decision", "lane": "actions", "title": "次の版面は？ edit-next", "text": "管理ページの開関（edit_control）：一時停止 → 止める · 1 版面ずつで 1 つ済 → 止めて pause に · 設定ページで足して設計（motif・theme）がまだの関注項があれば DESIGN（設計が終わるまで記事の編集に進まない）· やり直しの版面が最初、あとは整理待ちの多い順に 1 版面（規則・トークン 0）",
              "uses": ["batch"], "no": "止める（一時停止・1 版面ずつ・全部済）"},
             {"id": "e4", "kind": "step", "lane": "ai", "title": "編集して edit.json（この版面だけ・短い一覧 edit-brief を読む）", "text": "同じ件を合わせる（言語違いも 1 本・主言語の原題）· 見出しは原文 · S 3 / M 5 / L 8 件",
              "uses": ["claude"]},
