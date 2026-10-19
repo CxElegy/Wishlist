@@ -433,12 +433,6 @@
   "target": 720,
   "v": 3
  },
- "https://charagoo.jp/wp-content/uploads/2025/08/276af211-79e1-4559-8006-8a12ce92b863_p_01_ja.jpg": {
-  "w": 960,
-  "h": 960,
-  "target": 1280,
-  "v": 3
- },
  "https://charagoo.jp/wp-content/uploads/2025/08/668w_668h-267.jpg": {
   "w": 668,
   "h": 668,
@@ -656,12 +650,6 @@
   "target": 720,
   "v": 3
  },
- "https://hermes.media.static.aol.com/media/2026/10/14/9cad928f-c6ee-3705-9a00-7653f62c246d/e1e3a7de-1160-4a28-b3e1-d3bbd02d6cb4.jpg": {
-  "w": 2945,
-  "h": 1921,
-  "target": 1280,
-  "v": 3
- },
  "https://hermes.media.static.aol.com/media/2026/10/14/e0a70dfe-6604-3cea-83b8-c319c02bb690/7fdc4e2f-5915-4ded-b631-4852b662f1c0.jpeg": {
   "w": 3000,
   "h": 1500,
@@ -843,12 +831,6 @@
   "w": 1200,
   "h": 669,
   "target": 720,
-  "v": 3
- },
- "https://images-tw.girlstyle.com/wp-content/uploads/2026/10/33e6a91a.png": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://images.khan.co.kr/article/2026/10/14/news-p.v1.20261014.e15dc1b6f9894a25a15b79a4a3d60af2_P1.jpg": {
@@ -1746,6 +1728,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00010017-realsound-000-1-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 619,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/ed0207be71e27ebe.webp",
+  "out": [
+   1200,
+   619
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00100157-nekomag-000-1-view.jpg?exp=10800": {
   "w": 700,
   "h": 467,
@@ -2001,16 +1995,16 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/eaf83f4a659fbb03a30c33d06b7291837b5fe140187ddcad18fc971b78b7620a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fyahoo-headers-2026-10-16t140149382_1525.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/ebecd513f2da7ef5149a1e0abf7afe2d9202782a525d9b505cd5883b896e0ee9/lightyear_networkapi/resizefill_w982_h655%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmotorbiscuit_articles_333%2Fda4757e30bbbbb7553fe03cebed7f252.jpg": {
   "w": 982,
   "h": 655,
   "target": 720,
-  "v": 3
- },
- "https://sammyguru.com/wp-content/uploads/2026/08/Galaxy-Z-Fold-8-pistachio-and-Z-Fold-8-ultra-Graphite.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://sammyguru.com/wp-content/uploads/2026/10/Galaxy-S27-Series-Case-Featured.jpg": {
@@ -2225,6 +2219,12 @@
   "target": 720,
   "v": 3
  },
+ "https://today-obs.line-scdn.net/0hIJz4AU5TFmVHTQrR-w9pMn8bGhR0KwxsZS5dAGFFGwZqYQRgfHxFBmYeT0k6LwQ7Z35ZUGQdTV09fQNgcg/w1200": {
+  "w": 1200,
+  "h": 801,
+  "target": 1280,
+  "v": 3
+ },
  "https://today-obs.line-scdn.net/0hz7gw5W_4JRhaDjmux4daT2JYKWlpaD8ReGloenkIKy9zImYcY292eygHeDQkazBLemBoKioHcilxbGZIZg/w1200": {
   "w": 1080,
   "h": 1920,
@@ -2328,6 +2328,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.bgr.com/img/gallery/how-much-are-older-samsung-phones-actually-worth/l-intro-1791904982.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.-yAzr1yUXmPzlTy2IL8lFQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2420,18 +2426,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.EJ1XomvnpZaXZGVOxo_YSw&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/f294b0d0da1c9c63.webp",
-  "out": [
-   722,
-   418
-  ],
-  "why": "Bing の小さい縮小画像"
- },
  "https://www.bing.com/th?id=ONUT.Fr6xg1daQ52QgFLZkrUCQA&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2484,18 +2478,6 @@
   "out": [
    721,
    434
-  ],
-  "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.OO8VYFY4L4D16bVvrmfJhg&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/9ac7940a87083a3a.webp",
-  "out": [
-   700,
-   468
   ],
   "why": "Bing の小さい縮小画像"
  },
@@ -2615,19 +2597,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.g0utra38X7kxxQIbEAVYVw&pid=News&w=728": {
-  "w": 700,
-  "h": 525,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.563,
-  "local": "pics/d5892961c84b8589.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.iY3U3dVABvvQ_dK4UJF68g&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -2652,6 +2621,19 @@
   "h": 333,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.47,
+  "local": "pics/d97ad321397de900.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.m-teaGj4MfqBDGsnICv-RQ&pid=News&w=1200": {
   "w": 100,
