@@ -70,6 +70,38 @@ class SpamTest(unittest.TestCase):
                   "2026绝区零简被爆❌挤奶歪歪在线看-绝区零简被爆❌挤奶歪歪最新超清版39.847 全集版-爱看高清网"]
         self.assertEqual(self.kept(titles), [])
 
+    def test_random_code_suffix_is_spam(self):
+        """Unisba Media（被黑的印尼大学网站，2026-10）：随便一条新闻的标题 + 作品名 + 10 位随机码。真实的 47 条标题的写法。"""
+        mando = {"name": "The Mandalorian", "type": "drama", "match": ["The Mandalorian"]}
+        titles = ["#ぽかぽか #ぽかフェス #show_wa #向山毅 #MATSURI #シュネル #渡辺真 #昭和歌謡リバイバルプロジェクト #昭和歌謡 The Mandalorian (gQvzdvbtKG)",
+                  "Bloom Energy Stock 2026: $305 Fair Value? The AI Power Boom Could Change Bloom Forever The Mandalorian And Grogu (sXJbLOTRQM)",
+                  "ゼンゼロのスシローコラボを見て、とある違和感に気付いた【ゼンゼロ反応集】 Eva Lys (OSvayvh2D8)",
+                  "『Vaundy One Man Live ARENA Tour “FUSION”』U-NEXTで独占配信中！ états-unis (WB4E8MlFBx)",
+                  "渋谷パルコのジャンプショップ 池袋でチェンソーマンの映画 おでけけDay Hyeseong Kim (xzesW8gQyt)"]
+        for t in titles:
+            self.assertTrue(digest.is_spam(t), t)
+        es = [entry(t, i) for i, t in enumerate(titles)]
+        self.assertEqual(digest.filter_entries(es, mando, {}, set(), NOW), [])
+
+    def test_spam_host_is_dropped_even_after_ai_cleans_the_title(self):
+        """AI 編集は末尾の随機コードを削って報道にする（Vaundy の報道）：標題では見抜けないので、リンクの網域でも見る。"""
+        self.assertTrue(digest.is_spam("10/9 『Vaundy One Man Live ARENA Tour “FUSION”』U-NEXTで独占配信中！",
+                                       "https://media.unisba.ac.id/dc7dc9a9/76fb3431Oi0DOEwYOwQgFwE"))
+        self.assertTrue(digest.is_spam("x", "https://sub.unisba.ac.id/a"))
+        self.assertFalse(digest.is_spam("x", "https://notunisba.ac.id.example.com/a"))
+        self.assertFalse(digest.is_spam("x", "https://www.yahoo.co.jp/a"))
+
+    def test_spam_not_listed_as_pending(self):
+        pairs = [(1, entry("Mandalorian trailer", 1)), (2, entry("どこかの動画 The Mandalorian (gQvzdvbtKG)", 2))]
+        _, pending = digest.split_unedited(pairs, {"name": "The Mandalorian"})
+        self.assertEqual([x["title"] for x in pending], ["Mandalorian trailer"])
+
+    def test_normal_titles_ending_in_parentheses_are_kept(self):
+        """末尾が括弧の普通の見出し（媒体名・語・数字）は垃圾ではない。"""
+        for t in ["The Mandalorian & Grogu trailer lands (Reuters)", "ジェラピケ新作 (10月20日発売)", "Season 3 review (spoilers)",
+                  "Marvel's new film (Deadline)", "The Mandalorian cast (Newsweekly)", "映画 (2026) 公開", "Dota 2 (BLASTSLAM8)"]:
+            self.assertFalse(digest.is_spam(t), t)
+
     def test_ad_stuffed_url_is_spam(self):
         """正规网站（新浪）的网址参数里塞着「伴游…添加微信」：标题是真的旧文章，也要丢。"""
         bad = ("https://finance.sina.cn/consume/shxf/2026-06-05/detail-iniaiyyn2826244.d.html?oid=%E8%8B%8F%E5%B7%9E"
@@ -90,3 +122,21 @@ class SpamTest(unittest.TestCase):
         e = sources.Entry(title="绝区零 新版本", url="https://hurun.net/news/1.sHtML", source="胡润百富",
                           summary="", image="", published=NOW)
         self.assertEqual(digest.filter_entries([e], self.ZZZ, {"exclude_sources": ["胡润百富"]}, set(), NOW), [])
+
+
+class SpamNotCountedTest(unittest.TestCase):
+    def test_heat_ignores_spam_entries(self):
+        """垃圾页は話題度の「報道量」にも数えない（Unisba の 26 条が The Mandalorian の話題度を灌水していた）。"""
+        import json
+        import pathlib
+        import tempfile
+        import heat
+        with tempfile.TemporaryDirectory() as d:
+            p = pathlib.Path(d) / "2026-10-18.json"
+            with open(p, "w", encoding="utf-8") as f:
+                json.dump({"date": "2026-10-18", "items": [{"name": "x", "entries": [
+                    {"url": "https://a/1", "title": "Mandalorian trailer", "source": "IGN", "date": "2026-10-18T00:00:00+00:00"},
+                    {"url": "https://a/2", "title": "どこかの動画 The Mandalorian (gQvzdvbtKG)", "source": "Unisba Media",
+                     "date": "2026-10-18T00:00:00+00:00"}]}]}, f)
+            entries, _, _ = heat.load_entries([p])
+        self.assertEqual([e["url"] for e in entries["x"]], ["https://a/1"])

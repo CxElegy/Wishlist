@@ -76,7 +76,7 @@ settings:
   steam_country: cn             # Steam 价格地区
   max_entries_per_item: 30      # 每个关注项每期最多收集几条媒体报道
   max_reddit_per_item: 10       # 每个关注项每期最多收集几条 Reddit 帖子
-  exclude_sources: [YouTube, 胡润百富]   # 所有关注项都丢掉这些来源。胡润百富（hurun.net）2026-10 被黑，批量出色情 / 盗版「在线看」垃圾页
+  exclude_sources: [YouTube, 胡润百富, Unisba Media]   # 所有关注项都丢掉这些来源。胡润百富（hurun.net）2026-10 被黑，批量出色情 / 盗版「在线看」垃圾页。Unisba Media（media.unisba.ac.id）2026-10 被黑：标题 = 随便一条新闻 + 作品名 + 10 位随机码，页面 404
   summarize: false              # true = 用 Claude API 编排报道（需要 ANTHROPIC_API_KEY，按量付费）
                                 # false = 不用 AI，按 priority_keywords 排序、用原标题（完全免费）
   model: claude-haiku-5-5       # 归纳用的模型

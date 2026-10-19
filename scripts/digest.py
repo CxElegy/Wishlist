@@ -190,6 +190,9 @@ SPAM_PATTERNS = [
     r"在线看|在线观看|在线播放|在线高清|高清完整|超清版|超清在线|免费全集|全集版|无删减|未删减",
     r"(爱看|高清|影视|电影|安卓|下载)网$",                 # 「-爱看高清网」「-2265安卓网」这类站名结尾
     r"涩涩|黄漫",
+    # 标题末尾拼着「热门关键词 + 10 位随机码」：被黑的网站（media.unisba.ac.id「Unisba Media」，2026-10-19 查到 47 条）批量生成的页面，
+    # 前半是随便一条新闻的标题，后半塞作品名骗搜索，页面本身是 404。随机码 = 10 位字母数字、有小写、且大写＋数字至少 3 个
+    r"\s\((?=[A-Za-z0-9]*[a-z])(?=(?:[a-z]*[A-Z0-9]){3})[A-Za-z0-9]{10}\)\s*$",
 ]
 
 
@@ -198,9 +201,18 @@ SPAM_PATTERNS = [
 SPAM_URL = re.compile(r"微信|威信|薇信|加V|伴游|外围|上门|模特.{0,6}经纪|[①-⑳]{2}")
 
 
+# 乗っ取られて垃圾页を量産しているサイト（この網域と下位網域の記事は丸ごと捨てる）。AI 編集は標題の末尾の随機コードを削って報道にしてしまうので、
+# 標題の規則だけでは抜ける：リンクの網域でも見る
+SPAM_HOSTS = ("unisba.ac.id",)   # Unisba Media（2026-10 被黑、標題 = 別の記事 + 作品名 + 10 位随機コード、ページは 404）
+
+
 def is_spam(title, url=""):
-    if url and SPAM_URL.search(urllib.parse.unquote(urllib.parse.urlsplit(url).query)):
-        return True
+    if url:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower()
+        if any(host == h or host.endswith("." + h) for h in SPAM_HOSTS):
+            return True
+        if SPAM_URL.search(urllib.parse.unquote(urllib.parse.urlsplit(url).query)):
+            return True
     return any(re.search(p, title) for p in SPAM_PATTERNS)
 # 标题去掉作品名后，字符二元组重合度超过这个值视为同一篇（转载、截断标题、改了后缀的）。
 # 用实际标题校准过：真重复 ≥ 0.8，不同文章 ≤ 0.63
@@ -315,7 +327,7 @@ def filter_entries(entries, item, settings, seen, now, known=()):
         key = title_key(e.title)
         if e.url in seen or key in seen or e.source in skip_sources:
             continue
-        if any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title):
+        if any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title, e.link):
             continue
         g = _title_grams(e.title, names)
         if any(_similar(g, h) for h in grams):
@@ -798,7 +810,7 @@ def discover(force=False, taste=None):
             print(f"  [同类] {q['query']} 失败：{err}", file=sys.stderr)
             continue
         for e in found[:20]:
-            if e.source == "YouTube" or any(re.search(p, e.title) for p in JUNK_PATTERNS):
+            if e.source == "YouTube" or any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title):
                 continue
             if e.published and e.published < since:
                 continue
@@ -1694,6 +1706,8 @@ def recommend(force_discover=False):
     recent = {p.stem for p in recent}
     pool, board = [], {}
     for d, day, work in entries + [(x, (x.get("date") or "")[:10], None) for x in probes]:
+        if is_spam(d["title"], d.get("link") or d["url"]):
+            continue   # 垃圾页（被黑的网站批量生成的）不推荐
         if d["url"] in on_page or d.get("link") in on_page:
             page_titles.append(d["title"])  # 版面里那条的原标题（版面上是改写过的中文标题）
             continue
@@ -2349,7 +2363,7 @@ def split_unedited(pairs, item):
     taken = {r for x in stories for r in x["refs"]}
     pending = [{"n": n, "title": e.title, "url": e.url, "source": e.source,
                 "date": e.published.date().isoformat() if e.published else ""}
-               for n, e in pairs if n not in taken]
+               for n, e in pairs if n not in taken and not is_spam(e.title, e.link or e.url)]   # 垃圾页は「整理待ち」にも出さない
     return stories, pending
 
 

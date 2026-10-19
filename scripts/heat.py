@@ -272,6 +272,11 @@ def fetch_signals(items, signals, today, log=sys.stderr):
 
 # ---------- 读本地数据 ----------
 
+def is_spam(title, url=""):
+    import digest   # digest が heat を import しているので、使うときに読む
+    return digest.is_spam(title, url)
+
+
 def load_entries(inbox_files):
     """收集箱 → ({关注项: [条目]}, {关注项: [状态变了的日期]}, {关注项: 从哪天起连续收集})。同一链接只算一次。
     条目按消息本身的日期（date）算。「平常」只从连续收集开始的那天算：第一次收集（含新关注项往前补抓的几周）
@@ -291,6 +296,8 @@ def load_entries(inbox_files):
                 changed.setdefault(name, []).append(day)
             # reddit_cold：不火、没上版面的 Reddit 帖子（digest.ingest），帖子数照样算进「ファンの反応」
             for e in (it.get("entries") or []) + (it.get("reddit_cold") or []):
+                if is_spam(e.get("title") or "", e.get("link") or ""):
+                    continue   # 垃圾页（被黑的网站批量生成）不算「報道量」，不然话题度被灌水
                 key = (name, e.get("url"))
                 if not e.get("url") or key in seen:
                     continue
