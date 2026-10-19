@@ -343,7 +343,7 @@
   };
   // シリーズの下にある媒体（items.yaml の media、目次の枝）。面の key → 目次の名前
   const MEDIA_LABEL = {manga: "マンガ", anime: "アニメ", movie: "映画", drama: "ドラマ", game: "ゲーム", goods: "グッズ", live: "舞台・ライブ", event: "イベント"};
-  const mediaOf = fs => uniq(fs.map(f => MEDIA_LABEL[f.key]).filter(Boolean));
+  const mediaOf = fs => uniq([...fs].sort((a, b) => DERIVE.indexOf(a.key) - DERIVE.indexOf(b.key)).map(f => MEDIA_LABEL[f.key]).filter(Boolean));   // 派生の順（マンガ → アニメ → 映画）
   // 方法 4（用户定的）：同じ板块に 2 つ以上の媒体がある作品は小分類「シリーズ」（その板块の第一の分け方にシリーズがあるとき）
   function withSeries(sec, subs, n) {
     const first = (secOf(sec).schemes || [])[0];
@@ -869,11 +869,11 @@
   const firstSub = (sec, subs) => (subs || {})[((secOf(sec).schemes || [])[0] || {}).id] || "";
   function planRows() {
     const fs = chosenFacets(), rows = [];
-    const media = S.ans.subs && Object.values(S.ans.subs).includes("シリーズ");
     if (fs.length && S.mode === "add") {
       const mainSec = facetOf(mainFacet()).sec, split = S.ans.arrange === "split" && multiSec();
-      rows.push({sec: mainSec, sub: firstSub(mainSec, S.ans.subs), name: S.name, role: "main",
-                 media: media ? mediaOf(split ? fs.filter(f => f.sec === mainSec) : fs) : []});
+      const mainFs = split ? fs.filter(f => f.sec === mainSec) : fs;
+      rows.push({sec: mainSec, sub: firstSub(mainSec, withSeries(mainSec, facetSubs(facetOf(mainFacet())), mainFs.length)), name: S.name, role: "main",
+                 media: mainFs.length >= 2 && facetPlan().type === "media" ? mediaOf(mainFs) : []});
       for (const [sec, g] of Object.entries(facetGroups())) {
         if (sec === mainSec) continue;
         if (split) rows.push({sec, sub: firstSub(sec, withSeries(sec, facetSubs(g[0]), g.length)), name: `${S.name} ${g[0].tail || g[0].label}`,
@@ -906,7 +906,7 @@
       h("span", {class: "t-h"}, "加进去以后，左边目录会是这样"),
       h("ul", {}, secs.map(sec => h("li", {class: "t-sec", style: `--sc:${secOf(sec).color || "#1A1C22"}`},
         h("b", {class: "t-tag"}, secOf(sec).ja),
-        h("ul", {}, uniq(rows.filter(r => r.sec === sec).map(r => r.sub)).map(sub => {
+        h("ul", {}, [...new Set(rows.filter(r => r.sec === sec).map(r => r.sub || ""))].map(sub => {
           const mine = rows.filter(r => r.sec === sec && r.sub === sub), was = old(sec, sub);
           // 下级挂在同じ小分类の上级（已有的或这次新加的）下面
           const here = new Set([...was.map(i => i.name), ...mine.map(r => r.name)]);
