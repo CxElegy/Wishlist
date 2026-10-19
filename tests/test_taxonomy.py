@@ -203,3 +203,33 @@ class SeriesInNav(unittest.TestCase):
         self.assertIn("作品", heads[0])                                          # 板块が変わる所だけ板块の札
         self.assertNotIn('class="tg"', heads[1])
         self.assertLess(out.index('id="' + render._wid("FROM")), out.index('id="' + render._wid("猫用品")))   # 同じ板块はまとまる
+
+
+class MediaFacetsMECE(unittest.TestCase):
+    """向导の「面」（docs/additem.js の MEDIA）は MECE：層（作品／展開）に漏れなく 1 つずつ、各面の代表語はほかの面の語に当たらない。"""
+
+    def facets(self):
+        js = (pathlib.Path(__file__).resolve().parent.parent / "docs" / "additem.js").read_text(encoding="utf-8")
+        block = js[js.index("  const MEDIA = {"):js.index("\n  };", js.index("  const MEDIA = {"))]
+        out = {}
+        for m in re.finditer(r'^    (\w+): \{label: "([^"]+)".*?kw: \[([^\]]*)\], re: "([^"]+)"', block, re.M | re.S):
+            out[m.group(1)] = {"label": m.group(2), "kw": re.findall(r'"([^"]+)"', m.group(3)), "re": m.group(4)}
+        layer = dict(re.findall(r'(\w+): "(作品|展開)"', js[js.index("const LAYER = {"):js.index("};", js.index("const LAYER = {"))]))
+        return out, layer
+
+    def test_every_facet_in_exactly_one_layer(self):
+        fs, layer = self.facets()
+        self.assertEqual(len(fs), 8)
+        self.assertEqual(set(fs), set(layer))                                   # 漏れなく・余りなく
+        self.assertEqual(set(layer.values()), {"作品", "展開"})
+
+    def test_keywords_do_not_overlap(self):
+        fs, _ = self.facets()
+        for k, f in fs.items():
+            for w in f["kw"]:
+                self.assertRegex(w, re.compile(f["re"], re.I), f"{k}: {w}")
+                for o, g in fs.items():
+                    if o != k:
+                        self.assertIsNone(re.search(g["re"], w, re.I), f"「{w}」（{k}）が {o} にも当たる")
+        for text, only in {"コラボカフェ": "event", "コラボグッズ": "goods", "アニメ映画": "movie", "TVドラマ": "drama"}.items():
+            self.assertEqual([k for k, f in fs.items() if re.search(f["re"], text, re.I)], [only], text)
