@@ -406,6 +406,9 @@ PROCESSES = [
         "flow": [
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
+            {"id": "p2b", "kind": "decision", "lane": "actions", "title": "報告が最新の edit.json を取り込んでいる？",
+             "text": "reports の edit_sig（edit.json の SHA-1 先頭 12 桁）と比べる。収集が古い checkout で出刊している間に AI 編集が push した／競合で報告だけ相手側が残った場合は「いいえ」",
+             "no": "publish(heal) で出刊し直す（edit.json を取り込むだけ・おすすめや配図の再探しは飛ばす）"},
             {"id": "p3", "kind": "step", "lane": "actions", "title": "話題度を計算", "uses": ["heat"]},
             {"id": "p4", "kind": "step", "lane": "actions", "title": "トップの配色", "uses": ["octree"]},
             {"id": "p4c", "kind": "step", "lane": "actions", "title": "版面の副色が鮮やかなら広い面を落ち着かせる", "x": "作品ごと",

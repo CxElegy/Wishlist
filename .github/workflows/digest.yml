@@ -44,6 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          ref: ${{ github.ref }}   # 触发时的提交ではなく、いまの main の先頭（排队等待期间 AI 编辑推送的 edit.json 也要拿到）
           fetch-depth: 0   # 功能更新通知要读提交记录
 
       - uses: actions/setup-python@v6
