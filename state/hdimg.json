@@ -174,6 +174,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.hldycdn.com/777b6e25-1e8d-4d26-b214-b12738c12f21.jpeg": {
+  "w": 2752,
+  "h": 1536,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.hldycdn.com/7976b995-91c0-4387-9dd0-4a996720b1ee.jpeg": {
   "w": 3900,
   "h": 2600,
@@ -581,18 +587,6 @@
   "target": 720,
   "v": 3
  },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/first-truck.jpg": {
-  "w": 1536,
-  "h": 1024,
-  "target": 720,
-  "v": 3
- },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/sayama.jpg": {
-  "w": 700,
-  "h": 467,
-  "target": 720,
-  "v": 3
- },
  "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-1d5e5e720590cb73f11e894c6b55bd52-20261015-0ee83b.jpg": {
   "w": 700,
   "h": 467,
@@ -783,12 +777,6 @@
   "w": 1020,
   "h": 459,
   "target": 1280,
-  "v": 3
- },
- "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/e828/live/0110bda0-bb78-11f1-bc1f-3f186ca4140c.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  },
  "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2026%2F10%2F12%2Fchainsaw-man-crocs-classic-clog-collection-chainsaw-man-213925-90h-power-213926-90h-pochita-213928-90h-characters-213927-90h-release-info-tw.jpg?w=1080&cbr=1&q=90&fit=max": {
@@ -1101,12 +1089,6 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2evbJe.img": {
-  "w": 759,
-  "h": 1024,
-  "target": 720,
   "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2dIaSV.img": {
@@ -1534,12 +1516,6 @@
  "https://news.walkerplus.com/article/1407492/17648972_615.jpg": {
   "w": 615,
   "h": 769,
-  "target": 720,
-  "v": 3
- },
- "https://news.walkerplus.com/article/1430865/18178181_615.jpg": {
-  "w": 615,
-  "h": 401,
   "target": 720,
   "v": 3
  },
@@ -2029,12 +2005,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://sammyguru.com/wp-content/uploads/2026/10/Galaxy-S27-Series-Case-Featured.jpg": {
   "w": 1200,
   "h": 675,
@@ -2210,6 +2180,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://tennis.jp/atsuhiko-takei/wp-content/uploads/sites/71/2026/10/C794A5FA-83F1-4AA6-AE1E-ED02911DA936-1024x768.jpg": {
+  "w": 1024,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
  "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=780,fit=cover,f=auto,quality=high,sharpen=2,g=face/21/2026/10/2026101522493126583_1.jpg": {
   "w": 1200,
   "h": 780,
@@ -2331,12 +2307,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.5hD4PJk8oY08TlhIJT7ntQ&pid=News&w=1200": {
-  "w": 540,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.5unc9EPQvoH7kkubFBFiwA&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2349,11 +2319,17 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.6zMN3lZlFglHd_bLwgS4ww&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
+ "https://www.bing.com/th?id=ONUT.8lhMAEXOuJ_ZQ7vwNgjGnQ&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "local": "pics/6bec442c6879b741.webp",
+  "out": [
+   704,
+   400
+  ],
+  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.9HNkO23mU3knPnT4qSUFNg&pid=News&w=640": {
   "w": 100,
@@ -2411,6 +2387,18 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.Fr6xg1daQ52QgFLZkrUCQA&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/caa71340f1604750.webp",
+  "out": [
+   711,
+   472
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.G_QUaeI2vPBTSJEUU3WFJg&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2422,12 +2410,6 @@
    412
   ],
   "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.I1YtvISRg28tRi7sgHoObw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.JQGRH8tESTgLRyWZAXyOMg&pid=News&w=1200": {
   "w": 100,
@@ -2490,6 +2472,30 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.SP-NKIagtSKvWCvZ8m76kw&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/aaa4e5dbc8d75bb2.webp",
+  "out": [
+   720,
+   416
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.VYAq78NDraTDBnv5oPCfgA&pid=News&w=800": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/8ed5484ac760269d.webp",
+  "out": [
+   704,
+   704
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.ZDxnxBoL2oIZmv93-AYMbA&pid=News&w=495": {
   "w": 495,
   "h": 619,
@@ -2509,24 +2515,24 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.ZfVoV7H40irv_TP60yWsuQ&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/9695a641e3b6eed0.webp",
+  "out": [
+   719,
+   416
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.Zq5swh2htkWDQI0Wk7iF9g&pid=News&w=1200": {
   "w": 100,
   "h": 100,
   "target": 720,
   "v": 3,
   "local": "pics/2c9ffcca195df082.webp",
-  "out": [
-   700,
-   393
-  ],
-  "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.bI_AysTKlRav1k7tlaAn9w&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/58cb57cad9dad59b.webp",
   "out": [
    700,
    393
