@@ -1,5 +1,6 @@
 """版面の「更新中」の帯：収集が版面ごとに、抓完したその場で状態を書くこと（digest.ingest → live_mark）。ネットワークには出ない。"""
 
+import json
 import pathlib
 import sys
 import time
@@ -49,11 +50,13 @@ class LiveMark(unittest.TestCase):
         import livestatus
         calls = []
         tmp = pathlib.Path(tempfile.mkdtemp()) / "live-edit.json"
-        with mock.patch.object(digest, "LIVE_EDIT_FILE", tmp), mock.patch.object(digest, "unedited", lambda: ["A", "B"]), \
+        with mock.patch.object(digest, "LIVE_EDIT_FILE", tmp), mock.patch.object(digest, "edit_queue", lambda *a, **k: [[("A", 3), ("B", 1)]]), \
                 mock.patch.object(digest, "_run_min", lambda proc, d: 20), \
                 mock.patch.object(livestatus, "report", lambda b, p, s, note=None, eta=None: calls.append((b, p, s, note, round(eta)))):
             digest.live_edit()
             digest._live_edit_step("AI が配図を選んでいます")
+            digest._live_edit_step("編集済み · 網页への反映を待っています", digest.LIVE_AFTER_MIN, only={"A"})   # 第 1 バッチ（A だけ終わった）
+            self.assertEqual([c[0] for c in calls if c[3].startswith("編集済み")], ["A"])   # まだの B は「編集中」のまま
             run = digest._live_edit_step("編集済み · 網页への反映を待っています", digest.LIVE_AFTER_MIN)
         self.assertEqual(calls[:2], [("A", "edit", "work", "AI が編集しています", 23), ("B", "edit", "work", "AI が編集しています", 23)])
         self.assertEqual(calls[2][2:4], ("work", "AI が配図を選んでいます"))
@@ -69,6 +72,66 @@ class LiveMark(unittest.TestCase):
             runlog.add("collect", "x", log_dir=d, secs=secs)
         self.assertEqual(runlog.typical("collect", "secs", 290, log_dir=d), 300)   # 中央値（外れ値に引っぱられない）
         self.assertEqual(runlog.typical("collect", "secs", 290, n=2, log_dir=d), 9999)   # 最近の n 回だけ
+
+
+class EditBatches(unittest.TestCase):
+    """AI 編集の分批（5 版面ずつ編集 → 出刊 → push）：順番・トークンの記録。"""
+
+    def test_queue_most_pending_first(self):
+        import tempfile
+        d = pathlib.Path(tempfile.mkdtemp())
+        items = [{"name": n, "entries": [{}] * k} for n, k in (("A", 3), ("B", 9), ("C", 1), ("D", 5), ("E", 2), ("F", 7), ("G", 4))]
+        (d / "2026-10-19.json").write_text(json.dumps({"items": items}), encoding="utf-8")
+        (d / "2026-10-19.edit.json").write_text(json.dumps({"G": [], "_covered": {"G": 4}}), encoding="utf-8")   # G は編集済み
+        with mock.patch.object(digest, "INBOX_DIR", d):
+            q = digest.edit_queue(batch=5)
+        self.assertEqual([[n for n, _ in b] for b in q], [["B", "F", "D", "A", "E"], ["C"]])
+
+    def test_brief_is_short_and_per_batch(self):
+        import tempfile
+        d = pathlib.Path(tempfile.mkdtemp())
+        ent = lambda n: {"n": n, "date": "2026-10-19T01:00:00+00:00", "source": "4Gamer", "title": f"t{n}",
+                         "summary": "x" * 500, "url": "https://example.com/very/long/url", "image": "https://img.example.com/a.jpg"}
+        items = [{"name": "A", "entries": [ent(1), ent(2)]}, {"name": "B", "entries": [ent(1)]}]
+        (d / "2026-10-19.json").write_text(json.dumps({"items": items}), encoding="utf-8")
+        with mock.patch.object(digest, "INBOX_DIR", d):
+            out = digest.edit_brief(batch=1)
+            b2 = digest.edit_brief(batch=2)
+        self.assertIn("## A（2 件", out)
+        self.assertNotIn("https://", out)                 # 網址は読ませない
+        self.assertIn("x" * 120 + "\n", out + "\n")       # 要約は 120 字まで
+        self.assertNotIn("x" * 121, out)
+        self.assertEqual(b2, "")                          # 2 版面なら 1 バッチ
+
+    def test_admin_token_panel(self):
+        import render
+        d = {"today": {"in": 10, "cw": 20000, "cr": 300000, "out": 5000}, "week": {"in": 10, "cw": 20000, "cr": 300000, "out": 5000},
+             "runs": [{"when": "10/19 18:05", "at": "x", "sum": {"in": 10, "cw": 20000, "cr": 300000, "out": 5000},
+                       "batches": [{"when": "18:12", "batch": 1, "boards": ["<GTA 6>"], "stories": 3,
+                                    "tok": {"in": 10, "cw": 20000, "cr": 300000, "out": 5000}, "total": 325010}]}]}
+        h = render._admin_edit_tokens(d)
+        self.assertIn("第 1 バッチ", h)
+        self.assertIn("&lt;GTA 6&gt;", h)
+        self.assertIn("2.5万", h)                          # 新規入力＋出力
+        self.assertIn("まだ記録がありません", render._admin_edit_tokens({}))
+        self.assertIn('id="tokens"', render.render_admin({"edit_tokens": d}, {}, "u"))
+
+    def test_session_usage_counts_each_reply_once(self):
+        import tempfile
+        import usage
+        f = pathlib.Path(tempfile.mkdtemp()) / "s.jsonl"
+        u = lambda i, o: {"input_tokens": i, "cache_creation_input_tokens": 10, "cache_read_input_tokens": 100, "output_tokens": o}
+        lines = [{"type": "assistant", "message": {"id": "m1", "model": "claude-sonnet-5-5", "usage": u(1, 5)}},
+                 {"type": "assistant", "message": {"id": "m1", "model": "claude-sonnet-5-5", "usage": u(1, 50)}},   # 同じ返事の続き
+                 {"type": "user", "message": {"content": "x"}},
+                 {"type": "assistant", "message": {"id": "m2", "model": "claude-sonnet-5-5", "usage": u(2, 7)}}]
+        f.write_text("\n".join(json.dumps(x) for x in lines) + "\nnot json\n", encoding="utf-8")
+        got = usage.session_usage(f)
+        self.assertEqual((got["in"], got["cw"], got["cr"], got["out"], got["calls"]), (3, 20, 200, 57, 2))
+        d = usage.diff(got, {"in": 1, "cw": 10, "cr": 100, "out": 50, "calls": 1})
+        self.assertEqual((d["in"], d["out"], d["calls"]), (2, 7, 1))   # 前のバッチからの差
+        self.assertIn("出力 7", usage.short(d))
+        self.assertIsNone(usage.session_usage(pathlib.Path(tempfile.mkdtemp()) / "none.jsonl"))
 
 
 if __name__ == "__main__":

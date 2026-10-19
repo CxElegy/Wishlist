@@ -1997,7 +1997,7 @@ def admin_data(items, issues, analysis, tz, updated):
     backend_cells(items, rows, inbox[-1] if inbox else None, run)
     return {"pipeline": pipeline, "items": rows, "votes": votes, "emblem_run": run,
             "edit_diff": edit_diff(inbox[-1] if inbox else None),
-            "todo": backend_todo(items, rows, run), "log": backend_log(tz), "resources": backend_resources(tz)}
+            "todo": backend_todo(items, rows, run), "log": backend_log(tz), "edit_tokens": edit_tokens(tz), "resources": backend_resources(tz)}
 
 
 def backend_resources(tz, days=7):
@@ -2050,6 +2050,35 @@ def backend_todo(items, rows, run):
         "gate": {"text": (f"小元素 {len(queue)} 版面を Python で（AI なし）" if queue else "小元素の仕事なし")
                  + (f" · AI 編集の仕事 {len(edit)} 版面" if edit else "") + " · AI が要る仕事があるときだけ Claude", "items": queue},
     }
+
+
+def edit_tokens(tz, days=7):
+    """管理ページ「AI 編集のトークン」：AI 編集の回（セッション）ごとに、バッチごとの版面・本数・トークン（state/log/edit.json の tok）。
+    → {"runs": [{"when", "batches": [...], "sum": {...}}…（新しい順）], "today": 合計, "week": 合計}。"""
+    import runlog
+    import usage
+    now = dt.datetime.now(tz)
+    runs, today, week = {}, {}, {}
+    for r in runlog.load("edit"):
+        tok = r.get("tok")
+        if not isinstance(tok, dict):
+            continue
+        try:
+            at = dt.datetime.fromisoformat(r["at"]).astimezone(tz)
+        except (KeyError, ValueError):
+            continue
+        key = str(r.get("run") or r["at"])
+        g = runs.setdefault(key, {"when": at.strftime("%m/%d %H:%M"), "at": r["at"], "batches": [], "sum": {}})
+        g["batches"].append({"when": at.strftime("%H:%M"), "batch": r.get("batch"), "boards": r.get("boards") or [],
+                             "stories": r.get("stories"), "tok": tok, "total": usage.total(tok)})
+        for k in usage.KEYS:
+            g["sum"][k] = g["sum"].get(k, 0) + int(tok.get(k) or 0)
+            if (now - at).days < days:
+                week[k] = week.get(k, 0) + int(tok.get(k) or 0)
+            if at.date() == now.date():
+                today[k] = today.get(k, 0) + int(tok.get(k) or 0)
+    out = sorted(runs.values(), key=lambda g: g["at"], reverse=True)[:10]
+    return {"runs": out, "today": today, "week": week}
 
 
 def backend_log(tz, n=40):
@@ -2868,7 +2897,7 @@ def live_edit():
     """AI 编辑开始编排时（EDITING.md 第 2 步）：今天还没编的版面，在网页上出「AI が編集しています · あと約 N 分」的条。
     预计时间 = 最近几回 AI 编辑的长度（state/log/edit.json 的 secs）。之后 pick-images・publish 会把条往下推进。"""
     import livestatus
-    boards = unedited()
+    boards = [n for batch in edit_queue() for n, _ in batch] or unedited()   # 整理待ちのある版面全部（途中まで編集済みのものも）
     est = _run_min("edit", 1200)
     LIVE_EDIT_FILE.write_text(json.dumps({"start": time.time(), "boards": boards, "est": est}), encoding="utf-8")
     for b in boards:
@@ -2876,8 +2905,30 @@ def live_edit():
     print(f"網页の帯：{len(boards)} 版面（予想 {est:.0f} 分）", file=sys.stderr)
 
 
-def _live_edit_step(note, left_min=None):
-    """AI 编辑的途中：开始时记下的版面的条，换成新的说明和剩下的时间。"""
+EDIT_BATCH = 5   # AI 编辑一批编几个版面：编好一批就出刊・推送，网页上这几个版面先更新（用户定的，2026-10-19）
+
+
+def edit_queue(date=None, batch=EDIT_BATCH):
+    """AI 编辑分批的顺序：今天还有整理待ち的版面（编号 > _covered，或 edit.json 里没有），整理待ち多的先，每 batch 个一批。
+    → [[(版面, 整理待ち件数), …], …]。规则（不用 AI）：和 gate.edit_work 同一个数法。"""
+    import gate
+    paths = sorted(INBOX_DIR.glob(f"{date or '????-??-??'}.json"))
+    if not paths:
+        return []
+    work = gate.edit_work(INBOX_DIR, today=paths[-1].stem)
+    order = sorted(work.items(), key=lambda kv: (-kv[1], kv[0]))
+    return [order[i:i + batch] for i in range(0, len(order), batch)]
+
+
+def _edit_done_boards(inbox_path):
+    """今天已经编完（_covered ≥ 条目数）的版面。"""
+    import gate
+    pending = gate.edit_work(inbox_path.parent, today=inbox_path.stem)
+    return {i["name"] for i in (load_json(inbox_path) or {}).get("items", [])} - set(pending)
+
+
+def _live_edit_step(note, left_min=None, only=None):
+    """AI 编辑的途中：开始时记下的版面的条，换成新的说明和剩下的时间。only 给了就只改这些版面（分批：编好的那批先「反映を待っています」）。"""
     import livestatus
     try:
         run = json.loads(LIVE_EDIT_FILE.read_text(encoding="utf-8"))
@@ -2886,8 +2937,39 @@ def _live_edit_step(note, left_min=None):
     if left_min is None:
         left_min = max(2, run["est"] - (time.time() - run["start"]) / 60) + LIVE_AFTER_MIN
     for b in run["boards"]:
-        livestatus.report(b, "edit", "work" if left_min > LIVE_AFTER_MIN else "wait", note, left_min)
+        if only is None or b in only:
+            livestatus.report(b, "edit", "work" if left_min > LIVE_AFTER_MIN else "wait", note, left_min)
     return run
+
+
+PICK_WEIGHTS = ("hero", "lead")   # AI が目で配図を選ぶのは重大・頭の記事だけ（ほかは規則で。画像を見るとトークンを多く使う：1 枚の一覧 ≈ 横×縦/750 トークン）
+PICK_THUMB = (270, 180)           # 一覧の 1 枚の大きさ。4 列 × 2 段 = 1120×380 ≈ 570 トークン（前は 360×240・12 枚で ≈ 1,500）
+PICK_MAX = 8                      # 1 記事の候補は 8 枚まで
+
+
+def edit_brief(date=None, batch=None, summary=120):
+    """AI 編集に読ませる、短い一覧（省トークン）：inbox の JSON をそのまま読むと、網址・画像の網址・長い要約でトークンがかさむ。
+    版面ごとに「番号 日付 出典｜題｜要約（summary 字まで）」だけ。batch（1〜）を指定するとその分批の版面だけ。→ 文字列。"""
+    paths = sorted(INBOX_DIR.glob(f"{date or '????-??-??'}.json"))
+    if not paths:
+        return ""
+    inbox_path = paths[-1]
+    q = edit_queue(inbox_path.stem)
+    if batch and not 0 < batch <= len(q):
+        return ""   # そのバッチはない（もう全部終わった）
+    want = {n for n, _ in q[batch - 1]} if batch else {n for b in q for n, _ in b}
+    edits = load_edits(inbox_path)
+    out = []
+    for raw in (load_json(inbox_path) or {}).get("items", []):
+        if raw["name"] not in want:
+            continue
+        cov = (edits.get("_covered") or {}).get(raw["name"], 0) if raw["name"] in edits else 0
+        out.append(f"## {raw['name']}（{len(raw['entries'])} 件・前回の編集は {cov} 件まで）")
+        for d in raw["entries"]:
+            summ = " ".join(str(d.get("summary") or "").split())[:summary]
+            out.append(f"{d['n']} {(d.get('date') or '')[:10]} {d.get('source', '')}｜{d.get('title', '')}" + (f"｜{summ}" if summ else "")
+                       + (" ★要紧" if d.get("urgent") else ""))
+    return "\n".join(out)
 
 
 def pick_images(date=None):
@@ -2901,12 +2983,17 @@ def pick_images(date=None):
         return
     inbox_path = paths[-1]
     inbox, edits = load_json(inbox_path), load_edits(inbox_path)
-    _live_edit_step("AI が配図を選んでいます")
+    todo = {n for n, v in edits.items() if not n.startswith("_") and any(isinstance(s, dict) and not s.get("image") for s in v or [])}
+    _live_edit_step("AI が配図を選んでいます", only=todo)
     PICK_DIR.mkdir(parents=True, exist_ok=True)
     out = {}
     for raw in inbox["items"]:
         entries = [entry_from_dict(d) for d in raw["entries"]]
         for k, story in enumerate(edits.get(raw["name"], []) or []):
+            if story.get("image"):   # 前のバッチで選んだ配図はそのまま（分批で同じ報道をもう一度並べない）
+                continue
+            if story.get("weight") not in PICK_WEIGHTS:   # 省トークン：普通の記事は目で選ばず、出刊の規則（images.pick）に任せる
+                continue
             refs = [entries[r - 1] for r in story.get("refs", []) if 0 < r <= len(entries)]
             urls = []
             for e in refs[:3]:
@@ -2927,9 +3014,9 @@ def pick_images(date=None):
                     continue
                 if im.width < 300 or im.height < 160:
                     continue
-                im.thumbnail((360, 240))
+                im.thumbnail(PICK_THUMB)
                 thumbs.append((u, im))
-                if len(thumbs) >= 12:
+                if len(thumbs) >= PICK_MAX:
                     break
             key = f"{raw['name']}#{k}"
             out[key] = {"headline": story.get("headline", ""), "current": story.get("image"),
@@ -2938,10 +3025,11 @@ def pick_images(date=None):
                 continue
             cols = 4
             rows = (len(thumbs) + cols - 1) // cols
-            sheet = Image.new("RGB", (cols * 370, rows * 250), "white")
+            cw, ch = PICK_THUMB[0] + 10, PICK_THUMB[1] + 10
+            sheet = Image.new("RGB", (cols * cw, rows * ch), "white")
             draw = ImageDraw.Draw(sheet)
             for i, (_, im) in enumerate(thumbs):
-                x, y = (i % cols) * 370 + 5, (i // cols) * 250 + 5
+                x, y = (i % cols) * cw + 5, (i // cols) * ch + 5
                 sheet.paste(im, (x, y))
                 draw.rectangle([x, y, x + 34, y + 26], fill="black")
                 draw.text((x + 8, y + 6), str(i + 1), fill="white")
@@ -3072,18 +3160,54 @@ def logged_publish(path=None):
         edit = load_json(INBOX_DIR / f"{latest.stem}.edit.json")
         n = len([k for k in (edit or {}) if not k.startswith("_")])
         import resources
-        run = _live_edit_step("編集済み · 網页への反映を待っています", LIVE_AFTER_MIN) if proc == "edit" else None
-        took = {"secs": round(time.time() - run["start"])} if run else {}  # 次の回の「あと約 N 分」に使う
+        if proc == "edit":
+            _log_edit_batch(latest, edit, n)
+            return
         runlog.add(proc, f"{latest.stem} を出刊" + (f"（AI 編集 {n} 版面）" if edit else "（AI 編集なし・キーワードの規則）"), "ok",
-                   res=resources.snapshot(), **took, **({"tokens": TOKENS["in"] + TOKENS["out"], "tokens_in": TOKENS["in"]} if TOKENS["calls"] else {}))
+                   res=resources.snapshot(), **({"tokens": TOKENS["in"] + TOKENS["out"], "tokens_in": TOKENS["in"]} if TOKENS["calls"] else {}))
+
+
+def _log_edit_batch(latest, edit, n):
+    """AI 編集の 1 バッチ（EDITING.md 第 4 步：5 版面ずつ編集 → 出刊 → push）を実行ログ（state/log/edit.json）に 1 行。
+    このバッチで編集が終わった版面・記事の本数・このバッチで使ったトークン（usage.py：セッションの記録から本物の数字。
+    前のバッチの出刊からの差）。管理ページのライブログ・「AI 編集のトークン」に出る。"""
+    import resources
+    import runlog
+    import usage
+    try:
+        run = json.loads(LIVE_EDIT_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        run = {}
+    done = _edit_done_boards(latest)
+    new = sorted(done - set(run.get("done") or []))
+    now_u = usage.session_usage()
+    batch_u = usage.diff(now_u, run.get("usage"))
+    no = int(run.get("batch") or 0) + 1
+    left = sum(len(b) for b in edit_queue(latest.stem))   # まだ整理待ちの版面
+    stories = sum(len(v or []) for k, v in (edit or {}).items() if k in new)
+    if run:
+        run.update(batch=no, done=sorted(done), usage=now_u)
+        LIVE_EDIT_FILE.write_text(json.dumps(run, ensure_ascii=False), encoding="utf-8")
+    _live_edit_step("編集済み · 網页への反映を待っています", LIVE_AFTER_MIN, only=set(new))
+    names = "、".join(new[:6]) + (f" ほか {len(new) - 6}" if len(new) > 6 else "")
+    text = (f"{latest.stem} 第 {no} バッチを出刊：{names or '（新しく終わった版面なし）'}（{len(new)} 版面・{stories} 本"
+            + (f"・残り {left} 版面" if left else "・今日の整理待ちは全部終わり") + "）" + (f" · {usage.short(batch_u)}" if batch_u else ""))
+    extra = {"batch": no, "boards": new, "stories": stories, "left": left, "edited": n, "run": run.get("start")}
+    if batch_u:
+        extra.update(tok=batch_u, tokens=usage.total(batch_u))
+    if not left and run.get("start"):
+        extra["secs"] = round(time.time() - run["start"])   # 1 回分の長さ（「あと約 N 分」用）は最後のバッチだけ
+        if now_u:
+            extra["run_tok"] = now_u   # この回（セッション）全部のトークン
+    runlog.add("edit", text, "ok", res=resources.snapshot(), **extra)
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "hd-images", "prune-reddit", "retry-images"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "edit-queue", "edit-brief", "hd-images", "prune-reddit", "retry-images"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
-    parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）")
+    parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）；edit-brief 用：第几批")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
     args = parser.parse_args()
     if args.dry_run:
@@ -3113,6 +3237,11 @@ def main():
         sync_db()
     elif args.step == "live-edit":
         live_edit()
+    elif args.step == "edit-brief":
+        print(edit_brief(batch=int(args.only) if args.only and args.only.isdigit() else None))
+    elif args.step == "edit-queue":
+        for i, b in enumerate(edit_queue(), 1):
+            print(f"第 {i} 批：" + "、".join(f"{n}（{c}）" for n, c in b))
     elif args.step == "audit-match":
         audit_match(only=args.only.split("、") if args.only else None)
     elif args.step == "heat":
