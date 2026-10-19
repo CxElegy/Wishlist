@@ -5,6 +5,8 @@ name: CI 检查
 on:
   pull_request:
     branches: [main]
+    # edited：PR 说明里补上「架构图：不用改（理由）」后也重跑，不然这次检查一直是红的
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
   check:
