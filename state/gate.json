@@ -1,10 +1,10 @@
 {
  "changed": false,
- "checked": "2026-10-19T14:17:19+00:00",
+ "checked": "2026-10-19T15:17:23+00:00",
  "fired": {
-  "at": "2026-10-19T12:23:03+00:00",
+  "at": "2026-10-19T14:29:20+00:00",
   "results": {
-   "edit": "1 日 2 回（9:00 と 18:00）。次は 09:00",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,16 +12,16 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-19T11:07:49+00:00",
+    "at": "2026-10-19T14:29:20+00:00",
     "attempts": 1,
     "forced": true,
     "prog": 0,
-    "resp": "cse_017qa3xx2G8qxaLYLVosegs7",
-    "sig": "a548e7b594f6"
+    "resp": "cse_01VuqdyZYHQuvq9TaiASoyrK",
+    "sig": "f30faab3b066"
    },
    "items": [],
    "need": false,
-   "prog": 0,
+   "prog": 31,
    "sig": "c0c8b76adcd9",
    "why": "今日の新着はすべて AI 編集済み"
   },
@@ -30,8 +30,10 @@
    "items": [],
    "need": false,
    "sig": "b1312ab4623e",
-   "waiting": [],
-   "why": "全部そろっている"
+   "waiting": [
+    "ちいかわ"
+   ],
+   "why": "失敗 1 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 05:29 から）"
   },
   "photos": {
    "claude": true,

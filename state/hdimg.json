@@ -1,4 +1,16 @@
 {
+ "https://contents.oricon.co.jp/upimg/news/2488000/2487320/20261019_133212_p_o_15239275.jpg": {
+  "w": 1200,
+  "h": 1200,
+  "target": 1280,
+  "v": 3
+ },
+ "https://external-preview.redd.it/kK9-96taYUndwCQ-41Nua9o1DYmSJt9UkJFdboqSKls.jpeg?width=640&crop=smart&auto=webp&s=37928024937371ce148c3db09feb6fd3d8472c1d": {
+  "w": 640,
+  "h": 915,
+  "target": 720,
+  "v": 3
+ },
  "https://limo.ismcdn.jp/mwimgs/e/3/1200w/img_e3769c05079a27cfd936a7e3d79c433c78670.jpg": {
   "w": 1200,
   "h": 800,
@@ -17,6 +29,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00142252-toushin-000-1-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/b3a9f217d359b564.webp",
+  "out": [
+   1200,
+   800
+  ],
+  "why": "期限付きの網址"
+ },
  "https://nokiapoweruser.com/wp-content/uploads/2026/09/oppo-find.jpeg": {
   "w": 1024,
   "h": 572,
@@ -29,16 +53,22 @@
   "target": 1280,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.hKQVpfa_HbcGfMsif4dQsw&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
+ "https://www.bing.com/th?id=ONUT.Fx2kMpucZgRg52uCutGL9Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
-  "v": 3,
-  "local": "pics/e8d2eb28a4f038d9.webp",
-  "out": [
-   700,
-   468
-  ],
-  "why": "Bing の小さい縮小画像"
+  "v": 3
+ },
+ "https://www.fashion-press.net/img/movies/25404/iiQ.jpg?1791350816": {
+  "w": 1600,
+  "h": 1600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.j-cast.com/images/origin/2026/10/news_20261019110936.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
  }
 }
