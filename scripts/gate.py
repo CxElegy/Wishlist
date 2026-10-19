@@ -40,6 +40,8 @@ INBOX = ROOT / "inbox"
 REFIRE_HOURS = 6   # 同じ仕事（指紋が同じ）では、この時間のあいだ起こし直さない
 MIN_GAP_MIN = 60   # 前に起こしてからこの分数は、何があっても起こし直さない（AI 編集 1 回 ≈ 20 分、収集は 2 時間ごと）。これを過ぎても仕事が減っていなければ「停滞」
 DAILY_JOBS = {"edit": 20}   # AI 編集は省トークンのため 1 日 1 回ぐらい：前に起こしてからこの時間は、仕事が残っていても（動いた後なら）起こし直さない
+EDIT_MIN = 100     # 整理待ちがこの件数たまったら AI 編集を起こす（ユーザーが決めた：1 件ずつ起こすとトークンがかさむ）
+EDIT_MAX_WAIT_H = 6   # 件数に届かなくても、整理待ちが出てからこの時間たったら起こす（少ない日に一日中載らないのを防ぐ）
 MAX_ATTEMPTS = 3   # 停滞のとき、仕事が減らないまま起こし直す回数の上限（超えたら REFIRE_HOURS 待つ。管理ページに「止まっている」と出す）
 
 # AI が要る仕事 → (定時タスクの id, トークンの環境変数, 名前)
@@ -131,23 +133,49 @@ def _emblem_why(todo, wait, tz="Asia/Tokyo"):
     return "・".join(parts) or "全部そろっている"
 
 
+def edit_due(n, since, now=None, done_changed=False):
+    """AI 編集を起こす時か。→ (起こすか, 整理待ちが出た時刻 since, 説明)。
+    n = 今日の整理待ちの件数、since = 前回までに記録した「整理待ちが出た時刻」、done_changed = 前回から AI 編集が進んだ（_covered が増えた）。
+    EDIT_MIN 件たまるか、整理待ちが出てから EDIT_MAX_WAIT_H 時間たったら起こす。"""
+    now = now or _now()
+    if n <= 0:
+        return False, "", "今日の新着はすべて AI 編集済み"
+    if not since or done_changed:   # 新しく整理待ちが出た／AI 編集のあとに残った分は、ここから数え直す
+        since = now.isoformat(timespec="seconds")
+    try:
+        waited = now - dt.datetime.fromisoformat(since)
+    except ValueError:
+        waited, since = dt.timedelta(0), now.isoformat(timespec="seconds")
+    due_at = dt.datetime.fromisoformat(since) + dt.timedelta(hours=EDIT_MAX_WAIT_H)
+    if n >= EDIT_MIN:
+        return True, since, f"整理待ち {n} 件（{EDIT_MIN} 件に届いた → AI 編集を起こす）"
+    if waited >= dt.timedelta(hours=EDIT_MAX_WAIT_H):
+        return True, since, f"整理待ち {n} 件（{EDIT_MIN} 件に届かないが {EDIT_MAX_WAIT_H} 時間たった → AI 編集を起こす）"
+    jst = due_at.astimezone(zoneinfo.ZoneInfo("Asia/Tokyo")).strftime("%H:%M")
+    return False, since, f"整理待ち {n} 件（あと {EDIT_MIN - n} 件で AI 編集。届かなくても {jst} に起こす）"
+
+
 def check(tz="Asia/Shanghai", path=None):
     """→ {job: {need, claude, why, items, sig}}。state/gate.json に書く。"""
     edit = edit_work(tz=tz)
+    prev_edit = (load(path).get("jobs") or {}).get("edit") or {}
+    done = edit_done(tz=tz)
+    e_need, e_since, e_why = edit_due(sum(edit.values()), prev_edit.get("since"),
+                                      done_changed=prev_edit.get("prog") is not None and done != prev_edit.get("prog"))
     photos = photo_work()
     emblem, emblem_wait = emblem_work()
     jobs = {
         "emblem": {"need": bool(emblem), "claude": False, "items": emblem[:20], "waiting": [n for n, _ in emblem_wait],
                    "why": _emblem_why(emblem, emblem_wait)},
-        "edit": {"need": bool(edit), "claude": True, "items": sorted(edit),
-                 "why": f"整理待ちの記事 {sum(edit.values())} 件（{len(edit)} 版面・AI 編集まで版面に載らない）" if edit else "今日の新着はすべて AI 編集済み"},
+        "edit": {"need": e_need, "claude": True, "items": sorted(edit), "n": sum(edit.values()), "boards": len(edit),
+                 "since": e_since, "min": EDIT_MIN, "why": e_why},
         "photos": {"need": bool(photos), "claude": True, "items": photos,
                    "why": f"写真 {len(photos)} 枚" if photos else "受付の写真なし"},
     }
     for k, j in jobs.items():
         j["sig"] = _sig([k, edit if k == "edit" else photos if k == "photos" else emblem])
     # 進み具合の目印（prog：大きくなれば進んだ）。起こしたあとに増えていなければ Claude は動いていない（work_state）
-    jobs["edit"]["prog"] = edit_done(tz=tz)
+    jobs["edit"]["prog"] = done
     jobs["photos"]["prog"] = -len(photos)
     data = load(path)
     prev = data.get("jobs") or {}
@@ -173,7 +201,7 @@ def work_state(j, now=None):
       stalled   起こして MIN_GAP_MIN 分たったのに prog が増えていない（Claude が動いていない）→ 起こし直す
       gave_up   動かないまま MAX_ATTEMPTS 回起こした：REFIRE_HOURS 待って、管理ページで人に知らせる"""
     last = (j or {}).get("fired") or {}
-    if not (j or {}).get("need") or not last.get("at"):
+    if not ((j or {}).get("need") or (j or {}).get("n")) or not last.get("at"):
         return "none", ""
     now = now or _now()
     try:
@@ -233,8 +261,8 @@ def fire(path=None, post=_post, env=None):
     results = {}
     for job, (rid, var, name) in ROUTINES.items():
         j = (data.get("jobs") or {}).get(job) or {}
-        if not j.get("need"):
-            results[job] = "仕事なし（起こさない）"
+        if not j.get("need") and not (job in force and j.get("n")):   # ボタン（GATE_FORCE）は件数に届いていなくても起こす
+            results[job] = "仕事なし（起こさない）" if not j.get("n") else f"まだ起こさない：{j.get('why') or ''}"
             continue
         if job not in allowed:
             results[job] = "GATE_FIRE で止めている（定時を待つ）"
