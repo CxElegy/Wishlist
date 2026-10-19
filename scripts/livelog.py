@@ -19,21 +19,53 @@ PROCS = {"collect": "収集", "publish": "出刊", "edit": "AI編集", "emblem":
 LOG_FILES = ["collect", "publish", "edit", "emblem", "gate", "photos"]   # runlog.PROCS と同じ（state/log/<proc>.json）
 
 
-def panel(log, repo="CxElegy/Wishlist"):
-    """log = digest.backend_log の行（新しい順、at つき）。→ HTML。"""
+MODES = {"run": ("続けて全部", "整理待ちの版面を 1 つずつ全部（1 つ終わるごとに網页に出る）"),
+         "step": ("1 版面ずつ", "次の 1 版面だけやって止まる（結果を見てから次へ）"),
+         "pause": ("一時停止", "次の版面に入る前に止まる（いまの版面は最後まで）。9:00 / 18:00 も起こさない")}
+
+
+def control(boards=()):
+    """AI 編集のコントロール（db/edit_control.sql）：いまの状態・ボタン 3 つ・版面のやり直し。押すと Supabase の edit_control_set、
+    「続けて全部」「次の 1 版面」はそのあと run_now('edit_now') で AI 編集を起こす（10 分に 1 回まで）。"""
+    opts = "".join(f'<option value="{e(b)}">{e(b)}</option>' for b in boards)
+    return ('<div class="ectl" id="ectl">'
+            '<div class="ectl-st"><span>AI 編集</span><b id="ectl-mode">読み込み中…</b><small id="ectl-why"></small></div>'
+            '<div class="ectl-btns">'
+            '<button type="button" class="nx-run" data-ectl="run" data-label="▶ 続けて全部">▶ 続けて全部</button>'
+            '<button type="button" class="nx-run" data-ectl="step" data-label="⏭ 次の 1 版面">⏭ 次の 1 版面</button>'
+            '<button type="button" class="nx-run ectl-pause" data-ectl="pause" data-label="⏸ 一時停止">⏸ 一時停止</button></div>'
+            '<div class="ectl-redo"><label for="ectl-board">やり直す版面</label>'
+            f'<select id="ectl-board">{opts}</select>'
+            '<button type="button" class="nx-run" data-ectl="redo" data-label="↺ この版面をやり直す">↺ この版面をやり直す</button>'
+            '<small id="ectl-redo">—</small></div>'
+            '<small class="ectl-msg" id="ectl-msg" aria-live="polite"></small></div>'
+            f'<script type="application/json" id="ectl-cfg">{json.dumps(MODES, ensure_ascii=False)}</script>')
+
+
+def panel(log, repo="CxElegy/Wishlist", boards=()):
+    """log = digest.backend_log の行（新しい順、at つき）。boards = やり直しの選択肢（版面の名前）。→ HTML。"""
     seed = [{"at": r.get("at") or "", "p": r.get("proc") or "", "b": "", "t": r.get("text") or "", "lv": r.get("level") or "info"}
             for r in reversed(log or [])]
     cfg = json.dumps({"seed": seed, "repo": repo, "files": LOG_FILES, "procs": PROCS}, ensure_ascii=False).replace("</", "<\\/")
-    return ('<div class="term" id="term">'
+    return (control(boards) + '<div class="term" id="term">'
             '<div class="term-bar"><i></i><i></i><i></i><span class="term-tt">watchlist@admin:~/log</span>'
             '<b class="term-st" id="term-st">接続中…</b>'
-            '<button type="button" class="term-btn" id="term-pause" aria-pressed="false">一時停止</button></div>'
+            '<button type="button" class="term-btn" id="term-pause" aria-pressed="false" title="ログの流れだけを止める（AI 編集は止まらない）">表示を止める</button></div>'
             '<ol class="term-body" id="term-body" role="log" aria-live="polite" aria-label="ライブログ"></ol>'
             '<div class="term-foot"><span class="term-cur" aria-hidden="true">▌</span><span id="term-foot">待機中</span></div></div>'
             f'<script type="application/json" id="term-cfg">{cfg}</script>')
 
 
 CSS = """
+.ectl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;align-items:center;margin:0 0 12px;padding:10px 12px;background:var(--card);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.ectl-st{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;grid-column:1/-1}
+.ectl-st span{font:900 var(--fs-label) var(--font-sans);background:var(--ink);color:var(--card);padding:0 8px;letter-spacing:.08em}
+.ectl-st b{font:900 16px var(--font-sans)}.ectl-st b.pause{color:var(--alert)}.ectl-st small{font-size:12px;opacity:.8}
+.ectl-btns{display:flex;flex-wrap:wrap;gap:8px}.ectl-pause{box-shadow:3px 3px 0 var(--alert)}
+.ectl-redo{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:12px}
+.ectl-redo label{font-weight:700}.ectl-redo select{font:inherit;font-size:13px;padding:5px 6px;border:2px solid var(--ink);background:var(--card);color:var(--ink);max-width:14em}
+.ectl-msg{grid-column:1/-1;font-size:12px;min-height:1em}.ectl-msg.ng{color:var(--alert)}.ectl-msg.ok{color:var(--good)}
+@media (max-width:860px){.ectl{grid-template-columns:minmax(0,1fr)}}
 .term{background:var(--ink);color:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);font:500 12.5px/1.65 var(--font-mono)}
 .term-bar{display:flex;align-items:center;gap:6px;padding:7px 10px;border-bottom:1px solid color-mix(in srgb,var(--card) 18%,transparent)}
 .term-bar>i{width:10px;height:10px;border-radius:50%;background:color-mix(in srgb,var(--card) 30%,transparent)}
@@ -53,6 +85,7 @@ CSS = """
 .term-body .tp-gate,.term-body .tp-background{color:var(--viz-4)}.term-body .tp-publish,.term-body .tp-render{color:var(--viz-3)}
 .term-body .tp-photos{color:var(--seq-0)}
 .term-body b{font-weight:700;color:var(--card)}
+.term-body .tkn{margin-left:8px;padding:0 6px;background:color-mix(in srgb,var(--viz-5) 22%,transparent);color:var(--viz-5);white-space:nowrap}
 .term-body .lv-ok .tx::before{content:"✔ ";color:var(--viz-3)}
 .term-body .lv-error .tx,.term-body .lv-warn .tx{color:color-mix(in srgb,var(--alert) 55%,var(--card))}
 .term-body .lv-error .tx::before{content:"✖ "}.term-body .lv-warn .tx::before{content:"! "}
@@ -77,7 +110,9 @@ JS = """
     var t=document.createElement('time');t.textContent=ts(x.at);li.appendChild(t);
     var p=document.createElement('span');p.className='tp tp-'+x.p;p.textContent='['+(T.procs[x.p]||x.p)+']';li.appendChild(p);
     var s=document.createElement('span');s.className='tx';if(x.b){var b=document.createElement('b');b.textContent=x.b;s.appendChild(b);s.appendChild(document.createTextNode('  '));}
-    s.appendChild(document.createTextNode(x.t));li.appendChild(s);return li;}
+    var tk=x.t.indexOf(' · token ');   // トークンの部分は目立たせる
+    if(tk>=0){s.appendChild(document.createTextNode(x.t.slice(0,tk)));var k=document.createElement('span');k.className='tkn';k.textContent=x.t.slice(tk+3);s.appendChild(k);}
+    else s.appendChild(document.createTextNode(x.t));li.appendChild(s);return li;}
   function save(){try{localStorage.setItem(K,JSON.stringify(ev.slice(-MAX)));}catch(e){}}
   function add(x,fresh){x.at=x.at||new Date().toISOString();var k=key(x);if(seen[k])return;seen[k]=1;
     ev.push(x);ev.sort(function(a,b){return a.at<b.at?-1:a.at>b.at?1:0;});if(ev.length>MAX)ev=ev.slice(-MAX);
@@ -125,5 +160,23 @@ JS = """
   setInterval(function(){if(!document.hidden)loadBoards();},20000);
   setInterval(function(){if(!document.hidden)loadRuns();},180000);
   setInterval(function(){if(!document.hidden)loadLogs();},120000);
+  // AI 編集のコントロール（db/edit_control.sql）
+  var MODES=JSON.parse(document.getElementById('ectl-cfg').textContent),em=document.getElementById('ectl-mode'),ew=document.getElementById('ectl-why'),
+      er=document.getElementById('ectl-redo'),emsg=document.getElementById('ectl-msg'),eb=document.getElementById('ectl-board');
+  function rpc(fn,body){return fetch(A.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:A.key,'Content-Type':'application/json'},body:JSON.stringify(body||{})})
+    .then(function(r){if(!r.ok)throw 0;return r.json();});}
+  function showCtl(c){if(!c)return;var m=MODES[c.mode]||[c.mode,''];em.textContent=m[0];em.className=c.mode;ew.textContent=m[1];
+    er.textContent=(c.redo&&c.redo.length)?'やり直し待ち：'+c.redo.join('、'):'やり直し待ちなし';}
+  function msg(t,cls){emsg.textContent=t;emsg.className='ectl-msg '+(cls||'');}
+  function loadCtl(){if(!A.url||!A.key){em.textContent='データベース未接続';return;}rpc('edit_control_get').then(showCtl).catch(function(){});}
+  function wake(){return rpc('run_now',{job:'edit_now'}).then(function(x){if(x&&x.ok){msg('AI 編集を起こしました · 1〜2 分でライブログに「開始」が出ます','ok');}
+    else{var nx=x&&x.next_at?Math.max(1,Math.ceil((new Date(x.next_at)-new Date())/60000)):0;msg((x&&x.msg||'起こせませんでした')+(nx?' · あと '+nx+' 分で押せます':'')+'（設定は変えました。次に AI 編集が動くときに効きます）','ng');}});}
+  document.addEventListener('click',function(ev){var b=ev.target.closest('[data-ectl]');if(!b||!A.url)return;var k=b.dataset.ectl;b.disabled=true;
+    var body=k==='redo'?{p_redo_add:eb.value}:{p_mode:k};
+    rpc('edit_control_set',body).then(function(c){if(c&&c.ok===false){msg(c.msg||'変えられませんでした','ng');return;}showCtl(c);
+      add({at:new Date().toISOString(),p:'edit',b:k==='redo'?eb.value:'',t:'管理ページ：'+(k==='redo'?'やり直しに入れた':(MODES[k]||[k])[0]+' に切り替え'),lv:'info'},true);
+      if(k==='run'||k==='step')return wake();msg(k==='pause'?'一時停止にしました · いま編集中の版面が終わったら止まります':'やり直しに入れました · 次に AI 編集が動くとき、いちばん先にやります（すぐなら「次の 1 版面」）','ok');})
+      .catch(function(){msg('データベースに届きませんでした','ng');}).then(function(){setTimeout(function(){b.disabled=false;},3000);});});
+  loadCtl();setInterval(function(){if(!document.hidden)loadCtl();},20000);
 })();
 """

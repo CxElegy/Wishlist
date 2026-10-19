@@ -287,7 +287,10 @@
   收集的 `git pull --rebase -X theirs` 之后只 `render`（只从 reports 生成），reports 是没有编排的旧版，网页就一直是「整理待ち」。
   现在：① digest.yml 的 checkout 取 `github.ref`（main 的最新）② 出刊时把 `edit.json` 的指纹写进报告（`edit_sig`）③ `digest.py render` 先看 `stale_report()`，
   报告没取进最新的 `edit.json` 就先 `publish(heal=True)`（只取进编排，不重找配图）再生成。所以任何一次 render（render.yml・收集后）都会自己补上。
-- **AI 编辑分批・token 记录（2026-10-19，用户定的）**：AI 编辑按 `digest.py edit-queue`（整理待ち多的先，5 个版面一批）一批一批「编排 → 配图 → 出刊 → push」，推完 1〜2 分钟网页上这几个版面就更新（推送不花 token）。
+- **AI 编辑一个一个版面・暂停・重做（2026-10-19，用户定的）**：每个版面之前 `digest.py edit-next`（`EDIT_BATCH = 1`）问管理页的开关（Supabase `edit_control`，`db/edit_control.sql`）：
+  `run`=全部一个一个、`step`=只编下一个就自动变 `pause`、`pause`=编完当前版面就停（9:00 / 18:00 也不叫，按钮照样能叫）；管理页「ライブログ」上面的「AI 編集」条：▶ 続けて全部・⏭ 次の 1 版面（这两个会顺便叫起 AI 编辑）・⏸ 一時停止・↺ この版面をやり直す（`redo`，编过的也最先重编，编完自动拿掉）。
+  正在编的那个版面中途停不了（会话没有外部中断的口子），停在版面之间。
+- **AI 编辑分批・token 记录（2026-10-19，用户定的）**：AI 编辑按 `digest.py edit-queue`（やり直し最先，然后整理待ち多的先，1 个版面一批）一批一批「编排 → 配图 → 出刊 → push」，推完 1〜2 分钟网页上这几个版面就更新（推送不花 token）。
   每批出刊时 `_log_edit_batch` 把这批编完的版面・本数・**这批用掉的 token**（`usage.py`：读 Claude Code 会话记录 `~/.claude/projects/*/*.jsonl` 里每条回复的 usage，真实数字，前一批之后的差）写进 `state/log/edit.json`，
   管理页「AI 編集のトークン」（今天・7 天・每回每批）和「ライブログ」显示。**省 token**：AI 读的是 `edit-brief`（不含网址的短一览），只给 hero・lead 看候选图（`PICK_WEIGHTS`，一张一览 ≈ 570 token），普通报道配图交给规则。
 - **流程图每一步都标「AI が判断」还是「ルール」（用户定的）**：`processes.judged_by` 自动判断（用到 Claude = AI，用学习模型 = 「ルール＋モデル」，其他 = ルール），

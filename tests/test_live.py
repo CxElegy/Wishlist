@@ -75,7 +75,40 @@ class LiveMark(unittest.TestCase):
 
 
 class EditBatches(unittest.TestCase):
-    """AI 編集の分批（5 版面ずつ編集 → 出刊 → push）：順番・トークンの記録。"""
+    """AI 編集の分批（1 版面ずつ編集 → 出刊 → push）：順番・一時停止・やり直し・トークンの記録。"""
+
+    def setUp(self):
+        self.ctl = {"mode": "run", "redo": []}
+        p = mock.patch.object(digest, "edit_control", lambda: self.ctl)   # 本物のデータベースには行かない
+        p.start()
+        self.addCleanup(p.stop)
+        self.sets = []
+        q = mock.patch.object(digest, "set_edit_control", lambda **k: self.sets.append(k))
+        q.start()
+        self.addCleanup(q.stop)
+
+    def _inbox(self, d):
+        items = [{"name": n, "entries": [{}] * k} for n, k in (("A", 3), ("B", 9), ("G", 4))]
+        (d / "2026-10-19.json").write_text(json.dumps({"items": items}), encoding="utf-8")
+        (d / "2026-10-19.edit.json").write_text(json.dumps({"G": [], "_covered": {"G": 4}}), encoding="utf-8")
+
+    def test_pause_step_and_redo(self):
+        import tempfile
+        import runlog
+        d = pathlib.Path(tempfile.mkdtemp())
+        self._inbox(d)
+        run = d / "run.json"
+        run.write_text(json.dumps({"start": 1, "batch": 0}), encoding="utf-8")
+        with mock.patch.object(digest, "INBOX_DIR", d), mock.patch.object(digest, "LIVE_EDIT_FILE", run), \
+                mock.patch.object(runlog, "add", lambda *a, **k: None):
+            self.assertEqual(digest.edit_next(), ("NEXT", "B"))              # 整理待ちの多い順に 1 つずつ
+            self.assertEqual(json.loads(run.read_text())["current"], "B")
+            self.ctl = {"mode": "run", "redo": ["G"]}                         # 管理ページで「G をやり直す」
+            self.assertEqual(digest.edit_next(ctl=self.ctl), ("NEXT", "G"))   # 編集済みでもいちばん先に
+            self.assertEqual(digest.edit_next(ctl={"mode": "pause", "redo": []})[0], "STOP")
+            run.write_text(json.dumps({"start": 1, "batch": 1}), encoding="utf-8")
+            self.assertEqual(digest.edit_next(ctl={"mode": "step", "redo": []})[0], "STOP")   # 1 版面ずつ：1 つ終わったら止める
+        self.assertEqual(self.sets, [{"mode": "pause"}])                     # 止めるときに pause に戻す
 
     def test_queue_most_pending_first(self):
         import tempfile
@@ -84,7 +117,7 @@ class EditBatches(unittest.TestCase):
         (d / "2026-10-19.json").write_text(json.dumps({"items": items}), encoding="utf-8")
         (d / "2026-10-19.edit.json").write_text(json.dumps({"G": [], "_covered": {"G": 4}}), encoding="utf-8")   # G は編集済み
         with mock.patch.object(digest, "INBOX_DIR", d):
-            q = digest.edit_queue(batch=5)
+            q = digest.edit_queue(batch=5, ctl={"mode": "run", "redo": []})
         self.assertEqual([[n for n, _ in b] for b in q], [["B", "F", "D", "A", "E"], ["C"]])
 
     def test_brief_is_short_and_per_batch(self):
@@ -96,12 +129,13 @@ class EditBatches(unittest.TestCase):
         (d / "2026-10-19.json").write_text(json.dumps({"items": items}), encoding="utf-8")
         with mock.patch.object(digest, "INBOX_DIR", d):
             out = digest.edit_brief(batch=1)
-            b2 = digest.edit_brief(batch=2)
-        self.assertIn("## A（2 件", out)
+            b2 = digest.edit_brief(batch=3)
+        self.assertIn("## A（2 件", out)                   # 1 版面ずつ：第 1 バッチは整理待ちの多い A だけ
+        self.assertNotIn("## B", out)
         self.assertNotIn("https://", out)                 # 網址は読ませない
         self.assertIn("x" * 120 + "\n", out + "\n")       # 要約は 120 字まで
         self.assertNotIn("x" * 121, out)
-        self.assertEqual(b2, "")                          # 2 版面なら 1 バッチ
+        self.assertEqual(b2, "")                          # 2 版面なら 2 バッチまで
 
     def test_admin_token_panel(self):
         import render

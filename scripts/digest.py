@@ -2920,25 +2920,86 @@ def live_edit():
     import livestatus
     boards = [n for batch in edit_queue() for n, _ in batch] or unedited()   # 整理待ちのある版面全部（途中まで編集済みのものも）
     est = _run_min("edit", 1200)
-    LIVE_EDIT_FILE.write_text(json.dumps({"start": time.time(), "boards": boards, "est": est}), encoding="utf-8")
+    paths = sorted(INBOX_DIR.glob("????-??-??.json"))
+    done = sorted(_edit_done_boards(paths[-1])) if paths else []   # 始める前に編集済みの版面（バッチの記録に数えない）
+    LIVE_EDIT_FILE.write_text(json.dumps({"start": time.time(), "boards": boards, "est": est, "done": done}, ensure_ascii=False), encoding="utf-8")
     for b in boards:
         livestatus.report(b, "edit", "work", "AI が編集しています", est + LIVE_AFTER_MIN)
     print(f"網页の帯：{len(boards)} 版面（予想 {est:.0f} 分）", file=sys.stderr)
 
 
-EDIT_BATCH = 5   # AI 编辑一批编几个版面：编好一批就出刊・推送，网页上这几个版面先更新（用户定的，2026-10-19）
+EDIT_BATCH = 1   # AI 编辑一次编几个版面：编好就出刊・推送，网页上这个版面先更新（用户定的，2026-10-19：一个一个来，方便试错）
 
 
-def edit_queue(date=None, batch=EDIT_BATCH):
-    """AI 编辑分批的顺序：今天还有整理待ち的版面（编号 > _covered，或 edit.json 里没有），整理待ち多的先，每 batch 个一批。
-    → [[(版面, 整理待ち件数), …], …]。规则（不用 AI）：和 gate.edit_work 同一个数法。"""
+def edit_control():
+    """AI 编辑的开关（Supabase edit_control_get()，db/edit_control.sql）→ {"mode": run|step|pause, "redo": [版面…]}。读不到就当作 run。"""
+    import livestatus
+    url, key = livestatus._db()
+    if not (url and key):
+        return {"mode": "run", "redo": []}
+    req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_get", data=b"{}", method="POST",
+                                 headers={"apikey": key, "Content-Type": "application/json"})
+    try:
+        d = json.loads(urllib.request.urlopen(req, timeout=15).read() or b"{}") or {}
+        return {"mode": d.get("mode") if d.get("mode") in ("run", "step", "pause") else "run", "redo": list(d.get("redo") or [])}
+    except Exception as err:  # noqa: BLE001
+        print(f"  （AI 编辑的开关读不到，当作 run：{err}）", file=sys.stderr)
+        return {"mode": "run", "redo": []}
+
+
+def set_edit_control(mode=None, redo_clear=None):
+    """AI 编辑自己改开关：1 版面ずつ（step）做完一个就变 pause；重做的版面做完从 redo 拿掉。失败也不停。"""
+    import livestatus
+    url, key = livestatus._db()
+    if not (url and key):
+        return
+    body = json.dumps({"p_mode": mode, "p_redo_add": None, "p_redo_clear": redo_clear}, ensure_ascii=False).encode("utf-8")
+    req = urllib.request.Request(f"{url}/rest/v1/rpc/edit_control_set", data=body, method="POST",
+                                 headers={"apikey": key, "Content-Type": "application/json"})
+    try:
+        urllib.request.urlopen(req, timeout=15).read()
+    except Exception as err:  # noqa: BLE001
+        print(f"  （AI 编辑的开关写不进去：{err}）", file=sys.stderr)
+
+
+def edit_queue(date=None, batch=EDIT_BATCH, ctl=None):
+    """AI 编辑的顺序：管理页点了「やり直す」的版面（redo）最先，然后今天还有整理待ち的版面（编号 > _covered，或 edit.json 里没有），整理待ち多的先，每 batch 个一批。
+    → [[(版面, 整理待ち件数), …], …]。规则（不用 AI）：和 gate.edit_work 同一个数法。ctl = edit_control() 的结果（测试用）。"""
     import gate
     paths = sorted(INBOX_DIR.glob(f"{date or '????-??-??'}.json"))
     if not paths:
         return []
     work = gate.edit_work(INBOX_DIR, today=paths[-1].stem)
-    order = sorted(work.items(), key=lambda kv: (-kv[1], kv[0]))
+    sizes = {i["name"]: len(i.get("entries") or []) for i in (load_json(paths[-1]) or {}).get("items", [])}
+    redo = [(n, sizes[n]) for n in (ctl if ctl is not None else edit_control()).get("redo") or [] if n in sizes]
+    order = redo + sorted(((n, c) for n, c in work.items() if n not in dict(redo)), key=lambda kv: (-kv[1], kv[0]))
     return [order[i:i + batch] for i in range(0, len(order), batch)]
+
+
+def edit_next(ctl=None):
+    """AI 编辑每编一个版面之前问一次（EDITING.md 第 4 步）：→ ("NEXT", 版面) / ("STOP", 理由) / ("DONE", "")。
+    管理页的开关：pause = 停（正在编的那个版面已经编完）；step = 这次会话只编 1 个版面，编完自动变 pause。"""
+    import runlog
+    ctl = ctl if ctl is not None else edit_control()
+    try:
+        run = json.loads(LIVE_EDIT_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        run = {}
+    if ctl.get("mode") == "pause":
+        runlog.add("edit", "管理ページで一時停止中：ここで止めた（「続けて全部」か「次の 1 版面」で再開）", "warn")
+        return "STOP", "一時停止中"
+    if ctl.get("mode") == "step" and int(run.get("batch") or 0) >= 1:
+        set_edit_control(mode="pause")
+        runlog.add("edit", "1 版面ずつ：この版面で止めた（管理ページの「次の 1 版面」で続き）", "info")
+        return "STOP", "1 版面ずつ：1 つ終わったので止める"
+    q = edit_queue(ctl=ctl)
+    if not q:
+        return "DONE", ""
+    name = q[0][0][0]
+    if run:
+        run["current"] = name
+        LIVE_EDIT_FILE.write_text(json.dumps(run, ensure_ascii=False), encoding="utf-8")
+    return "NEXT", name
 
 
 def _edit_done_boards(inbox_path):
@@ -3200,14 +3261,17 @@ def _log_edit_batch(latest, edit, n):
     except (OSError, ValueError):
         run = {}
     done = _edit_done_boards(latest)
-    new = sorted(done - set(run.get("done") or []))
+    cur = run.get("current")
+    new = sorted({cur} if cur and cur in done else done - set(run.get("done") or []))   # edit-next が渡した版面（やり直しの版面は前から済でも数える）
+    if cur and cur in (edit_control().get("redo") or []):
+        set_edit_control(redo_clear=cur)   # やり直しが終わった
     now_u = usage.session_usage()
     batch_u = usage.diff(now_u, run.get("usage"))
     no = int(run.get("batch") or 0) + 1
     left = sum(len(b) for b in edit_queue(latest.stem))   # まだ整理待ちの版面
     stories = sum(len(v or []) for k, v in (edit or {}).items() if k in new)
     if run:
-        run.update(batch=no, done=sorted(done), usage=now_u)
+        run.update(batch=no, done=sorted(done), usage=now_u, current=None)
         LIVE_EDIT_FILE.write_text(json.dumps(run, ensure_ascii=False), encoding="utf-8")
     _live_edit_step("編集済み · 網页への反映を待っています", LIVE_AFTER_MIN, only=set(new))
     names = "、".join(new[:6]) + (f" ほか {len(new) - 6}" if len(new) > 6 else "")
@@ -3226,7 +3290,7 @@ def _log_edit_batch(latest, edit, n):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", nargs="?", default="all",
-                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "edit-queue", "edit-brief", "hd-images", "prune-reddit", "retry-images"])
+                        choices=["all", "ingest", "publish", "render", "notify-urgent", "notify-weekly", "notify-new-items", "notify-changes", "notify-wishlist", "recommend", "pick-images", "unedited", "new-items", "repair-images", "sync-db", "photos", "take-items", "heat", "audit-match", "live-edit", "edit-queue", "edit-next", "edit-brief", "hd-images", "prune-reddit", "retry-images"])
     parser.add_argument("date", nargs="?", help="pick-images 用：指定日期，默认最新一期")
     parser.add_argument("--only", help="unedited / audit-match 用：只看这些关注项（用「、」分隔）；edit-brief 用：第几批")
     parser.add_argument("--dry-run", action="store_true", help="只抓取并打印，不写文件")
@@ -3265,6 +3329,9 @@ def main():
         live_edit()
     elif args.step == "edit-brief":
         print(edit_brief(batch=int(args.only) if args.only and args.only.isdigit() else None))
+    elif args.step == "edit-next":
+        what, why = edit_next()
+        print(f"{what} {why}".strip())
     elif args.step == "edit-queue":
         for i, b in enumerate(edit_queue(), 1):
             print(f"第 {i} 批：" + "、".join(f"{n}（{c}）" for n, c in b))
