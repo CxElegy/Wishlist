@@ -24,3 +24,26 @@
 - **なぜ**：ユーザーが「暫時 Discord の機能は保留」と決めた（質問が多く、今は要らない）。
 - **そのまま動いているもの**：すでに `urgent_patterns` を持つ既存の関注項の速報・Discord 通知（収集側の仕組み）は止めていない。止めるときは別に言ってもらう。
 - **再開するとき**：`URGENT_ASK = true` にする。質問の選択肢は `KINDS` / `MEDIA` 各面の `urgent`（要紧のことば）から作る。
+
+## ログインの第 2 步・ユーザーと Discord（2026-10-20 保留）
+
+- **何を止めたか**：一般ユーザーが自分の関注清单・愿望清单・ページを持つこと（第 2 步、`LOGIN.md`）。第 1 步（ログイン・招待制・访客は見るだけ・管理ページは管理者だけ）だけ先に作る。
+- **Discord**：ユーザーとは関係なし。運営者だけの機能で、それも保留中（上の「設定ページの Discord 通知の質問」）。ユーザーの関注項に Discord の通知は付けない。
+- **決まっていること**：ユーザーのページは本人だけ（访客が見られるのは運営者のページだけ）・リポジトリに入れない・AI 編集は Haiku で 1 日の上限つき・人数の上限は付けない（招待制で絞る）・独自ドメインは今は取らない（GitHub Pages のまま）。
+
+## Google ログイン（2026-10-21 保留）
+
+- **何を止めたか**：右上の「ログイン」の Google（OAuth）。今はメールのリンク（パスワードなし）だけ（`render.AUTH_JS`）。DB 側（招待制・身份）はそのまま使える。
+- **なぜ**：Google Cloud で「公開（本番）」にするには Branding にホームページとプライバシーポリシーのリンクが要り、ユーザーが「面倒なのでメールで」と決めた。
+- **わかったこと**（Google Cloud プロジェクト `watchlist-512221`、Outlook の Google アカウントで作成済み）：
+  Authorized domains は「top private domain」だけ → `supabase.co` も `cxelegy.github.io` もはじかれた。入れるなら `bzokpnbcjscbcehdxtjq.supabase.co`。
+  テスト中のままなら Audience の Test users（100 人まで）に入れた人だけログインできる（公開しなくても使える）。
+- **再開するとき**：サイトにホームページ説明とプライバシーポリシーのページを作り Branding に入れて公開 → OAuth クライアント（ウェブ、リダイレクト URI `https://bzokpnbcjscbcehdxtjq.supabase.co/auth/v1/callback`）→ Supabase の Google を有効に → AUTH_JS のログインに Google のボタンを足す（`signInWithOAuth({provider:'google'})`）。
+
+## ユーザー自分の版面・言語ごとのおすすめ（2026-10-21 決めたこと・まだ作っていないもの）
+
+- **入口と新しく始めるは本番**（`docs/index.html`，`scripts/welcome.py`）。登録すると `app_users.prefs` に {lang: {primary, also}, genres, picks} が残る。
+- **まだ**：① 本人の版面（第 2 步、`LOGIN.md`：picks から関注項を作る → 収集 → AI 編集は Haiku・1 日の上限 → 本人だけが見る）。それまでは完了画面で「店長が仕入れの準備中」と言い、店長のページへ案内。
+  ② **主言語に合わせたおすすめ**（用户定的）：版面を足すとき（設定ページの向導・新しく始めるのカード）、主言語の地域で話題のもの（AniList は日本、Steam は `cc`/`l` を言語の国に、Google ニュースの `hl`/`gl`）を先に出す。
+  ③ **集める言語を増やす**：いまは `welcome.COLLECTED`（ja・en・zh・ko）だけ。Google ニュース RSS は `hl`/`gl`/`ceid` を変えればほかの言語も取れる。`lang.py` の言語の見分け（文字の種類）も足す。足したら `COLLECTED` に入れて「準備中」を外す。
+  ④ 画面の言語（UI）はいまは日本語だけ（PRODUCT.md）。好みの言語は残しているので、UI を訳すならそこから。

@@ -1759,7 +1759,7 @@ def render_settings(items, db, updated, schemes=()):
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-{_account_tag()}
+{_account_tag("settings")}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>设置</title>
@@ -3730,14 +3730,321 @@ def busy_plan(names=(), db=None):
     return {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "", "ids": {n: _wid(n) for n in names}}
 
 
-def _account_tag():
-    """網页が Supabase に渡すアカウント（db/accounts.sql の p_account）。ページごとの JS は window.WL_ACCOUNT を読む。"""
-    return f'<script>window.WL_ACCOUNT={json.dumps(sitedir.NAME)};</script>'
+def _account_tag(page=""):
+    """網页が Supabase に渡すアカウント（db/accounts.sql の p_account）。ページごとの JS は window.WL_ACCOUNT を読む。
+    ログイン（AUTH_JS）も一緒に入れる：どのページにも右上のログインボタンが出る。"""
+    return f'<script>window.WL_ACCOUNT={json.dumps(sitedir.NAME)};</script>{_auth_tag(page)}'
+
+
+# ---- ログイン（2026-10-20，用户定的）-------------------------------------------------------------
+# 访客（ログインしていない）= 見るだけ；一般用户 = ユーザー名で入った人（運営者のページは見るだけ）；管理者 = 全部・管理ページ。
+# 本当の門番はデータベース（db/auth.sql・db/auth_guard.sql の can_edit / is_admin）。ここはボタンを止めて理由を出すだけ。
+# 開關（private.auth_flags の enforce、db/auth_enforce.sql）が閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。
+# ログインはメールのリンク（Supabase Auth の magic link・パスワードなし・implicit なので別の端末で開いてもよい）。
+# 2026-10-21，用户定的：ユーザー名（メールでも可）だけ・パスワードなし・名前は重ならない（public.app_users）・はじめに利用規約に同意（TERMS_VERSION）。
+# このブラウザが覚える（localStorage の wl-user）。名前が管理者のメール（invites の role=admin）なら、このブラウザで最初の 1 回だけ確認のリンク。Google は保留（PENDING.md）。
+AUTH_DB = {}   # {url, key}：digest.cmd_render が入れる（公開の publishable key）
+SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"
+# ページごとに「見るだけ」のとき止める操作（それ以外のクリック・リンク・絞り込みはそのまま）
+AUTH_LOCK = {"index": "[data-vote]", "heat": "[data-vote]", "wishlist": "[data-vote],#snap button,#snap input,#snap textarea",
+             "settings": "button,input,select,textarea,[contenteditable]",
+             "admin": "button,input,select,textarea"}
+ROLE_JA = {"admin": "店長", "user": "お客さま", "guest": "ゲスト"}   # 運営者 = 店長（「店長のおすすめ」と同じ設定）
+
+AUTH_CSS = """
+.wl-auth{position:fixed;top:10px;right:12px;z-index:90;display:flex;align-items:center;gap:8px;font:700 13px/1.4 var(--font-sans)}
+.wl-auth .shop{padding:2px 9px;background:var(--ink);color:var(--card);font:500 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.06em;transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--rose)}
+.wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
+ background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
+.wl-auth>button.in{padding-left:12px}
+.wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
+.wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
+.wl-auth img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
+.wl-auth .ini{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;flex:none;background:var(--ink);color:var(--card);font:900 13px/1 var(--font-sans)}
+.wl-auth .rl.wait{background:var(--alert)}
+.wl-auth .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wl-auth .rl{flex:none;padding:0 6px;background:var(--ink);color:var(--card);font-size:var(--fs-tag);letter-spacing:.06em;transform:skewX(var(--skew))}
+.wl-auth .rl.admin{background:var(--rose)}
+.wl-auth .menu{position:absolute;right:0;top:calc(100% + 8px);min-width:220px;background:var(--card);color:var(--ink);border:2px solid var(--ink);
+ box-shadow:4px 4px 0 var(--ink);padding:12px;display:flex;flex-direction:column;gap:8px;font-weight:500}
+.wl-auth .menu[hidden]{display:none}
+.wl-auth .menu small{opacity:.75;line-height:1.5}
+.wl-auth .menu button{border:2px solid var(--ink);background:transparent;color:var(--ink);padding:5px 10px;font:700 13px var(--font-sans);cursor:pointer;text-align:left}
+.wl-auth .menu button:hover{background:var(--gold)}
+.wl-login{display:flex;flex-direction:column;gap:8px}
+.wl-login label{display:flex;flex-direction:column;gap:4px;font-weight:700}
+.wl-login input{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
+.wl-login button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 12px;font:700 13px var(--font-sans);cursor:pointer}
+.wl-login button:disabled{opacity:.6;cursor:wait}
+.wl-login .st{margin:0;font-size:13px;line-height:1.5}
+.wl-login .first{margin:4px 0 0;padding-top:8px;border-top:1px solid var(--hair);font-size:13px;line-height:1.6}
+.wl-login .tabs{display:flex;border-bottom:2px solid var(--ink)}
+.wl-login .tabs button{flex:1;align-self:auto;border:0;background:transparent;padding:6px 8px;font:700 13px var(--font-sans);color:var(--ink);opacity:.6;cursor:pointer;box-shadow:none}
+.wl-login .tabs button[aria-selected=true]{opacity:1;background:var(--ink);color:var(--card)}
+.wl-login .hint{margin:0;min-height:1.4em;font-size:12px}
+.wl-login .hint.ok{color:var(--good)}
+.wl-login .hint.ng{color:var(--alert)}
+.wl-login .agree,.wl-agree .agree{display:flex;gap:6px;align-items:flex-start;font:500 13px/1.5 var(--font-sans)}
+.wl-login .agree[hidden]{display:none}
+.wl-login a,.wl-agree a,.wl-auth .menu>a{color:var(--rose);text-decoration:underline;text-underline-offset:2px}
+.wl-auth .menu .quiet{border-color:var(--hair);opacity:.75}
+.wl-agree{position:fixed;inset:0;z-index:96;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--ink) 55%,transparent)}
+.wl-agree>div{max-width:440px;background:var(--card);color:var(--ink);border:3px solid var(--ink);box-shadow:var(--shadow-l);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.wl-agree h2{margin:0;font:900 20px/1.3 var(--font-sans)}
+.wl-agree p{margin:0;line-height:1.7;font-size:14px}
+.wl-agree form{display:flex;flex-direction:column;gap:12px}
+.wl-agree .row{display:flex;flex-wrap:wrap;gap:8px}
+.wl-agree button{border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+.wl-agree button[data-out]{background:transparent}
+.wl-auth .menu{width:min(300px,calc(100vw - 24px))}
+.wl-toast{position:fixed;left:50%;bottom:72px;z-index:95;transform:translateX(-50%);max-width:calc(100vw - 32px);background:var(--ink);color:var(--card);
+ padding:9px 16px;box-shadow:4px 4px 0 var(--rose);font:700 14px/1.5 var(--font-sans)}
+.wl-toast[hidden]{display:none}
+html[data-lock="1"] [data-vote]{cursor:not-allowed}
+.wl-ro{margin:0 0 4px;padding:8px 12px;border:2px dashed var(--ink);background:var(--sheet);font:700 13px/1.6 var(--font-sans)}
+html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
+html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
+.wl-gate{min-height:100vh;display:grid;place-items:center;padding:16px;background:var(--paper)}
+.wl-gate>div{max-width:420px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.wl-gate h1{margin:0;font:900 22px/1.3 var(--font-sans)}
+.wl-gate p{margin:0;line-height:1.7}
+.wl-gate a,.wl-gate button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer;text-decoration:none}
+.wl-mem table{width:100%;border-collapse:collapse;font-size:13px}
+.wl-mem th,.wl-mem td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--hair)}
+.wl-mem form{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.wl-mem input,.wl-mem select{min-width:0;padding:5px 8px;border:2px solid var(--ink);background:var(--card);font:500 14px var(--font-sans)}
+.wl-mem input{flex:1 1 220px}
+.wl-mem button{border:2px solid var(--ink);background:var(--ink);color:var(--card);padding:5px 14px;font:700 13px var(--font-sans);cursor:pointer}
+.wl-mem .st{min-height:1.4em;font-size:13px}
+@media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}}
+"""
+
+AUTH_JS = r"""
+(function(){
+  var A=__AUTH__, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
+  if(!base||!A.key||!window.fetch) return;
+  var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
+  R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
+  var ROLE=__ROLE__, LOCK=__LOCK__[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
+  // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
+  window.fetch=function(input,init){
+    try{
+      var u=typeof input==='string'?input:(input&&input.url)||'';
+      if(tok&&u.indexOf(base+'/rest/')===0){
+        init=Object.assign({},init||{});
+        var h=new Headers(init.headers||(typeof input!=='string'&&input.headers)||undefined);
+        h.set('Authorization','Bearer '+tok); init.headers=h;
+      }
+    }catch(e){}
+    return of(input,init);
+  };
+  function rpc(fn,body){
+    var h={apikey:A.key,'Content-Type':'application/json'}; if(tok) h.Authorization='Bearer '+tok;
+    return of(base+'/rest/v1/rpc/'+fn,{method:'POST',headers:h,body:JSON.stringify(body||{})})
+      .then(function(r){return r.text().then(function(t){var j=null; try{j=t?JSON.parse(t):null;}catch(e){} if(!r.ok) throw new Error((j&&j.message)||r.status); return j;});});   // void の関数は 204（本文なし）
+  }
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return '&#'+c.charCodeAt(0)+';';});}
+  var toastT=0;
+  function toast(t){
+    var el=document.querySelector('.wl-toast'); if(!el){el=document.createElement('div');el.className='wl-toast';el.setAttribute('role','status');document.body.appendChild(el);}
+    el.textContent=t; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(function(){el.hidden=true;},4000);
+  }
+  // ログイン（2026-10-21，用户定的）：ユーザー名（メールでも可）だけ・パスワードなし・名前は重ならない（データベースで確かめる）。
+  // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
+  // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。名前が店長のメール（invites の role=admin）のときだけ、
+  // このブラウザで最初の 1 回、確認のリンクをメールで送る（そうしないと誰でも店長の名前を入れて変えられる）。
+  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
+  try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
+  function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
+  var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
+  function sayErr(m){
+    m=String(m||'');
+    if(/not authorized/i.test(m)) return '確認のメールを送れませんでした（メール送信の設定待ち）';
+    if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度';
+    return m||'うまくいきませんでした';
+  }
+  function back(){ return location.href.split('#')[0].replace(/[?&](code|error|error_code|error_description)=[^&]*/g,''); }
+  function sendAdminLink(mail,st){
+    if(!sb){ if(st) st.textContent='準備中です。少し待ってからもう一度'; return; }
+    if(st) st.textContent='確認のメールを送っています…';
+    sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:back(),shouldCreateUser:true}}).then(function(r){
+      if(st) st.textContent=r.error?sayErr(r.error.message):'店長の名前です。'+mail+' に届いたメールのリンクを押してください（このブラウザで最初の 1 回だけ）';
+    });
+  }
+  var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+'" target="_blank" rel="noopener">利用規約・プライバシーポリシー</a>に同意する</span></label>';};
+  // 右上はログインだけ。新しく始めるのは入口の流れ（言語・ジャンル・最初の版面を選ぶ）に一本化（2026-10-21，サイト全体で同じ始め方に）
+  function loginForm(){
+    return '<form class="wl-login" data-mode="old" novalidate>'+
+      '<label>ユーザー名<input type="text" required minlength="2" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録した名前（メールアドレスでも）"></label>'+
+      '<button type="submit" class="go">ログイン</button><p class="st" aria-live="polite"></p>'+
+      '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →</a><br><small>名前・ニュースの言語・好きなジャンルを選ぶだけ（1 分）。パスワードはありません</small></p></form>';
+  }
+  function after(name,agreed,st){
+    if(isMail(name)) rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(adm){
+      if(!adm||(user&&user.email&&user.email.toLowerCase()===name.toLowerCase())) return;
+      me.admin=true; saveMe(me); chip(true); sendAdminLink(name,document.querySelector('.wl-auth .menu .st'));
+    });
+    if(agreed<TV){ askAgree(); return; }
+    toast('ようこそ、'+name+' さん。このブラウザが覚えました'); refresh();
+  }
+  function bindLogin(root){
+    var f=root.querySelector('.wl-login'); if(!f) return;
+    var inp=f.querySelector('input[type=text]'), st=f.querySelector('.st'), go=f.querySelector('.go');
+    f.onsubmit=function(ev){
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      var n=inp.value.trim();
+      if(n.length<2){ st.textContent='ユーザー名を 2 文字以上で入れてください'; return; }
+      go.disabled=true; st.textContent='';
+      rpc('user_login',{p_name:n}).then(function(r){
+        go.disabled=false; saveMe({name:r.name,v:r.agreed_version||0,at:Date.now()}); after(r.name,r.agreed_version||0,st);
+      }).catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
+    };
+  }
+  // 規約の版が上がった・まだ同意していない人：同意するまで画面を覆う（見るだけには戻れる＝ログアウト）
+  function askAgree(){
+    if(!me) return;
+    var d=document.querySelector('.wl-agree'); if(!d){d=document.createElement('div');d.className='wl-agree';d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');document.body.appendChild(d);}
+    d.innerHTML='<div><h2>利用規約・プライバシーポリシー</h2><p>'+(me.v?'内容が新しくなりました。':'')+'続けて使うには、同意をお願いします。'+
+      '関心のある作品・投票などの情報（興味・関心の情報）を、サービスのためだけに使います。</p><form>'+agreeBox()+
+      '<div class="row"><button type="submit">同意して続ける</button><button type="button" data-out>同意しない（ログアウト）</button></div></form></div>';
+    var f=d.querySelector('form');
+    d.querySelector('[data-out]').onclick=logout;
+    f.onsubmit=function(ev){ev.preventDefault();
+      if(!f.querySelector('.agree input').checked){ toast('チェックを入れてください'); return; }
+      rpc('user_agree',{p_name:me.name,p_version:TV}).then(function(){ me.v=TV; saveMe(me); d.remove(); toast('ありがとうございます'); refresh(); })
+        .catch(function(e){ toast(sayErr(e.message)); });};
+  }
+  function logout(){
+    saveMe(null);
+    (sb&&tok?sb.auth.signOut():Promise.resolve()).then(function(){location.reload();});
+  }
+  function leave(){
+    if(!me||!confirm('退会すると、名前「'+me.name+'」と同意の記録を消します。よろしいですか？')) return;
+    rpc('user_leave',{p_name:me.name}).catch(function(){}).then(logout);
+  }
+  var locked=function(){return R.dataset.lock==='1';};
+  document.addEventListener('click',function(ev){
+    if(!locked()||!LOCK) return;
+    var t=ev.target.closest&&ev.target.closest(LOCK);
+    if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live,.wl-agree')) return;
+    ev.preventDefault(); ev.stopImmediatePropagation();
+    toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'ここは店長のページなので、見るだけです');
+  },true);
+  document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
+  function chip(keepOpen){
+    var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
+    var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
+    if(!name){
+      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン</button><div class="menu" hidden>'+loginForm()+'</div>';
+      var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
+      lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=text]').focus();};
+      bindLogin(box); return;
+    }
+    var pending=!user&&me&&me.admin, label=pending?'確認待ち':(ROLE[role]||role), sh=isMail(name)?name.split('@')[0]:name;
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
+      '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(pending?'wait':role)+'">'+esc(label)+'</span></button>'+
+      '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています</small>'+
+      (pending?'<button type="button" data-again>確認のメールをもう一度送る</button><p class="st" aria-live="polite">店長の名前です。届いたメールのリンクを押すと店長になります（このブラウザで 1 回だけ）</p>':'')+
+      (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ</button>':'')+
+      '<a href="'+esc(TURL)+'">利用規約・プライバシーポリシー</a>'+
+      '<button type="button" data-out>ログアウト</button>'+(me?'<button type="button" data-leave class="quiet">退会する</button>':'')+'</div>';
+    var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
+    b.onclick=function(){var o=menu.hidden;menu.hidden=!o;b.setAttribute('aria-expanded',String(o));};
+    menu.querySelector('[data-out]').onclick=logout;
+    var lv=menu.querySelector('[data-leave]'); if(lv) lv.onclick=leave;
+    var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
+    var ag=menu.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(name,menu.querySelector('.st'));};
+  }
+  function gate(){
+    var need=page==='admin'&&R.dataset.enf==='1'&&R.dataset.role!=='admin';
+    R.dataset.gate=need?'1':'0';
+    var g=document.querySelector('.wl-gate'); if(!need){if(g) g.remove(); return;}
+    if(!g){g=document.createElement('div');g.className='wl-gate';document.body.appendChild(g);}
+    var pending=me&&me.admin&&!user;
+    g.innerHTML='<div><h1>管理ページ</h1><p>'+(pending?'店長の確認がまだです。届いたメールのリンクを押してください。':
+      me?'このページは店長だけが見られます。':'店長だけが見られます。店長の名前（メールアドレス）でログインしてください。')+'</p>'+
+      (me?'':loginForm())+(pending?'<button type="button" data-again>確認のメールをもう一度送る</button><p class="st" aria-live="polite"></p>':'')+
+      '<a href="./">← ウォッチリスト通信に戻る</a></div>';
+    bindLogin(g);
+    var ag=g.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.name,g.querySelector('.st'));};
+  }
+  function readOnlyNote(){
+    if(page!=='settings') return;
+    var n=document.querySelector('.wl-ro');
+    if(!locked()){if(n) n.remove(); return;}
+    if(n) return;
+    n=document.createElement('p'); n.className='wl-ro';
+    n.textContent='見るだけです。設定を変えるには右上の「ログイン」から。';
+    var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
+  }
+  function members(){
+    var box=document.getElementById('wl-members'); if(!box) return;
+    if(R.dataset.role!=='admin'){box.closest('section').hidden=true; return;}
+    box.closest('section').hidden=false;
+    Promise.all([rpc('admin_list_app_users'),rpc('admin_list_invites')]).then(function(v){
+      var us=v[0]||[], inv=v[1]||[];
+      box.innerHTML='<table><thead><tr><th>店長のメール</th><th>役割</th><th>ログイン済み</th></tr></thead><tbody>'+
+        inv.map(function(x){return '<tr><td>'+esc(x.email)+'</td><td>'+esc(ROLE[x.role]||x.role)+'</td><td>'+(x.joined?'済':'まだ')+'</td></tr>';}).join('')+
+        '</tbody></table><p class="st">ユーザー '+us.length+' 人：'+us.slice(0,50).map(function(u){return esc(u.name)+(u.agreed_version>=TV?'':'（規約未同意）');}).join('、')+(us.length>50?' ほか':'')+'</p>'+
+        '<form><input type="email" required placeholder="店長にする人のメール（その人はこのメールを名前にしてログイン）" aria-label="メール">'+
+        '<button type="submit">店長にする</button></form><p class="st" aria-live="polite"></p>';
+      var f=box.querySelector('form'), st=box.querySelectorAll('.st')[1];
+      f.onsubmit=function(ev){ev.preventDefault();
+        rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:'admin'})
+          .then(function(a){st.textContent=a+' を店長にしました。このメールアドレスを名前にしてログインすると、確認のメールのあと店長になります。';members();})
+          .catch(function(e){st.textContent='できませんでした：'+e.message;});};
+    }).catch(function(e){box.innerHTML='<p class="st">読み込めませんでした：'+esc(e.message)+'</p>';});
+  }
+  function refresh(){
+    return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
+      .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
+        R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
+      .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
+      .then(function(){chip();gate();readOnlyNote();members();
+        if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
+          var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
+          if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
+        }});
+  }
+  function start(){
+    if(me&&me.name&&!me.admin&&isMail(me.name)&&!tok) rpc('is_admin_email',{p_email:me.name}).then(function(a){ if(a){ me.admin=true; saveMe(me); refresh(); } }).catch(function(){});   // 入口から店長のメールで登録した
+    if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
+      .catch(function(e){ if(/見つかりません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
+    var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
+    if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
+    if(!window.supabase){refresh();return;}
+    sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
+    sb.auth.onAuthStateChange(function(ev,s){
+      var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
+      if(user&&user.email&&me&&me.admin&&me.name.toLowerCase()===user.email.toLowerCase()){ me.admin=false; saveMe(me); }   // 店長の確認が済んだ
+      if(changed||ev==='INITIAL_SESSION') refresh();
+      if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
+    });
+  }
+  function boot(){
+    var s=document.createElement('script'); s.src=A.lib; s.async=true; s.onload=start; s.onerror=function(){refresh();};
+    document.head.appendChild(s);
+  }
+  if(document.body) boot(); else document.addEventListener('DOMContentLoaded',boot);
+})();
+"""
+
+
+def _auth_tag(page=""):
+    """どのページの <head> にも入れるログインの部品（AUTH_CSS・AUTH_JS）。AUTH_DB が空（テスト・手元）なら何も出さない。"""
+    if not (AUTH_DB.get("url") and AUTH_DB.get("key")):
+        return ""
+    cfg = {"url": AUTH_DB["url"], "key": AUTH_DB["key"], "lib": SUPABASE_JS, "page": page,
+           "terms": TERMS_VERSION, "termsUrl": "terms.html", "start": "../#name"}   # 新しく始める = 入口（docs/index.html）の流れ
+    js = (AUTH_JS.replace("__AUTH__", json.dumps(cfg)).replace("__ROLE__", json.dumps(ROLE_JA, ensure_ascii=False))
+          .replace("__LOCK__", json.dumps(AUTH_LOCK)))
+    js = js.replace("</", "<\\/")
+    return f'<style>{AUTH_CSS}</style><script>{js}</script>'
 
 
 def _live_head(page):
     """<head> に入れる：自分の指紋（digest.write_page の stamp が VER_MARK を置き換える）と帯・印の CSS・アカウント。"""
-    return f'<meta name="wl-ver" data-page="{e(page)}" content="{VER_MARK}"><style>{LIVE_CSS}</style>{_account_tag()}'
+    return f'<meta name="wl-ver" data-page="{e(page)}" content="{VER_MARK}"><style>{LIVE_CSS}</style>{_account_tag(page)}'
 
 
 def stamp(html_, *volatile):
@@ -4293,6 +4600,109 @@ document.querySelectorAll('.vt').forEach(box => box.addEventListener('click', ev
 """
 
 
+TERMS_VERSION = 1          # 利用規約・プライバシーポリシーの版。中身を変えたら上げる → ログインしている人にもう一度同意を聞く（AUTH_JS の askAgree）
+TERMS_DATE = "2026年10月21日"
+TERMS_CONTACT = ""         # 開示・訂正・削除の請求の連絡先（運営者が決める。空なら「サイト内でお知らせします」）
+TERMS_PAGE_CSS = """
+.page{display:flex;flex-direction:column;gap:18px;max-width:820px}
+.back{display:inline-flex;align-items:center;gap:8px;font:700 12px var(--font-mono);letter-spacing:.12em}.back:hover{color:var(--rose)}
+.terms{background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:22px 26px;line-height:1.85;font-size:15px}
+.terms h2{margin:26px 0 8px;font:900 18px/1.4 var(--font-sans);border-left:6px solid var(--rose);padding-left:10px}
+.terms h2:first-child{margin-top:0}
+.terms ul,.terms ol{margin:6px 0;padding-left:1.4em}
+.terms li{margin:3px 0}
+.terms .note{background:var(--sheet);border:2px dashed var(--ink);padding:10px 14px;margin:10px 0}
+.terms small{opacity:.8}
+"""
+
+
+def render_terms(updated=""):
+    """利用規約・プライバシーポリシー（docs/<account>/terms.html）。新しく始めるときに同意してもらう（AUTH_JS）。
+    関心のある作品・投票は「興味・関心の情報」＝ ユーザー名と結びつくと個人情報（個人情報保護法）なので、集めるもの・使い道・預け先を書く。"""
+    contact = (f'<a href="mailto:{e(TERMS_CONTACT)}">{e(TERMS_CONTACT)}</a>' if TERMS_CONTACT
+               else "このサイト内でお知らせします")
+    return f"""<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>利用規約・プライバシーポリシー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{FONTS}">
+<style>{CSS}{HEAT_PAGE_CSS}{TERMS_PAGE_CSS}</style>
+{_account_tag("terms")}
+</head>
+<body>
+<div class="page">
+<header class="mast"><div class="mtitle"><h1>利用規約・プライバシーポリシー</h1><span class="stamp">ウォッチリスト通信 · 第 {TERMS_VERSION} 版</span></div>
+<div class="tools"><div class="meta"><small>制定</small><b>{e(TERMS_DATE)}</b></div></div></header>
+<a class="back" href="./">← ウォッチリスト通信に戻る</a>
+<article class="terms">
+<p>「ウォッチリスト通信」（以下「本サービス」）は、運営者（以下「店長」）が気になる作品・グッズ・ニュースを集めて見せるサイトです。
+「新しく始める」で同意したときから、この規約とプライバシーポリシーが適用されます。</p>
+<div class="note"><b>大事なこと：</b>本サービスにはパスワードがありません。ユーザー名を知っている人は、そのユーザー名でログインできます。
+人に知られて困る情報（本名・住所・電話番号など）はユーザー名にも入力欄にも書かないでください。</div>
+
+<h2>1. 集める情報</h2>
+<ul>
+<li><b>ユーザー名</b>（メールアドレスを名前にした場合はそのメールアドレス）</li>
+<li><b>同意の記録</b>：同意した規約の版と日時、最後に使った日時</li>
+<li><b>興味・関心の情報</b>：フォローした作品、👍 / 👎、欲しい物リスト、設定など、本サービスで操作した内容</li>
+<li><b>好みの設定</b>：ニュースの言語、好きなジャンル、はじめに「気になる」を選んだ作品</li>
+<li><b>ブラウザに保存するもの</b>：ログインしたままにするため、ユーザー名をこのブラウザの保存領域（localStorage）に置きます。Cookie による広告・追跡はしません</li>
+</ul>
+
+<h2>2. 使い道</h2>
+<ul>
+<li>ログインしたままにする・ページを表示する</li>
+<li>関心に合わせて記事やおすすめ（店長のおすすめ）を選ぶ</li>
+<li>本サービスの不具合を直す・改善する</li>
+</ul>
+<p>これ以外の目的には使いません。広告のために使ったり、売ったりしません。</p>
+
+<h2>3. 第三者への提供・預け先</h2>
+<p>法令にもとづく場合を除き、本人の同意なく第三者に提供しません。本サービスを動かすため、次の会社のサービスを使っています（情報の管理を預けています）。</p>
+<ul>
+<li><b>Supabase, Inc.</b>（米国の会社）：ユーザー名・同意の記録・関心の情報の保存。データはオーストラリア（シドニー）のサーバーにあります</li>
+<li><b>GitHub, Inc.</b>（米国）：ページの公開。店長のページはだれでも見られます。ユーザー名は公開のページに載せません</li>
+<li><b>Anthropic, PBC</b>（米国）：ニュース記事の整理（AI）。記事の内容だけを送り、ユーザー名は送りません</li>
+<li>ページを表示するため、Google Fonts（文字）・jsDelivr（プログラム）からファイルを読み込みます。その際、お使いの端末の IP アドレスなどがそれぞれの会社に届きます</li>
+</ul>
+<p>外国（米国・オーストラリア）にある会社に預けることになります。各社はそれぞれの国の法令と自社の方針にもとづいて情報を守っています。</p>
+
+<h2>4. 保存する期間</h2>
+<p>退会するまで保存します。右上のメニューの「退会する」で、ユーザー名と同意の記録を消し、その名前はほかの人が使えるようになります。</p>
+
+<h2>5. 開示・訂正・削除などのご請求</h2>
+<p>ご自身の情報の開示・訂正・利用停止・削除を求めることができます。連絡先：{contact}</p>
+
+<h2>6. 禁止すること</h2>
+<ul>
+<li>ほかの人のユーザー名やメールアドレスを使ってログインすること</li>
+<li>本サービスや他の利用者に迷惑をかけること、不正にアクセスすること</li>
+<li>法令や公序良俗に反すること</li>
+</ul>
+
+<h2>7. 記事・リンクについて</h2>
+<p>記事は外部のサイトの見出し・要約と、そのサイトへのリンクです。内容の正しさは保証できません。リンク先のサイトの内容には責任を負いません。
+著作権は各サイト・権利者にあります。</p>
+
+<h2>8. 未成年の方</h2>
+<p>16 歳未満の方は、保護者の同意を得てから使ってください。</p>
+
+<h2>9. 変更</h2>
+<p>この内容を変えるときは版を上げ、ログイン中の方にもう一度同意をお願いします。同意しない場合はログアウトして、見るだけでお使いいただけます。</p>
+
+<h2>10. 準拠法</h2>
+<p>日本の法律にもとづきます。</p>
+<p><small>第 {TERMS_VERSION} 版 · {e(TERMS_DATE)} 制定</small></p>
+</article>
+</div>
+</body>
+</html>
+"""
+
+
 def render_themes(items, updated):
     """テーマ見本ページ。items = [{name, motif, theme}]（items.yaml）。押しても保存しない、試すだけの 👍。"""
     users = {}
@@ -4329,7 +4739,7 @@ def render_themes(items, updated):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}{THEMES_PAGE_CSS}</style>
-{LIKEFX_HEAD}
+{LIKEFX_HEAD}{_account_tag("themes")}
 </head>
 <body>
 <div class="page">
@@ -5185,6 +5595,7 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
+<section class="panel" id="members" hidden><h2 class="sh"><span>お客さまと店長</span><small>だれでもユーザー名だけで始められる（名前は重ならない・規約に同意）· ここに入れたメールを名前にした人は店長（最初の 1 回だけメールで確認）· 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
 <section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in data.get("items") or [] if x.get("name")])}</section>
 <section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>

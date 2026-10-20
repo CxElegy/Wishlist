@@ -2305,6 +2305,7 @@ def write_page():
     order = heat.heat_order(placed, heat_scores, sub_heat, list(render.SECTIONS))
     adm = admin_data(items, issues, analysis, tz, updated)  # 管理ページの数字（「待ち行列」は簡報の「更新中」の帯にも使う）
     generated = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}  # 登录（render.AUTH_JS）
     html_ = render.render(issues, settings.get("nav_style", "line"), order, updated,
                           load_wishlist(), current_picks(items),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
@@ -2325,6 +2326,12 @@ def write_page():
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     heat_html, ver_heat = render.stamp(render.render_heat(analysis, render.collect(issues, order, langs), updated), updated)
     (DOCS_DIR / "heat.html").write_text(heat_html, encoding="utf-8")
+    (DOCS_DIR / "terms.html").write_text(render.render_terms(updated), encoding="utf-8")   # 利用規約・プライバシーポリシー（ログイン）
+    try:   # 入口（docs/index.html：何のサイトか・新しく始める）。24 時間より古いときだけ作り直す（話題の候補を新しく）
+        import welcome
+        welcome.build_if_stale()
+    except Exception as ex:
+        print("入口", ex)
     (DOCS_DIR / "themes.html").write_text(render.render_themes(  # テーマ見本（30 のテーマと 👍 の演出）
         [{"name": i["name"], "motif": render.template_for(i), "theme": i.get("theme")} for i in items], updated), encoding="utf-8")
     wishes = load_wishlist()

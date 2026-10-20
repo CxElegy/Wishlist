@@ -150,6 +150,21 @@ COMPONENTS = {
     "discord": {"kind": "api", "name": "Discord Webhook", "spec": "要紧 ≤6 行 · 埋め込み ≤10 · 30 日は二重に送らない",
                 "what": "notify.py"},
     "confetti": {"kind": "api", "name": "canvas-confetti 1.9.3", "spec": "👍 の演出 20 種", "what": "likefx.py"},
+    "maillink": {"kind": "api", "name": "メールアドレスだけのログイン ＋ 管理者だけ確認のリンク（Supabase magic link・supabase-js 2.45.4・implicit）",
+                 "spec": "一般ユーザーはユーザー名だけ・パスワードなし（app_users で重ならない・localStorage の wl-user、ログアウトまで覚える）· 管理者のメールだけこのブラウザで最初の 1 回リンクを送る · 標準のメール送信はチームのメール宛てだけ・1 時間に数通",
+                 "what": "render.AUTH_JS（右上の「ログイン」）。Google ログインは保留（PENDING.md）"},
+    "welcome": {"kind": "rule", "name": "入口と新しく始める（scripts/welcome.py）",
+                "spec": "言語 = 地域ごと MECE 56 言語（よく使う 6 つ＋ブラウザの言語を先に）· カード 16 枚まで・最初の版面 5 つまで · 候補は規則（AniList TRENDING・Steam featuredcategories・archive/test1 の関注項）· 24 時間ごとに作り直す",
+                "what": "docs/index.html（本番）・docs/testground/welcome.html。登録は public.user_signup、好みは app_users.prefs"},
+    "terms": {"kind": "rule", "name": "利用規約・プライバシーポリシー（render.render_terms・TERMS_VERSION）",
+              "spec": "第 1 版 · 新しく始めるときに同意必須 · 版が上がったらもう一度 · 集める情報・使い道・預け先（Supabase＝豪・GitHub/Anthropic＝米）・退会",
+              "what": "docs/<account>/terms.html。同意は app_users.agreed_version / agreed_at"},
+    "invite": {"kind": "rule", "name": "管理者のメール（public.invites の role=admin）",
+               "spec": "だれでもメールで登録できる（招待制にしない）· 表にあるメールは管理者 · 5 人まで · 最初の管理者 c.elegy@outlook.com",
+               "what": "db/auth.sql（登録時の trigger が役割を決める）。追加は管理ページ「ユーザーと管理者」（admin_invite）"},
+    "roles": {"kind": "rule", "name": "身份と開關（can_edit / is_admin / auth_flags.enforce）",
+              "spec": "访客 = 見るだけ · ユーザー = 自分の account だけ · 管理者 = 全部と管理ページ · 開關が閉じている間は前と同じ",
+              "what": "db/auth_guard.sql（書く関数の 1 行目で確かめる）・db/auth_enforce.sql（開關）"},
 }
 
 PROCESSES = [
@@ -431,6 +446,40 @@ PROCESSES = [
         ],
     },
     {
+        "id": "login", "name": "ログインと権限", "en": "LOGIN", "lane": "web",
+        "when": "ページを開いたとき · ログイン・ログアウトしたとき",
+        "trigger": "どのページでも右上の「ログイン」（ユーザー名だけ）。開いたときに身份を確かめ、見るだけかどうかを決める",
+        "summary": "访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもユーザー名だけで始められ（名前は重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。",
+        "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql"], "doc": "CLAUDE.md",
+        "flow": [
+            {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
+             "text": "何のサイトか・店長のページの本物の画面。名前と規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → カードを左右に（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
+            {"id": "a1", "kind": "step", "lane": "web", "title": "右上の「ログイン」→「新しく始める」/「ログイン」",
+             "text": "ユーザー名（メールでも可）だけ・パスワードなし。新しく始めるときは名前が空いているかを打つたびに確かめ（name_available）、利用規約に同意して登録（user_register：名前は大文字小文字を区別せず重ならない・同意した版と日時を残す）。このブラウザが覚える（ログアウトまで）", "uses": ["maillink", "terms"]},
+            {"id": "a1b", "kind": "decision", "lane": "web", "title": "同意した版 ＜ いまの版？",
+             "text": "開くたびに user_login で確かめる（TERMS_VERSION）",
+             "yes": "同意の画面（同意しないならログアウトして見るだけ）", "no": "そのまま"},
+            {"id": "a2", "kind": "decision", "lane": "web", "title": "管理者のメール？",
+             "text": "is_admin_email が invites 表（role=admin）を見る",
+             "yes": "このブラウザで最初の 1 回だけ確認のリンクをメールで送る（「確認待ち」）→ 押すと管理者のセッション（Supabase が覚える）", "no": "そのまま一般ユーザー（運営者のページは見るだけ）", "uses": ["invite"]},
+            {"id": "a3", "kind": "step", "lane": "web", "title": "身份を確かめる",
+             "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける", "uses": ["roles"]},
+            {"id": "a4", "kind": "decision", "lane": "web", "title": "このページを変えられる？",
+             "text": "開關が開いていて、ログインしていない・自分の account でない",
+             "yes": "そのまま使える", "no": "見るだけ：👍・設定・写真・ボタンを押すと「見るだけです」。設定ページは上に注意書き"},
+            {"id": "a5", "kind": "decision", "lane": "web", "title": "管理ページ：管理者？",
+             "text": "開關が開いているときだけ確かめる",
+             "yes": "表示＋「ユーザーと管理者」（管理者のメール・登録済みの人の名前だけ・管理者を足すフォーム）", "no": "「管理者だけが見られます」の画面だけ"},
+            {"id": "a6", "kind": "table", "lane": "web", "title": "データベースの門番（本物の制限）",
+             "text": "画面のボタンを止めるのは案内だけ。書く関数の 1 行目で can_edit / is_admin を確かめる",
+             "rows": [("篇幅・分け方・関注項の依頼・写真・AI 編集の開關", "can_edit(p_account)：管理者か、その account の持ち主"),
+                      ("👍👎（feedback）", "ログインした人：can_edit(account) · ログインしていない人：開關が閉じている間だけ"),
+                      ("今すぐ実行（run_now）", "管理者だけ（pg_cron の tick は除く）"),
+                      ("管理者の追加・ユーザー一覧", "管理者だけ（メールは管理者の表だけ、ユーザー一覧は名前だけ）"),
+                      ("開關（auth_flags.enforce）", "閉 = 前と同じ（だれでも変えられる）· 開 = 上の制限が効く（db/auth_enforce.sql で開く）")]},
+        ],
+    },
+    {
         "id": "live", "name": "ページの自動更新", "en": "LIVE", "lane": "web",
         "when": "開いている間 · 1 分ごと",
         "trigger": "簡報・管理ページを開いているあいだ、1 分ごと（タブが裏にあるときも戻ったときにすぐ）",
@@ -524,6 +573,7 @@ ARCH = [
         {"id": "n-api", "label": "作品データ", "text": "価格・放送・人気・閲覧数", "uses": ["steam", "anilist", "tmdb", "wikipv"]},
         {"id": "n-img", "label": "画像", "text": "小元素の候補", "uses": ["wiki", "fandom", "twemoji", "bingimg"]},
         {"id": "n-model", "label": "モデルの配布元", "text": "GitHub Releases（rembg）・HuggingFace（顔のモデル）"},
+        {"id": "n-mail", "label": "メール", "text": "管理者の確認のリンク（最初の 1 回だけ）", "uses": ["maillink"]},
     ]},
     {"id": "act", "title": "GitHub Actions", "note": "毎回新しいサーバー（4 コア）· 終わったら消える", "cost": "無料", "style": "temp", "nodes": [
         {"id": "p-collect", "proc": "collect", "subs": ["heat", "recommend", "notify", "images"]},
@@ -544,7 +594,7 @@ ARCH = [
          "uses": ["supabase", "pgnet"]}]},
     {"id": "pages", "title": "GitHub Pages", "note": "公開の網页", "cost": "無料", "style": "keep", "nodes": [
         {"id": "s-pages", "label": "網页", "text": "簡報・設定・愿望清单・話題度・管理ページ・version.json", "uses": ["fit", "confetti"]},
-        {"id": "p-live", "proc": "live"}]},
+        {"id": "p-live", "proc": "live"}, {"id": "p-login", "proc": "login"}]},
     {"id": "dc", "title": "Discord", "note": "通知", "cost": "無料", "style": "ext", "nodes": [
         {"id": "s-discord", "label": "あなたのチャンネル", "text": "要紧は当日・周報は月曜", "uses": ["discord"]}]},
     {"id": "you", "title": "あなた", "note": "スマホ・パソコン", "cost": "", "style": "you", "nodes": [
@@ -579,6 +629,9 @@ EDGES = [
     (26, "p-gate", "p-photos", "写真があるときだけ起こす", "ai"),
     (27, "p-edit", "s-db", "編集中の版面（live_report）", "db"),
     (28, "p-emblem-cron", "s-db", "処理中の版面（live_report）", "db"),
+    (29, "p-login", "n-mail", "管理者のメールだけ確認のリンク", "web"),
+    (30, "n-mail", "s-you", "リンクを押す → 本人の鍵", "web"),
+    (31, "p-login", "s-db", "身份を確かめる・書くときに鍵を付ける", "db"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
