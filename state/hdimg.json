@@ -42,6 +42,12 @@
   "target": 720,
   "v": 3
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00000003-cine-000-1-view.jpg?exp=10800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-20"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00010019-piaeigat-000-1-view.jpg?exp=10800": {
   "w": 800,
   "h": 800,
@@ -65,12 +71,6 @@
    800
   ],
   "why": "期限付きの網址"
- },
- "https://www.bing.com/th?id=ONUT.S7VEsSBW6ehFoVPC3tCVlQ&pid=News&w=640": {
-  "w": 640,
-  "h": 321,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ynKfXz7pCC8-r02gESV4zw&pid=News&w=1200": {
   "w": 100,

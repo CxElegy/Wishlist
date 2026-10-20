@@ -1,8 +1,8 @@
 {
  "image_misses": {},
  "images": {
-  "https://www.iza.ne.jp/article/20261019-MRUS5E3Q2NBEZDTMPD7LRHI6QU/": "https://www.bing.com/th?id=ONUT.ynKfXz7pCC8-r02gESV4zw&pid=News&w=1200",
-  "https://www.koreaherald.com/article/10907405": "https://www.bing.com/th?id=ONUT.S7VEsSBW6ehFoVPC3tCVlQ&pid=News&w=640"
+  "https://news.allabout.co.jp/articles/o/131627/": "https://ix-news.aacdn.jp/aa_news/article/2026/10/19/6ad5f648138bb.jpg?im=AspectCrop=(16,9);Resize=(1600,900)",
+  "https://www.iza.ne.jp/article/20261019-MRUS5E3Q2NBEZDTMPD7LRHI6QU/": "https://www.bing.com/th?id=ONUT.ynKfXz7pCC8-r02gESV4zw&pid=News&w=1200"
  },
  "picks": [
   {
@@ -25,13 +25,13 @@
    "because": "ちいかわ",
    "date": "2026-10-19",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.S7VEsSBW6ehFoVPC3tCVlQ&pid=News&w=640",
+   "image": "https://ix-news.aacdn.jp/aa_news/article/2026/10/19/6ad5f648138bb.jpg?im=AspectCrop=(16,9);Resize=(1600,900)",
    "kind": "board",
    "score": 4,
-   "source": "The Korea Herald",
+   "source": "All About ニュース",
    "taste": [],
-   "title": "Small, cute and broke: 'Chiikawa' takes over Korea's box office",
-   "url": "https://www.koreaherald.com/article/10907405",
+   "title": "「ついにこども用まで来た…」ちいかわのこども用マスクがダイソーに登場。10/20から順次発売",
+   "url": "https://news.allabout.co.jp/articles/o/131627/",
    "words": [],
    "work": "ちいかわ"
   }
