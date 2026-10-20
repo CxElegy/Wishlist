@@ -5,11 +5,23 @@
   "target": 720,
   "v": 3
  },
+ "https://cimg.kgl-systems.io/camion/files/None/ogp_gvOa.jpg?x=1280": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
  "https://contents.oricon.co.jp/upimg/news/2488000/2487320/20261019_133212_p_o_15239275.jpg": {
   "w": 1200,
   "h": 1200,
   "target": 1280,
   "v": 3
+ },
+ "https://convenicheck.com/wp-content/uploads/2026/10/slf_chiikawakmribonchgumi27021.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
  },
  "https://external-preview.redd.it/kK9-96taYUndwCQ-41Nua9o1DYmSJt9UkJFdboqSKls.jpeg?width=640&crop=smart&auto=webp&s=37928024937371ce148c3db09feb6fd3d8472c1d": {
   "w": 640,
@@ -30,6 +42,12 @@
   "v": 3,
   "blur": 0.362
  },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnWTVE0M7bdAx7ZwjpQzW4ATlVYxaGPMt_rGiECWdQMG8n7yoyaCw3hr1RQgrtAGZ9l4D7Oxp1EaczD0_Rxdqqm1qey1fwJTHxkCl4kwSuXEHXO9chWtEKecFJxoWRvDv4w==": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnb0iLE5yLaLfl9wtstCKbdO4M-zNq3OItjjHh2t2VbR8NyUe9P1h4-jX6LyXP9BVQ6Z6JA4-_GL0xGM6j48_TSJix0O7-Jo5uJ4bsMOLMBKkVIJn2YiXyCKjJQFGSAa1gg==": {
   "w": 934,
   "h": 625,
@@ -37,10 +55,16 @@
   "v": 3
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00000003-cine-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 533,
   "target": 720,
   "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-20"
+  "local": "pics/b8a6da613b0b6bdc.webp",
+  "out": [
+   800,
+   533
+  ],
+  "why": "期限付きの網址"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00010019-piaeigat-000-1-view.jpg?exp=10800": {
   "w": 800,
@@ -66,6 +90,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://times-abema.ismcdn.jp/mwimgs/7/7/1200w/img_771e50bee2142314898c3ce99ba4f86f490636.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
  "https://www.bing.com/th?id=ONUT.KraK7i9xJn8HnD8_xEFTCA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -77,6 +107,12 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.crank-in.net/img/db/263109140114084_1200.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
  },
  "https://www.j-cast.com/images/origin/2026/10/news_20261019110936.jpg": {
   "w": 1200,
