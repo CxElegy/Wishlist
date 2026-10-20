@@ -4012,7 +4012,11 @@ AUTH_JS = r"""
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){chip();gate();readOnlyNote();members();});
+      .then(function(){chip();gate();readOnlyNote();members();
+        if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
+          var b=document.querySelector('.wl-auth>button.in'); if(b){ b.click(); var t=document.querySelector('.wl-auth [data-m=old]'); if(t) t.click(); }
+          if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
+        }});
   }
   function start(){
     if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })

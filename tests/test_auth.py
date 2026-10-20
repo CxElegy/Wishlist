@@ -95,5 +95,24 @@ class AuthSql(unittest.TestCase):
         self.assertIn("set on_ = true where key = 'enforce'", s)
 
 
+class Welcome(unittest.TestCase):
+    """入口と新しく始める（scripts/welcome.py、テストグラウンド）。"""
+    def test_css_tokens_only(self):
+        import welcome
+        self.assertIsNone(re.search(r"#[0-9a-fA-F]{3,6}\b", welcome.CSS))
+
+    def test_flow_and_redirect(self):
+        import welcome
+        for word in ("wl-user", "location.replace(C.shop)", "stay", "name_available", "ArrowRight", "C.first"):
+            self.assertIn(word, welcome.JS)
+
+    def test_shop_picks_from_archive(self):
+        import welcome
+        picks = welcome.shop_picks()
+        self.assertTrue(picks)
+        self.assertTrue(all(p["img"].startswith("../test1/icons/") and p["shop"] for p in picks))
+        self.assertTrue({p["sec"] for p in picks} <= set(welcome.taxonomy.SECTIONS))
+
+
 if __name__ == "__main__":
     unittest.main()
