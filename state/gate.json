@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-20T17:09:11+00:00",
+ "checked": "2026-10-20T17:17:19+00:00",
  "fired": {
   "at": "2026-10-20T17:09:11+00:00",
   "results": {
@@ -18,13 +18,11 @@
     "resp": "cse_01XaV3ArnfLpg5jgiMDsjyyW",
     "sig": "08ecb3a88ac5"
    },
-   "items": [
-    "ちいかわ"
-   ],
-   "need": true,
-   "prog": 0,
-   "sig": "08ecb3a88ac5",
-   "why": "整理待ちの記事 9 件（1 版面・AI 編集まで版面に載らない）"
+   "items": [],
+   "need": false,
+   "prog": 9,
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
