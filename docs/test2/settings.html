@@ -2,7 +2,281 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<script>window.WL_ACCOUNT="test2";</script>
+<script>window.WL_ACCOUNT="test2";</script><style>
+.wl-auth{position:fixed;top:10px;right:12px;z-index:90;display:flex;align-items:center;gap:8px;font:700 13px/1.4 var(--font-sans)}
+.wl-auth .shop{padding:2px 9px;background:var(--ink);color:var(--card);font:500 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.06em;transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--rose)}
+.wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
+ background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
+.wl-auth>button.in{padding-left:12px}
+.wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
+.wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
+.wl-auth img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
+.wl-auth .ini{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;flex:none;background:var(--ink);color:var(--card);font:900 13px/1 var(--font-sans)}
+.wl-auth .rl.wait{background:var(--alert)}
+.wl-auth .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wl-auth .rl{flex:none;padding:0 6px;background:var(--ink);color:var(--card);font-size:var(--fs-tag);letter-spacing:.06em;transform:skewX(var(--skew))}
+.wl-auth .rl.admin{background:var(--rose)}
+.wl-auth .menu{position:absolute;right:0;top:calc(100% + 8px);min-width:220px;background:var(--card);color:var(--ink);border:2px solid var(--ink);
+ box-shadow:4px 4px 0 var(--ink);padding:12px;display:flex;flex-direction:column;gap:8px;font-weight:500}
+.wl-auth .menu[hidden]{display:none}
+.wl-auth .menu small{opacity:.75;line-height:1.5}
+.wl-auth .menu button{border:2px solid var(--ink);background:transparent;color:var(--ink);padding:5px 10px;font:700 13px var(--font-sans);cursor:pointer;text-align:left}
+.wl-auth .menu button:hover{background:var(--gold)}
+.wl-login{display:flex;flex-direction:column;gap:8px}
+.wl-login label{display:flex;flex-direction:column;gap:4px;font-weight:700}
+.wl-login input{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
+.wl-login button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 12px;font:700 13px var(--font-sans);cursor:pointer}
+.wl-login button:disabled{opacity:.6;cursor:wait}
+.wl-login .st{margin:0;font-size:13px;line-height:1.5}
+.wl-login .first{margin:4px 0 0;padding-top:8px;border-top:1px solid var(--hair);font-size:13px;line-height:1.6}
+.wl-login .tabs{display:flex;border-bottom:2px solid var(--ink)}
+.wl-login .tabs button{flex:1;align-self:auto;border:0;background:transparent;padding:6px 8px;font:700 13px var(--font-sans);color:var(--ink);opacity:.6;cursor:pointer;box-shadow:none}
+.wl-login .tabs button[aria-selected=true]{opacity:1;background:var(--ink);color:var(--card)}
+.wl-login .hint{margin:0;min-height:1.4em;font-size:12px}
+.wl-login .hint.ok{color:var(--good)}
+.wl-login .hint.ng{color:var(--alert)}
+.wl-login .agree,.wl-agree .agree{display:flex;gap:6px;align-items:flex-start;font:500 13px/1.5 var(--font-sans)}
+.wl-login .agree[hidden]{display:none}
+.wl-login a,.wl-agree a,.wl-auth .menu>a{color:var(--rose);text-decoration:underline;text-underline-offset:2px}
+.wl-auth .menu .quiet{border-color:var(--hair);opacity:.75}
+.wl-agree{position:fixed;inset:0;z-index:96;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--ink) 55%,transparent)}
+.wl-agree>div{max-width:440px;background:var(--card);color:var(--ink);border:3px solid var(--ink);box-shadow:var(--shadow-l);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.wl-agree h2{margin:0;font:900 20px/1.3 var(--font-sans)}
+.wl-agree p{margin:0;line-height:1.7;font-size:14px}
+.wl-agree form{display:flex;flex-direction:column;gap:12px}
+.wl-agree .row{display:flex;flex-wrap:wrap;gap:8px}
+.wl-agree button{border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+.wl-agree button[data-out]{background:transparent}
+.wl-auth .menu{width:min(300px,calc(100vw - 24px))}
+.wl-toast{position:fixed;left:50%;bottom:72px;z-index:95;transform:translateX(-50%);max-width:calc(100vw - 32px);background:var(--ink);color:var(--card);
+ padding:9px 16px;box-shadow:4px 4px 0 var(--rose);font:700 14px/1.5 var(--font-sans)}
+.wl-toast[hidden]{display:none}
+html[data-lock="1"] [data-vote]{cursor:not-allowed}
+.wl-ro{margin:0 0 4px;padding:8px 12px;border:2px dashed var(--ink);background:var(--sheet);font:700 13px/1.6 var(--font-sans)}
+html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
+html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
+.wl-gate{min-height:100vh;display:grid;place-items:center;padding:16px;background:var(--paper)}
+.wl-gate>div{max-width:420px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.wl-gate h1{margin:0;font:900 22px/1.3 var(--font-sans)}
+.wl-gate p{margin:0;line-height:1.7}
+.wl-gate a,.wl-gate button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer;text-decoration:none}
+.wl-mem table{width:100%;border-collapse:collapse;font-size:13px}
+.wl-mem th,.wl-mem td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--hair)}
+.wl-mem form{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.wl-mem input,.wl-mem select{min-width:0;padding:5px 8px;border:2px solid var(--ink);background:var(--card);font:500 14px var(--font-sans)}
+.wl-mem input{flex:1 1 220px}
+.wl-mem button{border:2px solid var(--ink);background:var(--ink);color:var(--card);padding:5px 14px;font:700 13px var(--font-sans);cursor:pointer}
+.wl-mem .st{min-height:1.4em;font-size:13px}
+@media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}}
+</style><script>
+(function(){
+  var A={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "settings", "terms": 1, "termsUrl": "terms.html", "start": "../#name"}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
+  if(!base||!A.key||!window.fetch) return;
+  var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
+  R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
+  var ROLE={"admin": "店長", "user": "お客さま", "guest": "ゲスト"}, LOCK={"index": "[data-vote]", "heat": "[data-vote]", "wishlist": "[data-vote],#snap button,#snap input,#snap textarea", "settings": "button,input,select,textarea,[contenteditable]", "admin": "button,input,select,textarea"}[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
+  // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
+  window.fetch=function(input,init){
+    try{
+      var u=typeof input==='string'?input:(input&&input.url)||'';
+      if(tok&&u.indexOf(base+'/rest/')===0){
+        init=Object.assign({},init||{});
+        var h=new Headers(init.headers||(typeof input!=='string'&&input.headers)||undefined);
+        h.set('Authorization','Bearer '+tok); init.headers=h;
+      }
+    }catch(e){}
+    return of(input,init);
+  };
+  function rpc(fn,body){
+    var h={apikey:A.key,'Content-Type':'application/json'}; if(tok) h.Authorization='Bearer '+tok;
+    return of(base+'/rest/v1/rpc/'+fn,{method:'POST',headers:h,body:JSON.stringify(body||{})})
+      .then(function(r){return r.text().then(function(t){var j=null; try{j=t?JSON.parse(t):null;}catch(e){} if(!r.ok) throw new Error((j&&j.message)||r.status); return j;});});   // void の関数は 204（本文なし）
+  }
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return '&#'+c.charCodeAt(0)+';';});}
+  var toastT=0;
+  function toast(t){
+    var el=document.querySelector('.wl-toast'); if(!el){el=document.createElement('div');el.className='wl-toast';el.setAttribute('role','status');document.body.appendChild(el);}
+    el.textContent=t; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(function(){el.hidden=true;},4000);
+  }
+  // ログイン（2026-10-21，用户定的）：ユーザー名（メールでも可）だけ・パスワードなし・名前は重ならない（データベースで確かめる）。
+  // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
+  // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。名前が店長のメール（invites の role=admin）のときだけ、
+  // このブラウザで最初の 1 回、確認のリンクをメールで送る（そうしないと誰でも店長の名前を入れて変えられる）。
+  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
+  try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
+  function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
+  var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
+  function sayErr(m){
+    m=String(m||'');
+    if(/not authorized/i.test(m)) return '確認のメールを送れませんでした（メール送信の設定待ち）';
+    if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度';
+    return m||'うまくいきませんでした';
+  }
+  function back(){ return location.href.split('#')[0].replace(/[?&](code|error|error_code|error_description)=[^&]*/g,''); }
+  function sendAdminLink(mail,st){
+    if(!sb){ if(st) st.textContent='準備中です。少し待ってからもう一度'; return; }
+    if(st) st.textContent='確認のメールを送っています…';
+    sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:back(),shouldCreateUser:true}}).then(function(r){
+      if(st) st.textContent=r.error?sayErr(r.error.message):'店長の名前です。'+mail+' に届いたメールのリンクを押してください（このブラウザで最初の 1 回だけ）';
+    });
+  }
+  var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+'" target="_blank" rel="noopener">利用規約・プライバシーポリシー<\/a>に同意する<\/span><\/label>';};
+  // 右上はログインだけ。新しく始めるのは入口の流れ（言語・ジャンル・最初の版面を選ぶ）に一本化（2026-10-21，サイト全体で同じ始め方に）
+  function loginForm(){
+    return '<form class="wl-login" data-mode="old" novalidate>'+
+      '<label>ユーザー名<input type="text" required minlength="2" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録した名前（メールアドレスでも）"><\/label>'+
+      '<button type="submit" class="go">ログイン<\/button><p class="st" aria-live="polite"><\/p>'+
+      '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →<\/a><br><small>名前・ニュースの言語・好きなジャンルを選ぶだけ（1 分）。パスワードはありません<\/small><\/p><\/form>';
+  }
+  function after(name,agreed,st){
+    if(isMail(name)) rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(adm){
+      if(!adm||(user&&user.email&&user.email.toLowerCase()===name.toLowerCase())) return;
+      me.admin=true; saveMe(me); chip(true); sendAdminLink(name,document.querySelector('.wl-auth .menu .st'));
+    });
+    if(agreed<TV){ askAgree(); return; }
+    toast('ようこそ、'+name+' さん。このブラウザが覚えました'); refresh();
+  }
+  function bindLogin(root){
+    var f=root.querySelector('.wl-login'); if(!f) return;
+    var inp=f.querySelector('input[type=text]'), st=f.querySelector('.st'), go=f.querySelector('.go');
+    f.onsubmit=function(ev){
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      var n=inp.value.trim();
+      if(n.length<2){ st.textContent='ユーザー名を 2 文字以上で入れてください'; return; }
+      go.disabled=true; st.textContent='';
+      rpc('user_login',{p_name:n}).then(function(r){
+        go.disabled=false; saveMe({name:r.name,v:r.agreed_version||0,at:Date.now()}); after(r.name,r.agreed_version||0,st);
+      }).catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
+    };
+  }
+  // 規約の版が上がった・まだ同意していない人：同意するまで画面を覆う（見るだけには戻れる＝ログアウト）
+  function askAgree(){
+    if(!me) return;
+    var d=document.querySelector('.wl-agree'); if(!d){d=document.createElement('div');d.className='wl-agree';d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');document.body.appendChild(d);}
+    d.innerHTML='<div><h2>利用規約・プライバシーポリシー<\/h2><p>'+(me.v?'内容が新しくなりました。':'')+'続けて使うには、同意をお願いします。'+
+      '関心のある作品・投票などの情報（興味・関心の情報）を、サービスのためだけに使います。<\/p><form>'+agreeBox()+
+      '<div class="row"><button type="submit">同意して続ける<\/button><button type="button" data-out>同意しない（ログアウト）<\/button><\/div><\/form><\/div>';
+    var f=d.querySelector('form');
+    d.querySelector('[data-out]').onclick=logout;
+    f.onsubmit=function(ev){ev.preventDefault();
+      if(!f.querySelector('.agree input').checked){ toast('チェックを入れてください'); return; }
+      rpc('user_agree',{p_name:me.name,p_version:TV}).then(function(){ me.v=TV; saveMe(me); d.remove(); toast('ありがとうございます'); refresh(); })
+        .catch(function(e){ toast(sayErr(e.message)); });};
+  }
+  function logout(){
+    saveMe(null);
+    (sb&&tok?sb.auth.signOut():Promise.resolve()).then(function(){location.reload();});
+  }
+  function leave(){
+    if(!me||!confirm('退会すると、名前「'+me.name+'」と同意の記録を消します。よろしいですか？')) return;
+    rpc('user_leave',{p_name:me.name}).catch(function(){}).then(logout);
+  }
+  var locked=function(){return R.dataset.lock==='1';};
+  document.addEventListener('click',function(ev){
+    if(!locked()||!LOCK) return;
+    var t=ev.target.closest&&ev.target.closest(LOCK);
+    if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live,.wl-agree')) return;
+    ev.preventDefault(); ev.stopImmediatePropagation();
+    toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'ここは店長のページなので、見るだけです');
+  },true);
+  document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
+  function chip(keepOpen){
+    var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
+    var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
+    if(!name){
+      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン<\/button><div class="menu" hidden>'+loginForm()+'<\/div>';
+      var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
+      lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=text]').focus();};
+      bindLogin(box); return;
+    }
+    var pending=!user&&me&&me.admin, label=pending?'確認待ち':(ROLE[role]||role), sh=isMail(name)?name.split('@')[0]:name;
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
+      '<span class="nm">'+esc(sh)+'<\/span><span class="rl '+esc(pending?'wait':role)+'">'+esc(label)+'<\/span><\/button>'+
+      '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています<\/small>'+
+      (pending?'<button type="button" data-again>確認のメールをもう一度送る<\/button><p class="st" aria-live="polite">店長の名前です。届いたメールのリンクを押すと店長になります（このブラウザで 1 回だけ）<\/p>':'')+
+      (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ<\/button>':'')+
+      '<a href="'+esc(TURL)+'">利用規約・プライバシーポリシー<\/a>'+
+      '<button type="button" data-out>ログアウト<\/button>'+(me?'<button type="button" data-leave class="quiet">退会する<\/button>':'')+'<\/div>';
+    var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
+    b.onclick=function(){var o=menu.hidden;menu.hidden=!o;b.setAttribute('aria-expanded',String(o));};
+    menu.querySelector('[data-out]').onclick=logout;
+    var lv=menu.querySelector('[data-leave]'); if(lv) lv.onclick=leave;
+    var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
+    var ag=menu.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(name,menu.querySelector('.st'));};
+  }
+  function gate(){
+    var need=page==='admin'&&R.dataset.enf==='1'&&R.dataset.role!=='admin';
+    R.dataset.gate=need?'1':'0';
+    var g=document.querySelector('.wl-gate'); if(!need){if(g) g.remove(); return;}
+    if(!g){g=document.createElement('div');g.className='wl-gate';document.body.appendChild(g);}
+    var pending=me&&me.admin&&!user;
+    g.innerHTML='<div><h1>管理ページ<\/h1><p>'+(pending?'店長の確認がまだです。届いたメールのリンクを押してください。':
+      me?'このページは店長だけが見られます。':'店長だけが見られます。店長の名前（メールアドレス）でログインしてください。')+'<\/p>'+
+      (me?'':loginForm())+(pending?'<button type="button" data-again>確認のメールをもう一度送る<\/button><p class="st" aria-live="polite"><\/p>':'')+
+      '<a href="./">← ウォッチリスト通信に戻る<\/a><\/div>';
+    bindLogin(g);
+    var ag=g.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.name,g.querySelector('.st'));};
+  }
+  function readOnlyNote(){
+    if(page!=='settings') return;
+    var n=document.querySelector('.wl-ro');
+    if(!locked()){if(n) n.remove(); return;}
+    if(n) return;
+    n=document.createElement('p'); n.className='wl-ro';
+    n.textContent='見るだけです。設定を変えるには右上の「ログイン」から。';
+    var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
+  }
+  function members(){
+    var box=document.getElementById('wl-members'); if(!box) return;
+    if(R.dataset.role!=='admin'){box.closest('section').hidden=true; return;}
+    box.closest('section').hidden=false;
+    Promise.all([rpc('admin_list_app_users'),rpc('admin_list_invites')]).then(function(v){
+      var us=v[0]||[], inv=v[1]||[];
+      box.innerHTML='<table><thead><tr><th>店長のメール<\/th><th>役割<\/th><th>ログイン済み<\/th><\/tr><\/thead><tbody>'+
+        inv.map(function(x){return '<tr><td>'+esc(x.email)+'<\/td><td>'+esc(ROLE[x.role]||x.role)+'<\/td><td>'+(x.joined?'済':'まだ')+'<\/td><\/tr>';}).join('')+
+        '<\/tbody><\/table><p class="st">ユーザー '+us.length+' 人：'+us.slice(0,50).map(function(u){return esc(u.name)+(u.agreed_version>=TV?'':'（規約未同意）');}).join('、')+(us.length>50?' ほか':'')+'<\/p>'+
+        '<form><input type="email" required placeholder="店長にする人のメール（その人はこのメールを名前にしてログイン）" aria-label="メール">'+
+        '<button type="submit">店長にする<\/button><\/form><p class="st" aria-live="polite"><\/p>';
+      var f=box.querySelector('form'), st=box.querySelectorAll('.st')[1];
+      f.onsubmit=function(ev){ev.preventDefault();
+        rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:'admin'})
+          .then(function(a){st.textContent=a+' を店長にしました。このメールアドレスを名前にしてログインすると、確認のメールのあと店長になります。';members();})
+          .catch(function(e){st.textContent='できませんでした：'+e.message;});};
+    }).catch(function(e){box.innerHTML='<p class="st">読み込めませんでした：'+esc(e.message)+'<\/p>';});
+  }
+  function refresh(){
+    return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
+      .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
+        R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
+      .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
+      .then(function(){chip();gate();readOnlyNote();members();
+        if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
+          var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
+          if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
+        }});
+  }
+  function start(){
+    if(me&&me.name&&!me.admin&&isMail(me.name)&&!tok) rpc('is_admin_email',{p_email:me.name}).then(function(a){ if(a){ me.admin=true; saveMe(me); refresh(); } }).catch(function(){});   // 入口から店長のメールで登録した
+    if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
+      .catch(function(e){ if(/見つかりません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
+    var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
+    if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
+    if(!window.supabase){refresh();return;}
+    sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
+    sb.auth.onAuthStateChange(function(ev,s){
+      var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
+      if(user&&user.email&&me&&me.admin&&me.name.toLowerCase()===user.email.toLowerCase()){ me.admin=false; saveMe(me); }   // 店長の確認が済んだ
+      if(changed||ev==='INITIAL_SESSION') refresh();
+      if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
+    });
+  }
+  function boot(){
+    var s=document.createElement('script'); s.src=A.lib; s.async=true; s.onload=start; s.onerror=function(){refresh();};
+    document.head.appendChild(s);
+  }
+  if(document.body) boot(); else document.addEventListener('DOMContentLoaded',boot);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>设置</title>
@@ -980,7 +1254,7 @@ html{scroll-behavior:smooth}
 <section class="schemes"><h2>目录的小分类分法</h2><p class="intro">每个板块选一种分法：左边目录的小分类札、板块里版面的排序都按它来。选了网页大约 1 分钟后更新。</p><div class="srow" data-sec="影视" style="--sc:#9B3FB5"><div class="nm"><b>作品</b><p class="pv" data-v="kind">シリーズ <b>1</b></p><p class="pv" data-v="origin" hidden>日本 <b>1</b></p></div><div class="seg wide" role="group" aria-label="作品 的小分类分法"><button type="button" data-v="kind" aria-pressed="true">種類</button><button type="button" data-v="origin" aria-pressed="false">地域</button></div><span class="st" aria-live="polite"></span></div></section>
 <div class="cfg"><h2 style="--sc:#9B3FB5" data-sec="影视">作品<small>WORKS</small><button type="button" class="secdel" aria-label="删除板块 作品 里的全部关注项">删除这个板块</button><span class="st" aria-live="polite"></span></h2><div class="row" data-item="ちいかわ"><div class="nm"><b>ちいかわ</b><small>ちいかわ なんか小さくてかわいいやつ</small></div><div class="seg" role="group" aria-label="ちいかわ 的篇幅"><button type="button" data-v="S" aria-pressed="false">S</button><button type="button" data-v="M" aria-pressed="true">M</button><button type="button" data-v="L" aria-pressed="false">L</button></div><button type="button" class="edit" aria-label="修改 ちいかわ">改</button><button type="button" class="del" aria-label="删除 ちいかわ">删</button><span class="st" aria-live="polite"></span></div></div>
 <section class="wiz" id="wiz" aria-live="polite"><h2>＋ 新增关注项</h2><p class="hint">正在加载…</p></section>
-<p class="intro" style="font-size:12px">更新于 10.21 07:40</p>
+<p class="intro" style="font-size:12px">更新于 10.21 07:42</p>
 </div>
 <script type="application/json" id="wl-cfg">{"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "langs": ["zh-TW", "en-US"], "sections": [{"key": "影视", "ja": "作品", "color": "#9B3FB5", "kind": "show", "words": "media franchise|franchise|メディアミックス|劇場版|剧场版|上映|电视剧|電視劇|剧集|劇集|ドラマ|television series|TV series|电影|電影|映画|film|movie|动画|動畫|アニメ|anime|animated|漫画|漫畫|マンガ|manga|comic|小说|小說|小説|novel|ライトノベル|light novel|书籍|書籍|\\bbooks?\\b|写真集|画集|絵本|作家|author|writer", "schemes": [{"id": "kind", "label": "種類", "values": [{"v": "映画", "re": "\\bfilm\\b|movie|电影|電影|劇場版|剧场版"}, {"v": "アニメ", "re": "anime|animated|动画|動畫|アニメ"}, {"v": "ドラマ", "re": "television series|TV series|drama|电视剧|電視劇|剧集|劇集|ドラマ"}, {"v": "マンガ", "re": "manga|comic|漫画|漫畫|マンガ"}, {"v": "小説・ラノベ", "re": "novel|小说|小說|小説|ライトノベル|light novel|轻小说|輕小說"}, {"v": "シリーズ", "re": "media franchise|franchise|メディアミックス|フランチャイズ"}, {"v": "雑誌・写真集", "re": "magazine|雑誌|杂志|雜誌|写真集|画集|photobook"}, "バラエティ", "ドキュメンタリー"]}, {"id": "origin", "label": "地域", "values": [{"v": "日本", "re": "Japan|日本"}, {"v": "海外", "re": "America|British|\\bUS\\b|\\bUK\\b|Hollywood|France|French|Italy|Italian|美国|美國|英国|英國|アメリカ|イギリス|欧米|海外"}, {"v": "韓国", "re": "Korea|韩国|韓國|한국"}, {"v": "中華圏", "re": "China|Chinese|Taiwan|Hong Kong|中国|中國|台湾|台灣|香港"}]}], "prio": 50, "facets": {}, "facets_any": [{"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": true, "sec": "影视", "subs": {}}, {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": true, "sec": "影视", "subs": {}}, {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣", "sec": "影视", "subs": {}}]}, {"key": "游戏", "ja": "ゲーム", "color": "#2F5BD3", "kind": "game", "words": "游戏|遊戲|ゲーム|video game|\\bgame\\b|esports|eスポーツ|電競|电竞", "schemes": [{"id": "status", "label": "状態", "values": ["新作・発売前", "運営中", "発売済み", "eスポーツ"]}, {"id": "platform", "label": "プラットフォーム", "values": [{"re": "mobile|iOS|Android|手游|手遊", "v": "スマホ"}, {"re": "Switch|PlayStation|PS5|Xbox|console", "v": "家庭用ゲーム機"}, {"re": "\\bPC\\b|Steam|Windows", "v": "PC"}, "マルチ"]}], "prio": 10, "facets": {}, "facets_any": [{"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": true, "sec": "游戏", "subs": {}}, {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": true, "sec": "游戏", "subs": {}}, {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣", "sec": "游戏", "subs": {}}]}, {"key": "演出", "ja": "音楽・ライブ", "color": "#BB265A", "kind": "artist", "words": "ガールズグループ|ボーイズグループ|K-POP|J-POP|バンド|歌手|乐队|樂團|组合|組合|团体|團體|偶像|singer|recording artist|band|girl group|boy band|idol|rapper|アイドル|musician|音乐家|音樂家|ミュージカル|musical|演唱会|コンサート|concert|festival|フェス|お笑い|comedian", "schemes": [{"id": "scene", "label": "シーン", "values": ["J-POP", {"re": "Korea|韓国|韩国|韓國|한국", "v": "K-POP"}, {"re": "Chinese|Taiwan|Mandopop|Cantopop|中国|中國|台湾|台灣|香港|华语|華語", "v": "華語"}, {"re": "America|British|English-language|アメリカ|イギリス", "v": "洋楽"}, "アニソン", "クラシック", "舞台・ミュージカル", "お笑い"]}, {"id": "form", "label": "形態", "values": ["ソロ", {"re": "group|band|グループ|バンド|组合|組合|团体|團體|乐队|樂團", "v": "グループ"}, "フェス", "舞台"]}], "prio": 50, "facets": {}, "facets_any": [{"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": true, "sec": "演出", "subs": {}}, {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": true, "sec": "演出", "subs": {}}, {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣", "sec": "演出", "subs": {}}]}, {"key": "运动", "ja": "スポーツ", "color": "#156A48", "kind": "sports", "words": "锦标赛|錦標賽|公开赛|公開賽|联赛|聯賽|tournament|championship|league|运动|運動|スポーツ|sport|球队|球隊|marathon|马拉松|マラソン", "schemes": [{"id": "sport", "label": "種目", "values": ["サッカー", "野球", "バスケ", "テニス", "スキー", "格闘技", "モータースポーツ", "陸上", "その他"]}, {"id": "how", "label": "楽しみ方", "values": ["観る", "する"]}], "prio": 50, "facets": {}, "facets_any": [{"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": true, "sec": "运动", "subs": {}}, {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": true, "sec": "运动", "subs": {}}, {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣", "sec": "运动", "subs": {}}]}, {"key": "好物", "ja": "ショッピング", "color": "#985315", "kind": "product", "words": "マスコット|mascot|吉祥物|サンリオ|三丽鸥|三麗鷗|Sanrio|キャラクター|character|雑貨|杂货|雜貨|食器|tableware|mug|マグ|文具|文房具|stationery|玩具|おもちゃ|toy|ファッション|fashion|时装|時裝|时尚|時尚|服装|服裝|アパレル|apparel|clothing|衣料|ルームウェア|loungewear|化粧品|コスメ|cosmetic|美妆|美妝|makeup|skincare|香水|perfume|ジュエリー|jewelry|珠宝|珠寶|ファッション雑誌|fashion magazine|时装杂志|手机|手機|スマートフォン|スマホ|smartphone|mobile phone|电脑|電腦|パソコン|computer|laptop|tablet|タブレット|耳机|耳機|イヤホン|headphone|earbuds|camera|カメラ|相机|相機|ウェアラブル|wearable|smartwatch|家電|家电|electronics|半导体|半導體|semiconductor|\\bAI\\b|人工智能|software|ソフトウェア|汽车|汽車|自動車|automobile|\\bcars?\\b|vehicle|摩托|オートバイ|バイク|motorcycle|鉄道|铁道|鐵道|railway|列车|列車|\\btrains?\\b|新幹線|shinkansen|飛行機|飞机|飛機|aircraft|airline|航空|自転車|自行车|bicycle|\\bEV\\b|电动车|電動車", "schemes": [{"id": "kind", "label": "種類", "values": [{"v": "キャラグッズ", "re": "キャラクター|character|mascot|マスコット|吉祥物|サンリオ|三丽鸥|三麗鷗|Sanrio|一番くじ|コラボ"}, {"v": "ファッション・コスメ", "re": "ファッション|fashion|时装|時裝|服|アパレル|apparel|clothing|ルームウェア|loungewear|コスメ|cosmetic|化粧品|美妆|美妝|jewelry|ジュエリー|雑誌|magazine"}, {"v": "ガジェット・家電", "re": "smartphone|phone|スマホ|スマートフォン|手机|手機|laptop|computer|tablet|camera|カメラ|家電|家电|electronics|wearable|headphone"}, {"v": "雑貨・食器", "re": "mug|マグ|マグカップ|食器|tableware|雑貨|杂货|雜貨|文具|stationery|杯"}, {"v": "車・乗り物", "re": "automobile|\\bcars?\\b|vehicle|バイク|motorcycle|鉄道|railway|自転車|bicycle|汽车|汽車"}, {"v": "おもちゃ・フィギュア", "re": "toy|おもちゃ|玩具|フィギュア|figure"}, "食品"]}, {"id": "owner", "label": "ブランド・キャラ", "values": ["ブランド", {"v": "キャラクター", "re": "character|mascot|マスコット|キャラ|吉祥物"}, "ジャンル"]}], "prio": 50, "facets": {}, "facets_any": [{"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": true, "sec": "好物", "subs": {}}, {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": true, "sec": "好物", "subs": {}}, {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣", "sec": "好物", "subs": {}}]}, {"key": "生活", "ja": "暮らし・趣味", "color": "#6E6A12", "kind": "product", "words": "宠物|寵物|ペット|\\bpets?\\b|猫|ねこ|ネコ|貓|\\bcats?\\b|犬|いぬ|イヌ|\\bdogs?\\b|兽医|獸醫|獣医|veterinar|餐厅|餐廳|レストラン|restaurant|咖啡|カフェ|cafe|coffee|甜点|甜點|スイーツ|dessert|confectionery|お菓子|零食|snack|饮料|飲料|beverage|drink|酒类|酒類|お酒|ビール|beer|wine|ワイン|food|食品|美食|グルメ|ラーメン|ramen|bakery|パン|プラモデル|plastic model|模型|model kit|フィギュア|action figure|手办|手辦|ガンプラ|gunpla|トレーディングカード|trading card|集换式|集換式|board game|ボードゲーム|桌游|桌遊|手芸|手工|craft|楽器|乐器|樂器|musical instrument|ラジコン|LEGO|レゴ|乐高|樂高|收藏|コレクション|collect|家具|furniture|インテリア|interior|家居|收纳|收納|収納|storage|キッチン|kitchen|厨具|廚具|调理|園芸|园艺|園藝|gardening|植物|plant|寝具|bedding|日用品|household|フィットネス|fitness|健身|ジム|gym|ヨガ|yoga|瑜伽|ダイエット|diet|减肥|減肥|筋トレ|workout|睡眠|sleep|健康|health|ストレッチ|ピラティス|pilates|サプリ|supplement|保健", "schemes": [{"id": "kind", "label": "種類", "values": [{"v": "ペット", "re": "宠物|寵物|ペット|\\bpets?\\b|猫|ねこ|ネコ|貓|\\bcats?\\b|犬|いぬ|イヌ|\\bdogs?\\b|獣医|兽医"}, {"v": "グルメ", "re": "グルメ|food|食品|餐厅|餐廳|レストラン|restaurant|カフェ|cafe|coffee|咖啡|スイーツ|dessert|お菓子|snack|ラーメン|ramen|beer|wine|お酒"}, {"v": "ホビー", "re": "プラモデル|模型|model kit|ガンプラ|trading card|ボードゲーム|board game|手芸|craft|楽器|LEGO|レゴ"}, {"v": "インテリア", "re": "家具|furniture|インテリア|interior|収納|キッチン|kitchen|園芸|gardening|寝具"}, {"v": "健康", "re": "フィットネス|fitness|健身|ジム|gym|ヨガ|yoga|ダイエット|diet|睡眠|sleep|健康|health|サプリ"}]}, {"id": "how", "label": "楽しみ方", "values": ["買う", "作る・する", "知る"]}], "prio": 50, "facets": {"ペット": [{"id": "goods", "kw": ["グッズ", "用品 新商品"], "label": "用品・グッズ", "re": "グッズ|用品|新商品|新発売|用具|玩具|おもちゃ", "rec": true, "subs": {"how": "買う", "kind": "ペット"}, "sec": "生活"}, {"id": "food", "kw": ["フード 新発売", "おやつ"], "label": "フード・おやつ", "re": "フード|おやつ|ごはん|food|粮|糧|ちゅ〜る", "rec": true, "subs": {"how": "買う", "kind": "ペット"}, "sec": "生活"}, {"id": "health", "kw": ["病気", "健康"], "label": "健康・病気", "re": "病気|健康|ワクチン|動物病院|獣医|兽医|病院|感染", "subs": {"how": "買う", "kind": "ペット"}, "sec": "生活"}, {"id": "cafe", "kw": ["カフェ", "展 イベント"], "label": "カフェ・イベント", "re": "カフェ|イベント|写真展|展覧会|フェス|ふれあい", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "kw": ["コラボ 新作", "モチーフ 雑貨"], "label": "モチーフのコラボ商品", "re": "コラボ|モチーフ|柄|デザイン", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "adopt", "kw": ["保護", "譲渡会"], "label": "保護・譲渡", "re": "保護|譲渡|里親|殺処分", "subs": {"how": "買う", "kind": "ペット"}, "sec": "生活"}]}, "facets_any": [{"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": true, "sec": "生活", "subs": {}}, {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": true, "sec": "生活", "subs": {}}, {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣", "sec": "生活", "subs": {}}]}, {"key": "出行", "ja": "おでかけ・アート", "color": "#0F6B78", "kind": "place", "words": "テーマパーク|theme park|游乐园|遊樂園|遊園地|amusement park|观光|觀光|観光|tourist|tourism|旅行|travel|ホテル|hotel|酒店|旅館|温泉|onsen|hot spring|空港|airport|机场|機場|水族館|aquarium|动物园|動物園|zoo|美术馆|美術館|博物馆|博物館|museum|展覧会|展览|展覽|exhibition|art gallery|ギャラリー|画家|畫家|painter|artist|艺术家|藝術家|アーティスト|芸術|艺术|藝術|\\bart\\b|写真家|photographer|建築|architecture|建筑|デザイナー|designer", "schemes": [{"id": "kind", "label": "種類", "values": [{"v": "テーマパーク", "re": "theme park|amusement park|遊園地|游乐园|遊樂園"}, {"v": "展覧会・美術館", "re": "museum|美術館|美术馆|博物館|博物馆|展覧会|展览|展覽|exhibition|gallery|ギャラリー|art\\b"}, {"v": "観光地", "re": "tourist|観光|观光|觀光|sightseeing"}, {"v": "宿・温泉", "re": "hotel|ryokan|onsen|hot spring|酒店|ホテル|旅館|温泉"}, "交通", "季節イベント"]}, {"id": "area", "label": "エリア", "values": ["日本各地", {"re": "Osaka|Kyoto|Kobe|Nara|大阪|京都|神戸|神户|奈良|関西|关西", "v": "関西"}, {"re": "Tokyo|Yokohama|Chiba|東京|东京|横浜|千葉|関東|关东", "v": "関東"}, {"re": "Korea|China|Taiwan|Hawaii|France|Paris|London|New York|USA", "v": "海外"}]}], "prio": 50, "facets": {}, "facets_any": [{"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": true, "sec": "出行", "subs": {}}, {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": true, "sec": "出行", "subs": {}}, {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣", "sec": "出行", "subs": {}}]}, {"key": "其他", "ja": "その他", "color": "#5B5F6B", "kind": "product", "words": "", "schemes": [{"id": "kind", "label": "種類", "values": ["その他"]}], "prio": 50, "facets": {}, "facets_any": [{"id": "new", "label": "新商品・新作", "kw": ["新商品", "新作"], "re": "新商品|新作|新発売|発売|新品|新款|新登場", "rec": true, "sec": "其他", "subs": {}}, {"id": "shop", "label": "お店・オープン", "kw": ["新店", "オープン"], "re": "オープン|開店|开店|新店|閉店|店舗|ショップ", "rec": true, "sec": "其他", "subs": {}}, {"id": "event", "label": "イベント・展示", "kw": ["イベント", "展"], "re": "イベント|展覧会|展示|フェス|ポップアップ|POP ?UP|展", "sec": "出行", "subs": {"kind": "季節イベント"}}, {"id": "collab", "label": "コラボ", "kw": ["コラボ"], "re": "コラボ|联名|聯名|collab", "sec": "好物", "subs": {"kind": "雑貨・食器", "owner": "ジャンル"}}, {"id": "sale", "label": "セール・値下げ", "kw": ["セール"], "re": "セール|値下げ|割引|特価|sale|折扣", "sec": "其他", "subs": {}}]}], "items": [{"name": "ちいかわ", "type": "anime", "section": "影视", "subs": {"kind": "シリーズ", "origin": "日本"}, "media": ["マンガ", "アニメ", "映画", "グッズ", "イベント"], "subtitle": "ちいかわ なんか小さくてかわいいやつ", "keywords": ["ちいかわ", "吉伊卡哇", "ちいかわ なんか小さくてかわいいやつ", "먼가 작고 귀여운 녀석", "Chiikawa", "ちいかわ コラボ", "ちいかわ グッズ 新作", "ちいかわ なんか小さくてかわいいやつ コラボ", "ちいかわ なんか小さくてかわいいやつ グッズ 新作", "映画ちいかわ 人魚の島のひみつ", "Chiikawa the Movie: The Secret of the Mermaid Island", "ちいかわ アニメ"], "match": ["ちいかわ", "吉伊卡哇", "ちいかわ なんか小さくてかわいいやつ", "먼가 작고 귀여운 녀석", "Chiikawa", "먼작귀", "치이카와", "小可愛", "Nanka Chiisakute Kawaii Yatsu", "映画ちいかわ 人魚の島のひみつ", "Chiikawa the Movie: The Secret of the Mermaid Island"], "news_langs": ["ja-JP", "ko-KR", "zh-CN"], "priority": "发售日和新刊；付录和限定版（附赠什么、怎么买）；封面人物和特集；改编和得奖；新一季、续作或剧场版什么时候出；播出时间和每集更新；声优活动和演唱会；上映或播出日期、在哪个平台能看；预告片；演员和幕后消息；新的联名商品什么时候出、怎么买；新周边和新品；抽选、限定品和预约怎么买；新的活动和展览；门票和预约；开业、闭馆和营业时间；人流和交通", "site": "https://chiikawa-info.jp/", "notes": "2026-10-19 从网页设置页加进来的。关注：发售日、新刊、付录、限定版、封面、特集、改编、得奖、新一季 / 续作 / 剧场版、播出时间、每集更新、声优、活动、演唱会、上映 / 播出日期、在哪看、预告片、演员、幕后、联名商品、新周边、新品、抽选、限定、预约、新活动、新展览、门票、预约、开业、闭馆、休园、人多不多、交通。维基数据：日本漫画系列。面：グッズ・コラボ、アニメ、映画、漫画・本、イベント・カフェ・展示。"}]}</script>
 <script>

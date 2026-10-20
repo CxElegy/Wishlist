@@ -1002,6 +1002,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 .wl-login button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 12px;font:700 13px var(--font-sans);cursor:pointer}
 .wl-login button:disabled{opacity:.6;cursor:wait}
 .wl-login .st{margin:0;font-size:13px;line-height:1.5}
+.wl-login .first{margin:4px 0 0;padding-top:8px;border-top:1px solid var(--hair);font-size:13px;line-height:1.6}
 .wl-login .tabs{display:flex;border-bottom:2px solid var(--ink)}
 .wl-login .tabs button{flex:1;align-self:auto;border:0;background:transparent;padding:6px 8px;font:700 13px var(--font-sans);color:var(--ink);opacity:.6;cursor:pointer;box-shadow:none}
 .wl-login .tabs button[aria-selected=true]{opacity:1;background:var(--ink);color:var(--card)}
@@ -1043,7 +1044,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 @media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}}
 </style><script>
 (function(){
-  var A={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "terms", "terms": 1, "termsUrl": "terms.html"}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
+  var A={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "terms", "terms": 1, "termsUrl": "terms.html", "start": "../#name"}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
   if(!base||!A.key||!window.fetch) return;
   var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
   R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
@@ -1075,7 +1076,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
   // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
   // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。名前が店長のメール（invites の role=admin）のときだけ、
   // このブラウザで最初の 1 回、確認のリンクをメールで送る（そうしないと誰でも店長の名前を入れて変えられる）。
-  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html';
+  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
   try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
   function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
   var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
@@ -1094,12 +1095,12 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
     });
   }
   var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+'" target="_blank" rel="noopener">利用規約・プライバシーポリシー<\/a>に同意する<\/span><\/label>';};
+  // 右上はログインだけ。新しく始めるのは入口の流れ（言語・ジャンル・最初の版面を選ぶ）に一本化（2026-10-21，サイト全体で同じ始め方に）
   function loginForm(){
-    return '<form class="wl-login" data-mode="new" novalidate><div class="tabs" role="tablist"><button type="button" role="tab" data-m="new" aria-selected="true">新しく始める<\/button>'+
-      '<button type="button" role="tab" data-m="old" aria-selected="false">ログイン<\/button><\/div>'+
-      '<label>ユーザー名<input type="text" required minlength="2" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="好きな名前（メールアドレスでも）"><\/label>'+
-      '<p class="hint" aria-live="polite"><\/p>'+agreeBox()+
-      '<button type="submit" class="go">はじめる<\/button><small>パスワードはありません。このブラウザがずっと覚えます<\/small><p class="st" aria-live="polite"><\/p><\/form>';
+    return '<form class="wl-login" data-mode="old" novalidate>'+
+      '<label>ユーザー名<input type="text" required minlength="2" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録した名前（メールアドレスでも）"><\/label>'+
+      '<button type="submit" class="go">ログイン<\/button><p class="st" aria-live="polite"><\/p>'+
+      '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →<\/a><br><small>名前・ニュースの言語・好きなジャンルを選ぶだけ（1 分）。パスワードはありません<\/small><\/p><\/form>';
   }
   function after(name,agreed,st){
     if(isMail(name)) rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(adm){
@@ -1111,26 +1112,13 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
   }
   function bindLogin(root){
     var f=root.querySelector('.wl-login'); if(!f) return;
-    var inp=f.querySelector('input[type=text]'), hint=f.querySelector('.hint'), st=f.querySelector('.st'), go=f.querySelector('.go'), ag=f.querySelector('.agree'), tm=0;
-    function mode(m){ f.dataset.mode=m; f.querySelectorAll('[data-m]').forEach(function(t){t.setAttribute('aria-selected',String(t.dataset.m===m));});
-      ag.hidden=m!=='new'; go.textContent=m==='new'?'はじめる':'ログイン'; hint.textContent=''; st.textContent=''; check(); }
-    f.querySelectorAll('[data-m]').forEach(function(t){t.onclick=function(){mode(t.dataset.m);};});
-    function check(){
-      clearTimeout(tm); var n=inp.value.trim(); hint.className='hint';
-      if(f.dataset.mode!=='new'||n.length<2){ hint.textContent=''; return; }
-      tm=setTimeout(function(){ rpc('name_available',{p_name:n}).then(function(ok){
-        if(inp.value.trim()!==n) return;
-        hint.textContent=ok?'✓ この名前は使えます':'この名前はもう使われています（自分の名前なら「ログイン」へ）'; hint.className='hint '+(ok?'ok':'ng');
-      }).catch(function(){}); },350);
-    }
-    inp.oninput=check;
+    var inp=f.querySelector('input[type=text]'), st=f.querySelector('.st'), go=f.querySelector('.go');
     f.onsubmit=function(ev){
       ev.preventDefault(); ev.stopImmediatePropagation();
-      var n=inp.value.trim(), isNew=f.dataset.mode==='new';
+      var n=inp.value.trim();
       if(n.length<2){ st.textContent='ユーザー名を 2 文字以上で入れてください'; return; }
-      if(isNew&&!ag.querySelector('input').checked){ st.textContent='利用規約・プライバシーポリシーへの同意が必要です'; return; }
       go.disabled=true; st.textContent='';
-      (isNew?rpc('user_register',{p_name:n,p_agree_version:TV}):rpc('user_login',{p_name:n})).then(function(r){
+      rpc('user_login',{p_name:n}).then(function(r){
         go.disabled=false; saveMe({name:r.name,v:r.agreed_version||0,at:Date.now()}); after(r.name,r.agreed_version||0,st);
       }).catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
     };
@@ -1170,13 +1158,13 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
     if(!name){
-      box.innerHTML='<span class="shop">店長のページ · 見るだけ<\/span><button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン<\/button><div class="menu" hidden>'+loginForm()+'<\/div>';
+      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン<\/button><div class="menu" hidden>'+loginForm()+'<\/div>';
       var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=text]').focus();};
       bindLogin(box); return;
     }
     var pending=!user&&me&&me.admin, label=pending?'確認待ち':(ROLE[role]||role), sh=isMail(name)?name.split('@')[0]:name;
-    box.innerHTML=(role!=='admin'?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
       '<span class="nm">'+esc(sh)+'<\/span><span class="rl '+esc(pending?'wait':role)+'">'+esc(label)+'<\/span><\/button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています<\/small>'+
       (pending?'<button type="button" data-again>確認のメールをもう一度送る<\/button><p class="st" aria-live="polite">店長の名前です。届いたメールのリンクを押すと店長になります（このブラウザで 1 回だけ）<\/p>':'')+
@@ -1235,9 +1223,14 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){chip();gate();readOnlyNote();members();});
+      .then(function(){chip();gate();readOnlyNote();members();
+        if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
+          var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
+          if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
+        }});
   }
   function start(){
+    if(me&&me.name&&!me.admin&&isMail(me.name)&&!tok) rpc('is_admin_email',{p_email:me.name}).then(function(a){ if(a){ me.admin=true; saveMe(me); refresh(); } }).catch(function(){});   // 入口から店長のメールで登録した
     if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
       .catch(function(e){ if(/見つかりません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
@@ -1275,6 +1268,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 <li><b>ユーザー名</b>（メールアドレスを名前にした場合はそのメールアドレス）</li>
 <li><b>同意の記録</b>：同意した規約の版と日時、最後に使った日時</li>
 <li><b>興味・関心の情報</b>：フォローした作品、👍 / 👎、欲しい物リスト、設定など、本サービスで操作した内容</li>
+<li><b>好みの設定</b>：ニュースの言語、好きなジャンル、はじめに「気になる」を選んだ作品</li>
 <li><b>ブラウザに保存するもの</b>：ログインしたままにするため、ユーザー名をこのブラウザの保存領域（localStorage）に置きます。Cookie による広告・追跡はしません</li>
 </ul>
 
