@@ -1,11 +1,11 @@
--- 登录・邀请制・身份（2026-10-20，第 1 步）
--- 访客（没登录）= 只能看；一般用户 = 受邀登录（第 2 步起有自己的一套）；管理者 = 最多 5 个账号，能进管理页、管所有人。
+-- 登录・身份（2026-10-20，第 1 步）
+-- 访客（没登录）= 只能看；一般用户 = 谁都能用邮箱登录（2026-10-21 定：不做邀请制，第 2 步起有自己的一套）；管理者 = 最多 5 个账号，能进管理页、管所有人。
 -- 只加不改：新表・新函数。现有的写函数要不要检查身份由 private.auth_flags 的 enforce 开关决定（切换到新网站时再打开，见 db/auth_enforce.sql）。
--- 做法照 Supabase 官方：Before User Created Hook 拦邀请名单外的人；身份放在 user_roles 表（用户自己改不了），不放 user_metadata。
+-- 做法照 Supabase 官方：身份放在 user_roles 表（用户自己改不了），不放 user_metadata。
 -- 在 Supabase → SQL Editor 里整段运行一次（Claude 可以用 Supabase 连接器代为执行）。
--- 之后在 Authentication → Hooks 把 Before User Created 设成 public.hook_invite_only（只能在后台点）。
+-- hook_invite_only（邀请制）做好了但不接到 Authentication → Hooks（用户定的：不做邀请制）。
 
--- ① 邀请名单：只有这里的邮箱能注册。role = 注册后的身份。
+-- ① 管理者的邮箱（名字是 invites，因为最初做成了邀请制；2026-10-21 起不拦人，只用 role=admin 决定管理者）。
 create table if not exists public.invites (
   email      text primary key check (email = lower(email) and position('@' in email) > 1),
   role       text not null default 'user' check (role in ('user', 'admin')),

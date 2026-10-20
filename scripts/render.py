@@ -3737,11 +3737,12 @@ def _account_tag(page=""):
 
 
 # ---- ログイン（2026-10-20，用户定的）-------------------------------------------------------------
-# 访客（ログインしていない）= 見るだけ；一般用户 = 招待された人（自分の account だけ変えられる）；管理者 = 全部・管理ページ。
+# 访客（ログインしていない）= 見るだけ；一般用户 = メールでログインした人（自分の account だけ変えられる）；管理者 = 全部・管理ページ。
 # 本当の門番はデータベース（db/auth.sql・db/auth_guard.sql の can_edit / is_admin）。ここはボタンを止めて理由を出すだけ。
 # 開關（private.auth_flags の enforce、db/auth_enforce.sql）が閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。
 # ログインはメールのリンク（Supabase Auth の magic link・パスワードなし・implicit なので別の端末で開いてもよい）。
-# 招待されていない人は Before User Created Hook（public.hook_invite_only）で断られる。Google ログインは保留（PENDING.md）。
+# だれでもメールで登録できる（2026-10-21，用户定的：招待制にしない）。管理者は public.invites の role=admin のメール。一度ログインしたらこのブラウザが覚える
+# （localStorage・鍵は自動で更新、ログアウトするまで続く）。Google ログインは保留（PENDING.md）。
 AUTH_DB = {}   # {url, key}：digest.cmd_render が入れる（公開の publishable key）
 SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"
 # ページごとに「見るだけ」のとき止める操作（それ以外のクリック・リンク・絞り込みはそのまま）
@@ -3828,14 +3829,13 @@ AUTH_JS = r"""
   // メールでログイン（パスワードなし）：メールを入れる → 届いたメールのリンクを押すとログイン（別の端末で開いてもよい = implicit）
   function sayErr(m){
     m=String(m||'');
-    if(/招待制/.test(m)) return '招待制です。管理者に招待を頼んでください。';
     if(/not authorized/i.test(m)) return 'このメールにはまだ送れません（メール送信の設定待ち）。管理者に知らせてください。';
     if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度。';
     return 'ログインできませんでした：'+m;
   }
   function loginForm(){
     return '<form class="wl-login"><label>メールアドレス<input type="email" required autocomplete="email" placeholder="you@example.com"></label>'+
-      '<button type="submit">ログインのリンクを送る</button><small>パスワードは要りません。届いたメールのリンクを押すだけ（招待制）</small><p class="st" aria-live="polite"></p></form>';
+      '<button type="submit">ログインのリンクを送る</button><small>パスワードは要りません。届いたメールのリンクを押すだけ。一度ログインすれば、このブラウザが覚えます</small><p class="st" aria-live="polite"></p></form>';
   }
   function bindLogin(root){
     var f=root.querySelector('.wl-login'); if(!f) return;
@@ -3858,7 +3858,7 @@ AUTH_JS = r"""
     var t=ev.target.closest&&ev.target.closest(LOCK);
     if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live')) return;
     ev.preventDefault(); ev.stopImmediatePropagation();
-    toast(R.dataset.role==='guest'?'見るだけです。変えるにはログイン（招待制）':'このページはあなたのものではないので、見るだけです');
+    toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'このページはあなたのものではないので、見るだけです');
   },true);
   document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
   function chip(){
@@ -3896,7 +3896,7 @@ AUTH_JS = r"""
     if(!locked()){if(n) n.remove(); return;}
     if(n) return;
     n=document.createElement('p'); n.className='wl-ro';
-    n.textContent='見るだけです。設定を変えるにはログインしてください（招待制）。';
+    n.textContent='見るだけです。設定を変えるには右上の「ログイン」から。';
     var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
   }
   function members(){
@@ -3905,17 +3905,16 @@ AUTH_JS = r"""
     box.closest('section').hidden=false;
     Promise.all([rpc('admin_list_users'),rpc('admin_list_invites')]).then(function(v){
       var us=v[0]||[], inv=v[1]||[];
-      box.innerHTML='<table><thead><tr><th>招待したメール</th><th>役割</th><th>登録</th></tr></thead><tbody>'+
+      box.innerHTML='<table><thead><tr><th>管理者のメール</th><th>役割</th><th>ログイン済み</th></tr></thead><tbody>'+
         inv.map(function(x){return '<tr><td>'+esc(x.email)+'</td><td>'+esc(ROLE[x.role]||x.role)+'</td><td>'+(x.joined?'済':'まだ')+'</td></tr>';}).join('')+
         '</tbody></table><p class="st">登録済み '+us.length+' 人（名前だけ：'+us.map(function(u){return esc(u.display_name||'？');}).join('、')+'）</p>'+
-        '<form><input type="email" required placeholder="招待する人のメール" aria-label="メール">'+
-        '<select aria-label="役割"><option value="user">ユーザー</option><option value="admin">管理者（5 人まで）</option></select>'+
-        '<button type="submit">招待する</button></form><p class="st" aria-live="polite"></p>';
+        '<form><input type="email" required placeholder="管理者にする人のメール" aria-label="メール">'+
+        '<button type="submit">管理者にする</button></form><p class="st" aria-live="polite"></p>';
       var f=box.querySelector('form'), st=box.querySelectorAll('.st')[1];
       f.onsubmit=function(ev){ev.preventDefault();
-        rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:f.querySelector('select').value})
-          .then(function(a){st.textContent=a+' を招待しました。その人は右上の「ログイン」にこのメールを入れれば使えます。';members();})
-          .catch(function(e){st.textContent='招待できませんでした：'+e.message;});};
+        rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:'admin'})
+          .then(function(a){st.textContent=a+' を管理者にしました。そのメールでログインすると管理者になります。';members();})
+          .catch(function(e){st.textContent='できませんでした：'+e.message;});};
     }).catch(function(e){box.innerHTML='<p class="st">読み込めませんでした：'+esc(e.message)+'</p>';});
   }
   function refresh(){
@@ -5405,7 +5404,7 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
-<section class="panel" id="members" hidden><h2 class="sh"><span>ユーザーと招待</span><small>招待制 · ここに入れたメールの人だけがログインできる（メールのリンクで・パスワードなし） · 管理者は 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
+<section class="panel" id="members" hidden><h2 class="sh"><span>ユーザーと管理者</span><small>だれでもメールでログインできる · ここに入れたメールの人は管理者 · 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
 <section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in data.get("items") or [] if x.get("name")])}</section>
 <section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>

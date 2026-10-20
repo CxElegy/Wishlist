@@ -1,6 +1,6 @@
-# ログイン（メールのリンク・招待制）
+# ログイン（メールのリンク）
 
-2026-10-21 第 1 步。访客 = 見るだけ、招待された人だけメールのリンクでログイン（パスワードなし）、管理者（5 人まで）だけ管理ページ。
+2026-10-21 第 1 步。访客 = 見るだけ、だれでもメールのリンクでログイン（パスワードなし・一度ログインすればブラウザが覚える）、管理者（5 人まで）だけ管理ページ。
 Google ログインは保留（Google の「公開」にホームページとプライバシーポリシーのページが要るため。`PENDING.md`）。
 
 ## 身份
@@ -14,26 +14,21 @@ Google ログインは保留（Google の「公開」にホームページとプ
 
 - 門番はデータベース：書く関数の 1 行目で `can_edit(p_account)` / `is_admin()`（`db/auth_guard.sql`）。網页は止めて理由を出すだけ（`render.AUTH_JS`）。
 - 開關 `private.auth_flags.enforce`：閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。`db/auth_enforce.sql` で開く。戻すときは false に。
-- 招待制：`invites` 表にあるメールだけ登録できる（Before User Created Hook = `public.hook_invite_only`）。最初の管理者 `c.elegy@outlook.com`。
+- 管理者：`invites` 表の role=admin のメール（最初は `c.elegy@outlook.com`、5 人まで）。登録時の trigger が役割を決める。ほかの人はユーザー。
 - account の持ち主：`accounts` 表（test1・test2 は owner 空 = 運営者 = 管理者のもの）。ユーザー自分の account は第 2 步。
 - 保存するのはメール（と名前）だけ。管理ページのユーザー一覧は名前だけ（メールは招待表だけ）。
 
-## 運営者がやること（1 回だけ・約 3 分）
-
-Supabase の画面の設定。Claude の連接器ではできない。
+## 運営者がやること（1 回だけ・約 1 分）
 
 1. **戻り先を許可**：https://supabase.com/dashboard/project/bzokpnbcjscbcehdxtjq/auth/url-configuration
    - Site URL に `https://cxelegy.github.io/Wishlist/test2/` → 「Save」
    - Redirect URLs の「Add URL」に `https://cxelegy.github.io/Wishlist/**` → 「Save」
    （これがないとメールのリンクが localhost に飛ぶ）
-2. **招待制をつなぐ**：https://supabase.com/dashboard/project/bzokpnbcjscbcehdxtjq/auth/hooks → 「Add a new hook」→ 「Before User Created」→
-   Hook type = **Postgres**、Schema = `public`、Function = `hook_invite_only` → 「Create hook」
-3. （任意）**招待の取り消し・退会**：https://supabase.com/dashboard/project/bzokpnbcjscbcehdxtjq/sql/new に `db/auth_delete.sql` を貼って「Run」
-4. Claude に「設定した」と言う → 右上の「ログイン」に `c.elegy@outlook.com` → 届いたメールのリンク →「管理者」と出れば OK → 合併して `db/auth_enforce.sql`（開關を開く）
+2. Claude に「設定した」と言う → 右上の「ログイン」に `c.elegy@outlook.com` → 届いたメールのリンク →「管理者」と出れば OK → 合併して `db/auth_enforce.sql`（開關を開く）
 
-メール：Supabase 標準のメール送信は **Supabase のチームのメール宛てにしか送らない・1 時間に数通**。運営者のメールがチームのメールなら設定なしで届く。
-ほかの人を招くときは「カスタム SMTP」を入れる（Authentication → Emails → SMTP Settings）。ドメインなしで使えるもの：Gmail（アプリ パスワード）・Brevo（送信元メールの確認だけ）。
-メールの「Email」プロバイダーは最初からオン（Authentication → Sign In / Providers → Email）。
+- **招待制にしない**（2026-10-21，用户定的）：だれでもメールで登録できる。`invites` 表は「管理者のメール」の表としてだけ使う（`hook_invite_only` は作ってあるが Hooks にはつながない）。
+- **ブラウザが覚える**：ログインは localStorage（`wl-auth`）に残り、鍵は自動で更新。ログアウトするかブラウザのデータを消すまでログインのまま（Supabase 無料版はセッションの期限なし）。
+- **メール**：Supabase 標準のメール送信は Supabase のチームのメール宛てにしか送らない・1 時間に数通。ほかの人もログインできるようにするときは「カスタム SMTP」（Authentication → Emails → SMTP Settings。ドメインなしなら Gmail のアプリ パスワード・Brevo）。
 
 ## ファイル
 
