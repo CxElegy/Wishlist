@@ -3777,6 +3777,7 @@ AUTH_CSS = """
 .wl-login button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 12px;font:700 13px var(--font-sans);cursor:pointer}
 .wl-login button:disabled{opacity:.6;cursor:wait}
 .wl-login .st{margin:0;font-size:13px;line-height:1.5}
+.wl-login .first{margin:4px 0 0;padding-top:8px;border-top:1px solid var(--hair);font-size:13px;line-height:1.6}
 .wl-login .tabs{display:flex;border-bottom:2px solid var(--ink)}
 .wl-login .tabs button{flex:1;align-self:auto;border:0;background:transparent;padding:6px 8px;font:700 13px var(--font-sans);color:var(--ink);opacity:.6;cursor:pointer;box-shadow:none}
 .wl-login .tabs button[aria-selected=true]{opacity:1;background:var(--ink);color:var(--card)}
@@ -3852,7 +3853,7 @@ AUTH_JS = r"""
   // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
   // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。名前が店長のメール（invites の role=admin）のときだけ、
   // このブラウザで最初の 1 回、確認のリンクをメールで送る（そうしないと誰でも店長の名前を入れて変えられる）。
-  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
+  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
   try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
   function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
   var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
@@ -3871,12 +3872,12 @@ AUTH_JS = r"""
     });
   }
   var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+'" target="_blank" rel="noopener">利用規約・プライバシーポリシー</a>に同意する</span></label>';};
+  // 右上はログインだけ。新しく始めるのは入口の流れ（言語・ジャンル・最初の版面を選ぶ）に一本化（2026-10-21，サイト全体で同じ始め方に）
   function loginForm(){
-    return '<form class="wl-login" data-mode="new" novalidate><div class="tabs" role="tablist"><button type="button" role="tab" data-m="new" aria-selected="true">新しく始める</button>'+
-      '<button type="button" role="tab" data-m="old" aria-selected="false">ログイン</button></div>'+
-      '<label>ユーザー名<input type="text" required minlength="2" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="好きな名前（メールアドレスでも）"></label>'+
-      '<p class="hint" aria-live="polite"></p>'+agreeBox()+
-      '<button type="submit" class="go">はじめる</button><small>パスワードはありません。このブラウザがずっと覚えます</small><p class="st" aria-live="polite"></p></form>';
+    return '<form class="wl-login" data-mode="old" novalidate>'+
+      '<label>ユーザー名<input type="text" required minlength="2" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録した名前（メールアドレスでも）"></label>'+
+      '<button type="submit" class="go">ログイン</button><p class="st" aria-live="polite"></p>'+
+      '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →</a><br><small>名前・ニュースの言語・好きなジャンルを選ぶだけ（1 分）。パスワードはありません</small></p></form>';
   }
   function after(name,agreed,st){
     if(isMail(name)) rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(adm){
@@ -3888,26 +3889,13 @@ AUTH_JS = r"""
   }
   function bindLogin(root){
     var f=root.querySelector('.wl-login'); if(!f) return;
-    var inp=f.querySelector('input[type=text]'), hint=f.querySelector('.hint'), st=f.querySelector('.st'), go=f.querySelector('.go'), ag=f.querySelector('.agree'), tm=0;
-    function mode(m){ f.dataset.mode=m; f.querySelectorAll('[data-m]').forEach(function(t){t.setAttribute('aria-selected',String(t.dataset.m===m));});
-      ag.hidden=m!=='new'; go.textContent=m==='new'?'はじめる':'ログイン'; hint.textContent=''; st.textContent=''; check(); }
-    f.querySelectorAll('[data-m]').forEach(function(t){t.onclick=function(){mode(t.dataset.m);};});
-    function check(){
-      clearTimeout(tm); var n=inp.value.trim(); hint.className='hint';
-      if(f.dataset.mode!=='new'||n.length<2){ hint.textContent=''; return; }
-      tm=setTimeout(function(){ rpc('name_available',{p_name:n}).then(function(ok){
-        if(inp.value.trim()!==n) return;
-        hint.textContent=ok?'✓ この名前は使えます':'この名前はもう使われています（自分の名前なら「ログイン」へ）'; hint.className='hint '+(ok?'ok':'ng');
-      }).catch(function(){}); },350);
-    }
-    inp.oninput=check;
+    var inp=f.querySelector('input[type=text]'), st=f.querySelector('.st'), go=f.querySelector('.go');
     f.onsubmit=function(ev){
       ev.preventDefault(); ev.stopImmediatePropagation();
-      var n=inp.value.trim(), isNew=f.dataset.mode==='new';
+      var n=inp.value.trim();
       if(n.length<2){ st.textContent='ユーザー名を 2 文字以上で入れてください'; return; }
-      if(isNew&&!ag.querySelector('input').checked){ st.textContent='利用規約・プライバシーポリシーへの同意が必要です'; return; }
       go.disabled=true; st.textContent='';
-      (isNew?rpc('user_register',{p_name:n,p_agree_version:TV}):rpc('user_login',{p_name:n})).then(function(r){
+      rpc('user_login',{p_name:n}).then(function(r){
         go.disabled=false; saveMe({name:r.name,v:r.agreed_version||0,at:Date.now()}); after(r.name,r.agreed_version||0,st);
       }).catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
     };
@@ -4014,7 +4002,7 @@ AUTH_JS = r"""
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
       .then(function(){chip();gate();readOnlyNote();members();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
-          var b=document.querySelector('.wl-auth>button.in'); if(b){ b.click(); var t=document.querySelector('.wl-auth [data-m=old]'); if(t) t.click(); }
+          var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
         }});
   }
@@ -4047,7 +4035,7 @@ def _auth_tag(page=""):
     if not (AUTH_DB.get("url") and AUTH_DB.get("key")):
         return ""
     cfg = {"url": AUTH_DB["url"], "key": AUTH_DB["key"], "lib": SUPABASE_JS, "page": page,
-           "terms": TERMS_VERSION, "termsUrl": "terms.html"}
+           "terms": TERMS_VERSION, "termsUrl": "terms.html", "start": "../#name"}   # 新しく始める = 入口（docs/index.html）の流れ
     js = (AUTH_JS.replace("__AUTH__", json.dumps(cfg)).replace("__ROLE__", json.dumps(ROLE_JA, ensure_ascii=False))
           .replace("__LOCK__", json.dumps(AUTH_LOCK)))
     js = js.replace("</", "<\\/")

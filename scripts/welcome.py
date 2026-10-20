@@ -279,6 +279,7 @@ JS = r"""
     if (id === 'check') check();
   }
   addEventListener('popstate', ev => show((ev.state && ev.state.id) || 'home', false));
+  if (location.hash === '#name') show('name', false);   // 各ページ右上の「新しく始める」から
   $$('[data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
   $$('.bar [data-back]').forEach(b => b.addEventListener('click', () => history.back()));
   // ---- ② 名前と規約

@@ -60,9 +60,10 @@ class AuthTag(unittest.TestCase):
 
     def test_login_is_username_with_terms(self):
         js = render.AUTH_JS
-        for fn in ("name_available", "user_register", "user_login", "user_agree", "user_leave"):
+        for fn in ("user_login", "user_agree", "user_leave"):
             self.assertIn(fn, js)
         self.assertIn("askAgree", js)
+        self.assertIn("START", js)   # 新しく始めるは入口の流れに一本化
         self.assertNotIn("招待制", js)
 
 
