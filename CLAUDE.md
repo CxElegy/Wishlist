@@ -343,6 +343,8 @@
 - **新账号・新关注项的「空的时候」（2026-10-20，用户指出：入口消失、推荐空盒子、设计被跳过）**：愿望清单 0 件也出入口（报头・目录・右栏，`_wish_link` / `_side`）；
   「気になるかも？」的页（batch）从 0 开始挤紧（`digest.pack_batches`，没有愿望清单时第 1 页不会空）；设置页加进来的关注项没设计（`DESIGN_KEYS`）时 `edit-next` 先回 `DESIGN`，设计完才编记事（`digest.undesigned`）。
   加新功能时要用「什么都没有的新账号」把每一页看一遍（test1 和 test2 对比）。
+  **小元素一直失败的原因（2026-10-20）**：角色类只认「直接指定・Fandom」的图，可新关注项没有 `emblem_fandom`（以前是 AI 设计时手填的）→ 永远不去 Fandom、别的来源全被拒。
+  现在 `emblem_fill.find_sources` 按规则自己找：名字・副题・搜索词的英文名 → `<名>.fandom.com`（wiki 名里要有作品名）→ 分类 Main characters / Playable characters / Characters → 名单（`roster`）。
 - 多选的问题都有「全选」键；「关注哪方面」默认全选（只除掉要问选手名字的 player）。
 - 同系列的一问不再列「面」里已经有的（面的依据条目・同一个面）：同一个东西不问两遍。
 - 不再问「怎么放」：test2 起规则是「一个名字一个版面」（见上「test1 / test2」），要分开在确认画面勾。
