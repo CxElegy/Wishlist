@@ -3737,12 +3737,12 @@ def _account_tag(page=""):
 
 
 # ---- ログイン（2026-10-20，用户定的）-------------------------------------------------------------
-# 访客（ログインしていない）= 見るだけ；一般用户 = メールでログインした人（自分の account だけ変えられる）；管理者 = 全部・管理ページ。
+# 访客（ログインしていない）= 見るだけ；一般用户 = メールアドレスを入れた人（確認なし・このブラウザが覚える。運営者のページは見るだけ）；管理者 = 全部・管理ページ。
 # 本当の門番はデータベース（db/auth.sql・db/auth_guard.sql の can_edit / is_admin）。ここはボタンを止めて理由を出すだけ。
 # 開關（private.auth_flags の enforce、db/auth_enforce.sql）が閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。
 # ログインはメールのリンク（Supabase Auth の magic link・パスワードなし・implicit なので別の端末で開いてもよい）。
-# だれでもメールで登録できる（2026-10-21，用户定的：招待制にしない）。管理者は public.invites の role=admin のメール。一度ログインしたらこのブラウザが覚える
-# （localStorage・鍵は自動で更新、ログアウトするまで続く）。Google ログインは保留（PENDING.md）。
+# 2026-10-21，用户定的：いちばん簡単に。メールを入れるだけ（localStorage の wl-user、ログアウトするまで）。管理者（public.invites の role=admin）のメールだけ、
+# このブラウザで最初の 1 回だけ確認のリンク（Supabase magic link）→ 以後は Supabase のセッションが覚える。来た人は public.visitors。Google ログインは保留（PENDING.md）。
 AUTH_DB = {}   # {url, key}：digest.cmd_render が入れる（公開の publishable key）
 SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"
 # ページごとに「見るだけ」のとき止める操作（それ以外のクリック・リンク・絞り込みはそのまま）
@@ -3756,8 +3756,11 @@ AUTH_CSS = """
 .wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
 .wl-auth>button.in{padding-left:12px}
+.wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
 .wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
 .wl-auth img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
+.wl-auth .ini{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;flex:none;background:var(--ink);color:var(--card);font:900 13px/1 var(--font-sans)}
+.wl-auth .rl.wait{background:var(--alert)}
 .wl-auth .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .wl-auth .rl{flex:none;padding:0 6px;background:var(--ink);color:var(--card);font-size:var(--fs-tag);letter-spacing:.06em;transform:skewX(var(--skew))}
 .wl-auth .rl.admin{background:var(--rose)}
@@ -3826,69 +3829,91 @@ AUTH_JS = r"""
     var el=document.querySelector('.wl-toast'); if(!el){el=document.createElement('div');el.className='wl-toast';el.setAttribute('role','status');document.body.appendChild(el);}
     el.textContent=t; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(function(){el.hidden=true;},4000);
   }
-  // メールでログイン（パスワードなし）：メールを入れる → 届いたメールのリンクを押すとログイン（別の端末で開いてもよい = implicit）
+  // ログイン（2026-10-21，用户定的：いちばん簡単に）：メールアドレスを入れるだけ。確認なし・パスワードなし、このブラウザが覚える（localStorage の wl-user）。
+  // 管理者のメールのときだけ、このブラウザで最初の 1 回、確認のリンクをメールで送る（そうしないと誰でも管理者のメールを入れて変えられる）。
+  var ME='wl-user', me=null;
+  try{ me=JSON.parse(localStorage.getItem(ME)||'null'); }catch(e){}
+  function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
   function sayErr(m){
     m=String(m||'');
-    if(/not authorized/i.test(m)) return 'このメールにはまだ送れません（メール送信の設定待ち）。管理者に知らせてください。';
-    if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度。';
-    return 'ログインできませんでした：'+m;
+    if(/not authorized/i.test(m)) return '確認のメールを送れませんでした（メール送信の設定待ち）';
+    if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度';
+    return 'うまくいきませんでした：'+m;
+  }
+  function back(){ return location.href.split('#')[0].replace(/[?&](code|error|error_code|error_description)=[^&]*/g,''); }
+  function sendAdminLink(mail,st){
+    if(!sb){ st.textContent='準備中です。少し待ってからもう一度'; return; }
+    st.textContent='確認のメールを送っています…';
+    sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:back(),shouldCreateUser:true}}).then(function(r){
+      st.textContent=r.error?sayErr(r.error.message):'管理者のメールです。'+mail+' に届いたメールのリンクを押してください（このブラウザで最初の 1 回だけ）';
+    });
   }
   function loginForm(){
     return '<form class="wl-login"><label>メールアドレス<input type="email" required autocomplete="email" placeholder="you@example.com"></label>'+
-      '<button type="submit">ログインのリンクを送る</button><small>パスワードは要りません。届いたメールのリンクを押すだけ。一度ログインすれば、このブラウザが覚えます</small><p class="st" aria-live="polite"></p></form>';
+      '<button type="submit">はじめる</button><small>メールアドレスだけで使えます（パスワードなし）。このブラウザがずっと覚えます</small><p class="st" aria-live="polite"></p></form>';
   }
   function bindLogin(root){
     var f=root.querySelector('.wl-login'); if(!f) return;
     f.onsubmit=function(ev){
       ev.preventDefault(); ev.stopImmediatePropagation();
-      var st=f.querySelector('.st'), mail=f.querySelector('input').value.trim(), b=f.querySelector('button');
-      if(!sb){st.textContent='ログインの準備ができていません。少し待ってからもう一度';return;}
-      var back=location.href.split('#')[0].replace(/[?&](code|error|error_code|error_description)=[^&]*/g,'');
-      b.disabled=true; st.textContent='送っています…';
-      sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:back,shouldCreateUser:true}}).then(function(r){
+      var st=f.querySelector('.st'), mail=f.querySelector('input').value.trim().toLowerCase(), b=f.querySelector('button');
+      b.disabled=true; st.textContent='';
+      rpc('is_admin_email',{p_email:mail}).catch(function(){return false;}).then(function(adm){
         b.disabled=false;
-        st.textContent=r.error?sayErr(r.error.message):mail+' にメールを送りました。届いたメールの「ログイン」のリンクを押してください（迷惑メールも見てください）';
+        saveMe({email:mail,admin:!!adm,at:Date.now()});
+        if(adm){ chip(true); var box=document.querySelector('.wl-auth .menu .st'); sendAdminLink(mail,box||st); if(page==='admin') gate(); return; }
+        rpc('remember_user',{p_email:mail}).catch(function(){});
+        toast('ようこそ。このブラウザが覚えました'); refresh();
       });
     };
   }
-  function logout(){ if(sb) sb.auth.signOut().then(function(){location.reload();}); }
+  function logout(){
+    saveMe(null);
+    (sb&&tok?sb.auth.signOut():Promise.resolve()).then(function(){location.reload();});
+  }
   var locked=function(){return R.dataset.lock==='1';};
   document.addEventListener('click',function(ev){
     if(!locked()||!LOCK) return;
     var t=ev.target.closest&&ev.target.closest(LOCK);
     if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live')) return;
     ev.preventDefault(); ev.stopImmediatePropagation();
-    toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'このページはあなたのものではないので、見るだけです');
+    toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'ここは管理者のページなので、見るだけです');
   },true);
   document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
-  function chip(){
+  function chip(keepOpen){
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
-    var role=R.dataset.role;
-    if(!user){
+    var role=R.dataset.role, mail=(user&&user.email)||(me&&me.email)||'';
+    if(!mail){
       box.innerHTML='<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン</button><div class="menu" hidden>'+loginForm()+'</div>';
       var lb=box.querySelector('button'), lm=box.querySelector('.menu');
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input').focus();};
       bindLogin(box); return;
     }
-    var m=user.user_metadata||{}, nm=m.full_name||m.name||(user.email||'').split('@')[0], av=/^https:/.test(m.avatar_url||'')?m.avatar_url:'';
-    box.innerHTML='<button type="button" aria-haspopup="true" aria-expanded="false">'+(av?'<img src="'+esc(av)+'" alt="" referrerpolicy="no-referrer">':'')+
-      '<span class="nm">'+esc(nm)+'</span><span class="rl '+esc(role)+'">'+esc(ROLE[role]||role)+'</span></button>'+
-      '<div class="menu" hidden><small>'+esc(user.email||'')+'<br>保存しているのは メール・名前・アイコン だけです</small>'+
+    var pending=!user&&me&&me.admin, nm=mail.split('@')[0], label=pending?'確認待ち':(ROLE[role]||role);
+    box.innerHTML='<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(nm.charAt(0).toUpperCase())+'</span>'+
+      '<span class="nm">'+esc(nm)+'</span><span class="rl '+esc(pending?'wait':role)+'">'+esc(label)+'</span></button>'+
+      '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(mail)+'<br>このブラウザが覚えています</small>'+
+      (pending?'<button type="button" data-again>確認のメールをもう一度送る</button><p class="st" aria-live="polite">管理者のメールです。届いたメールのリンクを押すと管理者になります（このブラウザで 1 回だけ）</p>':'')+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ</button>':'')+
       '<button type="button" data-out>ログアウト</button></div>';
     var b=box.querySelector('button'), menu=box.querySelector('.menu');
     b.onclick=function(){var o=menu.hidden;menu.hidden=!o;b.setAttribute('aria-expanded',String(o));};
     menu.querySelector('[data-out]').onclick=logout;
     var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
+    var ag=menu.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(mail,menu.querySelector('.st'));};
   }
   function gate(){
     var need=page==='admin'&&R.dataset.enf==='1'&&R.dataset.role!=='admin';
     R.dataset.gate=need?'1':'0';
     var g=document.querySelector('.wl-gate'); if(!need){if(g) g.remove(); return;}
     if(!g){g=document.createElement('div');g.className='wl-gate';document.body.appendChild(g);}
-    g.innerHTML='<div><h1>管理ページ</h1><p>'+(user?'このアカウントは管理者ではありません。管理者のアカウントでログインしてください。':'管理者だけが見られます。管理者のアカウントでログインしてください。')+
-      '</p>'+(user?'':loginForm())+'<a href="./">← ウォッチリスト通信に戻る</a></div>';
+    var pending=me&&me.admin&&!user;
+    g.innerHTML='<div><h1>管理ページ</h1><p>'+(pending?'管理者のメールの確認がまだです。届いたメールのリンクを押してください。':
+      me?'このページは管理者だけが見られます。':'管理者だけが見られます。管理者のメールアドレスを入れてください。')+'</p>'+
+      (me?'':loginForm())+(pending?'<button type="button" data-again>確認のメールをもう一度送る</button><p class="st" aria-live="polite"></p>':'')+
+      '<a href="./">← ウォッチリスト通信に戻る</a></div>';
     bindLogin(g);
+    var ag=g.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.email,g.querySelector('.st'));};
   }
   function readOnlyNote(){
     if(page!=='settings') return;
@@ -3903,11 +3928,11 @@ AUTH_JS = r"""
     var box=document.getElementById('wl-members'); if(!box) return;
     if(R.dataset.role!=='admin'){box.closest('section').hidden=true; return;}
     box.closest('section').hidden=false;
-    Promise.all([rpc('admin_list_users'),rpc('admin_list_invites')]).then(function(v){
+    Promise.all([rpc('admin_list_visitors'),rpc('admin_list_invites')]).then(function(v){
       var us=v[0]||[], inv=v[1]||[];
       box.innerHTML='<table><thead><tr><th>管理者のメール</th><th>役割</th><th>ログイン済み</th></tr></thead><tbody>'+
         inv.map(function(x){return '<tr><td>'+esc(x.email)+'</td><td>'+esc(ROLE[x.role]||x.role)+'</td><td>'+(x.joined?'済':'まだ')+'</td></tr>';}).join('')+
-        '</tbody></table><p class="st">登録済み '+us.length+' 人（名前だけ：'+us.map(function(u){return esc(u.display_name||'？');}).join('、')+'）</p>'+
+        '</tbody></table><p class="st">ログインした人 '+us.length+' 人：'+us.slice(0,50).map(function(u){return esc(u.email);}).join('、')+(us.length>50?' ほか':'')+'</p>'+
         '<form><input type="email" required placeholder="管理者にする人のメール" aria-label="メール">'+
         '<button type="submit">管理者にする</button></form><p class="st" aria-live="polite"></p>';
       var f=box.querySelector('form'), st=box.querySelectorAll('.st')[1];
@@ -3919,17 +3944,20 @@ AUTH_JS = r"""
   }
   function refresh(){
     return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
-      .then(function(v){R.dataset.enf=v[0]?'1':'0';R.dataset.role=v[1]||'guest';R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
+      .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
+        R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
       .then(function(){chip();gate();readOnlyNote();members();});
   }
   function start(){
+    if(me&&me.email&&!me.admin) rpc('remember_user',{p_email:me.email}).catch(function(){});
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
     if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
     if(!window.supabase){refresh();return;}
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
+      if(user&&user.email&&(!me||me.email!==user.email.toLowerCase()||me.admin)) saveMe({email:user.email.toLowerCase(),admin:false,at:Date.now()});
       if(changed||ev==='INITIAL_SESSION') refresh();
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
@@ -5404,7 +5432,7 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
-<section class="panel" id="members" hidden><h2 class="sh"><span>ユーザーと管理者</span><small>だれでもメールでログインできる · ここに入れたメールの人は管理者 · 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
+<section class="panel" id="members" hidden><h2 class="sh"><span>ユーザーと管理者</span><small>だれでもメールアドレスだけでログインできる · ここに入れたメールの人は管理者（最初の 1 回だけメールで確認）· 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
 <section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in data.get("items") or [] if x.get("name")])}</section>
 <section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>

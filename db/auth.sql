@@ -216,3 +216,40 @@ returns boolean language sql stable security definer set search_path = '' as $$
 $$;
 revoke all on function public.auth_enforced() from public;
 grant execute on function public.auth_enforced() to anon, authenticated;
+
+-- ⑫ 一般用户：只填邮箱就用（2026-10-21，用户定的：不确认、不要密码、浏览器记住）。只有管理者的邮箱才在这个浏览器第一次发确认邮件。
+create table if not exists public.visitors (
+  email      text primary key check (email = lower(email) and email ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$' and length(email) <= 200),
+  first_seen timestamptz not null default now(),
+  last_seen  timestamptz not null default now()
+);
+alter table public.visitors enable row level security;
+
+create or replace function public.remember_user(p_email text)
+returns void language plpgsql security definer set search_path = '' as $$
+declare addr text := lower(trim(coalesce(p_email, '')));
+begin
+  if addr !~ '^[^@\s]+@[^@\s]+\.[^@\s]+$' or length(addr) > 200 then return; end if;
+  insert into public.visitors (email) values (addr)
+    on conflict (email) do update set last_seen = now();
+end $$;
+
+create or replace function public.is_admin_email(p_email text)
+returns boolean language sql stable security definer set search_path = '' as $$
+  select exists (select 1 from public.invites i where i.email = lower(trim(coalesce(p_email, ''))) and i.role = 'admin');
+$$;
+
+create or replace function public.admin_list_visitors()
+returns table (email text, first_seen timestamptz, last_seen timestamptz)
+language plpgsql stable security definer set search_path = '' as $$
+begin
+  if not public.is_admin() then raise exception '管理者だけが使えます' using errcode = '42501'; end if;
+  return query select v.email, v.first_seen, v.last_seen from public.visitors v order by v.last_seen desc limit 500;
+end $$;
+
+revoke all on function public.remember_user(text) from public;
+revoke all on function public.is_admin_email(text) from public;
+revoke all on function public.admin_list_visitors() from public, anon;
+grant execute on function public.remember_user(text) to anon, authenticated;
+grant execute on function public.is_admin_email(text) to anon, authenticated;
+grant execute on function public.admin_list_visitors() to authenticated;
