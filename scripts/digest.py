@@ -2327,6 +2327,11 @@ def write_page():
     heat_html, ver_heat = render.stamp(render.render_heat(analysis, render.collect(issues, order, langs), updated), updated)
     (DOCS_DIR / "heat.html").write_text(heat_html, encoding="utf-8")
     (DOCS_DIR / "terms.html").write_text(render.render_terms(updated), encoding="utf-8")   # 利用規約・プライバシーポリシー（ログイン）
+    try:   # 入口（docs/index.html：何のサイトか・新しく始める）。24 時間より古いときだけ作り直す（話題の候補を新しく）
+        import welcome
+        welcome.build_if_stale()
+    except Exception as ex:
+        print("入口", ex)
     (DOCS_DIR / "themes.html").write_text(render.render_themes(  # テーマ見本（30 のテーマと 👍 の演出）
         [{"name": i["name"], "motif": render.template_for(i), "theme": i.get("theme")} for i in items], updated), encoding="utf-8")
     wishes = load_wishlist()

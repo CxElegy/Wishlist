@@ -39,7 +39,7 @@
 ## test1 / test2（2026-10-19，用户定的）
 
 - **test1** = 2026-10-19 以前的版，冻结在 `docs/test1/`（页面原样，`scripts/freeze_test1.py` 加了「アーカイブ」的帯、拦住写 Supabase 的调用）。不再生成、后台不跑。数据存档在 `archive/test1/`（items.yaml・reports・inbox・state）。ちいかわ 等 test1 的关注项不动。
-- **test2** = 现在用的版，从空开始：`items.yaml` 的 `items:` 空着，设置页向导加进来。网页生成・小元素・本站保存的图・愿望清单的图都写 `docs/test2/`（`scripts/sitedir.py` 的 `SITE_DIR`，改位置只改那里）。根 `docs/index.html` 是手写的入口，旧网址（settings.html 等）跳到 test2。
+- **test2** = 现在用的版，从空开始：`items.yaml` 的 `items:` 空着，设置页向导加进来。网页生成・小元素・本站保存的图・愿望清单的图都写 `docs/test2/`（`scripts/sitedir.py` 的 `SITE_DIR`，改位置只改那里）。根 `docs/index.html` 是**入口**（2026-10-21 起由 `scripts/welcome.py` 生成，`digest.py render` 时超过 24 小时就重做：产品介绍・店长页面的真实截图・新しく始める／ログイン／店長のページを見る；新建账号 = 名字和条款 → 新闻语言 → 喜欢的大类 → 刷卡片 → 最初的版面 → `user_signup`；浏览器记得的人直接跳过入口），旧网址（settings.html 等）跳到 test2。
 - **test1・test2 = 两个 account（用户定的，2026-10-19）**：以后的一般用户也按同样的形状加。每个 account 的东西从一开始就各自分开、互不相通：
   关注清单・愿望清单・收集的记事・state（推荐・口味・日志…）——本仓库里现在的 account（test2）用 `items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/`，test1 的冻结在 `archive/test1/`；
   Supabase 的自己的表（投票 `feedback`・篇幅 `sizes`・目录分法 `nav_schemes`・请求 `item_requests`・照片 `photo_inbox`・AI 编辑开关 `edit_control`・更新中的条 `live_status`・记事的副本 `news`/`stories`/`price_history`）都有 `account` 列（`db/accounts.sql`）。
@@ -371,7 +371,8 @@
 本番の简报に入れる前に部品を試すページ。入口 https://cxelegy.github.io/Wishlist/testground/ （`index.html`）。消さずに残し、新しい試作もここに足す（入口に 1 枚カードを足す）。
 - `compare.html`：左の目次 v1〜v6 の見比べ（条件 10 パターン・画面の高さ・「ダミーで試す」で作品数 2〜1000）
 - `rails.html`：目次の見本 10 パターン ／ `nav.html`：本文つきで 1 本
-- `welcome.html`（`python scripts/welcome.py` で作る，2026-10-21 试作）：入口（何のサイトか・店長のページの本物の画面・新しく始める／ログイン／店長のページを見る）＋「新しく始める」の App 風の流れ（名前と規約 → ジャンル → カードを左右に → 最初の版面 → 店長が集めに行く）。覚えているブラウザ（`wl-user`）は入口を飛ばす。カード = AniList 話題・Steam 売れ筋・店長がフォローしてきたもの（archive/test1）、AI なし。まだ登録しない。
+- `welcome.html`（`python scripts/welcome.py` で作る，入口 `docs/index.html` と同じもの）：入口（何のサイトか・店長のページの本物の画面・新しく始める／ログイン／店長のページを見る）＋「新しく始める」の App 風の流れ（名前と規約 → ジャンル → カードを左右に → 最初の版面 → 店長が集めに行く）。覚えているブラウザ（`wl-user`）は入口を飛ばす。カード = AniList 話題・Steam 売れ筋・店長がフォローしてきたもの（archive/test1）、AI なし。登録は本物（`user_signup`、好み = `app_users.prefs`）。
+- **新闻语言（2026-10-21，用户定的：用户是全世界的）**：`welcome.LANG_GROUPS` 按地区 MECE 分 56 种（一种语言只在一个地区），常用 6 种＋浏览器的语言放前面，其余收在「ほかの言語」里（可用英文名・日文名搜 `LANG_ALIAS`）。现在真的收集的只有 `COLLECTED`（日英中韩），其他标「準備中」、先存好偏好。以后加板块时按主语言推荐（见 `PENDING.md`）。
 - **左の目次は v6 に決定（2026-10-17）**：パソコンは「少ないうちは隠さない・段階的に隠す」（隠し始めるのは既定 24 件、件数で／自動。隠す前に行を 22px まで詰める → ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」）。
   小分類の札は必ず出す。見た目は線路（原版）＋作品アイコン（emblem → 記事の写真 → 頭文字）＋板块アイコン。スマホは上に 2 段の横帯だけの簡単な形。2026-10-17 に本番（`render._nav` / `NAV_JS` / `NAV_STYLES["line"]`）へ移した。
   隠し始める件数は `items.yaml` の `settings.nav_hide`（既定 24、`auto` で画面の高さ）。件数以内でも行を 30px まで詰めて入らなければ隠す（窮屈にしない）。小分類は関注項に `subs:`（分け方ごと、例 `subs: {kind: ドラマ, origin: 海外}`）。**どの板块にも必ず小分類を付ける**（1 つしかなくても）。どの分け方を使うかは ⚙ 設定ページで板块ごとに選ぶ。

@@ -153,6 +153,9 @@ COMPONENTS = {
     "maillink": {"kind": "api", "name": "メールアドレスだけのログイン ＋ 管理者だけ確認のリンク（Supabase magic link・supabase-js 2.45.4・implicit）",
                  "spec": "一般ユーザーはユーザー名だけ・パスワードなし（app_users で重ならない・localStorage の wl-user、ログアウトまで覚える）· 管理者のメールだけこのブラウザで最初の 1 回リンクを送る · 標準のメール送信はチームのメール宛てだけ・1 時間に数通",
                  "what": "render.AUTH_JS（右上の「ログイン」）。Google ログインは保留（PENDING.md）"},
+    "welcome": {"kind": "rule", "name": "入口と新しく始める（scripts/welcome.py）",
+                "spec": "言語 = 地域ごと MECE 56 言語（よく使う 6 つ＋ブラウザの言語を先に）· カード 16 枚まで・最初の版面 5 つまで · 候補は規則（AniList TRENDING・Steam featuredcategories・archive/test1 の関注項）· 24 時間ごとに作り直す",
+                "what": "docs/index.html（本番）・docs/testground/welcome.html。登録は public.user_signup、好みは app_users.prefs"},
     "terms": {"kind": "rule", "name": "利用規約・プライバシーポリシー（render.render_terms・TERMS_VERSION）",
               "spec": "第 1 版 · 新しく始めるときに同意必須 · 版が上がったらもう一度 · 集める情報・使い道・預け先（Supabase＝豪・GitHub/Anthropic＝米）・退会",
               "what": "docs/<account>/terms.html。同意は app_users.agreed_version / agreed_at"},
@@ -449,6 +452,8 @@ PROCESSES = [
         "summary": "访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもユーザー名だけで始められ（名前は重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。",
         "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql"], "doc": "CLAUDE.md",
         "flow": [
+            {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
+             "text": "何のサイトか・店長のページの本物の画面。名前と規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → カードを左右に（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
             {"id": "a1", "kind": "step", "lane": "web", "title": "右上の「ログイン」→「新しく始める」/「ログイン」",
              "text": "ユーザー名（メールでも可）だけ・パスワードなし。新しく始めるときは名前が空いているかを打つたびに確かめ（name_available）、利用規約に同意して登録（user_register：名前は大文字小文字を区別せず重ならない・同意した版と日時を残す）。このブラウザが覚える（ログアウトまで）", "uses": ["maillink", "terms"]},
             {"id": "a1b", "kind": "decision", "lane": "web", "title": "同意した版 ＜ いまの版？",

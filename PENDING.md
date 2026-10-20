@@ -39,3 +39,11 @@
   Authorized domains は「top private domain」だけ → `supabase.co` も `cxelegy.github.io` もはじかれた。入れるなら `bzokpnbcjscbcehdxtjq.supabase.co`。
   テスト中のままなら Audience の Test users（100 人まで）に入れた人だけログインできる（公開しなくても使える）。
 - **再開するとき**：サイトにホームページ説明とプライバシーポリシーのページを作り Branding に入れて公開 → OAuth クライアント（ウェブ、リダイレクト URI `https://bzokpnbcjscbcehdxtjq.supabase.co/auth/v1/callback`）→ Supabase の Google を有効に → AUTH_JS のログインに Google のボタンを足す（`signInWithOAuth({provider:'google'})`）。
+
+## ユーザー自分の版面・言語ごとのおすすめ（2026-10-21 決めたこと・まだ作っていないもの）
+
+- **入口と新しく始めるは本番**（`docs/index.html`，`scripts/welcome.py`）。登録すると `app_users.prefs` に {lang: {primary, also}, genres, picks} が残る。
+- **まだ**：① 本人の版面（第 2 步、`LOGIN.md`：picks から関注項を作る → 収集 → AI 編集は Haiku・1 日の上限 → 本人だけが見る）。それまでは完了画面で「店長が仕入れの準備中」と言い、店長のページへ案内。
+  ② **主言語に合わせたおすすめ**（用户定的）：版面を足すとき（設定ページの向導・新しく始めるのカード）、主言語の地域で話題のもの（AniList は日本、Steam は `cc`/`l` を言語の国に、Google ニュースの `hl`/`gl`）を先に出す。
+  ③ **集める言語を増やす**：いまは `welcome.COLLECTED`（ja・en・zh・ko）だけ。Google ニュース RSS は `hl`/`gl`/`ceid` を変えればほかの言語も取れる。`lang.py` の言語の見分け（文字の種類）も足す。足したら `COLLECTED` に入れて「準備中」を外す。
+  ④ 画面の言語（UI）はいまは日本語だけ（PRODUCT.md）。好みの言語は残しているので、UI を訳すならそこから。

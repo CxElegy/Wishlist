@@ -4,10 +4,11 @@ App のように 1 ページで画面を切り替える：
   ① 入口（何のサイトか・店長のページの本物の画面・「新しく始める」「ログイン」「店長のページを見る」）
   ② 名前と規約 → ③ 好きなジャンル（8 つの板块）→ ④ カードを左右に（気になる / パス）→ ⑤ 最初の版面の確認 → ⑥ 店長が集めに行く
 このブラウザが覚えている人（localStorage の wl-user）は入口を飛ばして自分のページへ（いまは店長のページ。?stay で止まる）。
-試作なので登録はしない（名前が空いているかだけ本物のデータベースで確かめる）。
+登録は本物（public.user_signup：名前・規約の同意・好み = 言語・ジャンル・最初の版面）。本人の版面はまだ作らない（第 2 步、LOGIN.md）。
 
 カードの候補は規則で作る（AI なし）：AniList の話題のアニメ・マンガ、Steam の売れ筋、店長がフォローしてきたもの（archive/test1 の関注項とアイコン）。
-  python scripts/welcome.py            → docs/testground/welcome.html（候補はその時点のものを埋め込む）
+  python scripts/welcome.py            → docs/index.html（本番の入口）と docs/testground/welcome.html（候補はその時点のものを埋め込む）
+  digest.py render のたびに build_if_stale()：入口が 24 時間より古いときだけ作り直す（話題の候補を新しく）。
 """
 import html
 import json
@@ -22,8 +23,38 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import render  # noqa: E402
 import taxonomy  # noqa: E402
 
-OUT = ROOT / "docs" / "testground" / "welcome.html"
-SHOP = "../test2/"            # 店長のページ（入口からの行き先）
+OUT = ROOT / "docs" / "index.html"                       # 本番の入口（https://cxelegy.github.io/Wishlist/）
+OUT_TG = ROOT / "docs" / "testground" / "welcome.html"     # テストグラウンドの写し（同じもの・パスだけ違う）
+# ニュースの言語（2026-10-21，用户定的：世界中の人が使う前提）。地域ごとに漏れなく・重ならず（MECE：1 つの言語は生まれた地域 1 か所だけ）。
+# ふだんはよく使われる言語だけ出し、残りは「ほかの言語」にたたむ（検索できる）。記号は BCP 47（中国語は簡体・繁体を分ける）。
+LANG_TOP = ["ja", "en", "zh-Hans", "zh-Hant", "ko", "es"]
+LANG_GROUPS = [
+    ("東アジア", [("ja", "日本語"), ("zh-Hans", "中文（简体）"), ("zh-Hant", "中文（繁體）"), ("ko", "한국어"), ("mn", "Монгол")]),
+    ("東南アジア", [("th", "ไทย"), ("vi", "Tiếng Việt"), ("id", "Bahasa Indonesia"), ("ms", "Bahasa Melayu"), ("fil", "Filipino"),
+                 ("my", "မြန်မာ"), ("km", "ខ្មែរ"), ("lo", "ລາວ")]),
+    ("南アジア", [("hi", "हिन्दी"), ("bn", "বাংলা"), ("ur", "اردو"), ("ta", "தமிழ்"), ("te", "తెలుగు"), ("mr", "मराठी"),
+               ("gu", "ગુજરાતી"), ("ne", "नेपाली"), ("si", "සිංහල")]),
+    ("中東・中央アジア", [("ar", "العربية"), ("fa", "فارسی"), ("he", "עברית"), ("tr", "Türkçe"), ("kk", "Қазақ"), ("uz", "Oʻzbek"), ("az", "Azərbaycan")]),
+    ("ヨーロッパ", [("en", "English"), ("es", "Español"), ("fr", "Français"), ("de", "Deutsch"), ("it", "Italiano"), ("pt", "Português"),
+                ("nl", "Nederlands"), ("pl", "Polski"), ("ru", "Русский"), ("uk", "Українська"), ("sv", "Svenska"), ("no", "Norsk"),
+                ("da", "Dansk"), ("fi", "Suomi"), ("cs", "Čeština"), ("el", "Ελληνικά"), ("ro", "Română"), ("hu", "Magyar")]),
+    ("アフリカ", [("sw", "Kiswahili"), ("am", "አማርኛ"), ("ha", "Hausa"), ("yo", "Yorùbá"), ("zu", "isiZulu"), ("af", "Afrikaans")]),
+]
+LANGS = [x for _, g in LANG_GROUPS for x in g]
+# 検索用（英語名・日本語名でも探せるように）
+LANG_ALIAS = {"ja": "japanese 日本語 にほんご", "zh-Hans": "chinese simplified 中国語 簡体字", "zh-Hant": "chinese traditional 中国語 繁体字 台湾 香港",
+              "ko": "korean 韓国語", "mn": "mongolian モンゴル語", "th": "thai タイ語", "vi": "vietnamese ベトナム語", "id": "indonesian インドネシア語",
+              "ms": "malay マレー語", "fil": "filipino tagalog フィリピン語 タガログ語", "my": "burmese myanmar ミャンマー語", "km": "khmer クメール語 カンボジア",
+              "lo": "lao ラオ語", "hi": "hindi ヒンディー語", "bn": "bengali bangla ベンガル語", "ur": "urdu ウルドゥー語", "ta": "tamil タミル語",
+              "te": "telugu テルグ語", "mr": "marathi マラーティー語", "gu": "gujarati グジャラート語", "ne": "nepali ネパール語", "si": "sinhala シンハラ語",
+              "ar": "arabic アラビア語", "fa": "persian farsi ペルシア語", "he": "hebrew ヘブライ語", "tr": "turkish トルコ語", "kk": "kazakh カザフ語",
+              "uz": "uzbek ウズベク語", "az": "azerbaijani アゼルバイジャン語", "en": "english 英語", "es": "spanish スペイン語", "fr": "french フランス語",
+              "de": "german ドイツ語", "it": "italian イタリア語", "pt": "portuguese ポルトガル語 brazil", "nl": "dutch オランダ語", "pl": "polish ポーランド語",
+              "ru": "russian ロシア語", "uk": "ukrainian ウクライナ語", "sv": "swedish スウェーデン語", "no": "norwegian ノルウェー語", "da": "danish デンマーク語",
+              "fi": "finnish フィンランド語", "cs": "czech チェコ語", "el": "greek ギリシャ語", "ro": "romanian ルーマニア語", "hu": "hungarian ハンガリー語",
+              "sw": "swahili スワヒリ語", "am": "amharic アムハラ語", "ha": "hausa ハウサ語", "yo": "yoruba ヨルバ語", "zu": "zulu ズールー語", "af": "afrikaans アフリカーンス語"}
+LANG_NAME = dict(LANGS)
+COLLECTED = {"ja", "en", "zh-Hans", "zh-Hant", "ko"}   # いまニュースを集めている言語（lang.py）。ほかは好みとして残し、集める言語を足すときに使う
 UA = {"User-Agent": "Mozilla/5.0 (watchlist welcome builder)", "Content-Type": "application/json"}
 e = html.escape
 
@@ -67,7 +98,7 @@ def steam(n):
     return out[:n]
 
 
-def shop_picks():
+def shop_picks(base="../"):
     """店長がフォローしてきたもの（test1 の関注項・アイコンつき）。カードに「店長も見ている」。"""
     data = yaml.safe_load((ROOT / "archive" / "test1" / "items.yaml").read_text(encoding="utf-8"))
     out = []
@@ -76,7 +107,7 @@ def shop_picks():
         if not icon or it.get("parent"):
             continue
         sec = taxonomy.canonical(it.get("section") or taxonomy.BY_TYPE.get(it.get("type", "product"), "好物"))
-        out.append({"name": it["name"], "img": "../test1/" + icon, "sub": (it.get("subtitle") or "")[:30],
+        out.append({"name": it["name"], "img": base + "test1/" + icon, "sub": (it.get("subtitle") or "")[:30],
                     "sec": sec, "shop": True, "square": True})
     return out
 
@@ -112,7 +143,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sa
 .shot{position:relative}
 .shot .pc{width:100%;border:3px solid var(--ink);box-shadow:var(--shadow-l);display:block;transform:rotate(1.2deg);background:var(--card)}
 .shot .sp{position:absolute;right:-10px;bottom:-26px;width:26%;border:3px solid var(--ink);box-shadow:var(--shadow);transform:rotate(-3deg);background:var(--card)}
-.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:18px 0 0;padding:0}
 .how li{list-style:none;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);padding:16px 18px;display:flex;flex-direction:column;gap:6px}
 .how b{font:900 17px/1.4 var(--font-sans)}
 .how .n{font:400 30px/1 var(--font-num);color:var(--rose)}
@@ -147,6 +178,27 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sa
 .genre small{font:700 var(--fs-tag)/1 var(--font-mono);letter-spacing:.12em;opacity:.7}
 .genre[aria-pressed=true]{background:var(--sc);color:var(--card);transform:rotate(-1deg)}
 .genre[aria-pressed=true]::after{content:"✓";position:absolute;top:8px;right:10px;font-size:20px}
+.langs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.lang{display:flex;align-items:center;justify-content:center;min-height:56px;border:3px solid var(--ink);background:var(--card);color:var(--ink);
+ font:900 18px var(--font-sans);cursor:pointer;box-shadow:var(--shadow)}
+.lang[aria-pressed=true]{background:var(--ink);color:var(--card);transform:rotate(-1deg)}
+.also{display:flex;flex-wrap:wrap;gap:10px}
+.also label{display:flex;align-items:center;gap:6px;padding:8px 12px;border:2px solid var(--ink);background:var(--card);font-weight:700;cursor:pointer}
+.also label[hidden]{display:none}
+.sub-q{margin:8px 0 0;font:900 16px var(--font-sans)}
+.more{border:2px solid var(--ink);background:var(--card)}
+.more>summary{cursor:pointer;padding:10px 14px;font-weight:900;list-style:none}
+.more>summary::-webkit-details-marker{display:none}
+.more>summary::after{content:" ＋"}.more[open]>summary::after{content:" －"}
+.more .in{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;max-height:46vh;overflow:auto}
+.more input[type=search]{padding:8px 10px;border:2px solid var(--ink);font:700 15px var(--font-sans);background:var(--paper);color:var(--ink);min-width:0}
+.more h3{margin:6px 0 0;font:700 var(--fs-label) var(--font-sans);letter-spacing:.1em;opacity:.75}
+.more .row{display:flex;flex-wrap:wrap;gap:6px}
+.more .row button,.more .row label{border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:5px 10px;font:700 14px var(--font-sans);cursor:pointer;display:flex;gap:6px;align-items:center}
+.more .row button[aria-pressed=true]{background:var(--ink);color:var(--card)}
+.more [hidden]{display:none}
+.soon{font-size:11px;opacity:.7;font-weight:500}
+.err{margin:0;color:var(--alert);font-weight:700;min-height:1.4em}
 /* カード */
 .deck{position:relative;flex:1;min-height:clamp(250px,calc(100dvh - 380px),520px);display:grid;place-items:center}
 #s-cards .wrap{gap:12px}
@@ -185,6 +237,8 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sa
 .done{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;padding-top:40px}
 .done .pop{align-self:center;font-size:26px}
 .done p{margin:0;line-height:1.8}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:0;margin:0}
+.chips li{list-style:none;max-width:16em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--card);border:2px solid var(--ink);padding:3px 10px;font-weight:700;font-size:13px}
 .proto{font:700 12px var(--font-mono);background:var(--gold);color:var(--ink);padding:4px 10px;align-self:center}
 @media (max-width:820px){
  .hero{grid-template-columns:1fr;gap:26px}
@@ -200,7 +254,8 @@ JS = r"""
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
   const rpc = (fn, body) => fetch(C.url.replace(/\/$/, '') + '/rest/v1/rpc/' + fn, { method: 'POST',
-    headers: { apikey: C.key, 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) }).then(r => r.ok ? r.json() : Promise.reject(r.status));
+    headers: { apikey: C.key, 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) })
+    .then(r => r.text().then(t => { let j = null; try { j = t ? JSON.parse(t) : null; } catch (_) {} return r.ok ? j : Promise.reject(new Error((j && j.message) || r.status)); }));
   // このブラウザが覚えている人：入口を飛ばして自分のページへ（いまは店長のページ）。?stay なら止まる
   let me = null; try { me = JSON.parse(localStorage.getItem('wl-user') || 'null'); } catch (_) {}
   const stay = /[?&]stay\b/.test(location.search);
@@ -209,8 +264,11 @@ JS = r"""
     const b = $('.back-on'); b.classList.add('on'); $('b', b).textContent = me.name;
   }
   // ---- 画面の切り替え（戻るボタンでも戻れる）
-  const ORDER = ['home', 'name', 'genre', 'cards', 'check', 'done'];
-  const st = { name: '', genres: new Set(), liked: [], seen: 0 };
+  const ORDER = ['home', 'name', 'lang', 'genre', 'cards', 'check', 'done'];
+  const NAMES = Object.fromEntries(C.langs);
+  const guess = (() => { const l = (navigator.language || 'ja'); if (/^zh-(TW|HK|MO|Hant)/i.test(l)) return 'zh-Hant'; if (/^zh/i.test(l)) return 'zh-Hans';
+    const b = l.split('-')[0]; return NAMES[l] ? l : NAMES[b] ? b : 'ja'; })();
+  const st = { name: '', genres: new Set(), liked: [], seen: 0, lang: guess, also: new Set() };
   function show(id, push = true) {
     $$('.scr').forEach(s => s.classList.toggle('on', s.id === 's-' + id));
     $$('#s-' + id + ' .dots i').forEach((d, i) => d.classList.toggle('on', i < ORDER.indexOf(id)));
@@ -234,10 +292,31 @@ JS = r"""
     tm = setTimeout(() => rpc('name_available', { p_name: n }).then(ok => {
       if (inp.value.trim() !== n) return;
       okName = !!ok; hint.textContent = ok ? '✓ この名前は使えます' : 'この名前はもう使われています'; hint.className = 'hint ' + (ok ? 'ok' : 'ng'); v1();
-    }).catch(() => { okName = true; hint.textContent = '（確かめられませんでした。試作なのでこのまま進めます）'; v1(); }), 350);
+    }).catch(() => { okName = true; hint.textContent = C.url ? '（確かめられませんでした。最後の登録のときにもう一度確かめます）' : '（プレビューなので確かめません）'; v1(); }), 350);
   });
   agree.addEventListener('change', v1);
-  next1.addEventListener('click', () => { st.name = inp.value.trim(); show('genre'); });
+  next1.addEventListener('click', () => { st.name = inp.value.trim(); show('lang'); });
+  // ---- 言語（ニュースの言語。いちばん読みやすい 1 つ＋ほかに見てもよい言語）
+  // ブラウザの言語がよく使う言語に入っていなければ、先頭の列に足しておく
+  if (!C.top.includes(guess)) { const t = $('#lang-top'); const b = document.createElement('button'); b.type = 'button'; b.className = 'lang'; b.dataset.l = guess; b.textContent = NAMES[guess]; t.prepend(b); }
+  function paintLang() {
+    $$('[data-l]').forEach(b => { const v = b.dataset.l;
+      if (b.classList.contains('lang') || b.closest('#lang-more')) b.setAttribute('aria-pressed', String(v === st.lang));
+      const cb = b.querySelector && b.querySelector('input[type=checkbox]'); if (cb) { cb.checked = st.also.has(v); b.hidden = v === st.lang; } });
+    $('#lang-now').textContent = NAMES[st.lang] + (C.collected.includes(st.lang) ? '' : '（この言語のニュース集めは準備中）');
+  }
+  document.addEventListener('click', ev => { const b = ev.target.closest('#s-lang button[data-l]'); if (!b) return;
+    st.lang = b.dataset.l; st.also.delete(st.lang); paintLang(); });
+  document.addEventListener('change', ev => { const i = ev.target.closest('#s-lang label[data-l] input'); if (!i) return;
+    const v = i.closest('label').dataset.l; i.checked ? st.also.add(v) : st.also.delete(v); });
+  $$('#s-lang input[type=search]').forEach(q => q.addEventListener('input', () => {
+    const w = q.value.trim().toLowerCase(), box = q.closest('.in');
+    $$('[data-l]', box).forEach(x => { x.hidden = !!w && !(x.textContent.toLowerCase().includes(w) || (x.dataset.s || '').toLowerCase().includes(w) || x.dataset.l.toLowerCase().startsWith(w)); });
+    $$('h3', box).forEach(h => { h.hidden = !!w && !$$('[data-l]:not([hidden])', h.nextElementSibling).length; });
+    if (!w) paintLang();
+  }));
+  if (st.lang !== 'en') st.also.add('en');
+  paintLang();
   // ---- ③ ジャンル
   const next2 = $('#to-cards');
   $$('.genre').forEach(g => g.addEventListener('click', () => {
@@ -312,19 +391,39 @@ JS = r"""
   function sum() { const n = $$('.picked li:not(.off)').length; const b = $('#to-done'); b.disabled = !n;
     b.textContent = n ? 'この ' + n + ' つで始める' : 'ひとつ以上残してください';
     $('#first-note').textContent = st.liked.length > C.first ? '最初は ' + C.first + ' つまでがおすすめ（店長が集める量が多すぎないように）。あとで増やせます。' : ''; }
+  // ---- 登録（本物）：名前・規約の同意・好みを一度に。名前が取られていたら名前の画面へ戻す
   $('#to-done').addEventListener('click', () => {
-    const names = $$('.picked li:not(.off) .nm').map(b => b.textContent);
-    $('#done-name').textContent = st.name; $('#done-list').textContent = names.join('、'); show('done');
+    const keep = $$('.picked li:not(.off)').map(li => st.liked[[...li.parentNode.children].indexOf(li)]);
+    const prefs = { lang: { primary: st.lang, also: [...st.also].filter(l => l !== st.lang) }, genres: [...st.genres],
+                    picks: keep.map(c => ({ name: c.name, sec: c.sec })), from: 'welcome' };
+    const b = $('#to-done'), err = $('#signup-err'); b.disabled = true; err.textContent = '';
+    const done = () => {
+      try { localStorage.setItem('wl-user', JSON.stringify({ name: st.name, v: C.terms, at: Date.now() })); } catch (_) {}
+      $('#done-name').textContent = st.name; $('#done-list').innerHTML = keep.map(c => '<li title="' + esc(c.name) + '">' + esc(c.name) + '</li>').join('');
+      $('#done-lang').textContent = NAMES[st.lang]; show('done');
+    };
+    if (!C.url) { done(); return; }   // プレビュー（DB なし）
+    rpc('user_signup', { p_name: st.name, p_agree_version: C.terms, p_prefs: prefs }).then(done).catch(e => {
+      b.disabled = false;
+      fetch(C.url.replace(/\/$/, '') + '/rest/v1/rpc/name_available', { method: 'POST', headers: { apikey: C.key, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_name: st.name }) }).then(r => r.json()).then(ok => {
+        if (ok === false) { show('name'); hint.textContent = 'その名前はたった今ほかの人が使いました。別の名前にしてください'; hint.className = 'hint ng'; okName = false; v1(); }
+        else err.textContent = '登録できませんでした。少し待ってからもう一度押してください';
+      }).catch(() => { err.textContent = '登録できませんでした。通信を確かめてもう一度押してください'; });
+    });
   });
 })();
 """
 
 
-def build():
-    cards = anilist("ANIME", 12) + anilist("MANGA", 6) + steam(12) + shop_picks()
+def build(out=OUT, base="", cards=None):
+    """入口を書く。base = docs/ からの相対の前置き（本番の入口は ""、テストグラウンドは "../"）。"""
+    SHOP = base + "test2/"
+    cards = cards if cards is not None else anilist("ANIME", 12) + anilist("MANGA", 6) + steam(12) + shop_picks("")
+    cards = [{**c, "img": base + c["img"]} if c.get("shop") else c for c in cards]
     secs = {s["key"]: s for s in sections()}
     cfg = {"url": render.AUTH_DB.get("url") or "", "key": render.AUTH_DB.get("key") or "", "shop": SHOP,
-           "cards": cards, "secs": secs, "max": 16, "first": 5}
+           "cards": cards, "secs": secs, "max": 16, "first": 5, "terms": render.TERMS_VERSION, "langs": LANGS, "top": LANG_TOP, "collected": sorted(COLLECTED)}
     cfgs = json.dumps(cfg, ensure_ascii=False).replace("</", "<\\/")
     counts = {k: sum(1 for c in cards if c["sec"] == k) for k in secs}
     def genre(s):
@@ -332,14 +431,23 @@ def build():
         return (f'<button type="button" class="genre" data-k="{e(s["key"])}" aria-pressed="false" style="--sc:{e(s["color"])}">'
                 f'{icon}{e(s["ja"])}<small>{e(s["en"])} · {counts[s["key"]] or "名前で追加"}</small></button>')
     genres = "".join(genre(s) for s in secs.values())
-    dots = '<div class="dots" aria-hidden="true">' + "<i></i>" * 4 + "</div>"
+    dots = '<div class="dots" aria-hidden="true">' + "<i></i>" * 5 + "</div>"
+    soon = lambda k: "" if k in COLLECTED else '<span class="soon">準備中</span>'
+    langs = "".join(f'<button type="button" class="lang" data-l="{k}" aria-pressed="false">{e(LANG_NAME[k])}</button>' for k in LANG_TOP)
+    def more(kind):
+        rows = "".join(f'<h3>{e(g)}</h3><div class="row">' + "".join(
+            (f'<button type="button" data-l="{k}" data-s="{e(LANG_ALIAS.get(k, ""))}" aria-pressed="false">{e(v)}{soon(k)}</button>' if kind == "main"
+             else f'<label data-l="{k}" data-s="{e(LANG_ALIAS.get(k, ""))}"><input type="checkbox">{e(v)}{soon(k)}</label>') for k, v in items) + "</div>" for g, items in LANG_GROUPS)
+        return (f'<details class="more" id="{"lang-more" if kind == "main" else "also-more"}"><summary>ほかの言語（{len(LANGS)}）</summary>'
+                f'<div class="in"><input type="search" placeholder="言語の名前で探す（例：Français / fr）" aria-label="言語を探す">{rows}</div></details>')
+    also = "".join(f'<label data-l="{k}"><input type="checkbox"> {e(LANG_NAME[k])}</label>' for k in LANG_TOP)
     bar = f'<div class="bar"><button type="button" data-back aria-label="戻る">←</button>{dots}<span style="width:38px"></span></div>'
     page = f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ウォッチリスト通信 · はじめる</title>
+<title>ウォッチリスト通信</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="{render.FONTS}">
 <style>{render.CSS}{CSS}</style>
@@ -359,7 +467,7 @@ def build():
 <a class="btn sub" href="{SHOP}">まず店長のページを見る →</a>
 </div>
 </div>
-<div class="shot"><img class="pc" src="welcome/shop-pc.webp" alt="店長のページ（パソコン）"><img class="sp" src="welcome/shop-sp.webp" alt="店長のページ（スマホ）"></div>
+<div class="shot"><img class="pc" src="{base}testground/welcome/shop-pc.webp" alt="店長のページ（パソコン）"><img class="sp" src="{base}testground/welcome/shop-sp.webp" alt="店長のページ（スマホ）"></div>
 </div>
 <ul class="how">
 <li><span class="n">01</span><b>気になるものを選ぶ</b><p>ジャンルを選んで、出てくるカードを「気になる / パス」。パスワードは要りません。</p></li>
@@ -367,7 +475,7 @@ def build():
 <li><span class="n">03</span><b>自分だけの版面を読む</b><p>作品ごとの版面で、新しいことだけ。👍 / 👎 で、店長のおすすめがだんだん合ってきます。</p></li>
 </ul>
 <p class="pop">「とりあえず店長のページをのぞいてみてね」— 店長</p>
-<div class="foot"><a href="../test2/terms.html">利用規約・プライバシーポリシー</a><span>試作（テストグラウンド）</span></div>
+<div class="foot"><a href="{SHOP}">店長のページ</a><a href="{SHOP}terms.html">利用規約・プライバシーポリシー</a><a href="{base}test1/">アーカイブ（2026-10-19 までの版）</a><a href="{base}testground/">テストグラウンド</a></div>
 </div></section>
 
 <section class="scr" id="s-name"><div class="wrap">
@@ -376,10 +484,26 @@ def build():
 <p class="qs">ほかの人と同じ名前は使えません。メールアドレスでも OK。パスワードはありません。</p>
 <label class="field">ユーザー名<input id="nm" type="text" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="好きな名前" autofocus></label>
 <p class="hint" id="nm-hint" aria-live="polite"></p>
-<label class="agree"><input type="checkbox" id="agree"><span><a href="../test2/terms.html" target="_blank" rel="noopener">利用規約・プライバシーポリシー</a>を読んで同意します。
+<label class="agree"><input type="checkbox" id="agree"><span><a href="{SHOP}terms.html" target="_blank" rel="noopener">利用規約・プライバシーポリシー</a>を読んで同意します。
 選んだ作品などの「興味・関心の情報」は、このサービスのためだけに使います。</span></label>
 <div class="grow"></div>
 <button type="button" class="btn main" id="to-genre" disabled>次へ</button>
+</div></section>
+
+<section class="scr" id="s-lang"><div class="wrap">
+{bar}
+<h2 class="q">ニュースは何語で読みますか？</h2>
+<p class="qs">同じ話が何か国語かで出ているときは、ここで選んだ言語の記事を出します。</p>
+<div class="langs" id="lang-top" role="group" aria-label="いちばん読みやすい言語">{langs}</div>
+{more("main")}
+<p class="qs">選んでいる言語：<b id="lang-now"></b><br><small>「準備中」の言語は、集め始めるまでほかの言語の記事で代わりに出します。</small></p>
+<p class="sub-q">ほかの言語の記事も見る</p>
+<p class="qs">選んだ言語の記事がないときだけ、ここの言語の記事を出します。</p>
+<div class="also">{also}</div>
+{more("also")}
+<p class="qs"><small>画面の文字（ボタンや説明）はいまは日本語だけです。あとで設定から変えられます。</small></p>
+<div class="grow"></div>
+<button type="button" class="btn main" data-go="genre">次へ</button>
 </div></section>
 
 <section class="scr" id="s-genre"><div class="wrap">
@@ -408,15 +532,17 @@ def build():
 <p class="qs" id="first-note"></p>
 <ul class="picked"></ul>
 <div class="grow"></div>
+<p class="err" id="signup-err" aria-live="polite"></p>
 <button type="button" class="btn main" id="to-done">始める</button>
 </div></section>
 
 <section class="scr" id="s-done"><div class="wrap"><div class="done">
-<p class="pop">店長が集めに行ってきます！</p>
-<p><b id="done-name"></b> さんの最初の版面：<br><span id="done-list"></span></p>
-<p>最初のニュースは約 2 時間後。<br>それまで店長のページをのぞいていてください。</p>
-<a class="btn main" href="{SHOP}">店長のページを見ながら待つ →</a>
-<p class="proto">試作なので、まだ登録・保存はしていません</p>
+<p class="pop">ようこそ！メモしました</p>
+<p><b id="done-name"></b> さんの好み</p>
+<ul class="chips" id="done-list"></ul>
+<p><small>ニュースの言語：<span id="done-lang"></span></small></p>
+<p>あなた専用の版面は、店長がいま仕入れの準備中です。<br>できあがるまで、店長のページで同じしくみを見てください。</p>
+<a class="btn main" href="{SHOP}">店長のページへ →</a>
 </div></div></section>
 
 <script type="application/json" id="wl-cfg">{cfgs}</script>
@@ -424,8 +550,25 @@ def build():
 </body>
 </html>
 """
-    OUT.write_text(page, encoding="utf-8")
-    print(OUT, len(cards), "cards", counts)
+    pathlib.Path(out).write_text(page, encoding="utf-8")
+    print(out, len(cards), "cards", counts)
+    return cards
+
+
+def build_all():
+    cards = build(OUT, "")
+    build(OUT_TG, "../", [{**c, "img": c["img"]} for c in cards if not c.get("shop")] + shop_picks(""))
+
+
+def build_if_stale(hours=24):
+    """digest.py render から呼ぶ：入口が古いとき（または無いとき）だけ作り直す。ネットにつながらなくても落ちない。"""
+    import time
+    if OUT.exists() and "wl-cfg" in OUT.read_text(encoding="utf-8")[:200000] and time.time() - OUT.stat().st_mtime < hours * 3600:
+        return
+    try:
+        build_all()
+    except Exception as ex:  # 入口が作れなくても簡報の生成は止めない
+        print("welcome", ex, file=sys.stderr)
 
 
 
@@ -444,7 +587,7 @@ def preview(out):
                 req = urllib.request.Request(src, headers={"User-Agent": UA["User-Agent"]})
                 raw = urllib.request.urlopen(req, timeout=20).read()
             else:
-                raw = (OUT.parent / src).read_bytes()
+                raw = (OUT.parent / src).read_bytes()   # docs/ からのパス
             if src.endswith(".svg"):
                 return "data:image/svg+xml;base64," + base64.b64encode(raw).decode()
             im = Image.open(io.BytesIO(raw)).convert("RGB")
@@ -455,7 +598,7 @@ def preview(out):
             print("skip", src[:80], ex, file=sys.stderr)
             return ""
 
-    page = OUT.read_text(encoding="utf-8")
+    page = OUT.read_text(encoding="utf-8")   # 本番の入口（パスは docs/ から）
     cfg = json.loads(re.search(r'<script type="application/json" id="wl-cfg">(.*?)</script>', page, re.S).group(1).replace("<\\/", "</"))
     cards = []
     for c in cfg["cards"]:
@@ -471,10 +614,9 @@ def preview(out):
     for k, s in cfg["secs"].items():   # ジャンルの札のアイコン
         page = re.sub(r'(data-k="%s"[^>]*>)<img src="[^"]*"' % re.escape(k), lambda m, s=s: m.group(1) + f'<img src="{s["icon"]}"', page)
     for name in ("shop-pc.webp", "shop-sp.webp"):
-        page = page.replace(f'src="welcome/{name}"', f'src="{data_uri("welcome/" + name, 1200)}"')
-    page = page.replace('href="../test2/', f'href="{live}').replace('href="../test2/"', f'href="{live}"')
-    page = page.replace(f'href="{SHOP}', f'target="_blank" rel="noopener" href="{live}')
-    page = page.replace("試作（テストグラウンド）", "試作のプレビュー（店長のページへのリンクは別のタブで開きます）")
+        page = page.replace(f'src="testground/welcome/{name}"', f'src="{data_uri("testground/welcome/" + name, 1200)}"')
+    page = page.replace('href="test2/', f'target="_blank" rel="noopener" href="{live}')
+    page = re.sub(r'href="(test1/|testground/)', r'target="_blank" rel="noopener" href="https://cxelegy.github.io/Wishlist/\1', page)
     # Artifact は <html><head><body> を自分で付けるので中身だけ
     head = re.search(r"<head>(.*?)</head>", page, re.S).group(1)
     body = re.search(r"<body>(.*?)</body>", page, re.S).group(1)
@@ -489,4 +631,4 @@ if __name__ == "__main__":
     else:
         s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
         render.AUTH_DB.update({"url": s.get("supabase_url") or "", "key": s.get("supabase_key") or ""})
-        build()
+        build_all()

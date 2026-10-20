@@ -343,3 +343,38 @@ grant execute on function public.user_login(text) to anon, authenticated;
 grant execute on function public.user_agree(text, int) to anon, authenticated;
 grant execute on function public.user_leave(text) to anon, authenticated;
 grant execute on function public.admin_list_app_users() to authenticated;
+
+-- ⑭ 新しく始める（入口 docs/index.html の流れ，2026-10-21）：名前・規約の同意・好み（言語・ジャンル・最初の版面）を一度に登録。
+--    prefs = {lang: {primary: ja, also: [en, …]}, genres: [板块], picks: [{name, sec}]}。第 2 步で本人の版面を作るときに使う。
+alter table public.app_users add column if not exists prefs jsonb not null default '{}'::jsonb;
+
+create or replace function public.user_signup(p_name text, p_agree_version int, p_prefs jsonb)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := private.user_name_ok(p_name);
+begin
+  if coalesce(p_agree_version, 0) < 1 then raise exception '利用規約への同意が必要です'; end if;
+  if jsonb_typeof(coalesce(p_prefs, '{}'::jsonb)) <> 'object' or length(coalesce(p_prefs, '{}'::jsonb)::text) > 8000 then
+    raise exception '設定の形が正しくありません';
+  end if;
+  if exists (select 1 from public.app_users u where u.name_key = lower(n)) then
+    raise exception 'その名前はもう使われています' using errcode = '23505';
+  end if;
+  insert into public.app_users (name_key, name, agreed_version, agreed_at, prefs)
+  values (lower(n), n, p_agree_version, now(), coalesce(p_prefs, '{}'::jsonb));
+  return jsonb_build_object('name', n, 'agreed_version', p_agree_version);
+end $$;
+
+create or replace function public.user_set_prefs(p_name text, p_prefs jsonb)
+returns void language plpgsql security definer set search_path = '' as $$
+begin
+  if jsonb_typeof(coalesce(p_prefs, '{}'::jsonb)) <> 'object' or length(coalesce(p_prefs, '{}'::jsonb)::text) > 8000 then
+    raise exception '設定の形が正しくありません';
+  end if;
+  update public.app_users set prefs = prefs || p_prefs, last_seen = now()
+   where name_key = lower(btrim(coalesce(p_name, ''))) and left_at is null;
+end $$;
+
+revoke all on function public.user_signup(text, int, jsonb) from public;
+revoke all on function public.user_set_prefs(text, jsonb) from public;
+grant execute on function public.user_signup(text, int, jsonb) to anon, authenticated;
+grant execute on function public.user_set_prefs(text, jsonb) to anon, authenticated;

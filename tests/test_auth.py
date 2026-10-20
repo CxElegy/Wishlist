@@ -106,6 +106,20 @@ class Welcome(unittest.TestCase):
         for word in ("wl-user", "location.replace(C.shop)", "stay", "name_available", "ArrowRight", "C.first"):
             self.assertIn(word, welcome.JS)
 
+    def test_languages_mece(self):
+        import welcome
+        codes = [k for _, g in welcome.LANG_GROUPS for k, _ in g]
+        self.assertEqual(len(codes), len(set(codes)))            # 1 つの言語は 1 か所だけ
+        self.assertTrue(set(welcome.LANG_TOP) <= set(codes))
+        self.assertTrue(welcome.COLLECTED <= set(codes))
+        self.assertTrue(set(welcome.LANG_ALIAS) == set(codes))   # どの言語も英語名・日本語名で探せる
+        self.assertGreaterEqual(len(codes), 50)
+
+    def test_signup_is_real(self):
+        import welcome
+        self.assertIn("user_signup", welcome.JS)
+        self.assertIn("prefs", welcome.JS)
+
     def test_shop_picks_from_archive(self):
         import welcome
         picks = welcome.shop_picks()

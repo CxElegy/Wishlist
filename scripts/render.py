@@ -4019,6 +4019,7 @@ AUTH_JS = r"""
         }});
   }
   function start(){
+    if(me&&me.name&&!me.admin&&isMail(me.name)&&!tok) rpc('is_admin_email',{p_email:me.name}).then(function(a){ if(a){ me.admin=true; saveMe(me); refresh(); } }).catch(function(){});   // 入口から店長のメールで登録した
     if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
       .catch(function(e){ if(/見つかりません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
@@ -4659,6 +4660,7 @@ def render_terms(updated=""):
 <li><b>ユーザー名</b>（メールアドレスを名前にした場合はそのメールアドレス）</li>
 <li><b>同意の記録</b>：同意した規約の版と日時、最後に使った日時</li>
 <li><b>興味・関心の情報</b>：フォローした作品、👍 / 👎、欲しい物リスト、設定など、本サービスで操作した内容</li>
+<li><b>好みの設定</b>：ニュースの言語、好きなジャンル、はじめに「気になる」を選んだ作品</li>
 <li><b>ブラウザに保存するもの</b>：ログインしたままにするため、ユーザー名をこのブラウザの保存領域（localStorage）に置きます。Cookie による広告・追跡はしません</li>
 </ul>
 
