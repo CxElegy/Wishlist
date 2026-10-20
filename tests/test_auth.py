@@ -50,6 +50,20 @@ class AuthTag(unittest.TestCase):
 
     def test_roles_in_japanese(self):
         self.assertEqual(set(render.ROLE_JA), {"admin", "user", "guest"})
+        self.assertEqual(render.ROLE_JA["admin"], "店長")   # 運営者 = 店長（「店長のおすすめ」と同じ設定）
+
+    def test_terms_page(self):
+        html = render.render_terms("10.21")
+        self.assertIn(f"第 {render.TERMS_VERSION} 版", html)
+        for word in ("集める情報", "使い道", "第三者", "保存する期間", "開示", "Supabase", "パスワードがありません"):
+            self.assertIn(word, html)
+
+    def test_login_is_username_with_terms(self):
+        js = render.AUTH_JS
+        for fn in ("name_available", "user_register", "user_login", "user_agree", "user_leave"):
+            self.assertIn(fn, js)
+        self.assertIn("askAgree", js)
+        self.assertNotIn("招待制", js)
 
 
 class AuthSql(unittest.TestCase):
@@ -71,7 +85,8 @@ class AuthSql(unittest.TestCase):
     def test_invite_hook_and_admin_limit(self):
         s = (DB / "auth.sql").read_text(encoding="utf-8")
         self.assertIn("hook_invite_only", s)
-        self.assertIn("招待制", s)
+        self.assertIn("app_users", s)
+        self.assertIn("その名前はもう使われています", s)   # 名前は重ならない
         self.assertIn(">= 5", s)                 # 管理者は 5 人まで
         self.assertIn("c.elegy@outlook.com", s)  # 最初の管理者
 

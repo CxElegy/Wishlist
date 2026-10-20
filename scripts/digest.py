@@ -2326,6 +2326,7 @@ def write_page():
     (DOCS_DIR / "index.html").write_text(html_, encoding="utf-8")
     heat_html, ver_heat = render.stamp(render.render_heat(analysis, render.collect(issues, order, langs), updated), updated)
     (DOCS_DIR / "heat.html").write_text(heat_html, encoding="utf-8")
+    (DOCS_DIR / "terms.html").write_text(render.render_terms(updated), encoding="utf-8")   # 利用規約・プライバシーポリシー（ログイン）
     (DOCS_DIR / "themes.html").write_text(render.render_themes(  # テーマ見本（30 のテーマと 👍 の演出）
         [{"name": i["name"], "motif": render.template_for(i), "theme": i.get("theme")} for i in items], updated), encoding="utf-8")
     wishes = load_wishlist()

@@ -253,3 +253,93 @@ revoke all on function public.admin_list_visitors() from public, anon;
 grant execute on function public.remember_user(text) to anon, authenticated;
 grant execute on function public.is_admin_email(text) to anon, authenticated;
 grant execute on function public.admin_list_visitors() to authenticated;
+
+-- ⑬ 用户名登录（2026-10-21，用户定的，取代 ⑫ 的「只填邮箱」）：用户名（邮箱也行）・不能重复（不分大小写）・不要密码。
+--    第一次要同意利用規約・プライバシーポリシー（docs/<account>/terms.html，render.TERMS_VERSION），记下哪一版・什么时候；版本升了再问一次。
+--    管理者 = 用户名是 invites 里 role=admin 的邮箱，这个浏览器第一次要点确认邮件。退会不用 delete：名字空出来、同意记录清掉。
+create table if not exists public.app_users (
+  name_key       text primary key,
+  name           text not null,
+  created_at     timestamptz not null default now(),
+  last_seen      timestamptz not null default now(),
+  agreed_version int,
+  agreed_at      timestamptz,
+  left_at        timestamptz
+);
+alter table public.app_users enable row level security;
+
+create or replace function private.user_name_ok(p text)
+returns text language plpgsql immutable as $$
+declare n text := btrim(coalesce(p, ''));
+begin
+  if char_length(n) < 2 or char_length(n) > 40 then raise exception '名前は 2〜40 文字にしてください'; end if;
+  if n ~ '[[:space:][:cntrl:]<>"''`/\\]' then raise exception '名前に空白や < > " '' ` / \ は使えません'; end if;
+  return n;
+end $$;
+
+create or replace function public.name_available(p_name text)
+returns boolean language plpgsql stable security definer set search_path = '' as $$
+declare n text;
+begin
+  begin n := private.user_name_ok(p_name); exception when others then return false; end;
+  return not exists (select 1 from public.app_users u where u.name_key = lower(n));
+end $$;
+
+create or replace function public.user_register(p_name text, p_agree_version int)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := private.user_name_ok(p_name);
+begin
+  if coalesce(p_agree_version, 0) < 1 then raise exception '利用規約への同意が必要です'; end if;
+  if exists (select 1 from public.app_users u where u.name_key = lower(n)) then
+    raise exception 'その名前はもう使われています' using errcode = '23505';
+  end if;
+  insert into public.app_users (name_key, name, agreed_version, agreed_at) values (lower(n), n, p_agree_version, now());
+  return jsonb_build_object('name', n, 'agreed_version', p_agree_version);
+end $$;
+
+create or replace function public.user_login(p_name text)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := btrim(coalesce(p_name, '')); r public.app_users;
+begin
+  select * into r from public.app_users u where u.name_key = lower(n) and u.left_at is null;
+  if not found then raise exception 'その名前は見つかりません（はじめての方は「新しく始める」）' using errcode = 'P0002'; end if;
+  update public.app_users set last_seen = now() where name_key = r.name_key;
+  return jsonb_build_object('name', r.name, 'agreed_version', r.agreed_version);
+end $$;
+
+create or replace function public.user_agree(p_name text, p_version int)
+returns void language plpgsql security definer set search_path = '' as $$
+begin
+  update public.app_users set agreed_version = p_version, agreed_at = now(), last_seen = now()
+   where name_key = lower(btrim(coalesce(p_name, ''))) and left_at is null and p_version >= 1;
+end $$;
+
+create or replace function public.user_leave(p_name text)
+returns void language plpgsql security definer set search_path = '' as $$
+declare k text := lower(btrim(coalesce(p_name, '')));
+begin
+  update public.app_users set name_key = '~left~' || md5(k || now()::text), name = '（退会）', agreed_version = null, left_at = now()
+   where name_key = k and left_at is null;
+end $$;
+
+create or replace function public.admin_list_app_users()
+returns table (name text, created_at timestamptz, last_seen timestamptz, agreed_version int, agreed_at timestamptz)
+language plpgsql stable security definer set search_path = '' as $$
+begin
+  if not public.is_admin() then raise exception '管理者だけが使えます' using errcode = '42501'; end if;
+  return query select u.name, u.created_at, u.last_seen, u.agreed_version, u.agreed_at
+    from public.app_users u where u.left_at is null order by u.last_seen desc limit 500;
+end $$;
+
+revoke all on function public.name_available(text) from public;
+revoke all on function public.user_register(text, int) from public;
+revoke all on function public.user_login(text) from public;
+revoke all on function public.user_agree(text, int) from public;
+revoke all on function public.user_leave(text) from public;
+revoke all on function public.admin_list_app_users() from public, anon;
+grant execute on function public.name_available(text) to anon, authenticated;
+grant execute on function public.user_register(text, int) to anon, authenticated;
+grant execute on function public.user_login(text) to anon, authenticated;
+grant execute on function public.user_agree(text, int) to anon, authenticated;
+grant execute on function public.user_leave(text) to anon, authenticated;
+grant execute on function public.admin_list_app_users() to authenticated;
