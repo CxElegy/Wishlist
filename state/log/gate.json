@@ -1,15 +1,5 @@
 [
 {
-"at": "2026-10-19T14:02:50+00:00",
-"text": "判断：emblem なし（全部そろっている） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": false,
-"edit": false,
-"photos": false
-}
-},
-{
 "at": "2026-10-19T14:28:54+00:00",
 "text": "判断：emblem あり（足りない 1 版面（Actions で Python が埋める）） · edit あり（整理待ちの記事 31 件（1 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
 "level": "info",
@@ -548,6 +538,26 @@
 {
 "at": "2026-10-20T10:17:21+00:00",
 "text": "判断：emblem なし（失敗 1 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:54 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": false,
+"edit": false,
+"photos": false
+}
+},
+{
+"at": "2026-10-20T11:17:20+00:00",
+"text": "判断：emblem あり（足りない 1 版面（Actions で Python が埋める）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": true,
+"edit": false,
+"photos": false
+}
+},
+{
+"at": "2026-10-20T11:17:48+00:00",
+"text": "判断：emblem なし（失敗 1 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 02:17 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
 "level": "info",
 "jobs": {
 "emblem": false,
