@@ -86,6 +86,8 @@ def rules():
          "rule": "カード（4:5）と縦横比が離れた写真（コート全景・スキーヤー）は、白い余白つきのカードにせず、写真そのままに斜めの枠だけ"},
         {"stage": STAGES[5], "title": "ほかの人が残っている（写真）", "by": "model", "code": "emblem.other_faces（YuNet）", "reason": "ほかの人が残っている",
          "rule": f"切り抜きの中に、いちばん大きい顔の高さの {pct(emblem.OTHER_FACE)} 以上の顔がほかにある"},
+        {"stage": STAGES[5], "title": "顔が見つからない控えは透明な立ち絵だけ（絵）", "by": "rule", "code": "emblem.find_bust（clear_bg）", "reason": "切り抜きの検査",
+         "rule": "代表画像が切り抜きの検査で外れて同じページの別の画像を探すとき、顔が見つからない絵の控えは、もとから透明な背景の絵（公式の立ち絵）だけ。漫画のコマ・場面（jpg）は枠で切れ・「©」が残る"},
         {"stage": STAGES[5], "title": "顔が切り抜きに残っていない（写真）", "by": "model", "code": "emblem.lost_face（YuNet）", "reason": "顔が切り抜きに残っていない",
          "rule": "元の写真・場面には顔があるのに、切り抜いた結果に顔がない = 手・持ち物・暗い背景を切り抜いた。同じページの別の画像で取り直す"},
         {"stage": STAGES[5], "title": "穴（写真）", "by": "rule", "code": "emblem.hole_share", "reason": "切り抜きに穴",

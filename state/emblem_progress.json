@@ -1,49 +1,5 @@
 {
- "items": {
-  "ちいかわ": {
-   "at": "2026-10-20T04:39:37+00:00",
-   "funnel": {
-    "added": 1,
-    "auto": 1,
-    "found": 12,
-    "rejected": {
-     "もう使っている・外した画像": 7,
-     "同じ画像": 3,
-     "確かでない取り方": 1
-    },
-    "usable": 9
-   },
-   "have": 14,
-   "kind": "character",
-   "material": "ba8b52a7ca24",
-   "note": "1 枚足した（標準 +1 → 名前を広げる +0 → 公式・記事のページ +0）。あと 10 枚、次の回に続きの 10 人",
-   "state": "running",
-   "steps": [
-    {
-     "added": 1,
-     "found": 12,
-     "label": "標準"
-    },
-    {
-     "added": 0,
-     "found": 0,
-     "label": "名前を広げる"
-    },
-    {
-     "added": 0,
-     "found": 0,
-     "label": "公式・記事のページ"
-    }
-   ],
-   "target": 24,
-   "tried": {
-    "Fandom": 11,
-    "Wikipedia": 1,
-    "公式サイト": 0,
-    "記事のページ": 0
-   }
-  }
- },
+ "items": {},
  "last_run": {
   "at": "2026-10-20T04:39:14+00:00",
   "done": [
