@@ -3740,7 +3740,8 @@ def _account_tag(page=""):
 # 访客（ログインしていない）= 見るだけ；一般用户 = 招待された人（自分の account だけ変えられる）；管理者 = 全部・管理ページ。
 # 本当の門番はデータベース（db/auth.sql・db/auth_guard.sql の can_edit / is_admin）。ここはボタンを止めて理由を出すだけ。
 # 開關（private.auth_flags の enforce、db/auth_enforce.sql）が閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。
-# Google ログインは Supabase Auth（PKCE）。招待されていない人は Before User Created Hook（public.hook_invite_only）で断られる。
+# ログインはメールのリンク（Supabase Auth の magic link・パスワードなし・implicit なので別の端末で開いてもよい）。
+# 招待されていない人は Before User Created Hook（public.hook_invite_only）で断られる。Google ログインは保留（PENDING.md）。
 AUTH_DB = {}   # {url, key}：digest.cmd_render が入れる（公開の publishable key）
 SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"
 # ページごとに「見るだけ」のとき止める操作（それ以外のクリック・リンク・絞り込みはそのまま）
@@ -3765,6 +3766,13 @@ AUTH_CSS = """
 .wl-auth .menu small{opacity:.75;line-height:1.5}
 .wl-auth .menu button{border:2px solid var(--ink);background:transparent;color:var(--ink);padding:5px 10px;font:700 13px var(--font-sans);cursor:pointer;text-align:left}
 .wl-auth .menu button:hover{background:var(--gold)}
+.wl-login{display:flex;flex-direction:column;gap:8px}
+.wl-login label{display:flex;flex-direction:column;gap:4px;font-weight:700}
+.wl-login input{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
+.wl-login button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 12px;font:700 13px var(--font-sans);cursor:pointer}
+.wl-login button:disabled{opacity:.6;cursor:wait}
+.wl-login .st{margin:0;font-size:13px;line-height:1.5}
+.wl-auth .menu{width:min(300px,calc(100vw - 24px))}
 .wl-toast{position:fixed;left:50%;bottom:72px;z-index:95;transform:translateX(-50%);max-width:calc(100vw - 32px);background:var(--ink);color:var(--card);
  padding:9px 16px;box-shadow:4px 4px 0 var(--rose);font:700 14px/1.5 var(--font-sans)}
 .wl-toast[hidden]{display:none}
@@ -3817,10 +3825,31 @@ AUTH_JS = r"""
     var el=document.querySelector('.wl-toast'); if(!el){el=document.createElement('div');el.className='wl-toast';el.setAttribute('role','status');document.body.appendChild(el);}
     el.textContent=t; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(function(){el.hidden=true;},4000);
   }
-  function login(){
-    if(!sb){toast('ログインの準備ができていません。少し待ってからもう一度');return;}
-    var back=location.href.split('#')[0].replace(/[?&](code|error|error_code|error_description)=[^&]*/g,'');
-    sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:back}}).catch(function(e){toast('ログインできませんでした：'+e.message);});
+  // メールでログイン（パスワードなし）：メールを入れる → 届いたメールのリンクを押すとログイン（別の端末で開いてもよい = implicit）
+  function sayErr(m){
+    m=String(m||'');
+    if(/招待制/.test(m)) return '招待制です。管理者に招待を頼んでください。';
+    if(/not authorized/i.test(m)) return 'このメールにはまだ送れません（メール送信の設定待ち）。管理者に知らせてください。';
+    if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度。';
+    return 'ログインできませんでした：'+m;
+  }
+  function loginForm(){
+    return '<form class="wl-login"><label>メールアドレス<input type="email" required autocomplete="email" placeholder="you@example.com"></label>'+
+      '<button type="submit">ログインのリンクを送る</button><small>パスワードは要りません。届いたメールのリンクを押すだけ（招待制）</small><p class="st" aria-live="polite"></p></form>';
+  }
+  function bindLogin(root){
+    var f=root.querySelector('.wl-login'); if(!f) return;
+    f.onsubmit=function(ev){
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      var st=f.querySelector('.st'), mail=f.querySelector('input').value.trim(), b=f.querySelector('button');
+      if(!sb){st.textContent='ログインの準備ができていません。少し待ってからもう一度';return;}
+      var back=location.href.split('#')[0].replace(/[?&](code|error|error_code|error_description)=[^&]*/g,'');
+      b.disabled=true; st.textContent='送っています…';
+      sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:back,shouldCreateUser:true}}).then(function(r){
+        b.disabled=false;
+        st.textContent=r.error?sayErr(r.error.message):mail+' にメールを送りました。届いたメールの「ログイン」のリンクを押してください（迷惑メールも見てください）';
+      });
+    };
   }
   function logout(){ if(sb) sb.auth.signOut().then(function(){location.reload();}); }
   var locked=function(){return R.dataset.lock==='1';};
@@ -3831,13 +3860,15 @@ AUTH_JS = r"""
     ev.preventDefault(); ev.stopImmediatePropagation();
     toast(R.dataset.role==='guest'?'見るだけです。変えるにはログイン（招待制）':'このページはあなたのものではないので、見るだけです');
   },true);
-  document.addEventListener('submit',function(ev){ if(locked()&&LOCK){ev.preventDefault();ev.stopImmediatePropagation();} },true);
+  document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
   function chip(){
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role;
     if(!user){
-      box.innerHTML='<button type="button" aria-label="Google でログイン">ログイン</button>';
-      box.firstChild.classList.add('in'); box.firstChild.onclick=login; return;
+      box.innerHTML='<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン</button><div class="menu" hidden>'+loginForm()+'</div>';
+      var lb=box.querySelector('button'), lm=box.querySelector('.menu');
+      lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input').focus();};
+      bindLogin(box); return;
     }
     var m=user.user_metadata||{}, nm=m.full_name||m.name||(user.email||'').split('@')[0], av=/^https:/.test(m.avatar_url||'')?m.avatar_url:'';
     box.innerHTML='<button type="button" aria-haspopup="true" aria-expanded="false">'+(av?'<img src="'+esc(av)+'" alt="" referrerpolicy="no-referrer">':'')+
@@ -3856,8 +3887,8 @@ AUTH_JS = r"""
     var g=document.querySelector('.wl-gate'); if(!need){if(g) g.remove(); return;}
     if(!g){g=document.createElement('div');g.className='wl-gate';document.body.appendChild(g);}
     g.innerHTML='<div><h1>管理ページ</h1><p>'+(user?'このアカウントは管理者ではありません。管理者のアカウントでログインしてください。':'管理者だけが見られます。管理者のアカウントでログインしてください。')+
-      '</p>'+(user?'':'<button type="button">Google でログイン</button>')+'<a href="./">← ウォッチリスト通信に戻る</a></div>';
-    var lb=g.querySelector('button'); if(lb) lb.onclick=login;
+      '</p>'+(user?'':loginForm())+'<a href="./">← ウォッチリスト通信に戻る</a></div>';
+    bindLogin(g);
   }
   function readOnlyNote(){
     if(page!=='settings') return;
@@ -3877,13 +3908,13 @@ AUTH_JS = r"""
       box.innerHTML='<table><thead><tr><th>招待したメール</th><th>役割</th><th>登録</th></tr></thead><tbody>'+
         inv.map(function(x){return '<tr><td>'+esc(x.email)+'</td><td>'+esc(ROLE[x.role]||x.role)+'</td><td>'+(x.joined?'済':'まだ')+'</td></tr>';}).join('')+
         '</tbody></table><p class="st">登録済み '+us.length+' 人（名前だけ：'+us.map(function(u){return esc(u.display_name||'？');}).join('、')+'）</p>'+
-        '<form><input type="email" required placeholder="招待する人の Google アカウントのメール" aria-label="メール">'+
+        '<form><input type="email" required placeholder="招待する人のメール" aria-label="メール">'+
         '<select aria-label="役割"><option value="user">ユーザー</option><option value="admin">管理者（5 人まで）</option></select>'+
         '<button type="submit">招待する</button></form><p class="st" aria-live="polite"></p>';
       var f=box.querySelector('form'), st=box.querySelectorAll('.st')[1];
       f.onsubmit=function(ev){ev.preventDefault();
         rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:f.querySelector('select').value})
-          .then(function(a){st.textContent=a+' を招待しました。その人は Google でログインすれば使えます。';members();})
+          .then(function(a){st.textContent=a+' を招待しました。その人は右上の「ログイン」にこのメールを入れれば使えます。';members();})
           .catch(function(e){st.textContent='招待できませんでした：'+e.message;});};
     }).catch(function(e){box.innerHTML='<p class="st">読み込めませんでした：'+esc(e.message)+'</p>';});
   }
@@ -3894,14 +3925,14 @@ AUTH_JS = r"""
       .then(function(){chip();gate();readOnlyNote();members();});
   }
   function start(){
-    var q=new URLSearchParams(location.search), err=q.get('error_description');
-    if(err) toast(/招待制/.test(err)?'招待制です。管理者に招待を頼んでください。':'ログインできませんでした：'+err);
+    var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
+    if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
     if(!window.supabase){refresh();return;}
-    sb=window.supabase.createClient(base,A.key,{auth:{flowType:'pkce',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
+    sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
       if(changed||ev==='INITIAL_SESSION') refresh();
-      if(ev==='SIGNED_IN'&&/[?&](code|error)=/.test(location.search)) history.replaceState(null,'',location.pathname+location.hash);
+      if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
   }
   function boot(){
@@ -5374,7 +5405,7 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
-<section class="panel" id="members" hidden><h2 class="sh"><span>ユーザーと招待</span><small>招待制 · ここに入れたメールの人だけが Google でログインできる · 管理者は 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
+<section class="panel" id="members" hidden><h2 class="sh"><span>ユーザーと招待</span><small>招待制 · ここに入れたメールの人だけがログインできる（メールのリンクで・パスワードなし） · 管理者は 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
 <section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in data.get("items") or [] if x.get("name")])}</section>
 <section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>

@@ -30,3 +30,12 @@
 - **何を止めたか**：一般ユーザーが自分の関注清单・愿望清单・ページを持つこと（第 2 步、`LOGIN.md`）。第 1 步（ログイン・招待制・访客は見るだけ・管理ページは管理者だけ）だけ先に作る。
 - **Discord**：ユーザーとは関係なし。運営者だけの機能で、それも保留中（上の「設定ページの Discord 通知の質問」）。ユーザーの関注項に Discord の通知は付けない。
 - **決まっていること**：ユーザーのページは本人だけ（访客が見られるのは運営者のページだけ）・リポジトリに入れない・AI 編集は Haiku で 1 日の上限つき・人数の上限は付けない（招待制で絞る）・独自ドメインは今は取らない（GitHub Pages のまま）。
+
+## Google ログイン（2026-10-21 保留）
+
+- **何を止めたか**：右上の「ログイン」の Google（OAuth）。今はメールのリンク（パスワードなし）だけ（`render.AUTH_JS`）。DB 側（招待制・身份）はそのまま使える。
+- **なぜ**：Google Cloud で「公開（本番）」にするには Branding にホームページとプライバシーポリシーのリンクが要り、ユーザーが「面倒なのでメールで」と決めた。
+- **わかったこと**（Google Cloud プロジェクト `watchlist-512221`、Outlook の Google アカウントで作成済み）：
+  Authorized domains は「top private domain」だけ → `supabase.co` も `cxelegy.github.io` もはじかれた。入れるなら `bzokpnbcjscbcehdxtjq.supabase.co`。
+  テスト中のままなら Audience の Test users（100 人まで）に入れた人だけログインできる（公開しなくても使える）。
+- **再開するとき**：サイトにホームページ説明とプライバシーポリシーのページを作り Branding に入れて公開 → OAuth クライアント（ウェブ、リダイレクト URI `https://bzokpnbcjscbcehdxtjq.supabase.co/auth/v1/callback`）→ Supabase の Google を有効に → AUTH_JS のログインに Google のボタンを足す（`signInWithOAuth({provider:'google'})`）。
