@@ -420,6 +420,9 @@ def twemoji(emoji):
             "license": "CC-BY 4.0", "area": 0}
 
 
+HEAD = 5   # 名簿の上から何人は毎回先に集める（主役が後回しにならない）
+
+
 def subjects(item, kind, hi):
     """収集する対象の名前。emblem_who（メンバー・キャラの名前）があればそれ、なければ種類ごとの決め方。"""
     who = list(item.get("emblem_who") or [])
@@ -428,8 +431,10 @@ def subjects(item, kind, hi):
         rest = [w for w in who[:hi] if w not in have]
         if len(rest) <= STEP:
             return rest or who[:1]
-        k = int(time.time() // 3600) * STEP % len(rest)
-        return (rest[k:] + rest[:k])[:STEP]
+        # 名簿の上（主役：ちいかわ・ハチワレ・うさぎ）の HEAD 人はいつも先に。残りは回ごとにずらす（見つからない人で止まらない）
+        head, tail = rest[:HEAD], rest[HEAD:]
+        k = int(time.time() // 3600) * STEP % len(tail)
+        return (head + tail[k:] + tail[:k])[:STEP]
     if who:
         return who[:hi]
     if kind == "character" and item.get("anilist_id"):

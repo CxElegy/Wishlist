@@ -776,7 +776,9 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
     backup = None
     for _, url, t in sorted(infos, reverse=True)[:limit]:
         try:
-            img = Image.open(io.BytesIO(_get(url))).convert("RGB")
+            raw = Image.open(io.BytesIO(_get(url)))
+            clear_bg = raw.mode in ("RGBA", "LA", "P") and raw.convert("RGBA").getchannel("A").getextrema()[0] < 16   # もとから透明な背景（公式の立ち絵）
+            img = raw.convert("RGB")
             out = check_whole(remove(img, session=_session("birefnet-general-lite")), photo=photo)
             if photo and lost_face(img, out):   # 写真：手・物・暗い背景を切り抜いたもの
                 raise ValueError("顔が切り抜きに残っていない")
@@ -784,7 +786,9 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
             if fs and lo <= fs <= hi:
                 print(f"  [胸像] {t}：顔 {fs}", file=sys.stderr)
                 return url, fitted, fs
-            if noface and fs is None and backup is None:   # 前髪で目が隠れているキャラ（チャド）は顔が見つからない：きれいに切れた一番大きいものを控えに
+            # 前髪で目が隠れているキャラ（チャド）は顔が見つからない：きれいに切れた一番大きいものを控えに。
+            # ただし控えはもとから透明な背景の絵（公式の立ち絵）だけ：漫画のコマ・場面（jpg）は枠で切れ・「©」の文字が残る（ちいかわ のあのこ、2026-10-20）
+            if noface and fs is None and backup is None and clear_bg:
                 backup = (url, upper_body(out)[0], None)
             print(f"  [合わない] {t}：顔 {fs}", file=sys.stderr)
         except Exception as e:
