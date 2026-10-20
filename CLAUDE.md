@@ -351,6 +351,15 @@
 - `settings.html` 读 `additem.js?v=内容指纹`（`render._asset_ver`），改了向导手机上也马上是新版（不等浏览器缓存过期）。
 - 选了「面」就不再问小分类：板块・小分类・乗換・シリーズ都由 `applyFacets` 按规则定（`ensureFacets` 在面・置き方・主面变化时重算），确认画面里还能改。
 
+## ログイン（2026-10-20，用户定的）
+
+- **访客**（没登录）= 只能看（运营者的页面，能看到运营者点过的 👍👎，但点不了；设置・关注项・愿望清单・照片・按钮都不行；管理页进不去）。
+  **一般用户** = 被邀请的人用 Google 登录，只能改自己的 account。**管理者** = 最多 5 个（第一个 `c.elegy@outlook.com`，是用 Outlook 邮箱注册的 Google 账号），什么都能管、能进管理页、在管理页「ユーザーと招待」邀请人。
+- 门番是数据库（`db/auth.sql`・`db/auth_guard.sql`：写函数第一行 `can_edit(p_account)` / `is_admin()`）；网页（`render.AUTH_JS`，每页右上的「ログイン」）只拦按钮、说理由。
+  开关 `private.auth_flags.enforce`：关着 = 跟以前一样，`db/auth_enforce.sql` 打开。邀请制 = Supabase 的 Before User Created Hook（`public.hook_invite_only`）。
+- 设定步骤・文件一览・第 2 步（一般用户自己的页面只给本人看、不进仓库、AI 编辑用 Haiku）在 `LOGIN.md`。改登录相关的东西时同步改 `processes.py` 的 `login`。
+- 这次是在分支上做的，**不自动合并**（用户说先不放 main）：用户在 Google Cloud・Supabase 设好、一起试过登录之后再合并、再开开关。
+
 ## 保留中のこと
 
 （2026-10-19 追加）設定ページのウィザードは「要紧消息 → Discord」の質問をしない（`additem.js` の `URGENT_ASK = false`）。新しい関注項は `urgent_patterns` が空。詳しくは `PENDING.md`。

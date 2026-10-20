@@ -150,6 +150,15 @@ COMPONENTS = {
     "discord": {"kind": "api", "name": "Discord Webhook", "spec": "要紧 ≤6 行 · 埋め込み ≤10 · 30 日は二重に送らない",
                 "what": "notify.py"},
     "confetti": {"kind": "api", "name": "canvas-confetti 1.9.3", "spec": "👍 の演出 20 種", "what": "likefx.py"},
+    "google": {"kind": "api", "name": "Google OAuth 2.0 → Supabase Auth（supabase-js 2.45.4・PKCE）",
+               "spec": "受け取るのは メール・名前・アイコン だけ · セッションは localStorage（wl-auth）· 鍵は 1 時間で自動更新",
+               "what": "render.AUTH_JS（右上のログインボタン）"},
+    "invite": {"kind": "rule", "name": "招待制（Before User Created Hook = public.hook_invite_only）",
+               "spec": "invites 表にあるメールだけ登録できる · 管理者は 5 人まで · 最初の管理者 c.elegy@outlook.com",
+               "what": "db/auth.sql。招待は管理ページ「ユーザーと招待」（admin_invite）"},
+    "roles": {"kind": "rule", "name": "身份と開關（can_edit / is_admin / auth_flags.enforce）",
+              "spec": "访客 = 見るだけ · ユーザー = 自分の account だけ · 管理者 = 全部と管理ページ · 開關が閉じている間は前と同じ",
+              "what": "db/auth_guard.sql（書く関数の 1 行目で確かめる）・db/auth_enforce.sql（開關）"},
 }
 
 PROCESSES = [
@@ -431,6 +440,35 @@ PROCESSES = [
         ],
     },
     {
+        "id": "login", "name": "ログインと権限", "en": "LOGIN", "lane": "web",
+        "when": "ページを開いたとき · ログイン・ログアウトしたとき",
+        "trigger": "どのページでも右上の「ログイン」（Google）。開いたときに身份を確かめ、見るだけかどうかを決める",
+        "summary": "访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。招待された人だけが Google でログインでき、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。",
+        "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql"], "doc": "CLAUDE.md",
+        "flow": [
+            {"id": "a1", "kind": "step", "lane": "web", "title": "右上の「ログイン」→ Google",
+             "text": "supabase-js が Google の画面へ（PKCE）。パスワードは Google の画面だけで入れる。戻ってきたら ?code= を鍵に換える", "uses": ["google"]},
+            {"id": "a2", "kind": "decision", "lane": "web", "title": "招待されたメール？",
+             "text": "初めての人だけ、登録の前に hook_invite_only が invites 表を見る",
+             "yes": "登録 → user_roles（招待の役割）と profiles（名前・アイコン）を自動で作る", "no": "「招待制です」と出して断る（アカウントは作られない）", "uses": ["invite"]},
+            {"id": "a3", "kind": "step", "lane": "web", "title": "身份を確かめる",
+             "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける", "uses": ["roles"]},
+            {"id": "a4", "kind": "decision", "lane": "web", "title": "このページを変えられる？",
+             "text": "開關が開いていて、ログインしていない・自分の account でない",
+             "yes": "そのまま使える", "no": "見るだけ：👍・設定・写真・ボタンを押すと「見るだけです」。設定ページは上に注意書き"},
+            {"id": "a5", "kind": "decision", "lane": "web", "title": "管理ページ：管理者？",
+             "text": "開關が開いているときだけ確かめる",
+             "yes": "表示＋「ユーザーと招待」（招待したメール・登録済みの人の名前だけ・招待フォーム）", "no": "「管理者だけが見られます」の画面だけ"},
+            {"id": "a6", "kind": "table", "lane": "web", "title": "データベースの門番（本物の制限）",
+             "text": "画面のボタンを止めるのは案内だけ。書く関数の 1 行目で can_edit / is_admin を確かめる",
+             "rows": [("篇幅・分け方・関注項の依頼・写真・AI 編集の開關", "can_edit(p_account)：管理者か、その account の持ち主"),
+                      ("👍👎（feedback）", "ログインした人：can_edit(account) · ログインしていない人：開關が閉じている間だけ"),
+                      ("今すぐ実行（run_now）", "管理者だけ（pg_cron の tick は除く）"),
+                      ("招待・ユーザー一覧", "管理者だけ（メールは管理ページの招待表だけ、ユーザー一覧は名前だけ）"),
+                      ("開關（auth_flags.enforce）", "閉 = 前と同じ（だれでも変えられる）· 開 = 上の制限が効く（db/auth_enforce.sql で開く）")]},
+        ],
+    },
+    {
         "id": "live", "name": "ページの自動更新", "en": "LIVE", "lane": "web",
         "when": "開いている間 · 1 分ごと",
         "trigger": "簡報・管理ページを開いているあいだ、1 分ごと（タブが裏にあるときも戻ったときにすぐ）",
@@ -524,6 +562,7 @@ ARCH = [
         {"id": "n-api", "label": "作品データ", "text": "価格・放送・人気・閲覧数", "uses": ["steam", "anilist", "tmdb", "wikipv"]},
         {"id": "n-img", "label": "画像", "text": "小元素の候補", "uses": ["wiki", "fandom", "twemoji", "bingimg"]},
         {"id": "n-model", "label": "モデルの配布元", "text": "GitHub Releases（rembg）・HuggingFace（顔のモデル）"},
+        {"id": "n-google", "label": "Google", "text": "ログイン（メール・名前・アイコンだけ）", "uses": ["google"]},
     ]},
     {"id": "act", "title": "GitHub Actions", "note": "毎回新しいサーバー（4 コア）· 終わったら消える", "cost": "無料", "style": "temp", "nodes": [
         {"id": "p-collect", "proc": "collect", "subs": ["heat", "recommend", "notify", "images"]},
@@ -544,7 +583,7 @@ ARCH = [
          "uses": ["supabase", "pgnet"]}]},
     {"id": "pages", "title": "GitHub Pages", "note": "公開の網页", "cost": "無料", "style": "keep", "nodes": [
         {"id": "s-pages", "label": "網页", "text": "簡報・設定・愿望清单・話題度・管理ページ・version.json", "uses": ["fit", "confetti"]},
-        {"id": "p-live", "proc": "live"}]},
+        {"id": "p-live", "proc": "live"}, {"id": "p-login", "proc": "login"}]},
     {"id": "dc", "title": "Discord", "note": "通知", "cost": "無料", "style": "ext", "nodes": [
         {"id": "s-discord", "label": "あなたのチャンネル", "text": "要紧は当日・周報は月曜", "uses": ["discord"]}]},
     {"id": "you", "title": "あなた", "note": "スマホ・パソコン", "cost": "", "style": "you", "nodes": [
@@ -579,6 +618,9 @@ EDGES = [
     (26, "p-gate", "p-photos", "写真があるときだけ起こす", "ai"),
     (27, "p-edit", "s-db", "編集中の版面（live_report）", "db"),
     (28, "p-emblem-cron", "s-db", "処理中の版面（live_report）", "db"),
+    (29, "s-you", "n-google", "Google でログイン", "web"),
+    (30, "n-google", "p-login", "本人の鍵（招待制）", "web"),
+    (31, "p-login", "s-db", "身份を確かめる・書くときに鍵を付ける", "db"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [

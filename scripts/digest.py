@@ -2305,6 +2305,7 @@ def write_page():
     order = heat.heat_order(placed, heat_scores, sub_heat, list(render.SECTIONS))
     adm = admin_data(items, issues, analysis, tz, updated)  # 管理ページの数字（「待ち行列」は簡報の「更新中」の帯にも使う）
     generated = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}  # 登录（render.AUTH_JS）
     html_ = render.render(issues, settings.get("nav_style", "line"), order, updated,
                           load_wishlist(), current_picks(items),
                           {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, load_sizes(),
