@@ -428,7 +428,65 @@ def build():
     print(OUT, len(cards), "cards", counts)
 
 
+
+
+def preview(out):
+    """そのまま開ける試作の写し（Artifact で見せる用）：画像をすべて data: に埋め込み、店長のページへのリンクは公開の URL に。
+    DB には届かないので、名前の確認は「確かめられませんでした」のまま進む。"""
+    import base64
+    import io
+    import re
+    from PIL import Image
+
+    def data_uri(src, size=360):
+        try:
+            if src.startswith("http"):
+                req = urllib.request.Request(src, headers={"User-Agent": UA["User-Agent"]})
+                raw = urllib.request.urlopen(req, timeout=20).read()
+            else:
+                raw = (OUT.parent / src).read_bytes()
+            if src.endswith(".svg"):
+                return "data:image/svg+xml;base64," + base64.b64encode(raw).decode()
+            im = Image.open(io.BytesIO(raw)).convert("RGB")
+            im.thumbnail((size, size * 2))
+            buf = io.BytesIO(); im.save(buf, "WEBP", quality=72)
+            return "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode()
+        except Exception as ex:
+            print("skip", src[:80], ex, file=sys.stderr)
+            return ""
+
+    page = OUT.read_text(encoding="utf-8")
+    cfg = json.loads(re.search(r'<script type="application/json" id="wl-cfg">(.*?)</script>', page, re.S).group(1).replace("<\\/", "</"))
+    cards = []
+    for c in cfg["cards"]:
+        u = data_uri(c["img"])
+        if u:
+            cards.append({**c, "img": u})
+    for s in cfg["secs"].values():
+        s["icon"] = data_uri(s["icon"]) if s.get("icon") else ""
+    live = "https://cxelegy.github.io/Wishlist/test2/"
+    cfg.update({"cards": cards, "shop": live, "url": "", "key": ""})
+    page = re.sub(r'(<script type="application/json" id="wl-cfg">).*?(</script>)',
+                  lambda m: m.group(1) + json.dumps(cfg, ensure_ascii=False).replace("</", "<\\/") + m.group(2), page, flags=re.S)
+    for k, s in cfg["secs"].items():   # ジャンルの札のアイコン
+        page = re.sub(r'(data-k="%s"[^>]*>)<img src="[^"]*"' % re.escape(k), lambda m, s=s: m.group(1) + f'<img src="{s["icon"]}"', page)
+    for name in ("shop-pc.webp", "shop-sp.webp"):
+        page = page.replace(f'src="welcome/{name}"', f'src="{data_uri("welcome/" + name, 1200)}"')
+    page = page.replace('href="../test2/', f'href="{live}').replace('href="../test2/"', f'href="{live}"')
+    page = page.replace(f'href="{SHOP}', f'target="_blank" rel="noopener" href="{live}')
+    page = page.replace("試作（テストグラウンド）", "試作のプレビュー（店長のページへのリンクは別のタブで開きます）")
+    # Artifact は <html><head><body> を自分で付けるので中身だけ
+    head = re.search(r"<head>(.*?)</head>", page, re.S).group(1)
+    body = re.search(r"<body>(.*?)</body>", page, re.S).group(1)
+    head = re.sub(r'<meta charset="utf-8">\s*<meta name="viewport"[^>]*>', "", head)
+    pathlib.Path(out).write_text(head + body, encoding="utf-8")
+    print(out, len(cards), "cards", round(pathlib.Path(out).stat().st_size / 1e6, 2), "MB")
+
+
 if __name__ == "__main__":
-    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
-    render.AUTH_DB.update({"url": s.get("supabase_url") or "", "key": s.get("supabase_key") or ""})
-    build()
+    if len(sys.argv) > 2 and sys.argv[1] == "--preview":   # python scripts/welcome.py --preview <出力先>
+        preview(sys.argv[2])
+    else:
+        s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
+        render.AUTH_DB.update({"url": s.get("supabase_url") or "", "key": s.get("supabase_key") or ""})
+        build()
