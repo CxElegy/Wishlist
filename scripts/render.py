@@ -487,11 +487,11 @@ button{font-family:inherit}
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
 .emb-in{display:flex;align-items:flex-end}
-.emb{clip-path:inset(-100vh -100vw 0 -100vw)}  /* 帯の線より下は見せない（足より下の尻尾・武器、傾けた角、飛び出す動きの途中）：下のニュースの字・ボタンに重ねない。飛び出しは帯の線から出てくるように見える */
+.emb{clip-path:inset(-100vh -100vw -14px -100vw)}  /* 帯の線より下は見せない（飛び出す動きの途中）：下のニュースの字・ボタンに重ねない。絵そのものは線より上に置くので切れない。-14px はフチ（5.5px）と影（8px）の分 */
 .emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:190px;object-fit:contain;object-position:bottom}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
 .emb{--leg:116px;--legc:290px;--anc:62px;--bmax:200px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
 .emb img.body{--bh:calc(var(--leg) / var(--bl));--bz:min(var(--bh), var(--bmax));height:var(--bz);width:calc(var(--bz) * var(--ba));max-width:none;
- margin-bottom:calc(var(--bz) * (var(--bf) - 1));  /* 足の裏より下（尻尾・武器・裾）は帯の下へ。高さは --bmax まで（測り違いで巨大にならない） */
+ margin-bottom:0;  /* 絵の下端を帯の線に（足より下の尻尾・武器・裾があれば、その分だけ足が少し上がる）。帯の線より下へは出さない：下のニュースの字に重ねず、切れもしない。高さは --bmax まで */
  margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
 .emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
 .emb img.logo{height:62%;max-width:150px}.emb img.logo.wide{height:auto;width:220px;max-width:220px;margin-bottom:12%}  /* 横長の文字のロゴは幅で大きく */
