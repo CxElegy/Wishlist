@@ -1,10 +1,25 @@
 {
  "image_misses": {},
  "images": {
-  "https://news.allabout.co.jp/articles/o/131627/": "https://ix-news.aacdn.jp/aa_news/article/2026/10/19/6ad5f648138bb.jpg?im=AspectCrop=(16,9);Resize=(1600,900)",
+  "https://www.inside-games.jp/article/2026/10/20/189544.html": "https://www.bing.com/th?id=ONUT.6wJLFVvw4SJT6v7UbwjvAg&pid=News&w=600",
   "https://www.iza.ne.jp/article/20261019-MRUS5E3Q2NBEZDTMPD7LRHI6QU/": "https://www.bing.com/th?id=ONUT.ynKfXz7pCC8-r02gESV4zw&pid=News&w=1200"
  },
  "picks": [
+  {
+   "batch": 0,
+   "because": "ちいかわ",
+   "date": "2026-10-19",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.6wJLFVvw4SJT6v7UbwjvAg&pid=News&w=600",
+   "kind": "board",
+   "score": 4,
+   "source": "インサイド",
+   "taste": [],
+   "title": "カプセルトイ「ちいかわ」ふりふりヘッドフィギュアが10月下旬発売！島衣装のうさぎたち、セイレーンや島二郎など計8種",
+   "url": "https://www.inside-games.jp/article/2026/10/20/189544.html",
+   "words": [],
+   "work": "ちいかわ"
+  },
   {
    "batch": 0,
    "because": "ちいかわ",
@@ -17,21 +32,6 @@
    "taste": [],
    "title": "ANA「ちいかわジェット」運航開始 長崎往復の次は広島往復で「厳島神社での参拝のご利益かな？」",
    "url": "https://www.iza.ne.jp/article/20261019-MRUS5E3Q2NBEZDTMPD7LRHI6QU/",
-   "words": [],
-   "work": "ちいかわ"
-  },
-  {
-   "batch": 0,
-   "because": "ちいかわ",
-   "date": "2026-10-19",
-   "hits": [],
-   "image": "https://ix-news.aacdn.jp/aa_news/article/2026/10/19/6ad5f648138bb.jpg?im=AspectCrop=(16,9);Resize=(1600,900)",
-   "kind": "board",
-   "score": 4,
-   "source": "All About ニュース",
-   "taste": [],
-   "title": "「ついにこども用まで来た…」ちいかわのこども用マスクがダイソーに登場。10/20から順次発売",
-   "url": "https://news.allabout.co.jp/articles/o/131627/",
    "words": [],
    "work": "ちいかわ"
   }

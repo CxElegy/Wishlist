@@ -17,12 +17,6 @@
   "target": 720,
   "v": 3
  },
- "https://ix-news.aacdn.jp/aa_news/article/2026/10/19/6ad5f648138bb.jpg?im=AspectCrop=(16,9);Resize=(1600,900)": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnS3oMyz4EOL3ULke9hKJ0rye-jPJ6T6QFxzHG2cReu5eXGaXqJ9KAjsK936awlDKwttzLP0mP4638s90VeeeO7L_jtWV5rfpJGGLdZD7WSD2": {
   "w": 934,
   "h": 504,
@@ -71,6 +65,12 @@
    800
   ],
   "why": "期限付きの網址"
+ },
+ "https://www.bing.com/th?id=ONUT.6wJLFVvw4SJT6v7UbwjvAg&pid=News&w=600": {
+  "w": 600,
+  "h": 600,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ynKfXz7pCC8-r02gESV4zw&pid=News&w=1200": {
   "w": 100,
