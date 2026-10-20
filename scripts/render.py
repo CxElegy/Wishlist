@@ -487,6 +487,7 @@ button{font-family:inherit}
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
 .emb-in{display:flex;align-items:flex-end}
+.emb{clip-path:inset(-100vh -100vw 0 -100vw)}  /* 帯の線より下は見せない（足より下の尻尾・武器、傾けた角、飛び出す動きの途中）：下のニュースの字・ボタンに重ねない。飛び出しは帯の線から出てくるように見える */
 .emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:190px;object-fit:contain;object-position:bottom}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
 .emb{--leg:116px;--legc:290px;--anc:62px;--bmax:200px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
 .emb img.body{--bh:calc(var(--leg) / var(--bl));--bz:min(var(--bh), var(--bmax));height:var(--bz);width:calc(var(--bz) * var(--ba));max-width:none;
@@ -505,7 +506,7 @@ button{font-family:inherit}
 .emb-js .emb.out .emb-in{transition:transform .38s cubic-bezier(.6,0,.9,.4),opacity .3s ease-in .08s,--sx .15s,--sy .15s;
  transform:translate(18px,70px) rotate(-18deg) scale(.55)}  /* 上へ戻ったとき：影が縮んで、下へ沈みながら消える */
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
-@keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
+@keyframes embdrift{from{translate:0 0}to{translate:0 -36px}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
 @media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}}
@@ -1671,6 +1672,13 @@ EMB_JS = """
       } else inner.replaceChildren(n);
     }
   });
+  // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
+  const room = el => { const band = el.parentElement, img = el.querySelector('img'); if (!band || !img) return;
+    const go = () => { const b = band.getBoundingClientRect(), r = el.getBoundingClientRect();
+      if (r.width) band.style.paddingRight = Math.ceil(b.right - r.left + 12) + 'px'; };
+    if (img.complete) go(); else img.addEventListener('load', go, { once: true }); };
+  els.forEach(room);
+  addEventListener('resize', () => els.forEach(room));
   if (!els.length || !document.documentElement.classList.contains('emb-js')) return;
   // 下へスクロールして見えたら飛び出す（.in）。上へ戻って版面が画面の下へ消えたら、引っ込んで消える（.out）→ もう一度下へ来るとまた飛び出す
   const io = new IntersectionObserver(es => es.forEach(en => {
