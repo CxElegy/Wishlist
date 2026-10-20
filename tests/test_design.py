@@ -526,3 +526,14 @@ class NavParents(unittest.TestCase):
         self.assertEqual(more["front"][1], base["front"][1])
         self.assertIn("_marks", render.LIVE_JS)                          # 読み直す前にも名前を出す
         self.assertIn("wl-to", render.LIVE_JS)                           # 名前から版面へ飛べる
+
+
+class EmblemStaysOutOfText(unittest.TestCase):
+    """小元素が下のニュース・題字の字に重ならない（ちいかわ：浮く動きで下へずれ、横長の絵が副題に乗った）。"""
+
+    def test_rules(self):
+        import render
+        css = render.STYLES if hasattr(render, "STYLES") else open(render.__file__, encoding="utf-8").read()
+        self.assertIn("@keyframes embdrift{from{translate:0 0}to{translate:0 -36px}}", css)   # 上へだけ浮く
+        self.assertIn(".emb{clip-path:inset(-100vh -100vw 0 -100vw)}", css)                 # 帯の線より下は見せない
+        self.assertIn("band.style.paddingRight", render.EMB_JS)                              # 本当の幅だけ帯の右を空ける
