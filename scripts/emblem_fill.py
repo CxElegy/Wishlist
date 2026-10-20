@@ -453,6 +453,7 @@ def roster(item, log=print):
     elif item.get("anilist_id"):
         names = emblem.anilist_main(item["anilist_id"], 50)
         how = "AniList の主役（role MAIN）の人数"
+    names = [x for x in names if not re.search(r"characters|^list of", x, re.I)]   # 「Secondary Characters」のようなまとめの記事は人ではない
     if not names:
         return None
     n = len(names)
@@ -682,23 +683,63 @@ def is_role_image(x):
     return bool(x.get("work") or ROLE_WHY.search(str(x.get("why") or "")))
 
 
-def fandom_api(item):
-    """作品の Fandom（emblem_fandom / emblem_api）。書いていなければ名前・記事名から推測して、あるものを使う。"""
+def fandom_api(item, strict=False):
+    """作品の Fandom（emblem_fandom / emblem_api）。書いていなければ名前・副題（英語名）・記事名から推測して、あるものを使う。
+    strict：推測した wiki は名前（Chiikawa Wiki の「chiikawa」）が wiki の名前に入っているときだけ使う（同じ綴りの別の wiki を拾わない）。"""
     if item.get("emblem_api"):
         return item["emblem_api"]
     names = [item.get("emblem_fandom")] if item.get("emblem_fandom") else []
-    for t in [item["name"]] + [t for t in wiki_titles(item).values()]:
+    ascii_kw = [k for k in (item.get("keywords") or []) if re.fullmatch(r"[A-Za-z0-9 .:'&-]{3,40}", str(k))][:4]   # 搜索词の英語名（Chiikawa）
+    for t in [item["name"], item.get("subtitle") or ""] + [t for t in wiki_titles(item).values()] + ascii_kw:
         slug = re.sub(r"\(.*?\)|[^a-z0-9]", "", str(t).lower())
-        if slug and slug not in names:
+        if len(slug) >= 3 and slug not in names:
             names.append(slug)
     for n in names:
         api = f"https://{n}.fandom.com/api.php"
         try:
-            _json(f"{api}?action=query&meta=siteinfo&format=json")
+            site = (_json(f"{api}?action=query&meta=siteinfo&format=json").get("query") or {}).get("general") or {}
+            if strict and n != item.get("emblem_fandom") and n not in re.sub(r"[^a-z0-9]", "", str(site.get("sitename", "")).lower()):
+                continue
             return api
         except Exception:
             continue
     return None
+
+
+CHAR_CATEGORIES = ("Main characters", "Main Characters", "Playable characters", "Characters")   # Fandom でよくある分類名（先のほうが主要キャラに近い）
+
+
+def find_sources(item, log=print):
+    """キャラの関注項で、小元素の取り方に要るものが書いていなければ規則で探して items.yaml に書く（AI が設計を飛ばしても埋まる、2026-10-20）：
+    ① 作品の Fandom（emblem_fandom：Fandom の公式の立ち絵は「確かな取り方」）② キャラの分類（emblem_category：主要キャラの名簿と人数）。
+    → 書いたら True。"""
+    if kind_of(item) != "character" or item.get("emblem_people"):
+        return False
+    wrote = False
+    api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
+    if not api:
+        api = fandom_api(item, strict=True)
+        if api:
+            slug = re.match(r"https://([^.]+)\.fandom\.com", api).group(1)
+            with WRITE_LOCK:
+                _set_field(item["name"], "emblem_fandom", f"{slug}   # 作品の Fandom（scripts/emblem_fill.py の find_sources が名前から見つけた）")
+            log(f"  [Fandom] {item['name']}：{slug}.fandom.com")
+            wrote = True
+    if api and not item.get("emblem_category") and not item.get("anilist_id"):
+        for cat in CHAR_CATEGORIES:
+            q = urllib.parse.urlencode({"action": "query", "list": "categorymembers", "cmtitle": f"Category:{cat}",
+                                        "cmlimit": 10, "cmnamespace": 0, "format": "json"})
+            try:
+                n = len(_json(f"{api}?{q}")["query"]["categorymembers"])
+            except Exception:
+                continue
+            if n >= 3:
+                with WRITE_LOCK:
+                    _set_field(item["name"], "emblem_category", f"{json.dumps(cat, ensure_ascii=False)}   # キャラの分類（find_sources）")
+                log(f"  [分類] {item['name']}：{cat}")
+                wrote = True
+                break
+    return wrote
 
 
 def _wikitext(api, titles):
@@ -1429,6 +1470,11 @@ def fill_one(item, log=print):
     取り方の段（STRATEGIES）を、目標に届くまで同じ回の中で順に上がる：① 標準 → ② 名前を広げる → ③ 公式・記事のページ。
     各段で 集める → 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）→ 選ぶ（auto_pick）→ 書いて切り抜く。
     → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わるか 6 時間後にもう一度）。"""
+    try:   # 取り方に要るもの（作品の Fandom・キャラの分類）が書いていなければ先に探す
+        if find_sources(item, log):
+            item = next(i for i in load_items() if i["name"] == item["name"])
+    except Exception as e:
+        log(f"  [取り方] {item['name']}：{e}")
     pooln = int(item.get("emblem_pool") or 0)
     if (item.get("emblem_category") or item.get("anilist_id")) and (
             not pooln or len(item.get("emblem_who") or []) < min(CEIL.get(kind_of(item), 0), pooln)):

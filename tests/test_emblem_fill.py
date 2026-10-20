@@ -1219,3 +1219,29 @@ class LiveAction(unittest.TestCase):
     def test_live_action_skips_actor_photos(self):
         self.assertTrue(ef.live_action({"type": "show", "emblem_people": True}))
         self.assertFalse(ef.live_action({"type": "anime"}))
+
+
+class FindSources(unittest.TestCase):
+    """新しいキャラの関注項：Fandom と分類を規則で見つけて書く（AI が設計を飛ばしても小元素が埋まる）。"""
+
+    def test_fandom_and_category_are_found_and_written(self):
+        item = {"name": "ちいかわ", "type": "anime", "subs": {"kind": "シリーズ"}, "emblem_kind": "character",
+                "keywords": ["ちいかわ", "Chiikawa"], "subtitle": "ちいかわ なんか小さくてかわいいやつ"}
+        def fake_json(url, *a):
+            if "siteinfo" in url:
+                if "chiikawa.fandom" in url:
+                    return {"query": {"general": {"sitename": "Chiikawa Wiki"}}}
+                raise OSError("no wiki")
+            members = 12 if "Category%3ACharacters" in url else 0
+            return {"query": {"categorymembers": [{"title": str(i)} for i in range(members)]}}
+        wrote = {}
+        with mock.patch.object(ef, "_json", fake_json), mock.patch.object(ef, "kind_of", lambda i: "character"), \
+             mock.patch.object(ef, "_set_field", lambda name, k, v: wrote.__setitem__(k, v.split("#")[0].strip())):
+            self.assertTrue(ef.find_sources(item, log=lambda *a: None))
+        self.assertEqual(wrote["emblem_fandom"], "chiikawa")
+        self.assertEqual(wrote["emblem_category"], '"Characters"')
+
+    def test_other_wiki_with_same_letters_is_not_used(self):
+        item = {"name": "FROM", "keywords": ["FROM"]}
+        with mock.patch.object(ef, "_json", lambda url, *a: {"query": {"general": {"sitename": "Some Other Wiki"}}}):
+            self.assertIsNone(ef.fandom_api(item, strict=True))
