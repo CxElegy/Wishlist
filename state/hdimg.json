@@ -37,10 +37,16 @@
   "v": 3
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261018-00000003-cine-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 533,
   "target": 720,
   "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-20"
+  "local": "pics/b8a6da613b0b6bdc.webp",
+  "out": [
+   800,
+   533
+  ],
+  "why": "期限付きの網址"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00010019-piaeigat-000-1-view.jpg?exp=10800": {
   "w": 800,
