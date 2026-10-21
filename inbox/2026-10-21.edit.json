@@ -87,7 +87,8 @@
   "周杰伦": 30,
   "绝区零": 30,
   "日本顶级网球赛事": 28,
-  "MMORPG 新作": 26
+  "MMORPG 新作": 26,
+  "ILLIT": 22
  },
  "漫威电影": [
   {
@@ -603,6 +604,81 @@
     5,
     1,
     4
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT「Magnetic」、K-POPグループのデビュー曲として最速でSpotify累計9億回再生を達成",
+   "highlight": "Spotify累計9億回再生",
+   "blurb": "ILLITのデビュー曲「Magnetic」が、K-POPグループのデビュー曲として最速でSpotify累計9億回再生を突破。『BREAK EVEN』でのカムバックを控えた快挙。",
+   "weight": "lead",
+   "refs": [
+    5,
+    6,
+    9,
+    10,
+    11,
+    7,
+    8
+   ],
+   "image": "https://korepo.com/wp-content/uploads/2026/10/94768b16a0bafd0db6f77d3df0b9934d.jpg"
+  },
+  {
+   "headline": "ILLIT transforms with kitsch blonde visuals ahead of comeback with 5th mini-album 'BREAK EVEN'",
+   "highlight": "5th mini-album 'BREAK EVEN'",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18,
+    19,
+    12,
+    14
+   ],
+   "event": {
+    "date": "2026-10-26",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "ILLIT、活動休止中のMOKAがコンサート会場に！ 客席から新曲ダンスに参加、メンバーも感動「ILLITはいつでも5人」",
+   "highlight": "MOKAがコンサート会場に",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
+  },
+  {
+   "headline": "ILLIT演唱會接連傳意外 Iroha彩排扭傷送醫Wonhee 膝蓋流血",
+   "highlight": "Iroha彩排扭傷送醫",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17,
+    15
+   ]
+  },
+  {
+   "headline": "ILLIT encore concert faces questions over ticket prices as seats remain empty",
+   "highlight": "ticket prices",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "headline": "ILLIT’s Accused Of “Shameless” Plagiarism Of Popular Girl Group In New Concept Photos",
+   "highlight": "Plagiarism",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    21,
+    20
    ]
   }
  ]

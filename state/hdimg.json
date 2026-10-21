@@ -698,6 +698,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/10/20261019_EN_ILLIT-FB_source-web_.jpg": {
+  "w": 640,
+  "h": 335,
+  "target": 720,
+  "v": 3
+ },
  "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/10/20261021_FB_EN_Keung_source-web_-1.jpg": {
   "w": 640,
   "h": 335,
@@ -708,6 +714,12 @@
   "w": 1200,
   "h": 674,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.koreaboo.com/2026/10/FD2870-2-11.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://image.mrjjxw.com/uploads/articles/thumbnails/1923427/open-uri20261018-19778-v7mba5.x_large.jpg": {
@@ -797,6 +809,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://images.khan.co.kr/article/2026/10/20/news-p.v1.20261020.4c924d72449246b59d479a2890b8217c_P1.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
  },
  "https://images.selectra.jp/articles/chiikawa-movie-4dx/hero.webp": {
   "w": 1200,
@@ -1229,6 +1247,12 @@
   "target": 720,
   "v": 3
  },
+ "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
+  "w": 1035,
+  "h": 582,
+  "target": 1280,
+  "v": 3
+ },
  "https://imgs.ototoy.jp/news/image.php/131993/0.jpg": {
   "w": 800,
   "h": 533,
@@ -1297,6 +1321,19 @@
   "h": 510,
   "target": 720,
   "v": 3
+ },
+ "https://korepo.com/wp-content/uploads/2026/10/94768b16a0bafd0db6f77d3df0b9934d.jpg": {
+  "w": 680,
+  "h": 455,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.494,
+  "local": "pics/b55748421150ca46.webp",
+  "out": [
+   1280,
+   856
+  ],
+  "why": "看不清"
  },
  "https://kosodate.mynavi.jp/uploads/article/image/46404/thumb1021michopa.jpg": {
   "w": 438,
@@ -2947,12 +2984,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.globaltimes.cn/Portals/0/attachment/2026/2026-10-13/db804cd8-de37-45b7-9f60-4ccf6a6b30a8.jpeg": {
-  "w": 1200,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://www.gsmdome.com/wp-content/uploads/2026/10/samsung-samsung-galaxy-s27-galaxy-s27-cover-a97742-001.jpg": {
   "target": 720,
   "v": 3,
@@ -2983,6 +3014,12 @@
    898
   ],
   "why": "看不清"
+ },
+ "https://www.kpopmonster.jp/wp-content/uploads/2026/10/illit01.webp": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
  },
  "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg": {
   "w": 2560,
