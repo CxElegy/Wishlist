@@ -981,6 +981,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.biggo.com/3EL1nNsIEMVU_JqZ5qdtKWtO6W6Z13ZkiSY4yU_g_VY/fit/1720/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwL2FlZjY4ZjdiLTNmZWQtNDMyMS04YTRiLTYzMWEwZDZkOTQ3Yl8xNzkyNTQ2Njc0X2RlZmF1bHQuanBn.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
  "https://img.biggo.com/Ly0mrIFY6VbteQFBslePtrzNk2ykhbDNdB8fhAqpes4/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwL2IwYzA4ODA2LTg2ZGYtNDA5Mi05MDI4LWRiNjJlNmM3ZGVkYV8xNzkyMDAxODc5X2RlZmF1bHQuanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -1423,6 +1429,12 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://news.pchome.com.tw/newsdata/expense/pcnews/20261019/79239640452524204013_original.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
  },
  "https://news.pchome.com.tw/newsdata/game/gamer/20261020/79249250522710203104_original.jpg": {
   "w": 1232,
@@ -2016,6 +2028,12 @@
   "target": 720,
   "v": 3
  },
+ "https://sammyguru.com/wp-content/uploads/2026/09/Galaxy-S27-Pro-Ultra-Case-Featured.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
  "https://sammyguru.com/wp-content/uploads/2026/10/Galaxy-S27-Series-Case-Featured.jpg": {
   "w": 1200,
   "h": 675,
@@ -2027,6 +2045,12 @@
   "h": 1425,
   "target": 720,
   "v": 3
+ },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-Unbox-8.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
  },
  "https://scontent-sjc3-1.xx.fbcdn.net/v/t51.71878-15/851829434_1657957355672157_598019026852783350_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a27664&_nc_ohc=uKSc0b5fZFEQ7kNvwFxE5ms&_nc_oc=AdqmBBqeKqxLAPsvjT85BPpF_EHNTZvG-6X1_yY5Ot2mPnQ4nwiUFLImYpprEyA5CYs&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=8yCkfeRA7k1_NKbixFL9Mg&_nc_ss=7820f&oh=00_AQOQdGlX1cpi4E0KSvVx2CSSu0e_bKoaPsdHUtpgJL7PRw&oe=6ADE1E65": {
   "w": 640,
@@ -2150,6 +2174,18 @@
   "h": 971,
   "target": 1280,
   "v": 3
+ },
+ "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-20-083046.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
+ "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-20-093412.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
  },
  "https://themagicrain.com/wp-content/uploads/2026/10/image-3-20.jpg": {
   "w": 1536,
@@ -2663,6 +2699,12 @@
   "h": 736,
   "target": 1280,
   "v": 3
+ },
+ "https://www.gsmdome.com/wp-content/uploads/2026/10/samsung-samsung-galaxy-s27-galaxy-s27-cover-a97742-001.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
  },
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/05/THND-FF-000193-H-2026.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
