@@ -280,6 +280,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://brobible.com/wp-content/uploads/2026/10/jason-lucia-beer-gta-vi.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://buzzap.net/images/2026/10/19/8eliteextremegen6/top.jpg": {
   "w": 1200,
   "h": 900,
@@ -833,6 +839,12 @@
  "https://images.entertainment.ie/uploads/2021/02/04114544/don-cheadle-war-machine.jpg?w=1280&h=768&q=high": {
   "w": 1280,
   "h": 768,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.hothardware.com/contentimages/newsitem/71917/content/16x9_2133x1200_highres-xbox-series-x-s-consoles.jpg": {
+  "w": 2133,
+  "h": 1200,
   "target": 720,
   "v": 3
  },
@@ -2614,12 +2626,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.FgkmDz--qhmpijE2z-xP6Q&pid=News&w=1120": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.GU75uQWnYgvJG5mT-5BTwg&pid=News&w=912": {
   "w": 700,
   "h": 393,
@@ -2676,12 +2682,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.SdHBkMZfXkMd9z_VMQz8yw&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Tw408Jo7-WCfcnK3zPpcHA&pid=News&w=1200": {
   "w": 700,
   "h": 364,
@@ -2697,12 +2697,6 @@
  "https://www.bing.com/th?id=ONUT.YQOWVk6tArirle6eiDvGBQ&pid=News&w=600": {
   "w": 600,
   "h": 399,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Yn1tO1R6eKPo5bxo6pcFiA&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
   "target": 720,
   "v": 3
  },
@@ -2995,9 +2989,21 @@
   "target": 720,
   "v": 3
  },
+ "https://www.joblo.com/wp-content/uploads/2026/02/the-mandalorian-and-grogu-concerns.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/illit01.webp": {
   "w": 1200,
   "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.kukinews.com/data/kuk/image/2026/09/11/kuk20260911000105.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -3060,6 +3066,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Winter-Soldier.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.svg.com/img/gallery/gta-6-delays-officially-explained-by-rockstar-games/l-intro-1792009203.jpg": {
