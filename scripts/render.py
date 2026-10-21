@@ -3817,6 +3817,34 @@ html[data-lock="1"] [data-vote]{cursor:not-allowed}
 .wl-ro{margin:0 0 4px;padding:8px 12px;border:2px dashed var(--ink);background:var(--sheet);font:700 13px/1.6 var(--font-sans)}
 html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
+html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
+html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
+.wl-mine{max-width:880px;margin:0 auto;padding:72px 16px 64px;color:var(--ink);font:500 15px/1.7 var(--font-sans)}
+.wl-mine .mn{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.wl-mine .mn a{padding:4px 12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;font:700 13px var(--font-sans)}
+.wl-mine .mn a[aria-current]{background:var(--ink);color:var(--card)}
+.wl-mine header{margin:0 0 22px;padding:18px 20px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow)}
+.wl-mine header small{display:inline-block;padding:0 8px;background:var(--rose);color:var(--card);font:700 var(--fs-label)/1.8 var(--font-sans);transform:skewX(var(--skew))}
+.wl-mine h1{margin:6px 0 4px;font:900 26px/1.3 var(--font-sans);overflow-wrap:anywhere}
+.wl-mine h2{margin:26px 0 10px;font:900 18px/1.4 var(--font-sans)}.wl-mine h2 small{font:500 var(--fs-label) var(--font-sans);opacity:.75;margin-left:6px}
+.wl-mine h3{margin:14px 0 6px;font:700 14px/1.4 var(--font-sans);display:flex;align-items:center;gap:6px}.wl-mine h3 i{width:10px;height:10px;display:inline-block}
+.wl-mine p{margin:4px 0}
+.wl-mine button,.wl-mine .go{display:inline-block;margin-top:10px;padding:6px 14px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);font:700 13px var(--font-sans);cursor:pointer;text-decoration:none}
+.wl-mine button.ghost{background:var(--card)}
+.wl-mine ul.kw{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.wl-mine ul.kw li{display:flex;align-items:center;gap:8px;padding:4px 6px 4px 10px;background:var(--card);border:1.5px solid var(--ink);font:700 14px/1.4 var(--font-sans)}
+.wl-mine ul.kw li small{font:500 var(--fs-label) var(--font-sans);opacity:.7}
+.wl-mine ul.kw li button{margin:0;padding:0 7px;background:var(--card);font-size:12px}
+.wl-mine .empty{padding:22px 20px;border:2px dashed var(--ink);background:var(--sheet)}.wl-mine .empty b{display:block;font:900 17px/1.4 var(--font-sans)}
+.wl-mine .note{margin-top:18px;font-size:13px;opacity:.85}
+.wl-mine form.add{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.wl-mine form.add input,.wl-mine form.add select{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
+.wl-mine form.add input{flex:1 1 220px}.wl-mine form.add button{margin:0}
+.wl-mine .st{min-height:1.5em;font-size:13px}
+.wl-viewbar{position:sticky;top:0;z-index:89;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;padding:7px 12px;
+ background:var(--ink);color:var(--card);font:700 13px/1.5 var(--font-sans)}
+.wl-viewbar button{border:2px solid var(--card);background:var(--gold);color:var(--ink);padding:3px 12px;font:700 13px var(--font-sans);cursor:pointer}
+@media (max-width:560px){.wl-mine{padding-top:24px}.wl-mine h1{font-size:22px}}
 .wl-gate{min-height:100vh;display:grid;place-items:center;padding:16px;background:var(--paper)}
 .wl-gate>div{max-width:420px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 24px;display:flex;flex-direction:column;gap:12px}
 .wl-gate h1{margin:0;font:900 22px/1.3 var(--font-sans)}
@@ -3838,6 +3866,7 @@ AUTH_JS = r"""
   if(!base||!A.key||!window.fetch) return;
   var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
   R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
+  try{ if(/^(index|wishlist|heat|settings)$/.test(page)&&sessionStorage.getItem('wl-view-shop')!=='1'&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない
   var ROLE=__ROLE__, LOCK=__LOCK__[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -3929,11 +3958,11 @@ AUTH_JS = r"""
   document.addEventListener('click',function(ev){
     if(!locked()||!LOCK) return;
     var t=ev.target.closest&&ev.target.closest(LOCK);
-    if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live,.wl-agree')) return;
+    if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live,.wl-agree,.wl-mine,.wl-viewbar')) return;
     ev.preventDefault(); ev.stopImmediatePropagation();
     toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'ここは店長のページなので、見るだけです');
   },true);
-  document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
+  document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree,.wl-mine'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
   function chip(keepOpen){
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
@@ -3949,7 +3978,7 @@ AUTH_JS = r"""
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
     // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
-    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ</a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">'+(isMine()?'あなたのページ':'店長のページ · 見るだけ')+'</span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ</a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
       '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(role)+'">'+esc(label)+'</span></button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています</small>'+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ</button>':'')+
@@ -3988,6 +4017,74 @@ AUTH_JS = r"""
     n.textContent='見るだけです。設定を変えるには右上の「ログイン」から。';
     var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
   }
+  // お客さま自分のページ（2026-10-22，用户定的：アカウントは 1 つずつ独立。ログインしたお客さまに店長の中身は出さない）。
+  // 簡報・欲しい物・話題度・設定で、店長の中身の代わりに自分の（最初は空の）ページを出す。中身は Supabase の my_page()（本人の行だけ、db/my_page.sql）。
+  // 店長のページは「店長のページを見る（見るだけ）」で見に行ける（このタブの間だけ。上の帯の「自分のページに戻る」で戻る）。
+  var VIEW='wl-view-shop', SECS=A.secs||[];
+  function viewShop(){try{return sessionStorage.getItem(VIEW)==='1';}catch(e){return false;}}
+  function isMine(){return SHOP&&R.dataset.role==='user'&&!!(me||user)&&!viewShop();}
+  function setView(shop){try{if(shop)sessionStorage.setItem(VIEW,'1');else sessionStorage.removeItem(VIEW);}catch(e){} mine();chip();window.scrollTo(0,0);}
+  function secJa(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][1];return k||'その他';}
+  function secColor(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][2]||'';return '';}
+  function mine(){
+    var on=isMine(), box=document.querySelector('.wl-mine'), bar=document.querySelector('.wl-viewbar');
+    R.dataset.mine=on?'1':'0';
+    if(SHOP&&R.dataset.role==='user'&&!on){   // お客さまが店長のページを見ているとき：いつも見える所に戻る道
+      if(!bar){bar=document.createElement('div');bar.className='wl-viewbar';bar.setAttribute('role','status');
+        bar.innerHTML='<span>店長のページを見ています（見るだけ）</span><button type="button">自分のページに戻る</button>';
+        bar.querySelector('button').onclick=function(){setView(false);};document.body.insertBefore(bar,document.body.firstChild);}
+    } else if(bar) bar.remove();
+    if(!on){if(box) box.remove(); return;}
+    if(!box){box=document.createElement('main');box.className='wl-mine';box.id='mine';document.body.appendChild(box);}
+    box.innerHTML='<p class="st">読み込み中…</p>';
+    (tok?rpc('my_page'):Promise.resolve(null)).then(function(p){drawMine(box,p,'');},function(e){drawMine(box,null,e.message);});
+  }
+  function drawMine(box,p,err){
+    var name=(p&&p.name)||(me&&me.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
+    var picks=((p&&p.prefs&&p.prefs.picks)||[]).filter(function(x){return x&&x.name;});
+    var nav=[['index','./','ページ'],['wishlist','wishlist.html','欲しい物'],['heat','heat.html','話題度'],['settings','settings.html','設定']]
+      .map(function(x){return '<a href="'+x[1]+'"'+(x[0]===page?' aria-current="page"':'')+'>'+x[2]+'</a>';}).join('');
+    var h='<nav class="mn" aria-label="あなたのページ">'+nav+'</nav><header><small>あなたのページ</small><h1>'+esc(sh)+' さんのページ</h1>'+
+      '<p>ここはあなただけのページです。店長のページとは別で、ほかの人には見えません。</p>'+
+      '<button type="button" class="ghost" data-shop>店長のページを見る（見るだけ）</button></header>';
+    if(err) h+='<p class="st">読み込めませんでした：'+esc(err)+'</p>';
+    else if(!tok) h+='<p class="st">キーワードを読むには、いったんログアウトして、メールとパスワードでもう一度ログインしてください。</p>';
+    if(page==='index'){
+      if(picks.length){
+        h+='<h2>あなたのキーワード<small>'+picks.length+' 個</small></h2>';
+        var order=SECS.map(function(x){return x[0];}), by={};
+        picks.forEach(function(x){(by[x.sec]=by[x.sec]||[]).push(x);});
+        Object.keys(by).sort(function(a,b){var i=order.indexOf(a),j=order.indexOf(b);return (i<0?99:i)-(j<0?99:j);}).forEach(function(k){
+          h+='<h3><i style="background:'+esc(secColor(k)||'var(--ink)')+'"></i>'+esc(secJa(k))+'</h3><ul class="kw">'+
+            by[k].map(function(x){return '<li>'+esc(x.name)+'<small>まだ集めていません</small></li>';}).join('')+'</ul>';});
+        h+='<p class="note">お客さまのニュース集めは準備中です。始まると、キーワードごとに版面ができてここに並びます。キーワードは <a href="settings.html">設定</a> で足したり外したりできます。</p>';
+      } else h+='<div class="empty"><b>まだ何もありません</b><p>キーワードを足すと、ここに並びます。</p><a class="go" href="settings.html">設定でキーワードを足す</a></div>';
+    } else if(page==='wishlist'){
+      h+='<div class="empty"><b>欲しい物リストはまだ空です</b><p>お客さまの欲しい物リストは準備中です。</p></div>';
+    } else if(page==='heat'){
+      h+='<div class="empty"><b>話題度はまだありません</b><p>あなたの版面ができると、キーワードごとの話題度がここに出ます。</p></div>';
+    } else if(page==='settings'){
+      h+='<h2>キーワード<small>'+picks.length+' 個 · 200 個まで</small></h2>'+
+        '<form class="add"><input name="n" maxlength="80" required placeholder="作品・ブランド・人・場所など" aria-label="キーワード">'+
+        '<select name="s" aria-label="大類">'+SECS.map(function(x){return '<option value="'+esc(x[0])+'">'+esc(x[1])+'</option>';}).join('')+'</select>'+
+        '<button type="submit">足す</button></form><p class="st" aria-live="polite"></p>'+
+        (picks.length?'<ul class="kw">'+picks.map(function(x,i){return '<li>'+esc(x.name)+'<small>'+esc(secJa(x.sec))+'</small><button type="button" data-del="'+i+'" aria-label="'+esc(x.name)+' を外す">外す</button></li>';}).join('')+'</ul>'
+          :'<div class="empty"><b>まだキーワードがありません</b><p>上の欄から足してください。</p></div>');
+    }
+    box.innerHTML=h;
+    box.querySelector('[data-shop]').onclick=function(){setView(true);};
+    var f=box.querySelector('form.add'); if(!f) return;
+    var st=box.querySelector('.st'), save=function(list,msg){
+      if(!tok){st.textContent='ログインし直してください（メールとパスワード）';return;}
+      st.textContent='保存しています…';
+      rpc('my_keywords_set',{p_picks:list}).then(function(){p=p||{};p.prefs=p.prefs||{};p.prefs.picks=list;drawMine(box,p,'');var s2=box.querySelector('.st');if(s2)s2.textContent=msg;})
+        .catch(function(e){st.textContent='保存できませんでした：'+e.message;});};
+    f.onsubmit=function(ev){ev.preventDefault();var n=f.n.value.trim();if(!n)return;
+      if(picks.some(function(x){return x.name.toLowerCase()===n.toLowerCase();})){st.textContent='「'+n+'」はもうあります';return;}
+      save(picks.concat([{name:n,sec:f.s.value}]),'「'+n+'」を足しました');};
+    box.querySelectorAll('[data-del]').forEach(function(b){b.onclick=function(){var i=+b.dataset.del,x=picks[i];
+      save(picks.filter(function(_,j){return j!==i;}),'「'+x.name+'」を外しました');};});
+  }
   function members(){
     var box=document.getElementById('wl-members'); if(!box) return;
     if(R.dataset.role!=='admin'){box.closest('section').hidden=true; return;}
@@ -4020,7 +4117,7 @@ AUTH_JS = r"""
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){chip();gate();readOnlyNote();members();
+      .then(function(){mine();chip();gate();readOnlyNote();members();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
           var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
@@ -4054,7 +4151,8 @@ def _auth_tag(page=""):
     if not (AUTH_DB.get("url") and AUTH_DB.get("key")):
         return ""
     cfg = {"url": AUTH_DB["url"], "key": AUTH_DB["key"], "lib": SUPABASE_JS, "page": page,
-           "terms": TERMS_VERSION, "termsUrl": "terms.html", "start": "../#name", "home": "../?stay"}   # 新しく始める = 入口（docs/index.html）の流れ
+           "terms": TERMS_VERSION, "termsUrl": "terms.html", "start": "../#name", "home": "../?stay",
+           "secs": [[k, SECTION_JA.get(k, k), SECTIONS.get(k, "")] for k in list(SECTIONS) + ["其他"]]}   # お客さま自分のページの大類   # 新しく始める = 入口（docs/index.html）の流れ
     js = (AUTH_JS.replace("__AUTH__", json.dumps(cfg)).replace("__ROLE__", json.dumps(ROLE_JA, ensure_ascii=False))
           .replace("__LOCK__", json.dumps(AUTH_LOCK)))
     js = js.replace("</", "<\\/")

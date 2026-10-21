@@ -35,6 +35,20 @@ class AuthTag(unittest.TestCase):
         body = t.split("<script>", 1)[1].rsplit("</script>", 1)[0]
         self.assertNotIn("</", body)
 
+    def test_customer_gets_own_page(self):
+        """アカウントは 1 つずつ独立（2026-10-22）：お客さまには店長の中身でなく自分のページ（my_page）。店長のページへの行き帰りもある。"""
+        render.AUTH_DB.update(url="https://x.supabase.co", key="sb_publishable_x")
+        tag = render._auth_tag("index")
+        for s in ("rpc('my_page')", "my_keywords_set", "店長のページを見る（見るだけ）", "自分のページに戻る", "wl-view-shop"):
+            self.assertIn(s, tag)
+        self.assertIn('html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine)', render.AUTH_CSS)
+        import json
+        cfg = json.loads(re.search(r"var A=(\{.*?\}), R=", tag).group(1))
+        self.assertIn(["其他", "その他", ""], cfg["secs"])   # 大類の一覧（その他も）
+        sql = (ROOT / "db" / "my_page.sql").read_text(encoding="utf-8")
+        self.assertIn("lower((select auth.jwt()) ->> 'email')", sql)   # 本人の行だけ
+        self.assertNotIn("to anon", sql)
+
     def test_pages_carry_tag(self):
         render.AUTH_DB.update({"url": "https://x.supabase.co", "key": "sb_publishable_x"})
         self.assertIn("wl-auth", render._live_head("index"))
