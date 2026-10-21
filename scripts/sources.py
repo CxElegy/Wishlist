@@ -20,6 +20,16 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 
 USER_AGENT = "Mozilla/5.0 (wishlist-digest; +https://github.com/CxElegy/Wishlist)"
+# ホストごとの UA（2026-10-22 地域の情報員の調査）：ナタリーは知っている道具の UA だけ通す（Python-urllib・curl・Feedly は 200、
+# 「Mozilla」や知らない名前は 405）。実際に Python の urllib で取っているので、そのとおりに名乗る。
+# 収集（_get）と配図（images._fetch）の両方がこの表を見る
+_PY_UA = f"Python-urllib/{sys.version_info.major}.{sys.version_info.minor} (wishlist-digest; +https://github.com/CxElegy/Wishlist)"
+HOST_UA = {"natalie.mu": _PY_UA}
+
+
+def user_agent(url):
+    host = urllib.parse.urlparse(url or "").hostname or ""
+    return next((ua for h, ua in HOST_UA.items() if host == h or host.endswith("." + h)), USER_AGENT)
 
 
 def _install_alpn():
@@ -35,6 +45,11 @@ _install_alpn()
 TIMEOUT = 20
 ATOM = "{http://www.w3.org/2005/Atom}"
 MEDIA = "{http://search.yahoo.com/mrss/}"
+RSS1 = "{http://purl.org/rss/1.0/}"   # RSS 1.0（RDF）：4Gamer・Impress Watch・PR TIMES・はてブ
+DC = "{http://purl.org/dc/elements/1.1/}"
+# 宣言なしで使われがちな接頭辞（VOGUE KOREA などの media:）：読めなかったら宣言を足して読み直す
+NS_FIX = {"media": "http://search.yahoo.com/mrss/", "dc": "http://purl.org/dc/elements/1.1/",
+          "content": "http://purl.org/rss/1.0/modules/content/"}
 
 
 @dataclass
@@ -73,7 +88,7 @@ def _pace(url):
 
 def _get(url):
     _pace(url)
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    req = urllib.request.Request(url, headers={"User-Agent": user_agent(url)})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
         return resp.read()
 
@@ -166,8 +181,10 @@ def rss_bytes(data, source):
     try:
         root = ET.fromstring(data)
     except ET.ParseError as e:
-        _warn(source, e)
-        return []
+        root = _parse_fixing_ns(data, e)
+        if root is None:
+            _warn(source, e)
+            return []
 
     entries = []
     for it in root.iter("item"):  # RSS 2.0
@@ -183,6 +200,16 @@ def rss_bytes(data, source):
             summary=_clean(it.findtext("description")),
             image=_image(it, it.findtext("description")),
         ))
+    for it in root.iter(f"{RSS1}item"):  # RSS 1.0（RDF）
+        desc = it.findtext(f"{RSS1}description")
+        entries.append(Entry(
+            title=_clean(it.findtext(f"{RSS1}title"), 200),
+            url=(it.findtext(f"{RSS1}link") or "").strip(),
+            published=_parse_date(it.findtext(f"{DC}date")),
+            source=source,
+            summary=_clean(desc),
+            image=_image(it, desc),
+        ))
     for it in root.iter(f"{ATOM}entry"):  # Atom
         link = it.find(f"{ATOM}link")
         entries.append(Entry(
@@ -194,6 +221,23 @@ def rss_bytes(data, source):
             image=_image(it, it.findtext(f"{ATOM}content") or it.findtext(f"{ATOM}summary")),
         ))
     return [e for e in entries if e.title and e.url]
+
+
+def _parse_fixing_ns(data, err):
+    """「unbound prefix」（接頭辞の宣言がない）だけ：最初の要素に宣言を足して読み直す。ほかの壊れ方は None。"""
+    if "unbound prefix" not in str(err):
+        return None
+    m = re.search(rb"<(?![?!])[A-Za-z][^\s>/]*", data)
+    if not m:
+        return None
+    used = {p.decode() for p in set(re.findall(rb"</?([A-Za-z]+):", data))}
+    decl = "".join(f' xmlns:{p}="{u}"' for p, u in NS_FIX.items() if p in used and f"xmlns:{p}=".encode() not in data)
+    if not decl:
+        return None
+    try:
+        return ET.fromstring(data[:m.end()] + decl.encode() + data[m.end():])
+    except ET.ParseError:
+        return None
 
 
 def google_news(query, lookback_days, lang):

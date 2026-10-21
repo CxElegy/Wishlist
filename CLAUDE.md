@@ -151,7 +151,7 @@
 - **垃圾站**（被黑的网站批量生成的页面，标题塞作品名骗搜索，会命中 match）：`digest.is_spam` 按标题写法（「在线看」、末尾 10 位随机码 `(gQvzdvbtKG)`）和链接网域（`SPAM_HOSTS`，Unisba Media = `unisba.ac.id`）认；
   收集・整理待ち・出刊・页面・推荐・話題度的报道量都过这一个函数，新发现一个垃圾站就在那里加写法 / 网域，在 `tests/test_match.py` 加真实标题。
 - **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」）写进 `exclude`。
-- **情報源（2026-10-22，用户定的：都要，不用 AI 所以 CPU・时间可以多用）**：Google・Bing・Reddit・Steam・RSS 之外，`sources.gdelt`（世界 65 言語のニュース索引，读者的语言，5 秒 1 回・429 重试，连续 3 次被拒这次就不再问（2026-10-22 本番：Actions 的共享 IP 几乎都被拒，空等 10 分钟），`use` 有 google 的关注项，每项前 2 个词）、
+- **情報源（2026-10-22，用户定的：都要，不用 AI 所以 CPU・时间可以多用）**：Google・Bing・Reddit・Steam・RSS 之外，`sources.gdelt`（世界 65 言語のニュース索引，读者的语言，5 秒 1 回・429 重试，重试后还被拒这次就不再问（2026-10-22 本番：Actions 的共享 IP 几乎都被拒，空等 10 分钟），`use` 有 google 的关注项，每项前 2 个词）、
   `sources.youtube_channel`（公式チャンネルの RSS，チャンネル = items.yaml 的 `youtube` 或 `wiki` → Wikidata P2397，缓存 `state/youtube_channels.json` 30 天）、
   `sources.bluesky`・`sources.mastodon_tag`（`use` 有 reddit 的关注项；和 Reddit 一样只放火的帖子：Bluesky ♥50 / 转发＋引用 15，Mastodon ♥20 / ブースト 10，其余只算話題度；匹配词必须在帖子正文；网址开头的自动转载 bot 帖丢掉）。
   都过同样的 match・exclude・垃圾站・去重；`sources.is_sns` = Reddit・Bluesky・Mastodon（不当报道・不当推荐）。
@@ -159,6 +159,10 @@
   まず**日本の情報員**（日本のサイト・日本のニュースに詳しい）、それから**国内（中国）を中心にアジア地域の情報員**（台湾・香港・韓国・東南アジアも）。
   情報員 = その地域の情報源を分類（作品・ゲーム・音楽・スポーツ・グッズ・暮らし・おでかけ）ごとに持ち、関注項の言語・地域・分類で担当が決まる。集めた記事は今までどおり match・exclude・垃圾站・去重を通す。
   情報源は無料・鍵なし・robots / 利用規約で自動の読み取りが許されているもの（RSS / Atom / JSON 優先）。作るときは find-skills で地域向けのスキルを探し、スキルの中身を取り込んで設計する（調査：ワークフロー regional-intel-research）。
+  **作り（第 1 段・日本、2026-10-22）**：`intel/<地域>.yaml`（データだけ：id・ja・langs・sources〔id・name・url・cats・exclude・terms〕、足すのにコードは要らない）＋ `scripts/intel.py`（`collect()` から 1 行）。
+  開關 = `items.yaml` の `settings.intel: [japan]`。担当 = 関注項が**自分で書いた** `news_langs` と地域の `langs` が重なる（settings の既定の言語は数えない）・`intel: [korea]` で指定・`intel: []` で止める；読むのは `cats` が関注項の板块（section 無しは type から・also も）と重なる情報源。同じフィードは 1 回の収集で 1 回だけ取る。
+  情報源ごとの様子（ok・blocked・timeout…）は収集のログに「情報員 日本の情報員：17/17 本・…件」。`python scripts/intel.py --fetch` で担当と取れ具合を見る。読み取りの共通部分：RSS 1.0（RDF）・宣言のない `media:` も読む、ホストごとの UA `sources.HOST_UA`（ナタリーは Mozilla を 405）。
+  入れないもの：Yahoo!ニュース RSS・CNA・SCMP・RTHK（「個人・非営利のみ」）、B站・知乎（robots で禁止）、微博・小紅書・Dcard（ログイン）。次：日本の残り（はてブ検索・PR TIMES 企業別）→ 韓国 → 台湾・香港 → 中国 → 東南アジア（設計案は調査の結果）。
 - **检查**：`python scripts/digest.py audit-match`（`--only "名字、名字"` 只看几项）把最近几天收进来的条目按「靠哪个词进来的」列出来，
   ✗ 是按现在的规则已经不会再收的。每组看一眼标题，有不相关的就收紧那个词；误收已经上了版面的，
   从当天还没有 `.edit.json` 的 inbox 里删掉、把报告里那条拿掉，再重新出刊。`tests/test_match.py` 有这几种写法的例子。
