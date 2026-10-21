@@ -568,6 +568,20 @@
   "why": "防盗链",
   "ref": true
  },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c345ad7c66085aeff444aa215381669dedcc322fcb34dc265635962016b65c5e455fc7a5b5726e41cf58d7f7ba471a1c386460eb3ddfa7e50223e36d52d1e332d3a94f35d9dff28205de77401bd084f9": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.279,
+  "local": "pics/f20cca9110a41005.webp",
+  "out": [
+   300,
+   300
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
   "h": 950,
@@ -728,6 +742,12 @@
   "w": 1020,
   "h": 459,
   "target": 1280,
+  "v": 3
+ },
+ "https://i4.ytimg.com/vi/SBkOE6D8g-g/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 720,
   "v": 3
  },
  "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/10/20261019_EN_ILLIT-FB_source-web_.jpg": {
@@ -2551,6 +2571,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.8y0MDCJ-0uiozeApVEIkXw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.9HNkO23mU3knPnT4qSUFNg&pid=News&w=640": {
   "w": 100,
   "h": 100,
@@ -2612,18 +2638,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.IjUnlBA5hoS5damWvGqWuw&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/85cbfe6fee7b21d2.webp",
-  "out": [
-   700,
-   393
-  ],
-  "why": "Bing の小さい縮小画像"
- },
  "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2677,12 +2691,6 @@
  "https://www.bing.com/th?id=ONUT.UOKCZzSMtt8ASQahrpit7w&pid=News&w=1200": {
   "w": 700,
   "h": 508,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.XjPs58_MHrTfv0e2lk4NDA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -2768,7 +2776,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.jlp9udcrUizAu-wqe-iHcw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.k6p_3T6ydc2oAi8n0yvJzA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -2777,6 +2785,12 @@
  "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640": {
   "w": 640,
   "h": 333,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.kwF94wywUfmpYGg3ekDHEQ&pid=News&w=780": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
