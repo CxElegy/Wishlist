@@ -435,6 +435,12 @@
   "target": 720,
   "v": 3
  },
+ "https://charagoo.jp/wp-content/uploads/2026/05/chiikawa-news-20260710.jpg": {
+  "w": 1782,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://charagoo.jp/wp-content/uploads/2026/09/chainsawman-comic-latest-eyecatch-20260930.png": {
   "w": 1200,
   "h": 675,
@@ -569,30 +575,30 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc8042d14812ce00389f605720ddcc919b0e05e6a77681764bc6ed0542e620198519e27cbea519912202": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a738fc805b7da7875db96a1ad1abca8b81b940967dfffb51fd3caefb78df08dacbe965a4ecba03da7d463d1f5eacada426523387f375c1d71e8c4c46469d": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.365,
-  "local": "pics/454dea96819a8a7d.webp",
+  "blur": 0.472,
+  "local": "pics/ed7823c6e220cbec.webp",
   "out": [
-   300,
-   300
+   720,
+   720
   ],
   "why": "防盗链",
   "ref": true
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba86b037b34e845232a1e660a37f495bdb314b93401ebee4d26ed34c565c15903db6d5c3d6ed907f1e62ada0a39247bcb056feee8007e357b72a129962e8116a0636f661ec515d862477e6864e1f0": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0597ae52baa7e4d1d7586a22e1d4de99f537818d79eb04577ec45655863a09157b7f4bdee50c30a9bca5bfccc9d234a0": {
   "w": 300,
-  "h": 300,
+  "h": 225,
   "target": 720,
   "v": 3,
-  "blur": 0.415,
-  "local": "pics/273e77bf1c916ff2.webp",
+  "blur": 0.472,
+  "local": "pics/27fc07123575b651.webp",
   "out": [
-   300,
-   300
+   720,
+   540
   ],
   "why": "防盗链",
   "ref": true
@@ -1939,6 +1945,19 @@
   "out": [
    640,
    427
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00010019-piaeigat-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.478,
+  "local": "pics/5f4cc41571953a02.webp",
+  "out": [
+   1280,
+   1280
   ],
   "why": "期限付きの網址"
  },

@@ -98,7 +98,8 @@
   "滑雪": 7,
   "FROM": 6,
   "BLEACH Mirrors High": 5,
-  "gelato pique": 5
+  "gelato pique": 5,
+  "ちいかわ イベント": 4
  },
  "漫威电影": [
   {
@@ -1074,6 +1075,37 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "ちいかわ イベント": [
+  {
+   "headline": "【ちいかわベーカリー】2周年記念イベント開催！ 激かわグッズ販売、レア特典がもらえるチャンスも♪",
+   "highlight": "2周年記念イベント",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00010019-piaeigat-000-1-view.jpg?exp=10800"
+  },
+  {
+   "headline": "『mofusand』や『ちいかわ』などの“カワイイ”キャラクターが大集合！大阪では「SHIBUYA109阿倍野店 DISP!!!」にて10月27日まで開催",
+   "highlight": "10月27日まで開催",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "ちいかわ☆星ふるスカイツリー(R)とひみつの島｜ちいかわのコラボ・イベント 開催期間・場所・グッズ",
+   "highlight": "星ふるスカイツリー",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    3
    ]
   }
  ]
