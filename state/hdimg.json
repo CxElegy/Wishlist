@@ -1,4 +1,17 @@
 {
+ "http://n.sinaimg.cn/finance/cece9e13/20240627/655959900_20240627.png": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.514,
+  "local": "pics/aa2d618d1556777b.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清"
+ },
  "http://n.sinaimg.cn/sinakd20261017ac/533/w480h853/20261017/5551-53c5cc4364453fccee1dcae242ecccec.jpg": {
   "w": 480,
   "h": 853,
@@ -39,6 +52,12 @@
  "http://n.sinaimg.cn/sinakd20261020ac/321/w480h641/20261020/ad18-680f380a405368d58abd034d5238ecb1.jpg": {
   "w": 480,
   "h": 641,
+  "target": 720,
+  "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261021ac/200/w640h360/20261021/4312-384347fb6a8461542da2211fceb7011b.jpg": {
+  "w": 640,
+  "h": 360,
   "target": 720,
   "v": 3
  },

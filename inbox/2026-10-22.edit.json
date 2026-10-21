@@ -59,6 +59,41 @@
   }
  ],
  "_covered": {
-  "A2O LITE": 30
- }
+  "A2O LITE": 30,
+  "周杰伦": 9
+ },
+ "周杰伦": [
+  {
+   "headline": "男友打算在周杰伦演唱会现场求婚",
+   "highlight": "演唱会现场求婚",
+   "blurb": "演唱会に関する話題だが、日程・チケットの新情報ではない。",
+   "weight": "lead",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "国台办回应周杰伦遭台独扣帽子",
+   "highlight": "国台办回应",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    1,
+    2,
+    3,
+    6,
+    9
+   ]
+  },
+  {
+   "headline": "#声生不息# 周杰伦的《暗号》，被他爆改翻唱，唱出别样风格！",
+   "highlight": "《暗号》",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  }
+ ]
 }
