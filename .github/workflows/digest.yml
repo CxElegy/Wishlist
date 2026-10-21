@@ -54,6 +54,12 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      # 拒まれた記事の頁だけ本物のブラウザで開き直す（scripts/images.py の _browser_html、1 回 10 頁まで）。
+      # 入れられなかったら SCRAPLING_BROWSER を立てず、ふつうの取り直し（Fetcher）だけで続ける
+      - name: 本物のブラウザ（scrapling・拒まれた頁だけ）
+        continue-on-error: true
+        run: scrapling install && echo "SCRAPLING_BROWSER=1" >> "$GITHUB_ENV"
+
       - name: 收集并更新简报
         if: env.IS_WEEKLY != 'true' || github.event_name == 'workflow_dispatch'
         run: python scripts/digest.py

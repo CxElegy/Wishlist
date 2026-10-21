@@ -16,6 +16,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts
 import digest  # noqa: E402
 import images  # noqa: E402
 
+images.SCRAPLING = False   # 単体テストは外のネットに出ない（scrapling の取り直しは tests/test_scrape.py でにせの返事で確かめる）
+
 
 class RetryImagesTest(unittest.TestCase):
     def setUp(self):

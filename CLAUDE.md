@@ -151,7 +151,7 @@
 - **垃圾站**（被黑的网站批量生成的页面，标题塞作品名骗搜索，会命中 match）：`digest.is_spam` 按标题写法（「在线看」、末尾 10 位随机码 `(gQvzdvbtKG)`）和链接网域（`SPAM_HOSTS`，Unisba Media = `unisba.ac.id`）认；
   收集・整理待ち・出刊・页面・推荐・話題度的报道量都过这一个函数，新发现一个垃圾站就在那里加写法 / 网域，在 `tests/test_match.py` 加真实标题。
 - **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」）写进 `exclude`。
-- **情報源（2026-10-22，用户定的：都要，不用 AI 所以 CPU・时间可以多用）**：Google・Bing・Reddit・Steam・RSS 之外，`sources.gdelt`（世界 65 言語のニュース索引，读者的语言，5 秒 1 回・429 重试，`use` 有 google 的关注项，每项前 2 个词）、
+- **情報源（2026-10-22，用户定的：都要，不用 AI 所以 CPU・时间可以多用）**：Google・Bing・Reddit・Steam・RSS 之外，`sources.gdelt`（世界 65 言語のニュース索引，读者的语言，5 秒 1 回・429 重试，连续 3 次被拒这次就不再问（2026-10-22 本番：Actions 的共享 IP 几乎都被拒，空等 10 分钟），`use` 有 google 的关注项，每项前 2 个词）、
   `sources.youtube_channel`（公式チャンネルの RSS，チャンネル = items.yaml 的 `youtube` 或 `wiki` → Wikidata P2397，缓存 `state/youtube_channels.json` 30 天）、
   `sources.bluesky`・`sources.mastodon_tag`（`use` 有 reddit 的关注项；和 Reddit 一样只放火的帖子：Bluesky ♥50 / 转发＋引用 15，Mastodon ♥20 / ブースト 10，其余只算話題度；匹配词必须在帖子正文；网址开头的自动转载 bot 帖丢掉）。
   都过同样的 match・exclude・垃圾站・去重；`sources.is_sns` = Reddit・Bluesky・Mastodon（不当报道・不当推荐）。
@@ -196,6 +196,9 @@
   MSN 的视频（`vi-`）・图集读接口的 `thumbnail` / `slides`；新浪 sinaimg 这类防盗链（不带 Referer 就 403）的原文图，带原文网页作 Referer 再试，来源名加「（本站保存）」。
   出刊时 `hdimg.py` 用 OpenCV 判断「看不清吗」：**原图看得清就不动、不花资源**（用户定的）。只有网页上要放大 1.6 倍以上、而且放到显示大小后模糊度 > 0.42（无参考 re-blur 法）的图
   才去噪 NLMeans → Lanczos4 放大（最多 3 倍）→ 亮度 USM；Bing 只给 100×100 的缩略图改取 w=1200 版切白边；防盗链的图、期限付きの網址（Yahoo ニュースの `?exp=10800`，几小时后变成 1×1 的白图）存一份；已经打不开・变成空白的图记 `dead`，`retry_images` 去原文重新找；网页上 1×1 的图当作打不开、换下一张。都放 `docs/pics/`（`state/hdimg.json` 记对应关系，过 8 天删），`render._img_url` 优先用本站的、打不开再用原图。手动：`digest.py hd-images`。
+  **拒まれたら scrapling で取り直す・代表の 1 枚（2026-10-22，用户定的：不用 AI，CPU 可以多用）**：`images._fetch` が 202/401/403/405/429/503・確認画面で拒まれたら ① scrapling の Fetcher（Chrome と同じ TLS。記事の頁だけ Google から来たヘッダー、画像には付けない）で 1 回取り直し、
+  まだ拒まれた記事の頁は ② 本物のブラウザ（StealthyFetcher、`digest.yml` が `scrapling install` できたときだけ `SCRAPLING_BROWSER=1`、1 回 10 頁まで）。取り直しでしか取れない画像は来源名に「（本站保存）」→ hdimg が本站に保存。有料記事・ログインの壁は越えない。
+  正文図は最初の 1 枚で決めず 6 枚まで確かめ `images.key_score`（大きい・16:10 に近い・記事の上のほう、細長い帯は除く）で選ぶ。テストは外に出ない（`images.SCRAPLING = False`、`tests/test_scrape.py`）。
 - **版面主题（motif）**：`items.yaml` 里给作品写 `motif:`，主题在 `templates/`（`index.yaml` 一览 + 每套一份 `<id>.css`，只用作品自己的配色变量）。
   现在有 **30 套**（背景花纹、题字形状、照片边框、标题旁装饰字），每套带一个 **👍 演出**（`fx`，`scripts/likefx.py` 的 20 种：大拇指的动作 + 飞散的形状 + 文字）。
   一览和试玩：テーマ見本 https://cxelegy.github.io/Wishlist/home/themes.html （`render.render_themes`）。

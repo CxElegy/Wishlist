@@ -5,3 +5,4 @@ opencc-python-reimplemented>=0.1.7,<0.2
 opencv-python-headless>=4.8,<5   # 小元素（scripts/emblem.py）の顔検出・切り抜き検査。5 以降は顔検出が別パッケージ
 requests>=2.31,<3          # Wikimedia（scripts/wikihttp.py）
 requests-cache>=1.2,<2     # その応答のディスクキャッシュ（~/.cache/wishlist-http）
+scrapling[fetchers]>=0.5,<0.6   # 拒まれた記事の頁・画像の取り直し（scripts/images.py の _scrape・_browser_html、scrapling 公式スキル）

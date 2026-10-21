@@ -430,6 +430,8 @@ def reddit_sub(subreddit):
 GDELT_LANGS = {"ja-JP": "japanese", "en-US": "english", "zh-TW": "chinese", "zh-CN": "chinese", "ko-KR": "korean"}
 GDELT_MAX = 50
 GDELT_TRIES, GDELT_WAIT = 3, 6   # 混んでいたら 6 秒あけて 3 回まで
+GDELT_TRIP = 3   # 取り直しても 429 が続けて 3 回：この回はもう GDELT に聞かない（2026-10-22 本番：Actions の共有 IP ではほぼ全部 429、10 分待って 0 件だった）
+_gdelt_fails = [0]
 
 
 def _gdelt_time(s):
@@ -442,6 +444,11 @@ def _gdelt_time(s):
 def gdelt(query, lookback_days, langs):
     """GDELT DOC 2.0（https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/）：世界中のニュースサイトを 15 分ごとに集めた索引。
     Google・Bing に出てこない各国の地方紙・専門サイトまで拾える。読者の言語（langs）の記事だけ。配図（socialimage）つき。5 秒に 1 回まで（PACE）。"""
+    if _gdelt_fails[0] >= GDELT_TRIP:
+        return []
+    query = re.sub(r"[-‐–—:：!！?？()（）\[\]「」『』\"']+", " ", query).strip()   # GDELT は記号（- など）を受け付けない
+    if len(query) < 2:
+        return []
     names = sorted({GDELT_LANGS[l] for l in langs if l in GDELT_LANGS}) or ["english"]
     lang = " ".join(f"sourcelang:{n}" for n in names) if len(names) == 1 else "(" + " OR ".join(f"sourcelang:{n}" for n in names) + ")"
     q = f'"{query}" {lang}' if " " in query.strip() else f"{query} {lang}"
@@ -453,12 +460,18 @@ def gdelt(query, lookback_days, langs):
             break
         except urllib.error.HTTPError as e:
             if e.code != 429 or attempt + 1 == GDELT_TRIES:
+                if e.code == 429:
+                    _gdelt_fails[0] += 1
+                    if _gdelt_fails[0] == GDELT_TRIP:
+                        _warn("GDELT", f"{e}（続けて {GDELT_TRIP} 回：この回はもう聞かない）")
+                        return []
                 _warn("GDELT", e)
                 return []
             time.sleep(GDELT_WAIT)
         except Exception as e:
             _warn("GDELT", e)
             return []
+    _gdelt_fails[0] = 0
     try:
         arts = json.loads(data.decode("utf-8", "replace") or "{}").get("articles") or []
     except ValueError:   # 混んでいるときは JSON でなく「5 秒に 1 回まで」の文が返る
