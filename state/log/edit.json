@@ -322,5 +322,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 442852
+},
+{
+"at": "2026-10-21T07:34:03+00:00",
+"text": "2026-10-21 第 10 バッチを出刊：MMORPG 新作（1 版面・3 本・残り 14 版面） · token 新規入力 4,405・キャッシュ読み 60.1万・出力 1,518",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.16,
+"mem_total": 16874930176,
+"mem_free": 16125489152,
+"disk_used": 9983631360,
+"disk_free": 31543607296,
+"disk_total": 41527238656,
+"peak": 245207040
+},
+"batch": 10,
+"boards": [
+"MMORPG 新作"
+],
+"stories": 3,
+"left": 14,
+"edited": 10,
+"run": 1792565708.6792397,
+"tok": {
+"in": 8,
+"cw": 4397,
+"cr": 600659,
+"out": 1518,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 606582
 }
 ]

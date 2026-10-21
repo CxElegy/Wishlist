@@ -86,7 +86,8 @@
   "ちいかわ 漫画": 30,
   "周杰伦": 30,
   "绝区零": 30,
-  "日本顶级网球赛事": 28
+  "日本顶级网球赛事": 28,
+  "MMORPG 新作": 26
  },
  "漫威电影": [
   {
@@ -567,6 +568,42 @@
     "label": "イベント",
     "place": "有明コロシアム"
    }
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "新作アクションMMORPG『ArcheAge Chronicles』が「Steam Nextフェス」向けに体験版を配信開始。PvPも初導入",
+   "highlight": "体験版を配信開始",
+   "blurb": "『ArcheAge Chronicles』のデモ版が Steam Next Fest で公開。新ダンジョンやPvPも体験できる。",
+   "weight": "lead",
+   "refs": [
+    10,
+    18,
+    20,
+    22
+   ],
+   "image": "https://www.4gamer.net/games/528/G052880/20261020018/SS/001.jpg"
+  },
+  {
+   "headline": "『リネージュ クラシック』事前登録が本日（10/21）開始。2000年代初期MMORPGの世界、戦闘、成長、プレイヤー同士のつながりを現",
+   "highlight": "事前登録が本日（10/21）開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "NEXON 新作 MMORPG《裝備仔：OVERGEARED》10月21日開放伺服器與角色名稱搶先預約！",
+   "highlight": "10月21日開放伺服器與角色名稱搶先預約",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    5,
+    1,
+    4
+   ]
   }
  ]
 }

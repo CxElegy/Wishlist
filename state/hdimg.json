@@ -402,6 +402,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cimg.kgl-systems.io/camion/files/91218/thumbnail_TrwC.jpg?x=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://cimg.kgl-systems.io/camion/files/91467/thumbnail_BFNi.jpg?x=1280": {
   "w": 1280,
   "h": 720,
@@ -1223,12 +1229,6 @@
   "target": 720,
   "v": 3
  },
- "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
-  "w": 1035,
-  "h": 582,
-  "target": 1280,
-  "v": 3
- },
  "https://imgs.ototoy.jp/news/image.php/131993/0.jpg": {
   "w": 800,
   "h": 533,
@@ -1429,6 +1429,12 @@
   "v": 3,
   "blur": 0.419
  },
+ "https://news-cdn.para-daily.com/wp-content/uploads/2026/10/1792561059-nugfmgqtfkswqwu18mjq.webp": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://news-images.tvbs.com.tw/api/v1/image/01a13a2c-176d-73ee-ba02-69f9e159370a.jpg?t=16x9&c=0,41,1080,649&w=1200&h=675": {
   "w": 1200,
   "h": 675,
@@ -1519,12 +1525,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-21"
- },
- "https://news.pchome.com.tw/newsdata/game/gamer/20261020/79249250522710203104_original.jpg": {
-  "w": 1232,
-  "h": 706,
-  "target": 720,
-  "v": 3
  },
  "https://news.walkerplus.com/article/1007171/10055615_615.jpg": {
   "w": 615,
@@ -2494,6 +2494,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.4gamer.net/games/528/G052880/20261020018/SS/001.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.asahi.com/and/ogp/ogp_and.png": {
   "w": 1200,
   "h": 630,
@@ -2938,6 +2944,12 @@
  "https://www.gadgetreview.com/wp-content/uploads/Foldable-Phones-Roundup-Samsung-Apple-Huawei-and-More.png": {
   "w": 1312,
   "h": 736,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.globaltimes.cn/Portals/0/attachment/2026/2026-10-13/db804cd8-de37-45b7-9f60-4ccf6a6b30a8.jpeg": {
+  "w": 1200,
+  "h": 720,
   "target": 1280,
   "v": 3
  },
