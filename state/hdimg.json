@@ -563,6 +563,20 @@
   "target": 1280,
   "v": 3
  },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fbbe51fc8b9a605476aa17797550382f46cbc385290060cc7222bbdd52b5c6c518280290503be": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.446,
+  "local": "pics/b5b1d774ac1b583b.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260807165ae03900846e802898b345c34f72d1c60675dfc3514f60b3afca0738dca4d08ea98509b23d8c5c28ee99bdc": {
   "w": 300,
   "h": 300,
@@ -576,26 +590,6 @@
   ],
   "why": "防盗链",
   "ref": true
- },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a73199637726083796547fa766f6e58ee427d9660eadefc683e0b058a4c5a6015342ff820cfefdbff8b407c95a63193822d86326108": {
-  "w": 234,
-  "h": 300,
-  "target": 720,
-  "v": 3,
-  "blur": 0.299,
-  "local": "pics/5e0289b340a4c51b.webp",
-  "out": [
-   234,
-   300
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
@@ -1140,6 +1134,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2etoPE.img": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fDbWb.img": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -2543,6 +2543,12 @@
   ],
   "why": "看不清"
  },
+ "https://storage.ghost.io/c/c1/a6/c1a6d111-d951-41ad-a392-c1e841210b93/content/images/2026/10/From-s4.webp": {
+  "w": 1284,
+  "h": 856,
+  "target": 1280,
+  "v": 3
+ },
  "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-16-182324.jpg": {
   "w": 1448,
   "h": 971,
@@ -2699,12 +2705,6 @@
    393
   ],
   "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.5SyM0P931IBkDjRnMBhpHA&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.5unc9EPQvoH7kkubFBFiwA&pid=News&w=1200": {
   "w": 100,
@@ -2890,6 +2890,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500": {
   "w": 100,
   "h": 100,
@@ -3033,6 +3039,18 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ORMS.f901084b723d6aebcdb55c0057b83852&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/d9344044b8562499.webp",
+  "out": [
+   700,
+   466
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.boardoftheworld.com/wp-content/uploads/2024/06/Board-With-Bindings-Capita-Doa-2026.jpg": {
   "w": 1280,
   "h": 870,
@@ -3133,12 +3151,6 @@
  "https://www.engadget.com/img/gallery/the-latest-playstation-firmware-may-have-already-been-cracked-ahead-of-gta-6/l-intro-1792530805.jpg": {
   "w": 1600,
   "h": 899,
-  "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg": {
-  "w": 1000,
-  "h": 544,
   "target": 720,
   "v": 3
  },
