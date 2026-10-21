@@ -80,7 +80,8 @@
  "_covered": {
   "三星手机": 40,
   "漫威电影": 40,
-  "A2O LITE": 30
+  "A2O LITE": 30,
+  "GTA 6": 30
  },
  "漫威电影": [
   {
@@ -190,6 +191,68 @@
     6,
     21,
     26
+   ]
+  }
+ ],
+ "GTA 6": [
+  {
+   "headline": "GTA 6 Digital Pre-Orders Climb to 6.45 Million, PlayStation Holds 74% Share",
+   "highlight": "6.45 Million",
+   "blurb": "GTA 6 のデジタル予約が645万本に到達、PlayStation が74%を占める。推定売上は約6億ドル。",
+   "weight": "lead",
+   "refs": [
+    18,
+    1,
+    3,
+    22
+   ],
+   "image": "https://assets.juksy.com/files/articles/153324/6ad8489984e5b.jpg"
+  },
+  {
+   "headline": "GTA VI Is Exactly One Month Away. The Final Trailer Looks Awesome",
+   "highlight": "Exactly One Month Away",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    15,
+    17
+   ]
+  },
+  {
+   "headline": "The latest PlayStation firmware may have already been cracked ahead of GTA 6",
+   "highlight": "firmware may have already been cracked",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    28,
+    11
+   ]
+  },
+  {
+   "headline": "GTA 6 to Drain $1B From US Economy With Take-Two Expected to Bank the Same Amount",
+   "highlight": "$1B",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    4,
+    19,
+    23,
+    29,
+    12,
+    8
+   ]
+  },
+  {
+   "headline": "You May Be Able to Drink Real Versions of GTA 6's Iconic Beer Brands Very Soon",
+   "highlight": "Real Versions",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13,
+    24
    ]
   }
  ]
