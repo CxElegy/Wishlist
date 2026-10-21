@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-21T10:17:17+00:00",
+ "changed": true,
+ "checked": "2026-10-21T10:57:16+00:00",
  "fired": {
-  "at": "2026-10-21T08:17:16+00:00",
+  "at": "2026-10-21T10:57:16+00:00",
   "results": {
-   "edit": "1 日 2 回（9:00 と 18:00）。次は 18:00",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,17 +12,38 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-21T06:52:49+00:00",
+    "at": "2026-10-21T10:57:16+00:00",
     "attempts": 1,
-    "prog": 0,
-    "resp": "cse_017nVKRHrWGSTwpUBALBqRcu",
-    "sig": "3f6adaa2f6cc"
+    "prog": 434,
+    "resp": "cse_019S5H6sUgZT2nTHnm7dZUyp",
+    "sig": "83d74b6a54f7"
    },
-   "items": [],
-   "need": false,
+   "items": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "ぐでたま",
+    "ちいかわ",
+    "ちいかわ 漫画",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "漫威电影",
+    "绝区零"
+   ],
+   "need": true,
    "prog": 434,
-   "sig": "c0c8b76adcd9",
-   "why": "今日の新着はすべて AI 編集済み"
+   "sig": "83d74b6a54f7",
+   "why": "整理待ちの記事 245 件（20 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -30,12 +51,12 @@
    "need": false,
    "sig": "b1312ab4623e",
    "waiting": [
-    "ちいかわ",
     "ちいかわ イベント",
+    "哈利波特剧集",
+    "ちいかわ",
     "ちいかわ 漫画",
     "Astrae Oratio",
     "A2O LITE",
-    "哈利波特剧集",
     "あつ森"
    ],
    "why": "失敗 7 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:51 から）"
