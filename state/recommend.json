@@ -10,7 +10,6 @@
   "https://www.whas11.com/article/news/nation-world/starbucks-snoopy-cup-peanuts-collection-release-date/507-20c3ad04-495d-44ff-b2bf-7a085ff61614": "2026-10-21"
  },
  "images": {
-  "http://news.17173.com/content/10202026/170709662.shtml": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/oooIHQbufmjbaeF.jpg",
   "http://www.excite.co.jp/news/article/bg_mania_703579/": "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200",
   "https://animeanime.jp/article/2026/10/17/103903.html": "https://animeanime.jp/imgs/ogp_f/942450.jpg",
   "https://animeanime.jp/article/2026/10/19/103949.html": "https://animeanime.jp/imgs/ogp_f/944741.jpg",
@@ -51,6 +50,7 @@
   "https://t.co/eIl8aSiwOj": null,
   "https://today.line.me/tw/v3/article/kEpZaq0": "https://today-obs.line-scdn.net/0hIJz4AU5TFmVHTQrR-w9pMn8bGhR0KwxsZS5dAGFFGwZqYQRgfHxFBmYeT0k6LwQ7Z35ZUGQdTV09fQNgcg/w1200",
   "https://tw.news.yahoo.com/%E8%90%AC%E8%81%96%E7%AF%80%E7%98%8B%E7%8E%A9%E6%94%BB%E7%95%A5-%E8%AE%8A%E8%A3%9D-%E5%85%8D%E8%B2%BB%E5%85%A5%E5%9C%92-5%E7%B1%B3%E5%B7%A8%E6%80%AA%E5%87%BA%E6%B2%92-%E9%A3%AF%E5%BA%97%E6%8E%A8%E6%9A%97%E9%BB%91%E6%96%99%E7%90%86-021900328.html": "https://s.yimg.com/lo/mysterio/api/4e3238e713fd70fa140c1d7ebbc8cc2c974ea9eb26afa12fec89b8fc1987efda/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fsetn.com.tw%2Ff6ed0eaf155d6cd697540b50e5340dc5.jpg",
+  "https://wotpack.ru/ja/insayd-v-zenless-zone-zero-vyydet-tri-novyh-agenta-v-patche-3-4/": "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg",
   "https://www.aol.com/articles/starbucks-target-just-dropped-sweetest-143648000.html": "https://hermes.media.static.aol.com/media/2026/10/14/e0a70dfe-6604-3cea-83b8-c319c02bb690/7fdc4e2f-5915-4ded-b631-4852b662f1c0.jpeg",
   "https://www.asahi.com/and/pressrelease/16970306": "https://www.asahi.com/and/ogp/ogp_and.png",
   "https://www.asahi.com/asagakuplus/article/asasho/16979815": "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600",
@@ -1256,27 +1256,6 @@
   },
   {
    "batch": 3,
-   "because": "绝区零",
-   "date": "2026-10-20",
-   "hits": [],
-   "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/oooIHQbufmjbaeF.jpg",
-   "kind": "board",
-   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
-   "score": 8,
-   "source": "17173",
-   "taste": [
-    [
-     "作品:绝区零",
-     7
-    ]
-   ],
-   "title": "《绝区零》新品情报丨客制化三模键盘等多款周边上新",
-   "url": "http://news.17173.com/content/10202026/170709662.shtml",
-   "words": [],
-   "work": "绝区零"
-  },
-  {
-   "batch": 3,
    "because": "猫用品",
    "date": "2026-10-20",
    "hits": [
@@ -1347,7 +1326,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 4,
+   "batch": 3,
    "because": "チェーンソーマン",
    "date": "2026-10-20",
    "hits": [],
@@ -1416,6 +1395,27 @@
    "url": "https://t.co/eIl8aSiwOj",
    "words": [],
    "work": "あつ森"
+  },
+  {
+   "batch": 4,
+   "because": "绝区零",
+   "date": "2026-10-19",
+   "hits": [],
+   "image": "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg",
+   "kind": "board",
+   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
+   "score": 8,
+   "source": "Wotpack.ru",
+   "taste": [
+    [
+     "作品:绝区零",
+     7
+    ]
+   ],
+   "title": "内部情報：パッチ3.4で、ゼンレスゾーンゼロに3人の新ヒーローが登場します。",
+   "url": "https://wotpack.ru/ja/insayd-v-zenless-zone-zero-vyydet-tri-novyh-agenta-v-patche-3-4/",
+   "words": [],
+   "work": "绝区零"
   },
   {
    "batch": 4,
@@ -2289,11 +2289,11 @@
    9
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [

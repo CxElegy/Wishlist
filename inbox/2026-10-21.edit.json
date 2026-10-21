@@ -127,13 +127,13 @@
   "A2O LITE": 60,
   "GTA 6": 61,
   "ちいかわ": 60,
-  "ちいかわ 漫画": 30,
+  "ちいかわ 漫画": 34,
   "周杰伦": 60,
-  "绝区零": 30,
-  "日本顶级网球赛事": 28,
-  "MMORPG 新作": 26,
+  "绝区零": 41,
+  "日本顶级网球赛事": 31,
+  "MMORPG 新作": 36,
   "ILLIT": 22,
-  "dota2": 18,
+  "dota2": 22,
   "哈利波特剧集": 15,
   "The Mandalorian": 9,
   "Astrae Oratio": 8,
@@ -504,7 +504,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    32
    ]
   },
   {
@@ -568,21 +569,44 @@
  "绝区零": [
   {
    "headline": "【ゼンゼロ】フィオニー＆復刻ヴェリナは引くべき？｜Ver.3.3前半ガチャ",
-   "highlight": "Ver.3.3前半ガチャ",
-   "blurb": "Ver.3.3は10月21日に更新。前半ガチャはフィオニーと復刻ヴェリナ（後半はフェニックス・セヴェリアンの情報も）。",
+   "highlight": "Ver.3.3",
+   "blurb": "Ver.3.3が10月21日に配信開始。前半ガチャはフィオニーと復刻ヴェリナ。",
    "weight": "lead",
    "refs": [
     2,
+    36,
     16,
     22,
     6,
-    20
+    20,
+    35
    ],
    "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/583035.png?date=1792396862"
   },
   {
+   "headline": "『ゼンゼロ』新キャラの特殊回避モーションに「なんだこれ?」―打ち上げられた魚、「日常」の魚雷跳びなど話題に",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    34
+   ]
+  },
+  {
+   "headline": "「ゼンレスゾーンゼロ」より怪啖屋に所属するいたずら好きな少女「浮波柚葉」が1/7スケールフィギュアで登場！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    31,
+    1,
+    33
+   ]
+  },
+  {
    "headline": "「ゼンレスゾーンゼロ」よりフィギュア「LIMEPIEシリーズ 儀玄 墨まとう影の足跡 Ver.」が2027年8月発売！",
-   "highlight": "2027年8月発売",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -590,49 +614,53 @@
    ]
   },
   {
-   "headline": "「ゼンレスゾーンゼロ」より怪啖屋に所属するいたずら好きな少女「浮波柚葉」が1/7スケールフィギュアで登場！",
-   "highlight": "1/7スケールフィギュア",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    1
-   ]
-  },
-  {
    "headline": "《绝区零》新品情报丨客制化三模键盘等多款周边上新",
-   "highlight": "客制化三模键盘",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
     9,
     8
    ]
-  },
-  {
-   "headline": "内部情報：パッチ3.4で、ゼンレスゾーンゼロに3人の新ヒーローが登場します。",
-   "highlight": "3人の新ヒーロー",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    19
-   ]
   }
  ],
  "日本顶级网球赛事": [
   {
-   "headline": "世界9位シフィオンテク 東レPPO欠場、怪我で今季終了＜女子テニス＞",
-   "highlight": "東レPPO欠場",
-   "blurb": "世界ランク9位のイガ・シフィオンテクが東レ パン パシフィック オープンを欠場。怪我のため今季の戦いを終えた。",
+   "headline": "シフィオンテクが今季終了を発表！「身体を完全に休ませる必要がある」。東レPPOも欠場へ",
+   "highlight": "東レPPOも欠場",
+   "blurb": "世界9位のシフィオンテクが負傷で今季終了を発表し、東レ パン パシフィック オープンを欠場する。",
    "weight": "lead",
    "refs": [
+    31,
     2
    ],
-   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00010001-tennisnet-000-2-view.jpg?exp=10800"
+   "image": "https://thedigestweb.com/files/topics/121782_ext_04_0_L.jpg"
+  },
+  {
+   "headline": "加藤未唯ペア 日本勢対決制しジャパンOP4強、激闘の末に準決勝進出＜女子テニス＞",
+   "highlight": "4強",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    29,
+    7,
+    6,
+    8
+   ]
+  },
+  {
+   "headline": "18歳タガーが若手有望株同士の一戦を制して8強入り！強風のタフな一戦に「集中力を高く保てた」と手応え",
+   "highlight": "8強入り",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    24
+   ]
   },
   {
    "headline": "内島萌夏 日本勢対決「難しい」 激闘制し3年ぶりジャパンOP初戦突破＜女子テニス＞",
-   "highlight": "3年ぶりジャパンOP初戦突破",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -644,19 +672,8 @@
    ]
   },
   {
-   "headline": "加藤未唯ペア 日本勢対決制しジャパンOP初戦突破、穂積絵莉ペアにストレート勝ち＜女子テニス＞",
-   "highlight": "ジャパンOP初戦突破",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7,
-    6,
-    8
-   ]
-  },
-  {
    "headline": "トップシードのアン・リーが逆転勝利で初戦を突破、単複の1回戦がすべて終了",
-   "highlight": "アン・リーが逆転勝利",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -666,7 +683,7 @@
   },
   {
    "headline": "坂詰姫野 世界58位に完敗でジャパンOP初戦敗退、2日がかりの一戦でストレート負け＜女子テニス＞",
-   "highlight": "ジャパンOP初戦敗退",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -678,7 +695,7 @@
   },
   {
    "headline": "THE CLUBHOUSE、東レ パン パシフィック オープンテニストーナメントで「THE CLUBHOUSE Night」を10月30日に開催",
-   "highlight": "10月30日に開催",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -693,7 +710,7 @@
   },
   {
    "headline": "YONEX TENNIS FESTIVAL 2026 ヨネックステニスフェスティバル 10/25 ＠有明コロシアム 開催",
-   "highlight": "10/25",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -710,7 +727,7 @@
   {
    "headline": "新作アクションMMORPG『ArcheAge Chronicles』が「Steam Nextフェス」向けに体験版を配信開始。PvPも初導入",
    "highlight": "体験版を配信開始",
-   "blurb": "『ArcheAge Chronicles』のデモ版が Steam Next Fest で公開。新ダンジョンやPvPも体験できる。",
+   "blurb": "Steam Nextフェスで『ArcheAge Chronicles』の体験版が公開。新ダンジョンやPvPも体験できる。",
    "weight": "lead",
    "refs": [
     10,
@@ -721,24 +738,30 @@
    "image": "https://www.4gamer.net/games/528/G052880/20261020018/SS/001.jpg"
   },
   {
-   "headline": "『リネージュ クラシック』事前登録が本日（10/21）開始。2000年代初期MMORPGの世界、戦闘、成長、プレイヤー同士のつながりを現",
-   "highlight": "事前登録が本日（10/21）開始",
+   "headline": "PC向けMMORPG「リネージュ クラシック」が12月2日にプレオープン決定",
+   "highlight": "12月2日",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    34,
     6
-   ]
+   ],
+   "event": {
+    "date": "2026-12-02",
+    "label": "プレオープン"
+   }
   },
   {
    "headline": "NEXON 新作 MMORPG《裝備仔：OVERGEARED》10月21日開放伺服器與角色名稱搶先預約！",
-   "highlight": "10月21日開放伺服器與角色名稱搶先預約",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
     2,
     5,
     1,
-    4
+    4,
+    32
    ]
   }
  ],
@@ -820,11 +843,13 @@
  "dota2": [
   {
    "headline": "《特戰英豪》《Dota 2》世界冠軍老牌名門戰隊 EG 宣布 11/2 停止營運 不敵電競寒冬與巨額成本",
-   "highlight": "EG 宣布 11/2 停止營運",
-   "blurb": "Dota 2 の世界王者でもある老舗チーム EG が、11月2日で運営を停止すると発表。",
+   "highlight": "11/2 停止營運",
+   "blurb": "老牌電競組織 Evil Geniuses 宣布將於11月2日停止營運，原因是電競寒冬與高昂成本。",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    20,
+    19
    ],
    "event": {
     "date": "2026-11-02",
@@ -834,7 +859,7 @@
   },
   {
    "headline": "Korb3n Gave a Straight Answer on Whether Collapse Will Return to the Dota 2 Pro Scene",
-   "highlight": "Collapse",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -843,7 +868,7 @@
   },
   {
    "headline": "Rue Recounted How He Joined Team Spirit’s Dota 2 Roster",
-   "highlight": "Team Spirit",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -851,8 +876,17 @@
    ]
   },
   {
+   "headline": "MinD_ContRoL Explained Why He Doesn't Want to Return to Professional Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
    "headline": "离队与回归之间，Team Synapse 的 5 号位有了新故事",
-   "highlight": "Team Synapse",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -860,8 +894,8 @@
    ]
   },
   {
-   "headline": "DB - XE, 31 十月 2026 - match stream, live broadcast - EPL World SEA S19 - Dota 2",
-   "highlight": "EPL World SEA S19",
+   "headline": "DB - XE, 31 十月 2026 - match stream, live broadcast - EPL World SEA S19",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [

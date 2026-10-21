@@ -594,13 +594,13 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a06b03747a40f3518fa845c471bc240eadae66ac33146e27be32ed2bdaa21b4027f0509b872fc6d4aac82ee0df9cc5b91c89801c95849e87924d9b962c663df8d8355b1f273b09c89379c2303534cb34cb53dc31": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c3428ab8799c155639a8b17bd5f6b0dc28e183feb7494b7822ba49777e8b2a70db048a4da86715842c9f4af5c9756fe22c35e45ea882bb9fc474a12cba941fb4eb330b4ccfb977f146": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.296,
-  "local": "pics/860e4808fed0bd75.webp",
+  "blur": 0.292,
+  "local": "pics/e405aef6434a91b1.webp",
   "out": [
    300,
    300
@@ -608,15 +608,15 @@
   "why": "防盗链",
   "ref": true
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e41ecab5bf054b61ab709c5f0d851b8e53a47eaa6fc0afea84ca0c26dd41d52958959b9b4e66f01d3a56e876a76e02b07ea3fcc2eaeb55442c4af9e7a4922f00fecaa1a2b660": {
-  "w": 220,
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c345ad7c66085aeff444aa215381669dedcc322fcb32d72857329d2711b6585e475cf1bf5efa882d24716c934ef39ab83bb5221d06ad0efe1ce1bcf2b6aec39e7f45b4248f18896903666c90c3ac2918": {
+  "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.475,
-  "local": "pics/d6f68450dafe1add.webp",
+  "blur": 0.448,
+  "local": "pics/09717b2f663444a0.webp",
   "out": [
-   528,
+   720,
    720
   ],
   "why": "防盗链",
@@ -698,6 +698,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/mindcontrol-will-not-return-pro-scene-25371.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/rue-spoke-about-a-harsh-joke-by-korb3n-before-his-transfer-to-team-spirit-24095.jpg": {
@@ -2068,7 +2074,7 @@
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261020-00010009-tennisnet-000-1-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1449,
-  "target": 720,
+  "target": 1280,
   "v": 3,
   "local": "pics/97d7f20eacee4ee6.webp",
   "out": [
@@ -2103,15 +2109,15 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00010001-tennisnet-000-2-view.jpg?exp=10800": {
-  "w": 2200,
-  "h": 1671,
-  "target": 1280,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00007773-tennisc-000-2-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3,
-  "local": "pics/605bf0f830b92b37.webp",
+  "local": "pics/0636d967f1797a7c.webp",
   "out": [
-   1280,
-   972
+   1200,
+   800
   ],
   "why": "期限付きの網址"
  },
@@ -2650,6 +2656,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-21"
  },
+ "https://thedigestweb.com/files/topics/121782_ext_04_0_L.jpg": {
+  "w": 1440,
+  "h": 960,
+  "target": 1280,
+  "v": 3
+ },
  "https://themagicrain.com/wp-content/uploads/2026/10/image-3-20.jpg": {
   "w": 1536,
   "h": 1024,
@@ -2725,6 +2737,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/16/1792169865739_img-14c0fcb120261016231916-jpg-v-2.jpeg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
+  "w": 1080,
+  "h": 600,
   "target": 720,
   "v": 3
  },
@@ -2964,12 +2982,6 @@
  "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600": {
   "w": 600,
   "h": 450,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000": {
-  "w": 700,
-  "h": 380,
   "target": 720,
   "v": 3
  },
@@ -3267,6 +3279,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg": {
+  "w": 1000,
+  "h": 544,
+  "target": 720,
+  "v": 3
+ },
  "https://www.fashion-press.net/img/news/151993/top.jpg?1791942061": {
   "w": 1600,
   "h": 1068,
@@ -3308,19 +3326,6 @@
   "h": 399,
   "target": 720,
   "v": 3
- },
- "https://www.inside-games.jp/imgs/ogp_f/1796555.jpg": {
-  "w": 600,
-  "h": 421,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.535,
-  "local": "pics/77975bfdb841ab08.webp",
-  "out": [
-   1280,
-   898
-  ],
-  "why": "看不清"
  },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/illit01.webp": {
   "w": 1200,
