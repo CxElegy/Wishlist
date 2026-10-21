@@ -1037,6 +1037,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fKAOl.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
   "h": 819,
@@ -1163,12 +1169,6 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/11/5602291_3.jpg": {
   "w": 800,
   "h": 450,
-  "target": 720,
-  "v": 3
- },
- "https://img.mydaily.co.kr/photos/2026/10/21/2026102112324060920_x.jpg": {
-  "w": 1280,
-  "h": 960,
   "target": 720,
   "v": 3
  },
@@ -2201,6 +2201,12 @@
   "target": 720,
   "v": 3
  },
+ "https://shattered.io/wp-content/uploads/2026/10/gta-6-launch-1-5-million-sick-days-cost-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
  "https://sm.mashable.com/mashable_in/seo/default/gta-6-mashable_z9fq.jpg": {
   "w": 1200,
   "h": 627,
@@ -2389,6 +2395,12 @@
  "https://travellingforbusiness.co.uk/wp-content/uploads/2026/10/DSCF5829-scaled.jpg": {
   "w": 768,
   "h": 576,
+  "target": 720,
+  "v": 3
+ },
+ "https://udn.com/static/img/UDN_BABY.png": {
+  "w": 1200,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -2932,6 +2944,12 @@
  "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg": {
   "w": 2560,
   "h": 1440,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.news1.kr/_next/image?url=https%3A%2F%2Fimage.news1.kr%2Fsystem%2Fphotos%2F2026%2F10%2F21%2F8172188%2Fno_water.jpg%2Fdims%2Fcrop%2F560x339&w=1920&q=80": {
+  "w": 560,
+  "h": 339,
   "target": 720,
   "v": 3
  },

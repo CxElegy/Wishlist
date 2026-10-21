@@ -60,7 +60,8 @@
  ],
  "_covered": {
   "A2O LITE": 30,
-  "周杰伦": 9
+  "周杰伦": 9,
+  "GTA 6": 6
  },
  "周杰伦": [
   {
@@ -89,6 +90,46 @@
   {
    "headline": "#声生不息# 周杰伦的《暗号》，被他爆改翻唱，唱出别样风格！",
    "highlight": "《暗号》",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  }
+ ],
+ "GTA 6": [
+  {
+   "headline": "The cheaper PS5 is finally up for pre-order but there’s a catch for GTA VI fans",
+   "highlight": "cheaper PS5",
+   "blurb": "The cheaper PS5 is up for pre-order, but there is a catch for GTA VI fans; no new release-date or pre-load info.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fKAOl.img"
+  },
+  {
+   "headline": "Another PS5 jailbreak has seemingly arrived ahead of GTA 6, and Sony and Rockstar's worst nightmare could be on the horizon",
+   "highlight": "PS5 jailbreak",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "GTA 6 Might Give America A Very Expensive Sick Day",
+   "highlight": "Expensive Sick Day",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    2
+   ]
+  },
+  {
+   "headline": "《GTA 6》上市將如何影響PS 5主機銷量？",
+   "highlight": "PS 5主機銷量",
    "blurb": "",
    "weight": "normal",
    "refs": [
