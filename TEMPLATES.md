@@ -5,7 +5,7 @@
 模版的样子在 `templates/<id>.css`，一览在 `templates/index.yaml`。
 
 现在模版库里有 **30 套主题**（背景花纹 + 题字形状 + 照片边框 + 点 👍 时的演出），一览和试玩在网页的「テーマ見本」
-（`docs/test2/themes.html`，https://cxelegy.github.io/Wishlist/test2/themes.html）。
+（`docs/test1/themes.html`，https://cxelegy.github.io/Wishlist/test2/themes.html）。
 规矩：**每个新关注项加进来时，AI 都要把它的版面设计一遍**，下面四样都要定，写进 `items.yaml`：
 
 | 要定的 | 写在哪 | 怎么定 |
@@ -21,7 +21,7 @@
 可在 `items.yaml` 写 `emblem_framing: full / bust`（版面）或小元素的 `framing:`（单张）。Logo 去纯色底、不裁。
 **加新判断时在这里加一行**（测试会检查代码里每个淘汰理由都在表里）。下面的说明是补充，数以表为准。
 
-抠图：`python scripts/emblem.py --cut 作品名 drawn`（rembg 的 birefnet-general-lite，存到 `docs/test2/emblems/`，原网址留在 `source`）。
+抠图：`python scripts/emblem.py --cut 作品名 drawn`（rembg 的 birefnet-general-lite，存到 `docs/test1/emblems/`，原网址留在 `source`）。
 要装 `pip install "rembg[cpu]" "opencv-python-headless<5"`。抠完自动检查、不合格的不用：
 ① 脸被画面边缘切掉（只切掉头发顶部可以）；**上边缘一半以上都是人**的也不用——那是漫画格子 / 脸部特写连框一起切的，
 抠掉对话框、背景后会留下奇怪的缺口（チャド的例子）② 身体在左右边缘的上 65% 被切掉 ③ 只留主体，旁边的小碎块去掉 ④ 边缘发虚（半透明多）
@@ -133,10 +133,10 @@ Wikipedia 连续 429 时那个主机休 5 分钟，不在一个关注项上耗�
    ```bash
    python -m unittest discover -s tests      # test_design / test_templates 会查模版文件、配色变量、对比度
    python scripts/digest.py render           # 重新生成网页
-   grep -c 'class="sec m-<id>' docs/test2/index.html
+   grep -c 'class="sec m-<id>' docs/test1/index.html
    ```
    能截图就用 Playwright 截 1400 / 390 px 宽看一眼这个版面：字没有被装饰压住、照片没有被切掉脸。
-   再打开 `docs/test2/themes.html` 按一下这套主题的 👍，看演出和版面的气质合不合。
+   再打开 `docs/test1/themes.html` 按一下这套主题的 👍，看演出和版面的气质合不合。
 6. **提交**（和编排一起提交也行）：
    ```bash
    git add templates items.yaml docs

@@ -6,7 +6,7 @@ App のように 1 ページで画面を切り替える：
 このブラウザが覚えている人（localStorage の wl-user）は入口を飛ばして自分のページへ（いまは店長のページ。?stay で止まる）。
 登録は本物（public.user_signup：名前・規約の同意・好み = 言語・ジャンル・最初の版面）。本人の版面はまだ作らない（第 2 步、LOGIN.md）。
 
-カードの候補は規則で作る（AI なし）：AniList の話題のアニメ・マンガ、Steam の売れ筋、店長がフォローしてきたもの（archive/test1 の関注項とアイコン）。
+カードの候補は規則で作る（AI なし）：AniList の話題のアニメ・マンガ、Steam の売れ筋、店長がフォローしているもの（いまのアカウント＝店長の関注項とアイコン、sitedir）。
   python scripts/welcome.py            → docs/index.html（本番の入口）と docs/testground/welcome.html（候補はその時点のものを埋め込む）
   digest.py render のたびに build_if_stale()：入口が 24 時間より古いときだけ作り直す（話題の候補を新しく）。
 """
@@ -21,6 +21,7 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import render  # noqa: E402
+import sitedir  # noqa: E402
 import taxonomy  # noqa: E402
 
 OUT = ROOT / "docs" / "index.html"                       # 本番の入口（https://cxelegy.github.io/Wishlist/）
@@ -99,15 +100,15 @@ def steam(n):
 
 
 def shop_picks(base="../"):
-    """店長がフォローしてきたもの（test1 の関注項・アイコンつき）。カードに「店長も見ている」。"""
-    data = yaml.safe_load((ROOT / "archive" / "test1" / "items.yaml").read_text(encoding="utf-8"))
+    """店長がフォローしているもの（店長のアカウント＝sitedir の関注項・アイコンつき）。カードに「店長も見ている」。"""
+    data = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))
     out = []
     for it in data.get("items") or []:
         icon = (it.get("icon") or {}).get("image") if isinstance(it.get("icon"), dict) else None
         if not icon or it.get("parent"):
             continue
         sec = taxonomy.canonical(it.get("section") or taxonomy.BY_TYPE.get(it.get("type", "product"), "好物"))
-        out.append({"name": it["name"], "img": base + "test1/" + icon, "sub": (it.get("subtitle") or "")[:30],
+        out.append({"name": it["name"], "img": base + sitedir.NAME + "/" + icon, "sub": (it.get("subtitle") or "")[:30],
                     "sec": sec, "shop": True, "square": True})
     return out
 
@@ -419,7 +420,7 @@ JS = r"""
 
 def build(out=OUT, base="", cards=None):
     """入口を書く。base = docs/ からの相対の前置き（本番の入口は ""、テストグラウンドは "../"）。"""
-    SHOP = base + "test2/"
+    SHOP = base + sitedir.NAME + "/"   # 店長のページ
     cards = cards if cards is not None else anilist("ANIME", 12) + anilist("MANGA", 6) + steam(12) + shop_picks("")
     cards = [{**c, "img": base + c["img"]} if c.get("shop") else c for c in cards]
     secs = {s["key"]: s for s in sections()}
@@ -476,7 +477,7 @@ def build(out=OUT, base="", cards=None):
 <li><span class="n">03</span><b>自分だけの版面を読む</b><p>作品ごとの版面で、新しいことだけ。👍 / 👎 で、店長のおすすめがだんだん合ってきます。</p></li>
 </ul>
 <p class="pop">「とりあえず店長のページをのぞいてみてね」— 店長</p>
-<div class="foot"><a href="{SHOP}">店長のページ</a><a href="{SHOP}terms.html">利用規約・プライバシーポリシー</a><a href="{base}test1/">アーカイブ（2026-10-19 までの版）</a><a href="{base}testground/">テストグラウンド</a></div>
+<div class="foot"><a href="{SHOP}">店長のページ</a><a href="{SHOP}terms.html">利用規約・プライバシーポリシー</a><a href="{base}test2/">試験の版（2026-10-19〜21）</a><a href="{base}testground/">テストグラウンド</a></div>
 </div></section>
 
 <section class="scr" id="s-name"><div class="wrap">
@@ -608,7 +609,7 @@ def preview(out):
             cards.append({**c, "img": u})
     for s in cfg["secs"].values():
         s["icon"] = data_uri(s["icon"]) if s.get("icon") else ""
-    live = "https://cxelegy.github.io/Wishlist/test2/"
+    live = f"https://cxelegy.github.io/Wishlist/{sitedir.NAME}/"
     cfg.update({"cards": cards, "shop": live, "url": "", "key": ""})
     page = re.sub(r'(<script type="application/json" id="wl-cfg">).*?(</script>)',
                   lambda m: m.group(1) + json.dumps(cfg, ensure_ascii=False).replace("</", "<\\/") + m.group(2), page, flags=re.S)
@@ -616,8 +617,8 @@ def preview(out):
         page = re.sub(r'(data-k="%s"[^>]*>)<img src="[^"]*"' % re.escape(k), lambda m, s=s: m.group(1) + f'<img src="{s["icon"]}"', page)
     for name in ("shop-pc.webp", "shop-sp.webp"):
         page = page.replace(f'src="testground/welcome/{name}"', f'src="{data_uri("testground/welcome/" + name, 1200)}"')
-    page = page.replace('href="test2/', f'target="_blank" rel="noopener" href="{live}')
-    page = re.sub(r'href="(test1/|testground/)', r'target="_blank" rel="noopener" href="https://cxelegy.github.io/Wishlist/\1', page)
+    page = page.replace(f'href="{sitedir.NAME}/', f'target="_blank" rel="noopener" href="{live}')
+    page = re.sub(r'href="(test1/|test2/|testground/)', r'target="_blank" rel="noopener" href="https://cxelegy.github.io/Wishlist/\1', page)
     # Artifact は <html><head><body> を自分で付けるので中身だけ
     head = re.search(r"<head>(.*?)</head>", page, re.S).group(1)
     body = re.search(r"<body>(.*?)</body>", page, re.S).group(1)

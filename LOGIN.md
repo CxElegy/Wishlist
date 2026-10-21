@@ -15,16 +15,18 @@ Google ログインは保留（Google の「公開」にホームページとプ
 - 門番はデータベース：書く関数の 1 行目で `can_edit(p_account)` / `is_admin()`（`db/auth_guard.sql`）。網页は止めて理由を出すだけ（`render.AUTH_JS`）。
 - 開關 `private.auth_flags.enforce`：閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。`db/auth_enforce.sql` で開く。戻すときは false に。
 - 管理者：`invites` 表の role=admin のメール（最初は `c.elegy@outlook.com`、5 人まで）。登録時の trigger が役割を決める。ほかの人はユーザー。
+- **店長の名前**（2026-10-21）：`CxElegy`。`app_users.email` に店長のメールを入れておくと、名前でログインしたときも `admin_email_for` がメールに換えて確認のリンクを送る（画面にはメールを伏せて出す）。
+- **店長のページ = test1**（2026-10-21，用户定的）：前の test1 の中身を店長のものとして戻した。試験の版 test2 は `archive/test2/`・`docs/test2/`（見るだけ）。
 - account の持ち主：`accounts` 表（test1・test2 は owner 空 = 運営者 = 管理者のもの）。ユーザー自分の account は第 2 步。
 - 保存するのはメール（と名前）だけ。管理ページのユーザー一覧は名前だけ（メールは招待表だけ）。
 
 ## 運営者がやること（1 回だけ・約 1 分）
 
 1. **戻り先を許可**：https://supabase.com/dashboard/project/bzokpnbcjscbcehdxtjq/auth/url-configuration
-   - Site URL に `https://cxelegy.github.io/Wishlist/test2/` → 「Save」
+   - Site URL に `https://cxelegy.github.io/Wishlist/test1/` → 「Save」
    - Redirect URLs の「Add URL」に `https://cxelegy.github.io/Wishlist/**` → 「Save」
    （これがないとメールのリンクが localhost に飛ぶ）
-2. Claude に「設定した」と言う → 右上の「ログイン」に `c.elegy@outlook.com` →「確認待ち」→ 届いたメールのリンク →「管理者」と出れば OK → 合併して `db/auth_enforce.sql`（開關を開く）
+2. Claude に「設定した」と言う → 右上の「ログイン」に `CxElegy`（またはメール）→「確認待ち」→ 届いたメールのリンク →「管理者」と出れば OK → 合併して `db/auth_enforce.sql`（開關を開く）
 
 - **招待制にしない**（2026-10-21，用户定的）：だれでもメールで登録できる。`invites` 表は「管理者のメール」の表としてだけ使う（`hook_invite_only` は作ってあるが Hooks にはつながない）。
 - **ブラウザが覚える**：一般ユーザーは localStorage（`wl-user`）、管理者は Supabase のセッション（`wl-auth`、鍵は自動で更新）。ログアウトするかブラウザのデータを消すまでログインのまま。

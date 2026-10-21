@@ -62,7 +62,7 @@ NAV_SCHEMES_FILE = STATE_DIR / "nav_schemes.json"   # 板块ごとに選んだ�
 HEAT_FILE = STATE_DIR / "heat_signals.json"  # 話題度用的外部数据（维基浏览量、Steam 在线、AniList / TMDB 人气），见 heat.py
 SIZES_PUSHED_FILE = STATE_DIR / "sizes_pushed.json"   # items.yaml 里的 size 上次同步进数据库时是什么
 INBOX_DIR = ROOT / "inbox"
-DOCS_DIR = sitedir.SITE_DIR   # 公開ページ（docs/test2/，test1 は凍結）
+DOCS_DIR = sitedir.SITE_DIR   # 公開ページ（docs/test1/ = 店長のページ，test2 は凍結）
 ISSUES_ON_PAGE = 3650  # 网页汇总所有期：消息永远保留，一周前的收进折叠区
 
 NEWS_LANGS = {

@@ -19,6 +19,7 @@ import emblem_fill as ef  # noqa: E402
 import face_id  # noqa: E402
 import processes  # noqa: E402
 import render  # noqa: E402
+import sitedir  # noqa: E402
 import runlog  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -100,7 +101,7 @@ class Rules(unittest.TestCase):
 
     def test_every_item_resolves(self):
         items = (yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["items"]
-                 or yaml.safe_load((ROOT / "archive" / "test1" / "items.yaml").read_text(encoding="utf-8"))["items"])  # test2 が空のあいだは test1 の写し（archive/test1）で確かめる
+                 )
         for i in items:
             st = ef.status(i)
             self.assertIn(st["kind"], ef.RULES, i["name"])
@@ -587,10 +588,10 @@ class Resources(unittest.TestCase):
         import tempfile
         with tempfile.TemporaryDirectory() as d:
             d = pathlib.Path(d)
-            (d / "docs" / "test2" / "emblems").mkdir(parents=True)
+            (d / "docs" / sitedir.NAME / "emblems").mkdir(parents=True)
             (d / ".git").mkdir()
             (d / "docs" / "a.html").write_bytes(b"x" * 100)
-            (d / "docs" / "test2" / "emblems" / "b.webp").write_bytes(b"x" * 50)
+            (d / "docs" / sitedir.NAME / "emblems" / "b.webp").write_bytes(b"x" * 50)
             (d / ".git" / "big").write_bytes(b"x" * 1000)   # .git は数えない
             sz = resources.repo_sizes(d)
         self.assertEqual((sz["repo"], sz["pages"], sz["emblems"]), (150, 150, 50))
@@ -1047,7 +1048,7 @@ class JudgeTable(unittest.TestCase):
         for x in emblem_rules.EXAMPLES:
             self.assertIn(x["rule"], titles, x)   # 例は一覧の判断にひもづく
             for f, _ in x["before"] + x["after"]:
-                self.assertTrue((ROOT / "docs" / "test2" / f"{emblem_rules.EX}{f}.webp").exists(), f)
+                self.assertTrue((ROOT / "docs" / sitedir.NAME / f"{emblem_rules.EX}{f}.webp").exists(), f)
         html = processes.examples_panel()
         self.assertEqual(html.count('<article class="ex '), len(emblem_rules.EXAMPLES))
         self.assertIn("外す", html)

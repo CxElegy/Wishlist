@@ -1,24 +1,6 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<!-- wl-archive -->
-<style>.wl-arch{position:fixed;left:0;right:0;bottom:0;z-index:99;padding:6px 16px;background:var(--ink,#1d1d1f);color:var(--paper,#f3efe6);
-font:600 12px/1.6 system-ui,sans-serif;text-align:center}.wl-arch a{color:inherit;text-decoration:underline}body{padding-bottom:28px}</style>
-<script>(function(){
-  var ok=["my_votes", "list_item_requests", "get_photo_inbox", "instant_enabled", "edit_control_get"], f=window.fetch;
-  window.fetch=function(u,o){
-    var s=String(u&&u.url||u), m=((o&&o.method)||'GET').toUpperCase(), fn=(s.match(/\/rpc\/([a-z_]+)/)||[])[1];
-    if(/supabase\.co/.test(s)){
-      if(fn==='live_boards')return Promise.resolve(new Response('[]',{status:200,headers:{'Content-Type':'application/json'}}));
-      if(m!=='GET'&&ok.indexOf(fn)<0){alert('test1 はアーカイブです（見るだけ）。変更は test2 でどうぞ。');
-        return Promise.resolve(new Response('{}',{status:403}));}
-    }
-    return f.apply(this,arguments);
-  };
-  document.addEventListener('DOMContentLoaded',function(){var d=document.createElement('div');d.className='wl-arch';
-    d.innerHTML='アーカイブ：test1（2026-10-19 で更新停止・見るだけ）　<a href="../test2/">いまの版 test2 へ →</a>';document.body.appendChild(d);});
-})();</script>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>テーマ見本</title>
@@ -147,6 +129,7 @@ button{font-family:inherit}
 .sbox h4 small{margin-left:auto;font:500 11px var(--font-sans)}
 .sbox h4 a:hover{color:var(--rose)}
 .swish ol,.shot ol{list-style:none;margin:0;padding:0}
+.swish .sempty{margin:6px 0 10px;font-size:13px;line-height:1.6;color:color-mix(in srgb,var(--ink) 72%,transparent)}
 .swish li[hidden],.agenda li[hidden]{display:none}
 .swish li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--hair)}
 .wthumb{width:48px;height:48px;background:#FFF;border:1.5px solid var(--ink);display:grid;place-items:center;overflow:hidden}
@@ -636,10 +619,11 @@ button{font-family:inherit}
   drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring))
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
 .emb-in{display:flex;align-items:flex-end}
+.emb{clip-path:inset(-100vh -100vw -14px -100vw)}  /* 帯の線より下は見せない（飛び出す動きの途中）：下のニュースの字・ボタンに重ねない。絵そのものは線より上に置くので切れない。-14px はフチ（5.5px）と影（8px）の分 */
 .emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:190px;object-fit:contain;object-position:bottom}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
 .emb{--leg:116px;--legc:290px;--anc:62px;--bmax:200px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
 .emb img.body{--bh:calc(var(--leg) / var(--bl));--bz:min(var(--bh), var(--bmax));height:var(--bz);width:calc(var(--bz) * var(--ba));max-width:none;
- margin-bottom:calc(var(--bz) * (var(--bf) - 1));  /* 足の裏より下（尻尾・武器・裾）は帯の下へ。高さは --bmax まで（測り違いで巨大にならない） */
+ margin-bottom:0;  /* 絵の下端を帯の線に（足より下の尻尾・武器・裾があれば、その分だけ足が少し上がる）。帯の線より下へは出さない：下のニュースの字に重ねず、切れもしない。高さは --bmax まで */
  margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
 .emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
 .emb img.logo{height:62%;max-width:150px}.emb img.logo.wide{height:auto;width:220px;max-width:220px;margin-bottom:12%}  /* 横長の文字のロゴは幅で大きく */
@@ -654,7 +638,7 @@ button{font-family:inherit}
 .emb-js .emb.out .emb-in{transition:transform .38s cubic-bezier(.6,0,.9,.4),opacity .3s ease-in .08s,--sx .15s,--sy .15s;
  transform:translate(18px,70px) rotate(-18deg) scale(.55)}  /* 上へ戻ったとき：影が縮んで、下へ沈みながら消える */
 @supports (animation-timeline:view()){.emb{animation:embdrift linear both;animation-timeline:view();animation-range:cover}}
-@keyframes embdrift{from{translate:0 22px}to{translate:0 -22px}}  /* スクロールに合わせてゆっくり浮く */
+@keyframes embdrift{from{translate:0 0}to{translate:0 -36px}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
 @media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}}
@@ -996,13 +980,295 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
 .fxlist small{font-size:11px;line-height:1.4;opacity:.75}
 @media (max-width:600px){.tuse{padding:0 14px 16px}}
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer crossorigin="anonymous"></script><script>window.WL_ACCOUNT="test1";</script><style>
+.wl-auth{position:fixed;top:10px;right:12px;z-index:90;display:flex;align-items:center;gap:8px;font:700 13px/1.4 var(--font-sans)}
+.wl-auth .shop{padding:2px 9px;background:var(--ink);color:var(--card);font:500 var(--fs-label)/1.6 var(--font-sans);letter-spacing:.06em;transform:skewX(var(--skew));box-shadow:2px 2px 0 var(--rose)}
+.wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
+ background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
+.wl-auth>button.in{padding-left:12px}
+.wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
+.wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
+.wl-auth img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
+.wl-auth .ini{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;flex:none;background:var(--ink);color:var(--card);font:900 13px/1 var(--font-sans)}
+.wl-auth .rl.wait{background:var(--alert)}
+.wl-auth .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wl-auth .rl{flex:none;padding:0 6px;background:var(--ink);color:var(--card);font-size:var(--fs-tag);letter-spacing:.06em;transform:skewX(var(--skew))}
+.wl-auth .rl.admin{background:var(--rose)}
+.wl-auth .menu{position:absolute;right:0;top:calc(100% + 8px);min-width:220px;background:var(--card);color:var(--ink);border:2px solid var(--ink);
+ box-shadow:4px 4px 0 var(--ink);padding:12px;display:flex;flex-direction:column;gap:8px;font-weight:500}
+.wl-auth .menu[hidden]{display:none}
+.wl-auth .menu small{opacity:.75;line-height:1.5}
+.wl-auth .menu button{border:2px solid var(--ink);background:transparent;color:var(--ink);padding:5px 10px;font:700 13px var(--font-sans);cursor:pointer;text-align:left}
+.wl-auth .menu button:hover{background:var(--gold)}
+.wl-login{display:flex;flex-direction:column;gap:8px}
+.wl-login label{display:flex;flex-direction:column;gap:4px;font-weight:700}
+.wl-login input{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
+.wl-login button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 12px;font:700 13px var(--font-sans);cursor:pointer}
+.wl-login button:disabled{opacity:.6;cursor:wait}
+.wl-login .st{margin:0;font-size:13px;line-height:1.5}
+.wl-login .first{margin:4px 0 0;padding-top:8px;border-top:1px solid var(--hair);font-size:13px;line-height:1.6}
+.wl-login .tabs{display:flex;border-bottom:2px solid var(--ink)}
+.wl-login .tabs button{flex:1;align-self:auto;border:0;background:transparent;padding:6px 8px;font:700 13px var(--font-sans);color:var(--ink);opacity:.6;cursor:pointer;box-shadow:none}
+.wl-login .tabs button[aria-selected=true]{opacity:1;background:var(--ink);color:var(--card)}
+.wl-login .hint{margin:0;min-height:1.4em;font-size:12px}
+.wl-login .hint.ok{color:var(--good)}
+.wl-login .hint.ng{color:var(--alert)}
+.wl-login .agree,.wl-agree .agree{display:flex;gap:6px;align-items:flex-start;font:500 13px/1.5 var(--font-sans)}
+.wl-login .agree[hidden]{display:none}
+.wl-login a,.wl-agree a,.wl-auth .menu>a{color:var(--rose);text-decoration:underline;text-underline-offset:2px}
+.wl-auth .menu .quiet{border-color:var(--hair);opacity:.75}
+.wl-agree{position:fixed;inset:0;z-index:96;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--ink) 55%,transparent)}
+.wl-agree>div{max-width:440px;background:var(--card);color:var(--ink);border:3px solid var(--ink);box-shadow:var(--shadow-l);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.wl-agree h2{margin:0;font:900 20px/1.3 var(--font-sans)}
+.wl-agree p{margin:0;line-height:1.7;font-size:14px}
+.wl-agree form{display:flex;flex-direction:column;gap:12px}
+.wl-agree .row{display:flex;flex-wrap:wrap;gap:8px}
+.wl-agree button{border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+.wl-agree button[data-out]{background:transparent}
+.wl-auth .menu{width:min(300px,calc(100vw - 24px))}
+.wl-toast{position:fixed;left:50%;bottom:72px;z-index:95;transform:translateX(-50%);max-width:calc(100vw - 32px);background:var(--ink);color:var(--card);
+ padding:9px 16px;box-shadow:4px 4px 0 var(--rose);font:700 14px/1.5 var(--font-sans)}
+.wl-toast[hidden]{display:none}
+html[data-lock="1"] [data-vote]{cursor:not-allowed}
+.wl-ro{margin:0 0 4px;padding:8px 12px;border:2px dashed var(--ink);background:var(--sheet);font:700 13px/1.6 var(--font-sans)}
+html[data-gate="1"] body>*:not(.wl-auth):not(.wl-gate):not(.wl-toast):not(.wl-agree){display:none!important}
+html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
+.wl-gate{min-height:100vh;display:grid;place-items:center;padding:16px;background:var(--paper)}
+.wl-gate>div{max-width:420px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.wl-gate h1{margin:0;font:900 22px/1.3 var(--font-sans)}
+.wl-gate p{margin:0;line-height:1.7}
+.wl-gate a,.wl-gate button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer;text-decoration:none}
+.wl-mem table{width:100%;border-collapse:collapse;font-size:13px}
+.wl-mem th,.wl-mem td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--hair)}
+.wl-mem form{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.wl-mem input,.wl-mem select{min-width:0;padding:5px 8px;border:2px solid var(--ink);background:var(--card);font:500 14px var(--font-sans)}
+.wl-mem input{flex:1 1 220px}
+.wl-mem button{border:2px solid var(--ink);background:var(--ink);color:var(--card);padding:5px 14px;font:700 13px var(--font-sans);cursor:pointer}
+.wl-mem .st{min-height:1.4em;font-size:13px}
+@media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}}
+</style><script>
+(function(){
+  var A={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "themes", "terms": 1, "termsUrl": "terms.html", "start": "../#name"}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
+  if(!base||!A.key||!window.fetch) return;
+  var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
+  R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
+  var ROLE={"admin": "店長", "user": "お客さま", "guest": "ゲスト"}, LOCK={"index": "[data-vote]", "heat": "[data-vote]", "wishlist": "[data-vote],#snap button,#snap input,#snap textarea", "settings": "button,input,select,textarea,[contenteditable]", "admin": "button,input,select,textarea"}[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
+  // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
+  window.fetch=function(input,init){
+    try{
+      var u=typeof input==='string'?input:(input&&input.url)||'';
+      if(tok&&u.indexOf(base+'/rest/')===0){
+        init=Object.assign({},init||{});
+        var h=new Headers(init.headers||(typeof input!=='string'&&input.headers)||undefined);
+        h.set('Authorization','Bearer '+tok); init.headers=h;
+      }
+    }catch(e){}
+    return of(input,init);
+  };
+  function rpc(fn,body){
+    var h={apikey:A.key,'Content-Type':'application/json'}; if(tok) h.Authorization='Bearer '+tok;
+    return of(base+'/rest/v1/rpc/'+fn,{method:'POST',headers:h,body:JSON.stringify(body||{})})
+      .then(function(r){return r.text().then(function(t){var j=null; try{j=t?JSON.parse(t):null;}catch(e){} if(!r.ok) throw new Error((j&&j.message)||r.status); return j;});});   // void の関数は 204（本文なし）
+  }
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return '&#'+c.charCodeAt(0)+';';});}
+  var toastT=0;
+  function toast(t){
+    var el=document.querySelector('.wl-toast'); if(!el){el=document.createElement('div');el.className='wl-toast';el.setAttribute('role','status');document.body.appendChild(el);}
+    el.textContent=t; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(function(){el.hidden=true;},4000);
+  }
+  // ログイン（2026-10-21，用户定的）：ユーザー名（メールでも可）だけ・パスワードなし・名前は重ならない（データベースで確かめる）。
+  // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
+  // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。名前が店長のメール（invites の role=admin）のときだけ、
+  // このブラウザで最初の 1 回、確認のリンクをメールで送る（そうしないと誰でも店長の名前を入れて変えられる）。
+  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
+  try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
+  function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
+  var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
+  function sayErr(m){
+    m=String(m||'');
+    if(/not authorized/i.test(m)) return '確認のメールを送れませんでした（メール送信の設定待ち）';
+    if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度';
+    return m||'うまくいきませんでした';
+  }
+  function back(){ return location.href.split('#')[0].replace(/[?&](code|error|error_code|error_description)=[^&]*/g,''); }
+  function sendAdminLink(mail,st){
+    if(!sb){ if(st) st.textContent='準備中です。少し待ってからもう一度'; return; }
+    if(st) st.textContent='確認のメールを送っています…';
+    sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:back(),shouldCreateUser:true}}).then(function(r){
+      var shown=mail.replace(/^(.{2}).*(@.*)$/,'$1…$2');
+      if(st) st.textContent=r.error?sayErr(r.error.message):'店長の名前です。'+shown+' に届いたメールのリンクを押してください（このブラウザで最初の 1 回だけ）';
+    });
+  }
+  var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+'" target="_blank" rel="noopener">利用規約・プライバシーポリシー<\/a>に同意する<\/span><\/label>';};
+  // 右上はログインだけ。新しく始めるのは入口の流れ（言語・ジャンル・最初の版面を選ぶ）に一本化（2026-10-21，サイト全体で同じ始め方に）
+  function loginForm(){
+    return '<form class="wl-login" data-mode="old" novalidate>'+
+      '<label>ユーザー名<input type="text" required minlength="2" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録した名前（メールアドレスでも）"><\/label>'+
+      '<button type="submit" class="go">ログイン<\/button><p class="st" aria-live="polite"><\/p>'+
+      '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →<\/a><br><small>名前・ニュースの言語・好きなジャンルを選ぶだけ（1 分）。パスワードはありません<\/small><\/p><\/form>';
+  }
+  // この名前は店長か：店長の名前（app_users.email が invites の role=admin）か、店長のメールそのもの → 確認のリンクを送るメール
+  function shopMail(name){
+    return rpc('admin_email_for',{p_name:name}).catch(function(){return null;}).then(function(m){
+      if(m) return String(m).toLowerCase();
+      return isMail(name)?rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(a){return a?name.toLowerCase():null;}):null;
+    });
+  }
+  function after(name,agreed,st){
+    shopMail(name).then(function(mail){   // 店長の名前（CxElegy など）なら、結びつけたメールに確認のリンクを 1 回だけ
+      if(!mail||(user&&user.email&&user.email.toLowerCase()===mail)) return;
+      me.admin=true; me.mail=mail; saveMe(me); chip(true); sendAdminLink(mail,document.querySelector('.wl-auth .menu .st'));
+    });
+    if(agreed<TV){ askAgree(); return; }
+    toast('ようこそ、'+name+' さん。このブラウザが覚えました'); refresh();
+  }
+  function bindLogin(root){
+    var f=root.querySelector('.wl-login'); if(!f) return;
+    var inp=f.querySelector('input[type=text]'), st=f.querySelector('.st'), go=f.querySelector('.go');
+    f.onsubmit=function(ev){
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      var n=inp.value.trim();
+      if(n.length<2){ st.textContent='ユーザー名を 2 文字以上で入れてください'; return; }
+      go.disabled=true; st.textContent='';
+      rpc('user_login',{p_name:n}).then(function(r){
+        go.disabled=false; saveMe({name:r.name,v:r.agreed_version||0,at:Date.now()}); after(r.name,r.agreed_version||0,st);
+      }).catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
+    };
+  }
+  // 規約の版が上がった・まだ同意していない人：同意するまで画面を覆う（見るだけには戻れる＝ログアウト）
+  function askAgree(){
+    if(!me) return;
+    var d=document.querySelector('.wl-agree'); if(!d){d=document.createElement('div');d.className='wl-agree';d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');document.body.appendChild(d);}
+    d.innerHTML='<div><h2>利用規約・プライバシーポリシー<\/h2><p>'+(me.v?'内容が新しくなりました。':'')+'続けて使うには、同意をお願いします。'+
+      '関心のある作品・投票などの情報（興味・関心の情報）を、サービスのためだけに使います。<\/p><form>'+agreeBox()+
+      '<div class="row"><button type="submit">同意して続ける<\/button><button type="button" data-out>同意しない（ログアウト）<\/button><\/div><\/form><\/div>';
+    var f=d.querySelector('form');
+    d.querySelector('[data-out]').onclick=logout;
+    f.onsubmit=function(ev){ev.preventDefault();
+      if(!f.querySelector('.agree input').checked){ toast('チェックを入れてください'); return; }
+      rpc('user_agree',{p_name:me.name,p_version:TV}).then(function(){ me.v=TV; saveMe(me); d.remove(); toast('ありがとうございます'); refresh(); })
+        .catch(function(e){ toast(sayErr(e.message)); });};
+  }
+  function logout(){
+    saveMe(null);
+    (sb&&tok?sb.auth.signOut():Promise.resolve()).then(function(){location.reload();});
+  }
+  function leave(){
+    if(!me||!confirm('退会すると、名前「'+me.name+'」と同意の記録を消します。よろしいですか？')) return;
+    rpc('user_leave',{p_name:me.name}).catch(function(){}).then(logout);
+  }
+  var locked=function(){return R.dataset.lock==='1';};
+  document.addEventListener('click',function(ev){
+    if(!locked()||!LOCK) return;
+    var t=ev.target.closest&&ev.target.closest(LOCK);
+    if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live,.wl-agree')) return;
+    ev.preventDefault(); ev.stopImmediatePropagation();
+    toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'ここは店長のページなので、見るだけです');
+  },true);
+  document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
+  function chip(keepOpen){
+    var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
+    var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
+    if(!name){
+      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン<\/button><div class="menu" hidden>'+loginForm()+'<\/div>';
+      var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
+      lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=text]').focus();};
+      bindLogin(box); return;
+    }
+    var pending=!user&&me&&me.admin, label=pending?'確認待ち':(ROLE[role]||role), sh=isMail(name)?name.split('@')[0]:name;
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
+      '<span class="nm">'+esc(sh)+'<\/span><span class="rl '+esc(pending?'wait':role)+'">'+esc(label)+'<\/span><\/button>'+
+      '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています<\/small>'+
+      (pending?'<button type="button" data-again>確認のメールをもう一度送る<\/button><p class="st" aria-live="polite">店長の名前です。届いたメールのリンクを押すと店長になります（このブラウザで 1 回だけ）<\/p>':'')+
+      (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ<\/button>':'')+
+      '<a href="'+esc(TURL)+'">利用規約・プライバシーポリシー<\/a>'+
+      '<button type="button" data-out>ログアウト<\/button>'+(me?'<button type="button" data-leave class="quiet">退会する<\/button>':'')+'<\/div>';
+    var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
+    b.onclick=function(){var o=menu.hidden;menu.hidden=!o;b.setAttribute('aria-expanded',String(o));};
+    menu.querySelector('[data-out]').onclick=logout;
+    var lv=menu.querySelector('[data-leave]'); if(lv) lv.onclick=leave;
+    var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
+    var ag=menu.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.mail||name,menu.querySelector('.st'));};
+  }
+  function gate(){
+    var need=page==='admin'&&R.dataset.enf==='1'&&R.dataset.role!=='admin';
+    R.dataset.gate=need?'1':'0';
+    var g=document.querySelector('.wl-gate'); if(!need){if(g) g.remove(); return;}
+    if(!g){g=document.createElement('div');g.className='wl-gate';document.body.appendChild(g);}
+    var pending=me&&me.admin&&!user;
+    g.innerHTML='<div><h1>管理ページ<\/h1><p>'+(pending?'店長の確認がまだです。届いたメールのリンクを押してください。':
+      me?'このページは店長だけが見られます。':'店長だけが見られます。店長の名前でログインしてください。')+'<\/p>'+
+      (me?'':loginForm())+(pending?'<button type="button" data-again>確認のメールをもう一度送る<\/button><p class="st" aria-live="polite"><\/p>':'')+
+      '<a href="./">← ウォッチリスト通信に戻る<\/a><\/div>';
+    bindLogin(g);
+    var ag=g.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.mail||me.name,g.querySelector('.st'));};
+  }
+  function readOnlyNote(){
+    if(page!=='settings') return;
+    var n=document.querySelector('.wl-ro');
+    if(!locked()){if(n) n.remove(); return;}
+    if(n) return;
+    n=document.createElement('p'); n.className='wl-ro';
+    n.textContent='見るだけです。設定を変えるには右上の「ログイン」から。';
+    var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
+  }
+  function members(){
+    var box=document.getElementById('wl-members'); if(!box) return;
+    if(R.dataset.role!=='admin'){box.closest('section').hidden=true; return;}
+    box.closest('section').hidden=false;
+    Promise.all([rpc('admin_list_app_users'),rpc('admin_list_invites')]).then(function(v){
+      var us=v[0]||[], inv=v[1]||[];
+      box.innerHTML='<table><thead><tr><th>店長のメール<\/th><th>役割<\/th><th>ログイン済み<\/th><\/tr><\/thead><tbody>'+
+        inv.map(function(x){return '<tr><td>'+esc(x.email)+'<\/td><td>'+esc(ROLE[x.role]||x.role)+'<\/td><td>'+(x.joined?'済':'まだ')+'<\/td><\/tr>';}).join('')+
+        '<\/tbody><\/table><p class="st">ユーザー '+us.length+' 人：'+us.slice(0,50).map(function(u){return esc(u.name)+(u.agreed_version>=TV?'':'（規約未同意）');}).join('、')+(us.length>50?' ほか':'')+'<\/p>'+
+        '<form><input type="email" required placeholder="店長にする人のメール（その人はこのメールを名前にしてログイン）" aria-label="メール">'+
+        '<button type="submit">店長にする<\/button><\/form><p class="st" aria-live="polite"><\/p>';
+      var f=box.querySelector('form'), st=box.querySelectorAll('.st')[1];
+      f.onsubmit=function(ev){ev.preventDefault();
+        rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:'admin'})
+          .then(function(a){st.textContent=a+' を店長にしました。このメールアドレスを名前にしてログインすると、確認のメールのあと店長になります。';members();})
+          .catch(function(e){st.textContent='できませんでした：'+e.message;});};
+    }).catch(function(e){box.innerHTML='<p class="st">読み込めませんでした：'+esc(e.message)+'<\/p>';});
+  }
+  function refresh(){
+    return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
+      .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
+        R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
+      .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
+      .then(function(){chip();gate();readOnlyNote();members();
+        if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
+          var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
+          if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
+        }});
+  }
+  function start(){
+    if(me&&me.name&&!me.admin&&!tok) shopMail(me.name).then(function(m){ if(m){ me.admin=true; me.mail=m; saveMe(me); refresh(); } });   // 入口から店長の名前で入った
+    if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
+      .catch(function(e){ if(/見つかりません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
+    var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
+    if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
+    if(!window.supabase){refresh();return;}
+    sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
+    sb.auth.onAuthStateChange(function(ev,s){
+      var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
+      if(user&&user.email&&me&&me.admin&&(me.mail||me.name).toLowerCase()===user.email.toLowerCase()){ me.admin=false; saveMe(me); }   // 店長の確認が済んだ
+      if(changed||ev==='INITIAL_SESSION') refresh();
+      if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
+    });
+  }
+  function boot(){
+    var s=document.createElement('script'); s.src=A.lib; s.async=true; s.onload=start; s.onerror=function(){refresh();};
+    document.head.appendChild(s);
+  }
+  if(document.body) boot(); else document.addEventListener('DOMContentLoaded',boot);
+})();
+</script>
 </head>
 <body>
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.19 21:23</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.21 13:15</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>

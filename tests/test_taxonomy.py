@@ -12,8 +12,7 @@ import render  # noqa: E402
 import taxonomy  # noqa: E402
 
 _ROOT = pathlib.Path(__file__).resolve().parent.parent
-ITEMS = (yaml.safe_load((_ROOT / "items.yaml").read_text(encoding="utf-8"))["items"]
-         or yaml.safe_load((_ROOT / "archive" / "test1" / "items.yaml").read_text(encoding="utf-8"))["items"])  # test2 が空のあいだは test1 の写し（archive/test1）で確かめる
+ITEMS = yaml.safe_load((_ROOT / "items.yaml").read_text(encoding="utf-8"))["items"]   # いまのアカウント（2026-10-21 から test1 = 店長）
 
 
 class Table(unittest.TestCase):
@@ -92,7 +91,7 @@ class Items(unittest.TestCase):
 
     def test_moved_items(self):
         # 旧い板块名から移した実例は test1 の関注項（archive/test1）にある
-        ITEMS = yaml.safe_load((_ROOT / "archive" / "test1" / "items.yaml").read_text(encoding="utf-8"))["items"]
+        ITEMS = yaml.safe_load((_ROOT / "items.yaml").read_text(encoding="utf-8"))["items"]
         by = {i["name"]: digest.section_of(i) for i in ITEMS}
         self.assertEqual(by["猫用品"], "生活")
         self.assertEqual(by["三星手机"], "好物")
@@ -213,7 +212,7 @@ class MediaFacetsMECE(unittest.TestCase):
     """向导の「面」（docs/additem.js の MEDIA）は MECE：層（作品／展開）に漏れなく 1 つずつ、各面の代表語はほかの面の語に当たらない。"""
 
     def facets(self):
-        js = (pathlib.Path(__file__).resolve().parent.parent / "docs" / "test2" / "additem.js").read_text(encoding="utf-8")
+        js = (pathlib.Path(__file__).resolve().parent.parent / "docs" / "test1" / "additem.js").read_text(encoding="utf-8")
         block = js[js.index("  const MEDIA = {"):js.index("\n  };", js.index("  const MEDIA = {"))]
         out = {}
         for m in re.finditer(r'^    (\w+): \{label: "([^"]+)".*?kw: \[([^\]]*)\], re: "([^"]+)"', block, re.M | re.S):
@@ -239,16 +238,18 @@ class MediaFacetsMECE(unittest.TestCase):
             self.assertEqual([k for k, f in fs.items() if re.search(f["re"], text, re.I)], [only], text)
 
 
-class Test2Site(unittest.TestCase):
-    """test2（2026-10-19〜）：公開ページは docs/test2/、向导は 1 つの名前 = 1 つの版面（乗換なし・面は目次の枝）。"""
+class ShopSite(unittest.TestCase):
+    """2026-10-21〜：店長のページ = test1（公開ページは docs/test1/）。test2 は 10-19〜10-21 の試験の写し（docs/test2/ 凍結・archive/test2/）。
+    向导は 1 つの名前 = 1 つの版面（乗換なし・面は目次の枝）。"""
 
-    def test_pages_go_to_test2(self):
+    def test_pages_go_to_test1(self):
         import sitedir
-        self.assertEqual(sitedir.SITE_DIR, _ROOT / "docs" / "test2")
-        self.assertTrue((_ROOT / "docs" / "test1" / "index.html").exists())   # 凍結した写しは残す
+        self.assertEqual(sitedir.NAME, "test1")
+        self.assertEqual(sitedir.SITE_DIR, _ROOT / "docs" / "test1")
+        self.assertTrue((_ROOT / "archive" / "test2" / "items.yaml").exists())   # 試験の版は残す
 
     def test_wizard_one_panel_rule(self):
-        js = (_ROOT / "docs" / "test2" / "additem.js").read_text(encoding="utf-8")
+        js = (_ROOT / "docs" / "test1" / "additem.js").read_text(encoding="utf-8")
         self.assertIn('S.ans.arrange = S.ans.splitExtras && multiSec() ? "split" : "merge"', js)   # 既定は 1 つの版面
         self.assertIn('S.ans.also = {};', js)                                                      # 乗換駅は置かない
         self.assertRegex(js, r'const KEYS = \[[^\]]*"media"')                                      # 目次の枝を送る

@@ -29,4 +29,4 @@ jobs:
       - name: 测试
         run: python -m unittest discover -s tests
       - name: 网页能生成
-        run: python scripts/digest.py render && test -s docs/test2/index.html
+        run: python scripts/digest.py render && test -s docs/test1/index.html

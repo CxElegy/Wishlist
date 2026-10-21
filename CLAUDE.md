@@ -30,25 +30,26 @@
 ## 每次回复都贴链接
 
 - 回复里只要提到网页、PR、设置页，就把可以直接点开的链接贴上：
-  简报 https://cxelegy.github.io/Wishlist/test2/ 、设置页 https://cxelegy.github.io/Wishlist/test2/settings.html 、
-  愿望清单 https://cxelegy.github.io/Wishlist/test2/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/test2/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/test2/themes.html 、管理ページ https://cxelegy.github.io/Wishlist/test2/admin.html 、テストグラウンド https://cxelegy.github.io/Wishlist/testground/ 、PR 用完整网址。
-  入口 https://cxelegy.github.io/Wishlist/ （test1 / test2 两张卡），存档 test1 https://cxelegy.github.io/Wishlist/test1/ 。
+  简报（店長のページ）https://cxelegy.github.io/Wishlist/test1/ 、设置页 https://cxelegy.github.io/Wishlist/test1/settings.html 、
+  愿望清单 https://cxelegy.github.io/Wishlist/test1/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/test1/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/test1/themes.html 、管理ページ https://cxelegy.github.io/Wishlist/test1/admin.html 、テストグラウンド https://cxelegy.github.io/Wishlist/testground/ 、PR 用完整网址。
+  入口 https://cxelegy.github.io/Wishlist/ ，存档 test2 https://cxelegy.github.io/Wishlist/test2/ 。
 - 合并 PR 后网页大约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；
   确认网页已经更新了再告诉我，并附上链接。收集新闻、发通知仍由「关注清单通信」慢慢跑。
 
 ## test1 / test2（2026-10-19，用户定的）
 
-- **test1** = 2026-10-19 以前的版，冻结在 `docs/test1/`（页面原样，`scripts/freeze_test1.py` 加了「アーカイブ」的帯、拦住写 Supabase 的调用）。不再生成、后台不跑。数据存档在 `archive/test1/`（items.yaml・reports・inbox・state）。ちいかわ 等 test1 的关注项不动。
-- **test2** = 现在用的版，从空开始：`items.yaml` 的 `items:` 空着，设置页向导加进来。网页生成・小元素・本站保存的图・愿望清单的图都写 `docs/test2/`（`scripts/sitedir.py` 的 `SITE_DIR`，改位置只改那里）。根 `docs/index.html` 是**入口**（2026-10-21 起由 `scripts/welcome.py` 生成，`digest.py render` 时超过 24 小时就重做：产品介绍・店长页面的真实截图・新しく始める／ログイン／店長のページを見る；新建账号 = 名字和条款 → 新闻语言 → 喜欢的大类 → 刷卡片 → 最初的版面 → `user_signup`；浏览器记得的人直接跳过入口），旧网址（settings.html 等）跳到 test2。
+- **test1 = 店長のページ（2026-10-21，用户定的：以前做的 test1 的内容现在归到 admin 的店长下）**：前の test1 の中身（ちいかわ 等の関注項・623 票・愿望清单）を本番に戻した。`items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/` が test1、网页生成は `docs/test1/`（`scripts/sitedir.py` の `SITE_DIR`，`NAME = "test1"`）。店長のユーザー名 = **CxElegy**（`app_users.email` = c.elegy@outlook.com → `admin_email_for` でメールに換えて確認のリンク）。
+- **test2** = 2026-10-19〜21 の試験の版，冻结在 `docs/test2/`（`python scripts/freeze_test1.py test2 test1 …` で「アーカイブ」の帯・写 Supabase を止める），数据存档在 `archive/test2/`。不再生成、后台不跑。test2 で決めた**規則**（一个名字一个版面・向导・入口）は test1 でもそのまま使う（`docs/test1/additem.js` は同じもの）。
+- 根 `docs/index.html` 是**入口**（2026-10-21 起由 `scripts/welcome.py` 生成，`digest.py render` 时超过 24 小时就重做：产品介绍・店长页面的真实截图・新しく始める／ログイン／店長のページを見る；新建账号 = 名字和条款 → 新闻语言 → 喜欢的大类 → 刷卡片 → 最初的版面 → `user_signup`；浏览器记得的人直接跳过入口），旧网址（settings.html 等）跳到 test1。
 - **test1・test2 = 两个 account（用户定的，2026-10-19）**：以后的一般用户也按同样的形状加。每个 account 的东西从一开始就各自分开、互不相通：
-  关注清单・愿望清单・收集的记事・state（推荐・口味・日志…）——本仓库里现在的 account（test2）用 `items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/`，test1 的冻结在 `archive/test1/`；
+  关注清单・愿望清单・收集的记事・state（推荐・口味・日志…）——本仓库里现在的 account（test1 = 店長，2026-10-21 起）用 `items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/`，test2 的冻结在 `archive/test2/`；
   Supabase 的自己的表（投票 `feedback`・篇幅 `sizes`・目录分法 `nav_schemes`・请求 `item_requests`・照片 `photo_inbox`・AI 编辑开关 `edit_control`・更新中的条 `live_status`・记事的副本 `news`/`stories`/`price_history`）都有 `account` 列（`db/accounts.sql`）。
   网页只用带 `p_account` 的函数（`window.WL_ACCOUNT`，`render._account_tag`），Actions 的 `digest.supabase` 经 `scope_account` 只读写自己 account 的行；旧的不带 `p_account` 的函数只给冻结的 test1 用。
   现在的 account 名 = `sitedir.NAME`。新加一个 account：在 `sitedir` 换名字、Supabase 不用改表（行按 account 分开）。
   **以后加 Google 登录时（用户定的，2026-10-19）**：① 分 account 的列统一成登录的号码（`user_id`），现在的 `account` 只是测试用的过渡；
   ② test1 的内容（关注项・623 张投票・愿望清单等）算作用户本人（管理者）的东西；③ 网址（入口・`/test1/`・`/test2/`）只是现在测试用的分法，以后可以改。
-- test2 的页面里也不留 test1 的痕迹：运行日志只有 test2 的（test1 的在 `archive/test1/state/log/`）；愿望清单的 `watch` 指向现在没有的版面时不出「版面 →」；「気になるかも？」不出别的版面的候选（`current_picks`）；
-  「小元素の判断の例」只出现在关注项的例子（其他链到 test1 的管理页）；ライブログ的浏览器缓存键是 `wl-term-test2`（同一个域名）；说明文字里的例子不写具体作品名。
+- 现在的页面里也不留别的 account 的痕迹：运行日志只有自己的（test2 的在 `archive/test2/state/log/`）；愿望清单的 `watch` 指向现在没有的版面时不出「版面 →」；「気になるかも？」不出别的版面的候选（`current_picks`）；
+  「小元素の判断の例」只出现在关注项的例子（其他链到 test1 的管理页）；ライブログ的浏览器缓存键是 `wl-term-<account>`（同一个域名）；说明文字里的例子不写具体作品名。
 - **test2 的加关注项规则（只改逻辑）**：一个名字默认只开一个版面，放在它「本身是什么」的板块（选的维基数据条目当依据的面的板块：ちいかわ = 漫画条目 → 作品 › シリーズ）；
   其他面（グッズ・イベント…）只扩大搜索词、在目录里是枝（`media`）；不放乗換站（板块一问只选一个）；确认画面上默认不勾的「グッズ・イベントを別の版面にする」勾了才把其他板块的面做成下级（parent = 本体，和本体同一个板块）。
 
@@ -183,7 +184,7 @@
   才去噪 NLMeans → Lanczos4 放大（最多 3 倍）→ 亮度 USM；Bing 只给 100×100 的缩略图改取 w=1200 版切白边；防盗链的图、期限付きの網址（Yahoo ニュースの `?exp=10800`，几小时后变成 1×1 的白图）存一份；已经打不开・变成空白的图记 `dead`，`retry_images` 去原文重新找；网页上 1×1 的图当作打不开、换下一张。都放 `docs/pics/`（`state/hdimg.json` 记对应关系，过 8 天删），`render._img_url` 优先用本站的、打不开再用原图。手动：`digest.py hd-images`。
 - **版面主题（motif）**：`items.yaml` 里给作品写 `motif:`，主题在 `templates/`（`index.yaml` 一览 + 每套一份 `<id>.css`，只用作品自己的配色变量）。
   现在有 **30 套**（背景花纹、题字形状、照片边框、标题旁装饰字），每套带一个 **👍 演出**（`fx`，`scripts/likefx.py` 的 20 种：大拇指的动作 + 飞散的形状 + 文字）。
-  一览和试玩：テーマ見本 https://cxelegy.github.io/Wishlist/test2/themes.html （`render.render_themes`）。
+  一览和试玩：テーマ見本 https://cxelegy.github.io/Wishlist/test1/themes.html （`render.render_themes`）。
   **每个新关注项加进来时，AI 都要把版面设计一遍**（`TEMPLATES.md` 开头的表）：① 主题 `motif` ② 配色 `theme`（暗底 / 浅底按作品气质，字一定要看得清）
   ③ 作品小元素 `emblem`（`scripts/emblem.py` 找现有的、认得出的图，可多张、每次打开随机一张；不自己画、不改原图）④ 点 👍 的演出 `like_fx`（不写就用主题的 fx）；
   设置页加进来的由「AI 编辑」设计（工作流在加进来后叫它）；设计好之前先按 `type` 借用 `index.yaml` 里 `defaults` 对得上的主题。

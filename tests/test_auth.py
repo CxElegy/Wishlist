@@ -125,7 +125,7 @@ class Welcome(unittest.TestCase):
         import welcome
         picks = welcome.shop_picks()
         self.assertTrue(picks)
-        self.assertTrue(all(p["img"].startswith("../test1/icons/") and p["shop"] for p in picks))
+        self.assertTrue(all(p["img"].startswith(f"../{welcome.sitedir.NAME}/icons/") and p["shop"] for p in picks))
         self.assertTrue({p["sec"] for p in picks} <= set(welcome.taxonomy.SECTIONS))
 
 

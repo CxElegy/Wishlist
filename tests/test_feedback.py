@@ -294,7 +294,7 @@ class SyncHistory(SyncNews):
 
     def test_stories_replace_whole_issue_once(self):
         digest.sync_stories()
-        self.assertEqual([x[0] for x in self.posts], ["/rest/v1/stories?account=eq.test2&issue_date=eq.2026-10-12", "/rest/v1/stories"])
+        self.assertEqual([x[0] for x in self.posts], ["/rest/v1/stories?account=eq.test1&issue_date=eq.2026-10-12", "/rest/v1/stories"])
         rows = self.posts[1][2]
         self.assertEqual([(r["item"], r["pos"], r["headline"]) for r in rows], [("猫用品", 0, "黑猫杯开卖"), ("猫用品", 1, "第二条")])
         self.assertEqual(rows[0]["story_date"], "2026-10-11")
@@ -390,8 +390,8 @@ class ExportPhotos(SyncNews):
             self.assertEqual((meta["status"], meta["note"]), ("纠结", "想要黑色"))
             self.assertFalse((folder / "6.jpg").exists())       # 不是 jpeg 的不导出
         patches = [(path, body) for path, _, body in self.posts if body and "state" in body]
-        self.assertIn(("/rest/v1/photo_inbox?account=eq.test2&id=eq.6", {"state": "done", "wish_name": "貓眼溫變馬克杯"}), patches)
-        self.assertIn(("/rest/v1/photo_inbox?account=eq.test2&id=eq.7", {"state": "exported"}), patches)
+        self.assertIn(("/rest/v1/photo_inbox?account=eq.test1&id=eq.6", {"state": "done", "wish_name": "貓眼溫變馬克杯"}), patches)
+        self.assertIn(("/rest/v1/photo_inbox?account=eq.test1&id=eq.7", {"state": "exported"}), patches)
 
 
 class LikeHit(unittest.TestCase):

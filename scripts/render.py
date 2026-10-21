@@ -3868,7 +3868,8 @@ AUTH_JS = r"""
     if(!sb){ if(st) st.textContent='準備中です。少し待ってからもう一度'; return; }
     if(st) st.textContent='確認のメールを送っています…';
     sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:back(),shouldCreateUser:true}}).then(function(r){
-      if(st) st.textContent=r.error?sayErr(r.error.message):'店長の名前です。'+mail+' に届いたメールのリンクを押してください（このブラウザで最初の 1 回だけ）';
+      var shown=mail.replace(/^(.{2}).*(@.*)$/,'$1…$2');
+      if(st) st.textContent=r.error?sayErr(r.error.message):'店長の名前です。'+shown+' に届いたメールのリンクを押してください（このブラウザで最初の 1 回だけ）';
     });
   }
   var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+'" target="_blank" rel="noopener">利用規約・プライバシーポリシー</a>に同意する</span></label>';};
@@ -3879,10 +3880,17 @@ AUTH_JS = r"""
       '<button type="submit" class="go">ログイン</button><p class="st" aria-live="polite"></p>'+
       '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →</a><br><small>名前・ニュースの言語・好きなジャンルを選ぶだけ（1 分）。パスワードはありません</small></p></form>';
   }
+  // この名前は店長か：店長の名前（app_users.email が invites の role=admin）か、店長のメールそのもの → 確認のリンクを送るメール
+  function shopMail(name){
+    return rpc('admin_email_for',{p_name:name}).catch(function(){return null;}).then(function(m){
+      if(m) return String(m).toLowerCase();
+      return isMail(name)?rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(a){return a?name.toLowerCase():null;}):null;
+    });
+  }
   function after(name,agreed,st){
-    if(isMail(name)) rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(adm){
-      if(!adm||(user&&user.email&&user.email.toLowerCase()===name.toLowerCase())) return;
-      me.admin=true; saveMe(me); chip(true); sendAdminLink(name,document.querySelector('.wl-auth .menu .st'));
+    shopMail(name).then(function(mail){   // 店長の名前（CxElegy など）なら、結びつけたメールに確認のリンクを 1 回だけ
+      if(!mail||(user&&user.email&&user.email.toLowerCase()===mail)) return;
+      me.admin=true; me.mail=mail; saveMe(me); chip(true); sendAdminLink(mail,document.querySelector('.wl-auth .menu .st'));
     });
     if(agreed<TV){ askAgree(); return; }
     toast('ようこそ、'+name+' さん。このブラウザが覚えました'); refresh();
@@ -3953,7 +3961,7 @@ AUTH_JS = r"""
     menu.querySelector('[data-out]').onclick=logout;
     var lv=menu.querySelector('[data-leave]'); if(lv) lv.onclick=leave;
     var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
-    var ag=menu.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(name,menu.querySelector('.st'));};
+    var ag=menu.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.mail||name,menu.querySelector('.st'));};
   }
   function gate(){
     var need=page==='admin'&&R.dataset.enf==='1'&&R.dataset.role!=='admin';
@@ -3962,11 +3970,11 @@ AUTH_JS = r"""
     if(!g){g=document.createElement('div');g.className='wl-gate';document.body.appendChild(g);}
     var pending=me&&me.admin&&!user;
     g.innerHTML='<div><h1>管理ページ</h1><p>'+(pending?'店長の確認がまだです。届いたメールのリンクを押してください。':
-      me?'このページは店長だけが見られます。':'店長だけが見られます。店長の名前（メールアドレス）でログインしてください。')+'</p>'+
+      me?'このページは店長だけが見られます。':'店長だけが見られます。店長の名前でログインしてください。')+'</p>'+
       (me?'':loginForm())+(pending?'<button type="button" data-again>確認のメールをもう一度送る</button><p class="st" aria-live="polite"></p>':'')+
       '<a href="./">← ウォッチリスト通信に戻る</a></div>';
     bindLogin(g);
-    var ag=g.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.name,g.querySelector('.st'));};
+    var ag=g.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.mail||me.name,g.querySelector('.st'));};
   }
   function readOnlyNote(){
     if(page!=='settings') return;
@@ -4007,7 +4015,7 @@ AUTH_JS = r"""
         }});
   }
   function start(){
-    if(me&&me.name&&!me.admin&&isMail(me.name)&&!tok) rpc('is_admin_email',{p_email:me.name}).then(function(a){ if(a){ me.admin=true; saveMe(me); refresh(); } }).catch(function(){});   // 入口から店長のメールで登録した
+    if(me&&me.name&&!me.admin&&!tok) shopMail(me.name).then(function(m){ if(m){ me.admin=true; me.mail=m; saveMe(me); refresh(); } });   // 入口から店長の名前で入った
     if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
       .catch(function(e){ if(/見つかりません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
@@ -4016,7 +4024,7 @@ AUTH_JS = r"""
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
-      if(user&&user.email&&me&&me.admin&&me.name.toLowerCase()===user.email.toLowerCase()){ me.admin=false; saveMe(me); }   // 店長の確認が済んだ
+      if(user&&user.email&&me&&me.admin&&(me.mail||me.name).toLowerCase()===user.email.toLowerCase()){ me.admin=false; saveMe(me); }   // 店長の確認が済んだ
       if(changed||ev==='INITIAL_SESSION') refresh();
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
@@ -5615,7 +5623,7 @@ def render_admin(data, db, updated):
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
 <script>{overview.JS}</script>
-<script>{livelog.JS}</script>
+<script>{livelog.JS.replace('__ACC__', sitedir.NAME)}</script>
 <script>{processes.JS}</script>
 <script>{LIVE_JS}</script>
 </body>

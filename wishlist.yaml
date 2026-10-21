@@ -21,4 +21,309 @@
 #   basics   可选，likes 里哪些标签只是基本属性（如 马克杯、限定款）：照样加分，但推荐去重时不看它们
 #   photo    可选，从愿望清单页上传的照片编号（Claude 定时任务处理照片时填，网页靠它显示「已加入」）
 
-wishlist: []   # test2 アカウントの愿望清单（空から）。test1 のものは archive/test1/wishlist.yaml
+wishlist:
+  - name: 黑貓魔法術溫變馬克杯
+    image: starbucks-black-cat-mug.jpg
+    price: 850
+    currency: NT$
+    specs:
+      容量: 355 ml
+      系列: 2026 万圣节黑猫（限量）
+    shop: 台湾星巴克
+    url: https://www.cosmopolitan.com/tw/lifestyle/hot-topics/g74024085/starbucks-halloween-2026-1010/
+    added: 2026-10-12
+    status: 想要
+    watch: 星巴克马克杯
+    note: 温变杯，倒热饮会变色；10/7 起限量开卖
+    likes:
+      猫: ["猫|貓|ネコ|ねこ|黒猫|black cat|kitty"]
+      万圣节: ["ハロウィン|萬聖|万圣|Halloween"]
+      动物 / 角色造型: ["うさぎ|ウサギ|兔|rabbit|bunny|-bad bunny", "リス|松鼠|squirrel|-リスト|-リスク|-リスナー|-イギリス|-クリスマス", "くま|クマ|テディ|teddy bear", "Snoopy|スヌーピー|史努比|Peanuts", "Care Bears|彩虹熊|ケアベア", "ポケモン|Pokémon|Pokemon|宝可梦|寶可夢", "ジブリ|Ghibli|吉卜力|宮崎駿|宫崎骏"]
+      限定款: ["限定|限量|limited"]
+      马克杯: ["マグ|馬克杯|马克杯|mug|-マグロ|-マグネ|-マグニ|-マグマ"]
+    basics: [限定款, 马克杯]
+
+  - name: 貓眼溫變馬克杯
+    image: starbucks-cat-eye-mug.jpg
+    price: 600
+    currency: NT$
+    specs:
+      容量: 414 ml
+      造型: 黑白賓士貓，杯耳是尾巴
+    shop: 台湾星巴克
+    url: https://www.cosmopolitan.com/tw/lifestyle/hot-topics/g74024085/starbucks-halloween-2026-1010/
+    added: 2026-10-12
+    status: 想要
+    watch: 星巴克马克杯
+    note: 温变杯，倒热饮后闭着的眼睛会变化；货币和链接按截图（繁体字、毫升、星巴克）推断是台湾星巴克 2026 万圣节系列
+    likes:
+      猫: ["猫|貓|ネコ|ねこ|黒猫|black cat|kitty"]
+      黑白配色: ["賓士貓|宾士猫|ハチワレ|tuxedo cat|黑白"]
+      万圣节: ["ハロウィン|萬聖|万圣|Halloween"]
+      温变杯: ["温变|溫變|変色|color changing"]
+      马克杯: ["マグ|馬克杯|马克杯|mug|-マグロ|-マグネ|-マグニ|-マグマ"]
+    basics: [马克杯]
+
+  - name: Louis Vuitton Stella Monogram 围巾（Monogram Stellar Scarf）
+    image: lv-stellar-monogram-scarf.jpg
+    price: 6 万多
+    currency: ¥
+    specs:
+      型号: M98885
+      材质: 100% 羊绒（カシミヤ）
+      尺寸: 194 × 28 cm
+      颜色: 灰色，小 Monogram 花和 LOUIS VUITTON 字样刺绣
+    shop: Louis Vuitton
+    url: https://uk.louisvuitton.com/eng-gb/products/monogram-stellar-scarf-s00-nvprod7760061v/M98885
+    added: 2026-10-13
+    status: 想要
+    note: 2026 新款，小红书博主（东京）说日本价「6 开头」，官网日本价没查到；英国官网 £725、香港 HK$8,150。链接是英国官网
+    likes:
+      Louis Vuitton: ["Louis Vuitton|ルイヴィトン|ルイ・ヴィトン|路易威登"]
+      羊绒围巾: ["マフラー|ストール|围巾|圍巾|scarf|カシミヤ|羊绒|cashmere"]
+      Monogram 刺绣: ["モノグラム|Monogram|老花"]
+      低调灰色: ["グレー|灰色|grey|gray"]
+    basics: [低调灰色]
+
+  - name: SALONIA 无线直发夹（コードレス ストレートアイロン）
+    image: salonia-cordless-iron.jpg
+    price: 4378
+    currency: ¥
+    specs:
+      颜色: 粉色
+      原价: ¥6,578（限定 Prime 促销 -33%）
+      类型: 无线充电式，可随身带
+    shop: Amazon.co.jp
+    url: https://www.amazon.co.jp/s?k=SALONIA+%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AC%E3%82%B9+%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%83%88%E3%82%A2%E3%82%A4%E3%83%AD%E3%83%B3
+    added: 2026-10-12
+    status: 纠结
+    note: Prime 限定促销价，评分 4.0（209 条）；参考价 ¥6,578 和 2026/8 改版的新款定价一样（约 60 秒到 140℃、3 档温度、12mm 细夹板），截图商品名被截断，链接是亚马逊搜索页。新款打 -33% 算是好时机
+    alternatives:
+      - name: ReFa ビューテック フィンガーアイロン
+        price: 约 ¥13,200–14,500
+        why: 更小更轻（160g）的无线手指夹，专修刘海和碎发；贵一倍，夹不了整头
+        url: https://www.cosme.net/variations/1124843/
+    similar:
+      - {label: 无线直发夹, lang: ja-JP, query: コードレス ヘアアイロン 新発売, need: ["コードレス|cordless", "アイロン"]}
+    likes:
+      SALONIA: ["SALONIA|サロニア"]
+      直发夹 / 卷发棒: ["ヘアアイロン|ストレートアイロン|カールアイロン|直发夹|直髮夾|離子夾|卷发棒|hair iron|straightener"]
+      美容家电: ["美容家電|美容家电|ドライヤー|吹风机|吹風機|hair dryer"]
+      粉色: ["ピンク|粉色|粉紅|pink"]
+    basics: [粉色]
+
+  - name: Aesop ルーセント フェイシャル エッセンス
+    image: aesop-lucent-facial-essence.jpg
+    price: 13800
+    currency: ¥
+    specs:
+      容量: 60 mL
+      功效: 保湿（モイスチャライジング）
+      成分: 玫瑰花瓣、维生素 C 衍生物、烟酰胺
+      原价: ¥14,600（过去价格）；官方定价约 ¥15,840
+    shop: Amazon.co.jp
+    url: https://www.cosme.net/variations/996675/
+    added: 2026-10-12
+    status: 纠结
+    note: 海外叫 Lucent Facial Concentrate；亚马逊 ¥13,800 比官方定价 ¥15,840 便宜约 2,000；图是网上找的官方瓶身图（英文标签）
+    alternatives:
+      - name: オバジC25セラム ネオ（12 mL）
+        price: ¥11,000
+        why: 高浓度维 C 精华，偏毛孔 / 透亮；量少很多，保湿感不如 Aesop，注意有仿品，要在正规店买
+        url: https://www.e-fujiyakuhin.jp/smp/item/4987241199891.html
+    similar:
+      - {label: 维C 保湿精华, lang: ja-JP, query: ビタミンC 美容液 新発売, need: ["美容液|セラム|エッセンス", "ビタミンC|VC"]}
+    likes:
+      Aesop: ["Aesop|イソップ|伊索"]
+      护肤精华: ["美容液|エッセンス|精华|精華|serum|essence"]
+      保湿: ["保湿|モイスチャ|moisturi"]
+    basics: [保湿]
+
+  - name: Panasonic 衣類スチーマー NI-GS420-K（挂烫机）
+    image: panasonic-garment-steamer.jpg
+    price: 8050
+    currency: ¥
+    specs:
+      型号: NI-GS420-K 迷夜黑（ミッドナイトブラック）
+      蒸汽量: 约 18 g/分（大容量，松下史上最大）
+      水箱: 约 160 mL，连续喷约 8 分钟
+      重量: 约 950 g
+    shop: Amazon.co.jp
+    url: https://panasonic.jp/iron/products/NI-GS420.html
+    added: 2026-10-12
+    status: 纠结
+    note: 2025/10 发售，只出蒸汽（スチーム専用）；评价说略重，久拿手会累
+    alternatives:
+      - name: Panasonic NI-GS400（上一代）
+        price: 价格随店变动，常比新款便宜
+        why: 外形和重量（约 950g）、水箱 160 mL 几乎一样，蒸汽量约 16 g/分略少；想省钱可以找它
+        url: https://panasonic.jp/iron/products/NI-GS400/spec.html
+      - name: T-fal アクセススチーム ファースト DT6101J0
+        price: 定价 ¥9,000，常见 ¥5,000 左右
+        why: 约 725g 更轻、15 秒就能用，蒸汽约 16 g/分；水箱只有 70 mL，适合每天早上快速烫一两件
+        url: https://getnavi.jp/appliances/772233/
+    similar:
+      - {label: 挂烫机, lang: ja-JP, query: 衣類スチーマー 新製品, need: ["スチーマー"]}
+    likes:
+      Panasonic: ["パナソニック|Panasonic|松下|國際牌"]
+      衣物护理: ["スチーマー|アイロン|挂烫|掛燙|毛玉|毛球|衣類ケア|steamer"]
+      生活家电: ["家電|家电|家電量販"]
+    basics: [生活家电]
+
+  - name: Panasonic 毛玉クリーナー NI-LC300-A（毛球修剪器）
+    image: panasonic-lint-remover.jpg
+    price: 4000
+    currency: ¥
+    specs:
+      型号: NI-LC300-A 藏青（ネイビー）
+      充电: USB Type-C，充满约用 60 分钟
+      刀片: 6 枚刃 + 不易凹陷的外网，三档强度
+      重量: 约 174 g
+    shop: Amazon.co.jp
+    url: https://panasonic.jp/iron/products/NI-LC300.html
+    added: 2026-10-12
+    status: 纠结
+    note: 2025/10 复刻发售，杂志《家電批評》评测第 1 名；截图商品名被截断，按「毛玉クリーナー + ネイビー」对上的型号
+    alternatives:
+      - name: テスコム KD778（插电式）
+        price: 约 ¥2,700 起
+        why: 力气大、倒毛屑方便，mybest 评分 4.63；但要插电、声音大，用力压会伤衣服
+        url: https://my-best.com/products/68531
+      - name: テスコム 毛だまトレタ スピードタイプ TKD60A（充电式）
+        why: 同样是无线充电式，可以作为备选比价
+        url: https://www.elecom.co.jp/products/TKD60A-C.html
+    similar:
+      - {label: 毛球修剪器, lang: ja-JP, query: 毛玉クリーナー 新製品, need: ["毛玉"]}
+    likes:
+      Panasonic: ["パナソニック|Panasonic|松下|國際牌"]
+      衣物护理: ["スチーマー|アイロン|挂烫|掛燙|毛玉|毛球|衣類ケア|steamer"]
+      生活家电: ["家電|家电|家電量販"]
+    basics: [生活家电]
+
+  - name: Mrs. GREEN APPLE Ringo Jam Tour “SHADOWS”
+    image: mga-shadows-tour.jpg
+    specs:
+      日程: 2026/9/30 – 12/28 · 14 个场馆 28 场
+      离你最近: 12/2 · 12/3 兵库 GLION ARENA KOBE
+      类型: 全国体育馆巡演（时隔 3 年）
+    shop: Mrs. GREEN APPLE
+    url: https://www.oricon.co.jp/news/2461515/full/
+    added: 2026-10-12
+    status: 已过期
+    note: 去不了了，但还是想去。下次巡演 / 追加公演再看
+    likes:
+      Mrs. GREEN APPLE: ["Mrs. GREEN APPLE|ミセス|大森元貴|Mrs.GREEN APPLE"]
+      日本乐队: ["ロックバンド|バンド|乐队|樂團"]
+      演唱会: ["ライブ|ツアー|公演|演唱会|演唱會|concert|tour"]
+    basics: [演唱会]
+
+  - name: Galaxy S27 Ultra
+    image: galaxy-s27-ultra.jpg
+    specs:
+      价格: 未公布（传全系涨价）
+      屏幕: 约 6.9 英寸（传闻）
+      相机: 200MP 主摄 + 50MP 5x 潜望，横向相机大平台（传闻）
+      其他: 保留 S Pen · 60W 快充（认证）
+    shop: 三星 · 传 2027 年 2 月前后发布
+    url: https://www.notebookcheck.net/This-is-the-Samsung-Galaxy-S27-Ultra-Renders-seem-to-confirm-redesign.1378354.0.html
+    added: 2026-10-12
+    status: 想要
+    watch: 三星手机
+    note: 还没发布，图是 OnLeaks × Android Headlines 的 CAD 渲染图，规格都是传闻 / 认证信息
+    likes:
+      三星 Galaxy: ["Galaxy|ギャラクシー|갤럭시|三星|Samsung|サムスン|삼성"]
+      旗舰手机: ["旗舰|旗艦|flagship|フラッグシップ|플래그십"]
+      手写笔: ["S Pen|手写笔|手寫筆|スタイラス|stylus"]
+      手机影像: ["长焦|長焦|潜望|望遠|telephoto|periscope|200MP"]
+      手机: ["smartphone|スマホ|スマートフォン|手机|手機|스마트폰"]
+    basics: [手机]
+
+  - name: Galaxy S27 Pro
+    image: galaxy-s27-pro.jpg
+    specs:
+      价格: 未公布（传全系涨价）
+      屏幕: 约 6.6 英寸，比 Ultra 小一圈（传闻）
+      相机: 和 Ultra 同款横向相机大平台，没有 S Pen（传闻）
+      其他: 60W 快充（认证）· 最高 12GB 内存、有 1TB 版本（传闻）
+    shop: 三星 · 传 2027 年 2 月前后发布（新增机型）
+    url: https://helentech.jp/news-galaxy-s27-pro-cad-render-leak-90528/
+    added: 2026-10-12
+    status: 想要
+    watch: 三星手机
+    note: 还没发布，图是 OnLeaks × Android Headlines 的 CAD 渲染图，规格都是传闻 / 认证信息
+    likes:
+      三星 Galaxy: ["Galaxy|ギャラクシー|갤럭시|三星|Samsung|サムスン|삼성"]
+      旗舰手机: ["旗舰|旗艦|flagship|フラッグシップ|플래그십"]
+      小屏旗舰: ["小屏|小尺寸|コンパクト|compact"]
+      手机: ["smartphone|スマホ|スマートフォン|手机|手機|스마트폰"]
+    basics: [手机]
+
+  - name: 小熊維尼蜂蜜罐馬克杯（Winnie the Pooh 聯名系列）
+    image: starbucks-tw-pooh-honeypot-mug.jpg
+    specs:
+      系列: 星巴克 × 小熊維尼 100 週年聯名（Disney × Starbucks）
+      造型: 蜂蜜罐形状，杯身后面露出维尼的屁股，内侧墨绿色
+    shop: 台湾星巴克
+    url: https://travel.udn.com/travel/story/7185/9813740
+    added: 2026-10-14
+    status: 想要
+    watch: "星巴克马克杯"
+    photo: 3
+    note: 先从「星巴克马克杯」的新闻加进来，10/17 又拍照确认是这款（starbucks.com.tw 的商品图）；价格照片里没有，等官方公布
+    likes:
+      小熊维尼: ["Winnie the Pooh|Pooh|プーさん|小熊維尼|小熊维尼|维尼|維尼"]
+      星巴克: ["Starbucks|スタバ|スターバックス|星巴克"]
+      马克杯: ["マグ|-マグロ|mug|馬克杯|马克杯"]
+    basics: [马克杯]
+
+  - name: ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）
+    image: chiikawa-magical-gororin-plush.jpg
+    specs:
+      系列: まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ
+      发售: 2027 年 2 月下旬发送（预约商品，延期也不能取消）
+    shop: ちいかわマーケット
+    url: https://chiikawamarket.jp/
+    added: 2026-10-16
+    status: 想要
+    photo: 1
+    note: 照片是 ちいかわマーケット 手机页面的截图，价格没拍到（请用户补充）；商品名按页面标题读出，括号里的角色名是「強くなったうさぎ」，图里还有ハチワレ等同系列的抱枕
+    likes:
+      ちいかわ: ["ちいかわ|chiikawa|吉伊卡哇|Chiikawa"]
+      まじかるちいかわ: ["まじかる|魔法少女|magical"]
+      抱枕玩偶: ["ぬいぐるみ|抱きぬい|玩偶|毛绒|plush"]
+    basics: [抱枕玩偶]
+
+  - name: EVA 初号机配色的车（紫 × 绿车身贴）
+    image: eva-unit01-car-wrap.jpg
+    specs:
+      配色: 紫色车身 + 荧光绿条纹 + 黑色车顶（EVA 初号机）
+      图案: 「01 初號機」、NERV、WARNING 等标志
+      车型: 照片里像极氪 007 一类的溜背轿车（推断，没有写明）
+    shop: 车身改色贴膜（EVA 主题）
+    added: 2026-10-17
+    status: 想要
+    photo: 2
+    note: 以后买车想要这种配色；照片是网友晒车的截图，车型和贴膜店都是推断
+    likes:
+      EVA: ["エヴァ|エヴァンゲリオン|Evangelion|EVA|福音战士|新世紀福音戰士|初号機|初号机|初號機"]
+      汽车: ["クルマ|車|汽车|汽車|car|EV"]
+    basics: [汽车]
+
+  - name: Aesop アンドラム アロマティック ハンドウォッシュ
+    image: aesop-andrum-hand-wash.jpg
+    price: 5940
+    currency: ¥
+    specs:
+      容量: 500 mL（带泵头）
+      香调: 柑橘、木质、草本（橘皮・迷迭香叶・雪松）
+      无泵头版: ¥5,830（税込）
+    shop: Aesop 日本官网
+    url: https://www.aesop.com/jp/
+    added: 2026-10-17
+    status: 想要
+    photo: 4
+    note: 价格是官网 500 mL 带泵头的税込价；同系列有 75 mL 护手霜（官网推荐的组合）
+    likes:
+      Aesop: ["Aesop|イソップ|伊索"]
+      洗手液: ["ハンドウォッシュ|ハンドソープ|hand wash|洗手液"]
+    basics: [洗手液]

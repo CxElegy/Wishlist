@@ -1,27 +1,358 @@
 {
  "items": {
-  "ちいかわ": {
-   "at": "2026-10-21T00:39:47+00:00",
-   "failed_at": "2026-10-21T00:39:47+00:00",
+  "A2O LITE": {
+   "at": "2026-10-19T12:23:01+00:00",
+   "failed_at": "2026-10-19T12:23:01+00:00",
    "funnel": {
     "added": 0,
     "auto": 0,
-    "found": 10,
+    "found": 17,
     "rejected": {
-     "もう使っている・外した画像": 9,
-     "確かでない取り方": 1
+     "何人も写っている": 3,
+     "使えない": 2,
+     "別人": 3,
+     "遠景": 3,
+     "顔なし": 5
     },
-    "usable": 10
+    "usable": 0
    },
-   "have": 14,
-   "kind": "character",
-   "material": "4fcf0167439c",
-   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：もう使っている・外した画像 9・確かでない取り方 1。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "have": 7,
+   "kind": "group",
+   "material": "432eb6cb20da",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：顔なし 5・何人も写っている 3・遠景 3。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
    "state": "failed",
    "steps": [
     {
      "added": 0,
-     "found": 10,
+     "found": 1,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 1,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 15,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 9,
+   "tried": {
+    "Wikimedia Commons": 0,
+    "Wikipedia": 0,
+    "YouTube": 12,
+    "公式サイト": 0,
+    "新聞の配図": 2,
+    "記事のページ": 3
+   }
+  },
+  "Astrae Oratio": {
+   "at": "2026-10-19T09:44:27+00:00",
+   "failed_at": "2026-10-19T09:44:27+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 12,
+    "rejected": {
+     "使えない": 2,
+     "確かでない取り方": 3
+    },
+    "usable": 3
+   },
+   "have": 5,
+   "kind": "character",
+   "material": "ea653bafa1a5",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：確かでない取り方 3・使えない 2。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 0,
+     "found": 3,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 9,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 6,
+   "tried": {
+    "Wikimedia Commons": 0,
+    "Wikipedia": 0,
+    "公式サイト": 1,
+    "新聞の配図": 3,
+    "記事のページ": 8
+   }
+  },
+  "BLEACH Mirrors High": {
+   "at": "2026-10-17T00:53:50+00:00",
+   "have": 6,
+   "kind": "character",
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 6,
+   "tried": {
+    "Fandom": 6
+   }
+  },
+  "FROM": {
+   "at": "2026-10-18T00:57:27+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 51,
+    "rejected": {
+     "何人も写っている": 2,
+     "別人": 30,
+     "同じ画像": 4,
+     "目標を超える": 1,
+     "重複（その人はもういる）": 11,
+     "顔なし": 2
+    },
+    "usable": 13
+   },
+   "have": 6,
+   "kind": "character",
+   "material": "463cf13747a7",
+   "note": "1 枚足して目標に届いた（標準 +1）",
+   "state": "ok",
+   "steps": [
+    {
+     "added": 1,
+     "found": 51,
+     "label": "標準"
+    }
+   ],
+   "target": 6,
+   "tried": {
+    "作品の主な画像": 1,
+    "作品の動画の場面": 36,
+    "役": 0,
+    "役の記事": 14
+   }
+  },
+  "GTA 6": {
+   "have": 2,
+   "kind": "character",
+   "note": "2 / 2 枚で目標に届いた",
+   "state": "ok",
+   "target": 2
+  },
+  "ILLIT": {
+   "at": "2026-10-18T00:09:15+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 134,
+    "rejected": {
+     "何人も写っている": 10,
+     "別人": 20,
+     "遠景": 2,
+     "重複（その人はもういる）": 29,
+     "顔なし": 50
+    },
+    "usable": 30
+   },
+   "have": 5,
+   "kind": "group",
+   "material": "0d143466a42d",
+   "note": "1 枚足して目標に届いた（標準 +0 → 名前を広げる +0 → 公式・記事のページ +1）",
+   "state": "ok",
+   "steps": [
+    {
+     "added": 0,
+     "found": 13,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 65,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 1,
+     "found": 56,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 5,
+   "tried": {
+    "Wikimedia Commons": 72,
+    "Wikipedia": 2,
+    "YouTube": 36,
+    "公式サイト": 0,
+    "新聞の配図": 4,
+    "記事のページ": 20
+   }
+  },
+  "MMORPG 新作": {
+   "at": "2026-10-17T00:55:31+00:00",
+   "have": 6,
+   "kind": "topic",
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 5,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
+  },
+  "The Mandalorian": {
+   "at": "2026-10-17T06:08:26+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 3,
+    "found": 73,
+    "rejected": {
+     "何人も写っている": 16,
+     "使えない": 1,
+     "切り抜きの検査": 2,
+     "別人": 10,
+     "同じ画像": 1,
+     "目標を超える": 28,
+     "遠景": 1,
+     "重複（その人はもういる）": 7,
+     "顔なし": 4
+    },
+    "usable": 38
+   },
+   "have": 4,
+   "kind": "character",
+   "material": "0babed4f5447",
+   "note": "1 枚足して目標に届いた（標準 +0 → 名前を広げる +0 → 公式・記事のページ +1）",
+   "state": "ok",
+   "steps": [
+    {
+     "added": 0,
+     "found": 4,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 33,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 1,
+     "found": 36,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 4,
+   "tried": {
+    "Wikimedia Commons": 29,
+    "Wikipedia": 7,
+    "YouTube": 36,
+    "公式サイト": 0,
+    "新聞の配図": 1,
+    "記事のページ": 0
+   }
+  },
+  "Vaundy": {
+   "at": "2026-10-19T04:51:02+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 41,
+    "rejected": {
+     "もう使っている・外した画像": 2,
+     "別人": 1,
+     "目標を超える": 2,
+     "遠景": 1,
+     "顔なし": 21
+    },
+    "usable": 5
+   },
+   "have": 6,
+   "kind": "person",
+   "material": "13de0dca8b93",
+   "note": "1 枚足して目標に届いた（標準 +0 → 名前を広げる +0 → 公式・記事のページ +1）",
+   "state": "ok",
+   "steps": [
+    {
+     "added": 0,
+     "found": 7,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 8,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 1,
+     "found": 26,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 6,
+   "tried": {
+    "Wikidata": 1,
+    "Wikimedia Commons": 4,
+    "Wikipedia": 5,
+    "YouTube": 12,
+    "公式サイト": 7,
+    "新聞の配図": 5,
+    "記事のページ": 7
+   }
+  },
+  "dota2": {
+   "at": "2026-10-17T00:17:30+00:00",
+   "have": 20,
+   "kind": "character",
+   "note": "6 枚足して目標に届いた",
+   "state": "ok",
+   "target": 20,
+   "tried": {
+    "Wikimedia Commons": 3,
+    "Wikipedia": 5,
+    "直接指定": 6
+   }
+  },
+  "gelato pique": {
+   "at": "2026-10-17T00:55:31+00:00",
+   "have": 1,
+   "kind": "brand",
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 1,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 0,
+    "公式サイト": 2
+   }
+  },
+  "あつ森": {
+   "at": "2026-10-19T11:09:46+00:00",
+   "failed_at": "2026-10-19T11:09:46+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 8,
+    "rejected": {
+     "確かでない取り方": 8
+    },
+    "usable": 8
+   },
+   "have": 17,
+   "kind": "character",
+   "material": "cb0031255dbe",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：確かでない取り方 8。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 0,
+     "found": 8,
      "label": "標準"
     },
     {
@@ -35,27 +366,419 @@
      "label": "公式・記事のページ"
     }
    ],
-   "target": 24,
+   "target": 81,
    "tried": {
-    "Fandom": 9,
-    "Wikipedia": 1,
+    "Fandom": 0,
+    "Wikimedia Commons": 0,
+    "Wikipedia": 8,
     "公式サイト": 0,
+    "新聞の配図": 0,
     "記事のページ": 0
+   }
+  },
+  "ぐでたま": {
+   "have": 3,
+   "kind": "character",
+   "note": "3 / 3 枚で目標に届いた",
+   "state": "ok",
+   "target": 3
+  },
+  "ちいかわ": {
+   "at": "2026-10-19T12:22:43+00:00",
+   "failed_at": "2026-10-19T12:22:43+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 5,
+    "rejected": {
+     "もう使っている・外した画像": 2
+    },
+    "usable": 2
+   },
+   "have": 1,
+   "kind": "topic",
+   "material": "0740ec339b8d",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：もう使っている・外した画像 2。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 0,
+     "found": 2,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 3,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 3,
+   "tried": {
+    "Wikidata": 5,
+    "Wikimedia Commons": 0,
+    "公式サイト": 0
+   }
+  },
+  "ちいかわ イベント": {
+   "at": "2026-10-19T12:22:44+00:00",
+   "failed_at": "2026-10-19T12:22:44+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 0,
+    "rejected": {},
+    "usable": 0
+   },
+   "have": 0,
+   "kind": "topic",
+   "material": "d5778dc12d7a",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：候補なし。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 0,
+     "found": 0,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 3,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
+  },
+  "ちいかわ 漫画": {
+   "at": "2026-10-19T12:22:45+00:00",
+   "failed_at": "2026-10-19T12:22:45+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 0,
+    "rejected": {},
+    "usable": 0
+   },
+   "have": 0,
+   "kind": "brand",
+   "material": "efd1e1efa905",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：候補なし。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 0,
+     "found": 0,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 1,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
+  },
+  "チェーンソーマン": {
+   "at": "2026-10-17T05:56:16+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 12,
+    "rejected": {
+     "同じ画像": 1,
+     "重複（その人はもういる）": 6
+    },
+    "usable": 7
+   },
+   "have": 6,
+   "kind": "character",
+   "material": "9ba076128f3a",
+   "note": "1 枚足して目標に届いた（標準 +1）",
+   "state": "ok",
+   "steps": [
+    {
+     "added": 1,
+     "found": 12,
+     "label": "標準"
+    }
+   ],
+   "target": 6,
+   "tried": {
+    "Fandom": 12
+   }
+  },
+  "三星手机": {
+   "at": "2026-10-17T01:44:47+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 6,
+    "rejected": {
+     "白紙": 1,
+     "確かでない取り方": 4
+    },
+    "usable": 5
+   },
+   "have": 1,
+   "kind": "brand",
+   "note": "1 枚足して目標に届いた",
+   "state": "ok",
+   "target": 1,
+   "tried": {
+    "Wikidata": 1,
+    "Wikimedia Commons": 1,
+    "Wikipedia": 4,
+    "公式サイト": 0
+   }
+  },
+  "周杰伦": {
+   "at": "2026-10-18T13:22:04+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 2,
+    "found": 52,
+    "rejected": {
+     "もう使っている・外した画像": 3,
+     "使えない": 1,
+     "切り抜きの検査": 1,
+     "別人": 14,
+     "目標を超える": 5,
+     "遠景": 5,
+     "顔なし": 10
+    },
+    "usable": 10
+   },
+   "have": 6,
+   "kind": "person",
+   "material": "6b2bd71150ad",
+   "note": "1 枚足して目標に届いた（標準 +0 → 名前を広げる +0 → 公式・記事のページ +1）",
+   "state": "ok",
+   "steps": [
+    {
+     "added": 0,
+     "found": 10,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 22,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 1,
+     "found": 20,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 6,
+   "tried": {
+    "Wikidata": 0,
+    "Wikimedia Commons": 12,
+    "Wikipedia": 10,
+    "YouTube": 12,
+    "公式サイト": 0,
+    "新聞の配図": 10,
+    "記事のページ": 8
+   }
+  },
+  "哈利波特剧集": {
+   "at": "2026-10-19T06:52:55+00:00",
+   "failed_at": "2026-10-19T06:52:55+00:00",
+   "funnel": {
+    "added": 0,
+    "auto": 0,
+    "found": 73,
+    "rejected": {
+     "何人も写っている": 12,
+     "別人": 41,
+     "遠景": 4,
+     "重複（その人はもういる）": 3,
+     "顔なし": 12
+    },
+    "usable": 3
+   },
+   "have": 3,
+   "kind": "character",
+   "material": "a1646df7eaf1",
+   "note": "0 枚足した（標準 +0 → 名前を広げる +0 → 公式・記事のページ +0）。外した理由：別人 41・顔なし 12・何人も写っている 12。新しい記事が来たらすぐ、来なくても 6 時間後にもう一度",
+   "state": "failed",
+   "steps": [
+    {
+     "added": 0,
+     "found": 73,
+     "label": "標準"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 6,
+   "tried": {
+    "作品の主な画像": 1,
+    "作品の動画の場面": 36,
+    "役": 0,
+    "役の記事": 36
+   }
+  },
+  "日本顶级网球赛事": {
+   "at": "2026-10-17T00:55:28+00:00",
+   "have": 3,
+   "kind": "topic",
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 2,
+    "Web 画像検索": 0,
+    "Wikidata": 1,
+    "Wikimedia Commons": 0,
+    "Wikipedia": 1,
+    "公式サイト": 8
+   }
+  },
+  "星巴克马克杯": {
+   "have": 1,
+   "kind": "brand",
+   "note": "1 / 1 枚で目標に届いた",
+   "state": "ok",
+   "target": 1
+  },
+  "滑雪": {
+   "at": "2026-10-17T00:55:25+00:00",
+   "have": 3,
+   "kind": "topic",
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 1,
+    "Wikimedia Commons": 0
+   }
+  },
+  "漫威电影": {
+   "at": "2026-10-18T10:23:08+00:00",
+   "funnel": {
+    "added": 1,
+    "auto": 1,
+    "found": 65,
+    "rejected": {
+     "何人も写っている": 15,
+     "別人": 22,
+     "目標を超える": 1,
+     "遠景": 1,
+     "重複（その人はもういる）": 15,
+     "顔なし": 7
+    },
+    "usable": 17
+   },
+   "have": 6,
+   "kind": "character",
+   "material": "94807fcf8f32",
+   "note": "1 枚足して目標に届いた（標準 +1）",
+   "state": "ok",
+   "steps": [
+    {
+     "added": 1,
+     "found": 65,
+     "label": "標準"
+    }
+   ],
+   "target": 6,
+   "tried": {
+    "作品の主な画像": 1,
+    "作品の動画の場面": 30,
+    "役": 0,
+    "役の記事": 34
+   }
+  },
+  "猫用品": {
+   "at": "2026-10-17T00:54:07+00:00",
+   "have": 3,
+   "kind": "topic",
+   "note": "2 枚足して目標に届いた",
+   "state": "ok",
+   "target": 3,
+   "tried": {
+    "Twemoji": 3,
+    "Web 画像検索": 0,
+    "Wikidata": 0,
+    "Wikimedia Commons": 0
+   }
+  },
+  "绝区零": {
+   "at": "2026-10-18T01:07:44+00:00",
+   "funnel": {
+    "added": 9,
+    "auto": 9,
+    "found": 20,
+    "rejected": {
+     "もう使っている・外した画像": 1
+    },
+    "usable": 10
+   },
+   "have": 60,
+   "kind": "character",
+   "note": "9 枚足して目標に届いた（標準 +9）",
+   "state": "ok",
+   "steps": [
+    {
+     "added": 9,
+     "found": 20,
+     "label": "標準"
+    }
+   ],
+   "target": 60,
+   "tried": {
+    "Fandom": 20
    }
   }
  },
  "last_run": {
-  "at": "2026-10-21T00:39:32+00:00",
+  "at": "2026-10-19T12:22:34+00:00",
   "done": [
-   "ちいかわ"
+   "ちいかわ",
+   "ちいかわ イベント",
+   "ちいかわ 漫画",
+   "A2O LITE"
   ],
-  "end": "2026-10-21T00:39:48+00:00",
+  "end": "2026-10-19T12:23:02+00:00",
   "minutes": 40.0,
   "workers": 6
  },
- "started": "2026-10-19T14:29:11+00:00",
+ "started": "2026-10-16T23:48:04+00:00",
  "summary": {
-  "ok": 0,
-  "total": 1
+  "ok": 19,
+  "total": 26
  }
 }

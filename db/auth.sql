@@ -378,3 +378,20 @@ revoke all on function public.user_signup(text, int, jsonb) from public;
 revoke all on function public.user_set_prefs(text, jsonb) from public;
 grant execute on function public.user_signup(text, int, jsonb) to anon, authenticated;
 grant execute on function public.user_set_prefs(text, jsonb) to anon, authenticated;
+
+-- ⑮ 店長の名前（2026-10-21，用户定的）：CxElegy でログイン → 店長のメールに換えて確認のリンクを送る
+alter table public.app_users add column if not exists email text check (email is null or email = lower(email));
+insert into public.app_users (name_key, name, agreed_version, agreed_at, email, prefs)
+values ('cxelegy', 'CxElegy', 1, now(), 'c.elegy@outlook.com',
+        '{"lang":{"primary":"ja","also":["en","zh-Hans","zh-Hant","ko"]},"role":"shop","from":"owner"}'::jsonb)
+on conflict (name_key) do update set email = excluded.email;
+
+create or replace function public.admin_email_for(p_name text) returns text
+language sql stable security definer set search_path = '' as $$
+  select u.email from public.app_users u
+    join public.invites i on i.email = u.email and i.role = 'admin'
+   where u.name_key = lower(btrim(coalesce(p_name, ''))) and u.left_at is null
+   limit 1;
+$$;
+revoke all on function public.admin_email_for(text) from public;
+grant execute on function public.admin_email_for(text) to anon, authenticated;
