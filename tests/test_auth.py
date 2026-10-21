@@ -39,8 +39,10 @@ class AuthTag(unittest.TestCase):
         """アカウントは 1 つずつ独立（2026-10-22）：お客さまには店長の中身でなく自分のページ（my_page）。店長のページへの行き帰りもある。"""
         render.AUTH_DB.update(url="https://x.supabase.co", key="sb_publishable_x")
         tag = render._auth_tag("index")
-        for s in ("rpc('my_page')", "my_keywords_set", "店長のページを見る（見るだけ）", "自分のページに戻る", "wl-view-shop"):
+        for s in ("rpc('my_page')", "my_keywords_set", "自分のページに戻る"):
             self.assertIn(s, tag)
+        for s in ("ほかの人には見えません", "店長のページを見る", "まだ集めていません", "ニュース集めは準備中", "欲しい物リストは準備中"):   # お客さまに要らない内部の事情は出さない
+            self.assertNotIn(s, tag)
         self.assertIn('html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine)', render.AUTH_CSS)
         import json
         cfg = json.loads(re.search(r"var A=(\{.*?\}), R=", tag).group(1))

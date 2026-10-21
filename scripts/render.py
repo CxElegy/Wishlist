@@ -3978,7 +3978,7 @@ AUTH_JS = r"""
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
     // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
-    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">'+(isMine()?'あなたのページ':'店長のページ · 見るだけ')+'</span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ</a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
+    box.innerHTML=(role!=='admin'&&SHOP&&!isMine()?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ</a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
       '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(role)+'">'+esc(label)+'</span></button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています</small>'+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ</button>':'')+
@@ -4019,7 +4019,7 @@ AUTH_JS = r"""
   }
   // お客さま自分のページ（2026-10-22，用户定的：アカウントは 1 つずつ独立。ログインしたお客さまに店長の中身は出さない）。
   // 簡報・欲しい物・話題度・設定で、店長の中身の代わりに自分の（最初は空の）ページを出す。中身は Supabase の my_page()（本人の行だけ、db/my_page.sql）。
-  // 店長のページは「店長のページを見る（見るだけ）」で見に行ける（このタブの間だけ。上の帯の「自分のページに戻る」で戻る）。
+  // 店長のページへの切り替え（wl-view-shop）は画面に出さない（2026-10-22，用户指摘：お客さまに要らない）。前に切り替えたタブには上の帯で戻る道だけ残す。
   var VIEW='wl-view-shop', SECS=A.secs||[];
   function viewShop(){try{return sessionStorage.getItem(VIEW)==='1';}catch(e){return false;}}
   function isMine(){return SHOP&&R.dataset.role==='user'&&!!(me||user)&&!viewShop();}
@@ -4044,11 +4044,10 @@ AUTH_JS = r"""
     var picks=((p&&p.prefs&&p.prefs.picks)||[]).filter(function(x){return x&&x.name;});
     var nav=[['index','./','ページ'],['wishlist','wishlist.html','欲しい物'],['heat','heat.html','話題度'],['settings','settings.html','設定']]
       .map(function(x){return '<a href="'+x[1]+'"'+(x[0]===page?' aria-current="page"':'')+'>'+x[2]+'</a>';}).join('');
-    var h='<nav class="mn" aria-label="あなたのページ">'+nav+'</nav><header><small>あなたのページ</small><h1>'+esc(sh)+' さんのページ</h1>'+
-      '<p>ここはあなただけのページです。店長のページとは別で、ほかの人には見えません。</p>'+
-      '<button type="button" class="ghost" data-shop>店長のページを見る（見るだけ）</button></header>';
+    // 画面に出すのはお客さまに要ることだけ（2026-10-22，用户指摘：仕組みの説明・準備中の事情・店長のページへの案内は出さない）
+    var h='<nav class="mn" aria-label="ページ">'+nav+'</nav><header><h1>'+esc(sh)+' さんのページ</h1></header>';
     if(err) h+='<p class="st">読み込めませんでした：'+esc(err)+'</p>';
-    else if(!tok) h+='<p class="st">キーワードを読むには、いったんログアウトして、メールとパスワードでもう一度ログインしてください。</p>';
+    else if(!tok) h+='<p class="st">もう一度ログインしてください。</p>';
     if(page==='index'){
       if(picks.length){
         h+='<h2>あなたのキーワード<small>'+picks.length+' 個</small></h2>';
@@ -4056,26 +4055,24 @@ AUTH_JS = r"""
         picks.forEach(function(x){(by[x.sec]=by[x.sec]||[]).push(x);});
         Object.keys(by).sort(function(a,b){var i=order.indexOf(a),j=order.indexOf(b);return (i<0?99:i)-(j<0?99:j);}).forEach(function(k){
           h+='<h3><i style="background:'+esc(secColor(k)||'var(--ink)')+'"></i>'+esc(secJa(k))+'</h3><ul class="kw">'+
-            by[k].map(function(x){return '<li>'+esc(x.name)+'<small>まだ集めていません</small></li>';}).join('')+'</ul>';});
-        h+='<p class="note">お客さまのニュース集めは準備中です。始まると、キーワードごとに版面ができてここに並びます。キーワードは <a href="settings.html">設定</a> で足したり外したりできます。</p>';
-      } else h+='<div class="empty"><b>まだ何もありません</b><p>キーワードを足すと、ここに並びます。</p><a class="go" href="settings.html">設定でキーワードを足す</a></div>';
+            by[k].map(function(x){return '<li>'+esc(x.name)+'</li>';}).join('')+'</ul>';});
+      } else h+='<div class="empty"><b>まだキーワードがありません</b><a class="go" href="settings.html">キーワードを足す</a></div>';
     } else if(page==='wishlist'){
-      h+='<div class="empty"><b>欲しい物リストはまだ空です</b><p>お客さまの欲しい物リストは準備中です。</p></div>';
+      h+='<div class="empty"><b>欲しい物はまだありません</b></div>';
     } else if(page==='heat'){
-      h+='<div class="empty"><b>話題度はまだありません</b><p>あなたの版面ができると、キーワードごとの話題度がここに出ます。</p></div>';
+      h+='<div class="empty"><b>話題度はまだありません</b></div>';
     } else if(page==='settings'){
-      h+='<h2>キーワード<small>'+picks.length+' 個 · 200 個まで</small></h2>'+
+      h+='<h2>キーワード<small>'+picks.length+' 個</small></h2>'+
         '<form class="add"><input name="n" maxlength="80" required placeholder="作品・ブランド・人・場所など" aria-label="キーワード">'+
         '<select name="s" aria-label="大類">'+SECS.map(function(x){return '<option value="'+esc(x[0])+'">'+esc(x[1])+'</option>';}).join('')+'</select>'+
         '<button type="submit">足す</button></form><p class="st" aria-live="polite"></p>'+
         (picks.length?'<ul class="kw">'+picks.map(function(x,i){return '<li>'+esc(x.name)+'<small>'+esc(secJa(x.sec))+'</small><button type="button" data-del="'+i+'" aria-label="'+esc(x.name)+' を外す">外す</button></li>';}).join('')+'</ul>'
-          :'<div class="empty"><b>まだキーワードがありません</b><p>上の欄から足してください。</p></div>');
+          :'');
     }
     box.innerHTML=h;
-    box.querySelector('[data-shop]').onclick=function(){setView(true);};
     var f=box.querySelector('form.add'); if(!f) return;
     var st=box.querySelector('.st'), save=function(list,msg){
-      if(!tok){st.textContent='ログインし直してください（メールとパスワード）';return;}
+      if(!tok){st.textContent='もう一度ログインしてください';return;}
       st.textContent='保存しています…';
       rpc('my_keywords_set',{p_picks:list}).then(function(){p=p||{};p.prefs=p.prefs||{};p.prefs.picks=list;drawMine(box,p,'');var s2=box.querySelector('.st');if(s2)s2.textContent=msg;})
         .catch(function(e){st.textContent='保存できませんでした：'+e.message;});};
