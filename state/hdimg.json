@@ -36,6 +36,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261021ac/200/w640h360/20261021/cdfd-61ff7ee2ddacd552d4c621ed8b826963.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "http://wx1.sinaimg.cn/middle/647c8fably1ii4734hamfj21140pmdws.jpg": {
   "w": 1336,
   "h": 922,
@@ -286,6 +292,12 @@
   "w": 1500,
   "h": 1000,
   "target": 720,
+  "v": 3
+ },
+ "https://cdn.livedoor.jp/kstyle/eaca58ea6b0e56ac6ac44877a9aa9bde_WI.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.nc.press/news/photo/202610/628491_864405_4947.png": {
@@ -1779,6 +1791,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000010-cdj-000-1-view.jpg?exp=10800": {
+  "w": 640,
+  "h": 467,
+  "target": 720,
+  "v": 3,
+  "local": "pics/f7bc2622d77da6af.webp",
+  "out": [
+   640,
+   467
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsimg.koreatimes.co.kr/2026/10/14/d9177408-f52d-48e1-afd1-af8bf9ae741b.jpg": {
   "w": 1920,
   "h": 1280,
@@ -1892,6 +1916,12 @@
   "w": 1000,
   "h": 560,
   "target": 720,
+  "v": 3
+ },
+ "https://pimg.mk.co.kr/news/cms/202610/21/news-p.v1.20261021.93bb71d828084bc1916717c8caacb902_R.jpeg": {
+  "w": 1000,
+  "h": 700,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/12048/1247/12048-1247-64977d38e7992af398fbe6cd29e05b7d-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {

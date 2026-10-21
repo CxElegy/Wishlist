@@ -79,7 +79,8 @@
  ],
  "_covered": {
   "三星手机": 40,
-  "漫威电影": 40
+  "漫威电影": 40,
+  "A2O LITE": 30
  },
  "漫威电影": [
   {
@@ -142,6 +143,53 @@
     25,
     35,
     36
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "A2O LITE、デビューわずか1週間で「THE SHOW」1位を獲得！アンコールステージも話題に",
+   "highlight": "「THE SHOW」1位",
+   "blurb": "イ・スマンがプロデュースする新グループ A2O LITE がデビュー1週間で音楽番組1位に。アンコールステージのライブも話題。",
+   "weight": "lead",
+   "refs": [
+    22,
+    28,
+    29,
+    1,
+    3
+   ],
+   "image": "https://cdn.livedoor.jp/kstyle/eaca58ea6b0e56ac6ac44877a9aa9bde_WI.jpg"
+  },
+  {
+   "headline": "流通会社も驚いた検索数…「イ・スマン印」A2O LITE、名前に違わぬ活躍",
+   "highlight": "検索数",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    5
+   ]
+  },
+  {
+   "headline": "BE:FIRST、新曲が36位に初登場 新グループ・A2O LITEデビュー曲＆Travis Japan新曲も",
+   "highlight": "A2O LITEデビュー曲",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
+  },
+  {
+   "headline": "대박난 이수만 걸그룹 A2O LITE “반응 전혀 예상 못 해” 써니도 뿌듯",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27,
+    6,
+    21,
+    26
    ]
   }
  ]
