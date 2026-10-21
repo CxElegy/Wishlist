@@ -1012,6 +1012,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fJMnf.img": {
+  "w": 550,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
   "h": 819,
@@ -1116,6 +1122,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.huxiucdn.com/ai/ai-general-cover/202610/21/39774-prod-nb2qn-general-1-1792542995495.png?imageView2/1/w/1200/h/900/|imageMogr2/strip/interlace/1/quality/85": {
+  "w": 1200,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
  "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1484508143890367874/origin_1.jpg": {
   "w": 360,
   "h": 360,
@@ -1132,6 +1144,12 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/11/5602291_3.jpg": {
   "w": 800,
   "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.mydaily.co.kr/photos/2026/10/21/2026102112324060920_x.jpg": {
+  "w": 1280,
+  "h": 960,
   "target": 720,
   "v": 3
  },
@@ -1194,6 +1212,19 @@
   "v": 3,
   "blur": 0.53,
   "local": "pics/af78fc2b38bd66c5.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161631.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.529,
+  "local": "pics/1145e81b50ee4641.webp",
   "out": [
    1280,
    960
@@ -2731,6 +2762,12 @@
  "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.chosun.com/resizer/v2/MZSWMZBRGIYGIYJWGYYTSMTGHA.jpg?auth=5d108a3997f9576eadad73cbf8c16d378333fd055697c34e4d13da13198cb343&width=650&height=341&smart=true": {
+  "w": 650,
+  "h": 341,
   "target": 720,
   "v": 3
  },
