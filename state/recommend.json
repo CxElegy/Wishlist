@@ -38,6 +38,7 @@
   "https://news.infoseek.co.jp/article/oshiraku_28731/": "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg",
   "https://news.livedoor.com/article/detail/32614037/": "https://image.news.livedoor.com/newsimage/stf/6/f/6f6b6_1845_b48d9d89_6861ecd1.jpg",
   "https://news.livedoor.com/topics/detail/32611970/": "https://image.news.livedoor.com/newsimage/stf/6/8/68db4_1847_61a71f489fb525b34fc7ec2451285cdb.jpg",
+  "https://news.nicovideo.jp/watch/nw19898312": "https://www.bing.com/th?id=ONUT.g6b_rhZn6W-ALBdtks4u6Q&pid=News&w=1200",
   "https://news.nicovideo.jp/watch/nw19900276?news_ref=60_60": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA27dZtk.img",
   "https://news.yahoo.co.jp/articles/96429e05038ea34e946216451631956eb63bc7ec": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010010-realsound-000-1-view.jpg?exp=10800",
   "https://note.com/udiscover/n/n301c8b0d036d?hl=en": "https://www.bing.com/th?id=ONUT.tkirCUyh0X2plxfYt4ctgQ&pid=News&w=1200",
@@ -53,7 +54,6 @@
   "https://www.asahi.com/and/pressrelease/16970306": "https://www.asahi.com/and/ogp/ogp_and.png",
   "https://www.asahi.com/asagakuplus/article/asasho/16979815": "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600",
   "https://www.bgr.com/2269104/can-samsung-s-pen-be-traced-explained/": "https://www.bgr.com/img/gallery/can-your-samsung-s-pen-be-traced/l-intro-1790355668.jpg",
-  "https://www.boardoftheworld.com/review-never-summer-proto-swift-dt/": "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg",
   "https://www.chiba-tv.com/plus/detail/amp/2026102128529": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1484508143890367874/origin_1.jpg",
   "https://www.cineplay.co.kr/zh-tw/articles/30340": "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-10-21/8cfcdfb2-ef28-49d9-b28d-d3cb55bffb0a.jpg",
   "https://www.dexerto.com/gaming/arknights-endfield-gameplay-trailers-platforms-beta-1833704/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg",
@@ -1857,21 +1857,6 @@
    "because": "滑雪",
    "date": "2026-10-21",
    "hits": [],
-   "image": "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg",
-   "kind": "board",
-   "score": 4,
-   "source": "Board of the World",
-   "taste": [],
-   "title": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
-   "url": "https://www.boardoftheworld.com/review-never-summer-proto-swift-dt/",
-   "words": [],
-   "work": "滑雪"
-  },
-  {
-   "batch": 8,
-   "because": "滑雪",
-   "date": "2026-10-21",
-   "hits": [],
    "image": "https://travellingforbusiness.co.uk/wp-content/uploads/2026/10/DSCF5829-scaled.jpg",
    "kind": "board",
    "score": 4,
@@ -1883,7 +1868,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 9,
+   "batch": 8,
    "because": "日本顶级网球赛事",
    "date": "2026-10-20",
    "hits": [],
@@ -1911,6 +1896,21 @@
    "url": "https://decider.com/2026/10/20/from-show-season-4-netflix-where-to-watch-from-season-4-free-mgm-plus/",
    "words": [],
    "work": "FROM"
+  },
+  {
+   "batch": 9,
+   "because": "滑雪",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.g6b_rhZn6W-ALBdtks4u6Q&pid=News&w=1200",
+   "kind": "board",
+   "score": 4,
+   "source": "ニコニコニュース",
+   "taste": [],
+   "title": "アクル、国内最大級のスキー場情報サイト「SURF&SNOW」リフト券販売サービスに不正検知・認証システム「ASUKA」",
+   "url": "https://news.nicovideo.jp/watch/nw19898312",
+   "words": [],
+   "work": "滑雪"
   },
   {
    "batch": 0,
@@ -2231,11 +2231,11 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [

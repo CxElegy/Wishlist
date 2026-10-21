@@ -63,7 +63,11 @@
   "周杰伦": 9,
   "GTA 6": 6,
   "漫威电影": 6,
-  "三星手机": 5
+  "三星手机": 5,
+  "Vaundy": 1,
+  "あつ森": 1,
+  "滑雪": 1,
+  "绝区零": 1
  },
  "周杰伦": [
   {
@@ -209,6 +213,31 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  }
+ ],
+ "Vaundy": [],
+ "あつ森": [],
+ "滑雪": [
+  {
+   "headline": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
+   "highlight": "Never Summer Proto Swift DT 2027",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg"
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "《绝区零》新品情报丨「Tidal Noise噪点狂潮」键盘套组",
+   "highlight": "键盘套组",
+   "blurb": "《绝区零》の新グッズ「Tidal Noise」キーボードセットの情報。",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

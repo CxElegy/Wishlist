@@ -1,4 +1,10 @@
 {
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/NyJetYbufkdtirs.jpg": {
+  "w": 790,
+  "h": 4317,
+  "target": 1280,
+  "v": 3
+ },
  "http://n.sinaimg.cn/finance/cece9e13/20240627/655959900_20240627.png": {
   "w": 300,
   "h": 300,
@@ -1186,12 +1192,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.mydaily.co.kr/photos/2026/10/21/2026102112324060920_x.jpg": {
-  "w": 1280,
-  "h": 960,
-  "target": 720,
-  "v": 3
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/cocotte/m_cocotte-638504.jpg": {
   "w": 512,
   "h": 512,
@@ -1440,6 +1440,12 @@
   "w": 1200,
   "h": 961,
   "target": 1280,
+  "v": 3
+ },
+ "https://mydaily.co.kr/photos/2026/10/21/2026102112324060920_l.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
   "v": 3
  },
  "https://n.sinaimg.cn/games/crawl/37/w550h287/20261013/b68d-d2804b95a169cde0c4b9446f3dd287f2.png": {
@@ -2711,6 +2717,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.g6b_rhZn6W-ALBdtks4u6Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.iY3U3dVABvvQ_dK4UJF68g&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -2837,7 +2849,7 @@
  "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.chosun.com/resizer/v2/MZSWMZBRGIYGIYJWGYYTSMTGHA.jpg?auth=5d108a3997f9576eadad73cbf8c16d378333fd055697c34e4d13da13198cb343&width=650&height=341&smart=true": {

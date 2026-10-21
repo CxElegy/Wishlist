@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "67d3bbdede6d",
+ "edit_sig": "4c52c1422ed5",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -66,17 +66,19 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "Board of the World",
-     "title": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE93TmRQVGVwUnR3d1JoRkZnaTJnX0haYzU1dXFxRmp3U184T0JURFEtSnJ3X0kxWGQ3QTB3NW83bGktR0NDUHF2X3BDY0tuSGdlRlhlclpvLTNLR1FOWHBINGdCZlRLa05mMnh4dVFYR2VWaDY4TUE?oc=5"
+     "headline": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
+     "highlight": "Never Summer Proto Swift DT 2027",
+     "image": "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.boardoftheworld.com/review-never-summer-proto-swift-dt/",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -200,60 +202,6 @@
   {
    "cover": null,
    "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-20",
-     "n": 1,
-     "source": "Howl.link",
-     "title": "【あつまれどうぶつの森】予約中のお部屋どの子にしようか気分次第！ 天然カワボVtuberによる配信！",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5oTXpZeFExOTNxTm5oc0pGOElIcUItRlBpaGhsSlNHai16SlYzUFFOUmx4QVh6RGN5WVNz?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-20",
-     "n": 1,
-     "source": "Howl.link",
-     "title": "タラ♪Next→10/25 Vaundy (@21_tararina) on X",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9SQWY2bjVXSzBrTFJtTEFCSU80RWZjVkRDbllEaTA2UmV1NkVmTV9HcjhnTFZjX2ZfZm93?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "周杰伦",
    "section": "演出",
    "stories": [
@@ -304,17 +252,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "《绝区零》の新グッズ「Tidal Noise」キーボードセットの情報。",
      "date": "2026-10-19",
-     "n": 1,
-     "source": "17173",
-     "title": "《绝区零》新品情报丨「Tidal Noise噪点狂潮」键盘套组",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBadmpWbmd1MVFfbzJpczBQZEpMSi1Xc2FmNzJUQUp2bU9DVTM5VHVUZ3NlbGNLaDZUc1JmX25oQWtqTFFWbmUxUURyYU9CUWY1MndOdGZORjJEamNDMGF2ckgwWXI?oc=5"
+     "headline": "《绝区零》新品情报丨「Tidal Noise噪点狂潮」键盘套组",
+     "highlight": "键盘套组",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/NyJetYbufkdtirs.jpg",
+     "image_via": "正文图",
+     "url": "http://news.17173.com/content/10192026/205347794.shtml",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -368,8 +318,8 @@
      "date": "2026-10-21",
      "headline": "`이수만의 손녀시대` A2O LITE, 1위 후 축하 영상통화…\"3년 동안 이간 보람 있네\"",
      "highlight": "1위 후 축하 영상통화",
-     "image": "https://img.mydaily.co.kr/photos/2026/10/21/2026102112324060920_x.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://mydaily.co.kr/photos/2026/10/21/2026102112324060920_l.jpg",
+     "image_via": "og:image",
      "url": "https://mydaily.co.kr/page/view/2026102112330642252",
      "weight": "normal"
     },
@@ -718,6 +668,56 @@
     "bg": "#14161A",
     "fg": "#E8EAEC",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-21",
+    "headline": "【あつ森】新キャラ(新住民)一覧と勧誘方法｜2026年最新版",
+    "url": "https://gamewith.jp/atsumori/article/show/298825"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-21",
+    "headline": "Ayumu Imazu、2週連続ストリーミング1位 Vaundy「しわあわせ」が本作初のTOP3入り",
+    "url": "https://news.yahoo.co.jp/articles/509e023c106f9fbaed49a94ad5db21fa2f7bb95e"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
+    "font": "sans",
     "split": true
    }
   },
