@@ -14,7 +14,7 @@
    1. 用 Read 看 `<编号>.jpg`，结合 `.json` 里的 `note`，认出是什么东西：品牌、型号 / 系列、颜色、规格。
       照片里有价签、包装、商品页截图时，把价格和货币也读出来；拿不准就在 `note` 里写明是推断。
    2. 按 `.claude/skills/wishlist/SKILL.md` 的「加一件」整理：
-      - **图片**：用 Pillow 从照片里只裁出这件东西（去掉背景杂物和文字），存成 `docs/shop/wishlist/<英文短名>.jpg`，质量 90；裁完用 Read 看一眼。
+      - **图片**：用 Pillow 从照片里只裁出这件东西（去掉背景杂物和文字），存成 `docs/home/wishlist/<英文短名>.jpg`，质量 90；裁完用 Read 看一眼。
       - **字段**：`name`、`price` / `currency`、`specs`、`shop`、`url`（能确定商品页就填，找不到可以不填）、`added`（今天，北京时间）、
         `likes` / `basics`（喜好标签，「我会喜欢？」靠它推荐）、和某个关注项有关就填 `watch`。
       - **`status`**：照抄 `.json` 里的（想要 / 纠结）。纠结的再按 SKILL.md 帮忙找 2–3 个类似的好产品写进 `alternatives`。
@@ -23,7 +23,7 @@
    3. 实在认不出（照片太糊、看不出是什么）：照样加一条，`name` 写你看到的样子（如「白色陶瓷杯（照片里认不出品牌）」），
       `note` 写明认不出、请用户补充，`photo` 照填。不要跳过。
    4. 删掉这张照片的 `.jpg` 和 `.json`。
-4. 运行 `python scripts/digest.py render` 重新生成网页，确认 `docs/shop/wishlist.html` 里有新加的东西。
+4. 运行 `python scripts/digest.py render` 重新生成网页，确认 `docs/home/wishlist.html` 里有新加的东西。
 5. 提交并推送：
    ```bash
    git add wishlist.yaml docs inbox/photos

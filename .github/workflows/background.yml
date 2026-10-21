@@ -107,7 +107,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # まだないファイル（新しいアカウントを空から始めた直後の emblem_progress.json など）は飛ばす：1 つでもないと git add 全体が失敗する
-          for f in items.yaml docs/shop/emblems state/emblem_progress.json state/log/emblem.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in items.yaml docs/home/emblems state/emblem_progress.json state/log/emblem.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           # ゲートの記録は、判断が前と変わったときか、Claude を起こしたときだけ（2 時間ごとの同じ記録でコミットを増やさない）
           if [ "${{ steps.gate.outputs.changed }}" = "true" ] || { [ "$GATE_FIRE" != "0" ] && [ -n "$GATE_FIRE" ]; } || [ -n "$GATE_FORCE" ]; then
             git add state/gate.json state/log/gate.json 2>/dev/null || true

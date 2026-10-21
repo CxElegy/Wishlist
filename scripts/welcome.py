@@ -617,7 +617,7 @@ def preview(out):
     for name in ("shop-pc.webp", "shop-sp.webp"):
         page = page.replace(f'src="testground/welcome/{name}"', f'src="{data_uri("testground/welcome/" + name, 1200)}"')
     page = page.replace(f'href="{sitedir.SLUG}/', f'target="_blank" rel="noopener" href="{live}')
-    page = re.sub(r'href="(shop/|test2/|testground/)', r'target="_blank" rel="noopener" href="https://cxelegy.github.io/Wishlist/\1', page)
+    page = re.sub(r'href="(home/|test2/|testground/)', r'target="_blank" rel="noopener" href="https://cxelegy.github.io/Wishlist/\1', page)
     # Artifact は <html><head><body> を自分で付けるので中身だけ
     head = re.search(r"<head>(.*?)</head>", page, re.S).group(1)
     body = re.search(r"<body>(.*?)</body>", page, re.S).group(1)
