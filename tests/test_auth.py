@@ -137,6 +137,19 @@ class Welcome(unittest.TestCase):
         self.assertTrue(set(welcome.LANG_ALIAS) == set(codes))   # どの言語も英語名・日本語名で探せる
         self.assertGreaterEqual(len(codes), 50)
 
+    def test_entry_refreshes_stale_copy(self):
+        import welcome
+        self.assertIn("__V__", welcome.FRESH_JS)
+        self.assertIn("location.replace", welcome.FRESH_JS)
+        self.assertIn('cache:"no-store"', welcome.FRESH_JS)
+
+    def test_pages_refresh_stale_copy_on_open(self):
+        # 開いた直後に古い控えなら ?v= で開き直す（GitHub Pages の max-age=600 対策）
+        js = render.LIVE_JS
+        self.assertIn("function fresh(v)", js)
+        self.assertIn("check();   //", js)
+        self.assertNotIn("setTimeout(check,3000)", js)
+
     def test_signup_is_real(self):
         import welcome
         self.assertIn("user_signup", welcome.JS)

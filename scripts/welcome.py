@@ -11,6 +11,7 @@ App のように 1 ページで画面を切り替える：
   digest.py render のたびに build_if_stale()：入口が 24 時間より古いときだけ作り直す（話題の候補を新しく）。
 """
 import html
+import hashlib
 import json
 import pathlib
 import sys
@@ -417,6 +418,12 @@ JS = r"""
 """
 
 
+FRESH_JS = """<script>(function(){var V="__V__",L=Date.now();if(!window.fetch||!window.URL)return;
+fetch("__F__?t="+L,{cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(j){var u=new URL(location.href),v=j&&j.v;
+if(!v||v===V){if(u.searchParams.has("v")){u.searchParams.delete("v");history.replaceState(history.state,"",u.pathname+u.search+u.hash);}return;}
+if(u.searchParams.get("v")===v||Date.now()-L>15000||document.querySelector("input:focus"))return;u.searchParams.set("v",v);location.replace(u.toString());}).catch(function(){});})();</script>"""
+
+
 def build(out=OUT, base="", cards=None):
     """入口を書く。base = docs/ からの相対の前置き（本番の入口は ""、テストグラウンドは "../"）。"""
     SHOP = base + sitedir.SLUG + "/"   # 店長のページ
@@ -551,7 +558,13 @@ def build(out=OUT, base="", cards=None):
 </body>
 </html>
 """
+    # 古い控えを見せない（2026-10-21，用户定的：サイトはいつも最新に）：中身の指紋を <head> に入れ、隣の <名前>.ver.json と比べて、
+    # 開いた直後に違えば ?v=指紋 で開き直す（GitHub Pages はブラウザに 10 分残すため）
+    ver = hashlib.sha1(page.encode("utf-8")).hexdigest()[:12]
+    vf = pathlib.Path(out).with_suffix(".ver.json")
+    page = page.replace("</head>", FRESH_JS.replace("__V__", ver).replace("__F__", vf.name) + "\n</head>", 1)
     pathlib.Path(out).write_text(page, encoding="utf-8")
+    vf.write_text(json.dumps({"v": ver}), encoding="utf-8")
     print(out, len(cards), "cards", counts)
     return cards
 

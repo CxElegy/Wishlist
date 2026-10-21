@@ -491,8 +491,8 @@ PROCESSES = [
             {"id": "l2", "kind": "store", "lane": "repo", "title": "docs/home/version.json",
              "text": "{index: 指紋, admin: 指紋, index_marks: {版面の id: [名前, 版面の指紋]}}。ページの <meta name=\"wl-ver\"> と各版面・パネルの data-h にも同じ指紋。"
                      "簡報の版面の指紋は AI 編集が整理した記事（article）だけ：整理待ち・話題度の数字・小元素が変わっても「更新」にしない。"},
-            {"id": "l3", "kind": "step", "lane": "web", "title": "1 分ごとに version.json を見る",
-             "text": "キャッシュを避けて読む（?t=時刻）。タブを表に戻したときもすぐ見る。"},
+            {"id": "l3", "kind": "step", "lane": "web", "title": "開いたらすぐ・その後 1 分ごとに version.json を見る",
+             "text": "キャッシュを避けて読む（?t=時刻）。タブを表に戻したときもすぐ見る。開いて 15 秒以内・入力前に古いと分かったら ?v=新しい指紋 で開き直す（GitHub Pages はブラウザに 10 分残すため。着いたら ?v= を消す・同じ v で古いままなら繰り返さない）。入口（docs/index.html）も index.ver.json で同じことをする"},
             {"id": "l4", "kind": "decision", "lane": "web", "title": "指紋が変わった？", "text": "version.json ≠ 自分の指紋",
              "yes": "名前を挙げられる変化（AI 編集した記事の増減）があれば、下に「新しい内容があります：作品 A、作品 B…」の帯（クリックでその版面へ）。なければ帯を出さず、静かに読み直すだけ", "no": "何もしない"},
             {"id": "l5", "kind": "decision", "lane": "web", "title": "いま操作していない？",
