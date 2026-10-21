@@ -482,5 +482,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 830691
+},
+{
+"at": "2026-10-21T07:58:44+00:00",
+"text": "2026-10-21 第 15 バッチを出刊：Astrae Oratio（1 版面・4 本・残り 9 版面） · token 新規入力 2,434・キャッシュ読み 33.5万・出力 1,155",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.27,
+"mem_total": 16874930176,
+"mem_free": 16137654272,
+"disk_used": 9991139328,
+"disk_free": 31536099328,
+"disk_total": 41527238656,
+"peak": 227639296
+},
+"batch": 15,
+"boards": [
+"Astrae Oratio"
+],
+"stories": 4,
+"left": 9,
+"edited": 15,
+"run": 1792565708.6792397,
+"tok": {
+"in": 4,
+"cw": 2430,
+"cr": 334989,
+"out": 1155,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 338578
 }
 ]

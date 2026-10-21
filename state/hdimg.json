@@ -203,6 +203,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/326201019/rectangle_large_type_2_db78fc936bf38a9aad1496139acb396c.png?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
  "https://async.api.kabutan.jp/og_image?title=%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4%E9%96%8B%E7%99%BA---%E7%B6%9A%E4%BC%B8%E3%80%81%E6%A0%AA%E4%B8%BB%E5%84%AA%E5%BE%85%E3%81%AB%E6%96%B0%E8%A6%8F%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4%E5%8A%A0%E5%85%A5%E3%83%BB%E6%8F%90%E6%90%BA%E5%BC%B7%E5%8C%96": {
   "w": 1200,
   "h": 630,
@@ -292,6 +298,32 @@
   "out": [
    984,
    1280
+  ],
+  "why": "看不清"
+ },
+ "https://cdn.gamey.kr/news/thumbnail/202610/3019011_171465_2459_v150.jpg": {
+  "w": 300,
+  "h": 225,
+  "target": 720,
+  "v": 3,
+  "blur": 0.463,
+  "local": "pics/f26f589bf29b5480.webp",
+  "out": [
+   720,
+   540
+  ],
+  "why": "看不清"
+ },
+ "https://cdn.gamey.kr/news/thumbnail/202610/3019014_171468_3158_v150.jpg": {
+  "w": 300,
+  "h": 225,
+  "target": 720,
+  "v": 3,
+  "blur": 0.526,
+  "local": "pics/c2754ff2f3b1e0c6.webp",
+  "out": [
+   720,
+   540
   ],
   "why": "看不清"
  },
@@ -530,6 +562,34 @@
   "h": 676,
   "target": 1280,
   "v": 3
+ },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0366fae45ed456baa1c9d3bf67b10e19ea92f38c3eef3d3273bfc7bc0977284954bf31a00c2855d353d0a6229b4896c411b2567401cf14f02328137186627e8e552ffa24305f809c4cd853c9f1": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.433,
+  "local": "pics/89c38c305ce25606.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e203c2b5bf535d6ea7769c55048369f32cbf07f45680db4e82c53130b666d24564695e1e1bf8cfd5e5218a9eb9e75d145e9cf4b16ea8e0d22f": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.335,
+  "local": "pics/b252bb7033a88842.webp",
+  "out": [
+   300,
+   300
+  ],
+  "why": "防盗链",
+  "ref": true
  },
  "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200": {
   "w": 1200,
@@ -2714,12 +2774,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.IOyy5jAniPeLhqezTlOByQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.JA6HAGiBknVyQSKLPC7W2w&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2822,12 +2876,6 @@
  "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600": {
   "w": 600,
   "h": 450,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000": {
-  "w": 700,
-  "h": 380,
   "target": 720,
   "v": 3
  },
@@ -3050,6 +3098,12 @@
  "https://www.engadget.com/img/gallery/the-latest-playstation-firmware-may-have-already-been-cracked-ahead-of-gta-6/l-intro-1792530805.jpg": {
   "w": 1600,
   "h": 899,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg": {
+  "w": 1000,
+  "h": 544,
   "target": 720,
   "v": 3
  },

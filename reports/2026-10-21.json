@@ -1,71 +1,56 @@
 {
  "date": "2026-10-21",
- "edit_sig": "c4b859cb039b",
+ "edit_sig": "abdd1e654709",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-19",
-     "n": 1,
-     "source": "note",
-     "title": "[#아스오라] 마마마로부터 15년, 『아스트라에 오라티오』가 제시하는 '마법소녀×신전기'의 잠재력 [CBT 완주 괴문서]",
-     "url": "https://note.com/houtaruu/n/nc96b0ed302df?hl=ko"
-    },
-    {
+     "blurb": "엔씨가 삼성전자와 손잡고 일본 공략에 나서며, TGS 2026에서 ‘아스트라에 오라티오’를 처음 시연한다.",
      "date": "2026-10-18",
-     "n": 2,
+     "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+     "highlight": "TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
+     "image_via": "作品封面",
      "source": "쿠키뉴스",
-     "title": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연 [쿠키 게임]",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE10ODFGNkJDdW00M0RVZ3FqY0p1Rkp1ZEQ4YnE1SmpxVlZNcFRhZXRVU0ZHUWwySmltTzJ3MU9TUVJ0WVlWTkdQTVNid2E1Tk4xc1BQLWoxMGR0VkpPTzRqQ21zaw?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.kukinews.com&sz=128",
+     "url": "https://www.kukinews.com/article/view/kuk202609110059",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-17",
-     "n": 3,
-     "source": "디시인사이드",
-     "title": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1sS2FmVHVaUEYzT21hTUdHcXh6d3hQdGVtNHJvNnlndmd3a211MlVCUDBaSHlRWHJ6MlZaSEpFOVkwb3FndENNcFdxbm9GSV9Kd3c?oc=5"
+     "blurb": "",
+     "date": "2026-10-19",
+     "headline": "[#아스오라] 마마마로부터 15년, 『아스트라에 오라티오』가 제시하는 '마법소녀×신전기'의 잠재력 [CBT 완주 괴문서]",
+     "highlight": "CBT 완주",
+     "image": "https://assets.st-note.com/production/uploads/images/326201019/rectangle_large_type_2_db78fc936bf38a9aad1496139acb396c.png?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/houtaruu/n/nc96b0ed302df?hl=ko",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-17",
-     "n": 4,
-     "source": "갤러리",
-     "title": "[아스오라][SR] 시온, 봉제 인형을 모아 아군 얼티밋을 돕는 특촬 팬",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE14MEY0YlZ2a1p1OGRBRnozNFZvTC1OZHh3bWk2NXh6QmswbmE5Zlk1N1JnOW9YU1VJZUNiVmdMcFEyOWlsMHJ3QXMtamRsNXgtNjc2TmdzVDdvU1lxQ3Q1VnVSN1VDdw?oc=5"
+     "headline": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
+     "highlight": "",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0366fae45ed456baa1c9d3bf67b10e19ea92f38c3eef3d3273bfc7bc0977284954bf31a00c2855d353d0a6229b4896c411b2567401cf14f02328137186627e8e552ffa24305f809c4cd853c9f1",
+     "image_via": "正文图（本站保存）",
+     "url": "https://m.dcinside.com/board/gamey/16188",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-17",
-     "n": 5,
-     "source": "갤러리",
-     "title": "[아스오라][SR] 아키츠 아키나, 영화 감상부 뒤에 숨은 괴담 사냥꾼",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1TLXc3VWdaN3FnRzEzU3QzVUx3cU1hWDRSYnl3T2dQd21kZnNlUnVxVlYycERLWUY2TzROUjJnNmwxN011SVA1LVBmRHdEcDM5OFdKMXBIUk43ZjVCUUxlSkg4ZXZGZw?oc=5"
-    },
-    {
-     "date": "2026-10-17",
-     "n": 6,
-     "source": "갤러리",
-     "title": "[아스오라][SR] 리리아, 고대 무녀의 마법 쓰는 대가문 영애",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYdzE0TXEwMjVvRXRJSnJCdks0Y0pha3l5WUY2aUhhT0tUTnN5Nm84MERXWExfWDJNbE5sUG9IQ2tLZGRESHNzWC1TR1ViQURIQ2RNNDdGTWRBMmlSTk1EemhkU2pFdw?oc=5"
-    },
-    {
-     "date": "2026-10-17",
-     "n": 7,
-     "source": "디시인사이드",
-     "title": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5wdDZiaEthd3FocktNV1FBaTBDN1NsRldqS2pxWnRJbU92Qm1JU182TWRqcENvOXE0NFRhUUpEM05iY3FuWGlBeWhqMWZsR3FKVkE?oc=5"
-    },
-    {
-     "date": "2026-10-17",
-     "n": 8,
-     "source": "디시인사이드",
-     "title": "[아스오라][SR] 타나카 에린, 서양 얼굴에 영어 못하는 중학생의 신화 마법",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9xSmZvamgzMzFDRmpVOTBMZ3EtUUlXYUhFbldSNzNINW1BVDdOS3dEeHZNcWh0clFkSXE4Zk1KUmtxV2VWemh4bTVybG9Xb3ExX2c?oc=5"
+     "headline": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
+     "highlight": "",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e203c2b5bf535d6ea7769c55048369f32cbf07f45680db4e82c53130b666d24564695e1e1bf8cfd5e5218a9eb9e75d145e9cf4b16ea8e0d22f",
+     "image_via": "正文图（本站保存）",
+     "url": "https://m.dcinside.com/board/gamey/16174",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -992,8 +977,8 @@
      "date": "2026-10-19",
      "headline": "The Mandalorian now appearing at Oga’s Cantina in Disneyland",
      "highlight": "Oga’s Cantina",
-     "image": "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000",
-     "image_via": "Bing 缩略图",
+     "image": "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg",
+     "image_via": "og:image",
      "url": "https://www.fanthatracks.com/news/conventions-events/the-mandalorian-now-appearing-at-ogas-cantina-in-disneyland/",
      "weight": "normal"
     },

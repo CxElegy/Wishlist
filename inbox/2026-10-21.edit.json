@@ -91,7 +91,8 @@
   "ILLIT": 22,
   "dota2": 18,
   "哈利波特剧集": 15,
-  "The Mandalorian": 9
+  "The Mandalorian": 9,
+  "Astrae Oratio": 8
  },
  "漫威电影": [
   {
@@ -827,6 +828,44 @@
    "refs": [
     2,
     4
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+   "highlight": "TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+   "blurb": "엔씨가 삼성전자와 손잡고 일본 공략에 나서며, TGS 2026에서 ‘아스트라에 오라티오’를 처음 시연한다.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "[#아스오라] 마마마로부터 15년, 『아스트라에 오라티오』가 제시하는 '마법소녀×신전기'의 잠재력 [CBT 완주 괴문서]",
+   "highlight": "CBT 완주",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ]
