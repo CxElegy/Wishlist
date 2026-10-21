@@ -271,8 +271,7 @@ def weekly(page_url):
 
     period = f"{start.month}/{start.day}–{end.month}/{end.day}"
     if not stories and not facts:
-        send({"username": "关注清单通信", "content": f"**关注清单周报 · {period}**\n本周没有新消息。\n{page_url}"})
-        return
+        return send({"username": "关注清单通信", "content": f"**关注清单周报 · {period}**\n本周没有新消息。\n{page_url}"})
     embeds = []
     for name in sorted(set(stories) | set(facts)):
         items = sorted(stories.get(name, []), key=lambda s: {"hero": 0, "lead": 1}.get(s["weight"], 2))
@@ -288,8 +287,26 @@ def weekly(page_url):
             "color": _color(name, themes),
             "description": "\n".join(lines),
         })
-    send({
-        "username": "关注清单通信",
-        "content": f"**关注清单周报 · {period}**\n简报：{page_url}",
-        "embeds": embeds[:10],
-    })
+    head = f"**关注清单周报 · {period}**\n简报：{page_url}"
+    ok = True
+    for k, part in enumerate(split_embeds(embeds)):   # Discord：1 通に embed 10 個・合計 6,000 字まで。超えると 400 で全部拒まれる
+        ok = send({"username": "关注清单通信", "content": head if k == 0 else f"**关注清单周报 · {period}**（续 {k + 1}）",
+                   "embeds": part}) and ok
+    return ok
+
+
+EMBED_MAX, EMBEDS_PER_MSG, MSG_CHARS = 4096, 10, 5800   # Discord の上限（description 4,096 字・1 通 embed 10 個・合計 6,000 字）より少し下
+
+
+def split_embeds(embeds):
+    """embed を Discord の上限に収まる束に分ける（2026-10-22 全体の検査 H5：週報が 7,478 字で 400、黙って送れていなかった）。"""
+    out, cur, size = [], [], 0
+    for em in embeds:
+        em = {**em, "description": _cut(em.get("description") or "", EMBED_MAX)}
+        n = len(em.get("title") or "") + len(em["description"])
+        if cur and (len(cur) >= EMBEDS_PER_MSG or size + n > MSG_CHARS):
+            out.append(cur)
+            cur, size = [], 0
+        cur.append(em)
+        size += n
+    return out + [cur] if cur else out

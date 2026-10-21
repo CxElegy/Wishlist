@@ -181,6 +181,7 @@
 
 - **所有页面都要能用按钮・链接走到，不让用户改地址栏**（2026-10-21，用户定的：靠改网址操作在 UX 上不可接受）：加新页面・新流程时，先想清楚「从哪个页面、点哪个按钮进来，怎么回去」，把入口放进现有的导航（右上的 `wl-auth`：见るだけ时常驻「新しく始める」「ログイン」，菜单里「このサイトについて」= 入口 `../?stay`、利用規約、管理ページ；入口的按钮；目次）。`?stay`・`?login=1`・`#name` 这类参数只给链接用，不写进给用户的说明。
 - **产品事实**在 `PRODUCT.md`（读者、语言、原则）；改网页前先看。界面文字（标题、按钮、说明）一律日语，消息内容保持原语言。
+- **Web 字体只加载 Noto Sans JP（+ Anton・Yusei Magic・JetBrains Mono）**（2026-10-22 全体の検査 H6：SC/TC/KR/Serif SC 一起加载时字体 239 个文件・8.8MB）：中文・韩文的报道用终端自带的字体。加字体前先看 `tests/test_perf.py`。
 - **颜色、字体**只用 `scripts/render.py` 开头 `:root` 里的设计令牌（`--ink` `--paper` `--rose` `--sheet` `--card` `--gold` `--alert`、
   `--font-sans/serif/mono`、`--fs-label`）。要新颜色先加令牌，不要在 CSS 里直接写十六进制。
 - **新板块（ジャンル）**：板块事先定全在 `sections.yaml`（见上「板块一览」），`items.yaml` 的 `section` 只写表里的 key。
@@ -326,6 +327,8 @@
   没设 = `edit`（默认，2026-10-17 打开）、`0` = 不叫、`edit` = 只叫 AI 编辑、`1` = AI 编辑和照片都叫。AI 编辑自己的定时 2026-10-17 已停（cron 改成只在 2/29 跑），现在只靠ゲート叫）。
 - **版面只放 AI 整理过的报道（2026-10-17 定）**：收集（Actions）出刊时，没被 AI 编辑覆盖的条目（编号 > `_covered`、或 edit.json 里没有的关注项）
   不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
+  **前の日の整理待ちは持ち越す（2026-10-22 全体の検査 H3）**：AI 编辑只看最新的 inbox，JST 18:00 那回之后〜1:00 收集的会永远留在昨天。`digest.carry_over`：新的一天第一次收集时（`_carried` 记号，一天一次），把前一天（2 天以内）`_covered` 之后・不是要紧的条目（1 版面 30 件）接到今天的 inbox。
+  **网页生成失败也要 push 数据（H4）**：本番的 workflow（digest・background・requests）设 `WL_RENDER_SOFT=1`，`digest.write_page` 出错只记日志、不停；CI 照旧失败。`render.collect` 跳过没有 headline / url 的报道，`publish` 用依据的原题补 headline。
   **AI 编辑一天 2 次（用户定的，2026-10-19）**：日本时间 9:00 和 18:00（`gate.SLOTS`，`background.yml` 在 0:00 / 9:00 UTC 有定时），那一回还没叫过、今天有整理待ち（`gate.edit_work`）就叫；
   管理页「次の実行」AI 編集卡片的「今すぐ実行」和「AI 编辑をもう一度起こす」随时强制叫（`run_now('edit_now')`）。
   **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。

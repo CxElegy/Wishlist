@@ -2408,6 +2408,23 @@ def emblem_progress(items, tz):
 
 
 def write_page():
+    """網页を作る。本番の収集（digest.yml が WL_RENDER_SOFT=1）では失敗しても止めない：集めたデータの push を先に通し、
+    網页は次の生成（render.yml・次の収集）で作り直す（2026-10-21 KeyError でページ生成が 4 回止まり、その回の収集ごと消えた。全体の検査 H4）。
+    CI（ci.yml）では今までどおり失敗で止まる。"""
+    if os.environ.get("WL_RENDER_SOFT") != "1":
+        return _write_page()
+    try:
+        return _write_page()
+    except Exception as e:  # noqa: BLE001
+        import traceback
+        import runlog
+        traceback.print_exc()
+        print(f"::warning::網页の生成に失敗（データは保存して続ける）：{type(e).__name__}: {e}", file=sys.stderr)
+        runlog.add("publish", f"網页の生成に失敗（データは保存、次の生成で作り直す）：{type(e).__name__}: {str(e)[:100]}", "error")
+        return None
+
+
+def _write_page():
     issues = [load_json(p) for p in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True)[:ISSUES_ON_PAGE]]
     issues = [i for i in issues if i]
     settings, items = load_config()
@@ -2731,19 +2748,56 @@ def ingest(dry_run=False):
     if dry_run:
         return None
     save_json(FACTS_FILE, facts)
-    if not inbox_items:
-        print("本期没有新消息", file=sys.stderr)
-        return None
     path = INBOX_DIR / f"{today}.json"
     data = {"date": today, "items": inbox_items}
     if path.exists():  # 当天已经收集过：合并进去
         data = merge_inbox(load_json(path), data)
+    data, carried = carry_over(data, today)
+    if not inbox_items and not carried:
+        print("本期没有新消息", file=sys.stderr)
+        return None
     save_json(path, data)
     urgent = sum(e.get("urgent", False) for i in inbox_items for e in i["entries"])
     if urgent:
         print(f"  其中要紧消息 {urgent} 条", file=sys.stderr)
     print(f"已收集：{path.relative_to(ROOT)}", file=sys.stderr)
     return path
+
+
+CARRY_DAYS = 2    # 何日前の inbox まで持ち越すか
+CARRY_MAX = 30    # 1 版面で持ち越す件数（max_entries_per_item と同じ）
+
+
+def carry_over(data, today):
+    """前の日の「整理待ち」（AI 編集がまだ整理していない記事）を今日の inbox に持ち越す（その日の最初の 1 回だけ、_carried に印）。
+    AI 編集は最新の inbox しか見ないので、日付が変わる前（JST 18:00 の回のあと〜1:00）に集めた分は、持ち越さないと二度と版面に載らない
+    （2026-10-22 全体の検査 H3：10-17〜10-21 で 829 件が残ったまま）。数え方は gate.edit_work と同じ：_covered より後の記事、edit.json にない版面は全部。
+    要紧（urgent）はもう「重大」で載っているので持ち越さない。→ (data, 持ち越した件数)"""
+    if data.get("_carried"):
+        return data, 0
+    prev = [p for p in sorted(INBOX_DIR.glob("????-??-??.json")) if p.stem < today]
+    data["_carried"] = prev[-1].stem if prev else "-"
+    if not prev or (dt.date.fromisoformat(today) - dt.date.fromisoformat(prev[-1].stem)).days > CARRY_DAYS:
+        return data, 0
+    old = load_json(prev[-1]) or {}
+    edit = load_edits(prev[-1])
+    covered = edit.get("_covered") or {}
+    carry = []
+    for b in old.get("items") or []:
+        entries = b.get("entries") or []
+        c = int(covered[b["name"]] or 0) if b["name"] in covered else len(entries) if b["name"] in edit else 0
+        left = [e for e in entries if int(e.get("n") or 0) > c and not e.get("urgent") and not is_spam(e.get("title", ""), e.get("url", ""))]
+        left = left[-CARRY_MAX:]
+        if left:
+            carry.append({"name": b["name"], "priority": b.get("priority", ""), "facts": [], "cover": b.get("cover"),
+                          "entries": [{**e, "n": k, "carried": prev[-1].stem} for k, e in enumerate(left, 1)]})
+    if not carry:
+        return data, 0
+    n = sum(len(b["entries"]) for b in carry)
+    print(f"  前の日（{prev[-1].stem}）の整理待ち {n} 件を今日に持ち越し", file=sys.stderr)
+    merged = merge_inbox(data, {"date": today, "items": carry})
+    merged["_carried"] = prev[-1].stem
+    return merged, n
 
 
 def load_edits(inbox_path):
@@ -2863,6 +2917,8 @@ def publish(inbox_path=None, heal=False):
                 s.setdefault("highlight", ""), s.setdefault("blurb", ""), s.setdefault("weight", "normal")
                 s["refs"] = [r for r in s.get("refs", []) if 0 < r <= len(entries)]
             stories = [s for s in stories if s["refs"]]
+            for s in stories:   # AI 編集が見出しを書き忘れた（title と書いた）記事は、依拠の 1 本目の原題で補う（ページ生成を止めない）
+                s["headline"] = str(s.get("headline") or s.get("title") or entries[s["refs"][0] - 1].title)
             # 编排写好之后当天又来的消息（编号大于 _covered）：不上版面，等下次 AI 编辑整理。
             # 例外是要紧消息：马上做“重大”放在最前面；其余列进版面底部折叠的「整理待ち」
             covered = edits.get("_covered", {}).get(raw["name"], len(entries))
@@ -3559,7 +3615,8 @@ def main():
         notify.new_items(pages_url(load_config()[0]))
     elif args.step == "notify-weekly":
         import notify
-        notify.weekly(pages_url(load_config()[0]))
+        if not notify.weekly(pages_url(load_config()[0])):   # 送れなかったら失敗で終わる（digest.yml が心拍に「送れなかった」と書く）
+            sys.exit(1)
     elif args.step == "photos":
         export_photos()
     elif args.step == "take-items":

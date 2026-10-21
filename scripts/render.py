@@ -33,9 +33,10 @@ import taxonomy
 import theme
 from images import FAVICON_SERVICE, GENERIC, base_domain  # 网站 logo / 默认分享图的判断，和找图用同一条规则
 
+# Web フォントは日本語 UI の Noto Sans JP だけ（＋数字の Anton・手書き風の Yusei Magic・等幅）。中国語・韓国語の記事の字は端末のフォントで出す
+# （2026-10-22 全体の検査 H6：SC/TC/KR/Serif SC まで読んで CSS 480KB・フォント 239 本 8.8MB、遅い回線で最初の表示まで 5.7 秒）
 FONTS = (
-    "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Noto+Sans+SC:wght@500;700;900"
-    "&family=Noto+Sans+TC:wght@500;700;900&family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+SC:wght@500;700;900"
+    "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900"
     "&family=Anton&family=Yusei+Magic&family=JetBrains+Mono:wght@500;700&display=swap"
 )
 
@@ -1094,6 +1095,9 @@ def collect(issues, order=None, langs=None):
             if w is None:  # 已经从关注清单里删掉的不再显示
                 continue
             for st in b.get("stories") or []:
+                # 見出し・網址のない記事は読まない（2026-10-21 KeyError: 'headline' でページ生成が 4 回止まり、その回の収集ごと消えた）
+                if not st.get("headline") or not st.get("url"):
+                    continue
                 if st["url"] in w["_seen"] or _spam(st.get("headline", ""), st["url"]):
                     continue
                 w["_seen"].add(st["url"])
@@ -1764,6 +1768,7 @@ def render_settings(items, db, updated, schemes=()):
 <meta name="robots" content="noindex">
 <title>设置</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}
 .page{{display:flex;flex-direction:column;gap:18px;max-width:760px;padding-bottom:48px}}
@@ -2059,6 +2064,7 @@ def render_wishlist(wishes, works, updated, finds=(), db=None):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>愿望清单</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}
 .page{{display:flex;flex-direction:column;align-items:stretch;max-width:1200px;padding-bottom:40px}}
@@ -3530,6 +3536,7 @@ def render(issues, nav_style="line", order=None, updated=None, wishes=(), picks=
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ウォッチリスト通信</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}@media (min-width:1001px){{{NAV_STYLES.get(nav_style, NAV_STYLES["line"])}}}</style>
 {LIKEFX_HEAD if fb else ""}
@@ -4739,6 +4746,7 @@ def render_terms(updated=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>利用規約・プライバシーポリシー</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}{TERMS_PAGE_CSS}</style>
 {_account_tag("terms")}
@@ -4848,6 +4856,7 @@ def render_themes(items, updated):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>テーマ見本</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}{THEMES_PAGE_CSS}</style>
 {LIKEFX_HEAD}{_account_tag("themes")}
@@ -4884,6 +4893,7 @@ def render_heat(analysis, works, updated):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>話題度アナリシス</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}</style>
 {_live_head("heat")}
@@ -5836,6 +5846,7 @@ def render_admin(data, db, updated):
 <meta name="robots" content="noindex">
 <title>管理ページ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
 <style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}{overview.CSS}{livelog.CSS}</style>
 {_live_head("admin")}
