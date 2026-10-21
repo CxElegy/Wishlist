@@ -1,0 +1,35 @@
+# 日本の情報員（2026-10-22，用户定的：地域ごとの専門の情報員。まず日本）
+# 日本のサイトの直接の RSS / Atom を分類（sections.yaml の板块）ごとに持つ。担当は scripts/intel.py の agents_for（規則）：
+#   関注項が自分で書いた news_langs に ja-JP がある → 日本の情報員が付く、cats が関注項の板块（section・also）と重なる情報源だけ読む。
+# 集めた記事は今までどおり match・exclude・垃圾站・去重を通る（版面に入るのは名前・匹配词が出てくる記事だけ）。
+# 足す前の確認（ai-news-radar の確認表）：robots / 利用規約で自動の読み取りが許されている・鍵なし・日時と記事の網址がある・
+#   ほかの情報源と重ならない・Actions からログインなしで取れる。確かめた日を checked、規約の要点を terms に書く。
+# 入れていないもの（調査 regional-intel-research）：Yahoo!ニュースの RSS（「個人利用のみ」）、ファミ通・電撃・オリコン（直接の RSS がない）。
+id: japan
+ja: 日本の情報員
+langs: [ja-JP]
+checked: 2026-10-22
+sources:
+  # ゲーム
+  - {id: 4gamer, name: 4Gamer.net, url: "https://www.4gamer.net/rss/index.xml", cats: [游戏], terms: "robots 可（禁止は 1 行）・RSS 1.0"}
+  - {id: automaton, name: AUTOMATON, url: "https://automaton-media.com/feed/", cats: [游戏], terms: "robots に禁止なし・配図つき"}
+  - {id: denfami, name: 電ファミニコゲーマー, url: "https://news.denfaminicogamer.jp/feed", cats: [游戏], terms: "robots は wp-admin だけ禁止"}
+  - {id: gamewatch, name: GAME Watch, url: "https://game.watch.impress.co.jp/data/rss/1.0/gmw/feed.rdf", cats: [游戏], exclude: [Amazonセール], terms: "robots 可・RSS 1.0"}
+  # 作品
+  - {id: natalie-comic, name: コミックナタリー, url: "https://natalie.mu/comic/feed/news", cats: [影视], terms: "robots は Allow: /（UA は sources.HOST_UA）"}
+  - {id: natalie-eiga, name: 映画ナタリー, url: "https://natalie.mu/eiga/feed/news", cats: [影视], terms: "同上"}
+  - {id: cinematoday, name: シネマトゥデイ, url: "https://www.cinematoday.jp/index.xml", cats: [影视], terms: "robots 可・配図つき"}
+  - {id: kai-you, name: KAI-YOU, url: "https://kai-you.net/contents/feed.rss", cats: [影视, 演出], terms: "robots 可・配図つき"}
+  # 音楽・ライブ
+  - {id: natalie-music, name: 音楽ナタリー, url: "https://natalie.mu/music/feed/news", cats: [演出], terms: "robots は Allow: /"}
+  - {id: realsound, name: Real Sound, url: "https://realsound.jp/atom.xml", cats: [演出, 影视], terms: "robots 可"}
+  - {id: nikkan-ent, name: 日刊スポーツ 芸能, url: "https://www.nikkansports.com/entertainment/atom.xml", cats: [演出, 影视], terms: "robots 可"}
+  # スポーツ
+  - {id: nikkan-sports, name: 日刊スポーツ, url: "https://www.nikkansports.com/sports/atom.xml", cats: [运动], terms: "robots 可"}
+  # ショッピング（グッズ・ファッション・テック）
+  - {id: fashionsnap, name: FASHIONSNAP, url: "https://www.fashionsnap.com/rss.xml", cats: [好物], terms: "robots 可・配図つき"}
+  - {id: wwdjapan, name: WWDJAPAN, url: "https://www.wwdjapan.com/feed", cats: [好物], terms: "robots 可・配図つき"}
+  - {id: avwatch, name: AV Watch, url: "https://av.watch.impress.co.jp/data/rss/1.0/avw/feed.rdf", cats: [好物], exclude: [Amazonセール], terms: "robots 可・RSS 1.0"}
+  # おでかけ
+  - {id: travelwatch, name: トラベル Watch, url: "https://travel.watch.impress.co.jp/data/rss/1.0/trw/feed.rdf", cats: [出行], terms: "robots 可・RSS 1.0"}
+  - {id: lmaga, name: Lmaga.jp, url: "https://www.lmaga.jp/feed/", cats: [出行, 生活], terms: "robots 可"}

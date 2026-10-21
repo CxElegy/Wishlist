@@ -190,7 +190,7 @@ def _fetch_plain(url, limit, referer=None):
     url = _ascii_url(url)
     for attempt in range(RETRIES + 1):
         try:
-            hdr = {"User-Agent": sources.USER_AGENT, **({"Referer": referer} if referer else {})}
+            hdr = {"User-Agent": sources.user_agent(url), **({"Referer": referer} if referer else {})}
             req = urllib.request.Request(url, headers=hdr)
             with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
                 headers = {k.lower(): v for k, v in resp.headers.items()}

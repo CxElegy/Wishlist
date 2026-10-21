@@ -37,6 +37,7 @@ import yaml
 
 import heat
 import images
+import intel
 import lang
 import render
 import sitedir
@@ -180,6 +181,8 @@ def collect(item, settings):
         entries += sources.mastodon_tag(keywords[0], langs)
     for ch in youtube_channels(item):
         entries += sources.youtube_channel(ch)
+    # 地域ごとの情報員（intel/*.yaml）：関注項の言語・板块で担当が決まり、その地域の専門サイトの RSS を読む（同じフィードはこの回 1 回だけ取る）
+    entries += intel.entries_for(item, settings)
     return entries
 
 
@@ -3414,6 +3417,9 @@ def logged_ingest():
     runlog.add("collect", f"新着 {sum(new.values())} 件（{len(new)} 版面）" + (f"：{top}" if top else ""),
                "ok" if new else "info", count=sum(new.values()), secs=round(time.time() - t0), workers=COLLECT_WORKERS,
                res=resources.snapshot())
+    if intel.health():   # 情報員の情報源ごとの様子（取れなかった所は名前と理由）
+        print("情報員：" + intel.health(), file=sys.stderr)
+        runlog.add("collect", "情報員 " + intel.health(), "info")
     return path
 
 
