@@ -1,6 +1,6 @@
 {
  "date": "2026-10-21",
- "edit_sig": "f3c987a24a72",
+ "edit_sig": "f901256c57a9",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,7 +35,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc1c344e0592054f85638c89ded05b3169521bab2a7dd438dbb8f0740107380aba4208a540814be45cd",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a738fc8a32993e38f6e4ad34c784c7f29d992ab3f7d30751be8c5b0b2120dc941e5ed8b78d31cb6d6b5aeca1979cf9029bf910c0453837db38d7e0533b3923668d746d2e5d459b7eb574a2",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16188",
      "weight": "normal"
@@ -45,7 +45,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa1bd62531f4d0f133b6030c46b882e77cdac4e15a27395f95040a9ac6a4d1630b948bb959d6c2c108a6f9cd70d702686cc1918567569865",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba86b1e474d59cdd6b7a4cc6965199255ddb6ae8539186f04e80639f48f1d89695eac945fd77b388f441b",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16174",
      "weight": "normal"
@@ -549,31 +549,20 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
-     "date": "2026-10-20",
-     "n": 1,
-     "source": "ライブドアニュース",
-     "title": "猫の元気がないときに考えたい原因4つと、動物病院へ行く目安を解説 (2026年10月20日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFA2ZzUwbVZlNlJNWlhCem9oSHc5S0hYSlpaX1ZyTmxaUUZUekJvUWxfUFhXdDlTMkFKYVhuUGcwQ3BBdDNVWmRDc2NKaUxBeXBaLUtLZ2tOOWoyTjg0cnc?oc=5"
-    },
-    {
+     "blurb": "Forbes が選ぶ、気難しい猫にも使ってもらえる自動トイレ4選。",
      "date": "2026-10-19",
-     "n": 2,
-     "source": "ねこちゃんホンポ on MSN",
-     "title": "猫が発症しやすい『病気』5選 注意すべき症状や健康を守るためにできること",
-     "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%8C%E7%99%BA%E7%97%87%E3%81%97%E3%82%84%E3%81%99%E3%81%84-%E7%97%85%E6%B0%97-5%E9%81%B8-%E6%B3%A8%E6%84%8F%E3%81%99%E3%81%B9%E3%81%8D%E7%97%87%E7%8A%B6%E3%82%84%E5%81%A5%E5%BA%B7%E3%82%92%E5%AE%88%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8/ar-AA2fCn2P"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 3,
+     "headline": "The 4 Best Automatic Litter Boxes To Win Over Picky Cats",
+     "highlight": "Automatic Litter Boxes",
+     "image": null,
      "source": "Forbes",
-     "title": "The 4 Best Automatic Litter Boxes To Win Over Picky Cats",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBsakVyZEFLaTRXUWVaakRaVzJnXzZMR01sVVRCUENtaTJDdmZsQ1d3WmdfTnZVYlN5QTRrQ3Fmb3gtZFVaQUs3T1ZWeGVGYk1NWUI2OHVRajhPZXJ3RVVvNkNhNHI0NjY0SmhBMnczUmdVbDE2?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.forbes.com&sz=128",
+     "url": "https://www.forbes.com/vetted/article/best-automatic-litter-boxes/",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -910,8 +899,8 @@
      "date": "2026-10-19",
      "headline": "The Mandalorian now appearing at Oga’s Cantina in Disneyland",
      "highlight": "Oga’s Cantina",
-     "image": "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000",
-     "image_via": "Bing 缩略图",
+     "image": "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg",
+     "image_via": "og:image",
      "url": "https://www.fanthatracks.com/news/conventions-events/the-mandalorian-now-appearing-at-ogas-cantina-in-disneyland/",
      "weight": "normal"
     },

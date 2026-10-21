@@ -100,7 +100,8 @@
   "BLEACH Mirrors High": 5,
   "gelato pique": 5,
   "ちいかわ イベント": 4,
-  "Vaundy": 3
+  "Vaundy": 3,
+  "猫用品": 3
  },
  "漫威电影": [
   {
@@ -1126,6 +1127,17 @@
    "highlight": "映画主題歌",
    "blurb": "",
    "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "The 4 Best Automatic Litter Boxes To Win Over Picky Cats",
+   "highlight": "Automatic Litter Boxes",
+   "blurb": "Forbes が選ぶ、気難しい猫にも使ってもらえる自動トイレ4選。",
+   "weight": "lead",
    "refs": [
     3
    ]

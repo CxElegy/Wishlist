@@ -575,13 +575,13 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa1bd62531f4d0f133b6030c46b882e77cdac4e15a27395f95040a9ac6a4d1630b948bb959d6c2c108a6f9cd70d702686cc1918567569865": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a738fc8a32993e38f6e4ad34c784c7f29d992ab3f7d30751be8c5b0b2120dc941e5ed8b78d31cb6d6b5aeca1979cf9029bf910c0453837db38d7e0533b3923668d746d2e5d459b7eb574a2": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.45,
-  "local": "pics/45cc844cfa0970e7.webp",
+  "blur": 0.509,
+  "local": "pics/3c763cb1374f40fb.webp",
   "out": [
    720,
    720
@@ -589,13 +589,13 @@
   "why": "防盗链",
   "ref": true
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc1c344e0592054f85638c89ded05b3169521bab2a7dd438dbb8f0740107380aba4208a540814be45cd": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba86b1e474d59cdd6b7a4cc6965199255ddb6ae8539186f04e80639f48f1d89695eac945fd77b388f441b": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.507,
-  "local": "pics/498c17db589b0ebb.webp",
+  "blur": 0.489,
+  "local": "pics/eba33801435d9d3e.webp",
   "out": [
    720,
    720
@@ -2952,12 +2952,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000": {
-  "w": 700,
-  "h": 380,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500": {
   "w": 100,
   "h": 100,
@@ -3213,6 +3207,12 @@
  "https://www.engadget.com/img/gallery/the-latest-playstation-firmware-may-have-already-been-cracked-ahead-of-gta-6/l-intro-1792530805.jpg": {
   "w": 1600,
   "h": 899,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg": {
+  "w": 1000,
+  "h": 544,
   "target": 720,
   "v": 3
  },
