@@ -169,6 +169,95 @@ class TakeItemRequests(unittest.TestCase):
         self.assertEqual(self.file.read_text(encoding="utf-8"), ITEMS)
 
 
+EMB = """items:
+  - name: "ILLIT"
+    type: event
+    emblem_reject: ["https://old.example/x.jpg"]   # 目で見て外した画像
+    motif: idol          # 版面テーマ
+    emblem:  # 作品の小元素
+      - {subject: "Yunah", image: "emblems/illit-yunah.webp", source: "https://src.example/yunah.jpg", shape: "cutout"}
+      - {subject: "Minju", image: "emblems/illit-minju.webp", source: "https://src.example/minju.jpg", shape: "cutout"}
+      - {subject: "Logo", image: "https://src.example/logo.svg", shape: "logo"}
+    theme: {acc: "#111111"}
+
+  - name: FROM
+    type: show
+    keywords: [FROM]
+"""
+
+
+class RejectEmblems(unittest.TestCase):
+    """管理ページの小元素の「違う」：edit ＋ {_emblem_reject: [画像]} → 外して emblem_reject に（元の画像の網址）。"""
+
+    def setUp(self):
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        self.file = tmp / "items.yaml"
+        self.file.write_text(EMB, encoding="utf-8")
+        self.emb = tmp / "emblems"
+        self.emb.mkdir()
+        for n in ("illit-yunah", "illit-minju"):
+            (self.emb / f"{n}.webp").write_bytes(b"x")
+        import emblem
+        self.log = tmp / "emblem_rejects.json"
+        for obj, attr, val in ((digest, "ITEMS_FILE", self.file), (emblem, "EMB_DIR", self.emb), (digest, "EMBLEM_REJECTS_FILE", self.log)):
+            p = mock.patch.object(obj, attr, val)
+            p.start()
+            self.addCleanup(p.stop)
+
+    def run_with(self, *rows):
+        rows = [{"id": n, **r} for n, r in enumerate(rows, 1)]
+        calls = []
+
+        def fake(path, body=None, prefer=None, method=None):
+            calls.append((path, body, method))
+            return rows if method is None else []
+        with mock.patch.object(digest, "supabase", side_effect=fake):
+            digest.take_item_requests()
+        return {p: b for p, b, m in calls if m == "PATCH"}
+
+    def item(self, name="ILLIT"):
+        return next(i for i in yaml.safe_load(self.file.read_text(encoding="utf-8"))["items"] if i["name"] == name)
+
+    def test_reject_by_local_image(self):
+        before = self.item("FROM")
+        marks = self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_reject": [
+            {"image": "emblems/illit-yunah.webp", "reason": "other", "note": "Minju が写っている"}]}})
+        it = self.item()
+        self.assertEqual([x["subject"] for x in it["emblem"]], ["Minju", "Logo"])
+        self.assertEqual(it["emblem_reject"], ["https://old.example/x.jpg", "https://src.example/yunah.jpg"])
+        self.assertEqual(it["theme"], {"acc": "#111111"})   # 配色・ほかの項目はそのまま
+        self.assertEqual(self.item("FROM"), before)
+        self.assertFalse((self.emb / "illit-yunah.webp").exists())   # 倉庫の画像も消す
+        self.assertTrue((self.emb / "illit-minju.webp").exists())
+        self.assertEqual(marks["item_requests?id=in.(1)"]["status"], "done")
+        log = digest.load_json(self.log)["rows"]   # 理由の記録（今後の規則の手がかり）
+        self.assertEqual([(x["board"], x["subject"], x["reason"], x["note"], x["host"]) for x in log],
+                         [("ILLIT", "Yunah", "other", "Minju が写っている", "src.example")])
+
+    def test_unknown_reason_skipped(self):
+        marks = self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_reject": [{"image": "emblems/illit-yunah.webp", "reason": "kirai"}]}})
+        self.assertEqual(self.file.read_text(encoding="utf-8"), EMB)
+        self.assertIn("一覧にない", marks["item_requests?id=eq.1"]["note"])
+        self.assertFalse(self.log.exists())
+
+    def test_reject_remote_and_all(self):
+        self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_reject": [
+            "https://src.example/logo.svg", "emblems/illit-yunah.webp", "emblems/illit-minju.webp"]}})
+        it = self.item()
+        self.assertNotIn("emblem", it)   # 全部外したら emblem の行ごとなくなる（次の後台で埋め直す）
+        self.assertIn("https://src.example/logo.svg", it["emblem_reject"])
+        self.assertEqual(it["motif"], "idol")
+        self.assertEqual({x["reason"] for x in digest.load_json(self.log)["rows"]}, {"misc"})   # 網址だけの古い形 = そのほか
+
+    def test_unknown_image_skipped(self):
+        marks = self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_reject": ["emblems/nai.webp"]}},
+                              {"action": "edit", "name": "ILLIT", "config": {"_emblem_reject": "emblems/illit-yunah.webp"}})
+        self.assertEqual(self.file.read_text(encoding="utf-8"), EMB)
+        self.assertEqual(marks["item_requests?id=eq.1"]["status"], "skipped")
+        self.assertIn("もう外れている", marks["item_requests?id=eq.1"]["note"])
+        self.assertEqual(marks["item_requests?id=eq.2"]["status"], "skipped")
+
+
 class RealItemsFile(unittest.TestCase):
     def test_every_item_can_be_edited_in_place(self):
         """真的 items.yaml：每一项改 priority 都只改到它自己。"""

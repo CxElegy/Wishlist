@@ -61,6 +61,7 @@ SIZES_FILE = STATE_DIR / "sizes.json"
 NAV_SCHEMES_FILE = STATE_DIR / "nav_schemes.json"   # 板块ごとに選んだ小分類の分け方（Supabase の nav_schemes 表の写し）
 HEAT_FILE = STATE_DIR / "heat_signals.json"  # 話題度用的外部数据（维基浏览量、Steam 在线、AniList / TMDB 人气），见 heat.py
 SIZES_PUSHED_FILE = STATE_DIR / "sizes_pushed.json"   # items.yaml 里的 size 上次同步进数据库时是什么
+EMBLEM_REJECTS_FILE = STATE_DIR / "emblem_rejects.json"   # 管理ページで「違う」と外した小元素と理由（今後の規則を直す手がかり、emblem_rules.REJECT_REASONS）
 INBOX_DIR = ROOT / "inbox"
 DOCS_DIR = sitedir.SITE_DIR   # 公開ページ（docs/home/ = 店長のページ，test2 は凍結）
 ISSUES_ON_PAGE = 3650  # 网页汇总所有期：消息永远保留，一周前的收进折叠区
@@ -1304,6 +1305,79 @@ def delete_item(text, name):
     return new
 
 
+EMBLEM_REJECT_MAX = 50   # 1 回の依頼で外せる小元素の数（管理ページの「違う」は版面ごとに 1 件の依頼にまとめて送る）
+EMBLEM_REJECT_KEEP = 1000   # 理由の記録（state/emblem_rejects.json）に残す件数
+
+
+def _reject_marks(marks):
+    """「違う」の依頼の中身 → {画像: (理由の id, ひとこと)}。古い形（画像の網址だけ）は理由「そのほか」。"""
+    import emblem_rules
+    if not isinstance(marks, list) or not marks or len(marks) > EMBLEM_REJECT_MAX:
+        raise ValueError("外す画像の指定が正しくない")
+    out = {}
+    for m in marks:
+        m = {"image": m} if isinstance(m, str) else m
+        if not isinstance(m, dict) or not isinstance(m.get("image"), str) or not 0 < len(m["image"]) <= 2000:
+            raise ValueError("外す画像の指定が正しくない")
+        why = m.get("reason") or "misc"
+        if why not in emblem_rules.REJECT_IDS:
+            raise ValueError(f"理由「{why}」は一覧にない")
+        out[m["image"]] = (why, str(m.get("note") or "")[:200])
+    return out
+
+
+def reject_emblems(text, name, marks):
+    """管理ページの「違う」：関注項 name の小元素から marks の画像（items.yaml の image か source）を外し、
+    元の画像を emblem_reject に足す（自動補完は二度と選ばない。足りなくなった分は次の後台で別の画像を探す）。
+    返り値：(新しい全文, 外した小元素のリスト)。外した小元素には選ばれた理由（_reason・_note）が付く。どれも今の小元素になければ ValueError。"""
+    import emblem
+    want = _reject_marks(marks)
+    item = next((i for i in (yaml.safe_load(text) or {}).get("items") or [] if i.get("name") == name), None)
+    if item is None:
+        raise ValueError(f"关注清单里没有「{name}」")
+    ems = [x for x in item.get("emblem") or [] if isinstance(x, dict)]
+    gone = []
+    for x in ems:
+        hit = next((want[u] for u in (x.get("image"), x.get("source")) if u in want), None)
+        if hit:
+            gone.append({**x, "_reason": hit[0], "_note": hit[1]})
+    if not gone:
+        raise ValueError("その画像はもう小元素にない（もう外れている）")
+    out = {x.get("image") for x in gone}
+    keep = [x for x in ems if x.get("image") not in out]
+    rej = list(item.get("emblem_reject") or [])
+    for x in gone:   # 元の網址（倉庫の webp は消すので、次に同じ画像を拾わないよう出所のほうを覚える）
+        rej += [u for u in (x.get("source"), x.get("image")) if isinstance(u, str) and re.match(r"https?://", u)]
+    text = emblem.item_text(text, name, keep)
+    text = set_item_fields(text, name, {"emblem_reject": list(dict.fromkeys(rej))})
+    return text, [{**x, "_board": name, "_kind": item.get("emblem_kind") or ""} for x in gone]
+
+
+def log_emblem_rejects(gone, when=None):
+    """外した小元素を理由つきで state/emblem_rejects.json に残す（版面・種類・どの取り方で選ばれたか（why）・網域・形）。
+    管理ページ「「違う」の理由」がこれを数える：同じ理由・同じ取り方が溜まったら、その判断（emblem_rules.REJECT_REASONS の 3 つ目）を締める。"""
+    if not gone:
+        return
+    when = when or dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    rows = (load_json(EMBLEM_REJECTS_FILE) or {}).get("rows") or []
+    for x in gone:
+        src = x.get("source") or x.get("image") or ""
+        rows.append({"at": when, "board": x["_board"], "kind": x.get("_kind") or "", "reason": x["_reason"], "note": x.get("_note") or "",
+                     "subject": x.get("subject") or "", "why": x.get("why") or "", "shape": x.get("shape") or "",
+                     "host": urllib.parse.urlsplit(src).hostname or "", "source": src, "page": x.get("page") or ""})
+    save_json(EMBLEM_REJECTS_FILE, {"rows": rows[-EMBLEM_REJECT_KEEP:]})
+
+
+def _drop_emblem_files(gone, items):
+    """外した小元素の倉庫の画像（docs/home/emblems/*.webp）を消す。ほかの関注項・目次のアイコンが使っているものは残す。"""
+    import emblem
+    used = {str(x.get("image")) for i in items for x in (i.get("emblem") or []) + [i.get("icon")] if isinstance(x, dict)}
+    for x in gone:
+        img = str(x.get("image") or "")
+        if re.fullmatch(r"emblems/[a-z0-9-]+\.webp", img) and img not in used:
+            (emblem.EMB_DIR / img.split("/", 1)[1]).unlink(missing_ok=True)
+
+
 def take_item_requests():
     """设置页上「新增 / 修改关注项」提交的：从数据库 item_requests 表读出待处理的，写进 items.yaml，再标成 done。
     新增的追加到文件末尾，修改的只改提交了的字段（不动原来的内容和注释）。
@@ -1320,11 +1394,19 @@ def take_item_requests():
     settings, items = load_config()
     today = dt.datetime.now(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat()
     text = ITEMS_FILE.read_text(encoding="utf-8")
-    done, skipped = [], {}
+    done, skipped, dropped = [], {}, []
     for r in rows:
         name = (r.get("name") or "").strip()
         names = {i["name"] for i in items}
         try:
+            if r.get("action") == "edit" and "_emblem_reject" in (r.get("config") or {}):   # 管理ページの「違う」
+                new, gone = reject_emblems(text, name, r["config"]["_emblem_reject"])
+                got = (yaml.safe_load(new) or {}).get("items") or []
+                assert [i for i in got if i.get("name") != name] == [i for i in items if i.get("name") != name], "别的关注项被改动了"
+                text, items = new, got
+                dropped += gone
+                done.append(r)
+                continue
             if r.get("action") == "edit" and (r.get("config") or {}).get("_delete") is True:   # 設定ページの「删」
                 new = delete_item(text, name)
                 got = (yaml.safe_load(new) or {}).get("items") or []
@@ -1374,6 +1456,8 @@ def take_item_requests():
         done.append(r)
     if done:
         ITEMS_FILE.write_text(text if text.endswith("\n") else text + "\n", encoding="utf-8")
+        _drop_emblem_files(dropped, items)
+        log_emblem_rejects(dropped)
     now = dt.datetime.now(dt.timezone.utc).isoformat()
     try:
         if done:
@@ -1385,7 +1469,8 @@ def take_item_requests():
     except Exception as err:  # 标不上的下次还会读到：新增的会因为名字已存在被跳过，修改的再改一次结果一样
         print(f"  [关注项] 标记请求失败：{err}", file=sys.stderr)
     for r in done:
-        what = "删除" if (r.get("config") or {}).get("_delete") is True else "修改" if r.get("action") == "edit" else "加入"
+        what = ("删除" if (r.get("config") or {}).get("_delete") is True else "外した小元素" if "_emblem_reject" in (r.get("config") or {})
+                else "修改" if r.get("action") == "edit" else "加入")
         print(f"关注项：从设置页{what}「{r['name']}」", file=sys.stderr)
 
 
@@ -2153,6 +2238,9 @@ def backend_cells(items, rows, latest, run):
     queue = run.get("queue") or []
     import emblem_fill
     raw = emblem_fill.load_progress().get("items") or {}   # 時刻（UTC）・failed_at・漏斗の数字はこちらから
+    rejects = {}   # 管理ページの「違う」の記録（理由つき）→ 版面ごと
+    for x in (load_json(EMBLEM_REJECTS_FILE) or {}).get("rows") or []:
+        rejects.setdefault(x.get("board"), []).append(x)
     md = (lambda d: f"{int(d[5:7])}/{int(d[8:10])}") if day else (lambda d: "")
     for r in rows:
         name, item = r["name"], by_name.get(r["name"]) or {}
@@ -2181,7 +2269,8 @@ def backend_cells(items, rows, latest, run):
             cells["emblem"] = ("wait", f"{count} · 順番 {pos} 番目" if pos else count)
         r["bg"] = {k: {"state": a, "text": b} for k, (a, b) in cells.items()}
         r["bg"]["emblem"]["detail"] = emblem_detail(item, raw.get(name) or {}, st, queue, run.get("tz"))
-        r["thumbs"] = [(x["image"], x.get("shape") or "") for x in item.get("emblem") or [] if isinstance(x, dict)
+        r["bg"]["emblem"]["detail"]["reject_log"] = rejects.get(name, [])
+        r["thumbs"] = [(x["image"], x.get("shape") or "", x.get("subject") or "") for x in item.get("emblem") or [] if isinstance(x, dict)
                        and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]   # 全部（表の行は先頭だけ、「小元素の探し方」を開くと全部）
 
 
