@@ -420,6 +420,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://collabo-cafe.com/wp-content/uploads/chiikawa-movie-capsule-toy-parade-furifuri-head-figure-2026-eyecatch.jpg": {
+  "w": 1080,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://collabo-cafe.com/wp-content/uploads/chiikawa-pocket-popup4-eyecatch.jpg": {
   "w": 1338,
   "h": 730,
@@ -1281,6 +1287,12 @@
   ],
   "why": "看不清"
  },
+ "https://lasisa.net/wp-content/uploads/2027/10/20261023_ana2_chiikawa_01.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://limo.ismcdn.jp/mwimgs/e/3/1200w/img_e3769c05079a27cfd936a7e3d79c433c78670.jpg": {
   "w": 1200,
   "h": 800,
@@ -1812,6 +1824,42 @@
   "out": [
    640,
    467
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00010023-realsound-000-1-view.jpg?exp=10800": {
+  "w": 1192,
+  "h": 869,
+  "target": 720,
+  "v": 3,
+  "local": "pics/1f29e40dff4946d8.webp",
+  "out": [
+   1192,
+   869
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00142752-toushin-000-1-view.png?fmt=jpeg&q=85&exp=10800": {
+  "w": 861,
+  "h": 452,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/c8ba18e784c4249b.webp",
+  "out": [
+   861,
+   452
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00192964-crankinn-000-1-view.jpg?exp=10800": {
+  "w": 650,
+  "h": 470,
+  "target": 720,
+  "v": 3,
+  "local": "pics/2bbb48a76bfd126a.webp",
+  "out": [
+   650,
+   470
   ],
   "why": "期限付きの網址"
  },
@@ -2465,11 +2513,17 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.MH3JwAwsfj5WaWHrDVW_Ag&pid=News&w=1192": {
-  "w": 700,
-  "h": 510,
+ "https://www.bing.com/th?id=ONUT.JA6HAGiBknVyQSKLPC7W2w&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "local": "pics/830a111480fb249f.webp",
+  "out": [
+   700,
+   393
+  ],
+  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200": {
   "w": 100,
@@ -2484,9 +2538,9 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.Pu2HDojRk_S-IQbRhjybcQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.O2nYDAFA4srKmmTuGV4OjQ&pid=News&w=1200": {
   "w": 700,
-  "h": 367,
+  "h": 366,
   "target": 720,
   "v": 3
  },
