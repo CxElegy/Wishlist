@@ -219,5 +219,46 @@
 "at": "2026-10-21T00:18:52+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
+},
+{
+"at": "2026-10-21T00:19:27+00:00",
+"text": "2026-10-21 第 1 バッチを出刊：ちいかわ（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 6.5万・キャッシュ読み 78.6万・出力 2,987",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.44,
+"mem_total": 16874930176,
+"mem_free": 16294051840,
+"disk_used": 9990561792,
+"disk_free": 31536676864,
+"disk_total": 41527238656,
+"peak": 68321280
+},
+"batch": 1,
+"boards": [
+"ちいかわ"
+],
+"stories": 5,
+"left": 0,
+"edited": 1,
+"run": 1792541895.7230504,
+"tok": {
+"in": 20,
+"cw": 64761,
+"cr": 785543,
+"out": 2987,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 853311,
+"secs": 72,
+"run_tok": {
+"in": 20,
+"cw": 64761,
+"cr": 785543,
+"out": 2987,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
