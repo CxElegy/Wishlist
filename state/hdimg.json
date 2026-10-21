@@ -93,6 +93,19 @@
   ],
   "why": "看不清"
  },
+ "http://www.press9.kr/news/thumbnail/202610/84647_96779_4157_v150.jpg": {
+  "w": 300,
+  "h": 208,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.571,
+  "local": "pics/2dd05ffa357de487.webp",
+  "out": [
+   900,
+   624
+  ],
+  "why": "看不清"
+ },
  "http://wx1.sinaimg.cn/middle/647c8fably1ii4734hamfj21140pmdws.jpg": {
   "w": 1336,
   "h": 922,
@@ -657,12 +670,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hermes.media.static.aol.com/media/2026/10/14/e0a70dfe-6604-3cea-83b8-c319c02bb690/7fdc4e2f-5915-4ded-b631-4852b662f1c0.jpeg": {
-  "w": 3000,
-  "h": 1500,
-  "target": 1280,
-  "v": 3
- },
  "https://hermes.media.transform.aol.com/7d987a48298616f862bda1d3b18b09d60bb083a7/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/18/4e431812-a9e5-3f43-8ed1-7a9d06a7c03c/591c7878-9781-49e5-a9f9-d2a7f0b7d36c.jpg": {
   "w": 1200,
   "h": 675,
@@ -705,12 +712,6 @@
   "target": 720,
   "v": 3
  },
- "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/9d9e789b4277078469474ab5001f9d85.webp?fit=1200%2C900&ssl=1": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/08/marvel-studios-ghost-rider-xmen-black-panther-llcs-banner.jpg?fit=1920%2C820&ssl=1": {
   "w": 1920,
   "h": 820,
@@ -732,12 +733,6 @@
  "https://i3.gamebiz.jp/media/cad0aca2-af45-4e4e-963a-179b7413bf5f.jpg": {
   "w": 1020,
   "h": 459,
-  "target": 1280,
-  "v": 3
- },
- "https://i3n.news1.kr/system/photos/2026/10/19/8167139/high.jpg": {
-  "w": 1217,
-  "h": 694,
   "target": 1280,
   "v": 3
  },
@@ -797,12 +792,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.news.livedoor.com/newsimage/stf/6/f/6f6b6_1845_b48d9d89_6861ecd1.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227391/thumb001.png?height=720&quality=75&version=1791975793&width=1280": {
   "w": 1280,
   "h": 720,
@@ -855,6 +844,12 @@
  "https://images.selectra.jp/articles/chiikawa-movie-4dx/hero.webp": {
   "w": 1200,
   "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.static-bluray.com/movies/covers/414975_front.jpg": {
+  "w": 1758,
+  "h": 2200,
   "target": 720,
   "v": 3
  },
@@ -1051,6 +1046,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fJIXU.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fJMnf.img": {
   "w": 550,
   "h": 360,
@@ -1189,6 +1190,12 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/11/5602291_3.jpg": {
   "w": 800,
   "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.mydaily.co.kr/photos/2026/10/21/2026102112324060920_x.jpg": {
+  "w": 1280,
+  "h": 960,
   "target": 720,
   "v": 3
  },
@@ -1370,6 +1377,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://limo.ismcdn.jp/mwimgs/4/9/1200w/img_49a3c6deaf2e95c0c394310028b902d372028.jpg": {
+  "w": 1200,
+  "h": 2133,
+  "target": 1280,
+  "v": 3
+ },
  "https://limo.ismcdn.jp/mwimgs/e/3/1200w/img_e3769c05079a27cfd936a7e3d79c433c78670.jpg": {
   "w": 1200,
   "h": 800,
@@ -1442,37 +1455,11 @@
   "target": 1280,
   "v": 3
  },
- "https://mydaily.co.kr/photos/2026/10/21/2026102112324060920_l.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 720,
-  "v": 3
- },
  "https://n.sinaimg.cn/games/crawl/37/w550h287/20261013/b68d-d2804b95a169cde0c4b9446f3dd287f2.png": {
   "w": 550,
   "h": 287,
   "target": 720,
   "v": 3
- },
- "https://newportal.portal.auone.jp/media/thumbnails/2026/10/15/https___news_jp_i_1483301251298116530_w400.webp": {
-  "w": 400,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.722,
-  "local": "pics/6f8532d8ad04f041.webp",
-  "out": [
-   1200,
-   1200
-  ],
-  "why": "看不清"
- },
- "https://newportal.portal.auone.jp/media/thumbnails/2026/10/17/https___news_jp_i_1483762816212829132_w640.webp": {
-  "w": 640,
-  "h": 449,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.41
  },
  "https://newportal.portal.auone.jp/media/thumbnails/2026/10/19/https___news_mynavi_jp_article_20261019-5132104__w600.webp": {
   "w": 600,
@@ -2075,6 +2062,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/5623/452/5623-452-f3febcfb8cc7c1f40d7f49c619b8b6ab-750x750.jpg?width=1950&height=1350&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff": {
+  "w": 750,
+  "h": 750,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/7736/2641/7736-2641-99bbb4b4f5948ba28e3b250fd90843d5-1920x1080.png?width=536&quality=85%2C75&format=jpeg": {
   "w": 536,
   "h": 302,
@@ -2140,12 +2133,6 @@
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 1280,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/4e3238e713fd70fa140c1d7ebbc8cc2c974ea9eb26afa12fec89b8fc1987efda/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fsetn.com.tw%2Ff6ed0eaf155d6cd697540b50e5340dc5.jpg": {
-  "w": 1200,
-  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -2294,6 +2281,13 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/1/0/2/7/10277f53ca257918cfc178239badb31c_1.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.4
+ },
  "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg": {
   "w": 451,
   "h": 640,
@@ -2345,12 +2339,6 @@
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/robert-downey-jr-s-tony-stark-as-iron-man-in-movie-promo-art.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/sadie-sink-as-jean-grey.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 720,
@@ -2427,6 +2415,12 @@
   "w": 1200,
   "h": 801,
   "target": 1280,
+  "v": 3
+ },
+ "https://today-obs.line-scdn.net/0hPpE3uaS5D194ShPgKUVwCEAcAy5LLBVWWnkVbllOA28HZkBcFyRcPFgZV3MFe0haWHsSaVRKAmtQKk0MRw/w1200": {
+  "w": 800,
+  "h": 480,
+  "target": 720,
   "v": 3
  },
  "https://today-obs.line-scdn.net/0hz7gw5W_4JRhaDjmux4daT2JYKWlpaD8ReGloenkIKy9zImYcY292eygHeDQkazBLemBoKioHcilxbGZIZg/w1200": {
@@ -2527,6 +2521,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.1n3YYLRDXYR9pvDIKuhhqA&pid=News&w=1024": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.5unc9EPQvoH7kkubFBFiwA&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2562,6 +2562,19 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.DCl7ypaBdA3BGL73kDGUKQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.534,
+  "local": "pics/36409a0fb32176ed.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.FgkmDz--qhmpijE2z-xP6Q&pid=News&w=1120": {
   "w": 700,
@@ -2717,11 +2730,18 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.g6b_rhZn6W-ALBdtks4u6Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
+ "https://www.bing.com/th?id=ONUT.iAT7IhEzZ5ZerNWSk8uOWg&pid=News&w=1200": {
+  "w": 493,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.462,
+  "local": "pics/f71298bed9c8d42a.webp",
+  "out": [
+   901,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.iY3U3dVABvvQ_dK4UJF68g&pid=News&w=1200": {
   "w": 700,
@@ -2810,6 +2830,13 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.scgJUb2Tj5eWXkCBveb1Mw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.376
+ },
  "https://www.bing.com/th?id=ONUT.tkirCUyh0X2plxfYt4ctgQ&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2873,12 +2900,6 @@
  "https://www.crank-in.net/img/db/264103215183432_1200.jpg": {
   "w": 1200,
   "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg": {
-  "w": 1600,
-  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -2961,12 +2982,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.gadgetreview.com/wp-content/uploads/Foldable-Phones-Roundup-Samsung-Apple-Huawei-and-More.png": {
-  "w": 1312,
-  "h": 736,
-  "target": 1280,
-  "v": 3
- },
  "https://www.gsmdome.com/wp-content/uploads/2026/10/samsung-samsung-galaxy-s27-galaxy-s27-cover-a97742-001.jpg": {
   "w": 1600,
   "h": 1252,
@@ -2982,12 +2997,6 @@
  "https://www.inside-games.jp/imgs/ogp_f/1786611.jpg": {
   "w": 600,
   "h": 399,
-  "target": 720,
-  "v": 3
- },
- "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-33.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 720,
   "v": 3
  },
