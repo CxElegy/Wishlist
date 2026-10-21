@@ -147,3 +147,31 @@ begin
 exception when others then
   return jsonb_build_object('ok', false, 'msg', '起こせませんでした：' || sqlerrm);
 end $$;
+
+-- 2026-10-21：開關を開くと、ログインしない AI 編集（定時の会話）の edit_control_set が止まる。許すのは 2 つだけ：
+-- 「次の 1 版面」が済んだ後の step → pause と、編み直した版面を 1 つやり直し一覧から外すこと（* で全部消すのはだめ）。
+create or replace function public.edit_control_set(p_account text, p_mode text default null, p_redo_add text default null, p_redo_clear text default null)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare r text[]; a text := private.acct(p_account); cur text;
+begin
+  select c.mode into cur from public.edit_control c where c.account = a;
+  if not public.can_edit(p_account) and not (
+       p_redo_add is null
+       and (p_mode is null or (p_mode = 'pause' and cur = 'step'))
+       and (p_redo_clear is null or p_redo_clear <> '*')
+       and (p_mode is not null or p_redo_clear is not null)) then
+    return jsonb_build_object('ok', false, 'msg', 'ログインが必要です');
+  end if;
+  if p_mode is not null and p_mode not in ('run', 'step', 'pause') then
+    return jsonb_build_object('ok', false, 'msg', 'mode は run / step / pause');
+  end if;
+  if p_redo_add is not null and not exists (select 1 from public.sizes s where s.account = a and s.item = p_redo_add) then
+    return jsonb_build_object('ok', false, 'msg', 'その版面はありません');
+  end if;
+  insert into public.edit_control (account) values (a) on conflict (account) do nothing;
+  select c.redo into r from public.edit_control c where c.account = a;
+  if p_redo_add is not null and not (p_redo_add = any(r)) and coalesce(array_length(r, 1), 0) < 30 then r := array_append(r, p_redo_add); end if;
+  if p_redo_clear = '*' then r := '{}'; elsif p_redo_clear is not null then r := array_remove(r, p_redo_clear); end if;
+  update public.edit_control c set mode = coalesce(p_mode, c.mode), redo = r, updated_at = now() where c.account = a;
+  return public.edit_control_get(a) || jsonb_build_object('ok', true);
+end $$;
