@@ -642,5 +642,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 542361
+},
+{
+"at": "2026-10-21T08:28:07+00:00",
+"text": "2026-10-21 第 20 バッチを出刊：BLEACH Mirrors High（1 版面・1 本・残り 4 版面） · token 新規入力 2,838・キャッシュ読み 54.7万・出力 998",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.22,
+"mem_total": 16874930176,
+"mem_free": 16175181824,
+"disk_used": 10001195008,
+"disk_free": 31526043648,
+"disk_total": 41527238656,
+"peak": 186568704
+},
+"batch": 20,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 1,
+"left": 4,
+"edited": 20,
+"run": 1792565708.6792397,
+"tok": {
+"in": 6,
+"cw": 2832,
+"cr": 546964,
+"out": 998,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 550800
 }
 ]

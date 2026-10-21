@@ -459,6 +459,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cimg.kgl-systems.io/camion/files/91546/ogp_nwMY.jpg?x=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://cogconnected.com/wp-content/uploads/2026/10/EVILGARD-Featured.jpg": {
   "w": 890,
   "h": 520,
@@ -563,16 +569,16 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fbbe51fc8b9a605476aa17797550382f46cbc385290060cc7222bbdd52b5c6c518280290503be": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0597ae52baa7e4d1d7586a22e1d4de99f537818d79eb04577ec45655863a09157b7f4bdee50c30a9bca5bfccc9d234a0": {
   "w": 300,
-  "h": 300,
+  "h": 225,
   "target": 720,
   "v": 3,
-  "blur": 0.446,
-  "local": "pics/b5b1d774ac1b583b.webp",
+  "blur": 0.472,
+  "local": "pics/27fc07123575b651.webp",
   "out": [
    720,
-   720
+   540
   ],
   "why": "防盗链",
   "ref": true
@@ -2890,12 +2896,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000": {
-  "w": 700,
-  "h": 380,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500": {
   "w": 100,
   "h": 100,
@@ -3151,6 +3151,12 @@
  "https://www.engadget.com/img/gallery/the-latest-playstation-firmware-may-have-already-been-cracked-ahead-of-gta-6/l-intro-1792530805.jpg": {
   "w": 1600,
   "h": 899,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg": {
+  "w": 1000,
+  "h": 544,
   "target": 720,
   "v": 3
  },

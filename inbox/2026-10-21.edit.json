@@ -96,7 +96,8 @@
   "チェーンソーマン": 8,
   "あつ森": 7,
   "滑雪": 7,
-  "FROM": 6
+  "FROM": 6,
+  "BLEACH Mirrors High": 5
  },
  "漫威电影": [
   {
@@ -1012,6 +1013,27 @@
    "refs": [
     5
    ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【BLEACH】新作スマホゲー『ミラハイ』最新情報や重大発表ありの特番が10/27公開。森田成一やシークレットゲストも出演",
+   "highlight": "10/27公開",
+   "blurb": "『BLEACH Mirrors High』の特別放送「SPECIAL BROADCAST」が10月27日19時から公開。重大発表あり、小林千晃・指出毬亜・森田成一・折笠富美子らが出演。",
+   "weight": "lead",
+   "refs": [
+    1,
+    4,
+    2,
+    3,
+    5
+   ],
+   "event": {
+    "date": "2026-10-27",
+    "label": "特別放送",
+    "time": "19:00"
+   },
+   "image": "https://cimg.kgl-systems.io/camion/files/91546/ogp_nwMY.jpg?x=1280"
   }
  ]
 }
