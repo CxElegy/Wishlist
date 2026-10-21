@@ -10,8 +10,10 @@
 --   ・UPDATE は SELECT のポリシーも要る・USING と WITH CHECK の両方（メールを他人のものに書き換えられない）
 --   ・書けるのは prefs と last_seen の列だけ（同意の記録・メール・退会の印は本人も変えられない）
 --   ・anon（ログインなし）は関数を呼べない
+--   ・RLS の条件は (select auth.jwt()) で 1 回だけ評価、条件の列 lower(email) に索引（supabase-postgres-best-practices）
 -- 在 Supabase → SQL Editor 里整段粘贴、运行一次即可（Claude 可以用 Supabase 连接器代为执行）。
 
+create index if not exists app_users_email_lower_idx on public.app_users (lower(email));   -- RLS の条件の列に索引（supabase-postgres-best-practices：security-rls-performance）
 drop policy if exists app_users_select_own on public.app_users;
 create policy app_users_select_own on public.app_users for select to authenticated
   using (lower(email) = lower((select auth.jwt()) ->> 'email') and left_at is null);

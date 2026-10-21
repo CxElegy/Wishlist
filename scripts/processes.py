@@ -469,7 +469,7 @@ PROCESSES = [
              "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける", "uses": ["roles"]},
             {"id": "a3m", "kind": "decision", "lane": "web", "title": "お客さま（店長でない人）がログインしている？",
              "text": "簡報・欲しい物・話題度・設定。アカウントは 1 つずつ独立（2026-10-22）。ログインを覚えているブラウザは、決まるまで店長の中身を隠す",
-             "yes": "自分のページ：my_page()（本人の行だけ）→「〇〇さんのページ」・自分のキーワード（prefs.picks、まだ集めていない）・空の欲しい物／話題度。設定でキーワードを足す・外す（my_keywords_set、200 個まで）。「店長のページを見る（見るだけ）」→ 上の帯の「自分のページに戻る」",
+             "yes": "自分のページ：my_page()（本人の行だけ）→「〇〇さんのページ」・自分のキーワード（prefs.picks）。設定でキーワードを足す・外す・元に戻す（my_keywords_set、200 個まで）。目次は「ページ」「キーワード」だけ（まだ使えないものは出さない）。仕組みの説明・準備中・店長のページへの切り替えは出さない（impeccable clarify・distill、onboarding の空の状態）。ログインの知らせからの呼び出しは setTimeout で後に回す（Supabase 公式）",
              "no": "店長のページ（访客は見るだけ・店長は全部）", "uses": ["supabase"]},
             {"id": "a4", "kind": "decision", "lane": "web", "title": "このページを変えられる？",
              "text": "開關が開いていて、ログインしていない・自分の account でない",

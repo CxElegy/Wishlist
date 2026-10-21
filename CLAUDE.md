@@ -3,6 +3,11 @@
 @WORKING.md
 （↑ 仕事の進め方：言われたこと＋次の一手・反論・提案・影響表・自分で確かめる。毎回読む）
 
+## スキル（2026-10-22，用户定的）
+
+- 設計・実装の前に、合うスキルを `find-skills`（`npx skills find …`）で探し、インストール数・出どころを確かめて入れる（`.claude/skills/`、出どころと指紋は `skills-lock.json`）。直接直す前に、スキルの考え方（他の人の framework・設計理念）に照らして直し方を決める。
+- 入れてあるもの：find-skills・supabase・supabase-postgres-best-practices・web-design-guidelines・frontend-design・webapp-testing・web-perf・seo-audit・signup・onboarding・site-architecture・improve-codebase-architecture・python-testing-patterns（＋前からの impeccable・diagram・wishlist）。
+
 ## 主动告诉我有哪些 MCP 连接器能用
 
 - 任务能靠某个 MCP 连接器更方便地完成时（比如改数据库用 Supabase、看 PR 用 GitHub），**先告诉我有这个连接器**，
@@ -369,7 +374,7 @@
 - 门番是数据库（`db/auth.sql`・`db/auth_guard.sql`：写函数第一行 `can_edit(p_account)` / `is_admin()`）；网页（`render.AUTH_JS`，每页右上的「ログイン」= 填邮箱 →「はじめる」）只拦按钮、说理由。Supabase 自带的发信只发给 Supabase 团队成员的邮箱（只用来发管理者的确认），加别的管理者前要设 SMTP（`LOGIN.md`）。
   开关 `private.auth_flags.enforce`：关着 = 跟以前一样，`db/auth_enforce.sql` 打开。（`public.hook_invite_only` 做好了但不接：不做邀请制。登录时也不提邀请的事。）
 - 设定步骤・文件一览・第 2 步（一般用户自己的页面只给本人看、不进仓库、AI 编辑用 Haiku）在 `LOGIN.md`。改登录相关的东西时同步改 `processes.py` 的 `login`。
-- **アカウントは 1 つずつ独立（2026-10-22，用户定的）**：お客さま（テスト用を含む）がログインしたら、/home/ の各ページは店長の中身ではなく**自分のページ**（最初は空・自分のキーワードだけ，`render.AUTH_JS` の `mine` / `my_page()`）。店長のページは「店長のページを見る（見るだけ）」で見に行き、帯の「自分のページに戻る」で戻る。詳しくは `LOGIN.md` 第 2 步。
+- **アカウントは 1 つずつ独立（2026-10-22，用户定的）**：お客さま（テスト用を含む）がログインしたら、/home/ の各ページは店長の中身ではなく**自分のページ**（最初は空・自分のキーワードだけ，`render.AUTH_JS` の `mine` / `my_page()`）。**お客さまに要らない内部の事情（仕組みの説明・準備中・店長のページへの切り替え）は画面に出さない**（用户指摘）。詳しくは `LOGIN.md` 第 2 步。
 - 已合并到 main（用户说「装上吧」）。**开关 enforce 2026-10-21 已打开**（用户说「スイッチオンしていい」）：访客・お客さま对店長的页面只能看；ログインしない自动的仕组み只许 `edit_control_set` 的 step→pause・やり直し 1 件外す（`db/auth_guard.sql` 末尾）；Actions 用 secret key 不受影响。
 
 ## 保留中のこと

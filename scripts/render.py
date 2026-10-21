@@ -3840,10 +3840,11 @@ html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-ag
 .wl-mine form.add{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 .wl-mine form.add input,.wl-mine form.add select{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
 .wl-mine form.add input{flex:1 1 220px}.wl-mine form.add button{margin:0}
-.wl-mine .st{min-height:1.5em;font-size:13px}
-.wl-viewbar{position:sticky;top:0;z-index:89;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;padding:7px 12px;
- background:var(--ink);color:var(--card);font:700 13px/1.5 var(--font-sans)}
-.wl-viewbar button{border:2px solid var(--card);background:var(--gold);color:var(--ink);padding:3px 12px;font:700 13px var(--font-sans);cursor:pointer}
+.wl-mine form.add label{flex-basis:100%;margin-bottom:-4px;font:700 13px var(--font-sans)}.wl-mine form.add label+select{flex:none}
+.wl-mine form.add label[for$="s"]{flex-basis:auto;align-self:center;margin:0}
+.wl-mine .go.ghost{background:var(--card);margin-top:18px}.wl-mine .hint{font-size:13px;opacity:.8}
+.wl-mine .wl-msg .undo{margin:0 0 0 10px;padding:2px 10px;background:var(--card)}
+.wl-mine .wl-msg{display:block;width:auto;max-width:none;min-height:1.5em;margin:0 0 10px;font-size:13px}
 @media (max-width:560px){.wl-mine{padding-top:24px}.wl-mine h1{font-size:22px}}
 .wl-gate{min-height:100vh;display:grid;place-items:center;padding:16px;background:var(--paper)}
 .wl-gate>div{max-width:420px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 24px;display:flex;flex-direction:column;gap:12px}
@@ -3866,7 +3867,7 @@ AUTH_JS = r"""
   if(!base||!A.key||!window.fetch) return;
   var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
   R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
-  try{ if(/^(index|wishlist|heat|settings)$/.test(page)&&sessionStorage.getItem('wl-view-shop')!=='1'&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない
+  try{ if(/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない
   var ROLE=__ROLE__, LOCK=__LOCK__[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -3916,7 +3917,7 @@ AUTH_JS = r"""
   }
   function after(name,agreed,st){
     if(agreed<TV){ askAgree(); return; }
-    toast('ようこそ、'+name+' さん。このブラウザが覚えました'); refresh();
+    toast('ようこそ、'+(isMail(name)?name.split('@')[0]:name)+' さん'); refresh();   // 成功は短く（clarify）
   }
   function bindLogin(root){
     var f=root.querySelector('.wl-login'); if(!f) return;
@@ -3958,7 +3959,7 @@ AUTH_JS = r"""
   document.addEventListener('click',function(ev){
     if(!locked()||!LOCK) return;
     var t=ev.target.closest&&ev.target.closest(LOCK);
-    if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live,.wl-agree,.wl-mine,.wl-viewbar')) return;
+    if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live,.wl-agree,.wl-mine')) return;
     ev.preventDefault(); ev.stopImmediatePropagation();
     toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'ここは店長のページなので、見るだけです');
   },true);
@@ -4019,36 +4020,32 @@ AUTH_JS = r"""
   }
   // お客さま自分のページ（2026-10-22，用户定的：アカウントは 1 つずつ独立。ログインしたお客さまに店長の中身は出さない）。
   // 簡報・欲しい物・話題度・設定で、店長の中身の代わりに自分の（最初は空の）ページを出す。中身は Supabase の my_page()（本人の行だけ、db/my_page.sql）。
-  // 店長のページへの切り替え（wl-view-shop）は画面に出さない（2026-10-22，用户指摘：お客さまに要らない）。前に切り替えたタブには上の帯で戻る道だけ残す。
-  var VIEW='wl-view-shop', SECS=A.secs||[];
-  function viewShop(){try{return sessionStorage.getItem(VIEW)==='1';}catch(e){return false;}}
-  function isMine(){return SHOP&&R.dataset.role==='user'&&!!(me||user)&&!viewShop();}
-  function setView(shop){try{if(shop)sessionStorage.setItem(VIEW,'1');else sessionStorage.removeItem(VIEW);}catch(e){} mine();chip();window.scrollTo(0,0);}
+  // 画面の言葉は skill（impeccable の clarify・distill、onboarding、web-design-guidelines）に合わせる（2026-10-22，用户指摘）：
+  //   ・お客さまに要らない内部の事情（仕組みの説明・準備中・店長のページへの切り替え）は出さない。1 つの状態に、今わかること 1 つと次の一手 1 つ
+  //   ・空の状態は行き止まりにしない：何のための場所か＋最初の 1 つを足す道（まだ使えない「欲しい物」「話題度」は目次に出さない）
+  //   ・入力には見える名前（例の文字は名前の代わりにならない）。外したら「元に戻す」（確認より元に戻せるほうがよい）
+  var SECS=A.secs||[];
+  function isMine(){return SHOP&&R.dataset.role==='user'&&!!(me||user);}
   function secJa(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][1];return k||'その他';}
   function secColor(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][2]||'';return '';}
   function mine(){
-    var on=isMine(), box=document.querySelector('.wl-mine'), bar=document.querySelector('.wl-viewbar');
+    var on=isMine(), box=document.querySelector('.wl-mine');
     R.dataset.mine=on?'1':'0';
-    if(SHOP&&R.dataset.role==='user'&&!on){   // お客さまが店長のページを見ているとき：いつも見える所に戻る道
-      if(!bar){bar=document.createElement('div');bar.className='wl-viewbar';bar.setAttribute('role','status');
-        bar.innerHTML='<span>店長のページを見ています（見るだけ）</span><button type="button">自分のページに戻る</button>';
-        bar.querySelector('button').onclick=function(){setView(false);};document.body.insertBefore(bar,document.body.firstChild);}
-    } else if(bar) bar.remove();
     if(!on){if(box) box.remove(); return;}
     if(!box){box=document.createElement('main');box.className='wl-mine';box.id='mine';document.body.appendChild(box);}
-    box.innerHTML='<p class="st">読み込み中…</p>';
+    if(!box.dataset.ready) box.innerHTML='<p class="wl-msg" role="status">読み込み中…</p>';
     (tok?rpc('my_page'):Promise.resolve(null)).then(function(p){drawMine(box,p,'');},function(e){drawMine(box,null,e.message);});
   }
-  function drawMine(box,p,err){
+  function drawMine(box,p,err,undo){
+    box.dataset.ready='1';
     var name=(p&&p.name)||(me&&me.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
     var picks=((p&&p.prefs&&p.prefs.picks)||[]).filter(function(x){return x&&x.name;});
-    var nav=[['index','./','ページ'],['wishlist','wishlist.html','欲しい物'],['heat','heat.html','話題度'],['settings','settings.html','設定']]
-      .map(function(x){return '<a href="'+x[1]+'"'+(x[0]===page?' aria-current="page"':'')+'>'+x[2]+'</a>';}).join('');
-    // 画面に出すのはお客さまに要ることだけ（2026-10-22，用户指摘：仕組みの説明・準備中の事情・店長のページへの案内は出さない）
+    var nav=[['index','./','ページ'],['settings','settings.html','キーワード']]
+      .map(function(x){return '<a href="'+x[1]+'"'+((x[0]===page||(x[0]==='index'&&page!=='settings'))?' aria-current="page"':'')+'>'+x[2]+'</a>';}).join('');
     var h='<nav class="mn" aria-label="ページ">'+nav+'</nav><header><h1>'+esc(sh)+' さんのページ</h1></header>';
-    if(err) h+='<p class="st">読み込めませんでした：'+esc(err)+'</p>';
-    else if(!tok) h+='<p class="st">もう一度ログインしてください。</p>';
-    if(page==='index'){
+    if(err) h+='<p class="wl-msg" role="alert">読み込めませんでした。ページを開き直してください。</p>';
+    else if(!tok) h+='<p class="wl-msg" role="alert">もう一度ログインしてください。</p>';
+    if(page!=='settings'){
       if(picks.length){
         h+='<h2>あなたのキーワード<small>'+picks.length+' 個</small></h2>';
         var order=SECS.map(function(x){return x[0];}), by={};
@@ -4056,31 +4053,31 @@ AUTH_JS = r"""
         Object.keys(by).sort(function(a,b){var i=order.indexOf(a),j=order.indexOf(b);return (i<0?99:i)-(j<0?99:j);}).forEach(function(k){
           h+='<h3><i style="background:'+esc(secColor(k)||'var(--ink)')+'"></i>'+esc(secJa(k))+'</h3><ul class="kw">'+
             by[k].map(function(x){return '<li>'+esc(x.name)+'</li>';}).join('')+'</ul>';});
-      } else h+='<div class="empty"><b>まだキーワードがありません</b><a class="go" href="settings.html">キーワードを足す</a></div>';
-    } else if(page==='wishlist'){
-      h+='<div class="empty"><b>欲しい物はまだありません</b></div>';
-    } else if(page==='heat'){
-      h+='<div class="empty"><b>話題度はまだありません</b></div>';
-    } else if(page==='settings'){
+        h+='<a class="go ghost" href="settings.html">キーワードを足す・外す</a>';
+      } else h+='<div class="empty"><b>好きなものを足しましょう</b><p>作品・ブランド・人・場所など、追いかけたいものを足すと、ここに並びます。</p><a class="go" href="settings.html">キーワードを足す</a></div>';
+    } else {
+      var id='kw-'+Math.random().toString(36).slice(2,7);
       h+='<h2>キーワード<small>'+picks.length+' 個</small></h2>'+
-        '<form class="add"><input name="n" maxlength="80" required placeholder="作品・ブランド・人・場所など" aria-label="キーワード">'+
-        '<select name="s" aria-label="大類">'+SECS.map(function(x){return '<option value="'+esc(x[0])+'">'+esc(x[1])+'</option>';}).join('')+'</select>'+
-        '<button type="submit">足す</button></form><p class="st" aria-live="polite"></p>'+
-        (picks.length?'<ul class="kw">'+picks.map(function(x,i){return '<li>'+esc(x.name)+'<small>'+esc(secJa(x.sec))+'</small><button type="button" data-del="'+i+'" aria-label="'+esc(x.name)+' を外す">外す</button></li>';}).join('')+'</ul>'
-          :'');
+        '<form class="add"><label for="'+id+'">足すキーワード</label><input id="'+id+'" name="n" maxlength="80" required autocomplete="off" placeholder="例：葬送のフリーレン">'+
+        '<label for="'+id+'s">大類</label><select id="'+id+'s" name="s">'+SECS.map(function(x){return '<option value="'+esc(x[0])+'">'+esc(x[1])+'</option>';}).join('')+'</select>'+
+        '<button type="submit">足す</button></form><p class="wl-msg" role="status" aria-live="polite"></p>'+
+        (picks.length?'<ul class="kw">'+picks.map(function(x,i){return '<li>'+esc(x.name)+'<small>'+esc(secJa(x.sec))+'</small><button type="button" data-del="'+i+'" aria-label="「'+esc(x.name)+'」を外す">外す</button></li>';}).join('')+'</ul>'
+          :'<p class="hint">足したキーワードは、ここと「ページ」に並びます。</p>');
     }
     box.innerHTML=h;
     var f=box.querySelector('form.add'); if(!f) return;
-    var st=box.querySelector('.st'), save=function(list,msg){
+    var st=box.querySelector('.wl-msg'), save=function(list,msg,back){
       if(!tok){st.textContent='もう一度ログインしてください';return;}
       st.textContent='保存しています…';
-      rpc('my_keywords_set',{p_picks:list}).then(function(){p=p||{};p.prefs=p.prefs||{};p.prefs.picks=list;drawMine(box,p,'');var s2=box.querySelector('.st');if(s2)s2.textContent=msg;})
-        .catch(function(e){st.textContent='保存できませんでした：'+e.message;});};
+      rpc('my_keywords_set',{p_picks:list}).then(function(){p=p||{};p.prefs=p.prefs||{};p.prefs.picks=list;drawMine(box,p,'');
+          var s2=box.querySelector('.wl-msg');if(!s2)return;s2.textContent=msg;
+          if(back){var u=document.createElement('button');u.type='button';u.className='undo';u.textContent='元に戻す';u.onclick=function(){save(back,'元に戻しました');};s2.appendChild(u);}})
+        .catch(function(){st.textContent='保存できませんでした。もう一度お試しください。';});};
     f.onsubmit=function(ev){ev.preventDefault();var n=f.n.value.trim();if(!n)return;
-      if(picks.some(function(x){return x.name.toLowerCase()===n.toLowerCase();})){st.textContent='「'+n+'」はもうあります';return;}
+      if(picks.some(function(x){return x.name.toLowerCase()===n.toLowerCase();})){st.textContent='「'+n+'」はもう入っています';return;}
       save(picks.concat([{name:n,sec:f.s.value}]),'「'+n+'」を足しました');};
     box.querySelectorAll('[data-del]').forEach(function(b){b.onclick=function(){var i=+b.dataset.del,x=picks[i];
-      save(picks.filter(function(_,j){return j!==i;}),'「'+x.name+'」を外しました');};});
+      save(picks.filter(function(_,j){return j!==i;}),'「'+x.name+'」を外しました',picks.slice());};});
   }
   function members(){
     var box=document.getElementById('wl-members'); if(!box) return;
@@ -4130,7 +4127,7 @@ AUTH_JS = r"""
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
-      if(changed||ev==='INITIAL_SESSION') refresh();
+      if(changed||ev==='INITIAL_SESSION') setTimeout(refresh,0);   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
   }
