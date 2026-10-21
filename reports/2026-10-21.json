@@ -1,46 +1,39 @@
 {
  "date": "2026-10-21",
- "edit_sig": "9f998204d718",
+ "edit_sig": "70465d0f138c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 9,
-     "source": "씨네플레이",
-     "title": "NC與Nexon進軍AGF 2026……新作接連亮相，含國內首度公開的《Astrae Oratio》",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1BVEh3MHdGcTFfU01LQlg4SFhOU0YxeHE5dlpRXzdiV2RGVWowOHhyRzVHQlRPRUxKMTZYNTU3QW82Q1plRjJvOHluM014cjlERjYtNUY3M1R2Mms?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 10,
-     "source": "씨네플레이",
-     "title": "NC・ネクソン参戦のAGF 2026…国内初公開「アストラエ・オラティオ」など新作ラッシュ",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9NSU1ENjBReEJ2aGEtM2tXSlJBLVZ1cmJqUjY3Nm9fMWJBTVVwa1l3a0FuUmJ5NFVUTll4a3B3enh0ZlZ4WTQ5OTRpME9nVERNWlZvMS1TVk9OUUE?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
-     "blurb": "엔씨가 삼성전자와 손잡고 일본 공략에 나서며, TGS 2026에서 ‘아스트라에 오라티오’를 처음 시연한다.",
+     "blurb": "NCがAGF 2026に参戦し、『アストラエ・オラティオ』を韓国国内で初公開する。",
+     "date": "2026-10-21",
+     "headline": "NC・ネクソン参戦のAGF 2026…国内初公開「アストラエ・オラティオ」など新作ラッシュ",
+     "highlight": "国内初公開",
+     "image": "https://cdn.www.cineplay.co.kr/w1200/q75/f_jpg/article-images/2026-10-21/4ba69a3f-6854-4724-9c12-939ee63ea5f3.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.cineplay.co.kr/ja-jp/articles/30340",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-18",
      "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
-     "highlight": "TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
-     "image": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
-     "image_via": "作品封面",
+     "highlight": "",
+     "image": null,
      "source": "쿠키뉴스",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.kukinews.com&sz=128",
      "url": "https://www.kukinews.com/article/view/kuk202609110059",
-     "weight": "lead"
+     "weight": "normal"
     },
     {
      "blurb": "",
      "date": "2026-10-19",
      "headline": "[#아스오라] 마마마로부터 15년, 『아스트라에 오라티오』가 제시하는 '마법소녀×신전기'의 잠재력 [CBT 완주 괴문서]",
-     "highlight": "CBT 완주",
+     "highlight": "",
      "image": "https://assets.st-note.com/production/uploads/images/326201019/rectangle_large_type_2_db78fc936bf38a9aad1496139acb396c.png?fit=bounds&quality=85&width=1280",
      "image_via": "og:image",
      "url": "https://note.com/houtaruu/n/nc96b0ed302df?hl=ko",
@@ -51,7 +44,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c3428ab8799c155639a8b17bd5f6b0dc28e183feb7494b7822ba49777e8b2a70db048a4da86715842c9f4af5c9756fe22c35e45ea882bb9fc474a12cba941fb4eb330b4ccfb977f146",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c3442706db349af2f47e5c1d408c41f00df25014b5e2d99b47c7d816bf59d38167d8a949959c3d0233c47bd3e28875b0a9a1804c528ceb97e5bcfa79e22e58c396f658a3ebec4bdf1af3d52331",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16188",
      "weight": "normal"
@@ -61,7 +54,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c345ad7c66085aeff444aa215381669dedcc322fcb32d72857329d2711b6585e475cf1bf5efa882d24716c934ef39ab83bb5221d06ad0efe1ce1bcf2b6aec39e7f45b4248f18896903666c90c3ac2918",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b0448af3f1b58d7cb5d3d63b2ca87c66f17cae3da7ad1ad2acec38f1ca4ce56ab55b64a0666b8c6996638696a",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16174",
      "weight": "normal"
@@ -83,15 +76,6 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 6,
-     "source": "AppBank",
-     "title": "『BLEACH Mirrors High』特番が10月27日19時にプレミア公開！ 小林千晃、指出毬亜らが出演",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9MUHgyVGFkSTRJMWtTSmdJSTlETVZ6dzRYZXRSQ0E4RzExbWd1Q0N0YzhpZDZIdFVlam5iRDNpZWdVWWJSQmJtd0lYa01KUXBQX1U2VkZDRUpFSGJHNUJCVg?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -498,15 +482,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 23,
-     "source": "徳島新聞デジタル",
-     "title": "【YouTubeチャート】EBiDANが3週連続首位 ILLITが3位浮上、M!LK「アイドルパワー」急上昇",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9nVE52RmFLdXlzSnBwQWtFdEhSVS01bGh4UldESFZZRktIaGhWSTZjalg4SlB2MmMxby1UWHl5WFYwSUg2eDRTdm9aRWxma091czJXYVZR?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -572,6 +547,16 @@
      "image": "https://image.koreaboo.com/2026/10/FD2870-2-11.jpg",
      "image_via": "og:image",
      "url": "https://www.koreaboo.com/news/illit-photos-plagiarizing-popular-girl-group/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "【YouTubeチャート】EBiDANが3週連続首位 ILLITが3位浮上、M!LK「アイドルパワー」急上昇",
+     "highlight": "",
+     "image": "https://tokushima.ismcdn.jp/mwimgs/7/6/1200wm/img_76a775f02ee7307627aa1339096b4c7678945.jpg",
+     "image_via": "og:image",
+     "url": "https://www.topics.or.jp/articles/-/1513108",
      "weight": "normal"
     }
    ],
@@ -818,15 +803,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-10-20",
-     "n": 6,
-     "source": "山陰中央新報デジタル",
-     "title": "シャミネ松江に「ジェラートピケ」と「oneMARUI」",
-     "url": "https://www.sanin-chuo.co.jp/articles/-/1100968"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -891,22 +867,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-10-20",
-     "n": 9,
-     "source": "Appliv Games",
-     "title": "【#コンパス】5月シーズンを振り返り！劇場版『チェンソーマン レゼ篇』コラボがバトル環境を変える!?",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB0MTJxdHdUN1FoTC1POGcxSGZCVVpNckZZS2tCd0xOcDVNbUJhb1FBNnpkaGFmazMzS1hfUWFDWi13NDZ0UFg2R0ktaDVlVWM5UFE?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 10,
-     "source": "Dexerto",
-     "title": "Chainsaw Man Episode 3 review: Some predictable but fun action",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNMG5sQlQ0UExVTUNOUXF6VzBpQmVHM251bUd2cWgyLV82c2xwTFFMbDlpUTZCWnlYZ1g5NGhKRFJ4T0RhLXZldkVMMVphUUx0bUQ1RHY4c3YzenlPM2ZlNHMtWFgyQTZ0aHhfTUhHWlJtWGNVVmdKLWVxUDVfZEdiQkFEdUUwbmZHazRRc2YzS2F6M214MkctZGgxZW1lc2JtbWc?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -956,22 +916,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-10-19",
-     "n": 10,
-     "source": "Rotten Tomatoes",
-     "title": "LEGO Star Wars: The Mandalorian | Audience Reviews",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPR1BGeDdKbEliRl9ZZG9XSENtN3ltcFJzWi1KbGdxdXlDUEtta3VCZXFJTVhWY01GSXhHREk3b28zTVAxRTk2M2VvYTZhRnk1UFpJNUJ5THFsOVlpdk96VUJqTzdJT1RWcXBCc0VhcFhWWllvYjNOODh1X3dQNDhuNG9JdVpNWFE5bEktSg?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 11,
-     "source": "Britannica",
-     "title": "Jon Favreau | Movies, TV Shows, Director, The Mandalorian, Iron Man, The Jungle Book, & Facts",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5KT2stbGk2Q3FIcV9XWi1GWE15dGNxQTE0TFk0eXNRWFBjTVFKbTBOTWtBSkxUY1p2ajRtcFA3VlBELXE1LV9vbElFOGNKbVdzTVVTS2tzbENmYll6?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -1001,8 +945,8 @@
      "date": "2026-10-19",
      "headline": "The Mandalorian now appearing at Oga’s Cantina in Disneyland",
      "highlight": "Oga’s Cantina",
-     "image": "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000",
+     "image_via": "Bing 缩略图",
      "url": "https://www.fanthatracks.com/news/conventions-events/the-mandalorian-now-appearing-at-ogas-cantina-in-disneyland/",
      "weight": "normal"
     },
@@ -1033,15 +977,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-19",
-     "n": 8,
-     "source": "Howl.link",
-     "title": "【あつまれ どうぶつの森】ハピパラで家具集め！今日は好きなことを気ままに☕️【薄餅スフレ】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5nZE5qYnpxUlk3RU5hdEd1d3p0Q1RTM244S05YRjdzSFJucXJPZC0wUi1rV1U1cjFHVGtV?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1091,15 +1026,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 4,
-     "source": "Billboard JAPAN",
-     "title": "【ビルボード】Ayumu Imazu「結び」ストリーミング・ソング2連覇 Vaundyは3年ぶりのトップ3入り達成",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTHdKYm4zMTBnSF90NDdSTnhlZmZGc0R3ek5NV1JtSE0yRHFMcFZkQXd4dzJRYUtabmJ1bm1pLUsxUU5TMzhLYl9QMGdZSWpWeFYwWl9tYVBXa3kzeU91MnlR?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1616,17 +1542,19 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "『エグリプト』のコラボキャラ「スライム×ぐでたま」の評価とステータス。",
      "date": "2026-10-16",
-     "n": 1,
-     "source": "GameWith",
-     "title": "【エグリプト】スライム×ぐでたまの評価とステータス",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1jTW1tVHJFMVVSSFE0a3U3dHhVRVo2bnBwR3hVYm14X2FYaVpjZHQySmJ2QVJnSmZmeTRRMHFKQm4xaUpGUDRNWjBUTGtLYm5TWkc1alhUdGZZa0Nv?oc=5"
+     "headline": "【エグリプト】スライム×ぐでたまの評価とステータス",
+     "highlight": "スライム×ぐでたま",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/502288.png?date=1749624564",
+     "image_via": "AI 挑选",
+     "url": "https://gamewith.jp/eggrypto/article/show/502288",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Gudetama",
    "theme": {
     "accent": "#885D0C",

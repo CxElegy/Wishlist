@@ -132,20 +132,21 @@
   "绝区零": 41,
   "日本顶级网球赛事": 31,
   "MMORPG 新作": 36,
-  "ILLIT": 22,
+  "ILLIT": 23,
   "dota2": 22,
   "哈利波特剧集": 15,
-  "The Mandalorian": 9,
-  "Astrae Oratio": 8,
-  "チェーンソーマン": 8,
-  "あつ森": 7,
+  "The Mandalorian": 11,
+  "Astrae Oratio": 10,
+  "チェーンソーマン": 10,
+  "あつ森": 8,
   "滑雪": 7,
   "FROM": 6,
-  "BLEACH Mirrors High": 5,
-  "gelato pique": 5,
+  "BLEACH Mirrors High": 6,
+  "gelato pique": 6,
   "ちいかわ イベント": 4,
-  "Vaundy": 3,
-  "猫用品": 3
+  "Vaundy": 4,
+  "猫用品": 3,
+  "ぐでたま": 1
  },
  "漫威电影": [
   {
@@ -838,6 +839,15 @@
     21,
     20
    ]
+  },
+  {
+   "headline": "【YouTubeチャート】EBiDANが3週連続首位 ILLITが3位浮上、M!LK「アイドルパワー」急上昇",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23
+   ]
   }
  ],
  "dota2": [
@@ -998,17 +1008,28 @@
  ],
  "Astrae Oratio": [
   {
-   "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
-   "highlight": "TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
-   "blurb": "엔씨가 삼성전자와 손잡고 일본 공략에 나서며, TGS 2026에서 ‘아스트라에 오라티오’를 처음 시연한다.",
+   "headline": "NC・ネクソン参戦のAGF 2026…国内初公開「アストラエ・オラティオ」など新作ラッシュ",
+   "highlight": "国内初公開",
+   "blurb": "NCがAGF 2026に参戦し、『アストラエ・オラティオ』を韓国国内で初公開する。",
    "weight": "lead",
+   "refs": [
+    10,
+    9
+   ],
+   "image": "https://cdn.www.cineplay.co.kr/w1200/q75/f_jpg/article-images/2026-10-21/4ba69a3f-6854-4724-9c12-939ee63ea5f3.jpg"
+  },
+  {
+   "headline": "엔씨, 삼성전자 손잡고 일본 공략…TGS 2026서 ‘아스트라에 오라티오’ 첫 시연",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     2
    ]
   },
   {
    "headline": "[#아스오라] 마마마로부터 15년, 『아스트라에 오라티오』가 제시하는 '마법소녀×신전기'의 잠재력 [CBT 완주 괴문서]",
-   "highlight": "CBT 완주",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -1186,7 +1207,8 @@
     4,
     2,
     3,
-    5
+    5,
+    6
    ],
    "event": {
     "date": "2026-10-27",
@@ -1218,7 +1240,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    6
    ],
    "event": {
     "date": "2026-10-30",
@@ -1275,7 +1298,8 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    4
    ]
   },
   {
@@ -1297,6 +1321,18 @@
    "refs": [
     3
    ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "【エグリプト】スライム×ぐでたまの評価とステータス",
+   "highlight": "スライム×ぐでたま",
+   "blurb": "『エグリプト』のコラボキャラ「スライム×ぐでたま」の評価とステータス。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img.gamewith.jp/article/thumbnail/rectangle/502288.png?date=1749624564"
   }
  ]
 }

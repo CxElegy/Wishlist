@@ -418,6 +418,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.www.cineplay.co.kr/w1200/q75/f_jpg/article-images/2026-10-21/4ba69a3f-6854-4724-9c12-939ee63ea5f3.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn0.mynvwm.com/wp-content/uploads/2026/10/20261011-222644.jpg": {
   "w": 1060,
   "h": 1200,
@@ -594,30 +600,30 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c3428ab8799c155639a8b17bd5f6b0dc28e183feb7494b7822ba49777e8b2a70db048a4da86715842c9f4af5c9756fe22c35e45ea882bb9fc474a12cba941fb4eb330b4ccfb977f146": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b0448af3f1b58d7cb5d3d63b2ca87c66f17cae3da7ad1ad2acec38f1ca4ce56ab55b64a0666b8c6996638696a": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.292,
-  "local": "pics/e405aef6434a91b1.webp",
+  "blur": 0.464,
+  "local": "pics/08db6254422ead4e.webp",
   "out": [
-   300,
-   300
+   720,
+   720
   ],
   "why": "防盗链",
   "ref": true
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c345ad7c66085aeff444aa215381669dedcc322fcb32d72857329d2711b6585e475cf1bf5efa882d24716c934ef39ab83bb5221d06ad0efe1ce1bcf2b6aec39e7f45b4248f18896903666c90c3ac2918": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c3442706db349af2f47e5c1d408c41f00df25014b5e2d99b47c7d816bf59d38167d8a949959c3d0233c47bd3e28875b0a9a1804c528ceb97e5bcfa79e22e58c396f658a3ebec4bdf1af3d52331": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.448,
-  "local": "pics/09717b2f663444a0.webp",
+  "blur": 0.38,
+  "local": "pics/09592320d92534eb.webp",
   "out": [
-   720,
-   720
+   300,
+   300
   ],
   "why": "防盗链",
   "ref": true
@@ -1266,6 +1272,19 @@
   "target": 720,
   "v": 3
  },
+ "https://img.gamewith.jp/article/thumbnail/rectangle/502288.png?date=1749624564": {
+  "w": 600,
+  "h": 315,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.655,
+  "local": "pics/44823485c37eca07.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
+ },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/298825.png?date=1634364871": {
   "w": 1200,
   "h": 630,
@@ -1273,12 +1292,6 @@
   "v": 3
  },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/303654.png?date=1635996318": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://img.gamewith.jp/article/thumbnail/rectangle_l/502288.png?date=1749624564": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -2692,6 +2705,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://tokushima.ismcdn.jp/mwimgs/7/6/1200wm/img_76a775f02ee7307627aa1339096b4c7678945.jpg": {
+  "w": 640,
+  "h": 468,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.321
+ },
  "https://variety.com/wp-content/uploads/2026/10/View-Conference-cinema-games-panel.-12.10.2026.jpg?w=1000&h=563&crop=1": {
   "w": 1000,
   "h": 563,
@@ -2982,6 +3002,12 @@
  "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600": {
   "w": 600,
   "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
   "target": 720,
   "v": 3
  },
@@ -3276,12 +3302,6 @@
  "https://www.engadget.com/img/gallery/the-latest-playstation-firmware-may-have-already-been-cracked-ahead-of-gta-6/l-intro-1792530805.jpg": {
   "w": 1600,
   "h": 899,
-  "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg": {
-  "w": 1000,
-  "h": 544,
   "target": 720,
   "v": 3
  },
