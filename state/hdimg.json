@@ -575,13 +575,13 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a738fc805b7da7875db96a1ad1abca8b81b940967dfffb51fd3caefb78df08dacbe965a4ecba03da7d463d1f5eacada426523387f375c1d71e8c4c46469d": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa1bd62531f4d0f133b6030c46b882e77cdac4e15a27395f95040a9ac6a4d1630b948bb959d6c2c108a6f9cd70d702686cc1918567569865": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.472,
-  "local": "pics/ed7823c6e220cbec.webp",
+  "blur": 0.45,
+  "local": "pics/45cc844cfa0970e7.webp",
   "out": [
    720,
    720
@@ -589,16 +589,16 @@
   "why": "防盗链",
   "ref": true
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0597ae52baa7e4d1d7586a22e1d4de99f537818d79eb04577ec45655863a09157b7f4bdee50c30a9bca5bfccc9d234a0": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc1c344e0592054f85638c89ded05b3169521bab2a7dd438dbb8f0740107380aba4208a540814be45cd": {
   "w": 300,
-  "h": 225,
+  "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.472,
-  "local": "pics/27fc07123575b651.webp",
+  "blur": 0.507,
+  "local": "pics/498c17db589b0ebb.webp",
   "out": [
    720,
-   540
+   720
   ],
   "why": "防盗链",
   "ref": true
@@ -2058,6 +2058,19 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000007-cdj-000-1-view.jpg?exp=10800": {
+  "w": 640,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.389,
+  "local": "pics/a7fdf73e0fd0959a.webp",
+  "out": [
+   640,
+   640
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000010-cdj-000-1-view.jpg?exp=10800": {
   "w": 640,
   "h": 467,
@@ -2347,6 +2360,12 @@
   "w": 2560,
   "h": 1920,
   "target": 720,
+  "v": 3
+ },
+ "https://realsound.jp/wp-content/uploads/2026/10/20261019-mrs-99.jpeg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://resource02.ulifestyle.com.hk/ulcms/content/article/ogimage/2026/10/20261015020853_29a0258fa45e59650940779ab423672adb2f4514.png": {
@@ -2933,6 +2952,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500": {
   "w": 100,
   "h": 100,
@@ -3188,12 +3213,6 @@
  "https://www.engadget.com/img/gallery/the-latest-playstation-firmware-may-have-already-been-cracked-ahead-of-gta-6/l-intro-1792530805.jpg": {
   "w": 1600,
   "h": 899,
-  "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg": {
-  "w": 1000,
-  "h": 544,
   "target": 720,
   "v": 3
  },

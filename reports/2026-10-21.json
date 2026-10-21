@@ -1,6 +1,6 @@
 {
  "date": "2026-10-21",
- "edit_sig": "64670e69c2ca",
+ "edit_sig": "f3c987a24a72",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,7 +35,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a738fc805b7da7875db96a1ad1abca8b81b940967dfffb51fd3caefb78df08dacbe965a4ecba03da7d463d1f5eacada426523387f375c1d71e8c4c46469d",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc1c344e0592054f85638c89ded05b3169521bab2a7dd438dbb8f0740107380aba4208a540814be45cd",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16188",
      "weight": "normal"
@@ -45,7 +45,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0597ae52baa7e4d1d7586a22e1d4de99f537818d79eb04577ec45655863a09157b7f4bdee50c30a9bca5bfccc9d234a0",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa1bd62531f4d0f133b6030c46b882e77cdac4e15a27395f95040a9ac6a4d1630b948bb959d6c2c108a6f9cd70d702686cc1918567569865",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16174",
      "weight": "normal"
@@ -910,8 +910,8 @@
      "date": "2026-10-19",
      "headline": "The Mandalorian now appearing at Oga’s Cantina in Disneyland",
      "highlight": "Oga’s Cantina",
-     "image": "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000",
+     "image_via": "Bing 缩略图",
      "url": "https://www.fanthatracks.com/news/conventions-events/the-mandalorian-now-appearing-at-ogas-cantina-in-disneyland/",
      "weight": "normal"
     },
@@ -991,31 +991,29 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "Vaundy「しわあわせ」がストリーミングランキングで初のTOP3入り。",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "Ayumu Imazu、2週連続ストリーミング1位 Vaundy「しわあわせ」が本作初のTOP3入り（CDJournal）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1kaW8tdzBwYTFTZUJDcjZTQ3ZDdWwzSmQxME5nV2xvU3kzdERKWE01T29MNjhaUTYtbVBENjFxeVhnZ3JzZmdJS2Z6NjVjRkdNSkptazF2T0E1NVpBUG1keVQ1SkViQnhOempIbF8tU2RtS2daSzlHb2o3UTc1ZUk?oc=5"
+     "headline": "Ayumu Imazu、2週連続ストリーミング1位 Vaundy「しわあわせ」が本作初のTOP3入り",
+     "highlight": "本作初のTOP3入り",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000007-cdj-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/509e023c106f9fbaed49a94ad5db21fa2f7bb95e",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-20",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "【オリコン】Ayumu Imazu「結び」2週連続1位 Vaundy「しわあわせ」初TOP3、米津玄師「IRIS OUT」ソロ最速で6億回超え【ストリーミング上位動向】",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQQmRRVUliWWFDT2JqTGJfVjFzUDl2RFpXYlZHWldscUxTSm1RdDI0bHRvRzJCdUNrOE8yV29kQ3JmZFRUTW9JVXRWdC1xdXA4QjBoaG5uYXRZR0VKeXpNUUlCNnd6cFJrRndZTERDT2RqUFJVa2JBaGczUGVHbnVCQU40RmFZZHZQWkZsMDRR?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 3,
-     "source": "リアルサウンド",
-     "title": "Mrs. GREEN APPLE、RADWIMPS、Vaundy、Ado……誰かを想い、物語を背負う 注目の映画主題歌たち",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9pOG90MW5IUGtPS0FHR1hQVlB5N3pUZHVsclE1R3NzYnJPV3I1dW05bVRrWUR6V0ltSFEyRHhLTm00RDlDTVdaYnA5UG15RmhhSnN0YmE0QXc1Z9IBX0FVX3lxTE9DMmtSbUg3QzhYOGk2VlAwZTZCZE9iellqUXFaZWNBOWNMNFBWb1ZmTExId1NvQkRYbTlvaVRvRFNWQXhhS25DYU5uTEQzNWNhdmpORXN0S29STm1BUWl3?oc=5"
+     "headline": "Mrs. GREEN APPLE、RADWIMPS、Vaundy、Ado……誰かを想い、物語を背負う 注目の映画主題歌たち",
+     "highlight": "映画主題歌",
+     "image": "https://realsound.jp/wp-content/uploads/2026/10/20261019-mrs-99.jpeg",
+     "image_via": "og:image",
+     "url": "https://realsound.jp/2026/10/post-2557468.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",

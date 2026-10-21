@@ -99,7 +99,8 @@
   "FROM": 6,
   "BLEACH Mirrors High": 5,
   "gelato pique": 5,
-  "ちいかわ イベント": 4
+  "ちいかわ イベント": 4,
+  "Vaundy": 3
  },
  "漫威电影": [
   {
@@ -1105,6 +1106,27 @@
    "weight": "normal",
    "refs": [
     4,
+    3
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Ayumu Imazu、2週連続ストリーミング1位 Vaundy「しわあわせ」が本作初のTOP3入り",
+   "highlight": "本作初のTOP3入り",
+   "blurb": "Vaundy「しわあわせ」がストリーミングランキングで初のTOP3入り。",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ]
+  },
+  {
+   "headline": "Mrs. GREEN APPLE、RADWIMPS、Vaundy、Ado……誰かを想い、物語を背負う 注目の映画主題歌たち",
+   "highlight": "映画主題歌",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
     3
    ]
   }
