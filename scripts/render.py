@@ -4898,9 +4898,14 @@ BG_THUMBS = 10   # 表の行に並べる小元素の数。残りは「+N」、�
 BG_AFTER_COLLECT = ("design",)   # 定時のない列：ゲートが収集のあとに AI 編集を起こす
 
 
-def _bg_thumb(t):
-    u, sh = t if isinstance(t, (list, tuple)) else (t, "")
-    return f'<img src="{e(u)}" alt="" loading="lazy"{" class=fit" if sh in ("logo", "icon") else ""}>'
+def _bg_thumb(t, board=""):
+    """小元素 1 枚。board（版面の名前）があれば押せる札：押すと「違う」の印 → 下の帯の「外す」で submit_item（EMX_JS）。"""
+    u, sh, subj = (list(t) + ["", ""])[:3] if isinstance(t, (list, tuple)) else (t, "", "")
+    img = f'<img src="{e(u)}" alt="{e(subj)}" loading="lazy"{" class=fit" if sh in ("logo", "icon") else ""}>'
+    if not board:
+        return img
+    return (f'<button type="button" class="emx" data-emx-b="{e(board)}" data-emx="{e(u)}" aria-pressed="false"'
+            f' title="{e(subj or "小元素")} · 押すと「違う画像」の印">{img}<i aria-hidden="true">✕</i></button>')
 
 
 def _bg_retry(k, r):
@@ -4975,7 +4980,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                         f'{e(_sec_name(sec or "其他"))}</th></tr>')
         cells = "".join(f'<td class="bgc s-{r["bg"][k]["state"]}" data-label="{e(t)}"><b>{BG_STATES[r["bg"][k]["state"]]}</b>'
                         f'<small>{e(r["bg"][k]["text"])}</small>{_bg_retry(k, r)}</td>' for k, t, _ in BG_COLS)
-        pics = [_bg_thumb(t) for t in r.get("thumbs") or []]
+        pics = [_bg_thumb(t, r["name"]) for t in r.get("thumbs") or []]
         more = f'<small class="bg-more">+{len(pics) - BG_THUMBS}</small>' if len(pics) > BG_THUMBS else ""
         body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a>'
                     + (f'<span class="bg-th">{"".join(pics[:BG_THUMBS])}{more}</span>' if pics else "") + f'</td>{cells}</tr>')
@@ -5000,7 +5005,113 @@ def _admin_backend(rows, todo=None, log=None, res=None):
             '<p class="empty"><a href="#term-panel">↑ ライブログを見る</a></p></div></div>'
             f'<script type="application/json" id="bg-cfg">{cfg}</script>'
             '<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦</small></h3>'
-            f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>')
+            f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
+            + _admin_emx_stats(rows) + _emx_bar())
+
+
+# 小元素の「違う」（2026-10-21，用户定的）：管理ページの小元素を押して印 → 帯の「外す」で版面ごとに 1 件の依頼
+# （submit_item の edit ＋ {_emblem_reject: [画像]}）。requests.yml の take-items が items.yaml から外し、元の画像を emblem_reject に
+# （自動補完は二度と選ばない）。足りなくなった分は次の後台作業で別の画像を探す。
+def _emx_bar():
+    """「違う」の帯（選んだ枚数・外す）と、押したときに出る理由の選び方（emblem_rules.REJECT_REASONS）。"""
+    import emblem_rules
+    opts = "".join(f'<button type="button" data-r="{e(k)}">{e(t)}</button>' for k, t, _ in emblem_rules.REJECT_REASONS)
+    return ('<div class="emx-pop" id="emx-pop" role="dialog" aria-label="なぜ違う？" hidden><b>なぜ違う？</b>'
+            f'<div class="emx-rs">{opts}</div><input type="text" id="emx-note" maxlength="200" placeholder="ひとこと（任意）：だれが写っている・どこがだめ"'
+            ' aria-label="ひとこと（任意）"><button type="button" class="emx-x" id="emx-cancel">やめる</button></div>'
+            '<div class="emx-bar" id="emx-bar" role="region" aria-label="違う小元素" hidden><b id="emx-n"></b>'
+            '<button type="button" id="emx-go">外す</button><button type="button" id="emx-clr">印を消す</button>'
+            '<small id="emx-msg" aria-live="polite"></small></div>')
+
+
+def _admin_emx_stats(rows):
+    """「違う」の理由：管理ページで外した小元素（state/emblem_rejects.json）を理由ごとに数え、多い取り方・網域・近い判断を並べる。
+    同じ理由・同じ取り方が溜まったら、その判断を締める（規則がまだない理由は emblem_rules.rules() に 1 行足す）。"""
+    import emblem_rules
+    from collections import Counter
+    log = [x for r in rows for x in ((r.get("bg") or {}).get("emblem", {}).get("detail") or {}).get("reject_log") or []]
+    head = ('<h3 class="h3">「違う」の理由 <small>管理ページで外した小元素 · 同じ理由・同じ取り方が溜まったら、近い判断を締める（今後の規則の手がかり）</small></h3>')
+    if not log:
+        return head + '<p class="empty">まだありません。上の表の小元素を押すと、理由を選んで外せます。</p>'
+    label = {k: t for k, t, _ in emblem_rules.REJECT_REASONS}
+    rule = {k: r for k, _, r in emblem_rules.REJECT_REASONS}
+    by = Counter(x.get("reason") for x in log)
+    trs = []
+    for k, n in by.most_common():
+        xs = [x for x in log if x.get("reason") == k]
+        top = lambda f: "、".join(f"{v} ×{c}" for v, c in Counter(f(x) for x in xs if f(x)).most_common(2)) or "—"
+        trs.append(f'<tr><td><b>{e(label.get(k, k))}</b></td><td class="n">{n}</td>'
+                   f'<td>{e(top(lambda x: (x.get("why") or "")[:28]))}</td><td>{e(top(lambda x: x.get("host")))}</td>'
+                   f'<td>{e(top(lambda x: x.get("kind")))}</td>'
+                   f'<td>{e(rule.get(k) or "まだ規則なし → emblem_rules に足す")}</td></tr>')
+    recent = "".join(f'<li><b>{e(x.get("board"))}</b> {e(x.get("subject"))} · {e(label.get(x.get("reason"), x.get("reason")))}'
+                     + (f' · 「{e(x["note"])}」' if x.get("note") else "") + f'<small>{e((x.get("at") or "")[:10])}</small></li>'
+                     for x in sorted(log, key=lambda x: x.get("at") or "", reverse=True)[:8])
+    return (head + '<div class="tw"><table class="adm emxs"><thead><tr><th>理由</th><th>枚数</th><th>多い取り方（why）</th><th>多い網域</th>'
+            '<th>種類</th><th>近い判断（締める先）</th></tr></thead><tbody>' + "".join(trs) + '</tbody></table></div>'
+            f'<ul class="emx-recent">{recent}</ul>')
+
+
+EMX_JS = r"""
+(function(){
+  var bar=document.getElementById('emx-bar'),pop=document.getElementById('emx-pop');if(!bar||!pop)return;
+  var CFG=JSON.parse((document.getElementById('adm-cfg')||{}).textContent||'{}'),n=document.getElementById('emx-n'),msg=document.getElementById('emx-msg'),note=document.getElementById('emx-note');
+  var RL={};Array.prototype.forEach.call(pop.querySelectorAll('[data-r]'),function(b){RL[b.dataset.r]=b.textContent;});
+  var KEY='wl-emx-'+(window.WL_ACCOUNT||''),sent={},cur=null;   // 送った印はこのブラウザが 6 時間覚える（反映されれば画像ごと消える）
+  try{sent=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){}
+  Object.keys(sent).forEach(function(k){if(Date.now()-sent[k]>21600000)delete sent[k];});
+  function key(b){return JSON.stringify([b.dataset.emxB,b.dataset.emx]);}
+  function all(){return Array.prototype.slice.call(document.querySelectorAll('.emx'));}
+  function same(b){var k=key(b);return all().filter(function(x){return key(x)===k;});}   // 表の行と「探し方」の中の同じ画像はいっしょに
+  function picked(){var seen={};return all().filter(function(b){var k=key(b);if(b.disabled||!b.dataset.emxR||seen[k])return false;return seen[k]=1;});}
+  function mark(b,r,t){same(b).forEach(function(x){if(r){x.dataset.emxR=r;x.dataset.emxN=t||'';x.setAttribute('aria-pressed','true');x.title=(x.querySelector('img').alt||'小元素')+' · 違う：'+RL[r]+(t?'（'+t+'）':'')+' · もう一度押すと取り消し';}
+    else{delete x.dataset.emxR;delete x.dataset.emxN;x.setAttribute('aria-pressed','false');x.title=(x.querySelector('img').alt||'小元素')+' · 押すと「違う画像」の印';}});}
+  function paint(){
+    all().forEach(function(b){if(sent[key(b)]){b.classList.add('sent');b.setAttribute('aria-pressed','true');b.disabled=true;b.title='外す依頼を送った · 次の反映で消える';}});
+    var sel=picked(),boards={};sel.forEach(function(b){boards[b.dataset.emxB]=1;});
+    bar.hidden=!sel.length&&!msg.textContent;n.textContent=sel.length?'違う画像 '+sel.length+' 枚（'+Object.keys(boards).length+' 版面）':'';
+    document.getElementById('emx-go').hidden=document.getElementById('emx-clr').hidden=!sel.length;
+  }
+  function close(){pop.hidden=true;if(cur)cur.focus();cur=null;}
+  function open(b){cur=b;note.value='';pop.hidden=false;
+    var r=b.getBoundingClientRect(),w=pop.offsetWidth,h=pop.offsetHeight;
+    pop.style.left=Math.max(8,Math.min(r.left,window.innerWidth-w-8))+'px';
+    pop.style.top=(r.bottom+8+h<window.innerHeight?r.bottom+8:Math.max(8,r.top-h-8))+'px';
+    pop.querySelector('[data-r]').focus();}
+  document.addEventListener('click',function(ev){
+    var r=ev.target.closest('#emx-pop [data-r]');
+    if(r&&cur){mark(cur,r.dataset.r,note.value.trim());msg.textContent='';close();paint();return;}
+    if(ev.target.closest('#emx-cancel')){close();return;}
+    var b=ev.target.closest('.emx');
+    if(b&&!b.disabled){if(b.dataset.emxR){mark(b,null);paint();close();}else open(b);return;}
+    if(!pop.hidden&&!ev.target.closest('#emx-pop'))close();});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!pop.hidden)close();});
+  window.addEventListener('scroll',function(){if(!pop.hidden)close();},{passive:true});
+  document.getElementById('emx-clr').addEventListener('click',function(){all().forEach(function(x){if(!x.disabled)mark(x,null);});msg.textContent='';paint();});
+  document.getElementById('emx-go').addEventListener('click',function(){
+    var sel=picked(),by={};if(!sel.length)return;
+    sel.forEach(function(b){(by[b.dataset.emxB]=by[b.dataset.emxB]||[]).push({image:b.dataset.emx,reason:b.dataset.emxR,note:b.dataset.emxN||''});});
+    if(!confirm(Object.keys(by).map(function(k){return k+'：'+by[k].map(function(m){return RL[m.reason];}).join('、');}).join('\n')+'\n\nこの小元素を外しますか？（外した画像は二度と自動で選ばれません。理由は今後の規則の手がかりに残ります）'))return;
+    if(!CFG.url||!CFG.key){msg.textContent='データベースに未接続です。';paint();return;}
+    var go=this;go.disabled=true;msg.textContent='送っています…';
+    var names=Object.keys(by),ok=0,ng=[];
+    (function next(i){
+      if(i>=names.length){
+        try{localStorage.setItem(KEY,JSON.stringify(sent));}catch(e){}
+        msg.textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（足りない分は次の後台で別の画像を探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
+        go.disabled=false;paint();return;}
+      var name=names[i];
+      fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/rpc/submit_item',{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},
+        body:JSON.stringify({p_account:window.WL_ACCOUNT,p_action:'edit',p_name:name,p_config:{_emblem_reject:by[name]}})})
+        .then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok)throw new Error((j&&j.message)||r.status);});})
+        .then(function(){ok++;by[name].forEach(function(m){sent[JSON.stringify([name,m.image])]=Date.now();});},
+              function(err){ng.push(name+'（'+err.message+'）');})
+        .then(function(){next(i+1);});
+    })(0);
+  });
+  paint();
+})();
+"""
 
 
 def _mb(n):
@@ -5072,6 +5183,11 @@ def _emblem_flow(d, state, pics=()):
         funnel += "".join(f'<span class="ef-rj">{e(k)} <b>{v}</b></span>' for k, v in sorted(rej.items(), key=lambda kv: -kv[1]))
     check = ("規則：顔の大きさ・人数・本人（YuNet + SFace cos ≥ 0.363）・切り抜きの穴" if d.get("faces") else "規則：取り方の決まり・同じ画像") + \
             (f" · 目で外した {d['rejects']} 枚" if d.get("rejects") else "")
+    if d.get("reject_log"):   # 管理ページの「違う」で選ばれた理由
+        import emblem_rules
+        from collections import Counter
+        label = {k: t for k, t, _ in emblem_rules.REJECT_REASONS}
+        check += " · 「違う」：" + "、".join(f"{label.get(k, k)} {n}" for k, n in Counter(x.get("reason") for x in d["reject_log"]).most_common())
     pct = min(100, round(100 * (d.get("have") or 0) / max(1, d.get("target") or 1)))
     tried = [c for c in d.get("chain") or [] if c.get("n") is not None]
     now_at = ("、".join(f'{c["src"]} {c["n"]}' for c in tried) or "まだ試していない")
@@ -5087,7 +5203,9 @@ def _emblem_flow(d, state, pics=()):
             + (f'<span>{e(d["note"])}</span>' if d.get("note") else "") + '</div>'
             f'<div class="ef-box ef-todo"><small>⑤ 次にやること</small><b>{e(d.get("todo") or "")}</b>'
             + (f'<span class="ef-adv">{e(d["advice"])}</span>' if d.get("advice") else "") + "</div></div>"
-            + (f'<div class="ef-all"><small>いまの小元素 · {len(pics)} 枚</small><span class="ef-pics">{"".join(pics)}</span></div>' if pics else "")
+            + (f'<div class="ef-all"><small>いまの小元素 · {len(pics)} 枚 · 違う画像は押して印を付け、下の帯の「外す」で送る'
+               '（外した画像は二度と選ばれず、足りない分は次の後台で別の画像を探す）</small>'
+               f'<span class="ef-pics">{"".join(pics)}</span></div>' if pics else "")
             + "</details>")
 
 
@@ -5332,6 +5450,29 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .bgc .bg-cd{display:block;font:700 var(--fs-label) var(--font-mono);color:var(--alert)}
 .bgc .nx-go{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px}.bg-redo{padding:5px 10px}
 .bg-th img{width:26px;height:26px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}.bg-th img.fit{object-fit:contain;border-radius:4px;padding:2px}
+.emx{position:relative;display:inline-block;padding:0;border:0;background:none;line-height:0;cursor:pointer;border-radius:50%}
+.emx:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.emx i{position:absolute;top:-4px;right:-4px;display:none;width:16px;height:16px;border-radius:50%;background:var(--alert);color:var(--card);
+ font:900 10px/16px var(--font-sans);font-style:normal;text-align:center}
+.emx:hover i{display:block;opacity:.65}
+.emx[aria-pressed="true"] img{outline:3px solid var(--alert);outline-offset:1px;filter:grayscale(1) opacity(.5)}
+.emx[aria-pressed="true"] i{display:block;opacity:1}
+.emx.sent{cursor:default}.emx.sent img{outline-color:var(--ink);filter:grayscale(1) opacity(.3)}.emx.sent i{background:var(--ink)}
+.emx-bar{position:fixed;left:50%;bottom:16px;z-index:90;transform:translateX(-50%);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;
+ max-width:calc(100vw - 32px);padding:10px 14px;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);font:700 13px/1.5 var(--font-sans)}
+.emx-bar[hidden],.emx-bar button[hidden]{display:none}
+.emx-bar button{border:2px solid var(--ink);background:var(--card);color:var(--ink);padding:5px 12px;font:700 13px var(--font-sans);cursor:pointer}
+.emx-bar #emx-go{background:var(--alert);color:var(--card)}.emx-bar small{font:500 var(--fs-label)/1.5 var(--font-sans)}
+.emx-pop{position:fixed;z-index:96;width:min(320px,calc(100vw - 16px));display:flex;flex-direction:column;gap:8px;padding:10px 12px;
+ background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);font:700 13px/1.5 var(--font-sans)}
+.emx-pop[hidden]{display:none}.emx-rs{display:flex;flex-wrap:wrap;gap:6px}
+.emx-rs button,.emx-pop .emx-x{border:1.5px solid var(--ink);background:var(--sheet);color:var(--ink);padding:4px 9px;font:700 12px var(--font-sans);cursor:pointer}
+.emx-rs button:hover,.emx-rs button:focus-visible{background:var(--alert);color:var(--card)}
+.emx-pop input{min-width:0;padding:5px 8px;border:1.5px solid var(--ink);background:var(--card);font:500 13px var(--font-sans)}
+.emx-pop .emx-x{align-self:flex-end;background:var(--card)}
+.emxs td.n{font:700 13px var(--font-mono);text-align:right}
+.emx-recent{list-style:none;margin:8px 0 0;padding:0;font-size:13px}.emx-recent li{padding:4px 0;border-bottom:1px solid var(--hair)}
+.emx-recent small{margin-left:8px;font:500 var(--fs-label) var(--font-mono);opacity:.7}
 .bgm tr.bgx td{padding:0 6px 10px;border-bottom:1px solid var(--hair)}
 .bgm tr:has(+ .bgx) td{border-bottom:0}
 .ef summary{cursor:pointer;font:500 12px/1.6 var(--font-sans);list-style:none;padding:4px 8px;background:var(--sheet);border-left:4px solid var(--hair)}
@@ -5633,6 +5774,7 @@ def render_admin(data, db, updated):
 </div>
 <script type="application/json" id="adm-cfg">{cfg}</script>
 <script>{ADMIN_PAGE_JS}</script>
+<script>{EMX_JS}</script>
 <script>{overview.JS}</script>
 <script>{livelog.JS.replace('__ACC__', sitedir.NAME)}</script>
 <script>{processes.JS}</script>
