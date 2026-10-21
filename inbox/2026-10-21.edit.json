@@ -94,7 +94,8 @@
   "The Mandalorian": 9,
   "Astrae Oratio": 8,
   "チェーンソーマン": 8,
-  "あつ森": 7
+  "あつ森": 7,
+  "滑雪": 7
  },
  "漫威电影": [
   {
@@ -931,6 +932,59 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "【トマム】ビギナーから上級者まで。誰もがスムーズに雪山へ繰り出せるスキー場の新拠点「Adventure Base」が2026年12月1日オープン",
+   "highlight": "2026年12月1日オープン",
+   "blurb": "トマムに新拠点「Adventure Base」が12月1日オープン。ビギナーから上級者までスムーズに雪山へ出られる。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-12-01",
+    "label": "オープン",
+    "place": "トマム"
+   },
+   "image": "https://prcdn.freetls.fastly.net/release_image/33064/2573/33064-2573-f32bdd54c590493c90bb8034084823a4-3500x2092.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+  },
+  {
+   "headline": "川場スキー場が2026-27シーズンに向け新パーク新設や施設刷新を実施へ",
+   "highlight": "新パーク新設",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "「ハンターマウンテン塩原＆たんばらスキーパーク」 家族の冬の思い出作りを全力応援！ 2026-2027 シーズン平日限定で子どもリフ",
+   "highlight": "平日限定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "ゲレンデで味わう本格カフェラテ！長野のスキー場で「佐久平珈琲」が楽しめるように",
+   "highlight": "佐久平珈琲",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "What's new for winter 26/27 in Park City,",
+   "highlight": "winter 26/27",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ]

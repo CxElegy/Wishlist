@@ -1,6 +1,6 @@
 {
  "date": "2026-10-21",
- "edit_sig": "ef4000d0a5a0",
+ "edit_sig": "11ee774b430c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,7 +35,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e41ecab5bf054b61ab709c5f0d851b8e53a47eaa6fc0afea84ca0c26dd41d52958959b9b4e66f01d3a56e876a76e02b07ea3fcc2eaeb55442c4af9e7a4922f00fecaa1a2b660",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260807165ae03900846e802898b345c34f72d1c60675dfc3514f60b3afca0738dca4d08ea98509b23d8c5c28ee99bdc",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16188",
      "weight": "normal"
@@ -45,7 +45,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a738fc8a32993e38f6e4ad34c784c7f29d992ab3f7d30751be8c5b0b2120dc941e5ed8b78d31cb6d6b5aeca1979cf9029bf910c0453837db38d7e0533b3923668d746d2e5d459b7eb574a2",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a73199637726083796547fa766f6e58ee427d9660eadefc683e0b058a4c5a6015342ff820cfefdbff8b407c95a63193822d86326108",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16174",
      "weight": "normal"
@@ -240,59 +240,64 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "トマムに新拠点「Adventure Base」が12月1日オープン。ビギナーから上級者までスムーズに雪山へ出られる。",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "PR TIMES",
-     "title": "【トマム】ビギナーから上級者まで。誰もがスムーズに雪山へ繰り出せるスキー場の新拠点「Adventure Base」が2026年12月1日オープン",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5BVEswREVGcjVaR255TUFJM2FZWk5qOThtZkRZX3gtZ19palNlNlIwNnFlUklvZTlQdmZGa1BpNlJyTm1mZzBXVFlKZXo5d0ZfVG1WYUY3SUY4RmhMNUxwY1NmUVgxRFNWZHc?oc=5"
+     "event": {
+      "date": "2026-12-01",
+      "label": "オープン",
+      "place": "トマム"
+     },
+     "headline": "【トマム】ビギナーから上級者まで。誰もがスムーズに雪山へ繰り出せるスキー場の新拠点「Adventure Base」が2026年12月1日オープン",
+     "highlight": "2026年12月1日オープン",
+     "image": "https://prcdn.freetls.fastly.net/release_image/33064/2573/33064-2573-f32bdd54c590493c90bb8034084823a4-3500x2092.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "AI 挑选",
+     "url": "https://prtimes.jp/main/html/rd/p/000002573.000033064.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 2,
-     "source": "Dellows News",
-     "title": "川場スキー場が2026-27シーズンに向け新パーク新設や施設刷新を実施へ",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5NOHZIejdfUGs4dVJ1QWo0MXY0Y25mTDh1Yzlqc3lOWkl3VGtxX2VxR1NfSU9jUDRRTzQ0MjZVLWQ2MHZXR1E?oc=5"
+     "headline": "川場スキー場が2026-27シーズンに向け新パーク新設や施設刷新を実施へ",
+     "highlight": "新パーク新設",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/09/444878_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/444878/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 3,
-     "source": "Snow Industry News",
-     "title": "What's new for winter 26/27 in Park City,",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdHVNNmprcG9MSWd3QXNlOVRHckhqdDMyZkV2aVozNzNOVGw0SkN2UkdlZGk1b2lSbGJQd2xrTnA2QkEwc09MWVFXVGx1MkhrX05NRXVzM2NvMElGNXRDUHE1ZDd3Z3Rfa1hIMndHMExMaHZnZ3FSbTNkODh2NmRSLTZ3c3Q5VXhqSDhjbVphTGVUZVIyLV9ULWU2WnotclpqRnc?oc=5"
+     "headline": "「ハンターマウンテン塩原＆たんばらスキーパーク」 家族の冬の思い出作りを全力応援！ 2026-2027 シーズン平日限定で子どもリフ",
+     "highlight": "平日限定",
+     "image": "https://prtimes.jp/img/55787/1070/resize/d55787-1070-f312cb8d0a784f2a3c2b-0.jpg",
+     "image_via": "正文图",
+     "url": "https://news.infoseek.co.jp/article/prtimes_000001070_000055787/",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-20",
-     "n": 4,
-     "source": "ニコニコニュース",
-     "title": "アクル、国内最大級のスキー場情報サイト「SURF&SNOW」リフト券販売サービスに不正検知・認証システム「ASUKA」",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1rU3RxVVNHWndxVVVPMUxtbXBQUlRHLTFkaW1ncDVraHhUMWpNWjQtQUNBS1ZUZ2lBRlg0bTRLTk8yQXBtdlRwYkVTS3ZIS20xYjNwVQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 5,
-     "source": "日本経済新聞",
-     "title": "日本スキー場開発[6040]：支配株主等に関する事項について 2026年10月20日(適時開示) ：日経会社情報DIGITAL",
-     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQOXlORms4ZTRrX1g2elFoQ0ZCaXgwVTBnWC1OcnFDNTRMZy0zTXdkaE45ejJVNWxQT0Q0bXJwR0pZZWZMeVNMTUEwMkRPY0QzdlgtczJYSTQxdE1kaWF6YlgzTDB0RC1uOXBYd2VUcjFiUWc0R2lUeFlHaE5xRWdoaVJtNlluN3Z5UDZYUjc0WkJ2VEd0eUV1X29tbWFTOTJ5Z2NDbkYyeHZueVpzMFBfbzhDT3FkaGQyam5LclcwMVJ0MGl5MFR0QWNqMHk?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 6,
-     "source": "Infoseek",
-     "title": "「ハンターマウンテン塩原＆たんばらスキーパーク」 家族の冬の思い出作りを全力応援！ 2026-2027 シーズン平日限定で子どもリフト券が無料｜Infoseekニュース",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE92dHhEd2RNSk1pVVRNQ3NBQlNzVGFteGpZNHJjVExYV0JzTkRUYlFIYWNxNHJwMnVSNXYwdkJFcHhXeE5VQWppTmlZNUlJVjJjV2pnTXdzX0g0T2lFRUVsNXJCZnFla3J2VVp6T1U4M0k5dw?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 7,
-     "source": "RBB TODAY",
-     "title": "ゲレンデで味わう本格カフェラテ！長野のスキー場で「佐久平珈琲」が楽しめるように",
-     "url": "https://www.rbbtoday.com/article/2026/10/19/254652.html"
+     "headline": "ゲレンデで味わう本格カフェラテ！長野のスキー場で「佐久平珈琲」が楽しめるように",
+     "highlight": "佐久平珈琲",
+     "image": "https://www.rbbtoday.com/imgs/ogp_f/1052146.jpg",
+     "image_via": "og:image",
+     "url": "https://www.rbbtoday.com/article/2026/10/19/254652.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "What's new for winter 26/27 in Park City,",
+     "highlight": "winter 26/27",
+     "image": "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590",
+     "image_via": "og:image",
+     "url": "https://www.snowindustrynews.com/newsrepository/2026/october/whats-new-for-winter-2627-in-park-city/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
