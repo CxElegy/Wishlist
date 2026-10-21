@@ -1,92 +1,357 @@
 {
  "image_misses": {
-  "https://readyfor.jp/projects/176358": "2026-10-19"
+  "https://k.sina.com.cn/article_7880069124_1d5b0500406801h29g.html": "2026-10-21",
+  "https://t.co/BR7mzTQ19E": "2026-10-21",
+  "https://t.co/CM6Qxx73tL": "2026-10-21",
+  "https://www.starwarsnewsnet.com/2026/10/can-starfighter-outearn-the-mandalorian-and-grogu-at-the-box-office.html": "2026-10-21",
+  "https://www.whas11.com/article/news/nation-world/starbucks-snoopy-cup-peanuts-collection-release-date/507-20c3ad04-495d-44ff-b2bf-7a085ff61614": "2026-10-21"
  },
  "images": {
-  "https://kai-you.net/article/96869": "https://www.bing.com/th?id=ONUT.hKQVpfa_HbcGfMsif4dQsw&pid=News&w=1200",
-  "https://limo.media/articles/-/142252": "https://limo.ismcdn.jp/mwimgs/e/3/1200w/img_e3769c05079a27cfd936a7e3d79c433c78670.jpg",
-  "https://news.yahoo.co.jp/articles/dae2bd964171c636dffee71098b171be8df86b63": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00010019-piaeigat-000-1-view.jpg?exp=10800",
-  "https://nokiapoweruser.com/oppo-find-x10-pro-max-triple-200mp-camera-specs-teaser/": "https://nokiapoweruser.com/wp-content/uploads/2026/09/oppo-find.jpeg",
-  "https://readyfor.jp/projects/176358": null,
-  "https://www.vietnam.vn/ja/loat-dien-thoai-samsung-galaxy-vua-nhan-duoc-one-ui-9": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/15/1792036168797_one-ui-1791689652404954203093-13-0-421-780-crop-1792031551771626665164.jpeg"
+  "http://www.excite.co.jp/news/article/bg_mania_703579/": "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200",
+  "https://3g.china.com/act/ent/11005281/20261021/49807501.html": "https://img3.utuku.imgcdc.com/650x0/news/20261021/c0f3bc3b-2507-4ad2-9e6f-197eeec55c08.jpg",
+  "https://animeanime.jp/article/2026/10/17/103903.html": "https://animeanime.jp/imgs/ogp_f/942450.jpg",
+  "https://animeanime.jp/article/2026/10/19/103949.html": "https://animeanime.jp/imgs/ogp_f/944741.jpg",
+  "https://article.auone.jp/775c465e-8969-4d3f-9cfa-872c08bceee2": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/17/https___news_jp_i_1483762816212829132_w640.webp",
+  "https://article.auone.jp/article/6f0715e2-91e5-4f5a-9881-59fd94ef284b": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/15/https___news_jp_i_1483301251298116530_w400.webp",
+  "https://beebom.com/gta-6-beer-labels-get-real-world-approval-ahead-of-launch/": "https://www.bing.com/th?id=ONUT.1Zsu9XlFWcO-qxG60Gt6Cg&pid=News&w=1200",
+  "https://biz.chosun.com/distribution/fashion-beauty/2026/10/16/36V5MNDMDBBQ7O2JNMTG5BEXUI/": "https://biz.chosun.com/resizer/v2/G5QTCZLEMUZGMMDBGEZWCNTFGM.jpg?auth=635f828fc6a747a130058dc7f8f3b417f87ecc769193b9e7787d36a678c4acb4&width=1000&height=525&smart=true",
+  "https://biz.sbs.co.kr/article/20000340395": "https://img.biz.sbs.co.kr/upload/2026/10/16/MfZ1792125245715-850.jpg",
+  "https://bleedingcool.com/movies/jumanji-open-world-a-new-poster-has-been-released/": "https://www.bing.com/th?id=ONUT.CaUEP9VO4Qp_oyc3UjMZUQ&pid=News&w=1200",
+  "https://collabo-cafe.com/events/collabo/hellokitty-aimys-room-donki-roomwear-2026/": "https://collabo-cafe.com/wp-content/uploads/hellokitty-aimys-room-donki-roomwear-eyecatch.jpg",
+  "https://comicbook.com/collectibles/news/before-hbos-harry-potter-series-a-new-prop-auction-will-reveal-which-wizard-really-has-the-best-wand/": "https://www.bing.com/th?id=ONUT.ITmpVqBNtoGDg7THX1RqoA&pid=News&w=1200",
+  "https://comicbook.com/movies/feature/marvels-biggest-fumble-after-avengers-endgame-is-still-a-problem-the-mcu-has-to-solve-after-doomsday-secret-wars/": "https://www.bing.com/th?id=ONUT.Q5E1fu679-XoM0XKJaMLsA&pid=News&w=1200",
+  "https://creators.yahoo.com/lifestyle/story/duncan-hines-and-swiss-miss-just-launched-a-holiday-peanuts-collection-160000616.html": "https://s.yimg.com/lo/mysterio/api/eaf83f4a659fbb03a30c33d06b7291837b5fe140187ddcad18fc971b78b7620a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fyahoo-headers-2026-10-16t140149382_1525.png",
+  "https://decider.com/2026/10/20/from-show-season-4-netflix-where-to-watch-from-season-4-free-mgm-plus/": "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200",
+  "https://dtimes.jp/post-1418966/": "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-92fda49af86e1960342cd1590aeeb716-20261016-9df79b.jpg",
+  "https://gnn.gamer.com.tw/detail.php?sn=313764": "https://p2.bahamut.com.tw/B/2KU/86/40a9c19295c5da7cd47c0046b820td25.JPG",
+  "https://hashout.jp/anime/12944/": "https://hashout.jp/wp-content/uploads/2026/10/2112750859813597279-img-1200x675.png",
+  "https://hawk.live/posts/korb3n-gave-straight-answer-whether-collapse-will-return-dota-2-pro-scene": "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg",
+  "https://hk.ulifestyle.com.hk/activity/detail/20113927/pop-mart%E9%A6%99%E6%B8%AF%E6%96%B0%E5%93%81-labubu-%E4%B8%80%E5%96%B5%E8%AE%8A%E8%B2%93%E7%B3%BB%E5%88%97%E7%99%BB%E5%A0%B4-%E9%96%80%E5%BA%97%E9%96%8B%E5%94%AE-%E5%A4%A7%E6%96%B0%E5%93%81%E8%A9%B3%E6%83%85%E5%85%A8%E6%94%BB%E7%95%A5": "https://resource02.ulifestyle.com.hk/ulcms/content/article/ogimage/2026/10/20261015020853_29a0258fa45e59650940779ab423672adb2f4514.png",
+  "https://hobby.watch.impress.co.jp/docs/news/2149840.html": "https://hobby.watch.impress.co.jp/img/hbw/list/2149/840/001.jpg",
+  "https://k.sina.com.cn/article_7880069124_1d5b0500406801h29g.html": null,
+  "https://kanstarpress.com/?p=206081": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/9d9e789b4277078469474ab5001f9d85.webp?fit=1200%2C900&ssl=1",
+  "https://knightedgemedia.com/2026/10/steven-sodenberg-takes-over-directing-the-batman-part-2/": "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/10/steven-soderbergh-the-batman-part-2-banner.jpg?fit=1920%2C820&ssl=1",
+  "https://kosodate.mynavi.jp/articles/46404": "https://kosodate.mynavi.jp/uploads/article/image/46404/thumb1021michopa.jpg",
+  "https://m.sohu.com/a/1090632081_120952561?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334": "https://q2.itc.cn/q_70/images03/20261021/edb9e35a855b43f7b6f34ff227088d03.jpeg",
+  "https://mainichi.jp/articles/20261021/ddm/035/050/016000c": "https://www.bing.com/th?id=ONUT.qJENpNsoRDJ_Wwv9BLHPeQ&pid=News&w=800",
+  "https://natalie.mu/comic/news/694460": "https://www.bing.com/th?id=ONUT.Pu2HDojRk_S-IQbRhjybcQ&pid=News&w=1200",
+  "https://news.dellows.jp/444878/": "https://news.dellows.jp/wp-content/uploads/2026/09/444878_1.jpg",
+  "https://news.infoseek.co.jp/article/itmedia_favlog_4062502/": "https://media.image.infoseek.co.jp/isnews/photos/itmedia_favlog/itmedia_favlog_4062502_0.jpg",
+  "https://news.infoseek.co.jp/article/oshiraku_28731/": "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg",
+  "https://news.livedoor.com/article/detail/32614037/": "https://image.news.livedoor.com/newsimage/stf/6/f/6f6b6_1845_b48d9d89_6861ecd1.jpg",
+  "https://news.livedoor.com/topics/detail/32611970/": "https://image.news.livedoor.com/newsimage/stf/6/8/68db4_1847_61a71f489fb525b34fc7ec2451285cdb.jpg",
+  "https://news.nicovideo.jp/watch/nw19900276?news_ref=60_60": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA27dZtk.img",
+  "https://news.pchome.com.tw/game/gamer/20261020/index-79249250522710203104.html": "https://news.pchome.com.tw/newsdata/game/gamer/20261020/79249250522710203104_original.jpg",
+  "https://news.yahoo.co.jp/articles/4759d0ec5c2f67fffa34f869042893fe4d234f36": "https://www.bing.com/th?id=ONUT.Wq38VobTVKEpCb6AbA_sgQ&pid=News&w=1200",
+  "https://news.yahoo.co.jp/articles/96429e05038ea34e946216451631956eb63bc7ec": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010010-realsound-000-1-view.jpg?exp=10800",
+  "https://news.yahoo.co.jp/articles/f5f7db8bcf7a628def7c78681389aa903e314a2f": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000002-isd-000-1-view.jpg?exp=10800",
+  "https://news.yahoo.co.jp/articles/fe5528ff3696b1b8d4999242189cd6a070dee6ec": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000006-anmanmv-000-1-view.jpg?exp=10800",
+  "https://note.com/houtaruu/n/nc96b0ed302df?hl=ko": "https://www.bing.com/th?id=ONUT.IOyy5jAniPeLhqezTlOByQ&pid=News&w=1200",
+  "https://prtimes.jp/main/html/rd/p/000001247.000012048.html": "https://prcdn.freetls.fastly.net/release_image/12048/1247/12048-1247-64977d38e7992af398fbe6cd29e05b7d-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+  "https://prtimes.jp/main/html/rd/p/000002573.000033064.html": "https://prcdn.freetls.fastly.net/release_image/33064/2573/33064-2573-f32bdd54c590493c90bb8034084823a4-3500x2092.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+  "https://sounova.com/anime/crunchyroll-fall-2026-anime-lineup-release-schedule": "https://cdn.sounova.com/upload/XU9tun0jGntZA0UXfDiS3.webp",
+  "https://t.co/BR7mzTQ19E": null,
+  "https://t.co/CM6Qxx73tL": null,
+  "https://today.line.me/tw/v3/article/kEpZaq0": "https://today-obs.line-scdn.net/0hIJz4AU5TFmVHTQrR-w9pMn8bGhR0KwxsZS5dAGFFGwZqYQRgfHxFBmYeT0k6LwQ7Z35ZUGQdTV09fQNgcg/w1200",
+  "https://trilltrill.jp/articles/5085313": "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200",
+  "https://tw.news.yahoo.com/%E8%90%AC%E8%81%96%E7%AF%80%E7%98%8B%E7%8E%A9%E6%94%BB%E7%95%A5-%E8%AE%8A%E8%A3%9D-%E5%85%8D%E8%B2%BB%E5%85%A5%E5%9C%92-5%E7%B1%B3%E5%B7%A8%E6%80%AA%E5%87%BA%E6%B2%92-%E9%A3%AF%E5%BA%97%E6%8E%A8%E6%9A%97%E9%BB%91%E6%96%99%E7%90%86-021900328.html": "https://s.yimg.com/lo/mysterio/api/4e3238e713fd70fa140c1d7ebbc8cc2c974ea9eb26afa12fec89b8fc1987efda/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fsetn.com.tw%2Ff6ed0eaf155d6cd697540b50e5340dc5.jpg",
+  "https://www.8newsnow.com/entertainment-news/the-grand-theft-auto-effect-from-sick-calls-to-skipping-sports-movies/": "https://www.bing.com/th?id=ONUT.mQItzBKEguTjS0WSNTbbzA&pid=News&w=1200",
+  "https://www.aol.com/articles/starbucks-target-just-dropped-sweetest-143648000.html": "https://hermes.media.static.aol.com/media/2026/10/14/e0a70dfe-6604-3cea-83b8-c319c02bb690/7fdc4e2f-5915-4ded-b631-4852b662f1c0.jpeg",
+  "https://www.asahi.com/and/pressrelease/16970306": "https://www.asahi.com/and/ogp/ogp_and.png",
+  "https://www.asahi.com/asagakuplus/article/asasho/16979815": "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600",
+  "https://www.bgr.com/2269104/can-samsung-s-pen-be-traced-explained/": "https://www.bgr.com/img/gallery/can-your-samsung-s-pen-be-traced/l-intro-1790355668.jpg",
+  "https://www.chiba-tv.com/plus/detail/amp/2026102128529": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1484508143890367874/origin_1.jpg",
+  "https://www.dexerto.com/gaming/arknights-endfield-gameplay-trailers-platforms-beta-1833704/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg",
+  "https://www.dexerto.com/pokemon/pokemon-highest-grossing-media-franchise-of-all-time-959505/": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg",
+  "https://www.eet-china.com/news/202610165241.html": "https://www.eet-china.com/images/code.jpg",
+  "https://www.excite.co.jp/news/article/Animeanime_104023/": "https://www.bing.com/th?id=ONUT.GnzSa0gVKn6Rl1TixXNykg&pid=News&w=600",
+  "https://www.facebook.com/deadline/videos/clayface-director-james-watkins-speaks-to-the-freedom-and-encouragement-that-dc-/1228379646445411/": "https://scontent-sjc3-1.xx.fbcdn.net/v/t51.71878-15/851829434_1657957355672157_598019026852783350_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a27664&_nc_ohc=uKSc0b5fZFEQ7kNvwFxE5ms&_nc_oc=AdqmBBqeKqxLAPsvjT85BPpF_EHNTZvG-6X1_yY5Ot2mPnQ4nwiUFLImYpprEyA5CYs&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=8yCkfeRA7k1_NKbixFL9Mg&_nc_ss=7820f&oh=00_AQOQdGlX1cpi4E0KSvVx2CSSu0e_bKoaPsdHUtpgJL7PRw&oe=6ADE1E65",
+  "https://www.famitsu.com/article/202610/91467": "https://cimg.kgl-systems.io/camion/files/91467/thumbnail_BFNi.jpg?x=1280",
+  "https://www.fashion-press.net/news/152154": "https://www.fashion-press.net/img/news/152154/top.jpg?1792146181",
+  "https://www.gadgetreview.com/foldable-phones-roundup-samsung-apple-huawei-and-more": "https://www.gadgetreview.com/wp-content/uploads/Foldable-Phones-Roundup-Samsung-Apple-Huawei-and-More.png",
+  "https://www.globaltimes.cn/page/202610/1372701.shtml": "https://www.bing.com/th?id=ONUT.CL9EDibw_g3CF9Ril5z6lQ&pid=News&w=1200",
+  "https://www.haveagood-holiday.com/zh-CN/articles/magical-chiikawa-fuwamochi-gororin-hug-plush-preorder": "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg",
+  "https://www.hidomin.com/news/articleView.html?idxno=725860": "https://cdn.hidomin.com/news/photo/202610/725860_428727_0019.jpg",
+  "https://www.hk01.com/%E9%A3%9F%E7%8E%A9%E8%B2%B7/60392659/%E8%90%AC%E8%81%96%E7%AF%80%E5%A5%BD%E5%8E%BB%E8%99%952026-%E5%93%88%E5%9B%89%E5%96%82-%E8%BF%AA%E5%A3%AB%E5%B0%BC-%E5%8C%96%E5%A6%9D%E8%88%9E%E6%9C%8332%E5%A4%A7%E6%8E%A8%E4%BB%8B-%E7%8D%A8%E5%AE%B6%E5%84%AA%E6%83%A0%E7%A2%BC": "https://cdn.hk01.com/di/media/images/dw/20261015/1187429559872524288789204.jpeg/E-sa0EsKRY3G-unBBjDF3hHP_IOc7UXF0-yjgNPso4A",
+  "https://www.jsonline.com/story/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92251749007/": "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200",
+  "https://www.kanaloco.jp/news/social/article-1313366.html": "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640",
+  "https://www.mgoddess.com/news/rpg-cbt-appmedia/?lang=zh-TW": "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp",
+  "https://www.mito-hollyhock.net/news/p=55367/": "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg",
+  "https://www.msn.com/en-us/entertainment/movies/hbo-s-harry-potter-series-reportedly-cost-more-to-make-than-any-of-the-movies/ar-AA2fGdEB": "https://www.bing.com/th?id=ONUT.GU75uQWnYgvJG5mT-5BTwg&pid=News&w=912",
+  "https://www.msn.com/en-us/news/other/marvel-just-confirmed-where-dr-doom-has-been-this-whole-time-avengers-doomsday/vi-AA2fGUVm": "https://www.bing.com/th?id=ONUT.XjPs58_MHrTfv0e2lk4NDA&pid=News&w=1200",
+  "https://www.msn.com/ja-jp/entertainment/celebrities/%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%AF%E8%B6%85%E6%9C%89%E5%90%8D%E3%82%A2%E3%82%A4%E3%82%B9-%E3%83%8F%E3%83%81%E3%83%AF%E3%83%AC-%E3%83%91%E3%82%B9%E3%82%BF%E3%83%A9%E3%82%A4%E5%8A%A9-%E3%81%AB%E7%B6%9A%E3%81%8F%E3%82%B0%E3%83%83%E3%82%BA%E5%8C%96%E3%81%AA%E3%82%8B%E3%81%8B/ar-AA2fHhhr": "https://www.bing.com/th?id=ONUT.MH3JwAwsfj5WaWHrDVW_Ag&pid=News&w=1192",
+  "https://www.msn.com/ja-jp/news/other/%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F-%E4%B8%AD%E5%9B%BD%E4%BC%9D%E7%B5%B1%E5%BB%BA%E7%AF%89%E3%81%AE%E7%A5%9E%E7%8D%A3%E3%83%A2%E3%83%81%E3%83%BC%E3%83%95%E3%82%92%E5%8C%97%E4%BA%AC%E9%99%90%E5%AE%9A%E3%81%A7%E5%B1%95%E9%96%8B/ar-AA2eprG4": "https://www.bing.com/th?id=ONUT.nMRhsqQ2C4JIRPMRsIpO5Q&pid=News&w=1200",
+  "https://www.msn.com/ja-jp/news/other/%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%82%B9-%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%9E%E3%83%B3-%E3%82%B3%E3%83%A9%E3%83%9C%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%95%E3%83%83%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E5%85%A84%E7%A8%AE/ar-AA2fDIBH": "https://www.bing.com/th?id=ONUT.6qDS_z6gWDW6SgCCaNw6Mw&pid=News&w=1000",
+  "https://www.msn.com/ja-jp/news/other/%E5%B8%B8%E8%A8%AD%E5%BA%97%E3%81%AF%E5%85%A8%E5%9B%BD3%E5%BA%97%E8%88%97%E3%81%AE%E3%81%BF-%E3%81%BE%E3%81%98%E3%81%8B%E3%82%8B%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E3%82%B9%E3%83%88%E3%82%A2-%E3%81%AB%E8%A1%8C%E3%81%A3%E3%81%A6%E3%81%8D%E3%81%9F/ar-AA2fyAJA": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fy3qB.img",
+  "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%8C%E7%99%BA%E7%97%87%E3%81%97%E3%82%84%E3%81%99%E3%81%84-%E7%97%85%E6%B0%97-5%E9%81%B8-%E6%B3%A8%E6%84%8F%E3%81%99%E3%81%B9%E3%81%8D%E7%97%87%E7%8A%B6%E3%82%84%E5%81%A5%E5%BA%B7%E3%82%92%E5%AE%88%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8/ar-AA2fCn2P": "https://www.bing.com/th?id=ONUT.kf6ldw8pvoyaG0oTeWkKvQ&pid=News&w=400",
+  "https://www.msn.com/ja-jp/news/other/illit%E3%81%AEiroha%E3%81%8C%E8%B6%B3%E9%A6%96%E3%82%92%E8%B2%A0%E5%82%B7-%E3%82%A2%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%AB%E5%85%AC%E6%BC%94-%E5%87%BA%E6%BC%94%E3%82%92%E4%B8%80%E9%83%A8%E5%88%B6%E9%99%90%E3%81%99%E3%82%8B%E5%8F%AF%E8%83%BD%E6%80%A7/ar-AA2evqqT": "https://www.bing.com/th?id=ONUT.r8uHwjjO1wlVTPWG4mn6Mw&pid=News&w=759",
+  "https://www.msn.com/ko-kr/entertainment/music/%EA%B7%B8%EB%9E%98%EC%84%9C-%EB%B9%88%EC%9E%90%EB%A6%AC-%EB%A7%8E%EC%95%98%EB%82%98-%EB%8F%84%EB%A7%88%EC%97%90-%EC%98%A4%EB%A5%B8-%EC%95%84%EC%9D%BC%EB%A6%BF-%EC%BD%98%EC%84%9C%ED%8A%B8-%ED%8B%B0%EC%BC%93%EA%B0%92/ar-AA2fz2sk": "https://www.bing.com/th?id=ONUT.Tw408Jo7-WCfcnK3zPpcHA&pid=News&w=1200",
+  "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%99%95-%EB%8B%AC%EB%9D%BC%EC%A7%80%EB%82%98-%ED%94%84%EB%A1%9C-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EB%AA%A8%EB%8D%B8-%EA%B0%80%EB%A1%9C%ED%98%95-%EC%B9%B4%EB%A9%94%EB%9D%BC-%EB%AA%A8%EB%93%88-%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%9C%A0%EC%B6%9C/ar-AA2fI6k2": "https://www.bing.com/th?id=ONUT.nJK9N3q_ogsXNM7GkWk66Q&pid=News&w=1200",
+  "https://www.news1.kr/it-science/mobile/6324709": "https://i3n.news1.kr/system/photos/2026/10/19/8167139/high.jpg",
+  "https://www.roomie.tw/posts/170744": "https://media.loom-app.com/roomie/dist/images/2026/10/IMG_2560-scaled.jpg?w=1200",
+  "https://www.sanyonews.jp/article/1912545": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
+  "https://www.sina.cn/news/detail/5354350915356285.html": "http://wx4.sinaimg.cn/middle/6f5ef307gy1ii36q45gorj20j609ljt4.jpg",
+  "https://www.starwarsnewsnet.com/2026/10/can-starfighter-outearn-the-mandalorian-and-grogu-at-the-box-office.html": null,
+  "https://www.techloy.com/from-season-4-netflix/": "https://www.bing.com/th?id=ONUT.5SyM0P931IBkDjRnMBhpHA&pid=News&w=1200",
+  "https://www.toy-people.com/jp/?p=115578": "https://img.toy-people.com/member/179239572485.jpg",
+  "https://www.vietnam.vn/ko/smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/09/1791510301377_smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra-3279.png",
+  "https://www.walkerplus.com/article/184834/image1101737.html": "https://news.walkerplus.com/article/184834/1101752_615.jpg",
+  "https://www.walkerplus.com/article/32990/image156124.html": "https://news.walkerplus.com/article/32990/156121_615.jpg",
+  "https://www.whas11.com/article/news/nation-world/starbucks-snoopy-cup-peanuts-collection-release-date/507-20c3ad04-495d-44ff-b2bf-7a085ff61614": null,
+  "https://www.wikitree.co.kr/articles/1167803": "https://www.bing.com/th?id=ONUT.GY6uZn6DBE9jKpqq1Ok4Bg&pid=News&w=1200"
  },
  "picks": [
   {
    "batch": 0,
-   "because": "黑貓魔法術溫變馬克杯",
-   "date": "2026-10-19",
-   "hits": [
-    "猫",
-    "动物 / 角色造型"
-   ],
-   "image": null,
-   "kind": "wish",
-   "score": 8,
-   "source": "クラウドファンディング - READYFOR",
-   "taste": [
-    [
-     "动物 / 角色造型",
-     9
-    ],
-    [
-     "猫",
-     5
-    ],
-    [
-     "うさぎ",
-     4
-    ]
-   ],
-   "title": "18年間、救ってきた小さな命をこれからも守りたい ― 猫とうさぎの",
-   "url": "https://readyfor.jp/projects/176358",
-   "words": [
-    "うさぎ",
-    "猫"
-   ],
-   "work": "星巴克马克杯"
-  },
-  {
-   "batch": 0,
    "because": "Galaxy S27 Ultra",
-   "date": "2026-10-17",
+   "date": "2026-10-09",
    "hits": [
-    "旗舰手机",
-    "手机影像"
+    "三星 Galaxy",
+    "手机影像",
+    "手机"
    ],
-   "image": "https://nokiapoweruser.com/wp-content/uploads/2026/09/oppo-find.jpeg",
+   "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/09/1791510301377_smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra-3279.png",
    "kind": "wish",
-   "score": 8,
-   "source": "Nokiapoweruser",
+   "score": 11,
+   "source": "Vietnam.vn",
    "taste": [
     [
-     "旗舰手机",
-     4
+     "三星 Galaxy",
+     7
     ],
     [
-     "旗舰",
-     4
+     "galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
     ]
    ],
-   "title": "OPPO just teased a world-first triple 200MP camera setup for its new flagship",
-   "url": "https://nokiapoweruser.com/oppo-find-x10-pro-max-triple-200mp-camera-specs-teaser/",
+   "title": "200MP 카메라 3개를 탑재한 '괴물' 스마트폰이 갤럭시 S27 울트라의 강력한 경쟁자로 떠올랐습니다.",
+   "url": "https://www.vietnam.vn/ko/smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra",
    "words": [
-    "旗舰",
+    "galaxy",
     "长焦"
    ],
    "work": "三星手机"
   },
   {
    "batch": 0,
-   "because": "Galaxy S27 Ultra",
+   "because": "黑貓魔法術溫變馬克杯",
    "date": "2026-10-15",
    "hits": [
-    "三星 Galaxy",
-    "手机"
+    "万圣节",
+    "动物 / 角色造型",
+    "限定款"
    ],
-   "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/15/1792036168797_one-ui-1791689652404954203093-13-0-421-780-crop-1792031551771626665164.jpeg",
+   "image": "https://news.walkerplus.com/article/32990/156121_615.jpg",
+   "kind": "wish",
+   "score": 10,
+   "source": "ウォーカープラス",
+   "taste": [
+    [
+     "动物 / 角色造型",
+     9
+    ],
+    [
+     "うさぎ",
+     4
+    ],
+    [
+     "万圣节",
+     3
+    ],
+    [
+     "ハロウィン",
+     3
+    ]
+   ],
+   "title": "＜画像4 / 12＞魔女うさぎや魔女パンダも！サーティワンからハロウィン限定メニューが登場",
+   "url": "https://www.walkerplus.com/article/32990/image156124.html",
+   "words": [
+    "うさぎ",
+    "ハロウィン"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 0,
+   "because": "ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）",
+   "date": "2026-10-14",
+   "hits": [
+    "ちいかわ",
+    "まじかるちいかわ",
+    "抱枕玩偶"
+   ],
+   "image": "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg",
+   "kind": "wish",
+   "score": 10,
+   "source": "Infoseek",
+   "taste": [
+    [
+     "ちいかわ",
+     2
+    ],
+    [
+     "まじかるちいかわ",
+     2
+    ],
+    [
+     "まじかる",
+     2
+    ],
+    [
+     "作品:ちいかわ",
+     1
+    ]
+   ],
+   "title": "「まじかるちいかわ」強くなったハチワレ＆うさぎ＆あのこが巨大な抱きぬいぐるみに♪｜Infoseekニュース",
+   "url": "https://news.infoseek.co.jp/article/oshiraku_28731/",
+   "words": [
+    "ちいかわ",
+    "まじかる"
+   ],
+   "work": "ちいかわ"
+  },
+  {
+   "batch": 0,
+   "because": "小熊維尼蜂蜜罐馬克杯（Winnie the Pooh 聯名系列）",
+   "date": "2026-10-17",
+   "hits": [
+    "星巴克",
+    "马克杯"
+   ],
+   "image": "https://news.walkerplus.com/article/184834/1101752_615.jpg",
+   "kind": "wish",
+   "score": 9,
+   "source": "ウォーカープラス",
+   "taste": [
+    [
+     "作品:星巴克马克杯",
+     15
+    ],
+    [
+     "星巴克",
+     6
+    ],
+    [
+     "starbucks",
+     6
+    ]
+   ],
+   "title": "画像26 / 38＞スターバックスのスタッフの声から生まれた、愛媛県地元限定「砥部焼マグ」制作の舞台裏",
+   "url": "https://www.walkerplus.com/article/184834/image1101737.html",
+   "words": [
+    "starbucks"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 0,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-09-14",
+   "hits": [
+    "动物 / 角色造型",
+    "马克杯"
+   ],
+   "image": null,
+   "kind": "wish",
+   "score": 9,
+   "source": "WHAS11",
+   "taste": [
+    [
+     "作品:星巴克马克杯",
+     15
+    ],
+    [
+     "动物 / 角色造型",
+     9
+    ]
+   ],
+   "title": "Starbucks' Peanuts fall collab launches Tuesday, including Snoopy-inspired cups and mugs",
+   "url": "https://www.whas11.com/article/news/nation-world/starbucks-snoopy-cup-peanuts-collection-release-date/507-20c3ad04-495d-44ff-b2bf-7a085ff61614",
+   "words": [
+    "snoopy"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 1,
+   "because": "ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）",
+   "date": "2026-10-19",
+   "hits": [
+    "ちいかわ",
+    "まじかるちいかわ"
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fy3qB.img",
    "kind": "wish",
    "score": 8,
-   "source": "Vietnam.vn",
+   "source": "＆あんふぁん on MSN",
+   "taste": [
+    [
+     "ちいかわ",
+     2
+    ],
+    [
+     "まじかるちいかわ",
+     2
+    ],
+    [
+     "まじかる",
+     2
+    ],
+    [
+     "作品:ちいかわ",
+     1
+    ]
+   ],
+   "title": "常設店は全国3店舗のみ！【まじかるちいかわストア】に行ってきた！",
+   "url": "https://www.msn.com/ja-jp/news/other/%E5%B8%B8%E8%A8%AD%E5%BA%97%E3%81%AF%E5%85%A8%E5%9B%BD3%E5%BA%97%E8%88%97%E3%81%AE%E3%81%BF-%E3%81%BE%E3%81%98%E3%81%8B%E3%82%8B%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E3%82%B9%E3%83%88%E3%82%A2-%E3%81%AB%E8%A1%8C%E3%81%A3%E3%81%A6%E3%81%8D%E3%81%9F/ar-AA2fyAJA",
+   "words": [
+    "ちいかわ",
+    "まじかる"
+   ],
+   "work": "ちいかわ"
+  },
+  {
+   "batch": 1,
+   "because": "貓眼溫變馬克杯",
+   "date": "2026-10-18",
+   "hits": [
+    "猫",
+    "黑白配色"
+   ],
+   "image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1484508143890367874/origin_1.jpg",
+   "kind": "wish",
+   "score": 8,
+   "source": "千葉テレビ放送株式会社",
+   "taste": [
+    [
+     "猫",
+     5
+    ]
+   ],
+   "title": "お迎え初日は部屋の隅に隠れていた生後4カ月の子猫→約1年後、ハチワレ模様くっきりの“もふもふ猫”に！",
+   "url": "https://www.chiba-tv.com/plus/detail/amp/2026102128529",
+   "words": [
+    "猫",
+    "賓士貓"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 1,
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-17",
+   "hits": [
+    "三星 Galaxy",
+    "手写笔"
+   ],
+   "image": "https://www.bgr.com/img/gallery/can-your-samsung-s-pen-be-traced/l-intro-1790355668.jpg",
+   "kind": "wish",
+   "score": 8,
+   "source": "BGR",
    "taste": [
     [
      "三星 Galaxy",
@@ -97,25 +362,196 @@
      7
     ]
    ],
-   "title": "サムスンのGalaxyシリーズのスマートフォンに、One UI 9が配信されました。",
-   "url": "https://www.vietnam.vn/ja/loat-dien-thoai-samsung-galaxy-vua-nhan-duoc-one-ui-9",
+   "title": "Can Your Samsung S Pen Be Traced?",
+   "url": "https://www.bgr.com/2269104/can-samsung-s-pen-be-traced-explained/",
+   "words": [
+    "galaxy",
+    "s pen"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 1,
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-18",
+   "hits": [
+    "旗舰手机",
+    "手机"
+   ],
+   "image": null,
+   "kind": "wish",
+   "score": 8,
+   "source": "新浪网",
+   "taste": [
+    [
+     "旗舰手机",
+     4
+    ],
+    [
+     "旗舰",
+     4
+    ]
+   ],
+   "title": "6-7千元手机怎么选？2026年旗舰横评：影像、质感、游戏三大维度一次说透+FAQ",
+   "url": "https://k.sina.com.cn/article_7880069124_1d5b0500406801h29g.html",
+   "words": [
+    "旗舰"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 1,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-18",
+   "hits": [
+    "动物 / 角色造型",
+    "限定款"
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
+   "kind": "wish",
+   "score": 8,
+   "source": "山陽新聞",
+   "taste": [
+    [
+     "动物 / 角色造型",
+     9
+    ],
+    [
+     "うさぎ",
+     4
+    ]
+   ],
+   "title": "ちいかわ、ハチワレ、うさぎの“本物のチェキ”が登場 『映画ちいかわ 人魚の島のひみつ』全5種類のムビチェキを数量限定発売",
+   "url": "https://www.sanyonews.jp/article/1912545",
+   "words": [
+    "うさぎ"
+   ],
+   "work": "ちいかわ 漫画"
+  },
+  {
+   "batch": 2,
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-17",
+   "hits": [
+    "三星 Galaxy",
+    "手机"
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010010-realsound-000-1-view.jpg?exp=10800",
+   "kind": "wish",
+   "score": 8,
+   "source": "Yahoo!ニュース",
+   "taste": [
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "galaxy",
+     7
+    ]
+   ],
+   "title": "「LINEマンガ」×Galaxy Z Fold8コラボキャンペーン開始 折りたたみスマホの大画面でマンガを楽しめる体験も（リアルサウンド）",
+   "url": "https://news.yahoo.co.jp/articles/96429e05038ea34e946216451631956eb63bc7ec",
    "words": [
     "galaxy"
    ],
    "work": "三星手机"
   },
   {
-   "batch": 0,
+   "batch": 2,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-16",
+   "hits": [
+    "动物 / 角色造型",
+    "马克杯"
+   ],
+   "image": "https://www.fashion-press.net/img/news/152154/top.jpg?1792146181",
+   "kind": "wish",
+   "score": 8,
+   "source": "ファッションプレス",
+   "taste": [
+    [
+     "动物 / 角色造型",
+     9
+    ]
+   ],
+   "title": "ファミマとスヌーピーがコラボ！チョコドーナツやマグ付き白桃ゼリーなど秋スイーツ",
+   "url": "https://www.fashion-press.net/news/152154",
+   "words": [
+    "snoopy"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 2,
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-16",
+   "hits": [
+    "旗舰手机",
+    "手机"
+   ],
+   "image": "https://www.eet-china.com/images/code.jpg",
+   "kind": "wish",
+   "score": 8,
+   "source": "电子工程专辑",
+   "taste": [
+    [
+     "旗舰手机",
+     4
+    ],
+    [
+     "旗舰",
+     4
+    ]
+   ],
+   "title": "存储器成本占旗舰手机整机40% 是屏幕6倍，厂商被迫屏幕降级回退LTPS OLED",
+   "url": "https://www.eet-china.com/news/202610165241.html",
+   "words": [
+    "旗舰"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 2,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-14",
+   "hits": [
+    "万圣节",
+    "限定款"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200",
+   "kind": "wish",
+   "score": 8,
+   "source": "Excite エキサイト",
+   "taste": [
+    [
+     "万圣节",
+     3
+    ],
+    [
+     "ハロウィン",
+     3
+    ]
+   ],
+   "title": "【ビッグボーイ】アプリでサラダバーをお得に楽しめるクーポン配信中！こども用おもちゃが期間限定でハロウィン仕様に《10月31日まで》",
+   "url": "http://www.excite.co.jp/news/article/bg_mania_703579/",
+   "words": [
+    "ハロウィン"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 2,
    "because": "ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）",
-   "date": "2026-10-19",
+   "date": "2026-10-14",
    "hits": [
     "ちいかわ",
     "抱枕玩偶"
    ],
-   "image": "https://limo.ismcdn.jp/mwimgs/e/3/1200w/img_e3769c05079a27cfd936a7e3d79c433c78670.jpg",
+   "image": "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg",
    "kind": "wish",
    "score": 7,
-   "source": "LIMO | くらしとお金の経済メディア",
+   "source": "www.haveagood-holiday.com",
    "taste": [
     [
      "ちいかわ",
@@ -126,54 +562,908 @@
      1
     ]
    ],
-   "title": "GU×ちいかわ新作！ふわもこ冬仕様がキュートな〈ぬいぐるみみたいなポーチ〉全4種。ちいかわ、ハチワレ、うさぎ、モモンガが揃って登場！ テーマは「さむ～い雪の日も楽しもう！」2026年11月20日の販売開始が待ち遠しい | 概要",
-   "url": "https://limo.media/articles/-/142252",
+   "title": "巨大魔法师Chiikawa拥抱毛绒玩偶在Chiikawa Market开启预售",
+   "url": "https://www.haveagood-holiday.com/zh-CN/articles/magical-chiikawa-fuwamochi-gororin-hug-plush-preorder",
    "words": [
     "ちいかわ"
    ],
    "work": "ちいかわ"
   },
   {
-   "batch": 1,
-   "because": "ちいかわ",
+   "batch": 3,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-20",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://image.news.livedoor.com/newsimage/stf/6/f/6f6b6_1845_b48d9d89_6861ecd1.jpg",
+   "kind": "wish",
+   "score": 6,
+   "source": "ライブドアニュース",
+   "taste": [
+    [
+     "猫",
+     5
+    ]
+   ],
+   "title": "【悶絶】先輩猫は完璧なのに…子猫の「壁ねこチャレンジ」まさかのオチに爆笑必至",
+   "url": "https://news.livedoor.com/article/detail/32614037/",
+   "words": [
+    "猫"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 3,
+   "because": "Galaxy S27 Ultra",
    "date": "2026-10-19",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://i3n.news1.kr/system/photos/2026/10/19/8167139/high.jpg",
+   "kind": "wish",
+   "score": 6,
+   "source": "뉴스1",
+   "taste": [
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "galaxy",
+     7
+    ]
+   ],
+   "title": "삼성폰 또 '급 나누기'…갤S27 플러스, 기존 기능도 뺀다",
+   "url": "https://www.news1.kr/it-science/mobile/6324709",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 3,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-17",
+   "hits": [
+    "万圣节"
+   ],
+   "image": "https://today-obs.line-scdn.net/0hIJz4AU5TFmVHTQrR-w9pMn8bGhR0KwxsZS5dAGFFGwZqYQRgfHxFBmYeT0k6LwQ7Z35ZUGQdTV09fQNgcg/w1200",
+   "kind": "wish",
+   "score": 6,
+   "source": "LINE TODAY",
+   "taste": [
+    [
+     "万圣节",
+     3
+    ],
+    [
+     "ハロウィン",
+     3
+    ]
+   ],
+   "title": "中原文創園區「萬聖魔毯．詭影石路」 變裝走秀本週末登場 | 青年日報",
+   "url": "https://today.line.me/tw/v3/article/kEpZaq0",
+   "words": [
+    "ハロウィン"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 3,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-17",
+   "hits": [
+    "动物 / 角色造型"
+   ],
+   "image": "https://s.yimg.com/lo/mysterio/api/eaf83f4a659fbb03a30c33d06b7291837b5fe140187ddcad18fc971b78b7620a/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fyahoo-headers-2026-10-16t140149382_1525.png",
+   "kind": "wish",
+   "score": 6,
+   "source": "Yahoo Creators",
+   "taste": [
+    [
+     "动物 / 角色造型",
+     9
+    ]
+   ],
+   "title": "Duncan Hines and Swiss Miss just launched a holiday Peanuts collection",
+   "url": "https://creators.yahoo.com/lifestyle/story/duncan-hines-and-swiss-miss-just-launched-a-holiday-peanuts-collection-160000616.html",
+   "words": [
+    "snoopy"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 3,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-16",
+   "hits": [
+    "动物 / 角色造型"
+   ],
+   "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/Pokemon-Franchise-Biggest.jpg",
+   "kind": "wish",
+   "score": 6,
+   "source": "Dexerto",
+   "taste": [
+    [
+     "动物 / 角色造型",
+     9
+    ],
+    [
+     "ポケモン",
+     2
+    ]
+   ],
+   "title": "Pokemon is the highest grossing media franchise of all time",
+   "url": "https://www.dexerto.com/pokemon/pokemon-highest-grossing-media-franchise-of-all-time-959505/",
+   "words": [
+    "ポケモン"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 4,
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-16",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://img.biz.sbs.co.kr/upload/2026/10/16/MfZ1792125245715-850.jpg",
+   "kind": "wish",
+   "score": 6,
+   "source": "SBS Biz",
+   "taste": [
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "galaxy",
+     7
+    ]
+   ],
+   "title": "삼성전자, 아시아 브랜드 가치 3년 연속 1위",
+   "url": "https://biz.sbs.co.kr/article/20000340395",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 4,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-16",
+   "hits": [
+    "万圣节"
+   ],
+   "image": "https://cdn.hk01.com/di/media/images/dw/20261015/1187429559872524288789204.jpeg/E-sa0EsKRY3G-unBBjDF3hHP_IOc7UXF0-yjgNPso4A",
+   "kind": "wish",
+   "score": 6,
+   "source": "香港01",
+   "taste": [
+    [
+     "万圣节",
+     3
+    ],
+    [
+     "ハロウィン",
+     3
+    ]
+   ],
+   "title": "萬聖節好去處2026｜哈囉喂/迪士尼/化妝舞會32大推介！獨家優惠碼",
+   "url": "https://www.hk01.com/%E9%A3%9F%E7%8E%A9%E8%B2%B7/60392659/%E8%90%AC%E8%81%96%E7%AF%80%E5%A5%BD%E5%8E%BB%E8%99%952026-%E5%93%88%E5%9B%89%E5%96%82-%E8%BF%AA%E5%A3%AB%E5%B0%BC-%E5%8C%96%E5%A6%9D%E8%88%9E%E6%9C%8332%E5%A4%A7%E6%8E%A8%E4%BB%8B-%E7%8D%A8%E5%AE%B6%E5%84%AA%E6%83%A0%E7%A2%BC",
+   "words": [
+    "ハロウィン"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 4,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-16",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://www.asahi.com/and/ogp/ogp_and.png",
+   "kind": "wish",
+   "score": 6,
+   "source": "朝日新聞",
+   "taste": [
+    [
+     "猫",
+     5
+    ]
+   ],
+   "title": "子ども服BREEZE（ブリーズ）のオリジナルキャラクター“BREEZY CATS”の第2弾！5匹の猫たちを家族で楽しめるアイテムが登場！",
+   "url": "https://www.asahi.com/and/pressrelease/16970306",
+   "words": [
+    "猫"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 4,
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-16",
+   "hits": [
+    "旗舰手机"
+   ],
+   "image": "https://biz.chosun.com/resizer/v2/G5QTCZLEMUZGMMDBGEZWCNTFGM.jpg?auth=635f828fc6a747a130058dc7f8f3b417f87ecc769193b9e7787d36a678c4acb4&width=1000&height=525&smart=true",
+   "kind": "wish",
+   "score": 6,
+   "source": "Chosunbiz",
+   "taste": [
+    [
+     "旗舰手机",
+     4
+    ],
+    [
+     "旗舰",
+     4
+    ]
+   ],
+   "title": "W컨셉, 한남동에 첫 단독 플래그십 매장 - 조선비즈",
+   "url": "https://biz.chosun.com/distribution/fashion-beauty/2026/10/16/36V5MNDMDBBQ7O2JNMTG5BEXUI/",
+   "words": [
+    "旗舰"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 4,
+   "because": "ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）",
+   "date": "2026-10-15",
+   "hits": [
+    "まじかるちいかわ"
+   ],
+   "image": "http://wx4.sinaimg.cn/middle/6f5ef307gy1ii36q45gorj20j609ljt4.jpg",
+   "kind": "wish",
+   "score": 6,
+   "source": "手机新浪网",
+   "taste": [
+    [
+     "まじかるちいかわ",
+     2
+    ],
+    [
+     "まじかる",
+     2
+    ]
+   ],
+   "title": "aniplex 魔法少女小圆魔女之夜的回天剧场周边事后通贩今日开订~具体可选款式以及尺寸大小都可以进入对应链接查看~均预计2027年04月出荷！Part.1包含：晓美焰灵魂宝石戒指附链条、主视觉图的A4文件夹和亚克力板画、第三弹主视觉图的B2挂画、A4复制原画、",
+   "url": "https://www.sina.cn/news/detail/5354350915356285.html",
+   "words": [
+    "まじかる"
+   ],
+   "work": "ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）"
+  },
+  {
+   "batch": 5,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-15",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/15/https___news_jp_i_1483301251298116530_w400.webp",
+   "kind": "wish",
+   "score": 6,
+   "source": "au Webポータル",
+   "taste": [
+    [
+     "猫",
+     5
+    ]
+   ],
+   "title": "突然玄関先に現れた猫→毎日のように『入れて』と家に来るようになって…心温まる展開が225万再生「NNNから来たね」「運命の出会い」",
+   "url": "https://article.auone.jp/article/6f0715e2-91e5-4f5a-9881-59fd94ef284b",
+   "words": [
+    "猫"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 5,
+   "because": "黑貓魔法術溫變馬克杯",
+   "date": "2026-10-15",
+   "hits": [
+    "万圣节"
+   ],
+   "image": "https://s.yimg.com/lo/mysterio/api/4e3238e713fd70fa140c1d7ebbc8cc2c974ea9eb26afa12fec89b8fc1987efda/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fsetn.com.tw%2Ff6ed0eaf155d6cd697540b50e5340dc5.jpg",
+   "kind": "wish",
+   "score": 6,
+   "source": "Yahoo新聞",
+   "taste": [
+    [
+     "万圣节",
+     3
+    ],
+    [
+     "ハロウィン",
+     3
+    ]
+   ],
+   "title": "萬聖節瘋玩攻略！變裝「免費入園」、5米巨怪出沒 飯店推暗黑料理",
+   "url": "https://tw.news.yahoo.com/%E8%90%AC%E8%81%96%E7%AF%80%E7%98%8B%E7%8E%A9%E6%94%BB%E7%95%A5-%E8%AE%8A%E8%A3%9D-%E5%85%8D%E8%B2%BB%E5%85%A5%E5%9C%92-5%E7%B1%B3%E5%B7%A8%E6%80%AA%E5%87%BA%E6%B2%92-%E9%A3%AF%E5%BA%97%E6%8E%A8%E6%9A%97%E9%BB%91%E6%96%99%E7%90%86-021900328.html",
+   "words": [
+    "ハロウィン"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 5,
+   "because": "Galaxy S27 Ultra",
+   "date": "2026-10-14",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://www.gadgetreview.com/wp-content/uploads/Foldable-Phones-Roundup-Samsung-Apple-Huawei-and-More.png",
+   "kind": "wish",
+   "score": 6,
+   "source": "Gadget Review",
+   "taste": [
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "galaxy",
+     7
+    ]
+   ],
+   "title": "Foldable Phones Roundup: Samsung, Apple, Huawei and More",
+   "url": "https://www.gadgetreview.com/foldable-phones-roundup-samsung-apple-huawei-and-more",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 5,
+   "because": "小熊維尼蜂蜜罐馬克杯（Winnie the Pooh 聯名系列）",
+   "date": "2026-10-14",
+   "hits": [
+    "星巴克"
+   ],
+   "image": "https://hermes.media.static.aol.com/media/2026/10/14/e0a70dfe-6604-3cea-83b8-c319c02bb690/7fdc4e2f-5915-4ded-b631-4852b662f1c0.jpeg",
+   "kind": "wish",
+   "score": 6,
+   "source": "AOL.com",
+   "taste": [
+    [
+     "星巴克",
+     6
+    ],
+    [
+     "starbucks",
+     6
+    ]
+   ],
+   "title": "Starbucks and Target Just Dropped the Sweetest Limited-Edition Cup Collection",
+   "url": "https://www.aol.com/articles/starbucks-target-just-dropped-sweetest-143648000.html",
+   "words": [
+    "starbucks"
+   ],
+   "work": "星巴克马克杯"
+  },
+  {
+   "batch": 5,
+   "because": "ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）",
+   "date": "2026-10-16",
+   "explore": true,
    "hits": [
     "ちいかわ"
    ],
-   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261019-00010019-piaeigat-000-1-view.jpg?exp=10800",
+   "image": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/17/https___news_jp_i_1483762816212829132_w640.webp",
+   "kind": "wish",
+   "score": 4,
+   "source": "au Webポータル",
+   "taste": [
+    [
+     "ちいかわ",
+     2
+    ]
+   ],
+   "title": "「ボンボンドロップシール」ちいかわの新作が10月下旬より順次発売！待望の「ミニ」デザイン全8種",
+   "url": "https://article.auone.jp/775c465e-8969-4d3f-9cfa-872c08bceee2",
+   "words": [
+    "ちいかわ"
+   ],
+   "work": "ちいかわ まじかるちいかわ ふんわりもっちり ごろりん抱きぬいぐるみ（強くなったうさぎ）"
+  },
+  {
+   "batch": 1,
+   "because": "チェーンソーマン",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000006-anmanmv-000-1-view.jpg?exp=10800",
    "kind": "board",
-   "liked": "”言わないよねェッ”「まじかるちいかわ」強くなったハチワレ＆うさぎ、あのこが全長70cm超の抱きぬいぐるみに！",
-   "score": 7,
+   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
+   "score": 8,
    "source": "Yahoo!ニュース",
    "taste": [
     [
-     "ちいかわ",
-     2
-    ],
-    [
-     "作品:ちいかわ",
-     1
+     "作品:チェーンソーマン",
+     5
     ]
    ],
-   "title": "【ちいかわベーカリー】2周年記念イベント開催！ 激かわグッズ販売、レア特典がもらえるチャンスも♪（ぴあ）",
-   "url": "https://news.yahoo.co.jp/articles/dae2bd964171c636dffee71098b171be8df86b63",
-   "words": [
-    "ちいかわ"
-   ],
-   "work": "ちいかわ"
+   "title": "カラオケで盛り上がるアニソンといえば？ 3位「チェンソーマン レゼ篇」IRIS OUT、2位「忘却バッテリー」ライラック！ 1位は残酷な天使のテーゼ＜26年版＞（アニメ！アニメ！）",
+   "url": "https://news.yahoo.co.jp/articles/fe5528ff3696b1b8d4999242189cd6a070dee6ec",
+   "words": [],
+   "work": "チェーンソーマン"
   },
   {
    "batch": 1,
-   "because": "ちいかわ",
+   "because": "绝区零",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://hobby.watch.impress.co.jp/img/hbw/list/2149/840/001.jpg",
+   "kind": "board",
+   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
+   "score": 8,
+   "source": "hobby Watch",
+   "taste": [
+    [
+     "作品:绝区零",
+     7
+    ]
+   ],
+   "title": "「ゼンレスゾーンゼロ」より怪啖屋に所属するいたずら好きな少女「浮波柚葉」が1/7スケールフィギュアで登場！",
+   "url": "https://hobby.watch.impress.co.jp/docs/news/2149840.html",
+   "words": [],
+   "work": "绝区零"
+  },
+  {
+   "batch": 1,
+   "because": "gelato pique",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://kosodate.mynavi.jp/uploads/article/image/46404/thumb1021michopa.jpg",
+   "kind": "board",
+   "liked": "ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売 (2026年10月14日掲載)",
+   "score": 8,
+   "source": "マイナビ子育て",
+   "taste": [
+    [
+     "作品:gelato pique",
+     7
+    ]
+   ],
+   "title": "みちょぱさん、たんぽぽ川村さんからの出産祝い「すっごいこれは重宝しました」と感謝 0歳パパ吉村さんとジェラピケ爆買い",
+   "url": "https://kosodate.mynavi.jp/articles/46404",
+   "words": [],
+   "work": "gelato pique"
+  },
+  {
+   "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.mQItzBKEguTjS0WSNTbbzA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "8NewsNow.com",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "The ‘Grand Theft Auto’ effect: From sick calls to skipping sports, movies",
+   "url": "https://www.8newsnow.com/entertainment-news/the-grand-theft-auto-effect-from-sick-calls-to-skipping-sports-movies/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
+   "because": "三星手机",
+   "date": "2026-10-20",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.nJK9N3q_ogsXNM7GkWk66Q&pid=News&w=1200",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "M투데이 on MSN",
+   "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "갤럭시S27 디자인 확 달라지나? ‘프로·울트라’ 모델 가로형 카메라 모듈 케이스 유출",
+   "url": "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%99%95-%EB%8B%AC%EB%9D%BC%EC%A7%80%EB%82%98-%ED%94%84%EB%A1%9C-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EB%AA%A8%EB%8D%B8-%EA%B0%80%EB%A1%9C%ED%98%95-%EC%B9%B4%EB%A9%94%EB%9D%BC-%EB%AA%A8%EB%93%88-%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%9C%A0%EC%B6%9C/ar-AA2fI6k2",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 2,
+   "because": "绝区零",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000002-isd-000-1-view.jpg?exp=10800",
+   "kind": "board",
+   "liked": "【ゼンゼロ】ヴェリナの評価とおすすめパーティ編成・凸効果【ゼンレスゾーンゼロ】",
+   "score": 8,
+   "source": "Yahoo!ニュース",
+   "taste": [
+    [
+     "作品:绝区零",
+     7
+    ]
+   ],
+   "title": "【コスプレ】肩出しニットがセクシーな『NIKKE』、振り向いた背中が美しい『ゼンゼロ』まで「アコスタTFT」美女レイヤー7選【写真33枚】（インサイド）",
+   "url": "https://news.yahoo.co.jp/articles/f5f7db8bcf7a628def7c78681389aa903e314a2f",
+   "words": [],
+   "work": "绝区零"
+  },
+  {
+   "batch": 2,
+   "because": "GTA 6",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.1Zsu9XlFWcO-qxG60Gt6Cg&pid=News&w=1200",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "Beebom",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "GTA 6 Beer Brands Could Soon Become Real and Fans Might Get to Crack One Open",
+   "url": "https://beebom.com/gta-6-beer-labels-get-real-world-approval-ahead-of-launch/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 2,
+   "because": "三星手机",
+   "date": "2026-10-20",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.GY6uZn6DBE9jKpqq1Ok4Bg&pid=News&w=1200",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "위키트리",
+   "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "갤럭시 S27 울트라 보호필름 유출, 앞모습은 S26 울트라와 거의 같고 뒷면은 확 바뀐다",
+   "url": "https://www.wikitree.co.kr/articles/1167803",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 2,
+   "because": "ちいかわ 漫画",
+   "date": "2026-10-20",
+   "hits": [
+    "ちいかわ",
+    "动物 / 角色造型"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.GnzSa0gVKn6Rl1TixXNykg&pid=News&w=600",
+   "kind": "board",
+   "liked": "スターバックス「月＆ウサギ」の“中秋の名月”グッズ、やさしいタッチのうさぎが跳ねるタンブラーやマグ",
+   "score": 8,
+   "source": "エキサイト",
+   "taste": [
+    [
+     "动物 / 角色造型",
+     9
+    ],
+    [
+     "うさぎ",
+     4
+    ],
+    [
+     "ちいかわ",
+     2
+    ]
+   ],
+   "title": "「ちいかわ」垂れ耳なうさぎも！ キラキラ鍵型チャーム全13種、食玩で発売決定☆",
+   "url": "https://www.excite.co.jp/news/article/Animeanime_104023/",
+   "words": [
+    "うさぎ",
+    "ちいかわ"
+   ],
+   "work": "ちいかわ 漫画"
+  },
+  {
+   "batch": 2,
+   "because": "あつ森",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://cimg.kgl-systems.io/camion/files/91467/thumbnail_BFNi.jpg?x=1280",
+   "kind": "board",
+   "liked": "【 あつ森 】 案内所横に作るパン屋さん 🍞 絵本のような島 【 #島クリエイト / #ぷにLIVE 】 Yulia Putintseva (9GFUvLqUCC)",
+   "score": 8,
+   "source": "ファミ通",
+   "taste": [
+    [
+     "作品:あつ森",
+     4
+    ]
+   ],
+   "title": "【Amazonタイムセール】ソニーゲーミングイヤホンが30%オフ、『あつ森』ヘッドセットが23%オフ、Switch2純正カメラが25%オフ",
+   "url": "https://www.famitsu.com/article/202610/91467",
+   "words": [],
+   "work": "あつ森"
+  },
+  {
+   "batch": 3,
+   "because": "猫用品",
+   "date": "2026-10-20",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://image.news.livedoor.com/newsimage/stf/6/8/68db4_1847_61a71f489fb525b34fc7ec2451285cdb.jpg",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "ライブドアニュース",
+   "taste": [
+    [
+     "猫",
+     5
+    ],
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "猫の元気がないときに考えたい原因4つと、動物病院へ行く目安を解説 (2026年10月20日掲載)",
+   "url": "https://news.livedoor.com/topics/detail/32611970/",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
+  },
+  {
+   "batch": 3,
+   "because": "gelato pique",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200",
+   "kind": "board",
+   "liked": "ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売 (2026年10月14日掲載)",
+   "score": 8,
+   "source": "TRILL",
+   "taste": [
+    [
+     "作品:gelato pique",
+     7
+    ]
+   ],
+   "title": "2位『gelato pique』3位『無印良品』【寒暖差のある今の時期に着たいカーディガンブランド】300名が選ぶ1位に「優秀」「お気に入り」",
+   "url": "https://trilltrill.jp/articles/5085313",
+   "words": [],
+   "work": "gelato pique"
+  },
+  {
+   "batch": 3,
+   "because": "FROM",
+   "date": "2026-10-20",
+   "hits": [
+    "万圣节"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.5SyM0P931IBkDjRnMBhpHA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "(付録) 猫好き狙い撃ち！ スタバのハロウィン新作『ブラックベリー ヨーグルト フラペチーノ』はチョコでできた「猫耳」付き / もちろん、めっちゃ美味しい",
+   "score": 8,
+   "source": "Techloy",
+   "taste": [
+    [
+     "ハロウィン",
+     3
+    ],
+    [
+     "万圣节",
+     3
+    ]
+   ],
+   "title": "From Arrives on Netflix for Halloween as Season 4 Stays on MGM+",
+   "url": "https://www.techloy.com/from-season-4-netflix/",
+   "words": [
+    "ハロウィン"
+   ],
+   "work": "FROM"
+  },
+  {
+   "batch": 3,
+   "because": "あつ森",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "【 あつ森 】 案内所横に作るパン屋さん 🍞 絵本のような島 【 #島クリエイト / #ぷにLIVE 】 Yulia Putintseva (9GFUvLqUCC)",
+   "score": 8,
+   "source": "Howl.link",
+   "taste": [
+    [
+     "作品:あつ森",
+     4
+    ]
+   ],
+   "title": "🎮【あつまれどうぶつの森 】10/20￤7日目￤久しぶりに色々するぞ【夢宮 ねむり。/ Vtuber】 - YouTube",
+   "url": "https://t.co/CM6Qxx73tL",
+   "words": [],
+   "work": "あつ森"
+  },
+  {
+   "batch": 3,
+   "because": "チェーンソーマン",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.6qDS_z6gWDW6SgCCaNw6Mw&pid=News&w=1000",
+   "kind": "board",
+   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
+   "score": 8,
+   "source": "J-CAST ニュース on MSN",
+   "taste": [
+    [
+     "作品:チェーンソーマン",
+     5
+    ]
+   ],
+   "title": "クロックス、「チェンソーマン」コラボモデルのフットウェア全4種",
+   "url": "https://www.msn.com/ja-jp/news/other/%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%82%B9-%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%9E%E3%83%B3-%E3%82%B3%E3%83%A9%E3%83%9C%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%95%E3%83%83%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E5%85%A84%E7%A8%AE/ar-AA2fDIBH",
+   "words": [],
+   "work": "チェーンソーマン"
+  },
+  {
+   "batch": 4,
+   "because": "猫用品",
    "date": "2026-10-19",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.kf6ldw8pvoyaG0oTeWkKvQ&pid=News&w=400",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "ねこちゃんホンポ on MSN",
+   "taste": [
+    [
+     "猫",
+     5
+    ],
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "猫が発症しやすい『病気』5選 注意すべき症状や健康を守るためにできること",
+   "url": "https://www.msn.com/ja-jp/news/other/%E7%8C%AB%E3%81%8C%E7%99%BA%E7%97%87%E3%81%97%E3%82%84%E3%81%99%E3%81%84-%E7%97%85%E6%B0%97-5%E9%81%B8-%E6%B3%A8%E6%84%8F%E3%81%99%E3%81%B9%E3%81%8D%E7%97%87%E7%8A%B6%E3%82%84%E5%81%A5%E5%BA%B7%E3%82%92%E5%AE%88%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8/ar-AA2fCn2P",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
+  },
+  {
+   "batch": 4,
+   "because": "Astrae Oratio",
+   "date": "2026-10-19",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.IOyy5jAniPeLhqezTlOByQ&pid=News&w=1200",
+   "kind": "board",
+   "liked": "AGF 2026 主赞助，设 150 台试玩",
+   "score": 8,
+   "source": "note",
+   "taste": [
+    [
+     "作品:Astrae Oratio",
+     6
+    ]
+   ],
+   "title": "[#아스오라] 마마마로부터 15년, 『아스트라에 오라티오』가 제시하는 '마법소녀×신전기'의 잠재력 [CBT 완주 괴문서]",
+   "url": "https://note.com/houtaruu/n/nc96b0ed302df?hl=ko",
+   "words": [],
+   "work": "Astrae Oratio"
+  },
+  {
+   "batch": 4,
+   "because": "ILLIT",
+   "date": "2026-10-19",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.Tw408Jo7-WCfcnK3zPpcHA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "위키트리 on MSN",
+   "taste": [
+    [
+     "作品:ILLIT",
+     5
+    ]
+   ],
+   "title": "그래서 빈자리 많았나... 도마에 오른 아일릿 콘서트 티켓값",
+   "url": "https://www.msn.com/ko-kr/entertainment/music/%EA%B7%B8%EB%9E%98%EC%84%9C-%EB%B9%88%EC%9E%90%EB%A6%AC-%EB%A7%8E%EC%95%98%EB%82%98-%EB%8F%84%EB%A7%88%EC%97%90-%EC%98%A4%EB%A5%B8-%EC%95%84%EC%9D%BC%EB%A6%BF-%EC%BD%98%EC%84%9C%ED%8A%B8-%ED%8B%B0%EC%BC%93%EA%B0%92/ar-AA2fz2sk",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 4,
+   "because": "ILLIT",
+   "date": "2026-10-18",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.r8uHwjjO1wlVTPWG4mn6Mw&pid=News&w=759",
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "AFPBB News on MSN",
+   "taste": [
+    [
+     "作品:ILLIT",
+     5
+    ]
+   ],
+   "title": "ILLITのIROHAが足首を負傷…アンコール公演、出演を一部制限する可能性",
+   "url": "https://www.msn.com/ja-jp/news/other/illit%E3%81%AEiroha%E3%81%8C%E8%B6%B3%E9%A6%96%E3%82%92%E8%B2%A0%E5%82%B7-%E3%82%A2%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%AB%E5%85%AC%E6%BC%94-%E5%87%BA%E6%BC%94%E3%82%92%E4%B8%80%E9%83%A8%E5%88%B6%E9%99%90%E3%81%99%E3%82%8B%E5%8F%AF%E8%83%BD%E6%80%A7/ar-AA2evqqT",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 4,
+   "because": "Astrae Oratio",
+   "date": "2026-10-17",
+   "hits": [],
+   "image": "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp",
+   "kind": "board",
+   "liked": "AGF 2026 主赞助，设 150 台试玩",
+   "score": 8,
+   "source": "Mobile Goddess",
+   "taste": [
+    [
+     "作品:Astrae Oratio",
+     6
+    ]
+   ],
+   "title": "Astrae Oratio CBT 於 10/2–6 在日本舉行，AppMedia 報導內容| 全球手遊最新資訊",
+   "url": "https://www.mgoddess.com/news/rpg-cbt-appmedia/?lang=zh-TW",
+   "words": [],
+   "work": "Astrae Oratio"
+  },
+  {
+   "batch": 5,
+   "because": "ちいかわ",
+   "date": "2026-10-20",
    "hits": [
     "ちいかわ"
    ],
-   "image": "https://www.bing.com/th?id=ONUT.hKQVpfa_HbcGfMsif4dQsw&pid=News&w=1200",
+   "image": "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600",
    "kind": "board",
    "liked": "”言わないよねェッ”「まじかるちいかわ」強くなったハチワレ＆うさぎ、あのこが全長70cm超の抱きぬいぐるみに！",
    "score": 7,
-   "source": "KAI-YOU.net",
+   "source": "朝日新聞デジタル",
    "taste": [
     [
      "ちいかわ",
@@ -184,12 +1474,844 @@
      1
     ]
    ],
-   "title": "ANA「ちいかわジェット」が運航開始 陸海空を制覇する最強キャラコンテンツに",
-   "url": "https://kai-you.net/article/96869",
+   "title": "いいね！ちいかわたちと空の旅",
+   "url": "https://www.asahi.com/asagakuplus/article/asasho/16979815",
    "words": [
     "ちいかわ"
    ],
    "work": "ちいかわ"
+  },
+  {
+   "batch": 5,
+   "because": "ちいかわ",
+   "date": "2026-10-20",
+   "hits": [
+    "ちいかわ"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.Pu2HDojRk_S-IQbRhjybcQ&pid=News&w=1200",
+   "kind": "board",
+   "liked": "”言わないよねェッ”「まじかるちいかわ」強くなったハチワレ＆うさぎ、あのこが全長70cm超の抱きぬいぐるみに！",
+   "score": 7,
+   "source": "ナタリー",
+   "taste": [
+    [
+     "ちいかわ",
+     2
+    ],
+    [
+     "作品:ちいかわ",
+     1
+    ]
+   ],
+   "title": "アニメ「ちいかわ」ちいかわたちが「ヤーッ!!!」と飛び出す仕掛け絵本が登場",
+   "url": "https://natalie.mu/comic/news/694460",
+   "words": [
+    "ちいかわ"
+   ],
+   "work": "ちいかわ"
+  },
+  {
+   "batch": 5,
+   "because": "周杰伦",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://q2.itc.cn/q_70/images03/20261021/edb9e35a855b43f7b6f34ff227088d03.jpeg",
+   "kind": "board",
+   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
+   "score": 6,
+   "source": "搜狐",
+   "taste": [
+    [
+     "作品:周杰伦",
+     2
+    ]
+   ],
+   "title": "周杰伦认同“中国歌手”身份 国台办点赞",
+   "url": "https://m.sohu.com/a/1090632081_120952561?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
+   "words": [],
+   "work": "周杰伦"
+  },
+  {
+   "batch": 5,
+   "because": "漫威电影",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.XjPs58_MHrTfv0e2lk4NDA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "YouTube on MSN",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Marvel just confirmed where Dr. Doom has been this whole time | Avengers Doomsday",
+   "url": "https://www.msn.com/en-us/news/other/marvel-just-confirmed-where-dr-doom-has-been-this-whole-time-avengers-doomsday/vi-AA2fGUVm",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
+   "because": "BLEACH Mirrors High",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA27dZtk.img",
+   "kind": "board",
+   "liked": "【ミラハイ】配信日や事前登録など最新情報まとめ【BLEACH Mirrors High】",
+   "score": 6,
+   "source": "ニコニコニュース",
+   "taste": [
+    [
+     "作品:BLEACH Mirrors High",
+     2
+    ]
+   ],
+   "title": "新作スマートフォンゲーム「BLEACH Mirrors High」にて10/27 19時より「SPECIAL",
+   "url": "https://news.nicovideo.jp/watch/nw19900276?news_ref=60_60",
+   "words": [],
+   "work": "BLEACH Mirrors High"
+  },
+  {
+   "batch": 6,
+   "because": "ちいかわ 漫画",
+   "date": "2026-10-20",
+   "hits": [
+    "ちいかわ",
+    "黑白配色"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.MH3JwAwsfj5WaWHrDVW_Ag&pid=News&w=1192",
+   "kind": "board",
+   "liked": "”言わないよねェッ”「まじかるちいかわ」強くなったハチワレ＆うさぎ、あのこが全長70cm超の抱きぬいぐるみに！",
+   "score": 6,
+   "source": "リアルサウンド on MSN",
+   "taste": [
+    [
+     "ちいかわ",
+     2
+    ]
+   ],
+   "title": "ちいかわのユーザーネームは超有名アイス? ハチワレ「パスタライ助」に続くグッズ化なるか",
+   "url": "https://www.msn.com/ja-jp/entertainment/celebrities/%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%AF%E8%B6%85%E6%9C%89%E5%90%8D%E3%82%A2%E3%82%A4%E3%82%B9-%E3%83%8F%E3%83%81%E3%83%AF%E3%83%AC-%E3%83%91%E3%82%B9%E3%82%BF%E3%83%A9%E3%82%A4%E5%8A%A9-%E3%81%AB%E7%B6%9A%E3%81%8F%E3%82%B0%E3%83%83%E3%82%BA%E5%8C%96%E3%81%AA%E3%82%8B%E3%81%8B/ar-AA2fHhhr",
+   "words": [
+    "ちいかわ",
+    "賓士貓"
+   ],
+   "work": "ちいかわ 漫画"
+  },
+  {
+   "batch": 6,
+   "because": "周杰伦",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.CL9EDibw_g3CF9Ril5z6lQ&pid=News&w=1200",
+   "kind": "board",
+   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
+   "score": 6,
+   "source": "Global Times",
+   "taste": [
+    [
+     "作品:周杰伦",
+     2
+    ]
+   ],
+   "title": "Mainland spokesperson slams DPP authorities' restriction against actor Zhang Linghe, supports Jay Chou's identification as Chinese singer",
+   "url": "https://www.globaltimes.cn/page/202610/1372701.shtml",
+   "words": [],
+   "work": "周杰伦"
+  },
+  {
+   "batch": 6,
+   "because": "The Mandalorian",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
+   "score": 6,
+   "source": "Star Wars News Net",
+   "taste": [
+    [
+     "作品:The Mandalorian",
+     2
+    ]
+   ],
+   "title": "Can Starfighter Outearn The Mandalorian and Grogu at the Box Office",
+   "url": "https://www.starwarsnewsnet.com/2026/10/can-starfighter-outearn-the-mandalorian-and-grogu-at-the-box-office.html",
+   "words": [],
+   "work": "The Mandalorian"
+  },
+  {
+   "batch": 6,
+   "because": "The Mandalorian",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
+   "score": 6,
+   "source": "Milwaukee Journal Sentinel",
+   "taste": [
+    [
+     "作品:The Mandalorian",
+     2
+    ]
+   ],
+   "title": "Brewers technician spends 200 hours making team-themed Mandalorian armor",
+   "url": "https://www.jsonline.com/story/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92251749007/",
+   "words": [],
+   "work": "The Mandalorian"
+  },
+  {
+   "batch": 6,
+   "because": "漫威电影",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.Q5E1fu679-XoM0XKJaMLsA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "ComicBook.com",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Marvel’s Biggest Fumble After Avengers: Endgame Is Still A Problem the MCU Has to Solve After Doomsday & Secret Wars",
+   "url": "https://comicbook.com/movies/feature/marvels-biggest-fumble-after-avengers-endgame-is-still-a-problem-the-mcu-has-to-solve-after-doomsday-secret-wars/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 7,
+   "because": "ちいかわ イベント",
+   "date": "2026-10-18",
+   "hits": [
+    "ちいかわ"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640",
+   "kind": "board",
+   "liked": "”言わないよねェッ”「まじかるちいかわ」強くなったハチワレ＆うさぎ、あのこが全長70cm超の抱きぬいぐるみに！",
+   "score": 6,
+   "source": "カナロコ",
+   "taste": [
+    [
+     "ちいかわ",
+     2
+    ]
+   ],
+   "title": "ちいかわ特別機を公開",
+   "url": "https://www.kanaloco.jp/news/social/article-1313366.html",
+   "words": [
+    "ちいかわ"
+   ],
+   "work": "ちいかわ イベント"
+  },
+  {
+   "batch": 7,
+   "because": "ちいかわ イベント",
+   "date": "2026-10-16",
+   "hits": [
+    "ちいかわ"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.nMRhsqQ2C4JIRPMRsIpO5Q&pid=News&w=1200",
+   "kind": "board",
+   "liked": "”言わないよねェッ”「まじかるちいかわ」強くなったハチワレ＆うさぎ、あのこが全長70cm超の抱きぬいぐるみに！",
+   "score": 6,
+   "source": "AFPBB News on MSN",
+   "taste": [
+    [
+     "ちいかわ",
+     2
+    ]
+   ],
+   "title": "「ちいかわ」、中国伝統建築の神獣モチーフを北京限定で展開",
+   "url": "https://www.msn.com/ja-jp/news/other/%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F-%E4%B8%AD%E5%9B%BD%E4%BC%9D%E7%B5%B1%E5%BB%BA%E7%AF%89%E3%81%AE%E7%A5%9E%E7%8D%A3%E3%83%A2%E3%83%81%E3%83%BC%E3%83%95%E3%82%92%E5%8C%97%E4%BA%AC%E9%99%90%E5%AE%9A%E3%81%A7%E5%B1%95%E9%96%8B/ar-AA2eprG4",
+   "words": [
+    "ちいかわ"
+   ],
+   "work": "ちいかわ イベント"
+  },
+  {
+   "batch": 7,
+   "because": "dota2",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "Hawk Live",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "Korb3n Gave a Straight Answer on Whether Collapse Will Return to the Dota 2 Pro Scene",
+   "url": "https://hawk.live/posts/korb3n-gave-straight-answer-whether-collapse-will-return-dota-2-pro-scene",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 7,
+   "because": "A2O LITE",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://cdn.hidomin.com/news/photo/202610/725860_428727_0019.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 5,
+   "source": "www.hidomin.com",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     1
+    ]
+   ],
+   "title": "A2O LITE 아이찡, 보아 닮은꼴 화제…데뷔 일주일 만에 1위",
+   "url": "https://www.hidomin.com/news/articleView.html?idxno=725860",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 7,
+   "because": "A2O LITE",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://img3.utuku.imgcdc.com/650x0/news/20261021/c0f3bc3b-2507-4ad2-9e6f-197eeec55c08.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 5,
+   "source": "中华网",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     1
+    ]
+   ],
+   "title": "工作人员被A2OLITE退场吓到 欠薪风波引争议",
+   "url": "https://3g.china.com/act/ent/11005281/20261021/49807501.html",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 8,
+   "because": "dota2",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://p2.bahamut.com.tw/B/2KU/86/40a9c19295c5da7cd47c0046b820td25.JPG",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "GNN 新聞網",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "《特戰英豪》《Dota 2》世界冠軍老牌名門戰隊 EG 宣布 11/2 停止營運 不敵電競寒冬與巨額成本",
+   "url": "https://gnn.gamer.com.tw/detail.php?sn=313764",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 8,
+   "because": "哈利波特剧集",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.ITmpVqBNtoGDg7THX1RqoA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
+   "score": 5,
+   "source": "ComicBook.com",
+   "taste": [
+    [
+     "作品:哈利波特剧集",
+     1
+    ]
+   ],
+   "title": "Before HBO’s Harry Potter Series, A New Prop Auction Will Reveal Which Wizard Really Has the Best Wand",
+   "url": "https://comicbook.com/collectibles/news/before-hbos-harry-potter-series-a-new-prop-auction-will-reveal-which-wizard-really-has-the-best-wand/",
+   "words": [],
+   "work": "哈利波特剧集"
+  },
+  {
+   "batch": 8,
+   "because": "哈利波特剧集",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.GU75uQWnYgvJG5mT-5BTwg&pid=News&w=912",
+   "kind": "board",
+   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
+   "score": 5,
+   "source": "Winter is Coming on MSN",
+   "taste": [
+    [
+     "作品:哈利波特剧集",
+     1
+    ]
+   ],
+   "title": "HBO's Harry Potter series reportedly cost more to make than any of the movies",
+   "url": "https://www.msn.com/en-us/entertainment/movies/hbo-s-harry-potter-series-reportedly-cost-more-to-make-than-any-of-the-movies/ar-AA2fGdEB",
+   "words": [],
+   "work": "哈利波特剧集"
+  },
+  {
+   "batch": 8,
+   "because": "Vaundy",
+   "date": "2026-10-17",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "Vaundy、「しわあわせ」が急上昇1位 2021年配信楽曲が映画主題歌起用で再生数増（CDJournal）",
+   "score": 5,
+   "source": "Howl.link",
+   "taste": [
+    [
+     "作品:Vaundy",
+     1
+    ]
+   ],
+   "title": "踊り子 - Vaundy / cover nekome.",
+   "url": "https://t.co/BR7mzTQ19E",
+   "words": [],
+   "work": "Vaundy"
+  },
+  {
+   "batch": 8,
+   "because": "滑雪",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": "https://prcdn.freetls.fastly.net/release_image/33064/2573/33064-2573-f32bdd54c590493c90bb8034084823a4-3500x2092.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+   "kind": "board",
+   "score": 4,
+   "source": "PR TIMES",
+   "taste": [],
+   "title": "【トマム】ビギナーから上級者まで。誰もがスムーズに雪山へ繰り出せるスキー場の新拠点「Adventure Base」が2026年12月1日オープン",
+   "url": "https://prtimes.jp/main/html/rd/p/000002573.000033064.html",
+   "words": [],
+   "work": "滑雪"
+  },
+  {
+   "batch": 9,
+   "because": "日本顶级网球赛事",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.Wq38VobTVKEpCb6AbA_sgQ&pid=News&w=1200",
+   "kind": "board",
+   "score": 4,
+   "source": "Yahoo!ニュース",
+   "taste": [],
+   "title": "世界9位シフィオンテク 東レPPO欠場、怪我で今季終了＜女子テニス＞",
+   "url": "https://news.yahoo.co.jp/articles/4759d0ec5c2f67fffa34f869042893fe4d234f36",
+   "words": [],
+   "work": "日本顶级网球赛事"
+  },
+  {
+   "batch": 9,
+   "because": "日本顶级网球赛事",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.qJENpNsoRDJ_Wwv9BLHPeQ&pid=News&w=800",
+   "kind": "board",
+   "score": 4,
+   "source": "毎日新聞デジタル",
+   "taste": [],
+   "title": "ジャパンOPテニス、内島2回戦進出",
+   "url": "https://mainichi.jp/articles/20261021/ddm/035/050/016000c",
+   "words": [],
+   "work": "日本顶级网球赛事"
+  },
+  {
+   "batch": 9,
+   "because": "FROM",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200",
+   "kind": "board",
+   "score": 4,
+   "source": "Decider",
+   "taste": [],
+   "title": "'From' Is Now Streaming on Netflix: Where To Watch 'From' Season 4 For Free",
+   "url": "https://decider.com/2026/10/20/from-show-season-4-netflix-where-to-watch-from-season-4-free-mgm-plus/",
+   "words": [],
+   "work": "FROM"
+  },
+  {
+   "batch": 9,
+   "because": "滑雪",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/09/444878_1.jpg",
+   "kind": "board",
+   "score": 4,
+   "source": "Dellows News",
+   "taste": [],
+   "title": "川場スキー場が2026-27シーズンに向け新パーク新設や施設刷新を実施へ",
+   "url": "https://news.dellows.jp/444878/",
+   "words": [],
+   "work": "滑雪"
+  },
+  {
+   "batch": 0,
+   "because": "漫威电影",
+   "date": "2026-10-16",
+   "hits": [
+    "超级英雄电影"
+   ],
+   "image": "https://scontent-sjc3-1.xx.fbcdn.net/v/t51.71878-15/851829434_1657957355672157_598019026852783350_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a27664&_nc_ohc=uKSc0b5fZFEQ7kNvwFxE5ms&_nc_oc=AdqmBBqeKqxLAPsvjT85BPpF_EHNTZvG-6X1_yY5Ot2mPnQ4nwiUFLImYpprEyA5CYs&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=8yCkfeRA7k1_NKbixFL9Mg&_nc_ss=7820f&oh=00_AQOQdGlX1cpi4E0KSvVx2CSSu0e_bKoaPsdHUtpgJL7PRw&oe=6ADE1E65",
+   "kind": "follow",
+   "source": "Facebook",
+   "taste": [
+    [
+     "超级英雄电影",
+     3
+    ]
+   ],
+   "title": "#Clayface director James Watkins speaks to the freedom and encouragement that DC Studios Co-Chairs James Gunn and Peter Safran gave him to enter this new realm with the first body horror/ psychologica",
+   "url": "https://www.facebook.com/deadline/videos/clayface-director-james-watkins-speaks-to-the-freedom-and-encouragement-that-dc-/1228379646445411/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 0,
+   "because": "GTA 6",
+   "date": "2026-10-20",
+   "hits": [
+    "开放世界大作"
+   ],
+   "image": "https://news.pchome.com.tw/newsdata/game/gamer/20261020/79249250522710203104_original.jpg",
+   "kind": "follow",
+   "source": "PChome Online 新聞",
+   "taste": [
+    [
+     "开放世界大作",
+     2
+    ]
+   ],
+   "title": "收服魔物娘！開放世界像素生存新作《魔物娘世界 2040》免費試玩版參加 Steam Next Fest",
+   "url": "https://news.pchome.com.tw/game/gamer/20261020/index-79249250522710203104.html",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 0,
+   "because": "gelato pique",
+   "date": "2026-10-19",
+   "hits": [
+    "可爱居家服新品"
+   ],
+   "image": "https://prcdn.freetls.fastly.net/release_image/12048/1247/12048-1247-64977d38e7992af398fbe6cd29e05b7d-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+   "kind": "follow",
+   "source": "PR TIMES",
+   "taste": [
+    [
+     "可爱居家服新品",
+     1
+    ]
+   ],
+   "title": "TVアニメ『マーメイドメロディー ぴちぴちピッチ』新作グッズが登場！“アニマルパジャマパーティー”がテーマの描き下ろしイラストを使用した魅力的なラインナップ!!",
+   "url": "https://prtimes.jp/main/html/rd/p/000001247.000012048.html",
+   "words": [],
+   "work": "gelato pique"
+  },
+  {
+   "batch": 0,
+   "because": "猫用品",
+   "date": "2026-10-16",
+   "hits": [
+    "猫咪新奇用品"
+   ],
+   "image": "https://media.loom-app.com/roomie/dist/images/2026/10/IMG_2560-scaled.jpg?w=1200",
+   "kind": "follow",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "source": "Roomie",
+   "taste": [
+    [
+     "猫咪新奇用品",
+     1
+    ]
+   ],
+   "title": "舒服到竟和貓搶著用！無印良品新品坐墊，堪稱是一石三鳥的傑作",
+   "url": "https://www.roomie.tw/posts/170744",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
+  },
+  {
+   "batch": 1,
+   "because": "ILLIT",
+   "date": "2026-10-16",
+   "hits": [
+    "K-POP 女团日本公演"
+   ],
+   "image": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/9d9e789b4277078469474ab5001f9d85.webp?fit=1200%2C900&ssl=1",
+   "kind": "follow",
+   "source": "韓スタ！",
+   "taste": [
+    [
+     "K-POP 女团日本公演",
+     1
+    ]
+   ],
+   "title": "【インタビュー】日本人4人所属・K-POPガールズグループ最多24人組 tripleS、ユニット tripleS sunが日本オリジナル新曲｢DNA (Dream N Access)｣リリース―「朝の身支度にもピッタリです」",
+   "url": "https://kanstarpress.com/?p=206081",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 1,
+   "because": "チェーンソーマン",
+   "date": "2026-10-21",
+   "hits": [
+    "新作动画・动画化"
+   ],
+   "image": "https://hashout.jp/wp-content/uploads/2026/10/2112750859813597279-img-1200x675.png",
+   "kind": "follow",
+   "source": "shiritomo",
+   "taste": [],
+   "title": "『性別「モナリザ」の君へ。』TVアニメ化、2027年放送決定――12歳で性別を選ぶ世界の物語",
+   "url": "https://hashout.jp/anime/12944/",
+   "words": [],
+   "work": "チェーンソーマン"
+  },
+  {
+   "batch": 1,
+   "because": "SALONIA 无线直发夹（コードレス ストレートアイロン）",
+   "date": "2026-10-21",
+   "hits": [
+    "无线直发夹"
+   ],
+   "image": "https://media.image.infoseek.co.jp/isnews/photos/itmedia_favlog/itmedia_favlog_4062502_0.jpg",
+   "kind": "hesitate",
+   "source": "Infoseek",
+   "taste": [],
+   "title": "「コードレスアイロン」売れ筋ピックアップ3選 ティファールや東芝のモデルが人気【2026年10月版】",
+   "url": "https://news.infoseek.co.jp/article/itmedia_favlog_4062502/",
+   "words": [
+    "スチーマー"
+   ],
+   "work": "SALONIA 无线直发夹（コードレス ストレートアイロン）"
+  },
+  {
+   "batch": 1,
+   "because": "日本顶级网球赛事",
+   "date": "2026-10-16",
+   "hits": [
+    "关西体育观战"
+   ],
+   "image": "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg",
+   "kind": "follow",
+   "source": "水戸ホーリーホック公式サイト",
+   "taste": [],
+   "title": "【10/28(水)C大阪戦】２０２６／２７Ｊリーグ ヤマザキビスケット ルヴァンカップ1stラウンド 4回戦 C大阪戦チケット販売概要について",
+   "url": "https://www.mito-hollyhock.net/news/p=55367/",
+   "words": [],
+   "work": "日本顶级网球赛事"
+  },
+  {
+   "batch": 2,
+   "because": "Astrae Oratio",
+   "date": "2026-10-14",
+   "hits": [
+    "动画风新作手游"
+   ],
+   "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg",
+   "kind": "follow",
+   "source": "Dexerto",
+   "taste": [],
+   "title": "Arknights Endfield: Gameplay, trailers, closed beta, more",
+   "url": "https://www.dexerto.com/gaming/arknights-endfield-gameplay-trailers-platforms-beta-1833704/",
+   "words": [],
+   "work": "Astrae Oratio"
+  },
+  {
+   "batch": 2,
+   "because": "漫威电影",
+   "date": "2026-10-16",
+   "hits": [
+    "超级英雄电影"
+   ],
+   "image": "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/10/steven-soderbergh-the-batman-part-2-banner.jpg?fit=1920%2C820&ssl=1",
+   "kind": "follow",
+   "source": "Knight Edge Media",
+   "taste": [
+    [
+     "超级英雄电影",
+     3
+    ]
+   ],
+   "title": "Steven Soderbergh Takes Over Directing ‘The Batman: Part 2’ Amidst Production Shutdown",
+   "url": "https://knightedgemedia.com/2026/10/steven-sodenberg-takes-over-directing-the-batman-part-2/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 2,
+   "because": "GTA 6",
+   "date": "2026-10-19",
+   "hits": [
+    "开放世界大作"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.CaUEP9VO4Qp_oyc3UjMZUQ&pid=News&w=1200",
+   "kind": "follow",
+   "source": "Bleeding Cool News",
+   "taste": [
+    [
+     "开放世界大作",
+     2
+    ]
+   ],
+   "title": "Jumanji: Open World – A New Poster Has Been Released",
+   "url": "https://bleedingcool.com/movies/jumanji-open-world-a-new-poster-has-been-released/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 2,
+   "because": "gelato pique",
+   "date": "2026-10-17",
+   "hits": [
+    "可爱居家服新品"
+   ],
+   "image": "https://dtimes.jp/wp-content/uploads/2026/10/dtimes-engine-92fda49af86e1960342cd1590aeeb716-20261016-9df79b.jpg",
+   "kind": "follow",
+   "liked": "【2026最新】台湾スタバ限定グッズ！くまのプーさんとスヌーピーの新作が登場",
+   "source": "Dtimes",
+   "taste": [
+    [
+     "可爱居家服新品",
+     1
+    ]
+   ],
+   "title": "初コラボ、ハートモチーフのルームウェアやファートートが10月19日発売！「リラックマ」×「Chico」コラボアイテム",
+   "url": "https://dtimes.jp/post-1418966/",
+   "words": [
+    "くま"
+   ],
+   "work": "gelato pique"
+  },
+  {
+   "batch": 3,
+   "because": "猫用品",
+   "date": "2026-10-16",
+   "hits": [
+    "猫咪新奇用品"
+   ],
+   "image": "https://resource02.ulifestyle.com.hk/ulcms/content/article/ogimage/2026/10/20261015020853_29a0258fa45e59650940779ab423672adb2f4514.png",
+   "kind": "follow",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "source": "港生活",
+   "taste": [
+    [
+     "猫咪新奇用品",
+     1
+    ]
+   ],
+   "title": "POP MART香港新品｜LABUBU 一喵變貓系列登場！10.16門店開售／8大新品詳情全攻略",
+   "url": "https://hk.ulifestyle.com.hk/activity/detail/20113927/pop-mart%E9%A6%99%E6%B8%AF%E6%96%B0%E5%93%81-labubu-%E4%B8%80%E5%96%B5%E8%AE%8A%E8%B2%93%E7%B3%BB%E5%88%97%E7%99%BB%E5%A0%B4-%E9%96%80%E5%BA%97%E9%96%8B%E5%94%AE-%E5%A4%A7%E6%96%B0%E5%93%81%E8%A9%B3%E6%83%85%E5%85%A8%E6%94%BB%E7%95%A5",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
+  },
+  {
+   "batch": 3,
+   "because": "チェーンソーマン",
+   "date": "2026-10-19",
+   "hits": [
+    "新作动画・动画化"
+   ],
+   "image": "https://img.toy-people.com/member/179239572485.jpg",
+   "kind": "follow",
+   "source": "玩具人 TOY PEOPLE",
+   "taste": [],
+   "title": "芳文社の4コマ漫画『ぬるめた』TVアニメ化決定！ 2027年放送予定",
+   "url": "https://www.toy-people.com/jp/?p=115578",
+   "words": [],
+   "work": "チェーンソーマン"
+  },
+  {
+   "batch": 3,
+   "because": "gelato pique",
+   "date": "2026-10-17",
+   "hits": [
+    "可爱居家服新品"
+   ],
+   "image": "https://animeanime.jp/imgs/ogp_f/942450.jpg",
+   "kind": "follow",
+   "liked": "【2026最新】台湾スタバ限定グッズ！くまのプーさんとスヌーピーの新作が登場",
+   "source": "アニメ！アニメ！",
+   "taste": [
+    [
+     "可爱居家服新品",
+     1
+    ]
+   ],
+   "title": "「コリラックマ」×「OLIVE des OLIVE」コラボ第3弾！ 冬にぴったりなルームウェアやイヤマフ、ミニトートバッグが登場",
+   "url": "https://animeanime.jp/article/2026/10/17/103903.html",
+   "words": [
+    "くま"
+   ],
+   "work": "gelato pique"
+  },
+  {
+   "batch": 3,
+   "because": "チェーンソーマン",
+   "date": "2026-10-19",
+   "hits": [
+    "新作动画・动画化"
+   ],
+   "image": "https://cdn.sounova.com/upload/XU9tun0jGntZA0UXfDiS3.webp",
+   "kind": "follow",
+   "source": "SouNova 少女星",
+   "taste": [],
+   "title": "Crunchyroll 2026 年秋季新番陣容重磅公開：《螢火蟲的出嫁》、《黑色五葉草》第二季等作品秋季檔期持續播映",
+   "url": "https://sounova.com/anime/crunchyroll-fall-2026-anime-lineup-release-schedule",
+   "words": [],
+   "work": "チェーンソーマン"
+  },
+  {
+   "batch": 4,
+   "because": "gelato pique",
+   "date": "2026-10-16",
+   "hits": [
+    "可爱居家服新品"
+   ],
+   "image": "https://collabo-cafe.com/wp-content/uploads/hellokitty-aimys-room-donki-roomwear-eyecatch.jpg",
+   "kind": "follow",
+   "source": "コラボカフェ",
+   "taste": [
+    [
+     "可爱居家服新品",
+     1
+    ]
+   ],
+   "title": "ハローキティ 新作ルームウェア ドン・キホーテ / アピタにて発売中!",
+   "url": "https://collabo-cafe.com/events/collabo/hellokitty-aimys-room-donki-roomwear-2026/",
+   "words": [],
+   "work": "gelato pique"
+  },
+  {
+   "batch": 4,
+   "because": "チェーンソーマン",
+   "date": "2026-10-19",
+   "hits": [
+    "新作动画・动画化"
+   ],
+   "image": "https://animeanime.jp/imgs/ogp_f/944741.jpg",
+   "kind": "follow",
+   "source": "アニメ！アニメ！",
+   "taste": [],
+   "title": "「ぬるめた」TVアニメ化決定＆27年放送！原作者・こかむもは「全ての読者の皆さまにクソデカい感謝を」「まんがタイムきららMAX」連載中の“オルタナティブ日常系”",
+   "url": "https://animeanime.jp/article/2026/10/19/103949.html",
+   "words": [],
+   "work": "チェーンソーマン"
   }
  ],
  "taste": [
@@ -202,15 +2324,15 @@
    9
   ],
   [
+   "三星 Galaxy",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "三星 Galaxy",
    7
   ],
   [

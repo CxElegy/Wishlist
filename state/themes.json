@@ -239,6 +239,16 @@
   "font": "serif",
   "split": false
  },
+ "hero|https://www.inside-games.jp/imgs/ogp_f/1796555.jpg": {
+  "accent": "#E64C5A",
+  "alt_accent": "#C41C2B",
+  "alt_bg": "#F3E7E8",
+  "alt_fg": "#1A1C22",
+  "bg": "#261214",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "あつ森|None": {
   "accent": "#E0703F",
   "alt_accent": "#B83A17",
@@ -397,6 +407,16 @@
   "bg": "#1A1C22",
   "fg": "#F1EEE6",
   "font": "sans",
+  "split": false
+ },
+ "绝区零|https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213": {
+  "accent": "#D8875A",
+  "alt_accent": "#A55427",
+  "alt_bg": "#E9EFF2",
+  "alt_fg": "#1A1C22",
+  "bg": "#151E23",
+  "fg": "#F2EEE6",
+  "font": "serif",
   "split": false
  },
  "绝区零|https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/285a6967d0efc7e37dad0e6a2d5ec3f0139915fc/header_alt_assets_1.jpg?t=1788905636": {
