@@ -448,3 +448,32 @@ end $$;
 
 update public.app_users set name_key = 'c.elegy@outlook.com', name = 'c.elegy@outlook.com'
  where name_key = 'cxelegy' and not exists (select 1 from public.app_users x where x.name_key = 'c.elegy@outlook.com');
+
+-- ⑰ 店長はメール＋パスワード（2026-10-21，用户定的：毎回のメール確認はやめる・パスワードの再発行は要らない）。
+--    はじめの 1 回だけ網页で自分で決める（pw_setup が開いている間だけ、決めたら閉じる）。変えるのはログイン中のメニューから（auth.updateUser）。
+insert into private.auth_flags (key, on_) values ('pw_setup', true)
+on conflict (key) do update set on_ = true;
+
+create or replace function public.shop_pw_setup_open(p_email text)
+returns boolean language sql stable security definer set search_path = '' as $$
+  select coalesce((select on_ from private.auth_flags where key = 'pw_setup'), false)
+     and exists (select 1 from public.invites i where i.email = lower(btrim(coalesce(p_email, ''))) and i.role = 'admin');
+$$;
+
+create or replace function public.shop_set_password(p_email text, p_password text)
+returns void language plpgsql security definer set search_path = '' as $$
+declare m text := lower(btrim(coalesce(p_email, '')));
+begin
+  if not public.shop_pw_setup_open(m) then raise exception 'パスワードはもう決まっています' using errcode = '42501'; end if;
+  if char_length(coalesce(p_password, '')) < 8 then raise exception 'パスワードは 8 文字以上にしてください'; end if;
+  update auth.users set encrypted_password = extensions.crypt(p_password, extensions.gen_salt('bf')),
+                        email_confirmed_at = coalesce(email_confirmed_at, now()), updated_at = now()
+   where lower(email) = m;
+  if not found then raise exception '店長のアカウントが見つかりません'; end if;
+  update private.auth_flags set on_ = false where key = 'pw_setup';
+end $$;
+
+revoke all on function public.shop_pw_setup_open(text) from public;
+revoke all on function public.shop_set_password(text, text) from public;
+grant execute on function public.shop_pw_setup_open(text) to anon, authenticated;
+grant execute on function public.shop_set_password(text, text) to anon, authenticated;
