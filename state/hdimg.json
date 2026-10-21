@@ -786,6 +786,12 @@
   ],
   "why": "看不清"
  },
+ "https://images.selectra.jp/articles/chiikawa-movie-4dx/hero.webp": {
+  "w": 1200,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://images.tennisclassic.jp/media/article/7766/images/main_26f81308abb511f3ab6afd46d22b6070.jpg": {
   "w": 1200,
   "h": 800,
@@ -996,6 +1002,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fGrBw.img": {
+  "w": 1200,
+  "h": 1200,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fy3qB.img": {
@@ -1863,6 +1875,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3,
+  "local": "pics/12aea26f7777cc76.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsimg.koreatimes.co.kr/2026/10/14/d9177408-f52d-48e1-afd1-af8bf9ae741b.jpg": {
   "w": 1920,
   "h": 1280,
@@ -2317,6 +2341,12 @@
   "w": 1200,
   "h": 780,
   "target": 720,
+  "v": 3
+ },
+ "https://times-abema.ismcdn.jp/mwimgs/7/7/1200w/img_771e50bee2142314898c3ce99ba4f86f490636.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://today-obs.line-scdn.net/0hIJz4AU5TFmVHTQrR-w9pMn8bGhR0KwxsZS5dAGFFGwZqYQRgfHxFBmYeT0k6LwQ7Z35ZUGQdTV09fQNgcg/w1200": {
@@ -2823,6 +2853,12 @@
  "https://www.fashion-press.net/img/news/152154/top.jpg?1792146181": {
   "w": 1600,
   "h": 1067,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.fukuoka-navi.jp/wp-content/uploads/2026/10/chi_nyupure-07.webp": {
+  "w": 1600,
+  "h": 1600,
   "target": 1280,
   "v": 3
  },
