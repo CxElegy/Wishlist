@@ -14,6 +14,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts
 
 import digest  # noqa: E402
 import render  # noqa: E402
+import sitedir  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TYPES = {"game", "anime", "show", "event", "product", "category"}
@@ -104,7 +105,7 @@ class Templates(unittest.TestCase):
             for x in item.get("emblem") or []:
                 self.assertRegex(x.get("image", ""), r"^(https://|emblems/[a-z0-9-]+\.webp$)", item["name"])
                 if x["image"].startswith("emblems/"):
-                    self.assertTrue((ROOT / "docs" / "test2" / x["image"]).exists(), x["image"])
+                    self.assertTrue((ROOT / "docs" / sitedir.SLUG / x["image"]).exists(), x["image"])
                 self.assertIn(x.get("shape"), ("cutout", "badge", "logo", "icon"), item["name"])
                 self.assertTrue(x.get("why") and x.get("subject"), item["name"])
         html_ = render._emblem([{"image": "https://a/1.png", "shape": "cutout"}, {"image": "javascript:x", "shape": "badge"},

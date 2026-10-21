@@ -66,6 +66,19 @@ class AuthTag(unittest.TestCase):
         self.assertIn("START", js)   # 新しく始めるは入口の流れに一本化
         self.assertNotIn("招待制", js)
 
+    def test_login_is_email(self):
+        # 2026-10-21，用户定的：ログインはメールアドレス（ユーザー名ではない）
+        js = render.AUTH_JS
+        self.assertIn('type="email"', js)
+        self.assertIn("isMail(n)", js)
+        self.assertNotIn("ユーザー名", js)
+        self.assertNotIn("ユーザー名", render.render_terms("10.21"))
+
+    def test_db_names_are_emails(self):
+        s = (DB / "auth.sql").read_text(encoding="utf-8")
+        last = s.rsplit("function private.user_name_ok", 1)[1]
+        self.assertIn("メールアドレスを入れてください", last)
+
 
 class AuthSql(unittest.TestCase):
     def test_no_destructive_statements(self):
@@ -125,7 +138,7 @@ class Welcome(unittest.TestCase):
         import welcome
         picks = welcome.shop_picks()
         self.assertTrue(picks)
-        self.assertTrue(all(p["img"].startswith("../test1/icons/") and p["shop"] for p in picks))
+        self.assertTrue(all(p["img"].startswith(f"../{welcome.sitedir.SLUG}/icons/") and p["shop"] for p in picks))
         self.assertTrue({p["sec"] for p in picks} <= set(welcome.taxonomy.SECTIONS))
 
 

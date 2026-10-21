@@ -2,11 +2,11 @@
 
 App のように 1 ページで画面を切り替える：
   ① 入口（何のサイトか・店長のページの本物の画面・「新しく始める」「ログイン」「店長のページを見る」）
-  ② 名前と規約 → ③ 好きなジャンル（8 つの板块）→ ④ カードを左右に（気になる / パス）→ ⑤ 最初の版面の確認 → ⑥ 店長が集めに行く
+  ② メールアドレスと規約 → ③ 好きなジャンル（8 つの板块）→ ④ カードを左右に（気になる / パス）→ ⑤ 最初の版面の確認 → ⑥ 店長が集めに行く
 このブラウザが覚えている人（localStorage の wl-user）は入口を飛ばして自分のページへ（いまは店長のページ。?stay で止まる）。
-登録は本物（public.user_signup：名前・規約の同意・好み = 言語・ジャンル・最初の版面）。本人の版面はまだ作らない（第 2 步、LOGIN.md）。
+登録は本物（public.user_signup：メールアドレス・規約の同意・好み = 言語・ジャンル・最初の版面）。本人の版面はまだ作らない（第 2 步、LOGIN.md）。
 
-カードの候補は規則で作る（AI なし）：AniList の話題のアニメ・マンガ、Steam の売れ筋、店長がフォローしてきたもの（archive/test1 の関注項とアイコン）。
+カードの候補は規則で作る（AI なし）：AniList の話題のアニメ・マンガ、Steam の売れ筋、店長がフォローしているもの（いまのアカウント＝店長の関注項とアイコン、sitedir）。
   python scripts/welcome.py            → docs/index.html（本番の入口）と docs/testground/welcome.html（候補はその時点のものを埋め込む）
   digest.py render のたびに build_if_stale()：入口が 24 時間より古いときだけ作り直す（話題の候補を新しく）。
 """
@@ -21,6 +21,7 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import render  # noqa: E402
+import sitedir  # noqa: E402
 import taxonomy  # noqa: E402
 
 OUT = ROOT / "docs" / "index.html"                       # 本番の入口（https://cxelegy.github.io/Wishlist/）
@@ -99,15 +100,15 @@ def steam(n):
 
 
 def shop_picks(base="../"):
-    """店長がフォローしてきたもの（test1 の関注項・アイコンつき）。カードに「店長も見ている」。"""
-    data = yaml.safe_load((ROOT / "archive" / "test1" / "items.yaml").read_text(encoding="utf-8"))
+    """店長がフォローしているもの（店長のアカウント＝sitedir の関注項・アイコンつき）。カードに「店長も見ている」。"""
+    data = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))
     out = []
     for it in data.get("items") or []:
         icon = (it.get("icon") or {}).get("image") if isinstance(it.get("icon"), dict) else None
         if not icon or it.get("parent"):
             continue
         sec = taxonomy.canonical(it.get("section") or taxonomy.BY_TYPE.get(it.get("type", "product"), "好物"))
-        out.append({"name": it["name"], "img": base + "test1/" + icon, "sub": (it.get("subtitle") or "")[:30],
+        out.append({"name": it["name"], "img": base + sitedir.SLUG + "/" + icon, "sub": (it.get("subtitle") or "")[:30],
                     "sec": sec, "shop": True, "square": True})
     return out
 
@@ -282,21 +283,20 @@ JS = r"""
   if (location.hash === '#name') show('name', false);   // 各ページ右上の「新しく始める」から
   $$('[data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
   $$('.bar [data-back]').forEach(b => b.addEventListener('click', () => history.back()));
-  // ---- ② 名前と規約
+  // ---- ② メールアドレスと規約（2026-10-21，用户定的：ログインはメールアドレス）
   const inp = $('#nm'), hint = $('#nm-hint'), agree = $('#agree'), next1 = $('#to-genre'); let tm = 0, okName = false;
   const v1 = () => { next1.disabled = !(okName && agree.checked); };
   inp.addEventListener('input', () => {
     clearTimeout(tm); okName = false; v1(); const n = inp.value.trim(); hint.className = 'hint';
-    if (n.length < 2) { hint.textContent = n ? '2 文字以上にしてください' : ''; return; }
-    if (/[\s<>"'`/\\]/.test(n)) { hint.textContent = '空白や < > " \' ` / \\ は使えません'; hint.className = 'hint ng'; return; }
+    if (!/^[^@\s<>"'`/\\]+@[^@\s<>"'`/\\]+\.[^@\s<>"'`/\\]+$/.test(n)) { hint.textContent = n ? 'メールアドレスの形にしてください（例：name@example.com）' : ''; if (n) hint.className = 'hint ng'; return; }
     hint.textContent = '確かめています…';
     tm = setTimeout(() => rpc('name_available', { p_name: n }).then(ok => {
       if (inp.value.trim() !== n) return;
-      okName = !!ok; hint.textContent = ok ? '✓ この名前は使えます' : 'この名前はもう使われています'; hint.className = 'hint ' + (ok ? 'ok' : 'ng'); v1();
+      okName = !!ok; hint.innerHTML = ok ? '✓ このメールアドレスで始められます' : 'このメールアドレスはもう登録されています。<a href="' + C.shop + '?login=1">ログインはこちら →</a>'; hint.className = 'hint ' + (ok ? 'ok' : 'ng'); v1();
     }).catch(() => { okName = true; hint.textContent = C.url ? '（確かめられませんでした。最後の登録のときにもう一度確かめます）' : '（プレビューなので確かめません）'; v1(); }), 350);
   });
   agree.addEventListener('change', v1);
-  next1.addEventListener('click', () => { st.name = inp.value.trim(); show('lang'); });
+  next1.addEventListener('click', () => { st.name = inp.value.trim().toLowerCase(); show('lang'); });
   // ---- 言語（ニュースの言語。いちばん読みやすい 1 つ＋ほかに見てもよい言語）
   // ブラウザの言語がよく使う言語に入っていなければ、先頭の列に足しておく
   if (!C.top.includes(guess)) { const t = $('#lang-top'); const b = document.createElement('button'); b.type = 'button'; b.className = 'lang'; b.dataset.l = guess; b.textContent = NAMES[guess]; t.prepend(b); }
@@ -392,7 +392,7 @@ JS = r"""
   function sum() { const n = $$('.picked li:not(.off)').length; const b = $('#to-done'); b.disabled = !n;
     b.textContent = n ? 'この ' + n + ' つで始める' : 'ひとつ以上残してください';
     $('#first-note').textContent = st.liked.length > C.first ? '最初は ' + C.first + ' つまでがおすすめ（店長が集める量が多すぎないように）。あとで増やせます。' : ''; }
-  // ---- 登録（本物）：名前・規約の同意・好みを一度に。名前が取られていたら名前の画面へ戻す
+  // ---- 登録（本物）：メールアドレス・規約の同意・好みを一度に。もう登録されていたらメールの画面へ戻す
   $('#to-done').addEventListener('click', () => {
     const keep = $$('.picked li:not(.off)').map(li => st.liked[[...li.parentNode.children].indexOf(li)]);
     const prefs = { lang: { primary: st.lang, also: [...st.also].filter(l => l !== st.lang) }, genres: [...st.genres],
@@ -400,7 +400,7 @@ JS = r"""
     const b = $('#to-done'), err = $('#signup-err'); b.disabled = true; err.textContent = '';
     const done = () => {
       try { localStorage.setItem('wl-user', JSON.stringify({ name: st.name, v: C.terms, at: Date.now() })); } catch (_) {}
-      $('#done-name').textContent = st.name; $('#done-list').innerHTML = keep.map(c => '<li title="' + esc(c.name) + '">' + esc(c.name) + '</li>').join('');
+      $('#done-name').textContent = st.name.split('@')[0]; $('#done-list').innerHTML = keep.map(c => '<li title="' + esc(c.name) + '">' + esc(c.name) + '</li>').join('');
       $('#done-lang').textContent = NAMES[st.lang]; show('done');
     };
     if (!C.url) { done(); return; }   // プレビュー（DB なし）
@@ -408,7 +408,7 @@ JS = r"""
       b.disabled = false;
       fetch(C.url.replace(/\/$/, '') + '/rest/v1/rpc/name_available', { method: 'POST', headers: { apikey: C.key, 'Content-Type': 'application/json' },
         body: JSON.stringify({ p_name: st.name }) }).then(r => r.json()).then(ok => {
-        if (ok === false) { show('name'); hint.textContent = 'その名前はたった今ほかの人が使いました。別の名前にしてください'; hint.className = 'hint ng'; okName = false; v1(); }
+        if (ok === false) { show('name'); hint.innerHTML = 'このメールアドレスはもう登録されています。<a href="' + C.shop + '?login=1">ログインはこちら →</a>'; hint.className = 'hint ng'; okName = false; v1(); }
         else err.textContent = '登録できませんでした。少し待ってからもう一度押してください';
       }).catch(() => { err.textContent = '登録できませんでした。通信を確かめてもう一度押してください'; });
     });
@@ -419,7 +419,7 @@ JS = r"""
 
 def build(out=OUT, base="", cards=None):
     """入口を書く。base = docs/ からの相対の前置き（本番の入口は ""、テストグラウンドは "../"）。"""
-    SHOP = base + "test2/"
+    SHOP = base + sitedir.SLUG + "/"   # 店長のページ
     cards = cards if cards is not None else anilist("ANIME", 12) + anilist("MANGA", 6) + steam(12) + shop_picks("")
     cards = [{**c, "img": base + c["img"]} if c.get("shop") else c for c in cards]
     secs = {s["key"]: s for s in sections()}
@@ -476,14 +476,14 @@ def build(out=OUT, base="", cards=None):
 <li><span class="n">03</span><b>自分だけの版面を読む</b><p>作品ごとの版面で、新しいことだけ。👍 / 👎 で、店長のおすすめがだんだん合ってきます。</p></li>
 </ul>
 <p class="pop">「とりあえず店長のページをのぞいてみてね」— 店長</p>
-<div class="foot"><a href="{SHOP}">店長のページ</a><a href="{SHOP}terms.html">利用規約・プライバシーポリシー</a><a href="{base}test1/">アーカイブ（2026-10-19 までの版）</a><a href="{base}testground/">テストグラウンド</a></div>
+<div class="foot"><a href="{SHOP}">店長のページ</a><a href="{SHOP}terms.html">利用規約・プライバシーポリシー</a><a href="{base}test2/">試験の版（2026-10-19〜21）</a><a href="{base}testground/">テストグラウンド</a></div>
 </div></section>
 
 <section class="scr" id="s-name"><div class="wrap">
 {bar}
-<h2 class="q">名前を決めましょう</h2>
-<p class="qs">ほかの人と同じ名前は使えません。メールアドレスでも OK。パスワードはありません。</p>
-<label class="field">ユーザー名<input id="nm" type="text" maxlength="40" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="好きな名前" autofocus></label>
+<h2 class="q">メールで始めます</h2>
+<p class="qs">次からはこのメールアドレスでログインします。パスワードはありません。メールは送りません。</p>
+<label class="field">メールアドレス<input id="nm" type="email" maxlength="120" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="name@example.com" autofocus></label>
 <p class="hint" id="nm-hint" aria-live="polite"></p>
 <label class="agree"><input type="checkbox" id="agree"><span><a href="{SHOP}terms.html" target="_blank" rel="noopener">利用規約・プライバシーポリシー</a>を読んで同意します。
 選んだ作品などの「興味・関心の情報」は、このサービスのためだけに使います。</span></label>
@@ -608,7 +608,7 @@ def preview(out):
             cards.append({**c, "img": u})
     for s in cfg["secs"].values():
         s["icon"] = data_uri(s["icon"]) if s.get("icon") else ""
-    live = "https://cxelegy.github.io/Wishlist/test2/"
+    live = sitedir.URL
     cfg.update({"cards": cards, "shop": live, "url": "", "key": ""})
     page = re.sub(r'(<script type="application/json" id="wl-cfg">).*?(</script>)',
                   lambda m: m.group(1) + json.dumps(cfg, ensure_ascii=False).replace("</", "<\\/") + m.group(2), page, flags=re.S)
@@ -616,8 +616,8 @@ def preview(out):
         page = re.sub(r'(data-k="%s"[^>]*>)<img src="[^"]*"' % re.escape(k), lambda m, s=s: m.group(1) + f'<img src="{s["icon"]}"', page)
     for name in ("shop-pc.webp", "shop-sp.webp"):
         page = page.replace(f'src="testground/welcome/{name}"', f'src="{data_uri("testground/welcome/" + name, 1200)}"')
-    page = page.replace('href="test2/', f'target="_blank" rel="noopener" href="{live}')
-    page = re.sub(r'href="(test1/|testground/)', r'target="_blank" rel="noopener" href="https://cxelegy.github.io/Wishlist/\1', page)
+    page = page.replace(f'href="{sitedir.SLUG}/', f'target="_blank" rel="noopener" href="{live}')
+    page = re.sub(r'href="(shop/|test2/|testground/)', r'target="_blank" rel="noopener" href="https://cxelegy.github.io/Wishlist/\1', page)
     # Artifact は <html><head><body> を自分で付けるので中身だけ
     head = re.search(r"<head>(.*?)</head>", page, re.S).group(1)
     body = re.search(r"<body>(.*?)</body>", page, re.S).group(1)

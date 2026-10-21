@@ -1,75 +1,483 @@
 {
- "ちいかわ": [
+ "GTA 6": [
   {
-   "headline": "「映画ちいかわ」入場者特典第7弾はナガノ描き下ろしクリアカード、全4種をランダム配布",
-   "highlight": "第7弾",
-   "blurb": "10月24日より配布開始。ちいかわ・ハチワレ・うさぎ版、ヒトハフタバ版、セイレーン＆人魚たち版、島二郎版の全4種。",
+   "headline": "GTA 6 Launch Day Is Officially One Month Away: Everything We Know So Far",
+   "highlight": "One Month Away",
+   "blurb": "GTA 6 is one month from its Nov 19 launch; roundups cover pre-order prices, map size and the PC timing question.",
    "weight": "lead",
    "refs": [
-    22,
-    21,
-    23,
-    10,
-    8,
-    14,
-    12,
-    2,
-    4,
-    20,
-    7,
-    24,
-    17,
-    18
-   ],
-   "event": {
-    "date": "2026-10-24",
-    "label": "特典配布開始"
-   },
-   "image": "https://contents.oricon.co.jp/upimg/news/2488000/2487320/20261019_133212_p_o_15239275.jpg"
-  },
-  {
-   "headline": "ANA「ちいかわジェット」就航 機体いっぱいに人気キャラ、客室も特別仕様",
-   "highlight": "就航",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    25,
-    15,
     27,
-    9,
-    13
-   ]
-  },
-  {
-   "headline": "興行成績：『映画ちいかわ 人魚の島のひみつ』2週連続週末1位…観客200万人突破なるか",
-   "highlight": "2週連続週末1位",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    30,
-    16,
-    19,
-    31,
-    11
-   ]
-  },
-  {
-   "headline": "GU新作〈マチ付きポーチ〉4種。ふわふわ冬コーデは必見の可愛さです！",
-   "highlight": "マチ付きポーチ",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5,
-    6
+    10,
+    29,
+    21
    ],
    "event": {
-    "date": "2026-11-20",
+    "date": "2026-11-19",
     "label": "発売日"
    }
   },
   {
-   "headline": "【ちいかわベーカリー】2周年記念イベント開催！ 激かわグッズ販売、レア特典がもらえるチャンスも♪",
-   "highlight": "2周年記念イベント",
+   "headline": "GTA 6 Netflix extended look: What time it releases today",
+   "highlight": "Netflix extended look",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    25
+   ]
+  },
+  {
+   "headline": "The GTA 6 distribution size on the PlayStation 5 console may exceed 200 GB.",
+   "highlight": "exceed 200 GB",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
+  },
+  {
+   "headline": "GTA 6 Qualifies for The Game Awards 2026 by a Single Day",
+   "highlight": "by a Single Day",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    36
+   ]
+  }
+ ],
+ "漫威电影": [
+  {
+   "headline": "Avengers: Doomsday global release schedule, dates and everything you need to know",
+   "highlight": "global release schedule",
+   "blurb": "Avengers: Doomsday の各国公開日程まとめ。北米は12月18日公開。",
+   "weight": "lead",
+   "refs": [
+    2,
+    23
+   ]
+  },
+  {
+   "headline": "Avengers: Doomsday Reportedly Surpasses $100 Million in Global Presales Before Release",
+   "highlight": "$100 Million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Marvel's 'Armor Wars' is now being turned into a movie instead of a Disney+ series",
+   "highlight": "turned into a movie",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "Daredevil To Finally Get His Biggest MCU Team up, But Not in Born Again 3 – Report",
+   "highlight": "Not in Born Again 3",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    21
+   ]
+  },
+  {
+   "headline": "Marvel Introduces First Gay X-Men Hero: Iceman in MCU!",
+   "highlight": "Iceman",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    35
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT、コンサートで新曲「You're Under Arrest」のステージを先行公開！活動中断中のモカとのダンスチャレンジも話題",
+   "highlight": "新曲「You're Under Arrest」",
+   "blurb": "仁川のアンコール公演で、5th ミニアルバム『BREAK EVEN』の新曲を初披露。活動休止中のモカも客席から参加した。",
+   "weight": "lead",
+   "refs": [
+    27,
+    45,
+    14,
+    19,
+    24,
+    6,
+    7,
+    10
+   ]
+  },
+  {
+   "headline": "ILLITイロハ、足首のけがを押してステージへ…26日に5thミニアルバム発売、ワールドツアーも順調",
+   "highlight": "26日に5thミニアルバム発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    52,
+    53,
+    28,
+    41,
+    55,
+    34
+   ]
+  },
+  {
+   "headline": "ILLIT 5th Mini Album 'BREAK EVEN'発売記念 クリアフォトカードラッキードロー開催決定！",
+   "highlight": "クリアフォトカードラッキードロー",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    48
+   ]
+  },
+  {
+   "headline": "ILLITウォンヒ、公演中に膝から出血もパフォーマンス完遂 プロ意識に賛否両論",
+   "highlight": "膝から出血",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    38,
+    39,
+    40,
+    61
+   ]
+  },
+  {
+   "headline": "ILLIT「インスパイア公演」、案の定「空席」目立つ＋公式アカウントに、観客席バックにした写真UPされず",
+   "highlight": "「空席」目立つ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    42,
+    2,
+    56,
+    8
+   ]
+  },
+  {
+   "headline": "NAYEON (TWICE)、LE SSERAFIM、ENHYPEN、ILLIT、BABYMONSTER、KiiiKiii、INIら出演決定！日本開催・大型K-POP授賞式",
+   "highlight": "日本開催",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    60
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Samsung Galaxy S27 said to launch earlier than expected, case leaks confirm design",
+   "highlight": "launch earlier than expected",
+   "blurb": "Galaxy S27 シリーズは例年より早い発売になる可能性。ケースのリークで外観も裏付けられたとの報道。",
+   "weight": "lead",
+   "refs": [
+    35,
+    27,
+    29,
+    25,
+    36,
+    33,
+    32
+   ]
+  },
+  {
+   "headline": "【最新】Galaxy S27 Proの発売日と価格・スペック！S26と比較",
+   "highlight": "発売日と価格",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    24
+   ]
+  },
+  {
+   "headline": "爆熱疑惑の「Snapdragon 8 Elite Extreme Gen 6」公式が否定、Galaxy S27 Ultraにも従来通りなく搭載か",
+   "highlight": "公式が否定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    15,
+    11,
+    22
+   ]
+  },
+  {
+   "headline": "サムスンは本気で言っているわけではない！ Galaxy S27+ 長年保持してきた機能を失う可能性がある",
+   "highlight": "Galaxy S27+",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    5,
+    20,
+    21
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra Leak Hints at Thinner Bezels and a Bigger Camera Bump",
+   "highlight": "Thinner Bezels",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    13,
+    28,
+    16
+   ]
+  },
+  {
+   "headline": "울트라 쏠림에 제품군 세분화···삼성, 갤S27 '프로' 첫 도입",
+   "highlight": "'프로' 첫 도입",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦墨尔本演唱会收官，发文愿音乐陪伴海外游子",
+   "highlight": "墨尔本演唱会收官",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16,
+    24,
+    5,
+    3,
+    18
+   ]
+  },
+  {
+   "headline": "23年后，周杰伦亲手补上《晴天》的结局",
+   "highlight": "补上《晴天》的结局",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
+   ]
+  },
+  {
+   "headline": "周杰倫開騷 昆凌報喜 家族添「新丁」",
+   "highlight": "昆凌報喜",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    1
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "ゼンレスゾーンゼロVer.3.3ポリクローム配布量まとめ！無課金で87連を目指す全18カ所の獲得ガイド",
+   "highlight": "Ver.3.3",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "库克现身米哈游总部，《绝区零》3.3版将适配iPhone Duo",
+   "highlight": "3.3版",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    5
+   ]
+  },
+  {
+   "headline": "【ゼンゼロ】フィオニーピックアップガチャシミュレーター【ゼンレスゾーンゼロ】",
+   "highlight": "フィオニーピックアップ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "デビュー1週間で“記録と物議” SMエンタを去った創業者の新ガールズグループ、A2O LITEに集まる視線",
+   "highlight": "記録と物議",
+   "blurb": "イ・スマン制作のA2O LITEがデビュー曲「NEON」でMelon1位を記録する一方、メンバーAIJINGの親を巡る賃金未払い疑惑が拡大。",
+   "weight": "lead",
+   "refs": [
+    8,
+    41,
+    37,
+    20,
+    36
+   ]
+  },
+  {
+   "headline": "10代の娘には巨額の投資、従業員ははした金で酷使か…A2O LITEアイチンの親を巡る騒動、さらなる告発",
+   "highlight": "さらなる告発",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    29,
+    49,
+    55,
+    53,
+    28,
+    11
+   ]
+  },
+  {
+   "headline": "「離婚&非婚」に合わせて踊る「74歳」イ・スマン…A2O LITEが大ブレイク【KポップPLAY】",
+   "highlight": "大ブレイク",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    26,
+    27,
+    33
+   ]
+  },
+  {
+   "headline": "A2O LITE 'Sensation' Producer Lee Soo-man to deliver keynote at the 'K-Culture X Tech' forum",
+   "highlight": "keynote",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16,
+    9
+   ]
+  },
+  {
+   "headline": "A2O LITE、トルコで5位→ Apple Music成績に怪しむ声、Spotifyでは100位圏外",
+   "highlight": "Apple Music成績に怪しむ声",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    48,
+    45
+   ]
+  }
+ ],
+ "Astrae Oratio": [],
+ "MMORPG 新作": [
+  {
+   "headline": "10月22日発売、「씰M2」PCおよびモバイル版の事前ダウンロードが開始",
+   "highlight": "10月22日発売",
+   "blurb": "「씰M2」が10月22日に発売。PC版・モバイル版とも事前ダウンロードが始まった。",
+   "weight": "hero",
+   "refs": [
+    5
+   ],
+   "event": {
+    "date": "2026-10-22",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "ネットマーブル、最新MMORPG『ヴァンピール(VAMPIR)』、最新アップデート情報や初の公式大会の全貌を発表する第",
+   "highlight": "初の公式大会",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  },
+  {
+   "headline": "신작 MMORPG '도깨비의세계', 대구콘텐츠페어서 오프라인 시연",
+   "highlight": "오프라인 시연",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    4,
+    6
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "10月19日から本戦がスタート、初日の試合予定 [木下グループジャパンオープン]",
+   "highlight": "10月19日から本戦がスタート",
+   "blurb": "木下グループジャパンオープンは19日に本戦開幕。初日の試合予定が発表された。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "小堀桃子／清水綾乃が2年連続8強！「言わなくても伝わる」好相性ペアが目指すグランドスラム[木下グループジャパンOP]",
+   "highlight": "2年連続8強",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15,
+    5,
+    6,
+    9
+   ]
+  },
+  {
+   "headline": "本玉真唯はセンターコートの開幕試合でゴルビッチにストレート負け [木下グループジャパンオープン]",
+   "highlight": "ストレート負け",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    4,
+    12,
+    16,
+    8
+   ]
+  },
+  {
+   "headline": "本玉真唯／内島萌夏は台湾ペアにストレート負けでツアーレベル4連敗 [木下グループジャパンオープン]",
+   "highlight": "ツアーレベル4連敗",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    17,
+    10
+   ]
+  },
+  {
+   "headline": "東建コーポレーション、東レ パン パシフィック オープン 2026に協賛へ",
+   "highlight": "東レ パン パシフィック オープン 2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man Collabs With Crocs For New Footwear Collection",
+   "highlight": "Crocs",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "New Fujimoto Interview Explains Why Chainsaw Man Ending Is The Way It Is",
+   "highlight": "Fujimoto Interview",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "あつ森": [],
+ "Vaundy": [
+  {
+   "headline": "夏の高校野球、応援ソングにVaundyの書き下ろし「かげろう」決定",
+   "highlight": "書き下ろし「かげろう」",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -77,7 +485,315 @@
    ]
   }
  ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter Star Officially Confirms Iconic Scene Will Appear in HBO Series Season 2",
+   "highlight": "Season 2",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "The Mandalorian": [],
+ "滑雪": [
+  {
+   "headline": "高速道路直結0分の「佐久スキーガーデン パラダ」、2026-27は「遊べるゲレンデ」へ 連続ウェーブ・コブ専用ラインを新設",
+   "highlight": "2026-27",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
+   ]
+  },
+  {
+   "headline": "北海道・OMO7旭川 by 星野リゾートで「旭川、スキー都市宣言」",
+   "highlight": "スキー都市宣言",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "本能くすぐりまくり!?米国老舗の“猫グッズ”が日本上陸",
+   "highlight": "日本上陸",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "毛孩照護走向科技化、AI化 PChome 24h購物寵物用品月銷量雙位數成長 自動化貓砂機、餵食器、飲水機買氣增",
+   "highlight": "自動化貓砂機",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "dota2": [],
+ "gelato pique": [
+  {
+   "headline": "「過去一欲しい」「厳しい戦いになる」【ジェラピケ】『ミセスコラボ』が10/20発売",
+   "highlight": "10/20発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-10-20",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "「セサミストリート」をCOIN PARKING DELIVERYが描く！「gelato pique」のスペシャルコレクションが登場",
+   "highlight": "スペシャルコレクション",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "Starbucks' Winnie the Pooh merch drops Oct. 20, but not in America",
+   "highlight": "Oct. 20",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    1
+   ],
+   "event": {
+    "date": "2026-10-20",
+    "label": "発売日"
+   }
+  }
+ ],
+ "ちいかわ": [
+  {
+   "headline": "10/18 ANA「ちいかわジェット」が運航開始 長崎往復の次は広島往復",
+   "highlight": "運航開始",
+   "blurb": "ANAの特別塗装機「ちいかわジェット」が国内線で就航。初便は長崎へ、400人超のファンが集まった。",
+   "weight": "lead",
+   "refs": [
+    3,
+    44,
+    47,
+    48,
+    50,
+    51,
+    55,
+    91
+   ]
+  },
+  {
+   "headline": "10/18 「ちいかわ×ANA」コラボグッズ発売！ 10月23日から空港ショップなどで販売",
+   "highlight": "10月23日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    29,
+    57
+   ],
+   "event": {
+    "date": "2026-10-23",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "10/19 『映画ちいかわ』、韓国で異例のヒット！観客動員180万人を突破",
+   "highlight": "180万人",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    38,
+    6,
+    9,
+    25,
+    26
+   ]
+  },
+  {
+   "headline": "10/19 【ちいかわベーカリー】2周年記念イベント開催！激かわグッズ販売、レア特典がもらえるチャンスも",
+   "highlight": "2周年記念イベント",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    61
+   ]
+  },
+  {
+   "headline": "10/19 GU×ちいかわ新作！ふわもこ冬仕様がキュートな〈ぬいぐるみみたいなポーチ〉全4種",
+   "highlight": "GU×ちいかわ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    33,
+    32
+   ]
+  }
+ ],
+ "ちいかわ 漫画": [
+  {
+   "headline": "10/19 『映画ちいかわ』入場者特典第7弾はナガノ描き下ろしクリアカード！興収181億円突破",
+   "highlight": "入場者特典第7弾",
+   "blurb": "10月24日から配布開始。ナガノ描き下ろしのクリアカード全4種をランダム配布。",
+   "weight": "lead",
+   "refs": [
+    33,
+    10,
+    12,
+    13,
+    5,
+    8,
+    9
+   ],
+   "event": {
+    "date": "2026-10-24",
+    "label": "配布開始"
+   }
+  },
+  {
+   "headline": "10/19 「映画ちいかわ」 2週連続週末興行1位＝韓国",
+   "highlight": "2週連続週末興行1位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17,
+    15,
+    16,
+    21,
+    23
+   ]
+  },
+  {
+   "headline": "10/19 映画『ちいかわ』第7弾特典は原作者描き下ろしイラストカード 歴代興収ランキングで12位に躍り出る",
+   "highlight": "歴代興収ランキングで12位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19,
+    34
+   ]
+  },
+  {
+   "headline": "10/19 本品限定キラキラシール入り！丸美屋食品工業「期間限定 アニメちいかわ きのこのポタージュ」",
+   "highlight": "丸美屋食品工業",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    35
+   ]
+  }
+ ],
+ "ちいかわ イベント": [
+  {
+   "headline": "10/17 「ちいかわクリスマスマーケット」開催決定！事前のチケット先行抽選をチェック",
+   "highlight": "チケット先行抽選",
+   "blurb": "千葉・豊砂公園で11月24日から。先行抽選は10/15〜25。",
+   "weight": "lead",
+   "refs": [
+    4,
+    7,
+    9,
+    2,
+    16,
+    21,
+    27
+   ],
+   "event": {
+    "date": "2026-11-24",
+    "label": "開催",
+    "place": "千葉・豊砂公園"
+   }
+  },
+  {
+   "headline": "10/15 ちいかわ寿司 ポップアップストア in 横浜 10月22日より開催!",
+   "highlight": "10月22日より開催",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12,
+    24,
+    31,
+    6,
+    8,
+    11,
+    13
+   ],
+   "event": {
+    "date": "2026-10-22",
+    "label": "開催",
+    "place": "横浜スカイビル"
+   }
+  },
+  {
+   "headline": "10/13 ちいかわぽけっと POP UP 第4弾 in 5会場 10月24日より開催!",
+   "highlight": "10月24日より開催",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20,
+    19,
+    33
+   ],
+   "event": {
+    "date": "2026-10-24",
+    "label": "開催"
+   }
+  },
+  {
+   "headline": "10/14 「ちいかわベーカリー」2周年イベント開催！コロネになったちいかわたちのマスコットはじめ、アパレルや紅茶缶など限定アイテム",
+   "highlight": "2周年イベント",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
+   ]
+  },
+  {
+   "headline": "10/15 海外発・ニッポン新発見(21) 台湾の「ちいかわ」現象がすごい!",
+   "highlight": "台湾の「ちいかわ」現象",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
+   ]
+  }
+ ],
  "_covered": {
-  "ちいかわ": 31
+  "GTA 6": 38,
+  "漫威电影": 39,
+  "ILLIT": 61,
+  "三星手机": 36,
+  "周杰伦": 26,
+  "绝区零": 10,
+  "A2O LITE": 55,
+  "Astrae Oratio": 3,
+  "MMORPG 新作": 10,
+  "日本顶级网球赛事": 17,
+  "チェーンソーマン": 7,
+  "あつ森": 5,
+  "Vaundy": 1,
+  "哈利波特剧集": 1,
+  "The Mandalorian": 3,
+  "滑雪": 3,
+  "猫用品": 4,
+  "dota2": 6,
+  "gelato pique": 3,
+  "星巴克马克杯": 2,
+  "ちいかわ": 150,
+  "ちいかわ 漫画": 100,
+  "ちいかわ イベント": 33
  }
 }

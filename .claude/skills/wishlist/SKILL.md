@@ -5,8 +5,8 @@ description: 把用户喜欢的东西加进愿望清单（wishlist.yaml），网
 
 # 愿望清单
 
-数据在仓库根目录的 `wishlist.yaml`，图片放在 `docs/test2/wishlist/`。推送到 `main` 后，
-工作流会自动重新生成网页（子页面 `docs/test2/wishlist.html`，主页报头右上角和左侧目录底部有入口）并在 Discord 发一条带大图的通知。
+数据在仓库根目录的 `wishlist.yaml`，图片放在 `docs/shop/wishlist/`。推送到 `main` 后，
+工作流会自动重新生成网页（子页面 `docs/shop/wishlist.html`，主页报头右上角和左侧目录底部有入口）并在 Discord 发一条带大图的通知。
 这是现在的 account（test2）的愿望清单；test1 的在 `archive/test1/wishlist.yaml`，不动。还空着时是 `wishlist: []`，加第一件时换成列表。
 
 ## 加一件
@@ -15,8 +15,8 @@ description: 把用户喜欢的东西加进愿望清单（wishlist.yaml），网
    - 货币要有依据（繁体字 + 「毫升」+ 星巴克 → 多半是台湾 NT$）；拿不准就在 `note` 里写明是推断。
    - 可以在 `inbox/*.json` 里搜一下，收集到的消息里常常有原文链接，填进 `url`。
 2. **图片**：
-   - 用户给了截图：用 Pillow 只裁出商品本身（去掉文字和留白），存成 `docs/test2/wishlist/<英文短名>.jpg`，质量 90。
-   - 只有网址：下载商品图同样存进 `docs/test2/wishlist/`（别直接引用外站图，可能防盗链或失效）。
+   - 用户给了截图：用 Pillow 只裁出商品本身（去掉文字和留白），存成 `docs/shop/wishlist/<英文短名>.jpg`，质量 90。
+   - 只有网址：下载商品图同样存进 `docs/shop/wishlist/`（别直接引用外站图，可能防盗链或失效）。
    - 裁完用 Read 看一眼，确认商品完整、没被切掉。
 3. **写进 `wishlist.yaml`**（字段说明在文件顶部），`added` 填今天，`status: 想要`。
    和某个关注项有关（如星巴克马克杯）就填 `watch`，版面上会顺带显示那个关注项的最新消息。
@@ -25,7 +25,7 @@ description: 把用户喜欢的东西加进愿望清单（wishlist.yaml），网
    - 别用太短、容易误命中的英文（`cat` 会命中 category，写 `black cat|kitty`）。只看消息标题；5 个字母以内的英文要是完整的词。
    - 短的片假名 / 汉字会出现在别的词里时，用 `-词` 排除：`"リス|松鼠|-リスト|-イギリス"`、`"マグ|-マグロ"`；地名别当关键词（`宮崎` 换成 `宮崎駿`）。
    - 只是基本属性的标签（马克杯、限定款）放进 `basics`：照样加分，但推荐去重时不看它们。
-5. 运行 `python scripts/digest.py recommend`，看看推荐合不合理，再截图检查 `docs/test2/wishlist.html` 和主页的「我会喜欢？」，然后提交并推送。
+5. 运行 `python scripts/digest.py recommend`，看看推荐合不合理，再截图检查 `docs/shop/wishlist.html` 和主页的「我会喜欢？」，然后提交并推送。
    不要自己发 Discord：推送触发的工作流会发（`state/known_wishlist.json` 记录已通知的）。
 
 ## 改状态 / 删除

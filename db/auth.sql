@@ -378,3 +378,73 @@ revoke all on function public.user_signup(text, int, jsonb) from public;
 revoke all on function public.user_set_prefs(text, jsonb) from public;
 grant execute on function public.user_signup(text, int, jsonb) to anon, authenticated;
 grant execute on function public.user_set_prefs(text, jsonb) to anon, authenticated;
+
+-- ⑮ 店長の名前（2026-10-21，用户定的）：CxElegy でログイン → 店長のメールに換えて確認のリンクを送る
+alter table public.app_users add column if not exists email text check (email is null or email = lower(email));
+insert into public.app_users (name_key, name, agreed_version, agreed_at, email, prefs)
+values ('cxelegy', 'CxElegy', 1, now(), 'c.elegy@outlook.com',
+        '{"lang":{"primary":"ja","also":["en","zh-Hans","zh-Hant","ko"]},"role":"shop","from":"owner"}'::jsonb)
+on conflict (name_key) do update set email = excluded.email;
+
+create or replace function public.admin_email_for(p_name text) returns text
+language sql stable security definer set search_path = '' as $$
+  select u.email from public.app_users u
+    join public.invites i on i.email = u.email and i.role = 'admin'
+   where u.name_key = lower(btrim(coalesce(p_name, ''))) and u.left_at is null
+   limit 1;
+$$;
+revoke all on function public.admin_email_for(text) from public;
+grant execute on function public.admin_email_for(text) to anon, authenticated;
+
+-- ⑯ ログインはメールアドレス（2026-10-21，用户定的：ユーザー名から変えた）。app_users の name = メールアドレス（小文字で重ならない）。
+--    ⑮ の店長の名前 CxElegy は、店長のメールの行にする（admin_email_for は残すが網页はもう使わない）。
+create or replace function private.user_name_ok(p text)
+returns text language plpgsql immutable as $$
+declare n text := lower(btrim(coalesce(p, '')));
+begin
+  if char_length(n) > 120 or n !~ '^[^@[:space:][:cntrl:]<>"''`/\\]+@[^@[:space:][:cntrl:]<>"''`/\\]+\.[^@[:space:][:cntrl:]<>"''`/\\]+$' then
+    raise exception 'メールアドレスを入れてください（例：name@example.com）';
+  end if;
+  return n;
+end $$;
+
+create or replace function public.user_login(p_name text)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := btrim(coalesce(p_name, '')); r public.app_users;
+begin
+  select * into r from public.app_users u where u.name_key = lower(n) and u.left_at is null;
+  if not found then raise exception 'このメールアドレスはまだ登録されていません（はじめての方は「新しく始める」）' using errcode = 'P0002'; end if;
+  update public.app_users set last_seen = now() where name_key = r.name_key;
+  return jsonb_build_object('name', r.name, 'agreed_version', r.agreed_version);
+end $$;
+
+create or replace function public.user_register(p_name text, p_agree_version int)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := private.user_name_ok(p_name);
+begin
+  if coalesce(p_agree_version, 0) < 1 then raise exception '利用規約への同意が必要です'; end if;
+  if exists (select 1 from public.app_users u where u.name_key = n) then
+    raise exception 'このメールアドレスはもう登録されています（右上の「ログイン」から）' using errcode = '23505';
+  end if;
+  insert into public.app_users (name_key, name, agreed_version, agreed_at, email) values (n, n, p_agree_version, now(), n);
+  return jsonb_build_object('name', n, 'agreed_version', p_agree_version);
+end $$;
+
+create or replace function public.user_signup(p_name text, p_agree_version int, p_prefs jsonb)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := private.user_name_ok(p_name);
+begin
+  if coalesce(p_agree_version, 0) < 1 then raise exception '利用規約への同意が必要です'; end if;
+  if jsonb_typeof(coalesce(p_prefs, '{}'::jsonb)) <> 'object' or length(coalesce(p_prefs, '{}'::jsonb)::text) > 8000 then
+    raise exception '設定の形が正しくありません';
+  end if;
+  if exists (select 1 from public.app_users u where u.name_key = n) then
+    raise exception 'このメールアドレスはもう登録されています（右上の「ログイン」から）' using errcode = '23505';
+  end if;
+  insert into public.app_users (name_key, name, agreed_version, agreed_at, email, prefs)
+  values (n, n, p_agree_version, now(), n, coalesce(p_prefs, '{}'::jsonb));
+  return jsonb_build_object('name', n, 'agreed_version', p_agree_version);
+end $$;
+
+update public.app_users set name_key = 'c.elegy@outlook.com', name = 'c.elegy@outlook.com'
+ where name_key = 'cxelegy' and not exists (select 1 from public.app_users x where x.name_key = 'c.elegy@outlook.com');
