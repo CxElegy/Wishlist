@@ -212,7 +212,7 @@ class MediaFacetsMECE(unittest.TestCase):
     """向导の「面」（docs/additem.js の MEDIA）は MECE：層（作品／展開）に漏れなく 1 つずつ、各面の代表語はほかの面の語に当たらない。"""
 
     def facets(self):
-        js = (pathlib.Path(__file__).resolve().parent.parent / "docs" / "test1" / "additem.js").read_text(encoding="utf-8")
+        js = (pathlib.Path(__file__).resolve().parent.parent / "docs" / "shop" / "additem.js").read_text(encoding="utf-8")
         block = js[js.index("  const MEDIA = {"):js.index("\n  };", js.index("  const MEDIA = {"))]
         out = {}
         for m in re.finditer(r'^    (\w+): \{label: "([^"]+)".*?kw: \[([^\]]*)\], re: "([^"]+)"', block, re.M | re.S):
@@ -239,17 +239,22 @@ class MediaFacetsMECE(unittest.TestCase):
 
 
 class ShopSite(unittest.TestCase):
-    """2026-10-21〜：店長のページ = test1（公開ページは docs/test1/）。test2 は 10-19〜10-21 の試験の写し（docs/test2/ 凍結・archive/test2/）。
+    """2026-10-21〜：店長のページ = test1（公開ページは docs/shop/）。test2 は 10-19〜10-21 の試験の写し（docs/test2/ 凍結・archive/test2/）。
     向导は 1 つの名前 = 1 つの版面（乗換なし・面は目次の枝）。"""
+
+    def test_shop_url_has_no_test1(self):
+        import sitedir
+        self.assertEqual(sitedir.SLUG, "shop")
+        self.assertNotIn("test1", sitedir.URL)
 
     def test_pages_go_to_test1(self):
         import sitedir
         self.assertEqual(sitedir.NAME, "test1")
-        self.assertEqual(sitedir.SITE_DIR, _ROOT / "docs" / "test1")
+        self.assertEqual(sitedir.SITE_DIR, _ROOT / "docs" / "shop")
         self.assertTrue((_ROOT / "archive" / "test2" / "items.yaml").exists())   # 試験の版は残す
 
     def test_wizard_one_panel_rule(self):
-        js = (_ROOT / "docs" / "test1" / "additem.js").read_text(encoding="utf-8")
+        js = (_ROOT / "docs" / "shop" / "additem.js").read_text(encoding="utf-8")
         self.assertIn('S.ans.arrange = S.ans.splitExtras && multiSec() ? "split" : "merge"', js)   # 既定は 1 つの版面
         self.assertIn('S.ans.also = {};', js)                                                      # 乗換駅は置かない
         self.assertRegex(js, r'const KEYS = \[[^\]]*"media"')                                      # 目次の枝を送る

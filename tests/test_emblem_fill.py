@@ -588,10 +588,10 @@ class Resources(unittest.TestCase):
         import tempfile
         with tempfile.TemporaryDirectory() as d:
             d = pathlib.Path(d)
-            (d / "docs" / sitedir.NAME / "emblems").mkdir(parents=True)
+            (d / "docs" / sitedir.SLUG / "emblems").mkdir(parents=True)
             (d / ".git").mkdir()
             (d / "docs" / "a.html").write_bytes(b"x" * 100)
-            (d / "docs" / sitedir.NAME / "emblems" / "b.webp").write_bytes(b"x" * 50)
+            (d / "docs" / sitedir.SLUG / "emblems" / "b.webp").write_bytes(b"x" * 50)
             (d / ".git" / "big").write_bytes(b"x" * 1000)   # .git は数えない
             sz = resources.repo_sizes(d)
         self.assertEqual((sz["repo"], sz["pages"], sz["emblems"]), (150, 150, 50))
@@ -1048,7 +1048,7 @@ class JudgeTable(unittest.TestCase):
         for x in emblem_rules.EXAMPLES:
             self.assertIn(x["rule"], titles, x)   # 例は一覧の判断にひもづく
             for f, _ in x["before"] + x["after"]:
-                self.assertTrue((ROOT / "docs" / sitedir.NAME / f"{emblem_rules.EX}{f}.webp").exists(), f)
+                self.assertTrue((ROOT / "docs" / sitedir.SLUG / f"{emblem_rules.EX}{f}.webp").exists(), f)
         html = processes.examples_panel()
         self.assertEqual(html.count('<article class="ex '), len(emblem_rules.EXAMPLES))
         self.assertIn("外す", html)

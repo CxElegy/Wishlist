@@ -395,3 +395,56 @@ language sql stable security definer set search_path = '' as $$
 $$;
 revoke all on function public.admin_email_for(text) from public;
 grant execute on function public.admin_email_for(text) to anon, authenticated;
+
+-- ⑯ ログインはメールアドレス（2026-10-21，用户定的：ユーザー名から変えた）。app_users の name = メールアドレス（小文字で重ならない）。
+--    ⑮ の店長の名前 CxElegy は、店長のメールの行にする（admin_email_for は残すが網页はもう使わない）。
+create or replace function private.user_name_ok(p text)
+returns text language plpgsql immutable as $$
+declare n text := lower(btrim(coalesce(p, '')));
+begin
+  if char_length(n) > 120 or n !~ '^[^@[:space:][:cntrl:]<>"''`/\\]+@[^@[:space:][:cntrl:]<>"''`/\\]+\.[^@[:space:][:cntrl:]<>"''`/\\]+$' then
+    raise exception 'メールアドレスを入れてください（例：name@example.com）';
+  end if;
+  return n;
+end $$;
+
+create or replace function public.user_login(p_name text)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := btrim(coalesce(p_name, '')); r public.app_users;
+begin
+  select * into r from public.app_users u where u.name_key = lower(n) and u.left_at is null;
+  if not found then raise exception 'このメールアドレスはまだ登録されていません（はじめての方は「新しく始める」）' using errcode = 'P0002'; end if;
+  update public.app_users set last_seen = now() where name_key = r.name_key;
+  return jsonb_build_object('name', r.name, 'agreed_version', r.agreed_version);
+end $$;
+
+create or replace function public.user_register(p_name text, p_agree_version int)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := private.user_name_ok(p_name);
+begin
+  if coalesce(p_agree_version, 0) < 1 then raise exception '利用規約への同意が必要です'; end if;
+  if exists (select 1 from public.app_users u where u.name_key = n) then
+    raise exception 'このメールアドレスはもう登録されています（右上の「ログイン」から）' using errcode = '23505';
+  end if;
+  insert into public.app_users (name_key, name, agreed_version, agreed_at, email) values (n, n, p_agree_version, now(), n);
+  return jsonb_build_object('name', n, 'agreed_version', p_agree_version);
+end $$;
+
+create or replace function public.user_signup(p_name text, p_agree_version int, p_prefs jsonb)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := private.user_name_ok(p_name);
+begin
+  if coalesce(p_agree_version, 0) < 1 then raise exception '利用規約への同意が必要です'; end if;
+  if jsonb_typeof(coalesce(p_prefs, '{}'::jsonb)) <> 'object' or length(coalesce(p_prefs, '{}'::jsonb)::text) > 8000 then
+    raise exception '設定の形が正しくありません';
+  end if;
+  if exists (select 1 from public.app_users u where u.name_key = n) then
+    raise exception 'このメールアドレスはもう登録されています（右上の「ログイン」から）' using errcode = '23505';
+  end if;
+  insert into public.app_users (name_key, name, agreed_version, agreed_at, email, prefs)
+  values (n, n, p_agree_version, now(), n, coalesce(p_prefs, '{}'::jsonb));
+  return jsonb_build_object('name', n, 'agreed_version', p_agree_version);
+end $$;
+
+update public.app_users set name_key = 'c.elegy@outlook.com', name = 'c.elegy@outlook.com'
+ where name_key = 'cxelegy' and not exists (select 1 from public.app_users x where x.name_key = 'c.elegy@outlook.com');

@@ -89,7 +89,7 @@ COMPONENTS = {
     "imgsharp": {"kind": "rule", "name": "より大きい予告画像 / 防盗链の再試行", "spec": "og:image・JSON-LD の長辺 < 1000 なら同じページの大きい方 · 403 は原文ページを Referer に 3 枚まで",
                  "what": "images.pick：同じ記事の大きい版（JSON-LD の 1920×1080 など）を先に。新浪 sinaimg など Referer がないと 403 の図は「（本站保存）」として hdimg が本站に置く"},
     "hdimg": {"kind": "algo", "name": "看不清の判定と OpenCV 高清化 hdimg", "spec": "表示で 1.6 倍以上に引き伸ばす かつ 表示サイズでの模糊度 > 0.42（Crété-Roffet re-blur 法・1×9 平均）· 大きい枠 1280px（各作品の新しい 2 本・頭条・おすすめカード）・カード 720px · NLMeans h=3 → Lanczos4（最大 3 倍）→ 輝度 USM 0.7 · webp 82 · 6 並列",
-              "what": "hdimg.py：看得清の図は触らない（ファイルも作らない）。Bing の 100×100 縮小画像は w=1200 版を取り白い余白を切る。防盗链の図と期限付きの網址（Yahoo の ?exp=）は出刊時に本站に置く。開けなくなった図（404・1×1 の空白）は dead にして探し直しへ。docs/test1/pics/ を render が元の網址の前に差し込む。8 日を過ぎた図は消す"},
+              "what": "hdimg.py：看得清の図は触らない（ファイルも作らない）。Bing の 100×100 縮小画像は w=1200 版を取り白い余白を切る。防盗链の図と期限付きの網址（Yahoo の ?exp=）は出刊時に本站に置く。開けなくなった図（404・1×1 の空白）は dead にして探し直しへ。docs/shop/pics/ を render が元の網址の前に差し込む。8 日を過ぎた図は消す"},
     "reddithot": {"kind": "rule", "name": "Reddit の「火」と削除 reddit_hot / reddit_removed", "spec": "版块の今週の人気 上位 5 · 全站検索は人気順の上位 5 · API の数字があれば 赞 ≥100 か 评论 ≥30 · 本文 [removed]/[deleted]・404 は削除",
                   "what": "火でない帖子は版面に載せず reddit_cold として帖子数（話題度のファンの反応）だけに数える。載った帖子は毎日 1 回、削除・人気から落ちたかを見て撤去（prune_reddit · state/reddit_check.json）"},
     "heat": {"kind": "algo", "name": "話題度 6 次元", "spec": "報道量 20・広がり 15・出来事 20・勢い 15・一般の関心 20・ファン 10",
@@ -144,14 +144,14 @@ COMPONENTS = {
     "youtube": {"kind": "api", "name": "YouTube 検索ページ（ytInitialData）", "spec": "1 人 4 本 · 題名にグループ名と名前 · 직캠・fancam を先に · 動画の場面 hq1・hq2・hq3（480×360、投稿者のサムネイルは字が載るので使わない）",
                 "what": "メンバー・出演者の写真（Commons にない人）。本人確認は顔の規則"},
     "bingimg": {"kind": "api", "name": "Bing 画像検索", "spec": "一覧に載せるだけ · 自動では選ばない", "what": "出所が不確かなので目で見る"},
-    "supabase": {"kind": "api", "name": "Supabase REST / RPC", "spec": "アカウントごと（account 列・p_account つきの関数、db/accounts.sql：test1 / test2 は別のアカウント）· news を 500 件ずつ upsert · my_votes · set_size",
+    "supabase": {"kind": "api", "name": "Supabase REST / RPC", "spec": "アカウントごと（account 列・p_account つきの関数、db/accounts.sql：店長 = account test1（網址は /shop/）・試験の版 test2 は別のアカウント）· news を 500 件ずつ upsert · my_votes · set_size",
                  "what": "投票・篇幅・依頼・写真・記事の控え"},
     "pgnet": {"kind": "api", "name": "pg_net → GitHub dispatch", "spec": "20 秒に 1 回まで", "what": "設定ページの依頼ですぐ Actions を起こす"},
     "discord": {"kind": "api", "name": "Discord Webhook", "spec": "要紧 ≤6 行 · 埋め込み ≤10 · 30 日は二重に送らない",
                 "what": "notify.py"},
     "confetti": {"kind": "api", "name": "canvas-confetti 1.9.3", "spec": "👍 の演出 20 種", "what": "likefx.py"},
     "maillink": {"kind": "api", "name": "メールアドレスだけのログイン ＋ 管理者だけ確認のリンク（Supabase magic link・supabase-js 2.45.4・implicit）",
-                 "spec": "一般ユーザーはユーザー名だけ・パスワードなし（app_users で重ならない・localStorage の wl-user、ログアウトまで覚える）· 管理者のメールだけこのブラウザで最初の 1 回リンクを送る · 標準のメール送信はチームのメール宛てだけ・1 時間に数通",
+                 "spec": "一般ユーザーはメールアドレスだけ・パスワードなし（app_users で重ならない・private.user_name_ok がメールの形を確かめる・localStorage の wl-user、ログアウトまで覚える）· 管理者のメールだけこのブラウザで最初の 1 回リンクを送る · 標準のメール送信はチームのメール宛てだけ・1 時間に数通",
                  "what": "render.AUTH_JS（右上の「ログイン」）。Google ログインは保留（PENDING.md）"},
     "welcome": {"kind": "rule", "name": "入口と新しく始める（scripts/welcome.py）",
                 "spec": "言語 = 地域ごと MECE 56 言語（よく使う 6 つ＋ブラウザの言語を先に）· カード 16 枚まで・最初の版面 5 つまで · 候補は規則（AniList TRENDING・Steam featuredcategories・archive/test1 の関注項）· 24 時間ごとに作り直す",
@@ -184,7 +184,7 @@ PROCESSES = [
              "text": "「小元素の自動補完」が規則だけで集める", "no": "失敗の理由と助言が管理ページに出る。手で頼まれたら下へ"},
             {"id": "pick", "kind": "step", "lane": "ai", "title": "一覧を目で見て番号を選ぶ（頼まれたときだけ）", "by": "ai",
              "text": "外した画像は emblem_reject に書く（二度と自動で選ばれない）", "uses": ["claude"]},
-            {"id": "write", "kind": "store", "lane": "repo", "title": "items.yaml · docs/test1/emblems/*.webp"},
+            {"id": "write", "kind": "store", "lane": "repo", "title": "items.yaml · docs/shop/emblems/*.webp"},
         ],
     },
     {
@@ -235,7 +235,7 @@ PROCESSES = [
              "rows": [("失敗（3 段とも届かない）", "新しい記事・手がかり（材料の指紋）が来たらすぐ、来なくても 6 時間後に再挑戦 · 管理ページに理由と助言"),
                       ("順番待ち", "毎時と収集のあとに 6 本並列で処理 · 40 分で終わらなければ続けてもう一度（3 回まで）"),
                       ("いま処理中", "版面と段（① ② ③）を live_status に書く → 管理ページ「いま動いているもの」に 30 秒ごと")]},
-            {"id": "b9", "kind": "store", "lane": "repo", "title": "items.yaml · docs/test1/emblems · state/emblem_progress.json · state/log",
+            {"id": "b9", "kind": "store", "lane": "repo", "title": "items.yaml · docs/shop/emblems · state/emblem_progress.json · state/log",
              "text": "変わったときだけコミット → ページ生成"},
         ],
     },
@@ -384,7 +384,7 @@ PROCESSES = [
             {"id": "i4c", "kind": "fan", "lane": "actions", "title": "OpenCV で高清化", "mode": "順に · ×6 並列",
              "items": [("1", "ノイズ除去", "NLMeans h=3"), ("2", "拡大", "Lanczos4 · 最大 3 倍"), ("3", "シャープ", "輝度だけ USM 0.7")],
              "uses": ["hdimg"]},
-            {"id": "i4d", "kind": "store", "lane": "repo", "title": "docs/test1/pics/*.webp · state/hdimg.json", "text": "8 日を過ぎたら消す"},
+            {"id": "i4d", "kind": "store", "lane": "repo", "title": "docs/shop/pics/*.webp · state/hdimg.json", "text": "8 日を過ぎたら消す"},
             {"id": "i5", "kind": "step", "lane": "web", "title": "枠にはめる", "text": "本站の高清版 → 元の網址 → 表紙", "uses": ["fit"]},
         ],
     },
@@ -441,26 +441,26 @@ PROCESSES = [
                       ("目次：シリーズの中身", "items.yaml の media（マンガ・アニメ・映画…）を駅の下に枝で · 直近 7 日の記事で媒体の語に当たる件数を +n"),
                       ("目次：たたんだ板块", "駅が 1 つも出ず高さ 84px 以上の空きに作品名を薄く 1〜2 行（新着の多い順・8 件まで）"),
                       ("目次：通り過ぎた駅", "読んでいる駅より目次の並びで前の駅を板块の色で塗る（版面の番号ではなく目次の順）")]},
-            {"id": "p6", "kind": "store", "lane": "repo", "title": "docs/test1/*.html", "text": "docs/test1/ は 2026-10-19 の凍結した写し（作り直さない・書き込みを止めた）· docs/index.html は入口"},
+            {"id": "p6", "kind": "store", "lane": "repo", "title": "docs/shop/*.html", "text": "店長のページ（網址 /shop/、旧 /test1/ は飛ぶだけ）· docs/test2/ は 2026-10-19〜21 の凍結した写し · docs/index.html は入口"},
             {"id": "p7", "kind": "step", "lane": "web", "title": "GitHub Pages に公開", "text": "約 1 分", "uses": ["fit", "confetti"]},
         ],
     },
     {
         "id": "login", "name": "ログインと権限", "en": "LOGIN", "lane": "web",
         "when": "ページを開いたとき · ログイン・ログアウトしたとき",
-        "trigger": "どのページでも右上の「ログイン」（ユーザー名だけ）。開いたときに身份を確かめ、見るだけかどうかを決める",
-        "summary": "访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもユーザー名だけで始められ（名前は重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。",
+        "trigger": "どのページでも右上の「ログイン」（メールアドレスだけ）。開いたときに身份を確かめ、見るだけかどうかを決める",
+        "summary": "访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもメールアドレスだけで始められ（重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。",
         "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql"], "doc": "CLAUDE.md",
         "flow": [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
              "text": "何のサイトか・店長のページの本物の画面。名前と規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → カードを左右に（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
             {"id": "a1", "kind": "step", "lane": "web", "title": "右上の「ログイン」→「新しく始める」/「ログイン」",
-             "text": "ユーザー名（メールでも可）だけ・パスワードなし。新しく始めるときは名前が空いているかを打つたびに確かめ（name_available）、利用規約に同意して登録（user_register：名前は大文字小文字を区別せず重ならない・同意した版と日時を残す）。このブラウザが覚える（ログアウトまで）", "uses": ["maillink", "terms"]},
+             "text": "メールアドレスだけ・パスワードなし（2026-10-21 にユーザー名から変えた）。新しく始めるときはメールアドレスが未登録かを打つたびに確かめ（name_available）、利用規約に同意して登録（user_register：名前は大文字小文字を区別せず重ならない・同意した版と日時を残す）。このブラウザが覚える（ログアウトまで）", "uses": ["maillink", "terms"]},
             {"id": "a1b", "kind": "decision", "lane": "web", "title": "同意した版 ＜ いまの版？",
              "text": "開くたびに user_login で確かめる（TERMS_VERSION）",
              "yes": "同意の画面（同意しないならログアウトして見るだけ）", "no": "そのまま"},
             {"id": "a2", "kind": "decision", "lane": "web", "title": "管理者のメール？",
-             "text": "admin_email_for が店長の名前（CxElegy）→ メールに換える（app_users.email と invites 表 role=admin）· メールを打った場合は is_admin_email",
+             "text": "is_admin_email が invites 表（role=admin）を見る",
              "yes": "このブラウザで最初の 1 回だけ確認のリンクをメールで送る（「確認待ち」）→ 押すと管理者のセッション（Supabase が覚える）", "no": "そのまま一般ユーザー（運営者のページは見るだけ）", "uses": ["invite"]},
             {"id": "a3", "kind": "step", "lane": "web", "title": "身份を確かめる",
              "text": "auth_enforced・my_role・can_edit(このページの account) を読み、<html> に data-role / data-lock を付ける。ページの JS の Supabase 呼び出しにログインした人の鍵を付ける", "uses": ["roles"]},
@@ -484,11 +484,11 @@ PROCESSES = [
         "when": "開いている間 · 1 分ごと",
         "trigger": "簡報・管理ページを開いているあいだ、1 分ごと（タブが裏にあるときも戻ったときにすぐ）",
         "summary": "開いたままのページに、新しい記事や数字を自分で出す。裏である版面を作り直している間は、その版面だけ枠に「更新中」の帯と残り時間。",
-        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / page_marks / busy_plan）", "scripts/digest.py（write_page / live_mark / live-edit）", "scripts/livestatus.py", "scripts/runlog.py（typical）", "db/live_status.sql", "docs/test1/version.json"], "doc": "CLAUDE.md",
+        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / page_marks / busy_plan）", "scripts/digest.py（write_page / live_mark / live-edit）", "scripts/livestatus.py", "scripts/runlog.py（typical）", "db/live_status.sql", "docs/shop/version.json"], "doc": "CLAUDE.md",
         "flow": [
             {"id": "l1", "kind": "step", "lane": "actions", "title": "ページを作るたびに指紋を付ける",
              "text": "収集・AI 編集・ページ生成が docs/*.html を書くとき、中身の指紋（「更新」の時刻は除く）を計算。"},
-            {"id": "l2", "kind": "store", "lane": "repo", "title": "docs/test1/version.json",
+            {"id": "l2", "kind": "store", "lane": "repo", "title": "docs/shop/version.json",
              "text": "{index: 指紋, admin: 指紋, index_marks: {版面の id: [名前, 版面の指紋]}}。ページの <meta name=\"wl-ver\"> と各版面・パネルの data-h にも同じ指紋。"
                      "簡報の版面の指紋は AI 編集が整理した記事（article）だけ：整理待ち・話題度の数字・小元素が変わっても「更新」にしない。"},
             {"id": "l3", "kind": "step", "lane": "web", "title": "1 分ごとに version.json を見る",
@@ -524,7 +524,7 @@ PROCESSES = [
         "id": "requests", "name": "設定ページの依頼", "en": "REQUESTS", "lane": "web", "workflow": "requests.yml", "when": "依頼のたび · 待ちなし",
         "trigger": "設定ページで関注項の追加・変更・篇幅の変更を送ったとき（待ち時間なし）",
         "summary": "設定ページの依頼を Supabase が受け、すぐ GitHub Actions を起こして items.yaml に反映する。",
-        "files": [".github/workflows/requests.yml", "docs/test1/additem.js", "db/instant.sql", "sections.yaml", "scripts/taxonomy.py"], "doc": "CLAUDE.md", "uses": ["supabase", "pgnet", "taxonomy"],
+        "files": [".github/workflows/requests.yml", "docs/shop/additem.js", "db/instant.sql", "sections.yaml", "scripts/taxonomy.py"], "doc": "CLAUDE.md", "uses": ["supabase", "pgnet", "taxonomy"],
         "flow": [
             {"id": "qp", "kind": "step", "lane": "web", "title": "上級を推す", "text": "今ある・上級のない関注項の名前・搜索词が新項の名前・維基データに出てくる → 推薦 · 維基データの系列（P179 / P8345 / P361）がまだ関注清单になければ「上級の系列も一緒に追加」を選べる（系列 → この項の順に送る、系列は小分類シリーズ）· 1 層だけ · シリーズになる項は選んだ面を media（目次の枝）に"},
             {"id": "qr", "kind": "step", "lane": "web", "title": "同じ系列のほかのものを推す", "x": "維基データ 2 回",
@@ -798,7 +798,7 @@ def _ex_fig(f, cap, cls=""):
 
 def examples_panel(names=None):
     """管理ページ「小元素の判断の例」：判断ごとに、本物の画像で 前 → 後（使わなかったものは「外す」の札）。
-    names = 今の関注清单の名前：test2 では今ある版面の例だけ出す（test1 の版面の例は test1 の管理ページで見る）。"""
+    names = 今の関注清单の名前：今ある版面の例だけ出す。"""
     import emblem_rules
     by_rule = {r["title"]: r for r in emblem_rules.rules()}
     cards = []
@@ -814,8 +814,7 @@ def examples_panel(names=None):
                      f'<div class="ex-side"><em>後</em>{after}</div></div>'
                      f'<p class="ex-v">{e(x["verdict"])}<small>{e(r["rule"])}</small></p></article>')
     if not cards:
-        return ('<p class="ex-none">いまの関注項にはまだ例がありません。判断の規則は下の「判断の一覧」、'
-                'test1 の版面の例は <a href="../test1/admin.html#emblem-ex">test1 の管理ページ</a>。</p>')
+        return '<p class="ex-none">いまの関注項にはまだ例がありません。判断の規則は下の「判断の一覧」。</p>'
     return f'<div class="exs">{"".join(cards)}</div>'
 
 

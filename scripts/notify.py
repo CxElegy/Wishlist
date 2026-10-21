@@ -176,7 +176,7 @@ def wishlist(page_url):
             # 用仓库里的原文件地址：推送后立刻能访问，不用等 GitHub Pages 发布
             repo = os.environ.get("GITHUB_REPOSITORY", "CxElegy/Wishlist")
             branch = os.environ.get("GITHUB_REF_NAME", "main")
-            img = f"https://raw.githubusercontent.com/{repo}/{branch}/docs/{sitedir.NAME}/wishlist/{urllib.parse.quote(img)}"
+            img = f"https://raw.githubusercontent.com/{repo}/{branch}/docs/{sitedir.SLUG}/wishlist/{urllib.parse.quote(img)}"
         lines = []
         if x.get("price") not in (None, ""):
             lines.append(f"**{x.get('currency', '')} {x['price']}**")
