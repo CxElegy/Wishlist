@@ -568,12 +568,6 @@
   "why": "防盗链",
   "ref": true
  },
- "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3
- },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
   "h": 950,
@@ -1061,6 +1055,18 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fKAOl.img": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fKTp9.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fLXvT.img": {
+  "w": 1280,
+  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -1585,12 +1591,6 @@
    828
   ],
   "why": "看不清"
- },
- "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
-  "w": 615,
-  "h": 346,
-  "target": 720,
-  "v": 3
  },
  "https://news.walkerplus.com/article/1430865/18178181_615.jpg": {
   "w": 615,
@@ -2268,6 +2268,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.hokkaido-np.co.jp/image/article/size1/4/8/4/8/484852002be5b2de6320d0efc6604235_1.webp?20261022063834": {
+  "w": 712,
+  "h": 955,
+  "target": 720,
+  "v": 3
+ },
  "https://static.invenglobal.com/upload/thumb/2026/10/16/c/n1792173110374184.jpg": {
   "w": 800,
   "h": 457,
@@ -2539,6 +2545,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.6qDS_z6gWDW6SgCCaNw6Mw&pid=News&w=1000": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.9HNkO23mU3knPnT4qSUFNg&pid=News&w=640": {
   "w": 100,
   "h": 100,
@@ -2762,19 +2774,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.kf6ldw8pvoyaG0oTeWkKvQ&pid=News&w=400": {
-  "w": 400,
-  "h": 400,
-  "target": 720,
-  "v": 3,
-  "blur": 0.572,
-  "local": "pics/ced1fb5789d5c05f.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640": {
   "w": 640,
   "h": 333,
@@ -2799,18 +2798,6 @@
    861
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.q2gJOnkQWaVc3KOhAbiBkA&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/c4e932c9cb9960a9.webp",
-  "out": [
-   641,
-   259
-  ],
-  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.qJENpNsoRDJ_Wwv9BLHPeQ&pid=News&w=800": {
   "w": 700,
@@ -2852,12 +2839,6 @@
  "https://www.bing.com/th?id=ONUT.wlnT8BAz1Jo_wo1SrJHwGg&pid=News&w=900": {
   "w": 700,
   "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.xh7U4QpGqy0-V9IdAXMD6A&pid=News&w=750": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
