@@ -62,7 +62,8 @@
   "A2O LITE": 30,
   "周杰伦": 9,
   "GTA 6": 6,
-  "漫威电影": 6
+  "漫威电影": 6,
+  "三星手机": 5
  },
  "周杰伦": [
   {
@@ -184,6 +185,30 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "サムスンによる同シリーズの発売計画がリークされた Galaxy S271月に見られるだろうか？",
+   "highlight": "発売計画がリーク",
+   "blurb": "Galaxy S27 シリーズの発売計画がリークされた。Pro 版は 16GB メモリ搭載の噂もあるが、公式発表はまだ。",
+   "weight": "lead",
+   "refs": [
+    3,
+    4,
+    1,
+    2
+   ],
+   "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png"
+  },
+  {
+   "headline": "Galaxy S27 changes the design. Does it remind you of the new iPhone?",
+   "highlight": "changes the design",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ]

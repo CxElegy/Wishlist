@@ -1186,6 +1186,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.mydaily.co.kr/photos/2026/10/21/2026102112324060920_x.jpg": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/cocotte/m_cocotte-638504.jpg": {
   "w": 512,
   "h": 512,
@@ -1435,13 +1441,6 @@
   "h": 961,
   "target": 1280,
   "v": 3
- },
- "https://mydaily.co.kr/photos/2026/10/21/2026102112324060920_l.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-22"
  },
  "https://n.sinaimg.cn/games/crawl/37/w550h287/20261013/b68d-d2804b95a169cde0c4b9446f3dd287f2.png": {
   "w": 550,
@@ -2213,6 +2212,12 @@
  "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-recenze-8.jpg": {
   "w": 1900,
   "h": 1425,
+  "target": 1280,
+  "v": 3
+ },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png": {
+  "w": 1434,
+  "h": 948,
   "target": 1280,
   "v": 3
  },

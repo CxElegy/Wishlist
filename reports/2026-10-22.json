@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "8e0a86015e54",
+ "edit_sig": "67d3bbdede6d",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -162,45 +162,29 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
-     "date": "2026-10-21",
-     "n": 1,
-     "source": "비건뉴스",
-     "title": "갤럭시 S27 프로, 유출 자료에 등장…공식 발표는 아직",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1aV2M3Q094SEhCbFhldERNSDQxQW4tZ2F2cFU4VGhleG81UFdudW1JT2NIOTEyQnNCMkJaMUxxek9TUUtnY1lRRDNRZWlqb3k5Q2FJeXFvMEo5NFVydEdsSjdqR093QQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 2,
-     "source": "搜狐",
-     "title": "三星Galaxy S27系列手机曝光，Pro版或将配备16GB内存！",
-     "url": "https://www.sohu.com/a/1090317649_122004016"
-    },
-    {
+     "blurb": "Galaxy S27 シリーズの発売計画がリークされた。Pro 版は 16GB メモリ搭載の噂もあるが、公式発表はまだ。",
      "date": "2026-10-19",
-     "n": 3,
-     "source": "Samsung Magazine",
-     "title": "サムスンによる同シリーズの発売計画がリークされた Galaxy S271月に見られるだろうか？",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9SMm1ERXZ6NG1Ib3psR2hnVTk2OTVpRkRvZ2xPd0wzMjA3NVMxWjBCRWtmZXlONXMyRUppRnZjLW5wc2YtcUF6ZFJReFBxSUFnLUt2eF9sMmpHY195M1NGaC1YMmFxQllJWnZqNDRrMA?oc=5"
+     "headline": "サムスンによる同シリーズの発売計画がリークされた Galaxy S271月に見られるだろうか？",
+     "highlight": "発売計画がリーク",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png",
+     "image_via": "AI 挑选",
+     "url": "https://samsungmagazine.eu/ja/2026/10/19/iphone-18-galaxy-s27/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 4,
-     "source": "Samsung Magazine",
-     "title": "삼성의 해당 시리즈 출시 계획이 유출되었습니다. Galaxy S271월에 볼 수 있을까요?",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBQRmw0SU1hQjZYQXZXMm43MzRxV3ZEUlJyajZRTjJqcE9EdFRVN0YwX1NUemlFejJrMWVtcEpkNXhfczNHVXdEOU9nNWVlcnEyVlBTX1dKLXU2MU5CQUNvbjE5RFpOM0NjVmJaUFRGWQ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 5,
-     "source": "Samsung Magazine",
-     "title": "Galaxy S27 changes the design. Does it remind you of the new iPhone?",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9EQi14ODliblBBeEFwbF9EY2F0RTBSOFdSQnhacjRTaF9TcjB0NDZROGVGSVl0SUFPVDE2SGRuSmU2SVdPU1Z5VHZfdHN1X3cyYnNCWjAzOE9fMS04UWkxYlg1QkxRM2VYNUJHcUgwZw?oc=5"
+     "headline": "Galaxy S27 changes the design. Does it remind you of the new iPhone?",
+     "highlight": "changes the design",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-9.jpg",
+     "image_via": "og:image",
+     "url": "https://samsungmagazine.eu/en/2026/10/19/galaxy-s27-case-leak/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
@@ -384,8 +368,8 @@
      "date": "2026-10-21",
      "headline": "`이수만의 손녀시대` A2O LITE, 1위 후 축하 영상통화…\"3년 동안 이간 보람 있네\"",
      "highlight": "1위 후 축하 영상통화",
-     "image": "https://mydaily.co.kr/photos/2026/10/21/2026102112324060920_l.jpg",
-     "image_via": "og:image",
+     "image": "https://img.mydaily.co.kr/photos/2026/10/21/2026102112324060920_x.jpg",
+     "image_via": "JSON-LD",
      "url": "https://mydaily.co.kr/page/view/2026102112330642252",
      "weight": "normal"
     },
