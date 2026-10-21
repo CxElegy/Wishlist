@@ -456,7 +456,7 @@
  "https://cimg.kgl-systems.io/camion/files/91467/thumbnail_BFNi.jpg?x=1280": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cogconnected.com/wp-content/uploads/2026/10/EVILGARD-Featured.jpg": {
@@ -563,29 +563,29 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc95e2b8e572cd6dde67aac5dcc593f7183122d6fc51707529181015b9c694836e786a94647984ad71269d2e32404cac": {
-  "w": 300,
-  "h": 240,
-  "target": 720,
-  "v": 3,
-  "blur": 0.482,
-  "local": "pics/26da14880ea18612.webp",
-  "out": [
-   720,
-   576
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fbbe51fc8b9a605476aa17797550382f46cbc385290060cc7222bbdd52b5c6c518280290503be": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a738fc8a32993e38f6e4ad34c784c7f29d992ab3f7d30751be8c5b0b2120dc941e5ed8b78d31cb6d6b5aeca1979cf9029bf910c0453837db38d7e0533b3923668d746d2e5d459b7eb574a2": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.446,
-  "local": "pics/b5b1d774ac1b583b.webp",
+  "blur": 0.509,
+  "local": "pics/3c763cb1374f40fb.webp",
   "out": [
    720,
+   720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e41ecab5bf054b61ab709c5f0d851b8e53a47eaa6fc0afea84ca0c26dd41d52958959b9b4e66f01d3a56e876a76e02b07ea3fcc2eaeb55442c4af9e7a4922f00fecaa1a2b660": {
+  "w": 220,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.475,
+  "local": "pics/d6f68450dafe1add.webp",
+  "out": [
+   528,
    720
   ],
   "why": "防盗链",
@@ -733,6 +733,12 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://i.ytimg.com/vi/nd8doZlMlC0/maxresdefault.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://i0.wp.com/capesandtights.com/wp-content/uploads/2026/10/GroguMando.png": {
@@ -1214,6 +1220,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/303654.png?date=1635996318": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/583035.png?date=1792396862": {

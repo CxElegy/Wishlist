@@ -2759,7 +2759,9 @@
    "entries": [
     {
      "date": "2026-10-20T11:30:00+00:00",
-     "image": "",
+     "image": "https://cimg.kgl-systems.io/camion/files/91467/thumbnail_BFNi.jpg?x=1280",
+     "image_via": "og:image",
+     "link": "https://www.famitsu.com/article/202610/91467",
      "n": 1,
      "source": "ファミ通",
      "summary": "",
@@ -2799,7 +2801,9 @@
     },
     {
      "date": "2026-10-18T13:03:26+00:00",
-     "image": "",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/303654.png?date=1635996318",
+     "image_via": "JSON-LD",
+     "link": "https://gamewith.jp/atsumori/article/show/303654",
      "n": 5,
      "source": "GameWith",
      "summary": "",

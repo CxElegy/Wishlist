@@ -93,7 +93,8 @@
   "哈利波特剧集": 15,
   "The Mandalorian": 9,
   "Astrae Oratio": 8,
-  "チェーンソーマン": 8
+  "チェーンソーマン": 8,
+  "あつ森": 7
  },
  "漫威电影": [
   {
@@ -900,6 +901,36 @@
    "weight": "normal",
    "refs": [
     8
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "【あつ森】新キャラ(新住民)一覧と勧誘方法｜2026年最新版",
+   "highlight": "新キャラ(新住民)",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    6
+   ],
+   "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/298825.png?date=1634364871"
+  },
+  {
+   "headline": "【Amazonタイムセール】ソニーゲーミングイヤホンが30%オフ、『あつ森』ヘッドセットが23%オフ、Switch2純正カメラが25%オフ",
+   "highlight": "『あつ森』ヘッドセットが23%オフ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "【あつ森】りょうりもDIY！レシピ＋の解放方法と初期料理一覧",
+   "highlight": "レシピ＋",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ]

@@ -49,6 +49,7 @@
   "https://sounova.com/anime/crunchyroll-fall-2026-anime-lineup-release-schedule": "https://cdn.sounova.com/upload/XU9tun0jGntZA0UXfDiS3.webp",
   "https://t.co/BR7mzTQ19E": null,
   "https://t.co/CM6Qxx73tL": null,
+  "https://t.co/CNY9dKQYDx": "https://i.ytimg.com/vi/nd8doZlMlC0/maxresdefault.jpg",
   "https://times.abema.tv/zh/articles/-/10277597": "https://times-abema.ismcdn.jp/mwimgs/7/1/1200w/img_7103bfc7486a0c2fd80d9bffc573a7e04410796.jpg",
   "https://today.line.me/tw/v3/article/kEpZaq0": "https://today-obs.line-scdn.net/0hIJz4AU5TFmVHTQrR-w9pMn8bGhR0KwxsZS5dAGFFGwZqYQRgfHxFBmYeT0k6LwQ7Z35ZUGQdTV09fQNgcg/w1200",
   "https://trilltrill.jp/articles/5085313": "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200",
@@ -65,7 +66,6 @@
   "https://www.eet-china.com/news/202610165241.html": "https://www.eet-china.com/images/code.jpg",
   "https://www.excite.co.jp/news/article/Animeanime_104023/": "https://www.bing.com/th?id=ONUT.GnzSa0gVKn6Rl1TixXNykg&pid=News&w=600",
   "https://www.facebook.com/deadline/videos/clayface-director-james-watkins-speaks-to-the-freedom-and-encouragement-that-dc-/1228379646445411/": "https://scontent-sjc3-1.xx.fbcdn.net/v/t51.71878-15/851829434_1657957355672157_598019026852783350_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a27664&_nc_ohc=uKSc0b5fZFEQ7kNvwFxE5ms&_nc_oc=AdqmBBqeKqxLAPsvjT85BPpF_EHNTZvG-6X1_yY5Ot2mPnQ4nwiUFLImYpprEyA5CYs&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=8yCkfeRA7k1_NKbixFL9Mg&_nc_ss=7820f&oh=00_AQOQdGlX1cpi4E0KSvVx2CSSu0e_bKoaPsdHUtpgJL7PRw&oe=6ADE1E65",
-  "https://www.famitsu.com/article/202610/91467": "https://cimg.kgl-systems.io/camion/files/91467/thumbnail_BFNi.jpg?x=1280",
   "https://www.fashion-press.net/news/152154": "https://www.fashion-press.net/img/news/152154/top.jpg?1792146181",
   "https://www.gadgetreview.com/foldable-phones-roundup-samsung-apple-huawei-and-more": "https://www.gadgetreview.com/wp-content/uploads/Foldable-Phones-Roundup-Samsung-Apple-Huawei-and-More.png",
   "https://www.gamey.kr/news/articleView.html?idxno=3019014": "https://cdn.gamey.kr/news/thumbnail/202610/3019014_171468_3158_v150.jpg",
@@ -1180,27 +1180,6 @@
   },
   {
    "batch": 2,
-   "because": "あつ森",
-   "date": "2026-10-20",
-   "hits": [],
-   "image": "https://cimg.kgl-systems.io/camion/files/91467/thumbnail_BFNi.jpg?x=1280",
-   "kind": "board",
-   "liked": "【 あつ森 】 案内所横に作るパン屋さん 🍞 絵本のような島 【 #島クリエイト / #ぷにLIVE 】 Yulia Putintseva (9GFUvLqUCC)",
-   "score": 8,
-   "source": "ファミ通",
-   "taste": [
-    [
-     "作品:あつ森",
-     4
-    ]
-   ],
-   "title": "【Amazonタイムセール】ソニーゲーミングイヤホンが30%オフ、『あつ森』ヘッドセットが23%オフ、Switch2純正カメラが25%オフ",
-   "url": "https://www.famitsu.com/article/202610/91467",
-   "words": [],
-   "work": "あつ森"
-  },
-  {
-   "batch": 2,
    "because": "猫用品",
    "date": "2026-10-20",
    "hits": [
@@ -1229,7 +1208,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "gelato pique",
    "date": "2026-10-20",
    "hits": [],
@@ -1348,6 +1327,27 @@
     "猫"
    ],
    "work": "猫用品"
+  },
+  {
+   "batch": 3,
+   "because": "あつ森",
+   "date": "2026-10-19",
+   "hits": [],
+   "image": "https://i.ytimg.com/vi/nd8doZlMlC0/maxresdefault.jpg",
+   "kind": "board",
+   "liked": "【 あつ森 】 案内所横に作るパン屋さん 🍞 絵本のような島 【 #島クリエイト / #ぷにLIVE 】 Yulia Putintseva (9GFUvLqUCC)",
+   "score": 8,
+   "source": "Howl.link",
+   "taste": [
+    [
+     "作品:あつ森",
+     4
+    ]
+   ],
+   "title": "#2【あつ森/島クリ】Tha「和」の日本庭園つくるじょ【銀河大帝ニャルラ】",
+   "url": "https://t.co/CNY9dKQYDx",
+   "words": [],
+   "work": "あつ森"
   },
   {
    "batch": 4,
