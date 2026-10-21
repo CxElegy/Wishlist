@@ -674,5 +674,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 550800
+},
+{
+"at": "2026-10-21T08:34:02+00:00",
+"text": "2026-10-21 第 21 バッチを出刊：gelato pique（1 版面・3 本・残り 3 版面） · token 新規入力 2,961・キャッシュ読み 55.6万・出力 1,069",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.08,
+"mem_total": 16874930176,
+"mem_free": 16133935104,
+"disk_used": 10002485248,
+"disk_free": 31524753408,
+"disk_total": 41527238656,
+"peak": 226320384
+},
+"batch": 21,
+"boards": [
+"gelato pique"
+],
+"stories": 3,
+"left": 3,
+"edited": 21,
+"run": 1792565708.6792397,
+"tok": {
+"in": 6,
+"cw": 2955,
+"cr": 555612,
+"out": 1069,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 559642
 }
 ]

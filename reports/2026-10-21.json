@@ -1,6 +1,6 @@
 {
  "date": "2026-10-21",
- "edit_sig": "55815bb19afe",
+ "edit_sig": "c9f600790695",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,7 +35,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0597ae52baa7e4d1d7586a22e1d4de99f537818d79eb04577ec45655863a09157b7f4bdee50c30a9bca5bfccc9d234a0",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc8042d14812ce00389f605720ddcc919b0e05e6a77681764bc6ed0542e620198519e27cbea519912202",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16188",
      "weight": "normal"
@@ -45,7 +45,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260807165ae03900846e802898b345c34f72d1c60675dfc3514f60b3afca0738dca4d08ea98509b23d8c5c28ee99bdc",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba86b037b34e845232a1e660a37f495bdb314b93401ebee4d26ed34c565c15903db6d5c3d6ed907f1e62ada0a39247bcb056feee8007e357b72a129962e8116a0636f661ec515d862477e6864e1f0",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16174",
      "weight": "normal"
@@ -768,47 +768,46 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 1,
-     "source": "マイナビ子育て",
-     "title": "みちょぱさん、たんぽぽ川村さんからの出産祝い「すっごいこれは重宝しました」と感謝 0歳パパ吉村さんとジェラピケ爆買い",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1VZDc2ZVNlVGFXYVlIclI3SVh4Q2wtZGpsSGwyaWpFeHRrTFlzVGtuU0liN1RfMi1sX2VJUWV2RkdVVDZ1N3VBZ09saDJ4NTBndEZv?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 2,
-     "source": "TRILL",
-     "title": "2位『gelato pique』3位『無印良品』【寒暖差のある今の時期に着たいカーディガンブランド】300名が選ぶ1位に「優秀」「お気に入り」",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBkN3lCcjh3VVRNTjFpcE1neDJBWk5iMjBDTFZZZ2tDUzBsQkFnY29SQnJEcHdaYUwta1dnOVhWTGZmRU5OU1hUQ1h1YjM3U2M?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 4,
-     "source": "朝日新聞デジタル",
-     "title": "「これは神コラボ」【サンリオハウス】ジェラピケ秋冬コレクションが10/21発売。マイメロ・クロミ・キキララも仲間入り",
-     "url": "https://www.asahi.com/and/w/article/16976815"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 5,
-     "source": "Dellows News",
-     "title": "gelato piqueがシャミネ松江に2026年10月30日オープンへ 山陰初出店",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1WY0VndnY5SDFrc2tIUi0xa1Fab2NYNWdTb3g1OC1sRGpMYTZYSmYxaVRwUjFpNFZvZDQ1dTFuLVNSUlNwOHVudVA1MENUbW1hQzhvNDdPXzJWR19ZT0E?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "ジェラート ピケ × サンリオのコラボが10月発売。サンリオハウスのジェラピケ秋冬コレクションは10/21発売で、マイメロ・クロミ・キキララも登場。",
      "date": "2026-10-19",
+     "event": {
+      "date": "2026-10-21",
+      "label": "発売日"
+     },
      "headline": "ジェラート ピケがサンリオとコラボ、限定店舗やオンラインで10月発売へ",
-     "highlight": "",
+     "highlight": "サンリオとコラボ",
      "image": "https://news.dellows.jp/wp-content/uploads/2026/10/624529_1.jpg",
      "image_via": "og:image",
      "url": "https://news.dellows.jp/624529/",
-     "weight": "hero"
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-19",
+     "event": {
+      "date": "2026-10-30",
+      "label": "オープン",
+      "place": "シャミネ松江"
+     },
+     "headline": "gelato piqueがシャミネ松江に2026年10月30日オープンへ 山陰初出店",
+     "highlight": "2026年10月30日オープン",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/09/513699_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/513699/?from=related_list",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "2位『gelato pique』3位『無印良品』【寒暖差のある今の時期に着たいカーディガンブランド】",
+     "highlight": "2位",
+     "image": "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200",
+     "image_via": "og:image",
+     "url": "https://trilltrill.jp/articles/5085313",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",

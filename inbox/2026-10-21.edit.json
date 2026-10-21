@@ -97,7 +97,8 @@
   "あつ森": 7,
   "滑雪": 7,
   "FROM": 6,
-  "BLEACH Mirrors High": 5
+  "BLEACH Mirrors High": 5,
+  "gelato pique": 5
  },
  "漫威电影": [
   {
@@ -1034,6 +1035,46 @@
     "time": "19:00"
    },
    "image": "https://cimg.kgl-systems.io/camion/files/91546/ogp_nwMY.jpg?x=1280"
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラート ピケがサンリオとコラボ、限定店舗やオンラインで10月発売へ",
+   "highlight": "サンリオとコラボ",
+   "blurb": "ジェラート ピケ × サンリオのコラボが10月発売。サンリオハウスのジェラピケ秋冬コレクションは10/21発売で、マイメロ・クロミ・キキララも登場。",
+   "weight": "lead",
+   "refs": [
+    3,
+    4
+   ],
+   "event": {
+    "date": "2026-10-21",
+    "label": "発売日"
+   },
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/10/624529_1.jpg"
+  },
+  {
+   "headline": "gelato piqueがシャミネ松江に2026年10月30日オープンへ 山陰初出店",
+   "highlight": "2026年10月30日オープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ],
+   "event": {
+    "date": "2026-10-30",
+    "label": "オープン",
+    "place": "シャミネ松江"
+   }
+  },
+  {
+   "headline": "2位『gelato pique』3位『無印良品』【寒暖差のある今の時期に着たいカーディガンブランド】",
+   "highlight": "2位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }

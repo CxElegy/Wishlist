@@ -569,30 +569,30 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0597ae52baa7e4d1d7586a22e1d4de99f537818d79eb04577ec45655863a09157b7f4bdee50c30a9bca5bfccc9d234a0": {
-  "w": 300,
-  "h": 225,
-  "target": 720,
-  "v": 3,
-  "blur": 0.472,
-  "local": "pics/27fc07123575b651.webp",
-  "out": [
-   720,
-   540
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa1bd6253180d7c2ae01f81a731996377260807165ae03900846e802898b345c34f72d1c60675dfc3514f60b3afca0738dca4d08ea98509b23d8c5c28ee99bdc": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc8042d14812ce00389f605720ddcc919b0e05e6a77681764bc6ed0542e620198519e27cbea519912202": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.495,
-  "local": "pics/f7880c2754acfdd1.webp",
+  "blur": 0.365,
+  "local": "pics/454dea96819a8a7d.webp",
   "out": [
-   720,
-   720
+   300,
+   300
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba86b037b34e845232a1e660a37f495bdb314b93401ebee4d26ed34c565c15903db6d5c3d6ed907f1e62ada0a39247bcb056feee8007e357b72a129962e8116a0636f661ec515d862477e6864e1f0": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.415,
+  "local": "pics/273e77bf1c916ff2.webp",
+  "out": [
+   300,
+   300
   ],
   "why": "防盗链",
   "ref": true
@@ -1538,7 +1538,7 @@
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://media.wwdjapan.com/wp-content/uploads/2026/10/20133724/sub1-43.jpg": {
@@ -1639,6 +1639,12 @@
   "w": 1024,
   "h": 586,
   "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/09/513699_1.jpg": {
+  "w": 1024,
+  "h": 1024,
+  "target": 720,
   "v": 3
  },
  "https://news.dellows.jp/wp-content/uploads/2026/10/539144_1.jpg": {
@@ -2709,6 +2715,18 @@
   "out": [
    700,
    393
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.3RTaJE3Li1YAeRtM46ZMMg&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/ed2bd76f5d46966b.webp",
+  "out": [
+   700,
+   466
   ],
   "why": "Bing の小さい縮小画像"
  },
