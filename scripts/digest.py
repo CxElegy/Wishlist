@@ -917,7 +917,7 @@ def _like_key(keyword):
 
 
 # アカウントごとの表（db/accounts.sql）：読む・消す・直すときは自分のアカウントの行だけ、書くときは account を付ける
-ACCOUNT_TABLES = {"feedback", "sizes", "nav_schemes", "item_requests", "photo_inbox", "live_status", "news", "stories", "price_history"}
+ACCOUNT_TABLES = {"feedback", "sizes", "nav_schemes", "item_requests", "photo_inbox", "live_status", "live_log", "news", "stories", "price_history"}
 
 
 def scope_account(path, body=None, method=None, account=None):
@@ -2295,6 +2295,8 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
     kind = st.get("kind", "topic")
     tried = entry.get("tried") or {}
     chain = [{"src": src, "auto": auto, "n": tried.get(src)} for src, auto in emblem_fill.source_chain(item or {})]
+    known = {c["src"] for c in chain}   # 実際に試したのに一覧にない取り方（実写の作品の「役の記事」「作品の動画の場面」など）も出す。
+    chain[1:1] = [{"src": k, "auto": True, "n": v} for k, v in tried.items() if k not in known]   # 出さないと「まだ試していない」と誤って出る
     who = item.get("emblem_who") or []
     why = {"person": "本人の別の写真", "group": f"メンバー {len(who)} 人" if who else "メンバー全員",
            "character": (f"出演者 {len(who)} 人" if item.get("emblem_people") else f"キャラ {len(who)} 人") if who else "主役級のキャラ",

@@ -137,13 +137,13 @@ def photo_work(inbox=INBOX):
 
 
 def emblem_work():
-    """小元素：目標に届いていない版面で、今やってよいもの（6 時間以内の失敗で材料が同じものは除く）→ (名前のリスト, 再挑戦待ち)。
-    再挑戦待ち = [(名前, 時刻)]：失敗して、新しい材料も 6 時間もまだ来ていない版面。AI は要らない。"""
+    """小元素：目標に届いていない版面で、今やってよいもの（RETRY_HOURS 以内の失敗で材料が同じものは除く）→ (名前のリスト, 再挑戦待ち)。
+    再挑戦待ち = [(名前, 時刻)]：失敗して、新しい材料も RETRY_HOURS もまだ来ていない版面。AI は要らない。"""
     import emblem_fill
     items = emblem_fill.load_items()
     prog = emblem_fill.sync_progress(emblem_fill.load_progress(), items)
     now = _now().isoformat(timespec="seconds")
-    return [i["name"] for i in emblem_fill.due(prog, items, now)], emblem_fill.waiting(prog, items, now)   # EMBLEM_RETRY_NOW=1 なら 6 時間を待たない
+    return [i["name"] for i in emblem_fill.due(prog, items, now)], emblem_fill.waiting(prog, items, now)   # EMBLEM_RETRY_NOW=1 なら待たない
 
 
 def _emblem_why(todo, wait, tz="Asia/Tokyo"):

@@ -274,13 +274,14 @@
   新加定时的仕组み：在 `PROCESSES` 里写 `schedule`（UTC 的 (时, 分)），在 `backend_todo` 写它下次做什么，运行时 `runlog.add("<proc>", "…")`；
   要加一列就在 `render.BG_COLS` 和 `backend_cells` 各加一项。
 - **管理页最上面的「ライブログ」**（`scripts/livelog.py`，2026-10-19，用户定的）：像终端一样自己滚的小窗口。版面开始・进到下一段・完成（`live_boards()` 每 20 秒比前一次）、Actions 开始・成功・失败（每 3 分）、仓库 `state/log/*.json` 的新行（raw.githubusercontent.com 每 2 分）都一行一行流出来；
-  看过的行存在 localStorage（`wl-term`，300 行），页面自动重载也不断。有「一時停止」，往上翻时不自动滚到底。原来「バックグラウンド」里的「ログ」列表移到这里。
+  **作业的一行一行（2026-10-22，用户定的）**：小元素的自动补完把每个候补外した理由・段・结果写进 Supabase `live_log`（`db/live_log.sql`，`livestatus.Lines` 每 1.5 秒一批，2 天前的行开始时删），页面 3 秒读一次 `live_log_since()`——「今すぐ再挑戦」30 秒就跑完的作业也看得见。不用 AI 的作业以后也用 `livestatus.Lines` 往这里写。
+  看过的行存在 localStorage（`wl-term`，600 行），页面自动重载也不断。有「一時停止」，往上翻时不自动滚到底。原来「バックグラウンド」里的「ログ」列表移到这里。
 - **管理页的「しくみの全体図」**（`scripts/overview.py`，2026-10-18）：5 页（全体 / ニュース収集 / AI 編集 / 小元素 / ページ更新），每页 ≤ 8 列、一屏放得下；点部品开 `processes.detail` 的详细流程。
   动效：`live_boards()` 每 30 秒 + Actions 实行中每 3 分，动着的部品光圈 + 斜线条（`prefers-reduced-motion` 时不动），AI 编辑／小元素按阶段（note 里的词、`found=1〜3`）分别发光；
   「反映待ち」超过 30 分的标红「止まっているかも」（push 没通的话会这样）。下方「いま待っているもの」用话说清 什么・为什么・怎么办（`overview.waits`，带「AI 编辑をもう一度起こす」「今すぐ再挑戦」按钮）。
   新增仕组み／步骤时：在 `overview.PAGES` 加部件（`proc` 必须是 `PROCESSES` 里有的），测试在 `tests/test_design.py` 的 Overview。旧的大图（「全体の構成（詳しい図）」）还在下面。
 - **AI 编辑列的倒计时・失败的「今すぐ再挑戦」**：AI 编辑列表头显示「次回 9:00 / 18:00（あと N 分）」，版面の設計列显示「次の収集のあと HH:MM」+ 整理待ち件数 + ゲート前回叫起的时刻（`backend_todo` 的 edit.n / fired）；
-  小元素「失败」的格子显示自动再挑战的时刻和倒计时，并有「今すぐ再挑戦」按钮（= `run_now('background')`，带 retry_now，失败的版面不等 6 小时；3 分钟 1 次）。
+  小元素「失败」的格子显示自动再挑战的时刻和倒计时，并有「今すぐ再挑戦」按钮（= `run_now('background')`，带 retry_now，失败的版面不等；3 分钟 1 次）。按了以后作业一行一行流进「ライブログ」（见下）。
 - **今すぐ実行**（「次の実行」のカードのボタン）：後台作業・ニュース収集・ページ生成を定時を待たずに起こす。网页上没有令牌：
   按钮 → Supabase `run_now(job)`（`db/run_now.sql`，Vault 的 `github_dispatch_token`）→ GitHub workflow_dispatch。
   只能起这 3 个，每个有间隔（3 分 / 10 分 / 1 分）。GitHub 的定时（cron）忙时会迟到・漏掉（2026-10-17 漏了 2 小时），
@@ -297,7 +298,7 @@
   一览和理由在 `processes.AI_TASKS`（管理页「バックグラウンド → AI を使うか」），新加 / 改了判断时同步改。
   **小元素补全不要停着等**：每小时 + 每次收集完马上 + 40 分钟用完还有活就自己接着跑（最多 3 次），6 个版面并行；
   每个版面在同一回里按「① 标准 → ② 名前を広げる → ③ 公式・記事のページ」逐段试，到目标为止；三段都不行才算失败，
-  失败的版面只要有新材料（新记事・新线索，`emblem_fill.material` 的指纹变了）就马上再试，没有也最多等 6 小时。
+  失败的版面只要有新材料（新记事・新线索，`emblem_fill.material` 的指纹变了）就马上再试，没有也最多等 1 小时（`emblem_fill.RETRY_HOURS = 1`，2026-10-22 用户定的：不用 AI，6 小时太久 → 每小时的后台都再试）。
   正在处理的版面和段写进 Supabase `live_status`（proc=emblem），管理页「いま動いているもの」每 30 秒读一次。
   **后台的ゲート**（`scripts/gate.py` + `.github/workflows/background.yml`）：先数有没有活；小元素补全直接在 Actions 用 Python 做（不用 AI，
   原来要目视的「别人・远景・合照・抠图有洞・重复」都改成规则了）；AI 编辑・照片加愿望只在有活时用 API 叫 Claude（同一份活 6 小时内不重复叫，

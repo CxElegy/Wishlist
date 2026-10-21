@@ -20,7 +20,7 @@ on:
         description: "（自动）接着跑的第几次。时间预算用完还有活时，自己再起一次，最多 3 次"
         default: "0"
       retry_now:
-        description: "试运行：不等 6 小时，失败过的版面也马上再试"
+        description: "立刻再试：失败过的版面也不等（管理页「今すぐ再挑戦」）"
         type: boolean
         default: false
       force_edit:
