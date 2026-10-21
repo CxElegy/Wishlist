@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-21T17:08:04+00:00",
+ "checked": "2026-10-21T17:17:23+00:00",
  "fired": {
   "at": "2026-10-21T17:08:04+00:00",
   "results": {
@@ -18,16 +18,11 @@
     "resp": "cse_0114TchfynYJs4ZizdQuP4SV",
     "sig": "cb88f1b3742d"
    },
-   "items": [
-    "Vaundy",
-    "あつ森",
-    "滑雪",
-    "绝区零"
-   ],
-   "need": true,
-   "prog": 56,
-   "sig": "94a5b1583617",
-   "why": "整理待ちの記事 4 件（4 版面・AI 編集まで版面に載らない）"
+   "items": [],
+   "need": false,
+   "prog": 60,
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
