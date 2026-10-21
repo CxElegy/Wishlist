@@ -31,6 +31,12 @@
       "skillPath": "plugins/python-development/skills/python-testing-patterns/SKILL.md",
       "computedHash": "a0c0cd2841eb80fc082b360ebbee1ad69275234229e525a6da1baaee3f5a52bd"
     },
+    "scrapling-official": {
+      "source": "d4vinci/scrapling",
+      "sourceType": "github",
+      "skillPath": "agent-skill/Scrapling-Skill/SKILL.md",
+      "computedHash": "5c12e0853db99dd3e70119774e86365b088fdd2a69c67fc314d45054dfc5063c"
+    },
     "seo-audit": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
