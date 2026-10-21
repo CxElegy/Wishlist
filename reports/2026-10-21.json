@@ -1,6 +1,6 @@
 {
  "date": "2026-10-21",
- "edit_sig": "abdd1e654709",
+ "edit_sig": "257b08f76733",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,7 +35,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 카논, 여우 가면 무녀의 벚꽃 표식이 광역 공격으로 터진다",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0366fae45ed456baa1c9d3bf67b10e19ea92f38c3eef3d3273bfc7bc0977284954bf31a00c2855d353d0a6229b4896c411b2567401cf14f02328137186627e8e552ffa24305f809c4cd853c9f1",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc95e2b8e572cd6dde67aac5dcc593f7183122d6fc51707529181015b9c694836e786a94647984ad71269d2e32404cac",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16188",
      "weight": "normal"
@@ -45,7 +45,7 @@
      "date": "2026-10-17",
      "headline": "[아스오라][SSR] 안나, 혼처 찾기에 시달리는 빈 귀족 영애의 사브르",
      "highlight": "",
-     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e203c2b5bf535d6ea7769c55048369f32cbf07f45680db4e82c53130b666d24564695e1e1bf8cfd5e5218a9eb9e75d145e9cf4b16ea8e0d22f",
+     "image": "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fbbe51fc8b9a605476aa17797550382f46cbc385290060cc7222bbdd52b5c6c518280290503be",
      "image_via": "正文图（本站保存）",
      "url": "https://m.dcinside.com/board/gamey/16174",
      "weight": "normal"
@@ -872,66 +872,39 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "クロックスが『チェンソーマン』と初コラボ。チェンソーやポチタを表現したフットウェア全4種、アトモス限定モデルも登場。",
+     "date": "2026-10-20",
+     "headline": "「クロックス」が「チェンソーマン」と初コラボ チェンソーやポチタを表現したシューズやアトモス限定モデルを発売",
+     "highlight": "初コラボ",
+     "image": "https://media.wwdjapan.com/wp-content/uploads/2026/10/20133724/sub1-43.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.wwdjapan.com/articles/2531075",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "カラオケで盛り上がるアニソンといえば？ 3位「チェンソーマン レゼ篇」IRIS OUT、2位「忘却バッテリー」ライラック！ 1位は残酷な天使のテーゼ＜26年版＞（アニメ！アニメ！）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5SYkpOa0RZUEFDZll0S0RlWTFyQVRKeDEwUTVGQ21KUERHVGJoVlR1VHB6MjU2dHJ1amo0WGdKblNzRDhlLVFLU1JuSXo2RUxzRjNJZHUtQlkxNTl4LTJNYWN0aFNLSXRjcXJKSGhEblpBWl9qOThlck9UazI1aFE?oc=5"
+     "headline": "カラオケで盛り上がるアニソンといえば？ 3位「チェンソーマン レゼ篇」IRIS OUT",
+     "highlight": "3位",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000006-anmanmv-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/fe5528ff3696b1b8d4999242189cd6a070dee6ec",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-20",
-     "n": 2,
-     "source": "WWDJAPAN",
-     "title": "「クロックス」が「チェンソーマン」と初コラボ チェンソーやポチタを表現したシューズやアトモス限定モデルを発売",
-     "url": "https://www.wwdjapan.com/articles/2531075"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 3,
-     "source": "J-CAST ニュース on MSN",
-     "title": "クロックス、「チェンソーマン」コラボモデルのフットウェア全4種",
-     "url": "https://www.msn.com/ja-jp/news/other/%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%82%B9-%E3%83%81%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%9E%E3%83%B3-%E3%82%B3%E3%83%A9%E3%83%9C%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%95%E3%83%83%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E5%85%A84%E7%A8%AE/ar-AA2fDIBH"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 4,
-     "source": "AnimeMojo.com",
-     "title": "Chainsaw Man x Crocs Collab Launches Next Week With Denji, Power, And Pochita Clogs",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPaEd0bkk5MmhjUVhCYnQ0UVRLWWp1a0RZTmU4VjFtamk4MkUxYkRGd3VockpTTnhvU2VTdk5PZWVpV2pNdlhiVTRzcTJDM1VpNzBOU0pQTzBfYUE2d2VoeWp3Uk9YV1BGRTJiblJWd290OHVLbEtXUHBLYnQyR1lKZ2hYVTJiNmFWcGk0bU15OERMVnFHWE1pcW00Nzl2SUg0WTRoejlmNWtrbXByTVpCZkU2R1Rkd00y?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 5,
-     "source": "シューズポストオンライン",
-     "title": "クロックス×チェーンソーマン アイキャッチ",
-     "url": "https://news.google.com/rss/articles/CBMizAJBVV95cUxPS3RwVGlIYjVQUGNpdjdJWjl3WTkzM09oa2R0YTVxcFBNeXJzNGlfRTMwOXVodnMtOHlNQ1VQZFIwbWF6YldzWmJRRXJwNUQ5VVRtaDgzZy15R2dGcWgtLVU3aHN4bW9NMW9BSlJZalZtOFMyTVFyZjBma0NTQTdkUU1tWm0wYVRLV2xPcGpTNTd5YnJjUFFWNWRuWDdWNnZFb3dxUEdHMzFQb1pRMWRuZS1JX0dhY1ozV2dSX0xSbzNNVTQyd3NMTU9OSF82MExJQ0hqT3RrNFR6YUxvWXR6cndyY0FjQzlZN001cHZOSTNRaFJsZjZ5LUZlREE0Q1lTM09qNExpUlVCUUQyRWEySnBDN1ZTYlk5bndmcUtoLTlMMjR6d29DM1BVaXliV2ozYWZFM1czeWNtY3Rqa0hhZ3hlLWtyWDVxbDlEeQ?oc=5"
-    },
-    {
-     "date": "2026-10-18",
-     "n": 6,
-     "source": "note",
-     "title": "왜 '체인소 맨'의 악마는 두려움을 받을수록 강해지는가",
-     "url": "https://note.com/gs_510405/n/ndec89c1973fe?hl=ko"
-    },
-    {
-     "date": "2026-10-18",
-     "n": 7,
-     "source": "推し楽",
-     "title": "チェンソーマンの関連画像",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5QSDFJcWttR1dKVTBPN2pNNTFFSHNBNGRpNnZnMWJodGdJVmhMSmZWZUs2Nnlra1BQdHIyVFgyTnpLcG5QOG9YUlZBMjhjMld0dXV0VzJRWTROX2lxVGVBdWtCdHlOdnhL?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-16",
-     "n": 8,
-     "source": "Dexerto",
-     "title": "Chainsaw Man Devil’s Heart codes (October 2026): Free Cash, XP Boosts & Resets",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQSGloRGxCZ1JqdVRiUkRuMWFSOXNWaG95bHVpVVZsQWVFcjZkVEtCV1ZpZEszc0psLWtoRjA2aUhYRW9Kd3BrTU9JcFo4MzRTejlGVUpBV1d1Zm1wQjdJV2R3UW0tSy1CNV81bmpWMHZFMURjalJUaG80MnRJd0YtMm5GR05HTUlO?oc=5"
+     "headline": "Chainsaw Man Devil’s Heart codes (October 2026): Free Cash, XP Boosts & Resets",
+     "highlight": "Devil’s Heart codes",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/03/12/Chainsaw-Man-Devils-Heart-codes-feature-image.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/roblox/chainsaw-man-devils-heart-codes-free-cash-2585138/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",

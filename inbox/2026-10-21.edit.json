@@ -92,7 +92,8 @@
   "dota2": 18,
   "哈利波特剧集": 15,
   "The Mandalorian": 9,
-  "Astrae Oratio": 8
+  "Astrae Oratio": 8,
+  "チェーンソーマン": 8
  },
  "漫威电影": [
   {
@@ -866,6 +867,39 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "「クロックス」が「チェンソーマン」と初コラボ チェンソーやポチタを表現したシューズやアトモス限定モデルを発売",
+   "highlight": "初コラボ",
+   "blurb": "クロックスが『チェンソーマン』と初コラボ。チェンソーやポチタを表現したフットウェア全4種、アトモス限定モデルも登場。",
+   "weight": "lead",
+   "refs": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "image": "https://media.wwdjapan.com/wp-content/uploads/2026/10/20133724/sub1-43.jpg"
+  },
+  {
+   "headline": "カラオケで盛り上がるアニソンといえば？ 3位「チェンソーマン レゼ篇」IRIS OUT",
+   "highlight": "3位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Chainsaw Man Devil’s Heart codes (October 2026): Free Cash, XP Boosts & Resets",
+   "highlight": "Devil’s Heart codes",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ]

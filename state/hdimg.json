@@ -563,30 +563,30 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a16b0366fae45ed456baa1c9d3bf67b10e19ea92f38c3eef3d3273bfc7bc0977284954bf31a00c2855d353d0a6229b4896c411b2567401cf14f02328137186627e8e552ffa24305f809c4cd853c9f1": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc95e2b8e572cd6dde67aac5dcc593f7183122d6fc51707529181015b9c694836e786a94647984ad71269d2e32404cac": {
   "w": 300,
-  "h": 300,
+  "h": 240,
   "target": 720,
   "v": 3,
-  "blur": 0.433,
-  "local": "pics/89c38c305ce25606.webp",
+  "blur": 0.482,
+  "local": "pics/26da14880ea18612.webp",
   "out": [
    720,
-   720
+   576
   ],
   "why": "防盗链",
   "ref": true
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e203c2b5bf535d6ea7769c55048369f32cbf07f45680db4e82c53130b666d24564695e1e1bf8cfd5e5218a9eb9e75d145e9cf4b16ea8e0d22f": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fbbe51fc8b9a605476aa17797550382f46cbc385290060cc7222bbdd52b5c6c518280290503be": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.335,
-  "local": "pics/b252bb7033a88842.webp",
+  "blur": 0.446,
+  "local": "pics/b5b1d774ac1b583b.webp",
   "out": [
-   300,
-   300
+   720,
+   720
   ],
   "why": "防盗链",
   "ref": true
@@ -804,6 +804,12 @@
  "https://image.gamer.ne.jp/news/2026/20261016/003535f34d18c2d3d2b4e73e64ac0ce48a09/o/1.jpg": {
   "w": 1200,
   "h": 674,
+  "target": 1280,
+  "v": 3
+ },
+ "https://image.itmedia.co.jp/mobile/articles/2610/16/l_asa_sumaotoku_01.jpg": {
+  "w": 944,
+  "h": 510,
   "target": 1280,
   "v": 3
  },
@@ -1136,13 +1142,6 @@
   "h": 1200,
   "target": 720,
   "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fy3qB.img": {
-  "w": 768,
-  "h": 768,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.372
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
@@ -1524,6 +1523,12 @@
   "target": 720,
   "v": 3
  },
+ "https://media.wwdjapan.com/wp-content/uploads/2026/10/20133724/sub1-43.jpg": {
+  "w": 1200,
+  "h": 961,
+  "target": 1280,
+  "v": 3
+ },
  "https://n.sinaimg.cn/games/crawl/37/w550h287/20261013/b68d-d2804b95a169cde0c4b9446f3dd287f2.png": {
   "w": 550,
   "h": 287,
@@ -1598,6 +1603,12 @@
   "w": 934,
   "h": 623,
   "target": 720,
+  "v": 3
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnZIc7E06alwhCLoSlCLX5LdmJJX8A15HH4wl2XH1-FdTHCfABXTVsOoElBulPG5IPDf66-mdOqvcTEAFpbBW_UTxgvK2yjlIqEXJeh9Z5cEg": {
+  "w": 900,
+  "h": 600,
+  "target": 1280,
   "v": 3
  },
  "https://news.dellows.jp/wp-content/uploads/2026/09/431992_1.jpg": {
@@ -1881,18 +1892,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010010-realsound-000-1-view.jpg?exp=10800": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/c3cc1a589cef3dc7.webp",
-  "out": [
-   1200,
-   630
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00100149-nekomag-000-1-view.jpg?exp=10800": {
   "w": 560,
   "h": 560,
@@ -2006,8 +2005,9 @@
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000006-anmanmv-000-1-view.jpg?exp=10800": {
   "w": 566,
   "h": 800,
-  "target": 720,
+  "target": 1280,
   "v": 3,
+  "blur": 0.382,
   "local": "pics/5d6757cb5bc5daba.webp",
   "out": [
    566,
@@ -2469,19 +2469,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg": {
-  "w": 451,
-  "h": 640,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.526,
-  "local": "pics/3c2948fe4f82967a.webp",
-  "out": [
-   902,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://static.sanyonews.jp/image/article/size1/3/f/f/2/3ff24c261a165613c93a74b121b9b124_1.jpg": {
   "w": 640,
   "h": 426,
@@ -2566,6 +2553,12 @@
   "w": 1200,
   "h": 780,
   "target": 720,
+  "v": 3
+ },
+ "https://times-abema.ismcdn.jp/mwimgs/7/1/1200w/img_7103bfc7486a0c2fd80d9bffc573a7e04410796.jpg": {
+  "w": 1200,
+  "h": 1697,
+  "target": 1280,
   "v": 3
  },
  "https://times-abema.ismcdn.jp/mwimgs/7/7/1200w/img_771e50bee2142314898c3ce99ba4f86f490636.jpg": {
@@ -2992,6 +2985,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.uj01IO2vWKIstFWrhgg42g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ya2zuv_gWAsTxdbmKU-LHQ&pid=News&w=642": {
   "w": 100,
   "h": 100,
@@ -3049,6 +3048,12 @@
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/03/12/Chainsaw-Man-Devils-Heart-codes-feature-image.jpg": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },
