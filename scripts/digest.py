@@ -169,7 +169,46 @@ def collect(item, settings):
         entries += sources.rss(url)
     if item.get("steam_appid"):
         entries += sources.steam_news(item["steam_appid"])
+    # 情報源を広げる（2026-10-22）：ニュースは GDELT（各国の新聞・専門サイト）も、SNS は Bluesky・Mastodon も、公式は YouTube のチャンネルも。
+    # use の考え方はそのまま：google を使う関注項は GDELT も（ニュースの検索）、reddit を使う関注項は Bluesky・Mastodon も（SNS の全体検索。
+    # 名前が普通の言葉の作品は use: [google, bing] にしてあるので SNS は探さない）。YouTube は公式チャンネルなので use に関係なく
+    if "google" in use:
+        for kw in keywords[:GDELT_KEYWORDS]:
+            entries += [e for e in sources.gdelt(kw, lookback, langs) if domestic_ok or not sources.is_domestic(e.url, e.source)]
+    if "reddit" in use:
+        entries += sources.bluesky(keywords[0], lookback, langs)
+        entries += sources.mastodon_tag(keywords[0], langs)
+    for ch in youtube_channels(item):
+        entries += sources.youtube_channel(ch)
     return entries
+
+
+GDELT_KEYWORDS = 2   # GDELT は 5 秒に 1 回まで：関注項ごとに最初の 2 語（25 関注項で約 5 分。AI なし・時間は使ってよい）
+YOUTUBE_FILE = STATE_DIR / "youtube_channels.json"   # 関注項 → 公式 YouTube チャンネル（Wikidata P2397 から規則で）。30 日ごとに見直す
+YOUTUBE_RECHECK_DAYS = 30
+_yt_lock = __import__("threading").Lock()
+
+
+def youtube_channels(item):
+    """関注項の公式 YouTube チャンネル：items.yaml の youtube があればそれ、なければ wiki → Wikidata P2397（state/youtube_channels.json に覚える）。"""
+    if item.get("youtube"):
+        return [c for c in item["youtube"] if isinstance(c, str)]
+    if not item.get("wiki"):
+        return []
+    now = dt.datetime.now(dt.timezone.utc)
+    with _yt_lock:
+        cache = load_json(YOUTUBE_FILE) or {}
+        got = cache.get(item["name"])
+        try:
+            fresh = got and (now - dt.datetime.fromisoformat(got["at"])).days < YOUTUBE_RECHECK_DAYS and got.get("wiki") == item["wiki"]
+        except (KeyError, ValueError):
+            fresh = False
+        if fresh:
+            return got.get("ids") or []
+        ids = sources.youtube_channels_from_wiki(item["wiki"])
+        cache[item["name"]] = {"ids": ids, "at": now.isoformat(timespec="seconds"), "wiki": item["wiki"]}
+        save_json(YOUTUBE_FILE, cache)
+        return ids
 
 
 TRUSTED_SOURCES = {"Steam 官方公告"}
@@ -274,7 +313,7 @@ def match_hit(item, e):
     if e.source in TRUSTED_SOURCES or e.source in {f"r/{s}" for s in item.get("subreddits") or []}:
         return "(可信来源)"
     # Reddit 全站搜索来的帖子：正文是闲聊，「from Season 5」这种说法到处都是，匹配词必须出现在标题里
-    text = e.title if e.source == "Reddit" else e.title + e.summary
+    text = e.title if e.source in ("Reddit", "Bluesky", "Mastodon") else e.title + e.summary   # SNS は本文が雑談：標題（投稿の文）にあること
     for w in item.get("match") or item.get("keywords") or [item["name"]]:
         if w.startswith("re:") and re.search(w[3:], text) or not w.startswith("re:") and _norm(w) in _norm(text):
             return w
@@ -588,7 +627,7 @@ def fallback_stories(entries, item, limit=None):
     by_heat = bool(item.get("hot_only"))
     names = sorted({item["name"], *(item.get("keywords") or []), *(item.get("match") or [])}, key=len, reverse=True)
     topics = {i: _topic_tokens(e.title, names) for i, e in enumerate(entries, 1)} if by_heat else {}
-    media = [i for i, e in enumerate(entries, 1) if not sources.is_reddit(e)]
+    media = [i for i, e in enumerate(entries, 1) if not sources.is_sns(e)]
 
     def hits(e):
         return sum(w in e.title.lower() for w in words)
@@ -602,13 +641,13 @@ def fallback_stories(entries, item, limit=None):
     def score(pair):
         i, e = pair
         if by_heat:
-            return (i in urgent, heat(i), not sources.is_reddit(e), hits(e), not domestic(e),
+            return (i in urgent, heat(i), not sources.is_sns(e), hits(e), not domestic(e),
                     bool(e.image) or "news.google.com" not in e.url, -i)
-        return (i in urgent, hits(e) > 0, not sources.is_reddit(e), hits(e), not domestic(e),
+        return (i in urgent, hits(e) > 0, not sources.is_sns(e), hits(e), not domestic(e),
                 bool(e.image) or "news.google.com" not in e.url, -i)
 
     candidates = [(i, e) for i, e in enumerate(entries, 1)
-                  if (hits(e) or not sources.is_reddit(e)) and not side_mention(e.title, item)]
+                  if (hits(e) or not sources.is_sns(e)) and not side_mention(e.title, item)]
     events = _event_keys(entries, names)
     picked, grams = [], []
     for i, e in sorted(candidates, key=score, reverse=True):
@@ -651,7 +690,7 @@ def same_event(item, refs, entries, headline=""):
         generic |= story_tokens(str(w))
     mine = set().union(*(story_tokens(t) for t in [headline] + [e.title for e in refs])) - generic
     taken = {e.url for e in refs}
-    out = [e for e in entries if e.url not in taken and not sources.is_reddit(e)
+    out = [e for e in entries if e.url not in taken and not sources.is_sns(e)
            and StoryDeduper._close(mine, story_tokens(e.title) - generic)]
     out.sort(key=lambda e: not e.image)
     return out[:SIBLINGS]
@@ -1854,7 +1893,7 @@ def recommend(force_discover=False):
                 best = (score + bonus, w, hits, words, why)
         if best and best[0] >= PICK_THRESHOLD - 1:
             pool.append((best[0], d.get("date") or day, d, work or best[1].get("watch") or best[1]["name"], *best[1:]))
-        elif work and day in recent and not sources.is_reddit(entry_from_dict(d)):  # 网友的帖子（提问、闲聊）不当推荐
+        elif work and day in recent and not sources.is_sns(entry_from_dict(d)):  # 网友的帖子（提问、闲聊）不当推荐
             hits, words = like_tags(d["title"], wishes, common)
             bonus, why = taste_bonus(taste, sorted(hits | words) + [WORK_KEY + work])
             board.setdefault(work, []).append((BOARD_SCORE + bonus, d.get("date") or day, d, work, hits, words, why))

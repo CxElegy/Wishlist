@@ -623,12 +623,14 @@ class ImagesTest(unittest.TestCase):
         cn = entry(url="https://www.sohu.com/a/1", source="搜狐")
         hk = entry(url="https://www.hk01.com/x", source="香港01")
         sina = entry(url="https://news.google.com/rss/articles/x", source="新浪网")  # 繁体版也偶尔混进大陆网站
+        gd = entry(url="https://www.163.com/a/1", source="163.com")   # GDELT から来る大陸の網站も同じく
         with mock.patch.object(sources, "google_news", lambda q, days, lang: [sina]), \
-                mock.patch.object(sources, "bing_news", lambda q: [cn, hk]):
+                mock.patch.object(sources, "bing_news", lambda q: [cn, hk]), \
+                mock.patch.object(sources, "gdelt", lambda q, days, langs: [gd]):
             got = digest.collect({"name": "x", "use": ["google", "bing"], "news_langs": ["zh-TW"]}, {})
             self.assertEqual([e.source for e in got], ["香港01"])
             got = digest.collect({"name": "x", "use": ["google", "bing"], "news_langs": ["zh-CN"]}, {})
-            self.assertEqual([e.source for e in got], ["新浪网", "搜狐", "香港01"])
+            self.assertEqual([e.source for e in got], ["新浪网", "搜狐", "香港01", "163.com"])
 
     def test_filter_entries_prefers_foreign_copy(self):
         now = dt.datetime(2026, 10, 12, tzinfo=dt.timezone.utc)

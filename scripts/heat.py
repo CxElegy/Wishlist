@@ -121,8 +121,9 @@ def region(text):
 
 
 def is_reddit(e):
+    """ファンの投稿（Reddit・Bluesky・Mastodon）。報道ではなく「ファンの反応」に数える（2026-10-22 に Bluesky・Mastodon を足した）。"""
     src = e.get("source") or ""
-    return src.startswith("r/") or src == "Reddit" or "reddit.com/r/" in (e.get("url") or "")
+    return src.startswith("r/") or src in ("Reddit", "Bluesky", "Mastodon") or "reddit.com/r/" in (e.get("url") or "")
 
 
 def _num(n):

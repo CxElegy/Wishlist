@@ -51,7 +51,9 @@ class Entry:
 
 
 # 同じサイトへの間隔（秒）。収集は関注項ごとに並列（digest.COLLECT_WORKERS）なので、スレッド全部で共有する
-PACE = {"www.reddit.com": 2.0, "oauth.reddit.com": 2.0, "news.google.com": 0.5, "www.bing.com": 0.5}
+PACE = {"www.reddit.com": 2.0, "oauth.reddit.com": 2.0, "news.google.com": 0.5, "www.bing.com": 0.5,
+        "api.gdeltproject.org": 5.5,   # GDELT の決まり：5 秒に 1 回まで
+        "api.bsky.app": 1.0, "mastodon.social": 1.0, "www.youtube.com": 0.5}
 _pace_lock = threading.Lock()
 _pace_next = {}
 
@@ -420,6 +422,157 @@ def reddit_sub(subreddit):
             e.hot = reddit_id(e.url) in hot
             out.append(e)
     return out
+
+
+# ---------- 情報源を広げる（2026-10-22，用户定的：AI を使わないので CPU・時間は多めに使ってよい。全部無料・鍵なし） ----------
+# GDELT（世界 65 言語のニュース）・YouTube の公式チャンネル・Bluesky・Mastodon。どれも収集の後は今までと同じ match / exclude / スパム / 重複の検査を通る。
+
+GDELT_LANGS = {"ja-JP": "japanese", "en-US": "english", "zh-TW": "chinese", "zh-CN": "chinese", "ko-KR": "korean"}
+GDELT_MAX = 50
+GDELT_TRIES, GDELT_WAIT = 3, 6   # 混んでいたら 6 秒あけて 3 回まで
+
+
+def _gdelt_time(s):
+    try:
+        return dt.datetime.strptime(s, "%Y%m%dT%H%M%SZ").replace(tzinfo=dt.timezone.utc)
+    except (TypeError, ValueError):
+        return None
+
+
+def gdelt(query, lookback_days, langs):
+    """GDELT DOC 2.0（https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/）：世界中のニュースサイトを 15 分ごとに集めた索引。
+    Google・Bing に出てこない各国の地方紙・専門サイトまで拾える。読者の言語（langs）の記事だけ。配図（socialimage）つき。5 秒に 1 回まで（PACE）。"""
+    names = sorted({GDELT_LANGS[l] for l in langs if l in GDELT_LANGS}) or ["english"]
+    lang = " ".join(f"sourcelang:{n}" for n in names) if len(names) == 1 else "(" + " OR ".join(f"sourcelang:{n}" for n in names) + ")"
+    q = f'"{query}" {lang}' if " " in query.strip() else f"{query} {lang}"
+    url = ("https://api.gdeltproject.org/api/v2/doc/doc?" + urllib.parse.urlencode(
+        {"query": q, "mode": "artlist", "format": "json", "maxrecords": GDELT_MAX, "timespan": f"{max(1, lookback_days)}d", "sort": "datedesc"}))
+    for attempt in range(GDELT_TRIES):   # IP をほかの人と共有している（Actions・クラウド）と 429 になりやすい：間をあけて取り直す
+        try:
+            data = _get(url)
+            break
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt + 1 == GDELT_TRIES:
+                _warn("GDELT", e)
+                return []
+            time.sleep(GDELT_WAIT)
+        except Exception as e:
+            _warn("GDELT", e)
+            return []
+    try:
+        arts = json.loads(data.decode("utf-8", "replace") or "{}").get("articles") or []
+    except ValueError:   # 混んでいるときは JSON でなく「5 秒に 1 回まで」の文が返る
+        _warn("GDELT", data[:80].decode("utf-8", "replace"))
+        return []
+    return [Entry(title=_clean(a.get("title"), 200), url=a.get("url", ""), published=_gdelt_time(a.get("seendate")),
+                  source=a.get("domain") or "GDELT", image=a.get("socialimage") or "")
+            for a in arts if a.get("title") and a.get("url")]
+
+
+def youtube_channel(channel_id):
+    """YouTube の公式チャンネルの新着動画（チャンネルごとの RSS、鍵なし）。チャンネルは関注項の公式（Wikidata P2397 か items.yaml の youtube）。"""
+    if not re.fullmatch(r"UC[\w-]{22}", channel_id or ""):
+        return []
+    try:
+        root = ET.fromstring(_get(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"))
+    except Exception as e:
+        _warn(f"YouTube {channel_id}", e)
+        return []
+    yt, media = "{http://www.youtube.com/xml/schemas/2015}", "{http://search.yahoo.com/mrss/}"
+    author = root.findtext(f"{ATOM}title") or "YouTube"
+    out = []
+    for it in root.iter(f"{ATOM}entry"):
+        vid = it.findtext(f"{yt}videoId") or ""
+        thumb = next((t.get("url", "") for t in it.iter(f"{media}thumbnail")), "")
+        desc = next((d.text or "" for d in it.iter(f"{media}description")), "")
+        if vid:
+            out.append(Entry(title=_clean(it.findtext(f"{ATOM}title"), 200), url=f"https://www.youtube.com/watch?v={vid}",
+                             published=_parse_date(it.findtext(f"{ATOM}published")), source=f"YouTube · {author}",
+                             summary=_clean(desc), image=thumb))   # hqdefault は必ずある（maxresdefault は動画によってない）。小さければ hdimg が整える
+    return out
+
+
+def youtube_channels_from_wiki(wiki):
+    """関注項の wiki（["en:Title", …]）→ Wikidata の項目 → 公式 YouTube チャンネル（P2397）。規則だけ、AI なし。"""
+    import wikihttp
+    for ref in wiki or []:
+        lang, _, title = ref.partition(":") if re.match(r"^[a-z-]{2,8}:", ref) else ("en", "", ref)
+        try:
+            url = ("https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode(
+                {"action": "wbgetentities", "sites": f"{lang}wiki", "titles": title, "props": "claims", "format": "json"}))
+            ents = (json.loads(wikihttp.get(url)) or {}).get("entities") or {}
+        except Exception as e:
+            _warn(f"Wikidata {ref}", e)
+            continue
+        ids = [c["mainsnak"]["datavalue"]["value"] for ent in ents.values()
+               for c in (ent.get("claims") or {}).get("P2397", []) if c.get("mainsnak", {}).get("datavalue")]
+        if ids:
+            return ids[:3]
+    return []
+
+
+# SNS は「本当に話題になっている投稿」だけ（Reddit と同じ考え方）。人気の順に取り、数字の門も通ったものだけ版面へ（ほかは hot=False）
+BSKY_HOT = {"likes": 50, "reposts": 15}
+MASTODON_HOT = {"favourites": 20, "reblogs": 10}
+SNS_LANGS = {"ja-JP": "ja", "en-US": "en", "zh-TW": "zh", "zh-CN": "zh", "ko-KR": "ko"}
+
+
+def bluesky(query, lookback_days, langs):
+    """Bluesky の公開検索（api.bsky.app、鍵なし）。人気順・読者の言語だけ・期間内だけ。"""
+    since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=max(1, lookback_days))).strftime("%Y-%m-%dT%H:%M:%SZ")
+    out = []
+    for lg in sorted({SNS_LANGS[l] for l in langs if l in SNS_LANGS}) or ["en"]:
+        url = "https://api.bsky.app/xrpc/app.bsky.feed.searchPosts?" + urllib.parse.urlencode(
+            {"q": query, "sort": "top", "since": since, "lang": lg, "limit": 25})
+        try:
+            posts = json.loads(_get(url)).get("posts") or []
+        except Exception as e:
+            _warn("Bluesky", e)
+            continue
+        for p in posts:
+            rec, au = p.get("record") or {}, p.get("author") or {}
+            rkey = (p.get("uri") or "").rsplit("/", 1)[-1]
+            if not (rkey and au.get("handle") and rec.get("text")):
+                continue
+            imgs = ((p.get("embed") or {}).get("images") or (((p.get("embed") or {}).get("media") or {}).get("images")) or [])
+            hot = (p.get("likeCount") or 0) >= BSKY_HOT["likes"] or (p.get("repostCount") or 0) + (p.get("quoteCount") or 0) >= BSKY_HOT["reposts"]
+            out.append(Entry(title=_clean(rec["text"], 200), url=f"https://bsky.app/profile/{au['handle']}/post/{rkey}",
+                             published=_parse_date(rec.get("createdAt")), source="Bluesky",
+                             summary=f"♥ {p.get('likeCount') or 0} · ↻ {p.get('repostCount') or 0}",
+                             image=(imgs[0].get("fullsize") or imgs[0].get("thumb") or "") if imgs else "", hot=hot))
+    return out
+
+
+def mastodon_tag(query, langs):
+    """Mastodon のハッシュタグ（mastodon.social の公開タイムライン、鍵なし）。名前から空白・記号を抜いたタグ（Chainsaw Man → #ChainsawMan）。"""
+    tag = re.sub(r"[^\w]", "", query)
+    if len(tag) < 2:
+        return []
+    keep = {SNS_LANGS[l] for l in langs if l in SNS_LANGS}
+    try:
+        posts = json.loads(_get(f"https://mastodon.social/api/v1/timelines/tag/{urllib.parse.quote(tag)}?limit=40"))
+    except Exception as e:
+        _warn("Mastodon", e)
+        return []
+    out = []
+    for p in posts or []:
+        if keep and p.get("language") and p["language"] not in keep:
+            continue
+        media = [m for m in p.get("media_attachments") or [] if m.get("type") == "image"]
+        hot = (p.get("favourites_count") or 0) >= MASTODON_HOT["favourites"] or (p.get("reblogs_count") or 0) >= MASTODON_HOT["reblogs"]
+        text = _clean(p.get("content") or "", 400)
+        if re.match(r"https?://", text.replace(" ", "")):   # 網址から始まる投稿 = まとめサイトの自動転載 bot（wacoca・tkhunt など）。話題度にも数えない
+            continue
+        if p.get("url") and p.get("content"):
+            out.append(Entry(title=_clean(p["content"], 200), url=p["url"], published=_parse_date(p.get("created_at")), source="Mastodon",
+                             summary=f"♥ {p.get('favourites_count') or 0} · ↻ {p.get('reblogs_count') or 0}",
+                             image=(media[0].get("url") or "") if media else "", hot=hot))
+    return out
+
+
+def is_sns(e):
+    """SNS の投稿（Reddit・Bluesky・Mastodon）：標題に名前がないと収めない・火でないものは版面に出さない、を同じに扱う。"""
+    return is_reddit(e) or e.source in ("Bluesky", "Mastodon")
 
 
 def steam_news(appid, count=10):

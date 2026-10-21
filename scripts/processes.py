@@ -135,6 +135,14 @@ COMPONENTS = {
     "anilist": {"kind": "api", "name": "AniList GraphQL", "spec": "続編 10 期まで · 人気・トレンド",
                 "what": "放送状態・主役キャラ・話題度"},
     "tmdb": {"kind": "api", "name": "TMDB API", "spec": "放送状態 · popularity", "what": "ドラマ・映画の状態と話題度"},
+    "gdelt": {"kind": "api", "name": "GDELT DOC 2.0", "spec": "世界 65 言語のニュース索引 · 読者の言語だけ（sourcelang）· 最大 50 件 · 5 秒に 1 回（5.5 秒）· 429 は 6 秒あけて 3 回まで · 関注項ごとに最初の 2 語",
+              "what": "Google・Bing に出ない各国の地方紙・専門サイトの記事（配図 socialimage つき）。use に google がある関注項"},
+    "youtube": {"kind": "api", "name": "YouTube チャンネル RSS", "spec": "公式チャンネルの新着 15 本 · チャンネルは items.yaml の youtube か wiki → Wikidata P2397（30 日ごとに見直し）· サムネイル hqdefault",
+                "what": "公式の予告・発表動画。use に関係なく"},
+    "bluesky": {"kind": "api", "name": "Bluesky 検索 API", "spec": "人気順 25 件 × 読者の言語 · 火 = ♥ 50 か 再投稿＋引用 15 · 標題（投稿の文）に名前",
+                "what": "ファンの反応。use に reddit がある関注項。火でない投稿は版面に出さず話題度だけ"},
+    "mastodon": {"kind": "api", "name": "Mastodon ハッシュタグ", "spec": "mastodon.social の #名前 40 件 · 読者の言語だけ · 火 = ♥ 20 か ブースト 10 · 網址から始まる投稿（自動転載 bot）は捨てる",
+                 "what": "ファンの反応。use に reddit がある関注項"},
     "wikipv": {"kind": "api", "name": "Wikipedia 閲覧数", "spec": "60 日分 · 50 記事ずつ · 1 日 1 回 · wikihttp 経由（トークン・Retry-After・12 時間キャッシュ）",
                "what": "話題度の「一般の関心」"},
     "wiki": {"kind": "api", "name": "Wikidata / Wikipedia / Commons", "spec": "P154 ロゴ · P18 写真 · ≥300×300",
@@ -276,12 +284,14 @@ PROCESSES = [
         "trigger": "2 時間ごと（日本時間 奇数時 17 分）／ 毎週月曜 9:47 に周報",
         "summary": "関注項ごとにニュース・SNS・価格を集めて inbox に溜め、出刊・通知・ページ生成までつなぐ。",
         "files": [".github/workflows/digest.yml", "scripts/digest.py", "scripts/sources.py"], "doc": "README.md",
-        "uses": ["gnews", "bing", "reddit", "steam", "dedupe", "spam", "match"],
+        "uses": ["gnews", "bing", "reddit", "steam", "gdelt", "youtube", "bluesky", "mastodon", "dedupe", "spam", "match"],
         "flow": [
             {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 30 分まで · 同時に 1 本"},
             {"id": "c2", "kind": "fan", "lane": "ext", "title": "記事を集める", "x": "×6 関注項を同時に", "mode": "それぞれのサイトへ",
              "items": [("G", "Google ニュース", "5 言語", "gnews"), ("B", "Bing ニュース", "3 回まで", "bing"),
-                       ("R", "Reddit", "25 件", "reddit"), ("S", "Steam", "10 件", "steam"), ("F", "RSS", "feeds")],
+                       ("R", "Reddit", "25 件", "reddit"), ("S", "Steam", "10 件", "steam"), ("F", "RSS", "feeds"),
+                       ("D", "GDELT", "各国 · 5 秒に 1 回", "gdelt"), ("Y", "YouTube 公式", "15 本", "youtube"),
+                       ("BS", "Bluesky", "人気順", "bluesky"), ("M", "Mastodon", "#タグ", "mastodon")],
              "uses": ["pace"]},
             {"id": "c3", "kind": "step", "lane": "actions", "title": "重複を落とす", "x": "元の順番で", "uses": ["dedupe"]},
             {"id": "c3s", "kind": "decision", "lane": "actions", "title": "スパム・止めた来源ではない？", "text": "成人・海賊版の「在线看」ページ",
@@ -642,7 +652,7 @@ EDGES = [
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
-    ("ニュース収集", "6 本並列", "GitHub Actions のサーバーは 4 コア。待ちが多いので 6 本。同じサイトの間隔は全スレッドで共有（Reddit 2 秒・Google / Bing 0.5 秒）"),
+    ("ニュース収集", "6 本並列", "GitHub Actions のサーバーは 4 コア。待ちが多いので 6 本。同じサイトの間隔は全スレッドで共有（Reddit 2 秒・Google / Bing 0.5 秒・GDELT 5.5 秒・Bluesky / Mastodon 1 秒・YouTube 0.5 秒）。AI を使わないので時間は使ってよい（GDELT で 25 関注項 約 5 分増える）"),
     ("小元素の自動補完", "6 本並列", "GitHub Actions（4 コア・16GB・1 回 60 分まで、続けて 3 回まで）。集めるのは待ちが多いので 6 本、抠图（rembg）と items.yaml への書き込みは 1 本ずつ"),
     ("抠图のモデル（rembg）", "1 枚ずつ", "birefnet は 1 枚で数 GB のメモリを使う。onnxruntime のメモリ池を切って、1 枚ごとに返す（前は 13GB まで溜まった）"),
     ("Wikipedia・Wikidata・Commons", "ホストごと 1 本ずつ · 全体で毎分 150", "Wikimedia の上限は名乗ったボットで全サイト毎分 200（名乗らないと 10）。"
