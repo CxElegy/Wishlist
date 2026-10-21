@@ -99,6 +99,16 @@
   "font": "serif",
   "split": false
  },
+ "Vaundy|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
  "Vaundy|https://vaundy.jp/og_image.png": {
   "accent": "#E65A4C",
   "alt_accent": "#C42B1C",
@@ -330,6 +340,16 @@
   "split": false
  },
  "ちいかわ|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
+  "split": false
+ },
+ "チェーンソーマン|None": {
   "accent": "#E0703F",
   "alt_accent": "#B83A17",
   "alt_bg": "#F1EEE6",

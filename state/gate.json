@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-21T16:17:23+00:00",
+ "changed": true,
+ "checked": "2026-10-21T16:40:49+00:00",
  "fired": {
-  "at": "2026-10-21T15:17:21+00:00",
+  "at": "2026-10-21T16:40:49+00:00",
   "results": {
-   "edit": "1 日 2 回（9:00 と 18:00）。次は 09:00",
+   "edit": "Claude を起こした（2 回目：前は動かなかった）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,17 +12,27 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-21T10:57:16+00:00",
-    "attempts": 1,
-    "prog": 434,
-    "resp": "cse_019S5H6sUgZT2nTHnm7dZUyp",
-    "sig": "83d74b6a54f7"
+    "at": "2026-10-21T16:40:49+00:00",
+    "attempts": 2,
+    "prog": 0,
+    "resp": "cse_0114TchfynYJs4ZizdQuP4SV",
+    "sig": "cb88f1b3742d"
    },
-   "items": [],
-   "need": false,
+   "items": [
+    "A2O LITE",
+    "GTA 6",
+    "Vaundy",
+    "あつ森",
+    "三星手机",
+    "周杰伦",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
+   ],
+   "need": true,
    "prog": 0,
-   "sig": "c0c8b76adcd9",
-   "why": "今日の新着はすべて AI 編集済み"
+   "sig": "cb88f1b3742d",
+   "why": "整理待ちの記事 60 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -31,9 +41,9 @@
    "sig": "b1312ab4623e",
    "waiting": [
     "Astrae Oratio",
+    "哈利波特剧集",
     "A2O LITE",
-    "あつ森",
-    "哈利波特剧集"
+    "あつ森"
    ],
    "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 05:01 から）"
   },
