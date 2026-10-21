@@ -74,6 +74,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/647c8fably1ii84lyoc7cj20v90oetbk.jpg": {
+  "w": 1125,
+  "h": 878,
+  "target": 720,
+  "v": 3,
+  "local": "pics/0298783ade706d6e.webp",
+  "out": [
+   1125,
+   878
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/6f5ef307gy1ii36q45gorj20j609ljt4.jpg": {
   "w": 690,
   "h": 345,
@@ -587,13 +600,19 @@
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/larl-highlights-best-mid-laners-pgl-wallachia-season-7-24254.jpg": {
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/rue-spoke-about-a-harsh-joke-by-korb3n-before-his-transfer-to-team-spirit-24095.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/team-liquid-announced-new-player-25366.jpg": {
@@ -603,6 +622,12 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/team-yandex-wins-blast-slam-viii-25351.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/twistzz-spoke-karrigans-departure-faze-24774.jpg": {
   "w": 1200,
   "h": 628,
   "target": 720,
@@ -2035,7 +2060,7 @@
  "https://p2.bahamut.com.tw/B/2KU/86/40a9c19295c5da7cd47c0046b820td25.JPG": {
   "w": 1024,
   "h": 576,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/07/28/35175924.jpg&M=1&s=Y&x=0&y=0&sw=1280&sh=853&sl=W&fw=800&exp=3600": {
@@ -2862,6 +2887,18 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ya2zuv_gWAsTxdbmKU-LHQ&pid=News&w=642": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/3a047680eb8a3ad4.webp",
+  "out": [
+   642,
+   359
+  ],
+  "why": "Bing の小さい縮小画像"
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2024/06/Board-With-Bindings-Capita-Doa-2026.jpg": {
   "w": 1280,

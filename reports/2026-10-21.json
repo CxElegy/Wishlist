@@ -1,6 +1,6 @@
 {
  "date": "2026-10-21",
- "edit_sig": "1cede50c1cdf",
+ "edit_sig": "833bf5774398",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1349,136 +1349,69 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Dota 2 の世界王者でもある老舗チーム EG が、11月2日で運営を停止すると発表。",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "Korb3n Gave a Straight Answer on Whether Collapse Will Return to the Dota 2 Pro Scene",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPNFRSOU9sSHJZSl9aZ19GbVNna2ZoX0VINV9qeFA5dUp1N3Fib1M3cnVTWWlEVTVSdnpoekFBb3NfZ0I3WS1nY0RRaHVNV1lqZG1IUEdadWhNSkVmZnF5c2ItYk5CZlNHd3NXbm1WalhjZFJvU2RCZTBBdDlvOU9tbW1yQlZDOVRwTi1tODNXNFcyenJZV3lGWVlCOW9TQQ?oc=5"
+     "event": {
+      "date": "2026-11-02",
+      "label": "運営終了"
+     },
+     "headline": "《特戰英豪》《Dota 2》世界冠軍老牌名門戰隊 EG 宣布 11/2 停止營運 不敵電競寒冬與巨額成本",
+     "highlight": "EG 宣布 11/2 停止營運",
+     "image": "https://p2.bahamut.com.tw/B/2KU/86/40a9c19295c5da7cd47c0046b820td25.JPG",
+     "image_via": "AI 挑选",
+     "url": "https://gnn.gamer.com.tw/detail.php?sn=313764",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 2,
-     "source": "GNN 新聞網",
-     "title": "《特戰英豪》《Dota 2》世界冠軍老牌名門戰隊 EG 宣布 11/2 停止營運 不敵電競寒冬與巨額成本",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFB4YThhclNRaXJRenBsT2JCa0xVY1ZEYnVfQklLSVVmSEEzdVpSeDV3RkxRd0ZWNWw4SDBDY2VTM3BFaXlGT05QTzl2S2ozaUxobjFSalFodGc?oc=5"
+     "headline": "Korb3n Gave a Straight Answer on Whether Collapse Will Return to the Dota 2 Pro Scene",
+     "highlight": "Collapse",
+     "image": "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/korb3n-gave-straight-answer-whether-collapse-will-return-dota-2-pro-scene",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 3,
-     "source": "Hawk Live",
-     "title": "Rue Recounted How He Joined Team Spirit’s Dota 2 Roster",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBsN19kS2ZleGF0QmRqeTl2S09fM3gzVmttMUxJaHhUS2FjaDRFcjBRTmZZZkQxRmlhX29jYkpPRnBmeDRyb1VDekJKckN3NjVYNUh1VW91M0xXcFg3MXRhQ1Aybm4xY2VxeVpOMHVoZF9oMW5YZFd1WkkwTQ?oc=5"
+     "headline": "Rue Recounted How He Joined Team Spirit’s Dota 2 Roster",
+     "highlight": "Team Spirit",
+     "image": "https://hawk.live/storage/images/posts/rue-spoke-about-a-harsh-joke-by-korb3n-before-his-transfer-to-team-spirit-24095.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/rue-recounted-joined-team-spirits-dota-2-roster",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-20",
-     "n": 4,
-     "source": "LatinAmerican Post",
-     "title": "CS2, Dota 2 and LoL: Where Latin America Fits in the Global Esports Betting Scene",
-     "url": "https://latinamericanpost.com/sponsored/cs2-dota-2-and-lol-where-latin-america-fits-in-the-global-esports-betting-scene/"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 5,
-     "source": "Hawk Live",
-     "title": "Sneyking Discussed How Dota 2 Tournaments Have Changed Over the Course of the Pro Scene’s History",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOVUZvbkxKdjFtYUgwcy1hY21ybzROLXgzT3MyOVhYcW5Yd2FqcHVOZ244TWg3QW1zcUY3dzlvOU5IT2w5azduTWZXbmE4ZGtKLTBlQ2Q4d1RNRkFuT2kweW0zTkFqTGVvWG1rallJZmZhclg1bmFDelNSUjVyd3ZRY0UwR0p3MmEyNThRYXNBYlRRZHJGZ1NEU1Zzaw?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 6,
-     "source": "Esports.gg",
-     "title": "All Dota 2 heroes and their real names",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9yV3VSYkVlU001d284Vm5VUTZ0M1hVb3hLMU40MXB5a1pRV3NIc2s3QjBPdGhVNy1kd3ZkMHRBVjdVcTNZcDRNektaVTRjQzBwN2J2M2dZd19FWWdJLWJpcVdmVUNjMXRremc?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 7,
+     "headline": "离队与回归之间，Team Synapse 的 5 号位有了新故事",
+     "highlight": "Team Synapse",
+     "image": "http://wx4.sinaimg.cn/middle/647c8fably1ii84lyoc7cj20v90oetbk.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5355890246681441.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-19",
+     "event": {
+      "date": "2026-10-31",
+      "label": "試合",
+      "place": "EPL World SEA S19"
+     },
+     "headline": "DB - XE, 31 十月 2026 - match stream, live broadcast - EPL World SEA S19 - Dota 2",
+     "highlight": "EPL World SEA S19",
+     "image": null,
      "source": "escorenews.com",
-     "title": "DB - XE, 31 十月 2026 - match stream, live broadcast - EPL World SEA S19 - Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxON0x1Z0FyZ1pEYjV1ZDRLUW45X2o2TWR5Yjd0RXpGUmZEOUd1NGoxelhFSFBwTDZGeGppbEFFUV9uSjh0TlFUaVpIaW1LTUI2UVhFcDNyZ1RkNGp5R0o3eDJXVVNJV2MxRGVBeVotRnZQWVc0MDd1akRpYk1RM3pfMlVISDVJWkFlTU9MdlN4N25QVWZWamhieFpRNFNWenNSOXozeHU0ZVI5ZnBIcF9xVQ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 8,
-     "source": "Hawk Live",
-     "title": "MinD_ContRoL Explained Why He Doesn't Want to Return to Professional Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOdVpjaVo4eXVjaHJBV2UzZF8td2pfNENzaHo3dGoyR0lTQ3NTa1pWeUszSnIzUm84SjV2OXp1YVM2RGZwaUtrT2o1bFN3QVlQQ29EZWVWNV9ZUXlnNmROY0lSblU1SXlXa0lBd0FoYlRUTjIxdWpVT21ycHZqSTJESmxvVGZwTWVHVEE2WQ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 9,
-     "source": "手机新浪网",
-     "title": "离队与回归之间，Team Synapse 的 5 号位有了新故事|Team Synapse|TA2000|Stoic|Bengan|DOTA2_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1ubzhTbHptTFlfWTQ2bWtjbTRRTEpqeFVSZkpjRnZLdDJqOVV3US1XR3RreDdlR1h5dkxESHNpT0ppQ2JoZ3Y5Y0M4czh1UHJ6R0VmTERqdl8wdHppeVd6VTJZRQ?oc=5"
-    },
-    {
-     "date": "2026-10-17",
-     "n": 10,
-     "source": "EGamersWorld",
-     "title": "Dota 2 Team Rankings 2025 – EGW Rating by Performance",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE41cG5ueHF6WWpBNkktSWt5bjRkX2ltc0VIX1JkUE12NHBVcmY3bFhoZWw2TVVfc3JkSFo3QkI3bnlXV2hRdS1pV05DOFB2TS16Zkx5SEZTTjJUeFQ5Y2hONXN6YTFFajdI?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 11,
-     "source": "Dexerto",
-     "title": "The International 11 Dota 2 Battle Pass 2022: Release date, new Arcanas & more",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNM2lzQVBSQkI3MG9WQ3Z6QXQtYVNiU2JHMWJhOE1xek4tckJqY1l3c21zZlRuVW1KNWZkT3NaVlJ3TW1wMzFwbzltZ0UwZThKQW41VGp2ZzM2dXZSYmZHQ3ZZQTFkdUlmUEE1OG9VU2xaTlhKVU9WNHlTLXlQWnpyTlo1S2JkM0E3NGpKN2lpdEdqMENzbzMyNlBtdXFtLWltSXZUVkJyNnVqRVdmaWc?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 12,
-     "source": "Dexerto",
-     "title": "Dota 2 TI champions: All The International winners in history",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNUGtYNHJZWGQxRDFfcGtoTUEwTGpYYWdacnRheC1iXzVnTTBCYmlVd1FFajl1VEJfRjYzMlBRYnNEOFZZWXdBTlRCMmRVRlBfV1BqSHlqVDdaYlllU2U1N09SdHJTQzVNcnY1eDJNdDdNUVVxOEk2cDZFcll1WnJIMnRB?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 13,
-     "source": "Dexerto",
-     "title": "Money or International glory? What’s more important to Dota 2 star SumaiL?",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOTUJweTE0dTh0MWRTcTVQTE9URHV1NUJfVC12Q21FR083MmN4dkZId3phaHlFeHRPMGRPclFUYmp1bWduU0g4c050OGs3cXdUaVM2RERxYnpHMXFFTDV1Zm5YWVZaVGlZN0VsUWQyb2pIQzA3N1Z1YUxxWlhiM0sxQVZ6TnliMExEdkVVLXRpM2dxcDBJRFJTNEZJQ1hBZVBwSjFiZXZiRU53a1NoVnc?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 14,
-     "source": "Dexerto",
-     "title": "Valve Releases the Dota 2 Trove Carafe for the International 2019",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOY1pVa0lpVTAxMmc2NHZiek9kcXRtcEdDQkQyWF9qaVRDYlJDMFh6MG9TM3dRSTF2S0dIRVI2ZFloN1o1VkhmNFc4ay12bHNhbnYxU3Z1dk1rQTBWMVI3UTZLcUZ6QVZPZjBzYkZQRTJTaUFfWjU0SUdJcGZOS3UwcWVGdUd5Z3RYZDZId09LZElzcHNz?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 15,
-     "source": "Dexerto",
-     "title": "Dota 2: The International 9 main event bracket confirmed",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPYWZoSl9BZU9MV0xnN1cyNDlDYUgyRjhuR1NSZW5YNk9YaHNyaFhLVXBZM3hnQi1XS1lzV2Fibjd0blBQdHhxdS1BM01oWTMwb2x1YUdjem4wQWxfMnlYTlA4QTVSeVh2ZjV1aVhmd3k1dHZudVpFdHR3em1jYURoQ1R5cC1leG5pTUFid0hiVGZ5ak9LdFlxNg?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 16,
-     "source": "Dexerto",
-     "title": "Dota 2 bug causes players to be hit with 20 year matchmaking bans",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNNzhkQ05zSVZVUDUwRGg3TENBMU01NFAzRnYyTEVJc3hiQm9MNTBTOTVCV05wQzdFaGhWNFdJQVdQZS1xTVJUa3FWMm84YUt1Q0VTWkVVSHFQS05nUXFQU1BqXzdOaTZrQVhZTGg2Nk9xV080SmhPcWtha0RlY2tjRVZTdFYydWxnQzY2bi0xajNkeGUwYU8yOV9uRlhQV1psQkUtRDVHSQ?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 17,
-     "source": "Esports Charts",
-     "title": "UESF Ukrainian Championship 2026 Stage 5 - Dota 2 - 視聴率、概要、賞金総額",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQTTNxSTZSV3BOT0VyU3BfS3BaTXpkbHhqRmJoWnJzRFV0LWc4LUhGdXgtcG0xN2h2WWJEdlF4Wi1YNVByUmR4b3N6RDlmZzNuWVpfWWZFVkcwYVhBNGR1eXZjaFFuSjNoRVlVTk5fT2NkZjdEMzFWbnp2eDFfalZsdlJ0QWFiWEU3R3c?oc=5"
-    },
-    {
-     "date": "2026-10-14",
-     "n": 18,
-     "source": "手机新浪网",
-     "title": "39 比 23 的碾压局，也挡不住Yakult 的 35 比 28 反击|Team Resilience|Yakult Brothers|DreamLeague|DOTA2_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5GdE1tUF9wNkt3eFBEd1pwRWdaZXBkOXhFSHdDM193R0NOeVRIVC1BeFBNN1NWX1NvbG00bVg5UkotbGRMdkNYd3BBNnhya3NCRk5HbnFuaFRCYTFJSzM0MVFrcw?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=escorenews.com&sz=128",
+     "url": "https://escorenews.com/zh/dota-2/epl-world-series-southeast-asia-season-19/group-stage/direborn-vs-xipto-666490",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",

@@ -88,7 +88,8 @@
   "绝区零": 30,
   "日本顶级网球赛事": 28,
   "MMORPG 新作": 26,
-  "ILLIT": 22
+  "ILLIT": 22,
+  "dota2": 18
  },
  "漫威电影": [
   {
@@ -680,6 +681,63 @@
     21,
     20
    ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "《特戰英豪》《Dota 2》世界冠軍老牌名門戰隊 EG 宣布 11/2 停止營運 不敵電競寒冬與巨額成本",
+   "highlight": "EG 宣布 11/2 停止營運",
+   "blurb": "Dota 2 の世界王者でもある老舗チーム EG が、11月2日で運営を停止すると発表。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-02",
+    "label": "運営終了"
+   },
+   "image": "https://p2.bahamut.com.tw/B/2KU/86/40a9c19295c5da7cd47c0046b820td25.JPG"
+  },
+  {
+   "headline": "Korb3n Gave a Straight Answer on Whether Collapse Will Return to the Dota 2 Pro Scene",
+   "highlight": "Collapse",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Rue Recounted How He Joined Team Spirit’s Dota 2 Roster",
+   "highlight": "Team Spirit",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "离队与回归之间，Team Synapse 的 5 号位有了新故事",
+   "highlight": "Team Synapse",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "DB - XE, 31 十月 2026 - match stream, live broadcast - EPL World SEA S19 - Dota 2",
+   "highlight": "EPL World SEA S19",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ],
+   "event": {
+    "date": "2026-10-31",
+    "label": "試合",
+    "place": "EPL World SEA S19"
+   }
   }
  ]
 }
