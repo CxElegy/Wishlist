@@ -848,12 +848,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.hothardware.com/contentimages/newsitem/71917/content/16x9_2133x1200_highres-xbox-series-x-s-consoles.jpg": {
-  "w": 2133,
-  "h": 1200,
-  "target": 720,
-  "v": 3
- },
  "https://images.khan.co.kr/article/2026/10/14/news-p.v1.20261014.e15dc1b6f9894a25a15b79a4a3d60af2_P1.jpg": {
   "w": 800,
   "h": 600,
@@ -2364,6 +2358,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/05/gta-6-4.jpeg?&fit=crop": {
+  "w": 3840,
+  "h": 2160,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/aion-2-concurrent-players-launch-steam.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -2693,6 +2693,12 @@
    480
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.SdHBkMZfXkMd9z_VMQz8yw&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Tw408Jo7-WCfcnK3zPpcHA&pid=News&w=1200": {
   "w": 700,
@@ -3072,12 +3078,6 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
-  "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Winter-Soldier.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://www.svg.com/img/gallery/gta-6-delays-officially-explained-by-rockstar-games/l-intro-1792009203.jpg": {
