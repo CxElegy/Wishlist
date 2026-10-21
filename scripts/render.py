@@ -3592,7 +3592,7 @@ LIVE_JS = """
   var PAGE=M.getAttribute('data-page'),VER=M.content,KEY='wl-live:'+PAGE,EVERY=__EVERY__*1000,IDLE=__IDLE__*1000;
   var ss={get:function(k){try{return JSON.parse(sessionStorage.getItem(k)||'null');}catch(e){return null;}},
           set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
-  var touched=Date.now(),pending=null,bar=null;
+  var touched=Date.now(),LOADED=Date.now(),pending=null,bar=null;
   ['scroll','pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,function(){touched=Date.now();},{passive:true});});
   var ZH=/^zh/.test(document.documentElement.lang||''),T=ZH?{n:'新增 %n 条',m:'有更新',s:'已是最新内容',p:'有新内容（停止操作后自动显示）',b:'马上显示',x:'关闭',tag:'刚刚',upd:'更新',more:'等 %n 处',sep:'：'}
     :{n:'新着 %n 件',m:'更新',s:'最新の内容にしました',p:'新しい内容があります（操作をやめると自動で表示）',b:'今すぐ表示',x:'閉じる',tag:'たった今',upd:'更新',more:'ほか %n か所',sep:'：'};
@@ -3647,8 +3647,15 @@ LIVE_JS = """
   function go(){if(!pending)return;ss.set(KEY,{to:pending,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});
     if('scrollRestoration' in history)history.scrollRestoration='manual';location.reload();}
   function maybe(){if(pending&&!busy()&&(document.hidden||Date.now()-touched>IDLE))go();}
+  // 開いた直後（15 秒以内・まだ入力していない）に、ブラウザの控え（GitHub Pages は 10 分残す）の古いページだと分かったら、
+  // ?v=新しい指紋 で開き直して控えを飛ばす。着いたら ?v= は網址から消す。同じ v でまだ古い（配信の控え）ときは繰り返さない
+  function cleanV(){try{var u=new URL(location.href);if(u.searchParams.has('v')){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash);}}catch(e){}}
+  function fresh(v){try{var u=new URL(location.href);if(u.searchParams.get('v')===v||Date.now()-LOADED>15000||busy())return false;
+    u.searchParams.set('v',v);location.replace(u.toString());return true;}catch(e){return false;}}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
-      var v=j&&j[PAGE];if(!v||v===VER||v===ss.get(KEY+':skip'))return;
+      var v=j&&j[PAGE];if(!v||v===VER){cleanV();return;}
+      if(fresh(v))return;
+      if(v===ss.get(KEY+':skip'))return;
       if(pending!==v){pending=v;
         // version.json の <ページ>_marks と自分の data-h を見比べて、どの版面が変わったかを先に言う
         var mk=j[PAGE+'_marks']||{},mine=marks(),ch=[];Object.keys(mk).forEach(function(id){if(mine[id]&&mine[id]!==mk[id][1])ch.push([mk[id][0],'',id]);});
@@ -3658,7 +3665,7 @@ LIVE_JS = """
       maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
-  setTimeout(check,3000);
+  check();   // 開いたらすぐ確かめる（古い控えならすぐ最新に）
 })();
 """.replace("__EVERY__", str(LIVE_EVERY)).replace("__IDLE__", str(LIVE_IDLE))
 
@@ -3740,9 +3747,8 @@ def _account_tag(page=""):
 # 访客（ログインしていない）= 見るだけ；一般用户 = メールアドレスで入った人（運営者のページは見るだけ）；管理者 = 全部・管理ページ。
 # 本当の門番はデータベース（db/auth.sql・db/auth_guard.sql の can_edit / is_admin）。ここはボタンを止めて理由を出すだけ。
 # 開關（private.auth_flags の enforce、db/auth_enforce.sql）が閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。
-# ログインはメールのリンク（Supabase Auth の magic link・パスワードなし・implicit なので別の端末で開いてもよい）。
-# 2026-10-21，用户定的：メールアドレスだけ（同じ日に「ユーザー名」から変えた）・パスワードなし・重ならない（public.app_users）・はじめに利用規約に同意（TERMS_VERSION）。
-# このブラウザが覚える（localStorage の wl-user）。名前が管理者のメール（invites の role=admin）なら、このブラウザで最初の 1 回だけ確認のリンク。Google は保留（PENDING.md）。
+# 2026-10-21，用户定的：だれでもメールアドレス＋パスワード（Supabase Auth、メールは送らない・再発行なし）・重ならない（public.app_users）・はじめに利用規約に同意（TERMS_VERSION）。
+# このブラウザが覚える（localStorage の wl-user と Supabase のセッション wl-auth）。Google は保留（PENDING.md）。
 AUTH_DB = {}   # {url, key}：digest.cmd_render が入れる（公開の publishable key）
 SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"
 # ページごとに「見るだけ」のとき止める操作（それ以外のクリック・リンク・絞り込みはそのまま）
@@ -3757,6 +3763,12 @@ AUTH_CSS = """
 .wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
 .wl-auth>button.in{padding-left:12px}
+.wl-auth>a.new{display:flex;align-items:center;min-height:36px;padding:4px 12px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
+ box-shadow:3px 3px 0 var(--ink);text-decoration:none;font:inherit}
+.wl-auth>a.new:hover,.wl-auth>a.new:focus-visible{background:var(--card)}
+.wl-auth>a.new.home{background:var(--card)}
+.wl-auth>a.new.home:hover,.wl-auth>a.new.home:focus-visible{background:var(--gold)}
+.wl-auth .menu a.about{display:block;margin-top:4px}
 .wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
 .wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
 .wl-auth img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
@@ -3850,11 +3862,11 @@ AUTH_JS = r"""
     var el=document.querySelector('.wl-toast'); if(!el){el=document.createElement('div');el.className='wl-toast';el.setAttribute('role','status');document.body.appendChild(el);}
     el.textContent=t; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(function(){el.hidden=true;},4000);
   }
-  // ログイン（2026-10-21，用户定的）：メールアドレスだけ・パスワードなし・重ならない（データベースで確かめる、大文字小文字は区別しない）。
+  // ログイン（2026-10-21，用户定的）：メールアドレス＋パスワード・重ならない（データベースで確かめる、大文字小文字は区別しない）。
   // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
   // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。店長のメール（invites の role=admin）だけパスワードも聞く
   // （Supabase Auth の signInWithPassword。2026-10-21 に「最初の 1 回メールのリンク」から変えた：毎回のメール確認は面倒）。
-  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
+  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', HOME=A.home||'../?stay', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
   try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
   function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
   var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
@@ -3869,14 +3881,9 @@ AUTH_JS = r"""
   function loginForm(){
     return '<form class="wl-login" data-mode="old" novalidate>'+
       '<label>メールアドレス<input type="email" required maxlength="80" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録したメールアドレス"></label>'+
-      '<label class="pw" hidden><span class="pwl">パスワード</span><input type="password" maxlength="72" autocomplete="current-password"></label>'+
-      '<label class="pw2" hidden>もう一度<input type="password" maxlength="72" autocomplete="new-password"></label>'+
+      '<label class="pw"><span class="pwl">パスワード</span><input type="password" maxlength="72" autocomplete="current-password"></label>'+
       '<button type="submit" class="go">ログイン</button><p class="st" aria-live="polite"></p>'+
-      '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →</a><br><small>メールアドレス・ニュースの言語・好きなジャンルを選ぶだけ（1 分）。パスワードはありません</small></p></form>';
-  }
-  // このメールは店長か（invites の role=admin）→ パスワードを聞く
-  function shopMail(name){
-    return isMail(name)?rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(a){return a?name.toLowerCase():null;}):Promise.resolve(null);
+      '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →</a><br><small>メールアドレスとパスワード・ニュースの言語・好きなジャンルを選ぶだけ（1 分）</small></p></form>';
   }
   function after(name,agreed,st){
     if(agreed<TV){ askAgree(); return; }
@@ -3884,44 +3891,20 @@ AUTH_JS = r"""
   }
   function bindLogin(root){
     var f=root.querySelector('.wl-login'); if(!f) return;
-    var inp=f.querySelector('input[type=email]'), st=f.querySelector('.st'), go=f.querySelector('.go'),
-        pw=f.querySelector('.pw'), pw2=f.querySelector('.pw2'), setup=false;
-    inp.addEventListener('input',function(){ pw.hidden=true; pw2.hidden=true; setup=false; });
-    // 店長のメール（invites の role=admin）だけパスワードを聞く（2026-10-21，用户定的：毎回のメール確認はやめる）。
-    // まだ決めていなければ、はじめの 1 回だけここで決める（shop_set_password、決めたら閉じる）。ほかの人はメールだけ
-    function shopIn(n){
-      var p=pw.querySelector('input').value;
-      if(p.length<8){ st.textContent='パスワードは 8 文字以上です'; return; }
-      if(setup&&p!==pw2.querySelector('input').value){ st.textContent='2 回のパスワードが違います'; return; }
+    var inp=f.querySelector('input[type=email]'), pw=f.querySelector('.pw input'), st=f.querySelector('.st'), go=f.querySelector('.go');
+    // だれでもメール＋パスワード（Supabase Auth の signInWithPassword。2026-10-21，用户定的：ログインの形を全員そろえる・メールは送らない）
+    f.onsubmit=function(ev){
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      var n=inp.value.trim().toLowerCase(), p=pw.value;
+      if(!isMail(n)){ st.textContent='メールアドレスを入れてください（例：name@example.com）'; return; }
+      if(!p){ st.textContent='パスワードを入れてください'; pw.focus(); return; }
       if(!sb){ st.textContent='準備中です。少し待ってからもう一度'; return; }
       go.disabled=true; st.textContent='';
-      (setup?rpc('shop_set_password',{p_email:n,p_password:p}):Promise.resolve())
-        .then(function(){ return sb.auth.signInWithPassword({email:n,password:p}); })
-        .then(function(r){ if(r.error) throw new Error(/invalid/i.test(r.error.message)?'パスワードが違います':r.error.message);
+      sb.auth.signInWithPassword({email:n,password:p})
+        .then(function(r){ if(r.error) throw new Error(/invalid/i.test(r.error.message)?'メールアドレスかパスワードが違います':r.error.message);
           return rpc('user_login',{p_name:n}).catch(function(){ return {name:n,agreed_version:TV}; }); })
         .then(function(r){ go.disabled=false; saveMe({name:r.name||n,v:r.agreed_version||0,at:Date.now()}); after(r.name||n,r.agreed_version||0,st); })
         .catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
-    }
-    f.onsubmit=function(ev){
-      ev.preventDefault(); ev.stopImmediatePropagation();
-      var n=inp.value.trim().toLowerCase();
-      if(!isMail(n)){ st.textContent='メールアドレスを入れてください（例：name@example.com）'; return; }
-      if(!pw.hidden){ shopIn(n); return; }
-      go.disabled=true; st.textContent='';
-      shopMail(n).then(function(mail){
-        if(mail){
-          return rpc('shop_pw_setup_open',{p_email:n}).catch(function(){return false;}).then(function(o){
-            go.disabled=false; setup=!!o; pw.hidden=false; pw2.hidden=!setup;
-            pw.querySelector('.pwl').textContent=setup?'パスワードを決める（はじめの 1 回・8 文字以上）':'パスワード';
-            pw.querySelector('input').setAttribute('autocomplete',setup?'new-password':'current-password');
-            pw.querySelector('input').focus();
-            st.textContent=setup?'店長のメールです。これから使うパスワードを決めてください':'店長のメールです。パスワードを入れてください';
-          });
-        }
-        return rpc('user_login',{p_name:n}).then(function(r){
-          go.disabled=false; saveMe({name:r.name,v:r.agreed_version||0,at:Date.now()}); after(r.name,r.agreed_version||0,st);
-        });
-      }).catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
     };
   }
   // 規約の版が上がった・まだ同意していない人：同意するまで画面を覆う（見るだけには戻れる＝ログアウト）
@@ -3942,10 +3925,6 @@ AUTH_JS = r"""
     saveMe(null);
     (sb&&tok?sb.auth.signOut():Promise.resolve()).then(function(){location.reload();});
   }
-  function leave(){
-    if(!me||!confirm('退会すると、「'+me.name+'」と同意の記録を消します。よろしいですか？')) return;
-    rpc('user_leave',{p_name:me.name}).catch(function(){}).then(logout);
-  }
   var locked=function(){return R.dataset.lock==='1';};
   document.addEventListener('click',function(ev){
     if(!locked()||!LOCK) return;
@@ -3959,25 +3938,30 @@ AUTH_JS = r"""
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
     if(!name){
-      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン</button><div class="menu" hidden>'+loginForm()+'</div>';
+      // 見るだけの人：「はじめのページ」（入口＝紹介・新しく始める・ログイン・店長のページ）と「ログイン」をいつも見える所に
+      // （2026-10-21，用户定的：網址を打たせない。どの画面からも入口へ戻れる。「新しく始める」は入口にある）
+      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ</a>'+
+        '<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン</button><div class="menu" hidden>'+loginForm()+
+        '<a class="about" href="'+esc(HOME)+'">このサイトについて（はじめのページ）</a></div>';
       var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
       bindLogin(box); return;
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
-    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
+    // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ</a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
       '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(role)+'">'+esc(label)+'</span></button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています</small>'+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ</button>':'')+
-      (role==='admin'&&tok?'<button type="button" data-pw>パスワードを変える</button>':'')+
+      (tok?'<button type="button" data-pw>パスワードを変える</button>':'')+
+      '<a href="'+esc(HOME)+'">このサイトについて（はじめのページ）</a>'+
       '<a href="'+esc(TURL)+'">利用規約・プライバシーポリシー</a>'+
-      '<button type="button" data-out>ログアウト</button>'+(me?'<button type="button" data-leave class="quiet">退会する</button>':'')+'</div>';
+      '<button type="button" data-out>ログアウト</button></div>';
     var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
     b.onclick=function(){var o=menu.hidden;menu.hidden=!o;b.setAttribute('aria-expanded',String(o));};
     menu.querySelector('[data-out]').onclick=logout;
-    var lv=menu.querySelector('[data-leave]'); if(lv) lv.onclick=leave;
     var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
-    var pb=menu.querySelector('[data-pw]'); if(pb) pb.onclick=function(){   // 店長：ログインしたまま新しいパスワードに
+    var pb=menu.querySelector('[data-pw]'); if(pb) pb.onclick=function(){   // ログインしたまま新しいパスワードに
       var p=prompt('新しいパスワード（8 文字以上）'); if(p===null) return;
       if(p.length<8){ toast('8 文字以上にしてください'); return; }
       if(prompt('もう一度')!==p){ toast('2 回のパスワードが違います'); return; }
@@ -4008,17 +3992,26 @@ AUTH_JS = r"""
     var box=document.getElementById('wl-members'); if(!box) return;
     if(R.dataset.role!=='admin'){box.closest('section').hidden=true; return;}
     box.closest('section').hidden=false;
-    Promise.all([rpc('admin_list_app_users'),rpc('admin_list_invites')]).then(function(v){
+    if(!tok){ box.innerHTML='<p class="st">店長のメールとパスワードでログインすると、ここでお客さまを管理できます。</p>'; return; }
+    // お客さま（テスト用を含む）の一覧：パスワードを変える。店長を足す（5 人まで）。退会の機能はいらない（2026-10-21，用户定的）
+    Promise.all([rpc('admin_users'),rpc('admin_list_invites')]).then(function(v){
       var us=v[0]||[], inv=v[1]||[];
-      box.innerHTML='<table><thead><tr><th>店長のメール</th><th>役割</th><th>ログイン済み</th></tr></thead><tbody>'+
-        inv.map(function(x){return '<tr><td>'+esc(x.email)+'</td><td>'+esc(ROLE[x.role]||x.role)+'</td><td>'+(x.joined?'済':'まだ')+'</td></tr>';}).join('')+
-        '</tbody></table><p class="st">ユーザー '+us.length+' 人：'+us.slice(0,50).map(function(u){return esc(u.name)+(u.agreed_version>=TV?'':'（規約未同意）');}).join('、')+(us.length>50?' ほか':'')+'</p>'+
-        '<form><input type="email" required placeholder="店長にする人のメールアドレス" aria-label="メール">'+
-        '<button type="submit">店長にする</button></form><p class="st" aria-live="polite"></p>';
-      var f=box.querySelector('form'), st=box.querySelectorAll('.st')[1];
+      box.innerHTML='<table><thead><tr><th>メールアドレス</th><th>種類</th><th>規約</th><th>最後に見た日</th><th></th></tr></thead><tbody>'+
+        us.map(function(u){var shop=u.role==='admin';
+          return '<tr data-mail="'+esc(u.email)+'"><td>'+esc(u.email)+'</td><td>'+(shop?'店長':u.is_test?'テスト用':'お客さま')+(u.has_password?'':'（パスワードなし）')+'</td>'+
+            '<td>'+(u.agreed_version>=TV?'同意済み':'未同意')+'</td><td>'+esc(String(u.last_seen||'').slice(0,10))+'</td>'+
+            '<td>'+(shop?'':'<button type="button" data-upw>パスワードを変える</button>')+'</td></tr>';}).join('')+
+        '</tbody></table><p class="st" aria-live="polite"></p>'+
+        '<form><input type="email" required placeholder="店長にする人のメールアドレス（5 人まで）" aria-label="メール"><button type="submit">店長にする</button></form>'+
+        '<p class="st">店長：'+inv.filter(function(x){return x.role==='admin';}).map(function(x){return esc(x.email);}).join('、')+'</p>';
+      var st=box.querySelector('.st');
+      box.querySelectorAll('[data-upw]').forEach(function(b){ b.onclick=function(){ var m=b.closest('tr').dataset.mail;
+        var p=prompt(m+' の新しいパスワード（4 文字以上）'); if(p===null) return;
+        rpc('admin_user_password',{p_email:m,p_password:p}).then(function(){ st.textContent=m+' のパスワードを変えました'; }).catch(function(e){ st.textContent='できませんでした：'+e.message; }); }; });
+      var f=box.querySelector('form');
       f.onsubmit=function(ev){ev.preventDefault();
         rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:'admin'})
-          .then(function(a){st.textContent=a+' を店長にしました。このメールアドレスでログインし、はじめの 1 回パスワードを決めると店長になります（決める欄は Claude に開けてもらう：auth.sql ⑰ の pw_setup）。';members();})
+          .then(function(a){st.textContent=a+' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。';members();})
           .catch(function(e){st.textContent='できませんでした：'+e.message;});};
     }).catch(function(e){box.innerHTML='<p class="st">読み込めませんでした：'+esc(e.message)+'</p>';});
   }
@@ -4036,7 +4029,7 @@ AUTH_JS = r"""
   function start(){
     if(me&&me.admin){ me.admin=false; saveMe(me); }   // メールの確認を待っていた人（前の仕組み）
     if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
-      .catch(function(e){ if(/見つかりません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
+      .catch(function(e){ if(/見つかりません|登録されていません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
     if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
     if(!window.supabase){refresh();return;}
@@ -4061,7 +4054,7 @@ def _auth_tag(page=""):
     if not (AUTH_DB.get("url") and AUTH_DB.get("key")):
         return ""
     cfg = {"url": AUTH_DB["url"], "key": AUTH_DB["key"], "lib": SUPABASE_JS, "page": page,
-           "terms": TERMS_VERSION, "termsUrl": "terms.html", "start": "../#name"}   # 新しく始める = 入口（docs/index.html）の流れ
+           "terms": TERMS_VERSION, "termsUrl": "terms.html", "start": "../#name", "home": "../?stay"}   # 新しく始める = 入口（docs/index.html）の流れ
     js = (AUTH_JS.replace("__AUTH__", json.dumps(cfg)).replace("__ROLE__", json.dumps(ROLE_JA, ensure_ascii=False))
           .replace("__LOCK__", json.dumps(AUTH_LOCK)))
     js = js.replace("</", "<\\/")
@@ -4626,7 +4619,7 @@ document.querySelectorAll('.vt').forEach(box => box.addEventListener('click', ev
 """
 
 
-TERMS_VERSION = 2          # 利用規約・プライバシーポリシーの版。中身を変えたら上げる → ログインしている人にもう一度同意を聞く（AUTH_JS の askAgree）
+TERMS_VERSION = 3          # 利用規約・プライバシーポリシーの版。中身を変えたら上げる → ログインしている人にもう一度同意を聞く（AUTH_JS の askAgree）
 TERMS_DATE = "2026年10月21日"
 TERMS_CONTACT = ""         # 開示・訂正・削除の請求の連絡先（運営者が決める。空なら「サイト内でお知らせします」）
 TERMS_PAGE_CSS = """
@@ -4666,12 +4659,12 @@ def render_terms(updated=""):
 <article class="terms">
 <p>「ウォッチリスト通信」（以下「本サービス」）は、運営者（以下「店長」）が気になる作品・グッズ・ニュースを集めて見せるサイトです。
 「新しく始める」で同意したときから、この規約とプライバシーポリシーが適用されます。</p>
-<div class="note"><b>大事なこと：</b>本サービスにはパスワードがありません。メールアドレスを知っている人は、そのメールアドレスでログインできます（店長だけはメールの確認があります）。
+<div class="note"><b>大事なこと：</b>ログインはメールアドレスとパスワードです。パスワードを忘れたときの再発行はありません（メールを送らないため）。ほかのサービスと同じパスワードは使わないでください。
 人に知られて困る情報（本名・住所・電話番号など）は入力欄に書かないでください。</div>
 
 <h2>1. 集める情報</h2>
 <ul>
-<li><b>メールアドレス</b>（ログインに使います。お知らせ・広告のメールは送りません）</li>
+<li><b>メールアドレスとパスワード</b>（ログインに使います。パスワードは元に戻せない形（bcrypt）にして保存し、だれも読めません。お知らせ・広告のメールは送りません）</li>
 <li><b>同意の記録</b>：同意した規約の版と日時、最後に使った日時</li>
 <li><b>興味・関心の情報</b>：フォローした作品、👍 / 👎、欲しい物リスト、設定など、本サービスで操作した内容</li>
 <li><b>好みの設定</b>：ニュースの言語、好きなジャンル、はじめに「気になる」を選んだ作品</li>
@@ -4697,7 +4690,7 @@ def render_terms(updated=""):
 <p>外国（米国・オーストラリア）にある会社に預けることになります。各社はそれぞれの国の法令と自社の方針にもとづいて情報を守っています。</p>
 
 <h2>4. 保存する期間</h2>
-<p>退会するまで保存します。右上のメニューの「退会する」で、メールアドレスと同意の記録を消します。</p>
+<p>サービスを続けている間は保存します。消してほしいときは店長に伝えてください。メールアドレスと同意の記録・関心の情報を消します。</p>
 
 <h2>5. 開示・訂正・削除などのご請求</h2>
 <p>ご自身の情報の開示・訂正・利用停止・削除を求めることができます。連絡先：{contact}</p>
@@ -5764,7 +5757,7 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
-<section class="panel" id="members" hidden><h2 class="sh"><span>お客さまと店長</span><small>だれでもメールアドレスだけで始められる（重ならない・規約に同意）· ここに入れたメールで、パスワードを入れてログインした人は店長· 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
+<section class="panel" id="members" hidden><h2 class="sh"><span>お客さまと店長</span><small>だれでもメールアドレス＋パスワードで始められる（重ならない・規約に同意・メールは送らない）· お客さまのパスワードを変える · 店長は 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
 <section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in data.get("items") or [] if x.get("name")])}</section>
 <section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>

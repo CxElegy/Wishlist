@@ -13,8 +13,9 @@ Google ログインは保留（Google の「公開」にホームページとプ
 | 管理ページ | ❌ | ❌ | ✅（＋「ユーザーと招待」） |
 
 - 門番はデータベース：書く関数の 1 行目で `can_edit(p_account)` / `is_admin()`（`db/auth_guard.sql`）。網页は止めて理由を出すだけ（`render.AUTH_JS`）。
-- 開關 `private.auth_flags.enforce`：閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。`db/auth_enforce.sql` で開く。戻すときは false に。
+- 開關 `private.auth_flags.enforce`：**2026-10-21 に開いた**。访客・お客さまは店長のページを見るだけ（👍👎・設定・依頼・写真・今すぐ実行は DB が断る）。ログインしない AI 編集の `edit_control_set` は step→pause とやり直し 1 件外すだけ通す。戻すときは false に。
 - 管理者：`invites` 表の role=admin のメール（最初は `c.elegy@outlook.com`、5 人まで）。登録時の trigger が役割を決める。ほかの人はユーザー。
+- **だれでもメール＋パスワード**（2026-10-21，用户定的：ログインの形をそろえる。メールは送らない・再発行なし・退会の機能はいらない）。新しく始めるでパスワード（8 文字以上）を決め、そのままログイン。テスト用 `test-a〜e@example.com` はパスワード `0000`。店長は管理ページ「お客さまと店長」でお客さまのパスワードを変えられる。
 - **店長**：`c.elegy@outlook.com` ＋ **パスワード**でログイン（2026-10-21，用户定的：毎回のメール確認はやめた・パスワードの再発行は要らない）。はじめの 1 回だけ、ログインの欄で自分でパスワードを決める（`shop_set_password`、`private.auth_flags` の `pw_setup` が開いている間だけ、決めたら閉じる。もう一度開くのは `update private.auth_flags set on_ = true where key = 'pw_setup'`）。変えるのはログイン中のメニュー「パスワードを変える」。ほかの店長を足したときも pw_setup を開けてその人に決めてもらう（同じ日に一度 `CxElegy` という名前にしたが、メールアドレスに戻した）。
 - **網址 = /home/**（2026-10-21，用户定的：一般的なサイトと同じく網址に名前を入れない。みんな同じ網址、中身はログインした人で決まる）：前の test1 の中身を店長のものとして戻した（Supabase の account 名は test1 のまま、網址は /home/）。試験の版 test2 は `archive/test2/`・`docs/test2/`（見るだけ）。
 - account の持ち主：`accounts` 表（test1・test2 は owner 空 = 運営者 = 管理者のもの）。ユーザー自分の account は第 2 步。

@@ -477,3 +477,72 @@ revoke all on function public.shop_pw_setup_open(text) from public;
 revoke all on function public.shop_set_password(text, text) from public;
 grant execute on function public.shop_pw_setup_open(text) to anon, authenticated;
 grant execute on function public.shop_set_password(text, text) to anon, authenticated;
+
+-- ⑱ だれでもメール＋パスワード（2026-10-21，用户定的：ログインの形を全員そろえる・メールは送らない・再発行なし・退会の機能はいらない）
+--    Supabase Auth のユーザーを確認済みで作る。テスト用 5 つはパスワード 0000（ユーザーの指定）。店長は管理ページでお客さまのパスワードを変えられる。
+create or replace function private.make_auth_user(p_email text, p_password text)
+returns uuid language plpgsql security definer set search_path = '' as $$
+declare m text := lower(btrim(coalesce(p_email, ''))); uid uuid;
+begin
+  select id into uid from auth.users where lower(email) = m;
+  if uid is null then
+    uid := gen_random_uuid();
+    insert into auth.users (instance_id, id, aud, role, email, encrypted_password, email_confirmed_at,
+                            confirmation_token, recovery_token, email_change_token_new, email_change,
+                            raw_app_meta_data, raw_user_meta_data, created_at, updated_at)
+    values ('00000000-0000-0000-0000-000000000000', uid, 'authenticated', 'authenticated', m,
+            extensions.crypt(p_password, extensions.gen_salt('bf')), now(), '', '', '', '',
+            '{"provider":"email","providers":["email"]}'::jsonb, '{}'::jsonb, now(), now());
+    insert into auth.identities (provider_id, user_id, identity_data, provider, created_at, updated_at)
+    values (uid::text, uid, jsonb_build_object('sub', uid::text, 'email', m, 'email_verified', true, 'phone_verified', false), 'email', now(), now());
+  else
+    update auth.users set encrypted_password = extensions.crypt(p_password, extensions.gen_salt('bf')),
+                          email_confirmed_at = coalesce(email_confirmed_at, now()), updated_at = now() where id = uid;
+  end if;
+  return uid;
+end $$;
+revoke all on function private.make_auth_user(text, text) from public, anon, authenticated;
+
+create or replace function public.user_signup(p_name text, p_agree_version int, p_prefs jsonb, p_password text)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare n text := private.user_name_ok(p_name);
+begin
+  if char_length(coalesce(p_password, '')) < 8 then raise exception 'パスワードは 8 文字以上にしてください'; end if;
+  if exists (select 1 from auth.users u where lower(u.email) = n) then
+    raise exception 'このメールアドレスはもう登録されています（右上の「ログイン」から）' using errcode = '23505';
+  end if;
+  perform public.user_signup(p_name, p_agree_version, p_prefs);
+  perform private.make_auth_user(n, p_password);
+  return jsonb_build_object('name', n, 'agreed_version', p_agree_version);
+end $$;
+revoke all on function public.user_signup(text, int, jsonb, text) from public;
+grant execute on function public.user_signup(text, int, jsonb, text) to anon, authenticated;
+
+create or replace function public.admin_users()
+returns table (email text, created_at timestamptz, last_seen timestamptz, agreed_version int, has_password boolean, is_test boolean, role text)
+language plpgsql stable security definer set search_path = '' as $$
+begin
+  if not public.is_admin() then raise exception '管理者だけが使えます' using errcode = '42501'; end if;
+  return query
+    select u.name_key, u.created_at, u.last_seen, u.agreed_version,
+           exists (select 1 from auth.users a where lower(a.email) = u.name_key and a.banned_until is null),
+           coalesce((u.prefs->>'dummy')::boolean, false),
+           coalesce((select r.role from public.user_roles r join auth.users a on a.id = r.user_id where lower(a.email) = u.name_key limit 1), 'user')
+      from public.app_users u where u.left_at is null and u.name_key like '%@%'
+     order by u.created_at;
+end $$;
+
+create or replace function public.admin_user_password(p_email text, p_password text)
+returns void language plpgsql security definer set search_path = '' as $$
+declare m text := lower(btrim(coalesce(p_email, '')));
+begin
+  if not public.is_admin() then raise exception '管理者だけが使えます' using errcode = '42501'; end if;
+  if char_length(coalesce(p_password, '')) < 4 then raise exception 'パスワードは 4 文字以上にしてください'; end if;
+  if not exists (select 1 from public.app_users u where u.name_key = m and u.left_at is null) then raise exception 'そのお客さまはいません'; end if;
+  perform private.make_auth_user(m, p_password);
+end $$;
+revoke all on function public.admin_users() from public, anon;
+revoke all on function public.admin_user_password(text, text) from public, anon;
+grant execute on function public.admin_users() to authenticated;
+grant execute on function public.admin_user_password(text, text) to authenticated;
+-- （admin_user_leave も作ったが、退会の機能はいらない（用户定的）ので網页からは呼ばない）
