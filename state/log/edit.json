@@ -450,5 +450,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 488865
+},
+{
+"at": "2026-10-21T07:53:19+00:00",
+"text": "2026-10-21 第 14 バッチを出刊：The Mandalorian（1 版面・4 本・残り 10 版面） · token 新規入力 3,505・キャッシュ読み 82.6万・出力 1,605",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.16,
+"mem_total": 16874930176,
+"mem_free": 16140935168,
+"disk_used": 9989914624,
+"disk_free": 31537324032,
+"disk_total": 41527238656,
+"peak": 197922816
+},
+"batch": 14,
+"boards": [
+"The Mandalorian"
+],
+"stories": 4,
+"left": 10,
+"edited": 14,
+"run": 1792565708.6792397,
+"tok": {
+"in": 10,
+"cw": 3495,
+"cr": 825581,
+"out": 1605,
+"calls": 5,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 830691
 }
 ]

@@ -90,7 +90,8 @@
   "MMORPG 新作": 26,
   "ILLIT": 22,
   "dota2": 18,
-  "哈利波特剧集": 15
+  "哈利波特剧集": 15,
+  "The Mandalorian": 9
  },
  "漫威电影": [
   {
@@ -786,6 +787,46 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Is Disney concerned about The Mandalorian and Grogu?",
+   "highlight": "Disney concerned",
+   "blurb": "『The Mandalorian and Grogu』の興行をめぐり、ディズニーは不安を抱えているのかという論評。",
+   "weight": "lead",
+   "refs": [
+    9,
+    1
+   ]
+  },
+  {
+   "headline": "Pedro Pascal Says It's Creepy When Mandalorian Fans Ask For This",
+   "highlight": "Creepy",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "The Mandalorian now appearing at Oga’s Cantina in Disneyland",
+   "highlight": "Oga’s Cantina",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "Brewers technician spends 200 hours making team-themed Mandalorian armor",
+   "highlight": "200 hours",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    4
    ]
   }
  ]

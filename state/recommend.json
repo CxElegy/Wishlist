@@ -3,6 +3,7 @@
   "https://k.sina.com.cn/article_7880069124_1d5b0500406801h29g.html": "2026-10-21",
   "https://t.co/BR7mzTQ19E": "2026-10-21",
   "https://t.co/CM6Qxx73tL": "2026-10-21",
+  "https://www.jsonline.com/videos/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92336916007/": "2026-10-21",
   "https://www.starwarsnewsnet.com/2026/10/can-starfighter-outearn-the-mandalorian-and-grogu-at-the-box-office.html": "2026-10-21",
   "https://www.whas11.com/article/news/nation-world/starbucks-snoopy-cup-peanuts-collection-release-date/507-20c3ad04-495d-44ff-b2bf-7a085ff61614": "2026-10-21"
  },
@@ -72,7 +73,7 @@
   "https://www.hidomin.com/news/articleView.html?idxno=725860": "https://cdn.hidomin.com/news/photo/202610/725860_428727_0019.jpg",
   "https://www.hk01.com/%E9%A3%9F%E7%8E%A9%E8%B2%B7/60392659/%E8%90%AC%E8%81%96%E7%AF%80%E5%A5%BD%E5%8E%BB%E8%99%952026-%E5%93%88%E5%9B%89%E5%96%82-%E8%BF%AA%E5%A3%AB%E5%B0%BC-%E5%8C%96%E5%A6%9D%E8%88%9E%E6%9C%8332%E5%A4%A7%E6%8E%A8%E4%BB%8B-%E7%8D%A8%E5%AE%B6%E5%84%AA%E6%83%A0%E7%A2%BC": "https://cdn.hk01.com/di/media/images/dw/20261015/1187429559872524288789204.jpeg/E-sa0EsKRY3G-unBBjDF3hHP_IOc7UXF0-yjgNPso4A",
   "https://www.inside-games.jp/article/2026/10/21/189587.html": "https://www.inside-games.jp/imgs/ogp_f/1796555.jpg",
-  "https://www.jsonline.com/story/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92251749007/": "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200",
+  "https://www.jsonline.com/videos/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92336916007/": null,
   "https://www.kanaloco.jp/news/social/article-1313366.html": "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640",
   "https://www.mgoddess.com/news/rpg-cbt-appmedia/?lang=zh-TW": "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp",
   "https://www.mito-hollyhock.net/news/p=55367/": "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg",
@@ -1615,27 +1616,6 @@
   },
   {
    "batch": 6,
-   "because": "The Mandalorian",
-   "date": "2026-10-20",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200",
-   "kind": "board",
-   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
-   "score": 6,
-   "source": "Milwaukee Journal Sentinel",
-   "taste": [
-    [
-     "作品:The Mandalorian",
-     2
-    ]
-   ],
-   "title": "Brewers technician spends 200 hours making team-themed Mandalorian armor",
-   "url": "https://www.jsonline.com/story/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92251749007/",
-   "words": [],
-   "work": "The Mandalorian"
-  },
-  {
-   "batch": 6,
    "because": "漫威电影",
    "date": "2026-10-20",
    "hits": [],
@@ -1654,6 +1634,27 @@
    "url": "https://comicbook.com/movies/feature/marvels-biggest-fumble-after-avengers-endgame-is-still-a-problem-the-mcu-has-to-solve-after-doomsday-secret-wars/",
    "words": [],
    "work": "漫威电影"
+  },
+  {
+   "batch": 6,
+   "because": "The Mandalorian",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
+   "score": 6,
+   "source": "Milwaukee Journal Sentinel",
+   "taste": [
+    [
+     "作品:The Mandalorian",
+     2
+    ]
+   ],
+   "title": "See Milwaukee fan's 3D printed Brewers-themed Mandalorian armor",
+   "url": "https://www.jsonline.com/videos/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92336916007/",
+   "words": [],
+   "work": "The Mandalorian"
   },
   {
    "batch": 6,
@@ -2284,7 +2285,7 @@
    9
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
@@ -2292,7 +2293,7 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
