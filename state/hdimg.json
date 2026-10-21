@@ -638,12 +638,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hobby.watch.impress.co.jp/img/hbw/list/2149/840/001.jpg": {
-  "w": 534,
-  "h": 401,
-  "target": 720,
-  "v": 3
- },
  "https://i0.wp.com/capesandtights.com/wp-content/uploads/2026/10/GroguMando.png": {
   "w": 1240,
   "h": 670,
@@ -2424,6 +2418,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/16/1792169865739_img-14c0fcb120261016231916-jpg-v-2.jpeg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
+  "w": 1080,
+  "h": 600,
   "target": 720,
   "v": 3
  },
