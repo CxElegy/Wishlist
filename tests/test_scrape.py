@@ -53,8 +53,11 @@ class Fallback(unittest.TestCase):
         with mock.patch.dict(images.os.environ, {"SCRAPLING_BROWSER": ""}):
             self.assertIsNone(images._browser_html("https://a.example/x"))
         with mock.patch.dict(images.os.environ, {"SCRAPLING_BROWSER": "1"}):
-            images._browser_used[0] = images.BROWSER_MAX
+            images._browser_used[:] = [images.BROWSER_MAX, 0.0]
             self.assertIsNone(images._browser_html("https://a.example/x"))   # 1 回 BROWSER_MAX 頁まで
+            images._browser_used[:] = [0, images.BROWSER_BUDGET - 1]
+            self.assertIsNone(images._browser_html("https://a.example/x"))   # 持ち時間の残りが 1 頁分ない
+            images._browser_used[:] = [0, 0.0]
 
     def test_off_switch(self):
         with mock.patch.object(images, "SCRAPLING", False):
