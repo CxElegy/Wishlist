@@ -74,6 +74,14 @@ class AuthTag(unittest.TestCase):
         self.assertNotIn("ユーザー名", js)
         self.assertNotIn("ユーザー名", render.render_terms("10.21"))
 
+    def test_shop_uses_password_not_mail_link(self):
+        # 2026-10-21，用户定的：店長はパスワード（毎回のメール確認はやめる）
+        js = render.AUTH_JS
+        self.assertIn("signInWithPassword", js)
+        self.assertIn("shop_set_password", js)
+        self.assertNotIn("sendAdminLink(mail", js)
+        self.assertIn(".wl-login label[hidden]{display:none}", render.AUTH_CSS)
+
     def test_db_names_are_emails(self):
         s = (DB / "auth.sql").read_text(encoding="utf-8")
         last = s.rsplit("function private.user_name_ok", 1)[1]

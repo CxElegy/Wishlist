@@ -3773,6 +3773,7 @@ AUTH_CSS = """
 .wl-auth .menu button:hover{background:var(--gold)}
 .wl-login{display:flex;flex-direction:column;gap:8px}
 .wl-login label{display:flex;flex-direction:column;gap:4px;font-weight:700}
+.wl-login label[hidden]{display:none}
 .wl-login input{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
 .wl-login button{align-self:flex-start;border:2px solid var(--ink);background:var(--gold);color:var(--ink);padding:6px 12px;font:700 13px var(--font-sans);cursor:pointer}
 .wl-login button:disabled{opacity:.6;cursor:wait}
@@ -3851,8 +3852,8 @@ AUTH_JS = r"""
   }
   // ログイン（2026-10-21，用户定的）：メールアドレスだけ・パスワードなし・重ならない（データベースで確かめる、大文字小文字は区別しない）。
   // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
-  // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。名前が店長のメール（invites の role=admin）のときだけ、
-  // このブラウザで最初の 1 回、確認のリンクをメールで送る（そうしないと誰でも店長の名前を入れて変えられる）。
+  // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。店長のメール（invites の role=admin）だけパスワードも聞く
+  // （Supabase Auth の signInWithPassword。2026-10-21 に「最初の 1 回メールのリンク」から変えた：毎回のメール確認は面倒）。
   var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
   try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
   function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
@@ -3863,45 +3864,63 @@ AUTH_JS = r"""
     if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度';
     return m||'うまくいきませんでした';
   }
-  function back(){ return location.href.split('#')[0].replace(/[?&](code|error|error_code|error_description)=[^&]*/g,''); }
-  function sendAdminLink(mail,st){
-    if(!sb){ if(st) st.textContent='準備中です。少し待ってからもう一度'; return; }
-    if(st) st.textContent='確認のメールを送っています…';
-    sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:back(),shouldCreateUser:true}}).then(function(r){
-      var shown=mail.replace(/^(.{2}).*(@.*)$/,'$1…$2');
-      if(st) st.textContent=r.error?sayErr(r.error.message):'店長のメールです。'+shown+' に届いたメールのリンクを押してください（このブラウザで最初の 1 回だけ）';
-    });
-  }
   var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+'" target="_blank" rel="noopener">利用規約・プライバシーポリシー</a>に同意する</span></label>';};
   // 右上はログインだけ。新しく始めるのは入口の流れ（言語・ジャンル・最初の版面を選ぶ）に一本化（2026-10-21，サイト全体で同じ始め方に）
   function loginForm(){
     return '<form class="wl-login" data-mode="old" novalidate>'+
-      '<label>メールアドレス<input type="email" required maxlength="80" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="登録したメールアドレス"></label>'+
+      '<label>メールアドレス<input type="email" required maxlength="80" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録したメールアドレス"></label>'+
+      '<label class="pw" hidden><span class="pwl">パスワード</span><input type="password" maxlength="72" autocomplete="current-password"></label>'+
+      '<label class="pw2" hidden>もう一度<input type="password" maxlength="72" autocomplete="new-password"></label>'+
       '<button type="submit" class="go">ログイン</button><p class="st" aria-live="polite"></p>'+
       '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →</a><br><small>メールアドレス・ニュースの言語・好きなジャンルを選ぶだけ（1 分）。パスワードはありません</small></p></form>';
   }
-  // このメールは店長か（invites の role=admin）→ 確認のリンクを送るメール
+  // このメールは店長か（invites の role=admin）→ パスワードを聞く
   function shopMail(name){
     return isMail(name)?rpc('is_admin_email',{p_email:name}).catch(function(){return false;}).then(function(a){return a?name.toLowerCase():null;}):Promise.resolve(null);
   }
   function after(name,agreed,st){
-    shopMail(name).then(function(mail){   // 店長のメールなら、このブラウザで 1 回だけ確認のリンク
-      if(!mail||(user&&user.email&&user.email.toLowerCase()===mail)) return;
-      me.admin=true; me.mail=mail; saveMe(me); chip(true); sendAdminLink(mail,document.querySelector('.wl-auth .menu .st'));
-    });
     if(agreed<TV){ askAgree(); return; }
     toast('ようこそ、'+name+' さん。このブラウザが覚えました'); refresh();
   }
   function bindLogin(root){
     var f=root.querySelector('.wl-login'); if(!f) return;
-    var inp=f.querySelector('input[type=email]'), st=f.querySelector('.st'), go=f.querySelector('.go');
+    var inp=f.querySelector('input[type=email]'), st=f.querySelector('.st'), go=f.querySelector('.go'),
+        pw=f.querySelector('.pw'), pw2=f.querySelector('.pw2'), setup=false;
+    inp.addEventListener('input',function(){ pw.hidden=true; pw2.hidden=true; setup=false; });
+    // 店長のメール（invites の role=admin）だけパスワードを聞く（2026-10-21，用户定的：毎回のメール確認はやめる）。
+    // まだ決めていなければ、はじめの 1 回だけここで決める（shop_set_password、決めたら閉じる）。ほかの人はメールだけ
+    function shopIn(n){
+      var p=pw.querySelector('input').value;
+      if(p.length<8){ st.textContent='パスワードは 8 文字以上です'; return; }
+      if(setup&&p!==pw2.querySelector('input').value){ st.textContent='2 回のパスワードが違います'; return; }
+      if(!sb){ st.textContent='準備中です。少し待ってからもう一度'; return; }
+      go.disabled=true; st.textContent='';
+      (setup?rpc('shop_set_password',{p_email:n,p_password:p}):Promise.resolve())
+        .then(function(){ return sb.auth.signInWithPassword({email:n,password:p}); })
+        .then(function(r){ if(r.error) throw new Error(/invalid/i.test(r.error.message)?'パスワードが違います':r.error.message);
+          return rpc('user_login',{p_name:n}).catch(function(){ return {name:n,agreed_version:TV}; }); })
+        .then(function(r){ go.disabled=false; saveMe({name:r.name||n,v:r.agreed_version||0,at:Date.now()}); after(r.name||n,r.agreed_version||0,st); })
+        .catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
+    }
     f.onsubmit=function(ev){
       ev.preventDefault(); ev.stopImmediatePropagation();
       var n=inp.value.trim().toLowerCase();
       if(!isMail(n)){ st.textContent='メールアドレスを入れてください（例：name@example.com）'; return; }
+      if(!pw.hidden){ shopIn(n); return; }
       go.disabled=true; st.textContent='';
-      rpc('user_login',{p_name:n}).then(function(r){
-        go.disabled=false; saveMe({name:r.name,v:r.agreed_version||0,at:Date.now()}); after(r.name,r.agreed_version||0,st);
+      shopMail(n).then(function(mail){
+        if(mail){
+          return rpc('shop_pw_setup_open',{p_email:n}).catch(function(){return false;}).then(function(o){
+            go.disabled=false; setup=!!o; pw.hidden=false; pw2.hidden=!setup;
+            pw.querySelector('.pwl').textContent=setup?'パスワードを決める（はじめの 1 回・8 文字以上）':'パスワード';
+            pw.querySelector('input').setAttribute('autocomplete',setup?'new-password':'current-password');
+            pw.querySelector('input').focus();
+            st.textContent=setup?'店長のメールです。これから使うパスワードを決めてください':'店長のメールです。パスワードを入れてください';
+          });
+        }
+        return rpc('user_login',{p_name:n}).then(function(r){
+          go.disabled=false; saveMe({name:r.name,v:r.agreed_version||0,at:Date.now()}); after(r.name,r.agreed_version||0,st);
+        });
       }).catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
     };
   }
@@ -3945,12 +3964,12 @@ AUTH_JS = r"""
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
       bindLogin(box); return;
     }
-    var pending=!user&&me&&me.admin, label=pending?'確認待ち':(ROLE[role]||role), sh=isMail(name)?name.split('@')[0]:name;
+    var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
     box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
-      '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(pending?'wait':role)+'">'+esc(label)+'</span></button>'+
+      '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(role)+'">'+esc(label)+'</span></button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています</small>'+
-      (pending?'<button type="button" data-again>確認のメールをもう一度送る</button><p class="st" aria-live="polite">店長のメールです。届いたメールのリンクを押すと店長になります（このブラウザで 1 回だけ）</p>':'')+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ</button>':'')+
+      (role==='admin'&&tok?'<button type="button" data-pw>パスワードを変える</button>':'')+
       '<a href="'+esc(TURL)+'">利用規約・プライバシーポリシー</a>'+
       '<button type="button" data-out>ログアウト</button>'+(me?'<button type="button" data-leave class="quiet">退会する</button>':'')+'</div>';
     var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
@@ -3958,20 +3977,23 @@ AUTH_JS = r"""
     menu.querySelector('[data-out]').onclick=logout;
     var lv=menu.querySelector('[data-leave]'); if(lv) lv.onclick=leave;
     var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
-    var ag=menu.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.mail||name,menu.querySelector('.st'));};
+    var pb=menu.querySelector('[data-pw]'); if(pb) pb.onclick=function(){   // 店長：ログインしたまま新しいパスワードに
+      var p=prompt('新しいパスワード（8 文字以上）'); if(p===null) return;
+      if(p.length<8){ toast('8 文字以上にしてください'); return; }
+      if(prompt('もう一度')!==p){ toast('2 回のパスワードが違います'); return; }
+      sb.auth.updateUser({password:p}).then(function(r){ toast(r.error?sayErr(r.error.message):'パスワードを変えました'); });
+    };
   }
   function gate(){
     var need=page==='admin'&&R.dataset.enf==='1'&&R.dataset.role!=='admin';
     R.dataset.gate=need?'1':'0';
     var g=document.querySelector('.wl-gate'); if(!need){if(g) g.remove(); return;}
     if(!g){g=document.createElement('div');g.className='wl-gate';document.body.appendChild(g);}
-    var pending=me&&me.admin&&!user;
-    g.innerHTML='<div><h1>管理ページ</h1><p>'+(pending?'店長の確認がまだです。届いたメールのリンクを押してください。':
-      me?'このページは店長だけが見られます。':'店長だけが見られます。店長のメールアドレスでログインしてください。')+'</p>'+
-      (me?'':loginForm())+(pending?'<button type="button" data-again>確認のメールをもう一度送る</button><p class="st" aria-live="polite"></p>':'')+
+    g.innerHTML='<div><h1>管理ページ</h1><p>'+(me?'このページは店長だけが見られます。店長はログアウトして、メールとパスワードでログインしてください。':
+      '店長だけが見られます。店長のメールアドレスとパスワードでログインしてください。')+'</p>'+
+      (me?'':loginForm())+
       '<a href="./">← ウォッチリスト通信に戻る</a></div>';
     bindLogin(g);
-    var ag=g.querySelector('[data-again]'); if(ag) ag.onclick=function(){sendAdminLink(me.mail||me.name,g.querySelector('.st'));};
   }
   function readOnlyNote(){
     if(page!=='settings') return;
@@ -3996,7 +4018,7 @@ AUTH_JS = r"""
       var f=box.querySelector('form'), st=box.querySelectorAll('.st')[1];
       f.onsubmit=function(ev){ev.preventDefault();
         rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:'admin'})
-          .then(function(a){st.textContent=a+' を店長にしました。このメールアドレスでログインすると、確認のメールのあと店長になります。';members();})
+          .then(function(a){st.textContent=a+' を店長にしました。このメールアドレスでログインし、はじめの 1 回パスワードを決めると店長になります（決める欄は Claude に開けてもらう：auth.sql ⑰ の pw_setup）。';members();})
           .catch(function(e){st.textContent='できませんでした：'+e.message;});};
     }).catch(function(e){box.innerHTML='<p class="st">読み込めませんでした：'+esc(e.message)+'</p>';});
   }
@@ -4012,7 +4034,7 @@ AUTH_JS = r"""
         }});
   }
   function start(){
-    if(me&&me.name&&!me.admin&&!tok) shopMail(me.name).then(function(m){ if(m){ me.admin=true; me.mail=m; saveMe(me); refresh(); } });   // 入口から店長の名前で入った
+    if(me&&me.admin){ me.admin=false; saveMe(me); }   // メールの確認を待っていた人（前の仕組み）
     if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
       .catch(function(e){ if(/見つかりません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
@@ -4021,7 +4043,6 @@ AUTH_JS = r"""
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
-      if(user&&user.email&&me&&me.admin&&(me.mail||me.name).toLowerCase()===user.email.toLowerCase()){ me.admin=false; saveMe(me); }   // 店長の確認が済んだ
       if(changed||ev==='INITIAL_SESSION') refresh();
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
@@ -5600,7 +5621,7 @@ def render_admin(data, db, updated):
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
 データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
-<section class="panel" id="members" hidden><h2 class="sh"><span>お客さまと店長</span><small>だれでもメールアドレスだけで始められる（重ならない・規約に同意）· ここに入れたメールでログインした人は店長（最初の 1 回だけメールで確認）· 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
+<section class="panel" id="members" hidden><h2 class="sh"><span>お客さまと店長</span><small>だれでもメールアドレスだけで始められる（重ならない・規約に同意）· ここに入れたメールで、パスワードを入れてログインした人は店長· 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
 <section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in data.get("items") or [] if x.get("name")])}</section>
 <section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
 <section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>

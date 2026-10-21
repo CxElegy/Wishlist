@@ -15,7 +15,7 @@ Google ログインは保留（Google の「公開」にホームページとプ
 - 門番はデータベース：書く関数の 1 行目で `can_edit(p_account)` / `is_admin()`（`db/auth_guard.sql`）。網页は止めて理由を出すだけ（`render.AUTH_JS`）。
 - 開關 `private.auth_flags.enforce`：閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。`db/auth_enforce.sql` で開く。戻すときは false に。
 - 管理者：`invites` 表の role=admin のメール（最初は `c.elegy@outlook.com`、5 人まで）。登録時の trigger が役割を決める。ほかの人はユーザー。
-- **店長**：`c.elegy@outlook.com` でログイン（同じ日に一度 `CxElegy` という名前にしたが、メールアドレスに戻した）。
+- **店長**：`c.elegy@outlook.com` ＋ **パスワード**でログイン（2026-10-21，用户定的：毎回のメール確認はやめた・パスワードの再発行は要らない）。はじめの 1 回だけ、ログインの欄で自分でパスワードを決める（`shop_set_password`、`private.auth_flags` の `pw_setup` が開いている間だけ、決めたら閉じる。もう一度開くのは `update private.auth_flags set on_ = true where key = 'pw_setup'`）。変えるのはログイン中のメニュー「パスワードを変える」。ほかの店長を足したときも pw_setup を開けてその人に決めてもらう（同じ日に一度 `CxElegy` という名前にしたが、メールアドレスに戻した）。
 - **網址 = /home/**（2026-10-21，用户定的：一般的なサイトと同じく網址に名前を入れない。みんな同じ網址、中身はログインした人で決まる）：前の test1 の中身を店長のものとして戻した（Supabase の account 名は test1 のまま、網址は /home/）。試験の版 test2 は `archive/test2/`・`docs/test2/`（見るだけ）。
 - account の持ち主：`accounts` 表（test1・test2 は owner 空 = 運営者 = 管理者のもの）。ユーザー自分の account は第 2 步。
 - 保存するのはメール（と名前）だけ。管理ページのユーザー一覧は名前だけ（メールは招待表だけ）。
