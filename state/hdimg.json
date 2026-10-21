@@ -463,6 +463,12 @@
   "target": 720,
   "v": 3
  },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/07/Harry-Potter-Deathly-Hallows-Trio.jpg?resize=2000,1125": {
+  "w": 2000,
+  "h": 1125,
+  "target": 1280,
+  "v": 3
+ },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/Avengers-Doomsday-Doom-Eyes.jpg?resize=2000,1125": {
   "w": 2000,
   "h": 1125,
@@ -923,6 +929,12 @@
   "w": 2800,
   "h": 1400,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bWf0z.img": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bqpEG.img": {
@@ -2411,6 +2423,12 @@
   "v": 3,
   "blur": 0.405
  },
+ "https://static.the-independent.com/2025/09/01/11/newFile.jpg?trim=19,0,19,0&width=1200&height=800&crop=1200:800": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/08/avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -2593,6 +2611,18 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.1n3YYLRDXYR9pvDIKuhhqA&pid=News&w=1024": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/0f1a4edd476af07f.webp",
+  "out": [
+   700,
+   393
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.5SyM0P931IBkDjRnMBhpHA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -2684,12 +2714,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.ITmpVqBNtoGDg7THX1RqoA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.JA6HAGiBknVyQSKLPC7W2w&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2699,6 +2723,19 @@
   "out": [
    700,
    393
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.455,
+  "local": "pics/22a242b8d363b200.webp",
+  "out": [
+   1280,
+   732
   ],
   "why": "Bing の小さい縮小画像"
  },

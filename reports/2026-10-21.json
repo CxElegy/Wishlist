@@ -1,6 +1,6 @@
 {
  "date": "2026-10-21",
- "edit_sig": "833bf5774398",
+ "edit_sig": "ddf5a1714b43",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -460,115 +460,49 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "HBO版『ハリー・ポッター』ドラマの製作費が、シリーズ最高額の映画を上回る見込みと報じられている。",
+     "date": "2026-10-19",
+     "headline": "HBO's Harry Potter series is about to surpass the franchise's most expensive movie",
+     "highlight": "surpass the franchise's most expensive movie",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bWf0z.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/entertainment/general/hbo-s-harry-potter-series-is-about-to-surpass-the-franchise-s-most-expensive-movie/ar-AA2fCrCk",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-19",
+     "headline": "Warwick Davis speaks out on Harry Potter series backlash after JK Rowling comments",
+     "highlight": "Warwick Davis",
+     "image": "https://static.the-independent.com/2025/09/01/11/newFile.jpg?trim=19,0,19,0&width=1200&height=800&crop=1200:800",
+     "image_via": "og:image",
+     "url": "https://www.independent.co.uk/arts-entertainment/tv/news/harry-potter-tv-series-jk-rowling-warwick-davis-hbo-b3069502.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 1,
-     "source": "ComicBook.com",
-     "title": "Before HBO’s Harry Potter Series, A New Prop Auction Will Reveal Which Wizard Really Has the Best Wand",
-     "url": "https://comicbook.com/collectibles/news/before-hbos-harry-potter-series-a-new-prop-auction-will-reveal-which-wizard-really-has-the-best-wand/"
+     "headline": "'Concerned' organisers to ramp up security for Harry Potter series premiere",
+     "highlight": "ramp up security",
+     "image": "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://www.dailymail.com/tvshowbiz/article-16224269/Concerned-organisers-ramp-security-Harry-Potter-series-premiere-trans-rights-activists-targeted-theatre-JK-Rowlings-controversial-comments.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 2,
-     "source": "Winter is Coming on MSN",
-     "title": "HBO's Harry Potter series reportedly cost more to make than any of the movies",
-     "url": "https://www.msn.com/en-us/entertainment/movies/hbo-s-harry-potter-series-reportedly-cost-more-to-make-than-any-of-the-movies/ar-AA2fGdEB"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 3,
-     "source": "Daily Mail",
-     "title": "'Concerned' organisers to ramp up security for Harry Potter series premiere after trans rights activists targeted theatre show over JK Rowling's controversial comments",
-     "url": "https://www.dailymail.com/tvshowbiz/article-16224269/Concerned-organisers-ramp-security-Harry-Potter-series-premiere-trans-rights-activists-targeted-theatre-JK-Rowlings-controversial-comments.html"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 4,
-     "source": "London Evening Standard",
-     "title": "Warwick Davis addresses Harry Potter series backlash with emotional plea",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPUFV5ZlVZSnV4UFo2djZmcFVEUUF5TXVsakhnOGVNSUNIRXFVUXJrRVZpMFVrUVpLNG5GR203a3lMTjJxdmJleTJpdHZhYWt0QUhzY2xXdjNERVY3aVB5ZzVvUTVUdVJCcFpGdHF1M3dFTFpDLTNwT250a1Z5S2h4b2hwejBvbVZ3bnlwY1ZRbw?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 5,
-     "source": "PinkNews",
-     "title": "Warwick Davis says he’s ‘not privy to JK Rowling backlash’ after joining HBO Harry Potter",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPVU5QZUFQaGJxT2kzdFJ3WGVZRWlRR0ZodklyUjFDSlVuMzJDQU9hNTNmOVo5dTdjUmxZaFNwM0ZEbGZBS1h0aTRERVI5MTcxUDk1VmY2MUZLenFTTE9qMnJLVmtfZ2RtbXZTQldpM1FBMnM2dHBQOTdxUFVMTllMZjhTbTNpSzRMWHFtMTFVYw?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 6,
-     "source": "Yahoo",
-     "title": "Warwick Davis responds to Harry Potter series backlash",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTUh6VV9FNHF1SFJtVzhlZ2ZhWFBuUmF4TWNReUZEQ2c1b185QngxTmVudi1KR0RseVNWMGZkODJWZTVEX2ExQjBBaTA4MmxaV1RzSW5HX19fQzBkUk1oSFR1WHBBcThLTW42b1ZrU3JZa2tybkZkSjF4VmZBUWV3ZGZtekRnVy13eWQ3bA?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 7,
-     "source": "Lancashire Telegraph",
-     "title": "TV baker with famous comedian dad set for Harry Potter show return",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPcm94cTh4S21NaTVBMlFQNlJPVmxCUThzendDSGNkd0xRUG1QQjZKdVlnNjg1VnRLNWhvUDlTRF8wRldfSHV2YmVTSHplRlRRbHJxMDc4WV9sakhMVno4cU43YXdWVHMzMGk2cmo0bXJ6NHVTTnh0YzlQOWVfX2xkWDRNZnlFWkVKMDI3RkdZN3RSTWxCYnVuUmd6VXdvRTFITVIxcUEzeTYxVnJFeVU0eExn?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 8,
-     "source": "SuaraGarut.ID",
-     "title": "Warwick Davis Urges Acceptance Amid Harry Potter Series Backlash",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9QSVBZT1BuNjRUb1I4MXN1SHgxVF9VdENiN0xmaTRiUlZ1cG1BZEFobGRlZ3BKMkR5UVhFRHRqYkxaM2VKcVVURG9XWDF3TXpPZ0dVMTlEUEduQ1hWLWZob2VCNk4zdk9naVhMbUI2T0hYMzFfZ1p6NQ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 9,
-     "source": "Startefacts",
-     "title": "HBO's Harry Potter costs more than any Potter movie — fans did the math in a minute",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOb1hPYmM5amdmSzdaTEx2TFM5VUhxZi11bzM4RUVnQ095Q1FBcUN0a29VR2JsUDFCVmp6WWpjRnBZSEhNamcxVEl2RGxSbUVUV01VdWR2aW5kVkZJTFZDbXJhNWRqcUlHN3U2eUVQZlhpQ3FRbk1pZW41OVIza0VJbnpyNXFhakhFa0podmk1WkdUc1dNVjlrX0lKYkhJRmRSeUg5UTNjVTZ5bzl5RGtB?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 10,
-     "source": "ScreenRant",
-     "title": "HBO's Harry Potter Is Picking Up Right Where Game Of Thrones Left Off",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPQzRrVkpTTjEzQzBjMHN3eVQtOHNCSWd0VEtiQWs1eExjemxWUFk4LXBwUnJ1THdWS0UzUllLdUYtcnU0SVhmQXlTRXpvQ2lQY2NNZ1htS2d1Ul9sSHlDWDA0cHF5S0hjQWJKazlUZUpLZ2JsS1c3RnN6eGhibkhDWFRoVlEtZw?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 11,
-     "source": "The Independent",
-     "title": "Warwick Davis speaks out on Harry Potter series backlash after JK Rowling comments",
-     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOVzVyOXVodEFRVEdEVWVNdTBLVWdUaElZY2JDVGJaNC10OGFiQWZMQVdZRzcyeENWSzIya1U5NmRUbmVMU3d6TTltb2RVVlY2UkVQbjdHV1Z6bVYyUjFvTnoyVkh0dXNVbzdIZGE0TWE1Z3N2WVpiSHNOdndVNnlQX2JwaFpGcDlfc2UtcEtWNGtzZHNPSHFEUW5HaWkxRkQ4YU41NVh3bzhDRU9KQWlqQVZWNk84MG1XeVptNVc0bw?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 12,
-     "source": "Yahoo",
-     "title": "Harry Potter HBO Max TV Show’s Budget Is Massive, But There’s a Catch",
-     "url": "https://www.yahoo.com/entertainment/tv/articles/harry-potter-hbo-max-tv-192905802.html"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 13,
-     "source": "The Tab",
-     "title": "HBO’s Harry Potter series costs revealed as budget looks set to overtake the original films",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNU1ROeEtfdWFUakNEMWt2V29zSnRQQjZ2R1lCWURCNkRWSkw3Zm90RTFoRUd6S240ZEFNU0JJYUJyNUpwVFdxRUx5SlY1T2V2WFZ4YTFSN2syQk1DX2E4OHh1YUcwVU1nVnFib3BoMGVITkpIY0RKSlRjcDY5cnpncDJ3QWFtc0d2MkF1R3BINDlhSFFqcEo0aG4tX3FTdENlR3lldmJoNEIxRlBvQkpPb0E3SVVYRVl1?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 14,
-     "source": "Comic Book Resources on MSN",
-     "title": "HBO's Harry Potter series is about to surpass the franchise's most expensive movie",
-     "url": "https://www.msn.com/en-us/entertainment/general/hbo-s-harry-potter-series-is-about-to-surpass-the-franchise-s-most-expensive-movie/ar-AA2fCrCk"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 15,
-     "source": "FandomWire",
-     "title": "HBO’s Harry Potter Reboot Officially Set to Beat Daniel Radcliffe’s Costliest Movie",
-     "url": "https://fandomwire.com/hbo-harry-potter-reboot-officially-set-to-beat-daniel-radcliffe-costliest-movie/"
+     "headline": "Before HBO’s Harry Potter Series, A New Prop Auction Will Reveal Which Wizard Really Has the Best Wand",
+     "highlight": "Prop Auction",
+     "image": "https://comicbook.com/wp-content/uploads/sites/4/2026/07/Harry-Potter-Deathly-Hallows-Trio.jpg?resize=2000,1125",
+     "image_via": "og:image",
+     "url": "https://comicbook.com/collectibles/news/before-hbos-harry-potter-series-a-new-prop-auction-will-reveal-which-wizard-really-has-the-best-wand/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",

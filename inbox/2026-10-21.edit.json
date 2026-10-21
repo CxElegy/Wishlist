@@ -89,7 +89,8 @@
   "日本顶级网球赛事": 28,
   "MMORPG 新作": 26,
   "ILLIT": 22,
-  "dota2": 18
+  "dota2": 18,
+  "哈利波特剧集": 15
  },
  "漫威电影": [
   {
@@ -738,6 +739,54 @@
     "label": "試合",
     "place": "EPL World SEA S19"
    }
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO's Harry Potter series is about to surpass the franchise's most expensive movie",
+   "highlight": "surpass the franchise's most expensive movie",
+   "blurb": "HBO版『ハリー・ポッター』ドラマの製作費が、シリーズ最高額の映画を上回る見込みと報じられている。",
+   "weight": "lead",
+   "refs": [
+    14,
+    2,
+    9,
+    12,
+    13,
+    15
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bWf0z.img"
+  },
+  {
+   "headline": "Warwick Davis speaks out on Harry Potter series backlash after JK Rowling comments",
+   "highlight": "Warwick Davis",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11,
+    4,
+    5,
+    6,
+    8
+   ]
+  },
+  {
+   "headline": "'Concerned' organisers to ramp up security for Harry Potter series premiere",
+   "highlight": "ramp up security",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Before HBO’s Harry Potter Series, A New Prop Auction Will Reveal Which Wizard Really Has the Best Wand",
+   "highlight": "Prop Auction",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
   }
  ]
 }
