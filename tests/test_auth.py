@@ -35,6 +35,23 @@ class AuthTag(unittest.TestCase):
         body = t.split("<script>", 1)[1].rsplit("</script>", 1)[0]
         self.assertNotIn("</", body)
 
+    def test_customer_gets_own_page(self):
+        """アカウントは 1 つずつ独立（2026-10-22）：お客さまには店長の中身でなく自分のページ（my_page）。
+        言葉は skill（clarify・distill・onboarding）に合わせる：内部の事情・店長のページへの切り替えは出さない、空の状態は次の一手、外したら元に戻す。"""
+        render.AUTH_DB.update(url="https://x.supabase.co", key="sb_publishable_x")
+        tag = render._auth_tag("index")
+        for s in ("rpc('my_page')", "my_keywords_set", "キーワードを足す", "元に戻す", "setTimeout(refresh,0)", '<label for="'):
+            self.assertIn(s, tag)
+        for s in ("ほかの人には見えません", "店長のページを見る", "自分のページに戻る", "wl-view-shop", "まだ集めていません", "ニュース集めは準備中", "欲しい物リストは準備中"):   # お客さまに要らない内部の事情は出さない
+            self.assertNotIn(s, tag)
+        self.assertIn('html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine)', render.AUTH_CSS)
+        import json
+        cfg = json.loads(re.search(r"var A=(\{.*?\}), R=", tag).group(1))
+        self.assertIn(["其他", "その他", ""], cfg["secs"])   # 大類の一覧（その他も）
+        sql = (ROOT / "db" / "my_page.sql").read_text(encoding="utf-8")
+        self.assertIn("lower((select auth.jwt()) ->> 'email')", sql)   # 本人の行だけ
+        self.assertNotIn("to anon", sql)
+
     def test_pages_carry_tag(self):
         render.AUTH_DB.update({"url": "https://x.supabase.co", "key": "sb_publishable_x"})
         self.assertIn("wl-auth", render._live_head("index"))
