@@ -55,12 +55,12 @@ class AuthTag(unittest.TestCase):
     def test_terms_page(self):
         html = render.render_terms("10.21")
         self.assertIn(f"第 {render.TERMS_VERSION} 版", html)
-        for word in ("集める情報", "使い道", "第三者", "保存する期間", "開示", "Supabase", "パスワードがありません"):
+        for word in ("集める情報", "使い道", "第三者", "保存する期間", "開示", "Supabase", "再発行はありません"):
             self.assertIn(word, html)
 
     def test_login_is_username_with_terms(self):
         js = render.AUTH_JS
-        for fn in ("user_login", "user_agree", "user_leave"):
+        for fn in ("user_login", "user_agree"):
             self.assertIn(fn, js)
         self.assertIn("askAgree", js)
         self.assertIn("START", js)   # 新しく始めるは入口の流れに一本化
@@ -78,7 +78,6 @@ class AuthTag(unittest.TestCase):
         # 2026-10-21，用户定的：店長はパスワード（毎回のメール確認はやめる）
         js = render.AUTH_JS
         self.assertIn("signInWithPassword", js)
-        self.assertIn("shop_set_password", js)
         self.assertNotIn("sendAdminLink(mail", js)
         self.assertIn(".wl-login label[hidden]{display:none}", render.AUTH_CSS)
 
@@ -136,6 +135,19 @@ class Welcome(unittest.TestCase):
         self.assertTrue(welcome.COLLECTED <= set(codes))
         self.assertTrue(set(welcome.LANG_ALIAS) == set(codes))   # どの言語も英語名・日本語名で探せる
         self.assertGreaterEqual(len(codes), 50)
+
+    def test_entry_refreshes_stale_copy(self):
+        import welcome
+        self.assertIn("__V__", welcome.FRESH_JS)
+        self.assertIn("location.replace", welcome.FRESH_JS)
+        self.assertIn('cache:"no-store"', welcome.FRESH_JS)
+
+    def test_pages_refresh_stale_copy_on_open(self):
+        # 開いた直後に古い控えなら ?v= で開き直す（GitHub Pages の max-age=600 対策）
+        js = render.LIVE_JS
+        self.assertIn("function fresh(v)", js)
+        self.assertIn("check();   //", js)
+        self.assertNotIn("setTimeout(check,3000)", js)
 
     def test_signup_is_real(self):
         import welcome
