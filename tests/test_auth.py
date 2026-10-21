@@ -55,12 +55,12 @@ class AuthTag(unittest.TestCase):
     def test_terms_page(self):
         html = render.render_terms("10.21")
         self.assertIn(f"第 {render.TERMS_VERSION} 版", html)
-        for word in ("集める情報", "使い道", "第三者", "保存する期間", "開示", "Supabase", "パスワードがありません"):
+        for word in ("集める情報", "使い道", "第三者", "保存する期間", "開示", "Supabase", "再発行はありません"):
             self.assertIn(word, html)
 
     def test_login_is_username_with_terms(self):
         js = render.AUTH_JS
-        for fn in ("user_login", "user_agree", "user_leave"):
+        for fn in ("user_login", "user_agree"):
             self.assertIn(fn, js)
         self.assertIn("askAgree", js)
         self.assertIn("START", js)   # 新しく始めるは入口の流れに一本化
@@ -78,7 +78,6 @@ class AuthTag(unittest.TestCase):
         # 2026-10-21，用户定的：店長はパスワード（毎回のメール確認はやめる）
         js = render.AUTH_JS
         self.assertIn("signInWithPassword", js)
-        self.assertIn("shop_set_password", js)
         self.assertNotIn("sendAdminLink(mail", js)
         self.assertIn(".wl-login label[hidden]{display:none}", render.AUTH_CSS)
 

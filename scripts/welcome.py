@@ -284,9 +284,15 @@ JS = r"""
   if (location.hash === '#name') show('name', false);   // 各ページ右上の「新しく始める」から
   $$('[data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
   $$('.bar [data-back]').forEach(b => b.addEventListener('click', () => history.back()));
-  // ---- ② メールアドレスと規約（2026-10-21，用户定的：ログインはメールアドレス）
+  // ---- ② メールアドレス・パスワードと規約（2026-10-21，用户定的：ログインはメールアドレス＋パスワード）
   const inp = $('#nm'), hint = $('#nm-hint'), agree = $('#agree'), next1 = $('#to-genre'); let tm = 0, okName = false;
-  const v1 = () => { next1.disabled = !(okName && agree.checked); };
+  // パスワード（2026-10-21，用户定的：だれでもメール＋パスワード。メールは送らない・再発行なし）
+  const pw = $('#pw'), pw2 = $('#pw2'), pwh = $('#pw-hint');
+  const pwOk = () => pw.value.length >= 8 && pw.value === pw2.value;
+  const v1 = () => { next1.disabled = !(okName && agree.checked && pwOk()); };
+  [pw, pw2].forEach(x => x.addEventListener('input', () => { v1();
+    pwh.className = 'hint' + (pw2.value && !pwOk() ? ' ng' : pwOk() ? ' ok' : '');
+    pwh.textContent = pw.value && pw.value.length < 8 ? 'あと ' + (8 - pw.value.length) + ' 文字' : pw2.value && pw.value !== pw2.value ? '2 回のパスワードが違います' : pwOk() ? '✓ このパスワードにします' : '忘れたときの再発行はありません。ほかのサービスと同じパスワードは使わないでください。'; }));
   inp.addEventListener('input', () => {
     clearTimeout(tm); okName = false; v1(); const n = inp.value.trim(); hint.className = 'hint';
     if (!/^[^@\s<>"'`/\\]+@[^@\s<>"'`/\\]+\.[^@\s<>"'`/\\]+$/.test(n)) { hint.textContent = n ? 'メールアドレスの形にしてください（例：name@example.com）' : ''; if (n) hint.className = 'hint ng'; return; }
@@ -405,7 +411,11 @@ JS = r"""
       $('#done-lang').textContent = NAMES[st.lang]; show('done');
     };
     if (!C.url) { done(); return; }   // プレビュー（DB なし）
-    rpc('user_signup', { p_name: st.name, p_agree_version: C.terms, p_prefs: prefs }).then(done).catch(e => {
+    // 登録したらそのままログインした状態にする（店長のページの supabase-js が読む wl-auth に、Supabase Auth の返事をそのまま置く）
+    const signIn = () => fetch(C.url.replace(/\/$/, '') + '/auth/v1/token?grant_type=password', { method: 'POST',
+        headers: { apikey: C.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ email: st.name, password: pw.value }) })
+      .then(r => r.ok ? r.json() : null).then(s => { if (s && s.access_token) try { localStorage.setItem('wl-auth', JSON.stringify(s)); } catch (_) {} }).catch(() => {});
+    rpc('user_signup', { p_name: st.name, p_agree_version: C.terms, p_prefs: prefs, p_password: pw.value }).then(signIn).then(done).catch(e => {
       b.disabled = false;
       fetch(C.url.replace(/\/$/, '') + '/rest/v1/rpc/name_available', { method: 'POST', headers: { apikey: C.key, 'Content-Type': 'application/json' },
         body: JSON.stringify({ p_name: st.name }) }).then(r => r.json()).then(ok => {
@@ -478,7 +488,7 @@ def build(out=OUT, base="", cards=None):
 <div class="shot"><img class="pc" src="{base}testground/welcome/shop-pc.webp" alt="店長のページ（パソコン）"><img class="sp" src="{base}testground/welcome/shop-sp.webp" alt="店長のページ（スマホ）"></div>
 </div>
 <ul class="how">
-<li><span class="n">01</span><b>気になるものを選ぶ</b><p>ジャンルを選んで、出てくるカードを「気になる / パス」。パスワードは要りません。</p></li>
+<li><span class="n">01</span><b>気になるものを選ぶ</b><p>ジャンルを選んで、出てくるカードを「気になる / パス」。登録はメールアドレスとパスワードだけ。</p></li>
 <li><span class="n">02</span><b>店長が集めに行く</b><p>ニュース・発売日・イベントを毎日集めて、AI が同じ話をまとめ、見出しを付けます。</p></li>
 <li><span class="n">03</span><b>自分だけの版面を読む</b><p>作品ごとの版面で、新しいことだけ。👍 / 👎 で、店長のおすすめがだんだん合ってきます。</p></li>
 </ul>
@@ -489,9 +499,12 @@ def build(out=OUT, base="", cards=None):
 <section class="scr" id="s-name"><div class="wrap">
 {bar}
 <h2 class="q">メールで始めます</h2>
-<p class="qs">次からはこのメールアドレスでログインします。パスワードはありません。メールは送りません。</p>
+<p class="qs">次からはこのメールアドレスとパスワードでログインします。メールは送りません。</p>
 <label class="field">メールアドレス<input id="nm" type="email" maxlength="120" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="name@example.com" autofocus></label>
 <p class="hint" id="nm-hint" aria-live="polite"></p>
+<label class="field">パスワード（8 文字以上）<input id="pw" type="password" maxlength="72" autocomplete="new-password"></label>
+<label class="field">もう一度<input id="pw2" type="password" maxlength="72" autocomplete="new-password"></label>
+<p class="hint" id="pw-hint" aria-live="polite">忘れたときの再発行はありません。ほかのサービスと同じパスワードは使わないでください。</p>
 <label class="agree"><input type="checkbox" id="agree"><span><a href="{SHOP}terms.html" target="_blank" rel="noopener">利用規約・プライバシーポリシー</a>を読んで同意します。
 選んだ作品などの「興味・関心の情報」は、このサービスのためだけに使います。</span></label>
 <div class="grow"></div>
