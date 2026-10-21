@@ -2682,6 +2682,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.SdHBkMZfXkMd9z_VMQz8yw&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Tw408Jo7-WCfcnK3zPpcHA&pid=News&w=1200": {
   "w": 700,
   "h": 364,
@@ -3066,12 +3072,6 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
-  "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Winter-Soldier.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
   "v": 3
  },
  "https://www.svg.com/img/gallery/gta-6-delays-officially-explained-by-rockstar-games/l-intro-1792009203.jpg": {
