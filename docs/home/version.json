@@ -1,9 +1,9 @@
 {
- "admin": "42b3fd35fded",
+ "admin": "d7e3f27e6313",
  "admin_marks": {
   "backend": [
    "バックグラウンド",
-   "21b56832"
+   "3a851093"
   ],
   "editdiff": [
    "AI 編集の前後",
@@ -23,11 +23,11 @@
   ],
   "ov": [
    "しくみの全体図",
-   "20dffaf7"
+   "08f1ec61"
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "2984a7a8"
+   "b4a40a6f"
   ],
   "queue": [
    "いまの状況",
@@ -50,7 +50,7 @@
    "65812a88"
   ]
  },
- "heat": "b6a2db7f0098",
+ "heat": "29db5bc20b73",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -65,7 +65,7 @@
    "3e5f2b1b"
   ]
  },
- "index": "c0ea9900e958",
+ "index": "3385d72ad1a4",
  "index_marks": {
   "front": [
    "トップ",
@@ -168,6 +168,6 @@
    "df90739e"
   ]
  },
- "updated": "10.22 06:17",
- "wishlist": "e0ba73443d5d"
+ "updated": "10.22 06:31",
+ "wishlist": "c5ffaa817955"
 }
