@@ -41,6 +41,7 @@ jobs:
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # 读「我会喜欢？」的投票
       WIKIMEDIA_TOKEN: ${{ secrets.WIKIMEDIA_TOKEN }}   # Wikimedia の上限を IP（共有）ではなくアカウントごとに（scripts/wikihttp.py）
       IS_WEEKLY: ${{ github.event.schedule == '47 0 * * 1' || inputs.weekly == true }}
+      WL_RENDER_SOFT: "1"   # 網页の生成に失敗しても、集めたデータは push する（digest.write_page）
     steps:
       - uses: actions/checkout@v5
         with:
@@ -87,9 +88,9 @@ jobs:
       - name: 周报 → Discord
         if: env.IS_WEEKLY == 'true'
         run: |
-          python scripts/digest.py notify-weekly
-          # 心跳：每周至少提交一次。公开仓库连续 60 天没有活动，GitHub 会悄悄停用定时任务
-          TZ=Asia/Shanghai date +'%F %H:%M 周报已发送' > state/heartbeat.txt
+          # 心跳：每周至少提交一次。公开仓库连续 60 天没有活动，GitHub 会悄悄停用定时任务。送れなかったら「发送失败」と書く（嘘の「已发送」を書かない）
+          if python scripts/digest.py notify-weekly; then msg="周报已发送"; else msg="周报发送失败（Discord 拒绝或网络错误，见日志）"; fi
+          TZ=Asia/Shanghai date +"%F %H:%M $msg" > state/heartbeat.txt
 
       - name: 提交（docs/ 由 GitHub Pages 发布）
         run: |

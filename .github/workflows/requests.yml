@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
+      WL_RENDER_SOFT: "1"   # 網页の生成に失敗しても、依頼の結果は push する（digest.write_page）
       SUPABASE_URL: https://bzokpnbcjscbcehdxtjq.supabase.co   # 和 items.yaml 的 supabase_url 一样（公开的）
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
       GH_TOKEN: ${{ github.token }}
