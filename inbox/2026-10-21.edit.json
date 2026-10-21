@@ -78,6 +78,71 @@
   }
  ],
  "_covered": {
-  "三星手机": 40
- }
+  "三星手机": 40,
+  "漫威电影": 40
+ },
+ "漫威电影": [
+  {
+   "headline": "中國電影：《復仇者聯盟5》已定檔12月16日在中國內地上映",
+   "highlight": "12月16日",
+   "blurb": "中國電影(600977.SH)は『アベンジャーズ5』の共同配給会社で、中国本土で12月16日公開と発表。",
+   "weight": "hero",
+   "refs": [
+    38
+   ],
+   "event": {
+    "date": "2026-12-16",
+    "label": "公開日",
+    "place": "中国本土"
+   }
+  },
+  {
+   "headline": "Marvel Reportedly Delays ‘Avengers: Secret Wars’ Production…Again",
+   "highlight": "Delays",
+   "blurb": "Avengers: Secret Wars の撮影が再び延期されたと報じられ、新たな撮影目標は2027年。一方で既に10〜15%は撮影済みとの情報もある。",
+   "weight": "lead",
+   "refs": [
+    13,
+    26,
+    7
+   ],
+   "image": "https://assets.murphysmultiverse.com/uploads/2024/02/main-avengers-secret-wars-new4433961055628216162.jpg"
+  },
+  {
+   "headline": "Marvel Studios Officially Unveils Steve Rogers & Thor’s Team-Up Logo For Avengers: Doomsday",
+   "highlight": "Team-Up Logo",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22,
+    16
+   ]
+  },
+  {
+   "headline": "Marvel Studios Announces 4 New Female Superheroes Leading the MCU's Next Saga — Including Sadie Sink's Jean Grey & Inde Navarrette's Rogue",
+   "highlight": "4 New Female Superheroes",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    10,
+    20,
+    37
+   ]
+  },
+  {
+   "headline": "Hank Pym star Michael Douglas wanted to be killed off before Ant-Man 3 but Marvel \"wouldn't let him\"",
+   "highlight": "wouldn't let him",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    33,
+    18,
+    17,
+    25,
+    35,
+    36
+   ]
+  }
+ ]
 }
