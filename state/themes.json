@@ -219,6 +219,16 @@
   "font": "serif",
   "split": false
  },
+ "hero|https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bqTu1.img": {
+  "accent": "#E64C56",
+  "alt_accent": "#C41C27",
+  "alt_bg": "#F1E9EC",
+  "alt_fg": "#1A1C22",
+  "bg": "#22161B",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "hero|https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fJ0Xe.img": {
   "accent": "#6B5E0F",
   "alt_accent": "#B39D19",
@@ -397,6 +407,16 @@
   "bg": "#1E1A1E",
   "fg": "#F2EEE6",
   "font": "serif",
+  "split": false
+ },
+ "星巴克马克杯|None": {
+  "accent": "#E0703F",
+  "alt_accent": "#B83A17",
+  "alt_bg": "#F1EEE6",
+  "alt_fg": "#1A1C22",
+  "bg": "#1A1C22",
+  "fg": "#F1EEE6",
+  "font": "sans",
   "split": false
  },
  "星巴克马克杯|https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png": {
