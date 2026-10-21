@@ -180,6 +180,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.juksy.com/files/articles/153324/6ad8489984e5b.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
  "https://assets.mmoexp.com/images/202609/d1bc0f44ac2c34739074a26025e26f7fe194850c.png": {
   "w": 2048,
   "h": 553,
@@ -568,15 +574,29 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba86b04462f31f9469137ad546bc521ce0cd5b6720327992735177d45a0a255836b99bed875b6dbe3f9007b55c8f1": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c3428ab8799c155639a8b17bd3fcb4dd28e1a0969687537f6379a27c3bd08d069df3a509af72": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.465,
-  "local": "pics/4eb04c6965ba3a38.webp",
+  "blur": 0.569,
+  "local": "pics/9f32ef20b8e10467.webp",
   "out": [
    720,
+   720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc1c344e0592054f85638c89ded05b31c972cbf39f83ea339eb0833d1787ba4beb4ba096b70d91c4d7fc609c95d2e54ceb2093723e8c1d0864024f69529019a66a3d3fc01c026ebacbd19d1881cda1966436039451b22fa168c33c4a88828da0eb70ec0": {
+  "w": 240,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.455,
+  "local": "pics/d199875644e9ad5e.webp",
+  "out": [
+   576,
    720
   ],
   "why": "防盗链",
@@ -2450,6 +2470,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-21"
  },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-recenze-8.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
  "https://scontent-sjc3-1.xx.fbcdn.net/v/t51.71878-15/851829434_1657957355672157_598019026852783350_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a27664&_nc_ohc=uKSc0b5fZFEQ7kNvwFxE5ms&_nc_oc=AdqmBBqeKqxLAPsvjT85BPpF_EHNTZvG-6X1_yY5Ot2mPnQ4nwiUFLImYpprEyA5CYs&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=8yCkfeRA7k1_NKbixFL9Mg&_nc_ss=7820f&oh=00_AQOQdGlX1cpi4E0KSvVx2CSSu0e_bKoaPsdHUtpgJL7PRw&oe=6ADE1E65": {
   "w": 640,
   "h": 1136,
@@ -2902,18 +2928,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.YQOWVk6tArirle6eiDvGBQ&pid=News&w=600": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/fd3f722cc82c71e3.webp",
-  "out": [
-   600,
-   399
-  ],
-  "why": "Bing の小さい縮小画像"
- },
  "https://www.bing.com/th?id=ONUT.ZZC7xXqYNpi9qk80zWrW2w&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -3349,6 +3363,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.rbbtoday.com/imgs/ogp_f/1052146.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
  "https://www.shitakoe.com/wp/wp-content/uploads/2026/10/2-7-1024x768.jpg": {
   "w": 1024,
   "h": 768,
@@ -3389,12 +3409,6 @@
   "w": 1825,
   "h": 1217,
   "target": 720,
-  "v": 3
- },
- "https://www.techpowerup.com/img/XCcQ8Q7DB7qC3Ztf.jpg": {
-  "w": 1707,
-  "h": 960,
-  "target": 1280,
   "v": 3
  },
  "https://www.techpowerup.com/img/i9n1tQR7bxbYyYVd.jpg": {

@@ -3,7 +3,7 @@
   {
    "headline": "サムスンGalaxy S27のリーク、3モデル構成を示唆―Proは不採用",
    "highlight": "Proは不採用",
-   "blurb": "Galaxy S27は S27・S27+・S27 Ultra の3モデル構成になる可能性。2027年は折りたたみ機が目白押しのロードマップ。",
+   "blurb": "画面保護フィルムの流出画像から、S27・S27+・S27 Ultraの3モデル構成と前面デザインがほぼ変わらないことが示唆された。",
    "weight": "lead",
    "refs": [
     8,
@@ -14,7 +14,17 @@
     31,
     25,
     34,
-    22
+    22,
+    43,
+    55,
+    60,
+    72,
+    77,
+    28,
+    62,
+    64,
+    41,
+    42
    ],
    "image": "https://img.biggo.com/3EL1nNsIEMVU_JqZ5qdtKWtO6W6Z13ZkiSY4yU_g_VY/fit/1720/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwL2FlZjY4ZjdiLTNmZWQtNDMyMS04YTRiLTYzMWEwZDZkOTQ3Yl8xNzkyNTQ2Njc0X2RlZmF1bHQuanBn.webp"
   },
@@ -29,12 +39,24 @@
     39,
     24,
     36,
-    12
+    12,
+    50,
+    71,
+    74,
+    73,
+    51,
+    67,
+    52,
+    57,
+    61,
+    38,
+    46,
+    47
    ]
   },
   {
    "headline": "Galaxy S27は5Gモデムの省電力性能が向上か、Galaxy S28では2nm製造プロセスを採用との情報",
-   "highlight": "5Gモデムの省電力性能が向上",
+   "highlight": "省電力性能が向上",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -42,33 +64,55 @@
     18,
     17,
     26,
-    9
+    9,
+    56,
+    80
    ]
   },
   {
-   "headline": "Samsung Galaxy S27 Launch Could Slip to February Over LPDDR6 and UFS 5.0",
-   "highlight": "Slip to February",
+   "headline": "開発は順調。Galaxy S27シリーズは発表時期が前倒しに？",
+   "highlight": "発表時期が前倒し",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    79,
+    78,
+    59,
+    76,
     11,
     35
    ]
   },
   {
+   "headline": "Galaxy S27 Ultra、横長の大型カメラ配置を示すケース画像が流出",
+   "highlight": "横長",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    75,
+    10,
+    64,
+    49,
+    4
+   ]
+  },
+  {
    "headline": "Exynos 2700 vs. Snapdragon 8 Elite Extreme Gen 6：最終的な勝者はどちらになるのか？",
-   "highlight": "",
+   "highlight": "最終的な勝者",
    "blurb": "",
    "weight": "normal",
    "refs": [
     20,
     19,
-    21
+    21,
+    58,
+    69,
+    80
    ]
   },
   {
    "headline": "Samsung Changes Galaxy S27 Series Internal Codenames (Again!)",
-   "highlight": "Internal Codenames",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -78,7 +122,7 @@
   }
  ],
  "_covered": {
-  "三星手机": 40,
+  "三星手机": 80,
   "漫威电影": 40,
   "A2O LITE": 30,
   "GTA 6": 30,
