@@ -85,7 +85,8 @@
   "ちいかわ": 30,
   "ちいかわ 漫画": 30,
   "周杰伦": 30,
-  "绝区零": 30
+  "绝区零": 30,
+  "日本顶级网球赛事": 28
  },
  "漫威电影": [
   {
@@ -479,6 +480,93 @@
    "refs": [
     19
    ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "世界9位シフィオンテク 東レPPO欠場、怪我で今季終了＜女子テニス＞",
+   "highlight": "東レPPO欠場",
+   "blurb": "世界ランク9位のイガ・シフィオンテクが東レ パン パシフィック オープンを欠場。怪我のため今季の戦いを終えた。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00010001-tennisnet-000-2-view.jpg?exp=10800"
+  },
+  {
+   "headline": "内島萌夏 日本勢対決「難しい」 激闘制し3年ぶりジャパンOP初戦突破＜女子テニス＞",
+   "highlight": "3年ぶりジャパンOP初戦突破",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11,
+    12,
+    21,
+    5,
+    13
+   ]
+  },
+  {
+   "headline": "加藤未唯ペア 日本勢対決制しジャパンOP初戦突破、穂積絵莉ペアにストレート勝ち＜女子テニス＞",
+   "highlight": "ジャパンOP初戦突破",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    6,
+    8
+   ]
+  },
+  {
+   "headline": "トップシードのアン・リーが逆転勝利で初戦を突破、単複の1回戦がすべて終了",
+   "highlight": "アン・リーが逆転勝利",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    4
+   ]
+  },
+  {
+   "headline": "坂詰姫野 世界58位に完敗でジャパンOP初戦敗退、2日がかりの一戦でストレート負け＜女子テニス＞",
+   "highlight": "ジャパンOP初戦敗退",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16,
+    14,
+    9,
+    17
+   ]
+  },
+  {
+   "headline": "THE CLUBHOUSE、東レ パン パシフィック オープンテニストーナメントで「THE CLUBHOUSE Night」を10月30日に開催",
+   "highlight": "10月30日に開催",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20,
+    15
+   ],
+   "event": {
+    "date": "2026-10-30",
+    "label": "イベント",
+    "place": "東レ パン パシフィック オープン"
+   }
+  },
+  {
+   "headline": "YONEX TENNIS FESTIVAL 2026 ヨネックステニスフェスティバル 10/25 ＠有明コロシアム 開催",
+   "highlight": "10/25",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-10-25",
+    "label": "イベント",
+    "place": "有明コロシアム"
+   }
   }
  ]
 }

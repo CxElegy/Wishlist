@@ -1,6 +1,6 @@
 {
  "date": "2026-10-21",
- "edit_sig": "5a3c5d45c299",
+ "edit_sig": "cd33e51acf24",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -953,206 +953,89 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "世界ランク9位のイガ・シフィオンテクが東レ パン パシフィック オープンを欠場。怪我のため今季の戦いを終えた。",
+     "date": "2026-10-20",
+     "headline": "世界9位シフィオンテク 東レPPO欠場、怪我で今季終了＜女子テニス＞",
+     "highlight": "東レPPO欠場",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00010001-tennisnet-000-2-view.jpg?exp=10800",
+     "image_via": "AI 挑选",
+     "url": "https://news.yahoo.co.jp/articles/4759d0ec5c2f67fffa34f869042893fe4d234f36",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "内島萌夏 日本勢対決「難しい」 激闘制し3年ぶりジャパンOP初戦突破＜女子テニス＞",
+     "highlight": "3年ぶりジャパンOP初戦突破",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261020-00010007-tennisnet-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/6add86906566636616862d601dfd063821c4314b",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "加藤未唯ペア 日本勢対決制しジャパンOP初戦突破、穂積絵莉ペアにストレート勝ち＜女子テニス＞",
+     "highlight": "ジャパンOP初戦突破",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261020-00010009-tennisnet-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/3684397ad71100f5dce04204f3f595d902c30962",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "トップシードのアン・リーが逆転勝利で初戦を突破、単複の1回戦がすべて終了",
+     "highlight": "アン・リーが逆転勝利",
+     "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnTY_kXbTtdbN36Gyk2sUVe58zsQJZGS60lNfGYhM1SshKwdfQEP3d9I20UGHoYDGb4YWktbpMGtuiNYA-Z0oixN-xaeFbJYuJ86-EuI3MicsLtdB9uatL3ONWYn1C_bQuw==",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/2d21440092cc80b3f4d6e7801f327b083a42b748/images/000",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "坂詰姫野 世界58位に完敗でジャパンOP初戦敗退、2日がかりの一戦でストレート負け＜女子テニス＞",
+     "highlight": "ジャパンOP初戦敗退",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261020-00010004-tennisnet-000-2-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/56e0338d8633631a44131c27c17bd5e2cb33beb8",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "event": {
+      "date": "2026-10-30",
+      "label": "イベント",
+      "place": "東レ パン パシフィック オープン"
+     },
+     "headline": "THE CLUBHOUSE、東レ パン パシフィック オープンテニストーナメントで「THE CLUBHOUSE Night」を10月30日に開催",
+     "highlight": "10月30日に開催",
+     "image": "https://www.nishinippon.co.jp/uploads/image/1950882/sns_8124789914_org.jpg",
+     "image_via": "og:image",
+     "url": "https://www.nishinippon.co.jp/image/1094194/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "ｄメニューニュース",
-     "title": "YONEX TENNIS FESTIVAL 2026 ヨネックステニスフェスティバル 10/25 ＠有明コロシアム 開催☆ 東レ パン パシフィック オープンテニストーナメント2026会場最大の“祭り”に注目◎",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nYmtickE1bmxkVEdTdU9haWFUYk9jLUVxWXlncnA3SEpXUjA5WkJHSWtRYkN0N2xuNHNOc0pxVDVjejMwQ05EV0FHa2VsTnpsdzEzaEFUNDI4R0dDVnJSV1ZGN3FDR25fQTR5eNIBckFVX3lxTE5qQWJ3d0hmY0ZfR2w1c1dSc1JZYW9HdUJvNkNTTk1ObWFOaWpLSTYtdVJxUFBpZmQyNnoxOHJETTFHQlFPd1ZpQTB0OVhLR3FBOHNNc1Vfa09ORmdoZlN0M1lxbi01YTVJd1U3LVhrOEZnQQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "世界9位シフィオンテク 東レPPO欠場、怪我で今季終了＜女子テニス＞",
-     "url": "https://news.yahoo.co.jp/articles/4759d0ec5c2f67fffa34f869042893fe4d234f36"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "トップシードのアン・リーが逆転勝利で初戦を突破、単複の1回戦がすべて終了 [木下グループジャパンオープンテニス]",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNNlptU1Q2dDFncmdXam82NWdiMlRDeVBDZ1NDSVQtcWdBWEtJNUY2VnJVX1B0WG5aT0NqRHlFdGo2ZTdfMWxrS0d6TDlkX2I0UnE2VEZoNGNiMlU1eVdjODcyR0JCeU9TdTNzZVA2cU9uaW85RkFyX1g2V014d1BVWE9sallBSm1xblh4NDR3?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 4,
-     "source": "テニスマガジン",
-     "title": "【12時50分更新】本戦3日目の試合予定 [木下グループジャパンオープン]",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE00aHQ0UmVKb0FGNFRPbnp4eEJQSklXQVk2YjJzeFEyelo0MVZOYV9XWFcweHVJLVhkRDJDbFpCODlTMC1qMFpUcUt2cFgtaHRja2JrTzdPSURudw?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 5,
-     "source": "毎日新聞デジタル",
-     "title": "ジャパンOPテニス、内島2回戦進出",
-     "url": "https://mainichi.jp/articles/20261021/ddm/035/050/016000c"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 6,
-     "source": "Yahoo!ニュース",
-     "title": "第2シードのチャン・ハオチン／加藤未唯が穂積絵莉／クレパーチを倒して大会白星デビュー [木下グループジャパンオープンテニス]（テニスマガジンONLINE）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE4xc01CWU5NYks1MnJHRHpzNmFfSTM5T01JVTBBcm1sbE05aWJva3J3WVgtbk9IbXp0Mlh6NFpsaDFSMC15eEZodGRMSHVuY0RaZVQyVmZodVhBa3dvMUYwWWxNNVhhd0dPdk42VV9Jam1MNDFXVU41V3hOS1V4eFE?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 7,
-     "source": "Yahoo!ニュース",
-     "title": "加藤未唯ペア 日本勢対決制しジャパンOP初戦突破、穂積絵莉ペアにストレート勝ち＜女子テニス＞（tennis365.net）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9EX2tMQ2l3YW1vMy14TV9EblpOSUw2QkZzbVhYY3NzUVVTU18xSndhakI0Mno3b1pzWlEtNnpjNEItYUo2UUN5T3IwWldKRDBzVjhzT1AzOHU1eGdpVWp3eS1UVENvOG1NNUdFc3VEOXloWWRlSC1iRjRDT1phWFk?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 8,
-     "source": "ライブドアニュース",
-     "title": "【テニス速報】 木下グループジャパンオープンテニスチャンピオンシップス 第2日 アンドレヤ クレパーチ / 穂積 絵莉 vs チャン ハオチン / 加藤 未唯 (2026年10月20日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1vZW5UOHg5Q1JDazZ4emhlSjA2S2tQSkdVZTBrUnVzSnRmQ2tCWDdubnZOQjlEWmRCOXdIREpJdmpNMmFTYlhhVk54a3Jjd0szTlBTWUpaT2hMd2pENGc?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 9,
-     "source": "Yahoo!ニュース",
-     "title": "坂詰姫野、上位相手のチャンス生かせず初戦敗退「手応えより悔しさが強い」[木下グループジャパンOP]【テニス】",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qX19Bck5SLXpmRGVDUnNRWGxBWTAyZXVUU3V1TmR4XzhERXMwUUJTLVp0MGgyTEx0bDJ1RzZtNmRZTEhZSHM4Q0R5Vm93cHg1QnZzUUNaVWhPMGNqenpxV3R5VjFyTHBhRXFCWUtHT2gyQ0FTRG9ncnZhYWFQTWs?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 10,
-     "source": "スポーツナビ",
-     "title": "テニス - 木下グループジャパンオープンテニスチャンピオンシップス - アントニア ルジッチ vs. カイラ デー- 試合対戦データ",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1Pb2t3QVU3X3JRX0YzamdjNXlpSTNDNHctdG1rbkNTN3BjMm5xVEJlYVJ0dy11THItVUd4ZW1HaWZ5TW1yWkJNbDBfU1dLZldmNVBZRzZ0QThmQQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 11,
-     "source": "Yahoo!ニュース",
-     "title": "内島萌夏 日本勢対決「難しい」 激闘制し3年ぶりジャパンOP初戦突破＜女子テニス＞（tennis365.net）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9FMENPWjdDNW9JSWh2bmZkbDFIWkZYX2sta0tnQ2l2UG8tb1VCLTd0alB5SVRtZUVSOFhDUVpKb2laclB3NzhQSVV4RF8xOVpyaDZMMWZkcWNnRUdERXZjU2NfcUpsdWstU0dTOUNldjJrbUpwQU4weFMtVEZoSzQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 12,
-     "source": "テニスマガジンONLINE",
-     "title": "日本勢ワイルドカード対決の1回戦は内島萌夏が柴原瑛菜にフルセット勝利 [木下グループジャパンオープン]",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5KZ2xXSjEtWnlablMwTExnaFYtYkFGbzFsSEVtZXJwX3RaQnBEd3oxOWVidURxSFQwYXZZeUVJTk1uZDNtZWVxZXljUlRLYmozckNqV0dpSktHUQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 13,
-     "source": "ライブドアニュース",
-     "title": "【テニス速報】 木下グループジャパンオープンテニスチャンピオンシップス 第2日 内島 萌夏 vs 柴原 瑛菜 (2026年10月20日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1TeWgzRFMxUWJSaTRVY2N5b295OHhaZUl6SzlXVXNiT2YzZlA3SXdWWlpkYk9kdGp3bXVwMTQtcnBfZGwzOXQ1QWtyTUtNOGlyLVU1U01RVFF3OGFFRWc?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 14,
-     "source": "Yahoo!ニュース",
-     "title": "坂詰姫野は2日がかりの1回戦で第8シードのブルターにストレート負け [木下グループジャパンオープンテニス]",
-     "url": "https://news.yahoo.co.jp/articles/e0ff0497e673b6e33151835aac9a6a402ecb4f32"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 15,
-     "source": "Dellows News",
-     "title": "THE CLUBHOUSE Nightを東レ パン パシフィック オープンで開催へ",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5nOWFkNEZnVUtRamM3V1dGbzlKN3NHNFZIMDdibUg4MG1CT2RNa0dkd3JPczZLOGQ5dUV4TzhHMEhuQzlqRkE?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 16,
-     "source": "Yahoo!ニュース",
-     "title": "坂詰姫野 世界58位に完敗でジャパンOP初戦敗退、2日がかりの一戦でストレート負け＜女子テニス＞（tennis365.net）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5OT3lHQW0wc2pyM1F2VUtVbWtQcVdQSGVRQWZoaVQ4VFFuYjF4TVRiVTU5b1IxM2JDWWl6N05DX3JFeklaV2JtcmNPVkM3ajRPTnNKMjVoa2otZzF3YzRFS2JoRnZVTFpLYlJ3LWltUFVvdzR6MmZkd195d0NoVFk?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 17,
-     "source": "ｄメニューニュース",
-     "title": "【テニス速報】 木下グループジャパンオープンテニスチャンピオンシップス 第2日 ケイティ ボウルター vs 坂詰 姫野",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNZVJWRWVCQi04NXhuWUVpdzd2RmZrSElwXzJCSFE4OFhocEpIRmw4OERMaktHT21UQS1vdE1lWkpaNGFKb2tGVU14OGpvelZHd0I5MDZaNjhteVc0b1VVdkFlNnhFbm44aTdpMXNpb09JNzlCR2dHOWdPR1BXcG1OVW02enpLNVByQ0HSAYoBQVVfeXFMTWVSVkVlQkItODV4bllFaXc3dkZma0hJcF8yQkhRODhYaHBKSEZsODhETGpLR09tVEEtb3RNZVpKWjRhSm9rRlVNeDhqb3pWR3dCOTA2WjY4bXlXNG9VVXZBZTZ4RW5uOGk3aTFzaW9PSTc5QkdnRzlnT0dQV3BtTlVtNnp6SzVQckNB?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 18,
-     "source": "スポーツナビ",
-     "title": "テニス - 木下グループジャパンオープンテニスチャンピオンシップス - 内島 萌夏 vs. 柴原 瑛菜- 試合対戦データ",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOZ2VTQXRsUmQwcXZSdjNpcFBkSU5ZQWFoemxHbmk4LVZqMW1ibWhVbjdpWk9kRTJOU2dhWXVSOUViWEQ1bEhRME4wT0hYc25nZ0JnamplNDBsWnlPc0ZnNmtsQ1ZEUVhfcjByWUxMVDhYMlczSFlNVVBTXzU0MjdnbXJaeHB6MmtuV084RUZCcXJMdEE?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 19,
-     "source": "スポーツナビ",
-     "title": "テニス - 木下グループジャパンオープンテニスチャンピオンシップス - ポーラ バドサ ジベール vs. アントニア ルジッチ- 試合スタッツ",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNSnBpSUxwd2hTbUZSNWdpMUpfc3FCZkhFTGhWaW9RN2dMWTZaY0hSZXJwNlZZQUN5UFdVN3BZbENBSHFEVnBVajVvTWxXcjlMeXgybTN4WXRSSzE2eFR1Y2FKbktSNzNrSTNfc0xVQW0zT2kxUUlkejhTUENJdnh0RXAzOWtsTTNJRzltZktzaVRId2o1YVcwVjdJeFA?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 20,
-     "source": "西日本新聞me",
-     "title": "THE CLUBHOUSE、東レ パン パシフィック オープンテニストーナメントで「THE CLUBHOUSE Night」を10月30日に開催 - 写真・画像(1/1)",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9jd25hTnhRRF9BZkJoVVNWeTZoMGVOc3dBT01sNjkxWUU4Nlg2ZXBycm9BSEtKSzEyQ1gtU2lpcFM2TlZxdEV2ZVJtVlc1dVdPRndKb2RBQQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 21,
-     "source": "テニスクラシック on MSN",
-     "title": "内島萌夏が柴原瑛菜との激闘を制し初戦突破「自分らしく最後までできた」[木下グループジャパンOP]",
-     "url": "https://www.msn.com/ja-jp/news/other/%E5%86%85%E5%B3%B6%E8%90%8C%E5%A4%8F%E3%81%8C%E6%9F%B4%E5%8E%9F%E7%91%9B%E8%8F%9C%E3%81%A8%E3%81%AE%E6%BF%80%E9%97%98%E3%82%92%E5%88%B6%E3%81%97%E5%88%9D%E6%88%A6%E7%AA%81%E7%A0%B4-%E8%87%AA%E5%88%86%E3%82%89%E3%81%97%E3%81%8F%E6%9C%80%E5%BE%8C%E3%81%BE%E3%81%A7%E3%81%A7%E3%81%8D%E3%81%9F-%E6%9C%A8%E4%B8%8B%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3op/ar-AA2fEnli"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 22,
-     "source": "スポーツナビ",
-     "title": "テニス - 木下グループジャパンオープンテニスチャンピオンシップス - テレジャ バレントバ vs. ジャン シューアイ- 試合スタッツ",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOajZTWEVrNUZuY3M0X013QnVVVGZVcGc3Nm9wVXlDT1VrMHNyRjRvNFlzZTU3VmtqcnFfNW5yZWZoZGtVSFYybXRNZTRnX3dPbFhYQzFUSGx6VEpQOFhpQkZMdHZ2eVVEQnlNekp4QmhqTWd0bnNiUC1CNS1fQkh3eXFDS2VIak1PaGI0eXlXNGstLUVycXViWlhDQl8?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 23,
-     "source": "Yahoo!ニュース",
-     "title": "内島萌夏vs柴原瑛菜 センターコート第3試合、ジャパンOP1回戦は本日11時30分開始＜女子テニス＞（tennis365.net）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1mQTVmQnpuODE0c2hkVTVUOUQxMW9IeEpiR3dZNHFxN1Uwb3B6UUVKMGdxUjlxQjJPLTFMN0g0NlRxRWVpUFl5QjhpdVJ4clBYanRMdmxDWkstTjJkTS1zNTRRUnBoR01FSjNveGpnT2dld1l4VmN2SjVqWjZnVnM?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 24,
-     "source": "Yahoo!ニュース",
-     "title": "本戦がスタート、2023年大会覇者クルーガーと18歳タガーがシードダウンを演じて女子シングルス2回戦へ [木下グループジャパンオープンテニス]（テニスマガジンONLINE）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5Ra2VfcUVZblF6d256eHlEczhYNXAtUmFmbnAyRENBOHdRWVdzTDluT2FOTXRXM2xBMXI0UHlmb28tTjBwSXVHYWVRdGpmTGF0Q2U0OUtYWl9lMlN2ODFRc1NjS1UyR2tkMndnNlN2OVVtenVyLVdDeE13WVQzamM?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 25,
-     "source": "Olympics",
-     "title": "女子テニス・東レ パン パシフィック オープンテニス2026丨日程・放送予定・ライブ配信・大坂なおみ・日本人・選手一覧・見どころ",
-     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPSUt5RVAwSVpqa2FYMnRQR01XeWhsdHlBMFVlVjB6eEgwYmpxX0hEY19zMUZPX0VsX0lWdDRBeUpzc25SN0VRMEl5WVdjWW1sZzgtbmtZVGcxaS1OeDZOSldrXzI5S1MzTXowNHBocngxQWtaM1YxQ1pKbWpsSTkwWnN2STNYS0VRM09hN29KLUxLTkhJQm5kVWFuOXgzdk81VVI4VXkxQkhFc0xoOVNnQndXcGpMSGpYcjhvenBwdnliVU13bC1rLUU3U0U3WkloNlE?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 26,
-     "source": "スポーツブル",
-     "title": "小堀桃子／清水綾乃組、二宮・キチェノク組にストレート勝ちで8強 ジャパンOP女子複、次戦も日本選手と",
-     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE9IMFl1bE1fc1hNM0tBUm9MRTJGc0JOOUtMYTMxSGVYS1VDUkhIblpOd25YRnpqRVFIV251YTFsVmdQemozZTR3?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 27,
-     "source": "スポーツナビ",
-     "title": "テニス - 木下グループジャパンオープンテニスチャンピオンシップス - アシュリン クルーガー vs. ジャニス チェン- 試合速報",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPd0czWDBlLTk3cFZMaE1YZnJTbVBCQVlya2hJdFA3TWFmcnd3b0ZwVHMtcEpaSWh1eHAxSGRMZWp4T0I2MkFBa2s1djZaNWpRYy1hMVNIcU00cWstVjlmYm12bFpLUWVVal9BNXFZQXJGY29BMU05S193eWtaMlFxcmdWMjVwazUwSUlVLUo0c1lJZk1EMm5PelYtTQ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 28,
-     "source": "スポーツナビ",
-     "title": "テニス - 木下グループジャパンオープンテニスチャンピオンシップス - キャサリン マクナリー vs. シンヤ クラウス- 試合速報",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaTFoR0lYVEdLcm95ZElHRkNIV3A0dU5qcEpiQ0dNZTV1NzBMOU8tamhUS0JrTktfdllBUTMwMlkyVFpPMmo1WWRsT2tTdm9VYlp6V1lMNDYwQ0lrVG0zaVV5V3BuajhOY2FieXFSd2ZuWnVqRFhna1d5UHoyNGtLX1ZYaDhuOF9tbW8xVGpUMG10bGhiT2tnNXQ2Zw?oc=5"
+     "event": {
+      "date": "2026-10-25",
+      "label": "イベント",
+      "place": "有明コロシアム"
+     },
+     "headline": "YONEX TENNIS FESTIVAL 2026 ヨネックステニスフェスティバル 10/25 ＠有明コロシアム 開催",
+     "highlight": "10/25",
+     "image": "https://stea.jp/wp-content/uploads/2026/10/yonex-tennis-festival_2.jpg",
+     "image_via": "正文图",
+     "url": "https://topics.smt.docomo.ne.jp/article/stea/trend/stea-3111",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",

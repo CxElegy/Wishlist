@@ -41,7 +41,6 @@
   "https://news.livedoor.com/topics/detail/32611970/": "https://image.news.livedoor.com/newsimage/stf/6/8/68db4_1847_61a71f489fb525b34fc7ec2451285cdb.jpg",
   "https://news.nicovideo.jp/watch/nw19900276?news_ref=60_60": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA27dZtk.img",
   "https://news.pchome.com.tw/game/gamer/20261020/index-79249250522710203104.html": "https://news.pchome.com.tw/newsdata/game/gamer/20261020/79249250522710203104_original.jpg",
-  "https://news.yahoo.co.jp/articles/4759d0ec5c2f67fffa34f869042893fe4d234f36": "https://www.bing.com/th?id=ONUT.Wq38VobTVKEpCb6AbA_sgQ&pid=News&w=1200",
   "https://news.yahoo.co.jp/articles/96429e05038ea34e946216451631956eb63bc7ec": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261017-00010010-realsound-000-1-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/f5f7db8bcf7a628def7c78681389aa903e314a2f": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000002-isd-000-1-view.jpg?exp=10800",
   "https://news.yahoo.co.jp/articles/fe5528ff3696b1b8d4999242189cd6a070dee6ec": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000006-anmanmv-000-1-view.jpg?exp=10800",
@@ -1899,21 +1898,6 @@
    "because": "日本顶级网球赛事",
    "date": "2026-10-20",
    "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.Wq38VobTVKEpCb6AbA_sgQ&pid=News&w=1200",
-   "kind": "board",
-   "score": 4,
-   "source": "Yahoo!ニュース",
-   "taste": [],
-   "title": "世界9位シフィオンテク 東レPPO欠場、怪我で今季終了＜女子テニス＞",
-   "url": "https://news.yahoo.co.jp/articles/4759d0ec5c2f67fffa34f869042893fe4d234f36",
-   "words": [],
-   "work": "日本顶级网球赛事"
-  },
-  {
-   "batch": 9,
-   "because": "日本顶级网球赛事",
-   "date": "2026-10-20",
-   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.qJENpNsoRDJ_Wwv9BLHPeQ&pid=News&w=800",
    "kind": "board",
    "score": 4,
@@ -2322,11 +2306,11 @@
    9
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [

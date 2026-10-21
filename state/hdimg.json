@@ -1448,6 +1448,12 @@
   "v": 3,
   "blur": 0.357
  },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnTY_kXbTtdbN36Gyk2sUVe58zsQJZGS60lNfGYhM1SshKwdfQEP3d9I20UGHoYDGb4YWktbpMGtuiNYA-Z0oixN-xaeFbJYuJ86-EuI3MicsLtdB9uatL3ONWYn1C_bQuw==": {
+  "w": 934,
+  "h": 701,
+  "target": 720,
+  "v": 3
+ },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnW_f1Nw4v_IFUYoJ3RcmwXVdI3lwNQ0yKLZD-OlpEGzDUM-UW1TDXzyGrQPbp_MrWYQoxy8NkHzIJP07j5ZXYbvmQKUbtabJmuxRqA2ie91RBJ3TlicUbynDvsKuTXyHhA==": {
   "w": 934,
   "h": 623,
@@ -1815,6 +1821,42 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261020-00010004-tennisnet-000-2-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1639,
+  "target": 720,
+  "v": 3,
+  "local": "pics/2c2fbd05bd804586.webp",
+  "out": [
+   1280,
+   954
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261020-00010007-tennisnet-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1668,
+  "target": 720,
+  "v": 3,
+  "local": "pics/c8ab92b21a0533cf.webp",
+  "out": [
+   1280,
+   970
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261020-00010009-tennisnet-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1449,
+  "target": 720,
+  "v": 3,
+  "local": "pics/97d7f20eacee4ee6.webp",
+  "out": [
+   1280,
+   843
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000002-isd-000-1-view.jpg?exp=10800": {
   "w": 800,
   "h": 533,
@@ -1848,6 +1890,18 @@
   "out": [
    640,
    467
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00010001-tennisnet-000-2-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1671,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/605bf0f830b92b37.webp",
+  "out": [
+   1280,
+   972
   ],
   "why": "期限付きの網址"
  },
@@ -2325,6 +2379,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://stea.jp/wp-content/uploads/2026/10/yonex-tennis-festival_2.jpg": {
+  "w": 640,
+  "h": 501,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.44,
+  "local": "pics/a505a8d8de7acfc4.webp",
+  "out": [
+   1280,
+   1002
+  ],
+  "why": "看不清"
+ },
  "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-16-182324.jpg": {
   "w": 1448,
   "h": 971,
@@ -2607,12 +2674,6 @@
  "https://www.bing.com/th?id=ONUT.Tw408Jo7-WCfcnK3zPpcHA&pid=News&w=1200": {
   "w": 700,
   "h": 364,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Wq38VobTVKEpCb6AbA_sgQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 531,
   "target": 720,
   "v": 3
  },
@@ -2929,6 +2990,12 @@
    851
   ],
   "why": "看不清"
+ },
+ "https://www.nishinippon.co.jp/uploads/image/1950882/sns_8124789914_org.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
  },
  "https://www.nme.com/wp-content/uploads/2026/10/Grand-Theft-Auto-6-score.jpg": {
   "w": 2000,
