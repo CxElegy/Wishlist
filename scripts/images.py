@@ -71,7 +71,7 @@ FAVICON_SERVICE = "https://www.google.com/s2/favicons?domain={host}&sz=128"  # G
 _pages = {}   # 运行内缓存：网页地址 → Page
 _checks = {}  # 运行内缓存：图片地址 → (ok, reason)
 _hard = set()  # scrapling でしか取れなかった画像（読者のブラウザでも拒まれる → pick で SAVED を付けて hdimg が本站に保存）
-_browser_used = [0]   # この回で本物のブラウザ（StealthyFetcher）を使った数
+_browser_used = [0, 0.0]   # この回で本物のブラウザ（StealthyFetcher）を使った [頁数, 秒]
 _reddit_blocked = []  # 本次运行里 Reddit 已经限流 / 拒绝过（没配 API 时），后面的帖子不再请求
 
 
@@ -79,7 +79,7 @@ def clear_cache():
     _pages.clear()
     _checks.clear()
     _hard.clear()
-    _browser_used[0] = 0
+    _browser_used[:] = [0, 0.0]
     _icons.clear()
     _reddit_blocked.clear()
     sources._reddit_limited = None
@@ -116,10 +116,12 @@ def _ascii_url(url):
 
 # ---- 拒まれたときの取り直し（2026-10-22，用户定的：AI を使わないので資源は使ってよい）----
 # scrapling 公式スキル（.claude/skills/scrapling-official）の 2 段：① Fetcher（本物のブラウザと同じ TLS・ヘッダーの HTTP、速い）
-# → ② StealthyFetcher（本物の Chromium、Cloudflare の確認画面も通す。重いので Actions で SCRAPLING_BROWSER=1 のときだけ・1 回 BROWSER_MAX 頁まで）。
+# → ② StealthyFetcher（本物の Chromium、Cloudflare の確認画面も通す。重いので Actions で SCRAPLING_BROWSER=1 のときだけ・1 回 BROWSER_MAX 頁・合わせて BROWSER_BUDGET 秒まで）。
 # 守ること（スキルの Guardrails）：robots・利用規約に従う、有料記事・ログインの壁は越えない、個人のデータは取らない（取るのは公開の記事と画像だけ）。
 BLOCKED = {202, 401, 403, 405, 429, 503}   # 防機器人・限流でよく返る（202 = 確認画面を出す IMDb など）
 BROWSER_MAX = 10
+BROWSER_BUDGET = 180   # この回のブラウザの持ち時間（秒）。2026-10-22 本番：1 頁 60 秒 × 取り直し 3 回で画像が 9 分、収集全体が 22 分（上限 30 分）になった
+BROWSER_PAGE_MS = 30000   # 1 頁の待ち時間（Cloudflare の確認画面は普通 5〜10 秒で抜ける）
 
 
 def _blocked(f):
@@ -150,19 +152,23 @@ def _scrape(url, limit, referer=None, page=False):
 
 
 def _browser_html(url):
-    """② 本物のブラウザで記事の頁を開く（Cloudflare の確認画面も待つ）。Actions で SCRAPLING_BROWSER=1・BROWSER_MAX 頁まで。"""
-    if not SCRAPLING or os.environ.get("SCRAPLING_BROWSER") != "1" or _browser_used[0] >= BROWSER_MAX:
+    """② 本物のブラウザで記事の頁を開く（Cloudflare の確認画面も待つ）。Actions で SCRAPLING_BROWSER=1・BROWSER_MAX 頁・BROWSER_BUDGET 秒まで（1 頁 30 秒・取り直しなし）。"""
+    if not SCRAPLING or os.environ.get("SCRAPLING_BROWSER") != "1" or _browser_used[0] >= BROWSER_MAX \
+            or _browser_used[1] + BROWSER_PAGE_MS / 1000 > BROWSER_BUDGET:
         return None
     try:
         from scrapling.fetchers import StealthyFetcher
     except Exception:
         return None
     _browser_used[0] += 1
+    t0 = time.monotonic()
     try:
-        r = StealthyFetcher.fetch(url, headless=True, solve_cloudflare=True, network_idle=True, timeout=60000)
+        r = StealthyFetcher.fetch(url, headless=True, solve_cloudflare=True, network_idle=True, timeout=BROWSER_PAGE_MS, retries=1)
     except Exception as e:
         print(f"  [ブラウザ] {url[:60]}：{type(e).__name__}", file=sys.stderr)
         return None
+    finally:
+        _browser_used[1] += time.monotonic() - t0
     if r.status != 200:
         return None
     return getattr(r, "html_content", None) or (r.body.decode("utf-8", "ignore") if isinstance(r.body, bytes) else str(r.body))

@@ -65,7 +65,7 @@ class Gdelt(unittest.TestCase):
         with mock.patch.object(sources, "_get", get), mock.patch.object(sources, "GDELT_WAIT", 0):
             for _ in range(5):
                 sources.gdelt("x y", 7, ["en-US"])
-        self.assertEqual(len(calls), sources.GDELT_TRIP * sources.GDELT_TRIES)   # 3 回続けて断られたら、この回はもう聞かない
+        self.assertEqual(len(calls), sources.GDELT_TRIP * sources.GDELT_TRIES)   # 取り直しても断られたら、この回はもう聞かない
         sources._gdelt_fails[0] = 0
 
     def test_symbols_removed(self):

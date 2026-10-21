@@ -430,7 +430,7 @@ def reddit_sub(subreddit):
 GDELT_LANGS = {"ja-JP": "japanese", "en-US": "english", "zh-TW": "chinese", "zh-CN": "chinese", "ko-KR": "korean"}
 GDELT_MAX = 50
 GDELT_TRIES, GDELT_WAIT = 3, 6   # 混んでいたら 6 秒あけて 3 回まで
-GDELT_TRIP = 3   # 取り直しても 429 が続けて 3 回：この回はもう GDELT に聞かない（2026-10-22 本番：Actions の共有 IP ではほぼ全部 429、10 分待って 0 件だった）
+GDELT_TRIP = 1   # 取り直しても 429：この回はもう GDELT に聞かない（2026-10-22 本番：Actions の共有 IP ではほぼ全部 429。3 回まで粘ると待つだけで数分、0 件）
 _gdelt_fails = [0]
 
 
@@ -463,7 +463,7 @@ def gdelt(query, lookback_days, langs):
                 if e.code == 429:
                     _gdelt_fails[0] += 1
                     if _gdelt_fails[0] == GDELT_TRIP:
-                        _warn("GDELT", f"{e}（続けて {GDELT_TRIP} 回：この回はもう聞かない）")
+                        _warn("GDELT", f"{e}（この回はもう聞かない）")
                         return []
                 _warn("GDELT", e)
                 return []
