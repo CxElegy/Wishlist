@@ -1,10 +1,10 @@
 {
  "changed": false,
- "checked": "2026-10-20T23:17:23+00:00",
+ "checked": "2026-10-21T00:17:24+00:00",
  "fired": {
-  "at": "2026-10-20T23:17:23+00:00",
+  "at": "2026-10-21T00:17:24+00:00",
   "results": {
-   "edit": "1 日 2 回（9:00 と 18:00）。次は 09:00",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,11 +12,11 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-20T17:09:11+00:00",
-    "attempts": 2,
-    "prog": 0,
-    "resp": "cse_01XaV3ArnfLpg5jgiMDsjyyW",
-    "sig": "08ecb3a88ac5"
+    "at": "2026-10-21T00:17:24+00:00",
+    "attempts": 1,
+    "prog": 9,
+    "resp": "cse_01KT8LYFANp7JZNtWN1dufsH",
+    "sig": "0302a8e0d955"
    },
    "items": [
     "ちいかわ"
