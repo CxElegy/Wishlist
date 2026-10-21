@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-21T11:17:19+00:00",
+ "checked": "2026-10-21T12:17:23+00:00",
  "fired": {
   "at": "2026-10-21T11:17:19+00:00",
   "results": {
@@ -18,31 +18,11 @@
     "resp": "cse_019S5H6sUgZT2nTHnm7dZUyp",
     "sig": "83d74b6a54f7"
    },
-   "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "gelato pique",
-    "あつ森",
-    "ぐでたま",
-    "ちいかわ",
-    "ちいかわ 漫画",
-    "チェーンソーマン",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "漫威电影",
-    "绝区零"
-   ],
-   "need": true,
-   "prog": 474,
-   "sig": "3647c3a921cd",
-   "why": "整理待ちの記事 205 件（19 版面・AI 編集まで版面に載らない）"
+   "items": [],
+   "need": false,
+   "prog": 679,
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
@@ -50,15 +30,12 @@
    "need": false,
    "sig": "b1312ab4623e",
    "waiting": [
-    "ちいかわ イベント",
     "哈利波特剧集",
-    "ちいかわ",
-    "ちいかわ 漫画",
     "Astrae Oratio",
     "A2O LITE",
     "あつ森"
    ],
-   "why": "失敗 7 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:51 から）"
+   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:52 から）"
   },
   "photos": {
    "claude": true,
