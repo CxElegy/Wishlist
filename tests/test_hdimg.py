@@ -16,6 +16,8 @@ import numpy as np  # noqa: E402
 
 import hdimg  # noqa: E402
 import images  # noqa: E402
+
+images.SCRAPLING = False   # 単体テストは外のネットに出ない（scrapling の取り直しは tests/test_scrape.py でにせの返事で確かめる）
 import render  # noqa: E402
 
 

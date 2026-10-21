@@ -19,7 +19,9 @@ MSN 的公开文章接口、Reddit（官方 API 或公开 RSS）、YouTube oEmbe
 import html
 import io
 import json
+import os
 import re
+import sys
 import time
 import unicodedata
 import urllib.error
@@ -39,6 +41,7 @@ MIN_LONG_SIDE = 300           # 长边至少这么多像素
 MAX_CHECKS = 12               # 每条报道最多实际检查这么多张候选图
 STORY_BUDGET = 60             # 每条报道找图最多花这么多秒（到点不再开始新的检查）
 BODY_IMAGES = 6               # 每个网页最多取这么多张正文图
+KEY_CHECKS = 6                # 正文图が何枚もあるとき、最初の 1 枚で決めずにここまで確かめて点数のいちばん高い 1 枚（key_score）
 SYNDICATION_SIMILARITY = 0.8  # 转载：两个标题的二元组 Dice 系数至少这么高才算同一篇（见 same_article）
 SYNDICATION_DAYS = 30         # Google 新闻找转载：搜最近多少天
 SYNDICATION_PAGES = 3         # Google 新闻找转载：最多读几篇（每篇要还原跳转链接再读网页）
@@ -67,15 +70,20 @@ FAVICON_SERVICE = "https://www.google.com/s2/favicons?domain={host}&sz=128"  # G
 
 _pages = {}   # 运行内缓存：网页地址 → Page
 _checks = {}  # 运行内缓存：图片地址 → (ok, reason)
+_hard = set()  # scrapling でしか取れなかった画像（読者のブラウザでも拒まれる → pick で SAVED を付けて hdimg が本站に保存）
+_browser_used = [0]   # この回で本物のブラウザ（StealthyFetcher）を使った数
 _reddit_blocked = []  # 本次运行里 Reddit 已经限流 / 拒绝过（没配 API 时），后面的帖子不再请求
 
 
 def clear_cache():
     _pages.clear()
     _checks.clear()
+    _hard.clear()
+    _browser_used[0] = 0
     _icons.clear()
     _reddit_blocked.clear()
     sources._reddit_limited = None
+    sources._gdelt_fails[0] = 0
     sources._hot_lists.clear()
     sources._search_cache.clear()
     _removed.clear()
@@ -90,6 +98,7 @@ class Fetched:
     body: bytes = b""
     error: str = ""      # 网络错误 / 超时的说明；HTTP 错误码放在 status 里
     too_big: bool = False
+    via: str = ""        # 普通の取り方で拒まれ、scrapling で取れたとき "scrapling"（読者のブラウザでも拒まれる → 本站に保存）
 
 
 def _ascii_url(url):
@@ -105,8 +114,72 @@ def _ascii_url(url):
                                     q(parts.query, "=&%:@!$'()*+,;/?"), q(parts.fragment, "%")))
 
 
+# ---- 拒まれたときの取り直し（2026-10-22，用户定的：AI を使わないので資源は使ってよい）----
+# scrapling 公式スキル（.claude/skills/scrapling-official）の 2 段：① Fetcher（本物のブラウザと同じ TLS・ヘッダーの HTTP、速い）
+# → ② StealthyFetcher（本物の Chromium、Cloudflare の確認画面も通す。重いので Actions で SCRAPLING_BROWSER=1 のときだけ・1 回 BROWSER_MAX 頁まで）。
+# 守ること（スキルの Guardrails）：robots・利用規約に従う、有料記事・ログインの壁は越えない、個人のデータは取らない（取るのは公開の記事と画像だけ）。
+BLOCKED = {202, 401, 403, 405, 429, 503}   # 防機器人・限流でよく返る（202 = 確認画面を出す IMDb など）
+BROWSER_MAX = 10
+
+
+def _blocked(f):
+    return f.status in BLOCKED or (f.status == 200 and len(f.body) < 20000 and BOT_WALL.search(f.body[:20000].decode("utf-8", "ignore") or ""))
+
+
+SCRAPLING = True   # テストでは止める（tests/test_images.py）
+
+
+def _scrape(url, limit, referer=None, page=False):
+    """① scrapling の Fetcher（ブラウザと同じ見え方の HTTP）。入っていなければ None。
+    記事の頁（page=True）だけブラウザらしいヘッダー（Google から来た、など。記事は実際に Google・Bing ニュースから見つけている）。
+    画像には付けない（今までどおり Referer は防盗链の取り直しで記事の頁を渡すときだけ）。"""
+    if not SCRAPLING:
+        return None
+    try:
+        from scrapling.fetchers import Fetcher
+    except Exception:
+        return None
+    try:
+        r = Fetcher.get(url, impersonate="chrome", stealthy_headers=page, timeout=TIMEOUT, retries=1,
+                        **({"headers": {"Referer": referer}} if referer else {}))
+    except Exception as e:
+        return Fetched(error=f"scrapling {type(e).__name__}")
+    body = r.body if isinstance(r.body, bytes) else str(r.body or "").encode()
+    headers = {k.lower(): v for k, v in (r.headers or {}).items()}
+    return Fetched(r.status, headers, body[:limit], too_big=len(body) > limit, via="scrapling")
+
+
+def _browser_html(url):
+    """② 本物のブラウザで記事の頁を開く（Cloudflare の確認画面も待つ）。Actions で SCRAPLING_BROWSER=1・BROWSER_MAX 頁まで。"""
+    if not SCRAPLING or os.environ.get("SCRAPLING_BROWSER") != "1" or _browser_used[0] >= BROWSER_MAX:
+        return None
+    try:
+        from scrapling.fetchers import StealthyFetcher
+    except Exception:
+        return None
+    _browser_used[0] += 1
+    try:
+        r = StealthyFetcher.fetch(url, headless=True, solve_cloudflare=True, network_idle=True, timeout=60000)
+    except Exception as e:
+        print(f"  [ブラウザ] {url[:60]}：{type(e).__name__}", file=sys.stderr)
+        return None
+    if r.status != 200:
+        return None
+    return getattr(r, "html_content", None) or (r.body.decode("utf-8", "ignore") if isinstance(r.body, bytes) else str(r.body))
+
+
 def _fetch(url, limit, referer=None):
-    """GET 一个地址，最多读 limit 字节。只带 User-Agent，不带 Cookie；referer 只在防盗链重试时给（图所在的原文网页）。"""
+    """GET 一个地址，最多读 limit 字节。只带 User-Agent，不带 Cookie；referer 只在防盗链重试时给（图所在的原文网页）。
+    防機器人・限流で拒まれたら scrapling の Fetcher で 1 回だけ取り直す（via="scrapling"）。"""
+    f = _fetch_plain(url, limit, referer)
+    if _blocked(f):
+        g = _scrape(_ascii_url(url), limit, referer, page=limit == PAGE_LIMIT)
+        if g is not None and g.status == 200 and not _blocked(g):
+            return g
+    return f
+
+
+def _fetch_plain(url, limit, referer=None):
     last = Fetched(error="未请求")
     url = _ascii_url(url)
     for attempt in range(RETRIES + 1):
@@ -165,6 +238,8 @@ def check(url, referer=None):
     if key in _checks:
         return _checks[key]
     f = _fetch(url, IMAGE_LIMIT, referer)
+    if f.via == "scrapling" and f.status == 200:
+        _hard.add(url)
     if f.too_big:
         result = (False, f"图片超过 {IMAGE_LIMIT / 1_000_000:g}MB")
     elif f.status != 200:
@@ -245,7 +320,10 @@ def page(url):
         p = msn_page(url)
     else:
         f = _fetch(url, PAGE_LIMIT)
-        if f.status != 200:
+        html_ = _browser_html(url) if _blocked(f) else None   # ① でも拒まれた：② 本物のブラウザ
+        if html_:
+            p = parse_page(url, html_)
+        elif f.status != 200:
             p = Page(url, False, _http_reason(f, "原文"), status=f.status)
         else:
             p = parse_page(url, f.body.decode("utf-8", "ignore"))
@@ -681,6 +759,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
     def scan():
         for stage in stages():
             small = None  # 这一段里先找到的、偏小的原文预览图（后面有更大的就换）
+            body_ok = []  # 正文图で使えたもの：(点数, label, img)。KEY_CHECKS 枚まで見て点数のいちばん高いもの
             for label, img in stage:
                 if not img or img in seen:
                     continue
@@ -695,7 +774,14 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
                     break
                 seen.add(img)
                 ok, why = check(img)
+                if ok and img in _hard:   # scrapling でしか取れない：読者のブラウザでも拒まれる → 本站に保存
+                    label += SAVED
                 res.trace.append((label, img, why if not ok else "OK"))
+                if ok and label.startswith("正文图"):
+                    body_ok.append((key_score(*size_of(why), len(body_ok)), label, img))
+                    if len(body_ok) < KEY_CHECKS:
+                        continue
+                    break
                 if ok:
                     if small is None and preview(label) and max(size_of(why)) < SHARP_LONG:
                         small = (label, img, max(size_of(why)))
@@ -706,6 +792,10 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
                 if len(seen) >= max_checks:
                     res.notes.append(f"已检查 {max_checks} 张，停止")
                     break
+            if body_ok:
+                _, label, img = max(body_ok)
+                res.image, res.source = img, label + (f"（{len(body_ok)} 枚から）" if len(body_ok) > 1 else "")
+                return True
             if small:
                 res.image, res.source = small[1], small[0]
                 return True
@@ -729,6 +819,17 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
             res.image, res.source = img, label + SAVED
             return res
     return res
+
+
+def key_score(w, h, index):
+    """正文図から代表の 1 枚を選ぶ点数（2026-10-22，规则・AI なし）：大きいほど・カードの窓（16:10）に近いほど・記事の上のほうほど高い。
+    細長い帯（広告・区切り・ロゴの帯：横÷縦 > 3 か < 0.4）は大きく下げる。"""
+    import math
+    if not (w and h):
+        return -99
+    r = w / h
+    s = math.log(w * h) - 2.0 * abs(math.log(r / 1.6)) - 0.35 * index
+    return s - 10 if r > 3 or r < 0.4 else s
 
 
 def _candidates(p):

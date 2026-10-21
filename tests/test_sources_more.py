@@ -6,6 +6,7 @@
 import datetime as dt
 import json
 import pathlib
+import urllib.parse
 import sys
 import tempfile
 import unittest
@@ -50,8 +51,28 @@ class Gdelt(unittest.TestCase):
                 raise urllib.error.HTTPError(url, 429, "Too Many Requests", {}, None)
             return json.dumps({"articles": [{"url": "https://a.example/1", "title": "t"}]}).encode()
         with mock.patch.object(sources, "_get", get), mock.patch.object(sources, "GDELT_WAIT", 0):
-            self.assertEqual(len(sources.gdelt("x", 7, ["en-US"])), 1)
+            self.assertEqual(len(sources.gdelt("xy", 7, ["en-US"])), 1)
         self.assertEqual(len(calls), 2)
+
+    def test_stops_after_repeated_refusals(self):
+        import urllib.error
+        calls = []
+
+        def get(url):
+            calls.append(url)
+            raise urllib.error.HTTPError(url, 429, "Too Many Requests", {}, None)
+        sources._gdelt_fails[0] = 0
+        with mock.patch.object(sources, "_get", get), mock.patch.object(sources, "GDELT_WAIT", 0):
+            for _ in range(5):
+                sources.gdelt("x y", 7, ["en-US"])
+        self.assertEqual(len(calls), sources.GDELT_TRIP * sources.GDELT_TRIES)   # 3 回続けて断られたら、この回はもう聞かない
+        sources._gdelt_fails[0] = 0
+
+    def test_symbols_removed(self):
+        seen = {}
+        with mock.patch.object(sources, "_get", lambda url: seen.setdefault("url", url) and b"{}"):
+            sources.gdelt("Spider-Man: Brand New Day", 7, ["en-US"])
+        self.assertNotIn("-Man", urllib.parse.unquote_plus(seen["url"]))
 
     def test_paced_five_seconds(self):
         self.assertGreaterEqual(sources.PACE["api.gdeltproject.org"], 5)

@@ -2699,7 +2699,7 @@ def ingest(dry_run=False):
         # 不火的 Reddit 帖子（sources.reddit_hot）不上版面，只记下来给話題度数帖子数；以后上了最热榜还会再收进来
         cold = [e for e in entries if not getattr(e, "hot", True)]
         entries = [e for e in entries if getattr(e, "hot", True)]
-        print(f"  {item['name']} 新条目 {len(entries)} 条" + (f"（另有不火的 Reddit {len(cold)} 帖，不上版面）" if cold else ""),
+        print(f"  {item['name']} 新条目 {len(entries)} 条" + (f"（另有不火的 SNS {len(cold)} 帖，只算話題度）" if cold else ""),
               file=sys.stderr)
         if live and shown.get(item["name"], -1) != (len(entries) or None):  # 按顺序去重后件数变了（被前面的版面收走）才改
             live_mark(item["name"], "found" if entries else None, len(entries), started.get(item["name"]), eta())
