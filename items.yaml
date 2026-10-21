@@ -1070,6 +1070,7 @@ items:
     emblem_people: true   # 出演者の写真で集める（本人確認する）
     emblem_who: ["Pedro Pascal", "Giancarlo Esposito", "Katee Sackhoff", "Emily Swallow"]   # 集める対象（メンバー・キャラ・出演者）
     motif: beskar          # 版面テーマ（templates/index.yaml・TEMPLATES.md）
+    theme: {bg: "#14161A", fg: "#E8EAEC", accent: "#C9A66B", alt_bg: "#ECEAE4", alt_fg: "#1B1D20", alt_accent: "#7A5A1F", split: true}  # ベスカー鋼の暗い灰＋砂漠の琥珀（小元素 Din Djarin の鎧に合わせた）
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Din Djarin（Pedro Pascal）", why: "Din Djarin（Pedro Pascal）：Fandom の役の記事の代表画像", image: "emblems/the-mandalorian-din-djarin-pedro-pascal.webp", source: "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest/scale-to-width-down/400?cb=20241206044557", page: "https://starwars.fandom.com/wiki/Din_Djarin", shape: "cutout"}
       - {subject: "Gideon（Giancarlo Esposito）", why: "Gideon（Giancarlo Esposito）：Fandom の役の記事の代表画像 → 同じページの別の画像（代表画像は切り抜きの検査で外れた）", image: "emblems/the-mandalorian-gideon-giancarlo-esposito.webp", source: "https://static.wikia.nocookie.net/starwars/images/7/7f/Mando8-Gideon-textless.png/revision/latest/scale-to-width-down/600?cb=20230727033748", page: "https://starwars.fandom.com/wiki/Gideon", shape: "cutout", ar: 1.367, fs: 0.322}
@@ -1136,6 +1137,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：什么时候能玩、版本更新、活动、新角色。维基数据：動物森友會系列的第七部作品。"
 
   - name: "Vaundy"
+    theme: {bg: "#15131C", fg: "#EEEAF4", accent: "#B9A6F2", alt_bg: "#F1EEF8", alt_fg: "#1C1826", alt_accent: "#5B43A8", split: true}  # ステージの夜の紫
     subs: {scene: J-POP, form: ソロ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/vaundy.webp", kind: person, why: "音楽家：本人の顔写真", source: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Vaundy_2025.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
@@ -1165,6 +1167,7 @@ items:
     subtitle: "演唱会"
 
   - name: "周杰伦"
+    theme: {bg: "#F6F2EA", fg: "#1D2430", accent: "#2F5F8F", alt_bg: "#14202E", alt_fg: "#EEF1F4", alt_accent: "#8DB6DE", split: true}  # 青花磁の白と藍
     subs: {scene: 華語, form: ソロ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：Spotify のアーティスト写真（顔を真ん中に）", source: "https://open.spotify.com/artist/2elBjNSdBE2Y3f0j1mjrql"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: person   # 小元素の種類（scripts/emblem_fill.py）
@@ -1376,6 +1379,8 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：新品、新款发售、降价、促销、联名、限定款。"
 
   - name: "ちいかわ"
+    motif: pop
+    theme: {bg: "#FFF5F7", fg: "#3A2A30", accent: "#C2527A", alt_bg: "#2A1F24", alt_fg: "#FBEFF2", alt_accent: "#F28DAF", split: true}  # やさしいピンクと生成り
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "ちいかわ のロゴ", why: "ブランドの顔（公式ロゴ）", image: "emblems/efbf7f0f.webp", source: "https://commons.wikimedia.org/wiki/Special:FilePath/ChiikawaLogo.png?width=500", page: "https://commons.wikimedia.org/wiki/File:ChiikawaLogo.png", shape: "logo"}
     type: category
@@ -1391,6 +1396,8 @@ items:
     notes: "2026-10-19 从网页设置页加进来的。关注：联名商品、新周边、新品、快闪店、主题咖啡、展览、抽选、限定、预约、动画、电影、活动。维基数据：日本漫画系列。面：グッズ・コラボ、アニメ、映画、漫画・本、イベント・カフェ・展示（分开，主：グッズ・コラボ）。"
 
   - name: "ちいかわ 漫画"
+    motif: notebook
+    theme: {bg: "#FBF7EE", fg: "#2E2A24", accent: "#B2563F", alt_bg: "#22201C", alt_fg: "#F6F1E6", alt_accent: "#E39A82", split: true}  # ノートの紙色
     type: product
     parent: "ちいかわ"
     section: "影视"
@@ -1406,6 +1413,8 @@ items:
     notes: "2026-10-19 从网页设置页加进来的。「ちいかわ」的漫画・本・アニメ・映画。维基数据：吉伊卡哇（日本漫画系列）。维基数据：劇場版 吉伊卡哇 人魚島的秘密（2026年動畫電影）。维基数据：劇場版 吉伊卡哇 人魚島的秘密（2026年動畫電影）。"
 
   - name: "ちいかわ イベント"
+    motif: sakura
+    theme: {bg: "#FFF3F5", fg: "#34262B", accent: "#B8466D", alt_bg: "#2A1E23", alt_fg: "#FBEEF1", alt_accent: "#F08BAA", split: true}  # 桜色
     type: category
     parent: "ちいかわ"
     section: "出行"
