@@ -966,7 +966,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="29f5e6ad9c87"><style>
+<meta name="wl-ver" data-page="heat" content="f2d20086c6c1"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -988,6 +988,10 @@ section.fresh{position:relative}
 .wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
 .wl-auth>button.in{padding-left:12px}
+.wl-auth>a.new{display:flex;align-items:center;min-height:36px;padding:4px 12px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
+ box-shadow:3px 3px 0 var(--ink);text-decoration:none;font:inherit}
+.wl-auth>a.new:hover,.wl-auth>a.new:focus-visible{background:var(--card)}
+.wl-auth .menu a.about{display:block;margin-top:4px}
 .wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
 .wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
 .wl-auth img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
@@ -1051,7 +1055,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 @media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}}
 </style><script>
 (function(){
-  var A={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "heat", "terms": 2, "termsUrl": "terms.html", "start": "../#name"}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
+  var A={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js", "page": "heat", "terms": 2, "termsUrl": "terms.html", "start": "../#name", "home": "../?stay"}, R=document.documentElement, base=(A.url||'').replace(/\/$/,'');
   if(!base||!A.key||!window.fetch) return;
   var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
   R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
@@ -1083,7 +1087,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
   // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
   // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。店長のメール（invites の role=admin）だけパスワードも聞く
   // （Supabase Auth の signInWithPassword。2026-10-21 に「最初の 1 回メールのリンク」から変えた：毎回のメール確認は面倒）。
-  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
+  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', HOME=A.home||'../?stay', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
   try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
   function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
   var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
@@ -1188,7 +1192,10 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
     if(!name){
-      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン<\/button><div class="menu" hidden>'+loginForm()+'<\/div>';
+      // 見るだけの人：「新しく始める」と「ログイン」をいつも見える所に（2026-10-21，用户定的：網址を打たせない。どの画面もボタンでたどれる）
+      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<a class="new" href="'+esc(START)+'">新しく始める<\/a>'+
+        '<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン<\/button><div class="menu" hidden>'+loginForm()+
+        '<a class="about" href="'+esc(HOME)+'">このサイトについて（はじめのページ）<\/a><\/div>';
       var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
       bindLogin(box); return;
@@ -1199,6 +1206,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています<\/small>'+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ<\/button>':'')+
       (role==='admin'&&tok?'<button type="button" data-pw>パスワードを変える<\/button>':'')+
+      '<a href="'+esc(HOME)+'">このサイトについて（はじめのページ）<\/a>'+
       '<a href="'+esc(TURL)+'">利用規約・プライバシーポリシー<\/a>'+
       '<button type="button" data-out>ログアウト<\/button>'+(me?'<button type="button" data-leave class="quiet">退会する<\/button>':'')+'<\/div>';
     var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
@@ -1289,7 +1297,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.21</b></div>
-<div class="meta"><small>更新</small><b>10.22 01:07</b></div></div>
+<div class="meta"><small>更新</small><b>10.22 01:17</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
