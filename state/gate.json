@@ -1,0 +1,77 @@
+{
+ "changed": true,
+ "checked": "2026-10-21T06:52:49+00:00",
+ "fired": {
+  "at": "2026-10-21T06:52:49+00:00",
+  "results": {
+   "edit": "Claude を起こした",
+   "photos": "仕事なし（起こさない）"
+  }
+ },
+ "jobs": {
+  "edit": {
+   "claude": true,
+   "fired": {
+    "at": "2026-10-21T06:52:49+00:00",
+    "attempts": 1,
+    "prog": 0,
+    "resp": "cse_017nVKRHrWGSTwpUBALBqRcu",
+    "sig": "3f6adaa2f6cc"
+   },
+   "items": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "ちいかわ",
+    "ちいかわ イベント",
+    "ちいかわ 漫画",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
+   ],
+   "need": true,
+   "prog": 0,
+   "sig": "3f6adaa2f6cc",
+   "why": "整理待ちの記事 434 件（24 版面・AI 編集まで版面に載らない）"
+  },
+  "emblem": {
+   "claude": false,
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "ちいかわ",
+    "ちいかわ イベント",
+    "ちいかわ 漫画",
+    "Astrae Oratio",
+    "A2O LITE",
+    "哈利波特剧集",
+    "あつ森"
+   ],
+   "why": "失敗 7 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:51 から）"
+  },
+  "photos": {
+   "claude": true,
+   "items": [],
+   "need": false,
+   "prog": 0,
+   "sig": "09bc248e4ef4",
+   "why": "受付の写真なし"
+  }
+ }
+}
