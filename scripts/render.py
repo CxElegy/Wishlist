@@ -3757,6 +3757,12 @@ AUTH_CSS = """
 .wl-auth>button{display:flex;align-items:center;gap:8px;max-width:220px;min-height:36px;padding:4px 12px 4px 4px;border:2px solid var(--ink);
  background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;font:inherit}
 .wl-auth>button.in{padding-left:12px}
+.wl-auth>a.new{display:flex;align-items:center;min-height:36px;padding:4px 12px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
+ box-shadow:3px 3px 0 var(--ink);text-decoration:none;font:inherit}
+.wl-auth>a.new:hover,.wl-auth>a.new:focus-visible{background:var(--card)}
+.wl-auth>a.new.home{background:var(--card)}
+.wl-auth>a.new.home:hover,.wl-auth>a.new.home:focus-visible{background:var(--gold)}
+.wl-auth .menu a.about{display:block;margin-top:4px}
 .wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
 .wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
 .wl-auth img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
@@ -3854,7 +3860,7 @@ AUTH_JS = r"""
   // 新しく始めるときは利用規約・プライバシーポリシーに同意（どの版にいつ同意したかを app_users に残す。版が上がったらもう一度聞く）。
   // このブラウザが覚える（localStorage の wl-user、ログアウトまで）。店長のメール（invites の role=admin）だけパスワードも聞く
   // （Supabase Auth の signInWithPassword。2026-10-21 に「最初の 1 回メールのリンク」から変えた：毎回のメール確認は面倒）。
-  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
+  var ME='wl-user', me=null, TV=A.terms||1, TURL=A.termsUrl||'terms.html', START=A.start||'../#name', HOME=A.home||'../?stay', SHOP=/^(index|wishlist|heat|settings)$/.test(page);   // 店長のものを見せているページ
   try{ me=JSON.parse(localStorage.getItem(ME)||'null'); if(me&&!me.name) me=null; }catch(e){}
   function saveMe(o){ me=o; try{ if(o) localStorage.setItem(ME,JSON.stringify(o)); else localStorage.removeItem(ME); }catch(e){} }
   var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
@@ -3959,17 +3965,22 @@ AUTH_JS = r"""
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
     if(!name){
-      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン</button><div class="menu" hidden>'+loginForm()+'</div>';
+      // 見るだけの人：「新しく始める」と「ログイン」をいつも見える所に（2026-10-21，用户定的：網址を打たせない。どの画面もボタンでたどれる）
+      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<a class="new" href="'+esc(START)+'">新しく始める</a>'+
+        '<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン</button><div class="menu" hidden>'+loginForm()+
+        '<a class="about" href="'+esc(HOME)+'">このサイトについて（はじめのページ）</a></div>';
       var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
       bindLogin(box); return;
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
-    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
+    // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ</a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
       '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(role)+'">'+esc(label)+'</span></button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています</small>'+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ</button>':'')+
       (role==='admin'&&tok?'<button type="button" data-pw>パスワードを変える</button>':'')+
+      '<a href="'+esc(HOME)+'">このサイトについて（はじめのページ）</a>'+
       '<a href="'+esc(TURL)+'">利用規約・プライバシーポリシー</a>'+
       '<button type="button" data-out>ログアウト</button>'+(me?'<button type="button" data-leave class="quiet">退会する</button>':'')+'</div>';
     var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
@@ -4061,7 +4072,7 @@ def _auth_tag(page=""):
     if not (AUTH_DB.get("url") and AUTH_DB.get("key")):
         return ""
     cfg = {"url": AUTH_DB["url"], "key": AUTH_DB["key"], "lib": SUPABASE_JS, "page": page,
-           "terms": TERMS_VERSION, "termsUrl": "terms.html", "start": "../#name"}   # 新しく始める = 入口（docs/index.html）の流れ
+           "terms": TERMS_VERSION, "termsUrl": "terms.html", "start": "../#name", "home": "../?stay"}   # 新しく始める = 入口（docs/index.html）の流れ
     js = (AUTH_JS.replace("__AUTH__", json.dumps(cfg)).replace("__ROLE__", json.dumps(ROLE_JA, ensure_ascii=False))
           .replace("__LOCK__", json.dumps(AUTH_LOCK)))
     js = js.replace("</", "<\\/")
