@@ -17,17 +17,23 @@
   "target": 1280,
   "v": 3
  },
- "https://convenicheck.com/wp-content/uploads/2026/10/slf_chiikawakmribonchgumi27021.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-21"
- },
  "https://external-preview.redd.it/kK9-96taYUndwCQ-41Nua9o1DYmSJt9UkJFdboqSKls.jpeg?width=640&crop=smart&auto=webp&s=37928024937371ce148c3db09feb6fd3d8472c1d": {
   "w": 640,
   "h": 915,
   "target": 720,
   "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fG7k5.img": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
+ },
+ "https://lasisa.net/wp-content/uploads/2027/10/20261023_ana2_chiikawa_01.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnS3oMyz4EOL3ULke9hKJ0rye-jPJ6T6QFxzHG2cReu5eXGaXqJ9KAjsK936awlDKwttzLP0mP4638s90VeeeO7L_jtWV5rfpJGGLdZD7WSD2": {
   "w": 934,
@@ -90,23 +96,17 @@
   ],
   "why": "期限付きの網址"
  },
- "https://times-abema.ismcdn.jp/mwimgs/7/7/1200w/img_771e50bee2142314898c3ce99ba4f86f490636.jpg": {
+ "https://p.potaufeu.asahi.com/f257-p/picture/31464053/d8d551c3a72932fbe2cda3b63cac2368.jpg": {
   "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-21"
  },
- "https://www.bing.com/th?id=ONUT.QEptrR8gsRTmX8ouh2ctjA&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.hlG0pXk0FTWLiSSy_288Wg&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
+ "https://times-abema.ismcdn.jp/mwimgs/7/7/1200w/img_771e50bee2142314898c3ce99ba4f86f490636.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-21"
  },
  "https://www.crank-in.net/img/db/263109140114084_1200.jpg": {
   "target": 720,
