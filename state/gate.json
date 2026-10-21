@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-10-21T16:53:06+00:00",
+ "changed": false,
+ "checked": "2026-10-21T16:58:17+00:00",
  "fired": {
-  "at": "2026-10-21T16:53:06+00:00",
+  "at": "2026-10-21T16:58:17+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -19,7 +19,6 @@
     "sig": "cb88f1b3742d"
    },
    "items": [
-    "GTA 6",
     "Vaundy",
     "あつ森",
     "三星手机",
@@ -28,22 +27,22 @@
     "绝区零"
    ],
    "need": true,
-   "prog": 39,
-   "sig": "cf5e29f2158e",
-   "why": "整理待ちの記事 21 件（7 版面・AI 編集まで版面に載らない）"
+   "prog": 45,
+   "sig": "4713343f37ef",
+   "why": "整理待ちの記事 15 件（6 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "Astrae Oratio",
-    "A2O LITE",
+   "items": [
     "あつ森",
-    "哈利波特剧集"
+    "哈利波特剧集",
+    "Astrae Oratio",
+    "A2O LITE"
    ],
-   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 07:46 から）"
+   "need": true,
+   "sig": "39d41f299154",
+   "waiting": [],
+   "why": "足りない 4 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
