@@ -966,7 +966,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="f2d20086c6c1"><style>
+<meta name="wl-ver" data-page="heat" content="51e5c3314188"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -991,6 +991,8 @@ section.fresh{position:relative}
 .wl-auth>a.new{display:flex;align-items:center;min-height:36px;padding:4px 12px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
  box-shadow:3px 3px 0 var(--ink);text-decoration:none;font:inherit}
 .wl-auth>a.new:hover,.wl-auth>a.new:focus-visible{background:var(--card)}
+.wl-auth>a.new.home{background:var(--card)}
+.wl-auth>a.new.home:hover,.wl-auth>a.new.home:focus-visible{background:var(--gold)}
 .wl-auth .menu a.about{display:block;margin-top:4px}
 .wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
 .wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
@@ -1201,7 +1203,8 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
       bindLogin(box); return;
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
-    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
+    // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ<\/a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
       '<span class="nm">'+esc(sh)+'<\/span><span class="rl '+esc(role)+'">'+esc(label)+'<\/span><\/button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています<\/small>'+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ<\/button>':'')+
@@ -1297,7 +1300,7 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.21</b></div>
-<div class="meta"><small>更新</small><b>10.22 01:17</b></div></div>
+<div class="meta"><small>更新</small><b>10.22 01:29</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。

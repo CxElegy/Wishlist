@@ -3760,6 +3760,8 @@ AUTH_CSS = """
 .wl-auth>a.new{display:flex;align-items:center;min-height:36px;padding:4px 12px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
  box-shadow:3px 3px 0 var(--ink);text-decoration:none;font:inherit}
 .wl-auth>a.new:hover,.wl-auth>a.new:focus-visible{background:var(--card)}
+.wl-auth>a.new.home{background:var(--card)}
+.wl-auth>a.new.home:hover,.wl-auth>a.new.home:focus-visible{background:var(--gold)}
 .wl-auth .menu a.about{display:block;margin-top:4px}
 .wl-auth .menu .st{margin:0;font-size:12px;line-height:1.5}
 .wl-auth>button:hover,.wl-auth>button:focus-visible{background:var(--gold)}
@@ -3972,7 +3974,8 @@ AUTH_JS = r"""
       bindLogin(box); return;
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
-    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
+    // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
+    box.innerHTML=(role!=='admin'&&SHOP?'<span class="shop">店長のページ · 見るだけ</span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ</a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'</span>'+
       '<span class="nm">'+esc(sh)+'</span><span class="rl '+esc(role)+'">'+esc(label)+'</span></button>'+
       '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています</small>'+
       (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ</button>':'')+
