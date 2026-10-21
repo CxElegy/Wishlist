@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "e597c6180217",
+ "edit_sig": "8e0a86015e54",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -93,52 +93,59 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-10-21",
-     "n": 1,
-     "source": "SuperHeroHype",
-     "title": "Avengers: Armageddon Twist Raises Questions About Sebastian Stan’s MCU Future",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQV2x0MllyMGRENTlXNG8yc3R3TFllMm9sc0lQTGU5MWQtdTZaV01HM0ZtemxIQmdVdEZBQ05VQngwaWQ5dHRLNGoxUmtPbERVY2Z2U0E4VUdpT09TT1NBR1IwMmhVbEdxT2ZGZ3pTYlczTV9uNGdSd0hIWE1wODZPNzlVWlByVHhjdHU1LVJSUENTTjZnbkplMUhGRUc2ZlQ5NmN0NFIxZEplRHlPekRxR092SFFLaFlhV1BMcUdn0gHDAUFVX3lxTE1SLWRSS3prcUZHWEdDM3NQVGdURGlGYzlxZGFmQVV5TGNvRjVOeGFXUnAwU2x1YU1KQTVKMV9tS2xQQkdwelY2NFhteTBuZkw5S1dETnlLVWNkYnRkMVRUSjJXSVJaODFPZDRGazVWLVdQNi01RHBYcFhidEF3YmMyUEdXdzdrWE1IRWlJUGpYbk1VR1VWN1VoeHJRUWNXZXJuZ1FIYjNwcldyNi1ULVk0ejk5dENoTUxkdENYTlhodm9OSQ?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 2,
-     "source": "ScreenRant",
-     "title": "Marvel Just Made Iron Man's Death Worse With New Release Before Avengers: Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPWGV4eGxJcERrOXJuVEF0U1pTTEpBTF9LZy11VnpJY242R2FyQ2tkMVJBV3ZWeVlGU0FXQWIzbmh1S05xQ2hfclVWZW1wZmc4bWpfSjUyNEdCQU1xWTFDM1ZxaFlqVEgwc3F1TnBvZ0tsMHBQUFUyTDh5eklXZ3BsMWtZanpsTTR5?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 3,
-     "source": "ScreenRant",
-     "title": "15 Years Later, Avengers: Doomsday Officially Turns The MCU's Bravest Line Into A Tragedy",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOVWVlZmtpZ005WTd6c1BSZ3A5aGJGMktvTEV2ZzhUNzMyYmpoLVZWUlhodG5odTdnMkU4Ri16WWhGSDU4cjJwMDM3QURzRWJEVHpjeHZ3aVM3V1QtWGtiZExQcUlFTk9QLXdoZVhxSVBVS2hlb1Jod1RhR2RqX3oteDFvOA?oc=5"
-    },
-    {
+     "blurb": "Marvel's Spider-Man returns in three months, marking the end of an era for Brand New Day.",
      "date": "2026-10-20",
-     "n": 4,
-     "source": "ScreenRant",
-     "title": "It's Officially The End Of An Era For Brand New Day As Marvel's Spider-Man Returns In 3 Months",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQSE1PQ2lxU2c3aktwZkJDZ05nR25BT0I0MkdYci1NR3FLdHhzdjByWUhXSEYyWDVkN1U3bXhNYmNxYnI5Qk43VDNqZC1FMkd1YmpUUFU3RzU0Yzhkbnh6QTlTbVdrLWNMWk5fcDM1VTQwcGhiT2VRbERCclZVa3gwcU1jRkYzYWJDOUtXenpHR3J0SVRqTHdF?oc=5"
+     "headline": "It's Officially The End Of An Era For Brand New Day As Marvel's Spider-Man Returns In 3 Months",
+     "highlight": "Returns In 3 Months",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/tom-holland-s-spider-man-taking-his-hands-to-his-head-in-spider-man-brand-new-day.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://screenrant.com/your-friendly-neighborhood-spider-man-season-2-replace-brand-new-day/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "Marvel Just Made Iron Man's Death Worse With New Release Before Avengers: Doomsday",
+     "highlight": "Before Avengers: Doomsday",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/robert-downey-jr-s-tony-stark-as-iron-man-in-movie-promo-art.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/visionquest-friday-iron-man-death-worse-avengers-doomsday/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "Avengers: Armageddon Twist Raises Questions About Sebastian Stan’s MCU Future",
+     "highlight": "Sebastian Stan’s MCU Future",
+     "image": "https://www.bing.com/th?id=ONUT.SdHBkMZfXkMd9z_VMQz8yw&pid=News&w=1200",
+     "image_via": "Bing 缩略图",
+     "url": "https://www.superherohype.com/features/700847-avengers-armageddon-twist-raises-questions-about-sebsastian-stan-mcu-future",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 5,
-     "source": "KHOU",
-     "title": "Houstonians, assemble! Marvel exhibition coming to Houston with iconic superhero artifacts. Here's what fans can see",
-     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOVDU3M3ZORmNveXdaSUdlNXJ5VEdocHZzZkV2c0FQZkJCVGEtMVQ4akpMelVrcmhLbDVwalFQNFplNTl4dU0zcUZnc3BCM01jTXo3NzZUWDY2a0hoaUZVUjJLaUVEbk9udWFiYmJ6RnBSUXFzWTFRRzBVQ2xtOVFHUTcySEJSX2lWTUk0VUZMa2VtUHJTRGQ3Yi1zZjEwZVplaHVYVWt1MGZYcjgycG9MaEVCMzJGdHFZdlctMDBDWGx6LTUtbmhKY0w3QTlmRTAzM2NRM0xB?oc=5"
+     "headline": "Houstonians, assemble! Marvel exhibition coming to Houston with iconic superhero artifacts",
+     "highlight": "Marvel exhibition coming to Houston",
+     "image": "https://www.bing.com/th?id=ONUT.xh7U4QpGqy0-V9IdAXMD6A&pid=News&w=750",
+     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "url": "https://www.khou.com/article/entertainment/events/marvel-exhibition-houston-museum-natural-science/285-222b4876-cbd1-4643-a9ce-44d973478742",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 6,
-     "source": "ScreenRant",
-     "title": "Just By Following The Comics, The MCU's X-Men Reboot Can Easily Set Up Its Guardians Of The Galaxy Replacement",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFAybDl6OU1VcGp0ejdYWHo2MmdvbzJ6UXBRd05FWjhlZDVQSHJnTVJYeGNNSTIyOUFJdEV2c1NzZlZHMkJoeDl1c0stbVdJWmtTd1YybUxhY1NOZXdQRlFPSm5uN0pUaE1lNkJLWUpZNkpVcHlLVXc?oc=5"
+     "headline": "Just By Following The Comics, The MCU's X-Men Reboot Can Easily Set Up Its Guardians Of The Galaxy Replacement",
+     "highlight": "X-Men Reboot",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/sadie-sink-as-jean-grey.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/x-men-mcu-movie-starjammers-team-setup-easy/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "Marvel Studios · MCU",
    "theme": {
     "accent": "#EC1D24",
@@ -377,8 +384,8 @@
      "date": "2026-10-21",
      "headline": "`이수만의 손녀시대` A2O LITE, 1위 후 축하 영상통화…\"3년 동안 이간 보람 있네\"",
      "highlight": "1위 후 축하 영상통화",
-     "image": "https://www.news1.kr/_next/image?url=https%3A%2F%2Fimage.news1.kr%2Fsystem%2Fphotos%2F2026%2F10%2F21%2F8172188%2Fno_water.jpg%2Fdims%2Fcrop%2F560x339&w=1920&q=80",
-     "image_via": "正文图（其它来源）",
+     "image": "https://mydaily.co.kr/photos/2026/10/21/2026102112324060920_l.jpg",
+     "image_via": "og:image",
      "url": "https://mydaily.co.kr/page/view/2026102112330642252",
      "weight": "normal"
     },

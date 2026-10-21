@@ -61,7 +61,8 @@
  "_covered": {
   "A2O LITE": 30,
   "周杰伦": 9,
-  "GTA 6": 6
+  "GTA 6": 6,
+  "漫威电影": 6
  },
  "周杰伦": [
   {
@@ -134,6 +135,55 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  }
+ ],
+ "漫威电影": [
+  {
+   "headline": "It's Officially The End Of An Era For Brand New Day As Marvel's Spider-Man Returns In 3 Months",
+   "highlight": "Returns In 3 Months",
+   "blurb": "Marvel's Spider-Man returns in three months, marking the end of an era for Brand New Day.",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/tom-holland-s-spider-man-taking-his-hands-to-his-head-in-spider-man-brand-new-day.jpg"
+  },
+  {
+   "headline": "Marvel Just Made Iron Man's Death Worse With New Release Before Avengers: Doomsday",
+   "highlight": "Before Avengers: Doomsday",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
+   ]
+  },
+  {
+   "headline": "Avengers: Armageddon Twist Raises Questions About Sebastian Stan’s MCU Future",
+   "highlight": "Sebastian Stan’s MCU Future",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Houstonians, assemble! Marvel exhibition coming to Houston with iconic superhero artifacts",
+   "highlight": "Marvel exhibition coming to Houston",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Just By Following The Comics, The MCU's X-Men Reboot Can Easily Set Up Its Guardians Of The Galaxy Replacement",
+   "highlight": "X-Men Reboot",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ]

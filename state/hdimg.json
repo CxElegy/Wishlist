@@ -535,6 +535,20 @@
   "target": 1280,
   "v": 3
  },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc95e2b8e572cd6dde67aac5dcc584e01733953d400b4089f2d4aec48d28eb8b0ab0a77861d9ea6a": {
+  "w": 225,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.544,
+  "local": "pics/f422e5d7dfaec223.webp",
+  "out": [
+   540,
+   720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200": {
   "w": 1200,
   "h": 800,
@@ -1421,6 +1435,13 @@
   "h": 961,
   "target": 1280,
   "v": 3
+ },
+ "https://mydaily.co.kr/photos/2026/10/21/2026102112324060920_l.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-22"
  },
  "https://n.sinaimg.cn/games/crawl/37/w550h287/20261013/b68d-d2804b95a169cde0c4b9446f3dd287f2.png": {
   "w": 550,
@@ -2312,6 +2333,24 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/robert-downey-jr-s-tony-stark-as-iron-man-in-movie-promo-art.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/sadie-sink-as-jean-grey.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/tom-holland-s-spider-man-taking-his-hands-to-his-head-in-spider-man-brand-new-day.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://stea.jp/wp-content/uploads/2026/10/yonex-tennis-festival_2.jpg": {
   "w": 640,
   "h": 501,
@@ -2477,18 +2516,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.1n3YYLRDXYR9pvDIKuhhqA&pid=News&w=1024": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/0f1a4edd476af07f.webp",
-  "out": [
-   700,
-   393
-  ],
-  "why": "Bing の小さい縮小画像"
- },
  "https://www.bing.com/th?id=ONUT.5unc9EPQvoH7kkubFBFiwA&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2598,6 +2625,12 @@
    480
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.SdHBkMZfXkMd9z_VMQz8yw&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Tw408Jo7-WCfcnK3zPpcHA&pid=News&w=1200": {
   "w": 700,
@@ -2778,6 +2811,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.xh7U4QpGqy0-V9IdAXMD6A&pid=News&w=750": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.boardoftheworld.com/wp-content/uploads/2024/06/Board-With-Bindings-Capita-Doa-2026.jpg": {
   "w": 1280,
   "h": 870,
@@ -2944,12 +2983,6 @@
  "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg": {
   "w": 2560,
   "h": 1440,
-  "target": 720,
-  "v": 3
- },
- "https://www.news1.kr/_next/image?url=https%3A%2F%2Fimage.news1.kr%2Fsystem%2Fphotos%2F2026%2F10%2F21%2F8172188%2Fno_water.jpg%2Fdims%2Fcrop%2F560x339&w=1920&q=80": {
-  "w": 560,
-  "h": 339,
   "target": 720,
   "v": 3
  },
