@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-21T08:17:16+00:00",
+ "checked": "2026-10-21T09:17:26+00:00",
  "fired": {
   "at": "2026-10-21T08:17:16+00:00",
   "results": {
@@ -18,18 +18,11 @@
     "resp": "cse_017nVKRHrWGSTwpUBALBqRcu",
     "sig": "3f6adaa2f6cc"
    },
-   "items": [
-    "BLEACH Mirrors High",
-    "FROM",
-    "Vaundy",
-    "gelato pique",
-    "ちいかわ イベント",
-    "猫用品"
-   ],
-   "need": true,
-   "prog": 408,
-   "sig": "16a6f8d443ca",
-   "why": "整理待ちの記事 26 件（6 版面・AI 編集まで版面に載らない）"
+   "items": [],
+   "need": false,
+   "prog": 434,
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
