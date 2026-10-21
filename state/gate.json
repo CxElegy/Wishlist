@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-10-21T15:17:21+00:00",
+ "changed": true,
+ "checked": "2026-10-21T16:07:34+00:00",
  "fired": {
   "at": "2026-10-21T15:17:21+00:00",
   "results": {
@@ -18,24 +18,11 @@
     "resp": "cse_019S5H6sUgZT2nTHnm7dZUyp",
     "sig": "83d74b6a54f7"
    },
-   "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "GTA 6",
-    "MMORPG 新作",
-    "dota2",
-    "あつ森",
-    "三星手机",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
-   ],
-   "need": true,
-   "prog": 679,
-   "sig": "a0a3ea4cb867",
-   "why": "整理待ちの記事 169 件（12 版面・AI 編集まで版面に載らない）"
+   "items": [],
+   "need": false,
+   "prog": 0,
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
@@ -43,12 +30,12 @@
    "need": false,
    "sig": "b1312ab4623e",
    "waiting": [
-    "哈利波特剧集",
     "Astrae Oratio",
     "A2O LITE",
-    "あつ森"
+    "あつ森",
+    "哈利波特剧集"
    ],
-   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 04:18 から）"
+   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 05:01 から）"
   },
   "photos": {
    "claude": true,
