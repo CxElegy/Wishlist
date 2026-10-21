@@ -17,6 +17,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261018ac/533/w480h853/20261018/5500-3c900af56350d8775af5d0c55601d6e9.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261019ac/200/w640h360/20261019/4b86-df72ac85c2663d677b3240c4412d70ec.jpg": {
   "w": 640,
   "h": 360,
@@ -45,8 +51,15 @@
  "http://n.sinaimg.cn/sinakd20261021ac/200/w640h360/20261021/cdfd-61ff7ee2ddacd552d4c621ed8b826963.jpg": {
   "w": 640,
   "h": 360,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.429,
+  "local": "pics/fd0d935feee512a9.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "http://wx1.sinaimg.cn/middle/647c8fably1ii4734hamfj21140pmdws.jpg": {
   "w": 1336,
@@ -350,11 +363,18 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.livedoor.jp/kstyle/eaca58ea6b0e56ac6ac44877a9aa9bde_WI.jpg": {
-  "w": 1024,
-  "h": 576,
+ "https://cdn.livedoor.jp/kstyle/514ee8edcb07f7e84eadfecd6f0ec5c7.jpg/r.580x0": {
+  "w": 580,
+  "h": 362,
   "target": 1280,
-  "v": 3
+  "v": 3,
+  "blur": 0.53,
+  "local": "pics/b0c2b6da63430eb8.webp",
+  "out": [
+   1280,
+   799
+  ],
+  "why": "看不清"
  },
  "https://cdn.nc.press/news/photo/202610/628491_864405_4947.png": {
   "w": 600,
@@ -574,29 +594,29 @@
   "target": 1280,
   "v": 3
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc0c3428ab8799c155639a8b17bd3fcb4dd28e1a0969687537f6379a27c3bd08d069df3a509af72": {
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a18a06b03747a40f3518fa845c471bc240eadae66ac33146e27be32ed2bdaa21b4027f0509b872fc6d4aac82ee0df9cc5b91c89801c95849e87924d9b962c663df8d8355b1f273b09c89379c2303534cb34cb53dc31": {
   "w": 300,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.569,
-  "local": "pics/9f32ef20b8e10467.webp",
+  "blur": 0.296,
+  "local": "pics/860e4808fed0bd75.webp",
   "out": [
-   720,
-   720
+   300,
+   300
   ],
   "why": "防盗链",
   "ref": true
  },
- "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73fe782fa11d02831b9aa83954b71cedd5ba5bfe67dc1c344e0592054f85638c89ded05b31c972cbf39f83ea339eb0833d1787ba4beb4ba096b70d91c4d7fc609c95d2e54ceb2093723e8c1d0864024f69529019a66a3d3fc01c026ebacbd19d1881cda1966436039451b22fa168c33c4a88828da0eb70ec0": {
-  "w": 240,
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e41ecab5bf054b61ab709c5f0d851b8e53a47eaa6fc0afea84ca0c26dd41d52958959b9b4e66f01d3a56e876a76e02b07ea3fcc2eaeb55442c4af9e7a4922f00fecaa1a2b660": {
+  "w": 220,
   "h": 300,
   "target": 720,
   "v": 3,
-  "blur": 0.455,
-  "local": "pics/d199875644e9ad5e.webp",
+  "blur": 0.475,
+  "local": "pics/d6f68450dafe1add.webp",
   "out": [
-   576,
+   528,
    720
   ],
   "why": "防盗链",
@@ -708,6 +728,12 @@
   "w": 3000,
   "h": 1500,
   "target": 1280,
+  "v": 3
+ },
+ "https://hermes.media.static.aol.com/media/2026/10/20/1bfbfcc4-deec-30e3-9db2-1d1eeaf46dcb/eef7232c-76f7-4024-b5e2-33d7daa521a9.jpg": {
+  "w": 1200,
+  "h": 602,
+  "target": 720,
   "v": 3
  },
  "https://hermes.media.transform.aol.com/7d987a48298616f862bda1d3b18b09d60bb083a7/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/18/4e431812-a9e5-3f43-8ed1-7a9d06a7c03c/591c7878-9781-49e5-a9f9-d2a7f0b7d36c.jpg": {
@@ -875,6 +901,18 @@
   "target": 720,
   "v": 3
  },
+ "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1346,fit=cover,q=high,sharpen=2/21/2026/10/2026102118251711514_1.jpg": {
+  "w": 1200,
+  "h": 1346,
+  "target": 720,
+  "v": 3
+ },
+ "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=800,fit=cover,q=high,sharpen=2/21/2026/10/2026102116244282965_1.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://imageio.forbes.com/specials-images/imageserve/6a342222a84f500169a30ad1/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds": {
   "w": 1600,
   "h": 900,
@@ -939,7 +977,7 @@
  "https://images.thedirect.com/media/article_full/avengers-doomsday-thor-captain-america-mcu.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/marvel-studios-phase-7-officially-features-3-omega-level-mutants_.jpg": {
@@ -972,12 +1010,6 @@
   "target": 1280,
   "v": 3
  },
- "https://images2.minutemediacdn.com/image/upload/c_crop,x_354,y_2,w_1908,h_1073/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m5a57s7ty6h7ez4q52.jpg": {
-  "w": 1440,
-  "h": 810,
-  "target": 1280,
-  "v": 3
- },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_442,y_0,w_644,h_362/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/308/01m19r4yxgbxwedk2k57.jpg": {
   "w": 1440,
   "h": 810,
@@ -999,12 +1031,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bWf0z.img": {
   "w": 1920,
   "h": 1080,
-  "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2bqTu1.img": {
-  "w": 1599,
-  "h": 1112,
   "target": 1280,
   "v": 3
  },
@@ -1401,12 +1427,6 @@
  "https://inews.gtimg.com/news_ls/OHacNUzITenU0I8e57iFBQxt_gPJX07pk4h0glUs0fOAUAA/0": {
   "w": 1672,
   "h": 941,
-  "target": 1280,
-  "v": 3
- },
- "https://inews.gtimg.com/news_ls/OT729Rq7Ao-KHA4JTVfhlgllgpeL-lrmgDM3ILxXPxDnkAA/0": {
-  "w": 972,
-  "h": 1296,
   "target": 1280,
   "v": 3
  },
@@ -2080,18 +2100,6 @@
   "out": [
    640,
    640
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00000010-cdj-000-1-view.jpg?exp=10800": {
-  "w": 640,
-  "h": 467,
-  "target": 720,
-  "v": 3,
-  "local": "pics/f7bc2622d77da6af.webp",
-  "out": [
-   640,
-   467
   ],
   "why": "期限付きの網址"
  },
@@ -2892,12 +2900,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.QLYdX_AzQ3Sj7evYxHgiiQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.QtNfk9tvzNrsIUmeECrxGw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2928,6 +2930,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.XjPs58_MHrTfv0e2lk4NDA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ZZC7xXqYNpi9qk80zWrW2w&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2956,6 +2964,12 @@
  "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600": {
   "w": 600,
   "h": 450,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.bvr2dY_iew6VHVFu38ZkHg&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
   "target": 720,
   "v": 3
  },
@@ -3174,6 +3188,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.crank-in.net/img/db/264103215183432_1200.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg": {
   "w": 1600,
   "h": 900,
@@ -3244,12 +3264,6 @@
  "https://www.engadget.com/img/gallery/the-latest-playstation-firmware-may-have-already-been-cracked-ahead-of-gta-6/l-intro-1792530805.jpg": {
   "w": 1600,
   "h": 899,
-  "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/SWGE-Ogas-Cantina_mando_1a.jpg": {
-  "w": 1000,
-  "h": 544,
   "target": 720,
   "v": 3
  },

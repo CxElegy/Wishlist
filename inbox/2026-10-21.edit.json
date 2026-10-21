@@ -123,12 +123,12 @@
  ],
  "_covered": {
   "三星手机": 80,
-  "漫威电影": 40,
-  "A2O LITE": 30,
-  "GTA 6": 30,
-  "ちいかわ": 30,
+  "漫威电影": 80,
+  "A2O LITE": 60,
+  "GTA 6": 61,
+  "ちいかわ": 60,
   "ちいかわ 漫画": 30,
-  "周杰伦": 30,
+  "周杰伦": 60,
   "绝区零": 30,
   "日本顶级网球赛事": 28,
   "MMORPG 新作": 26,
@@ -151,7 +151,7 @@
   {
    "headline": "中國電影：《復仇者聯盟5》已定檔12月16日在中國內地上映",
    "highlight": "12月16日",
-   "blurb": "中國電影(600977.SH)は『アベンジャーズ5』の共同配給会社で、中国本土で12月16日公開と発表。",
+   "blurb": "中國電影公告稱，作為聯合發行方的《復仇者聯盟：末日降臨》已定檔12月16日在中國內地上映。",
    "weight": "hero",
    "refs": [
     38
@@ -165,46 +165,63 @@
   {
    "headline": "Marvel Reportedly Delays ‘Avengers: Secret Wars’ Production…Again",
    "highlight": "Delays",
-   "blurb": "Avengers: Secret Wars の撮影が再び延期されたと報じられ、新たな撮影目標は2027年。一方で既に10〜15%は撮影済みとの情報もある。",
+   "blurb": "Reports say filming on Avengers: Secret Wars has slipped again, possibly into 2027, raising questions about its 2027 release.",
    "weight": "lead",
    "refs": [
     13,
     26,
+    57,
+    56,
+    55,
     7
    ],
    "image": "https://assets.murphysmultiverse.com/uploads/2024/02/main-avengers-secret-wars-new4433961055628216162.jpg"
   },
   {
-   "headline": "Marvel Studios Officially Unveils Steve Rogers & Thor’s Team-Up Logo For Avengers: Doomsday",
-   "highlight": "Team-Up Logo",
+   "headline": "Doctor Doom Takes His Throne in Eerie New ‘Avengers: Doomsday’ Promo Art",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    47,
+    50,
+    48,
+    51,
+    52,
     22,
-    16
+    16,
+    44,
+    45,
+    40
    ]
   },
   {
    "headline": "Marvel Studios Announces 4 New Female Superheroes Leading the MCU's Next Saga — Including Sadie Sink's Jean Grey & Inde Navarrette's Rogue",
-   "highlight": "4 New Female Superheroes",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
     1,
     10,
     20,
+    64,
     37
    ]
   },
   {
-   "headline": "Hank Pym star Michael Douglas wanted to be killed off before Ant-Man 3 but Marvel \"wouldn't let him\"",
-   "highlight": "wouldn't let him",
+   "headline": "Michael Douglas Says He Wanted to Be ‘Killed Off’ in Ant-Man Franchise but Marvel ‘Wouldn’t Let’ Him Quit",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    62,
     33,
     18,
     17,
+    2,
+    59,
+    65,
+    66,
     25,
     35,
     36
@@ -213,37 +230,21 @@
  ],
  "A2O LITE": [
   {
-   "headline": "A2O LITE、デビューわずか1週間で「THE SHOW」1位を獲得！アンコールステージも話題に",
+   "headline": "“イ・スマンがプロデュース”A2O LITE、デビューわずか1週間で「THE SHOW」1位を獲得！アンコールステージも話題に",
    "highlight": "「THE SHOW」1位",
-   "blurb": "イ・スマンがプロデュースする新グループ A2O LITE がデビュー1週間で音楽番組1位に。アンコールステージのライブも話題。",
+   "blurb": "デビュー1週間で「THE SHOW」1位、続いて「ショーチャンピオン」でも1位となり音楽番組2冠を達成。",
    "weight": "lead",
    "refs": [
     22,
+    33,
+    39,
     28,
     29,
+    51,
     1,
     3
    ],
-   "image": "https://cdn.livedoor.jp/kstyle/eaca58ea6b0e56ac6ac44877a9aa9bde_WI.jpg"
-  },
-  {
-   "headline": "流通会社も驚いた検索数…「イ・スマン印」A2O LITE、名前に違わぬ活躍",
-   "highlight": "検索数",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    5
-   ]
-  },
-  {
-   "headline": "BE:FIRST、新曲が36位に初登場 新グループ・A2O LITEデビュー曲＆Travis Japan新曲も",
-   "highlight": "A2O LITEデビュー曲",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    16
-   ]
+   "image": "https://cdn.livedoor.jp/kstyle/514ee8edcb07f7e84eadfecd6f0ec5c7.jpg/r.580x0"
   },
   {
    "headline": "대박난 이수만 걸그룹 A2O LITE “반응 전혀 예상 못 해” 써니도 뿌듯",
@@ -252,9 +253,49 @@
    "weight": "normal",
    "refs": [
     27,
+    45,
     6,
+    36,
     21,
-    26
+    26,
+    20,
+    54,
+    55
+   ]
+  },
+  {
+   "headline": "イ・スマン「A2O LITE・SOULデビュー、マンネリから抜け出すK-POPへの問い」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    41,
+    42,
+    43
+   ]
+  },
+  {
+   "headline": "イ・スマンが、A2O LITEのアイチンの振付を自ら踊った..サニー「公開するかもしれない」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    37,
+    38,
+    34,
+    35
+   ]
+  },
+  {
+   "headline": "流通会社も驚いた検索数…「イ・スマン印」A2O LITE、名前に違わぬ活躍",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    5,
+    46,
+    57
    ]
   }
  ],
@@ -262,41 +303,40 @@
   {
    "headline": "GTA 6 Digital Pre-Orders Climb to 6.45 Million, PlayStation Holds 74% Share",
    "highlight": "6.45 Million",
-   "blurb": "GTA 6 のデジタル予約が645万本に到達、PlayStation が74%を占める。推定売上は約6億ドル。",
+   "blurb": "Sensor Tower data puts GTA 6 digital pre-orders at 6.45 million, with about 74% on PS5. 発売日は11月19日。",
    "weight": "lead",
    "refs": [
     18,
     1,
     3,
-    22
+    22,
+    53,
+    56,
+    45
    ],
    "image": "https://assets.juksy.com/files/articles/153324/6ad8489984e5b.jpg"
   },
   {
    "headline": "GTA VI Is Exactly One Month Away. The Final Trailer Looks Awesome",
-   "highlight": "Exactly One Month Away",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
     5,
     15,
-    17
-   ]
-  },
-  {
-   "headline": "The latest PlayStation firmware may have already been cracked ahead of GTA 6",
-   "highlight": "firmware may have already been cracked",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    30,
-    28,
-    11
-   ]
+    17,
+    37,
+    40,
+    31
+   ],
+   "event": {
+    "date": "2026-11-19",
+    "label": "発売日"
+   }
   },
   {
    "headline": "GTA 6 to Drain $1B From US Economy With Take-Two Expected to Bank the Same Amount",
-   "highlight": "$1B",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -306,32 +346,60 @@
     23,
     29,
     12,
-    8
+    8,
+    33,
+    32,
+    39,
+    41,
+    43,
+    50
+   ]
+  },
+  {
+   "headline": "The latest PlayStation firmware may have already been cracked ahead of GTA 6",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    28,
+    11,
+    48
    ]
   },
   {
    "headline": "You May Be Able to Drink Real Versions of GTA 6's Iconic Beer Brands Very Soon",
-   "highlight": "Real Versions",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
     13,
-    24
+    24,
+    36
    ]
   }
  ],
  "ちいかわ": [
   {
    "headline": "「ちいかわ×ANA」コラボグッズが公式通販「ちいかわマーケット」でも発売！",
-   "highlight": "コラボグッズ",
-   "blurb": "ANA制服姿のぬいぐるみやステッカー、クリアファイルなどを用意。10月19日からは特別デザイン機「ちいかわジェット」も運航中。",
+   "highlight": "ちいかわマーケット",
+   "blurb": "ANA制服姿のぬいぐるみなどのコラボグッズ第1弾が10月23日から順次発売。特別デザイン機「ちいかわジェット」も国内線で就航した。",
    "weight": "lead",
    "refs": [
     2,
+    42,
     12,
     17,
+    38,
+    35,
     10,
     18,
+    46,
+    41,
+    52,
+    57,
+    55,
+    56,
     14,
     26
    ],
@@ -343,29 +411,23 @@
   },
   {
    "headline": "「まだあるんかーい！」映画ちいかわの入場者特典第7弾に反響！興収は181億円突破",
-   "highlight": "興収は181億円突破",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
     3,
     9,
+    45,
     30,
+    39,
     27,
-    28
-   ]
-  },
-  {
-   "headline": "映画ちいかわ ふりふりヘッドフィギュア 島衣装で10月下旬発売!",
-   "highlight": "10月下旬発売",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1
+    28,
+    58
    ]
   },
   {
    "headline": "アニメ「ちいかわ」ちいかわたちが「ヤーッ!!!」と飛び出す仕掛け絵本が登場",
-   "highlight": "仕掛け絵本",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -380,8 +442,17 @@
    ]
   },
   {
+   "headline": "「ちいかわらんど」全商品に各1点までの購入制限 転売・買い占め対策か ファンから称賛の声",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    31
+   ]
+  },
+  {
    "headline": "ちいかわのユーザーネームは超有名アイス？ ハチワレ「パスタライ助」に続くグッズ化なるか",
-   "highlight": "グッズ化なるか",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
@@ -450,31 +521,38 @@
   {
    "headline": "周杰倫被介紹為「Chinese singer」 國台辦：認同身分是真摯情感流露",
    "highlight": "國台辦",
-   "blurb": "周杰倫轉發介紹其為「中國歌手」的影片，國台辦回應稱這是真摯情感流露；台灣綠營則批評為炒作。",
+   "blurb": "周杰倫轉發被介紹為「中國歌手」的影片引發綠營批評，國台辦回應稱這是認同身分的真摯情感流露。",
    "weight": "lead",
    "refs": [
     8,
     17,
+    32,
     9,
     10,
     26,
     24,
-    13
+    45,
+    13,
+    14,
+    15,
+    20,
+    22
    ],
    "image": "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png"
   },
   {
    "headline": "影／周杰倫演唱會唱《女兒殿下》！「我美嗎女士」化身超萌小監工",
-   "highlight": "《女兒殿下》",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    52
    ]
   },
   {
    "headline": "周杰伦：墨尔本，感谢这段美好回忆， 下一站，悉尼，11月21日",
-   "highlight": "11月21日",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
