@@ -1,10 +1,10 @@
 {
- "changed": true,
- "checked": "2026-10-21T16:40:49+00:00",
+ "changed": false,
+ "checked": "2026-10-21T16:46:45+00:00",
  "fired": {
-  "at": "2026-10-21T16:40:49+00:00",
+  "at": "2026-10-21T16:46:46+00:00",
   "results": {
-   "edit": "Claude を起こした（2 回目：前は動かなかった）",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -36,16 +36,16 @@
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "Astrae Oratio",
+   "items": [
+    "あつ森",
     "哈利波特剧集",
-    "A2O LITE",
-    "あつ森"
+    "Astrae Oratio",
+    "A2O LITE"
    ],
-   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 05:01 から）"
+   "need": true,
+   "sig": "39d41f299154",
+   "waiting": [],
+   "why": "足りない 4 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
