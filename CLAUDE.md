@@ -256,6 +256,9 @@
 只看不改、不用口令（`render.render_admin` + `digest.admin_data`）：运行状况（最新一期、收集条数、哪几天还没 AI 编辑、几天没新消息的关注项、周报）、
 打开时实时读取的 GitHub Actions 结果 / 设置页的关注项请求（`list_item_requests()`）/ 照片收件箱（`get_photo_inbox()`）、
 各关注项的篇幅・7 天记事数・速報数・最新记事・話題度・缺的字段、投票统计（来自 `state/feedback.json`）。要加新数字就在 `admin_data` 里算、在 `render_admin` 里显示。
+- **小元素の「違う」（2026-10-21，用户定的）**：「版面ごとの状態」の小元素（行のサムネ・「小元素の探し方」の中）を押す → **理由を選ぶ**（`emblem_rules.REJECT_REASONS` の 10 種＋ひとこと）→ 下の帯の「外す」。
+  版面ごとに `submit_item` の edit ＋ `{_emblem_reject: [{image, reason, note}]}`（DB の変更なし）→ `requests.yml` の `take-items` が `digest.reject_emblems` で items.yaml から外し、元の画像を `emblem_reject` に（二度と自動で選ばない）、倉庫の webp も消す。足りなくなった分は次の後台で別の画像。
+  **理由は今後の規則の手がかり**：`state/emblem_rejects.json` に理由・取り方（why）・網域・種類と一緒に残り、管理ページ「「違う」の理由」で数える。同じ理由・同じ取り方が溜まったら、`REJECT_REASONS` の 3 つ目（近い判断）を締める。規則がまだない理由（「そのほか」）が溜まったら `rules()` に 1 行足す。
 - **AI 編集の前後**（運行状況の下）：最新号で、作品ごとに「集めた件数（横棒）のうち AI 編集が記事に使った件数（青）→ 載せた記事の本数・重大／頭・未編集の新着」を 1 枚の図で見せる（`digest.edit_diff` + `render._admin_edit_diff`，`tests/test_edit_diff.py`）。
 - **バックグラウンド**（管理ページ最上部）：裏で動く仕組みの「次の実行」（前回・次回・あと何分，页面打开时按 `processes.py` 的 `schedule` 实时算）
   + 版面（行）× 流程（列：収集・AI 編集・版面の設計・小元素）的状态表（済 / 待ち / 要確認 / 失敗，小元素写排第几）。数据在 `digest.backend_cells`。

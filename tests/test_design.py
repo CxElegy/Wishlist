@@ -309,6 +309,37 @@ class BackendTable(unittest.TestCase):
         self.assertIn("+4", row)
         self.assertEqual(h[h.index('class="ef-pics"'):].split("</span>")[0].count("<img"), 14)   # 開くと全部
 
+    def test_thumbs_are_reject_buttons(self):
+        rows = self._rows(3)
+        rows[0]["thumbs"] = [("emblems/a-x.webp", "cutout", "X <1>")] + rows[0]["thumbs"][1:]
+        h = render._admin_backend(rows)
+        self.assertIn('class="emx" data-emx-b="A" data-emx="emblems/a-x.webp" aria-pressed="false" title="X &lt;1&gt; · 押すと「違う画像」の印"', h)
+        self.assertEqual(h.count('data-emx="emblems/a-x.webp"'), 2)   # 表の行と「探し方」の中
+        self.assertIn('id="emx-bar"', h)
+        self.assertEqual(render._bg_thumb(("u.png", "logo")), '<img src="u.png" alt="" loading="lazy" class=fit>')   # 版面なし = ただの画像
+        import emblem_rules
+        for k, t, _ in emblem_rules.REJECT_REASONS:   # 押すと理由を選ぶ
+            self.assertIn(f'data-r="{k}">{t}</button>', h)
+        self.assertIn("まだありません", h)
+
+    def test_reject_reason_stats(self):
+        rows = self._rows(2)
+        rows[0]["bg"]["emblem"]["detail"]["reject_log"] = [
+            {"board": "A", "subject": "X", "reason": "other", "why": "Fandom の代表画像", "host": "static.wikia.nocookie.net", "kind": "character", "at": "2026-10-21T00:00:00+00:00"},
+            {"board": "A", "subject": "Y", "reason": "other", "why": "Fandom の代表画像", "host": "static.wikia.nocookie.net", "kind": "character", "at": "2026-10-21T01:00:00+00:00"},
+            {"board": "A", "subject": "Z", "reason": "misc", "note": "<b>", "at": "2026-10-20T00:00:00+00:00"}]
+        h = render._admin_backend(rows)
+        self.assertIn('<b>別人・別のキャラ</b></td><td class="n">2</td><td>Fandom の代表画像 ×2</td><td>static.wikia.nocookie.net ×2</td>', h)
+        self.assertIn("まだ規則なし → emblem_rules に足す", h)   # 「そのほか」は締める先の判断がまだない
+        self.assertIn("「違う」：別人・別のキャラ 2、そのほか 1", h)   # 版面の「③ 確かめる」
+        self.assertIn("「&lt;b&gt;」", h)
+
+    def test_reject_reasons_point_at_real_rules(self):
+        import emblem_rules
+        titles = {r["title"] for r in emblem_rules.rules()}
+        for k, _, rule in emblem_rules.REJECT_REASONS:
+            self.assertTrue(rule is None or rule in titles, k)
+
     def test_retry_button_only_when_failed(self):
         failed = render._admin_backend(self._rows(state="failed"))
         self.assertIn('class="nx-run bg-redo" data-run="background"', failed)

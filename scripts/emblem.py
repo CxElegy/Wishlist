@@ -332,7 +332,12 @@ def _flow(d):
 def write_item(name, emblems, th):
     """items.yaml のその関注項に emblem（リスト）と theme を書く（あれば置き換え）。motif の行のすぐ後ろに入れる。"""
     path = ROOT / "items.yaml"
-    lines = path.read_text(encoding="utf-8").split("\n")
+    path.write_text(item_text(path.read_text(encoding="utf-8"), name, emblems, th), encoding="utf-8")
+
+
+def item_text(text, name, emblems, th=None):
+    """write_item の中身（items.yaml の全文 → 新しい全文）。emblems が空なら emblem の行ごと消す。"""
+    lines = text.split("\n")
     start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
     end = next((i for i in range(start + 1, len(lines)) if lines[i].startswith("  - name:")), len(lines))
     block, skip = [], False
@@ -346,11 +351,11 @@ def write_item(name, emblems, th):
         block.append(l)
     at = next((i + 1 for i, l in enumerate(block) if l.startswith("    motif:")), 0)
     keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs")
-    block[at:at] = (["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"]
+    block[at:at] = ((["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"] if emblems else [])
                     + [f"      - {_flow({k: x[k] for k in keep if k in x})}" for x in emblems]
                     + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
     lines[start + 1:end] = block
-    path.write_text("\n".join(lines), encoding="utf-8")
+    return "\n".join(lines)
 
 
 def recrop(name):

@@ -128,6 +128,8 @@ def rules():
          "rule": "選んだのに切り抜きの検査で外れた画像は emblem_reject に書く。次は同じ人の次の候補を選ぶ（同じ画像で何度も失敗しない）"},
         {"stage": STAGES[7], "title": "段を上がる・待つ", "by": "rule", "code": "emblem_fill.fill_one / RETRY_HOURS",
          "rule": f"① 標準 → ② 名前を広げる → ③ 公式・記事のページ。全部だめなら失敗：新しい記事・手がかりが来たらすぐ、来なくても {ef.RETRY_HOURS} 時間後"},
+        {"stage": STAGES[7], "title": "管理ページで「違う」と言われた画像は外す", "by": "rule", "code": "digest.reject_emblems",
+         "rule": "管理ページの小元素を押して理由（REJECT_REASONS）を選び「外す」→ その小元素を items.yaml から外し、元の画像を emblem_reject に（二度と選ばない）。理由・取り方・網域は state/emblem_rejects.json に残り、同じ理由が溜まったら近い判断を締める。足りなくなった分は次の後台で別の画像を探す"},
         {"stage": STAGES[7], "title": "目で見て選ぶ（手で頼んだときだけ）", "by": "ai", "code": "emblem_fill.py \"名前\" → --commit",
          "rule": "番号つきの一覧を AI が見て選ぶ。後台（自動）では使わない。外した画像は emblem_reject に書けば二度と選ばれない"},
     ]
@@ -136,6 +138,25 @@ def rules():
 def reasons():
     """コードが落とすときに使う理由の言葉の一覧（テスト用）。"""
     return {r["reason"] for r in rules() if r.get("reason")}
+
+
+# 管理ページの「違う」の理由（2026-10-21，用户定的：押した人が理由も選ぶ → 今後の規則を直す手がかり）。
+# (id, 画面の言葉, いちばん近い判断（rules() の title。規則がまだないものは None）)。
+# 押された理由は state/emblem_rejects.json に、どの取り方（why）・どこの画像（網域）だったかと一緒に残り、
+# 管理ページ「「違う」の理由」で数える。同じ理由・同じ取り方が溜まったら、その判断を締める（なければ rules() に 1 行足す）。
+REJECT_REASONS = [
+    ("other", "別人・別のキャラ", "別人"),
+    ("unrelated", "この作品と関係ない", "確かな取り方だけ"),
+    ("dup", "同じ人・同じ画像の重複", "1 要素 1 枚"),
+    ("panel", "漫画のコマ・画面の切り抜き", "コマ・アップの切り抜き"),
+    ("far", "小さい・遠い・顔が見えない", "小さすぎる"),
+    ("crowd", "ほかの人も写っている", "ほかの人が残っている（写真）"),
+    ("cut", "切り抜きが崩れている（穴・欠け）", "穴（写真）"),
+    ("blur", "ぼやけ・暗い・画質が悪い", "輪郭がにじんでいる"),
+    ("logo", "ロゴ・文字が違う・欠けている", "ロゴは切らない"),
+    ("misc", "そのほか", None),
+]
+REJECT_IDS = {k for k, _, _ in REJECT_REASONS}
 
 
 # 判断の例（前 → 後）：管理ページ「小元素の判断の例」に出す。画像は docs/emblems/examples/（本物の判断の結果を残したもの）。
