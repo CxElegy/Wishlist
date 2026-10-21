@@ -1343,7 +1343,8 @@ def auto_pick(item, good, web=True, strict=False):
 
 # ---------------------------------------------------------------- 定時の後台（--background）と進捗
 PROGRESS = ROOT / "state" / "emblem_progress.json"
-RETRY_HOURS = 6           # 全部の段で届かなかった関注項は、材料（記事・手がかり）が変わらなければこの時間は飛ばす
+RETRY_HOURS = 1           # 全部の段で届かなかった関注項は、材料（記事・手がかり）が変わらなければこの時間は飛ばす。
+                          # AI を使わないので資源は気にしない（2026-10-22，用户定的：6 時間は待たせすぎ）→ 毎時の後台で毎回やり直す
 MARGIN = 120              # 残り時間がこれ（秒）を切ったら、次の関注項に入らない
 STATE_JA = {"ok": "そろっている", "running": "進行中", "review": "要確認", "failed": "失敗"}
 
@@ -1402,7 +1403,7 @@ def sync_progress(prog, items):
 
 def due(prog, items, now):
     """後台で処理する順：目標に届いていないものを、足りない枚数の多い順（同じなら前回の処理が古い順）。
-    RETRY_HOURS（6 時間）以内に失敗して材料も変わっていないものは飛ばす。"""
+    RETRY_HOURS（1 時間）以内に失敗して材料も変わっていないものは飛ばす。"""
     rows = []
     for item in items:
         st = status(item)
@@ -1444,7 +1445,7 @@ def _write_sheet(item, good):
 
 def material(item):
     """その関注項の「材料」の指紋：集めた記事の数（直近 30 日）と、小元素の手がかり（emblem_who・urls・fandom・wiki・site・reject）。
-    失敗した版面は、これが変わったら（新しい記事・手がかりが増えた）6 時間を待たずにすぐやり直す。"""
+    失敗した版面は、これが変わったら（新しい記事・手がかりが増えた）待たずにすぐやり直す。"""
     import hashlib
     n = 0
     for path in sorted((ROOT / "inbox").glob("????-??-??.json"), reverse=True)[:30]:
@@ -1474,7 +1475,7 @@ def fill_one(item, log=print):
     """後台で 1 つの関注項を埋める。AI も人も見ない：目で見ていた判断は全部規則にしてある。
     取り方の段（STRATEGIES）を、目標に届くまで同じ回の中で順に上がる：① 標準 → ② 名前を広げる → ③ 公式・記事のページ。
     各段で 集める → 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）→ 選ぶ（auto_pick）→ 書いて切り抜く。
-    → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わるか 6 時間後にもう一度）。"""
+    → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わるか RETRY_HOURS 後にもう一度）。"""
     try:   # 取り方に要るもの（作品の Fandom・キャラの分類）が書いていなければ先に探す
         if find_sources(item, log):
             item = next(i for i in load_items() if i["name"] == item["name"])
@@ -1582,7 +1583,7 @@ def record(prog, item, result, now):
 WORKERS = 6   # 同時に処理する関注項の数（Actions は 4 コア。集めるのは待ちが多いので 6 本。抠图・書き込みは 1 本ずつ）
 
 
-def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None, workers=None, live=None):
+def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog_dir=None, workers=None, live=None, lines=None):
     """定時の後台：時間の予算（分）の中で、足りない関注項を workers 本並列で埋め、state/emblem_progress.json に進捗を残す。
     候補集め・本人確認は並列、items.yaml への書き込みと抠图は WRITE_LOCK で 1 本ずつ。
     1 つ終わるごとに保存するので、途中で止まっても、それまでの結果は残る。
@@ -1591,6 +1592,10 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
     if live is None:
         import livestatus
         live = livestatus.report if path is None else (lambda *a, **k: None)   # テスト（path あり）はネットに出ない
+    if lines is None:   # 管理ページ「ライブログ」に作業の 1 行 1 行を流す（Supabase live_log。AI を使わないので細かく出してよい）
+        import livestatus
+        lines = livestatus.Lines("emblem", send=None if path is None else False)
+        lines.prune()
     per_board = runlog.typical("emblem", "item_secs", 240, log_dir=runlog_dir) / 60   # 1 版面にかかる時間（最近の中央値）
     started = time.time()
     workers = max(1, int(workers or WORKERS))
@@ -1605,8 +1610,14 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
     sync_progress(prog, items)
     save_progress(prog, path)
     queue = due(prog, items, now)
-    runlog.add("emblem", f"開始：予算 {minutes:g} 分・{workers} 本並列・待ち {len(queue)} 版面"
-                         f"（{'、'.join(i['name'] for i in queue[:4])}{' …' if len(queue) > 4 else ''}）", log_dir=runlog_dir)
+    head = (f"開始：予算 {minutes:g} 分・{workers} 本並列・待ち {len(queue)} 版面"
+            f"（{'、'.join(i['name'] for i in queue[:4])}{' …' if len(queue) > 4 else ''}）")
+    runlog.add("emblem", head, log_dir=runlog_dir)
+    if os.environ.get("EMBLEM_RETRY_NOW"):
+        lines.add("管理ページの「今すぐ再挑戦」から起動：失敗した版面も待たずにやり直す")
+    lines.add(head)
+    if not queue:
+        lines.add("やることなし：どの版面も目標に届いているか、再挑戦の時刻がまだ", level="ok")
     lock = threading.Lock()   # 進捗・ログ・待ち行列
     stop = threading.Event()
     todo = list(queue)
@@ -1630,7 +1641,10 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
             if item is None:
                 return
             name = item["name"]
-            ilog = (lambda m, n=name: log(f"[{n}] {str(m).strip()}")) if workers > 1 else log
+            def ilog(m, n=name):
+                log(f"[{n}] {str(m).strip()}" if workers > 1 else m)
+                lines.add(m, board=n)
+            ilog(f"開始（いま {fresh_have(item)}）")
             live(name, "emblem", "work", "小元素を集めています", per_board + 3)
             t_item, before = time.time(), fresh_have(item)
             try:
@@ -1672,8 +1686,10 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
     prog["last_run"]["end"] = _now()
     sync_progress(prog, load_items())
     import resources
-    runlog.add("emblem", f"終了：{len(prog['last_run']['done'])} 版面を処理（{workers} 本並列）・そろっている {prog['summary']['ok']} / {prog['summary']['total']}",
-               "ok", log_dir=runlog_dir, secs=round(time.time() - started), workers=workers, res=resources.snapshot())
+    tail = f"終了：{len(prog['last_run']['done'])} 版面を処理（{workers} 本並列）・そろっている {prog['summary']['ok']} / {prog['summary']['total']}"
+    runlog.add("emblem", tail, "ok", log_dir=runlog_dir, secs=round(time.time() - started), workers=workers, res=resources.snapshot())
+    lines.add(tail + f"・{round(time.time() - started)} 秒 · 増えた分は push のあと 1〜2 分で網页に", level="ok")
+    lines.close()
     save_progress(prog, path)
     return prog
 

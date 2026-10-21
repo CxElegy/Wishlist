@@ -6,6 +6,7 @@
 import datetime as dt
 import zoneinfo
 import json
+import os
 import pathlib
 import sys
 import unittest
@@ -247,16 +248,45 @@ class Background(unittest.TestCase):
         prog = ef.sync_progress({"items": {}}, self.items)
         self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["zero", "one", "brand"])   # 足りない枚数の多い順
         zero = next(i for i in self.items if i["name"] == "zero")
-        prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T22:00:00+00:00", material=ef.material(zero))
-        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 6 時間以内・材料が同じ失敗は飛ばす
-        self.assertEqual(ef.waiting(prog, self.items, now), [("zero", "2026-10-17T04:00:00+00:00")])   # 再挑戦待ちとして見える
+        prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T23:30:00+00:00", material=ef.material(zero))
+        self.assertEqual(ef.RETRY_HOURS, 1)   # AI なし：6 時間は待たせすぎ（2026-10-22）→ 毎時の後台で毎回
+        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 1 時間以内・材料が同じ失敗は飛ばす
+        self.assertEqual(ef.waiting(prog, self.items, now), [("zero", "2026-10-17T00:30:00+00:00")])   # 再挑戦待ちとして見える
         prog["items"]["zero"].pop("material")   # 指紋の記録がない古い失敗は待たない
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         self.assertEqual(ef.waiting(prog, self.items, now), [])
         prog["items"]["zero"]["material"] = "old"   # 新しい記事・手がかりが来た
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
-        prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T17:00:00+00:00")
-        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 6 時間たった
+        prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T22:59:00+00:00")
+        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 1 時間たった
+
+    def test_background_streams_lines(self):
+        """管理ページのライブログ：開始・版面ごとの作業の 1 行 1 行・結果・終了が live_log に流れる（「今すぐ再挑戦」から起きたらそう書く）。"""
+        import livestatus
+        sent = []
+        lines = livestatus.Lines("emblem", send=sent.extend)
+
+        def fill(item, log):
+            log("  [別人] X（役の記事）cos 0.1")
+            return {"state": "failed", "note": "0 枚足した", "tried": {"役の記事": 3}}
+        with mock.patch.dict(os.environ, {"EMBLEM_RETRY_NOW": "1"}):
+            ef.background(40, log=lambda m: None, fill=fill, path=self.path, workers=1, lines=lines)
+        texts = [(r["board"], r["text"], r["level"]) for r in sent]
+        self.assertTrue(texts[0][1].startswith("管理ページの「今すぐ再挑戦」から起動"))
+        self.assertTrue(texts[1][1].startswith("開始：予算 40 分"))
+        self.assertIn(("zero", "[別人] X（役の記事）cos 0.1", "info"), texts)
+        self.assertIn(("zero", "→ 失敗：0 枚足した", "error"), texts)
+        self.assertTrue(texts[-1][1].startswith("終了：3 版面を処理") and texts[-1][2] == "ok")
+        self.assertTrue(all(r["proc"] == "emblem" and r["at"] for r in sent))
+
+    def test_lines_without_key_send_nothing(self):
+        import livestatus
+        with mock.patch.dict(os.environ, {"SUPABASE_SERVICE_KEY": ""}):
+            lines = livestatus.Lines("emblem")
+        lines.add("x")
+        lines.close()
+        self.assertIsNone(lines.send)
+        self.assertEqual(lines.buf, [])
 
     def test_background_tells_the_page(self):
         """版面の「更新中」の帯：処理を始めた版面に work、増えた版面は wait、増えなかった・失敗した版面は clear。"""
@@ -724,6 +754,9 @@ class EmblemDetail(unittest.TestCase):
         self.assertEqual([c["n"] for c in d["chain"]][:3], [None, 1, 22])
         brand = digest.emblem_detail({"name": "B", "type": "product"}, {"tried": {"Wikidata": 0}, "at": failed}, "failed", [], "Asia/Tokyo")
         self.assertIn("P154", brand["advice"])
+        live = digest.emblem_detail({"name": "H", "type": "show", "emblem_kind": "character", "emblem_people": True},
+                                    {"tried": {"役の記事": 36, "作品の動画の場面": 33}, "at": failed}, "failed", [], "Asia/Tokyo")
+        self.assertEqual([(c["src"], c["n"]) for c in live["chain"]][1:3], [("役の記事", 36), ("作品の動画の場面", 33)])   # 試した取り方は全部出す（「まだ試していない」にならない）
         ok = digest.emblem_detail({"name": "K", "type": "game", "emblem": [{}] * 6}, {}, "ok", [], "Asia/Tokyo")
         self.assertEqual(ok["advice"], "")
 

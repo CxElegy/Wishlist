@@ -1,10 +1,12 @@
 """管理ページの一番上：ターミナルのような「ライブログ」。開いている間、裏の仕組みが版面ごとに何を始め・何を終えたかが自動で流れる。
 
-行の出どころ（どれもページを開いた端末で読む。データベースの表は増やさない）：
+行の出どころ（どれもページを開いた端末で読む）：
   ・ページを作った時点の実行ログ（state/log/*.json、digest.backend_log）……最初の数十行
   ・Supabase の live_boards()（20 秒ごと）……前回との差：版面が現れた＝始めた、言葉が変わった＝次の段、消えた＝終わった
   ・GitHub Actions の実行（3 分ごと、管理ページの「いまの状況」と同じ localStorage を使い回す）……始まった・成功・失敗
   ・リポジトリの state/log/*.json（raw.githubusercontent.com、2 分ごと）……新しく書かれた実行ログ（出刊・AI 編集・ゲート…）
+  ・Supabase の live_log_since()（3 秒ごと、db/live_log.sql）……作業の 1 行 1 行（小元素の自動補完が候補ごとに何を外したか・段・結果）。
+    2026-10-22 に足した：「今すぐ再挑戦」を押しても 30 秒で終わる作業は上の 3 つでは見えなかった
 見た行は localStorage（wl-term-<account>、最新 300 行。ほかの account と同じドメインなので鍵を分ける）に残すので、ページが自動で読み直されても流れは途切れない。
 色は render.py の設計令牌だけ（地は --ink）。
 """
@@ -102,7 +104,7 @@ JS = """
 (function(){
   var C=document.getElementById('term-cfg');if(!C)return;var T=JSON.parse(C.textContent),A=JSON.parse(document.getElementById('adm-cfg').textContent);
   var body=document.getElementById('term-body'),st=document.getElementById('term-st'),foot=document.getElementById('term-foot'),pbtn=document.getElementById('term-pause');
-  var K='wl-term-__ACC__',MAX=300,ev=[],seen={},paused=false,stick=true;
+  var K='wl-term-__ACC__',MAX=600,ev=[],seen={},paused=false,stick=true;
   var FMT=new Intl.DateTimeFormat('ja-JP',{timeZone:A.tz||'Asia/Tokyo',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});
   function ts(s){var d=new Date(s);if(isNaN(d))return '';var o={};FMT.formatToParts(d).forEach(function(p){o[p.type]=p.value;});return o.month+'/'+o.day+' '+o.hour+':'+o.minute+':'+o.second;}
   function key(x){return x.at+'|'+x.p+'|'+x.b+'|'+x.t;}
@@ -156,7 +158,16 @@ JS = """
   function loadLogs(){T.files.forEach(function(f){fetch('https://raw.githubusercontent.com/'+A.repo+'/main/state/log/'+f+'.json',{cache:'no-store'})
     .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(rows){(rows||[]).slice(-30).forEach(function(r){
       add({at:r.at,p:f,b:'',t:r.text||'',lv:r.level||'info'},Date.now()-new Date(r.at)<600000);});}).catch(function(){});});}
-  loadBoards();loadRuns();loadLogs();
+  // ④ 作業の 1 行 1 行（Supabase の live_log、db/live_log.sql）：小元素の自動補完などが書いたその場の行。3 秒ごと
+  var LK='wl-term-lid-__ACC__',lid=0;try{lid=+localStorage.getItem(LK)||0;}catch(e){}
+  function loadLines(){if(!A.url||!A.key)return;
+    fetch(A.url+'/rest/v1/rpc/live_log_since',{method:'POST',headers:{apikey:A.key,'Content-Type':'application/json'},body:JSON.stringify({p_account:window.WL_ACCOUNT,p_after:lid})})
+      .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(l){(l||[]).forEach(function(x){
+        add({at:x.at,p:x.proc,b:x.board||'',t:x.text,lv:x.level||'info'},Date.now()-new Date(x.at)<600000);lid=Math.max(lid,x.id);});
+        if(l&&l.length){try{localStorage.setItem(LK,String(lid));}catch(e){}tick('作業中 · '+(l[l.length-1].board||'')+' '+l[l.length-1].text.slice(0,40));}})
+      .catch(function(){});}
+  loadBoards();loadRuns();loadLogs();loadLines();
+  setInterval(function(){if(!document.hidden)loadLines();},3000);
   setInterval(function(){if(!document.hidden)loadBoards();},20000);
   setInterval(function(){if(!document.hidden)loadRuns();},180000);
   setInterval(function(){if(!document.hidden)loadLogs();},120000);

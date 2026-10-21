@@ -45,3 +45,72 @@ def report(board, proc, state, note=None, eta_min=None):
 
 def clear(proc, board="*"):
     report(board, proc, "clear")
+
+
+class Lines:
+    """管理ページ「ライブログ」に作業の 1 行 1 行を流す（Supabase の live_log 表、db/live_log.sql）。
+    secret key のある GitHub Actions だけが書く（ないとき・テストでは何もしない）。行はためて FLUSH 秒ごとにまとめて送る
+    （画面は 3 秒ごとに読む）。送れなくても本体の処理は止めない。"""
+    FLUSH = 1.5
+    KEEP_DAYS = 2
+
+    def __init__(self, proc, send=None):
+        import os
+        import threading
+        self.proc, self.buf, self.lock = proc, [], threading.Lock()
+        self.send = send if send is not None else (self._post if os.environ.get("SUPABASE_SERVICE_KEY") else None)
+        self.send = self.send or None   # send=False：テスト（ネットに出ない）
+        self.stop = threading.Event()
+        self.th = None
+        if self.send:
+            self.th = threading.Thread(target=self._loop, name=f"live-{proc}", daemon=True)
+            self.th.start()
+
+    def add(self, text, board=None, level=None):
+        if not self.send:
+            return
+        import datetime as dt
+        text = " ".join(str(text).split())
+        if not text:
+            return
+        if level is None:   # 行の言葉で色を決める（ライブログの lv-*）
+            level = ("error" if "[失敗]" in text or "エラー" in text or text.startswith("→ 失敗") else "warn" if text.startswith("[外した]") or "時間切れ" in text
+                     else "ok" if text.startswith("→ そろっている") or "目標に届いた" in text else "info")
+        with self.lock:
+            self.buf.append({"at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="milliseconds"), "proc": self.proc,
+                             "board": board, "level": level, "text": text[:400]})
+
+    def _loop(self):
+        while not self.stop.wait(self.FLUSH):
+            self.flush()
+
+    def flush(self):
+        with self.lock:
+            rows, self.buf = self.buf, []
+        if rows:
+            try:
+                self.send(rows)
+            except Exception as err:  # noqa: BLE001
+                print(f"  （ライブログに書けなかった：{err}）", file=sys.stderr)
+
+    def close(self):
+        self.stop.set()
+        if self.th:
+            self.th.join(timeout=5)
+        self.flush()
+
+    def _post(self, rows):
+        import digest
+        digest.supabase("live_log", rows, "return=minimal", method="POST")
+
+    def prune(self):
+        """2 日より前の行を消す（書く側が自分で片付ける）。"""
+        if not self.send or self.send != self._post:
+            return
+        import datetime as dt
+        import digest
+        old = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=self.KEEP_DAYS)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        try:
+            digest.supabase(f"live_log?at=lt.{old}", method="DELETE")
+        except Exception as err:  # noqa: BLE001
+            print(f"  （ライブログの古い行を消せなかった：{err}）", file=sys.stderr)

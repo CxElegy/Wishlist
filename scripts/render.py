@@ -4887,7 +4887,7 @@ BG_STATES = {"ok": "済", "wait": "待ち", "review": "要確認", "failed": "�
 BG_COLS = (("collect", "収集", "collect"), ("edit", "AI 編集", "edit"), ("design", "版面の設計", "edit"),
            ("emblem", "小元素", "emblem-cron"))
 RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render", "edit": "edit_now"}   # 「今すぐ実行」で起こせる仕組み → db/run_now.sql の job
-RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も 6 時間を待たずにやり直す（3 分に 1 回まで）",
+RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も待たずにやり直す・作業は上のライブログに流れる（3 分に 1 回まで）",
              "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）",
              "edit": "9:00・18:00 を待たずに、整理待ちがあれば AI 編集を今すぐ起こす（10 分に 1 回まで）"}
 EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "stalled": ("止まっている？", "ng"),
@@ -4917,13 +4917,13 @@ def _bg_thumb(t, board=""):
 
 def _bg_retry(k, r):
     """失敗した小元素の格子：自動の再挑戦までの残り時間と「今すぐ再挑戦」ボタン（run_now('background') = retry_now つきの後台作業。
-    失敗した版面は 6 時間を待たずにやり直す。3 分に 1 回まで）。ほかの格子は空。"""
+    失敗した版面は待たずにやり直す。作業の 1 行 1 行はライブログに流れる。3 分に 1 回まで）。ほかの格子は空。"""
     if k != "emblem" or r["bg"][k]["state"] != "failed":
         return ""
     at = (r["bg"][k].get("detail") or {}).get("next_at") or ""
     cd = f'<small class="bg-cd" data-at="{e(at)}"></small>' if at else ""
     return (f'{cd}<span class="nx-go"><button type="button" class="nx-run bg-redo" data-run="{RUN_JOBS["gate"]}" data-label="今すぐ再挑戦"'
-            f' title="失敗した版面を 6 時間待たずにやり直す（後台作業を今すぐ。3 分に 1 回まで）">今すぐ再挑戦</button>'
+            f' title="失敗した版面を待たずにやり直す（後台作業を今すぐ。作業はページ上のライブログに流れる。3 分に 1 回まで）">今すぐ再挑戦</button>'
             f'<small class="nx-msg" aria-live="polite"></small></span>')
 
 
@@ -5688,6 +5688,8 @@ ADMIN_PAGE_JS = """
       .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(x){
         var nx=x&&x.next_at?new Date(x.next_at):null,left=nx?Math.max(1,Math.ceil((nx-new Date())/60000)):0;
         if(x&&x.ok){msg.className='nx-msg ok';msg.textContent='起こしました · 数十秒で「実行中」に';if(card)card.classList.add('run');
+          if(b.dataset.run==='background'){msg.textContent='起こしました · 1 分ほどで作業の 1 行 1 行が ';var a=el('a',null,'ライブログ');a.href='#term-panel';msg.appendChild(a);msg.appendChild(document.createTextNode(' に流れます'));
+            var cd=b.closest('td')&&b.closest('td').querySelector('.bg-cd');if(cd){cd.removeAttribute('data-at');cd.textContent='いま再挑戦中（次の時刻は終わってから決まる）';}}
           setTimeout(loadRuns,20000);setTimeout(loadRuns,60000);}
         else{msg.className='nx-msg ng';msg.textContent=(x&&x.msg||'起こせませんでした')+(left?' · あと '+left+' 分で押せます':'');}
         b.textContent=b.dataset.label||'今すぐ実行';setTimeout(function(){b.disabled=false;},left?left*60000:5000);})
