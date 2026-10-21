@@ -16,14 +16,14 @@ Google ログインは保留（Google の「公開」にホームページとプ
 - 開關 `private.auth_flags.enforce`：閉じている間は前と同じ（だれでも変えられる・管理ページも見える）。`db/auth_enforce.sql` で開く。戻すときは false に。
 - 管理者：`invites` 表の role=admin のメール（最初は `c.elegy@outlook.com`、5 人まで）。登録時の trigger が役割を決める。ほかの人はユーザー。
 - **店長**：`c.elegy@outlook.com` でログイン（同じ日に一度 `CxElegy` という名前にしたが、メールアドレスに戻した）。
-- **店長のページ = /shop/**（2026-10-21，用户定的）：前の test1 の中身を店長のものとして戻した（Supabase の account 名は test1 のまま、網址は /shop/）。試験の版 test2 は `archive/test2/`・`docs/test2/`（見るだけ）。
+- **網址 = /home/**（2026-10-21，用户定的：一般的なサイトと同じく網址に名前を入れない。みんな同じ網址、中身はログインした人で決まる）：前の test1 の中身を店長のものとして戻した（Supabase の account 名は test1 のまま、網址は /home/）。試験の版 test2 は `archive/test2/`・`docs/test2/`（見るだけ）。
 - account の持ち主：`accounts` 表（test1・test2 は owner 空 = 運営者 = 管理者のもの）。ユーザー自分の account は第 2 步。
 - 保存するのはメール（と名前）だけ。管理ページのユーザー一覧は名前だけ（メールは招待表だけ）。
 
 ## 運営者がやること（1 回だけ・約 1 分）
 
 1. **戻り先を許可**：https://supabase.com/dashboard/project/bzokpnbcjscbcehdxtjq/auth/url-configuration
-   - Site URL に `https://cxelegy.github.io/Wishlist/shop/` → 「Save」
+   - Site URL に `https://cxelegy.github.io/Wishlist/home/` → 「Save」
    - Redirect URLs の「Add URL」に `https://cxelegy.github.io/Wishlist/**` → 「Save」
    （これがないとメールのリンクが localhost に飛ぶ）
 2. Claude に「設定した」と言う → 右上の「ログイン」に `c.elegy@outlook.com` →「確認待ち」→ 届いたメールのリンク →「管理者」と出れば OK → 合併して `db/auth_enforce.sql`（開關を開く）
@@ -48,5 +48,5 @@ Google ログインは保留（Google の「公開」にホームページとプ
 ## 第 2 步（まだ）
 
 - ユーザーが登録したら自分の account（`accounts.owner` = 本人）を作り、自分の関注清单・愿望清单・ページを持つ。
-- ユーザーのページは本人だけが見られる：GitHub Pages は公開なので、ページは Supabase の非公開の場所に置き、ログイン後に読む。リポジトリにも入れない（リポジトリは公開）。
+- ユーザーのページも同じ /home/（網址に名前を出さない）。本人だけが見られる：GitHub Pages は公開なので、ページは Supabase の非公開の場所に置き、ログイン後に読む。リポジトリにも入れない（リポジトリは公開）。
 - ユーザーの関注項の AI 編集は Haiku（安いモデル）・1 日の上限つき。Discord はユーザーとは関係なし（運営者だけ、保留中）。
