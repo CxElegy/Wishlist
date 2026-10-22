@@ -206,7 +206,7 @@
   出刊时 `hdimg.py` 用 OpenCV 判断「看不清吗」：**原图看得清就不动、不花资源**（用户定的）。只有网页上要放大 1.6 倍以上、而且放到显示大小后模糊度 > 0.42（无参考 re-blur 法）的图
   才去噪 NLMeans → Lanczos4 放大（最多 3 倍）→ 亮度 USM；Bing 只给 100×100 的缩略图改取 w=1200 版切白边；防盗链的图、期限付きの網址（Yahoo ニュースの `?exp=10800`，几小时后变成 1×1 的白图）存一份；已经打不开・变成空白的图记 `dead`，`retry_images` 去原文重新找；网页上 1×1 的图当作打不开、换下一张。都放 `docs/pics/`（`state/hdimg.json` 记对应关系，过 8 天删），`render._img_url` 优先用本站的、打不开再用原图。手动：`digest.py hd-images`。
   **拒まれたら scrapling で取り直す・代表の 1 枚（2026-10-22，用户定的：不用 AI，CPU 可以多用）**：`images._fetch` が 202/401/403/405/429/503・確認画面で拒まれたら ① scrapling の Fetcher（Chrome と同じ TLS。記事の頁だけ Google から来たヘッダー、画像には付けない）で 1 回取り直し、
-  まだ拒まれた記事の頁は ② 本物のブラウザ（StealthyFetcher、`digest.yml` が `scrapling install` できたときだけ `SCRAPLING_BROWSER=1`、1 回 10 頁・合わせて 180 秒まで・1 頁 30 秒）。取り直しでしか取れない画像は来源名に「（本站保存）」→ hdimg が本站に保存。有料記事・ログインの壁は越えない。
+  まだ拒まれた記事の頁は ② 本物のブラウザ（StealthyFetcher、`digest.yml` が `scrapling install` できたときだけ `SCRAPLING_BROWSER=1`、1 回 10 頁・合わせて 180 秒まで。1 頁は別プロセスで 45 秒で必ず打ち切り、開けなかった頁は 24 時間開き直さない `state/browser_skip.json`：2026-10-22 本番で同じ頁に毎回 3 分）。取り直しでしか取れない画像は来源名に「（本站保存）」→ hdimg が本站に保存。有料記事・ログインの壁は越えない。
   正文図は最初の 1 枚で決めず 6 枚まで確かめ `images.key_score`（大きい・16:10 に近い・記事の上のほう、細長い帯は除く）で選ぶ。テストは外に出ない（`images.SCRAPLING = False`、`tests/test_scrape.py`）。
 - **版面主题（motif）**：`items.yaml` 里给作品写 `motif:`，主题在 `templates/`（`index.yaml` 一览 + 每套一份 `<id>.css`，只用作品自己的配色变量）。
   现在有 **30 套**（背景花纹、题字形状、照片边框、标题旁装饰字），每套带一个 **👍 演出**（`fx`，`scripts/likefx.py` 的 20 种：大拇指的动作 + 飞散的形状 + 文字）。

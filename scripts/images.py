@@ -20,6 +20,7 @@ import html
 import io
 import json
 import os
+import pathlib
 import re
 import sys
 import time
@@ -122,6 +123,39 @@ BLOCKED = {202, 401, 403, 405, 429, 503}   # 防機器人・限流でよく返�
 BROWSER_MAX = 10
 BROWSER_BUDGET = 180   # この回のブラウザの持ち時間（秒）。2026-10-22 本番：1 頁 60 秒 × 取り直し 3 回で画像が 9 分、収集全体が 22 分（上限 30 分）になった
 BROWSER_PAGE_MS = 30000   # 1 頁の待ち時間（Cloudflare の確認画面は普通 5〜10 秒で抜ける）
+BROWSER_HARD_S = 45       # 1 頁をこれで必ず打ち切る（別のプロセスで動かして殺す）。scrapling は Cloudflare 対策のとき自分で 60 秒以上に延ばし、
+                          # 2026-10-22 本番では 1 頁 3 分待っていた（全体の検査 M23）
+BROWSER_SKIP_HOURS = 24   # 開けなかった頁は 1 日開き直さない（毎回同じ頁で 3 分むだにしていた）
+BROWSER_SKIP_FILE = pathlib.Path(__file__).resolve().parent.parent / "state" / "browser_skip.json"
+_BROWSER_CHILD = r"""
+import sys
+from scrapling.fetchers import StealthyFetcher
+r = StealthyFetcher.fetch(sys.argv[1], headless=True, solve_cloudflare=True, network_idle=True, timeout=int(sys.argv[2]), retries=1)
+if r.status == 200:
+    body = getattr(r, "html_content", None) or (r.body.decode("utf-8", "ignore") if isinstance(r.body, bytes) else str(r.body))
+    sys.stdout.write(body)
+else:
+    sys.exit(3)
+"""
+
+
+def _skip_load():
+    try:
+        return json.loads(BROWSER_SKIP_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def _skip_mark(url):
+    data = _skip_load()
+    now = time.time()
+    data = {u: t for u, t in data.items() if now - t < BROWSER_SKIP_HOURS * 3600}
+    data[url] = now
+    try:
+        BROWSER_SKIP_FILE.parent.mkdir(parents=True, exist_ok=True)
+        BROWSER_SKIP_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=0) + "\n", encoding="utf-8")
+    except OSError:
+        pass
 
 
 def _blocked(f):
@@ -152,26 +186,37 @@ def _scrape(url, limit, referer=None, page=False):
 
 
 def _browser_html(url):
-    """② 本物のブラウザで記事の頁を開く（Cloudflare の確認画面も待つ）。Actions で SCRAPLING_BROWSER=1・BROWSER_MAX 頁・BROWSER_BUDGET 秒まで（1 頁 30 秒・取り直しなし）。"""
+    """② 本物のブラウザで記事の頁を開く（Cloudflare の確認画面も待つ）。Actions で SCRAPLING_BROWSER=1・BROWSER_MAX 頁・BROWSER_BUDGET 秒まで。
+    別のプロセスで開き、BROWSER_HARD_S 秒で必ず打ち切る。開けなかった頁は BROWSER_SKIP_HOURS 時間開き直さない（state/browser_skip.json）。"""
     if not SCRAPLING or os.environ.get("SCRAPLING_BROWSER") != "1" or _browser_used[0] >= BROWSER_MAX \
-            or _browser_used[1] + BROWSER_PAGE_MS / 1000 > BROWSER_BUDGET:
+            or _browser_used[1] + BROWSER_HARD_S > BROWSER_BUDGET:
         return None
-    try:
-        from scrapling.fetchers import StealthyFetcher
-    except Exception:
+    if time.time() - _skip_load().get(url, 0) < BROWSER_SKIP_HOURS * 3600:
         return None
+    import signal
+    import subprocess
     _browser_used[0] += 1
     t0 = time.monotonic()
+    proc = subprocess.Popen([sys.executable, "-c", _BROWSER_CHILD, url, str(BROWSER_PAGE_MS)],
+                            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, start_new_session=True)
     try:
-        r = StealthyFetcher.fetch(url, headless=True, solve_cloudflare=True, network_idle=True, timeout=BROWSER_PAGE_MS, retries=1)
-    except Exception as e:
-        print(f"  [ブラウザ] {url[:60]}：{type(e).__name__}", file=sys.stderr)
-        return None
+        out, _ = proc.communicate(timeout=BROWSER_HARD_S)
+        ok = proc.returncode == 0 and out
+        why = "" if ok else f"開けない（{proc.returncode}）"
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)   # ブラウザ（孫のプロセス）ごと止める
+        except OSError:
+            pass
+        proc.communicate()
+        ok, out, why = False, b"", f"{BROWSER_HARD_S} 秒で打ち切り"
     finally:
         _browser_used[1] += time.monotonic() - t0
-    if r.status != 200:
+    print(f"  [ブラウザ] {url[:60]}：{'取れた' if ok else why}（{time.monotonic() - t0:.0f} 秒）", file=sys.stderr)
+    if not ok:
+        _skip_mark(url)
         return None
-    return getattr(r, "html_content", None) or (r.body.decode("utf-8", "ignore") if isinstance(r.body, bytes) else str(r.body))
+    return out.decode("utf-8", "ignore")
 
 
 def _fetch(url, limit, referer=None):

@@ -59,6 +59,33 @@ class Fallback(unittest.TestCase):
             self.assertIsNone(images._browser_html("https://a.example/x"))   # 持ち時間の残りが 1 頁分ない
             images._browser_used[:] = [0, 0.0]
 
+    def test_browser_is_cut_hard_and_skipped_for_a_day(self):
+        import tempfile
+        skip = pathlib.Path(tempfile.mkdtemp()) / "browser_skip.json"
+        slow = "import time; time.sleep(30)"
+        with mock.patch.dict(images.os.environ, {"SCRAPLING_BROWSER": "1"}), mock.patch.object(images, "SCRAPLING", True), \
+                mock.patch.object(images, "BROWSER_SKIP_FILE", skip), mock.patch.object(images, "BROWSER_HARD_S", 1), \
+                mock.patch.object(images, "_BROWSER_CHILD", slow):
+            images._browser_used[:] = [0, 0.0]
+            t0 = images.time.monotonic()
+            self.assertIsNone(images._browser_html("https://a.example/slow"))
+            self.assertLess(images.time.monotonic() - t0, 10)   # 30 秒待たずに打ち切る
+            self.assertIn("https://a.example/slow", images._skip_load())
+            n = images._browser_used[0]
+            self.assertIsNone(images._browser_html("https://a.example/slow"))   # 1 日は開き直さない
+            self.assertEqual(images._browser_used[0], n)
+        images._browser_used[:] = [0, 0.0]
+
+    def test_browser_returns_page(self):
+        import tempfile
+        skip = pathlib.Path(tempfile.mkdtemp()) / "browser_skip.json"
+        with mock.patch.dict(images.os.environ, {"SCRAPLING_BROWSER": "1"}), mock.patch.object(images, "SCRAPLING", True), \
+                mock.patch.object(images, "BROWSER_SKIP_FILE", skip), \
+                mock.patch.object(images, "_BROWSER_CHILD", "import sys; sys.stdout.write('<html>ok</html>')"):
+            images._browser_used[:] = [0, 0.0]
+            self.assertEqual(images._browser_html("https://a.example/ok"), "<html>ok</html>")
+        images._browser_used[:] = [0, 0.0]
+
     def test_off_switch(self):
         with mock.patch.object(images, "SCRAPLING", False):
             self.assertIsNone(images._scrape("https://a.example/x", 10))
