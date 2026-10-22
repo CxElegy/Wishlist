@@ -550,12 +550,6 @@
   "why": "防盗链",
   "ref": true
  },
- "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3
- },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
   "h": 950,
@@ -2531,12 +2525,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.BdKtrIJTCijW9bb3IdpT2g&pid=News&w=1200": {
-  "w": 700,
-  "h": 349,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
   "h": 700,
@@ -2654,12 +2642,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT._-jomvwq5lGf2BQyBbwQ8Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ckF8mOE9P9JN9uj-QD-AJw&pid=News&w=500": {
   "w": 100,
   "h": 100,
@@ -2686,9 +2668,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.hOEQt_1cJHuFQfPsBSAGHA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.hvvY0FvZsR3eoiA5Z0pwrw&pid=News&w=1200": {
   "w": 700,
-  "h": 525,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -2756,6 +2738,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.olE6Yl3VI-ImpHZEMvdSWQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200": {
   "w": 700,
   "h": 471,
@@ -2794,7 +2782,19 @@
   "v": 3,
   "blur": 0.376
  },
+ "https://www.bing.com/th?id=ONUT.zik-q_ypKBFujZPYAzOhDQ&pid=News&w=1120": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ORMS.1e7af442a4d725fe2d1f76d8847ebfd1&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ORMS.f901084b723d6aebcdb55c0057b83852&pid=News&w=1200": {
   "w": 700,
   "h": 466,
   "target": 720,
