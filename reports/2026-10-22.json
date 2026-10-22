@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "d5e87a5f77e0",
+ "edit_sig": "b9dee631b1e8",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -683,66 +683,41 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-20",
-     "n": 1,
-     "source": "网易新闻客户端",
-     "title": "DOTA2：假如omg有比赛..",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5pQ3EtOFZtTHdwbHQ4ZGRyY0ZtcHJHZVQwcUZra05ieVdNZlhxT1NIZ29XVGRsVFZ1emdpdEpfbWdKLTRCSGwyLWs0M0lkMXZMdVNr?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 2,
-     "source": "Dexerto",
-     "title": "Dota 2 superfans celebrate TI9 Champions OG with over-the-top display",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPdFdEdjhtRXFRVjg4eHcxdVo1OWpjX0Vqa2xZdXJhMlBIS29iWTE2SGFCOENabm04SWktclVWUy1hVWQ4WVFiUHppSVBWOF96ek5ITTAtbk1UOEl3WU9DRVV6em5MQThONnFwTHF5ZEhHVDhPOHY0NzBfNEpfUXRIbEdIbw?oc=5"
-    },
-    {
-     "date": "2026-10-15",
-     "n": 3,
-     "source": "Dexerto",
-     "title": "Dota 2 hero tier list: Best meta picks in every position",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNMHp5cW9lbnV4Q0FVQkV2bVdKcUxoVE1EUzBzcHQ1LXpOVkRQcnVNNExIMnhZcEQ2UnllMDVaX3VXN0R2T1lJSjA3LU0yaThHUDVJTzkyYU1ZSWtObFJGMkw3SGdNQkw3R0gtVmg4dW5LUWkwUXVTck1ONG1TVlNzeW1DQjlzTVozYXNWZWpWTFNJZ0JCVmc?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 4,
-     "source": "Bluesky",
-     "title": "Every now and then I think about that time Northernlion was really really excited to play Dota2 again after many years, until he played exactly 1 match and I don't think I've ever seen the light leave",
-     "url": "https://bsky.app/profile/kilinah.bsky.social/post/3myb65qkdsc2v"
-    },
-    {
-     "date": "2026-10-16",
-     "n": 5,
-     "source": "Mastodon",
-     "title": "The mascot was born around November 2016 when I asked my # Dota2 friend @ dopatwo for an illustration to put on Mastodon's error page. It was meant to be a homage to Twitter's \"fail whale\". As you can",
-     "url": "https://mastodon.social/@Gargron/117452735190662392"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 6,
+     "headline": "【新闻】职业 Dota2 选手遭警方闯入屋上拷，并质疑其专业身份，当场示范一局拿下32 击杀自证身份！还展示与Ms Puiyi 合照",
+     "highlight": "32 击杀自证身份",
+     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+     "image_via": "作品封面",
      "source": "Goody25",
-     "title": "【新闻】职业 Dota2 选手遭警方闯入屋上拷，并质疑其专业身份，当场示范一局拿下32 击杀自证身份！还展示与Ms Puiyi 合照",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBfR2xIOE5jbWIzVkd6UVRVOVdHR3QyanljTDF3Tm56OWZFMmZIS0RUTU9WbEJPMEhVYmh3cUpLZlE0NVZhRExod28zTzY?oc=5"
+     "source_icon": null,
+     "url": "https://www.goody25.com/mind20140026",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-21",
-     "n": 7,
-     "source": "手机新浪网",
-     "title": "至少我们的青训可以吊打猴子的青训[努力] #DOTA2[超话]##DOTA2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBHZ0o4YUVmREp3eGd3Ym04eGJ1MUhfWFk3b2tVNEFDT0QxOXpHSVpaQkVfRHBFRkN0LWRtTVRUSGVfbl9wMmdVOU52SlZSWWpSS0ZxcUNNVGdlMzBocEw0a0V1RQ?oc=5"
+     "blurb": "",
+     "date": "2026-10-15",
+     "headline": "Dota 2 hero tier list: Best meta picks in every position",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/01/29/dota-2-hero-tier-list.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/dota2/dota-2-hero-tier-list-best-meta-picks-every-position-1751313/",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-21",
-     "n": 8,
-     "source": "手机新浪网",
-     "title": "来自watson的上分一号位英雄推荐以及德鲁伊小教学[哆啦A梦吃惊] #dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE92d3pwem0wR21LVERJaFZjV1pPRHBiMVQ4UjhRUThrWU5fUVJNYlRjczhsd2ZjMnJyVWRuVEFxM1lQNXhZREFTWU9xSXJLd3JfTkRSb2VybENXNU1mMEl0bFJEdw?oc=5"
+     "blurb": "",
+     "date": "2026-10-15",
+     "headline": "Dota 2 superfans celebrate TI9 Champions OG with over-the-top display",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/the-international-billboard-og-two-time-champions-philippines.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/dota2/superfans-celebrate-og-over-top-display-964049/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -1066,8 +1041,7 @@
      "date": "2026-10-20",
      "headline": "テニス＝ジャパンOP、内島が日本勢対決制し2回戦へ 坂詰は敗退",
      "highlight": "内島が日本勢対決制し2回戦へ",
-     "image": "https://cdn.mainichi.jp/vol1/2015/12/18/20151218hrc00m010001000q/9.jpg?2",
-     "image_via": "同一件事的别家报道 mainichi.jp",
+     "image": null,
      "source": "Reuters on MSN",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.msn.com&sz=128",
      "url": "https://www.msn.com/ja-jp/sports/tennis/%E3%83%86%E3%83%8B%E3%82%B9-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%EF%BD%8F%EF%BD%90-%E5%86%85%E5%B3%B6%E3%81%8C%E6%97%A5%E6%9C%AC%E5%8B%A2%E5%AF%BE%E6%B1%BA%E5%88%B6%E3%81%972%E5%9B%9E%E6%88%A6%E3%81%B8-%E5%9D%82%E8%A9%B0%E3%81%AF%E6%95%97%E9%80%80/ar-AA2fGpJR",

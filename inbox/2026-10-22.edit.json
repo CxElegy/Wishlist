@@ -81,7 +81,8 @@
   "あつ森": 1,
   "滑雪": 1,
   "绝区零": 16,
-  "日本顶级网球赛事": 9
+  "日本顶级网球赛事": 9,
+  "dota2": 8
  },
  "周杰伦": [
   {
@@ -426,6 +427,35 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "【新闻】职业 Dota2 选手遭警方闯入屋上拷，并质疑其专业身份，当场示范一局拿下32 击杀自证身份！还展示与Ms Puiyi 合照",
+   "highlight": "32 击杀自证身份",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "Dota 2 hero tier list: Best meta picks in every position",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Dota 2 superfans celebrate TI9 Champions OG with over-the-top display",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

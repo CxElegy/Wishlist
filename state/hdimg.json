@@ -139,6 +139,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/b7cceb19gy1ii9zaixp61j20jr0a1q6t.jpg": {
+  "w": 711,
+  "h": 361,
+  "target": 720,
+  "v": 3,
+  "local": "pics/f5f1121d9b6eb536.webp",
+  "out": [
+   711,
+   361
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/647c8fably1ii84lyoc7cj20v90oetbk.jpg": {
   "w": 1125,
   "h": 878,
@@ -369,12 +382,6 @@
    799
   ],
   "why": "看不清"
- },
- "https://cdn.mainichi.jp/vol1/2015/12/18/20151218hrc00m010001000q/9.jpg?2": {
-  "w": 800,
-  "h": 420,
-  "target": 720,
-  "v": 3
  },
  "https://cdn.mos.cms.futurecdn.net/7MkXgTMHDpN3fkLRciMFVY-2048-80.jpg": {
   "w": 2048,
@@ -2957,6 +2964,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/01/29/dota-2-hero-tier-list.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/01/Chainsaw-Man-Episode-4-Where-to-Watch-Release-Date.jpg": {
   "w": 1366,
   "h": 768,
@@ -2991,6 +3004,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/the-international-billboard-og-two-time-champions-philippines.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://www.digitaltrends.com/tachyon/2026/06/samsung-galaxy-s26-ultra-smartphone-11.jpg?resize=1200%2C630": {
