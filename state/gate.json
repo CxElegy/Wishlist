@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-22T09:18:11+00:00",
+ "checked": "2026-10-22T10:17:27+00:00",
  "fired": {
   "at": "2026-10-22T09:18:11+00:00",
   "results": {
@@ -18,23 +18,17 @@
     "resp": "cse_016YvHhJnzMic7PQuTDvMk1W",
     "sig": "52b8ad0d95a9"
    },
-   "items": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "あつ森",
-    "三星手机",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影"
-   ],
-   "need": true,
-   "prog": 510,
-   "sig": "52b8ad0d95a9",
-   "why": "整理待ちの記事 55 件（11 版面・AI 編集まで版面に載らない）"
+   "items": [],
+   "last_batch": "2026-10-22T09:41:01+00:00",
+   "last_error": {
+    "at": "2026-10-22T09:25:20+00:00",
+    "text": "出刊に失敗：No module named 'requests'"
+   },
+   "need": false,
+   "prog": 565,
+   "prog_day": "2026-10-22",
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
