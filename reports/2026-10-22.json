@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "b9dee631b1e8",
+ "edit_sig": "1cef35c4387a",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -560,52 +560,39 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "A new open-world MMO-lite RPG has been officially confirmed for October 28.",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "GameRant",
-     "title": "New Open-World MMO-Lite RPG Officially Confirmed for October 28",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1EN2tOakpGTkhHNFFZSlFRQVZNWFB4YmV3SXE1dThsU1ItcW55VmJHbzRGTXliblZmdkdSaFBxUmt2RmQ3cjVjeUlneU5kMmFmSXdqSU16SUpGcHAxbG80YkMyU1pUQVRRdHZrVUkzQzI4cGVpYnU1V0VfY2s?oc=5"
+     "headline": "New Open-World MMO-Lite RPG Officially Confirmed for October 28",
+     "highlight": "October 28",
+     "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/everlast-undying-tale-steam-release-date-confirmed-gamerant.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://gamerant.com/steam-new-open-world-mmorpgs-everlast-undying-tale/",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-15",
-     "n": 2,
-     "source": "BigGo 財經",
-     "title": "韓國手機MMORPG受惠3款大作熱銷，9月營收創近一年新高",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE84a2NoeE9jOFM2X2VpUGIyUG8zOXJxSDBFRHdZTWllVVBDc2hkYjRDdTloUWM3VGducjhiOVY4dGVsSkZVSEZuQjRTN1I5bGNwNk1TaklwVTNBNmtGeUVFT19BM1JZaUNCN012dWxiWWdkamFoZ0V4T0dR?oc=5"
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "日本語PS5版の発売が迫る“デューン/砂の惑星”サバイバルMMO「Dune: Awakening」のクラフト情報が国内向けにアナウンス",
+     "highlight": "",
+     "image": "https://doope.jp/media/26q4/img2849_01.jpg",
+     "image_via": "og:image",
+     "url": "https://doope.jp/2026/10172051.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 3,
-     "source": "Infoseek",
-     "title": "カラフルファンタジーMMORPG『幻想神域 Echo of Cube』新武器「聖剣」実装！期間限定「ハロウィンイベント」開催！",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBLc2o1VTlxNGU0NkNxLWRyWTdEaFZ4U3R6blBfX29LdkJBZDdickhaeWg0NngxSEozanBIeUt5cndaQXdkeDdLQUVyZlFYN0VYYmtVa2ppdlVjWUVhY2I4dm9MNTZoMl96ZF9uaVRtblhqQQ?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 4,
-     "source": "PR TIMES",
-     "title": "ヴァンパイアMMORPG『ヴァンピール(VAMPIR)』複数のサーバーのプレイヤーが集結！精鋭ダンジョン「聖恩の殿堂」 実装",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAyU003LWlkbGp6QjFiRGhOdW5YN1VFNk16QVZ0MzNGUmpEVTJEZUxYRXg4MHN5c1ZsTUg5QTNLNUtVbWtaQ0F0RHpUZlJMZTZ3dXJ1aVRfWWNuOTlQQ3lNeElubFBPMFd1Nnc?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 5,
-     "source": "doope!",
-     "title": "日本語PS5版の発売が迫る“デューン/砂の惑星”サバイバルMMO「Dune: Awakening」のクラフト情報が国内向けにアナウンス",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9qd2Q4S1ctOVpRTWtfTmN3Q0h4RDRMR0w5ZnAwRzNuOTBPSmFxQW9IMUdaUGdST3FzdWdNSW83QmFCcnF0MExLaUtwRQ?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 6,
-     "source": "게임와이",
-     "title": "MMORPG 아키텍트·아키에이지워...한쪽은 '클래스', 한쪽은 '사냥터'",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5wRk8wWmZiSWg3ZUdlTXF1UjBlQkZoZHA4ajBucUo4VVhEOGx5SXRaV2pNVHZWODhIR18yYmM4S1NRNEx4dUptTXBkYXNjNE5xUDZLR2lOVWZYNlhpUUJKUzZ2ajNDT00?oc=5"
+     "headline": "カラフルファンタジーMMORPG『幻想神域 Echo of Cube』新武器「聖剣」実装！期間限定「ハロウィンイベント」開催！",
+     "highlight": "",
+     "image": "https://prtimes.jp/img/87703/237/resize/d87703-237-40b0df03ea10aa01cef7-10.jpg",
+     "image_via": "正文图（2 枚から）",
+     "url": "https://news.infoseek.co.jp/article/prtimes_000000237_000087703/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",

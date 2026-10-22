@@ -82,7 +82,8 @@
   "滑雪": 1,
   "绝区零": 16,
   "日本顶级网球赛事": 9,
-  "dota2": 8
+  "dota2": 8,
+  "MMORPG 新作": 6
  },
  "周杰伦": [
   {
@@ -456,6 +457,44 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "New Open-World MMO-Lite RPG Officially Confirmed for October 28",
+   "highlight": "October 28",
+   "blurb": "A new open-world MMO-lite RPG has been officially confirmed for October 28.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "日本語PS5版の発売が迫る“デューン/砂の惑星”サバイバルMMO「Dune: Awakening」のクラフト情報が国内向けにアナウンス",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "カラフルファンタジーMMORPG『幻想神域 Echo of Cube』新武器「聖剣」実装！期間限定「ハロウィンイベント」開催！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ヴァンパイアMMORPG『ヴァンピール(VAMPIR)』複数のサーバーのプレイヤーが集結！精鋭ダンジョン「聖恩の殿堂」 実装",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]
