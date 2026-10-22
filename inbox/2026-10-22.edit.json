@@ -75,7 +75,7 @@
   "A2O LITE": 167,
   "周杰伦": 9,
   "GTA 6": 98,
-  "漫威电影": 6,
+  "漫威电影": 81,
   "三星手机": 5,
   "Vaundy": 1,
   "あつ森": 1,
@@ -183,50 +183,62 @@
  ],
  "漫威电影": [
   {
-   "headline": "It's Officially The End Of An Era For Brand New Day As Marvel's Spider-Man Returns In 3 Months",
-   "highlight": "Returns In 3 Months",
-   "blurb": "Marvel's Spider-Man returns in three months, marking the end of an era for Brand New Day.",
+   "headline": "Marvel's 'Avengers: Secret Wars' Reportedly Suspended, 2027 MCU Release Highly Unlikely",
+   "highlight": "Reportedly Suspended",
+   "blurb": "Reports say Marvel Studios may scrap or delay the Dec. 2027 Avengers: Secret Wars release, with filming reportedly pushed back.",
    "weight": "lead",
    "refs": [
-    4
+    20,
+    21,
+    23,
+    22
    ],
-   "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/tom-holland-s-spider-man-taking-his-hands-to-his-head-in-spider-man-brand-new-day.jpg"
+   "image": "https://www.disneydining.com/wp-content/uploads/2026/07/Untitled-design-100.jpg"
   },
   {
-   "headline": "Marvel Just Made Iron Man's Death Worse With New Release Before Avengers: Doomsday",
-   "highlight": "Before Avengers: Doomsday",
+   "headline": "Avengers Endgame: Encore made $86 million in its re-release debut",
+   "highlight": "$86 million",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2,
-    3
+    47,
+    26,
+    77
    ]
   },
   {
-   "headline": "Avengers: Armageddon Twist Raises Questions About Sebastian Stan’s MCU Future",
-   "highlight": "Sebastian Stan’s MCU Future",
+   "headline": "VisionQuest Episodes 3 & 4 Reveal FRIDAY, EDITH & Other A.I.'s Are Based On Real MCU Characters",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    9,
+    8,
+    48,
+    36,
+    76
    ]
   },
   {
-   "headline": "Houstonians, assemble! Marvel exhibition coming to Houston with iconic superhero artifacts",
-   "highlight": "Marvel exhibition coming to Houston",
+   "headline": "New ‘Avengers: Doomsday’ Team Cards Split the Film’s Huge Roster Into Four Factions",
+   "highlight": "Four Factions",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    74,
+    12,
+    60,
+    13
    ]
   },
   {
-   "headline": "Just By Following The Comics, The MCU's X-Men Reboot Can Easily Set Up Its Guardians Of The Galaxy Replacement",
-   "highlight": "X-Men Reboot",
+   "headline": "MCU Phase 7 Lineup Leak Reveals 10 Movies, Series and Specials",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    49,
+    39
    ]
   }
  ],
