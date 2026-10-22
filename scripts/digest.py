@@ -256,6 +256,17 @@ def host_in(url, hosts):
     return bool(host) and any(host == h or host.endswith("." + h) for h in (x.lower() for x in hosts))
 
 
+def host_rule_hit(rules, title, urls):
+    """exclude_hosts のどれかに当たるか。文字列 = その網域（と下位網域）まるごと。
+    {host, title} = その網域で、標題が title（正規表現）に当たるものだけ：攻略 wiki の網域（GameWith）は編集部のニュースも出すので、攻略頁の標題の形だけ落とす。
+    収集の時点のリンクは Google の跳转で網址の道（path）がわからないので、道ではなく標題で分ける。"""
+    for r in rules or []:
+        host, pat = (r.get("host"), r.get("title")) if isinstance(r, dict) else (r, None)
+        if host and any(host_in(u, (host,)) for u in urls if u) and (not pat or re.search(pat, title or "")):
+            return True
+    return False
+
+
 def is_spam(title, url=""):
     if url:
         if host_in(url, SPAM_HOSTS):
@@ -344,7 +355,7 @@ def drop_reason(e, item, settings):
             source_in(e.source, [*settings.get("exclude_sources", ["YouTube"]), *(item.get("exclude_sources") or [])]):
         return "exclude_sources"   # 公式チャンネル（YouTube · ILLIT）は関注項が自分で選んだ情報源なので「YouTube」の除外に入れない
     hosts = [*(settings.get("exclude_hosts") or []), *(item.get("exclude_hosts") or [])]
-    if hosts and any(host_in(u, hosts) for u in (e.link, e.url, getattr(e, "site", ""))):
+    if host_rule_hit(hosts, e.title, (e.link, e.url, getattr(e, "site", ""))):
         return "exclude_hosts"
     if any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title, e.link or e.url):
         return "垃圾"
@@ -368,8 +379,14 @@ def audit_match(days=4, only=None):
     # Google の跳转で link・site がない記事（site を inbox に書く前に集めたもの）は網域を判定できない。
     # 同じ出典名の記事で網域がわかったものから「除外の網域の媒体」を推して、見えない分の件数を最後に出す
     hosts = [*(settings.get("exclude_hosts") or []), *(h for i in items for h in i.get("exclude_hosts") or [])]
-    host_src = {d["source"] for path in paths for raw in load_json(path).get("items", []) for d in raw["entries"]
-                if any(host_in(u, hosts) for u in (d.get("link"), d.get("site"), d.get("url")))}
+    rule_hosts = [r.get("host") if isinstance(r, dict) else r for r in hosts]
+    host_src = {}   # 出典名 → 網域がわかった記事の網域（除外の網域のもの）
+    for path in paths:
+        for raw in load_json(path).get("items", []):
+            for d in raw["entries"]:
+                h = next((h for u in (d.get("link"), d.get("site"), d.get("url")) for h in rule_hosts if h and host_in(u, (h,))), None)
+                if h:
+                    host_src.setdefault(d["source"], h)
     blind, blind_ex = 0, {}
     for item in items:
         if only and item["name"] not in only:
@@ -386,8 +403,8 @@ def audit_match(days=4, only=None):
                     gone_n += bool(why)
                     if not why and not e.link and not e.site and _google_jump(e.url):
                         blind += 1
-                        if e.source in host_src:
-                            blind_ex[e.source] = blind_ex.get(e.source, 0) + 1
+                        if e.source in host_src and host_rule_hit(hosts, e.title, (f"https://{host_src[e.source]}/",)):
+                            blind_ex[e.source] = blind_ex.get(e.source, 0) + 1   # 標題の形の規則（攻略頁だけ）も当てる
                     groups.setdefault(hit or "(不再匹配)", []).append(
                         (f"✗ [{why}] " if why else "  ") + e.title[:90])
         print(f"===== {item['name']}（{sum(len(v) for v in groups.values())} 条、✗ {gone_n}）")
@@ -904,7 +921,7 @@ def discover(force=False, taste=None):
             continue
         for e in found[:20]:
             if source_in(e.source, settings.get("exclude_sources", ["YouTube"])) or \
-                    any(host_in(u, settings.get("exclude_hosts") or []) for u in (e.url, e.site)) or \
+                    host_rule_hit(settings.get("exclude_hosts"), e.title, (e.url, e.site)) or \
                     any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title):   # 出典名（前方一致）・網域は収集と同じ
                 continue
             if e.published and e.published < since:
@@ -1353,6 +1370,15 @@ def _item_span(lines, name):
     return (start, len(lines)) if start is not None else None
 
 
+def _yaml_closed(lines):
+    """items.yaml の 1 欄の行（`    key: …` から）が、それだけで YAML として読めるか（[ … ] が閉じているか）。"""
+    try:
+        yaml.safe_load("\n".join(lines))
+        return True
+    except yaml.YAMLError:
+        return False
+
+
 def set_item_fields(text, name, fields):
     """只改 items.yaml 里关注项 name 的这几个字段（None = 删掉），别的字段、注释、顺序都不动。返回新的全文。"""
     lines = text.split("\n")
@@ -1371,6 +1397,10 @@ def set_item_fields(text, name, fields):
             continue
         stop = at + 1   # 这个字段占的行：后面缩进更深的（列表、多行文字），中间的空行也算
         while stop < len(block) and (not block[stop].strip() or len(block[stop]) - len(block[stop].lstrip()) > 4):
+            stop += 1
+        # 複数行の [ … ] / { … }：閉じ括弧の行（`    ]`）は字下げが同じなので上では止まる。値が閉じるまで（間のコメント行も）一緒に置き換える
+        # （閉じ括弧を残すと YAML が壊れ、take_item_requests が依頼を skipped にしていた：滑雪・猫用品・漫威电影 などの match / exclude）
+        while stop < len(block) and not _yaml_closed(block[at:stop]) and re.match(r"^(?:    [\]}#]|\s{5,}|\s*$)", block[stop]):
             stop += 1
         while stop - 1 > at and not block[stop - 1].strip():
             stop -= 1

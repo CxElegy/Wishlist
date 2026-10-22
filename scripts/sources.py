@@ -63,7 +63,7 @@ class Entry:
     image_via: str = ""  # 配图是出刊时补到的：从哪来（og:image、转载 xxx ……）；收集时自带的为空
     link: str = ""       # Google 新闻跳转链接还原出的原文地址（出刊时还原，存回 inbox，下次不用再问 Google）
     hot: bool = True     # Reddit 帖子火不火（reddit_hot）：不火的只算話題度的帖子数，不上版面
-    site: str = ""       # 媒体の網站（Google ニュースの <source url>）。収集の時点ではリンクがまだ Google の跳转なので、exclude_hosts はこれで見る。inbox には書かない
+    site: str = ""       # 媒体の網站（Google ニュースの <source url>）。収集の時点ではリンクがまだ Google の跳转なので、exclude_hosts はこれで見る。inbox にも書く（link を還元する前でも drop_reason・audit-match が網域を見られる）
 
 
 # 同じサイトへの間隔（秒）。収集は関注項ごとに並列（digest.COLLECT_WORKERS）なので、スレッド全部で共有する

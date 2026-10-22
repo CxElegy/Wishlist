@@ -199,15 +199,32 @@ class GenericMatchTest(unittest.TestCase):
                   "Capita shares fall after NHS contract loss", "Capita plc wins £100m contract",   # 英国の Capita plc
                   "Vernal Capital、新ファンドを設立", "Asu Capital Partners invests in AI startup",   # CAPiTA の部分一致
                   "GDP per capita rises in Japan",
-                  "Tim Burton's new film opens in Tokyo"]                                # Burton は雪の語と一緒のときだけ
+                  "Tim Burton's new film opens in Tokyo",                                # Burton は雪の語と一緒のときだけ
+                  # 早割の相手の語に単独の「雪」「リフト」を書かない（化粧品・お菓子・雪まつりの早割）
+                  "【早割】雪肌精 クリスマスコフレ2026 予約開始", "早割 リフトアップ美容液 福袋",
+                  "さっぽろ雪まつり 早割ツアー 2027", "雪見だいふく 早割ギフト"]
         self.assertEqual(keeps("滑雪", titles), [])
+
+    def test_ski_brand_words_next_to_kana(self):
+        """Python の \\b はかな・漢字も単語の字：「CAPiTAの」「Burtonが」に当たるよう (?<![A-Za-z]) で区切る。"""
+        titles = ["CAPiTAの2027モデルが発表", "BurtonがStep On新モデルを発表", "Burton Custom 2027 review",
+                  "八千穂高原スキー場の早割リフト券", "skiシーズンの早割 リフト券"]
+        self.assertEqual(keeps("滑雪", titles), titles)
+        settings, item = real_item("滑雪")
+        e = sources.Entry(title="Ride Benchwarmer vs Huck Knife Pro vs Burton Blossom", url="https://www.reddit.com/r/snowboarding/x",
+                          source="Reddit", summary="", published=NOW)   # 実際の標題（inbox 10-12、要約は「aggressive park board…」）
+        self.assertIsNone(digest.drop_reason(e, item, settings))
 
     def test_mmo_is_a_word(self):
         kept = ["솔: 인챈트부터 도깨비의세계까지, 모바일 MMO 대형 신작 흥행에 매출 반등",   # MMO の後に助詞・ハングルが続いても当たる
                 "Discussion time: Do you think zone chats in MMOs are forces for good, or evil?",
                 "「SteamはMMOなんだ」元Valve社員が語るゲイブの思想"]
         dropped = ["Lose Your Head as Hallows Wake Returns With New Surprises in Diablo Immortal",   # 実際の標題：iMMOrtal
-                   "愛犬と泊まれる宿 pet-friendly accommodation in Hakone"]                          # accoMMOdation
+                   "愛犬と泊まれる宿 pet-friendly accommodation in Hakone",                          # accoMMOdation
+                   # Massively OP の周刊・雑談のコラム（単語の MMO があるので exclude で外す。実際の標題）
+                   "MMO Week in Review: Welcome back to Atreia", "MMO Week in Review: RuneScape 4, Aion 2",
+                   "The Daily Grind: Would you crowdfund an MMO now?", "The Daily Grind: How do you go about finding a guild in MMOs?",
+                   "Make My MMO: Shroud of the Vibecoders"]
         self.assertEqual(keeps("MMORPG 新作", kept + dropped), kept)
 
 
@@ -226,6 +243,42 @@ class NotNewsTest(unittest.TestCase):
             self.assertEqual(digest.drop_reason(e, item, settings), "exclude_hosts", kw)
         e = sources.Entry(title=title, url="https://notgamewith.jp/a", source="x", published=NOW)
         self.assertIsNone(digest.drop_reason(e, item, settings))
+
+    def test_wiki_hosts_drop_only_guide_pages(self):
+        """攻略 wiki の網域（GameWith）は編集部のニュースも出す：網域まるごとではなく、攻略頁の標題の形だけ落とす（2026-10-22 の検査）。
+        収集の時点は Google の跳转で道（/gamedb/…/articles/）がわからないので、標題で分ける。"""
+        google = "https://news.google.com/rss/articles/x"
+        news = [("绝区零", "『ゼンレスゾーンゼロ』Ver.3.3が10月21日(水)にリリース。S級エージェント「フィオニー」と「セヴェリアン」が登場！"),
+                ("MMORPG 新作", "【CBTプレイレビュー】懐かしいMMORPGの手触りとフェローに乗って大空を駆ける楽しさ『Icarus Online』"),
+                ("MMORPG 新作", "CBTプレイレビュー】懐かしいMMORPGの手触りとフェローに乗って大空を駆ける楽しさ『Icarus Online"),
+                ("Astrae Oratio", "『アストラエ・オラティオ』先行プレイレビュー！魔法使いの少女たちが「決闘裁判」で争うノスタルジックな東京を舞台にした新伝奇魔法RPG"),
+                ("MMORPG 新作", "『Icarus Online』の事前キャラクター作成が開始！モンスターを手なずけて大空を飛び回るMMORPG！"),
+                ("MMORPG 新作", "『リネージュ クラシック』日本でのサービス開始が決定！2000年代初期に一世を風靡した大規模MMORPGが現代に復刻"),
+                ("MMORPG 新作", "MMORPG『AION2』×ARグラス『XREAL』コラボキャンペーンが10月20日開始！公式Xと家電量販店で実施")]
+        guide = [("あつ森", "【あつ森】ゴールデントラウトの値段と釣り方・出現時間【あつまれどうぶつの森】"),
+                 ("あつ森", "【あつ森】アップデート最新情報【あつまれどうぶつの森】"),
+                 ("绝区零", "【ゼンゼロ】クラレッタガチャは引くべき？【ゼンレスゾーンゼロ】"),
+                 ("绝区零", "【ゼンレスゾーンゼロ】リセマラ当たりランキング【ゼンゼロ】"),
+                 ("ぐでたま", "【コトダマン】ヨサリ&ぐでたまの評価とステータス"),
+                 ("MMORPG 新作", "【2026年最新】スマホMMORPGのおすすめ無料ゲームアプリまとめ！人気の名作から最新作まで紹介【オンラインゲーム】")]
+        for name, title in news + guide:
+            settings, item = real_item(name)
+            for kw in (dict(url=google, site="https://gamewith.jp"), dict(url="https://gamewith.jp/gamedb/7776/articles/64257")):
+                e = sources.Entry(title=title, source="GameWith", published=NOW, **kw)
+                want = "exclude_hosts" if (name, title) in guide else None
+                self.assertEqual(digest.drop_reason(e, item, settings), want, title)
+
+    def test_esports_news_site_kept_stream_pages_dropped(self):
+        """escorenews は網域で落とさない（ニュースの欄もある）。試合の配信頁は dota2 の exclude「match stream」で落ちる。"""
+        settings, item = real_item("dota2")
+        cases = {"Dota 2 online peak breaks million players after release of Terror Trove, beating TI15 record": None,
+                 'Korb3n: "Collapse will definitely return to Dota 2, don\'t worry"': None,
+                 "XctN - XE, 16 十月 2026 - match stream, live broadcast - DL S30 - Dota 2": "exclude",
+                 "TRE - XG, October 17, 2026 - match stream, live broadcast - BLAST Slam #9 - Dota 2": "exclude"}
+        for title, want in cases.items():
+            e = sources.Entry(title=title, url="https://news.google.com/x", site="https://escorenews.com", source="escorenews.com",
+                              published=NOW)
+            self.assertEqual(digest.drop_reason(e, item, settings), want, title)
 
     def test_crowdfunding_hosts_for_every_item(self):
         """クラファンはどの関注項でもニュースではない：settings 全体の exclude_hosts（猫用品だけでなくテニスにも来ていた）。"""
@@ -338,6 +391,25 @@ class ItemFieldsLimitTest(unittest.TestCase):
                         digest._clean_field(k, i[k])
                     except ValueError as err:
                         self.fail(f"{i['name']} の {k}：{err}")
+
+
+class SetItemFieldsRoundTripTest(unittest.TestCase):
+    def test_every_field_round_trips(self):
+        """設定ページの依頼で keywords / match / exclude を同じ値で書き直しても、items.yaml が壊れず、ほかは変わらない。
+        前は複数行の [ … ] の閉じ括弧の行が残って YAML が壊れ、take_item_requests が依頼を skipped にしていた（21 欄）。"""
+        import yaml
+        text = (ROOT / "items.yaml").read_text(encoding="utf-8")
+        cfg = yaml.safe_load(text)
+        for i in cfg["items"]:
+            for k in ("keywords", "match", "exclude"):
+                if not i.get(k):
+                    continue
+                for value in (digest._clean_field(k, i[k]), [*digest._clean_field(k, i[k])[:3], "新しい語"]):
+                    got = yaml.safe_load(digest.set_item_fields(text, i["name"], {k: value}))
+                    self.assertEqual(got["settings"], cfg["settings"])
+                    for a, b in zip(got["items"], cfg["items"]):
+                        self.assertEqual(a, {**b, k: value} if b["name"] == i["name"] else b, (i["name"], k))
+                    self.assertEqual(len(got["items"]), len(cfg["items"]))
 
 
 class DiscoverFilterTest(unittest.TestCase):

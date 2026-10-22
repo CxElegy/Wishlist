@@ -37,7 +37,8 @@
 #   size         可选，篇幅 S（少，每期 3 条、网页约一行）/ M（中等，5 条，默认）/ L（多，8 条、满满一整屏）。
 #                不用去数据库手动加：新关注项会自动写进 sizes 表；这里改了也会同步过去。在数据库里改的，这里不再改就以数据库为准
 #   exclude_sources 可选，这些来源（媒体名）的条目直接丢掉。前方一致：「YouTube」也丢「YouTube on MSN」（后面接着 ASCII 英数字的不算：「note」不丢「Notebookcheck」，丢「note株式会社」）
-#   exclude_hosts 可选，这些网域（和下级网域）的条目直接丢掉：看还原后的原文链接・链接・Google 新闻给的媒体网站。攻略 wiki・众筹这种「不是新闻」的网站
+#   exclude_hosts 可选，这些网域（和下级网域）的条目直接丢掉：看还原后的原文链接・链接・Google 新闻给的媒体网站。众筹这种「不是新闻」的网站。
+#                写成 {host: 网域, title: 正则} = 这个网域里标题像这个正则的才丢（攻略 wiki 也出新闻：只丢攻略页）
 #   dedupe_others 可选，true = 别的关注项已经收过的同一件事（标题相近），这一项不再重复收
 #   hot_only     可选，true = 只要最火的事：按多少家媒体在报同一件事排序，同一件事合成一条，
 #                头条以外只留至少 4 家在报的；没那么多事就少写（不用 AI 编排时生效）
@@ -79,7 +80,16 @@ settings:
   max_entries_per_item: 30      # 每个关注项每期最多收集几条媒体报道
   max_reddit_per_item: 10       # 每个关注项每期最多收集几条 Reddit 帖子
   exclude_sources: [YouTube, 胡润百富, Unisba Media]   # 所有关注项都丢掉这些来源。胡润百富（hurun.net）2026-10 被黑，批量出色情 / 盗版「在线看」垃圾页。Unisba Media（media.unisba.ac.id）2026-10 被黑：标题 = 随便一条新闻 + 作品名 + 10 位随机码，页面 404
-  exclude_hosts: [gamewith.jp, game8.jp, altema.jp, escorenews.com, readyfor.jp, camp-fire.jp]   # 所有关注项都丢掉这些网域：攻略 wiki（あつ森 10-21〜22 的 6 条里 5 条是 GameWith 的攻略页）・电竞的直播 / 赛程自动页・众筹（出典名会变「ReadyFor(クラウドファンディング)」，按网域丢；猫用品・网球都有）
+  # 所有关注项都丢掉这些网域。写网域 = 整个网域（众筹：出典名会变「ReadyFor(クラウドファンディング)」，按网域丢；猫用品・网球都有）。
+  # {host, title} = 这个网域里标题像 title（正则）的才丢：攻略 wiki 的网站也出编辑部的新闻（GameWith 的新作发表・试玩评测、AI 编辑用过），
+  # 只丢攻略页的标题形（「【あつ森】…【あつまれどうぶつの森】」「【ゼンゼロ】…の評価」）。收集时链接是 Google 的跳转、看不到路径，所以按标题分。
+  # 电竞的直播页（escorenews 的「match stream, live broadcast」）不按网域丢：dota2 的 exclude「match stream」丢，escorenews 的新闻留着
+  exclude_hosts:
+    - readyfor.jp
+    - camp-fire.jp
+    - {host: gamewith.jp, title: &wiki_page '^\s*【[^】]+】(?:.*【[^】]+】(?:\s*[-|｜].{0,30})?\s*$|.*(?:評価|ステータス|攻略|一覧|やり方|方法|引くべき|ランキング|シミュレーター|おすすめ|入手|編成|条件))'}
+    - {host: game8.jp, title: *wiki_page}
+    - {host: altema.jp, title: *wiki_page}
   summarize: false              # true = 用 Claude API 编排报道（需要 ANTHROPIC_API_KEY，按量付费）
                                 # false = 不用 AI，按 priority_keywords 排序、用原标题（完全免费）
   model: claude-haiku-5-5       # 归纳用的模型
@@ -263,7 +273,7 @@ items:
       "MMORPG 新作 リリース", "MMORPG 正式サービス", "MMORPG 출시", "MMORPG 사전예약"
     ]
     match: [MMORPG, 're:(?<![A-Za-z])MMOs?(?![A-Za-z])', 网游, 網遊, 大型多人]   # MMO 只认单独的词（大写）：普通词会命中「accommodation」（带狗住的旅馆）
-    exclude: [私服, 外挂, 代练, 金币, gold farming, 求人]
+    exclude: [私服, 外挂, 代练, 金币, gold farming, 求人, MMO Week in Review, The Daily Grind, Make My MMO]   # 后 3 个：Massively OP 的周刊・闲聊专栏（不是新作的消息）
     news_langs: [zh-TW, en-US, ja-JP, ko-KR]
     max_entries: 40
     max_stories: 6
@@ -324,12 +334,15 @@ items:
       2027 snowboard, snowboard review, snowboard binding, Ogasaka, オガサカ,
       # 季号・泛词・常用词は雪の语と一緒のときだけ（CLAUDE.md「匹配词的写法」）：
       # 「26/27」はサッカー（鹿島アントラーズ 2026/27 J1）・音楽祭（COUNTDOWN JAPAN 26/27）にも当たる。ski は単語だけ（skipper・skincare に当たらない）
-      're:(?is)(?=.*(?<!\d)(?:20)?26/27(?!\d))(?=.*(snowboard|\bski(?:s|ing|er|ers)?\b|スノーボード|スノボ|スキー|ビンディング|ゲレンデ))',
-      # 「早割」「シーズン券」はお歳暮・服（マウンテンパーカー）・化粧品（パウダー）・キャンプ用品（スノーピーク）の早割にも当たる：単独のマウンテン・スノー・パウダーは書かない
-      're:(?is)(?=.*(早割|シーズン券))(?=.*(スキー|リフト|ゲレンデ|雪|\bski(?:s|ing|er|ers)?\b|スノーリゾート|スノーボード|スノボ|マウンテンリゾート|ネコマ))',
-      're:\bCAPiTA\b',   # ブランドの書き方そのまま（区別する）：「Vernal Capital」「per capita」に当たらない
-      're:(?is)(?=.*\bCapita\b)(?=.*(snowboard|スノー|スノボ|\bDOA\b|Mercury|Ultrafear|Defenders of Awesome|\breview\b))',   # 「Capita」は英国の Capita plc にも：雪板の語と一緒のときだけ
-      're:(?is)(?=.*\bBurton\b)(?=.*(snow|スノー|スノボ|\bski(?:s|ing|er|ers)?\b|スキー|雪|binding|ビンディング))'   # Burton は人名・地名にも多い
+      # 英語の語の境は \b ではなく (?<![A-Za-z]) / (?![A-Za-z])：Python の \b はかな・漢字も単語の字にするので「CAPiTAの」「skiシーズン」に当たらない
+      're:(?is)(?=.*(?<!\d)(?:20)?26/27(?!\d))(?=.*(snowboard|(?<![A-Za-z])ski(?:s|ing|er|ers)?(?![A-Za-z])|スノーボード|スノボ|スキー|ビンディング|ゲレンデ))',
+      # 「早割」「シーズン券」はお歳暮・服（マウンテンパーカー）・化粧品（パウダー・雪肌精・リフトアップ）・キャンプ用品・雪まつりの早割にも当たる：
+      # 相手の語は単独のマウンテン・スノー・パウダー・雪・リフトにしない（雪は 雪山・雪質… の具体的な語、リフトは リフト券・リフト運行…）
+      're:(?is)(?=.*(早割|シーズン券))(?=.*(スキー|ゲレンデ|リフト(?:券|料金|運行|営業|乗り場|1日|一日)|雪山|雪質|積雪|降雪|雪上|新雪|(?<![A-Za-z])ski(?:s|ing|er|ers)?(?![A-Za-z])|スノーリゾート|スノーボード|スノボ|マウンテンリゾート|ネコマ))',
+      're:(?<![A-Za-z])CAPiTA(?![A-Za-z])',   # ブランドの書き方そのまま（区別する）：「Vernal Capital」「per capita」に当たらない
+      're:(?is)(?=.*(?<![A-Za-z])Capita(?![A-Za-z]))(?=.*(snowboard|スノー|スノボ|(?<![A-Za-z])DOA(?![A-Za-z])|Mercury|Ultrafear|Defenders of Awesome|(?<![A-Za-z])review(?![A-Za-z])))',   # 「Capita」は英国の Capita plc にも：雪板の語と一緒のときだけ
+      # Burton は人名（Tim Burton）・地名にも多い：雪・板の語か Burton のモデル名と一緒のときだけ（r/snowboarding の比べの帖子は要約に「board」しかない）
+      're:(?is)(?=.*(?<![A-Za-z])Burton(?![A-Za-z]))(?=.*(snow|スノー|スノボ|(?<![A-Za-z])ski(?:s|ing|er|ers)?(?![A-Za-z])|スキー|雪山|雪上|ゲレンデ|binding|ビンディング|(?<![A-Za-z])boards?(?![A-Za-z])|バートン|Step On|(?<![A-Za-z])(?:Custom|Process|Ripcord|Yeasayer|Feelgood|Blossom|Kilroy|Cartel|Malavita)(?![A-Za-z])))'
     ]
     exclude: [
       ジャンプ, W杯, World Cup, 五輪, Olympic, 選手, 選抜, Team, X Games, World Tour,
@@ -1352,7 +1365,7 @@ items:
     subtitle: "Dota 2"
     keywords: ["dota2", "Dota 2", "도타 2", "Dota 2 esports", "Dota 2 大会", "dota2 電競"]
     match: ["dota2", "Dota 2", "도타 2", "刀塔2", "DOTA2", "DotA 2", "Defense of the Ancients 2"]
-    exclude: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂", "Betting", "Prediction", "match stream", "tier list"]   # 后 4 个：赌盘预测・直播页・强度排行
+    exclude: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂", "Betting", "Prediction", "match stream", "tier list"]   # 后 4 个：赌盘预测・直播页（escorenews 等的「match stream, live broadcast」：网域不丢，新闻留着）・强度排行
     news_langs: ["zh-TW", "en-US", "ja-JP", "zh-CN"]
     priority: "电竞赛事的日程和结果、战队消息"
     site: "http://www.dota2.com/"

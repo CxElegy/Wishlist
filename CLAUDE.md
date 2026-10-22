@@ -151,9 +151,10 @@
 - **垃圾站**（被黑的网站批量生成的页面，标题塞作品名骗搜索，会命中 match）：`digest.is_spam` 按标题写法（「在线看」、末尾 10 位随机码 `(gQvzdvbtKG)`）和链接网域（`SPAM_HOSTS`，Unisba Media = `unisba.ac.id`）认；
   收集・整理待ち・出刊・页面・推荐・話題度的报道量都过这一个函数，新发现一个垃圾站就在那里加写法 / 网域，在 `tests/test_match.py` 加真实标题。
 - **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」「最終値下げ」）写进 `exclude`。
-- **不是新闻的网站按网域丢**（2026-10-22）：`exclude_hosts`（settings 全体：gamewith.jp・game8.jp・altema.jp・escorenews.com 的攻略 wiki・比赛自动页、readyfor.jp・camp-fire.jp 众筹；关注项也能各自写），网域和下级网域，看 `e.link`（还原的原文）・`e.url`・Google 新闻的 `<source url>`（`Entry.site`，收集时链接还是 Google 的跳转；inbox 里也写 `site`）。「気になるかも？」的候选也过出典名・网域。
+- **不是新闻的网站按网域丢**（2026-10-22）：`exclude_hosts`（settings 全体：readyfor.jp・camp-fire.jp 众筹 = 整个网域；攻略 wiki 的 gamewith.jp・game8.jp・altema.jp 写成 `{host, title}`，只丢标题是攻略页形状的（「【あつ森】…【あつまれどうぶつの森】」「【ゼンゼロ】…は引くべき？」），编辑部的新闻（新作发表・试玩评测）留着——收集时链接是 Google 的跳转、看不到路径，所以按标题分；escorenews 的比赛直播页由 dota2 的 exclude「match stream」丢，网域不丢；关注项也能各自写），网域和下级网域，看 `e.link`（还原的原文）・`e.url`・Google 新闻的 `<source url>`（`Entry.site`，收集时链接还是 Google 的跳转；inbox 里也写 `site`）。「気になるかも？」的候选也过出典名・网域。
   `exclude_sources`（媒体名）是**前方一致**：「YouTube」也丢「YouTube on MSN」（后面接 ASCII 英数字的不算：「note」不丢「Notebookcheck」，「note株式会社」丢；官方频道 RSS「YouTube · 名字」不丢）。
-  设置页能改的 `keywords` / `match` / `exclude` 上限是 40 / 80 / 80 个（`digest.ITEM_FIELDS`）：items.yaml 里写的要都在上限内，否则店长改一个词就被拒（`tests/test_match.py` 的 ItemFieldsLimitTest）。
+  设置页能改的 `keywords` / `match` / `exclude` 上限是 40 / 80 / 80 个（`digest.ITEM_FIELDS`）：items.yaml 里写的要都在上限内，否则店长改一个词就被拒（`tests/test_match.py` 的 ItemFieldsLimitTest）。`set_item_fields` 换写多行的 `[ … ]` 时连闭括号的行一起换（以前留下 `    ]` 把 YAML 弄坏，依頼被 skipped：SetItemFieldsRoundTripTest 把每一项都写一遍再读）。
+  滑雪的英文词（CAPiTA・Burton・ski）用 `(?<![A-Za-z])…(?![A-Za-z])` 不用 `\b`：Python 的 `\b` 把假名・汉字也算单词字，「CAPiTAの」就不命中。
   这几条和垃圾站・`exclude`・`match` 都在 `digest.drop_reason` 一个函数里，收集和 `audit-match` 用同一个。
 - **情報源（2026-10-22，用户定的：都要，不用 AI 所以 CPU・时间可以多用）**：Google・Bing・Reddit・Steam・RSS 之外，`sources.gdelt`（世界 65 言語のニュース索引，读者的语言，5 秒 1 回・429 重试，重试后还被拒这次就不再问（2026-10-22 本番：Actions 的共享 IP 几乎都被拒，空等 10 分钟），`use` 有 google 的关注项，每项前 2 个词）、
   `sources.youtube_channel`（公式チャンネルの RSS，チャンネル = items.yaml 的 `youtube` 或 `wiki` → Wikidata P2397，缓存 `state/youtube_channels.json` 30 天）、
