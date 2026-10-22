@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "b8e6385b80d7",
+ "edit_sig": "f7414bdf1342",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -281,31 +281,39 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 2,
-     "source": "GameWith",
-     "title": "【あつ森】ゴールデントラウトの値段と釣り方・出現時間【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBTelpXQXNQUDRkamNRaFFweTZRMDFSNTBJME5GSDJmUGpfSmFEX2hsN2dRbXg5WDlOWERaQWdKOXJhc1QzdkxZdEY1eFVnbmYwQ3g1Z3prNGhHM1d3?oc=5"
+     "headline": "【あつ森】ゴールデントラウトの値段と釣り方・出現時間【あつまれどうぶつの森】",
+     "highlight": "",
+     "image": "https://img.gamewith.jp/assets/images/games/covers/50cbe0a5b2198fa7f738269d38eb2672.png",
+     "image_via": "JSON-LD",
+     "url": "https://gamewith.jp/atsumori/article/show/192278",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-18",
-     "n": 3,
-     "source": "GameWith",
-     "title": "【あつ森】すずらん(スズラン)の咲かせ方と増やし方【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1RMnZyeU1CaDVrbGU4LW80b2Z6QUVCSmtiRGNKUlU1b2M2bGJFb0ZaczcxaDIxUEVRVnk4dU5XanVfRmNPU1YtUGhzZlA2SWE5dm1BMFBNRFp1ZDcw?oc=5"
+     "headline": "【あつ森】すずらん(スズラン)の咲かせ方と増やし方【あつまれどうぶつの森】",
+     "highlight": "",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/192853.png?date=1591177211",
+     "image_via": "JSON-LD",
+     "url": "https://gamewith.jp/atsumori/article/show/192853",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-18",
-     "n": 4,
-     "source": "GameWith",
-     "title": "【あつ森】柵のリメイクとレシピ入手方法・種類一覧【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBmc3h4LWg2NmdwMGRlMmpQdERQZ3lNMXduZFZWNXNsMXJQRW9rWHI2WHFXdXBLellxZWNJbmVpRzlHZXByLWpFdWFGcFc1a2VKQVhQY3JnbTBUUVFf?oc=5"
+     "headline": "【あつ森】柵のリメイクとレシピ入手方法・種類一覧【あつまれどうぶつの森】",
+     "highlight": "",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/195856.png?date=1591173371",
+     "image_via": "JSON-LD",
+     "url": "https://gamewith.jp/atsumori/article/show/195856",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
