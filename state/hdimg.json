@@ -667,6 +667,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/shiobara.jpg": {
+  "w": 1962,
+  "h": 1308,
+  "target": 1280,
+  "v": 3
+ },
  "https://doope.jp/media/26q4/img2849_01.jpg": {
   "w": 700,
   "h": 394,
@@ -2933,6 +2939,18 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.g6b_rhZn6W-ALBdtks4u6Q&pid=News&w=1200": {
+  "w": 100,
+  "h": 100,
+  "target": 720,
+  "v": 3,
+  "local": "pics/98fcb44f8319f18a.webp",
+  "out": [
+   560,
+   174
+  ],
+  "why": "Bing の小さい縮小画像"
+ },
  "https://www.bing.com/th?id=ONUT.iAT7IhEzZ5ZerNWSk8uOWg&pid=News&w=1200": {
   "w": 493,
   "h": 700,
@@ -3233,6 +3251,12 @@
    851
   ],
   "why": "看不清"
+ },
+ "https://www.nikkei.com/nkd/disclosure/tdnr/20261020553470/thumbnail/?ttype=ogp": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
  },
  "https://www.nishinippon.co.jp/uploads/image/1950882/sns_8124789914_org.jpg": {
   "w": 1200,

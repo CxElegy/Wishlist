@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "f7414bdf1342",
+ "edit_sig": "a6aded89ee5c",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -75,40 +75,47 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 2,
-     "source": "InTheSnow",
-     "title": "Best Ski Boots 2026/27: Our InTheSnow Verdicts",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAyNlVqNnFhRHI4UmhESXFXZE11TXZWN2NQU0Q0amRodXA1MHlmVjJMeVZia3dKdlpnc3p5OF9NUTcyQWo5OS1ieFNwZEVBYzM5Ri10Y01uSFBfZw?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 3,
-     "source": "DMKsnowboard",
-     "title": "ハンターマウンテン塩原＆たんばらスキーパーク、平日限定で小学生以下のリフト券が無料に",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9MOXBxOXRxVUlwOE5mcnRDbjlPQ1hjbzZUMUpWSW52bUxKQXE4ZEpYSldEMFBGMTJVZGxoUzd5cFZYbURhc3d2OUs2NjRrYTVzV2RrMTZPbm13aHFVcWd0NmNFemxheWlrS3ZSOEM3U1AzdC11bmc?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 4,
-     "source": "Travelling for Business",
-     "title": "Portetta unveils expanded mountain experiences for winter 2026/27",
-     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbHBhQlZKeXpvVkZZUlVvdWo0SDRKZmZub2g4NjlpYzF1a2pHU1ZFUllhUUt5amtGV0dmWldZQl9WN01CZHptZG1kR0xPdmplTXZBVHlUWXVlUzg5SnJnTTY5NHpWY1d4MS0tVEdOQ3psOVB6ekczWXNnVjB2M0R1UzBKdE0zdlRUVWRpSTR2YkJtQWEtMkdNbVdZTk9TSTlkU2JXanRxaHZXLV8tSTFoMy1pcHFBcDg?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
      "blurb": "",
      "date": "2026-10-21",
+     "headline": "ハンターマウンテン塩原＆たんばらスキーパーク、平日限定で小学生以下のリフト券が無料に",
+     "highlight": "小学生以下のリフト券が無料",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/shiobara.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/kids-free-lift-tickets-weekdays-2026-2027/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "Best Ski Boots 2026/27: Our InTheSnow Verdicts",
+     "highlight": "",
+     "image": "https://cdn.inthesnow.com/uploads/2026/10/salomon-s-pro-alpha-c-boa-ski-boots-2026-27-hero.jpg",
+     "image_via": "og:image",
+     "url": "https://www.inthesnow.com/gear/best-ski-boots/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
      "headline": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
-     "highlight": "Never Summer Proto Swift DT 2027",
+     "highlight": "",
      "image": "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg",
-     "image_via": "AI 挑选",
+     "image_via": "og:image",
      "url": "https://www.boardoftheworld.com/review-never-summer-proto-swift-dt/",
-     "weight": "lead"
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "Portetta unveils expanded mountain experiences for winter 2026/27",
+     "highlight": "",
+     "image": "https://travellingforbusiness.co.uk/wp-content/uploads/2026/10/DSCF5829-scaled.jpg",
+     "image_via": "og:image",
+     "url": "https://travellingforbusiness.co.uk/luxury-travel/portetta-unveils-expanded-mountain-experiences-for-winter-2026-27/",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",

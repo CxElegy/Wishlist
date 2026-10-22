@@ -79,7 +79,7 @@
   "三星手机": 55,
   "Vaundy": 1,
   "あつ森": 4,
-  "滑雪": 1,
+  "滑雪": 4,
   "绝区零": 16,
   "日本顶级网球赛事": 9,
   "dota2": 8,
@@ -371,14 +371,40 @@
  ],
  "滑雪": [
   {
-   "headline": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
-   "highlight": "Never Summer Proto Swift DT 2027",
+   "headline": "ハンターマウンテン塩原＆たんばらスキーパーク、平日限定で小学生以下のリフト券が無料に",
+   "highlight": "小学生以下のリフト券が無料",
    "blurb": "",
-   "weight": "lead",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Best Ski Boots 2026/27: Our InTheSnow Verdicts",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
-   ],
-   "image": "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg"
+   ]
+  },
+  {
+   "headline": "Portetta unveils expanded mountain experiences for winter 2026/27",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "绝区零": [
