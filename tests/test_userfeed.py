@@ -112,6 +112,22 @@ class Rules(unittest.TestCase):
         self.assertTrue(self.hits("DON'T SWITCH", "游戏", "Don’t Switch gets a Steam release date"))
         self.assertEqual(userfeed.board_item("Call of Duty®: Modern Warfare® 4", "游戏", ["en-US"])["keywords"][0], "Call of Duty: Modern Warfare 4")
 
+    def test_context_words_need_word_edges(self):
+        # ジャンルの語は語の途中で当てない（upcoming の PC・opened の open・switching の Switch）・普通の語は入れない
+        for title in ("Markets head the wrong way as upcoming rate decision looms",
+                      "Shop opened the wrong way, says owner", "Switching the wrong way: an update on the patch to city law",
+                      "The wrong way to play the match this season"):
+            self.assertFalse(self.hits("The Wrong Way", "游戏", title), title)
+        self.assertTrue(self.hits("The Wrong Way", "游戏", "The Wrong Way: new PlayStation trailer"))
+        self.assertTrue(self.hits("The Wrong Way", "游戏", "「The Wrong Way」の体験版が配信"))
+        self.assertFalse(self.hits("Meat Train", "出行", "Meat train derails, hotelier says"))   # hotelier の hotel
+
+    def test_number_only_name(self):
+        self.assertFalse(self.hits("2027", "游戏", "2027 budget plan announced"))
+        self.assertTrue(self.hits("2027", "游戏", "2027 gets a Steam release date"))
+        self.assertFalse(self.hits("1999", None, "In 1999 the city changed"))   # 板块がなくても数字だけでは当てない
+        self.assertTrue(self.hits("1999", None, "1999 the anime gets a trailer"))
+
     def test_season_suffix_and_digits(self):
         it = userfeed.board_item("薬屋のひとりごと 第2期", "影视", ["ja-JP"])
         self.assertIn("薬屋のひとりごと", it["keywords"])
@@ -154,7 +170,9 @@ class Plan(unittest.TestCase):
         todo, keep, _ = userfeed.plan(users, [], [], NOW)
         self.assertEqual(keep[userfeed.account_of("a@example.com")], {"広島旅行", "あ" * 80})   # SQL の my_boards と同じ：trim・80 字・同じ名前は 1 つ
         sql = (ROOT / "db" / "user_boards.sql").read_text(encoding="utf-8")
-        self.assertIn("left(btrim(x.value ->> 'name'), 80)", sql)
+        self.assertIn("left(btrim(x.value ->> 'name', E' \\t\\n\\r\\f\\x0b\\u3000\\u00a0'), 80)", sql)
+        self.assertEqual(userfeed.pick_name("\u3000広島旅行\t"), "広島旅行")   # 全角の空白も（SQL も同じ文字）
+        self.assertEqual(userfeed.TRIM, " \t\n\r\f\x0b\u3000\u00a0")
         self.assertIn("distinct on (lower(regexp_replace(r.name, '\\s', '', 'g')))", sql)
 
     def test_recent_skipped(self):
@@ -273,11 +291,38 @@ class Run(unittest.TestCase):
             if item["name"] == "だめなもの":
                 raise RuntimeError("boom")
             return [story(1, "よいものの記事")]
-        res = self.run_with(db, collect)
+        logs = []
+        res = self.run_with(db, collect, logs)
         self.assertEqual(res["failed"], 1)
         got = {r["item"]: r for r in db.written()}
         self.assertEqual(got["よいもの"]["found"], 1)
-        self.assertNotIn("だめなもの", got)   # 失敗は探した印を付けない（「まだ見つかっていません」と出さない・次の回にもう一度）
+        self.assertNotIn("fails", got["よいもの"])   # 列のそろった行はまとめて書く（失敗の行とは分ける）
+        self.assertEqual((got["だめなもの"]["fails"], got["だめなもの"]["stories"]), (1, []))   # 失敗は fails +1（網页は「集めています」のまま）
+        self.assertEqual(got["だめなもの"]["checked_at"], NOW.isoformat(timespec="seconds"))
+        more = [{"email": "a@example.com", "prefs": {"picks": users[0]["prefs"]["picks"] + [{"name": "新しいもの"}]}}]
+        todo, _, _ = userfeed.plan(more, [], db.written(), NOW + dt.timedelta(hours=2))
+        self.assertEqual(todo[0]["name"], "新しいもの")   # 次の回、失敗したものはまだ探していないものの後ろ（毎回 1 人分の枠を取り続けない）
+        self.assertFalse(any("だめなもの" in x or "よいもの" in x or "boom" in x for x in logs))   # ログに選んだものの名前・エラーの本文を出さない
+        self.assertTrue(any("取れなかった（RuntimeError）" in x for x in logs))
+
+    def test_network_error_is_failure(self):
+        users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "もの"}]}}]
+        db = FakeDB(users)
+        orig = db.__call__
+
+        def flaky(path, body=None, prefer=None, method=None):
+            if path.startswith("user_boards?on_conflict"):
+                raise TimeoutError("timed out")
+            return orig(path, body, prefer, method)
+        res = self.run_with(flaky, lambda item, settings: [story(1, "ものの記事")])
+        self.assertEqual(res["bad"], 1)   # つながらない・時間切れ（OSError）も 1 行ずつ書き直して数える（全部を落とさない）
+
+    def test_logs_have_no_pick_names(self):
+        users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "秘密の旅行"}]}}]
+        logs = []
+        self.run_with(FakeDB(users), lambda item, settings: [], logs)
+        self.assertTrue(logs)
+        self.assertFalse(any("秘密の旅行" in x for x in logs))
 
     def test_paging_reads_everyone(self):
         users = [{"email": f"u{n}@example.com", "prefs": {"picks": [{"name": f"もの{n}", "sec": "其他"}]}} for n in range(7)]
@@ -339,6 +384,8 @@ class Sql(unittest.TestCase):
     def test_my_boards_states_and_guards(self):
         sql = (ROOT / "db" / "user_boards.sql").read_text(encoding="utf-8")
         for w in ("'wait'", "'none'", "'limit'", "coalesce(p.sec, b.sec)", "last_sign_in_at is not null",
+                  f"b.fails between 1 and {userfeed.FAIL_SHOW - 1} then 'wait'", "a.banned_until < now()",
+                  "add column if not exists fails int not null default 0",
                   "grant execute on function public.userfeed_users(int, int) to service_role",
                   "revoke all on function public.userfeed_users(int, int) from public, anon, authenticated",
                   "v := v - 'picks'"):
@@ -347,8 +394,30 @@ class Sql(unittest.TestCase):
 
     def test_page_reads_my_boards(self):
         import render
-        for w in ("rpc('my_boards')", "今日の主なニュース", "気になるかも？", "まだ記事が見つかっていません", "30 個まで", "wl-cards"):
+        for w in ("rpc('my_boards')", "今日の主なニュース", "気になるかも？", "まだ記事が見つかっていません", "30 個まで", "wl-cards",
+                  "'&pick='", "new Event('wl-nav')", "R._wlmb", "clearInterval(R._wlub);R._wlmb=null"):
             self.assertIn(w, render.AUTH_JS)
+        self.assertIn("document.addEventListener('wl-nav'", render.NAV_JS)   # 目次は足した駅を数え直す
+        for w in ("いま集めに行っています", "1〜2 時間", "👍👎 を押すと"):   # できないことを約束しない
+            self.assertNotIn(w, render.AUTH_JS)
+        self.assertIn('html[data-mine="2"] .mastwish', render.AUTH_CSS)   # 店長の欲しい物の件数・話題度・👍👎 はお客さまのページに出さない
+        import welcome
+        self.assertIn("q.get('pick')", welcome.render_js() if hasattr(welcome, "render_js") else (ROOT / "scripts" / "welcome.py").read_text(encoding="utf-8"))
+
+    @unittest.skipUnless(__import__("shutil").which("node"), "node がない")
+    def test_js_shop_hit_same_as_python(self):
+        # 網页の shopHit（AUTH_JS）と userfeed.shop_hit が同じ答えを出す（1 つの規則）
+        import json, re, subprocess
+        import render
+        js = render.AUTH_JS
+        src = "\n".join(re.search(p, js, re.S).group(0) for p in (r"function norm\(s\)\{.*?\}", r"function an\(c\)\{.*?\}",
+                                                                 r"function shopHit\(a,b\)\{.*?return false;\}"))
+        cases = [["ちいかわ", "ちいかわ"], ["ちいかわ", "ちいかわ グッズ"], ["GTA 6", "gta6"], ["ILLIT", "ILLIT ライブ"], ["ちいかわ", "広島旅行"],
+                 ["猫用品", "犬"], ["FROM", "From Software"], ["FROM", "FROM"], ["AB", "xab"], ["ab", "ab cd"], ["", "x"], ["Ｆｏｏ", "foo"],
+                 ["the wrong way", "The Wrong Way"], ["GTA", "GTA6"], ["6", "GTA 6"]]
+        out = subprocess.run(["node", "-e", src + f";console.log(JSON.stringify({json.dumps(cases)}.map(c=>shopHit(c[0],c[1]))))"],
+                             capture_output=True, text=True, check=True).stdout
+        self.assertEqual(json.loads(out), [userfeed.shop_hit(a, b) for a, b in cases])
         self.assertIn("/^https?:\\/\\//.test(u)", render.AUTH_JS)   # 網址は http(s) だけ
 
 

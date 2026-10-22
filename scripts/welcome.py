@@ -265,6 +265,7 @@ JS = r"""
   let sess = null; try { sess = JSON.parse(localStorage.getItem('wl-auth') || 'null'); } catch (_) {}
   const addMode = /[?&]add\b/.test(location.search) && !!(sess && sess.access_token);
   let have = [];   // もう選んでいるもの（足すときは残したまま）
+  let haveP = Promise.resolve();
   if (me && me.name) {
     if (!stay && !addMode) { location.replace(C.shop); return; }
     const b = $('.back-on'); b.classList.add('on'); $('b', b).textContent = me.name;
@@ -297,9 +298,17 @@ JS = r"""
     document.documentElement.classList.add('adding');
     $('#s-genre .q').textContent = '足したいジャンルは？';
     $('#s-check .q').textContent = '足すもの'; $('#s-check .qs').textContent = '店長がこれから集めに行きます。集まるまで、版面に「集めています」と出ます。';
-    history.replaceState({ id: 'genre' }, '', location.pathname + location.search + '#genre'); show('genre', false);
-    arpc('my_page').then(p => { have = ((p && p.prefs && p.prefs.picks) || []).filter(x => x && x.name);
-      have.forEach(x => { const g = $('.genre[data-k="' + CSS.escape(x.sec || '') + '"]'); if (g && g.getAttribute('aria-pressed') !== 'true') g.click(); }); }).catch(() => {});
+    // 「気になるかも？」の「＋ X を追いかける」から（?add&pick=X&s=板块）：X を選んだ状態で確認の画面へ（カードを探し直させない）
+    const q = new URLSearchParams(location.search), pk = (q.get('pick') || '').trim().slice(0, 80);
+    if (pk) {
+      const c = C.cards.find(x => String(x.name).toLowerCase() === pk.toLowerCase()) || { name: pk, sec: C.secs[q.get('s')] ? q.get('s') : '其他', img: '' };
+      st.genres.add(c.sec); st.liked = [c];
+      history.replaceState({ id: 'check' }, '', location.pathname + location.search + '#check'); show('check', false);
+    } else { history.replaceState({ id: 'genre' }, '', location.pathname + location.search + '#genre'); show('genre', false); }
+    // 今までのもの（足すときは残す）。読めるまで「足す」は待つ：読めないまま保存すると、今までのものが消える
+    haveP = arpc('my_page').then(p => { have = ((p && p.prefs && p.prefs.picks) || []).filter(x => x && x.name);
+      have.forEach(x => { const g = $('.genre[data-k="' + CSS.escape(x.sec || '') + '"]'); if (g && g.getAttribute('aria-pressed') !== 'true') g.click(); }); });
+    haveP.catch(() => {});
   }
   $$('[data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
   $$('.bar [data-back]').forEach(b => b.addEventListener('click', () => history.back()));
@@ -427,9 +436,9 @@ JS = r"""
                     picks: keep.map(c => ({ name: c.name, sec: c.sec })), from: 'welcome' };
     const b = $('#to-done'), err = $('#signup-err'); b.disabled = true; err.textContent = '';
     if (addMode) {   // 足す：今までのもの＋選んだもの（同じ名前は 1 つ）→ 自分のページへ
-      const seen = new Set(have.map(x => String(x.name).toLowerCase()));
+      haveP.then(() => { const seen = new Set(have.map(x => String(x.name).toLowerCase()));
       const list = have.concat(prefs.picks.filter(x => !seen.has(String(x.name).toLowerCase())));
-      arpc('my_keywords_set', { p_picks: list }).then(() => location.replace(C.shop + '?added=' + encodeURIComponent(prefs.picks.map(x => x.name).join('、'))))
+      return arpc('my_keywords_set', { p_picks: list }); }).then(() => location.replace(C.shop + '?added=' + encodeURIComponent(prefs.picks.map(x => x.name).join('、'))))
         .catch(e => { b.disabled = false; err.textContent = /login/.test(e.message) ? 'もう一度ログインしてください' : '保存できませんでした。もう一度押してください'; });
       return;
     }

@@ -29,11 +29,12 @@ import sitedir
 import taxonomy
 
 MAX_BOARDS_PER_USER = 30   # 1 人が持てる「店長にない版面」。これを超えた分は state = limit の行（網页で「上限」と出す）。選んだ順の先頭から
-PER_USER_PER_RUN = 3       # 1 人・1 回で集める版面（残りは次の回。全員の 1 つ目から順に）
+PER_USER_PER_RUN = 5       # 1 人・1 回で集める版面（残りは次の回。全員の 1 つ目から順に）
 MAX_NEW_USERS_PER_RUN = 15  # まだ 1 つも集めていない人を 1 回で何人まで（登録の古い順）
 MAX_STORIES = 12           # 1 版面に残す記事（新しい順）
 KEEP_DAYS = 14             # これより古い記事は版面から落とす（日付のない記事は最初に見つけた日 seen で数える）
 MAX_BOARDS_PER_RUN = 60    # 1 回で集める版面（同じ名前・同じ言語は 1 回にまとめた数）
+FAIL_SHOW = 5              # 続けてこの回数取れなかった 0 件の版面は「まだ見つかっていません」（それまでは「集めています」。db/user_boards.sql の my_boards と同じ数）
 DEADLINE_MIN = 8           # 1 回の時間の上限
 JOB_LIMIT_MIN = 40         # digest.yml の timeout-minutes（JOB_T0 から数えて、これの JOB_MARGIN_MIN 前には終える）
 JOB_MARGIN_MIN = 3
@@ -48,17 +49,19 @@ NEWS_LANG = {"ja": "ja-JP", "en": "en-US", "zh-Hans": "zh-CN", "zh-Hant": "zh-TW
 LANG_CODE = {"ja-JP": "ja", "en-US": "en", "zh-CN": "zh", "zh-TW": "zh", "ko-KR": "ko"}
 DEFAULT_LANGS = ["ja-JP"]   # 集めていない言語だけを選んだ人は、サイトの主言語（日本語）で
 
-# 英語の名前（Steam のカードの The Wrong Way・MEAT TRAIN）は普通の語のことが多い：数字のない短い名前は、板块の語（sections.yaml の words）
-# か下の語が同じ記事に出てくるときだけ（CLAUDE.md「匹配词」：泛词・普通の語は主題の語と一緒に）
+# 英語の名前（Steam のカードの The Wrong Way・MEAT TRAIN）は普通の語のことが多い：数字のない短い名前は、その板块の下の語が
+# 同じ記事に出てくるときだけ（CLAUDE.md「匹配词」：泛词・普通の語は主題の語と一緒に）。
+# 語は前後が英字でないときだけ（「upcoming」の PC・「opened」の open に当てない）。普通の文にも出る語（update・open・live・PC・game・match・season・
+# release・store・tour…）は入れない。数字だけの名前（「2027」）は、板块がなくても下の語のどれかと一緒のときだけ
 SHORT_ASCII = 14
 CONTEXT_EXTRA = {
-    "游戏": r"Steam|PS5|PS4|PlayStation|Nintendo|Switch|Xbox|PC|trailer|gameplay|DLC|update|patch|early access|indie|発売|配信|体験版|アップデート|インディー|游戏|遊戲|게임",
-    "影视": r"season|episode|trailer|series|film|anime|manga|Netflix|放送|配信|予告|映画|アニメ|漫画",
-    "演出": r"album|single|tour|live|concert|MV|music|ライブ|ツアー|新曲|アルバム",
-    "运动": r"match|game|season|league|cup|試合|大会",
-    "好物": r"collab|release|launch|limited|store|コラボ|発売|限定|新作|グッズ",
-    "生活": r"recipe|cafe|shop|open|オープン|新メニュー",
-    "出行": r"travel|trip|tour|hotel|museum|exhibition|旅行|観光|展示|開催",
+    "游戏": r"Steam|PS5|PS4|PlayStation|Nintendo|Xbox|trailer|gameplay|DLC|early access|indie game|video ?game|発売|配信|体験版|アップデート|インディー|ゲーム|游戏|遊戲|게임",
+    "影视": r"episode|trailer|anime|manga|Netflix|放送|予告|映画|アニメ|漫画|ドラマ",
+    "演出": r"album|concert|MV|music video|ライブ|ツアー|新曲|アルバム|コンサート",
+    "运动": r"league|tournament|championship|試合|大会|リーグ",
+    "好物": r"collab|limited edition|コラボ|発売|限定|新作|グッズ",
+    "生活": r"recipe|cafe|オープン|新メニュー|レシピ",
+    "出行": r"travel|hotel|museum|exhibition|旅行|観光|展示|開催",
 }
 TM = re.compile(r"[®™©℠]")
 SEASON = re.compile(r"\s*(?:第\s*\d+\s*(?:期|シーズン|部|章)|第[一二三四五六七八九十]+(?:期|部)|(?:the\s+)?\d+(?:st|nd|rd|th)\s+season|season\s*\d+"
@@ -101,9 +104,12 @@ def account_of(email):
     return "u_" + hashlib.md5(str(email or "").strip().lower().encode("utf-8")).hexdigest()[:16]
 
 
+TRIM = " \t\n\r\f\v\u3000\u00a0"   # db/user_boards.sql の my_boards() の btrim と同じ文字（全角の空白も）
+
+
 def pick_name(name):
-    """prefs.picks の name → 行の item（db/user_boards.sql の my_boards() と同じ：前後の空白を取って 80 字まで）。"""
-    return str(name or "").strip()[:80]
+    """prefs.picks の name → 行の item（db/user_boards.sql の my_boards() と同じ：前後の空白 TRIM を取って 80 字まで）。"""
+    return str(name or "").strip(TRIM)[:80]
 
 
 def news_langs(prefs):
@@ -135,8 +141,14 @@ def _ascii_token(t):
 
 
 def _context(sec):
-    words = [w for w in (str((taxonomy.SECTIONS.get(sec) or {}).get("words") or ""), CONTEXT_EXTRA.get(sec, "")) if w]
-    return "|".join(words)
+    """板块の語（前後が英字でないときだけ当たる形）。板块がなければ空。sections.yaml の words（板块を決めるための語：character・food・toy…）は
+    普通の記事にも出るので使わない（CONTEXT_EXTRA だけ）。"""
+    w = CONTEXT_EXTRA.get(sec, "")
+    return f"(?<![A-Za-z])(?:{w})(?![A-Za-z])" if w else ""
+
+
+def _any_context():
+    return f"(?<![A-Za-z])(?:{'|'.join(CONTEXT_EXTRA.values())})(?![A-Za-z])"
 
 
 def match_terms(name, sec=None):
@@ -150,7 +162,11 @@ def match_terms(name, sec=None):
     if name.isascii():
         phrase = r"(?<![A-Za-z0-9])" + SEP.join(re.escape(t) for t in toks) + r"(?![A-Za-z0-9])"
         ctx = _context(sec)
-        if not any(c.isdigit() for c in name) and len(norm(name)) <= SHORT_ASCII and ctx:
+        if not any(c.isalpha() for c in name):   # 数字・記号だけ（「2027」）：年号などに当たるので、必ずジャンルの語と一緒に
+            ctx = ctx or _any_context()
+        elif any(c.isdigit() for c in name) or len(norm(name)) > SHORT_ASCII:
+            ctx = ""
+        if ctx:
             return [f"re:(?s)(?=.*(?i:{phrase}))(?=.*(?i:{ctx}))"]
         return [f"re:(?i){phrase}"]
     if len(toks) == 1:
@@ -360,6 +376,9 @@ def shop_boards(path=None):
     return out
 
 
+DB_ERRORS = (RuntimeError, OSError)   # digest.supabase は HTTP の失敗を RuntimeError に。つながらない・時間切れ（URLError・TimeoutError）は OSError
+
+
 def _q(v):
     return urllib.parse.quote(str(v), safe="")
 
@@ -373,7 +392,7 @@ def fetch_all(db, path, body=None):
                 got = db(f"{path}&limit={PAGE}&offset={offset}")
             else:
                 got = db(path, {**body, "p_limit": PAGE, "p_offset": offset})
-        except RuntimeError:
+        except DB_ERRORS:
             if offset == 0:
                 raise
             return out, False
@@ -397,22 +416,34 @@ def _clean_row(r):
     return fix(r)
 
 
+def _why(err):
+    """ログに出す失敗の理由：種類と HTTP の番号だけ（Supabase・検索の返事には選んだものの名前が入ることがある。ログは公開の Actions と
+    管理ページのライブログに出るので、お客さまの選んだものは書かない）。"""
+    m = re.match(r"HTTP \d+", str(err))
+    return f"{type(err).__name__}{' ' + m.group(0) if m else ''}"
+
+
 def upsert(db, rows, log):
-    """200 行ずつ書く。まとめて断られたら 1 行ずつ書き直す（壊れた 1 行で後ろの人の版面を止めない）。→ 書けなかった行の数"""
+    """200 行ずつ書く。まとめて断られたら 1 行ずつ書き直す（壊れた 1 行で後ろの人の版面を止めない）。→ 書けなかった行の数。
+    PostgREST はまとめて書く行の列がそろっていないと断るので、列の組ごとに分けて書く（失敗の行だけにある fails など）。"""
     bad = 0
-    for i in range(0, len(rows), UPSERT_BATCH):
-        part = [_clean_row(r) for r in rows[i:i + UPSERT_BATCH]]
-        try:
-            db("user_boards?on_conflict=account,item", part, "resolution=merge-duplicates,return=minimal")
-            continue
-        except RuntimeError:
-            pass
-        for r in part:
+    groups = {}
+    for r in rows:
+        groups.setdefault(tuple(sorted(r)), []).append(r)
+    for same in groups.values():
+        for i in range(0, len(same), UPSERT_BATCH):
+            part = [_clean_row(r) for r in same[i:i + UPSERT_BATCH]]
             try:
-                db("user_boards?on_conflict=account,item", [r], "resolution=merge-duplicates,return=minimal")
-            except RuntimeError as err:
-                bad += 1
-                log(f"  {r['item']}：書けなかった（{str(err)[:120]}）")
+                db("user_boards?on_conflict=account,item", part, "resolution=merge-duplicates,return=minimal")
+                continue
+            except DB_ERRORS:
+                pass
+            for r in part:
+                try:
+                    db("user_boards?on_conflict=account,item", [r], "resolution=merge-duplicates,return=minimal")
+                except DB_ERRORS as err:
+                    bad += 1
+                    log(f"  1 行が書けなかった（{_why(err)}）")
     return bad
 
 
@@ -442,12 +473,11 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
     if users is None:
         log("お客さまの記事集め：Supabase の鍵がないので飛ばす")
         return res
-    rows, rows_all = fetch_all(db, "user_boards?select=account,item,sec,state,stories,checked_at,updated_at&order=account.asc,item.asc")
+    rows, rows_all = fetch_all(db, "user_boards?select=*&order=account.asc,item.asc")   # * ：fails（後から足した列）がまだない DB でも読める
     rows = rows or []
     todo, keep, limits = plan(users, shop_names, rows, now)
-    log(f"お客さまの記事集め：{len(users)} 人・集める版面 {len(todo)}"
-        + (f"（{'、'.join(g['name'] for g in todo[:12])}{' ほか' if len(todo) > 12 else ''}）" if todo else "")
-        + (f"・上限を超えた {len(limits)}" if limits else ""))
+    # ログは公開の Actions と管理ページのライブログに出る：数だけ（お客さまの選んだものの名前は書かない。LOGIN.md 第 2 步）
+    log(f"お客さまの記事集め：{len(users)} 人・集める版面 {len(todo)}" + (f"・上限を超えた {len(limits)}" if limits else ""))
     if dry_run:
         return {**res, "boards": len(todo), "limit": len(limits)}
     left = budget_sec() - (time.monotonic() - started)
@@ -461,7 +491,7 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
         try:
             return collect(board_item(g["name"], g["sec"], g["langs"]), settings)
         except Exception as err:  # noqa: BLE001  1 版面の失敗で全体を止めない
-            log(f"  {g['name']}：取れなかった（{type(err).__name__}: {str(err)[:120]}）")
+            log(f"  版面 {todo.index(g) + 1}/{len(todo)}：取れなかった（{_why(err)}）")
             return None
     got, cut = digest.run_parallel(one, todo, WORKERS, max(30, left), key=lambda g: g["key"]) if todo else ({}, [])
     late_n = len(late) + len(cut)
@@ -473,14 +503,23 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
             continue   # 次の回に先に取る（checked_at を進めない）
         new = got.get(g["key"])
         if new is None:
+            # 失敗：記事はそのまま・fails を 1 つ増やし、探した時刻を進める（次の回の列の後ろへ。毎回 1 人分の枠を取り続けない）。
+            # 網页は 0 件で fails が FAIL_SHOW 未満なら「集めています」のまま（「見つかっていません」と言わない。my_boards）
             res["failed"] += 1
-            continue   # 失敗：探した印を付けない（「まだ見つかっていません」と出さない・次の回にもう一度）
+            for acct, name, sec in g["boards"]:
+                prev = old.get((acct, name)) or {}
+                out.append({"account": acct, "item": name, "sec": sec, "state": "ok", "stories": prev.get("stories") or [],
+                            "found": 0, "fails": int(prev.get("fails") or 0) + 1, "checked_at": stamp, "updated_at": prev.get("updated_at")})
+            continue
         for acct, name, sec in g["boards"]:
             prev = old.get((acct, name)) or {}
             stories, n = merge(prev.get("stories"), new, now)
             res["found"] += n
-            out.append({"account": acct, "item": name, "sec": sec, "state": "ok", "stories": stories, "found": n,
-                        "checked_at": stamp, "updated_at": stamp if n else prev.get("updated_at")})
+            row = {"account": acct, "item": name, "sec": sec, "state": "ok", "stories": stories, "found": n,
+                   "checked_at": stamp, "updated_at": stamp if n else prev.get("updated_at")}
+            if prev.get("fails"):
+                row["fails"] = 0
+            out.append(row)
     for acct, name, sec in limits:
         out.append({"account": acct, "item": name, "sec": sec, "state": "limit", "stories": [], "found": 0,
                     "checked_at": stamp, "updated_at": None})
@@ -492,8 +531,8 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
                 try:
                     db(f"user_boards?account=eq.{_q(r['account'])}&item=eq.{_q(r['item'])}", method="DELETE")
                     res["deleted"] += 1
-                except RuntimeError as err:
-                    log(f"  {r['item']}：消せなかった（{str(err)[:120]}）")
+                except DB_ERRORS as err:
+                    log(f"  1 行が消せなかった（{_why(err)}）")
     elif rows:
         log("お客さまの記事集め：一覧を全部は読めなかったので、今回は行を消さない")
     log(f"お客さまの記事集め：{res['boards']} 版面を書いた・新しい記事 {res['found']} 件"
@@ -513,8 +552,8 @@ def main():
     try:
         run(dry_run="--dry-run" in sys.argv, log=log)
     except Exception as err:  # noqa: BLE001  店長の収集・出刊はもう終わっている。失敗しても止めない（次の回にもう一度）
-        print(f"::warning::お客さまの記事集めに失敗：{type(err).__name__}: {err}", file=sys.stderr)
-        lines.add(f"お客さまの記事集め [失敗]：{type(err).__name__}: {str(err)[:200]}")
+        print(f"::warning::お客さまの記事集めに失敗：{_why(err)}", file=sys.stderr)
+        lines.add(f"お客さまの記事集め [失敗]：{_why(err)}")
     finally:
         lines.close()
 

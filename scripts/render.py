@@ -3023,20 +3023,27 @@ NAV_JS = """
   const nav = document.querySelector('.nav'), rail = document.getElementById('nav-rail');
   if (!nav || !rail) return;
   // 只认版面级的区块（头版、我会喜欢？、各作品版面），卡片上的 data-k（投票用）不算
-  const marks = [...document.querySelectorAll('.issue > [data-k]')];
-  const pills = [...nav.querySelectorAll('.pill')];
-  const byKey = new Map(pills.map((p, i) => [p.dataset.for, i]));
+  // 出ている版面・駅だけを数える（お客さまのページでは AUTH_JS が版面を .wl-off で隠し・自分の版面と駅を足して 'wl-nav' を送る → 数え直す）
+  const vis = el => !el.classList.contains('wl-off');
+  let marks, pills, byKey, tabs, S, slotOf, TOTAL;
   const firstIssue = document.querySelector('.issue');
-  const tabs = [...nav.querySelectorAll('.mtabs a')];
-  const S = [...rail.querySelectorAll('.nslot')].map(el => ({el, sec: el.dataset.sec,
-    pills: [...el.querySelectorAll('.nbody .pill')], subs: el.querySelector('.nsubs'), chips: [...el.querySelectorAll('.nsubs a')],
-    labs: [...el.querySelectorAll('.nlab')], more: el.querySelector('.nmore'), sum: el.querySelector('.nsum')}));
-  const slotOf = new Map();
-  S.forEach((s, i) => s.pills.forEach(p => slotOf.set(p, i)));
+  function scan() {
+    marks = [...document.querySelectorAll('.issue > [data-k]')].filter(vis);
+    pills = [...nav.querySelectorAll('.pill')].filter(vis);
+    byKey = new Map(pills.map((p, i) => [p.dataset.for, i]));
+    tabs = [...nav.querySelectorAll('.mtabs a')].filter(vis);
+    S = [...rail.querySelectorAll('.nslot')].filter(vis).map(el => ({el, sec: el.dataset.sec,
+      pills: [...el.querySelectorAll('.nbody .pill')].filter(vis), subs: el.querySelector('.nsubs'), chips: [...el.querySelectorAll('.nsubs a')],
+      labs: [...el.querySelectorAll('.nlab')], more: el.querySelector('.nmore'), sum: el.querySelector('.nsum')}));
+    slotOf = new Map();
+    S.forEach((s, i) => s.pills.forEach(p => slotOf.set(p, i)));
+    TOTAL = S.reduce((a, s) => a + s.pills.length, 0);
+  }
+  scan();
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, wide = matchMedia('(min-width: 1001px)');
   // 隠し始める作品の数（items.yaml の settings.nav_hide、既定 24）。auto なら画面の高さだけで決める。
   // どちらでも、行を 30px まで詰めても入らないときは隠す（窮屈にもスクロールにもしない）
-  const HIDE = nav.dataset.hide === 'auto' ? 0 : (+nav.dataset.hide || 24), TOTAL = S.reduce((a, s) => a + s.pills.length, 0);
+  const HIDE = nav.dataset.hide === 'auto' ? 0 : (+nav.dataset.hide || 24);
   const SEC_H = 52, ITEM_H = 34, R_MIN = 30, MORE_H = 26, MIN_H = 46, EXTRA = 22, LAB_H = 20;   // 行の高さ（NAV_STYLES と同じ）
   const hot = p => +p.dataset.hot || 0, num = p => +p.dataset.n || 0, subOf = p => p.dataset.sub || '';
   const topN = (l, n) => l.slice().sort((a, b) => hot(b) - hot(a) || num(a) - num(b)).slice(0, n);
@@ -3126,8 +3133,8 @@ NAV_JS = """
       if (s.subs) s.subs.classList.toggle('x', !(x && x.chips));
       s.chips.forEach(c => c.classList.toggle('on', i === k && c.dataset.sub === sub));
       s.labs.forEach(l => l.classList.toggle('x', !(x && x.labs) || !s.pills.some(p => show.has(p) && subOf(p) === l.dataset.sub)));
-      s.more.classList.toggle('x', !(x && x.more));
-      if (x && x.more) s.more.textContent = `ほか ${x.more} 件 →`;
+      if (s.more) s.more.classList.toggle('x', !(x && x.more));
+      if (s.more && x && x.more) s.more.textContent = `ほか ${x.more} 件 →`;
       // 見出しだけになった板块の空き（作品の駅が 1 つも出ていない・字が入る高さがある）にだけ、作品名の薄い 1〜2 行
       if (s.sum) s.sum.classList.toggle('x', show.size > 0 || h < 84);
     });
@@ -3452,6 +3459,7 @@ NAV_JS = """
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => update()); } }, {passive: true});
   addEventListener('resize', () => update(true));
+  document.addEventListener('wl-nav', () => { scan(); curIdx = -2; lk = null; update(true); });
   // 字体の読み込みなどで目次の高さが変わったら置き直す
   if (window.ResizeObserver) new ResizeObserver(() => { if (wide.matches) layout(true); }).observe(rail);
   update(true);
@@ -3827,6 +3835,11 @@ html[data-page="admin"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden
 html[data-maybe-mine="1"][data-auth="wait"] body>*:not(.wl-auth){visibility:hidden}
 html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-agree){display:none!important}
 html[data-mine="2"] .wl-off{display:none!important}
+html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .swish,html[data-mine="2"] .nav .logo .hm,
+html[data-mine="2"] .vt,html[data-mine="2"] .vote,html[data-mine="2"] [data-vote]{display:none!important}
+html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
+.wl-cards>a.np{padding-top:8px}
+@media (max-width:560px){html[data-mine="2"] body{padding-bottom:72px}.wl-cards>a.np{display:flex}}
 .wl-mybar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 18px;padding:12px 16px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow);font:700 14px/1.5 var(--font-sans);color:var(--ink)}
 .wl-mybar b{font:900 18px/1.3 var(--font-sans)}.wl-mybar a{color:var(--ink)}.wl-mybar small{flex-basis:100%;font-weight:500;opacity:.8}
 .wl-mybar a.add{padding:4px 12px;background:var(--gold);border:2px solid var(--ink);text-decoration:none}.wl-mybar small.ok{opacity:1;color:var(--ink);background:var(--paper);padding:4px 8px}
@@ -4077,7 +4090,7 @@ AUTH_JS = r"""
   function hit(name,picks){return picks.some(function(x){return shopHit(name,x.name);});}
   function mine(){
     var on=isMine(), box=document.querySelector('.wl-mine');
-    if(!on){R.dataset.mine='0';if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
+    if(!on){R.dataset.mine='0';clearInterval(R._wlub);R._wlmb=null;if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
       document.querySelectorAll('.wl-off').forEach(function(x){x.classList.remove('wl-off');});return;}
     if(R.dataset.mine!=='2') R.dataset.mine='1';
     if(!box){box=document.createElement('main');box.className='wl-mine';box.id='mine';document.body.appendChild(box);}
@@ -4095,82 +4108,156 @@ AUTH_JS = r"""
     R.dataset.mine='2';
     var got={};
     document.querySelectorAll('section.sec[data-k]').forEach(function(s){var on=hit(s.dataset.k,picks);s.classList.toggle('wl-off',!on);if(on)got[norm(s.dataset.k)]=1;});
-    document.querySelectorAll('.pill[data-for],.pill.xfer').forEach(function(a){a.classList.toggle('wl-off',!a.dataset.for||!hit(a.dataset.for,picks));});
+    document.querySelectorAll('.pill[data-for]:not(.wl-upill),.pill.xfer').forEach(function(a){a.classList.toggle('wl-off',!a.dataset.for||!hit(a.dataset.for,picks));});
+    document.querySelectorAll('.pill[data-x]').forEach(function(a){a.classList.toggle('wl-off',!hit(a.dataset.x,picks));});   // シリーズの枝も、出ている版面の分だけ
     ['front','picks'].forEach(function(id){var x=document.getElementById(id);if(x)x.classList.add('wl-off');});
-    document.querySelectorAll('.subhead').forEach(function(h){var n=h.nextElementSibling,on=false;   // 小分類の見出しは、下に出ている版面があるときだけ
-      while(n&&!n.classList.contains('subhead')){if(n.matches('section.sec[data-k]')&&!n.classList.contains('wl-off')){on=true;break;}n=n.nextElementSibling;}
-      h.classList.toggle('wl-off',!on);});
-    document.querySelectorAll('.nmore').forEach(function(x){x.classList.add('wl-off');});
+    document.querySelectorAll('.nmore,.nsum').forEach(function(x){x.classList.add('wl-off');});
     var wait=picks.filter(function(x){return !Object.keys(got).some(function(k){return shopHit(k,x.name);});});
     var name=(p&&p.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
     var bar=document.querySelector('.wl-mybar')||document.createElement('div');bar.className='wl-mybar';
     var added=(location.search.match(/[?&]added=([^&]*)/)||[])[1];
+    if(added&&history.replaceState) history.replaceState(null,'',location.pathname+location.hash);   // 開き直したときにはもう出さない
+    try{added=added?decodeURIComponent(added):'';}catch(_){added='';}
     bar.innerHTML='<b>'+esc(sh)+' さんのページ</b><span>追いかけているもの '+picks.length+'</span><a class="add" href="'+ADD+'">＋ 追いかけるものを足す</a><a href="settings.html">外す</a>'+
-      (added?'<small class="ok">'+esc(decodeURIComponent(added))+' を足しました。店長がいま集めに行っています。</small>':'')+
-      '<small>新しい記事は 1 日に何度か届きます。👍👎 を押すと、好みに合うものが上に並ぶようになります。</small>';
+      (added?'<small class="ok">'+esc(added)+' を足しました。記事が集まりしだい、下の版面に並びます（数時間かかることがあります）。</small>':'')+
+      '<small>新しい記事は 1 日に何度か届きます。</small>';
     var m=document.querySelector('main.issues')||document.body; if(!bar.parentNode) m.insertBefore(bar,m.firstChild);
-    // 店長の版面にないもの：my_boards()（db/user_boards.sql、本人の行だけ）の記事で版面を描く。まだなら「集めています」
-    var mineB={};
+    var issue=document.querySelector('main.issues .issue')||m;
+    var secOf={};(A.items||[]).forEach(function(x){secOf[norm(x[0])]=x[1];});
+    function secIdx(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return i;return SECS.length;}
+    // 店長の版面にないもの：my_boards()（db/user_boards.sql、本人の行だけ）の記事で版面を描く。まだなら「集めています」。
+    // 前に読んだ分は覚えておく（ログインの更新で描き直しても「集めています」に戻らない）
+    var mineB=R._wlmb||{}, bad=false;
     function draw(){
-      document.querySelectorAll('.wl-wait,.wl-today,.wl-maybe').forEach(function(x){x.remove();});
-      var today=document.createElement('section');today.className='wl-today';bar.after(today);
-      var at=today;
-      wait.forEach(function(x){var b=mineB[norm(x.name)]||{state:'wait',stories:[]};
-        var s=document.createElement('section');s.className='wl-wait'+(b.state==='ok'?' wl-ub':'');s.style.setProperty('--sc',secColor(b.sec||x.sec)||'var(--ink)');
-        s.innerHTML='<small>'+esc(secJa(b.sec||x.sec))+'</small><h2>'+esc(x.name)+'</h2>'+board(b,x.name);at.after(s);at=s;});
+      document.querySelectorAll('.wl-wait,.wl-today,.wl-maybe,.wl-uhead,.wl-upill,.wl-uslot,.wl-utab,.wl-utg').forEach(function(x){x.remove();});
+      var today=document.createElement('section');today.className='wl-today';today.id='wl-today';bar.after(today);
+      // 本文も店長のページと同じ「板块 → 小分類」の順に：自分の版面は同じ板块の店長の版面のあと。その板块に店長の版面がなければ、板块の順の位置に見出しを立てて
+      function shown(){return [].slice.call(issue.querySelectorAll(':scope>[data-k]:not(.wl-off)')).filter(function(v){return v.id!=='front'&&v.id!=='picks';});}
+      function secEl(v){return v.dataset.sec||secOf[norm(v.dataset.k)];}
+      var last={};
+      wait.forEach(function(x,i){var b=mineB[norm(x.name)]||{state:bad?'err':'wait',stories:[]}, sec=b.sec||x.sec||'其他';
+        var s=document.createElement('section');s.className='wl-wait'+(b.state==='ok'?' wl-ub':'');s.id='wl-ub-'+i;s.dataset.k=x.name;s.dataset.sec=sec;
+        s.style.setProperty('--sc',secColor(sec)||'var(--ink)');
+        s.innerHTML='<small>'+esc(secJa(sec))+'</small><h2>'+esc(x.name)+'</h2>'+board(b);
+        var at=last[sec]||shown().filter(function(v){return secEl(v)===sec;}).pop();
+        if(at){at.after(s);}
+        else{
+          var nx=shown().filter(function(v){return secIdx(secEl(v))>secIdx(sec);})[0];   // 店長の版面・もう置いた自分の版面のうち、後ろの板块の最初
+          // 次の板块の見出し（隠れた版面・見出しも越えて）の前に
+          if(nx)while(nx.previousElementSibling&&/(^|\s)(subhead|wl-off)(\s|$)/.test(nx.previousElementSibling.className)&&!nx.previousElementSibling.classList.contains('wl-wait'))nx=nx.previousElementSibling;
+          var hd=document.createElement('div');hd.className='subhead wl-uhead';hd.style.setProperty('--sc',secColor(sec)||'var(--ink)');
+          hd.innerHTML='<span class="tg"><span>'+esc(secJa(sec))+'</span></span><b>あなたが足したもの</b>';
+          if(nx){issue.insertBefore(hd,nx);hd.after(s);}else{issue.appendChild(hd);issue.appendChild(s);}
+        }
+        last[sec]=s;pill(x.name,sec,s.id,b);});
       todayBox(today);
-      var mb=maybeBox();if(mb)at.after(mb);
+      var mb=maybeBox();if(mb)issue.appendChild(mb);
+      tidyNav();
+      document.dispatchEvent(new Event('wl-nav'));
     }
+    // 目次：自分の版面の駅を、その板块の線路に足す（板块がなければ板块の順の位置に作る）。駅のない板块・小分類の札は隠す
+    var nav=document.querySelector('.nav'), rail=document.getElementById('nav-rail');
+    function slotFor(sec){
+      if(!rail)return null;
+      var all=[].slice.call(rail.querySelectorAll('.nslot'));
+      for(var i=0;i<all.length;i++)if(all[i].dataset.sec===sec)return all[i];
+      var d=document.createElement('div');d.className='nslot wl-uslot';d.dataset.sec=sec;d.style.setProperty('--sc',secColor(sec)||'var(--ink)');
+      d.innerHTML='<a class="nsec" href="#"><span class="tg"><span>'+esc(secJa(sec))+'</span></span></a><div class="nbody"></div>';
+      var nx=all.filter(function(x){return secIdx(x.dataset.sec)>secIdx(sec);})[0];
+      if(nx)rail.insertBefore(d,nx);else rail.appendChild(d);
+      var tabs=nav&&nav.querySelector('.mtabs');
+      if(tabs){var t=document.createElement('a');t.className='tg wl-utab';t.dataset.sec=sec;t.style.setProperty('--sc',secColor(sec)||'var(--ink)');t.innerHTML='<span>'+esc(secJa(sec))+'</span>';
+        var tn=[].slice.call(tabs.querySelectorAll('a[data-sec]')).filter(function(x){return x.dataset.sec&&secIdx(x.dataset.sec)>secIdx(sec);})[0];
+        if(tn)tabs.insertBefore(t,tn);else tabs.appendChild(t);}
+      return d;
+    }
+    function pill(n,sec,id,b){var d=slotFor(sec);if(!d)return;
+      var st=b.state==='ok'?'記事 '+(b.stories||[]).length+' 件':b.state==='none'?'まだ記事なし':b.state==='limit'?'お休み中':'集めています';
+      var a=document.createElement('a');a.className='pill wl-upill';a.dataset.for=n;a.dataset.n='0';a.dataset.sub='';a.href='#'+id;a.style.setProperty('--sc',secColor(sec)||'var(--ink)');
+      a.innerHTML='<i class="no">+</i><i class="ic">'+esc(String(n).charAt(0))+'</i><span class="nm">'+esc(n)+'<small class="cnt">'+esc(st)+'</small></span>';
+      d.querySelector('.nbody').appendChild(a);}
+    function tidyNav(){
+      if(!rail)return;
+      var first={};
+      [].slice.call(issue.querySelectorAll(':scope>[data-k]:not(.wl-off)')).forEach(function(s){var k=s.dataset.sec||secOf[norm(s.dataset.k)];if(k&&!first[k])first[k]='#'+s.id;});
+      rail.querySelectorAll('.nslot').forEach(function(d){
+        var ps=[].slice.call(d.querySelectorAll('.nbody .pill:not(.wl-off)')), subs={};ps.forEach(function(p){subs[p.dataset.sub||'']=1;});
+        d.classList.toggle('wl-off',!ps.length);
+        d.querySelectorAll('.nsubs a[data-sub],.nlab[data-sub]').forEach(function(c){c.classList.toggle('wl-off',!subs[c.dataset.sub]);});
+        var a=d.querySelector('.nsec');if(a&&first[d.dataset.sec])a.setAttribute('href',first[d.dataset.sec]);});
+      if(nav)nav.querySelectorAll('.mtabs a').forEach(function(t){var k=t.dataset.sec;
+        if(!k){t.setAttribute('href','#wl-today');return;}
+        t.classList.toggle('wl-off',!first[k]);if(first[k])t.setAttribute('href',first[k]);});
+      var lg=nav&&nav.querySelector('.logo');if(lg)lg.setAttribute('href','#wl-today');
+      // 板块の名前の札は板块の最初の見出しにだけある：それが隠れたら、出ている最初の見出しに付ける
+      var prev=null;[].slice.call(issue.querySelectorAll(':scope>.subhead:not(.wl-off)')).forEach(function(h){var n=h.nextElementSibling;
+        while(n&&(!n.dataset||!n.dataset.k||n.classList.contains('wl-off'))&&!n.classList.contains('subhead'))n=n.nextElementSibling;
+        var k=n&&n.dataset&&n.dataset.k?(n.dataset.sec||secOf[norm(n.dataset.k)]):null;
+        if(k&&k!==prev&&!h.querySelector('.tg')){var g=document.createElement('span');g.className='tg wl-utg';g.innerHTML='<span>'+esc(secJa(k))+'</span>';h.insertBefore(g,h.firstChild);}
+        if(k)prev=k;});
+    }
+    // お客さまのページでは「小分類の見出し」も、下に出ている版面があるときだけ
+    document.querySelectorAll('.subhead:not(.wl-uhead)').forEach(function(h){var n=h.nextElementSibling,on=false;
+      while(n&&!n.classList.contains('subhead')){if(n.matches('section.sec[data-k]')&&!n.classList.contains('wl-off')){on=true;break;}n=n.nextElementSibling;}
+      h.classList.toggle('wl-off',!on);});
     function safe(u){u=String(u||'');return /^https?:\/\//.test(u)?u:'';}
+    // 画像：店長の版面の「本站保存」（pics/… の相対の網址）も、このページの網址に直してから確かめる
+    function pic(u){if(!u)return '';try{var x=new URL(u,location.href);return x.protocol==='https:'||x.origin===location.origin?x.href:'';}catch(_){return '';}}
     function md(d){var t=Date.parse(d||'');if(isNaN(t))return '';var x=new Date(t);return (x.getMonth()+1)+'.'+x.getDate();}
     function fresh(d){var t=Date.parse(d||'');return !isNaN(t)&&Date.now()-t<36*3600e3;}
-    // カード 1 枚。見出し・出典は外から来た文字なので必ず esc。網址・画像は http(s) だけ
-    function card(c){var u=safe(c.url);if(!u||!c.title)return '';var img=/^https:\/\//.test(c.img||'')?c.img:'';
-      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"><span class="pic">'+(img?'<img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':'')+
-        '<span class="ph">'+esc(c.board||'')+'</span></span>'+(c.board&&img?'<span class="k">'+esc(c.board)+'</span>':'')+'<b>'+(c.isNew?'<i>NEW</i>':'')+esc(c.title)+'</b>'+
+    // カード 1 枚。見出し・出典は外から来た文字なので必ず esc。網址は http(s) だけ。画像がなければ字だけのカード（同じ仮の絵を並べない）
+    function card(c){var u=safe(c.url);if(!u||!c.title)return '';var img=pic(c.img);
+      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"'+(img?'':' class="np"')+'>'+(img?'<span class="pic"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></span>':'')+
+        (c.board?'<span class="k">'+esc(c.board)+'</span>':'')+'<b>'+(c.isNew?'<i>NEW</i>':'')+esc(c.title)+'</b>'+
         '<small>'+esc([c.when,c.source].filter(Boolean).join(' · '))+'</small></a>';}
     function story2card(st,bn){return {title:st.title,url:st.url,img:st.image,source:st.source,when:md(st.date||st.seen),isNew:fresh(st.date||st.seen),board:bn,t:Date.parse(st.date||st.seen||'')||0};}
-    function board(b,bn){
+    function board(b){
       if(b.state==='ok')return '<div class="wl-cards">'+(b.stories||[]).map(function(st){return card(story2card(st,''));}).join('')+'</div>';
       if(b.state==='none')return '<p>まだ記事が見つかっていません。新しい記事が出たら、ここに並びます。</p>';
       if(b.state==='limit')return '<p>追いかけられるのは 30 個までです。<a href="settings.html">ほかのものを外す</a>と、これも集め始めます。</p>';
-      return '<p><i class="dot"></i>店長が集めています。早ければ 1〜2 時間で最初の記事が並びます。</p>';
+      if(b.state==='err')return '<p>記事を読み込めませんでした。少し時間をおいて、ページを開き直してください。</p>';
+      return '<p><i class="dot"></i>記事を集めています。集まりしだい、ここに並びます（数時間かかることがあります）。</p>';
     }
+    // ニュースらしくないもの（攻略・一覧のページ、予約・通販の商品）は「新着」として出さない
+    var NOTNEWS=/攻略|一覧と|最新版】?$|[《【(（]\s*\d+\s*月予約|予約受付|予約開始中|最終値下げ|在庫あり|送料無料/;
     // 店長のページの版面の記事（いま出ている版面だけ）。カードの形にそろえる
     function shopCards(sec,n){var out=[];sec.querySelectorAll('article').forEach(function(a){if(out.length>=n)return;var lk=a.querySelector('a.lk');if(!lk)return;
+      var t=lk.getAttribute('aria-label')||'';if(!t||NOTNEWS.test(t))return;
       var im=a.querySelector('.pic img:not(.bg)'),w=a.querySelector('.when');
-      out.push({title:lk.getAttribute('aria-label')||'',url:lk.getAttribute('href'),img:im?im.getAttribute('src'):'',board:a.dataset.k||sec.dataset.k,
+      out.push({title:t,url:lk.getAttribute('href'),img:im?im.getAttribute('src'):'',board:a.dataset.k||sec.dataset.k,
         isNew:!!(w&&w.querySelector('b')),when:w?(w.firstChild&&w.firstChild.nodeType===3?w.firstChild.nodeValue:''):''});});return out;}
     // 今日の主なニュース（店長のトップの頭条・ほかの注目ニュースに当たるもの）：店長が選んだ頭条のうち自分の版面のもの → 自分の版面の新着 → 店長の版面の先頭
     function todayBox(box){
-      var list=[],seen={};function add(c){var u=safe(c.url);if(!u||seen[u]||!c.title)return;seen[u]=1;list.push(c);}
+      var list=[],seen={};function add(c){var u=safe(c.url);if(!u||seen[u]||!c.title||NOTNEWS.test(c.title))return;seen[u]=1;list.push(c);}
       var fr=document.getElementById('front');
-      if(fr)fr.querySelectorAll('article[data-k]').forEach(function(a){if(!hit(a.dataset.k,picks))return;var lk=a.querySelector('a.lk'),im=a.querySelector('img:not(.bg)');
-        if(lk)add({title:lk.getAttribute('aria-label')||'',url:lk.getAttribute('href'),img:im?im.getAttribute('src'):'',board:a.dataset.k,isNew:true});});
+      if(fr)fr.querySelectorAll('article[data-k]').forEach(function(a){if(!hit(a.dataset.k,picks))return;var lk=a.querySelector('a.lk'),im=a.querySelector('img:not(.bg)'),w=a.querySelector('.when');
+        if(lk)add({title:lk.getAttribute('aria-label')||'',url:lk.getAttribute('href'),img:im?im.getAttribute('src'):'',board:a.dataset.k,isNew:!!(w&&w.querySelector('b'))});});
       var mine=[];wait.forEach(function(x){var b=mineB[norm(x.name)];if(b&&b.state==='ok')(b.stories||[]).slice(0,2).forEach(function(st){var c=story2card(st,x.name);if(c.isNew)mine.push(c);});});
       mine.sort(function(a,b){return b.t-a.t;}).forEach(add);
-      document.querySelectorAll('section.sec[data-k]:not(.wl-off)').forEach(function(s){shopCards(s,1).forEach(add);});
+      issue.querySelectorAll(':scope>section.sec[data-k]:not(.wl-off)').forEach(function(s){shopCards(s,1).forEach(add);});
       list=list.slice(0,6);
       box.innerHTML='<h2>今日の主なニュース</h2>'+(list.length?'<div class="wl-cards">'+list.map(card).join('')+'</div>':
         '<p class="empty"><b>ここに、あなたが追いかけているものの今日の主なニュースが並びます</b>記事が届いたものから、大事なものを先頭に。下には追いかけているものごとの版面が並び、記事が集まりしだい埋まっていきます。</p>');
     }
-    // 気になるかも？（規則・AI なし）：選んだジャンルにある、まだ追いかけていない店長の版面の新着 → 名前だけの候補。押すと記事、「＋ 追いかける」は足す流れへ
+    // 気になるかも？（規則・AI なし）：選んだジャンルにある、まだ追いかけていない店長の版面の新着 → 名前だけの候補。
+    // 「＋ X を追いかける」は X を選んだ状態で足す流れ（入口の ?add の確認の画面）へ
     function maybeBox(){
       var secs={};picks.forEach(function(x){secs[x.sec]=1;});
-      var secOf={};(A.items||[]).forEach(function(x){secOf[norm(x[0])]=x[1];});
-      var cards=[];document.querySelectorAll('section.sec[data-k].wl-off').forEach(function(s){if(cards.length>=4||!secs[secOf[norm(s.dataset.k)]]||hit(s.dataset.k,picks))return;shopCards(s,1).forEach(function(c){cards.push(c);});});
+      var cards=[];issue.querySelectorAll(':scope>section.sec[data-k].wl-off').forEach(function(s){if(cards.length>=4||!secs[secOf[norm(s.dataset.k)]]||hit(s.dataset.k,picks))return;shopCards(s,1).forEach(function(c){cards.push(c);});});
       var names=(A.items||[]).filter(function(x){return secs[x[1]]&&!hit(x[0],picks)&&!cards.some(function(c){return norm(c.board)===norm(x[0]);});}).slice(0,6);
       if(!cards.length&&!names.length)return null;
       var s=document.createElement('section');s.className='wl-maybe';
+      var cand=cards.map(function(c){return [c.board,secOf[norm(c.board)]||''];}).concat(names).slice(0,6);
       s.innerHTML='<h2>気になるかも？</h2><p class="hint">追いかけているものと同じジャンルの新着です。</p>'+(cards.length?'<div class="wl-cards">'+cards.map(card).join('')+'</div>':'')+
-        '<div class="chips">'+cards.map(function(c){return c.board;}).concat(names.map(function(x){return x[0];})).slice(0,6).map(function(n){return '<a href="'+ADD+'">＋ '+esc(n)+' を追いかける</a>';}).join('')+'</div>';
+        '<div class="chips">'+cand.map(function(x){return '<a href="'+esc(ADD+'&pick='+encodeURIComponent(x[0])+'&s='+encodeURIComponent(x[1]||''))+'">＋ '+esc(x[0])+' を追いかける</a>';}).join('')+'</div>';
       return s;
     }
     draw();
-    function load(){if(!tok||!wait.length)return;rpc('my_boards').then(function(r){mineB={};((r&&r.boards)||[]).forEach(function(b){if(b&&b.name)mineB[norm(b.name)]=b;});draw();},function(){});}
+    function load(){if(!tok||!wait.length)return;rpc('my_boards').then(function(r){bad=false;mineB={};((r&&r.boards)||[]).forEach(function(b){if(b&&b.name)mineB[norm(b.name)]=b;});R._wlmb=mineB;draw();},
+      function(){if(!Object.keys(mineB).length&&!bad){bad=true;draw();}});}
     load();clearInterval(R._wlub);R._wlub=setInterval(function(){if(!document.hidden)load();},5*60e3);   // 開いている間も 5 分ごとに読み直す（集まりしだい本物の版面に）
   }
-  // 選び方の案内（2026-10-22，用户定的：左右に払うカードはやめ、板块 → その中の作品を押して選ぶだけ）
+  // 選んだものがまだないとき・設定の「外す」の画面（足すのは入口と同じ「ジャンル → 左右に払うカード → 確認」＝ ADD。ここは押して選ぶ・外す）
   function drawMine(box,p,err){
     box.dataset.ready='1';
     var name=(p&&p.name)||(me&&me.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
@@ -4183,7 +4270,8 @@ AUTH_JS = r"""
         '<p>好きなジャンルを選んで、出てくるカードを「気になる」か「パス」に分けるだけ。店長が集めに行き、記事が届いた版面から順に並びます。</p>'+
         '<a class="go" href="'+ADD+'">好きなものを選ぶ →</a></div>';return;}
     if(page!=='index'&&page!=='settings'){
-      box.innerHTML=h+'<div class="empty"><b>まだ何もありません</b><p>トップで追いかけたいものを選ぶと、ここも使えるようになります。</p><a class="go" href="./">トップへ</a></div>';return;}
+      box.innerHTML=h+'<div class="empty">'+(picks.length?'<b>追いかけているものの記事は、トップにまとまっています</b><p>'+picks.length+' つを追いかけています。</p>':
+        '<b>まだ何も追いかけていません</b><p>トップで追いかけたいものを選ぶと、記事が並びます。</p>')+'<a class="go" href="./">トップへ</a></div>';return;}
     var items=(A.items||[]), chosen={}, secsOn={};
     picks.forEach(function(x){chosen[x.name]=x.sec;secsOn[x.sec]=1;});
     function draw(){
