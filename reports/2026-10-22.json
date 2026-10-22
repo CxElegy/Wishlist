@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "5d632b42b834",
+ "edit_sig": "406697133b9c",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -576,17 +576,19 @@
    "cover": null,
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 1,
-     "source": "ELLE",
-     "title": "星巴克小熊維尼聯名今天10/20開賣！蜂蜜罐馬克杯、12款限定周邊價格一次看",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQRmtsZkNyUkRLd1lyT1BwSmNGdF9EbUhySTVVbzBfNHJfWTdkaUJtVlZHOFBpSkdSUWRwd2Q2STVSZU83WklHMmRmZ3c3NFR3c2dsMEFOTlpPU0JraFlnTTdBSUo2STVRejJlZ0V3T3JSWUpleFBVWE1Jb3VmMVhxbnNkaw?oc=5"
+     "headline": "星巴克小熊維尼聯名今天10/20開賣！蜂蜜罐馬克杯、12款限定周邊價格一次看",
+     "highlight": "10/20開賣",
+     "image": "https://hips.hearstapps.com/hmg-prod/images/8b2afa82-9272-4199-8136-22d9d5456461.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*",
+     "image_via": "og:image",
+     "url": "https://www.elle.com/tw/life/hot-news/g74186242/starbucks-winniethepooh-1020/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",

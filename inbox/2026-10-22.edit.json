@@ -90,7 +90,8 @@
   "FROM": 3,
   "The Mandalorian": 2,
   "gelato pique": 1,
-  "哈利波特剧集": 1
+  "哈利波特剧集": 1,
+  "星巴克马克杯": 1
  },
  "周杰伦": [
   {
@@ -714,6 +715,17 @@
   {
    "headline": "HBO’s Harry Potter Series Has Reportedly Spent £147 Million on Season One So Far, Almost Exceeding The Films Combined",
    "highlight": "£147 Million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "星巴克小熊維尼聯名今天10/20開賣！蜂蜜罐馬克杯、12款限定周邊價格一次看",
+   "highlight": "10/20開賣",
    "blurb": "",
    "weight": "normal",
    "refs": [
