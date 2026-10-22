@@ -1798,6 +1798,7 @@
     {
      "date": "2026-10-21T21:53:39+00:00",
      "image": "",
+     "link": "https://cosmicbook.news/chris-pratt-star-lord-returns",
      "n": 43,
      "source": "Cosmic Book News",
      "summary": "",
@@ -2246,7 +2247,9 @@
     },
     {
      "date": "2026-10-22T02:16:50+00:00",
-     "image": "",
+     "image": "https://cdndark.darkhorizons.com/wp-content/uploads/2026/10/pratt-confirms-star-lord-will-return-to-mcu.jpg",
+     "image_via": "og:image",
+     "link": "https://www.darkhorizons.com/pratt-confirms-star-lord-will-return-to-mcu/",
      "n": 84,
      "source": "Dark Horizons",
      "summary": "",
@@ -3548,7 +3551,9 @@
     {
      "carried": "2026-10-21",
      "date": "2026-10-20T19:34:17+00:00",
-     "image": "",
+     "image": "https://attach.setn.com/images/setn_1200x676_20250103.png",
+     "image_via": "JSON-LD",
+     "link": "https://www.setn.com/news/318222",
      "n": 22,
      "source": "三立新聞",
      "summary": "",

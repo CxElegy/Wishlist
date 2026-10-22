@@ -5,19 +5,6 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/finance/cece9e13/20240627/655959900_20240627.png": {
-  "w": 300,
-  "h": 300,
-  "target": 720,
-  "v": 3,
-  "blur": 0.514,
-  "local": "pics/aa2d618d1556777b.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清"
- },
  "http://n.sinaimg.cn/sinakd20261017ac/533/w480h853/20261017/5551-53c5cc4364453fccee1dcae242ecccec.jpg": {
   "w": 480,
   "h": 853,
@@ -188,6 +175,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/10/07/gta-6-1791374410439.jpg?&format=jpg&auto=webp&quality=80": {
+  "w": 3840,
+  "h": 2160,
+  "target": 720,
+  "v": 3
+ },
  "https://assets-prd.ignimgs.com/2026/10/07/gta-6-1791374410439.jpg?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
@@ -261,9 +254,9 @@
   "target": 1280,
   "v": 3
  },
- "https://assetsio.gnwcdn.com/red-dead-redemption-2-horse_oWpviPa.jpg?&fit=crop&enable=upscale&auto=webp": {
-  "w": 1629,
-  "h": 916,
+ "https://attach.setn.com/images/setn_1200x676_20250103.png": {
+  "w": 1200,
+  "h": 676,
   "target": 720,
   "v": 3
  },
@@ -455,6 +448,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdndark.darkhorizons.com/wp-content/uploads/2026/10/pratt-confirms-star-lord-will-return-to-mcu.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdnweb01.wikitree.co.kr/webdata/editor/202610/15/202610151507326373.jpg": {
   "w": 1200,
   "h": 676,
@@ -548,12 +547,6 @@
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/Avengers-Doomsday-Doom-Eyes.jpg?resize=2000,1125": {
   "w": 2000,
   "h": 1125,
-  "target": 720,
-  "v": 3
- },
- "https://comicbook.com/wp-content/uploads/sites/4/2026/10/Avengers-Endgame-Encore-Reveals-Captain-America-Battle-Damage-Injuries-Thanos.jpg?w=1600": {
-  "w": 1600,
-  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -1610,7 +1603,7 @@
  "https://media.nownews.com/nn_media/thumbnail/2026/10/WsmmswqeCx0-1200x675.webp": {
   "w": 1200,
   "h": 675,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
@@ -2493,7 +2486,7 @@
   "target": 720,
   "v": 3
  },
- "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022182254": {
+ "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022183525": {
   "w": 712,
   "h": 955,
   "target": 1280,
