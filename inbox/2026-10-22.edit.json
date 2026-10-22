@@ -73,7 +73,7 @@
  ],
  "_covered": {
   "A2O LITE": 167,
-  "周杰伦": 9,
+  "周杰伦": 31,
   "GTA 6": 98,
   "漫威电影": 81,
   "三星手机": 55,
@@ -84,35 +84,57 @@
  },
  "周杰伦": [
   {
-   "headline": "男友打算在周杰伦演唱会现场求婚",
-   "highlight": "演唱会现场求婚",
-   "blurb": "演唱会に関する話題だが、日程・チケットの新情報ではない。",
+   "headline": "周杰伦遭“台独”扣帽子，国台办发声",
+   "highlight": "国台办发声",
+   "blurb": "周杰伦转发点赞介绍其为中国歌手的视频后，台湾岛内有人批评，国台办就此回应。",
    "weight": "lead",
+   "refs": [
+    13,
+    7,
+    18,
+    27,
+    21,
+    19,
+    10,
+    29,
+    11
+   ],
+   "image": "https://img1.bjd.com.cn/2026/10/21/3b1cb1847634fda933afccea83977936cffe5bd5.jpeg"
+  },
+  {
+   "headline": "男友打算在周杰伦演唱会现场求婚",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     4
    ]
   },
   {
-   "headline": "国台办回应周杰伦遭台独扣帽子",
-   "highlight": "国台办回应",
+   "headline": "「我美嗎女士」來聽歌！周杰倫唱《女兒殿下》偷看小女兒反應",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7,
-    1,
-    2,
-    3,
-    6,
-    9
+    20
    ]
   },
   {
-   "headline": "#声生不息# 周杰伦的《暗号》，被他爆改翻唱，唱出别样风格！",
-   "highlight": "《暗号》",
+   "headline": "周杰倫搶男主角！喊話韓版《不能說的秘密》 還揪昆凌演…",
+   "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    22
+   ]
+  },
+  {
+   "headline": "啥玩意？周杰伦南京场这才开场第一首就这样了？？？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
    ]
   }
  ],

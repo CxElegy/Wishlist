@@ -30,12 +30,6 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261018ac/533/w480h853/20261018/5500-3c900af56350d8775af5d0c55601d6e9.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd20261019ac/200/w640h360/20261019/4b86-df72ac85c2663d677b3240c4412d70ec.jpg": {
   "w": 640,
   "h": 360,
@@ -1311,6 +1305,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://img1.bjd.com.cn/2026/10/21/3b1cb1847634fda933afccea83977936cffe5bd5.jpeg": {
+  "w": 382,
+  "h": 287,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.564,
+  "local": "pics/48df56f52b544e07.webp",
+  "out": [
+   1146,
+   861
+  ],
+  "why": "看不清"
+ },
  "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FSportsHochi%252Fcd%252FSportsHochi_20261017_OHT1T51157%252FSportsHochi_20261017_OHT1T51157_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "w": 459,
   "h": 320,
@@ -1468,6 +1475,12 @@
  "https://media.nownews.com/nn_media/thumbnail/2026/10/1791625256519-43fa008015cc4d53a92e0d9281b69d0c-1200x800.webp?unShow=false": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.nownews.com/nn_media/thumbnail/2026/10/WsmmswqeCx0-1200x675.webp": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
