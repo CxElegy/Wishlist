@@ -118,8 +118,8 @@ COMPONENTS = {
               "what": "emblem.check_whole：服が背景と同じ色で抜けた切り抜きを落とす"},
     "gate": {"kind": "algo", "name": "ゲート gate.py", "spec": "AI 編集は 1 日 2 回（日本時間 9:00・18:00、その回にまだなら・一時停止中は起こさない）· 起こして 60 分あけて、編集済みが増えなければ「停滞」→ 起こし直す（3 回まで・そのあと 6 時間待つ）· 起こしたのが前の日（北京時間・fired.day）なら停滞と数えず定時を待つ · 北京 0 時すぎに前の日の 18:00 の回は拾わない（9:00 を待つ）· 「動いている」は今回起こしたあとの最後のバッチから 30 分以内（起こしたあと出刊がないまま 60 分 → 「出刊されていない」）· 新関注項の「すぐ AI 編集」（GATE_NOW）は定時だけ飛ばす：60 分以内で止められたら jobs.edit.now_pending に残し、後台作業が 60 分後に起こす（12 時間で捨てる）· 変数 GATE_FIRE = edit / 1",
              "what": "仕事があるか・AI が要るかをプログラムだけで決める。AI の要らない仕事はその場で済ませる"},
-    "userfeed": {"kind": "rule", "name": "お客さまの版面の記事集め userfeed.py", "spec": "app_users.prefs.picks のうち店長の関注項にないもの（名前のゆるい一致 = 網页の hit と同じ）だけ · 1 人 10 版面 · 1 回 60 版面・8 分・4 本並列 · 前に探してから 90 分は飛ばす · 同じ名前・同じ言語は 1 回で · Google・Bing・情報員（SNS の全体検索・GDELT はしない）· 店長と同じ drop_reason・重複・fallback_stories・lang.dedupe · 1 版面 12 件・14 日 · Supabase user_boards（account = u_ + md5(メール) 16 字）· 本人は my_boards() で自分の行だけ · AI なし",
-                 "what": "お客さまが自分で選んだものの記事"},
+    "userfeed": {"kind": "rule", "name": "お客さまの版面の記事集め userfeed.py", "spec": "だれの分：userfeed_users()（Auth のユーザーがいて一度はログインした人だけ・登録の古い順・1000 行ずつ）· app_users.prefs.picks のうち店長のページに版面がないもの（docs/home/index.html の section.sec[data-k] と shop_hit = 網页の shopHit と同じ規則：同じ名前か、かな・漢字 2 字以上が含まれるか、英数字は前後が英数字でないとき）· 1 人 30 版面まで（超えた分は state=limit の行）· 1 人 1 回 3 版面（全員の 1 つ目から順に）· まだ集めていない人は 1 回 15 人まで · 1 回 60 版面・8 分（job の timeout 40 分の 3 分前まで）・4 本並列 · 前に探してから 90 分は飛ばす · 同じ名前・同じ言語は 1 回で · 匹配词：英数字は記号のゆれを許した句（語の境あり）、数字のない 14 字以下は板块の語と一緒のときだけ、® ™・末尾の「第2期」は外す · Google・Bing・情報員（SNS の全体検索・GDELT はしない）· 店長と同じ drop_reason・重複・fallback_stories・lang.dedupe · 1 版面 12 件・14 日（日付のない記事は見つけた日から）· 失敗した版面は探した印を付けない · 書けない行は 1 行ずつ書き直す · 一覧を全部読めなかった回は行を消さない · Supabase user_boards（account = u_ + md5(メール) 16 字）· 本人は my_boards() で自分の行だけ · AI なし",
+                 "what": "お客さまが自分で選んだものの記事。網页（AUTH_JS の showMine）が版面・「今日の主なニュース」・「気になるかも？」に描く"},
     "collectwatch": {"kind": "rule", "name": "収集の控えの時計 collect_watch.py", "spec": "後台作業のたび（pg_cron で毎時必ず）· 最後の収集から 150 分 → digest.yml を workflow_dispatch · 走っている・並んでいる・60 分以内に始まった回（timeout 40 分より長く）があれば起こさない",
                      "what": "GitHub の定時（17 */2）が抜けても収集が何時間も止まらないように。起こした・起こせなかった・回の様子が読めなかったら state/log/gate.json に 1 行（同じ失敗の続きは書き足さない）"},
     "deadline": {"kind": "rule", "name": "収集の締め切り COLLECT_DEADLINE_MIN", "spec": "18 分 · 過ぎたら新しい版面を始めない · 始まった版面も 23 分（＋5 分）で待つのをやめる · 残りは次の回に先に取る（deferred）· 初めて取る版面（新関注項）も先に · 過ぎてからの封面はネットに出ない · 1 版面の取得・処理の例外はその版面だけ空で続ける · timeout 40 分",
@@ -336,7 +336,7 @@ PROCESSES = [
             {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す · 網页の生成に失敗してもデータは push（WL_RENDER_SOFT、次の生成で作り直す）· このあとゲートが AI 編集を起こす",
              "uses": ["pending", "discord"]},
             {"id": "c10", "kind": "step", "lane": "actions", "title": "お客さまの版面を集める", "x": "×4 · 8 分まで",
-             "text": "お客さまが選んだもののうち店長の関注項にないものだけ（店長にあるものは店長の版面を見せる）· 同じ規則で集めて Supabase の user_boards に本人の account で · 失敗しても止めない（continue-on-error）",
+             "text": "一度はログインした人だけ · 選んだもののうち店長のページに版面がないものだけ（店長にあるものは店長の版面を見せる）· 1 人 1 回 3 版面・全員の 1 つ目から · 同じ規則で集めて Supabase の user_boards に本人の account で · 前の段が失敗しても走る・失敗しても止めない（continue-on-error）· job の timeout の 3 分前に締め切る · 様子はライブログへ",
              "uses": ["userfeed", "gnews", "bing", "intel", "match", "spam", "fallback", "lang", "supabase"]},
         ],
     },
@@ -697,6 +697,7 @@ LIMITS = [
     ("GitHub Actions", "同じワークフローは 1 本ずつ", "収集・依頼は前の回が終わるまで待つ（concurrency）。ページ生成は新しい回が来たら古い回を止める。"
                        "定時（cron）は混むと遅れる・抜ける（2 時間抜けたことがある）ので、後台作業は Supabase pg_cron（17 分）も 2 つ目の時計に。"
                        "収集の時計は後台作業が兼ねる（最後の収集から 150 分で digest.yml を起こす）"),
+    ("お客さまの版面の記事集め", "4 本並列 · 1 回 60 版面・8 分", "店長の収集のあと同じ job で（timeout 40 分の 3 分前までに自分で終える）。同じサイトの間隔は店長の収集と共有（sources._pace）。1 人 1 回 3 版面・まだ集めていない人は 1 回 15 人まで（大量の登録で先にいる人を止めない）"),
     ("AI 編集・写真から愿望", "1 本", "1 日の決まった時刻に 1 回ずつ。同じ inbox を書くので並列にしない"),
 ]
 # AI（Claude）を使うか：前に AI でやっていた判断ごとに、規則（プログラム）にできたか・AI のままか・その理由。

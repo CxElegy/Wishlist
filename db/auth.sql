@@ -364,6 +364,7 @@ begin
   return jsonb_build_object('name', n, 'agreed_version', p_agree_version);
 end $$;
 
+-- ※ db/user_boards.sql が上書きする（Auth のユーザーがいる人の picks はここでは変えない）。このファイルを流し直したら user_boards.sql も流す
 create or replace function public.user_set_prefs(p_name text, p_prefs jsonb)
 returns void language plpgsql security definer set search_path = '' as $$
 begin

@@ -3830,12 +3830,27 @@ html[data-mine="2"] .wl-off{display:none!important}
 .wl-mybar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 18px;padding:12px 16px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow);font:700 14px/1.5 var(--font-sans);color:var(--ink)}
 .wl-mybar b{font:900 18px/1.3 var(--font-sans)}.wl-mybar a{color:var(--ink)}.wl-mybar small{flex-basis:100%;font-weight:500;opacity:.8}
 .wl-mybar a.add{padding:4px 12px;background:var(--gold);border:2px solid var(--ink);text-decoration:none}.wl-mybar small.ok{opacity:1;color:var(--ink);background:var(--paper);padding:4px 8px}
-.wl-mybar .maybe{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;align-items:center}.wl-mybar .maybe span{font-weight:900}
-.wl-mybar .maybe a{padding:2px 10px;border:2px solid var(--ink);background:var(--card);text-decoration:none;font-weight:700;font-size:13px}
 .wl-wait{margin:0 0 18px;padding:16px 18px;background:var(--card);border:3px solid var(--ink);border-top:8px solid var(--sc);box-shadow:var(--shadow);color:var(--ink);font:500 14px/1.6 var(--font-sans)}
 .wl-wait small{font:700 var(--fs-label) var(--font-sans);opacity:.75}.wl-wait h2{margin:2px 0 6px;font:900 22px/1.3 var(--font-sans)}
 .wl-wait .dot{display:inline-block;width:10px;height:10px;margin-right:8px;border-radius:50%;background:var(--sc);animation:wlpulse 1.2s ease-in-out infinite}
 @keyframes wlpulse{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.wl-wait .dot{animation:none}}
+.wl-today,.wl-maybe{margin:0 0 18px;padding:14px 16px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow);color:var(--ink);font:500 14px/1.6 var(--font-sans)}
+.wl-today h2,.wl-maybe h2{margin:0 0 10px;font:900 20px/1.3 var(--font-sans)}.wl-maybe .hint{margin:-6px 0 10px;font-size:13px;opacity:.8}
+.wl-today .empty{margin:0;padding:14px 16px;border:2px dashed var(--ink);background:var(--sheet)}.wl-today .empty b{display:block;font:900 16px/1.5 var(--font-sans)}
+.wl-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:10px;margin:8px 0 0}
+.wl-cards>a{display:flex;flex-direction:column;gap:4px;min-width:0;padding:0 0 8px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);text-decoration:none}
+.wl-cards .pic{position:relative;display:block;aspect-ratio:16/10;background:var(--sheet);overflow:hidden}
+.wl-cards .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1}
+.wl-cards .pic .ph{position:absolute;inset:0;display:grid;place-items:center;padding:8px;text-align:center;font:900 15px/1.3 var(--font-sans);opacity:.55}
+.wl-cards .k{padding:4px 10px 0;font:700 var(--fs-label) var(--font-sans);opacity:.8}
+.wl-cards b{padding:0 10px;font:700 15px/1.45 var(--font-sans);overflow-wrap:anywhere}
+.wl-cards b i{font-style:normal;font-weight:900;color:var(--rose);margin-right:6px}
+.wl-cards small{padding:0 10px;font:500 var(--fs-label) var(--font-sans);opacity:.75}
+.wl-maybe .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.wl-maybe .chips a{padding:2px 10px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);text-decoration:none;font:700 13px/1.6 var(--font-sans)}
+@media (max-width:560px){.wl-cards>a{display:grid;grid-template-columns:88px minmax(0,1fr);grid-auto-rows:min-content;column-gap:0;padding:0}
+ .wl-cards .pic{grid-row:1/span 3;aspect-ratio:auto;min-height:88px;height:100%}.wl-cards .pic .ph{font-size:12px}
+ .wl-cards .k{padding-top:6px}.wl-cards b{padding-top:4px;font-size:14px}.wl-cards small{padding-bottom:8px}}
 .wl-mine .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:0 0 8px}
 .wl-mine .tiles button{margin:0;min-height:52px;padding:8px 10px;text-align:left;background:var(--card);border:3px solid var(--sc);font:900 14px/1.3 var(--font-sans);color:var(--ink);display:flex;flex-direction:column;gap:2px}
 .wl-mine .tiles button small{font:500 var(--fs-label) var(--font-sans);opacity:.75}
@@ -4051,8 +4066,15 @@ AUTH_JS = r"""
   function secJa(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][1];return k||'その他';}
   function secColor(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][2]||'';return '';}
   function norm(s){return String(s||'').toLowerCase().replace(/\s+/g,'');}
-  function hit(name,picks){var n=norm(name);return picks.some(function(x){var q=norm(x.name);
-    return !!q&&(q===n||(q.length>1&&n.indexOf(q)>=0)||(n.length>1&&q.indexOf(n)>=0));});}
+  // 店長の版面と同じものか（scripts/userfeed.py の shop_hit と同じ規則。変えるときは両方）：空白・大小を無視して同じ、
+  // または短いほうが長いほうに含まれ、かな・漢字を含む 2 字以上か、英数字だけなら前後が英数字でない（From Software は FROM にしない）
+  function an(c){return /[a-z0-9]/.test(c||'');}
+  function shopHit(a,b){a=norm(a);b=norm(b);if(!a||!b)return false;if(a===b)return true;
+    var s=a.length<=b.length?a:b,l=s===a?b:a;if(s.length<2)return false;
+    if(/[^\x00-\x7f]/.test(s))return l.indexOf(s)>=0;
+    for(var i=l.indexOf(s);i>=0;i=l.indexOf(s,i+1)){var j=i+s.length;if((i===0||!an(l[i-1]))&&(j===l.length||!an(l[j])))return true;}
+    return false;}
+  function hit(name,picks){return picks.some(function(x){return shopHit(name,x.name);});}
   function mine(){
     var on=isMine(), box=document.querySelector('.wl-mine');
     if(!on){R.dataset.mine='0';if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
@@ -4079,24 +4101,74 @@ AUTH_JS = r"""
       while(n&&!n.classList.contains('subhead')){if(n.matches('section.sec[data-k]')&&!n.classList.contains('wl-off')){on=true;break;}n=n.nextElementSibling;}
       h.classList.toggle('wl-off',!on);});
     document.querySelectorAll('.nmore').forEach(function(x){x.classList.add('wl-off');});
-    var wait=picks.filter(function(x){return !Object.keys(got).some(function(k){return hit(k,[x]);});});
+    var wait=picks.filter(function(x){return !Object.keys(got).some(function(k){return shopHit(k,x.name);});});
     var name=(p&&p.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
     var bar=document.querySelector('.wl-mybar')||document.createElement('div');bar.className='wl-mybar';
-    // 気になるかも？（規則：選んだジャンルにある、まだ選んでいない店長の関注項。押すと足す流れへ）
-    var secs={};picks.forEach(function(x){secs[x.sec]=1;});
-    var maybe=(A.items||[]).filter(function(x){return secs[x[1]]&&!hit(x[0],picks);}).slice(0,6);
     var added=(location.search.match(/[?&]added=([^&]*)/)||[])[1];
     bar.innerHTML='<b>'+esc(sh)+' さんのページ</b><span>追いかけているもの '+picks.length+'</span><a class="add" href="'+ADD+'">＋ 追いかけるものを足す</a><a href="settings.html">外す</a>'+
       (added?'<small class="ok">'+esc(decodeURIComponent(added))+' を足しました。店長がいま集めに行っています。</small>':'')+
-      '<small>新しい記事は 1 日に何度か届きます。👍👎 を押すと、好みに合うものが上に並ぶようになります。</small>'+
-      (maybe.length?'<div class="maybe"><span>気になるかも？</span>'+maybe.map(function(x){return '<a href="'+ADD+'">'+esc(x[0])+'</a>';}).join('')+'</div>':'');
+      '<small>新しい記事は 1 日に何度か届きます。👍👎 を押すと、好みに合うものが上に並ぶようになります。</small>';
     var m=document.querySelector('main.issues')||document.body; if(!bar.parentNode) m.insertBefore(bar,m.firstChild);
-    // まだ記事がないもの：版面の形で「集めています」（集まりしだい本物の版面に変わる）
-    document.querySelectorAll('.wl-wait').forEach(function(x){x.remove();});
-    var at=bar;
-    wait.forEach(function(x){var s=document.createElement('section');s.className='wl-wait';s.style.setProperty('--sc',secColor(x.sec)||'var(--ink)');
-      s.innerHTML='<small>'+esc(secJa(x.sec))+'</small><h2>'+esc(x.name)+'</h2><p><i class="dot"></i>店長が集めています。早ければ 1〜2 時間で最初の記事が並びます。</p>';
-      at.after(s);at=s;});
+    // 店長の版面にないもの：my_boards()（db/user_boards.sql、本人の行だけ）の記事で版面を描く。まだなら「集めています」
+    var mineB={};
+    function draw(){
+      document.querySelectorAll('.wl-wait,.wl-today,.wl-maybe').forEach(function(x){x.remove();});
+      var today=document.createElement('section');today.className='wl-today';bar.after(today);
+      var at=today;
+      wait.forEach(function(x){var b=mineB[norm(x.name)]||{state:'wait',stories:[]};
+        var s=document.createElement('section');s.className='wl-wait'+(b.state==='ok'?' wl-ub':'');s.style.setProperty('--sc',secColor(b.sec||x.sec)||'var(--ink)');
+        s.innerHTML='<small>'+esc(secJa(b.sec||x.sec))+'</small><h2>'+esc(x.name)+'</h2>'+board(b,x.name);at.after(s);at=s;});
+      todayBox(today);
+      var mb=maybeBox();if(mb)at.after(mb);
+    }
+    function safe(u){u=String(u||'');return /^https?:\/\//.test(u)?u:'';}
+    function md(d){var t=Date.parse(d||'');if(isNaN(t))return '';var x=new Date(t);return (x.getMonth()+1)+'.'+x.getDate();}
+    function fresh(d){var t=Date.parse(d||'');return !isNaN(t)&&Date.now()-t<36*3600e3;}
+    // カード 1 枚。見出し・出典は外から来た文字なので必ず esc。網址・画像は http(s) だけ
+    function card(c){var u=safe(c.url);if(!u||!c.title)return '';var img=/^https:\/\//.test(c.img||'')?c.img:'';
+      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"><span class="pic">'+(img?'<img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':'')+
+        '<span class="ph">'+esc(c.board||'')+'</span></span>'+(c.board&&img?'<span class="k">'+esc(c.board)+'</span>':'')+'<b>'+(c.isNew?'<i>NEW</i>':'')+esc(c.title)+'</b>'+
+        '<small>'+esc([c.when,c.source].filter(Boolean).join(' · '))+'</small></a>';}
+    function story2card(st,bn){return {title:st.title,url:st.url,img:st.image,source:st.source,when:md(st.date||st.seen),isNew:fresh(st.date||st.seen),board:bn,t:Date.parse(st.date||st.seen||'')||0};}
+    function board(b,bn){
+      if(b.state==='ok')return '<div class="wl-cards">'+(b.stories||[]).map(function(st){return card(story2card(st,''));}).join('')+'</div>';
+      if(b.state==='none')return '<p>まだ記事が見つかっていません。新しい記事が出たら、ここに並びます。</p>';
+      if(b.state==='limit')return '<p>追いかけられるのは 30 個までです。<a href="settings.html">ほかのものを外す</a>と、これも集め始めます。</p>';
+      return '<p><i class="dot"></i>店長が集めています。早ければ 1〜2 時間で最初の記事が並びます。</p>';
+    }
+    // 店長のページの版面の記事（いま出ている版面だけ）。カードの形にそろえる
+    function shopCards(sec,n){var out=[];sec.querySelectorAll('article').forEach(function(a){if(out.length>=n)return;var lk=a.querySelector('a.lk');if(!lk)return;
+      var im=a.querySelector('.pic img:not(.bg)'),w=a.querySelector('.when');
+      out.push({title:lk.getAttribute('aria-label')||'',url:lk.getAttribute('href'),img:im?im.getAttribute('src'):'',board:a.dataset.k||sec.dataset.k,
+        isNew:!!(w&&w.querySelector('b')),when:w?(w.firstChild&&w.firstChild.nodeType===3?w.firstChild.nodeValue:''):''});});return out;}
+    // 今日の主なニュース（店長のトップの頭条・ほかの注目ニュースに当たるもの）：店長が選んだ頭条のうち自分の版面のもの → 自分の版面の新着 → 店長の版面の先頭
+    function todayBox(box){
+      var list=[],seen={};function add(c){var u=safe(c.url);if(!u||seen[u]||!c.title)return;seen[u]=1;list.push(c);}
+      var fr=document.getElementById('front');
+      if(fr)fr.querySelectorAll('article[data-k]').forEach(function(a){if(!hit(a.dataset.k,picks))return;var lk=a.querySelector('a.lk'),im=a.querySelector('img:not(.bg)');
+        if(lk)add({title:lk.getAttribute('aria-label')||'',url:lk.getAttribute('href'),img:im?im.getAttribute('src'):'',board:a.dataset.k,isNew:true});});
+      var mine=[];wait.forEach(function(x){var b=mineB[norm(x.name)];if(b&&b.state==='ok')(b.stories||[]).slice(0,2).forEach(function(st){var c=story2card(st,x.name);if(c.isNew)mine.push(c);});});
+      mine.sort(function(a,b){return b.t-a.t;}).forEach(add);
+      document.querySelectorAll('section.sec[data-k]:not(.wl-off)').forEach(function(s){shopCards(s,1).forEach(add);});
+      list=list.slice(0,6);
+      box.innerHTML='<h2>今日の主なニュース</h2>'+(list.length?'<div class="wl-cards">'+list.map(card).join('')+'</div>':
+        '<p class="empty"><b>ここに、あなたが追いかけているものの今日の主なニュースが並びます</b>記事が届いたものから、大事なものを先頭に。下には追いかけているものごとの版面が並び、記事が集まりしだい埋まっていきます。</p>');
+    }
+    // 気になるかも？（規則・AI なし）：選んだジャンルにある、まだ追いかけていない店長の版面の新着 → 名前だけの候補。押すと記事、「＋ 追いかける」は足す流れへ
+    function maybeBox(){
+      var secs={};picks.forEach(function(x){secs[x.sec]=1;});
+      var secOf={};(A.items||[]).forEach(function(x){secOf[norm(x[0])]=x[1];});
+      var cards=[];document.querySelectorAll('section.sec[data-k].wl-off').forEach(function(s){if(cards.length>=4||!secs[secOf[norm(s.dataset.k)]]||hit(s.dataset.k,picks))return;shopCards(s,1).forEach(function(c){cards.push(c);});});
+      var names=(A.items||[]).filter(function(x){return secs[x[1]]&&!hit(x[0],picks)&&!cards.some(function(c){return norm(c.board)===norm(x[0]);});}).slice(0,6);
+      if(!cards.length&&!names.length)return null;
+      var s=document.createElement('section');s.className='wl-maybe';
+      s.innerHTML='<h2>気になるかも？</h2><p class="hint">追いかけているものと同じジャンルの新着です。</p>'+(cards.length?'<div class="wl-cards">'+cards.map(card).join('')+'</div>':'')+
+        '<div class="chips">'+cards.map(function(c){return c.board;}).concat(names.map(function(x){return x[0];})).slice(0,6).map(function(n){return '<a href="'+ADD+'">＋ '+esc(n)+' を追いかける</a>';}).join('')+'</div>';
+      return s;
+    }
+    draw();
+    function load(){if(!tok||!wait.length)return;rpc('my_boards').then(function(r){mineB={};((r&&r.boards)||[]).forEach(function(b){if(b&&b.name)mineB[norm(b.name)]=b;});draw();},function(){});}
+    load();clearInterval(R._wlub);R._wlub=setInterval(function(){if(!document.hidden)load();},5*60e3);   // 開いている間も 5 分ごとに読み直す（集まりしだい本物の版面に）
   }
   // 選び方の案内（2026-10-22，用户定的：左右に払うカードはやめ、板块 → その中の作品を押して選ぶだけ）
   function drawMine(box,p,err){
