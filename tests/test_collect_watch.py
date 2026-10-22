@@ -264,6 +264,69 @@ class Ingest(unittest.TestCase):
         self.assertEqual([b["name"] for b in saved["inbox"]["items"]], ["A", "C"])
         self.assertEqual(digest.LAST_INGEST["deferred"], ["B"])
 
+    def test_stuck_board_does_not_redraw_band_after_cut(self):
+        """待つのをやめた版面のスレッドがあとで取り終えても、本体が消した帯（live_status）に「新着 N 件」を立て直さない。"""
+        import threading
+        items, saved, release, marks = [{"name": n} for n in "ABC"], {}, threading.Event(), []
+        finished = threading.Event()
+
+        def collect(item, conf):
+            if item["name"] == "B":
+                release.wait(10)
+                finished.set()
+            return [item["name"] + "1"]
+        p = {**_ingest_patches(items, collect, saved), "live_mark": lambda board=None, state=None, *a, **k: marks.append((board, state))}
+        try:
+            with mock.patch.multiple(digest, **p, deferred_from_log=lambda: [],
+                                     COLLECT_DEADLINE_MIN=0.2 / 60, COLLECT_GRACE_MIN=0.1 / 60, COLLECT_WORKERS=3):
+                digest.ingest()
+                release.set()   # 打ち切ったあとに B が取り終える
+                finished.wait(5)
+                time.sleep(0.3)
+        finally:
+            release.set()
+        b = [s for board, s in marks if board == "B"]
+        self.assertEqual(b[-1], None)        # 最後は本体が消した印のまま
+        self.assertNotIn("found", b)         # 「新着 N 件 · AI 整理待ち」は書かない
+        self.assertIn(("A", "found"), marks)   # 打ち切りの前に終わった版面はいつもどおり
+
+    def test_intel_health_while_stuck_thread_writes(self):
+        """固まった版面のスレッドが情報員のフィードを取り足している最中に health() を呼んでも落ちない（前は
+        dictionary changed size during iteration で logged_ingest ごと落ち、その回の inbox が push されなかった）。"""
+        import threading
+        import intel
+        intel.reset()
+        stop = threading.Event()
+
+        def writer():
+            for i in range(3000):   # 数を限る（health() の文字列が大きくなりすぎないように）
+                if stop.is_set():
+                    return
+                intel.fetch("japan", {"url": f"https://example.invalid/feed{i}", "name": f"f{i}"})
+        old = sys.getswitchinterval()
+        sys.setswitchinterval(1e-6)   # スレッドを細かく切り替えて、回している最中に書き足される場面を作る
+        self.addCleanup(sys.setswitchinterval, old)
+        with mock.patch.object(intel.sources, "_get", lambda url: b"x"), mock.patch.object(intel.sources, "rss_bytes", lambda d, s: []):
+            th = threading.Thread(target=writer, daemon=True)
+            th.start()
+            try:
+                for _ in range(300):
+                    if not th.is_alive():
+                        break
+                    intel.health()
+            finally:
+                stop.set()
+                th.join(5)
+                intel.reset()
+
+    def test_logged_ingest_survives_health_error(self):
+        with tempfile.TemporaryDirectory() as d:
+            def boom():
+                raise RuntimeError("dictionary changed size during iteration")
+            with mock.patch.object(runlog, "LOG_DIR", pathlib.Path(d)), mock.patch.object(digest, "ingest", lambda: "inbox/x.json"), \
+                    mock.patch.object(digest, "_inbox_counts", dict), mock.patch.object(digest.intel, "health", boom):
+                self.assertEqual(digest.logged_ingest(), "inbox/x.json")
+
     def test_late_cover_stays_offline(self):
         """締め切りを過ぎてからの順番の処理では、封面にネット（site の og:image・Steam）を使わない。"""
         items, saved, calls = [{"name": n} for n in "AB"], {}, []
@@ -371,6 +434,80 @@ class GateNow(unittest.TestCase):
         self.assertIn("GATE_FIRE で止めている", self.fire({"GATE_FIRE": "0", "GATE_NOW": "edit"})[0])
         self.assertIn("仕事なし", self.fire({"GATE_FIRE": "edit", "GATE_NOW": "edit"}, {**self.job, "need": False})[0])
 
+    def at(self, h, m):
+        return dt.datetime(2026, 10, 19, h, m, tzinfo=zoneinfo.ZoneInfo("Asia/Tokyo")).astimezone(UTC)
+
+    def run_at(self, when, env):
+        """gate.json をそのまま引き継いで、when に fire を 1 回（後台作業・digest.yml の続きを再現する）。"""
+        calls = []
+        with mock.patch.object(gate, "_now", lambda: when):
+            res = gate.fire(self.state, post=lambda u, tok: calls.append(u) or 200, env={"ROUTINE_TOKEN_EDIT": "t", "GATE_FIRE": "edit", **env})["edit"]
+        return res, calls
+
+    def test_now_idle_within_gap_waits_and_keeps_request(self):
+        """idle（50 分前に起こし、40 分前に出刊して終わった）：60 分の間隔は守る。そのかわり頼みを now_pending に残す。"""
+        job = {**self.job, "last_batch": (self.now - dt.timedelta(minutes=40)).isoformat(),
+               "fired": {"at": (self.now - dt.timedelta(minutes=50)).isoformat(), "sig": "s0", "prog": 10, "attempts": 1}}
+        self.assertEqual(gate.work_state(job, self.now)[0], "idle")
+        res, calls = self.fire({"GATE_NOW": "edit", "GATE_NOW_ITEMS": "新しい作品"}, job)
+        self.assertIn("60 分以内に起こし済み", res)
+        self.assertIn("頼みを残した", res)
+        self.assertEqual(calls, [])
+        pend = gate.load(self.state)["jobs"]["edit"]["now_pending"]
+        self.assertEqual(pend["items"], ["新しい作品"])
+        self.assertEqual(pend["at"], self.now.isoformat(timespec="seconds"))
+
+    def test_now_unpublished_fires_with_marks(self):
+        """unpublished（120 分前に起こして進んだが、そのあと出刊がない）：GATE_NOW なら定時を待たずに起こし、now と day が残る。"""
+        job = {**self.job, "last_batch": (self.now - dt.timedelta(minutes=150)).isoformat(),
+               "fired": {"at": (self.now - dt.timedelta(minutes=120)).isoformat(), "sig": "s0", "prog": 10, "attempts": 1}}
+        self.assertEqual(gate.work_state(job, self.now)[0], "unpublished")
+        res, calls = self.fire({"GATE_NOW": "edit"}, job)
+        self.assertEqual(res, "Claude を起こした")
+        self.assertEqual(len(calls), 1)
+        fired = gate.load(self.state)["jobs"]["edit"]["fired"]
+        self.assertTrue(fired.get("now"))
+        self.assertEqual(fired.get("day"), "2026-10-19")
+
+    def test_now_after_slot_run_is_picked_up_by_background(self):
+        """定時 9:07 に起こす → 9:32 に出刊して終わる → 9:50 に新関注項（GATE_NOW）は 60 分以内で止まる →
+        9:55 の後台作業もまだ待つ → 10:17 の後台作業（GATE_NOW なし）が頼みを拾って起こす。前は 18:00 まで整理待ちのままだった。"""
+        gate.save({"jobs": {"edit": {**self.job, "last_batch": self.at(9, 32).isoformat(),
+                                     "fired": {"at": self.at(9, 7).isoformat(), "sig": "s0", "prog": 10, "attempts": 1}}}}, self.state)
+        res, calls = self.run_at(self.at(9, 50), {"GATE_NOW": "edit", "GATE_NOW_ITEMS": "新しい作品"})
+        self.assertIn("頼みを残した", res)
+        self.assertEqual(calls, [])
+        res, calls = self.run_at(self.at(9, 55), {})
+        self.assertIn("60 分以内", res)
+        self.assertEqual(calls, [])
+        self.assertEqual(gate.load(self.state)["jobs"]["edit"]["now_pending"]["at"], self.at(9, 50).isoformat(timespec="seconds"))
+        res, calls = self.run_at(self.at(10, 17), {})
+        self.assertEqual(res, "Claude を起こした")
+        self.assertEqual(len(calls), 1)
+        j = gate.load(self.state)["jobs"]["edit"]
+        self.assertNotIn("now_pending", j)   # 起こしたら消す
+        self.assertTrue(j["fired"].get("now"))
+
+    def test_without_request_background_still_waits_for_slot(self):
+        """頼みがなければ、10:17 の後台作業は今までどおり 18:00 を待つ。"""
+        gate.save({"jobs": {"edit": {**self.job, "last_batch": self.at(9, 32).isoformat(),
+                                     "fired": {"at": self.at(9, 7).isoformat(), "sig": "s0", "prog": 10, "attempts": 1}}}}, self.state)
+        res, calls = self.run_at(self.at(10, 17), {})
+        self.assertIn("次は 18:00", res)
+        self.assertEqual(calls, [])
+
+    def test_old_or_done_request_is_dropped(self):
+        old = {**self.job, "last_batch": self.at(9, 32).isoformat(),
+               "fired": {"at": self.at(9, 7).isoformat(), "sig": "s0", "prog": 10, "attempts": 1},
+               "now_pending": {"at": (self.at(10, 17) - dt.timedelta(hours=gate.NOW_PENDING_HOURS + 1)).isoformat(), "items": []}}
+        gate.save({"jobs": {"edit": old}}, self.state)
+        res, calls = self.run_at(self.at(10, 17), {})
+        self.assertIn("次は 18:00", res)   # 古い頼みは捨てる（定時が拾う）
+        self.assertNotIn("now_pending", gate.load(self.state)["jobs"]["edit"])
+        gate.save({"jobs": {"edit": {**old, "need": False, "now_pending": {"at": self.at(9, 50).isoformat()}}}}, self.state)
+        self.assertIn("仕事なし", self.run_at(self.at(10, 17), {})[0])
+        self.assertNotIn("now_pending", gate.load(self.state)["jobs"]["edit"])
+
 
 class Workflows(unittest.TestCase):
     @staticmethod
@@ -398,6 +535,12 @@ class Workflows(unittest.TestCase):
         self.assertIn("steps.fire.outputs.fired", add)
         self.assertIn("steps.kick.outputs.tried", add)       # 起こせなかったときも（管理ページ・ライブログに出す）
         self.assertIn("steps.more.outputs.changed", add)     # 小元素のあとの check で判断が変わったときも
+        names = [s.get("id") or s.get("name") for s in wf["jobs"]["run"]["steps"]]
+        self.assertLess(names.index("kick"), names.index("gate"))   # 控えの時計はゲートの判断より前：判断が落ちても毎時通る
+        self.assertEqual(emblem.get("id"), "fill")
+        self.assertIn("steps.fill.outcome == 'success'", steps["more"]["if"])   # 落ちた回は同じ落ち方で起こし直さない
+        self.assertLess(commit.index("yaml.safe_load(open('items.yaml'"), commit.index("git add \"$f\""))   # 壊れた items.yaml は push しない
+        self.assertIn("git checkout -- items.yaml", commit)
 
     def test_background_slots_match_processes(self):
         import processes
@@ -417,9 +560,33 @@ class Workflows(unittest.TestCase):
         self.assertNotIn("api.anthropic.com", step["run"])       # 直接起こさない（一時停止・記録を通す）
         self.assertEqual(step["env"]["GATE_NOW"], "edit")
         self.assertIn("git push", step["run"])                   # 起こした記録を push
+        self.assertIn("すぐの頼みを残した", step["run"])          # 60 分以内で止められた頼み（now_pending）も push する
+        self.assertIn("GATE_NOW_ITEMS", step["run"])
         for line in step["run"].splitlines():                    # ゲートが落ちても、データを push したあとの job を赤くしない
             if "gate.py check" in line or "gate.py fire" in line:
                 self.assertIn("||", line)
+
+
+class AtomicItems(unittest.TestCase):
+    """小元素の段は continue-on-error：途中で殺されても items.yaml を半分だけ書いた形で残さない（emblem.write_atomic）。"""
+
+    def test_write_atomic(self):
+        import emblem
+        with tempfile.TemporaryDirectory() as d:
+            f = pathlib.Path(d) / "items.yaml"
+            f.write_text("items:\n  - name: A\n", encoding="utf-8")
+            with mock.patch("os.replace", side_effect=KeyboardInterrupt):   # 置き換える前に止まった
+                with self.assertRaises(KeyboardInterrupt):
+                    emblem.write_atomic(f, "items:\n  - na")
+            self.assertEqual(f.read_text(encoding="utf-8"), "items:\n  - name: A\n")   # 元のまま
+            emblem.write_atomic(f, "items:\n  - name: B\n")
+            self.assertEqual(f.read_text(encoding="utf-8"), "items:\n  - name: B\n")
+            self.assertEqual([x.name for x in pathlib.Path(d).iterdir()], ["items.yaml"])   # 一時ファイルも残さない
+
+    def test_emblem_writers_use_atomic(self):
+        for name in ("emblem.py", "emblem_fill.py"):
+            src = (ROOT / "scripts" / name).read_text(encoding="utf-8")
+            self.assertNotIn('path.write_text("\\n".join(lines)', src, name)
 
 
 if __name__ == "__main__":

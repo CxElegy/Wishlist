@@ -63,11 +63,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: 判断（有没有活、要不要 AI）
-        id: gate
-        run: python scripts/gate.py check
-
-      # 收集的控えの時計：GitHub 的定时（digest.yml 的 cron）常常抜ける。这里由 Supabase pg_cron 每小时一定叫起，
+      # 收集的控えの時計（ゲートの判断より前：判断の段が落ちても、これは毎時必ず通す）：GitHub 的定时（digest.yml 的 cron）常常抜ける。这里由 Supabase pg_cron 每小时一定叫起，
       # 最后的收集（state/log/collect.json）过了 150 分钟、又没有在跑・在排队的回，就 workflow_dispatch 起一次收集
       - name: 收集的定时抜けた → 收集を起こす
         id: kick
@@ -75,6 +71,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/collect_watch.py
+
+      - name: 判断（有没有活、要不要 AI）
+        id: gate
+        run: python scripts/gate.py check
 
       - name: 模型的缓存（抠图 rembg 224MB・人脸 YuNet / SFace 39MB）
         if: steps.gate.outputs.emblem == 'true'
@@ -94,6 +94,7 @@ jobs:
           restore-keys: wishlist-http-
 
       - name: 小元素补全（Python，不用 AI · 6 本并行 · 取法分 3 段）
+        id: fill
         if: steps.gate.outputs.emblem == 'true'
         continue-on-error: true   # 失敗しても、AI 編集を起こす段と提交は続ける（そこまでに埋まった分も push する）
         run: |
@@ -102,7 +103,7 @@ jobs:
 
       - name: 还有活 → 自己再起一次（最多接着 3 次）
         id: more
-        if: steps.gate.outputs.emblem == 'true' && fromJSON(inputs.chain || '0') < 3
+        if: steps.gate.outputs.emblem == 'true' && steps.fill.outcome == 'success' && fromJSON(inputs.chain || '0') < 3   # 落ちた回は同じ落ち方で起こし直さない
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -121,6 +122,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 小元素の段が途中で落ちても（continue-on-error）、壊れた items.yaml は push しない（全部のワークフローの load_config が止まる）
+          python -c "import yaml; yaml.safe_load(open('items.yaml', encoding='utf-8'))" || { echo "::warning::items.yaml が読めない：小元素の書き込みを戻す"; git checkout -- items.yaml; }
           # まだないファイル（新しいアカウントを空から始めた直後の emblem_progress.json など）は飛ばす：1 つでもないと git add 全体が失敗する
           for f in items.yaml docs/home/emblems state/emblem_progress.json state/log/emblem.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           # ゲートの記録は、判断が前と変わったとき（最初の check・小元素のあとの check）・Claude を本当に起こしたとき・

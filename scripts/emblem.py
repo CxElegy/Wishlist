@@ -53,6 +53,21 @@ MAX_BYTES = 6_000_000
 MIN_SIDE = 160
 
 
+def write_atomic(path, text):
+    """items.yaml などを一時ファイルに書いてから置き換える（書いている途中で殺されても、壊れた半分のファイルを残さない：
+    後台作業の小元素の段は continue-on-error なので、壊れた items.yaml が push されると全部のワークフローの load_config が止まる）。"""
+    import os
+    import threading
+    path = pathlib.Path(path)
+    tmp = path.with_name(f".{path.name}.{os.getpid()}.{threading.get_ident()}.tmp")
+    try:
+        tmp.write_text(text, encoding="utf-8")
+        os.replace(tmp, path)
+    except BaseException:
+        tmp.unlink(missing_ok=True)
+        raise
+
+
 def _get(url, limit=MAX_BYTES):
     if wikihttp.is_wikimedia(url):   # Wikimedia は決まりどおりの UA・1 本ずつ・Retry-After・キャッシュ
         return wikihttp.get(url, limit)
@@ -332,7 +347,7 @@ def _flow(d):
 def write_item(name, emblems, th):
     """items.yaml のその関注項に emblem（リスト）と theme を書く（あれば置き換え）。motif の行のすぐ後ろに入れる。"""
     path = ROOT / "items.yaml"
-    path.write_text(item_text(path.read_text(encoding="utf-8"), name, emblems, th), encoding="utf-8")
+    write_atomic(path, item_text(path.read_text(encoding="utf-8"), name, emblems, th))
 
 
 def item_text(text, name, emblems, th=None):
@@ -380,7 +395,7 @@ def recrop(name):
         k += 1
     keep = ("subject", "why", "image", "page", "shape", "crop", "ar")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
-    path.write_text("\n".join(lines), encoding="utf-8")
+    write_atomic(path, "\n".join(lines))
 
 
 EMB_DIR = sitedir.SITE_DIR / "emblems"   # 切り抜いた画像（網页と同じ場所に置く。倉庫は公開なので画像も公開になる）
@@ -904,7 +919,7 @@ def _write_emblems(name, ems):
         k += 1
     keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
-    path.write_text("\n".join(lines), encoding="utf-8")
+    write_atomic(path, "\n".join(lines))
 
 
 def upper_all(name):
@@ -939,7 +954,7 @@ def upper_all(name):
         k += 1
     keep = ("subject", "why", "image", "source", "page", "shape", "upper")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
-    path.write_text("\n".join(lines), encoding="utf-8")
+    write_atomic(path, "\n".join(lines))
 
 
 POSE_MODEL = "yolov8m-pose.pt"   # 体の目印（目・足首）。ultralytics があれば使い、なければ輪郭から推定（Actions には入れていない：PyTorch が重い）
@@ -1218,7 +1233,7 @@ def cut_all(name, drawn, old=()):
         k += 1
     keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
-    path.write_text("\n".join(lines), encoding="utf-8")
+    write_atomic(path, "\n".join(lines))
 
 
 def main():

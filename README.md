@@ -63,7 +63,7 @@ GitHub Actions 的安排：
 | 每小时（后台作業，Supabase pg_cron 必到） | 收集的控えの時計：GitHub 的定时抜けて最后一次收集过了 150 分钟，就起一次收集（`scripts/collect_watch.py`） |
 | 每周一 08:47（北京时间） | 发 Discord 周报：过去 7 天每个关注项的要点 + 网页链接 |
 | 每天 9:00 · 18:00（日本时间） | 后台ゲート在有整理待ち时叫 Claude 定时任务（AI 编辑）挑出值得报的条目、合并同一件事（标题保留原文语言，不翻译） |
-| 新加关注项推送后 | 收集到消息就经ゲート立刻叫 AI 编辑编一次，不等 9:00 / 18:00（管理页的一時停止・正在编辑中时不叫；需要仓库 Secret `ROUTINE_FIRE_TOKEN`：需要仓库 Secret `ROUTINE_FIRE_TOKEN`：claude.ai/code/routines → 「关注清单通信 · AI 编辑」→ 编辑 → 添加触发器 → API → 生成令牌） |
+| 新加关注项推送后 | 收集到消息就经ゲート立刻叫 AI 编辑编一次，不等 9:00 / 18:00（管理页的一時停止・正在编辑中时不叫；需要仓库 Secret `ROUTINE_FIRE_TOKEN`：claude.ai/code/routines → 「关注清单通信 · AI 编辑」→ 编辑 → 添加触发器 → API → 生成令牌） |
 
 ```
 items.yaml

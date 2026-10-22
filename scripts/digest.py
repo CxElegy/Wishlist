@@ -2860,8 +2860,12 @@ def ingest(dry_run=False):
     started = {}
     if live:
         live_mark(None)  # 上一次收集留下的行清掉
+    import threading
     import time
     t_start, budget = time.monotonic(), COLLECT_DEADLINE_MIN * 60
+    # 待つのをやめた（固まった）版面のスレッドは daemon で走り続ける。打ち切ったあと（cut）は帯（live_status）を立て直さない：
+    # 本体が消した帯に、今回 inbox に何も書かない版面の「新着 N 件 · AI 整理待ち」が次の収集まで残らないように
+    cut, mark_lock = threading.Event(), threading.Lock()
     t_deferred, t_failed = [], {}   # スレッドが書く（固まった 1 本があとで書き足すこともある）。順番の処理は写しの deferred / failed
     LAST_INGEST.clear()
 
@@ -2886,7 +2890,10 @@ def ingest(dry_run=False):
         print(f"抓取：{item['name']}", file=sys.stderr)
         if live:  # 网页上只有这个版面出「正在找新记事」的条
             started[name] = dt.datetime.now(dt.timezone.utc)
-            live_mark(name, "fetch", started=started[name])
+            with mark_lock:
+                if cut.is_set():
+                    return None
+                live_mark(name, "fetch", started=started[name])
         try:
             raw = collect(item, confs[name][1])
         except Exception as err:  # noqa: BLE001  1 版面の失敗で収集全体を止めない（その版面は空・ログに残す）
@@ -2901,12 +2908,17 @@ def ingest(dry_run=False):
                 n = len(filter_entries(raw, item, confs[name][1], seen, now, compare_for(item)))
             except Exception:  # noqa: BLE001
                 n = None
-            if n is not None:
-                shown[name] = n or None
-                live_mark(name, "found" if n else None, n, started.get(name), eta())
+            with mark_lock:
+                if cut.is_set():   # 打ち切ったあとに終わった：結果は捨てられる（run_parallel）ので帯も書かない
+                    return raw
+                if n is not None:
+                    shown[name] = n or None
+                    live_mark(name, "found" if n else None, n, started.get(name), eta())
         return raw
     order = fetch_order(items, [] if dry_run else deferred_from_log(), [n for n, (b, _) in confs.items() if b])
     got, stuck = run_parallel(fetch, order, COLLECT_WORKERS, budget + COLLECT_GRACE_MIN * 60)
+    with mark_lock:
+        cut.set()
     deferred, failed = list(t_deferred), dict(t_failed)   # 固まったスレッドがあとで書き足しても、ここからは手元の写しを使う
     for name in stuck:   # 締め切り＋余裕を過ぎても終わらなかった（固まった）版面：次の回へ
         if name not in deferred:
@@ -3747,9 +3759,14 @@ def logged_ingest():
     if failed:
         runlog.add("collect", f"取得・処理に失敗した {len(failed)} 版面は空で続けた：" + "、".join(f"{k}（{v}）" for k, v in list(failed.items())[:3]),
                    "warn", failed=dict(failed))
-    if intel.health():   # 情報員の情報源ごとの様子（取れなかった所は名前と理由）
-        print("情報員：" + intel.health(), file=sys.stderr)
-        runlog.add("collect", "情報員 " + intel.health(), "info")
+    try:
+        health = intel.health()   # 情報員の情報源ごとの様子（取れなかった所は名前と理由）
+    except Exception as e:  # noqa: BLE001  ログの 1 行が抜けるだけ：収集の結果（inbox）の push を止めない
+        health = ""
+        print(f"情報員の様子が読めない：{e}", file=sys.stderr)
+    if health:
+        print("情報員：" + health, file=sys.stderr)
+        runlog.add("collect", "情報員 " + health, "info")
     return path
 
 

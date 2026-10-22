@@ -129,12 +129,13 @@ jobs:
           if [ -z "$names" ]; then echo "新关注项还没有消息或已编排过，不用叫 AI 编辑"; exit 0; fi
           echo "新关注项：$names"
           python scripts/gate.py check > /dev/null || { echo "::warning::ゲートの判断に失敗、定時を待つ"; exit 0; }
-          python scripts/gate.py fire > /tmp/fire.txt || { echo "::warning::叫 AI 编辑失败，等定时编排"; exit 0; }
+          GATE_NOW_ITEMS="$names" python scripts/gate.py fire > /tmp/fire.txt || { echo "::warning::叫 AI 编辑失败，等定时编排"; exit 0; }
           cat /tmp/fire.txt
-          grep -q "^edit *Claude を起こした" /tmp/fire.txt || exit 0
+          # 起こした・または「60 分以内に起こし済み」で止められて頼みを残した（jobs.edit.now_pending：後台作業が 60 分後に起こす）ときだけ push
+          grep -qE "^edit *(Claude を起こした|.*すぐの頼みを残した)" /tmp/fire.txt || exit 0
           # 叫起的记录（下次ゲート判断「編集中」「停滞」用）也 push 上去
           git add state/gate.json state/log/gate.json
-          git diff --cached --quiet || git commit -q -m "ゲート：新関注項で AI 編集を起こした"
+          git diff --cached --quiet || git commit -q -m "ゲート：新関注項で AI 編集を起こした（または頼みを残した）"
           git stash -q --include-untracked || true   # ほかに変わったもの（判断だけの記録）は捨てる：pull --rebase の邪魔になる
           for i in 1 2 3; do
             if git pull --rebase -X theirs -q; then git push && exit 0; else git rebase --abort || true; fi

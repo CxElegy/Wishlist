@@ -101,8 +101,9 @@ def fetch(region, src):
             got, state = [], _state(e)
         drop = [w.lower() for w in src.get("exclude") or []]
         got = [e for e in got if not any(w in e.title.lower() for w in drop)]
-        _feeds[url] = got
-        _status[url] = (state, len(got), src.get("name") or url, region)
+        with _lock:   # health() が読む間に、待つのをやめた（固まった）版面のスレッドが書き足しても壊れないように
+            _feeds[url] = got
+            _status[url] = (state, len(got), src.get("name") or url, region)
         return got
 
 
@@ -117,10 +118,12 @@ def entries_for(item, settings):
 
 def health():
     """この回の情報源の様子（収集のログに書く 1 行）。何も取っていなければ空。"""
-    if not _status:
+    with _lock:   # 写しを取ってから回す（収集の締め切りのあとも daemon のスレッドが _status に書き足すことがある）
+        rows_all = list(_status.values())
+    if not rows_all:
         return ""
     by = {}
-    for state, n, name, region in _status.values():
+    for state, n, name, region in rows_all:
         by.setdefault(region, []).append((state, n, name))
     parts = []
     for region, rows in by.items():

@@ -485,7 +485,7 @@ def _set_field(name, key, value):
     else:
         k = next((i for i in range(start + 1, end) if lines[i].startswith("    emblem_kind:")), start)
         lines.insert(k + 1, row)
-    path.write_text("\n".join(lines), encoding="utf-8")
+    emblem.write_atomic(path, "\n".join(lines))
 
 
 def wiki_titles(item):
@@ -1175,7 +1175,7 @@ def _drop_skip(name):
     start = next(i for i, l in enumerate(lines) if re.match(rf'^  - name: "?{re.escape(name)}"?\s*$', l))
     end = next((i for i in range(start + 1, len(lines)) if lines[i].startswith("  - name:")), len(lines))
     lines[start + 1:end] = [l for l in lines[start + 1:end] if not l.startswith("    emblem_skip:")]
-    path.write_text("\n".join(lines), encoding="utf-8")
+    emblem.write_atomic(path, "\n".join(lines))
 
 
 def commit(item, good, picks, replace=False, log=print):
