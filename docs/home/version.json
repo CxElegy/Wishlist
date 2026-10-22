@@ -1,13 +1,13 @@
 {
- "admin": "e6534faa27a5",
+ "admin": "697eebdbd4fd",
  "admin_marks": {
   "backend": [
    "バックグラウンド",
-   "cb8cb327"
+   "3e9dd870"
   ],
   "editdiff": [
    "AI 編集の前後",
-   "a4d4c174"
+   "a4597278"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -19,11 +19,11 @@
   ],
   "items": [
    "ウォッチ項目",
-   "02349543"
+   "deac4b73"
   ],
   "ov": [
    "しくみの全体図",
-   "8d3aee90"
+   "872bcae3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -35,11 +35,11 @@
   ],
   "status": [
    "運行状況",
-   "888df3af"
+   "cc590d7b"
   ],
   "term-panel": [
    "ライブログ",
-   "80164340"
+   "0d426806"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -50,7 +50,7 @@
    "1dbdd140"
   ]
  },
- "heat": "318c7aba159b",
+ "heat": "285f52c90413",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -58,14 +58,14 @@
   ],
   "movers": [
    "前週比",
-   "3057f97a"
+   "08c50120"
   ],
   "ranking": [
    "ランキング",
-   "a63a59bb"
+   "db974282"
   ]
  },
- "index": "373286ceeb1f",
+ "index": "184a6c7c414f",
  "index_marks": {
   "front": [
    "トップ",
@@ -145,7 +145,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "3f512cfd"
+   "27d47b75"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -168,6 +168,6 @@
    "d423993a"
   ]
  },
- "updated": "10.22 20:17",
+ "updated": "10.22 21:07",
  "wishlist": "7579516ffba0"
 }

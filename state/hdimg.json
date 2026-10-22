@@ -100,6 +100,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/005Zl6ySly1iib892m62xj31561pqx3z.jpg": {
+  "w": 1482,
+  "h": 2222,
+  "target": 720,
+  "v": 3,
+  "local": "pics/62ca4bb09dfc53a3.webp",
+  "out": [
+   854,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/007nrArUgy1ii4kkhnk5xj31400qox3n.jpg": {
   "w": 1440,
   "h": 960,
@@ -109,19 +122,6 @@
   "out": [
    1280,
    853
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx3.sinaimg.cn/middle/647c8fably1iia68z7eemj21r219qe81.jpg": {
-  "w": 2000,
-  "h": 1450,
-  "target": 720,
-  "v": 3,
-  "local": "pics/feebdfea09e99887.webp",
-  "out": [
-   1280,
-   928
   ],
   "why": "防盗链",
   "ref": true
@@ -675,6 +675,12 @@
   "target": 720,
   "v": 3
  },
+ "https://gachapolitan.com/wp-content/uploads/2026/10/5671-1.jpg": {
+  "w": 800,
+  "h": 565,
+  "target": 720,
+  "v": 3
+ },
  "https://gaming-age.com/wp-content/uploads/2026/10/Zenless-Zone-Zero-v3.3-kv.jpg": {
   "w": 1280,
   "h": 720,
@@ -730,6 +736,12 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/team-yandex-wins-blast-slam-viii-25351.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/yekindar-plays-dota-2-25375.jpg": {
   "w": 1200,
   "h": 628,
   "target": 720,
@@ -893,12 +905,6 @@
    720
   ],
   "why": "看不清"
- },
- "https://image.news.livedoor.com/newsimage/stf/6/8/68db4_1847_61a71f489fb525b34fc7ec2451285cdb.jpg": {
-  "w": 700,
-  "h": 467,
-  "target": 720,
-  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/6/f/6f6b6_1845_b48d9d89_6861ecd1.jpg": {
   "target": 1280,
@@ -1336,6 +1342,19 @@
   ],
   "why": "看不清"
  },
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1485898295206184406/origin_1.jpg": {
+  "w": 360,
+  "h": 360,
+  "target": 720,
+  "v": 3,
+  "blur": 0.538,
+  "local": "pics/9d7d527eda42e79a.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/11/5602291_3.jpg": {
   "w": 800,
   "h": 450,
@@ -1561,12 +1580,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://m.media-amazon.com/images/I/51cA38cO-qL._SL500_.jpg": {
-  "w": 368,
-  "h": 500,
-  "target": 720,
   "v": 3
  },
  "https://maxblizz.com/wp-content/uploads/2026/10/Marvel-Studios-Phase-7-movies-new.jpg": {
@@ -2503,7 +2516,7 @@
   "target": 720,
   "v": 3
  },
- "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022191710": {
+ "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022210222": {
   "w": 712,
   "h": 955,
   "target": 1280,
@@ -2877,6 +2890,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.INrR62tch3ap9vSGkg4PTw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2896,12 +2915,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.Mx50wgbVcLVfk3mFFN_u8g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.PnKQKUxrSEi8SzKpRoGfGg&pid=News&w=896": {
   "w": 700,
   "h": 393,
@@ -2914,6 +2927,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.Pwp3Y3_R63rGuRuUjLz36w&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.QtNfk9tvzNrsIUmeECrxGw&pid=News&w=1200": {
   "w": 100,
@@ -2930,18 +2949,6 @@
  "https://www.bing.com/th?id=ONUT.Tw408Jo7-WCfcnK3zPpcHA&pid=News&w=1200": {
   "w": 700,
   "h": 364,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.UOKCZzSMtt8ASQahrpit7w&pid=News&w=1200": {
-  "w": 700,
-  "h": 508,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.UZhxFhLBA7QtHiCRHL3FOg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -2975,6 +2982,12 @@
    393
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.b46cxz8i8Ri5JarPCJlBSg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600": {
   "w": 600,
