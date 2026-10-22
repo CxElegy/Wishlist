@@ -172,6 +172,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "https://0.soompi.io/wp-content/uploads/2026/10/21203810/A2O-LITE-show-champion.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/09/Snapdragon-8-Elite-Extreme-Gen-6.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
   "h": 628,
@@ -1089,12 +1095,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fJMnf.img": {
-  "w": 550,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fKAOl.img": {
   "w": 1200,
   "h": 675,
@@ -1239,12 +1239,6 @@
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/11/5602291_3.jpg": {
   "w": 800,
   "h": 450,
-  "target": 720,
-  "v": 3
- },
- "https://img.mydaily.co.kr/photos/2026/10/21/2026102112324060920_x.jpg": {
-  "w": 1280,
-  "h": 960,
   "target": 720,
   "v": 3
  },
@@ -3130,6 +3124,12 @@
  "https://www.universal-music.co.jp/illit/wp-content/uploads/sites/4041/2026/10/Weverse_clear_sample-1024x302.jpg": {
   "w": 1024,
   "h": 302,
+  "target": 720,
+  "v": 3
+ },
+ "https://x-bomberth.com/wp-content/uploads/2026/10/s-fsfdsa-1.jpg": {
+  "w": 1280,
+  "h": 853,
   "target": 720,
   "v": 3
  }
