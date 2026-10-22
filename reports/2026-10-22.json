@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "b66b4b866751",
+ "edit_sig": "40c21af8cf4a",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -865,45 +865,49 @@
    "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
    "facts": [],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
-     "date": "2026-10-19",
-     "n": 1,
-     "source": "note",
-     "title": "Analysis of the Manga 'Chainsaw Man' - Why was it the 'Chainsaw' that held the power to erase devils?",
-     "url": "https://note.com/happy_bonobo7281/n/n5de6884beea0?hl=en"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 2,
-     "source": "セレクトラ",
-     "title": "チェンソーマン レゼ篇の配信はいつから？どこで観れる？｜ネタバレあらすじやTVアニメの配信情報も",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA2b2R5eWR0R0hCYnZZZHZGUXBhSmdMQWlhdF9OWi03WXZmeU1DQk5mQ1BQbkhXYWdUX2gxUWFqY2doZGtPYWJQWnFmT3poWW56VnJ1eWd0eC1OQmxoOUxYa1ppUUFwLUNU?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 3,
-     "source": "note",
-     "title": "漫画『チェンソーマン』考察-なぜ悪魔を消滅させる力を持つのは「チェンソー」だったのか？",
-     "url": "https://note.com/happy_bonobo7281/n/n5de6884beea0"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 4,
-     "source": "映画.com",
-     "title": "「マキマさんて、何者？」 チェンソーマン レゼ篇 ナイトさんの映画レビュー（感想・評価）",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9ad3pHTVJ3S3I0ZVZ2U0x1SDN3TjBwbk10dGVTdmVnREhnNGt4emluZFp3OWM2Y25iWC03VXRmZ1FQRTUzS1FNSlo5SkFPZ0o3dTdKZDlybUZnQQ?oc=5"
+     "headline": "TVアニメ「チェンソーマン」のアウトドアグッズが登場！AOZORAGEAR online SHOP、アニメイトにて販売",
+     "highlight": "アウトドアグッズが登場",
+     "image": "https://news.walkerplus.com/article/1133922/11697468_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1133922/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
+     "date": "2026-10-19",
+     "headline": "チェンソーマン レゼ篇の配信はいつから？どこで観れる？",
+     "highlight": "",
+     "image": "https://images.selectra.jp/selectra.jp/files/chainsawman.png.webp",
+     "image_via": "og:image",
+     "url": "https://selectra.jp/streaming/news/chainsaw-man-streaming",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-19",
+     "headline": "漫画『チェンソーマン』考察-なぜ悪魔を消滅させる力を持つのは「チェンソー」だったのか？",
+     "highlight": "",
+     "image": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/165a06c8c5684c2083c5a4bd62e008afe2badda7.png",
+     "image_via": "og:image",
+     "url": "https://note.com/happy_bonobo7281/n/n5de6884beea0",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 5,
-     "source": "ウォーカープラス",
-     "title": "TVアニメ「チェンソーマン」のアウトドアグッズが登場！AOZORAGEAR online SHOP、アニメイトにて販売(1/2)",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9jNlNvUmh2X0lpMmNmNUpFTzJhemZFeXJFTG1MZmVhSUNsMTJkRzhPaE5rSWhBc1JoOEpkOFRZcXlaY1ZRbFlwRHNjWU9MLU5zMDBveXRR0gFbQVVfeXFMTUUyazJxRENYOFJodGpuZWIyZVdSa0hFbTFuZEdNeVVIb051UTZHN0Z4RXVBS2lJbHozdnVvTGllTXU1X3ZvbmY5NXhLOE9XTXQ2SVJyWFk1NWhlcw?oc=5"
+     "headline": "「マキマさんて、何者？」 チェンソーマン レゼ篇 ナイトさんの映画レビュー",
+     "highlight": "",
+     "image": "https://media.eiga.com/images/movie/100938/photo/d0e81b416eba1265.jpg",
+     "image_via": "og:image",
+     "url": "https://eiga.com/movie/100938/review/07125834/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",

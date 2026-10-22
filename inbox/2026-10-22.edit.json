@@ -84,7 +84,8 @@
   "日本顶级网球赛事": 9,
   "dota2": 8,
   "MMORPG 新作": 6,
-  "ILLIT": 5
+  "ILLIT": 5,
+  "チェーンソーマン": 5
  },
  "周杰伦": [
   {
@@ -527,6 +528,45 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "TVアニメ「チェンソーマン」のアウトドアグッズが登場！AOZORAGEAR online SHOP、アニメイトにて販売",
+   "highlight": "アウトドアグッズが登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "チェンソーマン レゼ篇の配信はいつから？どこで観れる？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "漫画『チェンソーマン』考察-なぜ悪魔を消滅させる力を持つのは「チェンソー」だったのか？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    1
+   ]
+  },
+  {
+   "headline": "「マキマさんて、何者？」 チェンソーマン レゼ篇 ナイトさんの映画レビュー",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]

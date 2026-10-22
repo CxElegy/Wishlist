@@ -569,6 +569,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://d2l930y2yx77uc.cloudfront.net/production/social_images/165a06c8c5684c2083c5a4bd62e008afe2badda7.png": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/ebf769002e615d55e3b3b145d1294f169b5a60c8.png": {
   "w": 1280,
   "h": 670,
@@ -916,6 +922,12 @@
  "https://images.selectra.jp/articles/chiikawa-movie-4dx/hero.webp": {
   "w": 1200,
   "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.selectra.jp/selectra.jp/files/chainsawman.png.webp": {
+  "w": 1280,
+  "h": 960,
   "target": 720,
   "v": 3
  },
@@ -1491,6 +1503,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.eiga.com/images/movie/100938/photo/d0e81b416eba1265.jpg": {
+  "w": 800,
+  "h": 533,
+  "target": 720,
+  "v": 3
+ },
  "https://media.image.infoseek.co.jp/isnews/photos/itmedia_favlog/itmedia_favlog_4062502_0.jpg": {
   "w": 1200,
   "h": 630,
@@ -1681,6 +1699,13 @@
    828
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
+  "w": 615,
+  "h": 346,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.398
  },
  "https://news.walkerplus.com/article/1430865/18178181_615.jpg": {
   "w": 615,
