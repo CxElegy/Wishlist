@@ -370,6 +370,12 @@
   ],
   "why": "看不清"
  },
+ "https://cdn.mainichi.jp/vol1/2015/12/18/20151218hrc00m010001000q/9.jpg?2": {
+  "w": 800,
+  "h": 420,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.mos.cms.futurecdn.net/7MkXgTMHDpN3fkLRciMFVY-2048-80.jpg": {
   "w": 2048,
   "h": 1152,
@@ -1958,6 +1964,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00035752-tennismagv-000-2-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/ea66fa46839187c2.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00142752-toushin-000-3-view.png?fmt=jpeg&q=85&exp=10800": {
   "w": 861,
   "h": 452,
@@ -1979,6 +1997,18 @@
   "out": [
    650,
    470
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-00035749-tennismagv-000-1-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3,
+  "local": "pics/b00e37dbb7f342a4.webp",
+  "out": [
+   1280,
+   960
   ],
   "why": "期限付きの網址"
  },
@@ -2853,12 +2883,6 @@
    861
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.qJENpNsoRDJ_Wwv9BLHPeQ&pid=News&w=800": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.sU0gjrl22H5hXJIloWh1hA&pid=News&w=724": {
   "w": 100,
