@@ -3829,6 +3829,13 @@ html[data-mine="1"] body>*:not(.wl-auth):not(.wl-mine):not(.wl-toast):not(.wl-ag
 html[data-mine="2"] .wl-off{display:none!important}
 .wl-mybar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 18px;padding:12px 16px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow);font:700 14px/1.5 var(--font-sans);color:var(--ink)}
 .wl-mybar b{font:900 18px/1.3 var(--font-sans)}.wl-mybar a{color:var(--ink)}.wl-mybar small{flex-basis:100%;font-weight:500;opacity:.8}
+.wl-mybar a.add{padding:4px 12px;background:var(--gold);border:2px solid var(--ink);text-decoration:none}.wl-mybar small.ok{opacity:1;color:var(--ink);background:var(--paper);padding:4px 8px}
+.wl-mybar .maybe{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;align-items:center}.wl-mybar .maybe span{font-weight:900}
+.wl-mybar .maybe a{padding:2px 10px;border:2px solid var(--ink);background:var(--card);text-decoration:none;font-weight:700;font-size:13px}
+.wl-wait{margin:0 0 18px;padding:16px 18px;background:var(--card);border:3px solid var(--ink);border-top:8px solid var(--sc);box-shadow:var(--shadow);color:var(--ink);font:500 14px/1.6 var(--font-sans)}
+.wl-wait small{font:700 var(--fs-label) var(--font-sans);opacity:.75}.wl-wait h2{margin:2px 0 6px;font:900 22px/1.3 var(--font-sans)}
+.wl-wait .dot{display:inline-block;width:10px;height:10px;margin-right:8px;border-radius:50%;background:var(--sc);animation:wlpulse 1.2s ease-in-out infinite}
+@keyframes wlpulse{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.wl-wait .dot{animation:none}}
 .wl-mine .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:0 0 8px}
 .wl-mine .tiles button{margin:0;min-height:52px;padding:8px 10px;text-align:left;background:var(--card);border:3px solid var(--sc);font:900 14px/1.3 var(--font-sans);color:var(--ink);display:flex;flex-direction:column;gap:2px}
 .wl-mine .tiles button small{font:500 var(--fs-label) var(--font-sans);opacity:.75}
@@ -4039,7 +4046,7 @@ AUTH_JS = r"""
   //   ・お客さまに要らない内部の事情（仕組みの説明・準備中・店長のページへの切り替え）は出さない。1 つの状態に、今わかること 1 つと次の一手 1 つ
   //   ・空の状態は行き止まりにしない：何のための場所か＋最初の 1 つを足す道（まだ使えない「欲しい物」「話題度」は目次に出さない）
   //   ・入力には見える名前（例の文字は名前の代わりにならない）。外したら「元に戻す」（確認より元に戻せるほうがよい）
-  var SECS=A.secs||[];
+  var SECS=A.secs||[], ADD='../?add';   // 足す = 入口と同じ「ジャンル → 左右に払うカード → 確認」（welcome.py の ?add）
   function isMine(){return SHOP&&R.dataset.role==='user'&&!!(me||user);}
   function secJa(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][1];return k||'その他';}
   function secColor(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][2]||'';return '';}
@@ -4075,9 +4082,21 @@ AUTH_JS = r"""
     var wait=picks.filter(function(x){return !Object.keys(got).some(function(k){return hit(k,[x]);});});
     var name=(p&&p.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
     var bar=document.querySelector('.wl-mybar')||document.createElement('div');bar.className='wl-mybar';
-    bar.innerHTML='<b>'+esc(sh)+' さんのページ</b><span>選んでいるもの '+picks.length+'</span><a href="settings.html">足す・外す</a>'+
-      (wait.length?'<small>まだ記事がないもの：'+wait.map(function(x){return esc(x.name);}).join('、')+'（集まりしだい並びます）</small>':'');
+    // 気になるかも？（規則：選んだジャンルにある、まだ選んでいない店長の関注項。押すと足す流れへ）
+    var secs={};picks.forEach(function(x){secs[x.sec]=1;});
+    var maybe=(A.items||[]).filter(function(x){return secs[x[1]]&&!hit(x[0],picks);}).slice(0,6);
+    var added=(location.search.match(/[?&]added=([^&]*)/)||[])[1];
+    bar.innerHTML='<b>'+esc(sh)+' さんのページ</b><span>追いかけているもの '+picks.length+'</span><a class="add" href="'+ADD+'">＋ 追いかけるものを足す</a><a href="settings.html">外す</a>'+
+      (added?'<small class="ok">'+esc(decodeURIComponent(added))+' を足しました。店長がいま集めに行っています。</small>':'')+
+      '<small>新しい記事は 1 日に何度か届きます。👍👎 を押すと、好みに合うものが上に並ぶようになります。</small>'+
+      (maybe.length?'<div class="maybe"><span>気になるかも？</span>'+maybe.map(function(x){return '<a href="'+ADD+'">'+esc(x[0])+'</a>';}).join('')+'</div>':'');
     var m=document.querySelector('main.issues')||document.body; if(!bar.parentNode) m.insertBefore(bar,m.firstChild);
+    // まだ記事がないもの：版面の形で「集めています」（集まりしだい本物の版面に変わる）
+    document.querySelectorAll('.wl-wait').forEach(function(x){x.remove();});
+    var at=bar;
+    wait.forEach(function(x){var s=document.createElement('section');s.className='wl-wait';s.style.setProperty('--sc',secColor(x.sec)||'var(--ink)');
+      s.innerHTML='<small>'+esc(secJa(x.sec))+'</small><h2>'+esc(x.name)+'</h2><p><i class="dot"></i>店長が集めています。早ければ 1〜2 時間で最初の記事が並びます。</p>';
+      at.after(s);at=s;});
   }
   // 選び方の案内（2026-10-22，用户定的：左右に払うカードはやめ、板块 → その中の作品を押して選ぶだけ）
   function drawMine(box,p,err){
@@ -4087,6 +4106,10 @@ AUTH_JS = r"""
     var h='<header><h1>'+esc(sh)+' さんのページ</h1></header>';
     if(err){box.innerHTML=h+'<p class="wl-msg" role="alert">読み込めませんでした。ページを開き直してください。</p>';return;}
     if(!tok){box.innerHTML=h+'<p class="wl-msg" role="alert">もう一度ログインしてください。</p>';return;}
+    if(page==='index'&&!picks.length){   // 最初：何ができるか＋選ぶ（左右に払うカードの流れ）へ
+      box.innerHTML=h+'<div class="empty"><b>ここは、あなたが追いかけたいものの新しいニュースが毎日並ぶページです</b>'+
+        '<p>好きなジャンルを選んで、出てくるカードを「気になる」か「パス」に分けるだけ。店長が集めに行き、記事が届いた版面から順に並びます。</p>'+
+        '<a class="go" href="'+ADD+'">好きなものを選ぶ →</a></div>';return;}
     if(page!=='index'&&page!=='settings'){
       box.innerHTML=h+'<div class="empty"><b>まだ何もありません</b><p>トップで追いかけたいものを選ぶと、ここも使えるようになります。</p><a class="go" href="./">トップへ</a></div>';return;}
     var items=(A.items||[]), chosen={}, secsOn={};
