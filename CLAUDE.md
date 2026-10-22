@@ -150,7 +150,10 @@
   不火的不上版面，只记进 inbox 的 `reddit_cold` 给話題度数帖子数。已经上了版面的帖子每天复查一次：被删（[removed]/[deleted]）或掉出榜就撤掉（`digest.prune_reddit`）。
 - **垃圾站**（被黑的网站批量生成的页面，标题塞作品名骗搜索，会命中 match）：`digest.is_spam` 按标题写法（「在线看」、末尾 10 位随机码 `(gQvzdvbtKG)`）和链接网域（`SPAM_HOSTS`，Unisba Media = `unisba.ac.id`）认；
   收集・整理待ち・出刊・页面・推荐・話題度的报道量都过这一个函数，新发现一个垃圾站就在那里加写法 / 网域，在 `tests/test_match.py` 加真实标题。
-- **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」）写进 `exclude`。
+- **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」「最終値下げ」）写进 `exclude`。
+- **不是新闻的网站按网域丢**（2026-10-22）：`exclude_hosts`（settings 全体：gamewith.jp・game8.jp・altema.jp・escorenews.com 的攻略 wiki・比赛自动页；关注项自己的：猫用品 readyfor.jp・camp-fire.jp 众筹），网域和下级网域，看 `e.link`（还原的原文）・`e.url`・Google 新闻的 `<source url>`（`Entry.site`，收集时链接还是 Google 的跳转）。
+  `exclude_sources`（媒体名）是**前方一致**：「YouTube」也丢「YouTube on MSN」（后面接英数字的不算：「note」不丢「Notebookcheck」；官方频道 RSS「YouTube · 名字」不丢）。
+  这几条和垃圾站・`exclude`・`match` 都在 `digest.drop_reason` 一个函数里，收集和 `audit-match` 用同一个。
 - **情報源（2026-10-22，用户定的：都要，不用 AI 所以 CPU・时间可以多用）**：Google・Bing・Reddit・Steam・RSS 之外，`sources.gdelt`（世界 65 言語のニュース索引，读者的语言，5 秒 1 回・429 重试，重试后还被拒这次就不再问（2026-10-22 本番：Actions 的共享 IP 几乎都被拒，空等 10 分钟），`use` 有 google 的关注项，每项前 2 个词）、
   `sources.youtube_channel`（公式チャンネルの RSS，チャンネル = items.yaml 的 `youtube` 或 `wiki` → Wikidata P2397，缓存 `state/youtube_channels.json` 30 天）、
   `sources.bluesky`・`sources.mastodon_tag`（`use` 有 reddit 的关注项；和 Reddit 一样只放火的帖子：Bluesky ♥50 / 转发＋引用 15，Mastodon ♥20 / ブースト 10，其余只算話題度；匹配词必须在帖子正文；网址开头的自动转载 bot 帖丢掉）。
@@ -164,7 +167,7 @@
   情報源ごとの様子（ok・blocked・timeout…）は収集のログに「情報員 日本の情報員：17/17 本・…件」。`python scripts/intel.py --fetch` で担当と取れ具合を見る。読み取りの共通部分：RSS 1.0（RDF）・宣言のない `media:` も読む、ホストごとの UA `sources.HOST_UA`（ナタリーは Mozilla を 405）。
   入れないもの：Yahoo!ニュース RSS・CNA・SCMP・RTHK（「個人・非営利のみ」）、B站・知乎（robots で禁止）、微博・小紅書・Dcard（ログイン）。次：日本の残り（はてブ検索・PR TIMES 企業別）→ 韓国 → 台湾・香港 → 中国 → 東南アジア（設計案は調査の結果）。
 - **检查**：`python scripts/digest.py audit-match`（`--only "名字、名字"` 只看几项）把最近几天收进来的条目按「靠哪个词进来的」列出来，
-  ✗ 是按现在的规则已经不会再收的。每组看一眼标题，有不相关的就收紧那个词；误收已经上了版面的，
+  ✗ 是按现在的规则已经不会再收的（后面写理由：match・exclude・垃圾・exclude_sources・exclude_hosts）。每组看一眼标题，有不相关的就收紧那个词；误收已经上了版面的，
   从当天还没有 `.edit.json` 的 inbox 里删掉、把报告里那条拿掉，再重新出刊。`tests/test_match.py` 有这几种写法的例子。
 
 ## 读者的语言：主言語・副言語（2026-10-17）

@@ -250,10 +250,15 @@ SPAM_URL = re.compile(r"微信|威信|薇信|加V|伴游|外围|上门|模特.{0
 SPAM_HOSTS = ("unisba.ac.id",)   # Unisba Media（2026-10 被黑、標題 = 別の記事 + 作品名 + 10 位随機コード、ページは 404）
 
 
+def host_in(url, hosts):
+    """url の網域が hosts のどれか、またはその下位網域か（www.gamewith.jp も gamewith.jp に当たる。notgamewith.jp は当たらない）。"""
+    host = (urllib.parse.urlsplit(url or "").hostname or "").lower()
+    return bool(host) and any(host == h or host.endswith("." + h) for h in (x.lower() for x in hosts))
+
+
 def is_spam(title, url=""):
     if url:
-        host = (urllib.parse.urlsplit(url).hostname or "").lower()
-        if any(host == h or host.endswith("." + h) for h in SPAM_HOSTS):
+        if host_in(url, SPAM_HOSTS):
             return True
         if SPAM_URL.search(urllib.parse.unquote(urllib.parse.urlsplit(url).query)):
             return True
@@ -323,16 +328,40 @@ def match_hit(item, e):
     return None
 
 
+def source_in(source, names):
+    """出典名の除外（exclude_sources）は前方一致：「YouTube」で「YouTube on MSN」も外れる。
+    続く 1 字が英数字のときは別の名前（「note」で「Notebookcheck」「notes」は外さない）。公式チャンネル（sources.YT_OFFICIAL）は drop_reason で別扱い。"""
+    return any(source == s or source.startswith(s) and not source[len(s)].isalnum() for s in names if s)
+
+
+def drop_reason(e, item, settings):
+    """この記事を収めない理由（出典名・網域・垃圾・除外語・匹配词）。収めるなら None。
+    収集（filter_entries）と audit-match が同じ規則を使う。網域は e.link（還元した原文）・e.url・e.site（Google ニュースの媒体の網站）で見る。"""
+    if not e.source.startswith(sources.YT_OFFICIAL) and \
+            source_in(e.source, [*settings.get("exclude_sources", ["YouTube"]), *(item.get("exclude_sources") or [])]):
+        return "exclude_sources"   # 公式チャンネル（YouTube · ILLIT）は関注項が自分で選んだ情報源なので「YouTube」の除外に入れない
+    hosts = [*(settings.get("exclude_hosts") or []), *(item.get("exclude_hosts") or [])]
+    if hosts and any(host_in(u, hosts) for u in (e.link, e.url, getattr(e, "site", ""))):
+        return "exclude_hosts"
+    if any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title, e.link or e.url):
+        return "垃圾"
+    if any(w.lower() in e.title.lower() for w in item.get("exclude") or []):
+        return "exclude"
+    if match_hit(item, e) is None:
+        return "match"
+    return None
+
+
 def audit_match(days=4, only=None):
     """检查误收：最近几天 inbox 里每个关注项的条目按「靠哪个匹配词进来的」分组列出来，
-    并标出按现在的 match / exclude 已经不会再收的（✗）。加关注项、改匹配词之后跑一次，看有没有不相关的混进来。"""
-    _, items = load_config()
+    并标出按现在的规则已经不会再收的（✗，后面写理由：match / exclude / 垃圾 / exclude_sources / exclude_hosts，和收集的 drop_reason 同一个）。
+    加关注项、改匹配词之后跑一次，看有没有不相关的混进来。"""
+    settings, items = load_config()
     paths = sorted(p for p in INBOX_DIR.glob("????-??-??.json"))[-days:]
     for item in items:
         if only and item["name"] not in only:
             continue
-        exclude = [w.lower() for w in item.get("exclude") or []]
-        groups = {}
+        groups, gone_n = {}, 0
         for path in paths:
             for raw in load_json(path).get("items", []):
                 if raw["name"] != item["name"]:
@@ -340,9 +369,11 @@ def audit_match(days=4, only=None):
                 for d in raw["entries"]:
                     e = entry_from_dict(d)
                     hit = match_hit(item, e)
-                    gone = hit is None or any(w in e.title.lower() for w in exclude)
-                    groups.setdefault(hit or "(不再匹配)", []).append(("✗ " if gone else "  ") + e.title[:90])
-        print(f"===== {item['name']}（{sum(len(v) for v in groups.values())} 条）")
+                    why = drop_reason(e, item, settings)
+                    gone_n += bool(why)
+                    groups.setdefault(hit or "(不再匹配)", []).append(
+                        (f"✗ [{why}] " if why else "  ") + e.title[:90])
+        print(f"===== {item['name']}（{sum(len(v) for v in groups.values())} 条、✗ {gone_n}）")
         for w, titles in sorted(groups.items(), key=lambda kv: -len(kv[1])):
             print(f"  [{w}] {len(titles)}")
             for t in titles[:8]:
@@ -352,7 +383,6 @@ def audit_match(days=4, only=None):
 def filter_entries(entries, item, settings, seen, now, known=()):
     names = [item["name"], *(item.get("keywords") or []), *(item.get("match") or [])]
     since = now - dt.timedelta(days=settings.get("lookback_days", 7))
-    exclude = [w.lower() for w in item.get("exclude") or []]
     # 同一篇文章常同时出现在 Google 和 Bing：每个标题只留一条，优先国外网站（大陆网站常拦海外服务器、
     # 图片防盗链），其次能直接打开原文的（Google 是跳转页，拿不到配图）
     def rank(e):
@@ -364,23 +394,16 @@ def filter_entries(entries, item, settings, seen, now, known=()):
         if key not in best or rank(e) > rank(best[key]):
             best[key] = e
     out, grams = [], [_title_grams(t, names) for t in known]
-    skip_sources = set(settings.get("exclude_sources", ["YouTube"])) | set(item.get("exclude_sources") or [])
     # 标题相近的转载只留先看到的那条：国外网站先看，同一件事有国外报道就不收大陆网站的；最后再按时间排回来
     for e in sorted(best.values(), key=lambda e: (sources.is_domestic(e.url, e.source),
                                                   -(e.published or now).timestamp())):
         key = title_key(e.title)
-        if e.url in seen or key in seen or e.source in skip_sources:
-            continue
-        if any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title, e.link):
-            continue
+        if e.url in seen or key in seen or drop_reason(e, item, settings):
+            continue   # 出典名（前方一致）・網域・垃圾・除外語・匹配词（audit-match と同じ drop_reason）
         g = _title_grams(e.title, names)
         if any(_similar(g, h) for h in grams):
             continue
         if e.published and e.published < since:
-            continue
-        if any(w in e.title.lower() for w in exclude):
-            continue
-        if match_hit(item, e) is None:
             continue
         grams.append(g)
         out.append(e)

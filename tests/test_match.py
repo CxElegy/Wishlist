@@ -150,3 +150,149 @@ class SpamNotCountedTest(unittest.TestCase):
              "date": "2026-10-19", "work": "The Mandalorian", "image": None, "because": "w", "kind": "board", "hits": []}],
             [{"name": "The Mandalorian"}])
         self.assertEqual(html, "")
+
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+
+
+def real_item(name):
+    """items.yaml にいま書いてある関注項（match・exclude の正規表現そのものを確かめる）。"""
+    import yaml
+    cfg = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))
+    return cfg["settings"], next(i for i in cfg["items"] if i["name"] == name)
+
+
+def keeps(name, titles, **kw):
+    settings, item = real_item(name)
+    es = [sources.Entry(title=t, url=f"https://example.com/{i}", source=kw.get("source", "媒体"), summary="",
+                        published=NOW) for i, t in enumerate(titles)]
+    return [e.title for e in es if digest.drop_reason(e, item, settings) is None]
+
+
+class GenericMatchTest(unittest.TestCase):
+    """数字・泛詞・部分一致の匹配词（2026-10-22 の検査 genericmatch：滑雪の 26/27・早割・CAPiTA、MMORPG 新作の MMO）。"""
+
+    def test_ski_keeps_snow_news(self):
+        titles = ["Best Ski Boots 2026/27: Our InTheSnow Verdicts",          # 26/27 ＋ ski
+                  "Best Women's Ski Pants of 2026/27",
+                  "八千穂高原スキー場、2026-27シーズンの早割リフト券を10月1日から販売開始",
+                  "星野リゾート ネコマ マウンテンが2026-27シーズン券などを10月1日発売へ",   # シーズン券 ＋ マウンテン
+                  "Capita Ultrafear Review", "The 2026 Capita DOA Review: Does the New Defenders of Awesome Still Rip?",
+                  "Burton co-founder: The 'unf---able truths' that powered the global snowboarding brand 50 years"]
+        self.assertEqual(keeps("滑雪", titles), titles)
+
+    def test_ski_drops_number_and_generic_words(self):
+        titles = ["What's new for winter 26/27 in Park City,",                       # 実際の標題（米のスキー場）
+                  "Portetta unveils expanded mountain experiences for winter 2026/27",  # 実際の標題（仏）
+                  "鹿島アントラーズ、2026/27 J1 シーズンの日程発表",                  # 26/27 はサッカーにも
+                  "COUNTDOWN JAPAN 26/27 第1弾出演者発表",
+                  "【早割】お歳暮ギフト 2026 予約受付開始",                            # 早割はお歳暮にも
+                  "Vernal Capital、新ファンドを設立", "Asu Capital Partners invests in AI startup",   # CAPiTA の部分一致
+                  "GDP per capita rises in Japan",
+                  "Tim Burton's new film opens in Tokyo"]                                # Burton は雪の語と一緒のときだけ
+        self.assertEqual(keeps("滑雪", titles), [])
+
+    def test_mmo_is_a_word(self):
+        kept = ["솔: 인챈트부터 도깨비의세계까지, 모바일 MMO 대형 신작 흥행에 매출 반등",   # MMO の後に助詞・ハングルが続いても当たる
+                "Discussion time: Do you think zone chats in MMOs are forces for good, or evil?",
+                "「SteamはMMOなんだ」元Valve社員が語るゲイブの思想"]
+        dropped = ["Lose Your Head as Hallows Wake Returns With New Surprises in Diablo Immortal",   # 実際の標題：iMMOrtal
+                   "愛犬と泊まれる宿 pet-friendly accommodation in Hakone"]                          # accoMMOdation
+        self.assertEqual(keeps("MMORPG 新作", kept + dropped), kept)
+
+
+class NotNewsTest(unittest.TestCase):
+    """攻略 wiki・クラファン・試合データ・賭け予想・手办・値下げの商品頁（2026-10-22 の検査 notnews）。"""
+
+    def test_exclude_hosts_by_link_url_and_google_site(self):
+        settings, item = real_item("あつ森")
+        title = "【あつ森】ゴールデントラウトの値段と釣り方・出現時間【あつまれどうぶつの森】"   # 実際の標題（2020 年の攻略頁）
+        google = "https://news.google.com/rss/articles/CBMiXEFVX3lx"
+        cases = [dict(url=google, link="https://gamewith.jp/atsumori/article/show/192278"),   # 出刊で還元した原文
+                 dict(url="https://www.gamewith.jp/atsumori/1"),                               # 下位網域
+                 dict(url=google, site="https://gamewith.jp")]                                 # 収集の時点（Google の <source url>）
+        for kw in cases:
+            e = sources.Entry(title=title, source="GameWith", published=NOW, **kw)
+            self.assertEqual(digest.drop_reason(e, item, settings), "exclude_hosts", kw)
+        e = sources.Entry(title=title, url="https://notgamewith.jp/a", source="x", published=NOW)
+        self.assertIsNone(digest.drop_reason(e, item, settings))
+
+    def test_item_exclude_hosts(self):
+        settings, item = real_item("猫用品")
+        e = sources.Entry(title="生後5ヶ月でFIPを発症した猫「ごま」を救いたいです", url="https://news.google.com/x",
+                          link="https://readyfor.jp/projects/goma-fip-0905", source="ReadyFor(クラウドファンディング)", published=NOW)
+        self.assertEqual(digest.drop_reason(e, item, settings), "exclude_hosts")
+
+    def test_google_rss_keeps_source_site(self):
+        xml = (b'<rss><channel><item><title>\xe3\x80\x90\xe3\x81\x82\xe3\x81\xa4\xe6\xa3\xae\xe3\x80\x91x - GameWith</title>'
+               b'<link>https://news.google.com/rss/articles/abc</link><source url="https://gamewith.jp">GameWith</source>'
+               b'</item></channel></rss>')
+        e, = sources.rss_bytes(xml, "Google 新闻")
+        self.assertEqual((e.source, e.site), ("GameWith", "https://gamewith.jp"))
+        self.assertNotIn("site", digest.entry_to_dict(1, e))   # inbox には書かない
+
+    def test_exclude_sources_prefix(self):
+        settings, item = {"exclude_sources": ["YouTube"]}, {"name": "x", "match": ["Avengers"], "exclude_sources": ["note"]}
+        def why(source):
+            return digest.drop_reason(sources.Entry(title="Avengers news", url="https://e.com/1", source=source, published=NOW),
+                                      item, settings)
+        self.assertEqual(why("YouTube on MSN"), "exclude_sources")   # 実際の出典名（漫威电影に 2 日で 4 件）
+        self.assertEqual(why("YouTube"), "exclude_sources")
+        self.assertIsNone(why("YouTube · ILLIT"))                     # 公式チャンネルの RSS は関注項が選んだもの
+        self.assertEqual(why("note"), "exclude_sources")
+        self.assertIsNone(why("Notebookcheck"))
+        self.assertIsNone(why("notes.jp"))
+
+    def test_item_exclude_words(self):
+        cases = {
+            "日本顶级网球赛事": ["テニス - 木下グループジャパンオープンテニスチャンピオンシップス - アン リー vs. エマーソン ジョーンズ- 試合対戦データ",
+                          "テニス - 木下グループジャパンオープンテニスチャンピオンシップス - カイラ デー vs. ソフィア ケニン- 試合スタッツ",
+                          "【テニス速報】 木下グループジャパンオープンテニスチャンピオンシップス 第2日 内島 萌夏 vs 柴原 瑛菜"],
+            "dota2": ["Team Yandex vs Iron Wing Prediction & Betting Tip | Dota 2",
+                      "DB - XE, 31 十月 2026 - match stream, live broadcast - EPL World SEA S19 - Dota 2",
+                      "Dota 2 hero tier list: Best meta picks in every position"],
+            "漫威电影": ["Hot Toys Avengers: Doomsday Beast Deluxe 1/6 Scale Figure Includes a Battle-Damaged Sentinel Display Base",
+                     "Marvel Legends Avengers Doomsday Wave 2 Preorder",
+                     "Kelsey Grammer's Beast Revealed in New Collectible Figure Ahead of Avengers: Doomsday Release"],
+            "gelato pique": ["最終値下げgelato pique オーガニックコットンスウェット セット（グリーン）ルームウェア・パジャマ"],
+            "猫用品": ["生後5ヶ月でFIPを発症した保護子猫「ごま」を救いたいです"],
+        }
+        for name, titles in cases.items():
+            self.assertEqual(keeps(name, titles), [], name)
+        # 「figure」だけでは外さない：宣伝の「hooded figures」・「Figured Out」は漫威の記事
+        keep = ["New Avengers: Doomsday promo features hooded figures we're yet to meet",
+                "After 8 Years, Marvel Has Finally Figured Out What To Do With The Guardians Of The Galaxy"]
+        self.assertEqual(keeps("漫威电影", keep), keep)
+        keep = ["伊藤あおい 惜敗でジャパンOP本戦入り逃す、フルセットの激闘も予選敗退＜女子テニス＞（tennis365.net）"]
+        self.assertEqual(keeps("日本顶级网球赛事", keep), keep)
+
+
+class AuditMatchTest(unittest.TestCase):
+    def test_audit_counts_spam_sources_and_hosts(self):
+        """audit-match の ✗ は収集と同じ drop_reason：垃圾・出典名・網域も数える（前は match と exclude だけで、10-19 の垃圾頁 8 件が「通る」だった）。"""
+        import contextlib
+        import io
+        import json
+        import tempfile
+        from unittest import mock
+        item = {"name": "あつ森", "match": ["あつ森"]}
+        rows = [("【あつ森】島の評判(評価)星5の条件と上げ方", "GameWith", "https://gamewith.jp/atsumori/article/show/1"),
+                ("【あつ森アニメ】名探偵ちーにゃ～冷蔵庫のプリン事件～ Shania Twain (XFO2W4OAyM)", "Unisba Media", "https://media.unisba.ac.id/a"),
+                ("あつ森の新作の発表", "YouTube on MSN", "https://www.msn.com/a"),
+                ("あつ森 アップデート 3.0 配信", "ファミ通", "https://www.famitsu.com/a")]
+        with tempfile.TemporaryDirectory() as d:
+            p = pathlib.Path(d) / "2026-10-22.json"
+            p.write_text(json.dumps({"items": [{"name": "あつ森", "entries": [
+                {"title": t, "source": s, "url": "https://news.google.com/x", "link": u, "date": None} for t, s, u in rows]}]}))
+            out = io.StringIO()
+            with mock.patch.object(digest, "INBOX_DIR", pathlib.Path(d)), \
+                    mock.patch.object(digest, "load_config", return_value=(
+                        {"exclude_sources": ["YouTube"], "exclude_hosts": ["gamewith.jp"]}, [item])), \
+                    contextlib.redirect_stdout(out):
+                digest.audit_match()
+        text = out.getvalue()
+        self.assertIn("（4 条、✗ 3）", text)
+        self.assertIn("✗ [exclude_hosts]", text)
+        self.assertIn("✗ [垃圾]", text)
+        self.assertIn("✗ [exclude_sources]", text)
+        self.assertIn("   あつ森 アップデート 3.0 配信", text)
