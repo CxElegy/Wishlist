@@ -2513,6 +2513,7 @@ def _write_page():
     issues = [load_json(p) for p in sorted(REPORTS_DIR.glob("????-??-??.json"), reverse=True)[:ISSUES_ON_PAGE]]
     issues = [i for i in issues if i]
     settings, items = load_config()
+    render.AUTH_ITEMS = [[i["name"], section_of(i)] for i in items if not i.get("parent")]   # お客さまが選ぶときの候補
     if not issues:   # まだ一期も出ていない（test2 を空から始めた直後）：空の号で入口・設定・管理ページだけ作る
         issues = [{"date": dt.datetime.now(zoneinfo.ZoneInfo(settings.get("timezone", "Asia/Shanghai"))).date().isoformat(),
                    "no": 0, "items": []}]

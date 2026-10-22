@@ -495,7 +495,7 @@ PROCESSES = [
         "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql"], "doc": "CLAUDE.md",
         "flow": [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
-             "text": "何のサイトか・店長のページの本物の画面。メール・パスワードと規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → カードを左右に（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
+             "text": "何のサイトか・店長のページの本物の画面。メール・パスワードと規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → 候補のタイルを押して選ぶ・名前でも足せる（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
             {"id": "a1", "kind": "step", "lane": "web", "title": "右上の「はじめのページ」（入口 ../?stay、見るだけでもログイン中でもいつも見える）/「ログイン」",
              "text": "だれでもメールアドレス＋パスワード（2026-10-21：ユーザー名 → メールだけ → メール＋パスワード）。ログイン = signInWithPassword → user_login（規約の版）。新しく始める（入口）＝メールが未登録かを打つたびに確かめ（name_available）、パスワード 8 文字以上を 2 回、規約に同意 → user_signup（p_password つき）→ そのままログイン。このブラウザが覚える（ログアウトまで）。退会の機能はなし", "uses": ["maillink", "terms"]},
             {"id": "a1b", "kind": "decision", "lane": "web", "title": "同意した版 ＜ いまの版？",

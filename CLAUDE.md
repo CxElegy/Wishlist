@@ -49,7 +49,7 @@
 - **test1 = 店長のページ（2026-10-21，用户定的：以前做的 test1 的内容现在归到 admin 的店长下）**：前の test1 の中身（ちいかわ 等の関注項・623 票・愿望清单）を本番に戻した。`items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/` が店長のもの。
   **网址里不出现 test1，也不出现人名・「店長」**（用户定的：照一般网站的做法，网址不带用户名；店長只是世界观的设定）：网页生成は `docs/home/`（`sitedir.SLUG = "home"`、https://cxelegy.github.io/Wishlist/home/ ），**大家都是同一个网址，内容由登录的人决定**（现在 = 店長的；以后一般用户登录后在同一页读自己的，见 `LOGIN.md` 第 2 步）。旧 `/test1/…`・`/shop/…` 只是跳到 `/home/` 的页。Supabase 的 account 名还是 `test1`（`sitedir.NAME`，只在库里；以后换成登录的号码 `user_id`）。店長は `c.elegy@outlook.com` でログイン。
 - **test2** = 2026-10-19〜21 の試験の版，冻结在 `docs/test2/`（`python scripts/freeze_test1.py test2 test1 …` で「アーカイブ」の帯・写 Supabase を止める），数据存档在 `archive/test2/`。不再生成、后台不跑。test2 で決めた**規則**（一个名字一个版面・向导・入口）は店長のページでもそのまま使う（`docs/home/additem.js` は同じもの）。
-- 根 `docs/index.html` 是**入口**（2026-10-21 起由 `scripts/welcome.py` 生成，`digest.py render` 时超过 24 小时就重做：产品介绍・店长页面的真实截图・新しく始める／ログイン／店長のページを見る；新建账号 = 邮箱和条款 → 新闻语言 → 喜欢的大类 → 刷卡片 → 最初的版面 → `user_signup`；浏览器记得的人直接跳过入口），旧网址（settings.html・/test1/・/shop/ 等）跳到 /home/。
+- 根 `docs/index.html` 是**入口**（2026-10-21 起由 `scripts/welcome.py` 生成，`digest.py render` 时超过 24 小时就重做：产品介绍・店长页面的真实截图・新しく始める／ログイン／店長のページを見る；新建账号 = 邮箱和条款 → 新闻语言 → 喜欢的大类 → 点选候补（不做左右滑的卡片：像交友软件） → 最初的版面 → `user_signup`；浏览器记得的人直接跳过入口），旧网址（settings.html・/test1/・/shop/ 等）跳到 /home/。
 - **test1・test2 = 两个 account（用户定的，2026-10-19）**：以后的一般用户也按同样的形状加。每个 account 的东西从一开始就各自分开、互不相通：
   关注清单・愿望清单・收集的记事・state（推荐・口味・日志…）——本仓库里现在的 account（test1 = 店長，2026-10-21 起）用 `items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/`，test2 的冻结在 `archive/test2/`；
   Supabase 的自己的表（投票 `feedback`・篇幅 `sizes`・目录分法 `nav_schemes`・请求 `item_requests`・照片 `photo_inbox`・AI 编辑开关 `edit_control`・更新中的条 `live_status`・记事的副本 `news`/`stories`/`price_history`）都有 `account` 列（`db/accounts.sql`）。
@@ -403,7 +403,7 @@
 - 门番是数据库（`db/auth.sql`・`db/auth_guard.sql`：写函数第一行 `can_edit(p_account)` / `is_admin()`）；网页（`render.AUTH_JS`，每页右上的「ログイン」= 填邮箱 →「はじめる」）只拦按钮、说理由。Supabase 自带的发信只发给 Supabase 团队成员的邮箱（只用来发管理者的确认），加别的管理者前要设 SMTP（`LOGIN.md`）。
   开关 `private.auth_flags.enforce`：关着 = 跟以前一样，`db/auth_enforce.sql` 打开。（`public.hook_invite_only` 做好了但不接：不做邀请制。登录时也不提邀请的事。）
 - 设定步骤・文件一览・第 2 步（一般用户自己的页面只给本人看、不进仓库、AI 编辑用 Haiku）在 `LOGIN.md`。改登录相关的东西时同步改 `processes.py` 的 `login`。
-- **アカウントは 1 つずつ独立（2026-10-22，用户定的）**：お客さま（テスト用を含む）がログインしたら、/home/ の各ページは店長の中身ではなく**自分のページ**（最初は空・自分のキーワードだけ，`render.AUTH_JS` の `mine` / `my_page()`）。**お客さまに要らない内部の事情（仕組みの説明・準備中・店長のページへの切り替え）は画面に出さない**（用户指摘）。詳しくは `LOGIN.md` 第 2 步。
+- **アカウントは 1 つずつ独立（2026-10-22，用户定的）**：お客さま（テスト用を含む）がログインしたら、/home/ の各ページは店長の中身ではなく**自分のページ**（`render.AUTH_JS` の `mine` / `my_page()`）。**店長と同じ機能を自分の分で（2026-10-22，用户定的）**：選んだものがなければ「好きなジャンル → その中の関注項」を押して選ぶ案内（左右に払うカードはやらない：交友アプリに見える）、選んだら店長のページと同じ版面のうち自分の選んだものだけを出す（`showMine`）。店長の関注項にないものの記事集め・自分の 👍👎・欲しい物は次の段。**お客さまに要らない内部の事情（仕組みの説明・準備中・店長のページへの切り替え）は画面に出さない**（用户指摘）。詳しくは `LOGIN.md` 第 2 步。
 - 已合并到 main（用户说「装上吧」）。**开关 enforce 2026-10-21 已打开**（用户说「スイッチオンしていい」）：访客・お客さま对店長的页面只能看；ログインしない自动的仕组み只许 `edit_control_set` 的 step→pause・やり直し 1 件外す（`db/auth_guard.sql` 末尾）；Actions 用 secret key 不受影响。
 
 ## 保留中のこと
@@ -417,7 +417,7 @@
 本番の简报に入れる前に部品を試すページ。入口 https://cxelegy.github.io/Wishlist/testground/ （`index.html`）。消さずに残し、新しい試作もここに足す（入口に 1 枚カードを足す）。
 - `compare.html`：左の目次 v1〜v6 の見比べ（条件 10 パターン・画面の高さ・「ダミーで試す」で作品数 2〜1000）
 - `rails.html`：目次の見本 10 パターン ／ `nav.html`：本文つきで 1 本
-- `welcome.html`（`python scripts/welcome.py` で作る，入口 `docs/index.html` と同じもの）：入口（何のサイトか・店長のページの本物の画面・新しく始める／ログイン／店長のページを見る）＋「新しく始める」の App 風の流れ（名前と規約 → ジャンル → カードを左右に → 最初の版面 → 店長が集めに行く）。覚えているブラウザ（`wl-user`）は入口を飛ばす。カード = AniList 話題・Steam 売れ筋・店長がフォローしてきたもの（archive/test1）、AI なし。登録は本物（`user_signup`、好み = `app_users.prefs`）。
+- `welcome.html`（`python scripts/welcome.py` で作る，入口 `docs/index.html` と同じもの）：入口（何のサイトか・店長のページの本物の画面・新しく始める／ログイン／店長のページを見る）＋「新しく始める」の App 風の流れ（名前と規約 → ジャンル → 候補を押して選ぶ → 最初の版面 → 店長が集めに行く）。覚えているブラウザ（`wl-user`）は入口を飛ばす。カード = AniList 話題・Steam 売れ筋・店長がフォローしてきたもの（archive/test1）、AI なし。登録は本物（`user_signup`、好み = `app_users.prefs`）。
 - **新闻语言（2026-10-21，用户定的：用户是全世界的）**：`welcome.LANG_GROUPS` 按地区 MECE 分 56 种（一种语言只在一个地区），常用 6 种＋浏览器的语言放前面，其余收在「ほかの言語」里（可用英文名・日文名搜 `LANG_ALIAS`）。现在真的收集的只有 `COLLECTED`（日英中韩），其他标「準備中」、先存好偏好。以后加板块时按主语言推荐（见 `PENDING.md`）。
 - **左の目次は v6 に決定（2026-10-17）**：パソコンは「少ないうちは隠さない・段階的に隠す」（隠し始めるのは既定 24 件、件数で／自動。隠す前に行を 22px まで詰める → ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」）。
   小分類の札は必ず出す。見た目は線路（原版）＋作品アイコン（emblem → 記事の写真 → 頭文字）＋板块アイコン。スマホは上に 2 段の横帯だけの簡単な形。2026-10-17 に本番（`render._nav` / `NAV_JS` / `NAV_STYLES["line"]`）へ移した。

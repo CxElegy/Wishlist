@@ -2,7 +2,7 @@
 
 App のように 1 ページで画面を切り替える：
   ① 入口（何のサイトか・店長のページの本物の画面・「新しく始める」「ログイン」「店長のページを見る」）
-  ② メールアドレスと規約 → ③ 好きなジャンル（8 つの板块）→ ④ カードを左右に（気になる / パス）→ ⑤ 最初の版面の確認 → ⑥ 店長が集めに行く
+  ② メールアドレスと規約 → ③ 好きなジャンル（8 つの板块）→ ④ 候補のタイルを押して選ぶ（名前でも足せる。左右に払うカードはやめた）→ ⑤ 最初の版面の確認 → ⑥ 店長が集めに行く
 このブラウザが覚えている人（localStorage の wl-user）は入口を飛ばして自分のページへ（いまは店長のページ。?stay で止まる）。
 登録は本物（public.user_signup：メールアドレス・規約の同意・好み = 言語・ジャンル・最初の版面）。本人の版面はまだ作らない（第 2 步、LOGIN.md）。
 
@@ -202,7 +202,15 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sa
 .soon{font-size:11px;opacity:.7;font-weight:500}
 .err{margin:0;color:var(--alert);font-weight:700;min-height:1.4em}
 /* カード */
-.deck{position:relative;flex:1;min-height:clamp(250px,calc(100dvh - 380px),520px);display:grid;place-items:center}
+/* 押して選ぶタイル（2026-10-22，用户定的：左右に払うカードは交友アプリに見えるのでやめる） */
+.deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.deck .card{position:relative;inset:auto;min-height:190px;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;box-shadow:var(--shadow);touch-action:auto;transition:transform .15s}
+.deck .card .ph{min-height:110px}
+.deck .card .tx b{font-size:15px}
+.deck .card[aria-pressed=true]{outline:4px solid var(--rose);outline-offset:-4px;transform:rotate(-1deg)}
+.deck .card[aria-pressed=true]::after{content:"✓";position:absolute;top:8px;right:8px;width:30px;height:30px;display:grid;place-items:center;background:var(--rose);color:var(--card);font:900 18px/1 var(--font-sans);border:2px solid var(--ink)}
+.addname label{display:block;font-weight:700;font-size:14px;margin-bottom:4px}
+.addname .row{display:flex;gap:8px}.addname input{flex:1;min-width:0;padding:10px 12px;border:3px solid var(--ink);background:var(--card);font:700 16px var(--font-sans);color:var(--ink)}
 #s-cards .wrap{gap:12px}
 @media (max-height:820px){#s-cards .qs{display:none}}
 .card{position:absolute;inset:0 0 0 0;display:flex;flex-direction:column;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow-l);
@@ -332,8 +340,8 @@ JS = r"""
     on ? st.genres.add(g.dataset.k) : st.genres.delete(g.dataset.k);
     next2.disabled = !st.genres.size; next2.textContent = st.genres.size ? st.genres.size + ' つで次へ' : 'ひとつ以上えらぶ';
   }));
-  // ---- ④ カード（右 = 気になる、左 = パス。ボタン・キーボード ← → でも）
-  let pile = [], idx = 0;
+  // ---- ④ 候補を押して選ぶ（タイル。名前でも足せる）
+  let pile = [];
   function deal() {
     const pick = C.cards.filter(c => st.genres.has(c.sec));
     // ジャンルを順番に混ぜる・店長のものを先に少し
@@ -344,52 +352,42 @@ JS = r"""
       by[k] = mix; });
     pile = []; const keys = Object.keys(by);
     for (let i = 0; pile.length < C.max && keys.some(k => by[k][i]); i++) keys.forEach(k => { if (by[k][i] && pile.length < C.max) pile.push(by[k][i]); });
-    idx = 0; st.liked = []; render();
+    st.liked = []; render();
   }
   const deck = $('.deck'), cnt = $('.count');
-  function cardHtml(c) {
+  function cardHtml(c, i) {
     const sec = C.secs[c.sec] || {};
-    return '<div class="card" style="--sc:' + esc(sec.color) + '"><div class="ph"><img class="blur" src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer">' +
-      '<img src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer" draggable="false"></div>' +
-      '<span class="sec">' + esc(sec.ja || '') + '</span>' + (c.shop ? '<span class="mine">店長も見ている</span>' : '') +
-      '<span class="st y">気になる</span><span class="st n">パス</span>' +
-      '<div class="tx"><b>' + esc(c.name) + '</b><span>' + esc(c.sub || '') + '</span></div></div>';
+    const on = st.liked.indexOf(c) >= 0;
+    return '<button type="button" class="card" data-i="' + i + '" aria-pressed="' + on + '" style="--sc:' + esc(sec.color) + '">' +
+      (c.img ? '<div class="ph"><img class="blur" src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer"><img src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer" loading="lazy"></div>' : '<div class="ph"></div>') +
+      '<span class="sec">' + esc(sec.ja || '') + '</span>' +
+      '<div class="tx"><b>' + esc(c.name) + '</b><span>' + esc(c.sub || '') + '</span></div></button>';
   }
   function render() {
-    if (idx >= pile.length) {
-      deck.innerHTML = '<p class="empty">' + (pile.length ? 'これで全部です。<br>気になる ' + st.liked.length + ' 件' : 'このジャンルの候補はまだありません。<br>あとで名前で追加できます') + '</p>';
-      cnt.textContent = ''; $('#to-check').hidden = false; return;
-    }
-    deck.innerHTML = cardHtml(pile[idx]); cnt.textContent = (idx + 1) + ' / ' + pile.length + '　·　気になる ' + st.liked.length;
+    deck.innerHTML = pile.length ? pile.map(cardHtml).join('') : '<p class="empty">このジャンルの候補はまだありません。下に名前で足してください</p>';
+    $$('.card', deck).forEach(b => b.addEventListener('click', () => {
+      const c = pile[+b.dataset.i], k = st.liked.indexOf(c);
+      k >= 0 ? st.liked.splice(k, 1) : st.liked.push(c);
+      b.setAttribute('aria-pressed', String(k < 0)); count();
+    }));
+    count();
+  }
+  function count() {
+    cnt.textContent = st.liked.length ? st.liked.length + ' つ選んでいます' : '';
     $('#to-check').hidden = st.liked.length === 0;
-    drag($('.card', deck));
   }
-  function decide(yes) {
-    const card = $('.card', deck); if (!card) return;
-    if (yes) st.liked.push(pile[idx]);
-    card.classList.add(yes ? 'out-r' : 'out-l'); idx++;
-    setTimeout(render, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 220);
-  }
-  function drag(card) {
-    let x0 = null, dx = 0;
-    const y = $('.st.y', card), n = $('.st.n', card);
-    card.addEventListener('pointerdown', ev => { x0 = ev.clientX; dx = 0; card.classList.add('drag'); card.setPointerCapture(ev.pointerId); });
-    card.addEventListener('pointermove', ev => { if (x0 == null) return; dx = ev.clientX - x0;
-      card.style.transform = 'translateX(' + dx + 'px) rotate(' + dx / 18 + 'deg)'; y.style.opacity = Math.max(0, dx / 120); n.style.opacity = Math.max(0, -dx / 120); });
-    const up = () => { if (x0 == null) return; x0 = null; card.classList.remove('drag');
-      if (Math.abs(dx) > 100) { card.style.transform = ''; decide(dx > 0); } else { card.style.transform = ''; y.style.opacity = n.style.opacity = 0; } };
-    card.addEventListener('pointerup', up); card.addEventListener('pointercancel', up);
-  }
-  $('.act.y').addEventListener('click', () => decide(true));
-  $('.act.n').addEventListener('click', () => decide(false));
-  addEventListener('keydown', ev => { if (!$('#s-cards').classList.contains('on')) return;
-    if (ev.key === 'ArrowRight') decide(true); if (ev.key === 'ArrowLeft') decide(false); });
+  $('.addname').addEventListener('submit', ev => {
+    ev.preventDefault(); const inp = $('#addname'), n = inp.value.trim(); if (!n) return;
+    if (pile.some(c => c.name.toLowerCase() === n.toLowerCase())) { inp.value = ''; return; }
+    const c = { name: n, sec: [...st.genres][0] || '其他', sub: '名前で足したもの', img: '' };
+    pile.unshift(c); st.liked.push(c); inp.value = ''; render();
+  });
   // ---- ⑤ 確認（最初は C.first 件まで。多い分は外しておき、押せば戻せる）
   function check() {
     const ul = $('.picked'); ul.innerHTML = '';
     st.liked.forEach((c, i) => {
       const li = document.createElement('li'); if (i >= C.first) li.classList.add('off');
-      li.innerHTML = '<img src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer"><b><span class="nm">' + esc(c.name) + '</span><small>' + esc((C.secs[c.sec] || {}).ja || '') + '</small></b>' +
+      li.innerHTML = (c.img ? '<img src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer">' : '') + '<b><span class="nm">' + esc(c.name) + '</span><small>' + esc((C.secs[c.sec] || {}).ja || '') + '</small></b>' +
         '<button type="button">' + (i >= C.first ? '入れる' : '外す') + '</button>';
       $('button', li).addEventListener('click', () => { li.classList.toggle('off'); $('button', li).textContent = li.classList.contains('off') ? '入れる' : '外す'; sum(); });
       ul.appendChild(li);
@@ -539,11 +537,11 @@ def build(out=OUT, base="", cards=None):
 
 <section class="scr" id="s-cards"><div class="wrap">
 {bar}
-<h2 class="q">気になる？</h2>
-<p class="qs">右へ = 気になる、左へ = パス（ボタン・← → キーでも）。</p>
+<h2 class="q">追いかけたいものは？</h2>
+<p class="qs">押して選ぶ（いくつでも）。ないものは下に名前で足せます。</p>
 <div class="deck" aria-live="polite"></div>
-<p class="count"></p>
-<div class="acts"><button type="button" class="act n" aria-label="パス">✕</button><button type="button" class="act y" aria-label="気になる">♥</button></div>
+<form class="addname"><label for="addname">ほかに追いかけたいもの</label><div class="row"><input id="addname" maxlength="80" autocomplete="off" placeholder="作品・ブランド・人の名前"><button type="submit" class="btn">足す</button></div></form>
+<p class="count" aria-live="polite"></p>
 <button type="button" class="btn main" id="to-check" data-go="check" hidden>この中から始める</button>
 </div></section>
 
