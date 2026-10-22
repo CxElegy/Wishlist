@@ -190,6 +190,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://applealmond.com/wp-content/uploads/2026/10/1792032487-8a463f9dbc16ed7e966f060c320b8df1.jpg": {
+  "w": 1182,
+  "h": 660,
+  "target": 1280,
+  "v": 3
+ },
  "https://appmedia.jp/wp-content/uploads/2026/10/162348_d70g1.webp": {
   "w": 1000,
   "h": 703,
@@ -230,6 +236,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://assets.repress.co.kr/photos/abe7998a62e7b6df86a014f837739d3e/thumb.png": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/318341052/rectangle_large_type_2_68f11d3a9054db36365481db0353ec2c.png?fit=bounds&quality=85&width=1280": {
@@ -335,19 +347,6 @@
   ],
   "why": "看不清"
  },
- "https://cdn.gamey.kr/news/thumbnail/202610/3019011_171465_2459_v150.jpg": {
-  "w": 300,
-  "h": 225,
-  "target": 720,
-  "v": 3,
-  "blur": 0.463,
-  "local": "pics/f26f589bf29b5480.webp",
-  "out": [
-   720,
-   540
-  ],
-  "why": "看不清"
- },
  "https://cdn.hk01.com/di/media/images/dw/20261014/1187101912604872704345702.jpeg/tGEOp1gEefYwA9uNLR1xWnsQPv1sNBBGQYF7BUGBewU": {
   "w": 1200,
   "h": 675,
@@ -364,6 +363,12 @@
   "w": 1300,
   "h": 726,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.inthesnow.com/uploads/2026/10/salomon-s-pro-alpha-c-boa-ski-boots-2026-27-hero.jpg": {
+  "w": 1600,
+  "h": 700,
+  "target": 720,
   "v": 3
  },
  "https://cdn.livedoor.jp/kstyle/514ee8edcb07f7e84eadfecd6f0ec5c7.jpg/r.580x0": {
@@ -395,6 +400,12 @@
   "w": 1200,
   "h": 674,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.upmedia.mg/upfile/img/2026/1021/202610211821342835.webp": {
+  "w": 1800,
+  "h": 1200,
+  "target": 720,
   "v": 3
  },
  "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-10-19/1a7f9645-0ab4-4aab-8700-6a133f5c31c9.jpg": {
@@ -1478,6 +1489,12 @@
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://media.whas11.com/assets/CCT/images/d2a97e25-4450-4841-96ef-b900ab91ff53/20260903T223000/d2a97e25-4450-4841-96ef-b900ab91ff53_1920x1080.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -2843,18 +2860,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.376
- },
- "https://www.bing.com/th?id=ONUT.tkirCUyh0X2plxfYt4ctgQ&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/41cebc60f7c7c104.webp",
-  "out": [
-   700,
-   365
-  ],
-  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.wlnT8BAz1Jo_wo1SrJHwGg&pid=News&w=900": {
   "w": 700,
