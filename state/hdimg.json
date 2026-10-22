@@ -113,19 +113,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/b7cceb19gy1iib0bbnet9j20i206ydl8.jpg": {
-  "w": 650,
-  "h": 250,
-  "target": 720,
-  "v": 3,
-  "local": "pics/7b2e4ded689e0a58.webp",
-  "out": [
-   650,
-   250
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/007nrArUgy1ii4kkhnk5xj31400qox3n.jpg": {
   "w": 1440,
   "h": 960,
@@ -270,6 +257,12 @@
  "https://cdn-origin.cool-style.com.tw/cool/2026/10/wnkh.webp": {
   "w": 1213,
   "h": 637,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.antaranews.com/cache/1200x800/2022/12/10/IMG_8041.jpg": {
+  "w": 1200,
+  "h": 800,
   "target": 720,
   "v": 3
  },
@@ -1082,6 +1075,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fQLFL.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
   "h": 819,
@@ -1642,6 +1641,12 @@
    857
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/188772/1129553_615.jpg": {
+  "w": 615,
+  "h": 871,
+  "target": 720,
+  "v": 3
  },
  "https://news.walkerplus.com/article/32990/156121_615.jpg": {
   "w": 615,
@@ -2531,12 +2536,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
-  "w": 699,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.CaUEP9VO4Qp_oyc3UjMZUQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2555,6 +2554,12 @@
    852
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.EmDiBOOYbGI1YsAXHklQmQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.GU75uQWnYgvJG5mT-5BTwg&pid=News&w=912": {
   "w": 700,
@@ -2788,12 +2793,6 @@
   "v": 3,
   "blur": 0.376
  },
- "https://www.bing.com/th?id=ONUT.zik-q_ypKBFujZPYAzOhDQ&pid=News&w=1120": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ORMS.1e7af442a4d725fe2d1f76d8847ebfd1&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -2816,6 +2815,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/Avengers-Doomsdays-New-Trailer-Release-Date-May-Have-Just-Been-Revealed-Its-Soon.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/MixCollage-16-Oct-2026-09-52-AM-7941.jpg?resize=1200,630": {
