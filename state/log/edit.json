@@ -1442,5 +1442,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 144788
+},
+{
+"at": "2026-10-22T00:48:52+00:00",
+"text": "2026-10-22 第 10 バッチを出刊：ILLIT（1 版面・3 本・残り 14 版面） · token 新規入力 1,298・キャッシュ読み 14.4万・出力 485",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.25,
+"mem_total": 16874930176,
+"mem_free": 16169525248,
+"disk_used": 10904649728,
+"disk_free": 30622588928,
+"disk_total": 41527238656,
+"peak": 195629056
+},
+"batch": 10,
+"boards": [
+"ILLIT"
+],
+"stories": 3,
+"left": 14,
+"edited": 13,
+"run": 1792627817.3230252,
+"tok": {
+"in": 2,
+"cw": 1296,
+"cr": 144011,
+"out": 485,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 145794
 }
 ]

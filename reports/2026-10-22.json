@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "1cef35c4387a",
+ "edit_sig": "b66b4b866751",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -762,45 +762,39 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 1,
-     "source": "Weverse",
-     "title": "Weverse ILLIT Media - ILLIT (아일릿) '체포하겠어 (You’re Under Arrest)' | MULTI-CAM | PRESS START♥︎ ENCORE",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1jamRBUGE5MlZ5LUhZX2ZaZkVvelE0VXZrZDFoa183clowYWY1S2FHZlJaRWdTMzYyMmlLT0JwM2xheW5oWk1FWDlDRzY5Zjh4czg0aw?oc=5"
+     "headline": "ILLIT (아일릿) '체포하겠어 (You’re Under Arrest)' | MULTI-CAM | PRESS START♥︎ ENCORE",
+     "highlight": "",
+     "image": "https://i4.ytimg.com/vi/3T3xcHrPBjM/hqdefault.jpg",
+     "image_via": "条目自带",
+     "url": "https://weverse.io/illit/media/1-181109357",
+     "weight": "normal"
     },
     {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "습관성 친절 근절 캠페인 #1편 | ILLIT (아일릿)",
+     "highlight": "",
+     "image": "https://i4.ytimg.com/vi/SBkOE6D8g-g/hqdefault.jpg",
+     "image_via": "条目自带",
+     "url": "https://www.youtube.com/watch?v=SBkOE6D8g-g",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-18",
-     "n": 2,
-     "source": "もとりょこblog -",
-     "title": "ILLIT 1st Mini Album 'SUPER REAL ME' Debut Showcase セットリストまとめ",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBlVUpvdGxxSGdKeTJFMmsyOTNRYmhfVXZKRkZIZHotbUsxdGhuazhydHlFOUVVelFKU0FXVHE1b0R0NFhibnZrekxR?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 3,
-     "source": "YouTube · ILLIT",
-     "title": "Posing mad🎀 #BREAK_EVEN #체포하겠어 #You_re_Under_Arrest #ILLIT #아일릿",
-     "url": "https://www.youtube.com/watch?v=3T3xcHrPBjM"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 4,
-     "source": "YouTube · ILLIT",
-     "title": "#Its_Me Time ♾️ #PRESS_START_ENCORE_IN_KOREA #ILLIT #아일릿",
-     "url": "https://www.youtube.com/watch?v=bTrsQ0m4U1I"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 5,
-     "source": "YouTube · ILLIT",
-     "title": "습관성 친절 근절 캠페인 #1편 | ILLIT (아일릿)",
-     "url": "https://www.youtube.com/watch?v=SBkOE6D8g-g"
+     "headline": "ILLIT 1st Mini Album 'SUPER REAL ME' Debut Showcase セットリストまとめ",
+     "highlight": "",
+     "image": "https://motoryokoblog.com/wp-content/uploads/2026/09/illit_18227_fv.png",
+     "image_via": "og:image",
+     "url": "https://motoryokoblog.com/?p=18227",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",

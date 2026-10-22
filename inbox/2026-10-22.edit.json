@@ -83,7 +83,8 @@
   "绝区零": 16,
   "日本顶级网球赛事": 9,
   "dota2": 8,
-  "MMORPG 新作": 6
+  "MMORPG 新作": 6,
+  "ILLIT": 5
  },
  "周杰伦": [
   {
@@ -495,6 +496,37 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT (아일릿) '체포하겠어 (You’re Under Arrest)' | MULTI-CAM | PRESS START♥︎ ENCORE",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    3,
+    4
+   ]
+  },
+  {
+   "headline": "습관성 친절 근절 캠페인 #1편 | ILLIT (아일릿)",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "ILLIT 1st Mini Album 'SUPER REAL ME' Debut Showcase セットリストまとめ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]
