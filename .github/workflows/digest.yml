@@ -128,7 +128,7 @@ jobs:
           names=$(python scripts/digest.py unedited --only "$NEW_ITEMS")
           if [ -z "$names" ]; then echo "新关注项还没有消息或已编排过，不用叫 AI 编辑"; exit 0; fi
           echo "新关注项：$names"
-          python scripts/gate.py check > /dev/null
+          python scripts/gate.py check > /dev/null || { echo "::warning::ゲートの判断に失敗、定時を待つ"; exit 0; }
           python scripts/gate.py fire > /tmp/fire.txt || { echo "::warning::叫 AI 编辑失败，等定时编排"; exit 0; }
           cat /tmp/fire.txt
           grep -q "^edit *Claude を起こした" /tmp/fire.txt || exit 0

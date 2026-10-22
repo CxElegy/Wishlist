@@ -158,6 +158,18 @@ class TakeItemRequests(unittest.TestCase):
         self.assertIn("没有", notes[1])
         self.assertIn("要紧消息规则", notes[2])
 
+    def test_broken_match_regex_refused(self):
+        """match / exclude の re: が壊れている依頼は断る（通すと毎回の収集で re.search が例外を出す）。ふつうの語・正しい re: は通す。"""
+        patched = self.run_with(
+            {"action": "add", "name": "坏匹配", "config": {"match": ["re:(壊れた"]}},
+            {"action": "add", "name": "坏排除", "config": {"exclude": ["ok", "re:[abc"]}},
+            {"action": "add", "name": "好的", "config": {"match": ["(括弧はただの文字", r"re:\bFROM\b"]}})
+        self.assertIn("match 的正则写错了", patched["item_requests?id=eq.1"]["note"])
+        self.assertIn("exclude 的正则写错了", patched["item_requests?id=eq.2"]["note"])
+        self.assertEqual(patched["item_requests?id=in.(3)"]["status"], "done")
+        self.assertEqual(self.items()["好的"]["match"], ["(括弧はただの文字", r"re:\bFROM\b"])
+        self.assertNotIn("坏匹配", self.items())
+
     def test_add_then_edit_same_run(self):
         self.run_with({"action": "add", "name": "新游戏", "config": {"type": "game"}},
                       {"action": "edit", "name": "新游戏", "config": {"priority": "什么时候能玩"}})

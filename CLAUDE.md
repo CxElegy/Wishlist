@@ -312,10 +312,10 @@
   按钮 → Supabase `run_now(job)`（`db/run_now.sql`，Vault 的 `github_dispatch_token`）→ GitHub workflow_dispatch。
   只能起这 3 个，每个有间隔（3 分 / 10 分 / 1 分）。GitHub 的定时（cron）忙时会迟到・漏掉（2026-10-17 漏了 2 小时），
   所以后台作業还有第 2 个时钟：Supabase pg_cron 每小时 17 分 `run_now('tick')`（和按钮同一条路，但不带 retry_now，守失败的等待）。后台作業从按钮起时带 `retry_now`（失败的版面也不等）。加新按钮：`render.RUN_JOBS` 和 `run_now` 的 case 各加一项。
-- **收集不停（2026-10-22 全体の検査 M3・M4）**：GitHub 的定时 `17 */2` 常抜ける（10-21〜22 12 回只来 5 回、空了 4 小时）→ **收集的控えの時計**由后台作業兼任（pg_cron 每小时必到）：`scripts/collect_watch.py` 看 `state/log/collect.json` 最后一次收集（带 `secs` 的行），过了 150 分、digest.yml 没有在跑・排队・30 分内开始的回，就 `gh workflow run digest.yml`（GITHUB_TOKEN 的 workflow_dispatch 能起别的 workflow，`actions: write`），记进 `state/log/gate.json`。
-  **締め切り**：收集开始 18 分（`digest.COLLECT_DEADLINE_MIN`）后不再开新的版面，剩下的写进日志「時間切れで N 版面を次の回へ」（`deferred`），下一回先抓它们（`deferred_from_log` / `fetch_order`）；digest.yml `timeout-minutes: 40`。**1 个版面抓取出例外**只让那个版面空着、日志「取得に失敗した N 版面は空で続けた」，收集照常（`ingest` 的 `fetch`）。
-  后台作業：小元素那步 `continue-on-error`（失败也照样叫 AI 编辑・提交）；`state/gate.json` 只在判断变了・真的叫了 Claude・起了收集时才提交（`GATE_FIRE` 开着不算）。
-  digest.yml 的「新关注项 → 立刻 AI 编辑」也走ゲート：`GATE_NOW=edit python scripts/gate.py fire`（不看间隔・定时，但守一時停止・`GATE_FIRE`，叫了就记录并 push）。
+- **收集不停（2026-10-22 全体の検査 M3・M4）**：GitHub 的定时 `17 */2` 常抜ける（10-21〜22 12 回只来 5 回、空了 4 小时）→ **收集的控えの時計**由后台作業兼任（pg_cron 每小时必到）：`scripts/collect_watch.py` 看 `state/log/collect.json` 最后一次收集（带 `secs` 的行），过了 150 分、digest.yml 没有在跑・排队・60 分内（比 timeout 40 分长）开始的回，就 `gh workflow run digest.yml`（GITHUB_TOKEN 的 workflow_dispatch 能起别的 workflow，`actions: write`），记进 `state/log/gate.json`（起不来・读不到回的样子也记、也提交：`tried`；同一个失败不重复写）。
+  **締め切り**：收集开始 18 分（`digest.COLLECT_DEADLINE_MIN`）后不再开新的版面，剩下的写进日志「時間切れで N 版面を次の回へ」（`deferred`），下一回先抓它们（`deferred_from_log` / `fetch_order`，第一次抓的版面＝新关注项也排最前）；已经开始的版面卡住时，截止＋5 分（`COLLECT_GRACE_MIN`）就不等了（`digest.run_parallel` 用 daemon 线程，卡住的 1 本不挡进程结束），也算下一回；截止后封面不上网（`find_cover` 只用已有的）；digest.yml `timeout-minutes: 40`。**1 个版面抓取・之后按顺序的处理（去重・match 的正则・状态・封面）出例外**只让那个版面空着（中途写的状态还原）、日志「取得・処理に失敗した N 版面は空で続けた」，收集照常（`ingest` 的 `fetch` / `_ingest_one`）；设置页的依赖里 `re:` 写错的 match / exclude 在 `take_item_requests` 就拒收。
+  后台作業：小元素那步 `continue-on-error`（失败也照样叫 AI 编辑・提交）；`state/gate.json` 只在判断变了（最初的 check・小元素后的 check）・真的叫了 Claude・试着起收集时才提交（`GATE_FIRE` 开着不算）。
+  digest.yml 的「新关注项 → 立刻 AI 编辑」也走ゲート：`GATE_NOW=edit python scripts/gate.py fire`（只跳过 9:00 / 18:00 的回；60 分内已叫起〔编辑中〕・停滞・一時停止・`GATE_FIRE` 都照守：AI 编辑只跑 1 本；叫了就记 `now: true` 并 push）。
 - **リソース・並列と制限**（バックグラウンドの中）：容量（リポジトリ・公开页 vs 1GB 上限）、各仕组み最近一次运行时的服务器（内存・磁盘・CPU・用时，
   `scripts/resources.py` 的 `snapshot()` 附在 runlog 里）、トークン（Claude API 自动数；定时任务的 Claude 结束时自己写：
   `python scripts/runlog.py emblem "…" --tokens N`；订阅额度的余量程序读不到，只能看 https://claude.ai/settings/usage ）。

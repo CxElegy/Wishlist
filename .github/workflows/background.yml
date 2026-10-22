@@ -123,9 +123,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # まだないファイル（新しいアカウントを空から始めた直後の emblem_progress.json など）は飛ばす：1 つでもないと git add 全体が失敗する
           for f in items.yaml docs/home/emblems state/emblem_progress.json state/log/emblem.json; do if [ -e "$f" ]; then git add "$f"; fi; done
-          # ゲートの記録は、判断が前と変わったとき・Claude を本当に起こしたとき・収集を起こしたときだけ
+          # ゲートの記録は、判断が前と変わったとき（最初の check・小元素のあとの check）・Claude を本当に起こしたとき・
+          # 収集を起こそうとしたとき（起こせなかった・回の様子が読めなかったときも：管理ページ・ライブログに出す）だけ
           # （GATE_FIRE が開いているだけでは足さない：前は毎時「后台作業」のコミットが増えていた）
-          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "${{ steps.fire.outputs.fired }}" = "true" ] || [ "${{ steps.kick.outputs.kicked }}" = "true" ]; then
+          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "${{ steps.more.outputs.changed }}" = "true" ] || [ "${{ steps.fire.outputs.fired }}" = "true" ] || [ "${{ steps.kick.outputs.tried }}" = "true" ]; then
             git add state/gate.json state/log/gate.json 2>/dev/null || true
           fi
           git diff --cached --quiet && { echo "変化なし：コミットしない"; exit 0; }

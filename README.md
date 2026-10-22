@@ -59,10 +59,11 @@ GitHub Actions 的安排：
 | 时间 | 做什么 |
 |---|---|
 | PR 合并进 main 时 | 约 1 分钟：只重新生成网页并发布（`render.yml`），不用等收集跑完 |
-| 每 2 小时 | 收集 → 更新当天的简报网页 → 命中 `urgent_patterns` 的要紧消息立刻发 Discord（发过的不重发） |
+| 每 2 小时 | 收集 → 更新当天的简报网页 → 命中 `urgent_patterns` 的要紧消息立刻发 Discord（发过的不重发）。收集 18 分钟截止，没抓完的版面下一回先抓；1 个版面出错只空着那个版面 |
+| 每小时（后台作業，Supabase pg_cron 必到） | 收集的控えの時計：GitHub 的定时抜けて最后一次收集过了 150 分钟，就起一次收集（`scripts/collect_watch.py`） |
 | 每周一 08:47（北京时间） | 发 Discord 周报：过去 7 天每个关注项的要点 + 网页链接 |
-| 每天 12:43 · 23:43（北京时间） | Claude 定时任务（AI 编辑）挑出值得报的条目、合并同一件事（标题保留原文语言，不翻译） |
-| 新加关注项推送后 | 收集到消息就立刻叫 AI 编辑编一次，不等定时（需要仓库 Secret `ROUTINE_FIRE_TOKEN`：claude.ai/code/routines → 「关注清单通信 · AI 编辑」→ 编辑 → 添加触发器 → API → 生成令牌） |
+| 每天 9:00 · 18:00（日本时间） | 后台ゲート在有整理待ち时叫 Claude 定时任务（AI 编辑）挑出值得报的条目、合并同一件事（标题保留原文语言，不翻译） |
+| 新加关注项推送后 | 收集到消息就经ゲート立刻叫 AI 编辑编一次，不等 9:00 / 18:00（管理页的一時停止・正在编辑中时不叫；需要仓库 Secret `ROUTINE_FIRE_TOKEN`：需要仓库 Secret `ROUTINE_FIRE_TOKEN`：claude.ai/code/routines → 「关注清单通信 · AI 编辑」→ 编辑 → 添加触发器 → API → 生成令牌） |
 
 ```
 items.yaml

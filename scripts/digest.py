@@ -1265,6 +1265,12 @@ def _clean_field(key, value):
             # re: の規則（「名前」と「面の言葉」が同時に出る、の先読み）は長くなるので 600 字まで
             if len(out) > most or any(len(v) > (600 if v.startswith("re:") else longest) for v in out):
                 raise ValueError(f"{key} 太多或太长")
+            for v in out:   # 壊れた re:（括弧の閉じ忘れ）は依頼の段で断る：通すと毎回の収集で re.search が例外を出す
+                if v.startswith("re:"):
+                    try:
+                        re.compile(v[3:])
+                    except re.error as err:
+                        raise ValueError(f"{key} 的正则写错了：{v[:40]}（{err}）") from None
         elif rule == "langs":
             if any(v not in NEWS_LANGS for v in out):
                 raise ValueError(f"news_langs 只支持 {'/'.join(NEWS_LANGS)}")
@@ -2712,6 +2718,8 @@ LIVE_EDIT_FILE = pathlib.Path("/tmp/wishlist-live-edit.json")  # AI 编辑这一
 # 収集の締め切り：始めてからこの分数を過ぎたら新しい版面を始めない（残りは次の回へ、次の回はそれを先に取る）。
 # digest.yml の timeout-minutes（40）の前に、出刊・通知・push の時間を残す（2026-10-22：22 分かかった回があり、30 分で切れると push の前に全部消える）
 COLLECT_DEADLINE_MIN = 18
+# 始まった版面が固まったとき（GDELT の 429 の空待ちなど）も、締め切り＋この分数で待つのをやめて先へ進む（その版面は次の回へ）
+COLLECT_GRACE_MIN = 5
 LAST_INGEST = {}   # この回の締め切り・失敗（logged_ingest がログに書く）：{"deferred": [名前], "failed": {名前: 理由}}
 
 
@@ -2726,10 +2734,50 @@ def deferred_from_log(log_dir=None):
     return []
 
 
-def fetch_order(items, deferred):
-    """取る順番：前の回に取れなかった版面を先に（毎回同じ版面が時間切れにならないように）。去重はあとで元の順に戻してする。"""
-    first = set(deferred or [])
+def fetch_order(items, deferred, backfill=()):
+    """取る順番：前の回に取れなかった版面と、初めて取る版面（backfill：新しく加えた関注項は items の末尾に入り、42 日分で重い）を先に。
+    毎回同じ版面が時間切れにならないように・新関注項の「すぐ AI 編集」が時間切れで黙って失われないように。去重はあとで元の順に戻してする。"""
+    first = set(deferred or []) | set(backfill or [])
     return [i for i in items if i["name"] in first] + [i for i in items if i["name"] not in first]
+
+
+def run_parallel(fn, items, workers, timeout, key=lambda i: i["name"]):
+    """items を workers 本で fn にかける。→ (結果 {key: 値}, 終わらなかった key のリスト)。
+    timeout 秒たっても終わらない版面は待たない（daemon のスレッドなので、固まった 1 本がプロセスの終わりも止めない。
+    ThreadPoolExecutor は with を抜けるときも終了時も全部のスレッドを待つので、1 本固まると 40 分の timeout で push の前に全部消える）。"""
+    import queue
+    import threading
+    import time
+    todo, lock, done, out = queue.Queue(), threading.Lock(), threading.Event(), {}
+    for i in items:
+        todo.put(i)
+    left = [len(items)]
+
+    def worker():
+        while not done.is_set():
+            try:
+                i = todo.get_nowait()
+            except queue.Empty:
+                return
+            try:
+                r = fn(i)
+            except Exception:  # noqa: BLE001  fn が自分で拾う。ここまで来たら空
+                r = None
+            with lock:
+                if not done.is_set():
+                    out[key(i)] = r
+                    left[0] -= 1
+                    if not left[0]:
+                        done.set()
+    if not items:
+        return {}, []
+    for _ in range(max(1, min(workers, len(items)))):
+        threading.Thread(target=worker, daemon=True).start()
+    done.wait(timeout)
+    with lock:
+        done.set()   # これより後に終わった版面の結果は捨てる（もう順番の処理に入っている）
+        got = dict(out)
+    return got, [key(i) for i in items if key(i) not in got]
 
 
 def _run_min(proc, default_secs):
@@ -2757,6 +2805,40 @@ def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"
         print(f"  （版面状态没写进数据库：{err}）", file=sys.stderr)
 
 
+def _ingest_one(item, raw, bconf, settings, facts, seen, now, compare, dry_run, late=False):
+    """1 版面分の順番どおりの処理（去重・状態・封面）。→ (inbox の 1 項目 か None, 収めた entries)。
+    seen / known は呼ぶ側が、ここが最後まで通ったときだけ足す（途中で例外なら、その版面は何も残さない）。
+    late = 締め切りを過ぎた：封面はネットに出ずに取れる分だけ（site の og:image は scrapling・ブラウザで数分のびることがある）。"""
+    backfill, conf = bconf
+    if backfill:
+        print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
+    entries = filter_entries(raw, item, conf, seen, now, compare)
+    # 不火的 Reddit 帖子（sources.reddit_hot）不上版面，只记下来给話題度数帖子数；以后上了最热榜还会再收进来
+    cold = [e for e in entries if not getattr(e, "hot", True)]
+    entries = [e for e in entries if getattr(e, "hot", True)]
+    print(f"  {item['name']} 新条目 {len(entries)} 条" + (f"（另有不火的 SNS {len(cold)} 帖，只算話題度）" if cold else ""),
+          file=sys.stderr)
+    if dry_run:
+        print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
+        return None, entries
+    item_facts, status_cover = status_facts(item, settings, facts)
+    if not entries and not cold and not any(f["changed"] for f in item_facts):
+        return None, entries
+    cover = (item.get("cover") or status_cover) if late else find_cover(item, status_cover)
+    return {
+        "name": item["name"],
+        "priority": item.get("priority", ""),
+        **({"backfill": True} if backfill else {}),
+        "facts": item_facts,
+        "cover": cover,
+        # 补抓的是旧闻，不算要紧，不发 Discord
+        "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item)}
+                    for n, e in enumerate(entries, 1)],
+        **({"reddit_cold": [{"url": e.url, "date": e.published.isoformat() if e.published else None, "source": e.source}
+                            for e in cold]} if cold else {}),
+    }, entries
+
+
 def ingest(dry_run=False):
     """收集本期原始条目到 inbox/。返回写入的文件路径（没有新内容时返回 None）。"""
     settings, items = load_config()
@@ -2772,8 +2854,7 @@ def ingest(dry_run=False):
         backfill = not has_history(item["name"])
         confs[item["name"]] = (backfill, dict(settings, lookback_days=settings.get("first_lookback_days", 42)) if backfill else settings)
     # 联网抓取最花时间，各关注项互不相干：并行抓（同一网站的间隔由 sources._pace 在线程之间共享）。
-    # 去重要按顺序（前面的关注项收过的，后面的不再收），所以抓完后照原来的顺序一项一项处理
-    from concurrent.futures import ThreadPoolExecutor
+    # 去重要按顺序（前面的关注项收过的，后面的不再收），所以抓完后照原来的顺序一项一项处理（run_parallel）
 
     live = not dry_run
     started = {}
@@ -2781,9 +2862,8 @@ def ingest(dry_run=False):
         live_mark(None)  # 上一次收集留下的行清掉
     import time
     t_start, budget = time.monotonic(), COLLECT_DEADLINE_MIN * 60
-    deferred, failed = [], {}
+    t_deferred, t_failed = [], {}   # スレッドが書く（固まった 1 本があとで書き足すこともある）。順番の処理は写しの deferred / failed
     LAST_INGEST.clear()
-    LAST_INGEST.update(deferred=deferred, failed=failed)
 
     def compare_for(item):
         compare = known.get(item["name"], [])
@@ -2801,7 +2881,7 @@ def ingest(dry_run=False):
     def fetch(item):
         name = item["name"]
         if time.monotonic() - t_start > budget:   # 締め切りを過ぎた：この版面は始めない（次の回に先に取る）
-            deferred.append(name)
+            t_deferred.append(name)
             return None
         print(f"抓取：{item['name']}", file=sys.stderr)
         if live:  # 网页上只有这个版面出「正在找新记事」的条
@@ -2810,8 +2890,8 @@ def ingest(dry_run=False):
         try:
             raw = collect(item, confs[name][1])
         except Exception as err:  # noqa: BLE001  1 版面の失敗で収集全体を止めない（その版面は空・ログに残す）
-            failed[name] = f"{type(err).__name__}: {str(err)[:80]}"
-            print(f"  {name} の取得に失敗（この版面は空で続ける）：{failed[name]}", file=sys.stderr)
+            t_failed[name] = f"{type(err).__name__}: {str(err)[:80]}"
+            print(f"  {name} の取得に失敗（この版面は空で続ける）：{t_failed[name]}", file=sys.stderr)
             if live:
                 live_mark(name, None)
             return None
@@ -2825,9 +2905,16 @@ def ingest(dry_run=False):
                 shown[name] = n or None
                 live_mark(name, "found" if n else None, n, started.get(name), eta())
         return raw
-    order = fetch_order(items, [] if dry_run else deferred_from_log())
-    with ThreadPoolExecutor(max_workers=COLLECT_WORKERS) as pool:
-        got = dict(zip([i["name"] for i in order], pool.map(fetch, order)))
+    order = fetch_order(items, [] if dry_run else deferred_from_log(), [n for n, (b, _) in confs.items() if b])
+    got, stuck = run_parallel(fetch, order, COLLECT_WORKERS, budget + COLLECT_GRACE_MIN * 60)
+    deferred, failed = list(t_deferred), dict(t_failed)   # 固まったスレッドがあとで書き足しても、ここからは手元の写しを使う
+    for name in stuck:   # 締め切り＋余裕を過ぎても終わらなかった（固まった）版面：次の回へ
+        if name not in deferred:
+            deferred.append(name)
+        if name in started and live:
+            live_mark(name, None)
+    if stuck:
+        print(f"  {len(stuck)} 版面が {COLLECT_DEADLINE_MIN + COLLECT_GRACE_MIN} 分で終わらず、待たずに先へ：{'、'.join(stuck[:8])}", file=sys.stderr)
     fetched = [got.get(i["name"]) for i in items]   # 去重は元の順番（前の関注項が収めたものは後ろで収めない）
     if deferred:
         print(f"時間切れ（{COLLECT_DEADLINE_MIN} 分）で {len(deferred)} 版面を次の回へ：{'、'.join(deferred[:8])}", file=sys.stderr)
@@ -2836,38 +2923,28 @@ def ingest(dry_run=False):
     for item, raw in zip(items, fetched):
         if raw is None:   # 時間切れで始めなかった・取得に失敗した版面：今回は何も書かない
             continue
-        backfill, conf = confs[item["name"]]
-        if backfill:
-            print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
-        entries = filter_entries(raw, item, conf, seen, now, compare_for(item))
-        # 不火的 Reddit 帖子（sources.reddit_hot）不上版面，只记下来给話題度数帖子数；以后上了最热榜还会再收进来
-        cold = [e for e in entries if not getattr(e, "hot", True)]
-        entries = [e for e in entries if getattr(e, "hot", True)]
-        print(f"  {item['name']} 新条目 {len(entries)} 条" + (f"（另有不火的 SNS {len(cold)} 帖，只算話題度）" if cold else ""),
-              file=sys.stderr)
-        if live and shown.get(item["name"], -1) != (len(entries) or None):  # 按顺序去重后件数变了（被前面的版面收走）才改
-            live_mark(item["name"], "found" if entries else None, len(entries), started.get(item["name"]), eta())
-        if dry_run:
-            print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
+        name = item["name"]
+        before = {k: v for k, v in facts.items() if (v or {}).get("item") == name}
+        try:
+            rec, entries = _ingest_one(item, raw, confs[name], settings, facts, seen, now, compare_for(item),
+                                       dry_run, late=time.monotonic() - t_start > budget)
+        except Exception as err:  # noqa: BLE001  1 版面の失敗（壊れた re: の match など）で収集全体を止めない
+            failed[name] = f"{type(err).__name__}: {str(err)[:80]}"
+            print(f"  {name} の処理に失敗（この版面は空で続ける）：{failed[name]}", file=sys.stderr)
+            for k in [k for k, v in facts.items() if (v or {}).get("item") == name]:   # 途中で書いた状態は元に戻す
+                facts.pop(k)
+            facts.update(before)
+            if live:
+                live_mark(name, None)
             continue
-        item_facts, status_cover = status_facts(item, settings, facts)
-        if not entries and not cold and not any(f["changed"] for f in item_facts):
-            continue
-        inbox_items.append({
-            "name": item["name"],
-            "priority": item.get("priority", ""),
-            **({"backfill": True} if backfill else {}),
-            "facts": item_facts,
-            "cover": find_cover(item, status_cover),
-            # 补抓的是旧闻，不算要紧，不发 Discord
-            "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item)}
-                        for n, e in enumerate(entries, 1)],
-            **({"reddit_cold": [{"url": e.url, "date": e.published.isoformat() if e.published else None, "source": e.source}
-                                for e in cold]} if cold else {}),
-        })
+        if live and shown.get(name, -1) != (len(entries) or None):  # 按顺序去重后件数变了（被前面的版面收走）才改
+            live_mark(name, "found" if entries else None, len(entries), started.get(name), eta())
+        if rec:
+            inbox_items.append(rec)
         for e in entries:
             seen.update((e.url, title_key(e.title)))
-        known.setdefault(item["name"], []).extend(e.title for e in entries)
+        known.setdefault(name, []).extend(e.title for e in entries)
+    LAST_INGEST.update(deferred=deferred, failed=failed)
 
     if dry_run:
         return None
@@ -3668,7 +3745,7 @@ def logged_ingest():
         runlog.add("collect", f"時間切れで {len(deferred)} 版面を次の回へ（{COLLECT_DEADLINE_MIN} 分）：" + "、".join(deferred[:6]),
                    "warn", deferred=list(deferred))
     if failed:
-        runlog.add("collect", f"取得に失敗した {len(failed)} 版面は空で続けた：" + "、".join(f"{k}（{v}）" for k, v in list(failed.items())[:3]),
+        runlog.add("collect", f"取得・処理に失敗した {len(failed)} 版面は空で続けた：" + "、".join(f"{k}（{v}）" for k, v in list(failed.items())[:3]),
                    "warn", failed=dict(failed))
     if intel.health():   # 情報員の情報源ごとの様子（取れなかった所は名前と理由）
         print("情報員：" + intel.health(), file=sys.stderr)

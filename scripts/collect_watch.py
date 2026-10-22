@@ -3,7 +3,7 @@
 最後の収集（state/log/collect.json の、終わった行＝secs つきの最新の時刻）から STALE_MIN 分以上たっていたら
 digest.yml を workflow_dispatch で起こす（GITHUB_TOKEN でも workflow_dispatch は別のワークフローを起こせる）。
 
-収集が走っている最中・並んでいる最中、または RECENT_MIN 分以内に始まった回があるときは起こさない
+収集が走っている最中・並んでいる最中、または RECENT_MIN 分以内に始まった回（起こした回も含む）があるときは起こさない
 （digest.yml の concurrency は 1 本待ち。並んでいる回があるときに起こすと、並んでいた回が取り消されて入れ替わるだけ）。
 
   python scripts/collect_watch.py           判断して、必要なら起こす（GH_TOKEN が要る）
@@ -21,7 +21,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import runlog  # noqa: E402
 
 STALE_MIN = 150   # 収集は 2 時間ごと（1 回 5〜12 分）。これより空いたら定時が抜けている
-RECENT_MIN = 30   # この分数以内に始まった収集の回があれば待つ（push の前・反映の途中かもしれない）
+RECENT_MIN = 60   # この分数以内に始まった収集の回があれば待つ（push の前・反映の途中かもしれない）。
+                  # digest.yml の timeout-minutes（40）より長く：起こした回がすぐ落ちても・40 分で切れ続けても、
+                  # 後台作業（:17 pg_cron・:47 GitHub・収集が終わるたびの workflow_run）のたびに起こし直さない＝1 時間に 1 回まで
 WORKFLOW = "digest.yml"
 BUSY = {"queued", "in_progress", "waiting", "requested", "pending"}
 
@@ -86,22 +88,33 @@ def kick(run=subprocess.run):
 
 
 def main(argv=None, run=subprocess.run, log_dir=None, now=None):
+    """→ (起こすべきか, 起こしたか, 理由)。GITHUB_OUTPUT に kicked（起こした）と tried（起こそうとした・回の様子が読めなかった）。
+    tried のときは state/log/gate.json に 1 行書くので、ワークフローはそれを提交する（起こせない・読めないが続いても管理ページ・ライブログに出る）。
+    同じ失敗が続くときは、前の行と同じ理由なら書き足さない（毎時のコミットを増やさない）。"""
     argv = sys.argv[1:] if argv is None else argv
     dry = "--dry" in argv
     now = now or _now()
     last = last_collect(log_dir)
     stale = last is None or now - last >= dt.timedelta(minutes=STALE_MIN)
-    due, why = decide(last, gh_runs(run) if stale else [], now)   # 新しいうちは gh を呼ばない
-    kicked = False
-    if due and not dry:
-        kicked, err = kick(run)
-        why += "" if kicked else f"・起こせなかった：{err}"
-        runlog.add("gate", "収集の控えの時計：" + why, "warn" if kicked else "error", log_dir=log_dir, collect_kick=kicked)
+    runs = gh_runs(run) if stale else []   # 新しいうちは gh を呼ばない
+    due, why = decide(last, runs, now)
+    kicked = tried = False
+    if not dry and (due or (stale and runs is None)):
+        err = "gh run list が読めない"
+        if due:
+            kicked, err = kick(run)
+            why += "" if kicked else f"・起こせなかった：{err}"
+        prev = next((r for r in reversed(runlog.load("gate", log_dir)) if "collect_kick" in r), None)
+        same = not kicked and prev and not prev.get("collect_kick") and prev.get("kick_err") == err
+        if not same:
+            runlog.add("gate", "収集の控えの時計：" + why, "warn" if kicked else "error", log_dir=log_dir,
+                       collect_kick=kicked, **({} if kicked else {"kick_err": err}))
+            tried = True
     print(why)
     out = os.environ.get("GITHUB_OUTPUT")
     if out:
         with open(out, "a", encoding="utf-8") as f:
-            f.write(f"kicked={'true' if kicked else 'false'}\n")
+            f.write(f"kicked={'true' if kicked else 'false'}\ntried={'true' if tried else 'false'}\n")
     return due, kicked, why
 
 

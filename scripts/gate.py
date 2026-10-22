@@ -367,7 +367,8 @@ def fire(path=None, post=_post, env=None):
     間隔・停滞の判断を飛ばして今すぐ起こす）。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。"""
     env = os.environ if env is None else env
     force = {x.strip() for x in str(env.get("GATE_FORCE", "")).split(",") if x.strip() in ROUTINES}
-    # GATE_NOW：新しい関注項の「すぐ AI 編集」（digest.yml）。間隔・1 日 2 回の定時は飛ばすが、仕事があること・一時停止・GATE_FIRE は守る
+    # GATE_NOW：新しい関注項の「すぐ AI 編集」（digest.yml）。1 日 2 回の定時（SLOTS）だけ飛ばす。仕事があること・一時停止・GATE_FIRE・
+    # 「60 分以内に起こし済み（編集中）」・「停滞で待つ」は守る（AI 編集は 1 本だけ：同じ inbox を書くので 2 本目を起こさない）
     now_jobs = {x.strip() for x in str(env.get("GATE_NOW", "")).split(",") if x.strip() in ROUTINES} - force
     allowed = enabled_jobs(env.get("GATE_FIRE", "1")) | force
     data = load(path)
@@ -381,8 +382,6 @@ def fire(path=None, post=_post, env=None):
         if job == "edit" and job not in force and edit_mode(env) == "pause":
             results[job] = "管理ページで一時停止中（起こさない）"
             continue
-        if job in now_jobs and job in allowed:
-            force.add(job)   # ここから先は GATE_FORCE と同じ（間隔・定時を飛ばす。記録には forced が付く）
         if job not in allowed:
             results[job] = "GATE_FIRE で止めている（定時を待つ）"
             continue
@@ -404,7 +403,7 @@ def fire(path=None, post=_post, env=None):
             if ago < dt.timedelta(hours=REFIRE_HOURS):
                 results[job] = f"停滞：{why}（{REFIRE_HOURS} 時間待つ・管理ページで確認）"
                 continue
-        if job not in force and state in ("progress", "idle", "unpublished", "none") and job in SLOTS:
+        if job not in force and job not in now_jobs and state in ("progress", "idle", "unpublished", "none") and job in SLOTS:
             try:
                 at = dt.datetime.fromisoformat(last["at"]) if last.get("at") else None
             except (ValueError, TypeError):
@@ -421,7 +420,8 @@ def fire(path=None, post=_post, env=None):
         try:
             out = post(f"https://api.anthropic.com/v1/claude_code/routines/{rid}/fire", token)
             j["fired"] = {"at": now.isoformat(timespec="seconds"), "day": j.get("prog_day") or day_of(now), "sig": j.get("sig"), "prog": j.get("prog"),
-                          "attempts": attempts, "resp": _resp(out), **({"forced": True} if job in force else {})}
+                          "attempts": attempts, "resp": _resp(out), **({"forced": True} if job in force else {}),
+                          **({"now": True} if job in now_jobs else {})}
             results[job] = "Claude を起こした" + (f"（{attempts} 回目：前は動かなかった）" if attempts > 1 else "")
         except Exception as e:   # 起こせなくても、定時のほうで拾われる
             results[job] = f"起こせなかった：{str(e)[:80]}"
