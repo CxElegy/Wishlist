@@ -351,12 +351,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.inthesnow.com/uploads/2026/10/salomon-s-pro-alpha-c-boa-ski-boots-2026-27-hero.jpg": {
-  "w": 1600,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.livedoor.jp/kstyle/514ee8edcb07f7e84eadfecd6f0ec5c7.jpg/r.580x0": {
   "w": 580,
   "h": 362,
@@ -659,16 +653,28 @@
   "target": 720,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/big-holiday.jpg": {
+  "w": 800,
+  "h": 500,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/nigata-ski-10.jpg": {
   "w": 1962,
   "h": 1308,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/shiobara.jpg": {
   "w": 1962,
   "h": 1308,
   "target": 1280,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/ski-tour.jpg": {
+  "w": 1920,
+  "h": 1280,
+  "target": 720,
   "v": 3
  },
  "https://doope.jp/media/26q4/img2849_01.jpg": {
@@ -815,6 +821,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/Bleach-Mirrors-High-1-million-pre-registrations.webp?fit=1920%2C1080&ssl=1": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/2026-MAMA-AWARDS-2.webp?fit=1200%2C1067&ssl=1": {
   "w": 1200,
   "h": 1067,
@@ -839,11 +851,24 @@
   "target": 1280,
   "v": 3
  },
- "https://i4.ytimg.com/vi/3T3xcHrPBjM/hqdefault.jpg": {
+ "https://i3.ytimg.com/vi/bTrsQ0m4U1I/hqdefault.jpg": {
   "w": 480,
   "h": 360,
   "target": 720,
   "v": 3
+ },
+ "https://i4.ytimg.com/vi/3T3xcHrPBjM/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.539,
+  "local": "pics/abf63b1dcf9ed3f4.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
  },
  "https://i4.ytimg.com/vi/SBkOE6D8g-g/hqdefault.jpg": {
   "w": 480,
@@ -940,6 +965,12 @@
  "https://images.entertainment.ie/uploads/2021/02/04114544/don-cheadle-war-machine.jpg?w=1280&h=768&q=high": {
   "w": 1280,
   "h": 768,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.hothardware.com/contentimages/newsitem/71917/content/16x9_2133x1200_highres-xbox-series-x-s-consoles.jpg": {
+  "w": 2133,
+  "h": 1200,
   "target": 720,
   "v": 3
  },
@@ -1191,6 +1222,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fMnaZ.img": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
   "h": 819,
@@ -1283,6 +1320,12 @@
   "v": 3
  },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/456224.png?date=1720281913": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/538615.png?date=1768419020": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -1725,7 +1768,7 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/843115_1.jpg": {
   "w": 1024,
   "h": 683,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2027/10/image_021-1.jpg": {
@@ -2262,6 +2305,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/188297/9/188297-9-325739f58f3f1a65829bfef3a8a73d82-1557x865.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1557,
+  "h": 865,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/23444/653/23444-653-a0954d6663f7b305db00f0d1f3661349-1356x1039.png?width=536&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff": {
   "w": 536,
   "h": 411,
@@ -2298,6 +2347,13 @@
   "h": 853,
   "target": 720,
   "v": 3
+ },
+ "https://preview.redd.it/ldvvg8zkwwwh1.jpeg?width=320&crop=smart&auto=webp&s=f0209a0f2e0b766466f9ce23ba050145f44e9bbc": {
+  "w": 320,
+  "h": 694,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.381
  },
  "https://preview.redd.it/nxnl71d8mkwh1.jpeg?width=640&crop=smart&auto=webp&s=c7e0ba24a427682c35471068d26c430247923978": {
   "w": 640,
@@ -2554,12 +2610,6 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
-  "v": 3
- },
- "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/05/gta-6-4.jpeg?&fit=crop": {
-  "w": 3840,
-  "h": 2160,
-  "target": 720,
   "v": 3
  },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/aion-2-concurrent-players-launch-steam.jpg?w=1600&h=900&fit=crop": {
@@ -3102,12 +3152,6 @@
   "w": 700,
   "h": 700,
   "target": 720,
-  "v": 3
- },
- "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
   "v": 3
  },
  "https://www.chosun.com/resizer/v2/MZSWMZBRGIYGIYJWGYYTSMTGHA.jpg?auth=5d108a3997f9576eadad73cbf8c16d378333fd055697c34e4d13da13198cb343&width=650&height=341&smart=true": {

@@ -78,15 +78,15 @@
   "周杰伦": 38,
   "GTA 6": 108,
   "漫威电影": 90,
-  "三星手机": 55,
+  "三星手机": 57,
   "Vaundy": 2,
-  "あつ森": 4,
-  "滑雪": 4,
+  "あつ森": 5,
+  "滑雪": 10,
   "绝区零": 16,
-  "日本顶级网球赛事": 9,
+  "日本顶级网球赛事": 11,
   "dota2": 8,
   "MMORPG 新作": 14,
-  "ILLIT": 5,
+  "ILLIT": 7,
   "チェーンソーマン": 5,
   "Astrae Oratio": 4,
   "FROM": 3,
@@ -94,7 +94,8 @@
   "gelato pique": 1,
   "哈利波特剧集": 1,
   "星巴克马克杯": 1,
-  "猫用品": 1
+  "猫用品": 1,
+  "BLEACH Mirrors High": 2
  },
  "周杰伦": [
   {
@@ -331,6 +332,16 @@
     24,
     52
    ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra vs Galaxy S26 Ultra: Expected specs, battery and camera upgrades",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    56,
+    57
+   ]
   }
  ],
  "Vaundy": [
@@ -372,9 +383,40 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "【あつ森】夢の島でできることと行き方【あつまれどうぶつの森】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "滑雪": [
+  {
+   "headline": "【2026-27】新潟10カ所のスキー場が滑り放題！「SNOW HEAVEN シーズンパス」発売へ",
+   "highlight": "滑り放題",
+   "blurb": "新潟の人気スキー場10カ所が滑り放題になる数量限定の「SNOW HEAVEN シーズンパス」が11月4日に発売される。",
+   "weight": "lead",
+   "refs": [
+    5,
+    9
+   ]
+  },
+  {
+   "headline": "2026-2027スキー＆スノボツアー、10月22日にオープンへ",
+   "highlight": "10月22日にオープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    7,
+    8,
+    10
+   ]
+  },
   {
    "headline": "ハンターマウンテン塩原＆たんばらスキーパーク、平日限定で小学生以下のリフト券が無料に",
    "highlight": "小学生以下のリフト券が無料",
@@ -382,24 +424,6 @@
    "weight": "normal",
    "refs": [
     3
-   ]
-  },
-  {
-   "headline": "Best Ski Boots 2026/27: Our InTheSnow Verdicts",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
-   ]
-  },
-  {
-   "headline": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1
    ]
   },
   {
@@ -466,7 +490,8 @@
     2,
     5,
     7,
-    6
+    6,
+    11
    ],
    "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261021-00035752-tennismagv-000-2-view.jpg?exp=10800"
   },
@@ -488,6 +513,15 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  },
+  {
+   "headline": "世界No.1・全米オープン女王エレーナ・ルバキナ、大坂なおみ、前回東レPPOテニス女王ベリンダ・ベンチッチが「YONEX TENNIS FESTIVAL 20…",
+   "highlight": "大坂なおみ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -554,6 +588,15 @@
   }
  ],
  "ILLIT": [
+  {
+   "headline": "ILLIT to open 'BREAK EVEN' pop-up store at HYBE headquarters with music video props and unreleased photo cards",
+   "highlight": "'BREAK EVEN' pop-up store",
+   "blurb": "allkpop reports ILLIT will open a 'BREAK EVEN' pop-up store at HYBE headquarters featuring music video props and unreleased photo cards.",
+   "weight": "lead",
+   "refs": [
+    7
+   ]
+  },
   {
    "headline": "ILLIT (아일릿) '체포하겠어 (You’re Under Arrest)' | MULTI-CAM | PRESS START♥︎ ENCORE",
    "highlight": "",
@@ -725,6 +768,26 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "Bleach Mirrors High Reaches 1 Million Pre-Registrations",
+   "highlight": "1 Million Pre-Registrations",
+   "blurb": "Final Weapon reports that Bleach Mirrors High has passed 1 million pre-registrations.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Isane will officially be in bleach mirrors high with her cute new haircut and it's honestly adorable",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

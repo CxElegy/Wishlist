@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "988c5e81f405",
+ "edit_sig": "088616279630",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -75,52 +75,28 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "DMKsnowboard",
-     "title": "【2026-27】新潟10カ所のスキー場が滑り放題！「SNOW HEAVEN シーズンパス」発売へ",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5VbmhINWRpY2JHX3BDTGp0ZWpqSTZWMjJQY3hLS3RPMWNudEN2WVI1WHEyTUFFM3RMbDltT18wUS0zUloxS3VFWURSRmI3QXM1M1YwdHhJX2pvTmd5R0lMWUhRc043NkVsMGVHQXA5Y0E0MEU?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 6,
-     "source": "Dellows News",
-     "title": "2026-2027スキー＆スノボツアー、10月22日にオープンへ",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1Kc2hUMmI2cjRXUWE4U2VZdmw0ZDVfa1ZobXJHVmFMR3BkcEh2dTBYWDV1T2dvN0IzdlJUbi02eWY4MDY1UkFCX3RUZDhFNmFIc3JKamg2Y1JBWkxwZngtY2NHTUY?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 7,
-     "source": "dmksnowboard.com",
-     "title": "【2026-27】ビーウェーブ、スキー＆スノボツアーを10月22日グランドオープン",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9EeGl1aHVuai13MzJiTHZvdm56cXB2LTJkXzJMbmlJWC1pbUNoQ2ZqNGQxV2NMWTZDWVRvdlIzdFhjN1ptcGs0VHd5QWktdGxKZFUtLWVFMzdxSHZ1aTRhOThUNXRVcVladnVB?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 8,
-     "source": "dmksnowboard.com",
-     "title": "【2026-27】ビッグホリデー、宿泊スキー・スノーボードツアーを10月22日発売",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFA5a0dGWkxfUm9MdmcyNDR1Mm5qbUVScWVMeWtWczA2U2pDYk9wYVphcVJTTldkaTFqLVd1NEhDTjRXQXZtTDFSd0F2aTI5NThlUXk2dE96ak52QmlpM2NmTFlNaUZRSTFwZnltV1Rjdk4?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 9,
-     "source": "まんたんウェブ",
-     "title": "数量限定！新潟の人気スキー場10カ所が滑り放題の「SNOW HEAVEN シーズンパス」11月4日に発売",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1mSjk1c2NlQUlocVlBNVhFelNUX0JmY1NySzROMG95Y2hyOVN6bDBxWGQwNkk5bDVYQ2VSc3EzYTcyRlpnYjllUmxndlo1MFZsNFhKeG1DMmdZOWtjV2NUMDltTXBYLWR2LWF6NWY2SF9UdzNLT3c?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 10,
-     "source": "Infoseek",
-     "title": "【2026-2027冬】朝発・夜発バス、新幹線、マイカーで行く宿泊スキー・スノーボードツアーを10月22日（木）一斉発売",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE16WVFDRDBObktwNm44cVlseGw5RElnUzZWWW9JdXlEWmxBSHF2dmVYdE9pN0ZLYldOTDRpWEFLY0RiSTBiSkRmaVlwa3YyZjM2RjZCQWNoVEtZTjFtbHlYRjJhdlBUR1hFeFdDcUk2SWp5dw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
+    {
+     "blurb": "新潟の人気スキー場10カ所が滑り放題になる数量限定の「SNOW HEAVEN シーズンパス」が11月4日に発売される。",
+     "date": "2026-10-22",
+     "headline": "【2026-27】新潟10カ所のスキー場が滑り放題！「SNOW HEAVEN シーズンパス」発売へ",
+     "highlight": "滑り放題",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/nigata-ski-10.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/snow-heaven-season-pass-niigata-2026-27/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "2026-2027スキー＆スノボツアー、10月22日にオープンへ",
+     "highlight": "10月22日にオープン",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/843115_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/843115/?from=top_category_area",
+     "weight": "normal"
+    },
     {
      "blurb": "",
      "date": "2026-10-21",
@@ -129,26 +105,6 @@
      "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/shiobara.jpg",
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/kids-free-lift-tickets-weekdays-2026-2027/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-21",
-     "headline": "Best Ski Boots 2026/27: Our InTheSnow Verdicts",
-     "highlight": "",
-     "image": "https://cdn.inthesnow.com/uploads/2026/10/salomon-s-pro-alpha-c-boa-ski-boots-2026-27-hero.jpg",
-     "image_via": "og:image",
-     "url": "https://www.inthesnow.com/gear/best-ski-boots/",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-21",
-     "headline": "Review of the Never Summer Proto Swift DT 2027 Snowboard",
-     "highlight": "",
-     "image": "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg",
-     "image_via": "og:image",
-     "url": "https://www.boardoftheworld.com/review-never-summer-proto-swift-dt/",
      "weight": "normal"
     },
     {
@@ -247,22 +203,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 56,
-     "source": "Newspoint on MSN",
-     "title": "Samsung Galaxy S27 Ultra vs Galaxy S26 Ultra: Expected specs, battery and camera upgrades",
-     "url": "https://www.msn.com/en-in/news/other/samsung-galaxy-s27-ultra-vs-galaxy-s26-ultra-expected-specs-battery-and-camera-upgrades/ar-AA2fN0Qg"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 57,
-     "source": "Business Today on MSN",
-     "title": "Samsung Galaxy S27 Ultra vs Galaxy S26 Ultra: Expected upgrades that could make waiting worthwhile",
-     "url": "https://www.msn.com/en-in/money/topstories/samsung-galaxy-s27-ultra-vs-galaxy-s26-ultra-expected-upgrades-that-could-make-waiting-worthwhile/ar-AA2fM4mR"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -314,6 +254,16 @@
      "image_via": "og:image",
      "url": "https://www.sammyfans.com/2026/10/20/3-ways-samsung-can-avoid-big-price-hike-on-galaxy-s27/",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "Samsung Galaxy S27 Ultra vs Galaxy S26 Ultra: Expected specs, battery and camera upgrades",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fMnaZ.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-in/news/other/samsung-galaxy-s27-ultra-vs-galaxy-s26-ultra-expected-specs-battery-and-camera-upgrades/ar-AA2fN0Qg",
+     "weight": "normal"
     }
    ],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
@@ -332,15 +282,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-18",
-     "n": 5,
-     "source": "GameWith",
-     "title": "【あつ森】夢の島でできることと行き方【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE92QXRrbmx4RExubDBuYmVDVUFzR3FRcnBTSjZyMWRJS1ZRcnpUQlF2Ykc0QUNGYzY4VEtMdE9IVXc3dWh1d1c4RXZUXzZsSG1nUjhJd3VoTmlIWGlT?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -371,6 +312,16 @@
      "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/195856.png?date=1591173371",
      "image_via": "JSON-LD",
      "url": "https://gamewith.jp/atsumori/article/show/195856",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-18",
+     "headline": "【あつ森】夢の島でできることと行き方【あつまれどうぶつの森】",
+     "highlight": "",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/538615.png?date=1768419020",
+     "image_via": "JSON-LD",
+     "url": "https://gamewith.jp/atsumori/article/show/538615",
      "weight": "normal"
     }
    ],
@@ -793,30 +744,24 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 6,
-     "source": "Real Sound",
-     "title": "HANA、ANAの新プロモーションに起用 メンバー自ら撮影した“Vlog風”映像で“そらたび”を表現",
-     "url": "https://realsound.jp/2026/10/post-2560029.html"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 7,
-     "source": "allkpop",
-     "title": "ILLIT to open 'BREAK EVEN' pop-up store at HYBE headquarters with music video props and unreleased photo cards",
-     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQRm9DZk4weTZpOXF0YmxKNy1JRDFSellhbWJFY3EzQmFFUUZoUGlCRTRqZVpIWFNyNjAxRjJDdFJmUFhsUmRKOUN6Zk91VUVyMUJfMEtsOGV0djBFc1lXVW1uakFQOXZkVnZrZlZwTllXWEN5UmROZnkzanVOM2R1NmdLQUdaX2hyakhVaGFUaTdxeElHWFRsSXoxa0VYUzdYaU9OSURNRVMzQjVNUmp1TjZVdldCd1pGSkFTaFNCbkVsdTdwWElVdUY3VFJNcTBDYW5PTllIM2NCOU1KcFBUT1BB?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
+    {
+     "blurb": "allkpop reports ILLIT will open a 'BREAK EVEN' pop-up store at HYBE headquarters featuring music video props and unreleased photo cards.",
+     "date": "2026-10-22",
+     "headline": "ILLIT to open 'BREAK EVEN' pop-up store at HYBE headquarters with music video props and unreleased photo cards",
+     "highlight": "'BREAK EVEN' pop-up store",
+     "image": "https://i4.ytimg.com/vi/3T3xcHrPBjM/hqdefault.jpg",
+     "image_via": "同一件事的别家报道 www.youtube.com",
+     "url": "https://www.allkpop.com/article/2026/10/illit-to-open-break-even-pop-up-store-at-hybe-headquarters-with-music-video-props-and-unreleased-photo-cards",
+     "weight": "lead"
+    },
     {
      "blurb": "",
      "date": "2026-10-20",
      "headline": "ILLIT (아일릿) '체포하겠어 (You’re Under Arrest)' | MULTI-CAM | PRESS START♥︎ ENCORE",
      "highlight": "",
-     "image": "https://i4.ytimg.com/vi/3T3xcHrPBjM/hqdefault.jpg",
+     "image": "https://i3.ytimg.com/vi/bTrsQ0m4U1I/hqdefault.jpg",
      "image_via": "条目自带",
      "url": "https://weverse.io/illit/media/1-181109357",
      "weight": "normal"
@@ -1030,24 +975,29 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Final Weapon reports that Bleach Mirrors High has passed 1 million pre-registrations.",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "Final Weapon",
-     "title": "Bleach Mirrors High Reaches 1 Million Pre-Registrations",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPaGtacThDREp0TFZseUR2dUNlNEpWZGQ3dklBbnhTWUszSW03Wml4Y0RrenBvYzdLMEhhWEhNYTRyNVVpdzFBMk9LOERQQlYzQjdISkM5VHBaN1g5Q2J5cVU1eGczN1FPNWczX2EzSGJxQW9ydVlYc3F3X2xKRVhRTm5FT1lQTTVnUGw4bkU3Q09JcWRpSVdCTkptUQ?oc=5"
+     "headline": "Bleach Mirrors High Reaches 1 Million Pre-Registrations",
+     "highlight": "1 Million Pre-Registrations",
+     "image": "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/Bleach-Mirrors-High-1-million-pre-registrations.webp?fit=1920%2C1080&ssl=1",
+     "image_via": "og:image",
+     "url": "https://finalweapon.net/2026/10/21/bleach-mirrors-high-1-million-pre-registrations-new-rewards/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 2,
-     "source": "Reddit",
-     "title": "Isane will officially be in bleach mirrors high with her cute new haircut and it's honestly adorable",
-     "url": "https://www.reddit.com/r/Isanefolk/comments/1xc3yml/isane_will_officially_be_in_bleach_mirrors_high/"
+     "headline": "Isane will officially be in bleach mirrors high with her cute new haircut and it's honestly adorable",
+     "highlight": "",
+     "image": "https://preview.redd.it/ldvvg8zkwwwh1.jpeg?width=320&crop=smart&auto=webp&s=f0209a0f2e0b766466f9ce23ba050145f44e9bbc",
+     "image_via": "条目自带",
+     "url": "https://www.reddit.com/r/Isanefolk/comments/1xc3yml/isane_will_officially_be_in_bleach_mirrors_high/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -1093,22 +1043,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 10,
-     "source": "PR TIMES",
-     "title": "世界No.1・全米オープン女王エレーナ・ルバキナ、大坂なおみ、前回東レPPOテニス女王ベリンダ・ベンチッチが「YONEX TENNIS FESTIVAL 2026」に登場！",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5GUUNHMDRXZU44dUVxWmdHb0VTU2FIc3lUOXpERk5yZjNIaWhWQ016MzYySW50aWZqZjNkNWNEZm9OVnNaRmtlbWtTbWFEdkppV0NlWTFlR3dYeThCaVRJWFd4S1JxTTdxdXc?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 11,
-     "source": "Reuters on MSN",
-     "title": "テニス＝ジャパンOP、加藤組が準決勝進出 日本人ペアを下す",
-     "url": "https://www.msn.com/ja-jp/sports/tennis/%E3%83%86%E3%83%8B%E3%82%B9-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%EF%BD%8F%EF%BD%90-%E5%8A%A0%E8%97%A4%E7%B5%84%E3%81%8C%E6%BA%96%E6%B1%BA%E5%8B%9D%E9%80%B2%E5%87%BA-%E6%97%A5%E6%9C%AC%E4%BA%BA%E3%83%9A%E3%82%A2%E3%82%92%E4%B8%8B%E3%81%99/ar-AA2fM1TQ"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1140,6 +1074,16 @@
      "source": "Reuters on MSN",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.msn.com&sz=128",
      "url": "https://www.msn.com/ja-jp/sports/tennis/%E3%83%86%E3%83%8B%E3%82%B9-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%EF%BD%8F%EF%BD%90-%E5%86%85%E5%B3%B6%E3%81%8C%E6%97%A5%E6%9C%AC%E5%8B%A2%E5%AF%BE%E6%B1%BA%E5%88%B6%E3%81%972%E5%9B%9E%E6%88%A6%E3%81%B8-%E5%9D%82%E8%A9%B0%E3%81%AF%E6%95%97%E9%80%80/ar-AA2fGpJR",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "世界No.1・全米オープン女王エレーナ・ルバキナ、大坂なおみ、前回東レPPOテニス女王ベリンダ・ベンチッチが「YONEX TENNIS FESTIVAL 20…",
+     "highlight": "大坂なおみ",
+     "image": "https://prcdn.freetls.fastly.net/release_image/188297/9/188297-9-325739f58f3f1a65829bfef3a8a73d82-1557x865.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000009.000188297.html",
      "weight": "normal"
     }
    ],
