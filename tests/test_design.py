@@ -417,6 +417,12 @@ class Overview(unittest.TestCase):
         h = render._admin_backend(rows, un["todo"])
         self.assertIn("出刊されていない", h)
         self.assertNotIn("次の回を待つ", h)
+        # 列の見出しは nowrap：長い理由は短く切り、全文は title に（1400px で表が右にはみ出し「小元素」の列が消えた）
+        import re as _re
+        small = _re.search(r'<small class="bgw-d es-ng" title="([^"]*)"><b>出刊されていない</b> ([^<]*)</small>', h)
+        self.assertIsNotNone(small)
+        self.assertIn("510 → 521", small.group(1))
+        self.assertLessEqual(len(small.group(2)), render.EDIT_WHY_MAX)
 
     def test_admin_has_overview_first_and_css_uses_tokens(self):
         import overview

@@ -4988,6 +4988,7 @@ RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も待�
 EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "idle": ("次の回を待つ", "ok"),
               "unpublished": ("出刊されていない", "ng"), "stalled": ("止まっている？", "ng"),
               "gave_up": ("起こしても動かない", "ng")}
+EDIT_WHY_MAX = 24   # 管理ページの AI 編集の列の見出しに出す理由の字数（表が 1400px で右にはみ出さないように）
 RUN_LABEL = {"edit": "今すぐ AI 整理"}   # ボタンの文字（ないものは「今すぐ実行」）
 BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき"}
 
@@ -5071,8 +5072,10 @@ def _admin_backend(rows, todo=None, log=None, res=None):
             if ed.get("fired"):
                 extra += f'<small class="bgw-d nx-ago" data-at="{e(ed["fired"])}"></small>'
             lab, cls = EDIT_STATE.get(ed.get("state"), ("", ""))
-            if lab:
-                extra += (f'<small class="bgw-d es-{cls}"><b>{e(lab)}</b> {e(ed.get("why") or "")}'
+            if lab:   # 列の見出しは nowrap：長い理由（出刊されていない・失敗の文）は短く切り、全文は title と「いま待っているもの」に
+                why = ed.get("why") or ""
+                short = why if len(why) <= EDIT_WHY_MAX else why[:EDIT_WHY_MAX - 1] + "…"
+                extra += (f'<small class="bgw-d es-{cls}" title="{e(why)}"><b>{e(lab)}</b> {e(short)}'
                           + (f'（{ed["attempts"]} 回目）' if ed.get("attempts", 0) > 1 else "") + '</small>')
             if ed.get("n"):   # 動いていなくても人が押せる：間隔・停滞の判断を飛ばして起こす
                 extra += (f'<span class="nx-go"><button type="button" class="nx-run bg-redo" data-run="{RUN_JOBS["edit"]}" data-label="AI 編集をもう一度起こす"'
