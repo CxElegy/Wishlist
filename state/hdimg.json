@@ -390,6 +390,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.moviefone.com/image-assets/1484546/oT1saKZyyfTga1Ipq8K5nlio37Z.jpg?d=480x720&q=50": {
+  "w": 509,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.nc.press/news/photo/202610/628679_864834_712.jpg": {
   "w": 600,
   "h": 900,
@@ -662,6 +668,12 @@
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/asahikawa.jpg": {
+  "w": 1962,
+  "h": 1308,
+  "target": 720,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/nigata-ski-10.jpg": {
   "w": 1962,
   "h": 1308,
   "target": 720,
@@ -1706,6 +1718,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/843115_1.jpg": {
+  "w": 1024,
+  "h": 683,
+  "target": 720,
+  "v": 3
+ },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2027/10/image_021-1.jpg": {
   "w": 866,
   "h": 487,
@@ -2326,13 +2344,6 @@
   "target": 720,
   "v": 3
  },
- "https://readyfor.jp/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MTM2OSwicHVyIjoiYmxvYl9pZCJ9fQ==--402574121bd3b3aac8bd766b2738b960ec837f77/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpbGwiOls3MzYsNDE0XSwic2F2ZXIiOnsicXVhbGl0eSI6MTAwfX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--809954ebdd0c4d318d7f500d88793bbd84307db2/p176287-key-visual.jpeg": {
-  "w": 736,
-  "h": 414,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.347
- },
  "https://realsound.jp/wp-content/uploads/2026/10/20261019-mrs-99.jpeg": {
   "w": 1200,
   "h": 675,
@@ -2571,12 +2582,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/robert-downey-jr-s-tony-stark-as-iron-man-in-movie-promo-art.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2790,12 +2795,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.A_-mOM5smJmUBcT_N2tSAg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.BpkK8qFVcia2ok_cSryr3w&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2851,6 +2850,12 @@
    732
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.Mx50wgbVcLVfk3mFFN_u8g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.NSnPEg4CVNMCybT_utvt3g&pid=News&w=1200": {
   "w": 700,
@@ -2908,6 +2913,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.UZhxFhLBA7QtHiCRHL3FOg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.YQOWVk6tArirle6eiDvGBQ&pid=News&w=600": {
   "w": 600,
   "h": 399,
@@ -2955,18 +2966,6 @@
   "out": [
    1280,
    719
-  ],
-  "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.g6b_rhZn6W-ALBdtks4u6Q&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 720,
-  "v": 3,
-  "local": "pics/98fcb44f8319f18a.webp",
-  "out": [
-   560,
-   174
   ],
   "why": "Bing の小さい縮小画像"
  },
@@ -3289,12 +3288,6 @@
    851
   ],
   "why": "看不清"
- },
- "https://www.nikkei.com/nkd/disclosure/tdnr/20261020553470/thumbnail/?ttype=ogp": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
  },
  "https://www.nishinippon.co.jp/uploads/image/1950882/sns_8124789914_org.jpg": {
   "w": 1200,
