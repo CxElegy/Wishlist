@@ -87,19 +87,6 @@
   ],
   "why": "看不清"
  },
- "http://www.press9.kr/news/thumbnail/202610/84647_96779_4157_v150.jpg": {
-  "w": 300,
-  "h": 208,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.571,
-  "local": "pics/2dd05ffa357de487.webp",
-  "out": [
-   900,
-   624
-  ],
-  "why": "看不清"
- },
  "http://wx1.sinaimg.cn/middle/647c8fably1ii4734hamfj21140pmdws.jpg": {
   "w": 1336,
   "h": 922,
@@ -166,10 +153,10 @@
   "ref": true
  },
  "https://0.soompi.io/wp-content/uploads/2026/10/21203810/A2O-LITE-show-champion.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
  },
  "https://9to5google.com/wp-content/uploads/sites/4/2026/09/Snapdragon-8-Elite-Extreme-Gen-6.jpg?quality=82&strip=all&resize=1200,628": {
   "w": 1200,
@@ -733,6 +720,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hashout.jp/wp-content/uploads/2026/10/2112750859813597279-img-1200x675.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
+ },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -781,6 +774,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hermes.media.transform.aol.com/a03b690185bfbbda3c6fce2b3c84c88b1234a05b/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/19/ae6a1662-954d-324e-9b8b-26fc0381abf0/8cedeee3-bd91-450c-a1f7-15483404616d.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
+ },
  "https://hips.hearstapps.com/hmg-prod/images/41271733-a7da-49d6-90f6-dab46354713d.jpg?crop=1xw:1xh;center,top&resize=1200:*": {
   "w": 1200,
   "h": 600,
@@ -818,12 +817,6 @@
   "v": 3
  },
  "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/08/marvel-studios-ghost-rider-xmen-black-panther-llcs-banner.jpg?fit=1920%2C820&ssl=1": {
-  "w": 1920,
-  "h": 820,
-  "target": 720,
-  "v": 3
- },
- "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/10/steven-soderbergh-the-batman-part-2-banner.jpg?fit=1920%2C820&ssl=1": {
   "w": 1920,
   "h": 820,
   "target": 720,
@@ -908,6 +901,12 @@
   "h": 467,
   "target": 720,
   "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/stf/6/f/6f6b6_1845_b48d9d89_6861ecd1.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
  },
  "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227391/thumb001.png?height=720&quality=75&version=1791975793&width=1280": {
   "w": 1280,
@@ -2119,17 +2118,11 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-00035749-tennismagv-000-1-view.jpg?exp=10800": {
-  "w": 1280,
-  "h": 960,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-00035749-tennismagv-000-2-view.jpg?exp=10800": {
   "target": 720,
   "v": 3,
-  "local": "pics/b00e37dbb7f342a4.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "期限付きの網址"
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
@@ -2344,6 +2337,12 @@
   "target": 720,
   "v": 3
  },
+ "https://readyfor.jp/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MTM2OSwicHVyIjoiYmxvYl9pZCJ9fQ==--402574121bd3b3aac8bd766b2738b960ec837f77/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpbGwiOls3MzYsNDE0XSwic2F2ZXIiOnsicXVhbGl0eSI6MTAwfX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--809954ebdd0c4d318d7f500d88793bbd84307db2/p176287-key-visual.jpeg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
+ },
  "https://realsound.jp/wp-content/uploads/2026/10/20261019-mrs-99.jpeg": {
   "w": 1200,
   "h": 675,
@@ -2434,12 +2433,6 @@
   "target": 1280,
   "v": 3
  },
- "https://scontent-sjc3-1.xx.fbcdn.net/v/t51.71878-15/851829434_1657957355672157_598019026852783350_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a27664&_nc_ohc=uKSc0b5fZFEQ7kNvwFxE5ms&_nc_oc=AdqmBBqeKqxLAPsvjT85BPpF_EHNTZvG-6X1_yY5Ot2mPnQ4nwiUFLImYpprEyA5CYs&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=8yCkfeRA7k1_NKbixFL9Mg&_nc_ss=7820f&oh=00_AQOQdGlX1cpi4E0KSvVx2CSSu0e_bKoaPsdHUtpgJL7PRw&oe=6ADE1E65": {
-  "w": 640,
-  "h": 1136,
-  "target": 720,
-  "v": 3
- },
  "https://shattered.io/wp-content/uploads/2026/10/gta-6-launch-1-5-million-sick-days-cost-2026-gen.webp": {
   "w": 1344,
   "h": 768,
@@ -2488,11 +2481,11 @@
   "target": 720,
   "v": 3
  },
- "https://static.hokkaido-np.co.jp/image/article/size1/4/8/4/8/484852002be5b2de6320d0efc6604235_1.webp?20261022102208": {
-  "w": 712,
-  "h": 955,
+ "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022182254": {
   "target": 1280,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
  },
  "https://static.invenglobal.com/upload/thumb/2026/10/16/c/n1792173110374184.jpg": {
   "w": 800,
@@ -2575,6 +2568,18 @@
   "h": 900,
   "target": 1280,
   "v": 3
+ },
+ "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/08/jon-bernthal-1.jpg?w=1600&h=900&fit=crop": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/mcdclay_wb018.jpg?w=1600&h=900&fit=crop": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/05/harry-potter_a7kdyi-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
@@ -2740,6 +2745,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.bgr.com/img/gallery/samsung-galaxy-z-flip-8-review-iteration-overshadowed-by-innovation/l-intro-1792534467.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-22"
+ },
  "https://www.bing.com/th?id=ONUT.-knf4I1dwRCd_IShbRipcw&pid=News&w=1200": {
   "w": 700,
   "h": 364,
@@ -2862,19 +2873,6 @@
   "h": 366,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.NW7SpSP8UdjvDWo9BvmIvw&pid=News&w=1200": {
-  "w": 100,
-  "h": 100,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.389,
-  "local": "pics/bd3464c792297da0.webp",
-  "out": [
-   721,
-   434
-  ],
-  "why": "Bing の小さい縮小画像"
  },
  "https://www.bing.com/th?id=ONUT.PnKQKUxrSEi8SzKpRoGfGg&pid=News&w=896": {
   "w": 700,
