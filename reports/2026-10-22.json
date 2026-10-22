@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "ed6d09b66091",
+ "edit_sig": "9ed5c3ce84db",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -798,17 +798,19 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "北海道新聞デジタル",
-     "title": "「ジェラートピケ」旭山動物園応援 子供向け商品発売 あすから コラボ第3弾",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5HUzVHbVh1Z2dqVG1sX2IxNzVfS0NqVzJxblBZa095WkowQjBDR3lFckl2N2Z5a2hBNTh2YWpDeERyNGRoMFQ2MEdHMnc4TlAxVmJsN1ZEa0xqZw?oc=5"
+     "headline": "「ジェラートピケ」旭山動物園応援 子供向け商品発売 あすから コラボ第3弾",
+     "highlight": "コラボ第3弾",
+     "image": "https://static.hokkaido-np.co.jp/image/article/size1/4/8/4/8/484852002be5b2de6320d0efc6604235_1.webp?20261022102208",
+     "image_via": "og:image",
+     "url": "https://www.hokkaido-np.co.jp/article/1394219/",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",

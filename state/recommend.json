@@ -65,7 +65,6 @@
   "https://www.fashion-press.net/news/152154": "https://www.fashion-press.net/img/news/152154/top.jpg?1792146181",
   "https://www.haveagood-holiday.com/zh-CN/articles/magical-chiikawa-fuwamochi-gororin-hug-plush-preorder": "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg",
   "https://www.hindustantimes.com/technology/freedom-from-your-laptop-sounds-wonderful-until-work-gets-serious-can-the-samsung-galaxy-tab-and-the-apple-ipad-keep-up-101792241274535.html": "https://www.bing.com/th?id=ONUT.scgJUb2Tj5eWXkCBveb1Mw&pid=News&w=1200",
-  "https://www.hokkaido-np.co.jp/article/1394219/": "https://static.hokkaido-np.co.jp/image/article/size1/4/8/4/8/484852002be5b2de6320d0efc6604235_1.webp?20261022063834",
   "https://www.jsonline.com/videos/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92336916007/": null,
   "https://www.kanaloco.jp/news/social/article-1313366.html": "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640",
   "https://www.mensjournal.com/entertainment/from-netflix-no-5-most-watched-mgm-plus-series-harold-perrineau": null,
@@ -83,6 +82,7 @@
   "https://www.nikkei.com/markets/company/sys/redirect_dis.aspr?ano=g6udby&t=https://www.nikkei.com/nkd/disclosure/tdnr/20261020553470/": "https://www.nikkei.com/nkd/disclosure/tdnr/20261020553470/thumbnail/?ttype=ogp",
   "https://www.press9.kr/news/articleView.html?idxno=84647": "http://www.press9.kr/news/thumbnail/202610/84647_96779_4157_v150.jpg",
   "https://www.roomie.tw/posts/170744": "https://media.loom-app.com/roomie/dist/images/2026/10/IMG_2560-scaled.jpg?w=1200",
+  "https://www.sanin-chuo.co.jp/articles/-/1100968": "https://www.bing.com/th?id=ONUT.q2gJOnkQWaVc3KOhAbiBkA&pid=News&w=1200",
   "https://www.sanyonews.jp/article/1912545": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
   "https://www.sanyonews.jp/article/2003552": "https://static.sanyonews.jp/image/article/size1/3/e/8/4/3e84c1f4e13b217a1409e48ea6608889_1.jpg",
   "https://www.sina.cn/gc/article/nivwyrf6445687.html": null,
@@ -1017,27 +1017,6 @@
   },
   {
    "batch": 1,
-   "because": "gelato pique",
-   "date": "2026-10-21",
-   "hits": [],
-   "image": "https://static.hokkaido-np.co.jp/image/article/size1/4/8/4/8/484852002be5b2de6320d0efc6604235_1.webp?20261022063834",
-   "kind": "board",
-   "liked": "ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売 (2026年10月14日掲載)",
-   "score": 8,
-   "source": "北海道新聞デジタル",
-   "taste": [
-    [
-     "作品:gelato pique",
-     7
-    ]
-   ],
-   "title": "「ジェラートピケ」旭山動物園応援 子供向け商品発売 あすから コラボ第3弾",
-   "url": "https://www.hokkaido-np.co.jp/article/1394219/",
-   "words": [],
-   "work": "gelato pique"
-  },
-  {
-   "batch": 1,
    "because": "三星手机",
    "date": "2026-10-21",
    "hits": [
@@ -1103,7 +1082,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "ちいかわ 漫画",
    "date": "2026-10-21",
    "hits": [
@@ -1228,6 +1207,27 @@
     "猫"
    ],
    "work": "猫用品"
+  },
+  {
+   "batch": 2,
+   "because": "gelato pique",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.q2gJOnkQWaVc3KOhAbiBkA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売 (2026年10月14日掲載)",
+   "score": 8,
+   "source": "山陰中央新報デジタル",
+   "taste": [
+    [
+     "作品:gelato pique",
+     7
+    ]
+   ],
+   "title": "シャミネ松江に「ジェラートピケ」と「oneMARUI」",
+   "url": "https://www.sanin-chuo.co.jp/articles/-/1100968",
+   "words": [],
+   "work": "gelato pique"
   },
   {
    "batch": 3,
@@ -2270,15 +2270,15 @@
    9
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "galaxy",
    7
   ],
   [
