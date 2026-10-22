@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-22T08:17:28+00:00",
+ "changed": true,
+ "checked": "2026-10-22T09:18:11+00:00",
  "fired": {
-  "at": "2026-10-22T08:17:28+00:00",
+  "at": "2026-10-22T09:18:11+00:00",
   "results": {
-   "edit": "1 日 2 回（9:00 と 18:00）。次は 18:00",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,11 +12,11 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-22T00:08:31+00:00",
+    "at": "2026-10-22T09:18:11+00:00",
     "attempts": 1,
-    "prog": 60,
-    "resp": "cse_01GESTUsw5CnWC5Ub1qZwHHf",
-    "sig": "4ca8c98919e3"
+    "prog": 510,
+    "resp": "cse_016YvHhJnzMic7PQuTDvMk1W",
+    "sig": "52b8ad0d95a9"
    },
    "items": [
     "A2O LITE",
@@ -43,11 +43,11 @@
    "sig": "b1312ab4623e",
    "waiting": [
     "Astrae Oratio",
-    "哈利波特剧集",
     "A2O LITE",
-    "あつ森"
+    "あつ森",
+    "哈利波特剧集"
    ],
-   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:18 から）"
+   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:17 から）"
   },
   "photos": {
    "claude": true,
