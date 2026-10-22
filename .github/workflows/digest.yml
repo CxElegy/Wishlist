@@ -142,3 +142,11 @@ jobs:
             sleep $((i * 5))
           done
           echo "::warning::ゲートの記録を push できなかった"
+
+      # お客さまが選んだもののうち店長の関注項にないもの（例：広島旅行）を、本人のために集める（scripts/userfeed.py、AI なし）。
+      # 書くのは Supabase の user_boards だけ（本人が my_boards() で読む・リポジトリには入れない）。店長の収集・出刊・push のあとなので、失敗しても止めない
+      - name: お客さまの版面の記事集め
+        if: env.IS_WEEKLY != 'true' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        timeout-minutes: 10   # userfeed.DEADLINE_MIN = 8 分で締め切る
+        run: python scripts/userfeed.py

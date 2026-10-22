@@ -141,10 +141,10 @@ class Welcome(unittest.TestCase):
 
     def test_flow_and_redirect(self):
         import welcome
-        for word in ("wl-user", "location.replace(C.shop)", "stay", "name_available", "aria-pressed", "addname", "C.first"):
+        for word in ("wl-user", "location.replace(C.shop)", "stay", "name_available", "aria-pressed", "C.first", "addMode", "my_keywords_set"):
             self.assertIn(word, welcome.JS)
-        for word in ("ArrowRight", "pointermove", "out-r"):   # 左右に払うカードはやめた（2026-10-22，用户定的：交友アプリに見える）
-            self.assertNotIn(word, welcome.JS)
+        for word in ("ArrowRight", "pointermove", "out-r"):   # 左右に払うカードに戻した（2026-10-22，用户定的：「Tinder 風の前の版を戻して」）
+            self.assertIn(word, welcome.JS)
 
     def test_languages_mece(self):
         import welcome

@@ -118,6 +118,8 @@ COMPONENTS = {
               "what": "emblem.check_whole：服が背景と同じ色で抜けた切り抜きを落とす"},
     "gate": {"kind": "algo", "name": "ゲート gate.py", "spec": "AI 編集は 1 日 2 回（日本時間 9:00・18:00、その回にまだなら・一時停止中は起こさない）· 起こして 60 分あけて、編集済みが増えなければ「停滞」→ 起こし直す（3 回まで・そのあと 6 時間待つ）· 起こしたのが前の日（北京時間・fired.day）なら停滞と数えず定時を待つ · 北京 0 時すぎに前の日の 18:00 の回は拾わない（9:00 を待つ）· 「動いている」は今回起こしたあとの最後のバッチから 30 分以内（起こしたあと出刊がないまま 60 分 → 「出刊されていない」）· 新関注項の「すぐ AI 編集」（GATE_NOW）は定時だけ飛ばす：60 分以内で止められたら jobs.edit.now_pending に残し、後台作業が 60 分後に起こす（12 時間で捨てる）· 変数 GATE_FIRE = edit / 1",
              "what": "仕事があるか・AI が要るかをプログラムだけで決める。AI の要らない仕事はその場で済ませる"},
+    "userfeed": {"kind": "rule", "name": "お客さまの版面の記事集め userfeed.py", "spec": "app_users.prefs.picks のうち店長の関注項にないもの（名前のゆるい一致 = 網页の hit と同じ）だけ · 1 人 10 版面 · 1 回 60 版面・8 分・4 本並列 · 前に探してから 90 分は飛ばす · 同じ名前・同じ言語は 1 回で · Google・Bing・情報員（SNS の全体検索・GDELT はしない）· 店長と同じ drop_reason・重複・fallback_stories・lang.dedupe · 1 版面 12 件・14 日 · Supabase user_boards（account = u_ + md5(メール) 16 字）· 本人は my_boards() で自分の行だけ · AI なし",
+                 "what": "お客さまが自分で選んだものの記事"},
     "collectwatch": {"kind": "rule", "name": "収集の控えの時計 collect_watch.py", "spec": "後台作業のたび（pg_cron で毎時必ず）· 最後の収集から 150 分 → digest.yml を workflow_dispatch · 走っている・並んでいる・60 分以内に始まった回（timeout 40 分より長く）があれば起こさない",
                      "what": "GitHub の定時（17 */2）が抜けても収集が何時間も止まらないように。起こした・起こせなかった・回の様子が読めなかったら state/log/gate.json に 1 行（同じ失敗の続きは書き足さない）"},
     "deadline": {"kind": "rule", "name": "収集の締め切り COLLECT_DEADLINE_MIN", "spec": "18 分 · 過ぎたら新しい版面を始めない · 始まった版面も 23 分（＋5 分）で待つのをやめる · 残りは次の回に先に取る（deferred）· 初めて取る版面（新関注項）も先に · 過ぎてからの封面はネットに出ない · 1 版面の取得・処理の例外はその版面だけ空で続ける · timeout 40 分",
@@ -299,8 +301,8 @@ PROCESSES = [
         "schedule": [(h, 17) for h in range(0, 24, 2)], "workflow": "digest.yml", "when": "2 時間ごと · 6 本並列",
         "trigger": "2 時間ごと（日本時間 奇数時 17 分）／ 定時が抜けて 150 分あいたら後台のゲートが起こす（collect_watch）／ 毎週月曜 9:47 に周報",
         "summary": "関注項ごとにニュース・SNS・価格を集めて inbox に溜め、出刊・通知・ページ生成までつなぐ。",
-        "files": [".github/workflows/digest.yml", "scripts/digest.py", "scripts/sources.py", "scripts/intel.py", "intel/japan.yaml"], "doc": "README.md",
-        "uses": ["gnews", "bing", "reddit", "steam", "gdelt", "youtube", "bluesky", "mastodon", "intel", "dedupe", "spam", "srcfilter", "match"],
+        "files": [".github/workflows/digest.yml", "scripts/digest.py", "scripts/sources.py", "scripts/intel.py", "intel/japan.yaml", "scripts/userfeed.py", "db/user_boards.sql"], "doc": "README.md",
+        "uses": ["gnews", "bing", "reddit", "steam", "gdelt", "youtube", "bluesky", "mastodon", "intel", "dedupe", "spam", "srcfilter", "match", "userfeed"],
         "flow": [
             {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 40 分まで · 同時に 1 本 · 前の回に時間切れで残った版面・初めて取る版面（新関注項）を先に取る"},
             {"id": "c1d", "kind": "decision", "lane": "actions", "title": "始めてから 18 分たっていない？", "text": "版面ごとに、取り始める前に見る（COLLECT_DEADLINE_MIN）· 始まった版面が 23 分たっても終わらなければ待たずに先へ（固まった版面も次の回へ。そのスレッドがあとで終わっても帯は立て直さない・情報員の様子は写しを読む）",
@@ -333,6 +335,9 @@ PROCESSES = [
              "uses": ["urgent", "fallback"], "yes": "すぐ「重大」で載せる＋Discord", "no": "版面の下の「整理待ち N 件」（折りたたみ・原題だけ）"},
             {"id": "c9", "kind": "step", "lane": "actions", "title": "出刊 → 通知 → push", "text": "push に失敗したら 3 回まで取り直す · 網页の生成に失敗してもデータは push（WL_RENDER_SOFT、次の生成で作り直す）· このあとゲートが AI 編集を起こす",
              "uses": ["pending", "discord"]},
+            {"id": "c10", "kind": "step", "lane": "actions", "title": "お客さまの版面を集める", "x": "×4 · 8 分まで",
+             "text": "お客さまが選んだもののうち店長の関注項にないものだけ（店長にあるものは店長の版面を見せる）· 同じ規則で集めて Supabase の user_boards に本人の account で · 失敗しても止めない（continue-on-error）",
+             "uses": ["userfeed", "gnews", "bing", "intel", "match", "spam", "fallback", "lang", "supabase"]},
         ],
     },
     {
@@ -636,7 +641,7 @@ ARCH = [
         {"id": "s-model", "label": "画像のモデル（Actions のキャッシュ）", "text": "抠图は 1 枚ずつ · 顔のモデルは 1 つを順番に",
          "uses": ["rembg", "yunet", "sface", "haar"], "model": True}]},
     {"id": "db", "title": "Supabase", "note": "データベース", "cost": "無料枠", "style": "keep", "nodes": [
-        {"id": "s-db", "label": "feedback · sizes · item_requests · photo_inbox · news · live_status", "text": "👍👎・篇幅・依頼・写真・記事の控え・版面の更新状態",
+        {"id": "s-db", "label": "feedback · sizes · item_requests · photo_inbox · news · live_status · user_boards", "text": "👍👎・篇幅・依頼・写真・記事の控え・版面の更新状態・お客さまの版面",
          "uses": ["supabase", "pgnet"]}]},
     {"id": "pages", "title": "GitHub Pages", "note": "公開の網页", "cost": "無料", "style": "keep", "nodes": [
         {"id": "s-pages", "label": "網页", "text": "簡報・設定・愿望清单・話題度・管理ページ・version.json", "uses": ["fit", "confetti"]},
@@ -679,6 +684,7 @@ EDGES = [
     (30, "n-mail", "s-you", "リンクを押す → 本人の鍵", "web"),
     (31, "p-login", "s-db", "身份を確かめる・書くときに鍵を付ける", "db"),
     (32, "p-gate", "p-collect", "定時が抜けて 150 分あいたら収集を起こす", "data"),
+    (33, "p-collect", "s-db", "お客さまの版面（user_boards・本人だけ読める）", "db"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [

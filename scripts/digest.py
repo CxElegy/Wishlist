@@ -173,7 +173,7 @@ def collect(item, settings):
     # 情報源を広げる（2026-10-22）：ニュースは GDELT（各国の新聞・専門サイト）も、SNS は Bluesky・Mastodon も、公式は YouTube のチャンネルも。
     # use の考え方はそのまま：google を使う関注項は GDELT も（ニュースの検索）、reddit を使う関注項は Bluesky・Mastodon も（SNS の全体検索。
     # 名前が普通の言葉の作品は use: [google, bing] にしてあるので SNS は探さない）。YouTube は公式チャンネルなので use に関係なく
-    if "google" in use:
+    if "google" in use and item.get("gdelt", True):   # お客さまの版面（userfeed.py）は gdelt: false：5 秒に 1 回の順番を店長の収集に残す
         for kw in keywords[:GDELT_KEYWORDS]:
             entries += [e for e in sources.gdelt(kw, lookback, langs) if domestic_ok or not sources.is_domestic(e.url, e.source)]
     if "reddit" in use:
