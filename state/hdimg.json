@@ -371,6 +371,12 @@
   ],
   "why": "看不清"
  },
+ "https://cdn.mainichi.jp/vol1/2015/12/18/20151218hrc00m010001000q/9.jpg?2": {
+  "w": 800,
+  "h": 420,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.mos.cms.futurecdn.net/7MkXgTMHDpN3fkLRciMFVY-2048-80.jpg": {
   "w": 2048,
   "h": 1152,
@@ -789,6 +795,12 @@
  "https://hips.hearstapps.com/hmg-prod/images/8b2afa82-9272-4199-8136-22d9d5456461.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hjweb.jp/wp-content/uploads/2026/10/26101602.jpg": {
+  "w": 1200,
+  "h": 800,
   "target": 1280,
   "v": 3
  },
@@ -2119,10 +2131,16 @@
   "why": "期限付きの網址"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-00035749-tennismagv-000-2-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
   "target": 720,
   "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-22"
+  "local": "pics/fd1a686c0b4787d7.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
@@ -2481,11 +2499,11 @@
   "target": 720,
   "v": 3
  },
- "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022182254": {
+ "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022182738": {
+  "w": 712,
+  "h": 955,
   "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-22"
+  "v": 3
  },
  "https://static.invenglobal.com/upload/thumb/2026/10/16/c/n1792173110374184.jpg": {
   "w": 800,
