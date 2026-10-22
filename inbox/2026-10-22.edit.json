@@ -80,7 +80,7 @@
   "Vaundy": 1,
   "あつ森": 1,
   "滑雪": 1,
-  "绝区零": 1
+  "绝区零": 16
  },
  "周杰伦": [
   {
@@ -351,12 +351,45 @@
  ],
  "绝区零": [
   {
-   "headline": "《绝区零》新品情报丨「Tidal Noise噪点狂潮」键盘套组",
-   "highlight": "键盘套组",
-   "blurb": "《绝区零》の新グッズ「Tidal Noise」キーボードセットの情報。",
+   "headline": "【ゼンゼロ】メインストーリー・シーズン3第4章「もう一度、空へと飛び立って（Journey to the…",
+   "highlight": "シーズン3第4章",
+   "blurb": "Ver.3.3が配信開始。メインストーリー・シーズン3第4章が公開された。",
    "weight": "lead",
    "refs": [
-    1
+    16,
+    14,
+    7
+   ],
+   "image": "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg"
+  },
+  {
+   "headline": "【ゼンゼロ】クラレッタガチャは引くべき？【ゼンレスゾーンゼロ】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11,
+    12,
+    13
+   ]
+  },
+  {
+   "headline": "【ゼンゼロ】式輿防衛戦の攻略と報酬【ゼンレスゾーンゼロ】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "《绝区零》新品情报丨「Tidal Noise噪点狂潮」键盘套组",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    8
    ]
   }
  ]
