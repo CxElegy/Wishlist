@@ -76,7 +76,7 @@
   "周杰伦": 9,
   "GTA 6": 98,
   "漫威电影": 81,
-  "三星手机": 5,
+  "三星手机": 55,
   "Vaundy": 1,
   "あつ森": 1,
   "滑雪": 1,
@@ -246,23 +246,70 @@
   {
    "headline": "サムスンによる同シリーズの発売計画がリークされた Galaxy S271月に見られるだろうか？",
    "highlight": "発売計画がリーク",
-   "blurb": "Galaxy S27 シリーズの発売計画がリークされた。Pro 版は 16GB メモリ搭載の噂もあるが、公式発表はまだ。",
+   "blurb": "Galaxy S27シリーズは1月発売との情報が出る一方、部品コストなどで遅くとも2月になるとの見方もある。",
    "weight": "lead",
    "refs": [
     3,
     4,
-    1,
-    2
-   ],
-   "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png"
+    50,
+    53,
+    47,
+    48,
+    31,
+    11,
+    13,
+    25,
+    37,
+    17,
+    35
+   ]
   },
   {
-   "headline": "Galaxy S27 changes the design. Does it remind you of the new iPhone?",
-   "highlight": "changes the design",
+   "headline": "Galaxy S27 Lineup Leak Hints at Familiar Looks and One Missing Model",
+   "highlight": "One Missing Model",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    10,
+    54,
+    1,
+    6,
+    29
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra will have a thicker camera and thinner bezels",
+   "highlight": "thicker camera",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    8,
+    7,
+    12,
+    19
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 series RAM and storage specifications leaked",
+   "highlight": "RAM and storage",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23,
+    21,
+    27,
+    30
+   ]
+  },
+  {
+   "headline": "Memory costs spiking: 3 ways Samsung can protect Galaxy S27 buyers from a big price hike",
+   "highlight": "price hike",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    24,
+    52
    ]
   }
  ],

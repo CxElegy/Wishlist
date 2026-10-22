@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "5de05f8f6153",
+ "edit_sig": "859acc8af359",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -1390,378 +1390,56 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 6,
-     "source": "제주교통복지신문",
-     "title": "갤럭시 S27 보호필름 유출…프로 모델 부재만으론 단정 못해",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE11RjFMNWpCbU1KaDZGSUdmRWhzUEVZdFdMN1RIck45UFBQYm9tdzQ2aGJnQW04R2dnTkNNa1lwcjdDMFhQM1VVX01FLW1xTlhsNXBReFpSNFYwNXBGRDRHNA?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 7,
-     "source": "搜狐",
-     "title": "三星Galaxy S27 Ultra曝光：2亿像素主摄引发热议",
-     "url": "https://www.sohu.com/a/1090145385_122004016"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 8,
-     "source": "DoNews",
-     "title": "三星Galaxy S27系列手机壳曝光，S27 Ultra相机模组大幅升级",
-     "url": "https://www.donews.com/news/detail/8/6746548.html"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 9,
-     "source": "Geeky Gadgets",
-     "title": "Samsung Galaxy S27 Ultra: Every Rumor, Leak, and Major Change",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA0N3BhaXNBUm9ZMlRLQTZIS2NLOGVoTUpQSXF3UGl6ZnhaejdJano2MVZqTUpGNEQteHh3UzZpVjlGR05GRTF4WG5vUGZyVkVtYk81M3RwYWdwTHVFQWFVeXZwd2NXSVFwN0hHTzhkUVlHRjg?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 10,
-     "source": "Gadget Bridge",
-     "title": "Galaxy S27 Lineup Leak Hints at Familiar Looks and One Missing Model",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOdG1rUk52UGFPWHZNVGRKZ21sVHd5ZkJRZWpQd3BmQ1hCelVreDBkcFFQYjhVWXNqMW5TZTZNc2pKakpOZ2lCZGFrNVQ2bGRGUmdkNWp4OHlBQ0ItUW9vZzlVeWJBdDVvdVY1VHRQbFFVcUI2SVdwaktFZGIwVHFCNHZKMzhOU1ozVkQwUURIR2RwSk9WVGxEeWs3b2Q5cXPSAaQBQVVfeXFMT0VDYnBTcEJYX1hGaUFpWDhkYVdQcEN3MExXS2QzSGJRUUJRN0QxS0lZdThjeG01akxwLVpzanNlRGlwUlV6NmlEd2JYaVZSZUdLYXBvWldIaHhVMWwyVkxyUmpva1lreFd5QWdZZE5RTzNYOWtqaFMzRkFqQUJ5TFBNZEtvNzlmVlVNQ0t4eVhYTWVISndERmZBZ0VySFgwVGRta1I?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 11,
-     "source": "Daily Beirut",
-     "title": "Samsung Galaxy S27 launch may slip to February due to component costs",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQNEtRLVdWYXRIOFJLZDZZNHRVVFcyOXg4TUtTcnRVZllQMmNmaFFRT2xCLVpXalNOS2RLVXB4MllHQUc1V0w1YW9LM3lwMjhkeW5HRXZ1cE1EX2Z0RFJNblNYbUV2ZGFrYlVzSlpwRTY4eURkYmFaT0tYZFd4S2FQY3k2WGtINzY3NTdyVkN2aGdfeEJ4NU45ckhHZ0V6YVlvcU9SQVZkTmZlSGlrUlAw?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 12,
-     "source": "iTechify",
-     "title": "Galaxy S27 Ultra Bezels: Thicker or Thinner? What the Leaks Say",
-     "url": "https://itechify.com/2026/10/21/galaxy-s27-ultra-bezels-thicker-or-thinner-leak/"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 13,
-     "source": "androidcentral.com",
-     "title": "Early Galaxy S27 launch ? Maybe , but Samsung has a few issues to work out",
-     "url": "https://www.androidcentral.com/phones/samsung-galaxy/early-galaxy-s27-launch-maybe-but-samsung-has-a-few-issues-to-work-out"
-    },
-    {
-     "date": "2026-10-16",
-     "n": 14,
-     "source": "trustedreviews.com",
-     "title": "Samsung Galaxy S27 Ultra will have a thicker camera and thinner bezels",
-     "url": "https://www.trustedreviews.com/news/samsung-galaxy-s27-ultra-to-get-a-thicker-camera-bump-and-slimmer-bezels"
-    },
-    {
-     "date": "2026-10-16",
-     "n": 15,
-     "source": "dunyanews.tv",
-     "title": "Galaxy S27 and S27+ may miss out on pro model selfie camera upgrade",
-     "url": "https://dunyanews.tv/en/Technology/977882-galaxy-s27-and-s27-may-miss-out-on-pro-models-selfie-camera-upgrade"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 16,
-     "source": "Sammy Fans",
-     "title": "Samsung Galaxy S27 series leak suggests no major display design changes",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPc0tVT0RtOEJyNjJ6RmU0ZDVLWm51ODVXaWllN1VUM3RUMzRHVmwtTE8wdWo1djlQYkI3NEpNRVhVTXNfTTl2VTc0SmhlOUdqLThtVFF2X3MydGI3SnVvcl9xV0FkNG1vYzltaExWcDdpbkl2ZG9TRWlzOUZzdjlUZTBSUEVuSEM5ZXdqQUMwZllQR3FSTjAtbFJZb05xbFpqd2U0QzFxMW5IOW85UFHSAbMBQVVfeXFMTkhZdlI4SnJjZ1VjNjYzOXJ6SEFRR2VyNGZpVW5lVjhuVm4wQTFkNzNUc1VnZG5MMktiN3JIQ3BUNTRqZ2tCOTFvYmNRWG5RTDcxanNSZ2hMZEgxc1E1MlBWeEtJMnNzQW9fSzMxU0IyS3pFTGRtRGVQY1BJTzFobkJnaEU0N1JkWjVGdEpYYlVFekYwcWVGWmx5bzd4eGJwemlCNzQ1SEFmbW9WTUtKTnE1SU0?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 17,
-     "source": "Vietnam.vn",
-     "title": "The Galaxy S27 could launch as early as January, with priority given to upgrading to the Ultra version.",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPVk1BRWZ4X21zSXVWeE9UVTJBYzFCaW8wdnk1aElaUlJiaW83ZEtRemc4Vjl0SEVMaERsSjh2WE9kSEpzZURQLVBFdTNlVjZmc0o3TW5QZ1llTEZMQkpzS1BVWXVDN1VITTNHZmxtSk50YUVSc0hVMHA2cU9FZ3pneVV2QUI3Qmo1OWNpSmRUZlhZSkZ0WGZXejluN2c?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 18,
-     "source": "Sammy Fans",
-     "title": "Galaxy S27 Ultra leak hints at minimal front-end redesign from S26",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOX0R4S2loTW1saHhEeTVPUnZUTjU5MmJFTktkSFZWNzZXU0t2bF9KRFU5Y0hlQjJRQ1BLVWQtYTRJcFg0VXdHQTQyN3h4Tm1lcHlLYmNnTVdNMHFrOU1vZXdYNzJNTk04YlVtUURkaHRONUF1Mjh6NlV1NDAyanRZcmRCWWwtM2tDaHB1X1FIWHVrWlJlNVBrUnd2QQ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 19,
-     "source": "Sammy Fans",
-     "title": "Why the Galaxy S27 Ultra’s thicker camera bump is actually great news",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNT3hXRF9DUFhGN3JtOWZrdU90cUZZOFJ6MkgyV2N6dHZiT3cyU255NFBjR0VmUWtWenlQZ0tBTS13dDkxTTZldDR0cG93OWNULW5ORThSOEVnUVdCelRfUmJoZWNrYXJraVpQN1ZUOXB3VDQtS0cwX1ZQM1J6QURhZ1ZWM0pRWGFNRUNXSXhXTjTSAZYBQVVfeXFMTnlPT2hUZE9OOVNWSHhzOWozNllXeVg4LUwxWjZ2Q2k0cTYwTmxsNmtmUHdDelpKYWttMHV6X3RkSG1RYjRQSUg0bURla3kxQlNkLWpjZGJySkRwQ1hxYmJTdHdieVdpa016ZWhxeGJmMzk0bC01ZklqRG5zRzZyVl8tNUI0TG0yS3VDRm5CVTVzYW0wMF9R?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 20,
-     "source": "Sammy Fans",
-     "title": "There’s a new Android 17 version for Samsung Galaxy S27 phones",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOdGlHU2JNM1ZINHJ4V1N2ZHRndHA4dWRlUTlZOFRJT0Vra3RCQ0x5cmpVc1o0emp0c2g5QktzZk56NTFTVXQzY2p2RjhPdEFxSmdTNHV4RzBMYzV4SUo0dGJVaTBsUkhWampiQ3JDdmY0ckR4NXRmZERCRnNJeF8yVzNnRUNfWVpqMkQ00gGQAUFVX3lxTE5OV21uYXZuRENqejNUQi1JbWZncWZOZnY3UFVURXNtTDdXSU54ZnlBay1qNlBCdW5OLU04Vk5URHhvUjZtSG9vcFpWbDRaaVZrai1CWFlmX2Q2NTVUZ1ZXYl9YRHJsOGZENzlra1dSUkNXOW1DSU1oUGlORkQ0emh6Vjhvb0NRVXNma1VneGdrLQ?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 21,
-     "source": "Vietnam.vn",
-     "title": "The Galaxy S27 series phones have been revealed through a display accessory that shows the screen size and RAM.",
-     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNZ01TZDU5ZS1fY2NZaDZJbGRKNWJ6RHJLUEFOeTh3NVFKYjI3THoxS0FuM1VRWWo5YXV4T2JpWkxvcHRGYWZxcnVBNFNFRWRSU1NVUzdJVjUtelRSYk9zWHlMdXVqb2R1R3lQcWlZenRwNGhsTmItd3FWbmJRNnpXS2RRLUJRQ1pPcEw2N21uNUU0WE54VVpZMDh6TFhxNllFX1E3dTgzN3FaTjg5Q21FVjRwV1dRdw?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 22,
-     "source": "Digit",
-     "title": "Samsung Galaxy S27 Ultra colours tipped: Check expected launch timeline, specs, price and more",
-     "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNMVBwX2ZfTVpvM1JkSEpzWlJza0tBU0lILXpJRjg5UzVOMUpoTmRTNUdINEdFZGY5VHlXM3J0X2VoQmpwbGVHMjlKdmpvS2RpeWpma2dOMUU2U1ZzejNpbFptQnd2SGRzSFgyNkdQejlHdVIwNWt1LTlDMFkyTEU1d2M5b0owUU9vSU1fYnRSZDVjbjdNUDFoYkxzTEFKRG1lU1BjcHUtX0tkeDhHX0FMcGhkLUlzLTRDZmI5SGpfTGx4cWFwTXViTmJMMC1mZUYtY3fSAdgBQVVfeXFMTUtzb0d1Wl9OTWxLUTBtcnZsLU9UUzNmeWJyU3h6RnBiQVQ0WDdzd2M0OU9zYl9IMzBLZVFDYVNIMEEtdElnUF96bkZmTHNPdlZudm5RYXhNenZuOFJ0Y0xnUHFQMWRUU1pFOW5mMTJTdmJtcGdMSnF4Q1pCc2pnOFJFdmFoaHVFYy1FUW9UQXpxWDBPMV8xN29tT1BSdEkzc1l4NXh0aThKY1Z2djh0WFRQZUFXbWVtSHpJS29HRXBzRmpTWmRWM1NnY3VHUTh1V0RrS1BzaXdQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 23,
-     "source": "Sammy Fans",
-     "title": "Samsung Galaxy S27 series RAM and storage specifications leaked",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQcFlSM0RpSko2T0N1VjhwTEFxNW10bXRvdVhVaHFHYUFpLVNKRllpd2pQUkpwaV8zVG8wTzJsSHd2Z1NxZi1rYnN5Y3FDSktfSVhFbnphZVJlZ0p4OU1NU2hJRFFXZDJ4eE8zQUV2WWJEdVpqd2pqckxyRFhmTmJERTg1aDRXZ25fQTlhT2tTcng5bEEydE1JQjVpOUNWeTFWT1lV0gGoAUFVX3lxTE9Ga09JSUFqN2lzNndKTUFkeFJtMTJWU3J4d2NTal9XNV9DRWVnWnRWNDUwOFI5SkRzR2NhcUIxMjFJdndySERuaHQ3bThzdy1tNGFYMUQ3aVp3YWxPak1KbUhucDAtdHhjYXZ0M1hDbzNxNmFDZWdidUZQN1ZYZkxlQ2ptMUlnZTV5d3pWMUZua3FCRXVNTEpMWjFmRmR6YjZMVjZmVEZUdA?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 24,
-     "source": "Sammy Fans",
-     "title": "Memory costs spiking: 3 ways Samsung can protect Galaxy S27 buyers from a big price hike",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQdUUtNlpaTl9HS0E4NHBSS2JEYmh4b3ozdWxoU2RqV2tVUklNZm44T1lFT095TEtaT3ZGNFppSUNGRnlacFRJNndMMk52YlIydV9SazJVZHFpWFdhdV9jaU1KM3N4bHNWVFFwVkRQX2p6aTludDhMd2NLSFpKbFZoTmNxcnc4b1dVRm9jMXF6T3JKSlhHUWfSAZsBQVVfeXFMTm1Ja2NqeXdUM3JSVWNnS2RpUzRHNXluVlJwSUlTN2YwX0hOallGYzZQdG5VN0lKaEZzN1NpeGNVRWFSNGFmSnJlbGVBX2RUeC1nZmtlVFhKOVhtb1dGWl9jS3ZFVTYyZl9vR1ZvSnNuWXRBbE9BNTh4UUFZWmZfM0tOTjNYY0FFc0NadVZjeGtONGgxVjV2azVobnc?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 25,
-     "source": "Sammy Fans",
-     "title": "Galaxy S27 launch window leaks, Samsung aims to maintain edge over flagship rivals",
-     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVW50c1NQb1psWEtQNnNrZFIwNmllWXNmcWtZTHM4QmVuS05PWEh0NXRYZHdZMzhLOWJXUnhkY3dKQ2RyUkM0MU5uY3Zmel9OcW9vSFZleF93NXFGTTRuc2dBRFVXTDU5ODNxTDhQTVVNYjVVZ25YUFdaSDJmVUZEZW1B0gGHAUFVX3lxTE1qODVfR25Hb1YtQmd6ZFVOSzF3WGF2aGQxTWlIQ1dic0QwLWxRUGpJOGI5Vi1PSDRuRDY3ZXpUcFctZkNVc3hidGZibUdUVXA4ckl2OFYxdUxBdGp6RVJ2d2JHN1RoSjZneVFVbi1kQWd2SzRSdEVuXzh0V3ZHc1BTM1J1bExCZw?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 26,
-     "source": "Droid Life",
-     "title": "Galaxy S27+: Filing Shows No UWB Support",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPZk5PV1hNSC1jU2J0bGZIUnE2ZDJnOUYwLTNtTXhONHA2dUFwODVkalQyOWdTaEpEdUN6SDl5ZzBqZ0xqbFdHeUJ0dVlROHNObGdrOVhrV2pPZWJkWEFaam41UThKQnZGUU5Zb2ZxUzA1TllQc1l6SXN1TDg4RGVZYTk2Yw?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 27,
-     "source": "The Hans India",
-     "title": "Samsung Galaxy S27 leaks: Display sizes, storage and more",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPcjJvUkxQeGhmZ1FVODRqMDMwcnRKdkpEdk01MzczdGl4MTVTaEtqVnpadVNuLTY5ZVJyMmY5WV91di1waWlmbUp2UGhRVk4tN0wwVzRCQTRGYUJocG1qRU94MXNMaHRtS29PWnNtbmFNVEVQZGRyY3dGWnVZdFBWdEVEakd2SzJ4bWsxY1I5bVhNY0kxMWtOYzF3Z2Zxdw?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 28,
-     "source": "Sammy Fans",
-     "title": "Samsung teases Orion phone: What the Galaxy S27 codename chaos really means",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAwTVplMVhuNlpiNHVQX2pPVTZaTTE0WmZzb0xENmNEZXVCVGx5aWx4ZDNaNTJvTlhYZXpuY0ZxQkRfUWgzd1FwUk1VLTJySlR4T0VtOTdEMTJ5eFQ5MlJmX1pzcmVUZ2toNHNyZ0JsYjU3NXl3RWlRLVBkMNIBgAFBVV95cUxNZi1sb1Fnc1VGcTREZXBCR3RRTXloQms5TkZ1YS1TeVRWOWp0RjRIaXZCOEtiLXFERUh3VmFscmFoVEFLU0xaR19HVGd1R01iMnpuUXhPQXFaTHJxVmxzOVp3VkZXMVlCY1lwOGZyMEdZeFFPTVByV05tNW1FaU4xaQ?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 29,
-     "source": "Vietnam.vn",
-     "title": "Galaxy S27 Pro 是否有可能在正式发布前停产？",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOR3JVdnptMmhqakRuNmZDc2FKZnctU1hGS0VkMGd0VUR5YllxM19oN1hvSk5TNnA4WWtqNFlmYjVmMmxhbi1Cd1Rpeld5U202cU5lUGExMGw5clVkeXVva2xJUXgxbkp5SnBCU0pjMlBLcVdZcDNUTVIxZllFQU1GY0NTSFJCWnFmMlg4YjhjWnVSQXVf?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 30,
-     "source": "Vietnam.vn",
-     "title": "三星 Galaxy S27 系列的 RAM 和内部存储规格泄露。",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOTXFnTEFQcFNuaTN5dkV6ODRUWTVNbzhVZzVGYllmVm5wRC1WNEt4QVlYVHduR2MxbXhuUDBMOGMxelNmUmtmVU1WQktHclR0WWpxa0VEV3hkZ1NaRWU2RFpkUk9YVkdGUl9SNm5keGhSUTVBdXZvUVpTZDEwZVV1UFlpWVlzZUhEM3M5enBOMXlxVFVvUEE?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 31,
-     "source": "위키트리 on MSN",
-     "title": "갤럭시 S27 출시일 늦어도 2월…기본·플러스는 개발 마무리, 프로·울트라는 부품 미정",
-     "url": "https://www.msn.com/ko-kr/news/other/%EA%B0%A4%EB%9F%AD%EC%8B%9C-s27-%EC%B6%9C%EC%8B%9C%EC%9D%BC-%EB%8A%A6%EC%96%B4%EB%8F%84-2%EC%9B%94-%EA%B8%B0%EB%B3%B8-%ED%94%8C%EB%9F%AC%EC%8A%A4%EB%8A%94-%EA%B0%9C%EB%B0%9C-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%94%84%EB%A1%9C-%EC%9A%B8%ED%8A%B8%EB%9D%BC%EB%8A%94-%EB%B6%80%ED%92%88-%EB%AF%B8%EC%A0%95/ar-AA2fKHJs"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 32,
-     "source": "news.lavx.hu",
-     "title": "Leaked Galaxy S27 cases show wide camera cutouts on Pro and Ultra",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPTHdIQlljd3pnTXB2cXV5b01EeVBWRHBDYXNnUDBkWUkyb3lmUlJSVENOTVpQVW83TGVwNzBKcmJlbGN3SndveWNJQ2dnN1BvZktzLTVRNFZVQTlIR1NVc0djVXE3Y3lfZHJOck4zQjRSaUxkWTlyNXpCRVJ1dXYtR253VHByU0xDODdHTDNvVGdDZExLblVzSFh3?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 33,
-     "source": "9to5Google",
-     "title": "I've struggled to use Samsung displays for years, but the Galaxy S27 may finally fix that; here's why",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9TUHRaQVptYnREVUlWNVhXUWltYWZtS0gzQ1hWQjdiQUlCSDktaTNZeTJuQWJuNVVZWkpwMWgtbDFzU25fdUxZcTlVY3BmWlVLUC01MmMyMHFiU3FxNS1taUxVdlNCLXFqWnpyYVNfOTJfUFN3S1R2dA?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 34,
-     "source": "https://ascendants.in/",
-     "title": "Samsung Galaxy S27 Ultra Launch May Come Early in 2027",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOSUpTSW9mclJQZ0NfWHJFdF9MVFV3OUYtVkpaclF1UGlvMVphSG83T3ZCQ0FyWEpHeE9POHdhRXB6TEY2NjNkZHlzQk5rckZTdkdBZjh3TncxRF96VGZLc2RmUXlvY3c0SXg5SllPN2tUUndOam9SRjZOVXFsNmNzOWhSRTB5X21GdVQ1VTlzVzNuX0ZxaDhPU3RiWUI?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 35,
-     "source": "Android Central",
-     "title": "Early Galaxy S27 series launch speculation surfaces in overseas leak",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQc2RmaDhaT2Y2bUM2S1ZuOFd1R2ZGdmVoWXl4aUFDVzAyMWZzUnhpMGZ1MmdUODdrcllmTVdiX1h2cWRwTWI0UWlIME9EMDVTTXdIMWNOUTYxVTA1cE1DaUFJeXVVYWVJR2JNcDZkVG11bkFhNG91Tk1aZjJaZ3ZnVzNiTVFhcnFfMmQ3ZUV2LWF4cjNEajB0UjA2Qmh5WGhBWHZxVkpkSUZNZ3BQd2U2TlcxZmFIY1lOZGU1blVnS2M?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 36,
-     "source": "GSMArena.com",
-     "title": "Leaked Galaxy S27 series cases reiterate new designs - GSMArena.com news",
-     "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQRldHSGpkU011YXROdW9hVE54d0hfcVFYWTkzM3dvMEtFSW5sRW45QXlfcmxMZnZBRUlVMHBwQTlrRmk3aHMzZXZiUDFGNGRRSEVsMkE4V19YWTQzMlpkVUxVeWNFYTFRbzVtMnJKVlQ4YWJjV0NGM2c3RmVpN3E1NkdUREdPTUV6VWtSUHQyY0dLaHo0MWVnRtIBlAFBVV95cUxPcjJrNVRkM3pyMklNYWtxSUVnSlFSR2QyTmExUlp5TlB4bWlMS2N4Y3pVZEpOWEU1VTlvcG5aMENRUDJhQ1g0Z3QyMGdfVkY1WTk1dzljNEJmN2NJV2s4aXZEOTFsMngxM2FxZzdLTE1lR19zSFZkZURSY2RQLWlkVWZnM2l0a2Z3TWIzOWdSNlR1YTN0?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 37,
-     "source": "Tbreak UAE",
-     "title": "Samsung Galaxy S27 could launch in January, a month before the S26 did, tipster claims",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NMm1VNHpsR0FfQzdtTTFLVVRobTZydnk0NUdJVlduRU90cEprZzkyZHZrQkhpdWc3SnlXTUNxRjZHakNyUVl6d1A0Ym05OGJiMGhHNXNzZ3Q1bGlONUNJ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 38,
-     "source": "LIGA.net",
-     "title": "Samsung May Unveil the Galaxy S27 Sooner Than Expected: What We Know About the Design and Prices",
-     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPZWplWUVWT21rT2xwS1ZlOWE1UGZiaFZacDBnQm1sQXVOVEJ3SVlhVFA2ZnV2c2V4cGtpc3JaZ2RFZjNETkVUREFqb0pBX0Mzc3hIaW5BQ2hHcDZDT19CNlVkTmpIUWJVVmxaeDgwSWkxTWZfVFBHNnZrVDVRZ080Z0I2YzFlRmg3OVBPSUtVYzdKdlRrM2gzZVBRMmNpV2Y5bk45N3U5OGp3am1NejNRaEJaYmxWeEJSNnNQZFJvaF9XM1JvQ3o2alNOTlFLQdIB0wFBVV95cUxPLUM1R1dJUmR2d3NYWlBrcDVkMXVhQjBZdGpfR3gxeldnQlFsRVlWUVpzcnc3QnNSTVcxRkhVR2lWX25CRkVnYUE2aW4yNnBzSnh3cjZkaGxiNU15WHhTSFZvYW9zWVZsbEFvVXRtOWtEOVdIS2JuNVFJNEFZQXJ4Ny1ubWRUU3NMOWh2ZS0wdDBYZS1ZX2pISURqOERsU09NRmQ4M1NldmJDY1ZEdjlWaUVHNFI0ZjJYQlJiYjNpbEtQaWhpNGxSZ0NUQXlKRmhoZ0w4?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 39,
-     "source": "Notebookcheck CN",
-     "title": "据称 Samsung Galaxy S27 将比预期更早发布，曝光的手机壳证实其设计",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5vOGhwX3o0V2o1WVR2c05GbHNsRFRBd0NxMVBNa0xCeUxCbUVjYl9NeUhxTURpQnJuMjVtb2ZLU0dFdzlhaE00YXJxSWpZeExTQXVQelFQZ0RTY3YzRDBsTXN3RDVrdE15bzVDUERCSXQzM2lz?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 40,
-     "source": "PhoneArena",
-     "title": "These Vivo X500 Ultra leaked details make me feel sorry for the Galaxy S27 Ultra",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQLXFmQTI4NDhjTlZnSTJCMnd4WnFHYWhfZ2haVERzUFZuZE9yUjJ1eW9GaWp1NUNOV0p1VVE4bEtYWEJSVjBQU0VEUnB6aGkyYzZENGNqRnVqVWgtVGkzV29BOVBGZkpSLWJ6akNJNjJlaFQ2SkJsX05uUmFrTmNUUHB3UmhWNVBtYlZNaTVxbWZwNFV5UVNFamRvZzNCTHRxU001cVhWQTF3MWh2Y2RFSHAtX1lSc21MNWhodjRn?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 41,
-     "source": "Vietnam.vn",
-     "title": "三星 Galaxy S27 系列的摄像头设计通过手机壳曝光，展示了两种全新的风格。",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPRFhBbmY3V01IVlpiYVZlTWIwN1Ftd1dBWFRYRXd0WWhNMllkOVpaTXpTTHpCOUlmbzZ6R2RhWEJkOFNMcHRPWlBIZUpILXJuV2tTN291M0Y4aU9ocGlCRmpKYnc0ek84QlVoMkw0OWJrcWsydlE4N3Rrb29NNm8xaE96d1dXT0l0eWZkU0RuY3k4YVdJSXcyWHJWWTBBZlh3eDJBTUNvNkJ3UkRSdHRvWTN6UlcyMXlKMF9qNWJ3?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 42,
-     "source": "Vietnam.vn",
-     "title": "삼성 갤럭시 S27 시리즈의 카메라 디자인이 휴대폰 케이스를 통해 공개되었으며, 완전히 새로운 두 가지 스타일이 선보였습니다.",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQbWpCUVk4amV5eW8xd3E4RmVlcWJLTFhKSkVPTm1PeHd0cHlaWERhYnlndUwyeDZvUnoxZUt4dFAySjVUYUdpVm5vUGxrYVhaWTlkOW9xc29UUFdLUHBIRGdTOXUxZmVkblNQV2ZvZDd5WlVtaEFsVU95T1NsRndCNDlaTFQtV3pNLTB4SHJ5aDhSSkE0ZlVWaXRPV1NHVTlfWjhva0JCcVVlQ1l0ck1wV2JPN0RmajdvS2c?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 43,
-     "source": "Vietnam.vn",
-     "title": "サムスン Galaxy S27 シリーズのカメラデザインが、スマートフォンケースを通して明らかになり、全く新しい2つのスタイルが披露された。",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSFFyVDlLeHNZWGgtX3BFYWhIZUJIeXRlVW5vSkQxX3NZNWFFS0ZUMVlIcmc0bWJlejVaRkdpZmplcmNuT0w5VF8yV2p3Rmt5YkZpVTlGNXdaemROaXdIWk9mTWhackFEXzlMMzdBQ25SYnpsMjMydVpSUkZycTRCX2J4bllQQk9za3V3WW92eXdzTEFSUjdrR2lreS1YeWE0b2NRRGNja0lMNXZCaDNyTDI1U3R1dF9QM3c?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 44,
-     "source": "SammyGuru",
-     "title": "Fresh Galaxy S27 Case Leak Backs Up Samsung’s Design Changes",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBRc2pGRm12aGZRd0p2b2tDcmttdjhLazFGdTlmM2hhbGdkNGNPODZ2czZvM3ZfU09UeHNhWnhxbEVZZkswdXVRQWk1cThhVTVXdW9pc3RETlhQUHhiS0x4QV9aSDh2dFVpbnM3akFBY0w5UQ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 45,
-     "source": "Tech Advisor",
-     "title": "Samsung’s Rumoured Galaxy S27+ Downgrade Would Be a Step Too Far",
-     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOM1FVUGdteWxGZ3Y4bFZHWnNzRXlfajZrWnRiUjhyTHRDSUxyQ3dkTTJMMkFKUk85QzJNX3ZkNVZSd3dpNDY5X01BMlFDakt6MWNPQmZWcTFoSUQxTlNGWGEtY0tFbUNDRzdiUW5abHdOWEFTV01oRnd5XzEtQkxnTnpETUhJR2NfVE5wSWhUUHNEWG03U1hNZF9ZSjJpYjZkYWVRRmVnN3JsUGhEbF94Vi1vdw?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 46,
-     "source": "Yahoo Tech",
-     "title": "Samsung Galaxy S27 cases reveal camera configurations... and many fans' worst fears",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTURPWXNKaEtEck9LSVpUSjJyZGtlcFlWWXI4UWdVc2p3QmJWaGF3bEVwZmFoVURVX2JpcnpYUTRiMTNkTFZpejdlTXd5TktJbUZaaE9iWTB0MEZ3a1ZDVE1VcU5lVVMwSk41R3hwMmx4RHpOYVZPaURralhYZ3ZSTWpNNGljb28tbVNpeEtn?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 47,
-     "source": "Gagadget.com",
-     "title": "Galaxy S27 could launch in early January 2027",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQRm1zeEt5QjI1Zk54WW1FMWFsMmE3aUxucGVCWE9XX19CektSZmh4X2h4OEV5SEdFMktiX2Vudi04NklSa3VjVXU0MWQ1MFBMdnRnMXBfdW9TQUt2Nm9qV05EbUdGT2hnUHV5d2tTVGEtdXFYTGtMRWJSUGhkeWsybHFETdIBiAFBVV95cUxOMkFXZkVJZ0loN3FDMlFlLVNiVkVxQmdlekFTQjdWZm4xTFFQdXBIY1l4VnR1aGZQa0xETU5NZUtBT0hkTlZYSG1yTXVPMmNFYkZpMkYwVGhUbkZFeXhrbHNmcGY2R1ZEeS1aWUJKQk5Ub2M5SmctbUxnVm13U2VFdjluSlIzcFZN?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 48,
-     "source": "环球网",
-     "title": "消息称三星Galaxy S27系列有望明年1-2月发布",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE4xQ19xa2FUbnRvSzJZSVprSXNodE1oQ01EdGFFNGpYdjBWYnNDNDZCSkxHaUVoS003cWdPODBLM2k1Rm1MdC15MENJVktUUkxVLTEtMzctRQ?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 49,
-     "source": "Android Headlines",
-     "title": "Galaxy S27 Series Cases Confirm the Size Order of Samsung's Upcoming Flagships",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNQjZDbGpZWnVod2hSSmlzVS1uRUF4WW8tdnpKbEd0NzUtcy1pN0RNQWlyT3RYYWNWNzhtRll3VDdKVFUxNEhrdzVaSk1Lb2R3UHk2dUxZUnFoWTg4Z1hGRGRmOHFVNXRIMG4xRUFWTU1jb0ZwdkxNWUtYWGo4cTQ0ZWlFUUU3am1qWlFWZ19QcVotLTItUUczV0xzRDI5VUp4OHRsbkRUZ2tWZF9hVVlxM2NDWF9wcWVDMHRhQXpLdGo?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 50,
-     "source": "9to5Google",
-     "title": "Samsung reportedly hasn’t finalized Galaxy S27 details, considers February launch",
-     "url": "https://9to5google.com/2026/10/19/galaxy-s27-pro-ultra-launch-timing/"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 51,
-     "source": "Samsung Magazine",
-     "title": "Galaxy S27 디자인이 바뀌었네요. 새 아이폰이 생각나지 않나요?",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5mTG94XzNqdUg3dWlWVUxwRXNfY2tfNHdVVnhSdUhrLS1MWkV1Y08yVjJ5SVZRTTFwWkYzbFBsSnFlYjhsT1hqRWlpYWt6Z19oVkRUOFFQTjVNVWZtZHdjNlNaY3NiZWVFZ3pINmlyNA?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 52,
-     "source": "Gagadget.com",
-     "title": "Samsung Galaxy S27 to Feature Less RAM and Higher Prices Amid Chip Shortage",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQeWhrbmQ3Zk1hMmd2alNxQ0tDVEpFX2VXcjk4eFZSUm9JQURCbFJBVU43TGk1enlGZ0RSVVhJV3NYYW5ONXREU3IyVkt4MzlaWDBiUUZ6WnozdTNkZFozME42QUFqdlFFMnY2aTU1SWN4SW0yM2FmYlJpdmpzTFBBblFveVZ4b2dBRUNRWWZ5SC1WS3RLOE1zd0R6NEhVLUQ1TENHeEl3eXZCNDjSAbABQVVfeXFMT3lzbWZBbVNqNUoyc3FEVHhFaVJQVHlCTWZZU1BJdlhzYWtLblI2cWhLSmkxMDZ5V1FkWUUtZ1lzdUQta01hWHZ3eWFORUtfNmpVU1RwU0l1aC0zZUhNUUZRYWJZTzYxTWxib0pNOTFvYzg2RlpjOU1pZHRoS3JkanFSeGN2ZlVaM3ZMaWZJY1NrRjRhVU9EYThSNTM5UnF3SnFmNWdNbXR0dElnQXlQT2w?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 53,
-     "source": "Digital Trends",
-     "title": "The Galaxy S27 could arrive in January, but Samsung still has a few loose ends to tie up",
-     "url": "https://www.digitaltrends.com/phones/the-galaxy-s27-could-arrive-in-january-but-samsung-still-has-a-few-loose-ends-to-tie-up/"
-    },
-    {
-     "date": "2026-10-17",
-     "n": 54,
-     "source": "국제뉴스",
-     "title": "'갤럭시 S27' 유출… 소문 무성하던 '프로' 모델 빠졌다?",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBVcHJMVmFPVVFqaTZfclZHOExBRmNVcmlCOGdaeDBRSXVEUVJOVS1Ja3FnNzBzOFR0ZWVyelVkTHNCelg5dGlNb0E4VG5CUzJKUEpXY0lndUdNNUt6MVl1YmxiQWxwSTNUZm81Z2Zn?oc=5"
-    },
-    {
-     "date": "2026-10-16",
-     "n": 55,
-     "source": "腾讯新闻",
-     "title": "曝三星Galaxy S27 Plus或取消超宽带 近六年首次",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5fNGhpWldZX3JkaVFoOURBT29hb0VMUmNfdmRrOHJMWk0wcE40bnJhVXBsbVFHeGUzNWZ1MlhZbWVSTEE4MWd2ZWFobDM2bE5VR2tqai1n?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "Galaxy S27 シリーズの発売計画がリークされた。Pro 版は 16GB メモリ搭載の噂もあるが、公式発表はまだ。",
+     "blurb": "Galaxy S27シリーズは1月発売との情報が出る一方、部品コストなどで遅くとも2月になるとの見方もある。",
      "date": "2026-10-19",
      "headline": "サムスンによる同シリーズの発売計画がリークされた Galaxy S271月に見られるだろうか？",
      "highlight": "発売計画がリーク",
-     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png",
-     "image_via": "AI 挑选",
+     "image": "https://cdn.mos.cms.futurecdn.net/7MkXgTMHDpN3fkLRciMFVY-2048-80.jpg",
+     "image_via": "条目自带",
      "url": "https://samsungmagazine.eu/ja/2026/10/19/iphone-18-galaxy-s27/",
      "weight": "lead"
     },
     {
      "blurb": "",
-     "date": "2026-10-19",
-     "headline": "Galaxy S27 changes the design. Does it remind you of the new iPhone?",
-     "highlight": "changes the design",
-     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Plus-Ultra-Unbox-9.jpg",
+     "date": "2026-10-21",
+     "headline": "Galaxy S27 Lineup Leak Hints at Familiar Looks and One Missing Model",
+     "highlight": "One Missing Model",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/21/1792575186710_samsung-galaxy-s27-1791268771123915443954-192-83-1379-2350-crop-17925717894251664243113.jpeg",
+     "image_via": "og:image（其它来源）",
+     "url": "https://www.gadgetbridge.com/galaxy-s27-lineup-leak-hints-at-familiar-looks-and-one-missing-model/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-16",
+     "headline": "Samsung Galaxy S27 Ultra will have a thicker camera and thinner bezels",
+     "highlight": "thicker camera",
+     "image": "https://www.trustedreviews.com/wp-content/uploads/sites/7/2026/10/5a32df85-7990-4d4c-ad50-11f9dac7171b.jpg",
+     "image_via": "条目自带",
+     "url": "https://www.trustedreviews.com/news/samsung-galaxy-s27-ultra-to-get-a-thicker-camera-bump-and-slimmer-bezels",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "Samsung Galaxy S27 series RAM and storage specifications leaked",
+     "highlight": "RAM and storage",
+     "image": "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg",
      "image_via": "og:image",
-     "url": "https://samsungmagazine.eu/en/2026/10/19/galaxy-s27-case-leak/",
+     "url": "https://www.sammyfans.com/2026/10/20/samsung-galaxy-s27-series-ram-and-storage-specifications-leaked/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "Memory costs spiking: 3 ways Samsung can protect Galaxy S27 buyers from a big price hike",
+     "highlight": "price hike",
+     "image": "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sammyfans.com/2026/10/20/3-ways-samsung-can-avoid-big-price-hike-on-galaxy-s27/",
      "weight": "normal"
     }
    ],

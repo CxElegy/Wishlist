@@ -376,6 +376,12 @@
   ],
   "why": "看不清"
  },
+ "https://cdn.mos.cms.futurecdn.net/7MkXgTMHDpN3fkLRciMFVY-2048-80.jpg": {
+  "w": 2048,
+  "h": 1152,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.nc.press/news/photo/202610/628679_864834_712.jpg": {
   "w": 600,
   "h": 900,
@@ -2236,12 +2242,6 @@
   "target": 1280,
   "v": 3
  },
- "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png": {
-  "w": 1434,
-  "h": 948,
-  "target": 1280,
-  "v": 3
- },
  "https://scontent-sjc3-1.xx.fbcdn.net/v/t51.71878-15/851829434_1657957355672157_598019026852783350_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a27664&_nc_ohc=uKSc0b5fZFEQ7kNvwFxE5ms&_nc_oc=AdqmBBqeKqxLAPsvjT85BPpF_EHNTZvG-6X1_yY5Ot2mPnQ4nwiUFLImYpprEyA5CYs&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=8yCkfeRA7k1_NKbixFL9Mg&_nc_ss=7820f&oh=00_AQOQdGlX1cpi4E0KSvVx2CSSu0e_bKoaPsdHUtpgJL7PRw&oe=6ADE1E65": {
   "w": 640,
   "h": 1136,
@@ -2503,6 +2503,12 @@
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/16/1792169865739_img-14c0fcb120261016231916-jpg-v-2.jpeg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/21/1792575186710_samsung-galaxy-s27-1791268771123915443954-192-83-1379-2350-crop-17925717894251664243113.jpeg": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -3066,6 +3072,18 @@
   "target": 720,
   "v": 3
  },
+ "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg": {
+  "w": 1000,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://www.shitakoe.com/wp/wp-content/uploads/2026/10/2-7-1024x768.jpg": {
   "w": 1024,
   "h": 768,
@@ -3123,6 +3141,12 @@
  "https://www.tokyoheadline.com/wp-content/uploads/2026/10/main-2.jpg": {
   "w": 1050,
   "h": 971,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.trustedreviews.com/wp-content/uploads/sites/7/2026/10/5a32df85-7990-4d4c-ad50-11f9dac7171b.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
