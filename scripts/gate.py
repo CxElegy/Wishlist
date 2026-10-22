@@ -44,6 +44,9 @@ MIN_GAP_MIN = 60   # 前に起こしてからこの分数は、何があって�
 # 整理待ちがなければ起こさない。停滞（起こしたのに動かない）の起こし直しは別（MAX_ATTEMPTS）。管理ページのボタン（GATE_FORCE）はいつでも
 SLOTS = {"edit": [(9, 0), (18, 0)]}
 SLOT_TZ = "Asia/Tokyo"
+DAY_TZ = "Asia/Shanghai"   # 「今日」の区切り（出刊の日付・edit_done と同じ北京時間）。日付が変わると edit_done は 0 から数え直す
+DAILY_PROG = {"edit"}   # prog が「今日の数」の仕事（日付が変わると 0 から）。写真の prog は残りの枚数なので日付で数え直さない
+ACTIVE_MIN = 30   # 最後の AI 編集のバッチ（state/log/edit.json の出刊の行）からこの分数以内だけ「動いている」と出す
 
 
 def last_slot(job, now=None):
@@ -96,7 +99,7 @@ def save(data, path=None):
     p.write_text(json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def edit_work(inbox=INBOX, tz="Asia/Shanghai", today=None):
+def edit_work(inbox=INBOX, tz=DAY_TZ, today=None):
     """今日（出刊の日付の時区）の inbox で、AI 編集がまだ整理していない記事がある版面 → {名前: 未整理の件数}。
     未整理 = edit.json の _covered より後の記事、または edit.json にない版面の全部。版面に載らず「整理待ち」に並んでいるもの。
     AI 編集の定時タスクの「何も変えずに終わり」の条件と同じ。"""
@@ -121,7 +124,23 @@ def edit_work(inbox=INBOX, tz="Asia/Shanghai", today=None):
     return out
 
 
-def edit_done(inbox=INBOX, tz="Asia/Shanghai", today=None):
+def day_of(at, tz=DAY_TZ):
+    """時刻（datetime か ISO の文字列）→ その時区の日付 'YYYY-MM-DD'。読めなければ ''。"""
+    try:
+        at = dt.datetime.fromisoformat(at) if isinstance(at, str) else at
+        return at.astimezone(zoneinfo.ZoneInfo(tz)).date().isoformat()
+    except (ValueError, TypeError, AttributeError):
+        return ""
+
+
+def last_batch(log_dir=None):
+    """最後に AI 編集がバッチを出刊した時刻（state/log/edit.json の batch つきの行の at）。なければ ''。
+    「本当に進んだ」時刻：起こした時刻（fired.at）とは別。"""
+    rows = [r for r in runlog.load("edit", log_dir) if r.get("batch") is not None and r.get("at")]
+    return max(r["at"] for r in rows) if rows else ""
+
+
+def edit_done(inbox=INBOX, tz=DAY_TZ, today=None):
     """今日の edit.json の _covered の合計。AI 編集が走って書き直すと増える（新着が来ても減らない）＝「本当に進んだか」の目印。"""
     today = today or _now().astimezone(zoneinfo.ZoneInfo(tz)).date().isoformat()
     try:
@@ -157,7 +176,7 @@ def _emblem_why(todo, wait, tz="Asia/Tokyo"):
     return "・".join(parts) or "全部そろっている"
 
 
-def check(tz="Asia/Shanghai", path=None):
+def check(tz=DAY_TZ, path=None):
     """→ {job: {need, claude, why, items, sig}}。state/gate.json に書く。"""
     edit = edit_work(tz=tz)
     photos = photo_work()
@@ -174,6 +193,8 @@ def check(tz="Asia/Shanghai", path=None):
         j["sig"] = _sig([k, edit if k == "edit" else photos if k == "photos" else emblem])
     # 進み具合の目印（prog：大きくなれば進んだ）。起こしたあとに増えていなければ Claude は動いていない（work_state）
     jobs["edit"]["prog"] = edit_done(tz=tz)
+    jobs["edit"]["prog_day"] = day_of(_now(), tz)   # prog はこの日の数（日付が変わると 0 から）。fired.day と違う日なら比べない（work_state）
+    jobs["edit"]["last_batch"] = last_batch()
     jobs["photos"]["prog"] = -len(photos)
     data = load(path)
     prev = data.get("jobs") or {}
@@ -191,13 +212,24 @@ def check(tz="Asia/Shanghai", path=None):
     return data
 
 
-def work_state(j, now=None):
+def _until(job, now):
+    """次の定時の「次は 18:00（あと 7 時間 10 分）」。"""
+    nxt = next_slot(job, now)
+    m = max(0, int((nxt - now).total_seconds() // 60))
+    left = f"{m // 60} 時間 {m % 60} 分" if m >= 60 else f"{m} 分"
+    return f"次は {nxt.astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime('%H:%M')}（あと {left}）"
+
+
+def work_state(j, now=None, last_batch=None, job="edit"):
     """ゲートが Claude を起こしたあとの様子（API が 200 を返しただけでは「やった」ことにしない）。→ (状態, 説明)
-      none      まだ起こしていない / 仕事がない
+      none      まだ起こしていない / 仕事がない / 起こしたのは前の日（北京時間。edit_done は日付が変わると 0 から数え直すので、
+                昨日の fired.prog と比べると「進んでいない」に見える：停滞と数えず、1 日 2 回の定時の確認に回す）
       running   起こして MIN_GAP_MIN 分以内：編集中かもしれない
-      progress  起こしたあと編集済みの数（prog）が増えた（動いている）
+      progress  起こしたあと編集済みの数（prog）が増えた・最後のバッチが ACTIVE_MIN 分以内（動いている）
+      idle      進んだが、最後のバッチから ACTIVE_MIN 分すぎた（前回は終わった・次の定時を待つ）。起こすかの規則は progress と同じ
       stalled   起こして MIN_GAP_MIN 分たったのに prog が増えていない（Claude が動いていない）→ 起こし直す
-      gave_up   動かないまま MAX_ATTEMPTS 回起こした：REFIRE_HOURS 待って、管理ページで人に知らせる"""
+      gave_up   動かないまま MAX_ATTEMPTS 回起こした：REFIRE_HOURS 待って、管理ページで人に知らせる
+    last_batch：最後に AI 編集が出刊した時刻（ISO）。省くと j["last_batch"]（check が書く）。どちらもなければ進んだ＝progress。"""
     last = (j or {}).get("fired") or {}
     if not ((j or {}).get("need") or (j or {}).get("items")) or not last.get("at"):
         return "none", ""
@@ -206,9 +238,21 @@ def work_state(j, now=None):
         ago = now - dt.datetime.fromisoformat(last["at"])
     except (ValueError, TypeError):
         return "none", ""
+    fired_day = (last.get("day") or day_of(last["at"])) if job in DAILY_PROG else ""   # day のない古い記録は起こした時刻を北京時間に直した日付
+    today = j.get("prog_day") or day_of(now)
+    if fired_day and fired_day != today:
+        return "none", f"起こしたのは前の日（{fired_day}）：今日の編集済みは 0 から数えるので停滞とは数えない"
     prog, was = j.get("prog"), last.get("prog")
     mins = int(ago.total_seconds() // 60)
     if was is not None and prog is not None and prog > was:
+        lb = last_batch if last_batch is not None else j.get("last_batch")
+        try:
+            lb_at = dt.datetime.fromisoformat(lb) if lb else None
+        except (ValueError, TypeError):
+            lb_at = None
+        if lb_at is not None and now - lb_at > dt.timedelta(minutes=ACTIVE_MIN):
+            when = lb_at.astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime("%H:%M")
+            return "idle", f"前回 {when}（日本時間）に終わった・" + (_until("edit", now) if "edit" in SLOTS else "")
         return "progress", f"{mins} 分前に起こして、編集済みが {was} → {prog} 件に進んだ"
     if ago < dt.timedelta(minutes=MIN_GAP_MIN):
         return "running", f"{mins} 分前に起こした（編集中のはず）"
@@ -288,11 +332,11 @@ def fire(path=None, post=_post, env=None):
             results[job] = "GATE_FIRE で止めている（定時を待つ）"
             continue
         last = j.get("fired") or {}
-        state, why = work_state(j, now)
+        state, why = work_state(j, now, job=job)
         attempts = 1
         if job in force:
             pass
-        elif state == "running" or (state == "progress" and (now - dt.datetime.fromisoformat(last["at"])) < dt.timedelta(minutes=MIN_GAP_MIN)):
+        elif state == "running" or (state in ("progress", "idle") and (now - dt.datetime.fromisoformat(last["at"])) < dt.timedelta(minutes=MIN_GAP_MIN)):
             results[job] = f"{MIN_GAP_MIN} 分以内に起こし済み（編集中かもしれないので待つ）"
             continue
         elif state == "stalled":
@@ -305,7 +349,7 @@ def fire(path=None, post=_post, env=None):
             if ago < dt.timedelta(hours=REFIRE_HOURS):
                 results[job] = f"停滞：{why}（{REFIRE_HOURS} 時間待つ・管理ページで確認）"
                 continue
-        if job not in force and state in ("progress", "none") and job in SLOTS:
+        if job not in force and state in ("progress", "idle", "none") and job in SLOTS:
             try:
                 at = dt.datetime.fromisoformat(last["at"]) if last.get("at") else None
             except (ValueError, TypeError):
@@ -321,7 +365,7 @@ def fire(path=None, post=_post, env=None):
             continue
         try:
             out = post(f"https://api.anthropic.com/v1/claude_code/routines/{rid}/fire", token)
-            j["fired"] = {"at": now.isoformat(timespec="seconds"), "sig": j.get("sig"), "prog": j.get("prog"),
+            j["fired"] = {"at": now.isoformat(timespec="seconds"), "day": j.get("prog_day") or day_of(now), "sig": j.get("sig"), "prog": j.get("prog"),
                           "attempts": attempts, "resp": _resp(out), **({"forced": True} if job in force else {})}
             results[job] = "Claude を起こした" + (f"（{attempts} 回目：前は動かなかった）" if attempts > 1 else "")
         except Exception as e:   # 起こせなくても、定時のほうで拾われる
@@ -345,7 +389,7 @@ def main():
         res = fire()
         for k, v in res.items():
             print(f"{k:<7} {v}")
-        woke = [ROUTINES[k][2] for k, v in res.items() if v == "Claude を起こした"]
+        woke = [ROUTINES[k][2] for k, v in res.items() if v.startswith("Claude を起こした")]   # 「（2 回目…）」つきも起こした
         runlog.add("gate", ("Claude を起こした：" + "・".join(woke)) if woke else "Claude は起こさなかった（" + " / ".join(f"{ROUTINES[k][2]} {v}" for k, v in res.items()) + "）",
                    "ok" if woke else "info", results=res)
     else:

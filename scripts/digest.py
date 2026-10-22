@@ -2202,7 +2202,7 @@ def backend_todo(items, rows, run):
     import gate
     gj = (gate.load().get("jobs") or {}).get("edit") or {}
     fired = gj.get("fired") or {}   # ゲートが最後に AI 編集を起こした記録
-    gstate, gwhy = gate.work_state(gj)   # 起こしたあとに本当に進んだか（running / progress / stalled / gave_up）
+    gstate, gwhy = gate.work_state(gj, last_batch=gate.last_batch())   # 起こしたあとに本当に進んだか（running / progress / idle / stalled / gave_up）。動いているかは最後のバッチの時刻で
     queue = run.get("queue") or []
     review = [n for n, x in (run.get("items") or {}).items() if x["state"] == "review"]
     return {
@@ -2765,14 +2765,59 @@ def ingest(dry_run=False):
 
 
 CARRY_DAYS = 2    # 何日前の inbox まで持ち越すか
-CARRY_MAX = 30    # 1 版面で持ち越す件数（max_entries_per_item と同じ）
+CARRY_PER_SIZE = 2   # 1 版面で持ち越す件数 = 篇幅の本数（SIZE_STORIES：S 3・M 5・L 8）× これ（S 6・M 10・L 16）
+CARRY_SEEN_DAYS = 3  # 直近この日数の reports にもう載った記事（同じ網址・同じ見出し）は持ち越さない
+
+
+def _carry_caps():
+    """版面 → 持ち越す件数の上限（篇幅 × CARRY_PER_SIZE）。篇幅は load_sizes（数据库 → items.yaml の size）、なければ M。"""
+    try:
+        sizes = dict(load_sizes())
+    except Exception:  # noqa: BLE001  読めなくても持ち越しは止めない（全部 M）
+        sizes = {}
+    try:
+        for item in load_config()[1]:
+            want = str(item.get("size") or "").upper()
+            if item["name"] not in sizes and want in SIZE_STORIES:
+                sizes[item["name"]] = want
+    except Exception:  # noqa: BLE001
+        pass
+    return lambda name: SIZE_STORIES.get(sizes.get(name), SIZE_STORIES["M"]) * CARRY_PER_SIZE
+
+
+def _published(today, days=CARRY_SEEN_DAYS):
+    """直近 days 日（today を含む）の reports に載った記事 → {版面: (網址の集合, 見出しのリスト)}。"""
+    start = (dt.date.fromisoformat(today) - dt.timedelta(days=days)).isoformat()
+    out = {}
+    for path in sorted(REPORTS_DIR.glob("????-??-??.json")):
+        if not start <= path.stem <= today:
+            continue
+        for b in (load_json(path) or {}).get("items") or []:
+            urls, titles = out.setdefault(b.get("name"), (set(), []))
+            for st in b.get("stories") or []:
+                if st.get("url"):
+                    urls.add(st["url"])
+                if st.get("headline"):
+                    titles.append(st["headline"])
+    return out
+
+
+def _not_published(name, entries, pub):
+    """もう版面に載った記事（同じ網址、または同じ見出し：title_key で記号・大小・末尾の媒体名を無視）を除く。
+    StoryDeduper（見出しの共通の語）は使わない：2026-10-21 の本物で試すと、別の試合・別のリーク記事まで「同じ話」にして落とした。
+    同じ話の別の網址は、今までどおり AI 編集がまとめる（持ち越しでニュースを落とさない）。"""
+    urls, titles = pub.get(name) or (set(), [])
+    keys = {title_key(_clean_title(h)) for h in titles}
+    return [e for e in entries if not ({e.get("url"), e.get("link")} & urls)
+            and title_key(_clean_title(e.get("title", ""))) not in keys]
 
 
 def carry_over(data, today):
     """前の日の「整理待ち」（AI 編集がまだ整理していない記事）を今日の inbox に持ち越す（その日の最初の 1 回だけ、_carried に印）。
     AI 編集は最新の inbox しか見ないので、日付が変わる前（JST 18:00 の回のあと〜1:00）に集めた分は、持ち越さないと二度と版面に載らない
     （2026-10-22 全体の検査 H3：10-17〜10-21 で 829 件が残ったまま）。数え方は gate.edit_work と同じ：_covered より後の記事、edit.json にない版面は全部。
-    要紧（urgent）はもう「重大」で載っているので持ち越さない。→ (data, 持ち越した件数)"""
+    要紧（urgent）はもう「重大」で載っているので持ち越さない。直近 CARRY_SEEN_DAYS 日の reports にもう載った記事（同じ網址・同じ見出し）も持ち越さない。
+    1 版面の上限は篇幅 × CARRY_PER_SIZE（新しいほうから。AI 編集が読む一覧を太らせない）。→ (data, 持ち越した件数)"""
     if data.get("_carried"):
         return data, 0
     prev = [p for p in sorted(INBOX_DIR.glob("????-??-??.json")) if p.stem < today]
@@ -2782,19 +2827,21 @@ def carry_over(data, today):
     old = load_json(prev[-1]) or {}
     edit = load_edits(prev[-1])
     covered = edit.get("_covered") or {}
-    carry = []
+    carry, cap, pub, dropped = [], _carry_caps(), _published(today), 0
     for b in old.get("items") or []:
         entries = b.get("entries") or []
         c = int(covered[b["name"]] or 0) if b["name"] in covered else len(entries) if b["name"] in edit else 0
         left = [e for e in entries if int(e.get("n") or 0) > c and not e.get("urgent") and not is_spam(e.get("title", ""), e.get("url", ""))]
-        left = left[-CARRY_MAX:]
+        fresh = _not_published(b["name"], left, pub)
+        dropped += len(left) - len(fresh)
+        left = fresh[-cap(b["name"]):]
         if left:
             carry.append({"name": b["name"], "priority": b.get("priority", ""), "facts": [], "cover": b.get("cover"),
                           "entries": [{**e, "n": k, "carried": prev[-1].stem} for k, e in enumerate(left, 1)]})
     if not carry:
         return data, 0
     n = sum(len(b["entries"]) for b in carry)
-    print(f"  前の日（{prev[-1].stem}）の整理待ち {n} 件を今日に持ち越し", file=sys.stderr)
+    print(f"  前の日（{prev[-1].stem}）の整理待ち {n} 件を今日に持ち越し（もう載った {dropped} 件は除いた）", file=sys.stderr)
     merged = merge_inbox(data, {"date": today, "items": carry})
     merged["_carried"] = prev[-1].stem
     return merged, n

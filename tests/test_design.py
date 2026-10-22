@@ -391,6 +391,13 @@ class Overview(unittest.TestCase):
         self.assertEqual(w[0][3], "edit_now")
         self.assertIn("いま待っているものはありません", overview.panel({}))
         self.assertNotIn("<b>B</b>", overview.panel(data))
+        # 最後のバッチから 30 分すぎた（gate.work_state の idle）：「動いている」と言わず、前回の時刻と次の定時
+        idle = {"todo": {"edit": {"n": 55, "boards": 11, "state": "idle", "why": "前回 10:32（日本時間）に終わった・次は 18:00（あと 10 分）"}}}
+        w = overview.waits(idle)[0][2]
+        self.assertNotIn("動いている", w)
+        self.assertIn("前回 10:32（日本時間）に終わった", w)
+        self.assertIn("次の回を待つ", render._admin_backend([{"name": "A", "section": "游戏", "bg": {
+            k: {"state": "ok", "text": ""} for k in ("collect", "edit", "design", "emblem")}}], idle["todo"]))
 
     def test_admin_has_overview_first_and_css_uses_tokens(self):
         import overview

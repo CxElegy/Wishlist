@@ -879,8 +879,10 @@ class Gate(unittest.TestCase):
     def _aged(self, minutes, **job):
         """edit を minutes 分前に起こした状態にする。"""
         at = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(minutes=minutes)).isoformat(timespec="seconds")
-        fired = {"at": at, "sig": "s1", "prog": 10, "attempts": job.pop("attempts", 1)}
-        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1", "prog": job.pop("prog", 10), **job, "fired": fired}}}, self.state)
+        today = self.gate.day_of(dt.datetime.now(dt.timezone.utc))   # 同じ日として数える（北京時間の 0 時をまたいで走っても揺れない）
+        fired = {"at": at, "day": today, "sig": "s1", "prog": 10, "attempts": job.pop("attempts", 1)}
+        self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1", "prog": job.pop("prog", 10), "prog_day": today, **job,
+                                          "fired": fired}}}, self.state)
 
     def test_stalled_fire_is_retried_then_gives_up(self):
         """起こしたのに編集済みの数が増えない（Claude が動いていない）→ 60 分あとに起こし直す。3 回で止め、6 時間待つ。"""
@@ -990,6 +992,78 @@ class Gate(unittest.TestCase):
                                                                   {"name": "A", "entries": [{}] * 4}]}), encoding="utf-8")
         (self.d / "2026-10-17.edit.json").write_text(json.dumps({"A": [], "_covered": {"A": 4}}), encoding="utf-8")
         self.assertEqual(self.gate.edit_work(self.d, today="2026-10-17"), {"新作": 2})
+
+    # 2026-10-19〜21 の本物の誤起動（state/gate.json の履歴）：前の日の fired.prog と、日付が変わって 0 に戻った今日の prog を比べて「停滞」と判断し、
+    # 定時（9:00 / 18:00）の確認を素通りして夜中（日本時間 1〜2 時）に AI 編集を起こしていた
+    NIGHT_MISFIRES = [
+        ({"at": "2026-10-19T14:29:20+00:00", "attempts": 1, "forced": True, "prog": 0}, "2026-10-19T16:17:43+00:00"),
+        ({"at": "2026-10-20T09:17:20+00:00", "attempts": 1, "prog": 151}, "2026-10-20T17:09:11+00:00"),
+        ({"at": "2026-10-21T10:57:16+00:00", "attempts": 1, "prog": 434}, "2026-10-21T16:40:49+00:00"),
+    ]
+
+    def test_new_day_is_not_stall(self):
+        """日付（北京時間）が変わると編集済みは 0 から数え直す：昨日起こした記録は停滞と数えず、定時でなければ起こさない。"""
+        for fired, now in self.NIGHT_MISFIRES:
+            with self.subTest(now=now):
+                now = dt.datetime.fromisoformat(now)
+                j = {"need": True, "items": ["A"], "sig": "s1", "prog": 0, "fired": dict(fired)}   # day のない古い記録
+                self.assertEqual(self.gate.work_state(j, now)[0], "none")
+                self.gate.save({"jobs": {"edit": j}}, self.state)
+                calls = []
+                with mock.patch.object(self.gate, "_now", lambda: now):
+                    res = self.gate.fire(self.state, post=lambda u, t: calls.append(u) or 200, env={"ROUTINE_TOKEN_EDIT": "t"})
+                self.assertIn("次は 09:00", res["edit"])
+                self.assertEqual(calls, [])
+        # 朝 9:00 の回では 1 回目として起こす
+        self.assertEqual(self._fire_at("2026-10-22 09:00", calls := []), "Claude を起こした")
+        self.assertEqual(self.gate.load(self.state)["jobs"]["edit"]["fired"]["attempts"], 1)
+
+    def test_fired_records_day_and_same_day_stall_still_retries(self):
+        """起こした記録に日付（prog と同じ北京時間の今日）を残す。同じ日のうちの停滞は今までどおり起こし直す。"""
+        self.gate.save({"jobs": {"edit": {"need": True, "items": ["A"], "sig": "s1", "prog": 5, "prog_day": "2026-10-22"}}}, self.state)
+        self.assertEqual(self._fire_at("2026-10-22 09:00", calls := []), "Claude を起こした")
+        fired = self.gate.load(self.state)["jobs"]["edit"]["fired"]
+        self.assertEqual(fired["day"], "2026-10-22")
+        self.assertIn("2 回目", self._fire_at("2026-10-22 10:30", calls))   # 90 分たっても 5 のまま：停滞
+
+    def test_photos_do_not_reset_by_day(self):
+        """写真の prog は残りの枚数（日付で 0 に戻らない）：日付が変わっても停滞は停滞。"""
+        j = {"need": True, "items": ["7"], "prog": -1, "fired": {"at": "2026-10-21T10:57:16+00:00", "prog": -1, "attempts": 1}}
+        self.assertEqual(self.gate.work_state(j, dt.datetime(2026, 10, 21, 16, 40, tzinfo=dt.timezone.utc), job="photos")[0], "stalled")
+
+    def test_running_label_only_near_last_batch(self):
+        """「動いている」は最後のバッチ（state/log/edit.json の出刊）から 30 分以内だけ。過ぎたら前回の時刻と次の定時。"""
+        utc = dt.timezone.utc
+        j = {"need": True, "items": ["A"], "prog": 510, "prog_day": "2026-10-22",
+             "fired": {"at": "2026-10-22T00:08:31+00:00", "day": "2026-10-22", "prog": 60, "attempts": 1}}
+        lb = "2026-10-22T01:32:56+00:00"
+        self.assertEqual(self.gate.work_state(j, dt.datetime(2026, 10, 22, 1, 50, tzinfo=utc), last_batch=lb)[0], "progress")
+        st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 8, 50, tzinfo=utc), last_batch=lb)
+        self.assertEqual(st, "idle")
+        self.assertIn("前回 10:32（日本時間）に終わった", why)
+        self.assertIn("次は 18:00（あと 10 分）", why)
+        # 起こすかの規則は progress と同じ：この回（9:00）はもう起こした → 18:00 を待つ
+        self.gate.save({"jobs": {"edit": {**j, "last_batch": lb}}}, self.state)
+        self.assertIn("次は 18:00", self._fire_at("2026-10-22 17:50", calls := []))
+        self.assertEqual(self._fire_at("2026-10-22 18:00", calls), "Claude を起こした")
+
+    def test_last_batch_reads_edit_log(self):
+        log = self.d / "log"
+        log.mkdir()
+        (log / "edit.json").write_text(json.dumps([{"at": "2026-10-22T01:29:27+00:00", "batch": 23},
+                                                   {"at": "2026-10-22T01:32:56+00:00", "batch": 24},
+                                                   {"at": "2026-10-22T02:00:00+00:00", "text": "一時停止で止めた"}]), encoding="utf-8")
+        self.assertEqual(self.gate.last_batch(log), "2026-10-22T01:32:56+00:00")   # 出刊していない行は「進んだ」に数えない
+        self.assertEqual(self.gate.last_batch(self.d / "none"), "")
+
+    def test_log_counts_retry_as_woke(self):
+        """「Claude を起こした（2 回目…）」もログでは「起こした」（前は完全一致で「起こさなかった」と書いていた）。"""
+        res = {"edit": "Claude を起こした（2 回目：前は動かなかった）", "photos": "仕事なし（起こさない）"}
+        with mock.patch.object(self.gate, "fire", return_value=res), mock.patch.object(self.gate.runlog, "add") as add, \
+                mock.patch.object(sys, "argv", ["gate.py", "fire"]), mock.patch("builtins.print"):
+            self.gate.main()
+        self.assertEqual(add.call_args.args[1], "Claude を起こした：AI 編集")
+        self.assertEqual(add.call_args.args[2], "ok")
 
     def test_fire_failure_is_recorded(self):
         def post(url, token):

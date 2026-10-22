@@ -4985,7 +4985,7 @@ RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render", "edi
 RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も待たずにやり直す・作業は上のライブログに流れる（3 分に 1 回まで）",
              "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）",
              "edit": "9:00・18:00 を待たずに、整理待ちがあれば AI 編集を今すぐ起こす（10 分に 1 回まで）"}
-EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "stalled": ("止まっている？", "ng"),
+EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "idle": ("次の回を待つ", "ok"), "stalled": ("止まっている？", "ng"),
               "gave_up": ("起こしても動かない", "ng")}
 RUN_LABEL = {"edit": "今すぐ AI 整理"}   # ボタンの文字（ないものは「今すぐ実行」）
 BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき"}
