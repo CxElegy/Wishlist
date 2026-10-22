@@ -5057,6 +5057,8 @@ def _admin_backend(rows, todo=None, log=None, res=None):
     def th(k, t, pid):
         if k in BG_AFTER_COLLECT:   # 定時なし：ゲートが収集のあとに起こす（AI 編集・版面の設計）→ 次の収集までの残り時間
             when = f'<small class="nx-h" data-slots="{_slots_attr("collect")}" data-pre="次の収集のあと "></small>'
+        elif k == "edit" and ed.get("due"):   # 今の回をまだ起こしていない（cron の遅れ）：次の日の 9:00 を数えない
+            when = f'<small class="nx-h">{e(ed["due"])} の回はまもなく（次のゲートで起こす）</small>'
         else:
             when = f'<small class="nx-h" data-slots="{_slots_attr(pid)}"></small>'
         extra = ""

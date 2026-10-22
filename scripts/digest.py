@@ -2202,7 +2202,8 @@ def backend_todo(items, rows, run):
     import gate
     gj = (gate.load().get("jobs") or {}).get("edit") or {}
     fired = gj.get("fired") or {}   # ゲートが最後に AI 編集を起こした記録
-    gstate, gwhy = gate.work_state(gj, last_batch=gate.last_batch())   # 起こしたあとに本当に進んだか（running / progress / idle / stalled / gave_up）。動いているかは最後のバッチの時刻で
+    lb = gate.last_batch()
+    gstate, gwhy = gate.work_state(gj, last_batch=lb)   # 起こしたあとに本当に進んだか（running / progress / idle / stalled / gave_up）。動いているかは最後のバッチの時刻で
     queue = run.get("queue") or []
     review = [n for n, x in (run.get("items") or {}).items() if x["state"] == "review"]
     return {
@@ -2210,7 +2211,8 @@ def backend_todo(items, rows, run):
         "edit": {"text": (f"新しい記事 {n_new} 件（{len(edit)} 版面）を編集" if edit else "編集する新着なし")
                  + (f" · 版面の設計 {len(design)} 件" if design else ""), "items": [r["name"] for r in edit],
                  "n": n_new, "boards": len(edit), "fired": fired.get("at") or "",
-                 "state": gstate, "why": gwhy, "attempts": int(fired.get("attempts") or 0), "resp": fired.get("resp") or ""},
+                 "state": gstate, "why": gwhy, "due": gate.due_slot(gj, last_batch=lb),   # due：今の回（まだ起こしていない）の時刻
+                 "attempts": int(fired.get("attempts") or 0), "resp": fired.get("resp") or ""},
         "emblem-cron": {"text": (f"足りない {len(queue)} 版面を順に" if queue else "全部そろっている")
                         + (f" · 要確認 {len(review)}" if review else ""), "items": queue},
         "photos": {"text": "受付の写真があれば認識して愿望清单へ", "items": []},
@@ -2802,21 +2804,37 @@ def _published(today, days=CARRY_SEEN_DAYS):
     return out
 
 
+CARRY_KEY_MIN = 12      # 末尾の媒体名を除いた見出しの鍵を使うのは、残りがこの字数以上
+CARRY_KEY_SHARE = 0.6   # かつ元の鍵のこの割合以上のときだけ（「討論牆 | 本文」の本文ごと消して頭だけで比べない）
+# 末尾の媒体名：「 - 媒体名」（前後に空白のある -・–・—）か「|」「｜」の後ろ 40 字まで。_clean_title（空白なしの - も切る）は使わない：
+# 「Spider-Man: …」「2026-27シーズン…」の - で本文が消える
+_MEDIA_TAIL = re.compile(r"(?:\s+[-–—]\s+|\s*[|｜]\s*)[^|｜–—]{1,40}$")
+
+
+def _title_keys(title):
+    """見出し → 比べる鍵の集合。title_key（既存の重複判定と同じ）＋ 末尾の媒体名を除いた鍵（十分長く残るときだけ）。"""
+    raw = title_key(title or "")
+    clean = title_key(_MEDIA_TAIL.sub("", unicodedata.normalize("NFKC", title or "")))
+    n_raw, n_clean = len(raw) - 2, len(clean) - 2   # 頭の「t:」を除く
+    return {raw} | ({clean} if n_clean >= CARRY_KEY_MIN and n_clean >= CARRY_KEY_SHARE * n_raw else set())
+
+
 def _not_published(name, entries, pub):
-    """もう版面に載った記事（同じ網址、または同じ見出し：title_key で記号・大小・末尾の媒体名を無視）を除く。
+    """もう版面に載った記事（同じ網址、または同じ見出し：title_key。媒体名の付いた形は残りが十分長いときだけ同じとみる）を除く。
+    媒体名を除いて短く残った頭だけで比べると、別の話まで落とす（2026-10-22 検査：「討論牆 | 周杰倫…」が別の「討論牆 | …」と同じに）。
     StoryDeduper（見出しの共通の語）は使わない：2026-10-21 の本物で試すと、別の試合・別のリーク記事まで「同じ話」にして落とした。
     同じ話の別の網址は、今までどおり AI 編集がまとめる（持ち越しでニュースを落とさない）。"""
     urls, titles = pub.get(name) or (set(), [])
-    keys = {title_key(_clean_title(h)) for h in titles}
+    keys = set().union(*(_title_keys(h) for h in titles)) if titles else set()
     return [e for e in entries if not ({e.get("url"), e.get("link")} & urls)
-            and title_key(_clean_title(e.get("title", ""))) not in keys]
+            and not (_title_keys(e.get("title", "")) & keys)]
 
 
 def carry_over(data, today):
     """前の日の「整理待ち」（AI 編集がまだ整理していない記事）を今日の inbox に持ち越す（その日の最初の 1 回だけ、_carried に印）。
     AI 編集は最新の inbox しか見ないので、日付が変わる前（JST 18:00 の回のあと〜1:00）に集めた分は、持ち越さないと二度と版面に載らない
     （2026-10-22 全体の検査 H3：10-17〜10-21 で 829 件が残ったまま）。数え方は gate.edit_work と同じ：_covered より後の記事、edit.json にない版面は全部。
-    要紧（urgent）はもう「重大」で載っているので持ち越さない。直近 CARRY_SEEN_DAYS 日の reports にもう載った記事（同じ網址・同じ見出し）も持ち越さない。
+    要紧（urgent）はもう「重大」で載っているので持ち越さない。前の日に持ち越した記事（carried）も、もう一度は持ち越さない。直近 CARRY_SEEN_DAYS 日の reports にもう載った記事（同じ網址・同じ見出し）も持ち越さない。
     1 版面の上限は篇幅 × CARRY_PER_SIZE（新しいほうから。AI 編集が読む一覧を太らせない）。→ (data, 持ち越した件数)"""
     if data.get("_carried"):
         return data, 0
@@ -2831,7 +2849,8 @@ def carry_over(data, today):
     for b in old.get("items") or []:
         entries = b.get("entries") or []
         c = int(covered[b["name"]] or 0) if b["name"] in covered else len(entries) if b["name"] in edit else 0
-        left = [e for e in entries if int(e.get("n") or 0) > c and not e.get("urgent") and not is_spam(e.get("title", ""), e.get("url", ""))]
+        left = [e for e in entries if int(e.get("n") or 0) > c and not e.get("urgent") and not e.get("carried")   # 持ち越しは 1 回だけ
+                and not is_spam(e.get("title", ""), e.get("url", ""))]
         fresh = _not_published(b["name"], left, pub)
         dropped += len(left) - len(fresh)
         left = fresh[-cap(b["name"]):]

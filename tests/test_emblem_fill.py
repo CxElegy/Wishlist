@@ -859,7 +859,12 @@ class Gate(unittest.TestCase):
         (self.d / "photos" / "7.jpg").write_bytes(b"x")
         self.assertEqual(self.gate.photo_work(self.d), ["7"])
 
+    def _noon(self):
+        return mock.patch.object(self.gate, "_now", lambda: dt.datetime(2026, 10, 22, 3, 0, tzinfo=dt.timezone.utc))
+
     def test_fire_only_with_work_token_and_new_sig(self):
+        self._noon().start()
+        self.addCleanup(mock.patch.stopall)
         calls = []
         post = lambda url, token: calls.append((url, token)) or (200, '{"claude_code_session_id": "session_x"}')
         self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1", "prog": 0}, "photos": {"need": False, "sig": "p"}}}, self.state)
@@ -977,6 +982,8 @@ class Gate(unittest.TestCase):
         self.assertEqual(self.gate.enabled_jobs("all"), {"edit", "photos"})
         self.assertEqual(self.gate.enabled_jobs(" Edit "), {"edit"})
         self.assertEqual(self.gate.enabled_jobs("edit,photos,bogus"), {"edit", "photos"})
+        self._noon().start()
+        self.addCleanup(mock.patch.stopall)
         calls = []
         post = lambda url, token: calls.append(url) or 200
         self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}, "photos": {"need": True, "sig": "p1"}}}, self.state)
@@ -1040,12 +1047,31 @@ class Gate(unittest.TestCase):
         self.assertEqual(self.gate.work_state(j, dt.datetime(2026, 10, 22, 1, 50, tzinfo=utc), last_batch=lb)[0], "progress")
         st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 8, 50, tzinfo=utc), last_batch=lb)
         self.assertEqual(st, "idle")
-        self.assertIn("前回 10:32（日本時間）に終わった", why)
-        self.assertIn("次は 18:00（あと 10 分）", why)
+        self.assertEqual(why, "前回 10:32（日本時間）に終わった")   # 「あと N 分」は書かない（網页で固まる。管理ページの列の見出しが端末で数える）
+        # 18:00 の回をまだ起こしていない（cron の遅れ・次のゲート待ち）：次の日の 9:00 ではなく、今の回がまもなく
+        st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 9, 7, tzinfo=utc), last_batch=lb)
+        self.assertEqual((st, why), ("idle", "前回 10:32（日本時間）に終わった・18:00 の回はまもなく（次のゲートで起こす）"))
+        self.assertEqual(self.gate.due_slot(j, dt.datetime(2026, 10, 22, 9, 7, tzinfo=utc), last_batch=lb), "18:00")   # 列の見出しも今の回
+        self.assertEqual(self.gate.due_slot(j, dt.datetime(2026, 10, 22, 8, 50, tzinfo=utc), last_batch=lb), "")       # 9:00 の回は済み
+        self.assertEqual(self.gate.due_slot(j, dt.datetime(2026, 10, 22, 16, 47, tzinfo=utc), last_batch=lb), "")      # 北京 0 時すぎ：前の日の回は拾わない
         # 起こすかの規則は progress と同じ：この回（9:00）はもう起こした → 18:00 を待つ
         self.gate.save({"jobs": {"edit": {**j, "last_batch": lb}}}, self.state)
         self.assertIn("次は 18:00", self._fire_at("2026-10-22 17:50", calls := []))
         self.assertEqual(self._fire_at("2026-10-22 18:00", calls), "Claude を起こした")
+
+    def test_previous_days_slot_is_not_picked_up_after_midnight(self):
+        """18:00 の回に仕事がなかった日：北京時間 0 時すぎ（持ち越しで整理待ちができる）に、前の日の 18:00 の回を拾い直して起こさない。次は 9:00。"""
+        utc = dt.timezone.utc
+        j = {"need": True, "items": ["A"], "prog": 0, "prog_day": "2026-10-23", "fired": {"at": "2026-10-22T00:08:31+00:00", "prog": 60, "attempts": 1}}
+        self.gate.save({"jobs": {"edit": j}}, self.state)
+        calls = []
+        with mock.patch.object(self.gate, "_now", lambda: dt.datetime(2026, 10, 22, 16, 47, tzinfo=utc)):
+            self.assertIn("次は 09:00", self.gate.fire(self.state, post=lambda u, t: calls.append(u) or 200, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"])
+        self.assertEqual(calls, [])
+        self.assertEqual(self._fire_at("2026-10-23 09:00", calls), "Claude を起こした")
+        # 同じ北京時間の日のうちなら、遅れた 18:00 の回は今までどおり拾う（JST 20:47 = 北京 19:47）
+        self.gate.save({"jobs": {"edit": {**j, "prog": 100, "prog_day": "2026-10-22"}}}, self.state)   # 9:00 の回で 60 → 100 に進んだ
+        self.assertEqual(self._fire_at("2026-10-22 20:47", calls), "Claude を起こした")
 
     def test_last_batch_reads_edit_log(self):
         log = self.d / "log"
@@ -1069,7 +1095,8 @@ class Gate(unittest.TestCase):
         def post(url, token):
             raise RuntimeError("403")
         self.gate.save({"jobs": {"edit": {"need": True, "sig": "s1"}}}, self.state)
-        self.assertTrue(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"].startswith("起こせなかった"))
+        with self._noon():
+            self.assertTrue(self.gate.fire(self.state, post=post, env={"ROUTINE_TOKEN_EDIT": "t"})["edit"].startswith("起こせなかった"))
 
 
 class CutRules(unittest.TestCase):

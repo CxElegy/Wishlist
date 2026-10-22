@@ -92,15 +92,42 @@ class CarryOver(unittest.TestCase):
         report("2026-10-20", "GTA 6", [{"url": "https://other.example/x", "headline": "Y - Example News"}])   # 別の版面の同じ見出しは数えない
         report("2026-10-18", "ILLIT", [{"url": "https://x.example/1", "headline": "y"}])          # 4 日前：数えない
         (self.dir / "2026-10-21.json").write_text(json.dumps({"date": "2026-10-21", "items": [
-            {"name": "GTA 6", "facts": [], "entries": [entry(1, "a"), b, entry(3, "D｜Infoseekニュース"), entry(4, "e")]},
+            {"name": "GTA 6", "facts": [], "entries": [entry(1, "a"), b, entry(3, "GTA 6 新トレーラーの公開日が発表された｜Infoseekニュース"), entry(4, "e")]},
             {"name": "ILLIT", "facts": [], "entries": [entry(1, "y")]},
         ]}, ensure_ascii=False), encoding="utf-8")
-        report("2026-10-19", "GTA 6", [{"url": "https://other.example/d", "headline": "d"}])      # 末尾の媒体名を除けば同じ見出し
+        report("2026-10-19", "GTA 6", [{"url": "https://other.example/d", "headline": "GTA 6 新トレーラーの公開日が発表された"}])   # 末尾の媒体名を除けば同じ見出し
         (self.dir / "2026-10-21.edit.json").write_text(json.dumps({"_covered": {"GTA 6": 1}, "GTA 6": []}), encoding="utf-8")
         data, n = digest.carry_over({"date": "2026-10-22", "items": []}, "2026-10-22")
         got = {b["name"]: [e["title"] for e in b["entries"]] for b in data["items"]}
         self.assertEqual(got, {"GTA 6": ["e"], "ILLIT": ["y"]})
         self.assertEqual(n, 2)
+
+    def test_same_head_different_story_is_carried(self):
+        """媒体名・頭が同じでも本文が違えば別の話：持ち越す（2026-10-22 検査：_clean_title で本文ごと消して頭だけで比べ、別の話を落としていた）。"""
+        (self.reports / "2026-10-21.json").write_text(json.dumps({"date": "2026-10-21", "items": [
+            {"name": "周杰伦", "stories": [{"url": "https://a.example/1", "headline": "討論牆 | 影音／周杰倫演唱會遇74歲阿嬤歌迷 她喊「聽你歌長大」"}]},
+            {"name": "漫威", "stories": [{"url": "https://a.example/2", "headline": "Spider-Man: Brand New Day trailer drops"}]},
+            {"name": "滑雪", "stories": [{"url": "https://a.example/3", "headline": "八千穂高原スキー場、2026-27シーズンの早割リフト券を発売"},
+                                       {"url": "https://a.example/4", "headline": "Bataleon - Evil Twin 2027 Snowboard"}]},
+        ]}, ensure_ascii=False), encoding="utf-8")
+        (self.dir / "2026-10-21.json").write_text(json.dumps({"date": "2026-10-21", "items": [
+            {"name": "周杰伦", "facts": [], "entries": [entry(1, "討論牆 | 周杰倫驚傳進軍房地產 欲賣與昆凌的豪宅")]},
+            {"name": "漫威", "facts": [], "entries": [entry(1, "Spider-Man 4 delayed to 2027"), entry(2, "Spider-Man: Brand New Day box office record")]},
+            {"name": "滑雪", "facts": [], "entries": [entry(1, "八千穂高原スキー場、2026-27シーズンは12月13日オープン"),
+                                                    entry(2, "Bataleon - Thunder 2027 Snowboard")]},
+        ]}, ensure_ascii=False), encoding="utf-8")
+        (self.dir / "2026-10-21.edit.json").write_text("{}", encoding="utf-8")
+        data, n = digest.carry_over({"date": "2026-10-22", "items": []}, "2026-10-22")
+        self.assertEqual(n, 5)
+        self.assertFalse(digest._title_keys("討論牆 | 周杰倫驚傳進軍房地產") & digest._title_keys("討論牆 | 周杰倫演唱會遇阿嬤歌迷"))
+
+    def test_carried_only_once(self):
+        """持ち越した記事（carried）は次の日にもう一度は持ち越さない（1 回だけ）。"""
+        (self.dir / "2026-10-22.json").write_text(json.dumps({"date": "2026-10-22", "items": [{"name": "GTA 6", "facts": [], "entries": [
+            entry(1, "a", carried="2026-10-21"), entry(2, "new")]}]}, ensure_ascii=False), encoding="utf-8")
+        (self.dir / "2026-10-22.edit.json").write_text("{}", encoding="utf-8")
+        data, n = digest.carry_over({"date": "2026-10-23", "items": []}, "2026-10-23")
+        self.assertEqual([e["title"] for b in data["items"] for e in b["entries"]], ["new"])
 
     def test_gate_sees_carried_work(self):
         data, _ = digest.carry_over({"date": "2026-10-22", "items": []}, "2026-10-22")

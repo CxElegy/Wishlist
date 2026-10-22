@@ -212,12 +212,16 @@ def check(tz=DAY_TZ, path=None):
     return data
 
 
-def _until(job, now):
-    """次の定時の「次は 18:00（あと 7 時間 10 分）」。"""
-    nxt = next_slot(job, now)
-    m = max(0, int((nxt - now).total_seconds() // 60))
-    left = f"{m // 60} 時間 {m % 60} 分" if m >= 60 else f"{m} 分"
-    return f"次は {nxt.astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime('%H:%M')}（あと {left}）"
+def slot_pending(job, at, now):
+    """いちばん最近の定時（9:00 / 18:00）にまだ起こしていない（at がその回より前・起こした記録がない）→ True。
+    その回が北京時間の今日より前（日付が変わったあとの、前の日の 18:00 の回）なら False：夜中に拾い直さず、次の 9:00 を待つ。
+    定時のない仕事は True（定時で絞らない）。"""
+    ls = last_slot(job, now)
+    if ls is None:
+        return True
+    if day_of(ls) != day_of(now):
+        return False
+    return at is None or at < ls
 
 
 def work_state(j, now=None, last_batch=None, job="edit"):
@@ -226,7 +230,8 @@ def work_state(j, now=None, last_batch=None, job="edit"):
                 昨日の fired.prog と比べると「進んでいない」に見える：停滞と数えず、1 日 2 回の定時の確認に回す）
       running   起こして MIN_GAP_MIN 分以内：編集中かもしれない
       progress  起こしたあと編集済みの数（prog）が増えた・最後のバッチが ACTIVE_MIN 分以内（動いている）
-      idle      進んだが、最後のバッチから ACTIVE_MIN 分すぎた（前回は終わった・次の定時を待つ）。起こすかの規則は progress と同じ
+      idle      進んだが、最後のバッチから ACTIVE_MIN 分すぎた（前回は終わった・次の定時を待つ。今の回をまだ起こしていなければ「まもなく」）。
+                起こすかの規則は progress と同じ
       stalled   起こして MIN_GAP_MIN 分たったのに prog が増えていない（Claude が動いていない）→ 起こし直す
       gave_up   動かないまま MAX_ATTEMPTS 回起こした：REFIRE_HOURS 待って、管理ページで人に知らせる
     last_batch：最後に AI 編集が出刊した時刻（ISO）。省くと j["last_batch"]（check が書く）。どちらもなければ進んだ＝progress。"""
@@ -252,7 +257,10 @@ def work_state(j, now=None, last_batch=None, job="edit"):
             lb_at = None
         if lb_at is not None and now - lb_at > dt.timedelta(minutes=ACTIVE_MIN):
             when = lb_at.astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime("%H:%M")
-            return "idle", f"前回 {when}（日本時間）に終わった・" + (_until("edit", now) if "edit" in SLOTS else "")
+            # 「次は HH:MM（あと N 分）」は書かない：網页を作った時点で固まる。管理ページの列の見出し（data-slots）が開いた端末で数える
+            pending = job in SLOTS and j.get("need") and slot_pending(job, dt.datetime.fromisoformat(last["at"]), now)
+            cur = last_slot(job, now).astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime("%H:%M") if pending else ""
+            return "idle", f"前回 {when}（日本時間）に終わった" + (f"・{cur} の回はまもなく（次のゲートで起こす）" if pending else "")
         return "progress", f"{mins} 分前に起こして、編集済みが {was} → {prog} 件に進んだ"
     if ago < dt.timedelta(minutes=MIN_GAP_MIN):
         return "running", f"{mins} 分前に起こした（編集中のはず）"
@@ -260,6 +268,22 @@ def work_state(j, now=None, last_batch=None, job="edit"):
     if n >= MAX_ATTEMPTS:
         return "gave_up", f"{n} 回起こしたが仕事が減らない（{mins} 分前が最後）"
     return "stalled", f"{mins} 分前に起こしたが仕事が減っていない"
+
+
+def due_slot(j, now=None, last_batch=None, job="edit"):
+    """今の定時（9:00 / 18:00）がまだで、次のゲートで起こすはずのとき → その時刻 'HH:MM'（日本時間）。ほかは ''。
+    管理ページの AI 編集の列の見出しが、この回を飛ばして次の日の 9:00 を数えないように（fire の定時の確認と同じ条件）。"""
+    if job not in SLOTS or not (j or {}).get("need"):
+        return ""
+    now = now or _now()
+    state, _ = work_state(j, now, last_batch=last_batch, job=job)
+    if state not in ("none", "progress", "idle"):
+        return ""
+    try:
+        at = dt.datetime.fromisoformat(((j.get("fired") or {}).get("at")) or "")
+    except (ValueError, TypeError):
+        at = None
+    return last_slot(job, now).astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime("%H:%M") if slot_pending(job, at, now) else ""
 
 
 def _post(url, token):
@@ -354,7 +378,7 @@ def fire(path=None, post=_post, env=None):
                 at = dt.datetime.fromisoformat(last["at"]) if last.get("at") else None
             except (ValueError, TypeError):
                 at = None
-            if at is not None and at >= last_slot(job, now):   # この回（9:00 / 18:00）はもう起こした
+            if not slot_pending(job, at, now):   # この回（9:00 / 18:00）はもう起こした・前の日の回は日付が変わったら拾わない
                 nxt = next_slot(job, now).astimezone(zoneinfo.ZoneInfo(SLOT_TZ)).strftime("%H:%M")
                 results[job] = f"1 日 2 回（{' と '.join(f'{h}:{m:02d}' for h, m in SLOTS[job])}）。次は {nxt}"
                 continue

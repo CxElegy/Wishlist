@@ -392,12 +392,16 @@ class Overview(unittest.TestCase):
         self.assertIn("いま待っているものはありません", overview.panel({}))
         self.assertNotIn("<b>B</b>", overview.panel(data))
         # 最後のバッチから 30 分すぎた（gate.work_state の idle）：「動いている」と言わず、前回の時刻と次の定時
-        idle = {"todo": {"edit": {"n": 55, "boards": 11, "state": "idle", "why": "前回 10:32（日本時間）に終わった・次は 18:00（あと 10 分）"}}}
+        idle = {"todo": {"edit": {"n": 55, "boards": 11, "state": "idle", "why": "前回 10:32（日本時間）に終わった・18:00 の回はまもなく（次のゲートで起こす）"}}}
         w = overview.waits(idle)[0][2]
         self.assertNotIn("動いている", w)
-        self.assertIn("前回 10:32（日本時間）に終わった", w)
-        self.assertIn("次の回を待つ", render._admin_backend([{"name": "A", "section": "游戏", "bg": {
-            k: {"state": "ok", "text": ""} for k in ("collect", "edit", "design", "emblem")}}], idle["todo"]))
+        self.assertIn("前回 10:32（日本時間）に終わった・18:00 の回はまもなく", w)
+        self.assertEqual(w.count("終わった"), 1)   # 「終わった」を 2 回続けない
+        rows = [{"name": "A", "section": "游戏", "bg": {k: {"state": "ok", "text": ""} for k in ("collect", "edit", "design", "emblem")}}]
+        self.assertIn("次の回を待つ", render._admin_backend(rows, idle["todo"]))
+        # 今の回をまだ起こしていない（due）：列の見出しは次の日の 9:00 を数えず「18:00 の回はまもなく」
+        h = render._admin_backend(rows, {"edit": {**idle["todo"]["edit"], "due": "18:00"}})
+        self.assertIn("18:00 の回はまもなく（次のゲートで起こす）</small>", h)
 
     def test_admin_has_overview_first_and_css_uses_tokens(self):
         import overview
