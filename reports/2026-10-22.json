@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "406697133b9c",
+ "edit_sig": "dfafa0b39f08",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -773,17 +773,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 1,
-     "source": "ReadyFor(クラウドファンディング)",
-     "title": "生後5ヶ月でFIPを発症した保護子猫「ごま」を救いたいです",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9BZ1NyMHB5eGt0amNwamE0RFpZY3VnZGliYmNVTnFFNHNmeE11ZUl2cVJjYkxpaVdOUGxxRkZhdGs1YTNyWXlWSXBmMW1Hcm0wX3NGbw?oc=5"
+     "headline": "生後5ヶ月でFIPを発症した保護子猫「ごま」を救いたいです",
+     "highlight": "",
+     "image": "https://readyfor.jp/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MTM2OSwicHVyIjoiYmxvYl9pZCJ9fQ==--402574121bd3b3aac8bd766b2738b960ec837f77/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpbGwiOls3MzYsNDE0XSwic2F2ZXIiOnsicXVhbGl0eSI6MTAwfX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--809954ebdd0c4d318d7f500d88793bbd84307db2/p176287-key-visual.jpeg",
+     "image_via": "og:image",
+     "url": "https://readyfor.jp/projects/goma-fip-0905",
+     "weight": "normal"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",

@@ -2326,6 +2326,13 @@
   "target": 720,
   "v": 3
  },
+ "https://readyfor.jp/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MTM2OSwicHVyIjoiYmxvYl9pZCJ9fQ==--402574121bd3b3aac8bd766b2738b960ec837f77/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpbGwiOls3MzYsNDE0XSwic2F2ZXIiOnsicXVhbGl0eSI6MTAwfX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--809954ebdd0c4d318d7f500d88793bbd84307db2/p176287-key-visual.jpeg": {
+  "w": 736,
+  "h": 414,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.347
+ },
  "https://realsound.jp/wp-content/uploads/2026/10/20261019-mrs-99.jpeg": {
   "w": 1200,
   "h": 675,
@@ -2994,6 +3001,19 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.kf6ldw8pvoyaG0oTeWkKvQ&pid=News&w=400": {
+  "w": 400,
+  "h": 400,
+  "target": 720,
+  "v": 3,
+  "blur": 0.572,
+  "local": "pics/ced1fb5789d5c05f.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640": {
   "w": 640,
