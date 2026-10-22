@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-10-22T11:17:22+00:00",
+ "changed": true,
+ "checked": "2026-10-22T12:08:34+00:00",
  "fired": {
-  "at": "2026-10-22T11:17:22+00:00",
+  "at": "2026-10-22T12:08:34+00:00",
   "results": {
    "edit": "1 日 2 回（9:00 と 18:00）。次は 09:00",
    "photos": "仕事なし（起こさない）"
@@ -23,9 +23,11 @@
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "GTA 6",
+    "ILLIT",
     "MMORPG 新作",
     "dota2",
     "あつ森",
+    "ぐでたま",
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
@@ -43,8 +45,8 @@
    "need": true,
    "prog": 565,
    "prog_day": "2026-10-22",
-   "sig": "6d82adce4b55",
-   "why": "整理待ちの記事 103 件（15 版面・AI 編集まで版面に載らない）"
+   "sig": "4ee3742b0aad",
+   "why": "整理待ちの記事 149 件（17 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -52,12 +54,12 @@
    "need": false,
    "sig": "b1312ab4623e",
    "waiting": [
+    "Astrae Oratio",
     "A2O LITE",
     "あつ森",
-    "Astrae Oratio",
     "哈利波特剧集"
    ],
-   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 20:21 から）"
+   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 22:08 から）"
   },
   "photos": {
    "claude": true,
