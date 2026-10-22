@@ -330,8 +330,11 @@ def match_hit(item, e):
 
 def source_in(source, names):
     """出典名の除外（exclude_sources）は前方一致：「YouTube」で「YouTube on MSN」も外れる。
-    続く 1 字が英数字のときは別の名前（「note」で「Notebookcheck」「notes」は外さない）。公式チャンネル（sources.YT_OFFICIAL）は drop_reason で別扱い。"""
-    return any(source == s or source.startswith(s) and not source[len(s)].isalnum() for s in names if s)
+    続く 1 字が ASCII の英数字のときは別の名前（「note」で「Notebookcheck」「notes」は外さない）。
+    漢字・かな・記号が続くのは同じ媒体（「YouTubeチャンネル」「note株式会社」「胡润百富网」も外す）。公式チャンネル（sources.YT_OFFICIAL）は drop_reason で別扱い。"""
+    def other(c):
+        return c.isascii() and c.isalnum()
+    return any(source == s or source.startswith(s) and not other(source[len(s)]) for s in names if s)
 
 
 def drop_reason(e, item, settings):
@@ -352,12 +355,22 @@ def drop_reason(e, item, settings):
     return None
 
 
+def _google_jump(url):
+    return host_in(url, ("news.google.com",))
+
+
 def audit_match(days=4, only=None):
     """检查误收：最近几天 inbox 里每个关注项的条目按「靠哪个匹配词进来的」分组列出来，
     并标出按现在的规则已经不会再收的（✗，后面写理由：match / exclude / 垃圾 / exclude_sources / exclude_hosts，和收集的 drop_reason 同一个）。
     加关注项、改匹配词之后跑一次，看有没有不相关的混进来。"""
     settings, items = load_config()
     paths = sorted(p for p in INBOX_DIR.glob("????-??-??.json"))[-days:]
+    # Google の跳转で link・site がない記事（site を inbox に書く前に集めたもの）は網域を判定できない。
+    # 同じ出典名の記事で網域がわかったものから「除外の網域の媒体」を推して、見えない分の件数を最後に出す
+    hosts = [*(settings.get("exclude_hosts") or []), *(h for i in items for h in i.get("exclude_hosts") or [])]
+    host_src = {d["source"] for path in paths for raw in load_json(path).get("items", []) for d in raw["entries"]
+                if any(host_in(u, hosts) for u in (d.get("link"), d.get("site"), d.get("url")))}
+    blind, blind_ex = 0, {}
     for item in items:
         if only and item["name"] not in only:
             continue
@@ -371,6 +384,10 @@ def audit_match(days=4, only=None):
                     hit = match_hit(item, e)
                     why = drop_reason(e, item, settings)
                     gone_n += bool(why)
+                    if not why and not e.link and not e.site and _google_jump(e.url):
+                        blind += 1
+                        if e.source in host_src:
+                            blind_ex[e.source] = blind_ex.get(e.source, 0) + 1
                     groups.setdefault(hit or "(不再匹配)", []).append(
                         (f"✗ [{why}] " if why else "  ") + e.title[:90])
         print(f"===== {item['name']}（{sum(len(v) for v in groups.values())} 条、✗ {gone_n}）")
@@ -378,6 +395,11 @@ def audit_match(days=4, only=None):
             print(f"  [{w}] {len(titles)}")
             for t in titles[:8]:
                 print(f"     {t}")
+    if blind:
+        ex = "、".join(f"{s} {n}" for s, n in sorted(blind_ex.items(), key=lambda kv: -kv[1]))
+        print(f"\n網域を判定できない（Google の跳转で link・site がない）：{blind} 件"
+              + (f"。うち出典名が除外の網域の媒体と同じもの {sum(blind_ex.values())} 件（{ex}）は、収集の時点なら exclude_hosts で外れる"
+                 if blind_ex else ""))
 
 
 def filter_entries(entries, item, settings, seen, now, known=()):
@@ -881,7 +903,9 @@ def discover(force=False, taste=None):
             print(f"  [同类] {q['query']} 失败：{err}", file=sys.stderr)
             continue
         for e in found[:20]:
-            if e.source == "YouTube" or any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title):
+            if source_in(e.source, settings.get("exclude_sources", ["YouTube"])) or \
+                    any(host_in(u, settings.get("exclude_hosts") or []) for u in (e.url, e.site)) or \
+                    any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title):   # 出典名（前方一致）・網域は収集と同じ
                 continue
             if e.published and e.published < since:
                 continue
@@ -1199,7 +1223,7 @@ def export_photos():
 #   str:N 不超过 N 字的一句话；list:N:M 最多 N 个、每个不超过 M 字的字符串列表
 ITEM_FIELDS = {
     "type": "type", "parent": "str:80", "section": "section", "subs": "subs", "also": "also", "media": "list:8:20", "size": "size", "subtitle": "str:80",
-    "keywords": "list:12:100", "match": "list:30:100", "exclude": "list:30:100", "news_langs": "langs",
+    "keywords": "list:40:100", "match": "list:80:100", "exclude": "list:80:100", "news_langs": "langs",
     "priority": "str:300", "urgent_patterns": "regex", "site": "url",
     "steam_appid": "int", "anilist_id": "int", "anilist_type": "anilist_type", "tmdb": "tmdb", "notes": "str:1500",
 }
@@ -2588,12 +2612,15 @@ def entry_to_dict(n, e):
         d["image_via"] = e.image_via
     if e.link:
         d["link"] = e.link
+    if e.site:
+        d["site"] = e.site   # Google ニュースの媒体の網站：link を還元する前でも exclude_hosts（drop_reason）で見られる
     return d
 
 
 def entry_from_dict(d):
     return sources.Entry(title=d["title"], url=d["url"], source=d["source"], summary=d.get("summary", ""),
                          image=d.get("image", ""), image_via=d.get("image_via", ""), link=d.get("link", ""),
+                         site=d.get("site", ""),
                          published=dt.datetime.fromisoformat(d["date"]) if d.get("date") else None)
 
 

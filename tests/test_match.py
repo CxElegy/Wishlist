@@ -176,17 +176,27 @@ class GenericMatchTest(unittest.TestCase):
         titles = ["Best Ski Boots 2026/27: Our InTheSnow Verdicts",          # 26/27 ＋ ski
                   "Best Women's Ski Pants of 2026/27",
                   "八千穂高原スキー場、2026-27シーズンの早割リフト券を10月1日から販売開始",
-                  "星野リゾート ネコマ マウンテンが2026-27シーズン券などを10月1日発売へ",   # シーズン券 ＋ マウンテン
+                  "星野リゾート ネコマ マウンテンが2026-27シーズン券などを10月1日発売へ",   # シーズン券 ＋ ネコマ（スキー場の名前）
+                  "【星野リゾート】福島県のスキー場ネコマ マウンテン、シーズン券＆早割リフト券の販売開始 - お得な「3日券・5日券」が新登場",
+                  "POC Unveils New Winter 26/27 Ski Goggle and Apparel Collection",
                   "Capita Ultrafear Review", "The 2026 Capita DOA Review: Does the New Defenders of Awesome Still Rip?",
+                  "Capita Super DOA Review: Is It Worth the Upgrade vs the Regular DOA?", "CAPiTA Mercury 2027 first look",
                   "Burton co-founder: The 'unf---able truths' that powered the global snowboarding brand 50 years"]
         self.assertEqual(keeps("滑雪", titles), titles)
 
     def test_ski_drops_number_and_generic_words(self):
-        titles = ["What's new for winter 26/27 in Park City,",                       # 実際の標題（米のスキー場）
-                  "Portetta unveils expanded mountain experiences for winter 2026/27",  # 実際の標題（仏）
+        titles = ["What's new for winter 26/27 in Park City,",                       # 実際の標題（雪の語がないので 26/27 だけでは通らない）
+                  "Portetta unveils expanded mountain experiences for winter 2026/27",
                   "鹿島アントラーズ、2026/27 J1 シーズンの日程発表",                  # 26/27 はサッカーにも
                   "COUNTDOWN JAPAN 26/27 第1弾出演者発表",
+                  "England skipper confirmed for 2026/27 Ashes tour",                 # ski は単語だけ：skipper に当たらない
+                  "Premier League 2026/27: new skipper named",
                   "【早割】お歳暮ギフト 2026 予約受付開始",                            # 早割はお歳暮にも
+                  "マウンテンパーカー 早割セール開催",                                 # 服・化粧品・キャンプ用品の早割
+                  "【早割】パウダーファンデーション福袋 予約開始",
+                  "スノーピーク 早割キャンペーン",
+                  "早割 skincare set 2026",
+                  "Capita shares fall after NHS contract loss", "Capita plc wins £100m contract",   # 英国の Capita plc
                   "Vernal Capital、新ファンドを設立", "Asu Capital Partners invests in AI startup",   # CAPiTA の部分一致
                   "GDP per capita rises in Japan",
                   "Tim Burton's new film opens in Tokyo"]                                # Burton は雪の語と一緒のときだけ
@@ -217,11 +227,16 @@ class NotNewsTest(unittest.TestCase):
         e = sources.Entry(title=title, url="https://notgamewith.jp/a", source="x", published=NOW)
         self.assertIsNone(digest.drop_reason(e, item, settings))
 
-    def test_item_exclude_hosts(self):
-        settings, item = real_item("猫用品")
-        e = sources.Entry(title="生後5ヶ月でFIPを発症した猫「ごま」を救いたいです", url="https://news.google.com/x",
-                          link="https://readyfor.jp/projects/goma-fip-0905", source="ReadyFor(クラウドファンディング)", published=NOW)
-        self.assertEqual(digest.drop_reason(e, item, settings), "exclude_hosts")
+    def test_crowdfunding_hosts_for_every_item(self):
+        """クラファンはどの関注項でもニュースではない：settings 全体の exclude_hosts（猫用品だけでなくテニスにも来ていた）。"""
+        cases = [("猫用品", "生後5ヶ月でFIPを発症した猫「ごま」を救いたいです", "https://readyfor.jp/projects/goma-fip-0905",
+                  "ReadyFor(クラウドファンディング)"),
+                 ("日本顶级网球赛事", "東北で硬式テニスを次世代へ。豪華景品で大会を盛り上げたい！", "https://camp-fire.jp/projects/1",
+                  "CAMPFIRE (キャンプファイヤー)")]
+        for name, title, link, source in cases:
+            settings, item = real_item(name)
+            e = sources.Entry(title=title, url="https://news.google.com/x", link=link, source=source, published=NOW)
+            self.assertEqual(digest.drop_reason(e, item, settings), "exclude_hosts", name)
 
     def test_google_rss_keeps_source_site(self):
         xml = (b'<rss><channel><item><title>\xe3\x80\x90\xe3\x81\x82\xe3\x81\xa4\xe6\xa3\xae\xe3\x80\x91x - GameWith</title>'
@@ -229,7 +244,10 @@ class NotNewsTest(unittest.TestCase):
                b'</item></channel></rss>')
         e, = sources.rss_bytes(xml, "Google 新闻")
         self.assertEqual((e.source, e.site), ("GameWith", "https://gamewith.jp"))
-        self.assertNotIn("site", digest.entry_to_dict(1, e))   # inbox には書かない
+        d = digest.entry_to_dict(1, e)
+        self.assertEqual(d["site"], "https://gamewith.jp")   # inbox にも書く：link を還元する前の記事も audit-match・あとの段で網域を見られる
+        self.assertEqual(digest.entry_from_dict(d).site, "https://gamewith.jp")
+        self.assertNotIn("site", digest.entry_to_dict(1, sources.Entry(title="x", url="https://e.com", source="e", published=None)))
 
     def test_exclude_sources_prefix(self):
         settings, item = {"exclude_sources": ["YouTube"]}, {"name": "x", "match": ["Avengers"], "exclude_sources": ["note"]}
@@ -242,6 +260,9 @@ class NotNewsTest(unittest.TestCase):
         self.assertEqual(why("note"), "exclude_sources")
         self.assertIsNone(why("Notebookcheck"))
         self.assertIsNone(why("notes.jp"))
+        self.assertEqual(why("note株式会社"), "exclude_sources")      # 続くのが ASCII の英数字のときだけ別の名前（漢字・かなは同じ媒体）
+        self.assertEqual(why("YouTubeチャンネル"), "exclude_sources")
+        self.assertEqual(digest.source_in("胡润百富网", ["胡润百富"]), True)
 
     def test_item_exclude_words(self):
         cases = {
@@ -261,7 +282,10 @@ class NotNewsTest(unittest.TestCase):
             self.assertEqual(keeps(name, titles), [], name)
         # 「figure」だけでは外さない：宣伝の「hooded figures」・「Figured Out」は漫威の記事
         keep = ["New Avengers: Doomsday promo features hooded figures we're yet to meet",
-                "After 8 Years, Marvel Has Finally Figured Out What To Do With The Guardians Of The Galaxy"]
+                "After 8 Years, Marvel Has Finally Figured Out What To Do With The Guardians Of The Galaxy",
+                "Avengers: Doomsday 4K Deluxe Edition arrives in March",                          # deluxe だけでは外さない
+                "Newly announced Avengers Doomsday Action Figures may reveal new information about the film (POSSIBLE SPOILERS)",
+                "New Avengers: Doomsday Steve Rogers action figure hints Marvel is taking inspiration from DC Flash"]   # 中身を伝える帖子
         self.assertEqual(keeps("漫威电影", keep), keep)
         keep = ["伊藤あおい 惜敗でジャパンOP本戦入り逃す、フルセットの激闘も予選敗退＜女子テニス＞（tennis365.net）"]
         self.assertEqual(keeps("日本顶级网球赛事", keep), keep)
@@ -282,8 +306,9 @@ class AuditMatchTest(unittest.TestCase):
                 ("あつ森 アップデート 3.0 配信", "ファミ通", "https://www.famitsu.com/a")]
         with tempfile.TemporaryDirectory() as d:
             p = pathlib.Path(d) / "2026-10-22.json"
+            blind = {"title": "【あつ森】ゆうたろうの出現条件と家具一覧", "source": "GameWith", "url": "https://news.google.com/y", "date": None}
             p.write_text(json.dumps({"items": [{"name": "あつ森", "entries": [
-                {"title": t, "source": s, "url": "https://news.google.com/x", "link": u, "date": None} for t, s, u in rows]}]}))
+                {"title": t, "source": s, "url": "https://news.google.com/x", "link": u, "date": None} for t, s, u in rows] + [blind]}]}))
             out = io.StringIO()
             with mock.patch.object(digest, "INBOX_DIR", pathlib.Path(d)), \
                     mock.patch.object(digest, "load_config", return_value=(
@@ -291,8 +316,46 @@ class AuditMatchTest(unittest.TestCase):
                     contextlib.redirect_stdout(out):
                 digest.audit_match()
         text = out.getvalue()
-        self.assertIn("（4 条、✗ 3）", text)
+        self.assertIn("（5 条、✗ 3）", text)
+        # link も site もない Google の跳转は網域を判定できない：件数と、同じ出典名で網域がわかった媒体の分を出す
+        self.assertIn("網域を判定できない（Google の跳转で link・site がない）：1 件。うち出典名が除外の網域の媒体と同じもの 1 件（GameWith 1）", text)
         self.assertIn("✗ [exclude_hosts]", text)
         self.assertIn("✗ [垃圾]", text)
         self.assertIn("✗ [exclude_sources]", text)
         self.assertIn("   あつ森 アップデート 3.0 配信", text)
+
+
+class ItemFieldsLimitTest(unittest.TestCase):
+    def test_every_item_passes_settings_page_limits(self):
+        """設定ページで直した欄は ITEM_FIELDS で確かめる：items.yaml にいま書いてあるものが通らないと、店長が 1 語直しただけで依頼が弾かれる
+        （2026-10-22：漫威电影の exclude 35 語・猫用品の match 56 語が上限 30 を超えていた）。"""
+        import yaml
+        cfg = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))
+        for i in cfg["items"]:
+            for k in ("keywords", "match", "exclude", "urgent_patterns", "subtitle", "priority", "notes"):
+                if i.get(k):
+                    try:
+                        digest._clean_field(k, i[k])
+                    except ValueError as err:
+                        self.fail(f"{i['name']} の {k}：{err}")
+
+
+class DiscoverFilterTest(unittest.TestCase):
+    def test_discover_uses_source_prefix_and_hosts(self):
+        """「気になるかも？」の収集も出典名（前方一致）・exclude_hosts で外す（GameWith の攻略頁が候補に残っていた）。"""
+        from unittest import mock
+        found = [sources.Entry(title="『桃源暗鬼 Crimson Inferno』の配信日と事前登録情報！", url="https://news.google.com/a",
+                               source="GameWith", site="https://gamewith.jp", published=NOW),
+                 sources.Entry(title="新作アニメの映像", url="https://www.msn.com/a", source="YouTube on MSN", published=NOW),
+                 sources.Entry(title="新しいボードゲームが発売", url="https://example.com/b", source="例の媒体", published=NOW)]
+        settings = {"exclude_sources": ["YouTube"], "exclude_hosts": ["gamewith.jp"], "lookback_days": 7}
+        item = {"name": "x", "match": ["x"], "similar": [{"query": "q", "label": "l"}]}
+        import tempfile
+        with tempfile.TemporaryDirectory() as d, \
+                mock.patch.object(digest, "DISCOVER_FILE", pathlib.Path(d) / "discover.json"), \
+                mock.patch.object(digest, "load_config", return_value=(settings, [item])), \
+                mock.patch.object(digest, "load_wishlist", return_value=[]), \
+                mock.patch.object(digest, "probe_queries", return_value=[]), \
+                mock.patch.object(digest.sources, "google_news", return_value=found):
+            titles = [x["title"] for x in digest.discover(force=True)]
+        self.assertEqual(titles, ["新しいボードゲームが発売"])
