@@ -5,6 +5,7 @@
   "https://readyfor.jp/projects/goma-fip-0905": "2026-10-22",
   "https://t.co/CM6Qxx73tL": "2026-10-22",
   "https://t.co/hBByHGDYzy": "2026-10-22",
+  "https://www.jsonline.com/videos/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92336916007/": "2026-10-22",
   "https://www.mensjournal.com/entertainment/from-netflix-no-5-most-watched-mgm-plus-series-harold-perrineau": "2026-10-22",
   "https://www.sina.cn/gc/article/nivwyrf6445687.html": "2026-10-22"
  },
@@ -54,7 +55,6 @@
   "https://today.line.me/tw/v3/article/kEpZaq0": "https://today-obs.line-scdn.net/0hIJz4AU5TFmVHTQrR-w9pMn8bGhR0KwxsZS5dAGFFGwZqYQRgfHxFBmYeT0k6LwQ7Z35ZUGQdTV09fQNgcg/w1200",
   "https://www.asahi.com/asagakuplus/article/asasho/16979815": "https://www.bing.com/th?id=ONUT.bq2nWXST0hnA7qaKIuXkMQ&pid=News&w=600",
   "https://www.bgr.com/2269104/can-samsung-s-pen-be-traced-explained/": "https://www.bgr.com/img/gallery/can-your-samsung-s-pen-be-traced/l-intro-1790355668.jpg",
-  "https://www.blu-ray.com/news/?id=39019": "https://images.static-bluray.com/movies/covers/414975_front.jpg",
   "https://www.chiba-tv.com/plus/detail/amp/2026102128529": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1484508143890367874/origin_1.jpg",
   "https://www.cineplay.co.kr/zh-tw/articles/30340": "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-10-21/8cfcdfb2-ef28-49d9-b28d-d3cb55bffb0a.jpg",
   "https://www.desertsun.com/story/life/2026/10/16/where-to-find-halloween-restaurant-collectibles/92283162007/": "https://www.bing.com/th?id=ONUT.nYqf_dY5GcgSVut8tAanFg&pid=News&w=1200",
@@ -66,6 +66,7 @@
   "https://www.haveagood-holiday.com/zh-CN/articles/magical-chiikawa-fuwamochi-gororin-hug-plush-preorder": "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg",
   "https://www.hindustantimes.com/technology/freedom-from-your-laptop-sounds-wonderful-until-work-gets-serious-can-the-samsung-galaxy-tab-and-the-apple-ipad-keep-up-101792241274535.html": "https://www.bing.com/th?id=ONUT.scgJUb2Tj5eWXkCBveb1Mw&pid=News&w=1200",
   "https://www.hokkaido-np.co.jp/article/1394219/": "https://static.hokkaido-np.co.jp/image/article/size1/4/8/4/8/484852002be5b2de6320d0efc6604235_1.webp?20261022063834",
+  "https://www.jsonline.com/videos/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92336916007/": null,
   "https://www.kanaloco.jp/news/social/article-1313366.html": "https://www.bing.com/th?id=ONUT.kg3PpvBYkUcHRUG-0Ovr9A&pid=News&w=640",
   "https://www.mensjournal.com/entertainment/from-netflix-no-5-most-watched-mgm-plus-series-harold-perrineau": null,
   "https://www.mito-hollyhock.net/news/p=55367/": "https://www.mito-hollyhock.net/wp-content/uploads/2026/10/mito_levaincup_game4_KV-scaled.jpg",
@@ -1499,27 +1500,6 @@
   },
   {
    "batch": 5,
-   "because": "The Mandalorian",
-   "date": "2026-10-21",
-   "hits": [],
-   "image": "https://images.static-bluray.com/movies/covers/414975_front.jpg",
-   "kind": "board",
-   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
-   "score": 6,
-   "source": "Blu-ray.com",
-   "taste": [
-    [
-     "作品:The Mandalorian",
-     2
-    ]
-   ],
-   "title": "Blu-ray Sales: August 30-September 5: The Mandalorian and Grogu Avoid the Infected in Second Week",
-   "url": "https://www.blu-ray.com/news/?id=39019",
-   "words": [],
-   "work": "The Mandalorian"
-  },
-  {
-   "batch": 5,
    "because": "漫威电影",
    "date": "2026-10-21",
    "hits": [],
@@ -1582,7 +1562,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "周杰伦",
    "date": "2026-10-21",
    "hits": [],
@@ -1685,6 +1665,27 @@
    "url": "https://news.nicovideo.jp/watch/nw19900276?news_ref=60_60",
    "words": [],
    "work": "BLEACH Mirrors High"
+  },
+  {
+   "batch": 6,
+   "because": "The Mandalorian",
+   "date": "2026-10-20",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
+   "score": 6,
+   "source": "Milwaukee Journal Sentinel",
+   "taste": [
+    [
+     "作品:The Mandalorian",
+     2
+    ]
+   ],
+   "title": "See Milwaukee fan's 3D printed Brewers-themed Mandalorian armor",
+   "url": "https://www.jsonline.com/videos/sports/mlb/brewers/2026/10/20/milwaukee-fan-crafts-brewers-themed-mandalorian-suit-of-armor/92336916007/",
+   "words": [],
+   "work": "The Mandalorian"
   },
   {
    "batch": 7,
@@ -2269,7 +2270,7 @@
    9
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
@@ -2277,7 +2278,7 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [

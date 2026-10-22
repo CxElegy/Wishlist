@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "a6aded89ee5c",
+ "edit_sig": "b1c5220f7aac",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -628,24 +628,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "Blu-ray.com",
-     "title": "Blu-ray Sales: August 30-September 5: The Mandalorian and Grogu Avoid the Infected in Second Week",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9pamxnUGlJZlE5STBlOHFSVjFvZjJvME52UTNaYy1CeGltYzF3YUxuOHVzUG1OUjZxY3VtMDI3YW54RWFTNVViRWFwT1lFZ1E?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 2,
-     "source": "PC Gamer on MSN",
-     "title": "Now more than ever, Knights of the Old Republic is a refreshing take on Star Wars",
-     "url": "https://www.msn.com/en-us/entertainment/general/now-more-than-ever-knights-of-the-old-republic-is-a-refreshing-take-on-star-wars/ar-AA2fLQ6Z"
+     "headline": "Blu-ray Sales: August 30-September 5: The Mandalorian and Grogu Avoid the Infected in Second Week",
+     "highlight": "",
+     "image": "https://images.static-bluray.com/movies/covers/414975_front.jpg",
+     "image_via": "og:image",
+     "url": "https://www.blu-ray.com/news/?id=39019",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
