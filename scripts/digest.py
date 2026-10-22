@@ -2865,7 +2865,7 @@ def ingest(dry_run=False):
     t_start, budget = time.monotonic(), COLLECT_DEADLINE_MIN * 60
     # 待つのをやめた（固まった）版面のスレッドは daemon で走り続ける。打ち切ったあと（cut）は帯（live_status）を立て直さない：
     # 本体が消した帯に、今回 inbox に何も書かない版面の「新着 N 件 · AI 整理待ち」が次の収集まで残らないように
-    cut, mark_lock = threading.Event(), threading.Lock()
+    cut = threading.Event()
     t_deferred, t_failed = [], {}   # スレッドが書く（固まった 1 本があとで書き足すこともある）。順番の処理は写しの deferred / failed
     LAST_INGEST.clear()
 
@@ -2890,10 +2890,12 @@ def ingest(dry_run=False):
         print(f"抓取：{item['name']}", file=sys.stderr)
         if live:  # 网页上只有这个版面出「正在找新记事」的条
             started[name] = dt.datetime.now(dt.timezone.utc)
-            with mark_lock:
-                if cut.is_set():
-                    return None
-                live_mark(name, "fetch", started=started[name])
+            if cut.is_set():
+                return None
+            live_mark(name, "fetch", started=started[name])   # Supabase への書き込みはロックの外（遅くてもほかの版面を待たせない）
+            if cut.is_set():   # 書いている間に打ち切られた：自分の帯は自分で消す
+                live_mark(name, None)
+                return None
         try:
             raw = collect(item, confs[name][1])
         except Exception as err:  # noqa: BLE001  1 版面の失敗で収集全体を止めない（その版面は空・ログに残す）
@@ -2908,17 +2910,17 @@ def ingest(dry_run=False):
                 n = len(filter_entries(raw, item, confs[name][1], seen, now, compare_for(item)))
             except Exception:  # noqa: BLE001
                 n = None
-            with mark_lock:
-                if cut.is_set():   # 打ち切ったあとに終わった：結果は捨てられる（run_parallel）ので帯も書かない
-                    return raw
-                if n is not None:
-                    shown[name] = n or None
-                    live_mark(name, "found" if n else None, n, started.get(name), eta())
+            if cut.is_set():   # 打ち切ったあとに終わった：結果は捨てられる（run_parallel）ので帯も書かない
+                return raw
+            if n is not None:
+                shown[name] = n or None
+                live_mark(name, "found" if n else None, n, started.get(name), eta())
+                if cut.is_set():   # 書いている間に打ち切られた：帯を残さない
+                    live_mark(name, None)
         return raw
     order = fetch_order(items, [] if dry_run else deferred_from_log(), [n for n, (b, _) in confs.items() if b])
     got, stuck = run_parallel(fetch, order, COLLECT_WORKERS, budget + COLLECT_GRACE_MIN * 60)
-    with mark_lock:
-        cut.set()
+    cut.set()
     deferred, failed = list(t_deferred), dict(t_failed)   # 固まったスレッドがあとで書き足しても、ここからは手元の写しを使う
     for name in stuck:   # 締め切り＋余裕を過ぎても終わらなかった（固まった）版面：次の回へ
         if name not in deferred:
