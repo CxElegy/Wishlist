@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "9d74b9304ae0",
+ "edit_sig": "3f5dc65a5c9d",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -721,31 +721,29 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "The sci-fi horror series 'From,' the most-watched show in MGM+ history, hit Netflix on Oct. 19 and is already in the top 5.",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "Dynatic Films on MSN",
-     "title": "From Season 5 (2027) Harold Perrineau & Hannah Cheramy",
-     "url": "https://www.msn.com/en-us/entertainment/tv/from-season-5-2027-harold-perrineau-hannah-cheramy/vi-AA2fKGXo"
+     "headline": "MGM+'s biggest horror hit 'From' cracks Netflix's top 5 two days after its arrival",
+     "highlight": "Netflix's top 5",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fK6OE.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/mgm-s-biggest-horror-hit-from-cracks-netflixs-top-5-two-days-after-its-arrival/ar-AA2fKAzs",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 2,
-     "source": "Men's Journal",
-     "title": "‘From’ on Netflix: MGM+’s Biggest Show Is Already No. 5",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQNEUwRFNCdGVCRC1RZmxoN05adWh4V2h1bmN2MllLSHlocUJHRzZVWDJVelhKcFZQNG5meWRPcGl3UjVPcm00OEhVSllnb29pbmdReGVEUGJDUWdLSVMtalRETW91ekxVcFpYM1BsRUVYU3QwUkd3eEtMQzdyampuOEJmTWNEbWJnNm8tZkxSQ25WV1JmNzJ0UUZSV09KbWdEY2VCRnJibWc?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 3,
-     "source": "Men's Journal on MSN",
-     "title": "MGM+'s biggest horror hit 'From' cracks Netflix's top 5 two days after its arrival",
-     "url": "https://www.msn.com/en-us/news/other/mgm-s-biggest-horror-hit-from-cracks-netflixs-top-5-two-days-after-its-arrival/ar-AA2fKAzs"
+     "headline": "From Season 5 (2027) Harold Perrineau & Hannah Cheramy",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fKTp9.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/entertainment/tv/from-season-5-2027-harold-perrineau-hannah-cheramy/vi-AA2fKGXo",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",

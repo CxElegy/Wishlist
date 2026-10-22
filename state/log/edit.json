@@ -1538,5 +1538,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 147644
+},
+{
+"at": "2026-10-22T00:58:38+00:00",
+"text": "2026-10-22 第 13 バッチを出刊：FROM（1 版面・2 本・残り 11 版面） · token 新規入力 1,341・キャッシュ読み 29.5万・出力 622",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.2,
+"mem_total": 16874930176,
+"mem_free": 16147214336,
+"disk_used": 10908217344,
+"disk_free": 30619021312,
+"disk_total": 41527238656,
+"peak": 221806592
+},
+"batch": 13,
+"boards": [
+"FROM"
+],
+"stories": 2,
+"left": 11,
+"edited": 16,
+"run": 1792627817.3230252,
+"tok": {
+"in": 4,
+"cw": 1337,
+"cr": 295223,
+"out": 622,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 297186
 }
 ]

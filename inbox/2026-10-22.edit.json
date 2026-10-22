@@ -86,7 +86,8 @@
   "MMORPG 新作": 6,
   "ILLIT": 5,
   "チェーンソーマン": 5,
-  "Astrae Oratio": 4
+  "Astrae Oratio": 4,
+  "FROM": 3
  },
  "周杰伦": [
   {
@@ -597,6 +598,27 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "MGM+'s biggest horror hit 'From' cracks Netflix's top 5 two days after its arrival",
+   "highlight": "Netflix's top 5",
+   "blurb": "The sci-fi horror series 'From,' the most-watched show in MGM+ history, hit Netflix on Oct. 19 and is already in the top 5.",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ]
+  },
+  {
+   "headline": "From Season 5 (2027) Harold Perrineau & Hannah Cheramy",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]
