@@ -1762,5 +1762,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 172601
+},
+{
+"at": "2026-10-22T01:20:45+00:00",
+"text": "2026-10-22 第 20 バッチを出刊：Vaundy（1 版面・1 本・残り 4 版面） · token 新規入力 1,979・キャッシュ読み 69.2万・出力 829",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.15,
+"mem_total": 16874930176,
+"mem_free": 16148189184,
+"disk_used": 10915917824,
+"disk_free": 30611320832,
+"disk_total": 41527238656,
+"peak": 211824640
+},
+"batch": 20,
+"boards": [
+"Vaundy"
+],
+"stories": 1,
+"left": 4,
+"edited": 17,
+"run": 1792627817.3230252,
+"tok": {
+"in": 8,
+"cw": 1971,
+"cr": 691863,
+"out": 829,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 694671
 }
 ]

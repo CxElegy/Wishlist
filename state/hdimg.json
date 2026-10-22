@@ -2489,13 +2489,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.sanyonews.jp/image/article/size1/1/0/2/7/10277f53ca257918cfc178239badb31c_1.jpg": {
-  "w": 640,
-  "h": 426,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.4
- },
  "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg": {
   "w": 451,
   "h": 640,
@@ -2521,6 +2514,19 @@
   "target": 1280,
   "v": 3,
   "blur": 0.405
+ },
+ "https://static.sanyonews.jp/image/article/size3/1/0/2/7/10277f53ca257918cfc178239badb31c_1.jpg": {
+  "w": 320,
+  "h": 213,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.499,
+  "local": "pics/dc88347d0077ef65.webp",
+  "out": [
+   960,
+   639
+  ],
+  "why": "看不清"
  },
  "https://static.the-independent.com/2025/09/01/11/newFile.jpg?trim=19,0,19,0&width=1200&height=800&crop=1200:800": {
   "w": 1200,

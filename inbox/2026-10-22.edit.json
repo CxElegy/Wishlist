@@ -77,7 +77,7 @@
   "GTA 6": 101,
   "漫威电影": 83,
   "三星手机": 55,
-  "Vaundy": 1,
+  "Vaundy": 2,
   "あつ森": 4,
   "滑雪": 4,
   "绝区零": 16,
@@ -341,7 +341,18 @@
    ]
   }
  ],
- "Vaundy": [],
+ "Vaundy": [
+  {
+   "headline": "Vaundy、11月の上海公演中止「予期せぬ事情により」【報告全文】",
+   "highlight": "上海公演中止",
+   "blurb": "Vaundyの11月の上海公演が「予期せぬ事情により」中止となった。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size3/1/0/2/7/10277f53ca257918cfc178239badb31c_1.jpg"
+  }
+ ],
  "あつ森": [
   {
    "headline": "【あつ森】ゴールデントラウトの値段と釣り方・出現時間【あつまれどうぶつの森】",
