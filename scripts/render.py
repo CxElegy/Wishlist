@@ -4985,8 +4985,10 @@ RUN_JOBS = {"gate": "background", "collect": "collect", "render": "render", "edi
 RUN_TITLE = {"gate": "小元素の補完を今すぐ。失敗した版面も待たずにやり直す・作業は上のライブログに流れる（3 分に 1 回まで）",
              "collect": "ニュース収集を今すぐ（10 分に 1 回まで）", "render": "網页を今すぐ作り直す（1 分に 1 回まで）",
              "edit": "9:00・18:00 を待たずに、整理待ちがあれば AI 編集を今すぐ起こす（10 分に 1 回まで）"}
-EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "stalled": ("止まっている？", "ng"),
+EDIT_STATE = {"running": ("編集中のはず", "ok"), "progress": ("進んでいる", "ok"), "idle": ("次の回を待つ", "ok"),
+              "unpublished": ("出刊されていない", "ng"), "stalled": ("止まっている？", "ng"),
               "gave_up": ("起こしても動かない", "ng")}
+EDIT_WHY_MAX = 24   # 管理ページの AI 編集の列の見出しに出す理由の字数（表が 1400px で右にはみ出さないように）
 RUN_LABEL = {"edit": "今すぐ AI 整理"}   # ボタンの文字（ないものは「今すぐ実行」）
 BG_ON_EVENT = {"render": "main に push されたとき", "requests": "設定ページから依頼が来たとき"}
 
@@ -5034,7 +5036,9 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                 else f'<b class="nx-t ev">{e(BG_ON_EVENT.get(p["id"], "必要なとき"))}</b>')
         wf = f' data-wf="{e(p["workflow"])}"' if p.get("workflow") else ""
         td = (todo or {}).get(p["id"]) or {}
-        cards.append(f'<li class="nx" data-slots="{e(json.dumps(sl))}"{wf}>'
+        # 今の回（18:00 など）をまだ起こしていない：カードも列の見出しと同じく次の日の 9:00 を数えず「まもなく」（JS の tick が data-due を見る）
+        due = f' data-due="{e(td["due"])}"' if p["id"] == "edit" and td.get("due") else ""
+        cards.append(f'<li class="nx" data-slots="{e(json.dumps(sl))}"{wf}{due}>'
                      f'<button type="button" class="nx-n" data-open="proc-{e(p["id"])}">{e(p["name"])}</button>{when}'
                      + ('<span class="pbar" aria-hidden="true"><i></i></span>' if sl
                         else '<span class="pbar ev" aria-hidden="true"><i></i></span>')   # 定時でないものは実行中だけ出す
@@ -5057,6 +5061,8 @@ def _admin_backend(rows, todo=None, log=None, res=None):
     def th(k, t, pid):
         if k in BG_AFTER_COLLECT:   # 定時なし：ゲートが収集のあとに起こす（AI 編集・版面の設計）→ 次の収集までの残り時間
             when = f'<small class="nx-h" data-slots="{_slots_attr("collect")}" data-pre="次の収集のあと "></small>'
+        elif k == "edit" and ed.get("due"):   # 今の回をまだ起こしていない（cron の遅れ）：次の日の 9:00 を数えない
+            when = f'<small class="nx-h">{e(ed["due"])} の回はまもなく（次のゲートで起こす）</small>'
         else:
             when = f'<small class="nx-h" data-slots="{_slots_attr(pid)}"></small>'
         extra = ""
@@ -5066,8 +5072,10 @@ def _admin_backend(rows, todo=None, log=None, res=None):
             if ed.get("fired"):
                 extra += f'<small class="bgw-d nx-ago" data-at="{e(ed["fired"])}"></small>'
             lab, cls = EDIT_STATE.get(ed.get("state"), ("", ""))
-            if lab:
-                extra += (f'<small class="bgw-d es-{cls}"><b>{e(lab)}</b> {e(ed.get("why") or "")}'
+            if lab:   # 列の見出しは nowrap：長い理由（出刊されていない・失敗の文）は短く切り、全文は title と「いま待っているもの」に
+                why = ed.get("why") or ""
+                short = why if len(why) <= EDIT_WHY_MAX else why[:EDIT_WHY_MAX - 1] + "…"
+                extra += (f'<small class="bgw-d es-{cls}" title="{e(why)}"><b>{e(lab)}</b> {e(short)}'
                           + (f'（{ed["attempts"]} 回目）' if ed.get("attempts", 0) > 1 else "") + '</small>')
             if ed.get("n"):   # 動いていなくても人が押せる：間隔・停滞の判断を飛ばして起こす
                 extra += (f'<span class="nx-go"><button type="button" class="nx-run bg-redo" data-run="{RUN_JOBS["edit"]}" data-label="AI 編集をもう一度起こす"'
@@ -5724,6 +5732,9 @@ ADMIN_PAGE_JS = """
     Array.prototype.forEach.call(document.querySelectorAll('[data-slots]'),function(x){var sl=JSON.parse(x.getAttribute('data-slots')||'[]');
       if(!sl.length){x._next=Infinity;return;}var a=around(sl);x._next=+a[1];
       if(x.classList.contains('nx-h')){x.textContent=(x.getAttribute('data-pre')||'次回 ')+hm(a[1])+'（'+left(a[1]-new Date())+'）';return;}
+      var du=x.getAttribute('data-due');   // 今の回をまだ起こしていない（ゲート待ち）：次の日の回を数えない
+      if(du){x._next=0;x.querySelector('.nx-t').textContent=du;x.querySelector('.nx-l').textContent='の回はまもなく';
+        x.querySelector('.nx-p').textContent='次のゲートで起こす';x.classList.add('soon');return;}
       x.querySelector('.nx-t').textContent=hm(a[1]);x.querySelector('.nx-l').textContent=left(a[1]-new Date());
       x.querySelector('.nx-p').textContent='前回 '+hm(a[0]);x.classList.toggle('soon',a[1]-new Date()<15*60000);});
     Array.prototype.forEach.call(document.querySelectorAll('.nx[data-slots]'),function(x){var sl=JSON.parse(x.getAttribute('data-slots')||'[]'),b=x.querySelector('.pbar i');

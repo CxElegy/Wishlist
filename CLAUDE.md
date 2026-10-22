@@ -327,12 +327,14 @@
   没设 = `edit`（默认，2026-10-17 打开）、`0` = 不叫、`edit` = 只叫 AI 编辑、`1` = AI 编辑和照片都叫。AI 编辑自己的定时 2026-10-17 已停（cron 改成只在 2/29 跑），现在只靠ゲート叫）。
 - **版面只放 AI 整理过的报道（2026-10-17 定）**：收集（Actions）出刊时，没被 AI 编辑覆盖的条目（编号 > `_covered`、或 edit.json 里没有的关注项）
   不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
-  **前の日の整理待ちは持ち越す（2026-10-22 全体の検査 H3）**：AI 编辑只看最新的 inbox，JST 18:00 那回之后〜1:00 收集的会永远留在昨天。`digest.carry_over`：新的一天第一次收集时（`_carried` 记号，一天一次），把前一天（2 天以内）`_covered` 之后・不是要紧的条目（1 版面 30 件）接到今天的 inbox。
+  **前の日の整理待ちは持ち越す（2026-10-22 全体の検査 H3）**：AI 编辑只看最新的 inbox，JST 18:00 那回之后〜1:00 收集的会永远留在昨天。`digest.carry_over`：新的一天第一次收集时（`_carried` 记号，一天一次），把前一天（2 天以内）`_covered` 之后・不是要紧的条目接到今天的 inbox：1 版面最多「篇幅 × 2」件（S 6・M 10・L 16，留新的，`CARRY_PER_SIZE`），前一天已经持ち越し过的（`carried`）不再带；今天和前 3 天的 reports 里已经载了的（同网址・同标题 `title_key`；只把要带的那条去掉末尾「 - 媒体名」「｜媒体名」后剩 12 字以上・6 成以上的也拿去比 reports 的原标题，`_title_keys`，不让「討論牆 | …」「共通の頭 | 品目」只剩头）不带（实际很少命中，主要靠上限：2026-10-22 168 → 82 件）。不用 StoryDeduper：真数据里会把别的比赛・别的爆料也当成同一件事。
   **网页生成失败也要 push 数据（H4）**：本番的 workflow（digest・background・requests）设 `WL_RENDER_SOFT=1`，`digest.write_page` 出错只记日志、不停；CI 照旧失败。`render.collect` 跳过没有 headline / url 的报道，`publish` 用依据的原题补 headline。
   **AI 编辑一天 2 次（用户定的，2026-10-19）**：日本时间 9:00 和 18:00（`gate.SLOTS`，`background.yml` 在 0:00 / 9:00 UTC 有定时），那一回还没叫过、今天有整理待ち（`gate.edit_work`）就叫；
   管理页「次の実行」AI 編集卡片的「今すぐ実行」和「AI 编辑をもう一度起こす」随时强制叫（`run_now('edit_now')`）。
   **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。
   所以 `gate.work_state` 看「叫起后编辑済み数（edit.json 的 _covered 合计）有没有增加」：60 分钟内 = 编辑中；60 分钟后没增加 = 停滞 → 再叫（最多 3 次，之后等 6 小时，管理页写「起こしても動かない」）。
+  **日付が変わったら数え直す（2026-10-22）**：_covered 合计按北京时间的「今天」数，0 点后归 0。叫起时记 `fired.day`（没有的旧记录用 `fired.at` 换成北京时间的日期），不是今天就不算停滞（`none`），交给 9:00 / 18:00 的定时判断（10-19・10-20・10-21 夜里 1〜2 点误叫了 3 次）；北京时间 0 点后也不再补叫前一天 18:00 那回（`gate.slot_pending`），等 9:00。
+  管理页的「動いている」只在这次叫起之后的最后一批出刊（`state/log/edit.json`，`gate.last_batch`）30 分钟以内；过了是 `idle`「前回 HH:MM に終わった・次は HH:MM」（这回还没叫时改成「18:00 の回はまもなく」，列标题和「次の実行」卡片也一样 `due`；「あと N 分」由 `data-slots` 在浏览器里数，不写死）；叫起后编辑済み增加了、60 分钟还没有出刊的行 = `unpublished`「出刊されていない」（带最后一条失败 `gate.last_error`，2026-10-22 出刊に失敗：No module named 'requests'）。叫不叫的规则和 progress 一样。
   叫起时记下 API 返回的会话 id（`fired.resp`）。管理页 AI 编辑列有「AI 编辑をもう一度起こす」按钮 = `run_now('edit_now')` → `background.yml` 的 `force_edit` → `GATE_FORCE=edit`（不看 `GATE_FIRE`・间隔・停滞判断）。
 - **AI 编辑推上去了、网页却没变（2026-10-19 修）**：收集（digest.yml）排队时是用触发时的提交 checkout 的，等它跑完，AI 编辑早把 `edit.json` push 上去了；
   收集的 `git pull --rebase -X theirs` 之后只 `render`（只从 reports 生成），reports 是没有编排的旧版，网页就一直是「整理待ち」。
