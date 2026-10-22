@@ -240,8 +240,15 @@
  "https://assets.repress.co.kr/photos/abe7998a62e7b6df86a014f837739d3e/thumb.png": {
   "w": 600,
   "h": 400,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.57,
+  "local": "pics/26c78fd0f8e9f606.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://assets.st-note.com/production/uploads/images/318341052/rectangle_large_type_2_68f11d3a9054db36365481db0353ec2c.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
@@ -616,6 +623,20 @@
   "out": [
    540,
    720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73de782fa11d028315b16038a51180b889cf1820a1ba96b1e7fa3e203c2b5bf535d61a5719757078011ac12a47229b6679d1f5afcf903803575113ad29b4a1754bea8a8a40bcfef7bc3a8e76d5ce49e6aeb4dba": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.369,
+  "local": "pics/862724c86e091487.webp",
+  "out": [
+   300,
+   300
   ],
   "why": "防盗链",
   "ref": true
@@ -2219,6 +2240,18 @@
    721
   ],
   "why": "看不清"
+ },
+ "https://preview.redd.it/aui2e4z11dwh1.jpeg?width=640&crop=smart&auto=webp&s=2b27ccd2af5b40a82584f53250e9ab2c9db9d992": {
+  "w": 640,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
+ "https://preview.redd.it/nxnl71d8mkwh1.jpeg?width=640&crop=smart&auto=webp&s=c7e0ba24a427682c35471068d26c430247923978": {
+  "w": 640,
+  "h": 853,
+  "target": 720,
+  "v": 3
  },
  "https://preview.redd.it/x2kmtlqogvvh1.jpeg?width=640&crop=smart&auto=webp&s=488faf4da85410ca06a831cd547e184145294334": {
   "w": 640,
