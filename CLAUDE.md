@@ -312,6 +312,10 @@
   按钮 → Supabase `run_now(job)`（`db/run_now.sql`，Vault 的 `github_dispatch_token`）→ GitHub workflow_dispatch。
   只能起这 3 个，每个有间隔（3 分 / 10 分 / 1 分）。GitHub 的定时（cron）忙时会迟到・漏掉（2026-10-17 漏了 2 小时），
   所以后台作業还有第 2 个时钟：Supabase pg_cron 每小时 17 分 `run_now('tick')`（和按钮同一条路，但不带 retry_now，守失败的等待）。后台作業从按钮起时带 `retry_now`（失败的版面也不等）。加新按钮：`render.RUN_JOBS` 和 `run_now` 的 case 各加一项。
+- **收集不停（2026-10-22 全体の検査 M3・M4）**：GitHub 的定时 `17 */2` 常抜ける（10-21〜22 12 回只来 5 回、空了 4 小时）→ **收集的控えの時計**由后台作業兼任（pg_cron 每小时必到）：`scripts/collect_watch.py` 看 `state/log/collect.json` 最后一次收集（带 `secs` 的行），过了 150 分、digest.yml 没有在跑・排队・30 分内开始的回，就 `gh workflow run digest.yml`（GITHUB_TOKEN 的 workflow_dispatch 能起别的 workflow，`actions: write`），记进 `state/log/gate.json`。
+  **締め切り**：收集开始 18 分（`digest.COLLECT_DEADLINE_MIN`）后不再开新的版面，剩下的写进日志「時間切れで N 版面を次の回へ」（`deferred`），下一回先抓它们（`deferred_from_log` / `fetch_order`）；digest.yml `timeout-minutes: 40`。**1 个版面抓取出例外**只让那个版面空着、日志「取得に失敗した N 版面は空で続けた」，收集照常（`ingest` 的 `fetch`）。
+  后台作業：小元素那步 `continue-on-error`（失败也照样叫 AI 编辑・提交）；`state/gate.json` 只在判断变了・真的叫了 Claude・起了收集时才提交（`GATE_FIRE` 开着不算）。
+  digest.yml 的「新关注项 → 立刻 AI 编辑」也走ゲート：`GATE_NOW=edit python scripts/gate.py fire`（不看间隔・定时，但守一時停止・`GATE_FIRE`，叫了就记录并 push）。
 - **リソース・並列と制限**（バックグラウンドの中）：容量（リポジトリ・公开页 vs 1GB 上限）、各仕组み最近一次运行时的服务器（内存・磁盘・CPU・用时，
   `scripts/resources.py` 的 `snapshot()` 附在 runlog 里）、トークン（Claude API 自动数；定时任务的 Claude 结束时自己写：
   `python scripts/runlog.py emblem "…" --tokens N`；订阅额度的余量程序读不到，只能看 https://claude.ai/settings/usage ）。
@@ -334,7 +338,7 @@
   不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
   **前の日の整理待ちは持ち越す（2026-10-22 全体の検査 H3）**：AI 编辑只看最新的 inbox，JST 18:00 那回之后〜1:00 收集的会永远留在昨天。`digest.carry_over`：新的一天第一次收集时（`_carried` 记号，一天一次），把前一天（2 天以内）`_covered` 之后・不是要紧的条目接到今天的 inbox：1 版面最多「篇幅 × 2」件（S 6・M 10・L 16，留新的，`CARRY_PER_SIZE`），前一天已经持ち越し过的（`carried`）不再带；今天和前 3 天的 reports 里已经载了的（同网址・同标题 `title_key`；只把要带的那条去掉末尾「 - 媒体名」「｜媒体名」后剩 12 字以上・6 成以上的也拿去比 reports 的原标题，`_title_keys`，不让「討論牆 | …」「共通の頭 | 品目」只剩头）不带（实际很少命中，主要靠上限：2026-10-22 168 → 82 件）。不用 StoryDeduper：真数据里会把别的比赛・别的爆料也当成同一件事。
   **网页生成失败也要 push 数据（H4）**：本番的 workflow（digest・background・requests）设 `WL_RENDER_SOFT=1`，`digest.write_page` 出错只记日志、不停；CI 照旧失败。`render.collect` 跳过没有 headline / url 的报道，`publish` 用依据的原题补 headline。
-  **AI 编辑一天 2 次（用户定的，2026-10-19）**：日本时间 9:00 和 18:00（`gate.SLOTS`，`background.yml` 在 0:00 / 9:00 UTC 有定时），那一回还没叫过、今天有整理待ち（`gate.edit_work`）就叫；
+  **AI 编辑一天 2 次（用户定的，2026-10-19）**：日本时间 9:00 和 18:00（`gate.SLOTS`，`background.yml` 在 0:07 / 9:07 UTC 有定时：过了回再起，0 分整点 GitHub 最挤），那一回还没叫过、今天有整理待ち（`gate.edit_work`）就叫；
   管理页「次の実行」AI 編集卡片的「今すぐ実行」和「AI 编辑をもう一度起こす」随时强制叫（`run_now('edit_now')`）。
   **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。
   所以 `gate.work_state` 看「叫起后编辑済み数（edit.json 的 _covered 合计）有没有增加」：60 分钟内 = 编辑中；60 分钟后没增加 = 停滞 → 再叫（最多 3 次，之后等 6 小时，管理页写「起こしても動かない」）。

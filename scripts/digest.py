@@ -2709,6 +2709,27 @@ def update_heat():
 COLLECT_WORKERS = 6   # 收集时同时抓几个关注项（GitHub Actions 的机器 4 核；等网络为主，所以比核数多一点）
 LIVE_AFTER_MIN = 3    # 收集・出刊结束后到新网页出现大约几分钟（提交・推送 + Pages 发布）
 LIVE_EDIT_FILE = pathlib.Path("/tmp/wishlist-live-edit.json")  # AI 编辑这一回从几点开始、编哪些版面（同一个容器里用）
+# 収集の締め切り：始めてからこの分数を過ぎたら新しい版面を始めない（残りは次の回へ、次の回はそれを先に取る）。
+# digest.yml の timeout-minutes（40）の前に、出刊・通知・push の時間を残す（2026-10-22：22 分かかった回があり、30 分で切れると push の前に全部消える）
+COLLECT_DEADLINE_MIN = 18
+LAST_INGEST = {}   # この回の締め切り・失敗（logged_ingest がログに書く）：{"deferred": [名前], "failed": {名前: 理由}}
+
+
+def deferred_from_log(log_dir=None):
+    """前の回に時間切れで取らなかった版面（state/log/collect.json の最後の deferred）。この回はそれを先に取る。"""
+    import runlog
+    for r in reversed(runlog.load("collect", log_dir)):
+        if "secs" in r:   # 収集が終わった行（secs つき）までさかのぼって、その回の deferred
+            return []
+        if r.get("deferred"):
+            return list(r["deferred"])
+    return []
+
+
+def fetch_order(items, deferred):
+    """取る順番：前の回に取れなかった版面を先に（毎回同じ版面が時間切れにならないように）。去重はあとで元の順に戻してする。"""
+    first = set(deferred or [])
+    return [i for i in items if i["name"] in first] + [i for i in items if i["name"] not in first]
 
 
 def _run_min(proc, default_secs):
@@ -2758,6 +2779,11 @@ def ingest(dry_run=False):
     started = {}
     if live:
         live_mark(None)  # 上一次收集留下的行清掉
+    import time
+    t_start, budget = time.monotonic(), COLLECT_DEADLINE_MIN * 60
+    deferred, failed = [], {}
+    LAST_INGEST.clear()
+    LAST_INGEST.update(deferred=deferred, failed=failed)
 
     def compare_for(item):
         compare = known.get(item["name"], [])
@@ -2773,12 +2799,22 @@ def ingest(dry_run=False):
     shown = {}  # 版面 → 网页上现在显示的新记事件数（None = 条已消失）
 
     def fetch(item):
-        print(f"抓取：{item['name']}", file=sys.stderr)
         name = item["name"]
+        if time.monotonic() - t_start > budget:   # 締め切りを過ぎた：この版面は始めない（次の回に先に取る）
+            deferred.append(name)
+            return None
+        print(f"抓取：{item['name']}", file=sys.stderr)
         if live:  # 网页上只有这个版面出「正在找新记事」的条
             started[name] = dt.datetime.now(dt.timezone.utc)
             live_mark(name, "fetch", started=started[name])
-        raw = collect(item, confs[name][1])
+        try:
+            raw = collect(item, confs[name][1])
+        except Exception as err:  # noqa: BLE001  1 版面の失敗で収集全体を止めない（その版面は空・ログに残す）
+            failed[name] = f"{type(err).__name__}: {str(err)[:80]}"
+            print(f"  {name} の取得に失敗（この版面は空で続ける）：{failed[name]}", file=sys.stderr)
+            if live:
+                live_mark(name, None)
+            return None
         if live:  # 这个版面一抓完就判断：没有新记事 → 条消失；有 → 「新着 N 件」。
             # 抓取期间 seen / known 都不变（只读），所以在线程里先数一遍；之后按顺序去重时件数变了再改
             try:
@@ -2789,11 +2825,17 @@ def ingest(dry_run=False):
                 shown[name] = n or None
                 live_mark(name, "found" if n else None, n, started.get(name), eta())
         return raw
+    order = fetch_order(items, [] if dry_run else deferred_from_log())
     with ThreadPoolExecutor(max_workers=COLLECT_WORKERS) as pool:
-        fetched = list(pool.map(fetch, items))
+        got = dict(zip([i["name"] for i in order], pool.map(fetch, order)))
+    fetched = [got.get(i["name"]) for i in items]   # 去重は元の順番（前の関注項が収めたものは後ろで収めない）
+    if deferred:
+        print(f"時間切れ（{COLLECT_DEADLINE_MIN} 分）で {len(deferred)} 版面を次の回へ：{'、'.join(deferred[:8])}", file=sys.stderr)
 
     inbox_items = []
     for item, raw in zip(items, fetched):
+        if raw is None:   # 時間切れで始めなかった・取得に失敗した版面：今回は何も書かない
+            continue
         backfill, conf = confs[item["name"]]
         if backfill:
             print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
@@ -3621,6 +3663,13 @@ def logged_ingest():
     runlog.add("collect", f"新着 {sum(new.values())} 件（{len(new)} 版面）" + (f"：{top}" if top else ""),
                "ok" if new else "info", count=sum(new.values()), secs=round(time.time() - t0), workers=COLLECT_WORKERS,
                res=resources.snapshot())
+    deferred, failed = LAST_INGEST.get("deferred") or [], LAST_INGEST.get("failed") or {}
+    if deferred:   # 次の回はこの版面から取る（deferred_from_log）
+        runlog.add("collect", f"時間切れで {len(deferred)} 版面を次の回へ（{COLLECT_DEADLINE_MIN} 分）：" + "、".join(deferred[:6]),
+                   "warn", deferred=list(deferred))
+    if failed:
+        runlog.add("collect", f"取得に失敗した {len(failed)} 版面は空で続けた：" + "、".join(f"{k}（{v}）" for k, v in list(failed.items())[:3]),
+                   "warn", failed=dict(failed))
     if intel.health():   # 情報員の情報源ごとの様子（取れなかった所は名前と理由）
         print("情報員：" + intel.health(), file=sys.stderr)
         runlog.add("collect", "情報員 " + intel.health(), "info")

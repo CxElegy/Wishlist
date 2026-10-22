@@ -118,6 +118,10 @@ COMPONENTS = {
               "what": "emblem.check_whole：服が背景と同じ色で抜けた切り抜きを落とす"},
     "gate": {"kind": "algo", "name": "ゲート gate.py", "spec": "AI 編集は 1 日 2 回（日本時間 9:00・18:00、その回にまだなら・一時停止中は起こさない）· 起こして 60 分あけて、編集済みが増えなければ「停滞」→ 起こし直す（3 回まで・そのあと 6 時間待つ）· 起こしたのが前の日（北京時間・fired.day）なら停滞と数えず定時を待つ · 北京 0 時すぎに前の日の 18:00 の回は拾わない（9:00 を待つ）· 「動いている」は今回起こしたあとの最後のバッチから 30 分以内（起こしたあと出刊がないまま 60 分 → 「出刊されていない」）· 変数 GATE_FIRE = edit / 1",
              "what": "仕事があるか・AI が要るかをプログラムだけで決める。AI の要らない仕事はその場で済ませる"},
+    "collectwatch": {"kind": "rule", "name": "収集の控えの時計 collect_watch.py", "spec": "後台作業のたび（pg_cron で毎時必ず）· 最後の収集から 150 分 → digest.yml を workflow_dispatch · 走っている・並んでいる・30 分以内に始まった回があれば起こさない",
+                     "what": "GitHub の定時（17 */2）が抜けても収集が何時間も止まらないように。起こしたら state/log/gate.json に 1 行"},
+    "deadline": {"kind": "rule", "name": "収集の締め切り COLLECT_DEADLINE_MIN", "spec": "18 分 · 過ぎたら新しい版面を始めない · 残りは次の回に先に取る（deferred）· 1 版面の例外はその版面だけ空で続ける · timeout 40 分",
+                 "what": "digest.ingest：timeout で push の前に切れて、その回の分が全部消えないように"},
     "taste": {"kind": "algo", "name": "好みの学習", "spec": "ラベルごと ±1 · 上限 −6〜+4 · 出すのは 5 点以上",
               "what": "digest.learn_taste：👍👎 の最後の一票から"},
     "softalt": {"kind": "rule", "name": "鮮やかな副色の広い面を落ち着かせる _loud / .softalt",
@@ -260,9 +264,9 @@ PROCESSES = [
     },
     {
         "id": "gate", "name": "後台のゲート", "en": "GATE", "lane": "actions", "workflow": "background.yml",
-        "schedule": sorted([(h, m) for h in range(24) for m in (17, 47)] + [(0, 0), (9, 0)]),   # 17 分 = Supabase pg_cron、47 分 = GitHub の定時（抜けることがあるので 2 つの時計）、0:00 / 9:00 UTC = AI 編集の回
+        "schedule": sorted([(h, m) for h in range(24) for m in (17, 47)] + [(0, 7), (9, 7)]),   # 17 分 = Supabase pg_cron、47 分 = GitHub の定時（抜けることがあるので 2 つの時計）、0:07 / 9:07 UTC = AI 編集の回（9:00 / 18:00 を過ぎてから。0 分ちょうどは GitHub が混む）
         "when": "毎時 · 収集のあとすぐ · 残れば続けて",
-        "trigger": "毎時 17 分（Supabase pg_cron）と 47 分（GitHub の定時）／ ニュース収集が終わるたび（新しい材料）／ 時間の予算を使い切って仕事が残っていれば続けてもう一度（3 回まで）／ 管理ページの「今すぐ実行」・失敗した版面の「今すぐ再挑戦」（失敗の待ち時間を飛ばす）",
+        "trigger": "毎時 17 分（Supabase pg_cron）と 47 分（GitHub の定時）・日本時間 9:07 / 18:07（AI 編集の回）／ ニュース収集が終わるたび（新しい材料）／ 時間の予算を使い切って仕事が残っていれば続けてもう一度（3 回まで）／ 管理ページの「今すぐ実行」・失敗した版面の「今すぐ再挑戦」（失敗の待ち時間を飛ばす）",
         "summary": "仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
                    "AI が要る仕事（AI 編集・写真）は仕事があるときだけ Claude を起こす。Claude は起きるたびにトークンを使うので、空振りをなくす。"
                    "版面には AI が整理した記事しか載らないので、収集で整理待ちが増えたらすぐ AI 編集を起こす（リポジトリ変数 GATE_FIRE で開け閉め）。",
@@ -271,8 +275,10 @@ PROCESSES = [
             {"id": "g1", "kind": "fan", "lane": "actions", "title": "仕事を調べる", "mode": "全部を毎回",
              "items": [("1", "小元素", "目標未満の版面（1 時間以内の失敗で材料が同じものは除く）"), ("2", "AI 編集", "今日の inbox の整理待ち（_covered より後・edit.json にない版面）"),
                        ("3", "写真", "inbox/photos/*.json")]},
+            {"id": "g1c", "kind": "decision", "lane": "actions", "title": "最後の収集から 150 分たった？", "text": "state/log/collect.json · GitHub の定時（17 */2）は抜けることがある · この段は pg_cron で毎時必ず通る",
+             "uses": ["collectwatch"], "yes": "収集の回が走っていない・並んでいない・30 分以内に始まっていなければ digest.yml を起こす（workflow_dispatch）", "no": "何もしない"},
             {"id": "g2", "kind": "decision", "lane": "actions", "title": "小元素の仕事がある？", "no": "飛ばす"},
-            {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 4 本並列", "text": "「小元素の自動補完」"},
+            {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 4 本並列", "text": "「小元素の自動補完」· 失敗しても次の段（AI 編集を起こす・提交）へ進む（continue-on-error）"},
             {"id": "g4", "kind": "decision", "lane": "actions", "title": "AI が要る仕事がある？", "text": "AI 編集・写真", "no": "Claude は起こさない（トークン 0）"},
             {"id": "g5", "kind": "decision", "lane": "actions", "title": "前に起こしてから 60 分たった？", "text": "起こした直後は編集中のはず。重ねて起こさない",
              "uses": ["gate"], "no": "待つ（管理ページ：編集中のはず）"},
@@ -285,18 +291,20 @@ PROCESSES = [
              "no": "起こさない（記録だけ・定時を待つ）"},
             {"id": "g6", "kind": "step", "lane": "ai", "title": "Claude の定時タスクを API で起こす", "text": "定時タスクごとのトークン（Secret ROUTINE_FIRE_TOKEN など）が要る · AI 編集は 1 日 2 回（SLOTS：9:00・18:00 の回ごとに 1 度。停滞の起こし直しと管理ページのボタンは別）",
              "uses": ["claude"]},
-            {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったときだけコミット"},
+            {"id": "g7", "kind": "store", "lane": "repo", "title": "state/gate.json · state/log/gate.json", "text": "判断が変わったとき・Claude を本当に起こしたとき・収集を起こしたときだけコミット（GATE_FIRE が開いているだけでは足さない）"},
         ],
     },
     {
         "id": "collect", "name": "ニュース収集", "en": "COLLECT", "lane": "actions",
         "schedule": [(h, 17) for h in range(0, 24, 2)], "workflow": "digest.yml", "when": "2 時間ごと · 6 本並列",
-        "trigger": "2 時間ごと（日本時間 奇数時 17 分）／ 毎週月曜 9:47 に周報",
+        "trigger": "2 時間ごと（日本時間 奇数時 17 分）／ 定時が抜けて 150 分あいたら後台のゲートが起こす（collect_watch）／ 毎週月曜 9:47 に周報",
         "summary": "関注項ごとにニュース・SNS・価格を集めて inbox に溜め、出刊・通知・ページ生成までつなぐ。",
         "files": [".github/workflows/digest.yml", "scripts/digest.py", "scripts/sources.py", "scripts/intel.py", "intel/japan.yaml"], "doc": "README.md",
         "uses": ["gnews", "bing", "reddit", "steam", "gdelt", "youtube", "bluesky", "mastodon", "intel", "dedupe", "spam", "srcfilter", "match"],
         "flow": [
-            {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 30 分まで · 同時に 1 本"},
+            {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 40 分まで · 同時に 1 本 · 前の回に時間切れで残った版面を先に取る"},
+            {"id": "c1d", "kind": "decision", "lane": "actions", "title": "始めてから 18 分たっていない？", "text": "版面ごとに、取り始める前に見る（COLLECT_DEADLINE_MIN）",
+             "uses": ["deadline"], "yes": "↓ その版面を取る", "no": "その版面は始めない → 次の回に先に取る（ログ「時間切れで N 版面を次の回へ」）"},
             {"id": "c2", "kind": "fan", "lane": "ext", "title": "記事を集める", "x": "×6 関注項を同時に", "mode": "それぞれのサイトへ",
              "items": [("G", "Google ニュース", "5 言語", "gnews"), ("B", "Bing ニュース", "3 回まで", "bing"),
                        ("R", "Reddit", "25 件", "reddit"), ("S", "Steam", "10 件", "steam"), ("F", "RSS", "feeds"),
@@ -304,6 +312,8 @@ PROCESSES = [
                        ("BS", "Bluesky", "人気順", "bluesky"), ("M", "Mastodon", "#タグ", "mastodon"),
                        ("J", "日本の情報員", "専門サイト 17 本 · 1 回だけ", "intel")],
              "uses": ["pace"]},
+            {"id": "c2e", "kind": "decision", "lane": "actions", "title": "その版面の取得で例外が出なかった？", "uses": ["deadline"],
+             "no": "その版面だけ空にして続ける（ログ「取得に失敗した N 版面は空で続けた」）· 収集全体は止めない"},
             {"id": "c3", "kind": "step", "lane": "actions", "title": "重複を落とす", "x": "元の順番で", "uses": ["dedupe"]},
             {"id": "c3s", "kind": "decision", "lane": "actions", "title": "スパム・止めた来源ではない？", "text": "成人・海賊版の「在线看」ページ · 出典名（前方一致）· 網域（クラファン・攻略 wiki の攻略頁）",
              "uses": ["spam", "srcfilter"], "no": "捨てる"},
@@ -362,7 +372,7 @@ PROCESSES = [
         "id": "edit", "name": "AI 編集", "en": "EDIT", "lane": "ai",
         "schedule": [(0, 0), (9, 0)],   # 日本時間 9:00 / 18:00（ユーザーが決めた）。ゲート（gate.SLOTS）が整理待ちがあるときだけ起こす
         "when": "毎日 9:00 · 18:00（日本時間）",
-        "trigger": "毎日 9:00 と 18:00（日本時間）、整理待ちがあればゲートが起こす（動かなければ 60 分あけて起こし直す）／ 管理ページの「今すぐ実行」「AI 編集をもう一度起こす」でいつでも ／ 新しい関注項が入ったとき",
+        "trigger": "毎日 9:00 と 18:00（日本時間）、整理待ちがあればゲートが起こす（動かなければ 60 分あけて起こし直す）／ 管理ページの「今すぐ実行」「AI 編集をもう一度起こす」でいつでも ／ 新しい関注項が入ったとき（収集のあと、ゲート経由 GATE_NOW：間隔・定時は飛ばすが一時停止・GATE_FIRE は守り、起こしたことを記録）",
         "summary": "inbox の記事から重要なものを選び、同じ件を合わせて（言語違いは主言語の 1 本に）、見出しと配図を決めて出刊する。新しい関注項は版面も設計する。"
                    "版面に載るのは AI 編集が整理した記事だけ（それまでは「整理待ち」、要紧だけ先に載る）。",
         "files": ["EDITING.md", "scripts/digest.py", "scripts/lang.py", "TEMPLATES.md"], "doc": "EDITING.md", "uses": ["claude", "imgpick", "pending", "lang"],
@@ -667,17 +677,19 @@ EDGES = [
     (29, "p-login", "n-mail", "管理者のメールだけ確認のリンク", "web"),
     (30, "n-mail", "s-you", "リンクを押す → 本人の鍵", "web"),
     (31, "p-login", "s-db", "身份を確かめる・書くときに鍵を付ける", "db"),
+    (32, "p-gate", "p-collect", "定時が抜けて 150 分あいたら収集を起こす", "data"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
-    ("ニュース収集", "6 本並列", "GitHub Actions のサーバーは 4 コア。待ちが多いので 6 本。同じサイトの間隔は全スレッドで共有（Reddit 2 秒・Google / Bing 0.5 秒・GDELT 5.5 秒・Bluesky / Mastodon 1 秒・YouTube 0.5 秒）。AI を使わないので時間は使ってよい（GDELT で 25 関注項 約 5 分増える）"),
+    ("ニュース収集", "6 本並列 · 18 分で締め切り", "GitHub Actions のサーバーは 4 コア。待ちが多いので 6 本。18 分を過ぎたら新しい版面を始めず次の回へ（1 回 40 分まで：出刊・通知・push の分を残す）。同じサイトの間隔は全スレッドで共有（Reddit 2 秒・Google / Bing 0.5 秒・GDELT 5.5 秒・Bluesky / Mastodon 1 秒・YouTube 0.5 秒）。AI を使わないので時間は使ってよい（GDELT で 25 関注項 約 5 分増える）"),
     ("小元素の自動補完", "6 本並列", "GitHub Actions（4 コア・16GB・1 回 60 分まで、続けて 3 回まで）。集めるのは待ちが多いので 6 本、抠图（rembg）と items.yaml への書き込みは 1 本ずつ"),
     ("抠图のモデル（rembg）", "1 枚ずつ", "birefnet は 1 枚で数 GB のメモリを使う。onnxruntime のメモリ池を切って、1 枚ごとに返す（前は 13GB まで溜まった）"),
     ("Wikipedia・Wikidata・Commons", "ホストごと 1 本ずつ · 全体で毎分 150", "Wikimedia の上限は名乗ったボットで全サイト毎分 200（名乗らないと 10）。"
      "429 は Retry-After を守り、続いたら 5 分休む → ここは並列でも速くならない。取ったものはキャッシュ（~/.cache/wishlist-http）"),
     ("Claude の定時タスク", "仕事があるときだけ", "起きるたびにトークンを使う。ゲートが仕事を確かめてから起こす（AI 編集・写真）。小元素は AI を使わない"),
     ("GitHub Actions", "同じワークフローは 1 本ずつ", "収集・依頼は前の回が終わるまで待つ（concurrency）。ページ生成は新しい回が来たら古い回を止める。"
-                       "定時（cron）は混むと遅れる・抜ける（2 時間抜けたことがある）ので、後台作業は Supabase pg_cron（17 分）も 2 つ目の時計に"),
+                       "定時（cron）は混むと遅れる・抜ける（2 時間抜けたことがある）ので、後台作業は Supabase pg_cron（17 分）も 2 つ目の時計に。"
+                       "収集の時計は後台作業が兼ねる（最後の収集から 150 分で digest.yml を起こす）"),
     ("AI 編集・写真から愿望", "1 本", "1 日の決まった時刻に 1 回ずつ。同じ inbox を書くので並列にしない"),
 ]
 # AI（Claude）を使うか：前に AI でやっていた判断ごとに、規則（プログラム）にできたか・AI のままか・その理由。

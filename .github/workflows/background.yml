@@ -7,7 +7,7 @@ name: 后台作業
 on:
   schedule:
     - cron: "47 * * * *"     # 每小时 47 分
-    - cron: "0 0,9 * * *"    # 日本时间 9:00 / 18:00：AI 编辑的两个回（gate.SLOTS），有整理待ち就叫
+    - cron: "7 0,9 * * *"    # 日本时间 9:07 / 18:07：AI 编辑的两个回（gate.SLOTS 的 9:00 / 18:00 刚过）。0 分整点 GitHub 最挤；往前挪就还没到回，判断会说「次は…」
   workflow_run:                # 每次收集完（有新记事 = 小元素的新材料）马上跑一次
     workflows: ["关注清单通信"]
     types: [completed]
@@ -30,7 +30,7 @@ on:
 
 permissions:
   contents: write
-  actions: write   # 时间用完还有活时，自己再起一次（workflow_dispatch）
+  actions: write   # 时间用完还有活时，自己再起一次・收集的定时抜けたら digest.yml を起こす（workflow_dispatch）
 
 concurrency:
   group: background
@@ -67,6 +67,15 @@ jobs:
         id: gate
         run: python scripts/gate.py check
 
+      # 收集的控えの時計：GitHub 的定时（digest.yml 的 cron）常常抜ける。这里由 Supabase pg_cron 每小时一定叫起，
+      # 最后的收集（state/log/collect.json）过了 150 分钟、又没有在跑・在排队的回，就 workflow_dispatch 起一次收集
+      - name: 收集的定时抜けた → 收集を起こす
+        id: kick
+        continue-on-error: true   # 起こせなくても後台作業は続ける（次の時に見直す）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/collect_watch.py
+
       - name: 模型的缓存（抠图 rembg 224MB・人脸 YuNet / SFace 39MB）
         if: steps.gate.outputs.emblem == 'true'
         uses: actions/cache@v4
@@ -86,6 +95,7 @@ jobs:
 
       - name: 小元素补全（Python，不用 AI · 6 本并行 · 取法分 3 段）
         if: steps.gate.outputs.emblem == 'true'
+        continue-on-error: true   # 失敗しても、AI 編集を起こす段と提交は続ける（そこまでに埋まった分も push する）
         run: |
           pip install -q "rembg[cpu]>=2.0.60,<3"
           python scripts/emblem_fill.py --background --minutes "${{ inputs.minutes || '40' }}" --workers 6
@@ -100,8 +110,12 @@ jobs:
           if grep -q "^emblem  仕事あり" /tmp/gate2.txt; then echo "again=true" >> "$GITHUB_OUTPUT"; fi
 
       - name: 有需要 AI 的活 → 叫 Claude（仓库变量 GATE_FIRE 打开时）
+        id: fire
         if: ((env.GATE_FIRE != '0' && env.GATE_FIRE != '') || env.GATE_FORCE != '') && (steps.gate.outputs.edit == 'true' || steps.gate.outputs.photos == 'true')
-        run: python scripts/gate.py fire
+        run: |
+          python scripts/gate.py fire > /tmp/fire.txt
+          cat /tmp/fire.txt
+          if grep -q "^[a-z]* *Claude を起こした" /tmp/fire.txt; then echo "fired=true" >> "$GITHUB_OUTPUT"; fi
 
       - name: 提交
         run: |
@@ -109,8 +123,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # まだないファイル（新しいアカウントを空から始めた直後の emblem_progress.json など）は飛ばす：1 つでもないと git add 全体が失敗する
           for f in items.yaml docs/home/emblems state/emblem_progress.json state/log/emblem.json; do if [ -e "$f" ]; then git add "$f"; fi; done
-          # ゲートの記録は、判断が前と変わったときか、Claude を起こしたときだけ（2 時間ごとの同じ記録でコミットを増やさない）
-          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || { [ "$GATE_FIRE" != "0" ] && [ -n "$GATE_FIRE" ]; } || [ -n "$GATE_FORCE" ]; then
+          # ゲートの記録は、判断が前と変わったとき・Claude を本当に起こしたとき・収集を起こしたときだけ
+          # （GATE_FIRE が開いているだけでは足さない：前は毎時「后台作業」のコミットが増えていた）
+          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "${{ steps.fire.outputs.fired }}" = "true" ] || [ "${{ steps.kick.outputs.kicked }}" = "true" ]; then
             git add state/gate.json state/log/gate.json 2>/dev/null || true
           fi
           git diff --cached --quiet && { echo "変化なし：コミットしない"; exit 0; }

@@ -367,6 +367,8 @@ def fire(path=None, post=_post, env=None):
     間隔・停滞の判断を飛ばして今すぐ起こす）。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。"""
     env = os.environ if env is None else env
     force = {x.strip() for x in str(env.get("GATE_FORCE", "")).split(",") if x.strip() in ROUTINES}
+    # GATE_NOW：新しい関注項の「すぐ AI 編集」（digest.yml）。間隔・1 日 2 回の定時は飛ばすが、仕事があること・一時停止・GATE_FIRE は守る
+    now_jobs = {x.strip() for x in str(env.get("GATE_NOW", "")).split(",") if x.strip() in ROUTINES} - force
     allowed = enabled_jobs(env.get("GATE_FIRE", "1")) | force
     data = load(path)
     now = _now()
@@ -379,6 +381,8 @@ def fire(path=None, post=_post, env=None):
         if job == "edit" and job not in force and edit_mode(env) == "pause":
             results[job] = "管理ページで一時停止中（起こさない）"
             continue
+        if job in now_jobs and job in allowed:
+            force.add(job)   # ここから先は GATE_FORCE と同じ（間隔・定時を飛ばす。記録には forced が付く）
         if job not in allowed:
             results[job] = "GATE_FIRE で止めている（定時を待つ）"
             continue

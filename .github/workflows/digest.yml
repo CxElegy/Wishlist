@@ -32,7 +32,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40   # 収集は 18 分で締め切り（digest.COLLECT_DEADLINE_MIN）、残りは出刊・通知・push の分
     env:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
@@ -113,26 +113,31 @@ jobs:
           done
           exit 1
 
-      # 新加的关注项已经收集到消息、但当天还没被 AI 编辑过：立刻叫 Claude 定时任务（Routine）编一次，
-      # 不用等后台ゲート下一回。必须在推送之后，Routine 拉仓库时才看得到新条目。
-      # 需要仓库 Secret ROUTINE_FIRE_TOKEN（claude.ai/code/routines → AI 编辑（新）→ 编辑 → 添加触发器 → API → 生成令牌）；
-      # 没设置就跳过，照旧等定时编排
-      - name: 新关注项 → 立刻 AI 编辑
+      # 新加的关注项已经收集到消息、但当天还没被 AI 编辑过：经ゲート（gate.py fire）立刻叫 AI 编辑，不用等 9:00 / 18:00 的回。
+      # GATE_NOW=edit：间隔・定时不看，但管理页的一時停止（edit_control）・仓库变量 GATE_FIRE=0 照样守，叫了就记进 state/gate.json・state/log/gate.json。
+      # 必须在推送之后，Routine 拉仓库时才看得到新条目。需要仓库 Secret ROUTINE_FIRE_TOKEN；没设置就跳过，照旧等定时编排
+      - name: 新关注项 → 立刻 AI 编辑（ゲート経由）
         if: env.NEW_ITEMS != ''
         env:
-          ROUTINE_FIRE_TOKEN: ${{ secrets.ROUTINE_FIRE_TOKEN }}
-          ROUTINE_ID: trig_01Ly92RcW35cBwZ9amWZr11j   # 「关注清单通信 · AI 编辑（新）」：在挂着本仓库的会话里跑，才推得上去
+          ROUTINE_TOKEN_EDIT: ${{ secrets.ROUTINE_FIRE_TOKEN }}
+          GATE_FIRE: ${{ vars.GATE_FIRE || 'edit' }}
+          GATE_NOW: edit
         run: |
-          if [ -z "$ROUTINE_FIRE_TOKEN" ]; then echo "没设置 ROUTINE_FIRE_TOKEN，等定时编排"; exit 0; fi
+          if [ -z "$ROUTINE_TOKEN_EDIT" ]; then echo "没设置 ROUTINE_FIRE_TOKEN，等定时编排"; exit 0; fi
           git pull -q --rebase || true
           names=$(python scripts/digest.py unedited --only "$NEW_ITEMS")
           if [ -z "$names" ]; then echo "新关注项还没有消息或已编排过，不用叫 AI 编辑"; exit 0; fi
-          # 不带说明文字：带文字（text）叫醒时会另开一个没挂仓库的会话，推送会 403。
-          # 指令第 3 条本来就会检查今天有没有没编排进去的新条目，不需要额外说明
-          echo "叫 AI 编辑：$names"
-          curl -fsS -X POST "https://api.anthropic.com/v1/claude_code/routines/$ROUTINE_ID/fire" \
-            -H "Authorization: Bearer $ROUTINE_FIRE_TOKEN" \
-            -H "anthropic-beta: experimental-cc-routine-2026-04-01" \
-            -H "anthropic-version: 2023-06-01" \
-            -H "Content-Type: application/json" \
-            -d '{}' || echo "::warning::叫 AI 编辑失败，等定时编排"
+          echo "新关注项：$names"
+          python scripts/gate.py check > /dev/null
+          python scripts/gate.py fire > /tmp/fire.txt || { echo "::warning::叫 AI 编辑失败，等定时编排"; exit 0; }
+          cat /tmp/fire.txt
+          grep -q "^edit *Claude を起こした" /tmp/fire.txt || exit 0
+          # 叫起的记录（下次ゲート判断「編集中」「停滞」用）也 push 上去
+          git add state/gate.json state/log/gate.json
+          git diff --cached --quiet || git commit -q -m "ゲート：新関注項で AI 編集を起こした"
+          git stash -q --include-untracked || true   # ほかに変わったもの（判断だけの記録）は捨てる：pull --rebase の邪魔になる
+          for i in 1 2 3; do
+            if git pull --rebase -X theirs -q; then git push && exit 0; else git rebase --abort || true; fi
+            sleep $((i * 5))
+          done
+          echo "::warning::ゲートの記録を push できなかった"
