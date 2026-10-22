@@ -46,6 +46,9 @@ SLOTS = {"edit": [(9, 0), (18, 0)]}
 SLOT_TZ = "Asia/Tokyo"
 DAY_TZ = "Asia/Shanghai"   # 「今日」の区切り（出刊の日付・edit_done と同じ北京時間）。日付が変わると edit_done は 0 から数え直す
 DAILY_PROG = {"edit"}   # prog が「今日の数」の仕事（日付が変わると 0 から）。写真の prog は残りの枚数なので日付で数え直さない
+# GATE_NOW（新関注項の「すぐ AI 編集」）が「60 分以内に起こし済み」で止められたときは jobs.<仕事>.now_pending に残し、
+# 後台作業の fire が 60 分を過ぎたら GATE_NOW と同じ扱い（定時の判定だけ飛ばす）で起こす。起こしたら消す。これより古い頼みは捨てる（定時が拾う）
+NOW_PENDING_HOURS = 12
 ACTIVE_MIN = 30   # 最後の AI 編集のバッチ（state/log/edit.json の出刊の行）からこの分数以内だけ「動いている」と出す
 
 
@@ -360,6 +363,25 @@ def _resp(out):
         return str(body)[:80]
 
 
+def _now_pending(j, now):
+    """jobs.<仕事>.now_pending（GATE_NOW が止められて残した頼み）がまだ生きていれば返す。
+    そのあと起こした（fired.at が頼みより後）・NOW_PENDING_HOURS より古い・壊れた記録なら None。"""
+    pend = (j or {}).get("now_pending") or {}
+    try:
+        at = dt.datetime.fromisoformat(pend["at"])
+    except (KeyError, ValueError, TypeError):
+        return None
+    if now - at > dt.timedelta(hours=NOW_PENDING_HOURS):
+        return None
+    try:
+        fired = dt.datetime.fromisoformat(((j.get("fired") or {}).get("at")) or "")
+        if fired >= at:
+            return None
+    except (ValueError, TypeError):
+        pass
+    return pend
+
+
 def fire(path=None, post=_post, env=None):
     """AI が要る仕事があるとき、Claude の定時タスクを起こす。起こしたあとに仕事が減ったかを次の回で見て（work_state）、
     減っていなければ「停滞」として MIN_GAP_MIN 分あけて起こし直す（最大 MAX_ATTEMPTS 回。そのあとは REFIRE_HOURS 待つ）。
@@ -367,13 +389,21 @@ def fire(path=None, post=_post, env=None):
     間隔・停滞の判断を飛ばして今すぐ起こす）。トークンがなければ起こさず「トークン未設定」と残す（定時のほうで拾われる）。"""
     env = os.environ if env is None else env
     force = {x.strip() for x in str(env.get("GATE_FORCE", "")).split(",") if x.strip() in ROUTINES}
+    # GATE_NOW：新しい関注項の「すぐ AI 編集」（digest.yml）。1 日 2 回の定時（SLOTS）だけ飛ばす。仕事があること・一時停止・GATE_FIRE・
+    # 「60 分以内に起こし済み（編集中）」・「停滞で待つ」は守る（AI 編集は 1 本だけ：同じ inbox を書くので 2 本目を起こさない）
+    now_jobs = {x.strip() for x in str(env.get("GATE_NOW", "")).split(",") if x.strip() in ROUTINES} - force
     allowed = enabled_jobs(env.get("GATE_FIRE", "1")) | force
     data = load(path)
     now = _now()
     results = {}
     for job, (rid, var, name) in ROUTINES.items():
         j = (data.get("jobs") or {}).get(job) or {}
+        pend = _now_pending(j, now)
+        if not pend:
+            j.pop("now_pending", None)
+        job_now = job not in force and (job in now_jobs or bool(pend))
         if not j.get("need") and job not in force:   # ボタン（GATE_FORCE）は整理待ちがなくても起こす（やり直しだけのときもある）
+            j.pop("now_pending", None)   # 整理待ちがもうない＝頼みは済んだ
             results[job] = "仕事なし（起こさない）"
             continue
         if job == "edit" and job not in force and edit_mode(env) == "pause":
@@ -389,6 +419,12 @@ def fire(path=None, post=_post, env=None):
             pass
         elif state == "running" or (state in ("progress", "idle", "unpublished") and (now - dt.datetime.fromisoformat(last["at"])) < dt.timedelta(minutes=MIN_GAP_MIN)):
             results[job] = f"{MIN_GAP_MIN} 分以内に起こし済み（編集中かもしれないので待つ）"
+            if job_now:   # すぐの頼み：誰も拾い直さないと次の定時（最大 15 時間後）まで整理待ちのまま。残して後台作業が 60 分後に起こす
+                names = [x.strip() for x in str(env.get("GATE_NOW_ITEMS", "")).replace("\n", "、").split("、") + (pend or {}).get("items", []) if x.strip()]
+                j["now_pending"] = {"at": (pend or {}).get("at") or now.isoformat(timespec="seconds"),
+                                    "items": list(dict.fromkeys(names))[:20]}
+                data.setdefault("jobs", {})[job] = j
+                results[job] += "・すぐの頼みを残した（60 分たったら後台作業が起こす）"
             continue
         elif state == "stalled":
             attempts = int(last.get("attempts") or 1) + 1   # 動いていない：もう一度
@@ -400,7 +436,7 @@ def fire(path=None, post=_post, env=None):
             if ago < dt.timedelta(hours=REFIRE_HOURS):
                 results[job] = f"停滞：{why}（{REFIRE_HOURS} 時間待つ・管理ページで確認）"
                 continue
-        if job not in force and state in ("progress", "idle", "unpublished", "none") and job in SLOTS:
+        if job not in force and not job_now and state in ("progress", "idle", "unpublished", "none") and job in SLOTS:
             try:
                 at = dt.datetime.fromisoformat(last["at"]) if last.get("at") else None
             except (ValueError, TypeError):
@@ -417,7 +453,9 @@ def fire(path=None, post=_post, env=None):
         try:
             out = post(f"https://api.anthropic.com/v1/claude_code/routines/{rid}/fire", token)
             j["fired"] = {"at": now.isoformat(timespec="seconds"), "day": j.get("prog_day") or day_of(now), "sig": j.get("sig"), "prog": j.get("prog"),
-                          "attempts": attempts, "resp": _resp(out), **({"forced": True} if job in force else {})}
+                          "attempts": attempts, "resp": _resp(out), **({"forced": True} if job in force else {}),
+                          **({"now": True} if job_now else {})}
+            j.pop("now_pending", None)
             results[job] = "Claude を起こした" + (f"（{attempts} 回目：前は動かなかった）" if attempts > 1 else "")
         except Exception as e:   # 起こせなくても、定時のほうで拾われる
             results[job] = f"起こせなかった：{str(e)[:80]}"

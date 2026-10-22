@@ -63,6 +63,7 @@ class Entry:
     image_via: str = ""  # 配图是出刊时补到的：从哪来（og:image、转载 xxx ……）；收集时自带的为空
     link: str = ""       # Google 新闻跳转链接还原出的原文地址（出刊时还原，存回 inbox，下次不用再问 Google）
     hot: bool = True     # Reddit 帖子火不火（reddit_hot）：不火的只算話題度的帖子数，不上版面
+    site: str = ""       # 媒体の網站（Google ニュースの <source url>）。収集の時点ではリンクがまだ Google の跳转なので、exclude_hosts はこれで見る。inbox にも書く（link を還元する前でも drop_reason・audit-match が網域を見られる）
 
 
 # 同じサイトへの間隔（秒）。収集は関注項ごとに並列（digest.COLLECT_WORKERS）なので、スレッド全部で共有する
@@ -197,6 +198,7 @@ def rss_bytes(data, source):
             url=(it.findtext("link") or "").strip(),
             published=_parse_date(it.findtext("pubDate")),
             source=(src.text if src is not None and src.text else source),
+            site=(src.get("url") or "") if src is not None else "",
             summary=_clean(it.findtext("description")),
             image=_image(it, it.findtext("description")),
         ))
@@ -526,6 +528,9 @@ def gdelt(query, lookback_days, langs):
             for a in arts if a.get("title") and a.get("url")]
 
 
+YT_OFFICIAL = "YouTube · "   # 公式チャンネルの RSS の出典名の頭（「YouTube · ILLIT」）。exclude_sources の「YouTube」（前方一致）はこれには効かない
+
+
 def youtube_channel(channel_id):
     """YouTube の公式チャンネルの新着動画（チャンネルごとの RSS、鍵なし）。チャンネルは関注項の公式（Wikidata P2397 か items.yaml の youtube）。"""
     if not re.fullmatch(r"UC[\w-]{22}", channel_id or ""):
@@ -544,7 +549,7 @@ def youtube_channel(channel_id):
         desc = next((d.text or "" for d in it.iter(f"{media}description")), "")
         if vid:
             out.append(Entry(title=_clean(it.findtext(f"{ATOM}title"), 200), url=f"https://www.youtube.com/watch?v={vid}",
-                             published=_parse_date(it.findtext(f"{ATOM}published")), source=f"YouTube · {author}",
+                             published=_parse_date(it.findtext(f"{ATOM}published")), source=f"{YT_OFFICIAL}{author}",
                              summary=_clean(desc), image=thumb))   # hqdefault は必ずある（maxresdefault は動画によってない）。小さければ hdimg が整える
     return out
 

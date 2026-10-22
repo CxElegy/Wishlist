@@ -36,7 +36,9 @@
 #                篇幅 S / M / L 在数据库 sizes 表里管理（db/sizes.sql），表里有这一项时以数据库为准
 #   size         可选，篇幅 S（少，每期 3 条、网页约一行）/ M（中等，5 条，默认）/ L（多，8 条、满满一整屏）。
 #                不用去数据库手动加：新关注项会自动写进 sizes 表；这里改了也会同步过去。在数据库里改的，这里不再改就以数据库为准
-#   exclude_sources 可选，这些来源（媒体名）的条目直接丢掉
+#   exclude_sources 可选，这些来源（媒体名）的条目直接丢掉。前方一致：「YouTube」也丢「YouTube on MSN」（后面接着 ASCII 英数字的不算：「note」不丢「Notebookcheck」，丢「note株式会社」）
+#   exclude_hosts 可选，这些网域（和下级网域）的条目直接丢掉：看还原后的原文链接・链接・Google 新闻给的媒体网站。众筹这种「不是新闻」的网站。
+#                写成 {host: 网域, title: 正则} = 这个网域里标题像这个正则的才丢（攻略 wiki 也出新闻：只丢攻略页）
 #   dedupe_others 可选，true = 别的关注项已经收过的同一件事（标题相近），这一项不再重复收
 #   hot_only     可选，true = 只要最火的事：按多少家媒体在报同一件事排序，同一件事合成一条，
 #                头条以外只留至少 4 家在报的；没那么多事就少写（不用 AI 编排时生效）
@@ -78,6 +80,16 @@ settings:
   max_entries_per_item: 30      # 每个关注项每期最多收集几条媒体报道
   max_reddit_per_item: 10       # 每个关注项每期最多收集几条 Reddit 帖子
   exclude_sources: [YouTube, 胡润百富, Unisba Media]   # 所有关注项都丢掉这些来源。胡润百富（hurun.net）2026-10 被黑，批量出色情 / 盗版「在线看」垃圾页。Unisba Media（media.unisba.ac.id）2026-10 被黑：标题 = 随便一条新闻 + 作品名 + 10 位随机码，页面 404
+  # 所有关注项都丢掉这些网域。写网域 = 整个网域（众筹：出典名会变「ReadyFor(クラウドファンディング)」，按网域丢；猫用品・网球都有）。
+  # {host, title} = 这个网域里标题像 title（正则）的才丢：攻略 wiki 的网站也出编辑部的新闻（GameWith 的新作发表・试玩评测、AI 编辑用过），
+  # 只丢攻略页的标题形（「【あつ森】…【あつまれどうぶつの森】」「【ゼンゼロ】…の評価」）。收集时链接是 Google 的跳转、看不到路径，所以按标题分。
+  # 电竞的直播页（escorenews 的「match stream, live broadcast」）不按网域丢：dota2 的 exclude「match stream」丢，escorenews 的新闻留着
+  exclude_hosts:
+    - readyfor.jp
+    - camp-fire.jp
+    - {host: gamewith.jp, title: &wiki_page '^\s*【[^】]+】(?:.*【[^】]+】(?:\s*[-|｜].{0,30})?\s*$|.*(?:評価|ステータス|攻略|一覧|やり方|方法|引くべき|ランキング|シミュレーター|おすすめ|入手|編成|条件))'}
+    - {host: game8.jp, title: *wiki_page}
+    - {host: altema.jp, title: *wiki_page}
   summarize: false              # true = 用 Claude API 编排报道（需要 ANTHROPIC_API_KEY，按量付费）
                                 # false = 不用 AI，按 priority_keywords 排序、用原标题（完全免费）
   model: claude-haiku-5-5       # 归纳用的模型
@@ -260,8 +272,8 @@ items:
       "new MMORPG release date", "MMORPG early access", "MMORPG closed beta",
       "MMORPG 新作 リリース", "MMORPG 正式サービス", "MMORPG 출시", "MMORPG 사전예약"
     ]
-    match: [MMORPG, MMO, 网游, 網遊, 大型多人]
-    exclude: [私服, 外挂, 代练, 金币, gold farming, 求人]
+    match: [MMORPG, 're:(?<![A-Za-z])MMOs?(?![A-Za-z])', 网游, 網遊, 大型多人]   # MMO 只认单独的词（大写）：普通词会命中「accommodation」（带狗住的旅馆）
+    exclude: [私服, 外挂, 代练, 金币, gold farming, 求人, MMO Week in Review, The Daily Grind, Make My MMO]   # 后 3 个：Massively OP 的周刊・闲聊专栏（不是新作的消息）
     news_langs: [zh-TW, en-US, ja-JP, ko-KR]
     max_entries: 40
     max_stories: 6
@@ -316,10 +328,21 @@ items:
     ]
     # 只收和雪场、雪板装备直接相关的：单独的「スキー」「ski」会混进选手、比赛、海外雪场
     match: [
-      スキー場, ゲレンデ, スノーリゾート, リフト券, シーズン券, 早割, スノーボード, スノボ, ビンディング,
+      スキー場, ゲレンデ, スノーリゾート, リフト券, スノーボード, スノボ, ビンディング,
       滑雪场, 雪场, 雪板, 单板, 固定器, 雪靴, 二世古, 白马,
       Niseko, ニセコ, Hakuba, 白馬, Japan ski, ski Japan, Japow, マウンテンリゾート,
-      26/27, 2027 snowboard, snowboard review, snowboard binding, Burton, CAPiTA, Ogasaka, オガサカ
+      2027 snowboard, snowboard review, snowboard binding, Ogasaka, オガサカ,
+      # 季号・泛词・常用词は雪の语と一緒のときだけ（CLAUDE.md「匹配词的写法」）：
+      # 「26/27」はサッカー（鹿島アントラーズ 2026/27 J1）・音楽祭（COUNTDOWN JAPAN 26/27）にも当たる。ski は単語だけ（skipper・skincare に当たらない）
+      # 英語の語の境は \b ではなく (?<![A-Za-z]) / (?![A-Za-z])：Python の \b はかな・漢字も単語の字にするので「CAPiTAの」「skiシーズン」に当たらない
+      're:(?is)(?=.*(?<!\d)(?:20)?26/27(?!\d))(?=.*(snowboard|(?<![A-Za-z])ski(?:s|ing|er|ers)?(?![A-Za-z])|スノーボード|スノボ|スキー|ビンディング|ゲレンデ))',
+      # 「早割」「シーズン券」はお歳暮・服（マウンテンパーカー）・化粧品（パウダー・雪肌精・リフトアップ）・キャンプ用品・雪まつりの早割にも当たる：
+      # 相手の語は単独のマウンテン・スノー・パウダー・雪・リフトにしない（雪は 雪山・雪質… の具体的な語、リフトは リフト券・リフト運行…）
+      're:(?is)(?=.*(早割|シーズン券))(?=.*(スキー|ゲレンデ|リフト(?:券|料金|運行|営業|乗り場|1日|一日)|雪山|雪質|積雪|降雪|雪上|新雪|(?<![A-Za-z])ski(?:s|ing|er|ers)?(?![A-Za-z])|スノーリゾート|スノーボード|スノボ|マウンテンリゾート|ネコマ))',
+      're:(?<![A-Za-z])CAPiTA(?![A-Za-z])',   # ブランドの書き方そのまま（区別する）：「Vernal Capital」「per capita」に当たらない
+      're:(?is)(?=.*(?<![A-Za-z])Capita(?![A-Za-z]))(?=.*(snowboard|スノー|スノボ|(?<![A-Za-z])DOA(?![A-Za-z])|Mercury|Ultrafear|Defenders of Awesome|(?<![A-Za-z])review(?![A-Za-z])))',   # 「Capita」は英国の Capita plc にも：雪板の語と一緒のときだけ
+      # Burton は人名（Tim Burton）・地名にも多い：雪・板の語か Burton のモデル名と一緒のときだけ（r/snowboarding の比べの帖子は要約に「board」しかない）
+      're:(?is)(?=.*(?<![A-Za-z])Burton(?![A-Za-z]))(?=.*(snow|スノー|スノボ|(?<![A-Za-z])ski(?:s|ing|er|ers)?(?![A-Za-z])|スキー|雪山|雪上|ゲレンデ|binding|ビンディング|(?<![A-Za-z])boards?(?![A-Za-z])|バートン|Step On|(?<![A-Za-z])(?:Custom|Process|Ripcord|Yeasayer|Feelgood|Blossom|Kilroy|Cartel|Malavita)(?![A-Za-z])))'
     ]
     exclude: [
       ジャンプ, W杯, World Cup, 五輪, Olympic, 選手, 選抜, Team, X Games, World Tour,
@@ -391,6 +414,7 @@ items:
     ]
     exclude: [
       Marvel Rivals, 漫威争锋, 漫威爭鋒, Marvel Snap, 漫威终极逆转, Marvel Contest, LEGO, 乐高, 手办, Funko, Hasbro, adidas,
+      Hot Toys, Marvel Legends, Beast Kingdom, figure reveals, collectible figure, premium figure,   # 手办的新品。单独的「figure」「deluxe」「action figure」不写：会丢「hooded figures」（宣传片）「Figured Out」「4K Deluxe Edition」・手办透露剧情的帖子
       MPU, 微控制器, 晶片, 芯片, 半導體, 半导体, 飆股, 供應商, 供应商, Chancellor, University,   # MCU 也是微控制器、大学的缩写
       小學館, 小学馆   # 「小學館復仇者聯盟」是漫画家
     ]
@@ -738,7 +762,7 @@ items:
       # 测评 / 横评 / 排行一般不要
       ランキング, おすすめ, 徹底比較, 比較, 評測, 评测, 测评, 推薦, 推荐, 排行, Tested, Review, Comparison, " vs ", Top Picks, coupon, "10 Best", I finally found,
       # 救助、领养、求助、个人故事不要
-      譲渡, 保護猫, 救助, 支援, 寄付, 活動報告, 実話, 闘病, 领养, 領養, 走失, 倒毙, インフルエンザ
+      譲渡, 保護猫, 保護子猫, 救助, 支援, 寄付, 活動報告, 実話, 闘病, 领养, 領養, 走失, 倒毙, インフルエンザ
     ]
     exclude_sources: ["クラウドファンディング - READYFOR", note, Catster]   # 众筹求助、个人博客、测评站
     dedupe_others: true   # 别的关注项已经收过的同一件事（如星巴克马克杯板块的黑猫杯），这里不再重复收
@@ -809,7 +833,7 @@ items:
       JapanOpenTennis, KinoshitaGroupJapanOpen, PanPacificOpen, TorayPPO,
       日本网球公开赛, 东丽泛太平洋, 東麗泛太平洋
     ]
-    exclude: [テニスの王子様, テニプリ, 求人, バドミントン, ゴルフ]
+    exclude: [テニスの王子様, テニプリ, 求人, バドミントン, ゴルフ, 試合対戦データ, 試合スタッツ, テニス速報]   # 后 3 个是比分网站自动生成的每场比赛的页（inbox 79 条里 20 条）
     news_langs: [ja-JP, zh-TW]
     priority: 大阪那站（WTA250 木下グループジャパンオープン）周末能不能和同学去现场看：哪天打哪一轮、门票、谁出场；其次是东京的东丽 PPO（WTA500）
     priority_keywords: [
@@ -952,7 +976,7 @@ items:
     ]
     # 「ジェラート」单独会混进冰淇淋，必须是完整的牌子名
     match: [ジェラートピケ, ジェラート・ピケ, ジェラピケ, gelato pique, gelatopique, ジェラートピケカフェ]
-    exclude: [求人, 中古, メルカリ, 転売, 株価, stock price, 闲鱼, 二手, 代购, 本物, 定番新品, au PAY, PayPayフリマ, ラクマ, Yahoo!ショッピング]   # 后面几个是网店 / 二手的商品页
+    exclude: [求人, 中古, メルカリ, 転売, 株価, stock price, 闲鱼, 二手, 代购, 本物, 定番新品, au PAY, PayPayフリマ, ラクマ, Yahoo!ショッピング, 最終値下げ]   # 后面几个是网店 / 二手的商品页
     news_langs: [ja-JP, zh-TW]
     max_entries: 30
     max_stories: 5
@@ -1341,7 +1365,7 @@ items:
     subtitle: "Dota 2"
     keywords: ["dota2", "Dota 2", "도타 2", "Dota 2 esports", "Dota 2 大会", "dota2 電競"]
     match: ["dota2", "Dota 2", "도타 2", "刀塔2", "DOTA2", "DotA 2", "Defense of the Ancients 2"]
-    exclude: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂"]
+    exclude: ["リーク", "leak", "爆料", "傳聞", "传闻", "rumor", "噂", "Betting", "Prediction", "match stream", "tier list"]   # 后 4 个：赌盘预测・直播页（escorenews 等的「match stream, live broadcast」：网域不丢，新闻留着）・强度排行
     news_langs: ["zh-TW", "en-US", "ja-JP", "zh-CN"]
     priority: "电竞赛事的日程和结果、战队消息"
     site: "http://www.dota2.com/"

@@ -250,10 +250,26 @@ SPAM_URL = re.compile(r"微信|威信|薇信|加V|伴游|外围|上门|模特.{0
 SPAM_HOSTS = ("unisba.ac.id",)   # Unisba Media（2026-10 被黑、標題 = 別の記事 + 作品名 + 10 位随機コード、ページは 404）
 
 
+def host_in(url, hosts):
+    """url の網域が hosts のどれか、またはその下位網域か（www.gamewith.jp も gamewith.jp に当たる。notgamewith.jp は当たらない）。"""
+    host = (urllib.parse.urlsplit(url or "").hostname or "").lower()
+    return bool(host) and any(host == h or host.endswith("." + h) for h in (x.lower() for x in hosts))
+
+
+def host_rule_hit(rules, title, urls):
+    """exclude_hosts のどれかに当たるか。文字列 = その網域（と下位網域）まるごと。
+    {host, title} = その網域で、標題が title（正規表現）に当たるものだけ：攻略 wiki の網域（GameWith）は編集部のニュースも出すので、攻略頁の標題の形だけ落とす。
+    収集の時点のリンクは Google の跳转で網址の道（path）がわからないので、道ではなく標題で分ける。"""
+    for r in rules or []:
+        host, pat = (r.get("host"), r.get("title")) if isinstance(r, dict) else (r, None)
+        if host and any(host_in(u, (host,)) for u in urls if u) and (not pat or re.search(pat, title or "")):
+            return True
+    return False
+
+
 def is_spam(title, url=""):
     if url:
-        host = (urllib.parse.urlsplit(url).hostname or "").lower()
-        if any(host == h or host.endswith("." + h) for h in SPAM_HOSTS):
+        if host_in(url, SPAM_HOSTS):
             return True
         if SPAM_URL.search(urllib.parse.unquote(urllib.parse.urlsplit(url).query)):
             return True
@@ -323,16 +339,59 @@ def match_hit(item, e):
     return None
 
 
+def source_in(source, names):
+    """出典名の除外（exclude_sources）は前方一致：「YouTube」で「YouTube on MSN」も外れる。
+    続く 1 字が ASCII の英数字のときは別の名前（「note」で「Notebookcheck」「notes」は外さない）。
+    漢字・かな・記号が続くのは同じ媒体（「YouTubeチャンネル」「note株式会社」「胡润百富网」も外す）。公式チャンネル（sources.YT_OFFICIAL）は drop_reason で別扱い。"""
+    def other(c):
+        return c.isascii() and c.isalnum()
+    return any(source == s or source.startswith(s) and not other(source[len(s)]) for s in names if s)
+
+
+def drop_reason(e, item, settings):
+    """この記事を収めない理由（出典名・網域・垃圾・除外語・匹配词）。収めるなら None。
+    収集（filter_entries）と audit-match が同じ規則を使う。網域は e.link（還元した原文）・e.url・e.site（Google ニュースの媒体の網站）で見る。"""
+    if not e.source.startswith(sources.YT_OFFICIAL) and \
+            source_in(e.source, [*settings.get("exclude_sources", ["YouTube"]), *(item.get("exclude_sources") or [])]):
+        return "exclude_sources"   # 公式チャンネル（YouTube · ILLIT）は関注項が自分で選んだ情報源なので「YouTube」の除外に入れない
+    hosts = [*(settings.get("exclude_hosts") or []), *(item.get("exclude_hosts") or [])]
+    if host_rule_hit(hosts, e.title, (e.link, e.url, getattr(e, "site", ""))):
+        return "exclude_hosts"
+    if any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title, e.link or e.url):
+        return "垃圾"
+    if any(w.lower() in e.title.lower() for w in item.get("exclude") or []):
+        return "exclude"
+    if match_hit(item, e) is None:
+        return "match"
+    return None
+
+
+def _google_jump(url):
+    return host_in(url, ("news.google.com",))
+
+
 def audit_match(days=4, only=None):
     """检查误收：最近几天 inbox 里每个关注项的条目按「靠哪个匹配词进来的」分组列出来，
-    并标出按现在的 match / exclude 已经不会再收的（✗）。加关注项、改匹配词之后跑一次，看有没有不相关的混进来。"""
-    _, items = load_config()
+    并标出按现在的规则已经不会再收的（✗，后面写理由：match / exclude / 垃圾 / exclude_sources / exclude_hosts，和收集的 drop_reason 同一个）。
+    加关注项、改匹配词之后跑一次，看有没有不相关的混进来。"""
+    settings, items = load_config()
     paths = sorted(p for p in INBOX_DIR.glob("????-??-??.json"))[-days:]
+    # Google の跳转で link・site がない記事（site を inbox に書く前に集めたもの）は網域を判定できない。
+    # 同じ出典名の記事で網域がわかったものから「除外の網域の媒体」を推して、見えない分の件数を最後に出す
+    hosts = [*(settings.get("exclude_hosts") or []), *(h for i in items for h in i.get("exclude_hosts") or [])]
+    rule_hosts = [r.get("host") if isinstance(r, dict) else r for r in hosts]
+    host_src = {}   # 出典名 → 網域がわかった記事の網域（除外の網域のもの）
+    for path in paths:
+        for raw in load_json(path).get("items", []):
+            for d in raw["entries"]:
+                h = next((h for u in (d.get("link"), d.get("site"), d.get("url")) for h in rule_hosts if h and host_in(u, (h,))), None)
+                if h:
+                    host_src.setdefault(d["source"], h)
+    blind, blind_ex = 0, {}
     for item in items:
         if only and item["name"] not in only:
             continue
-        exclude = [w.lower() for w in item.get("exclude") or []]
-        groups = {}
+        groups, gone_n = {}, 0
         for path in paths:
             for raw in load_json(path).get("items", []):
                 if raw["name"] != item["name"]:
@@ -340,19 +399,29 @@ def audit_match(days=4, only=None):
                 for d in raw["entries"]:
                     e = entry_from_dict(d)
                     hit = match_hit(item, e)
-                    gone = hit is None or any(w in e.title.lower() for w in exclude)
-                    groups.setdefault(hit or "(不再匹配)", []).append(("✗ " if gone else "  ") + e.title[:90])
-        print(f"===== {item['name']}（{sum(len(v) for v in groups.values())} 条）")
+                    why = drop_reason(e, item, settings)
+                    gone_n += bool(why)
+                    if not why and not e.link and not e.site and _google_jump(e.url):
+                        blind += 1
+                        if e.source in host_src and host_rule_hit(hosts, e.title, (f"https://{host_src[e.source]}/",)):
+                            blind_ex[e.source] = blind_ex.get(e.source, 0) + 1   # 標題の形の規則（攻略頁だけ）も当てる
+                    groups.setdefault(hit or "(不再匹配)", []).append(
+                        (f"✗ [{why}] " if why else "  ") + e.title[:90])
+        print(f"===== {item['name']}（{sum(len(v) for v in groups.values())} 条、✗ {gone_n}）")
         for w, titles in sorted(groups.items(), key=lambda kv: -len(kv[1])):
             print(f"  [{w}] {len(titles)}")
             for t in titles[:8]:
                 print(f"     {t}")
+    if blind:
+        ex = "、".join(f"{s} {n}" for s, n in sorted(blind_ex.items(), key=lambda kv: -kv[1]))
+        print(f"\n網域を判定できない（Google の跳转で link・site がない）：{blind} 件"
+              + (f"。うち出典名が除外の網域の媒体と同じもの {sum(blind_ex.values())} 件（{ex}）は、収集の時点なら exclude_hosts で外れる"
+                 if blind_ex else ""))
 
 
 def filter_entries(entries, item, settings, seen, now, known=()):
     names = [item["name"], *(item.get("keywords") or []), *(item.get("match") or [])]
     since = now - dt.timedelta(days=settings.get("lookback_days", 7))
-    exclude = [w.lower() for w in item.get("exclude") or []]
     # 同一篇文章常同时出现在 Google 和 Bing：每个标题只留一条，优先国外网站（大陆网站常拦海外服务器、
     # 图片防盗链），其次能直接打开原文的（Google 是跳转页，拿不到配图）
     def rank(e):
@@ -364,23 +433,16 @@ def filter_entries(entries, item, settings, seen, now, known=()):
         if key not in best or rank(e) > rank(best[key]):
             best[key] = e
     out, grams = [], [_title_grams(t, names) for t in known]
-    skip_sources = set(settings.get("exclude_sources", ["YouTube"])) | set(item.get("exclude_sources") or [])
     # 标题相近的转载只留先看到的那条：国外网站先看，同一件事有国外报道就不收大陆网站的；最后再按时间排回来
     for e in sorted(best.values(), key=lambda e: (sources.is_domestic(e.url, e.source),
                                                   -(e.published or now).timestamp())):
         key = title_key(e.title)
-        if e.url in seen or key in seen or e.source in skip_sources:
-            continue
-        if any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title, e.link):
-            continue
+        if e.url in seen or key in seen or drop_reason(e, item, settings):
+            continue   # 出典名（前方一致）・網域・垃圾・除外語・匹配词（audit-match と同じ drop_reason）
         g = _title_grams(e.title, names)
         if any(_similar(g, h) for h in grams):
             continue
         if e.published and e.published < since:
-            continue
-        if any(w in e.title.lower() for w in exclude):
-            continue
-        if match_hit(item, e) is None:
             continue
         grams.append(g)
         out.append(e)
@@ -858,7 +920,9 @@ def discover(force=False, taste=None):
             print(f"  [同类] {q['query']} 失败：{err}", file=sys.stderr)
             continue
         for e in found[:20]:
-            if e.source == "YouTube" or any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title):
+            if source_in(e.source, settings.get("exclude_sources", ["YouTube"])) or \
+                    host_rule_hit(settings.get("exclude_hosts"), e.title, (e.url, e.site)) or \
+                    any(re.search(p, e.title) for p in JUNK_PATTERNS) or is_spam(e.title):   # 出典名（前方一致）・網域は収集と同じ
                 continue
             if e.published and e.published < since:
                 continue
@@ -1176,7 +1240,7 @@ def export_photos():
 #   str:N 不超过 N 字的一句话；list:N:M 最多 N 个、每个不超过 M 字的字符串列表
 ITEM_FIELDS = {
     "type": "type", "parent": "str:80", "section": "section", "subs": "subs", "also": "also", "media": "list:8:20", "size": "size", "subtitle": "str:80",
-    "keywords": "list:12:100", "match": "list:30:100", "exclude": "list:30:100", "news_langs": "langs",
+    "keywords": "list:40:100", "match": "list:80:100", "exclude": "list:80:100", "news_langs": "langs",
     "priority": "str:300", "urgent_patterns": "regex", "site": "url",
     "steam_appid": "int", "anilist_id": "int", "anilist_type": "anilist_type", "tmdb": "tmdb", "notes": "str:1500",
 }
@@ -1201,6 +1265,12 @@ def _clean_field(key, value):
             # re: の規則（「名前」と「面の言葉」が同時に出る、の先読み）は長くなるので 600 字まで
             if len(out) > most or any(len(v) > (600 if v.startswith("re:") else longest) for v in out):
                 raise ValueError(f"{key} 太多或太长")
+            for v in out:   # 壊れた re:（括弧の閉じ忘れ）は依頼の段で断る：通すと毎回の収集で re.search が例外を出す
+                if v.startswith("re:"):
+                    try:
+                        re.compile(v[3:])
+                    except re.error as err:
+                        raise ValueError(f"{key} 的正则写错了：{v[:40]}（{err}）") from None
         elif rule == "langs":
             if any(v not in NEWS_LANGS for v in out):
                 raise ValueError(f"news_langs 只支持 {'/'.join(NEWS_LANGS)}")
@@ -1306,6 +1376,15 @@ def _item_span(lines, name):
     return (start, len(lines)) if start is not None else None
 
 
+def _yaml_closed(lines):
+    """items.yaml の 1 欄の行（`    key: …` から）が、それだけで YAML として読めるか（[ … ] が閉じているか）。"""
+    try:
+        yaml.safe_load("\n".join(lines))
+        return True
+    except yaml.YAMLError:
+        return False
+
+
 def set_item_fields(text, name, fields):
     """只改 items.yaml 里关注项 name 的这几个字段（None = 删掉），别的字段、注释、顺序都不动。返回新的全文。"""
     lines = text.split("\n")
@@ -1324,6 +1403,10 @@ def set_item_fields(text, name, fields):
             continue
         stop = at + 1   # 这个字段占的行：后面缩进更深的（列表、多行文字），中间的空行也算
         while stop < len(block) and (not block[stop].strip() or len(block[stop]) - len(block[stop].lstrip()) > 4):
+            stop += 1
+        # 複数行の [ … ] / { … }：閉じ括弧の行（`    ]`）は字下げが同じなので上では止まる。値が閉じるまで（間のコメント行も）一緒に置き換える
+        # （閉じ括弧を残すと YAML が壊れ、take_item_requests が依頼を skipped にしていた：滑雪・猫用品・漫威电影 などの match / exclude）
+        while stop < len(block) and not _yaml_closed(block[at:stop]) and re.match(r"^(?:    [\]}#]|\s{5,}|\s*$)", block[stop]):
             stop += 1
         while stop - 1 > at and not block[stop - 1].strip():
             stop -= 1
@@ -2565,12 +2648,15 @@ def entry_to_dict(n, e):
         d["image_via"] = e.image_via
     if e.link:
         d["link"] = e.link
+    if e.site:
+        d["site"] = e.site   # Google ニュースの媒体の網站：link を還元する前でも exclude_hosts（drop_reason）で見られる
     return d
 
 
 def entry_from_dict(d):
     return sources.Entry(title=d["title"], url=d["url"], source=d["source"], summary=d.get("summary", ""),
                          image=d.get("image", ""), image_via=d.get("image_via", ""), link=d.get("link", ""),
+                         site=d.get("site", ""),
                          published=dt.datetime.fromisoformat(d["date"]) if d.get("date") else None)
 
 
@@ -2629,6 +2715,69 @@ def update_heat():
 COLLECT_WORKERS = 6   # 收集时同时抓几个关注项（GitHub Actions 的机器 4 核；等网络为主，所以比核数多一点）
 LIVE_AFTER_MIN = 3    # 收集・出刊结束后到新网页出现大约几分钟（提交・推送 + Pages 发布）
 LIVE_EDIT_FILE = pathlib.Path("/tmp/wishlist-live-edit.json")  # AI 编辑这一回从几点开始、编哪些版面（同一个容器里用）
+# 収集の締め切り：始めてからこの分数を過ぎたら新しい版面を始めない（残りは次の回へ、次の回はそれを先に取る）。
+# digest.yml の timeout-minutes（40）の前に、出刊・通知・push の時間を残す（2026-10-22：22 分かかった回があり、30 分で切れると push の前に全部消える）
+COLLECT_DEADLINE_MIN = 18
+# 始まった版面が固まったとき（GDELT の 429 の空待ちなど）も、締め切り＋この分数で待つのをやめて先へ進む（その版面は次の回へ）
+COLLECT_GRACE_MIN = 5
+LAST_INGEST = {}   # この回の締め切り・失敗（logged_ingest がログに書く）：{"deferred": [名前], "failed": {名前: 理由}}
+
+
+def deferred_from_log(log_dir=None):
+    """前の回に時間切れで取らなかった版面（state/log/collect.json の最後の deferred）。この回はそれを先に取る。"""
+    import runlog
+    for r in reversed(runlog.load("collect", log_dir)):
+        if "secs" in r:   # 収集が終わった行（secs つき）までさかのぼって、その回の deferred
+            return []
+        if r.get("deferred"):
+            return list(r["deferred"])
+    return []
+
+
+def fetch_order(items, deferred, backfill=()):
+    """取る順番：前の回に取れなかった版面と、初めて取る版面（backfill：新しく加えた関注項は items の末尾に入り、42 日分で重い）を先に。
+    毎回同じ版面が時間切れにならないように・新関注項の「すぐ AI 編集」が時間切れで黙って失われないように。去重はあとで元の順に戻してする。"""
+    first = set(deferred or []) | set(backfill or [])
+    return [i for i in items if i["name"] in first] + [i for i in items if i["name"] not in first]
+
+
+def run_parallel(fn, items, workers, timeout, key=lambda i: i["name"]):
+    """items を workers 本で fn にかける。→ (結果 {key: 値}, 終わらなかった key のリスト)。
+    timeout 秒たっても終わらない版面は待たない（daemon のスレッドなので、固まった 1 本がプロセスの終わりも止めない。
+    ThreadPoolExecutor は with を抜けるときも終了時も全部のスレッドを待つので、1 本固まると 40 分の timeout で push の前に全部消える）。"""
+    import queue
+    import threading
+    import time
+    todo, lock, done, out = queue.Queue(), threading.Lock(), threading.Event(), {}
+    for i in items:
+        todo.put(i)
+    left = [len(items)]
+
+    def worker():
+        while not done.is_set():
+            try:
+                i = todo.get_nowait()
+            except queue.Empty:
+                return
+            try:
+                r = fn(i)
+            except Exception:  # noqa: BLE001  fn が自分で拾う。ここまで来たら空
+                r = None
+            with lock:
+                if not done.is_set():
+                    out[key(i)] = r
+                    left[0] -= 1
+                    if not left[0]:
+                        done.set()
+    if not items:
+        return {}, []
+    for _ in range(max(1, min(workers, len(items)))):
+        threading.Thread(target=worker, daemon=True).start()
+    done.wait(timeout)
+    with lock:
+        done.set()   # これより後に終わった版面の結果は捨てる（もう順番の処理に入っている）
+        got = dict(out)
+    return got, [key(i) for i in items if key(i) not in got]
 
 
 def _run_min(proc, default_secs):
@@ -2656,6 +2805,40 @@ def live_mark(board, state=None, found=0, started=None, eta=None, proc="collect"
         print(f"  （版面状态没写进数据库：{err}）", file=sys.stderr)
 
 
+def _ingest_one(item, raw, bconf, settings, facts, seen, now, compare, dry_run, late=False):
+    """1 版面分の順番どおりの処理（去重・状態・封面）。→ (inbox の 1 項目 か None, 収めた entries)。
+    seen / known は呼ぶ側が、ここが最後まで通ったときだけ足す（途中で例外なら、その版面は何も残さない）。
+    late = 締め切りを過ぎた：封面はネットに出ずに取れる分だけ（site の og:image は scrapling・ブラウザで数分のびることがある）。"""
+    backfill, conf = bconf
+    if backfill:
+        print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
+    entries = filter_entries(raw, item, conf, seen, now, compare)
+    # 不火的 Reddit 帖子（sources.reddit_hot）不上版面，只记下来给話題度数帖子数；以后上了最热榜还会再收进来
+    cold = [e for e in entries if not getattr(e, "hot", True)]
+    entries = [e for e in entries if getattr(e, "hot", True)]
+    print(f"  {item['name']} 新条目 {len(entries)} 条" + (f"（另有不火的 SNS {len(cold)} 帖，只算話題度）" if cold else ""),
+          file=sys.stderr)
+    if dry_run:
+        print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
+        return None, entries
+    item_facts, status_cover = status_facts(item, settings, facts)
+    if not entries and not cold and not any(f["changed"] for f in item_facts):
+        return None, entries
+    cover = (item.get("cover") or status_cover) if late else find_cover(item, status_cover)
+    return {
+        "name": item["name"],
+        "priority": item.get("priority", ""),
+        **({"backfill": True} if backfill else {}),
+        "facts": item_facts,
+        "cover": cover,
+        # 补抓的是旧闻，不算要紧，不发 Discord
+        "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item)}
+                    for n, e in enumerate(entries, 1)],
+        **({"reddit_cold": [{"url": e.url, "date": e.published.isoformat() if e.published else None, "source": e.source}
+                            for e in cold]} if cold else {}),
+    }, entries
+
+
 def ingest(dry_run=False):
     """收集本期原始条目到 inbox/。返回写入的文件路径（没有新内容时返回 None）。"""
     settings, items = load_config()
@@ -2671,13 +2854,20 @@ def ingest(dry_run=False):
         backfill = not has_history(item["name"])
         confs[item["name"]] = (backfill, dict(settings, lookback_days=settings.get("first_lookback_days", 42)) if backfill else settings)
     # 联网抓取最花时间，各关注项互不相干：并行抓（同一网站的间隔由 sources._pace 在线程之间共享）。
-    # 去重要按顺序（前面的关注项收过的，后面的不再收），所以抓完后照原来的顺序一项一项处理
-    from concurrent.futures import ThreadPoolExecutor
+    # 去重要按顺序（前面的关注项收过的，后面的不再收），所以抓完后照原来的顺序一项一项处理（run_parallel）
 
     live = not dry_run
     started = {}
     if live:
         live_mark(None)  # 上一次收集留下的行清掉
+    import threading
+    import time
+    t_start, budget = time.monotonic(), COLLECT_DEADLINE_MIN * 60
+    # 待つのをやめた（固まった）版面のスレッドは daemon で走り続ける。打ち切ったあと（cut）は帯（live_status）を立て直さない：
+    # 本体が消した帯に、今回 inbox に何も書かない版面の「新着 N 件 · AI 整理待ち」が次の収集まで残らないように
+    cut = threading.Event()
+    t_deferred, t_failed = [], {}   # スレッドが書く（固まった 1 本があとで書き足すこともある）。順番の処理は写しの deferred / failed
+    LAST_INGEST.clear()
 
     def compare_for(item):
         compare = known.get(item["name"], [])
@@ -2693,59 +2883,82 @@ def ingest(dry_run=False):
     shown = {}  # 版面 → 网页上现在显示的新记事件数（None = 条已消失）
 
     def fetch(item):
-        print(f"抓取：{item['name']}", file=sys.stderr)
         name = item["name"]
+        if time.monotonic() - t_start > budget:   # 締め切りを過ぎた：この版面は始めない（次の回に先に取る）
+            t_deferred.append(name)
+            return None
+        print(f"抓取：{item['name']}", file=sys.stderr)
         if live:  # 网页上只有这个版面出「正在找新记事」的条
             started[name] = dt.datetime.now(dt.timezone.utc)
-            live_mark(name, "fetch", started=started[name])
-        raw = collect(item, confs[name][1])
+            if cut.is_set():
+                return None
+            live_mark(name, "fetch", started=started[name])   # Supabase への書き込みはロックの外（遅くてもほかの版面を待たせない）
+            if cut.is_set():   # 書いている間に打ち切られた：自分の帯は自分で消す
+                live_mark(name, None)
+                return None
+        try:
+            raw = collect(item, confs[name][1])
+        except Exception as err:  # noqa: BLE001  1 版面の失敗で収集全体を止めない（その版面は空・ログに残す）
+            t_failed[name] = f"{type(err).__name__}: {str(err)[:80]}"
+            print(f"  {name} の取得に失敗（この版面は空で続ける）：{t_failed[name]}", file=sys.stderr)
+            if live:
+                live_mark(name, None)
+            return None
         if live:  # 这个版面一抓完就判断：没有新记事 → 条消失；有 → 「新着 N 件」。
             # 抓取期间 seen / known 都不变（只读），所以在线程里先数一遍；之后按顺序去重时件数变了再改
             try:
                 n = len(filter_entries(raw, item, confs[name][1], seen, now, compare_for(item)))
             except Exception:  # noqa: BLE001
                 n = None
+            if cut.is_set():   # 打ち切ったあとに終わった：結果は捨てられる（run_parallel）ので帯も書かない
+                return raw
             if n is not None:
                 shown[name] = n or None
                 live_mark(name, "found" if n else None, n, started.get(name), eta())
+                if cut.is_set():   # 書いている間に打ち切られた：帯を残さない
+                    live_mark(name, None)
         return raw
-    with ThreadPoolExecutor(max_workers=COLLECT_WORKERS) as pool:
-        fetched = list(pool.map(fetch, items))
+    order = fetch_order(items, [] if dry_run else deferred_from_log(), [n for n, (b, _) in confs.items() if b])
+    got, stuck = run_parallel(fetch, order, COLLECT_WORKERS, budget + COLLECT_GRACE_MIN * 60)
+    cut.set()
+    deferred, failed = list(t_deferred), dict(t_failed)   # 固まったスレッドがあとで書き足しても、ここからは手元の写しを使う
+    for name in stuck:   # 締め切り＋余裕を過ぎても終わらなかった（固まった）版面：次の回へ
+        if name not in deferred:
+            deferred.append(name)
+        if name in started and live:
+            live_mark(name, None)
+    if stuck:
+        print(f"  {len(stuck)} 版面が {COLLECT_DEADLINE_MIN + COLLECT_GRACE_MIN} 分で終わらず、待たずに先へ：{'、'.join(stuck[:8])}", file=sys.stderr)
+    fetched = [got.get(i["name"]) for i in items]   # 去重は元の順番（前の関注項が収めたものは後ろで収めない）
+    if deferred:
+        print(f"時間切れ（{COLLECT_DEADLINE_MIN} 分）で {len(deferred)} 版面を次の回へ：{'、'.join(deferred[:8])}", file=sys.stderr)
 
     inbox_items = []
     for item, raw in zip(items, fetched):
-        backfill, conf = confs[item["name"]]
-        if backfill:
-            print(f"  {item['name']} 第一次收集：往前看 {conf['lookback_days']} 天", file=sys.stderr)
-        entries = filter_entries(raw, item, conf, seen, now, compare_for(item))
-        # 不火的 Reddit 帖子（sources.reddit_hot）不上版面，只记下来给話題度数帖子数；以后上了最热榜还会再收进来
-        cold = [e for e in entries if not getattr(e, "hot", True)]
-        entries = [e for e in entries if getattr(e, "hot", True)]
-        print(f"  {item['name']} 新条目 {len(entries)} 条" + (f"（另有不火的 SNS {len(cold)} 帖，只算話題度）" if cold else ""),
-              file=sys.stderr)
-        if live and shown.get(item["name"], -1) != (len(entries) or None):  # 按顺序去重后件数变了（被前面的版面收走）才改
-            live_mark(item["name"], "found" if entries else None, len(entries), started.get(item["name"]), eta())
-        if dry_run:
-            print(f"===== {item['name']} =====\n{format_entries(entries)}\n")
+        if raw is None:   # 時間切れで始めなかった・取得に失敗した版面：今回は何も書かない
             continue
-        item_facts, status_cover = status_facts(item, settings, facts)
-        if not entries and not cold and not any(f["changed"] for f in item_facts):
+        name = item["name"]
+        before = {k: v for k, v in facts.items() if (v or {}).get("item") == name}
+        try:
+            rec, entries = _ingest_one(item, raw, confs[name], settings, facts, seen, now, compare_for(item),
+                                       dry_run, late=time.monotonic() - t_start > budget)
+        except Exception as err:  # noqa: BLE001  1 版面の失敗（壊れた re: の match など）で収集全体を止めない
+            failed[name] = f"{type(err).__name__}: {str(err)[:80]}"
+            print(f"  {name} の処理に失敗（この版面は空で続ける）：{failed[name]}", file=sys.stderr)
+            for k in [k for k, v in facts.items() if (v or {}).get("item") == name]:   # 途中で書いた状態は元に戻す
+                facts.pop(k)
+            facts.update(before)
+            if live:
+                live_mark(name, None)
             continue
-        inbox_items.append({
-            "name": item["name"],
-            "priority": item.get("priority", ""),
-            **({"backfill": True} if backfill else {}),
-            "facts": item_facts,
-            "cover": find_cover(item, status_cover),
-            # 补抓的是旧闻，不算要紧，不发 Discord
-            "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item)}
-                        for n, e in enumerate(entries, 1)],
-            **({"reddit_cold": [{"url": e.url, "date": e.published.isoformat() if e.published else None, "source": e.source}
-                                for e in cold]} if cold else {}),
-        })
+        if live and shown.get(name, -1) != (len(entries) or None):  # 按顺序去重后件数变了（被前面的版面收走）才改
+            live_mark(name, "found" if entries else None, len(entries), started.get(name), eta())
+        if rec:
+            inbox_items.append(rec)
         for e in entries:
             seen.update((e.url, title_key(e.title)))
-        known.setdefault(item["name"], []).extend(e.title for e in entries)
+        known.setdefault(name, []).extend(e.title for e in entries)
+    LAST_INGEST.update(deferred=deferred, failed=failed)
 
     if dry_run:
         return None
@@ -3541,9 +3754,21 @@ def logged_ingest():
     runlog.add("collect", f"新着 {sum(new.values())} 件（{len(new)} 版面）" + (f"：{top}" if top else ""),
                "ok" if new else "info", count=sum(new.values()), secs=round(time.time() - t0), workers=COLLECT_WORKERS,
                res=resources.snapshot())
-    if intel.health():   # 情報員の情報源ごとの様子（取れなかった所は名前と理由）
-        print("情報員：" + intel.health(), file=sys.stderr)
-        runlog.add("collect", "情報員 " + intel.health(), "info")
+    deferred, failed = LAST_INGEST.get("deferred") or [], LAST_INGEST.get("failed") or {}
+    if deferred:   # 次の回はこの版面から取る（deferred_from_log）
+        runlog.add("collect", f"時間切れで {len(deferred)} 版面を次の回へ（{COLLECT_DEADLINE_MIN} 分）：" + "、".join(deferred[:6]),
+                   "warn", deferred=list(deferred))
+    if failed:
+        runlog.add("collect", f"取得・処理に失敗した {len(failed)} 版面は空で続けた：" + "、".join(f"{k}（{v}）" for k, v in list(failed.items())[:3]),
+                   "warn", failed=dict(failed))
+    try:
+        health = intel.health()   # 情報員の情報源ごとの様子（取れなかった所は名前と理由）
+    except Exception as e:  # noqa: BLE001  ログの 1 行が抜けるだけ：収集の結果（inbox）の push を止めない
+        health = ""
+        print(f"情報員の様子が読めない：{e}", file=sys.stderr)
+    if health:
+        print("情報員：" + health, file=sys.stderr)
+        runlog.add("collect", "情報員 " + health, "info")
     return path
 
 

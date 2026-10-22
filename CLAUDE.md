@@ -150,7 +150,12 @@
   不火的不上版面，只记进 inbox 的 `reddit_cold` 给話題度数帖子数。已经上了版面的帖子每天复查一次：被删（[removed]/[deleted]）或掉出榜就撤掉（`digest.prune_reddit`）。
 - **垃圾站**（被黑的网站批量生成的页面，标题塞作品名骗搜索，会命中 match）：`digest.is_spam` 按标题写法（「在线看」、末尾 10 位随机码 `(gQvzdvbtKG)`）和链接网域（`SPAM_HOSTS`，Unisba Media = `unisba.ac.id`）认；
   收集・整理待ち・出刊・页面・推荐・話題度的报道量都过这一个函数，新发现一个垃圾站就在那里加写法 / 网域，在 `tests/test_match.py` 加真实标题。
-- **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」）写进 `exclude`。
+- **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」「最終値下げ」）写进 `exclude`。
+- **不是新闻的网站按网域丢**（2026-10-22）：`exclude_hosts`（settings 全体：readyfor.jp・camp-fire.jp 众筹 = 整个网域；攻略 wiki 的 gamewith.jp・game8.jp・altema.jp 写成 `{host, title}`，只丢标题是攻略页形状的（「【あつ森】…【あつまれどうぶつの森】」「【ゼンゼロ】…は引くべき？」），编辑部的新闻（新作发表・试玩评测）留着——收集时链接是 Google 的跳转、看不到路径，所以按标题分；escorenews 的比赛直播页由 dota2 的 exclude「match stream」丢，网域不丢；关注项也能各自写），网域和下级网域，看 `e.link`（还原的原文）・`e.url`・Google 新闻的 `<source url>`（`Entry.site`，收集时链接还是 Google 的跳转；inbox 里也写 `site`）。「気になるかも？」的候选也过出典名・网域。
+  `exclude_sources`（媒体名）是**前方一致**：「YouTube」也丢「YouTube on MSN」（后面接 ASCII 英数字的不算：「note」不丢「Notebookcheck」，「note株式会社」丢；官方频道 RSS「YouTube · 名字」不丢）。
+  设置页能改的 `keywords` / `match` / `exclude` 上限是 40 / 80 / 80 个（`digest.ITEM_FIELDS`）：items.yaml 里写的要都在上限内，否则店长改一个词就被拒（`tests/test_match.py` 的 ItemFieldsLimitTest）。`set_item_fields` 换写多行的 `[ … ]` 时连闭括号的行一起换（以前留下 `    ]` 把 YAML 弄坏，依頼被 skipped：SetItemFieldsRoundTripTest 把每一项都写一遍再读）。
+  滑雪的英文词（CAPiTA・Burton・ski）用 `(?<![A-Za-z])…(?![A-Za-z])` 不用 `\b`：Python 的 `\b` 把假名・汉字也算单词字，「CAPiTAの」就不命中。
+  这几条和垃圾站・`exclude`・`match` 都在 `digest.drop_reason` 一个函数里，收集和 `audit-match` 用同一个。
 - **情報源（2026-10-22，用户定的：都要，不用 AI 所以 CPU・时间可以多用）**：Google・Bing・Reddit・Steam・RSS 之外，`sources.gdelt`（世界 65 言語のニュース索引，读者的语言，5 秒 1 回・429 重试，重试后还被拒这次就不再问（2026-10-22 本番：Actions 的共享 IP 几乎都被拒，空等 10 分钟），`use` 有 google 的关注项，每项前 2 个词）、
   `sources.youtube_channel`（公式チャンネルの RSS，チャンネル = items.yaml 的 `youtube` 或 `wiki` → Wikidata P2397，缓存 `state/youtube_channels.json` 30 天）、
   `sources.bluesky`・`sources.mastodon_tag`（`use` 有 reddit 的关注项；和 Reddit 一样只放火的帖子：Bluesky ♥50 / 转发＋引用 15，Mastodon ♥20 / ブースト 10，其余只算話題度；匹配词必须在帖子正文；网址开头的自动转载 bot 帖丢掉）。
@@ -164,7 +169,7 @@
   情報源ごとの様子（ok・blocked・timeout…）は収集のログに「情報員 日本の情報員：17/17 本・…件」。`python scripts/intel.py --fetch` で担当と取れ具合を見る。読み取りの共通部分：RSS 1.0（RDF）・宣言のない `media:` も読む、ホストごとの UA `sources.HOST_UA`（ナタリーは Mozilla を 405）。
   入れないもの：Yahoo!ニュース RSS・CNA・SCMP・RTHK（「個人・非営利のみ」）、B站・知乎（robots で禁止）、微博・小紅書・Dcard（ログイン）。次：日本の残り（はてブ検索・PR TIMES 企業別）→ 韓国 → 台湾・香港 → 中国 → 東南アジア（設計案は調査の結果）。
 - **检查**：`python scripts/digest.py audit-match`（`--only "名字、名字"` 只看几项）把最近几天收进来的条目按「靠哪个词进来的」列出来，
-  ✗ 是按现在的规则已经不会再收的。每组看一眼标题，有不相关的就收紧那个词；误收已经上了版面的，
+  ✗ 是按现在的规则已经不会再收的（后面写理由：match・exclude・垃圾・exclude_sources・exclude_hosts；最后一行是 link・site 都没有、网域判断不了的 Google 跳转件数，和其中出典名跟被丢网域同一媒体的件数）。每组看一眼标题，有不相关的就收紧那个词；误收已经上了版面的，
   从当天还没有 `.edit.json` 的 inbox 里删掉、把报告里那条拿掉，再重新出刊。`tests/test_match.py` 有这几种写法的例子。
 
 ## 读者的语言：主言語・副言語（2026-10-17）
@@ -307,6 +312,10 @@
   按钮 → Supabase `run_now(job)`（`db/run_now.sql`，Vault 的 `github_dispatch_token`）→ GitHub workflow_dispatch。
   只能起这 3 个，每个有间隔（3 分 / 10 分 / 1 分）。GitHub 的定时（cron）忙时会迟到・漏掉（2026-10-17 漏了 2 小时），
   所以后台作業还有第 2 个时钟：Supabase pg_cron 每小时 17 分 `run_now('tick')`（和按钮同一条路，但不带 retry_now，守失败的等待）。后台作業从按钮起时带 `retry_now`（失败的版面也不等）。加新按钮：`render.RUN_JOBS` 和 `run_now` 的 case 各加一项。
+- **收集不停（2026-10-22 全体の検査 M3・M4）**：GitHub 的定时 `17 */2` 常抜ける（10-21〜22 12 回只来 5 回、空了 4 小时）→ **收集的控えの時計**由后台作業兼任（pg_cron 每小时必到）：`scripts/collect_watch.py` 看 `state/log/collect.json` 最后一次收集（带 `secs` 的行），过了 150 分、digest.yml 没有在跑・排队・60 分内（比 timeout 40 分长）开始的回，就 `gh workflow run digest.yml`（这步在 `gate.py check` 之前：判断那步出错也照样跑；GITHUB_TOKEN 的 workflow_dispatch 能起别的 workflow，`actions: write`），记进 `state/log/gate.json`（起不来・读不到回的样子也记、也提交：`tried`；同一个失败不重复写）。
+  **締め切り**：收集开始 18 分（`digest.COLLECT_DEADLINE_MIN`）后不再开新的版面，剩下的写进日志「時間切れで N 版面を次の回へ」（`deferred`），下一回先抓它们（`deferred_from_log` / `fetch_order`，第一次抓的版面＝新关注项也排最前）；已经开始的版面卡住时，截止＋5 分（`COLLECT_GRACE_MIN`）就不等了（`digest.run_parallel` 用 daemon 线程，卡住的 1 本不挡进程结束），也算下一回（不等以后那条线程再写版面的条：`cut` 之后 `live_mark` 不写；`intel.health` 在锁里取副本，`logged_ingest` 出错只少 1 行日志）；截止后封面不上网（`find_cover` 只用已有的）；digest.yml `timeout-minutes: 40`。**1 个版面抓取・之后按顺序的处理（去重・match 的正则・状态・封面）出例外**只让那个版面空着（中途写的状态还原）、日志「取得・処理に失敗した N 版面は空で続けた」，收集照常（`ingest` 的 `fetch` / `_ingest_one`）；设置页的依赖里 `re:` 写错的 match / exclude 在 `take_item_requests` 就拒收。
+  后台作業：小元素那步 `continue-on-error`（失败也照样叫 AI 编辑・提交；items.yaml 用 `emblem.write_atomic` 写，提交前读不了就 `git checkout` 回去，失败的回不接着再起）；`state/gate.json` 只在判断变了（最初的 check・小元素后的 check）・真的叫了 Claude・试着起收集时才提交（`GATE_FIRE` 开着不算）。
+  digest.yml 的「新关注项 → 立刻 AI 编辑」也走ゲート：`GATE_NOW=edit python scripts/gate.py fire`（只跳过 9:00 / 18:00 的回；60 分内已叫起〔编辑中〕・停滞・一時停止・`GATE_FIRE` 都照守：AI 编辑只跑 1 本；叫了就记 `now: true` 并 push；因「60 分内」被拦时把请求记进 `state/gate.json` 的 `jobs.edit.now_pending` 并 push，过了 60 分的后台作業按 GATE_NOW 一样叫（叫了就删，12 小时没叫就作废））。
 - **リソース・並列と制限**（バックグラウンドの中）：容量（リポジトリ・公开页 vs 1GB 上限）、各仕组み最近一次运行时的服务器（内存・磁盘・CPU・用时，
   `scripts/resources.py` 的 `snapshot()` 附在 runlog 里）、トークン（Claude API 自动数；定时任务的 Claude 结束时自己写：
   `python scripts/runlog.py emblem "…" --tokens N`；订阅额度的余量程序读不到，只能看 https://claude.ai/settings/usage ）。
@@ -329,7 +338,7 @@
   不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
   **前の日の整理待ちは持ち越す（2026-10-22 全体の検査 H3）**：AI 编辑只看最新的 inbox，JST 18:00 那回之后〜1:00 收集的会永远留在昨天。`digest.carry_over`：新的一天第一次收集时（`_carried` 记号，一天一次），把前一天（2 天以内）`_covered` 之后・不是要紧的条目接到今天的 inbox：1 版面最多「篇幅 × 2」件（S 6・M 10・L 16，留新的，`CARRY_PER_SIZE`），前一天已经持ち越し过的（`carried`）不再带；今天和前 3 天的 reports 里已经载了的（同网址・同标题 `title_key`；只把要带的那条去掉末尾「 - 媒体名」「｜媒体名」后剩 12 字以上・6 成以上的也拿去比 reports 的原标题，`_title_keys`，不让「討論牆 | …」「共通の頭 | 品目」只剩头）不带（实际很少命中，主要靠上限：2026-10-22 168 → 82 件）。不用 StoryDeduper：真数据里会把别的比赛・别的爆料也当成同一件事。
   **网页生成失败也要 push 数据（H4）**：本番的 workflow（digest・background・requests）设 `WL_RENDER_SOFT=1`，`digest.write_page` 出错只记日志、不停；CI 照旧失败。`render.collect` 跳过没有 headline / url 的报道，`publish` 用依据的原题补 headline。
-  **AI 编辑一天 2 次（用户定的，2026-10-19）**：日本时间 9:00 和 18:00（`gate.SLOTS`，`background.yml` 在 0:00 / 9:00 UTC 有定时），那一回还没叫过、今天有整理待ち（`gate.edit_work`）就叫；
+  **AI 编辑一天 2 次（用户定的，2026-10-19）**：日本时间 9:00 和 18:00（`gate.SLOTS`，`background.yml` 在 0:07 / 9:07 UTC 有定时：过了回再起，0 分整点 GitHub 最挤），那一回还没叫过、今天有整理待ち（`gate.edit_work`）就叫；
   管理页「次の実行」AI 編集卡片的「今すぐ実行」和「AI 编辑をもう一度起こす」随时强制叫（`run_now('edit_now')`）。
   **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。
   所以 `gate.work_state` 看「叫起后编辑済み数（edit.json 的 _covered 合计）有没有增加」：60 分钟内 = 编辑中；60 分钟后没增加 = 停滞 → 再叫（最多 3 次，之后等 6 小时，管理页写「起こしても動かない」）。
