@@ -158,20 +158,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx4.sinaimg.cn/middle/6f5ef307gy1ii36q45gorj20j609ljt4.jpg": {
-  "w": 690,
-  "h": 345,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.402,
-  "local": "pics/35bc4f9f7eb1b7bf.webp",
-  "out": [
-   690,
-   345
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "https://0.soompi.io/wp-content/uploads/2026/10/21203810/A2O-LITE-show-champion.jpg": {
   "w": 900,
   "h": 600,
@@ -280,6 +266,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assetsio.gnwcdn.com/red-dead-redemption-2-horse_oWpviPa.jpg?&fit=crop&enable=upscale&auto=webp": {
+  "w": 1629,
+  "h": 916,
+  "target": 720,
+  "v": 3
+ },
  "https://attach.setn.com/newsimages/2017/02/08/803356-PH.jpg": {
   "w": 650,
   "h": 366,
@@ -359,12 +351,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.hk01.com/di/media/images/dw/20261015/1187429559872524288789204.jpeg/E-sa0EsKRY3G-unBBjDF3hHP_IOc7UXF0-yjgNPso4A": {
-  "w": 1365,
-  "h": 768,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.image.st-hatena.com/image/scale/c2e8df5634954e295fc91f777861de93e405f009/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2FM%2FMORE_SMILEs%2F20261019%2F20261019181812.png": {
   "w": 1300,
   "h": 726,
@@ -408,10 +394,22 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.thepcenthusiast.com/wp-content/uploads/2026/10/GTA-6-Launch-Trailer-Jason-and-Lucia-meetup.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.upmedia.mg/upfile/img/2026/1021/202610211821342835.webp": {
   "w": 1800,
   "h": 1200,
   "target": 720,
+  "v": 3
+ },
+ "https://cdn.vanguardngr.com/wp-content/uploads/2026/10/iPhone-samsungs.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.www.cineplay.co.kr/w1200/q100/f_jpg/article-images/2026-10-19/1a7f9645-0ab4-4aab-8700-6a133f5c31c9.jpg": {
@@ -1095,12 +1093,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fKAOl.img": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fKTp9.img": {
   "w": 1280,
   "h": 720,
@@ -1148,19 +1140,6 @@
   "h": 675,
   "target": 720,
   "v": 3
- },
- "https://img.biz.sbs.co.kr/upload/2026/10/16/MfZ1792125245715-850.jpg": {
-  "w": 754,
-  "h": 566,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.447,
-  "local": "pics/467fc41e2a5161d6.webp",
-  "out": [
-   1280,
-   961
-  ],
-  "why": "看不清"
  },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/7776/rectangle/64257.jpg?t=1791769296": {
   "w": 600,
@@ -1483,6 +1462,12 @@
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/10/1792148162852-aa1c4e5baea245c3ae09304001d8233d-850x446.webp": {
+  "w": 850,
+  "h": 446,
   "target": 1280,
   "v": 3
  },
@@ -2491,12 +2476,6 @@
   "target": 720,
   "v": 3
  },
- "https://udn.com/static/img/UDN_BABY.png": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://variety.com/wp-content/uploads/2026/10/View-Conference-cinema-games-panel.-12.10.2026.jpg?w=1000&h=563&crop=1": {
   "w": 1000,
   "h": 563,
@@ -2530,12 +2509,6 @@
  "https://www.4gamer.net/games/528/G052880/20261020018/SS/001.jpg": {
   "w": 1920,
   "h": 1080,
-  "target": 1280,
-  "v": 3
- },
- "https://www.asahi.com/and/ogp/ogp_and.png": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -2693,6 +2666,19 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.PnKQKUxrSEi8SzKpRoGfGg&pid=News&w=896": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.621,
+  "local": "pics/176bc53f39902a29.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.QtNfk9tvzNrsIUmeECrxGw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2816,6 +2802,19 @@
   "h": 483,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.nYqf_dY5GcgSVut8tAanFg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.475,
+  "local": "pics/8971f1723d6b7e29.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200": {
   "w": 700,
@@ -3040,6 +3039,12 @@
  "https://www.nishinippon.co.jp/uploads/image/1950882/sns_8124789914_org.jpg": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.nme.com/wp-content/uploads/2026/10/Grand-Theft-Auto-6-lucia.jpg": {
+  "w": 2000,
+  "h": 1270,
   "target": 720,
   "v": 3
  },
