@@ -17,7 +17,7 @@ import json
 e = html.escape
 
 PROCS = {"collect": "収集", "publish": "出刊", "edit": "AI編集", "emblem": "小元素", "photos": "写真", "gate": "ゲート",
-         "render": "ページ", "background": "後台"}
+         "render": "ページ", "background": "後台", "userfeed": "お客さま"}
 LOG_FILES = ["collect", "publish", "edit", "emblem", "gate", "photos"]   # runlog.PROCS と同じ（state/log/<proc>.json）
 
 
