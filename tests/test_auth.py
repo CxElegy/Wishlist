@@ -40,7 +40,7 @@ class AuthTag(unittest.TestCase):
         言葉は skill（clarify・distill・onboarding）に合わせる：内部の事情・店長のページへの切り替えは出さない、空の状態は次の一手、外したら元に戻す。"""
         render.AUTH_DB.update(url="https://x.supabase.co", key="sb_publishable_x")
         tag = render._auth_tag("index")
-        for s in ("rpc('my_page')", "my_keywords_set", "好きなジャンルは？", "data-gsec", "showMine", "wl-mybar", "setTimeout(refresh,0)", '<label for="'):
+        for s in ("rpc('my_page')", "my_keywords_set", "好きなジャンルは？", "data-gsec", "showMine", "wl-mybar", "../?add", "wl-wait", "気になるかも？", "setTimeout(refresh,0)", '<label for="'):
             self.assertIn(s, tag)
         for s in ("ほかの人には見えません", "店長のページを見る", "自分のページに戻る", "wl-view-shop", "まだ集めていません", "ニュース集めは準備中", "欲しい物リストは準備中"):   # お客さまに要らない内部の事情は出さない
             self.assertNotIn(s, tag)
@@ -141,10 +141,9 @@ class Welcome(unittest.TestCase):
 
     def test_flow_and_redirect(self):
         import welcome
-        for word in ("wl-user", "location.replace(C.shop)", "stay", "name_available", "aria-pressed", "addname", "C.first"):
+        for word in ("wl-user", "location.replace(C.shop)", "stay", "name_available", "ArrowRight", "pointermove", "C.first",
+                     "addMode", "my_keywords_set", "grant_type=refresh_token"):   # 左右に払うカードに戻した・ログイン中は ?add で同じ流れから足す（2026-10-22，用户定的）
             self.assertIn(word, welcome.JS)
-        for word in ("ArrowRight", "pointermove", "out-r"):   # 左右に払うカードはやめた（2026-10-22，用户定的：交友アプリに見える）
-            self.assertNotIn(word, welcome.JS)
 
     def test_languages_mece(self):
         import welcome
