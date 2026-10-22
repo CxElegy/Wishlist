@@ -543,12 +543,6 @@
   "why": "防盗链",
   "ref": true
  },
- "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200": {
-  "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3
- },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
   "h": 950,
@@ -2377,6 +2371,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://thoughtcatalog.com/wp-content/uploads/2026/10/from-s-first-10-minutes-tie-tabitha-s-norman-logic-to-jim-s-death-his-season-4-r.jpg?w=1536&h=768&crop=1": {
+  "w": 1536,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
  "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=780,fit=cover,f=auto,quality=high,sharpen=2,g=face/21/2026/10/2026101522493126583_1.jpg": {
   "w": 1200,
   "h": 780,
@@ -2685,6 +2685,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.jYDeTgg91z9sg_a6-0ZrdA&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.k6p_3T6ydc2oAi8n0yvJzA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2703,12 +2709,6 @@
    720
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.oSiHI8kPiU6pjK_twAXLsg&pid=News&w=1200": {
-  "w": 700,
-  "h": 486,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200": {
   "w": 700,
