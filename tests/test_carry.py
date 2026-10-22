@@ -83,7 +83,7 @@ class CarryOver(unittest.TestCase):
         self.assertEqual(n, 32)
 
     def test_already_published_is_not_carried(self):
-        """直近 3 日の reports にもう載った記事（同じ網址・同じ見出し）は持ち越さない。4 日より前の号・別の版面は数えない。"""
+        """今日と前の 3 日（4 号）の reports にもう載った記事（同じ網址・同じ見出し）は持ち越さない。それより前の号・別の版面は数えない。"""
         def report(day, name, stories):
             (self.reports / f"{day}.json").write_text(json.dumps({"date": day, "items": [{"name": name, "stories": stories}]},
                                                                  ensure_ascii=False), encoding="utf-8")
@@ -120,6 +120,20 @@ class CarryOver(unittest.TestCase):
         data, n = digest.carry_over({"date": "2026-10-22", "items": []}, "2026-10-22")
         self.assertEqual(n, 5)
         self.assertFalse(digest._title_keys("討論牆 | 周杰倫驚傳進軍房地產") & digest._title_keys("討論牆 | 周杰倫演唱會遇阿嬤歌迷"))
+
+    def test_same_head_different_item_is_carried(self):
+        """「長い共通の頭 | 品目」の別の記事：末尾を切った鍵どうしは同じになるが、載った見出しは生の鍵とだけ比べるので持ち越す（2026-10-22 検査）。"""
+        (self.reports / "2026-10-21.json").write_text(json.dumps({"date": "2026-10-21", "items": [
+            {"name": "ちいかわ", "stories": [{"url": "https://a.example/1", "headline": "ちいかわマーケット 新商品のお知らせ | ぬいぐるみ"}]},
+        ]}, ensure_ascii=False), encoding="utf-8")
+        (self.dir / "2026-10-21.json").write_text(json.dumps({"date": "2026-10-21", "items": [
+            {"name": "ちいかわ", "facts": [], "entries": [entry(1, "ちいかわマーケット 新商品のお知らせ | キーホルダー")]},
+        ]}, ensure_ascii=False), encoding="utf-8")
+        (self.dir / "2026-10-21.edit.json").write_text("{}", encoding="utf-8")
+        self.assertTrue(digest._title_keys("ちいかわマーケット 新商品のお知らせ | ぬいぐるみ")
+                        & digest._title_keys("ちいかわマーケット 新商品のお知らせ | キーホルダー"))   # 切った鍵どうしは同じ
+        data, n = digest.carry_over({"date": "2026-10-22", "items": []}, "2026-10-22")
+        self.assertEqual(n, 1)
 
     def test_carried_only_once(self):
         """持ち越した記事（carried）は次の日にもう一度は持ち越さない（1 回だけ）。"""

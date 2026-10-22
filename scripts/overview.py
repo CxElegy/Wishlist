@@ -119,12 +119,13 @@ def waits(data):
     ed = todo.get("edit") or {}
     if ed.get("n"):
         why = {"running": "AI 編集を起こして間もない（編集中のはず）。終わるまで版面には載らず、各版面の下の「整理待ち」にいる",
-               "progress": "AI 編集が動いている（最後の版面が 30 分以内に出た）。終わった分から版面に載る",
-               "idle": "残りは次の回でゲートが起こす（ボタンで今すぐ）。それまで「整理待ち」にいる",   # 前回の時刻・今の回かは why に
+               "progress": "AI 編集が動いている（起こしたあと編集済みが増え、最後の出刊から 30 分以内）。終わった分から版面に載る",
+               "idle": "残りは次の回でゲートが起こす（ボタンで今すぐ）。それまで「整理待ち」にいる",   # 前回の時刻・次の回の時刻は why に
+               "unpublished": "AI 編集は記事を整理したが、版面への出刊が記録されていない（出刊に失敗したかも：AI 編集の定時タスクの環境を見る）。それまで「整理待ち」にいる",
                "stalled": "起こしたのに動いていない。ゲートが次の回で起こし直す（最大 3 回）",
                "gave_up": "3 回起こしても動かない。定時タスクの設定（仓库を使えるか）を見る必要がある"}.get(
             ed.get("state"), "次の 9:00 か 18:00 にゲートが AI 編集を起こす（ボタンで今すぐ）。それまで版面には載らず「整理待ち」にいる")
-        extra = f"（{ed['why']}）" if ed.get("why") and ed.get("state") in ("progress", "idle", "stalled", "gave_up") else ""
+        extra = f"（{ed['why']}）" if ed.get("why") and ed.get("state") in ("progress", "idle", "unpublished", "stalled", "gave_up") else ""
         out.append(("AI 編集", f"整理待ち {ed['n']} 件（{ed.get('boards', 0)} 版面）", why + extra, "edit_now"))
     failed = [r["name"] for r in rows if (r.get("bg") or {}).get("emblem", {}).get("state") == "failed"]
     if failed:

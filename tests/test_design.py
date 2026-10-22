@@ -402,6 +402,21 @@ class Overview(unittest.TestCase):
         # 今の回をまだ起こしていない（due）：列の見出しは次の日の 9:00 を数えず「18:00 の回はまもなく」
         h = render._admin_backend(rows, {"edit": {**idle["todo"]["edit"], "due": "18:00"}})
         self.assertIn("18:00 の回はまもなく（次のゲートで起こす）</small>", h)
+        self.assertIn('data-due="18:00"', h)   # 上の「次の実行」のカードも同じ（次の日の 9:00 を数えない）
+        self.assertNotIn("data-due", render._admin_backend(rows, idle["todo"]))
+        # 今の回をもう起こした idle：「いま待っているもの」にも次の回の時刻（gate.work_state の why）
+        done = {"todo": {"edit": {"n": 5, "boards": 1, "state": "idle", "why": "前回 10:32（日本時間）に終わった・次は 18:00"}}}
+        self.assertIn("次は 18:00", overview.waits(done)[0][2])
+        # 編集は進んだが出刊の記録がない（unpublished）：「終わった」「次の回を待つ」と言わない
+        un = {"todo": {"edit": {"n": 5, "boards": 1, "state": "unpublished",
+                                "why": "18:18（日本時間）に起こして編集済みは 510 → 521 件に進んだが、そのあと出刊の記録がない"}}}
+        w = overview.waits(un)[0][2]
+        self.assertIn("出刊が記録されていない", w)
+        self.assertIn("510 → 521", w)
+        self.assertNotIn("終わった", w)
+        h = render._admin_backend(rows, un["todo"])
+        self.assertIn("出刊されていない", h)
+        self.assertNotIn("次の回を待つ", h)
 
     def test_admin_has_overview_first_and_css_uses_tokens(self):
         import overview

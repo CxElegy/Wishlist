@@ -2202,8 +2202,8 @@ def backend_todo(items, rows, run):
     import gate
     gj = (gate.load().get("jobs") or {}).get("edit") or {}
     fired = gj.get("fired") or {}   # ゲートが最後に AI 編集を起こした記録
-    lb = gate.last_batch()
-    gstate, gwhy = gate.work_state(gj, last_batch=lb)   # 起こしたあとに本当に進んだか（running / progress / idle / stalled / gave_up）。動いているかは最後のバッチの時刻で
+    lb, le = gate.last_batch(), gate.last_error()
+    gstate, gwhy = gate.work_state(gj, last_batch=lb, last_error=le)   # 起こしたあとに本当に進んだか（running / progress / idle / unpublished / stalled / gave_up）。動いているかは最後のバッチの時刻で
     queue = run.get("queue") or []
     review = [n for n, x in (run.get("items") or {}).items() if x["state"] == "review"]
     return {
@@ -2211,7 +2211,7 @@ def backend_todo(items, rows, run):
         "edit": {"text": (f"新しい記事 {n_new} 件（{len(edit)} 版面）を編集" if edit else "編集する新着なし")
                  + (f" · 版面の設計 {len(design)} 件" if design else ""), "items": [r["name"] for r in edit],
                  "n": n_new, "boards": len(edit), "fired": fired.get("at") or "",
-                 "state": gstate, "why": gwhy, "due": gate.due_slot(gj, last_batch=lb),   # due：今の回（まだ起こしていない）の時刻
+                 "state": gstate, "why": gwhy, "due": gate.due_slot(gj, last_batch=lb, last_error=le),   # due：今の回（まだ起こしていない）の時刻
                  "attempts": int(fired.get("attempts") or 0), "resp": fired.get("resp") or ""},
         "emblem-cron": {"text": (f"足りない {len(queue)} 版面を順に" if queue else "全部そろっている")
                         + (f" · 要確認 {len(review)}" if review else ""), "items": queue},
@@ -2768,7 +2768,7 @@ def ingest(dry_run=False):
 
 CARRY_DAYS = 2    # 何日前の inbox まで持ち越すか
 CARRY_PER_SIZE = 2   # 1 版面で持ち越す件数 = 篇幅の本数（SIZE_STORIES：S 3・M 5・L 8）× これ（S 6・M 10・L 16）
-CARRY_SEEN_DAYS = 3  # 直近この日数の reports にもう載った記事（同じ網址・同じ見出し）は持ち越さない
+CARRY_SEEN_DAYS = 3  # 今日とその前のこの日数の reports にもう載った記事（同じ網址・同じ見出し）は持ち越さない
 
 
 def _carry_caps():
@@ -2788,7 +2788,7 @@ def _carry_caps():
 
 
 def _published(today, days=CARRY_SEEN_DAYS):
-    """直近 days 日（today を含む）の reports に載った記事 → {版面: (網址の集合, 見出しのリスト)}。"""
+    """today と前の days 日（days=3 なら 4 号）の reports に載った記事 → {版面: (網址の集合, 見出しのリスト)}。"""
     start = (dt.date.fromisoformat(today) - dt.timedelta(days=days)).isoformat()
     out = {}
     for path in sorted(REPORTS_DIR.glob("????-??-??.json")):
@@ -2820,12 +2820,14 @@ def _title_keys(title):
 
 
 def _not_published(name, entries, pub):
-    """もう版面に載った記事（同じ網址、または同じ見出し：title_key。媒体名の付いた形は残りが十分長いときだけ同じとみる）を除く。
+    """もう版面に載った記事（同じ網址、または同じ見出し：title_key。持ち越す側の見出しだけ末尾の媒体名を除いた形も、残りが十分長いときは比べる）を除く。
     媒体名を除いて短く残った頭だけで比べると、別の話まで落とす（2026-10-22 検査：「討論牆 | 周杰倫…」が別の「討論牆 | …」と同じに）。
     StoryDeduper（見出しの共通の語）は使わない：2026-10-21 の本物で試すと、別の試合・別のリーク記事まで「同じ話」にして落とした。
     同じ話の別の網址は、今までどおり AI 編集がまとめる（持ち越しでニュースを落とさない）。"""
     urls, titles = pub.get(name) or (set(), [])
-    keys = set().union(*(_title_keys(h) for h in titles)) if titles else set()
+    # 載った見出しは生の鍵だけ。末尾を切った鍵どうしでは比べない：「共通の頭 | 品目」の別の記事が同じ鍵になる
+    # （残るのは「AI が書いた見出し ＝ 元の題から媒体名を除いたもの」の場合）
+    keys = {title_key(h) for h in titles}
     return [e for e in entries if not ({e.get("url"), e.get("link")} & urls)
             and not (_title_keys(e.get("title", "")) & keys)]
 
@@ -2834,7 +2836,7 @@ def carry_over(data, today):
     """前の日の「整理待ち」（AI 編集がまだ整理していない記事）を今日の inbox に持ち越す（その日の最初の 1 回だけ、_carried に印）。
     AI 編集は最新の inbox しか見ないので、日付が変わる前（JST 18:00 の回のあと〜1:00）に集めた分は、持ち越さないと二度と版面に載らない
     （2026-10-22 全体の検査 H3：10-17〜10-21 で 829 件が残ったまま）。数え方は gate.edit_work と同じ：_covered より後の記事、edit.json にない版面は全部。
-    要紧（urgent）はもう「重大」で載っているので持ち越さない。前の日に持ち越した記事（carried）も、もう一度は持ち越さない。直近 CARRY_SEEN_DAYS 日の reports にもう載った記事（同じ網址・同じ見出し）も持ち越さない。
+    要紧（urgent）はもう「重大」で載っているので持ち越さない。前の日に持ち越した記事（carried）も、もう一度は持ち越さない。今日と前の CARRY_SEEN_DAYS 日の reports にもう載った記事（同じ網址・同じ見出し）も持ち越さない。
     1 版面の上限は篇幅 × CARRY_PER_SIZE（新しいほうから。AI 編集が読む一覧を太らせない）。→ (data, 持ち越した件数)"""
     if data.get("_carried"):
         return data, 0

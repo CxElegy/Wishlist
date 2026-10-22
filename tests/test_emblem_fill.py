@@ -1047,7 +1047,7 @@ class Gate(unittest.TestCase):
         self.assertEqual(self.gate.work_state(j, dt.datetime(2026, 10, 22, 1, 50, tzinfo=utc), last_batch=lb)[0], "progress")
         st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 8, 50, tzinfo=utc), last_batch=lb)
         self.assertEqual(st, "idle")
-        self.assertEqual(why, "前回 10:32（日本時間）に終わった")   # 「あと N 分」は書かない（網页で固まる。管理ページの列の見出しが端末で数える）
+        self.assertEqual(why, "前回 10:32（日本時間）に終わった・次は 18:00")   # 時刻だけ。「あと N 分」は書かない（網页で固まる。列の見出し・カードが端末で数える）
         # 18:00 の回をまだ起こしていない（cron の遅れ・次のゲート待ち）：次の日の 9:00 ではなく、今の回がまもなく
         st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 9, 7, tzinfo=utc), last_batch=lb)
         self.assertEqual((st, why), ("idle", "前回 10:32（日本時間）に終わった・18:00 の回はまもなく（次のゲートで起こす）"))
@@ -1058,6 +1058,35 @@ class Gate(unittest.TestCase):
         self.gate.save({"jobs": {"edit": {**j, "last_batch": lb}}}, self.state)
         self.assertIn("次は 18:00", self._fire_at("2026-10-22 17:50", calls := []))
         self.assertEqual(self._fire_at("2026-10-22 18:00", calls), "Claude を起こした")
+
+    def test_progress_without_batch_since_firing_is_not_idle(self):
+        """起こしたあと編集済みは増えた（510 → 521）が、出刊の行がまだない・失敗した（2026-10-22 18:18 JST の本物）：
+        最後のバッチは今朝のもの（01:32Z）なので「前回 10:32 に終わった」とは言わない。60 分までは progress、過ぎたら unpublished。"""
+        utc = dt.timezone.utc
+        j = {"need": True, "items": ["A"], "prog": 521, "prog_day": "2026-10-22",
+             "fired": {"at": "2026-10-22T09:18:11+00:00", "day": "2026-10-22", "prog": 510, "attempts": 1}}
+        lb = "2026-10-22T01:32:56+00:00"
+        err = {"at": "2026-10-22T09:25:20+00:00", "text": "出刊に失敗：No module named 'requests'"}
+        for m in (30, 45):
+            st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 9, m, tzinfo=utc), last_batch=lb, last_error=err)
+            self.assertEqual(st, "progress")
+            self.assertNotIn("終わった", why)
+        st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 10, 30, tzinfo=utc), last_batch=lb, last_error=err)
+        self.assertEqual(st, "unpublished")
+        self.assertIn("18:18（日本時間）に起こして編集済みは 510 → 521 件に進んだが、そのあと出刊の記録がない", why)
+        self.assertIn("No module named", why)
+        # 起こす前の失敗は理由に出さない
+        st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 10, 30, tzinfo=utc), last_batch=lb,
+                                       last_error={"at": "2026-10-22T05:00:00+00:00", "text": "古い失敗"})
+        self.assertNotIn("古い失敗", why)
+        # 今回起こしたあとのバッチがあれば、今までどおり 30 分で idle
+        st, why = self.gate.work_state(j, dt.datetime(2026, 10, 22, 10, 30, tzinfo=utc), last_batch="2026-10-22T09:40:00+00:00")
+        self.assertEqual((st, why), ("idle", "前回 18:40（日本時間）に終わった・次は 09:00"))
+        # 起こすかの規則は progress と同じ：起こして 60 分以内は待つ、この回（18:00）はもう起こした → 次は 9:00
+        self.gate.save({"jobs": {"edit": {**j, "last_batch": lb, "last_error": err}}}, self.state)
+        self.assertIn("分以内に起こし済み", self._fire_at("2026-10-22 19:00", calls := []))
+        self.assertIn("次は 09:00", self._fire_at("2026-10-22 19:40", calls))
+        self.assertEqual(calls, [])
 
     def test_previous_days_slot_is_not_picked_up_after_midnight(self):
         """18:00 の回に仕事がなかった日：北京時間 0 時すぎ（持ち越しで整理待ちができる）に、前の日の 18:00 の回を拾い直して起こさない。次は 9:00。"""
