@@ -15,6 +15,7 @@
     python scripts/userfeed.py --dry-run  # 何を集めるかだけ出す（ネットに出ない・書かない）
 """
 import datetime as dt
+import gzip
 import hashlib
 import html
 import os
@@ -26,6 +27,7 @@ import urllib.parse
 import digest
 import lang
 import sitedir
+import sources
 import taxonomy
 
 MAX_BOARDS_PER_USER = 30   # 1 人が持てる「店長にない版面」。これを超えた分は state = limit の行（網页で「上限」と出す）。選んだ順の先頭から
@@ -54,6 +56,9 @@ DEFAULT_LANGS = ["ja-JP"]   # 集めていない言語だけを選んだ人は�
 # 語は前後が英字でないときだけ（「upcoming」の PC・「opened」の open に当てない）。普通の文にも出る語（update・open・live・PC・game・match・season・
 # release・store・tour…）は入れない。数字だけの名前（「2027」）は、板块がなくても下の語のどれかと一緒のときだけ
 SHORT_ASCII = 14
+COMMON_FILE = __import__("pathlib").Path(__file__).resolve().parent / "data" / "en_common.txt.gz"
+_COMMON = None
+CJK = r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]"   # かな・漢字・ハングル
 CONTEXT_EXTRA = {
     "游戏": r"Steam|PS5|PS4|PlayStation|Nintendo|Xbox|trailer|gameplay|DLC|early access|indie game|video ?game|発売|配信|体験版|アップデート|インディー|ゲーム|游戏|遊戲|게임",
     "影视": r"episode|trailer|anime|manga|Netflix|放送|予告|映画|アニメ|漫画|ドラマ",
@@ -151,25 +156,86 @@ def _any_context():
     return f"(?<![A-Za-z])(?:{'|'.join(CONTEXT_EXTRA.values())})(?![A-Za-z])"
 
 
+def common_en():
+    """英語のよく使う語の集まり（scripts/data/en_common.txt.gz：wordfreq の zipf ≥ 3.0、英字 3 字以上）。"""
+    global _COMMON
+    if _COMMON is None:
+        with gzip.open(COMMON_FILE, "rt", encoding="utf-8") as f:
+            _COMMON = frozenset(w for w in (line.strip() for line in f) if w and not w.startswith("#"))
+    return _COMMON
+
+
+def ascii_kind(name):
+    """英字の名前の種類（match_terms が使う。2026-10-22 に 10 月の inbox 7512 件で測って決めた：名前を含む記事のうち
+    前の規則で拾えたのは ILLIT 59/208・Vaundy 8/48・Astrae Oratio 0/40 → この規則で 208/208・48/48・37/40）：
+    'proper' = よく使う語ではない 4 字以上の語を含む（ILLIT・Vaundy・NewJeans・Astrae Oratio・Moka）→ 名前だけで当てる
+    'phrase' = 2 語以上で、全部がよく使う語か 3 字以下（The Wrong Way・Hollow Knight・MEAT TRAIN）→ ジャンルの語と一緒か、
+               かな・漢字・ハングルの記事（日本語・中国語・韓国語の記事に英字の句で出てくるのは名前のことがほとんど）
+    'word'   = よく使う 1 語・3 字以下の 1 語（Apex・Switch・Tokyo・IVE）→ ジャンルの語と一緒のときだけ
+               （日本語の記事でも「APEX-TOYS」「Numero TOKYO」のように別の名前の一部で出る）"""
+    words = [w.lower() for w in re.findall(r"[A-Za-z]+", name)]
+    common = common_en()
+    if any(len(w) >= 4 and w not in common for w in words):
+        return "proper"
+    return "phrase" if len(words) >= 2 else "word"
+
+
+def has_word(name):
+    """記号だけの名前（「...」「！？」）でないか：英数字・かな・漢字・ハングルが 1 字でもあるか。"""
+    return any(c.isalnum() for c in str(name or ""))
+
+
+SUFFIX_GENERIC = {"開催", "発売", "配信", "限定", "新作", "オープン", "大会", "試合", "予告", "放送"}   # どこにでも出る語：「広島」と一緒でも旅行の記事とは限らない
+
+
+def _suffix(name):
+    """かな・漢字 1 語の名前の末尾がジャンルの語（「広島旅行」の旅行）→ (前の部分, その板块の語)。なければ None。"""
+    for sec, words in CONTEXT_EXTRA.items():
+        for w in words.split("|"):
+            if w.isascii() or len(w) < 2:
+                continue
+            if name.endswith(w) and len(name) - len(w) >= 2:
+                stem = name[: -len(w)]
+                cjk = "|".join(x for x in words.split("|") if not x.isascii() and (x == w or x not in SUFFIX_GENERIC))
+                return stem, cjk
+    return None
+
+
 def match_terms(name, sec=None):
-    """1 つの名前の匹配词（digest.match_hit が読む形）。
-    - 英数字だけ：語を空白・記号のゆれ（「:」「®」「’」）を許してつないだ 1 つの句（語の境あり）。数字がなく短い名前は板块の語と一緒のときだけ
-    - かな・漢字を含む 1 語：名前そのもの（空白・大小を無視）
+    """1 つの名前の匹配词（digest.match_hit が読む形）。記号だけの名前は []（集めない）。
+    - 英数字だけ：語を空白・記号のゆれ（「:」「®」「’」）を許してつないだ 1 つの句（語の境あり）。数字があるか長い名前・よく使う語でない名前
+      （ascii_kind = proper）はそれだけで。よく使う語の名前は板块の語と一緒のとき（2 語以上の句は、かな・漢字・ハングルの記事でも）
+    - かな・漢字を含む 1 語：名前そのもの（空白・大小を無視）。末尾がジャンルの語（「広島旅行」）なら、前の部分と同じジャンルの語が両方ある記事も（広島 観光）
     - かな・漢字を含む数語（「広島 旅行」）：全部の語が出てくる記事（先読み）。数字・2 字以下の英字は前の語にくっつける（数字だけでは当てない）"""
+    if not has_word(name):
+        return []
     toks = [t for t in SPLIT.split(name) if t]
     if not toks:
         return []
     if name.isascii():
         phrase = r"(?<![A-Za-z0-9])" + SEP.join(re.escape(t) for t in toks) + r"(?![A-Za-z0-9])"
         ctx = _context(sec)
+        kind = None
         if not any(c.isalpha() for c in name):   # 数字・記号だけ（「2027」）：年号などに当たるので、必ずジャンルの語と一緒に
             ctx = ctx or _any_context()
         elif any(c.isdigit() for c in name) or len(norm(name)) > SHORT_ASCII:
             ctx = ""
+        else:
+            kind = ascii_kind(name)
+            if kind == "proper":
+                ctx = ""
+        if not ctx and kind in ("phrase", "word"):
+            ctx = _any_context()   # 板块がわからない：どれかのジャンルの語と一緒に
         if ctx:
-            return [f"re:(?s)(?=.*(?i:{phrase}))(?=.*(?i:{ctx}))"]
+            out = [f"re:(?s)(?=.*(?i:{phrase}))(?=.*(?i:{ctx}))"]
+            if kind == "phrase":
+                out.append(f"re:(?s)(?=.*(?i:{phrase}))(?=.*{CJK})")
+            return out
         return [f"re:(?i){phrase}"]
     if len(toks) == 1:
+        suf = _suffix(name)
+        if suf:
+            return [name, f"re:(?s)(?=.*{re.escape(suf[0])})(?=.*(?:{suf[1]}))"]
         return [name]
     groups = []
     for t in toks:
@@ -241,7 +307,12 @@ def lang_order(langs):
 def stories_for(item, settings):
     """1 版面の記事（新しい順、MAX_STORIES 件まで）。店長の収集と同じ絞り込み・キーワード編集・言語違いの重複。"""
     now = dt.datetime.now(dt.timezone.utc)
+    before = sources.fetch_fails()
     raw = digest.collect(item, settings)
+    if not raw and sources.fetch_fails() > before:
+        # 検索に断られた（429）・時間切れで 1 件も来なかった：digest.collect は空を返して続けるので、ここで失敗にする
+        # （fails を数える。「まだ見つかっていません」と言わず「集めています」のまま。my_boards）
+        raise RuntimeError("検索が取れなかった")
     entries = digest.filter_entries(raw, item, settings, set(), now)
     picked = digest.fallback_stories(entries, item, limit=MAX_STORIES)
     out = [story_of(entries[p["refs"][0] - 1]) for p in picked]
@@ -306,15 +377,17 @@ def _ts(at):
 
 
 def plan(users, shop_names, rows, now=None):
-    """集める版面を決める。→ (todo, keep, limits)
-    todo = [{key, name, sec, langs, boards: [(account, item, sec)], rank, last}]（同じ名前・同じ言語は 1 回にまとめる）
+    """集める版面を決める。→ (todo, keep, limits, blanks)
+    todo = [{key, name, sec, langs, boards: [(account, item, sec)], rank, last}]（同じ名前・同じ言語・同じ匹配词は 1 回にまとめる。
+    英字のよく使う語の名前は板块で匹配词が変わるので、別のジャンルで選んだ人とは分ける）
     keep = {account: {item, ...}}（いま選んでいる、店長にないもの。上限を超えた分も。これ以外の行は消す）
-    limits = [(account, item, sec)]（上限を超えた分。state = limit の行を書く）"""
+    limits = [(account, item, sec)]（上限を超えた分。state = limit の行を書く）
+    blanks = [(account, item, sec)]（記号だけの名前「...」：何にでも当たるので集めない。0 件の行を 1 度だけ書く → 網页は「まだ見つかっていません」）"""
     now = now or dt.datetime.now(dt.timezone.utc)
     checked = {(r["account"], r["item"]): r.get("checked_at") for r in rows}
     state = {(r["account"], r["item"]): r.get("state") for r in rows}
     has_rows = {r["account"] for r in rows if r.get("state") != "limit"}
-    keep, groups, limits, new_users = {}, {}, [], 0
+    keep, groups, limits, blanks, new_users = {}, {}, [], [], 0
     for u in users:
         email = u.get("email")
         prefs = u.get("prefs") or {}
@@ -338,6 +411,10 @@ def plan(users, shop_names, rows, now=None):
                 if state.get((acct, name)) != "limit":
                     limits.append((acct, name, sec))
                 continue
+            if not has_word(name):
+                if (acct, name) not in checked or state.get((acct, name)) == "limit":
+                    blanks.append((acct, name, sec))
+                continue
             last = _ts(checked.get((acct, name))) if state.get((acct, name)) != "limit" else None
             if last and (now - last).total_seconds() < MIN_GAP_MIN * 60:
                 continue
@@ -350,14 +427,14 @@ def plan(users, shop_names, rows, now=None):
             new_users += 1
         cand.sort(key=lambda c: (c[0] is not None, c[0] or now, c[1]))   # まだ探していない（新しく足したものから）→ 古いもの
         for rank, (last, _, name, sec) in enumerate(cand[:PER_USER_PER_RUN]):
-            key = (norm(name), tuple(langs))
+            key = (norm(name), tuple(langs), tuple(board_item(name, sec, langs)["match"]))
             g = groups.setdefault(key, {"key": key, "name": name, "sec": sec, "langs": langs, "boards": [], "last": last, "rank": rank})
             g["boards"].append((acct, name, sec))
             g["rank"] = min(g["rank"], rank)
             if last is None or g["last"] and last < g["last"]:
                 g["last"] = last
     todo = sorted(groups.values(), key=lambda g: (g["rank"], g["last"] is not None, g["last"] or now))
-    return todo[:MAX_BOARDS_PER_RUN], keep, limits
+    return todo[:MAX_BOARDS_PER_RUN], keep, limits, blanks
 
 
 def shop_boards(path=None):
@@ -475,7 +552,7 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
         return res
     rows, rows_all = fetch_all(db, "user_boards?select=*&order=account.asc,item.asc")   # * ：fails（後から足した列）がまだない DB でも読める
     rows = rows or []
-    todo, keep, limits = plan(users, shop_names, rows, now)
+    todo, keep, limits, blanks = plan(users, shop_names, rows, now)
     # ログは公開の Actions と管理ページのライブログに出る：数だけ（お客さまの選んだものの名前は書かない。LOGIN.md 第 2 步）
     log(f"お客さまの記事集め：{len(users)} 人・集める版面 {len(todo)}" + (f"・上限を超えた {len(limits)}" if limits else ""))
     if dry_run:
@@ -523,7 +600,10 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
     for acct, name, sec in limits:
         out.append({"account": acct, "item": name, "sec": sec, "state": "limit", "stories": [], "found": 0,
                     "checked_at": stamp, "updated_at": None})
-    res["boards"], res["limit"], res["late"] = len(out) - len(limits), len(limits), late_n
+    for acct, name, sec in blanks:   # 記号だけの名前：探さない（fails 0・記事 0 → my_boards は none）
+        out.append({"account": acct, "item": name, "sec": sec, "state": "ok", "stories": [], "found": 0, "fails": 0,
+                    "checked_at": stamp, "updated_at": None})
+    res["boards"], res["limit"], res["late"] = len(out) - len(limits) - len(blanks), len(limits), late_n
     res["bad"] = upsert(db, out, log) if out else 0
     if users_all and rows_all:   # 一部しか読めなかったときは消さない（読めなかった人の版面を消してしまう）
         for r in rows:   # 外したもの・店長の版面に入ったもの・退会した人の行は消す（本人の画面には出ない行）

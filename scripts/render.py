@@ -3033,8 +3033,8 @@ NAV_JS = """
     byKey = new Map(pills.map((p, i) => [p.dataset.for, i]));
     tabs = [...nav.querySelectorAll('.mtabs a')].filter(vis);
     S = [...rail.querySelectorAll('.nslot')].filter(vis).map(el => ({el, sec: el.dataset.sec,
-      pills: [...el.querySelectorAll('.nbody .pill')].filter(vis), subs: el.querySelector('.nsubs'), chips: [...el.querySelectorAll('.nsubs a')],
-      labs: [...el.querySelectorAll('.nlab')], more: el.querySelector('.nmore'), sum: el.querySelector('.nsum')}));
+      pills: [...el.querySelectorAll('.nbody .pill')].filter(vis), subs: el.querySelector('.nsubs'), chips: [...el.querySelectorAll('.nsubs a')].filter(vis),
+      labs: [...el.querySelectorAll('.nlab')].filter(vis), more: el.querySelector('.nmore'), sum: el.querySelector('.nsum')}));
     slotOf = new Map();
     S.forEach((s, i) => s.pills.forEach(p => slotOf.set(p, i)));
     TOTAL = S.reduce((a, s) => a + s.pills.length, 0);
@@ -3044,7 +3044,7 @@ NAV_JS = """
   // 隠し始める作品の数（items.yaml の settings.nav_hide、既定 24）。auto なら画面の高さだけで決める。
   // どちらでも、行を 30px まで詰めても入らないときは隠す（窮屈にもスクロールにもしない）
   const HIDE = nav.dataset.hide === 'auto' ? 0 : (+nav.dataset.hide || 24);
-  const SEC_H = 52, ITEM_H = 34, R_MIN = 30, MORE_H = 26, MIN_H = 46, EXTRA = 22, LAB_H = 20;   // 行の高さ（NAV_STYLES と同じ）
+  const SEC_H = 52, ITEM_H = 34, R_MIN = 30, MORE_H = 26, MIN_H = 46, EXTRA = 22, LAB_H = 20, SPARE_MAX = 28;   // 行の高さ（NAV_STYLES と同じ）
   const hot = p => +p.dataset.hot || 0, num = p => +p.dataset.n || 0, subOf = p => p.dataset.sub || '';
   const topN = (l, n) => l.slice().sort((a, b) => hot(b) - hot(a) || num(a) - num(b)).slice(0, n);
   let curIdx = -2, curProg = -1, ticking = false, lk = null, lsub = null, lon = null;
@@ -3121,7 +3121,8 @@ NAV_JS = """
     const shown = plan.reduce((a, x, i) => a + (x ? cnt(x, i) : 0), 0);
     const ih = Math.max(r, Math.min(56, Math.floor(r + Math.max(0, H - sum(plan, r)) / Math.max(1, shown))));
     const hOf2 = (x, i) => hOf(x, i, r) + (x ? cnt(x, i) * (ih - r) : 0);
-    const spare = Math.max(0, H - plan.reduce((a, x, i) => a + hOf2(x, i), 0)) / n;
+    // 板块の間に足すのは 1 つ SPARE_MAX まで（駅が少ない＝お客さまの版面が数個のときに、板块の間が大きく空かないように。残りは下に）
+    const spare = Math.min(SPARE_MAX, Math.max(0, H - plan.reduce((a, x, i) => a + hOf2(x, i), 0)) / n);
     rail.style.setProperty('--ih', ih + 'px');
     rail.classList.toggle('roomy', ih >= 48);
     let y = 0;
@@ -3885,6 +3886,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 .wl-mine ul.kw li{display:flex;align-items:center;gap:8px;padding:4px 6px 4px 10px;background:var(--card);border:1.5px solid var(--ink);font:700 14px/1.4 var(--font-sans)}
 .wl-mine ul.kw li small{font:500 var(--fs-label) var(--font-sans);opacity:.7}
 .wl-mine ul.kw li button{margin:0;padding:0 7px;background:var(--card);font-size:12px}
+.wl-mine .wl-back{display:flex;flex-wrap:wrap;gap:8px 18px;margin:-8px 0 18px;font:700 14px/1.5 var(--font-sans)}.wl-mine .wl-back a{color:var(--ink)}
 .wl-mine .empty{padding:22px 20px;border:2px dashed var(--ink);background:var(--sheet)}.wl-mine .empty b{display:block;font:900 17px/1.4 var(--font-sans)}
 .wl-mine .note{margin-top:18px;font-size:13px;opacity:.85}
 .wl-mine form.add{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
@@ -3908,7 +3910,9 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 .wl-mem input{flex:1 1 220px}
 .wl-mem button{border:2px solid var(--ink);background:var(--ink);color:var(--card);padding:5px 14px;font:700 13px var(--font-sans);cursor:pointer}
 .wl-mem .st{min-height:1.4em;font-size:13px}
-@media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}}
+@media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px;transition:transform .25s ease,opacity .25s ease}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}
+  .wl-auth.away{transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none}}
+@media (max-width:560px) and (prefers-reduced-motion:reduce){.wl-auth{transition:none}}
 """
 
 AUTH_JS = r"""
@@ -4014,6 +4018,11 @@ AUTH_JS = r"""
     toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'ここは店長のページなので、見るだけです');
   },true);
   document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree,.wl-mine'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
+  // スマホ（右下に固定）：下へ読み進めると札をしまい、上へ戻す・ページの上と下の端で出す（本文の写真・文字に重ねたままにしない。よくある「下へで隠す・上へで出す」）
+  (function(){var y0=scrollY,mq=matchMedia('(max-width:560px)');
+    function set(off){var b=document.querySelector('.wl-auth');if(b&&!(off&&b.querySelector('.menu:not([hidden])')))b.classList.toggle('away',off);}
+    addEventListener('scroll',function(){if(!mq.matches)return set(false);var y=scrollY,end=innerHeight+y>=document.documentElement.scrollHeight-8;
+      if(y>y0+4&&y>120&&!end)set(true);else if(y<y0-4||end||y<=120)set(false);y0=y;},{passive:true});})();
   function chip(keepOpen){
     var box=document.querySelector('.wl-auth'); if(!box){box=document.createElement('div');box.className='wl-auth';document.body.appendChild(box);}
     var role=R.dataset.role, name=(me&&me.name)||(user&&user.email)||'';
@@ -4090,6 +4099,8 @@ AUTH_JS = r"""
   function hit(name,picks){return picks.some(function(x){return shopHit(name,x.name);});}
   function mine(){
     var on=isMine(), box=document.querySelector('.wl-mine');
+    // お客さま → 访客（ログアウト・「見つかりません」）：showMine が版面・駅・目次の網址を書き換えているので、開き直して店長のページに戻す
+    if(!on&&R.dataset.mine==='2'){R.dataset.mine='0';clearInterval(R._wlub);location.reload();return;}
     if(!on){R.dataset.mine='0';clearInterval(R._wlub);R._wlmb=null;if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
       document.querySelectorAll('.wl-off').forEach(function(x){x.classList.remove('wl-off');});return;}
     if(R.dataset.mine!=='2') R.dataset.mine='1';
@@ -4104,6 +4115,7 @@ AUTH_JS = r"""
     if(page==='index'&&!err&&tok&&picks.length&&document.querySelector('section.sec[data-k]')){box.remove();showMine(p,picks);return;}
     drawMine(box,p,err);
   }
+  var UB='あなたが足したもの';   // お客さまが足した版面の小分類（本文の見出し・目次の札）
   function showMine(p,picks){
     R.dataset.mine='2';
     var got={};
@@ -4129,24 +4141,27 @@ AUTH_JS = r"""
     // 前に読んだ分は覚えておく（ログインの更新で描き直しても「集めています」に戻らない）
     var mineB=R._wlmb||{}, bad=false;
     function draw(){
-      document.querySelectorAll('.wl-wait,.wl-today,.wl-maybe,.wl-uhead,.wl-upill,.wl-uslot,.wl-utab,.wl-utg').forEach(function(x){x.remove();});
+      document.querySelectorAll('.wl-wait,.wl-today,.wl-maybe,.wl-uhead,.wl-upill,.wl-uslot,.wl-utab,.wl-utg,.wl-uchip,.wl-ulab').forEach(function(x){x.remove();});
       var today=document.createElement('section');today.className='wl-today';today.id='wl-today';bar.after(today);
       // 本文も店長のページと同じ「板块 → 小分類」の順に：自分の版面は同じ板块の店長の版面のあと。その板块に店長の版面がなければ、板块の順の位置に見出しを立てて
       function shown(){return [].slice.call(issue.querySelectorAll(':scope>[data-k]:not(.wl-off)')).filter(function(v){return v.id!=='front'&&v.id!=='picks';});}
       function secEl(v){return v.dataset.sec||secOf[norm(v.dataset.k)];}
       var last={};
       wait.forEach(function(x,i){var b=mineB[norm(x.name)]||{state:bad?'err':'wait',stories:[]}, sec=b.sec||x.sec||'其他';
-        var s=document.createElement('section');s.className='wl-wait'+(b.state==='ok'?' wl-ub':'');s.id='wl-ub-'+i;s.dataset.k=x.name;s.dataset.sec=sec;
+        var s=document.createElement('section');s.className='wl-wait'+(b.state==='ok'?' wl-ub':'');s.id='wl-ub-'+i;s.dataset.k=x.name;s.dataset.sec=sec;s.dataset.sub=UB;
         s.style.setProperty('--sc',secColor(sec)||'var(--ink)');
         s.innerHTML='<small>'+esc(secJa(sec))+'</small><h2>'+esc(x.name)+'</h2>'+board(b);
-        var at=last[sec]||shown().filter(function(v){return secEl(v)===sec;}).pop();
-        if(at){at.after(s);}
+        var at=shown().filter(function(v){return secEl(v)===sec&&!v.classList.contains('wl-wait');}).pop();
+        if(last[sec]){last[sec].after(s);}
+        else if(at){   // 同じ板块の店長の版面のあと：店長の小分類の見出しの下に見えないよう、自分の見出し（小分類「あなたが足したもの」）を立てる
+          var h0=document.createElement('div');h0.className='subhead wl-uhead';h0.style.setProperty('--sc',secColor(sec)||'var(--ink)');
+          h0.innerHTML='<b>'+UB+'</b>';at.after(h0);h0.after(s);}
         else{
           var nx=shown().filter(function(v){return secIdx(secEl(v))>secIdx(sec);})[0];   // 店長の版面・もう置いた自分の版面のうち、後ろの板块の最初
           // 次の板块の見出し（隠れた版面・見出しも越えて）の前に
           if(nx)while(nx.previousElementSibling&&/(^|\s)(subhead|wl-off)(\s|$)/.test(nx.previousElementSibling.className)&&!nx.previousElementSibling.classList.contains('wl-wait'))nx=nx.previousElementSibling;
           var hd=document.createElement('div');hd.className='subhead wl-uhead';hd.style.setProperty('--sc',secColor(sec)||'var(--ink)');
-          hd.innerHTML='<span class="tg"><span>'+esc(secJa(sec))+'</span></span><b>あなたが足したもの</b>';
+          hd.innerHTML='<span class="tg"><span>'+esc(secJa(sec))+'</span></span><b>'+UB+'</b>';
           if(nx){issue.insertBefore(hd,nx);hd.after(s);}else{issue.appendChild(hd);issue.appendChild(s);}
         }
         last[sec]=s;pill(x.name,sec,s.id,b);});
@@ -4172,10 +4187,15 @@ AUTH_JS = r"""
       return d;
     }
     function pill(n,sec,id,b){var d=slotFor(sec);if(!d)return;
-      var st=b.state==='ok'?'記事 '+(b.stories||[]).length+' 件':b.state==='none'?'まだ記事なし':b.state==='limit'?'お休み中':'集めています';
-      var a=document.createElement('a');a.className='pill wl-upill';a.dataset.for=n;a.dataset.n='0';a.dataset.sub='';a.href='#'+id;a.style.setProperty('--sc',secColor(sec)||'var(--ink)');
+      var st=b.state==='ok'?'記事 '+(b.stories||[]).length+' 件':b.state==='none'?'まだ記事なし':b.state==='limit'?'お休み中':b.state==='err'?'読み込めません':'集めています';
+      var nb=d.querySelector('.nbody'),subs=nb.querySelector('.nsubs'),sub=subs?UB:'';
+      // 店長の板块（小分類の札がある）に足すときは、札と小見出しも「あなたが足したもの」を 1 つ（店長の小分類の下に見えないように）
+      if(subs&&!subs.querySelector('.wl-uchip')){var c=document.createElement('a');c.className='wl-uchip';c.dataset.sub=UB;c.href='#'+id;c.innerHTML=UB+'<small>0</small>';subs.appendChild(c);
+        var l=document.createElement('div');l.className='nlab wl-ulab';l.dataset.sub=UB;l.textContent=UB;var mo=nb.querySelector('.nmore');if(mo)nb.insertBefore(l,mo);else nb.appendChild(l);}
+      var a=document.createElement('a');a.className='pill wl-upill';a.dataset.for=n;a.dataset.n='0';a.dataset.sub=sub;a.href='#'+id;a.style.setProperty('--sc',secColor(sec)||'var(--ink)');
       a.innerHTML='<i class="no">+</i><i class="ic">'+esc(String(n).charAt(0))+'</i><span class="nm">'+esc(n)+'<small class="cnt">'+esc(st)+'</small></span>';
-      d.querySelector('.nbody').appendChild(a);}
+      var mo2=nb.querySelector('.nmore');if(mo2)nb.insertBefore(a,mo2);else nb.appendChild(a);
+      if(subs){var cs=subs.querySelector('.wl-uchip small');if(cs)cs.textContent=String(+cs.textContent+1);}}
     function tidyNav(){
       if(!rail)return;
       var first={};
@@ -4253,7 +4273,9 @@ AUTH_JS = r"""
       return s;
     }
     draw();
-    function load(){if(!tok||!wait.length)return;rpc('my_boards').then(function(r){bad=false;mineB={};((r&&r.boards)||[]).forEach(function(b){if(b&&b.name)mineB[norm(b.name)]=b;});R._wlmb=mineB;draw();},
+    // 返事が前と同じなら描き直さない（読んでいる最中に画像の読み直し・目次の組み直しを起こさない）
+    function load(){if(!tok||!wait.length)return;rpc('my_boards').then(function(r){var sig=JSON.stringify((r&&r.boards)||[]);
+        if(sig===R._wlsig&&!bad)return;R._wlsig=sig;bad=false;mineB={};((r&&r.boards)||[]).forEach(function(b){if(b&&b.name)mineB[norm(b.name)]=b;});R._wlmb=mineB;draw();},
       function(){if(!Object.keys(mineB).length&&!bad){bad=true;draw();}});}
     load();clearInterval(R._wlub);R._wlub=setInterval(function(){if(!document.hidden)load();},5*60e3);   // 開いている間も 5 分ごとに読み直す（集まりしだい本物の版面に）
   }
@@ -4274,8 +4296,10 @@ AUTH_JS = r"""
         '<b>まだ何も追いかけていません</b><p>トップで追いかけたいものを選ぶと、記事が並びます。</p>')+'<a class="go" href="./">トップへ</a></div>';return;}
     var items=(A.items||[]), chosen={}, secsOn={};
     picks.forEach(function(x){chosen[x.name]=x.sec;secsOn[x.sec]=1;});
+    // 設定の画面から自分のトップへ戻る道と、トップと同じ「カードで選んで足す」流れへの道（網址を打たせない・ブラウザの戻るに頼らない）
+    var back=page==='settings'?'<p class="wl-back"><a href="./">← '+esc(sh)+' さんのページへ</a><a href="'+ADD+'">＋ カードで選んで足す</a></p>':'';
     function draw(){
-      var t=h+'<h2>'+(picks.length?'追いかけるものを足す・外す':'好きなジャンルは？')+'</h2><p class="hint">押して選ぶ（いくつでも）。</p><div class="tiles secs">'+
+      var t=h+back+'<h2>'+(picks.length?'追いかけるものを足す・外す':'好きなジャンルは？')+'</h2><p class="hint">押して選ぶ（いくつでも）。押してある札をもう一度押すと外れます。</p><div class="tiles secs">'+
         SECS.map(function(x){return '<button type="button" data-gsec="'+esc(x[0])+'" aria-pressed="'+(!!secsOn[x[0]])+'" style="--sc:'+esc(x[2]||'var(--ink)')+'">'+esc(x[1])+'</button>';}).join('')+'</div>';
       var keys=Object.keys(secsOn).filter(function(k){return secsOn[k];});
       if(keys.length){
@@ -4299,7 +4323,7 @@ AUTH_JS = r"""
         st.textContent='保存しています…';sv.disabled=true;
         rpc('my_keywords_set',{p_picks:list}).then(function(){
           if(page==='index'){p=p||{};p.prefs=p.prefs||{};p.prefs.picks=list;box.remove();showMine(p,list);scrollTo(0,0);}
-          else{picks=list;st.textContent='保存しました（'+list.length+' つ）';sv.disabled=false;}
+          else{picks=list;st.innerHTML='保存しました（'+list.length+' つ）。<a href="./">ページで見る →</a>';sv.disabled=false;}
         }).catch(function(){st.textContent='保存できませんでした。もう一度お試しください。';sv.disabled=false;});};
     }
     draw();

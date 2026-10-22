@@ -547,3 +547,9 @@ revoke all on function public.admin_user_password(text, text) from public, anon;
 grant execute on function public.admin_users() to authenticated;
 grant execute on function public.admin_user_password(text, text) to authenticated;
 -- （admin_user_leave も作ったが、退会の機能はいらない（用户定的）ので網页からは呼ばない）
+
+-- ⑲ 古い登録の入口を閉じる（2026-10-22 の見直し）：パスワードのない user_register(text, int)・user_signup(text, int, jsonb) は
+--    Auth のユーザーなしで app_users の行だけを作れる → 他人のメールで先に作られると、その人は本物の登録（4 引数）で
+--    「もう登録されています」になる。網页が呼ぶのは 4 引数の user_signup だけ（中から 3 引数を呼ぶのは security definer の持ち主なので、閉じても動く）。
+revoke all on function public.user_register(text, int) from public, anon, authenticated;
+revoke all on function public.user_signup(text, int, jsonb) from public, anon, authenticated;

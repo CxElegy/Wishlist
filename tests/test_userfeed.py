@@ -148,6 +148,66 @@ class Rules(unittest.TestCase):
         self.assertEqual(userfeed.lang_order(["en-US"]), ["en"])
 
 
+class Recall(unittest.TestCase):
+    """2026-10-22：10 月の inbox で、名前を含む記事のうち拾えたのが ILLIT 59/208・Vaundy 8/48・Astrae Oratio 0/40 だった（板块の語が要った）。
+    よく使う語でない名前は名前だけで拾う。落ちていたのは本物の見出し"""
+    hits = Rules.hits
+
+    def test_proper_names_alone(self):
+        for name, sec, title in [("Astrae Oratio", "游戏", "NC ANNOUNCES CLOSED BETA TEST REGISTRATION FOR ASTRAE ORATIO BEGINNING AUGUST 19"),
+                                 ("Vaundy", "演出", "Vaundy、「しわあわせ」が急上昇1位 2021年配信楽曲が映画主題歌起用で再生数増"),
+                                 ("ILLIT", "演出", "活動休止中のILLITモカの誕生日をメンバーが秘蔵写真＆長文メッセージで祝福！"),
+                                 ("NewJeans", "演出", "「ILLITはNewJeansのコピー」発言…ミン・ヒジン氏を送検"),
+                                 ("Vaundy", None, "KO1KEYZ Debuts at No. 1 on Japan Hot 100 as Vaundy Climbs Into Top 10")]:
+            self.assertTrue(self.hits(name, sec, title), (name, title))
+        self.assertEqual(userfeed.ascii_kind("Astrae Oratio"), "proper")
+        self.assertEqual(userfeed.ascii_kind("The Wrong Way"), "phrase")
+        self.assertEqual(userfeed.ascii_kind("Apex"), "word")
+        self.assertEqual(userfeed.ascii_kind("IVE"), "word")   # 3 字以下はよく使う語と同じ扱い（略語に当たる）
+
+    def test_common_words_still_need_context(self):
+        self.assertFalse(self.hits("Apex", "游戏", "蒂姆·库克收到绝区零手办，这 1/7 比例细节有点东西|APEX-TOYS"))   # 1 語は日本語・中国語の記事でも語と一緒に
+        self.assertFalse(self.hits("Tokyo", "出行", "シャネル 2027年春夏 コレクションのショーに出席（Numero TOKYO）"))
+        self.assertTrue(self.hits("Hollow Knight", "游戏", "「Hollow Knight」の続編の発表は来年に"))   # 2 語以上の句は、かな・漢字の記事なら
+        self.assertFalse(self.hits("Hollow Knight", "游戏", "The hollow knight statue in the old church"))
+        self.assertFalse(self.hits("Live", None, "'GTA 6' official merch is live, and it's already selling out"))   # 板块がなくても語と一緒
+
+    def test_symbols_only_not_collected(self):
+        self.assertEqual(userfeed.match_terms("..."), [])
+        self.assertFalse(userfeed.has_word("！？…"))
+        users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "...", "sec": "其他"}, {"name": "広島旅行", "sec": "出行"}]}}]
+        todo, keep, _, blanks = userfeed.plan(users, [], [], NOW)
+        self.assertEqual([g["name"] for g in todo], ["広島旅行"])
+        self.assertEqual([b[1] for b in blanks], ["..."])
+        self.assertIn("...", keep[userfeed.account_of("a@example.com")])
+        rows = [{"account": userfeed.account_of("a@example.com"), "item": "...", "checked_at": NOW.isoformat(), "state": "ok"}]
+        self.assertEqual(userfeed.plan(users, [], rows, NOW)[3], [])   # 1 度書いたら書き直さない
+
+    def test_kanji_name_with_genre_suffix(self):
+        self.assertTrue(self.hits("広島旅行", "出行", "秋の広島観光、宮島の紅葉が見頃に"))
+        self.assertTrue(self.hits("広島旅行", "出行", "広島への旅行で行きたい場所"))
+        self.assertFalse(self.hits("広島旅行", "出行", "広島で大会が開催"))   # どこにでも出る語（開催）だけでは当てない
+
+    def test_same_name_other_genre_not_shared(self):
+        users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "Apex", "sec": "游戏"}]}},
+                 {"email": "b@example.com", "prefs": {"picks": [{"name": "Apex", "sec": "出行"}]}},
+                 {"email": "c@example.com", "prefs": {"picks": [{"name": "Apex", "sec": "游戏"}]}}]
+        todo = userfeed.plan(users, [], [], NOW)[0]
+        self.assertEqual(sorted(len(g["boards"]) for g in todo), [1, 2])   # 匹配词が板块で変わる名前は、同じ板块の人とだけまとめる
+
+    def test_fetch_failure_counts_as_failure(self):
+        it = userfeed.board_item("広島旅行", "出行", ["ja-JP"])
+
+        def refused(*_a, **_k):
+            sources._tl.fails = sources.fetch_fails() + 1   # rss() が 429 を握りつぶしたときと同じ
+            return []
+        with mock.patch.object(digest, "collect", side_effect=refused):
+            with self.assertRaises(RuntimeError):
+                userfeed.stories_for(it, {})
+        with mock.patch.object(digest, "collect", return_value=[]):
+            self.assertEqual(userfeed.stories_for(it, {}), [])   # 取れて 0 件は失敗にしない
+
+
 class Plan(unittest.TestCase):
     def users(self):
         return [{"email": "test-b@example.com", "prefs": {"lang": {"primary": "ja"},
@@ -157,7 +217,7 @@ class Plan(unittest.TestCase):
                 {"email": None, "prefs": {"picks": [{"name": "だれか"}]}}]
 
     def test_only_not_in_shop_and_grouped(self):
-        todo, keep, limits = userfeed.plan(self.users(), ["ちいかわ"], [], NOW)
+        todo, keep, limits, _ = userfeed.plan(self.users(), ["ちいかわ"], [], NOW)
         self.assertEqual([g["name"] for g in todo], ["広島旅行"])   # 店長の版面にあるものは集めない
         self.assertEqual(len(todo[0]["boards"]), 2)                  # 2 人が同じものなら 1 回で
         self.assertEqual({b[2] for b in todo[0]["boards"]}, {"出行", "生活"})   # 板块は人ごと（1 人目のもので上書きしない）
@@ -167,7 +227,7 @@ class Plan(unittest.TestCase):
     def test_trim_and_duplicates(self):
         users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "  広島旅行 ", "sec": "出行"}, {"name": "広島 旅行", "sec": "出行"},
                                                                 {"name": "あ" * 90, "sec": "其他"}]}}]
-        todo, keep, _ = userfeed.plan(users, [], [], NOW)
+        todo, keep, _, _ = userfeed.plan(users, [], [], NOW)
         self.assertEqual(keep[userfeed.account_of("a@example.com")], {"広島旅行", "あ" * 80})   # SQL の my_boards と同じ：trim・80 字・同じ名前は 1 つ
         sql = (ROOT / "db" / "user_boards.sql").read_text(encoding="utf-8")
         self.assertIn("left(btrim(x.value ->> 'name', E' \\t\\n\\r\\f\\x0b\\u3000\\u00a0'), 80)", sql)
@@ -178,12 +238,12 @@ class Plan(unittest.TestCase):
     def test_recent_skipped(self):
         acct = userfeed.account_of("test-b@example.com")
         rows = [{"account": acct, "item": "広島旅行", "checked_at": (NOW - dt.timedelta(minutes=30)).isoformat()}]
-        todo, _, _ = userfeed.plan(self.users()[:1], [], rows, NOW)
+        todo, _, _, _ = userfeed.plan(self.users()[:1], [], rows, NOW)
         self.assertEqual([g["name"] for g in todo], ["ちいかわ"])   # 30 分前に探したものは飛ばす
 
     def test_cap_marks_limit_and_new_first(self):
         many = [{"email": "a@example.com", "prefs": {"picks": [{"name": f"もの{i}", "sec": "其他"} for i in range(35)]}}]
-        todo, keep, limits = userfeed.plan(many, [], [], NOW)
+        todo, keep, limits, _ = userfeed.plan(many, [], [], NOW)
         acct = userfeed.account_of("a@example.com")
         self.assertEqual(len(keep[acct]), 35)                                    # 上限を超えた分も消さない
         self.assertEqual([x[1] for x in limits], [f"もの{i}" for i in range(30, 35)])   # 超えた分は limit の行（「集めています」のままにしない）
@@ -191,21 +251,21 @@ class Plan(unittest.TestCase):
         self.assertEqual(todo[0]["name"], "もの29")                              # まだ探していないものは新しく足したものから
         rows = [{"account": acct, "item": f"もの{i}", "checked_at": (NOW - dt.timedelta(hours=10 - i)).isoformat(), "state": "ok"} for i in range(5)]
         rows += [{"account": acct, "item": f"もの{i}", "checked_at": NOW.isoformat(), "state": "limit"} for i in range(30, 35)]
-        todo, _, limits = userfeed.plan(many, [], rows, NOW)
+        todo, _, limits, _ = userfeed.plan(many, [], rows, NOW)
         self.assertEqual(limits, [])                                             # 書いてあれば書き直さない
         self.assertEqual(todo[0]["name"], "もの29")
 
     def test_fair_between_users(self):
         users = [{"email": f"u{n}@example.com", "prefs": {"picks": [{"name": f"{n}の{i}", "sec": "其他"} for i in range(30)]}} for n in range(30)]
         rows = [{"account": userfeed.account_of(f"u{n}@example.com"), "item": f"{n}の0", "checked_at": "2026-10-01T00:00:00+00:00"} for n in range(30)]
-        todo, _, _ = userfeed.plan(users, [], rows, NOW)
+        todo, _, _, _ = userfeed.plan(users, [], rows, NOW)
         self.assertEqual(len(todo), userfeed.MAX_BOARDS_PER_RUN)
         firsts = todo[:30]
         self.assertEqual(len({g["boards"][0][0] for g in firsts}), 30)   # 全員の 1 つ目が先（1 人で全部を使わない）
 
     def test_new_users_capped(self):
         users = [{"email": f"spam{n}@example.com", "prefs": {"picks": [{"name": f"s{n}", "sec": "其他"}]}} for n in range(50)]
-        todo, _, _ = userfeed.plan(users, [], [], NOW)
+        todo, _, _, _ = userfeed.plan(users, [], [], NOW)
         self.assertEqual(len(todo), userfeed.MAX_NEW_USERS_PER_RUN)   # まだ集めていない人は 1 回 15 人まで（登録の古い順）
         self.assertEqual(todo[0]["name"], "s0")
 
@@ -300,7 +360,7 @@ class Run(unittest.TestCase):
         self.assertEqual((got["だめなもの"]["fails"], got["だめなもの"]["stories"]), (1, []))   # 失敗は fails +1（網页は「集めています」のまま）
         self.assertEqual(got["だめなもの"]["checked_at"], NOW.isoformat(timespec="seconds"))
         more = [{"email": "a@example.com", "prefs": {"picks": users[0]["prefs"]["picks"] + [{"name": "新しいもの"}]}}]
-        todo, _, _ = userfeed.plan(more, [], db.written(), NOW + dt.timedelta(hours=2))
+        todo, _, _, _ = userfeed.plan(more, [], db.written(), NOW + dt.timedelta(hours=2))
         self.assertEqual(todo[0]["name"], "新しいもの")   # 次の回、失敗したものはまだ探していないものの後ろ（毎回 1 人分の枠を取り続けない）
         self.assertFalse(any("だめなもの" in x or "よいもの" in x or "boom" in x for x in logs))   # ログに選んだものの名前・エラーの本文を出さない
         self.assertTrue(any("取れなかった（RuntimeError）" in x for x in logs))
@@ -359,7 +419,7 @@ class Run(unittest.TestCase):
     def test_late_not_marked(self):
         users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "おそいもの"}, {"name": "はやいもの"}]}}]
         db = FakeDB(users)
-        with mock.patch.object(digest, "run_parallel", return_value=({}, [("おそいもの", ("ja-JP",))])):
+        with mock.patch.object(digest, "run_parallel", return_value=({}, [("おそいもの", ("ja-JP",), tuple(userfeed.board_item("おそいもの", None, ["ja-JP"])["match"]))])):
             res = self.run_with(db, lambda item, settings: [])
         self.assertEqual(res["late"], 1)
         self.assertNotIn("おそいもの", [r["item"] for r in db.written()])   # 時間切れは探した印を付けない
@@ -429,6 +489,24 @@ class Wiring(unittest.TestCase):
         self.assertIn("userfeed", processes.COMPONENTS)
         flow = next(p for p in processes.PROCESSES if p["id"] == "collect")
         self.assertIn("userfeed", flow["uses"])
+
+    def test_limits_match_code(self):
+        import processes
+        row = next(x for x in processes.LIMITS if x[0] == "お客さまの版面の記事集め")
+        self.assertIn(f"1 人 1 回 {userfeed.PER_USER_PER_RUN} 版面", row[2])   # 図の数字はコードとそろえる（CLAUDE.md）
+        self.assertIn(f"1 人 1 回 {userfeed.PER_USER_PER_RUN} 版面", processes.COMPONENTS["userfeed"]["spec"])
+
+    def test_page_side_guards(self):
+        # 画面側（render.AUTH_JS）の決まり：Playwright なしで、壊れやすい所だけ文字で確かめる
+        import render
+        js = render.AUTH_JS
+        self.assertIn("if(!on&&R.dataset.mine==='2'){", js)    # お客さま → 访客：書き換えたページを開き直す（版面・駅が混ざったままにしない）
+        self.assertIn("if(sig===R._wlsig&&!bad)return;", js)    # 5 分ごとの読み直しで、返事が同じなら描き直さない
+        self.assertIn("s.dataset.sub=UB", js)                    # 自分の版面は自分の小分類（店長の小分類の見出しの下に入れない）
+        self.assertIn("'wl-uchip'", js.replace('"', "'"))
+        self.assertIn("← '+esc(sh)+' さんのページへ", js)        # 設定から自分のトップへ戻る道
+        self.assertIn("SPARE_MAX", render.NAV_JS)                # 駅が少ないときに板块の間を大きく空けない
+        self.assertIn(".wl-auth.away", render.AUTH_CSS)          # スマホの右下の札は、下へ読み進める間しまう（本文に重ねない）
 
 
 if __name__ == "__main__":
