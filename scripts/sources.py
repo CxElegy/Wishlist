@@ -165,11 +165,20 @@ def _warn(name, err):
     print(f"  [警告] {name} 抓取失败：{err}", file=sys.stderr)
 
 
+_tl = threading.local()   # このスレッドで RSS が取れなかった回数（429・時間切れ）。お客さまの記事集め（userfeed.stories_for）が「0 件」と「取れなかった」を分ける
+
+
+def fetch_fails():
+    """このスレッドで rss() が取れなかった回数（取れなかったら空を返して続けるので、呼んだ側はこれで見分ける）。"""
+    return getattr(_tl, "fails", 0)
+
+
 def rss(url, source=None):
     """抓取并解析 RSS 2.0 / Atom。"""
     try:
         data = _get(url)
     except Exception as e:  # 网络错误跳过，不影响其它来源
+        _tl.fails = fetch_fails() + 1
         _warn(source or url, e)
         return []
     return rss_bytes(data, source or url)

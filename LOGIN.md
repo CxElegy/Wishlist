@@ -52,6 +52,7 @@ Google ログインは保留（Google の「公開」にホームページとプ
   中身は `my_page()`（ログインした本人の `app_users` の行だけ、`db/my_page.sql`）。キーワード = `prefs.picks`（入口の「新しく始める」で選んだものと同じ形）、設定で足す・外す（`my_keywords_set`、200 個まで）。
   画面の言葉は skill（impeccable の clarify・distill、onboarding、web-design-guidelines）に合わせる：仕組みの説明・準備中・店長のページへの切り替えは出さない、空の状態は「何のための場所か＋最初の 1 つを足す」、外したら「元に戻す」。ニュース集め・版面・欲しい物リストはまだ（下）。
 
+- **お客さまの版面の記事集め**（2026-10-22）：選んだもののうち店長の関注項にないものは `scripts/userfeed.py`（AI なし・店長と同じ絞り込み）が集めて Supabase の `user_boards` に本人の account（`u_` + md5(メール) 16 字）で書く。網页は `my_boards()`（`db/user_boards.sql`，ログインした本人の行だけ）を読み、`{"boards": [{name, sec, state, stories: [{title, url, source, date, seen, image, summary}], found, checked, updated}]}` を版面の形で描く（`state`：wait = まだ行がない・0 件で取れなかった回数 `fails` が 1〜4「集めています」、none = 探したが 0 件「まだ見つかっていません」、ok、limit = 1 人 30 版面を超えた）。**`db/user_boards.sql` を先に流す**（`fails` 列・`my_boards` がないと、網页は「読み込めませんでした」、userfeed は書けない行を数えるだけ）。トップの「今日の主なニュース」「気になるかも？」もこれと店長の版面から作る（`showMine`）。店長のページに版面があるもの（`shopHit`）は店長の版面をそのまま見せる（行を作らない）。集めるのは一度はログインした人だけ（`userfeed_users()`）。
 - ユーザーが登録したら自分の account（`accounts.owner` = 本人）を作り、自分の関注清单・愿望清单・ページを持つ。
 - ユーザーのページも同じ /home/（網址に名前を出さない）。本人だけが見られる：GitHub Pages は公開なので、ページは Supabase の非公開の場所に置き、ログイン後に読む。リポジトリにも入れない（リポジトリは公開）。
 - ユーザーの関注項の AI 編集は Haiku（安いモデル）・1 日の上限つき。Discord はユーザーとは関係なし（運営者だけ、保留中）。

@@ -2,7 +2,7 @@
 
 App のように 1 ページで画面を切り替える：
   ① 入口（何のサイトか・店長のページの本物の画面・「新しく始める」「ログイン」「店長のページを見る」）
-  ② メールアドレスと規約 → ③ 好きなジャンル（8 つの板块）→ ④ 候補のタイルを押して選ぶ（名前でも足せる。左右に払うカードはやめた）→ ⑤ 最初の版面の確認 → ⑥ 店長が集めに行く
+  ② メールアドレスと規約 → ③ 好きなジャンル（8 つの板块）→ ④ カードを左右に（気になる / パス）→ ⑤ 最初の版面の確認 → ⑥ 店長が集めに行く
 このブラウザが覚えている人（localStorage の wl-user）は入口を飛ばして自分のページへ（いまは店長のページ。?stay で止まる）。
 登録は本物（public.user_signup：メールアドレス・規約の同意・好み = 言語・ジャンル・最初の版面）。本人の版面はまだ作らない（第 2 步、LOGIN.md）。
 
@@ -202,15 +202,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sa
 .soon{font-size:11px;opacity:.7;font-weight:500}
 .err{margin:0;color:var(--alert);font-weight:700;min-height:1.4em}
 /* カード */
-/* 押して選ぶタイル（2026-10-22，用户定的：左右に払うカードは交友アプリに見えるのでやめる） */
-.deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
-.deck .card{position:relative;inset:auto;min-height:190px;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;box-shadow:var(--shadow);touch-action:auto;transition:transform .15s}
-.deck .card .ph{min-height:110px}
-.deck .card .tx b{font-size:15px}
-.deck .card[aria-pressed=true]{outline:4px solid var(--rose);outline-offset:-4px;transform:rotate(-1deg)}
-.deck .card[aria-pressed=true]::after{content:"✓";position:absolute;top:8px;right:8px;width:30px;height:30px;display:grid;place-items:center;background:var(--rose);color:var(--card);font:900 18px/1 var(--font-sans);border:2px solid var(--ink)}
-.addname label{display:block;font-weight:700;font-size:14px;margin-bottom:4px}
-.addname .row{display:flex;gap:8px}.addname input{flex:1;min-width:0;padding:10px 12px;border:3px solid var(--ink);background:var(--card);font:700 16px var(--font-sans);color:var(--ink)}
+.deck{position:relative;flex:1;min-height:clamp(250px,calc(100dvh - 380px),520px);display:grid;place-items:center}
 #s-cards .wrap{gap:12px}
 @media (max-height:820px){#s-cards .qs{display:none}}
 .card{position:absolute;inset:0 0 0 0;display:flex;flex-direction:column;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow-l);
@@ -269,8 +261,13 @@ JS = r"""
   // このブラウザが覚えている人：入口を飛ばして自分のページへ（いまは店長のページ）。?stay なら止まる
   let me = null; try { me = JSON.parse(localStorage.getItem('wl-user') || 'null'); } catch (_) {}
   const stay = /[?&]stay\b/.test(location.search);
+  // 版面を足す（?add、自分のページの「足す」から）：ログイン中の人は、登録と同じジャンル → カード → 確認で足す（2026-10-22，用户定的：前の左右に払うカードに戻す）
+  let sess = null; try { sess = JSON.parse(localStorage.getItem('wl-auth') || 'null'); } catch (_) {}
+  const addMode = /[?&]add\b/.test(location.search) && !!(sess && sess.access_token);
+  let have = [];   // もう選んでいるもの（足すときは残したまま）
+  let haveP = Promise.resolve();
   if (me && me.name) {
-    if (!stay) { location.replace(C.shop); return; }
+    if (!stay && !addMode) { location.replace(C.shop); return; }
     const b = $('.back-on'); b.classList.add('on'); $('b', b).textContent = me.name;
   }
   // ---- 画面の切り替え（戻るボタンでも戻れる）
@@ -289,7 +286,30 @@ JS = r"""
     if (id === 'check') check();
   }
   addEventListener('popstate', ev => show((ev.state && ev.state.id) || 'home', false));
-  if (location.hash === '#name') show('name', false);   // 各ページ右上の「新しく始める」から
+  if (location.hash === '#name' && !addMode) show('name', false);   // 各ページ右上の「新しく始める」から
+  const token = () => (!sess.expires_at || sess.expires_at * 1000 > Date.now() + 60000) ? Promise.resolve(sess.access_token) :
+    fetch(C.url.replace(/\/$/, '') + '/auth/v1/token?grant_type=refresh_token', { method: 'POST', headers: { apikey: C.key, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ refresh_token: sess.refresh_token }) }).then(r => r.ok ? r.json() : Promise.reject(new Error('login')))
+      .then(s => { sess = s; try { localStorage.setItem('wl-auth', JSON.stringify(s)); } catch (_) {} return s.access_token; });
+  const arpc = (fn, body) => token().then(tk => fetch(C.url.replace(/\/$/, '') + '/rest/v1/rpc/' + fn, { method: 'POST',
+    headers: { apikey: C.key, Authorization: 'Bearer ' + tk, 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) }))
+    .then(r => r.text().then(t => { let j = null; try { j = t ? JSON.parse(t) : null; } catch (_) {} return r.ok ? j : Promise.reject(new Error((j && j.message) || r.status)); }));
+  if (addMode) {
+    document.documentElement.classList.add('adding');
+    $('#s-genre .q').textContent = '足したいジャンルは？';
+    $('#s-check .q').textContent = '足すもの'; $('#s-check .qs').textContent = '店長がこれから集めに行きます。集まるまで、版面に「集めています」と出ます。';
+    // 「気になるかも？」の「＋ X を追いかける」から（?add&pick=X&s=板块）：X を選んだ状態で確認の画面へ（カードを探し直させない）
+    const q = new URLSearchParams(location.search), pk = (q.get('pick') || '').trim().slice(0, 80);
+    if (pk) {
+      const c = C.cards.find(x => String(x.name).toLowerCase() === pk.toLowerCase()) || { name: pk, sec: C.secs[q.get('s')] ? q.get('s') : '其他', img: '' };
+      st.genres.add(c.sec); st.liked = [c];
+      history.replaceState({ id: 'check' }, '', location.pathname + location.search + '#check'); show('check', false);
+    } else { history.replaceState({ id: 'genre' }, '', location.pathname + location.search + '#genre'); show('genre', false); }
+    // 今までのもの（足すときは残す）。読めるまで「足す」は待つ：読めないまま保存すると、今までのものが消える
+    haveP = arpc('my_page').then(p => { have = ((p && p.prefs && p.prefs.picks) || []).filter(x => x && x.name);
+      have.forEach(x => { const g = $('.genre[data-k="' + CSS.escape(x.sec || '') + '"]'); if (g && g.getAttribute('aria-pressed') !== 'true') g.click(); }); });
+    haveP.catch(() => {});
+  }
   $$('[data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
   $$('.bar [data-back]').forEach(b => b.addEventListener('click', () => history.back()));
   // ---- ② メールアドレス・パスワードと規約（2026-10-21，用户定的：ログインはメールアドレス＋パスワード）
@@ -340,10 +360,11 @@ JS = r"""
     on ? st.genres.add(g.dataset.k) : st.genres.delete(g.dataset.k);
     next2.disabled = !st.genres.size; next2.textContent = st.genres.size ? st.genres.size + ' つで次へ' : 'ひとつ以上えらぶ';
   }));
-  // ---- ④ 候補を押して選ぶ（タイル。名前でも足せる）
-  let pile = [];
+  // ---- ④ カード（右 = 気になる、左 = パス。ボタン・キーボード ← → でも）
+  let pile = [], idx = 0;
   function deal() {
-    const pick = C.cards.filter(c => st.genres.has(c.sec));
+    const own = new Set(have.map(x => String(x.name).toLowerCase()));
+    const pick = C.cards.filter(c => st.genres.has(c.sec) && !own.has(String(c.name).toLowerCase()));
     // ジャンルを順番に混ぜる・店長のものを先に少し
     const by = {}; pick.forEach(c => (by[c.sec] = by[c.sec] || []).push(c));
     // 店長のものと話題のものを交互に（店長のものだけが先に並ばないように）
@@ -352,57 +373,75 @@ JS = r"""
       by[k] = mix; });
     pile = []; const keys = Object.keys(by);
     for (let i = 0; pile.length < C.max && keys.some(k => by[k][i]); i++) keys.forEach(k => { if (by[k][i] && pile.length < C.max) pile.push(by[k][i]); });
-    st.liked = []; render();
+    idx = 0; st.liked = []; render();
   }
   const deck = $('.deck'), cnt = $('.count');
-  function cardHtml(c, i) {
+  function cardHtml(c) {
     const sec = C.secs[c.sec] || {};
-    const on = st.liked.indexOf(c) >= 0;
-    return '<button type="button" class="card" data-i="' + i + '" aria-pressed="' + on + '" style="--sc:' + esc(sec.color) + '">' +
-      (c.img ? '<div class="ph"><img class="blur" src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer"><img src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer" loading="lazy"></div>' : '<div class="ph"></div>') +
-      '<span class="sec">' + esc(sec.ja || '') + '</span>' +
-      '<div class="tx"><b>' + esc(c.name) + '</b><span>' + esc(c.sub || '') + '</span></div></button>';
+    return '<div class="card" style="--sc:' + esc(sec.color) + '"><div class="ph"><img class="blur" src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer">' +
+      '<img src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer" draggable="false"></div>' +
+      '<span class="sec">' + esc(sec.ja || '') + '</span>' + (c.shop ? '<span class="mine">店長も見ている</span>' : '') +
+      '<span class="st y">気になる</span><span class="st n">パス</span>' +
+      '<div class="tx"><b>' + esc(c.name) + '</b><span>' + esc(c.sub || '') + '</span></div></div>';
   }
   function render() {
-    deck.innerHTML = pile.length ? pile.map(cardHtml).join('') : '<p class="empty">このジャンルの候補はまだありません。下に名前で足してください</p>';
-    $$('.card', deck).forEach(b => b.addEventListener('click', () => {
-      const c = pile[+b.dataset.i], k = st.liked.indexOf(c);
-      k >= 0 ? st.liked.splice(k, 1) : st.liked.push(c);
-      b.setAttribute('aria-pressed', String(k < 0)); count();
-    }));
-    count();
-  }
-  function count() {
-    cnt.textContent = st.liked.length ? st.liked.length + ' つ選んでいます' : '';
+    if (idx >= pile.length) {
+      deck.innerHTML = '<p class="empty">' + (pile.length ? 'これで全部です。<br>気になる ' + st.liked.length + ' 件' : 'このジャンルの候補はまだありません。<br>あとで名前で追加できます') + '</p>';
+      cnt.textContent = ''; $('#to-check').hidden = false; return;
+    }
+    deck.innerHTML = cardHtml(pile[idx]); cnt.textContent = (idx + 1) + ' / ' + pile.length + '　·　気になる ' + st.liked.length;
     $('#to-check').hidden = st.liked.length === 0;
+    drag($('.card', deck));
   }
-  $('.addname').addEventListener('submit', ev => {
-    ev.preventDefault(); const inp = $('#addname'), n = inp.value.trim(); if (!n) return;
-    if (pile.some(c => c.name.toLowerCase() === n.toLowerCase())) { inp.value = ''; return; }
-    const c = { name: n, sec: [...st.genres][0] || '其他', sub: '名前で足したもの', img: '' };
-    pile.unshift(c); st.liked.push(c); inp.value = ''; render();
-  });
+  function decide(yes) {
+    const card = $('.card', deck); if (!card) return;
+    if (yes) st.liked.push(pile[idx]);
+    card.classList.add(yes ? 'out-r' : 'out-l'); idx++;
+    setTimeout(render, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 220);
+  }
+  function drag(card) {
+    let x0 = null, dx = 0;
+    const y = $('.st.y', card), n = $('.st.n', card);
+    card.addEventListener('pointerdown', ev => { x0 = ev.clientX; dx = 0; card.classList.add('drag'); card.setPointerCapture(ev.pointerId); });
+    card.addEventListener('pointermove', ev => { if (x0 == null) return; dx = ev.clientX - x0;
+      card.style.transform = 'translateX(' + dx + 'px) rotate(' + dx / 18 + 'deg)'; y.style.opacity = Math.max(0, dx / 120); n.style.opacity = Math.max(0, -dx / 120); });
+    const up = () => { if (x0 == null) return; x0 = null; card.classList.remove('drag');
+      if (Math.abs(dx) > 100) { card.style.transform = ''; decide(dx > 0); } else { card.style.transform = ''; y.style.opacity = n.style.opacity = 0; } };
+    card.addEventListener('pointerup', up); card.addEventListener('pointercancel', up);
+  }
+  $('.act.y').addEventListener('click', () => decide(true));
+  $('.act.n').addEventListener('click', () => decide(false));
+  addEventListener('keydown', ev => { if (!$('#s-cards').classList.contains('on')) return;
+    if (ev.key === 'ArrowRight') decide(true); if (ev.key === 'ArrowLeft') decide(false); });
   // ---- ⑤ 確認（最初は C.first 件まで。多い分は外しておき、押せば戻せる）
   function check() {
     const ul = $('.picked'); ul.innerHTML = '';
     st.liked.forEach((c, i) => {
-      const li = document.createElement('li'); if (i >= C.first) li.classList.add('off');
+      const cut = !addMode && i >= C.first;
+      const li = document.createElement('li'); if (cut) li.classList.add('off');
       li.innerHTML = (c.img ? '<img src="' + esc(c.img) + '" alt="" referrerpolicy="no-referrer">' : '') + '<b><span class="nm">' + esc(c.name) + '</span><small>' + esc((C.secs[c.sec] || {}).ja || '') + '</small></b>' +
-        '<button type="button">' + (i >= C.first ? '入れる' : '外す') + '</button>';
+        '<button type="button">' + (cut ? '入れる' : '外す') + '</button>';
       $('button', li).addEventListener('click', () => { li.classList.toggle('off'); $('button', li).textContent = li.classList.contains('off') ? '入れる' : '外す'; sum(); });
       ul.appendChild(li);
     });
     sum();
   }
   function sum() { const n = $$('.picked li:not(.off)').length; const b = $('#to-done'); b.disabled = !n;
-    b.textContent = n ? 'この ' + n + ' つで始める' : 'ひとつ以上残してください';
-    $('#first-note').textContent = st.liked.length > C.first ? '最初は ' + C.first + ' つまでがおすすめ（店長が集める量が多すぎないように）。あとで増やせます。' : ''; }
+    b.textContent = n ? 'この ' + n + (addMode ? ' つを足す' : ' つで始める') : 'ひとつ以上残してください';
+    $('#first-note').textContent = !addMode && st.liked.length > C.first ? '最初は ' + C.first + ' つまでがおすすめ（店長が集める量が多すぎないように）。あとで増やせます。' : ''; }
   // ---- 登録（本物）：メールアドレス・規約の同意・好みを一度に。もう登録されていたらメールの画面へ戻す
   $('#to-done').addEventListener('click', () => {
     const keep = $$('.picked li:not(.off)').map(li => st.liked[[...li.parentNode.children].indexOf(li)]);
     const prefs = { lang: { primary: st.lang, also: [...st.also].filter(l => l !== st.lang) }, genres: [...st.genres],
                     picks: keep.map(c => ({ name: c.name, sec: c.sec })), from: 'welcome' };
     const b = $('#to-done'), err = $('#signup-err'); b.disabled = true; err.textContent = '';
+    if (addMode) {   // 足す：今までのもの＋選んだもの（同じ名前は 1 つ）→ 自分のページへ
+      haveP.then(() => { const seen = new Set(have.map(x => String(x.name).toLowerCase()));
+      const list = have.concat(prefs.picks.filter(x => !seen.has(String(x.name).toLowerCase())));
+      return arpc('my_keywords_set', { p_picks: list }); }).then(() => location.replace(C.shop + '?added=' + encodeURIComponent(prefs.picks.map(x => x.name).join('、'))))
+        .catch(e => { b.disabled = false; err.textContent = /login/.test(e.message) ? 'もう一度ログインしてください' : '保存できませんでした。もう一度押してください'; });
+      return;
+    }
     const done = () => {
       try { localStorage.setItem('wl-user', JSON.stringify({ name: st.name, v: C.terms, at: Date.now() })); } catch (_) {}
       $('#done-name').textContent = st.name.split('@')[0]; $('#done-list').innerHTML = keep.map(c => '<li title="' + esc(c.name) + '">' + esc(c.name) + '</li>').join('');
@@ -537,11 +576,11 @@ def build(out=OUT, base="", cards=None):
 
 <section class="scr" id="s-cards"><div class="wrap">
 {bar}
-<h2 class="q">追いかけたいものは？</h2>
-<p class="qs">押して選ぶ（いくつでも）。ないものは下に名前で足せます。</p>
+<h2 class="q">気になる？</h2>
+<p class="qs">右へ = 気になる、左へ = パス（ボタン・← → キーでも）。</p>
 <div class="deck" aria-live="polite"></div>
-<form class="addname"><label for="addname">ほかに追いかけたいもの</label><div class="row"><input id="addname" maxlength="80" autocomplete="off" placeholder="作品・ブランド・人の名前"><button type="submit" class="btn">足す</button></div></form>
-<p class="count" aria-live="polite"></p>
+<p class="count"></p>
+<div class="acts"><button type="button" class="act n" aria-label="パス">✕</button><button type="button" class="act y" aria-label="気になる">♥</button></div>
 <button type="button" class="btn main" id="to-check" data-go="check" hidden>この中から始める</button>
 </div></section>
 

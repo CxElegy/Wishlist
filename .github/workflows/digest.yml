@@ -43,6 +43,9 @@ jobs:
       IS_WEEKLY: ${{ github.event.schedule == '47 0 * * 1' || inputs.weekly == true }}
       WL_RENDER_SOFT: "1"   # 網页の生成に失敗しても、集めたデータは push する（digest.write_page）
     steps:
+      - name: 始めた時刻（お客さまの記事集めが job の timeout の前に終わるように、scripts/userfeed.py の JOB_T0）
+        run: echo "JOB_T0=$(date +%s)" >> "$GITHUB_ENV"
+
       - uses: actions/checkout@v5
         with:
           ref: ${{ github.ref }}   # 触发时的提交ではなく、いまの main の先頭（排队等待期间 AI 编辑推送的 edit.json 也要拿到）
@@ -142,3 +145,12 @@ jobs:
             sleep $((i * 5))
           done
           echo "::warning::ゲートの記録を push できなかった"
+
+      # お客さまが選んだもののうち店長の関注項にないもの（例：広島旅行）を、本人のために集める（scripts/userfeed.py、AI なし）。
+      # 書くのは Supabase の user_boards だけ（本人が my_boards() で読む・リポジトリには入れない）。店長の収集・出刊・push のあとなので、失敗しても止めない。
+      # 前の段が失敗しても走る（!cancelled()）。job の timeout 40 分の 3 分前までに自分で終える（JOB_T0 から数える、userfeed.budget_sec）。様子は管理ページの「ライブログ」へ
+      - name: お客さまの版面の記事集め
+        if: ${{ !cancelled() && (env.IS_WEEKLY != 'true' || github.event_name == 'workflow_dispatch') }}
+        continue-on-error: true
+        timeout-minutes: 10   # userfeed.DEADLINE_MIN = 8 分（job の残りが少なければもっと早く）で締め切る
+        run: python scripts/userfeed.py
