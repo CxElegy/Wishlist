@@ -1,6 +1,6 @@
 {
  "date": "2026-10-22",
- "edit_sig": "9ed5c3ce84db",
+ "edit_sig": "5d632b42b834",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
@@ -935,17 +935,19 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "Fandom Pulse",
-     "title": "HBO’s Harry Potter Series Has Reportedly Spent £147 Million on Season One So Far, Almost Exceeding The Films Combined",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBtdWhNRlJLc0t4OW1BUWlYbUFReV9kQ3hnNEh4U2RseUFHYmNQOFUyVG1YYTRmUDgxT0gyTkZFcG9adlNubFFxN2x1WnhOVWI1UC0tQmdORExUUWhibGVNZEV0RElRQmN2RkxEbk9wU2VKT2hPMEZVeA?oc=5"
+     "headline": "HBO’s Harry Potter Series Has Reportedly Spent £147 Million on Season One So Far, Almost Exceeding The Films Combined",
+     "highlight": "£147 Million",
+     "image": "https://substackcdn.com/image/fetch/$s_!t4zE!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6841f6a4-2ba1-47ff-b7b8-65f83cac410a_1920x1280.webp",
+     "image_via": "og:image",
+     "url": "https://www.fandompulse.com/p/hbos-harry-potter-series-has-reportedly",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
