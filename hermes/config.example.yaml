@@ -1,0 +1,16 @@
+# ~/.hermes/config.yaml に足す分（ウォッチリスト通信用）。秘密の値は ~/.hermes/.env に書く（下の README.md）
+model: anthropic/claude-opus-5-5   # 使うモデル。OpenRouter 経由なら openrouter の名前に
+
+skills:
+  external_dirs:
+    - ${WISHLIST_DIR}/hermes/skills   # このリポジトリのスキルをそのまま読む（git pull で最新）
+
+mcp_servers:
+  github:
+    url: "https://api.githubcopilot.com/mcp/"
+    headers:
+      Authorization: "Bearer ${env:GITHUB_TOKEN}"
+  supabase:
+    url: "https://mcp.supabase.com/mcp?project_ref=bzokpnbcjscbcehdxtjq&read_only=true"   # 読むだけ
+    headers:
+      Authorization: "Bearer ${env:SUPABASE_ACCESS_TOKEN}"

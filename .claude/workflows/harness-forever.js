@@ -31,7 +31,7 @@ const done = []
 let planned = 0
 for (let i = 1; i <= MAX; i++) {
   const id = `f${i}`
-  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nBACKLOG.md の上から最初の [ ]（[~] で 3 時間以上止まっているものも）を 1 つだけ進める。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
+  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ BACKLOG.md の上から最初の [ ]（[~] で 3 時間以上止まっているものも）を 1 つだけ進める。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
     { label: `step:${id}`, phase: 'Step', schema: RESULT })
   if (!r) { log(`${id}: 返事なし`); break }
   if (r.status === 'none') {
