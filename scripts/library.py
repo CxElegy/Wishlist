@@ -75,6 +75,8 @@ def find_wikidata(item, get=_wd_get):
     - 題材（type: category）で Wikipedia の記事名（wiki）がないものは番号を付けない（MMORPG 新作・猫用品・滑雪…）
     - wiki があれば、記事名ごとの項目のうち、名前・検索語が項目の名前・別名に一番多く入るもの（漫威电影 → 映画 1 本ではなくシリーズ全体）
     - wiki がなければ名前・検索語で検索し、項目の名前・別名が名前か検索語とそろえて同じものだけ（いちばん多く当たったもの）
+    - 題材でも小分類の owner がブランドのもの（gelato pique）は番号を付ける（ユーザー決定）。ただし項目の名前・別名が
+      版面の名前そのものと同じときだけ（星巴克马克杯 が検索語の「スターバックス」でスターバックス本体に当たらない）
     """
     if re.fullmatch(r"Q\d+", str(item.get("wikidata") or "")):
         return item["wikidata"]
@@ -82,8 +84,11 @@ def find_wikidata(item, get=_wd_get):
     wiki = item.get("wiki") or []
     if isinstance(wiki, str):
         wiki = [wiki]
-    if not wiki and item.get("type") == "category":
+    brand = item.get("type") == "category" and (item.get("subs") or {}).get("owner") == "ブランド"
+    if not wiki and item.get("type") == "category" and not brand:
         return None
+    if brand and not wiki:
+        words = {w for w in [norm_name(item.get("name"))] if len(w) >= 2}
     best, score = None, 0
     if wiki:
         for w in wiki:

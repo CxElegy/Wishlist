@@ -967,6 +967,7 @@ items:
     wiki: ["en:Samsung Galaxy S series"]
 
   - name: gelato pique
+    # wikidata: なし（2026-10-23 に名前・検索語 × ja/en/zh と全文検索で引いた：項目も Wikipedia の記事もない。できたら library.find_wikidata で付く）
     subs: {kind: "ファッション・コスメ", owner: "ブランド"}
     icon: {image: "icons/gelato-pique.webp", kind: logo, why: "ブランド：gelato pique のロゴ", source: "https://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
