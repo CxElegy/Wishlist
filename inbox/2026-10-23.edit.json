@@ -71,6 +71,69 @@
   }
  ],
  "_covered": {
-  "漫威电影": 59
- }
+  "漫威电影": 59,
+  "GTA 6": 48
+ },
+ "GTA 6": [
+  {
+   "headline": "First GTA 6 TV Commercial Strips Out Steamy Shower Scenes, but Shows More of Lucia's Fancy Hair Tech",
+   "highlight": "First GTA 6 TV Commercial",
+   "blurb": "The first GTA 6 commercial aired on NBC Sports, featuring the launch trailer with some changes, including cut shower shots.",
+   "weight": "lead",
+   "refs": [
+    13,
+    40,
+    14
+   ],
+   "image": "https://comicbook.com/wp-content/uploads/sites/4/2026/10/g-t-a-6.png?resize=2000,1125"
+  },
+  {
+   "headline": "Rockstar is quietly transforming the real Miami into GTA 6’s Vice City",
+   "highlight": "real Miami",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    31,
+    36,
+    22,
+    32,
+    6
+   ]
+  },
+  {
+   "headline": "‘Grand Theft Auto VI’ Fuels 22% Jump in Sony PlayStation 5 Sales",
+   "highlight": "22%",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19,
+    3,
+    35
+   ]
+  },
+  {
+   "headline": "GTA 6 predicted to cause 1.5million Americans to take sick day, costing companies $1billion",
+   "highlight": "$1billion",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    46,
+    1,
+    43,
+    48,
+    27
+   ]
+  },
+  {
+   "headline": "New PS5 Accessories Launching Alongside GTA VI",
+   "highlight": "PS5 Accessories",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    41
+   ]
+  }
+ ]
 }
