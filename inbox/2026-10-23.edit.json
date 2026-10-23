@@ -84,7 +84,8 @@
   "绝区零": 8,
   "哈利波特剧集": 6,
   "猫用品": 7,
-  "滑雪": 6
+  "滑雪": 6,
+  "ILLIT": 5
  },
  "GTA 6": [
   {
@@ -664,6 +665,29 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT's 'BREAK EVEN' Tops K-Pop Girl Group Pre-Saves Over 500,000",
+   "highlight": "500,000",
+   "blurb": "ILLIT's 'BREAK EVEN' has surpassed 500,000 Spotify pre-saves, topping K-pop girl groups.",
+   "weight": "lead",
+   "refs": [
+    3,
+    4,
+    5
+   ],
+   "image": "https://www.chosun.com/resizer/v2/ME3DOMBSMMZTOOLFMM2DMNRVMQ.jpg?auth=27d6b2f93343eb24497b1a9fb703d0c74ffc749ee2ea53a6464955f9b07ac169&width=530&height=278&smart=true"
+  },
+  {
+   "headline": "아일릿 이로하, 발목 염좌 부상 후 회복 중…\"최선을 다해서 회복할 것\"",
+   "highlight": "발목 염좌",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]

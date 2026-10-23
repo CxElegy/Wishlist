@@ -4047,7 +4047,9 @@
     {
      "carried": "2026-10-22",
      "date": "2026-10-19T08:09:00+00:00",
-     "image": "",
+     "image": "https://img.newspim.com/news/2026/10/19/261019170425901_w.jpg",
+     "image_via": "JSON-LD",
+     "link": "https://www.newspim.com/news/view/20261019001401",
      "n": 1,
      "source": "뉴스핌",
      "summary": "",
@@ -4069,6 +4071,7 @@
     {
      "date": "2026-10-22T23:03:45+00:00",
      "image": "",
+     "link": "https://www.chosun.com/english/kpop-culture-en/2026/10/23/WYDCP6F55ZGUNAFMRMUNZU5TOI/",
      "n": 3,
      "site": "https://www.chosun.com",
      "source": "조선일보",

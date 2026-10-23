@@ -1401,6 +1401,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.newspim.com/news/2026/10/19/261019170425901_w.jpg": {
+  "w": 700,
+  "h": 540,
+  "target": 720,
+  "v": 3
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/cocotte/m_cocotte-638504.jpg": {
   "w": 512,
   "h": 512,
@@ -3055,6 +3061,19 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.chosun.com/resizer/v2/ME3DOMBSMMZTOOLFMM2DMNRVMQ.jpg?auth=27d6b2f93343eb24497b1a9fb703d0c74ffc749ee2ea53a6464955f9b07ac169&width=530&height=278&smart=true": {
+  "w": 530,
+  "h": 278,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.496,
+  "local": "pics/4c64aa9052b7270a.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
  },
  "https://www.chosun.com/resizer/v2/MZSWMZBRGIYGIYJWGYYTSMTGHA.jpg?auth=5d108a3997f9576eadad73cbf8c16d378333fd055697c34e4d13da13198cb343&width=650&height=341&smart=true": {
   "w": 650,

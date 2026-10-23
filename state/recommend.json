@@ -1,6 +1,7 @@
 {
  "image_misses": {
   "https://k.sina.com.cn/article_7880069124_1d5b0500406801h29g.html": "2026-10-23",
+  "https://ko.laodong.vn/van-hoa-giai-tri/illit-doi-dien-ap-luc-gia-ve-khi-concert-encore-xuat-hien-nhieu-ghe-trong-1786654.ldo": "2026-10-23",
   "https://m.expreview.com/108875.html": "2026-10-23",
   "https://t.co/qZmOWr3plZ": "2026-10-23",
   "https://www.sina.cn/gc/article/nivwyrf6445687.html": "2026-10-23"
@@ -23,6 +24,7 @@
   "https://k.sina.com.cn/article_7879924035_m1d5ae194303302a0z0.html?cre=tianyi&mod=pcent&loc=19&r=0&rfunc=62&tj=cxvertical_pc_ent&tr=12": "http://n.sinaimg.cn/sinakd20261021ac/200/w640h360/20261021/c9c1-afb79a0c94caccd574ce612a1e2b2caa.jpg",
   "https://k.sina.com.cn/article_7880069124_1d5b0500406801h29g.html": null,
   "https://kanstarpress.com/?p=207161": "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/ac92717968d574d2013e7a9e5a68c79d.webp?fit=1200%2C800&ssl=1",
+  "https://ko.laodong.vn/van-hoa-giai-tri/illit-doi-dien-ap-luc-gia-ve-khi-concert-encore-xuat-hien-nhieu-ghe-trong-1786654.ldo": null,
   "https://kosodate.mynavi.jp/articles/46404": "https://kosodate.mynavi.jp/uploads/article/image/46404/thumb1021michopa.jpg",
   "https://limo.media/articles/-/142359": "https://limo.ismcdn.jp/mwimgs/4/9/1200w/img_49a3c6deaf2e95c0c394310028b902d372028.jpg",
   "https://m.expreview.com/108875.html": null,
@@ -1343,6 +1345,27 @@
   },
   {
    "batch": 4,
+   "because": "ILLIT",
+   "date": "2026-10-21",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "Laodong.vn",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "ILLIT, 앙코르 콘서트에 빈 좌석 다수 등장으로 티켓 가격 압박에 직면",
+   "url": "https://ko.laodong.vn/van-hoa-giai-tri/illit-doi-dien-ap-luc-gia-ve-khi-concert-encore-xuat-hien-nhieu-ghe-trong-1786654.ldo",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 4,
    "because": "gelato pique",
    "date": "2026-10-21",
    "hits": [],
@@ -1440,7 +1463,7 @@
    "work": "ちいかわ 漫画"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "ちいかわ",
    "date": "2026-10-21",
    "hits": [
@@ -1553,7 +1576,7 @@
    "work": "ぐでたま"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "A2O LITE",
    "date": "2026-10-21",
    "hits": [],
@@ -1658,7 +1681,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-20",
    "hits": [],
@@ -1767,7 +1790,7 @@
    "work": "dota2"
   },
   {
-   "batch": 7,
+   "batch": 8,
    "because": "dota2",
    "date": "2026-10-22",
    "hits": [],
@@ -1854,7 +1877,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 8,
+   "batch": 9,
    "because": "滑雪",
    "date": "2026-10-22",
    "hits": [],

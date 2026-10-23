@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "9bf74b35edd2",
+ "edit_sig": "c2678d8a3257",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -919,45 +919,29 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "ILLIT's 'BREAK EVEN' has surpassed 500,000 Spotify pre-saves, topping K-pop girl groups.",
+     "date": "2026-10-22",
+     "headline": "ILLIT's 'BREAK EVEN' Tops K-Pop Girl Group Pre-Saves Over 500,000",
+     "highlight": "500,000",
+     "image": "https://www.chosun.com/resizer/v2/ME3DOMBSMMZTOOLFMM2DMNRVMQ.jpg?auth=27d6b2f93343eb24497b1a9fb703d0c74ffc749ee2ea53a6464955f9b07ac169&width=530&height=278&smart=true",
+     "image_via": "AI 挑选",
+     "url": "https://www.chosun.com/english/kpop-culture-en/2026/10/23/WYDCP6F55ZGUNAFMRMUNZU5TOI/",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 1,
-     "source": "뉴스핌",
-     "title": "아일릿 이로하, 발목 염좌 부상 후 회복 중…\"최선을 다해서 회복할 것\"",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1FSGxjNUFqbEJxUHh5T1lqb01KdTEtUFhKb2N0c1VlSFFYTm9BZnJCWEpIcGFyVlVVNXRlT3dHNXBvRjNhS0dJRkZRbTR3VDZIR3ZfOWhRTDRLR2sw?oc=5"
-    },
-    {
-     "date": "2026-10-18",
-     "n": 2,
-     "source": "Weverse",
-     "title": "ILLIT 커뮤니티 포스트 - 글릿!!이틀 동안 글릿 덕분에 넘넘 행복했",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBjaVBhRkxVSkR5SkhrZ3NERW5wcGJTZXFTVmRhSFRNeDRCbHFZQ3o2WUhJYk1pOW53RGE1OFVfUS1vdTRnUl9xN1Y0ZWEzMUE1bnFoZmstOTh5VldXbGc?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 3,
-     "source": "조선일보",
-     "title": "ILLIT's 'BREAK EVEN' Tops K-Pop Girl Group Pre-Saves Over 500,000",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOVkxneEw4dGVjZkVhUEhOR0lncDJkUkhtdl95TkdyOWV6SlZYODBkSWI0bUkya214eVhOc2ZUREgzWHJDV2dxcUtNakNydm9CVE0yNzZ2TXlSaXpSLXdxMWl1c1FCX0lUajc4SmNzTEc0QzM5NWtwUVVIa1B3SjYxYW53WDFpUG9Dd3dhWkRn?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 4,
-     "source": "The Korea Daily",
-     "title": "ILLIT BREAK EVEN — Spotify Pre-Saves Exceed 500k for K-Pop Girl Group",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE4xVzNMMXBiakdoNnFyU0NoZlg0d0VBaUpHX0xJWEZzQlkxUXREUGdHaDk0bTZTLUdpVW80TXc1bDNJM2o3RGEyZ2VOb2x4Zk1NY1U4VzUxSkN2c3YyVVBjamtzd1NLc0diam0tSmZn?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "Chosunbiz",
-     "title": "ILLIT surpasses 500,000 Spotify pre-saves, ranks among top K-pop girl groups - CHOSUNBIZ",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQcXdWbTJocnR4LWI1NEZsMlU2OUN4Q3pYdEo4c2NjQ1ZnNmkyVUdWQXExSlRObFVFRF9DTkU1Sm1VSGxad3lKSkVhbWhweURGZzdDQWlIRXNaRk5lYjdfaG1BTVJ1VF9OdjVkTVVLS3Uzb29wMm1fSzB6eGdMTlcwZXdobUt0TUZ40gGcAUFVX3lxTE5nbDVIY0hFbkhBMHpoQThScEk5dEdGT3VrTEVncWh0UUo0ZldEeGJWQ3phM0NOMXp1Q3RFaGJFNlZRMHY1VU56cHk2YllUNVhCeXF6dTQ4YXd1RDFfTlhJdGMtajltWW5xVkVQUmI0Zk1LVFVfYWhmam5EN0Y4NEQ1Yzd6N3FyTjdZeFYtTkJZOUlJdG5JelozUmx6Vg?oc=5"
+     "headline": "아일릿 이로하, 발목 염좌 부상 후 회복 중…\"최선을 다해서 회복할 것\"",
+     "highlight": "발목 염좌",
+     "image": "https://img.newspim.com/news/2026/10/19/261019170425901_w.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://www.newspim.com/news/view/20261019001401",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
@@ -1142,7 +1126,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "last": {
     "date": "2026-10-22",
