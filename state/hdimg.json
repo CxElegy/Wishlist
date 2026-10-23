@@ -1352,19 +1352,6 @@
   ],
   "why": "看不清"
  },
- "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1485898295206184406/origin_1.jpg": {
-  "w": 360,
-  "h": 360,
-  "target": 720,
-  "v": 3,
-  "blur": 0.538,
-  "local": "pics/9d7d527eda42e79a.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清"
- },
  "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/11/5602291_3.jpg": {
   "w": 800,
   "h": 450,
@@ -2482,9 +2469,9 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-23"
  },
- "https://staticg.sportskeeda.com/editor/2026/10/1b3b0-17926658321254-1920.jpg": {
-  "w": 1920,
-  "h": 1080,
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/catalina-sandino-moreno-and-hannah-cheramy-in-from-season-3.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -2669,6 +2656,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.atpress.ne.jp/releases/643108/img_643108_1.jpg": {
+  "w": 800,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://www.bgr.com/img/gallery/can-your-samsung-s-pen-be-traced/l-intro-1790355668.jpg": {
