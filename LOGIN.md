@@ -56,3 +56,4 @@ Google ログインは保留（Google の「公開」にホームページとプ
 - ユーザーが登録したら自分の account（`accounts.owner` = 本人）を作り、自分の関注清单・愿望清单・ページを持つ。
 - ユーザーのページも同じ /home/（網址に名前を出さない）。本人だけが見られる：GitHub Pages は公開なので、ページは Supabase の非公開の場所に置き、ログイン後に読む。リポジトリにも入れない（リポジトリは公開）。
 - ユーザーの関注項の AI 編集は Haiku（安いモデル）・1 日の上限つき。Discord はユーザーとは関係なし（運営者だけ、保留中）。
+- **お客さまのページを店長と同じ部品で**（2026-10-24，用户定的：框架は店長と同じ、中身は本人のもの。素の箱は出さない）：`scripts/user_pages.py` が digest.yml の別の job で 1 人 1 ページを `render.render` で作り、Supabase Storage の非公開の箱 `pages/<account>/index.html`（`db/user_pages.sql`：本人のフォルダか店長だけ読める）に置く。網页（`render.AUTH_JS` の `ownPage`）は `my_page_path()` で自分の置き場を知り、ログインした本人の鍵で読んでページを替える（`<meta name="wl-own">` があればもう読まない）。まだ作られていなければ前の `showMine`。
