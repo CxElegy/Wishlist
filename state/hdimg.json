@@ -2024,6 +2024,12 @@
   "target": 720,
   "v": 3
  },
+ "https://noisypixel.net/wp-content/uploads/2026/06/Astrae-Oratio-2.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://nokiamob.net/wp-content/uploads/2026/10/S27-pro-2-1-1920w-1080h.png.webp": {
   "w": 1920,
   "h": 1080,
@@ -2579,12 +2585,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.5trcqi6x2mkf1cGsOrPxoA&pid=News&w=1010": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.9HNkO23mU3knPnT4qSUFNg&pid=News&w=640": {
   "w": 100,
   "h": 100,
@@ -2706,6 +2706,12 @@
    719
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.ezl7joe28jZC6CM1E06H5Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.f29OOTqAWYfBiobwsK0dXQ&pid=News&w=400": {
   "w": 400,
