@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-23T15:18:14+00:00",
+ "checked": "2026-10-23T16:17:29+00:00",
  "fired": {
   "at": "2026-10-23T15:18:14+00:00",
   "results": {
@@ -19,35 +19,17 @@
     "resp": "cse_011iwVQg47tVRvmGgWsr2G7U",
     "sig": "8f18ba7d8c21"
    },
-   "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "dota2",
-    "gelato pique",
-    "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
-   ],
+   "items": [],
    "last_batch": "2026-10-23T10:25:16+00:00",
    "last_error": {
     "at": "2026-10-23T09:27:27+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 400,
-   "prog_day": "2026-10-23",
-   "sig": "6a531d8edcb1",
-   "why": "整理待ちの記事 127 件（17 版面・AI 編集まで版面に載らない）"
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-10-24",
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
