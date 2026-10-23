@@ -14,7 +14,10 @@
     30,
     41,
     24,
-    21
+    21,
+    73,
+    62,
+    31
    ],
    "event": {
     "date": "2026-10-23",
@@ -45,7 +48,9 @@
     29,
     16,
     3,
-    45
+    45,
+    65,
+    77
    ]
   },
   {
@@ -71,14 +76,14 @@
   }
  ],
  "_covered": {
-  "漫威电影": 59,
+  "漫威电影": 77,
   "GTA 6": 54,
-  "A2O LITE": 49,
+  "A2O LITE": 70,
   "Astrae Oratio": 20,
-  "周杰伦": 19,
-  "三星手机": 15,
+  "周杰伦": 31,
+  "三星手机": 31,
   "日本顶级网球赛事": 14,
-  "MMORPG 新作": 13,
+  "MMORPG 新作": 21,
   "dota2": 8,
   "チェーンソーマン": 8,
   "绝区零": 8,
@@ -158,52 +163,68 @@
  ],
  "A2O LITE": [
   {
-   "headline": "“李秀满女团”A2O LITE，音乐节目三连冠……势不可挡的上升势头",
-   "highlight": "三连冠",
-   "blurb": "出道曲《NEON》在音乐节目拿下第三个一位。",
+   "headline": "イ・スマンが手がけるA2O LITE、デビュー曲「NEON」で韓国の音楽番組3冠達成！日本での本格活動前にBillboard JAPAN 2部門でも上位ランクイン！",
+   "highlight": "3冠達成",
+   "blurb": "出道曲「NEON」が音楽番組で3冠、Melon TOP100も8日連続首位。",
    "weight": "lead",
    "refs": [
+    50,
+    57,
+    60,
     32,
     33,
     34,
+    56,
+    44,
+    45,
     9,
     10,
-    16,
-    44,
-    45
+    16
    ],
    "image": "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=665,fit=cover,q=high,sharpen=2/21/2026/10/2026102307582091459_1.jpg"
   },
   {
-   "headline": "A2O LITE ‘Takes No. 1 on a Music Show Just One Week After Debut’",
-   "highlight": "No. 1",
+   "headline": "店の客は肉代を全部払った..イ・スマン、A2O LITEで1位に「ゴールデンベル フレックス」",
+   "highlight": "ゴールデンベル",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2,
-    4,
-    30,
-    27,
-    28,
-    29,
-    43,
-    25,
-    26
+    54,
+    52,
+    53,
+    55,
+    63,
+    65,
+    30
    ]
   },
   {
-   "headline": "A2O LITE、未成年メンバーの衣装問題で物議 イ・スマンの「しっかりやる」発言も批判収まらず",
-   "highlight": "衣装問題",
+   "headline": "“BoA似で話題の13歳”A2O LITEのAIJING、両親の会社の賃金未払い問題に続いて態度議論が浮上も…ネット上では様々な声",
+   "highlight": "賃金未払い問題",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    22,
+    62,
     13,
     20,
     23,
     35,
+    64,
+    49,
+    22,
     18,
-    49
+    69,
+    51
+   ]
+  },
+  {
+   "headline": "A2O LITEのアイチン、親の借金問題の余波..中国のファンが立ち上がった \"代わりに返そう\"",
+   "highlight": "代わりに返そう",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    58,
+    59
    ]
   },
   {
@@ -214,15 +235,6 @@
    "refs": [
     15,
     14
-   ]
-  },
-  {
-   "headline": "A2O LITE，热议的《NEON》前奏舞蹈幕后故事……Aichin：“吓了一跳”",
-   "highlight": "《NEON》",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    24
    ]
   }
  ],
@@ -271,7 +283,11 @@
     2,
     1,
     16,
-    19
+    19,
+    21,
+    22,
+    24,
+    29
    ],
    "image": "https://x0.ifengimg.com/res/2026/D4F52D36036F5D19D6D9074B534DDFF6898FDDDE_size30_w1080_h460.jpg"
   },
@@ -281,7 +297,18 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    28
+   ]
+  },
+  {
+   "headline": "周杰伦澳网表演赛国籍标注中国",
+   "highlight": "国籍标注中国",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16,
+    23
    ]
   }
  ],
@@ -297,7 +324,14 @@
     1,
     9,
     12,
-    15
+    15,
+    16,
+    22,
+    23,
+    25,
+    26,
+    27,
+    28
    ],
    "image": "https://sumahodigest.com/wp-content/uploads/2026/10/YU10899-26036_1.jpg"
   },
@@ -317,7 +351,10 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    18,
+    24,
+    30
    ]
   },
   {
@@ -330,7 +367,9 @@
     2,
     5,
     7,
-    11
+    11,
+    19,
+    31
    ]
   },
   {
@@ -339,7 +378,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    20,
+    21
    ]
   }
  ],
@@ -392,18 +433,10 @@
    "refs": [
     3,
     1,
-    2
+    2,
+    16
    ],
    "image": "https://www.bing.com/th?id=ONUT.Jof39WGqWxJ_UX1RJVnt1g&pid=News&w=1200"
-  },
-  {
-   "headline": "誰でも参加可能、「ラグナロクオンライン プラス」テスト開始",
-   "highlight": "テスト開始",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4
-   ]
   },
   {
    "headline": "Steam MMO Is Permanently Shutting Down on December 18",
@@ -420,6 +453,15 @@
     "date": "2026-12-18",
     "label": "サービス終了"
    }
+  },
+  {
+   "headline": "『Icarus Online』2026年10月22日（木）より配信開始！モンスターを手なずけて大空を飛び回るMMORPG",
+   "highlight": "配信開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
+   ]
   }
  ],
  "dota2": [
