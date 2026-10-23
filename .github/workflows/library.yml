@@ -1,0 +1,28 @@
+name: ライブラリへ写す
+
+# 店長の items.yaml をライブラリ（Supabase の boards・follows、db/library.sql）へ写す（scripts/library.py --push）。
+# 何度流しても同じ（key で上書き）。いまは手で起こす。items.yaml を変えたときにも走らせる。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["items.yaml", "scripts/library.py"]
+
+permissions:
+  contents: read
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python scripts/library.py --push
