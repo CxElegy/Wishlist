@@ -72,3 +72,73 @@ class Wikidata(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Refresh(unittest.TestCase):
+    """週 1 回の引き直し（library.refresh・write_wikidata）：断られたのと 0 件を分ける、items.yaml はコメントを残して書く。"""
+    ITEMS = [{"name": "A", "wikidata": "Q1"}, {"name": "猫用品", "type": "category"},
+             {"name": "gelato pique", "type": "category", "subs": {"owner": "ブランド"}}, {"name": "あつ森", "type": "game"}]
+
+    def test_found_none_skip(self):
+        def get(p):
+            if p.get("search") == "あつ森":
+                return {"search": [{"id": "Q9", "label": "あつ森"}]}
+            return {"search": []}
+        r = library.refresh(self.ITEMS, get, pause=0)
+        self.assertEqual(r["found"], {"あつ森": "Q9"})
+        self.assertEqual(r["none"], ["gelato pique"])   # 聞いて 0 件
+        self.assertEqual(r["skip"], ["猫用品"])          # 題材は聞かない
+        self.assertEqual(r["blocked"], [])
+
+    def test_blocked_is_not_zero_and_stops(self):
+        def get(p):
+            raise library.WdBlocked("429")
+        r = library.refresh(self.ITEMS, get, pause=0)
+        self.assertEqual(r["blocked"], ["gelato pique", "あつ森"])   # 1 度断られたら残りは聞かない
+        self.assertEqual(r["none"], [])
+        self.assertEqual(r["found"], {})
+
+    def test_wd_get_raises_when_refused(self):
+        import urllib.error
+        from unittest import mock
+
+        def refuse(*a, **k):
+            raise urllib.error.HTTPError("u", 429, "Too Many Requests", {}, None)
+        with mock.patch("urllib.request.urlopen", refuse), mock.patch("time.sleep"):
+            with self.assertRaises(library.WdBlocked):
+                library._wd_get({"action": "wbsearchentities", "search": "x"})
+
+    def test_write_keeps_comments(self):
+        text = ('items:\n  - name: A\n    wikidata: Q1\n    motif: x\n\n  - name: gelato pique\n    # wikidata: なし（引いた）\n    motif: cloud\n\n'
+                '  - name: "あつ森"\n    subs: {kind: ゲーム}   # 小分類\n')
+        new, done = library.write_wikidata(text, {"gelato pique": "Q5", "あつ森": "Q9", "A": "Q2"})
+        self.assertEqual(done, ["gelato pique", "あつ森"])   # 番号がある A は上書きしない
+        data = yaml.safe_load(new)["items"]
+        self.assertEqual([i.get("wikidata") for i in data], ["Q1", "Q5", "Q9"])
+        self.assertNotIn("# wikidata: なし", new)
+        self.assertIn("# 小分類", new)
+
+    def test_write_shop_items_roundtrip(self):
+        text = (ROOT / "items.yaml").read_text(encoding="utf-8")
+        items = yaml.safe_load(text)["items"]
+        missing = [i["name"] for i in items if not i.get("wikidata")]
+        new, done = library.write_wikidata(text, {n: "Q42" for n in missing})
+        self.assertEqual(sorted(done), sorted(missing))
+        after = yaml.safe_load(new)["items"]
+        self.assertEqual(len(after), len(items))
+        self.assertTrue(all(i.get("wikidata") for i in after))
+        self.assertEqual([{k: v for k, v in i.items() if k != "wikidata"} for i in after],
+                         [{k: v for k, v in i.items() if k != "wikidata"} for i in items])   # ほかは 1 文字も変えない
+
+    def test_refresh_main_writes_log(self):
+        import tempfile
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as d:
+            p = pathlib.Path(d) / "items.yaml"
+            p.write_text('items:\n  - name: "あつ森"\n    type: game\n', encoding="utf-8")
+            with mock.patch("runlog.LOG_DIR", pathlib.Path(d) / "log"):
+                r, done = library.refresh_main(p, lambda q: {"search": [{"id": "Q9", "label": "あつ森"}]})
+                rows = __import__("runlog").load("library")
+            self.assertEqual(done, ["あつ森"])
+            self.assertIn("wikidata: Q9", p.read_text(encoding="utf-8"))
+            self.assertEqual((rows[-1]["found"], rows[-1]["blocked"]), (1, 0))
