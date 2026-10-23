@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "4d47c752eb43",
+ "edit_sig": "c481d890cbec",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -36,18 +36,7 @@
    "facts": [],
    "name": "BLEACH Mirrors High",
    "section": "游戏",
-   "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-22",
-     "headline": "Isane will be coming to bleach mirrors high and she honestly looks mad adorable with the new haircut. Absolutely love it",
-     "highlight": "Isane",
-     "image": "https://preview.redd.it/o3rvea14xwwh1.jpeg?width=320&crop=smart&auto=webp&s=94ccd87183d30d02423e67261abff5b08960a1e7",
-     "image_via": "条目自带",
-     "url": "https://www.reddit.com/r/bankaifolk/comments/1xc40wh/isane_will_be_coming_to_bleach_mirrors_high_and/",
-     "weight": "normal"
-    }
-   ],
+   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -566,17 +555,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "ComicBookMovie.com",
-     "title": "The Mandalorian And Grogu Return To Nevarro's Lava Tubes In A Spooky New Comic, Now On Shelves",
-     "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQVFl5bHJGcEtmRWlqSXdEQVVCLS1SSmVubThtX1dwaVRJOFFyVEl6cU5XTHlXNTJMSF82VXJ4RWZLdHJXMWN1UkZhQ2IyU2RNM3M5RjMyR1dZVk8zaC1oUkNTa2lrejk3bjk5WDZOWGE4Y2RkeV93eHY3azRCTnBleGtBWW1vUWxiT0k5TzJLd0RPT0Mza01UWVN5Skt1M1VVSnhBRE81cWdleklSRGlibHFWd1ZrMFlxUXkzazJnbVNNYUZ5UE95WnB0T0VSUGM3eDE3S0NlUkZkUC13?oc=5"
+     "headline": "The Mandalorian And Grogu Return To Nevarro's Lava Tubes In A Spooky New Comic, Now On Shelves",
+     "highlight": "New Comic",
+     "image": "https://comicbookmovie.com/images/articles/banners/the-mandalorian-and-grogu-return-to-nevarros-lava-tubes-in-a-spooky-new-comic-now-on-shelves-ab230573.jpg",
+     "image_via": "og:image",
+     "url": "https://comicbookmovie.com/sci_fi/star-wars/the-mandalorian-and-grogu-return-to-nevarros-lava-tubes-in-a-spooky-new-comic-now-on-shelves-a230573",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -766,9 +757,8 @@
      "date": "2026-10-19",
      "headline": "《刀塔2》XG杀入BLAST SLAM IX正赛，xNova、Topson纷纷晋级梦幻联赛S30",
      "highlight": "BLAST SLAM IX",
-     "image": null,
-     "source": "17173",
-     "source_icon": "http://ue.17173cdn.com/images/lib/v1/favicon-hd.ico",
+     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/OxjBdkbufkciFlg.png",
+     "image_via": "JSON-LD",
      "url": "http://news.17173.com/content/10192026/203042004.shtml",
      "weight": "normal"
     },

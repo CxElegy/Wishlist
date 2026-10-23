@@ -353,12 +353,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.hk01.com/di/media/images/dw/20261021/1189640311786180608104796.jpeg/CumBZ732sgtrY5grbXffZx723HcrO_mGW1CAKFtQgCg": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://cdn.image.st-hatena.com/image/scale/c2e8df5634954e295fc91f777861de93e405f009/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2FM%2FMORE_SMILEs%2F20261019%2F20261019181812.png": {
   "w": 1300,
   "h": 726,
@@ -537,7 +531,7 @@
  "https://comicbookmovie.com/images/articles/banners/the-mandalorian-and-grogu-return-to-nevarros-lava-tubes-in-a-spooky-new-comic-now-on-shelves-ab230573.jpg": {
   "w": 1500,
   "h": 844,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://creepycatalog.com/wp-content/uploads/sites/2/2026/10/stephen-king-says-horror-fans-who-aren-t-watching-from-should-get-with-it-and-al.jpg?w=1024": {
@@ -815,6 +809,13 @@
   "h": 630,
   "target": 1280,
   "v": 3
+ },
+ "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/OxjBdkbufkciFlg.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-23"
  },
  "https://i0.wp.com/capesandtights.com/wp-content/uploads/2026/10/GroguMando.png": {
   "w": 1240,
@@ -2542,6 +2543,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.gamerantimages.com/wordpress/wp-content/authors/66d60c58971a1-Dominik%20B%20-%20Edited.jpg": {
+  "w": 2000,
+  "h": 2000,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/10/everlast-undying-tale-steam-release-date-confirmed-gamerant.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -2917,12 +2924,6 @@
    480
   ],
   "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.V6fXMfHmN2mNSuIipPaARg&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.WzHU2NsEMmZgg0jQWg4X0Q&pid=News&w=1200": {
   "w": 700,
