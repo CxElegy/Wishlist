@@ -39,7 +39,6 @@
   "https://note.com/yshiba110/n/n05e56ea70f86?hl=en": "https://www.bing.com/th?id=ONUT.hfTI2n0xkMEeI_4m4kjvZA&pid=News&w=1200",
   "https://note.com/yshiba110/n/nf6f2181d2771?hl=en": "https://www.bing.com/th?id=ONUT.WzHU2NsEMmZgg0jQWg4X0Q&pid=News&w=1200",
   "https://paradepets.com/cats/black-cat-breeds-not-spooky": "https://www.bing.com/th?id=ONUT.DCl7ypaBdA3BGL73kDGUKQ&pid=News&w=1200",
-  "https://propakistani.pk/2026/10/23/samsung-will-finally-upgrade-batteries-with-galaxy-s27-series/": "https://www.bing.com/th?id=ONUT.MHV5xw_miWRyjIHBDuDW6w&pid=News&w=1200",
   "https://prtimes.jp/main/html/rd/p/000001247.000012048.html": "https://prcdn.freetls.fastly.net/release_image/12048/1247/12048-1247-64977d38e7992af398fbe6cd29e05b7d-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://root-nation.com/en/games-en/game-news-en/en-predator-navi-dota-2-pubg/": "https://root-nation.com/wp-content/uploads/2026/10/acer_predator_x_navi_video_packshot_4k.jpg",
   "https://sffgazette.com/fantasy/harry-potter/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-a11618": "https://sffgazette.com/images/articles/banners/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-ab11618.jpg",
@@ -62,6 +61,7 @@
   "https://www.bgr.com/2269104/can-samsung-s-pen-be-traced-explained/": "https://www.bgr.com/img/gallery/can-your-samsung-s-pen-be-traced/l-intro-1790355668.jpg",
   "https://www.chiba-tv.com/plus/detail/amp/2026102128529": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1484508143890367874/origin_1.jpg",
   "https://www.fashion-press.net/news/152154": "https://www.fashion-press.net/img/news/152154/top.jpg?1792146181",
+  "https://www.forbes.com/sites/ewanspence/2026/10/23/android-news-headlines-galaxy-s27-plus-pixel-11-pro-oneplus-15-oppo-find-x10-pro-max-pocket-duo/": "https://www.bing.com/th?id=ONUT.RrDjNIscVpnd8Yf-e4PlNA&pid=News&w=1200",
   "https://www.gamespot.com/articles/finger-out-how-to-prep-for-gta-6-with-these-exercises/": "https://www.bing.com/th?id=ONUT.VK5Rx0Jar2dtMRIFeL5IYA&pid=News&w=1200",
   "https://www.haveagood-holiday.com/en/articles/magical-chiikawa-fuwamochi-gororin-hug-plush-preorder": "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg",
   "https://www.hindustantimes.com/technology/freedom-from-your-laptop-sounds-wonderful-until-work-gets-serious-can-the-samsung-galaxy-tab-and-the-apple-ipad-keep-up-101792241274535.html": "https://www.bing.com/th?id=ONUT.scgJUb2Tj5eWXkCBveb1Mw&pid=News&w=1200",
@@ -942,6 +942,39 @@
   },
   {
    "batch": 1,
+   "because": "三星手机",
+   "date": "2026-10-23",
+   "hits": [
+    "三星 Galaxy"
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.RrDjNIscVpnd8Yf-e4PlNA&pid=News&w=1200",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "Forbes",
+   "taste": [
+    [
+     "galaxy",
+     7
+    ],
+    [
+     "三星 Galaxy",
+     7
+    ],
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "Android Circuit: Galaxy S27 Details, Pixel 11 Pro Advantages, Retroid Pocket Duo In-Depth",
+   "url": "https://www.forbes.com/sites/ewanspence/2026/10/23/android-news-headlines-galaxy-s27-plus-pixel-11-pro-oneplus-15-oppo-find-x10-pro-max-pocket-duo/",
+   "words": [
+    "galaxy"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 1,
    "because": "绝区零",
    "date": "2026-10-23",
    "hits": [],
@@ -962,7 +995,7 @@
    "work": "绝区零"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "GTA 6",
    "date": "2026-10-23",
    "hits": [],
@@ -1089,39 +1122,6 @@
    "url": "https://dotesports.com/zzz/news/sunbringer-reveal",
    "words": [],
    "work": "绝区零"
-  },
-  {
-   "batch": 2,
-   "because": "三星手机",
-   "date": "2026-10-22",
-   "hits": [
-    "三星 Galaxy"
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.MHV5xw_miWRyjIHBDuDW6w&pid=News&w=1200",
-   "kind": "board",
-   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
-   "score": 8,
-   "source": "ProPakistani",
-   "taste": [
-    [
-     "galaxy",
-     7
-    ],
-    [
-     "三星 Galaxy",
-     7
-    ],
-    [
-     "作品:三星手机",
-     7
-    ]
-   ],
-   "title": "Samsung Will Finally Upgrade Batteries With Galaxy S27 Series",
-   "url": "https://propakistani.pk/2026/10/23/samsung-will-finally-upgrade-batteries-with-galaxy-s27-series/",
-   "words": [
-    "galaxy"
-   ],
-   "work": "三星手机"
   },
   {
    "batch": 3,
@@ -1983,11 +1983,11 @@
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
