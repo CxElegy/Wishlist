@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "ea905a876f3b",
+ "edit_sig": "92378d3659ab",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,17 +35,19 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "Reddit",
-     "title": "Isane will be coming to bleach mirrors high and she honestly looks mad adorable with the new haircut. Absolutely love it",
-     "url": "https://www.reddit.com/r/bankaifolk/comments/1xc40wh/isane_will_be_coming_to_bleach_mirrors_high_and/"
+     "headline": "Isane will be coming to bleach mirrors high and she honestly looks mad adorable with the new haircut. Absolutely love it",
+     "highlight": "Isane",
+     "image": "https://preview.redd.it/o3rvea14xwwh1.jpeg?width=320&crop=smart&auto=webp&s=94ccd87183d30d02423e67261abff5b08960a1e7",
+     "image_via": "条目自带",
+     "url": "https://www.reddit.com/r/bankaifolk/comments/1xc40wh/isane_will_be_coming_to_bleach_mirrors_high_and/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
