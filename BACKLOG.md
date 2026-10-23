@@ -7,6 +7,8 @@
 - [x] gelato pique の Wikidata の番号を引き直す — 引き直した結果 Wikidata に項目なし（ja/en/zh 検索・全文検索 0 件、Wikipedia 記事なし）→ 名前の印のまま。ブランドの題材は名前が同じ項目だけ番号を付ける規則に（https://github.com/CxElegy/Wishlist/pull/260 、2026-10-23）
 - [x] Wikidata の番号を Actions で定期に引き直す — library.yml が月曜 3:41 UTC と手で起こした回に番号のない版面を引き、見つかれば items.yaml と boards（n:→wd:）を直す。`_wd_get` は断られたら WdBlocked、結果は 見つかった・項目なし・断られた・題材で引かない に分けて state/log/library.json（本番の初回：項目なし 2〔星巴克马克杯・gelato pique〕・断られた 0・題材 3）（https://github.com/CxElegy/Wishlist/pull/262 、2026-10-23）
 - [~] test-a・test-b の選んだものをライブラリの版面にする（開始 2026-10-24 08:07 JST） — app_users.prefs.picks の名前ごとに、向導と同じ規則（Wikidata の項目・面の語の表）でライブラリの版面を探し、なければ足し、follows（account = 'u_'+md5(メール) 16 字）を書く。test-a 40・test-b 1 が follows に入ること。店長の版面は写さない
+- [~] 後台の記事集めを正しく — コードだけの合併で全体の収集を走らせない（push は items.yaml・wishlist.yaml だけ）・お客さまは 1 人 100 版面・1 回 10 版面・1 回 80 版面。test-a の 40 版面が 8 時間以内に全部探した状態、cancelled が続かない
+- [ ] お客さまの記事に写真と原文の網址 — Google の跳转を原文に直し、店長と同じ images.pick で写真。test-a の記事の半分以上に写真
 - [ ] ライブラリの版面ごとに記事を集める — だれかが追いかけている版面は店長のものでなくても集め、AI 編集（9:00・18:00）も版面ごとに 1 回。board_stories に書く
 - [ ] 人ごとのページを店長と同じ作りで描く — 画面の型はそのまま、中身は本人の follows と board_stories から JavaScript で描く（ポスター・ほかの注目ニュース・版面・目次・小元素）。test-a で 40 版面、test-b で 1 版面が店長と同じ見た目で出ること（1400/390px）
 - [ ] 空のアカウントの始め方 — test-c・test-d：最初の 1 つを選ぶ画面（向導と同じ規則、世の中の話題から推薦）→ 選んだらすぐ記事と気になるかも？

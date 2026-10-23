@@ -242,18 +242,19 @@ class Plan(unittest.TestCase):
         self.assertEqual([g["name"] for g in todo], ["ちいかわ"])   # 30 分前に探したものは飛ばす
 
     def test_cap_marks_limit_and_new_first(self):
-        many = [{"email": "a@example.com", "prefs": {"picks": [{"name": f"もの{i}", "sec": "其他"} for i in range(35)]}}]
+        cap = userfeed.MAX_BOARDS_PER_USER
+        many = [{"email": "a@example.com", "prefs": {"picks": [{"name": f"もの{i}", "sec": "其他"} for i in range(cap + 5)]}}]
         todo, keep, limits, _ = userfeed.plan(many, [], [], NOW)
         acct = userfeed.account_of("a@example.com")
-        self.assertEqual(len(keep[acct]), 35)                                    # 上限を超えた分も消さない
-        self.assertEqual([x[1] for x in limits], [f"もの{i}" for i in range(30, 35)])   # 超えた分は limit の行（「集めています」のままにしない）
+        self.assertEqual(len(keep[acct]), cap + 5)                                    # 上限を超えた分も消さない
+        self.assertEqual([x[1] for x in limits], [f"もの{i}" for i in range(cap, cap + 5)])   # 超えた分は limit の行（「集めています」のままにしない）
         self.assertEqual(len(todo), userfeed.PER_USER_PER_RUN)
-        self.assertEqual(todo[0]["name"], "もの29")                              # まだ探していないものは新しく足したものから
+        self.assertEqual(todo[0]["name"], f"もの{cap - 1}")                              # まだ探していないものは新しく足したものから
         rows = [{"account": acct, "item": f"もの{i}", "checked_at": (NOW - dt.timedelta(hours=10 - i)).isoformat(), "state": "ok"} for i in range(5)]
-        rows += [{"account": acct, "item": f"もの{i}", "checked_at": NOW.isoformat(), "state": "limit"} for i in range(30, 35)]
+        rows += [{"account": acct, "item": f"もの{i}", "checked_at": NOW.isoformat(), "state": "limit"} for i in range(cap, cap + 5)]
         todo, _, limits, _ = userfeed.plan(many, [], rows, NOW)
         self.assertEqual(limits, [])                                             # 書いてあれば書き直さない
-        self.assertEqual(todo[0]["name"], "もの29")
+        self.assertEqual(todo[0]["name"], f"もの{cap - 1}")
 
     def test_fair_between_users(self):
         users = [{"email": f"u{n}@example.com", "prefs": {"picks": [{"name": f"{n}の{i}", "sec": "其他"} for i in range(30)]}} for n in range(30)]
@@ -454,7 +455,7 @@ class Sql(unittest.TestCase):
 
     def test_page_reads_my_boards(self):
         import render
-        for w in ("rpc('my_boards')", "今日の主なニュース", "気になるかも？", "まだ記事が見つかっていません", "30 個まで", "wl-cards",
+        for w in ("rpc('my_boards')", "今日の主なニュース", "気になるかも？", "まだ記事が見つかっていません", "100 個まで", "wl-cards",
                   "'&pick='", "new Event('wl-nav')", "R._wlmb", "clearInterval(R._wlub);R._wlmb=null"):
             self.assertIn(w, render.AUTH_JS)
         self.assertIn("document.addEventListener('wl-nav'", render.NAV_JS)   # 目次は足した駅を数え直す

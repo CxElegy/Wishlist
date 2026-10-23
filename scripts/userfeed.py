@@ -30,12 +30,12 @@ import sitedir
 import sources
 import taxonomy
 
-MAX_BOARDS_PER_USER = 30   # 1 人が持てる「店長にない版面」。これを超えた分は state = limit の行（網页で「上限」と出す）。選んだ順の先頭から
-PER_USER_PER_RUN = 5       # 1 人・1 回で集める版面（残りは次の回。全員の 1 つ目から順に）
+MAX_BOARDS_PER_USER = 100  # 1 人が持てる「店長にない版面」。これを超えた分は state = limit の行（網页で「上限」と出す）。選んだ順の先頭から
+PER_USER_PER_RUN = 10      # 1 人・1 回で集める版面（残りは次の回。全員の 1 つ目から順に）
 MAX_NEW_USERS_PER_RUN = 15  # まだ 1 つも集めていない人を 1 回で何人まで（登録の古い順）
 MAX_STORIES = 12           # 1 版面に残す記事（新しい順）
 KEEP_DAYS = 14             # これより古い記事は版面から落とす（日付のない記事は最初に見つけた日 seen で数える）
-MAX_BOARDS_PER_RUN = 60    # 1 回で集める版面（同じ名前・同じ言語は 1 回にまとめた数）
+MAX_BOARDS_PER_RUN = 80    # 1 回で集める版面（同じ名前・同じ言語は 1 回にまとめた数）
 FAIL_SHOW = 5              # 続けてこの回数取れなかった 0 件の版面は「まだ見つかっていません」（それまでは「集めています」。db/user_boards.sql の my_boards と同じ数）
 DEADLINE_MIN = 8           # 1 回の時間の上限
 JOB_LIMIT_MIN = 40         # digest.yml の timeout-minutes（JOB_T0 から数えて、これの JOB_MARGIN_MIN 前には終える）
