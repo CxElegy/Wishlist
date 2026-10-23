@@ -81,7 +81,8 @@
   "MMORPG 新作": 12,
   "dota2": 8,
   "チェーンソーマン": 8,
-  "绝区零": 8
+  "绝区零": 8,
+  "哈利波特剧集": 6
  },
  "GTA 6": [
   {
@@ -520,6 +521,47 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "HARRY POTTER HBO Series Spent Nearly $200 Million Halfway Through Filming, Per UK Filings",
+   "highlight": "Nearly $200 Million",
+   "blurb": "UK company accounts put HBO's Harry Potter spend at £147.4 million by the end of 2025, with Season 1 filming only about halfway done.",
+   "weight": "lead",
+   "refs": [
+    2,
+    1,
+    3
+   ],
+   "image": "https://sffgazette.com/images/articles/banners/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-ab11618.jpg"
+  },
+  {
+   "headline": "WB’s Harry Potter Series Is Officially Launching Hogwarts Battle In New Episodes",
+   "highlight": "Hogwarts Battle",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "Bloomsbury ‘confident’ of Harry Potter boost despite share slide",
+   "highlight": "Bloomsbury",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Before HBO's Harry Potter Series Arrives, The Films Get A Bigger Art Book With Fantastic Beasts Added",
+   "highlight": "Art Book",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]
