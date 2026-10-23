@@ -155,6 +155,8 @@ class Users(unittest.TestCase):
 
     @staticmethod
     def wd(params):
+        if params.get("action") == "wbgetentities":
+            return {"entities": {}}
         if params["search"].strip() == "YOASOBI":
             return {"search": [{"id": "Q5", "label": "YOASOBI 一覧", "description": "Wikimedia list"},
                                {"id": "Q7", "label": "YOASOBI", "description": "Japanese duo"}]}
@@ -201,3 +203,96 @@ class PickLabelFirst(unittest.TestCase):
     def test_long_alias_still_ok(self):
         hits = {"search": [{"id": "Q1968", "label": "Formula One", "aliases": ["Formula 1"], "match": {"type": "alias", "text": "Formula 1"}}]}
         self.assertEqual(library.find_pick_wikidata("Formula 1", lambda p: hits), "Q1968")
+
+
+def ent(desc, claims=None, labels=None):
+    """wbgetentities の返事の作り物：1 回目 = 項目の説明と関係、2 回目 = 関係する項目の名前。"""
+    def get(params):
+        if params.get("props") == "labels":
+            return {"entities": {q: {"labels": {"en": {"value": v}}} for q, v in (labels or {}).items()}}
+        cl = {pid: [{"mainsnak": {"datavalue": {"value": {"id": q} if q.startswith("Q") else {"time": q}}}} for q in qs]
+              for pid, qs in (claims or {}).items()}
+        return {"entities": {params["ids"]: {"descriptions": {"en": {"value": desc}}, "claims": cl}}}
+    return get
+
+
+class SubsFromWikidata(unittest.TestCase):
+    """小分類は名前だけでなく Wikidata の説明・関係から（2026-10-24 別の目の指摘：1 つ目の値に落ちていた）。"""
+    def subs(self, sec, name, desc, claims=None, labels=None):
+        f = library.wd_facts("Q1", ent(desc, claims, labels), today=__import__("datetime").date(2026, 10, 24))
+        return library.subs_for(sec, name, f)
+
+    def test_name_only_falls_to_first(self):
+        self.assertEqual(library.subs_for("运动", "大谷翔平")["sport"], "サッカー")   # 前のやり方（名前だけ）
+
+    def test_sports(self):
+        self.assertEqual(self.subs("运动", "大谷翔平", "Japanese baseball player", {"P641": ["Q5369"]}, {"Q5369": "baseball"})["sport"], "野球")
+        self.assertEqual(self.subs("运动", "NBA", "North American professional basketball league")["sport"], "バスケ")
+        self.assertEqual(self.subs("运动", "F1", "auto racing championship", {"P641": ["Q1968"]}, {"Q1968": "Formula One"})["sport"], "モータースポーツ")
+        self.assertEqual(self.subs("运动", "大相撲", "professional sumo wrestling")["sport"], "格闘技")
+
+    def test_music_groups(self):
+        s = self.subs("演出", "BTS", "South Korean boy band", {"P495": ["Q884"]}, {"Q884": "South Korea"})
+        self.assertEqual((s["form"], s["scene"]), ("グループ", "K-POP"))
+        self.assertEqual(self.subs("演出", "YOASOBI", "Japanese musical duo")["form"], "グループ")
+        self.assertEqual(self.subs("演出", "Ado", "Japanese singer")["form"], "ソロ")
+
+    def test_works(self):
+        self.assertEqual(self.subs("影视", "鬼滅の刃", "Japanese manga series by Koyoharu Gotouge")["kind"], "マンガ")
+
+    def test_games(self):
+        s = self.subs("游戏", "スプラトゥーン3", "2022 video game", {"P400": ["Q19610114"], "P577": ["+2022-09-09T00:00:00Z"]},
+                      {"Q19610114": "Nintendo Switch"})
+        self.assertEqual((s["status"], s["platform"]), ("発売済み", "家庭用ゲーム機"))
+        s = self.subs("游戏", "原神", "free-to-play action role-playing game", {"P400": ["Q91", "Q92", "Q93"], "P577": ["+2020-09-28T00:00:00Z"]},
+                      {"Q91": "Android", "Q92": "PlayStation 5", "Q93": "Microsoft Windows"})
+        self.assertEqual((s["status"], s["platform"]), ("運営中", "マルチ"))
+        s = self.subs("游戏", "新作", "upcoming video game", {"P577": ["+2027-03-01T00:00:00Z"]})
+        self.assertEqual(s["status"], "新作・発売前")
+
+    def test_life_and_outing(self):
+        self.assertEqual(self.subs("生活", "キャンプ", "outdoor recreational activity")["kind"], "アウトドア・旅行")
+        self.assertEqual(library.subs_for("生活", "広島旅行")["kind"], "アウトドア・旅行")
+        self.assertEqual(library.subs_for("生活", "筋トレ")["kind"], "健康")
+        self.assertEqual(self.subs("生活", "観葉植物", "plant grown indoors")["kind"], "インテリア")
+        self.assertEqual(self.subs("生活", "コーヒー", "brewed drink")["kind"], "グルメ")   # 名前の英語名はなくても説明から
+        self.assertEqual(self.subs("出行", "京都", "city in Japan")["kind"], "観光地")
+
+    def test_shopping(self):
+        self.assertEqual(self.subs("好物", "ユニクロ", "Japanese casual wear designer, manufacturer and retailer")["kind"], "ファッション・コスメ")
+        self.assertEqual(self.subs("好物", "Nintendo Switch 2", "hybrid video game console")["kind"], "ガジェット・家電")
+        self.assertEqual(self.subs("好物", "無印良品", "Japanese retail company")["kind"], "雑貨・食器")
+        self.assertEqual(self.subs("好物", "ガンプラ", "Gundam plastic model kits")["kind"], "おもちゃ・フィギュア")
+
+    def test_cache(self):
+        calls = []
+        def get(p):
+            calls.append(p)
+            return ent("Japanese baseball player")(p)
+        cache = {}
+        library.facts_for("Q9", get, cache)
+        library.facts_for("Q9", get, cache)
+        self.assertEqual(len(calls), 1)                                      # 30 日は聞き直さない
+
+
+class Resubs(unittest.TestCase):
+    """前に名前だけで決めた小分類を直す。本人が変えたらしい行は触らない。"""
+    def test_fix_only_default_rows(self):
+        by_id = {1: {"key": "wd:Q1", "name": "大谷翔平"}, 2: {"key": "n:広島旅行", "name": "広島旅行"}, 3: {"key": "wd:Q3", "name": "NBA"}}
+        follows = [{"account": "u_a", "board_id": 1, "section": "运动", "subs": {"sport": "サッカー", "how": "観る"}},
+                   {"account": "u_b", "board_id": 2, "section": "生活", "subs": {"kind": "ペット", "how": "買う"}},
+                   {"account": "u_a", "board_id": 3, "section": "运动", "subs": {"sport": "テニス", "how": "観る"}}]   # 本人が選んだらしい値
+        wrote = []
+        n = library.resubs(follows, by_id, ent("Japanese baseball player"), {}, lambda path, body, *a, **k: wrote.append((path, body)))
+        self.assertEqual(n, 2)
+        self.assertEqual(wrote[0], ("follows?account=eq.u_a&board_id=eq.1", {"subs": {"sport": "野球", "how": "観る"}}))
+        self.assertEqual(wrote[1][1]["subs"], {"kind": "アウトドア・旅行", "how": "作る・する"})
+
+    def test_plan_skips_existing_follow(self):
+        users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "大谷翔平", "sec": "运动"}]}}]
+        boards = [{"key": "wd:Q1", "name": "大谷翔平"}]
+        a = __import__("userfeed").account_of("a@example.com")
+        def no(p):
+            raise AssertionError("聞かない")
+        r = library.plan_users(users, boards, no, pause=0, have={(a, "wd:Q1")})
+        self.assertEqual(r["follows"], [])
