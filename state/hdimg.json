@@ -353,10 +353,22 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.hk01.com/di/media/images/dw/20261021/1189640311786180608104796.jpeg/CumBZ732sgtrY5grbXffZx723HcrO_mGW1CAKFtQgCg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.image.st-hatena.com/image/scale/c2e8df5634954e295fc91f777861de93e405f009/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2FM%2FMORE_SMILEs%2F20261019%2F20261019181812.png": {
   "w": 1300,
   "h": 726,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.inthesnow.com/uploads/2026/10/salomon-s-pro-alpha-c-boa-ski-boots-2026-27-hero.jpg": {
+  "w": 1600,
+  "h": 700,
+  "target": 720,
   "v": 3
  },
  "https://cdn.livedoor.jp/kstyle/514ee8edcb07f7e84eadfecd6f0ec5c7.jpg/r.580x0": {
@@ -611,6 +623,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg": {
+  "w": 2000,
+  "h": 2605,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
   "h": 950,
@@ -620,12 +638,6 @@
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/asahikawa.jpg": {
   "w": 1962,
   "h": 1308,
-  "target": 720,
-  "v": 3
- },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/big-holiday.jpg": {
-  "w": 800,
-  "h": 500,
   "target": 720,
   "v": 3
  },
@@ -639,12 +651,6 @@
   "w": 1962,
   "h": 1308,
   "target": 1280,
-  "v": 3
- },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/ski-tour.jpg": {
-  "w": 1920,
-  "h": 1280,
-  "target": 720,
   "v": 3
  },
  "https://doope.jp/media/26q4/img2849_01.jpg": {
@@ -809,13 +815,6 @@
   "h": 630,
   "target": 1280,
   "v": 3
- },
- "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/OxjBdkbufkciFlg.png": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-23"
  },
  "https://i0.wp.com/capesandtights.com/wp-content/uploads/2026/10/GroguMando.png": {
   "w": 1240,
@@ -1670,6 +1669,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.pocketgamer.com/artwork/na-38549-1792678886/astrae-oratio-cbt-results-keyart.jpg": {
+  "w": 1010,
+  "h": 505,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
@@ -2178,12 +2183,6 @@
   "target": 720,
   "v": 3
  },
- "https://noisypixel.net/wp-content/uploads/2026/06/Astrae-Oratio-2.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
-  "v": 3
- },
  "https://nokiamob.net/wp-content/uploads/2026/10/S27-pro-2-1-1920w-1080h.png.webp": {
   "w": 1920,
   "h": 1080,
@@ -2579,12 +2578,6 @@
   "target": 1280,
   "v": 3
  },
- "https://staticg.sportskeeda.com/editor/2026/10/1b3b0-17926658321254-1920.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2800,12 +2793,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.-knf4I1dwRCd_IShbRipcw&pid=News&w=1200": {
-  "w": 700,
-  "h": 364,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.-rGR_-zLysSmBgs1otuiaQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2869,12 +2856,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.EmDiBOOYbGI1YsAXHklQmQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.GU75uQWnYgvJG5mT-5BTwg&pid=News&w=912": {
   "w": 700,
   "h": 393,
@@ -2884,6 +2865,12 @@
  "https://www.bing.com/th?id=ONUT.GnzSa0gVKn6Rl1TixXNykg&pid=News&w=600": {
   "w": 600,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -2924,6 +2911,12 @@
    480
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.VoKlDlLJl_po96w4ujJbzA&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.WzHU2NsEMmZgg0jQWg4X0Q&pid=News&w=1200": {
   "w": 700,
@@ -3044,6 +3037,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.pGwd2qwSFK1SXUQh2ita4Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200": {
   "w": 700,
   "h": 471,
@@ -3078,6 +3077,12 @@
  "https://www.boardoftheworld.com/wp-content/uploads/2026/05/CAPiTA-Ultrafear-Snowboard-2027.jpg": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
