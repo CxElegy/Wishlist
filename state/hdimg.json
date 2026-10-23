@@ -623,12 +623,6 @@
   "target": 720,
   "v": 3
  },
- "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg": {
-  "w": 2000,
-  "h": 2605,
-  "target": 720,
-  "v": 3
- },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
   "h": 950,
@@ -2347,12 +2341,6 @@
   "target": 1280,
   "v": 3
  },
- "https://realsound.jp/wp-content/uploads/2026/10/20261021-hana-99.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://resource02.ulifestyle.com.hk/ulcms/content/article/ogimage/2026/10/20261015020853_29a0258fa45e59650940779ab423672adb2f4514.png": {
   "w": 1024,
   "h": 576,
@@ -2843,6 +2831,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.B2_wGz_aVofe4yAd16Rwcw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
   "h": 700,
@@ -2869,12 +2863,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.INrR62tch3ap9vSGkg4PTw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -2941,6 +2929,12 @@
    393
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.bma_XnhuDNqHUIdJjr0CNA&pid=News&w=1200": {
   "w": 700,
@@ -3037,6 +3031,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.oRcz9tH-klPnWH23u0xObw&pid=News&w=628": {
+  "w": 628,
+  "h": 234,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.pGwd2qwSFK1SXUQh2ita4Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3077,12 +3077,6 @@
  "https://www.boardoftheworld.com/wp-content/uploads/2026/05/CAPiTA-Ultrafear-Snowboard-2027.jpg": {
   "w": 700,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.boardoftheworld.com/wp-content/uploads/2026/07/Never-Summer-Proto-Swift-DT-review.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -3281,6 +3275,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.niikei.jp/wp-content/uploads/2026/10/unnamed-76-e1792729710980.jpg": {
+  "w": 820,
+  "h": 547,
+  "target": 720,
+  "v": 3
+ },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,
   "h": 390,
@@ -3314,12 +3314,6 @@
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6LuciaJasonLaunchTrailer.jpg": {
   "w": 2000,
   "h": 1500,
-  "target": 720,
-  "v": 3
- },
- "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/Galaxy-S27-Ultra88.jpg": {
-  "w": 2000,
-  "h": 1518,
   "target": 720,
   "v": 3
  },
