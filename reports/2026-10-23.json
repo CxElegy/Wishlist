@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "24f052ff457f",
+ "edit_sig": "bfb3367027de",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -432,115 +432,59 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Galaxy S27 UltraとS27 Proのバッテリーが Safety Korea の認証を通過し、写真も公開された。",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "Notebookcheck",
-     "title": "Galaxy S27 Ultra and S27 Pro batteries appear on Safety Korea with photos",
-     "url": "https://www.notebookcheck.net/Galaxy-S27-Ultra-and-S27-Pro-batteries-appear-on-Safety-Korea-with-photos.1430937.0.html"
+     "headline": "Galaxy S27 Ultraは5700mAh、S27 Proは5200mAhか。バッテリーの認証情報が公開",
+     "highlight": "5700mAh",
+     "image": "https://sumahodigest.com/wp-content/uploads/2026/10/YU10899-26036_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://sumahodigest.com/?p=74544",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-22",
-     "n": 2,
-     "source": "Geeky Gadgets",
-     "title": "Inside the Galaxy S27 Ultra Leaks: Massive Battery, Radical Design, and Big Changes",
-     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-rumors-35/"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 3,
-     "source": "Geeky Gadgets",
-     "title": "Inside the Galaxy S27 Ultra: Major Camera and Battery Leaks Surface",
-     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-rumors-34/"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 4,
-     "source": "머니투데이",
-     "title": "Galaxy S27 Ultra could start at over 2 million won, setting record high",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5EbHRJV3A5OFpHeGh1RzlVU09SUTR6SkhJMFdaNTR0UDFBUnFNaVRyTWFlNGJBeXcxOXRPb1dybHB2bkl2TzFSMWpxNGtGSEtqNnF5aXZWbU1sSWptaHNVRm13OWJEYlljUm9j?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "Geeky Gadgets",
-     "title": "Samsung’s Galaxy S27 Ultra Leaks Reveal What’s Coming Next Year",
-     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-rumors-36/"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 6,
-     "source": "Vietnam.vn",
-     "title": "Samsung optimized the M2700 modem for the Exynos 2700, resulting in superior power efficiency for the Galaxy S27.",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUHVJTjRyMkJ0SVZubko2TGswUUcwbGNSMDRnLWdhUzRJOFc1b0pVSnFRZ0Vyc2NTZ2p2ZzdYOXR3bUNRX0F5U0NBby1MYlRyTXVzX3U5dldNMjVTZDM4R2hJZUctaVplNkE5UE91WUVVbG53emE5aE9hbzlqZTlrVWQ2Q0xTU3BjTVZ6Y0JUUnMzVUFNMGlaTUFDTkhGYnV5cUdrbzBaa0RnSTM2UlRPXzRUaks?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 7,
-     "source": "The Shortcut | Matt Swider",
-     "title": "New Galaxy S27 leak surfaces – courtesy of third‑party screen protectors",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5Sd0ZCdzcyX3BFeG9xX18tNUJnbUtNYVRFX3ZQU1BpMmJZUmU5UzJrUEFFTWhmYmtiVmZsd1Rxa3ZsbEpKZ2F2SFl0ZDQ1MEh6SGNpRVkxcE5YU3hnN1lzSTVtQ00zTjYz?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 8,
-     "source": "themobileindian.com",
-     "title": "Leaked Samsung Galaxy S27 and S27+ RAM and Storage Variants Suggest Samsung is Planning a Downgrade",
-     "url": "https://themobileindian.com/news/leaked-samsung-galaxy-s27-and-s27-ram-and-storage-variants-suggest-samsung-is-planning-a-downgrade"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 9,
-     "source": "SammyGuru",
-     "title": "Here’s Your First Look at the Galaxy S27 Ultra and S27 Pro Batteries",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE13YWtpeWFCeHAtYm00Vk84OGR6MHNJS0MzUDZxQ2Q2Y3V6U2VGN0d4MmJXWEFDM2NyZzRNbW5WUHotaFRjaHJUQXB6WDZPb0FQbk8xWDdZZFNUU1RCdkpGWlVUSW53VXMycjZkOThBMDJwQQ?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 10,
-     "source": "スマホダイジェスト",
-     "title": "Galaxy S27 Ultraは5700mAh、S27 Proは5200mAhか。バッテリーの認証情報が公開",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBKTGdwYjltd2NyVTQ5bkhZS2dDRnJuUGM3bWY2cEdDV01mVWdCanZ5b3pscW9idnBkaTN6V3pQcWVUOWdlbU1vag?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 11,
-     "source": "SammyGuru",
-     "title": "I 3D-Printed Galaxy S27 Ultra, and I’m Changing My Mind About Its Design",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1Ub25ZNGtCT2xZbHZkV3BXcndCU01LME1MdTJTNW5tREtjSDgxNURPRW10WHhwMWctR1VyTi1VQWRHQkhoZGFiRjVFZk8tajhYRE9pQnZYekNtLVM0SF8zOF9qWmkzdw?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 12,
-     "source": "Mezha.net",
-     "title": "初探 Galaxy S27 Ultra 和传闻中的 Pro 电池 – 算是吧",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOSXQzX3BUYWNyVndhU2RWY1kySllMeGc4ZUd2QXluRHU3QzA3akVpa0txRjRsaWR0aDgydG9MUEI1OE1VdGFLOHJ0NUJ3YllNQlRJS2prODFRdGhFdGNOTEM1RkNMMDM3blNJMTFWRngxWkc4YkRVOThfYm5tNUNVNnlKeWdkRUhyUmxXZQ?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 13,
-     "source": "Mezha.net",
-     "title": "Galaxy S27 Ultraと噂のProモデルのバッテリーを一足先にチェック – といっても、ほんの少し",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNOVRXSzRVNE1vMXU4dTJ5Q2lWY0hJUklXa1dqVmlRRHFFQXVrTFREd1Q0TU9obHpBemtRX01WTTBxT1FsT0hudXpDMGZ6U2QxSTNza1NkOXlKNXFvT2oxazZ5cG1aMGlYdnhmT09UOC1UTjlpWm9fU2stdmk0ZmowQ3RJQmI5cURBeXBOag?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-16",
-     "n": 14,
-     "source": "Vietnam.vn",
-     "title": "Galaxy S27 price list leaked: Is Samsung preparing to bring the Ultra series closer to $2,000?",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQk9uSGlBTDE5TXRGU045YW5CQ0dkWE1lUV9mM0hpOHZvNzhWNTNTMWo1OXRKYnRRd1FtdDNDVTBpT2ZEQUMzOHVuLVptbGZ2czlobks1RU9BSkxrZlFpQk5RYi1GSzFjVEZsUkJmRFVldERDaWEwcDgzbXpSTDhZRW1YMDI5UkNvTHFSNktvc0tCSmxHMUw3T25NSWJEQWo5c0tLZXA2Z00?oc=5"
+     "headline": "Galaxy S27 price list leaked: Is Samsung preparing to bring the Ultra series closer to $2,000?",
+     "highlight": "$2,000",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/16/1792169865739_img-14c0fcb120261016231916-jpg-v-2.jpeg",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/en/galaxy-s27-ro-ri-bang-gia-moi-samsung-chuan-bi-dua-dong-ultra-len-sat-2-000-usd",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 15,
-     "source": "Sammy Fans",
-     "title": "Samsung Galaxy S27 Ultra and Pro batteries spotted in new certification listing",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNZHhNQ0RwQmNEd25oNEJOT0tDWjJYaDE5S2NkQ1F4MUF2dnZ1NmtKX2NrejdueC11Y1c5SDZuVGdrWlI5MjhqR2dmVkdVcm9GWXhwSmtZbkxpcGFRbjcyYmNGUmxJUGVNVGlSYURnUW0yeGJOenJ1OU1VZ3B2Q0V2WmU1elFYSE8yVDNJXzd6VlptTHowcVNSd05GT2ZmQW50MElNT0RsX296VWtMV3dhSmJPZ0EzLWpVaXJfZWhR0gG-AUFVX3lxTE1keE1DRHBCY0R3bmg0Qk5PS0NaMlhoMTlLY2RDUXgxQXZ2dnU2a0pfY2t6N254LXVjVzlINm5UZ2taUjkyOGpHZ2ZWR1Vyb0ZZeHBKa1luTGlwYVFuNzJiY0ZSbElQZU1UaVJhRGdRbTJ4Yk56cnU5TVVncHZDRXZaZTV6UVhITzJUM0lfN3pWWm1MejBxU1J3TkZPZmZBbnQwSU1PRGxfb3pVa0xXd2FKYk9nQTMtalVpcl9laFE?oc=5"
+     "headline": "Leaked Samsung Galaxy S27 and S27+ RAM and Storage Variants Suggest Samsung is Planning a Downgrade",
+     "highlight": "Downgrade",
+     "image": "https://themobileindian.com/wp-content/uploads/2026/09/Galaxy-S26-FE-rear.jpg",
+     "image_via": "条目自带",
+     "url": "https://themobileindian.com/news/leaked-samsung-galaxy-s27-and-s27-ram-and-storage-variants-suggest-samsung-is-planning-a-downgrade",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "Inside the Galaxy S27 Ultra: Major Camera and Battery Leaks Surface",
+     "highlight": "Camera and Battery",
+     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/08/s27-2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-rumors-34/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "Samsung optimized the M2700 modem for the Exynos 2700, resulting in superior power efficiency for the Galaxy S27.",
+     "highlight": "M2700",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/21/1792574443851_img_e6975105.jpeg",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/en/samsung-toi-uu-modem-m2700-cho-exynos-2700-giup-galaxy-s27-tiet-kiem-dien-nang-vuot-troi",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",

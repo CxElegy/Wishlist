@@ -75,7 +75,8 @@
   "GTA 6": 48,
   "A2O LITE": 43,
   "Astrae Oratio": 20,
-  "周杰伦": 17
+  "周杰伦": 17,
+  "三星手机": 15
  },
  "GTA 6": [
   {
@@ -261,6 +262,64 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27 Ultraは5700mAh、S27 Proは5200mAhか。バッテリーの認証情報が公開",
+   "highlight": "5700mAh",
+   "blurb": "Galaxy S27 UltraとS27 Proのバッテリーが Safety Korea の認証を通過し、写真も公開された。",
+   "weight": "lead",
+   "refs": [
+    10,
+    13,
+    1,
+    9,
+    12,
+    15
+   ],
+   "image": "https://sumahodigest.com/wp-content/uploads/2026/10/YU10899-26036_1.jpg"
+  },
+  {
+   "headline": "Galaxy S27 price list leaked: Is Samsung preparing to bring the Ultra series closer to $2,000?",
+   "highlight": "$2,000",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    4
+   ]
+  },
+  {
+   "headline": "Leaked Samsung Galaxy S27 and S27+ RAM and Storage Variants Suggest Samsung is Planning a Downgrade",
+   "highlight": "Downgrade",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "Inside the Galaxy S27 Ultra: Major Camera and Battery Leaks Surface",
+   "highlight": "Camera and Battery",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    2,
+    5,
+    7,
+    11
+   ]
+  },
+  {
+   "headline": "Samsung optimized the M2700 modem for the Exynos 2700, resulting in superior power efficiency for the Galaxy S27.",
+   "highlight": "M2700",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ]
