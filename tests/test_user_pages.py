@@ -44,9 +44,20 @@ class Issue(unittest.TestCase):
         self.assertEqual(b["cover"], "https://example.com/a.jpg")
 
 
+    def test_zero_boards_same_frame(self):
+        # 版面 0 個の人も、静かな版面（主題・配色つき）で最初の 1 つを選ぶ道（素の箱にしない）
+        b = user_pages.user_issue([], None, {}, 0, {})["items"]
+        self.assertEqual([x["name"] for x in b], [user_pages.FIRST_BOARD])
+        self.assertTrue(b[0]["quiet"] and b[0]["theme"])
+        self.assertIn(user_pages.ADD_URL, b[0]["status"])
+        html_ = render._md_links(b[0]["status"])
+        self.assertNotIn("_blank", html_)          # サイトの中の網址は同じタブ
+
+
 class Loader(unittest.TestCase):
     def test_auth_js_reads_own_page(self):
         js = render.AUTH_JS
+        self.assertNotIn("tok&&picks.length&&document", js)   # 版面の数によらず、まず本人のページ
         for w in ("my_page_path", "storage.from('pages')", 'meta[name="wl-own"]'):
             self.assertIn(w, js)
 

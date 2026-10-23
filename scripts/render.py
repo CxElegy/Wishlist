@@ -659,7 +659,10 @@ e = html.escape
 
 def _md_links(text):
     """把状态文字里的 [文字](链接) 转成 <a>。"""
-    return re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', e(text, quote=False))
+    def link(m):   # 外のサイトは新しいタブ、サイトの中（相対の網址）は同じタブ
+        out = m.group(2).startswith(("http://", "https://"))
+        return f'<a href="{m.group(2)}"' + (' target="_blank" rel="noopener"' if out else "") + f'>{m.group(1)}</a>'
+    return re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", link, e(text, quote=False))
 
 
 def _headline(story):
@@ -4127,8 +4130,10 @@ AUTH_JS = r"""
   function route(box,p,err){
     var picks=picksOf(p);
     if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';return;}   // もう本人のページの中
-    if(page==='index'&&!err&&tok&&picks.length&&document.querySelector('section.sec[data-k]')){
-      box.remove();ownPage().then(function(done){if(!done)showMine(p,picks);});return;}
+    // ログインしたお客さまはだれでも、まず本人のページ（店長と同じ枠組み）。版面の数によらない（HARNESS.md「一番大事な決まり」）
+    if(page==='index'&&!err&&tok&&document.querySelector('section.sec[data-k]')){
+      box.remove();ownPage().then(function(done){if(done)return;
+        if(picks.length)showMine(p,picks);else{var b2=document.createElement('main');b2.className='wl-mine';b2.id='mine';document.body.appendChild(b2);drawMine(b2,p,'');}});return;}
     drawMine(box,p,err);
   }
   var UB='あなたが足したもの';   // お客さまが足した版面の小分類（本文の見出し・目次の札）
