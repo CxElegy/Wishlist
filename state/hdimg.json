@@ -1254,6 +1254,19 @@
   ],
   "why": "看不清"
  },
+ "https://img.gamewith.jp/article/thumbnail/rectangle/583544.png?date=1792646816": {
+  "w": 600,
+  "h": 315,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.457,
+  "local": "pics/b75a90a05bbb1e6e.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
+ },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/192853.png?date=1591177211": {
   "w": 1200,
   "h": 630,
@@ -2469,6 +2482,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-23"
  },
+ "https://staticg.sportskeeda.com/editor/2026/10/1b3b0-17926658321254-1920.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2742,12 +2761,6 @@
  "https://www.bing.com/th?id=ONUT.GnzSa0gVKn6Rl1TixXNykg&pid=News&w=600": {
   "w": 600,
   "h": 600,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },

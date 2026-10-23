@@ -80,7 +80,8 @@
   "日本顶级网球赛事": 14,
   "MMORPG 新作": 12,
   "dota2": 8,
-  "チェーンソーマン": 8
+  "チェーンソーマン": 8,
+  "绝区零": 8
  },
  "GTA 6": [
   {
@@ -488,6 +489,37 @@
    "refs": [
     3,
     5
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "【ゼンゼロ】あやかしおどかしオバケ屋敷の攻略と報酬【ゼンレスゾーンゼロ】",
+   "highlight": "あやかしおどかしオバケ屋敷",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://img.gamewith.jp/article/thumbnail/rectangle/583544.png?date=1792646816"
+  },
+  {
+   "headline": "【ゼンゼロ】フィオニ最強編成・おすすめディスク・ステータス解説！",
+   "highlight": "フィオニ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    8
+   ]
+  },
+  {
+   "headline": "Zenless Zone Zero Phoenix build guide: Best W-Engines, Drive Discs, teams, and more",
+   "highlight": "Phoenix",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ]
