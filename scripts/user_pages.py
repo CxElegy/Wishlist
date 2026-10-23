@@ -35,6 +35,8 @@ TYPE_OF_SEC = {"游戏": "game", "影视": "anime", "演出": "event", "运动":
 IMG_PER_BOARD = 3        # 1 版面で写真を探す記事の数（頭から）
 IMG_BUDGET_S = 240       # 1 回の写真探しの合計時間（秒）
 STORIES_PER_BOARD = 8
+FIRST_BOARD = "はじめに"   # 版面が 0 個の人のページに置く静かな版面の名前
+ADD_URL = "../?add"       # 追いかけるものを足す流れ（入口と同じ、render.AUTH_JS の ADD）
 
 
 def account_of(email):
@@ -107,6 +109,11 @@ def user_issue(items, shop_issue, rows, deadline, themes):
                        "pending": [], "cover": cover, "theme": theme.resolve(it, cover, themes),
                        **({} if st else {"quiet": True, "collecting": True,
                                          "status": "記事を集めています。集まりしだい、ここに並びます"})})
+    if not blocks:   # 版面が 0 個の人も同じ枠組み：静かな版面（主題・配色つき）で最初の 1 つを選ぶ道を出す（素の箱にしない）
+        first = {"name": FIRST_BOARD, "type": "category", "section": "其他"}
+        blocks.append({"name": FIRST_BOARD, "section": "其他", "subtitle": "", "stories": [], "facts": [], "pending": [], "cover": None,
+                       "theme": theme.resolve(first, None, themes), "quiet": True,
+                       "status": f"まだ何も追いかけていません。[追いかけるものを選ぶ →]({ADD_URL})"})
     date = (shop_issue or {}).get("date") or dt.date.today().isoformat()
     return {"date": date, "no": (shop_issue or {}).get("no", 0), "items": blocks}
 
@@ -115,7 +122,7 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
     """本人のページの HTML。"""
     items = user_items((prefs or {}).get("picks"), shop_items)
     issue = user_issue(items, shop_issue, rows, deadline, themes)
-    order = [i["name"] for i in items]
+    order = [i["name"] for i in items] or [FIRST_BOARD]
     tz = digest.display_tz(settings)
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}
