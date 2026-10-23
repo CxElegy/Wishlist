@@ -6,6 +6,7 @@
 
     python scripts/library.py --sql > x.sql    # 店長の items.yaml をライブラリへ写す SQL（boards と test1 の follows）
     python scripts/library.py --push           # 同じことを secret key（SUPABASE_SERVICE_KEY）で直接（Actions の library.yml）
+    python scripts/library.py --refresh --push # 番号のない版面の Wikidata を引き直して items.yaml に書き、写す（library.yml、週 1 回）
 """
 import json
 import pathlib
@@ -45,18 +46,24 @@ WD_API = "https://www.wikidata.org/w/api.php"
 WD_UA = "WishlistBot/1.0 (https://github.com/CxElegy/Wishlist)"
 
 
+class WdBlocked(Exception):
+    """Wikidata に断られた・届かなかった（429・5xx・時間切れ）。「項目が 0 件」とは別に数える。"""
+
+
 def _wd_get(params):
-    """Wikidata の API（429 は間を空けて 4 回まで）。"""
+    """Wikidata の API（429 は間を空けて 4 回まで）。4 回とも断られたら WdBlocked（空の返事と見分ける）。"""
     import time
     import urllib.request
     url = WD_API + "?" + urllib.parse.urlencode({**params, "format": "json"})
+    why = ""
     for n in range(4):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": WD_UA}), timeout=20) as r:
                 return json.load(r)
-        except Exception:  # noqa: BLE001  429・時間切れは待ってやり直す
+        except Exception as ex:  # noqa: BLE001  429・時間切れは待ってやり直す
+            why = getattr(ex, "code", None) or type(ex).__name__
             time.sleep(5 * (n + 1))
-    return {}
+    raise WdBlocked(str(why))
 
 
 def _names(entity):
@@ -110,6 +117,90 @@ def find_wikidata(item, get=_wd_get):
                 if labels & words:
                     hits[h["id"]] = hits.get(h["id"], 0) + 1
     return max(hits, key=hits.get) if hits else None
+
+
+def refresh(items, get=_wd_get, pause=1.0):
+    """番号のない版面の Wikidata を引き直す（週 1 回、library.yml）。
+    返す：{"found": {名前: Q…}, "none": [項目が見つからない], "blocked": [断られて引けなかった], "skip": [題材で引かない]}。
+    1 度断られたら、その回は残りを聞かない（Actions の共有の IP は続けて断られる。sources.gdelt と同じ）。"""
+    import time
+    out = {"found": {}, "none": [], "blocked": [], "skip": []}
+    stop = False
+    for item in items:
+        if re.fullmatch(r"Q\d+", str(item.get("wikidata") or "")):
+            continue
+        name = item.get("name")
+        if stop:
+            out["blocked"].append(name)
+            continue
+        asked = []
+
+        def counted(p):
+            asked.append(1)
+            return get(p)
+        try:
+            qid = find_wikidata(item, counted)
+        except WdBlocked:
+            out["blocked"].append(name)
+            stop = True
+            continue
+        if qid:
+            out["found"][name] = qid
+        elif asked:
+            out["none"].append(name)
+        else:
+            out["skip"].append(name)
+        if asked and pause:
+            time.sleep(pause)
+    return out
+
+
+def write_wikidata(text, found):
+    """items.yaml の文字のまま（コメントを残して）、見つかった版面の `- name:` の次の行に `wikidata: Q…` を入れる。
+    「# wikidata: なし…」の行があればそれと入れ替える。返す：(新しい文字, 書いた名前)。"""
+    lines = text.split("\n")
+    done = []
+    i = 0
+    while i < len(lines):
+        m = re.match(r"^(\s*)- name:\s*(.+?)\s*$", lines[i])
+        if m:
+            try:
+                name = yaml.safe_load(m.group(2))
+            except yaml.YAMLError:
+                name = None
+            if isinstance(name, str) and name in found and name not in done:
+                pad = m.group(1) + "  "
+                row = f"{pad}wikidata: {found[name]}   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）"
+                j = i + 1
+                if j < len(lines) and re.match(r"^\s*wikidata:", lines[j]):
+                    i += 1
+                    continue   # もう番号がある（読み違いを上書きしない）
+                if j < len(lines) and re.match(r"^\s*#\s*wikidata:", lines[j]):
+                    lines[j] = row
+                else:
+                    lines.insert(j, row)
+                done.append(name)
+        i += 1
+    return "\n".join(lines), done
+
+
+def refresh_main(path=None, get=_wd_get):
+    """items.yaml の番号のない版面を引き直して書く。ログ（state/log/library.json）には数と見つかった版面の名前（店長の公開の版面）。"""
+    import runlog
+    path = path or ROOT / "items.yaml"
+    text = path.read_text(encoding="utf-8")
+    items = (yaml.safe_load(text) or {}).get("items") or []
+    r = refresh(items, get)
+    new, done = write_wikidata(text, r["found"])
+    if done:
+        path.write_text(new, encoding="utf-8")
+    got = "・".join(f"{n} {r['found'][n]}" for n in done)
+    msg = (f"Wikidata の引き直し：見つかった {len(done)}" + (f"（{got}）" if done else "")
+           + f"・項目なし {len(r['none'])}・断られた {len(r['blocked'])}・題材で引かない {len(r['skip'])}")
+    level = "warn" if r["blocked"] else ("ok" if done else "info")
+    runlog.add("library", msg, level=level, found=len(done), none=len(r["none"]), blocked=len(r["blocked"]), skip=len(r["skip"]))
+    print(msg)
+    return r, done
 
 
 def q(v):
@@ -180,6 +271,10 @@ def push_shop(items):
 
 if __name__ == "__main__":
     items = (yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")) or {}).get("items") or []
+    if "--refresh" in sys.argv:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        refresh_main()
+        items = (yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")) or {}).get("items") or []
     if "--sql" in sys.argv:
         print(shop_sql(items))
     if "--push" in sys.argv:

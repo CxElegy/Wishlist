@@ -17,8 +17,8 @@ import json
 e = html.escape
 
 PROCS = {"collect": "収集", "publish": "出刊", "edit": "AI編集", "emblem": "小元素", "photos": "写真", "gate": "ゲート",
-         "render": "ページ", "background": "後台", "userfeed": "お客さま"}
-LOG_FILES = ["collect", "publish", "edit", "emblem", "gate", "photos"]   # runlog.PROCS と同じ（state/log/<proc>.json）
+         "render": "ページ", "background": "後台", "userfeed": "お客さま", "library": "ライブラリ"}
+LOG_FILES = ["collect", "publish", "edit", "emblem", "gate", "photos", "library"]   # runlog.PROCS と同じ（state/log/<proc>.json）
 
 
 MODES = {"run": ("続けて全部", "整理待ちの版面を 1 つずつ全部（1 つ終わるごとに網页に出る）"),

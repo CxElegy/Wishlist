@@ -7,6 +7,7 @@ push のときにぶつかる（rebase の衝突）ので、書く人ごとに�
   edit     AI 編集の出刊（Claude の定時タスク）
   emblem   小元素の自動補完（GitHub Actions の後台）
   gate     後台のゲート（仕事があるか・Claude を起こすか。GitHub Actions）
+  library  ライブラリ（Wikidata の番号の引き直し、週 1 回。GitHub Actions の library.yml）
 各ファイルは新しい KEEP 件だけ残す。
 """
 
@@ -16,7 +17,7 @@ import pathlib
 
 LOG_DIR = pathlib.Path(__file__).resolve().parent.parent / "state" / "log"
 KEEP = 60
-PROCS = {"collect": "ニュース収集", "publish": "出刊", "edit": "AI 編集", "emblem": "小元素の自動補完", "photos": "写真から愿望",
+PROCS = {"collect": "ニュース収集", "publish": "出刊", "edit": "AI 編集", "emblem": "小元素の自動補完", "photos": "写真から愿望", "library": "ライブラリ",
          "gate": "後台のゲート"}
 
 
