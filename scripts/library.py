@@ -6,6 +6,7 @@
 
     python scripts/library.py --sql > x.sql    # 店長の items.yaml をライブラリへ写す SQL（boards と test1 の follows）
     python scripts/library.py --push           # 同じことを secret key（SUPABASE_SERVICE_KEY）で直接（Actions の library.yml）
+    python scripts/library.py --users          # お客さまの選んだもの（app_users.prefs.picks）をライブラリの版面にして follows に書く（library.yml、1 時間ごと）
     python scripts/library.py --refresh --push # 番号のない版面の Wikidata を引き直して items.yaml に書き、写す（library.yml、週 1 回）
 """
 import json
@@ -269,6 +270,139 @@ def push_shop(items):
     print(f"ライブラリ：版面 {len(boards)}・店長の follows {len(rows)}・上級 {len(parents)}")
 
 
+# ── お客さまの選んだもの → ライブラリの版面（2026-10-24）─────────────────────────────
+# 入口・カードで選んだもの（app_users.prefs.picks）を、ライブラリの版面に決めて follows に書く。
+# 同じものの決め方は店長と同じ印（board_key）：① もうある版面と名前（そろえたもの）が同じ → その版面
+# ② Wikidata を名前で検索し、項目の名前・別名・当たった文字がそろえて名前と同じもの（曖昧さ回避・一覧のページは除く）→ wd:Q…
+# ③ どちらもなければ名前の印 n:…。もうある版面の設定（店長のものも）は書き換えない。人ごとの置き方は最初の 1 回だけ書く（あとで本人が変える）。
+# 公開のログ・boards には、だれが選んだか（account）を書かない（boards はだれでも読める）。
+MAX_FOLLOWS = 100           # 追いかけられる数（app_users.board_limit の既定と同じ）
+USER_CREATED = "user"       # boards.created_by：お客さまが足した版面（だれかは書かない）
+NOT_TOPIC = ("disambiguation", "曖昧さ回避", "消歧义", "wikimedia list", "一覧")
+
+
+def find_pick_wikidata(name, get=_wd_get):
+    """お客さまの選んだ名前 → Wikidata の番号（名前がそろえて同じ項目だけ。なければ None）。断られたら WdBlocked。"""
+    want = norm_name(name)
+    if len(want) < 2:
+        return None
+    for lang in ("ja", "en"):
+        hits = (get({"action": "wbsearchentities", "search": name, "language": lang, "uselang": lang, "limit": 7, "type": "item"}).get("search") or [])
+        for h in hits:
+            desc = str(h.get("description") or "").lower()
+            if any(w in desc for w in NOT_TOPIC):
+                continue
+            labels = {norm_name(h.get("label")), norm_name((h.get("match") or {}).get("text"))} | {norm_name(a) for a in h.get("aliases") or []}
+            if want in labels and re.fullmatch(r"Q\d+", str(h.get("id") or "")):
+                return h["id"]
+    return None
+
+
+def pick_board(name, sec, langs):
+    """お客さまの 1 つ → 新しく足す版面の共有の設定（userfeed.board_item と同じ匹配词の規則）と置き方。"""
+    import taxonomy
+    import userfeed
+    item = userfeed.board_item(name, sec, langs)
+    shared, mine = split_item(item)
+    section = mine.get("section")
+    mine["subs"] = taxonomy.guess_subs(section, name) if section else {}
+    return shared, mine
+
+
+def plan_users(users, boards, get=_wd_get, pause=1.0):
+    """users = [{email, prefs}]、boards = いまのライブラリ [{id, key, name, names}]。
+    返す：{"new": {key: boards の行}, "follows": [{account, key, section, subs, pos}], "counts": {...}}。
+    1 度断られたら残りは聞かず、その回は書かない（次の回に）。"""
+    import time
+    import userfeed
+    by_name, keys = {}, set()
+    for b in boards:
+        keys.add(b["key"])
+        for n in [b.get("name"), *((b.get("names") or {}).values())]:
+            if norm_name(n):
+                by_name.setdefault(norm_name(n), b["key"])
+    new, follows = {}, []
+    counts = {"users": 0, "picks": 0, "same": 0, "wd": 0, "name": 0, "blocked": 0, "over": 0}
+    blocked = False
+    for u in users:
+        prefs = u.get("prefs") or {}
+        picks = prefs.get("picks") if isinstance(prefs.get("picks"), list) else []
+        if not picks:
+            continue
+        counts["users"] += 1
+        account = userfeed.account_of(u.get("email"))
+        langs = userfeed.news_langs(prefs)
+        seen = set()
+        for pos, p in enumerate(picks):
+            name = userfeed.pick_name((p or {}).get("name")) if isinstance(p, dict) else ""
+            if not norm_name(name) or norm_name(name) in seen:
+                continue
+            seen.add(norm_name(name))
+            if len(seen) > MAX_FOLLOWS:
+                counts["over"] += 1
+                continue
+            counts["picks"] += 1
+            key = by_name.get(norm_name(name))
+            if key:
+                counts["same"] += 1
+            else:
+                qid = None
+                if blocked:
+                    counts["blocked"] += 1
+                    continue
+                try:
+                    qid = find_pick_wikidata(name, get)
+                except WdBlocked:
+                    blocked = True
+                    counts["blocked"] += 1
+                    continue
+                if pause:
+                    time.sleep(pause)
+                key = "wd:" + qid if qid else "n:" + norm_name(name)
+                if key in keys:
+                    counts["same"] += 1
+                else:
+                    shared, _ = pick_board(name, p.get("sec"), langs)
+                    new[key] = {"key": key, "name": name[:80], "names": {"ja": name[:80]}, "wd": qid, "config": shared,
+                                "created_by": USER_CREATED}
+                    keys.add(key)
+                    counts["wd" if qid else "name"] += 1
+                by_name.setdefault(norm_name(name), key)
+            _, mine = pick_board(name, p.get("sec"), langs)
+            follows.append({"account": account, "key": key, "section": mine.get("section"), "subs": mine.get("subs") or {}, "pos": pos})
+    return {"new": new, "follows": follows, "counts": counts}
+
+
+def push_users(db=None, get=_wd_get):
+    """お客さまの選んだものをライブラリへ（library.yml、1 時間ごと）。ログ（公開）は数だけ。"""
+    import digest
+    import runlog
+    import userfeed
+    db = db or digest.supabase
+    users, _ = userfeed.fetch_all(db, "rpc/userfeed_users", {})
+    if users is None:
+        raise SystemExit("SUPABASE_SERVICE_KEY がないので書けません")
+    boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names&order=id")
+    r = plan_users(users, boards or [], get)
+    if r["new"]:
+        db("boards?on_conflict=key", list(r["new"].values()), prefer="resolution=ignore-duplicates")
+        boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names&order=id")
+    ids = {b["key"]: b["id"] for b in boards or []}
+    have, _ = userfeed.fetch_all(db, "follows?select=account,board_id&order=account,board_id")
+    have = {(h["account"], h["board_id"]) for h in have or []}
+    rows = [{k: v for k, v in {**f, "board_id": ids.get(f["key"])}.items() if k != "key"} for f in r["follows"]
+            if ids.get(f["key"]) and (f["account"], ids[f["key"]]) not in have]
+    if rows:
+        db("follows?on_conflict=account,board_id", rows, prefer="resolution=ignore-duplicates")
+    c = r["counts"]
+    msg = (f"お客さまの版面：{c['users']} 人・{c['picks']} 個（もとからある版面 {c['same']}・Wikidata で足した {c['wd']}・名前で足した {c['name']}"
+           f"・断られて次の回へ {c['blocked']}・上限を超えた {c['over']}）・follows {len(rows)}")
+    if rows or r["new"] or c["blocked"]:   # 変わらなかった回はログに書かない（空回りのコミットを作らない）
+        runlog.add("library", msg, level="warn" if c["blocked"] else "info", **{f"u_{k}": v for k, v in c.items()})
+    print(msg)
+    return r
+
+
 if __name__ == "__main__":
     items = (yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")) or {}).get("items") or []
     if "--refresh" in sys.argv:
@@ -280,3 +414,6 @@ if __name__ == "__main__":
     if "--push" in sys.argv:
         sys.path.insert(0, str(ROOT / "scripts"))
         push_shop(items)
+    if "--users" in sys.argv:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        push_users()

@@ -5,11 +5,13 @@ name: ライブラリへ写す
 # 週 1 回（月曜 3:41 UTC）と手で起こしたときは、先に番号のない版面の Wikidata を引き直す（--refresh）：
 # 見つかれば items.yaml に書いて push し、boards の行を名前の印（n:…）から番号の印（wd:…）へ書き換える。
 # 断られた（429 など）と「項目が 0 件」は分けて state/log/library.json に書く。
+# 1 時間ごと（毎時 41 分）：お客さまの選んだもの（app_users.prefs.picks）をライブラリの版面にして follows に書く（--users、ログは数だけ）。
 
 on:
   workflow_dispatch:
   schedule:
     - cron: "41 3 * * 1"
+    - cron: "41 * * * *"
   push:
     branches: [main]
     paths: ["items.yaml", "scripts/library.py"]
@@ -37,7 +39,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - name: Wikidata の番号を引き直す（週 1 回・手で）
-        if: github.event_name != 'push'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '41 3 * * 1'
         run: |
           python scripts/library.py --refresh
           git config user.name "github-actions[bot]"
@@ -49,3 +51,15 @@ jobs:
             if git pull --rebase -q; then :; else git rebase --abort || true; sleep 5; fi
           done
       - run: python scripts/library.py --push
+      - name: お客さまの選んだものを版面にする
+        run: |
+          python scripts/library.py --users
+          git add state/log/library.json
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "ライブラリ：お客さまの版面 $(TZ=Asia/Tokyo date +'%F %H:%M')"
+          for i in 1 2 3 4 5; do
+            git push -q && break
+            if git pull --rebase -q; then :; else git rebase --abort || true; sleep 5; fi
+          done

@@ -480,8 +480,8 @@ PROCESSES = [
         ],
     },
     {
-        "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "items.yaml が変わったとき · 週 1 回（月曜 12:41 JST）· 手でも",
-        "trigger": "main の items.yaml・scripts/library.py が変わったとき、週 1 回の定時（月曜 3:41 UTC）、または手で起こす",
+        "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "items.yaml が変わったとき · 1 時間ごと（毎時 41 分、お客さまの版面）· 週 1 回（月曜 12:41 JST、番号の引き直し）· 手でも",
+        "trigger": "main の items.yaml・scripts/library.py が変わったとき、1 時間ごと（毎時 41 分）、週 1 回の定時（月曜 3:41 UTC）、または手で起こす",
         "summary": "みんなの版面の置き場（ライブラリ：Supabase の boards・follows）へ、店長の版面を写す。記事集め・AI 編集・デザインを版面ごとに 1 回にし、店長もお客さまも同じ版面を受け取るための土台（2026-10-23）。",
         "files": [".github/workflows/library.yml", "scripts/library.py", "db/library.sql"], "doc": "CLAUDE.md", "uses": ["supabase"],
         "flow": [
@@ -500,6 +500,11 @@ PROCESSES = [
             {"id": "lb2b", "kind": "step", "lane": "web", "title": "名前の印の行を番号の印に書き換える", "uses": ["supabase"], "text": "n:… → wd:…（行を増やさない）"},
             {"id": "lb3", "kind": "step", "lane": "actions", "title": "共有の設定と人ごとの置き方に分ける", "text": "板块・小分類・乗換・篇幅・優先 = 人ごと（follows）、ほか = 版面（boards.config）"},
             {"id": "lb4", "kind": "store", "lane": "web", "title": "boards・follows（test1）に上書き", "uses": ["supabase"], "text": "何度流しても同じ。追いかけている人数はトリガーで数える"},
+            {"id": "lb5", "kind": "step", "lane": "web", "title": "お客さまの選んだものを読む（userfeed_users）", "uses": ["supabase"], "text": "一度はログインした人の app_users.prefs.picks · 1 人 100 個まで（MAX_FOLLOWS）"},
+            {"id": "lb6", "kind": "step", "lane": "ext", "title": "1 つずつ版面に決める（library.plan_users）", "x": "間 1 秒",
+             "text": "① もうある版面と名前（そろえたもの）が同じ → その版面 ② Wikidata を名前で検索（ja → en、7 件）、名前・別名・当たった文字がそろえて同じ項目（曖昧さ回避・一覧は除く）→ wd:Q… ③ なければ名前の印 n:…。断られたら残りは次の回"},
+            {"id": "lb7", "kind": "store", "lane": "web", "title": "新しい版面と follows（u_…）を足す", "uses": ["supabase"],
+             "text": "もうある版面の設定・本人の置き方は書き換えない（ignore-duplicates）。boards にはだれが足したかを書かない（created_by = user）。ログは数だけ"},
         ],
     },
     {
