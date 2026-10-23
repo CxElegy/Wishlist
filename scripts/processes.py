@@ -464,6 +464,18 @@ PROCESSES = [
         ],
     },
     {
+        "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "items.yaml が変わったとき · 手でも",
+        "trigger": "main の items.yaml・scripts/library.py が変わったとき、または手で起こす",
+        "summary": "みんなの版面の置き場（ライブラリ：Supabase の boards・follows）へ、店長の版面を写す。記事集め・AI 編集・デザインを版面ごとに 1 回にし、店長もお客さまも同じ版面を受け取るための土台（2026-10-23）。",
+        "files": [".github/workflows/library.yml", "scripts/library.py", "db/library.sql"], "doc": "CLAUDE.md", "uses": ["supabase"],
+        "flow": [
+            {"id": "lb1", "kind": "step", "lane": "actions", "title": "items.yaml を読む", "text": "店長の版面 1 つずつ"},
+            {"id": "lb2", "kind": "step", "lane": "actions", "title": "同じものかどうかの印", "text": "Wikidata の番号（wd:Q…）／なければ名前をそろえたもの（全角半角・大小・空白・記号）"},
+            {"id": "lb3", "kind": "step", "lane": "actions", "title": "共有の設定と人ごとの置き方に分ける", "text": "板块・小分類・乗換・篇幅・優先 = 人ごと（follows）、ほか = 版面（boards.config）"},
+            {"id": "lb4", "kind": "store", "lane": "web", "title": "boards・follows（test1）に上書き", "uses": ["supabase"], "text": "何度流しても同じ。追いかけている人数はトリガーで数える"},
+        ],
+    },
+    {
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。",
@@ -630,6 +642,7 @@ ARCH = [
         {"id": "p-collect", "proc": "collect", "subs": ["heat", "recommend", "notify", "images"]},
         {"id": "p-gate", "proc": "gate", "subs": ["emblem-cron"]},
         {"id": "p-requests", "proc": "requests"},
+        {"id": "p-library", "proc": "library"},
         {"id": "p-render", "proc": "render", "subs": ["colors"]}]},
     {"id": "repo", "title": "GitHub リポジトリ", "note": "ずっと残る · 全部の元データ", "cost": "無料", "style": "keep", "nodes": [
         {"id": "s-inbox", "label": "inbox/", "text": "集めた記事・edit.json・写真"},

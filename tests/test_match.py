@@ -416,6 +416,7 @@ class DiscoverFilterTest(unittest.TestCase):
     def test_discover_uses_source_prefix_and_hosts(self):
         """「気になるかも？」の収集も出典名（前方一致）・exclude_hosts で外す（GameWith の攻略頁が候補に残っていた）。"""
         from unittest import mock
+        NOW = dt.datetime.now(dt.timezone.utc)   # discover は「いまから lookback_days 日」で切るので、決め打ちの日付だと日が経つと落ちる
         found = [sources.Entry(title="『桃源暗鬼 Crimson Inferno』の配信日と事前登録情報！", url="https://news.google.com/a",
                                source="GameWith", site="https://gamewith.jp", published=NOW),
                  sources.Entry(title="新作アニメの映像", url="https://www.msn.com/a", source="YouTube on MSN", published=NOW),
