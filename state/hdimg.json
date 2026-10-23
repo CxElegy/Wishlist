@@ -132,6 +132,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/0081H5TQgy1ii9z6u34uaj315a1icqv5.jpg": {
+  "w": 1486,
+  "h": 1956,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/d249175ef7c52367.webp",
+  "out": [
+   972,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/007nrArUgy1ii4kkhnk5xj31400qox3n.jpg": {
   "w": 1440,
   "h": 960,
@@ -592,6 +605,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg": {
+  "w": 2000,
+  "h": 2605,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
   "h": 950,
@@ -1047,6 +1066,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images2.minutemediacdn.com/image/upload/c_crop,x_403,y_0,w_1396,h_785/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m5k4pgv1pvtp668dha.jpg": {
+  "w": 1440,
+  "h": 810,
+  "target": 1280,
+  "v": 3
+ },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_442,y_0,w_644,h_362/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/308/01m19r4yxgbxwedk2k57.jpg": {
   "w": 1440,
   "h": 810,
@@ -1209,12 +1234,6 @@
   "h": 720,
   "target": 1280,
   "v": 3
- },
- "https://img.gamewith.jp/article/thumbnail/gamearticle/18635/rectangle/64824.png?t=1792720276": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-23"
  },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/7776/rectangle/64257.jpg?t=1791769296": {
   "w": 600,
@@ -2103,6 +2122,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://ni.yam.com/20261023/jp-prt-18505-4495-1-261023043229102-2cbbcdfdb31dc2c7.webp": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/f5568ac1e1404c49bc86e5af8f7f59d3.jpg": {
   "w": 1280,
   "h": 720,
@@ -2289,6 +2314,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://resource.hanteonews.com/content/post/2026/10/21/dfd242c4-5ebd-4dcb-ba8f-49c0c535dece.jpeg": {
+  "w": 1500,
+  "h": 1000,
+  "target": 720,
   "v": 3
  },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
@@ -2510,12 +2541,6 @@
   "target": 1280,
   "v": 3
  },
- "https://staticg.sportskeeda.com/editor/2026/10/1b3b0-17926658321254-1920.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-23"
- },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2718,6 +2743,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.bgr.com/img/gallery/can-your-samsung-s-pen-be-traced/l-intro-1790355668.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.-A4aZ_zLadK_G3jm6fyD-g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2741,6 +2772,19 @@
   "out": [
    1280,
    719
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.7-oXg4qEKdkqdW_1vAnobw&pid=News&w=300": {
+  "w": 300,
+  "h": 225,
+  "target": 720,
+  "v": 3,
+  "blur": 0.499,
+  "local": "pics/51461b9d29c2e8ba.webp",
+  "out": [
+   720,
+   540
   ],
   "why": "看不清"
  },
@@ -2801,13 +2845,20 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
+  "w": 638,
+  "h": 334,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.393
+ },
  "https://www.bing.com/th?id=ONUT.GnzSa0gVKn6Rl1TixXNykg&pid=News&w=600": {
   "w": 600,
   "h": 600,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.INrR62tch3ap9vSGkg4PTw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -2996,20 +3047,13 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.pEvHZCIjvyauSZ081s0JKw&pid=News&w=780": {
+ "https://www.bing.com/th?id=ONUT.pGwd2qwSFK1SXUQh2ita4Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.693,
-  "local": "pics/80a5953ff4b8b26e.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
+  "target": 720,
+  "v": 3
  },
- "https://www.bing.com/th?id=ONUT.pGwd2qwSFK1SXUQh2ita4Q&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.pOjKRWa26aHRi0TwDyXpPg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3046,6 +3090,18 @@
   "target": 1280,
   "v": 3,
   "blur": 0.376
+ },
+ "https://www.bing.com/th?id=ONUT.uSQ0r0aktch1x24B2W-wxg&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ya2zuv_gWAsTxdbmKU-LHQ&pid=News&w=642": {
+  "w": 642,
+  "h": 359,
+  "target": 720,
+  "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2026/05/CAPiTA-Ultrafear-Snowboard-2027.jpg": {
   "w": 700,
@@ -3306,12 +3362,6 @@
   "h": 527,
   "target": 720,
   "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/08/inde.jpg?resize=1200,630": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-23"
  },
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
