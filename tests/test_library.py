@@ -142,3 +142,47 @@ class Refresh(unittest.TestCase):
             self.assertEqual(done, ["あつ森"])
             self.assertIn("wikidata: Q9", p.read_text(encoding="utf-8"))
             self.assertEqual((rows[-1]["found"], rows[-1]["blocked"]), (1, 0))
+
+
+class Users(unittest.TestCase):
+    """お客さまの選んだもの（prefs.picks）→ ライブラリの版面と follows（2026-10-24）。"""
+    USERS = [{"email": "Test-A@example.com", "prefs": {"picks": [
+                {"name": "あつ森", "sec": "游戏"}, {"name": "YOASOBI", "sec": "演出"}, {"name": "広島旅行", "sec": "生活"},
+                {"name": " YOASOBI ", "sec": "演出"}]}},
+             {"email": "test-b@example.com", "prefs": {"picks": [{"name": "広島旅行", "sec": "生活"}]}},
+             {"email": "test-c@example.com", "prefs": {}}]
+    BOARDS = [{"key": "wd:Q1", "name": "あつ森", "names": {"ja": "あつ森"}}]
+
+    @staticmethod
+    def wd(params):
+        if params["search"].strip() == "YOASOBI":
+            return {"search": [{"id": "Q5", "label": "YOASOBI 一覧", "description": "Wikimedia list"},
+                               {"id": "Q7", "label": "YOASOBI", "description": "Japanese duo"}]}
+        return {"search": [{"id": "Q8", "label": "広島", "description": "city"}]}   # 名前が違う項目には当てない
+
+    def test_plan(self):
+        r = library.plan_users(self.USERS, self.BOARDS, self.wd, pause=0)
+        a = __import__("userfeed").account_of("test-a@example.com")
+        self.assertEqual(sorted(r["new"]), ["n:広島旅行", "wd:Q7"])         # あつ森はもとからある版面・広島旅行は 1 つだけ
+        self.assertNotIn(a, str(r["new"]))                                   # boards にだれが足したかを書かない
+        self.assertEqual(r["new"]["wd:Q7"]["created_by"], "user")
+        fa = [f["key"] for f in r["follows"] if f["account"] == a]
+        self.assertEqual(fa, ["wd:Q1", "wd:Q7", "n:広島旅行"])              # 同じ名前は 1 回
+        self.assertEqual(len([f for f in r["follows"] if f["key"] == "n:広島旅行"]), 2)
+        self.assertEqual(r["counts"]["users"], 2)
+        f = next(f for f in r["follows"] if f["key"] == "n:広島旅行")
+        self.assertEqual(f["section"], "生活")
+        self.assertTrue(f["subs"])                                           # 小分類は必ず
+
+    def test_blocked_waits_next_time(self):
+        def no(params):
+            raise library.WdBlocked("429")
+        r = library.plan_users(self.USERS, self.BOARDS, no, pause=0)
+        self.assertEqual(r["new"], {})
+        self.assertEqual([f["key"] for f in r["follows"]], ["wd:Q1"])        # もとからある版面だけ
+        self.assertEqual(r["counts"]["blocked"], 3)
+
+    def test_limit(self):
+        many = [{"email": "x@example.com", "prefs": {"picks": [{"name": f"題材{i}", "sec": "其他"} for i in range(105)]}}]
+        r = library.plan_users(many, [], lambda p: {"search": []}, pause=0)
+        self.assertEqual((len(r["follows"]), r["counts"]["over"]), (library.MAX_FOLLOWS, 5))
