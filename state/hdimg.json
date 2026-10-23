@@ -522,6 +522,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://comicbookmovie.com/images/articles/banners/before-hbos-harry-potter-series-arrives-the-films-get-a-bigger-art-book-with-fantastic-beasts-added-ab230566.jpg": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
+  "v": 3
+ },
  "https://comicbookmovie.com/images/articles/banners/secret-wars-writer-jonathan-hickman-reveals-hes-consulted-on-avengers-doomsdays-script-ab230572.jpg": {
   "target": 720,
   "v": 3,
@@ -901,6 +907,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/2/2/2210b_1604_5c184691_2e0e0ff2.jpg": {
+  "w": 1200,
+  "h": 842,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/5/e/5e2bd_230_52c597762e148e49ef92b7b93ca03983.jpg": {
   "w": 615,
   "h": 410,
@@ -1186,6 +1198,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fOMgD.img": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
   "h": 819,
@@ -1349,6 +1367,19 @@
   "out": [
    1080,
    1080
+  ],
+  "why": "看不清"
+ },
+ "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1485898295206184406/origin_1.jpg": {
+  "w": 360,
+  "h": 360,
+  "target": 720,
+  "v": 3,
+  "blur": 0.538,
+  "local": "pics/9d7d527eda42e79a.webp",
+  "out": [
+   720,
+   720
   ],
   "why": "看不清"
  },
@@ -2188,6 +2219,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/21881/89/21881-89-8fd1b4c5834994ab56f955d2e4e45891-2500x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2400,
+  "h": 1229,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/33064/2573/33064-2573-f32bdd54c590493c90bb8034084823a4-3500x2092.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 2108,
   "h": 1260,
@@ -2352,6 +2389,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://sffgazette.com/images/articles/banners/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-ab11618.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://shattered.io/wp-content/uploads/2026/10/gta-6-launch-1-5-million-sick-days-cost-2026-gen.webp": {
   "w": 1344,
   "h": 768,
@@ -2472,6 +2515,18 @@
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/catalina-sandino-moreno-and-hannah-cheramy-in-from-season-3.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/untitled2.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://staticg.sportskeeda.com/editor/2026/10/1b3b0-17926658321254-1920.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -2658,11 +2713,18 @@
   "target": 1280,
   "v": 3
  },
- "https://www.atpress.ne.jp/releases/643108/img_643108_1.jpg": {
+ "https://www.atpress.ne.jp/releases/643108/LL_img_643108_3.jpg?format=webp&ts=1792744226": {
   "w": 800,
   "h": 800,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.627,
+  "local": "pics/17a966f4976b6153.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://www.bgr.com/img/gallery/can-your-samsung-s-pen-be-traced/l-intro-1790355668.jpg": {
   "w": 1600,
@@ -2738,6 +2800,19 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
+  "w": 699,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.506,
+  "local": "pics/9e1cea26af1bbfab.webp",
+  "out": [
+   1278,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.EmDiBOOYbGI1YsAXHklQmQ&pid=News&w=1200": {
   "w": 700,
@@ -2950,12 +3025,6 @@
    416
   ],
   "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ORMS.1e7af442a4d725fe2d1f76d8847ebfd1&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2026/05/CAPiTA-Ultrafear-Snowboard-2027.jpg": {
   "w": 700,

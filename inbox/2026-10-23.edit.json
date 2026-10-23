@@ -82,7 +82,8 @@
   "dota2": 8,
   "チェーンソーマン": 8,
   "绝区零": 8,
-  "哈利波特剧集": 6
+  "哈利波特剧集": 6,
+  "猫用品": 7
  },
  "GTA 6": [
   {
@@ -562,6 +563,49 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "猫好きのためのオンラインショップ「ナニナーニ」が 10月23日オープン、猫雑貨や快適グッズを展開",
+   "highlight": "10月23日オープン",
+   "blurb": "猫好きのためのオンラインショップ「ナニナーニ」が10月23日にオープンし、猫雑貨や快適グッズを展開する。",
+   "weight": "lead",
+   "refs": [
+    7
+   ],
+   "event": {
+    "date": "2026-10-23",
+    "label": "ショップ開店"
+   },
+   "image": "https://www.atpress.ne.jp/releases/643108/LL_img_643108_3.jpg?format=webp&ts=1792744226"
+  },
+  {
+   "headline": "猫用スマートトイレ「トレッタ」にLEDライトの明るさ調整機能を搭載",
+   "highlight": "LEDライトの明るさ調整機能",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "2026年度グッドデザイン賞を受賞、頭を通さず着脱できる犬猫用！Vet’s Labo「ベッツウェア」",
+   "highlight": "グッドデザイン賞",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Sheba campaign turns cat owners from ignored to adored",
+   "highlight": "Sheba",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]
