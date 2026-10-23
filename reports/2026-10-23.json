@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "c2678d8a3257",
+ "edit_sig": "89db79cda36f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -596,45 +596,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-22",
-     "n": 1,
-     "source": "note",
-     "title": "집은 정리했는데, 섬에서는 욕심을 부리며 살고 있습니다.",
-     "url": "https://note.com/enjoy60s/n/n23eaab983b40?hl=ko"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-18",
-     "n": 2,
-     "source": "GameWith",
-     "title": "【あつ森】夢見のやり方とできること【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1tak1EaDViTDRZZExCRjR4aV8zbG1ZU3JYT2hrNGZObmlnSVRWV1NLVlZxMXV4RnJkbWt2RVZ4N0dvb204eEdYQUxnQUdNTXZqbjd0QUhub0xON0ZG?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 3,
-     "source": "Howl.link",
-     "title": "【あつまれどうぶつの森】久しぶりのあつ森！ 【 #個人勢Vtuber 】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE93ZnRQWC1leHZIVXVEQ0RWZVFaZjk2WUhMQTJmVEVFN01ZY1NSb29uQXkwNzBkYkI3Tmtj?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 4,
-     "source": "Howl.link",
-     "title": "​​【あつ森】作業のお供にいかがですか？今日でローン返済いけるかも！雑談◎【あつまれどうぶつの森】【月森ねび / 男性Vtuber】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5ZaEdTb3d3N2pBTHA5QTEtaUl1alpiZjJLeXk0dEdYTWFYQkszcjBrbjUtazBQNWRjeHVN?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 5,
-     "source": "note",
-     "title": "マグロちゃん来訪など(^^)",
-     "url": "https://note.com/rainbowtanuki/n/nfb0d5b51bc88"
+     "headline": "【あつ森】夢見のやり方とできること【あつまれどうぶつの森】",
+     "highlight": "夢見のやり方",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle_l/218743.png?date=1767846838",
+     "image_via": "JSON-LD",
+     "url": "https://gamewith.jp/atsumori/article/show/218743",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -1126,7 +1100,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-10-22",
