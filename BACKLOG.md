@@ -27,3 +27,4 @@
 - [ ] 2 つ目の仕組みを外す — userfeed.py・user_boards の読み書き・JS で描いた版面・左右カード
 - [ ] test-a・test-b を作り直す — test-a は店長の版面を写す、test-b は広島旅行 1 つ。両方の画面を 1400 / 390 px で見せる
 - [ ] 管理ページに番号のない版面とその理由を出す — state/log/library.json の最後の回（項目なし・断られた・題材）と、boards で wd がない版面の名前。断られた回が 2 週続いたら「要確認」
+- [?] Hermes agent を作る係にする（案 B、hermes/README.md） — あなた待ち：動かす場所（サーバー・PC・Android）と、モデルの鍵・GitHub のトークン・Supabase のトークン・Discord のボットを ~/.hermes/.env に。入れたら hermes/ACTIVE を足して切り替え
