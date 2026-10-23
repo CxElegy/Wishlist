@@ -444,6 +444,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://charagoo.jp/wp-content/uploads/2025/08/D103923_01.jpg": {
+  "w": 1000,
+  "h": 1000,
+  "target": 720,
+  "v": 3
+ },
  "https://charagoo.jp/wp-content/uploads/2026/05/chiikawa-news-20260710.jpg": {
   "w": 1782,
   "h": 1260,
@@ -650,8 +656,15 @@
  "https://gachapolitan.com/wp-content/uploads/2026/10/5671-1.jpg": {
   "w": 800,
   "h": 565,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.423,
+  "local": "pics/657372d8fcd0d4c4.webp",
+  "out": [
+   1280,
+   904
+  ],
+  "why": "看不清"
  },
  "https://gamegpu.com/images/1_2026/NEWS/Q4/okt/19/Image_13lts813lts813lt_ggpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/okt/19/Image_13lts813lts813lt_ggpu.webp?width=1920&height=1080": {
   "w": 1920,
@@ -753,6 +766,12 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://hjweb.jp/wp-content/uploads/2026/10/2-3.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://hjweb.jp/wp-content/uploads/2026/10/26101602.jpg": {
@@ -1259,6 +1278,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.gamewith.jp/article/thumbnail/rectangle_l/377179.png?date=1669704744": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://img.gamewith.jp/article/thumbnail/rectangle_l/456224.png?date=1720281913": {
   "w": 1200,
   "h": 630,
@@ -1527,6 +1552,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://m.media-amazon.com/images/I/51cA38cO-qL._SL500_.jpg": {
+  "w": 368,
+  "h": 500,
+  "target": 720,
   "v": 3
  },
  "https://maxblizz.com/wp-content/uploads/2026/10/Marvel-Studios-Phase-7-movies-new.jpg": {
@@ -2626,6 +2657,19 @@
   "h": 899,
   "target": 1280,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.-A4aZ_zLadK_G3jm6fyD-g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.426,
+  "local": "pics/00fe4f6880d17930.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.-knf4I1dwRCd_IShbRipcw&pid=News&w=1200": {
   "w": 700,
