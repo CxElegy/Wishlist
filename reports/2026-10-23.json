@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "92378d3659ab",
+ "edit_sig": "4d47c752eb43",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -133,15 +133,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 13,
-     "source": "GameRant",
-     "title": "Steam MMO Is Permanently Shutting Down on December 18",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE4ybjRrWk50aGlBaVdfTXVfWlJCQk1lSWxiX3RLS0tuV080OGxBdEJQV3ZDcmRoOS13SnlXTVpwdVZ2S0xFR1VuenhLN0t6eEU3NThEejMwaUNKRFBVTWZSSGJnOFoxbi1NaFcxYVZn?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -166,12 +157,16 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-21",
-     "headline": "『Icarus Online』本日よりグローバル正式サービス開始！",
-     "highlight": "グローバル正式サービス開始",
-     "image": "https://www.bing.com/th?id=ONUT.V6fXMfHmN2mNSuIipPaARg&pid=News&w=1200",
-     "image_via": "条目自带（Bing 缩略图）",
-     "url": "https://www.iza.ne.jp/pressrelease/prtimes/3NPI26QGINPDLPA26QZGOQ4EDY/",
+     "date": "2026-10-23",
+     "event": {
+      "date": "2026-12-18",
+      "label": "サービス終了"
+     },
+     "headline": "Steam MMO Is Permanently Shutting Down on December 18",
+     "highlight": "December 18",
+     "image": "https://static0.gamerantimages.com/wordpress/wp-content/authors/66d60c58971a1-Dominik%20B%20-%20Edited.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://gamerant.com/zenith-nexus-servers-shutting-down-when/",
      "weight": "normal"
     }
    ],
