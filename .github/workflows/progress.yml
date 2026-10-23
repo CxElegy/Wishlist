@@ -1,0 +1,38 @@
+name: 進み具合を Discord へ
+
+# 何時に何ができたか・どこが変わったかを Discord で知らせる（scripts/progress_notify.py、2026-10-23 用户定的）。
+# PR を出したとき・合併したとき、main の BACKLOG.md（やることの一覧）が変わったとき。
+
+on:
+  pull_request:
+    types: [opened, closed]
+  push:
+    branches: [main]
+    paths: ["BACKLOG.md"]
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: PR を出した・合併した
+        if: github.event_name == 'pull_request'
+        run: python scripts/progress_notify.py pr < "$GITHUB_EVENT_PATH"
+      - name: やることの一覧が変わった
+        if: github.event_name == 'push'
+        run: |
+          git show "${{ github.event.before }}:BACKLOG.md" > /tmp/before.md 2>/dev/null || : > /tmp/before.md
+          python scripts/progress_notify.py backlog /tmp/before.md BACKLOG.md

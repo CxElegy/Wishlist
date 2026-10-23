@@ -464,6 +464,17 @@ PROCESSES = [
         ],
     },
     {
+        "id": "progress", "name": "進み具合を Discord へ", "en": "PROGRESS", "lane": "actions", "workflow": "progress.yml", "when": "PR を出した・合併した・一覧が変わったとき",
+        "trigger": "pull_request（opened・closed で merged）・main の BACKLOG.md への push",
+        "summary": "何時に何ができたか・どこが変わったかを Discord で知らせる（2026-10-23）。ハーネスのループが PR を出す・合併する・一覧を更新するたびに届く。",
+        "files": [".github/workflows/progress.yml", "scripts/progress_notify.py"], "doc": "HARNESS.md", "uses": ["discord"],
+        "flow": [
+            {"id": "pg1", "kind": "step", "lane": "actions", "title": "PR を出した／合併した", "text": "題名・本文の最初の 4 行・変えたファイル数・リンク・日本時間"},
+            {"id": "pg2", "kind": "step", "lane": "actions", "title": "一覧（BACKLOG.md）の前と今を比べる", "text": "済み [x]・あなた待ち [?]・進行中 [~]・足した段（1 回 10 件まで）"},
+            {"id": "pg3", "kind": "step", "lane": "ext", "title": "Discord に送る", "uses": ["discord"], "text": "速報・週報と同じ Webhook"},
+        ],
+    },
+    {
         "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "items.yaml が変わったとき · 手でも",
         "trigger": "main の items.yaml・scripts/library.py が変わったとき、または手で起こす",
         "summary": "みんなの版面の置き場（ライブラリ：Supabase の boards・follows）へ、店長の版面を写す。記事集め・AI 編集・デザインを版面ごとに 1 回にし、店長もお客さまも同じ版面を受け取るための土台（2026-10-23）。",
@@ -646,6 +657,7 @@ ARCH = [
         {"id": "p-gate", "proc": "gate", "subs": ["emblem-cron"]},
         {"id": "p-requests", "proc": "requests"},
         {"id": "p-library", "proc": "library"},
+        {"id": "p-progress", "proc": "progress"},
         {"id": "p-render", "proc": "render", "subs": ["colors"]}]},
     {"id": "repo", "title": "GitHub リポジトリ", "note": "ずっと残る · 全部の元データ", "cost": "無料", "style": "keep", "nodes": [
         {"id": "s-inbox", "label": "inbox/", "text": "集めた記事・edit.json・写真"},
