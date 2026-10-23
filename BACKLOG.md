@@ -5,7 +5,7 @@
 - [x] ライブラリの表を作り、店長の版面 23 個を写す — boards 23・follows(test1) 23（https://github.com/CxElegy/Wishlist/pull/254 、2026-10-23）
 - [~] 版面に Wikidata の番号を入れる（開始 2026-10-23 21:40 UTC） — 規則で探し（Wikipedia の記事名 `wiki` → 番号、なければ名前・検索語で引いて 1 つに決まるもの）、決まらない題材は名前のまま。結果の表をユーザーに見せる。Wikidata が 429 を返すので間を空けて Actions で。下書きの結果（2026-10-23）：23 個中 17 個見つかり、漫威电影は映画 1 本（ドゥームズデイ）に、猫用品は近い言葉の項目に間違って当たった → 記事名の 1 つ目ではなく一番合うもの、題材は番号なし
 - [x] gelato pique の Wikidata の番号を引き直す — 引き直した結果 Wikidata に項目なし（ja/en/zh 検索・全文検索 0 件、Wikipedia 記事なし）→ 名前の印のまま。ブランドの題材は名前が同じ項目だけ番号を付ける規則に（https://github.com/CxElegy/Wishlist/pull/260 、2026-10-23）
-- [ ] Wikidata の番号を Actions で定期に引き直す — 番号のない版面（gelato pique など）を週 1 回 `library.find_wikidata` で引き、見つかれば items.yaml と boards（n:→wd:）を直す。429 と「0 件」を分けて数える（今の `_wd_get` は断られても空を返すので見分けられない）
+- [~] Wikidata の番号を Actions で定期に引き直す（開始 2026-10-23 22:55 UTC） — 番号のない版面（gelato pique など）を週 1 回 `library.find_wikidata` で引き、見つかれば items.yaml と boards（n:→wd:）を直す。429 と「0 件」を分けて数える（今の `_wd_get` は断られても空を返すので見分けられない）
 - [ ] 記事集めがライブラリの版面を読む — だれかが追いかけている版面だけを集める。店長のページの見た目・記事は今と同じ（前後で比べる）
 - [ ] 記事と AI 編集の結果を版面ごとにライブラリへ書く — board_stories。店長のページはそこから作っても今と同じ
 - [ ] 人ごとのページを同じ作りで生成する — account を切り替えて render。店長は今のまま
