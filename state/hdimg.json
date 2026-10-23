@@ -113,6 +113,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/006dNg2Pgy1iibmtu4e33j30xh1bpgr5.jpg": {
+  "w": 1205,
+  "h": 1717,
+  "target": 720,
+  "v": 3,
+  "local": "pics/60e5f6112727e583.webp",
+  "out": [
+   898,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/007nrArUgy1ii4kkhnk5xj31400qox3n.jpg": {
   "w": 1440,
   "h": 960,
@@ -863,6 +876,18 @@
   "target": 720,
   "v": 3
  },
+ "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=2019,fit=cover,q=high,sharpen=2/21/2026/10/2026102118330919419_1.jpg": {
+  "w": 1200,
+  "h": 2019,
+  "target": 720,
+  "v": 3
+ },
+ "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=665,fit=cover,q=high,sharpen=2/21/2026/10/2026102307582091459_1.jpg": {
+  "w": 1200,
+  "h": 665,
+  "target": 1280,
+  "v": 3
+ },
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=800,fit=cover,q=high,sharpen=2/21/2026/10/2026102116244282965_1.jpg": {
   "w": 1200,
   "h": 800,
@@ -1400,6 +1425,12 @@
   "v": 3
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-19/rjswog6orxf7mm9n05yf9dgk.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
   "w": 1600,
   "h": 900,
   "target": 720,
@@ -2615,12 +2646,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.NzflZ33ZlbyafTknJCsykw&pid=News&w=1200": {
-  "w": 700,
-  "h": 444,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.QtNfk9tvzNrsIUmeECrxGw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -3034,6 +3059,12 @@
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sportschosun.com/article/html/2026/10/21/2026102101001376300089731_w.jpg": {
+  "w": 1200,
+  "h": 762,
   "target": 720,
   "v": 3
  },
