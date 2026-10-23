@@ -2006,6 +2006,30 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-00035763-tennismagv-000-1-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3,
+  "local": "pics/362a974824eef17d.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261023-00035759-tennismagv-000-1-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/5f112a16dad965e6.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
   "h": 1080,
@@ -3090,6 +3114,12 @@
  "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg": {
   "w": 1000,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sankei.com/resizer/v2/https%3A%2F%2Fdpgdieoe6npux.cloudfront.net%2Fprtimes%2FVFR23K4GO5MGXDTT2UYX6UA5N4?auth=9a414e57a91eb9e1ca5e403be51ea3162b6a6ae3547730c8d6840dc9793014f6&quality=50&smart=true&width=1200&height=675": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },
