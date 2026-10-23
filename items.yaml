@@ -102,6 +102,7 @@ settings:
 
 items:
   - name: Astrae Oratio
+    wikidata: Q140469517   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {status: 新作・発売前, platform: スマホ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/astrae-oratio.webp", kind: cover, why: "ゲーム：公式サイトのキービジュアル（タイトルロゴ）", source: "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -148,6 +149,7 @@ items:
       预计 2027 年登陆 iOS/Android，之后推出 PC 版。2026 年 10 月 2 日至 6 日进行过全球 CBT。
     site: https://astraeoratio.plaync.com/
   - name: BLEACH Mirrors High
+    wikidata: Q137532115   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {status: 新作・発売前, platform: スマホ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/bleach-mirrors-high.webp", kind: logo, why: "ゲーム：公式サイトのタイトルロゴ", source: "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -191,6 +193,7 @@ items:
     status: 事前登录中 · 官方称 2026 年内上线，具体日期未定
     site: https://bleach-mh.bn-ent.net/
   - name: GTA 6
+    wikidata: Q23648408   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {status: 新作・発売前, platform: 家庭用ゲーム機}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/gta-6.webp", kind: cover, why: "ゲーム：パッケージ画像（ロゴ部分）", source: "https://upload.wikimedia.org/wikipedia/en/4/46/Grand_Theft_Auto_VI.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -383,6 +386,7 @@ items:
       font: sans
 
   - name: 漫威电影
+    wikidata: Q642878   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {kind: "シリーズ", origin: "海外"}
     icon: {image: "icons/marvel.webp", kind: logo, why: "フランチャイズ：MARVEL のロゴ（人物は使わない）", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Marvel_Studios_2016_logo.svg/960px-Marvel_Studios_2016_logo.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -459,6 +463,7 @@ items:
     media: ["映画", "ドラマ"]
 
   - name: FROM
+    wikidata: Q107072432   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/from.webp", kind: logo, why: "ドラマ：タイトルカード", source: "https://upload.wikimedia.org/wikipedia/en/f/fa/From_title_card.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -524,6 +529,7 @@ items:
     wiki: ["en:From (TV series)"]
 
   - name: 哈利波特剧集
+    wikidata: Q117662601   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/harry-potter-hbo.webp", kind: logo, why: "ドラマ：HBO 版のタイトルロゴ", source: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Harry_Potter_TV_series_logo.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -595,6 +601,7 @@ items:
     wiki: ["en:Harry Potter (TV series)"]
 
   - name: ILLIT
+    wikidata: Q122179261   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/illit.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
@@ -805,6 +812,7 @@ items:
       font: sans
 
   - name: 日本顶级网球赛事
+    wikidata: Q1025949   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {sport: テニス, how: 観る}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/tennis.webp", kind: symbol, why: "スポーツ：競技の記号", source: "https://github.com/jdecked/twemoji（1f3be テニスボール）"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: topic   # 小元素の種類（scripts/emblem_fill.py）
@@ -889,6 +897,7 @@ items:
     wiki: ["en:Japan Open Tennis Championships", "ja:ジャパン・オープン・テニス選手権"]
 
   - name: 三星手机
+    wikidata: Q73389   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {kind: "ガジェット・家電", owner: "ブランド"}
     icon: {image: "icons/samsung-galaxy.webp", kind: logo, why: "ブランド：Galaxy のロゴ", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Samsung_Galaxy_logo_%28%22Galaxy%22_logo_only%29.svg/960px-Samsung_Galaxy_logo_%28%22Galaxy%22_logo_only%29.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: brand   # 小元素の種類（scripts/emblem_fill.py）
@@ -1022,6 +1031,7 @@ items:
       font: serif
 
   - name: "ぐでたま"
+    wikidata: Q20039752   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {kind: "キャラグッズ", owner: "キャラクター"}
     icon: {image: "icons/gudetama.webp", kind: character, why: "キャラクター：ぐでたま本人（公式の絵）", source: "https://upload.wikimedia.org/wikipedia/en/b/b1/Gudetama_from_Sanrio.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -1051,6 +1061,7 @@ items:
     wiki: ["en:Gudetama", "ja:ぐでたま"]
 
   - name: "チェーンソーマン"
+    wikidata: Q65240543   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {kind: "シリーズ", origin: "日本"}
     icon: {image: "icons/chainsaw-man.webp", kind: cover, why: "アニメ：AniList のカバー（チェンソーマンの姿）", source: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127230-DdP4vAdssLoz.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -1086,6 +1097,7 @@ items:
     media: ["マンガ", "アニメ", "映画"]
 
   - name: "The Mandalorian"
+    wikidata: Q56876444   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {kind: ドラマ, origin: 海外}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/the-mandalorian.webp", kind: logo, why: "ドラマ：タイトルロゴ", source: "https://commons.wikimedia.org/wiki/File:The_Mandalorian_black_background.svg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -1119,6 +1131,7 @@ items:
     wiki: ["en:The Mandalorian", "ja:マンダロリアン"]
 
   - name: "あつ森"
+    wikidata: Q64566657   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {status: 運営中, platform: 家庭用ゲーム機}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/animal-crossing-nh.webp", kind: cover, why: "ゲーム：パッケージ画像", source: "https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -1162,6 +1175,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：什么时候能玩、版本更新、活动、新角色。维基数据：動物森友會系列的第七部作品。"
 
   - name: "Vaundy"
+    wikidata: Q97031297   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     theme: {bg: "#15131C", fg: "#EEEAF4", accent: "#B9A6F2", alt_bg: "#F1EEF8", alt_fg: "#1C1826", alt_accent: "#5B43A8", split: true}  # ステージの夜の紫
     subs: {scene: J-POP, form: ソロ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/vaundy.webp", kind: person, why: "音楽家：本人の顔写真", source: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Vaundy_2025.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
@@ -1192,6 +1206,7 @@ items:
     subtitle: "演唱会"
 
   - name: "周杰伦"
+    wikidata: Q238819   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     theme: {bg: "#F6F2EA", fg: "#1D2430", accent: "#2F5F8F", alt_bg: "#14202E", alt_fg: "#EEF1F4", alt_accent: "#8DB6DE", split: true}  # 青花磁の白と藍
     subs: {scene: 華語, form: ソロ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/jay-chou.webp", kind: person, why: "音楽家：Spotify のアーティスト写真（顔を真ん中に）", source: "https://open.spotify.com/artist/2elBjNSdBE2Y3f0j1mjrql"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
@@ -1222,6 +1237,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：演唱会、巡演、门票：抽选、发售、新歌、新专辑、回归。维基数据：台湾男歌手、流行歌曲作家、演员。"
 
   - name: "绝区零"
+    wikidata: Q111983519   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {status: 運営中, platform: マルチ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/zenless-zone-zero.webp", kind: logo, why: "ゲーム：アプリアイコンにもなっている ZZZ のロゴ", source: "https://thumb.wikimedia.org/wikipedia/en/thumb/d/d2/Zenless_Zone_Zero_curved_box_logo.svg/500px-Zenless_Zone_Zero_curved_box_logo.svg.png"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -1310,6 +1326,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：版本更新、活动、新角色、打折、免费送、联名、周边、剧情、角色、世界观。维基数据：2024年电子游戏。"
 
   - name: "dota2"
+    wikidata: Q771541   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {status: eスポーツ, platform: PC}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/dota-2.webp", kind: cover, why: "ゲーム：Steam のライブラリ画像（ロゴ部分）", source: "https://cdn.akamai.steamstatic.com/steam/apps/570/library_600x900.jpg"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: character   # 小元素の種類（scripts/emblem_fill.py）
@@ -1373,6 +1390,7 @@ items:
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
 
   - name: "A2O LITE"
+    wikidata: Q141752366   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
     subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/a2o-lite.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/0Vkn28k7P4K95Ce3knN0hQ"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）

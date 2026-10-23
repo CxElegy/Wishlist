@@ -28,5 +28,36 @@ class Key(unittest.TestCase):
         self.assertTrue(all(f["account"] == "test1" for f in follows))
 
 
+
+class Wikidata(unittest.TestCase):
+    """番号の決め方（ネットには出ない：get を差し替える）。"""
+    def ent(self, labels):
+        return {"labels": {k: {"value": v} for k, v in labels.items()}, "aliases": {}}
+
+    def test_wiki_titles_pick_best_match(self):
+        # 漫威电影：記事名の 1 つ目（映画 1 本）ではなく、名前・検索語が入るシリーズ全体を選ぶ
+        def get(p):
+            return {"entities": {"Q1": self.ent({"en": "Avengers: Doomsday"})}} if "Doomsday" in p.get("titles", "") \
+                else {"entities": {"Q2": self.ent({"zh": "漫威电影宇宙", "en": "Marvel Cinematic Universe"})}}
+        item = {"name": "漫威电影", "keywords": ["漫威 电影"], "wiki": ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]}
+        self.assertEqual(library.find_wikidata(item, get), "Q2")
+
+    def test_topic_without_wiki_has_no_number(self):
+        self.assertIsNone(library.find_wikidata({"name": "猫用品", "type": "category"}, lambda p: self.fail("引かない")))
+
+    def test_search_needs_exact_name(self):
+        def get(p):
+            return {"search": [{"id": "Q9", "label": "あつまれ どうぶつの森", "aliases": ["あつ森"]}, {"id": "Q8", "label": "どうぶつの森"}]}
+        self.assertEqual(library.find_wikidata({"name": "あつ森", "type": "game"}, get), "Q9")
+        self.assertIsNone(library.find_wikidata({"name": "まったく別", "type": "game"}, get))
+
+    def test_shop_items_with_number_use_it(self):
+        items = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["items"]
+        keys = {i["name"]: library.board_key(i) for i in items}
+        self.assertEqual(keys["あつ森"], "wd:Q64566657")
+        self.assertEqual(keys["漫威电影"], "wd:Q642878")
+        self.assertTrue(keys["猫用品"].startswith("n:"))
+
+
 if __name__ == "__main__":
     unittest.main()
