@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "c481d890cbec",
+ "edit_sig": "8d284f76b689",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -36,7 +36,18 @@
    "facts": [],
    "name": "BLEACH Mirrors High",
    "section": "游戏",
-   "stories": [],
+   "stories": [
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "Isane will be coming to bleach mirrors high and she honestly looks mad adorable with the new haircut. Absolutely love it",
+     "highlight": "Isane",
+     "image": "https://preview.redd.it/o3rvea14xwwh1.jpeg?width=320&crop=smart&auto=webp&s=94ccd87183d30d02423e67261abff5b08960a1e7",
+     "image_via": "条目自带",
+     "url": "https://www.reddit.com/r/bankaifolk/comments/1xc40wh/isane_will_be_coming_to_bleach_mirrors_high_and/",
+     "weight": "normal"
+    }
+   ],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -447,33 +458,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "ぐでたま",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "蛋黄哥大冒险多语言配音资源分享|蛋黄哥大冒险|Gudetama",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5SdU9zRlNISHQxd2VmOURmWm9pT0JxMTU2OE1iUnlxM0ZIODd5M2tqMlkyM0xCa2ZKcmZ2QnBwUjBwNEdLdXVzY245QUt0b2RqV1c1YlNSQnBlajdIVW45TldoSQ?oc=5"
-    }
-   ],
-   "section": "好物",
-   "stories": [],
-   "subtitle": "Gudetama",
-   "theme": {
-    "accent": "#885D0C",
-    "alt_accent": "#EEB444",
-    "alt_bg": "#211C12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F2E9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
    "facts": [
     {
@@ -757,8 +741,9 @@
      "date": "2026-10-19",
      "headline": "《刀塔2》XG杀入BLAST SLAM IX正赛，xNova、Topson纷纷晋级梦幻联赛S30",
      "highlight": "BLAST SLAM IX",
-     "image": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/OxjBdkbufkciFlg.png",
-     "image_via": "JSON-LD",
+     "image": null,
+     "source": "17173",
+     "source_icon": "https://www.google.com/s2/favicons?domain=news.17173.com&sz=128",
      "url": "http://news.17173.com/content/10192026/203042004.shtml",
      "weight": "normal"
     },
@@ -1092,6 +1077,31 @@
     "bg": "#FFF6F3",
     "fg": "#5A4049",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-21",
+    "headline": "【エグリプト】スライム×ぐでたまの評価とステータス",
+    "url": "https://gamewith.jp/eggrypto/article/show/502288"
+   },
+   "name": "ぐでたま",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "Gudetama",
+   "theme": {
+    "accent": "#885D0C",
+    "alt_accent": "#EEB444",
+    "alt_bg": "#211C12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   }
