@@ -611,6 +611,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "https://decider.com/wp-content/uploads/2026/06/From-season-4.jpg?quality=75&strip=all&w=1200": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/613204478298d113c8aad64fb354db5d.png": {
   "w": 2048,
   "h": 950,
@@ -2551,7 +2557,7 @@
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/catalina-sandino-moreno-and-hannah-cheramy-in-from-season-3.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/untitled2.jpg?w=1600&h=900&fit=crop": {
@@ -2643,7 +2649,7 @@
  "https://thoughtcatalog.com/wp-content/uploads/2026/10/from-s-first-10-minutes-tie-tabitha-s-norman-logic-to-jim-s-death-his-season-4-r.jpg?w=1536&h=768&crop=1": {
   "w": 1536,
   "h": 768,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=780,fit=cover,f=auto,quality=high,sharpen=2,g=face/21/2026/10/2026101522493126583_1.jpg": {

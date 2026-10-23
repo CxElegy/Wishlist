@@ -86,7 +86,8 @@
   "猫用品": 7,
   "滑雪": 6,
   "ILLIT": 5,
-  "あつ森": 5
+  "あつ森": 5,
+  "FROM": 2
  },
  "GTA 6": [
   {
@@ -700,6 +701,26 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "FROM: Netflix Just Officially Added One Of The Best Sci-Fi Horror Series Of The 2020s",
+   "highlight": "Netflix",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "FROM’s First 10 Minutes Tie Tabitha’s Norman Logic to Jim’s Death, His Season 4 Reappearance, and the Lake of Tears",
+   "highlight": "Season 4",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]

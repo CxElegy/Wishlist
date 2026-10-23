@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "89db79cda36f",
+ "edit_sig": "bfb94aadbbb7",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1044,24 +1044,29 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "Thought Catalog",
-     "title": "FROM’s First 10 Minutes Tie Tabitha’s Norman Logic to Jim’s Death, His Season 4 Reappearance, and the Lake of Tears",
-     "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQTUo1aTRHRl9GZDg2Snc4LVR1cUo3VUVMS2dKQXRmNHlDYWF4ZTZVM3VuM0ZnVHp1T292STV2Z051VmEtYmxhNlhsYmhjdU1PVEJUdEk1NUVVYVVBSWpsTDR1MnlqODBZMTV3SGxidlpLaFlIR2Zzcl8tRkc1LTN6X3lPUG9PVFkxOEVmemdtQ193QUtKRUZoMG5oSGtvT2tXeG9LbkM5bzR4OGI5V1VudG1KMkJEWmlxdjdPVFZfUkExUldXMWp6SnBnOUpRcmo2ak1BZldabDJsWmR1SFhRRUV2dVR4VzYwc0pBZmxrMWJiWjg?oc=5"
+     "headline": "FROM: Netflix Just Officially Added One Of The Best Sci-Fi Horror Series Of The 2020s",
+     "highlight": "Netflix",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/catalina-sandino-moreno-and-hannah-cheramy-in-from-season-3.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/netflix-best-sci-fi-horror-series-2020s-from-new-watch/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 2,
-     "source": "ScreenRant",
-     "title": "FROM: Netflix Just Officially Added One Of The Best Sci-Fi Horror Series Of The 2020s",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQYk1pNmcyNDl6aFA3X0ZtNncyaldyN1QxWWtqMHRPU0cwdzd3R3owRTQyZXFTUlFnVXczUVozX0J4YmpIZGhhS0VnTm4wbHRISHdzSFFhS0dkUUN0Rkd5R05qUnp6enlXOGV3dFdRNS1GQkRuazhtLXNYSEdvb09pbUZNZS0?oc=5"
+     "headline": "FROM’s First 10 Minutes Tie Tabitha’s Norman Logic to Jim’s Death, His Season 4 Reappearance, and the Lake of Tears",
+     "highlight": "Season 4",
+     "image": "https://thoughtcatalog.com/wp-content/uploads/2026/10/from-s-first-10-minutes-tie-tabitha-s-norman-logic-to-jim-s-death-his-season-4-r.jpg?w=1536&h=768&crop=1",
+     "image_via": "og:image",
+     "url": "https://thoughtcatalog.com/nadia-santiago/2026/10/froms-first-10-minutes-tie-tabithas-norman-logic-to-jims-death-his-season-4-reappearance-and-the-lake-of-tears/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
