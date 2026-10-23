@@ -175,6 +175,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/08/03/doomsday-doom-1785773171623.jpg?width=1280&format=jpg&auto=webp&quality=80": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-23"
+ },
  "https://assets-prd.ignimgs.com/2026/10/07/gta-6-1791374410439.jpg?&format=jpg&auto=webp&quality=80": {
   "w": 3840,
   "h": 2160,
@@ -466,6 +472,12 @@
   "target": 720,
   "v": 3
  },
+ "https://comicbookmovie.com/images/articles/banners/secret-wars-writer-jonathan-hickman-reveals-hes-consulted-on-avengers-doomsdays-script-ab230572.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-23"
+ },
  "https://comicbookmovie.com/images/articles/banners/the-mandalorian-and-grogu-return-to-nevarros-lava-tubes-in-a-spooky-new-comic-now-on-shelves-ab230573.jpg": {
   "w": 1500,
   "h": 844,
@@ -729,6 +741,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/ac92717968d574d2013e7a9e5a68c79d.webp?fit=1200%2C800&ssl=1": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-23"
+ },
  "https://i0.wp.com/knightedgemedia.com/wp-content/uploads/2026/08/marvel-studios-ghost-rider-xmen-black-panther-llcs-banner.jpg?fit=1920%2C820&ssl=1": {
   "w": 1920,
   "h": 820,
@@ -906,6 +924,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/IMG_5967.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-23"
+ },
  "https://images.thedirect.com/media/article_full/avengers-doomsday-thor-captain-america-mcu.jpg": {
   "w": 1280,
   "h": 720,
@@ -1073,12 +1097,6 @@
   "w": 640,
   "h": 360,
   "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fQLFL.img": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
@@ -2310,6 +2328,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/guardians-of-the-galaxy-3.jpg?w=1600&h=900&fit=crop": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-23"
+ },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2765,12 +2789,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/Avengers-Doomsdays-New-Trailer-Release-Date-May-Have-Just-Been-Revealed-Its-Soon.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/MixCollage-16-Oct-2026-09-52-AM-7941.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -2994,6 +3012,12 @@
   "h": 527,
   "target": 720,
   "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/08/inde.jpg?resize=1200,630": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-23"
  },
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,

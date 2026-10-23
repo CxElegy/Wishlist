@@ -1,0 +1,76 @@
+{
+ "漫威电影": [
+  {
+   "headline": "New Avengers: Doomsday Preview Will Release Tomorrow During the World Series",
+   "highlight": "Preview Will Release Tomorrow",
+   "blurb": "A brand new preview for Avengers: Doomsday will debut during Game 1 of the MLB World Series on October 23.",
+   "weight": "hero",
+   "refs": [
+    35,
+    44,
+    22,
+    27,
+    37,
+    30,
+    41,
+    24,
+    21
+   ],
+   "event": {
+    "date": "2026-10-23",
+    "label": "新映像公開"
+   },
+   "image": "https://assets-prd.ignimgs.com/2026/08/03/doomsday-doom-1785773171623.jpg?width=1280&format=jpg&auto=webp&quality=80"
+  },
+  {
+   "headline": "Secret Wars Writer Jonathan Hickman Reveals He's Consulted On Avengers: Doomsday's Script",
+   "highlight": "Jonathan Hickman",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12,
+    1,
+    15,
+    46
+   ]
+  },
+  {
+   "headline": "Star-Lord's MCU Return Officially Confirmed By Chris Pratt",
+   "highlight": "Officially Confirmed",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    43,
+    34,
+    29,
+    16,
+    3,
+    45
+   ]
+  },
+  {
+   "headline": "Avengers: Doomsday Will Release On IMAX After All - But There's A Catch",
+   "highlight": "IMAX",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    58
+   ]
+  },
+  {
+   "headline": "X-Men’s Inde Navarrette Shares Exciting New Details About MCU Movie Rogue Role",
+   "highlight": "Rogue",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    32,
+    36,
+    8
+   ]
+  }
+ ],
+ "_covered": {
+  "漫威电影": 59
+ }
+}
