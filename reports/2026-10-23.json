@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "945068bd0c24",
+ "edit_sig": "401405528131",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -131,94 +131,39 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "PlaywithGames開発のMMORPG「SEAL M2」が10月22日に国内で正式サービス開始。事前登録は130万人を集めた。",
      "date": "2026-10-21",
-     "n": 1,
-     "source": "GameMeca",
-     "title": "プレウィドコリアの「シールM2」、リリース当日にGoogle・Appleで人気1位を記録",
-     "url": "https://www.gamemeca.com/ja/view.php?gid=1782237"
+     "headline": "PlaywithKorea、「SEAL M2」を国内正式リリース",
+     "highlight": "国内正式リリース",
+     "image": "https://www.bing.com/th?id=ONUT.Jof39WGqWxJ_UX1RJVnt1g&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.digitaltoday.co.kr/jp/view/118082/playwithkorea-launches-seal-m2-in-south-korea",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-22",
-     "n": 2,
-     "source": "게임와이",
-     "title": "일랜시아·씰·다크에덴…토종 IP MMORPG 3종 동시 출격",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9PU0dMcTRCcFpVcnd3QkVWZ0twZXNwV3NiT1ZSSzZGaVZhQXkyMnkzMmZvQ2tyalZEYlo4VjZqWFFGY2lVX2dyQVVVNGk0alVYTUJLU1hmY3BDcklxY3hzXzFzdFZibUNBQmfSAWpBVV95cUxPT1NHTHE0QnBaVXJ3d0JFVmdLcGVzcFdzYk9WUks2RmlWYUF5MjJ5MzJmb0NrcmpWRGJaOFY2alhRRmNpVV9nckFVVTRpNGpVWE1CS1NYZmNwQ3JJcWN4c18xc3RWYm1DQUJn?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 3,
-     "source": "DigitalToday",
-     "title": "PlaywithKorea、「SEAL M2」を国内正式リリース",
-     "url": "https://www.digitaltoday.co.kr/jp/view/118082/playwithkorea-launches-seal-m2-in-south-korea"
+     "headline": "誰でも参加可能、「ラグナロクオンライン プラス」テスト開始",
+     "highlight": "テスト開始",
+     "image": "https://cdn.gamemeca.com/gmdata/0001/782/216/gm678618_thumb___PLUS__.webp",
+     "image_via": "og:image",
+     "url": "https://www.gamemeca.com/ja/view.php?gid=1782216",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-21",
-     "n": 4,
-     "source": "GameMeca",
-     "title": "誰でも参加可能、「ラグナロクオンライン プラス」テスト開始",
-     "url": "https://www.gamemeca.com/ja/view.php?gid=1782216"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "PNN",
-     "title": "넥써쓰, 레포르게임즈 MMORPG '아스텔리아2' 사전예약",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5adEVFbTc3NGZuUTkwUE90RXJLcGlWQXhmVGFVZFpMY196SElia0RxcUxPOHdaRGZ1Yl80OERhblpJWEdDaXpqcFE2U1lsS25iVFdiaE42T1VnaE1wUGFURENOYmtTYjBw?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 6,
-     "source": "피앤피뉴스",
-     "title": "모바일 대표 항해 MMORPG ‘대항해의길’, 9주년 업데이트 ‘자유와 기회의 땅 북미’ 오픈",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1WOWhZcXFLeHdhd0dnaUZ6eUkyd2VraUVJR05HU29BWDV0Vm4yR1NQQnNNaHY3dTBoZktjSmNnVUxFQ200d3M3OWdzcTY3MjVMSGZHUzBR?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 7,
-     "source": "iza（イザ！）",
-     "title": "『Icarus Online』本日よりグローバル正式サービス開始！",
-     "url": "https://www.iza.ne.jp/pressrelease/prtimes/3NPI26QGINPDLPA26QZGOQ4EDY/"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 8,
-     "source": "Pocket Gamer",
-     "title": "Broken Ranks is a gritty MMORPG that plunges you into turn-based combat with 10 seconds to outsmart your enemy, now available on Android",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9tWGlNLXo4Qkt0d1BSbFd6M0NVUHhHcGlSVkVHSVVGYjlyV2RMbUZzdHhaaS1oazQ4cms3UzJOTmJGdjYwTmQ2N3JuMkQyVi1ZY21jYlBpYld0azBydmxTRjV3b1NsRzZlZGVqbA?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 9,
-     "source": "UploadVR",
-     "title": "VR MMORPG Zenith: Nexus' Servers Will Shut Down In December",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNOU4wV292amttaVI4MG5WY0JUMGNpSDBxaWk5OE9mOE5mdXBtdF8tUXUxUG5UTWJpX1VkYjctdk1WR3UweHREejZiQ2c1TjVfME1RV0ZHZDBTRVJtQXpXaXl6X2dkOWlOa2RnYk0wTXNzdGx3NGtJR2praG5EUUl2YkRLcVFuSm9uR2dB?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 10,
-     "source": "Massively Overpowered",
-     "title": "VR MMO Zenith confirms its shutdown date of December 18 after over two years of maintenance mode",
-     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPdTJFYmlFTHRrbUh4VVlCdk55dXRhUU1oOU5CZ0pULVJyb1RZZzVzNnNfb2o3OUxVZXhuZGJid3pDcFhCdkxDTWp6bVBBVGFVZjVjYmtTWkJBT1pCVzltSWFmTlhLTW5YOHpremE1TlpFemdIXzBkby1HRk1pWEJRb3lBWTVad2ZGN3p6UkZtU01PdjQwWktKZFlzVFRpTzc2d1pmcGx4WDlycHJRNjZYZldrR25iMENWdXJHLURybG4yYnBsOGlXVGdzR2s?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 11,
-     "source": "Massively Overpowered",
-     "title": "BioWare’s Neverwinter Nights continues to host ‘mini MMOs’ 24 years after its release",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNWjBaa2ZOZ3lRSFdzRno3cHp4ZTFlWHgxdV9Xa2JQQ0x1SG9ybEE2Mk5IMXJZVVNVeW9QamJtblJvR1BFVndCY3lkd0JIQXd0RC1WR3BPUHZqSVg5dURqbU5EUnFHYXhTSmd0YzdaV0h2TlVoak4tWVVlek5zV0RVbVROS090RWVxNTlDYV9ERXlwS2g2ZXNjdDI1WTdKQ20wSHljS0c0aUx1d0JhcDhoRzZOM3ItOXJWaGc?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 12,
-     "source": "商傳媒",
-     "title": "VR MMORPG《Zenith: Nexus》年底關服 開發者之路引市場省思",
-     "url": "https://news.google.com/rss/articles/CBMiygJBVV95cUxQNTRXb0lqWUZYcDVkbm5odmtSengzUXFqNnVtY003UnYzX2hua3VPaW1ISldlTlFCTzVCNkc5cUJxS2duT1MzWk95MzVoeWxEZUpXUHdyd2NhZ05jS3hhZnA1NTlkQXlHWE5wNVl5UExqVmJzYkFVaTBIbERLMDdTd3E2bUloNWZyeGZtOVZsYlFFeGdueGwwcXpHeko1RnB5ZFNzdmQ2OFoyWWZMdEVQZ3FMamk3bUZpMEQ3M0I4Vkt4LXVDUGVSSWtsc3lNbkVjTVAza1BxRnZDY0RNejh5M1dySldMX0RldkY4WTl3Y1JRbjlBdTQzN0pnczJJU2ZVOXR1TmVvTHpBWC15VmlIUjFfOVJuN0s0VDl2WkpHcEZmR2hIQmF3cGhGbHc0Uk9adVVNWnhSZnRLTHBJMW5xX1AzU3FTYmFkWFE?oc=5"
+     "headline": "『Icarus Online』本日よりグローバル正式サービス開始！",
+     "highlight": "グローバル正式サービス開始",
+     "image": "https://www.bing.com/th?id=ONUT.V6fXMfHmN2mNSuIipPaARg&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://www.iza.ne.jp/pressrelease/prtimes/3NPI26QGINPDLPA26QZGOQ4EDY/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",

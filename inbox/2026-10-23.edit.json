@@ -77,7 +77,8 @@
   "Astrae Oratio": 20,
   "周杰伦": 17,
   "三星手机": 15,
-  "日本顶级网球赛事": 14
+  "日本顶级网球赛事": 14,
+  "MMORPG 新作": 12
  },
  "GTA 6": [
   {
@@ -361,6 +362,38 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "PlaywithKorea、「SEAL M2」を国内正式リリース",
+   "highlight": "国内正式リリース",
+   "blurb": "PlaywithGames開発のMMORPG「SEAL M2」が10月22日に国内で正式サービス開始。事前登録は130万人を集めた。",
+   "weight": "lead",
+   "refs": [
+    3,
+    1,
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.Jof39WGqWxJ_UX1RJVnt1g&pid=News&w=1200"
+  },
+  {
+   "headline": "誰でも参加可能、「ラグナロクオンライン プラス」テスト開始",
+   "highlight": "テスト開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "『Icarus Online』本日よりグローバル正式サービス開始！",
+   "highlight": "グローバル正式サービス開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ]

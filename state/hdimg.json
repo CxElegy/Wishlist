@@ -315,6 +315,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.gamemeca.com/gmdata/0001/782/216/gm678618_thumb___PLUS__.webp": {
+  "w": 600,
+  "h": 335,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/gmdb/g001/51/48/gm399235_260814-risell-tt3.jpg": {
   "w": 466,
   "h": 606,
@@ -2688,6 +2694,13 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Jof39WGqWxJ_UX1RJVnt1g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.419
+ },
  "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2712,6 +2725,12 @@
    480
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.V6fXMfHmN2mNSuIipPaARg&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.WzHU2NsEMmZgg0jQWg4X0Q&pid=News&w=1200": {
   "w": 700,
