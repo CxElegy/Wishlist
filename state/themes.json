@@ -170,6 +170,16 @@
   "split": false
  },
  "hero|http://wx1.sinaimg.cn/middle/d2cfaf37gy1iib6xxk8xbj20xi0bmgmw.jpg": null,
+ "hero|https://assets-prd.ignimgs.com/2026/08/03/doomsday-doom-1785773171623.jpg?width=1280&format=jpg&auto=webp&quality=80": {
+  "accent": "#C9A569",
+  "alt_accent": "#876730",
+  "alt_bg": "#E7F3F1",
+  "alt_fg": "#1A1C22",
+  "bg": "#122622",
+  "fg": "#F2EEE6",
+  "font": "serif",
+  "split": false
+ },
  "hero|https://assets.mmoexp.com/images/202609/d1bc0f44ac2c34739074a26025e26f7fe194850c.png": {
   "accent": "#CF8E63",
   "alt_accent": "#8C522B",
