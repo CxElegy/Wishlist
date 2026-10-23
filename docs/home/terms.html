@@ -1442,7 +1442,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function board(b){
       if(b.state==='ok')return '<div class="wl-cards">'+(b.stories||[]).map(function(st){return card(story2card(st,''));}).join('')+'<\/div>';
       if(b.state==='none')return '<p>まだ記事が見つかっていません。新しい記事が出たら、ここに並びます。<\/p>';
-      if(b.state==='limit')return '<p>追いかけられるのは 30 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
+      if(b.state==='limit')return '<p>追いかけられるのは 100 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
       if(b.state==='err')return '<p>記事を読み込めませんでした。少し時間をおいて、ページを開き直してください。<\/p>';
       return '<p><i class="dot"><\/i>記事を集めています。集まりしだい、ここに並びます（数時間かかることがあります）。<\/p>';
     }

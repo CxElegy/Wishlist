@@ -1446,7 +1446,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function board(b){
       if(b.state==='ok')return '<div class="wl-cards">'+(b.stories||[]).map(function(st){return card(story2card(st,''));}).join('')+'<\/div>';
       if(b.state==='none')return '<p>まだ記事が見つかっていません。新しい記事が出たら、ここに並びます。<\/p>';
-      if(b.state==='limit')return '<p>追いかけられるのは 30 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
+      if(b.state==='limit')return '<p>追いかけられるのは 100 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
       if(b.state==='err')return '<p>記事を読み込めませんでした。少し時間をおいて、ページを開き直してください。<\/p>';
       return '<p><i class="dot"><\/i>記事を集めています。集まりしだい、ここに並びます（数時間かかることがあります）。<\/p>';
     }
@@ -1604,7 +1604,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.24 08:18</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.24 08:22</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>

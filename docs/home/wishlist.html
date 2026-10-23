@@ -851,7 +851,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="7c67cc838e41"><style>
+<meta name="wl-ver" data-page="wishlist" content="5b86a766310f"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1332,7 +1332,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function board(b){
       if(b.state==='ok')return '<div class="wl-cards">'+(b.stories||[]).map(function(st){return card(story2card(st,''));}).join('')+'<\/div>';
       if(b.state==='none')return '<p>まだ記事が見つかっていません。新しい記事が出たら、ここに並びます。<\/p>';
-      if(b.state==='limit')return '<p>追いかけられるのは 30 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
+      if(b.state==='limit')return '<p>追いかけられるのは 100 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
       if(b.state==='err')return '<p>記事を読み込めませんでした。少し時間をおいて、ページを開き直してください。<\/p>';
       return '<p><i class="dot"><\/i>記事を集めています。集まりしだい、ここに並びます（数時間かかることがあります）。<\/p>';
     }
@@ -1490,7 +1490,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.24 08:18</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.24 08:22</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

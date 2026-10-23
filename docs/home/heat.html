@@ -967,7 +967,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="7eee5451c5c8"><style>
+<meta name="wl-ver" data-page="heat" content="c228c4d7f5d9"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1448,7 +1448,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function board(b){
       if(b.state==='ok')return '<div class="wl-cards">'+(b.stories||[]).map(function(st){return card(story2card(st,''));}).join('')+'<\/div>';
       if(b.state==='none')return '<p>まだ記事が見つかっていません。新しい記事が出たら、ここに並びます。<\/p>';
-      if(b.state==='limit')return '<p>追いかけられるのは 30 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
+      if(b.state==='limit')return '<p>追いかけられるのは 100 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
       if(b.state==='err')return '<p>記事を読み込めませんでした。少し時間をおいて、ページを開き直してください。<\/p>';
       return '<p><i class="dot"><\/i>記事を集めています。集まりしだい、ここに並びます（数時間かかることがあります）。<\/p>';
     }
@@ -1607,7 +1607,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.24</b></div>
-<div class="meta"><small>更新</small><b>10.24 08:18</b></div></div>
+<div class="meta"><small>更新</small><b>10.24 08:22</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
