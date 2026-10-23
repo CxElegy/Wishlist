@@ -45,6 +45,17 @@ class Wikidata(unittest.TestCase):
     def test_topic_without_wiki_has_no_number(self):
         self.assertIsNone(library.find_wikidata({"name": "猫用品", "type": "category"}, lambda p: self.fail("引かない")))
 
+    def test_find_wikidata_brand_category(self):
+        def get(p):
+            return {"search": [{"id": "Q37158", "label": "Starbucks", "aliases": ["スターバックス"]},
+                               {"id": "Q5", "label": "gelato pique"}]}
+        brand = {"type": "category", "subs": {"owner": "ブランド"}}
+        self.assertEqual(library.find_wikidata({**brand, "name": "gelato pique", "keywords": ["ジェラピケ"]}, get), "Q5")
+        # ブランドの品目（マグ）は検索語の「スターバックス」で本体に当たらない
+        self.assertIsNone(library.find_wikidata({**brand, "name": "星巴克马克杯", "keywords": ["スターバックス"]}, get))
+        # 項目がない（gelato pique は 2026-10-23 に ja/en/zh・全文検索とも 0 件）→ 名前のまま
+        self.assertIsNone(library.find_wikidata({**brand, "name": "gelato pique"}, lambda p: {"search": []}))
+
     def test_search_needs_exact_name(self):
         def get(p):
             return {"search": [{"id": "Q9", "label": "あつまれ どうぶつの森", "aliases": ["あつ森"]}, {"id": "Q8", "label": "どうぶつの森"}]}

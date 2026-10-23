@@ -483,7 +483,7 @@ PROCESSES = [
             {"id": "lb1", "kind": "step", "lane": "actions", "title": "items.yaml を読む", "text": "店長の版面 1 つずつ"},
             {"id": "lb2", "kind": "step", "lane": "actions", "title": "同じものかどうかの印", "text": "Wikidata の番号（wd:Q…）／なければ名前をそろえたもの（全角半角・大小・空白・記号）"},
             {"id": "lb2w", "kind": "step", "lane": "ext", "title": "Wikidata の番号を規則で決める（library.find_wikidata、手で流して items.yaml へ）",
-             "text": "Wikipedia の記事名 → 項目のうち名前・検索語が一番多く入るもの／記事名がなければ検索して名前・別名が同じものだけ／題材（category）は番号なし。429 は 5・10・15 秒待って 4 回まで"},
+             "text": "Wikipedia の記事名 → 項目のうち名前・検索語が一番多く入るもの／記事名がなければ検索して名前・別名が同じものだけ／題材（category）は番号なし（小分類 owner がブランドのものは、版面の名前と同じ名前・別名の項目だけ）。429 は 5・10・15 秒待って 4 回まで"},
             {"id": "lb2b", "kind": "step", "lane": "web", "title": "名前の印の行を番号の印に書き換える", "uses": ["supabase"], "text": "n:… → wd:…（行を増やさない）"},
             {"id": "lb3", "kind": "step", "lane": "actions", "title": "共有の設定と人ごとの置き方に分ける", "text": "板块・小分類・乗換・篇幅・優先 = 人ごと（follows）、ほか = 版面（boards.config）"},
             {"id": "lb4", "kind": "store", "lane": "web", "title": "boards・follows（test1）に上書き", "uses": ["supabase"], "text": "何度流しても同じ。追いかけている人数はトリガーで数える"},
