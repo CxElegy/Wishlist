@@ -3841,7 +3841,7 @@ html[data-mine="2"] .vt,html[data-mine="2"] .vote,html[data-mine="2"] [data-vote
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
 @media (max-width:560px){html[data-mine="2"] body{padding-bottom:72px}.wl-cards>a.np{display:flex}}
-.wl-mybar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 18px;padding:12px 16px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow);font:700 14px/1.5 var(--font-sans);color:var(--ink)}
+.wl-mybar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 14px;padding:6px 2px;border-bottom:2px solid var(--ink);font:700 13px/1.5 var(--font-sans);color:var(--ink)}   /* 箱にしない：店長のページの上に 1 本の帯だけ */
 .wl-mybar b{font:900 18px/1.3 var(--font-sans)}.wl-mybar a{color:var(--ink)}.wl-mybar small{flex-basis:100%;font-weight:500;opacity:.8}
 .wl-mybar a.add{padding:4px 12px;background:var(--gold);border:2px solid var(--ink);text-decoration:none}.wl-mybar small.ok{opacity:1;color:var(--ink);background:var(--paper);padding:4px 8px}
 .wl-wait{margin:0 0 18px;padding:16px 18px;background:var(--card);border:3px solid var(--ink);border-top:8px solid var(--sc);box-shadow:var(--shadow);color:var(--ink);font:500 14px/1.6 var(--font-sans)}
@@ -4122,7 +4122,13 @@ AUTH_JS = r"""
     document.querySelectorAll('section.sec[data-k]').forEach(function(s){var on=hit(s.dataset.k,picks);s.classList.toggle('wl-off',!on);if(on)got[norm(s.dataset.k)]=1;});
     document.querySelectorAll('.pill[data-for]:not(.wl-upill),.pill.xfer').forEach(function(a){a.classList.toggle('wl-off',!a.dataset.for||!hit(a.dataset.for,picks));});
     document.querySelectorAll('.pill[data-x]').forEach(function(a){a.classList.toggle('wl-off',!hit(a.dataset.x,picks));});   // シリーズの枝も、出ている版面の分だけ
-    ['front','picks'].forEach(function(id){var x=document.getElementById(id);if(x)x.classList.add('wl-off');});
+    // トップのポスターと「気になるかも？」は店長と同じ作りのまま、中身を自分の版面のものに絞る（2026-10-23，用户定的：お客さまのページも店長と同じ枠組み。箱だけの画面にしない）
+    var fr=document.getElementById('front'), keepFront=false;
+    if(fr){fr.querySelectorAll('article[data-k]').forEach(function(a){a.classList.toggle('wl-off',!hit(a.dataset.k,picks));});
+      var tp=fr.querySelector('article.top');keepFront=!!tp&&hit(tp.dataset.k,picks);fr.classList.toggle('wl-off',!keepFront);}
+    var pkS=document.getElementById('picks'), keepPicks=false;
+    if(pkS){pkS.querySelectorAll('.pk[data-w]').forEach(function(c){var on=hit(c.dataset.w,picks);c.classList.toggle('wl-off',!on);if(on)keepPicks=true;});
+      pkS.classList.toggle('wl-off',!keepPicks);}
     document.querySelectorAll('.nmore,.nsum').forEach(function(x){x.classList.add('wl-off');});
     var wait=picks.filter(function(x){return !Object.keys(got).some(function(k){return shopHit(k,x.name);});});
     var name=(p&&p.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
@@ -4142,7 +4148,7 @@ AUTH_JS = r"""
     var mineB=R._wlmb||{}, bad=false;
     function draw(){
       document.querySelectorAll('.wl-wait,.wl-today,.wl-maybe,.wl-uhead,.wl-upill,.wl-uslot,.wl-utab,.wl-utg,.wl-uchip,.wl-ulab').forEach(function(x){x.remove();});
-      var today=document.createElement('section');today.className='wl-today';today.id='wl-today';bar.after(today);
+      var today=document.createElement('section');today.className='wl-today';today.id='wl-today';if(keepFront)today.hidden=true;bar.after(today);
       // 本文も店長のページと同じ「板块 → 小分類」の順に：自分の版面は同じ板块の店長の版面のあと。その板块に店長の版面がなければ、板块の順の位置に見出しを立てて
       function shown(){return [].slice.call(issue.querySelectorAll(':scope>[data-k]:not(.wl-off)')).filter(function(v){return v.id!=='front'&&v.id!=='picks';});}
       function secEl(v){return v.dataset.sec||secOf[norm(v.dataset.k)];}
@@ -4165,8 +4171,8 @@ AUTH_JS = r"""
           if(nx){issue.insertBefore(hd,nx);hd.after(s);}else{issue.appendChild(hd);issue.appendChild(s);}
         }
         last[sec]=s;pill(x.name,sec,s.id,b);});
-      todayBox(today);
-      var mb=maybeBox();if(mb)issue.appendChild(mb);
+      if(!keepFront) todayBox(today);   // 店長と同じポスターが出ているときは箱の「今日の主なニュース」は出さない
+      var mb=keepPicks?null:maybeBox();if(mb)issue.appendChild(mb);
       tidyNav();
       document.dispatchEvent(new Event('wl-nav'));
     }
