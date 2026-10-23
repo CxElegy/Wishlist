@@ -301,7 +301,7 @@
  "https://cdn-origin.cool-style.com.tw/cool/2026/10/wnkh.webp": {
   "w": 1213,
   "h": 637,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.antaranews.com/cache/1200x800/2022/12/10/IMG_8041.jpg": {
@@ -2211,6 +2211,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://pbs.twimg.com/media/HVENna9a8AA60zI?format=webp&name=large": {
+  "w": 1072,
+  "h": 2048,
+  "target": 720,
   "v": 3
  },
  "https://photoresources.wtatennis.com/wta/photo/2026/10/15/edb3c538-4c4b-40f6-95c0-4f844a3bba02/GettyImages-2299679368.jpg": {

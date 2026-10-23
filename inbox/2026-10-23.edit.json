@@ -87,7 +87,8 @@
   "滑雪": 6,
   "ILLIT": 5,
   "あつ森": 5,
-  "FROM": 2
+  "FROM": 2,
+  "Vaundy": 2
  },
  "GTA 6": [
   {
@@ -721,6 +722,17 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy 是誰？念設計、也用設計師的方法寫歌！9 件事認識這位 26 歲音樂鬼才",
+   "highlight": "9 件事",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]
