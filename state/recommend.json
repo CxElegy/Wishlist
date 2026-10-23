@@ -45,7 +45,6 @@
   "https://news.nicovideo.jp/watch/nw19902843?news_ref=search_search": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/f5568ac1e1404c49bc86e5af8f7f59d3.jpg",
   "https://news.yahoo.co.jp/articles/3d647939ee416b6a5913d2a247b999aef59886bf/images/000": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnUIo5aLx7VGhUM94AgYAmue4y3L4IVYWvzCYQ05nGaoziDfQXA0JPcenfBsdbXlpRUiJFLk7bIz7CW0_xuWIjh4hftBqkzW4vmUup2yCDqtT",
   "https://nlab.itmedia.co.jp/research/articles/4062618/amp/": "https://www.bing.com/th?id=ONUT.iAT7IhEzZ5ZerNWSk8uOWg&pid=News&w=1200",
-  "https://note.com/enjoy60s/n/n23eaab983b40?hl=ko": "https://www.bing.com/th?id=ONUT.9rMjI0ysLG5Xhjv7loJzeg&pid=News&w=1200",
   "https://note.com/yshiba110/n/n05e56ea70f86?hl=en": "https://www.bing.com/th?id=ONUT.hfTI2n0xkMEeI_4m4kjvZA&pid=News&w=1200",
   "https://paradepets.com/cats/black-cat-breeds-not-spooky": "https://www.bing.com/th?id=ONUT.DCl7ypaBdA3BGL73kDGUKQ&pid=News&w=1200",
   "https://prtimes.jp/main/html/rd/p/000001247.000012048.html": "https://prcdn.freetls.fastly.net/release_image/12048/1247/12048-1247-64977d38e7992af398fbe6cd29e05b7d-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
@@ -85,6 +84,7 @@
   "https://www.msn.com/ko-kr/%EA%B8%B0%EC%88%A0/%EC%86%8C%EB%B9%84%EC%9E%90-%EC%A0%84%EC%9E%90-%EA%B8%B0%EA%B8%B0/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%ED%94%84%EB%A1%9C-%EB%B0%B0%ED%84%B0%EB%A6%AC-%EA%B5%AD%EB%82%B4-%EC%9D%B8%EC%A6%9D-%ED%86%B5%EA%B3%BC-%EC%9A%A9%EB%9F%89-%EC%BB%A4%EC%A7%80%EB%82%98/ar-AA2fSKQF": "https://www.bing.com/th?id=ONUT.VoKlDlLJl_po96w4ujJbzA&pid=News&w=800",
   "https://www.msn.com/ko-kr/entertainment/music/%EC%B6%9C%EC%8B%9C-%ED%9B%84-%ED%94%8C%EB%A0%88%EC%9D%B4%ED%95%98%EA%B2%A0%EB%8B%A4-%EC%97%94%EC%94%A8-%EC%95%84%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%97%90-%EC%98%A4%EB%9D%BC%ED%8B%B0%EC%98%A4-%EA%B8%8D%EC%A0%95%EC%A0%81-%EB%B0%98%EC%9D%91-%ED%99%95%EC%9D%B8/ar-AA2fNRmb": "https://www.bing.com/th?id=ONUT.ezl7joe28jZC6CM1E06H5Q&pid=News&w=1200",
   "https://www.newspim.com/news/view/20261022001192": "https://www.bing.com/th?id=ONUT.f29OOTqAWYfBiobwsK0dXQ&pid=News&w=400",
+  "https://www.nintendo.com/jp/topics/article/616089e7-e930-4e17-8d9d-a98be60ff94f": "https://assets.topics.apps-jp.nintendo.com/image/2021/09/08042244878749/820/32766_820_461.jpg",
   "https://www.roomie.tw/posts/170744": "https://media.loom-app.com/roomie/dist/images/2026/10/IMG_2560-scaled.jpg?w=1200",
   "https://www.sina.cn/gc/article/nivwyrf6445687.html": null,
   "https://www.sina.cn/news/detail/5356470558264990.html": "http://wx2.sinaimg.cn/middle/0081H5TQgy1ii9z6u34uaj315a1icqv5.jpg",
@@ -1171,6 +1171,27 @@
   },
   {
    "batch": 3,
+   "because": "あつ森",
+   "date": "2026-10-22",
+   "hits": [],
+   "image": "https://assets.topics.apps-jp.nintendo.com/image/2021/09/08042244878749/820/32766_820_461.jpg",
+   "kind": "board",
+   "liked": "【 あつ森 】 案内所横に作るパン屋さん 🍞 絵本のような島 【 #島クリエイト / #ぷにLIVE 】 Yulia Putintseva (9GFUvLqUCC)",
+   "score": 8,
+   "source": "Nintendo",
+   "taste": [
+    [
+     "作品:あつ森",
+     4
+    ]
+   ],
+   "title": "プーマと『あつまれ どうぶつの森』がコラボした新コレクション、発売中。",
+   "url": "https://www.nintendo.com/jp/topics/article/616089e7-e930-4e17-8d9d-a98be60ff94f",
+   "words": [],
+   "work": "あつ森"
+  },
+  {
+   "batch": 3,
    "because": "チェーンソーマン",
    "date": "2026-10-22",
    "hits": [],
@@ -1231,27 +1252,6 @@
    "url": "https://www.msn.com/ko-kr/entertainment/music/%EC%B6%9C%EC%8B%9C-%ED%9B%84-%ED%94%8C%EB%A0%88%EC%9D%B4%ED%95%98%EA%B2%A0%EB%8B%A4-%EC%97%94%EC%94%A8-%EC%95%84%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%97%90-%EC%98%A4%EB%9D%BC%ED%8B%B0%EC%98%A4-%EA%B8%8D%EC%A0%95%EC%A0%81-%EB%B0%98%EC%9D%91-%ED%99%95%EC%9D%B8/ar-AA2fNRmb",
    "words": [],
    "work": "Astrae Oratio"
-  },
-  {
-   "batch": 3,
-   "because": "あつ森",
-   "date": "2026-10-22",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.9rMjI0ysLG5Xhjv7loJzeg&pid=News&w=1200",
-   "kind": "board",
-   "liked": "【 あつ森 】 案内所横に作るパン屋さん 🍞 絵本のような島 【 #島クリエイト / #ぷにLIVE 】 Yulia Putintseva (9GFUvLqUCC)",
-   "score": 8,
-   "source": "note",
-   "taste": [
-    [
-     "作品:あつ森",
-     4
-    ]
-   ],
-   "title": "집은 정리했는데, 섬에서는 욕심을 부리며 살고 있습니다.",
-   "url": "https://note.com/enjoy60s/n/n23eaab983b40?hl=ko",
-   "words": [],
-   "work": "あつ森"
   },
   {
    "batch": 4,
