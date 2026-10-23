@@ -1,0 +1,57 @@
+export const meta = {
+  name: 'harness-forever',
+  description: '止まらないハーネスのループ：BACKLOG.md の次の段を作る→確かめる→直す→合併→本番で確かめる、一覧が空なら計画の係が次の段を足して続ける',
+  whenToUse: 'ウォッチリスト通信のハーネスを回すとき（HARNESS.md）。1 回の起動で最大 args.max 段（既定 6）、終わったら会話か定時タスクが次の回を起こす',
+  phases: [
+    { title: 'Plan', detail: '一覧が空・全部あなた待ちなら、点検して次の段を足す' },
+    { title: 'Step', detail: '1 段を作って PR・合併・本番で確かめる' },
+    { title: 'Check', detail: '別の目で本番と設計書に照らす' },
+    { title: 'Fix', detail: '落ちたら直す（2 回まで）' },
+  ],
+}
+
+const MAX = (args && args.max) || 6
+const SP = (args && args.scratch) || '/tmp/harness'
+const COMMON = `リポジトリ /home/user/Wishlist（CxElegy/Wishlist）。最初に HARNESS.md・BACKLOG.md・CLAUDE.md・WORKING.md を main の最新で読み、その決まりで動く。
+作業は自分専用の worktree：\`git -C /home/user/Wishlist fetch -q origin main && git -C /home/user/Wishlist worktree add -f ${SP}/wt/{ID} -B harness/{ID} origin/main\`。メインの作業ツリーには書かない。一時ファイルは ${SP}/tmp/。
+GitHub は mcp__github__ のツール（ToolSearch で読み込む）、Supabase は mcp__Supabase__（プロジェクト bzokpnbcjscbcehdxtjq。読む・足すだけ。DROP・DELETE・表の形を変える文はしない）。
+PR は push → mcp__github__create_pull_request（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は get_check_runs で見て、走っている間は手元のテストや画面の点検など別の作業をする（ただ待たない）。緑なら squash で合併、赤なら直して push。
+scripts/*.py か workflow を変えたら scripts/processes.py も（check_arch）。\`python -m unittest discover -s tests\` を全部通す。コミットの最後に
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+合併したら本番で確かめ（Actions の結果・データベースの行・https://cxelegy.github.io/Wishlist/home/ を 1400/390px）、BACKLOG.md のその段を [x]（PR の網址・日付）にし、気づいた次の段を足して合併する（進み具合は progress.yml が Discord に送る）。
+設計書にない新しい決めごと・本番のデータベースの形を変える／消すことが要るときは、作らずに BACKLOG.md を [?]（聞きたいことを木の形で、案ごとに良い点・困る点とおすすめ）にして status=asked で返す。答えが設計書から決まることは聞かない。`
+const RESULT = { type: 'object', properties: {
+  status: { type: 'string', enum: ['done', 'asked', 'failed', 'none'] }, step: { type: 'string' }, pr: { type: 'string' }, summary: { type: 'string' } },
+  required: ['status', 'summary'] }
+const PLAN = { type: 'object', properties: { added: { type: 'array', items: { type: 'string' } }, pr: { type: 'string' } }, required: ['added'] }
+const VERDICT = { type: 'object', properties: { ok: { type: 'boolean' }, problems: { type: 'array', items: { type: 'string' } } }, required: ['ok', 'problems'] }
+
+const done = []
+let planned = 0
+for (let i = 1; i <= MAX; i++) {
+  const id = `f${i}`
+  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nBACKLOG.md の上から最初の [ ]（[~] で 3 時間以上止まっているものも）を 1 つだけ進める。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
+    { label: `step:${id}`, phase: 'Step', schema: RESULT })
+  if (!r) { log(`${id}: 返事なし`); break }
+  if (r.status === 'none') {
+    if (planned >= 2) { log('計画を 2 回しても段がない：この回は終わる'); break }
+    planned++
+    const p = await agent(COMMON.replace(/\{ID\}/g, `plan${planned}`) + `\n\n計画の係。進める段が一覧にない。HARNESS.md の目標（小さな Wikipedia・1 つの仕組み・ライブラリ・人ごとのページ・言語・入口・管理）と、本番の画面（店長・test-a・test-b・ログインなし、1400/390px）・設計書との食い違い・壊れた画像・遅いページ・テストの穴を点検し、次にやる段を 3〜6 個、BACKLOG.md に「- [ ] 段の名前 — できたと言える条件」で足して合併する（答えが要るものは [?] で）。`,
+      { label: `plan:${planned}`, phase: 'Plan', schema: PLAN })
+    log(`計画：${(p && p.added || []).join(' / ')}`)
+    if (!p || !(p.added || []).length) break
+    i--
+    continue
+  }
+  for (let round = 1; r.status === 'done' && round <= 2; round++) {
+    const v = await agent(`${COMMON.replace(/\{ID\}/g, id + 'v' + round)}\n\n別の目として確かめるだけ（直さない）。段「${r.step}」が終わったと言っている：${r.summary}（${r.pr || ''}）。本番と HARNESS.md に照らして本当にできているか、店長のページが壊れていないか。`,
+      { label: `check:${id}:${round}`, phase: 'Check', schema: VERDICT })
+    if (!v || v.ok) break
+    r = await agent(COMMON.replace(/\{ID\}/g, id + 'f' + round) + `\n\n段「${r.step}」の続き。別の目の指摘を直して PR・合併・本番で確かめる：\n${v.problems.join('\n')}\n最後に同じ形で返す。`,
+      { label: `fix:${id}:${round}`, phase: 'Fix', schema: RESULT }) || r
+  }
+  log(`${r.step || id}: ${r.status} ${r.pr || ''}`)
+  done.push(r)
+  if (r.status === 'failed') break
+}
+return done
