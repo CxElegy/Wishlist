@@ -155,3 +155,25 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10   # userfeed.DEADLINE_MIN = 8 分（job の残りが少なければもっと早く）で締め切る
         run: python scripts/userfeed.py
+
+  # お客さまのページ（店長と同じ部品：頭条の黄色の帯・版面の主題・配色・小元素・目次。中身は本人の版面）を作り、
+  # Supabase Storage の非公開の箱 pages/<account>/index.html に置く（scripts/user_pages.py、db/user_pages.sql、AI なし）。
+  # 収集の job が終わってから（失敗しても）別の job で。リポジトリ・公開ページには入れない
+  user_pages:
+    needs: run
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}   # 収集が push した最新の号・版面の設定
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: お客さまのページを作って置く
+        run: python scripts/user_pages.py

@@ -4110,9 +4110,25 @@ AUTH_JS = r"""
   }
   function picksOf(p){return ((p&&p.prefs&&p.prefs.picks)||[]).filter(function(x){return x&&x.name;});}
   // 選んだものがあれば、店長のページと同じ版面のうち自分の選んだものだけを出す（2026-10-22，用户定的：お客さまも店長と同じ機能。記事は同じ公開のニュース）
+  // 本人のページ（scripts/user_pages.py が店長と同じ部品で作り、非公開の箱 pages/<account>/index.html に置く）があれば、それに替える。
+  // 替えたページには meta wl-own があるので、もう一度は読まない。まだ作られていなければ今までどおり（showMine）
+  function ownPage(){
+    if(!sb||!tok||page!=='index') return Promise.resolve(false);
+    return rpc('my_page_path').then(function(path){
+      if(!path) return false;
+      return sb.storage.from('pages').download(path+'/index.html').then(function(r){
+        if(!r||r.error||!r.data) return false;
+        return r.data.text().then(function(h){
+          if(!/<meta name="wl-own"/.test(h)) return false;
+          document.open();document.write(h);document.close();return true;});
+      });
+    }).catch(function(){return false;});
+  }
   function route(box,p,err){
     var picks=picksOf(p);
-    if(page==='index'&&!err&&tok&&picks.length&&document.querySelector('section.sec[data-k]')){box.remove();showMine(p,picks);return;}
+    if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';return;}   // もう本人のページの中
+    if(page==='index'&&!err&&tok&&picks.length&&document.querySelector('section.sec[data-k]')){
+      box.remove();ownPage().then(function(done){if(!done)showMine(p,picks);});return;}
     drawMine(box,p,err);
   }
   var UB='あなたが足したもの';   // お客さまが足した版面の小分類（本文の見出し・目次の札）
