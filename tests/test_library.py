@@ -186,3 +186,18 @@ class Users(unittest.TestCase):
         many = [{"email": "x@example.com", "prefs": {"picks": [{"name": f"題材{i}", "sec": "其他"} for i in range(105)]}}]
         r = library.plan_users(many, [], lambda p: {"search": []}, pause=0)
         self.assertEqual((len(r["follows"]), r["counts"]["over"]), (library.MAX_FOLLOWS, 5))
+
+
+class PickLabelFirst(unittest.TestCase):
+    def test_label_before_alias(self):
+        hits = {"search": [{"id": "Q190012", "label": "adenosine", "aliases": ["ADO"], "match": {"type": "alias", "text": "ADO"}},
+                           {"id": "Q77", "label": "Ado", "match": {"type": "label", "text": "Ado"}}]}
+        self.assertEqual(library.find_pick_wikidata("Ado", lambda p: hits), "Q77")
+
+    def test_short_ascii_alias_only_is_not_used(self):
+        hits = {"search": [{"id": "Q190012", "label": "adenosine", "aliases": ["ADO"], "match": {"type": "alias", "text": "ADO"}}]}
+        self.assertIsNone(library.find_pick_wikidata("Ado", lambda p: hits))
+
+    def test_long_alias_still_ok(self):
+        hits = {"search": [{"id": "Q1968", "label": "Formula One", "aliases": ["Formula 1"], "match": {"type": "alias", "text": "Formula 1"}}]}
+        self.assertEqual(library.find_pick_wikidata("Formula 1", lambda p: hits), "Q1968")

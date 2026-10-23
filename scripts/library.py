@@ -286,16 +286,22 @@ def find_pick_wikidata(name, get=_wd_get):
     want = norm_name(name)
     if len(want) < 2:
         return None
+    alias = None   # 名前（label）が同じ項目を先に。別名だけが同じものは最後の手（「Ado」が別名 ADO のアデノシンに当たった、2026-10-24）
     for lang in ("ja", "en"):
         hits = (get({"action": "wbsearchentities", "search": name, "language": lang, "uselang": lang, "limit": 7, "type": "item"}).get("search") or [])
         for h in hits:
             desc = str(h.get("description") or "").lower()
-            if any(w in desc for w in NOT_TOPIC):
+            if any(w in desc for w in NOT_TOPIC) or not re.fullmatch(r"Q\d+", str(h.get("id") or "")):
                 continue
-            labels = {norm_name(h.get("label")), norm_name((h.get("match") or {}).get("text"))} | {norm_name(a) for a in h.get("aliases") or []}
-            if want in labels and re.fullmatch(r"Q\d+", str(h.get("id") or "")):
+            if norm_name(h.get("label")) == want:
                 return h["id"]
-    return None
+            m = h.get("match") or {}
+            others = {norm_name(a) for a in h.get("aliases") or []}
+            if m.get("type") != "label":
+                others.add(norm_name(m.get("text")))
+            if alias is None and want in others and (len(want) > 3 or not want.isascii()):   # 3 字までの英数字は別名では当てない
+                alias = h["id"]
+    return alias
 
 
 def pick_board(name, sec, langs):

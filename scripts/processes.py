@@ -502,7 +502,7 @@ PROCESSES = [
             {"id": "lb4", "kind": "store", "lane": "web", "title": "boards・follows（test1）に上書き", "uses": ["supabase"], "text": "何度流しても同じ。追いかけている人数はトリガーで数える"},
             {"id": "lb5", "kind": "step", "lane": "web", "title": "お客さまの選んだものを読む（userfeed_users）", "uses": ["supabase"], "text": "一度はログインした人の app_users.prefs.picks · 1 人 100 個まで（MAX_FOLLOWS）"},
             {"id": "lb6", "kind": "step", "lane": "ext", "title": "1 つずつ版面に決める（library.plan_users）", "x": "間 1 秒",
-             "text": "① もうある版面と名前（そろえたもの）が同じ → その版面 ② Wikidata を名前で検索（ja → en、7 件）、名前・別名・当たった文字がそろえて同じ項目（曖昧さ回避・一覧は除く）→ wd:Q… ③ なければ名前の印 n:…。断られたら残りは次の回"},
+             "text": "① もうある版面と名前（そろえたもの）が同じ → その版面 ② Wikidata を名前で検索（ja → en、7 件）、名前（label）が同じ項目を先に、なければ別名が同じ項目（3 字までの英数字は別名では当てない、曖昧さ回避・一覧は除く）→ wd:Q… ③ なければ名前の印 n:…。断られたら残りは次の回"},
             {"id": "lb7", "kind": "store", "lane": "web", "title": "新しい版面と follows（u_…）を足す", "uses": ["supabase"],
              "text": "もうある版面の設定・本人の置き方は書き換えない（ignore-duplicates）。boards にはだれが足したかを書かない（created_by = user）。ログは数だけ"},
         ],
