@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "a5795cf8aede",
+ "edit_sig": "9bf74b35edd2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -189,52 +189,64 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-10-21",
-     "n": 1,
-     "source": "PR TIMES",
-     "title": "【富良野スキー場】絶景とパウダースノーを独占！プロカメラマンによる撮影と特別ランチ付き「FURANO bonchi powderファーストトラック with Photo Session」今年も開催。 | 株式会社西武・プリンスホテルズワールドワイドのプレスリリース",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9KcjNOdjZPc2hsaWhwaTBROEItMlRVVnVHTW50blhYY0N4YVI3N2kwcGE3OVpRRlhIRnh0ZURrNkNTVUFSU0VvZm5nMnIwM1FHYTROTGYxUzlxN2VIZlhDSS1TRnN6R2FOaEE?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 2,
-     "source": "ニコニコニュース",
-     "title": "札幌のホテルから、手ぶらで日本新三大夜景のゲレンデへ！サウナや朝食も楽しめる、レンタルフルセット付「札幌藻岩山スキー場」コラボ特別宿泊プランを10月24日（土）より販売開始",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFB2YXRRSTFPTE1KR2M2WXZmMFpNSE01WWZ4empET0ZJTWstaVM4dThXOUpjZmYtZWZMZEpnRHVkSmRPdFNCWk9xOW1HR2ZhZ3o4T2I3MmUzOHFFWlJ1STFMUVBuQ1lQWVVlRHAwRFNYWWlaeXB4SjZvODVaOA?oc=5"
-    },
-    {
+     "blurb": "八千穂高原スキー場は11月30日に営業を開始。リフト料金を据え置きつつ設備投資を行う。",
      "date": "2026-10-19",
-     "n": 3,
-     "source": "Dellows News",
-     "title": "八千穂高原スキー場が11月30日営業開始へ リフト料金据え置きと設備投資を両立",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBWR0FQTW5kU0pCRTU2d19wY0lXckdnNlB2SmF2U01rcDg3S2NybGJlSnREeWVWd085THFpb0ZSbVc3dVZ4QTVOMDJ3dkREOUZlbGNFMWlJZE9NSkstM0FaWXNnX1ZrdGlT?oc=5"
+     "event": {
+      "date": "2026-11-30",
+      "label": "営業開始",
+      "place": "八千穂高原スキー場"
+     },
+     "headline": "八千穂高原スキー場が11月30日営業開始へ リフト料金据え置きと設備投資を両立",
+     "highlight": "11月30日営業開始",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/09/529500_5.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.dellows.jp/529500/?from=related-reading-list",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-20",
-     "n": 4,
-     "source": "Switchback Travel",
-     "title": "Best Ski Bindings of 2026/27",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBmQnJxdzlQdm5RSzg5RTh5a2Q5b1RJSl9NQXNQRV9fOElJd1FuMkJGOGhMNzYzS2xFOWRHZGZPNlRITlh6MW5qaEs1ZG1uX09EelBfcUxYRGRhZmNMZktjZWdUVQ?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 5,
-     "source": "Switchback Travel",
-     "title": "Best Backcountry Skis of 2026/27",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9YNFFjbmQ0TzB2NEREalpwWkpXdWloeWI2Vm9abzljZ1hoZFk0cGc0eDNCZWRIbnhwOHVpMWRrQnBocUtOcF9VSkpsZFNLOUhtaVNMZTdiZEszN2I5d2pnR2U4VkRCMmdlalNNNUVR?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 6,
-     "source": "SnowBrains",
-     "title": "Will We Still Get Japow During Super El Niño?",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBGMHNVUEFxOHIyYWdPcVZTTGswZHlJRkstTDRULWxFMVFqMXg2azRaNGZINGs2ZmFVMUFTeHk1NXV3dVNGWXFNampMTmYweVROYkFkbWM2a3ZZdV85bTh1c0RrRVhXdnJmVVpuMVlB?oc=5"
+     "headline": "札幌のホテルから、手ぶらで日本新三大夜景のゲレンデへ！「札幌藻岩山スキー場」コラボ特別宿泊プランを10月24日（土）より販売開始",
+     "highlight": "10月24日（土）より販売開始",
+     "image": "https://prcdn.freetls.fastly.net/release_image/5113/4320/5113-4320-d0212b0932b9e9e4f4f6ce954e74a77e-960x640.png?width=536&quality=85%2C75&format=jpeg",
+     "image_via": "转载 www.jiji.com",
+     "url": "https://news.nicovideo.jp/watch/nw19906966?news_ref=watch_20_nw19780918",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "【富良野スキー場】「FURANO bonchi powderファーストトラック with Photo Session」今年も開催",
+     "highlight": "今年も開催",
+     "image": "https://prcdn.freetls.fastly.net/release_image/24668/4091/24668-4091-440c15c205c274d2b6f345430f69dac7-3900x2194.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000004091.000024668.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-20",
+     "headline": "Best Ski Bindings of 2026/27",
+     "highlight": "2026/27",
+     "image": "https://www.switchbacktravel.com/sites/default/files/images/articles/ski-binding-header.jpg",
+     "image_via": "og:image",
+     "url": "https://www.switchbacktravel.com/skiing/best-bindings",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "Will We Still Get Japow During Super El Niño?",
+     "highlight": "Japow",
+     "image": "https://snowbrains.com/wp-content/uploads/2013/07/JMT_20140207_145.jpg",
+     "image_via": "og:image",
+     "url": "https://snowbrains.com/slug-super-el-nino-japan-snow-2026-27/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",

@@ -83,7 +83,8 @@
   "チェーンソーマン": 8,
   "绝区零": 8,
   "哈利波特剧集": 6,
-  "猫用品": 7
+  "猫用品": 7,
+  "滑雪": 6
  },
  "GTA 6": [
   {
@@ -610,6 +611,59 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "八千穂高原スキー場が11月30日営業開始へ リフト料金据え置きと設備投資を両立",
+   "highlight": "11月30日営業開始",
+   "blurb": "八千穂高原スキー場は11月30日に営業を開始。リフト料金を据え置きつつ設備投資を行う。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-11-30",
+    "label": "営業開始",
+    "place": "八千穂高原スキー場"
+   },
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/09/529500_5.jpg"
+  },
+  {
+   "headline": "札幌のホテルから、手ぶらで日本新三大夜景のゲレンデへ！「札幌藻岩山スキー場」コラボ特別宿泊プランを10月24日（土）より販売開始",
+   "highlight": "10月24日（土）より販売開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "【富良野スキー場】「FURANO bonchi powderファーストトラック with Photo Session」今年も開催",
+   "highlight": "今年も開催",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Best Ski Bindings of 2026/27",
+   "highlight": "2026/27",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Will We Still Get Japow During Super El Niño?",
+   "highlight": "Japow",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ]

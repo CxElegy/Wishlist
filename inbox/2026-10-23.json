@@ -1165,7 +1165,9 @@
    "entries": [
     {
      "date": "2026-10-21T03:00:02+00:00",
-     "image": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/24668/4091/24668-4091-440c15c205c274d2b6f345430f69dac7-3900x2194.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "link": "https://prtimes.jp/main/html/rd/p/000004091.000024668.html",
      "n": 1,
      "site": "https://prtimes.jp",
      "source": "PR TIMES",
@@ -1177,7 +1179,9 @@
     {
      "carried": "2026-10-22",
      "date": "2026-10-22T09:51:16+00:00",
-     "image": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/5113/4320/5113-4320-d0212b0932b9e9e4f4f6ce954e74a77e-960x640.png?width=536&quality=85%2C75&format=jpeg",
+     "image_via": "转载 www.jiji.com",
+     "link": "https://news.nicovideo.jp/watch/nw19906966?news_ref=watch_20_nw19780918",
      "n": 2,
      "source": "ニコニコニュース",
      "summary": "",
@@ -1189,6 +1193,7 @@
      "carried": "2026-10-22",
      "date": "2026-10-19T09:09:54+00:00",
      "image": "",
+     "link": "https://news.dellows.jp/529500/?from=related-reading-list",
      "n": 3,
      "source": "Dellows News",
      "summary": "",
@@ -1199,7 +1204,9 @@
     {
      "carried": "2026-10-22",
      "date": "2026-10-20T07:00:00+00:00",
-     "image": "",
+     "image": "https://www.switchbacktravel.com/sites/default/files/images/articles/ski-binding-header.jpg",
+     "image_via": "og:image",
+     "link": "https://www.switchbacktravel.com/skiing/best-bindings",
      "n": 4,
      "site": "https://www.switchbacktravel.com",
      "source": "Switchback Travel",
@@ -1222,7 +1229,9 @@
     },
     {
      "date": "2026-10-22T22:26:53+00:00",
-     "image": "",
+     "image": "https://snowbrains.com/wp-content/uploads/2013/07/JMT_20140207_145.jpg",
+     "image_via": "og:image",
+     "link": "https://snowbrains.com/slug-super-el-nino-japan-snow-2026-27/",
      "n": 6,
      "site": "https://snowbrains.com",
      "source": "SnowBrains",
