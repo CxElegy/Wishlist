@@ -78,7 +78,8 @@
   "周杰伦": 17,
   "三星手机": 15,
   "日本顶级网球赛事": 14,
-  "MMORPG 新作": 12
+  "MMORPG 新作": 12,
+  "dota2": 8
  },
  "GTA 6": [
   {
@@ -394,6 +395,46 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Team Yandex Unexpectedly Announced a Roster Change for Its Dota 2 Team",
+   "highlight": "Roster Change",
+   "blurb": "Team Yandex announced an unexpected roster change for its Dota 2 team.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://hawk.live/storage/images/posts/maelstorm-reflects-atf-transfer-team-yandex-25291.jpg"
+  },
+  {
+   "headline": "Hope IESF DOTA 2 win will push player regeneration",
+   "highlight": "IESF",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "《刀塔2》XG杀入BLAST SLAM IX正赛，xNova、Topson纷纷晋级梦幻联赛S30",
+   "highlight": "BLAST SLAM IX",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "All remaining Dota 2 tournament dates in 2026",
+   "highlight": "2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    6
    ]
   }
  ]

@@ -1,6 +1,6 @@
 {
  "date": "2026-10-23",
- "edit_sig": "401405528131",
+ "edit_sig": "c804bf3f919a",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -786,66 +786,51 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Team Yandex announced an unexpected roster change for its Dota 2 team.",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "Hawk Live",
-     "title": "Team Yandex Unexpectedly Announced a Roster Change for Its Dota 2 Team",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQNVlhUHJGUGpvTVVJWnQ1Z012WmZSeVFSTUdubmcxZ2IyNmp4aEtJNGtZX1ZfNDdNb0M0TWRfQjRyZ1BoeVBwdFFScHFxbFc1MEhwb1NVWFZycGpvbTNMejdobEx1Ym9hbE9tVVd1a3BhYVNMZFBCM3d2MWxRVi1ZbUR0bHhhSjNFbEFNZg?oc=5"
+     "headline": "Team Yandex Unexpectedly Announced a Roster Change for Its Dota 2 Team",
+     "highlight": "Roster Change",
+     "image": "https://hawk.live/storage/images/posts/maelstorm-reflects-atf-transfer-team-yandex-25291.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://hawk.live/posts/team-yandex-unexpectedly-announced-roster-change-dota-2-team",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 2,
-     "source": "手机新浪网",
-     "title": "来自Speeed的7.41f工程师玩法教学[哆啦A梦微笑] #dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1VUEctdkJiUVRhaFZLcmZxWXh0ak0wcVFYbmpYMjRUcExWMnVKQTFsTm83UUtPU2dMQWVidFN3d1RpeWVZQXExdGlPakN4ZmNTd0lPMy1oTFFuQ2dXSVIxYUw4OA?oc=5"
+     "headline": "Hope IESF DOTA 2 win will push player regeneration",
+     "highlight": "IESF",
+     "image": "https://cdn.antaranews.com/cache/1200x800/2022/12/10/IMG_8041.jpg",
+     "image_via": "og:image",
+     "url": "https://mataram.antaranews.com/berita/241359/hope-iesf-dota-2-win-will-push-player-regeneration",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-22",
-     "n": 3,
-     "source": "Hawk Live",
-     "title": "TORONTOTOKYO Names the Most Overpowered Hero in the Current Dota 2 Meta",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPXzNWYjZFVEtxSHRnWklPcW1HbkI5bFpvNTRxclhNa0NSdktjLUNwcDNUQXczVVRTTExZYVVEZndyeElTMmN3NHR5NmVCNk5fM2EzU3VWX3lkcFF1NGJ2UlgyazBmbDZVczd2bkVkMEhWQXZiUE01ajVLVW9qYjQxYmxHS1V3Zw?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 4,
-     "source": "Esports.gg",
-     "title": "All remaining Dota 2 tournament dates in 2026",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5JZmR5SHVoZl9pMENZQjFmU2FGOHlzWkM3SWVtdk5nN25yWVBINEN5Z3VnQ2dHb2ZzVTdNLVZvOVU1ZERNYV9hSm1XY3puc2V1Q0hQTVFZZGV2akdTSEphWmRBQ2xWZw?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "Hawk Live",
-     "title": "Yekindar Reveals His Dota 2 MMR",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1tc0FnS0tYQkNqcXJhYVB2ZXR1UjlxeFpsSTJDcVVMT2tReFJydjdUWjZDZWlTQzUyUlg1NVJmRFR5SWhvbThZQl9LdF9SdlJHUEw5RkJZM2JXV2dDN1RjeA?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 6,
-     "source": "Dot Esports",
-     "title": "Dota 2 EWC 2026 schedule, results, standings, teams, streams",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9hdzBHLUlQMlF6U1d2RWpZLW1ZekxHVXpFaENncnluLXNVeUZrb1hia0dPMmo5V1Q1ZkdkOWo5UWFhOEZ3c25SX0daYk5IRzRhdXhpeW9HOUpEWC0wY0c3RzZWQWxzSVBSRzRpTE92THFMYzgwbHZrcQ?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 7,
-     "source": "ANTARA News Mataram",
-     "title": "Hope IESF DOTA 2 win will push player regeneration",
-     "url": "https://mataram.antaranews.com/berita/241359/hope-iesf-dota-2-win-will-push-player-regeneration"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-19",
-     "n": 8,
+     "headline": "《刀塔2》XG杀入BLAST SLAM IX正赛，xNova、Topson纷纷晋级梦幻联赛S30",
+     "highlight": "BLAST SLAM IX",
+     "image": null,
      "source": "17173",
-     "title": "《刀塔2》XG杀入BLAST SLAM IX正赛，xNova、Topson纷纷晋级梦幻联赛S30",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBTUjg4R2pkdkJIdmVDZzNFQ2pTZTdFS2pyZXZmbFFDeGZBLWpUMmxBQkNkc0JoTm9ZZ3N1Ti1BdFo0SFJTSEdzemdtcUVQbUMtS28xOHFJMGYzSFNXWWx6N0M1b2I?oc=5"
+     "source_icon": "http://ue.17173cdn.com/images/lib/v1/favicon-hd.ico",
+     "url": "http://news.17173.com/content/10192026/203042004.shtml",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "All remaining Dota 2 tournament dates in 2026",
+     "highlight": "2026",
+     "image": null,
+     "source": "Esports.gg",
+     "source_icon": "https://www.google.com/s2/favicons?domain=esports.gg&sz=128",
+     "url": "https://esports.gg/news/dota-2/dota-2-tournaments-2026/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",

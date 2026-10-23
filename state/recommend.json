@@ -30,7 +30,6 @@
   "https://m.expreview.com/108875.html": null,
   "https://mashable.com/life/pokemon-tcg-30th-anniversary-ultra-premium-collection-preorders-live": "https://helios-i.mashable.com/imagery/articles/03yDQQoZnWpjXEHPxqIXkbN/hero-image.fill.size_1200x675.v1792412663.jpg",
   "https://mashable.com/life/starbucks-red-cup-day-2026-when-to-expect-free-reusable-holiday-cup": "https://helios-i.mashable.com/imagery/articles/04tBtS88o6UdhJDPoBdkoqt/hero-image.fill.size_1200x675.v1792407829.jpg",
-  "https://mataram.antaranews.com/berita/241359/hope-iesf-dota-2-win-will-push-player-regeneration": "https://cdn.antaranews.com/cache/1200x800/2022/12/10/IMG_8041.jpg",
   "https://news.e-expo.net/release/2026/10/261021_r01.html/": "https://prcdn.freetls.fastly.net/release_image/5623/452/5623-452-f3febcfb8cc7c1f40d7f49c619b8b6ab-750x750.jpg?width=1950&height=1350&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
   "https://news.infoseek.co.jp/article/itmedia_favlog_4062502/": "https://media.image.infoseek.co.jp/isnews/photos/itmedia_favlog/itmedia_favlog_4062502_0.jpg",
   "https://news.infoseek.co.jp/article/oshiraku_28731/": "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg",
@@ -85,6 +84,7 @@
   "https://www.roomie.tw/posts/170744": "https://media.loom-app.com/roomie/dist/images/2026/10/IMG_2560-scaled.jpg?w=1200",
   "https://www.sanin-chuo.co.jp/articles/-/1100968": "https://www.bing.com/th?id=ONUT.q2gJOnkQWaVc3KOhAbiBkA&pid=News&w=1200",
   "https://www.sina.cn/gc/article/nivwyrf6445687.html": null,
+  "https://www.sina.cn/news/detail/5356827232437632.html": "http://wx2.sinaimg.cn/middle/b7cceb19gy1iib0bbnet9j20i206ydl8.jpg",
   "https://www.sina.cn/news/detail/5356865370458683.html": "http://wx2.sinaimg.cn/middle/005Zl6ySly1iib892m62xj31561pqx3z.jpg",
   "https://www.sportskeeda.com/esports/zenless-zone-zero-zzz-3-3-update-patch-notes-new-characters-events": "https://www.bing.com/th?id=ONUT.INrR62tch3ap9vSGkg4PTw&pid=News&w=1200",
   "https://www.sportskeeda.com/esports/zenless-zone-zero-zzz-phoenix-build-guide-best-w-engines-drive-discs-teams": "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200",
@@ -1751,27 +1751,6 @@
   },
   {
    "batch": 7,
-   "because": "dota2",
-   "date": "2026-10-22",
-   "hits": [],
-   "image": "https://cdn.antaranews.com/cache/1200x800/2022/12/10/IMG_8041.jpg",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "ANTARA News Mataram",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "Hope IESF DOTA 2 win will push player regeneration",
-   "url": "https://mataram.antaranews.com/berita/241359/hope-iesf-dota-2-win-will-push-player-regeneration",
-   "words": [],
-   "work": "dota2"
-  },
-  {
-   "batch": 7,
    "because": "Vaundy",
    "date": "2026-10-22",
    "hits": [],
@@ -1792,7 +1771,7 @@
    "work": "Vaundy"
   },
   {
-   "batch": 8,
+   "batch": 7,
    "because": "dota2",
    "date": "2026-10-22",
    "hits": [],
@@ -1809,6 +1788,27 @@
    ],
    "title": "Yekindar Reveals His Dota 2 MMR",
    "url": "https://hawk.live/posts/yekindar-reveals-dota-2-mmr",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 8,
+   "because": "dota2",
+   "date": "2026-10-22",
+   "hits": [],
+   "image": "http://wx2.sinaimg.cn/middle/b7cceb19gy1iib0bbnet9j20i206ydl8.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "手机新浪网",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "来自Speeed的7.41f工程师玩法教学[哆啦A梦微笑] #dota2# ​",
+   "url": "https://www.sina.cn/news/detail/5356827232437632.html",
    "words": [],
    "work": "dota2"
   },

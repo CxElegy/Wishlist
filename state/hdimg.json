@@ -126,6 +126,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/b7cceb19gy1iib0bbnet9j20i206ydl8.jpg": {
+  "w": 650,
+  "h": 250,
+  "target": 720,
+  "v": 3,
+  "local": "pics/7b2e4ded689e0a58.webp",
+  "out": [
+   650,
+   250
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/007nrArUgy1ii4kkhnk5xj31400qox3n.jpg": {
   "w": 1440,
   "h": 960,
@@ -294,7 +307,7 @@
  "https://cdn.antaranews.com/cache/1200x800/2022/12/10/IMG_8041.jpg": {
   "w": 1200,
   "h": 800,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.dlcompare.com/others_jpg/upload/news/image/gta-6-on-pc-in-early-2027-what-w-5ae822bd-image-5ae822ae.jpg.webp": {
@@ -671,6 +684,12 @@
   "v": 3
  },
  "https://hawk.live/storage/images/posts/larl-highlights-best-mid-laners-pgl-wallachia-season-7-24254.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/maelstorm-reflects-atf-transfer-team-yandex-25291.jpg": {
   "w": 1200,
   "h": 628,
   "target": 1280,
