@@ -41,6 +41,72 @@ def split_item(item):
     return shared, mine
 
 
+WD_API = "https://www.wikidata.org/w/api.php"
+WD_UA = "WishlistBot/1.0 (https://github.com/CxElegy/Wishlist)"
+
+
+def _wd_get(params):
+    """Wikidata の API（429 は間を空けて 4 回まで）。"""
+    import time
+    import urllib.request
+    url = WD_API + "?" + urllib.parse.urlencode({**params, "format": "json"})
+    for n in range(4):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": WD_UA}), timeout=20) as r:
+                return json.load(r)
+        except Exception:  # noqa: BLE001  429・時間切れは待ってやり直す
+            time.sleep(5 * (n + 1))
+    return {}
+
+
+def _names(entity):
+    """項目の全言語の名前と別名（そろえたもの）。"""
+    out = {norm_name(v["value"]) for v in (entity.get("labels") or {}).values()}
+    out |= {norm_name(a["value"]) for vs in (entity.get("aliases") or {}).values() for a in vs}
+    return {x for x in out if x}
+
+
+def _words(item):
+    return {w for w in (norm_name(x) for x in [item.get("name"), *(item.get("keywords") or [])]) if len(w) >= 2}
+
+
+def find_wikidata(item, get=_wd_get):
+    """版面の Wikidata の番号を規則で決める（決まらなければ None）。
+    - 題材（type: category）で Wikipedia の記事名（wiki）がないものは番号を付けない（MMORPG 新作・猫用品・滑雪…）
+    - wiki があれば、記事名ごとの項目のうち、名前・検索語が項目の名前・別名に一番多く入るもの（漫威电影 → 映画 1 本ではなくシリーズ全体）
+    - wiki がなければ名前・検索語で検索し、項目の名前・別名が名前か検索語とそろえて同じものだけ（いちばん多く当たったもの）
+    """
+    if re.fullmatch(r"Q\d+", str(item.get("wikidata") or "")):
+        return item["wikidata"]
+    words = _words(item)
+    wiki = item.get("wiki") or []
+    if isinstance(wiki, str):
+        wiki = [wiki]
+    if not wiki and item.get("type") == "category":
+        return None
+    best, score = None, 0
+    if wiki:
+        for w in wiki:
+            lang, _, title = str(w).partition(":")
+            d = get({"action": "wbgetentities", "sites": f"{lang}wiki", "titles": title, "props": "labels|aliases"})
+            for qid, ent in (d.get("entities") or {}).items():
+                if not qid.startswith("Q"):
+                    continue
+                names = _names(ent)
+                s = sum(1 for x in words if any(x == n or x in n or n in x for n in names if len(n) >= 2)) + 0.5
+                if s > score:
+                    best, score = qid, s
+        return best
+    hits = {}
+    for q in [item.get("name"), *(item.get("keywords") or [])[:3]]:
+        for lang in ("ja", "en", "zh"):
+            for h in (get({"action": "wbsearchentities", "search": q, "language": lang, "limit": 3, "type": "item"}).get("search") or [])[:3]:
+                labels = {norm_name(h.get("label")), norm_name((h.get("match") or {}).get("text"))} | {norm_name(a) for a in h.get("aliases") or []}
+                if labels & words:
+                    hits[h["id"]] = hits.get(h["id"], 0) + 1
+    return max(hits, key=hits.get) if hits else None
+
+
 def q(v):
     return "'" + str(v).replace("'", "''") + "'"
 
@@ -92,6 +158,10 @@ def push_shop(items):
     """店長の版面をライブラリへ（何度流しても同じ：key・(account, board_id) で上書き）。"""
     import digest
     boards, parents, follows = shop_rows(items)
+    for item in items:   # 番号が付いた版面は、名前の印（n:…）の行をそのまま番号の印（wd:…）へ（行を増やさない）
+        if board_key(item).startswith("wd:"):
+            old = "n:" + norm_name(item["name"])
+            digest.supabase(f"boards?key=eq.{urllib.parse.quote(old)}", {"key": board_key(item), "wd": item["wikidata"]}, method="PATCH")
     got = digest.supabase("boards?on_conflict=key&select=id,key", boards, prefer="resolution=merge-duplicates,return=representation")
     if got is None:
         raise SystemExit("SUPABASE_SERVICE_KEY がないので書けません")
