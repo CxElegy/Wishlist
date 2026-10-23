@@ -74,7 +74,8 @@
   "漫威电影": 59,
   "GTA 6": 48,
   "A2O LITE": 43,
-  "Astrae Oratio": 20
+  "Astrae Oratio": 20,
+  "周杰伦": 17
  },
  "GTA 6": [
   {
@@ -233,6 +234,34 @@
     19
    ],
    "image": "https://noisypixel.net/wp-content/uploads/2026/06/Astrae-Oratio-2.jpg"
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "国台办为中国歌手周杰伦撑腰",
+   "highlight": "国台办",
+   "blurb": "周杰伦转发点赞“中国歌手”身份后，台湾网友涌入评论区指责，国台办回应称对艺人“扣帽子”用心险恶。",
+   "weight": "lead",
+   "refs": [
+    3,
+    11,
+    8,
+    17,
+    10,
+    2,
+    1,
+    16
+   ],
+   "image": "https://x0.ifengimg.com/res/2026/D4F52D36036F5D19D6D9074B534DDFF6898FDDDE_size30_w1080_h460.jpg"
+  },
+  {
+   "headline": "如何评价周杰伦近期“夜的第七章”现场rap的水平和频繁递话筒行为",
+   "highlight": "夜的第七章",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ]
 }
