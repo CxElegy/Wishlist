@@ -160,6 +160,29 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
+   "pending": [
+    {
+     "date": "2026-10-24",
+     "n": 25,
+     "source": "IMDb",
+     "title": "Latest Update Suggests ‘Avengers: Doomsday’ and ‘Secret Wars’ Will Stay True to the Original Comics",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBVSG1SdWhjaU5sZ3dNU0hHWnVWSGdfcDNxZUtlSGtzajBZaXRVWHVYdDlnbE52VXNfcXVpbV9DYzI4YndNbkNTdnd5NDZhQWVXMWROaXI5TVZIN1FHaDZOUmNLZEQ?oc=5"
+    },
+    {
+     "date": "2026-10-23",
+     "n": 26,
+     "source": "IMDb",
+     "title": "‘Avengers: Doomsday’ Doctor Doom Description Leans Into the Mystery Behind Robert Downey Jr.’s Mask",
+     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9CTndwOWM2VnhEOWpjYTBUR0RpM18waTk2SVZwZndaTVN6YkM0R016d0ZXWDNOVFZBZy1PMFJXUTIyLWJZN2JtRWxaNDA2aEtYZG1mcEJVR1MtRGY1TFBadmlvNHJYMW8?oc=5"
+    },
+    {
+     "date": "2026-10-23",
+     "n": 27,
+     "source": "IMDb",
+     "title": "‘Avengers: Doomsday’ Reportedly Crosses a Record-Setting Presales Milestone Months Before Release, Leaving ‘Dune: Part Three’ Far Behind",
+     "url": "https://www.imdb.com/news/ni66078485/"
+    }
+   ],
    "section": "影视",
    "stories": [
     {
@@ -394,6 +417,15 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
+   "pending": [
+    {
+     "date": "2026-10-24",
+     "n": 2,
+     "source": "Gizmochina",
+     "title": "Galaxy S27 Pro/Ultra TUV certifications reveal exact battery capacity",
+     "url": "https://www.gizmochina.com/2026/10/24/galaxy-s27-pro-ultra-tuv-certifications-reveal-exact-battery-capacity/"
+    }
+   ],
    "section": "好物",
    "stories": [
     {
@@ -477,7 +509,7 @@
      "highlight": "",
      "image": null,
      "source": "Howl.Link",
-     "source_icon": null,
+     "source_icon": "https://www.youtube.com/s/desktop/dc0b62b0/img/favicon_144x144.png",
      "url": "https://t.co/h37eNf4Ukr",
      "weight": "normal"
     }
@@ -602,9 +634,52 @@
    }
   },
   {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+   "facts": [],
+   "name": "dota2",
+   "pending": [
+    {
+     "date": "2026-10-23",
+     "n": 2,
+     "source": "搜狐网",
+     "title": "DOTA2-PV宇宙小组赛：Yandex连下两城横扫GL",
+     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFAwQzVxeFRkbnZpc3QyZEctYTVQX1JtbWotbG41U09iYTlrZVRJZk43OUxuRWRhc3BwS2Q5WVNFbERka1BaRmZHWlZScXI2VGx2UzJn?oc=5"
+    }
+   ],
+   "section": "游戏",
+   "stories": [],
+   "subtitle": "Dota 2",
+   "theme": {
+    "accent": "#E0503C",
+    "alt_accent": "#A63A28",
+    "alt_bg": "#F6EDEA",
+    "alt_fg": "#1E1A18",
+    "bg": "#17100F",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
+   "pending": [
+    {
+     "date": "2026-10-21",
+     "n": 11,
+     "source": "新浪网",
+     "title": "A2O LITE 《NEON》初次电台LIVE #微博视频号续航计划##A2olite电台上班# ​",
+     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNSlVTLWhDLUJORURmczVsRlJUU19BOS1KdG56LTB5bURTMHBoSjN6Y00zYW96ZzJYUmJUb3BpVWgtS0hzWnJaXzZvNnE5R3BRN0l1Z0J5WE16NXd6YVdETDN1ZjN4eEFHWUhLMjNjMDFZSjlLaXlfZVNKQWx3a1ZUUExmekNPR0JYcFViLVFFQnRGX0hyNmF1ZVk0UTdVYlVRRlFMZlBMRmU1RXNqTHlDSTVvWS1tZFRQV3U1bTYxVlJPbV9WOE5CTjdoQnRJemJQc3ZRaTdrSmY?oc=5"
+    },
+    {
+     "date": "2026-10-18",
+     "n": 12,
+     "source": "手机新浪网",
+     "title": "13 岁出道被夸小BoA，韩国网友：父母欠薪345 万，别拿孩子挡箭|盛艾敬|A2O LITE|李秀满_新浪新闻",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5mVURrLVpjdHFLVURQNzBGaHJRbGRMeENhSHh6R0NpeGQ1b0xuNDhnYTdaRjZfeXJ6WUk4RFJyRDdUQ1UtQ004OXJWNXR4aGVCSEdUSlFJclA5bHpNTHRLZWdpMA?oc=5"
+    }
+   ],
    "section": "演出",
    "stories": [
     {
@@ -632,8 +707,8 @@
      "date": "2026-10-23",
      "headline": "A2O LITEアイチン、両親の7億ウォン規模の賃金未払い疑惑で騒動",
      "highlight": "",
-     "image": "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp",
-     "image_via": "og:image",
+     "image": "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg",
+     "image_via": "og:image（其它来源）",
      "url": "https://global.mediafine.co.kr/ja/news/a2o-lite-ai-jjing-fans-debt-controversy",
      "weight": "normal"
     },
@@ -700,6 +775,33 @@
    }
   },
   {
+   "cover": null,
+   "facts": [],
+   "name": "猫用品",
+   "pending": [
+    {
+     "date": "2026-10-24",
+     "n": 1,
+     "source": "産経ニュース",
+     "title": "19世紀末芸術の鍵握る黒猫 展覧会「スタンランと猫のジャポニスム」 荏原 畠山美術館",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1Scy1yNUplU2hSSWdibkdzUXJFRGlHcmhCRTdiUjBWbU5FdDA1U2FvVjM5UUdoMnFKblExdGtsQllOQlNnei1qeDZ4eFZoMDdCcy1UNUhvbDRoZ01JWm9Tbk50YnhYRjBLS0V0WU1aVS1MSzl0TGc?oc=5"
+    }
+   ],
+   "section": "生活",
+   "stories": [],
+   "subtitle": "猫グッズ · 家里两只猫",
+   "theme": {
+    "accent": "#E8875B",
+    "alt_accent": "#F3B6B0",
+    "alt_bg": "#3A2C24",
+    "alt_fg": "#FBF4EA",
+    "bg": "#FBF4EA",
+    "fg": "#3A2C24",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
    "facts": [],
    "last": {
@@ -750,32 +852,7 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "last": {
-    "date": "2026-10-24",
-    "headline": "パソコンの上に乗る、スマホの前に割り込む……猫が“作業の邪魔”をする理由を調査＆獣医師が解説",
-    "url": "https://topics.smt.docomo.ne.jp/article/cat_benesse/life/cat_benesse-100207"
-   },
-   "name": "猫用品",
-   "quiet": true,
-   "section": "生活",
-   "status": "",
-   "stories": [],
-   "subtitle": "猫グッズ · 家里两只猫",
-   "theme": {
-    "accent": "#E8875B",
-    "alt_accent": "#F3B6B0",
-    "alt_bg": "#3A2C24",
-    "alt_fg": "#FBF4EA",
-    "bg": "#FBF4EA",
-    "fg": "#3A2C24",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "last": {
     "date": "2026-10-24",
@@ -870,31 +947,6 @@
     "alt_fg": "#1C1826",
     "bg": "#15131C",
     "fg": "#EEEAF4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
-   "facts": [],
-   "last": {
-    "date": "2026-10-24",
-    "headline": "Team Yandex roll to opening victory at PARI Universe Dota 2 event",
-    "url": "https://www.msn.com/en-us/sports/general/team-yandex-roll-to-opening-victory-at-pari-universe-dota-2-event/ar-AA2fTSmv"
-   },
-   "name": "dota2",
-   "quiet": true,
-   "section": "游戏",
-   "status": "",
-   "stories": [],
-   "subtitle": "Dota 2",
-   "theme": {
-    "accent": "#E0503C",
-    "alt_accent": "#A63A28",
-    "alt_bg": "#F6EDEA",
-    "alt_fg": "#1E1A18",
-    "bg": "#17100F",
-    "fg": "#F4EEE4",
     "font": "serif",
     "split": true
    }
