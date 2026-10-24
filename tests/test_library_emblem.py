@@ -148,11 +148,12 @@ class Fill(unittest.TestCase):
         now = 10 ** 6
         bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0}}},
               {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES}}},
-              {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600}}},   # 前の版の規則 → すぐ
-              {"id": 3, "config": {"emblem_state": {"state": "failed", "at": 0}}},
-              {"id": 4, "config": {"emblem_state": {"state": "running", "at": now}}},
+              {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2}}},   # 前の版の規則 → すぐ
+              {"id": 3, "config": {"emblem_state": {"state": "failed", "at": 0}}},   # 0 枚 → 途中より先
+              {"id": 4, "config": {"emblem_state": {"state": "running", "at": now, "have": 5}}},
+              {"id": 7, "config": {"emblem_state": {"state": "running", "at": now, "have": 0}}},
               {"id": 5, "config": {}}]
-        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 4, 3, 6])
+        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 4, 6])
 
 
 class UserPage(unittest.TestCase):
