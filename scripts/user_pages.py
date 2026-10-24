@@ -164,11 +164,13 @@ def user_issue(items, shop_issue, rows, deadline, themes):
     shop_blocks = {b["name"]: b for b in (shop_issue or {}).get("items", [])}
     blocks = []
     for it in items:
+        cap = digest.SIZE_STORIES.get(it.get("size") or "M", STORIES_PER_BOARD)   # 本人の篇幅（S 3・M 5・L 8、設定ページの約束）
         if it.get("_shop") and it["name"] in shop_blocks:
-            blocks.append({**shop_blocks[it["name"]], "section": it.get("section") or shop_blocks[it["name"]].get("section")})
+            sb = shop_blocks[it["name"]]
+            blocks.append({**sb, "stories": (sb.get("stories") or [])[:cap], "section": it.get("section") or sb.get("section")})
             continue
         row = rows.get(norm(it["name"])) or {}
-        st = [_story(r, "hero" if i == 0 else "normal") for i, r in enumerate((row.get("stories") or [])[:STORIES_PER_BOARD])]
+        st = [_story(r, "hero" if i == 0 else "normal") for i, r in enumerate((row.get("stories") or [])[:cap])]
         st = find_images(st, deadline)
         cover = next((s["image"] for s in st if s.get("image")), None)
         blocks.append({"name": it["name"], "section": it.get("section"), "subtitle": "", "stories": st, "facts": [],

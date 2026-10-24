@@ -4,22 +4,29 @@
 --   篇幅：ライブラリの follows.size（本人の行、db/library.sql）。follows にまだない（足したばかり）ものは app_users.prefs.sizes に覚える。
 --         sizes 表には書かない（get_sizes(p_account) はだれでも読めるので、お客さまの追いかけているものの名前が漏れる）。
 --   分け方：nav_schemes 表（account = 本人）。板块と分け方の id だけなので漏れて困るものはない。
--- 変えたら render.yml を起こす（scripts/user_pages.py が本人のページを作り直す）。60 秒に 1 回まで。
+-- 変えたら render.yml を起こす（scripts/user_pages.py が本人のページを作り直す）。押すたびに起こす：render.yml は
+-- concurrency の cancel-in-progress なので、続けて押しても最後に押したあとの回が DB を読んで勝つ（2026-10-24、前は 60 秒に 1 回に
+-- 間引いていて、続けて押した 2 回目以降が次の収集まで出なかった）。押しすぎの歯止めは 1 人 10 分に 30 回（private.render_kicks）。
 -- create / create or replace だけ。消す文・表の形を変える文はない。
 
 create table if not exists private.render_kick (
   id  int primary key default 1 check (id = 1),
   at  timestamptz not null
 );
+create table if not exists private.render_kicks (
+  at       timestamptz not null default now(),
+  account  text not null
+);
+create index if not exists render_kicks_account_at on private.render_kicks (account, at);
 
 create or replace function private.kick_render()
 returns void language plpgsql security definer set search_path = '' as $$
-declare tok text; last timestamptz;
+declare tok text; a text := coalesce(public.my_account(), '');
 begin
   select s.decrypted_secret into tok from vault.decrypted_secrets s where s.name = 'github_dispatch_token' limit 1;
   if coalesce(tok, '') = '' then return; end if;
-  select k.at into last from private.render_kick k where k.id = 1;
-  if last is not null and now() - last < interval '60 seconds' then return; end if;
+  if (select count(*) from private.render_kicks k where k.account = a and k.at > now() - interval '10 minutes') >= 30 then return; end if;
+  insert into private.render_kicks (account) values (a);
   insert into private.render_kick (id, at) values (1, now()) on conflict (id) do update set at = excluded.at;
   perform net.http_post(
     url := 'https://api.github.com/repos/CxElegy/Wishlist/actions/workflows/render.yml/dispatches',
@@ -69,3 +76,4 @@ revoke all on function public.my_size_set(text, text) from public, anon;
 revoke all on function public.my_nav_scheme_set(text, text) from public, anon;
 grant execute on function public.my_size_set(text, text) to authenticated;
 grant execute on function public.my_nav_scheme_set(text, text) to authenticated;
+revoke all on table private.render_kicks from public, anon, authenticated;
