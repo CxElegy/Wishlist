@@ -8,10 +8,12 @@
   - 店長と同じ枠組み：目次（.nav）・題字（.mast か h1）・令牌（--ink）がある
   - 横にはみ出す：scrollWidth > 画面の幅
   - JS のエラー（pageerror）
+  - エンブレム（harness/emb_check.py の E1〜E10：出ない・読めない・白い四角・大きさ・はみ出し・題字に重なる・切れ・重複・別の作品の絵・目標に届かない）。
+    --emb quick（ふだん）は出ている 1 枚を網页で測り、画像は候補を全部見る。--emb full は候補を全部差し替えて測り、写真の一覧 OUT/emb/sheet-<だれ>-<幅>.png
 設定ページ（settings.html）も同じ人・同じ幅で：素の箱・題字・令牌・はみ出し・JS のエラー、お客さまは本人の設定ページ（wl-own）か。
 写真は OUT/<だれ>-<幅>.png・OUT/<だれ>-set-<幅>.png。
 
-    python harness/ux_check.py [--base https://cxelegy.github.io/Wishlist/home/] [--out DIR] [--who test-a,test-b]
+    python harness/ux_check.py [--base https://cxelegy.github.io/Wishlist/home/] [--out DIR] [--who test-a,test-b] [--emb quick|full|off]
 """
 import argparse
 import json
@@ -23,6 +25,9 @@ import urllib.request
 
 import yaml
 from playwright.sync_api import sync_playwright
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import emb_check  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WHO = {"guest": None, "test-a": "test-a@example.com", "test-b": "test-b@example.com", "test-c": "test-c@example.com"}
@@ -42,7 +47,7 @@ def session(email):
     return out
 
 
-def check(pw, base, who, width, out, page=""):
+def check(pw, base, who, width, out, page="", emb="off"):
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
     pg = b.new_page(viewport={"width": width, "height": 900})
     loads, errors = [], []
@@ -66,8 +71,10 @@ def check(pw, base, who, width, out, page=""):
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         sw:document.documentElement.scrollWidth})""", BOXES)
     pg.screenshot(path=str(out / f"{who}-{'set-' if page else ''}{width}.png"))
-    b.close()
     bad = []
+    if not page and emb != "off":
+        bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
+    b.close()
     if page:   # 設定ページ：版面・目次はないので、枠組み（題字・令牌）と本人の分か
         if st["text"] < 100:
             bad.append(f"白い画面（文字 {st['text']}）")
@@ -105,6 +112,7 @@ def main(argv):
     ap.add_argument("--out", default=str(ROOT / "harness" / "shots"))
     ap.add_argument("--who", default=",".join(WHO))
     ap.add_argument("--widths", default="1400,390")
+    ap.add_argument("--emb", default="quick", choices=("quick", "full", "off"))
     a = ap.parse_args(argv)
     out = pathlib.Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -113,7 +121,7 @@ def main(argv):
         for who in a.who.split(","):
             for w, page in [(int(w), pg) for pg in ("", "settings.html") for w in a.widths.split(",")]:
                 try:
-                    st, bad = check(pw, a.base, who, w, out, page)
+                    st, bad = check(pw, a.base, who, w, out, page, a.emb)
                 except Exception as ex:  # noqa: BLE001
                     st, bad = {}, [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
                 fails += bool(bad)
