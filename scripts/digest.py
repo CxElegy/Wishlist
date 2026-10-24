@@ -3557,33 +3557,65 @@ def _live_edit_step(note, left_min=None, only=None):
     return run
 
 
+BRIEF_TITLE = 60                  # edit-brief：束の 2 本目からの題は 60 字まで（要約なし）
 PICK_WEIGHTS = ("hero", "lead")   # AI が目で配図を選ぶのは重大・頭の記事だけ（ほかは規則で。画像を見るとトークンを多く使う：1 枚の一覧 ≈ 横×縦/750 トークン）
 PICK_THUMB = (270, 180)           # 一覧の 1 枚の大きさ。4 列 × 2 段 = 1120×380 ≈ 570 トークン（前は 360×240・12 枚で ≈ 1,500）
 PICK_MAX = 8                      # 1 記事の候補は 8 枚まで
 
 
-def edit_brief(date=None, batch=None, summary=120):
+def edit_brief(date=None, batch=None, summary=120, ctl=None):
     """AI 編集に読ませる、短い一覧（省トークン）：inbox の JSON をそのまま読むと、網址・画像の網址・長い要約でトークンがかさむ。
-    版面ごとに「番号 日付 出典｜題｜要約（summary 字まで）」だけ。batch（1〜）を指定するとその分批の版面だけ。→ 文字列。"""
+    版面ごとに、記事を規則で「出来事の束」にまとめて（bundle.bundles）、束の頭の 1 本は「番号 日付 出典｜題｜要約（summary 字まで）」、
+    同じ束のほかは「＋ 番号 出典｜題（BRIEF_TITLE 字）」。前回の編集（_covered）のあとは増えた分だけ（BENCHMARKS 4-1）：
+    今の記事は 1 行ずつ（見出しと refs）、新しい束と記事が増えた束だけを見せる。やり直す版面（redo）と初めての版面は全部。
+    batch（1〜）を指定するとその分批の版面だけ。→ 文字列。"""
+    import bundle
     paths = sorted(INBOX_DIR.glob(f"{date or '????-??-??'}.json"))
     if not paths:
         return ""
     inbox_path = paths[-1]
-    q = edit_queue(inbox_path.stem)
+    ctl = ctl if ctl is not None else edit_control()
+    q = edit_queue(inbox_path.stem, ctl=ctl)
     if batch and not 0 < batch <= len(q):
         return ""   # そのバッチはない（もう全部終わった）
     want = {n for n, _ in q[batch - 1]} if batch else {n for b in q for n, _ in b}
+    redo = set(ctl.get("redo") or [])
     edits = load_edits(inbox_path)
+    items = {i["name"]: i for i in load_config()[1]}
     out = []
+
+    def line(d, head=True):
+        if not head:
+            return f"  ＋ {d['n']} {d.get('source', '')}｜{str(d.get('title') or '')[:BRIEF_TITLE]}" + (" ★要紧" if d.get("urgent") else "")
+        summ = " ".join(str(d.get("summary") or "").split())[:summary]
+        return (f"{d['n']} {(d.get('date') or '')[:10]} {d.get('source', '')}｜{d.get('title', '')}" + (f"｜{summ}" if summ else "")
+                + (" ★要紧" if d.get("urgent") else ""))
     for raw in (load_json(inbox_path) or {}).get("items", []):
         if raw["name"] not in want:
             continue
+        entries = raw["entries"]
         cov = (edits.get("_covered") or {}).get(raw["name"], 0) if raw["name"] in edits else 0
-        out.append(f"## {raw['name']}（{len(raw['entries'])} 件・前回の編集は {cov} 件まで）")
-        for d in raw["entries"]:
-            summ = " ".join(str(d.get("summary") or "").split())[:summary]
-            out.append(f"{d['n']} {(d.get('date') or '')[:10]} {d.get('source', '')}｜{d.get('title', '')}" + (f"｜{summ}" if summ else "")
-                       + (" ★要紧" if d.get("urgent") else ""))
+        stories = [s for s in edits.get(raw["name"]) or [] if isinstance(s, dict)]
+        full = not cov or raw["name"] in redo
+        by_n = {d["n"]: d for d in entries}
+        groups = bundle.bundles(items.get(raw["name"], {"name": raw["name"]}), entries)
+        show = groups if full else [g for g in groups if g[-1] > cov]
+        out.append(f"## {raw['name']}（{len(entries)} 件・束 {len(groups)}・前回の編集は {cov} 件まで"
+                   + ("）" if full else f" → 増えた分だけ：新しい束 {sum(g[0] > cov for g in show)}・記事が増えた束 {sum(g[0] <= cov for g in show)}）"))
+        if not full:
+            out.append("今の記事（edit.json のまま残す。増えた束の新しい番号は refs に足す）：")
+            out += [f"  記事 {k}：[{s.get('weight', 'normal')}] {s.get('headline', '')}（refs {','.join(map(str, s.get('refs') or []))}）"
+                    for k, s in enumerate(stories, 1)] or ["  （なし）"]
+        for g in show:
+            old = [n for n in g if n <= cov]
+            new = [n for n in g if n > cov] if not full else g
+            if old:
+                ks = [k for k, s in enumerate(stories, 1) if set(old) & set(s.get("refs") or [])]
+                out.append(f"［束：前に見た {','.join(map(str, old))}" + (f" → 記事 {','.join(map(str, ks))} に足す］" if ks else " は載せなかった］"))
+            elif len(g) > 1:
+                out.append(f"［束 {len(g)} 本］")
+            out.append(line(by_n[new[0]]))
+            out += [line(by_n[n], head=False) for n in new[1:]]
     return "\n".join(out)
 
 
