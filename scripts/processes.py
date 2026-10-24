@@ -1069,7 +1069,9 @@ CSS = """
 .lg-z{padding:0 8px;border:2px dashed var(--ink)}.lg-z.keep{border-style:solid}
 .ae-data{color:var(--ink)}.ae-web{color:var(--rose)}.ae-ai{color:var(--good)}.ae-notify{color:var(--discord)}.ae-db{color:var(--viz-1)}
 .arch{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
- grid-template-areas:"src act repo ai" "db pages repo dc" "etc etc etc etc" "you you you you";gap:40px 64px;align-items:start}
+ grid-template-areas:"src act act ai" "db act act repo" "pages act act dc" "etc etc etc etc" "you you you you";gap:40px 64px;align-items:start}
+.az[data-z=act]>.az-b{display:block;column-count:2;column-gap:12px}   /* 仕組みが 7 つで一番高い枠：2 列・2 段ぶん使い、ほかの枠が下へ押されない（2026-10-25 1 列だと 5,129px） */
+.az[data-z=act]>.az-b>.an{break-inside:avoid;margin:0 0 10px}
 .az{border:2px solid var(--ink);background:var(--paper);padding:10px 12px 12px;min-width:0}
 .az-temp{border-style:dashed;background:var(--sheet)}
 .az-ext{border-style:dotted;border-width:3px}
@@ -1107,6 +1109,7 @@ CSS = """
  .arch{grid-template-columns:minmax(0,1fr);grid-template-areas:"src" "act" "repo" "ai" "db" "pages" "dc" "etc" "you";gap:16px}
  .arch .dg-svg{display:none}
  .az[data-z=you]>.az-b{flex-direction:column}
+ .az[data-z=act]>.az-b{column-count:1}
 }
 .pl{display:inline-block;align-self:flex-start;font:700 10px var(--font-mono);letter-spacing:.04em;padding:1px 8px;transform:skewX(var(--skew));background:var(--ink);color:var(--card);white-space:nowrap}
 .pl-ai{background:var(--gold);color:var(--ink)}.pl-free{background:var(--good);color:var(--card)}
