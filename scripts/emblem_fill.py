@@ -593,7 +593,10 @@ def gather(item, log=print, tried=None):
         subj = item.get("emblem_subject") or name
         wd = item.get("wikidata") if not item.get("emblem_subject") and re.fullmatch(r"Q\d+", str(item.get("wikidata") or "")) else subj
         try:
-            add(f"{subj} のロゴ", wikidata_images(wd, ("P154",)), "Wikidata", "ブランドの顔（公式ロゴ）", 2)
+            logos = wikidata_images(wd, ("P154",))
+            add(f"{subj} のロゴ", logos, "Wikidata", "ブランドの顔（公式ロゴ）", 2)
+            if not logos and kind == "brand":   # ロゴのない製品（iPhone：P154 なし）は Wikidata の代表画像（P18、製品の絵）
+                add(subj, wikidata_images(wd, ("P18",), 2), "Wikidata", "主題を表す画像", 2)
         except Exception as e:
             log(f"  [Wikidata] {e}")
         try:

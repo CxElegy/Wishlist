@@ -39,7 +39,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 22 | 失敗した版面が何時間も止まる | 待ちが長い・指紋なしを「同じ」扱い | 段 ①標準 → ②名前を広げる → ③公式・記事のページ、`material` 指紋、`RETRY_HOURS` 6 → 1 | fd706d55・e96f5575・c602936d |
 | 23 | 見て「違う」と思っても直す道がない | 手で消すだけ | 管理ページで理由を選んで外す → `emblem_reject`・`state/emblem_rejects.json` | dbc12bc9（#238） |
 | 24 | お客さまのキャラの版面が字の順の脇役（原神 Aino・Albedo…、ゼルダ Agahnim…）・分類の説明の記事「Character」が 1 枚 | `categorymembers` が頭の 200 人（A〜B）だけ・参照 `lhlimit` 500 で頭打ち（主役が同じ数で並ぶ）・広すぎる分類 Characters（NPC 込み） | `category_top` が続き（cmcontinue 1000 人・lhcontinue 2000）で数え、分類名の記事と「…/Storyline」を除く・`CHAR_CATEGORIES` に Playable Characters。京都の字だけのロゴ・生成AI の図・大相撲の 1890s は `not_emblem`。`library_emblem.RULES` 4 で済みの版面も作り直し（`REDO`） | #332 |
-| 25 | 京都の「ロゴ」が決済の案内板・電車の写真、iPhone が Linksys のロゴ | Commons の「名前 logo」の検索で logo の名前のファイルを SKIP_NAMES が落とし、残った写真を名前の一致だけで通した | `commons_photos(logo=True)` はロゴのファイルだけ・`own_logo`：名前とロゴの言葉を除いて何も残らないものだけ。`RULES` 5 | （この PR） |
+| 25 | 京都の「ロゴ」が決済の案内板・電車の写真、iPhone が Linksys のロゴ | Commons の「名前 logo」の検索で logo の名前のファイルを SKIP_NAMES が落とし、残った写真を名前の一致だけで通した | `commons_photos(logo=True)` はロゴのファイルだけ・`own_logo`：名前とロゴの言葉を除いて何も残らないものだけ。`RULES` 5。ロゴのない製品（iPhone、P154 なし）は 0 枚になった → P18 を使う（届かなかった版面なので版は上げず 24 時間後に） | #333・（この PR） |
 
 ## 2. よく効いた直し方の型（手順）
 
