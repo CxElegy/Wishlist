@@ -181,6 +181,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/08/15/doomthumb-1786767136045.png?width=1280&format=jpg&auto=webp&quality=80": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets-prd.ignimgs.com/2026/10/07/gta-6-1791374410439.jpg?&format=jpg&auto=webp&quality=80": {
   "w": 3840,
   "h": 2160,
@@ -344,6 +350,12 @@
   "w": 2048,
   "h": 1152,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.mos.cms.futurecdn.net/JJUXJNug7549JTRVW9fSjA-2000-80.jpg": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
   "v": 3
  },
  "https://cdn.theouterhaven.net/wp-content/uploads/100_0578-scaled.jpg": {
@@ -653,12 +665,6 @@
   "h": 675,
   "target": 1280,
   "v": 3
- },
- "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
@@ -985,12 +991,6 @@
   "h": 720,
   "target": 1280,
   "v": 3
- },
- "https://images.thedirect.com/media/article_full/marvel-r-rated-disney.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://images.thedirect.com/media/article_full/mcu-female-superheroes-lead.jpg": {
   "w": 1280,
@@ -1553,12 +1553,6 @@
   "h": 900,
   "target": 1280,
   "v": 3
- },
- "https://media.unboxholics.com/media/source/Articles/137550/images/socialMediaImage/harry-potter-posa-hbo-max.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://media.whas11.com/assets/CCT/images/d2a97e25-4450-4841-96ef-b900ab91ff53/20260903T223000/d2a97e25-4450-4841-96ef-b900ab91ff53_1920x1080.jpg": {
   "w": 1920,
@@ -2683,12 +2677,6 @@
   "target": 1280,
   "v": 3
  },
- "https://thekatynews.com/wp-content/uploads/2026/10/Cinematic-Movie-Night-Still-Life.png": {
-  "w": 1672,
-  "h": 941,
-  "target": 1280,
-  "v": 3
- },
  "https://themagicrain.com/wp-content/uploads/2026/10/image-3-20.jpg": {
   "w": 1536,
   "h": 1024,
@@ -2843,12 +2831,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.77v3bSIiLRDPAEFyQEkUow&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://www.bing.com/th?id=ONUT.B2_wGz_aVofe4yAd16Rwcw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2930,6 +2912,12 @@
  "https://www.bing.com/th?id=ONUT.RIzgN4gEht8tuIP1ER_wKg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.TluPuPZ7aXAI_LJnjIOXrw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3019,6 +3007,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"
+ },
+ "https://www.bing.com/th?id=ONUT.pKgG6PFbwlIbdWONiNUjYg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200": {
   "w": 700,
