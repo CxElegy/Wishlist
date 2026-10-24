@@ -1,55 +1,79 @@
 {
- "admin": "c2dd8b67a922",
- "admin_marks": {
-  "backend": [
-   "バックグラウンド",
-   "cd90b8f4"
-  ],
+ "admin": "7fc35f2d18a0",
+ "admin-ai": "432d7a75165e",
+ "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9025e162"
-  ],
-  "emblem-ex": [
-   "小元素の判断の例",
-   "2720bac4"
-  ],
-  "emblems": [
-   "小元素",
-   "35095eaa"
-  ],
-  "items": [
-   "ウォッチ項目",
-   "35f54130"
-  ],
-  "ov": [
-   "しくみの全体図",
-   "1adad06c"
-  ],
-  "procs": [
-   "全体の構成（詳しい図）",
-   "15556833"
-  ],
-  "queue": [
-   "いまの状況",
-   "dd5a30a9"
-  ],
-  "status": [
-   "運行状況",
-   "776d8056"
-  ],
-  "term-panel": [
-   "ライブログ",
-   "858297f8"
+   "2b839164"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "49b76a90"
+   "55e70591"
+  ]
+ },
+ "admin-boards": "780675b57f67",
+ "admin-boards_marks": {
+  "items": [
+   "ウォッチ項目",
+   "16ab9c27"
   ],
   "votes": [
    "投票",
-   "8726173c"
+   "034f4a76"
   ]
  },
+ "admin-emblem": "2cfaa4c10fea",
+ "admin-emblem_marks": {
+  "backend": [
+   "版面ごとの状態",
+   "62928227"
+  ],
+  "emblem-ex": [
+   "小元素の判断の例",
+   "569d0c83"
+  ],
+  "emblems": [
+   "小元素",
+   "7beb1b0c"
+  ]
+ },
+ "admin-members": "834b565a571c",
+ "admin-members_marks": {},
+ "admin-now": "8bd80f500185",
+ "admin-now_marks": {
+  "nextrun": [
+   "次の実行",
+   "d36d8d5b"
+  ],
+  "queue": [
+   "いまの状況",
+   "b9009f8f"
+  ],
+  "status": [
+   "運行状況",
+   "ac98e527"
+  ],
+  "term-panel": [
+   "ライブログ",
+   "46e56d24"
+  ]
+ },
+ "admin-system": "c82def32fad2",
+ "admin-system_marks": {
+  "ov": [
+   "しくみの全体図",
+   "c3a505ce"
+  ],
+  "procs": [
+   "全体の構成（詳しい図）",
+   "ed47b541"
+  ],
+  "res": [
+   "リソース・並列と制限",
+   "8254e6eb"
+  ]
+ },
+ "admin_marks": {},
  "heat": "c6c5d981328b",
  "heat_marks": {
   "method": [
@@ -168,6 +192,6 @@
    "9d59ab4f"
   ]
  },
- "updated": "10.25 08:31",
+ "updated": "10.25 08:46",
  "wishlist": "a310f1091069"
 }
