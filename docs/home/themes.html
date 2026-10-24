@@ -268,8 +268,11 @@ button{font-family:inherit}
 .fact .label{font:700 11px var(--font-sans);letter-spacing:.14em;opacity:.8}
 .fact .new{color:var(--aac);opacity:1}
 .fact a{text-decoration:underline;text-underline-offset:3px}
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px 22px;padding:20px 26px 22px}
-.card{position:relative;display:flex;flex-direction:column;gap:10px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px 22px;padding:20px 26px 22px}
+.card{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0}
+/* 記事の近さ（2026-10-24，用户定的）：写真が上の記事か下の記事か迷わせない。同じ記事の中の隙間（8px）は記事どうしの隙間の 1/3 以下、
+   記事は下の線で閉じる（.mini と同じ線）。ux_check の「近さ」が測る */
+.grid>.card:not(.hero),.side>.card{padding-bottom:16px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
 .card.m{color:var(--fg);--ac:var(--acc)}
 .card.a{color:var(--afg);--ac:var(--aacc)}
 .card .pic{border:1.5px solid color-mix(in srgb,currentColor 45%,transparent)}
@@ -727,7 +730,7 @@ button{font-family:inherit}
  .pk.big .pic{--pko:26px}.pk.big .pkt{margin:-26px 10px 0;padding:18px 16px 14px}.pk.big .why{font-size:20px}.pk.big b{font-size:17px}.pk.big .vote{margin:10px 10px 0}
  .sec{box-shadow:5px 5px 0 var(--ink)}.band{padding:16px 14px 2px}.band .title{font-size:22px;padding:6px 14px}.band .cnt,.band .heat{margin-left:0}.band .deco{display:none}
  .hx{position:static;width:auto;margin-top:10px}.heat[open]{flex-basis:100%}
- .grid{padding:16px 14px 18px;gap:14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
+ .grid{padding:16px 14px 18px;gap:24px 14px}.facts{padding:14px 14px 0}.brief{padding:12px 14px 16px}.older summary{padding:12px 14px}.pend summary{padding:10px 14px}.pend ul{padding:0 14px 12px}
  .c12,.c8,.c6,.c4,.c3{grid-column:span 12}.card.wide{grid-template-columns:1fr}
  .card.c8 h3,.card.wide h3{font-size:21px}
  .grid>.hero .pic,.grid>.lead .pic{height:200px}.grid>.lead h2{font-size:22px}
@@ -1629,7 +1632,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.24 23:17</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.24 23:19</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
