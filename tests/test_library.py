@@ -234,6 +234,11 @@ class PickRank(unittest.TestCase):
         self.assertEqual(library.find_pick_wikidata("NBA", search([{"id": "Q155223", "label": "National Basketball Association",
             "description": "North American professional basketball league", "aliases": ["NBA"], "match": {"type": "alias", "text": "NBA"}}]), "运动"), "Q155223")
 
+    def test_franchise_stays_whole(self):
+        hits = [{"id": "Q864", "label": "ポケットモンスター", "description": "日本のメディアミックス作品", "match": {"type": "label", "text": "ポケットモンスター"}},
+                {"id": "Q24558579", "label": "ポケットモンスター", "description": "日本のコンピュータゲームシリーズ", "match": {"type": "label", "text": "ポケットモンスター"}}]
+        self.assertEqual(library.find_pick_wikidata("ポケットモンスター", search(hits, {"Q864": 126, "Q24558579": 33}), "游戏"), "Q864")
+
     def test_kyoto_most_languages(self):
         hits = [{"id": "Q751907", "label": "平安京", "description": "日本のかつての首都で、計画都市", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}},
                 {"id": "Q34600", "label": "京都市", "description": "京都府庁所在地", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}},

@@ -289,6 +289,10 @@ def _sitelinks(ids, get):
     return {q: len((e or {}).get("sitelinks") or {}) for q, e in (d.get("entities") or {}).items()}
 
 
+FRANCHISE = re.compile(r"media franchise|メディアミックス|媒体系列|跨媒体", re.I)
+FRANCHISE_SECS = ("影视", "游戏", "好物", "演出", "出行")   # 作品・IP 型の 8 面が入る板块（docs/additem.js の MEDIA）
+
+
 def find_pick_wikidata(name, get=_wd_get, sec=None):
     """お客さまの選んだ名前 → Wikidata の番号（名前がそろえて同じ項目だけ。なければ None）。断られたら WdBlocked。
     候補（名前か別名がそろえて同じ項目）の順番（2026-10-24、お客さまの版面の引き直しで決めた）：
@@ -296,7 +300,10 @@ def find_pick_wikidata(name, get=_wd_get, sec=None):
     2. 名前（label）が同じもの。ただし Wikipedia の言語数 ×4 が別名で当たった一番の候補より少ないものは「情報少なめ」として後ろ
        （向導の thin と同じ物差し）
     3. Wikipedia の言語数が多いもの：京都 は 平安京（36）ではなく 京都市（260）
-    3 字までの英数字は、別名だけで当たる候補を板块に入るときしか使わない（「Ado」が別名 ADO のアデノシンに当たった）。"""
+    3 字までの英数字は、別名だけで当たる候補を板块に入るときしか使わない（「Ado」が別名 ADO のアデノシンに当たった）。
+    メディアミックス・media franchise の項目（作品・IP 全体）は作品・ゲーム・グッズ・音楽・おでかけのどの板块にも入るとみなす
+    （ゲームの板块で選んだ「ポケットモンスター」がゲームシリーズ Q24558579〔33〕ではなく作品全体 Q864〔126〕のまま。
+    1 つの名前は 1 つの版面、ゲーム・グッズは同じ版面の枝：CLAUDE.md「作品・IP 型の面」）。"""
     import taxonomy
     want = norm_name(name)
     if len(want) < 2:
@@ -321,7 +328,8 @@ def find_pick_wikidata(name, get=_wd_get, sec=None):
                 c["alias"] = True
     use_sec = sec and sec != taxonomy.OTHER
     for c in cands.values():
-        c["fits"] = bool(use_sec and taxonomy.classify(c["desc"]) == sec)
+        c["fits"] = bool(use_sec and (taxonomy.classify(c["desc"]) == sec
+                                      or (sec in FRANCHISE_SECS and FRANCHISE.search(c["desc"]))))
     keep = {q: c for q, c in cands.items() if c["label"] or (c["alias"] and (not short or c["fits"]))}
     if not keep:
         return None
@@ -333,7 +341,7 @@ def find_pick_wikidata(name, get=_wd_get, sec=None):
     return max(keep, key=rank)
 
 
-RECHECK_VER = 2   # 番号の決め方（find_pick_wikidata）を変えたら上げる：お客さまの版面を 1 度ずつ引き直す
+RECHECK_VER = 3   # 番号の決め方（find_pick_wikidata）を変えたら上げる：お客さまの版面を 1 度ずつ引き直す
 
 
 def recheck_plan(boards, follows, get=_wd_get, cache=None, limit=25, pause=1.0):
