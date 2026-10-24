@@ -322,6 +322,12 @@
   ],
   "why": "看不清"
  },
+ "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
+  "w": 960,
+  "h": 639,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.mos.cms.futurecdn.net/7MkXgTMHDpN3fkLRciMFVY-2048-80.jpg": {
   "w": 2048,
   "h": 1152,
@@ -433,12 +439,6 @@
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/g-t-a-6.png?resize=2000,1125": {
   "w": 2000,
   "h": 1125,
-  "target": 1280,
-  "v": 3
- },
- "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-teaser-heres-what-will-likely-be-shown-in-tonights-new-preview---spoilers-ab230605.jpg": {
-  "w": 1600,
-  "h": 1036,
   "target": 1280,
   "v": 3
  },
@@ -706,6 +706,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/10/miabyss_movie_part1.jpg": {
+  "w": 1600,
+  "h": 904,
+  "target": 720,
+  "v": 3
+ },
  "https://i1.hoopchina.com.cn/bbs-editor-web/17926623656181.jpg": {
   "w": 780,
   "h": 1212,
@@ -832,6 +838,12 @@
   "w": 1280,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://images.hothardware.com/contentimages/newsitem/71942/content/16x9_2138x1203_highres-grand-theft-auto-vi-news.jpg": {
+  "w": 2138,
+  "h": 1203,
+  "target": 1280,
   "v": 3
  },
  "https://images.khan.co.kr/article/2026/10/14/news-p.v1.20261014.e15dc1b6f9894a25a15b79a4a3d60af2_P1.jpg": {
@@ -1909,6 +1921,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://pimg.mk.co.kr/news/cms/202610/23/news-p.v1.20261023.088ade09079d4dc29869bade24bd3d2f_R.jpg": {
+  "w": 639,
+  "h": 473,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.603,
+  "local": "pics/64670f2ae4ace727.webp",
+  "out": [
+   1280,
+   947
+  ],
+  "why": "看不清"
+ },
  "https://prcdn.freetls.fastly.net/release_image/12048/1247/12048-1247-64977d38e7992af398fbe6cd29e05b7d-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 891,
   "h": 1260,
@@ -2085,6 +2110,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png": {
+  "w": 1434,
+  "h": 948,
+  "target": 1280,
+  "v": 3
+ },
  "https://sffgazette.com/images/articles/banners/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-ab11618.jpg": {
   "w": 1600,
   "h": 900,
@@ -2121,6 +2152,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://static.beebom.com/wp-content/uploads/2026/10/GTA-6-platforms.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.beebom.com/wp-content/uploads/2026/10/how-many-gta-6-pre-order-copies-have-been-sold-featured-image.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://static.digit.in/Samsung-Galaxy-S27-Ultra-1.png": {
   "w": 1280,
   "h": 720,
@@ -2131,6 +2174,12 @@
   "w": 712,
   "h": 955,
   "target": 1280,
+  "v": 3
+ },
+ "https://static.invenglobal.com/upload/image/2026/10/23/i1792745527647408.jpeg": {
+  "w": 1229,
+  "h": 688,
+  "target": 720,
   "v": 3
  },
  "https://static.invenglobal.com/upload/thumb/2026/10/16/c/n1792173110374184.jpg": {
@@ -2209,6 +2258,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/guardians-of-the-galaxy-3.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -2282,6 +2337,18 @@
   "target": 1280,
   "v": 3,
   "blur": 0.367
+ },
+ "https://sundayguardianlive.com/wp-content/uploads/2026/09/kharagpur-sadar-2026-09-16t154531065.png": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://tech-insider.org/wp-content/uploads/2026/10/activision-open-world-game-emergent-gameplay-elsewhere-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 720,
+  "v": 3
  },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/ac-switch/thumbnail/63317/4345231d7bff38b91b280f4eb2272bef": {
   "w": 1200,
@@ -2384,6 +2451,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.asiaone.com/sites/default/files/styles/article_top_image/public/original_images/Oct2026/chris%20pratt.jpg?itok=-X5XP5qg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.atpress.ne.jp/releases/641555/img_641555_1.jpg": {
@@ -2614,6 +2687,19 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.Zxm3z2yvsEZNWcX4qpsRNA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.513,
+  "local": "pics/aba9df9c13524401.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.ck6Mg001BrOSbWyGoEyvGg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2735,9 +2821,28 @@
   "v": 3,
   "blur": 0.376
  },
+ "https://www.bing.com/th?id=ONUT.vuYQdO4GK_fpGWkwGRZqhw&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.498,
+  "local": "pics/94c1c40d95e71819.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://www.boardoftheworld.com/wp-content/uploads/2026/05/CAPiTA-Ultrafear-Snowboard-2027.jpg": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102319226971.jpg": {
+  "w": 690,
+  "h": 460,
   "target": 720,
   "v": 3
  },
@@ -2832,6 +2937,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-ultra-3.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.gsmdome.com/wp-content/uploads/2026/10/samsung-samsung-galaxy-s27-galaxy-s27-cover-a97742-001.jpg": {
   "w": 1600,
   "h": 1252,
@@ -2898,6 +3009,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.omg.com.tw/Images/base/fbshare.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/ps5-accessories.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -2925,6 +3042,12 @@
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Pedro-Pascal-F4.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -2961,6 +3084,12 @@
  "https://www.trustedreviews.com/wp-content/uploads/sites/7/2026/10/5a32df85-7990-4d4c-ad50-11f9dac7171b.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.tvinsider.com/wp-content/uploads/2026/10/Doomsday-Preview-12-1420x798.jpg": {
+  "w": 1420,
+  "h": 798,
   "target": 720,
   "v": 3
  },
