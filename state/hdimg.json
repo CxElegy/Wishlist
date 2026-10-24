@@ -125,12 +125,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/008eZAxIgy1iicg6luk1qj30io0nbn2r.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-24"
- },
  "http://wx3.sinaimg.cn/middle/007nrArUgy1ii4kkhnk5xj31400qox3n.jpg": {
   "w": 1440,
   "h": 960,
@@ -2429,12 +2423,6 @@
   "target": 720,
   "v": 3
  },
- "https://static.digit.in/Samsung-Galaxy-S27-Ultra-vs-Samsung-Galaxy-S26-Ultra.png": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-24"
- },
  "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022223735": {
   "w": 712,
   "h": 955,
@@ -3118,6 +3106,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102319226971.jpg": {
+  "w": 690,
+  "h": 460,
+  "target": 720,
+  "v": 3
+ },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
   "target": 1280,
   "v": 3,
@@ -3216,6 +3210,12 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/08/s27-2.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-ultra-3.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
