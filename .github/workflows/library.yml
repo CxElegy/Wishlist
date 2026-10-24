@@ -6,6 +6,7 @@ name: ライブラリへ写す
 # 週 1 回（月曜 3:41 UTC）と手で起こしたときは、先に番号のない版面の Wikidata を引き直す（--refresh）：
 # 見つかれば items.yaml に書いて push し、boards の行を名前の印（n:…）から番号の印（wd:…）へ書き換える。
 # 断られた（429 など）と「項目が 0 件」は分けて state/log/library.json に書く。
+# 毎時 41 分の定時は抜けるので、後台作業（pg_cron で毎時 17 分に必ず）が最後に成功した回から 80 分あいていたら users_only で起こす（scripts/library_watch.py）。
 # 1 時間ごと（毎時 41 分）：お客さまの選んだもの（app_users.prefs.picks）をライブラリの版面にして follows に書く（--users、ログは数だけ）。
 # 小分類は Wikidata の説明・種類・ジャンル・競技・機種などから決める（引いた結果は state/wd_facts.json に 30 日。お客さまの選んだものが分かるので倉庫には入れず Actions の cache に置く）。前に名前だけで決めた小分類も直す。
 
@@ -14,6 +15,10 @@ on:
     inputs:
       compare:
         description: "店長の版面を今の規則で引き直して今の番号と比べるだけ（書かない）"
+        type: boolean
+        default: false
+      users_only:
+        description: "お客さまの選んだものだけ（番号の引き直しはしない。後台作業の控えの時計 library_watch.py が起こすとき）"
         type: boolean
         default: false
   schedule:
@@ -49,7 +54,7 @@ jobs:
         if: inputs.compare
         run: python scripts/library.py --compare
       - name: Wikidata の番号を引き直す（週 1 回・手で）
-        if: (github.event_name == 'workflow_dispatch' && !inputs.compare) || github.event.schedule == '41 3 * * 1'
+        if: (github.event_name == 'workflow_dispatch' && !inputs.compare && !inputs.users_only) || github.event.schedule == '41 3 * * 1'
         run: |
           python scripts/library.py --refresh
           git config user.name "github-actions[bot]"

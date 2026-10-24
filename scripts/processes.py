@@ -124,6 +124,8 @@ COMPONENTS = {
      "what": "お客さまのページも店長と同じ部品で作り、本人だけが読める場所に置く"},
     "collectwatch": {"kind": "rule", "name": "収集の控えの時計 collect_watch.py", "spec": "後台作業のたび（pg_cron で毎時必ず）· 最後の収集から 150 分 → digest.yml を workflow_dispatch · 走っている・並んでいる・60 分以内に始まった回（timeout 40 分より長く）があれば起こさない",
                      "what": "GitHub の定時（17 */2）が抜けても収集が何時間も止まらないように。起こした・起こせなかった・回の様子が読めなかったら state/log/gate.json に 1 行（同じ失敗の続きは書き足さない）"},
+    "libwatch": {"kind": "rule", "name": "ライブラリの控えの時計 library_watch.py", "spec": "後台作業のたび（pg_cron で毎時必ず）· library.yml の最後に成功した回（gh run list）から 80 分 → workflow_dispatch（users_only：お客さまの選んだものだけ、番号の引き直しはしない）· 走っている・並んでいる・30 分以内に始まった回（timeout 15 分より長く）があれば起こさない",
+                 "what": "GitHub の定時（毎時 41 分）が抜けても、お客さまが新しく選んだものが 2 時間以内に follows に入るように。起こした・起こせなかった・読めなかったら state/log/gate.json に 1 行（同じ失敗の続きは書き足さない）"},
     "deadline": {"kind": "rule", "name": "収集の締め切り COLLECT_DEADLINE_MIN", "spec": "18 分 · 過ぎたら新しい版面を始めない · 始まった版面も 23 分（＋5 分）で待つのをやめる · 残りは次の回に先に取る（deferred）· 初めて取る版面（新関注項）も先に · 過ぎてからの封面はネットに出ない · 1 版面の取得・処理の例外はその版面だけ空で続ける · timeout 40 分",
                  "what": "digest.ingest：timeout で push の前に切れて、その回の分が全部消えないように"},
     "taste": {"kind": "algo", "name": "好みの学習", "spec": "ラベルごと ±1 · 上限 −6〜+4 · 出すのは 5 点以上",
@@ -274,13 +276,15 @@ PROCESSES = [
         "summary": "仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
                    "AI が要る仕事（AI 編集・写真）は仕事があるときだけ Claude を起こす。Claude は起きるたびにトークンを使うので、空振りをなくす。"
                    "版面には AI が整理した記事しか載らないので、収集で整理待ちが増えたらすぐ AI 編集を起こす（リポジトリ変数 GATE_FIRE で開け閉め）。",
-        "files": ["scripts/gate.py", "scripts/collect_watch.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "CLAUDE.md", "uses": ["gate"],
+        "files": ["scripts/gate.py", "scripts/collect_watch.py", "scripts/library_watch.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "CLAUDE.md", "uses": ["gate"],
         "flow": [
             {"id": "g1", "kind": "fan", "lane": "actions", "title": "仕事を調べる", "mode": "全部を毎回",
              "items": [("1", "小元素", "目標未満の版面（1 時間以内の失敗で材料が同じものは除く）"), ("2", "AI 編集", "今日の inbox の整理待ち（_covered より後・edit.json にない版面）"),
                        ("3", "写真", "inbox/photos/*.json")]},
             {"id": "g1c", "kind": "decision", "lane": "actions", "title": "最後の収集から 150 分たった？", "text": "state/log/collect.json · GitHub の定時（17 */2）は抜けることがある · この段は pg_cron で毎時必ず通る（判断の段より前：判断が落ちてもここは通る）",
              "uses": ["collectwatch"], "yes": "収集の回が走っていない・並んでいない・60 分以内に始まっていなければ digest.yml を起こす（workflow_dispatch）。起こせなかったら記録して管理ページへ", "no": "何もしない"},
+            {"id": "g1l", "kind": "decision", "lane": "actions", "title": "ライブラリの最後の回から 80 分たった？", "text": "library.yml の成功した回（gh run list）· 毎時 41 分の定時は抜けることがある（2026-10-24 00:41 は来なかった）",
+             "uses": ["libwatch"], "yes": "走っていない・並んでいない・30 分以内に始まっていなければ library.yml を users_only で起こす（お客さまの選んだもの → follows）", "no": "何もしない"},
             {"id": "g2", "kind": "decision", "lane": "actions", "title": "小元素の仕事がある？", "no": "飛ばす"},
             {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 6 本並列", "text": "「小元素の自動補完」· 失敗しても次の段（AI 編集を起こす・提交）へ進む（continue-on-error）· items.yaml は一時ファイルから置き換える · 提交の前に items.yaml が読めなければ書き込みを戻す · 落ちた回は続けて起こし直さない"},
             {"id": "g4", "kind": "decision", "lane": "actions", "title": "AI が要る仕事がある？", "text": "AI 編集・写真", "no": "Claude は起こさない（トークン 0）"},
@@ -480,14 +484,14 @@ PROCESSES = [
         ],
     },
     {
-        "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "items.yaml が変わったとき · 1 時間ごと（毎時 41 分、お客さまの版面）· 週 1 回（月曜 12:41 JST、番号の引き直し）· 手でも",
-        "trigger": "main の items.yaml・scripts/library.py が変わったとき、1 時間ごと（毎時 41 分）、週 1 回の定時（月曜 3:41 UTC）、または手で起こす",
+        "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "items.yaml が変わったとき · 1 時間ごと（毎時 41 分、お客さまの版面。抜けたら後台作業が起こす）· 週 1 回（月曜 12:41 JST、番号の引き直し）· 手でも",
+        "trigger": "main の items.yaml・scripts/library.py が変わったとき、1 時間ごと（毎時 41 分）、週 1 回の定時（月曜 3:41 UTC）、手で起こす、または定時が抜けて 80 分あいたら後台のゲートが users_only で起こす（library_watch）",
         "summary": "みんなの版面の置き場（ライブラリ：Supabase の boards・follows）へ、店長の版面を写す。記事集め・AI 編集・デザインを版面ごとに 1 回にし、店長もお客さまも同じ版面を受け取るための土台（2026-10-23）。",
         "files": [".github/workflows/library.yml", "scripts/library.py", "db/library.sql"], "doc": "CLAUDE.md", "uses": ["supabase"],
         "flow": [
             {"id": "lb1", "kind": "step", "lane": "actions", "title": "items.yaml を読む", "text": "店長の版面 1 つずつ"},
             {"id": "lb2", "kind": "step", "lane": "actions", "title": "同じものかどうかの印", "text": "Wikidata の番号（wd:Q…）／なければ名前をそろえたもの（全角半角・大小・空白・記号）"},
-            {"id": "lb2r", "kind": "decision", "lane": "actions", "title": "週 1 回の定時・手で起こした回？", "text": "items.yaml が変わっただけの回は引き直さない",
+            {"id": "lb2r", "kind": "decision", "lane": "actions", "title": "週 1 回の定時・手で起こした回？", "text": "items.yaml が変わっただけの回・後台の控えの時計が users_only で起こした回は引き直さない",
              "no": "番号はそのまま（lb2 へ）"},
             {"id": "lb2w", "kind": "step", "lane": "ext", "title": "番号のない版面の Wikidata を規則で引き直す（library.refresh → find_wikidata）",
              "x": "1 版面ずつ · 間 1 秒",
