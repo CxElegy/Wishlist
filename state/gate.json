@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-10-24T00:17:28+00:00",
+ "changed": true,
+ "checked": "2026-10-24T01:18:14+00:00",
  "fired": {
   "at": "2026-10-24T00:17:28+00:00",
   "results": {
@@ -19,36 +19,17 @@
     "resp": "cse_01VQ2Cyevk67NF2xZqgCkc7C",
     "sig": "80e01dfb2996"
    },
-   "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "dota2",
-    "gelato pique",
-    "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
-   ],
-   "last_batch": "2026-10-23T10:25:16+00:00",
+   "items": [],
+   "last_batch": "2026-10-24T00:41:26+00:00",
    "last_error": {
     "at": "2026-10-23T09:27:27+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 0,
+   "need": false,
+   "prog": 239,
    "prog_day": "2026-10-24",
-   "sig": "80e01dfb2996",
-   "why": "整理待ちの記事 239 件（18 版面・AI 編集まで版面に載らない）"
+   "sig": "c0c8b76adcd9",
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
@@ -56,12 +37,12 @@
    "need": false,
    "sig": "b1312ab4623e",
    "waiting": [
-    "Astrae Oratio",
     "あつ森",
-    "哈利波特剧集",
-    "A2O LITE"
+    "Astrae Oratio",
+    "A2O LITE",
+    "哈利波特剧集"
    ],
-   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 09:18 から）"
+   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 11:17 から）"
   },
   "photos": {
    "claude": true,
