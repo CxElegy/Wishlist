@@ -603,6 +603,12 @@
   "target": 720,
   "v": 3
  },
+ "https://en.koreadaily.com/wp-content/uploads/2026/10/202610240906771021_6adbf90f0c237.jpg": {
+  "w": 530,
+  "h": 1185,
+  "target": 1280,
+  "v": 3
+ },
  "https://fpimgs.s3.ap-southeast-1.amazonaws.com/uul/2026/10/17/6ad27d8c110d81.61026403.jpg": {
   "w": 800,
   "h": 800,
@@ -1657,12 +1663,6 @@
   "target": 1280,
   "v": 3
  },
- "https://news.denfaminicogamer.jp/wp-content/uploads/2026/10/Screenshot-2026-10-24-13-30-23-1024x576.png": {
-  "w": 1024,
-  "h": 576,
-  "target": 720,
-  "v": 3
- },
  "https://news.mynavi.jp/article/nippon_insekai-21/ogp_images/ogp.jpg": {
   "w": 1200,
   "h": 800,
@@ -2261,6 +2261,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://realsound.jp/wp-content/uploads/2026/10/20261023-vaundy-99.jpeg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://resource.hanteonews.com/content/post/2026/10/21/dfd242c4-5ebd-4dcb-ba8f-49c0c535dece.jpeg": {
   "w": 1500,
   "h": 1000,
@@ -2802,6 +2808,12 @@
    1200
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.47F0UF6FwOy-t3NOzBYwtA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6yHBTZsf4a3Uqjs0CUeDpQ&pid=News&w=1200": {
   "w": 700,

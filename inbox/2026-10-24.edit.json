@@ -104,7 +104,10 @@
     5,
     3,
     2,
-    27
+    27,
+    28,
+    29,
+    30
    ],
    "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png"
   },
@@ -126,7 +129,8 @@
    "refs": [
     17,
     24,
-    22
+    22,
+    31
    ]
   },
   {
@@ -286,23 +290,24 @@
  ],
  "_covered": {
   "漫威电影": 99,
-  "三星手机": 27,
+  "三星手机": 31,
   "GTA 6": 37,
   "A2O LITE": 27,
   "MMORPG 新作": 20,
   "日本顶级网球赛事": 25,
-  "ILLIT": 12,
+  "ILLIT": 15,
   "周杰伦": 12,
   "チェーンソーマン": 10,
   "dota2": 8,
   "Astrae Oratio": 6,
   "滑雪": 6,
-  "绝区零": 6,
+  "绝区零": 10,
   "gelato pique": 3,
-  "BLEACH Mirrors High": 2,
+  "BLEACH Mirrors High": 3,
   "あつ森": 2,
   "哈利波特剧集": 2,
-  "猫用品": 2
+  "猫用品": 2,
+  "Vaundy": 1
  },
  "日本顶级网球赛事": [
   {
@@ -431,6 +436,17 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "ILLIT Arrested — Black Agent Transformation in New MV Teaser",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13,
+    14,
+    15
    ]
   }
  ],
@@ -610,11 +626,12 @@
  ],
  "绝区零": [
   {
-   "headline": "Zenless Zone Zero reveals Sunbringer, the first three-in-one Agent!",
-   "highlight": "three-in-one Agent",
+   "headline": "『ゼンゼロ』「サンブリンガー（CV:大原さやか）」のプレイ映像がいきなり公開！ドラキナ、リンドヴェルヌ、エルダの三位一体で激しく戦う",
+   "highlight": "プレイ映像がいきなり公開",
    "blurb": "Sunbringer は Eldreda・Lindverne・Dracaene の 3 人を 1 体として操作する初のエージェントです。",
    "weight": "lead",
    "refs": [
+    9,
     2,
     3,
     4
@@ -685,7 +702,8 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    3
    ]
   }
  ],
@@ -735,6 +753,17 @@
    "highlight": "",
    "blurb": "",
    "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy「しわあわせ」が映画主題歌起用で再注目 今改めて胸に響く、目に見えない“本物の繋がり”を描いた普遍性",
+   "highlight": "映画主題歌起用で再注目",
+   "blurb": "Vaundy「しわあわせ」が映画主題歌に起用され、Spotify「Viral Hits Japan」で再注目されています。",
+   "weight": "lead",
    "refs": [
     1
    ]
