@@ -254,6 +254,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://biz.chosun.com/resizer/v2/GU4TMZRZMJRGKMZUGM2TSMDBMQ.jpg?auth=3e26b22ade457cd67f813f4a5007619e62ef2a224171742594545b8559bade96&width=572&height=300&smart=true": {
+  "w": 572,
+  "h": 300,
+  "target": 720,
+  "v": 3
+ },
  "https://biz.chosun.com/resizer/v2/MRSDGOJTGM4WMMJRG44GIMJUGM.jpg?auth=dde128eb71a6881d31630bad6ff1821dd094593c0bce0b3b673b056ffdb0e1fc&width=616": {
   "w": 616,
   "h": 435,
@@ -914,12 +920,6 @@
   "target": 720,
   "v": 3
  },
- "https://images.khan.co.kr/article/2026/10/24/news-p.v1.20261024.824f1a0ce6e04ecbb1572f3866abcd40_P1.jpg": {
-  "w": 1200,
-  "h": 1563,
-  "target": 720,
-  "v": 3
- },
  "https://images.selectra.jp/articles/chiikawa-movie-4dx/hero.webp": {
   "w": 1200,
   "h": 900,
@@ -1106,6 +1106,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fWEys.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
@@ -1380,6 +1386,12 @@
   "w": 1035,
   "h": 582,
   "target": 1280,
+  "v": 3
+ },
+ "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://inews.gtimg.com/news_ls/OHacNUzITenU0I8e57iFBQxt_gPJX07pk4h0glUs0fOAUAA/0": {
@@ -2482,6 +2494,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://statico.soapcentral.com/editor/2026/10/04b5c-17927586605397.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://statics-prod.mirrordaily.news/images/0f0ff192-36b2-458e-adef-6d490374d1fb.jpg": {
   "w": 2048,
   "h": 1536,
@@ -2666,12 +2684,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.asiaone.com/sites/default/files/styles/article_top_image/public/original_images/Oct2026/chris%20pratt.jpg?itok=-X5XP5qg": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://www.atpress.ne.jp/releases/641555/img_641555_1.jpg": {
   "w": 1200,
   "h": 800,
@@ -2755,13 +2767,13 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.6CWZi5pnI5Z4Y6_5m-aB8Q&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.9rMjI0ysLG5Xhjv7loJzeg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.9rMjI0ysLG5Xhjv7loJzeg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.AMSc_uol3EVxzGp6wDahHQ&pid=News&w=768": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -2799,6 +2811,12 @@
    852
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.ETAq8LVpbT6XPHSwPaVNkA&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
@@ -2852,21 +2870,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.VK5Rx0Jar2dtMRIFeL5IYA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.WzHU2NsEMmZgg0jQWg4X0Q&pid=News&w=1200": {
   "w": 700,
   "h": 366,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Y7mSmXGBJmMRCQ10MoARoQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 371,
   "target": 720,
   "v": 3
  },
@@ -3021,6 +3027,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.zQJaVX2q7aymThHxKJbHNA&pid=News&w=1024": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2026/05/CAPiTA-Ultrafear-Snowboard-2027.jpg": {
   "w": 700,
@@ -3248,12 +3260,6 @@
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
-  "target": 720,
-  "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Pedro-Pascal-F4.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
   "target": 720,
   "v": 3
  },
