@@ -659,6 +659,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -870,12 +876,6 @@
   "target": 1280,
   "v": 3
  },
- "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
-  "w": 1200,
-  "h": 677,
-  "target": 720,
-  "v": 3
- },
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1346,fit=cover,q=high,sharpen=2/21/2026/10/2026102118251711514_1.jpg": {
   "w": 1200,
   "h": 1346,
@@ -995,12 +995,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://images.thedirect.com/media/article_full/marvel-r-rated-disney.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/mcu-female-superheroes-lead.jpg": {
@@ -2846,6 +2840,12 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.8k5ot9gh5DGrsUakSRIN0A&pid=News&w=500": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://www.bing.com/th?id=ONUT.B2_wGz_aVofe4yAd16Rwcw&pid=News&w=1200": {
   "w": 700,

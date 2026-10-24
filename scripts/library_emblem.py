@@ -218,7 +218,8 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
             add["emblem"] = out
     have = len(add.get("emblem") or []) if "emblem" in add else len(got.get("emblem") or [])
     note = re.sub(r"新しい記事が来たらすぐ、来なくても \d+ 時間後", f"{RETRY_HOURS} 時間後", str(r.get("note") or ""))  # 店長の文のまま（材料の指紋・毎時）だと中身と合わない
-    add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES}
+    add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES,
+                         "nv": emblem_fill.NAMES_V}   # 名簿の規則の版（上がると、そろった版面も 1 回名簿を数え直す）
     return add
 
 
@@ -226,6 +227,8 @@ def due(boards, now):
     """やる順：まだ一度も試していない版面 → 0 枚の版面（エンブレムが出ていない：途中・届かなかったもの）→ 途中（running）→
     届かなかったものは RETRY_HOURS たってから（前の版の規則で試したものはすぐ）。済み（ok）は飛ばす。
     0 枚を先に：キャラの多い途中の版面（1 回 1 版面 5 分）が前にいると、0 枚の版面が何回も待たされる（#329 のあと 28 版面待ち）。"""
+    import emblem_fill
+    names_v = emblem_fill.NAMES_V
     out = []
     for b in boards:
         st = (b.get("config") or {}).get("emblem_state") or {}
@@ -236,6 +239,8 @@ def due(boards, now):
             out.append((1 if zero else 2, st.get("at", 0), b))
         elif int(st.get("v") or 1) < RULES or st.get("state") != "ok" and now - int(st.get("at") or 0) > RETRY_HOURS * 3600:
             out.append((1 if zero else 3, st.get("at", 0), b))
+        elif st.get("state") == "ok" and st.get("nv") != names_v:   # そろっていても、名簿の規則が新しくなったら 1 回数え直す（キャラの人数が名簿どおりか）
+            out.append((4, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
 
 

@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "e1184a74f0b9",
+ "edit_sig": "f259ae2ed724",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -160,29 +160,6 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 25,
-     "source": "IMDb",
-     "title": "Latest Update Suggests ‘Avengers: Doomsday’ and ‘Secret Wars’ Will Stay True to the Original Comics",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBVSG1SdWhjaU5sZ3dNU0hHWnVWSGdfcDNxZUtlSGtzajBZaXRVWHVYdDlnbE52VXNfcXVpbV9DYzI4YndNbkNTdnd5NDZhQWVXMWROaXI5TVZIN1FHaDZOUmNLZEQ?oc=5"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 26,
-     "source": "IMDb",
-     "title": "‘Avengers: Doomsday’ Doctor Doom Description Leans Into the Mystery Behind Robert Downey Jr.’s Mask",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9CTndwOWM2VnhEOWpjYTBUR0RpM18waTk2SVZwZndaTVN6YkM0R016d0ZXWDNOVFZBZy1PMFJXUTIyLWJZN2JtRWxaNDA2aEtYZG1mcEJVR1MtRGY1TFBadmlvNHJYMW8?oc=5"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 27,
-     "source": "IMDb",
-     "title": "‘Avengers: Doomsday’ Reportedly Crosses a Record-Setting Presales Milestone Months Before Release, Leaving ‘Dune: Part Three’ Far Behind",
-     "url": "https://www.imdb.com/news/ni66078485/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -227,12 +204,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-24",
-     "headline": "Disney+ Calls It Quits With Marvel's 2nd R-Rated MCU Show",
-     "highlight": "",
-     "image": "https://images.thedirect.com/media/article_full/marvel-r-rated-disney.jpg",
-     "image_via": "og:image",
-     "url": "https://thedirect.com/article/disney-plus-marvel-r-rated-mcu-show-quit",
+     "date": "2026-10-23",
+     "headline": "‘Avengers: Doomsday’ Reportedly Crosses a Record-Setting Presales Milestone",
+     "highlight": "Record-Setting Presales",
+     "image": "https://www.bing.com/th?id=ONUT.8k5ot9gh5DGrsUakSRIN0A&pid=News&w=500",
+     "image_via": "Bing 缩略图",
+     "url": "https://www.imdb.com/news/ni66078485/",
      "weight": "normal"
     }
    ],
@@ -509,7 +486,7 @@
      "highlight": "",
      "image": null,
      "source": "Howl.Link",
-     "source_icon": "https://www.youtube.com/s/desktop/dc0b62b0/img/favicon_144x144.png",
+     "source_icon": null,
      "url": "https://t.co/h37eNf4Ukr",
      "weight": "normal"
     }
@@ -707,8 +684,8 @@
      "date": "2026-10-23",
      "headline": "A2O LITEアイチン、両親の7億ウォン規模の賃金未払い疑惑で騒動",
      "highlight": "",
-     "image": "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp",
+     "image_via": "og:image",
      "url": "https://global.mediafine.co.kr/ja/news/a2o-lite-ai-jjing-fans-debt-controversy",
      "weight": "normal"
     },
@@ -852,7 +829,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-10-24",

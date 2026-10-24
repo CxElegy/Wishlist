@@ -132,7 +132,8 @@ class Fill(unittest.TestCase):
         self.assertEqual(add["emblem"][0]["image"], f"{BASE}/storage/v1/object/public/emblems/{name}")
         self.assertEqual(add["emblem"][1]["image"], "https://e.org/b.png")
         self.assertNotIn("emblem_kind", add)          # 種類は毎回規則から（config に残さない）
-        self.assertEqual(add["emblem_state"], {"state": "ok", "have": 2, "at": 100, "note": "2 枚", "v": le.RULES})
+        self.assertEqual(add["emblem_state"], {"state": "ok", "have": 2, "at": 100, "note": "2 枚", "v": le.RULES,
+                                               "nv": emblem_fill.NAMES_V})
 
     def test_note_uses_library_retry(self):
         b = {"id": 9, "name": "x", "wd": None, "config": {}}
@@ -146,7 +147,9 @@ class Fill(unittest.TestCase):
 
     def test_due(self):
         now = 10 ** 6
-        bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES}}},   # 済み・今の規則 → 飛ばす
+        nv = emblem_fill.NAMES_V
+        bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv}}},   # 済み・今の規則 → 飛ばす
+              {"id": 9, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv - 1}}},   # 済みでも名簿の規則が前の版 → 最後に数え直す
               {"id": 8, "config": {"emblem_state": {"state": "ok", "at": 0, "have": 3}}},   # 済みでも前の版の規則 → 作り直し
               {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES}}},
               {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2}}},   # 前の版の規則 → すぐ
@@ -154,7 +157,7 @@ class Fill(unittest.TestCase):
               {"id": 4, "config": {"emblem_state": {"state": "running", "at": now, "have": 5}}},
               {"id": 7, "config": {"emblem_state": {"state": "running", "at": now, "have": 0}}},
               {"id": 5, "config": {}}]
-        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 4, 8, 6])
+        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 4, 8, 6, 9])
 
     def test_rebuild_on_new_rules(self):
         """版が上がった版面は前の規則のもの（名簿・分類・小元素）を捨てて作り直す。キャラも、新しい規則で取れた分があれば前の小元素は残さない

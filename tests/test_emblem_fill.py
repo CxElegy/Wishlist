@@ -10,6 +10,8 @@ import os
 import pathlib
 import sys
 import unittest
+import tempfile
+import urllib.parse
 from unittest import mock
 
 import yaml
@@ -1458,6 +1460,67 @@ class FindSources(unittest.TestCase):
             self.assertTrue(ef.find_sources(item, log=lambda *a: None))
         self.assertEqual(wrote["emblem_fandom"], "chiikawa")
         self.assertEqual(wrote["emblem_category"], '"Characters"')
+
+    def _find(self, item, sites, cats, search=(), wd=None):
+        """sites：{wiki: sitename}、cats：{分類: 人数}、search：分類の検索の結果。→ 書いた {key: 値}。"""
+        def fake_json(url, *a):
+            if "siteinfo" in url:
+                w = url.split("//")[1].split(".")[0]
+                if w in sites:
+                    return {"query": {"general": {"sitename": sites[w]}}}
+                raise OSError("404")
+            if "list=search" in url:
+                return {"query": {"search": [{"title": f"Category:{c}"} for c in search]}}
+            n = next((v for c, v in cats.items() if urllib.parse.quote(f"Category:{c}") in url), 0)
+            return {"query": {"categorymembers": [{"title": str(i)} for i in range(n)]}}
+        wrote = {}
+        import library_emblem
+        with mock.patch.object(ef, "_json", fake_json), mock.patch.object(ef, "_set_field", lambda name, k, v: wrote.__setitem__(k, v.split("#")[0].strip())), \
+             mock.patch.object(library_emblem, "wd_entity", lambda q: wd or {}):
+            ef.find_sources({"emblem_kind": "character", **item}, log=lambda *a: None)
+        return wrote
+
+    def test_work_category_first_and_dead_fandom_from_wikidata(self):
+        """GTA 6：書いてあった gtawiki は開けない → Wikidata の Fandom（gta）→ 作品の名前の付いた分類（Characters in GTA V は別の作品）。"""
+        w = self._find({"name": "GTA 6", "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6", "keywords": ["GTA VI"], "emblem_fandom": "gtawiki", "wikidata": "Q1"},
+                       {"gta": "GTA Wiki"}, {"Characters": 500}, ["Characters in GTA V", "Characters in GTA VI"], {"fandom": "gta"})
+        self.assertEqual(w, {"emblem_fandom": "gta", "emblem_category": '"Characters in GTA VI"'})
+
+    def test_series_wiki_generic_category_and_anilist_does_not_stop_it(self):
+        """BLEACH Mirrors High（Bleach Wiki）・チェンソーマン（AniList の主役 4 人）：その作品の wiki なら「Characters」。"""
+        self.assertEqual(self._find({"name": "BLEACH Mirrors High", "emblem_fandom": "bleach"}, {"bleach": "Bleach Wiki"}, {"Characters": 500}),
+                         {"emblem_category": '"Characters"'})
+        self.assertEqual(self._find({"name": "チェーンソーマン", "keywords": ["Chainsaw Man"], "emblem_fandom": "chainsaw-man", "anilist_id": 1},
+                                    {"chainsaw-man": "Chainsaw Man Wiki"}, {"Characters": 171}), {"emblem_category": '"Characters"'})
+
+    def test_other_works_wiki_and_handwritten_are_left(self):
+        """ぐでたま（Hello Kitty Wiki の Characters はサンリオ全部）は数えない。手で書いた分類・実写（出演者が名簿）は触らない。"""
+        self.assertEqual(self._find({"name": "ぐでたま", "keywords": ["Gudetama"], "emblem_fandom": "hellokitty"}, {"hellokitty": "Hello Kitty Wiki"}, {"Characters": 500}), {})
+        self.assertEqual(self._find({"name": "X", "emblem_fandom": "x", "emblem_category": "Agents"}, {"x": "X Wiki"}, {"Characters": 9}), {})
+        self.assertEqual(self._find({"name": "FROM", "emblem_people": True}, {"from": "From Wiki"}, {"Characters": 9}), {})
+
+    def test_live_action_roster_is_the_cast(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "items.yaml").write_text('items:\n  - name: FROM\n    type: show\n    emblem_kind: character\n', encoding="utf-8")
+            item = {"name": "FROM", "type": "show", "emblem_kind": "character", "emblem_people": True, "wikidata": "Q9", "emblem_who": ["B"]}
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef, "wd_cast", return_value=["A", "B", "C"]):
+                self.assertEqual(ef.roster(item, log=lambda *_: None), 3)
+            got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        self.assertEqual((got["emblem_pool"], got["emblem_who"]), (3, ["B", "A", "C"]))
+
+    def test_same_person_other_spelling_is_not_added_twice(self):
+        self.assertEqual(ef._name_key("Uryuu Ishida"), ef._name_key("Uryū Ishida"))
+        self.assertEqual(ef._name_key("Toushirou Hitsugaya"), ef._name_key("Tōshirō Hitsugaya"))
+        self.assertNotEqual(ef._name_key("Ichigo Kurosaki"), ef._name_key("Rukia Kuchiki"))
+
+    def test_full_character_board_is_rechecked_once(self):
+        """そろったキャラの版面も、名簿の手がかりがあれば今の名簿の規則で 1 回だけ数え直す（BLEACH 6 人で止まっていた）。"""
+        item = {"name": "B", "emblem_kind": "character", "emblem_fandom": "bleach", "emblem_who": ["a"], "emblem": [{"subject": "a", "image": "x"}]}
+        prog = {"items": {}}
+        self.assertEqual([i["name"] for i in ef.due(prog, [item], "2026-10-25T00:00:00")], ["B"])
+        ef.record(prog, item, {"state": "ok", "tried": {}}, "2026-10-25T00:00:00")
+        self.assertEqual(ef.due(prog, [item], "2026-10-25T00:00:00"), [])
 
     def test_other_wiki_with_same_letters_is_not_used(self):
         item = {"name": "FROM", "keywords": ["FROM"]}
