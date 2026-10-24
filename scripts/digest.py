@@ -2586,13 +2586,15 @@ def _write_page():
           "fields": {**{k: i[k] for k in ITEM_FIELDS if k in i and k != "size"}, "section": section_of(i)}} for i in items],
         {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "langs": settings.get("news_langs") or []},
         updated, nav_scheme_rows(settings, items)), encoding="utf-8")
-    admin_html, ver_admin = render.stamp(render.render_admin(  # 管理ページ（見るだけ）
-        adm, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated), updated)
-    (DOCS_DIR / "admin.html").write_text(admin_html, encoding="utf-8")
+    adm_vers = {}   # 管理ページ（見るだけ）：トップ admin.html ＋ 6 つの別ページ admin-*.html（render.ADMIN_PAGES）
+    for fname, ah in render.render_admin(adm, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key"), "tz": str(tz)}, updated).items():
+        ah, v = render.stamp(ah, updated)
+        (DOCS_DIR / fname).write_text(ah, encoding="utf-8")
+        adm_vers[fname[:-5]], adm_vers[fname[:-5] + "_marks"] = v, render.page_marks(ah)
     # 開いたままのページはこれを 1 分ごとに読み、自分の指紋と違えば新しい内容を出す（render.LIVE_JS）
-    save_json(DOCS_DIR / "version.json", {"index": ver_index, "admin": ver_admin, "heat": ver_heat, **vers, "updated": updated,
+    save_json(DOCS_DIR / "version.json", {"index": ver_index, "heat": ver_heat, **adm_vers, **vers, "updated": updated,
                                           # どの版面・パネルが変わったか（開いたままのページが通知に名前を出す：render.LIVE_JS）
-                                          "index_marks": render.page_marks(html_), "admin_marks": render.page_marks(admin_html),
+                                          "index_marks": render.page_marks(html_),
                                           "heat_marks": render.page_marks(heat_html)})
     (DOCS_DIR / ".nojekyll").touch()
 

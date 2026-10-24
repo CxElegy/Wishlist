@@ -537,7 +537,7 @@ class Processes(unittest.TestCase):
     def test_admin_page_has_processes_and_emblems(self):
         rows = [{"name": "A", "section": "游戏", "emblem": {"kind": "group", "kind_ja": "グループ", "have": 2, "target": 5, "hi": 10,
                                                           "lo": 3, "state": "low", "skip": False, "shapes": {"切り抜き": 2}}}]
-        out = render.render_admin({"pipeline": {}, "items": rows, "votes": {}}, {}, "u")
+        out = "".join(render.render_admin({"pipeline": {}, "items": rows, "votes": {}}, {}, "u").values())
         for p in processes.PROCESSES:
             self.assertIn(f'data-open="proc-{p["id"]}"', out)
         self.assertIn('id="emblems"', out)
@@ -550,7 +550,7 @@ class Processes(unittest.TestCase):
                                                           "lo": 1, "state": "ok", "skip": False, "shapes": {}}}]
         run = {"ok": 1, "total": 2, "started": "10/16 08:00", "last_run": "10/17 06:00", "minutes": 40, "done": 1,
                "items": {"A": {"state": "review", "note": "<残り> 3 枚", "at": "10/17 06:10"}, "B": {"state": "ok", "note": "", "at": None}}}
-        out = render.render_admin({"pipeline": {}, "items": rows, "votes": {}, "emblem_run": run}, {}, "u")
+        out = "".join(render.render_admin({"pipeline": {}, "items": rows, "votes": {}, "emblem_run": run}, {}, "u").values())
         self.assertIn("<b>1</b> / 2 版面が目標に到達", out)
         self.assertIn('aria-valuenow="1"', out)
         self.assertIn("width:50%", out)
@@ -621,7 +621,7 @@ class Backend(unittest.TestCase):
         rows = [{"name": "A", "section": "游戏", "bg": bg}, {"name": "B", "section": "好物", "bg": {**bg, "emblem": {"state": "failed", "text": ""}}}]
         todo = {"gate": {"text": "小元素 2 版面を Python で", "items": ["<A>", "B"]}}
         log = [{"when": "10/17 08:40", "proc": "emblem", "name": "小元素の自動補完", "level": "error", "text": "<b>x</b>"}]
-        out = render._admin_backend(rows, todo, log)
+        out = "".join(render._admin_backend(rows, todo, log).values())
         self.assertIn('class="nxs"', out)
         self.assertIn('id="bgq"', out)
         self.assertIn('href="#term-panel"', out)   # ログは一番上のライブログ（livelog.py）に移した
@@ -641,7 +641,7 @@ class Backend(unittest.TestCase):
             self.assertIn(k, processes.AI_STATE_JA)
         for name, _, _ in processes.LIMITS:
             self.assertIn(name, out)
-        self.assertIn("ライブログを見る", render._admin_backend(rows))
+        self.assertIn("ライブログを見る", "".join(render._admin_backend(rows).values()))
         for p in processes.PROCESSES:   # 定時か Actions で動くものは「次の実行」に出る（AI 編集と同じ回のものは出さない）
             shown = f'data-open="proc-{p["id"]}"' in out
             self.assertEqual(shown, not isinstance(p.get("schedule"), str) and bool(processes.slots(p) or p.get("workflow") or p["id"] in render.BG_ON_EVENT), p["id"])
@@ -650,7 +650,7 @@ class Backend(unittest.TestCase):
         self.assertNotIn("<x>", out)
         self.assertIn('class="bgc s-failed"', out)
         self.assertLess(out.index("ゲーム"), out.index("ショッピング"))   # 板块の順
-        page = render.render_admin({"pipeline": {}, "items": rows, "votes": {}}, {}, "u")
+        page = "".join(render.render_admin({"pipeline": {}, "items": rows, "votes": {}}, {}, "u").values())
         self.assertIn('id="backend"', page)
         self.assertLess(page.index('id="backend"'), page.index('id="procs"'))
 

@@ -149,7 +149,7 @@ class EditBatches(unittest.TestCase):
         self.assertIn("&lt;GTA 6&gt;", h)
         self.assertIn("2.5万", h)                          # 新規入力＋出力
         self.assertIn("まだ記録がありません", render._admin_edit_tokens({}))
-        self.assertIn('id="tokens"', render.render_admin({"edit_tokens": d}, {}, "u"))
+        self.assertIn('id="tokens"', "".join(render.render_admin({"edit_tokens": d}, {}, "u").values()))
 
     def test_session_usage_counts_each_reply_once(self):
         import tempfile

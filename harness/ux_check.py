@@ -13,7 +13,8 @@
   - エンブレム（harness/emb_check.py の E1〜E11：出ない・読めない・白い四角・大きさ・はみ出し・題字に重なる・切れ・重複・別の作品の絵・目標に届かない・何人も）。
     --emb quick（ふだん）は出ている 1 枚を網页で測り、画像は候補を全部見る。--emb full は候補を全部差し替えて測り、写真の一覧 OUT/emb/sheet-<だれ>-<幅>.png
 設定ページ（settings.html）も同じ人・同じ幅で：素の箱・題字・令牌・はみ出し・JS のエラー、お客さまは本人の設定ページ（wl-own）か。
-管理ページ（admin.html、ログインなしで門を外して HTML の作りだけ）：「全体の構成（詳しい図）」の枠が潰れていない（PC で枠の幅 140px 以上、
+管理ページ（admin.html ＝トップ＋ admin-*.html の 6 つ。7 枚とも開ける・切り替え 7 つ・はみ出しなし・JS のエラーなし・前の 1 枚の欄 13 と小見出し 10 が全部どこかにある〔なくした欄 0〕。
+⑤しくみ admin-system.html は、ログインなしで門を外して HTML の作りだけ）：「全体の構成（詳しい図）」の枠が潰れていない（PC で枠の幅 140px 以上、
 2026-10-25 に枠が 24px に潰れた）・枠の下の空白 800px 以下（Actions の枠だけ 5,129px で下の枠が押し下げられた）・部品の重なり 0・枠や部品の字のはみ出し 0・横にはみ出さない。写真 OUT/admin-arch-<幅>.png。
 写真は OUT/<だれ>-<幅>.png・OUT/<だれ>-set-<幅>.png。
 
@@ -132,7 +133,7 @@ ARCH_JS = """()=>{const GAP=%d;const s=document.querySelector('#arch');if(!s)ret
 def check_admin(pw, base, width, out):
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
     pg = b.new_page(viewport={"width": width, "height": 900})
-    pg.goto(base + "admin.html", wait_until="networkidle", timeout=60000)
+    pg.goto(base + "admin-system.html", wait_until="networkidle", timeout=60000)   # ⑤しくみ（管理ページは 6 つ）
     pg.wait_for_timeout(3000)
     # 門（data-gate=1 で .page を隠す）より強い指定で中身を出す。HTML は公開なので、見えるのは作りだけ
     pg.add_style_tag(content="html body>.page.page.page.page.page.page{display:block!important}html body>.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate{display:none!important}"
@@ -156,6 +157,49 @@ def check_admin(pw, base, width, out):
         bad.append(f"はみ出し {len(st['ob'])}：" + "・".join(st["ob"][:3]))
     if st["sw"] > width:
         bad.append(f"横にはみ出す（{st['sw']}px）")
+    return bad
+
+
+# 前の 1 枚の管理ページ（2026-10-25 まで）にあった欄と小見出し：6 つに分けても全部どこかにある（なくした欄 0）
+ADMIN_OLD_IDS = ["members", "term-panel", "tokens", "ov", "status", "editdiff", "backend", "emblem-ex", "procs", "queue", "items", "emblems", "votes"]
+ADMIN_OLD_H3 = ["いま待っているもの", "いま動いているもの", "次の実行", "リソース", "AI を使うか", "並列と制限", "待ち行列", "ログ", "版面ごとの状態", "「違う」の理由"]
+ADMIN_FILES = ["admin.html", "admin-now.html", "admin-boards.html", "admin-emblem.html", "admin-ai.html", "admin-system.html", "admin-members.html"]
+ADMIN_JS = """() => ({ids:[...document.querySelectorAll('section.panel[id]')].map(s=>s.id),
+ h3:[...document.querySelectorAll('h3.h3')].map(h=>(h.firstChild&&h.firstChild.textContent||'').trim()),
+ nav:document.querySelectorAll('.admnav a').length,sw:document.documentElement.scrollWidth,
+ txt:document.body.innerText.length})"""
+
+
+def check_admin_pages(pw, base, width, out):
+    """管理ページのトップと 6 つの別ページ：開ける・切り替え（7 つのリンク）・横にはみ出さない・JS のエラーなし・前の欄が全部どこかにある。"""
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    bad, ids, h3 = [], set(), set()
+    for f in ADMIN_FILES:
+        pg = b.new_page(viewport={"width": width, "height": 900})
+        errs = []
+        pg.on("pageerror", lambda ex: errs.append(str(ex)[:80]))
+        r = pg.goto(base + f, wait_until="networkidle", timeout=60000)
+        pg.add_style_tag(content="html body>.page.page.page.page.page.page{display:block!important}html body>.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate{display:none!important}"
+                         "html[data-auth] body>*{visibility:visible!important}")
+        pg.wait_for_timeout(1500)
+        st = pg.evaluate(ADMIN_JS)
+        pg.screenshot(path=str(out / f"{f[:-5]}-{width}.png"))
+        pg.close()
+        if not r or r.status != 200:
+            bad.append(f"{f} が開けない（{r.status if r else '?'}）")
+            continue
+        ids |= set(st["ids"])
+        h3 |= set(st["h3"])
+        if st["nav"] != 7:
+            bad.append(f"{f} の切り替えが {st['nav']} 個（7 個のはず）")
+        if st["sw"] > width:
+            bad.append(f"{f} が横にはみ出す（{st['sw']}px）")
+        if errs:
+            bad.append(f"{f} の JS のエラー：{errs[0]}")
+    b.close()
+    lost = [i for i in ADMIN_OLD_IDS if i not in ids] + [x for x in ADMIN_OLD_H3 if x not in h3]
+    if lost:
+        bad.append("なくした欄：" + "・".join(lost))
     return bad
 
 
@@ -187,6 +231,12 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"管理ページ 全体の構成 {w}px：" + ("、".join(bad) if bad else "崩れなし"))
+            try:
+                bad = check_admin_pages(pw, a.base, int(w), out)
+            except Exception as ex:  # noqa: BLE001
+                bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
     print(f"点検：✗ {fails} 件")
     return 1 if fails else 0
 

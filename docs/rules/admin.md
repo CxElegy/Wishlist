@@ -2,6 +2,15 @@
 
 ## 管理ページ（docs/admin.html）
 
+- **トップ＋ 6 枚**（2026-10-25，用户定的：1 枚はややこしすぎる）：`docs/home/admin.html` はトップ（6 枚のカード、それぞれ「失敗 3」などの数）、
+  ①いま `admin-now.html`（ライブログ・運行状況・次の実行・待ち行列・Actions と依頼）②版面 `admin-boards.html`（ウォッチ項目・投票）
+  ③エンブレム `admin-emblem.html`（小元素・版面ごとの状態〔違う＝外す〕・判断の例）④AI 編集 `admin-ai.html`（トークン・前後）
+  ⑤しくみ `admin-system.html`（全体図・詳しい図・リソース・並列と制限）⑥お客さまと店長 `admin-members.html`。
+  どの欄がどのページかは `render.ADMIN_PAGES` だけが決める（欄を足すときはここに id を書く）。どのページにも 7 つの切り替え（網址を打たせない）。
+  前の網址 `admin.html#欄` はトップの JS がその欄のページへ送る。version.json の指紋はページごと（`admin-now` など、ログインの門は "admin" のまま）。
+  `harness/ux_check.py` が 7 枚を開いて、前の 1 枚にあった欄 13・小見出し 10 が全部どこかにあるか（なくした欄 0）を見る。
+  平らなファイル名（admin/emblem.html にしない）：子のフォルダにすると相対の網址（emblems/・settings.html・version.json）が全部ずれる。
+
 只看不改、不用口令（`render.render_admin` + `digest.admin_data`）：运行状况（最新一期、收集条数、哪几天还没 AI 编辑、几天没新消息的关注项、周报）、
 打开时实时读取的 GitHub Actions 结果 / 设置页的关注项请求（`list_item_requests()`）/ 照片收件箱（`get_photo_inbox()`）、
 各关注项的篇幅・7 天记事数・速報数・最新记事・話題度・缺的字段、投票统计（来自 `state/feedback.json`）。要加新数字就在 `admin_data` 里算、在 `render_admin` 里显示。

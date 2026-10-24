@@ -260,7 +260,7 @@ class AdminPage(unittest.TestCase):
                       "recent": [{"url": "javascript:alert(1)", "title": "<i>t</i>", "vote": 1, "when": "10/16"}]}}
 
     def test_parts_and_escaping(self):
-        out = render.render_admin(self.DATA, {"url": "https://x.supabase.co", "key": "k"}, "10.16 12:00")
+        out = "".join(render.render_admin(self.DATA, {"url": "https://x.supabase.co", "key": "k"}, "10.16 12:00").values())
         for part in ('id="status"', 'id="queue"', 'id="items"', 'id="votes"', "設定ページから追加", "+3", "記事なし",
                      'class="last stale"', "そろっている", "list_item_requests", "get_photo_inbox"):
             self.assertIn(part, out, part)
@@ -273,7 +273,7 @@ class AdminPage(unittest.TestCase):
         self.assertNotIn("<form", out)
 
     def test_empty(self):
-        out = render.render_admin({}, {}, "u")
+        out = "".join(render.render_admin({}, {}, "u").values())
         self.assertIn("まだ投票がありません", out)
         self.assertIn("ウォッチ項目がありません", out)
 
@@ -323,7 +323,7 @@ class BackendTable(unittest.TestCase):
         return [{"name": "A", "section": "游戏", "bg": bg, "thumbs": thumbs}]
 
     def test_all_thumbs_after_open_and_row_capped(self):
-        h = render._admin_backend(self._rows(14), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
+        h = "".join(render._admin_backend(self._rows(14), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}}).values())
         row = h[h.index('<span class="bg-th">'):h.index("</span>", h.index('<span class="bg-th">'))]
         self.assertEqual(row.count("<img"), render.BG_THUMBS)
         self.assertIn("+4", row)
@@ -332,7 +332,7 @@ class BackendTable(unittest.TestCase):
     def test_thumbs_are_reject_buttons(self):
         rows = self._rows(3)
         rows[0]["thumbs"] = [("emblems/a-x.webp", "cutout", "X <1>")] + rows[0]["thumbs"][1:]
-        h = render._admin_backend(rows)
+        h = "".join(render._admin_backend(rows).values())
         self.assertIn('class="emx" data-emx-b="A" data-emx="emblems/a-x.webp" aria-pressed="false" title="X &lt;1&gt; · 押すと「違う画像」の印"', h)
         self.assertEqual(h.count('data-emx="emblems/a-x.webp"'), 2)   # 表の行と「探し方」の中
         self.assertIn('id="emx-bar"', h)
@@ -348,7 +348,7 @@ class BackendTable(unittest.TestCase):
             {"board": "A", "subject": "X", "reason": "other", "why": "Fandom の代表画像", "host": "static.wikia.nocookie.net", "kind": "character", "at": "2026-10-21T00:00:00+00:00"},
             {"board": "A", "subject": "Y", "reason": "other", "why": "Fandom の代表画像", "host": "static.wikia.nocookie.net", "kind": "character", "at": "2026-10-21T01:00:00+00:00"},
             {"board": "A", "subject": "Z", "reason": "misc", "note": "<b>", "at": "2026-10-20T00:00:00+00:00"}]
-        h = render._admin_backend(rows)
+        h = "".join(render._admin_backend(rows).values())
         self.assertIn('<b>別人・別のキャラ</b></td><td class="n">2</td><td>Fandom の代表画像 ×2</td><td>static.wikia.nocookie.net ×2</td>', h)
         self.assertIn("まだ規則なし → emblem_rules に足す", h)   # 「そのほか」は締める先の判断がまだない
         self.assertIn("「違う」：別人・別のキャラ 2、そのほか 1", h)   # 版面の「③ 確かめる」
@@ -361,22 +361,22 @@ class BackendTable(unittest.TestCase):
             self.assertTrue(rule is None or rule in titles, k)
 
     def test_retry_button_only_when_failed(self):
-        failed = render._admin_backend(self._rows(state="failed"))
+        failed = "".join(render._admin_backend(self._rows(state="failed")).values())
         self.assertIn('class="nx-run bg-redo" data-run="background"', failed)
         self.assertIn('class="bg-cd" data-at="2026-10-18T01:47:00+00:00"', failed)
-        self.assertNotIn("bg-redo\"", render._admin_backend(self._rows(state="ok")).replace("bg-redo{", ""))
+        self.assertNotIn("bg-redo\"", "".join(render._admin_backend(self._rows(state="ok")).values()).replace("bg-redo{", ""))
 
     def test_edit_column_state_and_force_button(self):
         todo = {"edit": {"text": "", "n": 105, "fired": "2026-10-18T00:00:00+00:00", "state": "gave_up",
                          "why": "3 回起こしたが仕事が減らない", "attempts": 3, "resp": "s"}}
-        h = render._admin_backend(self._rows(), todo)
+        h = "".join(render._admin_backend(self._rows(), todo).values())
         self.assertIn("起こしても動かない", h)
         self.assertIn("（3 回目）", h)
         self.assertIn('data-run="edit_now" data-label="AI 編集をもう一度起こす"', h)
-        self.assertNotIn("AI 編集をもう一度起こす", render._admin_backend(self._rows(), {"edit": {"text": "", "n": 0}}))   # 整理待ちがなければボタンなし
+        self.assertNotIn("AI 編集をもう一度起こす", "".join(render._admin_backend(self._rows(), {"edit": {"text": "", "n": 0}}).values()))   # 整理待ちがなければボタンなし
 
     def test_edit_column_countdown(self):
-        h = render._admin_backend(self._rows(), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}})
+        h = "".join(render._admin_backend(self._rows(), {"edit": {"text": "", "n": 3, "fired": "2026-10-18T00:00:00+00:00"}}).values())
         self.assertIn('data-pre="次の収集のあと "', h)
         self.assertIn("記事 3 件が版面の下の「整理待ち」に", h)
         self.assertIn('class="bgw-d nx-ago" data-at="2026-10-18T00:00:00+00:00"', h)
@@ -418,12 +418,12 @@ class Overview(unittest.TestCase):
         self.assertIn("前回 10:32（日本時間）に終わった・18:00 の回はまもなく", w)
         self.assertEqual(w.count("終わった"), 1)   # 「終わった」を 2 回続けない
         rows = [{"name": "A", "section": "游戏", "bg": {k: {"state": "ok", "text": ""} for k in ("collect", "edit", "design", "emblem")}}]
-        self.assertIn("次の回を待つ", render._admin_backend(rows, idle["todo"]))
+        self.assertIn("次の回を待つ", "".join(render._admin_backend(rows, idle["todo"]).values()))
         # 今の回をまだ起こしていない（due）：列の見出しは次の日の 9:00 を数えず「18:00 の回はまもなく」
-        h = render._admin_backend(rows, {"edit": {**idle["todo"]["edit"], "due": "18:00"}})
+        h = "".join(render._admin_backend(rows, {"edit": {**idle["todo"]["edit"], "due": "18:00"}}).values())
         self.assertIn("18:00 の回はまもなく（次のゲートで起こす）</small>", h)
         self.assertIn('data-due="18:00"', h)   # 上の「次の実行」のカードも同じ（次の日の 9:00 を数えない）
-        self.assertNotIn("data-due", render._admin_backend(rows, idle["todo"]))
+        self.assertNotIn("data-due", "".join(render._admin_backend(rows, idle["todo"]).values()))
         # 今の回をもう起こした idle：「いま待っているもの」にも次の回の時刻（gate.work_state の why）
         done = {"todo": {"edit": {"n": 5, "boards": 1, "state": "idle", "why": "前回 10:32（日本時間）に終わった・次は 18:00"}}}
         self.assertIn("次は 18:00", overview.waits(done)[0][2])
@@ -434,7 +434,7 @@ class Overview(unittest.TestCase):
         self.assertIn("出刊が記録されていない", w)
         self.assertIn("510 → 521", w)
         self.assertNotIn("終わった", w)
-        h = render._admin_backend(rows, un["todo"])
+        h = "".join(render._admin_backend(rows, un["todo"]).values())
         self.assertIn("出刊されていない", h)
         self.assertNotIn("次の回を待つ", h)
         # 列の見出しは nowrap：長い理由は短く切り、全文は title に（1400px で表が右にはみ出し「小元素」の列が消えた）
@@ -446,10 +446,29 @@ class Overview(unittest.TestCase):
 
     def test_admin_has_overview_first_and_css_uses_tokens(self):
         import overview
-        out = render.render_admin({}, {}, "u")
-        self.assertLess(out.index('id="ov"'), out.index('id="status"'))
+        out = render.render_admin({}, {}, "u")["admin-system.html"]   # ⑤しくみ：全体図が詳しい図より先
+        self.assertLess(out.index('id="ov"'), out.index('id="procs"'))
         self.assertNotRegex(overview.CSS, r"#[0-9a-fA-F]{3,6}\b")
         self.assertIn("prefers-reduced-motion", overview.CSS)   # 動きは減らす設定のときは止める
+
+
+class AdminPages(unittest.TestCase):
+    """管理ページは トップ＋6 つ（2026-10-25，用户定的）。前の 1 枚の欄が全部どこかにあり、どのページからも 7 つの切り替え。"""
+    OLD = ["members", "term-panel", "tokens", "ov", "status", "editdiff", "backend", "emblem-ex", "procs", "queue", "items", "emblems", "votes"]
+
+    def test_split_keeps_every_panel_and_nav(self):
+        pages = render.render_admin({}, {}, "u")
+        self.assertEqual(list(pages), ["admin.html"] + [f for f, *_ in render.ADMIN_PAGES])
+        allh = "".join(pages.values())
+        for i in self.OLD:
+            self.assertIn(f'id="{i}"', allh, i)
+        for f, h in pages.items():
+            self.assertEqual(h.count('<ul class="admnav">'), 1, f)
+            self.assertIn(f'href="{f}" aria-current="page"' if f != "admin.html" else 'href="admin.html" aria-current="page"', h)
+            self.assertIn(f'name="wl-ver" data-page="{f[:-5]}"', h)   # version.json の名前はページごと（ログインの門は "admin" のまま）
+        self.assertIn('"backend": "admin-emblem.html"', pages["admin.html"])   # 前の網址 admin.html#backend → ③
+        self.assertNotIn('id="adm-cfg"', pages["admin.html"])
+        self.assertIn('id="proc-collect"', pages["admin-now.html"])   # 「次の実行」の名前を押すと流れの図
 
 
 class LiveLog(unittest.TestCase):
@@ -464,7 +483,7 @@ class LiveLog(unittest.TestCase):
         self.assertEqual([r["p"] for r in cfg["seed"]], ["gate", "publish"])   # 古い順に流す
         self.assertNotIn("<b>出刊</b>", html_)                                   # 文字は JSON の中だけ（JS が textContent で出す）
         self.assertIn('role="log"', html_)
-        out = render.render_admin({"log": log}, {}, "u")
+        out = "".join(render.render_admin({"log": log}, {}, "u").values())
         self.assertLess(out.index('id="term-panel"'), out.index('id="ov"'))     # しくみの全体図より上
         self.assertNotIn('<ol class="blog">', out)                               # 下の古いログは移した
 
@@ -539,11 +558,11 @@ class LiveUpdate(unittest.TestCase):
         self.assertNotIn(render.VER_MARK, a)
 
     def test_admin_has_live_and_panel_marks(self):
-        out = render.render_admin({"pipeline": {}, "items": [], "votes": {}}, {}, "10.17 08:35")
+        out = "".join(render.render_admin({"pipeline": {}, "items": [], "votes": {}}, {}, "10.17 08:35").values())
         self.assertIn('name="wl-ver" data-page="admin"', out)
         self.assertIn("version.json", out)
         self.assertRegex(out, r'<section class="panel" id="status" data-h="[0-9a-f]{8}">')
-        again = render.render_admin({"pipeline": {}, "items": [], "votes": {}}, {}, "10.17 10:35")
+        again = "".join(render.render_admin({"pipeline": {}, "items": [], "votes": {}}, {}, "10.17 10:35").values())
         mark = lambda h, i: re.search(rf'id="{i}" data-h="(\w+)"', h).group(1)
         self.assertEqual(mark(out, "backend"), mark(again, "backend"))  # 時刻だけ違うパネルは「更新」にしない
 
