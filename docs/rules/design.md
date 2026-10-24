@@ -7,6 +7,7 @@
 - **所有页面都要能用按钮・链接走到，不让用户改地址栏**（2026-10-21，用户定的：靠改网址操作在 UX 上不可接受）：加新页面・新流程时，先想清楚「从哪个页面、点哪个按钮进来，怎么回去」，把入口放进现有的导航（右上的 `wl-auth`：见るだけ时常驻「新しく始める」「ログイン」，菜单里「このサイトについて」= 入口 `../?stay`、利用規約、管理ページ；入口的按钮；目次）。`?stay`・`?login=1`・`#name` 这类参数只给链接用，不写进给用户的说明。
 - **产品事实**在 `PRODUCT.md`（读者、语言、原则）；改网页前先看。界面文字（标题、按钮、说明）一律日语，消息内容保持原语言。
 - **Web 字体只加载 Noto Sans JP（+ Anton・Yusei Magic・JetBrains Mono）**（2026-10-22 全体の検査 H6：SC/TC/KR/Serif SC 一起加载时字体 239 个文件・8.8MB）：中文・韩文的报道用终端自带的字体。加字体前先看 `tests/test_perf.py`。
+- **记事的近さ（2026-10-24，用户定的）**：同一条记事里的隙间（`.card` gap 8px）≤ 记事之间（`.grid` 28px／手机 24px）的 1/3，`.grid>.card:not(.hero)` 用下边线闭合；`harness/near.js`（ux_check「近さ」）和 `tests/test_design.py` StoryProximity 检查。新的排列（棚・卡片・一览）也先满足 近さ・囲み・方向一致（HARNESS.md）。
 - **颜色、字体**只用 `scripts/render.py` 开头 `:root` 里的设计令牌（`--ink` `--paper` `--rose` `--sheet` `--card` `--gold` `--alert`、
   `--font-sans/serif/mono`、`--fs-label`）。要新颜色先加令牌，不要在 CSS 里直接写十六进制。
 - **新板块（ジャンル）**：板块事先定全在 `sections.yaml`（见上「板块一览」），`items.yaml` 的 `section` 只写表里的 key。
