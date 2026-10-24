@@ -44,3 +44,4 @@
 - **全体の構成**（管理ページ，原来的プロセス缩图一览）：整体架构图——外部服务・GitHub Actions・仓库・Pages・Claude 定时任务・Supabase・Discord・你，
   编号箭头是数据流向（`processes.ARCH` / `EDGES`，线由 JS 按部件位置画；手机上看「矢印の一覧」）。点任务的框打开那个仕组み的详细流程（`PROCESSES` 的 flow）。
   **新加一个仕组み就在 `PROCESSES` 里加一项，再放进 `ARCH` 的某个框、在 `EDGES` 连上线**；改了某个仕组み的逻辑，也同步改它的流程。
+  新加框（`ARCH` 的 zone）时，同时加进 `processes.CSS` 两处 `grid-template-areas`（PC・手机）：不在里面的名字会生成暗黑的列，4 列被挤成 24px（2026-10-25 「そのほか」框 `etc` 就是这样坏的）。图里部品札的说明只显示 3 行（全文在 title 和流程图）。`tests/test_arch_layout.py` 和 `harness/ux_check.py` 的「管理ページ 全体の構成」检查。

@@ -710,6 +710,7 @@ ARCH = [
         {"id": "p-gate", "proc": "gate", "subs": ["emblem-cron"]},
         {"id": "p-requests", "proc": "requests"},
         {"id": "p-library", "proc": "library"},
+        {"id": "p-libemblem", "proc": "libemblem"},
         {"id": "p-progress", "proc": "progress"},
         {"id": "p-render", "proc": "render", "subs": ["colors"]}]},
     {"id": "repo", "title": "GitHub リポジトリ", "note": "ずっと残る · 全部の元データ", "cost": "無料", "style": "keep", "nodes": [
@@ -766,6 +767,8 @@ EDGES = [
     (31, "p-login", "s-db", "身份を確かめる・書くときに鍵を付ける", "db"),
     (32, "p-gate", "p-collect", "定時が抜けて 150 分あいたら収集を起こす", "data"),
     (33, "p-collect", "s-db", "お客さまの版面（user_boards・本人だけ読める）", "db"),
+    (34, "n-img", "p-libemblem", "お客さまの版面の画像を探す（店長と同じ規則）", "data"),
+    (35, "p-libemblem", "s-db", "boards.config.emblem・Storage の公開の箱", "db"),
 ]
 # 並列で動かすときの限り（管理ページ「バックグラウンド → 並列と制限」）。(仕組み, いまの並列, 限り・理由)
 LIMITS = [
@@ -1065,7 +1068,7 @@ CSS = """
 .lg-z{padding:0 8px;border:2px dashed var(--ink)}.lg-z.keep{border-style:solid}
 .ae-data{color:var(--ink)}.ae-web{color:var(--rose)}.ae-ai{color:var(--good)}.ae-notify{color:var(--discord)}.ae-db{color:var(--viz-1)}
 .arch{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
- grid-template-areas:"src act repo ai" "db pages repo dc" "you you you you";gap:40px 64px;align-items:start}
+ grid-template-areas:"src act repo ai" "db pages repo dc" "etc etc etc etc" "you you you you";gap:40px 64px;align-items:start}
 .az{border:2px solid var(--ink);background:var(--paper);padding:10px 12px 12px;min-width:0}
 .az-temp{border-style:dashed;background:var(--sheet)}
 .az-ext{border-style:dotted;border-width:3px}
@@ -1089,6 +1092,8 @@ CSS = """
 .an-b:hover b,.an-sub:hover{text-decoration:underline}
 .az-you .an{background:transparent;color:var(--card);border-color:var(--card)}
 .arch .hl{outline:3px solid var(--gold);outline-offset:2px}
+.arch .cp{overflow-wrap:anywhere;min-width:0}
+.arch .cp i{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}   /* 図では 3 行まで。全文は札の title と流れの図 */
 .arch-list{margin-top:14px;font-size:13px}.arch-list summary{cursor:pointer;font:700 13px var(--font-sans)}
 .arch-list ol{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:4px 16px}
 .arch-list li{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;padding:4px 0;border-bottom:1px solid var(--hair);color:var(--ink)}
@@ -1098,11 +1103,10 @@ CSS = """
 .arch-list li em{color:var(--card)}.arch-list li small{font-size:var(--fs-label);opacity:.8}
 .az-you{grid-column:1/-1}.az[data-z=etc]{grid-column:1/-1}.az[data-z=etc]>.az-b{flex-direction:row;flex-wrap:wrap}
 @media (max-width:980px){
- .arch{grid-template-columns:minmax(0,1fr);grid-template-areas:"src" "act" "repo" "ai" "db" "pages" "dc" "you";gap:16px}
+ .arch{grid-template-columns:minmax(0,1fr);grid-template-areas:"src" "act" "repo" "ai" "db" "pages" "dc" "etc" "you";gap:16px}
  .arch .dg-svg{display:none}
  .az[data-z=you]>.az-b{flex-direction:column}
 }
- border:2px solid var(--ink);box-shadow:var(--shadow);font:inherit;transition:transform .1s,box-shadow .1s}
 .pl{display:inline-block;align-self:flex-start;font:700 10px var(--font-mono);letter-spacing:.04em;padding:1px 8px;transform:skewX(var(--skew));background:var(--ink);color:var(--card);white-space:nowrap}
 .pl-ai{background:var(--gold);color:var(--ink)}.pl-free{background:var(--good);color:var(--card)}
 .pdlg{width:min(1100px,calc(100vw - 24px));max-height:calc(100vh - 24px);padding:0;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);background:var(--paper);color:var(--ink)}
