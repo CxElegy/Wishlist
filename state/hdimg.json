@@ -605,12 +605,6 @@
   "target": 720,
   "v": 3
  },
- "https://en.koreadaily.com/wp-content/uploads/2026/10/202610240906771021_6adbf90f0c237.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-24"
- },
  "https://fieldlevelmedia.com/wp-content/uploads/2026/10/11882973-1024x696.jpg": {
   "w": 1024,
   "h": 696,
@@ -1598,6 +1592,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.pocketgamer.com/artwork/na-38074-1792770118/bleach-mirrors-high-original-cast.jpg": {
+  "w": 1010,
+  "h": 505,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
@@ -2144,12 +2144,6 @@
  "https://noisypixel.net/wp-content/uploads/2026/06/Astrae-Oratio-2.jpg": {
   "w": 1920,
   "h": 1080,
-  "target": 1280,
-  "v": 3
- },
- "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
-  "w": 1024,
-  "h": 576,
   "target": 1280,
   "v": 3
  },
@@ -3134,6 +3128,19 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-24"
+ },
+ "https://www.chosun.com/resizer/v2/GU2DMMLDMUYWCZJVGAYWMMDDHA.jpg?auth=a7c5a8ab632e711c38223c2bced744613fe8865d0de1622bdb209a494dda48e8&width=530&height=278&smart=true": {
+  "w": 530,
+  "h": 278,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.568,
+  "local": "pics/896be4271b7c7482.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
  },
  "https://www.chosun.com/resizer/v2/ME3DOMBSMMZTOOLFMM2DMNRVMQ.jpg?auth=27d6b2f93343eb24497b1a9fb703d0c74ffc749ee2ea53a6464955f9b07ac169&width=530&height=278&smart=true": {
   "w": 530,
