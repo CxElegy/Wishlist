@@ -84,6 +84,11 @@ button{font-family:inherit}
 /* ---------- トップ：毎日刷り直すポスター。地色はその日のトップ記事の写真から（--tint / --deep / --hacc） ---------- */
 .front{display:flex;flex-direction:column;gap:40px}
 .poster{position:relative;background:var(--tint,var(--sheet));color:var(--ink);border:2px solid var(--ink);box-shadow:var(--shadow-l);padding:22px 28px 18px}
+/* 見せ場は頭条 1 枚（D5、2026-10-24 ユーザーが見本の右を選んだ）：倍の影・少し傾けた枠・傾けた見出し・平行四辺形の札をポスターに集める。下の照片墙・棚・版面は今のまま */
+.poster{--tilt:-2.2deg;--skew:-10deg;box-shadow:10px 10px 0 var(--rose),20px 20px 0 var(--ink);transform:rotate(-.6deg)}
+.poster .phead .lab{transform:skewX(var(--skew));box-shadow:4px 4px 0 var(--rose)}
+.poster .top h2{transform:rotate(var(--tilt))}
+.poster .tag,.poster .tg{transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--ink)}
 .poster::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;
  background-image:radial-gradient(var(--deep,var(--ink)) .7px,transparent .9px);background-size:6px 6px}
 .poster .marks{position:absolute;inset:10px;pointer-events:none;opacity:.5;background:
@@ -702,7 +707,7 @@ button{font-family:inherit}
  .mast h1{font-size:clamp(22px,7.2vw,30px);padding:8px 14px 6px;box-shadow:4px 4px 0 var(--ink)}
  .mast .tools{width:100%;gap:6px}.mast .meta{padding:3px 10px}.mast .meta b{font-size:18px}
  .mastwish{padding:6px 10px;font-size:12px;gap:5px;box-shadow:3px 3px 0 var(--ink)}.mastwish small{display:none}.mastset{padding:6px 10px;font-size:12px}
- .poster{padding:16px 14px 14px;box-shadow:5px 5px 0 var(--ink)}
+ .poster{padding:16px 14px 14px;box-shadow:6px 6px 0 var(--rose),12px 12px 0 var(--ink)}
  .top{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;gap:18px}
  .pdate b{font-size:84px}.pdate span{font-size:28px;padding:6px 10px 4px}
  .frame{grid-column:1;grid-row:auto;margin:4px 6px 6px 0;padding:6px;transform:rotate(-1.5deg)}
@@ -851,7 +856,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="ebc0cec65759"><style>
+<meta name="wl-ver" data-page="wishlist" content="61ba0bbdd0a4"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1509,7 +1514,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.24 14:12</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.24 14:30</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
