@@ -1,15 +1,21 @@
-name: あなた待ちを Discord へ
+name: 質問と報告を Discord へ
 
-# BACKLOG.md の [?]（ユーザーの返事待ち）を @ 付きで知らせ、返事がなければ繰り返す（harness/ask_remind.py、2026-10-24 用户定的）。
-# 最初の 1 時間は 5 分おき・そのあと 3 時間おき・夜（日本時間 0〜8 時）は繰り返さない。何を送ったかは Actions の cache に。
+# 会話の Claude がユーザーに選んでもらう質問を出したら @ 付きで知らせ、返事がなければ繰り返す。2 時間ごとの「いま何をしているか」も送る
+# （harness/ask_remind.py、2026-10-24 用户定的）。会話の Claude が workflow_dispatch で ask / clear / say を送る。待ちの記録は Actions の cache に。
 
 on:
   schedule:
     - cron: "*/5 * * * *"
-  push:
-    branches: [main]
-    paths: ["BACKLOG.md"]
   workflow_dispatch:
+    inputs:
+      cmd:
+        description: "ask（質問を出した）・clear（答えた）・say（報告）"
+        required: true
+        default: say
+      text:
+        description: "質問の要約・報告の文"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -25,16 +31,19 @@ jobs:
     env:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       DISCORD_MENTION: ${{ vars.DISCORD_MENTION }}   # <@あなたの Discord の番号>。設定がなければ @here
+      CMD: ${{ inputs.cmd || 'tick' }}
+      TEXT: ${{ inputs.text }}
     steps:
       - uses: actions/checkout@v5
         with:
           ref: main
+          sparse-checkout: harness
       - uses: actions/cache/restore@v4
         with:
           path: .ask_state.json
           key: ask-state-${{ github.run_id }}
           restore-keys: ask-state-
-      - run: python harness/ask_remind.py BACKLOG.md .ask_state.json
+      - run: python harness/ask_remind.py .ask_state.json "$CMD" "$TEXT"
       - uses: actions/cache/save@v4
         with:
           path: .ask_state.json
