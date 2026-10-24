@@ -431,6 +431,21 @@ class Resubs(unittest.TestCase):
         self.assertEqual(r["follows"], [])
 
 
+class FollowsOwn(unittest.TestCase):
+    """follows は本人と店長だけ。policy から private の関数を直接呼ぶと authenticated は permission denied（2026-10-24）→ security definer の public.my_account を通す。"""
+
+    def test_policy_uses_definer(self):
+        sql = (ROOT / "db" / "library.sql").read_text(encoding="utf-8")
+        pol = sql[sql.index("create policy follows_own"):]
+        pol = pol[:pol.index(";")]
+        self.assertIn("public.my_account()", pol)
+        self.assertNotIn("private.", pol)
+        fn = sql[sql.index("create or replace function public.my_account"):]
+        self.assertIn("security definer", fn[:fn.index("$$;")])
+        self.assertIn("grant execute on function public.my_account() to authenticated", sql)
+        self.assertIn("revoke all on function public.my_account() from public, anon", sql)
+
+
 class Visible(unittest.TestCase):
     """案 B（2026-10-24）：ログインなしは店長が追いかけている版面だけ、お客さまはそれ＋自分の、店長は全部。足すだけ（restrictive）で、using (true) の読み取りに AND で効く。"""
 
