@@ -3,434 +3,84 @@
 @WORKING.md
 （↑ 仕事の進め方：言われたこと＋次の一手・反論・提案・影響表・自分で確かめる。毎回読む）
 
+## 詳しい仕様は docs/rules/（その分野を触る前に必ず読む）
+
+ここは毎回要る決まりだけ。細かい仕様は下のファイルへ移した（2026-10-24，用户定的：決まりは 1 つも消さない）。
+「CLAUDE.md「○○」」と書いてある参照は、この表で節の名前から探す。
+
+| ファイル | 中の節 | 読むとき |
+|---|---|---|
+| `docs/rules/accounts.md` | test1 / test2（全文） | account・test2・sitedir・`p_account`・Supabase の `account` 列を触る |
+| `docs/rules/sections.md` | 小分类（subs）必填・板块一览・シリーズ・上级系列・面・判断上下级（parent） | 関注項を足す・板块 / 小分類 / 面 / parent・`sections.yaml`・`taxonomy.py` |
+| `docs/rules/match.md` | 匹配词（match）的写法・垃圾站・exclude_hosts・情報源・地域ごとの情報員・audit-match | `match` / `exclude`・収集・`sources.py`・`intel/`・`drop_reason` |
+| `docs/rules/wizard.md` | 完善关注项・向导的小规则 | 「完善关注项」・`docs/home/additem.js`・设置页の依頼 |
+| `docs/rules/design.md` | 网页设计（设计框架・视觉・配图・hdimg・scrapling・motif・話題度）・目次のロゴと炎・目次のアイコン・テストグラウンド（各ページ・新闻语言・目次 v6） | 画面・CSS・`render.py`・画像・テーマ・`heat.py`・目次・入口 `welcome.py` |
+| `docs/rules/live.md` | 页面自动更新・「更新中」条 | `LIVE_JS` / `BUSY_JS`・`version.json`・`live_status` |
+| `docs/rules/admin.md` | 管理ページ・バックグラウンド表・ライブログ・しくみの全体図・今すぐ実行・リソース・時刻・AI/ルールの札・架构图・流程图的规矩・全体の構成 | 管理ページ・`processes.py`・`overview.py`・`run_now` |
+| `docs/rules/background.md` | 收集不停・省 token（规则化）・小元素补全の再試行・后台的ゲート・整理待ち・持ち越し・AI 编辑（2 回 / 停滞 / 分批 / 暂停・重做 / token） | `gate.py`・`background.yml`・`digest.yml`・AI 编辑・`edit-next` |
+| `docs/rules/emblem.md` | 小元素の「違う」・全身 / 半身・小元素（emblem）の規矩 | `emblem*.py`・`face_id.py`・小元素 |
+| `docs/rules/library.md` | ライブラリ・お客さまのアカウント（全文） | `library.py`・`db/library.sql`・お客さまの版面 |
+| `docs/rules/login.md` | ログイン（全文）・お客さまの記事集め（`userfeed.py`） | ログイン・`AUTH_JS`・`db/auth*.sql`・`userfeed.py`・`user_boards` |
+| `docs/rules/lang.md` | 读者的语言：主言語・副言語 | `lang.py`・言語の去重 |
+
 ## スキル（2026-10-22，用户定的）
 
-- 設計・実装の前に、合うスキルを `find-skills`（`npx skills find …`）で探し、インストール数・出どころを確かめて入れる（`.claude/skills/`、出どころと指紋は `skills-lock.json`）。直接直す前に、スキルの考え方（他の人の framework・設計理念）に照らして直し方を決める。
+- 設計・実装の前に `find-skills`（`npx skills find …`）で合うスキルを探し、インストール数・出どころを確かめて入れる（`.claude/skills/`、出どころと指紋は `skills-lock.json`）。直す前に、スキルの考え方（他の人の framework・設計理念）に照らして直し方を決める。
 - トークンの節約（2026-10-24）：ponytail（コードは最小の完全な変更）・caveman（係どうしの報告を短く、ユーザーへの返事は普通の日本語）・caveman-compress（長いファイルを短く、使う前に確かめる）。HARNESS.md「トークンを節約する」。
 - 入れてあるもの：find-skills・supabase・supabase-postgres-best-practices・web-design-guidelines・frontend-design・webapp-testing・web-perf・seo-audit・signup・onboarding・site-architecture・improve-codebase-architecture・python-testing-patterns（＋前からの impeccable・diagram・wishlist）。
 
 ## 主动告诉我有哪些 MCP 连接器能用
 
-- 任务能靠某个 MCP 连接器更方便地完成时（比如改数据库用 Supabase、看 PR 用 GitHub），**先告诉我有这个连接器**，
-  不要让我自己去 SQL Editor / 网页手动操作。
-- 连接器已经连上：直接说「可以用 XX 连接器帮你做」，然后去做。
-- 还没连上：说清楚是哪个连接器、能帮上什么，并给出连接地址 https://claude.ai/customize/connectors
-  （连好后要开新会话才会加载）。
-- 已连上的连接器：Supabase（项目 `bzokpnbcjscbcehdxtjq`，表 `feedback` / `news` / `sizes` / `item_requests`）、GitHub。
-  （函数 `my_votes()` = 网页读回我的投票）
+- 连接器能更方便完成时（改数据库 = Supabase、看 PR = GitHub），**先告诉我有这个连接器**，不让我去 SQL Editor / 网页手动操作。
+- 已连上：说「可以用 XX 连接器帮你做」，然后去做。没连上：说哪个连接器、能帮什么，给 https://claude.ai/customize/connectors （连好后开新会话才加载）。
+- 已连上：Supabase（项目 `bzokpnbcjscbcehdxtjq`，表 `feedback` / `news` / `sizes` / `item_requests`；函数 `my_votes()` = 网页读回我的投票）、GitHub。
 
 ## 篇幅 S / M / L
 
-每个关注项的篇幅存在 Supabase 的 `sizes` 表，我自己在网页的 ⚙ 设置页（docs/settings.html，不用口令）也能改。
-我说「把 XX 改成 L」时，用 Supabase 连接器直接改表；
-连接器不可用时改 `items.yaml` 里的 `size`，下次出刊会自动同步进数据库。
+篇幅存 Supabase `sizes` 表，我也能在 ⚙ 设置页（docs/settings.html，不用口令）改。我说「把 XX 改成 L」→ 用 Supabase 连接器直接改表；连接器不可用 → 改 `items.yaml` 的 `size`，下次出刊自动同步进数据库。
 
 ## 改完自动合并
 
-- 改动做完、测试通过后，**直接开 PR 并合并**，不用再问我「要不要合并」。合并后确认网页已更新，再附链接告诉我。
-- **开 PR 前先改架构图**：改了逻辑（规则、算法、阈值、流程、定时）就同一个 PR 里改 `scripts/processes.py`（`COMPONENTS` 加 / 改札，对应 `PROCESSES` 的 `flow` 加步骤、`uses` 连上），见下「架构图・流程图的规矩」。
-  CI 的 `scripts/check_arch.py` 会拦：改了 `scripts/*.py` 或 workflow 却没改 `processes.py` 的 PR 不通过。确实不影响图的，在 PR 说明里写一行「架构图：不用改（理由）」。（2026-10-17 连着漏了两次后加的）
+- 做完、测试通过 → **直接开 PR 并合并**，不问「要不要合并」。合并后确认网页已更新，附链接告诉我。
+- **开 PR 前先改架构图**：改了逻辑（规则・算法・阈值・流程・定时）→ 同一个 PR 改 `scripts/processes.py`（`COMPONENTS` 加 / 改札，`PROCESSES` 的 `flow` 加步骤、`uses` 连上），规矩见 `docs/rules/admin.md`「架构图・流程图的规矩」。
+  CI `scripts/check_arch.py` 拦：改了 `scripts/*.py` 或 workflow 没改 `processes.py` 的 PR 不通过。不影响图的，PR 说明写一行「架构图：不用改（理由）」。（2026-10-17 连着漏两次后加的）
 
 ## 我的 👍 / 👎 要记住
 
-- 投票存在 Supabase 的 `feedback` 表；网页打开时用 `my_votes()`（`db/my_votes.sql`）读回每条消息的最后一票，按钮显示成按过的样子，
-  换浏览器、换手机也一样。改投票相关的代码时别丢掉这一步；推荐（`digest.py recommend`）也用这些票学习喜好。
+投票存 Supabase `feedback` 表；网页打开时 `my_votes()`（`db/my_votes.sql`）读回每条消息的最后一票，按钮显示成按过的样子，换浏览器・手机也一样。改投票代码时别丢这一步；推荐（`digest.py recommend`）也用这些票学喜好。
 
 ## 每次回复都贴链接
 
-- 回复里只要提到网页、PR、设置页，就把可以直接点开的链接贴上：
+- 回复提到网页・PR・设置页，就贴能点开的链接：
   简报（店長のページ）https://cxelegy.github.io/Wishlist/home/ 、设置页 https://cxelegy.github.io/Wishlist/home/settings.html 、
   愿望清单 https://cxelegy.github.io/Wishlist/home/wishlist.html 、話題度分析 https://cxelegy.github.io/Wishlist/home/heat.html 、テーマ見本 https://cxelegy.github.io/Wishlist/home/themes.html 、管理ページ https://cxelegy.github.io/Wishlist/home/admin.html 、テストグラウンド https://cxelegy.github.io/Wishlist/testground/ 、PR 用完整网址。
   入口 https://cxelegy.github.io/Wishlist/ ，存档 test2 https://cxelegy.github.io/Wishlist/test2/ 。
-- 合并 PR 后网页大约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；
-  确认网页已经更新了再告诉我，并附上链接。收集新闻、发通知仍由「关注清单通信」慢慢跑。
+- 合并 PR 后网页约 1 分钟更新（`.github/workflows/render.yml` 只重新生成网页）；确认更新了再告诉我、附链接。收集新闻・发通知仍由「关注清单通信」慢慢跑。
 
-## test1 / test2（2026-10-19，用户定的）
+## test1 / test2・account（要点。全文 `docs/rules/accounts.md`）
 
-- **test1 = 店長のページ（2026-10-21，用户定的：以前做的 test1 的内容现在归到 admin 的店长下）**：前の test1 の中身（ちいかわ 等の関注項・623 票・愿望清单）を本番に戻した。`items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/` が店長のもの。
-  **网址里不出现 test1，也不出现人名・「店長」**（用户定的：照一般网站的做法，网址不带用户名；店長只是世界观的设定）：网页生成は `docs/home/`（`sitedir.SLUG = "home"`、https://cxelegy.github.io/Wishlist/home/ ），**大家都是同一个网址，内容由登录的人决定**（现在 = 店長的；以后一般用户登录后在同一页读自己的，见 `LOGIN.md` 第 2 步）。旧 `/test1/…`・`/shop/…` 只是跳到 `/home/` 的页。Supabase 的 account 名还是 `test1`（`sitedir.NAME`，只在库里；以后换成登录的号码 `user_id`）。店長は `c.elegy@outlook.com` でログイン。
-- **test2** = 2026-10-19〜21 の試験の版，冻结在 `docs/test2/`（`python scripts/freeze_test1.py test2 test1 …` で「アーカイブ」の帯・写 Supabase を止める），数据存档在 `archive/test2/`。不再生成、后台不跑。test2 で決めた**規則**（一个名字一个版面・向导・入口）は店長のページでもそのまま使う（`docs/home/additem.js` は同じもの）。
-- 根 `docs/index.html` 是**入口**（2026-10-21 起由 `scripts/welcome.py` 生成，`digest.py render` 时超过 24 小时就重做：产品介绍・店长页面的真实截图・新しく始める／ログイン／店長のページを見る；新建账号 = 邮箱和条款 → 新闻语言 → 喜欢的大类 → 左右滑的卡片（気になる／パス，2026-10-22 用户说「Tinder 風の前の版を戻して」改回来了，之后再细调） → 最初的版面 → `user_signup`；浏览器记得的人直接跳过入口），旧网址（settings.html・/test1/・/shop/ 等）跳到 /home/。
-- **test1・test2 = 两个 account（用户定的，2026-10-19）**：以后的一般用户也按同样的形状加。每个 account 的东西从一开始就各自分开、互不相通：
-  关注清单・愿望清单・收集的记事・state（推荐・口味・日志…）——本仓库里现在的 account（test1 = 店長，2026-10-21 起）用 `items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/`，test2 的冻结在 `archive/test2/`；
-  Supabase 的自己的表（投票 `feedback`・篇幅 `sizes`・目录分法 `nav_schemes`・请求 `item_requests`・照片 `photo_inbox`・AI 编辑开关 `edit_control`・更新中的条 `live_status`・记事的副本 `news`/`stories`/`price_history`）都有 `account` 列（`db/accounts.sql`）。
-  网页只用带 `p_account` 的函数（`window.WL_ACCOUNT`，`render._account_tag`），Actions 的 `digest.supabase` 经 `scope_account` 只读写自己 account 的行；旧的不带 `p_account` 的函数只给冻结的 test1 用。
-  现在的 account 名 = `sitedir.NAME`。新加一个 account：在 `sitedir` 换名字、Supabase 不用改表（行按 account 分开）。
-  **以后加 Google 登录时（用户定的，2026-10-19）**：① 分 account 的列统一成登录的号码（`user_id`），现在的 `account` 只是测试用的过渡；
-  ② test1 的内容（关注项・623 张投票・愿望清单等）算作用户本人（管理者）的东西；③ 网址（入口・`/test1/`・`/test2/`）只是现在测试用的分法，以后可以改。
-- 现在的页面里也不留别的 account 的痕迹：运行日志只有自己的（test2 的在 `archive/test2/state/log/`）；愿望清单的 `watch` 指向现在没有的版面时不出「版面 →」；「気になるかも？」不出别的版面的候选（`current_picks`）；
-  「小元素の判断の例」只出现在关注项的例子；ライブログ的浏览器缓存键是 `wl-term-<account>`（同一个域名）；说明文字里的例子不写具体作品名。
-- **test2 的加关注项规则（只改逻辑）**：一个名字默认只开一个版面，放在它「本身是什么」的板块（选的维基数据条目当依据的面的板块：ちいかわ = 漫画条目 → 作品 › シリーズ）；
-  其他面（グッズ・イベント…）只扩大搜索词、在目录里是枝（`media`）；不放乗換站（板块一问只选一个）；确认画面上默认不勾的「グッズ・イベントを別の版面にする」勾了才把其他板块的面做成下级（parent = 本体，和本体同一个板块）。
+- **test1 = 店長のページ**（2026-10-21，用户定的）：`items.yaml`・`wishlist.yaml`・`inbox/`・`reports/`・`state/` が店長のもの。网页 `docs/home/`（`sitedir.SLUG = "home"`）。**网址不出现 test1・人名・「店長」**（用户定的）；大家同一个网址，内容由登录的人决定。Supabase account 名 `test1`（`sitedir.NAME`，以后换成 `user_id`）。店長は `c.elegy@outlook.com` でログイン。
+- **test2** = 冻结在 `docs/test2/`，数据 `archive/test2/`，不再生成。test2 で決めた規則（一个名字一个版面・向导・入口）は店長のページでも使う。
+- 根 `docs/index.html` = 入口（`scripts/welcome.py` 生成）。
+- **account 各自分开、互不相通**（用户定的，2026-10-19）：Supabase 的表都有 `account` 列（`db/accounts.sql`）；网页只用带 `p_account` 的函数（`window.WL_ACCOUNT`）；Actions 经 `scope_account` 只读写自己的行。页面里不留别的 account 的痕迹。
 
-## 完善关注项
+## ライブラリ・お客さま（要点。全文 `docs/rules/library.md`，2026-10-23，用户定的：作り直し中）
 
-设置页上「新增关注项」（一问一答的向导，docs/additem.js）加进来的关注项，`notes` 里写着「从网页设置页加进来的」。
-我说「完善关注项」时，找出这些项，检查向导生成的 `match`、`urgent_patterns`（正则是按选项拼的，可能太宽或太窄；`match` 按下面「匹配词的写法」改，跑 `audit-match` 看有没有误收），
-补上 `subs`（小分类，每种分法都写）、判断 `parent`（见下「判断上下级」），补上 `similar`、`status`、`theme`，缺的 `steam_appid` / `anilist_id` / `tmdb` / `site` / `wiki`（维基词条，話題度用）也补上，并把 `notes` 改成真正的背景说明。
-向导的问题和选项（关注哪方面、要紧消息的词、不想看的词）都在 `docs/additem.js` 开头的 KINDS / EXCLUDES 里，要加选项改那里。
-选项上 `rec: true` = 「不确定，你帮我定」时替我选它；`when: about(/…/)` = 只在名字或维基数据说明里有这些词时才出现（比如「猫相关的」只给跟猫有关的东西），别再给所有东西都出同一套选项。
+- 店長もお客さまも**同じ仕組み・同じ画面の作り**。前の「お客さま用の別の仕組み」（`userfeed.py`・`user_boards`・JS で描いた版面・左右に払うカード）は間違いで、外す。
+- ライブラリ（`db/library.sql`：`boards`・`board_stories`・`follows`）= みんなの版面の置き場。記事集め・AI 編集・デザインは版面ごとに 1 回、全員が同じものを受け取る。版面の設定の本物はライブラリ。
+- 人ごと：👍👎・欲しい物・置き方・篇幅・画面の言語。お客さまのページとデータは本人と店長だけ（公開のリポジトリ・Pages に置かない）。
 
-## 新增关注项时：小分类（subs）必填，分法由用户选
+## ログイン（要点。全文 `docs/rules/login.md`，2026-10-20，用户定的）
 
-**每个板块、每个领域都一定要有小分类**，加关注项时一定写 `subs`，哪怕某个小分类里只有它一项。
-一个板块有几种「分法」（`sections.yaml` 的 `schemes`，例：ゲーム = 状態 / プラットフォーム，映像 = 種類 / 地域，
-ライブ = シーン / 形態，スポーツ = 種目 / 楽しみ方，グッズ = 種類 / ブランド・キャラ）。**每种分法都要写**：`subs: {status: 運営中, platform: スマホ}`。
-先用 `sections.yaml` 里的常用值（`values`），放不进去再起新名字（日语，短）。
-**用哪种分法由用户在 ⚙ 设置页选**（板块ごと，存 Supabase 的 `nav_schemes` 表，`db/nav_schemes.sql`；选了立刻重新生成网页）。没选的板块用第一种。
-要加新的分法：在 `sections.yaml` 这个板块的 `schemes` 里加一项 `{id: 英小写, label: 日语, values: [...]}`，再给这个板块的所有关注项补上这个分法的值。
-
-## 板块一览（sections.yaml，2026-10-17 定，2026-10-19 合成 8 个大类）
-
-**板块事先定全，新关注项只是「对号入座」，不临时开新板块、不为建板块叫 AI。**参考 IAB Content Taxonomy 3.1 的大类，**分得粗一点（用户定的），细的靠小分类**，8 个：
-影视 作品（マンガ・アニメ・映像・本）・游戏 ゲーム・演出 音楽・ライブ・运动 スポーツ・好物 ショッピング（グッズ・ファッション・テック・乗り物）・
-生活 暮らし・趣味（ペット・グルメ・ホビー・インテリア・健康）・出行 おでかけ・アート・其他 その他。没有关注项的板块网页上不显示。
-以前的 17 个板块名（时尚・数码・汽车 → 好物，书刊 → 影视，宠物・美食・爱好・家居・健康 → 生活，艺术 → 出行）由 `taxonomy.LEGACY` 自动换成大类（items.yaml・设置页的请求・also 都换）。
-- **小分类「シリーズ」（方法 4，用户定的）**：一个作品在同一个板块里有两种以上媒体（ちいかわ = 漫画・アニメ・映画，漫威电影 = 电影＋剧集，チェーンソーマン = 漫画＋动画＋剧场版）
-  → 合成一个版面，第一种分法写「シリーズ」；只有一种媒体的按那种（FROM = ドラマ）。向导里同一大类勾了 2 个以上的面就自动写シリーズ（`withSeries`），面最多的大类是主项。
-- **上级系列一起添加（2026-10-19，用户定的）**：向导的「属于哪个系列？」一问，看维基数据的 系列（P179）・媒体系列（P8345）・是…的一部分（P361）。
-  系列已在关注清单里 → 推荐挂上去；还没有 → 选项「一起添加上级『ハリー・ポッター』」：先提交系列（同一个板块、小分类シリーズ），再提交这一项（parent = 系列）。
-- **同じ系列のほかのもの（2026-10-19，用户定的：全部规则、不用 AI）**：系列が見つかったら、向导の「也一起关注吗？」一问で同じ系列の映画・ゲーム・スタジオツアー・展覧会…を板块ごとに並べる（`relatedLookup`：
-  系列を P179 / P8345 / P361 / P921 / P144 / P1441 に持つ条目＋名前に系列名が入った条目、人・キャラ・一覧ページは除く、説明の語で板块・小分類に対号入座、板块ごとに 4 件）。選んだものは各自の板块に 1 つの版面、系列が関注清单にある（か一緒に足す）ならその下級。
-  「怎么放」「小分类」「也一起关注」の各一問には**加えた後の目次の樹形図**（`placeTree`：板块 → 小分類 → 関注項、新・版面／新・下级／乗換站、同じ小分類の既存の項を 2 件）。
-- 每个板块在 `sections.yaml` 里有：日语名・英文标签・颜色（过 AA）・图标・向导的默认类型・**对号入座的词**（`words`，`prio` 小的先看：ゲーム）・两种分法和常用值（`schemes`）・题材型的面（`facets`：按第一种分法的值，ペット → 用品・フード…；没写的用 `taxonomy.GENERIC_FACETS`）。
-  `scripts/taxonomy.py` 读它（`render` 的 `SECTIONS` / `SECTION_JA` / `SECTION_EN` / `SECTION_ICON`、`digest` 的 `sub_schemes` 都从这里来），设置页的向导用同一张表。
-- 对号入座（全是规则）：维基数据的说明・名字里的词，按表从上到下先命中的板块（`taxonomy.classify`）；小分类选说明里出现的值，没有就第一个（`guess_subs`，值可以写成 `{v: 雑誌, re: magazine|杂志}` 带外语说法）。都没命中按 type，再没有就「其他」。
-- 设置页提交的 `section` 只收表里的板块，`subs` 一起写进 items.yaml。
-- **设置页的删除**（2026-10-18）：每个关注项有「删」，每个板块标题旁有「删除这个板块」（= 删掉这个板块里的全部关注项；板块事先定好，没有关注项就不显示）。都先确认。
-  数据库 `item_requests` 只收 add / edit，所以删除写成 `edit` + `config: {_delete: true}`；`digest.take_item_requests` → `delete_item` 从 items.yaml 删掉那一段，下级去掉 `parent` 留下。
-  网页生成时 `with_manual_themes` 把已删的关注项的版面马上拿掉（不等下一期）。Supabase `sizes` 表里留着的行不影响（没有对应的关注项）。
-- **向导里一般用户自己就能挂上下级**（网站是给一般用户的，不靠和 AI 对话）：「属于哪个已有的关注项？」一问，按规则推荐（已有的、自己没有上级的关注项，名字或搜索词出现在新项的名字・维基数据里）。
-  选了上级：板块跟着上级（不能改），小分类第一种分法写自己本来的类别（ちいかわ アニメ → アニメ），其他分法跟上级一样。
-  `digest.take_item_requests` 再检查一次（上级要存在、自己没有上级、只做一层），`load_config` 让下级的板块永远等于上级的。
-- **一个关注项可以放在几个板块**（`also: {影视: {kind: アニメ, origin: 日本}}`，ちいかわ = グッズ ＋ 映像）：版面只有一个、在主板块（`section`）；
-  其他板块的目录里放「乗換」的站（`render._nav` 的 `.pill.xfer`，「⇄ グッズ」的札，没有 `data-for`，点了跳到同一个版面），同一条新闻只出现一次。
-  向导的板块一问可以多选：推荐 = 它本来的板块 ＋ 选了的关注方面带 `sec` 的板块（`docs/additem.js` 的 KINDS，`sec: [板块, 小分类预设]`）；选了几个时再问「版面放在哪个」。
-  `also` 里每个板块也要写全分法（乗換駅按那个板块选的分法放进小分类，`digest.also_map`）。有上级的下级不用 also（跟着上级）。
-- **「面」（2026-10-18，用户定的：全部列出来让我选，不用 AI）**：向导在「是哪个」之后列出这个名字的面。**作品・IP 型的面是 MECE**（2026-10-19，用户定的）：8 面分两层不重叠——作品（漫画・アニメ・映画・ドラマ・ゲーム・舞台，按维基数据确认）／展开（グッズ・イベント，维基数据里基本没有 → 2 种以上媒体的作品・角色 IP 按规则推定）；每面的词互不重叠（`tests/test_taxonomy.py` 的 MediaFacetsMECE）；8 面每次全查，状态只有一个：确认・推定・情報少なめ・没找到（没找到的不列，只在最后写名字，ちいかわ 的舞台・实写），题材型列 facets 全部。**有但比主题冷门得多的标「情報少なめ」**（向导全体同一个规则 `thin`：找到的条目在维基百科写它的语言数 ×4 < 主题本身的语言数，例：ちいかわ的游戏；面跟选的条目比、同系列的东西跟系列比；标了的不预先勾上）。面的依据（找得全，2026-10-19）有 4 个来源：① 名字搜索 ② 顺着维基数据的关系找派生作品（`derivedLookup`：把选的条目当「原作 P144・媒体系列 P8345・系列 P179・一部 P361・主题 P921」的条目＋它的「派生作品 P4969」）③ 名字的全文搜索（标签里含名字的条目：ちいかわぽけっと）④ 维基百科的目次（`wikiSections`：「ゲーム」「イベント › ちいかわパーク」这种章节，维基数据里没有条目的也算；小标题继承上级章节的面）。条目・章节都只归一个面（`SECT_ORDER` 的顺序，MECE）。作品层只在章节里出现、没有自己条目的算「情報少なめ」。选面的一问也是树状图：根 = 主题本身（选的条目，写「メイン：…」），枝 = 板块 → 面，主条目当依据的面标「メイン」（`facetTree`）。**有但很少的标「情報少なめ」**（向导全体同一个规则 `THIN`：找到的条目在维基百科只有不到 3 种语言写了；面・同系列的东西・上级系列都用它，标了的不预先勾上）。
-  - 作品・IP 型（ちいかわ、蜘蛛侠）：`docs/additem.js` 的 `MEDIA` 8 面（グッズ→ショッピング・アニメ／映画／ドラマ／漫画→作品・ゲーム・舞台・ライブ→音楽・ライブ・イベント・カフェ・展示→おでかけ・アート）。依据 = 维基数据里同名的条目（标题含这个名字）的编号（AniList 动画/漫画、TMDB 电影/剧集、Steam）和说明里的词；
-    同一个条目里 映画 > アニメ > ドラマ（「アニメ映画」只算映画、「TV series」的动画不算剧）；动画・漫画・电影・游戏有两个以上的作品也推荐グッズ。具体作品名（映画ちいかわ…）变成搜索词。
-  - 题材型（「猫」：名字 ≤2 字或维基说是动物・食物・概念）：`sections.yaml` 那个板块的 `facets`（没写就用第一种分法的值），每个面的匹配是 `re:(?is)(?=.*(名字))(?=.*(面的词))`。已有相近的关注项（猫用品）会提示。
-  - **一个题材可以放进几个板块，但同一个板块里只有一个版面**（用户定的，2026-10-18）：同一板块的面合成一个版面，按「派生」归到一起
-    （`DERIVE`：原作漫画 → アニメ → ドラマ・実写 → 映画；剧场版是动画・剧的派生，ちいかわ 的アニメ和映画 = 映像里一个「ちいかわ アニメ」），版面名用最「元」的面。
-    面横跨 2 个以上板块时默认「每个板块一个版面」——主项「名字」放在主面的板块，其他板块各一个下级（`parent`，**下级写了自己的 `section` 就放在自己的板块**，没写才跟上级），
-    同一条新闻只在一个版面（上下级去重）；也可以选「全部合成一个版面」（其他板块放乗換駅）。下级在主项之后接着提交。
-- 「这是什么」选「角色 / IP」的（ちいかわ、三丽鸥）板块一定是グッズ・小分类キャラクター，不被维基说明里的「漫画」「动画」拉走。
-  IP 又有动画、电影时：IP 是上级（グッズ），「○○ 映像」（电视动画＋剧场版）挂成下级；电影消息多了再拆一个并列的下级，并列的下级之间不自动去重，match / exclude 要分开写。
-- **シリーズの中身・本文の区切り（2026-10-19）**：小分類シリーズの関注項は `media: [マンガ, アニメ, 映画]` を書く（向导が選んだ面から自動で書く）。
-  目次ではその駅の下に枝（`.pill.kid.media`）で媒体を出し、直近 7 日でその媒体の語（`render.MEDIA_WORDS`）に当たる記事数を「+n」。
-  たたまれて見出しだけになった板块の空きには作品名を薄く 1〜2 行（`.nsum`，スマホでは出さない）。
-  本文も目次と同じ「板块 → 小分類」の順に並べ、小分類が変わる所に細い見出し（`render._sub_heads` の `.subhead`）。
-- 判断不准时改 `words` / `re`（加词、调顺序：宠物在美食前面，所以「dog food」是宠物），在 `tests/test_taxonomy.py` 加一个例子。要新板块就在 `sections.yaml` 加一项（颜色先过 AA），不用改代码（合并板块时把旧 key 加进 `taxonomy.LEGACY`）。
-
-## 新增关注项时：判断上下级（parent）
-
-加关注项（设置页的向导、我说「加进关注清单」、「完善关注项」）时，**先看它和已有关注项是不是上下级**，是就在下级那一项写 `parent: 上级的名字`：
-- **新项是已有项的下级**：同一系列 / 品牌 / 联赛 / 艺人里的一部作品、一个商品、一次巡演（スパイダーマン → 漫威电影、Galaxy S27 → 三星手机、某次巡演 → 周杰伦）。
-- **新项是已有项的上级**：后加的是系列本身（先有スパイダーマン，后加漫威电影）→ 回头给已有的下级项写 `parent`。
-- **怎么判断**：维基数据的「系列（P179）」「属于（P361）」「媒体系列（P8345）」、名字和 `keywords` 是否包含上级的名字、官网是否同一个。拿不准就问我，别硬挂。
-- **只做一层**：没有「孙」（漫威 › スパイダーマン › 续集 不做，续集挂到漫威或スパイダーマン其中一个）。
-- 下级项的 `section` 和上级相同；`subs`（小分类）写它自己真实的类别（デアデビル是剧集 → `subs: {kind: ドラマ, …}`）。目次上下级跟着上级放（案 A），自己的类别和上级不同时，名字旁标一个小的类别标签。
-- **同一条新闻不出现两次**（PRODUCT.md 原则 4）：下级的新闻也会命中上级的 `match`（「スパイダーマン 新作」里常有「Marvel」）。上下级都收到时只放进下级的版面，上级版面只放系列整体的消息。
-- 目录上的显示定为**案 A 枝分かれ**（2026-10-17）：上级是普通的站，下级挂在从上级那一站分出的支线（拐角 └）上。
-  上下级都是关注项、地位一样：下级**不缩小、不特别折叠**，大小和普通的站一样，隐藏与否照 v6 的规则。2026-10-17 已接进本番（`render._nav`），见 テストグラウンド https://cxelegy.github.io/Wishlist/testground/franchise.html 。
-  「同一条新闻不出现两次」的去重在 `render._dedupe_parents`（上下级都收到的新闻只留在下级的版面）。
-
-## 匹配词（match）的写法：防止误收
-
-收进版面的消息，标题或摘要里必须有 `match` 里的某个词（忽略大小写和空格，所以「FROM season」也会命中「…from season 10 of …」）。
-加关注项、改 `match` / `exclude`、「完善关注项」时都按这几条写，写完跑一次检查：
-
-- **名字是常用词或缩写时不要直接写**：剧名 From、缩写 MCU（也是微控制器）这类，用 `re:` 开头的正则（区分大小写、照原文匹配），
-  只认确定是它的写法（全大写的 `re:\bFROM\b`、标题开头的 `re:^From Season \d`）；或者把撞名的领域写进 `exclude`（MCU → 晶片、MPU、飆股）。
-- **泛词必须和主题词同时出现**：「マグ」「感染症」「獣医」「ペット用品」单独出现会混进别家、别的动物，
-  写成一条 `re:(?is)(?=.*(主题词…))(?=.*(泛词…))`（例：星巴克马克杯、猫用品）。只有专有名词（作品名、牌子名、人名）才单独写。
-- **数字、年份、季号不单独当匹配词**：「26/27」也是音乐节 COUNTDOWN JAPAN 26/27，「Season 5」到处都是。
-- **名字是常用词的作品不做 Reddit 全站搜索**：`use: [google, bing]`，社区讨论只看它自己的版块（`subreddits`）。
-- **Reddit 只放真的火的帖子（用户定的，2026-10-17）**：版块看本周最热榜（`/top?t=week`）前 5，全站搜索看按热度排的前 5；配了 Reddit API 时还要赞 ≥100 或评论 ≥30。
-  不火的不上版面，只记进 inbox 的 `reddit_cold` 给話題度数帖子数。已经上了版面的帖子每天复查一次：被删（[removed]/[deleted]）或掉出榜就撤掉（`digest.prune_reddit`）。
-- **垃圾站**（被黑的网站批量生成的页面，标题塞作品名骗搜索，会命中 match）：`digest.is_spam` 按标题写法（「在线看」、末尾 10 位随机码 `(gQvzdvbtKG)`）和链接网域（`SPAM_HOSTS`，Unisba Media = `unisba.ac.id`）认；
-  收集・整理待ち・出刊・页面・推荐・話題度的报道量都过这一个函数，新发现一个垃圾站就在那里加写法 / 网域，在 `tests/test_match.py` 加真实标题。
-- **网店、二手的商品页**（「本物」「定番新品」「au PAY マーケット」「最終値下げ」）写进 `exclude`。
-- **不是新闻的网站按网域丢**（2026-10-22）：`exclude_hosts`（settings 全体：readyfor.jp・camp-fire.jp 众筹 = 整个网域；攻略 wiki 的 gamewith.jp・game8.jp・altema.jp 写成 `{host, title}`，只丢标题是攻略页形状的（「【あつ森】…【あつまれどうぶつの森】」「【ゼンゼロ】…は引くべき？」），编辑部的新闻（新作发表・试玩评测）留着——收集时链接是 Google 的跳转、看不到路径，所以按标题分；escorenews 的比赛直播页由 dota2 的 exclude「match stream」丢，网域不丢；关注项也能各自写），网域和下级网域，看 `e.link`（还原的原文）・`e.url`・Google 新闻的 `<source url>`（`Entry.site`，收集时链接还是 Google 的跳转；inbox 里也写 `site`）。「気になるかも？」的候选也过出典名・网域。
-  `exclude_sources`（媒体名）是**前方一致**：「YouTube」也丢「YouTube on MSN」（后面接 ASCII 英数字的不算：「note」不丢「Notebookcheck」，「note株式会社」丢；官方频道 RSS「YouTube · 名字」不丢）。
-  设置页能改的 `keywords` / `match` / `exclude` 上限是 40 / 80 / 80 个（`digest.ITEM_FIELDS`）：items.yaml 里写的要都在上限内，否则店长改一个词就被拒（`tests/test_match.py` 的 ItemFieldsLimitTest）。`set_item_fields` 换写多行的 `[ … ]` 时连闭括号的行一起换（以前留下 `    ]` 把 YAML 弄坏，依頼被 skipped：SetItemFieldsRoundTripTest 把每一项都写一遍再读）。
-  滑雪的英文词（CAPiTA・Burton・ski）用 `(?<![A-Za-z])…(?![A-Za-z])` 不用 `\b`：Python 的 `\b` 把假名・汉字也算单词字，「CAPiTAの」就不命中。
-  这几条和垃圾站・`exclude`・`match` 都在 `digest.drop_reason` 一个函数里，收集和 `audit-match` 用同一个。
-- **情報源（2026-10-22，用户定的：都要，不用 AI 所以 CPU・时间可以多用）**：Google・Bing・Reddit・Steam・RSS 之外，`sources.gdelt`（世界 65 言語のニュース索引，读者的语言，5 秒 1 回・429 重试，重试后还被拒这次就不再问（2026-10-22 本番：Actions 的共享 IP 几乎都被拒，空等 10 分钟），`use` 有 google 的关注项，每项前 2 个词）、
-  `sources.youtube_channel`（公式チャンネルの RSS，チャンネル = items.yaml 的 `youtube` 或 `wiki` → Wikidata P2397，缓存 `state/youtube_channels.json` 30 天）、
-  `sources.bluesky`・`sources.mastodon_tag`（`use` 有 reddit 的关注项；和 Reddit 一样只放火的帖子：Bluesky ♥50 / 转发＋引用 15，Mastodon ♥20 / ブースト 10，其余只算話題度；匹配词必须在帖子正文；网址开头的自动转载 bot 帖丢掉）。
-  都过同样的 match・exclude・垃圾站・去重；`sources.is_sns` = Reddit・Bluesky・Mastodon（不当报道・不当推荐）。
-- **地域ごとの情報員（2026-10-22，用户定的）**：今の「情報源」は全世界共通の汎用的な仕組みでしかない。**地域ごとの専門の情報員**を作る：
-  まず**日本の情報員**（日本のサイト・日本のニュースに詳しい）、それから**国内（中国）を中心にアジア地域の情報員**（台湾・香港・韓国・東南アジアも）。
-  情報員 = その地域の情報源を分類（作品・ゲーム・音楽・スポーツ・グッズ・暮らし・おでかけ）ごとに持ち、関注項の言語・地域・分類で担当が決まる。集めた記事は今までどおり match・exclude・垃圾站・去重を通す。
-  情報源は無料・鍵なし・robots / 利用規約で自動の読み取りが許されているもの（RSS / Atom / JSON 優先）。作るときは find-skills で地域向けのスキルを探し、スキルの中身を取り込んで設計する（調査：ワークフロー regional-intel-research）。
-  **作り（第 1 段・日本、2026-10-22）**：`intel/<地域>.yaml`（データだけ：id・ja・langs・sources〔id・name・url・cats・exclude・terms〕、足すのにコードは要らない）＋ `scripts/intel.py`（`collect()` から 1 行）。
-  開關 = `items.yaml` の `settings.intel: [japan]`。担当 = 関注項が**自分で書いた** `news_langs` と地域の `langs` が重なる（settings の既定の言語は数えない）・`intel: [korea]` で指定・`intel: []` で止める；読むのは `cats` が関注項の板块（section 無しは type から・also も）と重なる情報源。同じフィードは 1 回の収集で 1 回だけ取る。
-  情報源ごとの様子（ok・blocked・timeout…）は収集のログに「情報員 日本の情報員：17/17 本・…件」。`python scripts/intel.py --fetch` で担当と取れ具合を見る。読み取りの共通部分：RSS 1.0（RDF）・宣言のない `media:` も読む、ホストごとの UA `sources.HOST_UA`（ナタリーは Mozilla を 405）。
-  入れないもの：Yahoo!ニュース RSS・CNA・SCMP・RTHK（「個人・非営利のみ」）、B站・知乎（robots で禁止）、微博・小紅書・Dcard（ログイン）。次：日本の残り（はてブ検索・PR TIMES 企業別）→ 韓国 → 台湾・香港 → 中国 → 東南アジア（設計案は調査の結果）。
-- **检查**：`python scripts/digest.py audit-match`（`--only "名字、名字"` 只看几项）把最近几天收进来的条目按「靠哪个词进来的」列出来，
-  ✗ 是按现在的规则已经不会再收的（后面写理由：match・exclude・垃圾・exclude_sources・exclude_hosts；最后一行是 link・site 都没有、网域判断不了的 Google 跳转件数，和其中出典名跟被丢网域同一媒体的件数）。每组看一眼标题，有不相关的就收紧那个词；误收已经上了版面的，
-  从当天还没有 `.edit.json` 的 inbox 里删掉、把报告里那条拿掉，再重新出刊。`tests/test_match.py` 有这几种写法的例子。
-
-## 读者的语言：主言語・副言語（2026-10-17）
-
-- 设置在 `items.yaml` 的 `settings.languages`：`primary: ja`（主言語，网页 UI 也用它），`secondary: [en, zh, ko]`（副言語，按顺序）。以后每个用户在 ⚙ 设置页自己选（还没做）。
-- **同一件事有几种语言的报道，只留主言語那条**；没有主言語的按副言語顺序挑；主言語・副言語以外的语言不上版面。
-- 三处把关：① AI 编辑（`EDITING.md`「不同语言的同一件事只写一条」，跨天也算）② 出刊 `publish`（`lang.prefer_ref` 把标题换成更好语言的出典原题、`lang.dedupe`）
-  ③ 生成网页 `render.collect`（跨期去重）+ `_agenda`（同作品・同日・同标签只出一次）。规则全在 `scripts/lang.py`（不用 AI）：
-  语言按文字种类判断；同一件事 = 同作品、10 天内、版本号 / 标题里的月日 / event 日期相同。误判时改 `lang.py`，在 `tests/test_lang.py` 加例子。
-
-## 网页设计：加新内容时的规则（设计框架）
-
-网页是公开的，以后会不断加新内容。新东西**套进现有框架**，不要每次另起一套：
-
-- **所有页面都要能用按钮・链接走到，不让用户改地址栏**（2026-10-21，用户定的：靠改网址操作在 UX 上不可接受）：加新页面・新流程时，先想清楚「从哪个页面、点哪个按钮进来，怎么回去」，把入口放进现有的导航（右上的 `wl-auth`：见るだけ时常驻「新しく始める」「ログイン」，菜单里「このサイトについて」= 入口 `../?stay`、利用規約、管理ページ；入口的按钮；目次）。`?stay`・`?login=1`・`#name` 这类参数只给链接用，不写进给用户的说明。
-- **产品事实**在 `PRODUCT.md`（读者、语言、原则）；改网页前先看。界面文字（标题、按钮、说明）一律日语，消息内容保持原语言。
-- **Web 字体只加载 Noto Sans JP（+ Anton・Yusei Magic・JetBrains Mono）**（2026-10-22 全体の検査 H6：SC/TC/KR/Serif SC 一起加载时字体 239 个文件・8.8MB）：中文・韩文的报道用终端自带的字体。加字体前先看 `tests/test_perf.py`。
-- **颜色、字体**只用 `scripts/render.py` 开头 `:root` 里的设计令牌（`--ink` `--paper` `--rose` `--sheet` `--card` `--gold` `--alert`、
-  `--font-sans/serif/mono`、`--fs-label`）。要新颜色先加令牌，不要在 CSS 里直接写十六进制。
-- **新板块（ジャンル）**：板块事先定全在 `sections.yaml`（见上「板块一览」），`items.yaml` 的 `section` 只写表里的 key。
-  真要加板块就在 `sections.yaml` 加一项（日语名・英文标签・颜色・图标・分法），不用改 `render.py`。
-- **新类型的消息信息**（价格、日程、视频、图集）：已经有部件，AI 编辑在 edit.json 里写 `price` / `event` / `video` / `gallery`
-  （见 `EDITING.md`「追加字段」）就会显示；头版「これからの予定」自动汇总将来的 `event`。
-- **真正的新部件**：在 `render.py` 里写一个函数（参照 `_extras` / `_agenda`：没有数据就返回空字符串、链接只收 http(s)、文字都转义），
-  CSS 只用令牌，在 `tests/test_design.py` 加测试，再在 `EDITING.md` 写清字段。
-- **检查**：`python -m unittest discover -s tests`（`test_design.py` 检查字号 ≥10px、令牌、板块色对比度、部件）；
-  改完界面再跑一次 `.claude/skills/impeccable/scripts/impeccable detect --json <生成的 html>`，并在 1400 / 390 / 320 px 宽截图确认不换行、不横向滚动。
-- **现在的视觉（2026-10-16 定）**：配色就是原版令牌；骨架借 P5 的手法但不照搬：文字箱后面硬阴影（`--shadow`）、标题和框只倾斜 1〜2.5°（`--tilt`）、
-  标签是平行四辺形（`.tg`，`--skew`）。正文、列表、作品版面不倾斜。トップ是「每天刷新的海报」：底色由当天头条的配图取色
-  （`_poster_colors`，缓存在 `state/themes.json` 的 `hero|图片URL`）；「ほかの注目ニュース」= 照片墙 + 各板块的「棚」（不放纯文字列表；手机上棚竖着叠、每个板块最多 3 个作品，不横向滚动）；
-  「気になるかも？」是店长 POP 卡。图片规则：**配图不裁切**（文字・ロゴ入りのバナーが欠ける）：比例几乎一样（|ln 比| < 0.08，最多切 8%）才铺满，其余放在模糊底上完整显示（`FIT_JS`），所以任何配图都能放进同一个模板。
-  **不要留空、要对齐**：照片墙的小卡片照片框统一 16:10（框的大小统一，照片不裁，比例不合的放模糊底上）、标题留 3 行高，同一段的卡片底边对齐；`SPOT_COUNT` 是候选张数，`FIT_JS` 里的 `wall()` 只显示放得进**一屏**（画面高度减标题和棚的帯）的整段，墙底和右列（これからの予定・欲しい物リスト，2026-10-18 起只有这两个）底边齐平；「気になるかも？」也一屏放下（`SHUFFLE_JS` 的 `fitPk`：缩小卡片的照片框、大的一张和右边两段同高，「似たジャンルの新着」在 PC 上是横长的小卡片）。卡片按 P5 的手法各自稍微倾斜（外框的上下边对齐）。PC 上滚动停下时有很轻的吸附（`FIT_JS` 的 `snap`：版面・ポスター・ほかの注目ニュース・気になるかも？ 的上端离画面顶 72px 以内才对齐，远了不动；不用 CSS scroll-snap，太黏）。
-  各作品版面的普通消息一排最多 3 张、连着的几张平均分行（4 张 = 2+2，`_layout`），只剩一张时做横长卡片，不让一张小卡片占整行；日程・价格（`xevent` / `xprice`）放在字的下面。
-  左边的目录（`NAV_JS` 的 `pick`）亮的是「屏幕里露出标题、最靠上的」版面，一个标题都看不到时是盖住屏幕顶边的那个。
-  Bing 新闻缩略图（`bing.com/th?…&w=1200`）原图小时会补白边，`_img_url` 去掉 w/h 用原尺寸。
-  **配图清晰度・显示不出来（2026-10-17 定，全是规则、不用 AI）**：`images.pick` 原文的预览图长边 < 1000 时先换同一页更大的版（JSON-LD 的 1920×1080）；
-  **原文被挡（人机验证・限流・临时打不开）也不停**：接着找同一件事的别家报道（`digest.same_event`，最多 4 篇）的图 → 转载（标题里引用了原标题「…」时也用原标题搜）；还没图的报道，之后每次出刊自动再找（`digest.retry_images`：同一条每 6 小时、一次 6 条、直近 8 天，`state/img_retry.json`）。
-  MSN 的视频（`vi-`）・图集读接口的 `thumbnail` / `slides`；新浪 sinaimg 这类防盗链（不带 Referer 就 403）的原文图，带原文网页作 Referer 再试，来源名加「（本站保存）」。
-  出刊时 `hdimg.py` 用 OpenCV 判断「看不清吗」：**原图看得清就不动、不花资源**（用户定的）。只有网页上要放大 1.6 倍以上、而且放到显示大小后模糊度 > 0.42（无参考 re-blur 法）的图
-  才去噪 NLMeans → Lanczos4 放大（最多 3 倍）→ 亮度 USM；Bing 只给 100×100 的缩略图改取 w=1200 版切白边；防盗链的图、期限付きの網址（Yahoo ニュースの `?exp=10800`，几小时后变成 1×1 的白图）存一份；已经打不开・变成空白的图记 `dead`，`retry_images` 去原文重新找；网页上 1×1 的图当作打不开、换下一张。都放 `docs/pics/`（`state/hdimg.json` 记对应关系，过 8 天删），`render._img_url` 优先用本站的、打不开再用原图。手动：`digest.py hd-images`。
-  **拒まれたら scrapling で取り直す・代表の 1 枚（2026-10-22，用户定的：不用 AI，CPU 可以多用）**：`images._fetch` が 202/401/403/405/429/503・確認画面で拒まれたら ① scrapling の Fetcher（Chrome と同じ TLS。記事の頁だけ Google から来たヘッダー、画像には付けない）で 1 回取り直し、
-  まだ拒まれた記事の頁は ② 本物のブラウザ（StealthyFetcher、`digest.yml` が `scrapling install` できたときだけ `SCRAPLING_BROWSER=1`、1 回 10 頁・合わせて 180 秒まで。1 頁は別プロセスで 45 秒で必ず打ち切り、開けなかった頁は 24 時間開き直さない `state/browser_skip.json`：2026-10-22 本番で同じ頁に毎回 3 分）。取り直しでしか取れない画像は来源名に「（本站保存）」→ hdimg が本站に保存。有料記事・ログインの壁は越えない。
-  正文図は最初の 1 枚で決めず 6 枚まで確かめ `images.key_score`（大きい・16:10 に近い・記事の上のほう、細長い帯は除く）で選ぶ。テストは外に出ない（`images.SCRAPLING = False`、`tests/test_scrape.py`）。
-- **版面主题（motif）**：`items.yaml` 里给作品写 `motif:`，主题在 `templates/`（`index.yaml` 一览 + 每套一份 `<id>.css`，只用作品自己的配色变量）。
-  现在有 **30 套**（背景花纹、题字形状、照片边框、标题旁装饰字），每套带一个 **👍 演出**（`fx`，`scripts/likefx.py` 的 20 种：大拇指的动作 + 飞散的形状 + 文字）。
-  一览和试玩：テーマ見本 https://cxelegy.github.io/Wishlist/home/themes.html （`render.render_themes`）。
-  **每个新关注项加进来时，AI 都要把版面设计一遍**（`TEMPLATES.md` 开头的表）：① 主题 `motif` ② 配色 `theme`（暗底 / 浅底按作品气质，字一定要看得清）
-  ③ 作品小元素 `emblem`（`scripts/emblem.py` 找现有的、认得出的图，可多张、每次打开随机一张；不自己画、不改原图）④ 点 👍 的演出 `like_fx`（不写就用主题的 fx）；
-  设置页加进来的由「AI 编辑」设计（工作流在加进来后叫它）；设计好之前先按 `type` 借用 `index.yaml` 里 `defaults` 对得上的主题。
-  点 👍 的演出按版面（`data-fx`）选：同一套主题的版面演出一样。新演出：在 `likefx.py` 的 `FX_JS` 和 `FX` 各加一行。
-  **演出别自己从零做**：粒子用 canvas-confetti、擬音按漫画的作法（Dela Gothic One・双层描边・ウニフラ・逐字砸下・震动），参照成熟的前端设计。
-  **配色要协调**：版面配色跟作品的代表色（主视觉、角色、小元素）搭，不让补色强色打架（例：橙色的ポチタ配深蓝就不行），见 `TEMPLATES.md`「配色的协调」。
-- **話題度（热度指数）**：`scripts/heat.py` 用 6 个维度算 0〜100（報道量・広がり・出来事・勢い・一般の関心〔维基浏览量〕・ファンの反応），
-  每维 = 60% 跟自己平常比 + 40% 同一把尺子；拿不到的维度不算 0 分而是从分母去掉。外部数据随收集存进 `state/heat_signals.json`，
-  分数在生成网页时算（不联网）。网页：各版面标题栏的数字（点开看内訳），
-  能进分析页 `docs/heat.html`（`render.render_heat`：KPI・ヒートマップ表・前週比・作品ごとの内訳とグラフ・計算方法）。
-  分析页的图表按 dataviz 规范：颜色只用 `--viz-*`（指标）/ `--seq-*`（点数浓淡）/ `--up` `--down`，文字用 HTML 叠在 SVG 上。
-  改权重 / 满分线 / 等级改 `heat.py` 开头的 `DIMS` / `REF` / `LEVELS`，测试在 `tests/test_heat.py`。
-- **大改视觉**用 impeccable 的 new-work 流程（`/impeccable`），做完写 `DESIGN.md`。
-
-## 目次のロゴと炎（2026-10-17）
-
-**炎の演出は保留中（2026-10-18、`PENDING.md`）**：本番では `render.NAV_FLAME = False` で炎・ぶわっ・版面の火を全部止めている（ロゴと話題度の点数だけ出す）。下は再開するときのための仕様。
-
-目次の左上に仮の名前「TBD」のロゴ（サイト名が決まったら `render._nav` の `wm` を差し替え）と炎（`render.FLAME_SVG`、試作は テストグラウンド https://cxelegy.github.io/Wishlist/testground/flame.html ）。
-- 形：先の尖った涙形を 4 層（上へ透ける縦グラデーション）。話題度 25 を超えると左右に舌が出る。
-- **色は温度**：冷めた火＝暗い赤の熾火（`--ember`）→ 赤 → 橙 `--flame` → 金 `--gold` → 白い芯（`--card`）、沸騰に近づくと底に青い炎（`--blueflame`）。層ごとの色は `--fo` `--fm` `--fi` `--fc`（`color-mix`、`--hc` は NAV_JS が毎フレーム滑らかに入れる）。
-- **不規則さ**：縁は SVG の乱流（feTurbulence → feDisplacementMap、雑音の細かさもゆっくり変える）、層ごとの伸び縮み・傾き・揺れは周期の割り切れない 4 つの波の和（`NAV_JS` の `wob`）、火の粉は 1 粒ずつ道筋と寿命が違う。
-- **話題度で燃え方**（読んでいる作品の `data-heat`、heat.py の 0〜100）：大きさ・揺れの速さと大きさ・舌・後ろの光・火の粉の数。**読んでいる間ずっとその強さで燃える**（切り替えは 0.5 秒で滑らかに、跳ねない）。トップでは全体の最高点を小さめの火で。右に点数と等級（`heat.LEVELS`）。
-- **版面も一緒に燃える**（`NAV_JS` の `kindle` / `secBurn`）：版面に入ると上辺を火が左から右へ走り（導火線 0.7 秒）、火の粉が上へ散る（画面のどこへ飛んでもよい）。読んでいる間は上辺（`.secfire`）が炎と同じ揺れで明滅し、版面の下のほうから時々火の粉が昇る（1 秒 0.25〜4.75 粒）。強さはその作品の話題度。
-- 動かすのは宽屏・タブが見えている・動きを減らす設定でないときだけ（rAF を止める）。スマホでは出さない。`burst` はトップの「重大」の札のクラスなので使わない。
-
-## 目次のアイコン（items.yaml の `icon`）
-
-左の目次で**読んでいる作品にだけ**出る 1 枚（白フチ・少し傾けたカットイン）。版面の emblem（キャラのステッカー、何枚でもランダム）とは別物で、
-「これを見ればどの作品・ブランドか一目でわかる」唯一の 1 枚を選ぶ。種類ごとの選び方：
-- **フランチャイズ・レーベル**（漫威など）：公式ロゴ。人物は使わない
-- **ブランド・商品**（星巴克、三星、gelato pique）：ブランドロゴ。キャラ商品（ぐでたま）はキャラ本人の公式の絵
-- **ゲーム**：パッケージ／キービジュアル（ロゴが入る部分を正方形に）。アプリアイコンになっているロゴがあればそれ（绝区零）
-- **アニメ**：AniList のカバーかタイトルロゴ ／ **ドラマ・映画**：タイトルロゴかタイトルカード
-- **音楽家・グループ**：Spotify のアーティスト写真（宣伝用に撮られたものなのできれい。Spotify 連接器でアーティストを探し、`open.spotify.com/artist/<id>` の og:image）。
-  人物が小さすぎるとき（全身・引きの写真）は報道写真の顔のアップでもよい。顔を真ん中に、あごや頭を切らない。
-  多人数のグループは Spotify の写真のまま人が小さくてもよい。グループの文字ロゴ（ワードマーク）を使ってもよい
-- **文字だけのロゴ・タイトルも立派なアイコン**（FROM・ハリー・ポッター・マンダロリアン）。無理に人物や写真に替えない
-- **カテゴリ・スポーツ**（猫用品、MMORPG 新作、滑雪、网球）：twemoji の記号
-画像は 256×256 の正方形 webp にして `docs/icons/<slug>.webp` に置く（外部の画像は消えたり http で出せなかったりするので必ず倉庫に置く）。
-**欠けない・傾かない・顔やロゴが真ん中**：作ったら 44px でも何かわかるか必ず見る。`icon: {image, kind, why, source}` に出典と理由を書く。
-新しい関注項が入ったときに自動で作る仕組みはまだない（あとで追加する。今は手で作る）。
-
-## 页面自动更新（开着的页面自己出新内容）
-
-- 每次生成网页时，`render.stamp` 给简报・管理页・愿望清单・話題度分析算「内容指纹」（去掉更新时间），写进页面的 `<meta name="wl-ver">` 和 `docs/version.json`。
-  **打开时就是最新（2026-10-21，用户定的：不要因为浏览器缓存看到旧页面）**：GitHub Pages 让浏览器把 HTML 留 10 分钟，所以页面一打开就读 `version.json`，打开 15 秒内・还没输入时发现是旧的，就用 `?v=新指纹` 重新打开（绕过缓存，到了以后从网址去掉 `?v=`；同一个 v 还是旧的就不再重复）。入口 `docs/index.html` 同样（`welcome.FRESH_JS` + `docs/index.ver.json`）。
-  页面（`render.LIVE_JS`）之后每分钟读 `version.json`，指纹变了就在用户 20 秒没操作（或标签页在后台）时无缝重载：保持阅读位置，
-  新增的记事 / 愿望打「たった今」（愿望清单页是中文「刚刚」），面板内容变了打「更新」；标签页在后台时标题前出件数「(3) …」，回到页面就消。
-  对话框开着、在输入框里、**有没保存的输入或选好的照片**时等待，底部提示条有「今すぐ表示」。
-  **通知要说清楚「哪个版面更新了什么」**：生成时每个版面・パネル带 `data-h`（内容指纹），`docs/version.json` 的 `<页>_marks`（`render.page_marks`）记着 {id: [名字, 指纹]}。
-  检测到新版本时，条上先写变了的版面名（「新しい内容があります：GTA 6、あつ森」，点名字跳到那个版面）；重载后写「更新しました：GTA 6 新着 2 件、あつ森 新着 1 件、绝区零 更新」
-  （记事增加的版面写件数，记事一样但内容变了的写「更新」）。最多列 4 个，其余「ほか N か所」。
-  **只有 AI 编辑整理过的记事才算版面更新**（用户定的）：简报版面的指纹（`render._board_hash`）只算 `<article>`，整理待ち（`details.pend`）・話題度数字・小元素变了都不算，
-  新着在 AI 编辑整理成记事之前读者看不到，没必要通知。没有可以点名的变化时不出提示条，页面只在没人操作时静静重载（管理页的面板仍照旧提示）。
-- 管理页「いまの状況」开着时一直重读：依頼・写真每 1 分，GitHub Actions 每 3 分（未登录 API 每小时 60 次；所有标签页共用 3 分钟内的结果，`localStorage`）。
-- **版面的「更新中」条**（`render.BUSY_JS` / `busy_plan`）：**只在正在更新的那个版面**上边框出一条用版面 `--acc` 色往返的细条 + 进度 + 「あと約 N 分」，其他版面不出。
-  图层：条 z-index 4，在小元素（`.emb`，z-index 5）下面。**不推算**：各仕组み自己往 Supabase `live_status` 表写，网页 30 秒读一次 `live_boards()`（`db/live_status.sql`）。没有 AI 参与。
-  - 收集（`digest.live_mark`，Actions 有 secret key 直接写）：开始抓「記事を探しています」→ **这个版面一抓完就**判断：没新记事删掉（条消失），有就「新着 N 件 · AI 整理待ち · 一覧まで約 N 分」（新记事 AI 编辑后才成报道）；按顺序去重后件数变了再改（`tests/test_live.py`）。
-  - AI 编辑（Claude 定时任务，没有 secret key → `scripts/livestatus.py` 调 `live_report()`）：`EDITING.md` 第 2 步 `digest.py live-edit`「AI が編集しています」→ `pick-images`「配図を選んでいます」→ `publish`「反映を待っています」。
-  - 小元素补全（`emblem_fill.background`，同上 `live_report()`）：处理中「小元素を集めています」→ 增加了的版面「反映を待っています」，没增加就删。
-  - `live_report()` 只收 proc = edit / emblem、版面名必须在 `sizes` 表里、文字 40 字・预计 90 分以内（不用密钥就能写，所以限得很窄；被滥用最多是假的条出 45 分钟）。
-  - 「あと約 N 分」= 各仕组み最近 10 回实际用时的中位数（`runlog.typical`：收集 `secs`、AI 编辑 `secs`、小元素每个版面 `item_secs`），越跑越准。页面生成（代码变更）不出条。
-  - 连接器注意：Supabase 连接器执行 `DELETE` / `DROP` 这类破坏性语句要用户确认，云端会话里没人点会超时 → 改表结构用不删东西的写法（`create or replace`、新函数名）。
-- 这套逻辑在管理页「全体の構成」里是「ページの自動更新」（`processes.py` 的 `live`，箭头 21〜24・27・28），改逻辑时同步改那里。
-
-## 管理ページ（docs/admin.html）
-
-只看不改、不用口令（`render.render_admin` + `digest.admin_data`）：运行状况（最新一期、收集条数、哪几天还没 AI 编辑、几天没新消息的关注项、周报）、
-打开时实时读取的 GitHub Actions 结果 / 设置页的关注项请求（`list_item_requests()`）/ 照片收件箱（`get_photo_inbox()`）、
-各关注项的篇幅・7 天记事数・速報数・最新记事・話題度・缺的字段、投票统计（来自 `state/feedback.json`）。要加新数字就在 `admin_data` 里算、在 `render_admin` 里显示。
-- **小元素の「違う」（2026-10-21，用户定的）**：「版面ごとの状態」の小元素（行のサムネ・「小元素の探し方」の中）を押す → **理由を選ぶ**（`emblem_rules.REJECT_REASONS` の 10 種＋ひとこと）→ 下の帯の「外す」。
-  版面ごとに `submit_item` の edit ＋ `{_emblem_reject: [{image, reason, note}]}`（DB の変更なし）→ `requests.yml` の `take-items` が `digest.reject_emblems` で items.yaml から外し、元の画像を `emblem_reject` に（二度と自動で選ばない）、倉庫の webp も消す。足りなくなった分は次の後台で別の画像。
-  **理由は今後の規則の手がかり**：`state/emblem_rejects.json` に理由・取り方（why）・網域・種類と一緒に残り、管理ページ「「違う」の理由」で数える。同じ理由・同じ取り方が溜まったら、`REJECT_REASONS` の 3 つ目（近い判断）を締める。規則がまだない理由（「そのほか」）が溜まったら `rules()` に 1 行足す。
-- **AI 編集の前後**（運行状況の下）：最新号で、作品ごとに「集めた件数（横棒）のうち AI 編集が記事に使った件数（青）→ 載せた記事の本数・重大／頭・未編集の新着」を 1 枚の図で見せる（`digest.edit_diff` + `render._admin_edit_diff`，`tests/test_edit_diff.py`）。
-- **バックグラウンド**（管理ページ最上部）：裏で動く仕組みの「次の実行」（前回・次回・あと何分，页面打开时按 `processes.py` 的 `schedule` 实时算）
-  + 版面（行）× 流程（列：収集・AI 編集・版面の設計・小元素）的状态表（済 / 待ち / 要確認 / 失敗，小元素写排第几）。数据在 `digest.backend_cells`。
-  还有「待ち行列」（之后 24 小时的每次运行、那次要处理哪些版面，`digest.backend_todo`）和「ログ」（`scripts/runlog.py`：
-  每个仕组み写自己的 `state/log/<proc>.json`——收集・出刊（Actions）、AI 编辑、小元素补全——分开写避免 push 冲突）。进度条带条纹动画（减少动画设定时不动）。
-  版面ごとの状態 的每行：现有小元素的缩略图（行内最多 10 张 + 「+N」，展开「小元素の探し方」后看全部）+ 折叠的「小元素の探し方」（① 种类・目标 → ② 取法按顺序・各自找到几张（`emblem_fill.source_chain`，
-  要和 `gather` 的顺序一致）→ ③ 本人确认・目视排除 → ④ 结果 → ⑤ 下次几点・失败时的建议），数据在 `digest.emblem_detail`。
-  新加定时的仕组み：在 `PROCESSES` 里写 `schedule`（UTC 的 (时, 分)），在 `backend_todo` 写它下次做什么，运行时 `runlog.add("<proc>", "…")`；
-  要加一列就在 `render.BG_COLS` 和 `backend_cells` 各加一项。
-- **管理页最上面的「ライブログ」**（`scripts/livelog.py`，2026-10-19，用户定的）：像终端一样自己滚的小窗口。版面开始・进到下一段・完成（`live_boards()` 每 20 秒比前一次）、Actions 开始・成功・失败（每 3 分）、仓库 `state/log/*.json` 的新行（raw.githubusercontent.com 每 2 分）都一行一行流出来；
-  **作业的一行一行（2026-10-22，用户定的）**：小元素的自动补完把每个候补外した理由・段・结果写进 Supabase `live_log`（`db/live_log.sql`，`livestatus.Lines` 每 1.5 秒一批，2 天前的行开始时删），页面 3 秒读一次 `live_log_since()`——「今すぐ再挑戦」30 秒就跑完的作业也看得见。不用 AI 的作业以后也用 `livestatus.Lines` 往这里写。
-  看过的行存在 localStorage（`wl-term`，600 行），页面自动重载也不断。有「一時停止」，往上翻时不自动滚到底。原来「バックグラウンド」里的「ログ」列表移到这里。
-- **管理页的「しくみの全体図」**（`scripts/overview.py`，2026-10-18）：5 页（全体 / ニュース収集 / AI 編集 / 小元素 / ページ更新），每页 ≤ 8 列、一屏放得下；点部品开 `processes.detail` 的详细流程。
-  动效：`live_boards()` 每 30 秒 + Actions 实行中每 3 分，动着的部品光圈 + 斜线条（`prefers-reduced-motion` 时不动），AI 编辑／小元素按阶段（note 里的词、`found=1〜3`）分别发光；
-  「反映待ち」超过 30 分的标红「止まっているかも」（push 没通的话会这样）。下方「いま待っているもの」用话说清 什么・为什么・怎么办（`overview.waits`，带「AI 编辑をもう一度起こす」「今すぐ再挑戦」按钮）。
-  新增仕组み／步骤时：在 `overview.PAGES` 加部件（`proc` 必须是 `PROCESSES` 里有的），测试在 `tests/test_design.py` 的 Overview。旧的大图（「全体の構成（詳しい図）」）还在下面。
-- **AI 编辑列的倒计时・失败的「今すぐ再挑戦」**：AI 编辑列表头显示「次回 9:00 / 18:00（あと N 分）」，版面の設計列显示「次の収集のあと HH:MM」+ 整理待ち件数 + ゲート前回叫起的时刻（`backend_todo` 的 edit.n / fired）；
-  小元素「失败」的格子显示自动再挑战的时刻和倒计时，并有「今すぐ再挑戦」按钮（= `run_now('background')`，带 retry_now，失败的版面不等；3 分钟 1 次）。按了以后作业一行一行流进「ライブログ」（见下）。
-- **今すぐ実行**（「次の実行」のカードのボタン）：後台作業・ニュース収集・ページ生成を定時を待たずに起こす。网页上没有令牌：
-  按钮 → Supabase `run_now(job)`（`db/run_now.sql`，Vault 的 `github_dispatch_token`）→ GitHub workflow_dispatch。
-  只能起这 3 个，每个有间隔（3 分 / 10 分 / 1 分）。GitHub 的定时（cron）忙时会迟到・漏掉（2026-10-17 漏了 2 小时），
-  所以后台作業还有第 2 个时钟：Supabase pg_cron 每小时 17 分 `run_now('tick')`（和按钮同一条路，但不带 retry_now，守失败的等待）。后台作業从按钮起时带 `retry_now`（失败的版面也不等）。加新按钮：`render.RUN_JOBS` 和 `run_now` 的 case 各加一项。
-- **收集不停（2026-10-22 全体の検査 M3・M4）**：GitHub 的定时 `17 */2` 常抜ける（10-21〜22 12 回只来 5 回、空了 4 小时）→ **收集的控えの時計**由后台作業兼任（pg_cron 每小时必到）：`scripts/collect_watch.py` 看 `state/log/collect.json` 最后一次收集（带 `secs` 的行），过了 150 分、digest.yml 没有在跑・排队・60 分内（比 timeout 40 分长）开始的回，就 `gh workflow run digest.yml`（这步在 `gate.py check` 之前：判断那步出错也照样跑；GITHUB_TOKEN 的 workflow_dispatch 能起别的 workflow，`actions: write`），记进 `state/log/gate.json`（起不来・读不到回的样子也记、也提交：`tried`；同一个失败不重复写）。
-  **締め切り**：收集开始 18 分（`digest.COLLECT_DEADLINE_MIN`）后不再开新的版面，剩下的写进日志「時間切れで N 版面を次の回へ」（`deferred`），下一回先抓它们（`deferred_from_log` / `fetch_order`，第一次抓的版面＝新关注项也排最前）；已经开始的版面卡住时，截止＋5 分（`COLLECT_GRACE_MIN`）就不等了（`digest.run_parallel` 用 daemon 线程，卡住的 1 本不挡进程结束），也算下一回（不等以后那条线程再写版面的条：`cut` 之后 `live_mark` 不写；`intel.health` 在锁里取副本，`logged_ingest` 出错只少 1 行日志）；截止后封面不上网（`find_cover` 只用已有的）；digest.yml `timeout-minutes: 40`。**1 个版面抓取・之后按顺序的处理（去重・match 的正则・状态・封面）出例外**只让那个版面空着（中途写的状态还原）、日志「取得・処理に失敗した N 版面は空で続けた」，收集照常（`ingest` 的 `fetch` / `_ingest_one`）；设置页的依赖里 `re:` 写错的 match / exclude 在 `take_item_requests` 就拒收。
-  后台作業：小元素那步 `continue-on-error`（失败也照样叫 AI 编辑・提交；items.yaml 用 `emblem.write_atomic` 写，提交前读不了就 `git checkout` 回去，失败的回不接着再起）；`state/gate.json` 只在判断变了（最初的 check・小元素后的 check）・真的叫了 Claude・试着起收集时才提交（`GATE_FIRE` 开着不算）。
-  digest.yml 的「新关注项 → 立刻 AI 编辑」也走ゲート：`GATE_NOW=edit python scripts/gate.py fire`（只跳过 9:00 / 18:00 的回；60 分内已叫起〔编辑中〕・停滞・一時停止・`GATE_FIRE` 都照守：AI 编辑只跑 1 本；叫了就记 `now: true` 并 push；因「60 分内」被拦时把请求记进 `state/gate.json` 的 `jobs.edit.now_pending` 并 push，过了 60 分的后台作業按 GATE_NOW 一样叫（叫了就删，12 小时没叫就作废））。
-- **リソース・並列と制限**（バックグラウンドの中）：容量（リポジトリ・公开页 vs 1GB 上限）、各仕组み最近一次运行时的服务器（内存・磁盘・CPU・用时，
-  `scripts/resources.py` 的 `snapshot()` 附在 runlog 里）、トークン（Claude API 自动数；定时任务的 Claude 结束时自己写：
-  `python scripts/runlog.py emblem "…" --tokens N`；订阅额度的余量程序读不到，只能看 https://claude.ai/settings/usage ）。
-  并行：收集 6 本（`digest.COLLECT_WORKERS`，同一网站的间隔在线程间共享 `sources._pace`）、小元素 4 本（`emblem_fill.WORKERS`，
-  写 items.yaml・抠图用 `WRITE_LOCK` 一本一本来）。限制写在 `processes.LIMITS`，改并行数时一起改。
-- **時刻**：网页上的时间都用 `settings.display_timezone`（现在 Asia/Tokyo，用户住在日本；以后多用户按各自时区）。
-  `settings.timezone`（Asia/Shanghai）只管「每天一期」的日期分界——AI 编辑的定时任务按北京时间判断「今天」，要改得两边一起改。
-- **省 token：AI 做过的判断，能写成规则的就写成规则（用户定的）**：以前用 AI（Claude）做的判断，逐个看能不能变成程序的规则；
-  能的就改成 Python（不花 token），太复杂的（意思的判断、图里是什么东西）继续用 AI，但只在有活的时候叫。
-  一览和理由在 `processes.AI_TASKS`（管理页「バックグラウンド → AI を使うか」），新加 / 改了判断时同步改。
-  **小元素补全不要停着等**：每小时 + 每次收集完马上 + 40 分钟用完还有活就自己接着跑（最多 3 次），6 个版面并行；
-  每个版面在同一回里按「① 标准 → ② 名前を広げる → ③ 公式・記事のページ」逐段试，到目标为止；三段都不行才算失败，
-  失败的版面只要有新材料（新记事・新线索，`emblem_fill.material` 的指纹变了）就马上再试，没有也最多等 1 小时（`emblem_fill.RETRY_HOURS = 1`，2026-10-22 用户定的：不用 AI，6 小时太久 → 每小时的后台都再试）。
-  正在处理的版面和段写进 Supabase `live_status`（proc=emblem），管理页「いま動いているもの」每 30 秒读一次。
-  **后台的ゲート**（`scripts/gate.py` + `.github/workflows/background.yml`）：先数有没有活；小元素补全直接在 Actions 用 Python 做（不用 AI，
-  原来要目视的「别人・远景・合照・抠图有洞・重复」都改成规则了）；AI 编辑・照片加愿望只在有活时用 API 叫 Claude（同一份活 6 小时内不重复叫，
-  需要各定时任务的 API 令牌 Secret；**仓库变量** `GATE_FIRE`（Settings → Secrets and variables → Actions → Variables）打开才真的叫：
-  没设 = `edit`（默认，2026-10-17 打开）、`0` = 不叫、`edit` = 只叫 AI 编辑、`1` = AI 编辑和照片都叫。AI 编辑自己的定时 2026-10-17 已停（cron 改成只在 2/29 跑），现在只靠ゲート叫）。
-- **版面只放 AI 整理过的报道（2026-10-17 定）**：收集（Actions）出刊时，没被 AI 编辑覆盖的条目（编号 > `_covered`、或 edit.json 里没有的关注项）
-  不上版面，放进版面底部折叠的「整理待ち N 件」（`digest.split_unedited` → 报告的 `pending` → `render._pending`）；例外是要紧消息，马上做「重大」+ Discord。
-  **前の日の整理待ちは持ち越す（2026-10-22 全体の検査 H3）**：AI 编辑只看最新的 inbox，JST 18:00 那回之后〜1:00 收集的会永远留在昨天。`digest.carry_over`：新的一天第一次收集时（`_carried` 记号，一天一次），把前一天（2 天以内）`_covered` 之后・不是要紧的条目接到今天的 inbox：1 版面最多「篇幅 × 2」件（S 6・M 10・L 16，留新的，`CARRY_PER_SIZE`），前一天已经持ち越し过的（`carried`）不再带；今天和前 3 天的 reports 里已经载了的（同网址・同标题 `title_key`；只把要带的那条去掉末尾「 - 媒体名」「｜媒体名」后剩 12 字以上・6 成以上的也拿去比 reports 的原标题，`_title_keys`，不让「討論牆 | …」「共通の頭 | 品目」只剩头）不带（实际很少命中，主要靠上限：2026-10-22 168 → 82 件）。不用 StoryDeduper：真数据里会把别的比赛・别的爆料也当成同一件事。
-  **网页生成失败也要 push 数据（H4）**：本番的 workflow（digest・background・requests）设 `WL_RENDER_SOFT=1`，`digest.write_page` 出错只记日志、不停；CI 照旧失败。`render.collect` 跳过没有 headline / url 的报道，`publish` 用依据的原题补 headline。
-  **AI 编辑一天 2 次（用户定的，2026-10-19）**：日本时间 9:00 和 18:00（`gate.SLOTS`，`background.yml` 在 0:07 / 9:07 UTC 有定时：过了回再起，0 分整点 GitHub 最挤），那一回还没叫过、今天有整理待ち（`gate.edit_work`）就叫；
-  管理页「次の実行」AI 編集卡片的「今すぐ実行」和「AI 编辑をもう一度起こす」随时强制叫（`run_now('edit_now')`）。
-  **叫了不等于做了（2026-10-18）**：API 返回 200 只说明触发成功，定时任务绑定的会话停了的话什么也不会发生（2026-10-17 就叫了 2 次都没编）。
-  所以 `gate.work_state` 看「叫起后编辑済み数（edit.json 的 _covered 合计）有没有增加」：60 分钟内 = 编辑中；60 分钟后没增加 = 停滞 → 再叫（最多 3 次，之后等 6 小时，管理页写「起こしても動かない」）。
-  **日付が変わったら数え直す（2026-10-22）**：_covered 合计按北京时间的「今天」数，0 点后归 0。叫起时记 `fired.day`（没有的旧记录用 `fired.at` 换成北京时间的日期），不是今天就不算停滞（`none`），交给 9:00 / 18:00 的定时判断（10-19・10-20・10-21 夜里 1〜2 点误叫了 3 次）；北京时间 0 点后也不再补叫前一天 18:00 那回（`gate.slot_pending`），等 9:00。
-  管理页的「動いている」只在这次叫起之后的最后一批出刊（`state/log/edit.json`，`gate.last_batch`）30 分钟以内；过了是 `idle`「前回 HH:MM に終わった・次は HH:MM」（这回还没叫时改成「18:00 の回はまもなく」，列标题和「次の実行」卡片也一样 `due`；「あと N 分」由 `data-slots` 在浏览器里数，不写死）；叫起后编辑済み增加了、60 分钟还没有出刊的行 = `unpublished`「出刊されていない」（带最后一条失败 `gate.last_error`，2026-10-22 出刊に失敗：No module named 'requests'）。叫不叫的规则和 progress 一样。
-  叫起时记下 API 返回的会话 id（`fired.resp`）。管理页 AI 编辑列有「AI 编辑をもう一度起こす」按钮 = `run_now('edit_now')` → `background.yml` 的 `force_edit` → `GATE_FORCE=edit`（不看 `GATE_FIRE`・间隔・停滞判断）。
-- **AI 编辑推上去了、网页却没变（2026-10-19 修）**：收集（digest.yml）排队时是用触发时的提交 checkout 的，等它跑完，AI 编辑早把 `edit.json` push 上去了；
-  收集的 `git pull --rebase -X theirs` 之后只 `render`（只从 reports 生成），reports 是没有编排的旧版，网页就一直是「整理待ち」。
-  现在：① digest.yml 的 checkout 取 `github.ref`（main 的最新）② 出刊时把 `edit.json` 的指纹写进报告（`edit_sig`）③ `digest.py render` 先看 `stale_report()`，
-  报告没取进最新的 `edit.json` 就先 `publish(heal=True)`（只取进编排，不重找配图）再生成。所以任何一次 render（render.yml・收集后）都会自己补上。
-- **AI 编辑一个一个版面・暂停・重做（2026-10-19，用户定的）**：每个版面之前 `digest.py edit-next`（`EDIT_BATCH = 1`）问管理页的开关（Supabase `edit_control`，`db/edit_control.sql`）：
-  `run`=全部一个一个、`step`=只编下一个就自动变 `pause`、`pause`=编完当前版面就停（9:00 / 18:00 也不叫，按钮照样能叫）；管理页「ライブログ」上面的「AI 編集」条：▶ 続けて全部・⏭ 次の 1 版面（这两个会顺便叫起 AI 编辑）・⏸ 一時停止・↺ この版面をやり直す（`redo`，编过的也最先重编，编完自动拿掉）。
-  正在编的那个版面中途停不了（会话没有外部中断的口子），停在版面之间。
-- **AI 编辑分批・token 记录（2026-10-19，用户定的）**：AI 编辑按 `digest.py edit-queue`（やり直し最先，然后整理待ち多的先，1 个版面一批）一批一批「编排 → 配图 → 出刊 → push」，推完 1〜2 分钟网页上这几个版面就更新（推送不花 token）。
-  每批出刊时 `_log_edit_batch` 把这批编完的版面・本数・**这批用掉的 token**（`usage.py`：读 Claude Code 会话记录 `~/.claude/projects/*/*.jsonl` 里每条回复的 usage，真实数字，前一批之后的差）写进 `state/log/edit.json`，
-  管理页「AI 編集のトークン」（今天・7 天・每回每批）和「ライブログ」显示。**省 token**：AI 读的是 `edit-brief`（不含网址的短一览），只给 hero・lead 看候选图（`PICK_WEIGHTS`，一张一览 ≈ 570 token），普通报道配图交给规则。
-- **流程图每一步都标「AI が判断」还是「ルール」（用户定的）**：`processes.judged_by` 自动判断（用到 Claude = AI，用学习模型 = 「ルール＋モデル」，其他 = ルール），
-  AI 的步骤是紫色粗框斜线底、规则是绿色左边条，构成图的框里写「AI n · ルール n」。Claude 判断但没挂 `claude` 札的步骤写 `"by": "ai"`。
-  小元素的判断只有一张表 `scripts/emblem_rules.py`（流程图下的「判断の一覧」），新判断加在那里，不要在别处另写一套。
-  **全身还是半身（用户定的）**：游戏・动画的官方立绘（原图透明背景）先按全身测量，再裁成上半身（`emblem.bust_from_body`：从眼睛往下「眼睛到脚底」的 40%，腰附近）——全身贴纸太小看不清脸；**只有正常人体比例才裁**（`emblem.real_body`：姿势模型量腰的位置，腰在「头顶到脚底」60% 以上 = 正常比例；3D 卡通・Q 版大头（腰更低）、动物・吉祥物（姿势模型认不出人体，あつ森的居民・ポチタ）保持全身，用户定的）；
-  照片・漫画格子・视频画面按脸裁成半身（`emblem.want_full`）。
-  测量：「眼睛到脚底」长度每个角色一样（裁后脚底在图外，网页仍按这个长度缩放 → 体的同一处切开、脸和其他半身像一样大）、按重心对齐（`body_marks`：YOLOv8m-pose 找眼睛和脚踝，从脚踝往下找脚底；尾巴・武器・裙摆・台座不算脚；蹲着的按面积量）。
-  Logo 不裁（去掉纯色底存进仓库）；作品主图若是纯文字标题 logo（The Mandalorian）不做卡片，去底后当 logo 贴、横长的按宽度放大（`emblem.wordmark_local` / `render.WIDE_LOGO`）；卡片只在比例接近 4:5 时裁。**只改规则、从头重跑，不单独修某一张图**。
-  **实拍作品贴角色的样子（用户定的）**：剧・电影不用演员生活照，用角色页的剧照・作品视频的画面（`emblem_fill.gather_roles`，演员照片只做人脸比对的基准），不够时补作品海报。
-  横长・躺着的形象（高 < 宽×1.3）不量身高不裁，整张显示；全身显示高度有上限。
-  管理页「小元素の判断の例」用真实图片放「前 → 後」对比（`emblem_rules.EXAMPLES`，图在 `docs/emblems/examples/`）：加新判断或修了一个坏例子时，把那次的前后图也放进去。
-- **架构图・流程图的规矩（用户定的）**：① **精确到算法**：用到的模型、算法、API、规则都要画进去，写正确的名字和数字
-  （模型名・大小、阈值、同时处理几个、间隔、每次几张），登记在 `processes.COMPONENTS`，在图上是 MODEL / ALGO / API / RULE 的札；
-  改了代码里的数字，同步改这里。② **全部是图**：详细流程也画成泳道图（列 = 在哪里跑，判断 = 菱形「はい ↓ / いいえ →」，
-  依次尝试 / 并行 = 横排的箱子 + 「×N 並列」），不要写成从上到下的文字列表。③ 新加仕组み、新用的模型 / 算法，加完检查图里有没有。
-- **全体の構成**（管理ページ，原来的プロセス缩图一览）：整体架构图——外部服务・GitHub Actions・仓库・Pages・Claude 定时任务・Supabase・Discord・你，
-  编号箭头是数据流向（`processes.ARCH` / `EDGES`，线由 JS 按部件位置画；手机上看「矢印の一覧」）。点任务的框打开那个仕组み的详细流程（`PROCESSES` 的 flow）。
-  **新加一个仕组み就在 `PROCESSES` 里加一项，再放进 `ARCH` 的某个框、在 `EDGES` 连上线**；改了某个仕组み的逻辑，也同步改它的流程。
-- **小元素（emblem）**：每个版面右上的贴纸。规矩（种类 → 目标枚数 → 取法的顺序 → 本人确认）在 `scripts/emblem_fill.py`、`scripts/face_id.py`，说明在 `TEMPLATES.md`；
-  **选图先想「下一层」**：类别・题材（MMORPG 新作、猫用品、滑雪）贴的是它下面的具体作品 / 品牌 / 选手（`emblem_examples`，我喜欢的放第一个，例：剑灵），
-  记号（Twemoji）只垫底。角色不用漫画格子・截图，先找官方立绘 / 插画；抠图后上边缘一半以上是人（连框切的特写）就不用；
-  **枚数的上限由内容的主要元素数决定**（用户定的，不只是游戏）：1 个元素 1 张，天井 200（用户定的：主要角色全员，绝区零 60 人就 60 张；一次后台只补 10 人 `emblem_fill.STEP`，慢慢补齐）——角色多的游戏有多少角色就多少张、主角 4 人的动画 4 张、5 人团 5 张、
-  主题按代表作数。元素数是 `emblem_pool`（`emblem_fill.py --roster` 从 `emblem_category` 分类或 AniList 主角数出来，并补名字）；
-  管理页「小元素」列出每个版面的种类・目标・现有枚数，没到目标的 AI 编辑会自动补（`python scripts/emblem_fill.py --audit`）。
-
-
-## 向导的小规则（2026-10-19，用户定的）
-
-- 第 3 问「版面里收哪些新闻」（test2，2026-10-19）：上面是加进去以后的样子（1 个版面＋目录的枝，勾了马上变），下面按层（作品・展开）一行一个面；札只有 メイン / 推定 / 情報少なめ（不写「推荐」，默认勾上的就是推荐），搜索词收在「每个面加的搜索词」里。
-- 一个版面以后，其他步骤也跟着改（2026-10-19，用户指出「改了一处就要想到连带的地方」）：第 4 问「哪些排在最前面」按目录的枝分组、小勾选框，别的面的话只放在那个面下（不重复问）；
-  「加进去以后」的树状图只画 1 个版面＋枝（不画乗換站，分开时下级也在本体的板块）；选的维基条目本身一定算它那一面的依据（名字不同也算）；本体的面定不了时看条目说明，再优先作品层；搜索词去掉维基的括弧。
-- **新账号・新关注项的「空的时候」（2026-10-20，用户指出：入口消失、推荐空盒子、设计被跳过）**：愿望清单 0 件也出入口（报头・目录・右栏，`_wish_link` / `_side`）；
-  「気になるかも？」的页（batch）从 0 开始挤紧（`digest.pack_batches`，没有愿望清单时第 1 页不会空）；设置页加进来的关注项没设计（`DESIGN_KEYS`）时 `edit-next` 先回 `DESIGN`，设计完才编记事（`digest.undesigned`）。
-  加新功能时要用「什么都没有的新账号」把每一页看一遍（test1 和 test2 对比）。
-  **小元素一直失败的原因（2026-10-20）**：角色类只认「直接指定・Fandom」的图，可新关注项没有 `emblem_fandom`（以前是 AI 设计时手填的）→ 永远不去 Fandom、别的来源全被拒。
-  现在 `emblem_fill.find_sources` 按规则自己找：名字・副题・搜索词的英文名 → `<名>.fandom.com`（wiki 名里要有作品名）→ 分类 Main characters / Playable characters / Characters → 名单（`roster`）。
-- 多选的问题都有「全选」键；「关注哪方面」默认全选（只除掉要问选手名字的 player）。
-- 同系列的一问不再列「面」里已经有的（面的依据条目・同一个面）：同一个东西不问两遍。
-- 不再问「怎么放」：test2 起规则是「一个名字一个版面」（见上「test1 / test2」），要分开在确认画面勾。
-- `settings.html` 读 `additem.js?v=内容指纹`（`render._asset_ver`），改了向导手机上也马上是新版（不等浏览器缓存过期）。
-- 选了「面」就不再问小分类：板块・小分类・乗換・シリーズ都由 `applyFacets` 按规则定（`ensureFacets` 在面・置き方・主面变化时重算），确认画面里还能改。
-
-## ライブラリ・お客さまのアカウント（2026-10-23，用户定的：作り直し中）
-
-- **1 つの仕組み**：店長もお客さまも同じ仕組み・同じ画面の作り。前に作った「お客さま用の別の仕組み」（`userfeed.py`・`user_boards`・JS で描いた版面・左右に払うカード）は間違いで、外す。
-- **ライブラリ**（チャットでの呼び名。みんなの版面の置き場、`db/library.sql`）：`boards`（版面 1 つ = 1 行、同じものかどうかは Wikidata の番号か名前をそろえたもの `library.board_key`、共有の設定 `config`）・`board_stories`（版面ごとの記事・AI 編集の結果）・`follows`（だれが何を追いかけているか、置く板块・小分類・篇幅・見たい種類は人ごと）。記事集め・AI 編集・デザイン（主題・配色・小元素は AI なしの規則）は版面ごとに 1 回で全員が同じものを受け取る。だれも追いかけていない版面は更新しない。版面の設定の本物はライブラリ（items.yaml は写しにしていく）。店長の版面は `scripts/library.py --push`（`library.yml`）で写す。
-- **言い方の揺れ**：足すときは向導（test2 の規則）の「これはどれ？」で Wikidata の項目に決め、フィギュア・手办・figure などは同じ版面の中の種類（グッズ）。言葉のままの版面は作らない。
-- **人ごと**：👍👎・欲しい物・置き方・篇幅・画面の言語（`app_users.ui_lang`、今の登録者は日本語。入口で選ぶ）。お客さまのページとデータは本人と店長だけが見る（公開のリポジトリ・Pages に置かない）。店長のページは公開・いつも日本語、店長の票と欲しい物は店長だけが変える。
-- **店長の管理**：お客さまごとの AI のモデル（`app_users.model`、最初は sonnet）・追いかけられる数（`board_limit`、100）・お客さまのページを見る（見るだけ）・版面ごとの小元素。Discord は店長だけ。
-- **版面の言語**：版面の名前など画面の文字は見る人の画面の言語、記事は元の言語のまま、どの言語の記事を集めるかは版面ごと（向導の一問）。
-- テスト用：test-a = 版面が多い人（店長の版面を写して始め、あとは自分のもの）、test-b = ほぼ空（広島旅行 1 つ）。
-
-## ログイン（2026-10-20，用户定的）
-
-- **访客**（没登录）= 只能看（运营者的页面，能看到运营者点过的 👍👎，但点不了；设置・关注项・愿望清单・照片・按钮都不行；管理页进不去）。
-  **一般用户（お客さま）** = **邮箱＋密码登录**（2026-10-21 用户改定：不用用户名；大家都用密码（Supabase Auth，`private.make_auth_user`），不发邮件・不能找回・没有退会功能；测试用 `test-a〜e@example.com` 密码 `0000`；店長在管理页「お客さまと店長」能改客人的密码；邮箱在数据库里不能重复、不分大小写、`private.user_name_ok` 查邮箱格式：`app_users` / `name_available` / `user_register`；第一次必须同意「利用規約・プライバシーポリシー」`terms.html`，同意的版本和时间记进库，`render.TERMS_VERSION` 升了会再问；浏览器记住到退出为止 `localStorage` 的 `wl-user`；2026-10-21 用户定的）。运营者 = **店長**（世界观：店长每天到处跑、替用户收集整理信息；和「店長のおすすめ」同一个设定），店长的主页大家共用、只能看（右上「店長のページ · 見るだけ」）。**店長（管理者）** = `invites` 表里 role=admin 的邮箱，最多 5 个（第一个 `c.elegy@outlook.com`）：店長用**邮箱＋密码**登录（2026-10-21 用户改定：不要每次邮件确认、不要找回密码；第一次在登录栏自己设密码 `shop_set_password`，`pw_setup` 开着时才行、设完自动关；登录中菜单「パスワードを変える」），浏览器一直记住。管理页「お客さまと店長」看用户、加店长。
-- 门番是数据库（`db/auth.sql`・`db/auth_guard.sql`：写函数第一行 `can_edit(p_account)` / `is_admin()`）；网页（`render.AUTH_JS`，每页右上的「ログイン」= 填邮箱 →「はじめる」）只拦按钮、说理由。Supabase 自带的发信只发给 Supabase 团队成员的邮箱（只用来发管理者的确认），加别的管理者前要设 SMTP（`LOGIN.md`）。
-  开关 `private.auth_flags.enforce`：关着 = 跟以前一样，`db/auth_enforce.sql` 打开。（`public.hook_invite_only` 做好了但不接：不做邀请制。登录时也不提邀请的事。）
-- 设定步骤・文件一览・第 2 步（一般用户自己的页面只给本人看、不进仓库、AI 编辑用 Haiku）在 `LOGIN.md`。改登录相关的东西时同步改 `processes.py` 的 `login`。
-- **アカウントは 1 つずつ独立（2026-10-22，用户定的）**：お客さま（テスト用を含む）がログインしたら、/home/ の各ページは店長の中身ではなく**自分のページ**（`render.AUTH_JS` の `mine` / `my_page()`）。**店長と同じ流れを自分の分で（2026-10-22，用户定的）**：版面を足すのは入口の「新しく始める」と同じ「ジャンル → 左右に払うカード（気になる／パス）→ 確認」（ログイン中は `../?add`、`my_keywords_set`。「Tinder 風の前の版を戻して」、細かくはあとで直す）。選んだら `showMine`（2026-10-23：店長のトップのポスター・「気になるかも？」は同じ作りのまま自分の版面の分だけに絞る、上の帯は箱にしない）：店長のページと同じ版面のうち自分の選んだものだけ＋**「今日の主なニュース」**（店長の頭条のうち自分の版面のもの → 自分の版面の新着 36 時間 → 店長の版面の先頭、6 本まで。まだなければ何が並ぶ場所かを書く）＋自分の版面（店長のページと同じ「板块 → 小分類」の位置。自分の版面は小分類「あなたが足したもの」：同じ板块に店長の版面があればそのあとに見出しを立て、目次の札・小見出しも 1 つ足す（店長の小分類の下に見せない）。目次の線路・スマホの上の帯にも駅を足し、駅のない板块・小分類の札は隠す：`NAV_JS` は `wl-nav` で数え直す、駅が少なくても板块の間は 1 つ 28px まで（`SPARE_MAX`）。`my_boards` の読み直しは返事が変わったときだけ描き直す。お客さま → 访客（ログアウト・「見つかりません」）は書き換えたページを開き直す。スマホの右下の札は下へ読み進める間しまう。設定の画面には「← ○○ さんのページへ」「＋ カードで選んで足す」）＋**「気になるかも？」**（選んだジャンルの、まだ追いかけていない店長の版面の新着と名前。攻略・一覧・予約の商品ページは出さない。「＋ X を追いかける」は `../?add&pick=X` = X を選んだ状態で確認の画面へ）。お客さまのページには、まだ使えないもの（店長の欲しい物の件数・話題度の最高点・👍👎）を出さない。画像は相対の網址（本站保存）も直して使い、ないカードは字だけ。足したあと・待っている版面は「集まりしだい並びます（数時間かかることがあります）」（すぐとは言わない）、`my_boards` が読めないときは「読み込めませんでした」。「店長と同じもの」の判断は `shopHit`（JS）＝ `userfeed.shop_hit`（Python）の 1 つの規則：同じ名前か、かな・漢字 2 字以上が含まれるか、英数字は前後が英数字でないとき（From Software は FROM にしない）。比べる相手はページに出ている版面（`section.sec[data-k]`）。
-  **店長の版面にないもの（例：広島旅行）の記事集め**（`scripts/userfeed.py`，digest.yml の収集・push のあと 1 段、前の段が失敗しても走る・job の timeout 40 分の 3 分前に自分で終える（`JOB_T0`）・様子はライブログ「お客さま」、AI なし）：だれの分 = `userfeed_users()`（Auth のユーザーがいて一度はログインした人だけ・登録の古い順・1000 行ずつ。だれでも呼べる `user_signup` / `user_set_prefs` だけでは検索を使わせない。`user_set_prefs` は Auth のユーザーがいる人の picks を変えない）。1 人 100 版面まで（超えた分は `state=limit` の行 → 画面「100 個まで」）・1 人 1 回 10 版面（全員の 1 つ目から、1 人の中ではまだ探していないもの＝新しく足したものから）・まだ集めていない人は 1 回 15 人まで・1 回 80 版面 8 分 4 本並列・90 分以内に探したものは飛ばす・同じ名前・言語・匹配词は 1 回で（板块は人ごと。英語のよく使う語の名前は板块で匹配词が変わるので別々に）。匹配词（`match_terms`）：英数字の名前は記号のゆれ（`:` `®` `’`）を許した句・語の境あり、数字のない 14 字以下は `ascii_kind`：英語のよく使う語（`scripts/data/en_common.txt.gz`，wordfreq zipf ≥ 3.0）でない 4 字以上の語があれば名前だけ（ILLIT・Vaundy・Astrae Oratio。2026-10-22 に 10 月の inbox 7512 件で測った：前の規則では名前を含む記事のうち 59/208・8/48・0/40 しか拾えず、その人・その作品の記事そのものが落ちていた → 208/208・48/48・37/40）、全部よく使う語なら板块の語（`CONTEXT_EXTRA` だけ。前後が英字でないときだけ当てる：「upcoming」の PC に当てない。update・open・live・PC・game・match・season など普通の語は入れない）と一緒のときだけ（The Wrong Way が「the wrong way」の経済記事に入らない。2 語以上の句はかな・漢字・ハングルの記事でも：「「The Wrong Way」の体験版」。1 語は日本語の記事でも語と一緒：「APEX-TOYS」「Numero TOKYO」）、数字だけの名前（「2027」）はいつも語と一緒、記号だけの名前（「...」）は集めない（0 件の行を 1 度 → 「まだ見つかっていません」）、かな・漢字 1 語で末尾がジャンルの語（広島旅行）なら前の部分と同じジャンルの語（観光・旅行…、開催・発売のようなどこにでも出る語は除く）でも、`®™`・末尾の「第2期」「Season 2」は外した名前も、かな・漢字の数語は全部の語（数字だけの語は前の語にくっつける）。言語 = `prefs.lang` の 2 つまで（日本語の人は漢字だけの見出しを落とさない）・Google・Bing・情報員（SNS の全体検索と GDELT はしない）→ 店長と同じ `collect` → `filter_entries` → `fallback_stories` → `lang.dedupe`。見出しの `&amp;`・制御文字・末尾「 - 媒体名」を直す、Google の跳转と原文が両方来たら原文、日付のない記事は見つけた日（`seen`）から 14 日。検索が 429・時間切れで 1 件も来なかった回も失敗（`sources.fetch_fails`，`digest.collect` は空を返して続けるので）。失敗した版面は記事をそのまま `fails` +1・探した時刻を進める（次の回の列の後ろ。0 件で 5 回未満は「集めています」）、時間切れの版面は探した印を付けない、Supabase につながらない・時間切れ（OSError）も失敗として続ける、**ログは数だけ**（Actions のログ・ライブログは公開・店長の account なので、お客さまの選んだものの名前・エラーの本文は書かない）、書けない行は 1 行ずつ書き直す、一覧を全部読めなかった回は行を消さない。結果は Supabase `user_boards`（`db/user_boards.sql`，account = `u_` + md5(メール) 16 字、secret key だけが書く）、本人は `my_boards()`（ログインした本人の行だけ。名前の前後の空白は半角・全角・タブ・改行を Python の `TRIM` と同じ文字で取る。state = wait 集めています／none まだ見つかっていません／ok／limit）で読み、開いている間も 5 分ごとに読み直す。記事の文字は外から来たものなので網页は `esc` で描き、網址・画像は http(s) だけ。リポジトリ・公開ページには入れない。自分の 👍👎・欲しい物は次の段。**お客さまに要らない内部の事情（仕組みの説明・準備中・店長のページへの切り替え）は画面に出さない**（用户指摘）。詳しくは `LOGIN.md` 第 2 步。
-- 已合并到 main（用户说「装上吧」）。**开关 enforce 2026-10-21 已打开**（用户说「スイッチオンしていい」）：访客・お客さま对店長的页面只能看；ログインしない自动的仕组み只许 `edit_control_set` 的 step→pause・やり直し 1 件外す（`db/auth_guard.sql` 末尾）；Actions 用 secret key 不受影响。
+- 访客 = 見るだけ。お客さま = 邮箱＋密码（テスト用 `test-a〜e@example.com` 密码 `0000`）。店長 = `invites` の role=admin（最多 5 个），邮箱＋密码。
+- 门番は数据库（`db/auth.sql`・`db/auth_guard.sql`：`can_edit(p_account)` / `is_admin()`）、网页（`render.AUTH_JS`）は按钮を拦めて理由を言うだけ。**开关 enforce は 2026-10-21 に打开**。
+- 改登录相关的东西时同步改 `processes.py` 的 `login`。设定步骤は `LOGIN.md`。
 
 ## 保留中のこと
 
-（2026-10-19 追加）設定ページのウィザードは「要紧消息 → Discord」の質問をしない（`additem.js` の `URGENT_ASK = false`）。新しい関注項は `urgent_patterns` が空。詳しくは `PENDING.md`。
-
-ユーザーが「あとでやる」と決めたものは `PENDING.md` に書く（何を止めたか・なぜ・試作の場所・わかったこと）。本番からは外し、試作はテストグラウンドに残す。
+（2026-10-19 追加）向导は「要紧消息 → Discord」を問わない（`additem.js` の `URGENT_ASK = false`）、新しい関注項は `urgent_patterns` が空。詳しくは `PENDING.md`。
+ユーザーが「あとでやる」と決めたものは `PENDING.md` に書く（何を止めたか・なぜ・試作の場所・わかったこと）。本番からは外し、試作はテストグラウンドに残す。炎の演出も保留中（`render.NAV_FLAME = False`，`docs/rules/design.md`）。
 
 ## テストグラウンド（docs/testground/）
 
-本番の简报に入れる前に部品を試すページ。入口 https://cxelegy.github.io/Wishlist/testground/ （`index.html`）。消さずに残し、新しい試作もここに足す（入口に 1 枚カードを足す）。
-- `compare.html`：左の目次 v1〜v6 の見比べ（条件 10 パターン・画面の高さ・「ダミーで試す」で作品数 2〜1000）
-- `rails.html`：目次の見本 10 パターン ／ `nav.html`：本文つきで 1 本
-- `welcome.html`（`python scripts/welcome.py` で作る，入口 `docs/index.html` と同じもの）：入口（何のサイトか・店長のページの本物の画面・新しく始める／ログイン／店長のページを見る）＋「新しく始める」の App 風の流れ（名前と規約 → ジャンル → 左右に払うカード（気になる／パス）→ 確認 → 店長が集めに行く。ログイン中は `../?add` で同じ流れから足す・`my_keywords_set`）。覚えているブラウザ（`wl-user`）は入口を飛ばす。カード = AniList 話題・Steam 売れ筋・店長がフォローしてきたもの（archive/test1）、AI なし。登録は本物（`user_signup`、好み = `app_users.prefs`）。
-- **新闻语言（2026-10-21，用户定的：用户是全世界的）**：`welcome.LANG_GROUPS` 按地区 MECE 分 56 种（一种语言只在一个地区），常用 6 种＋浏览器的语言放前面，其余收在「ほかの言語」里（可用英文名・日文名搜 `LANG_ALIAS`）。现在真的收集的只有 `COLLECTED`（日英中韩），其他标「準備中」、先存好偏好。以后加板块时按主语言推荐（见 `PENDING.md`）。
-- **左の目次は v6 に決定（2026-10-17）**：パソコンは「少ないうちは隠さない・段階的に隠す」（隠し始めるのは既定 24 件、件数で／自動。隠す前に行を 22px まで詰める → ①ほかの板块は新着順に数件 ②ほかは見出しだけ ③いまの小分類だけ ④入るだけ＋「ほか N 件」）。
-  小分類の札は必ず出す。見た目は線路（原版）＋作品アイコン（emblem → 記事の写真 → 頭文字）＋板块アイコン。スマホは上に 2 段の横帯だけの簡単な形。2026-10-17 に本番（`render._nav` / `NAV_JS` / `NAV_STYLES["line"]`）へ移した。
-  隠し始める件数は `items.yaml` の `settings.nav_hide`（既定 24、`auto` で画面の高さ）。件数以内でも行を 30px まで詰めて入らなければ隠す（窮屈にしない）。小分類は関注項に `subs:`（分け方ごと、例 `subs: {kind: ドラマ, origin: 海外}`）。**どの板块にも必ず小分類を付ける**（1 つしかなくても）。どの分け方を使うかは ⚙ 設定ページで板块ごとに選ぶ。
+本番に入れる前に部品を試すページ。入口 https://cxelegy.github.io/Wishlist/testground/ （`index.html`）。消さずに残し、新しい試作もここに足す（入口に 1 枚カードを足す）。各ページの説明は `docs/rules/design.md`「テストグラウンド」。

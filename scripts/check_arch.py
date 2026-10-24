@@ -1,7 +1,7 @@
 """架构图有没有跟着改（CI 的一步，.github/workflows/ci.yml）。
 
 改了程序的逻辑（scripts/*.py、.github/workflows/*.yml），却没改 scripts/processes.py（管理页「全体の構成」的架构图・流程图・
-COMPONENTS 里的模型 / 算法 / 规则），这个 PR 就不通过。CLAUDE.md「架构图・流程图的规矩」要求逻辑和图一起改，
+COMPONENTS 里的模型 / 算法 / 规则），这个 PR 就不通过。docs/rules/admin.md「架构图・流程图的规矩」要求逻辑和图一起改，
 光靠记不住（2026-10-17 连着两次漏了），所以让 CI 拦。
 
 确实不影响图的改动（修错字、只改注释、纯重构）：在 PR 说明里写一行
@@ -52,7 +52,7 @@ def check(files, body=""):
         if SKIP_TOKEN in line:
             return True, f"PR 说明写了不用改图：{line.strip()}"
     return False, ("改了逻辑却没改架构图（" + ARCH_FILE + "）：\n  " + "\n  ".join(logic) +
-                   "\n改了的规则 / 算法 / 流程要写进 COMPONENTS 和对应 PROCESSES 的 flow（CLAUDE.md「架构图・流程图的规矩」）。"
+                   "\n改了的规则 / 算法 / 流程要写进 COMPONENTS 和对应 PROCESSES 的 flow（docs/rules/admin.md「架构图・流程图的规矩」）。"
                    f"\n确实不影响图的话，在 PR 说明里写一行「{SKIP_TOKEN}（理由）」。")
 
 

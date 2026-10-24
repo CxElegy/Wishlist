@@ -276,7 +276,7 @@ PROCESSES = [
         "summary": "仕事があるか、AI が要るかをプログラムだけで決める。AI の要らない仕事（小元素）はその場で Python で済ませ、"
                    "AI が要る仕事（AI 編集・写真）は仕事があるときだけ Claude を起こす。Claude は起きるたびにトークンを使うので、空振りをなくす。"
                    "版面には AI が整理した記事しか載らないので、収集で整理待ちが増えたらすぐ AI 編集を起こす（リポジトリ変数 GATE_FIRE で開け閉め）。",
-        "files": ["scripts/gate.py", "scripts/collect_watch.py", "scripts/library_watch.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "CLAUDE.md", "uses": ["gate"],
+        "files": ["scripts/gate.py", "scripts/collect_watch.py", "scripts/library_watch.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "docs/rules/background.md", "uses": ["gate"],
         "flow": [
             {"id": "g1", "kind": "fan", "lane": "actions", "title": "仕事を調べる", "mode": "全部を毎回",
              "items": [("1", "小元素", "目標未満の版面（1 時間以内の失敗で材料が同じものは除く）"), ("2", "AI 編集", "今日の inbox の整理待ち（_covered より後・edit.json にない版面）"),
@@ -356,7 +356,7 @@ PROCESSES = [
         "id": "heat", "name": "話題度", "en": "HEAT", "lane": "actions", "when": "収集のたびに数字 · ページ生成で計算",
         "trigger": "数字は収集のとき（1 日 1 回）、点数はページを作るとき（ネットに出ない）",
         "summary": "作品ごとの盛り上がりを 0〜100 で出す。6 つの次元を、自分の平常と比べた分と共通の尺度で混ぜる。",
-        "files": ["scripts/heat.py", "state/heat_signals.json"], "doc": "CLAUDE.md", "uses": ["heat", "wikipv", "wikiua", "steam", "anilist", "tmdb"],
+        "files": ["scripts/heat.py", "state/heat_signals.json"], "doc": "docs/rules/design.md", "uses": ["heat", "wikipv", "wikiua", "steam", "anilist", "tmdb"],
         "flow": [
             {"id": "h1", "kind": "fan", "lane": "ext", "title": "外の数字を取る", "mode": "1 日 1 回 · 70 日分残す",
              "items": [("W", "Wikipedia 閲覧数", "60 日", "wikipv"), ("S", "Steam 同時接続", "", "steam"),
@@ -449,7 +449,7 @@ PROCESSES = [
         "id": "colors", "name": "トップの配色", "en": "COLORS", "lane": "actions", "when": "ページ生成のたび",
         "trigger": "ページを作るとき。同じ画像の色は state/themes.json に残して使い回す",
         "summary": "その日の頭条の写真から、トップの地色と強調色を取る。字が必ず読めるように明るさを直す。",
-        "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "CLAUDE.md", "uses": ["octree"],
+        "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "docs/rules/design.md", "uses": ["octree"],
         "flow": [
             {"id": "t1", "kind": "step", "lane": "actions", "title": "頭条の写真", "text": "200×200 に縮める"},
             {"id": "t2", "kind": "decision", "lane": "repo", "title": "前に取った色がない？", "text": "state/themes.json の hero|URL", "no": "それを使う"},
@@ -463,7 +463,7 @@ PROCESSES = [
         "id": "recommend", "name": "おすすめ", "en": "RECOMMEND", "lane": "actions", "when": "収集のたび",
         "trigger": "収集のたび（新しい候補を探すのは 12 時間ごと）",
         "summary": "👍👎 から好みを学び、関注項の外も探して「気になるかも？」に出す。同じ話はまとめる。",
-        "files": ["scripts/digest.py", "state/recommend.json"], "doc": "CLAUDE.md", "uses": ["taste", "storydedupe", "gnews", "spam", "srcfilter"],
+        "files": ["scripts/digest.py", "state/recommend.json"], "doc": "docs/rules/design.md", "uses": ["taste", "storydedupe", "gnews", "spam", "srcfilter"],
         "flow": [
             {"id": "r1", "kind": "step", "lane": "web", "title": "👍👎 を読む", "text": "記事ごとに最後の一票", "uses": ["supabase"]},
             {"id": "r2", "kind": "step", "lane": "actions", "title": "好みを学ぶ", "uses": ["taste"]},
@@ -490,7 +490,7 @@ PROCESSES = [
         "id": "library", "name": "ライブラリへ写す", "en": "LIBRARY", "lane": "actions", "workflow": "library.yml", "when": "items.yaml が変わったとき · 1 時間ごと（毎時 41 分、お客さまの版面。抜けたら後台作業が起こす）· 週 1 回（月曜 12:41 JST、番号の引き直し）· 手でも",
         "trigger": "main の items.yaml・scripts/library.py が変わったとき、1 時間ごと（毎時 41 分）、週 1 回の定時（月曜 3:41 UTC）、手で起こす、または定時が抜けて 80 分あいたら後台のゲートが users_only で起こす（library_watch）",
         "summary": "みんなの版面の置き場（ライブラリ：Supabase の boards・follows）へ、店長の版面を写す。記事集め・AI 編集・デザインを版面ごとに 1 回にし、店長もお客さまも同じ版面を受け取るための土台（2026-10-23）。",
-        "files": [".github/workflows/library.yml", "scripts/library.py", "db/library.sql"], "doc": "CLAUDE.md", "uses": ["supabase"],
+        "files": [".github/workflows/library.yml", "scripts/library.py", "db/library.sql"], "doc": "docs/rules/library.md", "uses": ["supabase"],
         "flow": [
             {"id": "lb1", "kind": "step", "lane": "actions", "title": "items.yaml を読む", "text": "店長の版面 1 つずつ"},
             {"id": "lb2", "kind": "step", "lane": "actions", "title": "同じものかどうかの印", "text": "Wikidata の番号（wd:Q…）／なければ名前をそろえたもの（全角半角・大小・空白・記号）"},
@@ -522,7 +522,7 @@ PROCESSES = [
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。",
-        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "CLAUDE.md", "uses": ["heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
+        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "docs/rules/design.md", "uses": ["heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
@@ -552,7 +552,7 @@ PROCESSES = [
         "when": "ページを開いたとき · ログイン・ログアウトしたとき",
         "trigger": "どのページでも右上の「ログイン」（メールアドレスだけ）。開いたときに身份を確かめ、見るだけかどうかを決める",
         "summary": "访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもメールアドレスだけで始められ（重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。",
-        "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql"], "doc": "CLAUDE.md",
+        "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql"], "doc": "docs/rules/login.md",
         "flow": [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
              "text": "何のサイトか・店長のページの本物の画面。メール・パスワードと規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → 候補のタイルを押して選ぶ・名前でも足せる（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
@@ -590,7 +590,7 @@ PROCESSES = [
         "when": "開いている間 · 1 分ごと",
         "trigger": "簡報・管理ページを開いているあいだ、1 分ごと（タブが裏にあるときも戻ったときにすぐ）",
         "summary": "開いたままのページに、新しい記事や数字を自分で出す。裏である版面を作り直している間は、その版面だけ枠に「更新中」の帯と残り時間。",
-        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / page_marks / busy_plan）", "scripts/digest.py（write_page / live_mark / live-edit）", "scripts/livestatus.py", "scripts/runlog.py（typical）", "db/live_status.sql", "docs/home/version.json"], "doc": "CLAUDE.md",
+        "files": ["scripts/render.py（LIVE_JS / BUSY_JS / stamp / page_marks / busy_plan）", "scripts/digest.py（write_page / live_mark / live-edit）", "scripts/livestatus.py", "scripts/runlog.py（typical）", "db/live_status.sql", "docs/home/version.json"], "doc": "docs/rules/live.md",
         "flow": [
             {"id": "l1", "kind": "step", "lane": "actions", "title": "ページを作るたびに指紋を付ける",
              "text": "収集・AI 編集・ページ生成が docs/*.html を書くとき、中身の指紋（「更新」の時刻は除く）を計算。"},
@@ -630,7 +630,7 @@ PROCESSES = [
         "id": "requests", "name": "設定ページの依頼", "en": "REQUESTS", "lane": "web", "workflow": "requests.yml", "when": "依頼のたび · 待ちなし",
         "trigger": "設定ページで関注項の追加・変更・篇幅の変更を送ったとき（待ち時間なし）",
         "summary": "設定ページの依頼を Supabase が受け、すぐ GitHub Actions を起こして items.yaml に反映する。",
-        "files": [".github/workflows/requests.yml", "docs/home/additem.js", "db/instant.sql", "sections.yaml", "scripts/taxonomy.py"], "doc": "CLAUDE.md", "uses": ["supabase", "pgnet", "taxonomy"],
+        "files": [".github/workflows/requests.yml", "docs/home/additem.js", "db/instant.sql", "sections.yaml", "scripts/taxonomy.py"], "doc": "docs/rules/wizard.md", "uses": ["supabase", "pgnet", "taxonomy"],
         "flow": [
             {"id": "qp", "kind": "step", "lane": "web", "title": "上級を推す", "text": "今ある・上級のない関注項の名前・搜索词が新項の名前・維基データに出てくる → 推薦 · 維基データの系列（P179 / P8345 / P361）がまだ関注清单になければ「上級の系列も一緒に追加」を選べる（系列 → この項の順に送る、系列は小分類シリーズ）· 1 層だけ · シリーズになる項は選んだ面を media（目次の枝）に"},
             {"id": "qr", "kind": "step", "lane": "web", "title": "同じ系列のほかのものを推す", "x": "維基データ 2 回",

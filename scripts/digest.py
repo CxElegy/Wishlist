@@ -328,7 +328,7 @@ def match_hit(item, e):
     """这条消息靠哪个匹配词算进这个关注项（返回那个词）；不算就返回 None。
     新闻搜索会混入不相关结果：标题或摘要里必须出现某个匹配词（忽略大小写和空格）。
     「re:」开头的是正则，区分大小写、照原文匹配：名字是常用词（FROM、MCU）或泛词要和主题词同时出现时用它。
-    写法规则见 CLAUDE.md「匹配词（match）的写法」；python scripts/digest.py audit-match 可以检查。"""
+    写法规则见 docs/rules/match.md「匹配词（match）的写法」；python scripts/digest.py audit-match 可以检查。"""
     if e.source in TRUSTED_SOURCES or e.source in {f"r/{s}" for s in item.get("subreddits") or []}:
         return "(可信来源)"
     # Reddit 全站搜索来的帖子：正文是闲聊，「from Season 5」这种说法到处都是，匹配词必须出现在标题里
@@ -2624,7 +2624,7 @@ def load_config():
             item["section"] = taxonomy.canonical(item["section"])
         if isinstance(item.get("also"), dict):
             item["also"] = {taxonomy.canonical(k): v for k, v in item["also"].items()}
-    for item in items:   # 下級は上級と同じ板块（目次で上級の下の支線に並ぶ。CLAUDE.md「判断上下级」）。
+    for item in items:   # 下級は上級と同じ板块（目次で上級の下の支線に並ぶ。docs/rules/sections.md「判断上下级」）。
         top = by_name.get(item.get("parent"))   # section を自分で書いた下級（面ごとに分けた「ちいかわ アニメ」→ 映像）はそのまま
         if top is not None and top is not item and not item.get("section"):
             item["section"] = top.get("section") or taxonomy.BY_TYPE.get(top.get("type", "product"), "好物")
