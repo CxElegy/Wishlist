@@ -78,6 +78,33 @@ class Kind(unittest.TestCase):
             emblem_fill._json = old
 
 
+class TopicIcons(unittest.TestCase):
+    """題材の版面（店長の滑雪の emblem_icon を規則で）：名前・小分類の言葉 → 記号、当たらなければ板块の記号。"""
+    def test_icons(self):
+        self.assertEqual(le.icons_for("サッカー日本代表", "运动", {"sport": "サッカー"}), "1f1ef-1f1f5 26bd")
+        self.assertEqual(le.icons_for("台風・天気", "其他", {"kind": "その他"}), "1f300 26c5")
+        self.assertEqual(le.icons_for("広島旅行", "生活", {"kind": "アウトドア・旅行"}), "1f5fa 26fa")
+        self.assertEqual(le.icons_for("なにか", "出行", {}), "1f9f3")   # 板块の記号
+
+    def test_board_item_topic_only(self):
+        item = le.board_item({"id": 1, "name": "将棋", "config": {}}, {"section": "其他", "subs": {}}, wd)
+        self.assertEqual(item["emblem_icon"], "265f")
+        item = le.board_item({"id": 2, "name": "BTS", "config": {}}, {"section": "演出", "subs": {"form": "グループ"}}, wd)
+        self.assertNotIn("emblem_icon", item)
+
+    def test_wikidata_by_qid(self):
+        seen = []
+        saved = emblem_fill._json
+        emblem_fill._json = lambda url, *a: seen.append(url) or {"entities": {"Q131375": {"claims": {"P18": [
+            {"mainsnak": {"datavalue": {"value": "Shogi.jpg"}}}]}}}}
+        try:
+            rows = emblem_fill.wikidata_images("Q131375", ("P18",))
+        finally:
+            emblem_fill._json = saved
+        self.assertEqual([r["title"] for r in rows], ["Shogi.jpg"])
+        self.assertFalse(any("wbsearchentities" in u for u in seen))   # 番号なら名前で検索しない
+
+
 class Fill(unittest.TestCase):
     def test_sandbox_upload_and_restore(self):
         roots = (emblem.ROOT, emblem_fill.ROOT, sitedir.SITE_DIR, emblem.EMB_DIR)

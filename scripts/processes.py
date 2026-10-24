@@ -533,7 +533,7 @@ PROCESSES = [
             {"id": "le1", "kind": "step", "lane": "web", "title": "対象の版面を読む", "uses": ["supabase"],
              "text": "boards の followers > 0 で test1 が追いかけていないもの · 順：一度も試していない → 途中（running）→ 届かなかったものは 24 時間後（前の版の規則 RULES で試したものはすぐ）· 済み（ok）は飛ばす"},
             {"id": "le2", "kind": "step", "lane": "ext", "title": "種類を規則で（library_emblem.kind_for）",
-             "text": "小分類 form=グループ → group · Wikidata P31=Q5（人）か 演出のソロ → person · 游戏・影视 → character · 好物 → brand · ほか → topic。記事名は Wikidata の en/ja/zh/ko の記事。キャラの版面の名簿の手がかりも Wikidata から：anilist_id = AniList のアニメ（P8729）→ 漫画（P8731）、emblem_fandom = Fandom の wiki（P4073、言語の前置きなし）→ なければシリーズ（P179）の P4073 → なければ emblem_fill.fandom_api が名前から（続けた形・ハイフンの形・「:」のあと、転送先の本当の名前）。Wikidata に断られた版面は書かずに次の回"},
+             "text": "小分類 form=グループ → group · Wikidata P31=Q5（人）か 演出のソロ → person · 游戏・影视 → character · 好物 → brand · ほか → topic。記事名は Wikidata の en/ja/zh/ko の記事。キャラの版面の名簿の手がかりも Wikidata から：anilist_id = AniList のアニメ（P8729）→ 漫画（P8731）、emblem_fandom = Fandom の wiki（P4073、言語の前置きなし）→ なければシリーズ（P179）の P4073 → なければ emblem_fill.fandom_api が名前から（続けた形・ハイフンの形・「:」のあと、転送先の本当の名前）。題材（topic）の版面は emblem_icon も規則で（library_emblem.icons_for：名前・小分類の言葉 → Twemoji の記号〔サッカー ⚽・台風 🌀・旅行 🗺 …〕、当たらなければ板块の記号）＝店長の滑雪の手書きと同じ最後の砦。Wikidata の画像（P154 ロゴ・P18）は版面の番号で直接引く（名前で検索しない）· Wikidata に断られた版面は書かずに次の回"},
             {"id": "le3", "kind": "step", "lane": "actions", "title": "店長と同じ emblem_fill を一時の items.yaml で",
              "text": "版面 1 つだけの items.yaml と docs/emblems を一時の場所に（sandbox）。集める → 確かめる → 選ぶ → 切り抜く · 本物の items.yaml には触れない · print とライブの帯に名前を出さない", "uses": ["roster", "cutcheck", "facefit", "facerule"]},
             {"id": "le4", "kind": "store", "lane": "web", "title": "公開の箱 emblems と boards.config", "uses": ["supabase"],

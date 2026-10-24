@@ -25,7 +25,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 BUCKET = "emblems"
 RETRY_HOURS = 24      # 届かなかった版面をもう一度試すまで（店長の版面と違い、材料の指紋がないので 1 日おき）
-RULES = 2             # 取り方の規則の版。上げると、届かなかった版面を RETRY_HOURS を待たずに取り直す（2：Wikidata から AniList・Fandom の名簿）
+RULES = 3             # 取り方の規則の版。上げると、届かなかった版面を RETRY_HOURS を待たずに取り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号）
 PER_BOARD_S = 300     # 1 版面の目安（これより残りが少なければ次を始めない）
 KEEP = ("name", "wikidata", "type", "keywords", "emblem_kind", "wiki")   # 毎回 規則と Wikidata から作るので config に書かない
 
@@ -42,6 +42,28 @@ def kind_for(section, subs, human=False):
     if section == "好物":
         return "brand"
     return "topic"
+
+
+# 題材の版面の記号（Twemoji）：名前・小分類の言葉 → 記号。店長の題材が手で持つ emblem_icon（滑雪 26f7 1f3c2 1f3bf）を規則で。
+# 当たらなければ板块の記号（sections.yaml の icon）。0 枚の版面を作らない最後の砦（代表作・ロゴ・Wikidata の画像が先）
+ICONS = [(r"日本代表", "1f1ef-1f1f5"), (r"サッカー|soccer|football", "26bd"), (r"野球|baseball", "26be"), (r"バスケ|NBA|basketball", "1f3c0"),
+         (r"テニス|tennis", "1f3be"), (r"モータースポーツ|F1|レース", "1f3ce"), (r"格闘技|相撲|ボクシング", "1f94b"),
+         (r"将棋|囲碁|チェス|chess", "265f"), (r"宇宙|space", "1f30c"), (r"ロケット|rocket", "1f680"), (r"台風|typhoon", "1f300"),
+         (r"天気|weather", "26c5"), (r"美術館|展覧会|アート|art\b", "1f5bc"), (r"博物館|museum", "1f3db"), (r"テーマパーク", "1f3a2"),
+         (r"温泉|宿", "2668"), (r"旅行|観光|travel", "1f5fa"), (r"アウトドア|キャンプ", "26fa"), (r"ラーメン", "1f35c"),
+         (r"グルメ|料理|food", "1f37d"), (r"健康", "1f3c3"), (r"インテリア", "1f6cb")]
+
+
+def icons_for(name, section, subs):
+    """題材の版面 → emblem_icon（空白区切りの Twemoji の番号、最大 3）。名前の言葉 → 小分類の言葉、どちらも当たらなければ板块の記号。"""
+    import taxonomy
+    out = []
+    for text in [name, *(subs or {}).values()]:
+        out += [c for rx, c in ICONS if re.search(rx, str(text), re.I) and c not in out]
+    icon = (taxonomy.SECTIONS.get(section) or {}).get("icon")
+    if icon and not out:   # 言葉に当たらないときだけ（其他の 📦 を将棋に足さない）
+        out.append(str(icon))
+    return " ".join(out[:3])
 
 
 def _claims(ent, prop):
@@ -95,6 +117,8 @@ def board_item(board, follow, get=None):
             item.setdefault("anilist_id", int(wd["anilist"]))
         if wd.get("fandom") and re.fullmatch(r"[a-z0-9-]+", str(wd["fandom"])):
             item.setdefault("emblem_fandom", wd["fandom"])
+    if item["emblem_kind"] == "topic" and not item.get("emblem_icon"):
+        item["emblem_icon"] = icons_for(board["name"], sec, (follow or {}).get("subs"))
     if links and not item.get("wiki"):
         item["wiki"] = [f"{k}:{v}" for k, v in sorted(links.items())]
     if board.get("wd"):
