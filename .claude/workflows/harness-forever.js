@@ -20,6 +20,7 @@ scripts/*.py か workflow を変えたら scripts/processes.py も（check_arch�
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 合併したら必ず python harness/ux_check.py を走らせ（本番をログインなし・test-a・test-b・test-c × 1400/390 で自動点検）、✗ があれば次の段より先に直す。そのうえで本番で確かめ（Actions の結果・データベースの行・https://cxelegy.github.io/Wishlist/home/ を 1400/390px）、BACKLOG.md のその段を [x]（PR の網址・日付）にし、気づいた次の段を足して合併する（進み具合は progress.yml が Discord に送る）。
 待ち方：GitHub の定時（cron）の回が来るのを待たない（遅れる・抜ける）。確かめたいときは workflow_dispatch で起こしてその回を見る。待つ命令には必ず 15 分の上限、過ぎたら待ちをやめて次へ。
+トークンの節約：コードを書くときは .claude/skills/ponytail（full）の考え、返す summary は caveman の書き方で短く（事実・数字・網址は残す。ユーザーに見せる日本語の文・画面の文字は普通の日本語）。大きな機能の前に BENCHMARKS.md（似たサイト・受賞デザイン）を読む。
 設計の考え（DESIGN_PRINCIPLES.md）に照らして作る：まず店長（test1）のページで同じことをどうしているかを見て同じ部品で。あなた（ユーザー）が決める設定・見た目の方向は作る前に BACKLOG を [?] にして木の形で聞く。
 一番大事な決まり（HARNESS.md）：test-a・test-b などを個別に直さない（データの手直し・特定のアカウントだけの分岐はしない）、直すのはいつも規則。ログインしたお客さまはだれでも店長と同じ P5 の枠組み（令牌・硬い影・傾けた見出し・札・ポスター・版面の主題と配色・小元素・目次）を見て、違うのは中身だけ。素の箱は出さない。確かめは test-a（多い）・test-b（1 つ）・test-c（0 個）を並べて。段を終えたら PROGRESS.md に 1 行（日付・何をした・PR・確かめた結果・次）。
 設計書にない新しい決めごと・本番のデータベースの形を変える／消すことが要るときは、作らずに BACKLOG.md を [?]（聞きたいことを木の形で、案ごとに良い点・困る点とおすすめ）にして status=asked で返す。答えが設計書から決まることは聞かない。`
