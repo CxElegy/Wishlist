@@ -180,6 +180,16 @@ class Fill(unittest.TestCase):
         self.assertEqual([x["image"] for x in add["emblem"]], ["https://e.org/new.png", "https://e.org/l.png"])
         self.assertEqual(add["emblem_state"]["have"], 2)
 
+    def test_rebuild_keeps_old_when_new_rules_find_none(self):
+        """キャラでない版面で新しい規則が 1 枚も取れなければ、前の小元素を残す（字だけ・図・古い写真は外す）。"""
+        old = [{"subject": "BTS", "image": "https://x/Q1-a.webp"},
+               {"subject": "大相撲 1", "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Wrestling%20at%20Tokyo%201890s.jpg"}]
+        b = {"id": 153, "name": "BTS", "wd": None, "config": {"emblem": old, "emblem_state": {"state": "ok", "v": le.RULES - 1}}}
+        add = le.fill_board(b, {"section": "演出", "subs": {"form": "グループ"}}, None, BASE,
+                            fill=lambda item, log=None: {"state": "failed"}, now=1)
+        self.assertEqual([x["subject"] for x in add["emblem"]], ["BTS"])
+        self.assertEqual(add["emblem_state"]["have"], 1)
+
 
 class UserPage(unittest.TestCase):
     def test_library_emblem_on_user_board(self):
