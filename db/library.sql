@@ -69,3 +69,26 @@ end $$;
 drop trigger if exists follows_count on public.follows;
 create trigger follows_count after insert or delete or update of board_id on public.follows
   for each row execute function private.boards_count();
+
+-- 読める版面をしぼる（2026-10-24，用户定的：案 B）：
+--   ログインなし = 店長（test1）が追いかけている版面だけ（店長のページと同じ線）。お客さま = それ＋自分が追いかけている版面。店長（is_admin）= 全部。
+--   だれも追いかけていない版面・お客さまだけが足した版面（n:広島旅行 など）の名前と記事は、ほかの人には見えない（HARNESS §2・§3）。
+--   今の permissive の boards_read / board_stories_read（using true）は残し、restrictive のポリシーを「足す」（restrictive は AND で効く）。Actions は secret key なので RLS を通らない。
+--   戻し方：drop policy boards_visible on public.boards; drop policy board_stories_visible on public.board_stories; drop function public.board_visible(bigint);
+create or replace function public.board_visible(p_board bigint)
+returns boolean language sql stable security definer set search_path = '' as $$
+  select exists (select 1 from public.follows f where f.board_id = p_board and f.account = 'test1')
+      or ((select auth.uid()) is not null
+          and (public.is_admin()
+               or exists (select 1 from public.follows f
+                           where f.board_id = p_board
+                             and f.account = private.user_account((select auth.jwt()) ->> 'email'))));
+$$;
+revoke all on function public.board_visible(bigint) from public;
+grant execute on function public.board_visible(bigint) to anon, authenticated;
+drop policy if exists boards_visible on public.boards;
+create policy boards_visible on public.boards as restrictive for select to anon, authenticated
+  using (public.board_visible(id));
+drop policy if exists board_stories_visible on public.board_stories;
+create policy board_stories_visible on public.board_stories as restrictive for select to anon, authenticated
+  using (public.board_visible(board_id));
