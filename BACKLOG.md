@@ -6,9 +6,13 @@
 - [x] 版面に Wikidata の番号を入れる（18/23、https://github.com/CxElegy/Wishlist/pull/256 、2026-10-23） — 規則で探し（Wikipedia の記事名 `wiki` → 番号、なければ名前・検索語で引いて 1 つに決まるもの）、決まらない題材は名前のまま。結果の表をユーザーに見せる。Wikidata が 429 を返すので間を空けて Actions で。下書きの結果（2026-10-23）：23 個中 17 個見つかり、漫威电影は映画 1 本（ドゥームズデイ）に、猫用品は近い言葉の項目に間違って当たった → 記事名の 1 つ目ではなく一番合うもの、題材は番号なし
 - [x] gelato pique の Wikidata の番号を引き直す — 引き直した結果 Wikidata に項目なし（ja/en/zh 検索・全文検索 0 件、Wikipedia 記事なし）→ 名前の印のまま。ブランドの題材は名前が同じ項目だけ番号を付ける規則に（https://github.com/CxElegy/Wishlist/pull/260 、2026-10-23）
 - [x] Wikidata の番号を Actions で定期に引き直す — library.yml が月曜 3:41 UTC と手で起こした回に番号のない版面を引き、見つかれば items.yaml と boards（n:→wd:）を直す。`_wd_get` は断られたら WdBlocked、結果は 見つかった・項目なし・断られた・題材で引かない に分けて state/log/library.json（本番の初回：項目なし 2〔星巴克马克杯・gelato pique〕・断られた 0・題材 3）（https://github.com/CxElegy/Wishlist/pull/262 、2026-10-23）
-- [x] test-a・test-b の選んだものをライブラリの版面にする（https://github.com/CxElegy/Wishlist/pull/265 、2026-10-24） — 本番の初回：test-a 40・test-b 1 が follows に（Wikidata 36・名前 5、断られた 0、店長の版面 0）。`library.py --users` が毎時 41 分
-- [ ] お客さまが足した版面の番号を確かめ直す — 名前と項目の名前が違う版面（created_by = user）を引き直して boards の key・wd を直す（本番の初回で「Ado」が別名 ADO のアデノシン Q190012 に当たった。次からは名前が同じ項目を先に・3 字までの英数字は別名で当てない：https://github.com/CxElegy/Wishlist/pull/267 ）。F1 Q1968 のように別名で当たったものは残してよいか表で見せる
+- [x] test-a・test-b の選んだものをライブラリの版面にする（https://github.com/CxElegy/Wishlist/pull/265 、2026-10-24） — 本番の初回：test-a 40・test-b 1 が follows に（Wikidata 36・名前 5、断られた 0、店長の版面 0）。`library.py --users` が毎時 41 分。小分類がどれも 1 つ目の値（大谷翔平＝サッカー・BTS＝ソロ・キャンプ＝ペット…）だったのを Wikidata の説明・関係から決め直し、前の行も直す（https://github.com/CxElegy/Wishlist/pull/269 、2026-10-24）
+- [ ] お客さまが足した版面の番号を確かめ直す — 名前と項目の名前が違う版面（created_by = user）を引き直して boards の key・wd を直す（本番の初回で「Ado」が別名 ADO のアデノシン Q190012 に当たった。次からは名前が同じ項目を先に・3 字までの英数字は別名で当てない：https://github.com/CxElegy/Wishlist/pull/267 ）。F1 Q1968 のように別名で当たったものは残してよいか表で見せる。名前が同じでも中身が違うかもしれないもの（京都 Q751907〔京都市は Q34600・京都府は Q120730〕・無印良品 Q116104243〔良品計画は古い番号〕・生成AI Q117246174）も表に入れる。番号を直したら follows の小分類も引き直す（library.resubs）
 - [~] 後台の記事集めを正しく — コードだけの合併で全体の収集を走らせない（push は items.yaml・wishlist.yaml だけ）・お客さまは 1 人 100 版面・1 回 10 版面・1 回 80 版面。test-a の 40 版面が 8 時間以内に全部探した状態、cancelled が続かない
+- [?] ライブラリの版面の名前をログインなしでも読める — boards・board_stories の SELECT が anon にも using (true)（db/library.sql）。HARNESS §2「お客さまにライブラリの中身は見せない」・§3「データは本人と店長だけ」に合わない（test-b だけの n:広島旅行 も読める）。網页は boards を読んでいない（render.py・docs/home に呼び出しなし）。本番の権限を変えるので聞きたい：
+  - 案 A（おすすめ）：anon から外し、authenticated は「自分が follows している版面」＋店長（is_admin）だけ — 良い点：§2・§3 どおり／困る点：あとで店長のページを board_stories から描くとき、店長の版面だけ anon に開く条件（follows.account = test1）を足す必要がある
+  - 案 B：anon は店長が follows している版面だけ読める（created_by = user の版面は隠す） — 良い点：店長のページの公開と同じ線／困る点：お客さまが店長と同じものを足したかは見えない作りにもう一段要る
+  - 案 C：今のまま（だれが足したかは書いていないので） — 困る点：選んだものの名前そのものが見える
 - [ ] お客さまの記事に写真と原文の網址 — Google の跳转を原文に直し、店長と同じ images.pick で写真。test-a の記事の半分以上に写真。写真のある記事が頭条（ポスター）に上がる（今は test-b で 8 件あっても「直近 7 日は新着なし」）
 - [ ] ライブラリの版面ごとに記事を集める — だれかが追いかけている版面は店長のものでなくても集め、AI 編集（9:00・18:00）も版面ごとに 1 回。board_stories に書く
 - [ ] 人ごとのページを店長と同じ作りで描く — 画面の型はそのまま、中身は本人の follows と board_stories から JavaScript で描く（ポスター・ほかの注目ニュース・版面・目次・小元素）。test-a で 40 版面、test-b で 1 版面が店長と同じ見た目で出ること（1400/390px）

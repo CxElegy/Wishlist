@@ -6,6 +6,7 @@ name: ライブラリへ写す
 # 見つかれば items.yaml に書いて push し、boards の行を名前の印（n:…）から番号の印（wd:…）へ書き換える。
 # 断られた（429 など）と「項目が 0 件」は分けて state/log/library.json に書く。
 # 1 時間ごと（毎時 41 分）：お客さまの選んだもの（app_users.prefs.picks）をライブラリの版面にして follows に書く（--users、ログは数だけ）。
+# 小分類は Wikidata の説明・種類・ジャンル・競技・機種などから決める（引いた結果は state/wd_facts.json に 30 日。お客さまの選んだものが分かるので倉庫には入れず Actions の cache に置く）。前に名前だけで決めた小分類も直す。
 
 on:
   workflow_dispatch:
@@ -51,6 +52,12 @@ jobs:
             if git pull --rebase -q; then :; else git rebase --abort || true; sleep 5; fi
           done
       - run: python scripts/library.py --push
+      - name: Wikidata の引いた結果（お客さまの分、倉庫に入れない）
+        uses: actions/cache@v4
+        with:
+          path: state/wd_facts.json
+          key: wd-facts-${{ github.run_id }}
+          restore-keys: wd-facts-
       - name: お客さまの選んだものを版面にする
         run: |
           python scripts/library.py --users

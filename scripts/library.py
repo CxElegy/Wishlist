@@ -304,20 +304,108 @@ def find_pick_wikidata(name, get=_wd_get):
     return alias
 
 
-def pick_board(name, sec, langs):
-    """お客さまの 1 つ → 新しく足す版面の共有の設定（userfeed.board_item と同じ匹配词の規則）と置き方。"""
+# 小分類は名前だけでは決まらない（2026-10-24 別の目の指摘：大谷翔平・F1・NBA が「サッカー」、BTS が「ソロ」、
+# フリーレン・鬼滅が「映画」、キャンプ・広島旅行が「ペット」＝ どの分け方も 1 つ目の値に落ちていた）。
+# Wikidata の項目の説明（ja・en）と、種類（P31）・上位（P279）・ジャンル（P136）・競技（P641）・機種（P400）・
+# 業種（P452）・国（P495・P17・P27）の名前を足した文で taxonomy.guess_subs を引く（HARNESS §6：細かい分け方は Wikidata から）。
+# ゲームは機種が 2 つ以上の種類（スマホ・家庭用・PC）にまたがれば「マルチ」、発売日（P577・P571）が過ぎていれば「発売済み」。
+FACT_PROPS = ("P31", "P279", "P136", "P641", "P400", "P452", "P495", "P17", "P27")
+FACTS_FILE = ROOT / "state" / "wd_facts.json"   # 番号 → 引いた結果（30 日。毎時の回で同じ項目を聞き直さない）
+FACTS_DAYS = 30
+
+
+def wd_facts(qid, get=_wd_get, today=None):
+    """Wikidata の項目 → {"text": 説明と関係する項目の名前, "platforms": [機種の名前], "released": True/False/None}。断られたら WdBlocked。"""
+    import datetime
+    d = get({"action": "wbgetentities", "ids": qid, "props": "descriptions|claims", "languages": "ja|en"})
+    ent = (d.get("entities") or {}).get(qid) or {}
+    descs = [v.get("value", "") for v in (ent.get("descriptions") or {}).values()]
+    claims = ent.get("claims") or {}
+
+    def ids(pid):
+        out = []
+        for c in claims.get(pid) or []:
+            v = ((c.get("mainsnak") or {}).get("datavalue") or {}).get("value")
+            if isinstance(v, dict) and re.fullmatch(r"Q\d+", str(v.get("id") or "")):
+                out.append(v["id"])
+        return out
+    rel = {pid: ids(pid)[:12] for pid in FACT_PROPS}
+    want = list(dict.fromkeys(q for qs in rel.values() for q in qs))[:50]
+    labels = {}
+    if want:
+        got = get({"action": "wbgetentities", "ids": "|".join(want), "props": "labels", "languages": "ja|en"})
+        for q, e in (got.get("entities") or {}).items():
+            labels[q] = [v.get("value", "") for v in (e.get("labels") or {}).values()]
+    dates = []
+    for pid in ("P577", "P571"):
+        for c in claims.get(pid) or []:
+            v = ((c.get("mainsnak") or {}).get("datavalue") or {}).get("value")
+            m = re.match(r"[+]?(\d{4})-(\d\d)-(\d\d)", str((v or {}).get("time") or "")) if isinstance(v, dict) else None
+            if m:
+                dates.append((int(m[1]), max(1, int(m[2])), max(1, int(m[3]))))
+    today = today or datetime.date.today()
+    released = (min(dates) <= (today.year, today.month, today.day)) if dates else None
+    text = " ".join(descs + [x for q in want for x in labels.get(q, [])])
+    return {"text": text, "platforms": [x for q in rel["P400"] for x in labels.get(q, [])], "released": released}
+
+
+def load_facts():
+    try:
+        return json.loads(FACTS_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def save_facts(cache):
+    FACTS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    FACTS_FILE.write_text(json.dumps(cache, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def facts_for(qid, get, cache, today=None):
+    """キャッシュ（30 日）があればそれ、なければ聞いて入れる。"""
+    import datetime
+    today = today or datetime.date.today()
+    hit = cache.get(qid)
+    if hit and str(hit.get("at", "")) >= (today - datetime.timedelta(days=FACTS_DAYS)).isoformat():
+        return hit
+    f = wd_facts(qid, get, today)
+    cache[qid] = {**f, "at": today.isoformat()}
+    return cache[qid]
+
+
+def subs_for(section, name, facts=None):
+    """板块・名前・Wikidata の事実 → 小分類（分け方ごとに 1 つ）。"""
     import taxonomy
+    if not section:
+        return {}
+    facts = facts or {}
+    subs = taxonomy.guess_subs(section, " ".join([name, facts.get("text") or ""]))
+    if section == "游戏":
+        scheme = {x["id"]: x for x in (taxonomy.SECTIONS.get(section) or {}).get("schemes") or []}
+        plat = scheme.get("platform", {}).get("values") or []
+        kinds = {taxonomy.values({"values": [v]})[0] for v in plat[:3]
+                 for p in facts.get("platforms") or [] if taxonomy._says(v, p)}
+        if len(kinds) >= 2 and "マルチ" in taxonomy.values(scheme.get("platform", {})):
+            subs["platform"] = "マルチ"
+        status = taxonomy.values(scheme.get("status", {}))
+        if facts.get("released") and subs.get("status") == (status or [None])[0] and "発売済み" in status:
+            subs["status"] = "発売済み"
+    return subs
+
+
+def pick_board(name, sec, langs, facts=None):
+    """お客さまの 1 つ → 新しく足す版面の共有の設定（userfeed.board_item と同じ匹配词の規則）と置き方。"""
     import userfeed
     item = userfeed.board_item(name, sec, langs)
     shared, mine = split_item(item)
-    section = mine.get("section")
-    mine["subs"] = taxonomy.guess_subs(section, name) if section else {}
+    mine["subs"] = subs_for(mine.get("section"), name, facts)
     return shared, mine
 
 
-def plan_users(users, boards, get=_wd_get, pause=1.0):
-    """users = [{email, prefs}]、boards = いまのライブラリ [{id, key, name, names}]。
+def plan_users(users, boards, get=_wd_get, pause=1.0, have=(), cache=None):
+    """users = [{email, prefs}]、boards = いまのライブラリ [{id, key, name, names}]、have = もうある follows の (account, key)。
     返す：{"new": {key: boards の行}, "follows": [{account, key, section, subs, pos}], "counts": {...}}。
+    もうある follows は数えるだけで小分類を引き直さない（本人の置き方は書き換えない）。
     1 度断られたら残りは聞かず、その回は書かない（次の回に）。"""
     import time
     import userfeed
@@ -328,6 +416,8 @@ def plan_users(users, boards, get=_wd_get, pause=1.0):
             if norm_name(n):
                 by_name.setdefault(norm_name(n), b["key"])
     new, follows = {}, []
+    have = set(have)
+    cache = {} if cache is None else cache
     counts = {"users": 0, "picks": 0, "same": 0, "wd": 0, "name": 0, "blocked": 0, "over": 0}
     blocked = False
     for u in users:
@@ -374,7 +464,15 @@ def plan_users(users, boards, get=_wd_get, pause=1.0):
                     keys.add(key)
                     counts["wd" if qid else "name"] += 1
                 by_name.setdefault(norm_name(name), key)
-            _, mine = pick_board(name, p.get("sec"), langs)
+            if (account, key) in have:
+                continue
+            facts = None
+            if key.startswith("wd:") and not blocked:
+                try:
+                    facts = facts_for(key[3:], get, cache)
+                except WdBlocked:   # 小分類は名前だけで決めて書き、次の回の resubs が直す
+                    blocked = True
+            _, mine = pick_board(name, p.get("sec"), langs, facts)
             follows.append({"account": account, "key": key, "section": mine.get("section"), "subs": mine.get("subs") or {}, "pos": pos})
     return {"new": new, "follows": follows, "counts": counts}
 
@@ -389,12 +487,16 @@ def push_users(db=None, get=_wd_get):
     if users is None:
         raise SystemExit("SUPABASE_SERVICE_KEY がないので書けません")
     boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names&order=id")
-    r = plan_users(users, boards or [], get)
+    have, _ = userfeed.fetch_all(db, "follows?select=account,board_id,section,subs&account=like.u_*&order=account,board_id")
+    by_id = {b["id"]: b for b in boards or []}
+    cache = load_facts()
+    r = plan_users(users, boards or [], get, have={(h["account"], by_id.get(h["board_id"], {}).get("key")) for h in have or []}, cache=cache)
     if r["new"]:
         db("boards?on_conflict=key", list(r["new"].values()), prefer="resolution=ignore-duplicates")
         boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names&order=id")
     ids = {b["key"]: b["id"] for b in boards or []}
-    have, _ = userfeed.fetch_all(db, "follows?select=account,board_id&order=account,board_id")
+    fixed = resubs(have or [], by_id, get, cache, db) if not r["counts"]["blocked"] else 0
+    save_facts(cache)
     have = {(h["account"], h["board_id"]) for h in have or []}
     rows = [{k: v for k, v in {**f, "board_id": ids.get(f["key"])}.items() if k != "key"} for f in r["follows"]
             if ids.get(f["key"]) and (f["account"], ids[f["key"]]) not in have]
@@ -402,11 +504,42 @@ def push_users(db=None, get=_wd_get):
         db("follows?on_conflict=account,board_id", rows, prefer="resolution=ignore-duplicates")
     c = r["counts"]
     msg = (f"お客さまの版面：{c['users']} 人・{c['picks']} 個（もとからある版面 {c['same']}・Wikidata で足した {c['wd']}・名前で足した {c['name']}"
-           f"・断られて次の回へ {c['blocked']}・上限を超えた {c['over']}）・follows {len(rows)}")
-    if rows or r["new"] or c["blocked"]:   # 変わらなかった回はログに書かない（空回りのコミットを作らない）
+           f"・断られて次の回へ {c['blocked']}・上限を超えた {c['over']}）・follows {len(rows)}・小分類を直した {fixed}")
+    if rows or r["new"] or c["blocked"] or fixed:   # 変わらなかった回はログに書かない（空回りのコミットを作らない）
         runlog.add("library", msg, level="warn" if c["blocked"] else "info", **{f"u_{k}": v for k, v in c.items()})
     print(msg)
     return r
+
+
+def resubs(follows, by_id, get, cache, db, limit=60):
+    """前に名前だけで決めた小分類（1 つ目の値に落ちていた）を Wikidata の事実で引き直す（2026-10-24）。
+    直すのは、分け方ごとの値がどれも「1 つ目の値」か「名前だけで決めた値」の行だけ（本人が選んだらしい値の行は触らない）。直した数を返す。"""
+    import taxonomy
+    n = 0
+    for h in follows:
+        b = by_id.get(h.get("board_id")) or {}
+        sec, subs = h.get("section"), h.get("subs") or {}
+        if not sec or not b or not subs:
+            continue
+        first, by_name = taxonomy.guess_subs(sec, ""), taxonomy.guess_subs(sec, b.get("name") or "")
+        if set(subs) != set(first) or any(subs[k] not in (first[k], by_name.get(k)) for k in subs):
+            continue
+        key = b.get("key") or ""
+        facts = None
+        if key.startswith("wd:"):
+            if limit <= 0:
+                break
+            if key[3:] not in cache:
+                limit -= 1
+            try:
+                facts = facts_for(key[3:], get, cache)
+            except WdBlocked:
+                break
+        new = subs_for(sec, b.get("name") or "", facts)
+        if new and new != subs:
+            db(f"follows?account=eq.{h['account']}&board_id=eq.{h['board_id']}", {"subs": new}, "return=minimal", method="PATCH")
+            n += 1
+    return n
 
 
 if __name__ == "__main__":

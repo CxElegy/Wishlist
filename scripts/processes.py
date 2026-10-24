@@ -503,6 +503,8 @@ PROCESSES = [
             {"id": "lb5", "kind": "step", "lane": "web", "title": "お客さまの選んだものを読む（userfeed_users）", "uses": ["supabase"], "text": "一度はログインした人の app_users.prefs.picks · 1 人 100 個まで（MAX_FOLLOWS）"},
             {"id": "lb6", "kind": "step", "lane": "ext", "title": "1 つずつ版面に決める（library.plan_users）", "x": "間 1 秒",
              "text": "① もうある版面と名前（そろえたもの）が同じ → その版面 ② Wikidata を名前で検索（ja → en、7 件）、名前（label）が同じ項目を先に、なければ別名が同じ項目（3 字までの英数字は別名では当てない、曖昧さ回避・一覧は除く）→ wd:Q… ③ なければ名前の印 n:…。断られたら残りは次の回"},
+            {"id": "lb6s", "kind": "step", "lane": "ext", "title": "小分類を Wikidata の事実で決める（library.subs_for）", "x": "1 項目 2 回 · 30 日 cache",
+             "text": "名前＋項目の説明（ja・en）＋種類 P31・上位 P279・ジャンル P136・競技 P641・機種 P400・業種 P452・国 P495/P17/P27 の名前で taxonomy.guess_subs。ゲームは機種が 2 種類以上 → マルチ、発売日 P577/P571 が過ぎた → 発売済み。引いた結果は state/wd_facts.json（Actions の cache、倉庫に入れない）。前に名前だけで決めた小分類（どの値も 1 つ目か名前だけの値）の follows も直す（resubs、1 回 60 項目まで）"},
             {"id": "lb7", "kind": "store", "lane": "web", "title": "新しい版面と follows（u_…）を足す", "uses": ["supabase"],
              "text": "もうある版面の設定・本人の置き方は書き換えない（ignore-duplicates）。boards にはだれが足したかを書かない（created_by = user）。ログは数だけ"},
         ],
