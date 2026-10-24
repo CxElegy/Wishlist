@@ -1598,12 +1598,6 @@
   "target": 1280,
   "v": 3
  },
- "https://media.pocketgamer.com/artwork/na-38074-1792770118/bleach-mirrors-high-original-cast.jpg": {
-  "w": 1010,
-  "h": 505,
-  "target": 1280,
-  "v": 3
- },
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
@@ -2164,6 +2158,12 @@
   "h": 1080,
   "target": 1280,
   "v": 3
+ },
+ "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://nokiamob.net/wp-content/uploads/2026/10/S27-pro-2-1-1920w-1080h.png.webp": {
   "w": 1920,
@@ -3370,6 +3370,12 @@
   "h": 527,
   "target": 720,
   "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Pedro-Pascal-F4.jpg?resize=1200,630": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
