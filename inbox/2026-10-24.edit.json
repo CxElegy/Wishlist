@@ -25,7 +25,10 @@
     103,
     104,
     105,
-    102
+    102,
+    118,
+    115,
+    112
    ],
    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fWErM.img"
   },
@@ -47,7 +50,9 @@
     97,
     92,
     70,
-    101
+    101,
+    111,
+    116
    ],
    "image": "https://www.bing.com/th?id=ONUT.vuYQdO4GK_fpGWkwGRZqhw&pid=News&w=1200"
   },
@@ -82,7 +87,8 @@
     41,
     43,
     60,
-    23
+    23,
+    117
    ]
   }
  ],
@@ -113,7 +119,8 @@
     27,
     28,
     29,
-    30
+    30,
+    34
    ],
    "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png"
   },
@@ -136,7 +143,8 @@
     17,
     24,
     22,
-    31
+    31,
+    36
    ]
   },
   {
@@ -263,7 +271,8 @@
     21,
     22,
     4,
-    9
+    9,
+    32
    ]
   },
   {
@@ -272,7 +281,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    24
+    24,
+    36
    ]
   }
  ],
@@ -310,16 +320,16 @@
   }
  ],
  "_covered": {
-  "漫威电影": 107,
-  "三星手机": 33,
-  "GTA 6": 43,
-  "A2O LITE": 30,
+  "漫威电影": 121,
+  "三星手机": 36,
+  "GTA 6": 46,
+  "A2O LITE": 36,
   "MMORPG 新作": 21,
-  "日本顶级网球赛事": 32,
+  "日本顶级网球赛事": 39,
   "ILLIT": 16,
   "周杰伦": 15,
   "チェーンソーマン": 11,
-  "dota2": 9,
+  "dota2": 12,
   "Astrae Oratio": 6,
   "滑雪": 7,
   "绝区零": 13,
@@ -328,7 +338,8 @@
   "あつ森": 2,
   "哈利波特剧集": 2,
   "猫用品": 2,
-  "Vaundy": 1
+  "Vaundy": 1,
+  "The Mandalorian": 3
  },
  "日本顶级网球赛事": [
   {
@@ -396,7 +407,9 @@
    "refs": [
     20,
     18,
-    26
+    26,
+    18,
+    35
    ]
   },
   {
@@ -599,6 +612,15 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "Four more sweeps on Day 2 of PARI Universe Dota 2 event",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -818,6 +840,27 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "The Mandalorian and Grogu Make Immediate Return To ‘Star Wars’ Following Box-Office Flop",
+   "highlight": "",
+   "blurb": "The Mandalorian and Grogu return in an official new Star Wars comic, Danger in the Dark.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://insidethemagic.net/wp-content/uploads/2026/05/mandalorian-and-grogu-characters.jpg"
+  },
+  {
+   "headline": "How the title of Mandalore passed from Mandalore I to Boba Fett",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ]

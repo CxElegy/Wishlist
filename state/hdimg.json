@@ -611,6 +611,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-24"
  },
+ "https://fieldlevelmedia.com/wp-content/uploads/2026/10/11882973-1024x696.jpg": {
+  "w": 1024,
+  "h": 696,
+  "target": 1280,
+  "v": 3
+ },
  "https://file.sportsseoul.com/news/cms/2026/10/24/news-p.v1.20261024.3f3bb0711be84be0ad3cf736eb9fd83c_P1.jpg": {
   "w": 700,
   "h": 420,
@@ -1145,6 +1151,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fY8Li.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
   "h": 819,
@@ -1454,6 +1466,12 @@
  "https://inews.gtimg.com/news_ls/OHacNUzITenU0I8e57iFBQxt_gPJX07pk4h0glUs0fOAUAA/0": {
   "w": 1672,
   "h": 941,
+  "target": 1280,
+  "v": 3
+ },
+ "https://insidethemagic.net/wp-content/uploads/2026/05/mandalorian-and-grogu-characters.jpg": {
+  "w": 1200,
+  "h": 600,
   "target": 1280,
   "v": 3
  },
@@ -2942,12 +2960,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.TkmAnUzlkdnJGcmU3C57aA&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-24"
- },
  "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200": {
   "w": 700,
   "h": 346,
@@ -3047,12 +3059,6 @@
    852
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.iwnc2jSFC1ChBJs_4B2YPA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.k6p_3T6ydc2oAi8n0yvJzA&pid=News&w=1200": {
   "w": 700,
@@ -3337,6 +3343,12 @@
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Pedro-Pascal-F4.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
   "target": 720,
   "v": 3
  },
