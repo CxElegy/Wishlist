@@ -281,12 +281,19 @@ USER_CREATED = "user"       # boards.created_by：お客さまが足した版面
 NOT_TOPIC = ("disambiguation", "曖昧さ回避", "消歧义", "wikimedia list", "一覧")
 
 
-def _sitelinks(ids, get):
-    """項目ごとの Wikipedia の言語数（向導の「情報少なめ」と同じ物差し）。"""
-    if len(ids) < 2:
+def _entities(ids, get):
+    """候補ごとの Wikipedia の言語数（向導の「情報少なめ」と同じ物差し）と、名前・別名（ja・en・mul）。
+    検索の返事は前方一致の名前（「京都市」）しか返さず、別名「京都」が見えないので、項目そのものを引く。"""
+    if not ids:
         return {}
-    d = get({"action": "wbgetentities", "ids": "|".join(ids), "props": "sitelinks"})
-    return {q: len((e or {}).get("sitelinks") or {}) for q, e in (d.get("entities") or {}).items()}
+    d = get({"action": "wbgetentities", "ids": "|".join(ids[:50]), "props": "labels|aliases|sitelinks", "languages": "ja|en|mul"})
+    out = {}
+    for q, e in (d.get("entities") or {}).items():
+        e = e or {}
+        out[q] = {"sl": len(e.get("sitelinks") or {}),
+                  "labels": {norm_name(v.get("value")) for v in (e.get("labels") or {}).values()},
+                  "aliases": {norm_name(a.get("value")) for vs in (e.get("aliases") or {}).values() for a in vs}}
+    return out
 
 
 FRANCHISE = re.compile(r"media franchise|メディアミックス|媒体系列|跨媒体", re.I)
@@ -326,6 +333,13 @@ def find_pick_wikidata(name, get=_wd_get, sec=None):
                 c["label"] = True
             elif want in others:
                 c["alias"] = True
+    ents = _entities(list(cands), get)
+    for q, c in cands.items():
+        e = ents.get(q) or {}
+        if want in (e.get("labels") or ()):
+            c["label"] = True
+        elif want in (e.get("aliases") or ()):
+            c["alias"] = True
     use_sec = sec and sec != taxonomy.OTHER
     for c in cands.values():
         c["fits"] = bool(use_sec and (taxonomy.classify(c["desc"]) == sec
@@ -333,14 +347,14 @@ def find_pick_wikidata(name, get=_wd_get, sec=None):
     keep = {q: c for q, c in cands.items() if c["label"] or (c["alias"] and (not short or c["fits"]))}
     if not keep:
         return None
-    sl = _sitelinks(list(keep), get)
+    sl = {q: (ents.get(q) or {}).get("sl", 0) for q in keep}
     def rank(q):
         c = keep[q]
         return (max(sl.get(q, 0), 1) * (2 if c["label"] else 1) * (2 if c["fits"] else 1), c["label"], -c["order"])
     return max(keep, key=rank)
 
 
-RECHECK_VER = 4   # 番号の決め方（find_pick_wikidata）を変えたら上げる：お客さまの版面を 1 度ずつ引き直す
+RECHECK_VER = 5   # 番号の決め方（find_pick_wikidata）を変えたら上げる：お客さまの版面を 1 度ずつ引き直す
 
 
 def recheck_plan(boards, follows, get=_wd_get, cache=None, limit=25, pause=1.0):
