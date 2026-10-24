@@ -269,10 +269,14 @@ def wikidata_images(query, props=("P154", "P18"), limit=3):
     """Wikidata の主題から、公式ロゴ（P154）と代表画像（P18）。Commons のファイルなのでライセンス付き。
     Commons の全文検索より、主題を取り違えにくく、429 にもなりにくい。"""
     out = []
-    for lang in ("en", "ja", "zh"):
-        q = urllib.parse.urlencode({"action": "wbsearchentities", "search": query, "language": lang, "uselang": lang,
-                                    "format": "json", "limit": 2})
-        hits = _json(f"https://www.wikidata.org/w/api.php?{q}").get("search", [])
+    qid = re.fullmatch(r"Q\d+", str(query))   # 番号で渡されたら検索しない（「将棋」の名前の検索は別の項目に当たる・何も当たらない）
+    for lang in ("en",) if qid else ("en", "ja", "zh"):
+        if qid:
+            hits = [{"id": query}]
+        else:
+            q = urllib.parse.urlencode({"action": "wbsearchentities", "search": query, "language": lang, "uselang": lang,
+                                        "format": "json", "limit": 2})
+            hits = _json(f"https://www.wikidata.org/w/api.php?{q}").get("search", [])
         for h in hits[:1]:
             # 項目の中身は Special:EntityData（CDN のキャッシュから返る。api.php の wbgetentities より 429 になりにくい）
             claims = _json(f"https://www.wikidata.org/wiki/Special:EntityData/{h['id']}.json", 4_000_000)["entities"][h["id"]].get("claims", {})
@@ -556,8 +560,9 @@ def gather(item, log=print, tried=None):
 
     if kind in ("brand", "topic"):
         subj = item.get("emblem_subject") or name
+        wd = item.get("wikidata") if not item.get("emblem_subject") and re.fullmatch(r"Q\d+", str(item.get("wikidata") or "")) else subj
         try:
-            add(f"{subj} のロゴ", wikidata_images(subj, ("P154",)), "Wikidata", "ブランドの顔（公式ロゴ）", 2)
+            add(f"{subj} のロゴ", wikidata_images(wd, ("P154",)), "Wikidata", "ブランドの顔（公式ロゴ）", 2)
         except Exception as e:
             log(f"  [Wikidata] {e}")
         try:
@@ -579,7 +584,7 @@ def gather(item, log=print, tried=None):
                 log(f"  [Wikipedia {lang}] {e}")
         if kind == "topic":
             try:
-                add(subj, wikidata_images(subj, ("P154", "P18")), "Wikidata", "主題を表す画像", 3)
+                add(subj, wikidata_images(wd, ("P154", "P18")), "Wikidata", "主題を表す画像", 3)
             except Exception as e:
                 log(f"  [Wikidata] {e}")
             try:
