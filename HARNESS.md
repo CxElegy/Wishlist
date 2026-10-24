@@ -58,11 +58,15 @@
 
 画面を作る・変える段は、この順で回す（人に見せる前に自分で 1 周する）：
 1. **参考にする**：BENCHMARKS.md の受賞サイト（Awwwards・Webby など）と、店長のページ（test1）の作り（DESIGN_PRINCIPLES.md）を先に見る。似たものの平均を作らない。
-2. **考えを決める**：`.claude/skills/design-taste-frontend` の考え（その作品・その人のものからしか出てこない 1 つの考え）で方向を決める。どこにでもある型（真ん中に大見出し＋3 枚のカード、ふわっとした色のにじみ、意味のないアイコン、作った数字）は使わない。
-3. **設計する**：Figma の MCP がつながっていれば、Figma で見本を作って写真を撮る（get_screenshot）。なければテストグラウンドに HTML の見本。見た目を変えるものは、あなたに見本を見せて決めてもらう（上の決まり）。
-4. **作る**：店長と同じ部品（render.py・令牌）で。
-5. **確かめる**：Playwright（`.mcp.json` の playwright MCP、または `harness/ux_check.py`）で 1400 / 390 px を開いて押して写真を撮る。`node .claude/skills/design-taste-frontend/scripts/inspect.mjs <網址> --widths 1440,390 --allow <下の許すもの>`（Chrome は `--no-sandbox` が要る：CHROME_PATH に包みの shell を渡す）の FAIL が 0 になるまで直す。画像が出ない・読み込みが遅いもここで見る。
-6. **見せる**：合併すると Discord に Before / After（変わった所の赤枠）。
+2. **作りの決まりを当てる**（2026-10-24，用户定的：プロのデザインに見せる 3 つのスキル）：
+   - **emil-design-eng**（Emil Kowalski、約 38 万件）：細部の磨き・部品の作り・動きを入れるか入れないか・目に見えない細部。動きを足す・直すときは **review-animations** で点検し、まとめて直すときは **improve-animations** で一覧と直し方を作る。
+   - **impeccable**：組版（字の大きさの段・行の長さ・行間）・余白・並べ方・色・動き・読みやすさ。`.claude/skills/impeccable/scripts/impeccable detect --json <html>` で点検する。
+   - **design-taste-frontend（Taste）**：すぐれたサイトを参考にして、どこにでもある AI っぽさを消す（下の 3〜5）。
+3. **考えを決める**：`.claude/skills/design-taste-frontend` の考え（その作品・その人のものからしか出てこない 1 つの考え）で方向を決める。どこにでもある型（真ん中に大見出し＋3 枚のカード、ふわっとした色のにじみ、意味のないアイコン、作った数字）は使わない。
+4. **設計する**：Figma の MCP がつながっていれば、Figma で見本を作って写真を撮る（get_screenshot）。なければテストグラウンドに HTML の見本。見た目を変えるものは、あなたに見本を見せて決めてもらう（上の決まり）。
+5. **作る**：店長と同じ部品（render.py・令牌）で。
+6. **確かめる**：Playwright（`.mcp.json` の playwright MCP、または `harness/ux_check.py`）で 1400 / 390 px を開いて押して写真を撮る。`node .claude/skills/design-taste-frontend/scripts/inspect.mjs <網址> --widths 1440,390 --allow <下の許すもの>`（Chrome は `--no-sandbox` が要る：CHROME_PATH に包みの shell を渡す）の FAIL が 0 になるまで直す。画像が出ない・読み込みが遅いもここで見る。
+7. **見せる**：合併すると Discord に Before / After（変わった所の赤枠）。
 
 **P5 の作りとして許すもの**（点検の FAIL でも直さない。A4 の考え）：shadow・button-fx・text-shadow（硬い影）、outlined-box（枠線）、eyebrow・micro-label（札・英語の小さなラベル）、palette-cream（紙の色）、emoji（♥ ⚙ ★ 👍👎 は部品）、gradient（ポスターの角のトンボ）、off-centre（左の目次の線路）。
 **直すもの**：contrast・edge-text・headline-lines・font-fallback・small-text（読む字は 13px 以上を目安）・size-count（字の大きさの段を減らす）。2026-10-24 の最初の点検：FAIL 15・WARN 9（BACKLOG に段）。
