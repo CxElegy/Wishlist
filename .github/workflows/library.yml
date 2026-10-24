@@ -2,6 +2,7 @@ name: ライブラリへ写す
 
 # 店長の items.yaml をライブラリ（Supabase の boards・follows、db/library.sql）へ写す（scripts/library.py --push）。
 # 何度流しても同じ（key で上書き）。items.yaml を変えたとき・手で起こしたときに走る。
+# 店長の版面もお客さまの版面も番号の決め方は 1 つ（library.find_wikidata）。手で compare を付けて起こすと、店長の版面を今の規則で引き直して今の番号と比べるだけ（書かない）。
 # 週 1 回（月曜 3:41 UTC）と手で起こしたときは、先に番号のない版面の Wikidata を引き直す（--refresh）：
 # 見つかれば items.yaml に書いて push し、boards の行を名前の印（n:…）から番号の印（wd:…）へ書き換える。
 # 断られた（429 など）と「項目が 0 件」は分けて state/log/library.json に書く。
@@ -10,6 +11,11 @@ name: ライブラリへ写す
 
 on:
   workflow_dispatch:
+    inputs:
+      compare:
+        description: "店長の版面を今の規則で引き直して今の番号と比べるだけ（書かない）"
+        type: boolean
+        default: false
   schedule:
     - cron: "41 3 * * 1"
     - cron: "41 * * * *"
@@ -39,8 +45,11 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: 店長の版面の番号を今の規則で比べる（手で compare を付けた回だけ、何も書かない）
+        if: inputs.compare
+        run: python scripts/library.py --compare
       - name: Wikidata の番号を引き直す（週 1 回・手で）
-        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '41 3 * * 1'
+        if: (github.event_name == 'workflow_dispatch' && !inputs.compare) || github.event.schedule == '41 3 * * 1'
         run: |
           python scripts/library.py --refresh
           git config user.name "github-actions[bot]"
@@ -51,14 +60,17 @@ jobs:
             git push -q && break
             if git pull --rebase -q; then :; else git rebase --abort || true; sleep 5; fi
           done
-      - run: python scripts/library.py --push
+      - if: ${{ !inputs.compare }}
+        run: python scripts/library.py --push
       - name: Wikidata の引いた結果（お客さまの分、倉庫に入れない）
+        if: ${{ !inputs.compare }}
         uses: actions/cache@v4
         with:
           path: state/wd_facts.json
           key: wd-facts-${{ github.run_id }}
           restore-keys: wd-facts-
       - name: お客さまの選んだものを版面にする
+        if: ${{ !inputs.compare }}
         run: |
           python scripts/library.py --users
           git add state/log/library.json
