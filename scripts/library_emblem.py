@@ -19,6 +19,7 @@ import re
 import sys
 import tempfile
 import time
+import urllib.parse
 import urllib.request
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -201,8 +202,11 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
             who = set(got.get("emblem_who") or [])
             new = add.get("emblem") or []
             seen = {x.get("subject") for x in new}
-            keep = [x for x in cfg.get("emblem") or [] if item["emblem_kind"] in ("character", "group")
-                    and x.get("subject") in who and x.get("subject") not in seen]
+            if item["emblem_kind"] == "character":   # 名簿で集める版面：新しい名簿にいる人だけ
+                keep = [x for x in cfg.get("emblem") or [] if x.get("subject") in who and x.get("subject") not in seen]
+            else:   # ほか：新しい規則で 1 枚も取れなければ前のものを残す（0 枚にしない、#333 のあと BTS・iPhone が 0 枚）。字だけ・図・古い写真は外す
+                keep = [] if new else [x for x in cfg.get("emblem") or []
+                                       if not emblem_fill.not_emblem(urllib.parse.unquote(str(x.get("image") or "")))]
             if keep:
                 add["emblem"] = new + keep
     have = len(add.get("emblem") or []) if "emblem" in add else len(got.get("emblem") or [])
