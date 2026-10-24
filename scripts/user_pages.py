@@ -1,7 +1,8 @@
 """お客さま一人ひとりのページを、店長のページと同じ部品（render.render）で作る（2026-10-24，用户定的：
 「框架（頭条・黄色の帯・版面の設計・主題・配色・小元素）は店長と同じ、中身は本人のもの」）。
 
-- 版面 = 本人が選んだもの（app_users.prefs.picks）。
+- 版面 = 本人が追いかけているもの（ライブラリの follows：置く板块・小分類・篇幅・並び）。
+  follows にまだないもの（足したばかりで library.py --users の回の前）は app_users.prefs.picks から（板块だけ）。
   - 店長と同じ名前の版面：店長の設定（主題・配色・小元素・アイコン）と店長の記事（AI 編集済みの最新号）をそのまま使う。
   - 店長にないもの：本人の分として集めた記事（user_boards）で、種類から主題（render.template_for）、写真から配色（theme.resolve）。
     写真は images.pick（店長と同じ規則）で記事から探す（1 版面の頭の数本だけ・全体の時間に上限）。
@@ -48,6 +49,27 @@ def norm(s):
     return digest.re.sub(r"\s+", "", str(s or "")).lower()
 
 
+def own_picks(follows, picks):
+    """follows（[{pos, section, subs, size, boards: {name}}]）を並び順に、そのあとに follows にまだない picks。
+    返す形は picks と同じ [{name, sec, subs, size}]（subs・size は follows にあるときだけ）。"""
+    out, seen = [], set()
+    for f in sorted(follows or [], key=lambda f: f.get("pos") or 0):
+        name = str(((f.get("boards") or {}).get("name")) or "").strip()
+        if name and norm(name) not in seen:
+            seen.add(norm(name))
+            out.append({"name": name, "sec": f.get("section") or "", "subs": f.get("subs") or {}, "size": f.get("size")})
+    for p in picks or []:
+        if norm(p.get("name")) not in seen:
+            out.append(p)
+    return out
+
+
+def own_sub(item):
+    """目次の小分類：その板块の 1 つ目の分け方（お客さまはまだ分け方を選べない。店長の既定と同じ）。"""
+    first = (taxonomy.sub_schemes().get(item.get("section")) or [{}])[0].get("id")
+    return digest.sub_of(item, first)
+
+
 def user_items(picks, shop_items):
     """本人の版面（items.yaml と同じ形）。店長と同じ名前なら店長の設定を写す（板块は本人の選んだもの）。"""
     shop = {norm(i["name"]): i for i in shop_items}
@@ -62,10 +84,14 @@ def user_items(picks, shop_items):
             it = {k: v for k, v in shop[norm(name)].items() if k not in ("parent",)}
             if sec:
                 it["section"] = sec
+            if p.get("subs"):   # 本人の置き方（follows）が店長の小分類より先
+                it["subs"] = dict(p["subs"])
             it["_shop"] = True
         else:
             it = {"name": name, "type": TYPE_OF_SEC.get(sec, "category"), "section": sec or taxonomy.classify(name),
-                  "keywords": [name], "match": [name], "subs": {}}
+                  "keywords": [name], "match": [name], "subs": dict(p.get("subs") or {})}
+        if p.get("size") in ("S", "M", "L"):
+            it["size"] = p["size"]
         out.append(it)
     return out
 
@@ -118,20 +144,29 @@ def user_issue(items, shop_issue, rows, deadline, themes):
     return {"date": date, "no": (shop_issue or {}).get("no", 0), "items": blocks}
 
 
-def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes):
-    """本人のページの HTML。"""
-    items = user_items((prefs or {}).get("picks"), shop_items)
+def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None):
+    """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）。"""
+    items = user_items(own_picks(follows, (prefs or {}).get("picks")), shop_items)
     issue = user_issue(items, shop_issue, rows, deadline, themes)
-    order = [i["name"] for i in items] or [FIRST_BOARD]
+    subs = {i["name"]: own_sub(i) for i in items}
+    secs = list(render.SECTIONS)
+    first = {}
+    for n, i in enumerate(items):   # 板块 → 小分類（出てきた順）→ 本人の並び。店長の目次・本文と同じ並べ方
+        first.setdefault((i.get("section"), subs[i["name"]]), n)
+    items_o = sorted(enumerate(items), key=lambda x: (secs.index(x[1].get("section")) if x[1].get("section") in secs else len(secs),
+                                                      first[(x[1].get("section"), subs[x[1]["name"]])], x[0]))
+    order = [i["name"] for _, i in items_o] or [FIRST_BOARD]
     tz = digest.display_tz(settings)
     updated = dt.datetime.now(tz).strftime("%m.%d %H:%M")
     render.AUTH_DB = {"url": settings.get("supabase_url") or "", "key": settings.get("supabase_key") or ""}
     render.AUTH_ITEMS = [[i["name"], digest.section_of(i)] for i in shop_items if not i.get("parent")]
     html_ = render.render([issue], settings.get("nav_style", "line"), order, updated, [], [],
-                          {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, {},
+                          {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")},
+                          {i["name"]: i["size"] for i in items if i.get("size")},
                           {i["name"]: render.template_for(i) for i in items}, themes, [], {},
                           {i["name"]: (i["emblem"], i.get("emblem_ring", "accent")) for i in items if isinstance(i.get("emblem"), list)},
-                          {i["name"]: i["like_fx"] for i in items if i.get("like_fx")}, {}, settings.get("nav_hide", render.NAV_HIDE),
+                          {i["name"]: i["like_fx"] for i in items if i.get("like_fx")}, {n: v for n, v in subs.items() if v},
+                          settings.get("nav_hide", render.NAV_HIDE),
                           {i["name"]: i["icon"].get("image") for i in items if isinstance(i.get("icon"), dict)},
                           None, dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), {}, {},
                           digest.lang.order(settings), {}, {})
@@ -168,7 +203,8 @@ def main(argv):
         out.mkdir(parents=True, exist_ok=True)
         for u in data:
             rows = {norm(r["item"]): r for r in u.get("rows", [])}
-            (out / f"{u['account']}.html").write_text(build(u["email"], u["prefs"], rows, shop_items, shop_issue, settings, deadline, themes), encoding="utf-8")
+            (out / f"{u['account']}.html").write_text(build(u["email"], u["prefs"], rows, shop_items, shop_issue, settings, deadline, themes,
+                                                            u.get("follows")), encoding="utf-8")
         return
     users = _supa("/rest/v1/rpc/userfeed_users", json.dumps({"p_limit": 1000}).encode(), "POST")
     made = failed = 0
@@ -176,7 +212,9 @@ def main(argv):
         acct = account_of(u["email"])
         try:
             rows = _supa(f"/rest/v1/user_boards?account=eq.{acct}&select=item,sec,state,stories")
-            html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline, themes)
+            follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(name)&order=pos")
+            html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
+                          themes, follows)
             _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/index.html", html_.encode("utf-8"), "POST", "text/html; charset=utf-8")
             made += 1
         except Exception as ex:  # noqa: BLE001  1 人の失敗でほかの人を止めない。ログは数と種類だけ（名前・メールは出さない：Actions のログは公開）
