@@ -12,7 +12,7 @@ export const meta = {
 
 const MAX = (args && args.max) || 6
 const SP = (args && args.scratch) || '/tmp/harness'
-const COMMON = `リポジトリ /home/user/Wishlist（CxElegy/Wishlist）。最初に HARNESS.md・BACKLOG.md・CLAUDE.md・WORKING.md を main の最新で読み、その決まりで動く。
+const COMMON = `リポジトリ /home/user/Wishlist（CxElegy/Wishlist）。最初に HARNESS.md・BACKLOG.md・CLAUDE.md・WORKING.md を main の最新で読み（触る分野の docs/rules/*.md も。CLAUDE.md の索引の表）、その決まりで動く。
 作業は自分専用の worktree：\`git -C /home/user/Wishlist fetch -q origin main && git -C /home/user/Wishlist worktree add -f ${SP}/wt/{ID} -B harness/{ID} origin/main\`。メインの作業ツリーには書かない。一時ファイルは ${SP}/tmp/。
 GitHub は mcp__github__ のツール（ToolSearch で読み込む）、Supabase は mcp__Supabase__（プロジェクト bzokpnbcjscbcehdxtjq。読む・足すだけ。DROP・DELETE・表の形を変える文はしない）。
 PR は push → mcp__github__create_pull_request（本文の最後に「🤖 Generated with [Claude Code](https://claude.com/claude-code)」）。CI は get_check_runs で見て、走っている間は手元のテストや画面の点検など別の作業をする（ただ待たない）。緑なら squash で合併、赤なら直して push。

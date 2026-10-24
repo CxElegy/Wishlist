@@ -18,7 +18,7 @@ required_environment_variables:
 
 # ウォッチリスト通信のハーネス（Hermes 版）
 
-決まりの本体はリポジトリの `HARNESS.md`・`CLAUDE.md`・`WORKING.md`・`BACKLOG.md`。このスキルは手順だけ。
+決まりの本体はリポジトリの `HARNESS.md`・`CLAUDE.md`（詳しい仕様は `docs/rules/*.md`）・`WORKING.md`・`BACKLOG.md`。このスキルは手順だけ。
 会話・コミット以外のユーザー向けの文章は日本語。
 
 ## When to Use

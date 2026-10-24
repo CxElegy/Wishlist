@@ -63,7 +63,7 @@ LANG_CODE = {"ja-JP": "ja", "en-US": "en", "zh-CN": "zh", "zh-TW": "zh", "ko-KR"
 DEFAULT_LANGS = ["ja-JP"]   # 集めていない言語だけを選んだ人は、サイトの主言語（日本語）で
 
 # 英語の名前（Steam のカードの The Wrong Way・MEAT TRAIN）は普通の語のことが多い：数字のない短い名前は、その板块の下の語が
-# 同じ記事に出てくるときだけ（CLAUDE.md「匹配词」：泛词・普通の語は主題の語と一緒に）。
+# 同じ記事に出てくるときだけ（docs/rules/match.md「匹配词」：泛词・普通の語は主題の語と一緒に）。
 # 語は前後が英字でないときだけ（「upcoming」の PC・「opened」の open に当てない）。普通の文にも出る語（update・open・live・PC・game・match・season・
 # release・store・tour…）は入れない。数字だけの名前（「2027」）は、板块がなくても下の語のどれかと一緒のときだけ
 SHORT_ASCII = 14
