@@ -251,6 +251,227 @@
   "三星手机": 27,
   "GTA 6": 26,
   "A2O LITE": 18,
-  "MMORPG 新作": 16
- }
+  "MMORPG 新作": 16,
+  "日本顶级网球赛事": 15,
+  "ILLIT": 12,
+  "周杰伦": 12,
+  "チェーンソーマン": 10,
+  "dota2": 8
+ },
+ "日本顶级网球赛事": [
+  {
+   "headline": "東レ パン パシフィック オープンテニス2026／今大会の主催者推薦選手が決定！",
+   "highlight": "主催者推薦選手が決定",
+   "blurb": "東レ PPO の主催者推薦選手が決定。本戦に内島萌夏・坂詰姫野ら、予選に伊藤あおい・本玉真唯らが出場します。",
+   "weight": "lead",
+   "refs": [
+    1,
+    2,
+    5,
+    10
+   ],
+   "event": {
+    "date": "2026-10-24",
+    "label": "大会開幕"
+   }
+  },
+  {
+   "headline": "東レPPOテニス2026の放送・配信は？大坂なおみの試合日程とLemino・WOWOWの視聴方法",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    6
+   ]
+  },
+  {
+   "headline": "クルーガーが圧巻のストレート勝ちで4強入り！ 2023年大会女王が「テニスを楽しむ感覚」を取り戻し",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    11,
+    15,
+    4
+   ]
+  },
+  {
+   "headline": "Alex Eala takes Asian swing to Tokyo for Pan Pacific Open",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    13
+   ]
+  },
+  {
+   "headline": "「東レ パン パシフィック オープンテニス」と産学連携協定を締結",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT 5th Mini Album ‘BREAK EVEN’発売記念 CDショップ先着「ラッキードローイベント」開催&大型ディス",
+   "highlight": "BREAK EVEN",
+   "blurb": "新曲「You're Under Arrest」を含む 5th Mini Album『BREAK EVEN』はリリース前から Spotify「Pre-save Top 10」1位。",
+   "weight": "lead",
+   "refs": [
+    5,
+    4,
+    7,
+    2,
+    1,
+    9,
+    10
+   ],
+   "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161860.jpg"
+  },
+  {
+   "headline": "ILLIT「Magnetic」、Spotify累計9億回再生突破 K-POPグループのデビュー曲として最速記録",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "ILLIT、『突破ファイル』に初登場 IROHA「幼い頃からすごく大好きな番組」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
+  },
+  {
+   "headline": "Winning Fans' Hearts: RIIZE, ILLIT, and TWS Take a New-Generation Approach to K-POP Promotions",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰倫演唱會2026廣州｜門票攻略＋購票連結＋座位表",
+   "highlight": "2026廣州",
+   "blurb": "周杰倫 2026 廣州演唱會のチケット購入ガイドとリンク・座席表。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "F✦FOREVER再傳好消息！周杰倫助陣後「第5位男神加入」 神秘身分曝光",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6
+   ]
+  },
+  {
+   "headline": "周杰伦被介绍为「Chinese singer」国台办：真挚情感流露",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    3,
+    4,
+    10
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "【予告】 「CHAINSAW MAN PLAZA TheMovie:RezeArc in 渋谷ロフト」期間限定開催！",
+   "highlight": "期間限定開催",
+   "blurb": "渋谷ロフトで「CHAINSAW MAN PLAZA TheMovie:RezeArc」が期間限定開催されます。",
+   "weight": "lead",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "The Apothecary Diaries Movie Recruits Chainsaw Man and Gundam's Kenshi Yonezu for Official Theme Song",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "The creator of Chainsaw Man opens up about why the manga’s ending was so abrupt",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Chainsaw Man Episode 2 review: Denji’s first day on the job",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Team Yandex roll to opening victory at PARI Universe Dota 2 event",
+   "highlight": "opening victory",
+   "blurb": "Team Yandex が GamerLegion を 2-0 で下し、PARI Universe の初戦を取りました。",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ]
+  },
+  {
+   "headline": "Malr1ne kicks off Team Liquid Dota 2 stint with a series victory over 1w Team at PARI Universe",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Predator to Support NAVI’s Dota 2 and PUBG Rosters",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    5,
+    7
+   ]
+  },
+  {
+   "headline": "Valve Unexpectedly Released an Update for Dota 2",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ]
 }

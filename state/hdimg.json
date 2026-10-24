@@ -278,6 +278,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.essential-japan.com/wp-content/uploads/2026/10/The-Apothecary-Diaries-Movie-x-Kenshi-Yonezu-Official-Theme-Song-0.webp": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/gmdb/g001/51/48/gm399235_260814-risell-tt3.jpg": {
   "w": 466,
   "h": 606,
@@ -458,6 +464,12 @@
   "w": 1500,
   "h": 844,
   "target": 1280,
+  "v": 3
+ },
+ "https://contents.oricon.co.jp/upimg/news/2488000/2487608/20261020_152215_p_o_22272026.jpg": {
+  "w": 1200,
+  "h": 802,
+  "target": 720,
   "v": 3
  },
  "https://d16ad5czovw3en.cloudfront.net/wp-content/uploads/2026/10/23225542/kr-halloween-tongyeong-1-261023145539363.jpeg": {
@@ -721,6 +733,12 @@
  "https://i2.hoopchina.com.cn/bbs-editor-web/17922328797491.jpg": {
   "w": 720,
   "h": 1152,
+  "target": 1280,
+  "v": 3
+ },
+ "https://i3.wp.com/images.deadspin.com/9462947.jpg?tr=w-1200%2Ch-675%2Cfo-auto%2Cf-jpg&ssl=1": {
+  "w": 1100,
+  "h": 733,
   "target": 1280,
   "v": 3
  },
@@ -1033,6 +1051,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fU1ld.img": {
+  "w": 2560,
+  "h": 1707,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fybuG.img": {
   "w": 1456,
   "h": 819,
@@ -1257,6 +1281,19 @@
   ],
   "why": "看不清"
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161860.jpg": {
+  "w": 640,
+  "h": 481,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.504,
+  "local": "pics/fcf4bff785b48529.webp",
+  "out": [
+   1280,
+   962
+  ],
+  "why": "看不清"
+ },
  "https://img.toy-people.com/member/179241036689_1200.png": {
   "w": 1200,
   "h": 630,
@@ -1319,6 +1356,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://library.sportingnews.com/styles/crop_style_16_9_1280_webp/s3/2026-09/Naomi%20Osaka_090526_%E5%A4%A7%E5%9D%82%E3%81%AA%E3%81%8A%E3%81%BF%E5%85%A8%E7%B1%B3%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3.jpg.webp?itok=xTUiBt6K": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://limo.ismcdn.jp/mwimgs/4/9/1200w/img_49a3c6deaf2e95c0c394310028b902d372028.jpg": {
   "w": 1200,
   "h": 2133,
@@ -1330,6 +1373,13 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://loft-images.s3.ap-northeast-1.amazonaws.com/original_2348289__%E8%BB%BD%E9%87%8F%E5%8C%96%EF%BC%9A%E6%AD%A3%E6%96%B9%E5%BD%A2.jpg": {
+  "w": 700,
+  "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.357
  },
  "https://lp.p.pia.jp/shared/materials/24def3aa-7fde-4407-8734-7a7f83d79f15/origin.jpg": {
   "w": 800,
@@ -1812,6 +1862,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261024-00007778-tennisc-000-1-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/1cfc85c4a011cf8c.webp",
+  "out": [
+   1200,
+   800
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
   "h": 1080,
@@ -1909,6 +1971,19 @@
   "target": 720,
   "v": 3
  },
+ "https://pgw.worldjournal.com/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/22/35443336.png&M=1&s=Y&x=2&y=99&sw=450&sh=300&sl=W&fw=800&exp=3600": {
+  "w": 450,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.553,
+  "local": "pics/27ef0e20334921b9.webp",
+  "out": [
+   720,
+   480
+  ],
+  "why": "期限付きの網址"
+ },
  "https://pimg.mk.co.kr/news/cms/202610/19/news-p.v1.20261019.7037adaeab3444c8a60f9d6dcb8fa3cc_R.png": {
   "w": 1000,
   "h": 560,
@@ -1938,6 +2013,12 @@
   "w": 891,
   "h": 1260,
   "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/145961/21/145961-21-a6310e4915f324825db0661a4e89caff-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1890,
+  "h": 1260,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/188297/9/188297-9-325739f58f3f1a65829bfef3a8a73d82-1557x865.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -2026,16 +2107,28 @@
   "v": 3,
   "blur": 0.361
  },
+ "https://readyfor.jp/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MTM2OSwicHVyIjoiYmxvYl9pZCJ9fQ==--402574121bd3b3aac8bd766b2738b960ec837f77/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpbGwiOls3MzYsNDE0XSwic2F2ZXIiOnsicXVhbGl0eSI6MTAwfX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--809954ebdd0c4d318d7f500d88793bbd84307db2/p176287-key-visual.jpeg": {
+  "w": 736,
+  "h": 414,
+  "target": 720,
+  "v": 3
+ },
  "https://realsound.jp/wp-content/uploads/2026/10/20261019-mrs-99.jpeg": {
   "w": 1200,
   "h": 675,
   "target": 1280,
   "v": 3
  },
+ "https://resource.hanteonews.com/content/post/2026/10/21/dfd242c4-5ebd-4dcb-ba8f-49c0c535dece.jpeg": {
+  "w": 1500,
+  "h": 1000,
+  "target": 720,
+  "v": 3
+ },
  "https://root-nation.com/wp-content/uploads/2026/10/acer_predator_x_navi_video_packshot_4k.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
@@ -2192,8 +2285,15 @@
  "https://static.sanyonews.jp/image/article/size1/0/4/7/8/047891ef5abc2da9f3a2359a4c8aa816_1.jpg": {
   "w": 640,
   "h": 427,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.451,
+  "local": "pics/b9377463bc9f68ec.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "看不清"
  },
  "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg": {
   "w": 451,
@@ -2286,6 +2386,12 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
+  "v": 3
+ },
+ "https://statics-prod.mirrordaily.news/images/0f0ff192-36b2-458e-adef-6d490374d1fb.jpg": {
+  "w": 2048,
+  "h": 1536,
+  "target": 720,
   "v": 3
  },
  "https://stea.jp/wp-content/uploads/2026/10/yonex-tennis-festival_2.jpg": {
@@ -2600,12 +2706,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.DND5UNdJdg6CQvJikoraRg&pid=News&w=1016": {
-  "w": 700,
-  "h": 394,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
   "h": 334,
@@ -2883,6 +2983,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/18/FfMzG-6VEAA3Gtv-e1666114081464.jpg": {
+  "w": 900,
+  "h": 508,
+  "target": 720,
+  "v": 3
+ },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/11/15/Screenshot-7121.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2965,6 +3071,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.jumonji-u.ac.jp/common/image/sns-icon.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/illit01.webp": {
