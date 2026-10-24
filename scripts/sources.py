@@ -713,18 +713,20 @@ RESOLVE_TRIES = 3   # Google 偶尔拒绝还原（GitHub 服务器上见过整�
 _resolved = {}      # 本次运行内缓存：跳转链接 → 原文地址
 
 
-def resolve_url(url):
-    """把 Google 新闻的跳转链接还原成原文地址（Google 页面里的签名参数换取真实地址）；失败就原样返回。"""
+def resolve_url(url, tries=None):
+    """把 Google 新闻的跳转链接还原成原文地址（Google 页面里的签名参数换取真实地址）；失败就原样返回。
+    tries：试几次（默认 RESOLVE_TRIES。お客さまの記事集め userfeed は 1 回だけ：断られているときに 1 本 6 秒待たない）。"""
     if "news.google.com" not in (url or ""):
         return url
     if url in _resolved:
         return _resolved[url]
-    for attempt in range(RESOLVE_TRIES):
+    tries = RESOLVE_TRIES if tries is None else tries
+    for attempt in range(tries):
         real = _resolve_once(url)
         if real != url:
             _resolved[url] = real
             return real
-        if attempt + 1 < RESOLVE_TRIES:
+        if attempt + 1 < tries:
             time.sleep(2 * (attempt + 1))
     return url
 
