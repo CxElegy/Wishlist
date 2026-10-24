@@ -568,7 +568,6 @@ items:
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
       - {subject: "Harry Potter（Dominic McLaughlin）", why: "Harry Potter（Dominic McLaughlin）：作品の動画の場面", image: "emblems/harry-potter-dominic-mclaughlin.webp", source: "https://i.ytimg.com/vi/SJVmeJaS44s/hq2.jpg", page: "https://www.youtube.com/watch?v=SJVmeJaS44s", shape: "cutout"}
       - {subject: "哈利波特剧集（作品）", why: "哈利波特剧集 のポスター・キービジュアル（Wikipedia の記事の代表画像）", image: "emblems/ccf0ea0c.webp", source: "https://static.wikia.nocookie.net/harrypotter/images/0/0e/Harry_Potter_HBO_logo.png/revision/latest/scale-to-width-down/400?cb=20260907183251", page: "https://harrypotter.fandom.com/wiki/Harry_Potter_(TV_series)", shape: "badge", ar: 0.515, upper: true, work: true, plate: true}
-      - {subject: "Ronald Weasley（Alastair Stout）", why: "Ronald Weasley（Alastair Stout）：作品の動画の場面", image: "emblems/ronald-weasley-alastair-stout.webp", source: "https://i.ytimg.com/vi/emUf11-ECoY/hq2.jpg", page: "https://www.youtube.com/watch?v=emUf11-ECoY", shape: "cutout"}
     subtitle: HBO「Harry Potter」· ドラマ版ハリー・ポッター
     size: M
     type: show
@@ -627,6 +626,7 @@ items:
       split: true
       font: serif
     wiki: ["en:Harry Potter (TV series)"]
+    emblem_reject: ["https://i.ytimg.com/vi/emUf11-ECoY/hq2.jpg"]
 
   - name: ILLIT
     wikidata: Q122179261   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
