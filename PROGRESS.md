@@ -26,3 +26,4 @@
 - 2026-10-24 増えた分だけの一覧（#306）の本番の回を確かめた：前の記事 31/34 残り、消えた 3 本は篇幅の上限で押し出されたもの。1 バッチ目の 1 版面のトークン 1.29 万（前 2.1〜2.3 万、約 4 割減） · https://github.com/CxElegy/Wishlist/pull/311 · 次：溜まったら編集が回っているか（半日あと）
 - 2026-10-24 お客さまが自分の篇幅・分け方を設定で変える（#312）：店長と同じ render_settings を本人の分で作り me.html?p=settings で読む、my_size_set（follows.size）・my_nav_scheme_set（nav_schemes）。#312 の注釈で全ページの JS が止まり ux_check ✗8 → #313 で直し node --check のテスト。本番 test-b で押して DB・作り直しまで確かめた、ux_check ✗0 · 次：篇幅を版面の本数に効かせる・設定ページを P5 の枠組みに
 - 2026-10-24 別の目の指摘を直す（#317）：test-c の設定ページも本人の分・篇幅で本数を切る（test-b 8→5）・kick_render を押すたびに（2 回押して後の回が勝つのを確かめた）・ux_check が設定ページも点検。ux_check ✗0（16 点） · https://github.com/CxElegy/Wishlist/pull/317 · 次：設定ページを P5 の枠組みに（見本を先に）
+- 2026-10-24 ux_check にエンブレムの点検 E1〜E10（harness/emb_check.py、--emb full で全候補を差し替え・写真の一覧） · https://github.com/CxElegy/Wishlist/pull/319 · 本番 full：店長 1400＝小さい 1・切れ 1・重複 2・大乱闘の絵 3・届かない 4、390 は加えてはみ出し 5・題字に重なる 1、test-a E1 40・test-b E1 1・test-c ✓ · 次：お客さまの版面にもエンブレム

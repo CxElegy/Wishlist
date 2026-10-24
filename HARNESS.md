@@ -175,7 +175,7 @@
 ## 7. 確かめ方（毎段、全部通るまで直す）
 
 0. **ユーザーより先に見つける**（2026-10-24，用户定的：「ハーネスが自分でテストして issue を見つける。今は自分で見に行かないといけない」）：
-   合併のあと必ず `python harness/ux_check.py`（本番を ログインなし・test-a・test-b・test-c × 1400・390 px で開き、開き直しのくり返し・白い画面・素の箱・枠組み・はみ出し・JS のエラーを見る）。
+   合併のあと必ず `python harness/ux_check.py`（本番を ログインなし・test-a・test-b・test-c × 1400・390 px で開き、開き直しのくり返し・白い画面・素の箱・枠組み・はみ出し・JS のエラー・エンブレムの E1〜E10（harness/emb_check.py）を見る）。小元素の規則を変えた段は `--emb full`（候補を全部差し替えて測り、写真の一覧 `harness/shots/emb/sheet-*.png`）。
    ✗ が出たら次の段より先に直す（ユーザーに見つけさせない）。新しい壊れ方を見つけたら、それを見る項目を ux_check.py に足す。
 
 1. `python -m unittest discover -s tests` と `python scripts/check_arch.py origin/main`
