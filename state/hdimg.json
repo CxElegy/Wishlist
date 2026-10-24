@@ -1633,6 +1633,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/624545_1-1.jpg": {
+  "w": 731,
+  "h": 1024,
+  "target": 1280,
+  "v": 3
+ },
  "https://news.dellows.jp/wp-content/uploads/2026/10/627780_1.jpg": {
   "w": 600,
   "h": 846,
@@ -2791,12 +2797,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.AMSc_uol3EVxzGp6wDahHQ&pid=News&w=768": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.B2_wGz_aVofe4yAd16Rwcw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2882,9 +2882,9 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.RrDjNIscVpnd8Yf-e4PlNA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.R3BkKjD4IyJsC06W0dETZw&pid=News&w=1200": {
   "w": 700,
-  "h": 463,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -2924,6 +2924,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.bYOBx8ow0oYCSeupcNk-8g&pid=News&w=640": {
+  "w": 640,
+  "h": 237,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ck6Mg001BrOSbWyGoEyvGg&pid=News&w=1200": {
   "w": 700,
