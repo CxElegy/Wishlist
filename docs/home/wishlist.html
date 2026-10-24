@@ -859,7 +859,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="f06d29b8cc2f"><style>
+<meta name="wl-ver" data-page="wishlist" content="a310f1091069"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1518,7 +1518,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.25 07:21</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.25 07:23</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
@@ -1705,6 +1705,7 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
   // ?v=新しい指紋 で開き直して控えを飛ばす。着いたら ?v= は網址から消す。同じ v でまだ古い（配信の控え）ときは繰り返さない
   function cleanV(){try{var u=new URL(location.href);if(u.searchParams.has('v')){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash);}}catch(e){}}
   function fresh(v){try{var u=new URL(location.href);if(u.searchParams.get('v')===v||Date.now()-LOADED>15000||busy())return false;
+    ss.set(KEY,{to:v,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});   // 開き直したあとも見ていた場所に戻し、増えた記事に印
     u.searchParams.set('v',v);location.replace(u.toString());return true;}catch(e){return false;}}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
       var v=j&&j[PAGE];if(!v||v===VER){cleanV();return;}
@@ -1718,7 +1719,11 @@ document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () =
           if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}}
       maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
-  document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
+  // 戻る・タブの復元（bfcache：JS が止まったまま戻る）と、30 秒以上ほかのタブにいたあと表に戻ったときは、開いた直後と同じ扱い：
+  // 古ければすぐ ?v= で開き直す（2026-10-25：合併したのに開き直しても古いまま、をなくす。プライベートウィンドウを使わせない）
+  var hiddenAt=0;
+  document.addEventListener('visibilitychange',function(){if(document.hidden){hiddenAt=Date.now();maybe();return;}if(hiddenAt&&Date.now()-hiddenAt>30000)LOADED=Date.now();check();});
+  addEventListener('pageshow',function(ev){if(ev.persisted){LOADED=Date.now();check();}});
   check();   // 開いたらすぐ確かめる（古い控えならすぐ最新に）
 })();
 </script>
