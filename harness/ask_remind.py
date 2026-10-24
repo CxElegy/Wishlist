@@ -1,91 +1,74 @@
-"""あなた待ち（BACKLOG.md の [?]）を Discord で @ 付きで知らせ、返事がなければ繰り返す（2026-10-24，用户定的）。
+"""会話の Claude がユーザーに選んでもらう質問を出したとき、Discord に @ 付きで知らせ、返事がなければ繰り返す。
+2 時間ごとの「いま何をしているか」（30 字）もここから送る（2026-10-24，用户定的）。
 
-ask_remind.yml が 5 分ごと・BACKLOG.md が変わったとき・手で起こしたときに呼ぶ。
-- 新しい [?]：すぐ @ 付きで知らせる
-- 残っている [?]：最初の 1 時間は 5 分おき（12 回まで）、そのあとは 3 時間おき。夜（日本時間 0〜8 時）は繰り返さない（新しいものは送る）
-- [?] が消えた（答えて決まった・進んだ）ら止める
-何をいつ送ったかは ASK_STATE（Actions の cache）に。宛先は DISCORD_MENTION（<@数字>。なければ @here）。
+ask_remind.yml が呼ぶ：
+  ask "<質問の要約>"  会話の Claude が質問を出したとき（workflow_dispatch）。すぐ @ 付きで送り、待ちに入れる
+  clear               ユーザーが答えたとき（workflow_dispatch）。待ちを消す
+  say "<30 字>"       2 時間ごとの報告（workflow_dispatch）。そのまま送る（@ なし）
+  tick                5 分ごと（schedule）。待ちがあれば、最初の 1 時間は 5 分おき・そのあと 30 分おきに @ 付きで繰り返す。夜（日本時間 0〜8 時）は休む
+待ちの記録は STATE（Actions の cache）。宛先は DISCORD_MENTION（<@番号>。なければ @here）。
+BACKLOG の [?]（何日もかかる決めごと）は送らない（2026-10-24，用户定的：知らせるのは会話の中の質問だけ）。
 
-    python harness/ask_remind.py BACKLOG.md STATE.json
+    python harness/ask_remind.py STATE.json tick|clear|ask TEXT|say TEXT
 """
 import datetime as dt
 import json
 import os
 import pathlib
-import re
 import sys
 import urllib.request
 
 JST = dt.timezone(dt.timedelta(hours=9))
-ITEM = re.compile(r"^- \[\?\] (.+)$")
 FAST_EVERY = 5 * 60       # 最初の 1 時間：5 分おき
 FAST_TIMES = 12
-SLOW_EVERY = 3 * 3600     # そのあと：3 時間おき
+SLOW_EVERY = 30 * 60      # そのあと：30 分おき
 NIGHT = range(0, 8)       # 日本時間 0〜8 時は繰り返さない
 
 
-def asks(text):
-    out = {}
-    for line in (text or "").splitlines():
-        m = ITEM.match(line.strip())
-        if m:
-            out[m.group(1).split(" — ")[0].strip()] = m.group(1)
-    return out
-
-
 def due(st, now):
-    """{first, last, count} → いま送るか。"""
     if not st:
-        return True
+        return False
+    if dt.datetime.fromtimestamp(now, JST).hour in NIGHT:
+        return False
     gap = now - st["last"]
-    if st["count"] < FAST_TIMES:
-        return gap >= FAST_EVERY - 20   # 5 分ごとの起こしの揺れを許す
-    return gap >= SLOW_EVERY - 60
+    return gap >= (FAST_EVERY if st["count"] < FAST_TIMES else SLOW_EVERY) - 20   # 5 分ごとの起こしの揺れを許す
 
 
-def plan(items, state, now):
-    """送る [(名前, 行, 新しいか)] と次の state。"""
-    night = dt.datetime.fromtimestamp(now, JST).hour in NIGHT
-    send, nxt = [], {}
-    for name, line in items.items():
-        st = state.get(name)
-        if not st:
-            send.append((name, line, True))
-            nxt[name] = {"first": now, "last": now, "count": 1}
-        elif not night and due(st, now):
-            send.append((name, line, False))
-            nxt[name] = {**st, "last": now, "count": st["count"] + 1}
-        else:
-            nxt[name] = st
-    return send, nxt
+def step(cmd, text, state, now, mention):
+    """(送る本文 or None, 次の state)"""
+    if cmd == "ask":
+        return f"{mention} ❓ 選んでほしい質問があります：{text}", {"text": text, "first": now, "last": now, "count": 1}
+    if cmd == "clear":
+        return None, {}
+    if cmd == "say":
+        return f"🕑 {text}", state
+    if due(state, now):
+        mins = int((now - state["first"]) // 60)
+        return f"{mention} ⏰ まだお返事待ちです（{mins} 分）：{state['text']}", {**state, "last": now, "count": state["count"] + 1}
+    return None, state
 
 
-def payload(send, mention):
-    new = [s for s in send if s[2]]
-    head = f"{mention} ❓ 確認をお願いします" if new else f"{mention} ⏰ まだお返事待ちです"
-    lines = [f"・{'（新）' if n else ''}{line[:300]}" for _, line, n in send[:8]]
-    return {"content": (head + "\n" + "\n".join(lines) + "\n一覧：https://github.com/CxElegy/Wishlist/blob/main/BACKLOG.md")[:1950],
-            "allowed_mentions": {"parse": ["users", "everyone"]}}
+def send(content):
+    hook = os.environ.get("DISCORD_WEBHOOK_URL")
+    body = {"content": content[:1950], "allowed_mentions": {"parse": ["users", "everyone"]}}
+    if not hook:
+        print(json.dumps(body, ensure_ascii=False))
+        return
+    req = urllib.request.Request(hook, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", "User-Agent": "wishlist-ask"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        print("Discord:", r.status)
 
 
 def main(argv):
-    text = pathlib.Path(argv[0]).read_text(encoding="utf-8")
-    sp = pathlib.Path(argv[1])
+    sp, cmd, text = pathlib.Path(argv[0]), argv[1], " ".join(argv[2:]).strip()
     state = json.loads(sp.read_text(encoding="utf-8")) if sp.exists() else {}
     now = dt.datetime.now(dt.timezone.utc).timestamp()
-    send, nxt = plan(asks(text), state, now)
+    content, nxt = step(cmd, text, state, now, os.environ.get("DISCORD_MENTION") or "@here")
     sp.write_text(json.dumps(nxt, ensure_ascii=False), encoding="utf-8")
-    if not send:
+    if content:
+        send(content)
+    else:
         print("送るものなし")
-        return 0
-    hook = os.environ.get("DISCORD_WEBHOOK_URL")
-    body = payload(send, os.environ.get("DISCORD_MENTION") or "@here")
-    if not hook:
-        print(json.dumps(body, ensure_ascii=False))
-        return 0
-    req = urllib.request.Request(hook, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", "User-Agent": "wishlist-ask"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        print("Discord:", r.status, len(send), "件")
     return 0
 
 
