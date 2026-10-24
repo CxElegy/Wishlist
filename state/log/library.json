@@ -31,5 +31,14 @@
 "u_name": 0,
 "u_blocked": 0,
 "u_over": 0
+},
+{
+"at": "2026-10-24T00:58:14+00:00",
+"text": "Wikidata の引き直し：見つかった 0・項目なし 2・断られた 0・題材で引かない 3",
+"level": "info",
+"found": 0,
+"none": 2,
+"blocked": 0,
+"skip": 3
 }
 ]
