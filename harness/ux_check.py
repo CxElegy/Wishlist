@@ -14,7 +14,7 @@
     --emb quick（ふだん）は出ている 1 枚を網页で測り、画像は候補を全部見る。--emb full は候補を全部差し替えて測り、写真の一覧 OUT/emb/sheet-<だれ>-<幅>.png
 設定ページ（settings.html）も同じ人・同じ幅で：素の箱・題字・令牌・はみ出し・JS のエラー、お客さまは本人の設定ページ（wl-own）か。
 管理ページ（admin.html、ログインなしで門を外して HTML の作りだけ）：「全体の構成（詳しい図）」の枠が潰れていない（PC で枠の幅 140px 以上、
-2026-10-25 に枠が 24px に潰れた）・部品の重なり 0・枠や部品の字のはみ出し 0・横にはみ出さない。写真 OUT/admin-arch-<幅>.png。
+2026-10-25 に枠が 24px に潰れた）・枠の下の空白 800px 以下（Actions の枠だけ 5,129px で下の枠が押し下げられた）・部品の重なり 0・枠や部品の字のはみ出し 0・横にはみ出さない。写真 OUT/admin-arch-<幅>.png。
 写真は OUT/<だれ>-<幅>.png・OUT/<だれ>-set-<幅>.png。
 
     python harness/ux_check.py [--base https://cxelegy.github.io/Wishlist/home/] [--out DIR] [--who test-a,test-b] [--emb quick|full|off]
@@ -115,14 +115,18 @@ def check(pw, base, who, width, out, page="", emb="off"):
     return st, bad
 
 
-ARCH_JS = """()=>{const s=document.querySelector('#arch');if(!s)return null;const R=s.getBoundingClientRect();
+ARCH_GAP = 800   # 枠の下の空白（次の枠まで）の上限 px。2026-10-25 Actions の枠だけ 5,129px で、ほかの枠の下に 3,500〜4,800px の空白
+ARCH_JS = """()=>{const GAP=%d;const s=document.querySelector('#arch');if(!s)return null;const R=s.getBoundingClientRect();
  const zs=[...s.querySelectorAll(':scope>.az')],an=[...s.querySelectorAll('.an')].map(e=>[e,e.getBoundingClientRect()]);let ov=[],ob=[];
  for(let i=0;i<an.length;i++)for(let j=i+1;j<an.length;j++){const a=an[i][1],b=an[j][1];
   if(an[i][0].contains(an[j][0])||an[j][0].contains(an[i][0]))continue;
   if(a.left<b.right-1&&b.left<a.right-1&&a.top<b.bottom-1&&b.top<a.bottom-1)ov.push(an[i][0].id+'×'+an[j][0].id)}
  for(const e of [...zs,...an.map(x=>x[0])]){const b=e.getBoundingClientRect();
   if(b.right>R.right+1||b.left<R.left-1||e.scrollWidth>e.clientWidth+2)ob.push(e.id||e.dataset.z)}
- return {narrow:zs.filter(z=>z.getBoundingClientRect().width<140).map(z=>z.dataset.z),ov,ob,sw:document.documentElement.scrollWidth}}"""
+ const zb=zs.map(z=>[z.dataset.z,z.getBoundingClientRect()]),gap=[];
+ for(const [n,a] of zb){let nx=null;for(const [m,c] of zb)if(m!==n&&c.top>=a.bottom-1&&c.left<a.right-1&&a.left<c.right-1)nx=nx===null?c.top:Math.min(nx,c.top);
+  if(nx!==null&&nx-a.bottom>GAP)gap.push(n+' '+Math.round(nx-a.bottom)+'px')}
+ return {narrow:zs.filter(z=>z.getBoundingClientRect().width<140).map(z=>z.dataset.z),ov,ob,gap,H:Math.round(R.height),sw:document.documentElement.scrollWidth}}""" % ARCH_GAP
 
 
 def check_admin(pw, base, width, out):
@@ -131,7 +135,8 @@ def check_admin(pw, base, width, out):
     pg.goto(base + "admin.html", wait_until="networkidle", timeout=60000)
     pg.wait_for_timeout(3000)
     # 門（data-gate=1 で .page を隠す）より強い指定で中身を出す。HTML は公開なので、見えるのは作りだけ
-    pg.add_style_tag(content="html body>.page.page.page.page.page.page{display:block!important}html body>.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate{display:none!important}")
+    pg.add_style_tag(content="html body>.page.page.page.page.page.page{display:block!important}html body>.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate{display:none!important}"
+                     ".wl-auth{visibility:hidden!important}")   # 右上に固定のログインの札が写真の図の上に写り込む（図の崩れではない）
     pg.evaluate("window.dispatchEvent(new Event('resize'))")
     pg.wait_for_timeout(1500)
     st = pg.evaluate(ARCH_JS)
@@ -143,6 +148,8 @@ def check_admin(pw, base, width, out):
     bad = []
     if width >= 980 and st["narrow"]:
         bad.append("枠が潰れている：" + "・".join(st["narrow"]))
+    if width >= 980 and st["gap"]:
+        bad.append(f"枠の下に大きな空白（{ARCH_GAP}px 超・図の高さ {st['H']}px）：" + "・".join(st["gap"][:3]))
     if st["ov"]:
         bad.append(f"部品の重なり {len(st['ov'])}：" + "・".join(st["ov"][:3]))
     if st["ob"]:
