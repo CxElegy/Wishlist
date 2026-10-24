@@ -13,6 +13,8 @@
   - エンブレム（harness/emb_check.py の E1〜E11：出ない・読めない・白い四角・大きさ・はみ出し・題字に重なる・切れ・重複・別の作品の絵・目標に届かない・何人も）。
     --emb quick（ふだん）は出ている 1 枚を網页で測り、画像は候補を全部見る。--emb full は候補を全部差し替えて測り、写真の一覧 OUT/emb/sheet-<だれ>-<幅>.png
 設定ページ（settings.html）も同じ人・同じ幅で：素の箱・題字・令牌・はみ出し・JS のエラー、お客さまは本人の設定ページ（wl-own）か。
+管理ページ（admin.html、ログインなしで門を外して HTML の作りだけ）：「全体の構成（詳しい図）」の枠が潰れていない（PC で枠の幅 140px 以上、
+2026-10-25 に枠が 24px に潰れた）・部品の重なり 0・枠や部品の字のはみ出し 0・横にはみ出さない。写真 OUT/admin-arch-<幅>.png。
 写真は OUT/<だれ>-<幅>.png・OUT/<だれ>-set-<幅>.png。
 
     python harness/ux_check.py [--base https://cxelegy.github.io/Wishlist/home/] [--out DIR] [--who test-a,test-b] [--emb quick|full|off]
@@ -113,6 +115,43 @@ def check(pw, base, who, width, out, page="", emb="off"):
     return st, bad
 
 
+ARCH_JS = """()=>{const s=document.querySelector('#arch');if(!s)return null;const R=s.getBoundingClientRect();
+ const zs=[...s.querySelectorAll(':scope>.az')],an=[...s.querySelectorAll('.an')].map(e=>[e,e.getBoundingClientRect()]);let ov=[],ob=[];
+ for(let i=0;i<an.length;i++)for(let j=i+1;j<an.length;j++){const a=an[i][1],b=an[j][1];
+  if(an[i][0].contains(an[j][0])||an[j][0].contains(an[i][0]))continue;
+  if(a.left<b.right-1&&b.left<a.right-1&&a.top<b.bottom-1&&b.top<a.bottom-1)ov.push(an[i][0].id+'×'+an[j][0].id)}
+ for(const e of [...zs,...an.map(x=>x[0])]){const b=e.getBoundingClientRect();
+  if(b.right>R.right+1||b.left<R.left-1||e.scrollWidth>e.clientWidth+2)ob.push(e.id||e.dataset.z)}
+ return {narrow:zs.filter(z=>z.getBoundingClientRect().width<140).map(z=>z.dataset.z),ov,ob,sw:document.documentElement.scrollWidth}}"""
+
+
+def check_admin(pw, base, width, out):
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    pg = b.new_page(viewport={"width": width, "height": 900})
+    pg.goto(base + "admin.html", wait_until="networkidle", timeout=60000)
+    pg.wait_for_timeout(3000)
+    # 門（data-gate=1 で .page を隠す）より強い指定で中身を出す。HTML は公開なので、見えるのは作りだけ
+    pg.add_style_tag(content="html body>.page.page.page.page.page.page{display:block!important}html body>.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate.wl-gate{display:none!important}")
+    pg.evaluate("window.dispatchEvent(new Event('resize'))")
+    pg.wait_for_timeout(1500)
+    st = pg.evaluate(ARCH_JS)
+    if st:
+        pg.locator("#procs").screenshot(path=str(out / f"admin-arch-{width}.png"))
+    b.close()
+    if not st:
+        return ["全体の構成の図（#arch）がない"]
+    bad = []
+    if width >= 980 and st["narrow"]:
+        bad.append("枠が潰れている：" + "・".join(st["narrow"]))
+    if st["ov"]:
+        bad.append(f"部品の重なり {len(st['ov'])}：" + "・".join(st["ov"][:3]))
+    if st["ob"]:
+        bad.append(f"はみ出し {len(st['ob'])}：" + "・".join(st["ob"][:3]))
+    if st["sw"] > width:
+        bad.append(f"横にはみ出す（{st['sw']}px）")
+    return bad
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="https://cxelegy.github.io/Wishlist/home/")
@@ -134,6 +173,13 @@ def main(argv):
                 fails += bool(bad)
                 print(("✗ " if bad else "✓ ") + f"{who}{' 設定' if page else ''} {w}px：" + ("、".join(bad) if bad else
                       f"版面 {st.get('secs')}・記事 {st.get('arts')}・写真 {st.get('pics')}・本人のページ {'はい' if st.get('own') else 'いいえ'}"))
+        for w in a.widths.split(","):
+            try:
+                bad = check_admin(pw, a.base, int(w), out)
+            except Exception as ex:  # noqa: BLE001
+                bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + f"管理ページ 全体の構成 {w}px：" + ("、".join(bad) if bad else "崩れなし"))
     print(f"点検：✗ {fails} 件")
     return 1 if fails else 0
 
