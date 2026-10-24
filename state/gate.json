@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-24T20:54:44+00:00",
+ "checked": "2026-10-24T20:56:09+00:00",
  "fired": {
-  "at": "2026-10-24T20:54:44+00:00",
+  "at": "2026-10-24T20:56:09+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -35,25 +35,26 @@
    "prog_day": "2026-10-25",
    "ripe": [
     "MMORPG 新作",
+    "The Mandalorian",
     "哈利波特剧集",
     "滑雪"
    ],
-   "sig": "6f423c0b41a0",
+   "sig": "daafa9c9340d",
    "token_cap": 1000000,
    "tokens_today": 74430,
    "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "あつ森",
-    "哈利波特剧集",
-    "A2O LITE"
+    "A2O LITE",
+    "哈利波特剧集"
    ],
-   "need": true,
-   "sig": "b6ec8ea93386",
-   "waiting": [],
-   "why": "足りない 3 版面（Actions で Python が埋める）"
+   "why": "失敗 3 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:54 から）"
   },
   "photos": {
    "claude": true,
