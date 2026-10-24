@@ -51,6 +51,10 @@ MEDIA_STORIES = MAX_STORIES  # 1 版面で写真を探す記事（新しい順�
 # 2026-10-24 本番：頭 4 本だけでは test-a 438 本中 177 本（40%）。版面に並ぶ記事はどれも写真のカードにしたいので全部
 PICK_S = 20                # 1 本の写真探しの上限（秒）
 RETRY_IMG_H = 24           # 写真が見つからなかった記事は、この時間あけてもう一度だけ探す（毎回同じ記事で時間を使わない）
+# 期限付きの網址（Yahoo ニュースの ?exp=10800，images.expiring）は数時間〜数日で 404・1×1 の空白に変わる（#178）。
+# 店長は hdimg が本站に保存・dead を原文から探し直す。お客さまのページは本站に保存しないので、この時間ごとに開けるか確かめ、
+# 開けなくなっていたら原文から探し直す（原文は新しい有効な網址を出す）。2026-10-24 本番：お客さまの写真 419 枚のうち 82 枚
+EXP_CHECK_H = 6
 RESOLVE_FAILS = 4          # Google の跳转が続けてこの回数戻せなかったら、この回は戻すのをやめる（断られているときに 1 本 6 秒待たない）
 
 # 入口の「新しく始める」で選ぶ言語（welcome.LANG_GROUPS の code）→ 収集の言語（digest.NEWS_LANGS）・lang.py の言語
@@ -381,14 +385,15 @@ class Media:
     同じ網址は 1 回の中で 1 度だけ調べる（同じ版面を何人が追いかけていても）。写真の見つからなかった記事は RETRY_IMG_H 時間あける。
     本站に保存しないと出せない写真（images.SAVED：読者のブラウザでは拒まれる）は使わない（お客さまのページは hdimg を通らない）。"""
 
-    def __init__(self, deadline, now=None, resolve=None, pick=None):
+    def __init__(self, deadline, now=None, resolve=None, pick=None, check=None):
         import threading
         self.deadline, self.now = deadline, now or dt.datetime.now(dt.timezone.utc)
         self.resolve = resolve or (lambda u: sources.resolve_url(u, tries=1))
         self.pick = pick or self._pick
+        self.check = check or self._check
         self.links, self.imgs, self.lock = {}, {}, threading.Lock()
         self.fails = 0
-        self.stats = {"links": 0, "images": 0}
+        self.stats = {"links": 0, "images": 0, "expired": 0}
 
     @staticmethod
     def _pick(story, budget, avoid):
@@ -397,6 +402,29 @@ class Media:
                           image=story.get("image") or None)
         res = images.pick(None, [e], story["url"], budget=budget, avoid=avoid)
         return res.image if res.image and images.SAVED not in (res.source or "") else None
+
+    @staticmethod
+    def _check(url):
+        """→ True 開ける・False 開けない（404・1×1 の空白）・None 分からない（時間切れ・つながらない：消さない）"""
+        import images
+        ok, why = images.check(url)
+        return True if ok else None if ("超时" in why or "网络错误" in why or "限流" in why) else False
+
+    def expired(self, s):
+        """期限付きの写真を EXP_CHECK_H ごとに確かめ、開けなくなっていたら外す（このあと image が原文から探し直す）。→ 変わったか"""
+        if not exp_due(s, self.now) or self._left() < 5:
+            return False
+        ok = self.check(s["image"])
+        if ok is None:
+            return False
+        if ok:
+            s["img_chk"] = self.now.isoformat(timespec="seconds")
+        else:
+            s["image"] = ""
+            s.pop("img_chk", None)
+            s.pop("img_at", None)
+            self.stats["expired"] += 1
+        return True
 
     def _left(self):
         return self.deadline - time.monotonic()
@@ -440,6 +468,7 @@ class Media:
         if hit and hit not in avoid:
             s["image"] = hit
             s.pop("img_at", None)
+            s.pop("img_chk", None)
             avoid.add(hit)
             self.stats["images"] += 1
         else:
@@ -451,16 +480,26 @@ class Media:
         changed = False
         for s in stories or []:
             changed |= self.link(s)
+            changed |= self.expired(s)
         avoid = {s["image"] for s in stories or [] if s.get("image")}
         for s in (stories or [])[:MEDIA_STORIES]:
             changed |= self.image(s, avoid)
         return changed
 
 
+def exp_due(s, now):
+    """期限付きの網址の写真で、前に確かめてから EXP_CHECK_H 時間たったか"""
+    import images
+    if not images.expiring(s.get("image")):
+        return False
+    seen = _when({"date": s.get("img_chk")})
+    return not seen or now - seen >= dt.timedelta(hours=EXP_CHECK_H)
+
+
 def needs_media(stories, now):
     """まだ原文の網址・写真を付けられる記事があるか（Google の跳转、または頭の数本に写真がなく、前に探してから RETRY_IMG_H 時間たった）。"""
     for i, s in enumerate(stories or []):
-        if _google(s.get("url")):
+        if _google(s.get("url")) or exp_due(s, now):
             return True
         if i < MEDIA_STORIES and not s.get("image"):
             tried = _when({"date": s.get("img_at")})
@@ -499,6 +538,7 @@ def add_media(make, out, rows, keep, now, started, log):
                        | {"found": int(r.get("found") or 0), "fails": int(r.get("fails") or 0), "stories": got[key(r)]})
             fixed += 1
     log(f"お客さまの記事の写真：{fixed} 版面を直した・原文の網址 {m.stats['links']} 本・写真 {m.stats['images']} 枚"
+        + (f"・期限切れで探し直し {m.stats['expired']} 枚" if m.stats['expired'] else "")
         + (f"・時間切れ {len(cut)}（次の回へ）" if cut else ""))
 
 
