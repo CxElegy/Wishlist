@@ -107,6 +107,12 @@ class Rules(unittest.TestCase):
         with mock.patch.object(ef.emblem, "_get", fake_get):
             self.assertEqual(ef.emblem.category_top("https://g.fandom.com/api.php", "Characters", 5), ["Zhongli", "Aino"])
 
+    def test_own_logo(self):
+        self.assertFalse(ef.own_logo("File:Logo of the Linksys iPhone.svg", "iPhone"))   # 別の会社の iPhone
+        self.assertTrue(ef.own_logo("File:IPhone logo 2016.svg", "iPhone"))
+        self.assertTrue(ef.own_logo("File:Gelato pique logo.svg", "gelato pique"))
+        self.assertFalse(ef.own_logo("File:京都 決済.jpg", "京都"))   # ロゴのファイルでない
+
     def test_not_emblem(self):
         for bad in ("Kyoto (Chinese characters).svg", "Oversimplification on how AI Model Text 2 Image works.png",
                     "Wrestling at Tokyo 1890s.jpg", "Kunisada Sumo Triptychon c1860s.jpg"):
