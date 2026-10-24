@@ -512,3 +512,78 @@ class Wiring(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MediaRules(unittest.TestCase):
+    """写真と原文の網址（店長と同じ sources.resolve_url・images.pick。ネットには出ない：resolve・pick を差し替える）。"""
+
+    def media(self, resolve=None, pick=None, now=NOW):
+        import time
+        return userfeed.Media(time.monotonic() + 60, now, resolve=resolve or (lambda u: u.replace("https://news.google.com/rss/articles/", "https://real.example/")),
+                              pick=pick or (lambda s, budget, avoid: s["url"] + ".jpg"))
+
+    def g(self, n, title, **kw):
+        return {**story(n, title), "url": f"https://news.google.com/rss/articles/{n}", **kw}
+
+    def test_google_link_to_original_and_photo(self):
+        st = [self.g(1, "一"), self.g(2, "二"), story(3, "三")]
+        m = self.media()
+        self.assertTrue(m.board(st))
+        self.assertEqual([s["url"] for s in st], ["https://real.example/1", "https://real.example/2", "https://news.example.jp/3"])
+        self.assertEqual([s["image"] for s in st], ["https://real.example/1.jpg", "https://real.example/2.jpg", "https://news.example.jp/3.jpg"])
+        self.assertFalse(userfeed.needs_media(st, NOW))
+
+    def test_only_head_stories_get_photos_and_no_retry_soon(self):
+        st = [story(n, f"記事{n}") for n in range(userfeed.MEDIA_STORIES + 2)]
+        calls = []
+        m = self.media(pick=lambda s, b, a: calls.append(s["url"]) or None)
+        m.board(st)
+        self.assertEqual(len(calls), userfeed.MEDIA_STORIES)            # 頭の数本だけ
+        self.assertTrue(all(s.get("img_at") for s in st[:userfeed.MEDIA_STORIES]))
+        self.assertFalse(userfeed.needs_media(st, NOW + dt.timedelta(hours=1)))   # 見つからなかった記事は 24 時間あける
+        self.assertTrue(userfeed.needs_media(st, NOW + dt.timedelta(hours=userfeed.RETRY_IMG_H)))
+
+    def test_same_photo_not_twice_in_board(self):
+        st = [story(1, "一"), story(2, "二")]
+        self.media(pick=lambda s, b, a: "https://img.example/same.jpg").board(st)
+        self.assertEqual([bool(s["image"]) for s in st], [True, False])
+
+    def test_unresolved_google_kept_and_breaker(self):
+        calls = []
+        m = self.media(resolve=lambda u: calls.append(u) or u)
+        st = [self.g(n, f"記事{n}") for n in range(userfeed.RESOLVE_FAILS + 3)]
+        m.board(st)
+        self.assertEqual(len(calls), userfeed.RESOLVE_FAILS)   # 続けて断られたらこの回はやめる
+        self.assertTrue(all("news.google.com" in s["url"] for s in st))   # 記事は残す
+        self.assertTrue(all(not s["image"] for s in st))                # 跳转のままの記事には写真を探さない
+
+    def test_saved_photo_not_used(self):
+        import images
+        res = images.Result(image="https://img.example/a.jpg", source="og:image" + images.SAVED)
+        with mock.patch.object(images, "pick", return_value=res):
+            self.assertIsNone(userfeed.Media._pick(story(1, "一"), 5, set()))
+        res = images.Result(image="https://img.example/a.jpg", source="og:image")
+        with mock.patch.object(images, "pick", return_value=res):
+            self.assertEqual(userfeed.Media._pick(story(1, "一"), 5, set()), "https://img.example/a.jpg")
+
+    def test_run_fixes_rows_not_collected_this_time(self):
+        a = userfeed.account_of("a@example.com")
+        users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "新しいもの", "sec": "其他"}, {"name": "前のもの", "sec": "其他"}]}}]
+        rows = [{"account": a, "item": "前のもの", "sec": "其他", "state": "ok", "found": 2, "fails": 0,
+                 "stories": [self.g(9, "前の記事")], "checked_at": NOW.isoformat(), "updated_at": NOW.isoformat()}]   # 90 分以内に探した
+        db = FakeDB(users, rows)
+        logs = []
+        with mock.patch.object(digest, "load_config", return_value=({}, [])):
+            userfeed.run(db=db, collect=lambda item, settings: [self.g(1, item["name"] + "の記事")], now=NOW, log=logs.append, shop=[],
+                         media=lambda deadline, now: self.media())
+        got = {r["item"]: r for r in db.written()}
+        self.assertEqual(got["新しいもの"]["stories"][0]["url"], "https://real.example/1")
+        self.assertEqual(got["前のもの"]["stories"][0]["url"], "https://real.example/9")   # 今回は探さなかった行も直して書く
+        self.assertEqual((got["前のもの"]["found"], got["前のもの"]["checked_at"]), (2, NOW.isoformat()))   # ほかの列はそのまま
+        self.assertTrue(any("写真" in x for x in logs))
+        self.assertFalse(any("前のもの" in x or "新しいもの" in x for x in logs))   # ログに名前を出さない
+
+    def test_resolve_url_tries(self):
+        with mock.patch.object(sources, "_resolve_once", side_effect=lambda u: u) as once, mock.patch.object(sources.time, "sleep"):
+            sources.resolve_url("https://news.google.com/rss/articles/zz", tries=1)
+        self.assertEqual(once.call_count, 1)

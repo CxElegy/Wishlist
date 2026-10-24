@@ -45,6 +45,12 @@ MIN_GAP_MIN = 90           # 前に探してからこれより短ければ今回
 SUMMARY_CHARS = 160
 PAGE = 1000                # Supabase（PostgREST）の 1 回の上限（max-rows）。これずつ読む
 UPSERT_BATCH = 200
+# 写真と原文の網址（2026-10-24，店長と同じ規則：sources.resolve_url で Google の跳转を原文に、images.pick で写真）
+MEDIA_S = 150              # 1 回のうち写真・原文の網址に取っておく秒（記事集めはその残り。足りなければ次の回に続き）
+MEDIA_STORIES = 4          # 1 版面で写真を探す記事（新しい順の頭から。頭条・ほかの注目ニュースに上がるのはこのあたり）
+PICK_S = 20                # 1 本の写真探しの上限（秒）
+RETRY_IMG_H = 24           # 写真が見つからなかった記事は、この時間あけてもう一度だけ探す（毎回同じ記事で時間を使わない）
+RESOLVE_FAILS = 4          # Google の跳转が続けてこの回数戻せなかったら、この回は戻すのをやめる（断られているときに 1 本 6 秒待たない）
 
 # 入口の「新しく始める」で選ぶ言語（welcome.LANG_GROUPS の code）→ 収集の言語（digest.NEWS_LANGS）・lang.py の言語
 NEWS_LANG = {"ja": "ja-JP", "en": "en-US", "zh-Hans": "zh-CN", "zh-Hant": "zh-TW", "ko": "ko-KR"}
@@ -369,6 +375,132 @@ def merge(old, new, now=None):
     return [out[i] for i in order], sum(1 for i in order if i in fresh)
 
 
+class Media:
+    """記事に原文の網址と写真を付ける（店長の出刊 digest.attach_media と同じ部品：sources.resolve_url・images.pick）。
+    同じ網址は 1 回の中で 1 度だけ調べる（同じ版面を何人が追いかけていても）。写真の見つからなかった記事は RETRY_IMG_H 時間あける。
+    本站に保存しないと出せない写真（images.SAVED：読者のブラウザでは拒まれる）は使わない（お客さまのページは hdimg を通らない）。"""
+
+    def __init__(self, deadline, now=None, resolve=None, pick=None):
+        import threading
+        self.deadline, self.now = deadline, now or dt.datetime.now(dt.timezone.utc)
+        self.resolve = resolve or (lambda u: sources.resolve_url(u, tries=1))
+        self.pick = pick or self._pick
+        self.links, self.imgs, self.lock = {}, {}, threading.Lock()
+        self.fails = 0
+        self.stats = {"links": 0, "images": 0}
+
+    @staticmethod
+    def _pick(story, budget, avoid):
+        import images
+        e = sources.Entry(title=story["title"], url=story["url"], published=None, source=story.get("source") or "",
+                          image=story.get("image") or None)
+        res = images.pick(None, [e], story["url"], budget=budget, avoid=avoid)
+        return res.image if res.image and images.SAVED not in (res.source or "") else None
+
+    def _left(self):
+        return self.deadline - time.monotonic()
+
+    def link(self, s):
+        u = s["url"]
+        if not _google(u) or self.fails >= RESOLVE_FAILS or self._left() < 5:
+            return False
+        with self.lock:
+            real = self.links.get(u)
+        if real is None:
+            try:
+                real = self.resolve(u)
+            except Exception:  # noqa: BLE001  戻せなくても記事は出す（Google の網址のまま）
+                real = u
+            real = real if _http(real) and not _google(real) else ""
+            with self.lock:
+                self.links[u] = real
+                self.fails = 0 if real else self.fails + 1
+        if not real:
+            return False
+        s["url"] = real
+        self.stats["links"] += 1
+        return True
+
+    def image(self, s, avoid):
+        if s.get("image") or _google(s["url"]) or self._left() < 5:
+            return False
+        tried = _when({"date": s.get("img_at")})
+        if tried and self.now - tried < dt.timedelta(hours=RETRY_IMG_H):
+            return False
+        with self.lock:
+            hit = self.imgs.get(s["url"], ())
+        if hit == ():
+            try:
+                hit = self.pick(s, min(PICK_S, max(1, self._left() - 3)), set(avoid))
+            except Exception:  # noqa: BLE001  写真がなくても記事は出す
+                hit = None
+            with self.lock:
+                self.imgs[s["url"]] = hit
+        if hit and hit not in avoid:
+            s["image"] = hit
+            s.pop("img_at", None)
+            avoid.add(hit)
+            self.stats["images"] += 1
+        else:
+            s["img_at"] = self.now.isoformat(timespec="seconds")
+        return True
+
+    def board(self, stories):
+        """1 版面の記事（新しい順）を直す。→ 変わったか"""
+        changed = False
+        for s in stories or []:
+            changed |= self.link(s)
+        avoid = {s["image"] for s in stories or [] if s.get("image")}
+        for s in (stories or [])[:MEDIA_STORIES]:
+            changed |= self.image(s, avoid)
+        return changed
+
+
+def needs_media(stories, now):
+    """まだ原文の網址・写真を付けられる記事があるか（Google の跳转、または頭の数本に写真がなく、前に探してから RETRY_IMG_H 時間たった）。"""
+    for i, s in enumerate(stories or []):
+        if _google(s.get("url")):
+            return True
+        if i < MEDIA_STORIES and not s.get("image"):
+            tried = _when({"date": s.get("img_at")})
+            if not tried or now - tried >= dt.timedelta(hours=RETRY_IMG_H):
+                return True
+    return False
+
+
+def add_media(make, out, rows, keep, now, started, log):
+    """書く行（out）と、今回は探さなかった行のうち原文の網址・写真がまだのものに、残りの時間で Media をかける（並列）。
+    探さなかった行で変わったものは out に足して書く。時間が足りなければ次の回に続き（needs_media がまた拾う）。"""
+    left = budget_sec() - (time.monotonic() - started) - 10
+    written = {(r["account"], r["item"]) for r in out}
+    cand = [r for r in out if r.get("state") == "ok" and needs_media(r.get("stories"), now)]
+    extra = [r for r in rows if (r["account"], r["item"]) not in written and r.get("state") == "ok"
+             and r["item"] in keep.get(r["account"], ()) and needs_media(r.get("stories"), now)]
+    if left < 20 or not (cand or extra):
+        if cand or extra:
+            log(f"お客さまの記事の写真：時間が足りないので次の回へ（{len(cand) + len(extra)} 版面）")
+        return
+    m = make(time.monotonic() + left, now)
+
+    def one(r):
+        stories = [dict(s) for s in r.get("stories") or []]   # 時間切れのスレッドが書く行を書き換えないように写しで
+        return stories if m.board(stories) else None
+    key = lambda r: (r["account"], r["item"])   # noqa: E731
+    got, cut = digest.run_parallel(one, cand + extra, WORKERS, left, key=key)
+    fixed = 0
+    for r in cand:
+        if got.get(key(r)) is not None:
+            r["stories"] = got[key(r)]
+            fixed += 1
+    for r in extra:
+        if got.get(key(r)) is not None:
+            out.append({k: r.get(k) for k in ("account", "item", "sec", "state", "checked_at", "updated_at")}
+                       | {"found": int(r.get("found") or 0), "fails": int(r.get("fails") or 0), "stories": got[key(r)]})
+            fixed += 1
+    log(f"お客さまの記事の写真：{fixed} 版面を直した・原文の網址 {m.stats['links']} 本・写真 {m.stats['images']} 枚"
+        + (f"・時間切れ {len(cut)}（次の回へ）" if cut else ""))
+
+
 def _ts(at):
     try:
         return dt.datetime.fromisoformat(str(at).replace("Z", "+00:00")) if at else None
@@ -534,10 +666,13 @@ def budget_sec(now_mono=None):
     return left
 
 
-def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
-    """1 回分。db = supabase() と同じ形の関数（テストで差し替える）、collect = stories_for と同じ形、shop = 店長の版面の名前。
+def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None, media=None):
+    """1 回分。db = supabase() と同じ形の関数（テストで差し替える）、collect = stories_for と同じ形、shop = 店長の版面の名前、
+    media = Media と同じ形を作る関数（deadline → Media。既定は本物の収集のときだけ Media、collect を差し替えたテストでは付けない）。
     → {"boards": 書いた版面, "found": 新しい記事, "late": 時間切れ, "failed": 失敗, "deleted": 消した行, "limit": 上限の行, "bad": 書けなかった行}"""
     db = db or digest.supabase
+    if media is None and collect is None:
+        media = Media
     collect = collect or stories_for
     started = time.monotonic()
     now = now or dt.datetime.now(dt.timezone.utc)
@@ -570,7 +705,7 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
         except Exception as err:  # noqa: BLE001  1 版面の失敗で全体を止めない
             log(f"  版面 {todo.index(g) + 1}/{len(todo)}：取れなかった（{_why(err)}）")
             return None
-    got, cut = digest.run_parallel(one, todo, WORKERS, max(30, left), key=lambda g: g["key"]) if todo else ({}, [])
+    got, cut = digest.run_parallel(one, todo, WORKERS, max(30, left - (MEDIA_S if media else 0)), key=lambda g: g["key"]) if todo else ({}, [])
     late_n = len(late) + len(cut)
     old = {(r["account"], r["item"]): r for r in rows}
     stamp = now.isoformat(timespec="seconds")
@@ -597,6 +732,8 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
             if prev.get("fails"):
                 row["fails"] = 0
             out.append(row)
+    if media:
+        add_media(media, out, rows, keep, now, started, log)
     for acct, name, sec in limits:
         out.append({"account": acct, "item": name, "sec": sec, "state": "limit", "stories": [], "found": 0,
                     "checked_at": stamp, "updated_at": None})
@@ -624,6 +761,9 @@ def run(dry_run=False, db=None, collect=None, now=None, log=print, shop=None):
 
 def main():
     import livestatus
+    # 本物のブラウザ（images._browser_html）は使わない：1 頁 45 秒と重く、開いた記事の網址を Actions のログ（公開）に書くので
+    # （お客さまの選んだものが分かる）。ふつうの取り直し（Fetcher）までで写真を探す
+    os.environ.pop("SCRAPLING_BROWSER", None)
     lines = livestatus.Lines("userfeed")   # 管理ページの「ライブログ」にも同じ行を流す（店長が止まっているのに気づけるように）
 
     def log(msg):
