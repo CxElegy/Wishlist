@@ -48,7 +48,9 @@ class Fill(unittest.TestCase):
         ups = {}
 
         def fake_fill(item, log=print):
-            print("名前を出す print")   # 公開のログに出ないこと（redirect_stdout）
+            print("名前を出す print")   # 公開のログに出ないこと（stdout も stderr も）
+            print("名前を出す stderr", file=sys.stderr)
+            self.assertNotEqual(sys.stderr, sys.__stderr__)
             self.assertNotEqual(emblem.ROOT, roots[0])   # 本物の items.yaml ではない
             got = emblem_fill.load_items()
             self.assertEqual(got[0]["name"], item["name"])
