@@ -44,6 +44,6 @@
 ## D. 似たサイト・受賞デザインから（BENCHMARKS.md、2026-10-24）
 
 - 進める（ユーザーが選んだ）：D1 **あなたの盲点**（Ground News）・D2 **見出し 16 字と★印**（Yahoo!・Artifact）・D3 **話題度ページを「読む記事」に**（Vogue Business・The Pudding）・D4 **目次を「キャラが駅を進む」案内に**（Messenger、Awwwards 年間賞 2025）
-- 見本を見せてから決める：D5 **見せ場を 1 つ・2 色の配色**（Igloo Inc・Lando Norris・Vogue Business）
+- D5 **見せ場を 1 つ・2 色の配色**（Igloo Inc・Lando Norris・Vogue Business）：見本（testground/d5.html）を見て決定（2026-10-24）：**頭条のポスターだけ見せ場の演出（倍の影・傾き・札）、下の照片墙・棚・版面と作品ごとの配色は今のまま**（2 色にすると A3 が消えるため）
 - 中の仕組み（方針から決まる）：出来事ごとに束ねて増えた分だけ AI に渡す・見回りの間隔を版面ごとに・変わっていない RSS は取らない（304）
 - やらない：コメント欄・お客さま同士の SNS（Artifact が止めた理由）、元記事を隠す AI の要約（Perplexity が批判された）
