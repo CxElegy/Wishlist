@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-24T20:56:09+00:00",
+ "checked": "2026-10-24T21:22:48+00:00",
  "fired": {
   "at": "2026-10-24T20:56:09+00:00",
   "results": {
@@ -19,30 +19,20 @@
     "resp": "cse_01AfTs2KcPT97BSjHq2EM2jS",
     "sig": "6f423c0b41a0"
    },
-   "items": [
-    "MMORPG 新作",
-    "The Mandalorian",
-    "哈利波特剧集",
-    "滑雪"
-   ],
-   "last_batch": "2026-10-24T19:15:54+00:00",
+   "items": [],
+   "last_batch": "2026-10-24T21:04:19+00:00",
    "last_error": {
-    "at": "2026-10-24T19:04:02+00:00",
+    "at": "2026-10-24T21:00:31+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 45,
+   "need": false,
+   "prog": 50,
    "prog_day": "2026-10-25",
-   "ripe": [
-    "MMORPG 新作",
-    "The Mandalorian",
-    "哈利波特剧集",
-    "滑雪"
-   ],
-   "sig": "daafa9c9340d",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 74430,
-   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 123833,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
@@ -52,9 +42,10 @@
    "waiting": [
     "あつ森",
     "A2O LITE",
-    "哈利波特剧集"
+    "哈利波特剧集",
+    "绝区零"
    ],
-   "why": "失敗 3 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:54 から）"
+   "why": "失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:54 から）"
   },
   "photos": {
    "claude": true,
