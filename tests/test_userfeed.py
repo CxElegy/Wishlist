@@ -566,6 +566,36 @@ class MediaRules(unittest.TestCase):
         with mock.patch.object(images, "pick", return_value=res):
             self.assertEqual(userfeed.Media._pick(story(1, "一"), 5, set()), "https://img.example/a.jpg")
 
+    def test_expiring_photo_rechecked_and_repicked(self):
+        """期限付きの網址（?exp=）の写真：EXP_CHECK_H ごとに開けるか確かめ、開けなければ原文から探し直す（だれの版面でも同じ規則）"""
+        old = "https://img.example/a.jpg?exp=10800"
+        st = [{**story(1, "一"), "image": old}]
+        self.assertTrue(userfeed.needs_media(st, NOW))
+        m = self.media(pick=lambda s, b, a: "https://img.example/new.jpg")
+        m.check = lambda u: True                       # まだ開ける：そのまま・確かめた時刻だけ
+        self.assertTrue(m.board(st))
+        self.assertEqual(st[0]["image"], old)
+        self.assertFalse(userfeed.needs_media(st, NOW + dt.timedelta(hours=1)))
+        later = NOW + dt.timedelta(hours=userfeed.EXP_CHECK_H)
+        self.assertTrue(userfeed.needs_media(st, later))
+        m = self.media(pick=lambda s, b, a: "https://img.example/new.jpg", now=later)
+        m.check = lambda u: None                       # 分からない（時間切れ）：消さない
+        m.board(st)
+        self.assertEqual(st[0]["image"], old)
+        m.check = lambda u: False                      # 404・空白：原文から探し直す
+        self.assertTrue(m.board(st))
+        self.assertEqual(st[0]["image"], "https://img.example/new.jpg")
+        self.assertNotIn("img_chk", st[0])
+        self.assertEqual(m.stats["expired"], 1)
+        self.assertFalse(userfeed.needs_media(st, later))
+
+    def test_check_reason_to_verdict(self):
+        import images
+        for why, want in (("200×100", True), ("图片 HTTP 404", False), ("空白图 1×1", False), ("图片太小 1×1", False),
+                          ("图片 超时", None), ("图片 网络错误 URLError", None)):
+            with mock.patch.object(images, "check", return_value=(why == "200×100", why)):
+                self.assertIs(userfeed.Media._check("https://img.example/a.jpg?exp=1"), want, why)
+
     def test_run_fixes_rows_not_collected_this_time(self):
         a = userfeed.account_of("a@example.com")
         users = [{"email": "a@example.com", "prefs": {"picks": [{"name": "新しいもの", "sec": "其他"}, {"name": "前のもの", "sec": "其他"}]}}]
