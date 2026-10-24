@@ -54,9 +54,17 @@ drop policy if exists boards_read on public.boards;
 create policy boards_read on public.boards for select to anon, authenticated using (true);
 drop policy if exists board_stories_read on public.board_stories;
 create policy board_stories_read on public.board_stories for select to anon, authenticated using (true);
+-- 本人の account（private.user_account は authenticated から呼べないので security definer で通す。2026-10-24：
+-- 前は policy が private.user_account を直接呼び、ログインした人が follows を読むと permission denied for function user_account）
+create or replace function public.my_account() returns text language sql stable security definer set search_path = '' as $$
+  select private.user_account((select auth.jwt()) ->> 'email') $$;
+revoke all on function public.my_account() from public, anon;
+grant execute on function public.my_account() to authenticated;
 drop policy if exists follows_own on public.follows;
 create policy follows_own on public.follows for select to authenticated
-  using (account = private.user_account((select auth.jwt()) ->> 'email') or public.is_admin());
+  using (account = public.my_account() or public.is_admin());
+-- 本番に入れた形（2026-10-24、消さない）：alter policy follows_own on public.follows using (account = public.my_account() or public.is_admin());
+--   戻し方：alter policy follows_own on public.follows using (account = private.user_account((select auth.jwt()) ->> 'email') or public.is_admin());
 revoke insert, update, delete on public.boards, public.board_stories, public.follows from anon, authenticated;
 
 -- 追いかけている人数をそろえる（follows が変わったら）
