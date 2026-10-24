@@ -241,7 +241,8 @@ JS = """
     boards.forEach(function(x){if(!{collect:1,edit:1,emblem:1}[x.proc])return;var m=mins(x.started_at),txt;
       if(x.proc==='collect')txt=x.state==='fetch'?'記事を探している':'新着 '+x.found+' 件 · AI 整理待ち';
       else if(x.proc==='emblem')txt=(x.note||'小元素を集めています');else txt=x.note||x.state;
-      add(x.proc,{text:txt,note:x.note||'',found:x.found,board:x.board,m:m,stale:x.state==='wait'&&m>30});});   // 反映待ちのまま 30 分以上：push が通っていないかも
+      if(x.proc!=='collect'&&x.state==='work'&&m>90)txt='途中で止まった（次の回で続きから）';   // 作業中のまま 90 分（予想の上限）：その回が終わった
+      add(x.proc,{text:txt,note:x.note||'',found:x.found,board:x.board,m:m,stale:(x.state==='wait'&&m>30)||(x.proc!=='collect'&&x.state==='work'&&m>90)});});   // 反映待ちは Pages の公開で消える（live_clear.yml）。30 分以上残る＝公開が止まっているかも
     function sum(rs){var lv=rs.filter(function(r){return !r.stale;}),bd=rs.filter(function(r){return !r.actions;}),
         use=bd.length?bd:rs,pick=use.filter(function(r){return !r.stale;})[0]||use[0];   // 版面ごとの記録があればそれを文にする（Actions の実行中だけのときは「実行中」）
       return {live:lv.length>0,stale:!lv.length&&rs.length>0,t:pick.text+(use.length>1&&bd.length?'（ほか '+(use.length-1)+' 版面）':'')+(pick.board&&use.length===1?'（'+pick.board+'）':''),m:pick.m||0};}
