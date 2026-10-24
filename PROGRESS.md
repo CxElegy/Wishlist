@@ -20,3 +20,4 @@
 - 2026-10-24 ライブラリの読み取りを案 B に（#292）：restrictive のポリシーを足すだけ。本番：ログインなし 23/64・test-b 24・test-a 63・店長 64、画面は同じ。期限付きの写真の段は 10-25 まで待つ印を付けた。次：follows を本人が読める（権限のエラー）→ 人ごとの 👍👎
 - 2026-10-24 follows を本人が読める：public.my_account（security definer）経由の policy に（#294）。REST で test-a 40・test-b 1・test-c 0・anon 0。次：網页が follows を読む
 - 2026-10-24 お客さまのページの置き方をライブラリの follows から（#297）：板块・小分類・篇幅・並び。picks とのずれ 0 を先に数えた。本番：test-a に小見出し 23 種・test-b 1、ux_check ✗0。次：篇幅・分け方を本人が設定で変える
+- 2026-10-24 外した版面が本人のページに残る後戻り（#297）を直した：own_picks は picks にある名前の follows だけ（#301）。本番：picks にない follows 0・render 4 人分失敗 0・ux_check ✗0。次：篇幅・分け方を本人が設定で変える
