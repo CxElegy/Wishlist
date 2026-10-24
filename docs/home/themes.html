@@ -1329,17 +1329,18 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   // （ログインの見張り・版の確かめ）が同じ窓に残って、差し替え → 開き直し をくり返し、白い画面にもなった（2026-10-24）。
   // ここではお客さまを me.html へ送るだけ。殻が読めなかったとき（?own=0）は送らずに前の画面。30 秒に 3 回まで
   function ownPage(){
-    if(!tok||page!=='index'||/[?&]own=0/.test(location.search)) return Promise.resolve(false);
+    if(!tok||(page!=='index'&&page!=='settings')||/[?&]own=0/.test(location.search)) return Promise.resolve(false);
     var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
     if(hist.length>=3) return Promise.resolve(false);
     try{hist.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(hist));}catch(_){}
-    location.replace('me.html'+location.hash);
+    location.replace('me.html'+(page==='settings'?'?p=settings':'')+location.hash);   // 設定も本人の分（同じ部品の render_settings）
     return Promise.resolve(true);
   }
   function route(box,p,err){
     var picks=picksOf(p);
     if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';return;}   // もう本人のページの中
     // ログインしたお客さまはだれでも、まず本人のページ（店長と同じ枠組み）。版面の数によらない（HARNESS.md「一番大事な決まり」）
+    if(page==='settings'&&!err&&tok&&picks.length){box.remove();ownPage().then(function(done){if(!done){var b3=document.createElement('main');b3.className='wl-mine';b3.id='mine';document.body.appendChild(b3);drawMine(b3,p,'');}});return;}
     if(page==='index'&&!err&&tok&&document.querySelector('section.sec[data-k]')){
       box.remove();ownPage().then(function(done){if(done)return;
         if(picks.length)showMine(p,picks);else{var b2=document.createElement('main');b2.className='wl-mine';b2.id='mine';document.body.appendChild(b2);drawMine(b2,p,'');}});return;}
@@ -1594,7 +1595,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   function refresh(){
     return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
-        R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
+        R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';   // 本人のページ（user_pages.py）は本人の分だけ書く（my_* 関数）R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
       .then(function(){mine();chip();gate();readOnlyNote();members();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
@@ -1628,7 +1629,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.24 16:37</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.24 16:56</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>

@@ -14,7 +14,8 @@
 <script>
 (function(){
   var C={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"};
-  function back(q){location.replace('./'+(q||'')+location.hash);}
+  var SET=/[?&]p=settings/.test(location.search), PG=SET?'settings.html':'index.html';   // どのページか（AUTH_JS の ownPage）
+  function back(q){location.replace('./'+(SET?'settings.html':'')+(q||'')+location.hash);}
   var s=document.createElement('script');s.src=C.lib;s.onerror=function(){back('?own=0');};
   s.onload=function(){
     var sb=window.supabase.createClient(C.url,C.key,{auth:{persistSession:true,storageKey:'wl-auth',detectSessionInUrl:false}});
@@ -22,7 +23,7 @@
       var se=r&&r.data&&r.data.session;if(!se){back('');return null;}
       return sb.rpc('my_page_path').then(function(p){
         if(p.error||!p.data){back('?own=0');return null;}
-        return sb.storage.from('pages').download(p.data+'/index.html');
+        return sb.storage.from('pages').download(p.data+'/'+PG);
       });
     }).then(function(d){
       if(!d)return;
@@ -30,7 +31,7 @@
       return d.data.text().then(function(h){
         if(h.indexOf('name="wl-own"')<0){back('?own=0');return;}
         document.open();document.write(h);document.close();
-        try{history.replaceState(null,'','./'+location.hash);}catch(_){}
+        try{history.replaceState(null,'','./'+(SET?'settings.html':'')+location.hash);}catch(_){}
       });
     }).catch(function(){back('?own=0');});
   };
