@@ -10,7 +10,8 @@
 - [ ] お客さまの期限付きの写真が切れたとき本当に差し替わるか（2026-10-25 04:00 UTC より前は取らない：#291 から 1 日たってから） — 1〜2 日あとの収集のログ「期限切れで探し直し N 枚」と user_boards の ?exp= の行を数え、切れた写真（404・1×1）のまま残っている記事が 0 であること。Yahoo の原文が新しい網址を出さないなら、その記事は写真なしに戻す
 - [x] ライブラリの版面の名前をログインなしでも読める（決定：案 B、https://github.com/CxElegy/Wishlist/pull/292 、2026-10-24） — restrictive のポリシー boards_visible・board_stories_visible と public.board_visible を足しただけ（using (true) は残す）。本番：ログインなし 23/64（REST でも 23、n:広島旅行 は見えない）・test-b 24・test-a 63・店長 64。網页は boards を読んでいないので画面は同じ（ux_check）
 - [x] follows をお客さま本人が読めるように（https://github.com/CxElegy/Wishlist/pull/294 、2026-10-24） — policy が private.user_account を直接呼んでいた → security definer の public.my_account()（authenticated だけ）を通す形に alter policy（消す文なし）。本番の REST：test-a 40・test-b 1・test-c 0・ログインなし 0（自分の account だけ）
-- [~] 網页が自分の follows を読む（開始 2026-10-24 05:00 UTC） — 人ごとのページ（ownPage・my_boards）が置く板块・小分類・篇幅を follows から取る（今は app_users.prefs の picks）。follows と picks がずれている人がいないかを先に数える
+- [x] 網页が自分の follows を読む（https://github.com/CxElegy/Wishlist/pull/297 、2026-10-24） — 先に数えた：test-a picks 40／follows 40・test-b 1／1、名前・板块・並びのずれ 0（follows の size は全員 null）。user_pages が follows（pos・section・subs・size）で版面を置き、follows にまだないものだけ picks。小分類は板块の 1 つ目の分け方 → 本人のページに目次の札・本文の小見出し（test-a 23 種：アニメ・発売済み・運営中・J-POP…、test-b アウトドア・旅行）。ux_check ✗0
+- [ ] お客さまが自分の篇幅・小分類の分け方を設定で変える — 設定ページの篇幅（S/M/L）と分け方（nav_schemes）を、お客さまは本人の follows.size・本人の account の nav_schemes に書く（店長と同じ画面・同じ部品）。今は全員 M・1 つ目の分け方
 - [ ] 人ごとの 👍👎・欲しい物・気になるかも？ — 本人の account で書ける（can_edit が本人を許す）
 - [ ] C2 朝刊・夕刊（DESIGN_PRINCIPLES C2） — 9:00 / 18:00 の AI 編集をそれぞれ「号」として見せる（号数・号ごとの頭条・前の号へ）。店長もお客さまも同じ部品。ux_check ✗0
 - [ ] C3 同じ話を 1 枚に（C3） — 同じ出来事の出典を 1 枚に束ね「○社が報道」（今の去重の結果を見える形に）。店長のページで 1 枚に 2 社以上の例が出る
