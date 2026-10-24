@@ -281,27 +281,133 @@ USER_CREATED = "user"       # boards.created_by：お客さまが足した版面
 NOT_TOPIC = ("disambiguation", "曖昧さ回避", "消歧义", "wikimedia list", "一覧")
 
 
-def find_pick_wikidata(name, get=_wd_get):
-    """お客さまの選んだ名前 → Wikidata の番号（名前がそろえて同じ項目だけ。なければ None）。断られたら WdBlocked。"""
+def _sitelinks(ids, get):
+    """項目ごとの Wikipedia の言語数（向導の「情報少なめ」と同じ物差し）。"""
+    if len(ids) < 2:
+        return {}
+    d = get({"action": "wbgetentities", "ids": "|".join(ids), "props": "sitelinks"})
+    return {q: len((e or {}).get("sitelinks") or {}) for q, e in (d.get("entities") or {}).items()}
+
+
+def find_pick_wikidata(name, get=_wd_get, sec=None):
+    """お客さまの選んだ名前 → Wikidata の番号（名前がそろえて同じ項目だけ。なければ None）。断られたら WdBlocked。
+    候補（名前か別名がそろえて同じ項目）の順番（2026-10-24、お客さまの版面の引き直しで決めた）：
+    1. 説明が選んだ板块に入る（taxonomy.classify(説明) == sec）もの：F1 は映画「F1」ではなく自動車レース
+    2. 名前（label）が同じもの。ただし Wikipedia の言語数 ×4 が別名で当たった一番の候補より少ないものは「情報少なめ」として後ろ
+       （向導の thin と同じ物差し）
+    3. Wikipedia の言語数が多いもの：京都 は 平安京（36）ではなく 京都市（260）
+    3 字までの英数字は、別名だけで当たる候補を板块に入るときしか使わない（「Ado」が別名 ADO のアデノシンに当たった）。"""
+    import taxonomy
     want = norm_name(name)
     if len(want) < 2:
         return None
-    alias = None   # 名前（label）が同じ項目を先に。別名だけが同じものは最後の手（「Ado」が別名 ADO のアデノシンに当たった、2026-10-24）
+    short = want.isascii() and len(want) <= 3
+    cands = {}
     for lang in ("ja", "en"):
         hits = (get({"action": "wbsearchentities", "search": name, "language": lang, "uselang": lang, "limit": 7, "type": "item"}).get("search") or [])
         for h in hits:
-            desc = str(h.get("description") or "").lower()
-            if any(w in desc for w in NOT_TOPIC) or not re.fullmatch(r"Q\d+", str(h.get("id") or "")):
+            desc = str(h.get("description") or "")
+            if any(w in desc.lower() for w in NOT_TOPIC) or not re.fullmatch(r"Q\d+", str(h.get("id") or "")):
                 continue
-            if norm_name(h.get("label")) == want:
-                return h["id"]
+            c = cands.setdefault(h["id"], {"label": False, "alias": False, "desc": "", "order": len(cands)})
+            c["desc"] += " " + desc
             m = h.get("match") or {}
             others = {norm_name(a) for a in h.get("aliases") or []}
             if m.get("type") != "label":
                 others.add(norm_name(m.get("text")))
-            if alias is None and want in others and (len(want) > 3 or not want.isascii()):   # 3 字までの英数字は別名では当てない
-                alias = h["id"]
-    return alias
+            if norm_name(h.get("label")) == want:
+                c["label"] = True
+            elif want in others:
+                c["alias"] = True
+    use_sec = sec and sec != taxonomy.OTHER
+    for c in cands.values():
+        c["fits"] = bool(use_sec and taxonomy.classify(c["desc"]) == sec)
+    keep = {q: c for q, c in cands.items() if c["label"] or (c["alias"] and (not short or c["fits"]))}
+    if not keep:
+        return None
+    sl = _sitelinks(list(keep), get)
+    best_alias = max([sl.get(q, 0) for q, c in keep.items() if not c["label"]] or [0])
+    def rank(q):
+        c = keep[q]
+        return (c["fits"], c["label"] and sl.get(q, 0) * 4 >= best_alias, sl.get(q, 0), -c["order"])
+    return max(keep, key=rank)
+
+
+RECHECK_VER = 2   # 番号の決め方（find_pick_wikidata）を変えたら上げる：お客さまの版面を 1 度ずつ引き直す
+
+
+def recheck_plan(boards, follows, get=_wd_get, cache=None, limit=25, pause=1.0):
+    """お客さまが足した版面（created_by = user）を今の規則で引き直す（1 版面 1 度、RECHECK_VER ごと）。
+    boards = [{id, key, name, wd, created_by}]、follows = [{account, board_id, section, subs}]。
+    返す：([{"id", "name", "old", "new", "wd", "sec"}]（番号が変わるものだけ）, 引き直した数)。断られたらそこまで（印を付けたものは次の回に回さない）。"""
+    import time
+    cache = {} if cache is None else cache
+    done = cache.setdefault("_recheck", {})
+    sec_of = {}
+    for f in follows:
+        sec_of.setdefault(f.get("board_id"), f.get("section"))
+    out, checked = [], 0
+    for b in boards:
+        if b.get("created_by") != USER_CREATED or done.get(b["key"]) == RECHECK_VER or b.get("id") not in sec_of:
+            continue
+        if limit <= 0:
+            break
+        limit -= 1
+        sec = sec_of.get(b["id"])
+        try:
+            qid = find_pick_wikidata(b.get("name") or "", get, sec)
+        except WdBlocked:
+            break
+        if pause:
+            time.sleep(pause)
+        new = "wd:" + qid if qid else "n:" + norm_name(b.get("name"))
+        done[b["key"]] = done[new] = RECHECK_VER
+        checked += 1
+        if new != b["key"]:
+            out.append({"id": b["id"], "name": b.get("name") or "", "old": b["key"], "new": new, "wd": qid, "sec": sec})
+    return out, checked
+
+
+def recheck_apply(plans, boards, follows, db, get=_wd_get, cache=None):
+    """引き直した番号を書く（消さない：行の key・wd を書き換えるか、follows を同じ版面へ付け替える）。
+    付け替えたお客さまの小分類は、前の番号から機械が決めた値のままなら新しい番号の事実で決め直す。返す：数。"""
+    import taxonomy
+    cache = {} if cache is None else cache
+    by_key = {b["key"]: b for b in boards}
+    have = {(f["account"], f["board_id"]) for f in follows}
+    n = {"moved": 0, "merged": 0, "kept": 0, "subs": 0}
+    for p in plans:
+        target = by_key.get(p["new"])
+        if target is None:
+            db(f"boards?id=eq.{p['id']}", {"key": p["new"], "wd": p["wd"]}, "return=minimal", method="PATCH")
+            by_key[p["new"]] = {**by_key.pop(p["old"], {}), "key": p["new"], "wd": p["wd"], "id": p["id"]}
+            tid = p["id"]
+            n["moved"] += 1
+        else:
+            tid = target["id"]
+        for f in [f for f in follows if f["board_id"] == p["id"]]:
+            if tid != p["id"]:
+                if (f["account"], tid) in have:     # 同じ人がもう新しい版面を追いかけている：古い行はそのまま（消さない）
+                    n["kept"] += 1
+                    continue
+                db(f"follows?account=eq.{f['account']}&board_id=eq.{p['id']}", {"board_id": tid}, "return=minimal", method="PATCH")
+                have.add((f["account"], tid))
+                n["merged"] += 1
+            sec, subs, name = f.get("section"), f.get("subs") or {}, p["name"]
+            if not sec:
+                continue
+            auto = [taxonomy.guess_subs(sec, ""), taxonomy.guess_subs(sec, name)]
+            try:
+                if p["old"].startswith("wd:"):
+                    auto.append(subs_for(sec, name, facts_for(p["old"][3:], get, cache)))
+                facts = facts_for(p["wd"], get, cache) if p["wd"] else None
+            except WdBlocked:
+                continue
+            new = subs_for(sec, name, facts)
+            if subs in auto and new and new != subs:
+                db(f"follows?account=eq.{f['account']}&board_id=eq.{tid}", {"subs": new}, "return=minimal", method="PATCH")
+                n["subs"] += 1
+    return n
 
 
 # 小分類は名前だけでは決まらない（2026-10-24 別の目の指摘：大谷翔平・F1・NBA が「サッカー」、BTS が「ソロ」、
@@ -447,7 +553,7 @@ def plan_users(users, boards, get=_wd_get, pause=1.0, have=(), cache=None):
                     counts["blocked"] += 1
                     continue
                 try:
-                    qid = find_pick_wikidata(name, get)
+                    qid = find_pick_wikidata(name, get, p.get("sec"))
                 except WdBlocked:
                     blocked = True
                     counts["blocked"] += 1
@@ -486,15 +592,24 @@ def push_users(db=None, get=_wd_get):
     users, _ = userfeed.fetch_all(db, "rpc/userfeed_users", {})
     if users is None:
         raise SystemExit("SUPABASE_SERVICE_KEY がないので書けません")
-    boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names&order=id")
+    boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names,wd,created_by&order=id")
     have, _ = userfeed.fetch_all(db, "follows?select=account,board_id,section,subs&account=like.u_*&order=account,board_id")
     by_id = {b["id"]: b for b in boards or []}
     cache = load_facts()
     r = plan_users(users, boards or [], get, have={(h["account"], by_id.get(h["board_id"], {}).get("key")) for h in have or []}, cache=cache)
     if r["new"]:
         db("boards?on_conflict=key", list(r["new"].values()), prefer="resolution=ignore-duplicates")
-        boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names&order=id")
+        boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names,wd,created_by&order=id")
     ids = {b["key"]: b["id"] for b in boards or []}
+    rc = {"checked": 0, "moved": 0, "merged": 0, "kept": 0, "subs": 0}
+    if not r["counts"]["blocked"]:
+        plans, rc["checked"] = recheck_plan(boards or [], have or [], get, cache)
+        rc.update(recheck_apply(plans, boards or [], have or [], db, get, cache))
+        if plans:   # 付け替えた行を読み直してから小分類を見る
+            boards, _ = userfeed.fetch_all(db, "boards?select=id,key,name,names,wd,created_by&order=id")
+            have, _ = userfeed.fetch_all(db, "follows?select=account,board_id,section,subs&account=like.u_*&order=account,board_id")
+            by_id = {b["id"]: b for b in boards or []}
+            ids = {b["key"]: b["id"] for b in boards or []}
     fixed = resubs(have or [], by_id, get, cache, db) if not r["counts"]["blocked"] else 0
     save_facts(cache)
     have = {(h["account"], h["board_id"]) for h in have or []}
@@ -504,9 +619,11 @@ def push_users(db=None, get=_wd_get):
         db("follows?on_conflict=account,board_id", rows, prefer="resolution=ignore-duplicates")
     c = r["counts"]
     msg = (f"お客さまの版面：{c['users']} 人・{c['picks']} 個（もとからある版面 {c['same']}・Wikidata で足した {c['wd']}・名前で足した {c['name']}"
-           f"・断られて次の回へ {c['blocked']}・上限を超えた {c['over']}）・follows {len(rows)}・小分類を直した {fixed}")
-    if rows or r["new"] or c["blocked"] or fixed:   # 変わらなかった回はログに書かない（空回りのコミットを作らない）
-        runlog.add("library", msg, level="warn" if c["blocked"] else "info", **{f"u_{k}": v for k, v in c.items()})
+           f"・断られて次の回へ {c['blocked']}・上限を超えた {c['over']}）・follows {len(rows)}・小分類を直した {fixed}"
+           f"・番号の引き直し {rc['checked']}（番号を直した {rc['moved']}・同じ版面へ付け替え {rc['merged']}・小分類 {rc['subs']}）")
+    if rows or r["new"] or c["blocked"] or fixed or rc["moved"] or rc["merged"]:   # 変わらなかった回はログに書かない（空回りのコミットを作らない）
+        runlog.add("library", msg, level="warn" if c["blocked"] else "info", **{f"u_{k}": v for k, v in c.items()},
+                   **{f"wd_{k}": v for k, v in rc.items()})
     print(msg)
     return r
 
