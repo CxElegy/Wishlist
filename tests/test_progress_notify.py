@@ -7,6 +7,22 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts
 import progress_notify as pn  # noqa: E402
 
 
+class PageEffect(__import__("unittest").TestCase):
+    """合併の知らせの「画面の更新あり／なし」（2026-10-25，用户定的）。"""
+
+    def test_docs_only_is_none(self):
+        self.assertEqual(pn.page_effect(["BACKLOG.md", "HARNESS.md", ".claude/workflows/harness-forever.js", "harness/ux_check.py", "tests/test_x.py"]), "none")
+
+    def test_page_files_are_maybe(self):
+        for f in ("scripts/render.py", "items.yaml", "docs/testground/emblem-manage.html", "templates/a.css", "db/x.sql"):
+            self.assertEqual(pn.page_effect(["BACKLOG.md", f]), "maybe", f)
+
+    def test_message_says_it(self):
+        ev = {"action": "closed", "pull_request": {"merged": True, "title": "t", "number": 1, "html_url": "u", "body": "b"}}
+        self.assertIn("画面の更新：**なし**", pn.pr_payload(ev, ["BACKLOG.md"])["embeds"][0]["description"])
+        self.assertIn("画面の更新：**あり", pn.pr_payload(ev, ["scripts/render.py"])["embeds"][0]["description"])
+
+
 class PR(unittest.TestCase):
     def test_merged_and_opened(self):
         ev = {"action": "closed", "pull_request": {"merged": True, "title": "版面に番号", "number": 7, "changed_files": 3,

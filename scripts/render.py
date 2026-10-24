@@ -3723,6 +3723,7 @@ LIVE_JS = """
   // ?v=新しい指紋 で開き直して控えを飛ばす。着いたら ?v= は網址から消す。同じ v でまだ古い（配信の控え）ときは繰り返さない
   function cleanV(){try{var u=new URL(location.href);if(u.searchParams.has('v')){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash);}}catch(e){}}
   function fresh(v){try{var u=new URL(location.href);if(u.searchParams.get('v')===v||Date.now()-LOADED>15000||busy())return false;
+    ss.set(KEY,{to:v,keys:keys(),marks:marks(),at:anchor(),y:pageYOffset});   // 開き直したあとも見ていた場所に戻し、増えた記事に印
     u.searchParams.set('v',v);location.replace(u.toString());return true;}catch(e){return false;}}
   function check(){fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
       var v=j&&j[PAGE];if(!v||v===VER){cleanV();return;}
@@ -3736,7 +3737,11 @@ LIVE_JS = """
           if(ch.length>3){var r=document.createElement('span');r.textContent=' '+T.more.replace('%n',ch.length-3);bar.firstChild.appendChild(r);}}}
       maybe();}).catch(function(){});}
   setInterval(check,EVERY);setInterval(maybe,5000);
-  document.addEventListener('visibilitychange',function(){if(!document.hidden)check();else maybe();});
+  // 戻る・タブの復元（bfcache：JS が止まったまま戻る）と、30 秒以上ほかのタブにいたあと表に戻ったときは、開いた直後と同じ扱い：
+  // 古ければすぐ ?v= で開き直す（2026-10-25：合併したのに開き直しても古いまま、をなくす。プライベートウィンドウを使わせない）
+  var hiddenAt=0;
+  document.addEventListener('visibilitychange',function(){if(document.hidden){hiddenAt=Date.now();maybe();return;}if(hiddenAt&&Date.now()-hiddenAt>30000)LOADED=Date.now();check();});
+  addEventListener('pageshow',function(ev){if(ev.persisted){LOADED=Date.now();check();}});
   check();   // 開いたらすぐ確かめる（古い控えならすぐ最新に）
 })();
 """.replace("__EVERY__", str(LIVE_EVERY)).replace("__IDLE__", str(LIVE_IDLE))
