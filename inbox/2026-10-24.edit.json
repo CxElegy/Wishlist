@@ -20,7 +20,12 @@
     82,
     72,
     85,
-    98
+    98,
+    100,
+    103,
+    104,
+    105,
+    102
    ],
    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fWErM.img"
   },
@@ -41,7 +46,8 @@
     78,
     97,
     92,
-    70
+    70,
+    101
    ],
    "image": "https://www.bing.com/th?id=ONUT.vuYQdO4GK_fpGWkwGRZqhw&pid=News&w=1200"
   },
@@ -162,7 +168,8 @@
    "refs": [
     30,
     27,
-    34
+    34,
+    40
    ]
   },
   {
@@ -172,7 +179,8 @@
    "weight": "normal",
    "refs": [
     6,
-    22
+    22,
+    41
    ]
   },
   {
@@ -183,7 +191,8 @@
    "refs": [
     23,
     26,
-    29
+    29,
+    39
    ]
   },
   {
@@ -193,7 +202,8 @@
    "weight": "normal",
    "refs": [
     13,
-    8
+    8,
+    38
    ]
   }
  ],
@@ -217,7 +227,9 @@
    "refs": [
     14,
     13,
-    8
+    8,
+    28,
+    29
    ]
   },
   {
@@ -289,19 +301,19 @@
   }
  ],
  "_covered": {
-  "漫威电影": 99,
+  "漫威电影": 107,
   "三星手机": 31,
-  "GTA 6": 37,
-  "A2O LITE": 27,
+  "GTA 6": 43,
+  "A2O LITE": 30,
   "MMORPG 新作": 20,
-  "日本顶级网球赛事": 25,
+  "日本顶级网球赛事": 32,
   "ILLIT": 15,
   "周杰伦": 13,
   "チェーンソーマン": 11,
   "dota2": 9,
   "Astrae Oratio": 6,
   "滑雪": 7,
-  "绝区零": 10,
+  "绝区零": 13,
   "gelato pique": 4,
   "BLEACH Mirrors High": 3,
   "あつ森": 2,
@@ -374,7 +386,8 @@
    "weight": "normal",
    "refs": [
     20,
-    18
+    18,
+    26
    ]
   },
   {
@@ -392,6 +405,17 @@
     "date": "2026-10-26",
     "label": "本戦開幕"
    }
+  },
+  {
+   "headline": "４年ぶり出場の大坂なおみ初戦は世界３５位ジャスミン・パオリーニ 東レパンパシフィックＯＰ２６日から本戦",
+   "highlight": "大坂なおみ初戦",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27,
+    29,
+    30
+   ]
   }
  ],
  "ILLIT": [
@@ -641,7 +665,9 @@
     9,
     2,
     3,
-    4
+    4,
+    11,
+    12
    ],
    "image": "https://www.bing.com/th?id=ONUT.H32taeRIexPuY3uIwUT_hw&pid=News&w=1200"
   },
