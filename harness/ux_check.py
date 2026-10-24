@@ -14,6 +14,7 @@
 """
 import argparse
 import json
+import os
 import pathlib
 import sys
 import time
@@ -41,7 +42,7 @@ def session(email):
 
 
 def check(pw, base, who, width, out):
-    b = pw.chromium.launch()
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
     pg = b.new_page(viewport={"width": width, "height": 900})
     loads, errors = [], []
     pg.on("load", lambda: loads.append(pg.url))

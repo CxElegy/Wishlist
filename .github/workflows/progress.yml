@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  actions: read   # Before / After：その合併の render.yml が終わったかを見る
 
 jobs:
   notify:
@@ -36,3 +37,26 @@ jobs:
         run: |
           git show "${{ github.event.before }}:BACKLOG.md" > /tmp/before.md 2>/dev/null || : > /tmp/before.md
           python scripts/progress_notify.py backlog /tmp/before.md BACKLOG.md
+
+  # 画面に関わる PR を合併したら、Before（合併の直後の本番）と After（render.yml のあとの本番）を撮って Discord へ（harness/before_after.py）
+  before_after:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      UX_CHANNEL: chrome
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 2
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install playwright pyyaml pillow   # ブラウザは Actions に入っている Chrome を使う（すぐ撮り始めて Before を間に合わせる）
+      - name: Before / After を撮って送る
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: python harness/before_after.py "${{ github.event.pull_request.merge_commit_sha }}" "${{ github.event.pull_request.number }}" "$PR_TITLE" "${{ github.event.pull_request.html_url }}"
