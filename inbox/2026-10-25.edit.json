@@ -9,7 +9,11 @@
     6,
     8,
     4,
-    11
+    11,
+    21,
+    22,
+    19,
+    16
    ],
    "image": "https://punchdrunkcritics.com/wp-content/uploads/2026/10/pdc_avengersdoomsday8.jpg"
   },
@@ -37,7 +41,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    20,
+    23
    ]
   },
   {
@@ -189,7 +195,7 @@
   }
  ],
  "_covered": {
-  "漫威电影": 12,
+  "漫威电影": 24,
   "A2O LITE": 6,
   "GTA 6": 6,
   "周杰伦": 4,
