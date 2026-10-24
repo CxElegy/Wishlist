@@ -132,6 +132,27 @@ class Layout(unittest.TestCase):
         self.assertNotIn("public.sizes", low)    # get_sizes はだれでも読めるので、お客さまの分は書かない
 
 
+class JsSyntax(unittest.TestCase):
+    """ページの中の JS が構文として正しいか（2026-10-24：行の途中に // の注釈を入れて AUTH_JS の続きを消し、本番の全ページが壊れた）。"""
+    @unittest.skipUnless(__import__("shutil").which("node"), "node がない")
+    def test_inline_scripts_parse(self):
+        import re, subprocess, tempfile
+        old = dict(render.AUTH_DB)
+        render.AUTH_DB.update({"url": "https://x.supabase.co", "key": "k"})
+        try:
+            pages = [render._auth_tag("index"), render.render_me(),
+                     render.render_settings([{"name": "a", "section": "游戏", "size": "M"}], {"url": "u", "key": "k"}, "x"),
+                     render.render_settings([{"name": "a", "section": "游戏", "size": "M"}], {"url": "u", "key": "k"}, "x", (), {"picks": []})]
+        finally:
+            render.AUTH_DB.clear(); render.AUTH_DB.update(old)
+        for h in pages:
+            for s in re.findall(r"<script(?![^>]*(?:src=|application/json))[^>]*>(.*?)</script>", h, re.S):
+                with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as f:
+                    f.write(s)
+                r = subprocess.run(["node", "--check", f.name], capture_output=True, text=True)
+                self.assertEqual(r.returncode, 0, r.stderr[:500])
+
+
 class Issue(unittest.TestCase):
     def test_stories_from_rows(self):
         items = [{"name": "広島旅行", "type": "category", "section": "出行", "keywords": ["広島旅行"], "match": ["広島旅行"], "subs": {}}]
