@@ -331,21 +331,21 @@
  ],
  "_covered": {
   "漫威电影": 123,
-  "三星手机": 36,
-  "GTA 6": 46,
+  "三星手机": 37,
+  "GTA 6": 47,
   "A2O LITE": 39,
   "MMORPG 新作": 23,
   "日本顶级网球赛事": 41,
   "ILLIT": 16,
   "周杰伦": 17,
-  "チェーンソーマン": 11,
+  "チェーンソーマン": 12,
   "dota2": 12,
   "Astrae Oratio": 6,
   "滑雪": 9,
-  "绝区零": 13,
+  "绝区零": 15,
   "gelato pique": 4,
   "BLEACH Mirrors High": 3,
-  "あつ森": 2,
+  "あつ森": 3,
   "哈利波特剧集": 2,
   "猫用品": 2,
   "Vaundy": 1,
@@ -581,6 +581,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "《BanG Dream! 少女樂團派對》×TV動畫《鏈鋸人》特別連動登場！",
+   "highlight": "特別連動登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
   }
  ],
  "dota2": [
@@ -709,7 +718,8 @@
     3,
     4,
     11,
-    12
+    12,
+    14
    ],
    "image": "https://www.bing.com/th?id=ONUT.H32taeRIexPuY3uIwUT_hw&pid=News&w=1200"
   },
