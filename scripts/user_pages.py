@@ -3,6 +3,7 @@
 
 - 版面 = 本人が追いかけているもの（ライブラリの follows：置く板块・小分類・篇幅・並び）。
   follows にまだないもの（足したばかりで library.py --users の回の前）は app_users.prefs.picks から（板块だけ）。
+  どれを出すかは picks が決める（picks から外したものは follows に行が残っていても出さない）。
   - 店長と同じ名前の版面：店長の設定（主題・配色・小元素・アイコン）と店長の記事（AI 編集済みの最新号）をそのまま使う。
   - 店長にないもの：本人の分として集めた記事（user_boards）で、種類から主題（render.template_for）、写真から配色（theme.resolve）。
     写真は images.pick（店長と同じ規則）で記事から探す（1 版面の頭の数本だけ・全体の時間に上限）。
@@ -50,12 +51,15 @@ def norm(s):
 
 
 def own_picks(follows, picks):
-    """follows（[{pos, section, subs, size, boards: {name}}]）を並び順に、そのあとに follows にまだない picks。
+    """いま追いかけているもの = picks（本物。設定の「外す」・カードで足すはここを書き換える）。
+    follows（[{pos, section, subs, size, boards: {name}}]）は置き方だけ：picks にある名前の行を並び順に、そのあとに follows にまだない picks。
+    picks から外した名前の follows は残っていても使わない（follows を消す仕組みはないので、外したらすぐ消えるように）。
     返す形は picks と同じ [{name, sec, subs, size}]（subs・size は follows にあるときだけ）。"""
+    want = {norm(p.get("name")) for p in picks or [] if str(p.get("name") or "").strip()}
     out, seen = [], set()
     for f in sorted(follows or [], key=lambda f: f.get("pos") or 0):
         name = str(((f.get("boards") or {}).get("name")) or "").strip()
-        if name and norm(name) not in seen:
+        if name and norm(name) in want and norm(name) not in seen:
             seen.add(norm(name))
             out.append({"name": name, "sec": f.get("section") or "", "subs": f.get("subs") or {}, "size": f.get("size")})
     for p in picks or []:
