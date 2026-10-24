@@ -47,6 +47,34 @@ def clear(proc, board="*"):
     report(board, proc, "clear")
 
 
+def clear_waits(before=None):
+    """「反映を待っています」（state=wait）の行を消す：GitHub Pages の公開が終わった＝反映した（2026-10-25：AI 編集が公開済みなのに
+    「反映を待っています」が残り、管理ページの図が「止まっているかも」と出していた）。live_clear.yml が page_build（Pages の公開）のたびに呼ぶ。
+    before（ISO の時刻）より前に始まった行だけ。secret key（SUPABASE_SERVICE_KEY）があるときだけ。返り値：消した行の数（わからなければ None）。"""
+    import os
+    import urllib.parse
+    url, _ = _db()
+    key = os.environ.get("SUPABASE_SERVICE_KEY")
+    if not (url and key):
+        return None
+    q = f"account=eq.{urllib.parse.quote(sitedir.NAME)}&state=eq.wait"
+    if before:
+        q += f"&started_at=lt.{urllib.parse.quote(before)}"
+    h = {"apikey": key, "Prefer": "return=representation"}
+    if key.startswith("eyJ"):
+        h["Authorization"] = f"Bearer {key}"
+    req = urllib.request.Request(f"{url}/rest/v1/live_status?{q}", headers=h, method="DELETE")
+    try:
+        return len(json.loads(urllib.request.urlopen(req, timeout=15).read() or b"[]"))
+    except Exception as err:  # noqa: BLE001
+        print(f"  （反映待ちを消せなかった：{err}）", file=sys.stderr)
+        return None
+
+
+if __name__ == "__main__" and sys.argv[1:2] == ["clear-waits"]:
+    print("反映待ちを消した：", clear_waits(sys.argv[2] if len(sys.argv) > 2 else None))
+
+
 class Lines:
     """管理ページ「ライブログ」に作業の 1 行 1 行を流す（Supabase の live_log 表、db/live_log.sql）。
     secret key のある GitHub Actions だけが書く（ないとき・テストでは何もしない）。行はためて FLUSH 秒ごとにまとめて送る

@@ -1,0 +1,31 @@
+name: 反映待ちの帯を消す
+
+# GitHub Pages の公開が終わったら（page_build）、「反映を待っています」（live_status の state=wait）の行を消す
+# （scripts/livestatus.py clear_waits、2026-10-25：公開済みなのに帯が残り、管理ページの図が「止まっているかも」と出していた）。
+# 公開が始まる 30 秒前より前に始まった行だけ（いま書かれたばかりの行は次の公開まで残す）。
+
+on:
+  page_build:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-clear
+  cancel-in-progress: false
+
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: 反映待ちを消す
+        run: python scripts/livestatus.py clear-waits "$(date -u -d '-30 seconds' +%Y-%m-%dT%H:%M:%SZ)"
