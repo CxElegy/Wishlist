@@ -205,11 +205,13 @@ class PickLabelFirst(unittest.TestCase):
         self.assertEqual(library.find_pick_wikidata("Formula 1", lambda p: hits), "Q1968")
 
 
-def search(hits, sitelinks=None):
+def search(hits, sitelinks=None, aliases=None):
     """wbsearchentities の返事（言語を問わず同じ）と、候補の Wikipedia の言語数。"""
     def get(p):
-        if p.get("props") == "sitelinks":
-            return {"entities": {q: {"sitelinks": {f"w{i}": {} for i in range(n)}} for q, n in (sitelinks or {}).items()}}
+        if "sitelinks" in str(p.get("props")):
+            return {"entities": {q: {"sitelinks": {f"w{i}": {} for i in range(n)},
+                                     "aliases": {"ja": [{"value": x} for x in (aliases or {}).get(q, [])]}}
+                                 for q, n in (sitelinks or {}).items()}}
         if p.get("action") == "wbgetentities":
             return {"entities": {}}
         return {"search": hits}
@@ -262,6 +264,10 @@ class PickRank(unittest.TestCase):
                  {"id": "Q34600", "label": "京都市", "description": "京都府庁所在地", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}}]
         self.assertEqual(library.find_pick_wikidata("京都", search(kyoto, {"Q153721": 27, "Q120730": 106, "Q34600": 260}), "出行"), "Q34600")
         self.assertEqual(library.find_pick_wikidata("京都", search(kyoto[:2], {"Q153721": 27, "Q120730": 106}), "出行"), "Q120730")
+        # 本番の検索の返事：京都市・京都府は前方一致の名前だけ（別名「京都」は返事にない）→ 項目を引いて別名を見る
+        shown = [kyoto[0], {"id": "Q34600", "label": "京都市", "description": "京都府庁所在地", "match": {"type": "label", "text": "京都市"}}]
+        self.assertEqual(library.find_pick_wikidata("京都", search(shown, {"Q153721": 27, "Q34600": 260}, {"Q34600": ["京都", "古都"]}), "出行"), "Q34600")
+        self.assertEqual(library.find_pick_wikidata("京都", search(shown, {"Q153721": 27, "Q34600": 260}), "出行"), "Q153721")
 
 
 class Recheck(unittest.TestCase):
