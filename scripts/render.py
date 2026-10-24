@@ -4115,8 +4115,9 @@ AUTH_JS = r"""
   // 選んだものがあれば、店長のページと同じ版面のうち自分の選んだものだけを出す（2026-10-22，用户定的：お客さまも店長と同じ機能。記事は同じ公開のニュース）
   // 本人のページ（scripts/user_pages.py が店長と同じ部品で作り、非公開の箱 pages/<account>/index.html に置く）があれば、それに替える。
   // 替えたページには meta wl-own があるので、もう一度は読まない。まだ作られていなければ今までどおり（showMine）
+  var OWN_PAGE=false;   // 2026-10-24：差し替えたあと画面が白いまま・開き直しのくり返し → 直すまで止める（前の画面を出す）
   function ownPage(){
-    if(!sb||!tok||page!=='index') return Promise.resolve(false);
+    if(!OWN_PAGE||!sb||!tok||page!=='index') return Promise.resolve(false);
     return rpc('my_page_path').then(function(path){
       if(!path) return false;
       return sb.storage.from('pages').download(path+'/index.html').then(function(r){
