@@ -5754,6 +5754,9 @@ def _admin_edit_tokens(d):
         return (f'<div class="kpi"><span class="kl">{e(label)}</span><span class="kv"><b>{_tk(int(u.get("in", 0)) + int(u.get("cw", 0)) + int(u.get("out", 0)))}</b>'
                 f'<small>新規入力＋出力</small></span><span class="kd">キャッシュ読み {_tk(u.get("cr"))}</span></div>')
     out = '<div class="kpis k2">' + kp("今日", d.get("today")) + kp("この 7 日", d.get("week")) + "</div>"
+    if d.get("cap"):   # gate.EDIT_DAILY_TOKENS：これを超えた日は、溜まった版面があっても起こさない（ボタンは別）
+        out += (f'<p class="mt-x">1 日の上限：新規入力＋出力 {_tk(d["cap"])}（北京時間の 1 日）。超えたら、整理待ちが溜まっても次の日まで AI 編集を起こさない'
+                '（「AI 編集をもう一度起こす」は起こせる）。</p>')
     for g in runs:
         peak = max([b["total"] for b in g["batches"]] + [1])
         rows = "".join(

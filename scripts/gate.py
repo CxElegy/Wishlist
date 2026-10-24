@@ -49,6 +49,13 @@ DAILY_PROG = {"edit"}   # prog が「今日の数」の仕事（日付が変わ�
 # GATE_NOW（新関注項の「すぐ AI 編集」）が「60 分以内に起こし済み」で止められたときは jobs.<仕事>.now_pending に残し、
 # 後台作業の fire が 60 分を過ぎたら GATE_NOW と同じ扱い（定時の判定だけ飛ばす）で起こす。起こしたら消す。これより古い頼みは捨てる（定時が拾う）
 NOW_PENDING_HOURS = 12
+# 版面ごとに「溜まったら編集」（2026-10-24 ユーザーが決めた）：整理待ちが RIPE_COUNT 件以上か、いちばん古いもの（収集した時刻 seen）が
+# RIPE_HOURS 時間を超えた版面があれば、収集のあと・後台作業ですぐ起こす（9:00 / 18:00 を待たない）。初めての版面（前の 3 日の edit.json にない）もすぐ
+RIPE_COUNT = 3
+RIPE_HOURS = 2
+# AI 編集の 1 日（北京時間）の上限：新規入力（キャッシュ書きを含む）＋出力。キャッシュ読みは安いので数えない（管理ページの「今日」と同じ数）。
+# 2026-10-22〜24 は 1 日 13〜31 万。ボタン（GATE_FORCE）は上限でも起こす
+EDIT_DAILY_TOKENS = 1_000_000
 ACTIVE_MIN = 30   # 最後の AI 編集のバッチ（state/log/edit.json の出刊の行）からこの分数以内だけ「動いている」と出す
 
 
@@ -102,29 +109,71 @@ def save(data, path=None):
     p.write_text(json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def edit_work(inbox=INBOX, tz=DAY_TZ, today=None):
-    """今日（出刊の日付の時区）の inbox で、AI 編集がまだ整理していない記事がある版面 → {名前: 未整理の件数}。
-    未整理 = edit.json の _covered より後の記事、または edit.json にない版面の全部。版面に載らず「整理待ち」に並んでいるもの。
-    AI 編集の定時タスクの「何も変えずに終わり」の条件と同じ。"""
+def _pending(inbox=INBOX, tz=DAY_TZ, today=None):
+    """今日の inbox の版面ごとの未整理の記事 → ({名前: [記事…]}, edit.json の中身)。"""
     today = today or _now().astimezone(zoneinfo.ZoneInfo(tz)).date().isoformat()
     path = pathlib.Path(inbox) / f"{today}.json"
     if not path.exists():
-        return {}
+        return {}, {}
     try:
         blocks = json.loads(path.read_text(encoding="utf-8")).get("items", [])
         edit_path = path.with_name(f"{today}.edit.json")
         edit = (json.loads(edit_path.read_text(encoding="utf-8")) if edit_path.exists() else {}) or {}
         covered = edit.get("_covered") or {}
     except ValueError:
-        return {}
+        return {}, {}
     out = {}
     for b in blocks:
-        name, n = b.get("name"), len(b.get("entries") or [])
+        name, entries = b.get("name"), b.get("entries") or []
         # digest.publish と同じ読み方：_covered にない版面は、edit.json にあれば全部編集済み・なければ全部未整理
-        c = int(covered[name] or 0) if name in covered else n if name in edit else 0
-        if n > c:
-            out[b["name"]] = n - c
+        c = int(covered[name] or 0) if name in covered else len(entries) if name in edit else 0
+        if len(entries) > c:
+            out[name] = entries[c:]
+    return out, edit
+
+
+def edit_ripe(inbox=INBOX, tz=DAY_TZ, today=None, now=None):
+    """今すぐ AI 編集する版面 → {名前: 未整理の件数}。整理待ちが RIPE_COUNT 件以上・いちばん古いものを集めて RIPE_HOURS 時間を超えた
+    （seen のない記事＝前の形・持ち越しは古いと数える）・初めての版面（今日と前の 3 日の edit.json のどれにもない）のどれか。"""
+    now = now or _now()
+    today = today or now.astimezone(zoneinfo.ZoneInfo(tz)).date().isoformat()
+    pend, edit = _pending(inbox, tz, today)
+    seen = set(edit)
+    for p in sorted(pathlib.Path(inbox).glob("????-??-??.edit.json"))[-4:]:
+        if p.stem.split(".")[0] < today:
+            try:
+                seen |= set(json.loads(p.read_text(encoding="utf-8")) or {})
+            except (OSError, ValueError):
+                pass
+    old = (now - dt.timedelta(hours=RIPE_HOURS)).isoformat(timespec="seconds")
+    out = {}
+    for name, es in pend.items():
+        first = min((str(e.get("seen") or "") for e in es), default="")
+        try:
+            first = dt.datetime.fromisoformat(first).astimezone(dt.timezone.utc).isoformat(timespec="seconds") if first else ""
+        except ValueError:
+            first = ""
+        if len(es) >= RIPE_COUNT or first <= old or name not in seen:
+            out[name] = len(es)
     return out
+
+
+def edit_tokens_today(log_dir=None, tz=DAY_TZ, now=None):
+    """今日（北京時間）の AI 編集が使ったトークン：新規入力（キャッシュ書きを含む）＋出力（state/log/edit.json の tok）。"""
+    today = day_of(now or _now(), tz)
+    n = 0
+    for r in runlog.load("edit", log_dir):
+        tok = r.get("tok")
+        if isinstance(tok, dict) and r.get("at") and day_of(r["at"], tz) == today:
+            n += sum(int(tok.get(k) or 0) for k in ("in", "cw", "out"))
+    return n
+
+
+def edit_work(inbox=INBOX, tz=DAY_TZ, today=None):
+    """今日（出刊の日付の時区）の inbox で、AI 編集がまだ整理していない記事がある版面 → {名前: 未整理の件数}。
+    未整理 = edit.json の _covered より後の記事、または edit.json にない版面の全部。版面に載らず「整理待ち」に並んでいるもの。
+    AI 編集の定時タスクの「何も変えずに終わり」の条件と同じ。"""
+    return {n: len(es) for n, es in _pending(inbox, tz, today)[0].items()}
 
 
 def day_of(at, tz=DAY_TZ):
@@ -190,6 +239,7 @@ def _emblem_why(todo, wait, tz="Asia/Tokyo"):
 def check(tz=DAY_TZ, path=None):
     """→ {job: {need, claude, why, items, sig}}。state/gate.json に書く。"""
     edit = edit_work(tz=tz)
+    ripe = edit_ripe(tz=tz)
     photos = photo_work()
     emblem, emblem_wait = emblem_work()
     jobs = {
@@ -201,8 +251,14 @@ def check(tz=DAY_TZ, path=None):
                    "why": f"写真 {len(photos)} 枚" if photos else "受付の写真なし"},
     }
     for k, j in jobs.items():
-        j["sig"] = _sig([k, edit if k == "edit" else photos if k == "photos" else emblem])
+        j["sig"] = _sig([k, edit if k == "edit" else photos if k == "photos" else emblem] + ([sorted(ripe)] if k == "edit" else []))
     # 進み具合の目印（prog：大きくなれば進んだ）。起こしたあとに増えていなければ Claude は動いていない（work_state）
+    # 溜まった版面（ripe）：あれば 9:00 / 18:00 を待たずに起こす。なければ整理待ちがあっても起こさない（溜まるか 2 時間たつのを待つ）
+    jobs["edit"]["ripe"] = sorted(ripe)
+    jobs["edit"]["tokens_today"] = edit_tokens_today(tz=tz)
+    jobs["edit"]["token_cap"] = EDIT_DAILY_TOKENS
+    if edit and not ripe:
+        jobs["edit"]["why"] += f"・まだ溜まっていない（{RIPE_COUNT} 件か {RIPE_HOURS} 時間で編集）"
     jobs["edit"]["prog"] = edit_done(tz=tz)
     jobs["edit"]["prog_day"] = day_of(_now(), tz)   # prog はこの日の数（日付が変わると 0 から）。fired.day と違う日なら比べない（work_state）
     jobs["edit"]["last_batch"] = last_batch()
@@ -286,7 +342,9 @@ def work_state(j, now=None, last_batch=None, job="edit", last_error=None):
             when = lb_at.astimezone(jst).strftime("%H:%M")
             # 「あと N 分」は書かない：網页を作った時点で固まる（管理ページの列の見出し・カードが開いた端末で数える）。時刻だけなら次の回まで正しい
             pending = job in SLOTS and j.get("need") and slot_pending(job, fired_at, now)
-            if pending:
+            if "ripe" in j:
+                tail = "・次は整理待ちが溜まったら"
+            elif pending:
                 tail = f"・{last_slot(job, now).astimezone(jst):%H:%M} の回はまもなく（次のゲートで起こす）"
             else:
                 tail = f"・次は {next_slot(job, now).astimezone(jst):%H:%M}" if job in SLOTS else ""
@@ -303,7 +361,7 @@ def work_state(j, now=None, last_batch=None, job="edit", last_error=None):
 def due_slot(j, now=None, last_batch=None, job="edit", last_error=None):
     """今の定時（9:00 / 18:00）がまだで、次のゲートで起こすはずのとき → その時刻 'HH:MM'（日本時間）。ほかは ''。
     管理ページの AI 編集の列の見出しが、この回を飛ばして次の日の 9:00 を数えないように（fire の定時の確認と同じ条件）。"""
-    if job not in SLOTS or not (j or {}).get("need"):
+    if job not in SLOTS or not (j or {}).get("need") or "ripe" in (j or {}):   # 溜まったら編集の形：定時の回はない
         return ""
     now = now or _now()
     state, _ = work_state(j, now, last_batch=last_batch, job=job, last_error=last_error)
@@ -412,6 +470,14 @@ def fire(path=None, post=_post, env=None):
         if job not in allowed:
             results[job] = "GATE_FIRE で止めている（定時を待つ）"
             continue
+        # 版面ごとに溜まったら編集（ripe を check が書いた回から。前の形の記録は今までどおり 1 日 2 回の定時）
+        ripe_rule = job == "edit" and "ripe" in j and job not in force
+        if ripe_rule and not j.get("ripe") and not job_now:
+            results[job] = f"整理待ちはまだ溜まっていない（{RIPE_COUNT} 件か {RIPE_HOURS} 時間たった版面から編集）"
+            continue
+        if ripe_rule and int(j.get("tokens_today") or 0) >= int(j.get("token_cap") or EDIT_DAILY_TOKENS):
+            results[job] = f"今日のトークンが上限（{int(j.get('token_cap') or EDIT_DAILY_TOKENS):,}）に達した（明日まで待つ・ボタンは起こせる）"
+            continue
         last = j.get("fired") or {}
         state, why = work_state(j, now, job=job)
         attempts = 1
@@ -436,7 +502,7 @@ def fire(path=None, post=_post, env=None):
             if ago < dt.timedelta(hours=REFIRE_HOURS):
                 results[job] = f"停滞：{why}（{REFIRE_HOURS} 時間待つ・管理ページで確認）"
                 continue
-        if job not in force and not job_now and state in ("progress", "idle", "unpublished", "none") and job in SLOTS:
+        if job not in force and not job_now and not ripe_rule and state in ("progress", "idle", "unpublished", "none") and job in SLOTS:
             try:
                 at = dt.datetime.fromisoformat(last["at"]) if last.get("at") else None
             except (ValueError, TypeError):

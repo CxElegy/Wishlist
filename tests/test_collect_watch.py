@@ -555,10 +555,11 @@ class Workflows(unittest.TestCase):
         self.assertEqual(wf["jobs"]["run"]["timeout-minutes"], 40)
         self.assertGreater(40, digest.COLLECT_DEADLINE_MIN * 2)   # 締め切りのあとに出刊・通知・push の時間が残る
         self.assertGreaterEqual(40 - (digest.COLLECT_DEADLINE_MIN + digest.COLLECT_GRACE_MIN), 15)   # 固まった版面を待つのをやめたあとも
-        step = next(s for s in wf["jobs"]["run"]["steps"] if "新关注项 → 立刻 AI 编辑" in s.get("name", ""))
+        step = next(s for s in wf["jobs"]["run"]["steps"] if "溜まった版面 → 立刻 AI 编辑" in s.get("name", ""))
         self.assertIn("gate.py fire", step["run"])
         self.assertNotIn("api.anthropic.com", step["run"])       # 直接起こさない（一時停止・記録を通す）
-        self.assertEqual(step["env"]["GATE_NOW"], "edit")
+        self.assertNotIn("if", step)                              # 収集のたびに（溜まった版面があれば起こす）
+        self.assertIn("export GATE_NOW=edit", step["run"])        # 新しい関注項は GATE_NOW
         self.assertIn("git push", step["run"])                   # 起こした記録を push
         self.assertIn("すぐの頼みを残した", step["run"])          # 60 分以内で止められた頼み（now_pending）も push する
         self.assertIn("GATE_NOW_ITEMS", step["run"])

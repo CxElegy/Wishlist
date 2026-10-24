@@ -117,29 +117,27 @@ jobs:
           done
           exit 1
 
-      # 新加的关注项已经收集到消息、但当天还没被 AI 编辑过：经ゲート（gate.py fire）立刻叫 AI 编辑，不用等 9:00 / 18:00 的回。
-      # GATE_NOW=edit：间隔・定时不看，但管理页的一時停止（edit_control）・仓库变量 GATE_FIRE=0 照样守，叫了就记进 state/gate.json・state/log/gate.json。
-      # 必须在推送之后，Routine 拉仓库时才看得到新条目。需要仓库 Secret ROUTINE_FIRE_TOKEN；没设置就跳过，照旧等定时编排
-      - name: 新关注项 → 立刻 AI 编辑（ゲート経由）
-        if: env.NEW_ITEMS != ''
+      # 收集完：版面ごとに溜まったら（gate.edit_ripe：整理待ち 3 件以上・最古が 2 小时・初めての版面）经ゲート（gate.py fire）立刻叫 AI 编辑，
+      # 不等 9:00 / 18:00（2026-10-24 用户定的）。新加的关注项另加 GATE_NOW=edit。编辑中（60 分以内）・停滞・一時停止・GATE_FIRE=0・1 日的 token 上限照样守，
+      # 叫了就记进 state/gate.json・state/log/gate.json。必须在推送之后，Routine 拉仓库时才看得到新条目。需要仓库 Secret ROUTINE_FIRE_TOKEN；没设置就跳过
+      - name: 溜まった版面 → 立刻 AI 编辑（ゲート経由）
         env:
           ROUTINE_TOKEN_EDIT: ${{ secrets.ROUTINE_FIRE_TOKEN }}
           GATE_FIRE: ${{ vars.GATE_FIRE || 'edit' }}
-          GATE_NOW: edit
         run: |
-          if [ -z "$ROUTINE_TOKEN_EDIT" ]; then echo "没设置 ROUTINE_FIRE_TOKEN，等定时编排"; exit 0; fi
+          if [ -z "$ROUTINE_TOKEN_EDIT" ]; then echo "没设置 ROUTINE_FIRE_TOKEN，等后台作業"; exit 0; fi
           git pull -q --rebase || true
-          names=$(python scripts/digest.py unedited --only "$NEW_ITEMS")
-          if [ -z "$names" ]; then echo "新关注项还没有消息或已编排过，不用叫 AI 编辑"; exit 0; fi
-          echo "新关注项：$names"
-          python scripts/gate.py check > /dev/null || { echo "::warning::ゲートの判断に失敗、定時を待つ"; exit 0; }
-          GATE_NOW_ITEMS="$names" python scripts/gate.py fire > /tmp/fire.txt || { echo "::warning::叫 AI 编辑失败，等定时编排"; exit 0; }
+          names=""
+          if [ -n "$NEW_ITEMS" ]; then names=$(python scripts/digest.py unedited --only "$NEW_ITEMS"); fi
+          if [ -n "$names" ]; then echo "新关注项：$names"; export GATE_NOW=edit; fi
+          python scripts/gate.py check > /dev/null || { echo "::warning::ゲートの判断に失敗、後台作業を待つ"; exit 0; }
+          GATE_NOW_ITEMS="$names" python scripts/gate.py fire > /tmp/fire.txt || { echo "::warning::叫 AI 编辑失败，等后台作業"; exit 0; }
           cat /tmp/fire.txt
           # 起こした・または「60 分以内に起こし済み」で止められて頼みを残した（jobs.edit.now_pending：後台作業が 60 分後に起こす）ときだけ push
           grep -qE "^edit *(Claude を起こした|.*すぐの頼みを残した)" /tmp/fire.txt || exit 0
           # 叫起的记录（下次ゲート判断「編集中」「停滞」用）也 push 上去
           git add state/gate.json state/log/gate.json
-          git diff --cached --quiet || git commit -q -m "ゲート：新関注項で AI 編集を起こした（または頼みを残した）"
+          git diff --cached --quiet || git commit -q -m "ゲート：溜まった版面で AI 編集を起こした（または頼みを残した）"
           git stash -q --include-untracked || true   # ほかに変わったもの（判断だけの記録）は捨てる：pull --rebase の邪魔になる
           for i in 1 2 3; do
             if git pull --rebase -X theirs -q; then git push && exit 0; else git rebase --abort || true; fi
