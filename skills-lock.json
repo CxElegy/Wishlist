@@ -1,6 +1,18 @@
 {
   "version": 1,
   "skills": {
+    "caveman": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman/SKILL.md",
+      "computedHash": "71b600c88c8d1d36f18c4875db23b53c5d6cb9ba3195e19451d6b1bb67db07c4"
+    },
+    "caveman-compress": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman-compress/SKILL.md",
+      "computedHash": "d820dbf2fa00a84f4a8e4c508444d88958f2140585d9c212828675e4e59d3ace"
+    },
     "copywriting": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
@@ -42,6 +54,12 @@
       "sourceType": "github",
       "skillPath": "skills/onboarding/SKILL.md",
       "computedHash": "5606ee5c3f1cde7478febf0c957bf414fb2aa919327b4906009d77ee060d1882"
+    },
+    "ponytail": {
+      "source": "dietrichgebert/ponytail",
+      "sourceType": "github",
+      "skillPath": "skills/ponytail/SKILL.md",
+      "computedHash": "061f887d9e3e735f85db3be3655a8936a00f24d5fb65ac4ab74a968a770fe342"
     },
     "python-testing-patterns": {
       "source": "wshobson/agents",

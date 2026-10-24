@@ -6,6 +6,7 @@
 ## スキル（2026-10-22，用户定的）
 
 - 設計・実装の前に、合うスキルを `find-skills`（`npx skills find …`）で探し、インストール数・出どころを確かめて入れる（`.claude/skills/`、出どころと指紋は `skills-lock.json`）。直接直す前に、スキルの考え方（他の人の framework・設計理念）に照らして直し方を決める。
+- トークンの節約（2026-10-24）：ponytail（コードは最小の完全な変更）・caveman（係どうしの報告を短く、ユーザーへの返事は普通の日本語）・caveman-compress（長いファイルを短く、使う前に確かめる）。HARNESS.md「トークンを節約する」。
 - 入れてあるもの：find-skills・supabase・supabase-postgres-best-practices・web-design-guidelines・frontend-design・webapp-testing・web-perf・seo-audit・signup・onboarding・site-architecture・improve-codebase-architecture・python-testing-patterns（＋前からの impeccable・diagram・wishlist）。
 
 ## 主动告诉我有哪些 MCP 连接器能用
