@@ -71,6 +71,12 @@ class Fill(unittest.TestCase):
         self.assertNotIn("emblem_kind", add)          # 種類は毎回規則から（config に残さない）
         self.assertEqual(add["emblem_state"], {"state": "ok", "have": 2, "at": 100, "note": "2 枚"})
 
+    def test_note_uses_library_retry(self):
+        b = {"id": 9, "name": "x", "wd": None, "config": {}}
+        r = {"state": "failed", "note": "0 枚足した（a）。外した理由：b。新しい記事が来たらすぐ、来なくても 1 時間後にもう一度"}
+        add = le.fill_board(b, {}, None, BASE, fill=lambda item, log=None: r, now=1)
+        self.assertEqual(add["emblem_state"]["note"], f"0 枚足した（a）。外した理由：b。{le.RETRY_HOURS} 時間後にもう一度")
+
     def test_quote_name_skipped(self):
         add = le.fill_board({"id": 1, "name": 'a"b', "config": {}}, {}, None, BASE, fill=lambda *a, **k: 1 / 0, now=5)
         self.assertEqual(add["emblem_state"]["state"], "failed")

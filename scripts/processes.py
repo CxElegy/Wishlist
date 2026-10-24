@@ -537,7 +537,7 @@ PROCESSES = [
             {"id": "le3", "kind": "step", "lane": "actions", "title": "店長と同じ emblem_fill を一時の items.yaml で",
              "text": "版面 1 つだけの items.yaml と docs/emblems を一時の場所に（sandbox）。集める → 確かめる → 選ぶ → 切り抜く · 本物の items.yaml には触れない · print とライブの帯に名前を出さない", "uses": ["roster", "cutcheck", "facefit", "facerule"]},
             {"id": "le4", "kind": "store", "lane": "web", "title": "公開の箱 emblems と boards.config", "uses": ["supabase"],
-             "text": "画像 = emblems/<Wikidata の番号か b+id>-<中身の指紋 10 字>.webp（版面の名前は出さない）· config.emblem・theme・emblem_*（手がかり）・emblem_state {state, have, at, note}"},
+             "text": "画像 = emblems/<Wikidata の番号か b+id>-<中身の指紋 10 字>.webp（版面の名前は出さない）· config.emblem・theme・emblem_*（手がかり）・emblem_state {state, have, at, note}（note の「もう一度」は店長の毎時ではなく RETRY_HOURS 24 時間に書き換える）"},
             {"id": "le5", "kind": "step", "lane": "actions", "title": "お客さまのページを作り直す（user_pages.py）",
              "text": "follows の boards(name,config) から emblem・theme を版面に（店長の版面と同じ render._emblem）"},
         ],
