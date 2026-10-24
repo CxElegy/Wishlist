@@ -429,3 +429,17 @@ class Resubs(unittest.TestCase):
             raise AssertionError("聞かない")
         r = library.plan_users(users, boards, no, pause=0, have={(a, "wd:Q1")})
         self.assertEqual(r["follows"], [])
+
+
+class Visible(unittest.TestCase):
+    """案 B（2026-10-24）：ログインなしは店長が追いかけている版面だけ、お客さまはそれ＋自分の、店長は全部。足すだけ（restrictive）で、using (true) の読み取りに AND で効く。"""
+
+    def test_restrictive_policies(self):
+        sql = (ROOT / "db" / "library.sql").read_text(encoding="utf-8")
+        tail = sql[sql.index("create or replace function public.board_visible"):]
+        self.assertIn("f.account = 'test1'", tail)
+        self.assertIn("public.is_admin()", tail)
+        self.assertIn("private.user_account((select auth.jwt()) ->> 'email')", tail)
+        self.assertIn("security definer", tail)
+        for table, col in (("boards", "id"), ("board_stories", "board_id")):
+            self.assertIn(f"on public.{table} as restrictive for select to anon, authenticated\n  using (public.board_visible({col}))", tail)
