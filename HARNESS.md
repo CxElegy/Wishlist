@@ -54,6 +54,19 @@
   3. **最先端で賞を取ったウェブデザイン**（Awwwards・Webby・CSS Design Awards・FWA など、直近 2 年）のうち、ニュース・雑誌・ゲーム的な UI。私たちの P5 の手法・版面・ポスターに取り入れられる手法
 - 借りる案は DESIGN_PRINCIPLES.md の表 B・C に足し、「設計の考えの育て方」の 2（確かめる）を通してから段にする。そのまま写さず、私たちの考え（A1〜A13）に合う形に直す。
 
+## どこにでもある AI っぽさから抜け出す・自分で設計して確かめる（2026-10-24，用户定的）
+
+画面を作る・変える段は、この順で回す（人に見せる前に自分で 1 周する）：
+1. **参考にする**：BENCHMARKS.md の受賞サイト（Awwwards・Webby など）と、店長のページ（test1）の作り（DESIGN_PRINCIPLES.md）を先に見る。似たものの平均を作らない。
+2. **考えを決める**：`.claude/skills/design-taste-frontend` の考え（その作品・その人のものからしか出てこない 1 つの考え）で方向を決める。どこにでもある型（真ん中に大見出し＋3 枚のカード、ふわっとした色のにじみ、意味のないアイコン、作った数字）は使わない。
+3. **設計する**：Figma の MCP がつながっていれば、Figma で見本を作って写真を撮る（get_screenshot）。なければテストグラウンドに HTML の見本。見た目を変えるものは、あなたに見本を見せて決めてもらう（上の決まり）。
+4. **作る**：店長と同じ部品（render.py・令牌）で。
+5. **確かめる**：Playwright（`.mcp.json` の playwright MCP、または `harness/ux_check.py`）で 1400 / 390 px を開いて押して写真を撮る。`node .claude/skills/design-taste-frontend/scripts/inspect.mjs <網址> --widths 1440,390 --allow <下の許すもの>`（Chrome は `--no-sandbox` が要る：CHROME_PATH に包みの shell を渡す）の FAIL が 0 になるまで直す。画像が出ない・読み込みが遅いもここで見る。
+6. **見せる**：合併すると Discord に Before / After（変わった所の赤枠）。
+
+**P5 の作りとして許すもの**（点検の FAIL でも直さない。A4 の考え）：shadow・button-fx・text-shadow（硬い影）、outlined-box（枠線）、eyebrow・micro-label（札・英語の小さなラベル）、palette-cream（紙の色）、emoji（♥ ⚙ ★ 👍👎 は部品）、gradient（ポスターの角のトンボ）、off-centre（左の目次の線路）。
+**直すもの**：contrast・edge-text・headline-lines・font-fallback・small-text（読む字は 13px 以上を目安）・size-count（字の大きさの段を減らす）。2026-10-24 の最初の点検：FAIL 15・WARN 9（BACKLOG に段）。
+
 ## トークンを節約する（2026-10-24，用户定的：スキルを入れて全部使う）
 
 - **ponytail**（`.claude/skills/ponytail`，dietrichgebert/ponytail，約 10 万件）：コードを書く段は ponytail の full で。いちばん小さい完全な変更、要らない抽象・設定を作らない。ただし「一番大事な決まり」と影響表は削らない。
