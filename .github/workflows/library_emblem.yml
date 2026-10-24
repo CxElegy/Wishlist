@@ -1,0 +1,52 @@
+name: ライブラリの小元素
+
+# お客さまの版面（ライブラリの版面のうち店長の版面でないもの）にも、店長と同じ規則で小元素を（scripts/library_emblem.py）。
+# 版面ごとに 1 回、結果は boards.config.emblem、画像は Supabase Storage の公開の箱 emblems（db/emblems.sql）。倉庫には何も書かない。
+# 2 時間ごと（毎時 29 分の偶数時）と手で。まだ一度も試していない版面から、時間の予算の中で。終わったらお客さまのページを作り直す。
+# ログは数だけ（Actions のログは公開：版面の名前は出さない）。
+
+on:
+  schedule:
+    - cron: "29 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: "時間の予算（分）"
+        default: "30"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: library-emblem
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      WIKIMEDIA_TOKEN: ${{ secrets.WIKIMEDIA_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: |
+          pip install -r requirements.txt
+          pip install -q "rembg[cpu]>=2.0.60,<3"
+      - name: 模型的缓存（店長の後台と同じ）
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.rembg
+            ~/.cache/wishlist-faces
+          key: emblem-models-v1
+      - name: 小元素（店長と同じ emblem_fill を版面ごとに）
+        run: python scripts/library_emblem.py --minutes "${{ inputs.minutes || '30' }}"
+      - name: お客さまのページを作り直す
+        continue-on-error: true
+        timeout-minutes: 10
+        run: python scripts/user_pages.py

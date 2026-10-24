@@ -37,6 +37,7 @@ TYPE_OF_SEC = {"游戏": "game", "影视": "anime", "演出": "event", "运动":
 IMG_PER_BOARD = 3        # 1 版面で写真を探す記事の数（頭から）
 IMG_BUDGET_S = 240       # 1 回の写真探しの合計時間（秒）
 STORIES_PER_BOARD = 8
+BOARD_DESIGN = ("emblem", "theme")   # ライブラリの版面の共有のデザイン（boards.config、library_emblem.py が規則で作る）
 FIRST_BOARD = "はじめに"   # 版面が 0 個の人のページに置く静かな版面の名前
 ADD_URL = "../?add"       # 追いかけるものを足す流れ（入口と同じ、render.AUTH_JS の ADD）
 
@@ -63,8 +64,10 @@ def own_picks(follows, picks, sizes=None):
         name = str(((f.get("boards") or {}).get("name")) or "").strip()
         if name and norm(name) in want and norm(name) not in seen:
             seen.add(norm(name))
+            cfg = (f.get("boards") or {}).get("config") or {}
             out.append({"name": name, "sec": f.get("section") or "", "subs": f.get("subs") or {},
-                        "size": f.get("size") or sizes.get(norm(name))})
+                        "size": f.get("size") or sizes.get(norm(name)),
+                        "design": {k: cfg[k] for k in BOARD_DESIGN if cfg.get(k)}})
     for p in picks or []:
         if norm(p.get("name")) not in seen:
             out.append({**p, "size": sizes.get(norm(p.get("name")))} if sizes.get(norm(p.get("name"))) else p)
@@ -129,7 +132,7 @@ def user_items(picks, shop_items):
             it["_shop"] = True
         else:
             it = {"name": name, "type": TYPE_OF_SEC.get(sec, "category"), "section": sec or taxonomy.classify(name),
-                  "keywords": [name], "match": [name], "subs": dict(p.get("subs") or {})}
+                  "keywords": [name], "match": [name], "subs": dict(p.get("subs") or {}), **(p.get("design") or {})}
         if p.get("size") in ("S", "M", "L"):
             it["size"] = p["size"]
         out.append(it)
@@ -262,7 +265,7 @@ def main(argv):
         acct = account_of(u["email"])
         try:
             rows = _supa(f"/rest/v1/user_boards?account=eq.{acct}&select=item,sec,state,stories")
-            follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(name)&order=pos")
+            follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(name,config)&order=pos")
             chosen = {r["section"]: r["scheme"] for r in _supa(f"/rest/v1/nav_schemes?account=eq.{acct}&select=section,scheme") or []}
             pages = {}
             html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
