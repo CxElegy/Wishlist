@@ -64,7 +64,9 @@
    "weight": "lead",
    "refs": [
     2,
-    3
+    3,
+    10,
+    9
    ],
    "image": "https://www.kpopmonster.jp/wp-content/uploads/2026/10/a2olite01.webp"
   },
@@ -83,7 +85,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    7,
+    8
    ]
   },
   {
@@ -196,7 +200,7 @@
  ],
  "_covered": {
   "漫威电影": 24,
-  "A2O LITE": 6,
+  "A2O LITE": 10,
   "GTA 6": 6,
   "周杰伦": 4,
   "ILLIT": 3,
