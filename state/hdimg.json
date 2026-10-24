@@ -442,6 +442,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/WTA_1_037cd01c0c.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
+ },
  "https://cogconnected.com/wp-content/uploads/2026/10/EVILGARD-Featured.jpg": {
   "w": 890,
   "h": 520,
@@ -841,10 +847,10 @@
   "v": 3
  },
  "https://image.starnewskorea.com/21/2026/10/2026102309421333450_1.jpg": {
-  "w": 1200,
-  "h": 1748,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1346,fit=cover,q=high,sharpen=2/21/2026/10/2026102118251711514_1.jpg": {
   "w": 1200,
@@ -1113,9 +1119,9 @@
   ],
   "why": "看不清"
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fWEys.img": {
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fWErM.img": {
   "w": 1280,
-  "h": 720,
+  "h": 853,
   "target": 1280,
   "v": 3
  },
@@ -1998,6 +2004,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261024-00010001-tennisnet-000-2-view.jpg?exp=10800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
   "h": 1080,
@@ -2518,12 +2530,6 @@
   "target": 1280,
   "v": 3
  },
- "https://statico.soapcentral.com/editor/2026/10/04b5c-17927586605397.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
-  "v": 3
- },
  "https://statics-prod.mirrordaily.news/images/0f0ff192-36b2-458e-adef-6d490374d1fb.jpg": {
   "w": 2048,
   "h": 1536,
@@ -2604,6 +2610,12 @@
   "h": 768,
   "target": 720,
   "v": 3
+ },
+ "https://technology.inquirer.net/files/2026/10/image-1-1.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/ac-switch/thumbnail/63317/4345231d7bff38b91b280f4eb2272bef": {
   "w": 1200,
@@ -2746,6 +2758,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.-BNtbiZ4eNKVRe0rqNS4xw&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
+ },
  "https://www.bing.com/th?id=ONUT.-rGR_-zLysSmBgs1otuiaQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2830,12 +2848,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.ETAq8LVpbT6XPHSwPaVNkA&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
   "h": 334,
@@ -2894,6 +2906,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.TkmAnUzlkdnJGcmU3C57aA&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
+ },
  "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200": {
   "w": 700,
   "h": 346,
@@ -2934,12 +2952,6 @@
  "https://www.bing.com/th?id=ONUT.bYOBx8ow0oYCSeupcNk-8g&pid=News&w=640": {
   "w": 640,
   "h": 237,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ck6Mg001BrOSbWyGoEyvGg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3081,6 +3093,12 @@
   "h": 460,
   "target": 720,
   "v": 3
+ },
+ "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://www.chosun.com/resizer/v2/ME3DOMBSMMZTOOLFMM2DMNRVMQ.jpg?auth=27d6b2f93343eb24497b1a9fb703d0c74ffc749ee2ea53a6464955f9b07ac169&width=530&height=278&smart=true": {
   "w": 530,
@@ -3251,15 +3269,15 @@
   "target": 720,
   "v": 3
  },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6JasonReviewEmbargo.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
+ },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6LuciaJasonLaunchTrailer.jpg": {
   "w": 2000,
   "h": 1500,
-  "target": 720,
-  "v": 3
- },
- "https://www.omg.com.tw/Images/base/fbshare.jpg": {
-  "w": 1200,
-  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -3292,6 +3310,12 @@
   "h": 527,
   "target": 720,
   "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Pedro-Pascal-F4.jpg?resize=1200,630": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,

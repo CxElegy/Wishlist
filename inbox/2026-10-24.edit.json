@@ -1,10 +1,34 @@
 {
  "漫威电影": [
   {
+   "headline": "Mr. Fantastic Takes the Pitcher's Mound During Avengers: Doomsday Promo Aired During World Series Game 1",
+   "highlight": "Doomsday Promo",
+   "blurb": "Avengers: Doomsday の新映像が MLB ワールドシリーズ第1戦の中で公開され、Mr. Fantastic が始球式に登場しました。",
+   "weight": "lead",
+   "refs": [
+    68,
+    73,
+    76,
+    83,
+    87,
+    74,
+    67,
+    69,
+    84,
+    75,
+    94,
+    82,
+    72,
+    85,
+    98
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fWErM.img"
+  },
+  {
    "headline": "Sandra Hüller Set for Cameo Role in ‘Avengers: Doomsday’",
    "highlight": "Cameo Role",
-   "blurb": "Oscar-nominated Sandra Hüller joins Avengers: Doomsday in a secret cameo role, reported by multiple outlets.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     45,
     47,
@@ -13,7 +37,11 @@
     57,
     59,
     64,
-    48
+    48,
+    78,
+    97,
+    92,
+    70
    ],
    "image": "https://www.bing.com/th?id=ONUT.vuYQdO4GK_fpGWkwGRZqhw&pid=News&w=1200"
   },
@@ -49,17 +77,6 @@
     43,
     60,
     23
-   ]
-  },
-  {
-   "headline": "Chris Pratt Reveals Star-Lord Is Coming Back To The MCU",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    16,
-    6,
-    19
    ]
   }
  ],
@@ -134,6 +151,17 @@
    "image": "https://www.bing.com/th?id=ONUT.Zxm3z2yvsEZNWcX4qpsRNA&pid=News&w=1200"
   },
   {
+   "headline": "GTA 6 review embargo time leaks, with some sites restricted until release date",
+   "highlight": "review embargo",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    27,
+    34
+   ]
+  },
+  {
    "headline": "GTA 6首支電視廣告留下槍枝，剪掉吻戲與Xbox標誌",
    "highlight": "",
    "blurb": "",
@@ -150,7 +178,8 @@
    "weight": "normal",
    "refs": [
     23,
-    26
+    26,
+    29
    ]
   },
   {
@@ -161,15 +190,6 @@
    "refs": [
     13,
     8
-   ]
-  },
-  {
-   "headline": "GTA 6 Burgers Will Be Available In Florida Throughout The Year",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
    ]
   }
  ],
@@ -203,17 +223,31 @@
    "weight": "normal",
    "refs": [
     18,
-    17
+    17,
+    19,
+    23
    ]
   },
   {
-   "headline": "A2O LITE 아이찡, 부모 빚투 후폭풍..中 팬들 나섰다 \"대신 갚자\"",
+   "headline": "A2O LITEアイチンの両親の債務を巡り、中国ファンが募金を呼びかけ",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    20,
+    21,
+    22,
     4,
     9
+   ]
+  },
+  {
+   "headline": "A2O LITEシリ、高難度ペア振付に「気に入った…Kポップは得意ジャンルでなかった」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    24
    ]
   }
  ],
@@ -237,22 +271,26 @@
    ]
   },
   {
-   "headline": "MMORPG《ROM: 王權之憶》全球刪檔測試圓滿結束，預定第1季正式推出",
+   "headline": "CABAL: Revolution — Combo InterActive’s newest mobile MMORPG announces simultaneous CBT on November 5",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
-   ]
+    18
+   ],
+   "event": {
+    "date": "2026-11-05",
+    "label": "CBT"
+   }
   }
  ],
  "_covered": {
-  "漫威电影": 66,
+  "漫威电影": 99,
   "三星手机": 27,
-  "GTA 6": 26,
-  "A2O LITE": 18,
-  "MMORPG 新作": 16,
-  "日本顶级网球赛事": 15,
+  "GTA 6": 37,
+  "A2O LITE": 27,
+  "MMORPG 新作": 20,
+  "日本顶级网球赛事": 25,
   "ILLIT": 12,
   "周杰伦": 12,
   "チェーンソーマン": 10,
@@ -323,6 +361,32 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "辻岡史帆「トップ選手の凄さ実感」 ツアーデビュー戦黒星も目標は「グランドスラム出場」＜女子テニス＞",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20,
+    18
+   ]
+  },
+  {
+   "headline": "Pan Pacific Open 2026: Rybakina, Fernandez And Chwalinska In Tokyo",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22,
+    23,
+    24,
+    21
+   ],
+   "event": {
+    "date": "2026-10-26",
+    "label": "本戦開幕"
+   }
   }
  ],
  "ILLIT": [
