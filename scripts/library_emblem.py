@@ -139,7 +139,8 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
         if got.get("emblem"):
             add["emblem"] = stash(got["emblem"], site, stem, upload, base)
     have = len(got.get("emblem") or [])
-    add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": str(r.get("note") or "")[:200]}
+    note = re.sub(r"新しい記事が来たらすぐ、来なくても \d+ 時間後", f"{RETRY_HOURS} 時間後", str(r.get("note") or ""))  # 店長の文のまま（材料の指紋・毎時）だと中身と合わない
+    add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200]}
     return add
 
 
