@@ -1318,8 +1318,9 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   // 選んだものがあれば、店長のページと同じ版面のうち自分の選んだものだけを出す（2026-10-22，用户定的：お客さまも店長と同じ機能。記事は同じ公開のニュース）
   // 本人のページ（scripts/user_pages.py が店長と同じ部品で作り、非公開の箱 pages/<account>/index.html に置く）があれば、それに替える。
   // 替えたページには meta wl-own があるので、もう一度は読まない。まだ作られていなければ今までどおり（showMine）
+  var OWN_PAGE=false;   // 2026-10-24：差し替えたあと画面が白いまま・開き直しのくり返し → 直すまで止める（前の画面を出す）
   function ownPage(){
-    if(!sb||!tok||page!=='index') return Promise.resolve(false);
+    if(!OWN_PAGE||!sb||!tok||page!=='index') return Promise.resolve(false);
     return rpc('my_page_path').then(function(path){
       if(!path) return false;
       return sb.storage.from('pages').download(path+'/index.html').then(function(r){
@@ -1622,7 +1623,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.24 10:38</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.24 11:00</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
