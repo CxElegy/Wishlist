@@ -186,18 +186,36 @@ def anilist_main(media_id, n):
     return [x["name"]["full"] for x in nodes]
 
 
+CAT_PAGES = 5   # 分類の人数は 200 × 5 = 1000 人まで数える
+LH_PAGES = 4    # 1 人の参照は 500 × 4 = 2000 まで数える（それより上は同じ順位）
+
+
 def category_top(api, category, n):
     """Wiki の分類（例：Wizards）のキャラを「ほかのページからのリンク数」→「記事の長さ」の順に多い n 人。
     物語の中心にいるキャラほど多くのページから参照される（AniList にないゲームなどで主要キャラを決める基準）。"""
-    q = urllib.parse.urlencode({"action": "query", "list": "categorymembers", "cmtitle": f"Category:{category}",
-                                "cmlimit": 200, "cmnamespace": 0, "format": "json"})
-    titles = [m["title"] for m in json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["categorymembers"]]
+    titles, cont = [], {}
+    for _ in range(CAT_PAGES):   # 200 人を超える分類も続き（cmcontinue）で全員。頭の 200 人だけだと字の順の A〜B だけになる（原神・ゼルダ）
+        q = urllib.parse.urlencode({"action": "query", "list": "categorymembers", "cmtitle": f"Category:{category}",
+                                    "cmlimit": 200, "cmnamespace": 0, "format": "json", **cont})
+        d = json.loads(_get(f"{api}?{q}", 2_000_000))
+        titles += [m["title"] for m in d["query"]["categorymembers"]]
+        cont = d.get("continue") or {}
+        if not cont:
+            break
+    # 分類の説明の記事（「Character」）・下位のページ（「Aino/Storyline」）は人ではない
+    titles = [t for t in titles if "/" not in t and t.lower() not in (category.lower(), category.lower().rstrip("s"))]
     counts, length = {}, {}
     for t in titles:
-        q = urllib.parse.urlencode({"action": "query", "titles": t, "prop": "linkshere|info", "lhlimit": 500,
-                                    "lhnamespace": 0, "lhshow": "!redirect", "format": "json"})
-        pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
-        counts[t], length[t] = len(pg.get("linkshere", [])), pg.get("length", 0)
+        counts[t], cont = 0, {}
+        for _ in range(LH_PAGES):   # 参照 500 で頭打ちにしない（主役ほど 500 を超え、同じ数が並んで記事の長さだけで決まっていた）
+            q = urllib.parse.urlencode({"action": "query", "titles": t, "prop": "linkshere|info", "lhlimit": 500,
+                                        "lhnamespace": 0, "lhshow": "!redirect", "format": "json", **cont})
+            d = json.loads(_get(f"{api}?{q}", 2_000_000))
+            pg = next(iter(d["query"]["pages"].values()))
+            counts[t], length[t] = counts[t] + len(pg.get("linkshere", [])), pg.get("length", 0)
+            cont = d.get("continue") or {}
+            if "lhcontinue" not in cont:
+                break
     # リンク数が同じ（ナビ欄で全員つながっているだけ）のときは、記事の長さ（主要キャラほど長い）で決める
     ranked = sorted(titles, key=lambda t: (-counts[t], -length[t]))
     print("  リンク数・記事の長さ：" + "、".join(f"{t} {counts[t]}/{length[t]}" for t in ranked[:n + 3]), file=sys.stderr)

@@ -265,6 +265,17 @@ def commons_photos(subject, limit=10):
     return sorted(out, key=lambda x: -x["area"])[:limit]
 
 
+# Wikidata の P154・P18 でも小元素にならない画像（ファイル名で）：字だけ（京都の「Kyoto (Chinese characters).svg」）・
+# 説明の図（生成AI の「Oversimplification on how AI Model … works.png」）・1950 年より前の写真や絵（大相撲の 1890s・c1860s）
+NOT_EMBLEM = re.compile(r"\((?:chinese|japanese) characters\)|\bkanji\b|calligraphy|diagram|flow ?chart|infographic|schematic|"
+                        r"\bhow\b.*\bworks?\b|oversimplification|(?:^|[\s(]|\bc)(?:1[0-8]\d\d|19[0-4]\d)s?\b", re.I)
+
+
+def not_emblem(filename):
+    """Wikidata の画像のファイル名が、版面の顔にならないもの（字だけ・図・古い写真）か。"""
+    return bool(NOT_EMBLEM.search(filename))
+
+
 def wikidata_images(query, props=("P154", "P18"), limit=3):
     """Wikidata の主題から、公式ロゴ（P154）と代表画像（P18）。Commons のファイルなのでライセンス付き。
     Commons の全文検索より、主題を取り違えにくく、429 にもなりにくい。"""
@@ -283,7 +294,7 @@ def wikidata_images(query, props=("P154", "P18"), limit=3):
             for prop in props:
                 for c in claims.get(prop, [])[:limit]:
                     fn = (c.get("mainsnak", {}).get("datavalue") or {}).get("value")
-                    if isinstance(fn, str):
+                    if isinstance(fn, str) and not not_emblem(fn):
                         out.append({"title": fn, "image": "https://commons.wikimedia.org/wiki/Special:FilePath/"
                                     + urllib.parse.quote(fn) + "?width=500",
                                     "page": "https://commons.wikimedia.org/wiki/File:" + urllib.parse.quote(fn.replace(" ", "_")),
@@ -720,7 +731,7 @@ def fandom_api(item, strict=False):
     return None
 
 
-CHAR_CATEGORIES = ("Main characters", "Main Characters", "Playable characters", "Characters")   # Fandom でよくある分類名（先のほうが主要キャラに近い）
+CHAR_CATEGORIES = ("Main characters", "Main Characters", "Playable characters", "Playable Characters", "Characters")   # Fandom でよくある分類名（先のほうが主要キャラに近い）
 
 
 def find_sources(item, log=print):

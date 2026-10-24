@@ -32,7 +32,7 @@ class Kind(unittest.TestCase):
 
     def test_board_item(self):
         b = {"id": 154, "name": "大谷翔平", "wd": "Q1", "config": {"type": "product", "keywords": ["大谷翔平"], "emblem_who": ["a"],
-                                                                 "emblem_state": {"state": "failed"}, "match": ["大谷翔平"]}}
+                                                                 "emblem_state": {"state": "failed", "v": le.RULES}, "match": ["大谷翔平"]}}
         it = le.board_item(b, {"section": "运动", "subs": {}}, wd)
         self.assertEqual(it["emblem_kind"], "person")
         self.assertEqual(it["type"], "category")                  # 板块から（config の product ではない）
@@ -146,14 +146,39 @@ class Fill(unittest.TestCase):
 
     def test_due(self):
         now = 10 ** 6
-        bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0}}},
+        bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES}}},   # 済み・今の規則 → 飛ばす
+              {"id": 8, "config": {"emblem_state": {"state": "ok", "at": 0, "have": 3}}},   # 済みでも前の版の規則 → 作り直し
               {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES}}},
               {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2}}},   # 前の版の規則 → すぐ
               {"id": 3, "config": {"emblem_state": {"state": "failed", "at": 0}}},   # 0 枚 → 途中より先
               {"id": 4, "config": {"emblem_state": {"state": "running", "at": now, "have": 5}}},
               {"id": 7, "config": {"emblem_state": {"state": "running", "at": now, "have": 0}}},
               {"id": 5, "config": {}}]
-        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 4, 6])
+        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 4, 8, 6])
+
+    def test_rebuild_on_new_rules(self):
+        """版が上がった版面は前の規則のもの（名簿・分類・小元素）を捨てて作り直す。キャラは新しい名簿にいる人の小元素だけ残す。"""
+        seen = {}
+
+        def fake_fill(item, log=print):
+            seen.update(item)
+            emblem_fill._set_field(item["name"], "emblem_who", '["Albedo", "Aloy"]')   # roster が新しい規則で数え直した名簿
+            emblem.write_item(item["name"], [{"subject": "Albedo", "image": "https://e.org/new.png"}], None)
+            return {"state": "running"}
+        old = [{"subject": "Character", "image": "https://e.org/c.png"}, {"subject": "Amber", "image": "https://e.org/a.png"},
+               {"subject": "Albedo", "image": "https://e.org/old.png"}, {"subject": "Aloy", "image": "https://e.org/l.png"}]
+        cfg = {"emblem": old, "emblem_who": ["Character", "Amber"], "emblem_pool": 200, "emblem_category": "Characters",
+               "emblem_fandom": "genshinimpact", "emblem_reject": ["x"], "emblem_state": {"state": "running", "v": le.RULES - 1}}
+        b = {"id": 147, "name": "原神", "wd": None, "config": cfg}
+        add = le.fill_board(b, {"section": "游戏"}, None, BASE, fill=fake_fill, now=1)
+        self.assertNotIn("emblem_category", seen)   # 前の分類・名簿は渡さない（規則でまた探して数える）
+        self.assertNotIn("emblem_who", seen)
+        self.assertEqual(add["emblem_category"], None)
+        self.assertEqual(add["emblem_pool"], None)
+        self.assertNotIn("emblem_fandom", add)
+        # 新しい名簿（Albedo・Aloy）にいない Character・Amber は外し、Aloy の前の小元素は残す。Albedo は新しいほう
+        self.assertEqual([x["image"] for x in add["emblem"]], ["https://e.org/new.png", "https://e.org/l.png"])
+        self.assertEqual(add["emblem_state"]["have"], 2)
 
 
 class UserPage(unittest.TestCase):
