@@ -37,13 +37,15 @@ class Follows(unittest.TestCase):
     FOL = [{"pos": 1, "section": "游戏", "subs": {"platform": "スマホ", "status": "運営中"}, "size": "L", "boards": {"name": "原神"}},
            {"pos": 0, "section": "出行", "subs": {"kind": "観光地"}, "size": None, "boards": {"name": "京都"}}]
 
+    PICKS = [{"name": "原神", "sec": "游戏"}, {"name": "京都", "sec": "出行"}]
+
     def test_follows_first_then_new_picks(self):
-        out = user_pages.own_picks(self.FOL, [{"name": "京都", "sec": "其他"}, {"name": "広島旅行", "sec": "出行"}])
+        out = user_pages.own_picks(self.FOL, [{"name": "原神"}, {"name": "京都", "sec": "其他"}, {"name": "広島旅行", "sec": "出行"}])
         self.assertEqual([p["name"] for p in out], ["京都", "原神", "広島旅行"])   # follows の並び → まだ follows にないもの
         self.assertEqual(out[0]["sec"], "出行")                                    # 板块は follows（picks の「其他」ではない）
 
     def test_subs_and_size_reach_items(self):
-        items = user_pages.user_items(user_pages.own_picks(self.FOL, []), [])
+        items = user_pages.user_items(user_pages.own_picks(self.FOL, self.PICKS), [])
         gen = next(i for i in items if i["name"] == "原神")
         self.assertEqual(gen["size"], "L")
         self.assertEqual(user_pages.own_sub(gen), "運営中")   # 游戏の 1 つ目の分け方（状態）。jsonb の鍵の順に頼らない
@@ -55,9 +57,26 @@ class Follows(unittest.TestCase):
         self.assertEqual(it["motif"], "leaf")
 
     def test_page_shows_subheads(self):
-        html_ = user_pages.build("a@example.com", {}, {}, [], None, {}, 0, {}, self.FOL)
+        html_ = user_pages.build("a@example.com", {"picks": self.PICKS}, {}, [], None, {}, 0, {}, self.FOL)
         self.assertIn("運営中", html_)
         self.assertIn("観光地", html_)
+
+    def test_removed_pick_disappears(self):
+        # 設定の「外す」は picks だけを書き換え、follows の行は残る → 外した版面は出さない
+        out = user_pages.own_picks(self.FOL, [{"name": "京都", "sec": "出行"}])
+        self.assertEqual([p["name"] for p in out], ["京都"])
+        self.assertEqual(user_pages.own_picks(self.FOL, []), [])          # 全部外した
+        self.assertEqual(user_pages.own_picks(self.FOL, None), [])
+        html_ = user_pages.build("a@example.com", {"picks": [{"name": "京都", "sec": "出行"}]}, {}, [], None, {}, 0, {}, self.FOL)
+        self.assertNotIn("原神", html_)
+        self.assertIn("京都", html_)
+
+    def test_readded_pick_uses_follows_again(self):
+        # 外したあとカードで付け直した → follows の置き方（板块・小分類・篇幅）がまた効く
+        out = user_pages.own_picks(self.FOL, [{"name": "京都", "sec": "出行"}, {"name": " 原神 ", "sec": "其他"}])
+        gen = next(p for p in out if p["name"] == "原神")
+        self.assertEqual((gen["sec"], gen["size"]), ("游戏", "L"))
+        self.assertEqual(len(out), 2)
 
 
 class Issue(unittest.TestCase):
