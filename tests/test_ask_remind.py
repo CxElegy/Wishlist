@@ -32,5 +32,15 @@ class Step(unittest.TestCase):
         self.assertEqual(st2, st)                                                  # 待ちはそのまま
 
 
+class OldState(unittest.TestCase):
+    def test_old_shape_is_dropped(self):
+        import json, tempfile
+        with tempfile.TemporaryDirectory() as d:
+            sp = pathlib.Path(d) / "s.json"
+            sp.write_text(json.dumps({"名前": {"first": 1, "last": 1, "count": 1}}), encoding="utf-8")
+            self.assertEqual(ar.main([str(sp), "tick"]), 0)
+            self.assertEqual(json.loads(sp.read_text(encoding="utf-8")), {})
+
+
 if __name__ == "__main__":
     unittest.main()
