@@ -79,6 +79,59 @@ class Follows(unittest.TestCase):
         self.assertEqual(len(out), 2)
 
 
+class Layout(unittest.TestCase):
+    """本人が設定ページで変える篇幅・分け方（db/my_layout.sql）が本人のページに効く。店長と同じ render_settings。"""
+    FOL = Follows.FOL
+    PICKS = Follows.PICKS
+
+    def test_size_from_prefs_when_no_follows(self):
+        out = user_pages.own_picks(self.FOL, self.PICKS + [{"name": "広島旅行", "sec": "出行"}], {"広島旅行": "S", "原神": "M", "京都": "X"})
+        by = {p["name"]: p.get("size") for p in out}
+        self.assertEqual(by, {"京都": None, "原神": "L", "広島旅行": "S"})   # follows.size が先、ないときだけ prefs.sizes。S/M/L 以外は捨てる
+
+    def test_chosen_scheme(self):
+        gen = user_pages.user_items(user_pages.own_picks(self.FOL, self.PICKS), [])[1]
+        self.assertEqual(gen["name"], "原神")
+        self.assertEqual(user_pages.own_sub(gen, user_pages.own_schemes({"游戏": "platform"})), "スマホ")
+        self.assertEqual(user_pages.own_sub(gen, user_pages.own_schemes({"游戏": "nope"})), "運営中")   # 候補にない値は 1 つ目
+        html_ = user_pages.build("a@example.com", {"picks": self.PICKS}, {}, [], None, {}, 0, {}, self.FOL, {"游戏": "platform"})
+        self.assertIn("スマホ", html_)
+
+    def test_settings_page_same_parts_own_writes(self):
+        pages = {}
+        user_pages.build("a@example.com", {"picks": self.PICKS, "sizes": {}}, {}, [], None, {}, 0, {}, self.FOL, {"游戏": "platform"}, pages)
+        s = pages["settings.html"]
+        self.assertIn('name="wl-own"', s)
+        self.assertIn('lang="ja"', s)
+        self.assertIn('class="seg"', s)             # 店長と同じ S/M/L の部品
+        self.assertIn('class="srow"', s)            # 分け方の部品
+        self.assertIn('data-v="platform" aria-pressed="true"', s)
+        self.assertIn("my_size_set", s)
+        self.assertIn("my_nav_scheme_set", s)
+        self.assertIn(user_pages.ADD_URL, s)
+        for w in ("additem.js", "id=\"wiz\"", "class=\"secdel\"", "class=\"del\"", "admin.html", "回到简报"):   # 店長の向導・管理の道は出さない
+            self.assertNotIn(w, s)
+
+    def test_shop_settings_unchanged(self):
+        s = render.render_settings([{"name": "あつ森", "section": "游戏", "size": "M"}], {"url": "u", "key": "k"}, "x")
+        for w in ("additem.js", "新增关注项", 'lang="zh-CN"', "删除这个板块"):
+            self.assertIn(w, s)
+        self.assertNotIn('"own": true', s)
+
+    def test_shell_and_sql(self):
+        me = render.render_me()
+        self.assertIn("p=settings", me)
+        self.assertIn("'settings.html'", me)
+        self.assertIn("?p=settings", render.AUTH_JS)
+        sql = (ROOT / "db" / "my_layout.sql").read_text(encoding="utf-8")
+        for w in ("public.my_account()", "update public.follows", "insert into public.nav_schemes", "to authenticated"):
+            self.assertIn(w, sql)
+        low = sql.lower()
+        self.assertNotIn("drop ", low)
+        self.assertNotIn("delete ", low)
+        self.assertNotIn("public.sizes", low)    # get_sizes はだれでも読めるので、お客さまの分は書かない
+
+
 class Issue(unittest.TestCase):
     def test_stories_from_rows(self):
         items = [{"name": "広島旅行", "type": "category", "section": "出行", "keywords": ["広島旅行"], "match": ["広島旅行"], "subs": {}}]

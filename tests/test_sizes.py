@@ -144,7 +144,7 @@ class SettingsPage(unittest.TestCase):
         self.assertLess(page.index("影视"), page.index("游戏"))   # 8 大類：作品が先
         self.assertIn('data-item="FROM"', page)
         self.assertRegex(page, r'data-item="FROM".*?data-v="S" aria-pressed="true"')
-        self.assertIn("rpc/${fn}", page)
+        self.assertIn("rpc/${CFG.own ? (OWNFN[fn] || fn) : fn}", page)
         self.assertNotIn("sb_secret", page)
 
 

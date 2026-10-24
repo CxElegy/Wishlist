@@ -50,28 +50,64 @@ def norm(s):
     return digest.re.sub(r"\s+", "", str(s or "")).lower()
 
 
-def own_picks(follows, picks):
+def own_picks(follows, picks, sizes=None):
     """いま追いかけているもの = picks（本物。設定の「外す」・カードで足すはここを書き換える）。
     follows（[{pos, section, subs, size, boards: {name}}]）は置き方だけ：picks にある名前の行を並び順に、そのあとに follows にまだない picks。
     picks から外した名前の follows は残っていても使わない（follows を消す仕組みはないので、外したらすぐ消えるように）。
-    返す形は picks と同じ [{name, sec, subs, size}]（subs・size は follows にあるときだけ）。"""
+    返す形は picks と同じ [{name, sec, subs, size}]（subs は follows にあるときだけ）。
+    size（篇幅）= follows.size、なければ設定ページで選んだ prefs.sizes（follows にまだない版面の分、db/my_layout.sql）。"""
+    sizes = {norm(k): v for k, v in (sizes or {}).items() if v in ("S", "M", "L")}
     want = {norm(p.get("name")) for p in picks or [] if str(p.get("name") or "").strip()}
     out, seen = [], set()
     for f in sorted(follows or [], key=lambda f: f.get("pos") or 0):
         name = str(((f.get("boards") or {}).get("name")) or "").strip()
         if name and norm(name) in want and norm(name) not in seen:
             seen.add(norm(name))
-            out.append({"name": name, "sec": f.get("section") or "", "subs": f.get("subs") or {}, "size": f.get("size")})
+            out.append({"name": name, "sec": f.get("section") or "", "subs": f.get("subs") or {},
+                        "size": f.get("size") or sizes.get(norm(name))})
     for p in picks or []:
         if norm(p.get("name")) not in seen:
-            out.append(p)
+            out.append({**p, "size": sizes.get(norm(p.get("name")))} if sizes.get(norm(p.get("name"))) else p)
     return out
 
 
-def own_sub(item):
-    """目次の小分類：その板块の 1 つ目の分け方（お客さまはまだ分け方を選べない。店長の既定と同じ）。"""
-    first = (taxonomy.sub_schemes().get(item.get("section")) or [{}])[0].get("id")
-    return digest.sub_of(item, first)
+def own_schemes(chosen):
+    """板块ごとの分け方 {板块: id}：本人が設定ページで選んだもの（nav_schemes の本人の行）、候補にない・選んでいない板块は 1 つ目。
+    店長の digest.load_nav_schemes と同じ決め方。"""
+    out = {}
+    for sec, schemes in taxonomy.sub_schemes().items():
+        ids = [x.get("id") for x in schemes or [] if isinstance(x, dict) and x.get("id")]
+        if ids:
+            out[sec] = (chosen or {}).get(sec) if (chosen or {}).get(sec) in ids else ids[0]
+    return out
+
+
+def own_sub(item, schemes=None):
+    """目次の小分類：その板块で本人が選んだ分け方（選んでいなければ 1 つ目。店長の既定と同じ）。"""
+    return digest.sub_of(item, (schemes or own_schemes({})).get(item.get("section")))
+
+
+def settings_page(prefs, items, schemes, settings, updated):
+    """本人の設定ページ（店長と同じ render.render_settings、own の形：日本語・本人の分だけ書く）。"""
+    rows = [{"name": i["name"], "section": i.get("section") or "其他", "subtitle": i.get("subtitle", ""), "size": i.get("size") or "M",
+             "fields": {"section": i.get("section") or "其他"}} for i in items]
+    srows = []
+    for sec, opts in taxonomy.sub_schemes().items():
+        ins = [i for i in items if i.get("section") == sec]
+        good = [x for x in opts or [] if isinstance(x, dict) and x.get("id")]
+        if not ins or not good:
+            continue
+        o = []
+        for x in good:
+            groups = {}
+            for i in ins:
+                g = digest.sub_of(i, x["id"]) or "その他"
+                groups[g] = groups.get(g, 0) + 1
+            o.append({"id": x["id"], "label": x.get("label") or x["id"], "groups": list(groups.items())})
+        srows.append({"section": sec, "chosen": schemes.get(sec, o[0]["id"]), "options": o})
+    picks = [{"name": p["name"], "sec": p.get("sec") or "其他"} for p in (prefs or {}).get("picks") or [] if p.get("name")]
+    return render.render_settings(rows, {"url": settings.get("supabase_url"), "key": settings.get("supabase_key")}, updated, srows,
+                                  {"picks": picks, "add": ADD_URL})
 
 
 def user_items(picks, shop_items):
@@ -148,11 +184,13 @@ def user_issue(items, shop_issue, rows, deadline, themes):
     return {"date": date, "no": (shop_issue or {}).get("no", 0), "items": blocks}
 
 
-def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None):
-    """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）。"""
-    items = user_items(own_picks(follows, (prefs or {}).get("picks")), shop_items)
+def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes, follows=None, chosen=None, pages=None):
+    """本人のページの HTML。follows = ライブラリの本人の行（あれば置き方はこちら）、chosen = 本人の nav_schemes {板块: id}。
+    pages（dict）を渡すと、設定ページ（settings.html）もそこに入れる。"""
+    items = user_items(own_picks(follows, (prefs or {}).get("picks"), (prefs or {}).get("sizes")), shop_items)
     issue = user_issue(items, shop_issue, rows, deadline, themes)
-    subs = {i["name"]: own_sub(i) for i in items}
+    schemes = own_schemes(chosen)
+    subs = {i["name"]: own_sub(i, schemes) for i in items}
     secs = list(render.SECTIONS)
     first = {}
     for n, i in enumerate(items):   # 板块 → 小分類（出てきた順）→ 本人の並び。店長の目次・本文と同じ並べ方
@@ -175,7 +213,10 @@ def build(email, prefs, rows, shop_items, shop_issue, settings, deadline, themes
                           None, dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), {}, {},
                           digest.lang.order(settings), {}, {})
     # 本人のページの印（AUTH_JS が「自分のページの中」と分かるように。もう一度読み替えない）
-    return html_.replace("<head>", f'<head><meta name="wl-own" content="{render.e(email)}">', 1)
+    mark = f'<head><meta name="wl-own" content="{render.e(email)}">'
+    if pages is not None:
+        pages["settings.html"] = settings_page(prefs, items, schemes, settings, updated).replace("<head>", mark, 1)
+    return html_.replace("<head>", mark, 1)
 
 
 def _supa(path, data=None, method="GET", ctype="application/json"):
@@ -207,8 +248,11 @@ def main(argv):
         out.mkdir(parents=True, exist_ok=True)
         for u in data:
             rows = {norm(r["item"]): r for r in u.get("rows", [])}
+            pages = {}
             (out / f"{u['account']}.html").write_text(build(u["email"], u["prefs"], rows, shop_items, shop_issue, settings, deadline, themes,
-                                                            u.get("follows")), encoding="utf-8")
+                                                            u.get("follows"), u.get("schemes"), pages), encoding="utf-8")
+            for name, h in pages.items():
+                (out / f"{u['account']}.{name}").write_text(h, encoding="utf-8")
         return
     users = _supa("/rest/v1/rpc/userfeed_users", json.dumps({"p_limit": 1000}).encode(), "POST")
     made = failed = 0
@@ -217,9 +261,12 @@ def main(argv):
         try:
             rows = _supa(f"/rest/v1/user_boards?account=eq.{acct}&select=item,sec,state,stories")
             follows = _supa(f"/rest/v1/follows?account=eq.{acct}&select=pos,section,subs,size,boards(name)&order=pos")
+            chosen = {r["section"]: r["scheme"] for r in _supa(f"/rest/v1/nav_schemes?account=eq.{acct}&select=section,scheme") or []}
+            pages = {}
             html_ = build(u["email"], u.get("prefs") or {}, {norm(r["item"]): r for r in rows or []}, shop_items, shop_issue, settings, deadline,
-                          themes, follows)
-            _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/index.html", html_.encode("utf-8"), "POST", "text/html; charset=utf-8")
+                          themes, follows, chosen, pages)
+            for name, h in {"index.html": html_, **pages}.items():
+                _supa(f"/storage/v1/object/pages/{urllib.parse.quote(acct)}/{name}", h.encode("utf-8"), "POST", "text/html; charset=utf-8")
             made += 1
         except Exception as ex:  # noqa: BLE001  1 人の失敗でほかの人を止めない。ログは数と種類だけ（名前・メールは出さない：Actions のログは公開）
             failed += 1
