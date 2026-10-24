@@ -247,6 +247,8 @@ class SubsFromWikidata(unittest.TestCase):
         s = self.subs("游戏", "原神", "free-to-play action role-playing game", {"P400": ["Q91", "Q92", "Q93"], "P577": ["+2020-09-28T00:00:00Z"]},
                       {"Q91": "Android", "Q92": "PlayStation 5", "Q93": "Microsoft Windows"})
         self.assertEqual((s["status"], s["platform"]), ("運営中", "マルチ"))
+        s = self.subs("游戏", "ポケットモンスター", "Japanese media franchise", {"P31": ["Q196600"]}, {"Q196600": "media franchise"})
+        self.assertEqual((s["status"], s["platform"]), ("発売済み", "マルチ"))   # 日付も機種もないシリーズ全体（本番の Q864）
         s = self.subs("游戏", "新作", "upcoming video game", {"P577": ["+2027-03-01T00:00:00Z"]})
         self.assertEqual(s["status"], "新作・発売前")
 

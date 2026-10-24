@@ -37,8 +37,8 @@ sections:
     prio: 10
     words: '游戏|遊戲|ゲーム|video game|\bgame\b|esports|eスポーツ|電競|电竞'
     schemes:
-      - {id: status, label: 状態, values: [新作・発売前, {v: 運営中, re: 'online game|MMO|gacha|ガチャ|free-to-play|live service|オンラインゲーム|ソーシャルゲーム|网络游戏|網路遊戲'}, 発売済み, eスポーツ]}
-      - {id: platform, label: プラットフォーム, values: [{re: mobile|iOS|Android|手游|手遊, v: スマホ}, {re: 'Switch|PlayStation|PS5|Xbox|console|Wii|Nintendo|ゲームボーイ|Game Boy|ニンテンドー|任天堂', v: 家庭用ゲーム機}, {re: \bPC\b|Steam|Windows, v: PC}, マルチ]}
+      - {id: status, label: 状態, values: [新作・発売前, {v: 運営中, re: 'online game|MMO|gacha|ガチャ|free-to-play|live service|オンラインゲーム|ソーシャルゲーム|网络游戏|網路遊戲'}, {v: 発売済み, re: 'media franchise|video game series|game franchise|ゲームシリーズ'}, eスポーツ]}
+      - {id: platform, label: プラットフォーム, values: [{re: mobile|iOS|Android|手游|手遊, v: スマホ}, {re: 'Switch|PlayStation|PS5|Xbox|console|Wii|Nintendo|ゲームボーイ|Game Boy|ニンテンドー|任天堂', v: 家庭用ゲーム機}, {re: \bPC\b|Steam|Windows, v: PC}, {v: マルチ, re: 'media franchise|video game series|game franchise|ゲームシリーズ'}]}
 
   - key: 演出
     ja: 音楽・ライブ
