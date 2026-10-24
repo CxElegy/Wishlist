@@ -21,3 +21,4 @@
 - 2026-10-24 follows を本人が読める：public.my_account（security definer）経由の policy に（#294）。REST で test-a 40・test-b 1・test-c 0・anon 0。次：網页が follows を読む
 - 2026-10-24 お客さまのページの置き方をライブラリの follows から（#297）：板块・小分類・篇幅・並び。picks とのずれ 0 を先に数えた。本番：test-a に小見出し 23 種・test-b 1、ux_check ✗0。次：篇幅・分け方を本人が設定で変える
 - 2026-10-24 外した版面が本人のページに残る後戻り（#297）を直した：own_picks は picks にある名前の follows だけ（#301）。本番：picks にない follows 0・render 4 人分失敗 0・ux_check ✗0。次：篇幅・分け方を本人が設定で変える
+- 2026-10-24 出来事ごとに束ね、増えた分だけ AI に渡す（#306）：bundle.py と edit_brief。過去 7 日で誤まとめ 6/416、字数 29% 減（試算）。ux_check ✗0。次：本番の AI 編集で今の記事が残っているか・トークンの前後
