@@ -119,6 +119,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/008eZAxIgy1iicg6luk1qj30io0nbn2r.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
+ },
  "http://wx3.sinaimg.cn/middle/007nrArUgy1ii4kkhnk5xj31400qox3n.jpg": {
   "w": 1440,
   "h": 960,
@@ -340,11 +346,11 @@
   ],
   "why": "看不清"
  },
- "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
-  "w": 960,
-  "h": 639,
+ "https://cdn.mediaus.co.kr/news/photo/202610/318631_233960_4637.jpg": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://cdn.mos.cms.futurecdn.net/7MkXgTMHDpN3fkLRciMFVY-2048-80.jpg": {
   "w": 2048,
@@ -2281,12 +2287,6 @@
   "target": 720,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/76359/120/76359-120-f7f0ecacd18fa04f14ee9a22083b1d85-1920x1280.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 1890,
-  "h": 1260,
-  "target": 720,
-  "v": 3
- },
  "https://prcdn.freetls.fastly.net/release_image/7736/2641/7736-2641-99bbb4b4f5948ba28e3b250fd90843d5-1920x1080.png?width=536&quality=85%2C75&format=jpeg": {
   "w": 536,
   "h": 302,
@@ -2323,6 +2323,12 @@
   "h": 434,
   "target": 720,
   "v": 3
+ },
+ "https://prtimes.jp/img/76359/120/resize/d76359-120-32b023f89a5f1945b38b-0.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://readyfor.jp/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MTM2OSwicHVyIjoiYmxvYl9pZCJ9fQ==--402574121bd3b3aac8bd766b2738b960ec837f77/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpbGwiOls3MzYsNDE0XSwic2F2ZXIiOnsicXVhbGl0eSI6MTAwfX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--809954ebdd0c4d318d7f500d88793bbd84307db2/p176287-key-visual.jpeg": {
   "w": 736,
@@ -2485,6 +2491,12 @@
   "h": 720,
   "target": 720,
   "v": 3
+ },
+ "https://static.digit.in/Samsung-Galaxy-S27-Ultra-vs-Samsung-Galaxy-S26-Ultra.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
  },
  "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022223735": {
   "w": 712,
@@ -2697,13 +2709,6 @@
   "h": 768,
   "target": 720,
   "v": 3
- },
- "https://technology.inquirer.net/files/2026/10/image-1-1.png": {
-  "w": 712,
-  "h": 401,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.349
  },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/ac-switch/thumbnail/63317/4345231d7bff38b91b280f4eb2272bef": {
   "w": 1200,
@@ -3023,6 +3028,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.fMGpFiR8thz8Vqy1KiIhxw&pid=News&w=712": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-24"
+ },
  "https://www.bing.com/th?id=ONUT.hfTI2n0xkMEeI_4m4kjvZA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3124,12 +3135,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102319226971.jpg": {
-  "w": 690,
-  "h": 460,
-  "target": 720,
-  "v": 3
- },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
   "target": 1280,
   "v": 3,
@@ -3228,12 +3233,6 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/08/s27-2.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-ultra-3.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,

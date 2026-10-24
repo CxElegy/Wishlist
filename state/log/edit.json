@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-10-22T00:54:54+00:00",
-"text": "2026-10-22 第 12 バッチを出刊：Astrae Oratio（1 版面・3 本・残り 12 版面） · token 新規入力 946・キャッシュ読み 14.6万・出力 407",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.31,
-"mem_total": 16874930176,
-"mem_free": 16115093504,
-"disk_used": 10906959872,
-"disk_free": 30620278784,
-"disk_total": 41527238656,
-"peak": 261566464
-},
-"batch": 12,
-"boards": [
-"Astrae Oratio"
-],
-"stories": 3,
-"left": 12,
-"edited": 15,
-"run": 1792627817.3230252,
-"tok": {
-"in": 2,
-"cw": 944,
-"cr": 146291,
-"out": 407,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 147644
-},
-{
 "at": "2026-10-22T00:58:38+00:00",
 "text": "2026-10-22 第 13 バッチを出刊：FROM（1 版面・2 本・残り 11 版面） · token 新規入力 1,341・キャッシュ読み 29.5万・出力 622",
 "level": "ok",
@@ -1830,5 +1798,10 @@
 "calls": 8,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-24T13:28:41+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
