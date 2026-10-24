@@ -72,6 +72,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/collect_watch.py
 
+      # ライブラリの控えの時計：library.yml の毎時 41 分（お客さまの選んだもの → follows）も GitHub の cron なので抜ける。
+      # 最後に成功した回から 80 分あいていて、走っている・並んでいる・30 分以内に始まった回がなければ users_only で起こす
+      - name: ライブラリの定時が抜けた → ライブラリを起こす
+        id: libkick
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/library_watch.py
+
       - name: 判断（有没有活、要不要 AI）
         id: gate
         run: python scripts/gate.py check
@@ -129,7 +138,7 @@ jobs:
           # ゲートの記録は、判断が前と変わったとき（最初の check・小元素のあとの check）・Claude を本当に起こしたとき・
           # 収集を起こそうとしたとき（起こせなかった・回の様子が読めなかったときも：管理ページ・ライブログに出す）だけ
           # （GATE_FIRE が開いているだけでは足さない：前は毎時「后台作業」のコミットが増えていた）
-          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "${{ steps.more.outputs.changed }}" = "true" ] || [ "${{ steps.fire.outputs.fired }}" = "true" ] || [ "${{ steps.kick.outputs.tried }}" = "true" ]; then
+          if [ "${{ steps.gate.outputs.changed }}" = "true" ] || [ "${{ steps.more.outputs.changed }}" = "true" ] || [ "${{ steps.fire.outputs.fired }}" = "true" ] || [ "${{ steps.kick.outputs.tried }}" = "true" ] || [ "${{ steps.libkick.outputs.tried }}" = "true" ]; then
             git add state/gate.json state/log/gate.json 2>/dev/null || true
           fi
           git diff --cached --quiet && { echo "変化なし：コミットしない"; exit 0; }

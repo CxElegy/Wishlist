@@ -68,20 +68,21 @@ def decide(last, runs, now=None, stale_min=STALE_MIN, recent_min=RECENT_MIN):
     return True, f"{gap}（定時が抜けた）→ 収集を起こす"
 
 
-def gh_runs(run=subprocess.run, limit=10):
-    """digest.yml の最近の回（gh run list）。読めなければ None。"""
+def gh_runs(run=subprocess.run, limit=10, workflow=WORKFLOW, fields="status,createdAt,event"):
+    """digest.yml（workflow）の最近の回（gh run list）。読めなければ None。"""
     try:
-        out = run(["gh", "run", "list", "--workflow", WORKFLOW, "--limit", str(limit), "--json", "status,createdAt,event"],
+        out = run(["gh", "run", "list", "--workflow", workflow, "--limit", str(limit), "--json", fields],
                   capture_output=True, text=True, timeout=60)
         return json.loads(out.stdout) if out.returncode == 0 else None
     except (OSError, ValueError, subprocess.SubprocessError):
         return None
 
 
-def kick(run=subprocess.run):
-    """digest.yml を workflow_dispatch で起こす。→ (できたか, エラーの文)"""
+def kick(run=subprocess.run, workflow=WORKFLOW, inputs=None):
+    """digest.yml（workflow）を workflow_dispatch で起こす（inputs = {名前: 値} は -f で渡す）。→ (できたか, エラーの文)"""
+    args = ["gh", "workflow", "run", workflow] + [a for k, v in (inputs or {}).items() for a in ("-f", f"{k}={v}")]
     try:
-        out = run(["gh", "workflow", "run", WORKFLOW], capture_output=True, text=True, timeout=60)
+        out = run(args, capture_output=True, text=True, timeout=60)
         return out.returncode == 0, (out.stderr or out.stdout or "").strip()[:120]
     except (OSError, subprocess.SubprocessError) as e:
         return False, str(e)[:120]
