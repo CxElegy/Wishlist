@@ -2330,7 +2330,8 @@ def edit_tokens(tz, days=7):
             if at.date() == now.date():
                 today[k] = today.get(k, 0) + int(tok.get(k) or 0)
     out = sorted(runs.values(), key=lambda g: g["at"], reverse=True)[:10]
-    return {"runs": out, "today": today, "week": week}
+    import gate
+    return {"runs": out, "today": today, "week": week, "cap": gate.EDIT_DAILY_TOKENS}
 
 
 def backend_log(tz, n=40):
@@ -2827,6 +2828,7 @@ def _ingest_one(item, raw, bconf, settings, facts, seen, now, compare, dry_run, 
     if not entries and not cold and not any(f["changed"] for f in item_facts):
         return None, entries
     cover = (item.get("cover") or status_cover) if late else find_cover(item, status_cover)
+    seen_at = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     return {
         "name": item["name"],
         "priority": item.get("priority", ""),
@@ -2834,7 +2836,8 @@ def _ingest_one(item, raw, bconf, settings, facts, seen, now, compare, dry_run, 
         "facts": item_facts,
         "cover": cover,
         # 补抓的是旧闻，不算要紧，不发 Discord
-        "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item)}
+        # seen = 集めた時刻：gate.edit_ripe が「いちばん古い整理待ちが 2 時間を超えたか」を数える
+        "entries": [{**entry_to_dict(n, e), "urgent": not backfill and is_urgent(e, item), "seen": seen_at}
                     for n, e in enumerate(entries, 1)],
         **({"reddit_cold": [{"url": e.url, "date": e.published.isoformat() if e.published else None, "source": e.source}
                             for e in cold]} if cold else {}),
@@ -3485,13 +3488,13 @@ def set_edit_control(mode=None, redo_clear=None):
 
 
 def edit_queue(date=None, batch=EDIT_BATCH, ctl=None):
-    """AI 编辑的顺序：管理页点了「やり直す」的版面（redo）最先，然后今天还有整理待ち的版面（编号 > _covered，或 edit.json 里没有），整理待ち多的先，每 batch 个一批。
+    """AI 编辑的顺序：管理页点了「やり直す」的版面（redo）最先，然后今天溜まった版面（gate.edit_ripe：整理待ち 3 件以上・最古が 2 小时以上・初めての版面），整理待ち多的先，每 batch 个一批。
     → [[(版面, 整理待ち件数), …], …]。规则（不用 AI）：和 gate.edit_work 同一个数法。ctl = edit_control() 的结果（测试用）。"""
     import gate
     paths = sorted(INBOX_DIR.glob(f"{date or '????-??-??'}.json"))
     if not paths:
         return []
-    work = gate.edit_work(INBOX_DIR, today=paths[-1].stem)
+    work = gate.edit_ripe(INBOX_DIR, today=paths[-1].stem)
     sizes = {i["name"]: len(i.get("entries") or []) for i in (load_json(paths[-1]) or {}).get("items", [])}
     redo = [(n, sizes[n]) for n in (ctl if ctl is not None else edit_control()).get("redo") or [] if n in sizes]
     order = redo + sorted(((n, c) for n, c in work.items() if n not in dict(redo)), key=lambda kv: (-kv[1], kv[0]))
