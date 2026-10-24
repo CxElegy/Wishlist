@@ -107,6 +107,20 @@ class Rules(unittest.TestCase):
         with mock.patch.object(ef.emblem, "_get", fake_get):
             self.assertEqual(ef.emblem.category_top("https://g.fandom.com/api.php", "Characters", 5), ["Zhongli", "Aino"])
 
+    def test_brand_without_logo_uses_p18(self):
+        """ロゴ（P154）のない製品は Wikidata の代表画像（P18）。iPhone が 0 枚にならない。"""
+        from unittest import mock
+        calls = []
+
+        def fake_wd(q, props=("P154", "P18"), limit=3):
+            calls.append(props)
+            return [] if props == ("P154",) else [{"title": "IPhone.svg", "image": "https://c/i.png"}]
+        with mock.patch.object(ef, "wikidata_images", fake_wd), mock.patch.object(ef, "commons_photos", lambda *a, **k: []), \
+                mock.patch.object(ef, "wiki_titles", lambda item: {}):
+            cands = ef.gather({"name": "iPhone", "type": "product", "emblem_kind": "brand", "wikidata": "Q2766"}, log=lambda *a: None)
+        self.assertIn(("P18",), calls)
+        self.assertEqual([c["image"] for c in cands], ["https://c/i.png"])
+
     def test_own_logo(self):
         self.assertFalse(ef.own_logo("File:Logo of the Linksys iPhone.svg", "iPhone"))   # 別の会社の iPhone
         self.assertTrue(ef.own_logo("File:IPhone logo 2016.svg", "iPhone"))
