@@ -61,17 +61,29 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "http://n.sinaimg.cn/sinakd20261024ac/533/w480h853/20261024/9eba-118b57ea684ab6e90a3ecbe7a575eb32.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "http://n.sinaimg.cn/sinakd20261024ac/748/w480h1068/20261024/c92c-88f5d166817516aa9ce574c2f100cd70.jpg": {
   "w": 480,
   "h": 1068,
   "target": 720,
   "v": 3
+ },
+ "http://wx1.sinaimg.cn/middle/006dNg2Pgy1iidibs5eosj30xi1bpdko.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "http://wx1.sinaimg.cn/middle/d2cfaf37gy1iib6xxk8xbj20xi0bmgmw.jpg": {
   "w": 1206,
@@ -209,6 +221,12 @@
   "h": 461,
   "target": 1280,
   "v": 3
+ },
+ "https://biz.chosun.com/resizer/v2/GU4TMZRZMJRGKMZUGM2TSMDBMQ.jpg?auth=3e26b22ade457cd67f813f4a5007619e62ef2a224171742594545b8559bade96&width=572&height=300&smart=true": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://bntonline.com.br/_next/image/?url=https%3A%2F%2Fbntonline.com.br%2Fwp-content%2Fuploads%2F2026%2F10%2Fkitty-cat-kitten-pet-45201-2.jpeg&w=3840&q=75": {
   "w": 1600,
@@ -405,6 +423,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/10/GTA-6-Vice-City.jpg?w=1024": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/g-t-a-6.png?resize=2000,1125": {
   "w": 2000,
   "h": 1125,
@@ -435,6 +459,12 @@
   "target": 720,
   "v": 3
  },
+ "https://d.ibtimes.co.uk/en/full/1837366/gta-6.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/165a06c8c5684c2083c5a4bd62e008afe2badda7.png": {
   "w": 1280,
   "h": 670,
@@ -447,12 +477,24 @@
   "target": 720,
   "v": 3
  },
+ "https://daebak.tokyo/wp-content/uploads/2026/10/439rg.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_2026-10-19-141533_20261019.webp": {
   "w": 371,
   "h": 300,
   "target": 720,
   "v": 3,
   "blur": 0.323
+ },
+ "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_b58e8fe0b34f082a043f04f172b43629_20261023.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc95e2b8e572cd6dde67aac5dcc584e01733953d400b4089f2d4aec48d28eb8b0ab0a77861d9ea6a": {
   "w": 225,
@@ -574,6 +616,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -687,6 +735,12 @@
   "h": 904,
   "target": 720,
   "v": 3
+ },
+ "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/sandra-huller-avengers-doomsday-cameo.png?fit=1200%2C675&ssl=1": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://i1.hoopchina.com.cn/bbs-editor-web/17926623656181.jpg": {
   "w": 780,
@@ -864,6 +918,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/1000009740_ybMftis.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://images.thedirect.com/media/article_full/IMG_5967.jpg": {
   "w": 1280,
   "h": 720,
@@ -875,6 +935,12 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://images.thedirect.com/media/article_full/marvel-r-rated-disney.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://images.thedirect.com/media/article_full/mcu-female-superheroes-lead.jpg": {
   "w": 1280,
@@ -1026,6 +1092,12 @@
   "h": 671,
   "target": 1280,
   "v": 3
+ },
+ "https://img.etimg.com/thumb/msid-135169887,width-1200,height-900,imgsize-158031,overlay-economictimes/articleshow.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://img.gamewith.jp/article/thumbnail/gamearticle/16721/rectangle/57039.jpg?t=1792651764": {
   "w": 600,
@@ -1985,6 +2057,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://phinf.wevpstatic.net/MjAyNjEwMTVfODkg/MDAxNzkyMDYxODI2OTQy.Tmh1bcF_Xcm23D6yO4PMagTqkpVNq00b2QheFbymwnMg.hHOv6ssezZ1GD12OvuH_dbiX8p8szYF1posJUpjO7BMg.JPEG/5e96c1c4-26fe-4bb0-b07f-5975bb0925f2.jpeg?type=w1414": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://pimg.mk.co.kr/news/cms/202610/19/news-p.v1.20261019.7037adaeab3444c8a60f9d6dcb8fa3cc_R.png": {
   "w": 1000,
   "h": 560,
@@ -2130,6 +2208,12 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt1b726d9377df2d1c/6adba7a6820d538fa1bea34c/gta-6-vinyl-album-soundtrack-ps5-bundle.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://resource.hanteonews.com/content/post/2026/10/21/dfd242c4-5ebd-4dcb-ba8f-49c0c535dece.jpeg": {
   "w": 1500,
@@ -2653,6 +2737,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.77v3bSIiLRDPAEFyQEkUow&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://www.bing.com/th?id=ONUT.B2_wGz_aVofe4yAd16Rwcw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2706,12 +2796,6 @@
   "v": 3,
   "blur": 0.419
  },
- "https://www.bing.com/th?id=ONUT.JuCa6kvgVJI_iQI0lhTV_A&pid=News&w=1200": {
-  "w": 700,
-  "h": 437,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -2742,6 +2826,12 @@
   "h": 466,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://www.bing.com/th?id=ONUT.YQOWVk6tArirle6eiDvGBQ&pid=News&w=600": {
   "w": 600,
@@ -3002,6 +3092,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.kpopmonster.jp/wp-content/uploads/2026/10/a2olite01.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/illit01.webp": {
   "w": 1200,
   "h": 628,
@@ -3074,6 +3170,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.svg.com/img/gallery/can-you-play-gta-6-without-an-internet-connection/l-intro-1792619749.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
   "h": 899,
@@ -3133,6 +3235,12 @@
   "h": 853,
   "target": 720,
   "v": 3
+ },
+ "https://x0.ifengimg.com/res/2026/7DB009EBC78419C0A22C491DF17530B86991AC52_size23_w689_h293.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://x0.ifengimg.com/res/2026/D4F52D36036F5D19D6D9074B534DDFF6898FDDDE_size30_w1080_h460.jpg": {
   "w": 1080,

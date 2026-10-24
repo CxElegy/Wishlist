@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-10-22T01:10:26+00:00",
-"text": "2026-10-22 第 17 バッチを出刊：The Mandalorian（1 版面・1 本・残り 7 版面） · token 新規入力 742・キャッシュ読み 15.6万・出力 309",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.09,
-"mem_total": 16874930176,
-"mem_free": 16157827072,
-"disk_used": 10912694272,
-"disk_free": 30614544384,
-"disk_total": 41527238656,
-"peak": 273342464
-},
-"batch": 17,
-"boards": [
-"The Mandalorian"
-],
-"stories": 1,
-"left": 7,
-"edited": 17,
-"run": 1792627817.3230252,
-"tok": {
-"in": 2,
-"cw": 740,
-"cr": 156415,
-"out": 309,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 157466
-},
-{
 "at": "2026-10-22T01:13:28+00:00",
 "text": "2026-10-22 第 18 バッチを出刊：漫威电影（1 版面・5 本・残り 6 版面） · token 新規入力 5,636・キャッシュ読み 15.7万・出力 456",
 "level": "ok",
@@ -1802,5 +1770,10 @@
 "calls": 8,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-24T19:04:02+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
