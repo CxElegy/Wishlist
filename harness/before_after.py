@@ -1,6 +1,6 @@
 """画面を変えた PR の Before / After を Discord へ（2026-10-24，用户定的：「修正のときは画像の before after を」）。
 
-progress.yml が PR の合併のたびに呼ぶ。画面に関わるファイルを変えた PR だけ：
+progress.yml が PR の合併のたびに呼ぶ。網页に効く PR は、本番が新しくなったのを確かめて「🟢 公開を確かめました」を送る（2026-10-25）。画面に関わるファイルを変えた PR は写真も：
   1. 合併の直後（本番はまだ前のまま）に撮る = Before
   2. その合併の render.yml（網页の生成＋お客さまのページの作り直し）が終わるのを待つ（12 分まで）＋ Pages の配信を 60 秒待つ
   3. 同じ画面を撮る = After → 左右に並べた画像を「合併しました」の知らせに付けて送る
@@ -23,6 +23,8 @@ from playwright.sync_api import sync_playwright
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import ux_check  # noqa: E402
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+import progress_notify  # noqa: E402
 
 UI = re.compile(r"^(scripts/(render|user_pages|welcome|theme|likefx|emblem)\.py|templates/|sections\.yaml|docs/home/[^/]+\.js)")
 VIEWS = [("guest", 1400), ("test-a", 1400), ("test-a", 390)]
@@ -48,9 +50,11 @@ def shoot(out):
 
 
 def wait_render(sha):
+    """その合併の render.yml が終わるまで（12 分まで）。3 分たっても回が見つからなければ（render.yml の paths に当たらない PR）待たない。
+    返り値：結論（success・failure・cancelled）か None（回がない・時間切れ）。"""
     tok = os.environ.get("GITHUB_TOKEN", "")
     url = f"https://api.github.com/repos/{REPO}/actions/workflows/render.yml/runs?head_sha={sha}&per_page=1"
-    t0 = time.time()
+    t0, out = time.time(), None
     while time.time() - t0 < WAIT_RENDER_S:
         req = urllib.request.Request(url, headers={"Authorization": f"Bearer {tok}"} if tok else {})
         try:
@@ -58,10 +62,71 @@ def wait_render(sha):
         except Exception:  # noqa: BLE001
             runs = []
         if runs and runs[0]["status"] == "completed":
-            print("render.yml:", runs[0]["conclusion"])
+            out = runs[0]["conclusion"]
+            print("render.yml:", out)
+            break
+        if not runs and time.time() - t0 > 180:
+            print("render.yml の回なし")
             break
         time.sleep(30)
-    time.sleep(60)   # Pages の配信
+    return out
+
+
+LIVE = "https://cxelegy.github.io/Wishlist/"
+PAGE_NAME = {"index": "トップ（店長のページ）", "admin": "管理ページ", "wishlist": "欲しい物リスト", "heat": "話題度分析"}
+
+
+def _get(url):
+    sep = "&" if "?" in url else "?"
+    req = urllib.request.Request(f"{url}{sep}t={int(time.time() * 1000)}", headers={"Cache-Control": "no-cache", "User-Agent": "wishlist-live-check"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.read()
+
+
+def live_versions():
+    """本番の docs/home/version.json（ページごとの中身の指紋）。読めなければ {}。"""
+    try:
+        return {k: v for k, v in json.loads(_get(BASE + "version.json")).items() if k in PAGE_NAME}
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+def docs_files(sha):
+    """PR で直接変えた公開のファイル（docs/ の下、生成物でないもの）→ 本番の網址と中身。"""
+    out = []
+    for f in subprocess.run(["git", "diff", "--name-only", f"{sha}~1", sha], capture_output=True, text=True).stdout.split():
+        if f.startswith("docs/") and not f.startswith(("docs/home/", "docs/rules/")) and pathlib.Path(f).exists():
+            out.append((LIVE + f[len("docs/"):], pathlib.Path(f).read_bytes()))
+    return out
+
+
+def wait_live(before, files, limit=360):
+    """本番が新しくなったかを確かめる（6 分まで 20 秒おき）：version.json の指紋が変わったページは、その HTML の wl-ver も同じになるまで。
+    直接変えた docs/ のファイルは、本番の中身が倉庫と同じになるまで。返り値：(新しくなったページの名前, 確かめた docs/ の網址, まだのもの)。"""
+    t0, pages, done_files = time.time(), [], []
+    while True:
+        now = live_versions()
+        pages = []
+        for k, v in now.items():
+            if before.get(k) and v != before.get(k):
+                try:
+                    html = _get(BASE + ("" if k == "index" else f"{k}.html")).decode("utf-8", "replace")
+                    ok = f'content="{v}"' in html
+                except Exception:  # noqa: BLE001
+                    ok = False
+                pages.append((k, ok))
+        done_files = []
+        for url, body in files:
+            try:
+                done_files.append((url, _get(url) == body))
+            except Exception:  # noqa: BLE001
+                done_files.append((url, False))
+        waiting = [PAGE_NAME[k] for k, ok in pages if not ok] + [u for u, ok in done_files if not ok]
+        if (pages or files) and not waiting or time.time() - t0 > limit:
+            return [PAGE_NAME[k] for k, ok in pages if ok], [u for u, ok in done_files if ok], waiting
+        if not files and not pages and time.time() - t0 > 120:   # 2 分たっても指紋が変わらない＝中身の変わらない合併
+            return [], [], []
+        time.sleep(20)
 
 
 CELL = 24          # 変わった所を探すマスの大きさ（px）
@@ -136,12 +201,18 @@ def compose(before, after):
     return buf.getvalue()
 
 
-def send(title, url, images):
+def send(title, url, images, text=None):
     hook = os.environ.get("DISCORD_WEBHOOK_URL")
     if not hook:
         print("DISCORD_WEBHOOK_URL がない：送らない")
         return
-    payload = {"content": f"🖼 Before / After：{title}\n{url}"[:1900], "allowed_mentions": {"parse": []},
+    if not images:   # 写真なし：文だけ
+        req = urllib.request.Request(hook, data=json.dumps({"content": (text or title)[:1900], "allowed_mentions": {"parse": []}}).encode(),
+                                     headers={"Content-Type": "application/json", "User-Agent": "wishlist-before-after"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            print("Discord:", r.status)
+        return
+    payload = {"content": (text or f"🖼 Before / After：{title}\n{url}")[:1900], "allowed_mentions": {"parse": []},
                "attachments": [{"id": i, "filename": n} for i, (n, _) in enumerate(images)]}
     bnd = "wlba" + str(int(time.time()))
     body = io.BytesIO()
@@ -159,22 +230,39 @@ def send(title, url, images):
 
 
 def main(argv):
+    """合併のたびに：網页に効く PR（progress_notify.page_effect が maybe）は、本番で新しくなったのを確かめて「🟢 公開を確かめました」を送る
+    （2026-10-25，用户定的：ページが本当に更新されたら知らせる。プライベートウィンドウなどの手間をかけさせない）。画面に関わる PR は Before / After の写真も付ける。"""
     sha, num, title, url = argv[:4]
-    changed = ui_changed(sha)
-    if not changed:
-        print("画面に関わるファイルの変更なし：撮らない")
+    files = subprocess.run(["git", "diff", "--name-only", f"{sha}~1", sha], capture_output=True, text=True).stdout.split()
+    if progress_notify.page_effect(files) == "none":
+        print("網页に効かない PR（文書・道具だけ）：確かめない")
         return 0
+    changed = ui_changed(sha)
+    before = live_versions()
     root = pathlib.Path(os.environ.get("RUNNER_TEMP", "/tmp")) / "ba"
-    shoot(root / "before")
-    wait_render(sha)
-    shoot(root / "after")
+    if changed:
+        shoot(root / "before")
+    t0 = time.time()
+    res = wait_render(sha)
+    pages, docs, waiting = wait_live(before, docs_files(sha))
+    mins = max(1, round((time.time() - t0) / 60))
     images = []
-    for who, w in VIEWS:
-        b, a = root / "before" / f"{who}-{w}.png", root / "after" / f"{who}-{w}.png"
-        if b.exists() and a.exists():
-            images.append((f"{who}-{w}.png", compose(b, a)))
-    if images:
-        send(f"#{num} {title}", url, images)
+    if changed:
+        shoot(root / "after")
+        for who, w in VIEWS:
+            b, a = root / "before" / f"{who}-{w}.png", root / "after" / f"{who}-{w}.png"
+            if b.exists() and a.exists():
+                images.append((f"{who}-{w}.png", compose(b, a)))
+    head = f"#{num} {title}"
+    if pages or docs:
+        names = "・".join(pages + [u.replace(LIVE, "") for u in docs])
+        text = (f"🟢 公開を確かめました（合併から約 {mins} 分）：{head}\n新しくなったページ：{names}\n"
+                f"開き直すだけで見えます（開いたままのページも自分で新しくなります）。{BASE}\n{url}")
+    elif waiting:
+        text = f"⚠ まだ本番が新しくなっていません（{mins} 分待った）：{head}\nまだ：{'・'.join(waiting)} · render.yml：{res or '回なし'}\n{url}"
+    else:
+        text = f"ℹ 公開しました・見た目の変わるページはありません（裏の仕組みだけ）：{head}\n{url}"
+    send(head, url, images, text)
     return 0
 
 

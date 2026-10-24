@@ -20,18 +20,19 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          ref: ${{ github.event.pull_request.merge_commit_sha || github.sha }}
           fetch-depth: 2
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: PR を出した・合併した
+      - name: PR を出した・合併した（画面の更新あり／なしつき）
         if: github.event_name == 'pull_request'
-        run: python scripts/progress_notify.py pr < "$GITHUB_EVENT_PATH"
+        run: python scripts/progress_notify.py pr "$(git diff --name-only HEAD~1 HEAD | tr '\n' ' ')" < "$GITHUB_EVENT_PATH"
       # あなた待ち（[?]）の知らせは ask_remind.yml（@ 付き・返事がなければ繰り返す）に移した
 
-  # 画面に関わる PR を合併したら、Before（合併の直後の本番）と After（render.yml のあとの本番）を撮って Discord へ（harness/before_after.py）
+  # 合併したら：網页に効く PR は本番で新しくなったのを確かめて「🟢 公開を確かめました」を Discord へ。画面に関わる PR は Before / After の写真も（harness/before_after.py）
   before_after:
     if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged
     runs-on: ubuntu-latest
