@@ -1,9 +1,9 @@
 {
- "admin": "deec6916f087",
+ "admin": "3a546338b72e",
  "admin_marks": {
   "backend": [
    "バックグラウンド",
-   "bc5b52c5"
+   "8165d3b3"
   ],
   "editdiff": [
    "AI 編集の前後",
@@ -23,7 +23,7 @@
   ],
   "ov": [
    "しくみの全体図",
-   "e476ac0c"
+   "edc2d7ef"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -39,7 +39,7 @@
   ],
   "term-panel": [
    "ライブログ",
-   "557caee0"
+   "8c2f4b76"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -50,7 +50,7 @@
    "ea3de4f3"
   ]
  },
- "heat": "6f8a26e1d296",
+ "heat": "8a52e357cea7",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -65,7 +65,7 @@
    "18a870bf"
   ]
  },
- "index": "0dc4eabad0f8",
+ "index": "4c9fc89a9972",
  "index_marks": {
   "front": [
    "トップ",
@@ -169,5 +169,5 @@
   ]
  },
  "updated": "10.24 23:28",
- "wishlist": "d15bcb99bfd5"
+ "wishlist": "185c9f3910b3"
 }
