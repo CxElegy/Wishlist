@@ -198,7 +198,11 @@
   "绝区零": 3,
   "あつ森": 2,
   "Astrae Oratio": 1,
-  "FROM": 1
+  "FROM": 1,
+  "Vaundy": 1,
+  "dota2": 1,
+  "チェーンソーマン": 1,
+  "三星手机": 1
  },
  "日本顶级网球赛事": [
   {
@@ -302,6 +306,32 @@
     1
    ],
    "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/from-boyd.jpg?w=1600&h=900&fit=crop"
+  }
+ ],
+ "Vaundy": [],
+ "dota2": [],
+ "チェーンソーマン": [
+  {
+   "headline": "「ネズミの寓話が印象的」 チェンソーマン レゼ篇 zpさんの映画レビュー",
+   "highlight": "ネズミの寓話が印象的",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://media.eiga.com/images/movie/100938/photo/86db6065986a9eef.jpg"
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Samsung’s Galaxy S27 Lineup Leaks Early: Standard, Plus, All-New Pro & Ultra Breakdown",
+   "highlight": "Galaxy S27 Lineup Leaks",
+   "blurb": "Early leak of the Galaxy S27 lineup: Standard, Plus, an all-new Pro and Ultra.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://nokiapoweruser.com/wp-content/uploads/2026/10/New-Galaxy-S27-Series-Leaked-Cases-Hint-at-a-Complete-Makeover-for-Samsungs-Flagships.jpg"
   }
  ]
 }

@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "963782c4f883",
+ "edit_sig": "4a39bd520ff5",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -339,17 +339,19 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "Early leak of the Galaxy S27 lineup: Standard, Plus, an all-new Pro and Ultra.",
      "date": "2026-10-24",
-     "n": 1,
-     "source": "nokiapoweruser.com",
-     "title": "Samsung’s Galaxy S27 Lineup Leaks Early: Standard, Plus, All-New Pro & Ultra Breakdown",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNSC01LVdjb1pZbEtDMTJlTnFqOTJkZ2Y4dTc3YUJWc1VWbnJzNlYwRjVBcS12LVl4U3NQOFpKNVpySUxWYkxmNzhYUlBEeVJ4YWlpNjNtNzZLMUhXbGxlMG5lWmg0NTIxcVRtZkltX0JZT2ppRHdnTjlGUmR0MlpDdG9HeXZNTzIzbEp3?oc=5"
+     "headline": "Samsung’s Galaxy S27 Lineup Leaks Early: Standard, Plus, All-New Pro & Ultra Breakdown",
+     "highlight": "Galaxy S27 Lineup Leaks",
+     "image": "https://nokiapoweruser.com/wp-content/uploads/2026/10/New-Galaxy-S27-Series-Leaked-Cases-Hint-at-a-Complete-Makeover-for-Samsungs-Flagships.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://nokiapoweruser.com/samsung-galaxy-s27-series-specs-price-early-launch-leak/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
@@ -372,17 +374,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-18",
-     "n": 1,
-     "source": "映画.com",
-     "title": "「ネズミの寓話が印象的」 チェンソーマン レゼ篇 zpさんの映画レビュー（感想・評価）",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBLSm5sVVBDRXBqTkNNamlpRlpIUDRid3haa29LUXFaVmhBcDFTZWJab1hxTlhXZ0s5dGVrR2duckMtOGJEbDhJX0hkNzNpRXk2ZENFdTNuQmtZQQ?oc=5"
+     "headline": "「ネズミの寓話が印象的」 チェンソーマン レゼ篇 zpさんの映画レビュー",
+     "highlight": "ネズミの寓話が印象的",
+     "image": "https://media.eiga.com/images/movie/100938/photo/86db6065986a9eef.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://eiga.com/movie/100938/review/07112238/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -459,33 +463,6 @@
     "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://vaundy.jp/og_image.png",
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 1,
-     "source": "Real Sound",
-     "title": "森 大翔、初の定期公演『邂逅』2027年1月より開催 ライブ会場限定EP『薄明』のSNS音源解禁も",
-     "url": "https://realsound.jp/2026/10/post-2563552.html"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
-    "font": "serif",
     "split": true
    }
   },
@@ -582,33 +559,6 @@
     "alt_bg": "#F2EDEE",
     "alt_fg": "#1E1A18",
     "bg": "#1E1516",
-    "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
-   "facts": [],
-   "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-20",
-     "n": 1,
-     "source": "GosuGamers",
-     "title": "1W Team vs GamerLegion Live Score on 2026-10-24 of Dota 2 PARI Universe",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNLWZpcWVSUEFJa0EtSW8tY001T0xHVjdfVnJqM1JfcVVVVzBfenhoODVOVmctX3laUGotNnExaFh1WTllUTZSTW9ZTEU4LVA1Qm5mRzU4clFzZERWanFYd3U3aWhiYWNsdHJmX0NqWXJLNWUyMF92M0U3eU5jeDBwYTNkTGpJSTF0QWxCaGtuSkFhNkpnbEJlSVFuWGlRMmRNWFBWRA?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "Dota 2",
-   "theme": {
-    "accent": "#E0503C",
-    "alt_accent": "#A63A28",
-    "alt_bg": "#F6EDEA",
-    "alt_fg": "#1E1A18",
-    "bg": "#17100F",
     "fg": "#F4EEE4",
     "font": "serif",
     "split": true
@@ -834,6 +784,56 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-24",
+    "headline": "Vaundy「しわあわせ」が映画主題歌起用で再注目 今改めて胸に響く、目に見えない“本物の繋がり”を描いた普遍性",
+    "url": "https://realsound.jp/2026/10/post-2562337.html"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+   "facts": [],
+   "last": {
+    "date": "2026-10-24",
+    "headline": "Team Yandex roll to opening victory at PARI Universe Dota 2 event",
+    "url": "https://www.msn.com/en-us/sports/general/team-yandex-roll-to-opening-victory-at-pari-universe-dota-2-event/ar-AA2fTSmv"
+   },
+   "name": "dota2",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "Dota 2",
+   "theme": {
+    "accent": "#E0503C",
+    "alt_accent": "#A63A28",
+    "alt_bg": "#F6EDEA",
+    "alt_fg": "#1E1A18",
+    "bg": "#17100F",
+    "fg": "#F4EEE4",
+    "font": "serif",
     "split": true
    }
   }

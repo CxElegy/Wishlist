@@ -1486,6 +1486,13 @@
   "target": 720,
   "v": 3
  },
+ "https://media.eiga.com/images/movie/100938/photo/86db6065986a9eef.jpg": {
+  "w": 566,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.332
+ },
  "https://media.eiga.com/images/movie/100938/photo/d0e81b416eba1265.jpg": {
   "w": 800,
   "h": 533,
@@ -2086,6 +2093,12 @@
  "https://nokiamob.net/wp-content/uploads/2026/10/S27-pro-2-1-1920w-1080h.png.webp": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://nokiapoweruser.com/wp-content/uploads/2026/10/New-Galaxy-S27-Series-Leaked-Cases-Hint-at-a-Complete-Makeover-for-Samsungs-Flagships.jpg": {
+  "w": 1164,
+  "h": 912,
   "target": 1280,
   "v": 3
  },
