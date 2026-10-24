@@ -42,6 +42,42 @@ class Kind(unittest.TestCase):
         self.assertNotIn("match", it)
 
 
+    def test_roster_hints_from_wikidata(self):
+        """キャラの版面：AniList（アニメ → 漫画）と Fandom（項目 → シリーズ）の番号を Wikidata から。"""
+        ents = {"Q10": {"claims": {"P8731": [{"mainsnak": {"datavalue": {"value": "108556"}}}],
+                                   "P179": [{"mainsnak": {"datavalue": {"value": {"id": "Q11"}}}}]}},
+                "Q11": {"claims": {"P4073": [{"mainsnak": {"datavalue": {"value": "de.spy"}}},
+                                             {"mainsnak": {"datavalue": {"value": "spy-x-family"}}}]}}}
+        get = lambda p: {"entities": {p["ids"]: ents[p["ids"]]}}  # noqa: E731
+        it = le.board_item({"id": 142, "name": "SPY×FAMILY", "wd": "Q10", "config": {}}, {"section": "影视"}, get)
+        self.assertEqual((it["anilist_id"], it["emblem_fandom"]), (108556, "spy-x-family"))
+        it = le.board_item({"id": 142, "name": "x", "wd": "Q10", "config": {"emblem_fandom": "mine"}}, {"section": "影视"}, get)
+        self.assertEqual(it["emblem_fandom"], "mine")              # 前の回に書いたものが先
+        it = le.board_item({"id": 1, "name": "x", "wd": "Q10", "config": {}}, {"section": "好物"}, get)
+        self.assertNotIn("anilist_id", it)                         # キャラの版面だけ
+
+
+    def test_fandom_slug_guess(self):
+        """名前からの Fandom：ハイフンの形・「:」のあと・転送先の本当の名前。"""
+        seen = []
+
+        def fake(url, limit=0):
+            seen.append(url.split("//")[1].split(".")[0])
+            if seen[-1] in ("spy-x-family", "kimetsunoyaiba"):
+                return {"query": {"general": {"sitename": "Spy x Family Wiki" if "spy" in seen[-1] else "Kimetsu no Yaiba Wiki",
+                                              "server": "https://" + ("spy-x-family" if "spy" in seen[-1] else "kimetsu-no-yaiba") + ".fandom.com"}}}
+            raise OSError
+        old = emblem_fill._json
+        emblem_fill._json = fake
+        try:
+            self.assertEqual(emblem_fill.fandom_api({"name": "SPY×FAMILY", "wiki": ["en:Spy × Family"]}, strict=True),
+                             "https://spy-x-family.fandom.com/api.php")
+            self.assertEqual(emblem_fill.fandom_api({"name": "鬼滅の刃", "wiki": ["en:Demon Slayer: Kimetsu no Yaiba"]}, strict=True),
+                             "https://kimetsu-no-yaiba.fandom.com/api.php")
+        finally:
+            emblem_fill._json = old
+
+
 class Fill(unittest.TestCase):
     def test_sandbox_upload_and_restore(self):
         roots = (emblem.ROOT, emblem_fill.ROOT, sitedir.SITE_DIR, emblem.EMB_DIR)
@@ -69,7 +105,7 @@ class Fill(unittest.TestCase):
         self.assertEqual(add["emblem"][0]["image"], f"{BASE}/storage/v1/object/public/emblems/{name}")
         self.assertEqual(add["emblem"][1]["image"], "https://e.org/b.png")
         self.assertNotIn("emblem_kind", add)          # 種類は毎回規則から（config に残さない）
-        self.assertEqual(add["emblem_state"], {"state": "ok", "have": 2, "at": 100, "note": "2 枚"})
+        self.assertEqual(add["emblem_state"], {"state": "ok", "have": 2, "at": 100, "note": "2 枚", "v": le.RULES})
 
     def test_note_uses_library_retry(self):
         b = {"id": 9, "name": "x", "wd": None, "config": {}}
@@ -84,11 +120,12 @@ class Fill(unittest.TestCase):
     def test_due(self):
         now = 10 ** 6
         bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0}}},
-              {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600}}},
+              {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES}}},
+              {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600}}},   # 前の版の規則 → すぐ
               {"id": 3, "config": {"emblem_state": {"state": "failed", "at": 0}}},
               {"id": 4, "config": {"emblem_state": {"state": "running", "at": now}}},
               {"id": 5, "config": {}}]
-        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 4, 3])
+        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 4, 3, 6])
 
 
 class UserPage(unittest.TestCase):

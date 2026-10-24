@@ -696,16 +696,20 @@ def fandom_api(item, strict=False):
     names = [item.get("emblem_fandom")] if item.get("emblem_fandom") else []
     ascii_kw = [k for k in (item.get("keywords") or []) if re.fullmatch(r"[A-Za-z0-9 .:'&-]{3,40}", str(k))][:4]   # 搜索词の英語名（Chiikawa）
     for t in [item["name"], item.get("subtitle") or ""] + [t for t in wiki_titles(item).values()] + ascii_kw:
-        slug = re.sub(r"\(.*?\)|[^a-z0-9]", "", str(t).lower())
-        if len(slug) >= 3 and slug not in names:
-            names.append(slug)
+        t = re.sub(r"\(.*?\)", "", str(t).lower().replace("×", "x"))
+        # 続けた形（chiikawa）・ハイフンの形（spy-x-family）、「:」のあとの副題も（Demon Slayer: Kimetsu no Yaiba → kimetsu-no-yaiba）
+        for part in [t] + (t.split(":")[1:] if ":" in t else []):
+            for slug in (re.sub(r"[^a-z0-9]", "", part), re.sub(r"[^a-z0-9]+", "-", part).strip("-")):
+                if len(slug) >= 3 and slug not in names:
+                    names.append(slug)
     for n in names:
         api = f"https://{n}.fandom.com/api.php"
         try:
             site = (_json(f"{api}?action=query&meta=siteinfo&format=json").get("query") or {}).get("general") or {}
-            if strict and n != item.get("emblem_fandom") and n not in re.sub(r"[^a-z0-9]", "", str(site.get("sitename", "")).lower()):
+            if strict and n != item.get("emblem_fandom") and n.replace("-", "") not in re.sub(r"[^a-z0-9]", "", str(site.get("sitename", "")).lower()):
                 continue
-            return api
+            m = re.fullmatch(r"(?:https?:)?//([a-z0-9-]+)\.fandom\.com", str(site.get("server") or ""))
+            return f"https://{m.group(1)}.fandom.com/api.php" if m else api   # 転送先の本当の名前（demonslayer → kimetsu-no-yaiba）
         except Exception:
             continue
     return None
