@@ -1123,7 +1123,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   if(!base||!A.key||!window.fetch) return;
   var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
   R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
-  try{ if(/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない
+  var OWN=!!document.querySelector('meta[name="wl-own"]'), signedOut=false;   // 本人のページ（user_pages.py）の中か
+  try{ if(!OWN&&/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない（本人のページはもう本人のものなので隠さない）
   var ROLE={"admin": "店長", "user": "お客さま", "guest": "ゲスト"}, LOCK={"index": "[data-vote]", "heat": "[data-vote]", "wishlist": "[data-vote],#snap button,#snap input,#snap textarea", "settings": "button,input,select,textarea,[contenteditable]", "admin": "button,input,select,textarea"}[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -1302,6 +1303,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   function mine(){
     var on=isMine(), box=document.querySelector('.wl-mine');
     // お客さま → 访客（ログアウト・「見つかりません」）：showMine が版面・駅・目次の網址を書き換えているので、開き直して店長のページに戻す
+    // 本人のページの中では、ログインの確かめの途中で一瞬「お客さまでない」と出ても開き直さない。開き直すのはログアウトしたときだけ
+    if(!on&&OWN){if(signedOut)location.reload();return;}
     if(!on&&R.dataset.mine==='2'){R.dataset.mine='0';clearInterval(R._wlub);location.reload();return;}
     if(!on){R.dataset.mine='0';clearInterval(R._wlub);R._wlmb=null;if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
       document.querySelectorAll('.wl-off').forEach(function(x){x.classList.remove('wl-off');});return;}
@@ -1312,20 +1315,17 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   }
   function picksOf(p){return ((p&&p.prefs&&p.prefs.picks)||[]).filter(function(x){return x&&x.name;});}
   // 選んだものがあれば、店長のページと同じ版面のうち自分の選んだものだけを出す（2026-10-22，用户定的：お客さまも店長と同じ機能。記事は同じ公開のニュース）
-  // 本人のページ（scripts/user_pages.py が店長と同じ部品で作り、非公開の箱 pages/<account>/index.html に置く）があれば、それに替える。
-  // 替えたページには meta wl-own があるので、もう一度は読まない。まだ作られていなければ今までどおり（showMine）
-  var OWN_PAGE=false;   // 2026-10-24：差し替えたあと画面が白いまま・開き直しのくり返し → 直すまで止める（前の画面を出す）
+  // 本人のページ（scripts/user_pages.py が店長と同じ部品で作り、非公開の箱 pages/<account>/index.html に置く）は、
+  // 小さな殻のページ me.html が読み込んで描く（render.render_me）。このページの中で差し替えると、店長のページの JS
+  // （ログインの見張り・版の確かめ）が同じ窓に残って、差し替え → 開き直し をくり返し、白い画面にもなった（2026-10-24）。
+  // ここではお客さまを me.html へ送るだけ。殻が読めなかったとき（?own=0）は送らずに前の画面。30 秒に 3 回まで
   function ownPage(){
-    if(!OWN_PAGE||!sb||!tok||page!=='index') return Promise.resolve(false);
-    return rpc('my_page_path').then(function(path){
-      if(!path) return false;
-      return sb.storage.from('pages').download(path+'/index.html').then(function(r){
-        if(!r||r.error||!r.data) return false;
-        return r.data.text().then(function(h){
-          if(!/<meta name="wl-own"/.test(h)) return false;
-          document.open();document.write(h);document.close();return true;});
-      });
-    }).catch(function(){return false;});
+    if(!tok||page!=='index'||/[?&]own=0/.test(location.search)) return Promise.resolve(false);
+    var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
+    if(hist.length>=3) return Promise.resolve(false);
+    try{hist.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(hist));}catch(_){}
+    location.replace('me.html'+location.hash);
+    return Promise.resolve(true);
   }
   function route(box,p,err){
     var picks=picksOf(p);
@@ -1602,7 +1602,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     if(!window.supabase){refresh();return;}
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
-      var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
+      var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null; if(ev==='SIGNED_OUT')signedOut=true;
       if(changed||ev==='INITIAL_SESSION') setTimeout(refresh,0);   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });

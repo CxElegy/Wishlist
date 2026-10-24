@@ -1,0 +1,39 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>ウォッチリスト通信</title>
+<style>:root{--ink:#1A1C22;--paper:#EDEBE6;--rose:#B8336A;--sheet:#F4EDE4;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--flame:#FF7A1A;--ember:#5A1410;--blueflame:#4F8BFF;--good:#1F7A55;--discord:#5865F2;
+ --by-ai:#6B3FC4;--by-rule:#1F7A55;   /* 流れの図：AI（Claude）が判断する手順 / 規則（プログラム）で決まる手順 */
+ --font-sans:'Noto Sans JP','Noto Sans TC','Noto Sans SC','Noto Sans KR',sans-serif;--font-serif:'Noto Serif JP','Noto Serif SC',serif;
+ --font-mono:'JetBrains Mono',monospace;--font-num:'Anton',Impact,sans-serif;--font-hand:'Yusei Magic','Noto Sans JP',sans-serif;
+ --fs-label:11px;--fs-tag:10px;--gap:16px;--hair:color-mix(in srgb,var(--ink) 16%,transparent);
+ --shadow:4px 4px 0 var(--ink);--shadow-l:8px 8px 0 var(--ink);--tilt:-1.5deg;--skew:-8deg;
+ /* 話題度の分析ページのグラフ（dataviz の検証済みパレット）：指標 6 色・点数の濃淡 5 段・前週比の上下 */
+ --viz-1:#2a78d6;--viz-2:#eb6834;--viz-3:#1baf7a;--viz-4:#eda100;--viz-5:#e87ba4;--viz-6:#008300;
+ --seq-0:#cde2fb;--seq-1:#9ec5f4;--seq-2:#5598e7;--seq-3:#256abf;--seq-4:#104281;--up:#e34948;--down:#2a78d6}html,body{margin:0;background:var(--paper);color:var(--ink);font:700 14px/1.6 var(--font-sans)}
+.ld{position:fixed;inset:0;display:grid;place-items:center}.ld b{background:var(--ink);color:var(--card);padding:.5em 1em;transform:rotate(-2deg);box-shadow:4px 4px 0 var(--rose)}</style>
+</head><body><div class="ld" role="status"><b>読み込み中…</b></div>
+<script>
+(function(){
+  var C={"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "lib": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"};
+  function back(q){location.replace('./'+(q||'')+location.hash);}
+  var s=document.createElement('script');s.src=C.lib;s.onerror=function(){back('?own=0');};
+  s.onload=function(){
+    var sb=window.supabase.createClient(C.url,C.key,{auth:{persistSession:true,storageKey:'wl-auth',detectSessionInUrl:false}});
+    sb.auth.getSession().then(function(r){
+      var se=r&&r.data&&r.data.session;if(!se){back('');return null;}
+      return sb.rpc('my_page_path').then(function(p){
+        if(p.error||!p.data){back('?own=0');return null;}
+        return sb.storage.from('pages').download(p.data+'/index.html');
+      });
+    }).then(function(d){
+      if(!d)return;
+      if(d.error||!d.data){back('?own=0');return;}
+      return d.data.text().then(function(h){
+        if(h.indexOf('name="wl-own"')<0){back('?own=0');return;}
+        document.open();document.write(h);document.close();
+        try{history.replaceState(null,'','./'+location.hash);}catch(_){}
+      });
+    }).catch(function(){back('?own=0');});
+  };
+  document.head.appendChild(s);
+})();
+</script></body></html>

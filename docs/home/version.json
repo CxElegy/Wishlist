@@ -1,9 +1,9 @@
 {
- "admin": "a72c3c4b2ff9",
+ "admin": "311fb0855309",
  "admin_marks": {
   "backend": [
    "バックグラウンド",
-   "cc2f1628"
+   "b8ba698e"
   ],
   "editdiff": [
    "AI 編集の前後",
@@ -27,7 +27,7 @@
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "d3d439ff"
+   "57cd39b1"
   ],
   "queue": [
    "いまの状況",
@@ -47,14 +47,14 @@
   ],
   "votes": [
    "投票",
-   "8cd807b2"
+   "ea3de4f3"
   ]
  },
- "heat": "0fe0d65dd666",
+ "heat": "80c831529577",
  "heat_marks": {
   "method": [
    "計算方法",
-   "da5c2aa7"
+   "a5c2e976"
   ],
   "movers": [
    "前週比",
@@ -65,7 +65,7 @@
    "07c47a14"
   ]
  },
- "index": "0541cbfcad71",
+ "index": "3b6c20c41c18",
  "index_marks": {
   "front": [
    "トップ",
@@ -168,6 +168,6 @@
    "c793fc3f"
   ]
  },
- "updated": "10.24 11:17",
- "wishlist": "8c471a725fb8"
+ "updated": "10.24 11:21",
+ "wishlist": "ebc0cec65759"
 }
