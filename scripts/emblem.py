@@ -186,6 +186,15 @@ def anilist_main(media_id, n):
     return [x["name"]["full"] for x in nodes]
 
 
+# 名簿に入れないページ：まとめ・一覧（MHD: FV: Felyne List）・遊ぶ人そのもの（Player）・別の作品に出たときの姿（Pokémon Trainer (Super Smash Bros.)・
+# Monster Hunter (Marvel vs. Capcom: Infinite)）。括弧の中に別の作品（Smash Bros・○○ vs. ○○）があれば、その作品のキャラ
+NOT_CHAR = re.compile(r"characters|\blist\b|^(?:the )?(?:players?|parents?|protagonists?)$|\([^)]*(?:smash bros|\bvs\.)", re.I)
+
+
+def not_character(name):
+    return bool(NOT_CHAR.search(str(name or "")))
+
+
 CAT_PAGES = 5   # 分類の人数は 200 × 5 = 1000 人まで数える
 LH_PAGES = 4    # 1 人の参照は 500 × 4 = 2000 まで数える（それより上は同じ順位）
 
@@ -203,7 +212,7 @@ def category_top(api, category, n):
         if not cont:
             break
     # 分類の説明の記事（「Character」）・下位のページ（「Aino/Storyline」）は人ではない
-    titles = [t for t in titles if "/" not in t and t.lower() not in (category.lower(), category.lower().rstrip("s"))]
+    titles = [t for t in titles if "/" not in t and t.lower() not in (category.lower(), category.lower().rstrip("s")) and not not_character(t)]
     counts, length = {}, {}
     for t in titles:
         counts[t], cont = 0, {}
