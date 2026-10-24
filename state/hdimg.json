@@ -67,6 +67,12 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg": {
+  "w": 480,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "http://wx1.sinaimg.cn/middle/647c8fably1ii4734hamfj21140pmdws.jpg": {
   "w": 1336,
   "h": 922,
@@ -240,12 +246,6 @@
   "w": 820,
   "h": 461,
   "target": 1280,
-  "v": 3
- },
- "https://biz.chosun.com/resizer/v2/GU4TMZRZMJRGKMZUGM2TSMDBMQ.jpg?auth=3e26b22ade457cd67f813f4a5007619e62ef2a224171742594545b8559bade96&width=572&height=300&smart=true": {
-  "w": 572,
-  "h": 300,
-  "target": 720,
   "v": 3
  },
  "https://biz.chosun.com/resizer/v2/MRSDGOJTGM4WMMJRG44GIMJUGM.jpg?auth=dde128eb71a6881d31630bad6ff1821dd094593c0bce0b3b673b056ffdb0e1fc&width=616": {
@@ -1295,12 +1295,6 @@
  "https://img.huxiucdn.com/ai/ai-general-cover/202610/21/39774-prod-nb2qn-general-1-1792542995495.png?imageView2/1/w/1200/h/900/|imageMogr2/strip/interlace/1/quality/85": {
   "w": 1200,
   "h": 768,
-  "target": 720,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/24/5617433_3.jpg": {
-  "w": 800,
-  "h": 906,
   "target": 720,
   "v": 3
  },
@@ -2605,6 +2599,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/08/robert-downey-as-doctor-doom-in-avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -2621,6 +2621,18 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/from-boyd.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/gta-6-lucia.jpg?&fit=crop": {
+  "w": 3840,
+  "h": 1920,
+  "target": 720,
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/untitled2.jpg?w=1600&h=900&fit=crop": {
@@ -2895,12 +2907,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.77v3bSIiLRDPAEFyQEkUow&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.B2_wGz_aVofe4yAd16Rwcw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2953,6 +2959,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.419
+ },
+ "https://www.bing.com/th?id=ONUT.JuCa6kvgVJI_iQI0lhTV_A&pid=News&w=1200": {
+  "w": 700,
+  "h": 437,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200": {
   "w": 100,
@@ -3370,12 +3382,6 @@
   "h": 527,
   "target": 720,
   "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Pedro-Pascal-F4.jpg?resize=1200,630": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-24"
  },
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
