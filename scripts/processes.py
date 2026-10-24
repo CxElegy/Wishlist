@@ -476,10 +476,10 @@ PROCESSES = [
         ],
     },
     {
-        "id": "progress", "name": "進み具合を Discord へ", "en": "PROGRESS", "lane": "actions", "workflow": "progress.yml", "when": "合併したとき・一覧にあなた待ち（[?]）が増えたときだけ（2026-10-24） · 画面に関わる PR の合併は Before（合併の直後の本番）と After（render.yml のあと）を撮って左右に並べた画像を送る（harness/before_after.py：ログインなし 1400・test-a 1400・390）",
+        "id": "progress", "name": "進み具合を Discord へ", "en": "PROGRESS", "lane": "actions", "workflow": "progress.yml", "when": "合併したとき（Before / After は変わった所を赤い枠で囲む：24px のマスで比べ、隣どうしをまとめる）· あなた待ち（BACKLOG の [?]）は ask_remind.yml が 5 分ごとに見て @ 付きで知らせ、返事がなければ最初の 1 時間は 5 分おき・そのあと 3 時間おき・夜（日本時間 0〜8 時）は繰り返さない（2026-10-24） · 画面に関わる PR の合併は Before（合併の直後の本番）と After（render.yml のあと）を撮って左右に並べた画像を送る（harness/before_after.py：ログインなし 1400・test-a 1400・390）",
         "trigger": "pull_request（opened・closed で merged）・main の BACKLOG.md への push",
         "summary": "何時に何ができたか・どこが変わったかを Discord で知らせる（2026-10-23）。ハーネスのループが PR を出す・合併する・一覧を更新するたびに届く。",
-        "files": [".github/workflows/progress.yml", "scripts/progress_notify.py", "harness/before_after.py"], "doc": "HARNESS.md", "uses": ["discord"],
+        "files": [".github/workflows/progress.yml", "scripts/progress_notify.py", "harness/before_after.py", ".github/workflows/ask_remind.yml", "harness/ask_remind.py"], "doc": "HARNESS.md", "uses": ["discord"],
         "flow": [
             {"id": "pg1", "kind": "step", "lane": "actions", "title": "PR を出した／合併した", "text": "題名・本文の最初の 4 行・変えたファイル数・リンク・日本時間"},
             {"id": "pg2", "kind": "step", "lane": "actions", "title": "一覧（BACKLOG.md）の前と今を比べる", "text": "済み [x]・あなた待ち [?]・進行中 [~]・足した段（1 回 10 件まで）"},

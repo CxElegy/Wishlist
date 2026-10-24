@@ -1,14 +1,11 @@
 name: 進み具合を Discord へ
 
 # 何時に何ができたか・どこが変わったかを Discord で知らせる（scripts/progress_notify.py、2026-10-23 用户定的）。
-# PR を出したとき・合併したとき、main の BACKLOG.md（やることの一覧）が変わったとき。
+# 合併したとき（あなた待ちは ask_remind.yml）。
 
 on:
   pull_request:
     types: [closed]   # 合併したときだけ（2026-10-24：PR を出しただけは送らない）
-  push:
-    branches: [main]
-    paths: ["BACKLOG.md"]
 
 permissions:
   contents: read
@@ -32,11 +29,7 @@ jobs:
       - name: PR を出した・合併した
         if: github.event_name == 'pull_request'
         run: python scripts/progress_notify.py pr < "$GITHUB_EVENT_PATH"
-      - name: やることの一覧が変わった
-        if: github.event_name == 'push'
-        run: |
-          git show "${{ github.event.before }}:BACKLOG.md" > /tmp/before.md 2>/dev/null || : > /tmp/before.md
-          python scripts/progress_notify.py backlog /tmp/before.md BACKLOG.md
+      # あなた待ち（[?]）の知らせは ask_remind.yml（@ 付き・返事がなければ繰り返す）に移した
 
   # 画面に関わる PR を合併したら、Before（合併の直後の本番）と After（render.yml のあとの本番）を撮って Discord へ（harness/before_after.py）
   before_after:

@@ -18,7 +18,7 @@ import sys
 import time
 import urllib.request
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont
 from playwright.sync_api import sync_playwright
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -64,11 +64,59 @@ def wait_render(sha):
     time.sleep(60)   # Pages の配信
 
 
+CELL = 24          # 変わった所を探すマスの大きさ（px）
+CELL_MIN = 0.12    # マスの中で変わった点がこれ以上の割合なら「変わった」
+BOX_MIN = 3        # 3 マス未満の小さな変化（時刻の数字など）は囲まない
+
+
+def changed_boxes(a, b):
+    """同じ大きさの 2 枚から、変わった所の四角（x0, y0, x1, y1）。マスに分けて比べ、隣どうしをまとめる。"""
+    diff = ImageChops.difference(a, b).convert("L").point(lambda v: 255 if v > 40 else 0)
+    cols, rows = a.width // CELL + 1, a.height // CELL + 1
+    hot = set()
+    for gy in range(rows):
+        for gx in range(cols):
+            box = (gx * CELL, gy * CELL, min((gx + 1) * CELL, a.width), min((gy + 1) * CELL, a.height))
+            if box[2] <= box[0] or box[3] <= box[1]:
+                continue
+            h = diff.crop(box).histogram()
+            if h[255] / ((box[2] - box[0]) * (box[3] - box[1])) >= CELL_MIN:
+                hot.add((gx, gy))
+    boxes, seen = [], set()
+    for start in sorted(hot):   # すぐ隣（上下左右・斜め）をつないだまとまりごとに 1 つの四角
+        if start in seen:
+            continue
+        stack, group = [start], []
+        seen.add(start)
+        while stack:
+            gx, gy = stack.pop()
+            group.append((gx, gy))
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    n = (gx + dx, gy + dy)
+                    if n in hot and n not in seen:
+                        seen.add(n)
+                        stack.append(n)
+        if len(group) < BOX_MIN:
+            continue
+        xs, ys = [g[0] for g in group], [g[1] for g in group]
+        boxes.append((min(xs) * CELL, min(ys) * CELL, min((max(xs) + 1) * CELL, a.width), min((max(ys) + 1) * CELL, a.height)))
+    # 大きな枠の中にすっぽり入る小さな枠は描かない（重なって見づらい）
+    inside = lambda s, o: s != o and o[0] <= s[0] and o[1] <= s[1] and s[2] <= o[2] and s[3] <= o[3]   # noqa: E731
+    return [s for s in boxes if not any(inside(s, o) for o in boxes)]
+
+
 def compose(before, after):
     """左に Before・右に After。高さをそろえて上に札。幅は 1800px まで。"""
     a, b = Image.open(before).convert("RGB"), Image.open(after).convert("RGB")
     h = min(a.height, b.height, 1400)
     a, b = a.crop((0, 0, a.width, h)), b.crop((0, 0, b.width, h))
+    if a.size == b.size:   # 変わった所を赤い枠で囲む（前と後の両方の同じ場所。2026-10-24 用户定的）
+        boxes = changed_boxes(a, b)   # 描く前に 1 回だけ数える
+        for im in (a, b):
+            dd = ImageDraw.Draw(im)
+            for x0, y0, x1, y1 in boxes:
+                dd.rectangle((x0 + 2, y0 + 2, x1 - 3, y1 - 3), outline=(215, 38, 30), width=4)
     gap, top = 24, 44
     img = Image.new("RGB", (a.width + b.width + gap, h + top), (237, 235, 230))
     img.paste(a, (0, top))
