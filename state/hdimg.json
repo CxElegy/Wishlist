@@ -124,6 +124,32 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/008txX0Ply1iidpkzkyz7j31o02yo7wi.jpg": {
+  "w": 2000,
+  "h": 3556,
+  "target": 720,
+  "v": 3,
+  "local": "pics/040f4294d0604296.webp",
+  "out": [
+   720,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx4.sinaimg.cn/middle/006gNTEUgy1iidjugajd2j399c6fe7wq.jpg": {
+  "w": 2000,
+  "h": 1388,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/8b92b563af060a37.webp",
+  "out": [
+   1280,
+   888
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/647c8fably1ii84lyoc7cj20v90oetbk.jpg": {
   "w": 1125,
   "h": 878,
@@ -301,6 +327,12 @@
    799
   ],
   "why": "看不清"
+ },
+ "https://cdn.mainichi.jp/vol1/2026/10/25/20261025ddm001010140000p/0c10.jpg?1": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
  },
  "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
   "w": 960,
@@ -712,6 +744,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://i.ytimg.com/vi/yDNHmJusgcM/maxresdefault.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/Bleach-Mirrors-High-1-million-pre-registrations.webp?fit=1920%2C1080&ssl=1": {
   "w": 1920,
   "h": 1080,
@@ -807,6 +845,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227974/thumb001.png?height=720&quality=75&version=1792723153&width=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://image.starnewskorea.com/21/2026/10/2026102309421333450_1.jpg": {
@@ -1106,6 +1150,19 @@
   "v": 3,
   "blur": 0.538,
   "local": "pics/e23a1752a1de8748.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
+ },
+ "https://img.gamewith.jp/article/thumbnail/rectangle/198906.png?date=1587709914": {
+  "w": 600,
+  "h": 315,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.547,
+  "local": "pics/fe7205200103c313.webp",
   "out": [
    1280,
    672
@@ -1935,6 +1992,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035789-tennismagv-000-1-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/f850042f7345550f.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
   "h": 1080,
@@ -2016,6 +2085,12 @@
  },
  "https://nokiamob.net/wp-content/uploads/2026/10/S27-pro-2-1-1920w-1080h.png.webp": {
   "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg": {
+  "w": 1728,
   "h": 1080,
   "target": 1280,
   "v": 3
@@ -2207,6 +2282,12 @@
   "w": 1200,
   "h": 800,
   "target": 720,
+  "v": 3
+ },
+ "https://res.ldrescdn.com/rms/ldplayer/process/img/8593424b953f4cf8b738845fd911fa001778577981.jpg?x-oss-process=image/format,webp": {
+  "w": 1268,
+  "h": 714,
+  "target": 1280,
   "v": 3
  },
  "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt1b726d9377df2d1c/6adba7a6820d538fa1bea34c/gta-6-vinyl-album-soundtrack-ps5-bundle.jpg": {
@@ -2456,7 +2537,7 @@
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/from-boyd.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/gta-6-lucia.jpg?&fit=crop": {

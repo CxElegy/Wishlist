@@ -1,22 +1,24 @@
 {
  "date": "2026-10-25",
- "edit_sig": "bd041657a49b",
+ "edit_sig": "963782c4f883",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "NC 公開《阿索拉：星之祈願》主要角色及世界觀。",
      "date": "2026-10-24",
-     "n": 1,
-     "source": "https://news.omg.com.tw/",
-     "title": "NC 公開《阿索拉：星之祈願》主要角色及世界觀",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5NNmh5VFhWX3N1cnV3QlpNS3JaTGlKdzVwb1JMSmxLZjFqeVgxemhYaE03Si1pT191b1FMbzFQbVIyQmt3bHFCSDFLckxmQnlaMjd4UDlHQjFGLVJUTGlXZU5jTQ?oc=5"
+     "headline": "NC 公開《阿索拉：星之祈願》主要角色及世界觀",
+     "highlight": "主要角色及世界觀",
+     "image": "https://res.ldrescdn.com/rms/ldplayer/process/img/8593424b953f4cf8b738845fd911fa001778577981.jpg?x-oss-process=image/format,webp",
+     "image_via": "AI 挑选",
+     "url": "https://news.omg.com.tw/News/NewsContent?NewsID=14637",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -288,31 +290,39 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "東レPPOの予選がスタート。日本勢7人のうち、本玉真唯と石井さやかが初戦を突破した。",
      "date": "2026-10-24",
-     "n": 1,
-     "source": "毎日新聞",
-     "title": "テニス 東レ・パンパシフィック・オープン 毎トーV辻岡、予選初戦敗退",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9HTFJlQWE0QTlkT3hTVE1pMl81TzBHbzAyQ0xSVEJxZlJvSnpXMzE1ZWI0WE1sTXdQcjdhNjRtTUpXVXRDb0E1b0ZSVERCWEprNE91Qll4YkxDQ3BjRWYyN1IxdjFZYk9k?oc=5"
+     "headline": "予選がスタート、7人が出場した日本勢は本玉真唯と石井さやかが初戦を突破",
+     "highlight": "初戦を突破",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035789-tennismagv-000-1-view.jpg?exp=10800",
+     "image_via": "转载 news.yahoo.co.jp",
+     "url": "https://tennismagazine.jp/article/detail/35789",
+     "weight": "lead"
     },
     {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "テニス 東レ・パンパシフィック・オープン 毎トーV辻岡、予選初戦敗退",
+     "highlight": "",
+     "image": "https://cdn.mainichi.jp/vol1/2026/10/25/20261025ddm001010140000p/0c10.jpg?1",
+     "image_via": "og:image",
+     "url": "https://mainichi.jp/articles/20261025/ddm/035/050/025000c",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 2,
-     "source": "ABEMA",
-     "title": "第5日 コートA 【東レ パン パシフィック オープンテニス】",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9zWEZadXB4bWNxVkJ3MXVQWVhRelIxcjcyOTlPZ1BoOXczMFFpamc1REVldlZYX2phN3lOcXQ4dFpQc3o5Ymo1dnJMU2JLVkpOWkVfaVNiaWxXNlg4MEVmYlRqMUdtZXJYSkNOZ05zc3B1QQ?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 3,
-     "source": "テニスマガジンONLINE",
-     "title": "予選がスタート、7人が出場した日本勢は本玉真唯と石井さやかが初戦を突破 [東レPPO]",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE53emtUTUJmY04xLUFheFFlc2ZPZHpESUpNS1VQaUxQc3IwS0ZNcFM2WDlIS1RVQ3BYVEtYNUtCbmtPY3VNUkV2SFN4TWxGakpJNHN4RTA2cEFqdw?oc=5"
+     "headline": "第5日 コートA 【東レ パン パシフィック オープンテニス】",
+     "highlight": "",
+     "image": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227974/thumb001.png?height=720&quality=75&version=1792723153&width=1280",
+     "image_via": "og:image",
+     "url": "https://abema.tv/live-event/a1514adf-f47c-48e0-a449-f5d24b59005e",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
@@ -416,24 +426,30 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-20",
-     "n": 1,
-     "source": "GameWith",
-     "title": "みごとなめいがの偽物の見分け方 | 本物との違い【あつ森】",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9aOTF3WlB3alNTVVRUaEZoTWFKTmpiS3pWMmhqTnRscFJnd2pUdWwwMFFHT2U2S0ZOVUFTMlJmTTl4bFlUSFV6b3pZRUdDeXJzakF3aHRySzlVOGVB?oc=5"
+     "headline": "みごとなめいがの偽物の見分け方 | 本物との違い【あつ森】",
+     "highlight": "偽物の見分け方",
+     "image": "https://img.gamewith.jp/article/thumbnail/rectangle/198906.png?date=1587709914",
+     "image_via": "AI 挑选",
+     "url": "https://gamewith.jp/atsumori/article/show/198906",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-24",
-     "n": 2,
+     "headline": "【あつ森】島紹介① | 自然と動物が共存する初秋の島",
+     "highlight": "",
+     "image": null,
      "source": "Howl.Link",
-     "title": "【あつ森】島紹介① | 自然と動物が共存する初秋の島🌳 | Island tour Dream address | ACNH",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE0xU21IaEJMNkotOE9Ob2lSZ2tRSHRDU3RZYnllclpFN2gycTNGaG1oMDhvWkxaV1JGZlc4?oc=5"
+     "source_icon": null,
+     "url": "https://t.co/h37eNf4Ukr",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -526,31 +542,39 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-24",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "#大长腿# 今天出的是绝区零 你能看出来是叠穿么",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE8xRmJrT0xrUlNUTm5xRzFMaWg0RWxCRWZPZkNDME5TM1dBcTZwYUp5NTRmREpKZnhqOTRia1NkbXdFZFNibnFvU3g2N3VBU3lOcXhycE9EZzhRdEhkajNFSk1lUQ?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 2,
-     "source": "3DM",
-     "title": "绝区零10月23日兑换码2026",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9Iakx6WWY1bWI3WG1PaW1zNHVuZExMYzVMOC1NZ0Z4SlRWTkQ1MEV5OXQ3S2N1dDV6NzFnNnhJR1FNRTc4QkJQUTF3LUZ6ckZP?oc=5"
+     "headline": "绝区零10月23日兑换码2026",
+     "highlight": "兑换码",
+     "image": "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://m.3dmgame.com/ol/gl/356807.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-24",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "绝区零卡芙卡与知更鸟立绘壁纸分享|绝区零|知更鸟",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE81dWJFamJWbWdKNmdOVC1LVUxsRDRkNm9waldqMTBQZm9PbnBJYkZZeGFqX3loYWJPM0pLSXE1dXF0RUQ2d3BadnRZZU0wNGNoUzZNRUp0aEpGZm94NWIydVVoYw?oc=5"
+     "headline": "绝区零卡芙卡与知更鸟立绘壁纸分享",
+     "highlight": "",
+     "image": "http://wx4.sinaimg.cn/middle/006gNTEUgy1iidjugajd2j399c6fe7wq.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5357590533905112.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "今天出的是绝区零 你能看出来是叠穿么",
+     "highlight": "",
+     "image": "http://wx3.sinaimg.cn/middle/008txX0Ply1iidpkzkyz7j31o02yo7wi.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5357640566709422.html",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -663,17 +687,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "ScreenRant argues this is From's most important character.",
      "date": "2026-10-24",
-     "n": 1,
-     "source": "ScreenRant",
-     "title": "Forget Harold Perrineau's Boyd, This Is From's Most Important Character",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQa3ByelBfNF85cnQ0Nk43X2NnRURPLWlEcUl6THllSXJjRDRtd3NqLUJtLWtCbTV6Z3ZxWlN0NFJ4OWJ6WVpJdDBkRWxUMFdCajNZdmN2VmQ4OVBibGp6ZFRlb1dGSW81TEZjNzYtLUlIOEVXcEdaZTVHQ1RuaDRFc3hlTG9KTEpYYS1tSkNn?oc=5"
+     "headline": "Forget Harold Perrineau's Boyd, This Is From's Most Important Character",
+     "highlight": "Most Important Character",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/from-boyd.jpg?w=1600&h=900&fit=crop",
+     "image_via": "AI 挑选",
+     "url": "https://screenrant.com/from-show-harold-perrineau-boyd-jade-more-important-character/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
