@@ -1,6 +1,6 @@
 {
  "date": "2026-10-24",
- "edit_sig": "463981e2a418",
+ "edit_sig": "997275681b25",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -206,15 +206,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 7,
-     "source": "DMKsnowboard",
-     "title": "やっぱり今年も日本一！イエティが28年連続で日本一早くオープン",
-     "url": "https://dmksnowboard.com/yeti-open-2026-2027/"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -500,15 +491,6 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 4,
-     "source": "TRILL",
-     "title": "2位『ファミリア』3位『ジェラートピケ』【プレゼントでもらったら一番うれしいベビー服ブランド】300名が選ぶ1位に「安心して渡せる」「上品で贈り物らしい」",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9CZHY4czBzU0Y2WnExWEE0WVg2dkp5QjNhQ29xMHdYUWp4WDV2U2RPX01KSjFvNUlTc1VFYU5XdW9vb3BpUWM1OC1qR0NjcDA?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -547,6 +529,16 @@
      },
      "url": "https://n.yam.com/Article/20261023472125",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "2位『ファミリア』3位『ジェラートピケ』【プレゼントでもらったら一番うれしいベビー服ブランド】300名が選ぶ1位に「安心して渡せる」「上品で贈り物らしい」",
+     "highlight": "",
+     "image": "https://media.trilltrill.jp/articles/5085359/cover-image.e90a6915a42164e530d981103a170803?w=1200",
+     "image_via": "og:image",
+     "url": "https://trilltrill.jp/articles/5085359",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",
@@ -571,20 +563,15 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 11,
-     "source": "hashout",
-     "title": "チェンソーマンレゼ篇×望月けいコラボグッズ、11月13日から渋谷ロフトで販売",
-     "url": "https://hashout.jp/anime/13124/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
      "blurb": "渋谷ロフトで「CHAINSAW MAN PLAZA TheMovie:RezeArc」が期間限定開催されます。",
      "date": "2026-10-23",
+     "event": {
+      "date": "2026-11-13",
+      "label": "グッズ販売開始"
+     },
      "headline": "【予告】 「CHAINSAW MAN PLAZA TheMovie:RezeArc in 渋谷ロフト」期間限定開催！",
      "highlight": "期間限定開催",
      "image": "https://loft-images.s3.ap-northeast-1.amazonaws.com/original_2348289__%E8%BB%BD%E9%87%8F%E5%8C%96%EF%BC%9A%E6%AD%A3%E6%96%B9%E5%BD%A2.jpg",
@@ -669,15 +656,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 13,
-     "source": "新浪网",
-     "title": "周杰伦遭“青鸟”“出征” 台议员反问：不是说“台湾最美的风景是人”吗？",
-     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQUkxVd1ItWklxN1Y1Y2hZdzBKVGJNNmoyZTZMRUhDQmZNYW1UMDNxY0kyV3Z4bUp3TzNyTE9pVzBHTTBjTkdYdU9wbmsxdlBXNXNlVFdzdExiRWEydEFhWVptMGVGdzNxMW1MX2lxbURON2phcTJUNExGUVlaV25NV0g2OUFleWptWURfZFo2bEFBQ21QTEJONldWaXRXekxISWFBbmJqckNNZlRLeXZjd2RfaFdZOFR5SFlaV3FoY3J5UUF3dU5zOUlGa002VGE5VFdRemhqdUdTZw?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -776,15 +754,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 9,
-     "source": "hotspawn",
-     "title": "Team Liquid’s Debut Series Ends With a Win – PARI Universe Day 1 Recap",
-     "url": "https://www.hotspawn.com/dota2/news/team-liquids-debut-series-ends-with-a-win-pari-universe-day-1-recap"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {

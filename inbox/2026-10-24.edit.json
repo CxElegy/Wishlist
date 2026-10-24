@@ -296,13 +296,13 @@
   "MMORPG 新作": 20,
   "日本顶级网球赛事": 25,
   "ILLIT": 15,
-  "周杰伦": 12,
-  "チェーンソーマン": 10,
-  "dota2": 8,
+  "周杰伦": 13,
+  "チェーンソーマン": 11,
+  "dota2": 9,
   "Astrae Oratio": 6,
-  "滑雪": 6,
+  "滑雪": 7,
   "绝区零": 10,
-  "gelato pique": 3,
+  "gelato pique": 4,
   "BLEACH Mirrors High": 3,
   "あつ森": 2,
   "哈利波特剧集": 2,
@@ -490,8 +490,13 @@
    "blurb": "渋谷ロフトで「CHAINSAW MAN PLAZA TheMovie:RezeArc」が期間限定開催されます。",
    "weight": "lead",
    "refs": [
-    4
-   ]
+    4,
+    11
+   ],
+   "event": {
+    "date": "2026-11-13",
+    "label": "グッズ販売開始"
+   }
   },
   {
    "headline": "The Apothecary Diaries Movie Recruits Chainsaw Man and Gundam's Kenshi Yonezu for Official Theme Song",
@@ -538,7 +543,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    9
    ]
   },
   {
@@ -601,7 +607,8 @@
    "weight": "lead",
    "refs": [
     3,
-    6
+    6,
+    7
    ]
   },
   {
@@ -692,6 +699,15 @@
     "date": "2026-10-31",
     "label": "販売終了"
    }
+  },
+  {
+   "headline": "2位『ファミリア』3位『ジェラートピケ』【プレゼントでもらったら一番うれしいベビー服ブランド】300名が選ぶ1位に「安心して渡せる」「上品で贈り物らしい」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "BLEACH Mirrors High": [
