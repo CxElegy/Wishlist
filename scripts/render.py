@@ -4182,7 +4182,7 @@ AUTH_JS = r"""
     var picks=picksOf(p);
     if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';return;}   // もう本人のページの中
     // ログインしたお客さまはだれでも、まず本人のページ（店長と同じ枠組み）。版面の数によらない（HARNESS.md「一番大事な決まり」）
-    if(page==='settings'&&!err&&tok&&picks.length){box.remove();ownPage().then(function(done){if(!done){var b3=document.createElement('main');b3.className='wl-mine';b3.id='mine';document.body.appendChild(b3);drawMine(b3,p,'');}});return;}
+    if(page==='settings'&&!err&&tok){box.remove();ownPage().then(function(done){if(!done){var b3=document.createElement('main');b3.className='wl-mine';b3.id='mine';document.body.appendChild(b3);drawMine(b3,p,'');}});return;}
     if(page==='index'&&!err&&tok&&document.querySelector('section.sec[data-k]')){
       box.remove();ownPage().then(function(done){if(done)return;
         if(picks.length)showMine(p,picks);else{var b2=document.createElement('main');b2.className='wl-mine';b2.id='mine';document.body.appendChild(b2);drawMine(b2,p,'');}});return;}

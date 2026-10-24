@@ -8,7 +8,8 @@
   - 店長と同じ枠組み：目次（.nav）・題字（.mast か h1）・令牌（--ink）がある
   - 横にはみ出す：scrollWidth > 画面の幅
   - JS のエラー（pageerror）
-写真は OUT/<だれ>-<幅>.png。
+設定ページ（settings.html）も同じ人・同じ幅で：素の箱・題字・令牌・はみ出し・JS のエラー、お客さまは本人の設定ページ（wl-own）か。
+写真は OUT/<だれ>-<幅>.png・OUT/<だれ>-set-<幅>.png。
 
     python harness/ux_check.py [--base https://cxelegy.github.io/Wishlist/home/] [--out DIR] [--who test-a,test-b]
 """
@@ -41,7 +42,7 @@ def session(email):
     return out
 
 
-def check(pw, base, who, width, out):
+def check(pw, base, who, width, out, page=""):
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
     pg = b.new_page(viewport={"width": width, "height": 900})
     loads, errors = [], []
@@ -52,7 +53,7 @@ def check(pw, base, who, width, out):
         pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}",
                     session(WHO[who]))
     loads.clear()
-    pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+    pg.goto(base + page, wait_until="domcontentloaded", timeout=60000)
     pg.wait_for_timeout(WATCH_S * 1000)
     st = pg.evaluate("""b=>({text:document.body?document.body.innerText.replace(/\\s+/g,'').length:0,
         secs:document.querySelectorAll('section.sec').length,front:!!document.getElementById('front'),
@@ -64,9 +65,23 @@ def check(pw, base, who, width, out):
         pics:[...document.querySelectorAll('section.sec article img')].length,
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         sw:document.documentElement.scrollWidth})""", BOXES)
-    pg.screenshot(path=str(out / f"{who}-{width}.png"))
+    pg.screenshot(path=str(out / f"{who}-{'set-' if page else ''}{width}.png"))
     b.close()
     bad = []
+    if page:   # 設定ページ：版面・目次はないので、枠組み（題字・令牌）と本人の分か
+        if st["text"] < 100:
+            bad.append(f"白い画面（文字 {st['text']}）")
+        if WHO[who] and st["boxes"]:
+            bad.append(f"素の箱 {st['boxes']} 個（本人の設定ページではない）")
+        if WHO[who] and not st["own"]:
+            bad.append("本人の設定ページではない")
+        if not (st["mast"] and st["token"]):
+            bad.append("題字・令牌がない")
+        if st["sw"] > width:
+            bad.append(f"横にはみ出す（{st['sw']}px）")
+        if errors:
+            bad.append("JS のエラー：" + " / ".join(errors[:2]))
+        return st, bad
     if len(loads) > 3:
         bad.append(f"開き直しのくり返し（{WATCH_S} 秒で {len(loads)} 回）")
     if st["text"] < 200 or not (st["secs"] or st["front"]):
@@ -96,13 +111,13 @@ def main(argv):
     fails = 0
     with sync_playwright() as pw:
         for who in a.who.split(","):
-            for w in map(int, a.widths.split(",")):
+            for w, page in [(int(w), pg) for pg in ("", "settings.html") for w in a.widths.split(",")]:
                 try:
-                    st, bad = check(pw, a.base, who, w, out)
+                    st, bad = check(pw, a.base, who, w, out, page)
                 except Exception as ex:  # noqa: BLE001
                     st, bad = {}, [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
                 fails += bool(bad)
-                print(("✗ " if bad else "✓ ") + f"{who} {w}px：" + ("、".join(bad) if bad else
+                print(("✗ " if bad else "✓ ") + f"{who}{' 設定' if page else ''} {w}px：" + ("、".join(bad) if bad else
                       f"版面 {st.get('secs')}・記事 {st.get('arts')}・写真 {st.get('pics')}・本人のページ {'はい' if st.get('own') else 'いいえ'}"))
     print(f"点検：✗ {fails} 件")
     return 1 if fails else 0

@@ -130,6 +130,9 @@ class Layout(unittest.TestCase):
         self.assertNotIn("drop ", low)
         self.assertNotIn("delete ", low)
         self.assertNotIn("public.sizes", low)    # get_sizes はだれでも読めるので、お客さまの分は書かない
+        k = low.split("function private.kick_render()")[1].split("end $$")[0]
+        self.assertNotIn("interval '60 seconds'", k)   # 間引くと続けて押した分が出ない（render.yml は cancel-in-progress で最後の回が勝つ）
+        self.assertIn("private.render_kicks", k)
 
 
 class JsSyntax(unittest.TestCase):
@@ -173,6 +176,26 @@ class Issue(unittest.TestCase):
         self.assertIn(user_pages.ADD_URL, b[0]["status"])
         html_ = render._md_links(b[0]["status"])
         self.assertNotIn("_blank", html_)          # サイトの中の網址は同じタブ
+
+
+    def test_size_caps_stories(self):
+        # 設定ページの約束（S 3・M 5・L 8）：本人の篇幅で切る。店長と同じ版面も、本人の版面も
+        rows = {"広島旅行": {"stories": [{"title": f"記事{n}", "url": f"https://example.com/{n}", "date": "2026-10-23"} for n in range(12)]}}
+        shop = {"items": [{"name": "あつ森", "section": "游戏", "stories": [{"headline": f"s{n}", "url": "https://e.com"} for n in range(9)]}]}
+        for size, n in (("S", 3), ("M", 5), ("L", 8), (None, 5)):
+            items = [{"name": "広島旅行", "section": "出行", **({"size": size} if size else {})},
+                     {"name": "あつ森", "section": "游戏", "_shop": True, **({"size": size} if size else {})}]
+            b = user_pages.user_issue(items, shop, rows, 0, {})["items"]
+            self.assertEqual([len(x["stories"]) for x in b], [n, n], size)
+        self.assertEqual(len(shop["items"][0]["stories"]), 9)   # 店長の号は変えない
+
+    def test_settings_for_zero_boards(self):
+        # 版面 0 個の人の設定ページも店長と同じ部品（素の箱 drawMine に落とさない）
+        pages = {}
+        user_pages.build("c@example.com", {"picks": []}, {}, [], None, {}, 0, {}, [], {}, pages)
+        self.assertIn('name="wl-own"', pages["settings.html"])
+        self.assertIn(user_pages.ADD_URL, pages["settings.html"])
+        self.assertIn("if(page==='settings'&&!err&&tok){", render.AUTH_JS)
 
 
 class Loader(unittest.TestCase):
