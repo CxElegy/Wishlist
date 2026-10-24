@@ -202,7 +202,11 @@
   "Vaundy": 1,
   "dota2": 1,
   "チェーンソーマン": 1,
-  "三星手机": 1
+  "三星手机": 1,
+  "哈利波特剧集": 2,
+  "MMORPG 新作": 1,
+  "The Mandalorian": 1,
+  "滑雪": 1
  },
  "日本顶级网球赛事": [
   {
@@ -332,6 +336,39 @@
     1
    ],
    "image": "https://nokiapoweruser.com/wp-content/uploads/2026/10/New-Galaxy-S27-Series-Leaked-Cases-Hint-at-a-Complete-Makeover-for-Samsungs-Flagships.jpg"
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO’s Harry Potter series is on track to cost more than any of the films",
+   "highlight": "cost more than any of the films",
+   "blurb": "HBO’s Harry Potter series is reportedly on track to cost more than any of the films.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "HBO's Harry Potter Only Has One Chance To Win Back Its Doubters",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "MMORPG 新作": [],
+ "The Mandalorian": [],
+ "滑雪": [
+  {
+   "headline": "富良野スキー場、1日10名限定のファーストトラック体験を開催 プロ撮影と特別ランチ付き",
+   "highlight": "1日10名限定",
+   "blurb": "富良野スキー場が、1日10名限定のファーストトラック体験を開催。プロ撮影と特別ランチ付き。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }

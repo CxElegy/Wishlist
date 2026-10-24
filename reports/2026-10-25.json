@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "4a39bd520ff5",
+ "edit_sig": "b19a037b389f",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -103,45 +103,20 @@
   {
    "cover": null,
    "facts": [],
-   "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 1,
-     "source": "더리브스",
-     "title": "‘제우스’ 흥행 탄력…컴투스, MMORPG로 주력 라인업 다각화",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBBNXRKWmFTdGRwT3Y1X29XMXBtcEI4YjhVbTZkcUMxS1F5NGlSeGRBNS1yb1B2anRpRndOakh1bTNENk5UUklxaFEycjBBeU9GakViUExtQ1IxcTRSUmRPS0xxMHhMZ1k0M3c?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "近期上线 · 测试 · 新公布的网游",
-   "theme": {
-    "accent": "#E3B341",
-    "alt_accent": "#B794F6",
-    "alt_bg": "#2C2148",
-    "alt_fg": "#F3EEDF",
-    "bg": "#15131F",
-    "fg": "#F3EEDF",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "富良野スキー場が、1日10名限定のファーストトラック体験を開催。プロ撮影と特別ランチ付き。",
      "date": "2026-10-23",
-     "n": 1,
-     "source": "DMKsnowboard",
-     "title": "富良野スキー場、1日10名限定のファーストトラック体験を開催 プロ撮影と特別ランチ付き",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4yczBUWE1ZeGp1Q1o3bkltajBzamV5TVo1RFpweU9RemhIMkRtYTNFSnZmX1ZYNWgxdTBhMUdjb3NaR1JRTU95SUFvR1FDUzBIQ0NCS3NtSDlvUFFHM0VwWjhkektWaFFvMTJfbS1lSng?oc=5"
+     "headline": "富良野スキー場、1日10名限定のファーストトラック体験を開催 プロ撮影と特別ランチ付き",
+     "highlight": "1日10名限定",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/furano.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/furano-bonchi-powder-first-track-2027/",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -227,24 +202,29 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "HBO’s Harry Potter series is reportedly on track to cost more than any of the films.",
      "date": "2026-10-24",
-     "n": 1,
-     "source": "ScreenRant",
-     "title": "HBO's Harry Potter Only Has One Chance To Win Back Its Doubters",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNdWlic3dveUZNQzFGQ0dac0w1cWlQQV9lSzJRQnZhNGZfbFljcHNER1VLek9ZVXpsSzZidURtaW5xMl9hdEFRMWFDMXBMRjQwSlJubEtQaXc2Q2tvcjFPWUNRT3VBSTFIZVpvWVJkMmVBQTRYMDNqOFFLaXJSVkozYW5QcTFhZw?oc=5"
+     "headline": "HBO’s Harry Potter series is on track to cost more than any of the films",
+     "highlight": "cost more than any of the films",
+     "image": "https://www.bing.com/th?id=ONUT.nmQBPUIe6hJu6JWV3BuQPQ&pid=News&w=1200",
+     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "url": "https://www.thestreet.com/entertainment/hbo-harry-potter-series-may-cost-more-than-any-of-the-films-movies",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-24",
-     "n": 2,
-     "source": "TheStreet",
-     "title": "HBO’s Harry Potter series is on track to cost more than any of the films",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZVRfcTRWZXNENDRqRjl5Vm9vZ0tkYlRWWlBRYmRqZkpONEphR0pCdjUzU1hIOEYyVTZLdU5oY0FPS1JZR0pUNXk2ZlczNWtLVlBPbHE5MGM2ZmJKb1UtSzFfbVg5Y3lTS3QwSkNZazRBWFZWSjcyUVc0Z1hOMTJRWVpiRHY2X1hTVWtmVW1JOFRQWHZ0eWd5aTFzOWZ0Yk5hMWhGaEpxbUhaZw?oc=5"
+     "headline": "HBO's Harry Potter Only Has One Chance To Win Back Its Doubters",
+     "highlight": "",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/harry-potter_rkhp9m-1.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/hbo-harry-potter-series-one-chance-prove-doubters-wrong/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -395,33 +375,6 @@
     "alt_fg": "#1E1A18",
     "bg": "#211712",
     "fg": "#F4EEE4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-   "facts": [],
-   "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 1,
-     "source": "Red Five on MSN",
-     "title": "Moff Gideon's cloning agenda in The Mandalorian",
-     "url": "https://www.msn.com/en-us/entertainment/tv/moff-gideon-s-cloning-agenda-in-the-mandalorian/vi-AA1RDmv2"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "ザ・マンダロリアン",
-   "theme": {
-    "accent": "#C9A66B",
-    "alt_accent": "#7A5A1F",
-    "alt_bg": "#ECEAE4",
-    "alt_fg": "#1B1D20",
-    "bg": "#14161A",
-    "fg": "#E8EAEC",
     "font": "serif",
     "split": true
    }
@@ -688,6 +641,31 @@
    }
   },
   {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-24",
+    "headline": "Life-Sim MMO Loftia Early Access launch date confirmed",
+    "url": "https://gamesbeat.com/life-sim-mmo-loftia-early-access-launch-date-confirmed/"
+   },
+   "name": "MMORPG 新作",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "近期上线 · 测试 · 新公布的网游",
+   "theme": {
+    "accent": "#E3B341",
+    "alt_accent": "#B794F6",
+    "alt_bg": "#2C2148",
+    "alt_fg": "#F3EEDF",
+    "bg": "#15131F",
+    "fg": "#F3EEDF",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "last": {
@@ -784,6 +762,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+   "facts": [],
+   "last": {
+    "date": "2026-10-24",
+    "headline": "Star Wars Brings Back Mandalorian and Grogu in Brand-New Sequel",
+    "url": "https://www.disneydining.com/star-wars-brings-back-mandalorian-and-grogu-in-brand-new-sequel-dr1/"
+   },
+   "name": "The Mandalorian",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "ザ・マンダロリアン",
+   "theme": {
+    "accent": "#C9A66B",
+    "alt_accent": "#7A5A1F",
+    "alt_bg": "#ECEAE4",
+    "alt_fg": "#1B1D20",
+    "bg": "#14161A",
+    "fg": "#E8EAEC",
+    "font": "serif",
     "split": true
    }
   },
