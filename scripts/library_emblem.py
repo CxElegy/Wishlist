@@ -128,7 +128,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
         return {"emblem_state": {"state": "failed", "have": 0, "at": int(now or time.time()), "note": "名前に \" か \\ がある"}}
     item = board_item(board, follow, get)
     with sandbox(item) as (root, site):
-        with contextlib.redirect_stdout(io.StringIO()):   # emblem の print（版面・人の名前）を公開のログに出さない
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):   # emblem の print（版面・人の名前、多くは stderr）を公開のログに出さない
             try:
                 r = fill(item, log=lambda *a, **k: None)
             except emblem_fill.OutOfTime:
