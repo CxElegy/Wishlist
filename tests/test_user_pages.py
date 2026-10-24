@@ -32,6 +32,34 @@ class Items(unittest.TestCase):
         self.assertEqual(out[0]["match"], ["広島旅行"])
 
 
+class Follows(unittest.TestCase):
+    """置く板块・小分類・篇幅・並びはライブラリの follows から（picks は follows にまだないものだけ）。"""
+    FOL = [{"pos": 1, "section": "游戏", "subs": {"platform": "スマホ", "status": "運営中"}, "size": "L", "boards": {"name": "原神"}},
+           {"pos": 0, "section": "出行", "subs": {"kind": "観光地"}, "size": None, "boards": {"name": "京都"}}]
+
+    def test_follows_first_then_new_picks(self):
+        out = user_pages.own_picks(self.FOL, [{"name": "京都", "sec": "其他"}, {"name": "広島旅行", "sec": "出行"}])
+        self.assertEqual([p["name"] for p in out], ["京都", "原神", "広島旅行"])   # follows の並び → まだ follows にないもの
+        self.assertEqual(out[0]["sec"], "出行")                                    # 板块は follows（picks の「其他」ではない）
+
+    def test_subs_and_size_reach_items(self):
+        items = user_pages.user_items(user_pages.own_picks(self.FOL, []), [])
+        gen = next(i for i in items if i["name"] == "原神")
+        self.assertEqual(gen["size"], "L")
+        self.assertEqual(user_pages.own_sub(gen), "運営中")   # 游戏の 1 つ目の分け方（状態）。jsonb の鍵の順に頼らない
+        self.assertNotIn("size", next(i for i in items if i["name"] == "京都"))
+
+    def test_shop_board_takes_own_subs(self):
+        it = user_pages.user_items([{"name": "あつ森", "sec": "游戏", "subs": {"status": "発売済み"}}], Items.SHOP)[0]
+        self.assertEqual(it["subs"], {"status": "発売済み"})
+        self.assertEqual(it["motif"], "leaf")
+
+    def test_page_shows_subheads(self):
+        html_ = user_pages.build("a@example.com", {}, {}, [], None, {}, 0, {}, self.FOL)
+        self.assertIn("運営中", html_)
+        self.assertIn("観光地", html_)
+
+
 class Issue(unittest.TestCase):
     def test_stories_from_rows(self):
         items = [{"name": "広島旅行", "type": "category", "section": "出行", "keywords": ["広島旅行"], "match": ["広島旅行"], "subs": {}}]
