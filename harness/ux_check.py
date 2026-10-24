@@ -8,6 +8,8 @@
   - 店長と同じ枠組み：目次（.nav）・題字（.mast か h1）・令牌（--ink）がある
   - 横にはみ出す：scrollWidth > 画面の幅
   - JS のエラー（pageerror）
+  - 近さ（harness/near.js，2026-10-24）：写真が上の記事か下の記事か迷う所。すぐ上に別の記事がある記事で、
+    上の記事の最後の字 → この記事の最初の部品 の隙間が max(24px, 記事の中のいちばん大きい隙間 × 2.5) 未満、かつ上の記事が線で閉じていない
   - エンブレム（harness/emb_check.py の E1〜E11：出ない・読めない・白い四角・大きさ・はみ出し・題字に重なる・切れ・重複・別の作品の絵・目標に届かない・何人も）。
     --emb quick（ふだん）は出ている 1 枚を網页で測り、画像は候補を全部見る。--emb full は候補を全部差し替えて測り、写真の一覧 OUT/emb/sheet-<だれ>-<幅>.png
 設定ページ（settings.html）も同じ人・同じ幅で：素の箱・題字・令牌・はみ出し・JS のエラー、お客さまは本人の設定ページ（wl-own）か。
@@ -34,6 +36,7 @@ WHO = {"guest": None, "test-a": "test-a@example.com", "test-b": "test-b@example.
 PASSWORD = "0000"   # テスト用アカウントの決まった合言葉（CLAUDE.md「ログイン」）
 WATCH_S = 40
 BOXES = ".wl-mine,.wl-wait,.wl-today,.wl-maybe"
+NEAR_JS = (pathlib.Path(__file__).resolve().parent / "near.js").read_text(encoding="utf-8")
 
 
 def session(email):
@@ -70,6 +73,7 @@ def check(pw, base, who, width, out, page="", emb="off"):
         pics:[...document.querySelectorAll('section.sec article img')].length,
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         sw:document.documentElement.scrollWidth})""", BOXES)
+    near = [] if page else pg.evaluate(NEAR_JS)
     pg.screenshot(path=str(out / f"{who}-{'set-' if page else ''}{width}.png"))
     bad = []
     if not page and emb != "off":
@@ -101,6 +105,9 @@ def check(pw, base, who, width, out, page="", emb="off"):
         bad.append(f"横にはみ出す（{st['sw']}px）")
     if st["arts"] and st["empty"]:   # 2026-10-24：記事が 8 本あってもポスターが「直近 7 日は新着なし」（写真のある記事がない）
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
+    if near:
+        bad.append(f"近さ {len(near)}（記事どうしの隙間が記事の中と同じくらい：" + "・".join(
+            f"{x['sec']} 中 {x['inner']}px／間 {x['outer']}px" for x in near[:3]) + "）")
     if errors:
         bad.append("JS のエラー：" + " / ".join(errors[:2]))
     return st, bad

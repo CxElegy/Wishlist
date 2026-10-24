@@ -35,6 +35,26 @@ class Typography(unittest.TestCase):
         self.assertGreaterEqual(min(sizes), 10, "CSS has text under 10px (functional text 11px, English labels 10px)")
 
 
+class StoryProximity(unittest.TestCase):
+    """記事の近さ（2026-10-24，用户定的）：同じ記事の中の隙間は記事どうしの隙間の 1/3 以下、記事は下の線で閉じる。
+    写真が上の記事か下の記事か迷わせない。網页での実測は harness/ux_check.py の「近さ」。"""
+
+    def px(self, pat):
+        m = re.search(pat, render.CSS)
+        self.assertTrue(m, pat)
+        return [int(x) for x in m.groups()]
+
+    def test_gap_ratio(self):
+        inner, = self.px(r"\.card\{position:relative;display:flex;flex-direction:column;gap:(\d+)px")
+        row, = self.px(r"\n\.grid\{display:grid;grid-template-columns:repeat\(12,minmax\(0,1fr\)\);gap:(\d+)px")
+        mrow, = self.px(r" \.grid\{padding:[^}]*gap:(\d+)px")
+        self.assertGreaterEqual(row, 3 * inner)
+        self.assertGreaterEqual(mrow, 3 * inner)
+
+    def test_cards_closed_by_line(self):
+        self.assertIn(".grid>.card:not(.hero),.side>.card{padding-bottom:16px;border-bottom:1px solid", render.CSS)
+
+
 class Tokens(unittest.TestCase):
     TOKENS = ("--ink", "--paper", "--rose", "--sheet", "--card", "--gold", "--alert",
               "--font-sans", "--font-serif", "--font-mono", "--fs-label")

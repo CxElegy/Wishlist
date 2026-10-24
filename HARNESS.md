@@ -75,6 +75,12 @@
 6. **確かめる**：Playwright（`.mcp.json` の playwright MCP、または `harness/ux_check.py`）で 1400 / 390 px を開いて押して写真を撮る。`node .claude/skills/design-taste-frontend/scripts/inspect.mjs <網址> --widths 1440,390 --allow <下の許すもの>`（Chrome は `--no-sandbox` が要る：CHROME_PATH に包みの shell を渡す）の FAIL が 0 になるまで直す。画像が出ない・読み込みが遅いもここで見る。
 7. **見せる**：合併すると Discord に Before / After（変わった所の赤枠）。
 
+**どれとどれが一組かを迷わせない（ゲシュタルト、2026-10-24，用户定的：スマホで「真ん中の写真が上の記事か下の記事か分かりづらい」）**：
+- **近さ**：同じものの部品（写真・日付・見出し）の隙間は、となりのものとの隙間の **1/3 以下**。いまは記事の中 8px・記事どうし 28px（スマホ 24px）。
+- **囲み**：縦に積むものは 1 つずつ閉じる（記事は下の線、`.grid>.card:not(.hero)`）。並びの向き（写真 → 字）はどの記事も同じ。
+- **測って止める**：`harness/near.js`（ux_check の「近さ」）が、すぐ上に別の記事がある所で「上の記事の最後の字 → この記事の最初の部品」が max(24px, 中の隙間 × 2.5) 未満かつ線がない所を ✗ にする。`tests/test_design.py` の StoryProximity が CSS の比を見る。
+- **見つけ方を広げる**：ユーザーが「分かりづらい」と言った見た目は、1 か所を直さず ①どの原理（近さ・囲み・揃え・似たもの・連続）が崩れたかを決め ②数字の規則にし ③ux_check に測る項目を足し ④共通の CSS で全員（店長・お客さま）に効かせる。新しい並び（棚・カード・一覧）を作るときもこの 3 つ（近さ・囲み・向き）を先に満たす。
+
 **P5 の作りとして許すもの**（点検の FAIL でも直さない。A4 の考え）：shadow・button-fx・text-shadow（硬い影）、outlined-box（枠線）、eyebrow・micro-label（札・英語の小さなラベル）、palette-cream（紙の色）、emoji（♥ ⚙ ★ 👍👎 は部品）、gradient（ポスターの角のトンボ）、off-centre（左の目次の線路）。
 **直すもの**：contrast・edge-text・headline-lines・font-fallback・small-text（読む字は 13px 以上を目安）・size-count（字の大きさの段を減らす）。2026-10-24 の最初の点検：FAIL 15・WARN 9（BACKLOG に段）。
 
@@ -175,7 +181,7 @@
 ## 7. 確かめ方（毎段、全部通るまで直す）
 
 0. **ユーザーより先に見つける**（2026-10-24，用户定的：「ハーネスが自分でテストして issue を見つける。今は自分で見に行かないといけない」）：
-   合併のあと必ず `python harness/ux_check.py`（本番を ログインなし・test-a・test-b・test-c × 1400・390 px で開き、開き直しのくり返し・白い画面・素の箱・枠組み・はみ出し・JS のエラー・エンブレムの E1〜E10（harness/emb_check.py）を見る）。小元素の規則を変えた段は `--emb full`（候補を全部差し替えて測り、写真の一覧 `harness/shots/emb/sheet-*.png`）。
+   合併のあと必ず `python harness/ux_check.py`（本番を ログインなし・test-a・test-b・test-c × 1400・390 px で開き、開き直しのくり返し・白い画面・素の箱・枠組み・はみ出し・JS のエラー・エンブレムの E1〜E10（harness/emb_check.py）・記事の近さ（harness/near.js）を見る）。小元素の規則を変えた段は `--emb full`（候補を全部差し替えて測り、写真の一覧 `harness/shots/emb/sheet-*.png`）。
    ✗ が出たら次の段より先に直す（ユーザーに見つけさせない）。新しい壊れ方を見つけたら、それを見る項目を ux_check.py に足す。
 
 1. `python -m unittest discover -s tests` と `python scripts/check_arch.py origin/main`
