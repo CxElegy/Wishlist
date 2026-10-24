@@ -29,6 +29,8 @@
 - トークンの節約（2026-10-24）：ponytail（コードは最小の完全な変更）・caveman（係どうしの報告を短く、ユーザーへの返事は普通の日本語）・caveman-compress（長いファイルを短く、使う前に確かめる）。HARNESS.md「トークンを節約する」。
 - 入れてあるもの：find-skills・supabase・supabase-postgres-best-practices・web-design-guidelines・frontend-design・webapp-testing・web-perf・seo-audit・signup・onboarding・site-architecture・improve-codebase-architecture・python-testing-patterns（＋前からの impeccable・diagram・wishlist）。
 
+- 画面を作る・変える段は HARNESS.md「どこにでもある AI っぽさから抜け出す・自分で設計して確かめる」の順で（参考 → 考え → 設計（Figma MCP）→ 作る → 確かめる（Playwright MCP・inspect.mjs）→ 見せる）。`.mcp.json` に Playwright MCP。
+
 ## 主动告诉我有哪些 MCP 连接器能用
 
 - 连接器能更方便完成时（改数据库 = Supabase、看 PR = GitHub），**先告诉我有这个连接器**，不让我去 SQL Editor / 网页手动操作。
