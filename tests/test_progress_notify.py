@@ -16,7 +16,7 @@ class PR(unittest.TestCase):
         self.assertIn("番号を入れた", em["description"])
         self.assertNotIn("Generated", em["description"])
         self.assertIn("日本時間", em["footer"]["text"])
-        self.assertIn("作業を始めました", pn.pr_payload({"action": "opened", "pull_request": {"title": "x"}})["embeds"][0]["title"])
+        self.assertIsNone(pn.pr_payload({"action": "opened", "pull_request": {"title": "x"}}))   # 出しただけは送らない
         self.assertIsNone(pn.pr_payload({"action": "closed", "pull_request": {"merged": False}}))   # 閉じただけは送らない
 
 
@@ -25,7 +25,7 @@ class Backlog(unittest.TestCase):
         before = "- [~] A — 条件\n- [ ] B — 条件\n- [ ] C — 条件\n"
         after = "- [x] A — 条件（PR 1）\n- [?] B — 聞きたいこと\n- [ ] C — 条件\n- [ ] D — 新しい\n"
         titles = [e["title"] for e in pn.backlog_payload(before, after)["embeds"]]
-        self.assertEqual(titles, ["✅ 済み：A", "❓ あなた待ち：B", "📝 一覧に追加：D"])
+        self.assertEqual(titles, ["❓ あなた待ち：B"])   # 送るのはあなた待ちだけ
         self.assertIsNone(pn.backlog_payload(after, after))
 
     def test_real_backlog_parses(self):

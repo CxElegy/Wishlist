@@ -1,8 +1,8 @@
 """作業の進み具合を Discord へ（2026-10-23，用户定的：何時に何ができたか・どこが変わったかを、PR ごとに Discord で知らせる）。
 
 GitHub Actions（.github/workflows/progress.yml）が呼ぶ。送り先は速報・週報と同じ DISCORD_WEBHOOK_URL（notify.send）。
-- pr     ：PR を出した（opened）／合併した（closed かつ merged）。時刻（日本時間）・題名・本文の最初の数行・変えたファイル数・リンク
-- backlog：main の BACKLOG.md が変わった。新しく済んだ段（[x]）・あなた待ちになった段（[?]）・進行中になった段（[~]）・一覧に足した段
+- pr     ：合併した（closed かつ merged）。PR を出しただけは送らない（2026-10-24）。時刻（日本時間）・題名・本文の最初の数行・変えたファイル数・リンク
+- backlog：main の BACKLOG.md で、あなた待ちになった段（[?]）だけ（2026-10-24，用户定的：合併とあなた待ちだけ）
 
     python scripts/progress_notify.py pr < $GITHUB_EVENT_PATH
     python scripts/progress_notify.py backlog <前の BACKLOG.md> <今の BACKLOG.md>
@@ -42,9 +42,7 @@ def pr_payload(event):
     action = event.get("action")
     if action == "closed" and pr.get("merged"):
         kind, head = "merged", "✅ 合併しました"
-    elif action == "opened":
-        kind, head = "opened", "🛠 作業を始めました（PR）"
-    else:
+    else:   # PR を出しただけは送らない（2026-10-24，用户定的：合併とあなた待ちだけ）
         return None
     desc = body_lines(pr.get("body"))
     if pr.get("changed_files"):
@@ -70,14 +68,8 @@ def backlog_payload(before, after):
     for name, (mark, line) in new.items():
         if old.get(name, (None,))[0] == mark:
             continue
-        if mark == "x":
-            rows.append(("done", "✅ 済み", line))
-        elif mark == "?":
+        if mark == "?":   # 送るのはあなた待ちだけ（済みは「合併しました」で届く。進行中・追加は送らない：2026-10-24，用户定的）
             rows.append(("ask", "❓ あなた待ち", line))
-        elif mark == "~":
-            rows.append(("doing", "🔧 進行中", line))
-        elif name not in old:
-            rows.append(("doing", "📝 一覧に追加", line))
     if not rows:
         return None
     return {"embeds": [{"title": f"{label}：{line.split(' — ')[0]}"[:250], "description": line[:3500], "color": COLOR[kind],
