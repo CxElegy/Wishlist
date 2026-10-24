@@ -1722,13 +1722,35 @@ def _asset_ver(name):
         return "0"
 
 
-def render_settings(items, db, updated, schemes=()):
+SETTINGS_ZH = {
+    "lang": "zh-CN", "title": "设置", "back": "← 回到简报", "back_href": "index.html", "updated": "更新于", "add": "",
+    "links": '<p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a>　<a href="admin.html">管理页（运行状况・投票・各关注项的记事数）→</a></p>',
+    "intro": '点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。',
+    "legend": "<dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd>",
+    "sch_h": "目录的小分类分法", "sch_intro": "每个板块选一种分法：左边目录的小分类札、板块里版面的排序都按它来。选了网页大约 1 分钟后更新。",
+    "sch_aria": "的小分类分法", "size_aria": "的篇幅",
+    "js_nodb": "未连数据库", "js_saving": "保存中…", "js_saved": "已保存 ✓", "js_fail": "没存上", "js_offline": "连不上"}
+# お客さま本人の設定ページ（user_pages.py）。画面の文字は日本語（app_users.ui_lang、今の登録者は日本語）
+SETTINGS_JA = {
+    "lang": "ja", "title": "設定", "back": "← 自分のページへ", "back_href": "./", "updated": "更新", "add": "＋ 追いかけるものを足す", "links": "",
+    "intro": "S / M / L で版面の大きさを、板块ごとに目次の分け方を選べます。選ぶとすぐ保存され、数分でページに反映されます。",
+    "legend": "<dt>S</dt><dd>小：1 回に 3 本まで、だいたい 1 行</dd><dt>M</dt><dd>中：1 回に 5 本まで</dd><dt>L</dt><dd>大：1 回に 8 本まで、画面いっぱい</dd>",
+    "sch_h": "目次の小分類の分け方", "sch_intro": "板块ごとに 1 つ選ぶと、左の目次の札と板块の中の版面の並びがその分け方になります。",
+    "sch_aria": "の小分類の分け方", "size_aria": "の大きさ",
+    "js_nodb": "つながっていません", "js_saving": "保存しています…", "js_saved": "保存しました ✓", "js_fail": "保存できませんでした", "js_offline": "つながりません"}
+
+
+def render_settings(items, db, updated, schemes=(), own=None):
     """设置页（docs/settings.html）：改每个关注项的篇幅 S / M / L，新增 / 修改关注项。都不用口令。
     items：[{name, section, subtitle, size, fields}]（items.yaml 的顺序；fields 是网页上能改的那些字段的现值）；
     db：{url, key} Supabase 的地址和公开的 publishable key。篇幅用 get_sizes() 读、set_size() 改；
     新增 / 修改关注项是一问一答的向导（docs/additem.js），提交到 submit_item()（db/item_requests.sql），
     下一次更新时写进 items.yaml。
-    schemes：板块ごとの「小分類の分け方」（digest.nav_scheme_rows）。選ぶと set_nav_scheme()（db/nav_schemes.sql）に保存、網页がすぐ作り直される。"""
+    schemes：板块ごとの「小分類の分け方」（digest.nav_scheme_rows）。選ぶと set_nav_scheme()（db/nav_schemes.sql）に保存、網页がすぐ作り直される。
+    own：お客さま本人の設定ページ（scripts/user_pages.py が作る。{picks, add}）。同じ部品・同じ画面で、文字は日本語、
+    書くのは本人の分だけ（my_size_set → follows.size・my_nav_scheme_set → nav_schemes、db/my_layout.sql）。
+    向導・改・删の代わりに「＋ 追いかけるものを足す」（入口と同じ流れ）と各行の「外す」（my_keywords_set）。"""
+    T = SETTINGS_JA if own else SETTINGS_ZH
     sch = []
     for r in schemes or ():
         btns = "".join(f'<button type="button" data-v="{e(o["id"])}" aria-pressed="{str(o["id"] == r["chosen"]).lower()}">{e(o["label"])}</button>'
@@ -1737,10 +1759,9 @@ def render_settings(items, db, updated, schemes=()):
                        + " · ".join(f"{e(g)} <b>{n}</b>" for g, n in o["groups"]) + "</p>" for o in r["options"])
         sch.append(f'<div class="srow" data-sec="{e(r["section"])}" style="--sc:{_sec_color(r["section"])}">'
                    f'<div class="nm"><b>{e(_sec_name(r["section"]))}</b>{prev}</div>'
-                   f'<div class="seg wide" role="group" aria-label="{e(_sec_name(r["section"]))} 的小分类分法">{btns}</div>'
+                   f'<div class="seg wide" role="group" aria-label="{e(_sec_name(r["section"]))} {T["sch_aria"]}">{btns}</div>'
                    f'<span class="st" aria-live="polite"></span></div>')
-    sch_html = ('<section class="schemes"><h2>目录的小分类分法</h2>'
-                '<p class="intro">每个板块选一种分法：左边目录的小分类札、板块里版面的排序都按它来。选了网页大约 1 分钟后更新。</p>'
+    sch_html = (f'<section class="schemes"><h2>{T["sch_h"]}</h2><p class="intro">{T["sch_intro"]}</p>'
                 + "".join(sch) + '</section>') if sch else ""
     groups = {}
     for it in items:
@@ -1748,9 +1769,10 @@ def render_settings(items, db, updated, schemes=()):
     order = [n for n in SECTIONS if n in groups] + [n for n in groups if n not in SECTIONS]
     rows = []
     for name in order:
+        secdel = "" if own else (f'<button type="button" class="secdel" aria-label="删除板块 {e(_sec_name(name))} 里的全部关注项">'
+                                 '删除这个板块</button>')
         rows.append(f'<h2 style="--sc:{_sec_color(name)}" data-sec="{e(name)}">{e(_sec_name(name))}<small>{_sec_en(name)}</small>'
-                    f'<button type="button" class="secdel" aria-label="删除板块 {e(_sec_name(name))} 里的全部关注项">删除这个板块</button>'
-                    f'<span class="st" aria-live="polite"></span></h2>')
+                    f'{secdel}<span class="st" aria-live="polite"></span></h2>')
         for it in groups[name]:
             sub = f'<small>{e(it["subtitle"])}</small>' if it.get("subtitle") else ""
             also = (it.get("fields") or {}).get("also") or {}
@@ -1758,23 +1780,26 @@ def render_settings(items, db, updated, schemes=()):
                 sub += f'<small>⇄ {e("・".join(_sec_name(k) for k in also))} にも</small>'
             btns = "".join(f'<button type="button" data-v="{v}" aria-pressed="{str(v == (it.get("size") or "M")).lower()}">'
                            f'{v}</button>' for v in ("S", "M", "L"))
+            tail = (f'<button type="button" class="edit out" aria-label="{e(it["name"])} を外す">外す</button>' if own else
+                    f'<button type="button" class="edit" aria-label="修改 {e(it["name"])}">改</button>'
+                    f'<button type="button" class="del" aria-label="删除 {e(it["name"])}">删</button>')
             rows.append(f'<div class="row" data-item="{e(it["name"])}"><div class="nm"><b>{e(it["name"])}</b>{sub}</div>'
-                        f'<div class="seg" role="group" aria-label="{e(it["name"])} 的篇幅">{btns}</div>'
-                        f'<button type="button" class="edit" aria-label="修改 {e(it["name"])}">改</button>'
-                        f'<button type="button" class="del" aria-label="删除 {e(it["name"])}">删</button>'
-                        f'<span class="st" aria-live="polite"></span></div>')
+                        f'<div class="seg" role="group" aria-label="{e(it["name"])} {T["size_aria"]}">{btns}</div>'
+                        f'{tail}<span class="st" aria-live="polite"></span></div>')
     data = {"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
             "langs": (db or {}).get("langs") or ["zh-TW", "en-US"], "sections": taxonomy.for_page(),
-            "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items]}
+            "items": [{"name": it["name"], **(it.get("fields") or {})} for it in items],
+            **({"own": True, "picks": list(own.get("picks") or []), "t": {k: v for k, v in T.items() if k.startswith("js_")}} if own else
+               {"t": {k: v for k, v in T.items() if k.startswith("js_")}})}
     cfg = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="{T["lang"]}">
 <head>
 <meta charset="utf-8">
 {_account_tag("settings")}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>设置</title>
+<title>{T["title"]}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
@@ -1932,35 +1957,39 @@ def render_settings(items, db, updated, schemes=()):
 </head>
 <body>
 <div class="page">
-<a class="back" href="index.html">← 回到简报</a>
-<header><h1 style="margin:0;font:900 40px/1.1 'Noto Sans SC',sans-serif;letter-spacing:.04em">设置</h1></header>
-<p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a>　<a href="admin.html">管理页（运行状况・投票・各关注项的记事数）→</a></p>
-<p class="intro">点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。</p>
-<dl class="legend"><dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd></dl>
+<a class="back" href="{T["back_href"]}">{T["back"]}</a>
+<header><h1 style="margin:0;font:900 40px/1.1 var(--font-sans);letter-spacing:.04em">{T["title"]}</h1></header>
+{T["links"] if not own else f'<p class="hint"><a class="go" href="{e(own.get("add") or "../?add")}">{T["add"]}</a></p>'}
+<p class="intro">{T["intro"]}</p>
+<dl class="legend">{T["legend"]}</dl>
 {sch_html}
 <div class="cfg">{''.join(rows)}</div>
-<section class="wiz" id="wiz" aria-live="polite"><h2>＋ 新增关注项</h2><p class="hint">正在加载…</p></section>
-<p class="intro" style="font-size:12px">更新于 {e(updated)}</p>
+{"" if own else '<section class="wiz" id="wiz" aria-live="polite"><h2>＋ 新增关注项</h2><p class="hint">正在加载…</p></section>'}
+<p class="intro" style="font-size:12px">{T["updated"]} {e(updated)}</p>
 </div>
 <script type="application/json" id="wl-cfg">{cfg}</script>
 <script>
 (() => {{
   const CFG = JSON.parse(document.getElementById("wl-cfg").textContent);
-  const rpc = (fn, body) => fetch(`${{CFG.url}}/rest/v1/rpc/${{fn}}`, {{
-    method: "POST", headers: {{apikey: CFG.key, "Content-Type": "application/json"}}, body: JSON.stringify({{...(body || {{}}), p_account: window.WL_ACCOUNT}}),
-  }});   // どの関数も自分のアカウント（db/accounts.sql）
+  const T = CFG.t || {{}};
+  // どの関数も自分のアカウント（db/accounts.sql）。お客さま本人のページ（CFG.own）は p_account を渡さない my_* 関数（db/my_layout.sql、ログインの鍵は AUTH_JS が付ける）
+  const OWNFN = {{set_size: "my_size_set", set_nav_scheme: "my_nav_scheme_set"}};
+  const rpc = (fn, body) => fetch(`${{CFG.url}}/rest/v1/rpc/${{CFG.own ? (OWNFN[fn] || fn) : fn}}`, {{
+    method: "POST", headers: {{apikey: CFG.key, "Content-Type": "application/json"}},
+    body: JSON.stringify(CFG.own ? (body || {{}}) : {{...(body || {{}}), p_account: window.WL_ACCOUNT}}),
+  }});
   const show = (row, v) => row.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
   const say = (row, text, cls) => {{ const st = row.querySelector(".st"); st.textContent = text; st.className = "st " + (cls || ""); }};
   if (!CFG.url || !CFG.key) {{
-    document.querySelectorAll(".row, .srow").forEach(r => {{ r.querySelectorAll(".seg button").forEach(b => b.disabled = true); say(r, "未连数据库", "err"); }});
+    document.querySelectorAll(".row, .srow").forEach(r => {{ r.querySelectorAll(".seg button").forEach(b => b.disabled = true); say(r, T.js_nodb, "err"); }});
     return;
   }}
-  rpc("get_sizes").then(r => r.ok ? r.json() : []).then(list => {{
+  if (!CFG.own) rpc("get_sizes").then(r => r.ok ? r.json() : []).then(list => {{
     const now = Object.fromEntries((list || []).map(x => [x.item, x.size]));
     document.querySelectorAll(".row").forEach(r => {{ if (now[r.dataset.item]) show(r, now[r.dataset.item]); }});
   }}).catch(() => {{}});
-  // 小分類の分け方（板块ごと）
-  rpc("get_nav_schemes").then(r => r.ok ? r.json() : []).then(list => {{
+  // 小分類の分け方（板块ごと）。お客さま本人のページは作ったときの値（user_pages.py が本人の nav_schemes から）
+  if (!CFG.own) rpc("get_nav_schemes").then(r => r.ok ? r.json() : []).then(list => {{
     (list || []).forEach(x => {{ const row = document.querySelector(`.srow[data-sec="${{CSS.escape(x.section)}}"]`); if (row && row.querySelector(`[data-v="${{CSS.escape(x.scheme)}}"]`)) pick(row, x.scheme); }});
   }}).catch(() => {{}});
   const pick = (row, v) => {{
@@ -1972,12 +2001,12 @@ def render_settings(items, db, updated, schemes=()):
     if (!btn || btn.getAttribute("aria-pressed") === "true") return;
     const row = btn.closest(".srow"), before = row.querySelector('.seg button[aria-pressed="true"]')?.dataset.v;
     const btns = row.querySelectorAll(".seg button");
-    pick(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, "保存中…");
+    pick(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, T.js_saving);
     try {{
       const r = await rpc("set_nav_scheme", {{p_section: row.dataset.sec, p_scheme: btn.dataset.v}});
-      if (r.ok) say(row, "已保存 ✓", "ok");
-      else {{ if (before) pick(row, before); say(row, "没存上", "err"); }}
-    }} catch (_) {{ if (before) pick(row, before); say(row, "连不上", "err"); }}
+      if (r.ok) say(row, T.js_saved, "ok");
+      else {{ if (before) pick(row, before); say(row, T.js_fail, "err"); }}
+    }} catch (_) {{ if (before) pick(row, before); say(row, T.js_offline, "err"); }}
     btns.forEach(b => b.disabled = false);
   }});
   // 删除：关注项 1 个（删）／板块里的全部（删除这个板块）。数据库只收「修改」请求，所以写成 edit + {{_delete: true}}，
@@ -2010,6 +2039,19 @@ def render_settings(items, db, updated, schemes=()):
       say(h2, ok === rows.length ? `已提交删除 ${{ok}} 项 ✓` : `提交了 ${{ok}} / ${{rows.length}} 项`, ok === rows.length ? "ok" : "err");
       return;
     }}
+    const out = ev.target.closest(".out");
+    if (out && CFG.own) {{   // お客さま：追いかけるもの（app_users.prefs.picks）から外す。入口・トップの「外す」と同じ my_keywords_set
+      const row = out.closest(".row"), name = row.dataset.item;
+      if (!confirm(`「${{name}}」を外しますか？\nページからこの版面がなくなります（次の作り直しで、通常数分）。`)) return;
+      const rest = (CFG.picks || []).filter(p => p.name !== name);
+      say(row, T.js_saving);
+      try {{
+        const r = await fetch(`${{CFG.url}}/rest/v1/rpc/my_keywords_set`, {{method: "POST", headers: {{apikey: CFG.key, "Content-Type": "application/json"}},
+          body: JSON.stringify({{p_picks: rest}})}});
+        if (r.ok) {{ CFG.picks = rest; gone(row); say(row, "外しました ✓", "ok"); }} else say(row, T.js_fail, "err");
+      }} catch (_) {{ say(row, T.js_offline, "err"); }}
+      return;
+    }}
     const edit = ev.target.closest(".edit");
     if (edit) {{ window.wlEditItem && window.wlEditItem(edit.closest(".row").dataset.item); return; }}
     const btn = ev.target.closest(".seg button");
@@ -2017,17 +2059,17 @@ def render_settings(items, db, updated, schemes=()):
     const row = btn.closest(".row");
     const before = row.querySelector('.seg button[aria-pressed="true"]')?.dataset.v;
     const btns = row.querySelectorAll(".seg button");
-    show(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, "保存中…");
+    show(row, btn.dataset.v); btns.forEach(b => b.disabled = true); say(row, T.js_saving);
     try {{
-      const r = await rpc("set_size", {{p_item: row.dataset.item, p_size: btn.dataset.v, p_pass: ""}});
-      if (r.ok) say(row, "已保存 ✓", "ok");
-      else {{ if (before) show(row, before); say(row, "没存上", "err"); }}
-    }} catch (_) {{ if (before) show(row, before); say(row, "连不上", "err"); }}
+      const r = await rpc("set_size", CFG.own ? {{p_name: row.dataset.item, p_size: btn.dataset.v}} : {{p_item: row.dataset.item, p_size: btn.dataset.v, p_pass: ""}});
+      if (r.ok) say(row, T.js_saved, "ok");
+      else {{ if (before) show(row, before); say(row, T.js_fail, "err"); }}
+    }} catch (_) {{ if (before) show(row, before); say(row, T.js_offline, "err"); }}
     btns.forEach(b => b.disabled = false);
   }});
 }})();
 </script>
-<script src="additem.js?v={_asset_ver("additem.js")}"></script>
+{"" if own else f'<script src="additem.js?v={_asset_ver("additem.js")}"></script>'}
 </body>
 </html>
 """
@@ -4129,17 +4171,18 @@ AUTH_JS = r"""
   // （ログインの見張り・版の確かめ）が同じ窓に残って、差し替え → 開き直し をくり返し、白い画面にもなった（2026-10-24）。
   // ここではお客さまを me.html へ送るだけ。殻が読めなかったとき（?own=0）は送らずに前の画面。30 秒に 3 回まで
   function ownPage(){
-    if(!tok||page!=='index'||/[?&]own=0/.test(location.search)) return Promise.resolve(false);
+    if(!tok||(page!=='index'&&page!=='settings')||/[?&]own=0/.test(location.search)) return Promise.resolve(false);
     var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
     if(hist.length>=3) return Promise.resolve(false);
     try{hist.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(hist));}catch(_){}
-    location.replace('me.html'+location.hash);
+    location.replace('me.html'+(page==='settings'?'?p=settings':'')+location.hash);   // 設定も本人の分（同じ部品の render_settings）
     return Promise.resolve(true);
   }
   function route(box,p,err){
     var picks=picksOf(p);
     if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';return;}   // もう本人のページの中
     // ログインしたお客さまはだれでも、まず本人のページ（店長と同じ枠組み）。版面の数によらない（HARNESS.md「一番大事な決まり」）
+    if(page==='settings'&&!err&&tok&&picks.length){box.remove();ownPage().then(function(done){if(!done){var b3=document.createElement('main');b3.className='wl-mine';b3.id='mine';document.body.appendChild(b3);drawMine(b3,p,'');}});return;}
     if(page==='index'&&!err&&tok&&document.querySelector('section.sec[data-k]')){
       box.remove();ownPage().then(function(done){if(done)return;
         if(picks.length)showMine(p,picks);else{var b2=document.createElement('main');b2.className='wl-mine';b2.id='mine';document.body.appendChild(b2);drawMine(b2,p,'');}});return;}
@@ -4394,7 +4437,7 @@ AUTH_JS = r"""
   function refresh(){
     return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
-        R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]?'1':'0';R.dataset.auth='ok';})
+        R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';   // 本人のページ（user_pages.py）は本人の分だけ書く（my_* 関数）R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
       .then(function(){mine();chip();gate();readOnlyNote();members();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
@@ -5029,7 +5072,8 @@ def render_me():
 <script>
 (function(){{
   var C={cfg};
-  function back(q){{location.replace('./'+(q||'')+location.hash);}}
+  var SET=/[?&]p=settings/.test(location.search), PG=SET?'settings.html':'index.html';   // どのページか（AUTH_JS の ownPage）
+  function back(q){{location.replace('./'+(SET?'settings.html':'')+(q||'')+location.hash);}}
   var s=document.createElement('script');s.src=C.lib;s.onerror=function(){{back('?own=0');}};
   s.onload=function(){{
     var sb=window.supabase.createClient(C.url,C.key,{{auth:{{persistSession:true,storageKey:'wl-auth',detectSessionInUrl:false}}}});
@@ -5037,7 +5081,7 @@ def render_me():
       var se=r&&r.data&&r.data.session;if(!se){{back('');return null;}}
       return sb.rpc('my_page_path').then(function(p){{
         if(p.error||!p.data){{back('?own=0');return null;}}
-        return sb.storage.from('pages').download(p.data+'/index.html');
+        return sb.storage.from('pages').download(p.data+'/'+PG);
       }});
     }}).then(function(d){{
       if(!d)return;
@@ -5045,7 +5089,7 @@ def render_me():
       return d.data.text().then(function(h){{
         if(h.indexOf('name="wl-own"')<0){{back('?own=0');return;}}
         document.open();document.write(h);document.close();
-        try{{history.replaceState(null,'','./'+location.hash);}}catch(_){{}}
+        try{{history.replaceState(null,'','./'+(SET?'settings.html':'')+location.hash);}}catch(_){{}}
       }});
     }}).catch(function(){{back('?own=0');}});
   }};
