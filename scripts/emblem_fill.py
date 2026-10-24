@@ -493,7 +493,7 @@ def roster(item, log=print):
     elif item.get("anilist_id"):
         names = emblem.anilist_main(item["anilist_id"], 50)
         how = "AniList の主役（role MAIN）の人数"
-    names = [x for x in names if not re.search(r"characters|^list of", x, re.I)]   # 「Secondary Characters」のようなまとめの記事は人ではない
+    names = [x for x in names if not emblem.not_character(x)]   # まとめ・一覧・Player・別の作品の姿（Smash Bros・vs.）は人ではない
     if not names:
         return None
     n = len(names)

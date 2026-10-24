@@ -157,13 +157,15 @@ class Fill(unittest.TestCase):
         self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 4, 8, 6])
 
     def test_rebuild_on_new_rules(self):
-        """版が上がった版面は前の規則のもの（名簿・分類・小元素）を捨てて作り直す。キャラは新しい名簿にいる人の小元素だけ残す。"""
+        """版が上がった版面は前の規則のもの（名簿・分類・小元素）を捨てて作り直す。キャラも、新しい規則で取れた分があれば前の小元素は残さない
+        （名簿は分類の全員なので「名簿にいる人」では字の順の脇役が残る）。新しい規則が書いた名簿は前と同じでも null にしない。"""
         seen = {}
 
         def fake_fill(item, log=print):
             seen.update(item)
-            emblem_fill._set_field(item["name"], "emblem_who", '["Albedo", "Aloy"]')   # roster が新しい規則で数え直した名簿
-            emblem.write_item(item["name"], [{"subject": "Albedo", "image": "https://e.org/new.png"}], None)
+            emblem_fill._set_field(item["name"], "emblem_who", '["Character", "Amber"]')   # roster が数え直した名簿（前と同じ）
+            emblem.write_item(item["name"], [{"subject": "Albedo", "image": "https://e.org/new.png"}, {"subject": "Agent 8", "image": "https://e.org/new.png"},
+                                             {"subject": "Player", "image": "https://e.org/p.png"}], None)
             return {"state": "running"}
         old = [{"subject": "Character", "image": "https://e.org/c.png"}, {"subject": "Amber", "image": "https://e.org/a.png"},
                {"subject": "Albedo", "image": "https://e.org/old.png"}, {"subject": "Aloy", "image": "https://e.org/l.png"}]
@@ -176,9 +178,16 @@ class Fill(unittest.TestCase):
         self.assertEqual(add["emblem_category"], None)
         self.assertEqual(add["emblem_pool"], None)
         self.assertNotIn("emblem_fandom", add)
-        # 新しい名簿（Albedo・Aloy）にいない Character・Amber は外し、Aloy の前の小元素は残す。Albedo は新しいほう
-        self.assertEqual([x["image"] for x in add["emblem"]], ["https://e.org/new.png", "https://e.org/l.png"])
-        self.assertEqual(add["emblem_state"]["have"], 2)
+        self.assertNotIn("emblem_who", add)   # 新しい名簿は前と同じ：書き換えない（null にしない）
+        # 前の小元素（Amber・Aloy…）は残さない・同じ画像は 1 枚・Player はキャラでない
+        self.assertEqual([x["subject"] for x in add["emblem"]], ["Albedo"])
+        self.assertEqual(add["emblem_state"]["have"], 1)
+
+    def test_not_character(self):
+        for n in ("Player", "Pokémon Trainer (Super Smash Bros.)", "MHD: FV: Felyne List", "Monster Hunter (Marvel vs. Capcom: Infinite)", "Secondary Characters"):
+            self.assertTrue(emblem.not_character(n), n)
+        for n in ("Ash Ketchum", "Red (Adventures)", "May (anime)", "Agent 8", "Li'l Judd"):
+            self.assertFalse(emblem.not_character(n), n)
 
     def test_rebuild_keeps_old_when_new_rules_find_none(self):
         """キャラでない版面で新しい規則が 1 枚も取れなければ、前の小元素を残す（字だけ・図・古い写真は外す）。"""

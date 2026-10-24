@@ -26,8 +26,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 BUCKET = "emblems"
 RETRY_HOURS = 24      # 届かなかった版面をもう一度試すまで（店長の版面と違い、材料の指紋がないので 1 日おき）
-RULES = 5             # 取り方の規則の版。上げると、全部の版面（済みも）を RETRY_HOURS を待たずに作り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号、
-                      # 4：分類の続き・参照 500 超え・Playable Characters・字だけ／図／古い写真を外す、5：Commons のロゴはロゴのファイルで名前だけのもの。ロゴのない製品の P18 は版を上げない：届かなかった版面だけの話で 24 時間後に取り直す）
+RULES = 6             # 取り方の規則の版。上げると、全部の版面（済みも）を RETRY_HOURS を待たずに作り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号、
+                      # 4：分類の続き・参照 500 超え・Playable Characters・字だけ／図／古い写真を外す、5：Commons のロゴはロゴのファイルで名前だけのもの、6：作り直しでキャラも前の小元素を残さない・名簿にまとめ／Player／別の作品の姿を入れない・同じ画像は 1 枚。ロゴのない製品の P18 は版を上げない：届かなかった版面だけの話で 24 時間後に取り直す）
 REDO = ("emblem", "emblem_who", "emblem_pool", "emblem_category")   # 前の版の規則で作ったもの：版が上がったら捨てて規則から作り直す（emblem_reject・emblem_fandom は残す）
 PER_BOARD_S = 300     # 1 版面の目安（これより残りが少なければ次を始めない）
 KEEP = ("name", "wikidata", "type", "keywords", "emblem_kind", "wiki")   # 毎回 規則と Wikidata から作るので config に書かない
@@ -179,6 +179,7 @@ def stash(emblems, site, stem, upload, base):
 
 def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
     """版面 1 つ → boards.config に足す分 {emblem, theme, emblem_*, emblem_state}。"""
+    import emblem
     import emblem_fill
     import yaml
     fill = fill or emblem_fill.fill_one
@@ -197,18 +198,24 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
         add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}
         if got.get("emblem"):
             add["emblem"] = stash(got["emblem"], site, stem, upload, base)
-        if int((cfg.get("emblem_state") or {}).get("v") or 1) < RULES:   # 作り直し：前の規則のものは消す（キャラは新しい名簿にいる人だけ残す）
-            add.update({k: None for k in REDO if cfg.get(k) is not None and k not in add})
-            who = set(got.get("emblem_who") or [])
-            new = add.get("emblem") or []
-            seen = {x.get("subject") for x in new}
-            if item["emblem_kind"] == "character":   # 名簿で集める版面：新しい名簿にいる人だけ
-                keep = [x for x in cfg.get("emblem") or [] if x.get("subject") in who and x.get("subject") not in seen]
-            else:   # ほか：新しい規則で 1 枚も取れなければ前のものを残す（0 枚にしない、#333 のあと BTS・iPhone が 0 枚）。字だけ・図・古い写真は外す
-                keep = [] if new else [x for x in cfg.get("emblem") or []
-                                       if not emblem_fill.not_emblem(urllib.parse.unquote(str(x.get("image") or "")))]
-            if keep:
-                add["emblem"] = new + keep
+        char = item["emblem_kind"] == "character"
+        if int((cfg.get("emblem_state") or {}).get("v") or 1) < RULES:   # 作り直し：前の規則のものは消す
+            # 新しい規則で作ったもの（got）は前と同じ値でも残す。消すのは新しい規則が作らなかったものだけ（前は「前と同じ」名簿・分類まで null にしていた）
+            add.update({k: None for k in REDO if cfg.get(k) is not None and got.get(k) is None})
+            # 新しい規則で 1 枚も取れなければ前のものを残す（0 枚にしない、#333 のあと BTS・iPhone）。キャラも同じ：名簿は分類の全員（原神 139 人）なので
+            # 「名簿にいる人を残す」では字の順で取った前の脇役（Aino・Alhaitham…）が全部残っていた。字だけ・図・古い写真は外す
+            if not add.get("emblem"):
+                keep = [x for x in cfg.get("emblem") or [] if not emblem_fill.not_emblem(urllib.parse.unquote(str(x.get("image") or "")))]
+                if keep:
+                    add["emblem"] = keep
+        if add.get("emblem"):   # 同じ画像は 1 枚（公開の箱の名前は中身の指紋：スプラ 3 の Agent 8 が 2 回）・キャラでないページは外す
+            imgs, out = set(), []
+            for x in add["emblem"]:
+                if x.get("image") in imgs or char and emblem.not_character(x.get("subject")):
+                    continue
+                imgs.add(x.get("image"))
+                out.append(x)
+            add["emblem"] = out
     have = len(add.get("emblem") or []) if "emblem" in add else len(got.get("emblem") or [])
     note = re.sub(r"新しい記事が来たらすぐ、来なくても \d+ 時間後", f"{RETRY_HOURS} 時間後", str(r.get("note") or ""))  # 店長の文のまま（材料の指紋・毎時）だと中身と合わない
     add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES}
