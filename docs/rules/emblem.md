@@ -18,3 +18,4 @@
   **枚数的上限由内容的主要元素数决定**（用户定的，不只是游戏）：1 个元素 1 张，天井 200（用户定的：主要角色全员，绝区零 60 人就 60 张；一次后台只补 10 人 `emblem_fill.STEP`，慢慢补齐）——角色多的游戏有多少角色就多少张、主角 4 人的动画 4 张、5 人团 5 张、
   主题按代表作数。元素数是 `emblem_pool`（`emblem_fill.py --roster` 从 `emblem_category` 分类或 AniList 主角数出来，并补名字）；
   管理页「小元素」列出每个版面的种类・目标・现有枚数，没到目标的 AI 编辑会自动补（`python scripts/emblem_fill.py --audit`）。
+- **お客さまの版面の小元素（2026-10-24，用户定的）**：店長と同じ `emblem_fill.fill_one` を、ライブラリの版面ごとに 1 回（`scripts/library_emblem.py`・`library_emblem.yml`、2 時間ごと）。版面 1 つだけの items.yaml を一時の場所に作って走らせる（本物の items.yaml に触れない）。種類は規則（`kind_for`：グループ → group・人（Wikidata P31=Q5）・演出のソロ → person・游戏/影视 → character・好物 → brand・ほか → topic）。画像は Supabase Storage の公開の箱 `emblems`（`db/emblems.sql`、ファイル名は番号と指紋だけ）、結果は `boards.config.emblem`、`user_pages.py` がそれを版面に。ログ・帯に版面の名前を出さない。
