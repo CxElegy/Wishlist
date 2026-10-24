@@ -569,6 +569,9 @@ PROCESSES = [
                       ("目次：たたんだ板块", "駅が 1 つも出ず高さ 84px 以上の空きに作品名を薄く 1〜2 行（新着の多い順・8 件まで）"),
                       ("目次：通り過ぎた駅", "読んでいる駅より目次の並びで前の駅を板块の色で塗る（版面の番号ではなく目次の順）")]},
             {"id": "p6", "kind": "store", "lane": "repo", "title": "docs/home/*.html", "text": "店長のページ（網址 /home/ はみんな同じ・中身はログインした人で決まる、旧 /test1/・/shop/ は飛ぶだけ）· docs/test2/ は 2026-10-19〜21 の凍結した写し · docs/index.html は入口"},
+            {"id": "p6a", "kind": "store", "lane": "repo", "title": "管理ページ 7 枚", "x": "render.ADMIN_PAGES",
+             "text": "admin.html（トップ：6 枚のカードと数）＋ admin-now（①いま）・admin-boards（②版面）・admin-emblem（③エンブレム）・admin-ai（④AI 編集）・admin-system（⑤しくみ）・admin-members（⑥お客さまと店長）。"
+                     "どのページにも 7 つの切り替え · 前の網址 admin.html#欄 はトップがその欄のページへ送る · ux_check が 7 枚と「なくした欄 0」を見る"},
             {"id": "p7", "kind": "step", "lane": "web", "title": "GitHub Pages に公開", "text": "約 1 分", "uses": ["fit", "confetti"]},
         ],
     },
@@ -620,7 +623,7 @@ PROCESSES = [
             {"id": "l1", "kind": "step", "lane": "actions", "title": "ページを作るたびに指紋を付ける",
              "text": "収集・AI 編集・ページ生成が docs/*.html を書くとき、中身の指紋（「更新」の時刻は除く）を計算。"},
             {"id": "l2", "kind": "store", "lane": "repo", "title": "docs/home/version.json",
-             "text": "{index: 指紋, admin: 指紋, index_marks: {版面の id: [名前, 版面の指紋]}}。ページの <meta name=\"wl-ver\"> と各版面・パネルの data-h にも同じ指紋。"
+             "text": "{index: 指紋, admin: 指紋, admin-now など管理ページ 6 枚の指紋, index_marks: {版面の id: [名前, 版面の指紋]}}。ページの <meta name=\"wl-ver\"> と各版面・パネルの data-h にも同じ指紋。"
                      "簡報の版面の指紋は AI 編集が整理した記事（article）だけ：整理待ち・話題度の数字・小元素が変わっても「更新」にしない。"},
             {"id": "l3", "kind": "step", "lane": "web", "title": "開いたらすぐ・その後 1 分ごとに version.json を見る",
              "text": "キャッシュを避けて読む（?t=時刻）。タブを表に戻したときもすぐ見る。開いて 15 秒以内・入力前に古いと分かったら ?v=新しい指紋 で開き直す（GitHub Pages はブラウザに 10 分残すため。着いたら ?v= を消す・同じ v で古いままなら繰り返さない）。入口（docs/index.html）も index.ver.json で同じことをする"},

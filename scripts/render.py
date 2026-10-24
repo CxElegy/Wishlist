@@ -4493,9 +4493,10 @@ def _auth_tag(page=""):
     return f'<style>{AUTH_CSS}</style><script>{js}</script>'
 
 
-def _live_head(page):
-    """<head> に入れる：自分の指紋（digest.write_page の stamp が VER_MARK を置き換える）と帯・印の CSS・アカウント。"""
-    return f'<meta name="wl-ver" data-page="{e(page)}" content="{VER_MARK}"><style>{LIVE_CSS}</style>{_account_tag(page)}'
+def _live_head(page, ver=None):
+    """<head> に入れる：自分の指紋（digest.write_page の stamp が VER_MARK を置き換える）と帯・印の CSS・アカウント。
+    ver：version.json で見比べる名前（管理ページの 6 つは page="admin"〔ログインの門〕のまま、ver="admin-now" など）。"""
+    return f'<meta name="wl-ver" data-page="{e(ver or page)}" content="{VER_MARK}"><style>{LIVE_CSS}</style>{_account_tag(page)}'
 
 
 def stamp(html_, *volatile):
@@ -5398,7 +5399,8 @@ def _bg_retry(k, r):
 
 def _admin_backend(rows, todo=None, log=None, res=None):
     """バックグラウンド：裏で動く仕組みの「次の実行」（前回・次回・残り時間はページを開いた端末で計算）と、
-    版面（行）× プロセス（列）の今の状態の表。何が待っていて、次にいつ動くかを一目で見る。"""
+    版面（行）× プロセス（列）の今の状態の表。何が待っていて、次にいつ動くかを一目で見る。
+    管理ページが 6 つに分かれたので 3 つに分けて返す：now（①いま）・table（③エンブレム）・sys（⑤しくみ）。"""
     cards, plan = [], []
     for p in processes.PROCESSES:
         sl = processes.slots(p)
@@ -5422,8 +5424,25 @@ def _admin_backend(rows, todo=None, log=None, res=None):
         if sl:
             plan.append({"id": p["id"], "name": p["name"], "slots": sl, "text": td.get("text", ""), "items": td.get("items", [])[:12]})
     rows = [r for r in rows if r.get("bg")]
+    cfg = json.dumps(plan, ensure_ascii=False).replace("</", "<\\/")
+    now = ('<h3 class="h3">いま動いているもの <small>裏で処理中の版面と段 · 30 秒ごとに読み直す</small></h3>'
+           '<div id="livenow" class="livenow"><p class="empty">読み込み中…</p></div>'
+           f'<h3 class="h3">次の実行 <small>近い順 · 時刻は日本時間 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
+           f'<ol class="nxs">{"".join(cards)}</ol>'
+           '<div class="two bgtwo"><div><h3 class="h3">待ち行列 <small>これから 24 時間の実行と、そのとき処理するもの</small></h3>'
+           '<ol class="bgq" id="bgq"><li class="empty">計算中…</li></ol></div>'
+           '<div><h3 class="h3">ログ <small>このページの一番上の「ライブログ」に移しました（自動で流れる）</small></h3>'
+           '<p class="empty"><a href="#term-panel">↑ ライブログを見る</a></p></div></div>'
+           f'<script type="application/json" id="bg-cfg">{cfg}</script>')
+    sys_ = ('<h3 class="h3">リソース <small>サーバーの残り · 容量 · トークン</small></h3>' + _admin_resources(res) +
+            '<h3 class="h3">AI を使うか <small>前に AI でやっていた判断ごとに · 規則にできたものは AI なし（トークン 0）</small></h3>'
+            '<ul class="aiu">' + "".join(f'<li class="aiu-{k}"><span class="aiu-s">{e(processes.AI_STATE_JA[k])}</span><b>{e(t)}</b><small>{e(why)}</small></li>'
+                                         for t, k, why in processes.AI_TASKS) + '</ul>'
+            '<h3 class="h3">並列と制限 <small>同時にいくつ動かすか · それ以上速くできない理由</small></h3>'
+            '<ul class="lims">' + "".join(f'<li><b>{e(a)}</b><span class="lim-n">{e(b)}</span><small>{e(c)}</small></li>'
+                                          for a, b, c in processes.LIMITS) + '</ul>')
     if not rows:
-        return f'<ol class="nxs">{"".join(cards)}</ol><p class="empty">データがありません。</p>'
+        return {"now": now, "sys": sys_, "table": '<p class="empty">データがありません。</p>'}
     order = list(SECTIONS) + ["其他"]
     rows = sorted(rows, key=lambda r: (order.index(r.get("section")) if r.get("section") in order else len(order),
                                        r.get("section") or "", r["name"]))
@@ -5469,26 +5488,10 @@ def _admin_backend(rows, todo=None, log=None, res=None):
         d = r["bg"]["emblem"].get("detail")
         if d:
             body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"], pics)}</td></tr>')
-    cfg = json.dumps(plan, ensure_ascii=False).replace("</", "<\\/")
-    return ('<h3 class="h3">いま動いているもの <small>裏で処理中の版面と段 · 30 秒ごとに読み直す</small></h3>'
-            '<div id="livenow" class="livenow"><p class="empty">読み込み中…</p></div>'
-            f'<h3 class="h3">次の実行 <small>近い順 · 時刻は日本時間 · バーは前回から次回までの経過 · 名前をクリックで流れ</small></h3>'
-            f'<ol class="nxs">{"".join(cards)}</ol>'
-            + '<h3 class="h3">リソース <small>サーバーの残り · 容量 · トークン</small></h3>' + _admin_resources(res) +
-            '<h3 class="h3">AI を使うか <small>前に AI でやっていた判断ごとに · 規則にできたものは AI なし（トークン 0）</small></h3>'
-            '<ul class="aiu">' + "".join(f'<li class="aiu-{k}"><span class="aiu-s">{e(processes.AI_STATE_JA[k])}</span><b>{e(t)}</b><small>{e(why)}</small></li>'
-                                         for t, k, why in processes.AI_TASKS) + '</ul>'
-            '<h3 class="h3">並列と制限 <small>同時にいくつ動かすか · それ以上速くできない理由</small></h3>'
-            '<ul class="lims">' + "".join(f'<li><b>{e(a)}</b><span class="lim-n">{e(b)}</span><small>{e(c)}</small></li>'
-                                          for a, b, c in processes.LIMITS) + '</ul>'
-            '<div class="two bgtwo"><div><h3 class="h3">待ち行列 <small>これから 24 時間の実行と、そのとき処理するもの</small></h3>'
-            '<ol class="bgq" id="bgq"><li class="empty">計算中…</li></ol></div>'
-            '<div><h3 class="h3">ログ <small>ページの一番上の「ライブログ」に移しました（自動で流れる）</small></h3>'
-            '<p class="empty"><a href="#term-panel">↑ ライブログを見る</a></p></div></div>'
-            f'<script type="application/json" id="bg-cfg">{cfg}</script>'
-            '<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦</small></h3>'
-            f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
-            + _admin_emx_stats(rows) + _emx_bar())
+    return {"now": now, "sys": sys_,
+            "table": ('<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦 · 小元素を押すと「違う」で外せる</small></h3>'
+                      f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
+                      + _admin_emx_stats(rows) + _emx_bar())}
 
 
 # 小元素の「違う」（2026-10-21，用户定的）：管理ページの小元素を押して印 → 帯の「外す」で版面ごとに 1 件の依頼
@@ -6134,7 +6137,7 @@ ADMIN_PAGE_JS = """
     if(!runs.length)q.appendChild(el('li','empty','予定がありません。'));}
   tick();setInterval(tick,60000);
   // GitHub Actions：ワークフローごとに最新の実行（3 分ごとに読み直す。GitHub は 1 時間 60 回まで）
-  var runs=document.getElementById('runs');
+  var runs=document.getElementById('runs');   // ①いま にだけある（管理ページは 6 つ。ほかのページの「次の実行」の札もない）
   // GitHub の API はログインなしだと 1 時間 60 回まで。管理ページをいくつ開いていても、3 分以内に誰かが読んだ結果は使い回す（localStorage）
   function actionsRuns(){var K='wl-actions',c=null;try{c=JSON.parse(localStorage.getItem(K)||'null');}catch(e){}
     if(c&&Date.now()-c.t<170000)return Promise.resolve(c.j);
@@ -6156,10 +6159,10 @@ ADMIN_PAGE_JS = """
       var card=document.querySelector('.nx[data-wf="'+f+'"]');if(card&&w.status!=='completed')card.classList.add('run');
       var lv=document.querySelector('.nx[data-wf="'+f+'"] .lv');if(lv){var s1=el('small','lvx',when(w.created_at)),b1=badge(c[0],c[1]);b1.classList.add('lvx');lv.insertBefore(s1,lv.firstChild);lv.insertBefore(b1,lv.firstChild);}
     });
-    runs.textContent='';if(ul.children.length)runs.appendChild(ul);else fail(runs,'最近の実行がありません。');
-  }).catch(function(){fail(runs,'GitHub から読めませんでした（1 時間に 60 回までの制限かもしれません）。');});
+    if(!runs)return;runs.textContent='';if(ul.children.length)runs.appendChild(ul);else fail(runs,'最近の実行がありません。');
+  }).catch(function(){if(runs)fail(runs,'GitHub から読めませんでした（1 時間に 60 回までの制限かもしれません）。');});
   }
-  loadRuns();setInterval(function(){if(!document.hidden)loadRuns();},180000);
+  if(runs||document.querySelector('.nx')){loadRuns();setInterval(function(){if(!document.hidden)loadRuns();},180000);}
   if(!CFG.url||!CFG.key){['reqs','photos','livenow'].forEach(function(id){var b=document.getElementById(id);if(b)fail(b,'データベースに未接続です。');});
     Array.prototype.forEach.call(document.querySelectorAll('[data-run]'),function(b){b.disabled=true;b.title='データベースに未接続';});return;}
   // 今すぐ実行：定時を待たずに GitHub Actions を起こす（Supabase の run_now() が Vault の令牌で頼む。網页に令牌は置かない）
@@ -6169,7 +6172,7 @@ ADMIN_PAGE_JS = """
       .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(x){
         var nx=x&&x.next_at?new Date(x.next_at):null,left=nx?Math.max(1,Math.ceil((nx-new Date())/60000)):0;
         if(x&&x.ok){msg.className='nx-msg ok';msg.textContent='起こしました · 数十秒で「実行中」に';if(card)card.classList.add('run');
-          if(b.dataset.run==='background'){msg.textContent='起こしました · 1 分ほどで作業の 1 行 1 行が ';var a=el('a',null,'ライブログ');a.href='#term-panel';msg.appendChild(a);msg.appendChild(document.createTextNode(' に流れます'));
+          if(b.dataset.run==='background'){msg.textContent='起こしました · 1 分ほどで作業の 1 行 1 行が ';var a=el('a',null,'ライブログ');a.href='admin-now.html#term-panel';msg.appendChild(a);msg.appendChild(document.createTextNode(' に流れます'));
             var cd=b.closest('td')&&b.closest('td').querySelector('.bg-cd');if(cd){cd.removeAttribute('data-at');cd.textContent='いま再挑戦中（次の時刻は終わってから決まる）';}}
           setTimeout(loadRuns,20000);setTimeout(loadRuns,60000);}
         else{msg.className='nx-msg ng';msg.textContent=(x&&x.msg||'起こせませんでした')+(left?' · あと '+left+' 分で押せます':'');}
@@ -6191,7 +6194,7 @@ ADMIN_PAGE_JS = """
   loadLive();setInterval(loadLive,30000);
   // 設定ページの依頼（ウォッチ項目の追加・修正）：待ちのものと、3 日以内に処理したもの
   var reqs=document.getElementById('reqs'),photos=document.getElementById('photos');
-  function loadDb(){
+  function loadDb(){if(!reqs||!photos)return;
   rpc('list_item_requests').then(function(list){
     reqs.textContent='';if(!list||!list.length){fail(reqs,'依頼はありません。');return;}
     var ul=el('ul','qlist');list.forEach(function(x){var li=el('li');
@@ -6216,60 +6219,142 @@ ADMIN_PAGE_JS = """
 """
 
 
+# 管理ページは 6 つ＋トップ（2026-10-25，用户定的：1 枚はややこしすぎる）。中身は前の 1 枚の欄をそのまま移した（作り直さない）。
+# (ファイル, 印, 名前, 中身の説明, 欄の id)。前の網址 admin.html#<id> はトップの JS がその欄のあるページへ送る。
+ADMIN_PAGES = [
+    ("admin-now.html", "①", "いま", "ライブログ・運行状況・次の実行・Actions と依頼", ["term-panel", "status", "nextrun", "queue"]),
+    ("admin-boards.html", "②", "版面", "ウォッチ項目の表・投票", ["items", "votes"]),
+    ("admin-emblem.html", "③", "エンブレム", "小元素の進捗・版面ごとの状態（違う＝外す）・判断の例", ["emblems", "backend", "emblem-ex"]),
+    ("admin-ai.html", "④", "AI 編集", "トークン・編集の前後", ["tokens", "editdiff"]),
+    ("admin-system.html", "⑤", "しくみ", "全体図・詳しい図・リソース・並列と制限", ["ov", "procs", "res"]),
+    ("admin-members.html", "⑥", "お客さまと店長", "登録した人・パスワード・店長（店長のログインで）", ["members"]),
+]
+ADMIN_NAV_CSS = """
+.admnav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 18px;padding:0;list-style:none}
+.admnav a{display:inline-flex;align-items:center;min-height:36px;padding:4px 12px;background:var(--card);color:var(--ink);border:2px solid var(--ink);
+ box-shadow:3px 3px 0 var(--ink);font:900 13px var(--font-sans);text-decoration:none;transform:skewX(var(--skew))}
+.admnav a>span{display:inline-block;transform:skewX(calc(-1*var(--skew)))}
+.admnav a[aria-current]{background:var(--ink);color:var(--card)}.admnav a.adm-top{background:var(--gold)}
+.admnav a:active{transform:skewX(var(--skew)) translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.admhub{list-style:none;margin:20px 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.admhub a{display:flex;flex-direction:column;gap:8px;height:100%;padding:16px 18px;background:var(--card);color:var(--ink);border:2px solid var(--ink);
+ box-shadow:var(--shadow);text-decoration:none;transition:transform .12s,box-shadow .12s}
+.admhub a:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.admhub a:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.admhub b{font:900 22px var(--font-sans)}.admhub b i{font-style:normal;margin-right:8px;color:var(--rose)}
+.admhub small{font-size:13px;line-height:1.6;opacity:.8}
+.admhub .n{align-self:flex-start;padding:2px 10px;background:var(--ink);color:var(--card);font:700 13px var(--font-mono);transform:skewX(var(--skew))}
+.admhub .n.warn{background:var(--alert)}
+@media (max-width:860px){.admhub{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.admhub a{transition:none}}
+"""
+# 前の 1 枚の管理ページの網址（admin.html#backend など）を、その欄のあるページへ送る
+ADMIN_HUB_JS = """(function(){var M=__MAP__,h=location.hash.slice(1);if(h&&M[h])location.replace(M[h]+'#'+h);})();"""
+ADMIN_QUEUE = """<section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>
+<div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
+<div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
+<div><h3 class="h3">写真の受付</h3><div id="photos"><p class="empty">読み込み中…</p></div></div></div></section>"""
+
+
+def _admin_counts(data):
+    """トップのカードの数（生成した時点）。「見に行くべきか」が分かる 1 つの数と、赤くするか。"""
+    items = data.get("items") or []
+    failed = sum(1 for r in items for c in (r.get("bg") or {}).values() if isinstance(c, dict) and c.get("state") == "failed")
+    stale = sum(1 for r in items if "last_days" in r and (r["last_days"] is None or r["last_days"] >= ADMIN_STALE_DAYS))
+    gap = sum(1 for r in items if r.get("emblem") and r["emblem"].get("state") != "ok")
+    pend = ((data.get("todo") or {}).get("edit") or {}).get("n") or 0
+    return {"admin-now.html": (f"失敗 {failed}", True) if failed else ("止まっていない", False),
+            "admin-boards.html": (f"{len(items)} 版面" + (f" · 新しい記事なし {stale}" if stale else ""), bool(stale)),
+            "admin-emblem.html": (f"目標に届かない {gap}", True) if gap else ("全部が目標に", False),
+            "admin-ai.html": (f"整理待ち {pend} 件" if pend else "整理待ちなし", False),
+            "admin-system.html": (f"仕組み {len(processes.PROCESSES)}", False),
+            "admin-members.html": ("店長だけ", False)}
+
+
 def render_admin(data, db, updated):
-    """管理ページ（docs/admin.html）。見るだけ・口令なし。
+    """管理ページ（docs/home/admin.html ＝トップ、admin-*.html ＝ 6 つの別ページ）。見るだけ・口令なし。
     data = {"pipeline": {...}, "items": [行], "votes": {...}}（digest.admin_data が作る）；
-    db = {url, key}（公開の publishable key。依頼と写真の受付をページを開いたときに読む）。"""
+    db = {url, key}（公開の publishable key。依頼と写真の受付をページを開いたときに読む）。
+    返すのは {ファイル名: HTML}（digest.write_page がそれぞれに指紋を入れて書く）。"""
     cfg = json.dumps({"url": (db or {}).get("url") or "", "key": (db or {}).get("key") or "",
                       "repo": (db or {}).get("repo") or "CxElegy/Wishlist", "flows": ADMIN_WORKFLOWS,
                       "tz": (db or {}).get("tz") or "Asia/Tokyo"},
                      ensure_ascii=False).replace("</", "<\\/")
-    return _section_marks(f"""<!doctype html>
+    items = data.get("items") or []
+    bg = _admin_backend(items, data.get("todo"), data.get("log"), data.get("resources"))
+    dialogs = "".join(processes.detail(p) for p in processes.PROCESSES)   # 「次の実行」の名前・全体図の部品を押すと開く流れの図
+
+    def panel(i, title, sub, body, cls=""):
+        return f'<section class="panel{cls}" id="{i}"><h2 class="sh"><span>{title}</span><small>{sub}</small></h2>{body}</section>'
+    S = {
+        "members": '<section class="panel" id="members" hidden><h2 class="sh"><span>お客さまと店長</span><small>だれでもメールアドレス＋パスワードで始められる（重ならない・規約に同意・メールは送らない）· お客さまのパスワードを変える · 店長は 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>'
+                   '<p class="empty">この欄は店長がログインしたときだけ出ます。</p>',
+        "term-panel": panel("term-panel", "ライブログ", "裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと",
+                            livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in items if x.get("name")])),
+        "tokens": panel("tokens", "AI 編集のトークン", "回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字", _admin_edit_tokens(data.get("edit_tokens"))),
+        "ov": panel("ov", "しくみの全体図", "1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ", overview.panel(data)),
+        "status": panel("status", "運行状況", "ページを生成した時点", _admin_pipeline(data.get("pipeline") or {})),
+        "editdiff": panel("editdiff", "AI 編集の前後", f'最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事',
+                          _admin_edit_diff(data.get("edit_diff"))),
+        "nextrun": panel("nextrun", "次の実行", f"何が待っていて、次にいつ動くか · {e(updated)} 時点", bg["now"]),
+        "backend": panel("backend", "版面ごとの状態", f"収集・AI 編集・版面の設計・小元素 · 表は {e(updated)} 時点", bg["table"]),
+        "res": panel("res", "リソース・並列と制限", "サーバーの残り · 容量 · トークン · AI を使うか", bg["sys"]),
+        "emblem-ex": panel("emblem-ex", "小元素の判断の例", "本物の画像で 前 → 後 · 赤枠 = 使わなかった画像 · 緑枠 = 使った画像 · 規則の全部は「⑤しくみ → 全体の構成 → 小元素の自動補完」",
+                           processes.examples_panel({r.get("name") for r in items})),
+        "procs": panel("procs", "全体の構成（詳しい図）", "場所ごとに全部の部品と矢印を 1 枚に · 大きいので、まずは上の「しくみの全体図」を", processes.architecture()),
+        "queue": ADMIN_QUEUE,
+        "items": panel("items", "ウォッチ項目", f'赤い「最新の記事」= {ADMIN_STALE_DAYS} 日以上 新しい記事なし · 主題と配色の見本は <a href="themes.html">テーマ見本</a>', _admin_items(items)),
+        "emblems": panel("emblems", "小元素", "版面右上のステッカー · 種類ごとの目標枚数", _admin_emblems(items, data.get("emblem_run"))),
+        "votes": panel("votes", "投票", "👍 / 👎 · 前回の収集時点", _admin_votes(data.get("votes") or {})),
+    }
+    counts = _admin_counts(data)
+
+    def nav(cur):
+        return ('<nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"'
+                + (' aria-current="page"' if cur == "admin.html" else "") + '><span>← 管理のトップ</span></a></li>'
+                + "".join(f'<li><a href="{f}"' + (' aria-current="page"' if f == cur else "") + f'><span>{m} {e(n)}</span></a></li>'
+                          for f, m, n, _, _ in ADMIN_PAGES) + '</ul></nav>')
+
+    def page(fname, title, ver, body, scripts):
+        return _section_marks(f"""<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>管理ページ</title>
+<title>{e(title)}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
-<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{processes.CSS}{overview.CSS}{livelog.CSS}</style>
-{_live_head("admin")}
+<style>{CSS}{HEAT_PAGE_CSS}{ADMIN_PAGE_CSS}{ADMIN_NAV_CSS}{processes.CSS}{overview.CSS}{livelog.CSS}</style>
+{_live_head("admin", ver)}
 </head>
 <body>
 <div class="page">
 <header class="mast">
-<div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
+<div class="mtitle"><h1>{e(title)}</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
 <div class="tools"><div class="meta"><small>更新</small><b>{e(updated)}</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
-<p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを一目で見るためのページです。
-データを変えることはできません（「今すぐ実行」で裏の仕組みを定時より早く動かすことだけできます）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>
-<section class="panel" id="members" hidden><h2 class="sh"><span>お客さまと店長</span><small>だれでもメールアドレス＋パスワードで始められる（重ならない・規約に同意・メールは送らない）· お客さまのパスワードを変える · 店長は 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>
-<section class="panel" id="term-panel"><h2 class="sh"><span>ライブログ</span><small>裏の仕組みが版面ごとに始めた・終えたことが自動で流れる · 開いている間ずっと</small></h2>{livelog.panel(data.get("log"), (db or {}).get("repo") or "CxElegy/Wishlist", [x.get("name") for x in data.get("items") or [] if x.get("name")])}</section>
-<section class="panel" id="tokens"><h2 class="sh"><span>AI 編集のトークン</span><small>回ごと・バッチ（5 版面ずつ編集 → 出刊 → 公開）ごと · 本物の数字</small></h2>{_admin_edit_tokens(data.get("edit_tokens"))}</section>
-<section class="panel" id="ov"><h2 class="sh"><span>しくみの全体図</span><small>1 ページ 1 画面 · 光る部品 = いま動いている · 部品をクリックで詳しい流れ</small></h2>{overview.panel(data)}</section>
-<section class="panel" id="status"><h2 class="sh"><span>運行状況</span><small>ページを生成した時点</small></h2>{_admin_pipeline(data.get("pipeline") or {})}</section>
-<section class="panel" id="editdiff"><h2 class="sh"><span>AI 編集の前後</span><small>最新号 {e(_md((data.get("edit_diff") or {}).get("date") or ""))}：集めた記事 → 版面に載せた記事</small></h2>{_admin_edit_diff(data.get("edit_diff"))}</section>
-<section class="panel" id="backend"><h2 class="sh"><span>バックグラウンド</span><small>何が待っていて、次にいつ動くか · 表は {e(updated)} 時点</small></h2>{_admin_backend(data.get("items") or [], data.get("todo"), data.get("log"), data.get("resources"))}</section>
-<section class="panel" id="emblem-ex"><h2 class="sh"><span>小元素の判断の例</span><small>本物の画像で 前 → 後 · 赤枠 = 使わなかった画像 · 緑枠 = 使った画像 · 規則の全部は「全体の構成 → 小元素の自動補完」</small></h2>{processes.examples_panel({r.get("name") for r in data.get("items") or []})}</section>
-<section class="panel" id="procs"><h2 class="sh"><span>全体の構成（詳しい図）</span><small>場所ごとに全部の部品と矢印を 1 枚に · 大きいので、まずは一番上の「しくみの全体図」を</small></h2>{processes.render()}</section>
-<section class="panel live" id="queue"><h2 class="sh"><span>いまの状況</span><small>開いている間ずっと読み直す（依頼・写真 1 分 / Actions 3 分）</small></h2>
-<div class="grid3"><div><h3 class="h3">GitHub Actions</h3><div id="runs"><p class="empty">読み込み中…</p></div></div>
-<div><h3 class="h3">ウォッチ項目の依頼</h3><div id="reqs"><p class="empty">読み込み中…</p></div></div>
-<div><h3 class="h3">写真の受付</h3><div id="photos"><p class="empty">読み込み中…</p></div></div></div></section>
-<section class="panel" id="items"><h2 class="sh"><span>ウォッチ項目</span><small>赤い「最新の記事」= {ADMIN_STALE_DAYS} 日以上 新しい記事なし</small></h2>{_admin_items(data.get("items") or [])}</section>
-<section class="panel" id="emblems"><h2 class="sh"><span>小元素</span><small>版面右上のステッカー · 種類ごとの目標枚数</small></h2>{_admin_emblems(data.get("items") or [], data.get("emblem_run"))}</section>
-<section class="panel" id="votes"><h2 class="sh"><span>投票</span><small>👍 / 👎 · 前回の収集時点</small></h2>{_admin_votes(data.get("votes") or {})}</section>
+{nav(fname)}
+{body}
 </div>
-<script type="application/json" id="adm-cfg">{cfg}</script>
-<script>{ADMIN_PAGE_JS}</script>
-<script>{EMX_JS}</script>
-<script>{overview.JS}</script>
-<script>{livelog.JS.replace('__ACC__', sitedir.NAME)}</script>
-<script>{processes.JS}</script>
+{scripts}
 <script>{LIVE_JS}</script>
 </body>
 </html>
 """, updated)
+
+    js = (f'<script type="application/json" id="adm-cfg">{cfg}</script><script>{ADMIN_PAGE_JS}</script><script>{EMX_JS}</script>'
+          f'<script>{overview.JS}</script><script>{livelog.JS.replace("__ACC__", sitedir.NAME)}</script><script>{processes.JS}</script>')
+    hub = ('<p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを見るためのページです。下の 6 つから選んでください。'
+           'データを変えることはできません（できるのは「今すぐ実行」で裏の仕組みを定時より早く動かすことと、小元素の「違う」だけ）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>'
+           '<ul class="admhub">' + "".join(
+               f'<li><a href="{f}"><b><i>{m}</i>{e(n)}</b><span class="n{" warn" if counts[f][1] else ""}">{e(counts[f][0])}</span><small>{e(d)}</small></a></li>'
+               for f, m, n, d, _ in ADMIN_PAGES) + '</ul>')
+    move = json.dumps({i: f for f, _, _, _, ids in ADMIN_PAGES for i in ids})
+    out = {"admin.html": page("admin.html", "管理ページ", "admin", hub, f"<script>{ADMIN_HUB_JS.replace('__MAP__', move)}</script>")}
+    for f, m, n, _, ids in ADMIN_PAGES:
+        body = "".join(S[i] for i in ids) + (dialogs if f in ("admin-now.html", "admin-system.html") else "")
+        out[f] = page(f, f"管理ページ {m} {n}", f[:-5], body, js)
+    return out

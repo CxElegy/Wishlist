@@ -60,7 +60,7 @@ class EditDiff(unittest.TestCase):
         html_ = render._admin_edit_diff(d)
         self.assertNotIn("<b>x</b>", html_)
         self.assertIn("--w:100.0%", html_)
-        self.assertIn('id="editdiff"', render.render_admin({"edit_diff": d}, {}, "u"))
+        self.assertIn('id="editdiff"', "".join(render.render_admin({"edit_diff": d}, {}, "u").values()))
 
 
 if __name__ == "__main__":
