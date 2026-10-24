@@ -1,0 +1,41 @@
+name: あなた待ちを Discord へ
+
+# BACKLOG.md の [?]（ユーザーの返事待ち）を @ 付きで知らせ、返事がなければ繰り返す（harness/ask_remind.py、2026-10-24 用户定的）。
+# 最初の 1 時間は 5 分おき・そのあと 3 時間おき・夜（日本時間 0〜8 時）は繰り返さない。何を送ったかは Actions の cache に。
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  push:
+    branches: [main]
+    paths: ["BACKLOG.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ask-remind
+  cancel-in-progress: false
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      DISCORD_MENTION: ${{ vars.DISCORD_MENTION }}   # <@あなたの Discord の番号>。設定がなければ @here
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/cache/restore@v4
+        with:
+          path: .ask_state.json
+          key: ask-state-${{ github.run_id }}
+          restore-keys: ask-state-
+      - run: python harness/ask_remind.py BACKLOG.md .ask_state.json
+      - uses: actions/cache/save@v4
+        with:
+          path: .ask_state.json
+          key: ask-state-${{ github.run_id }}
