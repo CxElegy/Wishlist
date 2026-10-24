@@ -147,5 +147,22 @@
 "none": 2,
 "blocked": 0,
 "skip": 3
+},
+{
+"at": "2026-10-24T01:40:35+00:00",
+"text": "お客さまの版面：2 人・41 個（もとからある版面 41・Wikidata で足した 0・名前で足した 0・断られて次の回へ 0・上限を超えた 0）・follows 0・小分類を直した 0・番号の引き直し 16（番号を直した 1・同じ版面へ付け替え 0・小分類 1）",
+"level": "info",
+"u_users": 2,
+"u_picks": 41,
+"u_same": 41,
+"u_wd": 0,
+"u_name": 0,
+"u_blocked": 0,
+"u_over": 0,
+"wd_checked": 16,
+"wd_moved": 1,
+"wd_merged": 0,
+"wd_kept": 0,
+"wd_subs": 1
 }
 ]
