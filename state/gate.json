@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-24T20:18:13+00:00",
+ "checked": "2026-10-24T20:54:44+00:00",
  "fired": {
-  "at": "2026-10-24T20:18:13+00:00",
+  "at": "2026-10-24T20:54:44+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-24T18:57:23+00:00",
+    "at": "2026-10-24T20:54:44+00:00",
     "attempts": 1,
     "day": "2026-10-25",
-    "prog": 0,
-    "resp": "cse_01VxBSa486keiGB7TqoLh1cS",
-    "sig": "f448319bb53e"
+    "prog": 45,
+    "resp": "cse_01AfTs2KcPT97BSjHq2EM2jS",
+    "sig": "6f423c0b41a0"
    },
    "items": [
     "MMORPG 新作",
@@ -33,23 +33,27 @@
    "need": true,
    "prog": 45,
    "prog_day": "2026-10-25",
-   "ripe": [],
-   "sig": "99dbaf6ebbcf",
+   "ripe": [
+    "MMORPG 新作",
+    "哈利波特剧集",
+    "滑雪"
+   ],
+   "sig": "6f423c0b41a0",
    "token_cap": 1000000,
    "tokens_today": 74430,
-   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
     "あつ森",
-    "A2O LITE",
-    "哈利波特剧集"
+    "哈利波特剧集",
+    "A2O LITE"
    ],
-   "why": "失敗 3 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:18 から）"
+   "need": true,
+   "sig": "b6ec8ea93386",
+   "waiting": [],
+   "why": "足りない 3 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
