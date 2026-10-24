@@ -295,11 +295,11 @@ FRANCHISE_SECS = ("影视", "游戏", "好物", "演出", "出行")   # 作品�
 
 def find_pick_wikidata(name, get=_wd_get, sec=None):
     """お客さまの選んだ名前 → Wikidata の番号（名前がそろえて同じ項目だけ。なければ None）。断られたら WdBlocked。
-    候補（名前か別名がそろえて同じ項目）の順番（2026-10-24、お客さまの版面の引き直しで決めた）：
-    1. 説明が選んだ板块に入る（taxonomy.classify(説明) == sec）もの：F1 は映画「F1」ではなく自動車レース
-    2. 名前（label）が同じもの。ただし Wikipedia の言語数 ×4 が別名で当たった一番の候補より少ないものは「情報少なめ」として後ろ
-       （向導の thin と同じ物差し）
-    3. Wikipedia の言語数が多いもの：京都 は 平安京（36）ではなく 京都市（260）
+    候補（名前か別名がそろえて同じ項目）の点 = Wikipedia の言語数 × 2（名前 label が同じ）× 2（説明が選んだ板块に入る、
+    taxonomy.classify(説明) == sec）。一番点の高いもの（2026-10-24、お客さまの版面の引き直しで決めた）：
+    F1 は映画「F1」ではなく自動車レース（146×2）、京都 は 平安京（36）・小惑星「京都」（27×2）ではなく 京都市（260）、
+    キャンプ は別名キャンプの植物学者（2、説明の「植物」で生活に入る）ではなく キャンプ（65×2）。
+    板块に入るかどうかは言葉の当たり方なので、それだけで決めない（1 回目は板块を先にして植物学者・小惑星に当たった）。
     3 字までの英数字は、別名だけで当たる候補を板块に入るときしか使わない（「Ado」が別名 ADO のアデノシンに当たった）。
     メディアミックス・media franchise の項目（作品・IP 全体）は作品・ゲーム・グッズ・音楽・おでかけのどの板块にも入るとみなす
     （ゲームの板块で選んだ「ポケットモンスター」がゲームシリーズ Q24558579〔33〕ではなく作品全体 Q864〔126〕のまま。
@@ -334,14 +334,13 @@ def find_pick_wikidata(name, get=_wd_get, sec=None):
     if not keep:
         return None
     sl = _sitelinks(list(keep), get)
-    best_alias = max([sl.get(q, 0) for q, c in keep.items() if not c["label"]] or [0])
     def rank(q):
         c = keep[q]
-        return (c["fits"], c["label"] and sl.get(q, 0) * 4 >= best_alias, sl.get(q, 0), -c["order"])
+        return (max(sl.get(q, 0), 1) * (2 if c["label"] else 1) * (2 if c["fits"] else 1), c["label"], -c["order"])
     return max(keep, key=rank)
 
 
-RECHECK_VER = 3   # 番号の決め方（find_pick_wikidata）を変えたら上げる：お客さまの版面を 1 度ずつ引き直す
+RECHECK_VER = 4   # 番号の決め方（find_pick_wikidata）を変えたら上げる：お客さまの版面を 1 度ずつ引き直す
 
 
 def recheck_plan(boards, follows, get=_wd_get, cache=None, limit=25, pause=1.0):

@@ -249,7 +249,19 @@ class PickRank(unittest.TestCase):
         hits = [{"id": "Q5", "label": "京都", "description": "ship", "match": {"type": "label", "text": "京都"}},
                 {"id": "Q34600", "label": "京都市", "description": "city", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}}]
         self.assertEqual(library.find_pick_wikidata("京都", search(hits, {"Q5": 2, "Q34600": 260}), "出行"), "Q34600")
-        self.assertEqual(library.find_pick_wikidata("京都", search(hits, {"Q5": 80, "Q34600": 260}), "出行"), "Q5")   # 少なめでなければ名前が同じ方
+        self.assertEqual(library.find_pick_wikidata("京都", search(hits, {"Q5": 150, "Q34600": 260}), "出行"), "Q5")   # 名前が同じで言語数も近ければ名前が同じ方
+
+    def test_production_misses(self):
+        """引き直しの 2 回目（2026-10-24 本番）に当たった間違い：板块に入る言葉だけで決めない。"""
+        camp = [{"id": "Q455550", "label": "キャンプ", "description": "野外で一時的な生活をすること", "match": {"type": "label", "text": "キャンプ"}},
+                {"id": "Q21506896", "label": "ウェンデル・ホームズ・キャンプ", "description": "植物学者 (1904-1963)", "aliases": ["キャンプ"],
+                 "match": {"type": "alias", "text": "キャンプ"}}]
+        self.assertEqual(library.find_pick_wikidata("キャンプ", search(camp, {"Q455550": 65, "Q21506896": 2}), "生活"), "Q455550")
+        kyoto = [{"id": "Q153721", "label": "京都", "description": "小惑星", "match": {"type": "label", "text": "京都"}},
+                 {"id": "Q120730", "label": "京都府", "description": "日本の都道府県", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}},
+                 {"id": "Q34600", "label": "京都市", "description": "京都府庁所在地", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}}]
+        self.assertEqual(library.find_pick_wikidata("京都", search(kyoto, {"Q153721": 27, "Q120730": 106, "Q34600": 260}), "出行"), "Q34600")
+        self.assertEqual(library.find_pick_wikidata("京都", search(kyoto[:2], {"Q153721": 27, "Q120730": 106}), "出行"), "Q120730")
 
 
 class Recheck(unittest.TestCase):
