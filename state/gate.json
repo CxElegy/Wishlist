@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-24T15:22:45+00:00",
+ "checked": "2026-10-24T16:13:57+00:00",
  "fired": {
   "at": "2026-10-24T15:22:45+00:00",
   "results": {
@@ -19,29 +19,20 @@
     "resp": "cse_013xjWAKAtHRg3oGGH143vd9",
     "sig": "82c53292bfd9"
    },
-   "items": [
-    "Astrae Oratio",
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "チェーンソーマン",
-    "绝区零"
-   ],
+   "items": [],
    "last_batch": "2026-10-24T14:41:32+00:00",
    "last_error": {
     "at": "2026-10-24T14:35:29+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 433,
-   "prog_day": "2026-10-24",
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-10-25",
    "ripe": [],
-   "sig": "5f3b31591133",
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 490129,
-   "why": "整理待ちの記事 8 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
@@ -49,9 +40,9 @@
    "need": false,
    "sig": "b1312ab4623e",
    "waiting": [
-    "A2O LITE",
     "あつ森",
-    "哈利波特剧集"
+    "哈利波特剧集",
+    "A2O LITE"
    ],
    "why": "失敗 3 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 01:18 から）"
   },
