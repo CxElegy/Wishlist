@@ -25,6 +25,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 BUCKET = "emblems"
 RETRY_HOURS = 24      # 届かなかった版面をもう一度試すまで（店長の版面と違い、材料の指紋がないので 1 日おき）
+RULES = 2             # 取り方の規則の版。上げると、届かなかった版面を RETRY_HOURS を待たずに取り直す（2：Wikidata から AniList・Fandom の名簿）
 PER_BOARD_S = 300     # 1 版面の目安（これより残りが少なければ次を始めない）
 KEEP = ("name", "wikidata", "type", "keywords", "emblem_kind", "wiki")   # 毎回 規則と Wikidata から作るので config に書かない
 
@@ -43,17 +44,39 @@ def kind_for(section, subs, human=False):
     return "topic"
 
 
+def _claims(ent, prop):
+    """Wikidata の項目の 1 つの性質の値（番号の項目は Q…、文字は そのまま）。"""
+    out = []
+    for c in (ent.get("claims") or {}).get(prop) or []:
+        v = ((c.get("mainsnak") or {}).get("datavalue") or {}).get("value")
+        out.append(v.get("id") if isinstance(v, dict) else v)
+    return [v for v in out if v]
+
+
+def _fandom(ent):
+    """Fandom の wiki の番号（P4073）のうち言語の前置きのないもの（pokemon。de.pokemon は飛ばす）。"""
+    return next((v for v in _claims(ent, "P4073") if "." not in str(v)), None)
+
+
 def wd_entity(qid, get=None):
-    """Wikidata → (人かどうか, {lang: 記事名})。番号がなければ (False, {})。断られたら library.WdBlocked（その版面は次の回に）。"""
+    """Wikidata → {human: 人か, links: {lang: 記事名}, anilist: AniList の番号, fandom: Fandom の wiki}。番号がなければ {}。
+    名簿の手がかり（店長の版面は手で持つ anilist_id・emblem_fandom）を規則で：AniList はアニメ（P8729）→ 漫画（P8731）、
+    Fandom は項目の P4073 → なければシリーズ（P179：スプラトゥーン3 → Splatoon）の P4073。断られたら library.WdBlocked（その版面は次の回に）。"""
     if not qid:
-        return False, {}
+        return {}
     import library
-    d = (get or library._wd_get)({"action": "wbgetentities", "ids": qid, "props": "claims|sitelinks"})
-    ent = (d.get("entities") or {}).get(qid) or {}
-    p31 = [((c.get("mainsnak") or {}).get("datavalue") or {}).get("value", {}).get("id") for c in (ent.get("claims") or {}).get("P31") or []]
+    get = get or library._wd_get
+
+    def ent_of(q):
+        return ((get({"action": "wbgetentities", "ids": q, "props": "claims|sitelinks"}).get("entities") or {}).get(q) or {})
+    ent = ent_of(qid)
     links = {k[:-4]: v.get("title") for k, v in (ent.get("sitelinks") or {}).items()
              if re.fullmatch(r"(en|ja|zh|ko)wiki", k) and v.get("title")}
-    return "Q5" in p31, links
+    fandom = _fandom(ent)
+    for s in _claims(ent, "P179")[:1] if not fandom else []:
+        fandom = _fandom(ent_of(s))
+    anilist = next(iter(_claims(ent, "P8729") + _claims(ent, "P8731")), None)
+    return {"human": "Q5" in _claims(ent, "P31"), "links": links, "anilist": anilist, "fandom": fandom}
 
 
 def board_item(board, follow, get=None):
@@ -61,11 +84,17 @@ def board_item(board, follow, get=None):
     import user_pages
     cfg = board.get("config") or {}
     sec = (follow or {}).get("section") or ""
-    human, links = wd_entity(board.get("wd"), get)
+    wd = wd_entity(board.get("wd"), get)
+    human, links = wd.get("human", False), wd.get("links") or {}
     item = {k: v for k, v in cfg.items() if k.startswith("emblem") and k != "emblem_state" or k in ("emblem", "theme", "anilist_id", "wiki")}
     item.update(name=board["name"], type=user_pages.TYPE_OF_SEC.get(sec, "category"),
                 keywords=cfg.get("keywords") or [board["name"]])
     item.setdefault("emblem_kind", kind_for(sec, (follow or {}).get("subs"), human))
+    if item["emblem_kind"] == "character":   # 名簿（roster）と Fandom の立ち絵の手がかり。前の回に書いたもの・店長の手書きが先
+        if wd.get("anilist") and str(wd["anilist"]).isdigit():
+            item.setdefault("anilist_id", int(wd["anilist"]))
+        if wd.get("fandom") and re.fullmatch(r"[a-z0-9-]+", str(wd["fandom"])):
+            item.setdefault("emblem_fandom", wd["fandom"])
     if links and not item.get("wiki"):
         item["wiki"] = [f"{k}:{v}" for k, v in sorted(links.items())]
     if board.get("wd"):
@@ -125,7 +154,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
     import yaml
     fill = fill or emblem_fill.fill_one
     if re.search(r'["\\\n]', board["name"]):
-        return {"emblem_state": {"state": "failed", "have": 0, "at": int(now or time.time()), "note": "名前に \" か \\ がある"}}
+        return {"emblem_state": {"state": "failed", "have": 0, "at": int(now or time.time()), "note": "名前に \" か \\ がある", "v": RULES}}
     item = board_item(board, follow, get)
     with sandbox(item) as (root, site):
         with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):   # emblem の print（版面・人の名前、多くは stderr）を公開のログに出さない
@@ -140,12 +169,12 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
             add["emblem"] = stash(got["emblem"], site, stem, upload, base)
     have = len(got.get("emblem") or [])
     note = re.sub(r"新しい記事が来たらすぐ、来なくても \d+ 時間後", f"{RETRY_HOURS} 時間後", str(r.get("note") or ""))  # 店長の文のまま（材料の指紋・毎時）だと中身と合わない
-    add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200]}
+    add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES}
     return add
 
 
 def due(boards, now):
-    """やる順：まだ一度も試していない版面 → 途中（running）→ 届かなかったものは RETRY_HOURS たってから。済み（ok）は飛ばす。"""
+    """やる順：まだ一度も試していない版面 → 途中（running）→ 届かなかったものは RETRY_HOURS たってから（前の版の規則で試したものはすぐ）。済み（ok）は飛ばす。"""
     out = []
     for b in boards:
         st = (b.get("config") or {}).get("emblem_state") or {}
@@ -153,7 +182,7 @@ def due(boards, now):
             out.append((0, b["id"], b))
         elif st.get("state") == "running":
             out.append((1, st.get("at", 0), b))
-        elif st.get("state") != "ok" and now - int(st.get("at") or 0) > RETRY_HOURS * 3600:
+        elif st.get("state") != "ok" and (int(st.get("v") or 1) < RULES or now - int(st.get("at") or 0) > RETRY_HOURS * 3600):
             out.append((2, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
 

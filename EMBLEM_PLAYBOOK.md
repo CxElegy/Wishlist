@@ -90,3 +90,4 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 2 人の切り抜き | A2O LITE（`a2o-lite-a2o-lite`、ユーザーが一覧で選んだ） | 手で選んだものは `other_faces` を通らない | 手で選んだものにも切り抜きの検査（顔の数）をかけ、外れたら知らせる |
 | 顔のない部分だけの切り抜き（黒い頭頂部） | 漫威电影（Black Panther） | 兜・仮面の役の「顔なしでも残す」（trust_noface） | 顔なしで残すときは、切り抜きの縦横比・面積（`AREA_MIN`）と上の端の検査を厳しく |
 | 空撮の写真（テニスコート）で何かわからない | 日本顶级网球赛事 | topic の Commons の写真 | topic は `emblem_examples`（選手・大会のロゴ）を書く。風景の写真（人も物も主役でない）は落とす |
+| お客さまのキャラの版面が 0 枚（確かでない取り方だけ） | 呪術廻戦・SPY×FAMILY・鬼滅の刃・ポケモン・ゼルダ・モンハン・スプラ 3（ライブラリ） | 店長の版面は anilist_id・emblem_fandom を手で持つが、ライブラリの版面にはない。名前からの Fandom の推測はハイフン（spy-x-family）・「:」のあと（kimetsu-no-yaiba）を作れなかった | library_emblem.wd_entity が Wikidata の AniList（P8729→P8731）・Fandom（P4073→シリーズ P179 の P4073）を引く。fandom_api はハイフンの形・「:」のあと・転送先の名前も。規則の版 RULES を上げると届かなかった版面を待たずに取り直す（手元で SPY×FAMILY 0→3 枚） |
