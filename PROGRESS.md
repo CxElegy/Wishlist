@@ -25,3 +25,4 @@
 - 2026-10-24 AI 編集を版面ごとに溜まったら起こす（3 件・2 時間・初めて）・1 日の上限 100 万 · https://github.com/CxElegy/Wishlist/pull/310 · 本番 background 40072168803 が 15:56 JST に 15 版面で起こした・ux_check ✗0 · 次：半日あとに回り方を確かめる
 - 2026-10-24 増えた分だけの一覧（#306）の本番の回を確かめた：前の記事 31/34 残り、消えた 3 本は篇幅の上限で押し出されたもの。1 バッチ目の 1 版面のトークン 1.29 万（前 2.1〜2.3 万、約 4 割減） · https://github.com/CxElegy/Wishlist/pull/311 · 次：溜まったら編集が回っているか（半日あと）
 - 2026-10-24 お客さまが自分の篇幅・分け方を設定で変える（#312）：店長と同じ render_settings を本人の分で作り me.html?p=settings で読む、my_size_set（follows.size）・my_nav_scheme_set（nav_schemes）。#312 の注釈で全ページの JS が止まり ux_check ✗8 → #313 で直し node --check のテスト。本番 test-b で押して DB・作り直しまで確かめた、ux_check ✗0 · 次：篇幅を版面の本数に効かせる・設定ページを P5 の枠組みに
+- 2026-10-24 別の目の指摘を直す（#317）：test-c の設定ページも本人の分・篇幅で本数を切る（test-b 8→5）・kick_render を押すたびに（2 回押して後の回が勝つのを確かめた）・ux_check が設定ページも点検。ux_check ✗0（16 点） · https://github.com/CxElegy/Wishlist/pull/317 · 次：設定ページを P5 の枠組みに（見本を先に）
