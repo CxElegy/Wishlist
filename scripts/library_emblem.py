@@ -198,16 +198,19 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
 
 
 def due(boards, now):
-    """やる順：まだ一度も試していない版面 → 途中（running）→ 届かなかったものは RETRY_HOURS たってから（前の版の規則で試したものはすぐ）。済み（ok）は飛ばす。"""
+    """やる順：まだ一度も試していない版面 → 0 枚の版面（エンブレムが出ていない：途中・届かなかったもの）→ 途中（running）→
+    届かなかったものは RETRY_HOURS たってから（前の版の規則で試したものはすぐ）。済み（ok）は飛ばす。
+    0 枚を先に：キャラの多い途中の版面（1 回 1 版面 5 分）が前にいると、0 枚の版面が何回も待たされる（#329 のあと 28 版面待ち）。"""
     out = []
     for b in boards:
         st = (b.get("config") or {}).get("emblem_state") or {}
+        zero = not int(st.get("have") or 0)
         if not st:
             out.append((0, b["id"], b))
         elif st.get("state") == "running":
-            out.append((1, st.get("at", 0), b))
+            out.append((1 if zero else 2, st.get("at", 0), b))
         elif st.get("state") != "ok" and (int(st.get("v") or 1) < RULES or now - int(st.get("at") or 0) > RETRY_HOURS * 3600):
-            out.append((2, st.get("at", 0), b))
+            out.append((1 if zero else 3, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
 
 
