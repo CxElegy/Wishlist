@@ -476,10 +476,10 @@ PROCESSES = [
         ],
     },
     {
-        "id": "progress", "name": "進み具合を Discord へ", "en": "PROGRESS", "lane": "actions", "workflow": "progress.yml", "when": "PR を出した・合併した・一覧が変わったとき",
+        "id": "progress", "name": "進み具合を Discord へ", "en": "PROGRESS", "lane": "actions", "workflow": "progress.yml", "when": "PR を出した・合併した・一覧が変わったとき · 画面に関わる PR の合併は Before（合併の直後の本番）と After（render.yml のあと）を撮って左右に並べた画像を送る（harness/before_after.py：ログインなし 1400・test-a 1400・390）",
         "trigger": "pull_request（opened・closed で merged）・main の BACKLOG.md への push",
         "summary": "何時に何ができたか・どこが変わったかを Discord で知らせる（2026-10-23）。ハーネスのループが PR を出す・合併する・一覧を更新するたびに届く。",
-        "files": [".github/workflows/progress.yml", "scripts/progress_notify.py"], "doc": "HARNESS.md", "uses": ["discord"],
+        "files": [".github/workflows/progress.yml", "scripts/progress_notify.py", "harness/before_after.py"], "doc": "HARNESS.md", "uses": ["discord"],
         "flow": [
             {"id": "pg1", "kind": "step", "lane": "actions", "title": "PR を出した／合併した", "text": "題名・本文の最初の 4 行・変えたファイル数・リンク・日本時間"},
             {"id": "pg2", "kind": "step", "lane": "actions", "title": "一覧（BACKLOG.md）の前と今を比べる", "text": "済み [x]・あなた待ち [?]・進行中 [~]・足した段（1 回 10 件まで）"},
