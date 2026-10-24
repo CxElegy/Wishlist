@@ -60,7 +60,10 @@ SWAP = r"""async ([i, j]) => { const s = document.querySelectorAll('section.sec'
   if (!n.complete) await new Promise(z => { n.onload = n.onerror = z; setTimeout(z, 15000); });
   const band = el.parentElement, b = band.getBoundingClientRect(), r = el.getBoundingClientRect();
   if (r.width) band.style.paddingRight = Math.ceil(b.right - r.left + 12) + 'px'; }"""
-MEAS = r"""async (i) => { const s = document.querySelectorAll('section.sec')[i], img = s.querySelector('.emb img');
+MEAS = r"""async (i) => { const q = () => { const s = document.querySelectorAll('section.sec')[i]; return [s, s && s.querySelector('.emb img')]; };
+  let [s, img] = q();
+  if (!img) { await new Promise(z => setTimeout(z, 1500)); [s, img] = q(); }   // 本人のページに替わる途中・描き直しの途中（null で点検ごと止まっていた）
+  if (!img) return null;
   img.removeAttribute('loading'); img.scrollIntoView({block: 'center'});   // 画面の外の画像は loading=lazy で読まれていない（読めないと見誤った）
   const wait = () => img.complete ? 0 : new Promise(z => { img.onload = img.onerror = z; setTimeout(z, 15000); });
   await wait();
@@ -241,6 +244,9 @@ def check(pg, who, width, out, full=False, guest=False):
             if full:
                 pg.evaluate(SWAP, [s["i"], j])
             m = pg.evaluate(MEAS, s["i"])
+            if m is None:
+                found["E2"].append(f"{s['k']}（画像の要素が消えた）")
+                continue
             name = m["src"].rsplit("/", 1)[-1]
             if not m["ok"]:
                 found["E2"].append(f"{s['k']} {name}（網页）")
