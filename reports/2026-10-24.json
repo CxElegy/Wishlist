@@ -1,6 +1,6 @@
 {
  "date": "2026-10-24",
- "edit_sig": "4ab8c490f6ae",
+ "edit_sig": "3d00cd7805a2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -321,24 +321,29 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "英国の財務書類から、HBO の『ハリー・ポッター』シリーズが同局で最も製作費の高い作品の 1 つになると判明しました。",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "Zoom TV on MSN",
-     "title": "HBO’s Harry Potter series emerges as one of network’s costliest productions",
-     "url": "https://www.msn.com/en-in/news/other/hbo-s-harry-potter-series-emerges-as-one-of-network-s-costliest-productions/ar-AA2fT59I"
+     "headline": "HBO’s Harry Potter series emerges as one of network’s costliest productions",
+     "highlight": "costliest productions",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fTEOJ.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-in/news/other/hbo-s-harry-potter-series-emerges-as-one-of-network-s-costliest-productions/ar-AA2fT59I",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 2,
-     "source": "Looper on MSN",
-     "title": "Harry Potter: Everything You Need To Know About The HBO TV Series",
-     "url": "https://www.msn.com/en-us/news/other/harry-potter-everything-you-need-to-know-about-the-hbo-tv-series/ar-AA2fW1k0"
+     "headline": "Harry Potter: Everything You Need To Know About The HBO TV Series",
+     "highlight": "",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fVLFX.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/harry-potter-everything-you-need-to-know-about-the-hbo-tv-series/ar-AA2fW1k0",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -672,9 +677,8 @@
      "date": "2026-10-21",
      "headline": "《绝区零》丽都修葺漫谈Vol.15丨系统优化篇",
      "highlight": "",
-     "image": null,
-     "source": "17173",
-     "source_icon": "https://www.google.com/s2/favicons?domain=news.17173.com&sz=128",
+     "image": "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edNGYubufoiAFEF.png",
+     "image_via": "正文图（3 枚から）",
      "url": "http://news.17173.com/content/10212026/114222585.shtml",
      "weight": "normal"
     }
@@ -814,24 +818,29 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "プーマと『あつまれ どうぶつの森』のコラボ新コレクションが発売中です。",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "Nintendo",
-     "title": "プーマと『あつまれ どうぶつの森』がコラボした新コレクション、発売中。",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPb2dRRUxRbmE3c0k1VmVhX09mZmtlVXNhU0xlbjd0SzktcFF0UVFFN1BMWDY1S1V1SWoyejBwcHIyeFkyNEhWeDhQZUw2TTVLVlBrcWN1TEhlb2tQLTc4dkdvMjFKa0RsdndkSFQ0QlRMNTFLeDdqQThyRDdGTmw3aGJHOUFndw?oc=5"
+     "headline": "プーマと『あつまれ どうぶつの森』がコラボした新コレクション、発売中。",
+     "highlight": "新コレクション、発売中",
+     "image": "https://assets.topics.apps-jp.nintendo.com/image/2021/09/08042244878749/820/32766_820_461.jpg",
+     "image_via": "og:image",
+     "url": "https://www.nintendo.com/jp/topics/article/616089e7-e930-4e17-8d9d-a98be60ff94f",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 2,
-     "source": "攻略大百科",
-     "title": "【あつ森】住民人気投票の投票のやり方・応援コメントについて紹介【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBXalh1WElsYlJOQ2dyMzFIRGZYSU82dXZlbFdrTldkVFhkdERqYkNuN3FFcmNXZG1hRlk1ZW55LTJZWGpPOE1sdkx1aS1oUnZ0ZFRQb3FZMjE?oc=5"
+     "headline": "【あつ森】住民人気投票の投票のやり方・応援コメントについて紹介",
+     "highlight": "",
+     "image": "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/ac-switch/thumbnail/63317/4345231d7bff38b91b280f4eb2272bef",
+     "image_via": "og:image",
+     "url": "https://gamepedia.jp/ac-switch/archives/63317",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -848,24 +857,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "ｄメニューニュース",
-     "title": "パソコンの上に乗る、スマホの前に割り込む……猫が“作業の邪魔”をする理由を調査＆獣医師解説",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNazhaUi1oMk9NRUduMTUxMTdjaU9pTkNHUXo3ZHFmT3pMclQ5TEFFS3RucUJjdm5qVUlnc3BhQkdiR1VhVGc5ZnVFcHV5M3dyT3owZ1pQWVROTWlSbzE3N2hsQll2ZWFfUk1xUWoyR2tjaFo3X0l5QmNoMFVPQkVkbw?oc=5"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 2,
-     "source": "bntonline.com.br",
-     "title": "Best Cat Litter: 5 Options That Control Odors",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOQld4eFUzdmdOVFZXZ0tsejZfNHBpeGJFVnlxZHJDQno1d2tqckNSQU92T1FNRFd0emM3VmFRcmxJMVpiVmRVR05WekJRc0JxVHIzQmRnSktJalNiRGFXeGNmT3BWMUxGLUdwX19DTlc5YXM4Y1ZSNl9TZUgxM1RVdlU3bVlRMDA?oc=5"
+     "headline": "パソコンの上に乗る、スマホの前に割り込む……猫が“作業の邪魔”をする理由を調査＆獣医師が解説",
+     "highlight": "",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100207.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/cat_benesse/life/cat_benesse-100207",
+     "weight": "normal"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",

@@ -261,7 +261,10 @@
   "滑雪": 6,
   "绝区零": 6,
   "gelato pique": 3,
-  "BLEACH Mirrors High": 2
+  "BLEACH Mirrors High": 2,
+  "あつ森": 2,
+  "哈利波特剧集": 2,
+  "猫用品": 2
  },
  "日本顶级网球赛事": [
   {
@@ -619,6 +622,57 @@
    "refs": [
     1,
     2
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "プーマと『あつまれ どうぶつの森』がコラボした新コレクション、発売中。",
+   "highlight": "新コレクション、発売中",
+   "blurb": "プーマと『あつまれ どうぶつの森』のコラボ新コレクションが発売中です。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "【あつ森】住民人気投票の投票のやり方・応援コメントについて紹介",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO’s Harry Potter series emerges as one of network’s costliest productions",
+   "highlight": "costliest productions",
+   "blurb": "英国の財務書類から、HBO の『ハリー・ポッター』シリーズが同局で最も製作費の高い作品の 1 つになると判明しました。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Harry Potter: Everything You Need To Know About The HBO TV Series",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "パソコンの上に乗る、スマホの前に割り込む……猫が“作業の邪魔”をする理由を調査＆獣医師が解説",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
    ]
   }
  ]
