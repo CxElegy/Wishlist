@@ -38,6 +38,11 @@ class EmbCheck(unittest.TestCase):
         self.assertTrue(emb_check.cut_edge(im, [row(20, 40)]))    # 目 20px・目〜口 20px：1.0 倍
         self.assertFalse(emb_check.cut_edge(im, [row(40, 60)]))   # 目 40px：2.0 倍（髪の上だけ切れた）
 
+    def test_same_rules_as_emblem(self):
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+        import emblem
+        self.assertEqual((emb_check.TOP_MAX, emb_check.TOP_TOUCH), (emblem.TOP_MAX, emblem.TOP_TOUCH))
+
     def test_crowd(self):
         big, near, small = (0, 0, 40, 40), (0, 0, 36, 36), (0, 0, 10, 10)
         self.assertTrue(emb_check.crowd([(big, 0, 1), (near, 0, 1)]))    # 2 人写り

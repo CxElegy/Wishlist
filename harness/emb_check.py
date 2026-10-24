@@ -35,6 +35,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 FIRST_BOARD = "はじめに"   # user_pages.FIRST_BOARD
 SAME_BITS = 4              # emblem_fill.SAME_BITS
+TOP_MAX, TOP_TOUCH = 0.5, 0.03   # emblem.TOP_MAX・TOP_TOUCH（取るときの規則）。emblem を import すると sources の opener が入り Wikimedia が 403 を返す（E2 を見誤った）
 BAD_SOURCE = re.compile(r"trophy|ssbb|ssb4|ssbu|amiibo|figurine|statue|sticker", re.I)   # 別の作品（大乱闘のフィギュア・amiibo）の絵
 EYE_TOP = 1.4             # 目の高さ < 目〜口の距離 × これ = 額まで切れた（本番の cutout：哈利波特 1.23、髪だけ切れたものは 1.5 以上）
 STRIP_MAX = 40            # cutout の高さがこれ未満 = 人物が消えて切れ端だけ残った（漫威 Black Panther 73×23）
@@ -70,14 +71,14 @@ MEAS = r"""async (i) => { const s = document.querySelectorAll('section.sec')[i],
     for (const tr of rg.getClientRects()) ov += Math.max(0, Math.min(tr.right, r.right) - Math.max(tr.left, r.left)) * Math.max(0, Math.min(tr.bottom, r.bottom) - Math.max(tr.top, r.top)); }
   return {src: img.getAttribute('src'), ok: img.naturalWidth > 1, h: Math.round(r.height), off: Math.round(r.right - innerWidth), ov: Math.round(ov)}; }"""
 
-_files = {}
+_files, _why = {}, {}   # 開けなかった理由（E2 の行に出す）
 
 
 def _get(url):
-    """画像を開く（2 回まで取り直す）。同じ網址は 1 回の点検で 1 回だけ。"""
+    """画像を開く（1 回だけ取り直す）。同じ網址は 1 回の点検で 1 回だけ。"""
     if url not in _files:
         img = None
-        for n in range(3):
+        for _ in range(2):
             try:
                 data = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "wishlist-ux-check (https://cxelegy.github.io/Wishlist/)"}), timeout=20).read()
                 if b"<svg" in data[:4096]:   # 記号（Twemoji）・SVG のロゴ：開けて <svg があればよい（画素の点検はしない）
@@ -86,9 +87,9 @@ def _get(url):
                     img = Image.open(io.BytesIO(data))
                     img.load()
                 break
-            except Exception:  # noqa: BLE001
-                img = None
-                time.sleep(5 + 10 * n)   # Wikimedia の 429 など：置いてから（3 秒では続けて 429 になり E2 を見誤った、2026-10-24）
+            except Exception as e:  # noqa: BLE001
+                img, _why[url] = None, str(e)[:60]
+                time.sleep(3)   # Commons の 429 など：少し置いてから
         _files[url] = img
     return _files[url]
 
@@ -132,7 +133,6 @@ def _faces(im):
 def cut_edge(img, faces=None):
     """切り抜き（透明の地）が上の端で切れている → 理由、なければ ""。左右・下は見ない（胸像の切り口・腕）。
     上の端の 6 割で決めていたときは、額まで切れた哈利波特（上の端 9%）を拾えず、髪の上だけ切れた写真と分けられなかった。"""
-    import emblem
     im = img.convert("RGBA")
     if im.getextrema()[3][0] > 200:   # 透明な所がない = 切り抜きではない
         return ""
@@ -140,9 +140,9 @@ def cut_edge(img, faces=None):
         return f"切れ端 {im.width}×{im.height}"
     a = im.getchannel("A").load()
     top = sum(1 for x in range(im.width) if a[x, 0] > 128) / im.width
-    if top > emblem.TOP_MAX:
+    if top > TOP_MAX:
         return f"上の端 {top:.0%}"
-    if top > emblem.TOP_TOUCH and faces:
+    if top > TOP_TOUCH and faces:
         r, pad, s = faces[0]
         eye, mouth = (r[5] + r[7]) / 2 - pad, (r[11] + r[13]) / 2 - pad
         if mouth > eye and eye < (mouth - eye) * EYE_TOP:
@@ -210,7 +210,7 @@ def check(pg, who, width, out, full=False, guest=False):
             name = a["src"].rsplit("/", 1)[-1]
             img = _get(url)
             if img is None:
-                found["E2"].append(f"{s['k']} {name}")
+                found["E2"].append(f"{s['k']} {name}（{_why.get(url, '')}）")
                 continue
             if img == "svg":
                 continue
