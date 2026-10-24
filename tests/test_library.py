@@ -205,6 +205,95 @@ class PickLabelFirst(unittest.TestCase):
         self.assertEqual(library.find_pick_wikidata("Formula 1", lambda p: hits), "Q1968")
 
 
+def search(hits, sitelinks=None):
+    """wbsearchentities の返事（言語を問わず同じ）と、候補の Wikipedia の言語数。"""
+    def get(p):
+        if p.get("props") == "sitelinks":
+            return {"entities": {q: {"sitelinks": {f"w{i}": {} for i in range(n)}} for q, n in (sitelinks or {}).items()}}
+        if p.get("action") == "wbgetentities":
+            return {"entities": {}}
+        return {"search": hits}
+    return get
+
+
+class PickRank(unittest.TestCase):
+    """候補の順番：板块に入る → 名前が同じ（情報少なめでない）→ Wikipedia の言語数（2026-10-24、本番の Ado・京都・F1）。"""
+    ADENOSINE = {"id": "Q190012", "label": "adenosine", "description": "chemical compound", "aliases": ["Ado"], "match": {"type": "alias", "text": "Ado"}}
+
+    def test_ado_singer(self):
+        hits = [self.ADENOSINE, {"id": "Q77", "label": "Ado", "description": "Japanese singer", "match": {"type": "label", "text": "Ado"}}]
+        self.assertEqual(library.find_pick_wikidata("Ado", search(hits, {"Q190012": 60, "Q77": 30}), "演出"), "Q77")
+        self.assertIsNone(library.find_pick_wikidata("Ado", search([self.ADENOSINE]), "演出"))   # アデノシンは板块に入らない
+
+    def test_f1_sport_not_film(self):
+        hits = [{"id": "Q900", "label": "F1", "description": "2025 film by Joseph Kosinski", "match": {"type": "label", "text": "F1"}},
+                {"id": "Q1968", "label": "Formula One", "description": "motorsport championship held worldwide", "aliases": ["F1"],
+                 "match": {"type": "alias", "text": "F1"}}]
+        self.assertEqual(library.find_pick_wikidata("F1", search(hits, {"Q900": 40, "Q1968": 146}), "运动"), "Q1968")
+        self.assertEqual(library.find_pick_wikidata("F1", search(hits, {"Q900": 40, "Q1968": 146}), "影视"), "Q900")
+        self.assertEqual(library.find_pick_wikidata("NBA", search([{"id": "Q155223", "label": "National Basketball Association",
+            "description": "North American professional basketball league", "aliases": ["NBA"], "match": {"type": "alias", "text": "NBA"}}]), "运动"), "Q155223")
+
+    def test_kyoto_most_languages(self):
+        hits = [{"id": "Q751907", "label": "平安京", "description": "日本のかつての首都で、計画都市", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}},
+                {"id": "Q34600", "label": "京都市", "description": "京都府庁所在地", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}},
+                {"id": "Q120730", "label": "京都府", "description": "日本の都道府県", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}}]
+        self.assertEqual(library.find_pick_wikidata("京都", search(hits, {"Q751907": 36, "Q34600": 260, "Q120730": 106}), "出行"), "Q34600")
+
+    def test_thin_label_loses(self):
+        hits = [{"id": "Q5", "label": "京都", "description": "ship", "match": {"type": "label", "text": "京都"}},
+                {"id": "Q34600", "label": "京都市", "description": "city", "aliases": ["京都"], "match": {"type": "alias", "text": "京都"}}]
+        self.assertEqual(library.find_pick_wikidata("京都", search(hits, {"Q5": 2, "Q34600": 260}), "出行"), "Q34600")
+        self.assertEqual(library.find_pick_wikidata("京都", search(hits, {"Q5": 80, "Q34600": 260}), "出行"), "Q5")   # 少なめでなければ名前が同じ方
+
+
+class Recheck(unittest.TestCase):
+    """お客さまが足した版面を今の規則で引き直す。消さずに key を書き換えるか、同じ版面へ付け替える。"""
+    HITS = [PickRank.ADENOSINE, {"id": "Q77", "label": "Ado", "description": "Japanese singer", "match": {"type": "label", "text": "Ado"}}]
+
+    def test_plan_and_apply(self):
+        boards = [{"id": 1, "key": "wd:Q190012", "name": "Ado", "wd": "Q190012", "created_by": "user"},
+                  {"id": 2, "key": "wd:Q4", "name": "YOASOBI", "wd": "Q4", "created_by": "shop"},
+                  {"id": 3, "key": "wd:Q9", "name": "Ado", "wd": "Q9", "created_by": "user"}]   # 印が付いた版面は聞き直さない
+        follows = [{"account": "u_a", "board_id": 1, "section": "演出", "subs": {"form": "ソロ", "scene": "J-POP"}},
+                   {"account": "u_b", "board_id": 2, "section": "演出", "subs": {}}]
+        cache = {"_recheck": {"wd:Q9": library.RECHECK_VER}}
+        calls = []
+        def get(p):
+            calls.append(p)
+            return search(self.HITS)(p)
+        plans, n = library.recheck_plan(boards, follows, get, cache, pause=0)
+        self.assertEqual((n, [(x["old"], x["new"]) for x in plans]), (1, [("wd:Q190012", "wd:Q77")]))   # 店長の版面は見ない
+        self.assertEqual(library.recheck_plan(boards, follows, get, cache, pause=0), ([], 0))        # 2 度目は聞かない
+        wrote = []
+        r = library.recheck_apply(plans, boards, follows, lambda path, body, *a, **k: wrote.append((path, body)), ent("Japanese singer"), cache)
+        self.assertEqual(wrote[0], ("boards?id=eq.1", {"key": "wd:Q77", "wd": "Q77"}))
+        self.assertEqual(r["moved"], 1)
+
+    def test_merge_into_existing_board(self):
+        boards = [{"id": 1, "key": "wd:Q190012", "name": "Ado", "wd": "Q190012", "created_by": "user"},
+                  {"id": 5, "key": "wd:Q77", "name": "Ado", "wd": "Q77", "created_by": "shop"}]
+        follows = [{"account": "u_a", "board_id": 1, "section": "演出", "subs": {"form": "ソロ", "scene": "J-POP"}},
+                   {"account": "u_b", "board_id": 1, "section": "演出", "subs": {}},
+                   {"account": "u_b", "board_id": 5, "section": "演出", "subs": {}}]
+        plans, _ = library.recheck_plan(boards, follows, search(self.HITS), {}, pause=0)
+        wrote = []
+        r = library.recheck_apply(plans, boards, follows, lambda path, body, *a, **k: wrote.append((path, body)), ent("Japanese singer"), {})
+        self.assertIn(("follows?account=eq.u_a&board_id=eq.1", {"board_id": 5}), wrote)
+        self.assertNotIn("boards?id=eq.1", [w[0] for w in wrote])               # 行は消さない・書き換えない
+        self.assertEqual((r["merged"], r["kept"]), (1, 1))                       # u_b はもう追いかけている
+
+    def test_subs_follow_new_number(self):
+        boards = [{"id": 1, "key": "n:ado", "name": "Ado", "wd": None, "created_by": "user"}]
+        follows = [{"account": "u_a", "board_id": 1, "section": "演出", "subs": library.subs_for("演出", "Ado")}]
+        plans, _ = library.recheck_plan(boards, follows, search(self.HITS), {}, pause=0)
+        wrote = []
+        def get(p):
+            return ent("Japanese girl group")(p)
+        library.recheck_apply(plans, boards, follows, lambda path, body, *a, **k: wrote.append((path, body)), get, {})
+        self.assertEqual(wrote[-1], ("follows?account=eq.u_a&board_id=eq.1", {"subs": library.subs_for("演出", "Ado", {"text": "Japanese girl group"})}))
+
+
 def ent(desc, claims=None, labels=None):
     """wbgetentities の返事の作り物：1 回目 = 項目の説明と関係、2 回目 = 関係する項目の名前。"""
     def get(params):
