@@ -35,12 +35,31 @@ class Wikidata(unittest.TestCase):
         return {"labels": {k: {"value": v} for k, v in labels.items()}, "aliases": {}}
 
     def test_wiki_titles_pick_best_match(self):
-        # 漫威电影：記事名の 1 つ目（映画 1 本）ではなく、名前・検索語が入るシリーズ全体を選ぶ
+        # 漫威电影：記事名の 1 つ目（映画 1 本）ではなく、お客さまと同じ点（言語数 × 名前 × 板块）でシリーズ全体を選ぶ
         def get(p):
-            return {"entities": {"Q1": self.ent({"en": "Avengers: Doomsday"})}} if "Doomsday" in p.get("titles", "") \
-                else {"entities": {"Q2": self.ent({"zh": "漫威电影宇宙", "en": "Marvel Cinematic Universe"})}}
-        item = {"name": "漫威电影", "keywords": ["漫威 电影"], "wiki": ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]}
+            if p.get("ids"):
+                return {"entities": {"Q1": {"sitelinks": {f"w{i}": {} for i in range(40)}},
+                                     "Q2": {"sitelinks": {f"w{i}": {} for i in range(70)}}}}
+            if "Doomsday" in p.get("titles", ""):
+                return {"entities": {"Q1": {**self.ent({"en": "Avengers: Doomsday"}), "descriptions": {"en": {"value": "upcoming American superhero film"}}}}}
+            return {"entities": {"Q2": {**self.ent({"en": "Marvel Cinematic Universe"}), "descriptions": {"en": {"value": "American media franchise"}}}}}
+        item = {"name": "漫威电影", "type": "show", "keywords": ["漫威 电影"], "wiki": ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"]}
         self.assertEqual(library.find_wikidata(item, get), "Q2")
+
+    def test_one_rule_for_shop_and_customer(self):
+        """店長の版面もお客さまの版面も同じ find_wikidata（お客さまは名前だけの版面）。"""
+        hits = [{"id": "Q77", "label": "Ado", "description": "Japanese singer", "match": {"type": "label", "text": "Ado"}}]
+        self.assertEqual(library.find_pick_wikidata("Ado", search(hits), "演出"), library.find_wikidata({"name": "Ado", "type": "event"}, search(hits)))
+
+    def test_shop_keywords_are_other_names(self):
+        """店長の版面の検索語は別の呼び方（周杰伦 → 日本語の名前「周杰倫」の項目）。題材の検索語は数えない。"""
+        def get(p):
+            if p.get("action") == "wbgetentities":
+                return {"entities": {}}
+            return {"search": [{"id": "Q238819", "label": "周杰倫", "description": "台湾の歌手", "match": {"type": "label", "text": "周杰倫"}}]
+                    if p.get("search") == "周杰倫" else []}
+        self.assertEqual(library.find_wikidata({"name": "周杰伦", "type": "event", "keywords": ["周杰伦", "周杰倫"]}, get), "Q238819")
+        self.assertIsNone(library.find_wikidata({"name": "周杰伦", "type": "event"}, get))
 
     def test_topic_without_wiki_has_no_number(self):
         self.assertIsNone(library.find_wikidata({"name": "猫用品", "type": "category"}, lambda p: self.fail("引かない")))

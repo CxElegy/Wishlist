@@ -67,59 +67,6 @@ def _wd_get(params):
     raise WdBlocked(str(why))
 
 
-def _names(entity):
-    """項目の全言語の名前と別名（そろえたもの）。"""
-    out = {norm_name(v["value"]) for v in (entity.get("labels") or {}).values()}
-    out |= {norm_name(a["value"]) for vs in (entity.get("aliases") or {}).values() for a in vs}
-    return {x for x in out if x}
-
-
-def _words(item):
-    return {w for w in (norm_name(x) for x in [item.get("name"), *(item.get("keywords") or [])]) if len(w) >= 2}
-
-
-def find_wikidata(item, get=_wd_get):
-    """版面の Wikidata の番号を規則で決める（決まらなければ None）。
-    - 題材（type: category）で Wikipedia の記事名（wiki）がないものは番号を付けない（MMORPG 新作・猫用品・滑雪…）
-    - wiki があれば、記事名ごとの項目のうち、名前・検索語が項目の名前・別名に一番多く入るもの（漫威电影 → 映画 1 本ではなくシリーズ全体）
-    - wiki がなければ名前・検索語で検索し、項目の名前・別名が名前か検索語とそろえて同じものだけ（いちばん多く当たったもの）
-    - 題材でも小分類の owner がブランドのもの（gelato pique）は番号を付ける（ユーザー決定）。ただし項目の名前・別名が
-      版面の名前そのものと同じときだけ（星巴克马克杯 が検索語の「スターバックス」でスターバックス本体に当たらない）
-    """
-    if re.fullmatch(r"Q\d+", str(item.get("wikidata") or "")):
-        return item["wikidata"]
-    words = _words(item)
-    wiki = item.get("wiki") or []
-    if isinstance(wiki, str):
-        wiki = [wiki]
-    brand = item.get("type") == "category" and (item.get("subs") or {}).get("owner") == "ブランド"
-    if not wiki and item.get("type") == "category" and not brand:
-        return None
-    if brand and not wiki:
-        words = {w for w in [norm_name(item.get("name"))] if len(w) >= 2}
-    best, score = None, 0
-    if wiki:
-        for w in wiki:
-            lang, _, title = str(w).partition(":")
-            d = get({"action": "wbgetentities", "sites": f"{lang}wiki", "titles": title, "props": "labels|aliases"})
-            for qid, ent in (d.get("entities") or {}).items():
-                if not qid.startswith("Q"):
-                    continue
-                names = _names(ent)
-                s = sum(1 for x in words if any(x == n or x in n or n in x for n in names if len(n) >= 2)) + 0.5
-                if s > score:
-                    best, score = qid, s
-        return best
-    hits = {}
-    for q in [item.get("name"), *(item.get("keywords") or [])[:3]]:
-        for lang in ("ja", "en", "zh"):
-            for h in (get({"action": "wbsearchentities", "search": q, "language": lang, "limit": 3, "type": "item"}).get("search") or [])[:3]:
-                labels = {norm_name(h.get("label")), norm_name((h.get("match") or {}).get("text"))} | {norm_name(a) for a in h.get("aliases") or []}
-                if labels & words:
-                    hits[h["id"]] = hits.get(h["id"], 0) + 1
-    return max(hits, key=hits.get) if hits else None
-
-
 def refresh(items, get=_wd_get, pause=1.0):
     """番号のない版面の Wikidata を引き直す（週 1 回、library.yml）。
     返す：{"found": {名前: Q…}, "none": [項目が見つからない], "blocked": [断られて引けなかった], "skip": [題材で引かない]}。
@@ -300,58 +247,114 @@ FRANCHISE = re.compile(r"media franchise|メディアミックス|媒体系列|�
 FRANCHISE_SECS = ("影视", "游戏", "好物", "演出", "出行")   # 作品・IP 型の 8 面が入る板块（docs/additem.js の MEDIA）
 
 
-def find_pick_wikidata(name, get=_wd_get, sec=None):
-    """お客さまの選んだ名前 → Wikidata の番号（名前がそろえて同じ項目だけ。なければ None）。断られたら WdBlocked。
-    候補（名前か別名がそろえて同じ項目）の点 = Wikipedia の言語数 × 2（名前 label が同じ）× 2（説明が選んだ板块に入る、
-    taxonomy.classify(説明) == sec）。一番点の高いもの（2026-10-24、お客さまの版面の引き直しで決めた）：
-    F1 は映画「F1」ではなく自動車レース（146×2）、京都 は 平安京（36）・小惑星「京都」（27×2）ではなく 京都市（260）、
-    キャンプ は別名キャンプの植物学者（2、説明の「植物」で生活に入る）ではなく キャンプ（65×2）。
-    板块に入るかどうかは言葉の当たり方なので、それだけで決めない（1 回目は板块を先にして植物学者・小惑星に当たった）。
+def find_wikidata(item, get=_wd_get, sec=None):
+    """版面の Wikidata の番号を決める（店長の版面もお客さまの版面も同じ 1 つの規則、2026-10-24。決まらなければ None）。断られたら WdBlocked。
+    版面の名前 = name（店長の版面は検索語 keywords も別の呼び方として数える。題材 type: category の検索語は「マグ 新作」のような探し方なので数えない）。
+    候補：
+    - Wikipedia の記事名（wiki）を書いた版面はその記事の項目だけ（記事を選んだこと = 向導の「これはどれ？」で選んだのと同じ）
+    - 書いていなければ名前・検索語（3 つまで）で検索（ja → en、7 件）し、名前か別名がそろえて版面の名前と同じ項目だけ
+      （検索の返事は前方一致の名前だけで別名が見えない：京都市の別名「京都」→ 項目そのものを引いて見る）
+    - 題材で記事名のないもの（MMORPG 新作・猫用品・滑雪）は番号なし。ただし小分類 owner がブランドのもの（gelato pique）は名前だけで引く
+    点 = Wikipedia の言語数 ×2（名前 label が版面の名前と同じ）×2（説明が板块に入る taxonomy.classify、
+    メディアミックス・media franchise は作品・ゲーム・グッズ・音楽・おでかけのどれにも入る）。一番点の高いもの。
     3 字までの英数字は、別名だけで当たる候補を板块に入るときしか使わない（「Ado」が別名 ADO のアデノシンに当たった）。
-    メディアミックス・media franchise の項目（作品・IP 全体）は作品・ゲーム・グッズ・音楽・おでかけのどの板块にも入るとみなす
-    （ゲームの板块で選んだ「ポケットモンスター」がゲームシリーズ Q24558579〔33〕ではなく作品全体 Q864〔126〕のまま。
-    1 つの名前は 1 つの版面、ゲーム・グッズは同じ版面の枝：CLAUDE.md「作品・IP 型の面」）。"""
+    これまでの例：F1 は映画「F1」ではなく自動車レース（146×2）、京都 は 平安京（36）・小惑星「京都」（27×2）ではなく 京都市（260）、
+    キャンプ は植物学者（2）ではなく キャンプ（65×2）、ポケットモンスター（ゲームの板块）は作品全体 Q864（126）、
+    漫威电影（記事名 Avengers: Doomsday・Marvel Cinematic Universe）は映画 1 本ではなくシリーズ全体。"""
     import taxonomy
+    if re.fullmatch(r"Q\d+", str(item.get("wikidata") or "")):
+        return item["wikidata"]
+    name = str(item.get("name") or "")
     want = norm_name(name)
     if len(want) < 2:
         return None
+    wiki = item.get("wiki") or []
+    if isinstance(wiki, str):
+        wiki = [wiki]
+    topic = item.get("type") == "category"
+    brand = topic and (item.get("subs") or {}).get("owner") == "ブランド"
+    if not wiki and topic and not brand:
+        return None
+    if not sec:
+        sec = item.get("section") or (taxonomy.BY_TYPE.get(item.get("type")) if item.get("type") else None)
+    others = [] if topic else [str(k) for k in (item.get("keywords") or []) if norm_name(k)]
+    names = {want} | {norm_name(k) for k in others if len(norm_name(k)) >= 2}
     short = want.isascii() and len(want) <= 3
     cands = {}
-    for lang in ("ja", "en"):
-        hits = (get({"action": "wbsearchentities", "search": name, "language": lang, "uselang": lang, "limit": 7, "type": "item"}).get("search") or [])
-        for h in hits:
-            desc = str(h.get("description") or "")
-            if any(w in desc.lower() for w in NOT_TOPIC) or not re.fullmatch(r"Q\d+", str(h.get("id") or "")):
-                continue
-            c = cands.setdefault(h["id"], {"label": False, "alias": False, "desc": "", "order": len(cands)})
-            c["desc"] += " " + desc
-            m = h.get("match") or {}
-            others = {norm_name(a) for a in h.get("aliases") or []}
-            if m.get("type") != "label":
-                others.add(norm_name(m.get("text")))
-            if norm_name(h.get("label")) == want:
-                c["label"] = True
-            elif want in others:
-                c["alias"] = True
+    chosen = bool(wiki)
+    if wiki:
+        for w in wiki:
+            lang, _, title = str(w).partition(":")
+            d = get({"action": "wbgetentities", "sites": f"{lang}wiki", "titles": title, "props": "labels|aliases|descriptions",
+                     "languages": "ja|en|mul"})
+            for qid, ent in (d.get("entities") or {}).items():
+                if not re.fullmatch(r"Q\d+", qid):
+                    continue
+                desc = " ".join(str(v.get("value") or "") for v in ((ent or {}).get("descriptions") or {}).values())
+                cands.setdefault(qid, {"label": False, "alias": False, "desc": desc, "order": len(cands)})
+    else:
+        for term in [name, *others[:3]]:
+            for lang in ("ja", "en"):
+                hits = (get({"action": "wbsearchentities", "search": term, "language": lang, "uselang": lang, "limit": 7, "type": "item"}).get("search") or [])
+                for h in hits:
+                    desc = str(h.get("description") or "")
+                    if any(x in desc.lower() for x in NOT_TOPIC) or not re.fullmatch(r"Q\d+", str(h.get("id") or "")):
+                        continue
+                    c = cands.setdefault(h["id"], {"label": False, "alias": False, "desc": "", "order": len(cands)})
+                    c["desc"] += " " + desc
+                    m = h.get("match") or {}
+                    alias = {norm_name(a) for a in h.get("aliases") or []}
+                    if m.get("type") != "label":
+                        alias.add(norm_name(m.get("text")))
+                    if norm_name(h.get("label")) == want:
+                        c["label"] = True
+                    elif alias & names or norm_name(h.get("label")) in names:
+                        c["alias"] = True
     ents = _entities(list(cands), get)
     for q, c in cands.items():
         e = ents.get(q) or {}
-        if want in (e.get("labels") or ()):
+        labels, aliases = e.get("labels") or set(), e.get("aliases") or set()
+        if want in labels:
             c["label"] = True
-        elif want in (e.get("aliases") or ()):
+        elif names & (labels | aliases):
             c["alias"] = True
     use_sec = sec and sec != taxonomy.OTHER
     for c in cands.values():
         c["fits"] = bool(use_sec and (taxonomy.classify(c["desc"]) == sec
                                       or (sec in FRANCHISE_SECS and FRANCHISE.search(c["desc"]))))
-    keep = {q: c for q, c in cands.items() if c["label"] or (c["alias"] and (not short or c["fits"]))}
+    keep = {q: c for q, c in cands.items() if chosen or c["label"] or (c["alias"] and (not short or c["fits"]))}
     if not keep:
         return None
     sl = {q: (ents.get(q) or {}).get("sl", 0) for q in keep}
+
     def rank(q):
         c = keep[q]
         return (max(sl.get(q, 0), 1) * (2 if c["label"] else 1) * (2 if c["fits"] else 1), c["label"], -c["order"])
     return max(keep, key=rank)
+
+
+def find_pick_wikidata(name, get=_wd_get, sec=None):
+    """お客さまの選んだ名前 → 番号。店長の版面と同じ find_wikidata（名前だけの版面として引く）。"""
+    return find_wikidata({"name": name}, get, sec)
+
+
+def compare_shop(items, get=_wd_get, pause=1.0):
+    """店長の版面を今の規則（find_wikidata）で番号なしとして引き直し、今の番号と比べる（library.yml を手で compare=true で起こした回）。
+    返す：[{"name", "old", "new"}]（全版面。店長の版面は公開なので名前を書いてよい）。断られたら残りは "?"。"""
+    import time
+    out, stop = [], False
+    for it in items:
+        old = str(it.get("wikidata") or "") or None
+        new = "?"
+        if not stop:
+            try:
+                new = find_wikidata({k: v for k, v in it.items() if k != "wikidata"}, get)
+            except WdBlocked:
+                stop = True
+            if pause:
+                time.sleep(pause)
+        out.append({"name": it.get("name"), "old": old, "new": new})
+    return out
 
 
 RECHECK_VER = 5   # 番号の決め方（find_pick_wikidata）を変えたら上げる：お客さまの版面を 1 度ずつ引き直す
@@ -686,6 +689,13 @@ if __name__ == "__main__":
         sys.path.insert(0, str(ROOT / "scripts"))
         refresh_main()
         items = (yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")) or {}).get("items") or []
+    if "--compare" in sys.argv:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        rows = compare_shop(items)
+        same = sum(1 for r in rows if r["old"] == r["new"])
+        for r in rows:
+            print(f"{'＝' if r['old'] == r['new'] else '≠'} {r['name']}｜今 {r['old'] or 'なし'}｜今の規則 {r['new'] or 'なし'}")
+        print(f"店長の版面 {len(rows)} 個のうち番号が同じ {same}")
     if "--sql" in sys.argv:
         print(shop_sql(items))
     if "--push" in sys.argv:
