@@ -59,6 +59,9 @@ def check(pw, base, who, width, out):
         nav:!!document.querySelector('.nav'),mast:!!document.querySelector('.mast,h1'),
         token:getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()!=='',
         own:!!document.querySelector('meta[name="wl-own"]'),
+        arts:document.querySelectorAll('section.sec article').length,
+        pics:[...document.querySelectorAll('section.sec article img')].length,
+        empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         sw:document.documentElement.scrollWidth})""", BOXES)
     pg.screenshot(path=str(out / f"{who}-{width}.png"))
     b.close()
@@ -73,6 +76,8 @@ def check(pw, base, who, width, out):
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
     if st["sw"] > width:
         bad.append(f"横にはみ出す（{st['sw']}px）")
+    if st["arts"] and st["empty"]:   # 2026-10-24：記事が 8 本あってもポスターが「直近 7 日は新着なし」（写真のある記事がない）
+        bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
     if errors:
         bad.append("JS のエラー：" + " / ".join(errors[:2]))
     return st, bad
@@ -97,7 +102,7 @@ def main(argv):
                     st, bad = {}, [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
                 fails += bool(bad)
                 print(("✗ " if bad else "✓ ") + f"{who} {w}px：" + ("、".join(bad) if bad else
-                      f"版面 {st.get('secs')}・本人のページ {'はい' if st.get('own') else 'いいえ'}"))
+                      f"版面 {st.get('secs')}・記事 {st.get('arts')}・写真 {st.get('pics')}・本人のページ {'はい' if st.get('own') else 'いいえ'}"))
     print(f"点検：✗ {fails} 件")
     return 1 if fails else 0
 
