@@ -38,6 +38,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 21 | 小元素が字・ボタンに重なる／足が切れる | 浮く動き・固定の空き | 上へだけ浮く・帯の線より下は `clip-path` で見せない（-14px）・本当の幅だけ帯を空ける（`EMB_JS` の `room`）・全身の下端を帯の線に | f725a442・cc028588 |
 | 22 | 失敗した版面が何時間も止まる | 待ちが長い・指紋なしを「同じ」扱い | 段 ①標準 → ②名前を広げる → ③公式・記事のページ、`material` 指紋、`RETRY_HOURS` 6 → 1 | fd706d55・e96f5575・c602936d |
 | 23 | 見て「違う」と思っても直す道がない | 手で消すだけ | 管理ページで理由を選んで外す → `emblem_reject`・`state/emblem_rejects.json` | dbc12bc9（#238） |
+| 24 | お客さまのキャラの版面が字の順の脇役（原神 Aino・Albedo…、ゼルダ Agahnim…）・分類の説明の記事「Character」が 1 枚 | `categorymembers` が頭の 200 人（A〜B）だけ・参照 `lhlimit` 500 で頭打ち（主役が同じ数で並ぶ）・広すぎる分類 Characters（NPC 込み） | `category_top` が続き（cmcontinue 1000 人・lhcontinue 2000）で数え、分類名の記事と「…/Storyline」を除く・`CHAR_CATEGORIES` に Playable Characters。京都の字だけのロゴ・生成AI の図・大相撲の 1890s は `not_emblem`。`library_emblem.RULES` 4 で済みの版面も作り直し（`REDO`） | （この PR） |
 
 ## 2. よく効いた直し方の型（手順）
 

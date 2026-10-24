@@ -25,7 +25,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 BUCKET = "emblems"
 RETRY_HOURS = 24      # 届かなかった版面をもう一度試すまで（店長の版面と違い、材料の指紋がないので 1 日おき）
-RULES = 3             # 取り方の規則の版。上げると、届かなかった版面を RETRY_HOURS を待たずに取り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号）
+RULES = 4             # 取り方の規則の版。上げると、全部の版面（済みも）を RETRY_HOURS を待たずに作り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号、
+                      # 4：分類の続き・参照 500 超え・Playable Characters・字だけ／図／古い写真を外す）
+REDO = ("emblem", "emblem_who", "emblem_pool", "emblem_category")   # 前の版の規則で作ったもの：版が上がったら捨てて規則から作り直す（emblem_reject・emblem_fandom は残す）
 PER_BOARD_S = 300     # 1 版面の目安（これより残りが少なければ次を始めない）
 KEEP = ("name", "wikidata", "type", "keywords", "emblem_kind", "wiki")   # 毎回 規則と Wikidata から作るので config に書かない
 
@@ -108,7 +110,9 @@ def board_item(board, follow, get=None):
     sec = (follow or {}).get("section") or ""
     wd = wd_entity(board.get("wd"), get)
     human, links = wd.get("human", False), wd.get("links") or {}
-    item = {k: v for k, v in cfg.items() if k.startswith("emblem") and k != "emblem_state" or k in ("emblem", "theme", "anilist_id", "wiki")}
+    old = int((cfg.get("emblem_state") or {}).get("v") or 1) < RULES
+    item = {k: v for k, v in cfg.items() if (k.startswith("emblem") and k != "emblem_state" or k in ("emblem", "theme", "anilist_id", "wiki"))
+            and v is not None and not (old and k in REDO)}
     item.update(name=board["name"], type=user_pages.TYPE_OF_SEC.get(sec, "category"),
                 keywords=cfg.get("keywords") or [board["name"]])
     item.setdefault("emblem_kind", kind_for(sec, (follow or {}).get("subs"), human))
@@ -188,10 +192,20 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
                 r = {"state": "failed", "note": "時間切れ"}
         got = (yaml.safe_load((root / "items.yaml").read_text(encoding="utf-8"))["items"] or [{}])[0]
         stem = board.get("wd") or f"b{board['id']}"
-        add = {k: v for k, v in got.items() if k not in KEEP and v != (board.get("config") or {}).get(k)}
+        cfg = board.get("config") or {}
+        add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}
         if got.get("emblem"):
             add["emblem"] = stash(got["emblem"], site, stem, upload, base)
-    have = len(got.get("emblem") or [])
+        if int((cfg.get("emblem_state") or {}).get("v") or 1) < RULES:   # 作り直し：前の規則のものは消す（キャラは新しい名簿にいる人だけ残す）
+            add.update({k: None for k in REDO if cfg.get(k) is not None and k not in add})
+            who = set(got.get("emblem_who") or [])
+            new = add.get("emblem") or []
+            seen = {x.get("subject") for x in new}
+            keep = [x for x in cfg.get("emblem") or [] if item["emblem_kind"] in ("character", "group")
+                    and x.get("subject") in who and x.get("subject") not in seen]
+            if keep:
+                add["emblem"] = new + keep
+    have = len(add.get("emblem") or []) if "emblem" in add else len(got.get("emblem") or [])
     note = re.sub(r"新しい記事が来たらすぐ、来なくても \d+ 時間後", f"{RETRY_HOURS} 時間後", str(r.get("note") or ""))  # 店長の文のまま（材料の指紋・毎時）だと中身と合わない
     add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES}
     return add
@@ -209,7 +223,7 @@ def due(boards, now):
             out.append((0, b["id"], b))
         elif st.get("state") == "running":
             out.append((1 if zero else 2, st.get("at", 0), b))
-        elif st.get("state") != "ok" and (int(st.get("v") or 1) < RULES or now - int(st.get("at") or 0) > RETRY_HOURS * 3600):
+        elif int(st.get("v") or 1) < RULES or st.get("state") != "ok" and now - int(st.get("at") or 0) > RETRY_HOURS * 3600:
             out.append((1 if zero else 3, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
 

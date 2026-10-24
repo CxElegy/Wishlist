@@ -87,6 +87,33 @@ class Rules(unittest.TestCase):
         finally:
             shutil.rmtree(tmp)
 
+    def test_category_top_continues(self):
+        """分類が 200 人を超えたら続き（cmcontinue）、参照が 500 を超えたら続き（lhcontinue）で数える。分類の説明の記事・下位のページは除く。"""
+        import json as js
+        from unittest import mock
+        from urllib.parse import parse_qs, urlparse
+
+        def fake_get(url, limit=0):
+            q = {k: v[0] for k, v in parse_qs(urlparse(url).query).items()}
+            if q.get("list") == "categorymembers":
+                first = "cmcontinue" not in q
+                names = ["Character", "Aino", "Aino/Storyline"] if first else ["Zhongli"]
+                return js.dumps({"query": {"categorymembers": [{"title": n} for n in names]},
+                                 **({"continue": {"cmcontinue": "z", "continue": "-||"}} if first else {})}).encode()
+            t, more = q["titles"], "lhcontinue" not in q
+            n = {"Aino": 10, "Zhongli": 500}[t]
+            return js.dumps({"query": {"pages": {"1": {"linkshere": [{}] * n, "length": 5}}},
+                             **({"continue": {"lhcontinue": "x", "continue": "||"}} if t == "Zhongli" and more else {})}).encode()
+        with mock.patch.object(ef.emblem, "_get", fake_get):
+            self.assertEqual(ef.emblem.category_top("https://g.fandom.com/api.php", "Characters", 5), ["Zhongli", "Aino"])
+
+    def test_not_emblem(self):
+        for bad in ("Kyoto (Chinese characters).svg", "Oversimplification on how AI Model Text 2 Image works.png",
+                    "Wrestling at Tokyo 1890s.jpg", "Kunisada Sumo Triptychon c1860s.jpg"):
+            self.assertTrue(ef.not_emblem(bad), bad)
+        for ok in ("Asashoryu fight Jan08.JPG", "Shogi.jpg", "IPhone 17 Pro Vector.svg", "Emblem of Kyoto, Kyoto.svg", "Tokyo Tower 2023.jpg"):
+            self.assertFalse(ef.not_emblem(ok), ok)
+
     def test_status(self):
         base = {"name": "x", "type": "game"}
         self.assertEqual(ef.status(base)["state"], "none")
