@@ -1523,6 +1523,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.pocketgamer.com/artwork/na-38074-1792770118/bleach-mirrors-high-original-cast.jpg": {
+  "w": 1010,
+  "h": 505,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
@@ -1624,12 +1630,6 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/624529_1.jpg": {
   "w": 1024,
   "h": 638,
-  "target": 1280,
-  "v": 3
- },
- "https://news.dellows.jp/wp-content/uploads/2026/10/624545_1-1.jpg": {
-  "w": 731,
-  "h": 1024,
   "target": 1280,
   "v": 3
  },
@@ -1974,6 +1974,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261024-00000022-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 533,
+  "target": 720,
+  "v": 3,
+  "local": "pics/a54848bf1344d92a.webp",
+  "out": [
+   800,
+   533
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261024-00007778-tennisc-000-1-view.jpg?exp=10800": {
   "w": 1200,
   "h": 800,
@@ -2044,12 +2056,6 @@
  "https://noisypixel.net/wp-content/uploads/2026/06/Astrae-Oratio-2.jpg": {
   "w": 1920,
   "h": 1080,
-  "target": 1280,
-  "v": 3
- },
- "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
-  "w": 1024,
-  "h": 576,
   "target": 1280,
   "v": 3
  },
