@@ -69,20 +69,27 @@ class Rules(unittest.TestCase):
         self.assertEqual(ef.rule({"type": "event", "emblem_kind": "person", "emblem_pool": 40})[1:], (3, 6, 10))
         self.assertEqual(ef.rule({"type": "anime", "emblem_max": 3})[1:], (3, 3, 3))
 
+    def test_subjects_skip_not_character_already_in_who(self):
+        # もうある名簿の Player・Parents（あつ森）も集めない：先頭の HEAD 人に入らない
+        who = ["A", "B", "Player", "C", "Special character", "D", "Parents"] + [f"c{i}" for i in range(20)]
+        got = ef.subjects({"type": "game", "emblem_who": who}, "character", 30)
+        self.assertFalse({"Player", "Parents", "Special character"} & set(got))
+        self.assertEqual(got[:ef.HEAD], ["A", "B", "C", "D", "c0"][:ef.HEAD])
+
     def test_roster_writes_pool_and_names(self):
         import tempfile, shutil
         from unittest import mock
         tmp = pathlib.Path(tempfile.mkdtemp())
         try:
             (tmp / "items.yaml").write_text(
-                'items:\n  - name: G\n    type: game\n    emblem_kind: character\n    emblem_who: ["A"]\n'
+                'items:\n  - name: G\n    type: game\n    emblem_kind: character\n    emblem_who: ["A", "Player"]\n'
                 '    emblem_fandom: g\n    emblem_category: "Playable"\n  - name: H\n    type: game\n', encoding="utf-8")
             with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "category_top", return_value=["B", "A", "C"]):
                 item = yaml.safe_load((tmp / "items.yaml").read_text())["items"][0]
                 self.assertEqual(ef.roster(item, log=lambda *_: None), 3)
             got = yaml.safe_load((tmp / "items.yaml").read_text())["items"]
             self.assertEqual(got[0]["emblem_pool"], 3)
-            self.assertEqual(got[0]["emblem_who"], ["A", "B", "C"])   # 今の名前の後ろに、中心にいる順で足す
+            self.assertEqual(got[0]["emblem_who"], ["A", "B", "C"])   # 前からいる Player は外し、今の名前の後ろに、中心にいる順で足す
             self.assertNotIn("emblem_pool", got[1])
         finally:
             shutil.rmtree(tmp)

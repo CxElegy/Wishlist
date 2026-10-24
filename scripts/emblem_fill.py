@@ -460,7 +460,7 @@ HEAD = 5   # 名簿の上から何人は毎回先に集める（主役が後回�
 
 def subjects(item, kind, hi):
     """収集する対象の名前。emblem_who（メンバー・キャラの名前）があればそれ、なければ種類ごとの決め方。"""
-    who = list(item.get("emblem_who") or [])
+    who = [w for w in item.get("emblem_who") or [] if kind != "character" or not emblem.not_character(w)]   # もうある名簿にも（あつ森の Player・Parents）
     if who and kind in ("character", "group"):   # まだ小元素のいない人から STEP 人。足りない人が多いときは回ごとにずらす（見つからない人で止まらない）
         have = {_base_subject(x.get("subject")) for x in item.get("emblem") or [] if isinstance(x, dict)}
         rest = [w for w in who[:hi] if w not in have]
@@ -484,7 +484,8 @@ def roster(item, log=print):
     → 数えた数か None。"""
     if kind_of(item) != "character":
         return None
-    who = list(item.get("emblem_who") or [])
+    old = list(item.get("emblem_who") or [])
+    who = [x for x in old if not emblem.not_character(x)]   # 前に入った Player・Parents も名簿から外す（新しく足す名前だけでなく）
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
     names, how = [], ""
     if item.get("emblem_category") and api:
@@ -500,7 +501,7 @@ def roster(item, log=print):
     add = [x for x in names if x not in who][:max(0, min(CEIL["character"], n) - len(who))]
     with WRITE_LOCK:
         _set_field(item["name"], "emblem_pool", f"{n}   # 主要な要素の数＝小元素の上限（{how}、scripts/emblem_fill.py の roster）")
-        if add:
+        if add or who != old:
             _set_field(item["name"], "emblem_who", json.dumps(who + add, ensure_ascii=False)
                        + "   # 集める対象（メンバー・キャラ・出演者）")
     log(f"  [名簿] {item['name']}：{how} {n} → 上限 {min(CEIL['character'], n)}、名前を {len(add)} 人足した")

@@ -108,7 +108,7 @@ COMPONENTS = {
             "what": "render.py：どんな比率の配図でも同じ枠に入れ、写真は切らない（文字・ロゴ入りのバナーが欠けるため）。枠の大きさは変えないので壁の段はそろう"},
     "ahash": {"kind": "algo", "name": "差分ハッシュ 9×8", "spec": "ハミング距離 ≤ 4 は同じ画像",
               "what": "emblem_fill._hash：網址が違う同じ写真を 1 枚に"},
-    "roster": {"kind": "rule", "name": "上限 = 主要な要素の数（emblem_fill.roster / rule）", "spec": "キャラ ≤200（主要キャラ全員）· グループ ≤50 · 主題 ≤10 · 本人 10 · ブランド 1 · 1 回の後台で 10 人ずつ足す · 名簿に入れない：まとめ・一覧（…List）・Player・Parents・別の作品の姿（括弧に Smash Bros・vs.）＝emblem.not_character",
+    "roster": {"kind": "rule", "name": "上限 = 主要な要素の数（emblem_fill.roster / rule）", "spec": "キャラ ≤200（主要キャラ全員）· グループ ≤50 · 主題 ≤10 · 本人 10 · ブランド 1 · 1 回の後台で 10 人ずつ足す · 名簿に入れない：まとめ・一覧（…List）・Player・Parents・別の作品の姿（括弧に Smash Bros・vs.）・分類の名前の単数（Special character）＝emblem.not_character、新しく足す名前にも前から名簿にいる名前にも（集める対象 subjects でも外す）",
                "what": "Wiki の分類（emblem_category）か AniList の主役を数えて emblem_pool に。名前は参照の多い順に全員 emblem_who へ。まだいない人から 10 人ずつ集める（emblem_fill.STEP）"},
     "cutcheck": {"kind": "algo", "name": "切り抜きの検査 check_whole", "spec": "上の端 >50%（コマの切り抜き）· 左右の端 >10% · 面積 <12% · 半透明 >18% · 写真は切り抜きに顔が残ること・明るさ ≥16%（暗い場面は使わない）· 外れた画像は emblem_reject へ · 同じファイル（Wikimedia の網址違い）は 1 枚",
                  "what": "emblem.check_whole：体が枠で切れた・輪郭がにじんだものを使わない"},
