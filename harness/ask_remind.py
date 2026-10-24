@@ -62,6 +62,8 @@ def send(content):
 def main(argv):
     sp, cmd, text = pathlib.Path(argv[0]), argv[1], " ".join(argv[2:]).strip()
     state = json.loads(sp.read_text(encoding="utf-8")) if sp.exists() else {}
+    if state and "text" not in state:   # 前の形（BACKLOG の [?] ごと）の記録は捨てる
+        state = {}
     now = dt.datetime.now(dt.timezone.utc).timestamp()
     content, nxt = step(cmd, text, state, now, os.environ.get("DISCORD_MENTION") or "@here")
     sp.write_text(json.dumps(nxt, ensure_ascii=False), encoding="utf-8")
