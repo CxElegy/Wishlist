@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-24T22:37:59+00:00",
+ "checked": "2026-10-24T22:38:56+00:00",
  "fired": {
-  "at": "2026-10-24T22:37:59+00:00",
+  "at": "2026-10-24T22:38:56+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -41,15 +41,15 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "あつ森",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "哈利波特剧集",
+    "あつ森",
     "A2O LITE"
    ],
-   "need": true,
-   "sig": "b6ec8ea93386",
-   "waiting": [],
-   "why": "足りない 3 版面（Actions で Python が埋める）"
+   "why": "失敗 3 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:37 から）"
   },
   "photos": {
    "claude": true,
