@@ -256,7 +256,12 @@
   "ILLIT": 12,
   "周杰伦": 12,
   "チェーンソーマン": 10,
-  "dota2": 8
+  "dota2": 8,
+  "Astrae Oratio": 6,
+  "滑雪": 6,
+  "绝区零": 6,
+  "gelato pique": 3,
+  "BLEACH Mirrors High": 2
  },
  "日本顶级网球赛事": [
   {
@@ -471,6 +476,149 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "『アストラエ・オラティオ』のゲーム概要や公式発表の情報まとめ！魔法と行政をテーマにした新作タイトル",
+   "highlight": "公式発表の情報まとめ",
+   "blurb": "魔法と行政をテーマにした新作『アストラエ・オラティオ』のゲーム概要と公式発表の情報まとめ。",
+   "weight": "lead",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "'아스트라에 오라티오' CBT 결과 공개…93% \"출시 후 즐길 것\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    4,
+    2
+   ]
+  },
+  {
+   "headline": "Impressions of the Astrae Oratio CBT. The scenario by Pika-oji seems promising.",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "【シーズン到来】裾野市のスキー場「スノーパーク イエティ」が日本一早いオープン 初日は約400人",
+   "highlight": "日本一早いオープン",
+   "blurb": "裾野市の「スノーパーク イエティ」が 28 年連続で日本最速オープン、初日は約 400 人が訪れました。",
+   "weight": "lead",
+   "refs": [
+    3,
+    6
+   ]
+  },
+  {
+   "headline": "⻑野県⼩⾕村「つがいけマウンテンリゾート」の2026-27ウィンターシーズン営業日が決定！新設備",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "CAPiTA Space Metal Fantasy Review (2026/2027): Tested at Whistler",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    2
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "Zenless Zone Zero reveals Sunbringer, the first three-in-one Agent!",
+   "highlight": "three-in-one Agent",
+   "blurb": "Sunbringer は Eldreda・Lindverne・Dracaene の 3 人を 1 体として操作する初のエージェントです。",
+   "weight": "lead",
+   "refs": [
+    2,
+    3,
+    4
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.H32taeRIexPuY3uIwUT_hw&pid=News&w=1200"
+  },
+  {
+   "headline": "Zenless Zone Zero Ver. 3.3 Impressions",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "《绝区零》丽都修葺漫谈Vol.15丨系统优化篇",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "サンリオハウス、ジェラート ピケとのコラボ第2弾商品を10月21日に発売",
+   "highlight": "10月21日に発売",
+   "blurb": "サンリオハウスとジェラート ピケのコラボ第 2 弾が 10/21 に発売されました。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/10/624545_1-1.jpg"
+  },
+  {
+   "headline": "スヌーピー×ジェラピケの新作コレクションを一挙紹介！大人気だった17年AWコラボがアップデート",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "gelato pique cafe萬聖節狗狗可麗餅至10月31日 南瓜帽貴賓、蝙蝠翅膀西高地㹴，各1,390日圓",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ],
+   "price": {
+    "now": "1,390日圓"
+   },
+   "event": {
+    "date": "2026-10-31",
+    "label": "販売終了"
+   }
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "Bleach Mirrors High Reveals 18-Character Launch Roster Including New Tite Kubo Designs",
+   "highlight": "18-Character Launch Roster",
+   "blurb": "Bleach Mirrors High がローンチ時の 18 キャラのラインナップを公開、久保帯人の新デザインも含まれます。",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
    ]
   }
  ]

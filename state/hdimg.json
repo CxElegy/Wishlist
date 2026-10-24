@@ -484,6 +484,12 @@
   "target": 720,
   "v": 3
  },
+ "https://d2l930y2yx77uc.cloudfront.net/production/social_images/a48fbca97b5b853208425f77b7e3495ea0940c66.png": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://d3bo0mk5kk7egf.cloudfront.net/imgstore/ElementGalleryItems/attractions/Fullsize/Star-Wars-Land_Full_68757.jpg": {
   "w": 2560,
   "h": 1710,
@@ -846,6 +852,19 @@
   "target": 720,
   "v": 3
  },
+ "https://image.zdnet.co.kr/2026/10/06/731eb9f33d6449f05ae02f0def03326c.jpg": {
+  "w": 640,
+  "h": 359,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.52,
+  "local": "pics/00ebec08f6b48fac.webp",
+  "out": [
+   1280,
+   718
+  ],
+  "why": "看不清"
+ },
  "https://imageio.forbes.com/specials-images/imageserve/6a342222a84f500169a30ad1/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds": {
   "w": 1600,
   "h": 900,
@@ -1074,6 +1093,19 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://img.gamewith.jp/article/thumbnail/gamearticle/16721/rectangle/57039.jpg?t=1792651764": {
+  "w": 600,
+  "h": 315,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.538,
+  "local": "pics/e23a1752a1de8748.webp",
+  "out": [
+   1280,
+   672
+  ],
+  "why": "看不清"
  },
  "https://img.gamewith.jp/article/thumbnail/rectangle/502288.png?date=1749624564": {
   "w": 600,
@@ -1387,6 +1419,12 @@
   "target": 720,
   "v": 3
  },
+ "https://m.media-amazon.com/images/I/31EAvTj+mDL._SL500_.jpg": {
+  "w": 500,
+  "h": 500,
+  "target": 720,
+  "v": 3
+ },
  "https://maxblizz.com/wp-content/uploads/2026/10/Marvel-Studios-Phase-7-movies-new.jpg": {
   "w": 1280,
   "h": 720,
@@ -1416,6 +1454,13 @@
   "h": 2000,
   "target": 1280,
   "v": 3
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/sdt/sdt_2026102304468186_0-enlarge.jpg": {
+  "w": 550,
+  "h": 309,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.403
  },
  "https://media.image.infoseek.co.jp/isnews/photos/tbs/tbs_3033188_0-enlarge.jpg": {
   "w": 1200,
@@ -1521,9 +1566,9 @@
   "target": 1280,
   "v": 3
  },
- "https://news.dellows.jp/wp-content/uploads/2026/10/624545_1.jpg": {
-  "w": 1024,
-  "h": 638,
+ "https://news.dellows.jp/wp-content/uploads/2026/10/624545_1-1.jpg": {
+  "w": 731,
+  "h": 1024,
   "target": 1280,
   "v": 3
  },
@@ -1889,7 +1934,7 @@
  "https://ni.yam.com/20261023/jp-prt-18505-4495-1-261023043229102-2cbbcdfdb31dc2c7.webp": {
   "w": 1200,
   "h": 800,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://ni.yam.com/20261023/jp-prt-32394-90-1-261023042534788-f35344f7fb837461.webp": {
@@ -1932,6 +1977,12 @@
  "https://noisypixel.net/wp-content/uploads/2026/06/Astrae-Oratio-2.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
+  "w": 1024,
+  "h": 576,
   "target": 1280,
   "v": 3
  },
@@ -2413,6 +2464,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
+  "w": 300,
+  "h": 225,
+  "target": 720,
+  "v": 3,
+  "blur": 0.508,
+  "local": "pics/6bcc774cd27a3315.webp",
+  "out": [
+   720,
+   540
+  ],
+  "why": "看不清"
+ },
  "https://substackcdn.com/image/fetch/$s_!t4zE!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6841f6a4-2ba1-47ff-b7b8-65f83cac410a_1920x1280.webp": {
   "w": 1200,
   "h": 675,
@@ -2648,30 +2712,11 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.47F0UF6FwOy-t3NOzBYwtA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6CWZi5pnI5Z4Y6_5m-aB8Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.7-oXg4qEKdkqdW_1vAnobw&pid=News&w=300": {
-  "w": 300,
-  "h": 225,
-  "target": 720,
-  "v": 3,
-  "blur": 0.499,
-  "local": "pics/51461b9d29c2e8ba.webp",
-  "out": [
-   720,
-   540
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.B2_wGz_aVofe4yAd16Rwcw&pid=News&w=1200": {
   "w": 700,
@@ -2712,6 +2757,13 @@
   "target": 1280,
   "v": 3,
   "blur": 0.393
+ },
+ "https://www.bing.com/th?id=ONUT.H32taeRIexPuY3uIwUT_hw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.412
  },
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
@@ -2824,13 +2876,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.f29OOTqAWYfBiobwsK0dXQ&pid=News&w=400": {
-  "w": 400,
-  "h": 225,
-  "target": 720,
-  "v": 3,
-  "blur": 0.3
  },
  "https://www.bing.com/th?id=ONUT.fEijlwf2D_uUv-et1DqypQ&pid=News&w=1200": {
   "w": 700,
@@ -3088,6 +3133,12 @@
  "https://www.kukinews.com/data/kuk/image/2026/09/11/kuk20260911000105.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.niikei.jp/wp-content/uploads/2026/10/unnamed-76-e1792729710980.jpg": {
+  "w": 820,
+  "h": 547,
   "target": 720,
   "v": 3
  },

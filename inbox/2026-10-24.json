@@ -19,6 +19,7 @@
      "carried": "2026-10-23",
      "date": "2026-10-23T01:50:57+00:00",
      "image": "",
+     "link": "https://zdnet.co.kr/view/?no=20261023104942",
      "n": 2,
      "site": "https://zdnet.co.kr",
      "source": "지디넷코리아",
@@ -42,6 +43,7 @@
      "carried": "2026-10-23",
      "date": "2026-10-23T07:51:20+00:00",
      "image": "",
+     "link": "https://www.gameple.co.kr/news/articleView.html?idxno=216784",
      "n": 4,
      "site": "https://www.gameple.co.kr",
      "source": "게임플",
@@ -53,7 +55,9 @@
     {
      "carried": "2026-10-23",
      "date": "2026-10-23T04:13:26+00:00",
-     "image": "",
+     "image": "https://image.zdnet.co.kr/2026/10/06/731eb9f33d6449f05ae02f0def03326c.jpg",
+     "image_via": "og:image（其它来源）",
+     "link": "https://www.maniareport.com/view.php?ud=202610231311007765cecffa9387_19",
      "n": 5,
      "site": "https://www.maniareport.com",
      "source": "m.maniareport.com",
@@ -65,7 +69,9 @@
     {
      "carried": "2026-10-23",
      "date": "2026-10-22T06:49:24+00:00",
-     "image": "",
+     "image": "https://img.gamewith.jp/article/thumbnail/gamearticle/16721/rectangle/57039.jpg?t=1792651764",
+     "image_via": "og:image",
+     "link": "https://gamewith.jp/gamedb/16721/articles/57039",
      "n": 6,
      "site": "https://gamewith.jp",
      "source": "GameWith",
@@ -101,7 +107,9 @@
    "entries": [
     {
      "date": "2026-10-23T13:41:19+00:00",
-     "image": "",
+     "image": "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg",
+     "image_via": "og:image",
+     "link": "https://noisypixel.net/bleach-mirrors-high-18-character-launch-roster-tite-kubo/",
      "n": 1,
      "site": "https://noisypixel.net",
      "source": "Noisy Pixel",
@@ -759,7 +767,9 @@
    "entries": [
     {
      "date": "2026-10-22T07:00:00+00:00",
-     "image": "",
+     "image": "https://m.media-amazon.com/images/I/31EAvTj+mDL._SL500_.jpg",
+     "image_via": "JSON-LD",
+     "link": "https://topnotchoutdoor.com/capita-space-metal-fantasy-snowboard-review/",
      "n": 1,
      "site": "https://topnotchoutdoor.com",
      "source": "Top-Notch Outdoor",
@@ -771,6 +781,7 @@
     {
      "date": "2026-10-21T12:51:32+00:00",
      "image": "",
+     "link": "https://www.boardoftheworld.com/capita-spring-break-resort-twin-review/",
      "n": 2,
      "site": "https://www.boardoftheworld.com",
      "source": "Board of the World",
@@ -2174,7 +2185,9 @@
     {
      "carried": "2026-10-23",
      "date": "2026-10-23T07:17:46+00:00",
-     "image": "",
+     "image": "https://ni.yam.com/20261023/jp-prt-18505-4495-1-261023043229102-2cbbcdfdb31dc2c7.webp",
+     "image_via": "og:image",
+     "link": "https://n.yam.com/Article/20261023472125",
      "n": 1,
      "site": "https://n.yam.com",
      "source": "蕃新聞",
@@ -2767,6 +2780,7 @@
     {
      "date": "2026-10-21T03:42:22+00:00",
      "image": "",
+     "link": "http://news.17173.com/content/10212026/114222585.shtml",
      "n": 5,
      "site": "http://news.17173.com",
      "source": "17173",

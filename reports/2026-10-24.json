@@ -1,57 +1,44 @@
 {
  "date": "2026-10-24",
- "edit_sig": "03773acc762c",
+ "edit_sig": "4ab8c490f6ae",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-20",
-     "n": 1,
-     "source": "r/Astrae_Oratio",
-     "title": "Rion Dominating You",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xavpr9/rion_dominating_you/"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 2,
-     "source": "지디넷코리아",
-     "title": "'아이온2' 흥행에 '아스오라' 호응…엔씨, 글로벌 공략 탄력",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1mLWYtN1dxdHNRS2lscmQtaGdMWVBkWk9xQ2JPQ1JhUFg1Q3ZGU2lxSk1kQWdCQUxIM0RNQlVWSlF6Vll3NXJoSHdiRlVBcjNBUlo5V1pB?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 3,
-     "source": "note",
-     "title": "Impressions of the Astrae Oratio CBT. The scenario by Pika-oji seems promising.",
-     "url": "https://note.com/nyannuna/n/n9be3adf76dde?hl=en"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 4,
-     "source": "게임플",
-     "title": "아스트라에 오라티오 CBT, 재접속률 80% \"놀라워\"",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFB0RDJXUnFLQldkQTNSaEhPNVBMT3NXQVVUQVd3dFVsOGVYSWg1ZVVUYzNocFF3RkVEcERjcWsyV0JYSWhBN1EtcXltZWd5bUNTU1d6SnlJTUdfR3pVRXRCS2pNTVIwZmdQQjJUbw?oc=5"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 5,
-     "source": "m.maniareport.com",
-     "title": "'아스트라에 오라티오' CBT 결과 공개…93% \"출시 후 즐길 것\"",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBCQl9SS1k0RWZkQURKT1otc1E2MzI0ck5FbHY2Z1BPYklTTGh0NkZRaVIwSmt1SUxrOFdzZnJzakF3di05RWY0dXpJZ2tHT29ndWlHWWtzc3BBSGx3WW1LNllvd0h3dVJHLTZ3ZHRMbWdtREprekFhZlZqdw?oc=5"
-    },
-    {
+     "blurb": "魔法と行政をテーマにした新作『アストラエ・オラティオ』のゲーム概要と公式発表の情報まとめ。",
      "date": "2026-10-22",
-     "n": 6,
-     "source": "GameWith",
-     "title": "『アストラエ・オラティオ』のゲーム概要や公式発表の情報まとめ！魔法と行政をテーマにした新作タイトル始動！",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE94RXJvNTJFQUNLNkFobkRWMEZiUEtSMVRHOEJwaTVOQ19pdmRUbmNPU1o2SktkQTlDa2dKc052dV9FRXRCQmpBdEtlaGdlM3lXbVpBb2Iyemw4WjQ?oc=5"
+     "headline": "『アストラエ・オラティオ』のゲーム概要や公式発表の情報まとめ！魔法と行政をテーマにした新作タイトル",
+     "highlight": "公式発表の情報まとめ",
+     "image": "https://img.gamewith.jp/article/thumbnail/gamearticle/16721/rectangle/57039.jpg?t=1792651764",
+     "image_via": "og:image",
+     "url": "https://gamewith.jp/gamedb/16721/articles/57039",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "'아스트라에 오라티오' CBT 결과 공개…93% \"출시 후 즐길 것\"",
+     "highlight": "",
+     "image": "https://image.zdnet.co.kr/2026/10/06/731eb9f33d6449f05ae02f0def03326c.jpg",
+     "image_via": "og:image（其它来源）",
+     "url": "https://www.maniareport.com/view.php?ud=202610231311007765cecffa9387_19",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "Impressions of the Astrae Oratio CBT. The scenario by Pika-oji seems promising.",
+     "highlight": "",
+     "image": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/a48fbca97b5b853208425f77b7e3495ea0940c66.png",
+     "image_via": "og:image",
+     "url": "https://note.com/nyannuna/n/n9be3adf76dde?hl=en",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -68,24 +55,19 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Bleach Mirrors High がローンチ時の 18 キャラのラインナップを公開、久保帯人の新デザインも含まれます。",
      "date": "2026-10-23",
-     "n": 1,
-     "source": "Noisy Pixel",
-     "title": "Bleach Mirrors High Reveals 18-Character Launch Roster Including New Tite Kubo Designs",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNb1p5UlBoNGkyMnRXLWVKaExfUS1ZSDJ3ZnI3c2VhcWEtQjlTMmhpREt2Q0tWcHRHT0pJQWRTc2FzWkNqdmdLSnpnOTFMRDFIcG1VWUVZUU05bVlkUnlYZnI5Q2VmckQ3dDR4bllyWGdaM19fb3R5ekZXcE9SMWRKZFQ5dFhid28?oc=5"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 2,
-     "source": "Pocket Gamer",
-     "title": "Bleach Mirrors High, the upcoming anime RPG, unveils its cast, including all-new original characters",
-     "url": "https://www.pocketgamer.com/bleach-mirrors-high/original-cost-unveiled/"
+     "headline": "Bleach Mirrors High Reveals 18-Character Launch Roster Including New Tite Kubo Designs",
+     "highlight": "18-Character Launch Roster",
+     "image": "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg",
+     "image_via": "og:image",
+     "url": "https://noisypixel.net/bleach-mirrors-high-18-character-launch-roster-tite-kubo/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -221,52 +203,39 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-10-22",
-     "n": 1,
-     "source": "Top-Notch Outdoor",
-     "title": "CAPiTA Space Metal Fantasy Review (2026/2027): Tested at Whistler",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBteWdNUXMwVGJwbjRueDhyblZJM3BZWDBEVkVhcGtxWUE3dkRtMDlDcWJkdUktUERrblE3UTZaWFg3MHhJYXZRcWdoYXUzZ0RDUkp6TllvQnBJdGlCa3hNMnZETjZYYm1iRUQzaGxJN2gzZ2RUdGVaUmt3bHE?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 2,
-     "source": "Board of the World",
-     "title": "Capita SB Resort Twin Review: A Full Season Test of its All-Mountain Versatility",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1lZVVkcGQxR0hxU0JMUWRHMGJkSkdrd0Z4TENIRVRySVI0RnlMaUdNNWl5bktoTG5oODRIYVVGT0tGVkx4VExBdFltQll0cDNVUDNWaTdMdlJsMExqY2RHVjh4SExuRkduTW1EZl9CVksyQm05d2FQeko0aw?oc=5"
-    },
-    {
+     "blurb": "裾野市の「スノーパーク イエティ」が 28 年連続で日本最速オープン、初日は約 400 人が訪れました。",
      "date": "2026-10-23",
-     "n": 3,
-     "source": "Infoseekニュース",
-     "title": "【シーズン到来】裾野市のスキー場「スノーパーク イエティ」が日本一早いオープン 初日は約400人が初滑り楽しむ（静岡・裾野市）",
-     "url": "https://news.infoseek.co.jp/article/sdt_2026102304468186/"
+     "headline": "【シーズン到来】裾野市のスキー場「スノーパーク イエティ」が日本一早いオープン 初日は約400人",
+     "highlight": "日本一早いオープン",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/sdt/sdt_2026102304468186_0-enlarge.jpg",
+     "image_via": "og:image",
+     "url": "https://news.infoseek.co.jp/article/sdt_2026102304468186/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 4,
-     "source": "ストレートプレス",
-     "title": "⻑野県⼩⾕村「つがいけマウンテンリゾート」の2026-27ウィンターシーズン営業日が決定！新設備も",
-     "url": "https://straightpress.jp/20261023/1744047"
+     "headline": "⻑野県⼩⾕村「つがいけマウンテンリゾート」の2026-27ウィンターシーズン営業日が決定！新設備",
+     "highlight": "",
+     "image": "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg",
+     "image_via": "og:image",
+     "url": "https://straightpress.jp/20261023/1744047",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-21",
-     "n": 5,
-     "source": "Switchback Travel",
-     "title": "Best Ski Gloves of 2026/27",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5yV3JVZHFJTWd3bU4wcXlvblhVWmxvWFNTVDRyTllCSDEtNFVMNkdHYXNuMmUzMUdmX0RvTVNmZGJqY2l4aHNzUzZlY2xTTGRXSUZjZkppa0JsOFdnZ1dibw?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 6,
-     "source": "tenki.jp",
-     "title": "28年連続の日本最速オープンを達成！ 「スノーパーク イエティ」で初滑りをPR",
-     "url": "https://tenki.jp/season/ski/column/tenkijp_pr/2026/10/23/32845.html"
+     "headline": "CAPiTA Space Metal Fantasy Review (2026/2027): Tested at Whistler",
+     "highlight": "",
+     "image": "https://m.media-amazon.com/images/I/31EAvTj+mDL._SL500_.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://topnotchoutdoor.com/capita-space-metal-fantasy-snowboard-review/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -505,36 +474,44 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 1,
-     "source": "蕃新聞",
-     "title": "gelato pique cafe萬聖節狗狗可麗餅至10月31日 南瓜帽貴賓、蝙蝠翅膀西高地㹴，各1,390日圓",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1QRDdhbFpZeFA5WHVXTmMyX095WnlST0RTUjZuUE1qcTU5dVE3cjBCTnlDdGdyMTBjS2p6WlhTbWZOaUhvazkzVFp6MUFRcWs0OVE?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
+     "blurb": "サンリオハウスとジェラート ピケのコラボ第 2 弾が 10/21 に発売されました。",
+     "date": "2026-10-22",
+     "headline": "サンリオハウス、ジェラート ピケとのコラボ第2弾商品を10月21日に発売",
+     "highlight": "10月21日に発売",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/624545_1-1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.dellows.jp/624545/?from=related-reading-list",
+     "weight": "lead"
+    },
+    {
      "blurb": "",
      "date": "2026-10-23",
-     "headline": "スヌーピー×ジェラピケの新作コレクションを一挙紹介！大人気だった17年AWコラボがアップデートして登場",
+     "headline": "スヌーピー×ジェラピケの新作コレクションを一挙紹介！大人気だった17年AWコラボがアップデート",
      "highlight": "",
      "image": "https://news.walkerplus.com/article/1149488/12021924_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1149488/",
-     "weight": "hero"
+     "weight": "normal"
     },
     {
      "blurb": "",
-     "date": "2026-10-22",
-     "headline": "サンリオハウス、ジェラート ピケとのコラボ第2弾商品を10月21日に発売",
+     "date": "2026-10-23",
+     "event": {
+      "date": "2026-10-31",
+      "label": "販売終了"
+     },
+     "headline": "gelato pique cafe萬聖節狗狗可麗餅至10月31日 南瓜帽貴賓、蝙蝠翅膀西高地㹴，各1,390日圓",
      "highlight": "",
-     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/624545_1.jpg",
+     "image": "https://ni.yam.com/20261023/jp-prt-18505-4495-1-261023043229102-2cbbcdfdb31dc2c7.webp",
      "image_via": "og:image",
-     "url": "https://news.dellows.jp/624545/?from=related-reading-list",
-     "weight": "hero"
+     "price": {
+      "now": "1,390日圓"
+     },
+     "url": "https://n.yam.com/Article/20261023472125",
+     "weight": "normal"
     }
    ],
    "subtitle": "ジェラート ピケ · ルームウェア",
@@ -668,45 +645,18 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 2,
-     "source": "Dot Esports",
-     "title": "Zenless Zone Zero reveals Sunbringer, the first three-in-one Agent!",
-     "url": "https://dotesports.com/zzz/news/sunbringer-reveal"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 3,
-     "source": "Siliconera on MSN",
-     "title": "Zenless Zone Zero Sunbringer agent is 3 characters in 1",
-     "url": "https://www.msn.com/en-us/news/other/zenless-zone-zero-sunbringer-agent-is-3-characters-in-1/ar-AA2fWaJe"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 4,
-     "source": "HappyGamer",
-     "title": "Zenless Zone Zero Teases a New Agent Record Called Sunbringer",
-     "url": "https://happygamer.com/zenless-zone-zero-sunbringer-agent-record-teaser-169650/"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 5,
-     "source": "17173",
-     "title": "《绝区零》丽都修葺漫谈Vol.15丨系统优化篇",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9DM3p3UklyOUVZYnhXajVHNEo4TW5yOXhiVjBvelhjR3dZSENvTmpKMGhZcDNBM2FWVkMzWllKMzV5X3FSTTZ1NV9vWFZDQ0E4YTBhZlVDLXRad3RueGlVSXR2Z1E?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 6,
-     "source": "手机新浪网",
-     "title": "嘴上说耐折腾，可这急救状态谁舍得再折腾|菲欧妮|绝区零_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB2blBXSmZpYlBjVVNnaHBjVGpiZUFLYW1BYjFUb1pZdU56RjBqQTYwbXVmQ3VTMGU1Z3NGT1I1dTJFQjNLeEZIdUJhM2VQcWlMUFNSbmtLaWFCQ3pnNHptcWNUWQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
+    {
+     "blurb": "Sunbringer は Eldreda・Lindverne・Dracaene の 3 人を 1 体として操作する初のエージェントです。",
+     "date": "2026-10-23",
+     "headline": "Zenless Zone Zero reveals Sunbringer, the first three-in-one Agent!",
+     "highlight": "three-in-one Agent",
+     "image": "https://www.bing.com/th?id=ONUT.H32taeRIexPuY3uIwUT_hw&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://dotesports.com/zzz/news/sunbringer-reveal",
+     "weight": "lead"
+    },
     {
      "blurb": "",
      "date": "2026-10-22",
@@ -715,7 +665,18 @@
      "image": "https://assets.st-note.com/production/uploads/images/327238974/rectangle_large_type_2_e5385ea4a17745871fb987db5040c76f.jpeg?fit=bounds&quality=85&width=1280",
      "image_via": "og:image",
      "url": "https://note.com/howdoyousleep/n/n507d7d40f491?hl=en",
-     "weight": "hero"
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "《绝区零》丽都修葺漫谈Vol.15丨系统优化篇",
+     "highlight": "",
+     "image": null,
+     "source": "17173",
+     "source_icon": "https://www.google.com/s2/favicons?domain=news.17173.com&sz=128",
+     "url": "http://news.17173.com/content/10212026/114222585.shtml",
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",
