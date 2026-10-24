@@ -19,7 +19,7 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 16   # 網页 1 分＋お客さまのページ（写真探し 240 秒まで）
     env:
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}   # 读篇幅 S / M / L
     steps:
@@ -44,3 +44,10 @@ jobs:
             sleep $((i * 5))
           done
           exit 1
+
+      # 画面の部品（render.py）が変わったら、お客さまのページも同じ部品で作り直す（scripts/user_pages.py）。
+      # 古い部品で作ったページが残ると、新しい店長のページと食い違う（2026-10-24：古い JS が開き直しをくり返した）
+      - name: お客さまのページを作り直す
+        continue-on-error: true
+        timeout-minutes: 10
+        run: python scripts/user_pages.py

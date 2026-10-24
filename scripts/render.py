@@ -3608,6 +3608,9 @@ section.fresh{position:relative}
 LIVE_JS = """
 (function(){
   var M=document.querySelector('meta[name="wl-ver"]');if(!M||!window.fetch||!window.JSON)return;
+  // お客さまのページ（user_pages.py が作り、AUTH_JS が差し替えたもの）は version.json の版と比べない：
+  // 印が店長のページと違うので「古い」と見て開き直し、また差し替える、をくり返してしまう（2026-10-24）
+  if(document.querySelector('meta[name="wl-own"]'))return;
   var PAGE=M.getAttribute('data-page'),VER=M.content,KEY='wl-live:'+PAGE,EVERY=__EVERY__*1000,IDLE=__IDLE__*1000;
   var ss={get:function(k){try{return JSON.parse(sessionStorage.getItem(k)||'null');}catch(e){return null;}},
           set:function(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:function(k){try{sessionStorage.removeItem(k);}catch(e){}}};
@@ -3924,7 +3927,8 @@ AUTH_JS = r"""
   if(!base||!A.key||!window.fetch) return;
   var page=A.page||((document.querySelector('meta[name="wl-ver"]')||{}).dataset||{}).page||'';
   R.dataset.page=page; R.dataset.role='guest'; R.dataset.auth='wait';
-  try{ if(/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない
+  var OWN=!!document.querySelector('meta[name="wl-own"]'), signedOut=false;   // 本人のページ（user_pages.py）の中か
+  try{ if(!OWN&&/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない（本人のページはもう本人のものなので隠さない）
   var ROLE=__ROLE__, LOCK=__LOCK__[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -4103,6 +4107,8 @@ AUTH_JS = r"""
   function mine(){
     var on=isMine(), box=document.querySelector('.wl-mine');
     // お客さま → 访客（ログアウト・「見つかりません」）：showMine が版面・駅・目次の網址を書き換えているので、開き直して店長のページに戻す
+    // 本人のページの中では、ログインの確かめの途中で一瞬「お客さまでない」と出ても開き直さない。開き直すのはログアウトしたときだけ
+    if(!on&&OWN){if(signedOut)location.reload();return;}
     if(!on&&R.dataset.mine==='2'){R.dataset.mine='0';clearInterval(R._wlub);location.reload();return;}
     if(!on){R.dataset.mine='0';clearInterval(R._wlub);R._wlmb=null;if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
       document.querySelectorAll('.wl-off').forEach(function(x){x.classList.remove('wl-off');});return;}
@@ -4113,20 +4119,17 @@ AUTH_JS = r"""
   }
   function picksOf(p){return ((p&&p.prefs&&p.prefs.picks)||[]).filter(function(x){return x&&x.name;});}
   // 選んだものがあれば、店長のページと同じ版面のうち自分の選んだものだけを出す（2026-10-22，用户定的：お客さまも店長と同じ機能。記事は同じ公開のニュース）
-  // 本人のページ（scripts/user_pages.py が店長と同じ部品で作り、非公開の箱 pages/<account>/index.html に置く）があれば、それに替える。
-  // 替えたページには meta wl-own があるので、もう一度は読まない。まだ作られていなければ今までどおり（showMine）
-  var OWN_PAGE=false;   // 2026-10-24：差し替えたあと画面が白いまま・開き直しのくり返し → 直すまで止める（前の画面を出す）
+  // 本人のページ（scripts/user_pages.py が店長と同じ部品で作り、非公開の箱 pages/<account>/index.html に置く）は、
+  // 小さな殻のページ me.html が読み込んで描く（render.render_me）。このページの中で差し替えると、店長のページの JS
+  // （ログインの見張り・版の確かめ）が同じ窓に残って、差し替え → 開き直し をくり返し、白い画面にもなった（2026-10-24）。
+  // ここではお客さまを me.html へ送るだけ。殻が読めなかったとき（?own=0）は送らずに前の画面。30 秒に 3 回まで
   function ownPage(){
-    if(!OWN_PAGE||!sb||!tok||page!=='index') return Promise.resolve(false);
-    return rpc('my_page_path').then(function(path){
-      if(!path) return false;
-      return sb.storage.from('pages').download(path+'/index.html').then(function(r){
-        if(!r||r.error||!r.data) return false;
-        return r.data.text().then(function(h){
-          if(!/<meta name="wl-own"/.test(h)) return false;
-          document.open();document.write(h);document.close();return true;});
-      });
-    }).catch(function(){return false;});
+    if(!tok||page!=='index'||/[?&]own=0/.test(location.search)) return Promise.resolve(false);
+    var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
+    if(hist.length>=3) return Promise.resolve(false);
+    try{hist.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(hist));}catch(_){}
+    location.replace('me.html'+location.hash);
+    return Promise.resolve(true);
   }
   function route(box,p,err){
     var picks=picksOf(p);
@@ -4403,7 +4406,7 @@ AUTH_JS = r"""
     if(!window.supabase){refresh();return;}
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
-      var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null;
+      var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null; if(ev==='SIGNED_OUT')signedOut=true;
       if(changed||ev==='INITIAL_SESSION') setTimeout(refresh,0);   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
@@ -5006,6 +5009,44 @@ TERMS_PAGE_CSS = """
 .terms .note{background:var(--sheet);border:2px dashed var(--ink);padding:10px 14px;margin:10px 0}
 .terms small{opacity:.8}
 """
+
+
+def render_me():
+    """お客さまの本人のページを読み込む殻（docs/home/me.html）。ほかの JS を持たない窓で、ログインした本人の鍵で
+    Supabase Storage pages/<account>/index.html を読み、そのページに替える（scripts/user_pages.py が作ったもの、店長と同じ枠組み）。
+    ログインしていない → 店長のページへ。読めない（まだ作られていない・つながらない）→ 店長のページの前の画面（?own=0）。"""
+    cfg = json.dumps({"url": AUTH_DB.get("url") or "", "key": AUTH_DB.get("key") or "", "lib": SUPABASE_JS})
+    return f"""<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>ウォッチリスト通信</title>
+<style>{re.search(r":root\{[^}]*\}", CSS).group(0)}html,body{{margin:0;background:var(--paper);color:var(--ink);font:700 14px/1.6 var(--font-sans)}}
+.ld{{position:fixed;inset:0;display:grid;place-items:center}}.ld b{{background:var(--ink);color:var(--card);padding:.5em 1em;transform:rotate(-2deg);box-shadow:4px 4px 0 var(--rose)}}</style>
+</head><body><div class="ld" role="status"><b>読み込み中…</b></div>
+<script>
+(function(){{
+  var C={cfg};
+  function back(q){{location.replace('./'+(q||'')+location.hash);}}
+  var s=document.createElement('script');s.src=C.lib;s.onerror=function(){{back('?own=0');}};
+  s.onload=function(){{
+    var sb=window.supabase.createClient(C.url,C.key,{{auth:{{persistSession:true,storageKey:'wl-auth',detectSessionInUrl:false}}}});
+    sb.auth.getSession().then(function(r){{
+      var se=r&&r.data&&r.data.session;if(!se){{back('');return null;}}
+      return sb.rpc('my_page_path').then(function(p){{
+        if(p.error||!p.data){{back('?own=0');return null;}}
+        return sb.storage.from('pages').download(p.data+'/index.html');
+      }});
+    }}).then(function(d){{
+      if(!d)return;
+      if(d.error||!d.data){{back('?own=0');return;}}
+      return d.data.text().then(function(h){{
+        if(h.indexOf('name="wl-own"')<0){{back('?own=0');return;}}
+        document.open();document.write(h);document.close();
+        try{{history.replaceState(null,'','./'+location.hash);}}catch(_){{}}
+      }});
+    }}).catch(function(){{back('?own=0');}});
+  }};
+  document.head.appendChild(s);
+}})();
+</script></body></html>"""
 
 
 def render_terms(updated=""):
