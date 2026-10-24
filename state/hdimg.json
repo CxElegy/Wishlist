@@ -333,6 +333,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.inthesnow.com/uploads/2026/10/salomon-s-pro-alpha-c-boa-ski-boots-2026-27-hero.jpg": {
+  "w": 1600,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.livedoor.jp/kstyle/514ee8edcb07f7e84eadfecd6f0ec5c7.jpg/r.580x0": {
   "w": 580,
   "h": 362,
@@ -1523,12 +1529,6 @@
   "target": 1280,
   "v": 3
  },
- "https://media.pocketgamer.com/artwork/na-38074-1792770118/bleach-mirrors-high-original-cast.jpg": {
-  "w": 1010,
-  "h": 505,
-  "target": 1280,
-  "v": 3
- },
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
@@ -1649,6 +1649,12 @@
   "w": 1024,
   "h": 683,
   "target": 1280,
+  "v": 3
+ },
+ "https://news.denfaminicogamer.jp/wp-content/uploads/2026/10/Screenshot-2026-10-24-13-30-23-1024x576.png": {
+  "w": 1024,
+  "h": 576,
+  "target": 720,
   "v": 3
  },
  "https://news.mynavi.jp/article/nippon_insekai-21/ogp_images/ogp.jpg": {
@@ -1980,18 +1986,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261024-00000022-isd-000-1-view.jpg?exp=10800": {
-  "w": 800,
-  "h": 533,
-  "target": 720,
-  "v": 3,
-  "local": "pics/a54848bf1344d92a.webp",
-  "out": [
-   800,
-   533
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261024-00007778-tennisc-000-1-view.jpg?exp=10800": {
   "w": 1200,
   "h": 800,
@@ -2062,6 +2056,12 @@
  "https://noisypixel.net/wp-content/uploads/2026/06/Astrae-Oratio-2.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
+  "w": 1024,
+  "h": 576,
   "target": 1280,
   "v": 3
  },
@@ -2746,12 +2746,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.-BNtbiZ4eNKVRe0rqNS4xw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.-rGR_-zLysSmBgs1otuiaQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2790,6 +2784,12 @@
    1200
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.6yHBTZsf4a3Uqjs0CUeDpQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.9rMjI0ysLG5Xhjv7loJzeg&pid=News&w=1200": {
   "w": 700,
@@ -2850,13 +2850,13 @@
   "v": 3,
   "blur": 0.412
  },
- "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.HeMuX9yNQWEbnje_VpgP0g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.INrR62tch3ap9vSGkg4PTw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -2888,9 +2888,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.WzHU2NsEMmZgg0jQWg4X0Q&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.RIzgN4gEht8tuIP1ER_wKg&pid=News&w=1200": {
   "w": 700,
-  "h": 366,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 346,
   "target": 720,
   "v": 3
  },
@@ -2949,6 +2955,12 @@
    719
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.dPm2yl_5OYHJOHJrjEawwA&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ezl7joe28jZC6CM1E06H5Q&pid=News&w=1200": {
   "w": 700,
@@ -3038,6 +3050,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.376
+ },
+ "https://www.bing.com/th?id=ONUT.tgp0ThqgeSJbDPoweZg5vQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.vuYQdO4GK_fpGWkwGRZqhw&pid=News&w=1200": {
   "w": 700,
@@ -3206,12 +3224,6 @@
  "https://www.kukinews.com/data/kuk/image/2026/09/11/kuk20260911000105.jpg": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
-  "v": 3
- },
- "https://www.niikei.jp/wp-content/uploads/2026/10/unnamed-76-e1792729710980.jpg": {
-  "w": 820,
-  "h": 547,
   "target": 720,
   "v": 3
  },
