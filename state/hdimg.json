@@ -1598,6 +1598,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.pocketgamer.com/artwork/na-38074-1792770118/bleach-mirrors-high-original-cast.jpg": {
+  "w": 1010,
+  "h": 505,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
@@ -1625,6 +1631,12 @@
  "https://media.wwdjapan.com/wp-content/uploads/2026/10/20133724/sub1-43.jpg": {
   "w": 1200,
   "h": 961,
+  "target": 1280,
+  "v": 3
+ },
+ "https://media2.firstshowing.net/firstshowing/img18/avengersdoomsdaytsrbasebtw1.jpg": {
+  "w": 2000,
+  "h": 889,
   "target": 1280,
   "v": 3
  },
@@ -2153,12 +2165,6 @@
   "target": 1280,
   "v": 3
  },
- "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-24"
- },
  "https://nokiamob.net/wp-content/uploads/2026/10/S27-pro-2-1-1920w-1080h.png.webp": {
   "w": 1920,
   "h": 1080,
@@ -2346,6 +2352,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://realsound.jp/wp-content/uploads/2026/10/20261024-mori-99.jpeg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://resource.hanteonews.com/content/post/2026/10/21/dfd242c4-5ebd-4dcb-ba8f-49c0c535dece.jpeg": {
@@ -3203,6 +3215,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.disneydining.com/wp-content/uploads/2026/06/the-mandalorian-grogu.jpg": {
+  "w": 1200,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.disneydining.com/wp-content/uploads/2026/07/Untitled-design-100.jpg": {
   "w": 1200,
   "h": 600,
@@ -3350,12 +3368,6 @@
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
-  "target": 720,
-  "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Pedro-Pascal-F4.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
   "target": 720,
   "v": 3
  },
