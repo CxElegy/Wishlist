@@ -248,7 +248,24 @@ def wikipedia_photos(subject, langs=WIKI_LANGS, limit=10, titles=None, extra=Tru
     return found[:limit]
 
 
-def commons_photos(subject, limit=10):
+LOGO_WORDS = re.compile(r"\b(?:logo(?:type)?s?|wordmark|emblem|symbol|of|the|and|official|new|old|current|icon|text|black|white|"
+                        r"colou?r|horizontal|vertical|full|simple|flat|[23]d|v?\d+|ver(?:sion)?|svg|png|jpe?g|webp|file)\b", re.I)
+
+
+def own_logo(title, subject):
+    """Commons で「名前 logo」を探して当たったファイルが、その名前だけのロゴか。名前とロゴの言葉を除いて何か残れば別のもの
+    （「Logo of the Linksys iPhone.svg」＝別の会社の iPhone）。"""
+    if not re.search(r"logo|wordmark|emblem", title, re.I):
+        return False
+    rest = re.sub(r"^(?:File|ファイル):", "", title)
+    for tok in sorted(re.split(r"[\s/・（）()]+", subject), key=len, reverse=True):
+        if tok:
+            rest = re.sub(re.escape(tok), " ", rest, flags=re.I)
+    return not re.sub(r"[\W_]+", "", LOGO_WORDS.sub(" ", rest))
+
+
+def commons_photos(subject, limit=10, logo=False):
+    """Commons の検索。logo=True はロゴのファイル（名前に logo・wordmark・emblem、SVG も）だけ。ふだんはロゴ・記号を除いた写真"""
     q = urllib.parse.urlencode({"action": "query", "generator": "search", "gsrsearch": subject, "gsrnamespace": 6,
                                 "gsrlimit": 20, "prop": "imageinfo", "iiprop": "url|size|extmetadata", "iiurlwidth": 500,
                                 "format": "json"})
@@ -256,7 +273,10 @@ def commons_photos(subject, limit=10):
     out = []
     for p in pages.values():
         info = (p.get("imageinfo") or [{}])[0]
-        if (not info.get("url") or not re.search(r"\.(jpe?g|png|webp)$", p["title"], re.I) or SKIP_NAMES.search(p["title"])
+        if logo:   # ロゴ：前は SKIP_NAMES で logo の名前を落としていたので、「京都 logo」の検索に決済の案内板・電車の写真しか残らなかった
+            if not info.get("url") or not re.search(r"\.(svg|png|webp)$", p["title"], re.I) or not re.search(r"logo|wordmark|emblem", p["title"], re.I):
+                continue
+        elif (not info.get("url") or not re.search(r"\.(jpe?g|png|webp)$", p["title"], re.I) or SKIP_NAMES.search(p["title"])
                 or info.get("width", 0) < 300 or info.get("height", 0) < 300):
             continue
         lic = ((info.get("extmetadata") or {}).get("LicenseShortName") or {}).get("value", "")
@@ -577,7 +597,7 @@ def gather(item, log=print, tried=None):
         except Exception as e:
             log(f"  [Wikidata] {e}")
         try:
-            add(f"{subj} のロゴ", [r for r in commons_photos(f"{subj} logo", 12) if relevant(r["title"], subj)],
+            add(f"{subj} のロゴ", [r for r in commons_photos(f"{subj} logo", 12, logo=True) if own_logo(r["title"], subj)],
                 "Wikimedia Commons", "ブランドの顔（公式ロゴ）", 3)
         except Exception as e:
             log(f"  [Commons] {e}")
