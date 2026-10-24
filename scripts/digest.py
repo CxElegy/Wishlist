@@ -2563,6 +2563,7 @@ def _write_page():
     heat_html, ver_heat = render.stamp(render.render_heat(analysis, render.collect(issues, order, langs), updated), updated)
     (DOCS_DIR / "heat.html").write_text(heat_html, encoding="utf-8")
     (DOCS_DIR / "terms.html").write_text(render.render_terms(updated), encoding="utf-8")   # 利用規約・プライバシーポリシー（ログイン）
+    (DOCS_DIR / "me.html").write_text(render.render_me(), encoding="utf-8")   # お客さまの本人のページを読み込む殻（render.render_me、user_pages.py）
     try:   # 入口（docs/index.html：何のサイトか・新しく始める）。24 時間より古いときだけ作り直す（話題の候補を新しく）
         import welcome
         welcome.build_if_stale()

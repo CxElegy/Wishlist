@@ -58,8 +58,18 @@ class Loader(unittest.TestCase):
     def test_auth_js_reads_own_page(self):
         js = render.AUTH_JS
         self.assertNotIn("tok&&picks.length&&document", js)   # 版面の数によらず、まず本人のページ
-        for w in ("my_page_path", "storage.from('pages')", 'meta[name="wl-own"]'):
-            self.assertIn(w, js)
+        self.assertIn("location.replace('me.html'", js)            # お客さまは殻のページへ送るだけ（同じ窓で差し替えない）
+        self.assertNotIn("document.write", js)
+        me = render.render_me()
+        for w in ("my_page_path", "storage.from('pages')", 'name="wl-own"', "?own=0"):
+            self.assertIn(w, me)
+
+    def test_no_reload_loop(self):
+        # 本人のページでは「古い版なら開き直す」を働かせない・差し替えは 30 秒に 1 回まで（2026-10-24 のくり返し）
+        live = render.LIVE_JS
+        self.assertLess(live.index('meta[name="wl-own"]'), live.index("function fresh("))
+        self.assertIn("wl-own-at", render.AUTH_JS)
+        self.assertIn("if(!on&&OWN){if(signedOut)", render.AUTH_JS)   # 本人のページでは確かめの途中で開き直さない
 
     def test_bucket_is_private(self):
         sql = (ROOT / "db" / "user_pages.sql").read_text(encoding="utf-8")
