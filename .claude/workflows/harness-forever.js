@@ -11,6 +11,7 @@ export const meta = {
 }
 
 const MAX = (args && args.max) || 6
+const LANE = (args && args.lane) || ''   // 'request' = 依頼の係：【依頼】の段だけ（HARNESS.md「依頼の係」）
 const SP = (args && args.scratch) || '/tmp/harness'
 const COMMON = `リポジトリ /home/user/Wishlist（CxElegy/Wishlist）。最初に HARNESS.md・BACKLOG.md・CLAUDE.md・WORKING.md を main の最新で読み（触る分野の docs/rules/*.md も。CLAUDE.md の索引の表）、その決まりで動く。
 作業は自分専用の worktree：\`git -C /home/user/Wishlist fetch -q origin main && git -C /home/user/Wishlist worktree add -f ${SP}/wt/{ID} -B harness/{ID} origin/main\`。メインの作業ツリーには書かない。一時ファイルは ${SP}/tmp/。
@@ -34,11 +35,12 @@ const VERDICT = { type: 'object', properties: { ok: { type: 'boolean' }, problem
 const done = []
 let planned = 0
 for (let i = 1; i <= MAX; i++) {
-  const id = `f${i}`
-  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ BACKLOG.md の「いちばん先」の上から最初の [ ]（[~] で 3 時間以上止まっているものも）を 1 つだけ進める。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
+  const id = `${LANE === 'request' ? 'r' : 'f'}${i}`
+  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から最初の 1 つだけを進める（依頼の係）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日時・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（[~] で 3 時間以上止まっているものも）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
     { label: `step:${id}`, phase: 'Step', schema: RESULT })
   if (!r) { log(`${id}: 返事なし`); break }
   if (r.status === 'none') {
+    if (LANE === 'request') { log('依頼の係：【依頼】の段がもうない'); break }
     if (planned >= 2) { log('計画を 2 回しても段がない：この回は終わる'); break }
     planned++
     const p = await agent(COMMON.replace(/\{ID\}/g, `plan${planned}`) + `\n\n計画の係。HARNESS.md「設計者として導く」と DESIGN_PRINCIPLES.md の E（考えから反推した次の一手）のやり方で、A の考えから「まだ足りないもの」を反推して段を足す（E の表にも 1 行足す）。HARNESS.md「目標から決める」で、お客さま（test-a・test-b・test-c）が 1 日使ったつもりで通し（登録 → 足す → 読む → 👍👎 → 欲しい物）、いちばん困る所から段にする。店長（test1）のページの同じ機能の作りを見て、同じ部品で直す段にする。進める段が一覧にない。HARNESS.md の目標（小さな Wikipedia・1 つの仕組み・ライブラリ・人ごとのページ・言語・入口・管理）と、本番の画面（店長・test-a・test-b・ログインなし、1400/390px）・設計書との食い違い・壊れた画像・遅いページ・テストの穴を点検し、次にやる段を 3〜6 個、BACKLOG.md に「- [ ] 段の名前 — できたと言える条件」で足して合併する（答えが要るものは [?] で）。`,
