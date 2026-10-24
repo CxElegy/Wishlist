@@ -52,6 +52,7 @@ SWAP = r"""async ([i, j]) => { const s = document.querySelectorAll('section.sec'
   const band = el.parentElement, b = band.getBoundingClientRect(), r = el.getBoundingClientRect();
   if (r.width) band.style.paddingRight = Math.ceil(b.right - r.left + 12) + 'px'; }"""
 MEAS = r"""async (i) => { const s = document.querySelectorAll('section.sec')[i], img = s.querySelector('.emb img');
+  img.removeAttribute('loading'); img.scrollIntoView({block: 'center'});   // 画面の外の画像は loading=lazy で読まれていない（読めないと見誤った）
   const wait = () => img.complete ? 0 : new Promise(z => { img.onload = img.onerror = z; setTimeout(z, 15000); });
   await wait();
   if (!(img.naturalWidth > 1)) { const u = img.src; img.src = ''; img.src = u; await wait(); }   // 1 回だけ読み直す（時間切れのたまたま）
