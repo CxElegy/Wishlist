@@ -489,7 +489,7 @@ PROCESSES = [
             {"id": "pg2", "kind": "step", "lane": "actions", "title": "一覧（BACKLOG.md）の前と今を比べる", "text": "済み [x]・あなた待ち [?]・進行中 [~]・足した段（1 回 10 件まで）"},
             {"id": "pg3", "kind": "step", "lane": "ext", "title": "Discord に送る", "uses": ["discord"], "text": "速報・週報と同じ Webhook"},
             {"id": "pg4", "kind": "step", "lane": "actions", "title": "画面の更新あり／なし・公開を確かめる", "text": "合併の知らせに「画面の更新：なし（文書・点検の道具だけ）／あり」（progress_notify.page_effect）。ありのときは before_after.py が render.yml を待ち（回が 3 分見つからなければ待たない）、本番の version.json の指紋が変わったページの HTML の wl-ver が同じになるまで・直接変えた docs/ のファイルが倉庫と同じになるまで 20 秒おき 6 分まで確かめて「🟢 公開を確かめました：新しくなったページ」を送る（2026-10-25）", "uses": ["discord"]},
-            {"id": "pg5", "kind": "step", "lane": "actions", "title": "何が変わったか一目で（切り抜き・差 0 は写真なし）", "text": "撮る場所は PR の説明の「画面：<ページ> <セレクタ> — <どこを見る>」（その欄だけ切り抜き・img の数の前→後）、なければページ全体 8000px まで比べて変わった一番大きい所を真ん中に切り抜く。乱数は決まった種・動きは止める。差がなければ写真なしで「画面の変化なし」。小元素・名簿・記事集め・AI 編集の PR（LATER）は Before を artifact ba-pending-<番号> に置き、その回が終わったら（workflow_run、bot が起こした回では起きないので 30 分ごとの見回りで最後に成功した回も見る）After を撮って送る、2 日で諦める（2026-10-25）", "uses": ["discord"]},
+            {"id": "pg5", "kind": "step", "lane": "actions", "title": "何が変わったか一目で（切り抜き・差 0 は写真なし）", "text": "撮る場所は PR の説明の「画面：<ページ> <セレクタ> — <どこを見る>」（その欄だけ切り抜き・img の数の前→後）、なければページ全体 8000px まで比べて変わった一番大きい所を真ん中に切り抜く。乱数は決まった種・動きは止める。差がなければ写真なしで「画面の変化なし」。小元素・名簿・記事集め・AI 編集の PR（LATER）は Before を artifact ba-pending-<番号> に置き、その回が終わったら（workflow_run、bot が起こした回では起きないので 30 分ごとの見回りで最後に成功した回も見る）After を撮って送る、2 日で諦める。高さが変わったページは大きい方に合わせて灰色で埋めて比べ、両方にある所の変化を真ん中に。切り抜きに入りきらない変化（行が増えて下が全部ずれた）は変わり始めを上に。欄が前か後にしかない＝新しい欄・消えた欄は「ない」と比べて送り、前も後も撮れなければ「変化なし」と言わず「撮れませんでした」。後で撮る After は成功した回のあとだけ（workflow_run の conclusion・見回りの status=success）、取れない artifact が 1 つあってもほかは続ける（2026-10-25）", "uses": ["discord"]},
         ],
     },
     {
@@ -498,7 +498,7 @@ PROCESSES = [
         "summary": "みんなの版面の置き場（ライブラリ：Supabase の boards・follows）へ、店長の版面を写す。記事集め・AI 編集・デザインを版面ごとに 1 回にし、店長もお客さまも同じ版面を受け取るための土台（2026-10-23）。",
         "files": [".github/workflows/library.yml", "scripts/library.py", "db/library.sql"], "doc": "docs/rules/library.md", "uses": ["supabase"],
         "flow": [
-            {"id": "lb1", "kind": "step", "lane": "actions", "title": "items.yaml を読む", "text": "店長の版面 1 つずつ。高さが変わったページは大きい方に合わせて灰色で埋めて比べ、両方にある所の変化を真ん中に。切り抜きに入りきらない変化（行が増えて下が全部ずれた）は変わり始めを上に。欄が前か後にしかない＝新しい欄・消えた欄は「ない」と比べて送り、前も後も撮れなければ「変化なし」と言わず「撮れませんでした」。後で撮る After は成功した回のあとだけ（workflow_run の conclusion・見回りの status=success）、取れない artifact が 1 つあってもほかは続ける（2026-10-25）"},
+            {"id": "lb1", "kind": "step", "lane": "actions", "title": "items.yaml を読む", "text": "店長の版面 1 つずつ"},
             {"id": "lb2", "kind": "step", "lane": "actions", "title": "同じものかどうかの印", "text": "Wikidata の番号（wd:Q…）／なければ名前をそろえたもの（全角半角・大小・空白・記号）"},
             {"id": "lb2r", "kind": "decision", "lane": "actions", "title": "週 1 回の定時・手で起こした回？", "text": "items.yaml が変わっただけの回・後台の控えの時計が users_only で起こした回は引き直さない",
              "no": "番号はそのまま（lb2 へ）"},
