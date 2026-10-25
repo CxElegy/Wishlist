@@ -919,6 +919,13 @@ def live_cast(item, log=print):
     return out, roles
 
 
+def _wd_get(params):
+    """Wikidata の API を wikihttp（名乗った UA・間隔・429 の待ち）で。library._wd_get の素の urlopen は、
+    emblem を読み込んだあと（sources の ALPN の opener）403 で断られ、GTA 6 の登場人物（P674）が引けず分類を確かめられなかった（#361 のあと）。"""
+    import library
+    return json.loads(_get(library.WD_API + "?" + urllib.parse.urlencode({**params, "format": "json"})))
+
+
 def find_sources(item, log=print):
     """キャラの関注項で、小元素の取り方に要るものが書いていなければ規則で探して items.yaml に書く（AI が設計を飛ばしても埋まる、2026-10-20）：
     ① 作品の Fandom（emblem_fandom：Fandom の公式の立ち絵は「確かな取り方」）。書いてあっても開けなければ（gtawiki）探し直す。
@@ -935,7 +942,7 @@ def find_sources(item, log=print):
     if item.get("wikidata"):
         try:
             import library_emblem
-            wd = library_emblem.wd_entity(item["wikidata"]) or {}
+            wd = library_emblem.wd_entity(item["wikidata"], _wd_get) or {}
         except Exception as e:
             log(f"  [Fandom] Wikidata：{e}")
     leads = [x for x in wd.get("leads") or [] if not emblem.not_character(x)]

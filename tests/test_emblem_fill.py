@@ -1476,7 +1476,7 @@ class FindSources(unittest.TestCase):
         wrote = {}
         import library_emblem
         with mock.patch.object(ef, "_json", fake_json), mock.patch.object(ef, "_set_field", lambda name, k, v: wrote.__setitem__(k, v.split("#")[0].strip())), \
-             mock.patch.object(library_emblem, "wd_entity", lambda q: wd or {}):
+             mock.patch.object(library_emblem, "wd_entity", lambda q, get=None: wd or {}):
             ef.find_sources({"emblem_kind": "character", **item}, log=lambda *a: None)
         return wrote
 
@@ -1524,7 +1524,7 @@ class FindSources(unittest.TestCase):
         item = {"name": "GTA 6", "emblem_kind": "character", "subtitle": "Grand Theft Auto VI", "keywords": ["GTA VI"], "wikidata": "Q1", "emblem_fandom": "grand-theft-auto-vi",
                 "emblem_category": "Playable characters", "emblem_pool": 7, "emblem_who": ["Jason Duval", "Lucia Caminos", "Michael De Santa", "Trevor Phillips", "Niko Bellic"]}
         with mock.patch.object(ef, "_json", fake_json), mock.patch.object(ef, "_set_field", lambda name, k, v: wrote.__setitem__(k, v.split("#")[0].strip())), \
-             mock.patch.object(library_emblem, "wd_entity", lambda q: {"fandom": "gta", "leads": ["Jason Duval", "Lucia Caminos"]}):
+             mock.patch.object(library_emblem, "wd_entity", lambda q, get=None: {"fandom": "gta", "leads": ["Jason Duval", "Lucia Caminos"]}):
             self.assertTrue(ef.find_sources(item, log=lambda *a: None))
         self.assertEqual(json.loads(wrote["emblem_who"]), ["Jason Duval", "Lucia Caminos"])
         self.assertEqual((wrote["emblem_fandom"], wrote["emblem_category"]), ("gta", '"Characters in GTA VI"'))
