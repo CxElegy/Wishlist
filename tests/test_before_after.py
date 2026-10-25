@@ -57,6 +57,7 @@ class Spot(unittest.TestCase):
                          ("", "#sec-bleach .emb", "BLEACH の小元素"))
         self.assertEqual(ba.spot("画面: admin-emblem.html #tbl"), ("admin-emblem.html", "#tbl", "#tbl"))
         self.assertIsNone(ba.spot("画面の変化なし"))
+        self.assertIsNone(ba.spot("画面：変わらない（Discord の知らせの仕組みだけ）"))   # #376 の説明で欄を探しに行った
 
 
 class Later(unittest.TestCase):
