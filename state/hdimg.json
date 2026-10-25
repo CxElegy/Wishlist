@@ -1612,7 +1612,7 @@
   "target": 720,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286345213_664_2000.JPEG": {
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
   "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
