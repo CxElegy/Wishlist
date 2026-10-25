@@ -21,7 +21,8 @@
     5,
     21,
     26,
-    29
+    29,
+    35
    ]
   },
   {
@@ -54,21 +55,22 @@
   }
  ],
  "_covered": {
-  "漫威电影": 30,
+  "漫威电影": 35,
   "GTA 6": 16,
-  "A2O LITE": 10,
+  "A2O LITE": 13,
   "周杰伦": 4,
   "ILLIT": 6,
   "日本顶级网球赛事": 6,
   "MMORPG 新作": 1,
   "哈利波特剧集": 1,
   "猫用品": 3,
-  "あつ森": 1,
+  "あつ森": 2,
   "滑雪": 2,
   "绝区零": 1,
-  "Astrae Oratio": 5,
+  "Astrae Oratio": 8,
   "三星手机": 1,
-  "dota2": 3
+  "dota2": 3,
+  "FROM": 1
  },
  "GTA 6": [
   {
@@ -137,7 +139,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    11
    ]
   }
  ],
@@ -324,6 +327,15 @@
     5
    ],
    "image": "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg"
+  },
+  {
+   "headline": "‘코믹마켓’부터 ‘AGF’까지⋯ 엔씨가 ‘아스오라’에 공 들이는 이유",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "三星手机": [
@@ -347,6 +359,18 @@
     3
    ],
    "image": "https://static.gosugamers.net/01/a5/ef/a3c6b6bbb5f78914840e3c1e4d1b2923f481e402996e80ff8f389e1415.jpg"
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "FROM Is Now Streaming on Netflix, and Good Luck Sleeping After Watching This One!",
+   "highlight": "Now Streaming on Netflix",
+   "blurb": "FROM is now streaming on Netflix.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg"
   }
  ]
 }

@@ -386,6 +386,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.sanity.io/images/3pe6cvt2/production/7145d2ce964bd0822e35ec969fe3c6df6b8cdff7-860x888.jpg?rect=0,218,860,452&w=1200&h=630&q=80&auto=format": {
+  "w": 1199,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg": {
   "target": 1280,
   "v": 3,
@@ -428,24 +434,24 @@
   "target": 720,
   "v": 3
  },
- "https://cdn2.ettoday.net/images/8975/e8975734.jpg": {
-  "w": 592,
-  "h": 433,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.425,
-  "local": "pics/0373f3f7e62e2d85.webp",
-  "out": [
-   1280,
-   936
-  ],
-  "why": "看不清"
- },
  "https://cdndark.darkhorizons.com/wp-content/uploads/2026/10/pratt-confirms-star-lord-will-return-to-mcu.jpg": {
   "w": 1200,
   "h": 800,
   "target": 1280,
   "v": 3
+ },
+ "https://cdnjs.cls.cn/www/20180717/images/rightSide/kfCodeSlider.png": {
+  "w": 444,
+  "h": 324,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.579,
+  "local": "pics/14dce6f96bbc9338.webp",
+  "out": [
+   1280,
+   934
+  ],
+  "why": "看不清"
  },
  "https://charagoo.jp/wp-content/uploads/2025/08/D103923_01.jpg": {
   "w": 1000,
@@ -458,6 +464,13 @@
   "h": 1260,
   "target": 720,
   "v": 3
+ },
+ "https://charalab.com/images/2026/10/261020_pooh_-2.jpg": {
+  "w": 700,
+  "h": 583,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.381
  },
  "https://cimg.kgl-systems.io/camion/files/91218/thumbnail_TrwC.jpg?x=1280": {
   "w": 1280,
@@ -773,19 +786,7 @@
   "target": 1280,
   "v": 3
  },
- "https://helios-i.mashable.com/imagery/articles/03yDQQoZnWpjXEHPxqIXkbN/hero-image.fill.size_1200x675.v1792412663.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://helios-i.mashable.com/imagery/articles/04tBtS88o6UdhJDPoBdkoqt/hero-image.fill.size_1200x675.v1792407829.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://helios-i.mashable.com/imagery/articles/07l2BXjqfJ2dP4CDKSsUlz8/hero-image.fill.size_1200x675.v1792766091.jpg": {
   "w": 1200,
   "h": 675,
   "target": 1280,
@@ -1046,6 +1047,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.kbench.com/kbench/article/thumbnail/282679_thumb.jpg": {
+  "w": 300,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.646,
+  "local": "pics/95e3cb1e63365185.webp",
+  "out": [
+   900,
+   900
+  ],
+  "why": "看不清"
+ },
  "https://images.khan.co.kr/article/2026/10/20/news-p.v1.20261020.4c924d72449246b59d479a2890b8217c_P1.jpg": {
   "w": 1200,
   "h": 800,
@@ -1145,6 +1159,12 @@
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_403,y_0,w_1396,h_785/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m5k4pgv1pvtp668dha.jpg": {
   "w": 1440,
   "h": 810,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA29yYrK.img": {
+  "w": 1200,
+  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -1543,6 +1563,12 @@
   ],
   "why": "看不清"
  },
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FFNN%252F86%252FFNN_1485111631079637052%252FFNN_1485111631079637052_1.jpg,zoom=1200,quality=70,type=jpg": {
+  "w": 1200,
+  "h": 677,
+  "target": 1280,
+  "v": 3
+ },
  "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
   "w": 1035,
   "h": 582,
@@ -1560,19 +1586,6 @@
   "h": 600,
   "target": 1280,
   "v": 3
- },
- "https://jomo.ismcdn.jp/mwimgs/2/f/-/img_2fc0364d98fe02117473a48860d5042e86223.jpg": {
-  "w": 450,
-  "h": 253,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.504,
-  "local": "pics/6da9dfef44f38549.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-19/rjswog6orxf7mm9n05yf9dgk.jpg": {
   "w": 1600,
@@ -1658,6 +1671,12 @@
   "w": 500,
   "h": 500,
   "target": 720,
+  "v": 3
+ },
+ "https://mag.japaaan.com/wp-content/uploads/2026/10/92a594ae098073396445bb895223f172-1280x720.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://maxblizz.com/wp-content/uploads/2026/10/Marvel-Studios-Phase-7-movies-new.jpg": {
@@ -1777,19 +1796,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.419
- },
- "https://newportal.portal.auone.jp/media/thumbnails/2026/10/20/https___news_jp_i_1485107403044258808_w724.webp": {
-  "w": 724,
-  "h": 405,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.469,
-  "local": "pics/718a4b37a70ba24e.webp",
-  "out": [
-   1280,
-   716
-  ],
-  "why": "看不清"
  },
  "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_jp_i_1486554983406584528_w640.webp": {
   "w": 640,
@@ -2515,12 +2521,6 @@
   "target": 720,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/76359/120/76359-120-f7f0ecacd18fa04f14ee9a22083b1d85-1920x1280.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 1890,
-  "h": 1260,
-  "target": 720,
-  "v": 3
- },
  "https://prcdn.freetls.fastly.net/release_image/7736/2641/7736-2641-99bbb4b4f5948ba28e3b250fd90843d5-1920x1080.png?width=536&quality=85%2C75&format=jpeg": {
   "w": 536,
   "h": 302,
@@ -2552,12 +2552,11 @@
   "target": 720,
   "v": 3
  },
- "https://prtimes.jp/img/89743/31/resize/d89743-31-d7ad359f25c3e166058d-0.jpg": {
+ "https://prtimes.jp/img/76359/120/resize/d76359-120-32b023f89a5f1945b38b-0.jpg": {
   "w": 650,
   "h": 434,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.361
+  "target": 720,
+  "v": 3
  },
  "https://punchdrunkcritics.com/wp-content/uploads/2026/10/pdc_avengersdoomsday8.jpg": {
   "w": 1280,
@@ -2605,12 +2604,6 @@
   "w": 1500,
   "h": 1000,
   "target": 720,
-  "v": 3
- },
- "https://rocketnews24.com/wp-content/uploads/sites/2/2026/10/collage_5604a7.jpg?w=1200&h=630&crop=1": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://root-nation.com/wp-content/uploads/2026/10/acer_predator_x_navi_video_packshot_4k.jpg": {
@@ -2846,6 +2839,12 @@
   "w": 1200,
   "h": 800,
   "target": 720,
+  "v": 3
+ },
+ "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg": {
+  "w": 1000,
+  "h": 667,
+  "target": 1280,
   "v": 3
  },
  "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/09/harry-potter-7.jpg?w=1600&h=900&fit=crop": {
@@ -3111,12 +3110,6 @@
   "target": 720,
   "v": 3
  },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/25/1792908961939_gemini-17928986584891520967876-0-0-1341-2560-crop-17928987755871104922749.png": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://www.4gamer.net/games/528/G052880/20261020018/SS/001.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3141,6 +3134,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.betanews.net/data/beta/image/2026/10/20/beta20261020000130.png": {
+  "w": 1672,
+  "h": 941,
+  "target": 1280,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.-A4aZ_zLadK_G3jm6fyD-g&pid=News&w=1200": {
   "w": 700,
@@ -3272,19 +3271,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.YZLGPyhuhFW3hJRxcEbKvg&pid=News&w=1200": {
-  "w": 525,
-  "h": 700,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.466,
-  "local": "pics/d922d32c01c59500.webp",
-  "out": [
-   960,
-   1280
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.Zxm3z2yvsEZNWcX4qpsRNA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3339,8 +3325,9 @@
  "https://www.bing.com/th?id=ONUT.mgRA6CsgTMQsdFtE2ho-Tw&pid=News&w=640": {
   "w": 640,
   "h": 450,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.407
  },
  "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200": {
   "w": 700,
@@ -3652,6 +3639,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://www.right-media.news/wp-content/uploads/2026/10/FotoJet191.jpg": {
+  "w": 1600,
+  "h": 1200,
+  "target": 1280,
   "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
