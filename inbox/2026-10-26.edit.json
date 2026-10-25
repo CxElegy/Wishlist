@@ -40,6 +40,97 @@
   }
  ],
  "_covered": {
-  "漫威电影": 10
- }
+  "漫威电影": 10,
+  "GTA 6": 4,
+  "A2O LITE": 3,
+  "周杰伦": 3,
+  "ILLIT": 2,
+  "日本顶级网球赛事": 2,
+  "MMORPG 新作": 1
+ },
+ "GTA 6": [],
+ "A2O LITE": [
+  {
+   "headline": "今日人气歌谣1位：A2O LITE《NEON》恭喜4冠王！",
+   "highlight": "4冠王",
+   "blurb": "A2O LITE《NEON》拿下今日人气歌谣第1位，累计4冠。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "\"要这样踢！\"李秀满，亲自为A2O LITE成员I-Ching指导舞蹈动作",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "韩娱热议：A2O LITE《THE SHOW》夺冠安可舞台，唱功获赞引发热议",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "周杰伦": [],
+ "ILLIT": [
+  {
+   "headline": "【韓流】ILLITが26日から６日間、ソウルでポップアップ開催 未公開フォトカード用意",
+   "highlight": "26日から６日間",
+   "blurb": "ILLITが10月26日から6日間、ソウルでポップアップを開催。未公開フォトカードを用意。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-10-26",
+    "label": "ポップアップ開始",
+    "place": "ソウル"
+   },
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-40220125-nksports-000-3-view.jpg?exp=10800"
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "ATP and WTA 2026 Schedule of Play: Monday October 26 for Basel, Vienna, Tokyo and Guangzhou",
+   "highlight": "Monday October 26",
+   "blurb": "Order of play for Monday October 26 across Basel, Vienna, Tokyo and Guangzhou. WTA Tokyo (Toray Pan Pacific Open) main draw begins.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://tennisconnected.com/wp-content/uploads/2026/03/alexandra-eala-joc481o-fonseca-get-03-17-26-e1773723674883.jpg.webp"
+  },
+  {
+   "headline": "Belarusian Aliaksandra Sasnovich advances into main draw of Toray Pan Pacific Open",
+   "highlight": "main draw of Toray Pan Pacific Open",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "【最大4人PT】『ゼルダ』にインスパイアされたライトMMO仕様のARPG『Scramble Knights Online』10月27日に早期アクセス開始！",
+   "highlight": "10月27日に早期アクセス開始",
+   "blurb": "『ゼルダ』にインスパイアされた、最大4人PTのライトMMO仕様ARPG『Scramble Knights Online』が10月27日に早期アクセスを開始。",
+   "weight": "hero",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-10-27",
+    "label": "早期アクセス"
+   },
+   "image": "https://www.gamespark.jp/imgs/zoom/1209212.png"
+  }
+ ]
 }

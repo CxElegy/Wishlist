@@ -1,32 +1,32 @@
 {
- "admin": "07f0fac51ef6",
- "admin-ai": "04d9c848f340",
+ "admin": "18198edd9d88",
+ "admin-ai": "a641ea750dda",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "287c01f7"
+   "d989d3ae"
   ],
   "tokens": [
    "AI 編集のトークン",
    "8d554fdd"
   ]
  },
- "admin-boards": "0ed614676ed6",
+ "admin-boards": "2ae18b7fd115",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "7c848fa4"
+   "347f8990"
   ],
   "votes": [
    "投票",
    "aee2783e"
   ]
  },
- "admin-emblem": "021b65bc69eb",
+ "admin-emblem": "30a909fed9df",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "05bfe858"
+   "ef62b2c0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "834b565a571c",
  "admin-members_marks": {},
- "admin-now": "fbeca8ffbedf",
+ "admin-now": "9eeff9a58cd7",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "acc44e51"
+   "8b3c4798"
   ],
   "queue": [
    "いまの状況",
@@ -58,11 +58,11 @@
    "1dc38967"
   ]
  },
- "admin-system": "f98c02a4b85e",
+ "admin-system": "05850e21240b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9bcad254"
+   "f6470360"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,11 +70,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c343c329"
+   "72169e94"
   ]
  },
  "admin_marks": {},
- "heat": "191e545ac269",
+ "heat": "606cb002c5d4",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -82,18 +82,18 @@
   ],
   "movers": [
    "前週比",
-   "baa869ee"
+   "3e521b74"
   ],
   "ranking": [
    "ランキング",
-   "071dfe96"
+   "7fbb15bb"
   ]
  },
- "index": "de8511910fc6",
+ "index": "e19bf2914cfa",
  "index_marks": {
   "front": [
    "トップ",
-   "cbd885e5"
+   "a66c761c"
   ],
   "picks": [
    "気になるかも？",
@@ -121,11 +121,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "a300b8a2"
+   "a3b537d9"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "cf2b1fb6"
+   "ee3d95ea"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -161,7 +161,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "119f8256"
+   "fbe85477"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -185,13 +185,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "bce6f3b4"
+   "8020d896"
   ],
   "w-f303ad09": [
    "绝区零",
    "a442d1f1"
   ]
  },
- "updated": "10.26 01:37",
+ "updated": "10.26 01:41",
  "wishlist": "8f15268e25a4"
 }

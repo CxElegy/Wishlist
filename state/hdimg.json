@@ -61,6 +61,25 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261025ac/200/w640h360/20261025/4ada-66c7f55fe78af76488ef40e8b1a3add2.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261025ac/219/w659h360/20261025/e413-2f37d11136feb6aa1f2f9fc4758640f2.jpg": {
+  "w": 659,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.455,
+  "local": "pics/b7c3769667fada81.webp",
+  "out": [
+   1280,
+   699
+  ],
+  "why": "看不清"
+ },
  "http://wx1.sinaimg.cn/middle/d2cfaf37gy1iib6xxk8xbj20xi0bmgmw.jpg": {
   "w": 1206,
   "h": 418,
@@ -609,6 +628,12 @@
   "w": 530,
   "h": 1185,
   "target": 1280,
+  "v": 3
+ },
+ "https://eng.belta.by/images/storage/news/with_archive/2026/000028_1792916227_187922_big.jpg": {
+  "w": 870,
+  "h": 486,
+  "target": 720,
   "v": 3
  },
  "https://fieldlevelmedia.com/wp-content/uploads/2026/10/11882973-1024x696.jpg": {
@@ -1486,6 +1511,12 @@
   "target": 720,
   "v": 3
  },
+ "https://kagit-media.atreez.cc/uploads/2026-10-21/e8q5op2smsy5m4jytoua8h18.png": {
+  "w": 695,
+  "h": 350,
+  "target": 720,
+  "v": 3
+ },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
   "w": 1600,
   "h": 900,
@@ -2036,6 +2067,18 @@
   "out": [
    1280,
    960
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-40220125-nksports-000-3-view.jpg?exp=10800": {
+  "w": 1500,
+  "h": 1257,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/0c2b8c17d25942a9.webp",
+  "out": [
+   1280,
+   1073
   ],
   "why": "期限付きの網址"
  },
@@ -2828,6 +2871,12 @@
   "v": 3,
   "blur": 0.349
  },
+ "https://tennisconnected.com/wp-content/uploads/2026/03/alexandra-eala-joc481o-fonseca-get-03-17-26-e1773723674883.jpg.webp": {
+  "w": 1500,
+  "h": 845,
+  "target": 1280,
+  "v": 3
+ },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/ac-switch/thumbnail/63317/4345231d7bff38b91b280f4eb2272bef": {
   "w": 1200,
   "h": 630,
@@ -2987,12 +3036,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.1uBXQmuFS9kEJBgLDVKJJQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.2gDGgQIuv8r0XtBnve1atQ&pid=News&w=500": {
   "w": 500,
@@ -3352,6 +3395,13 @@
   "h": 1600,
   "target": 1280,
   "v": 3
+ },
+ "https://www.gamespark.jp/imgs/zoom/1209212.png": {
+  "w": 670,
+  "h": 376,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.414
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/08/s27-2.jpg": {
   "w": 1280,
