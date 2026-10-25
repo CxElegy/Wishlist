@@ -55,3 +55,5 @@
 - 2026-10-25 哈利波特剧集・小元素（#389 の別の目の指摘 2）：額の判定を上の端に当たったときだけに・前の規則で外したものを unbreak で戻す・作り直しの剧の役の記事の画像だけでは本人にしない（tied） · https://github.com/CxElegy/Wishlist/pull/398 · 本番 run 40172742027・40173475123：The Mandalorian 9→11/17・哈利波特 Padma（映画の写真）外れ 2 枚・FROM 23→20・BLEACH は #392 の head_cut で −31（96） · ux_check guest E7 13→0・test-b／test-c ✓ · 次：剧照の顔の割り当て（哈利波特 6 人）
 - 2026-10-26 小元素の中身の誤り 2 つ（別の目の再確認）：店長 broken_cuts 0・Oliver Wood なし・ux_check E7 は guest/test-a/b/c とも 0（残りは E8 Vaundy・E9 あつ森・test-a の Mrs. GREEN APPLE・BTS＝running）・unittest 831 OK（opencv<5）。次：library_emblem の failed 24 を 0 に
 - 2026-10-26 哈利波特剧集の小元素（剧照の顔の割り当て）：#404 の assign_stills のあとの本番の後台で 2 → 出演者 9 人＋ポスター＝10 枚（条件 6 人以上）· https://github.com/CxElegy/Wishlist/pull/404 · ux_check guest 哈利波特 ✗ なし（残り：E8 Vaundy 2・E9 あつ森 SSBB 3・E10 13・E11 A2O LITE 1・390 E2 星巴克马克杯 1）· 次：三星手机／星巴克 E2 の画像が消える根
+
+- 2026-10-25 記事の写真が出ない段：PR #405。写真探しは 3 時間おき 3 回・頭は写真のある記事・写真なしは字だけ。ux_check ✗0（札 8/195、お客さまのページの再生成待ち）。次：迷惑リンクを落とす規則・札 0 の確認。
