@@ -92,7 +92,12 @@
     9,
     14,
     19,
-    20
+    20,
+    26,
+    29,
+    31,
+    33,
+    34
    ],
    "image": "https://www.kpopmonster.jp/wp-content/uploads/2026/10/a2olite01.webp"
   },
@@ -116,7 +121,10 @@
     5,
     7,
     8,
-    12
+    12,
+    27,
+    28,
+    30
    ]
   },
   {
@@ -138,6 +146,15 @@
    "weight": "normal",
    "refs": [
     17
+   ]
+  },
+  {
+   "headline": "장원영, A2O LITE 인사에 때아닌 ‘거만 논란’",
+   "highlight": "거만 논란",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    32
    ]
   }
  ],
@@ -282,7 +299,7 @@
  ],
  "_covered": {
   "漫威电影": 56,
-  "A2O LITE": 25,
+  "A2O LITE": 35,
   "GTA 6": 19,
   "周杰伦": 11,
   "ILLIT": 13,
