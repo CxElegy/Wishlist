@@ -44,7 +44,8 @@ LATER = [
     (re.compile(r"^scripts/library_emblem\.py$"), "ライブラリの小元素", "library_emblem.yml"),
     (re.compile(r"^scripts/(digest|sources|intel|collect_watch|hdimg|images|userfeed)\.py$"), "关注清单通信", "digest.yml"),
 ]
-SPOT = re.compile(r"^\s*[-*]?\s*画面[:：]\s*(\S+)\s+(.+?)(?:\s+[—-]{1,2}\s+(.+))?\s*$", re.M)
+# ページは index か <英数>.html、セレクタは英数の CSS（「画面：変わらない（…）」のような文は当てない）
+SPOT = re.compile(r"^\s*[-*]?\s*画面[:：]\s*(index|home/?|[\w-]+\.html)\s+([#.\[a-zA-Z][\x21-\x7e ]*?)(?:\s+[—-]{1,2}\s+(.+))?\s*$", re.M)
 MAX_H = 8000       # ページ全体を撮るときの高さの上限（px）
 BASE = "https://cxelegy.github.io/Wishlist/home/"
 REPO = "CxElegy/Wishlist"
