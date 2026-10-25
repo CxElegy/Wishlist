@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T23:23:54+00:00",
+ "checked": "2026-10-25T23:26:50+00:00",
  "fired": {
-  "at": "2026-10-25T23:23:54+00:00",
+  "at": "2026-10-25T23:26:51+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -53,11 +53,9 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "哈利波特剧集"
-   ],
-   "need": true,
-   "sig": "6f3c8a2d22cc",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "Astrae Oratio",
     "BLEACH Mirrors High",
@@ -70,9 +68,10 @@
     "绝区零",
     "A2O LITE",
     "The Mandalorian",
-    "Vaundy"
+    "Vaundy",
+    "哈利波特剧集"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:38 から）"
+   "why": "失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:38 から）"
   },
   "photos": {
    "claude": true,
