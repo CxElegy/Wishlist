@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "2f277b69bbc5",
+ "edit_sig": "1eb08661b454",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -683,24 +683,18 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 4,
-     "source": "IGN on MSN",
-     "title": "Zenless Zone Zero - Official version 3.4: Void Hunter & Enchainer Agent Sunbringer trailer",
-     "url": "https://www.msn.com/en-us/entertainment/general/zenless-zone-zero-official-version-3-4-void-hunter-enchainer-agent-sunbringer-trailer/vi-AA2fZIiP"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 5,
-     "source": "GameDaily on MSN",
-     "title": "Zenless Zone Zero version 3.4 agents - Sunbringer, Robin, and Kafka revealed",
-     "url": "https://www.msn.com/en-us/entertainment/general/zenless-zone-zero-version-3-4-agents-sunbringer-robin-and-kafka-revealed/ar-AA2g0BUI"
-    }
-   ],
    "section": "游戏",
    "stories": [
+    {
+     "blurb": "Version 3.4 introduces three new agents: Sunbringer, Robin, and Kafka, with a new teaser trailer.",
+     "date": "2026-10-24",
+     "headline": "Zenless Zone Zero version 3.4 agents - Sunbringer, Robin, and Kafka revealed",
+     "highlight": "version 3.4",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g0EoM.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/entertainment/general/zenless-zone-zero-version-3-4-agents-sunbringer-robin-and-kafka-revealed/ar-AA2g0BUI",
+     "weight": "lead"
+    },
     {
      "blurb": "",
      "date": "2026-10-23",
@@ -709,7 +703,7 @@
      "image": "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg",
      "image_via": "AI 挑选",
      "url": "https://m.3dmgame.com/ol/gl/356807.html",
-     "weight": "lead"
+     "weight": "normal"
     },
     {
      "blurb": "",
