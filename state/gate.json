@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-25T06:18:55+00:00",
+ "checked": "2026-10-25T06:27:06+00:00",
  "fired": {
-  "at": "2026-10-25T06:18:55+00:00",
+  "at": "2026-10-25T06:27:06+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -41,12 +41,11 @@
   "emblem": {
    "claude": false,
    "items": [
-    "哈利波特剧集",
     "dota2",
     "FROM"
    ],
    "need": true,
-   "sig": "9287788738f7",
+   "sig": "9301f860e20b",
    "waiting": [
     "あつ森",
     "チェーンソーマン",
@@ -54,9 +53,10 @@
     "GTA 6",
     "The Mandalorian",
     "漫威电影",
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "哈利波特剧集"
    ],
-   "why": "足りない 3 版面（Actions で Python が埋める）・失敗 7 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 15:55 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 8 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 15:55 から）"
   },
   "photos": {
    "claude": true,
