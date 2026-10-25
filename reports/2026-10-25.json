@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "679cd4f5fb79",
+ "edit_sig": "19a678ca5e1c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -195,50 +195,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 32,
-     "source": "Bam Smack Pow",
-     "title": "Marvel's new Avengers: Doomsday trailer officially brings back an MCU legend",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPUVVONkxiNm0tYkVIUGdYUDhXUDJ3Y2lzWjhUZHU3bEZhTkNmenlETWRCTFc2U0R3Q1VQdG1jSUJYVENQbExEMTZRQTU4eGhpSTVWVWg1WW5zbVZxV2dtZXZGNGRwRHpsT25iLW1ORWNUWW90NkV3ZnZXMEpOMHpvbXpWTFdXRHJxX0ZfTW5EWXlqVFk?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 33,
-     "source": "IGN Pakistan",
-     "title": "New Avengers: Doomsday Trailer Pokes Fun at Multiple 'Captains America'",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNNE10cFpuNnJrVGRXTFBEOXpqMnNPRUhjamZrRV96WXZrc1g0R2dDRjVGcHVFVkhPcENVQ2tnTWZrUU5PLXlPYVlNdWswcG5mMEEwc2JmZUJQSWNTY2haV24wUEIwbGNZWXFDLXdIUDY3cGprb1FDRk85dVBFcGFWNG9RdG91Z0syT1huNFUwMW4ySVdxT1J2ZHR3eUNsS3dpM2xNc3RRVjRJYjBqaWladWhVcTJ1RjB1ajZkUg?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 34,
-     "source": "愛德華FUN電影",
-     "title": "《復仇者聯盟5：末日崛起》末日博士母親是誰？傳柏林影后桑德拉惠勒演出",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1pMjQ0aE5XQWJQeFpHUi0wejdrU2I2RjZHd3hqbGtadWs1dlhTaEdaTkZkbVhmeFlmdjZWeDBlZU1EZHhoU0hRR3VDcEU3bFZVaTVJN2lmZWxzYkxwbzNJ?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 35,
-     "source": "Bleeding Cool",
-     "title": "Avengers: Doomsday – A New TV Spot Has Been Released",
-     "url": "https://bleedingcool.com/movies/avengers-doomsday-a-new-tv-spot-has-been-released/"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-25",
-     "headline": "Avengers: Doomsday Trailer Unveils All 3 Captain Americas Together For The First Time In Awkward Meeting",
-     "highlight": "",
-     "image": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
-     "image_via": "作品封面",
-     "source": "IMDb",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.imdb.com&sz=128",
-     "url": "https://www.imdb.com/news/ni66078780/?ref_=nmnw_art_perm",
-     "weight": "hero"
-    },
     {
      "blurb": "A new Avengers: Doomsday promo has Reed Richards opening the World Series, with MLB stars joining in.",
      "date": "2026-10-24",
@@ -277,6 +235,16 @@
      "image": "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/sandra-huller-avengers-doomsday-cameo.png?fit=1200%2C675&ssl=1",
      "image_via": "og:image",
      "url": "https://tbreak.com/sandra-huller-avengers-doomsday-cameo/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "‘Avengers: Doomsday’ Reportedly Crosses a Record-Setting Presales Milestone",
+     "highlight": "Record-Setting Presales",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img",
+     "image_via": "MSN 接口（其它来源）",
+     "url": "https://www.imdb.com/news/ni66078485/",
      "weight": "normal"
     }
    ],
@@ -632,7 +600,7 @@
      "highlight": "",
      "image": null,
      "source": "Howl.Link",
-     "source_icon": "https://www.youtube.com/s/desktop/dc0b62b0/img/favicon_144x144.png",
+     "source_icon": null,
      "url": "https://t.co/h37eNf4Ukr",
      "weight": "normal"
     }
@@ -848,8 +816,8 @@
      "date": "2026-10-23",
      "headline": "A2O LITEアイチン、両親の7億ウォン規模の賃金未払い疑惑で騒動",
      "highlight": "",
-     "image": "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp",
+     "image_via": "og:image",
      "url": "https://global.mediafine.co.kr/ja/news/a2o-lite-ai-jjing-fans-debt-controversy",
      "weight": "normal"
     },

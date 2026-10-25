@@ -647,6 +647,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -850,12 +856,6 @@
   "w": 1200,
   "h": 1748,
   "target": 1280,
-  "v": 3
- },
- "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
-  "w": 1200,
-  "h": 677,
-  "target": 720,
   "v": 3
  },
  "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg": {
@@ -1123,6 +1123,12 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZYPt.img": {
   "w": 2200,
@@ -1411,11 +1417,11 @@
   "why": "看不清"
  },
  "https://img1.mydrivers.com/img/20261020/2c7ec5a4-146c-479a-bccb-c591e2e7fda0.png": {
+  "w": 600,
+  "h": 665,
   "target": 1280,
   "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-25"
+  "blur": 0.27
  },
  "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
   "w": 1035,
