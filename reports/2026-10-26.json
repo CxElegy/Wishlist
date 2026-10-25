@@ -1,6 +1,6 @@
 {
  "date": "2026-10-26",
- "edit_sig": "cd52c84a9e4a",
+ "edit_sig": "d24644a214e8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -159,13 +159,6 @@
    "pending": [
     {
      "date": "2026-10-23",
-     "n": 1,
-     "source": "マイナビニュース",
-     "title": "ファーウェイ最新ウォッチはスキー・スノボの滑走分析や健康管理が進化！ WATCH GT 7 Pro・WATCH 6実機を見た",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBrWWVWclNmdXE5YklNdUdqOUs0VzdPUGNDRGdISUV2cXhhWmJpZzRFY0xzRUlPdTY3UnZjaFdBQVRKbGpzeTlSM2RtMUVGZUVwSVc0VS1CdmpaV3NF?oc=5"
-    },
-    {
-     "date": "2026-10-23",
      "n": 2,
      "source": "ニコニコニュース",
      "title": "スノーパーク イエティ 2026-2027シーズン｜28年連続！屋外スキー場として日本一早くオープン",
@@ -173,7 +166,18 @@
     }
    ],
    "section": "运动",
-   "stories": [],
+   "stories": [
+    {
+     "blurb": "ファーウェイの新ウォッチ WATCH GT 7 Pro・WATCH 6 の実機レビュー。スキー・スノボの滑走分析機能が進化。",
+     "date": "2026-10-23",
+     "headline": "ファーウェイ最新ウォッチはスキー・スノボの滑走分析や健康管理が進化！ WATCH GT 7 Pro・WATCH 6実機を見た",
+     "highlight": "スキー・スノボの滑走分析",
+     "image": "https://news.mynavi.jp/article/20261023-5179245/images/005.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.mynavi.jp/article/20261023-5179245/",
+     "weight": "lead"
+    }
+   ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -420,33 +424,6 @@
   {
    "cover": null,
    "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 1,
-     "source": "Howl.Link",
-     "title": "【あつまれどうぶつの森】島の評判UPのために農地を柵で整えたい！あとあわよくば拡張もしたい！！【Vtuber】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5US0hlbTZZeEhLMXRFUlBYRzkyS2Fac01aMUQ0QVp6eHhjSHk5NEJCRGp6SjlZNmQtTUhF?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "周杰伦",
    "pending": [
     {
@@ -475,17 +452,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Zenless Zone Zero posted an Enemy Dossier on the Etheric Other Truvia on October 24, with a Season 3 Chapter 4 spoiler.",
      "date": "2026-10-25",
-     "n": 1,
-     "source": "HappyGamer",
-     "title": "Zenless Zone Zero Drops Truvia Enemy Dossier With Season 3 Spoilers",
-     "url": "https://happygamer.com/zenless-zone-zero-truvia-enemy-dossier-etheric-other-169849/"
+     "headline": "Zenless Zone Zero Drops Truvia Enemy Dossier With Season 3 Spoilers",
+     "highlight": "Season 3",
+     "image": "https://happygamer.com/wp-content/uploads/2026/10/zenless-zone-zero-drops-truvia-enemy-dossier-with-season-3-spoilers.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://happygamer.com/zenless-zone-zero-truvia-enemy-dossier-etheric-other-169849/",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -705,7 +684,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://assets.epix.com/d1576f79cc0ef36585ef67cdb2da1c97.jpg",
    "facts": [],
    "last": {
     "date": "2026-10-25",
@@ -755,7 +734,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-10-24",
@@ -851,6 +830,31 @@
     "bg": "#14161A",
     "fg": "#E8EAEC",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-25",
+    "headline": "みごとなめいがの偽物の見分け方 | 本物との違い【あつ森】",
+    "url": "https://gamewith.jp/atsumori/article/show/198906"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   },
