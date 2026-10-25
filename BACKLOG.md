@@ -154,4 +154,4 @@
 - [ ] 管理ページに番号のない版面とその理由を出す — state/log/library.json の最後の回（項目なし・断られた・題材）と、boards で wd がない版面の名前。断られた回が 2 週続いたら「要確認」
 - [?] Hermes agent を作る係にする（案 B、hermes/README.md） — 決定：常時動くサーバー・モデルは Claude（Anthropic の API、2026-10-24）。あなた待ち：サーバーの契約と、~/.hermes/.env の鍵（ANTHROPIC_API_KEY・GITHUB_TOKEN・SUPABASE_ACCESS_TOKEN・DISCORD_BOT_TOKEN・DISCORD_HOME_CHANNEL）。用意できたら入れ方を一緒に
 - [?] サイトの名前 — 方向：英語の短い造語・P5／ゲーム風・新聞／雑誌・店長／お店（全部）。出した案（マイ号外・推し便・トピカ・NEWSHOP・Calling Card・Daily Heist・Stash Times）はどれも決め手なし。案を 15〜20 個の一覧（意味・ロゴの見本つき）にして、時間のあるときに選んでもらう。決まるまで題字は「ウォッチリスト通信」、目次は TBD
-- [ ] 【依頼】記事の網址が `?&xml=data:video/mp4;base64,…` の迷惑リンク（fctokyo.co.jp・town.shodoshima.lg.jp の開いたリダイレクト、user_boards に 12 件）を収集で落とす規則（drop_reason の spam）。今は字だけの記事として出る。あわせて ux_check の「札 n／写真枠」が 0 に向かうか本番で確かめる
+- [~] （2026-10-26：SPAM_URL に ?&xml=data:…;base64 を足した。本番の user_boards 13 件が消えるのは次の userfeed の回のあと・確かめ待ち）【依頼】記事の網址が `?&xml=data:video/mp4;base64,…` の迷惑リンク（fctokyo.co.jp・town.shodoshima.lg.jp の開いたリダイレクト、user_boards に 12 件）を収集で落とす規則（drop_reason の spam）。今は字だけの記事として出る。あわせて ux_check の「札 n／写真枠」が 0 に向かうか本番で確かめる
