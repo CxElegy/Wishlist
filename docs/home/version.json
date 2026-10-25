@@ -1,5 +1,5 @@
 {
- "admin": "a037d7e49b88",
+ "admin": "c11eba713b32",
  "admin-ai": "db0c6831c466",
  "admin-ai_marks": {
   "editdiff": [
@@ -22,11 +22,11 @@
    "aee2783e"
   ]
  },
- "admin-emblem": "9c113c94ed17",
+ "admin-emblem": "51b72a5acc39",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "173ac803"
+   "3ff60233"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,16 +34,16 @@
   ],
   "emblems": [
    "小元素",
-   "f18a4ce8"
+   "5b0c4742"
   ]
  },
  "admin-members": "cd36e68f0533",
  "admin-members_marks": {},
- "admin-now": "3d14597b2b03",
+ "admin-now": "e0681796f50b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f09d9d98"
+   "babc78a9"
   ],
   "queue": [
    "いまの状況",
@@ -58,11 +58,11 @@
    "1579986f"
   ]
  },
- "admin-system": "2b3f09598f5e",
+ "admin-system": "ebd49a49d3ad",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6e38d035"
+   "12dd609f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,7 +70,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b5b3d056"
+   "5262ce18"
   ]
  },
  "admin_marks": {},
