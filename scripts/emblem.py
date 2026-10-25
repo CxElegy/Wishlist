@@ -188,7 +188,7 @@ def anilist_main(media_id, n):
 
 # 名簿に入れないページ：まとめ・一覧（MHD: FV: Felyne List）・遊ぶ人そのもの（Player）・別の作品に出たときの姿（Pokémon Trainer (Super Smash Bros.)・
 # Monster Hunter (Marvel vs. Capcom: Infinite)）。括弧の中に別の作品（Smash Bros・○○ vs. ○○）があれば、その作品のキャラ。分類の名前の単数（あつ森の Special character）も
-NOT_CHAR = re.compile(r"\bcharacters?\b|\blist\b|^(?:the )?(?:players?|parents?|protagonists?)$|\([^)]*(?:smash bros|\bvs\.)", re.I)
+NOT_CHAR = re.compile(r"\bcharacters?\b|\blist\b|^(?:the )?(?:players?|parents?|protagonists?)$|^unnamed\b|\([^)]*(?:smash bros|\bvs\.)", re.I)
 
 
 def not_character(name):
