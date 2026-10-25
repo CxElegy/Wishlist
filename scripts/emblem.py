@@ -663,6 +663,13 @@ DARK_MAX = 0.16    # 写真・場面の切り抜きの明るさ（人物部分�
 SOFT_MAX = 0.18    # 半透明（輪郭がにじんだ）部分がこれより多いものは使わない
 
 
+def top_share(img):
+    """切り抜きの上の端（1 行目）に人物が当たっている横幅の割合（check_whole の top と同じ）。"""
+    import numpy as np
+    a = np.array(img.convert("RGBA").getchannel("A"))[:1] > 128
+    return float(a.mean()) if a.size else 0.0
+
+
 def head_cut(img):
     """切り抜きの上の HEAD_ROWS 行に人物が横幅の HEAD_EDGE 以上 = 頭のてっぺんが上の端で切れている。"""
     import numpy as np

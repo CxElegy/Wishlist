@@ -1119,6 +1119,50 @@ def actor_role_images(api, actor, role, limit=3):
     return sorted(_files_info(api, files[:20], width=600), key=lambda r: -r["area"])[:limit] if files else []
 
 
+SINCE_YEARS = 2   # 作品の始まり（Wikidata P580・P577・P571）のこの年数より前に上がった画像 = 前の作品のもの（配役・宣伝は始まりの 2 年前から）
+
+
+def tied(text, actor, work, since=None):
+    """役の画像がこの作品・この出演者のものと言えるか：ファイル名・題名に出演者の名前（姓か名）か作品の略号（Harry Potter → HPTV）がある、
+    または Fandom の画像の日付（cb=YYYYMMDD）が since（作品の始まりの SINCE_YEARS 年前、YYYYMMDD）より後。
+    作り直しの剧の役の記事の代表画像は前の映画の役者（PadmaPatil.png?cb=20220930 は映画の Padma、剧は 2026-12 から）なので、それだけでは信じない。"""
+    u = urllib.parse.unquote(str(text or "")).lower().replace("_", " ")
+    tag = "".join(w[0] for w in re.findall(r"[A-Za-z0-9]+", work or "")).lower() + "tv"
+    cb = re.search(r"[?&]cb=(\d{8})", u)
+    return (any(w.lower() in u for w in re.split(r"[\s(),/.]+", actor or "") if len(w) >= 3) or len(tag) > 3 and tag in u.replace(" ", "")
+            or bool(since and cb and cb.group(1) >= since))
+
+
+_SINCE = {}
+
+
+def work_since(item):
+    """作品の始まり（Wikidata P580・P577・P571 のいちばん早い日）の SINCE_YEARS 年前 → YYYYMMDD か None。"""
+    q = item.get("wikidata")
+    if not q:
+        return None
+    if q not in _SINCE:
+        try:
+            c = _wd_get({"action": "wbgetentities", "ids": q, "props": "claims"})["entities"][q]["claims"]
+            ts = [s["mainsnak"]["datavalue"]["value"]["time"] for p in ("P580", "P577", "P571") for s in c.get(p, []) if s["mainsnak"].get("datavalue")]
+            d = min(re.sub(r"\D", "", x[1:11]) for x in ts) if ts else None
+            _SINCE[q] = f"{int(d[:4]) - SINCE_YEARS}{d[4:]}" if d else None
+        except Exception:
+            return None   # 読めないときは控えない（次の回）
+    return _SINCE[q]
+
+
+def anchor_rows(api, actor):
+    """出演者本人の写真（本人確認の基準）：Fandom の出演者の記事の代表画像、なければ Wikidata P18。→ [(画像, ページ)]"""
+    if api:
+        try:
+            src, page = emblem.page_image(api, actor)
+            return [(small_url(src), page)]
+        except Exception:
+            pass
+    return [(r["image"], r["page"]) for r in wikidata_images(actor, ("P18",), 1)[:1]]
+
+
 def gather_roles(item, log=print, tried=None):
     """実写の作品：出演者ごとに「役の姿」の剧照を集める。
     基準：出演者の写真（Fandom の出演者の記事・Wikidata）— 本人確認にだけ使い、小元素には選ばない（anchor_only）。
@@ -1131,6 +1175,7 @@ def gather_roles(item, log=print, tried=None):
     words = [name] + [re.sub(r"\s*\(.*?\)", "", t) for t in wiki_titles(item).values()]
     # 動画の題名は英語のことが多いので、作品名は英語版の記事名（「Harry Potter (TV series)」→ Harry Potter）。なければ関注項の名前
     work_en = re.sub(r"\s*\(.*?\)", "", wiki_titles(item).get("en", "")) or name
+    since = work_since(item)
     cands = []
     for actor in subjects(item, "character", rule(item)[3]):
         _check_time()
@@ -1144,20 +1189,12 @@ def gather_roles(item, log=print, tried=None):
         if role:
             roles[actor] = role
         log(f"  [役] {actor} → {role or '見つからない'}")
-        if api:
-            try:   # 基準：出演者の記事の写真（選ばない）
-                src, page = emblem.page_image(api, actor)
-                cands.append({"subject": subj, "image": small_url(src), "page": page, "source": "基準（出演者の写真）",
+        try:   # 基準：出演者の記事の写真（選ばない）
+            for src, page in anchor_rows(api, actor):
+                cands.append({"subject": subj, "image": src, "page": page, "source": "基準（出演者の写真）",
                               "why": f"{actor} 本人の写真（本人確認の基準。小元素には使わない）", "anchor": True, "anchor_only": True})
-            except Exception:
-                pass
-        if not any(c["subject"] == subj and c.get("anchor") for c in cands):
-            try:
-                for r in wikidata_images(actor, ("P18",), 1)[:1]:
-                    cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "基準（出演者の写真）",
-                                  "why": f"{actor} 本人の写真（本人確認の基準）", "anchor": True, "anchor_only": True})
-            except Exception as e:
-                log(f"  [基準] {actor}：{e}")
+        except Exception as e:
+            log(f"  [基準] {actor}：{e}")
         if role and api:
             try:   # 出演者の記事の役の写真（この作品のこの役者の役の姿。役の記事は前の作品の役者のことがある）
                 rows = actor_role_images(api, actor, role)
@@ -1173,7 +1210,8 @@ def gather_roles(item, log=print, tried=None):
                 for r in rows:
                     cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "役の記事",
                                   "why": f"{role}（{actor}）：Fandom の役の記事の{'代表画像' if r.get('infobox') else '剧照'}",
-                                  "license": "", "trust_noface": bool(r.get("infobox")), "title": r.get("title", "")})
+                                  "license": "", "trust_noface": bool(r.get("infobox")), "title": r.get("title", ""),
+                                  "untied": not tied(r["image"], actor, work_en, since)})
             except Exception as e:
                 log(f"  [役の記事] {role}：{e}")
         try:   # 作品の動画の場面（題名に作品名と役名）。役がわからないときは探さない（出演者名だとインタビューばかり）
@@ -1181,7 +1219,8 @@ def gather_roles(item, log=print, tried=None):
             tried["作品の動画の場面"] = tried.get("作品の動画の場面", 0) + len(rows)
             for r in rows:
                 cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "作品の動画の場面",
-                              "why": f"{role or actor}（{actor}）：作品の動画の場面", "license": r.get("license", "")})
+                              "why": f"{role or actor}（{actor}）：作品の動画の場面", "license": r.get("license", ""),
+                              "untied": not tied(f"{r['image']} {r.get('title', '')}", actor, work_en, since)})
         except Exception as e:
             log(f"  [動画] {role or actor}：{e}")
     # 役の姿が足りないときは、作品そのものの主な画像（Wikipedia の記事の代表画像 = ポスター・キービジュアル）で埋める。
@@ -1411,6 +1450,12 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None):
                 else:
                     feats.append(feat)
             anchor = next((k for k, i in enumerate(test) if dl[i].get("anchor")), None)
+            if anchor is None or feats[anchor] is None:   # 出演者の顔の基準がない（記事の写真が集合写真：Anjula Murali）：作品・出演者の名前のない役の画像は数えない
+                for k, i in enumerate(test):
+                    if dl[i].get("untied") and i not in out:
+                        drop("別人", dl[i], "役の記事・動画の画像だけ（出演者の顔の基準がなく、ファイル名に作品・出演者の名前もない）")
+                        out.add(i)
+                        feats[k] = None
             keep = face_id.same_person(feats, anchor, strict=strict)
             if keep is None:   # モデルなし：顔の有無だけ
                 log("  [本人確認なし] 顔モデルが使えないので、顔があるかだけ確かめた")
@@ -1707,13 +1752,13 @@ def sync_progress(prog, items):
 def due(prog, items, now):
     """後台で処理する順：目標に届いていないものを、足りない枚数の多い順（同じなら前回の処理が古い順）。
     RETRY_HOURS（1 時間）以内に失敗して材料も変わっていないものは飛ばす。"""
-    rows = []
+    rows, broken = [], _broken_log()
     for item in items:
         st = status(item)
         e = prog["items"].get(item["name"]) or {}
         hint = any(item.get(k) for k in ("emblem_fandom", "emblem_api", "emblem_category", "anilist_id", "wikidata"))
         recount = item.get("emblem_category") and not item.get("emblem_pool")   # 分類はあるのに数えられなかった（429）：版を待たずに次の回も
-        if st["state"] == "ok" and not broken_cuts(item) and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
+        if st["state"] == "ok" and not broken_cuts(item) and not any(e.get("v", 1) < BROKEN_V for e in broken.get(item["name"]) or []) and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         h = _hours_since(e.get("failed_at"), now)
         if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")
@@ -1796,7 +1841,9 @@ def fill_one(item, log=print):
                 item = next(i for i in load_items() if i["name"] == item["name"])
         except Exception as e:
             log(f"  [名簿] {item['name']}：{e}")
-    if off_roster(item, log) | drop_broken(item, log):
+    if unbreak(item, log):
+        item = next(i for i in load_items() if i["name"] == item["name"])
+    if off_roster(item, log) | drop_broken(item, log) | untied_roles(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
     if status(item)["state"] == "ok":   # 名簿を数え直しても足りている（名簿を確かめに来ただけ）：集めない
         st = status(item)
@@ -1882,6 +1929,38 @@ def off_roster(item, log=print):
     return len(ems) - len(keep)
 
 
+def untied_roles(item, log=print):
+    """実写の版面の前からの小元素のうち、役の記事・作品の動画から取ったもので（tied でない）、出演者の顔の基準もないもの（本人と確かめられない）を外す。
+    哈利波特剧集 Padma Patil（Anjula Murali）：役の記事の代表画像＝映画の Padma（Afshan Azad）。→ 外した枚数。"""
+    if not live_action(item) or face_id.engine() is None:
+        return 0
+    api = fandom_api(item)
+    work = re.sub(r"\s*\(.*?\)", "", wiki_titles(item).get("en", "")) or item["name"]
+    since = work_since(item)
+    bad = []
+    for x in item.get("emblem") or []:
+        m = re.search(r"（([^（）]+)）\s*\d*$", str(x.get("subject") or "")) if isinstance(x, dict) else None
+        if not m or not re.search(r"役の記事|作品の動画", str(x.get("why") or "")) or tied(x.get("source"), m.group(1), work, since):
+            continue
+        try:
+            rows = anchor_rows(api, m.group(1))
+            info = face_id.face_info(inspect(_get(rows[0][0], 6_000_000))[2])[1] if rows else {}
+        except Exception as e:
+            log(f"  [基準] {m.group(1)}：{e}")
+            continue   # 読めないときは外さない（次の回）
+        if info is None or not info or face_id.photo_problem(info):
+            bad.append(x)
+    if not bad:
+        return 0
+    keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad]))
+    with WRITE_LOCK:
+        emblem.write_item(item["name"], keep, None)
+        _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+    log(f"  [外した] {item['name']}：出演者の顔の基準がなく、作品・出演者の名前もない役の画像 {len(bad)} 枚（{'、'.join(b.get('subject', '') for b in bad)}）")
+    return len(bad)
+
+
 def broken_cuts(item):
     """読めない（0 バイト）・切れ端（短い辺 CUT_MIN 未満・横が縦の CUT_WIDE 倍より長い）・頭のてっぺんか額が上の端で切れた・
     写真がぼやけた（emblem.SHARP_MIN）切り抜きの小元素 → [小元素]。
@@ -1899,7 +1978,7 @@ def broken_cuts(item):
         except Exception:
             bad.append(x)
             continue
-        if emblem.is_sliver(w, h) or emblem.head_cut(im) or emblem.forehead_cut(im):   # 頭のてっぺん・額まで切れた前からの切り抜き（取るときと同じ check_whole の規則）
+        if emblem.is_sliver(w, h) or emblem.head_cut(im) or emblem.top_share(im) > emblem.TOP_TOUCH and emblem.forehead_cut(im):   # 頭のてっぺん・額まで切れた前からの切り抜き（check_whole と同じ：額は上の端に TOP_TOUCH 以上当たっているときだけ見る。The Mandalorian Gideon 1.0%・Mayfeld 0.3% は頭が全部入っている）
             bad.append(x)
             continue
         fq = emblem.face_sharp(im) if photo else None   # 写真のぼやけ（拡大した剧照）。顔の幅は書き出したあとは縮んでいるので見ない
@@ -1908,11 +1987,60 @@ def broken_cuts(item):
     return bad
 
 
+BROKEN_V = 2   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）
+
+
+def _broken_log(d=None):
+    """state/emblem_broken.json（版面 → [{v, emblem}]：drop_broken が外した小元素）。d を渡すと書く。"""
+    p = ROOT / "state" / "emblem_broken.json"
+    if d is None:
+        try:
+            return json.loads(p.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return {}
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
+def unbreak(item, log=print):
+    """前の版（v < BROKEN_V）の broken_cuts で外した小元素を今の規則で見直し、外れないもの（画像が残り、同じ人がまだいない）を戻す。
+    emblem_reject からも抜く。→ 戻した枚数。"""
+    name = item["name"]
+    with WRITE_LOCK:
+        d = _broken_log()
+        ents = d.get(name) or []
+        old = [e for e in ents if e.get("v", 1) < BROKEN_V]
+        if not old:
+            return 0
+        have = {_name_key(x.get("subject")) for x in item.get("emblem") or [] if isinstance(x, dict)}
+        back = []
+        for e in old:
+            x = e["emblem"]
+            if (_name_key(x.get("subject")) not in have and (emblem.sitedir.SITE_DIR / str(x.get("image"))).exists()
+                    and not broken_cuts({**item, "emblem": [x]})):
+                back.append(x)
+                have.add(_name_key(x.get("subject")))
+        d[name] = [e for e in ents if e not in old] + [{**e, "v": BROKEN_V} for e in old if e["emblem"] not in back]
+        _broken_log(d)
+        if not back:
+            return 0
+        src = {b.get("source") or b["image"] for b in back}
+        emblem.write_item(name, list(item.get("emblem") or []) + back, None)
+        _set_field(name, "emblem_reject", json.dumps([u for u in item.get("emblem_reject") or [] if u not in src], ensure_ascii=False)
+                   + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+    log(f"  [戻した] {name}：前の規則で外した小元素 {len(back)} 枚（{'、'.join(b.get('subject', '') for b in back)}）")
+    return len(back)
+
+
 def drop_broken(item, log=print):
     """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。"""
     bad = broken_cuts(item)
     if not bad:
         return 0
+    with WRITE_LOCK:
+        d = _broken_log()
+        d.setdefault(item["name"], []).extend({"v": BROKEN_V, "emblem": b} for b in bad)
+        _broken_log(d)
     keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
     rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad]))
     with WRITE_LOCK:
