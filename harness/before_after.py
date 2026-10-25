@@ -4,10 +4,20 @@ progress.yml が PR の合併のたびに呼ぶ。網页に効く PR は、本�
   1. 合併の直後（本番はまだ前のまま）に撮る = Before
   2. その合併の render.yml（網页の生成＋お客さまのページの作り直し）が終わるのを待つ（12 分まで）＋ Pages の配信を 60 秒待つ
   3. 同じ画面を撮る = After → 左右に並べた画像を「合併しました」の知らせに付けて送る
-撮る画面：ログインなし 1400px・test-a 1400px・test-a 390px（harness/ux_check.py の check と同じ開き方）。
+撮る画面：ログインなし 1400px・test-a 1400px・test-a 390px（harness/ux_check.py の session と同じログイン）。
 
-    python harness/before_after.py <merge_sha> <PR の番号> <PR の題> <PR の網址>
+「何が変わったか一目で」（2026-10-25，用户定的：同じに見える 2 枚では何をしているのかわからない。HARNESS「報告は何が・どこで・数」）：
+  - 撮る場所は PR の説明の 1 行「画面：<ページ> <CSS セレクタ> — <どこを見る>」（例：画面：index #sec-bleach .emb — BLEACH の小元素）。
+    その欄までスクロールして欄だけを切り抜き、大きく撮る。数（欄の中の img の数）の前と後も書く。書いていなければページ全体を撮り、変わった所の一番大きい所を切り抜く
+  - 差がなければ写真を送らない：「画面の変化なし」の 1 行
+  - 画面が後で変わる PR（小元素・名簿・記事集め・AI 編集＝LATER）は Before だけ撮って Actions の artifact（ba-pending-<番号>）に置き、
+    その後台の回（progress.yml の workflow_run）が終わったあとに After を撮って送る（later）
+  - 写真の上の一行：何を直した → どこを見る → 数
+
+    python harness/before_after.py <merge_sha> <PR の番号> <PR の題> <PR の網址>     （PR_BODY に PR の説明）
+    python harness/before_after.py later <終わった回の workflow の名前> <回が始まった時刻> <artifact を置いたフォルダ>
 """
+import datetime as dt
 import io
 import json
 import os
@@ -28,6 +38,14 @@ import progress_notify  # noqa: E402
 
 UI = re.compile(r"^(scripts/(render|user_pages|welcome|theme|likefx|emblem)\.py|templates/|sections\.yaml|docs/home/[^/]+\.js)")
 VIEWS = [("guest", 1400), ("test-a", 1400), ("test-a", 390)]
+# 合併では変わらず、後台の回のあとに画面が変わるファイル → その回の workflow の名前と定時のファイル
+LATER = [
+    (re.compile(r"^scripts/(emblem\w*|face_id|gate)\.py$"), "后台作業", "background.yml"),
+    (re.compile(r"^scripts/library_emblem\.py$"), "ライブラリの小元素", "library_emblem.yml"),
+    (re.compile(r"^scripts/(digest|sources|intel|collect_watch|hdimg|images|userfeed)\.py$"), "关注清单通信", "digest.yml"),
+]
+SPOT = re.compile(r"^\s*[-*]?\s*画面[:：]\s*(\S+)\s+(.+?)(?:\s+[—-]{1,2}\s+(.+))?\s*$", re.M)
+MAX_H = 8000       # ページ全体を撮るときの高さの上限（px）
 BASE = "https://cxelegy.github.io/Wishlist/home/"
 REPO = "CxElegy/Wishlist"
 WAIT_RENDER_S = 12 * 60
@@ -38,15 +56,112 @@ def ui_changed(sha):
     return [f for f in files if UI.match(f)]
 
 
-def shoot(out):
+def later_of(files):
+    """後台の回のあとに画面が変わる PR なら、その回の (workflow の名前, 定時のファイル)。なければ None。"""
+    for f in files:
+        for rx, name, yml in LATER:
+            if rx.match(f):
+                return name, yml
+    return None
+
+
+def spot(body):
+    """PR の説明の「画面：<ページ> <セレクタ> — <どこを見る>」→ (ページ, セレクタ, 説明)。なければ None。ページ index は店長のページ。"""
+    m = SPOT.search(body or "")
+    if not m:
+        return None
+    page, sel, where = m.group(1), m.group(2).strip(), (m.group(3) or "").strip()
+    page = "" if page in ("index", "index.html", "home", "home/") else page
+    return page, sel, where or sel
+
+
+def _cron_next(expr, now):
+    """5 つの欄の cron（分・時は数・*・*/n・a,b。日・月・曜日は * のときだけ）の次の時刻（UTC）。読めなければ None。"""
+    parts = expr.split()
+    if len(parts) != 5 or any(p != "*" for p in parts[2:]):
+        return None
+    def vals(f, n):
+        out = set()
+        for x in f.split(","):
+            if x == "*":
+                out |= set(range(n))
+            elif x.startswith("*/"):
+                out |= set(range(0, n, int(x[2:])))
+            elif x.isdigit():
+                out.add(int(x))
+            else:
+                return None
+        return out
+    mins, hours = vals(parts[0], 60), vals(parts[1], 24)
+    if not mins or not hours:
+        return None
+    t = now.replace(second=0, microsecond=0) + dt.timedelta(minutes=1)
+    for _ in range(60 * 48):
+        if t.minute in mins and t.hour in hours:
+            return t
+        t += dt.timedelta(minutes=1)
+    return None
+
+
+def next_run(yml, now=None):
+    """その workflow の定時の次の回（日本時間の HH:MM）。読めなければ「次の回」。"""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    try:
+        text = (pathlib.Path(__file__).resolve().parent.parent / ".github/workflows" / yml).read_text(encoding="utf-8")
+    except OSError:
+        return "次の回"
+    ts = [t for t in (_cron_next(c, now) for c in re.findall(r'cron:\s*"([^"]+)"', text)) if t]
+    return min(ts).astimezone(progress_notify.JST).strftime("%H:%M") if ts else "次の回"
+
+
+SEED_JS = """(()=>{let s=20261025;Math.random=()=>((s=Math.imul(s^(s>>>15),2246822507)+0x6D2B79F5|0)>>>0)/4294967296;})();"""
+
+
+def shoot(out, where=None):
+    """VIEWS をそれぞれ撮る。where=(ページ, セレクタ, …) ならその欄だけ、なければページ全体（MAX_H まで）。
+    乱数は決まった種に（「気になるかも？」・小元素のランダムな 1 枚が前と後で同じになる）・動きは止める。返り値：{名前: 欄の中の img の数}。"""
     out.mkdir(parents=True, exist_ok=True)
-    ux_check.WATCH_S = 8   # 写真だけなので短く（合併から本番の更新まで 2〜3 分：Before を間に合わせる。くり返しの点検は ux_check の本番の回で）
+    counts = {}
+    page, sel = (where[0], where[1]) if where else ("", None)
     with sync_playwright() as pw:
+        b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
         for who, w in VIEWS:
+            name = f"{who}-{w}"
             try:
-                ux_check.check(pw, BASE, who, w, out)
+                ctx = b.new_context(viewport={"width": w, "height": 900}, reduced_motion="reduce")
+                ctx.add_init_script(SEED_JS)
+                pg = ctx.new_page()
+                if ux_check.WHO[who]:
+                    pg.goto(BASE, wait_until="domcontentloaded", timeout=60000)
+                    pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}",
+                                ux_check.session(ux_check.WHO[who]))
+                pg.goto(BASE + page, wait_until="domcontentloaded", timeout=60000)
+                try:   # お客さまのページは JS で描く：版面かポスターが出るまで（30 秒まで）
+                    pg.wait_for_function("document.querySelector('section.sec,#front')", timeout=30000)
+                except Exception:  # noqa: BLE001
+                    pass
+                pg.wait_for_timeout(4000)
+                # 遅れて読む写真（loading=lazy）を前と後で同じにするため、下まで一度たどって戻る
+                pg.evaluate("async()=>{const H=Math.min(document.documentElement.scrollHeight,%d);for(let y=0;y<H;y+=700){scrollTo(0,y);await new Promise(r=>setTimeout(r,120));}scrollTo(0,0);}" % MAX_H)
+                pg.wait_for_timeout(2500)
+                if sel:
+                    el = pg.locator(sel).first
+                    if el.count():
+                        el.scroll_into_view_if_needed(timeout=10000)
+                        pg.wait_for_timeout(800)
+                        el.screenshot(path=str(out / f"{name}.png"))
+                        counts[name] = el.locator("img").count()
+                    else:
+                        print(f"欄がない {name}: {sel}")
+                else:
+                    h = min(pg.evaluate("document.documentElement.scrollHeight"), MAX_H)
+                    pg.screenshot(path=str(out / f"{name}.png"), clip={"x": 0, "y": 0, "width": w, "height": h}, full_page=True)
+                ctx.close()
             except Exception as ex:  # noqa: BLE001  1 枚撮れなくても残りは送る
                 print(f"撮れなかった {who} {w}: {type(ex).__name__}")
+        b.close()
+    (out / "counts.json").write_text(json.dumps(counts), encoding="utf-8")
+    return counts
 
 
 def wait_render(sha):
@@ -171,17 +286,44 @@ def changed_boxes(a, b):
     return [s for s in boxes if not any(inside(s, o) for o in boxes)]
 
 
+PAD = 60          # 切り抜くとき、変わった所のまわりに残す幅（px）
+CROP_MAX_H = 1400  # 切り抜きの高さの上限
+ZOOM_W = 900       # 切り抜きがこれより細ければ 2 倍まで大きく
+
+
+def focus(a, b, boxes):
+    """変わった所の一番大きい四角を真ん中に、まわり PAD を付けて切り抜く範囲（x0, y0, x1, y1）。"""
+    x0, y0, x1, y1 = max(boxes, key=lambda r: (r[2] - r[0]) * (r[3] - r[1]))
+    cx, cy = (x0 + x1) // 2, (y0 + y1) // 2
+    hw = min(max((x1 - x0) // 2 + PAD, 320), a.width // 2)
+    hh = min(max((y1 - y0) // 2 + PAD, 240), CROP_MAX_H // 2)
+    left = min(max(cx - hw, 0), max(a.width - 2 * hw, 0))
+    top = min(max(cy - hh, 0), max(a.height - 2 * hh, 0))
+    return left, top, min(left + 2 * hw, a.width), min(top + 2 * hh, a.height)
+
+
 def compose(before, after):
-    """左に Before・右に After。高さをそろえて上に札。幅は 1800px まで。"""
+    """左に Before・右に After。変わった所（同じ大きさなら changed_boxes、違う大きさなら上から同じ高さ）を真ん中に切り抜き、赤い枠。
+    差がなければ None（写真を送らない、2026-10-25 用户定的）。幅は 1800px まで。"""
     a, b = Image.open(before).convert("RGB"), Image.open(after).convert("RGB")
-    h = min(a.height, b.height, 1400)
-    a, b = a.crop((0, 0, a.width, h)), b.crop((0, 0, b.width, h))
-    if a.size == b.size:   # 変わった所を赤い枠で囲む（前と後の両方の同じ場所。2026-10-24 用户定的）
+    if a.size == b.size:
         boxes = changed_boxes(a, b)   # 描く前に 1 回だけ数える
-        for im in (a, b):
+        if not boxes:
+            return None
+        crop = focus(a, b, boxes)
+        a, b = a.crop(crop), b.crop(crop)
+        boxes = [(x0 - crop[0], y0 - crop[1], x1 - crop[0], y1 - crop[1]) for x0, y0, x1, y1 in boxes]
+        for im in (a, b):   # 変わった所を赤い枠で囲む（前と後の両方の同じ場所。2026-10-24 用户定的）
             dd = ImageDraw.Draw(im)
             for x0, y0, x1, y1 in boxes:
                 dd.rectangle((x0 + 2, y0 + 2, x1 - 3, y1 - 3), outline=(215, 38, 30), width=4)
+    else:   # 欄の大きさが変わった（人が増えた・行が増えた）＝変わっている
+        h = min(a.height, b.height, CROP_MAX_H) if min(a.height, b.height) > 40 else min(max(a.height, b.height), CROP_MAX_H)
+        a, b = a.crop((0, 0, a.width, min(h, a.height))), b.crop((0, 0, b.width, min(h, b.height)))
+    if max(a.width, b.width) < ZOOM_W:   # 小さな欄は大きく
+        k = min(2.0, ZOOM_W / max(a.width, b.width))
+        a, b = (im.resize((round(im.width * k), round(im.height * k))) for im in (a, b))
+    h = max(a.height, b.height)
     gap, top = 24, 44
     img = Image.new("RGB", (a.width + b.width + gap, h + top), (237, 235, 230))
     img.paste(a, (0, top))
@@ -229,30 +371,67 @@ def send(title, url, images, text=None):
         print("Discord:", r.status)
 
 
+def headline(title, where, counts_b, counts_a):
+    """写真の上の一行：何を直した → どこを見る → 数（欄の中の img の数が変わったときだけ）。"""
+    nums = ""
+    for k in counts_a:
+        if k in counts_b and counts_b[k] != counts_a[k]:
+            nums = f" → {counts_b[k]}→{counts_a[k]} 枚（{k}）"
+            break
+    return f"{title} → 見る所：{where or '赤枠の所'}{nums}"
+
+
+def pairs(root, where, title):
+    """before/ と after/ の同じ名前の写真を並べる。差のないものは外す。返り値：(写真, 一行)。"""
+    cb = json.loads((root / "before" / "counts.json").read_text()) if (root / "before" / "counts.json").exists() else {}
+    ca = json.loads((root / "after" / "counts.json").read_text()) if (root / "after" / "counts.json").exists() else {}
+    images = []
+    for who, w in VIEWS:
+        b, a = root / "before" / f"{who}-{w}.png", root / "after" / f"{who}-{w}.png"
+        if b.exists() and a.exists():
+            png = compose(b, a)
+            if png:
+                images.append((f"{who}-{w}.png", png))
+    return images, headline(title, where[2] if where else "", cb, ca)
+
+
 def main(argv):
     """合併のたびに：網页に効く PR（progress_notify.page_effect が maybe）は、本番で新しくなったのを確かめて「🟢 公開を確かめました」を送る
-    （2026-10-25，用户定的：ページが本当に更新されたら知らせる。プライベートウィンドウなどの手間をかけさせない）。画面に関わる PR は Before / After の写真も付ける。"""
+    （2026-10-25，用户定的：ページが本当に更新されたら知らせる。プライベートウィンドウなどの手間をかけさせない）。画面に関わる PR は Before / After の写真も付ける。
+    後台の回のあとに変わる PR（LATER）は Before だけ撮って ba-pending/ に置く（progress.yml が artifact にする）。"""
+    if argv and argv[0] == "later":
+        return later(*argv[1:4])
     sha, num, title, url = argv[:4]
+    body = os.environ.get("PR_BODY", "")
     files = subprocess.run(["git", "diff", "--name-only", f"{sha}~1", sha], capture_output=True, text=True).stdout.split()
     if progress_notify.page_effect(files) == "none":
         print("網页に効かない PR（文書・道具だけ）：確かめない")
         return 0
-    changed = ui_changed(sha)
+    where = spot(body)
+    lat = later_of(files)
+    changed = ui_changed(sha) or (where and not lat) or lat
     before = live_versions()
     root = pathlib.Path(os.environ.get("RUNNER_TEMP", "/tmp")) / "ba"
     if changed:
-        shoot(root / "before")
+        shoot(root / "before", where)
     t0 = time.time()
     res = wait_render(sha)
     pages, docs, waiting = wait_live(before, docs_files(sha))
     mins = max(1, round((time.time() - t0) / 60))
-    images = []
-    if changed:
-        shoot(root / "after")
-        for who, w in VIEWS:
-            b, a = root / "before" / f"{who}-{w}.png", root / "after" / f"{who}-{w}.png"
-            if b.exists() and a.exists():
-                images.append((f"{who}-{w}.png", compose(b, a)))
+    images, line = [], ""
+    if lat:   # 写真は後台の回のあと（③）。Before と説明を置いていく
+        pend = pathlib.Path(os.environ.get("BA_PENDING", "ba-pending"))   # progress.yml が artifact にする
+        pend.mkdir(parents=True, exist_ok=True)
+        for f in (root / "before").glob("*"):
+            (pend / f.name).write_bytes(f.read_bytes())
+        (pend / "meta.json").write_text(json.dumps({"num": num, "title": title, "url": url, "where": where, "workflow": lat[0],
+                                                     "merged_at": dt.datetime.now(dt.timezone.utc).isoformat()}, ensure_ascii=False), encoding="utf-8")
+        line = f"🕒 画面は合併では変わりません。変わるのは「{lat[0]}」の回のあと（見込み {next_run(lat[1])} 日本時間）→ そのあと Before / After を送ります。"
+    elif changed:
+        shoot(root / "after", where)
+        images, line = pairs(root, where, title)
+        if not images:
+            line = "画面の変化なし（撮った所：" + ("・".join(f"{w}-{x}" for w, x in VIEWS)) + (f"・{where[2]}" if where else "") + "）"
     head = f"#{num} {title}"
     if pages or docs:
         names = "・".join(pages + [u.replace(LIVE, "") for u in docs])
@@ -262,7 +441,46 @@ def main(argv):
         text = f"⚠ まだ本番が新しくなっていません（{mins} 分待った）：{head}\nまだ：{'・'.join(waiting)} · render.yml：{res or '回なし'}\n{url}"
     else:
         text = f"ℹ 公開しました・見た目の変わるページはありません（裏の仕組みだけ）：{head}\n{url}"
+    if line:
+        text = f"🖼 {line}\n" + text
     send(head, url, images, text)
+    return 0
+
+
+def later(workflow, started_at, folder):
+    """後台の回（workflow）が終わったあと：artifact に置いた Before（folder/<名前>/meta.json）のうち、この workflow を待っていて
+    合併より後に始まった回のものを撮り直して送る。送った（か 2 日たって諦めた）ものの名前を folder/sent.txt へ（progress.yml が artifact を消す）。"""
+    folder = pathlib.Path(folder)
+    started = dt.datetime.fromisoformat(started_at.replace("Z", "+00:00"))
+    sent, slept = [], False
+    for meta_p in sorted(folder.glob("*/meta.json")):
+        d = meta_p.parent
+        m = json.loads(meta_p.read_text(encoding="utf-8"))
+        merged = dt.datetime.fromisoformat(m["merged_at"])
+        head = f"#{m['num']} {m['title']}"
+        if dt.datetime.now(dt.timezone.utc) - merged > dt.timedelta(days=2):
+            send(head, m["url"], [], f"🖼 {head}：2 日たっても「{m['workflow']}」の回のあとの写真を撮れませんでした（画面の変化は見ていません）\n{m['url']}")
+            sent.append(d.name)
+            continue
+        if m["workflow"] != workflow or started < merged:
+            continue
+        root = d / "ba"
+        (root / "before").mkdir(parents=True, exist_ok=True)
+        for f in d.iterdir():
+            if f.is_file() and f.name != "meta.json":
+                (root / "before" / f.name).write_bytes(f.read_bytes())
+        where = tuple(m["where"]) if m.get("where") else None
+        if not slept:   # 回の push から Pages の配信まで
+            time.sleep(90)
+            slept = True
+        shoot(root / "after", where)
+        images, line = pairs(root, where, m["title"])
+        if not images:
+            line = f"「{workflow}」の回のあとも画面の変化なし：{head}"
+        send(head, m["url"], images, f"🖼 {line}（「{workflow}」の回のあと）\n{head}\n{m['url']}")
+        sent.append(d.name)
+    (folder / "sent.txt").write_text("\n".join(sent), encoding="utf-8")
+    print("送った:", sent)
     return 0
 
 
