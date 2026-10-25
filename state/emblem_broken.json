@@ -592,5 +592,18 @@
     "fs": 0.419
    }
   }
+ ],
+ "Vaundy": [
+  {
+   "v": 2,
+   "emblem": {
+    "subject": "Vaundy 6",
+    "why": "Vaundy（YouTube の動画のサムネイル）",
+    "image": "emblems/vaundy-vaundy-6.webp",
+    "source": "https://i.ytimg.com/vi/7HgJIAUtICU/hq3.jpg",
+    "page": "https://www.youtube.com/watch?v=7HgJIAUtICU",
+    "shape": "cutout"
+   }
+  }
  ]
 }

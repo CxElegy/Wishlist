@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T07:38:11+00:00",
+ "checked": "2026-10-25T08:25:07+00:00",
  "fired": {
-  "at": "2026-10-25T07:00:20+00:00",
+  "at": "2026-10-25T08:25:07+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,49 +12,69 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-25T06:50:50+00:00",
+    "at": "2026-10-25T08:25:07+00:00",
     "attempts": 1,
     "day": "2026-10-25",
-    "prog": 137,
-    "resp": "cse_01XMLdFzAguoEBhKN5gQLiAu",
-    "sig": "4e58bbe2bfc0"
+    "prog": 141,
+    "resp": "cse_01Sc9p13QvGhCytno9BC86vH",
+    "sig": "18d54d9ee215"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "ILLIT",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影"
+   ],
    "last_batch": "2026-10-25T07:11:34+00:00",
    "last_error": {
     "at": "2026-10-25T06:56:41+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 141,
    "prog_day": "2026-10-25",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "ILLIT",
+    "The Mandalorian",
+    "三星手机",
+    "日本顶级网球赛事",
+    "漫威电影"
+   ],
+   "sig": "18d54d9ee215",
    "token_cap": 1000000,
    "tokens_today": 614167,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 28 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
+   "items": [
+    "dota2"
+   ],
+   "need": true,
+   "sig": "5e19588d36b6",
    "waiting": [
     "あつ森",
     "哈利波特剧集",
-    "dota2",
-    "漫威电影",
     "FROM",
     "BLEACH Mirrors High",
     "チェーンソーマン",
     "Astrae Oratio",
     "绝区零",
     "GTA 6",
-    "Vaundy",
     "The Mandalorian",
-    "A2O LITE"
+    "Vaundy",
+    "A2O LITE",
+    "漫威电影"
    ],
-   "why": "失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:29 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:29 から）"
   },
   "photos": {
    "claude": true,
