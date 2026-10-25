@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "1eb08661b454",
+ "edit_sig": "54fa25496103",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -529,33 +529,6 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
-   "facts": [],
-   "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 1,
-     "source": "note",
-     "title": "【完全保存版】乗り遅れるな！人気新春福袋の予約・抽選カレンダー総まとめ｜スタバ・カルディ・マック・ヨドバシ・ジェラ ...",
-     "url": "https://note.com/kappalyno/n/n0672d8bd435a"
-    }
-   ],
-   "section": "好物",
-   "stories": [],
-   "subtitle": "ジェラート ピケ · ルームウェア",
-   "theme": {
-    "accent": "#EE8FA7",
-    "alt_accent": "#F4B6C6",
-    "alt_bg": "#BFE3DA",
-    "alt_fg": "#3F4F4B",
-    "bg": "#FFF6F3",
-    "fg": "#5A4049",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
    "facts": [
     {
@@ -937,6 +910,31 @@
     "bg": "#FBF4EA",
     "fg": "#3A2C24",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "facts": [],
+   "last": {
+    "date": "2026-10-24",
+    "headline": "サンリオハウス、ジェラート ピケとのコラボ第2弾商品を10月21日に発売",
+    "url": "https://news.dellows.jp/624545/?from=related-reading-list"
+   },
+   "name": "gelato pique",
+   "quiet": true,
+   "section": "好物",
+   "status": "10/20 Mrs. GREEN APPLE 联名发售 · 10/21 三丽鸥联名第 2 弾 · 福袋 2027 待公布（往年 10 月底抽选）",
+   "stories": [],
+   "subtitle": "ジェラート ピケ · ルームウェア",
+   "theme": {
+    "accent": "#EE8FA7",
+    "alt_accent": "#F4B6C6",
+    "alt_bg": "#BFE3DA",
+    "alt_fg": "#3F4F4B",
+    "bg": "#FFF6F3",
+    "fg": "#5A4049",
+    "font": "serif",
     "split": true
    }
   },
