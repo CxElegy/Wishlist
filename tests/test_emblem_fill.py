@@ -1566,6 +1566,28 @@ class LiveAction(unittest.TestCase):
         self.assertTrue(ef.is_role_image({"why": "Rubeus Hagrid（Nick Frost）：Fandom の出演者の記事の役の写真"}))
         self.assertLess(ef.PICK_ORDER.index("出演者の記事の役の写真"), ef.PICK_ORDER.index("役の記事"))
 
+    def test_assign_stills_by_face(self):
+        """作品の記事の剧照（ファイル名に役名がない）を名簿の出演者の顔の基準でいちばん近い人へ。近い人が 2 人いる・遠い剧照は割り当てない。"""
+        from unittest import mock
+        import numpy as np
+        vec = {"a": np.array([1.0, 0, 0]), "b": np.array([0, 1.0, 0]), "s1": np.array([0.9, 0.1, 0]), "s2": np.array([0.5, 0.5, 0]),
+               "s3": np.array([0, 0, 1.0])}
+        item = {"name": "W", "emblem_who": ["Actor A", "Actor B"], "type": "show", "emblem_people": True}
+        stills = [{"title": f"File:Still {k}.jpg", "image": k, "page": "", "license": ""} for k in ("s1", "s2", "s3")]
+        ef._ANCHOR_FEAT.clear()
+        cos = lambda x, y: float(x @ y / np.linalg.norm(x) / np.linalg.norm(y))
+        with mock.patch.object(ef.face_id, "engine", return_value=object()), \
+             mock.patch.object(ef, "work_stills", return_value=stills), mock.patch.object(ef, "wiki_titles", return_value={"en": "W"}), \
+             mock.patch.object(ef, "anchor_rows", side_effect=lambda api, a: [(a[-1].lower(), "p")]), \
+             mock.patch.object(ef, "_get", side_effect=lambda u, n: u), mock.patch.object(ef, "inspect", side_effect=lambda d: (0, 0, d)), \
+             mock.patch.object(ef.face_id, "face_info", side_effect=lambda k: (vec[k], {"faces": 1, "ratio": 0.5, "second": 0})), \
+             mock.patch.object(ef.face_id, "similarity", side_effect=cos):
+            rows = ef.assign_stills("api", item, {"Actor A": "Role A"}, log=lambda s: None)
+        ef._ANCHOR_FEAT.clear()
+        self.assertEqual([(r["subject"], r["source"]) for r in rows], [("Role A（Actor A）", "基準（出演者の写真）"), ("Role A（Actor A）", "作品の剧照")])
+        self.assertTrue(ef.is_role_image(rows[1]))   # 実写の版面に残る（役の姿）
+        self.assertLess(ef.PICK_ORDER.index("作品の剧照"), ef.PICK_ORDER.index("役の記事"))
+
     def test_live_action_skips_actor_photos(self):
         self.assertTrue(ef.live_action({"type": "show", "emblem_people": True}))
         self.assertFalse(ef.live_action({"type": "anime"}))

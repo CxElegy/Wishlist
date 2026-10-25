@@ -33,7 +33,7 @@ def rules():
         {"stage": STAGES[1], "title": "実写の作品は役の姿", "by": "rule", "code": "emblem_fill.gather_roles",
          "rule": "剧・映画（emblem_people）は出演者の生活の写真を使わない。出演者 → 役（Fandom の出演者の記事の character/role 欄 → 出演作の表の役の列 → 検索。"
                  "役の記事に「演じた人 = 出演者」とあるものだけ。実在の人の記事・回の名前・出演者名を含む記事は除く）→ 出演者の記事とファイル検索の「出演者 as 役」の写真（ファイル名に役の名前。作り直しの剧は役の記事が前の映画の役者ばかり：哈利波特剧集）→ 役の記事の代表画像と剧照・作品の動画の場面（題名に作品名と役名。"
-                 "インタビュー・試写会などは除く）。出演者の写真は本人確認の基準にだけ使う。足りなければ作品の主な画像（ポスター）"},
+                 "インタビュー・試写会などは除く）。作品の記事の剧照（ファイル名に役名がない）は名簿の出演者ぜんぶの顔と比べていちばん近い人へ（assign_stills）。出演者の写真は本人確認の基準にだけ使う。足りなければ作品の主な画像（ポスター）"},
         {"stage": STAGES[1], "title": "代表作の記事", "by": "rule", "code": "emblem_fill.add_example",
          "rule": "記事名を言語つきで指定。別の言語版は言語間リンクでたどる（検索すると別の記事に当たる）"},
         {"stage": STAGES[1], "title": "YouTube は動画の場面", "by": "rule", "code": "emblem_fill.youtube_images / emblem.video_frame",
@@ -88,8 +88,8 @@ def rules():
          "rule": f"半透明 > {pct(emblem.SOFT_MAX)}"},
         {"stage": STAGES[4], "title": "同じファイル", "by": "rule", "code": "emblem_fill.file_key",
          "rule": "Wikimedia の同じ写真は thumb・元の網址・Special:FilePath のどれでも来るので、ファイル名で同じと見なして 1 枚だけ。番号つきの名前は今ある分の続きから（同じファイルに上書きしない）"},
-        {"stage": STAGES[5], "title": "暗すぎる（写真・場面）", "by": "rule", "code": "emblem.check_whole（DARK_MAX）", "reason": "暗すぎて見えない",
-         "rule": f"人物部分の平均の明るさ < {pct(emblem.DARK_MAX)}（黒くつぶれて何かわからない暗い場面）。役の記事の画像は、ポスター・宣伝用の絵（名前に poster・promo・render など）を場面のスクリーンショットより先に使う"},
+        {"stage": STAGES[5], "title": "暗すぎる（写真・場面）", "by": "rule", "code": "emblem.check_whole（DARK_MAX・FACE_DARK）", "reason": "暗すぎて見えない",
+         "rule": f"顔が見えれば顔の明るさ < {pct(emblem.FACE_DARK)}、顔がなければ人物部分の平均の明るさ < {pct(emblem.DARK_MAX)}（黒くつぶれて何かわからない暗い場面。黒いローブ・コートの剧照は体が暗くても顔で見る）。役の記事の画像は、ポスター・宣伝用の絵（名前に poster・promo・render など）を場面のスクリーンショットより先に使う"},
         {"stage": STAGES[5], "title": "横長・縦長の写真は余白なしで", "by": "rule", "code": "render.CARD_AR（badge.whole）",
          "rule": "カード（4:5）と縦横比が離れた写真（コート全景・スキーヤー）は、白い余白つきのカードにせず、写真そのままに斜めの枠だけ"},
         {"stage": STAGES[5], "title": "ほかの人が残っている（写真）", "by": "model", "code": "emblem.other_faces（YuNet）", "reason": "ほかの人が残っている",
