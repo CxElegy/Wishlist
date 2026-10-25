@@ -1435,11 +1435,11 @@
   "why": "看不清"
  },
  "https://img1.mydrivers.com/img/20261020/2c7ec5a4-146c-479a-bccb-c591e2e7fda0.png": {
+  "w": 600,
+  "h": 665,
   "target": 1280,
   "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-25"
+  "blur": 0.27
  },
  "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
   "w": 1035,
