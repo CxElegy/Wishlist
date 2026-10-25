@@ -61,12 +61,6 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261025ac/200/w640h360/20261025/4ada-66c7f55fe78af76488ef40e8b1a3add2.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd20261025ac/219/w659h360/20261025/e413-2f37d11136feb6aa1f2f9fc4758640f2.jpg": {
   "w": 659,
   "h": 360,
@@ -188,12 +182,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets-prd.ignimgs.com/2026/10/25/avengers-doomsday-describes-the-return-of-steve-rogers-as-a-usvw-1792891164279.jpg?width=1280&format=jpg&auto=webp&quality=80": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iIcvRiBeYhKM/v1/1200x800.jpg": {
   "w": 1200,
   "h": 800,
@@ -243,15 +231,15 @@
   "target": 1280,
   "v": 3
  },
- "https://bloximages.newyork1.vip.townnews.com/griffindailynews.com/content/tncms/assets/v3/editorial/a/b9/ab90c9fc-1c26-5ebd-8b60-3f8328044d5c/6a13c291b798b.image.jpg?crop=1762%2C926%2C0%2C124&resize=1200%2C631&order=crop%2Cresize": {
-  "w": 1200,
-  "h": 631,
+ "https://biz.chosun.com/resizer/v2/GRTDEZTCGZSWIY3FGU2TCNDGGE.jpg?auth=4c75d4c3b6f382c940727fdf540ac9cf031e4226db3b3221453f03d0bc304715&width=600&height=315&smart=true": {
+  "w": 600,
+  "h": 315,
   "target": 720,
   "v": 3
  },
- "https://bntonline.com.br/_next/image/?url=https%3A%2F%2Fbntonline.com.br%2Fwp-content%2Fuploads%2F2026%2F10%2Fkitty-cat-kitten-pet-45201-2.jpeg&w=3840&q=75": {
-  "w": 1600,
-  "h": 1672,
+ "https://bloximages.newyork1.vip.townnews.com/griffindailynews.com/content/tncms/assets/v3/editorial/a/b9/ab90c9fc-1c26-5ebd-8b60-3f8328044d5c/6a13c291b798b.image.jpg?crop=1762%2C926%2C0%2C124&resize=1200%2C631&order=crop%2Cresize": {
+  "w": 1200,
+  "h": 631,
   "target": 720,
   "v": 3
  },
@@ -1542,6 +1530,12 @@
   ],
   "why": "看不清"
  },
+ "https://kushironews.jp/wp-content/uploads/2026/10/MN20261026T711CAw00010_P1130TPT50327KSB_resized.jpg": {
+  "w": 1200,
+  "h": 801,
+  "target": 720,
+  "v": 3
+ },
  "https://lasisa.net/wp-content/uploads/2027/10/20261023_ana2_chiikawa_01.jpg": {
   "w": 1200,
   "h": 800,
@@ -2698,6 +2692,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/c/c/8/a/cc8a68666a0c0ab2af51729864d4d114_1.jpg": {
+  "w": 453,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/d/2/7/9/d279786f71916414f12a466a0f0d91a0_1.jpg": {
   "w": 452,
   "h": 640,
@@ -3050,19 +3050,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.2gDGgQIuv8r0XtBnve1atQ&pid=News&w=500": {
-  "w": 500,
-  "h": 281,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.467,
-  "local": "pics/f67bf3b9bf2515dd.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3180,6 +3167,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.e6oXP8NetsbAzyqs-EPN7A&pid=News&w=720": {
+  "w": 393,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.iAT7IhEzZ5ZerNWSk8uOWg&pid=News&w=1200": {
   "w": 493,
   "h": 700,
@@ -3218,6 +3211,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.n7xqsbLWmxpHtbVZBnlSbA&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.nmQBPUIe6hJu6JWV3BuQPQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3231,9 +3230,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.pKgG6PFbwlIbdWONiNUjYg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.ooO1Z9cuUWEf9trTUVYloA&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -3249,12 +3248,6 @@
    861
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.qGYJAS6mikmGqlfcHZws8A&pid=News&w=820": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.vuYQdO4GK_fpGWkwGRZqhw&pid=News&w=1200": {
   "w": 700,
@@ -3542,6 +3535,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.slashfilm.com/img/gallery/marvel-fans-slam-avengers-doomsday-trailer-over-captain-america-joke/l-intro-1792950198.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
@@ -3557,12 +3556,6 @@
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
   "h": 899,
-  "target": 720,
-  "v": 3
- },
- "https://www.switchbacktravel.com/sites/default/files/images/articles/Smith%20Level%20MIPS%20ski%20helmet%20%28close%20up%29.jpg": {
-  "w": 1198,
-  "h": 799,
   "target": 720,
   "v": 3
  },
