@@ -82,7 +82,8 @@
     3,
     10,
     9,
-    14
+    14,
+    19
    ],
    "image": "https://www.kpopmonster.jp/wp-content/uploads/2026/10/a2olite01.webp"
   },
@@ -114,16 +115,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    18
    ]
   },
   {
-   "headline": "【全球榜】2026.10.23 A2O LITE-NEON 前六",
-   "highlight": "",
+   "headline": "顔写真2枚でアイドルのダンス動画に…韓国でA2O LITE「NEON」のAI合成が流行",
+   "highlight": "AI合成が流行",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    17
    ]
   }
  ],
@@ -227,6 +229,15 @@
    ]
   },
   {
+   "headline": "ILLIT、Japan 2nd Single「I Got Your Back」発売記念イベント 制服姿で登場",
+   "highlight": "発売記念イベント",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  },
+  {
    "headline": "ILLIT・YUNAH、橋本環奈にラブコール「デートしたい」 日本ドラマイベントにサプライズ登場",
    "highlight": "サプライズ登場",
    "blurb": "",
@@ -242,7 +253,9 @@
    "weight": "normal",
    "refs": [
     6,
-    7
+    7,
+    11,
+    12
    ]
   },
   {
@@ -257,11 +270,11 @@
  ],
  "_covered": {
   "漫威电影": 47,
-  "A2O LITE": 16,
+  "A2O LITE": 19,
   "GTA 6": 15,
   "周杰伦": 9,
-  "ILLIT": 9,
-  "日本顶级网球赛事": 11,
+  "ILLIT": 13,
+  "日本顶级网球赛事": 16,
   "绝区零": 5,
   "あつ森": 2,
   "Astrae Oratio": 1,
@@ -269,10 +282,10 @@
   "Vaundy": 1,
   "dota2": 2,
   "チェーンソーマン": 1,
-  "三星手机": 9,
+  "三星手机": 12,
   "哈利波特剧集": 3,
   "MMORPG 新作": 2,
-  "The Mandalorian": 1,
+  "The Mandalorian": 4,
   "滑雪": 3,
   "猫用品": 2,
   "gelato pique": 1
@@ -289,13 +302,26 @@
    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZYPt.img"
   },
   {
+   "headline": "大坂なおみ 引退の錦織圭に「心の師だった」「これからは私が」東レPPO会見",
+   "highlight": "「心の師だった」",
+   "blurb": "4年ぶり出場の大坂なおみが大会前会見で、今月引退した錦織圭への思いと日本テニス界を引っ張る覚悟を語った。",
+   "weight": "normal",
+   "refs": [
+    14,
+    15,
+    16,
+    12
+   ]
+  },
+  {
    "headline": "予選がスタート、7人が出場した日本勢は本玉真唯と石井さやかが初戦を突破",
    "highlight": "初戦を突破",
    "blurb": "",
    "weight": "normal",
    "refs": [
     3,
-    10
+    10,
+    13
    ]
   },
   {
@@ -483,7 +509,8 @@
    "weight": "normal",
    "refs": [
     2,
-    4
+    4,
+    10
    ]
   },
   {
@@ -494,7 +521,9 @@
    "refs": [
     5,
     8,
-    6
+    6,
+    11,
+    12
    ]
   },
   {
@@ -539,7 +568,28 @@
    ]
   }
  ],
- "The Mandalorian": [],
+ "The Mandalorian": [
+  {
+   "headline": "80 Percent Real, 20 Percent Magic: Lucasfilm Artists Break Down \"The Mandalorian and Grogu\" at LightBox Expo",
+   "highlight": "Break Down",
+   "blurb": "Lucasfilm artists break down Grogu's tiny ship, Shikari's gangster streets, dejarik monsters, and Nal Hutta's explosions.",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ],
+   "image": "https://www.laughingplace.com/uploads/media/2026/10/LBE-Mando-Grogu.png"
+  },
+  {
+   "headline": "Box Office: 'Mandalorian and Grogu' tops charts and 'Obsession' grows in second weekend",
+   "highlight": "tops charts",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
  "滑雪": [
   {
    "headline": "富良野スキー場、1日10名限定のファーストトラック体験を開催 プロ撮影と特別ランチ付き",
