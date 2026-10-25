@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-10-23T02:16:21+00:00",
-"text": "2026-10-23 第 22 バッチを出刊：The Mandalorian（1 版面・1 本・残り 1 版面） · token 新規入力 4,051・キャッシュ読み 106.5万・出力 2,100",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.07,
-"mem_total": 16872808448,
-"mem_free": 16141266944,
-"disk_used": 10882756608,
-"disk_free": 30644482048,
-"disk_total": 41527238656,
-"peak": 281739264
-},
-"batch": 22,
-"boards": [
-"The Mandalorian"
-],
-"stories": 1,
-"left": 1,
-"edited": 20,
-"run": 1792714747.2134414,
-"tok": {
-"in": 12,
-"cw": 4039,
-"cr": 1064904,
-"out": 2100,
-"calls": 6,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1071055
-},
-{
 "at": "2026-10-23T09:27:27+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1698,5 +1666,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 610587
+},
+{
+"at": "2026-10-25T07:06:20+00:00",
+"text": "2026-10-25 第 2 バッチを出刊：GTA 6（1 版面・5 本・残り 1 版面） · token 新規入力 4,123・キャッシュ読み 44.5万・出力 1,579",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.32,
+"mem_total": 16872804352,
+"mem_free": 15946121216,
+"disk_used": 10735247360,
+"disk_free": 30547922944,
+"disk_total": 41283170304,
+"peak": 258494464
+},
+"batch": 2,
+"boards": [
+"GTA 6"
+],
+"stories": 5,
+"left": 1,
+"edited": 20,
+"run": 1792911117.065246,
+"tok": {
+"in": 12,
+"cw": 4111,
+"cr": 445142,
+"out": 1579,
+"calls": 6,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 450844
 }
 ]
