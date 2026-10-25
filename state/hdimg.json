@@ -861,7 +861,7 @@
  "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg": {
   "w": 1200,
   "h": 1680,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1346,fit=cover,q=high,sharpen=2/21/2026/10/2026102118251711514_1.jpg": {
@@ -1601,9 +1601,9 @@
   "target": 720,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286345213_664_2000.JPEG": {
   "w": 650,
-  "h": 367,
+  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -2529,6 +2529,12 @@
  },
  "https://static.sanyonews.jp/image/article/size1/a/0/e/6/a0e61ad76c4cd00a9eeb76fdaf9191bd_1.jpg": {
   "w": 452,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/c/4/5/6/c456bc17ca81222fdf8c9f45b8aa9c0c_1.jpg": {
+  "w": 402,
   "h": 640,
   "target": 720,
   "v": 3

@@ -4,7 +4,8 @@
   "https://m.expreview.com/108875.html": "2026-10-25",
   "https://t.co/SIOyFJro6I": "2026-10-25",
   "https://www.instyle.com/black-cat-nail-designs-12182775": "2026-10-25",
-  "https://www.sina.cn/gc/article/nivwyrf6445687.html": "2026-10-25"
+  "https://www.sina.cn/gc/article/nivwyrf6445687.html": "2026-10-25",
+  "https://www.sportsseoul.com/news/read/1643745": "2026-10-25"
  },
  "images": {
   "https://abcnews.com/GMA/Food/starbucks-debuts-new-summer-bearista-cup-after-viral/story?id=134135924": "https://i.abcnewsfe.com/a/2f318564-9917-47c9-a9c5-cdc550b776d4/starbucks-3-ht-er-260623_1782233446807_hpMain_16x9.jpg?w=1600",
@@ -85,7 +86,7 @@
   "https://www.sina.cn/gc/article/nivwyrf6445687.html": null,
   "https://www.sina.cn/news/detail/5356865370458683.html": "http://wx2.sinaimg.cn/middle/005Zl6ySly1iib892m62xj31561pqx3z.jpg",
   "https://www.sportschosun.com/en/celebrity/2026-10-21/202610210100137630008973": "https://www.bing.com/th?id=ONUT.NzflZ33ZlbyafTknJCsykw&pid=News&w=1200",
-  "https://www.starnewskorea.com/en/music/2026/10/25/2026102510120129386": "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg",
+  "https://www.sportsseoul.com/news/read/1643745": null,
   "https://www.tech2geek.net/gta-6-vehicle-customization/": "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200",
   "https://www.toy-people.com/en/?p=115398": "https://img.toy-people.com/member/179241036689_1200.png",
   "https://www.upmedia.mg/tw/lifestyle/food/272014": "https://cdn.upmedia.mg/upfile/img/2026/1021/202610211821342835.webp",
@@ -998,27 +999,6 @@
   },
   {
    "batch": 1,
-   "because": "ILLIT",
-   "date": "2026-10-25",
-   "hits": [],
-   "image": "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg",
-   "kind": "board",
-   "liked": "李沅禧出席香奈儿活动",
-   "score": 8,
-   "source": "스타뉴스",
-   "taste": [
-    [
-     "作品:ILLIT",
-     6
-    ]
-   ],
-   "title": "[Official] ILLIT's Wonhee, making her comeback, set to become a weather fairy… Debuts as a daily weather caster",
-   "url": "https://www.starnewskorea.com/en/music/2026/10/25/2026102510120129386",
-   "words": [],
-   "work": "ILLIT"
-  },
-  {
-   "batch": 1,
    "because": "猫用品",
    "date": "2026-10-24",
    "hits": [
@@ -1101,7 +1081,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "あつ森",
    "date": "2026-10-24",
    "hits": [],
@@ -1141,6 +1121,27 @@
    "url": "https://www.msn.com/en-us/entertainment/general/zenless-zone-zero-official-version-3-4-void-hunter-enchainer-agent-sunbringer-trailer/vi-AA2fZIiP",
    "words": [],
    "work": "绝区零"
+  },
+  {
+   "batch": 2,
+   "because": "ILLIT",
+   "date": "2026-10-24",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "스포츠서울",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "[포토]아일릿, 축하 공연 왔어요!",
+   "url": "https://www.sportsseoul.com/news/read/1643745",
+   "words": [],
+   "work": "ILLIT"
   },
   {
    "batch": 2,
@@ -2157,11 +2158,11 @@
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
