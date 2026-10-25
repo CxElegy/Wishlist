@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T14:17:39+00:00",
+ "checked": "2026-10-25T14:30:24+00:00",
  "fired": {
-  "at": "2026-10-25T13:41:25+00:00",
+  "at": "2026-10-25T14:30:24+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,49 +12,65 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-25T13:24:27+00:00",
+    "at": "2026-10-25T14:30:24+00:00",
     "attempts": 1,
     "day": "2026-10-25",
-    "prog": 194,
-    "resp": "cse_01Ex9TCobhSTLQtKsTrY3uQP",
-    "sig": "d6a153a10daa"
+    "prog": 221,
+    "resp": "cse_01Ck4RLGBHYJpNndKWqgSZmt",
+    "sig": "9a6ec24e4716"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "漫威电影",
+    "猫用品"
+   ],
    "last_batch": "2026-10-25T13:48:16+00:00",
    "last_error": {
     "at": "2026-10-25T11:27:41+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 221,
    "prog_day": "2026-10-25",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
+   ],
+   "sig": "9a6ec24e4716",
    "token_cap": 1000000,
    "tokens_today": 904476,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 25 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "チェーンソーマン",
     "BLEACH Mirrors High",
-    "A2O LITE",
-    "The Mandalorian",
+    "あつ森",
+    "哈利波特剧集",
+    "dota2",
     "FROM",
     "漫威电影",
-    "哈利波特剧集",
-    "Astrae Oratio",
-    "绝区零",
-    "Vaundy",
-    "あつ森",
     "GTA 6",
-    "dota2",
-    "チェーンソーマン"
+    "The Mandalorian",
+    "A2O LITE",
+    "Vaundy",
+    "Astrae Oratio",
+    "绝区零"
    ],
-   "why": "失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 23:18 から）"
+   "need": true,
+   "sig": "701c98c9d60f",
+   "waiting": [],
+   "why": "足りない 13 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
