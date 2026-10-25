@@ -91,6 +91,10 @@ class SpamTest(unittest.TestCase):
         self.assertFalse(digest.is_spam("x", "https://notunisba.ac.id.example.com/a"))
         self.assertFalse(digest.is_spam("x", "https://www.yahoo.co.jp/a"))
 
+    def test_data_uri_redirect_link_is_spam(self):
+        self.assertTrue(digest.is_spam("x", "https://www.fctokyo.co.jp/r?&xml=data:video/mp4;base64,AAAA"))
+        self.assertFalse(digest.is_spam("x", "https://example.com/a?u=1&v=2"))
+
     def test_spam_not_listed_as_pending(self):
         pairs = [(1, entry("Mandalorian trailer", 1)), (2, entry("どこかの動画 The Mandalorian (gQvzdvbtKG)", 2))]
         _, pending = digest.split_unedited(pairs, {"name": "The Mandalorian"})
