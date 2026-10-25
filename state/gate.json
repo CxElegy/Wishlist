@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T20:27:47+00:00",
+ "checked": "2026-10-25T20:32:28+00:00",
  "fired": {
-  "at": "2026-10-25T20:27:47+00:00",
+  "at": "2026-10-25T20:32:28+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -53,12 +53,9 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "あつ森"
-   ],
-   "need": true,
-   "sig": "897e704231d7",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "BLEACH Mirrors High",
     "GTA 6",
@@ -70,9 +67,11 @@
     "A2O LITE",
     "Vaundy",
     "The Mandalorian",
-    "dota2"
+    "dota2",
+    "あつ森",
+    "チェーンソーマン"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:18 から）"
+   "why": "失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:18 から）"
   },
   "photos": {
    "claude": true,
