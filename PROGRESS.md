@@ -58,3 +58,4 @@
 
 - 2026-10-25 記事の写真が出ない段：PR #405。写真探しは 3 時間おき 3 回・頭は写真のある記事・写真なしは字だけ。ux_check ✗0（札 8/195、お客さまのページの再生成待ち）。次：迷惑リンクを落とす規則・札 0 の確認。
 - 2026-10-26 哈利波特剧集の小元素（別の目の指摘 3）：Hermione 194×92 は髪だけで顔なし → emblem.faceless_scrap（写真で顔なし＋横長 ✗、check_whole・broken_image・BROKEN_V 3、兜は残す）· 手元の全 photo 小元素で当たるのは Hermione のみ・unittest 835 OK · PR（この PR）。次：後台で外れて 8 人・Harry のカチンコ／Ronald は 36 の形の健康
+- 2026-10-25 小元素の切り抜きの形（依頼）：PR #409。根＝face_fit の横切りで垂直の切り口・check_whole が下 35% を許す。cutshape（左右 15%・上 25%・凹み 0.45）→ 半身に直す（trim_flat）か外す、前からは repair_flat／drop_broken（BROKEN_V 4）、E12 点検、Before/After の赤枠に小元素を丸ごと。手元の 474 枚中 57 枚が当たる。次：後台の回で本番の E12 を 0 に・Before/After 確認。
