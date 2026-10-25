@@ -211,12 +211,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
-  "w": 1350,
-  "h": 1350,
-  "target": 1280,
-  "v": 3
- },
  "https://assets.mmoexp.com/images/202609/d1bc0f44ac2c34739074a26025e26f7fe194850c.png": {
   "w": 2048,
   "h": 553,
@@ -949,6 +943,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.kbench.com/kbench/article/thumbnail/282596_thumb.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://images.khan.co.kr/article/2026/10/20/news-p.v1.20261020.4c924d72449246b59d479a2890b8217c_P1.jpg": {
   "w": 1200,
   "h": 800,
@@ -1169,12 +1169,6 @@
  "https://img.biggo.com/3EL1nNsIEMVU_JqZ5qdtKWtO6W6Z13ZkiSY4yU_g_VY/fit/1720/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwL2FlZjY4ZjdiLTNmZWQtNDMyMS04YTRiLTYzMWEwZDZkOTQ3Yl8xNzkyNTQ2Njc0X2RlZmF1bHQuanBn.webp": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://img.biggo.com/VJOVFWFYgwAqOUgg8RN9WgnUvCcT-w5N4pl5piDR9R4/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2luZm9fY2FyZC8yMDI2LTEwL2Y4YjcwYjZkLTI2OTQtNGNmZS1iYmQ2LTJiN2I1MTU4MDg2MV8xNzkyNDgxMjgyX2RlZmF1bHQud2VicA.jpg": {
-  "w": 1200,
-  "h": 671,
   "target": 1280,
   "v": 3
  },
@@ -1428,13 +1422,6 @@
   ],
   "why": "看不清"
  },
- "https://img1.mydrivers.com/img/20261020/2c7ec5a4-146c-479a-bccb-c591e2e7fda0.png": {
-  "w": 600,
-  "h": 665,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.27
- },
  "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
   "w": 1035,
   "h": 582,
@@ -1613,11 +1600,11 @@
   "target": 720,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
-  "w": 650,
-  "h": 367,
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286345213_664_2000.JPEG": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://nagoya-dolphins.bl.kuroco-img.app/v=1792466046/files/user/common/2026-27/news/osakashimane_ticket.png": {
   "w": 3840,
@@ -1656,6 +1643,12 @@
   "h": 701,
   "target": 720,
   "v": 3
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnUIo5aLx7VGhUM94AgYAmue4y3L4IVYWvzCYQ05nGaoziDfQXA0JPcenfBsdbXlpRUiJFLk7bIz7CW0_xuWIjh4hftBqkzW4vmUup2yCDqtT": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnW_f1Nw4v_IFUYoJ3RcmwXVdI3lwNQ0yKLZD-OlpEGzDUM-UW1TDXzyGrQPbp_MrWYQoxy8NkHzIJP07j5ZXYbvmQKUbtabJmuxRqA2ie91RBJ3TlicUbynDvsKuTXyHhA==": {
   "w": 934,
@@ -2027,6 +2020,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035789-tennismagv-000-1-view.jpg?exp=10800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
   "h": 1080,
@@ -2289,6 +2288,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prtimes.jp/img/89743/31/resize/d89743-31-d7ad359f25c3e166058d-0.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://punchdrunkcritics.com/wp-content/uploads/2026/10/pdc_avengersdoomsday8.jpg": {
   "w": 1280,
   "h": 720,
@@ -2325,12 +2330,6 @@
   "target": 1280,
   "v": 3
  },
- "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/blt1b726d9377df2d1c/6adba7a6820d538fa1bea34c/gta-6-vinyl-album-soundtrack-ps5-bundle.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://resource.hanteonews.com/content/post/2026/10/21/dfd242c4-5ebd-4dcb-ba8f-49c0c535dece.jpeg": {
   "w": 1500,
   "h": 1000,
@@ -2342,6 +2341,12 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://s.eximg.jp/exnews/feed/nekochan/cc/nekochan_cat50306/nekochan_cat50306_1.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
@@ -2425,12 +2430,6 @@
   "w": 3000,
   "h": 2000,
   "target": 720,
-  "v": 3
- },
- "https://static-cdn.nextapple.tw/prod/2026-10/21B4327F7804DE858182B13811255CD4/a1725a0b6579509ecdb10e63909e9d16_1280.jpeg": {
-  "w": 1280,
-  "h": 960,
-  "target": 1280,
   "v": 3
  },
  "https://static.beebom.com/wp-content/uploads/2026/10/GTA-6-Cars-suggest-a-Live-Action-Trailer-Is-Coming.jpg": {
@@ -2711,6 +2710,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://thesource.com/wp-content/uploads/2026/10/Screenshot-2026-10-24-at-3.30.47-PM.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://thoughtcatalog.com/wp-content/uploads/2026/10/from-s-first-10-minutes-tie-tabitha-s-norman-logic-to-jim-s-death-his-season-4-r.jpg?w=1536&h=768&crop=1": {
   "w": 1536,
   "h": 768,
@@ -2841,12 +2846,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.6Wfh4jKdzB2YVp3ft8NmuQ&pid=News&w=852": {
-  "w": 700,
-  "h": 376,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6yHBTZsf4a3Uqjs0CUeDpQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2937,6 +2936,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://www.bing.com/th?id=ONUT.YQOWVk6tArirle6eiDvGBQ&pid=News&w=600": {
   "w": 600,
   "h": 399,
@@ -2992,12 +2997,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.ii486jH8mTPZkIwpIHg__g&pid=News&w=934": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
