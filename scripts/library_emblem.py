@@ -251,7 +251,8 @@ def due(boards, now):
             out.append((1 if zero else 3, st.get("at", 0), b))
         elif st.get("nv") != names_v and (st.get("state") == "ok" or any(cfg(b).get(k) for k in NAMES_HINT)):
             # そろっていても、届かなかったキャラの版面も（RETRY_HOURS を待たずに）、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
-            out.append((1 if zero and st.get("state") != "ok" else 4, st.get("at", 0), b))
+            # 届かなかった版面の数え直しは途中（running）より先（1.5）：途中の版面は 10 枚ずつで何十回も続き、後ろの 142・146 が 24 時間待たされていた
+            out.append((4 if st.get("state") == "ok" else 1 if zero else 1.5, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
 
 
