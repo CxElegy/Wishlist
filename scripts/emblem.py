@@ -1077,8 +1077,9 @@ def fit_all(name, drawn=False):
                 if inspect(_get(src))[0] == "cutout":
                     img = cand
             if img is None:
-                img = (Image.open(sitedir.SITE_DIR / x["image"]) if x["image"].startswith("emblems/")
-                       else Image.open(io.BytesIO(_get(x["image"])))).convert("RGBA")
+                if x["image"].startswith("emblems/") and x.get("shape") == "cutout":
+                    continue   # 自分の前の出力は整え直さない（commit のたびに face_fit で縮んだ：Black Panther 73×23 → 60×10）。作り直すなら元の画像（source）から
+                img = Image.open(io.BytesIO(_get(x["image"]))).convert("RGBA") if not x["image"].startswith("emblems/") else Image.open(sitedir.SITE_DIR / x["image"]).convert("RGBA")
             full = want_full(x, drawn, item.get("emblem_framing"))
             if full:
                 x.pop("upper", None)   # 前に多数決で書いた「上半身に切る」は、全身と決まったら消す
