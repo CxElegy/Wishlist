@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "0e3c7f081278",
+ "edit_sig": "444486dc8bab",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -316,22 +316,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 14,
-     "source": "www.bntnews.co.kr",
-     "title": "아일릿, 신곡 ‘체포하겠어’ 티저 공개",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBoOFZBTGRENGJ0WmNpQThzeU9HTHRyWUJnYmFYNmsteExzLVU4cUgxYVZfT3U5UkNOU20zZjVuOG0xZllTX21YaTNRSlNQWDBiazZfb1RsTkI0X0JuOE9XeXB3VDM?oc=5"
-    },
-    {
-     "date": "2026-10-18",
-     "n": 15,
-     "source": "스포츠동아",
-     "title": "“아일릿은 언제나 5명”…휴식기 모카, 객석서 지킨 의리",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9LTFFlZjNRcVFBdjBoenR0S1NnZWFBUlNWbmlYZHQ4QzUtc2ZxRkdTUWN4Y0EtY21kWVRxUnNnZFcydUN2UFA3cmJrTVpHSTFobEplQ0JTV0E3dHF5RWVwSWY0SkRfOXI2djVRQ05B?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -519,29 +503,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 13,
-     "source": "Vietnam.vn",
-     "title": "サムスンはGalaxy S27の価格上昇を抑えるためにどのような対策を講じているのか？",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBucUNsdWdhN3RMT3JvWlMwWEs0MDl5NkcxMk5ZUWpsRnpZbDBrZXBibjd6eEVsWGFhOXVlcW11bGFheXZTUG9zSkttSWhMLVd6YVRRQ18wcS1OQ09JS0dLVWNwOWhEang3OVU2bGZwTk9PUE8wZXdvY3p3cw?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 14,
-     "source": "Vietnam.vn",
-     "title": "三星采取了哪些措施来限制Galaxy S27的价格上涨？",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE90Y1pCR3NvWUowQkpnUnFWZjJtVC1XUE01MHFzMWdydDRYNVJjclUtb2pqWkdrUnJ6dkxUcURIWjdZbVJVLTVrTjJuaWFhSVhRcmFqUmEwS2pqYndYNVVyX3VCcEZzTi1BWWlEVjJnRmw4UE5vQlFaby1FRERiY0k?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 15,
-     "source": "Gagadget.com",
-     "title": "Galaxy S27 Ultra battery leaks: first real capacity jump in six years",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPcDZQVm84b2hHdmt4NVJ6RXhHOVVySzhpdjV5czZ4RXFkc3JJdGtiOFlEQV91TFVJV1c2Ylg3WGtxa21BbmRLS3BGSXVCdmNxQ21XTVpiZzlFNjZ0U3dielgzRlR3YUU4dHpyd3hPQWNWRzlsTzZRRmtHb0tYMm5DODZnSTc1cGF6djh2bGxiQWREMldBWHQ1YVFLUElfTGJGc2ZKZGRLc9IBpwFBVV95cUxPcDZQVm84b2hHdmt4NVJ6RXhHOVVySzhpdjV5czZ4RXFkc3JJdGtiOFlEQV91TFVJV1c2Ylg3WGtxa21BbmRLS3BGSXVCdmNxQ21XTVpiZzlFNjZ0U3dielgzRlR3YUU4dHpyd3hPQWNWRzlsTzZRRmtHb0tYMm5DODZnSTc1cGF6djh2bGxiQWREMldBWHQ1YVFLUElfTGJGc2ZKZGRLcw?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -583,6 +544,16 @@
      "image_via": "og:image",
      "url": "https://www.vietnam.vn/ja/samsung-sap-co-nang-cap-quan-trong-cho-dong-galaxy-s27",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "サムスンはGalaxy S27の価格上昇を抑えるためにどのような対策を講じているのか？",
+     "highlight": "価格上昇を抑える",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/25/1792900784521_tnw-1-1792598971209757134857-77-0-1124-2000-crop-17925990269571577823256-17925991722431705148493.jpeg",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/ja/samsung-lam-gi-de-han-che-tang-gia-galaxy-s27",
+     "weight": "normal"
     }
    ],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
@@ -607,29 +578,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 2,
-     "source": "IMDb",
-     "title": "Jump Festa 2027 Reveals Stage Lineup Including One Piece, Chainsaw Man and More",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5iZzVfdnh5a3dMV281WkZXSGxfUFpnbUNMTU5wdmRwTGZOR0VpbDlBWW9UdHV6WFdYYUgzZWtaWUtIeVh5NHNaWkVHUi1lYlp6ZEdKUHZ5RGxnRTNBWXpXUDNJc050WndsYzM0?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 3,
-     "source": "山陽新聞",
-     "title": "MAPPA、レゼ描く15周年キービジュアル解禁 19日に『呪術廻戦』『チェンソーマン』など新情報の発表会実施",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE02MDNmSmdNczdmRGhRaUJPTTdCd1dYWE0xeUxfbnJjaDRrS0xDVmhpNnVEa1hyU2ZQbGlpSEJ4Nmx0bmx4OWlhVVlLUnE4WjY5dnRQUjAzRWM5eHZ1bVljVHV4aHJTZGN2cWVwMEJNcnExa2dkWGQ4?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 4,
-     "source": "山陽新聞",
-     "title": "『チェンソーマン レゼ篇』戦闘場面カット解禁 パンツが…ボムVSチェンソーマン続々",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE80c2hDeGwxOW1SZ2dyOXQtbVkyOGRJRG5MeVNpVjRpc2d2bW9fMVJJcVpzYUcwcEdoQXBveVh4M3FVXzk4RTZrYlpSckctNUVybnZWQTZGVnBMQ2llbmZaUndNVzJQdlU?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -641,6 +589,37 @@
      "image_via": "AI 挑选",
      "url": "https://eiga.com/movie/100938/review/07112238/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "MAPPA、レゼ描く15周年キービジュアル解禁 『呪術廻戦』『チェンソーマン』など新情報の発表会実施",
+     "highlight": "15周年キービジュアル解禁",
+     "image": "https://static.sanyonews.jp/image/article/size1/d/2/7/9/d279786f71916414f12a466a0f0d91a0_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1939155?rct=movie_animation&kw=2025",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "Jump Festa 2027 Reveals Stage Lineup Including One Piece, Chainsaw Man and More",
+     "highlight": "Chainsaw Man",
+     "image": null,
+     "source": "IMDb",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.imdb.com&sz=128",
+     "url": "https://www.imdb.com/de/news/ni66036019/?ref_=ttnw_art_perm",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "『チェンソーマン レゼ篇』戦闘場面カット解禁 ボムVSチェンソーマン続々",
+     "highlight": "戦闘場面カット解禁",
+     "image": "https://static.sanyonews.jp/image/article/size1/d/a/5/9/da59818af0f312573f9214a73e531154_1.jpg",
+     "image_via": "正文图（4 枚から）",
+     "url": "https://www.sanyonews.jp/photo/detail?article_id=1812887",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
@@ -767,27 +746,8 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 12,
-     "source": "新華報導",
-     "title": "周杰倫轉發「中國歌手」影片引熱議 國台辦：認同身分是情感流露",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5ZMEx6bzVGNFc2NVI3Q05oanF6QjVzZTN2b0VneldDYlJsZU05UDRYYmNaVkZaVVA2bmxNRnVBSlJXbWQyWWxDRWZ3cmZwRjVSbVN4WkpfZ2FSSVowLWluamRMTTBPQzA?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-25",
-     "headline": "刘宇宁带病唱三十首，周杰伦只唱八十分？同是演唱会诚意差在哪#微博视频号续航计划# ​",
-     "highlight": "",
-     "image": "http://n.sinaimg.cn/sinakd20261025ac/200/w640h360/20261025/04b2-dbf8f766a00b32d3816cea43c3091e4f.jpg",
-     "image_via": "og:image",
-     "url": "https://k.sina.com.cn/article_7879924009_m1d5ae192903301hvbg.html",
-     "weight": "hero"
-    },
     {
      "blurb": "",
      "date": "2026-10-24",
@@ -800,12 +760,22 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-21",
+     "date": "2026-10-25",
      "headline": "周杰伦转发点赞介绍其为中国歌手的视频，国台办：“台独”妄图用政治手段限制正当表达",
      "highlight": "",
      "image": "https://x0.ifengimg.com/res/2026/7DB009EBC78419C0A22C491DF17530B86991AC52_size23_w689_h293.jpg",
      "image_via": "og:image",
-     "url": "https://feng.ifeng.com/c/8xOwwoUEcVY",
+     "url": "https://ccss3172.blogspot.com/2026/10/blog-post_291.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "周杰伦带小家伙去海滩途经花店为妈妈买花",
+     "highlight": "",
+     "image": "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg",
+     "image_via": "og:image",
+     "url": "http://k.sina.com.cn/article_1308889783_m4e0412b703301kitw.html",
      "weight": "normal"
     }
    ],
@@ -884,22 +854,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 4,
-     "source": "Hawk Live",
-     "title": "Malr1ne Names the Worst Heroes in Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBuZFdWV1JyN2NneFdPV1pNRUhmU1MzX3NYWUFXQ2RIajJJNFprSGhiR2NmalRsVVpEdTZRTVU1TEpsZFFJSDlLeGJaOEcwX0RkbERSb2FOVkdlZ2VLQTItZXR3eHYtNW5Z?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "Dexerto",
-     "title": "Team Liquid announce shock exit of Dota 2 roster",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPdDZLRmNpTzZxRlk4ZmVld0NJVDJVNFMyU3FDZzQyRW8yZEhsSy1IdjFPMy1xZzUtYkRnZ2tUMURoOG1hbU4yNVVLNVhhRkJCLVhBOUx1OGRPTzJSMldMdUs3TjhjNXR2UnA4WW85V3RMRWhzemtFZmxMWFJ0UHdsVU5IdEd6SDVUNlcxV0E3REo?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -907,11 +861,19 @@
      "date": "2026-10-23",
      "headline": "DOTA2-PV宇宙小组赛：Yandex连下两城横扫GL",
      "highlight": "Yandex连下两城",
-     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
-     "image_via": "作品封面",
-     "source": "搜狐网",
-     "source_icon": "https://www.google.com/s2/favicons?domain=sohu.com&sz=128",
+     "image": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG",
+     "image_via": "正文图（3 枚から）",
      "url": "https://timeline.sohu.com/news/FXLMKulDK3",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "Team Liquid announce shock exit of Dota 2 roster",
+     "highlight": "shock exit",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/team-liquid-announce-departure-of-legendary-dota-2-team.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/dota2/team-liquid-announce-shock-exit-of-dota-2-roster-1020725/",
      "weight": "normal"
     }
    ],

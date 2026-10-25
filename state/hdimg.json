@@ -61,24 +61,17 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg": {
+  "w": 480,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261024ac/533/w480h853/20261024/9eba-118b57ea684ab6e90a3ecbe7a575eb32.jpg": {
   "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"
- },
- "http://n.sinaimg.cn/sinakd20261025ac/200/w640h360/20261025/04b2-dbf8f766a00b32d3816cea43c3091e4f.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.515,
-  "local": "pics/30da4acaeea634fa.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
  },
  "http://n.sinaimg.cn/sinakd20261025ac/40/w480h360/20261025/d99a-5afb1acb07adf90ee89a2e57d1a99861.jpg": {
   "w": 480,
@@ -1619,6 +1612,12 @@
   "target": 720,
   "v": 3
  },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
+  "w": 650,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://nagoya-dolphins.bl.kuroco-img.app/v=1792466046/files/user/common/2026-27/news/osakashimane_ticket.png": {
   "w": 3840,
   "h": 2160,
@@ -2581,6 +2580,19 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/d/2/7/9/d279786f71916414f12a466a0f0d91a0_1.jpg": {
+  "w": 452,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.358
+ },
+ "https://static.sanyonews.jp/image/article/size1/d/a/5/9/da59818af0f312573f9214a73e531154_1.jpg": {
+  "w": 640,
+  "h": 268,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size3/1/0/2/7/10277f53ca257918cfc178239badb31c_1.jpg": {
   "w": 320,
   "h": 213,
@@ -2861,6 +2873,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/25/1792900784521_tnw-1-1792598971209757134857-77-0-1124-2000-crop-17925990269571577823256-17925991722431705148493.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/25/1792908961939_gemini-17928986584891520967876-0-0-1341-2560-crop-17928987755871104922749.png": {
@@ -3230,6 +3248,12 @@
   "v": 3
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/03/12/Chainsaw-Man-Devils-Heart-codes-feature-image.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/team-liquid-announce-departure-of-legendary-dota-2-team.jpg": {
   "w": 1600,
   "h": 900,
   "target": 720,

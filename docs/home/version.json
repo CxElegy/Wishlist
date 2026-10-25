@@ -1,10 +1,10 @@
 {
- "admin": "6765a30883a2",
- "admin-ai": "e257e7543e57",
+ "admin": "5d36f95eb592",
+ "admin-ai": "15232b0afc6a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ba1ff43e"
+   "7581b9d0"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "b4fd519f"
   ]
  },
- "admin-emblem": "92ce60a76e8e",
+ "admin-emblem": "aa12552de3d2",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "281da85e"
+   "a448b90a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "834b565a571c",
  "admin-members_marks": {},
- "admin-now": "3484cfc8fc46",
+ "admin-now": "806612355504",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9fff421e"
+   "38fe3a11"
   ],
   "queue": [
    "いまの状況",
@@ -58,11 +58,11 @@
    "aeeb5373"
   ]
  },
- "admin-system": "84830e602e60",
+ "admin-system": "f3da48e116c6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "dcfe8f18"
+   "c0700ce4"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,11 +70,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d1104924"
+   "dca66702"
   ]
  },
  "admin_marks": {},
- "heat": "dfa3aef540fa",
+ "heat": "606b3abb4d70",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -82,18 +82,18 @@
   ],
   "movers": [
    "前週比",
-   "3cef2932"
+   "391f2ae7"
   ],
   "ranking": [
    "ランキング",
-   "0090c910"
+   "fe6d5d00"
   ]
  },
- "index": "935bb2229d08",
+ "index": "9d17f74f15bd",
  "index_marks": {
   "front": [
    "トップ",
-   "4a33e38c"
+   "5d055d2f"
   ],
   "picks": [
    "気になるかも？",
@@ -101,7 +101,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "a6480a98"
+   "f6c103f9"
   ],
   "w-130724c0": [
    "猫用品",
@@ -133,7 +133,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "200434d2"
+   "ad8d920f"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -141,7 +141,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "66099bb7"
+   "7904caee"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "ae988e6d"
+   "90094a5d"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -192,6 +192,6 @@
    "02b8d091"
   ]
  },
- "updated": "10.25 22:34",
+ "updated": "10.25 22:41",
  "wishlist": "8f15268e25a4"
 }
