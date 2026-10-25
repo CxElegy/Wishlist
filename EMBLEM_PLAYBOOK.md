@@ -45,6 +45,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 28 | 小元素が 60×10・209×45 の切れ端（紫の帯）・0 バイトで読めない（漫威电影 Black Panther・BLEACH Mirrors High 2 枚） | 合併のたびに fit_all が前の切り抜き（emblems/ の自分の出力）を切り詰め直して縮む。書き出しに大きさの検査がなかった | `emblem.save_cut`（短い辺 ≥ `CUT_MIN` 64px・横 ≤ 縦×`CUT_WIDE` 3、だめなら書かず前の画像を残す）＋`emblem_fill.drop_broken`（前からの切れ端・0 バイトを外して emblem_reject へ、`due` にも入る） | 2026-10-25 |
 | 29 | 実写の名簿がそろって見えて Cast の節が一度も読まれない（哈利波特剧集 12 のまま）・同じ人が 2 回（Tenoch Huerta／Tenoch Huerta Mejía） | `fill_one` は pool＝who だと roster を呼ばない・wiki: のない版面は記事がない・`_name_key` は名字の足し書きを別人に | `_recount`（NAMES_V が上がった回は必ず roster）・`wd_enwiki`（Wikidata の英語の記事）・`_same_person`・役の `<!-- -->` を消す。NAMES_V 7 | 2026-10-25 |
 | 30 | 作り直しの剧（哈利波特剧集）の小元素が 3/65 で止まる・別人 55 | 役の記事（Harry Potter・Hermione Granger）の画像も「作品名＋役名」の動画も前の映画の役者（Radcliffe・Watson）で、本人確認で全部落ちる | `actor_role_images`：出演者の Fandom の記事の画像＋ファイル検索（"出演者"）で、ファイル名に役の名前がある写真（「Nick Frost as Rubeus Hagrid」「HPTV BTS John Lithgow as Dumbledore」）を役の記事より先に（`PICK_ORDER`・`ROLE_WHY`） | 2026-10-25 |
+| 31 | 名簿 65 人のうち 30 人に一度も順が来ない・もう小元素のいる主役（Harry／Dominic McLaughlin）を毎回試し直す・額で切れた 197×101 が版面の先頭に残る | `subjects` のずらしが STEP ずつ（60 人の後ろなら 0,10,…,50 だけ）・`have` が「役（出演者）」のままで名簿の出演者名と当たらない・`check_whole` の額の判断が haar の顔の上端だけで、ux_check（YuNet の目と口）と違った。前からの小元素は大きさしか見ていなかった | ずらしは 1 回に試す幅（STEP−HEAD）ずつ・`_who_of`（「役（出演者）」→ 出演者も）・`emblem.forehead_cut`（目の高さ < 目〜口 × `EYE_TOP` 1.4）を `check_whole` と `broken_cuts`（drop_broken）に。店長の版面で 11 枚が外れて取り直し | この PR |
 
 ## 2. よく効いた直し方の型（手順）
 
