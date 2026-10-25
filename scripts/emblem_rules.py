@@ -55,7 +55,7 @@ def rules():
         {"stage": STAGES[3], "title": "役の記事の代表画像は顔がなくてもよい", "by": "rule", "code": "emblem_fill.check（trust_noface）",
          "rule": "兜・仮面の役（Din Djarin・アイアンマン）は顔が見つからない。役の記事の代表画像に限って「顔なし」でも残す（顔が見えて別人なら外す）"},
         {"stage": STAGES[3], "title": "別人", "by": "model", "code": "face_id.same_person（SFace）", "reason": "別人",
-         "rule": f"記事の代表画像との類似度 < {face_id.THRESHOLD}。代表画像が合わなければ、いちばん多い同じ顔を本人に"},
+         "rule": f"記事の代表画像との類似度 < {face_id.THRESHOLD}。代表画像が合わなければ、いちばん多い同じ顔を本人に。実写の役：出演者の顔の基準がないときは、ファイル名に出演者・作品の略号（HPTV）がなく、作品の始まりの {ef.SINCE_YEARS} 年前より前に上がった役の記事・動画の画像は数えない（emblem_fill.tied：作り直しの剧の役の記事は前の映画の役者）"},
         # ⑤ どれを選ぶか
         {"stage": STAGES[4], "title": "確かな取り方だけ", "by": "rule", "code": "emblem_fill.AUTO_SOURCES", "reason": "確かでない取り方",
          "rule": "絵のキャラは直接指定・Fandom だけ（普通の言葉の名前は Wikipedia で別物に当たる）。Web 画像検索は自動では選ばない"},
@@ -77,7 +77,7 @@ def rules():
         {"stage": STAGES[5], "title": "顔が小さすぎる（写真）", "by": "model", "code": "emblem.face_sharp（YuNet）", "reason": "顔が小さすぎる",
          "rule": f"切り抜く前の解像度で顔の幅 < {emblem.FACE_PX_MIN}px（小元素に拡大するとぼやける）"},
         {"stage": STAGES[5], "title": "顔が上の端で切れている", "by": "rule", "code": "emblem.check_whole", "reason": "顔が上の端で切れている",
-         "rule": f"上の端に {pct(emblem.TOP_TOUCH)} 以上当たり、顔の上端が高さの {pct(emblem.FACE_TOP)} より上、または目の高さが目〜口の距離 × {emblem.EYE_TOP} より上（額まで切れた。前からの小元素も drop_broken で外す。髪の先だけ〔上 {emblem.HEAD_ROWS}px に {pct(emblem.HEAD_EDGE)} 未満〕なら可）"},
+         "rule": f"上の端に {pct(emblem.TOP_TOUCH)} 以上当たり、顔の上端が高さの {pct(emblem.FACE_TOP)} より上、または目の高さが目〜口の距離 × {emblem.EYE_TOP} より上（額まで切れた。前からの小元素も drop_broken で外す〔上の端に当たったときだけ。前の版で外したものは unbreak が今の規則で見直して戻す〕。髪の先だけ〔上 {emblem.HEAD_ROWS}px に {pct(emblem.HEAD_EDGE)} 未満〕なら可）"},
         {"stage": STAGES[5], "title": "体が左右の端で切れている", "by": "rule", "code": "emblem.check_whole", "reason": "体が左右の端で切れている",
          "rule": f"左右の端（上 {pct(emblem.SIDE_ZONE)}）に {pct(emblem.SIDE_MAX)} を超えて当たる"},
         {"stage": STAGES[5], "title": "小さすぎる", "by": "rule", "code": "emblem.check_whole", "reason": "人物が小さすぎる",

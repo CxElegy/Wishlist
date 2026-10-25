@@ -93,9 +93,67 @@ class Rules(unittest.TestCase):
         Image.new("RGBA", (200, 200)).save(tmp / "emblems" / "a.webp")
         Image.new("RGBA", (200, 200)).save(tmp / "emblems" / "b.webp")
         item = {"emblem": [{"subject": "A", "image": "emblems/a.webp"}, {"subject": "B", "image": "emblems/b.webp"}]}
-        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
+        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "top_share", return_value=0.05), \
                 mock.patch.object(ef.emblem, "forehead_cut", side_effect=lambda im: im.filename.endswith("a.webp")):
             self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["A"])
+        # 上の端に TOP_TOUCH 未満しか当たっていない（頭が全部入っている：The Mandalorian Gideon 1.0%）は額を見ない（check_whole と同じ）
+        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "top_share", return_value=0.01), \
+                mock.patch.object(ef.emblem, "forehead_cut", return_value=True):
+            self.assertEqual(ef.broken_cuts(item), [])
+
+    def test_unbreak_restores_by_current_rule(self):
+        # 前の版の broken_cuts で外した小元素を、今の規則で外れなければ戻し、emblem_reject からも抜く
+        import tempfile
+        from unittest import mock
+        from PIL import Image
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        (tmp / "emblems").mkdir()
+        (tmp / "state").mkdir()
+        Image.new("RGBA", (200, 200)).save(tmp / "emblems" / "g.webp")
+        Image.new("RGBA", (200, 200)).save(tmp / "emblems" / "k.webp")
+        g = {"subject": "G（a）", "image": "emblems/g.webp", "source": "http://s/g"}
+        k = {"subject": "K（b）", "image": "emblems/k.webp", "source": "http://s/k"}
+        (tmp / "state" / "emblem_broken.json").write_text(json.dumps({"M": [{"v": 1, "emblem": g}, {"v": 1, "emblem": k}]}), encoding="utf-8")
+        (tmp / "items.yaml").write_text('items:\n  - name: M\n    emblem_kind: character\n    emblem_reject: ["http://s/g", "http://s/k", "http://s/z"]\n'
+                                        '    emblem:\n      - {subject: "D（c）", image: "emblems/d.webp"}\n', encoding="utf-8")
+        item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
+                mock.patch.object(ef, "broken_cuts", side_effect=lambda it: [x for x in it["emblem"] if x["subject"].startswith("K")]):
+            self.assertEqual([i["name"] for i in ef.due({"items": {}}, [{**item, "emblem_target": 1}], "2026-10-25T00:00:00")], ["M"])
+            self.assertEqual(ef.unbreak(item, log=lambda *_: None), 1)
+            got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+            self.assertEqual(ef.unbreak(got, log=lambda *_: None), 0)   # 見直しは版ごとに 1 回
+        self.assertEqual([x["subject"] for x in got["emblem"]], ["D（c）", "G（a）"])
+        self.assertEqual(got["emblem_reject"], ["http://s/k", "http://s/z"])
+        self.assertEqual(json.loads((tmp / "state" / "emblem_broken.json").read_text(encoding="utf-8")), {"M": [{"v": ef.BROKEN_V, "emblem": k}]})
+
+    def test_role_image_needs_tie_without_anchor_face(self):
+        # 作り直しの剧：役の記事の代表画像は前の映画の役者（PadmaPatil.png）。出演者の顔の基準がなければ、作品・出演者の名前がある画像だけ
+        self.assertFalse(ef.tied("https://x/harrypotter/images/4/45/PadmaPatil.png/revision/latest?cb=20220930", "Anjula Murali", "Harry Potter"))
+        self.assertTrue(ef.tied("https://x/images/6/6e/Ravenclaw_students_HPTV.jpg", "Anjula Murali", "Harry Potter"))
+        self.assertTrue(ef.tied("File:Nick Frost as Rubeus Hagrid.jpg", "Nick Frost", "Harry Potter"))
+        # 作品の始まり（剧 2026-12）の 2 年前より後に上がった画像はこの作品のもの（FROM の Sarah_Myers_Season_3.png?cb=20241106）
+        self.assertFalse(ef.tied("https://x/PadmaPatil.png/revision/latest?cb=20220930", "Anjula Murali", "Harry Potter", "20241225"))
+        self.assertTrue(ef.tied("https://x/Sarah_Myers_Season_3.png/revision/latest?cb=20241106", "Avery Konrad", "From", "20200220"))
+        from unittest import mock
+        from PIL import Image
+        img = Image.linear_gradient("L").convert("RGB")   # 白紙でない画像
+        cands = [{"subject": "P（A）", "image": "http://a", "source": "基準（出演者の写真）", "anchor": True, "anchor_only": True},
+                 {"subject": "P（A）", "image": "http://lead", "source": "役の記事", "untied": True},
+                 {"subject": "P（A）", "image": "http://still", "source": "役の記事", "untied": True},
+                 {"subject": "P（A）", "image": "http://hptv", "source": "役の記事", "untied": False}]
+        info = lambda im: (None, {"faces": 4, "ratio": 0.3, "second": 0.9}) if im.info.get("u") == "http://a" else ("f", {"faces": 1, "ratio": 0.3, "second": 0})
+
+        def insp(data):
+            im = img.copy()
+            im.info["u"] = data
+            return "photo", None, im
+        with mock.patch.object(ef, "_get", side_effect=lambda u, *a: u), mock.patch.object(ef, "inspect", side_effect=insp), \
+                mock.patch.object(ef.face_id, "face_info", side_effect=info), \
+                mock.patch.object(ef.face_id, "same_person", side_effect=lambda f, a, strict: {k for k, x in enumerate(f) if x is not None}), \
+                mock.patch.object(ef, "_hash", side_effect=lambda im: hash(im.info["u"])):
+            got = ef.check(cands, log=lambda *_: None, need_face=True, strict=True)
+        self.assertEqual([c["image"] for c in got], ["http://hptv"])
 
     def test_head_cut_and_blur(self):
         # 頭のてっぺんが上の端で切れた（上 3px に 20% 以上）切り抜きは取るときも前からのものも外す。写真はぼやけたもの（SHARP_MIN 未満）も
