@@ -199,7 +199,29 @@ CAT_PAGES = 5   # 分類の人数は 200 × 5 = 1000 人まで数える
 LH_PAGES = 4    # 1 人の参照は 500 × 4 = 2000 まで数える（それより上は同じ順位）
 
 
-def category_top(api, category, n):
+GROUP_CAT = re.compile(r"^Category:(?:\w+ )?(?:bands|groups|gangs|organi[sz]ations|factions|companies)$", re.I)
+
+
+def groups(api, titles):
+    """ページの分類が「集まり」だけの名前（Category:Music bands・Gangs・Organizations）→ 人ではないページの集合。
+    名前の形では分からない（Gutless Wonders）ので、そのページの分類で決める。「Gang members」のような人の分類は当たらない。"""
+    out = set()
+    for i in range(0, len(titles), 50):
+        cont = {}
+        while True:
+            q = urllib.parse.urlencode({"action": "query", "titles": "|".join(titles[i:i + 50]), "prop": "categories",
+                                        "cllimit": "max", "format": "json", **cont})
+            d = json.loads(_get(f"{api}?{q}", 2_000_000))
+            for pg in (d.get("query") or {}).get("pages", {}).values():
+                if any(GROUP_CAT.search(c.get("title", "")) for c in pg.get("categories") or []):
+                    out.add(pg.get("title"))
+            cont = d.get("continue") or {}
+            if "clcontinue" not in cont:
+                break
+    return out
+
+
+def category_top(api, category, n, dropped=None):
     """Wiki の分類（例：Wizards）のキャラを「ほかのページからのリンク数」→「記事の長さ」の順に多い n 人。
     物語の中心にいるキャラほど多くのページから参照される（AniList にないゲームなどで主要キャラを決める基準）。"""
     titles, cont = [], {}
@@ -213,6 +235,10 @@ def category_top(api, category, n):
             break
     # 分類の説明の記事（「Character」）・下位のページ（「Aino/Storyline」）は人ではない
     titles = [t for t in titles if "/" not in t and t.lower() not in (category.lower(), category.lower().rstrip("s")) and not not_character(t)]
+    gone = groups(api, titles)   # 人の分類に入った集まり（GTA 6 の Music bands：Gutless Wonders・Dolls of Destruction）
+    if dropped is not None:
+        dropped.update(gone)
+    titles = [t for t in titles if t not in gone]
     counts, length = {}, {}
     for t in titles:
         counts[t], cont = 0, {}
