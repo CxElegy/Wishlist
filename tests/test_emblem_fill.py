@@ -106,15 +106,20 @@ class Rules(unittest.TestCase):
             q = {k: v[0] for k, v in parse_qs(urlparse(url).query).items()}
             if q.get("list") == "categorymembers":
                 first = "cmcontinue" not in q
-                names = ["Character", "Aino", "Aino/Storyline"] if first else ["Zhongli"]
+                names = ["Character", "Aino", "Aino/Storyline", "Band"] if first else ["Zhongli"]
                 return js.dumps({"query": {"categorymembers": [{"title": n} for n in names]},
                                  **({"continue": {"cmcontinue": "z", "continue": "-||"}} if first else {})}).encode()
+            if q.get("prop") == "categories":   # 集まりのページ（Music bands）は人ではない
+                return js.dumps({"query": {"pages": {str(i): {"title": x, "categories": [{"title": "Category:Music bands" if x == "Band" else "Category:Characters"}]}
+                                                     for i, x in enumerate(q["titles"].split("|"))}}}).encode()
             t, more = q["titles"], "lhcontinue" not in q
             n = {"Aino": 10, "Zhongli": 500}[t]
             return js.dumps({"query": {"pages": {"1": {"linkshere": [{}] * n, "length": 5}}},
                              **({"continue": {"lhcontinue": "x", "continue": "||"}} if t == "Zhongli" and more else {})}).encode()
         with mock.patch.object(ef.emblem, "_get", fake_get):
-            self.assertEqual(ef.emblem.category_top("https://g.fandom.com/api.php", "Characters", 5), ["Zhongli", "Aino"])
+            gone = set()
+            self.assertEqual(ef.emblem.category_top("https://g.fandom.com/api.php", "Characters", 5, gone), ["Zhongli", "Aino"])
+            self.assertEqual(gone, {"Band"})
 
     def test_brand_without_logo_uses_p18(self):
         """ロゴ（P154）のない製品は Wikidata の代表画像（P18）。iPhone が 0 枚にならない。"""
