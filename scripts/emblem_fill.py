@@ -77,7 +77,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
-NAMES_V = 3   # 3：実写は wiki: の記事の P161・Cast の節も（2026-10-25）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、2026-10-25）
+NAMES_V = 4   # 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -838,6 +838,41 @@ def wd_cast(qid, get=None, title=None):
     return [n for n in out if n]
 
 
+HAND_CATEGORIES = ("Heroes",)   # 手で数えた人数があるときだけ見る分類名（dota2 のヒーロー 126 人＝Dota 2 Wiki の Heroes）
+
+
+def cat_titles(api, cat, limit=500):
+    """分類の記事（名前空間 0）の名前。limit 人まで。"""
+    q = urllib.parse.urlencode({"action": "query", "list": "categorymembers", "cmtitle": f"Category:{cat}",
+                                "cmlimit": limit, "cmnamespace": 0, "format": "json"})
+    return [m["title"] for m in _json(f"{api}?{q}")["query"]["categorymembers"]]
+
+
+def cat_fits(api, cat, leads=(), hand=0):
+    """分類が作品のキャラの名簿に使えるか：3 人以上・作品の登場人物（Wikidata P674）がわかればそのうち 1 人は入っている
+    （GTA 6 の wiki の「Playable characters」は GTA IV・V の主役だけで Jason・Lucia がいない）・
+    手で数えた人数があればその ±10%（dota2 のヒーロー 126：Characters 196 は×、Heroes 127 は○）。"""
+    try:
+        n = len(cat_titles(api, cat))
+        if n < 3 or hand and abs(n - hand) > max(2, hand // 10):
+            return False
+        if not leads:
+            return True
+        q = urllib.parse.urlencode({"action": "query", "titles": "|".join(leads[:40]), "prop": "categories",
+                                    "clcategories": f"Category:{cat}", "redirects": 1, "format": "json"})
+        return any(p.get("categories") for p in ((_json(f"{api}?{q}").get("query") or {}).get("pages") or {}).values())
+    except Exception:
+        return False
+
+
+def pick_category(api, item, leads=(), hand=0):
+    """その wiki で名簿に使う分類：作品の名前の付いた分類 → その作品の wiki ならよくある分類名（手で数えた人数があれば HAND_CATEGORIES も）。
+    どれも cat_fits を通ったものだけ。"""
+    cands = [c for c in [work_category(api, item)] if c]
+    if own_wiki(api, _sitename(api), item):
+        cands += list(CHAR_CATEGORIES) + (list(HAND_CATEGORIES) if hand else [])
+    return next((c for c in cands if cat_fits(api, c, leads, hand)), None)
+
 CAST_LINE = re.compile(r"^\*+\s*(?:'+)?(?:\[\[([^\]|]+)(?:\|([^\]]+))?\]\]|([A-Z][^\[\]{}\n*]+?))(?:'+)?\s+as\s+(?:'+)?(?:\[\[(?:[^\]|]+\|)?([^\]]+)\]\]|([^,;(\[{\n]+))", re.M)
 
 
@@ -892,51 +927,65 @@ def find_sources(item, log=print):
        名前からの推測 → Wikidata の Fandom の番号（P4073、なければシリーズ P179 の P4073。ライブラリの版面と同じ）。
     ② キャラの分類（emblem_category：主要キャラの名簿と人数）。作品の名前の付いた分類（Characters in GTA VI）→ その作品の wiki なら
        よくある分類名（CHAR_CATEGORIES）。AniList の番号があっても探す（AniList は主役の数だけ：チェンソーマン 4 人、2026-10-25）。
-    実写（emblem_people）は名簿が出演者なので分類を使わない（roster が Wikidata の出演者を数える）。手で書いた分類があればそれが先。
+       分類は cat_fits を通るものだけ：作品の登場人物（Wikidata P674）が 1 人は入っている・手で数えた人数（dota2 126）があればそれに合う。
+       前に書いた分類も確かめ、通らなければ（GTA 6 の Playable characters）その分類から入れた名前を名簿から外して探し直す。
+    実写（emblem_people）は名簿が出演者なので分類を使わない（roster が Wikidata の出演者を数える）。
     → 書いたら True。"""
-    if kind_of(item) != "character" or item.get("emblem_people") or item.get("emblem_category"):
-        return False
-    if item.get("emblem_pool") and not item.get("anilist_id"):   # 人数を手で数えて書いた版面（dota2 のヒーロー 126）はそれが先。AniList の主役の数だけのときは探す
-        return False
-    wrote = False
+    if kind_of(item) != "character" or item.get("emblem_people") or "emblem_category" in item and not item.get("emblem_category"):
+        return False   # 分類が空（""）＝前に探して使える分類がなかった
+    wd = {}
+    if item.get("wikidata"):
+        try:
+            import library_emblem
+            wd = library_emblem.wd_entity(item["wikidata"]) or {}
+        except Exception as e:
+            log(f"  [Fandom] Wikidata：{e}")
+    leads = [x for x in wd.get("leads") or [] if not emblem.not_character(x)]
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
     site = _sitename(api) if api else None
     if site is None and not item.get("emblem_api"):
-        api = fandom_api({**item, "emblem_fandom": None}, strict=True)
-        if not api and item.get("wikidata"):
-            try:
-                import library_emblem
-                slug = library_emblem.wd_entity(item["wikidata"]).get("fandom")
-                if slug and re.fullmatch(r"[a-z0-9-]+", str(slug)):
-                    api = f"https://{slug}.fandom.com/api.php"
-            except Exception as e:
-                log(f"  [Fandom] Wikidata：{e}")
-        site = _sitename(api) if api else None
-        if site is None:
-            api = None
-        elif api:
-            slug = re.match(r"https://([^.]+)\.fandom\.com", api).group(1)
-            with WRITE_LOCK:
-                _set_field(item["name"], "emblem_fandom", f"{slug}   # 作品の Fandom（scripts/emblem_fill.py の find_sources が見つけた）")
-            log(f"  [Fandom] {item['name']}：{slug}.fandom.com")
-            wrote = True
-    if not api:
-        return wrote
-    cat = work_category(api, item)
-    if not cat and own_wiki(api, site, item):
-        for c in CHAR_CATEGORIES:
-            q = urllib.parse.urlencode({"action": "query", "list": "categorymembers", "cmtitle": f"Category:{c}",
-                                        "cmlimit": 10, "cmnamespace": 0, "format": "json"})
-            try:
-                if len(_json(f"{api}?{q}")["query"]["categorymembers"]) >= 3:
-                    cat = c
-                    break
-            except Exception:
-                continue
-    if cat:
+        api = None
+    old = item.get("emblem_category")
+    if old:
+        if not leads or api is None or cat_fits(api, old, leads):
+            return False   # 手で書いた分類・確かめられた分類はそのまま
+        try:
+            bad = {_name_key(x) for x in cat_titles(api, old)} - {_name_key(x) for x in leads}
+        except Exception:
+            bad = set()
+        who = [w for w in item.get("emblem_who") or [] if _name_key(w) not in bad]
+        log(f"  [分類] {item['name']}：「{old}」に作品の登場人物がいない → 外して探し直す（名簿から {len(item.get('emblem_who') or []) - len(who)} 人外した）")
         with WRITE_LOCK:
-            _set_field(item["name"], "emblem_category", f"{json.dumps(cat, ensure_ascii=False)}   # キャラの分類（find_sources）")
-        log(f"  [分類] {item['name']}：{cat}")
+            _set_field(item["name"], "emblem_who", json.dumps(who, ensure_ascii=False) + "   # 集める対象（メンバー・キャラ・出演者）")
+            _set_field(item["name"], "emblem_pool", f"{len(who)}   # 主要な要素の数（使えない分類を外したあと、scripts/emblem_fill.py の find_sources）")
+        item = {**item, "emblem_who": who, "emblem_pool": len(who)}
+    hand = int(item.get("emblem_pool") or 0) if not old and not item.get("anilist_id") else 0   # 手で数えた人数（dota2 のヒーロー 126）
+    apis = [api] if api else []
+    if not item.get("emblem_api"):
+        if not apis:
+            g = fandom_api({**item, "emblem_fandom": None}, strict=True)
+            apis += [g] if g else []
+        slug = wd.get("fandom")
+        if slug and re.fullmatch(r"[a-z0-9-]+", str(slug)) and f"https://{slug}.fandom.com/api.php" not in apis:
+            apis.append(f"https://{slug}.fandom.com/api.php")   # 名前から推した wiki（grand-theft-auto-vi）に使える分類がなければ Wikidata の wiki（gta）
+    apis = [a for a in apis if _sitename(a) is not None]
+    wrote = bool(old)
+    cat, use = None, apis[0] if apis else None
+    for a in apis:
+        cat = pick_category(a, item, leads, hand)
+        if cat:
+            use = a
+            break
+    if use and use != api and not item.get("emblem_api"):
+        slug = re.match(r"https://([^.]+)\.fandom\.com", use).group(1)
+        with WRITE_LOCK:
+            _set_field(item["name"], "emblem_fandom", f"{slug}   # 作品の Fandom（scripts/emblem_fill.py の find_sources が見つけた）")
+        log(f"  [Fandom] {item['name']}：{slug}.fandom.com")
+        wrote = True
+    if cat or old:
+        with WRITE_LOCK:
+            _set_field(item["name"], "emblem_category", f"{json.dumps(cat or '', ensure_ascii=False)}   # キャラの分類（find_sources）")
+        log(f"  [分類] {item['name']}：{cat or '使える分類なし'}")
         wrote = True
     return wrote
 
@@ -1687,6 +1736,8 @@ def fill_one(item, log=print):
                 item = next(i for i in load_items() if i["name"] == item["name"])
         except Exception as e:
             log(f"  [名簿] {item['name']}：{e}")
+    if off_roster(item, log):
+        item = next(i for i in load_items() if i["name"] == item["name"])
     if status(item)["state"] == "ok":   # 名簿を数え直しても足りている（名簿を確かめに来ただけ）：集めない
         st = status(item)
         return {"state": "ok", "note": f"名簿を確かめた：{st['have']} / {st['target']} 枚でそろっている", "tried": {}}
@@ -1751,6 +1802,24 @@ def fill_one(item, log=print):
                 "note": f"{added} 枚足した（{path}）。あと {st['target'] - st['have']} 枚、次の回に続きの {STEP} 人"}
     return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh),
             "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}。新しい記事が来たらすぐ、来なくても {RETRY_HOURS} 時間後にもう一度"}
+
+
+def off_roster(item, log=print):
+    """キャラの版面で、名簿（emblem_who）にいない人の小元素を外す（名簿が勝つ：dota2 は手で数えたヒーローの名簿に戻したのに、
+    分類「Characters」で足した伝承のキャラ 6 枚が残っていた・GTA 6 は使えない分類を外したあとの GTA IV・V の主役）。
+    実写は役の名前で書くので見ない。名簿がなければ何もしない。→ 外した枚数。"""
+    who = item.get("emblem_who") or []
+    if kind_of(item) != "character" or live_action(item) or not who:
+        return 0
+    keys = {_name_key(w) for w in who}
+    ems = [x for x in item.get("emblem") or [] if isinstance(x, dict)]
+    keep = [x for x in ems if _name_key(x.get("subject")) in keys or _name_key(_base_subject(x.get("subject"))) in keys]   # 「Soldier 11」は名前のまま
+    if len(keep) == len(ems):
+        return 0
+    with WRITE_LOCK:
+        emblem.write_item(item["name"], keep, None)
+    log(f"  [名簿] {item['name']}：名簿にいない {len(ems) - len(keep)} 枚を外した")
+    return len(ems) - len(keep)
 
 
 def fresh_have(item):

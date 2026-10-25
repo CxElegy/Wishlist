@@ -528,7 +528,7 @@ class Workflows(unittest.TestCase):
         self.assertTrue(steps["kick"].get("continue-on-error"))
         emblem = next(s for s in wf["jobs"]["run"]["steps"] if "emblem_fill.py" in str(s.get("run")))
         self.assertTrue(emblem.get("continue-on-error"))
-        commit = steps["提交"]["run"]
+        commit = steps["commit"]["run"]
         add = commit[commit.index("ゲートの記録は"):commit.index("git add state/gate.json")]
         add = next(line for line in add.splitlines() if line.strip().startswith("if ["))   # 条件の行（説明の行は除く）
         self.assertNotIn("GATE_FIRE", add)   # 変数が開いているだけでは足さない

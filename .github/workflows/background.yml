@@ -128,6 +128,7 @@ jobs:
           if grep -q "^[a-z]* *Claude を起こした" /tmp/fire.txt; then echo "fired=true" >> "$GITHUB_OUTPUT"; fi
 
       - name: 提交
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -142,6 +143,7 @@ jobs:
             git add state/gate.json state/log/gate.json 2>/dev/null || true
           fi
           git diff --cached --quiet && { echo "変化なし：コミットしない"; exit 0; }
+          git diff --cached --quiet -- items.yaml || echo "items=true" >> "$GITHUB_OUTPUT"   # 店長の版面が変わった：下でライブラリへ写す
           python scripts/digest.py render
           git add docs
           git commit -q -m "后台作業 $(TZ=Asia/Tokyo date +'%F %H:%M')"
@@ -158,6 +160,15 @@ jobs:
             sleep $((i * 5))
           done
           exit 1
+
+      # bot の push では library.yml（items.yaml の push で走る）が起きない：ライブラリの店長の版面の写し（boards.config）が次の定時まで古いまま
+      # （BLEACH Mirrors High が items.yaml では名簿 476・小元素 19 なのに boards では 6 のまま）→ items.yaml を変えた回は自分で起こす
+      - name: ライブラリへ写す（items.yaml を変えた回）
+        if: steps.commit.outputs.items == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run library.yml -f users_only=true
 
       - name: 接着跑（提交之后）
         if: steps.more.outputs.again == 'true'
