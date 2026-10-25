@@ -1892,3 +1892,18 @@ class FindSources(unittest.TestCase):
         item = {"name": "FROM", "keywords": ["FROM"]}
         with mock.patch.object(ef, "_json", lambda url, *a: {"query": {"general": {"sitename": "Some Other Wiki"}}}):
             self.assertIsNone(ef.fandom_api(item, strict=True))
+
+    def test_fit_all_does_not_refit_its_own_output(self):
+        """commit のたびに fit_all が前の切り抜きを face_fit で切り詰め直して縮んだ（Black Panther 73×23 → 60×10）。自分の出力は触らない。"""
+        from PIL import Image
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "emblems").mkdir()
+            Image.new("RGBA", (73, 120), (200, 0, 0, 255)).save(tmp / "emblems" / "a.webp")
+            y = '  - name: "A"\n    emblem:\n      - {subject: "x", image: "emblems/a.webp", shape: "cutout", fs: 0.3}\n'
+            (tmp / "items.yaml").write_text("items:\n" + y, encoding="utf-8")
+            with mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
+                 mock.patch.object(ef.emblem, "face_fit", side_effect=AssertionError("refit")):
+                ef.emblem.fit_all("A")
+                ef.emblem.fit_all("A")
+            self.assertEqual(Image.open(tmp / "emblems" / "a.webp").size, (73, 120))

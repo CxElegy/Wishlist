@@ -276,7 +276,7 @@ def weekly(page_url):
     for name in sorted(set(stories) | set(facts)):
         items = sorted(stories.get(name, []), key=lambda s: {"hero": 0, "lead": 1}.get(s.get("weight"), 2))
         lines = [f"**{f['label']}有变化**：{f['text']}" for f in facts.get(name, [])]
-        lines += [("**[重大]** " if s["weight"] == "hero" else "• ") + f"[{_cut(s['headline'], 90)}]({s['url']})"
+        lines += [("**[重大]** " if s.get("weight") == "hero" else "• ") + f"[{_cut(s['headline'], 90)}]({s['url']})"
                   for s in items[:MAX_LINES]]
         more = len(items) - MAX_LINES
         if more > 0:

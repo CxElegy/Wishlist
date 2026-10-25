@@ -52,6 +52,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 35 | お客さまの版面（ライブラリ）だけ頭が切れた小元素が残る（ポケットモンスター 2・Mrs. GREEN APPLE 1、店長は 0） | `broken_cuts` は手元の `emblems/` の画像だけ見る → 公開の箱へ上げた前の回の小元素は一度も見ない・作り直しで 0 枚なら前のものをそのまま残していた | `emblem_fill.broken_image`（broken_cuts と同じ式）を `library_emblem.unbroken` で公開の箱の画像に・emblem_state.bv が BROKEN_V より古い版面は失敗の待ちも待たずに 1 回（型：同じ規則を店長とお客さまの両方の入口に、片方だけ直さない） | （この PR） |
 | 36 | 哈利波特剧集 Hermione（Arabella Stanton）194×92：額から上の髪だけで顔がない（下の端が額の途中） | 顔の割り当て（剧照 cos 0.60）は通るが、切り抜き側の点検は「顔が見つかったら」しか見ない（forehead_cut・face_sharp は顔なしなら False/None で通す）。兜の顔なしと区別がなかった | `emblem.faceless_scrap`：写真で YuNet の顔がなく横が縦の 1.3 倍超 → check_whole ✗・broken_image ✗・BROKEN_V 3。縦長の兜（Din Djarin 396×492）は残る。1 枚ずつ外さない | 2026-10-26 |
 | 37 | 切り抜きの形がおかしい（哈利波特剧集 Gregory Goyle：左右の下がまっすぐ縦に切れて「右下が四角く」体が途中で終わる）・かぎ形の出っぱり | 顔の大きさをそろえる `face_fit` が横幅 `bw` で切って体の横に垂直の切り口ができ、`check_whole` の左右の端の検査は下 35%（肩）を許していた。凹みを測る物差しもなかった | `cutshape`：左右の端にそって高さの `FLAT_RUN` 15% を超える直線は切り口が始まる行で下を切り落として半身（`trim_flat`・`FLAT_KEEP` 40%・顔の下まで）、上の端は横幅の `FLAT_TOP` 25%、`SOLID_MIN` 0.45 未満の凹みは ✗。前からの小元素は `repair_flat` で直し直せないものは `drop_broken`（`BROKEN_V` 4）。点検 E12 | #409 |
+| 38 | 切り抜きが commit のたびに縮む（Black Panther 73×23 → 60×10・mashiro-kuna 304×217 → 209×45） | `fit_all` が emblems/ の自分の出力をもう一度 `face_fit` で切り詰めた（#372 は書き出しの下限だけで根は残った） | `fit_all`：image が emblems/ の cutout は整え直さない（元が透明な source だけ source から作り直す）。テスト：同じ版面で 2 回走らせても大きさが変わらない | 2026-10-26 |
 
 ## 2. よく効いた直し方の型（手順）
 
