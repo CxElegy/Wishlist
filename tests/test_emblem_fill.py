@@ -1560,8 +1560,8 @@ class FindSources(unittest.TestCase):
             tmp = pathlib.Path(d)
             (tmp / "items.yaml").write_text('items:\n  - name: M\n    type: show\n    emblem_kind: character\n', encoding="utf-8")
             item = {"name": "M", "type": "show", "emblem_kind": "character", "emblem_people": True, "wikidata": "Q1",
-                    "wiki": ["en:Avengers: Doomsday"], "emblem_who": ["A"], "emblem_roles": {"A": "Thor"}}
-            cast = lambda q, title=None: ["A", "B"] if title else []
+                    "wiki": ["en:Avengers: Doomsday", "en:Marvel Cinematic Universe"], "emblem_who": ["A"], "emblem_roles": {"A": "Thor"}}
+            cast = lambda q, title=None: ["A", "B"] if title == ("en", "Avengers: Doomsday") else []   # 1 言語に記事 2 つでも 1 つ目を読む
             with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef, "wd_cast", side_effect=cast), \
                     mock.patch.object(ef, "wiki_cast", return_value=[("B", "Hulk"), ("C", "Doctor Doom")]):
                 self.assertEqual(ef.roster(item, log=lambda *_: None), 3)

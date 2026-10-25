@@ -77,7 +77,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
-NAMES_V = 4   # 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
+NAMES_V = 5   # 5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -897,11 +897,9 @@ def live_cast(item, log=print):
     """実写の名簿＝出演者：作品の Wikidata の P161 → wiki: の記事の作品の P161（フランチャイズ：漫威电影は Avengers: Doomsday）
     → 記事の「Cast」の節（新しい剧：哈利波特剧集）。同じ人は 1 回（_name_key）。→ (名前, {出演者: 役})"""
     names, roles = [], {}
+    arts = [(lang, title) for lang, _, title in (str(w).partition(":") for w in item.get("wiki") or []) if title]   # 同じ言語の記事が 2 つでも全部（wiki_titles は 1 言語 1 つ）
     tries = [lambda: wd_cast(item["wikidata"])] if item.get("wikidata") else []
-    for lang, title in wiki_titles(item).items():
-        tries.append(lambda lang=lang, title=title: wd_cast(None, title=(lang, title)))
-    for lang, title in wiki_titles(item).items():
-        tries.append(lambda lang=lang, title=title: wiki_cast(lang, title))
+    tries += [lambda a=a: wd_cast(None, title=a) for a in arts] + [lambda a=a: wiki_cast(*a) for a in arts]
     for f in tries:
         try:
             got = f()
