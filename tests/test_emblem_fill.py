@@ -1535,11 +1535,12 @@ class FindSources(unittest.TestCase):
             tmp = pathlib.Path(d)
             (tmp / "items.yaml").write_text('items:\n  - name: dota2\n    emblem_kind: character\n    emblem:\n'
                                             '      - {subject: "Axe", image: "a.webp"}\n      - {subject: "Axe 2", image: "a2.webp"}\n'
-                                            '      - {subject: "Soldier 11", image: "s.webp"}\n      - {subject: "Pololo", image: "p.webp"}\n', encoding="utf-8")
+                                            '      - {subject: "Soldier 11", image: "s.webp"}\n      - {subject: "Pololo", image: "p.webp"}\n'
+                                            '      - {subject: "Unnamed Officer 1", image: "u.webp"}\n', encoding="utf-8")
             item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
-            item["emblem_who"] = ["Axe", "Soldier 11"]
+            item["emblem_who"] = ["Axe", "Soldier 11", "Unnamed Officer"]   # 名簿にいても名前のない端役は人でない
             with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp):
-                self.assertEqual(ef.off_roster(item, log=lambda *_: None), 1)
+                self.assertEqual(ef.off_roster(item, log=lambda *_: None), 2)
                 self.assertEqual(ef.off_roster({**item, "emblem_people": True, "type": "show"}, log=lambda *_: None), 0)
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual([x["subject"] for x in got["emblem"]], ["Axe", "Axe 2", "Soldier 11"])

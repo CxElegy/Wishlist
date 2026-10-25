@@ -1816,7 +1816,7 @@ def off_roster(item, log=print):
     who = item.get("emblem_who") or []
     if kind_of(item) != "character" or live_action(item) or not who:
         return 0
-    keys = {_name_key(w) for w in who}
+    keys = {_name_key(w) for w in who if not emblem.not_character(w)}   # 名簿にいても人でない名前（Unnamed Officer 1）は外す
     ems = [x for x in item.get("emblem") or [] if isinstance(x, dict)]
     keep = [x for x in ems if _name_key(x.get("subject")) in keys or _name_key(_base_subject(x.get("subject"))) in keys]   # 「Soldier 11」は名前のまま
     if len(keep) == len(ems):
