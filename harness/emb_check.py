@@ -15,6 +15,8 @@
   E9 中身        元の画像のファイル名が別の作品の絵（大乱闘のフィギュア・amiibo など、BAD_SOURCE）
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
+  E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
+                 （scripts/cutshape.py：取るときの emblem.trim_flat・drop_broken と同じ式。まっすぐでよいのは下の端だけ）
 顔のモデル（face_id、初回に約 39MB）が取れないときは E7 の顔・E11 を見ない（✗ の行に「顔のモデルなし」と出す）。
 別人・遠景・ほぼ同じだが別の動画の場面は画素では決められないので、--emb full の写真の一覧を目で見る（EMBLEM_AUDIT.md）。
 E4〜E6 は網页で測る：ふだんは出ている 1 枚、--emb full のときは候補を全部差し替えて測り、写真の一覧（OUT/emb/sheet-<だれ>-<幅>.png）を残す。
@@ -34,6 +36,7 @@ from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
+import cutshape  # noqa: E402  （numpy・OpenCV・PIL だけ。emblem は import しない）
 FIRST_BOARD = "はじめに"   # user_pages.FIRST_BOARD
 SAME_BITS = 4              # emblem_fill.SAME_BITS
 TOP_MAX, TOP_TOUCH = 0.5, 0.03   # emblem.TOP_MAX・TOP_TOUCH（取るときの規則）。emblem を import すると sources の opener が入り Wikimedia が 403 を返す（E2 を見誤った）
@@ -202,7 +205,7 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 12)}
+    found = {f"E{n}": [] for n in range(1, 13)}
     nomodel = False
     src_of = sources()
     shots, embdir = [], out / "emb"
@@ -230,6 +233,9 @@ def check(pg, who, width, out, full=False, guest=False):
                 why = cut_edge(img, faces)
                 if why:
                     found["E7"].append(f"{s['k']} {name} {why}")
+                flaw = cutshape.flat_flaw(img)
+                if flaw:
+                    found["E12"].append(f"{s['k']} {name}")
                 if crowd(faces):
                     found["E11"].append(f"{s['k']} {name} 顔 {len(faces)}")
             h = dhash(img)
@@ -283,6 +289,6 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E12": "形の傷（直線の切り口・凹み）"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     return bad + (["E7・E11 顔のモデルなし（額の切れ・何人もは見ていない）"] if nomodel else [])

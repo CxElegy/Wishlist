@@ -23,6 +23,12 @@ def png(path, box=None, size=(1400, 3000)):
 
 
 class Compose(unittest.TestCase):
+    def test_red_box_grows_to_whole_emblem(self):   # #389：赤枠が変わった小元素の頭を含んでいなかった
+        grown = ba.grow_to_emblems([(100, 200, 160, 260)], [(120, 100, 300, 400), (900, 900, 1000, 1000)])
+        self.assertEqual(grown, [(100, 100, 300, 400)])   # 触れた小元素を丸ごと。触れない小元素は含めない
+        self.assertEqual(ba.grow_to_emblems([(0, 0, 10, 10)], None), [(0, 0, 10, 10)])
+        self.assertEqual(ba.grow_to_emblems([(0, 0, 500, 500), (10, 10, 20, 20)], []), [(0, 0, 500, 500)])
+
     def test_same_two_send_nothing(self):
         with tempfile.TemporaryDirectory() as t:
             a, b = pathlib.Path(t, "a.png"), pathlib.Path(t, "b.png")

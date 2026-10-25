@@ -169,7 +169,11 @@ class Fill(unittest.TestCase):
 
         def png(cut):
             im = Image.new("RGBA", (100, 120), (0, 0, 0, 0))
-            im.paste((200, 150, 120, 255), (30, 0 if cut else 20, 70, 120))
+            if cut:
+                im.paste((200, 150, 120, 255), (30, 0, 70, 120))
+            else:   # 丸い人物（左右の端の直線の切り口がない）
+                from PIL import ImageDraw
+                ImageDraw.Draw(im).ellipse((20, 15, 80, 119), fill=(200, 150, 120, 255))
             b = io.BytesIO()
             im.save(b, "PNG")
             return b.getvalue()

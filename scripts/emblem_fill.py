@@ -2072,11 +2072,13 @@ def broken_image(im, photo):
         return True
     if photo and emblem.faceless_scrap(im):   # 顔がなく髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）
         return True
+    if emblem.flat_flaw(im):   # 形の傷：左右・上の端の直線の切り口、凹みすぎ（半身に切り落とせるものは drop_broken の repair_flat が先に直す）
+        return True
     fq = emblem.face_sharp(im) if photo else None   # 写真のぼやけ（拡大した剧照）。顔の幅は書き出したあとは縮んでいるので見ない
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 3   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）
+BROKEN_V = 4   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した
 
 
 def _broken_log(d=None):
@@ -2121,8 +2123,41 @@ def unbreak(item, log=print):
     return len(back)
 
 
+def repair_flat(item, log=print):
+    """前からの切り抜きの、左右の端の直線の切り口を、切り口が始まる行で下を切り落として半身に直す（emblem.trim_flat）。
+    直せないもの・全身の目印（body）のあるもの・読めないものは触らない（broken_cuts が外す）。顔の割合 fs も測り直す。→ 直した枚数。"""
+    from PIL import Image
+    fixed = []
+    for x in item.get("emblem") or []:
+        im = str(x.get("image") or "") if isinstance(x, dict) else ""
+        p = emblem.sitedir.SITE_DIR / im
+        if not im.startswith("emblems/") or x.get("shape") in ("logo", "icon", "badge") or x.get("body") or not p.exists():
+            continue
+        try:
+            img = Image.open(p).convert("RGBA")
+            if not emblem.flat_flaw(img):
+                continue
+            out = emblem.trim_flat(img)
+            if out.size == img.crop(img.getchannel("A").getbbox()).size:
+                continue
+            with WRITE_LOCK:
+                emblem.save_cut(out, p.stem)
+        except Exception:
+            continue
+        f = emblem.face_box(out)
+        if x.get("fs") and f:
+            x["fs"] = round(f[3] / out.height, 3)
+        fixed.append(x)
+    if fixed:
+        with WRITE_LOCK:
+            emblem.write_item(item["name"], item["emblem"], None)
+        log(f"  [直した] {item['name']}：左右の直線の切り口を半身に {len(fixed)} 枚（{'、'.join(b.get('subject', '') for b in fixed)}）")
+    return len(fixed)
+
+
 def drop_broken(item, log=print):
-    """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。"""
+    """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。直せる形の傷は先に repair_flat で直す。"""
+    repair_flat(item, log)
     bad = broken_cuts(item)
     if not bad:
         return 0
