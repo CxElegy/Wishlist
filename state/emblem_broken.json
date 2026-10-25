@@ -418,6 +418,30 @@
     "page": "https://bleach.fandom.com/wiki/Kanae_Katagiri",
     "shape": "cutout"
    }
+  },
+  {
+   "v": 2,
+   "emblem": {
+    "subject": "Mabashi",
+    "why": "Mabashi（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-mabashi.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/a/ac/Ep99MabashiProfile.png/revision/latest/scale-to-width-down/400?cb=20210415194026&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Mabashi",
+    "shape": "cutout"
+   }
+  },
+  {
+   "v": 2,
+   "emblem": {
+    "subject": "Grand Fisher",
+    "why": "Grand Fisher（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-grand-fisher.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/1/16/Ep111IsshinConfrontsGrandFisher.png/revision/latest/scale-to-width-down/600?cb=20230618060937&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Grand_Fisher",
+    "shape": "cutout",
+    "ar": 0.826,
+    "fs": 0.321
+   }
   }
  ],
  "The Mandalorian": [
