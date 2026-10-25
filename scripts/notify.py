@@ -274,7 +274,7 @@ def weekly(page_url):
         return send({"username": "关注清单通信", "content": f"**关注清单周报 · {period}**\n本周没有新消息。\n{page_url}"})
     embeds = []
     for name in sorted(set(stories) | set(facts)):
-        items = sorted(stories.get(name, []), key=lambda s: {"hero": 0, "lead": 1}.get(s["weight"], 2))
+        items = sorted(stories.get(name, []), key=lambda s: {"hero": 0, "lead": 1}.get(s.get("weight"), 2))
         lines = [f"**{f['label']}有变化**：{f['text']}" for f in facts.get(name, [])]
         lines += [("**[重大]** " if s["weight"] == "hero" else "• ") + f"[{_cut(s['headline'], 90)}]({s['url']})"
                   for s in items[:MAX_LINES]]
