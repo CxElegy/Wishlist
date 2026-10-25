@@ -77,7 +77,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
-NAMES_V = 2   # 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、2026-10-25）
+NAMES_V = 3   # 3：実写は wiki: の記事の P161・Cast の節も（2026-10-25）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -488,13 +488,13 @@ def roster(item, log=print):
     old = list(item.get("emblem_who") or [])
     who = [x for x in old if not emblem.not_character(x)]   # 前に入った Player・Parents も名簿から外す（新しく足す名前だけでなく）
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
-    names, how = [], ""
+    names, how, cast_roles = [], "", {}
     if item.get("emblem_category") and api:
         names = emblem.category_top(api, item["emblem_category"], 999)   # 物語の中心にいる（ほかのページから多く参照される）順
         how = f"分類「{item['emblem_category']}」の人数"
-    elif live_action(item) and item.get("wikidata"):
-        names = wd_cast(item["wikidata"])   # 実写：名簿は出演者（emblem_who は出演者の名前、役は gather_roles が引く）
-        how = "Wikidata の出演者（P161）の人数"
+    elif live_action(item) and (item.get("wikidata") or item.get("wiki")):
+        names, cast_roles = live_cast(item, log)   # 実写：名簿は出演者（emblem_who は出演者の名前、役は gather_roles が引く）
+        how = "出演者（Wikidata の P161・記事の Cast の節）の人数"
     elif item.get("anilist_id"):
         names = emblem.anilist_main(item["anilist_id"], 50)
         how = "AniList の主役（role MAIN）の人数"
@@ -509,6 +509,9 @@ def roster(item, log=print):
         if add or who != old:
             _set_field(item["name"], "emblem_who", json.dumps(who + add, ensure_ascii=False)
                        + "   # 集める対象（メンバー・キャラ・出演者）")
+        roles = {**{k: v for k, v in cast_roles.items() if k in who + add}, **(item.get("emblem_roles") or {})}   # 記事の「X as Y」の役（手で書いた・前に引いた役が先）
+        if roles != (item.get("emblem_roles") or {}):
+            _set_field(item["name"], "emblem_roles", json.dumps(roles, ensure_ascii=False) + "   # 出演者 → 役（記事の Cast の節・gather_roles）")
     log(f"  [名簿] {item['name']}：{how} {n} → 上限 {min(CEIL['character'], n)}、名前を {len(add)} 人足した")
     return n
 
@@ -819,11 +822,13 @@ def own_wiki(api, site, item):
     return any(k and len(k) >= 4 and any(k in w for w in titles) for k in (slug, core))
 
 
-def wd_cast(qid, get=None):
-    """Wikidata の出演者（P161）の名前（英語、Wikidata の順）。実写の作品の名簿。"""
+def wd_cast(qid, get=None, title=None):
+    """Wikidata の出演者（P161）の名前（英語、Wikidata の順）。実写の作品の名簿。title=(言語, 記事名) ならその記事の作品の P161。"""
     import library
     get = get or library._wd_get
-    ent = ((get({"action": "wbgetentities", "ids": qid, "props": "claims"}).get("entities") or {}).get(qid) or {})
+    q = {"sites": f"{title[0]}wiki", "titles": title[1]} if title else {"ids": qid}
+    ents = get({"action": "wbgetentities", "props": "claims", **q}).get("entities") or {}
+    ent = next((v for k, v in ents.items() if k.startswith("Q")), {})
     ids = [((c.get("mainsnak") or {}).get("datavalue") or {}).get("value", {}).get("id") for c in (ent.get("claims") or {}).get("P161") or []]
     ids = [i for i in ids if i]
     out = []
@@ -831,6 +836,54 @@ def wd_cast(qid, get=None):
         ents = get({"action": "wbgetentities", "ids": "|".join(ids[i:i + 50]), "props": "labels", "languages": "en"}).get("entities") or {}
         out += [((ents.get(q) or {}).get("labels") or {}).get("en", {}).get("value") for q in ids[i:i + 50]]
     return [n for n in out if n]
+
+
+CAST_LINE = re.compile(r"^\*+\s*(?:'+)?(?:\[\[([^\]|]+)(?:\|([^\]]+))?\]\]|([A-Z][^\[\]{}\n*]+?))(?:'+)?\s+as\s+(?:'+)?(?:\[\[(?:[^\]|]+\|)?([^\]]+)\]\]|([^,;(\[{\n]+))", re.M)
+
+
+def wiki_cast(lang, title):
+    """Wikipedia の記事の「Cast」の節の「X as Y」→ [(出演者, 役)]（記事の順＝主役が先）。新しい剧で Wikidata に出演者がまだ少ないとき。"""
+    base = f"https://{lang}.wikipedia.org/w/api.php?format=json&action=parse&redirects=1&page=" + urllib.parse.quote(title)
+    secs = _json(base + "&prop=sections").get("parse", {}).get("sections") or []
+    sec = next((s for s in secs if re.match(r"(?i)(main )?cast\b|starring", s.get("line", ""))), None)
+    if not sec:
+        return []
+    text = _json(base + f"&prop=wikitext&section={sec['index']}").get("parse", {}).get("wikitext", {}).get("*", "")
+    out = []
+    for m in CAST_LINE.finditer(text):
+        actor = re.sub(r"\s*\(.*?\)", "", m.group(2) or m.group(1) or m.group(3) or "").strip()
+        role = re.sub(r"\s*\(.*?\)|'+", "", m.group(4) or m.group(5) or "").strip()
+        if actor and len(actor.split()) <= 4:
+            out.append((actor, role))
+    return out
+
+
+def live_cast(item, log=print):
+    """実写の名簿＝出演者：作品の Wikidata の P161 → wiki: の記事の作品の P161（フランチャイズ：漫威电影は Avengers: Doomsday）
+    → 記事の「Cast」の節（新しい剧：哈利波特剧集）。同じ人は 1 回（_name_key）。→ (名前, {出演者: 役})"""
+    names, roles = [], {}
+    tries = [lambda: wd_cast(item["wikidata"])] if item.get("wikidata") else []
+    for lang, title in wiki_titles(item).items():
+        tries.append(lambda lang=lang, title=title: wd_cast(None, title=(lang, title)))
+    for lang, title in wiki_titles(item).items():
+        tries.append(lambda lang=lang, title=title: wiki_cast(lang, title))
+    for f in tries:
+        try:
+            got = f()
+        except Exception as e:
+            log(f"  [名簿] {item['name']}：{e}")
+            continue
+        for x in got:
+            a, r = x if isinstance(x, tuple) else (x, "")
+            if r and a not in roles:
+                roles[a] = r
+            names.append(a)
+    seen, out = set(), []
+    for n in names:
+        if _name_key(n) not in seen:
+            seen.add(_name_key(n))
+            out.append(n)
+    return out, roles
 
 
 def find_sources(item, log=print):
