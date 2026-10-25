@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-25T19:17:27+00:00",
+ "checked": "2026-10-25T20:27:47+00:00",
  "fired": {
-  "at": "2026-10-25T19:19:51+00:00",
+  "at": "2026-10-25T20:27:47+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,57 +12,67 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-25T19:19:51+00:00",
+    "at": "2026-10-25T20:27:47+00:00",
     "attempts": 1,
     "day": "2026-10-26",
-    "prog": 27,
-    "resp": "cse_01AB1L6rhDnSndvoLYpoKZkq",
-    "sig": "73eb5ec15f96"
+    "prog": 30,
+    "resp": "cse_01Q9VGn5CS86c1io3y6k9KPz",
+    "sig": "00332c6d9c12"
    },
    "items": [
-    "あつ森",
+    "A2O LITE",
+    "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
     "滑雪",
-    "绝区零"
+    "漫威电影",
+    "猫用品"
    ],
-   "last_batch": "2026-10-25T16:44:59+00:00",
+   "last_batch": "2026-10-25T19:26:41+00:00",
    "last_error": {
     "at": "2026-10-25T16:34:16+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 27,
+   "prog": 30,
    "prog_day": "2026-10-26",
    "ripe": [
-    "あつ森",
-    "滑雪",
-    "绝区零"
+    "A2O LITE",
+    "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "漫威电影"
    ],
-   "sig": "73eb5ec15f96",
+   "sig": "00332c6d9c12",
    "token_cap": 1000000,
-   "tokens_today": 68562,
-   "why": "整理待ちの記事 3 件（3 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 115851,
+   "why": "整理待ちの記事 33 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "チェーンソーマン",
-    "BLEACH Mirrors High",
-    "あつ森",
-    "哈利波特剧集",
-    "dota2",
-    "FROM",
-    "漫威电影",
-    "GTA 6",
-    "The Mandalorian",
-    "A2O LITE",
-    "Vaundy",
-    "Astrae Oratio",
-    "绝区零"
+    "あつ森"
    ],
    "need": true,
-   "sig": "701c98c9d60f",
-   "waiting": [],
-   "why": "足りない 13 版面（Actions で Python が埋める）"
+   "sig": "897e704231d7",
+   "waiting": [
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "FROM",
+    "漫威电影",
+    "哈利波特剧集",
+    "Astrae Oratio",
+    "绝区零",
+    "A2O LITE",
+    "Vaundy",
+    "The Mandalorian",
+    "dota2"
+   ],
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:18 から）"
   },
   "photos": {
    "claude": true,
