@@ -69,7 +69,7 @@ def rules():
         {"stage": STAGES[5], "title": "人物が見つからない", "by": "model", "code": "emblem.check_whole（rembg）", "reason": "人物が見つからない",
          "rule": f"切り抜いた結果が空。離れた部分は、いちばん大きいまとまりの {pct(emblem.PART_KEEP)} 以上だけ残す"},
         {"stage": STAGES[5], "title": "コマ・アップの切り抜き", "by": "rule", "code": "emblem.check_whole", "reason": "頭が上の端で大きく切れている",
-         "rule": f"上の端の {pct(emblem.TOP_MAX)} を超えて人物（吹き出しなどを消した跡がえぐれる）"},
+         "rule": f"上の端の {pct(emblem.TOP_MAX)} を超えて人物（吹き出しなどを消した跡がえぐれる。前からの小元素も drop_broken で外す：BLEACH Mirrors High）"},
         {"stage": STAGES[5], "title": "頭のてっぺんが切れている", "by": "rule", "code": "emblem.check_whole・emblem.head_cut", "reason": "頭のてっぺんが上の端で切れている",
          "rule": f"上の {emblem.HEAD_ROWS}px に人物が横幅の {pct(emblem.HEAD_EDGE)} 以上（顔が全部入っていても使わない。前からの小元素も drop_broken で外す：BLEACH Mirrors High の髪が切れた絵）"},
         {"stage": STAGES[5], "title": "ぼやけている（写真）", "by": "model", "code": "emblem.face_sharp（YuNet）", "reason": "ぼやけている",

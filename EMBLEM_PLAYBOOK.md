@@ -53,6 +53,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 36 | 哈利波特剧集 Hermione（Arabella Stanton）194×92：額から上の髪だけで顔がない（下の端が額の途中） | 顔の割り当て（剧照 cos 0.60）は通るが、切り抜き側の点検は「顔が見つかったら」しか見ない（forehead_cut・face_sharp は顔なしなら False/None で通す）。兜の顔なしと区別がなかった | `emblem.faceless_scrap`：写真で YuNet の顔がなく横が縦の 1.3 倍超 → check_whole ✗・broken_image ✗・BROKEN_V 3。縦長の兜（Din Djarin 396×492）は残る。1 枚ずつ外さない | 2026-10-26 |
 | 37 | 切り抜きの形がおかしい（哈利波特剧集 Gregory Goyle：左右の下がまっすぐ縦に切れて「右下が四角く」体が途中で終わる）・かぎ形の出っぱり | 顔の大きさをそろえる `face_fit` が横幅 `bw` で切って体の横に垂直の切り口ができ、`check_whole` の左右の端の検査は下 35%（肩）を許していた。凹みを測る物差しもなかった | `cutshape`：左右の端にそって高さの `FLAT_RUN` 15% を超える直線は切り口が始まる行で下を切り落として半身（`trim_flat`・`FLAT_KEEP` 40%・顔の下まで）、上の端は横幅の `FLAT_TOP` 25%、`SOLID_MIN` 0.45 未満の凹みは ✗。前からの小元素は `repair_flat` で直し直せないものは `drop_broken`（`BROKEN_V` 4）。点検 E12 | #409 |
 | 38 | 切り抜きが commit のたびに縮む（Black Panther 73×23 → 60×10・mashiro-kuna 304×217 → 209×45） | `fit_all` が emblems/ の自分の出力をもう一度 `face_fit` で切り詰めた（#372 は書き出しの下限だけで根は残った） | `fit_all`：image が emblems/ の cutout は整え直さない（元が透明な source だけ source から作り直す）。テスト：同じ版面で 2 回走らせても大きさが変わらない | 2026-10-26 |
+| 39 | 前からの切り抜きで上の端の半分以上が人物（コマ。#389 のあと guest E7 12：BLEACH Mirrors High Muramasa・Retsu Unohana…） | `check_whole` は TOP_MAX で拒むが `broken_image` は見ておらず、前に取った分が残った | `broken_image` に `top_share > TOP_MAX` を足す（店長の drop_broken・お客さまの library_emblem で同じ）。外した分は次の候補で取り直す | （この PR） |
 
 ## 2. よく効いた直し方の型（手順）
 
