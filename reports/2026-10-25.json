@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "9f80deae5fab",
+ "edit_sig": "36a9987950b7",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -479,50 +479,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 4,
-     "source": "手机中国 on MSN",
-     "title": "三星Galaxy S27 Pro与Ultra电池容量曝光 最大5700mAh",
-     "url": "https://www.msn.cn/zh-cn/news/other/%E4%B8%89%E6%98%9Fgalaxy-s27-pro%E4%B8%8Eultra%E7%94%B5%E6%B1%A0%E5%AE%B9%E9%87%8F%E6%9B%9D%E5%85%89-%E6%9C%80%E5%A4%A75700mah/ar-AA2g06BW"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 5,
-     "source": "IT之家",
-     "title": "曝三星用小米 18 Pro Max 开展内部测试：Exynos 2700 跑分优于高通旗舰芯片",
-     "url": "https://www.ithome.com/1/017/556.htm"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 6,
-     "source": "베타뉴스",
-     "title": "갤럭시S27, 퀄컴 CPU 줄이고 삼성 CPU 탑재 늘리는 이유",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBzYWxYbnNxTjZrZlJlNUprandnalhpb0otVml0VGpyblNQYTNCSmFuUzJMTDkzTTNEQnh6QkVnZmFhd2U4YVdOY0duaDNReE04NE9CTUNzTlMzaXk4TERYNzNnWmY?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 7,
-     "source": "Vietnam.vn",
-     "title": "삼성은 갤럭시 S27 시리즈의 주요 업그레이드 버전을 곧 출시할 예정입니다.",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQRVFGU0JGZ2RiaDBMcWp6dXBodVhyeHBCeVZ2T3RLOUJNb0tBeG5ZVVdQeU42aXRQZ0ZDbk81U2x3MHlPcEVCSFRObkd5cDFhMnBvYkcyZEl1ZUxzN1VrdFVlaEI4d3ZRa2EyRGxUTHhvLWFfY2tOXy1WelE5TUQwUGRINm9odW8?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 8,
-     "source": "비즈니스포스트",
-     "title": "삼성전자 '엑시노스 2700' 성능 퀄컴 최신칩 앞서, 내년 갤럭시S27 탑재 예정",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9KdTR3dWloa0h1TzVtbGhBbHJ5SllVRjB4VDJ2clZweFhCVzZJZzRsb1hqbV9jb2hHSi1KNWFnNUJmVnkzNk9rNlJzNHU4TnpHRlJpdGRMNm9KSXN0X3pOVjFjbUpNOFE0OG5yU0RHeWJ6Tkk?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 9,
-     "source": "Vietnam.vn",
-     "title": "サムスンはGalaxy S27シリーズのメジャーアップデートを間もなくリリースする予定だ。",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNV2JWcUZ5X2RacWcxMWZRaEJJV3kwS3BLd0ZjWUplQ2UyWlRMSllfNGs2UzhGYVJab3prdkNKRlNCbldSei1ES0JKQTJjN2hyU3gwNGZZeHBKV0hCaFhhdHVsQlhTdHNqbTBua015YUo1YUFmVEtnZEpVS1JHQnBDdEtjS1cxY00?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -543,6 +499,26 @@
      "image": "https://www.gizmochina.com/wp-content/uploads/2026/10/Erste-Samsung-Galaxy-S27-Ultra-Cases-zeigen-mehr-vom-neuen-Kamera-Design-q82-w2560-h-1-1.webp",
      "image_via": "og:image",
      "url": "https://www.gizmochina.com/2026/10/24/galaxy-s27-pro-ultra-tuv-certifications-reveal-exact-battery-capacity/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "曝三星用小米 18 Pro Max 开展内部测试：Exynos 2700 跑分优于高通旗舰芯片",
+     "highlight": "Exynos 2700 跑分优于高通旗舰芯片",
+     "image": "https://www.businesspost.co.kr/news/photo/202610/20261025120132_78586.jpg",
+     "image_via": "og:image（其它来源）",
+     "url": "https://www.ithome.com/1/017/556.htm",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "サムスンはGalaxy S27シリーズのメジャーアップデートを間もなくリリースする予定だ。",
+     "highlight": "メジャーアップデート",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/25/1792892380268_tnw-samsung-galaxy-s26-ultrathanh-nien-00018-1775326231035720446832-109-0-1366-2400-crop-1792880007653393781657-17928800204011989883181.jpeg",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/ja/samsung-sap-co-nang-cap-quan-trong-cho-dong-galaxy-s27",
      "weight": "normal"
     }
    ],

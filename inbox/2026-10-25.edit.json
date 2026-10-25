@@ -258,7 +258,7 @@
   "Vaundy": 1,
   "dota2": 2,
   "チェーンソーマン": 1,
-  "三星手机": 3,
+  "三星手机": 9,
   "哈利波特剧集": 3,
   "MMORPG 新作": 2,
   "The Mandalorian": 1,
@@ -457,7 +457,29 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    4
+   ]
+  },
+  {
+   "headline": "曝三星用小米 18 Pro Max 开展内部测试：Exynos 2700 跑分优于高通旗舰芯片",
+   "highlight": "Exynos 2700 跑分优于高通旗舰芯片",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    8,
+    6
+   ]
+  },
+  {
+   "headline": "サムスンはGalaxy S27シリーズのメジャーアップデートを間もなくリリースする予定だ。",
+   "highlight": "メジャーアップデート",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    7
    ]
   }
  ],
