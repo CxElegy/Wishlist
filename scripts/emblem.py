@@ -660,6 +660,7 @@ AREA_MIN = 0.12    # 人物の面積がこれより小さい = 小さすぎる
 CUT_MIN = 64       # 書き出す切り抜きの短い辺がこれ未満 = 切れ端（漫威电影 Black Panther 60×10：作り直すたびに前の切り抜きを切り詰めて縮んだ）
 CUT_WIDE = 3       # 横が縦のこの倍より長い切り抜き = 帯（BLEACH Mirrors High 209×45）。人の胸像・全身は横長にならない
 DARK_MAX = 0.16    # 写真・場面の切り抜きの明るさ（人物部分の平均）がこれ未満 = 暗すぎて何かわからない
+FACE_DARK = 0.10   # 顔が見つかったときは顔の明るさがこれ未満 = 暗すぎる（暗い場面の剧照の Snape／Paapa Essiedu は 14% でもはっきり見える。肌の色で外さない）
 SOFT_MAX = 0.18    # 半透明（輪郭がにじんだ）部分がこれより多いものは使わない
 
 
@@ -678,7 +679,7 @@ def head_cut(img):
 
 
 def face_sharp(img):
-    """写真の切り抜き → (いちばん大きい顔の幅 px, 鋭さ) か None（顔のモデルがない・顔がない）。
+    """写真の切り抜き → (いちばん大きい顔の幅 px, 鋭さ, 顔の明るさ 0〜1) か None（顔のモデルがない・顔がない）。
     鋭さは書き出す大きさ（save_cut と同じ 420×520 以内）で測る：拡大したぼやけた場面（輪郭が何 px にも広がる）は小さい。"""
     try:
         import cv2
@@ -710,7 +711,7 @@ def face_sharp(img):
         return None
     mg = np.hypot(cv2.Sobel(g, cv2.CV_64F, 1, 0), cv2.Sobel(g, cv2.CV_64F, 0, 1))[2:-2, 2:-2]
     span = max(1.0, float(np.percentile(g, 99) - np.percentile(g, 1)))
-    return round(fw * w0 / im.width), float(np.percentile(mg, 99)) / span
+    return round(fw * w0 / im.width), float(np.percentile(mg, 99)) / span, float(g.mean()) / 255
 
 
 def is_sliver(w, h):
@@ -829,12 +830,12 @@ def check_whole(out, photo=False):
         others = other_faces(out, keep)
         if others:
             raise ValueError(f"ほかの人が残っている（顔 {others} つ）")
-    if photo:   # 暗い場面の切り抜き（顔も体も黒くつぶれて何かわからない）
-        lum = float(np.array(out.convert("L"))[solid].mean()) / 255
-        if lum < DARK_MAX:
-            raise ValueError(f"暗すぎて見えない（明るさ {lum:.0%}）")
+    if photo:   # 暗い場面の切り抜き（顔も体も黒くつぶれて何かわからない）。顔が見えればその明るさで見る
+        fq = face_sharp(out)   # （黒いローブ・コートの剧照は体の平均が 7〜15% でも顔ははっきり見える：哈利波特剧集の HBO Max Still）
+        lum = fq[2] if fq else float(np.array(out.convert("L"))[solid].mean()) / 255
+        if lum < (FACE_DARK if fq else DARK_MAX):
+            raise ValueError(f"暗すぎて見えない（{'顔の' if fq else ''}明るさ {lum:.0%}）")
     if photo:   # 小さい顔・ぼやけた場面（拡大した剧照：哈利波特剧集 Oliver Wood）は小元素にしない
-        fq = face_sharp(out)
         if fq and fq[0] < FACE_PX_MIN:
             raise ValueError(f"顔が小さすぎる（幅 {fq[0]}px）")
         if fq and fq[1] < SHARP_MIN:

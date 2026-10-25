@@ -746,7 +746,7 @@ def live_action(item):
     return kind_of(item) == "character" and bool(item.get("emblem_people"))
 
 
-ROLE_WHY = re.compile(r"役の記事|役の写真|作品の動画の場面|ポスター|キービジュアル")
+ROLE_WHY = re.compile(r"役の記事|役の写真|作品の動画の場面|作品の記事の剧照|ポスター|キービジュアル")
 
 
 def is_role_image(x):
@@ -1163,6 +1163,80 @@ def anchor_rows(api, actor):
     return [(r["image"], r["page"]) for r in wikidata_images(actor, ("P18",), 1)[:1]]
 
 
+ASSIGN_MARGIN = 0.08   # 剧照の顔：いちばん近い出演者と 2 番目の差がこれ未満 = だれか決められない（子役どうしは 0.4 前後まで似る）
+_ANCHOR_FEAT = {}
+
+
+def work_stills(api, titles, limit=30):
+    """作品の記事（Fandom）に載っている画像：ファイル名にだれが写っているかない剧照（「The Philosopher's Stone HBO Max Still 01」）も。"""
+    for title in titles:
+        q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "images", "imlimit": 200, "format": "json", "redirects": 1})
+        pg = next(iter(_json(f"{api}?{q}")["query"]["pages"].values()))
+        files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|jpe?g|webp)$", x["title"], re.I)
+                 and not re.search(r"icon|logo|symbol|signature|favicon|poster", x["title"], re.I)]
+        if files:
+            return _files_info(api, files[:limit], width=1600)   # 場面の写真は顔が小さい（600px だと顔の幅 50px 前後で FACE_PX_MIN に落ちる）
+    return []
+
+
+def _anchor_feat(api, actor):
+    """出演者の顔の基準の特徴量と画像（取れなければ (None, None)）。同じ回の中では 1 回だけ取る。"""
+    if actor not in _ANCHOR_FEAT:
+        _ANCHOR_FEAT[actor] = (None, None)
+        try:
+            rows = anchor_rows(api, actor)
+            if rows:
+                img = inspect(_get(rows[0][0], 6_000_000))[2]
+                with _face_lock:
+                    feat, info = face_id.face_info(img)
+                if feat is not None and not face_id.photo_problem(info):
+                    _ANCHOR_FEAT[actor] = (feat, rows[0])
+        except Exception:
+            pass
+    return _ANCHOR_FEAT[actor]
+
+
+def assign_stills(api, item, roles, log=print):
+    """作品の記事の剧照を、名簿の出演者ぜんぶの顔の基準と比べて、いちばん近い人に割り当てる（cos ≥ face_id.THRESHOLD・2 番目と ASSIGN_MARGIN 以上の差）。
+    作り直しの剧（哈利波特剧集）は役の記事も動画も前の映画の役者で、この作品の役の姿は作品の記事の剧照にしかないことが多い。
+    → 候補（割り当てた剧照と、その出演者の基準の写真）。"""
+    if face_id.engine() is None:
+        return []
+    stills = work_stills(api, list(wiki_titles(item).values()))
+    if not stills:
+        return []
+    cast = [w for w in item.get("emblem_who") or [] if not emblem.not_character(w)][:rule(item)[3]]
+    base = {}
+    for actor in cast:
+        _check_time()
+        feat, row = _anchor_feat(api, actor)
+        if feat is not None:
+            base[actor] = (feat, row)
+    out, got = [], 0
+    for r in stills:
+        try:
+            with _face_lock:
+                feat, info = face_id.face_info(inspect(_get(r["image"], 6_000_000))[2])
+        except Exception:
+            continue
+        if feat is None or face_id.photo_problem(info) or not base:
+            continue
+        sims = sorted(((face_id.similarity(feat, f), a) for a, (f, _) in base.items()), reverse=True) + [(0.0, "")]
+        (s1, actor), (s2, _) = sims[0], sims[1]
+        if s1 < face_id.THRESHOLD or s1 - s2 < ASSIGN_MARGIN:
+            continue
+        role = roles.get(actor)
+        subj = f"{role}（{actor}）" if role else actor
+        if not any(c["subject"] == subj and c.get("anchor") for c in out):
+            out.append({"subject": subj, "image": base[actor][1][0], "page": base[actor][1][1], "source": "基準（出演者の写真）",
+                        "why": f"{actor} 本人の写真（本人確認の基準。小元素には使わない）", "anchor": True, "anchor_only": True})
+        out.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "作品の剧照", "license": r.get("license", ""),
+                    "why": f"{subj}：作品の記事の剧照（顔で出演者を照合 cos {s1:.2f}）", "title": r.get("title", "")})
+        got += 1
+    log(f"  [作品の剧照] {len(stills)} 枚 → 出演者に割り当て {got} 枚（基準 {len(base)}/{len(cast)} 人）")
+    return out
+
+
 def gather_roles(item, log=print, tried=None):
     """実写の作品：出演者ごとに「役の姿」の剧照を集める。
     基準：出演者の写真（Fandom の出演者の記事・Wikidata）— 本人確認にだけ使い、小元素には選ばない（anchor_only）。
@@ -1223,6 +1297,15 @@ def gather_roles(item, log=print, tried=None):
                               "untied": not tied(f"{r['image']} {r.get('title', '')}", actor, work_en, since)})
         except Exception as e:
             log(f"  [動画] {role or actor}：{e}")
+    if api:   # 作品の記事の剧照を顔で出演者に（ファイル名に役名がない：哈利波特剧集の HBO Max Still）
+        try:
+            rows = assign_stills(api, item, roles, log)
+            tried["作品の剧照"] = tried.get("作品の剧照", 0) + sum(1 for c in rows if not c.get("anchor"))
+            cands += rows
+        except OutOfTime:
+            raise
+        except Exception as e:
+            log(f"  [作品の剧照] {e}")
     # 役の姿が足りないときは、作品そのものの主な画像（Wikipedia の記事の代表画像 = ポスター・キービジュアル）で埋める。
     # 出演者の生活の写真には戻らない（新しい作品は役の剧照がまだ少ない：哈利波特剧集）
     # 作品の記事：まず作品の Fandom（ポスターが代表画像のことが多い）、次に Wikipedia
@@ -1616,7 +1699,7 @@ def source_chain(item):
 
 
 # 自動で選ぶときの、取り方の優先順。ブランドは公式ロゴ（Wikidata P154・公式サイト）、主題は Wikidata・Commons・Twemoji を先に
-PICK_ORDER = ["直接指定", "出演者の記事の役の写真", "役の記事", "作品の動画の場面", "作品の主な画像", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
+PICK_ORDER = ["直接指定", "出演者の記事の役の写真", "作品の剧照", "役の記事", "作品の動画の場面", "作品の主な画像", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
     "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
     "topic": ["直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],
