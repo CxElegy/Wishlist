@@ -4,7 +4,8 @@
   "https://m.expreview.com/108875.html": "2026-10-25",
   "https://t.co/SIOyFJro6I": "2026-10-25",
   "https://www.instyle.com/black-cat-nail-designs-12182775": "2026-10-25",
-  "https://www.sina.cn/gc/article/nivwyrf6445687.html": "2026-10-25"
+  "https://www.sina.cn/gc/article/nivwyrf6445687.html": "2026-10-25",
+  "https://www.sportsseoul.com/news/read/1643745": "2026-10-25"
  },
  "images": {
   "https://abcnews.com/GMA/Food/starbucks-debuts-new-summer-bearista-cup-after-viral/story?id=134135924": "https://i.abcnewsfe.com/a/2f318564-9917-47c9-a9c5-cdc550b776d4/starbucks-3-ht-er-260623_1782233446807_hpMain_16x9.jpg?w=1600",
@@ -49,7 +50,6 @@
   "https://sffgazette.com/fantasy/harry-potter/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-a11618": "https://sffgazette.com/images/articles/banners/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-ab11618.jpg",
   "https://smallbiztrends.com/samsung-wallet-lets-galaxy-phones-unlock-and-lock-cars-automatically/": "https://media.smallbiztrends.com/2026/10/news-article-samsung-wallet-lets-galaxy-phones-unlock-and-lock-cars-automatically.jpg",
   "https://snowbrains.com/slug-super-el-nino-japan-snow-2026-27/": "https://snowbrains.com/wp-content/uploads/2013/07/JMT_20140207_145.jpg",
-  "https://sports.khan.co.kr/article/202610251046003": "https://images.khan.co.kr/article/2026/10/25/news-p.v1.20261025.854c4fa97b1f460fa0b5f8642b81b141_P1.jpg",
   "https://sports.khan.co.kr/article/202610251059003": "https://images.khan.co.kr/article/2026/10/25/news-p.v1.20261025.d9fa198c345d4fe597d65f3367599229_P1.jpg",
   "https://sunmedia.tw/news/technology/1792537601-%E9%9B%BB%E7%8E%A9%E7%88%86%E6%96%99%E8%80%85%E6%B4%A9%E9%9C%B2%E3%80%8A%E9%AD%94%E6%88%92%E3%80%8B%E6%96%B0%E9%81%8A%E6%88%B2%E6%83%85%E5%A0%B1%E3%80%80%E6%9C%89%E6%9C%9B%202027%20%E5%B9%B4%E6%8E%A8%E5%87%BA%E9%96%8B%E6%94%BE%E4%B8%96%E7%95%8C%20RPG": "https://image.sunmedia.tw/banners/7601c2fa-e258-4915-9a3b-1b416d1c0870.jpeg",
   "https://t.co/SIOyFJro6I": null,
@@ -85,6 +85,7 @@
   "https://www.sina.cn/gc/article/nivwyrf6445687.html": null,
   "https://www.sina.cn/news/detail/5356865370458683.html": "http://wx2.sinaimg.cn/middle/005Zl6ySly1iib892m62xj31561pqx3z.jpg",
   "https://www.sportschosun.com/en/celebrity/2026-10-21/202610210100137630008973": "https://www.bing.com/th?id=ONUT.NzflZ33ZlbyafTknJCsykw&pid=News&w=1200",
+  "https://www.sportsseoul.com/news/read/1643745": null,
   "https://www.tech2geek.net/gta-6-vehicle-customization/": "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200",
   "https://www.toy-people.com/en/?p=115398": "https://img.toy-people.com/member/179241036689_1200.png",
   "https://www.upmedia.mg/tw/lifestyle/food/272014": "https://cdn.upmedia.mg/upfile/img/2026/1021/202610211821342835.webp",
@@ -997,27 +998,6 @@
   },
   {
    "batch": 1,
-   "because": "ILLIT",
-   "date": "2026-10-25",
-   "hits": [],
-   "image": "https://images.khan.co.kr/article/2026/10/25/news-p.v1.20261025.854c4fa97b1f460fa0b5f8642b81b141_P1.jpg",
-   "kind": "board",
-   "liked": "李沅禧出席香奈儿活动",
-   "score": 8,
-   "source": "스포츠경향",
-   "taste": [
-    [
-     "作品:ILLIT",
-     6
-    ]
-   ],
-   "title": "아일릿(ILLIT), 블랙 요원으로 변신해 색다른 매력 예고",
-   "url": "https://sports.khan.co.kr/article/202610251046003",
-   "words": [],
-   "work": "ILLIT"
-  },
-  {
-   "batch": 1,
    "because": "猫用品",
    "date": "2026-10-24",
    "hits": [
@@ -1100,7 +1080,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "あつ森",
    "date": "2026-10-24",
    "hits": [],
@@ -1140,6 +1120,27 @@
    "url": "https://www.msn.com/en-us/entertainment/general/zenless-zone-zero-official-version-3-4-void-hunter-enchainer-agent-sunbringer-trailer/vi-AA2fZIiP",
    "words": [],
    "work": "绝区零"
+  },
+  {
+   "batch": 2,
+   "because": "ILLIT",
+   "date": "2026-10-24",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "스포츠서울",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "[포토]아일릿, 축하 공연 왔어요!",
+   "url": "https://www.sportsseoul.com/news/read/1643745",
+   "words": [],
+   "work": "ILLIT"
   },
   {
    "batch": 2,
@@ -2141,11 +2142,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [

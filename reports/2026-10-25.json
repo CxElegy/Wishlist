@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "5b4379e99387",
+ "edit_sig": "84a994c3fb9a",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -281,15 +281,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 9,
-     "source": "스포츠경향",
-     "title": "아일릿(ILLIT), 블랙 요원으로 변신해 색다른 매력 예고",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9vN1hWVU9FSG1lNC11d25CWlBuUy1OSVhlR2RiNEhtYzFBa0tlZHVPLUlSVDZaM1ZVNGYwTWtxRU5mY2Z3MGJRU3hoTkJrdHNreXB0d3BPRVlLZDlQOFHSAWNBVV95cUxOdnptNkE0eEhUb0tpaGMwWnJ4ZnlMV2J4OXBGbDlvYXJrTHVINEh0QXFwU0pXSVJ0aVdQX19YRmdHbGVxYVo0U1FRTWZYTkZMZF9HTmhqNmstT2gyR0x5ZnduVDQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -330,6 +321,16 @@
      "image": "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg",
      "image_via": "og:image",
      "url": "https://www.starnewskorea.com/en/music/2026/10/25/2026102510120129386",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "아일릿(ILLIT), 블랙 요원으로 변신해 색다른 매력 예고",
+     "highlight": "",
+     "image": "https://images.khan.co.kr/article/2026/10/25/news-p.v1.20261025.854c4fa97b1f460fa0b5f8642b81b141_P1.jpg",
+     "image_via": "og:image",
+     "url": "https://sports.khan.co.kr/article/202610251046003",
      "weight": "normal"
     }
    ],
@@ -889,7 +890,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-10-24",
