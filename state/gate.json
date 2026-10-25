@@ -1,10 +1,10 @@
 {
- "changed": true,
- "checked": "2026-10-24T23:55:41+00:00",
+ "changed": false,
+ "checked": "2026-10-25T00:18:43+00:00",
  "fired": {
-  "at": "2026-10-24T23:55:41+00:00",
+  "at": "2026-10-25T00:18:43+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-24T23:17:32+00:00",
+    "at": "2026-10-25T00:18:43+00:00",
     "attempts": 1,
     "day": "2026-10-25",
-    "prog": 73,
-    "resp": "cse_01QjPzMbxA8PamToQY1qeCaN",
-    "sig": "60157e521d20"
+    "prog": 76,
+    "resp": "cse_01GAo9X1A8TC8wmwFZZBtT4k",
+    "sig": "67a198a1661d"
    },
    "items": [
     "A2O LITE",
@@ -37,19 +37,24 @@
    "need": true,
    "prog": 76,
    "prog_day": "2026-10-25",
-   "ripe": [],
-   "sig": "5d82b684b13b",
+   "ripe": [
+    "ILLIT",
+    "MMORPG 新作",
+    "周杰伦",
+    "哈利波特剧集"
+   ],
+   "sig": "67a198a1661d",
    "token_cap": 1000000,
    "tokens_today": 230856,
-   "why": "整理待ちの記事 9 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 9 件（8 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "dota2"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "5e19588d36b6",
+   "sig": "b6804aff6de5",
    "waiting": [
     "GTA 6",
     "チェーンソーマン",

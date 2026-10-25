@@ -73,14 +73,44 @@
    "tried": {}
   },
   "BLEACH Mirrors High": {
-   "at": "2026-10-24T23:34:26+00:00",
-   "have": 6,
+   "at": "2026-10-25T00:18:40+00:00",
+   "funnel": {
+    "added": 13,
+    "auto": 15,
+    "found": 15,
+    "rejected": {
+     "切り抜きの検査": 2
+    },
+    "usable": 15
+   },
+   "have": 19,
    "kind": "character",
    "names_v": 2,
-   "note": "名簿を確かめた：6 / 6 枚でそろっている",
-   "state": "ok",
-   "target": 6,
-   "tried": {}
+   "note": "13 枚足した（標準 +10 → 名前を広げる +3 → 公式・記事のページ +0）。あと 181 枚、次の回に続きの 10 人",
+   "state": "running",
+   "steps": [
+    {
+     "added": 10,
+     "found": 10,
+     "label": "標準"
+    },
+    {
+     "added": 3,
+     "found": 5,
+     "label": "名前を広げる"
+    },
+    {
+     "added": 0,
+     "found": 0,
+     "label": "公式・記事のページ"
+    }
+   ],
+   "target": 200,
+   "tried": {
+    "Fandom": 15,
+    "公式サイト": 0,
+    "記事のページ": 0
+   }
   },
   "FROM": {
    "at": "2026-10-24T23:36:01+00:00",
@@ -337,8 +367,8 @@
    "have": 26,
    "kind": "character",
    "names_v": 2,
-   "note": "2 枚足した（標準 +2 → 名前を広げる +0 → 公式・記事のページ +0）。あと 166 枚、次の回に続きの 10 人",
-   "state": "running",
+   "note": "24 / 20 枚で目標に届いた",
+   "state": "ok",
    "steps": [
     {
      "added": 2,
@@ -356,7 +386,7 @@
      "label": "公式・記事のページ"
     }
    ],
-   "target": 192,
+   "target": 20,
    "tried": {
     "Fandom": 5,
     "Wikimedia Commons": 0,
@@ -716,11 +746,11 @@
   }
  },
  "last_run": {
-  "at": "2026-10-25T00:00:51+00:00",
+  "at": "2026-10-25T00:05:40+00:00",
   "done": [
-   "dota2"
+   "BLEACH Mirrors High"
   ],
-  "end": "2026-10-25T00:04:16+00:00",
+  "end": "2026-10-25T00:18:41+00:00",
   "minutes": 40.0,
   "workers": 6
  },
