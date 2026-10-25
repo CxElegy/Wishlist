@@ -1580,6 +1580,65 @@ class FindSources(unittest.TestCase):
         self.assertEqual([(m.group(2) or m.group(1) or m.group(3), m.group(4) or m.group(5)) for m in ef.CAST_LINE.finditer(s)],
                          [("Dominic McLaughlin", "Harry Potter"), ("Arabella Stanton", "Hermione Granger"), ("Paapa Essiedu", "Severus Snape")])
 
+    def test_cast_section_drops_editor_comments(self):
+        """役の中の <!-- 編集者への注意 --> は役ではない（Doomsday の Chris Evans）。"""
+        wt = "* [[Chris Evans]] as Steve Rogers<!-- Do NOT add Captain America here -->\n* [[Tom Hiddleston]] as [[Loki]]\n"
+        pages = iter([{"parse": {"sections": [{"line": "Cast", "index": "2"}]}}, {"parse": {"wikitext": {"*": wt}}}])
+        with mock.patch.object(ef, "_json", lambda url, *a: next(pages)):
+            self.assertEqual(ef.wiki_cast("en", "Avengers: Doomsday"), [("Chris Evans", "Steve Rogers"), ("Tom Hiddleston", "Loki")])
+
+    def test_cast_section_from_wikidata_article_when_no_wiki(self):
+        """wiki: を書いていない実写の版面（哈利波特剧集）も Wikidata の英語の記事の Cast の節を読む。"""
+        item = {"name": "H", "type": "show", "emblem_people": True, "wikidata": "Q1"}
+        with mock.patch.object(ef, "wd_cast", return_value=["A"]), mock.patch.object(ef, "wd_enwiki", return_value="Harry Potter (TV series)"), \
+                mock.patch.object(ef, "wiki_cast", side_effect=lambda l, t: [("A", "Harry"), ("B", "McGonagall")] if t == "Harry Potter (TV series)" else []):
+            self.assertEqual(ef.live_cast(item, log=lambda *_: None), (["A", "B"], {"A": "Harry", "B": "McGonagall"}))
+
+    def test_surname_added_is_same_person(self):
+        """Wikidata の「Tenoch Huerta」と Cast の節の「Tenoch Huerta Mejía」は同じ人（名簿 34 → 33）。役は先の名前へ。"""
+        self.assertTrue(ef._same_person("Tenoch Huerta", "Tenoch Huerta Mejía"))
+        self.assertFalse(ef._same_person("Chris Hemsworth", "India Rose Hemsworth"))
+        self.assertFalse(ef._same_person("Chris", "Chris Evans"))   # 1 語だけの名前は前の一致で同じにしない
+        item = {"name": "M", "type": "show", "emblem_people": True, "wikidata": "Q1"}
+        with mock.patch.object(ef, "wd_cast", return_value=["Tenoch Huerta", "Mabel Cadena"]), \
+                mock.patch.object(ef, "wiki_cast", return_value=[("Tenoch Huerta Mejía", "Namor")]), mock.patch.object(ef, "wd_enwiki", return_value="X"):
+            self.assertEqual(ef.live_cast(item, log=lambda *_: None), (["Tenoch Huerta", "Mabel Cadena"], {"Tenoch Huerta": "Namor"}))
+
+    def test_full_roster_is_recounted_when_rules_change(self):
+        """名簿がそろっていても（pool 12・who 12）、名簿の規則の版が上がった回は roster を呼ぶ（哈利波特剧集）。"""
+        item = {"name": "H", "type": "show", "emblem_kind": "character", "emblem_people": True, "wikidata": "Q1",
+                "emblem_pool": 2, "emblem_who": ["A", "B"], "emblem": []}
+        calls = []
+        with mock.patch.object(ef, "find_sources", return_value=False), mock.patch.object(ef, "roster", side_effect=lambda i, log: calls.append(1)), \
+                mock.patch.object(ef, "off_roster", return_value=0), mock.patch.object(ef, "drop_broken", return_value=0), \
+                mock.patch.object(ef, "status", return_value={"state": "ok", "have": 2, "target": 2}):
+            ef.fill_one(item, log=lambda *_: None)
+            self.assertEqual(calls, [])
+            ef.fill_one({**item, "_recount": True}, log=lambda *_: None)
+            self.assertEqual(calls, [1])
+
+    def test_sliver_cuts_are_dropped(self):
+        """読めない（0 バイト）・切れ端（60×10）・帯（209×45）の切り抜きは外して emblem_reject へ。ロゴ・カードは見ない。"""
+        from PIL import Image
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "emblems").mkdir()
+            for n, size in (("ok", (120, 160)), ("bar", (60, 10)), ("band", (209, 45)), ("wide", (400, 100))):
+                Image.new("RGBA", size).save(tmp / "emblems" / f"{n}.webp")
+            (tmp / "emblems" / "zero.webp").write_bytes(b"")
+            (tmp / "items.yaml").write_text('items:\n  - name: M\n    emblem_kind: character\n    emblem:\n'
+                                            '      - {subject: "a", image: "emblems/ok.webp", shape: cutout}\n'
+                                            '      - {subject: "b", image: "emblems/bar.webp", source: "http://s/b", shape: cutout}\n'
+                                            '      - {subject: "c", image: "emblems/band.webp", shape: cutout}\n'
+                                            '      - {subject: "d", image: "emblems/zero.webp", shape: cutout}\n'
+                                            '      - {subject: "e", image: "emblems/wide.webp", shape: badge}\n', encoding="utf-8")
+            item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp):
+                self.assertEqual(ef.drop_broken(item, log=lambda *_: None), 3)
+            got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        self.assertEqual([x["subject"] for x in got["emblem"]], ["a", "e"])
+        self.assertEqual(got["emblem_reject"], ["http://s/b", "emblems/band.webp", "emblems/zero.webp"])
+
     def test_same_person_other_spelling_is_not_added_twice(self):
         self.assertEqual(ef._name_key("Uryuu Ishida"), ef._name_key("Uryū Ishida"))
         self.assertEqual(ef._name_key("Toushirou Hitsugaya"), ef._name_key("Tōshirō Hitsugaya"))

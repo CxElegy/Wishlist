@@ -485,9 +485,7 @@ def cut_out(url, slug, drawn=True):
     if not drawn and lost_face(img, out):
         raise ValueError("顔が切り抜きに残っていない（別のもの：手・物・背景を切り抜いた）")
     out, _ = upper_body(out)   # 縦長の全身は上半身に（小さく貼ると顔が見えない）
-    out.thumbnail((420, 520))
-    EMB_DIR.mkdir(parents=True, exist_ok=True)
-    out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
+    save_cut(out, slug)
     return f"emblems/{slug}.webp"
 
 
@@ -652,8 +650,24 @@ TOP_MAX = 0.5      # 上の端の人物の割合がこれを超える = 漫画�
 TOP_TOUCH = 0.03   # 上の端にこれ以上当たっていたら、顔まで切れていないか確かめる
 FACE_TOP = 0.04    # 顔の上端が高さのこの割合より上 = 顔が上の端で切れている
 AREA_MIN = 0.12    # 人物の面積がこれより小さい = 小さすぎる
+CUT_MIN = 64       # 書き出す切り抜きの短い辺がこれ未満 = 切れ端（漫威电影 Black Panther 60×10：作り直すたびに前の切り抜きを切り詰めて縮んだ）
+CUT_WIDE = 3       # 横が縦のこの倍より長い切り抜き = 帯（BLEACH Mirrors High 209×45）。人の胸像・全身は横長にならない
 DARK_MAX = 0.16    # 写真・場面の切り抜きの明るさ（人物部分の平均）がこれ未満 = 暗すぎて何かわからない
 SOFT_MAX = 0.18    # 半透明（輪郭がにじんだ）部分がこれより多いものは使わない
+
+
+def is_sliver(w, h):
+    """切り抜きの大きさ（px）が切れ端・帯か。"""
+    return min(w, h) < CUT_MIN or w > h * CUT_WIDE
+
+
+def save_cut(out, slug):
+    """切り抜きを docs/emblems/<slug>.webp に書く。切れ端（is_sliver）は書かずに外す（前の画像を上書きして壊さない）。"""
+    out.thumbnail((420, 520))
+    if is_sliver(*out.size):
+        raise ValueError(f"切れ端（{out.size[0]}×{out.size[1]}）")
+    EMB_DIR.mkdir(parents=True, exist_ok=True)
+    out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
 
 
 def lost_face(src, out):
@@ -945,9 +959,7 @@ def fit_all(name, drawn=False):
             if out is None:
                 out, _ = upper_body(img, force=x.get("upper"))
             slug = slugify(name, x["subject"])
-            out.thumbnail((420, 520))
-            EMB_DIR.mkdir(parents=True, exist_ok=True)
-            out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
+            save_cut(out, slug)
             if not x["image"].startswith("emblems/"):
                 x["source"] = x["image"]
             x["image"], x["shape"] = f"emblems/{slug}.webp", "cutout"
@@ -990,9 +1002,7 @@ def upper_all(name):
             if not cut:
                 continue
             slug = slugify(name, x["subject"])
-            out.thumbnail((420, 520))
-            EMB_DIR.mkdir(parents=True, exist_ok=True)
-            out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
+            save_cut(out, slug)
             if not src.startswith("emblems/"):
                 x["source"] = src
             x["image"], x["shape"] = f"emblems/{slug}.webp", "cutout"
@@ -1264,11 +1274,14 @@ def cut_all(name, drawn, old=()):
                 except Exception as e2:
                     print(f"  [胸像探し失敗] {x['subject']}：{e2}", file=sys.stderr)
             if found:
+                try:
+                    save_cut(found[1], slugify(name, x["subject"]))
+                except ValueError as e3:
+                    print(f"  [切れ端] {x['subject']}：{e3}", file=sys.stderr)
+                    found = None
+            if found:
                 slug = slugify(name, x["subject"])
                 img = found[1]
-                img.thumbnail((420, 520))
-                EMB_DIR.mkdir(parents=True, exist_ok=True)
-                img.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
                 x.update(image=f"emblems/{slug}.webp", source=found[0], shape="cutout", _framing=framing(img),
                          why=f"{x.get('why') or x['subject']} → 同じページの別の画像（代表画像は切り抜きの検査で外れた）")   # 元の理由（役の記事など）は残す
                 if found[2]:
