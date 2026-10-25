@@ -1432,6 +1432,7 @@ def delete_item(text, name):
 
 
 EMBLEM_REJECT_MAX = 50   # 1 回の依頼で外せる小元素の数（管理ページの「違う」は版面ごとに 1 件の依頼にまとめて送る）
+EMBLEM_KEYS = ("_emblem_reject", "_emblem_swap", "_emblem_lock")   # 管理ページ「小元素」の依頼（submit_item の edit の config）
 EMBLEM_REJECT_KEEP = 1000   # 理由の記録（state/emblem_rejects.json）に残す件数
 
 
@@ -1452,9 +1453,10 @@ def _reject_marks(marks):
     return out
 
 
-def reject_emblems(text, name, marks):
+def reject_emblems(text, name, marks, swap=False):
     """管理ページの「違う」：関注項 name の小元素から marks の画像（items.yaml の image か source）を外し、
     元の画像を emblem_reject に足す（自動補完は二度と選ばない。足りなくなった分は次の後台で別の画像を探す）。
+    swap=True（「同じ人の別の写真に替える」）は同じ外し方に加えて、その人（subject）を emblem_redo に残す：次の後台で名簿のほかの人より先に、同じ人の別の写真を探す。
     返り値：(新しい全文, 外した小元素のリスト)。外した小元素には選ばれた理由（_reason・_note）が付く。どれも今の小元素になければ ValueError。"""
     import emblem
     want = _reject_marks(marks)
@@ -1475,8 +1477,40 @@ def reject_emblems(text, name, marks):
     for x in gone:   # 元の網址（倉庫の webp は消すので、次に同じ画像を拾わないよう出所のほうを覚える）
         rej += [u for u in (x.get("source"), x.get("image")) if isinstance(u, str) and re.match(r"https?://", u)]
     text = emblem.item_text(text, name, keep)
-    text = set_item_fields(text, name, {"emblem_reject": list(dict.fromkeys(rej))})
-    return text, [{**x, "_board": name, "_kind": item.get("emblem_kind") or ""} for x in gone]
+    fields = {"emblem_reject": list(dict.fromkeys(rej))}
+    if swap:
+        fields["emblem_redo"] = list(dict.fromkeys(list(item.get("emblem_redo") or []) + [x["subject"] for x in gone if x.get("subject")]))
+    text = set_item_fields(text, name, fields)
+    return text, [{**x, "_board": name, "_kind": item.get("emblem_kind") or "", "_act": "swap" if swap else "drop"} for x in gone]
+
+
+def lock_emblems(text, name, marks):
+    """管理ページの「この写真で固定」：marks（[{image, on}]、on=false で固定をはずす）の小元素に lock: true を付ける。
+    固定した小元素は自動の補完・規則の版を上げた作り直し・検査の外しでも替えない（emblem_fill.py）。→ 新しい全文。"""
+    import emblem
+    if not isinstance(marks, list) or not marks or len(marks) > EMBLEM_REJECT_MAX:
+        raise ValueError("固定する画像の指定が正しくない")
+    want = {}
+    for m in marks:
+        m = {"image": m} if isinstance(m, str) else m
+        if not isinstance(m, dict) or not isinstance(m.get("image"), str) or not 0 < len(m["image"]) <= 2000:
+            raise ValueError("固定する画像の指定が正しくない")
+        want[m["image"]] = m.get("on") is not False
+    item = next((i for i in (yaml.safe_load(text) or {}).get("items") or [] if i.get("name") == name), None)
+    if item is None:
+        raise ValueError(f"关注清单里没有「{name}」")
+    ems, hit = [], 0
+    for x in item.get("emblem") or []:
+        k = next((u for u in (x.get("image"), x.get("source")) if u in want), None) if isinstance(x, dict) else None
+        if k is not None:
+            hit += 1
+            x = {kk: vv for kk, vv in x.items() if kk != "lock"}
+            if want[k]:
+                x["lock"] = True
+        ems.append(x)
+    if not hit:
+        raise ValueError("その画像はもう小元素にない")
+    return emblem.item_text(text, name, ems)
 
 
 def log_emblem_rejects(gone, when=None):
@@ -1489,7 +1523,7 @@ def log_emblem_rejects(gone, when=None):
     for x in gone:
         src = x.get("source") or x.get("image") or ""
         rows.append({"at": when, "board": x["_board"], "kind": x.get("_kind") or "", "reason": x["_reason"], "note": x.get("_note") or "",
-                     "subject": x.get("subject") or "", "why": x.get("why") or "", "shape": x.get("shape") or "",
+                     "act": x.get("_act") or "drop", "subject": x.get("subject") or "", "why": x.get("why") or "", "shape": x.get("shape") or "",
                      "host": urllib.parse.urlsplit(src).hostname or "", "source": src, "page": x.get("page") or ""})
     save_json(EMBLEM_REJECTS_FILE, {"rows": rows[-EMBLEM_REJECT_KEEP:]})
 
@@ -1525,8 +1559,16 @@ def take_item_requests():
         name = (r.get("name") or "").strip()
         names = {i["name"] for i in items}
         try:
-            if r.get("action") == "edit" and "_emblem_reject" in (r.get("config") or {}):   # 管理ページの「違う」
-                new, gone = reject_emblems(text, name, r["config"]["_emblem_reject"])
+            if r.get("action") == "edit" and any(k in (r.get("config") or {}) for k in EMBLEM_KEYS):   # 管理ページの小元素：外す・替える・固定
+                new, gone, cfg = text, [], r["config"]
+                if "_emblem_reject" in cfg:
+                    new, g = reject_emblems(new, name, cfg["_emblem_reject"])
+                    gone += g
+                if "_emblem_swap" in cfg:
+                    new, g = reject_emblems(new, name, cfg["_emblem_swap"], swap=True)
+                    gone += g
+                if "_emblem_lock" in cfg:
+                    new = lock_emblems(new, name, cfg["_emblem_lock"])
                 got = (yaml.safe_load(new) or {}).get("items") or []
                 assert [i for i in got if i.get("name") != name] == [i for i in items if i.get("name") != name], "别的关注项被改动了"
                 text, items = new, got
@@ -1595,7 +1637,7 @@ def take_item_requests():
     except Exception as err:  # 标不上的下次还会读到：新增的会因为名字已存在被跳过，修改的再改一次结果一样
         print(f"  [关注项] 标记请求失败：{err}", file=sys.stderr)
     for r in done:
-        what = ("删除" if (r.get("config") or {}).get("_delete") is True else "外した小元素" if "_emblem_reject" in (r.get("config") or {})
+        what = ("删除" if (r.get("config") or {}).get("_delete") is True else "小元素を操作" if any(k in (r.get("config") or {}) for k in EMBLEM_KEYS)
                 else "修改" if r.get("action") == "edit" else "加入")
         print(f"关注项：从设置页{what}「{r['name']}」", file=sys.stderr)
 
@@ -2401,6 +2443,9 @@ def backend_cells(items, rows, latest, run):
         r["bg"]["emblem"]["detail"]["reject_log"] = rejects.get(name, [])
         r["thumbs"] = [(x["image"], x.get("shape") or "", x.get("subject") or "") for x in item.get("emblem") or [] if isinstance(x, dict)
                        and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]   # 全部（表の行は先頭だけ、「小元素の探し方」を開くと全部）
+        r["emblems"] = [{"image": x["image"], "subject": x.get("subject") or "", "why": x.get("why") or "", "lock": bool(x.get("lock"))}
+                        for x in item.get("emblem") or [] if isinstance(x, dict)
+                        and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]   # 管理ページ「小元素」の大きい写真（名前・取り方・固定）
 
 
 def _next_slot(after, slots):
