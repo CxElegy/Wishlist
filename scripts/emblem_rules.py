@@ -98,6 +98,8 @@ def rules():
          "rule": "代表画像が切り抜きの検査で外れて同じページの別の画像を探すとき、顔が見つからない絵の控えは、もとから透明な背景の絵（公式の立ち絵）だけ。漫画のコマ・場面（jpg）は枠で切れ・「©」が残る"},
         {"stage": STAGES[5], "title": "顔が切り抜きに残っていない（写真）", "by": "model", "code": "emblem.lost_face（YuNet）", "reason": "顔が切り抜きに残っていない",
          "rule": "元の写真・場面には顔があるのに、切り抜いた結果に顔がない = 手・持ち物・暗い背景を切り抜いた。同じページの別の画像で取り直す"},
+        {"stage": STAGES[5], "title": "顔がなく髪・額だけの切れ端（写真）", "by": "model", "code": "emblem.faceless_scrap（YuNet）", "reason": "顔がなく髪・額だけの切れ端",
+         "rule": f"切り抜きに顔がなく、横が縦の {emblem.NOFACE_WIDE} 倍より長い（額から上の髪だけ。縦長の兜・仮面は残す。前からの小元素も drop_broken で外す）"},
         {"stage": STAGES[5], "title": "穴（写真）", "by": "rule", "code": "emblem.hole_share", "reason": "切り抜きに穴",
          "rule": f"体の中の透明な穴 > {emblem.HOLE_MAX:.0%}（服が背景と同じ色で抜けた）"},
         {"stage": STAGES[5], "title": "代表画像がだめなら同じページで", "by": "rule", "code": "emblem.cut_all / find_bust",
