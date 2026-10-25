@@ -752,6 +752,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-26"
  },
+ "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://hips.hearstapps.com/hmg-prod/images/8b2afa82-9272-4199-8136-22d9d5456461.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
@@ -1652,6 +1658,13 @@
   "h": 900,
   "target": 1280,
   "v": 3
+ },
+ "https://media.trilltrill.jp/articles/5130807/description-image.76515209f1bc327c7d0ccdc8c32c2a72": {
+  "w": 720,
+  "h": 540,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.394
  },
  "https://media.whas11.com/assets/CCT/images/d2a97e25-4450-4841-96ef-b900ab91ff53/20260903T223000/d2a97e25-4450-4841-96ef-b900ab91ff53_1920x1080.jpg": {
   "w": 1920,
@@ -3049,12 +3062,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.5WdlIx5i2W3_-W7nWVAmEA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,

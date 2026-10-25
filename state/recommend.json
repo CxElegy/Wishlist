@@ -61,7 +61,6 @@
   "https://today.line.me/tw/v3/article/WBpX6yy?referral=TaipeiFilmAwards": "https://today-obs.line-scdn.net/0hPpE3uaS5D194ShPgKUVwCEAcAy5LLBVWWnkVbllOA28HZkBcFyRcPFgZV3MFe0haWHsSaVRKAmtQKk0MRw/w1200",
   "https://topics.smt.docomo.ne.jp/article/otonanswer/life/otonanswer-403060": "https://img.topics.smt.news.goo.ne.jp/picture/otonanswer/m_otonanswer-403060.jpg",
   "https://www.4gamers.com.tw/news/detail/82848/kaiju-no-8-final-chapter-movie-confirmed-for-2027-release": "https://img.4gamers.com.tw/news-image/30592e27-3cf0-4f66-b229-fc5e54665aeb.jpg",
-  "https://www.aol.com/articles/hbos-harry-potter-might-finally-130130000.html": "https://www.bing.com/th?id=ONUT.5WdlIx5i2W3_-W7nWVAmEA&pid=News&w=1200",
   "https://www.cinemablend.com/streaming-news/realizing-harry-potter-shows-actor-rafe-spall-link-movies-timothy-spall": "https://cdn.mos.cms.futurecdn.net/JJUXJNug7549JTRVW9fSjA-2000-80.jpg",
   "https://www.dexerto.com/gaming/arknights-endfield-gameplay-trailers-platforms-beta-1833704/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg",
   "https://www.enduins.com/news/open-world-creature-collector-roco-kingdom-opens-beta-test-access-and-debuts-gameplay-overview": "https://www.enduins.com/wp-content/uploads/2026/10/ss_acf68242e105001deff706fd7ad98583694622bc.1920x1080.jpg",
@@ -1514,27 +1513,6 @@
   {
    "batch": 5,
    "because": "哈利波特剧集",
-   "date": "2026-10-25",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.5WdlIx5i2W3_-W7nWVAmEA&pid=News&w=1200",
-   "kind": "board",
-   "liked": "New 2-part Harry Potter series confirmed after HBO reboot",
-   "score": 5,
-   "source": "AOL",
-   "taste": [
-    [
-     "作品:哈利波特剧集",
-     1
-    ]
-   ],
-   "title": "HBO's Harry Potter might finally let you tell the Weasley twins apart, unlike in the movies",
-   "url": "https://www.aol.com/articles/hbos-harry-potter-might-finally-130130000.html",
-   "words": [],
-   "work": "哈利波特剧集"
-  },
-  {
-   "batch": 6,
-   "because": "哈利波特剧集",
    "date": "2026-10-24",
    "hits": [],
    "image": "https://cdn.mos.cms.futurecdn.net/JJUXJNug7549JTRVW9fSjA-2000-80.jpg",
@@ -2073,11 +2051,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [

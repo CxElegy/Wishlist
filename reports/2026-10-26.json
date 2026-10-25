@@ -1,6 +1,6 @@
 {
  "date": "2026-10-26",
- "edit_sig": "7e6dcf8eb862",
+ "edit_sig": "cd52c84a9e4a",
  "items": [
   {
    "cover": null,
@@ -125,17 +125,19 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "HBO's Harry Potter is almost two months away from its December release; fans are looking at how the series may distinguish Fred and George.",
      "date": "2026-10-25",
-     "n": 1,
-     "source": "AOL",
-     "title": "HBO's Harry Potter might finally let you tell the Weasley twins apart, unlike in the movies",
-     "url": "https://www.aol.com/articles/hbos-harry-potter-might-finally-130130000.html"
+     "headline": "HBO's Harry Potter might finally let you tell the Weasley twins apart, unlike in the movies",
+     "highlight": "Weasley twins",
+     "image": "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.aol.com/articles/hbos-harry-potter-might-finally-130130000.html",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
    "theme": {
     "accent": "#D4A646",
@@ -328,17 +330,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "ダイソーで見つかる猫グッズ3選の紹介。",
      "date": "2026-10-25",
-     "n": 1,
-     "source": "TRILL",
-     "title": "【ダイソー】猫好きさん、チェックです！買えたらラッキーな猫グッズ3選",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE00NUdmYnpvOFJOMk0zci1Ka1BLT19XRDcwa3VYMkJ5dktldjlvM3Z5ZWMwZVZVMF96UjZHRDNyMWQ4akhseDFFMjhfSDVGNmc?oc=5"
+     "headline": "【ダイソー】猫好きさん、チェックです！買えたらラッキーな猫グッズ3選",
+     "highlight": "猫グッズ3選",
+     "image": "https://media.trilltrill.jp/articles/5130807/description-image.76515209f1bc327c7d0ccdc8c32c2a72",
+     "image_via": "AI 挑选",
+     "url": "https://trilltrill.jp/articles/5130807",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -477,7 +481,7 @@
    }
   },
   {
-   "cover": null,
+   "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "last": {
     "date": "2026-10-25",
