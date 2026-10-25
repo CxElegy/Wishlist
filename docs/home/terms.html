@@ -320,6 +320,10 @@ button{font-family:inherit}
 .card.mini{display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 14px;align-content:start;
  padding-bottom:14px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
 .mini .pic{grid-row:span 2;align-self:start;aspect-ratio:4/3}
+/* 写真のない記事：字だけ（出典と日付・大きな見出し），左に作品色の線 */
+.card.nophoto{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:10px 0 14px 14px;border-left:5px solid var(--ac,var(--acc))}
+.card.nophoto h2,.card.nophoto h3{font-size:20px;line-height:1.5;font-weight:900}
+.card.mini.nophoto h3{font-size:17px}
 .mini .pic .ph{font-size:12px}.mini .pic.icon{gap:4px}.mini .pic.icon img.ico{width:min(40px,30%);border-radius:9px;padding:4px}
 .mini .pic.icon .src{font-size:11px}
 .mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}

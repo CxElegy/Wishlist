@@ -320,6 +320,10 @@ button{font-family:inherit}
 .card.mini{display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 14px;align-content:start;
  padding-bottom:14px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
 .mini .pic{grid-row:span 2;align-self:start;aspect-ratio:4/3}
+/* 写真のない記事：字だけ（出典と日付・大きな見出し），左に作品色の線 */
+.card.nophoto{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:10px 0 14px 14px;border-left:5px solid var(--ac,var(--acc))}
+.card.nophoto h2,.card.nophoto h3{font-size:20px;line-height:1.5;font-weight:900}
+.card.mini.nophoto h3{font-size:17px}
 .mini .pic .ph{font-size:12px}.mini .pic.icon{gap:4px}.mini .pic.icon img.ico{width:min(40px,30%);border-radius:9px;padding:4px}
 .mini .pic.icon .src{font-size:11px}
 .mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}
@@ -859,7 +863,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="8f15268e25a4"><style>
+<meta name="wl-ver" data-page="wishlist" content="a1ae5248f244"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1518,7 +1522,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.26 06:09</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.26 06:41</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">

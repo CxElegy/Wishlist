@@ -1,6 +1,6 @@
 {
- "admin": "5df7388a627a",
- "admin-ai": "71c4d9ed3fbb",
+ "admin": "395dc2ffcb50",
+ "admin-ai": "2970a5e316d4",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -11,7 +11,7 @@
    "51667458"
   ]
  },
- "admin-boards": "8e8be670df8f",
+ "admin-boards": "2139f35de958",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
@@ -22,7 +22,7 @@
    "aee2783e"
   ]
  },
- "admin-emblem": "1557200d83ca",
+ "admin-emblem": "2c51ab760472",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
@@ -37,17 +37,17 @@
    "15123066"
   ]
  },
- "admin-members": "834b565a571c",
+ "admin-members": "cd36e68f0533",
  "admin-members_marks": {},
- "admin-now": "9e97c6f5cffd",
+ "admin-now": "fa393dcaeef2",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3c3be05a"
+   "7aefbff4"
   ],
   "queue": [
    "いまの状況",
-   "c56f5dfd"
+   "897bb6e3"
   ],
   "status": [
    "運行状況",
@@ -58,7 +58,7 @@
    "749d4884"
   ]
  },
- "admin-system": "3ae61f46b98b",
+ "admin-system": "772f312cac62",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -66,15 +66,15 @@
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "67225bce"
+   "49df3b27"
   ],
   "res": [
    "リソース・並列と制限",
-   "b6623346"
+   "76e40dcd"
   ]
  },
  "admin_marks": {},
- "heat": "1c970713276c",
+ "heat": "db993ae7b1fb",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -89,7 +89,7 @@
    "6a024478"
   ]
  },
- "index": "5ae4a0d612f1",
+ "index": "2be53a92defd",
  "index_marks": {
   "front": [
    "トップ",
@@ -101,11 +101,11 @@
   ],
   "w-0242c181": [
    "dota2",
-   "b5aee63c"
+   "2dbe976e"
   ],
   "w-130724c0": [
    "猫用品",
-   "c97dc8fa"
+   "2d895c7b"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -145,11 +145,11 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "59d22f6f"
+   "7fc8a547"
   ],
   "w-b867582f": [
    "あつ森",
-   "d06217e4"
+   "18081004"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -161,11 +161,11 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "fbe85477"
+   "7445289c"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "0f5e3df9"
+   "b3da7b92"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -185,13 +185,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "2f9aa803"
+   "4f7c70f1"
   ],
   "w-f303ad09": [
    "绝区零",
    "578d630c"
   ]
  },
- "updated": "10.26 06:09",
- "wishlist": "8f15268e25a4"
+ "updated": "10.26 06:41",
+ "wishlist": "a1ae5248f244"
 }
