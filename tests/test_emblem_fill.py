@@ -364,6 +364,9 @@ class Background(unittest.TestCase):
         self.assertEqual(ef.RETRY_HOURS, 1)   # AI なし：6 時間は待たせすぎ（2026-10-22）→ 毎時の後台で毎回
         self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 1 時間以内・材料が同じ失敗は飛ばす
         self.assertEqual(ef.waiting(prog, self.items, now), [("zero", "2026-10-17T00:30:00+00:00")])   # 再挑戦待ちとして見える
+        from unittest import mock
+        with mock.patch.object(ef, "broken_cuts", side_effect=lambda i: [1] if i["name"] == "zero" else []):
+            self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 頭が切れた・ぼやけた小元素のある版面は待たない
         prog["items"]["zero"].pop("material")   # 指紋の記録がない古い失敗は待たない
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         self.assertEqual(ef.waiting(prog, self.items, now), [])
