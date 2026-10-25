@@ -22,11 +22,11 @@
    "aee2783e"
   ]
  },
- "admin-emblem": "2c51ab760472",
+ "admin-emblem": "6e925c47a11b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4bea2b89"
+   "40ed46a7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,15 +39,15 @@
  },
  "admin-members": "cd36e68f0533",
  "admin-members_marks": {},
- "admin-now": "fa393dcaeef2",
+ "admin-now": "e9d23349e670",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7aefbff4"
+   "ce8065a6"
   ],
   "queue": [
    "いまの状況",
-   "897bb6e3"
+   "2b03acea"
   ],
   "status": [
    "運行状況",
@@ -58,7 +58,7 @@
    "749d4884"
   ]
  },
- "admin-system": "772f312cac62",
+ "admin-system": "9dc03ed8e0f7",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -66,11 +66,11 @@
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "49df3b27"
+   "2f5cf342"
   ],
   "res": [
    "リソース・並列と制限",
-   "76e40dcd"
+   "415b76f5"
   ]
  },
  "admin_marks": {},
@@ -192,6 +192,6 @@
    "578d630c"
   ]
  },
- "updated": "10.26 06:41",
+ "updated": "10.26 07:03",
  "wishlist": "a1ae5248f244"
 }
