@@ -128,5 +128,13 @@ class Later(unittest.TestCase):
         self.assertIn("19→32 枚", ba.headline("名簿", "BLEACH の小元素", {"test-a-1400": 19}, {"test-a-1400": 32}))
 
 
+    def test_arch_step(self):   # 架构图：Before/After の規則は progress の pg5 に（#380 で lb1 に入った）
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+        import processes
+        steps = {s["id"]: s.get("text", "") for p in processes.PROCESSES for s in p.get("flow", [])}
+        self.assertIn("撮れませんでした", steps["pg5"])
+        self.assertEqual(steps["lb1"], "店長の版面 1 つずつ")
+
+
 if __name__ == "__main__":
     unittest.main()
