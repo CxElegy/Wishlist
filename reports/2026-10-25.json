@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "65b14dbfb588",
+ "edit_sig": "c9d3100c1a55",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -189,34 +189,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 48,
-     "source": "IGN India",
-     "title": "Avengers: Doomsday: Loki Actor Wunmi Mosaku Addresses Whether She Will Reprise Her Role in Upcoming MCU Movie",
-     "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNb3RiSkFDYS12YU1DOEVTeDZwR3dGU3NsdEhzc2haaUM1WVI4YkVrbUVTbmRhWGxWbE14dGZ4dV84ZWhoZVRIOG1KSHZkSlNWa1hDbHAtOVJYZU5rbU1jUXdKS28yUHFReldzQjR3NmN4ZThpRTM3WVFqbWpHekRBc0dfc3Q5M2I5YzhoWXRsdmQzM3pjMERVT3pBdUxuZWJweHBHMXJ3UzlTQzItV0xkZkFaRlZIU01HLUk3RjQ1MDh3YW5EVzhYVXd6Nlpfay1paWVZYkpLdXpvYS05?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 50,
-     "source": "Men's Journal on MSN",
-     "title": "Is Sandra Hüller Playing the Mother of Doctor Doom in Avengers: Doomsday?",
-     "url": "https://www.msn.com/en-us/news/other/is-sandra-h%C3%BCller-playing-the-mother-of-doctor-doom-in-avengers-doomsday/ar-AA2fZjJL"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-24",
-     "headline": "Marvel's new Avengers: Doomsday teaser addresses Steve Rogers & Sam Wilson Captain America debate",
-     "highlight": "",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g0Xgt.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/en-us/news/other/marvels-new-avengers-doomsday-teaser-addresses-steve-rogers-sam-wilson-captain-america-debate/ar-AA2g14LF",
-     "weight": "hero"
-    },
     {
      "blurb": "A new Avengers: Doomsday promo has Reed Richards opening the World Series, with MLB stars joining in.",
      "date": "2026-10-24",
@@ -255,6 +229,16 @@
      "image": "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/sandra-huller-avengers-doomsday-cameo.png?fit=1200%2C675&ssl=1",
      "image_via": "og:image",
      "url": "https://tbreak.com/sandra-huller-avengers-doomsday-cameo/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "‘Avengers: Doomsday’ Reportedly Crosses a Record-Setting Presales Milestone",
+     "highlight": "Record-Setting Presales",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img",
+     "image_via": "MSN 接口（其它来源）",
+     "url": "https://www.imdb.com/news/ni66078485/",
      "weight": "normal"
     }
    ],
