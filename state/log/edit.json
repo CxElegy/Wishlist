@@ -1,50 +1,5 @@
 [
 {
-"at": "2026-10-24T07:21:16+00:00",
-"text": "2026-10-24 第 3 バッチを出刊：dota2、gelato pique、チェーンソーマン、周杰伦、滑雪（5 版面・18 本・今日の整理待ちは全部終わり） · token 新規入力 4,610・キャッシュ読み 19.4万・出力 1,339",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.17,
-"mem_total": 16872804352,
-"mem_free": 16006115328,
-"disk_used": 10669006848,
-"disk_free": 30614163456,
-"disk_total": 41283170304,
-"peak": 190173184
-},
-"batch": 3,
-"boards": [
-"dota2",
-"gelato pique",
-"チェーンソーマン",
-"周杰伦",
-"滑雪"
-],
-"stories": 18,
-"left": 0,
-"edited": 19,
-"run": 1792825081.8681476,
-"tok": {
-"in": 4,
-"cw": 4606,
-"cr": 193770,
-"out": 1339,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 199719,
-"secs": 1395,
-"run_tok": {
-"in": 42,
-"cw": 72892,
-"cr": 1681944,
-"out": 9995,
-"calls": 21,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-24T08:24:19+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1713,5 +1668,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 608166
+},
+{
+"at": "2026-10-25T13:48:16+00:00",
+"text": "2026-10-25 第 3 バッチを出刊：日本顶级网球赛事（1 版面・10 本・今日の整理待ちは全部終わり） · token 新規入力 4,658・キャッシュ読み 56.1万・出力 1,952",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.34,
+"mem_total": 16872804352,
+"mem_free": 15936241664,
+"disk_used": 10782060544,
+"disk_free": 30501109760,
+"disk_total": 41283170304,
+"peak": 271040512
+},
+"batch": 3,
+"boards": [
+"日本顶级网球赛事"
+],
+"stories": 10,
+"left": 0,
+"edited": 21,
+"run": 1792934850.7305028,
+"tok": {
+"in": 14,
+"cw": 4644,
+"cr": 561461,
+"out": 1952,
+"calls": 7,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 568071,
+"secs": 1246,
+"run_tok": {
+"in": 48,
+"cw": 54567,
+"cr": 1735351,
+"out": 6504,
+"calls": 24,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
