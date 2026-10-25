@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "9b4e9b3d2c5c",
+ "edit_sig": "fed906b4580e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -755,40 +755,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 1,
-     "source": "産経ニュース",
-     "title": "19世紀末芸術の鍵握る黒猫 展覧会「スタンランと猫のジャポニスム」 荏原 畠山美術館",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1Scy1yNUplU2hSSWdibkdzUXJFRGlHcmhCRTdiUjBWbU5FdDA1U2FvVjM5UUdoMnFKblExdGtsQllOQlNnei1qeDZ4eFZoMDdCcy1UNUhvbDRoZ01JWm9Tbk50YnhYRjBLS0V0WU1aVS1MSzl0TGc?oc=5"
-    },
-    {
-     "date": "2026-10-18",
-     "n": 2,
-     "source": "au Webポータル",
-     "title": "キャットタワーにいた猫→近くで飼い主が横になっていると…可愛すぎる『謎の行動』に1万いいね「あなたの脳内に直接…」「全力で守ってるね」",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8xdGNRS2dfVU4xR29jSVBDVC1FUFNfaFQ3aEk0TTZ5OVBIaWl6a1FhWi1JMGRCMWUzeXp1ajBHc2NEeVFkRVlaN3FWcm4yTXRVemhNZEdrenFHWUZHSmdJUU9xdWN0V2E0bGo4UFJn?oc=5"
-    }
-   ],
-   "section": "生活",
-   "stories": [],
-   "subtitle": "猫グッズ · 家里两只猫",
-   "theme": {
-    "accent": "#E8875B",
-    "alt_accent": "#F3B6B0",
-    "alt_bg": "#3A2C24",
-    "alt_fg": "#FBF4EA",
-    "bg": "#FBF4EA",
-    "fg": "#3A2C24",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
    "facts": [],
    "last": {
@@ -835,6 +801,31 @@
     "bg": "#F6F1E7",
     "fg": "#1E3932",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-24",
+    "headline": "パソコンの上に乗る、スマホの前に割り込む……猫が“作業の邪魔”をする理由を調査＆獣医師が解説",
+    "url": "https://topics.smt.docomo.ne.jp/article/cat_benesse/life/cat_benesse-100207"
+   },
+   "name": "猫用品",
+   "quiet": true,
+   "section": "生活",
+   "status": "",
+   "stories": [],
+   "subtitle": "猫グッズ · 家里两只猫",
+   "theme": {
+    "accent": "#E8875B",
+    "alt_accent": "#F3B6B0",
+    "alt_bg": "#3A2C24",
+    "alt_fg": "#FBF4EA",
+    "bg": "#FBF4EA",
+    "fg": "#3A2C24",
+    "font": "sans",
     "split": true
    }
   },
