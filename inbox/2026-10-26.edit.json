@@ -48,7 +48,10 @@
   "日本顶级网球赛事": 2,
   "MMORPG 新作": 1,
   "哈利波特剧集": 1,
-  "猫用品": 1
+  "猫用品": 1,
+  "あつ森": 1,
+  "滑雪": 1,
+  "绝区零": 1
  },
  "GTA 6": [],
  "A2O LITE": [
@@ -157,6 +160,31 @@
     1
    ],
    "image": "https://media.trilltrill.jp/articles/5130807/description-image.76515209f1bc327c7d0ccdc8c32c2a72"
+  }
+ ],
+ "あつ森": [],
+ "滑雪": [
+  {
+   "headline": "ファーウェイ最新ウォッチはスキー・スノボの滑走分析や健康管理が進化！ WATCH GT 7 Pro・WATCH 6実機を見た",
+   "highlight": "スキー・スノボの滑走分析",
+   "blurb": "ファーウェイの新ウォッチ WATCH GT 7 Pro・WATCH 6 の実機レビュー。スキー・スノボの滑走分析機能が進化。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.mynavi.jp/article/20261023-5179245/images/005.jpg"
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "Zenless Zone Zero Drops Truvia Enemy Dossier With Season 3 Spoilers",
+   "highlight": "Season 3",
+   "blurb": "Zenless Zone Zero posted an Enemy Dossier on the Etheric Other Truvia on October 24, with a Season 3 Chapter 4 spoiler.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://happygamer.com/wp-content/uploads/2026/10/zenless-zone-zero-drops-truvia-enemy-dossier-with-season-3-spoilers.jpg"
   }
  ]
 }
