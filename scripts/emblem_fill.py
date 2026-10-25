@@ -746,7 +746,7 @@ def live_action(item):
     return kind_of(item) == "character" and bool(item.get("emblem_people"))
 
 
-ROLE_WHY = re.compile(r"役の記事|作品の動画の場面|ポスター|キービジュアル")
+ROLE_WHY = re.compile(r"役の記事|役の写真|作品の動画の場面|ポスター|キービジュアル")
 
 
 def is_role_image(x):
@@ -1105,6 +1105,20 @@ def role_images(api, role, limit=6):
     return out[:limit]
 
 
+def actor_role_images(api, actor, role, limit=3):
+    """出演者の記事に載っている「その人の役の姿」：ファイル名に役の名前（姓か名）がある画像（「Nick Frost as Rubeus Hagrid.jpg」）。
+    作り直しの剧（哈利波特剧集）は役の記事の画像が前の映画の役者ばかりなので、この作品の役者の役の写真はここにしかないことが多い。"""
+    q = urllib.parse.urlencode({"action": "query", "titles": actor, "prop": "images", "imlimit": 200, "format": "json", "redirects": 1})
+    pg = next(iter(_json(f"{api}?{q}")["query"]["pages"].values()))
+    titles = [x["title"] for x in pg.get("images", [])]
+    q = urllib.parse.urlencode({"action": "query", "list": "search", "srsearch": f'"{actor}"', "srnamespace": 6, "srlimit": 30, "format": "json"})
+    titles += [h["title"] for h in _json(f"{api}?{q}")["query"]["search"] if h["title"] not in titles]   # 記事に貼っていない写真（「HPTV BTS John Lithgow as Dumbledore」）
+    words = [w.lower() for w in re.split(r"[\s(),/]+", role) if len(w) >= 3]
+    files = [x for x in titles if re.search(r"\.(png|jpe?g|webp)$", x, re.I)
+             and not re.search(r"icon|logo|symbol|signature|favicon", x, re.I) and any(w in x.lower() for w in words)]
+    return sorted(_files_info(api, files[:20], width=600), key=lambda r: -r["area"])[:limit] if files else []
+
+
 def gather_roles(item, log=print, tried=None):
     """実写の作品：出演者ごとに「役の姿」の剧照を集める。
     基準：出演者の写真（Fandom の出演者の記事・Wikidata）— 本人確認にだけ使い、小元素には選ばない（anchor_only）。
@@ -1145,6 +1159,14 @@ def gather_roles(item, log=print, tried=None):
             except Exception as e:
                 log(f"  [基準] {actor}：{e}")
         if role and api:
+            try:   # 出演者の記事の役の写真（この作品のこの役者の役の姿。役の記事は前の作品の役者のことがある）
+                rows = actor_role_images(api, actor, role)
+                tried["出演者の記事の役の写真"] = tried.get("出演者の記事の役の写真", 0) + len(rows)
+                for r in rows:
+                    cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "出演者の記事の役の写真",
+                                  "why": f"{role}（{actor}）：Fandom の出演者の記事の役の写真", "license": "", "title": r.get("title", "")})
+            except Exception as e:
+                log(f"  [出演者の記事] {actor}：{e}")
             try:
                 rows = role_images(api, role)
                 tried["役の記事"] = tried.get("役の記事", 0) + len(rows)
@@ -1549,7 +1571,7 @@ def source_chain(item):
 
 
 # 自動で選ぶときの、取り方の優先順。ブランドは公式ロゴ（Wikidata P154・公式サイト）、主題は Wikidata・Commons・Twemoji を先に
-PICK_ORDER = ["直接指定", "役の記事", "作品の動画の場面", "作品の主な画像", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
+PICK_ORDER = ["直接指定", "出演者の記事の役の写真", "役の記事", "作品の動画の場面", "作品の主な画像", "AniList", "Fandom", "Wikidata", "Wikipedia", "Wikimedia Commons", "新聞の配図", "公式サイト", "YouTube", "Twemoji", WEB]
 PICK_ORDER_BY_KIND = {
     "brand": ["直接指定", "Wikidata", "公式サイト", "Wikimedia Commons", "Wikipedia", "Twemoji", WEB],
     "topic": ["直接指定", EXAMPLE, "Wikidata", "Wikimedia Commons", "Twemoji", "Wikipedia", "公式サイト", "新聞の配図", WEB],

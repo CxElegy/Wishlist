@@ -1441,6 +1441,19 @@ class LiveAction(unittest.TestCase):
             good = ef.check(cands, need_face=True, strict=True)
         self.assertEqual([c["image"] for c in good], ["b"])   # 基準は選ばない・兜で顔のない役の記事の代表画像は残る
 
+    def test_actor_page_role_photo(self):
+        """作り直しの剧：役の記事は前の映画の役者。出演者の記事の「X as 役」の写真を先に（哈利波特剧集）。"""
+        from unittest import mock
+        imgs = {"query": {"pages": {"1": {"images": [{"title": t} for t in [
+            "File:Nick Frost.jpeg", "File:Nick Frost as Rubeus Hagrid.jpg", "File:Harry Potter HBO logo no background.png", "File:WP favicon.PNG"]]}},
+                           "search": [{"title": "File:Nick Frost as Rubeus Hagrid.jpg"}, {"title": "File:HPTV BTS Nick Frost as Hagrid 2.jpg"}]}}
+        info = lambda api, files, width=500: [{"title": t, "image": t, "page": "", "license": "", "area": 1} for t in files]
+        with mock.patch.object(ef, "_json", return_value=imgs), mock.patch.object(ef, "_files_info", side_effect=info):
+            rows = ef.actor_role_images("x", "Nick Frost", "Rubeus Hagrid")
+        self.assertEqual([r["title"] for r in rows], ["File:Nick Frost as Rubeus Hagrid.jpg", "File:HPTV BTS Nick Frost as Hagrid 2.jpg"])   # 本人の写真・ロゴは除く・検索の写真も（重ねない）
+        self.assertTrue(ef.is_role_image({"why": "Rubeus Hagrid（Nick Frost）：Fandom の出演者の記事の役の写真"}))
+        self.assertLess(ef.PICK_ORDER.index("出演者の記事の役の写真"), ef.PICK_ORDER.index("役の記事"))
+
     def test_live_action_skips_actor_photos(self):
         self.assertTrue(ef.live_action({"type": "show", "emblem_people": True}))
         self.assertFalse(ef.live_action({"type": "anime"}))

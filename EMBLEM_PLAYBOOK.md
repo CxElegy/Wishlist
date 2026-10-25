@@ -44,6 +44,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 27 | 実写の版面が 6 人止まり（漫威电影：フランチャイズの Wikidata に出演者 P161 がない、哈利波特剧集：新しい剧で P161 が 12 人だけ） | 名簿は作品の P161 だけ | `live_cast`：作品の P161 → `wiki:` の記事の作品の P161（Avengers: Doomsday）→ 記事の「Cast」の節の「X as 役」（`wiki_cast`・`CAST_LINE`、役は `emblem_roles` へ）。`NAMES_V` 3 で数え直す | （この PR、2026-10-25） |
 | 28 | 小元素が 60×10・209×45 の切れ端（紫の帯）・0 バイトで読めない（漫威电影 Black Panther・BLEACH Mirrors High 2 枚） | 合併のたびに fit_all が前の切り抜き（emblems/ の自分の出力）を切り詰め直して縮む。書き出しに大きさの検査がなかった | `emblem.save_cut`（短い辺 ≥ `CUT_MIN` 64px・横 ≤ 縦×`CUT_WIDE` 3、だめなら書かず前の画像を残す）＋`emblem_fill.drop_broken`（前からの切れ端・0 バイトを外して emblem_reject へ、`due` にも入る） | 2026-10-25 |
 | 29 | 実写の名簿がそろって見えて Cast の節が一度も読まれない（哈利波特剧集 12 のまま）・同じ人が 2 回（Tenoch Huerta／Tenoch Huerta Mejía） | `fill_one` は pool＝who だと roster を呼ばない・wiki: のない版面は記事がない・`_name_key` は名字の足し書きを別人に | `_recount`（NAMES_V が上がった回は必ず roster）・`wd_enwiki`（Wikidata の英語の記事）・`_same_person`・役の `<!-- -->` を消す。NAMES_V 7 | 2026-10-25 |
+| 30 | 作り直しの剧（哈利波特剧集）の小元素が 3/65 で止まる・別人 55 | 役の記事（Harry Potter・Hermione Granger）の画像も「作品名＋役名」の動画も前の映画の役者（Radcliffe・Watson）で、本人確認で全部落ちる | `actor_role_images`：出演者の Fandom の記事の画像＋ファイル検索（"出演者"）で、ファイル名に役の名前がある写真（「Nick Frost as Rubeus Hagrid」「HPTV BTS John Lithgow as Dumbledore」）を役の記事より先に（`PICK_ORDER`・`ROLE_WHY`） | 2026-10-25 |
 
 ## 2. よく効いた直し方の型（手順）
 
