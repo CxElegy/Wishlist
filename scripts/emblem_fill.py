@@ -77,7 +77,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
-NAMES_V = 5   # 5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
+NAMES_V = 6   # 6：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す。5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -486,7 +486,10 @@ def roster(item, log=print):
     if kind_of(item) != "character":
         return None
     old = list(item.get("emblem_who") or [])
-    who = [x for x in old if not emblem.not_character(x)]   # 前に入った Player・Parents も名簿から外す（新しく足す名前だけでなく）
+    who = []
+    for x in old:   # 前に入った Player・Parents・同じ人の別の書き方（Tenoch Huerta Mejía）も名簿から外す（新しく足す名前だけでなく）
+        if not emblem.not_character(x) and not any(_same_person(y, x) for y in who):
+            who.append(x)
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
     names, how, cast_roles = [], "", {}
     if item.get("emblem_category") and api:
@@ -502,8 +505,7 @@ def roster(item, log=print):
     if not names:
         return None
     n = len(names)
-    seen = {_name_key(x) for x in who}   # 前の名簿の「Uryuu Ishida」と分類の「Uryū Ishida」は同じ人（2 枚にしない）
-    add = [x for x in names if _name_key(x) not in seen][:max(0, min(CEIL["character"], n) - len(who))]
+    add = [x for x in names if not any(_same_person(y, x) for y in who)][:max(0, min(CEIL["character"], n) - len(who))]   # 前の名簿の「Uryuu Ishida」と分類の「Uryū Ishida」は同じ人（2 枚にしない）
     with WRITE_LOCK:
         _set_field(item["name"], "emblem_pool", f"{n}   # 主要な要素の数＝小元素の上限（{how}、scripts/emblem_fill.py の roster）")
         if add or who != old:
@@ -514,6 +516,13 @@ def roster(item, log=print):
             _set_field(item["name"], "emblem_roles", json.dumps(roles, ensure_ascii=False) + "   # 出演者 → 役（記事の Cast の節・gather_roles）")
     log(f"  [名簿] {item['name']}：{how} {n} → 上限 {min(CEIL['character'], n)}、名前を {len(add)} 人足した")
     return n
+
+
+def _same_person(a, b):
+    """同じ人か：_name_key が同じ、または 2 語以上の名前の後ろに名字を足しただけ（Tenoch Huerta ＝ Tenoch Huerta Mejía）。"""
+    wa, wb = ([_name_key(w) for w in str(x).split()] for x in (a, b))
+    s, l = sorted((wa, wb), key=len)
+    return _name_key(a) == _name_key(b) or len(s) >= 2 and l[:len(s)] == s
 
 
 def _name_key(s):
@@ -884,6 +893,7 @@ def wiki_cast(lang, title):
     if not sec:
         return []
     text = _json(base + f"&prop=wikitext&section={sec['index']}").get("parse", {}).get("wikitext", {}).get("*", "")
+    text = re.sub(r"<!--.*?-->", "", text, flags=re.S)   # 編集者への注意（Steve Rogers<!-- Do NOT add Captain America -->）は役ではない
     out = []
     for m in CAST_LINE.finditer(text):
         actor = re.sub(r"\s*\(.*?\)", "", m.group(2) or m.group(1) or m.group(3) or "").strip()
@@ -898,6 +908,11 @@ def live_cast(item, log=print):
     → 記事の「Cast」の節（新しい剧：哈利波特剧集）。同じ人は 1 回（_name_key）。→ (名前, {出演者: 役})"""
     names, roles = [], {}
     arts = [(lang, title) for lang, _, title in (str(w).partition(":") for w in item.get("wiki") or []) if title]   # 同じ言語の記事が 2 つでも全部（wiki_titles は 1 言語 1 つ）
+    if not arts and item.get("wikidata"):   # wiki: を書いていない版面（哈利波特剧集）は Wikidata の英語の記事の Cast の節
+        try:
+            arts = [("en", t) for t in [wd_enwiki(item["wikidata"])] if t]
+        except Exception as e:
+            log(f"  [名簿] {item['name']}：{e}")
     tries = [lambda: wd_cast(item["wikidata"])] if item.get("wikidata") else []
     tries += [lambda a=a: wd_cast(None, title=a) for a in arts] + [lambda a=a: wiki_cast(*a) for a in arts]
     for f in tries:
@@ -911,12 +926,22 @@ def live_cast(item, log=print):
             if r and a not in roles:
                 roles[a] = r
             names.append(a)
-    seen, out = set(), []
+    out = []
     for n in names:
-        if _name_key(n) not in seen:
-            seen.add(_name_key(n))
+        same = next((o for o in out if _same_person(o, n)), None)
+        if same is None:
             out.append(n)
-    return out, roles
+        elif n in roles and same not in roles:
+            roles[same] = roles[n]   # 「Tenoch Huerta Mejía as Namor」の役は先に入った「Tenoch Huerta」へ
+    return out, {k: v for k, v in roles.items() if k in out}
+
+
+def wd_enwiki(qid, get=None):
+    """Wikidata の項目の英語の Wikipedia の記事名（なければ None）。"""
+    import library
+    get = get or library._wd_get
+    ent = (get({"action": "wbgetentities", "ids": qid, "props": "sitelinks", "sitefilter": "enwiki"}).get("entities") or {}).get(qid) or {}
+    return ((ent.get("sitelinks") or {}).get("enwiki") or {}).get("title")
 
 
 def _wd_get(params):
@@ -1470,6 +1495,7 @@ def commit(item, good, picks, replace=False, log=print):
     if kind in ("person", "group", "character"):
         emblem.cut_all(name, not needs_face(item), [x["image"] for x in old])   # 実在の人は写真として切る。前からの小元素は取景で外さない
         emblem.fit_all(name, not needs_face(item))
+        drop_broken(next((i for i in load_items() if i["name"] == name), item), log)   # 作り直しで縮んだ・読めない前からの小元素も外す
         # 切り抜きの検査で外れた画像は emblem_reject に書く（次は同じ人の次の候補を選ぶ。同じ画像で何度も失敗しない）
         now = next((i for i in load_items() if i["name"] == name), {})
         kept = {u for x in now.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source"))}
@@ -1658,7 +1684,7 @@ def due(prog, items, now):
         e = prog["items"].get(item["name"]) or {}
         hint = any(item.get(k) for k in ("emblem_fandom", "emblem_api", "emblem_category", "anilist_id", "wikidata"))
         recount = item.get("emblem_category") and not item.get("emblem_pool")   # 分類はあるのに数えられなかった（429）：版を待たずに次の回も
-        if st["state"] == "ok" and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
+        if st["state"] == "ok" and not broken_cuts(item) and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         h = _hours_since(e.get("failed_at"), now)
         if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")
@@ -1735,13 +1761,13 @@ def fill_one(item, log=print):
         log(f"  [取り方] {item['name']}：{e}")
     pooln = int(item.get("emblem_pool") or 0)
     if (item.get("emblem_category") or item.get("anilist_id") or live_action(item) and item.get("wikidata")) and (
-            found or not pooln or len(item.get("emblem_who") or []) < min(CEIL.get(kind_of(item), 0), pooln)):
+            found or item.get("_recount") or not pooln or len(item.get("emblem_who") or []) < min(CEIL.get(kind_of(item), 0), pooln)):
         try:   # 主要な要素の数がまだわからない：先に数える（上限と集める名前が決まる）
             if roster(item, log):
                 item = next(i for i in load_items() if i["name"] == item["name"])
         except Exception as e:
             log(f"  [名簿] {item['name']}：{e}")
-    if off_roster(item, log):
+    if off_roster(item, log) | drop_broken(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
     if status(item)["state"] == "ok":   # 名簿を数え直しても足りている（名簿を確かめに来ただけ）：集めない
         st = status(item)
@@ -1825,6 +1851,40 @@ def off_roster(item, log=print):
         emblem.write_item(item["name"], keep, None)
     log(f"  [名簿] {item['name']}：名簿にいない {len(ems) - len(keep)} 枚を外した")
     return len(ems) - len(keep)
+
+
+def broken_cuts(item):
+    """読めない（0 バイト）・切れ端（短い辺 CUT_MIN 未満・横が縦の CUT_WIDE 倍より長い）の切り抜きの小元素 → [小元素]。
+    網页の .emb では 60×10 の紫の帯（漫威电影 Black Panther）・209×45（BLEACH Mirrors High）になる。"""
+    from PIL import Image
+    bad = []
+    for x in item.get("emblem") or []:
+        im = str(x.get("image") or "") if isinstance(x, dict) else ""
+        p = emblem.sitedir.SITE_DIR / im
+        if not im.startswith("emblems/") or x.get("shape") in ("logo", "icon", "badge") or not p.exists():
+            continue
+        try:
+            w, h = Image.open(p).size
+        except Exception:
+            bad.append(x)
+            continue
+        if emblem.is_sliver(w, h):
+            bad.append(x)
+    return bad
+
+
+def drop_broken(item, log=print):
+    """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。"""
+    bad = broken_cuts(item)
+    if not bad:
+        return 0
+    keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad]))
+    with WRITE_LOCK:
+        emblem.write_item(item["name"], keep, None)
+        _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+    log(f"  [外した] {item['name']}：読めない・切れ端の小元素 {len(bad)} 枚（{'、'.join(b.get('subject', '') for b in bad)}）")
+    return len(bad)
 
 
 def fresh_have(item):
@@ -1924,6 +1984,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
             ilog(f"開始（いま {fresh_have(item)}）")
             live(name, "emblem", "work", "小元素を集めています", per_board + 3)
             t_item, before = time.time(), fresh_have(item)
+            item["_recount"] = (prog["items"].get(name) or {}).get("names_v") != NAMES_V   # 名簿の規則の版が上がった：名簿がそろっていても 1 回数え直す
             try:
                 result = fill(item, ilog)
             except OutOfTime:

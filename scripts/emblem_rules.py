@@ -76,6 +76,8 @@ def rules():
          "rule": f"左右の端（上 {pct(emblem.SIDE_ZONE)}）に {pct(emblem.SIDE_MAX)} を超えて当たる"},
         {"stage": STAGES[5], "title": "小さすぎる", "by": "rule", "code": "emblem.check_whole", "reason": "人物が小さすぎる",
          "rule": f"人物の面積 < {pct(emblem.AREA_MIN)}"},
+        {"stage": STAGES[5], "title": "切れ端・帯", "by": "rule", "code": "emblem.save_cut・emblem_fill.drop_broken", "reason": "切れ端",
+         "rule": f"書き出す切り抜きの短い辺 < {emblem.CUT_MIN}px か横が縦の {emblem.CUT_WIDE} 倍より長い（前からのもの・0 バイトも外す）"},
         {"stage": STAGES[5], "title": "輪郭がにじんでいる", "by": "rule", "code": "emblem.check_whole", "reason": "輪郭がにじんでいる",
          "rule": f"半透明 > {pct(emblem.SOFT_MAX)}"},
         {"stage": STAGES[4], "title": "同じファイル", "by": "rule", "code": "emblem_fill.file_key",
