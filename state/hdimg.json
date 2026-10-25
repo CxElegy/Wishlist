@@ -1003,6 +1003,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.assettype.com/tribune/2026-10-25/vbgunxe0/alex-eala.JPG?w=1200&auto=format&q=70&rect=0%2C107%2C2048%2C1152&h=675&fit=crop": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://images.entertainment.ie/uploads/2021/02/04114544/don-cheadle-war-machine.jpg?w=1280&h=768&q=high": {
   "w": 1280,
   "h": 768,
@@ -1242,6 +1248,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g1rsR.img": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://img.4gamers.com.tw/news-image/30592e27-3cf0-4f66-b229-fc5e54665aeb.jpg": {
@@ -1571,7 +1583,7 @@
  "https://kushironews.jp/wp-content/uploads/2026/10/MN20261026T711CAw00010_P1130TPT50327KSB_resized.jpg": {
   "w": 1200,
   "h": 801,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://lasisa.net/wp-content/uploads/2027/10/20261023_ana2_chiikawa_01.jpg": {
@@ -1676,6 +1688,12 @@
  "https://media.nownews.com/nn_media/thumbnail/2026/10/WsmmswqeCx0-1200x675.webp": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://media.npr.org/include/images/facebook-default-wide-s1400-c85.jpg": {
+  "w": 1400,
+  "h": 787,
   "target": 1280,
   "v": 3
  },
@@ -1826,6 +1844,12 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/627780_1.jpg": {
   "w": 600,
   "h": 846,
+  "target": 720,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/785431_1.jpg": {
+  "w": 1024,
+  "h": 683,
   "target": 720,
   "v": 3
  },
@@ -2220,6 +2244,18 @@
   "out": [
    1280,
    1062
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261026-00000006-spnannex-000-5-view.jpg?exp=10800": {
+  "w": 1062,
+  "h": 1200,
+  "target": 720,
+  "v": 3,
+  "local": "pics/847acfd2e53bdb6b.webp",
+  "out": [
+   1062,
+   1200
   ],
   "why": "期限付きの網址"
  },

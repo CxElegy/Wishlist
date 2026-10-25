@@ -7,7 +7,8 @@
    "weight": "lead",
    "refs": [
     2,
-    8
+    8,
+    20
    ],
    "image": "https://www.laughingplace.com/uploads/media/2026/10/Avengers-Doomsday-New-Teaser.jpg"
   },
@@ -17,7 +18,9 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    21,
+    26
    ]
   },
   {
@@ -26,7 +29,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    24
    ]
   },
   {
@@ -49,21 +53,41 @@
   }
  ],
  "_covered": {
-  "漫威电影": 19,
-  "GTA 6": 10,
+  "漫威电影": 26,
+  "GTA 6": 13,
   "A2O LITE": 6,
   "周杰伦": 3,
   "ILLIT": 6,
-  "日本顶级网球赛事": 2,
+  "日本顶级网球赛事": 6,
   "MMORPG 新作": 1,
   "哈利波特剧集": 1,
-  "猫用品": 1,
+  "猫用品": 3,
   "あつ森": 1,
   "滑雪": 1,
   "绝区零": 1,
-  "Astrae Oratio": 5
+  "Astrae Oratio": 5,
+  "三星手机": 1
  },
- "GTA 6": [],
+ "GTA 6": [
+  {
+   "headline": "Grand Theft Auto fans are already calling off from work ahead of GTA6 release",
+   "highlight": "calling off from work",
+   "blurb": "NPR reports that Grand Theft Auto fans are already planning sick days ahead of the GTA 6 release.",
+   "weight": "lead",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "GTA 6 is taking its marketing to a whole new level",
+   "highlight": "marketing",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
+  }
+ ],
  "A2O LITE": [
   {
    "headline": "今日人气歌谣1位：A2O LITE《NEON》恭喜4冠王！",
@@ -144,12 +168,32 @@
    "image": "https://tennisconnected.com/wp-content/uploads/2026/03/alexandra-eala-joc481o-fonseca-get-03-17-26-e1773723674883.jpg.webp"
   },
   {
+   "headline": "【女子テニス】大坂なおみ 4年ぶり東レPPO出場へ意気込み 「心の師」錦織圭さんの後を継ぐ",
+   "highlight": "4年ぶり東レPPO出場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    4
+   ]
+  },
+  {
    "headline": "Belarusian Aliaksandra Sasnovich advances into main draw of Toray Pan Pacific Open",
    "highlight": "main draw of Toray Pan Pacific Open",
    "blurb": "",
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Eala faces busy day",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6
    ]
   }
  ],
@@ -191,6 +235,24 @@
     1
    ],
    "image": "https://media.trilltrill.jp/articles/5130807/description-image.76515209f1bc327c7d0ccdc8c32c2a72"
+  },
+  {
+   "headline": "猫グッズ求め会場にぎわう【釧路市】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "ジョージスチュアートティーが猫柄アドベントカレンダーをハンズ限定で10月下旬発売へ",
+   "highlight": "10月下旬発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "あつ森": [],
@@ -232,6 +294,17 @@
     5
    ],
    "image": "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg"
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Samsung Galaxy S27 Pro - Specifications, Release Date, Latest News",
+   "highlight": "Release Date",
+   "blurb": "Gadgets 360's running page on the Galaxy S27 Pro covers specifications, release date and the latest news.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }
