@@ -101,6 +101,17 @@ class Rules(unittest.TestCase):
                 mock.patch.object(ef.emblem, "forehead_cut", return_value=True):
             self.assertEqual(ef.broken_cuts(item), [])
 
+    def test_broken_image_top_max(self):
+        # 上の端の半分以上が人物（コマの切り抜き：BLEACH Muramasa）は前からの切り抜きも外す。check_whole の TOP_MAX と同じ
+        from unittest import mock
+        from PIL import Image
+        im = Image.new("RGBA", (200, 200))
+        with mock.patch.object(ef.emblem, "head_cut", return_value=False), mock.patch.object(ef.emblem, "flat_flaw", return_value=False):
+            with mock.patch.object(ef.emblem, "top_share", return_value=0.6):
+                self.assertTrue(ef.broken_image(im, False))
+            with mock.patch.object(ef.emblem, "top_share", return_value=0.4), mock.patch.object(ef.emblem, "forehead_cut", return_value=False):
+                self.assertFalse(ef.broken_image(im, False))
+
     def test_unbreak_restores_by_current_rule(self):
         # 前の版の broken_cuts で外した小元素を、今の規則で外れなければ戻し、emblem_reject からも抜く
         import tempfile
