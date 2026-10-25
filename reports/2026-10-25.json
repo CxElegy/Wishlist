@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "6c8c508cfd4b",
+ "edit_sig": "9b4e9b3d2c5c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -421,22 +421,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 2,
-     "source": "Gizmochina",
-     "title": "Galaxy S27 Pro/Ultra TUV certifications reveal exact battery capacity",
-     "url": "https://www.gizmochina.com/2026/10/24/galaxy-s27-pro-ultra-tuv-certifications-reveal-exact-battery-capacity/"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 3,
-     "source": "yeeyi",
-     "title": "三星Galaxy S27 Ultra手机爆料：横向矩阵后摄方案-yeeyi",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5kUHFxWllnU3M2VlR6UnptMzJSUDN1MWRxamxxak5BSVc3VWIyOUV3Qzhra1F0WXpSbFR0WHpCOXB1enNqOTBRRm5Za2lGQV9NeGRGN2l3?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -448,6 +432,16 @@
      "image_via": "AI 挑选",
      "url": "https://nokiapoweruser.com/samsung-galaxy-s27-series-specs-price-early-launch-leak/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "Galaxy S27 Pro/Ultra TUV certifications reveal exact battery capacity",
+     "highlight": "exact battery capacity",
+     "image": "https://www.gizmochina.com/wp-content/uploads/2026/10/Erste-Samsung-Galaxy-S27-Ultra-Cases-zeigen-mehr-vom-neuen-Kamera-Design-q82-w2560-h-1-1.webp",
+     "image_via": "og:image",
+     "url": "https://www.gizmochina.com/2026/10/24/galaxy-s27-pro-ultra-tuv-certifications-reveal-exact-battery-capacity/",
+     "weight": "normal"
     }
    ],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
