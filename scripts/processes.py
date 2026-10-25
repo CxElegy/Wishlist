@@ -498,7 +498,7 @@ PROCESSES = [
         "summary": "みんなの版面の置き場（ライブラリ：Supabase の boards・follows）へ、店長の版面を写す。記事集め・AI 編集・デザインを版面ごとに 1 回にし、店長もお客さまも同じ版面を受け取るための土台（2026-10-23）。",
         "files": [".github/workflows/library.yml", "scripts/library.py", "db/library.sql"], "doc": "docs/rules/library.md", "uses": ["supabase"],
         "flow": [
-            {"id": "lb1", "kind": "step", "lane": "actions", "title": "items.yaml を読む", "text": "店長の版面 1 つずつ"},
+            {"id": "lb1", "kind": "step", "lane": "actions", "title": "items.yaml を読む", "text": "店長の版面 1 つずつ。高さが変わったページは大きい方に合わせて灰色で埋めて比べ、両方にある所の変化を真ん中に。切り抜きに入りきらない変化（行が増えて下が全部ずれた）は変わり始めを上に。欄が前か後にしかない＝新しい欄・消えた欄は「ない」と比べて送り、前も後も撮れなければ「変化なし」と言わず「撮れませんでした」。後で撮る After は成功した回のあとだけ（workflow_run の conclusion・見回りの status=success）、取れない artifact が 1 つあってもほかは続ける（2026-10-25）"},
             {"id": "lb2", "kind": "step", "lane": "actions", "title": "同じものかどうかの印", "text": "Wikidata の番号（wd:Q…）／なければ名前をそろえたもの（全角半角・大小・空白・記号）"},
             {"id": "lb2r", "kind": "decision", "lane": "actions", "title": "週 1 回の定時・手で起こした回？", "text": "items.yaml が変わっただけの回・後台の控えの時計が users_only で起こした回は引き直さない",
              "no": "番号はそのまま（lb2 へ）"},

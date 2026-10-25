@@ -71,7 +71,7 @@ jobs:
 
   # 後台の回が終わったら：置いてある Before の After を撮って送る（なければ数秒で終わる）
   before_after_later:
-    if: github.event_name == 'workflow_run' || github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || github.event.workflow_run.conclusion == 'success'   # 落ちた回では画面は変わらない（見回りの status=success とそろえる）
     concurrency: ba-later   # 定時と回の終わりが重なっても 2 回送らない
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -87,8 +87,11 @@ jobs:
           gh api "repos/${{ github.repository }}/actions/artifacts?per_page=100" \
             --jq '.artifacts[] | select(.name | startswith("ba-pending-")) | select(.expired | not) | "\(.id) \(.workflow_run.id) \(.name)"' > "$RUNNER_TEMP/bap/list.txt"
           while read -r id run name; do
-            gh run download "$run" -R "${{ github.repository }}" -n "$name" -D "$RUNNER_TEMP/bap/$name" || true
-            echo "$id" > "$RUNNER_TEMP/bap/$name/.id"
+            if gh run download "$run" -R "${{ github.repository }}" -n "$name" -D "$RUNNER_TEMP/bap/$name"; then
+              echo "$id" > "$RUNNER_TEMP/bap/$name/.id"
+            else
+              echo "取れなかった $name（ほかは続ける）"
+            fi
           done < "$RUNNER_TEMP/bap/list.txt"
           echo "n=$(wc -l < "$RUNNER_TEMP/bap/list.txt")" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v5
