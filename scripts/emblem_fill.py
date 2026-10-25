@@ -1717,8 +1717,8 @@ def due(prog, items, now):
             continue
         h = _hours_since(e.get("failed_at"), now)
         if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")
-                and e.get("material") == material(item)):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない
-            continue
+                and e.get("material") == material(item) and not broken_cuts(item)):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
+            continue                                                            # 壊れた小元素（頭が切れた・ぼやけた）が出ている版面も待たずに外して取り直す
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
     return [r[3] for r in sorted(rows, key=lambda r: r[:3])]
 
