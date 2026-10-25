@@ -353,6 +353,10 @@ button{font-family:inherit}
 .card.mini{display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:6px 14px;align-content:start;
  padding-bottom:14px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
 .mini .pic{grid-row:span 2;align-self:start;aspect-ratio:4/3}
+/* 写真のない記事：字だけ（出典と日付・大きな見出し），左に作品色の線 */
+.card.nophoto{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:10px 0 14px 14px;border-left:5px solid var(--ac,var(--acc))}
+.card.nophoto h2,.card.nophoto h3{font-size:20px;line-height:1.5;font-weight:900}
+.card.mini.nophoto h3{font-size:17px}
 .mini .pic .ph{font-size:12px}.mini .pic.icon{gap:4px}.mini .pic.icon img.ico{width:min(40px,30%);border-radius:9px;padding:4px}
 .mini .pic.icon .src{font-size:11px}
 .mini h3{align-self:start;font-size:15px;font-weight:700;line-height:1.5}
@@ -858,6 +862,15 @@ def _play(story):
 
 
 def _tcard(story, span, i, today, small=False, mini=False):
+    html_ = _tcard_(story, span, i, today, small, mini)
+    if _has_photo(story):
+        return html_
+    # 写真のない記事（2026-10-25）：出典のアイコンの札で空っぽの箱に見せず、字だけの記事の形（大きな見出し・出典と日付）にする
+    html_ = re.sub(r'<div class="pic[^"]*">.*?</div>', "", html_, count=1, flags=re.S)
+    return html_.replace('<article class="card ', '<article class="card nophoto ', 1)
+
+
+def _tcard_(story, span, i, today, small=False, mini=False):
     side = "a" if small else "m"  # 不再黑白交替：一周内统一主色底，折叠区统一副色底
     w = story.get("weight", "normal")
     url = e(story["url"])
@@ -1026,6 +1039,23 @@ def _front_pick(ranked, n):
             imgs.add(img)
             keys.setdefault(name, []).append(k)
     return picked
+
+
+def _photo_head(stories):
+    """版面の頭（重大・頭条の大きい枠）は写真のある記事だけ（2026-10-25）。写真のない頭条・重大は普通の記事に下げ、
+    頭が空いたら、写真のある記事のうち新しいものを頭条に上げる。元の記事は書き換えない（写しを返す）。"""
+    out, demoted = [], None
+    for x in stories:
+        if x.get("weight") in ("hero", "lead") and not _has_photo(x):
+            demoted = demoted or x["weight"]
+            x = {**x, "weight": "normal"}
+        out.append(x)
+    if demoted and not any(x.get("weight") in ("hero", "lead") for x in out):
+        pic = [x for x in out if _has_photo(x)]
+        if pic:
+            best = max(pic, key=lambda x: x.get("date") or x["_issue"])
+            out[out.index(best)] = {**best, "weight": "lead"}
+    return out
 
 
 def _has_pic(x):
@@ -1288,7 +1318,7 @@ def _section(block, anchor=""):
     cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=HOLD_DAYS - 1)).isoformat()
     # 有图（自己的图，或这一版面唯一一次的作品封面）的做图片卡片；没图的配图位置显示来源网站图标；
     # 连来源都看不出（没还原的 Google 新闻跳转）的不做空卡片，放进「其他消息」文字列表
-    recent = [x for x in block["stories"] if x["_issue"] >= cutoff and _has_pic(x)]
+    recent = _photo_head([x for x in block["stories"] if x["_issue"] >= cutoff and _has_pic(x)])
     older = [x for x in block["stories"] if x["_issue"] < cutoff and _has_pic(x)]
     texts = [x for x in block["stories"] if x["_issue"] >= cutoff and not _has_pic(x)]
     old_texts = [x for x in block["stories"] if x["_issue"] < cutoff and not _has_pic(x)]

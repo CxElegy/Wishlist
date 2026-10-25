@@ -640,3 +640,26 @@ class EmblemStaysOutOfText(unittest.TestCase):
         self.assertIn(".emb{clip-path:inset(-100vh -100vw -14px -100vw)}", css)             # 帯の線より下は見せない（フチと影の分だけ余裕）
         self.assertNotIn("margin-bottom:calc(var(--bz) * (var(--bf) - 1))", css)              # 絵は線より上に置く（足が切れない）
         self.assertIn("band.style.paddingRight", render.EMB_JS)                              # 本当の幅だけ帯の右を空ける
+
+
+class PhotolessHeadTest(unittest.TestCase):
+    """2026-10-25：写真のない記事は版面の頭にしない・アイコンの札ではなく字だけの形"""
+
+    def st(self, n, weight, image):
+        return {"headline": f"見出し{n}", "url": f"https://a.example/{n}", "weight": weight, "image": image,
+                "_issue": f"2026-10-2{n}", "source": "S"}
+
+    def test_head_needs_photo(self):
+        import render
+        xs = [self.st(1, "normal", "https://i.example/1.jpg"), self.st(2, "lead", None)]
+        out = render._photo_head(xs)
+        self.assertEqual([x["weight"] for x in out], ["lead", "normal"])
+        self.assertEqual(xs[1]["weight"], "lead")   # 元は書き換えない
+
+    def test_textonly_card_has_no_pic(self):
+        import render
+        h = render._tcard(self.st(1, "normal", None), 4, 0, "2026-10-25", mini=True)
+        self.assertIn("nophoto", h)
+        self.assertNotIn('class="pic', h)
+        h2 = render._tcard(self.st(1, "normal", "https://i.example/1.jpg"), 4, 0, "2026-10-25", mini=True)
+        self.assertIn('class="pic', h2)
