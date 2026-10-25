@@ -37,14 +37,14 @@ let planned = 0
 for (let i = 1; i <= MAX; i++) {
   const id = `${LANE === 'request' ? 'r' : 'f'}${i}`
   let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から最初の 1 つだけを進める（依頼の係）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日時・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（[~] で 3 時間以上止まっているものも）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
-    { label: `step:${id}`, phase: 'Step', schema: RESULT })
+    { label: `step:${id}`, phase: 'Step', model: 'sonnet', schema: RESULT })
   if (!r) { log(`${id}: 返事なし`); break }
   if (r.status === 'none') {
     if (LANE === 'request') { log('依頼の係：【依頼】の段がもうない'); break }
     if (planned >= 2) { log('計画を 2 回しても段がない：この回は終わる'); break }
     planned++
     const p = await agent(COMMON.replace(/\{ID\}/g, `plan${planned}`) + `\n\n計画の係。HARNESS.md「設計者として導く」と DESIGN_PRINCIPLES.md の E（考えから反推した次の一手）のやり方で、A の考えから「まだ足りないもの」を反推して段を足す（E の表にも 1 行足す）。HARNESS.md「目標から決める」で、お客さま（test-a・test-b・test-c）が 1 日使ったつもりで通し（登録 → 足す → 読む → 👍👎 → 欲しい物）、いちばん困る所から段にする。店長（test1）のページの同じ機能の作りを見て、同じ部品で直す段にする。進める段が一覧にない。HARNESS.md の目標（小さな Wikipedia・1 つの仕組み・ライブラリ・人ごとのページ・言語・入口・管理）と、本番の画面（店長・test-a・test-b・ログインなし、1400/390px）・設計書との食い違い・壊れた画像・遅いページ・テストの穴を点検し、次にやる段を 3〜6 個、BACKLOG.md に「- [ ] 段の名前 — できたと言える条件」で足して合併する（答えが要るものは [?] で）。`,
-      { label: `plan:${planned}`, phase: 'Plan', schema: PLAN })
+      { label: `plan:${planned}`, phase: 'Plan', model: 'sonnet', schema: PLAN })
     log(`計画：${(p && p.added || []).join(' / ')}`)
     if (!p || !(p.added || []).length) break
     i--
@@ -52,10 +52,10 @@ for (let i = 1; i <= MAX; i++) {
   }
   for (let round = 1; r.status === 'done' && round <= 2; round++) {
     const v = await agent(`${COMMON.replace(/\{ID\}/g, id + 'v' + round)}\n\n別の目として確かめるだけ（直さない）。段「${r.step}」が終わったと言っている：${r.summary}（${r.pr || ''}）。本番と HARNESS.md に照らして本当にできているか、店長のページが壊れていないか。`,
-      { label: `check:${id}:${round}`, phase: 'Check', schema: VERDICT })
+      { label: `check:${id}:${round}`, phase: 'Check', model: 'sonnet', schema: VERDICT })
     if (!v || v.ok) break
     r = await agent(COMMON.replace(/\{ID\}/g, id + 'f' + round) + `\n\n段「${r.step}」の続き。別の目の指摘を直して PR・合併・本番で確かめる：\n${v.problems.join('\n')}\n最後に同じ形で返す。`,
-      { label: `fix:${id}:${round}`, phase: 'Fix', schema: RESULT }) || r
+      { label: `fix:${id}:${round}`, phase: 'Fix', model: 'sonnet', schema: RESULT }) || r
   }
   log(`${r.step || id}: ${r.status} ${r.pr || ''}`)
   done.push(r)
