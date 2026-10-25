@@ -1,14 +1,14 @@
 {
- "admin": "f7d4dfbb69cc",
- "admin-ai": "f7a4bc836ecb",
+ "admin": "45a64ad37d85",
+ "admin-ai": "20b7fdaade73",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "396e14d6"
+   "25083ab0"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "bf0d5ed8"
+   "de0de458"
   ]
  },
  "admin-boards": "c3722de32df7",
@@ -22,11 +22,11 @@
    "034f4a76"
   ]
  },
- "admin-emblem": "25b12acdfb6e",
+ "admin-emblem": "7a79f8569405",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e3e5374a"
+   "5a943d4a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,15 +39,15 @@
  },
  "admin-members": "834b565a571c",
  "admin-members_marks": {},
- "admin-now": "73f36907dcb9",
+ "admin-now": "500641e071ae",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "95f94201"
+   "d0fa4dcc"
   ],
   "queue": [
    "いまの状況",
-   "2804bd0e"
+   "297f073f"
   ],
   "status": [
    "運行状況",
@@ -55,22 +55,22 @@
   ],
   "term-panel": [
    "ライブログ",
-   "5e59bd89"
+   "d1d063ee"
   ]
  },
- "admin-system": "90b617c8956f",
+ "admin-system": "8e77a4ac11ee",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2ca511f5"
+   "395d2398"
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "a12f6ce9"
+   "a2ec4019"
   ],
   "res": [
    "リソース・並列と制限",
-   "c14ceb83"
+   "b9357863"
   ]
  },
  "admin_marks": {},
@@ -89,7 +89,7 @@
    "95dc6bc4"
   ]
  },
- "index": "48ba98412016",
+ "index": "900d6703f2c0",
  "index_marks": {
   "front": [
    "トップ",
@@ -101,7 +101,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "7115096c"
+   "67413a0e"
   ],
   "w-130724c0": [
    "猫用品",
@@ -113,7 +113,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "bd5889f5"
+   "4ec06a2e"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -121,7 +121,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "05771420"
+   "7a88cc00"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -192,6 +192,6 @@
    "9d59ab4f"
   ]
  },
- "updated": "10.25 11:33",
+ "updated": "10.25 11:40",
  "wishlist": "a310f1091069"
 }
