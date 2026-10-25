@@ -199,6 +199,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets-prd.ignimgs.com/2026/10/25/avengers-doomsday-describes-the-return-of-steve-rogers-as-a-usvw-1792891164279.jpg?width=1280&format=jpg&auto=webp&quality=80": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iIcvRiBeYhKM/v1/1200x800.jpg": {
   "w": 1200,
   "h": 800,
@@ -647,12 +653,6 @@
   "target": 1280,
   "v": 3
  },
- "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -858,6 +858,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
+  "w": 1200,
+  "h": 677,
+  "target": 720,
+  "v": 3
+ },
  "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg": {
   "w": 1200,
   "h": 1680,
@@ -934,6 +940,12 @@
  "https://images.khan.co.kr/article/2026/10/20/news-p.v1.20261020.4c924d72449246b59d479a2890b8217c_P1.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.khan.co.kr/article/2026/10/25/news-p.v1.20261025.854c4fa97b1f460fa0b5f8642b81b141_P1.jpg": {
+  "w": 1200,
+  "h": 2685,
   "target": 720,
   "v": 3
  },
@@ -1123,12 +1135,6 @@
   "h": 720,
   "target": 1280,
   "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZYPt.img": {
   "w": 2200,
@@ -1601,9 +1607,9 @@
   "target": 720,
   "v": 3
  },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286345213_664_2000.JPEG": {
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
   "w": 650,
-  "h": 366,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -2866,6 +2872,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.6yHBTZsf4a3Uqjs0CUeDpQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3017,12 +3029,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.iHrXY6ojlKIxwPt02IDI3g&pid=News&w=800": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
@@ -3280,12 +3286,6 @@
   "h": 1080,
   "target": 720,
   "v": 3
- },
- "https://www.niikei.jp/wp-content/uploads/2026/10/unnamed-76-e1792729710980.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,
