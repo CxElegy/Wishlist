@@ -9,6 +9,8 @@ on:
   workflow_run:       # 画面が後で変わる PR（小元素・名簿・記事集め・AI 編集）の After は、その回が終わったあとに撮る（before_after.py later、2026-10-25）
     workflows: ["后台作業", "ライブラリの小元素", "关注清单通信"]
     types: [completed]
+  schedule:          # bot が起こした回（GITHUB_TOKEN の workflow_dispatch）の終わりでは workflow_run が起きない → 30 分ごとに待っている Before を見る（なければ数秒）
+    - cron: "13,43 * * * *"
 
 permissions:
   contents: read
@@ -69,7 +71,8 @@ jobs:
 
   # 後台の回が終わったら：置いてある Before の After を撮って送る（なければ数秒で終わる）
   before_after_later:
-    if: github.event_name == 'workflow_run'
+    if: github.event_name == 'workflow_run' || github.event_name == 'schedule'
+    concurrency: ba-later   # 定時と回の終わりが重なっても 2 回送らない
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:

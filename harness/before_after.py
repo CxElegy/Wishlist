@@ -448,11 +448,28 @@ def main(argv):
     return 0
 
 
+def last_success(name):
+    """その workflow の最後に成功した回が始まった時刻（UTC）。読めなければ None。
+    bot（GITHUB_TOKEN）が起こした回の終わりでは workflow_run が起きないので、定時の見回りはこれで見る（2026-10-25）。"""
+    yml = next((y for _, n, y in LATER if n == name), None)
+    if not yml:
+        return None
+    tok = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN", "")
+    req = urllib.request.Request(f"https://api.github.com/repos/{REPO}/actions/workflows/{yml}/runs?status=success&per_page=1",
+                                 headers={"Authorization": f"Bearer {tok}"} if tok else {})
+    try:
+        runs = json.load(urllib.request.urlopen(req, timeout=30)).get("workflow_runs") or []
+        return dt.datetime.fromisoformat(runs[0]["run_started_at"].replace("Z", "+00:00")) if runs else None
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def later(workflow, started_at, folder):
     """後台の回（workflow）が終わったあと：artifact に置いた Before（folder/<名前>/meta.json）のうち、この workflow を待っていて
-    合併より後に始まった回のものを撮り直して送る。送った（か 2 日たって諦めた）ものの名前を folder/sent.txt へ（progress.yml が artifact を消す）。"""
+    合併より後に始まった回のものを撮り直して送る。送った（か 2 日たって諦めた）ものの名前を folder/sent.txt へ（progress.yml が artifact を消す）。
+    workflow が空（定時の見回り）なら、それぞれの待っている workflow の最後に成功した回で見る。"""
     folder = pathlib.Path(folder)
-    started = dt.datetime.fromisoformat(started_at.replace("Z", "+00:00"))
+    started = dt.datetime.fromisoformat(started_at.replace("Z", "+00:00")) if started_at else None
     sent, slept = [], False
     for meta_p in sorted(folder.glob("*/meta.json")):
         d = meta_p.parent
@@ -463,8 +480,14 @@ def later(workflow, started_at, folder):
             send(head, m["url"], [], f"🖼 {head}：2 日たっても「{m['workflow']}」の回のあとの写真を撮れませんでした（画面の変化は見ていません）\n{m['url']}")
             sent.append(d.name)
             continue
-        if m["workflow"] != workflow or started < merged:
-            continue
+        if workflow:
+            if m["workflow"] != workflow or started < merged:
+                continue
+        else:
+            s = last_success(m["workflow"])
+            if not s or s < merged:
+                continue
+        wf = m["workflow"]
         root = d / "ba"
         (root / "before").mkdir(parents=True, exist_ok=True)
         for f in d.iterdir():
@@ -477,8 +500,8 @@ def later(workflow, started_at, folder):
         shoot(root / "after", where)
         images, line = pairs(root, where, m["title"])
         if not images:
-            line = f"「{workflow}」の回のあとも画面の変化なし：{head}"
-        send(head, m["url"], images, f"🖼 {line}（「{workflow}」の回のあと）\n{head}\n{m['url']}")
+            line = f"「{wf}」の回のあとも画面の変化なし：{head}"
+        send(head, m["url"], images, f"🖼 {line}（「{wf}」の回のあと）\n{head}\n{m['url']}")
         sent.append(d.name)
     (folder / "sent.txt").write_text("\n".join(sent), encoding="utf-8")
     print("送った:", sent)
