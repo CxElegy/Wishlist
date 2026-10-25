@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-24T08:24:19+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-24T08:28:39+00:00",
 "text": "2026-10-24 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、The Mandalorian、Vaundy ほか 11（17 版面・51 本・今日の整理待ちは全部終わり） · token 新規入力 5.3万・キャッシュ読み 59.7万・出力 3,526",
 "level": "ok",
@@ -1709,5 +1704,10 @@
 "calls": 24,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-25T14:36:09+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
