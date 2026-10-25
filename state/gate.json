@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T01:08:11+00:00",
+ "checked": "2026-10-25T01:20:21+00:00",
  "fired": {
-  "at": "2026-10-25T01:08:11+00:00",
+  "at": "2026-10-25T01:20:21+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-25T00:18:43+00:00",
+    "at": "2026-10-25T01:20:21+00:00",
     "attempts": 1,
     "day": "2026-10-25",
-    "prog": 76,
-    "resp": "cse_01GAo9X1A8TC8wmwFZZBtT4k",
-    "sig": "67a198a1661d"
+    "prog": 86,
+    "resp": "cse_0117m9Koje37H2HXERK5tER3",
+    "sig": "d302f305c104"
    },
    "items": [
     "A2O LITE",
@@ -49,19 +49,20 @@
   "emblem": {
    "claude": false,
    "items": [
-    "チェーンソーマン",
     "BLEACH Mirrors High",
+    "dota2",
     "The Mandalorian",
-    "哈利波特剧集"
+    "GTA 6"
    ],
    "need": true,
-   "sig": "5e1b6e2d3f15",
+   "sig": "d652bd08a2ed",
    "waiting": [
-    "GTA 6",
     "あつ森",
-    "A2O LITE"
+    "A2O LITE",
+    "チェーンソーマン",
+    "哈利波特剧集"
    ],
-   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 3 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:20 から）"
+   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:55 から）"
   },
   "photos": {
    "claude": true,
