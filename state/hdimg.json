@@ -721,6 +721,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hermes.media.transform.aol.com/adc8b94bb6e2147cca69e2f1d58daea67429d048/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/b1a3e2ce-5eea-3f93-bcbf-d14467f9f288/9c9f7c12-eb40-4073-b04b-d1183b714500.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
+ },
  "https://hips.hearstapps.com/hmg-prod/images/8b2afa82-9272-4199-8136-22d9d5456461.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
@@ -1030,11 +1036,23 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/mcu-marvel-studios-doctor-doom.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
+ },
  "https://images.thedirect.com/media/article_full/visionquest_human_ai.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
   "v": 3
+ },
+ "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_77,w_4908,h_2760/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/308/01kwb50hwecnm69sey79.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
  },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_403,y_0,w_1396,h_785/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m5k4pgv1pvtp668dha.jpg": {
   "w": 1440,
@@ -3394,6 +3412,12 @@
   "h": 1080,
   "target": 720,
   "v": 3
+ },
+ "https://www.laughingplace.com/uploads/media/2026/10/Avengers-Doomsday-New-Teaser.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
  },
  "https://www.laughingplace.com/uploads/media/2026/10/LBE-Mando-Grogu.png": {
   "w": 1280,

@@ -1,0 +1,45 @@
+{
+ "漫威电影": [
+  {
+   "headline": "New \"Avengers: Doomsday\" Teaser Has Some Fun with Multiple Captain Americas",
+   "highlight": "Multiple Captain Americas",
+   "blurb": "A new Avengers: Doomsday teaser shows Steve Rogers taking up Mjolnir alongside Thor and several Captain Americas.",
+   "weight": "lead",
+   "refs": [
+    2,
+    8
+   ],
+   "image": "https://www.laughingplace.com/uploads/media/2026/10/Avengers-Doomsday-New-Teaser.jpg"
+  },
+  {
+   "headline": "Marvel Studios Releases First Official Description for Robert Downey Jr.’s Doctor Doom",
+   "highlight": "First Official Description",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Marvel actor confirms his MCU return ahead of next Avengers movies",
+   "highlight": "MCU return",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Wild Avengers: Doomsday theory suggests a reunion for the sons of Odin",
+   "highlight": "theory",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  }
+ ],
+ "_covered": {
+  "漫威电影": 10
+ }
+}
