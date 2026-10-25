@@ -38,6 +38,7 @@ import json
 import pathlib
 import re
 import sys
+import threading
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -649,6 +650,7 @@ SIDE_MAX = 0.10    # 左右の端（上 SIDE_ZONE）に人物が当たってい�
 TOP_MAX = 0.5      # 上の端の人物の割合がこれを超える = 漫画のコマ・顔のアップを枠ごと切った
 TOP_TOUCH = 0.03   # 上の端にこれ以上当たっていたら、顔まで切れていないか確かめる
 FACE_TOP = 0.04    # 顔の上端が高さのこの割合より上 = 顔が上の端で切れている
+EYE_TOP = 1.4      # 目の高さ < 目〜口の距離 × これ = 額まで切れた（YuNet の目・口。harness/emb_check.EYE_TOP と同じ：哈利波特 Dominic 197×101 は haar の顔の上端では拾えなかった）
 AREA_MIN = 0.12    # 人物の面積がこれより小さい = 小さすぎる
 CUT_MIN = 64       # 書き出す切り抜きの短い辺がこれ未満 = 切れ端（漫威电影 Black Panther 60×10：作り直すたびに前の切り抜きを切り詰めて縮んだ）
 CUT_WIDE = 3       # 横が縦のこの倍より長い切り抜き = 帯（BLEACH Mirrors High 209×45）。人の胸像・全身は横長にならない
@@ -668,6 +670,41 @@ def save_cut(out, slug):
         raise ValueError(f"切れ端（{out.size[0]}×{out.size[1]}）")
     EMB_DIR.mkdir(parents=True, exist_ok=True)
     out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
+
+
+_YUNET = threading.Lock()
+
+
+def forehead_cut(img):
+    """切り抜きが上の端で額まで切れている（いちばん大きい顔の目が、目〜口の距離 × EYE_TOP より上）。
+    上に白い余白を足して YuNet で見る（額が切れていても顔を見つける）。顔のモデルがない・顔がない・透明な所がないものは False。"""
+    im = img.convert("RGBA")
+    if im.getextrema()[3][0] > 200:
+        return False
+    try:
+        import cv2
+        import numpy as np
+        import face_id
+        eng = face_id.engine()
+    except Exception:
+        return False
+    if eng is None:
+        return False
+    from PIL import Image
+    s = max(1.0, 400 / max(im.size))
+    w, h = int(im.width * s), int(im.height * s)
+    pad = h // 2
+    bg = Image.new("RGBA", (w, h + pad), "white")
+    bg.alpha_composite(im.resize((w, h)), (0, pad))
+    bgr = cv2.cvtColor(np.array(bg.convert("RGB")), cv2.COLOR_RGB2BGR)
+    with _YUNET:
+        eng[0].setInputSize((bgr.shape[1], bgr.shape[0]))
+        f = eng[0].detect(bgr)[1]
+    if f is None or not len(f):
+        return False
+    r = max(f, key=lambda r: r[2] * r[3])
+    eye, mouth = (r[5] + r[7]) / 2 - pad, (r[11] + r[13]) / 2 - pad
+    return bool(mouth > eye and eye < (mouth - eye) * EYE_TOP)
 
 
 def lost_face(src, out):
@@ -719,7 +756,7 @@ def check_whole(out, photo=False):
     if top > TOP_TOUCH:
         # 上の端で切れていても、顔が全部入っていれば（髪の上だけが切れている：恋次のような絵）よい
         f = face_box(out)
-        if f and f[1] < h * FACE_TOP:
+        if f and f[1] < h * FACE_TOP or forehead_cut(out):
             raise ValueError(f"顔が上の端で切れている（{top:.0%}）")
         if not f:   # 横顔・覆面などで顔が見つからない：外さずに残し、目で確かめる
             print(f"  [目で確認] 上の端に当たっていて顔が見つからない（{top:.0%}）", file=sys.stderr)

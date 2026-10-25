@@ -71,7 +71,7 @@ def rules():
         {"stage": STAGES[5], "title": "コマ・アップの切り抜き", "by": "rule", "code": "emblem.check_whole", "reason": "頭が上の端で大きく切れている",
          "rule": f"上の端の {pct(emblem.TOP_MAX)} を超えて人物（吹き出しなどを消した跡がえぐれる）"},
         {"stage": STAGES[5], "title": "顔が上の端で切れている", "by": "rule", "code": "emblem.check_whole", "reason": "顔が上の端で切れている",
-         "rule": f"上の端に {pct(emblem.TOP_TOUCH)} 以上当たり、顔の上端が高さの {pct(emblem.FACE_TOP)} より上（髪だけなら可）"},
+         "rule": f"上の端に {pct(emblem.TOP_TOUCH)} 以上当たり、顔の上端が高さの {pct(emblem.FACE_TOP)} より上、または目の高さが目〜口の距離 × {emblem.EYE_TOP} より上（額まで切れた。前からの小元素も drop_broken で外す。髪だけなら可）"},
         {"stage": STAGES[5], "title": "体が左右の端で切れている", "by": "rule", "code": "emblem.check_whole", "reason": "体が左右の端で切れている",
          "rule": f"左右の端（上 {pct(emblem.SIDE_ZONE)}）に {pct(emblem.SIDE_MAX)} を超えて当たる"},
         {"stage": STAGES[5], "title": "小さすぎる", "by": "rule", "code": "emblem.check_whole", "reason": "人物が小さすぎる",

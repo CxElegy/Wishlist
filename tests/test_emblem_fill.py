@@ -71,6 +71,32 @@ class Rules(unittest.TestCase):
         self.assertEqual(ef.rule({"type": "event", "emblem_kind": "person", "emblem_pool": 40})[1:], (3, 6, 10))
         self.assertEqual(ef.rule({"type": "anime", "emblem_max": 3})[1:], (3, 3, 3))
 
+    def test_subjects_rotation_reaches_everyone(self):
+        # 回ごとのずらしで名簿の全員に届く（STEP ずつずらすと 65 人のうち 30 人に一度も届かなかった）・実写の「役（出演者）」はもういる人
+        from unittest import mock
+        who = [f"a{i}" for i in range(65)]
+        item = {"type": "drama", "emblem_who": who, "emblem": [{"subject": "Harry Potter（a0）"}, {"subject": "作品（作品）"}]}
+        seen = set()
+        for h in range(100):
+            with mock.patch.object(ef.time, "time", return_value=h * 3600):
+                seen |= set(ef.subjects(item, "character", 65))
+        self.assertEqual(seen, set(who[1:]))
+        self.assertEqual(ef._who_of("Harry Potter（Dominic McLaughlin） 2"), {"Harry Potter（Dominic McLaughlin）", "Dominic McLaughlin"})
+
+    def test_broken_cuts_forehead(self):
+        # 額まで切れた前からの切り抜きも外す（取るときの check_whole と同じ規則、emblem.forehead_cut）
+        import tempfile
+        from unittest import mock
+        from PIL import Image
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        (tmp / "emblems").mkdir()
+        Image.new("RGBA", (200, 200)).save(tmp / "emblems" / "a.webp")
+        Image.new("RGBA", (200, 200)).save(tmp / "emblems" / "b.webp")
+        item = {"emblem": [{"subject": "A", "image": "emblems/a.webp"}, {"subject": "B", "image": "emblems/b.webp"}]}
+        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
+                mock.patch.object(ef.emblem, "forehead_cut", side_effect=lambda im: im.filename.endswith("a.webp")):
+            self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["A"])
+
     def test_subjects_skip_not_character_already_in_who(self):
         # もうある名簿の Player・Parents（あつ森）も集めない：先頭の HEAD 人に入らない
         who = ["A", "B", "Player", "C", "Special character", "D", "Parents"] + [f"c{i}" for i in range(20)]

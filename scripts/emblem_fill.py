@@ -463,13 +463,13 @@ def subjects(item, kind, hi):
     """収集する対象の名前。emblem_who（メンバー・キャラの名前）があればそれ、なければ種類ごとの決め方。"""
     who = [w for w in item.get("emblem_who") or [] if kind != "character" or not emblem.not_character(w)]   # もうある名簿にも（あつ森の Player・Parents）
     if who and kind in ("character", "group"):   # まだ小元素のいない人から STEP 人。足りない人が多いときは回ごとにずらす（見つからない人で止まらない）
-        have = {_base_subject(x.get("subject")) for x in item.get("emblem") or [] if isinstance(x, dict)}
+        have = {n for x in item.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
         rest = [w for w in who[:hi] if w not in have]
         if len(rest) <= STEP:
             return rest or who[:1]
         # 名簿の上（主役：ちいかわ・ハチワレ・うさぎ）の HEAD 人はいつも先に。残りは回ごとにずらす（見つからない人で止まらない）
         head, tail = rest[:HEAD], rest[HEAD:]
-        k = int(time.time() // 3600) * STEP % len(tail)
+        k = int(time.time() // 3600) * (STEP - len(head)) % len(tail)   # 1 回に試す幅だけ進める（STEP ずつだと 60 人の後ろ半分に届かなかった）
         return (head + tail[k:] + tail[:k])[:STEP]
     if who:
         return who[:hi]
@@ -1591,6 +1591,13 @@ def _base_subject(s):
     return re.sub(r" \d+$", "", str(s or ""))
 
 
+def _who_of(s):
+    """小元素の subject → 名簿（emblem_who）で当たりうる名前の組。実写は「役（出演者）」と書くので出演者も（Harry Potter（Dominic McLaughlin）→ Dominic McLaughlin）。"""
+    s = _base_subject(s)
+    m = re.fullmatch(r".+（(.+)）", s)
+    return {s, m.group(1)} if m else {s}
+
+
 def _have_images(item):
     """今ある小元素の画像と、目で見て外した画像（emblem_reject）。自動ではどちらも選ばない。"""
     have = {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
@@ -1795,7 +1802,7 @@ def fill_one(item, log=print):
         st = status(item)
         return {"state": "ok", "note": f"名簿を確かめた：{st['have']} / {st['target']} 枚でそろっている", "tried": {}}
     before = status(item)["have"]
-    have0 = {_base_subject(x.get("subject")) for x in item.get("emblem") or [] if isinstance(x, dict)}
+    have0 = {n for x in item.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
     queued = len([w for w in item.get("emblem_who") or [] if w not in have0])   # まだいない人の数。STEP を超えれば今回は一部だけ
     if needs_face(item) and face_id.engine() is None:
         return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "tried": {}}
@@ -1890,7 +1897,7 @@ def broken_cuts(item):
         except Exception:
             bad.append(x)
             continue
-        if emblem.is_sliver(w, h):
+        if emblem.is_sliver(w, h) or emblem.forehead_cut(Image.open(p)):   # 額まで切れた前からの切り抜き（取るときと同じ check_whole の規則）
             bad.append(x)
     return bad
 
