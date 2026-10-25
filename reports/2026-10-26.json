@@ -1,6 +1,6 @@
 {
  "date": "2026-10-26",
- "edit_sig": "a3b0a7421530",
+ "edit_sig": "9bf247f724ca",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -35,29 +35,6 @@
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 14,
-     "source": "games.gg",
-     "title": "GTA 6 電視廣告剪輯與首發預告片不同",
-     "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPQVRSZ0Z5VE5DS2gyU2ZrUmNfeEVCdHVyaDNSTmE1S2NsRzA1ZktKaHNqR1dDVnR6OVg1WDFCanFHR3ZuNGpaeTNEUFh3b1d2YTN4d3VCeGJ5aUlmV3B3TGNjdGFqUVlrTktyQ1NRcHZWSUVQU1ZPekkyX28xajlSaHVNeWUtd2J3YkgzQ3dnRWlBWDExOGx3MVpoNG5XWkgzRjJuYmlBbEx2a2pnT2FOR01JcW1JV0NoMnl6dlhBVkxTVXNwR01CWHcydXpQMVVBOHZOTTY5QnBiQl91dVdqZkEtY0Zqc1h4OFQtcGJvQnNSQlhUUmc?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 15,
-     "source": "Geek Ireland",
-     "title": "Opinion: why would you take time off work to play GTA VI?",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE44M3FUWkRYYUJKeXdPeXY3Vk1VZDZ5b1RfMjZwNWFqRDBFQndDTjcxNmFMR1p4SHFSS3l2WnN4dlExOVQxY0V3bjdLRE5KenYwcGZVVzd5ZXZnUzZ4bkJNeUlmUQ?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 16,
-     "source": "GTA BOOM",
-     "title": "Why GTA 6's Early Reviews May Not Tell the Whole Story",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQVk1mNl9ZdjZEMFNNLXZCWjkzY2pld2xwLVRTVWlxMUsweDE5OWNKOHVMenhFWmNpUGU2RG4wTkxJR2FKWUVGY1lHS0JLdVZoWnBsRVliX3BXSm1SWTg2RUpGclh2YUZtd3ljbEd3bkFNcTNlWVViWDRGTzVsdEFNY1FHRUhOQQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -78,6 +55,16 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g1rsR.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-us/news/other/gta-6-is-taking-its-marketing-to-a-whole-new-level/ar-AA2g128e",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "GTA 6 電視廣告剪輯與首發預告片不同",
+     "highlight": "電視廣告",
+     "image": "https://assets.games.gg/grand_theft_auto_vi_tv_spot_differences_og_050838fff630dd6fe366a7bb_4d02128e8a.webp",
+     "image_via": "og:image",
+     "url": "https://games.gg/zh-Hant/news/gta-6-%E9%9B%BB%E8%A6%96%E5%BB%A3%E5%91%8A%E5%89%AA%E8%BC%AF%E8%88%87%E9%A6%96%E7%99%BC%E9%A0%90%E5%91%8A%E7%89%87%E4%B8%8D%E5%90%8C/",
      "weight": "normal"
     }
    ],
@@ -130,15 +117,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 2,
-     "source": "ニコニコニュース",
-     "title": "スノーパーク イエティ 2026-2027シーズン｜28年連続！屋外スキー場として日本一早くオープン",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1ia0pZTGRMWHdXU05oYWg1ZnM1dGZnMTFhc2dkWWtyQlpiTi1oWmZGSjRMcU1zenA0aW10Zl9pR2ZIS1hqTE5VdXgyT0dUZ1ZNZHNCUA?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -150,6 +128,16 @@
      "image_via": "AI 挑选",
      "url": "https://news.mynavi.jp/article/20261023-5179245/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "スノーパーク イエティ 2026-2027シーズン｜28年連続！屋外スキー場として日本一早くオープン",
+     "highlight": "日本一早くオープン",
+     "image": "https://www.bing.com/th?id=ONUT.zcqfu7_W0e40mFU6UMDwRw&pid=News&w=1200",
+     "image_via": "转载 www.sankei.com（Bing 缩略图）",
+     "url": "https://news.nicovideo.jp/watch/nw19911659",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
@@ -168,36 +156,6 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 27,
-     "source": "玩具人 TOY PEOPLE",
-     "title": "MCU 重啟版《X戰警》新任「野獸」演員出爐！《七王國的騎士》男主角加入漫威宇宙",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBSbjdGMFVmTEs4WVFxd0V5LXdlRE01NUlYV2xKQkYyVDlsdWI1NWZXOWpNRHBNaG9VY0lWTzF2cTgwVzZkb2xPUDEwaVU?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 28,
-     "source": "IGN",
-     "title": "X-Men Actor Christopher Abbott Insists His Professor X Is Not in Doomsday or Secret Wars",
-     "url": "https://www.ign.com/articles/x-men-actor-christopher-abbott-insists-his-professor-x-is-not-in-doomsday-or-secret-wars"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 29,
-     "source": "IMDb",
-     "title": "New ‘Avengers: Doomsday’ Description Leans Hard Into Marvel’s Original Heroes and Doom’s Threat",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0xbEF5ZlA5QXhJUnhKUU9QNkhrLXc1a2xJUDFHSG0tX2lPcWtlTEc0UDV3ZkR6eF96T0lqcllJRDltU0lmWWJLeXB0MmxXWWF4SUVONjQyZnFfRy0yNVhuX2YzMHFTUTA?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 30,
-     "source": "SlashFilm",
-     "title": "The 15 Best Fight Scenes In The Marvel Cinematic Universe, Ranked",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPdzlFelFnblBvZG1kOGRBZ1VDSGhNbld1MGtLMTRMRzItMHdkX3U5YjZqa2tSWlRDekFtakdJcEVaaUJnU2MzOG1fbzlEZF9XN0JIZFE2Nzkya01WU0RfM2xQS3FrWnJ3ZHdjb2lGY2I4TzU1SGFobm5FV2xzbGlYSUNIN1NoQ0ZFSE00UUpB?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -427,33 +385,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 4,
-     "source": "手机新浪网",
-     "title": "严浩翔超话发文 我喜欢周杰伦你却说歌王是陶喆",
-     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQdzN6Y1FnNmF1NThtSG9GQWFySmU1LVhxVmpqLWJpUEpvNjRDd1phd0lCWUNBSXNqYTVkYzQ1ZGs2UlVLazlUaE5RNFMtVEx5UkZhMVVmWlNIbkpZbFJvbTJoQzRRSDZrb1VHQnpiRDBKR18tM0dQUzFnWk1YQ0xnOHJJSnJyUW11ZWl3d0psdjdsc0k2WkZIaENwS2k0OXU3NXVmTEJjUnMtR1JrTkprSU9UQWJyTTRidHVJVXh2RUxteW9OblI4Tm5aYWJVZVg5c29Yd0RyTlY?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "周杰倫",
-   "theme": {
-    "accent": "#2F5F8F",
-    "alt_accent": "#8DB6DE",
-    "alt_bg": "#14202E",
-    "alt_fg": "#EEF1F4",
-    "bg": "#F6F2EA",
-    "fg": "#1D2430",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
@@ -495,31 +426,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-24",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "知名篮球运动员林书豪分享自己打DOTA被家人催的视频，哈哈，这是每个DOTA玩家的日常~#dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE45VGppTlM1UFZBSUwxN25PaTRkempfSWlXNEdBTVZkMGw1UnFCVWVJODNqTWlrT1VqQ2VqNDZRNEFMcWJzekJoZTJDSWhHTnZFdWh1SDBHWjIySWpjeG1ZUzcyWQ?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 2,
-     "source": "手机新浪网",
-     "title": "啥情况啊ATF，双线作战赶场参加EPL比赛吗，你这么积极何意味啊🤔 #DOTA2[超话]##DOTA2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9RU2JSYVluUXB3VkJvRDVZOWVUVTRVbDdTNkhYMDI0RVFMdU1UN19tSzJrOG9wakVVZ2xuYUlvUmRHeUc4NGtCYTVwOVhVa3FHQjVqcHhtRHF3ZGdLTFFtblRQOA?oc=5"
-    },
-    {
+     "blurb": "Dota 2 gets a new Tidehunter Arcana, a Drow Ranger Arcana rerun and more in the Trove of Terror treasure.",
      "date": "2026-10-23",
-     "n": 3,
-     "source": "GosuGamers",
-     "title": "Dota 2 gets new Tidehunter Arcana, Drow Ranger Arcana rerun, and more in Trove of Terror treasure",
-     "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNTkpuWWYwdEdTTWtGQTFfN1F0Rzl6S1JKekphNjBHYjQ5QmpWYVhTRVdtLXNCSmxsS0s0VE9vR3czUlVkZmZqZVVrRWVSclhVZHg4eC1iQUNldDhYNnozYk5qX3VKMkpLbTRrX2xULWRha1lBOXVfYmxsdF82Z0hLSmhaV2l5bWpQZnJhRkxOM3VqU284Q0VLbHM3d1A1RmxDZ2pUcnRPM1FIZTNQTzFJeS1WUkRXWGlFOVhuYjB1SDN0Q2JCaWlrdVkxd3haa1VmSERXdlB3?oc=5"
+     "headline": "Dota 2 gets new Tidehunter Arcana, Drow Ranger Arcana rerun, and more in Trove of Terror treasure",
+     "highlight": "Tidehunter Arcana",
+     "image": "https://static.gosugamers.net/01/a5/ef/a3c6b6bbb5f78914840e3c1e4d1b2923f481e402996e80ff8f389e1415.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.gosugamers.net/dota2/news/79309-dota-2-gets-new-tidehunter-arcana-drow-ranger-arcana-rerun-and-more-in-trove-of-terror-treasure",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -536,36 +455,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 7,
-     "source": "手机新浪网",
-     "title": "【Twi】A2O LITE EYE-CONTACT最新概念照公开#A2O_LITE[超话]# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBuQk95VmtQNmFia2tIdjNSdUNEckpaTlRGUDViS1VHR0FIV09manRXckc4SndMUTVxVVRfVGhvdFhLX2FpZFVLcDI3eVFfa2FINUM3anRIUkVjNTRBY2V1Unpwbw?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 8,
-     "source": "手机新浪网",
-     "title": "🔥韩网热帖评论翻译🔥 RESCENE vs A2O LITE 哪家人气更火爆啊? cr.instiz ​​​ ​​​​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9wLXVVZ1lOeF9HYTBwdlJXQ0dHXzB3S2dKSWU5MVRadlREdldTTU1jQlpJXzBwVjc5bFQyeHB5OXBwdHZHU1pveHdJaVlpMWkzVjRVeUs3ZjNGYk5BbHZEa3ZmYw?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 9,
-     "source": "Sportschosun on MSN",
-     "title": "A2O LITE’s Aiching Looks Even Cuter",
-     "url": "https://www.msn.com/en-xl/news/other/a2o-lite-s-aiching-looks-even-cuter/ar-AA2fHHrY"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 10,
-     "source": "스타뉴스",
-     "title": "A2OLITE“可爱度爆表”[★照片]",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOSkhxM1pWWTFZcnRtNHBMX3VjUER2V3ZTS256alZSUnhOUWJFaHFVODR2NmxMM1ktTE9DUXBBUGRlYWM4Nlp4TmF6VDFtV0RnRko4Z2xFRkVRb2xlZE1WUUJ5dU56TFUwdlZ5UlpraE5odWh4WkJsREZtSGVUQmhxRg?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -596,6 +485,16 @@
      "image": "https://kagit-media.atreez.cc/uploads/2026-10-21/e8q5op2smsy5m4jytoua8h18.png",
      "image_via": "og:image",
      "url": "https://kagit.kr/zh/posts/a2o-lite-the-show-win",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "A2O LITE EYE-CONTACT最新概念照公开",
+     "highlight": "最新概念照",
+     "image": "http://wx4.sinaimg.cn/middle/002I0yDzly1iieprfrhrxj635s23vb2902.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5357955169648856.html",
      "weight": "normal"
     }
    ],
@@ -913,6 +812,31 @@
     "bg": "#15131C",
     "fg": "#EEEAF4",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-25",
+    "headline": "周杰伦花海现场实弹 祥子小禾震惊何弦配和弦",
+    "url": "https://k.sina.com.cn/article_7879923551_m1d5ae175f03301t94m.html"
+   },
+   "name": "周杰伦",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "周杰倫",
+   "theme": {
+    "accent": "#2F5F8F",
+    "alt_accent": "#8DB6DE",
+    "alt_bg": "#14202E",
+    "alt_fg": "#EEF1F4",
+    "bg": "#F6F2EA",
+    "fg": "#1D2430",
+    "font": "sans",
     "split": true
    }
   }

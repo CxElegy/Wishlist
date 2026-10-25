@@ -139,6 +139,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/002I0yDzly1iieprfrhrxj635s23vb2902.jpg": {
+  "w": 2000,
+  "h": 1333,
+  "target": 720,
+  "v": 3,
+  "local": "pics/9aaac7e684587f7c.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/006gNTEUgy1iidjugajd2j399c6fe7wq.jpg": {
   "w": 2000,
   "h": 1388,
@@ -212,6 +225,12 @@
   "w": 1200,
   "h": 800,
   "target": 720,
+  "v": 3
+ },
+ "https://assets.games.gg/grand_theft_auto_vi_tv_spot_differences_og_050838fff630dd6fe366a7bb_4d02128e8a.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://assets.mmoexp.com/images/202609/d1bc0f44ac2c34739074a26025e26f7fe194850c.png": {
@@ -2690,6 +2709,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.gosugamers.net/01/a5/ef/a3c6b6bbb5f78914840e3c1e4d1b2923f481e402996e80ff8f389e1415.jpg": {
+  "w": 2400,
+  "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
  "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022223735": {
   "w": 712,
   "h": 955,
@@ -3371,6 +3396,18 @@
  "https://www.bing.com/th?id=ONUT.y1DykR_-3YQyGw2CIxtK5g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.zcqfu7_W0e40mFU6UMDwRw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.boardoftheworld.com/wp-content/uploads/2025/07/Capita-Dark-Horse-Review-2026.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },

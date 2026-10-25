@@ -20,7 +20,8 @@
    "refs": [
     5,
     21,
-    26
+    26,
+    29
    ]
   },
   {
@@ -53,20 +54,21 @@
   }
  ],
  "_covered": {
-  "漫威电影": 26,
-  "GTA 6": 13,
-  "A2O LITE": 6,
-  "周杰伦": 3,
+  "漫威电影": 30,
+  "GTA 6": 16,
+  "A2O LITE": 10,
+  "周杰伦": 4,
   "ILLIT": 6,
   "日本顶级网球赛事": 6,
   "MMORPG 新作": 1,
   "哈利波特剧集": 1,
   "猫用品": 3,
   "あつ森": 1,
-  "滑雪": 1,
+  "滑雪": 2,
   "绝区零": 1,
   "Astrae Oratio": 5,
-  "三星手机": 1
+  "三星手机": 1,
+  "dota2": 3
  },
  "GTA 6": [
   {
@@ -75,7 +77,8 @@
    "blurb": "NPR reports that Grand Theft Auto fans are already planning sick days ahead of the GTA 6 release.",
    "weight": "lead",
    "refs": [
-    12
+    12,
+    15
    ]
   },
   {
@@ -85,6 +88,15 @@
    "weight": "normal",
    "refs": [
     13
+   ]
+  },
+  {
+   "headline": "GTA 6 電視廣告剪輯與首發預告片不同",
+   "highlight": "電視廣告",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
    ]
   }
  ],
@@ -117,6 +129,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "A2O LITE EYE-CONTACT最新概念照公开",
+   "highlight": "最新概念照",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -266,6 +287,15 @@
     1
    ],
    "image": "https://news.mynavi.jp/article/20261023-5179245/images/005.jpg"
+  },
+  {
+   "headline": "スノーパーク イエティ 2026-2027シーズン｜28年連続！屋外スキー場として日本一早くオープン",
+   "highlight": "日本一早くオープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "绝区零": [
@@ -305,6 +335,18 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Dota 2 gets new Tidehunter Arcana, Drow Ranger Arcana rerun, and more in Trove of Terror treasure",
+   "highlight": "Tidehunter Arcana",
+   "blurb": "Dota 2 gets a new Tidehunter Arcana, a Drow Ranger Arcana rerun and more in the Trove of Terror treasure.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://static.gosugamers.net/01/a5/ef/a3c6b6bbb5f78914840e3c1e4d1b2923f481e402996e80ff8f389e1415.jpg"
   }
  ]
 }

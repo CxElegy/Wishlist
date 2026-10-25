@@ -1,14 +1,14 @@
 {
- "admin": "c11eba713b32",
- "admin-ai": "824b1ea66cbd",
+ "admin": "e600c76f4afb",
+ "admin-ai": "6aa6bbd49397",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "a2573ac6"
+   "fd12aafb"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "5ccab147"
+   "3c0174c5"
   ]
  },
  "admin-boards": "abc6962b8773",
@@ -22,11 +22,11 @@
    "aee2783e"
   ]
  },
- "admin-emblem": "086db9f82dd6",
+ "admin-emblem": "42b057b317dd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "41954e6d"
+   "7b47edfa"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "cd36e68f0533",
  "admin-members_marks": {},
- "admin-now": "6baf7c1ae0f3",
+ "admin-now": "4d335514f96e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "329a43b1"
+   "3be2affb"
   ],
   "queue": [
    "いまの状況",
@@ -55,14 +55,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "3f62e13a"
+   "5eea1459"
   ]
  },
- "admin-system": "82cf4fba1795",
+ "admin-system": "e0e793ad1640",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ed55f23c"
+   "267ae2c0"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,7 +70,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "fd13b14e"
+   "dde15caa"
   ]
  },
  "admin_marks": {},
@@ -89,11 +89,11 @@
    "4385d634"
   ]
  },
- "index": "92126e97869b",
+ "index": "213369fa8aa6",
  "index_marks": {
   "front": [
    "トップ",
-   "c2d53bc6"
+   "ac3e5fe2"
   ],
   "picks": [
    "気になるかも？",
@@ -101,7 +101,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "2dbe976e"
+   "4c3b3e93"
   ],
   "w-130724c0": [
    "猫用品",
@@ -113,7 +113,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "5bee9351"
+   "a15477f5"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -125,7 +125,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "b02a3405"
+   "2f81e133"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "ae298d13"
+   "99c1d1a7"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -192,6 +192,6 @@
    "578d630c"
   ]
  },
- "updated": "10.26 07:22",
+ "updated": "10.26 07:26",
  "wishlist": "a1ae5248f244"
 }
