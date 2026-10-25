@@ -6,13 +6,17 @@ name: 進み具合を Discord へ
 on:
   pull_request:
     types: [closed]   # 合併したときだけ（2026-10-24：PR を出しただけは送らない）
+  workflow_run:       # 画面が後で変わる PR（小元素・名簿・記事集め・AI 編集）の After は、その回が終わったあとに撮る（before_after.py later、2026-10-25）
+    workflows: ["后台作業", "ライブラリの小元素", "关注清单通信"]
+    types: [completed]
 
 permissions:
   contents: read
-  actions: read   # Before / After：その合併の render.yml が終わったかを見る
+  actions: write   # Before / After：その合併の render.yml が終わったかを見る・後で撮る Before を artifact に置いて、送ったら消す
 
 jobs:
   notify:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 3
     env:
@@ -53,4 +57,51 @@ jobs:
       - name: Before / After を撮って送る
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
         run: python harness/before_after.py "${{ github.event.pull_request.merge_commit_sha }}" "${{ github.event.pull_request.number }}" "$PR_TITLE" "${{ github.event.pull_request.html_url }}"
+      - name: 後で撮る Before を置く（後台の回のあとに After）
+        if: hashFiles('ba-pending/meta.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: ba-pending-${{ github.event.pull_request.number }}
+          path: ba-pending/
+          retention-days: 3
+
+  # 後台の回が終わったら：置いてある Before の After を撮って送る（なければ数秒で終わる）
+  before_after_later:
+    if: github.event_name == 'workflow_run'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      UX_CHANNEL: chrome
+    steps:
+      - name: 置いてある Before を探す
+        id: pend
+        run: |
+          mkdir -p "$RUNNER_TEMP/bap"
+          gh api "repos/${{ github.repository }}/actions/artifacts?per_page=100" \
+            --jq '.artifacts[] | select(.name | startswith("ba-pending-")) | select(.expired | not) | "\(.id) \(.workflow_run.id) \(.name)"' > "$RUNNER_TEMP/bap/list.txt"
+          while read -r id run name; do
+            gh run download "$run" -R "${{ github.repository }}" -n "$name" -D "$RUNNER_TEMP/bap/$name" || true
+            echo "$id" > "$RUNNER_TEMP/bap/$name/.id"
+          done < "$RUNNER_TEMP/bap/list.txt"
+          echo "n=$(wc -l < "$RUNNER_TEMP/bap/list.txt")" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v5
+        if: steps.pend.outputs.n != '0'
+      - uses: actions/setup-python@v6
+        if: steps.pend.outputs.n != '0'
+        with:
+          python-version: "3.12"
+      - if: steps.pend.outputs.n != '0'
+        run: pip install playwright pyyaml pillow
+      - name: After を撮って送る
+        if: steps.pend.outputs.n != '0'
+        run: python harness/before_after.py later "${{ github.event.workflow_run.name }}" "${{ github.event.workflow_run.run_started_at }}" "$RUNNER_TEMP/bap"
+      - name: 送った Before を消す
+        if: steps.pend.outputs.n != '0'
+        run: |
+          for name in $(cat "$RUNNER_TEMP/bap/sent.txt" 2>/dev/null); do
+            gh api -X DELETE "repos/${{ github.repository }}/actions/artifacts/$(cat "$RUNNER_TEMP/bap/$name/.id")" || true
+          done

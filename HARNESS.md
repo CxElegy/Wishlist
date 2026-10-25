@@ -29,6 +29,8 @@
 - **会話の中で選んでもらう質問は Discord に @ 付き**（2026-10-24，用户定的）：会話の Claude が AskUserQuestion を出すときは、同時に ask_remind.yml を workflow_dispatch（cmd=ask、text=質問の要約）。返事がなければ最初の 1 時間は 5 分おき・そのあと 30 分おきに繰り返す（夜 0〜8 時は休む）。答えをもらったらすぐ cmd=clear。BACKLOG の [?]（何日もかかる決めごと）は知らせない。
 - **2 時間ごとの報告**：会話の定時（2 時間ごと）で、いまやっていることを 30 字にまとめて ask_remind.yml（cmd=say）で Discord へ。
 - 画面に関わる PR を合併したら、Discord に **Before / After の画像**（左右に並べ、変わった所を赤い枠で囲む。ログインなし 1400・test-a 1400・390）が自動で届く（harness/before_after.py、2026-10-24 用户定的）。
+  - **撮る場所は PR の説明に 1 行**：`画面：<ページ> <CSS セレクタ> — <どこを見る>`（例 `画面：index #sec-bleach .emb — BLEACH の小元素`、ページは index か admin-emblem.html など）。その欄だけ切り抜いて大きく、欄の中の img の数の前→後も書く。書かなければページ全体（8000px まで）を比べ、変わった一番大きい所を真ん中に切り抜く。差がなければ写真なしで「画面の変化なし」の 1 行。乱数は決まった種・動きは止めて撮るので、変えていなければ差は 0。
+  - 小元素・名簿・記事集め・AI 編集の PR（before_after.LATER）は、合併では「変わるのは〇〇の回のあと（見込み HH:MM）」の 1 行だけ。Before を artifact（ba-pending-<番号>）に置き、その回が終わったら（progress.yml の workflow_run）After を撮って送る（2026-10-25）。
 
 ## 会話は入口、作るのはループ（2026-10-25，用户定的：「なるべく設計理念も含めてハーネスで管理してループで実行」）
 
@@ -91,7 +93,7 @@
 4. **設計する**：Figma の MCP がつながっていれば、Figma で見本を作って写真を撮る（get_screenshot）。なければテストグラウンドに HTML の見本。見た目を変えるものは、あなたに見本を見せて決めてもらう（上の決まり）。
 5. **作る**：店長と同じ部品（render.py・令牌）で。
 6. **確かめる**：Playwright（`.mcp.json` の playwright MCP、または `harness/ux_check.py`）で 1400 / 390 px を開いて押して写真を撮る。`node .claude/skills/design-taste-frontend/scripts/inspect.mjs <網址> --widths 1440,390 --allow <下の許すもの>`（Chrome は `--no-sandbox` が要る：CHROME_PATH に包みの shell を渡す）の FAIL が 0 になるまで直す。画像が出ない・読み込みが遅いもここで見る。
-7. **見せる**：合併すると Discord に Before / After（変わった所の赤枠）。
+7. **見せる**：合併すると Discord に Before / After（変わった所の赤枠・切り抜き）。PR の説明に `画面：<ページ> <セレクタ> — <どこを見る>` を書く。
 
 **どれとどれが一組かを迷わせない（ゲシュタルト、2026-10-24，用户定的：スマホで「真ん中の写真が上の記事か下の記事か分かりづらい」）**：
 - **近さ**：同じものの部品（写真・日付・見出し）の隙間は、となりのものとの隙間の **1/3 以下**。いまは記事の中 8px・記事どうし 28px（スマホ 24px）。
