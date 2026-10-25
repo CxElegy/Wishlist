@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "30ca95a83dcc",
+ "edit_sig": "2f277b69bbc5",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -143,22 +143,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 2,
-     "source": "Switchback Travel",
-     "title": "Best Ski Helmets of 2026/27",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9tcDZOTWt5c0FlenRuWFNheER6NjJEQlFLY2lpeGlrMWVkNUtYTnI1OWpPaUNpT2xTWVBZZEYxRmxRZy1YTmlLLV9aV3RpTXlnRFBzM3lGdndQb1NFVlBJaHR3?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 3,
-     "source": "テレ朝NEWS",
-     "title": "「日本一早いゲレンデ」オープン 過去最強エルニーニョで暖冬予想 人工雪が心配",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5wMEc5VTNLWl9qUExRY0R5eHB6UU8taVZPRnEyUWN6Ti1iNmZITlNEQk5WUjR4MTJHcWVjQkZTMXo2QVJqMExNazBCMV9GSEo0WXpyeERqMkpoSEg3aTFWMmFibUl1STFxYno2TG0zaDhTQQ?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -170,6 +154,16 @@
      "image_via": "og:image",
      "url": "https://dmksnowboard.com/furano-bonchi-powder-first-track-2027/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "「日本一早いゲレンデ」オープン 過去最強エルニーニョで暖冬予想 人工雪が心配",
+     "highlight": "日本一早いゲレンデ",
+     "image": "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200",
+     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "url": "https://news.tv-asahi.co.jp/news_society/articles/900202667.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",

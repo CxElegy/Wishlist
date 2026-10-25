@@ -2887,8 +2887,15 @@
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.443,
+  "local": "pics/b072d21e6f944e57.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.6yHBTZsf4a3Uqjs0CUeDpQ&pid=News&w=1200": {
   "w": 700,
@@ -3296,6 +3303,12 @@
  "https://www.kukinews.com/data/kuk/image/2026/09/11/kuk20260911000105.jpg": {
   "w": 1920,
   "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.niikei.jp/wp-content/uploads/2026/10/unnamed-76-e1792729710980.jpg": {
+  "w": 820,
+  "h": 547,
   "target": 720,
   "v": 3
  },
