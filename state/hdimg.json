@@ -1658,10 +1658,10 @@
   "why": "看不清"
  },
  "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_mynavi_jp_article_20261025-5173094__w600.webp": {
-  "w": 600,
-  "h": 359,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://news-cdn.para-daily.com/wp-content/uploads/2026/10/1792561059-nugfmgqtfkswqwu18mjq.webp": {
   "w": 1280,
@@ -2064,12 +2064,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035780-tennismagv-000-2-view.jpg?exp=10800": {
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035780-tennismagv-000-3-view.jpg?exp=10800": {
   "w": 1280,
   "h": 960,
   "target": 720,
   "v": 3,
-  "local": "pics/4af4db6acf6c043b.webp",
+  "local": "pics/410a3a0f9e74480f.webp",
   "out": [
    1280,
    960
@@ -2078,6 +2078,12 @@
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035789-tennismagv-000-1-view.jpg?exp=10800": {
   "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-10173671-it_nlab-000-1-view.jpg?exp=10800": {
+  "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"
@@ -3332,6 +3338,12 @@
  },
  "https://www.laughingplace.com/uploads/media/2026/10/LBE-Mando-Grogu.png": {
   "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
+ "https://www.niikei.jp/wp-content/uploads/2026/10/unnamed-76-e1792729710980.jpg": {
+  "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"

@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "c9d3100c1a55",
+ "edit_sig": "a4d5fd1541ff",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -134,22 +134,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 4,
-     "source": "au Webポータル",
-     "title": "北海道・トマムのスキー場にゲレンデ直結の新施設「アドベンチャーベース」 - リフト券購入からギアレンタル、レッスン受付まで1カ所で完結",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFA4bmQzcm9kbnA5YkR1T1dhbzl1TjE4U3FCSm83UGZsMnVDSTl1QlJWOTZsOElQWmNLNFptNlMyQm1yejV3Z3BZeEZVY25PTUJocFZRcGNNNUY0R2Y5c3BGcFU0R1hNenNDRnFIQTBR?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "札幌速報",
-     "title": "SAPPORO STREAM HOTELにて、サウナや朝食も楽しめる、レンタルフルセット付「札幌藻岩山スキー場」コラボ特別宿泊プランを販売！",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1xT2tjbzRKQVNfNkstbUlCeFpHeEZRTU5BQjZMYUJkZV9Pai01RDlpNHFPOHJsZHo1WHdZcUFEZHBDM0xCMVJFR3JPLXZFdE13RWFPSFdldEJqaWREa3piQkRR?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -170,6 +154,16 @@
      "image": "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200",
      "image_via": "转载 www.msn.com（Bing 缩略图）",
      "url": "https://news.tv-asahi.co.jp/news_society/articles/900202667.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "北海道・トマムのスキー場にゲレンデ直結の新施設「アドベンチャーベース」",
+     "highlight": "アドベンチャーベース",
+     "image": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_mynavi_jp_article_20261025-5173094__w600.webp",
+     "image_via": "og:image",
+     "url": "https://article.auone.jp/5c801b5a-aee2-4bd9-a889-68465e7d60a7",
      "weight": "normal"
     }
    ],
@@ -453,7 +447,7 @@
      "date": "2026-10-24",
      "headline": "シングルス決勝は2023年大会女王クルーガーと2016年大会準優勝者シニアコバのノーシード対決に",
      "highlight": "ノーシード対決",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035780-tennismagv-000-2-view.jpg?exp=10800",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035780-tennismagv-000-3-view.jpg?exp=10800",
      "image_via": "og:image",
      "url": "https://news.yahoo.co.jp/articles/454143ad162f606996ec6c13472f6fb0085c4430",
      "weight": "normal"
@@ -645,52 +639,9 @@
    }
   },
   {
-   "cover": "https://vaundy.jp/og_image.png",
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 2,
-     "source": "Real Sound",
-     "title": "I See. 5thシングル「不時着日和」リリース＆MV公開 疾走感のあるオルタナティブロックチューンに",
-     "url": "https://realsound.jp/2026/10/post-2563729.html"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 10,
-     "source": "手机新浪网",
-     "title": "周杰伦传授醉拳功法，以硬核拳法助力苏灿之名强势战胜俄国对手，展现独特武艺核心魅力。 ​",
-     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOdF9qRHBkRWVBSnIteC1zc0hQVlhuZjdoTHAtMTlrd2FRS0wxalh4TUpfWVJPNTUycEg2N1V5dk5hR0M4b0NkUW1abFZXNEV0eFBNWmtWTEs3MnBaNTRGaG1qSnhBVnp6Umt1eTNmeUNndHhVMFZRVDZiR25WLV9WUmFfREJ3V1lWUTdxTTdZNmR3U0NyLWFFV2k3eWpqZmVna0pMVWEzYnA3OUN4cmZnTTdBNjZYRm1FUGFiV3dncHNNRzdGMlpLeWxBNjFNUEo1clNGUDNGSkc?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 11,
-     "source": "鏡週刊Mirror Media",
-     "title": "周杰倫帶4歲小女兒放風！ 她「1浪漫舉動」被誇：完全遺傳爸爸",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBQODF3cHNsZDRwbzJYa1VSSzBON3N2RzRHQjlTei1UcXN4SElTeXdjUElIdXdDMkcxS0o0QWg2VE1ZcHRPYmZDZXdoVDZjS0VxYldseG00SWNBSHfSAWBBVV95cUxOc25WSm9FTFFJdWl3TVhhalNrQ3JiSm5ydmdZX2d0NE9KZG40YlloX1ViX2ctWGdMejhRbGpwWXFTMkJBaDItQmY3UmpjODZKQ211Z3VCNlNLNzZqR1FsNC0?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -799,15 +750,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 3,
-     "source": "Instagram",
-     "title": "Time to pick your hero #dota2 #crystalmaiden #lina",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5BelJvQXRPc3FuTXJ4MWNxS0cySTVvMTh3U2RiTjk2Z1NFMWp5QjRmcndWcUxlbG9Ib2IwYl9UaFU5WFJVT0NTYXZJZXJFZHhEeUpSU05n?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -935,17 +877,19 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "「コーヒーの色が美しい」「デザインが素晴らしく完成されている」とスタバのマグカップが好評。",
      "date": "2026-10-25",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "「マグカップの傑作です」 スタバの“マグカップ”が大好評 「コーヒーの色が美しい」「デザインが素晴らしく完成されている」（ねとらぼ）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3dERhaGRlMjVuVERPQ3hpNWhHNGlXTlFXQTVPa0duZ2pORVIwRUs0MXpFTGY2TkVHbW0xd1U1cW1LeE8tb0ZsTi1ZWFJzVDdHX3JuWkVIbWVHVTQ3WXNSUHpsZFhLbUZRdVo0SG9XWU9EeG0xZXNtU3Rld3d1MGs?oc=5"
+     "headline": "「マグカップの傑作です」 スタバの“マグカップ”が大好評",
+     "highlight": "大好評",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-10173671-it_nlab-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/fcc1fbeea84c5af1a660b824449553a5ad6f90fa",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -1055,6 +999,31 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-24",
+    "headline": "Vaundy「しわあわせ」が映画主題歌起用で再注目 今改めて胸に響く、目に見えない“本物の繋がり”を描いた普遍性",
+    "url": "https://realsound.jp/2026/10/post-2562337.html"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
+    "font": "serif",
     "split": true
    }
   }
