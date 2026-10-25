@@ -1,14 +1,14 @@
 {
- "admin": "2835b69aebdc",
- "admin-ai": "b2e215b66699",
+ "admin": "b94994f56fdc",
+ "admin-ai": "72cefeea1611",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "ddbb46c0"
+   "262c2797"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "90929a26"
+   "51667458"
   ]
  },
  "admin-boards": "17ef075358cf",
@@ -22,11 +22,11 @@
    "aee2783e"
   ]
  },
- "admin-emblem": "beaa2ea7104e",
+ "admin-emblem": "d7d873b049df",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "da7b6c30"
+   "05d79a35"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "834b565a571c",
  "admin-members_marks": {},
- "admin-now": "540b0b7bd21f",
+ "admin-now": "dbe8d814a8ae",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "03bedc77"
+   "71060544"
   ],
   "queue": [
    "いまの状況",
@@ -55,14 +55,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "84606b58"
+   "7e323c48"
   ]
  },
- "admin-system": "c7e04e4bd443",
+ "admin-system": "8f29532a97fb",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4ac66bd6"
+   "50a2bd0a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,11 +70,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "70e1bdee"
+   "1bc5a86e"
   ]
  },
  "admin_marks": {},
- "heat": "64a0f30bfca0",
+ "heat": "c4291e70f542",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -82,18 +82,18 @@
   ],
   "movers": [
    "前週比",
-   "6e57621a"
+   "b4763ce4"
   ],
   "ranking": [
    "ランキング",
-   "382436bc"
+   "cf86eddf"
   ]
  },
- "index": "420a6a870814",
+ "index": "dccaa1c21982",
  "index_marks": {
   "front": [
    "トップ",
-   "62ace792"
+   "1b9b5c6d"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "882a0e74"
+   "0d0d3fa9"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -125,7 +125,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "ee3d95ea"
+   "b02a3405"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -153,7 +153,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "d5b53ce2"
+   "591978b6"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -185,13 +185,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "8020d896"
+   "2f9aa803"
   ],
   "w-f303ad09": [
    "绝区零",
    "578d630c"
   ]
  },
- "updated": "10.26 05:32",
+ "updated": "10.26 05:37",
  "wishlist": "8f15268e25a4"
 }
