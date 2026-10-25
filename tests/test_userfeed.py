@@ -543,6 +543,17 @@ class MediaRules(unittest.TestCase):
         self.assertFalse(userfeed.needs_media(st, NOW + dt.timedelta(hours=1)))   # 見つからなかった記事は 24 時間あける
         self.assertTrue(userfeed.needs_media(st, NOW + dt.timedelta(hours=userfeed.RETRY_IMG_H)))
 
+    def test_retry_three_times_then_stop(self):
+        st = [story(1, "一")]
+        calls = []
+        now = NOW
+        for _ in range(5):
+            m = self.media(pick=lambda s, b, a: calls.append(1) or None, now=now)
+            m.board(st)
+            now += dt.timedelta(hours=userfeed.RETRY_IMG_H)
+        self.assertEqual(len(calls), userfeed.RETRY_IMG_N)
+        self.assertFalse(userfeed.needs_media(st, now))
+
     def test_same_photo_not_twice_in_board(self):
         st = [story(1, "一"), story(2, "二")]
         self.media(pick=lambda s, b, a: "https://img.example/same.jpg").board(st)

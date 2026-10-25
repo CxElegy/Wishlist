@@ -696,11 +696,11 @@ class ImagesTest(unittest.TestCase):
             {"headline": "以前的没图消息", "url": "https://www.powder.com/news/x", "image": None, "date": "2026-10-12"},
             {"headline": "看不出来源", "url": "https://news.google.com/rss/articles/x", "image": None, "date": "2026-10-12"}]}]}
         page = render.render([issue], order=["网球"])
-        self.assertIn('<img class="ico" src="https://icons.example/nico.png"', page)
-        self.assertIn('<span class="src">ニコニコニュース</span>', page)
-        # 以前的报道没存图标：按域名用图标服务，网站名用域名
-        self.assertIn(render.FAVICON_SERVICE.format(host="www.powder.com").replace("&", "&amp;"), page)
-        self.assertIn('<span class="src">powder.com</span>', page)
+        # 2026-10-25：写真のない記事はアイコンの札ではなく字だけの形（出典名は日付の横の小さい字）
+        self.assertIn('class="card nophoto', page)
+        self.assertNotIn('<img class="ico" src="https://icons.example/nico.png"', page)
+        self.assertIn('<span class="from">ニコニコニュース</span>', page)
+        self.assertIn('<span class="from">powder.com</span>', page)
         self.assertIn('<div class="brief"><h4>その他のニュース</h4>', page)
         self.assertIn('看不出来源</a></li>', page)
         self.assertNotIn('没图的消息</a></li>', page)

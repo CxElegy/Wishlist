@@ -50,7 +50,8 @@ MEDIA_S = 150              # 1 回のうち写真・原文の網址に取って�
 MEDIA_STORIES = MAX_STORIES  # 1 版面で写真を探す記事（新しい順の頭から＝頭条・ほかの注目ニュースに上がる記事を先に。時間が足りなければ次の回に続き）
 # 2026-10-24 本番：頭 4 本だけでは test-a 438 本中 177 本（40%）。版面に並ぶ記事はどれも写真のカードにしたいので全部
 PICK_S = 20                # 1 本の写真探しの上限（秒）
-RETRY_IMG_H = 24           # 写真が見つからなかった記事は、この時間あけてもう一度だけ探す（毎回同じ記事で時間を使わない）
+RETRY_IMG_H = 3            # 写真が見つからなかった記事は、この時間あけて探し直す（毎回同じ記事で時間を使わない）
+RETRY_IMG_N = 3            # 探す回数の上限（2026-10-25：1 回で諦めていた。3 回探してもなければ写真なし＝字だけの記事の形で出す）
 # 期限付きの網址（Yahoo ニュースの ?exp=10800，images.expiring）は数時間〜数日で 404・1×1 の空白に変わる（#178）。
 # 店長は hdimg が本站に保存・dead を原文から探し直す。お客さまのページは本站に保存しないので、この時間ごとに開けるか確かめ、
 # 開けなくなっていたら原文から探し直す（原文は新しい有効な網址を出す）。2026-10-24 本番：お客さまの写真 419 枚のうち 82 枚
@@ -423,6 +424,7 @@ class Media:
             s["image"] = ""
             s.pop("img_chk", None)
             s.pop("img_at", None)
+            s.pop("img_n", None)
             self.stats["expired"] += 1
         return True
 
@@ -454,7 +456,7 @@ class Media:
         if s.get("image") or _google(s["url"]) or self._left() < 5:
             return False
         tried = _when({"date": s.get("img_at")})
-        if tried and self.now - tried < dt.timedelta(hours=RETRY_IMG_H):
+        if int(s.get("img_n") or 0) >= RETRY_IMG_N or tried and self.now - tried < dt.timedelta(hours=RETRY_IMG_H):
             return False
         with self.lock:
             hit = self.imgs.get(s["url"], ())
@@ -468,11 +470,13 @@ class Media:
         if hit and hit not in avoid:
             s["image"] = hit
             s.pop("img_at", None)
+            s.pop("img_n", None)
             s.pop("img_chk", None)
             avoid.add(hit)
             self.stats["images"] += 1
         else:
             s["img_at"] = self.now.isoformat(timespec="seconds")
+            s["img_n"] = int(s.get("img_n") or 0) + 1
         return True
 
     def board(self, stories):
@@ -501,7 +505,7 @@ def needs_media(stories, now):
     for i, s in enumerate(stories or []):
         if _google(s.get("url")) or exp_due(s, now):
             return True
-        if i < MEDIA_STORIES and not s.get("image"):
+        if i < MEDIA_STORIES and not s.get("image") and int(s.get("img_n") or 0) < RETRY_IMG_N:
             tried = _when({"date": s.get("img_at")})
             if not tried or now - tried >= dt.timedelta(hours=RETRY_IMG_H):
                 return True
