@@ -2078,7 +2078,7 @@ def broken_image(im, photo):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 4   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した
+BROKEN_V = 5   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 
 def _broken_log(d=None):
