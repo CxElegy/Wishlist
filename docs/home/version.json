@@ -1,14 +1,14 @@
 {
- "admin": "fd7fc15c1516",
- "admin-ai": "3031ad6c93e3",
+ "admin": "c075bdc50671",
+ "admin-ai": "48f023a6c7aa",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "cab8de14"
+   "2c083adb"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7128d045"
+   "8e885e2a"
   ]
  },
  "admin-boards": "f51b38156268",
@@ -22,11 +22,11 @@
    "b4fd519f"
   ]
  },
- "admin-emblem": "2e2a3ec0db37",
+ "admin-emblem": "d0bd033bfbb5",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f46f07d9"
+   "217051b5"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "834b565a571c",
  "admin-members_marks": {},
- "admin-now": "cacf1dd722c5",
+ "admin-now": "fbe26b6a0aff",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d6d057b3"
+   "0c19061f"
   ],
   "queue": [
    "いまの状況",
@@ -55,14 +55,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "bdf80bc1"
+   "a417d748"
   ]
  },
- "admin-system": "693a26d09a35",
+ "admin-system": "0d87fc8eff28",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cafc8961"
+   "8015d3b0"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,11 +70,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "963217a9"
+   "d9a12bde"
   ]
  },
  "admin_marks": {},
- "heat": "485d37f82102",
+ "heat": "e56ccec2058a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -82,18 +82,18 @@
   ],
   "movers": [
    "前週比",
-   "3436461c"
+   "8a896e2e"
   ],
   "ranking": [
    "ランキング",
-   "295cbf19"
+   "3ed37b82"
   ]
  },
- "index": "32126a4f5b81",
+ "index": "b60ae86df9cd",
  "index_marks": {
   "front": [
    "トップ",
-   "678e3d92"
+   "4a33e38c"
   ],
   "picks": [
    "気になるかも？",
@@ -117,15 +117,15 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "39e0df87"
+   "2fa622de"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "79551a54"
+   "bfe6ce47"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "501688c1"
+   "75734755"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -192,6 +192,6 @@
    "02b8d091"
   ]
  },
- "updated": "10.25 20:23",
+ "updated": "10.25 20:32",
  "wishlist": "8f15268e25a4"
 }
