@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-25T18:00:34+00:00",
+ "checked": "2026-10-25T18:03:50+00:00",
  "fired": {
-  "at": "2026-10-25T18:00:34+00:00",
+  "at": "2026-10-25T18:03:51+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -40,11 +40,9 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2"
-   ],
-   "need": true,
-   "sig": "5e19588d36b6",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "あつ森",
     "FROM",
@@ -57,9 +55,10 @@
     "绝区零",
     "The Mandalorian",
     "A2O LITE",
-    "Vaundy"
+    "Vaundy",
+    "dota2"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 03:53 から）"
+   "why": "失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 03:53 から）"
   },
   "photos": {
    "claude": true,
