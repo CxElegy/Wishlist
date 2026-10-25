@@ -2027,6 +2027,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035780-tennismagv-000-2-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3,
+  "local": "pics/4af4db6acf6c043b.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035789-tennismagv-000-1-view.jpg?exp=10800": {
   "target": 720,
   "v": 3,
@@ -2365,6 +2377,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/7f5631f7aa7540205957065267d40466b9bd1fa972af19b3b74f50d8bf1603e4/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flast_word_on_sports_293%2F90e61c676f440092446c3d286a53baa6.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ef4e9ffb846b4ac8d334dc7341c01dea6c4c1d79f1a577cf82b9e9b8b339935d/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbeincrypto_us_662%2F35988ae8cbc31e6f09b1aa3265662fd1.jpg": {
@@ -2968,12 +2986,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.ek4dMm4ohvDQxnw732yClQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ezl7joe28jZC6CM1E06H5Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2998,6 +3010,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.iHrXY6ojlKIxwPt02IDI3g&pid=News&w=800": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,

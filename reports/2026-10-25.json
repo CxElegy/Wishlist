@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "39932e16663b",
+ "edit_sig": "679cd4f5fb79",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -310,22 +310,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 8,
-     "source": "Yahoo!ニュース",
-     "title": "シングルス決勝は2023年大会女王クルーガーと2016年大会準優勝者シニアコバのノーシード対決に [木下グループジャパンオープンテニス]（テニスマガジンONLINE）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9kODZFcjd0MW5QMGxRUmtSMzBzWE1DM2dFeE0ySENheVN5YW9kNWttbzN2YWFRUkloakhQZk1TemYzSFllUkkwdnZUWGFiSzUydzBGM3BHYUpDQ0ppWkZ4ZXNUemd3Vm5zTWVEZm8za1l5UVhSWHI3cS1tbWpMcVE?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 9,
-     "source": "Yahoo Sports",
-     "title": "6 Players Withdraw From WTA Toray Pan Pacific Open",
-     "url": "https://sports.yahoo.com/articles/6-players-withdraw-wta-toray-234313632.html"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -386,6 +370,26 @@
      "image": "https://od2-image-api.abs-cbn.com/prod/2026102413104/e4cb3418db0f8e552446ceba3533659788db81177931a406a7b3022d0c7c2d3d.png?w=1200&h=800",
      "image_via": "og:image",
      "url": "https://www.abs-cbn.com/sports/othersports/2026/10/24/alex-eala-opens-tokyo-campaign-against-17-year-old-british-wildcard-2008",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "シングルス決勝は2023年大会女王クルーガーと2016年大会準優勝者シニアコバのノーシード対決に",
+     "highlight": "ノーシード対決",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035780-tennismagv-000-2-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/454143ad162f606996ec6c13472f6fb0085c4430",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "6 Players Withdraw From WTA Toray Pan Pacific Open",
+     "highlight": "",
+     "image": "https://s.yimg.com/lo/mysterio/api/7f5631f7aa7540205957065267d40466b9bd1fa972af19b3b74f50d8bf1603e4/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Flast_word_on_sports_293%2F90e61c676f440092446c3d286a53baa6.jpg",
+     "image_via": "og:image",
+     "url": "https://sports.yahoo.com/articles/6-players-withdraw-wta-toray-234313632.html",
      "weight": "normal"
     }
    ],
