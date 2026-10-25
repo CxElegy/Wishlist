@@ -164,5 +164,14 @@
 "wd_merged": 0,
 "wd_kept": 0,
 "wd_subs": 1
+},
+{
+"at": "2026-10-25T03:05:02+00:00",
+"text": "Wikidata の引き直し：見つかった 0・項目なし 2・断られた 0・題材で引かない 3",
+"level": "info",
+"found": 0,
+"none": 2,
+"blocked": 0,
+"skip": 3
 }
 ]
