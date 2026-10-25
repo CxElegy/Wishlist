@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>小元素のはみ出し</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 見本：小元素を見出しの帯の外へはみ出させ、立体に見せる 3 案。本番の店長のページ（../home/）の版面をそのまま読み、上に案の CSS を重ねるだけ（本番は変わらない） */
+:root{--ink:#1A1C22;--paper:#EDEBE6;--card:#FBF8F1;--gold:#FFD23F;--alert:#D7261E;--muted:rgba(26,28,34,.62);
+ --font-sans:'Noto Sans JP',sans-serif;--font-mono:'JetBrains Mono',monospace;--shadow:4px 4px 0 var(--ink);--skew:-8deg}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.7 var(--font-sans)}
+a{color:inherit}
+header{background:var(--ink);color:var(--card);padding:24px 16px}
+header small{display:block;font:700 11px var(--font-mono);letter-spacing:.2em;color:var(--gold)}
+header a{color:var(--gold);font-size:13px}
+h1{margin:0;font:900 22px/1.3 var(--font-sans)}
+main{max-width:1240px;margin:0 auto;padding:20px 16px 60px;display:flex;flex-direction:column;gap:28px}
+.note{background:var(--card);padding:14px 18px;border:2px solid var(--ink)}
+.note p{margin:0 0 6px}.note p:last-child{margin:0}
+.tg{display:inline-block;background:var(--alert);color:#FFF;padding:0 9px;transform:skewX(var(--skew));font:900 12px/1.7 var(--font-sans)}
+.tg.rec{background:var(--ink);color:var(--gold)}
+.v{background:var(--card);box-shadow:var(--shadow);padding:16px 18px}
+.v h2{margin:0 0 6px;font:900 18px/1.4 var(--font-sans);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.v ul{margin:0 0 12px;padding-left:1.2em;font-size:14px}
+.row{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.f{display:flex;flex-direction:column;gap:4px}
+.f b{font:700 11px var(--font-mono);color:var(--muted)}
+.w390{width:390px;height:620px;max-width:100%;border:2px solid var(--ink);background:#fff}
+.wrap1400{width:630px;height:620px;max-width:100%;overflow:hidden;border:2px solid var(--ink);background:#fff;position:relative}
+.wrap1400 iframe{width:1400px;height:1378px;border:0;transform:scale(.45);transform-origin:0 0}
+iframe{border:0;display:block}
+@media (max-width:700px){.wrap1400{width:100%;height:420px}.wrap1400 iframe{transform:scale(.25);height:1680px}}
+</style>
+</head>
+<body>
+<header><small>TESTGROUND · 見本（押しても本番は変わらない）</small><h1>小元素のはみ出し・立体感 3 案</h1>
+<a href="./">← テストグラウンドの入口</a> ・ <a href="../home/admin-emblem.html">管理ページ ③エンブレム</a></header>
+<main>
+<section class="note">
+<p><span class="tg">いま</span> 小元素は見出しの帯の中に収まり、平らなシールに見える（スマホ 390 で特に）。</p>
+<p>3 案とも：上の部分を帯の上の縁・右の縁から外へ出す／下のニュースの字・👍 には重ねない（帯の線より下は今どおり見せない）／スクロールで少し傾いて浮く（動きを減らす設定なら止まる）／写真・ロゴ・記号の小元素は人の絵より一回り小さく、角を外へ傾ける。違うのは<b>はみ出す量</b>と<b>影の形</b>だけ。</p>
+<p>中身は本番の店長のページの版面そのまま（チェーンソーマン＝人の絵・日本顶级网球赛事＝記号・MMORPG 新作＝写真）。左が 390px、右が 1400px（縮小）。中でスクロールできます。</p>
+</section>
+<div id="vs"></div>
+</main>
+<script>
+// 案：r＝絵の高さのうち帯の上の縁から外へ出す割合、px＝右の縁から外へ出す量、sh＝影（フチの外側に重ねる drop-shadow）、z＝大きさの倍率
+const V=[
+ {id:'now',name:'いま（比べる用）',pro:[],con:[],css:''},
+ {id:'a',name:'案 A 控えめ：15% はみ出す・硬い影＋薄いぼかし',r:.15,px:6,z:1,
+  sh:'drop-shadow(4px 4px 0 var(--ink)) drop-shadow(0 10px 12px rgba(0,0,0,.22))',
+  pro:['題字・数字の邪魔をしない','今の見た目に一番近い（変化が小さい）'],con:['スマホでは「乗っている」感じが弱め']},
+ {id:'b',name:'案 B 標準：22% はみ出す・硬い影＋遠いぼかし（2 段）',rec:1,r:.22,px:14,z:1.08,ring:4,
+  sh:'drop-shadow(5px 6px 0 var(--ink)) drop-shadow(10px 18px 18px rgba(0,0,0,.34))',
+  pro:['近い影（P5 の硬い影）と遠い影（浮いている）で奥行きがはっきり','スマホでも頭・肩が帯の外に出て目に入る'],con:['上の版面の下の余白に少し重なる']},
+ {id:'c',name:'案 C 大胆：30% はみ出す・硬い影を 2 色（墨＋版面の色）',r:.30,px:24,z:1.15,ring:4,
+  sh:'drop-shadow(5px 5px 0 var(--ink)) drop-shadow(5px 5px 0 var(--acc))',
+  pro:['一番派手で P5 らしい（ポスターの切り貼り）','版面の色が影に入り、作品ごとの世界観が強い'],con:['ぼかしがないので「浮く」より「貼った」に見える','上の版面の最後の記事に近づく・目立ちすぎる版面がある']},
+];
+const KEYS=['チェーンソーマン','日本顶级网球赛事','MMORPG 新作'];
+function vcss(v){
+ if(!v.r)return '';
+ const ring=v.ring||2.5;
+ return `.emb{--r:${v.r};--z:${v.z};right:calc(clamp(12px,4%,52px) - ${v.px}px);transform-origin:100% 100%;scale:var(--s,1);translate:0 var(--lift,0px)}
+.emb-in{filter:drop-shadow(${ring}px 0 0 var(--card)) drop-shadow(-${ring}px 0 0 var(--card)) drop-shadow(0 ${ring}px 0 var(--card)) drop-shadow(0 -${ring}px 0 var(--card))
+ drop-shadow(3px 0 0 var(--ring)) drop-shadow(-3px 0 0 var(--ring)) drop-shadow(0 3px 0 var(--ring)) drop-shadow(0 -3px 0 var(--ring)) ${v.sh}}
+.emb:has(img.badge,img.icon,img.logo,.crop){--z:${(v.z*.82).toFixed(2)};transform:rotate(5deg)}
+@media (max-width:600px){.emb{right:calc(8px - ${Math.round(v.px*.6)}px)}}
+@supports (animation-timeline:view()){.emb{animation:embpop linear both;animation-timeline:view();animation-range:cover}}
+@keyframes embpop{from{translate:0 calc(var(--lift,0px) + 6px);rotate:2deg}to{translate:0 calc(var(--lift,0px) - 18px);rotate:-3deg}}
+@media (prefers-reduced-motion:reduce){.emb{animation:none}}`;
+}
+// 置き場：絵（img の矩形）の高さの r だけ帯の上の縁から外へ。帯が背の高いとき（スマホで題字が 2 行）は絵を大きく（--s、最大 1.15 倍：題字・数字に重ねない）、
+// それでも届かなければ持ち上げる（--lift）。下端は帯の線のまま＝下のニュースには重ねない
+const PLACE=`<script>function place(){document.querySelectorAll('.has-emb .band').forEach(b=>{const e=b.querySelector('.emb'),im=e&&e.querySelector('img');if(!im)return;
+ const cs=getComputedStyle(e),r=parseFloat(cs.getPropertyValue('--r')),z=parseFloat(cs.getPropertyValue('--z'))||1;if(!r)return;
+ e.style.setProperty('--s',1);e.style.setProperty('--lift','0px');
+ const R=im.getBoundingClientRect(),B=b.getBoundingClientRect(),h=R.height,avail=B.bottom-8-B.top;if(!h)return;
+ let s=avail/((1-r)*h);s=Math.min(Math.max(s,z),z*1.15);
+ e.style.setProperty('--s',s.toFixed(3));e.style.setProperty('--lift',(-Math.max(0,avail-s*h*(1-r))).toFixed(1)+'px')})}
+addEventListener('load',()=>{place();setTimeout(place,600)});addEventListener('resize',place);<\/script>`;
+let BASE=new URL('../home/',location).href, SRC=null;
+async function load(){
+ const html=await (await fetch(BASE+'index.html')).text();
+ const d=new DOMParser().parseFromString(html,'text/html');
+ const head=[...d.head.querySelectorAll('style,link[rel=stylesheet]')].map(x=>x.outerHTML).join('');
+ const secs=KEYS.map(k=>d.querySelector('.sec[data-k="'+k+'"]')).filter(Boolean).map(s=>{
+  // 版面の帯と最初の 3 本だけ（下のニュースと重ならないかを見る）
+  const c=s.cloneNode(true);c.querySelectorAll('.card,article').forEach((x,i)=>{if(i>2)x.remove()});return c.outerHTML}).join('<div style="height:36px"></div>');
+ SRC={head,secs};
+ document.getElementById('vs').innerHTML=V.map(v=>`<section class="v" id="v-${v.id}"><h2>${v.rec?'<span class="tg rec">おすすめ</span>':''}${v.name}</h2>
+  ${v.pro.length?`<ul>${v.pro.map(x=>'<li>良い：'+x+'</li>').join('')}${v.con.map(x=>'<li>困る：'+x+'</li>').join('')}</ul>`:''}
+  <div class="row"><div class="f"><b>390px</b><iframe class="w390" title="${v.name} 390"></iframe></div>
+  <div class="f"><b>1400px（縮小）</b><div class="wrap1400"><iframe title="${v.name} 1400"></iframe></div></div></div></section>`).join('');
+ V.forEach(v=>document.querySelectorAll('#v-'+v.id+' iframe').forEach(f=>{
+  f.srcdoc=`<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="${BASE}">${SRC.head}<style>${vcss(v)}body{padding:120px 0 200px}</style></head><body><main style="max-width:1100px;margin:0 auto;padding:0 12px">${SRC.secs}</main>${v.r?PLACE:''}</body></html>`}));
+}
+load().catch(e=>{document.getElementById('vs').textContent='本番のページを読めませんでした：'+e});
+</script>
+</body>
+</html>

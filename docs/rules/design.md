@@ -83,6 +83,7 @@
 ## テストグラウンド（docs/testground/）
 
 本番の简报に入れる前に部品を試すページ。入口 https://cxelegy.github.io/Wishlist/testground/ （`index.html`）。消さずに残し、新しい試作もここに足す（入口に 1 枚カードを足す）。
+- `emblem-pop.html`（2026-10-25）：小元素のはみ出し・立体感 3 案（本番の店長のページの版面を読み、案の CSS を重ねて 390 / 1400 で見比べる。本番は変わらない）
 - `compare.html`：左の目次 v1〜v6 の見比べ（条件 10 パターン・画面の高さ・「ダミーで試す」で作品数 2〜1000）
 - `rails.html`：目次の見本 10 パターン ／ `nav.html`：本文つきで 1 本
 - `welcome.html`（`python scripts/welcome.py` で作る，入口 `docs/index.html` と同じもの）：入口（何のサイトか・店長のページの本物の画面・新しく始める／ログイン／店長のページを見る）＋「新しく始める」の App 風の流れ（名前と規約 → ジャンル → 左右に払うカード（気になる／パス）→ 確認 → 店長が集めに行く。ログイン中は `../?add` で同じ流れから足す・`my_keywords_set`）。覚えているブラウザ（`wl-user`）は入口を飛ばす。カード = AniList 話題・Steam 売れ筋・店長がフォローしてきたもの（archive/test1）、AI なし。登録は本物（`user_signup`、好み = `app_users.prefs`）。

@@ -6304,7 +6304,7 @@ def render_admin(data, db, updated):
         "procs": panel("procs", "全体の構成（詳しい図）", "場所ごとに全部の部品と矢印を 1 枚に · 大きいので、まずは上の「しくみの全体図」を", processes.architecture()),
         "queue": ADMIN_QUEUE,
         "items": panel("items", "ウォッチ項目", f'赤い「最新の記事」= {ADMIN_STALE_DAYS} 日以上 新しい記事なし · 主題と配色の見本は <a href="themes.html">テーマ見本</a>', _admin_items(items)),
-        "emblems": panel("emblems", "小元素", "版面右上のステッカー · 種類ごとの目標枚数", _admin_emblems(items, data.get("emblem_run"))),
+        "emblems": panel("emblems", "小元素", '版面右上のステッカー · 種類ごとの目標枚数 · 見本（押しても本番は変わらない）：<a href="../testground/emblem-manage.html">小元素の管理</a>・<a href="../testground/emblem-pop.html">はみ出し・立体 3 案</a>', _admin_emblems(items, data.get("emblem_run"))),
         "votes": panel("votes", "投票", "👍 / 👎 · 前回の収集時点", _admin_votes(data.get("votes") or {})),
     }
     counts = _admin_counts(data)
