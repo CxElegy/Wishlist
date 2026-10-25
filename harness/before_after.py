@@ -298,29 +298,41 @@ def focus(a, b, boxes):
     cx, cy = (x0 + x1) // 2, (y0 + y1) // 2
     hw = min(max((x1 - x0) // 2 + PAD, 320), a.width // 2)
     hh = min(max((y1 - y0) // 2 + PAD, 240), CROP_MAX_H // 2)
+    if y1 - y0 + 2 * PAD > 2 * hh:   # 入りきらない（行が増えて下が全部ずれた）＝変わり始めの所を上に
+        cy = y0 - PAD + hh
     left = min(max(cx - hw, 0), max(a.width - 2 * hw, 0))
     top = min(max(cy - hh, 0), max(a.height - 2 * hh, 0))
     return left, top, min(left + 2 * hw, a.width), min(top + 2 * hh, a.height)
 
 
+GROUND = (128, 128, 128)   # 埋める地の色（どのテーマの地とも 40 以上違う灰色：埋めた所が必ず「変わった」になる）
+
+
+def _pad(im, w, h):
+    out = Image.new("RGB", (w, h), GROUND)
+    if im:
+        out.paste(im, (0, 0))
+    return out
+
+
 def compose(before, after):
-    """左に Before・右に After。変わった所（同じ大きさなら changed_boxes、違う大きさなら上から同じ高さ）を真ん中に切り抜き、赤い枠。
+    """左に Before・右に After。大きさが違えば（ページの高さが変わった）大きい方に合わせて地の色で埋め、changed_boxes の一番大きい所を
+    真ん中に切り抜き、赤い枠。片方が None（その欄がない＝新しい欄・消えた欄）なら地の色の 1 枚と比べる。
     差がなければ None（写真を送らない、2026-10-25 用户定的）。幅は 1800px まで。"""
-    a, b = Image.open(before).convert("RGB"), Image.open(after).convert("RGB")
-    if a.size == b.size:
-        boxes = changed_boxes(a, b)   # 描く前に 1 回だけ数える
-        if not boxes:
-            return None
-        crop = focus(a, b, boxes)
-        a, b = a.crop(crop), b.crop(crop)
-        boxes = [(x0 - crop[0], y0 - crop[1], x1 - crop[0], y1 - crop[1]) for x0, y0, x1, y1 in boxes]
-        for im in (a, b):   # 変わった所を赤い枠で囲む（前と後の両方の同じ場所。2026-10-24 用户定的）
-            dd = ImageDraw.Draw(im)
-            for x0, y0, x1, y1 in boxes:
-                dd.rectangle((x0 + 2, y0 + 2, x1 - 3, y1 - 3), outline=(215, 38, 30), width=4)
-    else:   # 欄の大きさが変わった（人が増えた・行が増えた）＝変わっている
-        h = min(a.height, b.height, CROP_MAX_H) if min(a.height, b.height) > 40 else min(max(a.height, b.height), CROP_MAX_H)
-        a, b = a.crop((0, 0, a.width, min(h, a.height))), b.crop((0, 0, b.width, min(h, b.height)))
+    a, b = (Image.open(p).convert("RGB") if p else None for p in (before, after))
+    w, h = max(im.width for im in (a, b) if im), max(im.height for im in (a, b) if im)
+    common = min(im.height for im in (a, b) if im) if a and b else 0
+    a, b = (_pad(im, w, h) for im in (a, b))
+    boxes = changed_boxes(a, b)   # 描く前に 1 回だけ数える
+    if not boxes:
+        return None
+    crop = focus(a, b, [r for r in boxes if r[1] < common] or boxes)   # 伸びた下の端より、両方にある所の変化を真ん中に
+    a, b = a.crop(crop), b.crop(crop)
+    boxes = [(x0 - crop[0], y0 - crop[1], x1 - crop[0], y1 - crop[1]) for x0, y0, x1, y1 in boxes]
+    for im in (a, b):   # 変わった所を赤い枠で囲む（前と後の両方の同じ場所。2026-10-24 用户定的）
+        dd = ImageDraw.Draw(im)
+        for x0, y0, x1, y1 in boxes:
+            dd.rectangle((x0 + 2, y0 + 2, x1 - 3, y1 - 3), outline=(215, 38, 30), width=4)
     if max(a.width, b.width) < ZOOM_W:   # 小さな欄は大きく
         k = min(2.0, ZOOM_W / max(a.width, b.width))
         a, b = (im.resize((round(im.width * k), round(im.height * k))) for im in (a, b))
@@ -383,17 +395,29 @@ def headline(title, where, counts_b, counts_a):
 
 
 def pairs(root, where, title):
-    """before/ と after/ の同じ名前の写真を並べる。差のないものは外す。返り値：(写真, 一行)。"""
+    """before/ と after/ の同じ名前の写真を並べる。差のないものは外す。片方だけ（新しい欄・消えた欄）は「ない」と比べる。
+    返り値：(写真, 一行, 両方とも撮れなかった画面の名前)。"""
     cb = json.loads((root / "before" / "counts.json").read_text()) if (root / "before" / "counts.json").exists() else {}
     ca = json.loads((root / "after" / "counts.json").read_text()) if (root / "after" / "counts.json").exists() else {}
-    images = []
+    images, missing = [], []
     for who, w in VIEWS:
         b, a = root / "before" / f"{who}-{w}.png", root / "after" / f"{who}-{w}.png"
-        if b.exists() and a.exists():
-            png = compose(b, a)
-            if png:
-                images.append((f"{who}-{w}.png", png))
-    return images, headline(title, where[2] if where else "", cb, ca)
+        if not b.exists() and not a.exists():
+            missing.append(f"{who}-{w}")
+            continue
+        png = compose(b if b.exists() else None, a if a.exists() else None)
+        if png:
+            images.append((f"{who}-{w}.png", png))
+    return images, headline(title, where[2] if where else "", cb, ca), missing
+
+
+def no_change(missing, where):
+    """写真がないときの一行：撮れなかった画面があれば「変化なし」と言わない。"""
+    shot = [f"{w}-{x}" for w, x in VIEWS if f"{w}-{x}" not in missing]
+    if not shot:
+        return "⚠ 画面を撮れませんでした（" + (f"欄 {where[1]} が前も後もない" if where else "撮影の失敗") + "）：画面の変化は見ていません"
+    return ("画面の変化なし（撮った所：" + "・".join(shot) + (f"・{where[2]}" if where else "") + "）"
+            + (f"・撮れなかった：{'・'.join(missing)}" if missing else ""))
 
 
 def main(argv):
@@ -430,9 +454,9 @@ def main(argv):
         line = f"🕒 画面は合併では変わりません。変わるのは「{lat[0]}」の回のあと（見込み {next_run(lat[1])} 日本時間）→ そのあと Before / After を送ります。"
     elif changed:
         shoot(root / "after", where)
-        images, line = pairs(root, where, title)
+        images, line, missing = pairs(root, where, title)
         if not images:
-            line = "画面の変化なし（撮った所：" + ("・".join(f"{w}-{x}" for w, x in VIEWS)) + (f"・{where[2]}" if where else "") + "）"
+            line = no_change(missing, where)
     head = f"#{num} {title}"
     if pages or docs:
         names = "・".join(pages + [u.replace(LIVE, "") for u in docs])
@@ -491,16 +515,16 @@ def later(workflow, started_at, folder):
         root = d / "ba"
         (root / "before").mkdir(parents=True, exist_ok=True)
         for f in d.iterdir():
-            if f.is_file() and f.name != "meta.json":
+            if f.is_file() and f.name not in ("meta.json", ".id"):
                 (root / "before" / f.name).write_bytes(f.read_bytes())
         where = tuple(m["where"]) if m.get("where") else None
         if not slept:   # 回の push から Pages の配信まで
             time.sleep(90)
             slept = True
         shoot(root / "after", where)
-        images, line = pairs(root, where, m["title"])
+        images, line, missing = pairs(root, where, m["title"])
         if not images:
-            line = f"「{wf}」の回のあとも画面の変化なし：{head}"
+            line = f"「{wf}」の回のあと：{no_change(missing, where)}：{head}"
         send(head, m["url"], images, f"🖼 {line}（「{wf}」の回のあと）\n{head}\n{m['url']}")
         sent.append(d.name)
     (folder / "sent.txt").write_text("\n".join(sent), encoding="utf-8")

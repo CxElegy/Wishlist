@@ -44,6 +44,40 @@ class Compose(unittest.TestCase):
             out = Image.open(io.BytesIO(ba.compose(a, b)))
             self.assertLess(out.height, 1500)   # ページ全体ではなく切り抜き
 
+    def test_taller_page_keeps_the_change(self):   # 別の目の指摘 1：高さが変わると上 1400px だけ・赤枠なしだった
+        box = (700, 2500, 1100, 2900)
+        with tempfile.TemporaryDirectory() as t:
+            a, b = pathlib.Path(t, "a.png"), pathlib.Path(t, "b.png")
+            png(a, size=(1400, 3000)), png(b, box, size=(1400, 3100))
+            out = Image.open(io.BytesIO(ba.compose(a, b))).convert("RGB")
+            reds = sum(1 for r, g, bl in out.get_flattened_data() if r > 180 and g < 60 and bl < 60)
+            self.assertGreater(reds, 20000)   # 変わった赤い所が写っている
+
+    def test_shift_shows_where_it_starts(self):   # 指摘 2：上で 1 行増えて下が全部ずれた → 変わり始めが写る
+        with tempfile.TemporaryDirectory() as t:
+            a, b = pathlib.Path(t, "a.png"), pathlib.Path(t, "b.png")
+            png(a, size=(1400, 8000))
+            im = Image.new("RGB", (1400, 8000), (240, 238, 230))
+            im.paste(Image.open(a).crop((0, 0, 1400, 7940)), (0, 60))
+            ImageDraw.Draw(im).rectangle((0, 0, 1400, 59), fill=(240, 238, 230))
+            im.save(b)
+            A, B = Image.open(a).convert("RGB"), Image.open(b).convert("RGB")
+            boxes = ba.changed_boxes(A, B)
+            top = min(r[1] for r in boxes)
+            x0, y0, x1, y1 = ba.focus(A, B, boxes)
+            self.assertTrue(y0 <= top < y1)
+
+    def test_new_section_is_a_change(self):   # 指摘 3：After にだけある欄（新しい機能）を「変化なし」にしない
+        with tempfile.TemporaryDirectory() as t:
+            r = pathlib.Path(t)
+            (r / "before").mkdir(), (r / "after").mkdir()
+            png(r / "after" / "test-a-390.png", size=(390, 300))
+            images, line, missing = ba.pairs(r, ("", "#new", "新しい欄"), "t")
+            self.assertEqual([n for n, _ in images], ["test-a-390.png"])
+            self.assertEqual(missing, ["guest-1400", "test-a-1400"])
+            self.assertIn("撮れなかった", ba.no_change(missing, ("", "#new", "x")))
+            self.assertIn("変化は見ていません", ba.no_change([f"{w}-{x}" for w, x in ba.VIEWS], ("", "#new", "x")))
+
     def test_size_change_counts(self):
         with tempfile.TemporaryDirectory() as t:
             a, b = pathlib.Path(t, "a.png"), pathlib.Path(t, "b.png")
