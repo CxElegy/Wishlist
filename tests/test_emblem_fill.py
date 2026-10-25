@@ -1498,6 +1498,7 @@ class FindSources(unittest.TestCase):
         self.assertEqual(self._find({"name": "ぐでたま", "keywords": ["Gudetama"], "emblem_fandom": "hellokitty"}, {"hellokitty": "Hello Kitty Wiki"}, {"Characters": 500}), {})
         self.assertEqual(self._find({"name": "X", "emblem_fandom": "x", "emblem_category": "Agents"}, {"x": "X Wiki"}, {"Characters": 9}), {})
         self.assertEqual(self._find({"name": "FROM", "emblem_people": True}, {"from": "From Wiki"}, {"Characters": 9}), {})
+        self.assertEqual(self._find({"name": "dota2", "emblem_pool": 126}, {"dota2": "Dota 2 Wiki"}, {"Characters": 192}), {})   # 手で数えた人数が先
 
     def test_live_action_roster_is_the_cast(self):
         with tempfile.TemporaryDirectory() as d:
@@ -1521,6 +1522,8 @@ class FindSources(unittest.TestCase):
         self.assertEqual([i["name"] for i in ef.due(prog, [item], "2026-10-25T00:00:00")], ["B"])
         ef.record(prog, item, {"state": "ok", "tried": {}}, "2026-10-25T00:00:00")
         self.assertEqual(ef.due(prog, [item], "2026-10-25T00:00:00"), [])
+        item["emblem_category"] = "Characters"   # 分類はあるのに人数を数えられなかった（429）→ 次の回も
+        self.assertEqual([i["name"] for i in ef.due(prog, [item], "2026-10-25T00:00:00")], ["B"])
 
     def test_other_wiki_with_same_letters_is_not_used(self):
         item = {"name": "FROM", "keywords": ["FROM"]}
