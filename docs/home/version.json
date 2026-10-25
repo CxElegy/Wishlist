@@ -1,32 +1,32 @@
 {
- "admin": "50a63b45ff15",
- "admin-ai": "3c8f41b5b010",
+ "admin": "80a39faad25e",
+ "admin-ai": "f16221b749e5",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c7f8428b"
+   "72fdcf30"
   ],
   "tokens": [
    "AI 編集のトークン",
    "50fef7b5"
   ]
  },
- "admin-boards": "747e1fed83bb",
+ "admin-boards": "e2b6eec9cc82",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5382a117"
+   "c41d74a5"
   ],
   "votes": [
    "投票",
    "b4fd519f"
   ]
  },
- "admin-emblem": "1152be84a76e",
+ "admin-emblem": "184887cdbfb0",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "65ba4b66"
+   "2f858894"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "834b565a571c",
  "admin-members_marks": {},
- "admin-now": "5ec72ea469c8",
+ "admin-now": "6e459685d190",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3fd37733"
+   "6df0b94d"
   ],
   "queue": [
    "いまの状況",
@@ -51,18 +51,18 @@
   ],
   "status": [
    "運行状況",
-   "0dea2758"
+   "92ccd41b"
   ],
   "term-panel": [
    "ライブログ",
-   "2bdf1303"
+   "7d495ea2"
   ]
  },
- "admin-system": "cc67435e1337",
+ "admin-system": "a934fa35adb8",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "423808b5"
+   "9fa0d885"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,11 +70,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "107765f3"
+   "acbabfa2"
   ]
  },
  "admin_marks": {},
- "heat": "bdb0e2087eb0",
+ "heat": "058d2dce62b8",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -82,18 +82,18 @@
   ],
   "movers": [
    "前週比",
-   "332cc1b0"
+   "77e447f0"
   ],
   "ranking": [
    "ランキング",
-   "6129e58e"
+   "af5d0c15"
   ]
  },
- "index": "cad5693f6a18",
+ "index": "b38c731492f1",
  "index_marks": {
   "front": [
    "トップ",
-   "52db38a5"
+   "b3a339ff"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "2fa622de"
+   "8ac55959"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -125,7 +125,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "bc349470"
+   "2527e904"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -133,7 +133,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "79af31be"
+   "350da056"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "2e189df4"
+   "3a0db703"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -192,6 +192,6 @@
    "02b8d091"
   ]
  },
- "updated": "10.25 16:38",
+ "updated": "10.25 16:40",
  "wishlist": "302342c70a8f"
 }

@@ -61,12 +61,6 @@
   ],
   "why": "看不清"
  },
- "http://n.sinaimg.cn/sinakd20261024ac/205/w645h360/20261024/a131-93153210f68431a8bbd9e3d3a78aa74f.jpg": {
-  "w": 645,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg": {
   "target": 1280,
   "v": 3,
@@ -79,9 +73,9 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"
  },
- "http://n.sinaimg.cn/sinakd20261024ac/748/w480h1068/20261024/c92c-88f5d166817516aa9ce574c2f100cd70.jpg": {
+ "http://n.sinaimg.cn/sinakd20261025ac/40/w480h360/20261025/d99a-5afb1acb07adf90ee89a2e57d1a99861.jpg": {
   "w": 480,
-  "h": 1068,
+  "h": 360,
   "target": 720,
   "v": 3
  },
@@ -197,12 +191,6 @@
   "w": 1280,
   "h": 720,
   "target": 720,
-  "v": 3
- },
- "https://assets-prd.ignimgs.com/2026/10/25/avengers-doomsday-describes-the-return-of-steve-rogers-as-a-usvw-1792891164279.jpg?width=1280&format=jpg&auto=webp&quality=80": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
   "v": 3
  },
  "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iIcvRiBeYhKM/v1/1200x800.jpg": {
@@ -653,12 +641,6 @@
   "target": 1280,
   "v": 3
  },
- "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -862,6 +844,12 @@
   "w": 1200,
   "h": 1748,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
+  "w": 1200,
+  "h": 677,
+  "target": 720,
   "v": 3
  },
  "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg": {
@@ -1136,12 +1124,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZYPt.img": {
   "w": 2200,
   "h": 1274,
@@ -1163,6 +1145,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g0EoM.img": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g0Xgt.img": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -1650,6 +1638,12 @@
    716
   ],
   "why": "看不清"
+ },
+ "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_mynavi_jp_article_20261025-5173094__w600.webp": {
+  "w": 600,
+  "h": 359,
+  "target": 720,
+  "v": 3
  },
  "https://news-cdn.para-daily.com/wp-content/uploads/2026/10/1792561059-nugfmgqtfkswqwu18mjq.webp": {
   "w": 1280,
@@ -2356,6 +2350,12 @@
   "target": 720,
   "v": 3
  },
+ "https://realsound.jp/wp-content/uploads/2026/10/20261025-isee-99.jpeg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://res.ldrescdn.com/rms/ldplayer/process/img/8593424b953f4cf8b738845fd911fa001778577981.jpg?x-oss-process=image/format,webp": {
   "w": 1268,
   "h": 714,
@@ -2542,6 +2542,12 @@
  "https://static.sanyonews.jp/image/article/size1/6/b/d/5/6bd5ae98a8676317af2175d8ef86b187_1.jpg": {
   "w": 450,
   "h": 640,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/9/1/7/9/9179248e10de5d450d706548e5be2a76_1.jpg": {
+  "w": 640,
+  "h": 426,
   "target": 720,
   "v": 3
  },
@@ -2803,6 +2809,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://v3-statics.mirrormedia.mg/images/50b9ae03-7c89-4e16-a091-a12c3c9bd82f-w1600.jpg": {
+  "w": 1600,
+  "h": 972,
+  "target": 720,
+  "v": 3
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/09/1791510301377_smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra-3279.png": {
   "w": 1825,
   "h": 977,
@@ -2862,6 +2874,12 @@
   "w": 1672,
   "h": 941,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.betanews.net/data/beta/image/2026/10/25/beta20261025000028.png": {
+  "w": 1672,
+  "h": 941,
+  "target": 720,
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.-A4aZ_zLadK_G3jm6fyD-g&pid=News&w=1200": {
@@ -2987,18 +3005,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.R3BkKjD4IyJsC06W0dETZw&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.RIzgN4gEht8tuIP1ER_wKg&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200": {
   "target": 720,
   "v": 3,
@@ -3036,6 +3042,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.fXsfkqUCs4KKVLZOqHxpzQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.hfTI2n0xkMEeI_4m4kjvZA&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3054,6 +3066,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.l96Uxxl6gZXI5S0YNVmzjw&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
@@ -3081,6 +3099,12 @@
   "day": "2026-10-25"
  },
  "https://www.bing.com/th?id=ONUT.pKgG6PFbwlIbdWONiNUjYg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.pNDZJXU7zdsLaEygu7I0kg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3139,12 +3163,6 @@
  "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102319226971.jpg": {
   "w": 690,
   "h": 460,
-  "target": 720,
-  "v": 3
- },
- "https://www.businesspost.co.kr/news/photo/202610/20261025120132_78586.jpg": {
-  "w": 600,
-  "h": 300,
   "target": 720,
   "v": 3
  },
@@ -3309,12 +3327,6 @@
  "https://www.kukinews.com/data/kuk/image/2026/09/11/kuk20260911000105.jpg": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
-  "v": 3
- },
- "https://www.niikei.jp/wp-content/uploads/2026/10/unnamed-76-e1792729710980.jpg": {
-  "w": 820,
-  "h": 547,
   "target": 720,
   "v": 3
  },
