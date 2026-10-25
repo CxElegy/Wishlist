@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T08:49:49+00:00",
+ "checked": "2026-10-25T10:09:39+00:00",
  "fired": {
-  "at": "2026-10-25T08:50:22+00:00",
+  "at": "2026-10-25T10:10:09+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-25T08:25:07+00:00",
+    "at": "2026-10-25T10:10:09+00:00",
     "attempts": 1,
     "day": "2026-10-25",
-    "prog": 141,
-    "resp": "cse_01Sc9p13QvGhCytno9BC86vH",
-    "sig": "18d54d9ee215"
+    "prog": 162,
+    "resp": "cse_014C2Nt5VxPxx1iJTeBxeMsa",
+    "sig": "f961f47c3514"
    },
    "items": [
     "Vaundy",
@@ -34,34 +34,40 @@
    "need": true,
    "prog": 162,
    "prog_day": "2026-10-25",
-   "ripe": [],
-   "sig": "cee39ee58a28",
+   "ripe": [
+    "Vaundy",
+    "dota2",
+    "周杰伦",
+    "星巴克马克杯",
+    "滑雪"
+   ],
+   "sig": "f961f47c3514",
    "token_cap": 1000000,
    "tokens_today": 738210,
-   "why": "整理待ちの記事 7 件（5 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 7 件（5 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "チェーンソーマン",
     "BLEACH Mirrors High",
-    "あつ森",
     "哈利波特剧集",
-    "FROM",
-    "GTA 6",
+    "dota2",
+    "漫威电影",
+    "The Mandalorian",
+    "A2O LITE",
+    "Vaundy",
     "Astrae Oratio",
     "绝区零"
    ],
    "need": true,
-   "sig": "4a6f3fe8f6d6",
+   "sig": "4f1faa11bf93",
    "waiting": [
-    "The Mandalorian",
-    "Vaundy",
-    "A2O LITE",
-    "漫威电影",
-    "dota2"
+    "FROM",
+    "あつ森",
+    "GTA 6"
    ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 5 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 18:18 から）"
+   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 3 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:19 から）"
   },
   "photos": {
    "claude": true,
