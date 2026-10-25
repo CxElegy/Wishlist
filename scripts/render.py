@@ -5534,7 +5534,7 @@ def _admin_emm(rows):
     for n, r in enumerate(rows):
         em = r["emblems"]
         d = (r.get("bg") or {}).get("emblem", {}).get("detail") or {}
-        btns.append(f'<button type="button" class="emm-bt" data-bi="{n}" aria-pressed="{"true" if n == 0 else "false"}">{e(r["name"])}<small>{len(em)}</small></button>')
+        btns.append(f'<button type="button" class="emm-bt" data-bi="{n}" data-n="{e(r["name"])}" aria-pressed="{"true" if n == 0 else "false"}">{e(r["name"])}<small>{len(em)}</small></button>')
         tiles = "".join(
             f'<button type="button" class="emm-tile" data-b="{e(r["name"])}" data-img="{e(x["image"])}" data-lock="{1 if x["lock"] else 0}"'
             f' data-subj="{e(x["subject"])}" data-why="{e(x["why"])}" aria-haspopup="dialog">'
@@ -5605,6 +5605,30 @@ EMM_JS = r"""
   var AL={swap:'替える',lock:'固定',unlock:'固定をはずす',drop:'外す'},RL={};
   [].forEach.call(sheet.querySelectorAll('[data-chips=drop] [data-r]'),function(b){RL[b.dataset.r]=b.textContent;});
   function key(t){return t.dataset.b+'|'+t.dataset.img;}
+  var lib={};   // お客さまの版面（ライブラリ）：名前 → 版面の id。店長（管理者）でログインしているときだけ読める（RLS）
+  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
+  function addLib(rows){
+    var bts=document.querySelector('.emm-boards');if(!bts||!rows||!rows.length)return;
+    var shop={};[].forEach.call(bts.querySelectorAll('[data-n]'),function(b){shop[b.dataset.n]=1;});
+    var host=bts.parentNode,sh=document.getElementById('emm-sheet'),n=0;
+    rows.forEach(function(r){
+      var em=((r.config||{}).emblem||[]).filter(function(x){return x&&/^https?:/.test(x.image||'');});
+      if(shop[r.name]||!em.length)return;
+      lib[r.name]=r.id;var bi='L'+r.id;n++;
+      var b=document.createElement('button');b.type='button';b.className='emm-bt';b.dataset.bi=bi;b.dataset.n=r.name;b.setAttribute('aria-pressed','false');
+      b.innerHTML=esc(r.name)+'<small>'+em.length+'</small>';bts.appendChild(b);
+      var d=document.createElement('div');d.className='emm-board';d.dataset.bi=bi;d.hidden=true;
+      d.innerHTML='<p class="emm-h"><b>'+esc(r.name)+'</b><span>お客さまの版面（ライブラリ） · 今 '+em.length+' 枚 · 押すと「どうしたい？」</span></p><div class="emm-grid">'+
+        '</div>';
+      var g=d.querySelector('.emm-grid');
+      em.forEach(function(x){var tl=document.createElement('button');tl.type='button';tl.className='emm-tile';tl.dataset.b=r.name;tl.dataset.img=x.image;tl.dataset.lock=x.lock?'1':'0';
+        tl.dataset.subj=x.subject||'';tl.dataset.why=x.why||'';tl.setAttribute('aria-haspopup','dialog');
+        tl.innerHTML='<span class="emm-ph"><img alt="" loading="lazy"></span><b></b><small></small>';
+        tl.querySelector('img').src=x.image;tl.querySelector('b').textContent=x.subject||'小元素';tl.querySelector('small').textContent=x.why||'';g.appendChild(tl);});
+      host.insertBefore(d,sh);});
+    if(n)paint();}
+  if(CFG.url&&window.fetch)fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/boards?followers=gt.0&select=id,name,config&order=id',{headers:{apikey:CFG.key}})
+    .then(function(r){return r.ok?r.json():[];}).then(addLib,function(){});
   function paint(){
     [].forEach.call(document.querySelectorAll('.emm-tile'),function(t){
       var r=req[key(t)],s=sent[key(t)],old=t.querySelector('.emm-st');if(old)old.remove();
@@ -5669,11 +5693,11 @@ EMM_JS = r"""
     (function next(i){
       if(i>=names.length){
         try{localStorage.setItem(KEY,JSON.stringify(sent));}catch(e){}
-        $('emm-msg').textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（替える写真は次の後台作業で探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
+        $('emm-msg').textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（お客さまの版面は次のライブラリの小元素の回で）（替える写真は次の後台作業で探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
         go.disabled=false;paint();return;}
       var name=names[i];
-      fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/rpc/submit_item',{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},
-        body:JSON.stringify({p_account:window.WL_ACCOUNT,p_action:'edit',p_name:name,p_config:by[name]})})
+      fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/rpc/'+(lib[name]?'board_emblem_request':'submit_item'),{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},
+        body:JSON.stringify(lib[name]?{p_board:lib[name],p_edit:by[name]}:{p_account:window.WL_ACCOUNT,p_action:'edit',p_name:name,p_config:by[name]})})
         .then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok)throw new Error((j&&j.message)||r.status);});})
         .then(function(){ok++;Object.keys(req).forEach(function(k){if(req[k].board===name){if(req[k].a!=='lock'&&req[k].a!=='unlock')sent[k]=Date.now();delete req[k];}});},
               function(err){ng.push(name+'（'+err.message+'）');})

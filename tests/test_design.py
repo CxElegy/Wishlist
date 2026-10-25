@@ -336,7 +336,7 @@ class BackendTable(unittest.TestCase):
                               {"image": "emblems/a-y.webp", "subject": "Y", "why": "Fandom", "lock": False}]
         out = render._admin_backend(rows)
         h = out["manage"]
-        self.assertIn('class="emm-bt" data-bi="0" aria-pressed="true">A<small>2</small>', h)
+        self.assertIn('class="emm-bt" data-bi="0" data-n="A" aria-pressed="true">A<small>2</small>', h)
         self.assertIn('data-b="A" data-img="emblems/a-x.webp" data-lock="1" data-subj="X &lt;1&gt;" data-why="Wiki"', h)
         self.assertIn('data-lock="0"', h)
         for a in ("swap", "lock", "drop"):
