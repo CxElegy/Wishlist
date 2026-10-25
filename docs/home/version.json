@@ -1,32 +1,32 @@
 {
- "admin": "6525bba61327",
- "admin-ai": "dbf01500687e",
+ "admin": "af335a049c50",
+ "admin-ai": "7c1194824b42",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "e50dfd95"
+   "cf36482f"
   ],
   "tokens": [
    "AI 編集のトークン",
    "9cacb196"
   ]
  },
- "admin-boards": "c3722de32df7",
+ "admin-boards": "66259bda4e5b",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "09f575f0"
+   "eb0298b7"
   ],
   "votes": [
    "投票",
-   "034f4a76"
+   "b4fd519f"
   ]
  },
- "admin-emblem": "4501ff073ea5",
+ "admin-emblem": "166c810f7d08",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b5bb9128"
+   "cc4c4914"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "834b565a571c",
  "admin-members_marks": {},
- "admin-now": "fde87cb8c093",
+ "admin-now": "8a617d013205",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "43c66304"
+   "4990b7da"
   ],
   "queue": [
    "いまの状況",
@@ -51,18 +51,18 @@
   ],
   "status": [
    "運行状況",
-   "c668e7e9"
+   "11fbb634"
   ],
   "term-panel": [
    "ライブログ",
-   "10f9dc95"
+   "d867373f"
   ]
  },
- "admin-system": "efc3ac960bdc",
+ "admin-system": "dfbfbe24b5fc",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c57418a5"
+   "767d7554"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,11 +70,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2a860e37"
+   "d4c5b6fe"
   ]
  },
  "admin_marks": {},
- "heat": "c0d0adaecf19",
+ "heat": "df891faa891b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -82,14 +82,14 @@
   ],
   "movers": [
    "前週比",
-   "f6e1e047"
+   "4aca770b"
   ],
   "ranking": [
    "ランキング",
-   "95dc6bc4"
+   "f06fd829"
   ]
  },
- "index": "23f4c0451229",
+ "index": "b5519a56fcc3",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "2fa622de"
+   "4610cd1f"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -125,7 +125,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "bc349470"
+   "2527e904"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -149,7 +149,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "2e189df4"
+   "3a0db703"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -192,6 +192,6 @@
    "9d59ab4f"
   ]
  },
- "updated": "10.25 12:03",
+ "updated": "10.25 12:05",
  "wishlist": "a310f1091069"
 }
