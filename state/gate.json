@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T16:17:30+00:00",
+ "checked": "2026-10-25T16:30:49+00:00",
  "fired": {
-  "at": "2026-10-25T15:17:34+00:00",
+  "at": "2026-10-25T16:30:49+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,27 +12,50 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-25T14:30:24+00:00",
+    "at": "2026-10-25T16:30:49+00:00",
     "attempts": 1,
-    "day": "2026-10-25",
-    "prog": 221,
-    "resp": "cse_01Ck4RLGBHYJpNndKWqgSZmt",
-    "sig": "9a6ec24e4716"
+    "day": "2026-10-26",
+    "prog": 0,
+    "resp": "cse_01CQQvN7VQvz91i32L3PtFa9",
+    "sig": "00d0a370bdfc"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "あつ森",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
+   ],
    "last_batch": "2026-10-25T14:57:26+00:00",
    "last_error": {
     "at": "2026-10-25T14:48:21+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 0,
    "prog_day": "2026-10-26",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "漫威电影",
+    "猫用品"
+   ],
+   "sig": "00d0a370bdfc",
    "token_cap": 1000000,
    "tokens_today": 0,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 30 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
