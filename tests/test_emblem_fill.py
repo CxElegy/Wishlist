@@ -870,6 +870,78 @@ class CheckWhole(unittest.TestCase):
         emblem.check_whole(self._img((40, 20, 160, 239)))   # 余白のある胸像は通る
 
 
+class FlatCut(unittest.TestCase):
+    """形の健康（emblem.trim_flat・flat_flaw・emblem_fill.repair_flat）：左右・上の端の直線の切り口、凹みすぎ。透明度だけの絵で確かめる。"""
+
+    def _bust(self, side_from, size=(200, 300)):
+        # 頭の楕円＋体。体の左右は side_from の行から下が枠の端までまっすぐ（元の写真の端で腕が切れた形）。それより上は肩が斜め
+        from PIL import Image, ImageDraw
+        im = Image.new("RGBA", size, (0, 0, 0, 0))
+        d = ImageDraw.Draw(im)
+        d.ellipse((70, 0, 130, 70), fill=(200, 80, 60, 255))
+        d.polygon([(90, 60), (110, 60), (199, side_from - 30), (199, 299), (0, 299), (0, side_from - 30)], fill=(200, 80, 60, 255))
+        return im
+
+    def test_straight_sides_trimmed_to_half_body(self):
+        import emblem
+        im = self._bust(150)   # 切り口は 150 行から（高さの 50%）→ そこで下を切って半身
+        self.assertTrue(emblem.flat_flaw(im))
+        out = emblem.trim_flat(im)
+        self.assertLess(out.height, 160)
+        self.assertGreater(out.height, 100)
+        self.assertFalse(emblem.flat_flaw(out))
+        im = self._bust(290)   # 切り口が高さの 15% 以内（肩が枠に届くだけ）なら、そのまま
+        self.assertEqual(emblem.trim_flat(im).size, im.size)
+        self.assertFalse(emblem.flat_flaw(im))
+
+    def test_too_early_cut_rejected(self):
+        import emblem
+        with self.assertRaisesRegex(ValueError, "左右の端に直線の切り口"):
+            emblem.trim_flat(self._bust(60))   # 切り口が上のほう：切り落とすと残りが短すぎる
+        with self.assertRaises(ValueError):
+            emblem.check_whole(self._bust(60))   # 取るときは check_whole の左右の端（SIDE_MAX）が先に外す
+
+    def test_flat_top_and_thin_staff(self):
+        import emblem
+        from PIL import Image, ImageDraw
+        hat = Image.new("RGBA", (200, 200), (0, 0, 0, 0))
+        ImageDraw.Draw(hat).rectangle((40, 0, 160, 199), fill=(90, 60, 40, 255))   # 上の端を横幅の 60% 切った
+        with self.assertRaisesRegex(ValueError, "上の端に直線の切り口"):
+            emblem.trim_flat(hat)
+        staff = Image.new("RGBA", (200, 200), (0, 0, 0, 0))   # 端にそった細い杖（幅 3px）は切り口ではない
+        d = ImageDraw.Draw(staff)
+        d.ellipse((50, 10, 150, 199), fill=(90, 60, 40, 255))
+        d.rectangle((0, 20, 2, 190), fill=(90, 60, 40, 255))
+        self.assertFalse(emblem.flat_runs(staff)["left"] > emblem.FLAT_RUN)
+
+    def test_concave_shape_rejected(self):
+        import emblem
+        from PIL import Image, ImageDraw
+        im = Image.new("RGBA", (200, 200), (0, 0, 0, 0))
+        ImageDraw.Draw(im).polygon([(100, 0), (110, 100), (190, 190), (100, 120), (10, 190), (90, 100)], fill=(90, 60, 40, 255))   # 星のように凹んだ
+        with self.assertRaisesRegex(ValueError, "凹みすぎ"):
+            emblem.trim_flat(im)
+
+    def test_repair_flat_rewrites_fixable_and_leaves_rest(self):
+        import tempfile
+        from unittest import mock
+        im = self._bust(150)
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        (tmp / "emblems").mkdir()
+        im.save(tmp / "emblems" / "a.webp")
+        self._bust(60).save(tmp / "emblems" / "b.webp")
+        item = {"name": "X", "emblem": [{"subject": "A", "image": "emblems/a.webp", "shape": "cutout"}, {"subject": "B", "image": "emblems/b.webp", "shape": "cutout"}]}
+        written = []
+        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"), \
+                mock.patch.object(ef.emblem, "write_item", side_effect=lambda n, e, t: written.append(e)):
+            self.assertEqual(ef.repair_flat(item, log=lambda *_: None), 1)
+            from PIL import Image
+            self.assertLess(Image.open(tmp / "emblems" / "a.webp").height, 160)
+            self.assertEqual(Image.open(tmp / "emblems" / "b.webp").height, 300)   # 直せないものは触らない
+            self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["B"])   # 直せなかった B だけ外れる
+        self.assertEqual(len(written), 1)
+
+
 class KeepFraming(unittest.TestCase):
     def test_follow_majority_without_losing_old(self):
         import emblem
@@ -895,8 +967,9 @@ class EmblemDetail(unittest.TestCase):
     def test_cutout_with_other_people_is_dropped(self):
         import emblem
         from PIL import Image
+        from PIL import ImageDraw
         img = Image.new("RGBA", (200, 260), (0, 0, 0, 0))
-        img.paste((200, 150, 120, 255), (40, 30, 160, 260))
+        ImageDraw.Draw(img).ellipse((40, 30, 160, 259), fill=(200, 150, 120, 255))
         with mock.patch.object(emblem, "other_faces", return_value=1):
             with self.assertRaisesRegex(ValueError, "ほかの人"):
                 emblem.check_whole(img, photo=True)

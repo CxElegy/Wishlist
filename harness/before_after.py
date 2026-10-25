@@ -115,6 +115,12 @@ def next_run(yml, now=None):
     return min(ts).astimezone(progress_notify.JST).strftime("%H:%M") if ts else "次の回"
 
 
+# 出典の札（写真のない記事の出典のアイコン）の小さな揺れ・読み込みの差は「変わった所」にしない：中身を隠して同じ灰色の板にする
+CALM_CSS = ".pic.icon,.pic.none{background:#888!important}.pic.icon *,.pic.none *{visibility:hidden!important}"
+# 小元素（.emb）の四角を撮った絵の中の座標で集める（赤枠が変わった小元素を丸ごと含むため）
+RECTS_JS = """(sel)=>{const r0=sel?document.querySelector(sel).getBoundingClientRect():{left:-scrollX,top:-scrollY};
+return [...document.querySelectorAll('.emb')].map(e=>{const r=e.getBoundingClientRect();return [Math.round(r.left-r0.left),Math.round(r.top-r0.top),Math.round(r.right-r0.left),Math.round(r.bottom-r0.top)]})}"""
+
 SEED_JS = """(()=>{let s=20261025;Math.random=()=>((s=Math.imul(s^(s>>>15),2246822507)+0x6D2B79F5|0)>>>0)/4294967296;})();"""
 
 
@@ -122,7 +128,7 @@ def shoot(out, where=None):
     """VIEWS をそれぞれ撮る。where=(ページ, セレクタ, …) ならその欄だけ、なければページ全体（MAX_H まで）。
     乱数は決まった種に（「気になるかも？」・小元素のランダムな 1 枚が前と後で同じになる）・動きは止める。返り値：{名前: 欄の中の img の数}。"""
     out.mkdir(parents=True, exist_ok=True)
-    counts = {}
+    counts, rects = {}, {}
     page, sel = (where[0], where[1]) if where else ("", None)
     with sync_playwright() as pw:
         b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
@@ -145,6 +151,7 @@ def shoot(out, where=None):
                 # 遅れて読む写真（loading=lazy）を前と後で同じにするため、下まで一度たどって戻る
                 pg.evaluate("async()=>{const H=Math.min(document.documentElement.scrollHeight,%d);for(let y=0;y<H;y+=700){scrollTo(0,y);await new Promise(r=>setTimeout(r,120));}scrollTo(0,0);}" % MAX_H)
                 pg.wait_for_timeout(2500)
+                pg.add_style_tag(content=CALM_CSS)
                 if sel:
                     el = pg.locator(sel).first
                     if el.count():
@@ -152,16 +159,19 @@ def shoot(out, where=None):
                         pg.wait_for_timeout(800)
                         el.screenshot(path=str(out / f"{name}.png"))
                         counts[name] = el.locator("img").count()
+                        rects[name] = pg.evaluate(RECTS_JS, sel)
                     else:
                         print(f"欄がない {name}: {sel}")
                 else:
                     h = min(pg.evaluate("document.documentElement.scrollHeight"), MAX_H)
                     pg.screenshot(path=str(out / f"{name}.png"), clip={"x": 0, "y": 0, "width": w, "height": h}, full_page=True)
+                    rects[name] = pg.evaluate(RECTS_JS, None)
                 ctx.close()
             except Exception as ex:  # noqa: BLE001  1 枚撮れなくても残りは送る
                 print(f"撮れなかった {who} {w}: {type(ex).__name__}")
         b.close()
     (out / "counts.json").write_text(json.dumps(counts), encoding="utf-8")
+    (out / "rects.json").write_text(json.dumps(rects), encoding="utf-8")
     return counts
 
 
@@ -287,6 +297,18 @@ def changed_boxes(a, b):
     return [s for s in boxes if not any(inside(s, o) for o in boxes)]
 
 
+def grow_to_emblems(boxes, rects):
+    """変わった所の四角が小元素（.emb）の四角に少しでも触れたら、その小元素を丸ごと含む四角にする（2026-10-25：赤枠から小元素の頭がはみ出した）。"""
+    out = []
+    for x0, y0, x1, y1 in boxes:
+        for r in rects or []:
+            if r[2] > r[0] and r[3] > r[1] and r[0] < x1 and r[2] > x0 and r[1] < y1 and r[3] > y0:
+                x0, y0, x1, y1 = min(x0, r[0]), min(y0, r[1]), max(x1, r[2]), max(y1, r[3])
+        out.append((x0, y0, x1, y1))
+    inside = lambda s, o: s != o and o[0] <= s[0] and o[1] <= s[1] and s[2] <= o[2] and s[3] <= o[3]   # noqa: E731
+    return [s for s in dict.fromkeys(out) if not any(inside(s, o) for o in out)]
+
+
 PAD = 60          # 切り抜くとき、変わった所のまわりに残す幅（px）
 CROP_MAX_H = 1400  # 切り抜きの高さの上限
 ZOOM_W = 900       # 切り抜きがこれより細ければ 2 倍まで大きく
@@ -315,7 +337,7 @@ def _pad(im, w, h):
     return out
 
 
-def compose(before, after):
+def compose(before, after, rects=None):
     """左に Before・右に After。大きさが違えば（ページの高さが変わった）大きい方に合わせて地の色で埋め、changed_boxes の一番大きい所を
     真ん中に切り抜き、赤い枠。片方が None（その欄がない＝新しい欄・消えた欄）なら地の色の 1 枚と比べる。
     差がなければ None（写真を送らない、2026-10-25 用户定的）。幅は 1800px まで。"""
@@ -326,6 +348,7 @@ def compose(before, after):
     boxes = changed_boxes(a, b)   # 描く前に 1 回だけ数える
     if not boxes:
         return None
+    boxes = [(x0, y0, min(x1, w), min(y1, h)) for x0, y0, x1, y1 in grow_to_emblems(boxes, rects)]
     crop = focus(a, b, [r for r in boxes if r[1] < common] or boxes)   # 伸びた下の端より、両方にある所の変化を真ん中に
     a, b = a.crop(crop), b.crop(crop)
     boxes = [(x0 - crop[0], y0 - crop[1], x1 - crop[0], y1 - crop[1]) for x0, y0, x1, y1 in boxes]
@@ -399,13 +422,15 @@ def pairs(root, where, title):
     返り値：(写真, 一行, 両方とも撮れなかった画面の名前)。"""
     cb = json.loads((root / "before" / "counts.json").read_text()) if (root / "before" / "counts.json").exists() else {}
     ca = json.loads((root / "after" / "counts.json").read_text()) if (root / "after" / "counts.json").exists() else {}
+    rb = json.loads((root / "before" / "rects.json").read_text()) if (root / "before" / "rects.json").exists() else {}
+    ra = json.loads((root / "after" / "rects.json").read_text()) if (root / "after" / "rects.json").exists() else {}
     images, missing = [], []
     for who, w in VIEWS:
         b, a = root / "before" / f"{who}-{w}.png", root / "after" / f"{who}-{w}.png"
         if not b.exists() and not a.exists():
             missing.append(f"{who}-{w}")
             continue
-        png = compose(b if b.exists() else None, a if a.exists() else None)
+        png = compose(b if b.exists() else None, a if a.exists() else None, rb.get(f"{who}-{w}", []) + ra.get(f"{who}-{w}", []))
         if png:
             images.append((f"{who}-{w}.png", png))
     return images, headline(title, where[2] if where else "", cb, ca), missing

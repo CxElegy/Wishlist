@@ -46,6 +46,7 @@ import urllib.request
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import sitedir  # noqa: E402
 import theme  # noqa: E402
+from cutshape import FLAT_RUN, FLAT_TOP, SOLID_MIN, flat_flaw, flat_runs, solidity  # noqa: E402,F401  切り抜きの形を測るところ（emb_check も読む）
 import wikihttp  # noqa: E402
 from sources import TIMEOUT, USER_AGENT  # noqa: E402
 
@@ -732,6 +733,32 @@ def faceless_scrap(img):
     return w > h * NOFACE_WIDE and face_sharp(img) is None
 
 
+FLAT_KEEP = 0.4    # 直線の切り口の手前（上）で下を切り落として半身にするとき、残す高さの割合の下限（それより短くなるなら使わない）
+def trim_flat(img):
+    """直線の切り口を直す：上の端 → 使わない。左右の端 → 切り口が始まる行で下を切り落とし半身にする（下の端だけが直線になる）。
+    残りが元の高さの FLAT_KEEP 未満・顔の下まで届かない・形が凹みすぎ（SOLID_MIN）なら ValueError。人物の範囲に切り詰めた画像を返す。"""
+    img = img.convert("RGBA")
+    img = img.crop(img.getchannel("A").getbbox())
+    h0 = img.height
+    for _ in range(2):
+        r = flat_runs(img)
+        if r["top"] > FLAT_TOP:
+            raise ValueError(f"上の端に直線の切り口（横幅の {r['top']:.0%}）")
+        if max(r["left"], r["right"]) <= FLAT_RUN:
+            break
+        y, f = r["start"], face_box(img)
+        if y < h0 * FLAT_KEEP or f and y < f[1] + f[3] * 1.05:
+            raise ValueError(f"左右の端に直線の切り口（左 {r['left']:.0%}・右 {r['right']:.0%}）")
+        img = img.crop((0, 0, img.width, y))
+        img = img.crop(img.getchannel("A").getbbox())
+    else:
+        raise ValueError("左右の端に直線の切り口（切り落としても残る）")
+    s = solidity(img)
+    if s < SOLID_MIN:
+        raise ValueError(f"形が凹みすぎている（{s:.2f}）")
+    return img
+
+
 def is_sliver(w, h):
     """切り抜きの大きさ（px）が切れ端・帯か。"""
     return min(w, h) < CUT_MIN or w > h * CUT_WIDE
@@ -865,7 +892,7 @@ def check_whole(out, photo=False):
         raise ValueError(f"切り抜きに穴（{holes:.1%}）")
     out = out.copy()
     out.putalpha(Image.fromarray(a))
-    return out
+    return trim_flat(out)   # 左右の直線の切り口は下を切り落として半身に、上の端の直線・凹みすぎは ✗（形の健康）
 
 
 _SESSIONS = {}
@@ -951,9 +978,13 @@ def face_fit(img, share=FACE_SHARE):
         fx = f[0]
         bw = fh / share * 1.1                      # 胸像の幅：横に広がる武器・ポーズは顔を中心にこの幅で切る
         left = 0 if w <= bw else int(min(max(0, fx + f[2] / 2 - bw / 2), w - bw))
-        img = img.crop((left, 0, min(w, int(left + bw)) if w > bw else w, min(h, int(bottom))))
-        img = main_parts(img)
-        img = img.crop(img.getchannel("A").getbbox())
+        cut = img.crop((left, 0, min(w, int(left + bw)) if w > bw else w, min(h, int(bottom))))
+        cut = main_parts(cut)
+        cut = cut.crop(cut.getchannel("A").getbbox())
+        try:   # 横に切った所は体の途中の直線の切り口になる（Gregory Goyle）：切り口が始まる行で下を切って半身に（直せなければそのまま：形の傷は emblem_fill.drop_broken が外して次の候補へ）
+            img = trim_flat(cut)
+        except ValueError:
+            img = cut
         h = img.size[1]
         f2 = face_box(img)
         if f2:

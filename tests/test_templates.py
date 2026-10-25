@@ -157,12 +157,15 @@ class Templates(unittest.TestCase):
         import emblem
         from PIL import Image, ImageDraw
         def fig(box, extra=None, size=(200, 300)):
+            # 頭＋肩の台形（左右が下へまっすぐ切れた長方形は形の健康で ✗ になるので）
             im = Image.new("RGBA", size, (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-            d.rectangle(box, fill=(200, 80, 60, 255))
+            x0, y0, x1, y1 = box
+            d.ellipse((x0 + 30, y0, x1 - 30, y0 + 80), fill=(200, 80, 60, 255))
+            d.polygon([(x0 + 40, y0 + 70), (x1 - 40, y0 + 70), (x1, y0 + 110), (x1 - 4, y1), (x0 + 4, y1), (x0, y0 + 110)], fill=(200, 80, 60, 255))
             if extra: d.rectangle(extra, fill=(200, 80, 60, 255))
             return im
         ok = emblem.check_whole(fig((40, 20, 160, 299), extra=(2, 280, 8, 290)))   # 胸像＋左下の小さな切れ端
-        self.assertEqual(ok.getchannel("A").getpixel((5, 285)), 0)                 # 切れ端は消える
+        self.assertLess(ok.width, 130)                                             # 切れ端は消える（ついでに人物の範囲に切り詰める）
         self.assertEqual(emblem.framing(ok), "bust")
         with self.assertRaises(ValueError):
             emblem.check_whole(fig((0, 20, 160, 299)))                              # 左の端で体が切れている
