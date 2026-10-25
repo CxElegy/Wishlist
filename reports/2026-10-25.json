@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "f259ae2ed724",
+ "edit_sig": "5d4a2f0a71e3",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -120,17 +120,20 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-24",
-     "n": 2,
+     "headline": "Prif Universe producer Loïc Saos on a 200MB browser MMO and FWC",
+     "highlight": "",
+     "image": null,
      "source": "Mobile Goddess",
-     "title": "Prif Universe producer Loïc Saos on a 200MB browser MMO and FWC",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE4wZlFVWWsxS0RxSVZJVEpEWTl0UnZZQXZlemZqT1hHX0JNek9BWXdZTUIwT3NEUUtsb21DMi1GUXJzXzNhZGRJbTV1WUlSQzhVZ2ViSXducW1YZlF3eXp5QUZZek4?oc=5"
+     "source_icon": "https://www.mgoddess.com/favicon.ico",
+     "url": "https://www.mgoddess.com/news/news-cd985e5b93/?lang=en",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -176,34 +179,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 28,
-     "source": "IMDb",
-     "title": "Apple TV Sci-Fi Show Creator Slams The McU's Multiverse Saga",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8wLUxrX1JHcFRDMHpOWGtILS1zeTl6MmsxeGVYS2dRQnhmQjdIaU1BUUM4eDBMSVQ1QzFaUTUyZGw3YXptYXhiZ3k1Y3NsVGhXSGFLQXcwdVZkSDFETS00dFlTSlJwbGs?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 30,
-     "source": "Times Now on MSN",
-     "title": "Avengers Doomsday advance booking: MCU film could earn thrice more than Dune 3 on opening weekend - report",
-     "url": "https://www.msn.com/en-in/news/other/avengers-doomsday-advance-booking-mcu-film-could-earn-thrice-more-than-dune-3-on-opening-weekend-report/ar-AA2fZ2iR?ocid=BingNewsVerp"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-24",
-     "headline": "Worlds collide: Jacob Misiorowski, other MLB stars join Marvel in new ‘Avengers: Doomsday’ teaser",
-     "highlight": "",
-     "image": "https://images.foxtv.com/static.fox29.com/www.fox29.com/content/uploads/2026/10/1200/630/untitled-october-24-2026-at-07.35.02-1.png?ve=1&tl=1",
-     "image_via": "同一件事的别家报道 www.fox29.com",
-     "url": "https://www.wearegreenbay.com/news/local-news/mlb-marvel-avengers-doomsday-teaser/",
-     "weight": "hero"
-    },
     {
      "blurb": "A new Avengers: Doomsday promo has Reed Richards opening the World Series, with MLB stars joining in.",
      "date": "2026-10-24",
@@ -243,6 +220,16 @@
      "image_via": "og:image",
      "url": "https://tbreak.com/sandra-huller-avengers-doomsday-cameo/",
      "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "‘Avengers: Doomsday’ Reportedly Crosses a Record-Setting Presales Milestone",
+     "highlight": "Record-Setting Presales",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img",
+     "image_via": "MSN 接口（其它来源）",
+     "url": "https://www.imdb.com/news/ni66078485/",
+     "weight": "normal"
     }
    ],
    "subtitle": "Marvel Studios · MCU",
@@ -261,15 +248,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 3,
-     "source": "Cinemablend",
-     "title": "How Am I Only Just Realizing One Of The Harry Potter Show’s Actors Has A Major Link To A Franchise OG?",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPeU8wWTFycUR6dDlGZFF1TDM0VWI5NThCT2YxT1NfZ2lENURMTVBNWmtZUUtyelBCMEpOemZqVG52cmNYd2JzV2RwblA1NUxGZHhEaVUzeXg4VlN4UXhteWRFaU5JN1dKVGRMNHljZlpsWGFFcElWc1NKUmxZZ2tpOFZlcDlrNE50cTltRU5IXzhJNV94aEl5QnpzYjNFakZiNW1qM1otWlVQYUF6RW14RGlMYTQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -309,22 +287,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 4,
-     "source": "Weverse",
-     "title": "ILLIT 위버스 LIVE - 워니기니 - 원희",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1DeUNUYjdFTmFienNfQWNGdzZZYWVmWFd3ZFJScnlEZ0piYXRhNFlSRkh4ZWNZOWloMlV4ZDhnaUlUcUQ0Q2RsczNSbjFVbGNsb3FrVVplSkctZWs?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "조선일보",
-     "title": "아일릿 'BREAK EVEN' 스포티파이 사전 저장 50만 돌파..K팝 걸그룹 최상위권",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNS1gxN2ZOa2RDUXY3U1FEODJLbk1FdzktRXNjMjlSeUp6eGZtT1RuRjV4TnBtNE5UOU53THRrRTh4bWFjSEhkSUNoS2JXbWpEamloR2oxNnhFOF9KazM4aS1CVW83NjIxMzNVY2N1YlIzQ0ZBREFwbzFySFd2SlhTbnZXYW9vOER5clE?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -336,6 +298,16 @@
      "image_via": "AI 挑选",
      "url": "https://weverse.io/illit/notice/40373?hl=ko",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "아일릿 'BREAK EVEN' 스포티파이 사전 저장 50만 돌파..K팝 걸그룹 최상위권",
+     "highlight": "50만 돌파",
+     "image": "https://www.chosun.com/resizer/v2/ME3DOMBSMMZTOOLFMM2DMNRVMQ.jpg?auth=27d6b2f93343eb24497b1a9fb703d0c74ffc749ee2ea53a6464955f9b07ac169&width=530&height=278&smart=true",
+     "image_via": "og:image",
+     "url": "https://www.chosun.com/entertainments/music/2026/10/23/MRQTMM3DMRTDGYRZMRRDINZWGU/",
+     "weight": "normal"
     }
    ],
    "subtitle": "アイリット · 日本公演特别关注",
@@ -548,7 +520,7 @@
      "highlight": "",
      "image": null,
      "source": "Howl.Link",
-     "source_icon": "https://www.youtube.com/s/desktop/dc0b62b0/img/favicon_144x144.png",
+     "source_icon": null,
      "url": "https://t.co/h37eNf4Ukr",
      "weight": "normal"
     }
@@ -569,29 +541,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 5,
-     "source": "Facebook",
-     "title": "#周杰倫 #台南車站 #公共鋼琴 #楓 #鋼琴彈奏 #饅頭",
-     "url": "https://news.google.com/rss/articles/CBMizAJBVV95cUxOeXFRbGQwU3N5LXQ2UWxsa0oxQzFNN280a1JKRUZ5eEZ2dWR3X2VGN05QU1JaUXN6aGU4YUcxT3FCaWNLV2VNMlB0RUhhMjhyNm9KVW1TV1E0RFNJREJJMU5TYkRjVjBGQWQ4NmRpbk9DTmd4QnNERmZKdEZsNWhqNzR5UWR3d2hiRV9sRFFjVDdDZjJyVWtqX0pTOVVhYW1OalhCVm1Hay1GQURPak9Mc3FzNjkyd1lZV3haX0hnYXRIRUxwMUpyVEp5RUVSZnF3bmxBSFNQYlFaeU12WThlQlBNN1ZMc1hDZXhlZWZqdS1TaG5jNFFhMTN0RFFCVVRnSE80WlBhNUZhU0loa2hSemJpcEtvdDBSOGVCdEx3YmlwQzRuYWludTBvU1ZJNXV0aGRlMzBKcjh3LXVDb09WUHZiVWhGSm9JR0VpWQ?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 6,
-     "source": "手机新浪网",
-     "title": "周杰伦孙燕姿2013台北合唱不能说的秘密遇见",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5mZTJxaEk1eTk3RXhIeUN3cFhhaE8tWGFLajBfT2ZNTVpZTm94Mm1wZEp3REJfdjF2Ulo4QkVIdzFablhSVlBaOUtWYkdiRVRTMHVPVmJ5elNUYVptMXp5MlBHOXlwV3dFZmxqWFg2Ml9BZw?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 7,
-     "source": "QQ News",
-     "title": "被喊中国歌手点头认可，周杰伦捅破敏感区，岛内直接炸开锅！",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE55dHNkYjJ2RjZVZ0UwMmlqOUc5MmQ5MEFiN1Z1bExMSEN6cVlGellxSjU0TTVmQWxlYlZDblRrVzR6eC14dzQ4aVVjalV4X0ZRWXdnNV93?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -760,8 +709,8 @@
      "date": "2026-10-23",
      "headline": "A2O LITEアイチン、両親の7億ウォン規模の賃金未払い疑惑で騒動",
      "highlight": "",
-     "image": "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp",
+     "image_via": "og:image",
      "url": "https://global.mediafine.co.kr/ja/news/a2o-lite-ai-jjing-fans-debt-controversy",
      "weight": "normal"
     },
@@ -912,7 +861,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-10-24",

@@ -1554,6 +1554,26 @@ class FindSources(unittest.TestCase):
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual((got["emblem_pool"], got["emblem_who"]), (3, ["B", "A", "C"]))
 
+    def test_live_action_roster_from_articles(self):
+        """漫威电影（フランチャイズ、P161 なし）は wiki: の記事の作品の P161、哈利波特剧集は記事の Cast の節も。同じ人は 1 回、役も入る。"""
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "items.yaml").write_text('items:\n  - name: M\n    type: show\n    emblem_kind: character\n', encoding="utf-8")
+            item = {"name": "M", "type": "show", "emblem_kind": "character", "emblem_people": True, "wikidata": "Q1",
+                    "wiki": ["en:Avengers: Doomsday"], "emblem_who": ["A"], "emblem_roles": {"A": "Thor"}}
+            cast = lambda q, title=None: ["A", "B"] if title else []
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef, "wd_cast", side_effect=cast), \
+                    mock.patch.object(ef, "wiki_cast", return_value=[("B", "Hulk"), ("C", "Doctor Doom")]):
+                self.assertEqual(ef.roster(item, log=lambda *_: None), 3)
+            got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        self.assertEqual((got["emblem_who"], got["emblem_roles"]), (["A", "B", "C"], {"B": "Hulk", "C": "Doctor Doom", "A": "Thor"}))
+
+    def test_cast_section_lines(self):
+        s = ("* [[Dominic McLaughlin]] as [[Harry Potter (character)|Harry Potter]]\n* Arabella Stanton as [[Hermione Granger]], a student\n"
+             "* ''[[Paapa Essiedu]]'' as Severus Snape\n* A note without the word\n")
+        self.assertEqual([(m.group(2) or m.group(1) or m.group(3), m.group(4) or m.group(5)) for m in ef.CAST_LINE.finditer(s)],
+                         [("Dominic McLaughlin", "Harry Potter"), ("Arabella Stanton", "Hermione Granger"), ("Paapa Essiedu", "Severus Snape")])
+
     def test_same_person_other_spelling_is_not_added_twice(self):
         self.assertEqual(ef._name_key("Uryuu Ishida"), ef._name_key("Uryū Ishida"))
         self.assertEqual(ef._name_key("Toushirou Hitsugaya"), ef._name_key("Tōshirō Hitsugaya"))

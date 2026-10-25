@@ -65,7 +65,6 @@
   "https://www.cls.cn/detail/2499492": "https://cdnjs.cls.cn/www/20180717/images/rightSide/kfCodeSlider.png",
   "https://www.enduins.com/news/open-world-creature-collector-roco-kingdom-opens-beta-test-access-and-debuts-gameplay-overview": "https://www.enduins.com/wp-content/uploads/2026/10/ss_acf68242e105001deff706fd7ad98583694622bc.1920x1080.jpg",
   "https://www.extremetech.com/mobile/samsungs-certified-re-newed-galaxy-phones-come-to-amazon-start-at-489": "https://i.extremetech.com/imagery/content-types/00Xc7MND9pJtj4D9z7YqAUi/hero-image.fill.size_1200x675.png",
-  "https://www.firstshowing.net/2026/avengers-doomsday-extra-boring-baseball-themed-teaser/": "https://media2.firstshowing.net/firstshowing/img18/avengersdoomsdaytsrbasebtw1.jpg",
   "https://www.geeky-gadgets.com/samsung-galaxy-s27-leaks-rumors/": "https://www.bing.com/th?id=ONUT.prHbU_kPn4Qq3S99S2Optg&pid=News&w=1200",
   "https://www.haveagood-holiday.com/zh-CN/articles/magical-chiikawa-fuwamochi-gororin-hug-plush-preorder": "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg",
   "https://www.hotspawn.com/dota2/news/team-liquids-debut-series-ends-with-a-win-pari-universe-day-1-recap": "https://www.bing.com/th?id=ONUT.HeMuX9yNQWEbnje_VpgP0g&pid=News&w=1200",
@@ -92,6 +91,7 @@
   "https://www.upmedia.mg/tw/lifestyle/food/272014": "https://cdn.upmedia.mg/upfile/img/2026/1021/202610211821342835.webp",
   "https://www.vietnam.vn/ko/smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/09/1791510301377_smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra-3279.png",
   "https://www.walkerplus.com/article/184834/image1101737.html": "https://news.walkerplus.com/article/184834/1101752_615.jpg",
+  "https://www.wearegreenbay.com/news/local-news/mlb-marvel-avengers-doomsday-teaser/": "https://images.foxtv.com/static.fox29.com/www.fox29.com/content/uploads/2026/10/1200/630/untitled-october-24-2026-at-07.35.02-1.png?ve=1&tl=1",
   "https://www.whas11.com/article/news/nation-world/starbucks-snoopy-cup-peanuts-collection-release-date/507-20c3ad04-495d-44ff-b2bf-7a085ff61614": "https://media.whas11.com/assets/CCT/images/d2a97e25-4450-4841-96ef-b900ab91ff53/20260903T223000/d2a97e25-4450-4841-96ef-b900ab91ff53_1920x1080.jpg"
  },
  "picks": [
@@ -1369,6 +1369,27 @@
    "because": "漫威电影",
    "date": "2026-10-24",
    "hits": [],
+   "image": "https://images.foxtv.com/static.fox29.com/www.fox29.com/content/uploads/2026/10/1200/630/untitled-october-24-2026-at-07.35.02-1.png?ve=1&tl=1",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "WFRV Local 5",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Worlds collide: Jacob Misiorowski, other MLB stars join Marvel in new ‘Avengers: Doomsday’ teaser",
+   "url": "https://www.wearegreenbay.com/news/local-news/mlb-marvel-avengers-doomsday-teaser/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-10-24",
+   "hits": [],
    "image": "https://assets-prd.ignimgs.com/2026/08/15/doomthumb-1786767136045.png?width=1280&format=jpg&auto=webp&quality=80",
    "kind": "board",
    "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
@@ -1405,27 +1426,6 @@
    "url": "https://k.sina.com.cn/article_7811247037_m1d1962bbd03302whge.html",
    "words": [],
    "work": "周杰伦"
-  },
-  {
-   "batch": 4,
-   "because": "漫威电影",
-   "date": "2026-10-24",
-   "hits": [],
-   "image": "https://media2.firstshowing.net/firstshowing/img18/avengersdoomsdaytsrbasebtw1.jpg",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "FirstShowing.net",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Another Extra Boring Baseball-Themed 'Avengers: Doomsday' Teaser",
-   "url": "https://www.firstshowing.net/2026/avengers-doomsday-extra-boring-baseball-themed-teaser/",
-   "words": [],
-   "work": "漫威电影"
   },
   {
    "batch": 5,
@@ -2137,7 +2137,7 @@
    9
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
@@ -2145,7 +2145,7 @@
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
