@@ -1613,6 +1613,12 @@
   "target": 720,
   "v": 3
  },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
+  "w": 650,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://nagoya-dolphins.bl.kuroco-img.app/v=1792466046/files/user/common/2026-27/news/osakashimane_ticket.png": {
   "w": 3840,
   "h": 2160,
@@ -2018,18 +2024,6 @@
   "out": [
    1280,
    927
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035789-tennismagv-000-1-view.jpg?exp=10800": {
-  "w": 1280,
-  "h": 960,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/f850042f7345550f.webp",
-  "out": [
-   1280,
-   960
   ],
   "why": "期限付きの網址"
  },
@@ -2998,6 +2992,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.ii486jH8mTPZkIwpIHg__g&pid=News&w=934": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,

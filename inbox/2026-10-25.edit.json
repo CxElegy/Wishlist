@@ -223,7 +223,7 @@
   "Astrae Oratio": 1,
   "FROM": 1,
   "Vaundy": 1,
-  "dota2": 1,
+  "dota2": 2,
   "チェーンソーマン": 1,
   "三星手机": 3,
   "哈利波特剧集": 3,
@@ -366,7 +366,17 @@
   }
  ],
  "Vaundy": [],
- "dota2": [],
+ "dota2": [
+  {
+   "headline": "DOTA2-PV宇宙小组赛：Yandex连下两城横扫GL",
+   "highlight": "Yandex连下两城",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
  "チェーンソーマン": [
   {
    "headline": "「ネズミの寓話が印象的」 チェンソーマン レゼ篇 zpさんの映画レビュー",

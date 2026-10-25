@@ -1,14 +1,14 @@
 {
- "admin": "931235b1158f",
- "admin-ai": "5bd68ed9e7aa",
+ "admin": "f7d4dfbb69cc",
+ "admin-ai": "f7a4bc836ecb",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9ff475c9"
+   "396e14d6"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f67d70f5"
+   "bf0d5ed8"
   ]
  },
  "admin-boards": "c3722de32df7",
@@ -22,11 +22,11 @@
    "034f4a76"
   ]
  },
- "admin-emblem": "acb6f88f1c97",
+ "admin-emblem": "88b5c774ed51",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c624c73d"
+   "6ed73118"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "834b565a571c",
  "admin-members_marks": {},
- "admin-now": "75c22df1c66e",
+ "admin-now": "97870094f933",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d1eff6f2"
+   "12a06d2a"
   ],
   "queue": [
    "いまの状況",
@@ -55,14 +55,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "33413f2c"
+   "c4ba8ffa"
   ]
  },
- "admin-system": "ce81bc1bed19",
+ "admin-system": "260bc57589f9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fc0cce61"
+   "2ca511f5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,7 +70,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "2e1ed2fd"
+   "7a2702c6"
   ]
  },
  "admin_marks": {},
@@ -89,7 +89,7 @@
    "95dc6bc4"
   ]
  },
- "index": "2af67700e6fe",
+ "index": "3ec8ac6e0389",
  "index_marks": {
   "front": [
    "トップ",
@@ -101,7 +101,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "72aca7a5"
+   "7115096c"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,7 +121,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "b159cd2f"
+   "05771420"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -192,6 +192,6 @@
    "9d59ab4f"
   ]
  },
- "updated": "10.25 10:37",
+ "updated": "10.25 10:38",
  "wishlist": "a310f1091069"
 }

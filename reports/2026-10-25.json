@@ -1,6 +1,6 @@
 {
  "date": "2026-10-25",
- "edit_sig": "fed906b4580e",
+ "edit_sig": "b1696cab9981",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -359,8 +359,8 @@
      "date": "2026-10-24",
      "headline": "予選がスタート、7人が出場した日本勢は本玉真唯と石井さやかが初戦を突破",
      "highlight": "初戦を突破",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035789-tennismagv-000-1-view.jpg?exp=10800",
-     "image_via": "转载 news.yahoo.co.jp",
+     "image": "https://www.bing.com/th?id=ONUT.ii486jH8mTPZkIwpIHg__g&pid=News&w=934",
+     "image_via": "转载 news.yahoo.co.jp（Bing 缩略图）",
      "url": "https://tennismagazine.jp/article/detail/35789",
      "weight": "normal"
     },
@@ -633,17 +633,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 2,
-     "source": "搜狐网",
-     "title": "DOTA2-PV宇宙小组赛：Yandex连下两城横扫GL",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFAwQzVxeFRkbnZpc3QyZEctYTVQX1JtbWotbG41U09iYTlrZVRJZk43OUxuRWRhc3BwS2Q5WVNFbERka1BaRmZHWlZScXI2VGx2UzJn?oc=5"
+     "headline": "DOTA2-PV宇宙小组赛：Yandex连下两城横扫GL",
+     "highlight": "Yandex连下两城",
+     "image": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG",
+     "image_via": "正文图（3 枚から）",
+     "url": "https://timeline.sohu.com/news/FXLMKulDK3",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
