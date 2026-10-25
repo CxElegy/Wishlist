@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T04:38:37+00:00",
+ "checked": "2026-10-25T04:52:39+00:00",
  "fired": {
-  "at": "2026-10-25T04:38:38+00:00",
+  "at": "2026-10-25T04:52:39+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,19 +12,23 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-25T03:41:29+00:00",
+    "at": "2026-10-25T04:52:39+00:00",
     "attempts": 1,
     "day": "2026-10-25",
-    "prog": 97,
-    "resp": "cse_01J9BXt34igsj89NfqALpunD",
-    "sig": "7cc70540b812"
+    "prog": 108,
+    "resp": "cse_01U9QrydFNzBcgqwd8BUa9To",
+    "sig": "cfc6fb1268b8"
    },
    "items": [
     "A2O LITE",
+    "GTA 6",
+    "ILLIT",
     "gelato pique",
     "三星手机",
     "周杰伦",
+    "日本顶级网球赛事",
     "滑雪",
+    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-10-25T04:01:17+00:00",
@@ -35,31 +39,35 @@
    "need": true,
    "prog": 108,
    "prog_day": "2026-10-25",
-   "ripe": [],
-   "sig": "5942b981a99b",
+   "ripe": [
+    "A2O LITE",
+    "三星手机",
+    "漫威电影"
+   ],
+   "sig": "cfc6fb1268b8",
    "token_cap": 1000000,
    "tokens_today": 486704,
-   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 33 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
+    "BLEACH Mirrors High",
     "dota2",
-    "漫威电影"
+    "漫威电影",
+    "GTA 6",
+    "A2O LITE"
    ],
    "need": true,
-   "sig": "7c85f3676624",
+   "sig": "1775b051bbd9",
    "waiting": [
-    "BLEACH Mirrors High",
     "あつ森",
-    "GTA 6",
     "FROM",
     "哈利波特剧集",
     "The Mandalorian",
-    "チェーンソーマン",
-    "A2O LITE"
+    "チェーンソーマン"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 8 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 13:47 から）"
+   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 5 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 14:18 から）"
   },
   "photos": {
    "claude": true,
