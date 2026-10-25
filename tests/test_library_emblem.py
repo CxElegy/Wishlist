@@ -133,7 +133,7 @@ class Fill(unittest.TestCase):
         self.assertEqual(add["emblem"][1]["image"], "https://e.org/b.png")
         self.assertNotIn("emblem_kind", add)          # 種類は毎回規則から（config に残さない）
         self.assertEqual(add["emblem_state"], {"state": "ok", "have": 2, "at": 100, "note": "2 枚", "v": le.RULES,
-                                               "nv": emblem_fill.NAMES_V})
+                                               "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V})
 
     def test_note_uses_library_retry(self):
         b = {"id": 9, "name": "x", "wd": None, "config": {}}
@@ -158,8 +158,32 @@ class Fill(unittest.TestCase):
               {"id": 7, "config": {"emblem_state": {"state": "running", "at": now, "have": 0}}},
               {"id": 5, "config": {}},
               {"id": 10, "config": {"emblem_fandom": "jjk", "emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES}}},   # 届かなかったキャラの版面も名簿の版で
-              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES}}}]   # 手がかりなし → 24 時間待つ
-        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 10, 4, 8, 6, 9])
+              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES, "bv": emblem_fill.BROKEN_V}}},   # 手がかりなし → 24 時間待つ
+              {"id": 12, "config": {"emblem_state": {"state": "failed", "at": now - 60, "have": 49, "v": le.RULES, "nv": nv}}}]   # 公開の箱の小元素を今の壊れ方の規則で見ていない → 待たない
+        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 10, 12, 4, 8, 6, 9])
+
+    def test_unbroken_drops_cut_public_emblems(self):
+        """公開の箱の小元素は emblem_fill.broken_cuts が見ない → 同じ規則（broken_image）で外す。ほかの網址・ロゴ・読めないものは残す。"""
+        import io
+        from PIL import Image
+
+        def png(cut):
+            im = Image.new("RGBA", (100, 120), (0, 0, 0, 0))
+            im.paste((200, 150, 120, 255), (30, 0 if cut else 20, 70, 120))
+            b = io.BytesIO()
+            im.save(b, "PNG")
+            return b.getvalue()
+        pub = f"{BASE}/storage/v1/object/public/emblems/"
+        data = {pub + "cut.webp": png(True), pub + "ok.webp": png(False)}
+
+        def fetch(u):
+            if u not in data:
+                raise OSError("404")
+            return data[u]
+        xs = [{"subject": "cut", "image": pub + "cut.webp"}, {"subject": "ok", "image": pub + "ok.webp"},
+              {"subject": "gone", "image": pub + "gone.webp"}, {"subject": "logo", "image": pub + "cut.webp", "shape": "logo"},
+              {"subject": "wd", "image": "https://e.org/cut.webp"}]
+        self.assertEqual([x["subject"] for x in le.unbroken(xs, False, fetch=fetch)], ["ok", "gone", "logo", "wd"])
 
     def test_rebuild_on_new_rules(self):
         """版が上がった版面は前の規則のもの（名簿・分類・小元素）を捨てて作り直す。キャラも、新しい規則で取れた分があれば前の小元素は残さない
