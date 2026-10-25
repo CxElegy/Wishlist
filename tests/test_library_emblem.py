@@ -156,8 +156,10 @@ class Fill(unittest.TestCase):
               {"id": 3, "config": {"emblem_state": {"state": "failed", "at": 0}}},   # 0 枚 → 途中より先
               {"id": 4, "config": {"emblem_state": {"state": "running", "at": now, "have": 5}}},
               {"id": 7, "config": {"emblem_state": {"state": "running", "at": now, "have": 0}}},
-              {"id": 5, "config": {}}]
-        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 4, 8, 6, 9])
+              {"id": 5, "config": {}},
+              {"id": 10, "config": {"emblem_fandom": "jjk", "emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES}}},   # 届かなかったキャラの版面も名簿の版で
+              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES}}}]   # 手がかりなし → 24 時間待つ
+        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 4, 8, 6, 9, 10])
 
     def test_rebuild_on_new_rules(self):
         """版が上がった版面は前の規則のもの（名簿・分類・小元素）を捨てて作り直す。キャラも、新しい規則で取れた分があれば前の小元素は残さない

@@ -101,7 +101,10 @@ def wd_entity(qid, get=None):
     for s in _claims(ent, "P179")[:1] if not fandom else []:
         fandom = _fandom(ent_of(s))
     anilist = next(iter(_claims(ent, "P8729") + _claims(ent, "P8731")), None)
-    return {"human": "Q5" in _claims(ent, "P31"), "links": links, "anilist": anilist, "fandom": fandom}
+    ids = _claims(ent, "P674")[:40]   # 登場人物：分類が本当にこの作品のキャラか確かめる（GTA 6 の wiki の「Playable characters」は GTA IV・V の主役だった）
+    labs = (get({"action": "wbgetentities", "ids": "|".join(ids), "props": "labels", "languages": "en"}).get("entities") or {}) if ids else {}
+    leads = [((labs.get(q) or {}).get("labels") or {}).get("en", {}).get("value") for q in ids]
+    return {"human": "Q5" in _claims(ent, "P31"), "links": links, "anilist": anilist, "fandom": fandom, "leads": [x for x in leads if x]}
 
 
 def board_item(board, follow, get=None):
@@ -223,6 +226,13 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
     return add
 
 
+NAMES_HINT = ("emblem_fandom", "emblem_category", "emblem_who", "anilist_id")   # キャラの名簿の手がかり（届かなかった版面のうち、名簿の版で数え直すもの）
+
+
+def cfg(b):
+    return b.get("config") or {}
+
+
 def due(boards, now):
     """やる順：まだ一度も試していない版面 → 0 枚の版面（エンブレムが出ていない：途中・届かなかったもの）→ 途中（running）→
     届かなかったものは RETRY_HOURS たってから（前の版の規則で試したものはすぐ）。済み（ok）は飛ばす。
@@ -239,8 +249,9 @@ def due(boards, now):
             out.append((1 if zero else 2, st.get("at", 0), b))
         elif int(st.get("v") or 1) < RULES or st.get("state") != "ok" and now - int(st.get("at") or 0) > RETRY_HOURS * 3600:
             out.append((1 if zero else 3, st.get("at", 0), b))
-        elif st.get("state") == "ok" and st.get("nv") != names_v:   # そろっていても、名簿の規則が新しくなったら 1 回数え直す（キャラの人数が名簿どおりか）
-            out.append((4, st.get("at", 0), b))
+        elif st.get("nv") != names_v and (st.get("state") == "ok" or any(cfg(b).get(k) for k in NAMES_HINT)):
+            # そろっていても、届かなかったキャラの版面も（RETRY_HOURS を待たずに）、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
+            out.append((1 if zero and st.get("state") != "ok" else 4, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
 
 

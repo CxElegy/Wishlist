@@ -1498,7 +1498,51 @@ class FindSources(unittest.TestCase):
         self.assertEqual(self._find({"name": "ぐでたま", "keywords": ["Gudetama"], "emblem_fandom": "hellokitty"}, {"hellokitty": "Hello Kitty Wiki"}, {"Characters": 500}), {})
         self.assertEqual(self._find({"name": "X", "emblem_fandom": "x", "emblem_category": "Agents"}, {"x": "X Wiki"}, {"Characters": 9}), {})
         self.assertEqual(self._find({"name": "FROM", "emblem_people": True}, {"from": "From Wiki"}, {"Characters": 9}), {})
-        self.assertEqual(self._find({"name": "dota2", "emblem_pool": 126}, {"dota2": "Dota 2 Wiki"}, {"Characters": 192}), {})   # 手で数えた人数が先
+        # 手で数えた人数が先：数が合わない分類（Characters 192）は使わない。合う分類（Heroes 127）があればそれ
+        self.assertNotIn("emblem_category", self._find({"name": "dota2", "emblem_pool": 126}, {"dota2": "Dota 2 Wiki"}, {"Characters": 192}))
+        self.assertEqual(self._find({"name": "dota2", "emblem_pool": 126, "emblem_fandom": "dota2"}, {"dota2": "Dota 2 Wiki"},
+                                    {"Characters": 192, "Heroes": 127}), {"emblem_category": '"Heroes"'})
+
+    def test_category_without_the_works_leads_is_replaced(self):
+        """GTA 6：grand-theft-auto-vi の「Playable characters」は GTA IV・V の主役（Jason・Lucia がいない）→ その分類から入れた名前を外し、
+        Wikidata の wiki（gta）の「Characters in GTA VI」（Jason が入っている）へ。"""
+        def fake_json(url, *a):
+            u = urllib.parse.unquote_plus(url)
+            if "siteinfo" in u:
+                return {"query": {"general": {"sitename": "GTA VI Wiki" if "grand-theft" in u else "GTA Wiki"}}}
+            if "list=search" in u:
+                return {"query": {"search": [{"title": "Category:Characters in GTA VI"}] if "//gta." in u else []}}
+            if "prop=categories" in u:
+                ok = "//gta." in u and "Characters in GTA VI" in u
+                return {"query": {"pages": {"1": {"title": "Jason Duval", **({"categories": [{"title": "x"}]} if ok else {})}}}}
+            if "grand-theft" in u and "Playable characters" in u:
+                return {"query": {"categorymembers": [{"title": t} for t in ("Michael De Santa", "Trevor Phillips", "Niko Bellic")]}}
+            n = 40 if "//gta." in u and "Characters in GTA VI" in u else 0
+            return {"query": {"categorymembers": [{"title": str(i)} for i in range(n)]}}
+        wrote = {}
+        import library_emblem
+        item = {"name": "GTA 6", "emblem_kind": "character", "subtitle": "Grand Theft Auto VI", "keywords": ["GTA VI"], "wikidata": "Q1", "emblem_fandom": "grand-theft-auto-vi",
+                "emblem_category": "Playable characters", "emblem_pool": 7, "emblem_who": ["Jason Duval", "Lucia Caminos", "Michael De Santa", "Trevor Phillips", "Niko Bellic"]}
+        with mock.patch.object(ef, "_json", fake_json), mock.patch.object(ef, "_set_field", lambda name, k, v: wrote.__setitem__(k, v.split("#")[0].strip())), \
+             mock.patch.object(library_emblem, "wd_entity", lambda q: {"fandom": "gta", "leads": ["Jason Duval", "Lucia Caminos"]}):
+            self.assertTrue(ef.find_sources(item, log=lambda *a: None))
+        self.assertEqual(json.loads(wrote["emblem_who"]), ["Jason Duval", "Lucia Caminos"])
+        self.assertEqual((wrote["emblem_fandom"], wrote["emblem_category"]), ("gta", '"Characters in GTA VI"'))
+
+    def test_off_roster_emblems_are_dropped(self):
+        """名簿が勝つ：dota2 の名簿（ヒーロー）にいない伝承のキャラ（Pololo）を外す。「Soldier 11」は名前のまま比べる。実写は見ない。"""
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "items.yaml").write_text('items:\n  - name: dota2\n    emblem_kind: character\n    emblem:\n'
+                                            '      - {subject: "Axe", image: "a.webp"}\n      - {subject: "Axe 2", image: "a2.webp"}\n'
+                                            '      - {subject: "Soldier 11", image: "s.webp"}\n      - {subject: "Pololo", image: "p.webp"}\n', encoding="utf-8")
+            item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+            item["emblem_who"] = ["Axe", "Soldier 11"]
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp):
+                self.assertEqual(ef.off_roster(item, log=lambda *_: None), 1)
+                self.assertEqual(ef.off_roster({**item, "emblem_people": True, "type": "show"}, log=lambda *_: None), 0)
+            got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        self.assertEqual([x["subject"] for x in got["emblem"]], ["Axe", "Axe 2", "Soldier 11"])
 
     def test_live_action_roster_is_the_cast(self):
         with tempfile.TemporaryDirectory() as d:
