@@ -61,17 +61,24 @@
   ],
   "why": "看不清"
  },
- "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "http://n.sinaimg.cn/sinakd20261024ac/533/w480h853/20261024/9eba-118b57ea684ab6e90a3ecbe7a575eb32.jpg": {
   "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"
+ },
+ "http://n.sinaimg.cn/sinakd20261025ac/200/w640h360/20261025/04b2-dbf8f766a00b32d3816cea43c3091e4f.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.515,
+  "local": "pics/30da4acaeea634fa.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
  },
  "http://n.sinaimg.cn/sinakd20261025ac/40/w480h360/20261025/d99a-5afb1acb07adf90ee89a2e57d1a99861.jpg": {
   "w": 480,
@@ -659,12 +666,6 @@
   "target": 1280,
   "v": 3
  },
- "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -681,6 +682,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/malr1ne-names-best-mid-laners-matchmaking-25264.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/mindcontrol-will-not-return-pro-scene-25371.jpg": {
@@ -785,17 +792,17 @@
   "target": 1280,
   "v": 3
  },
+ "https://i0.wp.com/jpstargazer.com/wp-content/uploads/2026/04/FotoJet-1.jpg?fit=1200%2C773&ssl=1": {
+  "w": 1200,
+  "h": 773,
+  "target": 1280,
+  "v": 3
+ },
  "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/2026-MAMA-AWARDS-2.webp?fit=1200%2C1067&ssl=1": {
   "w": 1200,
   "h": 1067,
   "target": 720,
   "v": 3
- },
- "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/sandra-huller-avengers-doomsday-cameo.png?fit=1200%2C675&ssl=1": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://i1.hoopchina.com.cn/bbs-editor-web/17926623656181.jpg": {
   "w": 780,
@@ -840,6 +847,13 @@
   "target": 720,
   "v": 3
  },
+ "https://image.fnnews.com/resource/media/image/2026/09/21/202609211739394453_l.jpg": {
+  "w": 800,
+  "h": 474,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.402
+ },
  "https://image.koreaboo.com/2026/10/FD2870-2-11.jpg": {
   "w": 1200,
   "h": 630,
@@ -868,6 +882,12 @@
   "w": 1200,
   "h": 1748,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
+  "w": 1200,
+  "h": 677,
+  "target": 720,
   "v": 3
  },
  "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg": {
@@ -1140,12 +1160,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZYPt.img": {
@@ -2464,6 +2478,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://scontent-sjc6-1.xx.fbcdn.net/v/t39.99422-6/864762684_1436717277836254_8945406185657660318_n.png?stp=dst-jpg_tt6&cstp=mx3173x1321&ctp=p600x600&_nc_cat=1&ccb=1-7&_nc_sid=cae128&_nc_ohc=RNulOu_gzOMQ7kNvwHCpiRV&_nc_oc=AdpXRLjdi9u3dMZv-OO0XQXLxwVZnq6OowTFtLM6alvywyPvvoF_PoFrTOFpcSlawn8&_nc_zt=14&_nc_ht=scontent-sjc6-1.xx&_nc_gid=qoYU0BfV8pbeRsGwc403LA&_nc_ss=7820f&oh=00_AQMMwZsIoVlAhflbVJ3jNEBluLO0hIwnyUQkcf91gaIpwA&oe=6AE3ABA4": {
+  "w": 1441,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://sffgazette.com/images/articles/banners/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-ab11618.jpg": {
   "w": 1600,
   "h": 900,
@@ -2926,6 +2946,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.2gDGgQIuv8r0XtBnve1atQ&pid=News&w=500": {
+  "w": 500,
+  "h": 281,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.467,
+  "local": "pics/f67bf3b9bf2515dd.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2978,12 +3011,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.412
- },
- "https://www.bing.com/th?id=ONUT.HeMuX9yNQWEbnje_VpgP0g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Hjl-eeI0P0hkVpGmmzWAFQ&pid=News&w=1200": {
   "w": 700,
@@ -3165,12 +3192,6 @@
   "h": 460,
   "target": 720,
   "v": 3
- },
- "https://www.businesspost.co.kr/news/photo/202610/20261025120132_78586.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
   "w": 530,

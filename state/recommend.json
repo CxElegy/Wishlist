@@ -14,6 +14,7 @@
   "https://comicbook.com/gaming/feature/gta-6-has-to-make-its-open-world-feel-worth-exploring-in-an-era-of-map-fatigue/": "https://www.bing.com/th?id=ONUT.pKgG6PFbwlIbdWONiNUjYg&pid=News&w=1200",
   "https://finance.biggo.jp/news/f8b70b6d-2694-4cfe-bbd6-2b7b51580861": "https://img.biggo.com/VJOVFWFYgwAqOUgg8RN9WgnUvCcT-w5N4pl5piDR9R4/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2luZm9fY2FyZC8yMDI2LTEwL2Y4YjcwYjZkLTI2OTQtNGNmZS1iYmQ2LTJiN2I1MTU4MDg2MV8xNzkyNDgxMjgyX2RlZmF1bHQud2VicA.jpg",
   "https://hashout.jp/anime/13124/": "https://www.bing.com/th?id=ONUT.6yHBTZsf4a3Uqjs0CUeDpQ&pid=News&w=1200",
+  "https://hawk.live/posts/malr1ne-names-worst-heroes-dota-2": "https://hawk.live/storage/images/posts/malr1ne-names-best-mid-laners-matchmaking-25264.jpg",
   "https://hawk.live/posts/mira-named-best-position-5-supports-among-dota-2-pro-players": "https://hawk.live/storage/images/posts/mira-explained-auroras-elimination-from-the-tournament-24448.jpg",
   "https://k.sina.com.cn/article_7879923551_m1d5ae175f03301tb04.html?cre=tianyi&mod=pcent&loc=3&r=0&rfunc=54&tj=cxvertical_pc_ent&tr=12&from=ent": "http://n.sinaimg.cn/sinakd20261025ac/40/w480h360/20261025/d99a-5afb1acb07adf90ee89a2e57d1a99861.jpg",
   "https://k.sina.com.cn/article_7880069124_1d5b0500406801h29g.html": null,
@@ -66,7 +67,6 @@
   "https://www.extremetech.com/mobile/samsungs-certified-re-newed-galaxy-phones-come-to-amazon-start-at-489": "https://i.extremetech.com/imagery/content-types/00Xc7MND9pJtj4D9z7YqAUi/hero-image.fill.size_1200x675.png",
   "https://www.gizmochina.com/2026/10/24/galaxy-s27-pro-ultra-tuv-certifications-reveal-exact-battery-capacity/": "https://www.gizmochina.com/wp-content/uploads/2026/10/Erste-Samsung-Galaxy-S27-Ultra-Cases-zeigen-mehr-vom-neuen-Kamera-Design-q82-w2560-h-1-1.webp",
   "https://www.haveagood-holiday.com/zh-CN/articles/magical-chiikawa-fuwamochi-gororin-hug-plush-preorder": "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg",
-  "https://www.hotspawn.com/dota2/news/team-liquids-debut-series-ends-with-a-win-pari-universe-day-1-recap": "https://www.bing.com/th?id=ONUT.HeMuX9yNQWEbnje_VpgP0g&pid=News&w=1200",
   "https://www.ign.com/articles/avengers-doomsday-trailer-multiple-captains-america": "https://assets-prd.ignimgs.com/2026/10/25/avengers-doomsday-describes-the-return-of-steve-rogers-as-a-usvw-1792891164279.jpg?width=1280&format=jpg&auto=webp&quality=80",
   "https://www.instyle.com/black-cat-nail-designs-12182775": null,
   "https://www.invenglobal.com/articles/27548/867-first-impression-satisfaction-astrae-oratio-unveils-cbt-infographic": "https://www.bing.com/th?id=ONUT.YcYs9OSH6CSNgF7rws-Y1g&pid=News&w=708",
@@ -1567,6 +1567,27 @@
   },
   {
    "batch": 6,
+   "because": "dota2",
+   "date": "2026-10-25",
+   "hits": [],
+   "image": "https://hawk.live/storage/images/posts/malr1ne-names-best-mid-laners-matchmaking-25264.jpg",
+   "kind": "board",
+   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
+   "score": 5,
+   "source": "Hawk Live",
+   "taste": [
+    [
+     "作品:dota2",
+     1
+    ]
+   ],
+   "title": "Malr1ne Names the Worst Heroes in Dota 2",
+   "url": "https://hawk.live/posts/malr1ne-names-worst-heroes-dota-2",
+   "words": [],
+   "work": "dota2"
+  },
+  {
+   "batch": 6,
    "because": "哈利波特剧集",
    "date": "2026-10-24",
    "hits": [],
@@ -1625,27 +1646,6 @@
    ],
    "title": "Mira Named the Best Position 5 Supports Among Dota 2 Pro Players",
    "url": "https://hawk.live/posts/mira-named-best-position-5-supports-among-dota-2-pro-players",
-   "words": [],
-   "work": "dota2"
-  },
-  {
-   "batch": 6,
-   "because": "dota2",
-   "date": "2026-10-22",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.HeMuX9yNQWEbnje_VpgP0g&pid=News&w=1200",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "hotspawn",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "Team Liquid’s Debut Series Ends With a Win – PARI Universe Day 1 Recap",
-   "url": "https://www.hotspawn.com/dota2/news/team-liquids-debut-series-ends-with-a-win-pari-universe-day-1-recap",
    "words": [],
    "work": "dota2"
   },
@@ -2159,7 +2159,7 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
@@ -2167,7 +2167,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
