@@ -329,18 +329,27 @@ class BackendTable(unittest.TestCase):
         self.assertIn("+4", row)
         self.assertEqual(h[h.index('class="ef-pics"'):].split("</span>")[0].count("<img"), 14)   # 開くと全部
 
-    def test_thumbs_are_reject_buttons(self):
+    def test_manage_panel(self):
+        """小元素の欄：版面のボタン・大きい写真（名前・取り方・固定）・「どうしたい？」の札・理由・下の帯。表の小さい丸は押せない。"""
         rows = self._rows(3)
-        rows[0]["thumbs"] = [("emblems/a-x.webp", "cutout", "X <1>")] + rows[0]["thumbs"][1:]
-        h = "".join(render._admin_backend(rows).values())
-        self.assertIn('class="emx" data-emx-b="A" data-emx="emblems/a-x.webp" aria-pressed="false" title="X &lt;1&gt; · 押すと「違う画像」の印"', h)
-        self.assertEqual(h.count('data-emx="emblems/a-x.webp"'), 2)   # 表の行と「探し方」の中
-        self.assertIn('id="emx-bar"', h)
-        self.assertEqual(render._bg_thumb(("u.png", "logo")), '<img src="u.png" alt="" loading="lazy" class=fit>')   # 版面なし = ただの画像
+        rows[0]["emblems"] = [{"image": "emblems/a-x.webp", "subject": "X <1>", "why": "Wiki", "lock": True},
+                              {"image": "emblems/a-y.webp", "subject": "Y", "why": "Fandom", "lock": False}]
+        out = render._admin_backend(rows)
+        h = out["manage"]
+        self.assertIn('class="emm-bt" data-bi="0" aria-pressed="true">A<small>2</small>', h)
+        self.assertIn('data-b="A" data-img="emblems/a-x.webp" data-lock="1" data-subj="X &lt;1&gt;" data-why="Wiki"', h)
+        self.assertIn('data-lock="0"', h)
+        for a in ("swap", "lock", "drop"):
+            self.assertIn(f'data-a="{a}"', h)
+            self.assertIn(f'data-go="{a}"', h)
+        self.assertIn('id="emm-bar"', h)
         import emblem_rules
-        for k, t, _ in emblem_rules.REJECT_REASONS:   # 押すと理由を選ぶ
-            self.assertIn(f'data-r="{k}">{t}</button>', h)
-        self.assertIn("まだありません", h)
+        for k, t, _ in emblem_rules.REJECT_REASONS:   # 替える（任意）・外す（必須）で理由を選ぶ
+            self.assertEqual(h.count(f'data-r="{k}">{t}</button>'), 2)
+        self.assertNotIn("emx", out["table"])   # 表の小さい丸は押せない（操作は新しい欄へ）
+        self.assertEqual(render._bg_thumb(("u.png", "logo")), '<img src="u.png" alt="" loading="lazy" class=fit>')
+        self.assertIn("まだありません", out["table"])
+        self.assertIn("小元素のある版面がありません", render._admin_emm(self._rows(1)))
 
     def test_reject_reason_stats(self):
         rows = self._rows(2)

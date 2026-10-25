@@ -465,6 +465,8 @@ def subjects(item, kind, hi):
     if who and kind in ("character", "group"):   # まだ小元素のいない人から STEP 人。足りない人が多いときは回ごとにずらす（見つからない人で止まらない）
         have = {n for x in item.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
         rest = [w for w in who[:hi] if w not in have]
+        redo = {n for s in item.get("emblem_redo") or [] for n in _who_of(s)}   # 管理ページで「別の写真に替える」を押した人は先に
+        rest = [w for w in rest if w in redo] + [w for w in rest if w not in redo]
         if len(rest) <= STEP:
             return rest or who[:1]
         # 名簿の上（主役：ちいかわ・ハチワレ・うさぎ）の HEAD 人はいつも先に。残りは回ごとにずらす（見つからない人で止まらない）
@@ -2004,7 +2006,7 @@ def off_roster(item, log=print):
         return 0
     keys = {_name_key(w) for w in who if not emblem.not_character(w)}   # 名簿にいても人でない名前（Unnamed Officer 1）は外す
     ems = [x for x in item.get("emblem") or [] if isinstance(x, dict)]
-    keep = [x for x in ems if _name_key(x.get("subject")) in keys or _name_key(_base_subject(x.get("subject"))) in keys]   # 「Soldier 11」は名前のまま
+    keep = [x for x in ems if x.get("lock") or _name_key(x.get("subject")) in keys or _name_key(_base_subject(x.get("subject"))) in keys]   # 「Soldier 11」は名前のまま。固定した写真は替えない
     if len(keep) == len(ems):
         return 0
     with WRITE_LOCK:
@@ -2024,7 +2026,7 @@ def untied_roles(item, log=print):
     bad = []
     for x in item.get("emblem") or []:
         m = re.search(r"（([^（）]+)）\s*\d*$", str(x.get("subject") or "")) if isinstance(x, dict) else None
-        if not m or not re.search(r"役の記事|作品の動画", str(x.get("why") or "")) or tied(x.get("source"), m.group(1), work, since):
+        if not m or x.get("lock") or not re.search(r"役の記事|作品の動画", str(x.get("why") or "")) or tied(x.get("source"), m.group(1), work, since):
             continue
         try:
             rows = anchor_rows(api, m.group(1))
@@ -2158,7 +2160,7 @@ def repair_flat(item, log=print):
 def drop_broken(item, log=print):
     """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。直せる形の傷は先に repair_flat で直す。"""
     repair_flat(item, log)
-    bad = broken_cuts(item)
+    bad = [b for b in broken_cuts(item) if not b.get("lock")]   # 固定した写真は替えない
     if not bad:
         return 0
     with WRITE_LOCK:

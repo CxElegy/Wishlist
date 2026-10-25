@@ -270,6 +270,42 @@ class RejectEmblems(unittest.TestCase):
         self.assertEqual(marks["item_requests?id=eq.2"]["status"], "skipped")
 
 
+    def test_swap_keeps_the_person(self):
+        """替える：写真だけ外す（元の網址は emblem_reject）。人は emblem_redo に残り、記録は act=swap。"""
+        self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-yunah.webp", "reason": "far"}]}})
+        it = self.item()
+        self.assertEqual([x["subject"] for x in it["emblem"]], ["Minju", "Logo"])
+        self.assertIn("https://src.example/yunah.jpg", it["emblem_reject"])
+        self.assertEqual(it["emblem_redo"], ["Yunah"])
+        self.assertFalse((self.emb / "illit-yunah.webp").exists())
+        log = digest.load_json(self.log)["rows"]
+        self.assertEqual([(x["act"], x["reason"], x["subject"]) for x in log], [("swap", "far", "Yunah")])
+        self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_reject": [{"image": "emblems/illit-minju.webp", "reason": "misc"}]}})
+        self.assertEqual(digest.load_json(self.log)["rows"][-1]["act"], "drop")
+        self.assertEqual(self.item()["emblem_redo"], ["Yunah"])   # 外すほうは emblem_redo を足さない
+
+    def test_lock_and_unlock(self):
+        self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_lock": [{"image": "emblems/illit-minju.webp", "on": True}]}})
+        it = self.item()
+        self.assertEqual([x.get("lock") for x in it["emblem"]], [None, True, None])
+        self.assertEqual(it["emblem"][0]["image"], "emblems/illit-yunah.webp")   # ほかの小元素・項目はそのまま
+        self.assertTrue((self.emb / "illit-minju.webp").exists())
+        self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_lock": [{"image": "emblems/illit-minju.webp", "on": False}]}})
+        self.assertNotIn("lock", self.item()["emblem"][1])
+
+    def test_lock_unknown_image_skipped(self):
+        marks = self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_lock": [{"image": "emblems/nai.webp"}]}})
+        self.assertEqual(marks["item_requests?id=eq.1"]["status"], "skipped")
+        self.assertEqual(self.file.read_text(encoding="utf-8"), EMB)
+
+    def test_one_request_all_three(self):
+        self.run_with({"action": "edit", "name": "ILLIT", "config": {
+            "_emblem_swap": [{"image": "emblems/illit-yunah.webp"}], "_emblem_lock": [{"image": "emblems/illit-minju.webp", "on": True}],
+            "_emblem_reject": [{"image": "https://src.example/logo.svg", "reason": "logo"}]}})
+        it = self.item()
+        self.assertEqual([(x["subject"], x.get("lock")) for x in it["emblem"]], [("Minju", True)])
+
+
 class RealItemsFile(unittest.TestCase):
     def test_every_item_can_be_edited_in_place(self):
         """真的 items.yaml：每一项改 priority 都只改到它自己。"""

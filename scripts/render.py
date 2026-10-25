@@ -5405,14 +5405,10 @@ BG_THUMBS = 10   # 表の行に並べる小元素の数。残りは「+N」、�
 BG_AFTER_COLLECT = ("design",)   # 定時のない列：ゲートが収集のあとに AI 編集を起こす
 
 
-def _bg_thumb(t, board=""):
-    """小元素 1 枚。board（版面の名前）があれば押せる札：押すと「違う」の印 → 下の帯の「外す」で submit_item（EMX_JS）。"""
+def _bg_thumb(t):
+    """小元素 1 枚（表の行の小さい丸・「小元素の探し方」の中）。押して操作するのは管理ページ「小元素」の欄（_admin_emm）。"""
     u, sh, subj = (list(t) + ["", ""])[:3] if isinstance(t, (list, tuple)) else (t, "", "")
-    img = f'<img src="{e(u)}" alt="{e(subj)}" loading="lazy"{" class=fit" if sh in ("logo", "icon") else ""}>'
-    if not board:
-        return img
-    return (f'<button type="button" class="emx" data-emx-b="{e(board)}" data-emx="{e(u)}" aria-pressed="false"'
-            f' title="{e(subj or "小元素")} · 押すと「違う画像」の印">{img}<i aria-hidden="true">✕</i></button>')
+    return f'<img src="{e(u)}" alt="{e(subj)}" loading="lazy"{" class=fit" if sh in ("logo", "icon") else ""}>'
 
 
 def _bg_retry(k, r):
@@ -5472,7 +5468,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
             '<ul class="lims">' + "".join(f'<li><b>{e(a)}</b><span class="lim-n">{e(b)}</span><small>{e(c)}</small></li>'
                                           for a, b, c in processes.LIMITS) + '</ul>')
     if not rows:
-        return {"now": now, "sys": sys_, "table": '<p class="empty">データがありません。</p>'}
+        return {"now": now, "sys": sys_, "manage": _admin_emm([]), "table": '<p class="empty">データがありません。</p>'}
     order = list(SECTIONS) + ["其他"]
     rows = sorted(rows, key=lambda r: (order.index(r.get("section")) if r.get("section") in order else len(order),
                                        r.get("section") or "", r["name"]))
@@ -5511,7 +5507,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
                         f'{e(_sec_name(sec or "其他"))}</th></tr>')
         cells = "".join(f'<td class="bgc s-{r["bg"][k]["state"]}" data-label="{e(t)}"><b>{BG_STATES[r["bg"][k]["state"]]}</b>'
                         f'<small>{e(r["bg"][k]["text"])}</small>{_bg_retry(k, r)}</td>' for k, t, _ in BG_COLS)
-        pics = [_bg_thumb(t, r["name"]) for t in r.get("thumbs") or []]
+        pics = [_bg_thumb(t) for t in r.get("thumbs") or []]
         more = f'<small class="bg-more">+{len(pics) - BG_THUMBS}</small>' if len(pics) > BG_THUMBS else ""
         body.append(f'<tr><td class="nm"><a href="index.html#{_wid(r["name"])}">{e(r["name"])}</a>'
                     + (f'<span class="bg-th">{"".join(pics[:BG_THUMBS])}{more}</span>' if pics else "") + f'</td>{cells}</tr>')
@@ -5519,24 +5515,56 @@ def _admin_backend(rows, todo=None, log=None, res=None):
         if d:
             body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"], pics)}</td></tr>')
     return {"now": now, "sys": sys_,
-            "table": ('<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦 · 小元素を押すと「違う」で外せる</small></h3>'
+            "table": ('<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦</small></h3>'
                       f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
-                      + _admin_emx_stats(rows) + _emx_bar())}
+                      + _admin_emx_stats(rows)),
+            "manage": _admin_emm(rows)}
 
 
-# 小元素の「違う」（2026-10-21，用户定的）：管理ページの小元素を押して印 → 帯の「外す」で版面ごとに 1 件の依頼
-# （submit_item の edit ＋ {_emblem_reject: [画像]}）。requests.yml の take-items が items.yaml から外し、元の画像を emblem_reject に
-# （自動補完は二度と選ばない）。足りなくなった分は次の後台作業で別の画像を探す。
-def _emx_bar():
-    """「違う」の帯（選んだ枚数・外す）と、押したときに出る理由の選び方（emblem_rules.REJECT_REASONS）。"""
+# 小元素の管理（2026-10-25，用户定的）：管理ページの専用の欄。版面を選ぶと大きい写真＋名前＋取り方。押すと「どうしたい？」：
+# 🔄 同じ人の別の写真に替える（_emblem_swap：今の写真は emblem_reject・人は emblem_redo に残す）／📌 この写真で固定（_emblem_lock：lock: true）／
+# ✕ この人ごと外す（_emblem_reject：理由 1 つ必須）。下の帯でまとめて submit_item の edit に送る → requests.yml の take-items が digest.take_item_requests で items.yaml へ。
+def _admin_emm(rows):
+    """「小元素」の欄：版面のボタン → その版面の小元素を大きく並べる（押すと EMM_JS の「どうしたい？」の札）。"""
     import emblem_rules
-    opts = "".join(f'<button type="button" data-r="{e(k)}">{e(t)}</button>' for k, t, _ in emblem_rules.REJECT_REASONS)
-    return ('<div class="emx-pop" id="emx-pop" role="dialog" aria-label="なぜ違う？" hidden><b>なぜ違う？</b>'
-            f'<div class="emx-rs">{opts}</div><input type="text" id="emx-note" maxlength="200" placeholder="ひとこと（任意）：だれが写っている・どこがだめ"'
-            ' aria-label="ひとこと（任意）"><button type="button" class="emx-x" id="emx-cancel">やめる</button></div>'
-            '<div class="emx-bar" id="emx-bar" role="region" aria-label="違う小元素" hidden><b id="emx-n"></b>'
-            '<button type="button" id="emx-go">外す</button><button type="button" id="emx-clr">印を消す</button>'
-            '<small id="emx-msg" aria-live="polite"></small></div>')
+    rows = [r for r in rows if r.get("emblems")]
+    if not rows:
+        return '<p class="empty">小元素のある版面がありません。</p>'
+    btns, boards = [], []
+    for n, r in enumerate(rows):
+        em = r["emblems"]
+        d = (r.get("bg") or {}).get("emblem", {}).get("detail") or {}
+        btns.append(f'<button type="button" class="emm-bt" data-bi="{n}" aria-pressed="{"true" if n == 0 else "false"}">{e(r["name"])}<small>{len(em)}</small></button>')
+        tiles = "".join(
+            f'<button type="button" class="emm-tile" data-b="{e(r["name"])}" data-img="{e(x["image"])}" data-lock="{1 if x["lock"] else 0}"'
+            f' data-subj="{e(x["subject"])}" data-why="{e(x["why"])}" aria-haspopup="dialog">'
+            f'<span class="emm-ph"><img src="{e(x["image"])}" alt="" loading="lazy"></span>'
+            f'<b>{e(x["subject"] or "小元素")}</b><small>{e(x["why"])}</small></button>' for x in em)
+        boards.append(f'<div class="emm-board" data-bi="{n}"{"" if n == 0 else " hidden"}><p class="emm-h"><b>{e(r["name"])}</b>'
+                      f'<span>{e(d.get("kind") or "")} · 今 {len(em)} / 目標 {d.get("target") or "?"} 枚 · 押すと「どうしたい？」</span></p>'
+                      f'<div class="emm-grid">{tiles}</div></div>')
+    opts = "".join(f'<button type="button" aria-pressed="false" data-r="{e(k)}">{e(t)}</button>' for k, t, _ in emblem_rules.REJECT_REASONS)
+    sheet = ('<div class="emm-sheet" id="emm-sheet" role="dialog" aria-modal="false" aria-labelledby="emm-name" hidden>'
+             '<div class="emm-sh"><span class="emm-ph"><img id="emm-img" alt=""></span><div><b id="emm-name"></b><small id="emm-why"></small></div></div>'
+             '<div class="emm-acts">'
+             '<button type="button" class="emm-act" data-a="swap" aria-expanded="false"><i>🔄</i><b>同じ人の別の写真に替える</b>'
+             '<span>この人はそのまま、写真だけ取り直す。今の写真は二度と選ばない。次の後台作業（1 時間以内）で別の写真になる</span></button>'
+             f'<div class="emm-more" data-for="swap" hidden><h3>今の写真のどこがだめ？（任意・今後の規則の手がかり）</h3><div class="emm-chips" data-chips="swap">{opts}</div>'
+             '<input type="text" class="emm-note" maxlength="200" placeholder="ひとこと（任意）" aria-label="ひとこと（任意）">'
+             '<button type="button" class="emm-go" data-go="swap">替える依頼に入れる</button></div>'
+             '<button type="button" class="emm-act" data-a="lock" aria-expanded="false"><i>📌</i><b id="emm-lock-t">この写真で固定</b>'
+             '<span id="emm-lock-d">自動の補完・規則の作り直し・検査でも替えない</span></button>'
+             '<div class="emm-more" data-for="lock" hidden><button type="button" class="emm-go" data-go="lock" id="emm-lock-go">固定する</button></div>'
+             '<button type="button" class="emm-act" data-a="drop" aria-expanded="false"><i>✕</i><b>この人ごと外す</b>'
+             '<span>別人・作品と関係ない・重複のとき。空いた枠は別の人で埋める</span></button>'
+             f'<div class="emm-more" data-for="drop" hidden><h3>なぜ？（ひとつ選ぶ）</h3><div class="emm-chips" data-chips="drop">{opts}</div>'
+             '<input type="text" class="emm-note" maxlength="200" placeholder="ひとこと（任意）：だれが写っている・どこがだめ" aria-label="ひとこと（任意）">'
+             '<button type="button" class="emm-go" data-go="drop" disabled>外す依頼に入れる</button></div>'
+             '</div><button type="button" class="emm-x" id="emm-close">閉じる</button></div>'
+             '<div class="emm-bar" id="emm-bar" role="region" aria-label="小元素の依頼" hidden><b id="emm-n"></b>'
+             '<button type="button" id="emm-go">送る</button><button type="button" id="emm-clr">全部取り消す</button>'
+             '<small id="emm-msg" aria-live="polite"></small></div>')
+    return (f'<div class="emm-boards" role="group" aria-label="版面">{"".join(btns)}</div>{"".join(boards)}{sheet}')
 
 
 def _admin_emx_stats(rows):
@@ -5567,59 +5595,87 @@ def _admin_emx_stats(rows):
             f'<ul class="emx-recent">{recent}</ul>')
 
 
-EMX_JS = r"""
+EMM_JS = r"""
 (function(){
-  var bar=document.getElementById('emx-bar'),pop=document.getElementById('emx-pop');if(!bar||!pop)return;
-  var CFG=JSON.parse((document.getElementById('adm-cfg')||{}).textContent||'{}'),n=document.getElementById('emx-n'),msg=document.getElementById('emx-msg'),note=document.getElementById('emx-note');
-  var RL={};Array.prototype.forEach.call(pop.querySelectorAll('[data-r]'),function(b){RL[b.dataset.r]=b.textContent;});
-  var KEY='wl-emx-'+(window.WL_ACCOUNT||''),sent={},cur=null;   // 送った印はこのブラウザが 6 時間覚える（反映されれば画像ごと消える）
+  var sheet=document.getElementById('emm-sheet');if(!sheet)return;
+  var CFG=JSON.parse((document.getElementById('adm-cfg')||{}).textContent||'{}'),$=function(id){return document.getElementById(id);};
+  var KEY='wl-emm-'+(window.WL_ACCOUNT||''),sent={},req={},cur=null,anchor=null;   // req[版面|画像] = {a,reason,note,board,img}。送った印はこのブラウザが 6 時間覚える
   try{sent=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){}
   Object.keys(sent).forEach(function(k){if(Date.now()-sent[k]>21600000)delete sent[k];});
-  function key(b){return JSON.stringify([b.dataset.emxB,b.dataset.emx]);}
-  function all(){return Array.prototype.slice.call(document.querySelectorAll('.emx'));}
-  function same(b){var k=key(b);return all().filter(function(x){return key(x)===k;});}   // 表の行と「探し方」の中の同じ画像はいっしょに
-  function picked(){var seen={};return all().filter(function(b){var k=key(b);if(b.disabled||!b.dataset.emxR||seen[k])return false;return seen[k]=1;});}
-  function mark(b,r,t){same(b).forEach(function(x){if(r){x.dataset.emxR=r;x.dataset.emxN=t||'';x.setAttribute('aria-pressed','true');x.title=(x.querySelector('img').alt||'小元素')+' · 違う：'+RL[r]+(t?'（'+t+'）':'')+' · もう一度押すと取り消し';}
-    else{delete x.dataset.emxR;delete x.dataset.emxN;x.setAttribute('aria-pressed','false');x.title=(x.querySelector('img').alt||'小元素')+' · 押すと「違う画像」の印';}});}
+  var AL={swap:'替える',lock:'固定',unlock:'固定をはずす',drop:'外す'},RL={};
+  [].forEach.call(sheet.querySelectorAll('[data-chips=drop] [data-r]'),function(b){RL[b.dataset.r]=b.textContent;});
+  function key(t){return t.dataset.b+'|'+t.dataset.img;}
   function paint(){
-    all().forEach(function(b){if(sent[key(b)]){b.classList.add('sent');b.setAttribute('aria-pressed','true');b.disabled=true;b.title='外す依頼を送った · 次の反映で消える';}});
-    var sel=picked(),boards={};sel.forEach(function(b){boards[b.dataset.emxB]=1;});
-    bar.hidden=!sel.length&&!msg.textContent;n.textContent=sel.length?'違う画像 '+sel.length+' 枚（'+Object.keys(boards).length+' 版面）':'';
-    document.getElementById('emx-go').hidden=document.getElementById('emx-clr').hidden=!sel.length;
+    [].forEach.call(document.querySelectorAll('.emm-tile'),function(t){
+      var r=req[key(t)],s=sent[key(t)],old=t.querySelector('.emm-st');if(old)old.remove();
+      var st=r?r.a:(s?'sent':(t.dataset.lock==='1'?'lock':''));
+      t.dataset.st=st;t.disabled=!!s;
+      if(st){var m=document.createElement('span');m.className='emm-st '+st;m.textContent=st==='sent'?'送信済':st==='lock'?'📌 固定':AL[st];t.querySelector('.emm-ph').appendChild(m);}});
+    var ks=Object.keys(req),c={};ks.forEach(function(k){c[req[k].a]=(c[req[k].a]||0)+1;});
+    $('emm-bar').hidden=!ks.length&&!$('emm-msg').textContent;
+    $('emm-n').textContent=ks.length?'依頼 '+ks.length+' 件：'+Object.keys(AL).filter(function(a){return c[a];}).map(function(a){return AL[a]+' '+c[a];}).join(' · '):'';
+    $('emm-go').hidden=$('emm-clr').hidden=!ks.length;
   }
-  function close(){pop.hidden=true;if(cur)cur.focus();cur=null;}
-  function open(b){cur=b;note.value='';pop.hidden=false;
-    var r=b.getBoundingClientRect(),w=pop.offsetWidth,h=pop.offsetHeight;
-    pop.style.left=Math.max(8,Math.min(r.left,window.innerWidth-w-8))+'px';
-    pop.style.top=(r.bottom+8+h<window.innerHeight?r.bottom+8:Math.max(8,r.top-h-8))+'px';
-    pop.querySelector('[data-r]').focus();}
+  function place(){
+    if(innerWidth<=600||!anchor){sheet.style.left=sheet.style.top='';return;}
+    var r=anchor.getBoundingClientRect(),w=sheet.offsetWidth,h=sheet.offsetHeight;
+    sheet.style.left=Math.max(12,Math.min(r.right+12,innerWidth-w-12))+'px';sheet.style.top=Math.max(12,Math.min(r.top,innerHeight-h-12))+'px';}
+  function close(){sheet.hidden=true;if(cur)cur.focus();cur=null;}
+  function open(t){
+    cur=t;anchor=t;var lock=t.dataset.lock==='1';
+    $('emm-img').src=t.dataset.img;$('emm-name').textContent=t.dataset.subj||'小元素';$('emm-why').textContent=t.dataset.why?'取り方：'+t.dataset.why:'';
+    $('emm-lock-t').textContent=lock?'固定をはずす':'この写真で固定';
+    $('emm-lock-d').textContent=lock?'いまは固定中。はずすと自動の補完・作り直しで替わることがある':'自動の補完・規則の作り直し・検査でも替えない';
+    $('emm-lock-go').textContent=lock?'固定をはずす':'固定する';
+    [].forEach.call(sheet.querySelectorAll('.emm-act'),function(a){a.setAttribute('aria-expanded','false');});
+    [].forEach.call(sheet.querySelectorAll('.emm-more'),function(m){m.hidden=true;});
+    [].forEach.call(sheet.querySelectorAll('[data-r]'),function(b){b.setAttribute('aria-pressed','false');});
+    [].forEach.call(sheet.querySelectorAll('.emm-note'),function(i){i.value='';});
+    sheet.querySelector('[data-go=drop]').disabled=true;
+    sheet.hidden=false;place();sheet.querySelector('.emm-act').focus();}
   document.addEventListener('click',function(ev){
-    var r=ev.target.closest('#emx-pop [data-r]');
-    if(r&&cur){mark(cur,r.dataset.r,note.value.trim());msg.textContent='';close();paint();return;}
-    if(ev.target.closest('#emx-cancel')){close();return;}
-    var b=ev.target.closest('.emx');
-    if(b&&!b.disabled){if(b.dataset.emxR){mark(b,null);paint();close();}else open(b);return;}
-    if(!pop.hidden&&!ev.target.closest('#emx-pop'))close();});
-  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!pop.hidden)close();});
-  window.addEventListener('scroll',function(){if(!pop.hidden)close();},{passive:true});
-  document.getElementById('emx-clr').addEventListener('click',function(){all().forEach(function(x){if(!x.disabled)mark(x,null);});msg.textContent='';paint();});
-  document.getElementById('emx-go').addEventListener('click',function(){
-    var sel=picked(),by={};if(!sel.length)return;
-    sel.forEach(function(b){(by[b.dataset.emxB]=by[b.dataset.emxB]||[]).push({image:b.dataset.emx,reason:b.dataset.emxR,note:b.dataset.emxN||''});});
-    if(!confirm(Object.keys(by).map(function(k){return k+'：'+by[k].map(function(m){return RL[m.reason];}).join('、');}).join('\n')+'\n\nこの小元素を外しますか？（外した画像は二度と自動で選ばれません。理由は今後の規則の手がかりに残ります）'))return;
-    if(!CFG.url||!CFG.key){msg.textContent='データベースに未接続です。';paint();return;}
-    var go=this;go.disabled=true;msg.textContent='送っています…';
+    var bt=ev.target.closest('.emm-bt');
+    if(bt){[].forEach.call(document.querySelectorAll('.emm-bt'),function(x){x.setAttribute('aria-pressed',x===bt);});
+      [].forEach.call(document.querySelectorAll('.emm-board'),function(b){b.hidden=b.dataset.bi!==bt.dataset.bi;});if(!sheet.hidden)close();return;}
+    var t=ev.target.closest('.emm-tile');
+    if(t&&!t.disabled){if(req[key(t)]){delete req[key(t)];paint();return;}open(t);return;}   // 依頼に入れた写真をもう一度押すと取り消し
+    var a=ev.target.closest('.emm-act');
+    if(a){var o=a.getAttribute('aria-expanded')!=='true';
+      [].forEach.call(sheet.querySelectorAll('.emm-act'),function(x){x.setAttribute('aria-expanded',x===a&&o);});
+      [].forEach.call(sheet.querySelectorAll('.emm-more'),function(m){m.hidden=!(o&&m.dataset.for===a.dataset.a);});place();return;}
+    var c=ev.target.closest('.emm-chips [data-r]');
+    if(c){var box=c.parentNode,was=c.getAttribute('aria-pressed')==='true';
+      [].forEach.call(box.children,function(x){x.setAttribute('aria-pressed','false');});c.setAttribute('aria-pressed',!was);
+      if(box.dataset.chips==='drop')sheet.querySelector('[data-go=drop]').disabled=was;return;}
+    var g=ev.target.closest('.emm-go');
+    if(g&&!g.disabled&&cur){var kind=g.dataset.go,more=g.closest('.emm-more'),on=more.querySelector('[aria-pressed=true]'),nt=more.querySelector('.emm-note');
+      req[key(cur)]={a:kind==='lock'&&cur.dataset.lock==='1'?'unlock':kind,reason:on?on.dataset.r:'',note:nt?nt.value.trim():'',board:cur.dataset.b,img:cur.dataset.img};
+      $('emm-msg').textContent='';close();paint();return;}
+    if(ev.target.closest('#emm-close')){close();return;}
+    if(!sheet.hidden&&!ev.target.closest('#emm-sheet'))close();});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!sheet.hidden)close();});
+  window.addEventListener('resize',place);
+  $('emm-clr').addEventListener('click',function(){req={};$('emm-msg').textContent='';paint();});
+  $('emm-go').addEventListener('click',function(){
+    var by={},ks=Object.keys(req);if(!ks.length)return;
+    ks.forEach(function(k){var r=req[k],c=by[r.board]=by[r.board]||{};
+      if(r.a==='swap')(c._emblem_swap=c._emblem_swap||[]).push({image:r.img,reason:r.reason||'misc',note:r.note});
+      else if(r.a==='drop')(c._emblem_reject=c._emblem_reject||[]).push({image:r.img,reason:r.reason,note:r.note});
+      else(c._emblem_lock=c._emblem_lock||[]).push({image:r.img,on:r.a==='lock'});});
+    if(!confirm(Object.keys(by).map(function(b){return b+'：'+ks.filter(function(k){return req[k].board===b;}).map(function(k){return AL[req[k].a];}).join('、');}).join('\n')+'\n\nこの依頼を送りますか？（外した・替えた画像は二度と自動で選ばれません）'))return;
+    if(!CFG.url||!CFG.key){$('emm-msg').textContent='データベースに未接続です。';paint();return;}
+    var go=this;go.disabled=true;$('emm-msg').textContent='送っています…';
     var names=Object.keys(by),ok=0,ng=[];
     (function next(i){
       if(i>=names.length){
         try{localStorage.setItem(KEY,JSON.stringify(sent));}catch(e){}
-        msg.textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（足りない分は次の後台で別の画像を探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
+        $('emm-msg').textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（替える写真は次の後台作業で探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
         go.disabled=false;paint();return;}
       var name=names[i];
       fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/rpc/submit_item',{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},
-        body:JSON.stringify({p_account:window.WL_ACCOUNT,p_action:'edit',p_name:name,p_config:{_emblem_reject:by[name]}})})
+        body:JSON.stringify({p_account:window.WL_ACCOUNT,p_action:'edit',p_name:name,p_config:by[name]})})
         .then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok)throw new Error((j&&j.message)||r.status);});})
-        .then(function(){ok++;by[name].forEach(function(m){sent[JSON.stringify([name,m.image])]=Date.now();});},
+        .then(function(){ok++;Object.keys(req).forEach(function(k){if(req[k].board===name){if(req[k].a!=='lock'&&req[k].a!=='unlock')sent[k]=Date.now();delete req[k];}});},
               function(err){ng.push(name+'（'+err.message+'）');})
         .then(function(){next(i+1);});
     })(0);
@@ -5718,8 +5774,7 @@ def _emblem_flow(d, state, pics=()):
             + (f'<span>{e(d["note"])}</span>' if d.get("note") else "") + '</div>'
             f'<div class="ef-box ef-todo"><small>⑤ 次にやること</small><b>{e(d.get("todo") or "")}</b>'
             + (f'<span class="ef-adv">{e(d["advice"])}</span>' if d.get("advice") else "") + "</div></div>"
-            + (f'<div class="ef-all"><small>いまの小元素 · {len(pics)} 枚 · 違う画像は押して印を付け、下の帯の「外す」で送る'
-               '（外した画像は二度と選ばれず、足りない分は次の後台で別の画像を探す）</small>'
+            + (f'<div class="ef-all"><small>いまの小元素 · {len(pics)} 枚 · 替える・固定する・外すのは上の「小元素」の欄で'
                f'<span class="ef-pics">{"".join(pics)}</span></div>' if pics else "")
             + "</details>")
 
@@ -5968,26 +6023,46 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .bgc .bg-cd{display:block;font:700 var(--fs-label) var(--font-mono);color:var(--alert)}
 .bgc .nx-go{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px}.bg-redo{padding:5px 10px}
 .bg-th img{width:26px;height:26px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}.bg-th img.fit{object-fit:contain;border-radius:4px;padding:2px}
-.emx{position:relative;display:inline-block;padding:0;border:0;background:none;line-height:0;cursor:pointer;border-radius:50%}
-.emx:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.emx i{position:absolute;top:-4px;right:-4px;display:none;width:16px;height:16px;border-radius:50%;background:var(--alert);color:var(--card);
- font:900 10px/16px var(--font-sans);font-style:normal;text-align:center}
-.emx:hover i{display:block;opacity:.65}
-.emx[aria-pressed="true"] img{outline:3px solid var(--alert);outline-offset:1px;filter:grayscale(1) opacity(.5)}
-.emx[aria-pressed="true"] i{display:block;opacity:1}
-.emx.sent{cursor:default}.emx.sent img{outline-color:var(--ink);filter:grayscale(1) opacity(.3)}.emx.sent i{background:var(--ink)}
-.emx-bar{position:fixed;left:50%;bottom:16px;z-index:90;transform:translateX(-50%);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;
+.emm-boards{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.emm-bt{background:var(--card);border:2px solid var(--ink);padding:5px 14px;font:900 14px var(--font-sans);color:var(--ink);cursor:pointer}
+.emm-bt small{margin-left:6px;font:700 var(--fs-label) var(--font-mono);opacity:.6}
+.emm-bt[aria-pressed=true]{background:var(--ink);color:var(--card);box-shadow:3px 3px 0 var(--rose)}
+.emm-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:0 0 12px}.emm-h b{font:900 18px var(--font-sans);background:var(--ink);color:var(--card);padding:2px 12px;transform:rotate(var(--tilt))}
+.emm-h span{font-size:13px;opacity:.7}
+.emm-board[hidden],.emm-sheet[hidden],.emm-bar[hidden],.emm-more[hidden]{display:none}
+.emm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:14px}
+.emm-tile{position:relative;display:flex;flex-direction:column;gap:6px;background:none;border:0;padding:0;text-align:left;color:var(--ink);cursor:pointer;font:inherit}
+.emm-tile:disabled{cursor:default;opacity:.55}
+.emm-ph{position:relative;display:block;aspect-ratio:4/5;background:repeating-linear-gradient(45deg,color-mix(in srgb,var(--ink) 8%,var(--card)) 0 6px,var(--sheet) 6px 12px);border:2px solid var(--ink);overflow:hidden}
+.emm-ph img{width:100%;height:100%;object-fit:contain;display:block}
+.emm-tile b{font:900 13px/1.35 var(--font-sans)}.emm-tile small{font-size:var(--fs-label);line-height:1.4;opacity:.65}
+.emm-tile:hover .emm-ph{box-shadow:3px 3px 0 var(--rose)}
+.emm-st{position:absolute;left:-4px;top:8px;padding:1px 8px;font:900 11px/1.6 var(--font-sans);color:var(--card);transform:skewX(var(--skew));background:var(--ink)}
+.emm-st.swap{background:var(--rose)}.emm-st.lock{background:var(--good)}.emm-st.unlock{background:var(--ink)}.emm-st.drop{background:var(--alert)}
+.emm-tile[data-st=drop] img,.emm-tile[data-st=sent] img{opacity:.35}
+.emm-sheet{position:fixed;z-index:96;background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);width:min(420px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;padding:16px 16px 14px;font:500 13px/1.5 var(--font-sans)}
+.emm-sh{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:center;margin-bottom:12px}
+.emm-sh b{display:block;font:900 17px/1.3 var(--font-sans)}.emm-sh small{font-size:12px;opacity:.65}
+.emm-acts{display:flex;flex-direction:column;gap:8px}
+.emm-act{display:grid;grid-template-columns:30px minmax(0,1fr);gap:2px 8px;align-items:start;text-align:left;background:var(--card);border:2px solid var(--ink);padding:9px 12px;color:var(--ink);cursor:pointer;font:inherit}
+.emm-act i{font-style:normal;font-size:20px;line-height:1.3;grid-row:span 2}.emm-act b{font:900 15px/1.4 var(--font-sans)}.emm-act span{font-size:12px;opacity:.65;line-height:1.5}
+.emm-act[aria-expanded=true]{background:var(--ink);color:var(--card)}
+.emm-more{border-left:4px solid var(--rose);margin:2px 0 4px;padding:8px 0 4px 12px;display:flex;flex-direction:column;gap:10px}
+.emm-more h3{margin:0;font:900 13px var(--font-sans)}
+.emm-chips{display:flex;flex-wrap:wrap;gap:6px}
+.emm-chips button{background:var(--card);border:1.5px solid var(--ink);padding:3px 10px;font:700 12px var(--font-sans);color:var(--ink);cursor:pointer}
+.emm-chips button[aria-pressed=true]{background:var(--ink);color:var(--card)}
+.emm-note{min-width:0;padding:5px 8px;border:1.5px solid var(--ink);background:var(--card);font:500 13px var(--font-sans)}
+.emm-go{align-self:flex-start;background:var(--rose);color:var(--card);border:2px solid var(--ink);padding:6px 16px;font:900 13px var(--font-sans);box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.emm-go:disabled{opacity:.45;cursor:not-allowed}
+.emm-x{margin-top:10px;background:none;border:0;text-decoration:underline;font:500 13px var(--font-sans);color:var(--ink);opacity:.7;cursor:pointer}
+.emm-bar{position:fixed;left:50%;bottom:16px;z-index:90;transform:translateX(-50%);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;
  max-width:calc(100vw - 32px);padding:10px 14px;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);font:700 13px/1.5 var(--font-sans)}
-.emx-bar[hidden],.emx-bar button[hidden]{display:none}
-.emx-bar button{border:2px solid var(--ink);background:var(--card);color:var(--ink);padding:5px 12px;font:700 13px var(--font-sans);cursor:pointer}
-.emx-bar #emx-go{background:var(--alert);color:var(--card)}.emx-bar small{font:500 var(--fs-label)/1.5 var(--font-sans)}
-.emx-pop{position:fixed;z-index:96;width:min(320px,calc(100vw - 16px));display:flex;flex-direction:column;gap:8px;padding:10px 12px;
- background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);font:700 13px/1.5 var(--font-sans)}
-.emx-pop[hidden]{display:none}.emx-rs{display:flex;flex-wrap:wrap;gap:6px}
-.emx-rs button,.emx-pop .emx-x{border:1.5px solid var(--ink);background:var(--sheet);color:var(--ink);padding:4px 9px;font:700 12px var(--font-sans);cursor:pointer}
-.emx-rs button:hover,.emx-rs button:focus-visible{background:var(--alert);color:var(--card)}
-.emx-pop input{min-width:0;padding:5px 8px;border:1.5px solid var(--ink);background:var(--card);font:500 13px var(--font-sans)}
-.emx-pop .emx-x{align-self:flex-end;background:var(--card)}
+.emm-bar button{border:2px solid var(--ink);background:var(--card);color:var(--ink);padding:5px 12px;font:700 13px var(--font-sans);cursor:pointer}
+.emm-bar button[hidden]{display:none}.emm-bar #emm-go{background:var(--gold)}.emm-bar small{font:500 var(--fs-label)/1.5 var(--font-sans)}
+@media (max-width:600px){
+ .emm-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.emm-tile small{display:none}
+ .emm-sheet{left:0!important;right:0;bottom:0;top:auto!important;width:100%;max-height:82vh;border-width:2px 0 0;box-shadow:0 -4px 0 var(--ink)}}
 .emxs td.n{font:700 13px var(--font-mono);text-align:right}
 .emx-recent{list-style:none;margin:8px 0 0;padding:0;font-size:13px}.emx-recent li{padding:4px 0;border-bottom:1px solid var(--hair)}
 .emx-recent small{margin-left:8px;font:500 var(--fs-label) var(--font-mono);opacity:.7}
@@ -6254,7 +6329,7 @@ ADMIN_PAGE_JS = """
 ADMIN_PAGES = [
     ("admin-now.html", "①", "いま", "ライブログ・運行状況・次の実行・Actions と依頼", ["term-panel", "status", "nextrun", "queue"]),
     ("admin-boards.html", "②", "版面", "ウォッチ項目の表・投票", ["items", "votes"]),
-    ("admin-emblem.html", "③", "エンブレム", "小元素の進捗・版面ごとの状態（違う＝外す）・判断の例", ["emblems", "backend", "emblem-ex"]),
+    ("admin-emblem.html", "③", "エンブレム", "小元素の管理（替える・固定・外す）・進捗・版面ごとの状態・判断の例", ["emblem-manage", "emblems", "backend", "emblem-ex"]),
     ("admin-ai.html", "④", "AI 編集", "トークン・編集の前後", ["tokens", "editdiff"]),
     ("admin-system.html", "⑤", "しくみ", "全体図・詳しい図・リソース・並列と制限", ["ov", "procs", "res"]),
     ("admin-members.html", "⑥", "お客さまと店長", "登録した人・パスワード・店長（店長のログインで）", ["members"]),
@@ -6334,7 +6409,8 @@ def render_admin(data, db, updated):
         "procs": panel("procs", "全体の構成（詳しい図）", "場所ごとに全部の部品と矢印を 1 枚に · 大きいので、まずは上の「しくみの全体図」を", processes.architecture()),
         "queue": ADMIN_QUEUE,
         "items": panel("items", "ウォッチ項目", f'赤い「最新の記事」= {ADMIN_STALE_DAYS} 日以上 新しい記事なし · 主題と配色の見本は <a href="themes.html">テーマ見本</a>', _admin_items(items)),
-        "emblems": panel("emblems", "小元素", '版面右上のステッカー · 種類ごとの目標枚数 · 見本（押しても本番は変わらない）：<a href="../testground/emblem-manage.html">小元素の管理</a>・<a href="../testground/emblem-pop.html">はみ出し・立体 3 案</a>', _admin_emblems(items, data.get("emblem_run"))),
+        "emblems": panel("emblems", "小元素", '版面右上のステッカー · 種類ごとの目標枚数 · 見本：<a href="../testground/emblem-pop.html">はみ出し・立体 3 案</a>', _admin_emblems(items, data.get("emblem_run"))),
+        "emblem-manage": panel("emblem-manage", "小元素の管理", "版面を選ぶ → 押して「どうしたい？」：同じ人の別の写真に替える · この写真で固定 · この人ごと外す", bg["manage"]),
         "votes": panel("votes", "投票", "👍 / 👎 · 前回の収集時点", _admin_votes(data.get("votes") or {})),
     }
     counts = _admin_counts(data)
@@ -6375,10 +6451,10 @@ def render_admin(data, db, updated):
 </html>
 """, updated)
 
-    js = (f'<script type="application/json" id="adm-cfg">{cfg}</script><script>{ADMIN_PAGE_JS}</script><script>{EMX_JS}</script>'
+    js = (f'<script type="application/json" id="adm-cfg">{cfg}</script><script>{ADMIN_PAGE_JS}</script><script>{EMM_JS}</script>'
           f'<script>{overview.JS}</script><script>{livelog.JS.replace("__ACC__", sitedir.NAME)}</script><script>{processes.JS}</script>')
     hub = ('<p class="lede">収集・編集が止まっていないか、依頼や写真が溜まっていないか、どの作品の記事が少ないかを見るためのページです。下の 6 つから選んでください。'
-           'データを変えることはできません（できるのは「今すぐ実行」で裏の仕組みを定時より早く動かすことと、小元素の「違う」だけ）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>'
+           'データを変えることはできません（できるのは「今すぐ実行」で裏の仕組みを定時より早く動かすことと、小元素の「替える・固定・外す」だけ）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>'
            '<ul class="admhub">' + "".join(
                f'<li><a href="{f}"><b><i>{m}</i>{e(n)}</b><span class="n{" warn" if counts[f][1] else ""}">{e(counts[f][0])}</span><small>{e(d)}</small></a></li>'
                for f, m, n, d, _ in ADMIN_PAGES) + '</ul>')
