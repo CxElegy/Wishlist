@@ -41,7 +41,7 @@ COMPONENTS = {
               "what": "顔を見つける（face_id.py、OpenCV FaceDetectorYN、HuggingFace から）"},
     "sface": {"kind": "model", "name": "SFace face_recognition_sface_2021dec", "spec": "128 次元 · cos ≥ 0.363 で本人",
               "what": "顔の特徴量で同じ人か比べる（face_id.py）。基準 = 記事の代表画像、合わなければ多数決"},
-    "roles": {"kind": "rule", "name": "実写の作品は役の姿 gather_roles", "spec": "出演者 → 役（Fandom の出演者の記事・表・検索、役の記事で演者を確かめる）→ 役の記事の画像・作品の動画の場面 · 生活の写真は基準だけ",
+    "roles": {"kind": "rule", "name": "実写の作品は役の姿 gather_roles", "spec": "出演者 → 役（Fandom の出演者の記事・表・検索、役の記事で演者を確かめる）→ 出演者の記事・ファイル検索の「X as 役」の写真（作り直しの剧は役の記事が前の映画の役者）→ 役の記事の画像・作品の動画の場面 · 生活の写真は基準だけ",
               "what": "剧・映画の小元素を、出演者の写真ではなく役の剧照にする（emblem_fill.role_of / role_images）"},
     "pose": {"kind": "model", "name": "YOLOv8m-pose（ultralytics）", "spec": "53MB · 目・足首の確かさ ≥ 0.5 · なければ輪郭から推定（Actions には入れていない）",
              "what": "全身の立ち絵の目の高さと足の裏・重心を測り、背の高さをそろえる。腰が体の 60% より上（ふつうの人の体つき）だけ腰のあたり（目から足の 40%）で上半身に切り、頭の大きいキャラ・動物・マスコット（目印の確かさ < 0.6）は全身のまま（emblem.body_marks / real_body / bust_from_body）"},
