@@ -1,82 +1,5 @@
 [
 {
-"at": "2026-10-24T13:33:07+00:00",
-"text": "2026-10-24 第 1 バッチを出刊：MMORPG 新作、周杰伦、日本顶级网球赛事、滑雪、漫威电影（5 版面・23 本・残り 5 版面） · token 新規入力 4.8万・キャッシュ読み 93.6万・出力 3,729",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.2,
-"mem_total": 16872804352,
-"mem_free": 15961915392,
-"disk_used": 10615996416,
-"disk_free": 30667173888,
-"disk_total": 41283170304,
-"peak": 265605120
-},
-"batch": 1,
-"boards": [
-"MMORPG 新作",
-"周杰伦",
-"日本顶级网球赛事",
-"滑雪",
-"漫威电影"
-],
-"stories": 23,
-"left": 5,
-"edited": 20,
-"run": 1792848018.2382565,
-"tok": {
-"in": 28,
-"cw": 48190,
-"cr": 936200,
-"out": 3729,
-"calls": 14,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 988147
-},
-{
-"at": "2026-10-24T13:38:16+00:00",
-"text": "2026-10-24 第 2 バッチを出刊：三星手机（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4,389・キャッシュ読み 47.0万・出力 1,773",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.26,
-"mem_total": 16872804352,
-"mem_free": 16008876032,
-"disk_used": 10617196544,
-"disk_free": 30665973760,
-"disk_total": 41283170304,
-"peak": 190967808
-},
-"batch": 2,
-"boards": [
-"三星手机"
-],
-"stories": 5,
-"left": 0,
-"edited": 20,
-"run": 1792848018.2382565,
-"tok": {
-"in": 12,
-"cw": 4377,
-"cr": 470192,
-"out": 1773,
-"calls": 6,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 476354,
-"secs": 1078,
-"run_tok": {
-"in": 40,
-"cw": 52567,
-"cr": 1406392,
-"out": 5502,
-"calls": 20,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-24T14:35:29+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1719,5 +1642,57 @@
 "calls": 10,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-25T20:34:09+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-10-25T20:37:01+00:00",
+"text": "2026-10-26 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作 ほか 10（16 版面・15 本・今日の整理待ちは全部終わり） · token 新規入力 5.0万・キャッシュ読み 86.8万・出力 4,347",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.33,
+"mem_total": 16872804352,
+"mem_free": 15912603648,
+"disk_used": 10720899072,
+"disk_free": 30562271232,
+"disk_total": 41283170304,
+"peak": 258760704
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"GTA 6",
+"ILLIT",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"哈利波特剧集",
+"漫威电影",
+"绝区零"
+],
+"stories": 15,
+"left": 0,
+"edited": 13,
+"run": null,
+"tok": {
+"in": 26,
+"cw": 49734,
+"cr": 867856,
+"out": 4347,
+"calls": 13,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 921963
 }
 ]

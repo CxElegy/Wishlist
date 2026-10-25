@@ -1,50 +1,24 @@
 {
  "date": "2026-10-26",
- "edit_sig": "d24644a214e8",
+ "edit_sig": "4141b7299bd7",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "엔씨 ‘아스트라에 오라티오’ 글로벌 CBT 누적 플레이타임 8만 시간, 응답자 93%가 정식 출시 후 플레이하겠다고 답했다.",
      "date": "2026-10-22",
-     "n": 1,
-     "source": "데일리게임",
-     "title": "엔씨 '아스트라에 오라티오', 글로벌 CBT 누적 플레이타임 8만 시간 기록",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5GWVVoTGl3VUlKRVF1MWxQNUxIMWZUYkJ2ZlNpTG1KdkdaRDBfYU9icGN2MlltZUJSakZMOE5JczNiLTBaRHRrTlNBbjlCbXdBa2NDU2Fmbi13ei0zT0U0Q24wQnkwNEpUaThxY0M4bW1xM3R3bGpGS01XWQ?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 2,
-     "source": "NSP통신",
-     "title": "엔씨, ‘아스트라에 오라티오’ 글로벌 CBT 결과 공개",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1EbEFTbC1zRVdHUU9JU1VRODlqUUxQcHJ1bUFwNThSblNQaS02RFhFMUo3TGl5S0l5UmlkWmRleWdyLWQwbnA0WXFZWGR4dHF2OGVpb212QlpaWkZFNkFxOQ?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 3,
-     "source": "스포츠경향",
-     "title": "엔씨 ‘아스트라에 오라티오’ 글로벌 CBT서 합격점…응답자 93% “출시 후 플레이”",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE14bm51eVdYd3BBLWo5MUpVOEdhcUxYLUc1ZEpTV1dnLUhleWhteXA5cHJrTkg4RXZPMHZyY2gzNVI3QTRXY2UtcnFRWlYyWXFGbWQ3dk82a2pNUHR1LWfSAWNBVV95cUxNU0NrX1lKai1zclRTTHFYVk5UbEZack9CcnR6dnNIMTc4RmE1SURXRmdFSWNQczhqN1hXdzRkajQxUUpRMjlyOXRqZmhrN0NXRl9yaGxRdkJmTXcyRXV1WGpoYW8?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 4,
-     "source": "더게이트",
-     "title": "“테스터 93%가 출시 후 플레이 의향”…엔씨, ‘아스오라’ 글로벌 CBT 성적 공개",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE0tS0huME1YVzdZeXhNZm1tN2U1NVlvVjRxSUZqVWxucTFIZDNBZ0ZySjlMeGdPcXZNQWdXRTlWbGMyNGNPY01zd2pkSDZBWXBKb2xKS0hWNWtGSmRrZkVOSThRRlk4UElW0gFsQVVfeXFMTi1IeVU5VlUzQWFUTnBqdlZ5RjJfZnk2UElkaTI3M2gzN1R4RHlTTzRzZHdjMTFFbGE2TmJfZjNDWHAzM0gxeVU4YVByNUNZNEJWVzVTVE9QYzNhQmxickJkc1UxS19mYU81dTRV?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "이지경제",
-     "title": "엔씨 ‘아스오라’, 글로벌 CBT 응답자 93% 정식 출시 후 플레이 의향",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE05QTZnNS15dzFJMzFzdkxCbUJZMnBRZ2pBaF93aklBVC1SS3JzbGhoZjlxTXgxRmRZeVFmR1BCbm9Mbi1nOFVoUTB2OHMwdVB4Wmx3UlZOakNoMHN1d0EzS3lHOUFrUllCM0p2VXFn?oc=5"
+     "headline": "“테스터 93%가 출시 후 플레이 의향”…엔씨, ‘아스오라’ 글로벌 CBT 성적 공개",
+     "highlight": "93%가 출시 후 플레이 의향",
+     "image": "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg",
+     "image_via": "AI 挑选",
+     "url": "http://www.spochoo.com/news/articleView.html?idxno=131353",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -54,68 +28,6 @@
     "bg": "#211212",
     "fg": "#F4EEE4",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
-   "facts": [],
-   "name": "GTA 6",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 5,
-     "source": "games.gg",
-     "title": "在 GTA 6 發售前，購買 PS5 官方翻新組合可省下 $40",
-     "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxQR2tIOU95TzFjNUdyYUNsTnMwSlFLN0NlTGhxdzZSVXkwNmtGWXBkWjlRVDNXbExkY2Q0U0I2MjZXdkpQbnZQT0hCUkFVWVUzeExOVk43OGlkZU1OR3RzWmFsWnFPWUlma3FmTTBhdmJCTExGcHJwZVBPNFlaMUdHREh0SWwxa3NfQzBCYm1lQ3Fmb1RjMWNobWRfVTRnNkhCSUdLYUtSbG1xbF9SSDBlMzYwbXlPZ2hNTEUtVXUzTzVRdUlwNllRQ0Frck5WLW5JM0NqMEJ4WjlfMVBMdkNjaUlCQ0JwcUZQeW5mX2tvalBmX3hXNFplRFFxNUhRNXh1RDR3?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 6,
-     "source": "PC Gamer on MSN",
-     "title": "Free piggybacks for all! Modding GTA 5 into GTA 6",
-     "url": "https://www.msn.com/en-us/news/other/free-piggybacks-for-all-modding-gta-5-into-gta-6/vi-AA2g1TDn"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 7,
-     "source": "VICE",
-     "title": "WATCH: Likely ‘GTA 6’ Lucia Actress Goes Live on Instagram for the First Time",
-     "url": "https://www.vice.com/en/article/likely-gta-6-lucia-actress-goes-live-on-instagram-for-the-first-time/"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 8,
-     "source": "opencritic",
-     "title": "GTA 6's Real-World Promotional Goodies Are Being Resold For Ridiculous Prices",
-     "url": "https://opencritic.com/news/38423/gta-6s-real-world-promotional-goodies-are-being-resold-for-ridiculous-prices"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 9,
-     "source": "Bluesky",
-     "title": "I’m losing my mind… Rockstar offered them unlimited money for GTA 6 and they said “no” but Lego was like “you can be immortalized as building bricks for children” and they said “Oui”",
-     "url": "https://bsky.app/profile/airbagged.bsky.social/post/3myieummvok2x"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 10,
-     "source": "r/GTA6",
-     "title": "Posting this progress bar every 19th until release day #09",
-     "url": "https://www.reddit.com/r/GTA6/comments/1xa0opc/posting_this_progress_bar_every_19th_until/"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
-   "theme": {
-    "accent": "#FF5FA2",
-    "alt_accent": "#C2185B",
-    "alt_bg": "#FFB25B",
-    "alt_fg": "#1E1033",
-    "bg": "#1E1033",
-    "fg": "#FFF1F6",
-    "font": "sans",
     "split": true
    }
   },
@@ -194,76 +106,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 12,
-     "source": "IMDb",
-     "title": "Avengers: Doomsday Test Screening Reactions Praise Doctor Doom As One Of The McU's Best Villains",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1Xb1g5MlFKZzBHWHBHX1BJbnVxbXlYVF92RHhXSkpMU09TRWoyT0FSQTZEczRoNFpHTlVQMUxSNGRpczhoX0JyUDZxbUVWVy12azVXNlc5QjdSR3VyTHBkUA?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 13,
-     "source": "Kotaku",
-     "title": "With A Marvel-Sized Budget, Elden Ring Will Be A24’s Most Expensive Movie To Date",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQWExqaXN2TnVQejNDbEw0c1NuMGI2Ui0xS0VwU1pUQVE5R0owT0QtSHkxb1NCMnRZXzRtc2dLTkR0eV9UaGtYblgyYUgtSEFxSms2MFdmX20yUWZPV2YzS05xdGdPLTdiOExkNGZablFtRDBJVWRrRjJXOFlTUVRCMXVWejA4amZqck5uRFFiZ0FFOE05bXVLdmxkMU9RTFZHRDJRQ0dVVVA3bnhGN1E?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 14,
-     "source": "tech-insider.org",
-     "title": "Avengers: Doomsday Box Office Record Odds Hit 43% on Manifold After Presales Surge",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQMUxUUUdKVHk2Q29MZ1c5eWs5TFBsX3RHMGlPRU5wMUxIS0tLTXBEQWpWZllycnN4VndKWW1hYms2cHVHQmNCUkVYTjRzX2RIRGFmdV9ndnZqRlJwd2ZvYnMzanpDeGFlNVFmdDM0Y2IzYlhPdkZ5MlF0eG5teE1zcTRURkJ6YXAwRjkwaGln?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 15,
-     "source": "IMDb",
-     "title": "Avengers: Doomsday \"Right, Cap?\" Joke Met With Backlash For Disrespecting Sam Wilson",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9Kd0MzV2h5c1hQVms2MU1POWdPODZzOUdmSjAzallBeGMyQ0ZudEpXSXlPWmFIb1haUWZnaVRtMlhQR0ZzbjNYWlRxaXhubFpjVVhsOWlkbk1vOENqRmg0NzBNZEUzOTA?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 16,
-     "source": "Yardbarker on MSN",
-     "title": "Freddie Freeman among MLB stars in new ‘Avengers: Doomsday’ promo",
-     "url": "https://www.msn.com/en-us/sports/baseball/freddie-freeman-among-mlb-stars-in-new-avengers-doomsday-promo/ar-AA2g2Pjb"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 17,
-     "source": "JoBlo",
-     "title": "Rumor: Peter Claffey Reportedly Cast as Beast for Marvel Studios’ Upcoming X-Men Film",
-     "url": "https://www.joblo.com/peter-claffey-beast-x-men-rumor/"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 18,
-     "source": "IMDb",
-     "title": "Laika’s ‘Wildwood’ Beats ‘Avengers: Doomsday’ To Claim the Crown for Most-Watched Trailer on YouTube",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9IejBxanJ2T29jY2JXbmowU0x6NFd6c19QakJkem0ybDdfVzZuRHpHcWlwUHNuYTJLUmVqZVVSbGZaNmJ6dk85MnJVVVY2RlZNZTR3VzQ4YVNlOWlnU2dLdzdn?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 19,
-     "source": "note",
-     "title": "Marvel Film Guide for Fighting Game Players: What is Marvel?",
-     "url": "https://note.com/slowdancer07/n/n4b4ca3712793?hl=en"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-25",
-     "headline": "Marvel Fans Slam Avengers: Doomsday Trailer Over Captain America Joke",
-     "highlight": "",
-     "image": "https://www.slashfilm.com/img/gallery/marvel-fans-slam-avengers-doomsday-trailer-over-captain-america-joke/l-intro-1792950198.jpg",
-     "image_via": "og:image",
-     "url": "https://www.slashfilm.com/2296366/marvel-fans-slam-avengers-doomsday-trailer-sam-wilson-captain-america-joke/",
-     "weight": "hero"
-    },
     {
      "blurb": "A new Avengers: Doomsday teaser shows Steve Rogers taking up Mjolnir alongside Thor and several Captain Americas.",
      "date": "2026-10-25",
@@ -302,6 +146,16 @@
      "image": "https://hermes.media.transform.aol.com/adc8b94bb6e2147cca69e2f1d58daea67429d048/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/b1a3e2ce-5eea-3f93-bcbf-d14467f9f288/9c9f7c12-eb40-4073-b04b-d1183b714500.jpg",
      "image_via": "og:image",
      "url": "https://www.aol.com/articles/wild-avengers-doomsday-theory-suggests-073017000.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "Avengers: Doomsday Test Screening Reactions Praise Doctor Doom As One Of The MCU's Best Villains",
+     "highlight": "Praise Doctor Doom",
+     "image": "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-test-screening-reactions-praise-doctor-doom-as-one-of-the-mcus-best-villains-ab230632.jpg",
+     "image_via": "转载 comicbookmovie.com",
+     "url": "https://www.imdb.com/news/ni66079289/?ref_=tt_nwr_1",
      "weight": "normal"
     }
    ],
@@ -481,29 +335,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 4,
-     "source": "조선일보",
-     "title": "サニー、叔父イ・スマン自慢したくなる熱血指導…A2O LITEに直接振付",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNSVVSZGJHY1B2RElRVV9VYjlhMThoVllWdjltbmJfaklBcTRJcFZEQWgxNEpmSU0wUHVhVlpRT2J2UFBKMm9WZjdWcDhFdzVlZENvX0tUMExiVUptZHNWbV8wSXJNelhseUR3NE5ESGx4NmpBbXVsSlExd1JSb0RNSWl4UWRseDg?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 5,
-     "source": "Chosunbiz",
-     "title": "써니, '삼촌' 이수만 자랑할 만…A2O LITE위해 직접 춤 디렉팅 '열정 폭발' - 조선비즈",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNVUdCbDJZcUo0VWdqOGZGQnFSb3E0Wkh4RHpKWGpjMHRlUXhKZ01wV0t4RzFrVXJXZ2Z6WXMwdUdwRlB1bUh0Q3p5UHV3dlpPNHoxQzhTNjlOQWoxYXE4d0FxSTNLQkU0MTBYMkxZaTVfQXFLbGx1bENBbFVsMUo0eW9xSG1pNm42MV9RcU9yTE1WMEHSAacBQVVfeXFMTVowTDlhVlJsdUVTUEFtemFQbVBpSzZHWjdkUTZQSEZMbEZxS3p1UDRsenpwc0wwbVBPTmtCcmc1UjBqcWdtOXhaSnVEWmI4cS1uUHJ2RWZTSmgwRmttUU9xNUtSa0tiOWpncnQ4bV9mYXFrU3UteEZWcWpZZXE3SXo3TF9hMEcxdnJaVmEtLVdPTjdnbWtGWnRoWkh0UFVOM0NWS2gwWWM?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 6,
-     "source": "手机新浪网",
-     "title": "出道后首个三大台一位，A2O LITE 把 6060 分稳稳拿下|A2O LITE|NCT WISH|ISPY|NEON|人气歌谣",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBCbVVkcVdIbGt0eng4b3dYTjBSZGxwcnRYM3ZCeG9ZcUZ5c3ZKWDh0VGRYYlJYTlBEdTlBR0QwVGllYUVEbmtVa3VnNENzbVQ2dEtIVG9DOW9FcnlEZG8yVVd3WQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -519,11 +350,11 @@
     {
      "blurb": "",
      "date": "2026-10-25",
-     "headline": "\"要这样踢！\"李秀满，亲自为A2O LITE成员I-Ching指导舞蹈动作",
-     "highlight": "",
+     "headline": "サニー、叔父イ・スマン自慢したくなる熱血指導…A2O LITEに直接振付",
+     "highlight": "A2O LITEに直接振付",
      "image": "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1157,fit=cover,q=high,sharpen=2/21/2026/10/2026102523240015710_1.jpg",
      "image_via": "og:image",
-     "url": "https://www.starnewskorea.com/zh/star/2026/10/25/2026102523240015710",
+     "url": "https://www.chosun.com/jp/culture-life-jp/2026/10/26/D6TSRHBGDRA7LILIVAXMQXSYUI/",
      "weight": "normal"
     },
     {
@@ -553,36 +384,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 3,
-     "source": "山陽新聞",
-     "title": "ILLIT、日本の伝説雑誌『FRUiTS』とコラボ 日本ストリートカルチャーで“ILLITコア”表現",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNQ2xCa1pxa05wWm41bDhpM1lXa0VuTjNtcThPd0NTcnFKdmZ1dFJHOGNjbm12NEt0dkk5RENyS2hReGRsczJQMHh6b3l6cXN6Ul9wTVhlcHBXNTZBdjJ0aW5TTkVDZmIyb3pJZDRWb29QWS11U2xkNnlROEsyRHhBT0ZBbERxQQ?oc=5"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 4,
-     "source": "디스패치",
-     "title": "아일릿, 컴백 전부터 인기몰이…\"스포티파이 사전 저장 1위\"",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE9ILV9ZdXVqQlRmY1VQbzMwRDgxYXJWWUV3dUh2Wk1UYnJJcDQyeEFHaTRsdUNYNkE0S2Z0UW12MUlTYjcyTjlfMGZR?oc=5"
-    },
-    {
-     "date": "2026-10-22",
-     "n": 5,
-     "source": "Weverse",
-     "title": "Post de la Comunidad ILLIT - 히히 - IROHA",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE95WjNIeGJxZUtkbTVWLVhUYm1oWndaWXpEQk9oODJqNHk5SGdOQzNoWjdaR3U5NU9takRUNGcwTjNmbHJhT2NmUW93YTZjVHd4bFBNY0hfLTJCSFB1N3c?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 6,
-     "source": "Weverse",
-     "title": "ILLIT 커뮤니티 포스트 - 글릿~~ 벌써 PRESS START 앙코르",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5aaE1vb0xRTG5fT2NHblhNSFpWSWFtalNrQUh3YzFuYjNleUstZm5HakxwQ1BhazJKczhOU3RMbm9vNUdCZVZ2a2FxVU92SEJjTmtLb3BHTEtKNFY2Rmc?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -599,6 +400,26 @@
      "image_via": "AI 挑选",
      "url": "https://news.yahoo.co.jp/articles/42cc16c794e40146b0c3c4b31e03aceac8324e99",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "ILLIT、日本の伝説雑誌『FRUiTS』とコラボ 日本ストリートカルチャーで“ILLITコア”表現",
+     "highlight": "『FRUiTS』とコラボ",
+     "image": "https://static.sanyonews.jp/image/article/size1/c/c/8/a/cc8a68666a0c0ab2af51729864d4d114_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1951636?rct=oricon_music&kw=%E7%A6%8F%E7%A5%B1",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "아일릿, 컴백 전부터 인기몰이…\"스포티파이 사전 저장 1위\"",
+     "highlight": "스포티파이 사전 저장 1위",
+     "image": "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dispatch.co.kr/2349682",
+     "weight": "normal"
     }
    ],
    "subtitle": "アイリット · 日本公演特别关注",
@@ -680,6 +501,31 @@
     "bg": "#F7F0E9",
     "fg": "#1E1A18",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
+   "facts": [],
+   "last": {
+    "date": "2026-10-25",
+    "headline": "Rockstar Games Confirms Unexpected Change From Grand Theft Auto V in GTA 6",
+    "url": "https://comicbook.com/gaming/news/gta-6-grand-theft-auto-v-rockstar-games-feature-change/"
+   },
+   "name": "GTA 6",
+   "quiet": true,
+   "section": "游戏",
+   "status": "定于 2026 年 11 月 19 日发售（PS5 / Xbox Series X|S）· PC 版未公布",
+   "stories": [],
+   "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
+   "theme": {
+    "accent": "#FF5FA2",
+    "alt_accent": "#C2185B",
+    "alt_bg": "#FFB25B",
+    "alt_fg": "#1E1033",
+    "bg": "#1E1033",
+    "fg": "#FFF1F6",
+    "font": "sans",
     "split": true
    }
   },

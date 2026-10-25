@@ -298,12 +298,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.hk01.com/di/media/images/dw/20261025/1191089177463099392073619.png/1a5mKirrOkXnC6ImjnmBbpUlSHbhIpSPNWdKyTVnSsk?v=w1280r16_9": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.image.st-hatena.com/image/scale/c2e8df5634954e295fc91f777861de93e405f009/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2FM%2FMORE_SMILEs%2F20261019%2F20261019181812.png": {
   "w": 1300,
   "h": 726,
@@ -346,6 +340,12 @@
   "h": 1125,
   "target": 720,
   "v": 3
+ },
+ "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
  },
  "https://cdn.theouterhaven.net/wp-content/uploads/100_0578-scaled.jpg": {
   "w": 2560,
@@ -474,6 +474,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-test-screening-reactions-praise-doctor-doom-as-one-of-the-mcus-best-villains-ab230632.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
+ },
  "https://comicbookmovie.com/images/articles/banners/before-hbos-harry-potter-series-arrives-the-films-get-a-bigger-art-book-with-fantastic-beasts-added-ab230566.jpg": {
   "w": 1500,
   "h": 844,
@@ -581,6 +587,12 @@
   "h": 1000,
   "target": 1280,
   "v": 3
+ },
+ "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/furano.jpg": {
   "w": 1962,
@@ -3280,12 +3292,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.boardoftheworld.com/wp-content/uploads/2025/07/Capita-Dark-Horse-Review-2026.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102319226971.jpg": {
   "w": 690,
   "h": 460,
@@ -3547,12 +3553,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.slashfilm.com/img/gallery/marvel-fans-slam-avengers-doomsday-trailer-over-captain-america-joke/l-intro-1792950198.jpg": {
-  "w": 1600,
-  "h": 899,
-  "target": 1280,
-  "v": 3
- },
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
@@ -3570,6 +3570,12 @@
   "h": 899,
   "target": 720,
   "v": 3
+ },
+ "https://www.switchbacktravel.com/sites/default/files/images/articles/Smith%20Level%20MIPS%20ski%20helmet%20%28close%20up%29.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
  },
  "https://www.switchbacktravel.com/sites/default/files/images/articles/ski-binding-header.jpg": {
   "w": 1200,

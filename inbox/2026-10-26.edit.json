@@ -37,21 +37,31 @@
    "refs": [
     9
    ]
+  },
+  {
+   "headline": "Avengers: Doomsday Test Screening Reactions Praise Doctor Doom As One Of The MCU's Best Villains",
+   "highlight": "Praise Doctor Doom",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
   }
  ],
  "_covered": {
-  "漫威电影": 10,
-  "GTA 6": 4,
-  "A2O LITE": 3,
+  "漫威电影": 19,
+  "GTA 6": 10,
+  "A2O LITE": 6,
   "周杰伦": 3,
-  "ILLIT": 2,
+  "ILLIT": 6,
   "日本顶级网球赛事": 2,
   "MMORPG 新作": 1,
   "哈利波特剧集": 1,
   "猫用品": 1,
   "あつ森": 1,
   "滑雪": 1,
-  "绝区零": 1
+  "绝区零": 1,
+  "Astrae Oratio": 5
  },
  "GTA 6": [],
  "A2O LITE": [
@@ -61,15 +71,18 @@
    "blurb": "A2O LITE《NEON》拿下今日人气歌谣第1位，累计4冠。",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    6
    ]
   },
   {
-   "headline": "\"要这样踢！\"李秀满，亲自为A2O LITE成员I-Ching指导舞蹈动作",
-   "highlight": "",
+   "headline": "サニー、叔父イ・スマン自慢したくなる熱血指導…A2O LITEに直接振付",
+   "highlight": "A2O LITEに直接振付",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    4,
+    5,
     1
    ]
   },
@@ -99,6 +112,24 @@
     "place": "ソウル"
    },
    "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-40220125-nksports-000-3-view.jpg?exp=10800"
+  },
+  {
+   "headline": "ILLIT、日本の伝説雑誌『FRUiTS』とコラボ 日本ストリートカルチャーで“ILLITコア”表現",
+   "highlight": "『FRUiTS』とコラボ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "아일릿, 컴백 전부터 인기몰이…\"스포티파이 사전 저장 1위\"",
+   "highlight": "스포티파이 사전 저장 1위",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "日本顶级网球赛事": [
@@ -185,6 +216,22 @@
     1
    ],
    "image": "https://happygamer.com/wp-content/uploads/2026/10/zenless-zone-zero-drops-truvia-enemy-dossier-with-season-3-spoilers.jpg"
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "“테스터 93%가 출시 후 플레이 의향”…엔씨, ‘아스오라’ 글로벌 CBT 성적 공개",
+   "highlight": "93%가 출시 후 플레이 의향",
+   "blurb": "엔씨 ‘아스트라에 오라티오’ 글로벌 CBT 누적 플레이타임 8만 시간, 응답자 93%가 정식 출시 후 플레이하겠다고 답했다.",
+   "weight": "lead",
+   "refs": [
+    4,
+    1,
+    2,
+    3,
+    5
+   ],
+   "image": "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg"
   }
  ]
 }
