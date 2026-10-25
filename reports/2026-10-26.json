@@ -1,6 +1,6 @@
 {
  "date": "2026-10-26",
- "edit_sig": "4141b7299bd7",
+ "edit_sig": "a3b0a7421530",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -38,27 +38,6 @@
    "pending": [
     {
      "date": "2026-10-25",
-     "n": 11,
-     "source": "games.gg",
-     "title": "GTA 6 加油與補給機制詳解：全新系統運作方式",
-     "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxOeEJCRDg1R1JfREtIVzg2WWFMSDUteHQ1SlpQdE9IUGMwOTBrSGZBQV8xZUJUeWUzNXVubWtCd2N6Y3QteElvTkY4QzlUMzFMRk8wdWVRQ3EtVGtHb3V4WVQyNGlmSU04U245NVE3WFpicExTaHFnRUIyWmFleS0wSndSV01mVDFDSVZhX0FQWW1RNWFPTURidVQ4eGVGdU43Z0c2dDlBX3BtZktLdF94S3g1YVQ2b1RFVFdQVk5sRWRBV3dzWE9xc1JrVjNyQlctMkN6LXl6R0d0LTBsZWhmSW9Cc1hMQkhqUWJNY01oVFhjYnBJbFJRVFBtQV9rMjNpSVNrZ3VEcmF1a0FCSzMw?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 12,
-     "source": "NPR",
-     "title": "Grand Theft Auto fans are already calling off from work ahead of GTA6 release",
-     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOcmxwUkxhZ2IydmdCNWRFY3J1eG13dVVHZFl0SE5jMkJ2Q3FpSTFURTV2bjRaWTludU1EdHJCNEI5LUJ0Ul9iTnFaZjBoT29oSjdoVEZ4WlVCTjl2czFKaE1Nb2FpNWZteG5WVG9OWWFSY29XQ1dfSllVN081REE2V2R2d2thUmFUdXJlY1NVNkEyRzJWNmVqaFFWNVJQXzh1TUh3Vkx5bU5wVlFRS1Z6cU1WNDRpTzNVaGlCY0NrWQ?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 13,
-     "source": "Game Rant on MSN",
-     "title": "GTA 6 is taking its marketing to a whole new level",
-     "url": "https://www.msn.com/en-us/news/other/gta-6-is-taking-its-marketing-to-a-whole-new-level/ar-AA2g128e"
-    },
-    {
-     "date": "2026-10-25",
      "n": 14,
      "source": "games.gg",
      "title": "GTA 6 電視廣告剪輯與首發預告片不同",
@@ -80,7 +59,28 @@
     }
    ],
    "section": "游戏",
-   "stories": [],
+   "stories": [
+    {
+     "blurb": "NPR reports that Grand Theft Auto fans are already planning sick days ahead of the GTA 6 release.",
+     "date": "2026-10-25",
+     "headline": "Grand Theft Auto fans are already calling off from work ahead of GTA6 release",
+     "highlight": "calling off from work",
+     "image": "https://media.npr.org/include/images/facebook-default-wide-s1400-c85.jpg",
+     "image_via": "og:image",
+     "url": "https://www.npr.org/2026/10/25/nx-s1-6012317/grand-theft-auto-fans-are-already-calling-off-from-work-ahead-of-gta6-release",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "GTA 6 is taking its marketing to a whole new level",
+     "highlight": "marketing",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g1rsR.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/news/other/gta-6-is-taking-its-marketing-to-a-whole-new-level/ar-AA2g128e",
+     "weight": "normal"
+    }
+   ],
    "subtitle": "Grand Theft Auto VI · 侠盗猎车手 6",
    "theme": {
     "accent": "#FF5FA2",
@@ -171,48 +171,6 @@
    "pending": [
     {
      "date": "2026-10-25",
-     "n": 21,
-     "source": "IMDb",
-     "title": "New Chinese ‘Avengers: Doomsday’ Description Puts the Spotlight Back on Marvel’s Original Heroes",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5FTGRad1poMXhDZkxWNW1ROGxSUzZtY1NDdE5MUmxEZkpid3d0ejZGWGJLRHVlaDR6YXNGS0tETGs5aGR1YmVXdVZvb25DNjc1eGlRa1RzVl9lU1FTcUsyeWRpdHF4d28?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 22,
-     "source": "中時新聞網",
-     "title": "飛天車成真！MCU商機添翼- 財經要聞- 工商時報",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9jb0oyb0J6UXB4c2JRd2toU3gwaGR6emJiX1YycndOUEVrYndJYXg0dlpFYWhGVWN5aHd4cS1Jamw5aW15MHZseFlXX3ZBVk9aRHhqSURZMl9NYVh6TEJWd0pVNXllVVVkNmpn?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 23,
-     "source": "Knight Edge Media",
-     "title": "Peter Claffey Cast as Beast in Marvel Studios ‘X-Men’ Reboot (EXCLUSIVE)",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNc2lGdWV1UTJnRVFPM2paQXdZbUcyZjRTc3VJM0x1QnktakVqY0pNbExUT3l6OTczSjBnOXlGeUdIZlpld3dOQ1BhdDlQOVZZdjBTamJaTm5HVExYT1BMZzRCbXlHc1planA4MElRZTRYOW9oRS1xbUROekJDbXJLempLd1R2dnhiVElTQV9RcFQtdXpuZjlYOGpabU5ZMGtlQ1dMQWF3c0XSAa4BQVVfeXFMTTBKZHJLSVNIZzBUcVVTNE1HeG9ZNDdXQjNuT3VTS1ppWmFfZEdObmRPbHZBbjFKQzZNbV9CakN3WDJfaW1Td0NPSDF3aUwxSGNyYWg0RlNkeGZhNkV2Y1FwNHFreDBKS0VaSm41VWZOelFHYms4ekZhcVoyMnBscjJJQ1gtMHNyZVI4ci1XUDEwbzZzNjhLd01IRlgyQmlnZkJKQ1FwMDZ0a00waVNB?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 24,
-     "source": "IMDb",
-     "title": "Chris Pratt Officially Confirms Star-Lord's MCU Fate After 3-Year Absence",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1mTlB2NDdWdzcxS2lSWUdwbW9Xb1luNmtYV1FKU1FITmxVT0lVYk5qRGZ1d3VtN1dsVEJ3YTFKWmFqLUVvOHZPQmVkY0w1b0Q5ZjI1N1dXUURNR3ZRbkYtV2FrTFZpVEE?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 25,
-     "source": "note",
-     "title": "[MCU Movie Review] Shang-Chi and the Legend of the Ten Rings | More than just kung fu action, the melancholy of Hong Kong noir",
-     "url": "https://note.com/dreamy_poppy6605/n/n2b2ddd5fd5de?hl=en"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 26,
-     "source": "IMDb",
-     "title": "‘Avengers: Doomsday’ Description Teases New Allies as Earth’s Mightiest Heroes Prepare for an Unlikely Team-Up",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBSRk8zblRRdFduZUREdjhGbWt5S2ItSmV2TUExQ2hDX1RaYUFVSmhrbFI2Z0tXMXkzdnA2VHk5UWl1c1REcmVkT3htWF9PdEhxOWhEaG80SXpIdEJEUUdyUE1BY3lQVm8?oc=5"
-    },
-    {
-     "date": "2026-10-25",
      "n": 27,
      "source": "玩具人 TOY PEOPLE",
      "title": "MCU 重啟版《X戰警》新任「野獸」演員出爐！《七王國的騎士》男主角加入漫威宇宙",
@@ -242,16 +200,6 @@
    ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-25",
-     "headline": "Williams F1 Fires Up an ‘Avengers: Doomsday’ Teaser That Puts Doctor Doom on the Starting Grid",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.6yV0nhpcJFR2WHAzYdQ_-A&pid=News&w=500",
-     "image_via": "转载 www.imdb.com（Bing 缩略图）",
-     "url": "https://www.imdb.com/news/ni66079398/?ref_=nmnw_art_perm",
-     "weight": "hero"
-    },
     {
      "blurb": "A new Avengers: Doomsday teaser shows Steve Rogers taking up Mjolnir alongside Thor and several Captain Americas.",
      "date": "2026-10-25",
@@ -290,6 +238,16 @@
      "image": "https://hermes.media.transform.aol.com/adc8b94bb6e2147cca69e2f1d58daea67429d048/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/b1a3e2ce-5eea-3f93-bcbf-d14467f9f288/9c9f7c12-eb40-4073-b04b-d1183b714500.jpg",
      "image_via": "og:image",
      "url": "https://www.aol.com/articles/wild-avengers-doomsday-theory-suggests-073017000.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "Avengers: Doomsday Test Screening Reactions Praise Doctor Doom As One Of The MCU's Best Villains",
+     "highlight": "Praise Doctor Doom",
+     "image": "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-test-screening-reactions-praise-doctor-doom-as-one-of-the-mcus-best-villains-ab230632.jpg",
+     "image_via": "转载 comicbookmovie.com",
+     "url": "https://www.imdb.com/news/ni66079289/?ref_=tt_nwr_1",
      "weight": "normal"
     }
    ],
@@ -340,34 +298,6 @@
    "name": "日本顶级网球赛事",
    "pending": [
     {
-     "date": "2026-10-25",
-     "n": 3,
-     "source": "Yahoo!ニュース",
-     "title": "【女子テニス】大坂なおみ 4年ぶり東レPPO出場へ意気込み 「心の師」錦織圭さんの後を継ぐ（スポニチアネックス）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBWNUFsemc4MlhJMnUydmluUUM3Z2NvVjRLM2RCNmx0S0pXNFI1bV9SYnU3OUg4UjR2MHE2Z1VoTnhONDhUdDl2eTVhN2dSS2JoNkprR21PeDBjeEFiY19GelpQMTVuakVGOVJTY0FVeFFFM0drWExuQVhUTG5Eazg?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 4,
-     "source": "ライブドアニュース",
-     "title": "大坂なおみが4年ぶり東レPPO出場へ、心の師・錦織圭さんの後を継ぐ決意 (2026年10月26日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5PYzdzdXZmYUVaMFpUWEdTR2h3MGktWTY4RnJGLUFqY2t6WW40T00yZEhNeVQ1VDg1QzBvczhpQldjbzN5LTg1YmEwSk5JeGdtNmVqd2R6bFdKYlBOQUE?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 5,
-     "source": "Daily Tribune",
-     "title": "Eala faces busy day",
-     "url": "https://tribune.net.ph/2026/10/25/eala-faces-busy-day"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 6,
-     "source": "ABS-CBN on MSN",
-     "title": "Eala teams up with Krawczyk for Tokyo doubles",
-     "url": "https://www.msn.com/en-ph/sports/tennis/eala-teams-up-with-krawczyk-for-tokyo-doubles/ar-AA2fZjwS"
-    },
-    {
      "date": "2026-10-24",
      "n": 7,
      "source": "Dellows News",
@@ -389,12 +319,32 @@
     },
     {
      "blurb": "",
+     "date": "2026-10-25",
+     "headline": "【女子テニス】大坂なおみ 4年ぶり東レPPO出場へ意気込み 「心の師」錦織圭さんの後を継ぐ",
+     "highlight": "4年ぶり東レPPO出場",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261026-00000006-spnannex-000-5-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/15bd05a015c0ede872f53c73a95dc95a97fa34cd",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-24",
      "headline": "Belarusian Aliaksandra Sasnovich advances into main draw of Toray Pan Pacific Open",
      "highlight": "main draw of Toray Pan Pacific Open",
      "image": "https://eng.belta.by/images/storage/news/with_archive/2026/000028_1792916227_187922_big.jpg",
      "image_via": "og:image",
      "url": "https://eng.belta.by/sport/view/belarusian-aliaksandra-sasnovich-advances-into-main-draw-of-toray-pan-pacific-open-187922-2026/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "Eala faces busy day",
+     "highlight": "",
+     "image": "https://images.assettype.com/tribune/2026-10-25/vbgunxe0/alex-eala.JPG?w=1200&auto=format&q=70&rect=0%2C107%2C2048%2C1152&h=675&fit=crop",
+     "image_via": "og:image",
+     "url": "https://tribune.net.ph/2026/10/25/eala-faces-busy-day",
      "weight": "normal"
     }
    ],
@@ -416,13 +366,6 @@
    "name": "三星手机",
    "pending": [
     {
-     "date": "2026-10-23",
-     "n": 1,
-     "source": "Gadgets 360",
-     "title": "Samsung Galaxy S27 Pro - Specifications, Release Date, Latest News (25th October 2026)",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9fanBkMlA1YjhicVNTZWw3d2liVm9oaUpFdXFXa18ySWcxNm5RRDJia2RVU1pLMVBMOEQ0aWhVclJncVJkejVaUlhXQmh1cHdFUTFBYWMwak5qSmh4MHFzN0hfN0VqSlR3YlFCeHNNRldYN2NzNE1QV3M1UQ?oc=5"
-    },
-    {
      "date": "2026-10-25",
      "n": 2,
      "source": "XenoSpectrum",
@@ -431,7 +374,19 @@
     }
    ],
    "section": "好物",
-   "stories": [],
+   "stories": [
+    {
+     "blurb": "Gadgets 360's running page on the Galaxy S27 Pro covers specifications, release date and the latest news.",
+     "date": "2026-10-23",
+     "headline": "Samsung Galaxy S27 Pro - Specifications, Release Date, Latest News",
+     "highlight": "Release Date",
+     "image": null,
+     "source": "Gadgets 360",
+     "source_icon": "https://www.gadgets360.com/static/desktop/images/gadgets360_57x57.png",
+     "url": "https://www.gadgets360.com/samsung-galaxy-s27-pro-price-in-india-137348",
+     "weight": "lead"
+    }
+   ],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
    "theme": {
     "accent": "#4C8DFF",
@@ -714,22 +669,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 2,
-     "source": "釧路新聞電子版",
-     "title": "猫グッズ求め会場にぎわう【釧路市】",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1fa2ZzLW5ONXEyeFdYRUlUb3J4T1h3Q1RIalZFN0lmTk9EWUw3eTlyVXBneDV3QWNYbnF5b0RRS2NRSGl2ODRuXzdWRUpFZ1J4cTZv?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 3,
-     "source": "Dellows News",
-     "title": "ジョージスチュアートティーが猫柄アドベントカレンダーをハンズ限定で10月下旬発売へ",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE84eWVwaEZfSlFLck9Hb2JQRkpneDhDc2FhTGZ3VVREX01LQkRoSHc4bjRORFFOd2t4bTZLQXNkdElxM29WR1E?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -741,6 +680,26 @@
      "image_via": "AI 挑选",
      "url": "https://trilltrill.jp/articles/5130807",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "猫グッズ求め会場にぎわう【釧路市】",
+     "highlight": "",
+     "image": "https://kushironews.jp/wp-content/uploads/2026/10/MN20261026T711CAw00010_P1130TPT50327KSB_resized.jpg",
+     "image_via": "og:image",
+     "url": "https://kushironews.jp/2026/10/26/712129/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-19",
+     "headline": "ジョージスチュアートティーが猫柄アドベントカレンダーをハンズ限定で10月下旬発売へ",
+     "highlight": "10月下旬発売",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/785431_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/785431/",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",
@@ -833,7 +792,7 @@
    }
   },
   {
-   "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
+   "cover": null,
    "facts": [],
    "last": {
     "date": "2026-10-24",

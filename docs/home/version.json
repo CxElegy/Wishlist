@@ -1,14 +1,14 @@
 {
- "admin": "6989f23289ae",
- "admin-ai": "441c89590d2d",
+ "admin": "c11eba713b32",
+ "admin-ai": "824b1ea66cbd",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "3a09ee7e"
+   "a2573ac6"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "51667458"
+   "5ccab147"
   ]
  },
  "admin-boards": "abc6962b8773",
@@ -22,11 +22,11 @@
    "aee2783e"
   ]
  },
- "admin-emblem": "4dd6d8bb8ff9",
+ "admin-emblem": "086db9f82dd6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "edd6c0bc"
+   "41954e6d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -39,11 +39,11 @@
  },
  "admin-members": "cd36e68f0533",
  "admin-members_marks": {},
- "admin-now": "634d5a3a559f",
+ "admin-now": "6baf7c1ae0f3",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7cf0fee7"
+   "329a43b1"
   ],
   "queue": [
    "いまの状況",
@@ -55,14 +55,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "28c0edbf"
+   "3f62e13a"
   ]
  },
- "admin-system": "229e43722896",
+ "admin-system": "82cf4fba1795",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d38b1029"
+   "ed55f23c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -70,11 +70,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6d4b2dea"
+   "fd13b14e"
   ]
  },
  "admin_marks": {},
- "heat": "9933bcba4218",
+ "heat": "2975851db7a7",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -82,18 +82,18 @@
   ],
   "movers": [
    "前週比",
-   "5b5f2a6c"
+   "bca1c0e1"
   ],
   "ranking": [
    "ランキング",
-   "b46a876a"
+   "4385d634"
   ]
  },
- "index": "6ddf23bb9ad6",
+ "index": "92126e97869b",
  "index_marks": {
   "front": [
    "トップ",
-   "d60e7fea"
+   "c2d53bc6"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "2d895c7b"
+   "46494e64"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -113,15 +113,15 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "a29cacf2"
+   "5bee9351"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "41eab689"
+   "0d0d3fa9"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "a3b537d9"
+   "7c5be5ce"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -133,7 +133,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "01c37d59"
+   "f8b88fcd"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -192,6 +192,6 @@
    "578d630c"
   ]
  },
- "updated": "10.26 07:17",
+ "updated": "10.26 07:22",
  "wishlist": "a1ae5248f244"
 }
