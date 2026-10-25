@@ -211,12 +211,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
-  "w": 1350,
-  "h": 1350,
-  "target": 1280,
-  "v": 3
- },
  "https://assets.mmoexp.com/images/202609/d1bc0f44ac2c34739074a26025e26f7fe194850c.png": {
   "w": 2048,
   "h": 553,
@@ -665,6 +659,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -876,12 +876,6 @@
   "target": 1280,
   "v": 3
  },
- "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
-  "w": 1200,
-  "h": 677,
-  "target": 720,
-  "v": 3
- },
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1346,fit=cover,q=high,sharpen=2/21/2026/10/2026102118251711514_1.jpg": {
   "w": 1200,
   "h": 1346,
@@ -948,6 +942,12 @@
   "h": 1203,
   "target": 1280,
   "v": 3
+ },
+ "https://images.kbench.com/kbench/article/thumbnail/282596_thumb.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://images.khan.co.kr/article/2026/10/20/news-p.v1.20261020.4c924d72449246b59d479a2890b8217c_P1.jpg": {
   "w": 1200,
@@ -1136,6 +1136,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZYPt.img": {
   "w": 2200,
   "h": 1274,
@@ -1163,12 +1169,6 @@
  "https://img.biggo.com/3EL1nNsIEMVU_JqZ5qdtKWtO6W6Z13ZkiSY4yU_g_VY/fit/1720/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwL2FlZjY4ZjdiLTNmZWQtNDMyMS04YTRiLTYzMWEwZDZkOTQ3Yl8xNzkyNTQ2Njc0X2RlZmF1bHQuanBn.webp": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://img.biggo.com/VJOVFWFYgwAqOUgg8RN9WgnUvCcT-w5N4pl5piDR9R4/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2luZm9fY2FyZC8yMDI2LTEwL2Y4YjcwYjZkLTI2OTQtNGNmZS1iYmQ2LTJiN2I1MTU4MDg2MV8xNzkyNDgxMjgyX2RlZmF1bHQud2VicA.jpg": {
-  "w": 1200,
-  "h": 671,
   "target": 1280,
   "v": 3
  },
@@ -1422,13 +1422,6 @@
   ],
   "why": "看不清"
  },
- "https://img1.mydrivers.com/img/20261020/2c7ec5a4-146c-479a-bccb-c591e2e7fda0.png": {
-  "w": 600,
-  "h": 665,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.27
- },
  "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
   "w": 1035,
   "h": 582,
@@ -1601,12 +1594,6 @@
   "target": 1280,
   "v": 3
  },
- "https://media2.firstshowing.net/firstshowing/img18/avengersdoomsdaytsrbasebtw1.jpg": {
-  "w": 2000,
-  "h": 889,
-  "target": 1280,
-  "v": 3
- },
  "https://motoryokoblog.com/wp-content/uploads/2026/09/illit_18227_fv.png": {
   "w": 1200,
   "h": 628,
@@ -1650,6 +1637,12 @@
   "h": 701,
   "target": 720,
   "v": 3
+ },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnUIo5aLx7VGhUM94AgYAmue4y3L4IVYWvzCYQ05nGaoziDfQXA0JPcenfBsdbXlpRUiJFLk7bIz7CW0_xuWIjh4hftBqkzW4vmUup2yCDqtT": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnW_f1Nw4v_IFUYoJ3RcmwXVdI3lwNQ0yKLZD-OlpEGzDUM-UW1TDXzyGrQPbp_MrWYQoxy8NkHzIJP07j5ZXYbvmQKUbtabJmuxRqA2ie91RBJ3TlicUbynDvsKuTXyHhA==": {
   "w": 934,
@@ -2295,6 +2288,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prtimes.jp/img/89743/31/resize/d89743-31-d7ad359f25c3e166058d-0.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://punchdrunkcritics.com/wp-content/uploads/2026/10/pdc_avengersdoomsday8.jpg": {
   "w": 1280,
   "h": 720,
@@ -2348,6 +2347,12 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://s.eximg.jp/exnews/feed/nekochan/cc/nekochan_cat50306/nekochan_cat50306_1.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
@@ -2431,12 +2436,6 @@
   "w": 3000,
   "h": 2000,
   "target": 720,
-  "v": 3
- },
- "https://static-cdn.nextapple.tw/prod/2026-10/21B4327F7804DE858182B13811255CD4/a1725a0b6579509ecdb10e63909e9d16_1280.jpeg": {
-  "w": 1280,
-  "h": 960,
-  "target": 1280,
   "v": 3
  },
  "https://static.beebom.com/wp-content/uploads/2026/10/GTA-6-Cars-suggest-a-Live-Action-Trailer-Is-Coming.jpg": {
