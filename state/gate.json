@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-25T01:20:21+00:00",
+ "checked": "2026-10-25T01:37:32+00:00",
  "fired": {
-  "at": "2026-10-25T01:20:21+00:00",
+  "at": "2026-10-25T01:37:32+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -51,18 +51,19 @@
    "items": [
     "BLEACH Mirrors High",
     "dota2",
-    "The Mandalorian",
-    "GTA 6"
+    "GTA 6",
+    "漫威电影"
    ],
    "need": true,
-   "sig": "d652bd08a2ed",
+   "sig": "5dad9934bc6b",
    "waiting": [
     "あつ森",
     "A2O LITE",
     "チェーンソーマン",
-    "哈利波特剧集"
+    "哈利波特剧集",
+    "The Mandalorian"
    ],
-   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:55 から）"
+   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 5 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:55 から）"
   },
   "photos": {
    "claude": true,
