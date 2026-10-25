@@ -181,6 +181,25 @@ def stash(emblems, site, stem, upload, base):
     return out
 
 
+def unbroken(emblems, photo, fetch=None):
+    """公開の箱の網址の小元素のうち、壊れたもの（emblem_fill.broken_image）を外す。→ 新しいリスト。読めないものは残す（次の回）。"""
+    import urllib.request
+    from PIL import Image
+    import emblem_fill
+    fetch = fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read())
+    out = []
+    for x in emblems or []:
+        u = str(x.get("image") or "") if isinstance(x, dict) else ""
+        if f"/storage/v1/object/public/{BUCKET}/" in u and x.get("shape") not in ("logo", "icon", "badge"):   # 自分で切り抜いて上げたものだけ
+            try:
+                if emblem_fill.broken_image(Image.open(io.BytesIO(fetch(u))), photo):
+                    continue
+            except Exception:
+                pass
+        out.append(x)
+    return out
+
+
 def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
     """版面 1 つ → boards.config に足す分 {emblem, theme, emblem_*, emblem_state}。"""
     import emblem
@@ -197,6 +216,9 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
             except emblem_fill.OutOfTime:
                 r = {"state": "failed", "note": "時間切れ"}
         got = (yaml.safe_load((root / "items.yaml").read_text(encoding="utf-8"))["items"] or [{}])[0]
+        recheck = int(((board.get("config") or {}).get("emblem_state") or {}).get("bv") or 0) < emblem_fill.BROKEN_V
+        if recheck and got.get("emblem"):   # 前の回に公開の箱へ上げた小元素は emblem_fill.broken_cuts が見ない（emblems/ の手元の画像だけ）→ ここで同じ規則（ポケモン 2・Mrs. GREEN APPLE 1）
+            got["emblem"] = unbroken(got["emblem"], emblem_fill.needs_face(item))
         stem = board.get("wd") or f"b{board['id']}"
         cfg = board.get("config") or {}
         add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}
@@ -210,6 +232,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
             # 「名簿にいる人を残す」では字の順で取った前の脇役（Aino・Alhaitham…）が全部残っていた。字だけ・図・古い写真は外す
             if not add.get("emblem"):
                 keep = [x for x in cfg.get("emblem") or [] if not emblem_fill.not_emblem(urllib.parse.unquote(str(x.get("image") or "")))]
+                keep = unbroken(keep, emblem_fill.needs_face(item))   # 前のものを残すときも頭が切れた・ぼやけたものは残さない
                 if keep:
                     add["emblem"] = keep
         if add.get("emblem"):   # 同じ画像は 1 枚（公開の箱の名前は中身の指紋：スプラ 3 の Agent 8 が 2 回）・キャラでないページは外す
@@ -223,7 +246,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
     have = len(add.get("emblem") or []) if "emblem" in add else len(got.get("emblem") or [])
     note = re.sub(r"新しい記事が来たらすぐ、来なくても \d+ 時間後", f"{RETRY_HOURS} 時間後", str(r.get("note") or ""))  # 店長の文のまま（材料の指紋・毎時）だと中身と合わない
     add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES,
-                         "nv": emblem_fill.NAMES_V}   # 名簿の規則の版（上がると、そろった版面も 1 回名簿を数え直す）
+                         "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}   # bv：公開の箱の小元素を見直した壊れ方の規則の版   # 名簿の規則の版（上がると、そろった版面も 1 回名簿を数え直す）
     return add
 
 
@@ -254,6 +277,9 @@ def due(boards, now):
             # そろっていても、届かなかったキャラの版面も（RETRY_HOURS を待たずに）、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
             # 届かなかった版面の数え直しは途中（running）より先（1.5）：途中の版面は 10 枚ずつで何十回も続き、後ろの 142・146 が 24 時間待たされていた
             out.append((4 if st.get("state") == "ok" else 1 if zero else 1.5, st.get("at", 0), b))
+        elif not zero and int(st.get("bv") or 0) < emblem_fill.BROKEN_V:
+            # 公開の箱の小元素を今の壊れ方の規則（頭が切れた・ぼやけた）でまだ見ていない版面は、届かなかった・済みでも待たずに 1 回（ポケモンが 24 時間待ち）
+            out.append((1.5, st.get("at", 0), b))
     return [b for *_, b in sorted(out, key=lambda t: (t[0], t[1]))]
 
 
