@@ -649,6 +649,11 @@ SIDE_ZONE = 0.65   # 左右の端は上のこの割合だけ見る（下は胸�
 SIDE_MAX = 0.10    # 左右の端（上 SIDE_ZONE）に人物が当たっている割合がこれを超える = 体が枠で切れている
 TOP_MAX = 0.5      # 上の端の人物の割合がこれを超える = 漫画のコマ・顔のアップを枠ごと切った
 TOP_TOUCH = 0.03   # 上の端にこれ以上当たっていたら、顔まで切れていないか確かめる
+HEAD_ROWS = 3      # 上の端のこの行数（px）を見る
+HEAD_EDGE = 0.2    # 上の HEAD_ROWS 行に人物が横幅のこの割合以上 = 頭のてっぺんが切れている（BLEACH Mirrors High：髪が上の端で切れた絵。顔が全部入っていても使わない）
+FACE_PX_MIN = 80   # 写真：切り抜く前の解像度で顔の幅がこれ未満 = 小さすぎて小元素に拡大するとぼやける
+SHARP_MIN = 1.0    # 写真：書き出す大きさ（420×520 以内）の顔の輪郭の鋭さ（上位 1% の明るさの傾き ÷ 明るさの幅）がこれ未満 = ぼやけている
+                   # （2026-10-25 店長の実写・人物の 66 枚：哈利波特剧集 Oliver Wood 0.51・FROM のピントの甘い場面 3 枚 0.61〜0.88・Vaundy のライブの場面 0.90 の 5 枚が下、ほかは 1.09 以上）
 FACE_TOP = 0.04    # 顔の上端が高さのこの割合より上 = 顔が上の端で切れている
 EYE_TOP = 1.4      # 目の高さ < 目〜口の距離 × これ = 額まで切れた（YuNet の目・口。harness/emb_check.EYE_TOP と同じ：哈利波特 Dominic 197×101 は haar の顔の上端では拾えなかった）
 AREA_MIN = 0.12    # 人物の面積がこれより小さい = 小さすぎる
@@ -656,6 +661,49 @@ CUT_MIN = 64       # 書き出す切り抜きの短い辺がこれ未満 = 切�
 CUT_WIDE = 3       # 横が縦のこの倍より長い切り抜き = 帯（BLEACH Mirrors High 209×45）。人の胸像・全身は横長にならない
 DARK_MAX = 0.16    # 写真・場面の切り抜きの明るさ（人物部分の平均）がこれ未満 = 暗すぎて何かわからない
 SOFT_MAX = 0.18    # 半透明（輪郭がにじんだ）部分がこれより多いものは使わない
+
+
+def head_cut(img):
+    """切り抜きの上の HEAD_ROWS 行に人物が横幅の HEAD_EDGE 以上 = 頭のてっぺんが上の端で切れている。"""
+    import numpy as np
+    a = np.array(img.convert("RGBA").getchannel("A"))[:HEAD_ROWS] > 128
+    return bool(a.size) and float(a.any(axis=0).mean()) >= HEAD_EDGE
+
+
+def face_sharp(img):
+    """写真の切り抜き → (いちばん大きい顔の幅 px, 鋭さ) か None（顔のモデルがない・顔がない）。
+    鋭さは書き出す大きさ（save_cut と同じ 420×520 以内）で測る：拡大したぼやけた場面（輪郭が何 px にも広がる）は小さい。"""
+    try:
+        import cv2
+        import numpy as np
+        import face_id
+        eng = face_id.engine()
+    except Exception:
+        return None
+    if eng is None:
+        return None
+    from PIL import Image
+    im = img.convert("RGBA")
+    box = im.getchannel("A").getbbox()
+    if box:
+        im = im.crop(box)   # 書き出すのは人物の範囲だけ（rembg の結果は元の画像の大きさのまま）
+    w0 = im.width
+    im.thumbnail((420, 520))
+    bg = Image.new("RGBA", im.size, "white")
+    bg.alpha_composite(im)
+    bgr = cv2.cvtColor(np.array(bg.convert("RGB")), cv2.COLOR_RGB2BGR)
+    with _YUNET:
+        eng[0].setInputSize((bgr.shape[1], bgr.shape[0]))
+        f = eng[0].detect(bgr)[1]
+    if f is None or not len(f):
+        return None
+    x, y, fw, fh = [int(v) for v in max(f, key=lambda r: r[2] * r[3])[:4]]
+    g = cv2.cvtColor(bgr[max(0, y):y + fh, max(0, x):x + fw], cv2.COLOR_BGR2GRAY).astype(float)
+    if min(g.shape) < 8:
+        return None
+    mg = np.hypot(cv2.Sobel(g, cv2.CV_64F, 1, 0), cv2.Sobel(g, cv2.CV_64F, 0, 1))[2:-2, 2:-2]
+    span = max(1.0, float(np.percentile(g, 99) - np.percentile(g, 1)))
+    return round(fw * w0 / im.width), float(np.percentile(mg, 99)) / span
 
 
 def is_sliver(w, h):
@@ -753,8 +801,11 @@ def check_whole(out, photo=False):
     top, left, right = solid[0, :].mean(), upper[:, 0].mean(), upper[:, -1].mean()
     if top > TOP_MAX:   # 上の端の半分以上が人物：漫画のコマ・顔のアップを枠ごと切ったもの（吹き出しを消した跡がえぐれる。チャドの例）
         raise ValueError(f"頭が上の端で大きく切れている（{top:.0%}：コマ・アップの切り抜き）")
+    head = float(solid[:HEAD_ROWS].any(axis=0).mean())   # head_cut と同じ（顔が全部入っていても、髪・頭のてっぺんが切れた絵は使わない）
+    if head >= HEAD_EDGE:
+        raise ValueError(f"頭のてっぺんが上の端で切れている（上 {HEAD_ROWS}px に {head:.0%}）")
     if top > TOP_TOUCH:
-        # 上の端で切れていても、顔が全部入っていれば（髪の上だけが切れている：恋次のような絵）よい
+        # 上の端に少し（HEAD_EDGE 未満：髪の先・武器の先）当たっていても、顔が全部入っていればよい
         f = face_box(out)
         if f and f[1] < h * FACE_TOP or forehead_cut(out):
             raise ValueError(f"顔が上の端で切れている（{top:.0%}）")
@@ -775,6 +826,12 @@ def check_whole(out, photo=False):
         lum = float(np.array(out.convert("L"))[solid].mean()) / 255
         if lum < DARK_MAX:
             raise ValueError(f"暗すぎて見えない（明るさ {lum:.0%}）")
+    if photo:   # 小さい顔・ぼやけた場面（拡大した剧照：哈利波特剧集 Oliver Wood）は小元素にしない
+        fq = face_sharp(out)
+        if fq and fq[0] < FACE_PX_MIN:
+            raise ValueError(f"顔が小さすぎる（幅 {fq[0]}px）")
+        if fq and fq[1] < SHARP_MIN:
+            raise ValueError(f"ぼやけている（鋭さ {fq[1]:.2f}）")
     holes = hole_share(solid) if photo else 0.0   # 絵は武器・手足のすき間も「穴」に数えてしまう（16% の正しい絵もある）ので、写真だけ
     if holes > HOLE_MAX:
         raise ValueError(f"切り抜きに穴（{holes:.1%}）")

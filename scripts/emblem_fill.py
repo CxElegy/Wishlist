@@ -1883,21 +1883,27 @@ def off_roster(item, log=print):
 
 
 def broken_cuts(item):
-    """読めない（0 バイト）・切れ端（短い辺 CUT_MIN 未満・横が縦の CUT_WIDE 倍より長い）の切り抜きの小元素 → [小元素]。
+    """読めない（0 バイト）・切れ端（短い辺 CUT_MIN 未満・横が縦の CUT_WIDE 倍より長い）・頭のてっぺんか額が上の端で切れた・
+    写真がぼやけた（emblem.SHARP_MIN）切り抜きの小元素 → [小元素]。
     網页の .emb では 60×10 の紫の帯（漫威电影 Black Panther）・209×45（BLEACH Mirrors High）になる。"""
     from PIL import Image
-    bad = []
+    bad, photo = [], needs_face(item)
     for x in item.get("emblem") or []:
         im = str(x.get("image") or "") if isinstance(x, dict) else ""
         p = emblem.sitedir.SITE_DIR / im
         if not im.startswith("emblems/") or x.get("shape") in ("logo", "icon", "badge") or not p.exists():
             continue
         try:
-            w, h = Image.open(p).size
+            im = Image.open(p)
+            w, h = im.size
         except Exception:
             bad.append(x)
             continue
-        if emblem.is_sliver(w, h) or emblem.forehead_cut(Image.open(p)):   # 額まで切れた前からの切り抜き（取るときと同じ check_whole の規則）
+        if emblem.is_sliver(w, h) or emblem.head_cut(im) or emblem.forehead_cut(im):   # 頭のてっぺん・額まで切れた前からの切り抜き（取るときと同じ check_whole の規則）
+            bad.append(x)
+            continue
+        fq = emblem.face_sharp(im) if photo else None   # 写真のぼやけ（拡大した剧照）。顔の幅は書き出したあとは縮んでいるので見ない
+        if fq and fq[1] < emblem.SHARP_MIN:
             bad.append(x)
     return bad
 
@@ -1912,7 +1918,7 @@ def drop_broken(item, log=print):
     with WRITE_LOCK:
         emblem.write_item(item["name"], keep, None)
         _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
-    log(f"  [外した] {item['name']}：読めない・切れ端の小元素 {len(bad)} 枚（{'、'.join(b.get('subject', '') for b in bad)}）")
+    log(f"  [外した] {item['name']}：読めない・切れ端・頭が切れた・ぼやけた小元素 {len(bad)} 枚（{'、'.join(b.get('subject', '') for b in bad)}）")
     return len(bad)
 
 
