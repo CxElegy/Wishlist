@@ -653,12 +653,6 @@
   "target": 1280,
   "v": 3
  },
- "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -881,6 +875,12 @@
   "w": 1200,
   "h": 1748,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
+  "w": 1200,
+  "h": 677,
+  "target": 720,
   "v": 3
  },
  "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg": {
