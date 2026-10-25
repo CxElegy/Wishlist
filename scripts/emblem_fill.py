@@ -843,6 +843,8 @@ def find_sources(item, log=print):
     → 書いたら True。"""
     if kind_of(item) != "character" or item.get("emblem_people") or item.get("emblem_category"):
         return False
+    if item.get("emblem_pool") and not item.get("anilist_id"):   # 人数を手で数えて書いた版面（dota2 のヒーロー 126）はそれが先。AniList の主役の数だけのときは探す
+        return False
     wrote = False
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
     site = _sitename(api) if api else None
@@ -1548,7 +1550,8 @@ def due(prog, items, now):
         st = status(item)
         e = prog["items"].get(item["name"]) or {}
         hint = any(item.get(k) for k in ("emblem_fandom", "emblem_api", "emblem_category", "anilist_id", "wikidata"))
-        if st["state"] == "ok" and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V):   # そろっていても名簿を今の規則で 1 回は数える
+        recount = item.get("emblem_category") and not item.get("emblem_pool")   # 分類はあるのに数えられなかった（429）：版を待たずに次の回も
+        if st["state"] == "ok" and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         h = _hours_since(e.get("failed_at"), now)
         if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")

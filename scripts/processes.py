@@ -207,7 +207,7 @@ PROCESSES = [
             {"id": "plan", "kind": "step", "lane": "ai", "title": "何を集めるか決める", "by": "ai",
              "text": "種類（emblem_kind）・名前（emblem_who）・代表作（emblem_examples）・分類（emblem_category）を items.yaml に書く", "uses": ["claude"]},
             {"id": "count", "kind": "step", "lane": "actions", "title": "主要な要素を数える（--roster）",
-             "text": "分類の人数（AniList の番号があっても分類が先）→ なければ AniList の主役の人数 · 実写（emblem_people）は Wikidata の出演者（P161）の人数 → emblem_pool（上限）· そろったキャラの版面も名簿の規則の版（NAMES_V、いま 2）が上がったら 1 回数え直す（手がかり：Fandom・分類・AniList・Wikidata のどれか）", "uses": ["roster"]},
+             "text": "分類の人数（AniList の番号があっても分類が先）→ なければ AniList の主役の人数 · 実写（emblem_people）は Wikidata の出演者（P161）の人数 → emblem_pool（上限）· そろったキャラの版面も名簿の規則の版（NAMES_V、いま 2）が上がったら 1 回数え直す（手がかり：Fandom・分類・AniList・Wikidata のどれか。分類があるのに数えられなかった〔429〕版面は次の回も）· 手で数えた人数（dota2 のヒーロー 126）があれば分類を探さない", "uses": ["roster"]},
             {"id": "auto", "kind": "decision", "lane": "actions", "title": "自動補完で目標に届いた？",
              "text": "「小元素の自動補完」が規則だけで集める", "no": "失敗の理由と助言が管理ページに出る。手で頼まれたら下へ"},
             {"id": "pick", "kind": "step", "lane": "ai", "title": "一覧を目で見て番号を選ぶ（頼まれたときだけ）", "by": "ai",
