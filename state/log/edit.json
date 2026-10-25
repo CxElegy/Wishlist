@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-24T00:41:26+00:00",
-"text": "2026-10-24 第 4 バッチを出刊：あつ森（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 1,462・キャッシュ読み 14.5万・出力 891",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.49,
-"mem_total": 16872804352,
-"mem_free": 16050073600,
-"disk_used": 10551926784,
-"disk_free": 30731243520,
-"disk_total": 41283170304,
-"peak": 291983360
-},
-"batch": 4,
-"boards": [
-"あつ森"
-],
-"stories": 2,
-"left": 0,
-"edited": 18,
-"run": 1792801129.737422,
-"tok": {
-"in": 2,
-"cw": 1460,
-"cr": 144566,
-"out": 891,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 146919,
-"secs": 1357,
-"run_tok": {
-"in": 74,
-"cw": 117716,
-"cr": 4450703,
-"out": 13812,
-"calls": 37,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-24T07:04:47+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1714,5 +1673,10 @@
 "calls": 11,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-25T11:27:41+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]

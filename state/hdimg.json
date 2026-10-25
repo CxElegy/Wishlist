@@ -218,12 +218,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
-  "w": 1350,
-  "h": 1350,
-  "target": 1280,
-  "v": 3
- },
  "https://assets.mmoexp.com/images/202609/d1bc0f44ac2c34739074a26025e26f7fe194850c.png": {
   "w": 2048,
   "h": 553,
@@ -266,6 +260,12 @@
   "h": 461,
   "target": 1280,
   "v": 3
+ },
+ "https://blogger.googleusercontent.com/img/b/U2hvZWJveA/AVvXsEgfMvYAhAbdHksiBA24JKmb2Tav6K0GviwztID3Cq4VpV96HaJfy0viIu8z1SSw_G9n5FQHZWSRao61M3e58ImahqBtr7LiOUS6m_w59IvDYwjmMcbq3fKW4JSbacqkbxTo8B90dWp0Cese92xfLMPe_tg11g/w1200/": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://bloximages.newyork1.vip.townnews.com/griffindailynews.com/content/tncms/assets/v3/editorial/a/b9/ab90c9fc-1c26-5ebd-8b60-3f8328044d5c/6a13c291b798b.image.jpg?crop=1762%2C926%2C0%2C124&resize=1200%2C631&order=crop%2Cresize": {
   "target": 720,
@@ -407,24 +407,17 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn2.ettoday.net/images/8975/e8975734.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://cdndark.darkhorizons.com/wp-content/uploads/2026/10/pratt-confirms-star-lord-will-return-to-mcu.jpg": {
   "w": 1200,
   "h": 800,
   "target": 1280,
   "v": 3
- },
- "https://cdnjs.cls.cn/www/20180717/images/rightSide/kfCodeSlider.png": {
-  "w": 444,
-  "h": 324,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.579,
-  "local": "pics/14dce6f96bbc9338.webp",
-  "out": [
-   1280,
-   934
-  ],
-  "why": "看不清"
  },
  "https://charagoo.jp/wp-content/uploads/2025/08/D103923_01.jpg": {
   "w": 1000,
@@ -666,6 +659,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -726,6 +725,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://helios-i.mashable.com/imagery/articles/07l2BXjqfJ2dP4CDKSsUlz8/hero-image.fill.size_1200x675.v1792766091.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://hermes.media.transform.aol.com/7d987a48298616f862bda1d3b18b09d60bb083a7/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/18/4e431812-a9e5-3f43-8ed1-7a9d06a7c03c/591c7878-9781-49e5-a9f9-d2a7f0b7d36c.jpg": {
   "w": 1200,
   "h": 675,
@@ -759,12 +764,6 @@
  "https://hobby.dengeki.com/ss/hobby/2026/10/469b052e3131133723f1851142a51ec0_iou4TnIzCZeyie9Rrw3CVkQEjcudOi4__S642FaTM9bjOmxzH2gt5OeFEjObqdu7x.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 1280,
-  "v": 3
- },
- "https://i.abcnewsfe.com/a/2f318564-9917-47c9-a9c5-cdc550b776d4/starbucks-3-ht-er-260623_1782233446807_hpMain_16x9.jpg?w=1600": {
-  "w": 1600,
-  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -803,6 +802,12 @@
   "h": 1067,
   "target": 720,
   "v": 3
+ },
+ "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/sandra-huller-avengers-doomsday-cameo.png?fit=1200%2C675&ssl=1": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://i1.hoopchina.com.cn/bbs-editor-web/17926623656181.jpg": {
   "w": 780,
@@ -884,12 +889,6 @@
   "target": 1280,
   "v": 3
  },
- "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
-  "w": 1200,
-  "h": 677,
-  "target": 720,
-  "v": 3
- },
  "https://image.starnewskorea.com/21/2026/10/2026102510120129386_1.jpg": {
   "w": 1200,
   "h": 1680,
@@ -949,12 +948,6 @@
   "w": 1280,
   "h": 768,
   "target": 720,
-  "v": 3
- },
- "https://images.foxtv.com/static.fox29.com/www.fox29.com/content/uploads/2026/10/1200/630/untitled-october-24-2026-at-07.35.02-1.png?ve=1&tl=1": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://images.hothardware.com/contentimages/newsitem/71942/content/16x9_2138x1203_highres-grand-theft-auto-vi-news.jpg": {
@@ -1162,6 +1155,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZQKH.img": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fZYPt.img": {
   "w": 2200,
   "h": 1274,
@@ -1195,12 +1194,6 @@
  "https://img.biggo.com/3EL1nNsIEMVU_JqZ5qdtKWtO6W6Z13ZkiSY4yU_g_VY/fit/1720/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwL2FlZjY4ZjdiLTNmZWQtNDMyMS04YTRiLTYzMWEwZDZkOTQ3Yl8xNzkyNTQ2Njc0X2RlZmF1bHQuanBn.webp": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://img.biggo.com/VJOVFWFYgwAqOUgg8RN9WgnUvCcT-w5N4pl5piDR9R4/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2luZm9fY2FyZC8yMDI2LTEwL2Y4YjcwYjZkLTI2OTQtNGNmZS1iYmQ2LTJiN2I1MTU4MDg2MV8xNzkyNDgxMjgyX2RlZmF1bHQud2VicA.jpg": {
-  "w": 1200,
-  "h": 671,
   "target": 1280,
   "v": 3
  },
@@ -1358,12 +1351,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/cocotte/m_cocotte-640987.jpg": {
-  "w": 512,
-  "h": 328,
-  "target": 720,
-  "v": 3
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/otonanswer/m_otonanswer-403060.jpg": {
   "w": 640,
   "h": 349,
@@ -1454,13 +1441,6 @@
   ],
   "why": "看不清"
  },
- "https://img1.mydrivers.com/img/20261020/2c7ec5a4-146c-479a-bccb-c591e2e7fda0.png": {
-  "w": 600,
-  "h": 665,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.27
- },
  "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
   "w": 1035,
   "h": 582,
@@ -1478,6 +1458,12 @@
   "h": 600,
   "target": 1280,
   "v": 3
+ },
+ "https://jomo.ismcdn.jp/mwimgs/2/f/-/img_2fc0364d98fe02117473a48860d5042e86223.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-19/rjswog6orxf7mm9n05yf9dgk.jpg": {
   "w": 1600,
@@ -1521,6 +1507,12 @@
   "h": 2133,
   "target": 1280,
   "v": 3
+ },
+ "https://limo.ismcdn.jp/mwimgs/9/9/1200w/img_991b54ec03bc8ffe7a06bfd2367a391353746.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://limo.ismcdn.jp/mwimgs/e/3/1200w/img_e3769c05079a27cfd936a7e3d79c433c78670.jpg": {
   "w": 1200,
@@ -1603,12 +1595,6 @@
   "target": 1280,
   "v": 3
  },
- "https://media.smallbiztrends.com/2026/10/news-article-samsung-wallet-lets-galaxy-phones-unlock-and-lock-cars-automatically.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://media.trilltrill.jp/articles/5085313/thumbnail-image.6a496e21489aff88b0a971f2e7000d59?w=1200": {
   "w": 1200,
   "h": 900,
@@ -1670,6 +1656,12 @@
    716
   ],
   "why": "看不清"
+ },
+ "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_jp_i_1486554983406584528_w640.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_mynavi_jp_article_20261025-5173094__w600.webp": {
   "target": 1280,
@@ -2078,17 +2070,11 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035780-tennismagv-000-3-view.jpg?exp=10800": {
-  "w": 1280,
-  "h": 960,
-  "target": 720,
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00010006-tennisnet-000-3-view.jpg?exp=10800": {
+  "target": 1280,
   "v": 3,
-  "local": "pics/410a3a0f9e74480f.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "期限付きの網址"
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00035789-tennismagv-000-1-view.jpg?exp=10800": {
   "target": 720,
@@ -2162,6 +2148,12 @@
   "h": 720,
   "target": 720,
   "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/08/writer-ayasemachika.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/6ada5e768ea04b32a3db3c7cfd01ac05.jpg": {
   "w": 1280,
@@ -2327,6 +2319,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/76359/120/76359-120-f7f0ecacd18fa04f14ee9a22083b1d85-1920x1280.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://prcdn.freetls.fastly.net/release_image/7736/2641/7736-2641-99bbb4b4f5948ba28e3b250fd90843d5-1920x1080.png?width=536&quality=85%2C75&format=jpeg": {
   "w": 536,
   "h": 302,
@@ -2358,11 +2356,11 @@
   "target": 720,
   "v": 3
  },
- "https://prtimes.jp/img/76359/120/resize/d76359-120-32b023f89a5f1945b38b-0.jpg": {
-  "w": 650,
-  "h": 434,
-  "target": 720,
-  "v": 3
+ "https://prtimes.jp/img/89743/31/resize/d89743-31-d7ad359f25c3e166058d-0.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://punchdrunkcritics.com/wp-content/uploads/2026/10/pdc_avengersdoomsday8.jpg": {
   "w": 1280,
@@ -2411,6 +2409,12 @@
   "h": 1000,
   "target": 720,
   "v": 3
+ },
+ "https://rocketnews24.com/wp-content/uploads/sites/2/2026/10/collage_5604a7.jpg?w=1200&h=630&crop=1": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://root-nation.com/wp-content/uploads/2026/10/acer_predator_x_navi_video_packshot_4k.jpg": {
   "w": 1200,
@@ -2478,12 +2482,6 @@
   "target": 1280,
   "v": 3
  },
- "https://scontent-sjc6-1.xx.fbcdn.net/v/t39.99422-6/864762684_1436717277836254_8945406185657660318_n.png?stp=dst-jpg_tt6&cstp=mx3173x1321&ctp=p600x600&_nc_cat=1&ccb=1-7&_nc_sid=cae128&_nc_ohc=RNulOu_gzOMQ7kNvwHCpiRV&_nc_oc=AdpXRLjdi9u3dMZv-OO0XQXLxwVZnq6OowTFtLM6alvywyPvvoF_PoFrTOFpcSlawn8&_nc_zt=14&_nc_ht=scontent-sjc6-1.xx&_nc_gid=qoYU0BfV8pbeRsGwc403LA&_nc_ss=7820f&oh=00_AQMMwZsIoVlAhflbVJ3jNEBluLO0hIwnyUQkcf91gaIpwA&oe=6AE3ABA4": {
-  "w": 1441,
-  "h": 600,
-  "target": 1280,
-  "v": 3
- },
  "https://sffgazette.com/images/articles/banners/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-ab11618.jpg": {
   "w": 1600,
   "h": 900,
@@ -2506,12 +2504,6 @@
   "w": 3000,
   "h": 2000,
   "target": 720,
-  "v": 3
- },
- "https://static-cdn.nextapple.tw/prod/2026-10/21B4327F7804DE858182B13811255CD4/a1725a0b6579509ecdb10e63909e9d16_1280.jpeg": {
-  "w": 1280,
-  "h": 960,
-  "target": 1280,
   "v": 3
  },
  "https://static.beebom.com/wp-content/uploads/2026/10/GTA-6-Cars-suggest-a-Live-Action-Trailer-Is-Coming.jpg": {
@@ -2594,12 +2586,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-25"
- },
- "https://static.sanyonews.jp/image/article/size1/a/0/e/6/a0e61ad76c4cd00a9eeb76fdaf9191bd_1.jpg": {
-  "w": 452,
-  "h": 640,
-  "target": 720,
-  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/c/4/5/6/c456bc17ca81222fdf8c9f45b8aa9c0c_1.jpg": {
   "w": 402,
@@ -2853,12 +2839,6 @@
   "target": 1280,
   "v": 3
  },
- "https://v3-statics.mirrormedia.mg/images/50b9ae03-7c89-4e16-a091-a12c3c9bd82f-w1600.jpg": {
-  "w": 1600,
-  "h": 972,
-  "target": 720,
-  "v": 3
- },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/09/1791510301377_smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra-3279.png": {
   "w": 1825,
   "h": 977,
@@ -2889,6 +2869,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/25/1792908961939_gemini-17928986584891520967876-0-0-1341-2560-crop-17928987755871104922749.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://www.4gamer.net/games/528/G052880/20261020018/SS/001.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2913,12 +2899,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.betanews.net/data/beta/image/2026/10/20/beta20261020000130.png": {
-  "w": 1672,
-  "h": 941,
-  "target": 1280,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.-A4aZ_zLadK_G3jm6fyD-g&pid=News&w=1200": {
   "w": 700,
@@ -3056,6 +3036,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.YZLGPyhuhFW3hJRxcEbKvg&pid=News&w=1200": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
+ },
  "https://www.bing.com/th?id=ONUT.YcYs9OSH6CSNgF7rws-Y1g&pid=News&w=708": {
   "w": 700,
   "h": 393,
@@ -3074,12 +3060,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.ek4dMm4ohvDQxnw732yClQ&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://www.bing.com/th?id=ONUT.ezl7joe28jZC6CM1E06H5Q&pid=News&w=1200": {
   "w": 700,
@@ -3242,6 +3222,12 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-25"
  },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/10/18/FfMzG-6VEAA3Gtv-e1666114081464.jpg": {
   "w": 900,
