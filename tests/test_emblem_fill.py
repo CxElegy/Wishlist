@@ -97,6 +97,31 @@ class Rules(unittest.TestCase):
                 mock.patch.object(ef.emblem, "forehead_cut", side_effect=lambda im: im.filename.endswith("a.webp")):
             self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["A"])
 
+    def test_head_cut_and_blur(self):
+        # 頭のてっぺんが上の端で切れた（上 3px に 20% 以上）切り抜きは取るときも前からのものも外す。写真はぼやけたもの（SHARP_MIN 未満）も
+        import tempfile
+        from unittest import mock
+        from PIL import Image, ImageDraw
+        cut = Image.new("RGBA", (200, 200))
+        ImageDraw.Draw(cut).ellipse((50, -60, 150, 199), fill=(90, 60, 40, 255))
+        self.assertTrue(ef.emblem.head_cut(cut))
+        with self.assertRaisesRegex(ValueError, "頭のてっぺん"):
+            ef.emblem.check_whole(cut)
+        ok = Image.new("RGBA", (200, 200))
+        ImageDraw.Draw(ok).ellipse((50, 10, 150, 199), fill=(90, 60, 40, 255))
+        self.assertFalse(ef.emblem.head_cut(ok))
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        (tmp / "emblems").mkdir()
+        cut.save(tmp / "emblems" / "a.webp")
+        ok.save(tmp / "emblems" / "b.webp")
+        ok.save(tmp / "emblems" / "c.webp")
+        item = {"emblem_kind": "person", "emblem": [{"subject": s, "image": f"emblems/{s.lower()}.webp"} for s in "ABC"]}
+        sharp = lambda im: (100, 0.5 if im.filename.endswith("c.webp") else 1.5)
+        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "forehead_cut", return_value=False), \
+                mock.patch.object(ef.emblem, "face_sharp", side_effect=sharp):
+            self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["A", "C"])
+            self.assertEqual([x["subject"] for x in ef.broken_cuts({**item, "emblem_kind": "character"})], ["A"])   # 絵はぼやけを見ない
+
     def test_subjects_skip_not_character_already_in_who(self):
         # もうある名簿の Player・Parents（あつ森）も集めない：先頭の HEAD 人に入らない
         who = ["A", "B", "Player", "C", "Special character", "D", "Parents"] + [f"c{i}" for i in range(20)]

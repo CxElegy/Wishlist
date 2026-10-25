@@ -26,8 +26,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 BUCKET = "emblems"
 RETRY_HOURS = 24      # 届かなかった版面をもう一度試すまで（店長の版面と違い、材料の指紋がないので 1 日おき）
-RULES = 6             # 取り方の規則の版。上げると、全部の版面（済みも）を RETRY_HOURS を待たずに作り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号、
-                      # 4：分類の続き・参照 500 超え・Playable Characters・字だけ／図／古い写真を外す、5：Commons のロゴはロゴのファイルで名前だけのもの、6：作り直しでキャラも前の小元素を残さない・名簿にまとめ／Player／別の作品の姿を入れない・同じ画像は 1 枚。ロゴのない製品の P18 は版を上げない：届かなかった版面だけの話で 24 時間後に取り直す）
+RULES = 7             # 取り方の規則の版。上げると、全部の版面（済みも）を RETRY_HOURS を待たずに作り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号、
+                      # 4：分類の続き・参照 500 超え・Playable Characters・字だけ／図／古い写真を外す、5：Commons のロゴはロゴのファイルで名前だけのもの、6：作り直しでキャラも前の小元素を残さない・名簿にまとめ／Player／別の作品の姿を入れない・同じ画像は 1 枚。ロゴのない製品の P18 は版を上げない：届かなかった版面だけの話で 24 時間後に取り直す、
+                      # 7：頭のてっぺんが上の端で切れた絵〔上 3px に 20%〕・小さい顔〔80px 未満〕・ぼやけた写真を使わない＝emblem.check_whole）
 REDO = ("emblem", "emblem_who", "emblem_pool", "emblem_category")   # 前の版の規則で作ったもの：版が上がったら捨てて規則から作り直す（emblem_reject・emblem_fandom は残す）
 PER_BOARD_S = 300     # 1 版面の目安（これより残りが少なければ次を始めない）
 KEEP = ("name", "wikidata", "type", "keywords", "emblem_kind", "wiki")   # 毎回 規則と Wikidata から作るので config に書かない

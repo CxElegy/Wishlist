@@ -9,6 +9,7 @@
   E6 字に重なる  画像と題字の字そのもの（Range の行の矩形。.title は display:block で右に空きがある）が 1px² でも重なる
   E7 切れている  cutout が上の端で切れている：取るときと同じ規則（emblem.TOP_MAX：上の端の半分を超えて人物）、
                  上の端に当たっていて目が上から「目〜口」の EYE_TOP 倍より近い（額まで切れた。顔のモデル YuNet）、
+                 上の 3px に絵が横幅の 20% 以上（頭のてっぺんが切れた：emblem.HEAD_EDGE）、
                  高さ 40px 未満の切れ端だけ（STRIP_MAX）
   E8 同じ画像    同じ版面に同じ src か、差分ハッシュの違い ≤ 4 ビット（emblem_fill.SAME_BITS）か、同じ動画（YouTube）の場面が 2 本以上
   E9 中身        元の画像のファイル名が別の作品の絵（大乱闘のフィギュア・amiibo など、BAD_SOURCE）
@@ -37,6 +38,7 @@ FIRST_BOARD = "はじめに"   # user_pages.FIRST_BOARD
 SAME_BITS = 4              # emblem_fill.SAME_BITS
 TOP_MAX, TOP_TOUCH = 0.5, 0.03   # emblem.TOP_MAX・TOP_TOUCH（取るときの規則）。emblem を import すると sources の opener が入り Wikimedia が 403 を返す（E2 を見誤った）
 BAD_SOURCE = re.compile(r"trophy|ssbb|ssb4|ssbu|amiibo|figurine|statue|sticker", re.I)   # 別の作品（大乱闘のフィギュア・amiibo）の絵
+HEAD_ROWS, HEAD_EDGE = 3, 0.2   # emblem.HEAD_ROWS・HEAD_EDGE：上の 3px に絵が横幅の 20% 以上 = 頭のてっぺんが切れた（BLEACH Mirrors High）
 EYE_TOP = 1.4             # 目の高さ < 目〜口の距離 × これ = 額まで切れた（本番の cutout：哈利波特 1.23、髪だけ切れたものは 1.5 以上）
 STRIP_MAX = 40            # cutout の高さがこれ未満 = 人物が消えて切れ端だけ残った（漫威 Black Panther 73×23）
 YT = re.compile(r"(?:youtube\.com/watch\?v=|youtu\.be/|i\.ytimg\.com/vi/)([\w-]{11})")
@@ -145,6 +147,9 @@ def cut_edge(img, faces=None):
     top = sum(1 for x in range(im.width) if a[x, 0] > 128) / im.width
     if top > TOP_MAX:
         return f"上の端 {top:.0%}"
+    head = sum(1 for x in range(im.width) if any(a[x, y] > 128 for y in range(min(HEAD_ROWS, im.height)))) / im.width
+    if head >= HEAD_EDGE:
+        return f"頭のてっぺんが切れた（上 {HEAD_ROWS}px に {head:.0%}）"
     if top > TOP_TOUCH and faces:
         r, pad, s = faces[0]
         eye, mouth = (r[5] + r[7]) / 2 - pad, (r[11] + r[13]) / 2 - pad

@@ -30,6 +30,12 @@ class EmbCheck(unittest.TestCase):
         ImageDraw.Draw(strip).rectangle((10, 2, 60, 22), fill=(20, 20, 30, 255))
         self.assertTrue(emb_check.cut_edge(strip))        # 人物が消えて切れ端だけ（漫威 Black Panther 73×23）
 
+    def test_head_cut(self):
+        # 上の 3px に絵が横幅の 20% 以上 = 頭のてっぺんが切れた（BLEACH Mirrors High：顔は全部入っていても ✗）
+        im = Image.new("RGBA", (100, 100), (0, 0, 0, 0))
+        ImageDraw.Draw(im).ellipse((30, -40, 70, 99), fill=(90, 60, 40, 255))   # 上の端の 3 割に髪
+        self.assertIn("てっぺん", emb_check.cut_edge(im))
+
     def test_cut_by_face(self):
         """上の端に当たっていて、目が上から「目〜口」の EYE_TOP 倍より近い = 額まで切れた（YuNet の行を作って渡す）。"""
         im = Image.new("RGBA", (100, 100), (0, 0, 0, 0))
@@ -42,6 +48,7 @@ class EmbCheck(unittest.TestCase):
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
         import emblem
         self.assertEqual((emb_check.TOP_MAX, emb_check.TOP_TOUCH), (emblem.TOP_MAX, emblem.TOP_TOUCH))
+        self.assertEqual((emb_check.HEAD_ROWS, emb_check.HEAD_EDGE), (emblem.HEAD_ROWS, emblem.HEAD_EDGE))
 
     def test_crowd(self):
         big, near, small = (0, 0, 40, 40), (0, 0, 36, 36), (0, 0, 10, 10)
