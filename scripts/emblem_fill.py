@@ -833,8 +833,7 @@ def own_wiki(api, site, item):
 
 def wd_cast(qid, get=None, title=None):
     """Wikidata の出演者（P161）の名前（英語、Wikidata の順）。実写の作品の名簿。title=(言語, 記事名) ならその記事の作品の P161。"""
-    import library
-    get = get or library._wd_get
+    get = get or _wd_get   # library._wd_get の素の urlopen は emblem を読み込んだあと 403（手元で漫威电影の P161 が引けなかった）
     q = {"sites": f"{title[0]}wiki", "titles": title[1]} if title else {"ids": qid}
     ents = get({"action": "wbgetentities", "props": "claims", **q}).get("entities") or {}
     ent = next((v for k, v in ents.items() if k.startswith("Q")), {})
@@ -938,8 +937,7 @@ def live_cast(item, log=print):
 
 def wd_enwiki(qid, get=None):
     """Wikidata の項目の英語の Wikipedia の記事名（なければ None）。"""
-    import library
-    get = get or library._wd_get
+    get = get or _wd_get
     ent = (get({"action": "wbgetentities", "ids": qid, "props": "sitelinks", "sitefilter": "enwiki"}).get("entities") or {}).get(qid) or {}
     return ((ent.get("sitelinks") or {}).get("enwiki") or {}).get("title")
 
