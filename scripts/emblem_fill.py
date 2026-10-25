@@ -1758,11 +1758,12 @@ def due(prog, items, now):
         e = prog["items"].get(item["name"]) or {}
         hint = any(item.get(k) for k in ("emblem_fandom", "emblem_api", "emblem_category", "anilist_id", "wikidata"))
         recount = item.get("emblem_category") and not item.get("emblem_pool")   # 分類はあるのに数えられなかった（429）：版を待たずに次の回も
-        if st["state"] == "ok" and not broken_cuts(item) and not any(e.get("v", 1) < BROKEN_V for e in broken.get(item["name"]) or []) and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
+        unbreak_due = any(x.get("v", 1) < BROKEN_V for x in broken.get(item["name"]) or [])   # 前の規則で外した小元素の見直し待ち
+        if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         h = _hours_since(e.get("failed_at"), now)
         if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")
-                and e.get("material") == material(item) and not broken_cuts(item)):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
+                and e.get("material") == material(item) and not broken_cuts(item) and not unbreak_due):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
             continue                                                            # 壊れた小元素（頭が切れた・ぼやけた）が出ている版面も待たずに外して取り直す
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
     return [r[3] for r in sorted(rows, key=lambda r: r[:3])]
