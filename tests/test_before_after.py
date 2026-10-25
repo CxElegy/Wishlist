@@ -73,6 +73,23 @@ class Later(unittest.TestCase):
         self.assertEqual(ba._cron_next("7 0,9 * * *", now).strftime("%H:%M"), "09:07")
         self.assertIsNone(ba._cron_next("47 0 * * 1", now))
 
+    def test_later_waits_for_a_run_after_merge(self):
+        import json
+        with tempfile.TemporaryDirectory() as t:
+            d = pathlib.Path(t, "ba-pending-1")
+            d.mkdir()
+            merged = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=1)
+            d.joinpath("meta.json").write_text(json.dumps({"num": "1", "title": "t", "url": "u", "where": None,
+                                                            "workflow": "后台作業", "merged_at": merged.isoformat()}))
+            old, ba.last_success = ba.last_success, lambda name: merged - dt.timedelta(minutes=5)   # 合併より前の回
+            try:
+                ba.later("", "", t)
+                self.assertEqual(pathlib.Path(t, "sent.txt").read_text(), "")
+                ba.later("ライブラリの小元素", dt.datetime.now(dt.timezone.utc).isoformat(), t)   # 別の workflow の回
+                self.assertEqual(pathlib.Path(t, "sent.txt").read_text(), "")
+            finally:
+                ba.last_success = old
+
     def test_headline(self):
         self.assertIn("19→32 枚", ba.headline("名簿", "BLEACH の小元素", {"test-a-1400": 19}, {"test-a-1400": 32}))
 
