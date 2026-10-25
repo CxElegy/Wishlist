@@ -61,6 +61,12 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261024ac/205/w645h360/20261024/a131-93153210f68431a8bbd9e3d3a78aa74f.jpg": {
+  "w": 645,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261024ac/320/w480h640/20261024/cef3-f3703591f04152f5c3ced0ef85f5b044.jpg": {
   "target": 1280,
   "v": 3,
@@ -659,12 +665,6 @@
   "target": 1280,
   "v": 3
  },
- "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://hawk.live/storage/images/posts/collapse-spoke-level-preparation-24354.jpg": {
   "w": 1200,
   "h": 628,
@@ -876,6 +876,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image.starnewskorea.com/21/2026/10/2026102315165092030_1.jpg": {
+  "w": 1200,
+  "h": 677,
+  "target": 720,
+  "v": 3
+ },
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1346,fit=cover,q=high,sharpen=2/21/2026/10/2026102118251711514_1.jpg": {
   "w": 1200,
   "h": 1346,
@@ -929,6 +935,12 @@
   "w": 1280,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://images.foxtv.com/static.fox29.com/www.fox29.com/content/uploads/2026/10/1200/630/untitled-october-24-2026-at-07.35.02-1.png?ve=1&tl=1": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://images.hothardware.com/contentimages/newsitem/71942/content/16x9_2138x1203_highres-grand-theft-auto-vi-news.jpg": {
@@ -2835,17 +2847,17 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.6Wfh4jKdzB2YVp3ft8NmuQ&pid=News&w=852": {
+  "w": 700,
+  "h": 376,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.6yHBTZsf4a3Uqjs0CUeDpQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.8k5ot9gh5DGrsUakSRIN0A&pid=News&w=500": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
  },
  "https://www.bing.com/th?id=ONUT.B2_wGz_aVofe4yAd16Rwcw&pid=News&w=1200": {
   "w": 700,
@@ -2931,12 +2943,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.W0NFIpdQCkOL2VuQxhWUJQ&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-25"
- },
  "https://www.bing.com/th?id=ONUT.YQOWVk6tArirle6eiDvGBQ&pid=News&w=600": {
   "w": 600,
   "h": 399,
@@ -2962,6 +2968,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.ek4dMm4ohvDQxnw732yClQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.ezl7joe28jZC6CM1E06H5Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -2986,12 +2998,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.iHrXY6ojlKIxwPt02IDI3g&pid=News&w=800": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
