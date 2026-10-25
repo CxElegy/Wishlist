@@ -50,6 +50,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 33 | 前からの小元素で頭が全部入った The Mandalorian Gideon（上の端 1.0%）・Mayfeld（0.3%）が「額で切れた」で外れた（9/17） | `broken_cuts` が上の端に当たっていないものにも `forehead_cut`（EYE_TOP 1.4 は顔いっぱいの切り抜きに厳しい）。check_whole は上の端 >3% のときだけ見る | `broken_cuts` も `top_share > TOP_TOUCH` のときだけ額を見る。外したものは `state/emblem_broken.json` に控え、規則の版 `BROKEN_V` を上げると `unbreak` が今の規則で見直して戻す（emblem_reject からも抜く） | （この PR） |
 | 34 | 作り直しの剧で別人：哈利波特剧集 Padma Patil（Anjula Murali）に映画の Padma（PadmaPatil.png、2022 年） | 出演者の記事の写真が集合写真（Ravenclaw students）で顔の基準がなく、役の記事の代表画像と剧照（どちらも映画の役者）の 2 枚が「同じ顔の多数決」で本人になった | 出演者の顔の基準がないときは、ファイル名・題名に出演者の名前か作品の略号（HPTV）がなく、作品の始まり（Wikidata P580）の 2 年前より前に上がった（Fandom の cb=日付）役の記事・動画の画像は数えない（`emblem_fill.tied`・check の untied）。前からの小元素も `untied_roles` で外す | （この PR） |
 | 35 | お客さまの版面（ライブラリ）だけ頭が切れた小元素が残る（ポケットモンスター 2・Mrs. GREEN APPLE 1、店長は 0） | `broken_cuts` は手元の `emblems/` の画像だけ見る → 公開の箱へ上げた前の回の小元素は一度も見ない・作り直しで 0 枚なら前のものをそのまま残していた | `emblem_fill.broken_image`（broken_cuts と同じ式）を `library_emblem.unbroken` で公開の箱の画像に・emblem_state.bv が BROKEN_V より古い版面は失敗の待ちも待たずに 1 回（型：同じ規則を店長とお客さまの両方の入口に、片方だけ直さない） | （この PR） |
+| 36 | 哈利波特剧集 Hermione（Arabella Stanton）194×92：額から上の髪だけで顔がない（下の端が額の途中） | 顔の割り当て（剧照 cos 0.60）は通るが、切り抜き側の点検は「顔が見つかったら」しか見ない（forehead_cut・face_sharp は顔なしなら False/None で通す）。兜の顔なしと区別がなかった | `emblem.faceless_scrap`：写真で YuNet の顔がなく横が縦の 1.3 倍超 → check_whole ✗・broken_image ✗・BROKEN_V 3。縦長の兜（Din Djarin 396×492）は残る。1 枚ずつ外さない | 2026-10-26 |
 
 ## 2. よく効いた直し方の型（手順）
 

@@ -714,6 +714,24 @@ def face_sharp(img):
     return round(fw * w0 / im.width), float(np.percentile(mg, 99)) / span, float(g.mean()) / 255
 
 
+NOFACE_WIDE = 1.3   # 写真の切り抜きに顔がなく、横が縦のこの倍より長い = 髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）。顔のない兜（The Mandalorian）は縦長の全身なので当たらない
+
+
+def faceless_scrap(img):
+    """写真の切り抜きに顔がなく（YuNet）、横長 = 額から上だけ・髪だけの切れ端。顔のモデルがなければ False。"""
+    try:
+        import face_id
+        if face_id.engine() is None:
+            return False
+    except Exception:
+        return False
+    box = img.convert("RGBA").getchannel("A").getbbox()
+    if not box:
+        return False
+    w, h = box[2] - box[0], box[3] - box[1]
+    return w > h * NOFACE_WIDE and face_sharp(img) is None
+
+
 def is_sliver(w, h):
     """切り抜きの大きさ（px）が切れ端・帯か。"""
     return min(w, h) < CUT_MIN or w > h * CUT_WIDE
@@ -835,6 +853,8 @@ def check_whole(out, photo=False):
         lum = fq[2] if fq else float(np.array(out.convert("L"))[solid].mean()) / 255
         if lum < (FACE_DARK if fq else DARK_MAX):
             raise ValueError(f"暗すぎて見えない（{'顔の' if fq else ''}明るさ {lum:.0%}）")
+    if photo and faceless_scrap(out):   # 顔がなく横長：額から上だけ・髪だけ（哈利波特剧集 Hermione）
+        raise ValueError("顔がなく髪・額だけの切れ端")
     if photo:   # 小さい顔・ぼやけた場面（拡大した剧照：哈利波特剧集 Oliver Wood）は小元素にしない
         if fq and fq[0] < FACE_PX_MIN:
             raise ValueError(f"顔が小さすぎる（幅 {fq[0]}px）")

@@ -155,6 +155,20 @@ class Rules(unittest.TestCase):
             got = ef.check(cands, log=lambda *_: None, need_face=True, strict=True)
         self.assertEqual([c["image"] for c in got], ["http://hptv"])
 
+    def test_faceless_scrap(self):
+        # 写真の切り抜きに顔がなく横長 = 髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）は外す。顔のない縦長の兜は残す
+        from unittest import mock
+        from PIL import Image
+        wide, tall = Image.new("RGBA", (194, 92), (20, 20, 20, 255)), Image.new("RGBA", (396, 492), (20, 20, 20, 255))
+        with mock.patch.object(ef.emblem, "face_sharp", return_value=None), mock.patch("face_id.engine", return_value=object()):
+            self.assertTrue(ef.emblem.faceless_scrap(wide))
+            self.assertFalse(ef.emblem.faceless_scrap(tall))
+            self.assertTrue(ef.broken_image(wide, True))
+        with mock.patch.object(ef.emblem, "face_sharp", return_value=(100, 2.0, 0.5)), mock.patch("face_id.engine", return_value=object()):
+            self.assertFalse(ef.emblem.faceless_scrap(wide))
+        with mock.patch("face_id.engine", return_value=None):
+            self.assertFalse(ef.emblem.faceless_scrap(wide))
+
     def test_head_cut_and_blur(self):
         # 頭のてっぺんが上の端で切れた（上 3px に 20% 以上）切り抜きは取るときも前からのものも外す。写真はぼやけたもの（SHARP_MIN 未満）も
         import tempfile

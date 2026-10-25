@@ -57,3 +57,4 @@
 - 2026-10-26 哈利波特剧集の小元素（剧照の顔の割り当て）：#404 の assign_stills のあとの本番の後台で 2 → 出演者 9 人＋ポスター＝10 枚（条件 6 人以上）· https://github.com/CxElegy/Wishlist/pull/404 · ux_check guest 哈利波特 ✗ なし（残り：E8 Vaundy 2・E9 あつ森 SSBB 3・E10 13・E11 A2O LITE 1・390 E2 星巴克马克杯 1）· 次：三星手机／星巴克 E2 の画像が消える根
 
 - 2026-10-25 記事の写真が出ない段：PR #405。写真探しは 3 時間おき 3 回・頭は写真のある記事・写真なしは字だけ。ux_check ✗0（札 8/195、お客さまのページの再生成待ち）。次：迷惑リンクを落とす規則・札 0 の確認。
+- 2026-10-26 哈利波特剧集の小元素（別の目の指摘 3）：Hermione 194×92 は髪だけで顔なし → emblem.faceless_scrap（写真で顔なし＋横長 ✗、check_whole・broken_image・BROKEN_V 3、兜は残す）· 手元の全 photo 小元素で当たるのは Hermione のみ・unittest 835 OK · PR（この PR）。次：後台で外れて 8 人・Harry のカチンコ／Ronald は 36 の形の健康
