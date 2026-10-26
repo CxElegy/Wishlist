@@ -84,5 +84,30 @@ class EmbCheck(unittest.TestCase):
         self.assertEqual(emb_check.not_people(), {})
 
 
+class CloseupOfficial(unittest.TestCase):
+    def test_closeup_left_counts_official(self):
+        items = [{"name": "A", "emblem_kind": "character", "emblem": [{"subject": "Ichigo", "fs": 0.6}, {"subject": "Rukia", "fs": 0.6}, {"subject": "Body", "fs": 0.7, "body": [1]}, {"subject": "Ok", "fs": 0.3}]},
+                 {"name": "B", "emblem_kind": "topic", "emblem": [{"subject": "X", "fs": 0.9}]}]
+        got = emb_check.closeup_left(official=lambda it, s: ["u"] if s == "Ichigo" else [], items=items)
+        self.assertEqual(got, {"A": (2, 1, ["Ichigo"])})
+
+    def test_threshold_matches_emblem(self):
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+        import emblem
+        self.assertEqual(emb_check.CLOSEUP_FS, emblem.CLOSEUP)
+
+    def test_every_find_bust_call_gets_official(self):
+        """顔のアップ→胸像の入口は全部（gather・控え・入れ替え）公式を先に渡す。"""
+        import ast
+        root = pathlib.Path(__file__).resolve().parent.parent / "scripts"
+        n = 0
+        for f in ("emblem.py", "emblem_fill.py", "library_emblem.py"):
+            for c in ast.walk(ast.parse((root / f).read_text(encoding="utf-8"))):
+                if isinstance(c, ast.Call) and getattr(c.func, "attr", getattr(c.func, "id", "")) == "find_bust":
+                    n += 1
+                    self.assertIn("official", [k.arg for k in c.keywords], f"{f}:{c.lineno} find_bust に official がない")
+        self.assertGreaterEqual(n, 3)
+
+
 if __name__ == "__main__":
     unittest.main()

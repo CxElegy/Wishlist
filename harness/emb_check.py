@@ -16,6 +16,7 @@
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
+  E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
   E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
   E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる
   E16 顔だけのアップ  cutout（全身 body は除く）の顔の幅 > 画像の幅の CLOSE_W（45%）か、顔の下端から下が高さの SHOULDER_MIN（15%）未満（emblem_fill.closeup_of と同じしきい値。ここは YuNet で測れたものだけ：アニメ絵の検出は取るときの規則だけ）。小元素は胸像（BLEACH の黒崎一護）
@@ -45,6 +46,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import cutshape  # noqa: E402  （numpy・OpenCV・PIL だけ。emblem は import しない）
 SMALL_SIDE = 256   # emblem.BUST_MIN_SIDE と同じ（emblem は import しない）
+CLOSEUP_FS = 0.5   # emblem.CLOSEUP と同じ（試験で一致を見る）
 import emblem_face  # noqa: E402  （E17 の理由の札。import の時点では pathlib だけ）
 FIRST_BOARD = "はじめに"   # user_pages.FIRST_BOARD
 SAME_BITS = 4              # emblem_fill.SAME_BITS
@@ -246,6 +248,24 @@ def head_missing():
     return out
 
 
+def closeup_left(official=None, items=None):
+    """E19（情報）：顔だけのアップ（fs > emblem.CLOSEUP）のまま残っている小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数
+    → {版面: (アップの数, 公式のある数, [公式のある人])}。「公式が先」の規則が全部の入口（gather・控え・入れ替え）に効いているかを数える。
+    official(item, subject) → 網址のリスト（試験では差し替える。既定は emblem.official_images）。"""
+    if official is None:
+        import emblem
+        official = lambda it, s: emblem.official_images(emblem.official_site(it), re.split(r"[\s(),]+", re.sub(r"\s*[(（].*?[)）]", "", s)))
+    out = {}
+    for it in items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
+        if it.get("emblem_kind") not in ("character", "group"):
+            continue
+        cl = [x["subject"] for x in it.get("emblem") or [] if isinstance(x, dict) and (x.get("fs") or 0) > CLOSEUP_FS and not x.get("body")]
+        if cl:
+            ok = [s for s in cl if official(it, s)]
+            out[it["name"]] = (len(cl), len(ok), ok)
+    return out
+
+
 PROGRESS = "https://raw.githubusercontent.com/CxElegy/Wishlist/main/state/emblem_progress.json"
 
 
@@ -405,6 +425,13 @@ def check(pg, who, width, out, full=False, guest=False):
         print("  情報：胸像待ち（顔だけのアップの入れ替え中）" + "・".join(f"{k} {n} 人（3 回を超えた {len(o)} 人：{'、'.join(o[:5])}）" for k, (n, o) in cs.items()))
     if guest:
         found["E17"] = [f"{k} {'・'.join(v)}" for k, v in not_people().items()]
+    if guest:
+        try:
+            cl = closeup_left()
+            print(f"  情報 E19 顔だけのアップが残る {sum(v[0] for v in cl.values())} 枚（{len(cl)} 版面）のうち、公式サイトに同じ人の立ち絵がある {sum(v[1] for v in cl.values())} 枚（{len([k for k, v in cl.items() if v[1]])} 版面）"
+                  + "".join(f"\n    {k}：{v[0]} 枚・公式あり {v[1]}（{'・'.join(v[2][:4])}）" for k, v in cl.items()))
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E19 数えられなかった：{e}")
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
     if nf_why:
