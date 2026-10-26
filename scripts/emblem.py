@@ -263,6 +263,21 @@ def known_first(names):
     return sorted(names, key=lambda n: bool(ALT_VERSION.search(str(n))))
 
 
+FRINGE_MIN = 60     # この人数以上の分類だけ（小さい分類は端の人も本物）
+FRINGE_RATIO = 0.1  # 参照がこの割合（中央値に対して）未満で、
+FRINGE_LEN = 3000   # 記事もこの字数より短いページ＝他作品の企画・いたずら
+
+
+def fringe(counts, length):
+    """大きな分類（dota2 の Heroes 127）の端にある、参照が極端に少なく記事も短いページ → 集合。
+    Yasuo・Irelia（他ゲームの企画、記事 1〜1.5 千字）・John Raider は外す。参照が少ないだけの新キャラ
+    （Ringmaster：参照 33・記事 5.5 千字）は本物なので残す＝参照だけでは決めない。"""
+    if len(counts) < FRINGE_MIN:
+        return set()
+    med = sorted(counts.values())[len(counts) // 2]
+    return {t for t, n in counts.items() if n < med * FRINGE_RATIO and length.get(t, 0) < FRINGE_LEN}
+
+
 def category_top(api, category, n, dropped=None):
     """Wiki の分類（例：Wizards）のキャラを「ほかのページからのリンク数」→「記事の長さ」の順に多い n 人。
     物語の中心にいるキャラほど多くのページから参照される（AniList にないゲームなどで主要キャラを決める基準）。"""
@@ -289,10 +304,14 @@ def category_top(api, category, n, dropped=None):
                                         "lhnamespace": 0, "lhshow": "!redirect", "format": "json", **cont})
             d = json.loads(_get(f"{api}?{q}", 2_000_000))
             pg = next(iter(d["query"]["pages"].values()))
-            counts[t], length[t] = counts[t] + len(pg.get("linkshere", [])), pg.get("length", 0)
+            counts[t], length[t] = counts[t] + len(pg.get("linkshere", [])), max(length.get(t, 0), pg.get("length", 0))   # 続きの返事には length がない
             cont = d.get("continue") or {}
             if "lhcontinue" not in cont:
                 break
+    junk = fringe(counts, length)   # 大きな分類の端：参照が中央値の 1 割未満で短い（他作品の企画ページ）
+    if dropped is not None:
+        dropped.update(junk)
+    titles = [t for t in titles if t not in junk]
     # リンク数が同じ（ナビ欄で全員つながっているだけ）のときは、記事の長さ（主要キャラほど長い）で決める
     ranked = sorted(titles, key=lambda t: (-counts[t], -length[t]))
     print("  リンク数・記事の長さ：" + "、".join(f"{t} {counts[t]}/{length[t]}" for t in ranked[:n + 3]), file=sys.stderr)

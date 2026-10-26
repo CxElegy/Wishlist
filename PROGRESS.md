@@ -78,3 +78,4 @@
 - 2026-10-26 名簿は大きくなったのに小元素が増えない：チェーンソーマンを手元で再現し原因を特定（取景の多数決 keep_framing が新しい胸像 5 人を捨て emblem_reject へ。切り抜き・形の検査は全部通る）· 見た目の方向なので BACKLOG を [?]（案 A/B/C）· GTA 6・Mandalorian・哈利波特剧集は規則どおり（画像のない人・別人）· コード変更なし · 次：ユーザーの答え
 - 2026-10-26 小元素の残り ✗（r2f1）：後台を手で起こし note を確認。#444 は効いている（exhausted は A2O LITE・Astrae Oratio・The Mandalorian の 3 つだけ）、BLEACH は +0 で理由＝使った／外した画像 18・画像なし 10。E10 の根は取景の多数決（[?] 待ち）· PR 下記 · 次：[?] の答え
 - 2026-10-26 後台作業の提交が「違う」と同時で落ちる：pull_rebase.py で modify/delete を消した側が勝つ形に解く（background・digest・requests）· https://github.com/CxElegy/Wishlist/pull/446 · 手元の衝突テスト・全テスト 876 通過・ux_check ✗2（E10 既知のみ）· 次：分類に別の作品のページ（dota2）
+- 2026-10-26 分類の端の企画ページ（f1f1）：参照だけの規則は Ringmaster（本物の新キャラ 33/5521）を落とした → 参照 1 割未満かつ記事 3000 字未満に変更（Yasuo・Irelia・John Raider だけ外す・127→124 見込み）· 記事の長さが続きの返事で 0 になる傷も直した · NAMES_V 9 · 次：本番の後台で dota2 名簿を確かめる
