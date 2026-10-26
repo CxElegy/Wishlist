@@ -525,7 +525,10 @@ button{font-family:inherit}
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
 @media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
  .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),-22px)}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
-@media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}}
+.emb img{transition:opacity .25s ease-out,transform .25s ease-out}
+.emb-fade .emb img:not(.ld){opacity:0;transform:translateY(8px)}  /* 読み込みが終わる（decode）まで見せず、終わったら下から少し上がって現れる：空 → いきなり絵、の「パッ」をなくす */
+.emb-fade .emb-in:has(img:not(.ld)){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
+@media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}.emb img{transition:opacity .2s linear}.emb-fade .emb img:not(.ld){transform:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
 .pkbatch[hidden]{display:none}
 .shuffle{padding:7px 14px;border:2px solid var(--ink);background:var(--ink);color:var(--card);transform:skewX(var(--skew));box-shadow:3px 3px 0 var(--rose);
@@ -1699,7 +1702,8 @@ VOTE_JS = (VOTE_JS.replace("__BTNS__", json.dumps(_vote_buttons(), ensure_ascii=
            .replace("__THUMB__", json.dumps(_THUMB)))
 LIKEFX_JS = likefx.FX_JS.replace("__THUMB__", json.dumps(_THUMB))
 # 作品の小元素：アニメーションできるときだけ最初は隠し（<head> で html に emb-js）、版面がスクロールで入ってきたら .in で飛び出す
-EMB_HEAD_JS = ("if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)"
+EMB_HEAD_JS = ("document.documentElement.classList.add('emb-fade');"
+               "if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)"
                "document.documentElement.classList.add('emb-js')")
 EMB_JS = """
 (() => {
@@ -1721,6 +1725,11 @@ EMB_JS = """
       } else inner.replaceChildren(n);
     }
   });
+  // 読み込み（decode）が終わってから .ld を付けて、透明 → 不透明で出す。1 画面目の小元素は先に読む。3 秒たっても終わらなければ出す
+  els.forEach(el => { const img = el.querySelector('img'); if (!img) return;
+    if (el.getBoundingClientRect().top < innerHeight) { img.loading = 'eager'; img.fetchPriority = 'high'; }
+    const show = () => img.classList.add('ld');
+    (img.decode ? img.decode() : Promise.reject()).then(show, show); setTimeout(show, 3000); });
   // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
   const room = el => { const band = el.parentElement, img = el.querySelector('img'); if (!band || !img) return;
     const go = () => { const b = band.getBoundingClientRect(), r = el.getBoundingClientRect();

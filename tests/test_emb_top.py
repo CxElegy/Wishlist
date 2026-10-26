@@ -30,3 +30,10 @@ class EmbTop(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EmbFade(unittest.TestCase):
+    def test_fade_in_after_decode(self):
+        self.assertIn("emb-fade", render.EMB_HEAD_JS)
+        self.assertIn("img.decode()", render.EMB_JS)
+        self.assertIn(".emb-fade .emb img:not(.ld){opacity:0", render.CSS if hasattr(render, "CSS") else open(render.__file__, encoding="utf-8").read())
