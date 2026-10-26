@@ -1526,6 +1526,22 @@ def look_hex(img):
     return "%016x" % _hash(img)
 
 
+def look_of(x):
+    """外す小元素 x の絵の見た目の鍵。元の画像（source）を取り直して測る（候補は元の画像のまま測るので、切り抜きの webp とは別）。
+    取れなければ image（網址でも倉庫の webp でも）。どちらもだめなら None（URL だけの reject になる）。店長（digest.reject_emblems）もお客さま（library_emblem.apply_requests）も同じ。"""
+    for u in (x.get("source"), x.get("image")):
+        u = str(u or "")
+        try:
+            if re.match(r"https?://", u):
+                return look_hex(emblem.inspect(emblem._get(u, 6_000_000))[2])
+            if u:
+                from PIL import Image
+                return look_hex(Image.open(emblem.EMB_DIR / u.split("/", 1)[1]))
+        except Exception:
+            continue
+    return None
+
+
 def reject_looks(item):
     """外した絵の鍵（emblem_reject_look）→ 整数のリスト。読めないものは飛ばす。"""
     out = []

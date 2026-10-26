@@ -309,11 +309,13 @@ def apply_requests(c):
     店長の版面の digest.reject_emblems / lock_emblems と同じ決まり：外す・替える = 小元素から抜いて元の画像を emblem_reject に（二度と選ばない）、
     替える はその人（subject）を emblem_redo に残して次の回に同じ人の別の写真を探す、固定 = lock: true（作り直しでも替えない）。
     → config に足す分。替える・外すがあれば、足りない分を次の回に埋める（emblem_state を running に）。依頼がなければ {}。"""
+    import emblem_fill
     reqs = [r for r in c.get("emblem_requests") or [] if isinstance(r, dict)]
     if not reqs:
         return {}
     ems = [x for x in c.get("emblem") or [] if isinstance(x, dict)]
     rej, redo, gone = list(c.get("emblem_reject") or []), list(c.get("emblem_redo") or []), 0
+    looks = [s for s in c.get("emblem_reject_look") or [] if isinstance(s, str)]   # 外した絵の見た目の鍵（emblem_fill.check が近い絵を落とす）
 
     def hit(x, want):
         return x.get("image") in want or x.get("source") in want
@@ -323,6 +325,9 @@ def apply_requests(c):
             for x in [x for x in ems if hit(x, want)]:
                 ems.remove(x)
                 gone += 1
+                h = emblem_fill.look_of(x)
+                if h and h not in looks:
+                    looks.append(h)
                 rej += [u for u in (x.get("source"), x.get("image")) if isinstance(u, str) and re.match(r"https?://", u)]
                 if key == "_emblem_swap" and x.get("subject"):
                     redo.append(x["subject"])
@@ -344,6 +349,8 @@ def apply_requests(c):
             if f and isinstance(m.get("image"), str):
                 picks.append({"old": m["image"], "subject": f[0], "cand": f[1]})
     add = {"emblem": ems, "emblem_reject": list(dict.fromkeys(rej)), "emblem_requests": [], "emblem_want": want, "emblem_picks": picks}
+    if looks:
+        add["emblem_reject_look"] = looks
     if redo:
         add["emblem_redo"] = list(dict.fromkeys(redo))
     if gone:

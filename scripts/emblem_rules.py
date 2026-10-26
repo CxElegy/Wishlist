@@ -46,7 +46,7 @@ def rules():
         {"stage": STAGES[2], "title": "同じ画像", "by": "rule", "code": "emblem_fill.check", "reason": "同じ画像",
          "rule": f"差分ハッシュ（透明は灰の上に置いて測る）の違い ≤ {ef.SAME_BITS} ビット。前からの重複は emblem_fill.drop_same が外す"},
         {"stage": STAGES[2], "title": "外した絵に似ている", "by": "rule", "code": "emblem_fill.check", "reason": "外した絵に似ている",
-         "rule": f"店長が「違う」で外した絵の差分ハッシュ（items.yaml の emblem_reject_look）との違い ≤ {ef.REJECT_BITS} ビット。網址・大きさ・JPEG の画質が違っても同じ絵は戻さない"},
+         "rule": f"店長が「違う」で外した絵の差分ハッシュ（items.yaml の emblem_reject_look）との違い ≤ {ef.REJECT_BITS} ビット。網址・大きさ・JPEG の画質が違っても同じ絵は戻さない（お客さまの版面は boards.config.emblem_reject_look、library_emblem.apply_requests が書く）"},
         {"stage": STAGES[2], "title": "別の作品の絵", "by": "rule", "code": "emblem.BAD_SOURCE", "reason": "別の作品の絵",
          "rule": "元の画像のファイル名が大乱闘のフィギュア（Trophy・SSBB・amiibo）・持ち物（Item_・Weapon_・Artifact_）"},
         # ④ 人物の写真（本人・グループ・出演者）
