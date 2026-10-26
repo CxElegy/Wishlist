@@ -184,7 +184,7 @@ ADMIN_OLD_H3 = ["いま待っているもの", "いま動いているもの", "�
 ADMIN_FILES = ["admin.html", "admin-now.html", "admin-boards.html", "admin-emblem.html", "admin-ai.html", "admin-system.html", "admin-members.html"]
 ADMIN_JS = """() => ({ids:[...document.querySelectorAll('section.panel[id]')].map(s=>s.id),
  h3:[...document.querySelectorAll('h3.h3')].map(h=>(h.firstChild&&h.firstChild.textContent||'').trim()),
- nav:document.querySelectorAll('.admnav a').length,sw:document.documentElement.scrollWidth,
+ nav:document.querySelectorAll('nav .admnav a').length,samples:document.querySelectorAll('#adm-samples a[href*="testground"]').length,sw:document.documentElement.scrollWidth,
  txt:document.body.innerText.length})"""
 
 
@@ -208,6 +208,8 @@ def check_admin_pages(pw, base, width, out):
             continue
         ids |= set(st["ids"])
         h3 |= set(st["h3"])
+        if f == "admin.html" and st["samples"] < 3:   # 見本・試作へ網址を打たずに行ける
+            bad.append(f"{f} に見本・試作へのリンクが {st['samples']} 個（3 個以上のはず）")
         if st["nav"] != 7:
             bad.append(f"{f} の切り替えが {st['nav']} 個（7 個のはず）")
         if st["sw"] > width:
