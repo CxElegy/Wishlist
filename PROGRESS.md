@@ -92,3 +92,4 @@
 2026-10-26 r2：見本 #463 合併。ux_check：test-b/c ✗0、guest は E10 のみ（[?] 待ち）、test-a に呪術廻戦 E11 が再発 → BACKLOG に段を足した
 - 2026-10-26 r3(hr10)：小元素の脇役が出すぎ→版面の顔は名簿の上位 max(12, 2 割)・最初の 1 枚は上位 3 人（PR #470）。本番 data-alts 12 枚前後を確認、ux_check の新しい ✗ なし。次：②Playable characters を先に
 - 2026-10-26 f1f1：記事の写真が書いた人の顔写真（BLEACH Mirrors High・noisypixel）：根は JSON-LD の Yoast @graph の Person の image（theouterhaven の 100_0578-scaled.jpg）を拾い、別家報道で借りたこと。JSON-LD の Person/author を除き state/author_imgs.json に覚え、repair_images でも外す。tests 889 通過。次：合併後 repair の回で写真が替わるのを本番で確かめる。
+- 2026-10-26 r4：小元素の選び方①「点数」の見本（emblem_fame.py・testground/emblem-pick.html）。3 版面で前後を並べた、本番は変えず。AniList の名前ゆれ（Tōshirō→Toushirou）を名字検索で拾い、Wikipedia は 429 を残さない。次：ユーザーの見本の答え（BACKLOG [?]）。
