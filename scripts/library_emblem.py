@@ -272,7 +272,7 @@ def split_closeups(emblems, fetch=None, staged=False):
     return keep, gone, []
 
 
-def stage_holds(item, emblems, hold, pend):
+def stage_holds(item, emblems, hold, pend, fetch=None):
     """半分以上が顔だけのアップの版面の段階的な入れ替え（店長の emblem_fill.stage_closeups と同じ形。回数は boards.config.emblem_closeup {人: 回数}）。
     胸像の代わりを探し、取れた人から入れ替える（取れるまでは元のまま）。CLOSE_TRIES 回取れなかった人は外す（名簿の上位 CLOSE_TOP 人は探し続ける）。
     入れ替えた胸像は手元（sandbox の emblems/）に置く：あとの stash が公開の箱へ上げる。→ (新しい小元素, 外した小元素, 新しい回数)"""
@@ -289,7 +289,14 @@ def stage_holds(item, emblems, hold, pend):
             emblem_fill._check_time()
         except emblem_fill.OutOfTime:
             break
-        got = emblem_fill.bust_replacement(item, by[s], skip)
+        try:   # 元の画像（質の下限・「元より上がるときだけ」の比べ先）
+            import urllib.request
+            from PIL import Image
+            ou = str(by[s].get("image") or "")
+            orig = Image.open(io.BytesIO((fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read()))(ou))) if ou.startswith("http") else None
+        except Exception:
+            orig = None
+        got = emblem_fill.bust_replacement(item, by[s], skip, orig=orig)
         if got:
             swapped[s] = got
             new.pop(s, None)
@@ -353,7 +360,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
         if (recheck or pend) and got.get("emblem") and emblem_fill.kind_of(item) in ("person", "group", "character"):   # 顔だけのアップ（BROKEN_V 8）
             got["emblem"], gone, hold = split_closeups(got["emblem"], fetch, staged=bool(pend))
             if hold:   # 半分以上：段階的に入れ替え（胸像が取れた人から・3 回で外す）
-                got["emblem"], dropped, pend = stage_holds({**item, **got}, got["emblem"], hold, pend)
+                got["emblem"], dropped, pend = stage_holds({**item, **got}, got["emblem"], hold, pend, fetch=fetch)
                 gone = gone + dropped
             if not hold:
                 pend = {}
