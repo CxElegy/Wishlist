@@ -5,12 +5,6 @@
   "target": 1280,
   "v": 3
  },
- "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/aEMRNzbufCaEsmu.png": {
-  "w": 1080,
-  "h": 1920,
-  "target": 720,
-  "v": 3
- },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/cfpbAMbufCaDAAa.png": {
   "w": 1080,
   "h": 1399,
@@ -160,6 +154,19 @@
   "out": [
    532,
    504
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/647c8fably1iig7or5h03j20u011i40a.jpg": {
+  "w": 1080,
+  "h": 1350,
+  "target": 720,
+  "v": 3,
+  "local": "pics/02ff0a6a28588d35.webp",
+  "out": [
+   1024,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -351,6 +358,18 @@
   "w": 820,
   "h": 461,
   "target": 1280,
+  "v": 3
+ },
+ "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg": {
+  "w": 618,
+  "h": 348,
+  "target": 720,
+  "v": 3
+ },
+ "https://blogfiles.ncsoft.net/news/341760c3-50f2-4a41-856a-5961cb9466ca.jpg": {
+  "w": 800,
+  "h": 420,
+  "target": 720,
   "v": 3
  },
  "https://bloximages.newyork1.vip.townnews.com/griffindailynews.com/content/tncms/assets/v3/editorial/a/b9/ab90c9fc-1c26-5ebd-8b60-3f8328044d5c/6a13c291b798b.image.jpg?crop=1762%2C926%2C0%2C124&resize=1200%2C631&order=crop%2Cresize": {
@@ -808,7 +827,7 @@
   "target": 720,
   "v": 3
  },
- "https://helios-i.mashable.com/imagery/articles/04tBtS88o6UdhJDPoBdkoqt/hero-image.fill.size_1200x675.v1792407829.jpg": {
+ "https://helios-i.mashable.com/imagery/articles/00bly3NxVIcyJ7Qh1ILwhjd/hero-image.fill.size_1200x675.v1793018517.jpg": {
   "w": 1200,
   "h": 675,
   "target": 1280,
@@ -880,6 +899,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i.cdn.newsbytesapp.com/images/l144_20281793008781.jpg": {
+  "w": 1440,
+  "h": 810,
+  "target": 720,
+  "v": 3
+ },
  "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/Bleach-Mirrors-High-1-million-pre-registrations.webp?fit=1920%2C1080&ssl=1": {
   "w": 1920,
   "h": 1080,
@@ -909,6 +934,19 @@
   "h": 1212,
   "target": 720,
   "v": 3
+ },
+ "https://i3.gamebiz.jp/media/2fb6a000-6584-4f3c-afe7-d61a03eda2e5.jpg": {
+  "w": 640,
+  "h": 288,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.461,
+  "local": "pics/3aa5e32f18b2bec7.webp",
+  "out": [
+   1280,
+   576
+  ],
+  "why": "看不清"
  },
  "https://i3.wp.com/images.deadspin.com/9462947.jpg?tr=w-1200%2Ch-675%2Cfo-auto%2Cf-jpg&ssl=1": {
   "w": 1100,
@@ -1024,6 +1062,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.sunmedia.tw/banners/7601c2fa-e258-4915-9a3b-1b416d1c0870.jpeg": {
+  "w": 1200,
+  "h": 669,
+  "target": 720,
   "v": 3
  },
  "https://image.zdnet.co.kr/2026/10/06/731eb9f33d6449f05ae02f0def03326c.jpg": {
@@ -1508,6 +1552,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/26/30001095737_1280.jpg": {
+  "w": 1200,
+  "h": 898,
+  "target": 720,
+  "v": 3
+ },
+ "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/26/30001095755_1280.jpg": {
+  "w": 1200,
+  "h": 852,
+  "target": 720,
+  "v": 3
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100207.jpg": {
   "w": 560,
   "h": 560,
@@ -1537,6 +1593,19 @@
   "out": [
    1280,
    962
+  ],
+  "why": "看不清"
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.487,
+  "local": "pics/6da94d65020c72a9.webp",
+  "out": [
+   1280,
+   960
   ],
   "why": "看不清"
  },
@@ -1608,6 +1677,12 @@
    856
   ],
   "why": "看不清"
+ },
+ "https://kubrick.htvapps.com/htv-prod/images/8597236e-02f2-41ea-b263-0d7e83f76fb3.png?crop=1.00xw%3A0.789xh%3B0%2C0.0269xh&resize=1200%3A*": {
+  "w": 1200,
+  "h": 677,
+  "target": 720,
+  "v": 3
  },
  "https://kushironews.jp/wp-content/uploads/2026/10/MN20261026T711CAw00010_P1130TPT50327KSB_resized.jpg": {
   "w": 1200,
@@ -1775,18 +1850,11 @@
   "target": 720,
   "v": 3
  },
- "https://nagoya-dolphins.bl.kuroco-img.app/v=1792466046/files/user/common/2026-27/news/osakashimane_ticket.png": {
+ "https://nagoya-dolphins.jp/files/user/common/2026-27/news/osakashimane_ticket.png": {
   "w": 3840,
   "h": 2160,
   "target": 720,
   "v": 3
- },
- "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_jp_i_1486554983406584528_w640.webp": {
-  "w": 640,
-  "h": 319,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.352
  },
  "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_mynavi_jp_article_20261025-5173094__w600.webp": {
   "w": 600,
@@ -1879,6 +1947,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.livedoor.com/img/fb/news.png?v=20260917": {
+  "w": 600,
+  "h": 600,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.57,
+  "local": "pics/9b710c651bf6e798.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://news.mynavi.jp/article/20261023-5179245/images/005.jpg": {
   "w": 1200,
   "h": 800,
@@ -1936,6 +2017,19 @@
   "h": 589,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/1445517/18700633_615.jpg": {
+  "w": 615,
+  "h": 769,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.431,
+  "local": "pics/b6212f1895565df7.webp",
+  "out": [
+   1024,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/184834/1101752_615.jpg": {
   "w": 615,
@@ -2305,12 +2399,6 @@
   "target": 1280,
   "v": 3
  },
- "https://ni.yam.com/20261024/4257484-d08bf00e5a5c9af9.webp": {
-  "w": 1000,
-  "h": 554,
-  "target": 720,
-  "v": 3
- },
  "https://ni.yam.com/20261024/4326525-9047bbed2dded416.webp": {
   "w": 1440,
   "h": 704,
@@ -2320,12 +2408,6 @@
  "https://ni.yam.com/20261024/a0740c8394164bfca314943bf94e57dd1734333474-e9a1d074e742dc18.webp": {
   "w": 1280,
   "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/08/writer-ayasemachika.jpg": {
-  "w": 600,
-  "h": 600,
   "target": 720,
   "v": 3
  },
@@ -2339,6 +2421,12 @@
   "w": 1024,
   "h": 576,
   "target": 1280,
+  "v": 3
+ },
+ "https://nokiapoweruser.com/wp-content/uploads/2026/08/galaxy-S27.jpeg": {
+  "w": 683,
+  "h": 1024,
+  "target": 720,
   "v": 3
  },
  "https://nokiapoweruser.com/wp-content/uploads/2026/10/New-Galaxy-S27-Series-Leaked-Cases-Hint-at-a-Complete-Makeover-for-Samsungs-Flagships.jpg": {
@@ -2475,12 +2563,6 @@
   "target": 720,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/5623/452/5623-452-f3febcfb8cc7c1f40d7f49c619b8b6ab-750x750.jpg?width=1950&height=1350&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff": {
-  "w": 750,
-  "h": 750,
-  "target": 720,
-  "v": 3
- },
  "https://preview.redd.it/aui2e4z11dwh1.jpeg?width=640&crop=smart&auto=webp&s=2b27ccd2af5b40a82584f53250e9ab2c9db9d992": {
   "w": 640,
   "h": 853,
@@ -2496,6 +2578,12 @@
  "https://prtimes.jp/img/55787/1070/resize/d55787-1070-f312cb8d0a784f2a3c2b-0.jpg": {
   "w": 650,
   "h": 434,
+  "target": 720,
+  "v": 3
+ },
+ "https://prtimes.jp/img/5623/452/resize/d5623-452-fe47ebb5921c5d89f60d-0.jpg": {
+  "w": 650,
+  "h": 650,
   "target": 720,
   "v": 3
  },
@@ -2685,6 +2773,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static.gosugamers.net/8f/56/46/fa5291266f096ab3631803021c9b1f4ad32d17200a0373b390defac5cc.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022223735": {
   "w": 712,
   "h": 955,
@@ -2707,19 +2801,6 @@
   "out": [
    1280,
    854
-  ],
-  "why": "看不清"
- },
- "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg": {
-  "w": 451,
-  "h": 640,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.526,
-  "local": "pics/3c2948fe4f82967a.webp",
-  "out": [
-   902,
-   1280
   ],
   "why": "看不清"
  },
@@ -2776,6 +2857,12 @@
  "https://static.sanyonews.jp/image/article/size1/d/a/5/9/da59818af0f312573f9214a73e531154_1.jpg": {
   "w": 640,
   "h": 268,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/f/6/1/0/f610e91defae6ca42d132f9a72a9e0cf_1.jpg": {
+  "w": 490,
+  "h": 640,
   "target": 720,
   "v": 3
  },
@@ -2970,6 +3057,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://sundayguardianlive.com/wp-content/uploads/2026/10/untitled-design-2026-10-22t133839925.png": {
+  "w": 1200,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://swikblog.com/wp-content/uploads/2026/10/download-2026-10-26T212330.428.webp": {
   "w": 474,
   "h": 680,
@@ -3098,12 +3191,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.66wz.com/wendu/pic/003/015/475/00301547525_700faa9a.png": {
-  "w": 1366,
-  "h": 911,
-  "target": 1280,
-  "v": 3
- },
  "https://www.atpress.ne.jp/releases/643108/LL_img_643108_3.jpg?format=webp&ts=1792744226": {
   "w": 800,
   "h": 800,
@@ -3161,6 +3248,13 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.F5rmytSe4HTVVjDY3z_nSw&pid=News&w=640": {
+  "w": 640,
+  "h": 319,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.341
+ },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
   "h": 334,
@@ -3205,11 +3299,18 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.PGznIf3HYsWmcfiTsfIvmQ&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
+  "h": 538,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.492,
+  "local": "pics/7d4ee150368733a3.webp",
+  "out": [
+   1280,
+   984
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.UKV_ApYouzJkc9fq-plfSQ&pid=News&w=600": {
   "w": 600,
@@ -3316,19 +3417,6 @@
   "out": [
    1280,
    861
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.wGzFtE-7xLrr_Z_dKd-RrA&pid=News&w=912": {
-  "w": 700,
-  "h": 538,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.492,
-  "local": "pics/c794d47ccc32d0c0.webp",
-  "out": [
-   1280,
-   984
   ],
   "why": "看不清"
  },
@@ -3504,10 +3592,22 @@
   "target": 720,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-ultra-3.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/samsung-galaxy-s27.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.gizmochina.com/wp-content/uploads/2026/10/Erste-Samsung-Galaxy-S27-Ultra-Cases-zeigen-mehr-vom-neuen-Kamera-Design-q82-w2560-h-1-1.webp": {
@@ -3544,12 +3644,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://www.kocpc.com.tw/wp-content/uploads/2026/04/20260426234433_0_82a249.jpg": {
-  "w": 1002,
-  "h": 619,
-  "target": 1280,
   "v": 3
  },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/a2olite01.webp": {

@@ -38,6 +38,7 @@
    "weight": "normal",
    "refs": [
     5,
+    33,
     18,
     15,
     11,
@@ -56,11 +57,15 @@
   }
  ],
  "_covered": {
-  "漫威电影": 30,
-  "GTA 6": 28,
+  "漫威电影": 41,
+  "GTA 6": 33,
   "A2O LITE": 7,
   "The Mandalorian": 7,
-  "日本顶级网球赛事": 7
+  "日本顶级网球赛事": 12,
+  "三星手机": 12,
+  "gelato pique": 10,
+  "ILLIT": 6,
+  "MMORPG 新作": 5
  },
  "GTA 6": [
   {
@@ -111,6 +116,16 @@
    "weight": "normal",
    "refs": [
     17
+   ]
+  },
+  {
+   "headline": "Billion-dollar sick day: US productivity expected to take a hit with release of 'GTA VI'",
+   "highlight": "Billion-dollar sick day",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30,
+    32
    ]
   }
  ],
@@ -195,7 +210,8 @@
    "weight": "lead",
    "refs": [
     4,
-    3
+    3,
+    8
    ],
    "image": "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg"
   },
@@ -226,6 +242,182 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Samsung Galaxy S27 Leak Reveals Four Models Including New Pro Variant",
+   "highlight": "Four Models",
+   "blurb": "Leaks point to a four-model Galaxy S27 lineup that includes a new Pro variant.",
+   "weight": "lead",
+   "refs": [
+    1,
+    8,
+    10
+   ],
+   "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/samsung-galaxy-s27.jpg"
+  },
+  {
+   "headline": "Galaxy S27 Exynos 2700 outperforms Snapdragon 8 Elite Gen 6",
+   "highlight": "Exynos 2700",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    2
+   ]
+  },
+  {
+   "headline": "Massive Changes Reportedly Coming to Samsung Galaxy S27 Ultra",
+   "highlight": "8GB of RAM",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    6
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra Leak Reveals Pixel-Style Camera Bar & Huge Battery",
+   "highlight": "Camera Bar",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    3,
+    12
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra vs Galaxy S26 Ultra: Which One Is Better?",
+   "highlight": "S27 Ultra vs Galaxy S26 Ultra",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラピケ×セサミストリートのコラボアイテムが発売！渡辺直美も「かわいい」と大絶賛",
+   "highlight": "セサミストリート",
+   "blurb": "ジェラート ピケとセサミストリートのコラボアイテムが発売。「ベアブリック」も新発売で、イメチェンしたエルモとクッキーモンスターに注目。",
+   "weight": "lead",
+   "refs": [
+    3,
+    8
+   ],
+   "image": "https://news.walkerplus.com/article/1168007/12392132_615.jpg"
+  },
+  {
+   "headline": "Mrs. GREEN APPLE×ジェラート ピケ初コラボ！オリジナルキャラクター“グリベア”をデザイン",
+   "highlight": "初コラボ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    1
+   ]
+  },
+  {
+   "headline": "ジェラートピケと旭山動物園のスペシャルコラボが実現！動物モチーフの親子向けアイテムが登場",
+   "highlight": "旭山動物園",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "スヌーピー×ジェラピケの新作コラボアイテムが登場！おうち時間を幸せにするルームウェアをももクロが着こなす",
+   "highlight": "スヌーピー",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    10
+   ]
+  },
+  {
+   "headline": "「gelato pique(ジェラート ピケ)」の犬猫用ライン初のブランドブックが発売！桐谷美玲や板垣李光人の撮り下ろしカットも",
+   "highlight": "ブランドブック",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "短いスカートの“女性警察官”衣装で物議のILLIT、口を開く…かつてBLACKPINK、i-dleも職業コスチュームで騒動に",
+   "highlight": "口を開く",
+   "blurb": "ILLITがカムバックし、警察官衣装をめぐる議論について語った。",
+   "weight": "lead",
+   "refs": [
+    5,
+    1
+   ],
+   "image": "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg"
+  },
+  {
+   "headline": "ILLIT Return as a Four-Member Group Following MOKA's Hiatus",
+   "highlight": "Four-Member",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ILLIT's MINJU Shines as a Sleek Secret Agent at 'BREAK EVEN' Showcase",
+   "highlight": "BREAK EVEN",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    4
+   ]
+  },
+  {
+   "headline": "ILLIT・WONHEE＆IROHA、ハンサムな魅力披露 最近よく聴く楽曲も紹介",
+   "highlight": "WONHEE＆IROHA",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "G・O・P、PC向けファンタジーMMORPG『Icarus Online』の正式サービスを世界の主要地域で開始",
+   "highlight": "正式サービスを世界の主要地域で開始",
+   "blurb": "G・O・PがPC向けファンタジーMMORPG『Icarus Online』の正式サービスを世界の主要地域で開始した。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://i3.gamebiz.jp/media/2fb6a000-6584-4f3c-afe7-d61a03eda2e5.jpg"
+  },
+  {
+   "headline": "NC’S EPIC MMORPG AION 2 LAUNCHES ON STEAM AND PURPLE TO A GLOBAL AUDIENCE",
+   "highlight": "LAUNCHES ON STEAM",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "New RuneScape MMORPG RS4 revealed at RuneFest 2026, built with Unreal Engine",
+   "highlight": "RS4",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]
