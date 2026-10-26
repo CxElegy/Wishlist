@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-24T22:24:12+00:00",
-"text": "2026-10-25 第 4 バッチを出刊：GTA 6（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 2,587・キャッシュ読み 15.8万・出力 870",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.25,
-"mem_total": 16872804352,
-"mem_free": 16035676160,
-"disk_used": 10674290688,
-"disk_free": 30608879616,
-"disk_total": 41283170304,
-"peak": 154968064
-},
-"batch": 4,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 0,
-"edited": 18,
-"run": 1792879759.4935987,
-"tok": {
-"in": 4,
-"cw": 2583,
-"cr": 158128,
-"out": 870,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 161585,
-"secs": 893,
-"run_tok": {
-"in": 38,
-"cw": 52719,
-"cr": 1301672,
-"out": 5423,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-24T23:22:01+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1782,5 +1741,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 160352
+},
+{
+"at": "2026-10-26T04:22:51+00:00",
+"text": "2026-10-26 第 5 バッチを出刊：漫威电影（1 版面・5 本・残り 1 版面） · token 新規入力 1,840・キャッシュ読み 16.2万・出力 879",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.26,
+"mem_total": 16872804352,
+"mem_free": 15904813056,
+"disk_used": 10743033856,
+"disk_free": 30540136448,
+"disk_total": 41283170304,
+"peak": 295305216
+},
+"batch": 5,
+"boards": [
+"漫威电影"
+],
+"stories": 5,
+"left": 1,
+"edited": 16,
+"run": 1792987260.9018104,
+"tok": {
+"in": 4,
+"cw": 1836,
+"cr": 161896,
+"out": 879,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 164615
 }
 ]

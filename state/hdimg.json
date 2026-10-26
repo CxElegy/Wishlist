@@ -245,6 +245,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.murphysmultiverse.com/uploads/2026/10/moira-x-marvel-studios-x-men.jpg": {
+  "w": 2728,
+  "h": 1536,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.repress.co.kr/photos/abe7998a62e7b6df86a014f837739d3e/thumb.png": {
   "w": 600,
   "h": 400,
@@ -816,12 +822,6 @@
   "h": 675,
   "target": 1280,
   "v": 3
- },
- "https://hermes.media.transform.aol.com/adc8b94bb6e2147cca69e2f1d58daea67429d048/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/b1a3e2ce-5eea-3f93-bcbf-d14467f9f288/9c9f7c12-eb40-4073-b04b-d1183b714500.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-26"
  },
  "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg": {
   "w": 1200,
@@ -3018,7 +3018,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026131523": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026131926": {
   "w": 640,
   "h": 450,
   "target": 1280,

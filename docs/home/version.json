@@ -1,10 +1,10 @@
 {
- "admin": "ac71003a015e",
- "admin-ai": "841215d6690d",
+ "admin": "6dab5b90c40c",
+ "admin-ai": "9149615ab451",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "0b2e1fa6"
+   "b37a791b"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "0ccd21c6"
   ]
  },
- "admin-emblem": "a65c8c23de6e",
+ "admin-emblem": "03de26a01678",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d70a8ce2"
+   "6695115e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f0a6a4b0fa03",
  "admin-members_marks": {},
- "admin-now": "62cf80bd965e",
+ "admin-now": "8e7ba62fa0d7",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "83be27bc"
+   "076a5633"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "d2eaceb2"
   ]
  },
- "admin-system": "df9da0d33848",
+ "admin-system": "65b0f9f7c71d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "792ecc91"
+   "f0408dff"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "c1ed1e70"
   ]
  },
- "index": "f86e4b5f6c90",
+ "index": "93e5f39e5194",
  "index_marks": {
   "front": [
    "トップ",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "0d0d3fa9"
+   "5bd0229d"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "81983677"
+   "badd0b0c"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "578d630c"
   ]
  },
- "updated": "10.26 13:18",
+ "updated": "10.26 13:22",
  "wishlist": "18f110b90b3c"
 }
