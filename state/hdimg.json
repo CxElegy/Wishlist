@@ -575,6 +575,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cloudimages2.broadwayworld.com/columnpiccloud/1793036624-77591-2c0b2661.jpg?format=jpeg&quality=80&width=1200": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/WTA_1_037cd01c0c.jpg": {
   "w": 1920,
   "h": 1080,
@@ -844,12 +850,6 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
-  "v": 3
- },
- "https://hawk.live/storage/images/posts/malr1ne-names-best-mid-laners-matchmaking-25264.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/meepo-removed-dota-2-25143.jpg": {
@@ -1830,6 +1830,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://media.ixbt.games/1600x900/smart/jpeg/ixbt-data/1731242/media-97b0d552367a1b2dcbdadae5cd42cb8580328a93d52474f555f95c06996b0bfc.png": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://media.nownews.com/nn_media/thumbnail/2026/10/WsmmswqeCx0-1200x675.webp": {
@@ -3001,12 +3007,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
-  "w": 1200,
-  "h": 653,
-  "target": 720,
-  "v": 3
- },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3509,6 +3509,12 @@
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ORMS.487fd419d350aaf501fea60b514b8b17&pid=News&w=1200": {
+  "w": 700,
+  "h": 427,
   "target": 720,
   "v": 3
  },
