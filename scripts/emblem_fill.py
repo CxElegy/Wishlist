@@ -1517,9 +1517,27 @@ def _dedupe(cands):
 
 BLANK_STD = 6   # 明るさの標準偏差がこれより小さい = 真っ白・真っ黒のほぼ一色（白紙）
 SAME_BITS = 4   # 差分ハッシュ（64 ビット）の違いがこれ以下 = 同じ画像
+REJECT_BITS = 8   # 店長が「違う」で外した絵（emblem_reject_look）との違いがこれ以下 = 同じ絵（網址・大きさ・JPEG の画質が違っても戻さない）。
+# 実測（dota2 の Crystal Maiden の元画像）：半分・2 倍・幅 300・JPEG 画質 30〜60 は 0、周り 5% を切ると 6。別のヒーロー 13 人との最小は 24（ヒーローどうしの最小は 18）。8 はその間
 
 
-def check(cands, log=print, need_face=False, strict=False, reasons=None):
+def look_hex(img):
+    """絵の見た目の鍵（差分ハッシュ 64 ビットを 16 桁の 16 進で）。items.yaml の emblem_reject_look に残す。"""
+    return "%016x" % _hash(img)
+
+
+def reject_looks(item):
+    """外した絵の鍵（emblem_reject_look）→ 整数のリスト。読めないものは飛ばす。"""
+    out = []
+    for s in (item or {}).get("emblem_reject_look") or []:
+        try:
+            out.append(int(str(s), 16))
+        except ValueError:
+            pass
+    return out
+
+
+def check(cands, log=print, need_face=False, strict=False, reasons=None, reject_looks=()):
     """ダウンロードして使えるか確かめる（短辺 160px 以上・開ける）。落とした理由は reasons（dict）に数える。
     need_face（人物・グループ・出演者）：顔の特徴量で「その人」かを確かめる（face_id）。目で見ていた判断を規則にしたもの：
       顔なし（観客席・絵画・物）／遠景（顔が画像の高さの 10% 未満）／何人も写っている（2 番目の顔が 60% 以上）／
@@ -1591,6 +1609,9 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None):
     for c in dl:
         if c["_img"] is not None:
             h = _hash(c["_img"])
+            if any(bin(h ^ x).count("1") <= REJECT_BITS for x in reject_looks):
+                drop("外した絵に似ている", c, "（店長が「違う」で外した絵と同じ見た目）")
+                continue
             if any(bin(h ^ x).count("1") <= SAME_BITS for x in hashes):
                 reasons["同じ画像"] = reasons.get("同じ画像", 0) + 1
                 continue
@@ -1709,7 +1730,7 @@ def needs_face(item):
 def run_item(item, auto=False, picks=None, log=print, tried=None, strict=False, reasons=None):
     log(f"■ {item['name']}（{KIND_JA[kind_of(item)]}）")
     cands = gather(item, log, tried)
-    good = check(cands, log, need_face=needs_face(item), strict=strict, reasons=reasons)
+    good = check(cands, log, need_face=needs_face(item), strict=strict, reasons=reasons, reject_looks=reject_looks(item))
     out = _sheet_path(item["name"])
     sheet(good, out)
     (out.with_suffix(".json")).write_text(json.dumps([{k: v for k, v in c.items() if k != "_img"} for c in good],
@@ -2000,7 +2021,7 @@ def fill_one(item, log=print):
             cands = globals()[fn]({**fresh, "_no_web": True}, log, got)
             for k, v in got.items():
                 tried[k] = tried.get(k, 0) + v
-            good = check(cands, log, need_face=needs_face(item), strict=True, reasons=reasons)
+            good = check(cands, log, need_face=needs_face(item), strict=True, reasons=reasons, reject_looks=reject_looks(item))
             picks = auto_pick(fresh, good, web=False, strict=True)
             with WRITE_LOCK:
                 before_step = status(fresh)["have"]

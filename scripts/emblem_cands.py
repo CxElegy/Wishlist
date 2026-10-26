@@ -44,7 +44,7 @@ def find(item, subject, log=print, n=N):
             continue
         if kind in ("character", "group"):   # 名簿の人は、その人だけ
             cands = [c for c in cands if ef._same_person(ef._base_subject(c["subject"]), base)]
-        good = ef.check(cands, log, need_face=ef.needs_face(item), strict=False)
+        good = ef.check(cands, log, need_face=ef.needs_face(item), strict=False, reject_looks=ef.reject_looks(item))
         for c in sorted(good, key=lambda c: rank.get(c["source"].split("(")[0], len(rank))):
             k = ef.file_key(c["image"])
             if c["image"] in taken or k in taken or k in seen:

@@ -1453,6 +1453,23 @@ def _reject_marks(marks):
     return out
 
 
+def _look_hex(x):
+    """外す小元素の絵の見た目の鍵（emblem_fill.look_hex）。元の画像（source）を取り直して測る（候補は元の画像のまま測るので、切り抜きの webp とは別）。
+    取れなければ倉庫の webp で。どちらもだめなら None（URL だけの reject になる）。"""
+    import emblem
+    import emblem_fill
+    try:
+        if re.match(r"https?://", str(x.get("source") or "")):
+            return emblem_fill.look_hex(emblem.inspect(emblem._get(x["source"], 6_000_000))[2])
+    except Exception:
+        pass
+    try:
+        from PIL import Image
+        return emblem_fill.look_hex(Image.open(emblem.EMB_DIR / str(x.get("image")).split("/", 1)[1]))
+    except Exception:
+        return None
+
+
 def reject_emblems(text, name, marks, swap=False):
     """管理ページの「違う」：関注項 name の小元素から marks の画像（items.yaml の image か source）を外し、
     元の画像を emblem_reject に足す（自動補完は二度と選ばない。足りなくなった分は次の後台で別の画像を探す）。
@@ -1478,6 +1495,9 @@ def reject_emblems(text, name, marks, swap=False):
         rej += [u for u in (x.get("source"), x.get("image")) if isinstance(u, str) and re.match(r"https?://", u)]
     text = emblem.item_text(text, name, keep)
     fields = {"emblem_reject": list(dict.fromkeys(rej))}
+    looks = [h for h in (_look_hex(x) for x in gone) if h]   # 網址が変わっても同じ絵が戻らないよう、見た目の鍵も残す（emblem_fill.check が落とす）
+    if looks:
+        fields["emblem_reject_look"] = list(dict.fromkeys(list(item.get("emblem_reject_look") or []) + looks))
     if swap:
         fields["emblem_redo"] = list(dict.fromkeys(list(item.get("emblem_redo") or []) + [x["subject"] for x in gone if x.get("subject")]))
     text = set_item_fields(text, name, fields)
