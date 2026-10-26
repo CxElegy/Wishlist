@@ -2998,13 +2998,6 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026122610": {
-  "w": 640,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.383
- },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
   "h": 225,
@@ -3414,6 +3407,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.mgRA6CsgTMQsdFtE2ho-Tw&pid=News&w=640": {
+  "w": 640,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.407
+ },
  "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3718,6 +3718,12 @@
   "w": 2000,
   "h": 1500,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6YouTube.jpg": {
+  "w": 2000,
+  "h": 1500,
+  "target": 720,
   "v": 3
  },
  "https://www.playstationlifestyle.net/wp-content/uploads/sites/9/2026/10/ps5-accessories.jpg?resize=1200,630": {
