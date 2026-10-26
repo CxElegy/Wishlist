@@ -25,6 +25,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 設計の考え（DESIGN_PRINCIPLES.md）に照らして作る：まず店長（test1）のページで同じことをどうしているかを見て同じ部品で。あなた（ユーザー）が決める設定・見た目の方向は作る前に BACKLOG を [?] にして木の形で聞く。
 エンブレム（小元素）はサイトの売り：出ない・表示が違うものはほかの段より先に、EMBLEM_PLAYBOOK.md の過去の直し方の型で規則を直す（1 枚ずつ手で直さない）。新しい壊れ方を直したら EMBLEM_PLAYBOOK.md に 1 行足す。
 一番大事な決まり（HARNESS.md）：test-a・test-b などを個別に直さない（データの手直し・特定のアカウントだけの分岐はしない）、直すのはいつも規則。ログインしたお客さまはだれでも店長と同じ P5 の枠組み（令牌・硬い影・傾けた見出し・札・ポスター・版面の主題と配色・小元素・目次）を見て、違うのは中身だけ。素の箱は出さない。確かめは test-a（多い）・test-b（1 つ）・test-c（0 個）を並べて。段を終えたら PROGRESS.md に 1 行（日付・何をした・PR・確かめた結果・次）。
+段を取る印：BACKLOG の `[~] … （開始 日付 時:分 JST・持ち主 {ID}）` の形で書く（持ち主 = この係の名前。書き込みのたびに「最終 日付 時:分 JST」を足す）。`python harness/claims.py BACKLOG.md --live <今動いている係の名前,…>` で持ち主のいない [~]（持ち主が動いていない・書き込みから 60 分・書き方が古い）を出し、それは取り直してよい。動いている持ち主の新しい [~] は飛ばす。「取った」と知らせるのは、その段の最初のコミットが main か PR に出てから（BACKLOG の印だけで言わない）。
 設計書にない新しい決めごと・本番のデータベースの形を変える／消すことが要るときは、作らずに BACKLOG.md を [?]（聞きたいことを木の形で、案ごとに良い点・困る点とおすすめ）にして status=asked で返す。答えが設計書から決まることは聞かない。`
 const RESULT = { type: 'object', properties: {
   status: { type: 'string', enum: ['done', 'asked', 'failed', 'none'] }, step: { type: 'string' }, pr: { type: 'string' }, summary: { type: 'string' } },
@@ -36,7 +37,7 @@ const done = []
 let planned = 0
 for (let i = 1; i <= MAX; i++) {
   const id = `${LANE === 'request' ? 'r' : 'f'}${i}`
-  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から最初の 1 つだけを進める（依頼の係）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日時・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（[~] で 3 時間以上止まっているものも）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
+  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から最初の 1 つだけを進める（依頼の係）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日付 時:分 JST・持ち主 ${id}・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（持ち主のいない [~] も：claims.py で出る）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
     { label: `step:${id}`, phase: 'Step', model: 'sonnet', schema: RESULT })
   if (!r) { log(`${id}: 返事なし`); break }
   if (r.status === 'none') {
