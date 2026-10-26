@@ -1977,6 +1977,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/865340_1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
+ },
  "https://news.mynavi.jp/article/20261023-5179245/images/005.jpg": {
   "w": 1200,
   "h": 800,
@@ -2766,6 +2772,12 @@
   "target": 720,
   "v": 3
  },
+ "https://sammyguru.com/wp-content/uploads/2026/02/Galaxy-S26-Ultra-SammyGuru-5-display-lockscreen.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
+ },
  "https://sammyguru.com/wp-content/uploads/2026/09/Galaxy-S27-Pro-Ultra-Case-Featured.jpg": {
   "w": 1079,
   "h": 608,
@@ -2837,6 +2849,12 @@
   "h": 1350,
   "target": 1280,
   "v": 3
+ },
+ "https://static.gosugamers.net/16/e4/6e/6b7a8727c551c986012d3f5cec940f33a17abf61ddc36843d2256e3c4e.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
  },
  "https://static.hokkaido-np.co.jp/image/article/size1/2/f/3/3/2f3377ac4857085445c0b94cea965611_1.webp?20261022223735": {
   "w": 712,
@@ -3079,13 +3097,6 @@
   "h": 856,
   "target": 1280,
   "v": 3
- },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026171543": {
-  "w": 640,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.383
  },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
@@ -3509,6 +3520,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.mgRA6CsgTMQsdFtE2ho-Tw&pid=News&w=640": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
+ },
  "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3586,12 +3603,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.y9hw_Tk4yIPwIcoVNnrUFA&pid=News&w=1167": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.zcqfu7_W0e40mFU6UMDwRw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3912,6 +3923,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.switchbacktravel.com/sites/default/files/images/articles/Smith%20Level%20MIPS%20ski%20helmet%20%28close%20up%29.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
+ },
  "https://www.switchbacktravel.com/sites/default/files/images/articles/ski-binding-header.jpg": {
   "w": 1200,
   "h": 800,
@@ -3986,9 +4003,9 @@
   "v": 3
  },
  "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/3acfc4e9-5472-4205-a25a-9618be6633c1.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-26"
  }
 }

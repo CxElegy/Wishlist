@@ -66,19 +66,20 @@
   "周杰伦": 18,
   "ILLIT": 46,
   "日本顶级网球赛事": 15,
-  "MMORPG 新作": 3,
+  "MMORPG 新作": 5,
   "哈利波特剧集": 2,
   "猫用品": 5,
   "あつ森": 2,
-  "滑雪": 4,
+  "滑雪": 6,
   "绝区零": 6,
   "Astrae Oratio": 8,
-  "三星手机": 8,
-  "dota2": 9,
+  "三星手机": 10,
+  "dota2": 11,
   "FROM": 1,
   "The Mandalorian": 2,
   "gelato pique": 4,
-  "星巴克马克杯": 4
+  "星巴克马克杯": 4,
+  "Vaundy": 2
  },
  "GTA 6": [
   {
@@ -413,7 +414,8 @@
    "blurb": "『ゼルダ』にインスパイアされた、最大4人PTのライトMMO仕様ARPG『Scramble Knights Online』が10月27日に早期アクセスを開始。",
    "weight": "hero",
    "refs": [
-    1
+    1,
+    4
    ],
    "event": {
     "date": "2026-10-27",
@@ -514,7 +516,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    6
    ]
   },
   {
@@ -533,6 +536,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "【男子 ハイライト】アルペンスキー FIS ワールドカップ 2026/27 ジャイアントスラローム",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -595,6 +607,16 @@
     6,
     7
    ]
+  },
+  {
+   "headline": "Galaxy S27 Pro Could Pack a Bigger Battery Than Expected",
+   "highlight": "Bigger Battery",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    9
+   ]
   }
  ],
  "dota2": [
@@ -633,6 +655,15 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  },
+  {
+   "headline": "Dota 2 hits highest player count in a decade with 1.1 million peak players",
+   "highlight": "1.1 million peak players",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -720,5 +751,6 @@
     4
    ]
   }
- ]
+ ],
+ "Vaundy": []
 }

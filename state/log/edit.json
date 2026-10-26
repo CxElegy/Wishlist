@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-25T02:48:30+00:00",
-"text": "2026-10-25 第 1 バッチを出刊：日本顶级网球赛事（1 版面・8 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 72.3万・出力 3,177",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.28,
-"mem_total": 16872804352,
-"mem_free": 15965495296,
-"disk_used": 10740400128,
-"disk_free": 30542770176,
-"disk_total": 41283170304,
-"peak": 215511040
-},
-"batch": 1,
-"boards": [
-"日本顶级网球赛事"
-],
-"stories": 8,
-"left": 0,
-"edited": 19,
-"run": 1792896284.2947795,
-"tok": {
-"in": 22,
-"cw": 47210,
-"cr": 722715,
-"out": 3177,
-"calls": 11,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 773124,
-"secs": 226,
-"run_tok": {
-"in": 22,
-"cw": 47210,
-"cr": 722715,
-"out": 3177,
-"calls": 11,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-25T03:47:00+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1847,5 +1806,10 @@
 "calls": 22,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-26T09:31:53+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
