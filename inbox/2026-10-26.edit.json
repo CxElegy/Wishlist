@@ -64,8 +64,8 @@
   "ILLIT": 9,
   "日本顶级网球赛事": 8,
   "MMORPG 新作": 1,
-  "哈利波特剧集": 1,
-  "猫用品": 3,
+  "哈利波特剧集": 2,
+  "猫用品": 4,
   "あつ森": 2,
   "滑雪": 2,
   "绝区零": 4,
@@ -312,6 +312,19 @@
     1
    ],
    "image": "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg"
+  },
+  {
+   "headline": "'Harry Potter' Officially Returns in 2 Months",
+   "highlight": "Returns in 2 Months",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-12-25",
+    "label": "放送開始"
+   }
   }
  ],
  "猫用品": [

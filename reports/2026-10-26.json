@@ -1,6 +1,6 @@
 {
  "date": "2026-10-26",
- "edit_sig": "c3afb49fc544",
+ "edit_sig": "aa0f4bde0626",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,7 +23,7 @@
      "date": "2026-10-25",
      "headline": "‘코믹마켓’부터 ‘AGF’까지⋯ 엔씨가 ‘아스오라’에 공 들이는 이유",
      "highlight": "",
-     "image": "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026095001",
+     "image": "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026115549",
      "image_via": "og:image",
      "url": "https://www.viva100.com/article/20261025500351",
      "weight": "normal"
@@ -255,15 +255,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 2,
-     "source": "Collider",
-     "title": "'Harry Potter' Officially Returns in 2 Months",
-     "url": "https://collider.com/harry-potter-hbo-series-christmas-2026-release/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -275,6 +266,20 @@
      "image_via": "AI 挑选",
      "url": "https://www.aol.com/articles/hbos-harry-potter-might-finally-130130000.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "event": {
+      "date": "2026-12-25",
+      "label": "放送開始"
+     },
+     "headline": "'Harry Potter' Officially Returns in 2 Months",
+     "highlight": "Returns in 2 Months",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/arabella-stanton-hermione-dominic-mclaughlin-harry-alastair-stout-ron-walk-down-hallway-hogwarts-in-robes-harry-potter-hbo.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://collider.com/harry-potter-hbo-series-christmas-2026-release/",
+     "weight": "normal"
     }
    ],
    "subtitle": "HBO「Harry Potter」· ドラマ版ハリー・ポッター",
@@ -623,15 +628,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-22",
-     "n": 4,
-     "source": "Excite エキサイト",
-     "title": "猫とはたらくvol.07：獣医にしかできない仕事を追求し続ける。獣医学者・宮沢孝幸さんが語る「猫への恩返し」とは",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9RTUtEX2l6S3VMWHVJSlBFV0hmVGtRVy1zVmtKZDRZd0plVVBaSEFITmdVSkptS3E2NXZJXzlOVjRRV2xiVjhJeGU2T24zYUFzREhuTVFlOTIwNmNfcWZHVTM0MGVmQWc1ZTZN?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
