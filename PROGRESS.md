@@ -79,3 +79,4 @@
 - 2026-10-26 小元素の残り ✗（r2f1）：後台を手で起こし note を確認。#444 は効いている（exhausted は A2O LITE・Astrae Oratio・The Mandalorian の 3 つだけ）、BLEACH は +0 で理由＝使った／外した画像 18・画像なし 10。E10 の根は取景の多数決（[?] 待ち）· PR 下記 · 次：[?] の答え
 - 2026-10-26 後台作業の提交が「違う」と同時で落ちる：pull_rebase.py で modify/delete を消した側が勝つ形に解く（background・digest・requests）· https://github.com/CxElegy/Wishlist/pull/446 · 手元の衝突テスト・全テスト 876 通過・ux_check ✗2（E10 既知のみ）· 次：分類に別の作品のページ（dota2）
 - 2026-10-26 分類の端の企画ページ（f1f1）：参照だけの規則は Ringmaster（本物の新キャラ 33/5521）を落とした → 参照 1 割未満かつ記事 3000 字未満に変更（Yasuo・Irelia・John Raider だけ外す・127→124 見込み）· 記事の長さが続きの返事で 0 になる傷も直した · NAMES_V 9 · 次：本番の後台で dota2 名簿を確かめる
+- 2026-10-26 小元素は見てすぐわかる人から：名簿の別の版 (Adventures) などを後ろへ（known_first・off_roster の並べ直し・NAMES_V 8）· https://github.com/CxElegy/Wishlist/pull/450 · 全テスト 877 通過・CI 緑・ux_check guest は既知の E10 のみ · 次：library_emblem 後にポケモン版面の最初の 10 枚を確認
