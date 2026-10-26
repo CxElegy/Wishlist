@@ -67,6 +67,16 @@ class EmbCheck(unittest.TestCase):
         self.assertTrue(emb_check.BAD_SOURCE.search("400px-Gulliver_SSBB_Trophy.png"))
         self.assertFalse(emb_check.BAD_SOURCE.search("Gulliver_NH.png"))
 
+    def test_not_people(self):
+        """E17：点検の NOT_CHAR は emblem.NOT_CHAR と同じ式。種族・役割・名無しは人でない。店長の版面に今いない。"""
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+        import emblem
+        bad = emb_check.not_char()
+        for n in ("Wyverians", "Hunter", "Traveler", "Wonderland Manekin", "Inklings", "Old Man", "Soldier 11", "Pochita", "Makima"):
+            self.assertEqual(bad(n), emblem.not_character(n), n)
+        self.assertTrue(bad("Wyverians") and bad("Wonderland Manekin") and not bad("Soldier 11"))
+        self.assertEqual(emb_check.not_people(), {})
+
 
 if __name__ == "__main__":
     unittest.main()

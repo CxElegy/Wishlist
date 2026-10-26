@@ -79,7 +79,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
-NAMES_V = 10   # 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
+NAMES_V = 11   # 11：種族・役割・名無し（Wyverians・Hunter・Traveler・Manekin）を名簿から外す（emblem.NOT_CHAR）。 10：作品の呼び名の é などの記号を外す（Pokémon → Pokemon：ポケモンの分類 Main characters が見つからず、名簿が空で小元素の並びが直らなかった）。 9：大きな分類（60 人以上）の端、参照が中央値の 1 割未満で記事も短いページ（dota2 の Yasuo・Irelia・John Raider。新キャラ Ringmaster は残す）を名簿・数から外す（emblem.fringe）・記事の長さは続きの返事で 0 に戻らない。 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -1060,7 +1060,11 @@ def role_of(api, actor, work_words=()):
     score = {}
     for l in text.split("\n"):
         if "||" in l and named_like_work(l):
-            links = [m.group(1).strip() for m in link.finditer(l.split("||")[-1])]
+            cell = l.split("||")[-1]
+            links = [m.group(1).strip() for m in link.finditer(cell)]
+            if not links:   # 役の列にリンクがなく字だけ（Wookieepedia の Katee Sackhoff：Bo-Katan Kryze<ref …>）。<ref>・{{ }}・'' を除いた字を役の名前の候補に（下で役の記事が演じた人に出演者を書いているものだけ通る）
+                plain = re.sub(r"<ref[^>]*/>|<ref.*?(?:</ref>|$)|\{\{.*?\}\}|<[^>]+>|'{2,}", "", cell).strip()
+                links = [plain] if re.fullmatch(r"[A-Z][\w'’. -]{2,40}", plain) else []
             links = [t for t in links if ok(t) and not named_like_work(t)]
             if links:
                 score[links[-1]] = score.get(links[-1], 0) + 1

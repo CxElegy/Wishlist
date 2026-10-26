@@ -1744,6 +1744,8 @@ class LiveAction(unittest.TestCase):
             "Giancarlo Esposito": "{|\n|2019||[[Chapter 1]]||''[[The Mandalorian]]''||[[Moff]] [[Gideon]]\n|2020||[[Chapter 9]]||''The Mandalorian''||[[Moff]] [[Gideon]]\n|}",
             "Gideon": "{{Character|name=Gideon}}\nGideon was portrayed by [[Giancarlo Esposito]] in the series.",
             "Moff": "{{Title|name=Moff}}",
+            "Katee Sackhoff": "{|\n|2020||\"[[Chapter 11]]\"||''[[Star Wars: The Mandalorian]]''||Bo-Katan Kryze<ref name=\"c11\">{{TheMandalorian|Chapter 11}}</ref>\n|2023||\"[[Chapter 17]]\"||''The Mandalorian''||Bo-Katan Kryze<ref>{{TheMandalorian|Chapter 17}}</ref>\n|}",
+            "Bo-Katan Kryze": "{{Character|name=Bo-Katan}}\nBo-Katan was portrayed by [[Katee Sackhoff]] in live action.",
             "Harold Perrineau": "",
             "Boyd Stevens": "{{Character Info|name=Boyd Stevens|actor=[[Harold Perrineau]]|gender=Male}}",
             "Lauren Mary Kim": "{{Actor|occupation=Actress|nationality=American}} [[Harold Perrineau]] played with her",
@@ -1753,6 +1755,7 @@ class LiveAction(unittest.TestCase):
         with mock.patch.object(ef, "_wikitext", side_effect=wt), mock.patch.object(ef, "_json", return_value=search):
             self.assertEqual(ef.role_of("x", "Chris Evans", ["Avengers"]), "Steve Rogers")              # 役の欄の最初のリンク
             self.assertEqual(ef.role_of("x", "Giancarlo Esposito", ["The Mandalorian"]), "Gideon")     # 表の役の列の最後（称号より名前）
+            self.assertEqual(ef.role_of("x", "Katee Sackhoff", ["The Mandalorian"]), "Bo-Katan Kryze")  # 役の列がリンクなしの字だけ（<ref> を除いて役の記事で確かめる）
             self.assertEqual(ef.role_of("x", "Harold Perrineau", ["FROM", "From"]), "Boyd Stevens")    # 検索：役の記事の actor 欄（実在の人の記事は除く）
 
     def test_anchor_only_and_trusted_helmet(self):

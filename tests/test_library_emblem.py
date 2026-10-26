@@ -236,9 +236,9 @@ class Fill(unittest.TestCase):
         self.assertEqual(add["emblem_state"]["have"], 1)
 
     def test_not_character(self):
-        for n in ("Player", "Pokémon Trainer (Super Smash Bros.)", "MHD: FV: Felyne List", "Monster Hunter (Marvel vs. Capcom: Infinite)", "Secondary Characters", "Special character", "Parents"):
+        for n in ("Player", "Pokémon Trainer (Super Smash Bros.)", "MHD: FV: Felyne List", "Monster Hunter (Marvel vs. Capcom: Infinite)", "Secondary Characters", "Special character", "Parents", "Wyverians", "Hunter", "Traveler", "Wonderland Manekin", "Inklings", "Octoling (Playable)", "Old Man"):
             self.assertTrue(emblem.not_character(n), n)
-        for n in ("Ash Ketchum", "Red (Adventures)", "May (anime)", "Agent 8", "Li'l Judd"):
+        for n in ("Ash Ketchum", "Red (Adventures)", "May (anime)", "Agent 8", "Li'l Judd", "Soldier 11", "Poogie", "Rider", "Zangetsu (Zanpakutō spirit)"):
             self.assertFalse(emblem.not_character(n), n)
 
     def test_rebuild_keeps_old_when_new_rules_find_none(self):
