@@ -38,12 +38,12 @@
   "https://news.e-expo.net/release/2026/10/261021_r01.html/": "https://prcdn.freetls.fastly.net/release_image/5623/452/5623-452-f3febcfb8cc7c1f40d7f49c619b8b6ab-750x750.jpg?width=1950&height=1350&quality=85%2C75&format=jpeg&auto=webp&fit=bounds&bg-color=fff",
   "https://news.infoseek.co.jp/article/itmedia_favlog_4062502/": "https://media.image.infoseek.co.jp/isnews/photos/itmedia_favlog/itmedia_favlog_4062502_0.jpg",
   "https://news.infoseek.co.jp/article/oshiraku_28731/": "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg",
-  "https://news.ltn.com.tw/news/politics/breakingnews/5618838": "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg",
   "https://nijimen.kusuguru.co.jp/topics/643046": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/6ada5e768ea04b32a3db3c7cfd01ac05.jpg",
   "https://nijimen.kusuguru.co.jp/topics/643280": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/08/writer-ayasemachika.jpg",
   "https://nlab.itmedia.co.jp/research/articles/4062618/amp/": "https://www.bing.com/th?id=ONUT.iAT7IhEzZ5ZerNWSk8uOWg&pid=News&w=1200",
   "https://note.com/kappalyno/n/n0672d8bd435a": "https://www.bing.com/th?id=ONUT.Hjl-eeI0P0hkVpGmmzWAFQ&pid=News&w=1200",
   "https://nvns.net/news_view.php?new_sn=146807&new_csn=1467": "https://uploads.posu.tw/73/738/b2026102013593410.jpg",
+  "https://orientaldaily.on.cc/content/%E5%A8%9B%E6%A8%82/odn-20261026-1026_00282_042/%E6%98%86%E5%87%8C%E7%B7%B4%E6%B3%A2-%E5%91%A8%E6%9D%B0%E5%80%AB%E5%81%9A%E8%B7%9F%E5%BE%97%E8%80%81%E5%85%AC": "https://orientaldaily.on.cc/asset/entertainment/20261026/photo/1026-00282-042s1.jpg",
   "https://paradepets.com/shopping/kitty-city-laptop-distraction-scratcher-chewy-sale": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA29yYrK.img",
   "https://prtimes.jp/main/html/rd/p/000001247.000012048.html": "https://prcdn.freetls.fastly.net/release_image/12048/1247/12048-1247-64977d38e7992af398fbe6cd29e05b7d-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://prtimes.jp/main/html/rd/p/000004576.000018505.html": "https://prcdn.freetls.fastly.net/release_image/18505/4576/18505-4576-3c0ae2cf4e150a39d7fa573bc8b19b8d-1080x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
@@ -1384,27 +1384,6 @@
   },
   {
    "batch": 4,
-   "because": "周杰伦",
-   "date": "2026-10-26",
-   "hits": [],
-   "image": "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg",
-   "kind": "board",
-   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
-   "score": 6,
-   "source": "自由時報",
-   "taste": [
-    [
-     "作品:周杰伦",
-     2
-    ]
-   ],
-   "title": "周杰倫昔讚「很給力」影片被翻出 蔣萬安笑：哎唷！不錯喔",
-   "url": "https://news.ltn.com.tw/news/politics/breakingnews/5618838",
-   "words": [],
-   "work": "周杰伦"
-  },
-  {
-   "batch": 4,
    "because": "The Mandalorian",
    "date": "2026-10-26",
    "hits": [],
@@ -1423,6 +1402,27 @@
    "url": "https://www.imdb.com/es/video/vi4184259865/?ref_=nmvg_vi_26",
    "words": [],
    "work": "The Mandalorian"
+  },
+  {
+   "batch": 4,
+   "because": "周杰伦",
+   "date": "2026-10-25",
+   "hits": [],
+   "image": "https://orientaldaily.on.cc/asset/entertainment/20261026/photo/1026-00282-042s1.jpg",
+   "kind": "board",
+   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
+   "score": 6,
+   "source": "東方日報",
+   "taste": [
+    [
+     "作品:周杰伦",
+     2
+    ]
+   ],
+   "title": "昆凌練波 周杰倫做跟得老公",
+   "url": "https://orientaldaily.on.cc/content/%E5%A8%9B%E6%A8%82/odn-20261026-1026_00282_042/%E6%98%86%E5%87%8C%E7%B7%B4%E6%B3%A2-%E5%91%A8%E6%9D%B0%E5%80%AB%E5%81%9A%E8%B7%9F%E5%BE%97%E8%80%81%E5%85%AC",
+   "words": [],
+   "work": "周杰伦"
   },
   {
    "batch": 4,
@@ -2133,11 +2133,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [

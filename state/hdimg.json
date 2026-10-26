@@ -1483,8 +1483,15 @@
  "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg": {
   "w": 800,
   "h": 588,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.595,
+  "local": "pics/72f1f1332c072b6e.webp",
+  "out": [
+   1280,
+   941
+  ],
+  "why": "看不清"
  },
  "https://img.my-best.com/contents/78cad12f0b4ce34b6a0aba75c043645a.jpeg?ixlib=rails-4.3.1&q=70&lossless=0&w=1200&h=900&fit=crop&s=60c09410532229589cd52bff59aea54a": {
   "w": 1200,
@@ -2454,6 +2461,12 @@
   "target": 720,
   "v": 3
  },
+ "https://orientaldaily.on.cc/asset/entertainment/20261026/photo/1026-00282-042s1.jpg": {
+  "w": 609,
+  "h": 435,
+  "target": 720,
+  "v": 3
+ },
  "https://p.potaufeu.asahi.com/d416-p/picture/31451038/72243b8d2254b36daa8010677f8b393f.jpg": {
   "w": 1200,
   "h": 800,
@@ -3005,7 +3018,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026130704": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026131109": {
   "w": 640,
   "h": 450,
   "target": 1280,
