@@ -78,6 +78,8 @@ def check(pw, base, who, width, out, page="", emb="off"):
         plates:document.querySelectorAll('section.sec .pic.icon,section.sec .pic.none').length,
         frames:document.querySelectorAll('section.sec .pic').length,
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
+        tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
+        hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
         sw:document.documentElement.scrollWidth})""", BOXES)
     near = [] if page else pg.evaluate(NEAR_JS)
     pg.screenshot(path=str(out / f"{who}-{'set-' if page else ''}{width}.png"))
@@ -109,6 +111,10 @@ def check(pw, base, who, width, out, page="", emb="off"):
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
     if st["sw"] > width:
         bad.append(f"横にはみ出す（{st['sw']}px）")
+    if st["tofu"]:   # 2026-10-26：数字の書体（Anton）に日本語の字がなく □□□ になった（「（日）」）
+        bad.append("日本語の字が日本語の書体でない（□になる）：" + "・".join(map(str, st["tofu"])))
+    if st["hero"]:   # 2026-10-26：ポスターの写真が読み込めていない
+        bad.append("ポスターの写真が出ていない")
     if st["arts"] and st["empty"]:   # 2026-10-24：記事が 8 本あってもポスターが「直近 7 日は新着なし」（写真のある記事がない）
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
     if st["heads"]:   # 2026-10-25：版面の頭の枠が出典のアイコンの札（写真が出ない）
