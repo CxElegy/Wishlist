@@ -1,32 +1,32 @@
 {
- "admin": "12653c3dd9d4",
- "admin-ai": "b2c97ecc3063",
+ "admin": "0515ab784a59",
+ "admin-ai": "a011b8346908",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "06c64d81"
+   "501fe5ce"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ca57f75f"
   ]
  },
- "admin-boards": "9f945f21fc0c",
+ "admin-boards": "a9f577499fca",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4d878027"
+   "6bb6a771"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "2e1e2a8ab21d",
+ "admin-emblem": "8af7bc3d91f1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "67d5480c"
+   "750fda49"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "b665e0f53ce6",
  "admin-members_marks": {},
- "admin-now": "0430c5273fd1",
+ "admin-now": "b465d1a0aa2c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1a6cd03b"
+   "376e5445"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "58341ad6"
+   "850160c9"
   ],
   "term-panel": [
    "ライブログ",
-   "22b1fd1e"
+   "271ccf43"
   ]
  },
- "admin-system": "81d247b1d032",
+ "admin-system": "0aebf2d745dd",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "824943d1"
+   "b1aa3d23"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "394cbcf0"
+   "b834961a"
   ]
  },
  "admin_marks": {},
- "heat": "a5144f7bb2ab",
+ "heat": "bd2159932241",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "66fde9e2"
+   "abe9f3d9"
   ],
   "ranking": [
    "ランキング",
-   "843b36c1"
+   "9833f84d"
   ]
  },
- "index": "24507b3aec98",
+ "index": "0587163a1368",
  "index_marks": {
   "front": [
    "トップ",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "a92b2081"
+   "06ff63e2"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "45ba6fc4"
   ]
  },
- "updated": "10.26 23:03",
+ "updated": "10.26 23:12",
  "wishlist": "78b1c8b230fc"
 }

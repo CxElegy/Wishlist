@@ -5,6 +5,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/cfpbAMbufCaDAAa.png": {
+  "w": 1080,
+  "h": 1399,
+  "target": 1280,
+  "v": 3
+ },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/edNGYubufoiAFEF.png": {
   "w": 1080,
   "h": 1728,
@@ -60,6 +66,19 @@
   "h": 853,
   "target": 1280,
   "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261026ac/598/w383h215/20261026/709f-40372cd4540f8fb93006ea0a28b38027.jpg": {
+  "w": 383,
+  "h": 215,
+  "target": 720,
+  "v": 3,
+  "blur": 0.447,
+  "local": "pics/da64eb1f27dabf5a.webp",
+  "out": [
+   720,
+   404
+  ],
+  "why": "看不清"
  },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
@@ -1105,7 +1124,7 @@
  "https://images.assettype.com/tribune/2026-10-25/vbgunxe0/alex-eala.JPG?w=1200&auto=format&q=70&rect=0%2C107%2C2048%2C1152&h=675&fit=crop": {
   "w": 1200,
   "h": 675,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://images.entertainment.ie/uploads/2021/02/04114544/don-cheadle-war-machine.jpg?w=1280&h=768&q=high": {
@@ -1367,16 +1386,16 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g3ZUh.img": {
-  "w": 1200,
-  "h": 1200,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g4Fqs.img": {
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g6gL0.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://img.4gamers.com.tw/news-image/30592e27-3cf0-4f66-b229-fc5e54665aeb.jpg": {
@@ -2009,7 +2028,7 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/893817_1.jpg": {
   "w": 1024,
   "h": 499,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://news.denfaminicogamer.jp/wp-content/uploads/2026/10/Screenshot-2026-10-24-13-30-23-1024x576.png": {
@@ -2800,6 +2819,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/516b3f728ed06962e624e263634b5374beccd01772918f02f0c61625dc35ebee/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fslashfilm_videos_419%2F44385178f3144e723897b80576bfa6b4.jpg": {
   "w": 1200,
   "h": 675,
@@ -3155,7 +3180,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026222905": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026230843": {
   "w": 640,
   "h": 450,
   "target": 1280,
@@ -3322,6 +3347,12 @@
   "target": 720,
   "v": 3
  },
+ "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
+  "w": 1080,
+  "h": 600,
+  "target": 720,
+  "v": 3
+ },
  "https://www.4gamer.net/games/528/G052880/20261020018/SS/001.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3365,12 +3396,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.1uBXQmuFS9kEJBgLDVKJJQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 394,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6eebhV_f2jbvQzhRjnY32g&pid=News&w=1200": {
   "w": 700,
