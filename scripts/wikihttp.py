@@ -36,6 +36,7 @@ EXPIRE = {   # 網址の形 → キャッシュの持ち時間（記事・Wikida
     "upload.wikimedia.org/*": timedelta(days=14),
     "*/wiki/Special:FilePath/*": timedelta(days=14),
     "*/wiki/Special:EntityData/*": timedelta(days=3),
+    "*.fandom.com/api.php*": timedelta(days=3),   # Fandom の API（名簿の数え直しで同じ分類を何度も引く）
 }
 NO_AUTH = ("upload.wikimedia.org", "thumb.wikimedia.org")   # 画像のサーバー：トークンは使わない
 MAXLAG = 5       # 秒。サーバーの複製の遅れがこれより大きいと「maxlag」で断られる（Retry-After だけ待つ）
@@ -59,6 +60,13 @@ sleep = time.sleep   # テストで差し替える
 def is_wikimedia(url):
     host = urllib.parse.urlparse(url).netloc
     return any(host == h or host.endswith("." + h) for h in HOSTS)
+
+
+def is_fandom(url):
+    """Fandom の API（<wiki>.fandom.com/api.php）。Wikimedia と同じ「ホストごと 1 本・Retry-After・キャッシュ」で叩くが、
+    Wikimedia 全体の間隔（ALL_GAP）・maxlag・トークンは使わない（後台 6 本並列が別々の Fandom に一度に当たって 429 になった）。"""
+    p = urllib.parse.urlparse(url)
+    return p.netloc.endswith(".fandom.com") and p.path == "/api.php"
 
 
 def _cacheable(resp):
@@ -93,7 +101,8 @@ def token():
 
 def _auth(host):
     t = token()
-    return {"Authorization": f"Bearer {t}"} if t and host not in NO_AUTH else {}
+    ok = any(host == h or host.endswith("." + h) for h in HOSTS)   # Fandom などにはトークンを送らない
+    return {"Authorization": f"Bearer {t}"} if t and ok and host not in NO_AUTH else {}
 
 
 def with_maxlag(url):
@@ -124,7 +133,8 @@ def _error(url, resp, lag=False):
 def get(url, limit=6_000_000, ttl=None):
     """→ 中身（bytes）。失敗は urllib.error.HTTPError（code 429 / 403 など）で、今までの _get と同じように扱える。
     ttl（timedelta）はキャッシュの持ち時間をこの網址だけ変える（話題度の閲覧数は 12 時間）。"""
-    url = with_maxlag(url)
+    fandom = is_fandom(url)
+    url = url if fandom else with_maxlag(url)
     host = urllib.parse.urlparse(url).netloc
     s = session()
     kw = {"expire_after": ttl} if ttl is not None and hasattr(s, "cache") else {}
@@ -139,11 +149,12 @@ def get(url, limit=6_000_000, ttl=None):
             gap = _last.get(host, 0) + GAP - time.time()
             if gap > 0:
                 sleep(gap)
-            with _locks_lock:   # ほかのホストのスレッドとも順番を予約する
-                slot = max(time.time(), _all[0])
-                _all[0] = slot + ALL_GAP
-            if slot > time.time():
-                sleep(slot - time.time())
+            if not fandom:
+                with _locks_lock:   # ほかのホストのスレッドとも順番を予約する
+                    slot = max(time.time(), _all[0])
+                    _all[0] = slot + ALL_GAP
+                if slot > time.time():
+                    sleep(slot - time.time())
             try:
                 auth = _auth(host)
                 resp = s.get(url, timeout=TIMEOUT, headers=auth, **kw)
