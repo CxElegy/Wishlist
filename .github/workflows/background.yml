@@ -149,7 +149,7 @@ jobs:
           git commit -q -m "后台作業 $(TZ=Asia/Tokyo date +'%F %H:%M')"
           git stash -q --include-untracked || true   # コミットしなかったゲートの記録（判断が同じ）は捨てる：pull --rebase の邪魔になる
           for i in 1 2 3; do
-            if git pull --rebase -X theirs -q; then
+            if python scripts/pull_rebase.py; then
               python scripts/digest.py render
               git add docs
               git diff --cached --quiet || git commit -q -m "重新生成网页"

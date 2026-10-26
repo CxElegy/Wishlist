@@ -290,7 +290,7 @@ PROCESSES = [
             {"id": "g1l", "kind": "decision", "lane": "actions", "title": "ライブラリの最後の回から 80 分たった？", "text": "library.yml の成功した回（gh run list）· 毎時 41 分の定時は抜けることがある（2026-10-24 00:41 は来なかった）",
              "uses": ["libwatch"], "yes": "走っていない・並んでいない・30 分以内に始まっていなければ library.yml を users_only で起こす（お客さまの選んだもの → follows）", "no": "何もしない"},
             {"id": "g2", "kind": "decision", "lane": "actions", "title": "小元素の仕事がある？", "no": "飛ばす"},
-            {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 6 本並列", "text": "「小元素の自動補完」· 失敗しても次の段（AI 編集を起こす・提交）へ進む（continue-on-error）· items.yaml は一時ファイルから置き換える · 提交の前に items.yaml が読めなければ書き込みを戻す · 落ちた回は続けて起こし直さない · items.yaml を変えた回は library.yml を users_only で起こす（bot の push では起きない：ライブラリの店長の版面の写しを新しく）"},
+            {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 6 本並列", "text": "「小元素の自動補完」· 失敗しても次の段（AI 編集を起こす・提交）へ進む（continue-on-error）· items.yaml は一時ファイルから置き換える · 提交の前に items.yaml が読めなければ書き込みを戻す · 落ちた回は続けて起こし直さない · 提交の pull --rebase は scripts/pull_rebase.py（店長の「違う」が消した画像と同時に書いた衝突 modify/delete は消した側を勝たせる：git rm ＋ items.yaml のその画像の行を外す。background・digest・requests 共通） · items.yaml を変えた回は library.yml を users_only で起こす（bot の push では起きない：ライブラリの店長の版面の写しを新しく）"},
             {"id": "g4", "kind": "decision", "lane": "actions", "title": "AI が要る仕事がある？", "text": "AI 編集・写真", "no": "Claude は起こさない（トークン 0）"},
             {"id": "g4r", "kind": "decision", "lane": "actions", "title": "溜まった版面がある？", "text": "整理待ち 3 件以上 · いちばん古いものが 2 時間 · 初めての版面（前の 3 日の edit.json にない）· 今日のトークンが 100 万未満",
              "uses": ["gate"], "no": "起こさない（溜まるか 2 時間たつのを待つ・上限なら明日）"},
