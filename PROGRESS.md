@@ -97,3 +97,4 @@
 - 2026-10-26 r1：小元素の「パッ」対策（decode 後ふわっと・場所と影・eager）。PR #480。遅い回線の点検 1400/390 ✓。ux_check ✗4 は前からの E10・呪術廻戦の頭。次：残りの写真類の同じ出方
 - 2026-10-26 f2：小元素の選び方の見本を案 2 で作り直し（emblem_fame に公式人気投票・使えるキャラ・記事に出た回数、harness/emblem_pick_page.py に顔の大きさをそろえた胸像）。本番は変えず。確かめ：testground/emblem-pick.html を 1100px で画像確認、tests 追加。次：ユーザーの答え（BACKLOG [?]）。
 - 2026-10-26 f3：test-a 呪術廻戦の E11 は本番で消えていた（ux_check test-a 1400：E11 0）。残りの「頭が写真なし」の原因は ORB でブラウザが頭条の写真を断ること（サーバーの規則の穴でない）→ BACKLOG を [?]（案 A/B/C）· 次：答え待ち
+- 2026-10-26 f4：untied_roles/untied を作り直しの剧だけに（is_remake）。PR #484。確かめ：テスト全部・check_arch・本物の Wikidata（FROM False・哈利波特 True）・ux_check 新しい ✗ なし（E10・頭の写真なしは前から）。次：後台の回で FROM の 3 人が戻るか
