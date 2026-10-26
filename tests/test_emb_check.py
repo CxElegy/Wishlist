@@ -30,6 +30,12 @@ class EmbCheck(unittest.TestCase):
         ImageDraw.Draw(strip).rectangle((10, 2, 60, 22), fill=(20, 20, 30, 255))
         self.assertTrue(emb_check.cut_edge(strip))        # 人物が消えて切れ端だけ（漫威 Black Panther 73×23）
 
+    def test_cut_edge_whole_figure(self):
+        im = Image.new("RGBA", (100, 120), (0, 0, 0, 0))
+        ImageDraw.Draw(im).ellipse((10, 0, 90, 119), fill=(40, 40, 40, 255))
+        self.assertTrue(emb_check.cut_edge(im))
+        self.assertEqual(emb_check.cut_edge(im, whole=True), "")   # 公式の全身の絵（body の足の裏が画像の中）：ポチタの持ち手
+
     def test_head_cut(self):
         # 上の 3px に絵が横幅の 20% 以上 = 頭のてっぺんが切れた（BLEACH Mirrors High：顔は全部入っていても ✗）
         im = Image.new("RGBA", (100, 100), (0, 0, 0, 0))

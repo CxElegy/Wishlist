@@ -141,6 +141,26 @@ class Rules(unittest.TestCase):
         self.assertEqual([x["subject"] for x in looks], ["C"])   # 固定の D は残す
         self.assertGreater(bin(ef._hash(a) ^ ef._hash(b)).count("1"), ef.SAME_BITS)
 
+    def test_broken_image_whole_figure(self):
+        """公式の全身の絵（body の足の裏が画像の中）の上の端は絵そのもの：ポチタの平らな持ち手は「頭が切れた」ではない。"""
+        from PIL import Image, ImageDraw
+        im = Image.new("RGBA", (100, 120), (0, 0, 0, 0))
+        ImageDraw.Draw(im).ellipse((10, 0, 90, 119), fill=(40, 40, 40, 255))   # 上の端の近くが丸く広い（持ち手）
+        self.assertTrue(ef.broken_image(im, False))
+        self.assertFalse(ef.broken_image(im, False, whole=True))
+        self.assertTrue(ef.broken_image(Image.new("RGBA", (60, 10), (1, 1, 1, 255)), False, whole=True))   # 切れ端は全身でも外す
+
+    def test_real_body_no_model_no_face(self):
+        """姿勢モデルがなく（Actions）顔も見つからない絵（ポチタ）は、上半身に切らず全身（前は多数決で切って顔の切れ端になった）。"""
+        from PIL import Image, ImageDraw
+        import emblem
+        im = Image.new("RGBA", (100, 160), (0, 0, 0, 0))
+        ImageDraw.Draw(im).ellipse((10, 20, 90, 150), fill=(220, 120, 60, 255))
+        with mock.patch.object(emblem, "_pose_model", return_value=None), mock.patch.object(emblem, "face_box", return_value=None):
+            self.assertIs(emblem.real_body(im, (0.3, 0.95, 0.5, 0.6, 0.7))[0], False)
+        with mock.patch.object(emblem, "_pose_model", return_value=None), mock.patch.object(emblem, "face_box", return_value=(1, 2, 3, 4)):
+            self.assertIsNone(emblem.real_body(im, (0.3, 0.95, 0.5, 0.6, 0.7))[0])
+
     def test_broken_image_two_people(self):
         # 2 番目の顔がいちばん大きい顔と同じくらい（CROWD_H）= 2 人が並んだ切り抜きは前からのものも外す（点検 E11）
         from unittest import mock
@@ -518,6 +538,8 @@ class Background(unittest.TestCase):
         from unittest import mock
         with mock.patch.object(ef, "broken_cuts", side_effect=lambda i: [1] if i["name"] == "zero" else []):
             self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 頭が切れた・ぼやけた小元素のある版面は待たない
+        with mock.patch.object(ef, "BROKEN_V", ef.BROKEN_V + 1):   # 規則の版が上がった：材料が同じでも待たずにやり直す
+            self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         prog["items"]["zero"].pop("material")   # 指紋の記録がない古い失敗は待たない
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         self.assertEqual(ef.waiting(prog, self.items, now), [])
@@ -1667,10 +1689,10 @@ class Framing(unittest.TestCase):
     def test_real_body_without_model_follows_board(self):
         import emblem
         from unittest import mock
-        with mock.patch.object(emblem, "_pose_model", return_value=None):
+        with mock.patch.object(emblem, "_pose_model", return_value=None), mock.patch.object(emblem, "face_box", return_value=(1, 2, 3, 4)):
             fig = self._figure()
             real, why = emblem.real_body(fig, emblem.body_marks(fig))
-        self.assertIsNone(real)   # Actions（モデルなし）では決めず、fit_all が版面の多いほうに合わせる
+        self.assertIsNone(real)   # Actions（モデルなし）で顔があるとき：決めず、fit_all が版面の多いほうに合わせる（顔がなければ全身：test_real_body_no_model_no_face）
 
     def test_logo_flat_background(self):
         import emblem

@@ -2016,7 +2016,8 @@ def _write_sheet(item, good):
 
 def material(item):
     """その関注項の「材料」の指紋：集めた記事の数（直近 30 日）と、小元素の手がかり（emblem_who・urls・fandom・wiki・site・reject）。
-    失敗した版面は、これが変わったら（新しい記事・手がかりが増えた）待たずにすぐやり直す。"""
+    失敗した版面は、これが変わったら（新しい記事・手がかりが増えた）待たずにすぐやり直す。
+    規則の版（NAMES_V・BROKEN_V）も入れる：規則を直しても失敗の版面が材料同じで 1〜24 時間待たされ、直したのが本番に効くのが遅れた（#526 のあと The Mandalorian が 04:19 まで待ち）。"""
     import hashlib
     n = 0
     for path in sorted((ROOT / "inbox").glob("????-??-??.json"), reverse=True)[:30]:
@@ -2027,7 +2028,7 @@ def material(item):
         except ValueError:
             pass
     keys = {k: item.get(k) for k in ("emblem_who", "emblem_urls", "emblem_fandom", "wiki", "site", "emblem_reject", "emblem_kind", "emblem_icon")}
-    return hashlib.sha1(json.dumps([n, keys], sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
+    return hashlib.sha1(json.dumps([n, keys, NAMES_V, BROKEN_V], sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
 
 
 def _live(board, label=None, step=0):
@@ -2218,14 +2219,15 @@ def broken_cuts(item):
         except Exception:
             bad.append(x)
             continue
-        if broken_image(im, photo):
+        b = x.get("body")
+        if broken_image(im, photo, whole=bool(b) and len(b) > 1 and b[1] <= 1):
             bad.append(x)
     return bad
 
 
-def broken_image(im, photo):
+def broken_image(im, photo, whole=False):
     """切り抜き 1 枚（PIL）が壊れているか：切れ端・上の端の半分以上が人物（TOP_MAX：コマの切り抜き）・頭のてっぺん・額が上の端で切れた・写真がぼやけた。broken_cuts とお客さまの版面（library_emblem）で同じ。"""
-    if emblem.is_sliver(*im.size) or emblem.head_cut(im) or emblem.top_share(im) > emblem.TOP_MAX or emblem.top_share(im) > emblem.TOP_TOUCH and emblem.forehead_cut(im):   # 頭のてっぺん・額まで切れた前からの切り抜き（check_whole と同じ：額は上の端に TOP_TOUCH 以上当たっているときだけ見る。The Mandalorian Gideon 1.0%・Mayfeld 0.3% は頭が全部入っている）
+    if emblem.is_sliver(*im.size) or not whole and (emblem.head_cut(im) or emblem.top_share(im) > emblem.TOP_MAX or emblem.top_share(im) > emblem.TOP_TOUCH and emblem.forehead_cut(im)):   # whole：公式の全身の絵（body の足の裏が画像の中）は上の端が絵そのもの（ポチタの持ち手）で、枠で切れたのではない   # 頭のてっぺん・額まで切れた前からの切り抜き（check_whole と同じ：額は上の端に TOP_TOUCH 以上当たっているときだけ見る。The Mandalorian Gideon 1.0%・Mayfeld 0.3% は頭が全部入っている）
         return True
     if photo and emblem.faceless_scrap(im):   # 顔がなく髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）
         return True
@@ -2237,7 +2239,7 @@ def broken_image(im, photo):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 8   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 9   # 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 
 CLOSE_W = 0.45         # 顔の幅 ÷ 画像の幅がこれを超える = 顔だけのアップ（髪から顎まで。小元素は胸像：BLEACH の黒崎一護 372×519 は顔の幅 54〜68%）
@@ -2460,9 +2462,10 @@ def unbreak(item, log=print):
                 have.add(_name_key(x.get("subject")))
         d[name] = [e for e in ents if e not in old] + [{**e, "v": BROKEN_V} for e in old if e["emblem"] not in back]
         _broken_log(d)
-        if not back:
+        free = {(e["emblem"].get("source") or "") for e in old if e["emblem"] not in back and e["emblem"].get("body") and _name_key(e["emblem"].get("subject")) not in have and not closeup_cuts({**item, "emblem": [e["emblem"]]})[0]}   # 体の絵は元の画像（公式の全身）から今の規則で切り直す：前の規則の切り口で外れた画像の札を解く
+        if not back and not free:
             return 0
-        src = {b.get("source") or b["image"] for b in back}
+        src = {b.get("source") or b["image"] for b in back} | free
         emblem.write_item(name, list(item.get("emblem") or []) + back, None)
         _set_field(name, "emblem_reject", json.dumps([u for u in item.get("emblem_reject") or [] if u not in src], ensure_ascii=False)
                    + "   # 目で見て・検査で外した画像。自動補完は選ばない")
