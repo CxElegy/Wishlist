@@ -694,9 +694,10 @@ class BrokenPhotoBecomesTextCard(unittest.TestCase):
             except Exception as ex:  # noqa: BLE001
                 self.skipTest(f"ブラウザがない：{ex}")
             pg = b.new_page()
-            pg.set_content("<section><div class='grid'>" + "".join(cards) + "</div></section>")
+            wc = "".join(f"<article class='wc{c}'>{render._pic(st)}<b>見出し</b></article>" for c in ("", " lead"))   # トップの写真の壁（2026-10-27）
+            pg.set_content("<section><div class='grid'>" + "".join(cards) + "</div><div class='wall'>" + wc + "</div></section>")
             pg.wait_for_timeout(1500)
             left = pg.evaluate("document.querySelectorAll('article .pic').length")
-            plain = pg.evaluate("document.querySelectorAll('article.card.nophoto').length")
+            plain = pg.evaluate("document.querySelectorAll('article.card.nophoto,article.wc.nophoto').length")
             b.close()
-        self.assertEqual((left, plain), (0, 3))
+        self.assertEqual((left, plain), (0, 5))

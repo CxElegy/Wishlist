@@ -71,6 +71,12 @@ def check(pw, base, who, width, out, page="", emb="off"):
     loads.clear()
     pg.goto(base + page, wait_until="domcontentloaded", timeout=60000)
     pg.wait_for_timeout(WATCH_S * 1000)
+    if not page:   # 2026-10-27：loading=lazy の写真は下までスクロールしないと読み込まれず、開けない写真（札）を数え損ねる。下まで読んでから数える
+        for y in range(0, 40000, 800):
+            pg.evaluate(f"window.scrollTo(0,{y})")
+            pg.wait_for_timeout(80)
+        pg.evaluate("window.scrollTo(0,0)")
+        pg.wait_for_timeout(3000)
     st = pg.evaluate("""b=>({text:document.body?document.body.innerText.replace(/\\s+/g,'').length:0,
         secs:document.querySelectorAll('section.sec').length,front:!!document.getElementById('front'),
         boxes:[...document.querySelectorAll(b)].filter(x=>x.offsetParent).length,
@@ -80,8 +86,9 @@ def check(pw, base, who, width, out, page="", emb="off"):
         start:!!document.querySelector('.startgo'),
         arts:document.querySelectorAll('section.sec article').length,
         pics:[...document.querySelectorAll('section.sec article img')].length,
-        heads:[...document.querySelectorAll('section.sec')].filter(s=>s.querySelector('.grid article .pic.icon,.grid article .pic.none')).map(s=>s.dataset.k),
-        plates:document.querySelectorAll('section.sec .pic.icon,section.sec .pic.none').length,
+        heads:[...document.querySelectorAll('.pic.icon,.pic.none')].filter(x=>!x.closest('.nav,.fside')).map(x=>(x.closest('section.sec')||{dataset:{k:'トップ'}}).dataset.k),
+        nohead:[...document.querySelectorAll('section.sec')].filter(s=>{const h=s.querySelector('.grid article.card.hero,.grid article.card.wide');return h&&h.classList.contains('nophoto')}).map(s=>s.dataset.k),
+        plates:document.querySelectorAll('.pic.icon,.pic.none').length,
         frames:document.querySelectorAll('section.sec .pic').length,
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
@@ -125,8 +132,10 @@ def check(pw, base, who, width, out, page="", emb="off"):
         bad.append("ポスターの写真が出ていない")
     if st["arts"] and st["empty"]:   # 2026-10-24：記事が 8 本あってもポスターが「直近 7 日は新着なし」（写真のある記事がない）
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
-    if st["heads"]:   # 2026-10-25：版面の記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：頭だけでなく版面の全部の記事。開けない写真は render.SWAP_JS が .nophoto に落とす
-        bad.append(f"版面の記事が写真なし（札。開けない写真は字だけの形に落とす）{len(st['heads'])}：" + "・".join(st["heads"][:3]))
+    if st["heads"]:   # 2026-10-25：記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：版面の全部の記事に、さらにトップ（#front の article.wc）も。開けない写真は render.SWAP_JS が .nophoto に落とす
+        bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(st['heads'])}：" + "・".join(sorted(set(st["heads"]))[:4]))
+    if st["nohead"]:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
+        bad.append(f"版面の頭が写真なし（字だけの形）{len(st['nohead'])}：" + "・".join(st["nohead"][:4]))
     if st["plates"]:
         print(f"  札 {st['plates']}／写真枠 {st['frames']}（{who} {width}px。0 が目標）")
     if near:

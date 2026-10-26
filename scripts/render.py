@@ -219,6 +219,7 @@ button{font-family:inherit}
 .wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
 .wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
+.wc.nophoto{justify-content:flex-start;padding:16px 12px 12px;border-left:5px solid var(--sc)}.wc.nophoto b{-webkit-line-clamp:6;min-height:0}.wc.lead.nophoto b{font-size:24px;-webkit-line-clamp:7}  /* 写真が開けないトップのカード（SWAP_JS）：字だけの形 */
 .wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
 .wc b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.35em}  /* 3 行分：段のカードの高さがそろう */
@@ -569,6 +570,7 @@ button{font-family:inherit}
  .burst{width:72px;height:72px;font-size:16px;top:-16px;left:-14px}
  .top h2{font-size:20px;transform:rotate(-1deg)}
   .wall{grid-template-columns:minmax(0,1fr);gap:16px}.wall>.wc:nth-child(n+7){display:none}.wc.lead{grid-column:auto;grid-row:auto}.wc.lead .pic{min-height:0;aspect-ratio:16/10}
+ .wc.nophoto:not(.lead){display:flex;gap:6px}
  .wc:not(.lead){display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:4px 12px;align-items:start}
  .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:-11px;font-size:11px}
   .fside{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
@@ -700,20 +702,20 @@ def _headline(story):
 
 
 # 主图打不开：换下一张备用图（同一版面已经有这张图就跳过，免得两张卡片同一张图），背景模糊图跟着换；
-# 备用图也用完了：記事のカード（article.card）は写真なしの記事と同じ字だけの形（.nophoto，2026-10-27：頭の写真が開けず札になった）、
+# 备用图也用完了：記事のカード（article.card）は写真なしの記事と同じ字だけの形（.nophoto，2026-10-27：頭の写真が開けず札になった。トップの article.wc も同じ）、
 # それ以外の枠は有来源图标就换成来源图标，没有才显示作品名封面块
 SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest('section'),"
            "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
            "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
            "if(f.length){me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
-           "else{var a=p.closest('article.card');if(a){p.remove();a.classList.add('nophoto')}else{"
+           "else{var a=p.closest('article.card,article.wc');if(a){p.remove();a.classList.add('nophoto')}else{"
            "var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
            "if(ic){p.classList.add('icon');var l=ic.dataset.icons.split(' ');ic.src=l.shift();ic.dataset.icons=l.join(' ')}"
            "else{p.classList.add('none')}}}")
 # 来源图标打不开、或者只有 16px（Google 图标服务查不到时给的地球图标）：换下一个，都不行才是作品名封面块
 ICON_NEXT_JS = ("var l=(this.dataset.icons||'').split(' ').filter(Boolean);"
                 "if(l.length){this.src=l.shift();this.dataset.icons=l.join(' ')}"
-                "else{var p=this.closest('.pic'),a=p.closest('article.card');if(a){p.remove();a.classList.add('nophoto')}"
+                "else{var p=this.closest('.pic'),a=p.closest('article.card,article.wc');if(a){p.remove();a.classList.add('nophoto')}"
                 "else{p.classList.remove('icon');p.classList.add('none');this.remove()}}")
 ICON_LOAD_JS = "if(this.naturalWidth<32){" + ICON_NEXT_JS + "}"
 
