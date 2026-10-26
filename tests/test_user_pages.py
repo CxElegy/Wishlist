@@ -227,6 +227,13 @@ class Loader(unittest.TestCase):
         self.assertIn("wl-own-at", render.AUTH_JS)
         self.assertIn("if(!on&&OWN){if(signedOut)", render.AUTH_JS)   # 本人のページでは確かめの途中で開き直さない
 
+    def test_own_page_shows_just_added(self):
+        # 足した直後は本人のページがまだ刷り直し前（2 時間ごと）：空の画面にせず「集めています」と名前を出す（2026-10-27 通し点検）
+        js = render.AUTH_JS
+        self.assertIn("ownWait(picks);return;}   // もう本人のページの中", js)
+        self.assertIn("function ownWait(picks)", js)
+        self.assertIn("wl-ownwait", js)
+
     def test_bucket_is_private(self):
         sql = (ROOT / "db" / "user_pages.sql").read_text(encoding="utf-8")
         self.assertIn("false", sql.split("insert into storage.buckets")[1].split(";")[0])

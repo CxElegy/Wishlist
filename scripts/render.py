@@ -4281,9 +4281,20 @@ AUTH_JS = r"""
     location.replace('me.html'+(page==='settings'?'?p=settings':'')+location.hash);   // 設定も本人の分（同じ部品の render_settings）
     return Promise.resolve(true);
   }
+  // 本人のページは 2 時間ごとに刷り直す（user_pages.py）。足したばかりのものはまだ版面になっていないので、「集めています」と名前を出す
+  // （出さないと、足した直後の人に「まだ何も追いかけていません」の空の画面が見える。2026-10-27 の通し点検）
+  function ownWait(picks){
+    var old=document.querySelector('.wl-ownwait');if(old)old.remove();
+    var have=[].map.call(document.querySelectorAll('section.sec[data-k]'),function(s){return s.dataset.k;});
+    var wait=picks.filter(function(x){return !have.some(function(k){return shopHit(k,x.name);});});
+    if(!wait.length)return;
+    var bar=document.createElement('div');bar.className='wl-mybar wl-ownwait';bar.setAttribute('role','status');
+    bar.innerHTML='<b>集めています</b><span>'+wait.map(function(x){return esc(x.name);}).join('・')+'</span><small class="ok">足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。</small>';
+    var m=document.querySelector('main.issues')||document.body;m.insertBefore(bar,m.firstChild);
+  }
   function route(box,p,err){
     var picks=picksOf(p);
-    if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';return;}   // もう本人のページの中
+    if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';ownWait(picks);return;}   // もう本人のページの中
     // ログインしたお客さまはだれでも、まず本人のページ（店長と同じ枠組み）。版面の数によらない（HARNESS.md「一番大事な決まり」）
     if(page==='settings'&&!err&&tok){box.remove();ownPage().then(function(done){if(!done){var b3=document.createElement('main');b3.className='wl-mine';b3.id='mine';document.body.appendChild(b3);drawMine(b3,p,'');}});return;}
     if(page==='index'&&!err&&tok&&document.querySelector('section.sec[data-k]')){
