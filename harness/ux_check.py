@@ -59,12 +59,39 @@ def session(email):
     return out
 
 
+HERO_ERR_JS = """window.__heroBad={};document.addEventListener('error',e=>{const i=e.target;if(!i||i.tagName!=='IMG')return;
+const a=i.closest('.grid article.card.hero,.grid article.card.wide');const s=i.closest('section.sec');if(!a||!s)return;
+(window.__heroBad[s.dataset.k]=window.__heroBad[s.dataset.k]||[]).push(i.src)},true)"""
+
+
+def fetchable(url):
+    """ブラウザでは開けなかった写真が、ふつうの HTTP では写真として取れ、盗链の印〔CORP same-origin〕もないか。
+    取れるなら写真の側の問題でなく、点検の手元の回線〔プロキシが Chromium だけ 403 など〕の問題（2026-10-27：s.yimg.com）。"""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 Chrome/124", "Accept": "image/avif,image/webp,*/*"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return (r.status == 200 and r.headers.get("Content-Type", "").startswith("image/")
+                    and r.headers.get("Cross-Origin-Resource-Policy", "") != "same-origin" and bool(r.read(64)))
+    except Exception:
+        return False
+
+
+def split_nohead(nohead, hero_bad, probe=fetchable):
+    """版面の頭が字だけの版面を (本当の ✗, 手元の回線のせいで開けなかっただけ) に分ける。頭の写真の候補が全部 HTTP で取れるものだけ後者。"""
+    real, env = [], []
+    for k in nohead:
+        urls = set(hero_bad.get(k) or [])
+        (env if urls and all(probe(u) for u in urls) else real).append(k)
+    return real, env
+
+
 def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_S):
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
     pg = b.new_page(viewport={"width": width, "height": height})
     loads, errors = [], []
     pg.on("load", lambda: loads.append(pg.url))
     pg.on("pageerror", lambda e: errors.append(str(e)[:160]))
+    pg.add_init_script(HERO_ERR_JS)
     pg.goto(base, wait_until="domcontentloaded", timeout=60000)
     if WHO[who]:
         pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}",
@@ -96,6 +123,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
         sw:document.documentElement.scrollWidth})""", BOXES)
     near = [] if page else pg.evaluate(NEAR_JS)
+    pg_hero_bad = pg.evaluate("window.__heroBad||{}")
     first = pg.evaluate(FIRST_JS)
     pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
     bad = []
@@ -139,6 +167,9 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
     if st["heads"]:   # 2026-10-25：記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：版面の全部の記事に、さらにトップ（#front の article.wc）も。開けない写真は render.SWAP_JS が .nophoto に落とす
         bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(st['heads'])}：" + "・".join(sorted(set(st["heads"]))[:4]))
+    st["nohead"], env_nohead = split_nohead(st["nohead"], pg_hero_bad)
+    if env_nohead:
+        print(f"  頭の写真が開けない版面 {len(env_nohead)}（{who} {width}px）は HTTP では取れる＝点検の手元の回線のせい、✗にしない：" + "・".join(env_nohead[:4]))
     if st["nohead"]:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
         bad.append(f"版面の頭が写真なし（字だけの形）{len(st['nohead'])}：" + "・".join(st["nohead"][:4]))
     if st["plates"]:

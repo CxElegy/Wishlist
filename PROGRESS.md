@@ -119,3 +119,4 @@
 - 2026-10-27 f2f1：ux_check に欲しい物・話題度を全員・全幅で（runs_for）、0 個の殻の主役を node で描くテスト。単体 950 OK、本番 test-b・test-c ✓。次：guest・test-a の「版面の頭が写真なし」
 - 2026-10-27 r2f1：#526 の続き。E15 の残りの原因を 2 つ規則で直した〔失敗の版面の待ちに規則の版が入っていなかった／姿勢モデルなしで顔のない動物が上半身に切られ持ち手が頭切れ扱い〕（#531）。tests 950 OK・guest ux_check は E15 6・E10 10・E11 4・E16 10（背景の回が未実行のため変化なし）。次：背景の回のあと E15 を数え直す
 - 2026-10-27 f2f2：ux_check の殻ページを docs/home から数える（shell_pages）→ themes・terms・guest も点検、tests で数え直しと突き合わせ（#534）。本番 guest・test-b・test-c 全ページ ✓、test-a は既存の写真なし 2。次：衝突の印を CI で止める、通し実行を 15 分に
+- 2026-10-27 f1：ux_check「版面の頭が写真なし」の原因は手元プロキシの 403（s.yimg.com，Chromium だけ）。頭の写真が HTTP で取れる版面は注記にし、CORP・盗链は ✗のまま（split_nohead，tests/test_ux_nohead.py）。guest 1400 ✗0。次：札・ポスターも同じ分け方
