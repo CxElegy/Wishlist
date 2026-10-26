@@ -226,6 +226,11 @@ ADMIN_JS = """() => ({ids:[...document.querySelectorAll('section.panel[id]')].ma
  txt:document.body.innerText.length})"""
 
 
+EYE_JS = """() => { const t = [...document.querySelectorAll('.emm-ph img.fv')];
+ return {n: t.length, off: t.filter(i => !i.parentElement.querySelector('.emm-fl') && Math.abs(+i.dataset.eye - 0.3) > 0.05).length,
+  short: t.filter(i => (i.parentElement.querySelector('.emm-fl') || {}).textContent === '下が足りない（目の線が合わない）').length} }"""
+
+
 def check_admin_pages(pw, base, width, out):
     """管理ページのトップと 6 つの別ページ：開ける・切り替え（7 つのリンク）・横にはみ出さない・JS のエラーなし・前の欄が全部どこかにある。"""
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
@@ -239,6 +244,11 @@ def check_admin_pages(pw, base, width, out):
                          "html[data-auth] body>*{visibility:visible!important}")
         pg.wait_for_timeout(1500)
         st = pg.evaluate(ADMIN_JS)
+        if f == "admin-emblem.html":   # E16：札のない小元素の目の線が枠の上から 30% ±5% を外れる（emblem_face.view。札 short は別の写真に替える対象）
+            ey = pg.evaluate(EYE_JS)
+            if ey["off"]:
+                bad.append(f"{f} E16 目の線がずれた小元素 {ey['off']} 枚（{ey['n']} 枚中。札 short {ey['short']} 枚は別）")
+            print(f"  [管理ページ小元素] 顔そろえの置き方 {ey['n']} 枚・目の線ずれ {ey['off']}・札 short {ey['short']}")
         pg.screenshot(path=str(out / f"{f[:-5]}-{width}.png"))
         pg.close()
         if not r or r.status != 200:

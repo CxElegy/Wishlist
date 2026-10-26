@@ -1090,7 +1090,7 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .emm-tile:disabled{cursor:default;opacity:.55}
 .emm-ph{position:relative;display:block;aspect-ratio:4/5;background:repeating-linear-gradient(45deg,color-mix(in srgb,var(--ink) 8%,var(--card)) 0 6px,var(--sheet) 6px 12px);border:2px solid var(--ink);overflow:hidden}
 .emm-ph img{width:100%;height:100%;object-fit:contain;display:block}
-.emm-ph img.fv{position:absolute;max-width:none;object-fit:fill;width:calc(var(--fw) * 100%);height:calc(var(--fm) * 100%);left:calc(var(--fx) * 100%);top:calc(var(--fy) * 100%)}  /* emblem_face.view：顔の高さ 32%・目の線 30%・頭の上の余白 6〜14% */
+.emm-ph img.fv{position:absolute;max-width:none;object-fit:fill;width:calc(var(--fw) * 100%);height:calc(var(--fm) * 100%);left:calc(var(--fx) * 100%);top:calc(var(--fy) * 100%)}  /* emblem_face.view：顔の高さ 32%・目の線 30%（髪は切らない・下に浮かせすぎない範囲で）*/
 .emm-fl{position:absolute;left:0;bottom:0;z-index:1;font:700 var(--fs-tag)/1.4 var(--font-sans);font-style:normal;background:var(--ink);color:var(--card);padding:0 5px}
 .emm-tile b{font:900 13px/1.35 var(--font-sans)}.emm-tile small{font-size:var(--fs-label);line-height:1.4;opacity:.65}
 .emm-tile:hover .emm-ph{box-shadow:3px 3px 0 var(--rose)}
@@ -1531,7 +1531,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-members" content="ea9cce2b614d"><style>
+<meta name="wl-ver" data-page="admin-members" content="43e64201606c"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2190,7 +2190,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ⑥ お客さまと店長</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.27 01:58</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.27 02:44</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html" aria-current="page"><span>⑥ お客さまと店長</span></a></li></ul></nav>

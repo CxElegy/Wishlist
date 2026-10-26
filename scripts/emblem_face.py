@@ -14,7 +14,10 @@ import pathlib
 TARGET = 0.32     # 顔の高さ ÷ 枠の高さ。どの版面・どの欄でも、顔がこの大きさに見える（emblem.FACE_SHARE と同じ）
 EYE = 0.30        # 目の線は枠の上から 30%（一覧の並びで目の高さがそろう）
 EYE_IN_FACE = 0.4  # 顔の箱の上端から目の線までの割合（顔の高さに対して）
-HEAD = (0.06, 0.14)   # 頭の上の余白（髪・角・帽子を切らない。多すぎても浮く）
+HEAD_MAX = 0.14       # 絵の上の端を枠の上から下げてよい上限（これより下げると頭の上が空きすぎて浮く）
+HAIR = 0.3            # 顔の箱の上に残す髪の厚み（顔の高さに対して）。これより上の空きだけを枠の上で切る（髪・角・帽子は切らない）
+FLOAT_MAX = 0.12      # 絵の下が枠の下に届かなくてよい上限（枠の高さに対して）。目の線を優先して浮かせるのはここまで
+EYE_TOL = 0.05        # 目の線のずれの許し（枠の高さに対して）。超えるものは札 "short"
 ZOOM = (0.5, 1.6)     # 「枠の高さに絵の高さを合わせた大きさ」に対する拡大・縮小の幅。画質が落ちる拡大はしない・縮小は前（--k）が下限なしだったので 0.5 まで
 TOL = 0.11            # 顔の大きさが基準から ±11% までは「そろっている」（ぴったり同じにはしない）
 FRAME_AR = 0.8        # 管理ページの一覧の枠（4:5）の 幅 ÷ 高さ
@@ -140,19 +143,33 @@ def fit(face):
 
 def view(face, frame_ar=FRAME_AR):
     """枠（幅 ÷ 高さ = frame_ar）の中の置き方 → {m, ox, oy, w, flag}。m・w・ox・oy は枠の高さ（oy）・幅（ox・w）に対する割合。
-    ① 顔の高さ = TARGET ② 目の線 = 枠の上から EYE（ただし頭の上の余白は HEAD の幅に収める）
-    ③ 絵が枠の下に届かないときは下にそろえる（浮かせない）④ 横は、絵の重心と顔の中心の真ん中を枠の真ん中に。顔が測れなければ None。"""
+    ① 顔の高さ = TARGET ② 目の線 = 枠の上から EYE。いちばん先に効く（2026-10-27：前は頭の上の余白 6〜14% の挟みと下そろえが先に効き、
+    顔のある 192 枚のうち 104 枚が目の線を外れた）。髪を切らない（HAIR）・上に下げすぎない（HEAD_MAX）・下に浮かせすぎない（FLOAT_MAX）の範囲でだけ動かす
+    ③ それでも目の線が EYE_TOL を外れるもの（絵の下が足りない近い絵）は札 "short" = 選び方の規則で、下まで写った別の写真に替える対象
+    ④ 横は、絵の重心と顔の中心の真ん中を枠の真ん中に。顔が測れなければ None。"""
     m, flag = fit(face)
     if m is None:
         return None
     fs, top, fx, mx, pw, ph = face[:6]
-    oy = EYE - m * (top + EYE_IN_FACE * fs)
-    oy = min(max(oy, HEAD[0]), HEAD[1])
-    if oy + m < 1:
-        oy = 1 - m
+    eye = top + EYE_IN_FACE * fs
+    oy = EYE - m * eye
+    oy = max(oy, min(0.0, -m * (top - HAIR * fs)), 1 - m - FLOAT_MAX)   # 髪を切らない・下に浮かせすぎない
+    oy = min(oy, HEAD_MAX)
+    if not flag and abs(oy + m * eye - EYE) > EYE_TOL + 1e-9:
+        flag = "short"
     w = m * (pw / ph) / frame_ar
     ox = 0.5 - (0.5 * mx + 0.5 * fx) * w
-    return {"m": m, "ox": round(ox, 4), "oy": round(oy, 4), "w": round(w, 4), "flag": flag}
+    return {"m": m, "ox": round(ox, 4), "oy": round(oy, 4), "w": round(w, 4), "flag": flag, "eye": round(oy + m * eye, 3)}
+
+
+import re
+LOGO_NAME = re.compile(r"logo|wordmark|ロゴ", re.I)
+
+
+def logo_named(x):
+    """画像の名前が logo のもの（shape が cutout のまま網址で引いた Wikipedia の ArcheAge_Logo.png など）は、人物でなくロゴ：顔を測らず切り抜き扱いにしない。"""
+    import urllib.parse
+    return x.get("shape") in ("logo", "icon") or bool(LOGO_NAME.search(urllib.parse.unquote(str(x.get("image") or "").split("?")[0].rsplit("/", 1)[-1])))
 
 
 def _files(item, root):
@@ -198,7 +215,7 @@ def measure_emblems(emblems, load):
     お客さまの版面は measure_item（店長の items.yaml だけ）が届かなかったので、ここを library_emblem が呼ぶ（2026-10-27：版面 17 個・135 枚が未測定だった）。"""
     n = 0
     for x in emblems or []:
-        if not isinstance(x, dict) or x.get("shape") in ("logo", "icon", "badge") or not x.get("image"):
+        if not isinstance(x, dict) or x.get("shape") in ("logo", "icon", "badge") or logo_named(x) or not x.get("image"):
             continue
         try:
             img = load(str(x["image"]))
@@ -222,7 +239,7 @@ def measure_emblems(emblems, load):
 
 def unmeasured(emblems):
     """face がない人物の切り抜き（全身 body は顔でそろえない別の物差し）の数。版面ごとの点検（ux_check・tests）と同じ数え方。"""
-    return sum(1 for x in emblems or [] if isinstance(x, dict) and x.get("shape") not in ("logo", "icon", "badge") and x.get("image")
+    return sum(1 for x in emblems or [] if isinstance(x, dict) and x.get("shape") not in ("logo", "icon", "badge") and not logo_named(x) and x.get("image")
                and not x.get("body") and not (isinstance(x.get("face"), list) and len(x["face"]) == 6))
 
 
@@ -231,7 +248,7 @@ def audit(items):
     spread = 札のない小元素の「顔の高さ ÷ 枠の高さ」の最大 ÷ 最小（1.25 以下ならそろっている）。"""
     rows = []
     for it in items:
-        shares, flags = [], {"none": 0, "small": 0, "big": 0, "": 0}
+        shares, flags = [], {"none": 0, "small": 0, "big": 0, "short": 0, "": 0}
         em = [x for x in it.get("emblem") or [] if isinstance(x, dict) and x.get("shape") not in ("logo", "icon", "badge")
               and str(x.get("image", "")).startswith("emblems/")]   # 倉庫に置いた切り抜きだけ（網址を引用するだけの画像は測らない）
         for x in em:
@@ -240,10 +257,11 @@ def audit(items):
                 flags["unmeasured"] = flags.get("unmeasured", 0) + 1
                 continue
             m, flag = fit(f)
-            flags[flag] += 1
             if not flag:
                 shares.append(f[0] * m)
+                flag = view(f)["flag"]   # 目の線が外れるもの（short）も札。顔の大きさは足りているので shares には入れる
+            flags[flag] += 1
         if em:
-            rows.append({"name": it["name"], "n": len(em), "none": flags["none"], "small": flags["small"], "big": flags["big"],
+            rows.append({"name": it["name"], "n": len(em), "none": flags["none"], "small": flags["small"], "big": flags["big"], "short": flags["short"],
                          "unmeasured": flags.get("unmeasured", 0), "spread": round(max(shares) / min(shares), 3) if shares else 1.0})
     return rows

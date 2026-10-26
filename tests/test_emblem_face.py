@@ -30,12 +30,24 @@ class Fit(unittest.TestCase):
         self.assertEqual(ef.fit([0, 0, 0.5, 0.5, 100, 100]), (None, "none"))
         self.assertIsNone(ef.view([0, 0, 0.5, 0.5, 100, 100]))
 
-    def test_view_headroom_and_bottom(self):
-        for fs, top in ((0.2, 0.03), (0.3, 0.1), (0.45, 0.08), (0.12, 0.02)):
-            v = ef.view([fs, top, 0.5, 0.5, 400, 500])
-            self.assertGreaterEqual(v["oy"], 0)
-            self.assertGreaterEqual(v["oy"] + v["m"], 1 - 1e-6, "絵の下は枠の下に届く（浮かない）")
-            self.assertLessEqual(v["oy"], max(ef.HEAD[1], 1 - v["m"]) + 1e-6)
+    def test_eye_line_first(self):
+        """目の線 30% が、頭の上の余白の挟みや下そろえより先に効く（前は 192 枚中 104 枚が外れた）。髪は切らず、浮かせすぎず、外れるものは札 short。"""
+        for fs, top, h in ((0.2, 0.03, 500), (0.3, 0.1, 500), (0.2, 0.4, 900), (0.12, 0.02, 900)):
+            v = ef.view([fs, top, 0.5, 0.5, 400, h])
+            self.assertIn(v["flag"], ("", "small"))
+            if not v["flag"]:
+                self.assertAlmostEqual(v["eye"], ef.EYE, delta=ef.EYE_TOL)
+            self.assertLessEqual(v["oy"], ef.HEAD_MAX + 1e-6)
+            self.assertGreaterEqual(v["oy"] + v["m"], 1 - ef.FLOAT_MAX - 1e-6, "浮かせるのは FLOAT_MAX まで")
+        v = ef.view([0.3, 0.02, 0.5, 0.5, 400, 500])   # 髪（顔の箱の上の HAIR 分）が画像の上の端に近い：上を切らない
+        self.assertGreaterEqual(v["oy"], 0)
+        self.assertEqual(ef.view([0.9, 0.0, 0.5, 0.5, 400, 400])["flag"], "big")
+        self.assertEqual(ef.view([0.482, 0.486, 0.456, 0.444, 384, 233])["flag"], "short")   # 実在の例：顔が絵の下半分にあり、目の線に合わせると絵の下が半分空く
+
+    def test_logo_named_is_not_a_person(self):
+        self.assertTrue(ef.logo_named({"shape": "cutout", "image": "https://upload.wikimedia.org/x/500px-ArcheAge_Logo.png"}))
+        self.assertTrue(ef.logo_named({"shape": "cutout", "image": "https://x/Project_TL_logo.png?x=1"}))
+        self.assertFalse(ef.logo_named({"shape": "cutout", "image": "emblems/bleach-ichigo.webp"}))
 
 
 class Everything(unittest.TestCase):
@@ -51,6 +63,25 @@ class Everything(unittest.TestCase):
         for r in ef.audit(board_items()):
             self.assertLessEqual(r["spread"], 1.25, f"{r['name']}：顔の大きさのばらつき {r['spread']}")
             self.assertEqual(r["unmeasured"], 0, r["name"])
+
+    def test_eye_line_all(self):
+        """今ある全部：札のない小元素の目の線は枠の上から 30% ±5%（札 short は別の写真に替える対象。数は audit で）。"""
+        off = [f"{it['name']}/{x.get('subject')}" for it in board_items() for x in it.get("emblem") or []
+               if isinstance(x, dict) and x.get("face") and x.get("shape") not in PEOPLE and not x.get("body")
+               and (v := ef.view(x["face"])) and not v["flag"] and abs(v["eye"] - ef.EYE) > ef.EYE_TOL + 1e-9]
+        self.assertEqual(off, [])
+
+    def test_shapeless_logos_not_cutouts(self):
+        """店長の items.yaml：名前が logo の網址の画像（shape cutout のまま）は render が logo にする（ux_check E13 の 3 枚）。"""
+        import html
+        import json
+        import re
+        import render
+        for it in board_items():
+            for x in it.get("emblem") or []:
+                if isinstance(x, dict) and x.get("shape") == "cutout" and ef.logo_named(x):
+                    alt = json.loads(html.unescape(re.search(r'data-alts="([^"]*)"', render._emblem([x])).group(1)))[0]
+                    self.assertEqual(alt["shape"], "logo", f"{it['name']}/{x.get('subject')}")
 
     def test_measure_matches_file(self):
         """測ったときの画像の大きさが、今の画像と同じ（画像が替わったのに測り直していない = 古い値で置いている）。"""
