@@ -119,6 +119,10 @@ button{font-family:inherit}
 .top h2{margin:0;max-width:600px;font:900 clamp(21px,2.2vw,31px)/1.55 var(--font-sans);letter-spacing:.01em;transform:rotate(var(--tilt));transform-origin:left top}
 .top:hover .hb{background:var(--deep,var(--ink))}
 .top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.startgo{display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;min-height:56px;padding:10px 26px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
+ font:900 19px/1.3 var(--font-sans);letter-spacing:.04em;text-decoration:none;box-shadow:5px 5px 0 var(--ink);transform:skewX(var(--skew,-10deg))}
+.startgo:hover,.startgo:focus-visible{background:var(--card);box-shadow:2px 2px 0 var(--ink)}
+@media (max-width:560px){.startgo{width:100%}.top.start{display:block}.top.start .pdate{display:none}}
 .pfoot{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;margin-top:16px;padding-top:12px;border-top:1.5px solid var(--ink);
  font:700 11px/1.4 var(--font-sans);letter-spacing:.06em;color:var(--deep,var(--ink))}
 @media (max-width:560px){.pfoot .pnote{display:none}}  /* 右下の固定ボタンの下で 2 行目が切れる */
@@ -1527,7 +1531,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-boards" content="d2b3880178a7"><style>
+<meta name="wl-ver" data-page="admin-boards" content="5909f92d0876"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2186,7 +2190,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ② 版面</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.27 01:16</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.27 01:45</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html" aria-current="page"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
