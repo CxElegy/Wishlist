@@ -1948,6 +1948,9 @@ def fill_one(item, log=print):
     tried, reasons, steps = {}, {}, []
     funnel = {"found": 0, "usable": 0, "auto": 0}
     fresh = item
+    kind0 = kind_of(item)
+    want = subjects(item, kind0, rule(item)[3]) if kind0 in ("character", "group") and item.get("emblem_who") else []   # 今回試す人
+    seen = set()   # 使える候補が 1 つでもあった人（外した画像・もう使っている画像だけの人は含めない）
     try:
         for n, (label, fn) in enumerate(STRATEGIES, 1):
             _check_time()
@@ -1975,6 +1978,7 @@ def fill_one(item, log=print):
             kind = kind_of(item)
             for i, c in enumerate(good, 1):   # 選ばなかった候補の理由（前は「要確認」として AI が目で見ていた）
                 if i in picks:
+                    seen.add(_base_subject(c["subject"]))
                     continue
                 if not needs_face(item) and c["source"].split("(")[0] not in AUTO_SOURCES.get(kind, ()):
                     why = "確かでない取り方"
@@ -1984,6 +1988,8 @@ def fill_one(item, log=print):
                     why = "もう使っている・外した画像"
                 else:
                     why = "目標を超える"
+                if why != "もう使っている・外した画像":
+                    seen.add(_base_subject(c["subject"]))
                 reasons[why] = reasons.get(why, 0) + 1
             if status(fresh)["state"] == "ok":
                 break
@@ -1991,6 +1997,10 @@ def fill_one(item, log=print):
         _live(item["name"], None)
     st = status(fresh)
     added = max(0, st["have"] - before)
+    have1 = {n for x in fresh.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
+    noimg = [w for w in want if w not in have1 and not _who_of(w) & seen]   # 試したのに使える画像が 1 枚もない人（新作の端役）
+    if noimg:
+        reasons["画像のない人"] = len(noimg)
     funnel.update(added=added, rejected=reasons)
     path = " → ".join(f"{x['label']} +{x['added']}" for x in steps)
     top = "・".join(f"{k} {v}" for k, v in sorted(reasons.items(), key=lambda kv: -kv[1])[:3])
@@ -1999,8 +2009,10 @@ def fill_one(item, log=print):
     if added and queued > STEP and kind_of(item) in ("character", "group"):   # STEP 人ずつ足している途中：失敗ではなく進行中。次の回に続き
         return {"state": "running", "tried": tried, "funnel": funnel, "steps": steps,
                 "note": f"{added} 枚足した（{path}）。あと {st['target'] - st['have']} 枚、次の回に続きの {STEP} 人"}
+    left = st["target"] - st["have"]
+    only = f"。残り {left} 枚のうち試した {len(noimg)} 人は全員が画像のない人（使える画像が 1 枚もない）" if noimg and len(noimg) == len([w for w in want if w not in have1]) else ""
     return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh),
-            "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}。新しい記事が来たらすぐ、来なくても {RETRY_HOURS} 時間後にもう一度"}
+            "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}{only}。新しい記事が来たらすぐ、来なくても {RETRY_HOURS} 時間後にもう一度"}
 
 
 def off_roster(item, log=print):
