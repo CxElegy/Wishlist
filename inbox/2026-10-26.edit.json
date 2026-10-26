@@ -10,7 +10,10 @@
     8,
     20,
     37,
-    45
+    45,
+    49,
+    52,
+    58
    ],
    "image": "https://www.laughingplace.com/uploads/media/2026/10/Avengers-Doomsday-New-Teaser.jpg"
   },
@@ -24,7 +27,8 @@
     21,
     26,
     29,
-    35
+    35,
+    48
    ]
   },
   {
@@ -45,7 +49,8 @@
    "weight": "normal",
    "refs": [
     41,
-    44
+    44,
+    50
    ]
   },
   {
@@ -60,11 +65,11 @@
   }
  ],
  "_covered": {
-  "漫威电影": 47,
-  "GTA 6": 39,
-  "A2O LITE": 40,
+  "漫威电影": 58,
+  "GTA 6": 56,
+  "A2O LITE": 49,
   "周杰伦": 18,
-  "ILLIT": 46,
+  "ILLIT": 64,
   "日本顶级网球赛事": 15,
   "MMORPG 新作": 5,
   "哈利波特剧集": 2,
@@ -73,7 +78,7 @@
   "滑雪": 6,
   "绝区零": 7,
   "Astrae Oratio": 8,
-  "三星手机": 10,
+  "三星手机": 19,
   "dota2": 11,
   "FROM": 1,
   "The Mandalorian": 2,
@@ -104,7 +109,9 @@
    "refs": [
     13,
     22,
-    32
+    32,
+    50,
+    41
    ]
   },
   {
@@ -122,7 +129,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    21
+    21,
+    46
    ]
   },
   {
@@ -153,7 +161,11 @@
     37,
     36,
     38,
-    40
+    40,
+    46,
+    41,
+    43,
+    44
    ],
    "image": "https://image.starnewskorea.com/cdn-cgi/image/f=jpeg,w=1200,h=675,fit=cover,g=face,q=high/21/2026/10/2026102608513559256_1.jpg"
   },
@@ -170,7 +182,10 @@
     20,
     31,
     33,
-    35
+    35,
+    45,
+    42,
+    47
    ]
   },
   {
@@ -180,7 +195,8 @@
    "weight": "normal",
    "refs": [
     24,
-    26
+    26,
+    48
    ]
   },
   {
@@ -190,7 +206,8 @@
    "weight": "normal",
    "refs": [
     7,
-    11
+    11,
+    49
    ]
   },
   {
@@ -240,7 +257,8 @@
    "refs": [
     10,
     8,
-    39
+    39,
+    62
    ],
    "event": {
     "date": "2026-10-26",
@@ -290,15 +308,18 @@
    "refs": [
     11,
     7,
-    27
+    27,
+    64
    ]
   },
   {
-   "headline": "방시혁 프로듀싱에 송강 지원사격..흑화한 아일릿, 전국민 '체포하겠어' [종합]",
-   "highlight": "'체포하겠어'",
+   "headline": "ILLIT、新曲MVにソン・ガンがサプライズ出演！撮影現場でのエピソード明かす",
+   "highlight": "ソン・ガンがサプライズ出演",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    51,
+    49,
     16,
     14,
     17,
@@ -310,7 +331,12 @@
     32,
     36,
     37,
-    41
+    41,
+    50,
+    52,
+    47,
+    61,
+    58
    ]
   },
   {
@@ -325,7 +351,11 @@
     33,
     34,
     42,
-    43
+    43,
+    48,
+    54,
+    55,
+    59
    ]
   },
   {
@@ -341,7 +371,12 @@
     44,
     46,
     45,
-    38
+    38,
+    53,
+    63,
+    56,
+    57,
+    60
    ]
   }
  ],
@@ -594,7 +629,8 @@
    "blurb": "Gadgets 360's running page on the Galaxy S27 Pro covers specifications, release date and the latest news.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    19
    ]
   },
   {
@@ -607,7 +643,10 @@
     4,
     5,
     6,
-    7
+    7,
+    12,
+    14,
+    18
    ]
   },
   {
@@ -617,7 +656,20 @@
    "weight": "normal",
    "refs": [
     10,
-    9
+    9,
+    11,
+    15,
+    16,
+    17
+   ]
+  },
+  {
+   "headline": "100 MP selfie camera: How can the Galaxy S27 Ultra and the iPhone 20 Pro even match this rival?",
+   "highlight": "100 MP selfie camera",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
    ]
   }
  ],

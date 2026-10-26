@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-25T04:01:17+00:00",
-"text": "2026-10-25 第 3 バッチを出刊：ILLIT（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 1,165・キャッシュ読み 8.0万・出力 736",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.12,
-"mem_total": 16872804352,
-"mem_free": 15993610240,
-"disk_used": 10749538304,
-"disk_free": 30533632000,
-"disk_total": 41283170304,
-"peak": 219828224
-},
-"batch": 3,
-"boards": [
-"ILLIT"
-],
-"stories": 4,
-"left": 0,
-"edited": 19,
-"run": 1792899749.8190627,
-"tok": {
-"in": 2,
-"cw": 1163,
-"cr": 80158,
-"out": 736,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 82059,
-"secs": 1127,
-"run_tok": {
-"in": 30,
-"cw": 53011,
-"cr": 1054741,
-"out": 4252,
-"calls": 15,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-25T04:58:40+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1873,5 +1832,41 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 539084
+},
+{
+"at": "2026-10-26T11:41:21+00:00",
+"text": "2026-10-26 第 1 バッチを出刊：A2O LITE、GTA 6、ILLIT、三星手机、漫威电影（5 版面・27 本・残り 4 版面） · token 新規入力 5.1万・キャッシュ読み 57.2万・出力 3,503",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.67,
+"mem_total": 16872804352,
+"mem_free": 15756611584,
+"disk_used": 10677751808,
+"disk_free": 30605418496,
+"disk_total": 41283170304,
+"peak": 453312512
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"GTA 6",
+"ILLIT",
+"三星手机",
+"漫威电影"
+],
+"stories": 27,
+"left": 4,
+"edited": 22,
+"run": 1793014318.44482,
+"tok": {
+"in": 18,
+"cw": 51442,
+"cr": 572205,
+"out": 3503,
+"calls": 9,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 627168
 }
 ]
