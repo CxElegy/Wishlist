@@ -221,7 +221,7 @@ PROCESSES = [
         "trigger": "後台のゲート（毎時・収集のあと）が「足りない版面がある」と判断したとき。GitHub Actions で Python だけで動く",
         "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。前は Claude が目で見ていた判断（別人・遠景・集合写真・"
                    "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。",
-        "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "scripts/emblem_rules.py", ".github/workflows/background.yml"],
+        "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "scripts/emblem_rules.py", "scripts/emblem_fame.py", ".github/workflows/background.yml"],
         "doc": "TEMPLATES.md", "rules": "emblem",
         "uses": ["roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
         "flow": [
@@ -232,7 +232,7 @@ PROCESSES = [
              "uses": ["gate"], "no": "何もしない（Actions 20 秒で終わり）"},
             {"id": "b1f", "kind": "step", "lane": "actions", "title": "取り方を探す（キャラ）", "text": "名簿の上の 5 人（主役）は毎回先に、残りは回ごとに試す幅（STEP − 5）ずつずらす（名簿の全員に順に届く。STEP ずつだと 60 人の半分に届かなかった）· もう小元素のいる人は試さない（実写の「役（出演者）」は出演者の名前で見る）· emblem_fandom が空か開けない（gtawiki 404）なら名前・副題・搜索词の英語名から <名>.fandom.com を探す（wiki の名前に作品名が入っているときだけ）→ Wikidata の P4073（シリーズ P179 も、ライブラリと同じ）→ emblem_category が空なら ① 作品の名前の付いた分類（検索：Characters in GTA VI）② その作品の wiki のときだけ（wiki の名前か番号が作品名に入る：Bleach Wiki ○・Hello Kitty Wiki とぐでたま ×）分類 Main characters → Playable characters → Playable Characters → Characters（3 件以上）。AniList の番号があっても探す・手で書いた分類が先・実写は分類を使わない。名簿の順＝参照の数、ただし同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ（作品の呼び名の é は外して照らす：Pokémon → Pokemon、own_wiki）（見てすぐわかる人から。emblem.known_first、済みの小元素の並びも off_roster が名簿の順に）（emblem.category_top：分類は 200 人ずつ続きも 1000 人まで・参照は 500 ずつ続きも 2000 まで・分類の説明の記事「Character」と下位のページ「…/Storyline」は除く・60 人以上の分類は参照が中央値の 1 割未満で記事も 3000 字未満の端のページ＝他作品の企画〔dota2 の Yasuo・Irelia〕も除く：emblem.fringe。参照だけで切らない＝新キャラ Ringmaster を残す）。書いておく（find_sources、AI の設計が飛ばされても埋まる）",
              "uses": ["fandom"]},
-            {"id": "b1r", "kind": "step", "lane": "actions", "title": "要る枚数を決める", "text": "上限 = 主要な要素の数（まだ数えていなければ先に --roster。「Secondary Characters」のようなまとめの記事は数えない）",
+            {"id": "b1r", "kind": "step", "lane": "actions", "title": "要る枚数を決める", "text": "上限 = 主要な要素の数（まだ数えていなければ先に --roster。「Secondary Characters」のようなまとめの記事は数えない） · 見本中（本番はまだ）：誰を出すかを名簿の順でなく「知られている点数」（emblem_fame：AniList のお気に入り数・Wikipedia の閲覧数）で決める案 → テストグラウンド emblem-pick.html",
              "uses": ["roster"]},
             {"id": "b2", "kind": "step", "lane": "actions", "title": "準備", "text": "モデルはキャッシュから（初回だけダウンロード）",
              "uses": ["rembg", "yunet", "sface"]},
