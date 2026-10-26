@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-26T08:05:55+00:00",
+ "checked": "2026-10-26T08:09:24+00:00",
  "fired": {
-  "at": "2026-10-26T08:05:55+00:00",
+  "at": "2026-10-26T08:09:24+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -58,26 +58,25 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "あつ森"
-   ],
-   "need": true,
-   "sig": "586e844112df",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
-    "Vaundy",
-    "dota2",
     "漫威电影",
     "哈利波特剧集",
     "BLEACH Mirrors High",
     "GTA 6",
     "チェーンソーマン",
     "FROM",
+    "あつ森",
+    "dota2",
+    "Vaundy",
     "Astrae Oratio",
     "The Mandalorian",
     "绝区零",
     "A2O LITE"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:06 から）"
+   "why": "失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:10 から）"
   },
   "photos": {
    "claude": true,
