@@ -129,6 +129,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
     heads = nohead_real(sorted(set(st["heads"])), fails) if st["heads"] else []
     first = pg.evaluate(FIRST_JS)
+    dead = pg.evaluate(DEAD_JS)
     pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
     bad = []
     if not page and emb != "off":
@@ -150,6 +151,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
             bad.append(f"横にはみ出す（{st['sw']}px）")
         if errors:
             bad.append("JS のエラー：" + " / ".join(errors[:2]))
+        bad += dead_bad(dead)
         bad += first_screen_bad(first)   # 0 個の人の設定・欲しい物：主役のボタンがあり・最初の画面に入り・固定ボタンと重ならない
         return st, bad
     if len(loads) > 3:
@@ -163,6 +165,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     if st["sw"] > width:
         bad.append(f"横にはみ出す（{st['sw']}px）")
     bad += first_screen_bad(first)
+    bad += dead_bad(dead)
     if st["tofu"]:   # 2026-10-26：数字の書体（Anton）に日本語の字がなく □□□ になった（「（日）」）
         bad.append("日本語の字が日本語の書体でない（□になる）：" + "・".join(map(str, st["tofu"])))
     if st["hero"]:   # 2026-10-26：ポスターの写真が読み込めていない
@@ -191,6 +194,24 @@ FIRST_JS = """()=>{const g=document.querySelector('.startgo,.wl-mine .go.big'),f
   zero:!!document.querySelector('.calm.start,.top.start')||/まだ何も追いかけていません/.test((document.querySelector('.page,.wl-mine')||{}).innerText||''),
   quiet:[...document.querySelectorAll('.poster,.calm.start,.pill .cnt,.calm .tag')].map(x=>x.innerText||'').join(' ').replace(/\\s+/g,'').includes('新着なし'),
   links:document.querySelectorAll('.page a.startgo,.page .calm a,.wl-mine .go.big').length,shell:!!document.querySelector('.wl-mine .empty')}}"""
+
+
+# 2026-10-27：見えるのに押せない（#545）を 1 か所でなく全部数える。見える a・button の真ん中を elementFromPoint で見て、別の部品（リンク・ボタンでもない）に当たれば死んだ入口
+DEAD_JS = """()=>{const sel='a[href],button,[role=button],input,select,summary',out=[];let n=0;
+ const els=[...document.querySelectorAll(sel)].filter(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>4&&r.height>4&&s.visibility!=='hidden'&&s.opacity!=='0'&&!e.closest('[hidden],[aria-hidden=true]')&&!e.disabled});
+ const y0=scrollY;
+ for(const e of els){if(n++>400)break;e.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+  const r=e.getBoundingClientRect(),x=(r.left+r.right)/2,y=(r.top+r.bottom)/2;if(x<0||y<0||x>=innerWidth||y>=innerHeight)continue;
+  const h=document.elementFromPoint(x,y);if(!h||e.contains(h)||h.contains(e)||h.closest(sel))continue;
+  out.push(((e.closest('.top,.card,.wc,.poster,.nav,.wl-auth,.fside')||{}).className||'').split(' ')[0]+'>'+e.tagName.toLowerCase()+'.'+String(e.className).split(' ')[0]+'→'+h.tagName.toLowerCase()+'.'+String(h.className).split(' ')[0])}
+ scrollTo(0,y0);return {n:els.length,dead:out}}"""
+
+
+def dead_bad(d):
+    """d = DEAD_JS の結果。押せない入口を文にして返す。"""
+    if not d or not d.get("dead"):
+        return []
+    return [f"見えるのに押せない入口 {len(d['dead'])}／{d['n']}：" + "・".join(d["dead"][:4])]
 
 
 def first_screen_bad(f, gap=8):

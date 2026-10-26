@@ -276,6 +276,14 @@ class FirstScreenTests(unittest.TestCase):
         self.assertEqual(len(ux_check.first_screen_bad({**z, "quiet": True})), 1)  # 新着なし
         self.assertEqual(len(ux_check.first_screen_bad({**z, "links": 2})), 1)    # 入口が二重
 
+    def test_dead_entrance_check(self):
+        import sys, pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        self.assertEqual(ux_check.dead_bad({"n": 9, "dead": []}), [])
+        self.assertEqual(len(ux_check.dead_bad({"n": 9, "dead": ["top>a.startgo→div.top"]})), 1)
+        self.assertIn("elementFromPoint", ux_check.DEAD_JS)
+
 
 class ZeroShellRendered(unittest.TestCase):
     """欲しい物・話題度（AUTH_JS の「index・settings 以外」の枝）を node で動かし、できた HTML を見る（字の有無でなく、0 個の人に主役のボタンが出るか）。"""
