@@ -479,7 +479,7 @@ def item_text(text, name, emblems, th=None):
         skip = False
         block.append(l)
     at = next((i + 1 for i, l in enumerate(block) if l.startswith("    motif:")), 0)
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock", "face")
     block[at:at] = ((["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"] if emblems else [])
                     + [f"      - {_flow({k: x[k] for k in keep if k in x})}" for x in emblems]
                     + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
@@ -1196,7 +1196,7 @@ def _write_emblems(name, ems):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock", "face")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     write_atomic(path, "\n".join(lines))
 
@@ -1511,7 +1511,7 @@ def cut_all(name, drawn, old=()):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock")
+    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock", "face")
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     write_atomic(path, "\n".join(lines))
 
