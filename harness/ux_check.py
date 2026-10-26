@@ -87,6 +87,7 @@ def check(pw, base, who, width, out, page="", emb="off"):
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
         sw:document.documentElement.scrollWidth})""", BOXES)
     near = [] if page else pg.evaluate(NEAR_JS)
+    first = None if page else pg.evaluate(FIRST_JS)
     pg.screenshot(path=str(out / f"{who}-{'set-' if page else ''}{width}.png"))
     bad = []
     if not page and emb != "off":
@@ -116,6 +117,7 @@ def check(pw, base, who, width, out, page="", emb="off"):
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
     if st["sw"] > width:
         bad.append(f"横にはみ出す（{st['sw']}px）")
+    bad += first_screen_bad(first)
     if st["tofu"]:   # 2026-10-26：数字の書体（Anton）に日本語の字がなく □□□ になった（「（日）」）
         bad.append("日本語の字が日本語の書体でない（□になる）：" + "・".join(map(str, st["tofu"])))
     if st["hero"]:   # 2026-10-26：ポスターの写真が読み込めていない
@@ -132,6 +134,31 @@ def check(pw, base, who, width, out, page="", emb="off"):
     if errors:
         bad.append("JS のエラー：" + " / ".join(errors[:2]))
     return st, bad
+
+
+# 2026-10-27：版面 0 個の人の最初の画面。主役のボタンが最初の画面の中にあり、右下の固定ボタンと 8px 以上離れる。「N 作品」の数は本当の数と一致
+FIRST_JS = """()=>{const g=document.querySelector('.startgo'),f=document.querySelector('.wl-auth'),r=x=>x?x.getBoundingClientRect():null;
+ const sum=[...document.querySelectorAll('.shelf h3 small')].reduce((s,x)=>s+(+((x.textContent.match(/(\\d+) 作品/)||[])[1])||0),0);
+ const g1=r(g),f1=r(f);return {go:g1?{t:g1.top,b:g1.bottom,l:g1.left,r:g1.right}:null,fix:f1?{t:f1.top,b:f1.bottom,l:f1.left,r:f1.right}:null,
+  H:innerHeight,shelves:!!document.querySelector('.shelfbox'),sum,tapes:document.querySelectorAll('.shelf .tapes>a').length}}"""
+
+
+def first_screen_bad(f, gap=8):
+    """f = FIRST_JS の結果。壊れ方を文にして返す（単体テストで足りない所を見分ける）。"""
+    if not f:
+        return []
+    bad = []
+    g, x = f["go"], f["fix"]
+    if g:
+        if g["b"] > f["H"]:
+            bad.append(f"主役のボタンが最初の画面に入らない（下端 {round(g['b'])}px／画面 {f['H']}px）")
+        if x and g["l"] < x["r"] + gap and x["l"] < g["r"] + gap and g["t"] < x["b"] + gap and x["t"] < g["b"] + gap:
+            bad.append("主役のボタンが右下の固定ボタンと重なる・近すぎる（8px 未満）")
+        if f["shelves"]:
+            bad.append("版面 0 個なのにジャンル別の棚が出ている")
+    if f["sum"] != f["tapes"]:
+        bad.append(f"「N 作品」の数 {f['sum']} が棚の本当の数 {f['tapes']} と違う")
+    return bad
 
 
 ARCH_GAP = 800   # 枠の下の空白（次の枠まで）の上限 px。2026-10-25 Actions の枠だけ 5,129px で、ほかの枠の下に 3,500〜4,800px の空白
