@@ -108,6 +108,38 @@ def wd_entity(qid, get=None):
     return {"human": "Q5" in _claims(ent, "P31"), "links": links, "anilist": anilist, "fandom": fandom, "leads": [x for x in leads if x]}
 
 
+MEMBERS_MAX = 12   # グループのメンバーとして集める人数の上限（店長の ILLIT 5・A2O LITE 9 と同じ規模）
+
+
+def group_members(qid, get=None, limit=MEMBERS_MAX):
+    """グループの Wikidata の番号 → メンバーの名前（emblem_who）。店長のグループは emblem_who を手で書くが、ライブラリの版面にはなく、
+    グループの写真は「何人も写っている」で落ちて 0 枚だった（BTS・YOASOBI・Mrs. GREEN APPLE）。
+    グループの has part（P527）＋ member of（P463）がそのグループの人（P31 = 人 Q5）を、英語（なければ日本語）の名前で。断られたら []（次の回）。"""
+    import library
+    get = get or library._wd_get
+    try:
+        ent = (get({"action": "wbgetentities", "ids": qid, "props": "claims"}).get("entities") or {}).get(qid) or {}
+        ids = [v for v in _claims(ent, "P527") if re.fullmatch(r"Q\d+", str(v))]
+        found = get({"action": "query", "list": "search", "srsearch": f"haswbstatement:P463={qid}", "srlimit": 30}).get("query", {}).get("search") or []
+        ids += [x["title"] for x in found if re.fullmatch(r"Q\d+", str(x.get("title")))]
+        ids = list(dict.fromkeys(ids))[:50]
+        if not ids:
+            return []
+        ents = get({"action": "wbgetentities", "ids": "|".join(ids), "props": "labels|claims", "languages": "en|ja"}).get("entities") or {}
+    except library.WdBlocked:
+        return []
+    out = []
+    for q in ids:
+        e = ents.get(q) or {}
+        if "Q5" not in _claims(e, "P31"):
+            continue
+        lab = e.get("labels") or {}
+        name = ((lab.get("en") or lab.get("ja") or {}).get("value") or "").strip()
+        if name and name not in out:
+            out.append(name)
+    return out[:limit]
+
+
 def board_item(board, follow, get=None):
     """ライブラリの版面 1 つ → emblem_fill が読む items.yaml の 1 項目。前の回の手がかり（emblem_*）は config から続ける。"""
     import user_pages
@@ -128,6 +160,10 @@ def board_item(board, follow, get=None):
             item.setdefault("anilist_id", int(wd["anilist"]))
         if wd.get("fandom") and re.fullmatch(r"[a-z0-9-]+", str(wd["fandom"])):
             item.setdefault("emblem_fandom", wd["fandom"])
+    if item["emblem_kind"] == "group" and not item.get("emblem_who") and board.get("wd"):   # メンバー（店長のグループの emblem_who と同じ）を Wikidata から
+        who = group_members(board["wd"], get)
+        if who:
+            item["emblem_who"] = who
     if item["emblem_kind"] == "topic" and not item.get("emblem_icon"):
         item["emblem_icon"] = icons_for(board["name"], sec, (follow or {}).get("subs"))
     if links and not item.get("wiki"):
