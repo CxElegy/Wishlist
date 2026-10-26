@@ -6550,7 +6550,11 @@ def render_admin(data, db, updated):
            'データを変えることはできません（できるのは「今すぐ実行」で裏の仕組みを定時より早く動かすことと、小元素の「替える・固定・外す」だけ）。篇幅やウォッチ項目の変更は<a href="settings.html">設定ページ</a>で。</p>'
            '<ul class="admhub">' + "".join(
                f'<li><a href="{f}"><b><i>{m}</i>{e(n)}</b><span class="n{" warn" if counts[f][1] else ""}">{e(counts[f][0])}</span><small>{e(d)}</small></a></li>'
-               for f, m, n, d, _ in ADMIN_PAGES) + '</ul>')
+               for f, m, n, d, _ in ADMIN_PAGES) + '</ul>'
+           '<h2 class="sh"><span>見本・試作</span><small>本番に入れる前に試したもの。押しても本番は変わらない</small></h2>'
+           '<ul class="admnav" id="adm-samples"><li><a href="../testground/"><span>テストグラウンド（全部）</span></a></li>'
+           '<li><a href="../testground/emblem-manage.html"><span>小元素の管理の見本（本物は ③エンブレム）</span></a></li>'
+           '<li><a href="../testground/emblem-pop.html"><span>小元素のはみ出し・立体 3 案</span></a></li></ul>')
     move = json.dumps({i: f for f, _, _, _, ids in ADMIN_PAGES for i in ids})
     out = {"admin.html": page("admin.html", "管理ページ", "admin", hub, f"<script>{ADMIN_HUB_JS.replace('__MAP__', move)}</script>")}
     for f, m, n, _, ids in ADMIN_PAGES:
