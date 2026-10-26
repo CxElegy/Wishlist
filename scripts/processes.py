@@ -200,7 +200,8 @@ PROCESSES = [
         "id": "emblem", "name": "小元素の選定（AI の分）", "en": "EMBLEM", "lane": "ai", "schedule": "edit", "when": "新しい関注項が入ったとき",
         "trigger": "新しい関注項が入ったとき（AI 編集）／ 手で「この版面の小元素を見て」と頼んだとき",
         "summary": "AI がするのは「何を集めるか決める」と「手で頼まれたときに一覧を目で見る」の 2 つだけ。集める・確かめる・選ぶ・切り抜くは"
-                   "全部「小元素の自動補完」の規則（下の判断の一覧）で、AI は使わない。",
+                   "全部「小元素の自動補完」の規則（下の判断の一覧）で、AI は使わない。"
+                   "手書きの emblem_* が版面の 6 割未満にしかない項目は emblem_rules.sparse_keys で洗い出せる（点検のみ）。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem_rules.py"], "doc": "TEMPLATES.md", "rules": "emblem",
         "uses": ["claude", "roster"],
         "flow": [
