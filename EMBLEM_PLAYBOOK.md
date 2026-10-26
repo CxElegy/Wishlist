@@ -54,6 +54,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 37 | 切り抜きの形がおかしい（哈利波特剧集 Gregory Goyle：左右の下がまっすぐ縦に切れて「右下が四角く」体が途中で終わる）・かぎ形の出っぱり | 顔の大きさをそろえる `face_fit` が横幅 `bw` で切って体の横に垂直の切り口ができ、`check_whole` の左右の端の検査は下 35%（肩）を許していた。凹みを測る物差しもなかった | `cutshape`：左右の端にそって高さの `FLAT_RUN` 15% を超える直線は切り口が始まる行で下を切り落として半身（`trim_flat`・`FLAT_KEEP` 40%・顔の下まで）、上の端は横幅の `FLAT_TOP` 25%、`SOLID_MIN` 0.45 未満の凹みは ✗。前からの小元素は `repair_flat` で直し直せないものは `drop_broken`（`BROKEN_V` 4）。点検 E12 | #409 |
 | 38 | 切り抜きが commit のたびに縮む（Black Panther 73×23 → 60×10・mashiro-kuna 304×217 → 209×45） | `fit_all` が emblems/ の自分の出力をもう一度 `face_fit` で切り詰めた（#372 は書き出しの下限だけで根は残った） | `fit_all`：image が emblems/ の cutout は整え直さない（元が透明な source だけ source から作り直す）。テスト：同じ版面で 2 回走らせても大きさが変わらない | 2026-10-26 |
 | 39 | 前からの切り抜きで上の端の半分以上が人物（コマ。#389 のあと guest E7 12：BLEACH Mirrors High Muramasa・Retsu Unohana…） | `check_whole` は TOP_MAX で拒むが `broken_image` は見ておらず、前に取った分が残った | `broken_image` に `top_share > TOP_MAX` を足す（店長の drop_broken・お客さまの library_emblem で同じ）。外した分は次の候補で取り直す | （この PR） |
+| 40 | 別の作品・持ち物の絵が小元素（あつ森 Redd・Gulliver・Tortimer の SSBB_Trophy、原神 Kaeya・Kazuha に Item_Stella_Fortuna）・同じ絵が 2〜3 枚（Vaundy 3 本が同じ vaundy-vaundy.webp）・別の人なのに「同じ画像」（呪術廻戦の背の高い立ち絵） | 取るとき（check）も前からのもの（broken_cuts・ライブラリ）もファイル名を見ていなかった・前の書き込みの重複が残った・差分ハッシュが透明を黒にして測り細い立ち絵どうしが同じ形 | `emblem.BAD_SOURCE`（元の画像の道すじ）を cutout_on_page・check・broken_cuts・unbroken・E9 で共通に、`emblem_fill.drop_same`（同じ image・file_key は reject に入れず、同じ見た目は reject へ）、`_hash` は灰の上に置いて測る。BROKEN_V 6 | 2026-10-26 |
 
 ## 2. よく効いた直し方の型（手順）
 

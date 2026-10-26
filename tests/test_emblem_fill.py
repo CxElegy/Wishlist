@@ -112,6 +112,29 @@ class Rules(unittest.TestCase):
             with mock.patch.object(ef.emblem, "top_share", return_value=0.4), mock.patch.object(ef.emblem, "forehead_cut", return_value=False):
                 self.assertFalse(ef.broken_image(im, False))
 
+    def test_bad_source_and_same_pics(self):
+        # 別の作品・持ち物の絵（あつ森の SSBB_Trophy・原神の Item_）は元のファイル名で外す。同じ image・同じ見た目は 1 枚（Vaundy 3 本・Stella Fortuna 3 人）
+        # 透明な背の高い立ち絵どうし（呪術廻戦）は別の絵
+        from PIL import Image, ImageDraw
+        for u in ("https://dodo.ac/np/images/thumb/b/b3/Crazy_Redd_SSBB_Trophy.png/400px-Crazy_Redd_SSBB_Trophy.png",
+                  "https://static.wikia.nocookie.net/g/images/a/a9/Item_Stella_Fortuna_%285_Star%29.png/revision/latest?cb=1"):
+            self.assertTrue(ef.emblem.bad_source({"source": u}), u)
+        self.assertFalse(ef.emblem.bad_source({"source": "https://static.wikia.nocookie.net/g/images/c/c3/Character_Itto_Full_Wish.png/revision/latest?cb=1"}))
+
+        def man(color):
+            im = Image.new("RGBA", (170, 520), (0, 0, 0, 0))
+            ImageDraw.Draw(im).rectangle((40, 20, 130, 500), fill=color)
+            return im
+        a, b = man((150, 100, 50, 255)), man((20, 20, 30, 255))
+        xs = [{"image": "emblems/v.webp", "source": "u1", "subject": "A"}, {"image": "emblems/v.webp", "source": "u2", "subject": "A2"},
+              {"image": "emblems/x.webp", "source": "u3", "subject": "B"}, {"image": "emblems/y.webp", "source": "u4", "subject": "C"},
+              {"image": "emblems/z.webp", "source": "u5", "subject": "D", "lock": True}]
+        imgs = {"emblems/v.webp": a, "emblems/x.webp": b, "emblems/y.webp": b, "emblems/z.webp": b}
+        files, looks = ef.same_pics(xs, lambda x: imgs[x["image"]])
+        self.assertEqual([x["subject"] for x in files], ["A2"])
+        self.assertEqual([x["subject"] for x in looks], ["C"])   # 固定の D は残す
+        self.assertGreater(bin(ef._hash(a) ^ ef._hash(b)).count("1"), ef.SAME_BITS)
+
     def test_unbreak_restores_by_current_rule(self):
         # 前の版の broken_cuts で外した小元素を、今の規則で外れなければ戻し、emblem_reject からも抜く
         import tempfile
@@ -1896,7 +1919,8 @@ class FindSources(unittest.TestCase):
                                             '      - {subject: "e", image: "emblems/wide.webp", shape: badge}\n', encoding="utf-8")
             item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
             with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp):
-                self.assertEqual(ef.drop_broken(item, log=lambda *_: None), 3)
+                with mock.patch.object(ef, "drop_same", return_value=0):   # 真っ白の試験画像どうしは同じ見た目になる
+                    self.assertEqual(ef.drop_broken(item, log=lambda *_: None), 3)
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual([x["subject"] for x in got["emblem"]], ["a", "e"])
         self.assertEqual(got["emblem_reject"], ["http://s/b", "emblems/band.webp", "emblems/zero.webp"])
