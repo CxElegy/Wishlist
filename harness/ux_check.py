@@ -222,9 +222,12 @@ def check_emb_fade(pw, base, width):
     pg = b.new_page(viewport={"width": width, "height": 900})
     pg.route("**/*", lambda r: (time.sleep(1.5), r.continue_()) if r.request.resource_type == "image" else r.continue_())
     pg.goto(base, wait_until="domcontentloaded", timeout=60000)
-    q = "()=>{const i=document.querySelector('.emb img'),e=i&&i.closest('.emb');return i?{o:+getComputedStyle(i).opacity,h:Math.round(e.getBoundingClientRect().height),ld:i.classList.contains('ld')}:null}"
+    q = "()=>{const i=document.querySelector('.emb img'),e=i&&i.closest('.emb');return i?{o:+getComputedStyle(i).opacity,h:e.offsetHeight,ld:i.classList.contains('ld')}:null}"
     qp = "()=>{const i=document.querySelector('.pic img:not(.bg):not(.ico)');return i?{o:+getComputedStyle(i).opacity,ld:i.classList.contains('ld')}:null}"
     pg.wait_for_timeout(500)
+    # 画面外の lazy な小元素は近づくまで出ない（それが正しい）。最初の 1 枚は画面に入れてから、出る前・出たあとを見る
+    pg.evaluate("()=>{const i=document.querySelector('.emb img');i&&i.scrollIntoView({block:'center'})}")
+    pg.wait_for_timeout(300)
     before, pbefore = pg.evaluate(q), pg.evaluate(qp)
     pg.wait_for_timeout(8000)
     after, pafter = pg.evaluate(q), pg.evaluate(qp)
