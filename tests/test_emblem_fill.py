@@ -538,6 +538,8 @@ class Background(unittest.TestCase):
         from unittest import mock
         with mock.patch.object(ef, "broken_cuts", side_effect=lambda i: [1] if i["name"] == "zero" else []):
             self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 頭が切れた・ぼやけた小元素のある版面は待たない
+        with mock.patch.object(ef, "closeup_state", return_value={"zero": {"Ichigo": {"n": 1}}}):
+            self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 胸像待ちの版面は失敗の待ちに入らない（BLEACH が 1 度も回らなかった）
         with mock.patch.object(ef, "BROKEN_V", ef.BROKEN_V + 1):   # 規則の版が上がった：材料が同じでも待たずにやり直す
             self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         prog["items"]["zero"].pop("material")   # 指紋の記録がない古い失敗は待たない
