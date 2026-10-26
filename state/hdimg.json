@@ -459,12 +459,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn2.ettoday.net/images/8973/e8973842.png": {
-  "w": 1280,
-  "h": 800,
-  "target": 720,
-  "v": 3
- },
  "https://cdndark.darkhorizons.com/wp-content/uploads/2026/10/pratt-confirms-star-lord-will-return-to-mcu.jpg": {
   "w": 1200,
   "h": 800,
@@ -1366,12 +1360,6 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g3n26.img": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://img.4gamers.com.tw/news-image/30592e27-3cf0-4f66-b229-fc5e54665aeb.jpg": {
@@ -2894,6 +2882,12 @@
   ],
   "why": "看不清"
  },
+ "https://static.sanyonews.jp/image/article/size1/2/2/9/0/22902e4f34b44e2c44d9f269166203df_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/3/e/8/4/3e84c1f4e13b217a1409e48ea6608889_1.jpg": {
   "w": 452,
   "h": 640,
@@ -3079,7 +3073,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026160735": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026165557": {
   "w": 640,
   "h": 450,
   "target": 1280,
@@ -3451,6 +3445,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.h1__6WSmxo7D9Lx6uBvTaQ&pid=News&w=960": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.iAT7IhEzZ5ZerNWSk8uOWg&pid=News&w=1200": {
   "w": 493,
   "h": 700,
@@ -3560,6 +3560,12 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.y1DykR_-3YQyGw2CIxtK5g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.y9hw_Tk4yIPwIcoVNnrUFA&pid=News&w=1167": {
   "w": 700,
   "h": 393,
   "target": 720,

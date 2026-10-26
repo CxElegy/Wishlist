@@ -1,32 +1,32 @@
 {
- "admin": "b2732bf247a5",
- "admin-ai": "2007561cea77",
+ "admin": "d7dfc4b49631",
+ "admin-ai": "9c3c1b7aae83",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6d6d0ba8"
+   "95723b81"
   ],
   "tokens": [
    "AI 編集のトークン",
    "efe70f3f"
   ]
  },
- "admin-boards": "9f70c6c27d44",
+ "admin-boards": "672d920bfa40",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "149d346a"
+   "3e0095bd"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "b653737dedb3",
+ "admin-emblem": "b86ab51203d2",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1b80d5da"
+   "2d593d78"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0a0ba07d09df",
  "admin-members_marks": {},
- "admin-now": "381d92d7e05d",
+ "admin-now": "8ecf7af87e9d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4351b238"
+   "1ce6cd41"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "e5b6ed33"
+   "75151706"
   ],
   "term-panel": [
    "ライブログ",
-   "c2bc7265"
+   "568bd6f3"
   ]
  },
- "admin-system": "d775be86b896",
+ "admin-system": "aff51534e8e1",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "028f785d"
+   "8eb76dc6"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d255ea29"
+   "9a666035"
   ]
  },
  "admin_marks": {},
- "heat": "dde9283c97fb",
+ "heat": "7892305a677a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "6099f0a6"
+   "0c323a12"
   ],
   "ranking": [
    "ランキング",
-   "eb1c6ee4"
+   "5b4e03fb"
   ]
  },
- "index": "bcc027049783",
+ "index": "b2c6c27290ea",
  "index_marks": {
   "front": [
    "トップ",
-   "107d6940"
+   "c058e4c7"
   ],
   "picks": [
    "気になるかも？",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "9374dd07"
+   "931d67f6"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "b3da7b92"
+   "e4c4c39e"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "578d630c"
   ]
  },
- "updated": "10.26 16:43",
+ "updated": "10.26 16:58",
  "wishlist": "10142894041f"
 }
