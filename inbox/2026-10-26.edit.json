@@ -9,7 +9,8 @@
     2,
     8,
     20,
-    37
+    37,
+    45
    ],
    "image": "https://www.laughingplace.com/uploads/media/2026/10/Avengers-Doomsday-New-Teaser.jpg"
   },
@@ -43,7 +44,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    41
+    41,
+    44
    ]
   },
   {
@@ -58,10 +60,10 @@
   }
  ],
  "_covered": {
-  "漫威电影": 42,
+  "漫威电影": 47,
   "GTA 6": 34,
-  "A2O LITE": 29,
-  "周杰伦": 9,
+  "A2O LITE": 32,
+  "周杰伦": 15,
   "ILLIT": 31,
   "日本顶级网球赛事": 10,
   "MMORPG 新作": 3,
@@ -75,7 +77,8 @@
   "dota2": 9,
   "FROM": 1,
   "The Mandalorian": 2,
-  "gelato pique": 1
+  "gelato pique": 1,
+  "星巴克马克杯": 4
  },
  "GTA 6": [
   {
@@ -156,7 +159,8 @@
     5,
     1,
     19,
-    20
+    20,
+    31
    ]
   },
   {
@@ -199,7 +203,18 @@
     5,
     6,
     7,
-    8
+    8,
+    10,
+    11
+   ]
+  },
+  {
+   "headline": "30m-tall robots, fire and water effects: What to expect at Jay Chou’s concerts in January",
+   "highlight": "Jay Chou’s concerts in January",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
    ]
   }
  ],
@@ -623,6 +638,36 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "スターバックス26年クリスマスグッズ、ベア型グラスタンブラーやリボンモチーフのマグセットなど",
+   "highlight": "リボンモチーフのマグセット",
+   "blurb": "スターバックスの2026年クリスマスグッズが登場。ベア型グラスタンブラーやリボンモチーフのマグセットなどをラインナップ。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ]
+  },
+  {
+   "headline": "スターバックス「ミントグリーン＆ペールホワイト」で彩るクリスマスグッズ、宝石風タンブラーやマグ",
+   "highlight": "宝石風タンブラーやマグ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Starbucks x Disney: Winnie the Pooh Collection Brings Adorable Tumblers, Mugs and Collectibles to Malaysia",
+   "highlight": "Winnie the Pooh Collection",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ]

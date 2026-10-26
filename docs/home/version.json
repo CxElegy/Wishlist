@@ -1,10 +1,10 @@
 {
- "admin": "6bcc46ab39b5",
- "admin-ai": "e75dc2fcd278",
+ "admin": "031729531f83",
+ "admin-ai": "d483ad399d8e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "e29767f4"
+   "6d6d0ba8"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "0ccd21c6"
   ]
  },
- "admin-emblem": "5a9f006da4d8",
+ "admin-emblem": "5fb4cc71a6de",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "bc1f9ba5"
+   "dc70d3c3"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f0a6a4b0fa03",
  "admin-members_marks": {},
- "admin-now": "606d28c2d584",
+ "admin-now": "68425d49c88d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "435e181a"
+   "3f11083e"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "338a2576"
   ]
  },
- "admin-system": "b9a4a7aa9527",
+ "admin-system": "b79d99cfd24c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "67ddb3e1"
+   "952e6f9f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "72a764bd"
+   "99030c22"
   ]
  },
  "admin_marks": {},
- "heat": "280c34393b67",
+ "heat": "1a7f1e656072",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "212cab1a"
+   "6099f0a6"
   ],
   "ranking": [
    "ランキング",
-   "463d9282"
+   "eb1c6ee4"
   ]
  },
- "index": "e476a23e7bc2",
+ "index": "5054808a4966",
  "index_marks": {
   "front": [
    "トップ",
-   "4c4adf74"
+   "107d6940"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "15aad6dd"
+   "5bd0229d"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "6e7c1b08"
+   "a781d5a2"
   ],
   "w-6676e624": [
    "三星手机",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "2df8152a"
+   "e795040e"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "1d9203cd"
+   "9374dd07"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "578d630c"
   ]
  },
- "updated": "10.26 16:05",
- "wishlist": "18f110b90b3c"
+ "updated": "10.26 16:11",
+ "wishlist": "754a0da6eba3"
 }
