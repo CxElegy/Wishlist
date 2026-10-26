@@ -1119,6 +1119,14 @@ def official_site(item):
     return (m.group(1) + "/") if m else None
 
 
+def official_for(item, x):
+    """顔のアップを胸像に替える全部の入口（gather の fit_all・例外時の控え・bust_replacement）が公式を先に探すための 1 つの口。"""
+    try:
+        return official_images(official_site(item), re.split(r"[\s(),]+", re.sub(r"\s*[(（].*?[)）]", "", x["subject"])))
+    except Exception:
+        return []
+
+
 SCENE_FILE = re.compile(r"^File:Ep\d+(?!.*profile)", re.I)   # アニメの場面（Ep308…）。立ち絵・プロフィールより後
 
 
@@ -1252,7 +1260,7 @@ def fit_all(name, drawn=False):
             if fs and fs > CLOSEUP and x.get("page"):   # 顔だけのアップは浮くので、同じキャラのページから胸像を探す
                 m = re.match(r"^(https://[^/]+)/wiki/(.+)$", x["page"])
                 found = m and find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "),
-                                        word=re.split(r"[\s(]", x["subject"])[0])
+                                        word=re.split(r"[\s(]", x["subject"])[0], official=official_for(item, x))
                 if found:
                     x["image"], out, fs = found[0], found[1], found[2]
                     x.pop("source", None)
@@ -1574,7 +1582,7 @@ def cut_all(name, drawn, old=()):
             if m and "/wiki/File:" not in x["page"]:
                 try:
                     found = find_bust(m.group(1) + "/api.php", urllib.parse.unquote(m.group(2)).replace("_", " "), lo=0.12,
-                                      noface=drawn, photo=not drawn)   # 顔なしの控えは絵のキャラだけ（前髪で目が隠れる）。写真は顔が残っていること
+                                      noface=drawn, photo=not drawn, official=official_for(item, x))   # 顔なしの控えは絵のキャラだけ（前髪で目が隠れる）。写真は顔が残っていること
                 except Exception as e2:
                     print(f"  [胸像探し失敗] {x['subject']}：{e2}", file=sys.stderr)
             if found:

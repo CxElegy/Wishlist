@@ -2318,7 +2318,7 @@ def bust_replacement(item, x, skip, log=print, orig=None):
     外した画像・今ある画像（skip）は探さない。顔だけのアップ・壊れた切り抜きはまた外す。
     質の下限：短い辺 emblem.BUST_MIN_SIDE 未満・ぼやけたもの・元（orig：PIL）より質が上がらないものは取らない（emblem.better_cut）。→ (網址, 切り抜き画像, fs) か None。"""
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
-    official = emblem.official_images(emblem.official_site(item), re.split(r"[\s(),]+", _base_subject(x["subject"])))
+    official = emblem.official_for(item, x)
     if not api and not official:
         return None
     m = re.match(r"^https://[^/]+/wiki/(.+)$", str(x.get("page") or ""))
