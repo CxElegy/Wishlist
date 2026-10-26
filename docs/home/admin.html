@@ -1091,6 +1091,9 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .emm-act[aria-expanded=true]{background:var(--ink);color:var(--card)}
 .emm-more{border-left:4px solid var(--rose);margin:2px 0 4px;padding:8px 0 4px 12px;display:flex;flex-direction:column;gap:10px}
 .emm-more h3{margin:0;font:900 13px var(--font-sans)}
+.emm-cands{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.emm-cands:empty{display:none}.emm-ct{margin:0;font-size:12px;opacity:.75}
+.emm-cand{padding:0;border:2px solid var(--ink);background:var(--card);aspect-ratio:4/5;cursor:pointer;overflow:hidden}.emm-cand img{width:100%;height:100%;object-fit:cover;display:block}.emm-cand:hover,.emm-cand:focus-visible{box-shadow:3px 3px 0 var(--rose)}
+.emm-st.pick,.emm-st.cands{background:var(--rose)}
 .emm-chips{display:flex;flex-wrap:wrap;gap:6px}
 .emm-chips button{background:var(--card);border:1.5px solid var(--ink);padding:3px 10px;font:700 12px var(--font-sans);color:var(--ink);cursor:pointer}
 .emm-chips button[aria-pressed=true]{background:var(--ink);color:var(--card)}
@@ -1513,7 +1516,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin" content="aea717c6293a"><style>
+<meta name="wl-ver" data-page="admin" content="eef7b8ce32f0"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2172,7 +2175,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.26 09:37</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.26 09:40</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html" aria-current="page"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>

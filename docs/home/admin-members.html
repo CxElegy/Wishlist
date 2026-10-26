@@ -1091,6 +1091,9 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .emm-act[aria-expanded=true]{background:var(--ink);color:var(--card)}
 .emm-more{border-left:4px solid var(--rose);margin:2px 0 4px;padding:8px 0 4px 12px;display:flex;flex-direction:column;gap:10px}
 .emm-more h3{margin:0;font:900 13px var(--font-sans)}
+.emm-cands{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.emm-cands:empty{display:none}.emm-ct{margin:0;font-size:12px;opacity:.75}
+.emm-cand{padding:0;border:2px solid var(--ink);background:var(--card);aspect-ratio:4/5;cursor:pointer;overflow:hidden}.emm-cand img{width:100%;height:100%;object-fit:cover;display:block}.emm-cand:hover,.emm-cand:focus-visible{box-shadow:3px 3px 0 var(--rose)}
+.emm-st.pick,.emm-st.cands{background:var(--rose)}
 .emm-chips{display:flex;flex-wrap:wrap;gap:6px}
 .emm-chips button{background:var(--card);border:1.5px solid var(--ink);padding:3px 10px;font:700 12px var(--font-sans);color:var(--ink);cursor:pointer}
 .emm-chips button[aria-pressed=true]{background:var(--ink);color:var(--card)}
@@ -1513,7 +1516,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-members" content="07792144bb08"><style>
+<meta name="wl-ver" data-page="admin-members" content="d32e36d2995a"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2172,7 +2175,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ⑥ お客さまと店長</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.26 09:37</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.26 09:40</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html" aria-current="page"><span>⑥ お客さまと店長</span></a></li></ul></nav>
@@ -2313,7 +2316,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   var KEY='wl-emm-'+(window.WL_ACCOUNT||''),sent={},req={},cur=null,anchor=null;   // req[版面|画像] = {a,reason,note,board,img}。送った印はこのブラウザが 6 時間覚える
   try{sent=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){}
   Object.keys(sent).forEach(function(k){if(Date.now()-sent[k]>21600000)delete sent[k];});
-  var AL={swap:'替える',lock:'固定',unlock:'固定をはずす',drop:'外す'},RL={};
+  var AL={swap:'替える',cands:'候補を集める',pick:'候補から決める',lock:'固定',unlock:'固定をはずす',drop:'外す'},RL={};
   [].forEach.call(sheet.querySelectorAll('[data-chips=drop] [data-r]'),function(b){RL[b.dataset.r]=b.textContent;});
   function key(t){return t.dataset.b+'|'+t.dataset.img;}
   var lib={};   // お客さまの版面（ライブラリ）：名前 → 版面の id。店長（管理者）でログインしているときだけ読める（RLS）
@@ -2333,7 +2336,9 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
         '</div>';
       var g=d.querySelector('.emm-grid');
       em.forEach(function(x){var tl=document.createElement('button');tl.type='button';tl.className='emm-tile';tl.dataset.b=r.name;tl.dataset.img=x.image;tl.dataset.lock=x.lock?'1':'0';
-        tl.dataset.subj=x.subject||'';tl.dataset.why=x.why||'';tl.setAttribute('aria-haspopup','dialog');
+        tl.dataset.subj=x.subject||'';tl.dataset.why=x.why||'';
+        tl.dataset.cands=JSON.stringify(((r.config.emblem_cands||{})[x.subject||'']||[]).filter(function(c){return !em.some(function(y){return y.image===c.image;});}).map(function(c){return {image:c.image,why:c.why||''};}));
+        tl.dataset.wait=((r.config.emblem_want||[]).indexOf(x.subject||'')>=0)?'1':'0';tl.setAttribute('aria-haspopup','dialog');
         tl.innerHTML='<span class="emm-ph"><img alt="" loading="lazy"></span><b></b><small></small>';
         tl.querySelector('img').src=x.image;tl.querySelector('b').textContent=x.subject||'小元素';tl.querySelector('small').textContent=x.why||'';g.appendChild(tl);});
       host.insertBefore(d,sh);});
@@ -2359,6 +2364,11 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   function open(t){
     cur=t;anchor=t;var lock=t.dataset.lock==='1';
     $('emm-img').src=t.dataset.img;$('emm-name').textContent=t.dataset.subj||'小元素';$('emm-why').textContent=t.dataset.why?'取り方：'+t.dataset.why:'';
+    var cs=[],box=$('emm-cands');try{cs=JSON.parse(t.dataset.cands||'[]');}catch(e){}
+    box.innerHTML='';cs.forEach(function(c){var b=document.createElement('button'),im=document.createElement('img');b.type='button';b.className='emm-cand';b.dataset.u=c.image;b.title=c.why||'';
+      im.alt='候補';im.loading='lazy';im.src=c.image;b.appendChild(im);box.appendChild(b);});
+    $('emm-cands-t').textContent=cs.length?'候補 '+cs.length+' 枚。押して決める（今の写真と入れ替わり、そのまま固定）':t.dataset.wait==='1'?'集めています。次の後台作業のあと（1 時間ほど）にここに並びます':'まだ候補がありません。集める依頼を送ると、次の後台作業のあと（1 時間ほど）に並びます';
+    $('emm-cands-go').hidden=cs.length>0||t.dataset.wait==='1';
     $('emm-lock-t').textContent=lock?'固定をはずす':'この写真で固定';
     $('emm-lock-d').textContent=lock?'いまは固定中。はずすと自動の補完・作り直しで替わることがある':'自動の補完・規則の作り直し・検査でも替えない';
     $('emm-lock-go').textContent=lock?'固定をはずす':'固定する';
@@ -2378,13 +2388,15 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     if(a){var o=a.getAttribute('aria-expanded')!=='true';
       [].forEach.call(sheet.querySelectorAll('.emm-act'),function(x){x.setAttribute('aria-expanded',x===a&&o);});
       [].forEach.call(sheet.querySelectorAll('.emm-more'),function(m){m.hidden=!(o&&m.dataset.for===a.dataset.a);});place();return;}
+    var pk=ev.target.closest('.emm-cand');
+    if(pk&&cur){req[key(cur)]={a:'pick',pick:pk.dataset.u,reason:'',note:'',board:cur.dataset.b,img:cur.dataset.img,subj:cur.dataset.subj};$('emm-msg').textContent='';close();paint();return;}
     var c=ev.target.closest('.emm-chips [data-r]');
     if(c){var box=c.parentNode,was=c.getAttribute('aria-pressed')==='true';
       [].forEach.call(box.children,function(x){x.setAttribute('aria-pressed','false');});c.setAttribute('aria-pressed',!was);
       if(box.dataset.chips==='drop')sheet.querySelector('[data-go=drop]').disabled=was;return;}
     var g=ev.target.closest('.emm-go');
     if(g&&!g.disabled&&cur){var kind=g.dataset.go,more=g.closest('.emm-more'),on=more.querySelector('[aria-pressed=true]'),nt=more.querySelector('.emm-note');
-      req[key(cur)]={a:kind==='lock'&&cur.dataset.lock==='1'?'unlock':kind,reason:on?on.dataset.r:'',note:nt?nt.value.trim():'',board:cur.dataset.b,img:cur.dataset.img};
+      req[key(cur)]={a:kind==='lock'&&cur.dataset.lock==='1'?'unlock':kind,reason:on?on.dataset.r:'',note:nt?nt.value.trim():'',board:cur.dataset.b,img:cur.dataset.img,subj:cur.dataset.subj};
       $('emm-msg').textContent='';close();paint();return;}
     if(ev.target.closest('#emm-close')){close();return;}
     if(!sheet.hidden&&!ev.target.closest('#emm-sheet'))close();});
@@ -2395,6 +2407,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     var by={},ks=Object.keys(req);if(!ks.length)return;
     ks.forEach(function(k){var r=req[k],c=by[r.board]=by[r.board]||{};
       if(r.a==='swap')(c._emblem_swap=c._emblem_swap||[]).push({image:r.img,reason:r.reason||'misc',note:r.note});
+      else if(r.a==='cands')(c._emblem_cands=c._emblem_cands||[]).push({image:r.img,subject:r.subj});
+      else if(r.a==='pick')(c._emblem_pick=c._emblem_pick||[]).push({image:r.img,pick:r.pick});
       else if(r.a==='drop')(c._emblem_reject=c._emblem_reject||[]).push({image:r.img,reason:r.reason,note:r.note});
       else(c._emblem_lock=c._emblem_lock||[]).push({image:r.img,on:r.a==='lock'});});
     if(!confirm(Object.keys(by).map(function(b){return b+'：'+ks.filter(function(k){return req[k].board===b;}).map(function(k){return AL[req[k].a];}).join('、');}).join('\n')+'\n\nこの依頼を送りますか？（外した・替えた画像は二度と自動で選ばれません）'))return;
@@ -2404,13 +2418,13 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     (function next(i){
       if(i>=names.length){
         try{localStorage.setItem(KEY,JSON.stringify(sent));}catch(e){}
-        $('emm-msg').textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（お客さまの版面は次のライブラリの小元素の回で）（替える写真は次の後台作業で探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
+        $('emm-msg').textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（お客さまの版面は次のライブラリの小元素の回で）（替える・候補を集める写真は次の後台作業で探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
         go.disabled=false;paint();return;}
       var name=names[i];
       fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/rpc/'+(lib[name]?'board_emblem_request':'submit_item'),{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},
         body:JSON.stringify(lib[name]?{p_board:lib[name],p_edit:by[name]}:{p_account:window.WL_ACCOUNT,p_action:'edit',p_name:name,p_config:by[name]})})
         .then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok)throw new Error((j&&j.message)||r.status);});})
-        .then(function(){ok++;Object.keys(req).forEach(function(k){if(req[k].board===name){if(req[k].a!=='lock'&&req[k].a!=='unlock')sent[k]=Date.now();delete req[k];}});},
+        .then(function(){ok++;Object.keys(req).forEach(function(k){if(req[k].board===name){if(req[k].a!=='lock'&&req[k].a!=='unlock'&&req[k].a!=='cands')sent[k]=Date.now();delete req[k];}});},
               function(err){ng.push(name+'（'+err.message+'）');})
         .then(function(){next(i+1);});
     })(0);
