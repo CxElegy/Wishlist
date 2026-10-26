@@ -69,8 +69,13 @@ def _anime_boxes(big, conf=0.35):
     return [tuple(v / k for v in boxes[int(i)]) for i in np.array(idx).flatten()]
 
 
-def _boxes(img):
-    """顔の候補 [(x, y, w, h), …]（元の画像の画素。大きい順）。YuNet（写真・3D）→ アニメ顔の検出 → 顔のカスケード。"""
+WEAK_YUNET, WEAK_ANIME = 0.32, 0.08   # 3 段目の測り（weak）のしきい値：YuNet 0.5 → 0.32（0.30 は岩を顔とした）、アニメ顔 YOLO 0.35 → 0.08
+WEAK_H = 0.2                          # weak・relax で顔と認める箱の高さの下限（画像の高さに対して）。小さい箱は手・服・飾りの誤検出が多い（dota2 の全身 40 枚）
+
+
+def _boxes(img, weak=False):
+    """顔の候補 [(x, y, w, h), …]（元の画像の画素。大きい順）。YuNet（写真・3D）→ アニメ顔の検出 → 顔のカスケード。
+    weak = True は 1 回目で測れなかった絵だけ：しきい値を下げて（WEAK_*）探し直す（カスケードは使わない）。"""
     import cv2
     import numpy as np
     from PIL import Image
@@ -89,16 +94,18 @@ def _boxes(img):
             a = cv2.cvtColor(np.array(big.convert("RGB")), cv2.COLOR_RGB2BGR)
             det = eng[0]
             det.setInputSize((a.shape[1], a.shape[0]))
-            det.setScoreThreshold(0.5)
+            det.setScoreThreshold(WEAK_YUNET if weak else 0.5)
             _, f = det.detect(a)
             out += sorted(((r[0] / s - q, r[1] / s - q, r[2] / s, r[3] / s) for r in (f if f is not None else [])), key=lambda b: -b[2] * b[3])
     except Exception:
         pass
     try:   # アニメ・ゲームの絵
-        out += sorted(((x - q, y - q, bw, bh) for x, y, bw, bh in _anime_boxes(bg)), key=lambda b: -b[2] * b[3])
+        out += sorted(((x - q, y - q, bw, bh) for x, y, bw, bh in (_anime_boxes(bg, WEAK_ANIME) if weak else _anime_boxes(bg))), key=lambda b: -b[2] * b[3])
     except Exception:
         pass
     try:   # YuNet が見つけない・使えない顔（アニメ絵・横向き）：顔のカスケード。YuNet の候補のあとに
+        if weak:
+            return out
         import emblem
         f = emblem.face_box(bg)
         if f:
@@ -108,25 +115,88 @@ def _boxes(img):
     return out
 
 
+def _pick(boxes, al, w, h, relax=False):
+    """候補のうち、顔と認める最初の箱 (x, y, bw, bh)。なければ None。
+    relax = False：顔は上のほうにあるはず（y < 0.5h、中心 < 0.75h。下のほうの検出は手や服の誤検出）。
+    relax = True ：髪・角・帽子の大きい上半身のアップは顔が下がる（BLEACH の Franceska、dota2 の Dark Willow）ので、
+    y < 0.65h・中心 < 0.85h まで広げ、そのかわり箱の高さが画像の 20%（WEAK_H）以上のものだけ。"""
+    for x, y, bw, bh in boxes:
+        if not 0.04 <= bh / h <= 0.95 or (relax and bh / h < WEAK_H):
+            continue
+        cx, cy = x + bw / 2, y + bh / 2
+        if not (0 <= cx < w and 0 <= cy < h * (0.85 if relax else 0.75) and y < h * (0.65 if relax else 0.5)):
+            continue
+        x0, y0, x1, y1 = max(0, int(x)), max(0, int(y)), min(w, int(x + bw)), min(h, int(y + bh))
+        if x1 <= x0 or y1 <= y0 or al[y0:y1, x0:x1].mean() < 0.5:   # 顔の箱の中が透明 = 余白への誤検出
+            continue
+        return x, y, bw, bh
+    return None
+
+
 def measure(img):
-    """PIL 画像 → [fs, top, fx, mx, w, h]（上の説明）。顔が測れなければ fs = 0。"""
+    """PIL 画像 → [fs, top, fx, mx, w, h]（上の説明）。顔が測れなければ fs = 0。
+    3 段：① 今までの測り（YuNet・アニメ顔 YOLO・カスケード、顔は上のほう）② 同じ候補で、顔が下がったアップを認める（relax）
+    ③ しきい値を下げて探し直す（weak。向きを並べた図は除く）。前の段で測れた絵は、あとの段に進まない（測り済みの値は変わらない）。"""
     import numpy as np
     img = img.convert("RGBA")
     w, h = img.size
     al = np.array(img.getchannel("A")) > 128
     ys, xs = np.nonzero(al)
     mx = round(float(xs.mean()) / w, 3) if len(xs) else 0.5
-    for x, y, bw, bh in _boxes(img):
-        if not 0.04 <= bh / h <= 0.95:
-            continue
-        cx, cy = x + bw / 2, y + bh / 2
-        if not (0 <= cx < w and 0 <= cy < h * 0.75 and y < h * 0.5):   # 顔は上のほうにあるはず（下のほうの検出は手や服の誤検出）。アップは箱が下がる
-            continue
-        x0, y0, x1, y1 = max(0, int(x)), max(0, int(y)), min(w, int(x + bw)), min(h, int(y + bh))
-        if x1 <= x0 or y1 <= y0 or al[y0:y1, x0:x1].mean() < 0.5:   # 顔の箱の中が透明 = 余白への誤検出
-            continue
-        return [round(float(bh) / h, 3), round(float(max(0.0, y)) / h, 3), round(float(cx) / w, 3), mx, w, h]
+    boxes = _boxes(img)
+    f = _pick(boxes, al, w, h) or _pick(boxes, al, w, h, relax=True)
+    if not f and not _is_sheet(al, w, h):   # 向きを並べた図は顔が小さく、しきい値を下げると体の模様を顔とする（dota2 Ursa）
+        f = _pick(_boxes(img, weak=True), al, w, h, relax=True)
+    if f:
+        x, y, bw, bh = f
+        return [round(float(bh) / h, 3), round(float(max(0.0, y)) / h, 3), round(float(x + bw / 2) / w, 3), mx, w, h]
     return [0, 0, 0.5, mx, w, h]
+
+
+NONE_V = 3   # 顔なしと測ったときの測り方の版（x["nfv"]）。測り方を上げたら数を上げる：古い版で顔なしの絵だけ 1 回測り直す（測り済みの絵は触らない）
+
+
+def stale(x, size):
+    """この小元素は測り直すか（face がない・画像の大きさが替わった・古い版で顔なしと測った）。measure_item・measure_emblems が使う。"""
+    f = x.get("face")
+    if not (isinstance(f, list) and len(f) == 6 and f[4:] == list(size)):
+        return True
+    return f[0] == 0 and x.get("nfv") != NONE_V
+
+
+def _store(x, img):
+    """測って x に書く（顔なしなら測り方の版 nfv も）。"""
+    x["face"] = measure(img)
+    if x["face"][0]:
+        x.pop("nfv", None)
+    else:
+        x["nfv"] = NONE_V
+
+
+NONE_REASONS = {"sheet": "向きを並べた図（顔が小さい）", "small": "顔らしい箱はあるが小さい・場所が合わない（全身が小さい）", "noface": "顔らしいものがない（怪物・武器・物・覆面）"}
+
+
+def _is_sheet(al, w, h):
+    """向きを並べた図：横長（幅 ÷ 高さ ≥ 1.5）で、絵が 2 つ以上の塊（どれも全体の 15% 以上）に分かれる（dota2 の Fandom の 3D 図）。al = 不透明な所の真偽の配列。"""
+    import cv2
+    import numpy as np
+    if w / h < 1.5 or not al.any():
+        return False
+    k = max(3, w // 40)
+    _, _, st, _ = cv2.connectedComponentsWithStats(cv2.dilate(al.astype(np.uint8), np.ones((k, k), np.uint8)))
+    area = st[1:, cv2.CC_STAT_AREA]
+    return sum(1 for s in area if s >= 0.15 * area.sum()) >= 2
+
+
+def none_reason(img):
+    """顔が測れなかった（measure の fs = 0）絵の理由の札 → "sheet" / "small" / "noface"（NONE_REASONS）。点検 harness/emb_check.py E17 が数える。
+    sheet = _is_sheet。small = しきい値を下げた探し直し（weak）で箱はあるが、小さい（WEAK_H 未満）か場所が合わない。noface = 箱がひとつもない。"""
+    import numpy as np
+    img = img.convert("RGBA")
+    w, h = img.size
+    if _is_sheet(np.array(img.getchannel("A")) > 128, w, h):
+        return "sheet"
+    return "small" if _boxes(img, weak=True) else "noface"
 
 
 def fit(face):
@@ -193,10 +263,9 @@ def measure_item(item, log=print, root=None, force=False):
             img.load()
         except Exception:
             continue
-        f = x.get("face")
-        if not force and isinstance(f, list) and len(f) == 6 and f[4:] == list(img.size):
+        if not force and not stale(x, img.size):
             continue
-        x["face"] = measure(img)
+        _store(x, img)
         if x.get("fs") is not None:   # 前からの fs（顔の高さの割合）は同じ測りに揃える
             if x["face"][0]:
                 x["fs"] = x["face"][0]
@@ -224,10 +293,9 @@ def measure_emblems(emblems, load):
             img.load()
         except Exception:
             continue
-        f = x.get("face")
-        if isinstance(f, list) and len(f) == 6 and f[4:] == list(img.size):
+        if not stale(x, img.size):
             continue
-        x["face"] = measure(img)
+        _store(x, img)
         if x.get("fs") is not None:
             if x["face"][0]:
                 x["fs"] = x["face"][0]
