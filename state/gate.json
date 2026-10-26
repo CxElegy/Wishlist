@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-26T18:55:34+00:00",
+ "checked": "2026-10-26T19:08:47+00:00",
  "fired": {
-  "at": "2026-10-26T16:01:24+00:00",
+  "at": "2026-10-26T19:08:47+00:00",
   "results": {
-   "edit": "仕事なし（起こさない）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,50 +12,89 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-26T14:43:23+00:00",
+    "at": "2026-10-26T19:08:47+00:00",
     "attempts": 1,
-    "day": "2026-10-26",
-    "prog": 409,
-    "resp": "cse_01PWwweCsvK9rL5NFXfRy4GU",
-    "sig": "a7af13938451"
+    "day": "2026-10-27",
+    "prog": 0,
+    "resp": "cse_01F2hHgKFdjoS6TM3eDHNBks",
+    "sig": "ba3d2f277e45"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
+   ],
    "last_batch": "2026-10-26T15:05:38+00:00",
    "last_error": {
     "at": "2026-10-26T09:31:53+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 0,
    "prog_day": "2026-10-27",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
+   ],
+   "sig": "ba3d2f277e45",
    "token_cap": 1000000,
    "tokens_today": 0,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 112 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "あつ森",
+   "items": [
     "チェーンソーマン",
+    "BLEACH Mirrors High",
+    "あつ森",
+    "dota2",
     "FROM",
     "漫威电影",
-    "哈利波特剧集",
-    "dota2",
     "GTA 6",
-    "BLEACH Mirrors High",
-    "Vaundy",
-    "ILLIT",
-    "绝区零",
-    "Astrae Oratio",
+    "The Mandalorian",
     "A2O LITE",
-    "The Mandalorian"
+    "绝区零",
+    "ILLIT"
    ],
-   "why": "失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 04:19 から）"
+   "need": true,
+   "sig": "1603cb067f91",
+   "waiting": [
+    "哈利波特剧集",
+    "Vaundy",
+    "Astrae Oratio"
+   ],
+   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 3 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 04:35 から）"
   },
   "photos": {
    "claude": true,
