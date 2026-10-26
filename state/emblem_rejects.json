@@ -51,6 +51,48 @@
    "source": "https://static.wikia.nocookie.net/bleach/images/6/6a/278Privaron_Espada.png/revision/latest/scale-to-width-down/400?cb=20220616094313&path-prefix=en",
    "subject": "Espada",
    "why": "Espada（Fandom のページ）"
+  },
+  {
+   "act": "drop",
+   "at": "2026-10-26T11:37:26+00:00",
+   "board": "FROM",
+   "host": "static.wikia.nocookie.net",
+   "kind": "character",
+   "note": "脇役過ぎた",
+   "page": "https://from.fandom.com/wiki/Paula",
+   "reason": "misc",
+   "shape": "cutout",
+   "source": "https://static.wikia.nocookie.net/from/images/4/4b/Paula_pro.jpeg/revision/latest/scale-to-width-down/400?cb=20230802174747",
+   "subject": "Paula（Annika Borg）",
+   "why": "Paula（Annika Borg）：Fandom の役の記事の代表画像"
+  },
+  {
+   "act": "swap",
+   "at": "2026-10-26T11:37:26+00:00",
+   "board": "FROM",
+   "host": "static.wikia.nocookie.net",
+   "kind": "character",
+   "note": "ちょっとネタバレぽい",
+   "page": "https://from.fandom.com/wiki/File:Kelly_death.png",
+   "reason": "misc",
+   "shape": "cutout",
+   "source": "https://static.wikia.nocookie.net/from/images/7/7c/Kelly_death.png/revision/latest/scale-to-width-down/600?cb=20251017063853",
+   "subject": "Kelly（Phoebe Rex）",
+   "why": "Kelly（Phoebe Rex）：Fandom の役の記事の剧照"
+  },
+  {
+   "act": "swap",
+   "at": "2026-10-26T11:37:26+00:00",
+   "board": "FROM",
+   "host": "i.ytimg.com",
+   "kind": "character",
+   "note": "作品中の画像ではない",
+   "page": "https://www.youtube.com/watch?v=5XveA-St_zE",
+   "reason": "misc",
+   "shape": "cutout",
+   "source": "https://i.ytimg.com/vi/5XveA-St_zE/hq1.jpg",
+   "subject": "Donna Raines（Elizabeth Saunders）",
+   "why": "Donna Raines（Elizabeth Saunders）：作品の動画の場面"
   }
  ]
 }
