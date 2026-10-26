@@ -4,7 +4,7 @@
   E1 出ない      版面（section.sec、静かな版面「はじめに」は除く）に .emb が無い
   E2 読めない    候補の画像が開けない（2 回とも）・網页で naturalWidth ≤ 1
   E3 白い四角    logo・cutout の画像の外周の 9 割以上が不透明な白（地が抜けていない）
-  E4 大きさ      表示の高さが同じ版面の中央値の 0.6 倍未満、または 1400：100〜215px・390：60〜140px の外（人物：cutout・badge、板ごとのロゴは除く）
+  E4 大きさ      表示の高さが同じ版面の中央値の 0.6 倍未満、または 1400：100〜215px・390：60〜140px の外（人物：cutout・badge、板ごとのロゴは除く。顔のアップは --k で縮めるので顔がそろう大きさに戻して測る）
   E5 はみ出し    画像の右端が画面の幅を越える
   E6 字に重なる  画像と題字の字そのもの（Range の行の矩形。.title は display:block で右に空きがある）が 1px² でも重なる
   E7 切れている  cutout が上の端で切れている：取るときと同じ規則（emblem.TOP_MAX：上の端の半分を超えて人物）、
@@ -13,7 +13,7 @@
                  高さ 40px 未満の切れ端だけ（STRIP_MAX）
   E8 同じ画像    同じ版面に同じ src か、差分ハッシュの違い ≤ 4 ビット（emblem_fill.SAME_BITS）か、同じ動画（YouTube）の場面が 2 本以上
   E9 中身        元の画像のファイル名が別の作品の絵（大乱闘のフィギュア・amiibo など、BAD_SOURCE）
-  E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている）
+  E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
                  （scripts/cutshape.py：取るときの emblem.trim_flat・drop_broken と同じ式。まっすぐでよいのは下の端だけ）
@@ -187,7 +187,8 @@ def stuck():
         p = ROOT / "state" / "emblem_progress.json"
         d = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
     d = d.get("items", {})
-    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed"}
+    # 残り 1 枚だけ届かない（Astrae Oratio 29/30・绝区零 60/61）は名簿の最後の 1 人に使える画像がないだけなので ✗ にしない
+    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and (v.get("target") or 0) - (v.get("have") or 0) > 1}
 
 
 def _sheet(shots, path):
@@ -264,7 +265,8 @@ def check(pg, who, width, out, full=False, guest=False):
                 found["E2"].append(f"{s['k']} {name}（網页）")
                 continue
             a = next((x for x in s["alts"] if x["src"] == m["src"]), {})
-            hs.append((m["h"], name, "" if a.get("plate") else a.get("shape", "")))   # 板ごとのタイトルロゴは人物の物差しで測らない
+            fs = a.get("fs") or 0   # 顔のアップは網页が顔の大きさをそろえて縮める（--k = 0.32/fs）ので、顔がそろう大きさに戻して測る
+            hs.append((m["h"] * fs / 0.32 if fs > 0.32 and not a.get("body") else m["h"], name, "" if a.get("plate") else a.get("shape", "")))   # 板ごとのタイトルロゴは人物の物差しで測らない
             if m["off"] > 0:
                 found["E5"].append(f"{s['k']} {name} +{m['off']}px")
             if m["ov"] > 0:
