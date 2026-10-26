@@ -42,6 +42,24 @@ class Kind(unittest.TestCase):
         self.assertNotIn("match", it)
 
 
+    def test_group_members_from_wikidata(self):
+        """グループの版面（ライブラリ）は emblem_who がなく写真が「何人も」で 0 枚だった：Wikidata のメンバー（P527・P463、人だけ）を who に。"""
+        def ent(label, human=True):
+            return {"labels": {"en": {"value": label}}, "claims": {"P31": [{"mainsnak": {"datavalue": {"value": {"id": "Q5" if human else "Q2"}}}}]}}
+
+        def get(p):
+            if p["action"] == "query":
+                return {"query": {"search": [{"title": "Q3"}, {"title": "Q4"}]}}
+            if p["ids"] == "Q9":
+                return {"entities": {"Q9": {"claims": {"P527": [{"mainsnak": {"datavalue": {"value": {"id": "Q2"}}}}]}}}}
+            return {"entities": {"Q2": ent("Jin"), "Q3": ent("Suga"), "Q4": ent("BTS album", human=False)}}
+        self.assertEqual(le.group_members("Q9", get), ["Jin", "Suga"])
+        b = {"id": 1, "name": "BTS", "wd": "Q9", "config": {}}
+        it = le.board_item(b, {"section": "演出", "subs": {"form": "グループ"}}, get)
+        self.assertEqual(it["emblem_who"], ["Jin", "Suga"])
+        b["config"] = {"emblem_who": ["x"], "emblem_state": {"v": le.RULES}}   # 前の回の手がかりが先
+        self.assertEqual(le.board_item(b, {"section": "演出", "subs": {"form": "グループ"}}, get)["emblem_who"], ["x"])
+
     def test_roster_hints_from_wikidata(self):
         """キャラの版面：AniList（アニメ → 漫画）と Fandom（項目 → シリーズ）の番号を Wikidata から。"""
         ents = {"Q10": {"claims": {"P8731": [{"mainsnak": {"datavalue": {"value": "108556"}}}],
