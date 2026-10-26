@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-26T00:17:38+00:00",
+ "checked": "2026-10-26T00:38:03+00:00",
  "fired": {
-  "at": "2026-10-26T00:17:38+00:00",
+  "at": "2026-10-26T00:38:03+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,18 +12,23 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-25T23:23:54+00:00",
+    "at": "2026-10-26T00:38:03+00:00",
     "attempts": 1,
     "day": "2026-10-26",
-    "prog": 90,
-    "resp": "cse_013yyJ89xcRMpzAw6X45BN6c",
-    "sig": "413ea0db9f76"
+    "prog": 103,
+    "resp": "cse_01Uk5xDCxqLA5R6JupNpCsPo",
+    "sig": "0595cf5f7d05"
    },
    "items": [
+    "A2O LITE",
     "GTA 6",
+    "ILLIT",
     "dota2",
     "三星手机",
+    "哈利波特剧集",
     "日本顶级网球赛事",
+    "漫威电影",
+    "猫用品",
     "绝区零"
    ],
    "last_batch": "2026-10-25T23:31:39+00:00",
@@ -35,36 +40,42 @@
    "prog": 103,
    "prog_day": "2026-10-26",
    "ripe": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "dota2",
     "三星手机",
     "日本顶级网球赛事",
+    "漫威电影",
     "绝区零"
    ],
-   "sig": "a751f470e6e7",
+   "sig": "0595cf5f7d05",
    "token_cap": 1000000,
    "tokens_today": 288582,
-   "why": "整理待ちの記事 8 件（5 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 34 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
+   "items": [
+    "チェーンソーマン",
     "BLEACH Mirrors High",
     "あつ森",
+    "哈利波特剧集",
+    "dota2",
     "FROM",
     "漫威电影",
     "GTA 6",
-    "チェーンソーマン",
-    "dota2",
-    "绝区零",
-    "A2O LITE",
     "The Mandalorian",
+    "A2O LITE",
     "Vaundy",
-    "哈利波特剧集",
+    "绝区零"
+   ],
+   "need": true,
+   "sig": "8831e9d17c52",
+   "waiting": [
     "Astrae Oratio"
    ],
-   "why": "失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 09:18 から）"
+   "why": "足りない 12 版面（Actions で Python が埋める）・失敗 1 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 09:54 から）"
   },
   "photos": {
    "claude": true,
