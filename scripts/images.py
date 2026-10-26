@@ -396,10 +396,12 @@ def parse_page(url, text):
             data = json.loads(block.strip())
         except ValueError:
             continue
-        for u in _jsonld_images(data):
+        who = []
+        for u in _jsonld_images(data, who):
             u = _abs(url, u)
             if u and u not in p.jsonld and not AUTHOR_IMG.search(u):
                 p.jsonld.append(u)
+        _remember_authors(_abs(url, u) for u in who if u)
     for tag in re.findall(r"<video\b[^>]*>", text, re.I):
         src = re.search(r'poster=["\']([^"\']+)', tag, re.I)
         u = _abs(url, src.group(1)) if src else ""
@@ -440,12 +442,26 @@ def _abs(base, u):
     return u if u.startswith(("http://", "https://")) else ""
 
 
-def _jsonld_images(node):
-    """JSON-LD（schema.org）里所有 image / thumbnailUrl 的地址。"""
+AUTHOR_KEYS = ("author", "creator", "editor", "contributor", "publisher", "copyrightHolder")
+AUTHOR_FILE = pathlib.Path(__file__).resolve().parent.parent / "state" / "author_imgs.json"
+
+
+def _is_person(node):
+    t = node.get("@type")
+    return any(x in ("Person", "Organization") for x in (t if isinstance(t, list) else [t])) or "authorimage" in str(node.get("@id", "")).lower()
+
+
+def _jsonld_images(node, authors=None):
+    """JSON-LD（schema.org）里所有 image / thumbnailUrl 的地址。书いた人（Person・author 欄・#authorImage）の顔写真は除く
+    （Yoast の @graph は Person ノードに image を持つ：記事の写真ではない）。除いた分は authors に集める。"""
     if isinstance(node, list):
         for x in node:
-            yield from _jsonld_images(x)
+            yield from _jsonld_images(x, authors)
     elif isinstance(node, dict):
+        if _is_person(node):
+            if authors is not None:
+                authors.extend(_jsonld_images({k: v for k, v in node.items() if k not in ("@type", "@id")}))
+            return
         for key in ("image", "thumbnailUrl"):
             v = node.get(key)
             for x in v if isinstance(v, list) else [v]:
@@ -454,8 +470,27 @@ def _jsonld_images(node):
                 elif isinstance(x, dict) and isinstance(x.get("url"), str):
                     yield x["url"]
         for k, v in node.items():
-            if k not in ("image", "thumbnailUrl") and isinstance(v, (dict, list)):
-                yield from _jsonld_images(v)
+            if k in AUTHOR_KEYS and isinstance(v, (dict, list)) and authors is not None:
+                authors.extend(_jsonld_images(v))
+            elif k not in ("image", "thumbnailUrl") + AUTHOR_KEYS and isinstance(v, (dict, list)):
+                yield from _jsonld_images(v, authors)
+
+
+def author_seen():
+    """今までに「書いた人の顔写真」と分かった画像の地址（state/author_imgs.json）。保存済みの記事の写真の洗い直しに使う。"""
+    try:
+        return set(json.loads(AUTHOR_FILE.read_text("utf-8")))
+    except (OSError, ValueError):
+        return set()
+
+
+def _remember_authors(urls):
+    new = set(urls) - author_seen()
+    if new:
+        try:
+            AUTHOR_FILE.write_text(json.dumps(sorted(author_seen() | new), ensure_ascii=False, indent=1) + "\n", "utf-8")
+        except OSError:
+            pass
 
 
 # 文章 ar- / 视频 vi- / 图集 ss- / 图集 gm-：都是同一个公开接口
@@ -765,6 +800,7 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
     网站 logo / 全站默认分享图不用；avoid 里的图（同一期别的报道已经用了）也不用，免得几张卡片同一张图。"""
     res = Result()
     seen = set()
+    authors = author_seen()
     from_page = {}  # 原文网页（不是转载）里的候选图 → 那一页的地址：防盗链重试时作 Referer
     deadline = time.monotonic() + (STORY_BUDGET if budget is None else budget)
 
@@ -818,9 +854,9 @@ def pick(chosen, refs, url, max_checks=MAX_CHECKS, budget=None, avoid=(), siblin
                     continue
                 if small and not preview(label):
                     break
-                if GENERIC.search(urllib.parse.urlparse(img).path) or img in avoid:
+                if GENERIC.search(urllib.parse.urlparse(img).path) or img in avoid or img in authors:
                     seen.add(img)
-                    res.trace.append((label, img, "网站 logo / 默认图" if img not in avoid else "和别的报道重复"))
+                    res.trace.append((label, img, "和别的报道重复" if img in avoid else "书いた人の顔写真" if img in authors else "网站 logo / 默认图"))
                     continue
                 if time.monotonic() > deadline:
                     res.notes.append(f"找图超过 {STORY_BUDGET if budget is None else budget} 秒，停止")

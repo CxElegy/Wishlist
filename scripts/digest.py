@@ -3773,6 +3773,7 @@ def repair_images():
                 if st.get("image") and st.get("image_via") != "作品封面":
                     first_user.setdefault(st["image"], st["url"])
     used = set(first_user)
+    author_imgs = images.author_seen()
     fixed = dropped = still = 0
     for path, rep_ in reports:
         changed = False
@@ -3784,6 +3785,7 @@ def repair_images():
                        or images.is_bing_thumb(img)  # Bing 的缩略图是 Bing 裁过的（横长的图变成竖的一截），先找原文的图
                        or not images.check(img, _saved_ref(st))[0]  # 图后来被删、或者不合格（太小、打不开）
                        or images.GENERIC.search(urllib.parse.urlparse(img).path)
+                       or img in author_imgs  # 書いた人の顔写真だと分かった画像（同じ出来事の別の記事から借りたものも）
                        or first_user.get(img) not in (None, st["url"]))
                 d = raw.get(st["url"])
                 e = entry_from_dict(d) if d else sources.Entry(title=st["headline"], url=st["url"], published=None, source="")

@@ -1,6 +1,7 @@
 import json
 import pathlib
 import sys
+import tempfile
 import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
@@ -8,6 +9,23 @@ import images  # noqa: E402
 
 
 class AuthorImg(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        images.AUTHOR_FILE = pathlib.Path(self.tmp.name) / "a.json"
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_yoast_person_image_is_dropped_and_remembered(self):
+        who = "https://cdn.x.net/uploads/100_0578-scaled.jpg"
+        ld = {"@graph": [{"@type": "Article", "image": {"@id": "#primary"}, "author": {"@id": "#a"}},
+                         {"@type": "ImageObject", "url": "https://cdn.x.net/uploads/Logo.jpg"},
+                         {"@type": "Person", "@id": "#a", "image": {"@type": "ImageObject", "@id": "#authorImage", "url": who}}]}
+        html = f'<script type="application/ld+json">{json.dumps(ld)}</script>'
+        p = images.parse_page("https://x.net/a/", html)
+        self.assertNotIn(who, p.jsonld)
+        self.assertIn(who, images.author_seen())
+
     def test_gravatar_in_jsonld_is_dropped(self):
         ld = {"@graph": [{"author": {"image": "https://secure.gravatar.com/avatar/c590?s=96&d=retro"}},
                          {"image": "https://noisypixel.net/wp-content/uploads/2026/10/bleach-scaled.jpg"}]}
