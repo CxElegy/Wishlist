@@ -1,12 +1,66 @@
 {
- "wants": [
-  {
-   "board": "FROM",
-   "subject": "Rudra Khatri（Shaun Majumder）"
+ "wants": [],
+ "cands": {
+  "FROM": {
+   "Rudra Khatri（Shaun Majumder）": []
   },
-  {
-   "board": "GTA 6",
-   "subject": "Lori Heder"
+  "GTA 6": {
+   "Lori Heder": [
+    {
+     "subject": "Lori Heder",
+     "why": "Lori Heder（公式サイトの画像）",
+     "image": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?qXOoWo7_YJjVLK9jY_b4F",
+     "page": "https://www.rockstargames.com/VI",
+     "source": "公式サイト",
+     "shape": "badge",
+     "license": "公式"
+    },
+    {
+     "subject": "Lori Heder",
+     "why": "Lori Heder（公式サイトの画像）",
+     "image": "https://www.rockstargames.com/VI/_next/static/media/shard0.0_vm6ya9-h67x.png?akim=1&imdensity=1&imwidth=3840",
+     "page": "https://www.rockstargames.com/VI",
+     "source": "公式サイト",
+     "shape": "cutout",
+     "license": "公式"
+    },
+    {
+     "subject": "Lori Heder",
+     "why": "Lori Heder（公式サイトの画像）",
+     "image": "https://www.rockstargames.com/VI/_next/static/media/shard1.14.-n-5n.4nws.png?akim=1&imdensity=1&imwidth=3840",
+     "page": "https://www.rockstargames.com/VI",
+     "source": "公式サイト",
+     "shape": "cutout",
+     "license": "公式"
+    },
+    {
+     "subject": "Lori Heder",
+     "why": "Lori Heder（公式サイトの画像）",
+     "image": "https://www.rockstargames.com/VI/_next/static/media/shard2.0n4e6vntuoxgf.png?akim=1&imdensity=1&imwidth=3840",
+     "page": "https://www.rockstargames.com/VI",
+     "source": "公式サイト",
+     "shape": "cutout",
+     "license": "公式"
+    },
+    {
+     "subject": "Lori Heder",
+     "why": "Lori Heder（公式サイトの画像）",
+     "image": "https://www.rockstargames.com/VI/_next/static/media/shard3.120i1.3ll3tb9.png?akim=1&imdensity=1&imwidth=3840",
+     "page": "https://www.rockstargames.com/VI",
+     "source": "公式サイト",
+     "shape": "cutout",
+     "license": "公式"
+    },
+    {
+     "subject": "Lori Heder",
+     "why": "Lori Heder（公式サイトの画像）",
+     "image": "https://www.rockstargames.com/VI/_next/static/media/shard4.0bi8cg9mdh8p4.png?akim=1&imdensity=1&imwidth=3840",
+     "page": "https://www.rockstargames.com/VI",
+     "source": "公式サイト",
+     "shape": "cutout",
+     "license": "公式"
+    }
+   ]
   }
- ]
+ }
 }
