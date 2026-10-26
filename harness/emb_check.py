@@ -15,6 +15,7 @@
   E9 中身        元の画像のファイル名が別の作品の絵（大乱闘のフィギュア・amiibo など、BAD_SOURCE）
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
+  E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
                  （scripts/cutshape.py：取るときの emblem.trim_flat・drop_broken と同じ式。まっすぐでよいのは下の端だけ）
 顔のモデル（face_id、初回に約 39MB）が取れないときは E7 の顔・E11 を見ない（✗ の行に「顔のモデルなし」と出す）。
@@ -57,8 +58,8 @@ SWAP = r"""async ([i, j]) => { const s = document.querySelectorAll('section.sec'
   const a = JSON.parse(el.dataset.alts || '[]')[j], inner = el.querySelector('.emb-in'), img = inner.querySelector('img');
   const n = img.cloneNode(); n.removeAttribute('loading'); n.src = a.src;
   const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));
-  n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');
-  n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
+  n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : a.m >= 1 ? ' fz' : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');
+  n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';
   if (a.shape === 'badge' && a.crop) { const c = document.createElement('span'); c.className = 'crop';
     c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1); c.appendChild(n); inner.replaceChildren(c); }
   else inner.replaceChildren(n);
@@ -216,7 +217,7 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 13)}
+    found = {f"E{n}": [] for n in range(1, 14)}
     nomodel = False
     src_of = sources()
     shots, embdir = [], out / "emb"
@@ -239,6 +240,8 @@ def check(pg, who, width, out, full=False, guest=False):
             if a["shape"] in ("logo", "cutout") and white_box(img):
                 found["E3"].append(f"{s['k']} {name}")
             if a["shape"] == "cutout":
+                if not (a.get("body") or a.get("m") or a.get("nf")) and not a["src"].startswith("http"):
+                    found["E13"].append(f"{s['k']} {name}")   # 顔を測っていない（emblem_face.measure_item が回っていない）= 表示で顔の大きさがそろわない
                 faces = _faces(img.convert("RGBA"))
                 nomodel |= faces is None
                 why = cut_edge(img, faces)
@@ -274,8 +277,10 @@ def check(pg, who, width, out, full=False, guest=False):
                 found["E2"].append(f"{s['k']} {name}（網页）")
                 continue
             a = next((x for x in s["alts"] if x["src"] == m["src"]), {})
-            fs = a.get("fs") or 0   # 顔のアップは網页が顔の大きさをそろえて縮める（--k = 0.32/fs）ので、顔がそろう大きさに戻して測る
-            hs.append((m["h"] * fs / 0.32 if fs > 0.32 and not a.get("body") else m["h"], name, "" if a.get("plate") else a.get("shape", "")))   # 板ごとのタイトルロゴは人物の物差しで測らない
+            fs = a.get("fs") or 0
+            mm = a.get("m") if not a.get("body") else None   # 顔をそろえる倍率（emblem_face.fit）：表示の高さを倍率で割って、そろえる前の大きさ（枠の高さ）に戻して測る
+            # 顔のアップは網页が顔の大きさをそろえて縮める（--k = 0.32/fs）ので、顔がそろう大きさに戻して測る
+            hs.append((m["h"] / mm if mm else m["h"] * fs / 0.32 if fs > 0.32 and not a.get("body") else m["h"], name, "" if a.get("plate") else a.get("shape", "")))   # 板ごとのタイトルロゴは人物の物差しで測らない
             if m["off"] > 0:
                 found["E5"].append(f"{s['k']} {name} +{m['off']}px")
             if m["ov"] > 0:
@@ -303,6 +308,6 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E12": "形の傷（直線の切り口・凹み）"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E12": "形の傷（直線の切り口・凹み）"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     return bad + (["E7・E11 顔のモデルなし（額の切れ・何人もは見ていない）"] if nomodel else [])

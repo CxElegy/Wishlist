@@ -2455,7 +2455,8 @@ def backend_cells(items, rows, latest, run):
         r["bg"]["emblem"]["detail"]["reject_log"] = rejects.get(name, [])
         r["thumbs"] = [(x["image"], x.get("shape") or "", x.get("subject") or "") for x in item.get("emblem") or [] if isinstance(x, dict)
                        and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]   # 全部（表の行は先頭だけ、「小元素の探し方」を開くと全部）
-        r["emblems"] = [{"image": x["image"], "subject": x.get("subject") or "", "why": x.get("why") or "", "lock": bool(x.get("lock"))}
+        r["emblems"] = [{"image": x["image"], "subject": x.get("subject") or "", "why": x.get("why") or "", "lock": bool(x.get("lock")),
+                         "face": x.get("face") if x.get("shape") not in ("logo", "icon", "badge") and not str(x.get("image")).startswith("http") else None}
                         for x in item.get("emblem") or [] if isinstance(x, dict)
                         and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]
         import emblem_cands

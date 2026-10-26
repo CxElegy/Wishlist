@@ -46,6 +46,7 @@ import urllib.request
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import emblem  # noqa: E402
+import emblem_face  # noqa: E402
 import face_id  # noqa: E402
 import runlog  # noqa: E402
 from emblem import ROOT, inspect, small_url  # noqa: E402
@@ -2317,6 +2318,8 @@ def drop_broken(item, log=print):
     n = drop_same(item, log)
     if n:
         item = next((i for i in load_items() if i["name"] == item["name"]), item)
+    with WRITE_LOCK:   # 顔の大きさを測る（新しい小元素・画像が替わったもの）：表示で顔をそろえる材料（emblem_face）。店長もお客さまの版面も同じ道
+        emblem_face.measure_item(next((i for i in load_items() if i["name"] == item["name"]), item), log)
     bad = [b for b in broken_cuts(item) if not b.get("lock")]   # 固定した写真は替えない
     if not bad:
         return n
