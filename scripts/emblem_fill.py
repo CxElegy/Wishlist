@@ -2318,14 +2318,15 @@ def bust_replacement(item, x, skip, log=print, orig=None):
     外した画像・今ある画像（skip）は探さない。顔だけのアップ・壊れた切り抜きはまた外す。
     質の下限：短い辺 emblem.BUST_MIN_SIDE 未満・ぼやけたもの・元（orig：PIL）より質が上がらないものは取らない（emblem.better_cut）。→ (網址, 切り抜き画像, fs) か None。"""
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
-    if not api:
+    official = emblem.official_images(emblem.official_site(item), re.split(r"[\s(),]+", _base_subject(x["subject"])))
+    if not api and not official:
         return None
     m = re.match(r"^https://[^/]+/wiki/(.+)$", str(x.get("page") or ""))
     title = urllib.parse.unquote(m.group(1)).replace("_", " ") if m and not m.group(1).lower().startswith("file:") else _base_subject(x["subject"])
     skip = set(skip)
     for _ in range(3):
         try:
-            got = emblem.find_bust(api, title, word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], limit=6, skip=skip, orig=orig)
+            got = emblem.find_bust(api, title, word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], limit=6, skip=skip, orig=orig, official=official)
         except Exception as e:
             log(f"  [胸像] {x['subject']}：{e}")
             return None
@@ -2388,7 +2389,7 @@ def stage_closeups(item, bad, log=print):
                 slugs[x["subject"]] = x.get("source") or x["image"]
                 y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar")}
                 y.update(image=f"emblems/{slug}.webp", source=url, shape="cutout", fs=fs,
-                         why=f"{x['subject']}（Fandom のページの胸像：顔だけのアップの代わり）")
+                         why=f"{x['subject']}（{'公式サイトの絵' if urllib.parse.urlparse(url).netloc == urllib.parse.urlparse(emblem.official_site(item) or '').netloc else 'Fandom のページの胸像'}：顔だけのアップの代わり）")
                 rows.append(y)
             elif not any(x is d for d in dropped):
                 rows.append(x)
@@ -2400,6 +2401,8 @@ def stage_closeups(item, bad, log=print):
             if dropped:
                 _set_field(name, "emblem_redo", json.dumps(redo, ensure_ascii=False) + "   # 別の写真に替える人（次の集めで先に）")
     with WRITE_LOCK:
+        if swapped:   # 入れ替えた絵はすぐ顔を測る（face を外して書いたまま回が終わると、測っていない小元素が残る）
+            emblem_face.measure_item(next((i for i in load_items() if i["name"] == name), item), log)
         closeup_state(st)
     left = len(cur) - len(swapped) - len(dropped)
     log(f"  [胸像待ち] {name}：胸像に入れ替え {len(swapped)}（{'、'.join(swapped)}）・{CLOSE_TRIES} 回で外した {len(dropped)}・まだ待ち {left}（うち探した回数が {CLOSE_TRIES} 回以上の上位 {sum(1 for s in mine if mine[s]['n'] >= CLOSE_TRIES)}）")

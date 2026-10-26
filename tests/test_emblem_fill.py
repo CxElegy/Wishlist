@@ -2037,7 +2037,8 @@ class FindSources(unittest.TestCase):
             item["emblem_who"] = who
             bust = ("https://x/bust.png", Image.new("RGBA", (120, 150), (50, 50, 50, 255)), 0.3)
             with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
-                    mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"):
+                    mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"), \
+                    mock.patch.object(ef.emblem_face, "measure_item") as meas:
                 def run(found):
                     now = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
                     now["emblem_who"] = who
@@ -2074,6 +2075,18 @@ class FindSources(unittest.TestCase):
             self.assertFalse(em.better_cut(mk(400, 400)))   # ぼやけ（SHARP_MIN 未満）
         with mock.patch.object(em, "face_sharp", side_effect=[(50, 2.0, .5), (50, 3.0, .5)]):
             self.assertFalse(em.better_cut(mk(400, 600), mk(372, 519)))   # 元よりぼやける
+
+    def test_official_images_and_site(self):
+        """胸像の入れ替えは公式サイトの立ち絵が先：パスに char… と名前の語が入るものだけ（-sp・サムネ・ロゴ・ほかのキャラは除く）。site がなければアイコンの出どころの網域。"""
+        em = ef.emblem
+        html = ('<img src="/top/character/ichigo/body.webp"><img src="/top/character/ichigo/body-sp.webp">'
+                '<img data-src="/assets/character/thumb_01.jpg"><img src="/top/character/rukia/body.webp"><img src="/common/logo.webp">')
+        with mock.patch.object(em, "_get", return_value=html.encode()):
+            self.assertEqual(em.official_images("https://s.example/", ["Ichigo", "Kurosaki"]), ["https://s.example/top/character/ichigo/body.webp"])
+            self.assertEqual(em.official_images("https://s.example/", ["Orihime"]), [])
+        self.assertEqual(em.official_images(None, ["Ichigo"]), [])
+        self.assertEqual(em.official_site({"icon": {"source": "https://s.example/ogp/a.jpg"}}), "https://s.example/")
+        self.assertTrue(em.SCENE_FILE.search("File:Ep308IchigoBankai.png") and not em.SCENE_FILE.search("File:Ep363HitsugayaProfile.png"))
 
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""
