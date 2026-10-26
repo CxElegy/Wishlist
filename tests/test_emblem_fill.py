@@ -2075,6 +2075,18 @@ class FindSources(unittest.TestCase):
         with mock.patch.object(em, "face_sharp", side_effect=[(50, 2.0, .5), (50, 3.0, .5)]):
             self.assertFalse(em.better_cut(mk(400, 600), mk(372, 519)))   # 元よりぼやける
 
+    def test_official_images_and_site(self):
+        """胸像の入れ替えは公式サイトの立ち絵が先：パスに char… と名前の語が入るものだけ（-sp・サムネ・ロゴ・ほかのキャラは除く）。site がなければアイコンの出どころの網域。"""
+        em = ef.emblem
+        html = ('<img src="/top/character/ichigo/body.webp"><img src="/top/character/ichigo/body-sp.webp">'
+                '<img data-src="/assets/character/thumb_01.jpg"><img src="/top/character/rukia/body.webp"><img src="/common/logo.webp">')
+        with mock.patch.object(em, "_get", return_value=html.encode()):
+            self.assertEqual(em.official_images("https://s.example/", ["Ichigo", "Kurosaki"]), ["https://s.example/top/character/ichigo/body.webp"])
+            self.assertEqual(em.official_images("https://s.example/", ["Orihime"]), [])
+        self.assertEqual(em.official_images(None, ["Ichigo"]), [])
+        self.assertEqual(em.official_site({"icon": {"source": "https://s.example/ogp/a.jpg"}}), "https://s.example/")
+        self.assertTrue(em.SCENE_FILE.search("File:Ep308IchigoBankai.png") and not em.SCENE_FILE.search("File:Ep363HitsugayaProfile.png"))
+
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""
         who = ["Red (Adventures)", "Ash Ketchum", "Gold (Adventures)", "Goh", "Red (Origins)", "Roy"]
