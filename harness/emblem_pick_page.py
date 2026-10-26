@@ -1,24 +1,64 @@
 """テストグラウンド docs/testground/emblem-pick.html を作る：小元素の「誰を出すか」前（名簿の順）と後（知られている点数）を並べる。
 python harness/emblem_pick_page.py  （state/emblem_fame.json にあるものを使う。なければ scripts/emblem_fame.py を先に）"""
+import hashlib
 import html
 import pathlib
+import re
 import sys
 
 import yaml
+from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
+import emblem  # noqa: E402
 import emblem_fame as ef  # noqa: E402
 
 BOARDS = [("BLEACH Mirrors High", "Bleach", False), ("チェーンソーマン", "Chainsaw Man", False), ("哈利波特剧集", "Harry Potter", True)]
 TOP = 12
+FACE_W, EYE_Y, RATIO = 0.42, 0.36, 1.25   # 顔の幅 = 枠の 4 割ちょっと・目の線 = 枠の上から 36%・枠は 4:5（元の絵が半身までなので、顔を小さくしすぎると下が空く）
+OUT = ROOT / "docs" / "testground" / "emblem-pick"
 
 
-def tile(e, r, mark=""):
-    sc = f'{r["score"]:.2f}'
-    src = {"AniList": f'AniList お気に入り {r["fav"]:,}' if r.get("fav") is not None else "", "Wikipedia": f'Wikipedia 90 日 {r["wp"]:,}' if r.get("wp") is not None else ""}.get(r["src"], "取れていない")
-    return (f'<figure class="t {mark}"><img src="../home/{html.escape(e["image"])}" alt="" loading="lazy">'
-            f'<figcaption><b>{html.escape(e["subject"])}</b><small>点数 {sc}</small><small>{html.escape(src)}</small></figcaption></figure>')
+def bust(src, key):
+    """顔の大きさと目の高さをそろえた胸像に切る（見本）。→ (出力のファイル名, 注意の文字)。顔が見つからなければ (None, 理由)。"""
+    img = Image.open(ROOT / "docs" / "home" / src).convert("RGBA")
+    img = img.crop(img.getchannel("A").getbbox())
+    f = emblem.face_box(img)
+    if not f:
+        return None, "顔が見つからない＝人物にしない（物・記号の別枠）"
+    fx, fy, fw, fh = f
+    note = "顔だけのアップ（肩がほぼない）" if fh / img.size[1] > 0.6 else ""
+    w = fw / FACE_W
+    h = w * RATIO
+    left, top = fx + fw / 2 - w / 2, fy + 0.42 * fh - EYE_Y * h
+    h = min(h, img.size[1] - top)   # 元の絵に体がなければ、そこまで（足して空けない）
+    canvas = Image.new("RGBA", (int(w), int(h)), (0, 0, 0, 0))
+    canvas.paste(img, (int(-left), int(-top)))
+    OUT.mkdir(exist_ok=True)
+    canvas.resize((240, int(240 * h / w))).save(OUT / f"{key}.webp", quality=88)
+    return f"emblem-pick/{key}.webp", note
+
+
+def tile(e, r, ctx, mark="", norm=False):
+    mention, roster, polls = ctx
+    why = [f'外の点数 {r["score"]:.2f}']
+    pr = polls.get(ef._norm(re.sub(r"\s*[（(].*[）)]", "", e["subject"])))
+    if pr:
+        why.append(f"公式人気投票 {pr} 位")
+    if e["subject"] in roster:
+        why.append("ゲームで使える")
+    if mention.get(e["subject"]):
+        why.append(f'記事に {mention[e["subject"]]} 回')
+    src, warn = e["image"], ""
+    if norm:
+        k = hashlib.md5(e["image"].encode()).hexdigest()[:10]
+        src, warn = bust(e["image"], k)
+    img = f'<img src="{"../home/" + html.escape(e["image"]) if not src or not norm else html.escape(src)}" alt="" loading="lazy">'
+    cap = f'<small>合計 {r["total"]:.2f}</small><small>{html.escape(" ＋ ".join(why))}</small>' if norm else f'<small>点数 {r["score"]:.2f}</small>'
+    if warn:
+        cap += f'<small class="w">{html.escape(warn)}</small>'
+    return f'<figure class="t {mark}{" nf" if norm and not src else ""}">{img}<figcaption><b>{html.escape(e["subject"])}</b>{cap}</figcaption></figure>'
 
 
 def main():
@@ -29,16 +69,17 @@ def main():
     for name, work, live in BOARDS:
         it = next(i for i in items if i["name"] == name)
         em = [e for e in it["emblem"] if e.get("image", "").startswith("emblems/")]
-        sc = {e["subject"]: ef.score(e["subject"], work, cache, live) for e in em}
+        ctx = ef.context(it, [e["subject"] for e in em])
+        rows = dict(ef.rank([e["subject"] for e in em], work, cache, live, ctx))
         n = max(TOP, -(-len(em) // 5))
         now = em[:n]
-        new = sorted(em, key=lambda e: -sc[e["subject"]]["score"])[:TOP]
+        new = sorted(em, key=lambda e: -rows[e["subject"]]["total"])[:TOP]
         nowset, newset = {e["subject"] for e in now}, {e["subject"] for e in new}
         out.append(f'<section><h2>{html.escape(name)}<small>{len(em)} 枚のうち</small></h2>'
-                   f'<h3><span class="tg old">いま</span>名簿の順の先頭 {len(now)} 枚（赤＝新しい選び方では出ない）</h3><div class="row">'
-                   + "".join(tile(e, sc[e["subject"]], "" if e["subject"] in newset else "out") for e in now)
-                   + f'</div><h3><span class="tg new">新しい</span>知られている点数の上位 {TOP} 枚（金＝いまは出ていない）</h3><div class="row">'
-                   + "".join(tile(e, sc[e["subject"]], "" if e["subject"] in nowset else "in") for e in new) + '</div></section>')
+                   f'<h3><span class="tg old">いま</span>名簿の順の先頭 {len(now)} 枚・元の絵のまま（赤＝新しい選び方では出ない）</h3><div class="row">'
+                   + "".join(tile(e, rows[e["subject"]], ctx, "" if e["subject"] in newset else "out") for e in now)
+                   + f'</div><h3><span class="tg new">新しい</span>合計点の上位 {TOP} 枚・顔の大きさと目の高さをそろえた胸像（金＝いまは出ていない）</h3><div class="row">'
+                   + "".join(tile(e, rows[e["subject"]], ctx, "" if e["subject"] in nowset else "in", True) for e in new) + '</div></section>')
     ef.save(cache)
     page = PAGE.replace("@@", "\n".join(out))
     (ROOT / "docs" / "testground" / "emblem-pick.html").write_text(page, encoding="utf-8")
@@ -60,12 +101,13 @@ h3{margin:14px 0 8px;font:700 14px var(--font-sans)}
 .row{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
 .t{margin:0;border:2px solid var(--ink);background:#fff}.t img{display:block;width:100%;aspect-ratio:4/5;object-fit:contain;object-position:bottom;background:var(--paper)}
 .t figcaption{padding:4px 6px;display:flex;flex-direction:column}.t b{font:700 12px/1.3 var(--font-sans)}.t small{font:500 10.5px/1.4 var(--font-mono);color:var(--muted)}
-.t.out{border-color:var(--alert);box-shadow:3px 3px 0 var(--alert)}.t.in{border-color:var(--ink);box-shadow:3px 3px 0 var(--gold)}
+.t.nf img{opacity:.35}.t .w{color:var(--alert)}.t.out{border-color:var(--alert);box-shadow:3px 3px 0 var(--alert)}.t.in{border-color:var(--ink);box-shadow:3px 3px 0 var(--gold)}
 </style></head><body>
 <header><small>TESTGROUND</small><h1>小元素の選び方（見本）</h1></header>
 <main>
-<div class="note"><b>これは見本です（本番は変えていません）。</b>「いま」＝店長の版面の小元素のうち、いま版面の顔に出る先頭の枚数。「新しい」＝外の人気（AniList のお気に入り数・Wikipedia の直近 90 日の閲覧数）の点数が高い順の上位 12 枚。同じ画像で、選ぶ人だけを比べています。
-<ul><li>OK なら、この点数で全部の版面（店長＋ライブラリ）の「誰を出すか」を決め直します。</li><li>まだ入れていないもの：公式サイトの胸像への差し替え・絵柄をそろえる（CLIP）・正解の見本集での数え。見本を見て方向が合っていれば順に入れます。</li><li>点数が取れない人（AniList にも Wikipedia にも名前がない）は 0 点＝顔には出ません（管理ページの一覧には残る）。</li></ul></div>
+<div class="note"><b>これは見本です（本番は変えていません）。</b>前の見本へのあなたの答え（案 2）を入れて作り直しました。「新しい」の合計点 ＝ 外の点数（AniList のお気に入り数・Wikipedia の直近 90 日の閲覧数）＋ 公式の人気投票の順位 ＋ ゲームで使えるキャラ ＋ その版面の記事に出た回数。同時に、人の大きさをそろえた形（顔の幅＝枠の 4 割・目の線＝枠の上から 36%・4:5）も見せています。
+<ul><li>公式の人気投票：Fandom の「Popularity polls」ページの最新の回（BLEACH は 49 位まで）。1 位 +1.2、30 位で 0。ない版面は 0。</li><li>ゲームで使える：見出しに roster・lineup・参戦などがある記事の本文に名前が出た人 +1.5。記事に出た回数：直近 30 日の見出し・要約に名前（+0.5×log10(1+回数)、上限 1.0）。</li><li>顔が見つからない絵は「人物にしない」と書いて元の大きさのまま出しています。顔だけのアップ（顔が高さの 5 割超）は注意を付けています。まだ入れていないもの：公式サイトの胸像への差し替え・絵柄をそろえる（CLIP）・体の穴や吹き出しの残りの点検。</li></ul>
+<b>見てほしいこと：</b>A 上位 12 人はこれでよいか（BLEACH なら一護・ルキア・恋次などが先に来て、脇役が消えているか）　B 胸像の切り方（顔の大きさ・目の高さ）はこの形でよいか。OK なら全部の版面を決め直します。</div>
 @@
 </main></body></html>
 """

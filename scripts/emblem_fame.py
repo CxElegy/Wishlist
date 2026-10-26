@@ -115,6 +115,63 @@ def score(name, work, cache, live=False):
     return r
 
 
+ROSTER_WORDS = re.compile(r"roster|line-?up|playable|launch characters|参戦|使用キャラ|キャラクター一覧|出场角色|登场角色", re.I)
+
+
+def _name_hit(name, text_norm, text_fold):
+    """名前が記事の文に出ているか：全部の名前、か最初の語（4 字以上。AniList の名前は 名・姓 の順）。"""
+    full = _norm(re.sub(r"\s*[（(].*[）)]", "", name))
+    if not full:
+        return False
+    if f" {full} " in text_norm:
+        return True
+    first = full.split()[0]
+    return len(first) >= 4 and (f" {first} " in text_norm or f" {_fold(first)} " in text_fold)
+
+
+def mentions(subjects, stories):
+    """記事に出た回数と「使えるキャラ」。stories = [(見出し＋要約, 日付)]（その版面の直近 30 日）。
+    → ({名前: 出た記事の数}, {使えるキャラの名前}) 。「roster・lineup・playable・参戦」を見出しに持つ記事に名前が出た人 = 使えるキャラ。"""
+    n = {s: 0 for s in subjects}
+    roster = set()
+    for text, _d in stories:
+        tn, tf = f" {_norm(text)} ", f" {_fold(text)} "
+        for s in subjects:
+            if _name_hit(s, tn, tf):
+                n[s] += 1
+                if ROSTER_WORDS.search(text.split("\n")[0]):
+                    roster.add(s)
+    return n, roster
+
+
+def poll(wiki):
+    """Fandom の公式人気投票のページ（Popularity polls など）の最新の回 → {正規化した名前: 順位}。なければ {}。
+    各回は「1. [[名前]] = 票数」の行が並ぶ。順位の行（数字で始まる行）が 10 行以上ある最後の節を取る。"""
+    if not wiki:
+        return {}
+    try:
+        s = _get(f"https://{wiki}.fandom.com/api.php?action=query&list=search&srsearch=popularity+poll&format=json&srlimit=5")
+        title = next((x["title"] for x in s["query"]["search"] if re.search(r"poll|ranking|popularity", x["title"], re.I)), None)
+        if not title:
+            return {}
+        w = _get(f"https://{wiki}.fandom.com/api.php?action=parse&page={urllib.parse.quote(title)}&prop=wikitext&format=json")["parse"]["wikitext"]["*"]
+    except Exception as e:
+        print(f"  人気投票 {wiki}: {e}", file=sys.stderr)
+        return {}
+    best = {}
+    for sec in re.split(r"\n==[^=]", w):
+        rows = re.findall(r"^\s*(\d+)\.\s*\[?\[?(?:[^\]|=\n]*\|)?([^\]=\n<]+?)\]?\]?\s*=", sec, re.M)
+        if len(rows) >= 10:
+            best = {_norm(n): int(r) for r, n in rows}
+    return best
+
+
+def bonus(name, mention, roster, polls):
+    """点数に足す分（2026-10-26，用户定的 案 2）：公式の人気投票 1 位 +1.2（30 位で 0）・ゲームで使える +1.5・記事に出た回数 +0.5×log10(1+回数)（上限 1.0）。"""
+    r = polls.get(_norm(re.sub(r"\s*[（(].*[）)]", "", name)))
+    return round((max(0.0, 1.2 * (31 - r) / 30) if r else 0.0) + (1.5 if name in roster else 0.0) + min(1.0, 0.5 * math.log10(1 + mention.get(name, 0))), 3)
+
+
 def load():
     try:
         return json.loads(FILE.read_text(encoding="utf-8"))
@@ -127,14 +184,48 @@ def save(cache):
     FILE.write_text(json.dumps(cache, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
 
 
-def rank(subjects, work, cache, live=False):
-    """名簿 → 知られている点数の高い順の [(名前, 点数の記録)]。同点は名簿の順。"""
+def _body(story):
+    """名簿の記事（見出しに roster・lineup など）だけ、本文を取る（要約には名前が並ばないため）。取れなければ空。"""
+    if not ROSTER_WORDS.search(story.get("headline") or "") or not story.get("url"):
+        return ""
+    try:
+        req = urllib.request.Request(story["url"], headers=UA)
+        with urllib.request.urlopen(req, timeout=20) as r:
+            h = r.read(600000).decode("utf-8", "ignore")
+        return " " + re.sub(r"\s+", " ", re.sub(r"<(script|style)[^>]*>.*?</\1>|<[^>]+>", " ", h, flags=re.S))
+    except Exception:
+        return ""
+
+
+def context(item, subjects, days=30):
+    """版面（items.yaml の 1 件）の 記事に出た回数・使えるキャラ・公式人気投票 → rank の ctx。記事は reports/ の直近 days 日の見出し＋要約。"""
+    stories = []
+    cut = time.strftime("%Y-%m-%d", time.gmtime(time.time() - days * 86400))
+    for f in sorted((FILE.parent.parent / "reports").glob("*.json")):
+        if f.stem < cut:
+            continue
+        try:
+            for it in json.loads(f.read_text(encoding="utf-8")).get("items", []):
+                if it.get("name") == item["name"]:
+                    stories += [((s.get("headline") or "") + "\n" + (s.get("blurb") or "") + _body(s), f.stem) for s in it.get("stories", [])]
+        except Exception:
+            pass
+    n, roster = mentions(subjects, stories)
+    return n, roster, poll(item.get("emblem_fandom"))
+
+
+def rank(subjects, work, cache, live=False, ctx=None):
+    """名簿 → 知られている点数の高い順の [(名前, 点数の記録)]。同点は名簿の順。
+    ctx = (mention, roster, polls) があれば bonus を足す（記録の score は外の物差し、total が並べる点数）。"""
     rows = []
     for s in subjects:
-        rows.append((s, score(s, work, cache, live)))
+        r = dict(score(s, work, cache, live))
+        r["bonus"] = bonus(s, *ctx) if ctx else 0.0
+        r["total"] = round(r["score"] + r["bonus"], 3)
+        rows.append((s, r))
         if len(rows) % 10 == 0:
             save(cache)   # 途中で止まっても引いた分は残す
-    return sorted(rows, key=lambda r: -r[1]["score"])
+    return sorted(rows, key=lambda r: -r[1]["total"])
 
 
 if __name__ == "__main__":
