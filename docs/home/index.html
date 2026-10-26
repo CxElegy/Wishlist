@@ -999,7 +999,7 @@ html{scroll-behavior:smooth}
 .nav .navwish{margin:8px 8px 0 0}
 }</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;display=swap&amp;text=%E3%83%89%E3%83%B3%EF%BC%81%E3%82%A4%E3%82%A4%E3%83%8D%E3%83%8A%E3%82%B9%2B%31%E3%81%84%E3%81%AD"><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer crossorigin="anonymous"></script>
-<meta name="wl-ver" data-page="index" content="2d82bb047f20"><style>
+<meta name="wl-ver" data-page="index" content="dba80f67c4ae"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1365,9 +1365,20 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     location.replace('me.html'+(page==='settings'?'?p=settings':'')+location.hash);   // 設定も本人の分（同じ部品の render_settings）
     return Promise.resolve(true);
   }
+  // 本人のページは 2 時間ごとに刷り直す（user_pages.py）。足したばかりのものはまだ版面になっていないので、「集めています」と名前を出す
+  // （出さないと、足した直後の人に「まだ何も追いかけていません」の空の画面が見える。2026-10-27 の通し点検）
+  function ownWait(picks){
+    var old=document.querySelector('.wl-ownwait');if(old)old.remove();
+    var have=[].map.call(document.querySelectorAll('section.sec[data-k]'),function(s){return s.dataset.k;});
+    var wait=picks.filter(function(x){return !have.some(function(k){return shopHit(k,x.name);});});
+    if(!wait.length)return;
+    var bar=document.createElement('div');bar.className='wl-mybar wl-ownwait';bar.setAttribute('role','status');
+    bar.innerHTML='<b>集めています<\/b><span>'+wait.map(function(x){return esc(x.name);}).join('・')+'<\/span><small class="ok">足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。<\/small>';
+    var m=document.querySelector('main.issues')||document.body;m.insertBefore(bar,m.firstChild);
+  }
   function route(box,p,err){
     var picks=picksOf(p);
-    if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';return;}   // もう本人のページの中
+    if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';ownWait(picks);return;}   // もう本人のページの中
     // ログインしたお客さまはだれでも、まず本人のページ（店長と同じ枠組み）。版面の数によらない（HARNESS.md「一番大事な決まり」）
     if(page==='settings'&&!err&&tok){box.remove();ownPage().then(function(done){if(!done){var b3=document.createElement('main');b3.className='wl-mine';b3.id='mine';document.body.appendChild(b3);drawMine(b3,p,'');}});return;}
     if(page==='index'&&!err&&tok&&document.querySelector('section.sec[data-k]')){
@@ -2755,7 +2766,7 @@ window.likeFx = (() => {
   check();   // 開いたらすぐ確かめる（古い控えならすぐ最新に）
 })();
 </script>
-<script type="application/json" id="wl-busy">{"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "ids": {"Astrae Oratio": "w-bf928230", "BLEACH Mirrors High": "w-c1c3e0ed", "GTA 6": "w-34f2ed9f", "MMORPG 新作": "w-c2dcfb63", "滑雪": "w-79b3c280", "漫威电影": "w-3f993d04", "FROM": "w-9cb26dba", "哈利波特剧集": "w-e62bf5cd", "ILLIT": "w-edd2b6ae", "星巴克马克杯": "w-65d60fb4", "猫用品": "w-130724c0", "日本顶级网球赛事": "w-5417e9f1", "三星手机": "w-6676e624", "gelato pique": "w-d06e9f3e", "ぐでたま": "w-2309d720", "チェーンソーマン": "w-cdea10ae", "The Mandalorian": "w-d3621ce3", "あつ森": "w-b867582f", "Vaundy": "w-da15ac21", "周杰伦": "w-7a894105", "绝区零": "w-f303ad09", "dota2": "w-0242c181", "A2O LITE": "w-577b9e00"}, "gen": "2026-10-26T22:32:30+00:00"}</script><script>
+<script type="application/json" id="wl-busy">{"url": "https://bzokpnbcjscbcehdxtjq.supabase.co", "key": "sb_publishable_EJunmcNeSQJOm2bnzc4JWA_u48iV4NC", "ids": {"Astrae Oratio": "w-bf928230", "BLEACH Mirrors High": "w-c1c3e0ed", "GTA 6": "w-34f2ed9f", "MMORPG 新作": "w-c2dcfb63", "滑雪": "w-79b3c280", "漫威电影": "w-3f993d04", "FROM": "w-9cb26dba", "哈利波特剧集": "w-e62bf5cd", "ILLIT": "w-edd2b6ae", "星巴克马克杯": "w-65d60fb4", "猫用品": "w-130724c0", "日本顶级网球赛事": "w-5417e9f1", "三星手机": "w-6676e624", "gelato pique": "w-d06e9f3e", "ぐでたま": "w-2309d720", "チェーンソーマン": "w-cdea10ae", "The Mandalorian": "w-d3621ce3", "あつ森": "w-b867582f", "Vaundy": "w-da15ac21", "周杰伦": "w-7a894105", "绝区零": "w-f303ad09", "dota2": "w-0242c181", "A2O LITE": "w-577b9e00"}, "gen": "2026-10-26T22:33:05+00:00"}</script><script>
 (function(){
   var C=document.getElementById('wl-busy');if(!C)return;var B=JSON.parse(C.textContent),GEN=Date.parse(B.gen)||0,live=[],MIN=60000;
   function read(){if(document.hidden||!B.url||!B.key)return;
