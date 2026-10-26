@@ -2302,6 +2302,15 @@ def closeup_state(d=None):
     p.write_text(json.dumps(d, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
 
 
+def closeup_eta_state(d=None):
+    """state/emblem_closeup_eta.json（版面 → close_eta の辞書：待ちが終わる見込み）。d を渡すと書く。"""
+    p = ROOT / "state" / "emblem_closeup_eta.json"
+    if d is None:
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(d, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
+
+
 def close_order(subjects, who, tries):
     """胸像を探す順：探した回数が少ない人 → 名簿の上の人（一護が先）。→ [subject]"""
     rank = {}
@@ -2321,13 +2330,18 @@ def close_round(subjects, who, tries):
 CLOSE_CRON_MIN = 47   # background.yml の毎時 47 分（JST も同じ分）
 
 
-def close_next_run(now=None):
-    """次の後台の回の時刻（JST の 'HH:MM'）。"""
+def close_next_dt(now=None):
+    """次の後台の回の時刻（JST）。"""
     now = (now or dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))).astimezone(dt.timezone(dt.timedelta(hours=9)))
     nxt = now.replace(minute=CLOSE_CRON_MIN, second=0, microsecond=0)
     if nxt <= now:
         nxt += dt.timedelta(hours=1)
-    return nxt.strftime("%H:%M")
+    return nxt
+
+
+def close_next_run(now=None):
+    """次の後台の回の時刻（JST の 'HH:MM'）。"""
+    return close_next_dt(now).strftime("%H:%M")
 
 
 def close_eta(mine, who, now=None):
@@ -2336,7 +2350,20 @@ def close_eta(mine, who, now=None):
     top = [s for s in mine if close_top(s, who)]
     rest = [s for s in mine if s not in top]
     need = sum(max(0, CLOSE_TRIES - int((mine[s] or {}).get("n") or 0)) for s in rest)
-    return {"waiting": len(mine), "top": len(top), "rounds": -(-need // CLOSE_PER_ROUND), "next": close_next_run(now)}
+    rounds = -(-need // CLOSE_PER_ROUND)
+    done = (close_next_dt(now) + dt.timedelta(hours=max(rounds - 1, 0))).isoformat(timespec="minutes") if rounds else None   # 上位以外が全員外れる見込み（上位だけ残るなら None）
+    return {"waiting": len(mine), "top": len(top), "rounds": rounds, "next": close_next_run(now), "done": done}
+
+
+def close_plan(tries, who, now=None):
+    """胸像待ち 1 版面の見込みを保存する形に：tries = {人: 探して取れなかった回数}。→ ({人: 次に試す見込み時刻 ISO}, close_eta の辞書)。
+    上位 CLOSE_TOP 人は次の回、ほかは回数の少ない順に 1 回 CLOSE_PER_ROUND 人ずつ 1 時間おき。店長（state/）もお客さま（boards.config）も同じ式。"""
+    nxt = close_next_dt(now)
+    top = [s for s in tries if close_top(s, who)]
+    rest = [s for s in close_order(list(tries), who, tries) if s not in top]
+    at = {s: nxt for s in top}
+    at.update({s: nxt + dt.timedelta(hours=i // CLOSE_PER_ROUND) for i, s in enumerate(rest)})
+    return {s: v.isoformat(timespec="minutes") for s, v in at.items()}, close_eta({s: {"n": n} for s, n in tries.items()}, who, now)
 
 
 def close_line(name, mine, who, now=None):
@@ -2411,8 +2438,14 @@ def stage_closeups(item, bad, log=print):
             if mine[s]["n"] >= CLOSE_TRIES and not close_top(s, who):
                 dropped.append(x)
                 mine.pop(s, None)
-    if not mine:
+    eta = closeup_eta_state()
+    if mine:   # 各人の次に試す見込みと版面の見込みを保存（管理ページ・点検 E20 が読む）
+        at, eta[name] = close_plan({s: int(v.get("n") or 0) for s, v in mine.items()}, who)
+        for s, v in at.items():
+            mine[s]["next"] = v
+    else:
         st.pop(name, None)
+        eta.pop(name, None)
     if swapped or dropped:
         slugs = {}
         rows = []
@@ -2441,6 +2474,7 @@ def stage_closeups(item, bad, log=print):
         if swapped:   # 入れ替えた絵はすぐ顔を測る（face を外して書いたまま回が終わると、測っていない小元素が残る）
             emblem_face.measure_item(next((i for i in load_items() if i["name"] == name), item), log)
         closeup_state(st)
+        closeup_eta_state(eta)
     left = len(cur) - len(swapped) - len(dropped)
     if mine:
         log("  [胸像待ち] " + close_line(name, mine, who))

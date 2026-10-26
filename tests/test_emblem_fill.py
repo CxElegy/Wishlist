@@ -2053,13 +2053,16 @@ class FindSources(unittest.TestCase):
                 self.assertEqual((ich["source"], ich["fs"]), ("https://x/bust.png", 0.3))
                 self.assertIn("https://x/Ich.png", got["emblem_reject"])   # 顔だけのアップの元の画像は二度と選ばない
                 self.assertEqual(len(got["emblem"]), 3)   # 取れていない人は元のまま
-                self.assertEqual(ef.closeup_state()["b"], {"W1": {"n": 1}, "Low": {"n": 1}})
+                st = ef.closeup_state()["b"]
+                self.assertEqual({s: v["n"] for s, v in st.items()}, {"W1": 1, "Low": 1})
+                self.assertTrue(all(v.get("next") for v in st.values()))   # 各人の次に試す見込みを保存
+                self.assertEqual(ef.closeup_eta_state()["b"]["waiting"], 2)   # 版面の見込みも保存
                 self.assertEqual(run(set()), (0, 0))
                 self.assertEqual(run(set()), (0, 1))   # 3 回目：名簿の外の Low は外す。上位の W1 は探し続ける
                 got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
                 self.assertEqual(sorted(x["subject"] for x in got["emblem"]), ["Ichigo Kurosaki", "W1"])
                 self.assertEqual(got["emblem_redo"], ["Low"])
-                self.assertEqual(ef.closeup_state()["b"], {"W1": {"n": 3}})
+                self.assertEqual({s: v["n"] for s, v in ef.closeup_state()["b"].items()}, {"W1": 3})
 
     def test_close_round_top_every_time_and_eta(self):
         """上位 12 人は毎回（巡回の 8 人に入れない）・ほかは回数の少ない順に 8 人。見込みは 足りない回数 ÷ 8 回・次の回は毎時 47 分。"""
@@ -2073,6 +2076,48 @@ class FindSources(unittest.TestCase):
         e = ef.close_eta(mine, who, dt.datetime(2026, 10, 27, 7, 50, tzinfo=dt.timezone(dt.timedelta(hours=9))))
         self.assertEqual((e["waiting"], e["top"], e["rounds"], e["next"]), (3, 1, 1, "08:47"))
         self.assertIn("次の回 08:47", ef.close_line("b", mine, who, dt.datetime(2026, 10, 27, 7, 50, tzinfo=dt.timezone(dt.timedelta(hours=9)))))
+
+    def test_close_plan_saved_times(self):
+        """保存する見込み：上位は次の回、ほかは回数の少ない順に 8 人ずつ 1 時間おき。版面の見込みは外れる時刻（done）つき。"""
+        import datetime as dt
+        who = [f"P{i}" for i in range(20)]
+        now = dt.datetime(2026, 10, 27, 7, 50, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        tries = {"P0": 5, **{f"X{i}": 0 for i in range(10)}}
+        at, eta = ef.close_plan(tries, who, now)
+        self.assertEqual(at["P0"], "2026-10-27T08:47+09:00")
+        self.assertEqual(at["X0"], "2026-10-27T08:47+09:00")
+        self.assertEqual(at["X9"], "2026-10-27T09:47+09:00")   # 9 人目は次の次の回
+        self.assertEqual((eta["waiting"], eta["rounds"], eta["done"]), (11, 4, "2026-10-27T11:47+09:00"))   # 30 回 ÷ 8 = 4 回
+        self.assertIsNone(ef.close_plan({"P0": 1}, who, now)[1]["done"])   # 上位だけ残る版面は外れる時刻がない
+
+    def test_every_entrance_uses_close_round(self):
+        """胸像を探す入口（店長 stage_closeups・お客さま stage_holds）は close_round を使う。close_order の先頭 8 人だけを取る書き方は禁止。"""
+        root = pathlib.Path(__file__).resolve().parent.parent / "scripts"
+        for p in root.glob("*.py"):
+            src = p.read_text(encoding="utf-8")
+            self.assertNotRegex(src, r"close_order\([^)]*\)\[:", p.name)
+        self.assertIn("close_round(", (root / "library_emblem.py").read_text(encoding="utf-8"))
+        self.assertIn("close_round(", (root / "emblem_fill.py").read_text(encoding="utf-8"))
+
+    def test_library_stage_holds_top_every_time(self):
+        """お客さまの版面も店長と同じ：上位 12 人は何回探しても毎回入る・外さない。"""
+        import io
+        import library_emblem as le
+        who = [f"P{i}" for i in range(20)]
+        names = [f"P{i}" for i in range(20)] + [f"X{i}" for i in range(10)]
+        hold = [{"subject": s, "image": f"https://x/{s}.png"} for s in names]
+        called = []
+        with mock.patch.object(ef, "bust_replacement", side_effect=lambda it, x, skip, log=print, **kw: called.append(x["subject"])):
+            rows, dropped, new = le.stage_holds({"name": "b", "emblem_who": who}, list(hold), hold, {s: 2 for s in names})
+        self.assertEqual(called[:12], who[:12])
+        self.assertEqual(len(called), 12 + ef.CLOSE_PER_ROUND)
+        self.assertEqual(sorted(x["subject"] for x in dropped), sorted(called[12:]))   # 上位以外の 3 回目は外す
+        self.assertTrue(all(new[s] == 3 for s in who[:12]))   # 上位は外さず探し続ける
+
+    def test_admin_wait_uses_close_line(self):
+        import render
+        with mock.patch.object(ef, "closeup_state", return_value={"b": {"X": {"n": 1}}}), mock.patch.object(ef, "load_items", return_value=[{"name": "b", "emblem_who": []}]):
+            self.assertIn("次の回", render._admin_closeup_wait())
 
     def test_better_cut_floor_and_gain(self):
         """入れ替えの質の下限：短い辺 256px 未満は取らない（一護 146×225）。元より質が上がらないものも取らない。元が下限未満なら下限以上のとき取る。"""
