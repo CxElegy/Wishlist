@@ -2277,21 +2277,142 @@ def closeup_cuts(item, only=None):
     return bad, nof, n
 
 
+CLOSE_TRIES = 3        # 胸像の代わりを探して取れなかった回数がこれに届いたら、顔だけのアップを外す（段階的な入れ替え。名簿の上位 CLOSE_TOP 人は外さず探し続ける）
+CLOSE_TOP = 12         # 名簿の上位（主役）：3 回で外さず、最後まで胸像を探す
+CLOSE_PER_ROUND = 8    # 1 回の掃除で胸像を探す人数（rembg で切るので重い）。回数の少ない人・名簿の上の人から
+CLOSE_STATE = "emblem_closeup.json"   # state/：版面 → {人: {n: 探して取れなかった回数}}。ここにいる版面は、当たる枚数が半分を割っても段階的なまま
+
+
+def closeup_state(d=None):
+    """state/emblem_closeup.json（版面 → {人: {n}}：顔だけのアップで胸像の代わりを探している人）。d を渡すと書く。"""
+    p = ROOT / "state" / CLOSE_STATE
+    if d is None:
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(d, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
+
+
+def close_order(subjects, who, tries):
+    """胸像を探す順：探した回数が少ない人 → 名簿の上の人（一護が先）。→ [subject]"""
+    rank = {}
+    for i, w in enumerate(who or []):
+        rank.setdefault(_name_key(w), i)
+    r = lambda s: rank.get(_name_key(s), rank.get(_name_key(re.sub(r"\s*[(（].*?[)）]", "", _base_subject(s))), 10 ** 6))
+    return sorted(subjects, key=lambda s: (tries.get(s, 0), r(s)))
+
+
+def close_top(subject, who):
+    """名簿の上位 CLOSE_TOP 人か（3 回で外さない人）。"""
+    keys = {_name_key(w) for w in (who or [])[:CLOSE_TOP]}
+    return _name_key(subject) in keys or _name_key(re.sub(r"\s*[(（].*?[)）]", "", _base_subject(subject))) in keys
+
+
+def bust_replacement(item, x, skip, log=print):
+    """顔だけのアップ x の代わりの胸像を、同じ Fandom のページの別の画像（公式イラスト・ギャラリーのアニメの立ち絵）から探す。
+    外した画像・今ある画像（skip）は探さない。顔だけのアップ・壊れた切り抜きはまた外す。→ (網址, 切り抜き画像, fs) か None。"""
+    api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
+    if not api:
+        return None
+    m = re.match(r"^https://[^/]+/wiki/(.+)$", str(x.get("page") or ""))
+    title = urllib.parse.unquote(m.group(1)).replace("_", " ") if m and not m.group(1).lower().startswith("file:") else _base_subject(x["subject"])
+    skip = set(skip)
+    for _ in range(3):
+        try:
+            got = emblem.find_bust(api, title, word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], limit=6, skip=skip)
+        except Exception as e:
+            log(f"  [胸像] {x['subject']}：{e}")
+            return None
+        if not got or got[2] is None:
+            return None
+        if closeup_of(got[1]) is not True and not broken_image(got[1], False):
+            return got
+        skip.add(got[0])
+    return None
+
+
+def stage_closeups(item, bad, log=print):
+    """半分以上が顔だけのアップの版面（BLEACH Mirrors High 52/92）の段階的な入れ替え。
+    ① 今ある人の胸像の代わりを探す（1 回 CLOSE_PER_ROUND 人。回数の少ない人・名簿の上の人から、一護が先） ② 取れた人から入れ替える（取れるまでは元のまま）
+    ③ 取れなかった回数が CLOSE_TRIES に届いた人は顔だけのアップを外す（名簿の上位 CLOSE_TOP 人は外さず探し続ける）。→ (入れ替えた人数, 外した人数)"""
+    name = item["name"]
+    who = item.get("emblem_who") or []
+    st = closeup_state()
+    mine = st.setdefault(name, {})
+    cur = {b["subject"] for b in bad}
+    for s in [s for s in mine if s not in cur]:
+        del mine[s]
+    tries = {s: int((mine.get(s) or {}).get("n") or 0) for s in cur}
+    skip = {u for u in item.get("emblem_reject") or []} | {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
+    by = {b["subject"]: b for b in bad}
+    swapped, dropped = {}, []
+    for s in close_order(cur, who, tries)[:CLOSE_PER_ROUND]:
+        try:
+            _check_time()
+        except OutOfTime:
+            break
+        x = by[s]
+        got = bust_replacement(item, x, skip, log)
+        if got:
+            swapped[s] = got
+            mine.pop(s, None)
+        else:
+            mine[s] = {"n": tries[s] + 1}
+            if mine[s]["n"] >= CLOSE_TRIES and not close_top(s, who):
+                dropped.append(x)
+                mine.pop(s, None)
+    if not mine:
+        st.pop(name, None)
+    if swapped or dropped:
+        slugs = {}
+        rows = []
+        for x in item.get("emblem") or []:
+            if not isinstance(x, dict):
+                rows.append(x)
+            elif x.get("subject") in swapped:
+                url, out, fs = swapped[x["subject"]]
+                slug = emblem.slugify(name, x["subject"])
+                emblem.save_cut(out, slug)
+                slugs[x["subject"]] = x.get("source") or x["image"]
+                y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar")}
+                y.update(image=f"emblems/{slug}.webp", source=url, shape="cutout", fs=fs,
+                         why=f"{x['subject']}（Fandom のページの胸像：顔だけのアップの代わり）")
+                rows.append(y)
+            elif not any(x is d for d in dropped):
+                rows.append(x)
+        rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + list(slugs.values()) + [d.get("source") or d["image"] for d in dropped]))
+        redo = list(dict.fromkeys(list(item.get("emblem_redo") or []) + [d["subject"] for d in dropped if d.get("subject")]))
+        with WRITE_LOCK:
+            emblem.write_item(name, rows, None)
+            _set_field(name, "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+            if dropped:
+                _set_field(name, "emblem_redo", json.dumps(redo, ensure_ascii=False) + "   # 別の写真に替える人（次の集めで先に）")
+    with WRITE_LOCK:
+        closeup_state(st)
+    left = len(cur) - len(swapped) - len(dropped)
+    log(f"  [胸像待ち] {name}：胸像に入れ替え {len(swapped)}（{'、'.join(swapped)}）・{CLOSE_TRIES} 回で外した {len(dropped)}・まだ待ち {left}（うち探した回数が {CLOSE_TRIES} 回以上の上位 {sum(1 for s in mine if mine[s]['n'] >= CLOSE_TRIES)}）")
+    return len(swapped), len(dropped)
+
+
 def drop_closeups(item, log=print, only=None):
     """顔だけのアップの小元素を外す：元の画像は emblem_reject（二度と選ばない）、その人は emblem_redo（次の回に同じ人の別の写真を先に）。
-    取るとき（commit の直後、only = 今回選んだ元の画像）は無条件。前からのもの（only なし）は、1 版面の CLOSE_HOLD 以上が当たるときは外さず報告だけ
-    （小元素が極端に減る：BLEACH Mirrors High 52/92）。顔が測れないものは落とさず数に出す。固定（lock）は替えない。→ 外した枚数。"""
+    取るとき（commit の直後、only = 今回選んだ元の画像）は無条件。前からのもの（only なし）は、1 版面の CLOSE_HOLD 以上が当たる版面（BLEACH Mirrors High
+    52/92）は段階的な入れ替え（stage_closeups：胸像が取れた人から入れ替え・取れなくて CLOSE_TRIES 回で外す）。顔が測れないものは落とさず数に出す。
+    固定（lock）は替えない。→ 外した・入れ替えた枚数。"""
     if kind_of(item) not in ("person", "group", "character"):
         return 0
     bad, nof, n = closeup_cuts(item, only)
     if nof:
         log(f"  [顔だけのアップ] {item['name']}：顔が測れない {nof} 枚は落とさない（アニメ絵など）")
     if not bad:
+        if only is None and item["name"] in closeup_state():
+            with WRITE_LOCK:
+                d = closeup_state()
+                d.pop(item["name"], None)
+                closeup_state(d)
         return 0
     total = len([x for x in item.get("emblem") or [] if isinstance(x, dict)])
-    if only is None and total and len(bad) / total >= CLOSE_HOLD:
-        log(f"  [顔だけのアップ] {item['name']}：{len(bad)}/{total} 枚が当たるので外さず報告だけ（{'、'.join(str(b.get('subject')) for b in bad[:6])}…）")
-        return 0
+    if only is None and total and (len(bad) / total >= CLOSE_HOLD or item["name"] in closeup_state()):
+        return sum(stage_closeups(item, bad, log))
     keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
     rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad]))
     redo = list(dict.fromkeys(list(item.get("emblem_redo") or []) + [b["subject"] for b in bad if b.get("subject")]))

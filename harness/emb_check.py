@@ -232,6 +232,20 @@ def stuck():
     return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and not v.get("exhausted") and (v.get("target") or 0) - (v.get("have") or 0) > 1}
 
 
+CLOSE_STATE = "https://raw.githubusercontent.com/CxElegy/Wishlist/main/state/emblem_closeup.json"
+
+
+def closeup_stage():
+    """E16 の情報：顔だけのアップを段階的に入れ替え中（胸像待ち）の人数と、胸像が取れないまま 3 回を超えた人（名簿の上位 12 人は外さず探し続ける）
+    → {版面: (待ちの人数, [3 回以上の人])}。後台が main に書く state/emblem_closeup.json（取れなければ手元）。"""
+    try:
+        d = json.loads(urllib.request.urlopen(CLOSE_STATE, timeout=20).read())
+    except Exception:  # noqa: BLE001
+        p = ROOT / "state" / "emblem_closeup.json"
+        d = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    return {k: (len(v), [s for s, x in v.items() if int((x or {}).get("n") or 0) >= 3]) for k, v in d.items() if v}
+
+
 def exhausted():
     """候補が尽きた版面（残りの人が全員「画像のない人」：emblem_fill の exhausted）→ {名前: have/target}。"""
     try:
@@ -351,6 +365,8 @@ def check(pg, who, width, out, full=False, guest=False):
         found["E10"] = [f"{k} {v}" for k, v in stuck().items()]
     if guest:
         found["E15"] = [f"{k} {'・'.join(v)}" for k, v in head_missing().items()]
+    if guest and (cs := closeup_stage()):
+        print("  情報：胸像待ち（顔だけのアップの入れ替え中）" + "・".join(f"{k} {n} 人（3 回を超えた {len(o)} 人：{'、'.join(o[:5])}）" for k, (n, o) in cs.items()))
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
     if full:

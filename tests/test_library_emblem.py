@@ -354,12 +354,12 @@ class Faces(unittest.TestCase):
             return b.getvalue()
         flags = {11: True, 12: None, 13: False, 14: False, 15: True, 16: True}
         with mock.patch.object(emblem_fill, "closeup_of", side_effect=lambda im: flags[im.size[0]]):
-            keep, gone = le.split_closeups(em, fetch=fetch)
-            self.assertEqual([g["subject"] for g in gone], ["A"])
+            keep, gone, hold = le.split_closeups(em, fetch=fetch)
+            self.assertEqual(([g["subject"] for g in gone], hold), (["A"], []))
             self.assertEqual([k["subject"] for k in keep], ["B", "C", "D", "L", "G"])
             flags.update({12: True, 13: True})   # 4 枚中 3 枚（固定・ロゴは見ない）＝半分以上：外さない
-            keep, gone = le.split_closeups(em, fetch=fetch)
-            self.assertEqual((len(keep), gone), (6, []))
+            keep, gone, hold = le.split_closeups(em, fetch=fetch)   # 半分以上：外さず段階的な入れ替えへ（hold）
+            self.assertEqual((len(keep), gone, [h["subject"] for h in hold]), (6, [], ["A", "B", "C"]))
 
     def test_measure_faces_fills_url_cutouts_only(self):
         em = [{"image": "https://x.supabase.co/a.webp", "shape": "cutout"}, {"image": "https://x.supabase.co/l.webp", "shape": "logo"},
