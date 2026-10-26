@@ -527,6 +527,9 @@ button{font-family:inherit}
  .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),-22px)}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
 .emb img{transition:opacity .25s ease-out,transform .25s ease-out}
 .emb-fade .emb img:not(.ld){opacity:0;transform:translateY(8px)}  /* 読み込みが終わる（decode）まで見せず、終わったら下から少し上がって現れる：空 → いきなり絵、の「パッ」をなくす */
+.pic img{transition:opacity .3s ease-out}
+.emb-fade .pic img:not(.bg):not(.ico):not(.ld){opacity:0}  /* 記事の写真も同じ：届くまで枠の薄い地だけ、届いたら ふわっと（背景のぼかし .bg と来源の小さい印 .ico はそのまま） */
+@media (prefers-reduced-motion:reduce){.pic img{transition:opacity .15s linear}}
 .emb-fade .emb-in:has(img:not(.ld)){min-width:72px;border-radius:12px;background:color-mix(in srgb,var(--fg) 7%,transparent)}  /* 出る前から場所と薄い影の形を置く */
 @media (prefers-reduced-motion:reduce){.emb,.emb-in{animation:none;transition:none}.emb img{transition:opacity .2s linear}.emb-fade .emb img:not(.ld){transform:none}}
 /*LIKEFX*/.downv :is(.pic,h2,h3,.blurb,.hb,p,.tg,.d,li>a,.xprice,.wc>b,.when>b,.from){opacity:.4;filter:grayscale(.8)}  /* 踩过的消息变淡，按钮保持清楚，能撤回 */
@@ -1730,6 +1733,11 @@ EMB_JS = """
     if (el.getBoundingClientRect().top < innerHeight) { img.loading = 'eager'; img.fetchPriority = 'high'; }
     const show = () => img.classList.add('ld');
     (img.decode ? img.decode() : Promise.reject()).then(show, show); setTimeout(show, 3000); });
+  // 記事の写真（.pic）も届いたら .ld で出す。あとから JS が作る写真も拾うので load は capture で受ける。3 秒たっても届かなければ出す
+  const okPic = i => i.matches && i.matches('.pic img') && i.naturalWidth;
+  addEventListener('load', ev => { if (okPic(ev.target)) ev.target.classList.add('ld'); }, true);
+  const sweep = () => document.querySelectorAll('.pic img').forEach(i => { if (i.complete && i.naturalWidth || !i.getAttribute('src')) i.classList.add('ld'); });
+  sweep(); setTimeout(() => document.querySelectorAll('.pic img').forEach(i => i.classList.add('ld')), 3000);
   // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
   const room = el => { const band = el.parentElement, img = el.querySelector('img'); if (!band || !img) return;
     const go = () => { const b = band.getBoundingClientRect(), r = el.getBoundingClientRect();

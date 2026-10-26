@@ -223,10 +223,11 @@ def check_emb_fade(pw, base, width):
     pg.route("**/*", lambda r: (time.sleep(1.5), r.continue_()) if r.request.resource_type == "image" else r.continue_())
     pg.goto(base, wait_until="domcontentloaded", timeout=60000)
     q = "()=>{const i=document.querySelector('.emb img'),e=i&&i.closest('.emb');return i?{o:+getComputedStyle(i).opacity,h:Math.round(e.getBoundingClientRect().height),ld:i.classList.contains('ld')}:null}"
+    qp = "()=>{const i=document.querySelector('.pic img:not(.bg):not(.ico)');return i?{o:+getComputedStyle(i).opacity,ld:i.classList.contains('ld')}:null}"
     pg.wait_for_timeout(500)
-    before = pg.evaluate(q)
+    before, pbefore = pg.evaluate(q), pg.evaluate(qp)
     pg.wait_for_timeout(8000)
-    after = pg.evaluate(q)
+    after, pafter = pg.evaluate(q), pg.evaluate(qp)
     b.close()
     if not before or not after:
         return ["小元素がない"]
@@ -237,6 +238,10 @@ def check_emb_fade(pw, base, width):
         bad.append(f"出るとき高さが変わる（{before['h']}→{after['h']}px）")
     if after["o"] < 0.99:
         bad.append(f"出たあとも透明（{after['o']}）")
+    if pbefore and pbefore["o"] > 0.01 and not pbefore["ld"]:
+        bad.append(f"記事の写真が読み込み前に見えている（透明度 {pbefore['o']}）")
+    if pafter and pafter["o"] < 0.99:
+        bad.append(f"記事の写真が出たあとも透明（{pafter['o']}）")
     return bad
 
 
