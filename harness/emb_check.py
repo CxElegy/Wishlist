@@ -16,6 +16,7 @@
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
+  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
   E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる
   E16 顔だけのアップ  cutout（全身 body は除く）の顔の幅 > 画像の幅の CLOSE_W（45%）か、顔の下端から下が高さの SHOULDER_MIN（15%）未満（emblem_fill.closeup_of と同じしきい値。ここは YuNet で測れたものだけ：アニメ絵の検出は取るときの規則だけ）。小元素は胸像（BLEACH の黒崎一護）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
@@ -43,6 +44,7 @@ from PIL import Image
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import cutshape  # noqa: E402  （numpy・OpenCV・PIL だけ。emblem は import しない）
+SMALL_SIDE = 256   # emblem.BUST_MIN_SIDE と同じ（emblem は import しない）
 import emblem_face  # noqa: E402  （E17 の理由の札。import の時点では pathlib だけ）
 FIRST_BOARD = "はじめに"   # user_pages.FIRST_BOARD
 SAME_BITS = 4              # emblem_fill.SAME_BITS
@@ -299,7 +301,7 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 18)}
+    found = {f"E{n}": [] for n in range(1, 19)}
     nomodel = False
     nf_why = {}   # E17：顔が測れない理由の札 → [版面 名前]
     src_of = sources()
@@ -336,6 +338,8 @@ def check(pg, who, width, out, full=False, guest=False):
                 flaw = cutshape.flat_flaw(img)
                 if flaw:
                     found["E12"].append(f"{s['k']} {name}")
+                if not a.get("body") and min(img.size) < SMALL_SIDE:   # E18：短い辺が小さい（ぼやけて見える）
+                    found["E18"].append(f"{s['k']} {name} {img.size[0]}×{img.size[1]}")
                 if crowd(faces):
                     found["E11"].append(f"{s['k']} {name} 顔 {len(faces)}")
                 if not a.get("body") and (why := closeup(img, faces)):
@@ -408,6 +412,6 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E12": "形の傷（直線の切り口・凹み）"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E12": "形の傷（直線の切り口・凹み）"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     return bad + (["E7・E11 顔のモデルなし（額の切れ・何人もは見ていない）"] if nomodel else [])

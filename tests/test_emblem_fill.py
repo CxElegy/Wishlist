@@ -2042,7 +2042,7 @@ class FindSources(unittest.TestCase):
                     now = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
                     now["emblem_who"] = who
                     bad = [x for x in now["emblem"] if x["subject"] in ("Ichigo Kurosaki", "W1", "Low") and x.get("source") != "https://x/bust.png"]   # 胸像に替わった人はもう顔だけのアップでない
-                    with mock.patch.object(ef, "bust_replacement", side_effect=lambda it, x, skip, log=print: bust if x["subject"] in found else None):
+                    with mock.patch.object(ef, "bust_replacement", side_effect=lambda it, x, skip, log=print, **kw: bust if x["subject"] in found else None):
                         return ef.stage_closeups(now, bad, log=lambda *_: None)
                 self.assertEqual(run({"Ichigo Kurosaki"}), (1, 0))   # 1 回目：一護だけ胸像が取れた
                 got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
@@ -2057,6 +2057,23 @@ class FindSources(unittest.TestCase):
                 self.assertEqual(sorted(x["subject"] for x in got["emblem"]), ["Ichigo Kurosaki", "W1"])
                 self.assertEqual(got["emblem_redo"], ["Low"])
                 self.assertEqual(ef.closeup_state()["b"], {"W1": {"n": 3}})
+
+    def test_better_cut_floor_and_gain(self):
+        """入れ替えの質の下限：短い辺 256px 未満は取らない（一護 146×225）。元より質が上がらないものも取らない。元が下限未満なら下限以上のとき取る。"""
+        from PIL import Image
+        em = ef.emblem
+        mk = lambda w, h: Image.new("RGBA", (w, h), (80, 80, 80, 255))
+        with mock.patch.object(em, "face_sharp", return_value=None):
+            self.assertFalse(em.better_cut(mk(146, 225), mk(372, 519)))   # 下限未満
+            self.assertFalse(em.better_cut(mk(300, 300), mk(372, 519)))   # 下限は満たすが元より小さい
+            self.assertTrue(em.better_cut(mk(400, 600), mk(372, 519)))
+            self.assertTrue(em.better_cut(mk(256, 300), mk(100, 100)))   # 元が下限未満：候補が下限以上なら
+            self.assertFalse(em.better_cut(mk(255, 400), mk(100, 100)))
+            self.assertTrue(em.better_cut(mk(300, 300)))
+        with mock.patch.object(em, "face_sharp", side_effect=[(50, 0.5, .5)]):
+            self.assertFalse(em.better_cut(mk(400, 400)))   # ぼやけ（SHARP_MIN 未満）
+        with mock.patch.object(em, "face_sharp", side_effect=[(50, 2.0, .5), (50, 3.0, .5)]):
+            self.assertFalse(em.better_cut(mk(400, 600), mk(372, 519)))   # 元よりぼやける
 
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""

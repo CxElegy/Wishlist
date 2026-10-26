@@ -777,6 +777,33 @@ def face_sharp(img):
     return round(fw * w0 / im.width), float(np.percentile(mg, 99)) / span, float(g.mean()) / 255
 
 
+BUST_MIN_SIDE = 256   # 入れ替えの候補（胸像）の短い辺の下限 px（BLEACH Mirrors High の一護が 146×225 のぼやけた胸像に替わった：2026-10-27）
+
+
+def cut_score(im):
+    """切り抜き 1 枚の質の点数 → (短い辺 px, 顔の鋭さ か None)。鋭さは face_sharp（#479：SHARP_MIN の測り）。顔が測れなければ None。"""
+    try:
+        fq = face_sharp(im)
+    except Exception:
+        fq = None
+    return min(im.size), (fq[1] if fq else None)
+
+
+def better_cut(cand, orig=None):
+    """入れ替えの候補 cand（PIL）を取ってよいか：短い辺 >= BUST_MIN_SIDE・鋭さ >= SHARP_MIN（測れたとき）が必ず。
+    元 orig（PIL）があれば、さらに質の点数が元より上がるときだけ（元が下限未満なら下限を満たせば足りる）：
+    短い辺が元より小さくない・鋭さが元より低くない（両方測れたとき）。"""
+    cs, cq = cut_score(cand)
+    if cs < BUST_MIN_SIDE or (cq is not None and cq < SHARP_MIN):
+        return False
+    if orig is None:
+        return True
+    os_, oq = cut_score(orig)
+    if os_ < BUST_MIN_SIDE or (oq is not None and oq < SHARP_MIN):
+        return True
+    return cs >= os_ and (cq is None or oq is None or cq >= oq)
+
+
 NOFACE_WIDE = 1.3   # 写真の切り抜きに顔がなく、横が縦のこの倍より長い = 髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）。顔のない兜（The Mandalorian）は縦長の全身なので当たらない
 
 
@@ -1061,7 +1088,7 @@ def file_base(url):
     return re.sub(r"^file:", "", seg.replace(" ", "_").lower())
 
 
-def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, photo=False, skip=()):
+def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, photo=False, skip=(), orig=None):
     """顔のアップ（顔が高さの 5 割を超える）しかないとき：同じページに載っている画像から、切り抜いて胸像になるもの
     （顔がはっきり見えて、顔の割合 fs が lo〜hi）を探す。名前に人物名を含む画像を先に、大きい順。→ (網址, 切り抜き画像, fs) か None"""
     from PIL import Image
@@ -1093,13 +1120,18 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
             if photo and lost_face(img, out):   # 写真：手・物・暗い背景を切り抜いたもの
                 raise ValueError("顔が切り抜きに残っていない")
             fitted, fs = face_fit(out)
+            if orig is not None and not better_cut(fitted, orig):   # 元より質が上がらない・下限未満：取らず次の候補へ（orig を渡された入れ替えだけ）
+                print(f"  [質が足りない] {t}：{cut_score(fitted)}", file=sys.stderr)
+                continue
             if fs and lo <= fs <= hi:
                 print(f"  [胸像] {t}：顔 {fs}", file=sys.stderr)
                 return url, fitted, fs
             # 前髪で目が隠れているキャラ（チャド）は顔が見つからない：きれいに切れた一番大きいものを控えに。
             # ただし控えはもとから透明な背景の絵（公式の立ち絵）だけ：漫画のコマ・場面（jpg）は枠で切れ・「©」の文字が残る（ちいかわ のあのこ、2026-10-20）
             if noface and fs is None and backup is None and clear_bg:
-                backup = (url, upper_body(out)[0], None)
+                ub = upper_body(out)[0]
+                if orig is None or better_cut(ub, orig):
+                    backup = (url, ub, None)
             print(f"  [合わない] {t}：顔 {fs}", file=sys.stderr)
         except Exception as e:
             print(f"  [合わない] {t}：{e}", file=sys.stderr)

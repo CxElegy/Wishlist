@@ -2313,9 +2313,10 @@ def close_top(subject, who):
     return _name_key(subject) in keys or _name_key(re.sub(r"\s*[(（].*?[)）]", "", _base_subject(subject))) in keys
 
 
-def bust_replacement(item, x, skip, log=print):
+def bust_replacement(item, x, skip, log=print, orig=None):
     """顔だけのアップ x の代わりの胸像を、同じ Fandom のページの別の画像（公式イラスト・ギャラリーのアニメの立ち絵）から探す。
-    外した画像・今ある画像（skip）は探さない。顔だけのアップ・壊れた切り抜きはまた外す。→ (網址, 切り抜き画像, fs) か None。"""
+    外した画像・今ある画像（skip）は探さない。顔だけのアップ・壊れた切り抜きはまた外す。
+    質の下限：短い辺 emblem.BUST_MIN_SIDE 未満・ぼやけたもの・元（orig：PIL）より質が上がらないものは取らない（emblem.better_cut）。→ (網址, 切り抜き画像, fs) か None。"""
     api = item.get("emblem_api") or (f"https://{item['emblem_fandom']}.fandom.com/api.php" if item.get("emblem_fandom") else None)
     if not api:
         return None
@@ -2324,7 +2325,7 @@ def bust_replacement(item, x, skip, log=print):
     skip = set(skip)
     for _ in range(3):
         try:
-            got = emblem.find_bust(api, title, word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], limit=6, skip=skip)
+            got = emblem.find_bust(api, title, word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], limit=6, skip=skip, orig=orig)
         except Exception as e:
             log(f"  [胸像] {x['subject']}：{e}")
             return None
@@ -2357,7 +2358,13 @@ def stage_closeups(item, bad, log=print):
         except OutOfTime:
             break
         x = by[s]
-        got = bust_replacement(item, x, skip, log)
+        try:
+            from PIL import Image
+            orig = Image.open(emblem.sitedir.SITE_DIR / str(x["image"]))
+            orig.load()
+        except Exception:
+            orig = None
+        got = bust_replacement(item, x, skip, log, orig=orig)
         if got:
             swapped[s] = got
             mine.pop(s, None)
