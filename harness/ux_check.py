@@ -77,6 +77,7 @@ def check(pw, base, who, width, out, page="", emb="off"):
         nav:!!document.querySelector('.nav'),mast:!!document.querySelector('.mast,h1'),
         token:getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()!=='',
         own:!!document.querySelector('meta[name="wl-own"]'),
+        start:!!document.querySelector('.startgo'),
         arts:document.querySelectorAll('section.sec article').length,
         pics:[...document.querySelectorAll('section.sec article img')].length,
         heads:[...document.querySelectorAll('section.sec')].filter(s=>s.querySelector('.grid article .pic.icon,.grid article .pic.none')).map(s=>s.dataset.k),
@@ -109,7 +110,7 @@ def check(pw, base, who, width, out, page="", emb="off"):
         return st, bad
     if len(loads) > 3:
         bad.append(f"開き直しのくり返し（{WATCH_S} 秒で {len(loads)} 回）")
-    if st["text"] < 200 or not (st["secs"] or st["front"]):
+    if st["text"] < (100 if st["start"] else 200) or not (st["secs"] or st["front"]):   # 版面 0 個の最初の画面は字が少ないのが正しい（2026-10-27）
         bad.append(f"白い画面（文字 {st['text']}・版面 {st['secs']}）")
     if WHO[who] and st["boxes"]:
         bad.append(f"素の箱 {st['boxes']} 個")
