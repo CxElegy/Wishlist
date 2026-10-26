@@ -228,6 +228,8 @@ def check_emb_fade(pw, base, width):
     before, pbefore = pg.evaluate(q), pg.evaluate(qp)
     pg.wait_for_timeout(8000)
     after, pafter = pg.evaluate(q), pg.evaluate(qp)
+    # 画面外の lazy な写真：3 秒の保険で先に .ld が付くと、近づいたとき「パッ」と出る。届いていないなら .ld は付かないこと
+    far = pg.evaluate("()=>{const l=[...document.querySelectorAll('.pic img:not(.bg):not(.ico)')].filter(i=>i.getBoundingClientRect().top>innerHeight*2&&!(i.complete&&i.naturalWidth));const i=l[l.length-1];return i?{ld:i.classList.contains('ld'),n:l.length}:null}")
     b.close()
     if not before or not after:
         return ["小元素がない"]
@@ -242,6 +244,8 @@ def check_emb_fade(pw, base, width):
         bad.append(f"記事の写真が読み込み前に見えている（透明度 {pbefore['o']}）")
     if pafter and pafter["o"] < 0.99:
         bad.append(f"記事の写真が出たあとも透明（{pafter['o']}）")
+    if far and far["ld"]:
+        bad.append("画面外の未着の写真に先に .ld が付いている（近づくと「パッ」と出る）")
     return bad
 
 
