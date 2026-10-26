@@ -1110,7 +1110,7 @@ class Ladder(unittest.TestCase):
     """取り方の段：① 標準 → ② 名前を広げる → ③ 公式・記事のページ を、届くまで同じ回の中で上がる。"""
 
     def setUp(self):
-        self.saved = {k: getattr(ef, k) for k in ("gather", "gather_wide", "gather_pages", "check", "auto_pick", "commit", "load_items", "_live")}
+        self.saved = {k: getattr(ef, k) for k in ("gather", "gather_wide", "gather_pages", "check", "auto_pick", "commit", "load_items", "_live", "subjects")}
         self.items = [{"name": "X", "type": "game", "emblem_who": ["a", "b"], "emblem": []}]
         ef.load_items = lambda: self.items
         ef._live = lambda *a, **k: None
@@ -1146,6 +1146,15 @@ class Ladder(unittest.TestCase):
         self.assertEqual(r["state"], "failed")
         self.assertEqual(r["funnel"]["rejected"].get("画像のない人"), 1)
         self.assertIn("全員が画像のない人", r["note"])
+
+    def test_not_exhausted_while_roster_has_untried_people(self):
+        """試した人が全員画像なしでも、名簿にまだ試していない人がいるなら exhausted にしない（24 時間待ちにしない）。"""
+        ef.gather = ef.gather_wide = lambda item, log, tried: []
+        self.items[0]["emblem_who"] = ["a", "b"] + [f"z{i}" for i in range(ef.STEP + 3)]
+        ef.subjects = lambda item, kind, hi: ["a", "b"]
+        r = ef.fill_one(self.items[0], log=lambda m: None)
+        self.assertFalse(r.get("exhausted"))
+        self.assertNotIn("全員が画像のない人", r["note"])
 
     def test_unnamed_unsure_candidate_is_no_image(self):
         ef.gather_wide = lambda item, log, tried: [{"subject": "b", "image": "https://x/Che_Guevara.jpg", "source": "Wikipedia"}]
