@@ -404,7 +404,7 @@ def due(boards, now):
         elif st.get("nv") != names_v and (st.get("state") == "ok" or any(cfg(b).get(k) for k in NAMES_HINT)):
             # そろっていても、届かなかったキャラの版面も（RETRY_HOURS を待たずに）、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
             # 届かなかった版面の数え直しは途中（running）より先（1.5）：途中の版面は 10 枚ずつで何十回も続き、後ろの 142・146 が 24 時間待たされていた
-            out.append((4 if st.get("state") == "ok" else 1 if zero else 1.5, st.get("at", 0), b))
+            out.append((1.8 if st.get("state") == "ok" else 1 if zero else 1.5, st.get("at", 0), b))   # 済みの数え直しは軽い（名簿を数えるだけ）ので途中（2）より先：最後だと 41 版面の後ろで 4 時間たっても回らなかった（ポケモンの名簿の順）
         elif not zero and int(st.get("bv") or 0) < emblem_fill.BROKEN_V:
             # 公開の箱の小元素を今の壊れ方の規則（頭が切れた・ぼやけた）でまだ見ていない版面は、届かなかった・済みでも待たずに 1 回（ポケモンが 24 時間待ち）
             out.append((1.5, st.get("at", 0), b))
