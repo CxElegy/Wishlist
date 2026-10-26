@@ -2037,7 +2037,8 @@ class FindSources(unittest.TestCase):
             item["emblem_who"] = who
             bust = ("https://x/bust.png", Image.new("RGBA", (120, 150), (50, 50, 50, 255)), 0.3)
             with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
-                    mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"):
+                    mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"), \
+                    mock.patch.object(ef.emblem_face, "measure_item") as meas:
                 def run(found):
                     now = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
                     now["emblem_who"] = who
