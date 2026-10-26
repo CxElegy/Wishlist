@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-26T06:49:35+00:00",
+ "checked": "2026-10-26T07:02:14+00:00",
  "fired": {
   "at": "2026-10-26T06:49:36+00:00",
   "results": {
@@ -60,15 +60,20 @@
   "emblem": {
    "claude": false,
    "items": [
-    "チェーンソーマン",
     "BLEACH Mirrors High",
     "あつ森",
-    "哈利波特剧集",
-    "dota2",
-    "FROM",
-    "漫威电影",
+    "哈利波特剧集"
+   ],
+   "need": true,
+   "sig": "4ea06c0aa820",
+   "waiting": [
     "GTA 6",
     "Vaundy",
+    "漫威电影",
+    "FROM",
+    "チェーンソーマン",
+    "dota2",
+    "Astrae Oratio",
     "A2O LITE",
     "绝区零",
     "ぐでたま"
@@ -79,7 +84,7 @@
     "Astrae Oratio",
     "The Mandalorian"
    ],
-   "why": "足りない 12 版面（Actions で Python が埋める）・失敗 2 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 14:30 から）"
+   "why": "足りない 3 版面（Actions で Python が埋める）・失敗 10 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 16:40 から）"
   },
   "photos": {
    "claude": true,
