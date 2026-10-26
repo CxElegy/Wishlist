@@ -94,6 +94,16 @@ class CloseupWait(unittest.TestCase):
         old = {"b": {"A": {"n": 1, "next": "2026-10-27T07:47+09:00"}}}
         self.assertIn("古い", emb_check.closeup_wait_bad(old, {"b": {"waiting": 1}}, now)[0])
 
+    def test_boards_closeup_bad(self):
+        import datetime as dt
+        now = dt.datetime(2026, 10, 27, 12, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        good = {"name": "X", "config": {"emblem_closeup": {"A": 1}, "emblem_closeup_next": {"A": "2026-10-27T12:47+09:00"}, "emblem_closeup_eta": {"waiting": 1}}}
+        self.assertEqual(emb_check.boards_closeup_bad([good, {"name": "Y", "config": {}}], now), ([], 1))
+        bare = {"name": "Z", "config": {"emblem_closeup": {"A": 1}}}   # 保存の抜け（入口が next・eta を書かない）
+        bad, n = emb_check.boards_closeup_bad([bare], now)
+        self.assertEqual((len(bad), n), (2, 1))
+        self.assertIn("お客さま Z", bad[0])
+
 
 class CloseupOfficial(unittest.TestCase):
     def test_closeup_left_counts_official(self):

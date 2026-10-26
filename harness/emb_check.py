@@ -17,7 +17,7 @@
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
   E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
-  E20 胸像待ちが回っていない  state/emblem_closeup.json の待ちの人に「次に試す見込み」next がない・版面の見込み（emblem_closeup_eta.json）がない・毎回探す名簿の上位の next が 3 時間より古い（後台が回っていない）。close_plan の保存が全部の入口で効いているかの数え。お客さまの版面の入口が close_round を使うかは tests/test_emblem_fill.py が数える\n  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
+  E20 胸像待ちが回っていない  state/emblem_closeup.json の待ちの人に「次に試す見込み」next がない・版面の見込み（emblem_closeup_eta.json）がない・毎回探す名簿の上位の next が 3 時間より古い（後台が回っていない）。close_plan の保存が全部の入口で効いているかの数え。お客さまの版面の分は boards.config.emblem_closeup（待ち）に emblem_closeup_next・_eta がないか・古いかを同じ式で数える（boards_closeup_bad）。入口が close_round を使うかは tests/test_emblem_fill.py も数える\n  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
   E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる
   E16 顔だけのアップ  cutout（全身 body は除く）の顔の幅 > 画像の幅の CLOSE_W（45%）か、顔の下端から下が高さの SHOULDER_MIN（15%）未満（emblem_fill.closeup_of と同じしきい値。ここは YuNet で測れたものだけ：アニメ絵の検出は取るときの規則だけ）。小元素は胸像（BLEACH の黒崎一護）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
@@ -330,6 +330,36 @@ def closeup_wait_lines():
     return closeup_wait_bad(st, eta)
 
 
+def boards_closeup_bad(rows, now=None):
+    """E20 のお客さまの版面の分：boards の行 [{name, config}] の config.emblem_closeup（待ちの人）に、
+    emblem_closeup_next（人ごとの次の見込み）・emblem_closeup_eta（版面の見込み）があるか、next が古くないか。店長の分と同じ closeup_wait_bad。"""
+    st, eta = {}, {}
+    for r in rows:
+        c = r.get("config") or {}
+        if not c.get("emblem_closeup"):
+            continue
+        k = f"お客さま {r.get('name')}"
+        nx = c.get("emblem_closeup_next") or {}
+        st[k] = {s: {"n": n, "next": nx.get(s)} for s, n in c["emblem_closeup"].items()}
+        eta[k] = c.get("emblem_closeup_eta")
+    return closeup_wait_bad(st, eta, now), len(st)
+
+
+def boards_rows():
+    """boards（ライブラリ）の行。SUPABASE_SERVICE_KEY があれば全部、なければ公開の key で見える分だけ（店長がフォローしている版面）。"""
+    import os
+    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("settings") or {}
+    key = os.environ.get("SUPABASE_SERVICE_KEY") or s["supabase_key"]
+    req = urllib.request.Request(f"{s['supabase_url']}/rest/v1/boards?select=name,config&limit=1000", headers={"apikey": key, "Authorization": f"Bearer {key}"})
+    return json.loads(urllib.request.urlopen(req, timeout=20).read())
+
+
+def boards_closeup_lines():
+    bad, n = boards_closeup_bad(boards_rows())
+    print(f"  情報 E20 お客さまの版面で胸像待ちが書かれている版面 {n} 件")
+    return bad
+
+
 def closeup_eta_lines():
     """胸像待ちの見込み（emblem_fill.close_line：N 人・次の回・外すまであと約 N 回）。"""
     try:
@@ -473,6 +503,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if guest:
         try:
             found["E20"] = closeup_wait_lines()
+            found["E20"] += boards_closeup_lines()   # お客さまの版面（boards.config）の分。入口が違っても同じ見込みが保存されているか
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E20 数えられなかった：{e}")
     if guest:
