@@ -239,3 +239,24 @@ EXAMPLES = [
      "before": [("mmorpg-before", "前：主題の記号（Twemoji）だけ")], "after": [("mmorpg-after", "後：代表作（剣霊など 5 作）のキービジュアル・ロゴ")],
      "verdict": "ジャンルの版面は「下の一段」を貼る。記号は最後の手段"},
 ]
+
+
+def sparse_keys(items, thr=0.6):
+    """手書きの emblem_* の値が版面の thr 未満にしかない項目 → [(キー, 値のある版面数, 全部の数, [値のある版面の名前])]。
+    値がある所だけ規則が効く形（顔の大きさ fs が 94 枚中 9 枚だった件と同じ）を洗い出す。少ない順。"""
+    n = len(items)
+    have = {}
+    for it in items:
+        for k, v in it.items():
+            if k.startswith("emblem_") and v not in (None, "", [], {}, False):
+                have.setdefault(k, []).append(it.get("name", "?"))
+    out = [(k, len(v), n, v) for k, v in have.items() if n and len(v) / n < thr]
+    return sorted(out, key=lambda r: r[1])
+
+
+if __name__ == "__main__":
+    import yaml
+    from pathlib import Path
+    its = yaml.safe_load((Path(__file__).resolve().parent.parent / "items.yaml").read_text(encoding="utf-8"))["items"]
+    for k, h, n, names in sparse_keys(its):
+        print(f"{k}: {h}/{n}  {', '.join(names)}")
