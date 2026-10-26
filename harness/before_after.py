@@ -337,7 +337,7 @@ def _pad(im, w, h):
     return out
 
 
-def compose(before, after, rects=None):
+def compose(before, after, rects=None, whole=False):
     """左に Before・右に After。大きさが違えば（ページの高さが変わった）大きい方に合わせて地の色で埋め、changed_boxes の一番大きい所を
     真ん中に切り抜き、赤い枠。片方が None（その欄がない＝新しい欄・消えた欄）なら地の色の 1 枚と比べる。
     差がなければ None（写真を送らない、2026-10-25 用户定的）。幅は 1800px まで。"""
@@ -350,6 +350,8 @@ def compose(before, after, rects=None):
         return None
     boxes = [(x0, y0, min(x1, w), min(y1, h)) for x0, y0, x1, y1 in grow_to_emblems(boxes, rects)]
     crop = focus(a, b, [r for r in boxes if r[1] < common] or boxes)   # 伸びた下の端より、両方にある所の変化を真ん中に
+    if whole and h <= CROP_MAX_H:   # 「画面：」で決めた欄は、切らずに欄ぜんぶ（2026-10-26：欄の右の端の小さな変化だけが写っていた）
+        crop = (0, 0, w, h)
     a, b = a.crop(crop), b.crop(crop)
     boxes = [(x0 - crop[0], y0 - crop[1], x1 - crop[0], y1 - crop[1]) for x0, y0, x1, y1 in boxes]
     for im in (a, b):   # 変わった所を赤い枠で囲む（前と後の両方の同じ場所。2026-10-24 用户定的）
@@ -430,7 +432,7 @@ def pairs(root, where, title):
         if not b.exists() and not a.exists():
             missing.append(f"{who}-{w}")
             continue
-        png = compose(b if b.exists() else None, a if a.exists() else None, rb.get(f"{who}-{w}", []) + ra.get(f"{who}-{w}", []))
+        png = compose(b if b.exists() else None, a if a.exists() else None, rb.get(f"{who}-{w}", []) + ra.get(f"{who}-{w}", []), whole=bool(where))
         if png:
             images.append((f"{who}-{w}.png", png))
     return images, headline(title, where[2] if where else "", cb, ca), missing
