@@ -566,10 +566,11 @@ def hole_share(solid):
     return float(hole.sum()) / max(1, int(solid.sum()))
 
 
+CROWD_H = 0.77     # 前からの切り抜きで 2 番目の顔がいちばん大きい顔の高さのこの割合以上 = 2 人が並んでいる（面積の 60% ＝ face_id.CROWD_RATIO、点検 E11 と同じ。キャラの絵でも見る）
 OTHER_FACE = 0.2   # 切り抜きに残った 2 番目の顔が、いちばん大きい顔の高さのこの割合以上 = ほかの人が残っている
 
 
-def other_faces(out, keep=None):
+def other_faces(out, keep=None, ratio=None):
     """切り抜いた画像（白の上に置いて）で顔を数え、いちばん大きい顔のほかに目立つ顔がいくつあるか。顔のモデルがなければ 0。"""
     try:
         import face_id
@@ -592,7 +593,7 @@ def other_faces(out, keep=None):
         if faces is None or len(faces) < 2:
             return 0
         hs = sorted((float(f[3]) for f in faces), reverse=True)
-        return sum(1 for h in hs[1:] if h >= OTHER_FACE * hs[0])
+        return sum(1 for h in hs[1:] if h >= (OTHER_FACE if ratio is None else ratio) * hs[0])
     except Exception:
         return 0
 

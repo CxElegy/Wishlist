@@ -2095,13 +2095,15 @@ def broken_image(im, photo):
         return True
     if photo and emblem.faceless_scrap(im):   # 顔がなく髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）
         return True
+    if emblem.other_faces(im, ratio=emblem.CROWD_H):   # 2 人が並んだ切り抜き（BLEACH Mirrors High・呪術廻戦・A2O LITE：点検 E11）
+        return True
     if emblem.flat_flaw(im):   # 形の傷：左右・上の端の直線の切り口、凹みすぎ（半身に切り落とせるものは drop_broken の repair_flat が先に直す）
         return True
     fq = emblem.face_sharp(im) if photo else None   # 写真のぼやけ（拡大した剧照）。顔の幅は書き出したあとは縮んでいるので見ない
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 6   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 7   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 
 def _broken_log(d=None):
