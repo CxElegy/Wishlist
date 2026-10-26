@@ -67,6 +67,25 @@
   ],
   "why": "看不清"
  },
+ "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
+  "w": 480,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
+ "http://wx1.sinaimg.cn/middle/008eZAxIly1iig4cgmelfj30ow0re426.jpg": {
+  "w": 896,
+  "h": 986,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/813b6a0f6593f366.webp",
+  "out": [
+   896,
+   986
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
   "h": 1297,
@@ -141,19 +160,6 @@
   "out": [
    532,
    504
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx3.sinaimg.cn/middle/647c8fably1iig7or5h03j20u011i40a.jpg": {
-  "w": 1080,
-  "h": 1350,
-  "target": 720,
-  "v": 3,
-  "local": "pics/02ff0a6a28588d35.webp",
-  "out": [
-   1024,
-   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -335,16 +341,16 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/328407719/rectangle_large_type_2_f56d80df8805c485022a99c99999e3e1.png?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.topics.apps-jp.nintendo.com/image/2021/09/08042244878749/820/32766_820_461.jpg": {
   "w": 820,
   "h": 461,
   "target": 1280,
-  "v": 3
- },
- "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg": {
-  "w": 618,
-  "h": 348,
-  "target": 720,
   "v": 3
  },
  "https://bloximages.newyork1.vip.townnews.com/griffindailynews.com/content/tncms/assets/v3/editorial/a/b9/ab90c9fc-1c26-5ebd-8b60-3f8328044d5c/6a13c291b798b.image.jpg?crop=1762%2C926%2C0%2C124&resize=1200%2C631&order=crop%2Cresize": {
@@ -609,6 +615,12 @@
   "target": 720,
   "v": 3
  },
+ "https://d2me2qg8dfiw8u.cloudfront.net/content/uploads/2026/10/Swiatek-Chwalinska-Svitolina.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://daebak.tokyo/wp-content/uploads/2026/10/439rg.webp": {
   "w": 500,
   "h": 400,
@@ -730,6 +742,12 @@
   ],
   "why": "看不清"
  },
+ "https://gamenewsplus.net/wp-content/uploads/2026/10/GTA-6-REVIEW-CODES.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
  "https://gamesbeat.com/wp-content/uploads/2026/10/Loftia.jpg": {
   "w": 1200,
   "h": 675,
@@ -796,12 +814,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hermes.media.transform.aol.com/45c45cca1728fd8a500afc311d3183c4548b578f/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/26/c1d2b7aa-6ffe-3637-8680-4d78a62f42dc/7883c14b-f619-4782-8179-1fa14c63c0b2.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://hermes.media.transform.aol.com/6963b3a9e84468c005cf8e0f1a63b74929e18a0a/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/26/ed77719c-b688-350a-97da-f6a05c739b20/613078da-95c5-4764-9387-4bf49a8c73c5.jpg": {
   "w": 1200,
   "h": 675,
@@ -812,6 +824,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://hiphopwired.com/wp-content/uploads/sites/43/2026/10/image-collage-15.jpg?quality=85&strip=all&w=1680&crop=0,0,100,960px": {
+  "w": 1680,
+  "h": 960,
+  "target": 720,
   "v": 3
  },
  "https://hips.hearstapps.com/hmg-prod/images/8972b059-9897-4bde-9973-3bb6b04f0d67.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
@@ -1008,12 +1026,6 @@
   "target": 1280,
   "v": 3
  },
- "https://image.sunmedia.tw/banners/7601c2fa-e258-4915-9a3b-1b416d1c0870.jpeg": {
-  "w": 1200,
-  "h": 669,
-  "target": 720,
-  "v": 3
- },
  "https://image.zdnet.co.kr/2026/10/06/731eb9f33d6449f05ae02f0def03326c.jpg": {
   "w": 640,
   "h": 359,
@@ -1045,6 +1057,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.hothardware.com/contentimages/newsitem/71959/content/16x9_2133x1200_highres-lucia-actor-livestream-news.jpg": {
+  "w": 2133,
+  "h": 1200,
+  "target": 720,
+  "v": 3
+ },
  "https://images.khan.co.kr/article/2026/10/20/news-p.v1.20261020.4c924d72449246b59d479a2890b8217c_P1.jpg": {
   "w": 1200,
   "h": 800,
@@ -1060,6 +1078,12 @@
  "https://images.khan.co.kr/article/2026/10/26/news-p.v1.20261026.6e82a528d1954ed38f2717f04901c630_P1.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.khan.co.kr/article/2026/10/26/news-p.v1.20261026.d38ab67c082745d497f30d6c5d8bc87d_P1.png": {
+  "w": 1200,
+  "h": 554,
   "target": 720,
   "v": 3
  },
@@ -1115,12 +1139,6 @@
   "w": 1280,
   "h": 720,
   "target": 720,
-  "v": 3
- },
- "https://images.thedirect.com/media/article_full/stevedooms.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
   "v": 3
  },
  "https://images.thedirect.com/media/article_full/visionquest_human_ai.jpg": {
@@ -1283,6 +1301,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g5Iqp.img": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g6gL0.img": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -1478,6 +1502,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.opencritic.com/article/o/1feIc5KvixfLN2anWVI9Ly4MZXpVmJhY.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100207.jpg": {
   "w": 560,
   "h": 560,
@@ -1507,6 +1537,19 @@
   "out": [
    1280,
    962
+  ],
+  "why": "看不清"
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
+  "w": 640,
+  "h": 427,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.446,
+  "local": "pics/77badf011f553b21.webp",
+  "out": [
+   1280,
+   854
   ],
   "why": "看不清"
  },
@@ -1591,6 +1634,12 @@
   "v": 3,
   "blur": 0.357
  },
+ "https://lrmonline.com/wp-content/uploads/2026/10/Doomsday-Kirby-Krackle.png": {
+  "w": 1272,
+  "h": 535,
+  "target": 720,
+  "v": 3
+ },
  "https://m.media-amazon.com/images/I/31EAvTj+mDL._SL500_.jpg": {
   "w": 500,
   "h": 500,
@@ -1606,6 +1655,12 @@
  "https://maxblizz.com/wp-content/uploads/2026/10/Marvel-Studios-Phase-7-movies-new.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.assettype.com/gulfnews%2F2026-10-26%2Fn6n2zn6h%2FHVi-gzWYAAoysZ.jpg?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
+  "w": 1200,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -2456,6 +2511,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://r2-media.wdwnt.com/2026/10/the-art-of-the-mandalorian-and-grogu-cover-1.jpg": {
+  "w": 1500,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "https://readyfor.jp/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjM0MTM2OSwicHVyIjoiYmxvYl9pZCJ9fQ==--402574121bd3b3aac8bd766b2738b960ec837f77/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpbGwiOls3MzYsNDE0XSwic2F2ZXIiOnsicXVhbGl0eSI6MTAwfX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--809954ebdd0c4d318d7f500d88793bbd84307db2/p176287-key-visual.jpeg": {
   "w": 736,
   "h": 414,
@@ -2779,6 +2840,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
+  "w": 1200,
+  "h": 653,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -2901,6 +2968,12 @@
   "w": 1200,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://swikblog.com/wp-content/uploads/2026/10/download-2026-10-26T212330.428.webp": {
+  "w": 474,
+  "h": 680,
+  "target": 720,
   "v": 3
  },
  "https://tech-insider.org/wp-content/uploads/2026/10/activision-open-world-game-emergent-gameplay-elsewhere-2026-gen.webp": {
@@ -3322,6 +3395,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.comicbasics.com/wp-content/uploads/2026/07/avengers-doomsday.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday.webp": {
   "w": 1200,
   "h": 675,
@@ -3446,6 +3525,12 @@
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Sandra-Huller-Main-2026.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg": {
+  "w": 1392,
+  "h": 934,
   "target": 720,
   "v": 3
  },
@@ -3581,10 +3666,22 @@
   "target": 720,
   "v": 3
  },
+ "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
+  "w": 2000,
+  "h": 1125,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.superdope.games/wp-content/uploads/2026/09/image-105.png": {
   "w": 1245,
   "h": 700,
   "target": 720,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/edited-image-2026-10-26T141134.529.webp?resize=1200,630": {
