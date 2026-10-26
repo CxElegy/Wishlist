@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-26T05:34:08+00:00",
+ "checked": "2026-10-26T05:42:06+00:00",
  "fired": {
-  "at": "2026-10-26T05:34:08+00:00",
+  "at": "2026-10-26T05:42:06+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -55,12 +55,11 @@
   "emblem": {
    "claude": false,
    "items": [
-    "哈利波特剧集"
+    "あつ森"
    ],
    "need": true,
-   "sig": "6f3c8a2d22cc",
+   "sig": "586e844112df",
    "waiting": [
-    "あつ森",
     "dota2",
     "FROM",
     "漫威电影",
@@ -68,12 +67,13 @@
     "チェーンソーマン",
     "Vaundy",
     "BLEACH Mirrors High",
+    "哈利波特剧集",
     "Astrae Oratio",
     "A2O LITE",
     "绝区零",
     "The Mandalorian"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 14:36 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 15:21 から）"
   },
   "photos": {
    "claude": true,
