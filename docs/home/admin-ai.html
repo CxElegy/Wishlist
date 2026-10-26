@@ -604,7 +604,7 @@ button{font-family:inherit}
 .lk{position:absolute;inset:0;z-index:1}  /* 原文链接 = 卡片全体を覆う透明な層 */
 .lk:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 :is(.card,.top,.wc) :not(.lk,.vt,.vt *,.startgo){pointer-events:none}  /* クリックは必ず .lk か 👍/👎 に届く */
-:is(.card,.top,.wc) :is(.vt,.vt *){pointer-events:auto}  /* pointer-events は継承されるので明示的に戻す */
+:is(.card,.top,.wc) :is(.vt,.vt *,.startgo){pointer-events:auto}  /* pointer-events は継承されるので明示的に戻す */
 /* 👍/👎 = 日付の行の右端に置く小さな印。普段は線の拇指だけ（枠なし）、押すと「NEW」と同じ塗りの札になる */
 .vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;align-items:center;gap:2px;flex:none}
 .vt{position:absolute;right:-6px;top:0;height:var(--vth,28px);padding:0 4px 0 12px;z-index:2;font-size:0;cursor:default;-webkit-tap-highlight-color:transparent;touch-action:manipulation}  /* 周りの余白も按钮区：按偏了也不会打开原文 */
@@ -1534,7 +1534,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-ai" content="b4e4f244765e"><style>
+<meta name="wl-ver" data-page="admin-ai" content="2e38495bef89"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2193,7 +2193,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ④ AI 編集</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.27 06:35</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.27 06:38</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html" aria-current="page"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>

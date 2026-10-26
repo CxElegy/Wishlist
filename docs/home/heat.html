@@ -603,7 +603,7 @@ button{font-family:inherit}
 .lk{position:absolute;inset:0;z-index:1}  /* 原文链接 = 卡片全体を覆う透明な層 */
 .lk:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 :is(.card,.top,.wc) :not(.lk,.vt,.vt *,.startgo){pointer-events:none}  /* クリックは必ず .lk か 👍/👎 に届く */
-:is(.card,.top,.wc) :is(.vt,.vt *){pointer-events:auto}  /* pointer-events は継承されるので明示的に戻す */
+:is(.card,.top,.wc) :is(.vt,.vt *,.startgo){pointer-events:auto}  /* pointer-events は継承されるので明示的に戻す */
 /* 👍/👎 = 日付の行の右端に置く小さな印。普段は線の拇指だけ（枠なし）、押すと「NEW」と同じ塗りの札になる */
 .vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;align-items:center;gap:2px;flex:none}
 .vt{position:absolute;right:-6px;top:0;height:var(--vth,28px);padding:0 4px 0 12px;z-index:2;font-size:0;cursor:default;-webkit-tap-highlight-color:transparent;touch-action:manipulation}  /* 周りの余白も按钮区：按偏了也不会打开原文 */
@@ -995,7 +995,7 @@ table.dims{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}
  .kpi:nth-child(even){border-left:1px solid var(--hair)!important}.kv b{font-size:28px}.hs b{font-size:40px}
  .legend li{grid-template-columns:12px minmax(0,1fr) 28px 40px}.legend small{grid-column:2/5}.legend .lh small{display:none}}
 </style>
-<meta name="wl-ver" data-page="heat" content="d34ba37976bd"><style>
+<meta name="wl-ver" data-page="heat" content="cc5bfeedf9ac"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1655,7 +1655,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <header class="mast">
 <div class="mtitle"><h1>話題度アナリシス</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>基準日</small><b>2026.10.27</b></div>
-<div class="meta"><small>更新</small><b>10.27 06:35</b></div></div>
+<div class="meta"><small>更新</small><b>10.27 06:38</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">ウォッチリストの各作品が、いま世の中でどれだけ話題になっているかを 0〜100 で表した指数です。
