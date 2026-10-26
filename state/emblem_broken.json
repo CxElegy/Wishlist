@@ -825,6 +825,17 @@
     "page": "https://www.youtube.com/watch?v=GLYPLeyL7Sg",
     "shape": "cutout"
    }
+  },
+  {
+   "v": 8,
+   "emblem": {
+    "subject": "Cassie Lang（Kathryn Newton）",
+    "why": "Cassie Lang（Kathryn Newton）：作品の動画の場面",
+    "image": "emblems/cassie-lang-kathryn-newton.webp",
+    "source": "https://i.ytimg.com/vi/DG7yk78Fwoo/hq2.jpg",
+    "page": "https://www.youtube.com/watch?v=DG7yk78Fwoo",
+    "shape": "cutout"
+   }
   }
  ],
  "A2O LITE": [
@@ -1062,7 +1073,60 @@
    }
   }
  ],
- "绝区零": [],
+ "绝区零": [
+  {
+   "v": 8,
+   "emblem": {
+    "subject": "Yixuan",
+    "why": "Yixuan（Fandom の公式の立ち絵・透明背景）",
+    "image": "emblems/yixuan.webp",
+    "source": "https://static.wikia.nocookie.net/zenless-zone-zero/images/8/89/Agent_Yixuan_Portrait.png/revision/latest/scale-to-width-down/400?cb=20250606025206",
+    "page": "https://zenless-zone-zero.fandom.com/wiki/File:Agent_Yixuan_Portrait.png",
+    "shape": "cutout",
+    "body": [
+     0.158,
+     2.269,
+     0.546,
+     1.876,
+     1.128
+    ],
+    "face": [
+     0.232,
+     0.174,
+     0.582,
+     0.53,
+     392,
+     209
+    ]
+   }
+  },
+  {
+   "v": 8,
+   "emblem": {
+    "subject": "Alice Thymefield",
+    "why": "Alice Thymefield（Fandom の公式の立ち絵・透明背景）",
+    "image": "emblems/alice-thymefield.webp",
+    "source": "https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2d/Agent_Alice_Thymefield_Portrait.png/revision/latest/scale-to-width-down/400?cb=20250716175906",
+    "page": "https://zenless-zone-zero.fandom.com/wiki/File:Agent_Alice_Thymefield_Portrait.png",
+    "shape": "cutout",
+    "body": [
+     0.138,
+     2.295,
+     0.49,
+     1.121,
+     0.992
+    ],
+    "face": [
+     0.249,
+     0.133,
+     0.499,
+     0.478,
+     351,
+     313
+    ]
+   }
+  }
+ ],
  "ILLIT": [
   {
    "v": 8,
