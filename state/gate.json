@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-26T14:43:23+00:00",
+ "checked": "2026-10-26T14:46:35+00:00",
  "fired": {
-  "at": "2026-10-26T14:43:23+00:00",
+  "at": "2026-10-26T14:46:35+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -54,11 +54,9 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "dota2"
-   ],
-   "need": true,
-   "sig": "5e19588d36b6",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "あつ森",
     "GTA 6",
@@ -69,12 +67,13 @@
     "FROM",
     "哈利波特剧集",
     "チェーンソーマン",
+    "dota2",
     "Astrae Oratio",
     "The Mandalorian",
     "绝区零",
     "A2O LITE"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 00:17 から）"
+   "why": "失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 00:17 から）"
   },
   "photos": {
    "claude": true,
