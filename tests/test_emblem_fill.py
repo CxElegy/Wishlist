@@ -1984,10 +1984,54 @@ class FindSources(unittest.TestCase):
         self.assertEqual(n, 1)
         self.assertEqual([x["subject"] for x in got["emblem"]], ["P1", "P2", "P3", "P4", "P5", "Locked"])
         self.assertEqual((got["emblem_reject"], got["emblem_redo"]), (["https://x/p0.png"], ["P0"]))
-        n, got = run([True, True, True, False])   # 3/5 = 半分以上：前からのものは外さない
-        self.assertEqual((n, len(got["emblem"])), (0, 5))
+        with mock.patch.object(ef, "stage_closeups", return_value=(0, 0)) as st:
+            n, got = run([True, True, True, False])   # 3/5 = 半分以上：外さず段階的な入れ替えへ
+        self.assertEqual((n, len(got["emblem"]), st.call_count), (0, 5, 1))
         n, got = run([True, True, True, False], only={"https://x/p0.png", "https://x/p1.png", "https://x/p2.png"})   # 取るときは無条件
         self.assertEqual((n, len(got["emblem"])), (3, 2))
+
+    def test_stage_closeups_swaps_bust_and_drops_after_three_tries(self):
+        """BLEACH 型（半分以上が顔だけのアップ）：胸像が取れた人から入れ替え（取れるまで元のまま）、取れないまま 3 回で外す。名簿の上位 12 人は外さず探し続ける。
+        探す順は回数の少ない人 → 名簿の上の人（一護が先）。1 回の人数は CLOSE_PER_ROUND。"""
+        from PIL import Image
+        who = ["Ichigo Kurosaki"] + [f"W{i}" for i in range(1, 14)] + ["Low"]
+        self.assertEqual(ef.close_order(["Low", "W3", "Ichigo Kurosaki"], who, {"W3": 1})[0], "Ichigo Kurosaki")
+        self.assertEqual(ef.close_order(["Low", "W3", "Ichigo Kurosaki"], who, {"Ichigo Kurosaki": 2}), ["W3", "Low", "Ichigo Kurosaki"])
+        self.assertTrue(ef.close_top("Ichigo Kurosaki", who))
+        self.assertFalse(ef.close_top("Low", who))
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "emblems").mkdir()
+            lines = ["items:", "  - name: b", "    emblem_kind: character", "    emblem:"]
+            for s in ("Ichigo Kurosaki", "W1", "Low"):
+                Image.new("RGBA", (40, 50), (9, 9, 9, 255)).save(tmp / "emblems" / f"{s[:3]}.png")
+                lines.append(f'      - {{subject: "{s}", image: "emblems/{s[:3]}.png", source: "https://x/{s[:3]}.png", shape: cutout}}')
+            (tmp / "items.yaml").write_text("\n".join(lines) + "\n", encoding="utf-8")
+            (tmp / "state").mkdir()
+            item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+            item["emblem_who"] = who
+            bust = ("https://x/bust.png", Image.new("RGBA", (120, 150), (50, 50, 50, 255)), 0.3)
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
+                    mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"):
+                def run(found):
+                    now = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+                    now["emblem_who"] = who
+                    bad = [x for x in now["emblem"] if x["subject"] in ("Ichigo Kurosaki", "W1", "Low") and x.get("source") != "https://x/bust.png"]   # 胸像に替わった人はもう顔だけのアップでない
+                    with mock.patch.object(ef, "bust_replacement", side_effect=lambda it, x, skip, log=print: bust if x["subject"] in found else None):
+                        return ef.stage_closeups(now, bad, log=lambda *_: None)
+                self.assertEqual(run({"Ichigo Kurosaki"}), (1, 0))   # 1 回目：一護だけ胸像が取れた
+                got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+                ich = next(x for x in got["emblem"] if x["subject"] == "Ichigo Kurosaki")
+                self.assertEqual((ich["source"], ich["fs"]), ("https://x/bust.png", 0.3))
+                self.assertIn("https://x/Ich.png", got["emblem_reject"])   # 顔だけのアップの元の画像は二度と選ばない
+                self.assertEqual(len(got["emblem"]), 3)   # 取れていない人は元のまま
+                self.assertEqual(ef.closeup_state()["b"], {"W1": {"n": 1}, "Low": {"n": 1}})
+                self.assertEqual(run(set()), (0, 0))
+                self.assertEqual(run(set()), (0, 1))   # 3 回目：名簿の外の Low は外す。上位の W1 は探し続ける
+                got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+                self.assertEqual(sorted(x["subject"] for x in got["emblem"]), ["Ichigo Kurosaki", "W1"])
+                self.assertEqual(got["emblem_redo"], ["Low"])
+                self.assertEqual(ef.closeup_state()["b"], {"W1": {"n": 3}})
 
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""

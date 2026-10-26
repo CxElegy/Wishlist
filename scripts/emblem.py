@@ -1052,7 +1052,14 @@ def face_fit(img, share=FACE_SHARE):
     return img, round(fh / h, 3)
 
 
-def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, photo=False):
+def file_base(url):
+    """画像の網址・「File:名前.png」→ ファイル名（小文字・空白は _）。Fandom の網址の /revision/latest 以降と違う書き方は同じにする。"""
+    s = urllib.parse.unquote(str(url or "")).split("?")[0]
+    seg = next((x for x in s.split("/") if re.search(r"\.(png|jpe?g|webp|gif)$", x, re.I)), "")
+    return re.sub(r"^file:", "", seg.replace(" ", "_").lower())
+
+
+def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, photo=False, skip=()):
     """顔のアップ（顔が高さの 5 割を超える）しかないとき：同じページに載っている画像から、切り抜いて胸像になるもの
     （顔がはっきり見えて、顔の割合 fs が lo〜hi）を探す。名前に人物名を含む画像を先に、大きい順。→ (網址, 切り抜き画像, fs) か None"""
     from PIL import Image
@@ -1063,6 +1070,7 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
     words = [w.lower() for w in ([word] if word else []) + re.split(r"[\s(),]+", title) if len(w) >= 3]
     files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|jpe?g|webp)$", x["title"], re.I)
              and any(w in x["title"].lower() for w in words)
+             and file_base(x["title"]) not in {file_base(s) for s in skip}   # 外した画像・今ある画像は探さない（顔だけのアップの代わり）
              # アイコン類と、季節イベントの衣装（水着・ハロウィン…：いつもの姿ではない）は除く
              and not re.search(r"icon|logo|favicon|signature|kanji|swimsuit|halloween|christmas|valentine|summer|bunny|wedding|new ?year", x["title"], re.I)]
     infos = []

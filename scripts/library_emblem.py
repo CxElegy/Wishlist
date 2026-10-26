@@ -247,9 +247,10 @@ def unbroken(emblems, photo, fetch=None):
     return out
 
 
-def split_closeups(emblems, fetch=None):
+def split_closeups(emblems, fetch=None, staged=False):
     """公開の箱の網址の小元素のうち顔だけのアップ（emblem_fill.closeup_of：顔の幅 > CLOSE_W か、顔の下 < SHOULDER_MIN）を分ける。
-    → (残す, 外す)。1 版面で CLOSE_HOLD 以上が当たるときは外さない（小元素が極端に減る）。顔が測れない・読めないものは残す。固定・全身・ロゴは見ない。
+    → (残す, 外す, 段階的に入れ替える)。1 版面で CLOSE_HOLD 以上が当たる版面（前から段階的に入れ替え中の staged も）は外さず「段階的に入れ替える」へ
+    （stage_holds：胸像が取れた人から入れ替え・取れなくて CLOSE_TRIES 回で外す）。顔が測れない・読めないものは残す。固定・全身・ロゴは見ない。
     外したものの元の画像は emblem_reject、人は emblem_redo に（呼び側。DB には直接書かない：この回の config の書き直しの道）。"""
     import urllib.request
     from PIL import Image
@@ -266,9 +267,49 @@ def split_closeups(emblems, fetch=None):
             except Exception:
                 pass
         keep.append(x)
-    if emblems and len(gone) / len(emblems) >= emblem_fill.CLOSE_HOLD:
-        return list(emblems), []
-    return keep, gone
+    if gone and emblems and (staged or len(gone) / len(emblems) >= emblem_fill.CLOSE_HOLD):
+        return list(emblems), [], gone
+    return keep, gone, []
+
+
+def stage_holds(item, emblems, hold, pend):
+    """半分以上が顔だけのアップの版面の段階的な入れ替え（店長の emblem_fill.stage_closeups と同じ形。回数は boards.config.emblem_closeup {人: 回数}）。
+    胸像の代わりを探し、取れた人から入れ替える（取れるまでは元のまま）。CLOSE_TRIES 回取れなかった人は外す（名簿の上位 CLOSE_TOP 人は探し続ける）。
+    入れ替えた胸像は手元（sandbox の emblems/）に置く：あとの stash が公開の箱へ上げる。→ (新しい小元素, 外した小元素, 新しい回数)"""
+    import emblem
+    import emblem_fill
+    who = item.get("emblem_who") or []
+    cur = {x["subject"] for x in hold}
+    tries = {s: int(pend.get(s) or 0) for s in cur}
+    by = {x["subject"]: x for x in hold}
+    skip = set(item.get("emblem_reject") or []) | {u for x in emblems or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
+    out, new, dropped, swapped = {}, dict(tries), [], {}
+    for s in emblem_fill.close_order(cur, who, tries)[:emblem_fill.CLOSE_PER_ROUND]:
+        try:
+            emblem_fill._check_time()
+        except emblem_fill.OutOfTime:
+            break
+        got = emblem_fill.bust_replacement(item, by[s], skip)
+        if got:
+            swapped[s] = got
+            new.pop(s, None)
+        else:
+            new[s] = tries[s] + 1
+            if new[s] >= emblem_fill.CLOSE_TRIES and not emblem_fill.close_top(s, who):
+                dropped.append(by[s])
+                new.pop(s, None)
+    rows = []
+    for x in emblems or []:
+        if isinstance(x, dict) and x.get("subject") in swapped and x in hold:
+            url, cut, fs = swapped[x["subject"]]
+            slug = emblem.slugify(item["name"], x["subject"]) + "-bust"
+            emblem.save_cut(cut, slug)
+            y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar")}
+            y.update(image=f"emblems/{slug}.webp", source=url, shape="cutout", fs=fs, why=f"{x['subject']}（Fandom のページの胸像：顔だけのアップの代わり）")
+            rows.append(y)
+        elif not any(x is d for d in dropped):
+            rows.append(x)
+    return rows, dropped, {s: n for s, n in new.items() if s in cur and n is not None}
 
 
 def measure_faces(emblems, fetch=None):
@@ -305,16 +346,26 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
                 r = {"state": "failed", "note": "時間切れ"}
         got = (yaml.safe_load((root / "items.yaml").read_text(encoding="utf-8"))["items"] or [{}])[0]
         recheck = int(((board.get("config") or {}).get("emblem_state") or {}).get("bv") or 0) < emblem_fill.BROKEN_V
+        touched = False
+        pend = dict(((board.get("config") or {}).get("emblem_closeup")) or {})   # 顔だけのアップを段階的に入れ替え中の人 {人: 取れなかった回数}
         if recheck and got.get("emblem"):   # 前の回に公開の箱へ上げた小元素は emblem_fill.broken_cuts が見ない（emblems/ の手元の画像だけ）→ ここで同じ規則（ポケモン 2・Mrs. GREEN APPLE 1）
             got["emblem"] = unbroken(got["emblem"], emblem_fill.needs_face(item))
-            if emblem_fill.kind_of(item) in ("person", "group", "character"):   # 顔だけのアップ（BROKEN_V 8）：外して元の画像は emblem_reject・人は emblem_redo → 次の回に胸像を探す
-                got["emblem"], gone = split_closeups(got["emblem"], fetch)
-                if gone:
-                    got["emblem_reject"] = list(dict.fromkeys(list(got.get("emblem_reject") or []) + [g.get("source") or g["image"] for g in gone]))
-                    got["emblem_redo"] = list(dict.fromkeys(list(got.get("emblem_redo") or []) + [g["subject"] for g in gone if g.get("subject")]))
+        if (recheck or pend) and got.get("emblem") and emblem_fill.kind_of(item) in ("person", "group", "character"):   # 顔だけのアップ（BROKEN_V 8）
+            got["emblem"], gone, hold = split_closeups(got["emblem"], fetch, staged=bool(pend))
+            if hold:   # 半分以上：段階的に入れ替え（胸像が取れた人から・3 回で外す）
+                got["emblem"], dropped, pend = stage_holds({**item, **got}, got["emblem"], hold, pend)
+                gone = gone + dropped
+            if not hold:
+                pend = {}
+            touched = True
+            if gone:   # 外して元の画像は emblem_reject・人は emblem_redo → 次の回に胸像を探す
+                got["emblem_reject"] = list(dict.fromkeys(list(got.get("emblem_reject") or []) + [g.get("source") or g["image"] for g in gone]))
+                got["emblem_redo"] = list(dict.fromkeys(list(got.get("emblem_redo") or []) + [g["subject"] for g in gone if g.get("subject")]))
         stem = board.get("wd") or f"b{board['id']}"
         cfg = board.get("config") or {}
         add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}
+        if touched and (pend or cfg.get("emblem_closeup")):
+            add["emblem_closeup"] = pend or None   # 段階的な入れ替え中の人 {人: 取れなかった回数}。なくなれば消す
         if got.get("emblem"):
             add["emblem"] = stash(got["emblem"], site, stem, upload, base)
         char = item["emblem_kind"] == "character"
@@ -463,6 +514,8 @@ def due(boards, now):
             # そろっていても、届かなかったキャラの版面も（RETRY_HOURS を待たずに）、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
             # 届かなかった版面の数え直しは途中（running）より先（1.5）：途中の版面は 10 枚ずつで何十回も続き、後ろの 142・146 が 24 時間待たされていた
             out.append((1.8 if st.get("state") == "ok" else 1 if zero else 1.5, st.get("at", 0), b))   # 済みの数え直しは軽い（名簿を数えるだけ）ので途中（2）より先：最後だと 41 版面の後ろで 4 時間たっても回らなかった（ポケモンの名簿の順）
+        elif cfg(b).get("emblem_closeup"):   # 顔だけのアップを段階的に入れ替え中（胸像を探す・3 回で外す）：待たずに次の回も
+            out.append((1.6, st.get("at", 0), b))
         elif not zero and int(st.get("bv") or 0) < emblem_fill.BROKEN_V:
             # 公開の箱の小元素を今の壊れ方の規則（頭が切れた・ぼやけた）でまだ見ていない版面は、届かなかった・済みでも待たずに 1 回（ポケモンが 24 時間待ち）
             out.append((1.5, st.get("at", 0), b))
