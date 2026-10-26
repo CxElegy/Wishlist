@@ -186,6 +186,7 @@ button{font-family:inherit}
 .wall{align-items:stretch}  /* 同じ段のカードは同じ高さ（写真枠 16:10・見出し 3 行分でそろえる） */
 .wc.lead .pic{flex:1;aspect-ratio:auto;min-height:200px}  /* 大きい一枚は横の 2 枚と同じ高さ：写真は端を少し切って埋める */
 .wc[hidden]{display:none}.wc:not(.lead) .pic{height:auto}.wc:not(.lead) .pic[style*='height']{aspect-ratio:auto}  /* WALL_JS が右の列とそろえるため写真枠を少し高くすることがある */
+.wc.nophoto{justify-content:flex-start;padding:16px 12px 12px;border-left:5px solid var(--sc)}.wc.nophoto b{-webkit-line-clamp:6;min-height:0}.wc.lead.nophoto b{font-size:24px;-webkit-line-clamp:7}  /* 写真が開けないトップのカード（SWAP_JS）：字だけの形 */
 .wc .tg{position:absolute;left:-8px;top:-13px;z-index:2;box-shadow:2px 2px 0 var(--ink)}  /* 作品名の札はカードの上の縁に（写真に重ねない） */
 .wc em{font:15px/1 var(--font-num);font-style:normal;letter-spacing:.04em}
 .wc b{font:700 14px/1.45 var(--font-sans);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.35em}  /* 3 行分：段のカードの高さがそろう */
@@ -735,6 +736,7 @@ button{font-family:inherit}
  .burst{width:72px;height:72px;font-size:16px;top:-16px;left:-14px}
  .top h2{font-size:20px;transform:rotate(-1deg)}
   .wall{grid-template-columns:minmax(0,1fr);gap:16px}.wall>.wc:nth-child(n+7){display:none}.wc.lead{grid-column:auto;grid-row:auto}.wc.lead .pic{min-height:0;aspect-ratio:16/10}
+ .wc.nophoto:not(.lead){display:flex;gap:6px}
  .wc:not(.lead){display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:4px 12px;align-items:start}
  .wc:not(.lead) .pic{grid-row:1/3}.wc:not(.lead) .tg{left:-6px;top:-11px;font-size:11px}
   .fside{display:none}  /* スマホは右の列を出さない（欲しい物は報頭のボタン、予定は各版面で） */
@@ -1531,7 +1533,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-members" content="43e64201606c"><style>
+<meta name="wl-ver" data-page="admin-members" content="851b9fa88c74"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2190,7 +2192,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ⑥ お客さまと店長</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.27 02:44</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.27 02:47</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html" aria-current="page"><span>⑥ お客さまと店長</span></a></li></ul></nav>
