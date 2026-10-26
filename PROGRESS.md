@@ -125,3 +125,4 @@
 - 2026-10-27 f1：空の人の「選ぶ」ボタンが .top の pointer-events:none（継承）で押せなかったのを直した（#545・#546）。本番 test-d 1400/390 で elementFromPoint が本人、journey は足すまで ✓。tests 960 OK・CI 緑。次：journey の「自分のページに札」30 秒待ち
 - 2026-10-27 r1f2：#542 の本番の確認で原因を見つけた。BLEACH は失敗の待ちで 1 度も回らず胸像の n が止まっていた（run 40407957652 は dota2 だけ）→ due() で胸像待ちの版面は待たない（tests）。tests 全部 OK。次：直した後の回で E19・「公式サイトの絵」を数える
 2026-10-27 f1 通しの「自分のページに札」✗：焼いた本人のページが足した直後は空だった → ownWait（#551）。確かめ：tests 961 OK、本番は焼き直し後に --journey。次：1 人分の即時焼き直し。
+- 2026-10-27 r1f1：#550 の連動の残り。お客さまの版面〔stage_holds〕が旧 close_order[:8] のまま→close_round に・見込みを保存〔close_plan：各人 next・版面 eta。店長 state/・お客さま boards.config〕・点検 E20〔✗〕・入口が close_round を使う tests。確かめ：tests OK。次：後台の回のあと E20=0・上位 12 人の入れ替え

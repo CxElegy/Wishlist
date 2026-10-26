@@ -284,7 +284,7 @@ def stage_holds(item, emblems, hold, pend, fetch=None):
     by = {x["subject"]: x for x in hold}
     skip = set(item.get("emblem_reject") or []) | {u for x in emblems or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
     out, new, dropped, swapped = {}, dict(tries), [], {}
-    for s in emblem_fill.close_order(cur, who, tries)[:emblem_fill.CLOSE_PER_ROUND]:
+    for s in emblem_fill.close_round(cur, who, tries):   # 店長と同じ：上位 12 人は毎回・ほかは 1 回 8 人
         try:
             emblem_fill._check_time()
         except emblem_fill.OutOfTime:
@@ -373,6 +373,9 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
         add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}
         if touched and (pend or cfg.get("emblem_closeup")):
             add["emblem_closeup"] = pend or None   # 段階的な入れ替え中の人 {人: 取れなかった回数}。なくなれば消す
+            # 各人の次に試す見込み・版面の待ちが終わる見込み（店長の state/emblem_closeup*.json と同じ式 emblem_fill.close_plan）
+            at, eta = emblem_fill.close_plan(pend, item.get("emblem_who") or []) if pend else (None, None)
+            add["emblem_closeup_next"], add["emblem_closeup_eta"] = at, eta
         if got.get("emblem"):
             add["emblem"] = stash(got["emblem"], site, stem, upload, base)
         char = item["emblem_kind"] == "character"

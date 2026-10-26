@@ -17,7 +17,7 @@
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
   E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
-  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
+  E20 胸像待ちが回っていない  state/emblem_closeup.json の待ちの人に「次に試す見込み」next がない・版面の見込み（emblem_closeup_eta.json）がない・毎回探す名簿の上位の next が 3 時間より古い（後台が回っていない）。close_plan の保存が全部の入口で効いているかの数え。お客さまの版面の入口が close_round を使うかは tests/test_emblem_fill.py が数える\n  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
   E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる
   E16 顔だけのアップ  cutout（全身 body は除く）の顔の幅 > 画像の幅の CLOSE_W（45%）か、顔の下端から下が高さの SHOULDER_MIN（15%）未満（emblem_fill.closeup_of と同じしきい値。ここは YuNet で測れたものだけ：アニメ絵の検出は取るときの規則だけ）。小元素は胸像（BLEACH の黒崎一護）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
@@ -29,6 +29,7 @@
 別人・遠景・ほぼ同じだが別の動画の場面は画素では決められないので、--emb full の写真の一覧を目で見る（EMBLEM_AUDIT.md）。
 E4〜E6 は網页で測る：ふだんは出ている 1 枚、--emb full のときは候補を全部差し替えて測り、写真の一覧（OUT/emb/sheet-<だれ>-<幅>.png）を残す。
 """
+import datetime as dt
 import io
 import json
 import pathlib
@@ -296,6 +297,39 @@ def closeup_stage():
     return {k: (len(v), [s for s, x in v.items() if int((x or {}).get("n") or 0) >= 3]) for k, v in d.items() if v}
 
 
+STALE_HOURS = 3   # 毎時の後台なので、これより古い「次に試す見込み」は回っていない
+
+
+def closeup_wait_bad(state, eta, now=None):
+    """E20：胸像待ち（state/emblem_closeup.json）が規則どおり回っているか。→ [言葉]。
+    ① 待ちの人に「次に試す見込み」(next) がない ② 版面の見込み (emblem_closeup_eta) がない ③ 名簿の上位（毎回探す）の next が STALE_HOURS より古い（巡回に入って毎回探されていない）。"""
+    now = now or dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    bad = []
+    for k, mine in state.items():
+        if not mine:
+            continue
+        no = [s for s, v in mine.items() if not (v or {}).get("next")]
+        if no:
+            bad.append(f"{k} 次に試す見込みなし {len(no)} 人（{'・'.join(no[:3])}）")
+        if not (eta or {}).get(k):
+            bad.append(f"{k} 版面の見込みなし")
+        old = [s for s, v in mine.items() if (v or {}).get("next") and dt.datetime.fromisoformat(v["next"]) < now - dt.timedelta(hours=STALE_HOURS)]
+        if old:
+            bad.append(f"{k} 見込みの時刻が {STALE_HOURS} 時間より古い {len(old)} 人（後台が回っていない：{'・'.join(old[:3])}）")
+    return bad
+
+
+def closeup_wait_lines():
+    try:
+        st = json.loads(urllib.request.urlopen(CLOSE_STATE, timeout=20).read())
+        eta = json.loads(urllib.request.urlopen(CLOSE_STATE.replace("emblem_closeup.json", "emblem_closeup_eta.json"), timeout=20).read())
+    except Exception:  # noqa: BLE001
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import emblem_fill as ef
+        st, eta = ef.closeup_state(), ef.closeup_eta_state()
+    return closeup_wait_bad(st, eta)
+
+
 def closeup_eta_lines():
     """胸像待ちの見込み（emblem_fill.close_line：N 人・次の回・外すまであと約 N 回）。"""
     try:
@@ -332,7 +366,7 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 19)}
+    found = {f"E{n}": [] for n in range(1, 21)}
     nomodel = False
     nf_why = {}   # E17：顔が測れない理由の札 → [版面 名前]
     src_of = sources()
@@ -437,6 +471,11 @@ def check(pg, who, width, out, full=False, guest=False):
         for ln in closeup_eta_lines():
             print("  情報 胸像待ちの見込み " + ln)
     if guest:
+        try:
+            found["E20"] = closeup_wait_lines()
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E20 数えられなかった：{e}")
+    if guest:
         found["E17"] = [f"{k} {'・'.join(v)}" for k, v in not_people().items()]
     if guest:
         try:
@@ -452,6 +491,6 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E12": "形の傷（直線の切り口・凹み）"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     return bad + (["E7・E11 顔のモデルなし（額の切れ・何人もは見ていない）"] if nomodel else [])

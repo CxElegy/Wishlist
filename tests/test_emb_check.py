@@ -84,6 +84,17 @@ class EmbCheck(unittest.TestCase):
         self.assertEqual(emb_check.not_people(), {})
 
 
+class CloseupWait(unittest.TestCase):
+    def test_wait_bad_counts_missing_and_stale(self):
+        import datetime as dt
+        now = dt.datetime(2026, 10, 27, 12, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        ok = {"b": {"A": {"n": 1, "next": "2026-10-27T12:47+09:00"}}}
+        self.assertEqual(emb_check.closeup_wait_bad(ok, {"b": {"waiting": 1}}, now), [])
+        self.assertEqual(len(emb_check.closeup_wait_bad({"b": {"A": {"n": 1}}}, {}, now)), 2)   # next なし・版面の見込みなし
+        old = {"b": {"A": {"n": 1, "next": "2026-10-27T07:47+09:00"}}}
+        self.assertIn("古い", emb_check.closeup_wait_bad(old, {"b": {"waiting": 1}}, now)[0])
+
+
 class CloseupOfficial(unittest.TestCase):
     def test_closeup_left_counts_official(self):
         items = [{"name": "A", "emblem_kind": "character", "emblem": [{"subject": "Ichigo", "fs": 0.6}, {"subject": "Rukia", "fs": 0.6}, {"subject": "Body", "fs": 0.7, "body": [1]}, {"subject": "Ok", "fs": 0.3}]},
