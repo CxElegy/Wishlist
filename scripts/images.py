@@ -51,6 +51,8 @@ SHARP_LONG = 1000             # 原文的预览图长边不到这么多：同一
 REFERER_TRIES = 3             # 防盗链（403）的原文图，最多带 Referer 重试几张
 SAVED = "（本站保存）"        # 带 Referer 才拿到的图：来源名后面加这个，hdimg.py 存到本站
 
+# 書いた人の顔写真（Gravatar・WordPress の author/avatar）は記事の写真にしない（JSON-LD の author.image に入っている・noisypixel）
+AUTHOR_IMG = re.compile(r"gravatar\.com|/avatars?[/_.-]|[/_-]avatars?\b|author[-_/ ]?(?:photo|image|img|pic)|/authors?/|userpic|profile[-_]?(?:photo|pic|image)", re.I)
 IMG_SKIP = re.compile(r"logo|icon|avatar|banner|sprite|badge|button|noimage|emoji|qrcode|/ads?/|\.svg|\.gif|data:", re.I)
 # 网站 logo、全站共用的默认分享图：放在哪条报道上都不对（theouterhaven Logo.jpg、rbbtoday img_ogp.png、fb_um_logo_m.jpg）
 GENERIC = re.compile(r"logo|noimage|no_image|no-image|img_ogp\.|default_ogp|ogp_default|og_default|default-og|share_default|placeholder|default[_-]?image|no[_-]?photo|dummy[_-]?image|now[_-]?printing|/blank\.(?:png|jpe?g|gif)$"
@@ -387,7 +389,7 @@ def parse_page(url, text):
     for pattern in _META:
         for m in re.finditer(pattern, text, re.I):
             u = _abs(url, m.group(1))
-            if u and u not in p.og:
+            if u and u not in p.og and not AUTHOR_IMG.search(u):
                 p.og.append(u)
     for block in re.findall(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', text, re.I | re.S):
         try:
@@ -396,7 +398,7 @@ def parse_page(url, text):
             continue
         for u in _jsonld_images(data):
             u = _abs(url, u)
-            if u and u not in p.jsonld:
+            if u and u not in p.jsonld and not AUTHOR_IMG.search(u):
                 p.jsonld.append(u)
     for tag in re.findall(r"<video\b[^>]*>", text, re.I):
         src = re.search(r'poster=["\']([^"\']+)', tag, re.I)
