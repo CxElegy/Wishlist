@@ -1881,6 +1881,23 @@ class FindSources(unittest.TestCase):
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual([x["subject"] for x in got["emblem"]], ["Axe", "Axe 2", "Soldier 11"])
 
+    def test_known_first_puts_other_versions_last(self):
+        """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""
+        who = ["Red (Adventures)", "Ash Ketchum", "Gold (Adventures)", "Goh", "Red (Origins)", "Roy"]
+        self.assertEqual(ef.emblem.known_first(who), ["Ash Ketchum", "Goh", "Roy", "Red (Adventures)", "Gold (Adventures)", "Red (Origins)"])
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "items.yaml").write_text('items:\n  - name: poke\n    emblem_kind: character\n    emblem:\n'
+                                            '      - {subject: "Red (Adventures)", image: "r.webp"}\n      - {subject: "Goh", image: "g.webp"}\n'
+                                            '      - {subject: "Ash Ketchum", image: "a.webp"}\n', encoding="utf-8")
+            item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+            item["emblem_who"] = ef.emblem.known_first(["Red (Adventures)", "Ash Ketchum", "Goh"])
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp):
+                self.assertEqual(ef.off_roster(item, log=lambda *_: None), 1)
+                self.assertEqual(ef.off_roster(item, log=lambda *_: None), 1)   # 2 回目は並び済みでも item は古い（呼び側が読み直す）
+            got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        self.assertEqual([x["subject"] for x in got["emblem"]], ["Ash Ketchum", "Goh", "Red (Adventures)"])
+
     def test_locked_emblem_stays_and_redo_goes_first(self):
         """固定（lock）した小元素は名簿の外でも外さない。「別の写真に替える」を押した人（emblem_redo）は次の集めで先に。"""
         with tempfile.TemporaryDirectory() as d:
