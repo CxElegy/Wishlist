@@ -391,6 +391,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg": {
   "w": 618,
   "h": 348,
@@ -572,12 +578,6 @@
  "https://cimg.kgl-systems.io/camion/files/91546/ogp_nwMY.jpg?x=1280": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://cloudimages2.broadwayworld.com/columnpiccloud/1793036624-77591-2c0b2661.jpg?format=jpeg&quality=80&width=1200": {
-  "w": 1200,
-  "h": 675,
   "target": 1280,
   "v": 3
  },
@@ -1652,6 +1652,12 @@
   ],
   "why": "看不清"
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161977.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1782,12 +1788,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.assettype.com/gulfnews%2F2026-10-26%2Fn6n2zn6h%2FHVi-gzWYAAoysZ.jpg?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100": {
-  "w": 1200,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://media.eiga.com/images/movie/100938/photo/86db6065986a9eef.jpg": {
   "w": 566,
   "h": 800,
@@ -1825,6 +1825,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.403
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/sponichin/sponichin_20261027_0040_0-enlarge.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://media.image.infoseek.co.jp/isnews/photos/tbs/tbs_3033188_0-enlarge.jpg": {
   "w": 1200,
@@ -3007,6 +3013,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3366,12 +3378,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Ig_Fk64GSqNj2vKTyOlyUw&pid=News&w=700": {
-  "w": 700,
-  "h": 518,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -3411,6 +3417,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Xv9f2t7REqVSNt44da93Lg&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3427,12 +3439,6 @@
  "https://www.bing.com/th?id=ONUT.csvTQeo-s8NtUIZlyDOLeg&pid=News&w=530": {
   "w": 530,
   "h": 690,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.eFlmxVR30YKDgpVyMjZ73g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3580,6 +3586,12 @@
   "h": 600,
   "target": 720,
   "v": 3
+ },
+ "https://www.comicbasics.com/wp-content/uploads/2026/06/slika_2026-06-29_160304513.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/07/avengers-doomsday.webp": {
   "w": 1200,

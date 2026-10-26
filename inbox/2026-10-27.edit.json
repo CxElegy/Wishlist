@@ -7,7 +7,8 @@
    "weight": "lead",
    "refs": [
     16,
-    13
+    13,
+    48
    ],
    "image": "https://www.comicbasics.com/wp-content/uploads/2026/07/avengers-doomsday.webp"
   },
@@ -19,7 +20,11 @@
    "refs": [
     6,
     28,
-    23
+    23,
+    43,
+    45,
+    47,
+    49
    ]
   },
   {
@@ -42,7 +47,9 @@
     18,
     15,
     11,
-    26
+    26,
+    42,
+    46
    ]
   },
   {
@@ -57,14 +64,14 @@
   }
  ],
  "_covered": {
-  "漫威电影": 41,
-  "GTA 6": 33,
-  "A2O LITE": 7,
+  "漫威电影": 52,
+  "GTA 6": 39,
+  "A2O LITE": 10,
   "The Mandalorian": 7,
-  "日本顶级网球赛事": 12,
+  "日本顶级网球赛事": 18,
   "三星手机": 12,
   "gelato pique": 10,
-  "ILLIT": 6,
+  "ILLIT": 10,
   "MMORPG 新作": 5,
   "dota2": 4,
   "周杰伦": 4,
@@ -74,7 +81,9 @@
   "绝区零": 3,
   "猫用品": 2,
   "BLEACH Mirrors High": 1,
-  "あつ森": 1
+  "あつ森": 1,
+  "FROM": 2,
+  "ぐでたま": 1
  },
  "GTA 6": [
   {
@@ -100,7 +109,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    16
+    16,
+    34
    ],
    "event": {
     "date": "2026-10-29",
@@ -115,7 +125,8 @@
    "refs": [
     22,
     3,
-    11
+    11,
+    37
    ]
   },
   {
@@ -146,7 +157,8 @@
    "weight": "lead",
    "refs": [
     5,
-    3
+    3,
+    8
    ]
   },
   {
@@ -166,7 +178,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    9
+   ]
+  },
+  {
+   "headline": "SMエンタ創業者イ・スマン、話題の新グループ「A2O LITE」指導の裏側公開！自ら踊って動きを伝授",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -220,7 +242,10 @@
    "refs": [
     4,
     3,
-    8
+    8,
+    13,
+    15,
+    18
    ],
    "image": "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg"
   },
@@ -241,7 +266,10 @@
    "refs": [
     2,
     6,
-    7
+    7,
+    14,
+    16,
+    17
    ]
   },
   {
@@ -372,12 +400,16 @@
    "image": "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg"
   },
   {
-   "headline": "ILLIT Return as a Four-Member Group Following MOKA's Hiatus",
-   "highlight": "Four-Member",
+   "headline": "ILLIT、4人体制で初のカムバック 『BREAK EVEN』で片思いに「逮捕」を宣告",
+   "highlight": "4人体制で初のカムバック",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    9,
+    3,
+    7,
+    8,
+    10
    ]
   },
   {
@@ -616,5 +648,29 @@
    "image": "https://sm.ign.com/ign_in/cover/b/bleach-mir/bleach-mirrors-high_brrm.jpg"
   }
  ],
- "あつ森": []
+ "あつ森": [],
+ "FROM": [
+  {
+   "headline": "Marielle’s Death in ‘From’ Season 4 Is the Most Devastating Loss the Show Has Ever Delivered",
+   "highlight": "",
+   "blurb": "The Season 4 finale of the MGM+ horror series 'From' took heartbreak further than ever.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.comicbasics.com/wp-content/uploads/2026/06/slika_2026-06-29_160304513.webp"
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升♥",
+   "highlight": "",
+   "blurb": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg"
+  }
+ ]
 }
