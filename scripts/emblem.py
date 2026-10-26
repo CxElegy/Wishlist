@@ -254,6 +254,21 @@ def groups(api, titles):
     return out
 
 
+FRINGE_MIN = 60     # この人数以上の分類だけ（小さい分類は端の人も本物）
+FRINGE_RATIO = 0.1  # 参照がこの割合（中央値に対して）未満なら人でないページ
+STUB_RATIO = 0.25   # 記事が STUB_LEN 字未満の短いページは、この割合まで
+STUB_LEN = 3000
+
+
+def fringe(counts, length):
+    """大きな分類（dota2 の Heroes 127）の端にある、参照の極端に少ないページ → 集合。
+    本物は参照が中央値の数割以上ある。Yasuo・Irelia（他ゲームの企画、記事 1 千字）・Bloodchemist（エイプリルフールの複製）は 1 割未満。"""
+    if len(counts) < FRINGE_MIN:
+        return set()
+    med = sorted(counts.values())[len(counts) // 2]
+    return {t for t, n in counts.items() if n < med * FRINGE_RATIO or n < med * STUB_RATIO and length.get(t, 0) < STUB_LEN}
+
+
 def category_top(api, category, n, dropped=None):
     """Wiki の分類（例：Wizards）のキャラを「ほかのページからのリンク数」→「記事の長さ」の順に多い n 人。
     物語の中心にいるキャラほど多くのページから参照される（AniList にないゲームなどで主要キャラを決める基準）。"""
@@ -284,6 +299,10 @@ def category_top(api, category, n, dropped=None):
             cont = d.get("continue") or {}
             if "lhcontinue" not in cont:
                 break
+    junk = fringe(counts, length)   # 大きな分類の端：参照が中央値の 1 割未満（企画・いたずらのページ）
+    if dropped is not None:
+        dropped.update(junk)
+    titles = [t for t in titles if t not in junk]
     # リンク数が同じ（ナビ欄で全員つながっているだけ）のときは、記事の長さ（主要キャラほど長い）で決める
     ranked = sorted(titles, key=lambda t: (-counts[t], -length[t]))
     print("  リンク数・記事の長さ：" + "、".join(f"{t} {counts[t]}/{length[t]}" for t in ranked[:n + 3]), file=sys.stderr)

@@ -291,6 +291,17 @@ class Rules(unittest.TestCase):
             self.assertEqual(ef.emblem.category_top("https://g.fandom.com/api.php", "Characters", 5, gone), ["Zhongli", "Aino"])
             self.assertEqual(gone, {"Band"})
 
+    def test_fringe_drops_tail_of_big_category(self):
+        """60 人以上の分類で、参照が中央値の 1 割未満（企画・いたずら）と、短い記事で 2.5 割未満は外す。小さい分類は何も外さない。"""
+        counts = {f"H{i}": 400 + i for i in range(60)}
+        length = {t: 30000 for t in counts}
+        counts.update({"Bloodchemist": 37, "Yasuo": 90, "Ringmaster": 150})
+        length.update({"Bloodchemist": 30000, "Yasuo": 1500, "Ringmaster": 5500})
+        self.assertEqual(ef.emblem.fringe(counts, length), {"Bloodchemist", "Yasuo"})
+        small = {f"G{i}": 5 for i in range(20)}
+        small["X"] = 0
+        self.assertEqual(ef.emblem.fringe(small, {}), set())
+
     def test_brand_without_logo_uses_p18(self):
         """ロゴ（P154）のない製品は Wikidata の代表画像（P18）。iPhone が 0 枚にならない。"""
         from unittest import mock
