@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-26T15:22:38+00:00",
+ "checked": "2026-10-26T15:25:41+00:00",
  "fired": {
-  "at": "2026-10-26T15:22:38+00:00",
+  "at": "2026-10-26T15:25:41+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -47,11 +47,9 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン"
-   ],
-   "need": true,
-   "sig": "98abcc91241a",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "漫威电影",
     "BLEACH Mirrors High",
@@ -62,12 +60,13 @@
     "dota2",
     "あつ森",
     "GTA 6",
+    "チェーンソーマン",
     "The Mandalorian",
     "绝区零",
     "A2O LITE",
     "Astrae Oratio"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 00:28 から）"
+   "why": "失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 00:28 から）"
   },
   "photos": {
    "claude": true,
