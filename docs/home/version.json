@@ -1,32 +1,32 @@
 {
- "admin": "e64689cfc775",
- "admin-ai": "341afc31da1b",
+ "admin": "12653c3dd9d4",
+ "admin-ai": "b2c97ecc3063",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "03dd3364"
+   "06c64d81"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ca57f75f"
   ]
  },
- "admin-boards": "98c90e754477",
+ "admin-boards": "9f945f21fc0c",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "9fbdeaa2"
+   "4d878027"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "00a82deb02cc",
+ "admin-emblem": "2e1e2a8ab21d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d8af30c0"
+   "67d5480c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,24 +34,24 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "b95083e0"
+   "2f6e9b66"
   ],
   "emblems": [
    "小元素",
-   "108c6aee"
+   "ccaebe4f"
   ]
  },
  "admin-members": "b665e0f53ce6",
  "admin-members_marks": {},
- "admin-now": "2fd753838a8b",
+ "admin-now": "0430c5273fd1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d2d78e1a"
+   "1a6cd03b"
   ],
   "queue": [
    "いまの状況",
-   "a0a5b690"
+   "77cc7b23"
   ],
   "status": [
    "運行状況",
@@ -62,11 +62,11 @@
    "22b1fd1e"
   ]
  },
- "admin-system": "1bd630d66c6b",
+ "admin-system": "81d247b1d032",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "05980c7e"
+   "824943d1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "85e71710"
+   "394cbcf0"
   ]
  },
  "admin_marks": {},
- "heat": "a5a63297d9b8",
+ "heat": "a5144f7bb2ab",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "f2cac3b0"
+   "66fde9e2"
   ],
   "ranking": [
    "ランキング",
-   "9119a544"
+   "843b36c1"
   ]
  },
- "index": "05a9e7071188",
+ "index": "24507b3aec98",
  "index_marks": {
   "front": [
    "トップ",
-   "3ff28113"
+   "fd54472e"
   ],
   "picks": [
    "気になるかも？",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "9b2530e1"
+   "0fdfe48b"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "83d3c9dd"
+   "a92b2081"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "c15e1c8a"
+   "5a39c147"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "cd838a3a"
+   "45ba6fc4"
   ]
  },
- "updated": "10.26 22:51",
+ "updated": "10.26 23:03",
  "wishlist": "78b1c8b230fc"
 }
