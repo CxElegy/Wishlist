@@ -84,3 +84,4 @@
 - 2026-10-26 f1f2：dota2 端のページの別の目の指摘＝EMBLEM_PLAYBOOK に 48 行目・BACKLOG の NAMES_V 8→9 と Blood* 5 枚は残す決定を記録（文書だけ）· 確かめ：PR #451 の差分・items.yaml dota2 emblem_pool 124・本番 200 は別の目が確認済み · 次：[?] の答え
 - 2026-10-26 f2：1 画面目の穴＝日付の □（数字・等幅の書体に日本語の予備）・足の注記を畳む・ux_check に □ と頭条の写真 · https://github.com/CxElegy/Wishlist/pull/455 ・ https://github.com/CxElegy/Wishlist/pull/456 · 全テスト 878 通過・CI 緑・ux_check guest ✓（点検が本番の「N 件」の □ も見つけた） · 次：浮いているボタンが中身を隠さない
 - 2026-10-26 f3：画面の PR の Before/After の切り抜きを本番で確かめた（4 つの場合 OK・欄は切らず欄ぜんぶに直した）· https://github.com/CxElegy/Wishlist/pull/459 · 全テスト 880 通過 · 次：check_arch で「書いた場所」も見る
+- 2026-10-26 ポケモンの並びが直らない根（r1f1）：RULES 8 の作り直しで分類を捨てたあと、Pokémon の é で作品の呼び名が空になり own_wiki が外れて名簿が空だった（work_names を NFKD に、NAMES_V 10）· https://github.com/CxElegy/Wishlist/pull/458 · 手元：最初の 10 は全部アニメ · ux_check 本番：test-a ✗ は呪術廻戦 E11 だけ（作り直し中）· 本番 run 40291679538：boards.id=144 の最初の 10 は全部アニメ〔Red (Adventures) なし〕· 次：現行シリーズを先に（Liko・Roy）
