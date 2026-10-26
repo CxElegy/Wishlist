@@ -1314,6 +1314,8 @@ def _emblem(items, ring="accent"):
                 a["nf"] = 1   # 顔なし（物・生き物・覆面）：測ったがない。大きさはそのまま
         if x.get("shape") in ("logo", "icon"):
             a["shape"] = x["shape"]
+        elif a["shape"] == "cutout" and emblem_face.logo_named(x):
+            a["shape"] = "logo"   # 名前が logo の画像（shape が cutout のまま網址で引いた ArcheAge_Logo.png）は人物でなくロゴ：顔の物差しに入れない
         if x.get("plate"):   # 濃い地の板ごとのタイトルロゴ：カードの窓で切らず、板そのものに枠
             a["plate"] = True
         alts.append(a)
@@ -5573,7 +5575,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
 # 小元素の管理（2026-10-25，用户定的）：管理ページの専用の欄。版面を選ぶと大きい写真＋名前＋取り方。押すと「どうしたい？」：
 # 🔄 同じ人の別の写真に替える（_emblem_swap：今の写真は emblem_reject・人は emblem_redo に残す）／📌 この写真で固定（_emblem_lock：lock: true）／
 # ✕ この人ごと外す（_emblem_reject：理由 1 つ必須）。下の帯でまとめて submit_item の edit に送る → requests.yml の take-items が digest.take_item_requests で items.yaml へ。
-EMM_FLAG = {"small": "顔が小さい", "big": "顔が大きい（アップ）", "none": "顔なし"}
+EMM_FLAG = {"small": "顔が小さい", "big": "顔が大きい（アップ）", "short": "下が足りない（目の線が合わない）", "none": "顔なし"}
 
 
 def _emm_img(x):
@@ -5582,7 +5584,7 @@ def _emm_img(x):
     v = emblem_face.view(x["face"]) if x.get("face") else None
     if not v:
         return f'<img src="{e(x["image"])}" alt="" loading="lazy">' + (f'<em class="emm-fl">{EMM_FLAG["none"]}</em>' if x.get("face") else "")
-    return (f'<img class="fv" src="{e(x["image"])}" alt="" loading="lazy" style="--fm:{v["m"]};--fw:{v["w"]};--fx:{v["ox"]};--fy:{v["oy"]}">'
+    return (f'<img class="fv" src="{e(x["image"])}" alt="" loading="lazy" data-eye="{v["eye"]}" style="--fm:{v["m"]};--fw:{v["w"]};--fx:{v["ox"]};--fy:{v["oy"]}">'
             + (f'<em class="emm-fl">{EMM_FLAG[v["flag"]]}</em>' if v["flag"] else ""))
 
 
@@ -6137,7 +6139,7 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .emm-tile:disabled{cursor:default;opacity:.55}
 .emm-ph{position:relative;display:block;aspect-ratio:4/5;background:repeating-linear-gradient(45deg,color-mix(in srgb,var(--ink) 8%,var(--card)) 0 6px,var(--sheet) 6px 12px);border:2px solid var(--ink);overflow:hidden}
 .emm-ph img{width:100%;height:100%;object-fit:contain;display:block}
-.emm-ph img.fv{position:absolute;max-width:none;object-fit:fill;width:calc(var(--fw) * 100%);height:calc(var(--fm) * 100%);left:calc(var(--fx) * 100%);top:calc(var(--fy) * 100%)}  /* emblem_face.view：顔の高さ 32%・目の線 30%・頭の上の余白 6〜14% */
+.emm-ph img.fv{position:absolute;max-width:none;object-fit:fill;width:calc(var(--fw) * 100%);height:calc(var(--fm) * 100%);left:calc(var(--fx) * 100%);top:calc(var(--fy) * 100%)}  /* emblem_face.view：顔の高さ 32%・目の線 30%（髪は切らない・下に浮かせすぎない範囲で）*/
 .emm-fl{position:absolute;left:0;bottom:0;z-index:1;font:700 var(--fs-tag)/1.4 var(--font-sans);font-style:normal;background:var(--ink);color:var(--card);padding:0 5px}
 .emm-tile b{font:900 13px/1.35 var(--font-sans)}.emm-tile small{font-size:var(--fs-label);line-height:1.4;opacity:.65}
 .emm-tile:hover .emm-ph{box-shadow:3px 3px 0 var(--rose)}
