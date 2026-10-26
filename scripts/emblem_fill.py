@@ -2401,6 +2401,8 @@ def stage_closeups(item, bad, log=print):
             if dropped:
                 _set_field(name, "emblem_redo", json.dumps(redo, ensure_ascii=False) + "   # 別の写真に替える人（次の集めで先に）")
     with WRITE_LOCK:
+        if swapped:   # 入れ替えた絵はすぐ顔を測る（face を外して書いたまま回が終わると、測っていない小元素が残る）
+            emblem_face.measure_item(next((i for i in load_items() if i["name"] == name), item), log)
         closeup_state(st)
     left = len(cur) - len(swapped) - len(dropped)
     log(f"  [胸像待ち] {name}：胸像に入れ替え {len(swapped)}（{'、'.join(swapped)}）・{CLOSE_TRIES} 回で外した {len(dropped)}・まだ待ち {left}（うち探した回数が {CLOSE_TRIES} 回以上の上位 {sum(1 for s in mine if mine[s]['n'] >= CLOSE_TRIES)}）")
