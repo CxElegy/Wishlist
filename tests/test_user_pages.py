@@ -112,6 +112,19 @@ class Layout(unittest.TestCase):
         for w in ("additem.js", "id=\"wiz\"", "class=\"secdel\"", "class=\"del\"", "admin.html", "回到简报"):   # 店長の向導・管理の道は出さない
             self.assertNotIn(w, s)
 
+    def test_settings_zero_picks_has_main_button(self):
+        # 版面 0 個の人の設定ページ：入口は主役のボタン（トップの最初の画面と同じ .startgo）、1 つ以上なら小さいリンク
+        pages = {}
+        user_pages.build("a@example.com", {"picks": [], "sizes": {}}, {}, [], None, {}, 0, {}, self.FOL, {}, pages)
+        self.assertEqual(pages["settings.html"].count('<a class="startgo" href="'), 1)
+        self.assertIn(user_pages.ADD_URL, pages["settings.html"])
+        pages = {}
+        user_pages.build("a@example.com", {"picks": self.PICKS, "sizes": {}}, {}, [], None, {}, 0, {}, self.FOL, {}, pages)
+        self.assertNotIn('<a class="startgo" href="', pages["settings.html"])
+        self.assertIn(">＋ 追いかけるものを足す</a>", pages["settings.html"])
+        me = render.render_me()   # 欲しい物ページの 0 個の人も選ぶへ直接
+        self.assertIn("go big", render.AUTH_JS)
+
     def test_shop_settings_unchanged(self):
         s = render.render_settings([{"name": "あつ森", "section": "游戏", "size": "M"}], {"url": "u", "key": "k"}, "x")
         for w in ("additem.js", "新增关注项", 'lang="zh-CN"', "删除这个板块"):
@@ -227,6 +240,18 @@ if __name__ == "__main__":
 
 
 class FirstScreenTests(unittest.TestCase):
+    def test_zero_settings_and_wishlist_need_main_button(self):
+        # 設定・欲しい物ページ（zero は「まだ何も追いかけていません」の字で決まる）：主役のボタンなし・固定ボタンと重なる・画面に入らない（低い端末）は ✗
+        import sys, pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        base = {"go": {"t": 300, "b": 356, "l": 20, "r": 360}, "fix": {"t": 600, "b": 640, "l": 100, "r": 378}, "H": 667,
+                "shelves": False, "sum": 0, "tapes": 0, "zero": True, "quiet": False, "links": 1}
+        self.assertEqual(ux_check.first_screen_bad(base), [])
+        self.assertEqual(len(ux_check.first_screen_bad({**base, "go": None})), 1)
+        self.assertEqual(len(ux_check.first_screen_bad({**base, "go": {"t": 590, "b": 650, "l": 20, "r": 360}})), 1)
+        self.assertEqual(len(ux_check.first_screen_bad({**base, "go": {"t": 640, "b": 700, "l": 20, "r": 360}})), 2)
+
     def test_zero_boards_start_button_and_no_shelf(self):
         # 版面 0 個：主役は「選ぶ」ボタン（新着なしの帯・ジャンル別の数は出さない）
         h = user_pages.build("c@example.com", {"picks": []}, {}, [], None, {}, 0, {}, [], {})

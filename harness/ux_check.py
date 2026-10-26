@@ -16,7 +16,8 @@
 管理ページ（admin.html ＝トップ＋ admin-*.html の 6 つ。7 枚とも開ける・切り替え 7 つ・はみ出しなし・JS のエラーなし・前の 1 枚の欄 13 と小見出し 10 が全部どこかにある〔なくした欄 0〕。
 ⑤しくみ admin-system.html は、ログインなしで門を外して HTML の作りだけ）：「全体の構成（詳しい図）」の枠が潰れていない（PC で枠の幅 140px 以上、
 2026-10-25 に枠が 24px に潰れた）・枠の下の空白 800px 以下（Actions の枠だけ 5,129px で下の枠が押し下げられた）・部品の重なり 0・枠や部品の字のはみ出し 0・横にはみ出さない。写真 OUT/admin-arch-<幅>.png。
-写真は OUT/<だれ>-<幅>.png・OUT/<だれ>-set-<幅>.png。
+写真は OUT/<だれ>-<幅>x<高さ>.png・OUT/<だれ>-settings-<幅>x<高さ>.png。
+0 個の人（test-c）は 390 幅で高さ 667・740 でも、最初の画面・設定・欲しい物（wishlist.html）を点検（主役のボタンが画面に入り固定ボタンと重ならない）。
 「1 日通し」（--journey、2026-10-27）：空のアカウント test-d で、押して通す。入口 →「ログイン」→ 空の最初の画面の「好きなものを選ぶ」→ ジャンル → カード → 確認 →「足す」→
 自分のページに札が出る → 設定ページに出る →札を押して外れる → 空に戻る（本人の追いかけるものを空にする）。各段で本物のクリック（ほかの部品が上に重なっていれば押せずに ✗）、前後の画面を OUT/journey-<幅>-<段>.png に残す。
 ✗：押せない・押しても変わらない・JS のエラー・素の箱・横にはみ出す・同じ id の重複。始めと終わりに本人の追いかけるもの（prefs.picks）を空にする（本人の行だけ、my_keywords_set）。
@@ -58,9 +59,9 @@ def session(email):
     return out
 
 
-def check(pw, base, who, width, out, page="", emb="off"):
+def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_S):
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
-    pg = b.new_page(viewport={"width": width, "height": 900})
+    pg = b.new_page(viewport={"width": width, "height": height})
     loads, errors = [], []
     pg.on("load", lambda: loads.append(pg.url))
     pg.on("pageerror", lambda e: errors.append(str(e)[:160]))
@@ -70,7 +71,7 @@ def check(pw, base, who, width, out, page="", emb="off"):
                     session(WHO[who]))
     loads.clear()
     pg.goto(base + page, wait_until="domcontentloaded", timeout=60000)
-    pg.wait_for_timeout(WATCH_S * 1000)
+    pg.wait_for_timeout(wait * 1000)
     if not page:   # 2026-10-27：loading=lazy の写真は下までスクロールしないと読み込まれず、開けない写真（札）を数え損ねる。下まで読んでから数える
         for y in range(0, 40000, 800):
             pg.evaluate(f"window.scrollTo(0,{y})")
@@ -95,8 +96,8 @@ def check(pw, base, who, width, out, page="", emb="off"):
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
         sw:document.documentElement.scrollWidth})""", BOXES)
     near = [] if page else pg.evaluate(NEAR_JS)
-    first = None if page else pg.evaluate(FIRST_JS)
-    pg.screenshot(path=str(out / f"{who}-{'set-' if page else ''}{width}.png"))
+    first = pg.evaluate(FIRST_JS)
+    pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
     bad = []
     if not page and emb != "off":
         bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
@@ -104,9 +105,9 @@ def check(pw, base, who, width, out, page="", emb="off"):
     if page:   # 設定ページ：版面・目次はないので、枠組み（題字・令牌）と本人の分か
         if st["text"] < 100:
             bad.append(f"白い画面（文字 {st['text']}）")
-        if WHO[who] and st["boxes"]:
+        if WHO[who] and page == "settings.html" and st["boxes"]:
             bad.append(f"素の箱 {st['boxes']} 個（本人の設定ページではない）")
-        if WHO[who] and not st["own"]:
+        if WHO[who] and page == "settings.html" and not st["own"]:
             bad.append("本人の設定ページではない")
         if not (st["mast"] and st["token"]):
             bad.append("題字・令牌がない")
@@ -114,6 +115,7 @@ def check(pw, base, who, width, out, page="", emb="off"):
             bad.append(f"横にはみ出す（{st['sw']}px）")
         if errors:
             bad.append("JS のエラー：" + " / ".join(errors[:2]))
+        bad += first_screen_bad(first)   # 0 個の人の設定・欲しい物：主役のボタンがあり・最初の画面に入り・固定ボタンと重ならない
         return st, bad
     if len(loads) > 3:
         bad.append(f"開き直しのくり返し（{WATCH_S} 秒で {len(loads)} 回）")
@@ -147,13 +149,13 @@ def check(pw, base, who, width, out, page="", emb="off"):
 
 
 # 2026-10-27：版面 0 個の人の最初の画面。主役のボタンが最初の画面の中にあり、右下の固定ボタンと 8px 以上離れる。「N 作品」の数は本当の数と一致
-FIRST_JS = """()=>{const g=document.querySelector('.startgo'),f=document.querySelector('.wl-auth'),r=x=>x?x.getBoundingClientRect():null;
+FIRST_JS = """()=>{const g=document.querySelector('.startgo,.wl-mine .go.big'),f=document.querySelector('.wl-auth'),r=x=>x?x.getBoundingClientRect():null;
  const sum=[...document.querySelectorAll('.shelf h3 small')].reduce((s,x)=>s+(+((x.textContent.match(/(\\d+) 作品/)||[])[1])||0),0);
  const g1=r(g),f1=r(f);return {go:g1?{t:g1.top,b:g1.bottom,l:g1.left,r:g1.right}:null,fix:f1?{t:f1.top,b:f1.bottom,l:f1.left,r:f1.right}:null,
   H:innerHeight,shelves:!!document.querySelector('.shelfbox'),sum,tapes:document.querySelectorAll('.shelf .tapes>a').length,
-  zero:!!document.querySelector('.calm.start,.top.start'),
+  zero:!!document.querySelector('.calm.start,.top.start')||/まだ何も追いかけていません/.test((document.querySelector('.page,.wl-mine')||{}).innerText||''),
   quiet:[...document.querySelectorAll('.poster,.calm.start,.pill .cnt,.calm .tag')].map(x=>x.innerText||'').join(' ').replace(/\\s+/g,'').includes('新着なし'),
-  links:document.querySelectorAll('.page a.startgo,.page .calm a').length}}"""
+  links:document.querySelectorAll('.page a.startgo,.page .calm a,.wl-mine .go.big').length}}"""
 
 
 def first_screen_bad(f, gap=8):
@@ -488,13 +490,16 @@ def main(argv):
             print(f"1 日通し：✗ {fails} 件")
             return 1 if fails else 0
         for who in a.who.split(","):
-            for w, page in [(int(w), pg) for pg in ("", "settings.html") for w in a.widths.split(",")]:
+            runs = [(int(w), pg, 900) for pg in ("", "settings.html") for w in a.widths.split(",")]
+            if who == "test-c" and "390" in a.widths.split(","):   # 2026-10-27：0 個の人は小さい端末（高さ 667・740）でも、最初の画面・設定・欲しい物の主役のボタンが固定ボタンと重ならない
+                runs += [(390, pg, h) for h in (667, 740) for pg in ("", "settings.html", "wishlist.html")]
+            for w, page, h in runs:
                 try:
-                    st, bad = check(pw, a.base, who, w, out, page, a.emb)
+                    st, bad = check(pw, a.base, who, w, out, page, a.emb if h == 900 else "off", h, WATCH_S if h == 900 else 10)
                 except Exception as ex:  # noqa: BLE001
                     st, bad = {}, [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
                 fails += bool(bad)
-                print(("✗ " if bad else "✓ ") + f"{who}{' 設定' if page else ''} {w}px：" + ("、".join(bad) if bad else
+                print(("✗ " if bad else "✓ ") + f"{who}{' ' + page.split('.')[0] if page else ''} {w}x{h}px：" + ("、".join(bad) if bad else
                       f"版面 {st.get('secs')}・記事 {st.get('arts')}・写真 {st.get('pics')}・本人のページ {'はい' if st.get('own') else 'いいえ'}"))
         for w in a.widths.split(","):
             try:

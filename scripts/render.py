@@ -1821,6 +1821,16 @@ SETTINGS_JA = {
     "js_nodb": "つながっていません", "js_saving": "保存しています…", "js_saved": "保存しました ✓", "js_fail": "保存できませんでした", "js_offline": "つながりません"}
 
 
+def _own_add(own, items):
+    """お客さまの設定ページの「足す」入口。0 個の人は入口（.startgo＝トップの最初の画面と同じ主役のボタン、固定ボタンと重ならない上の方）、
+    1 つ以上ある人は小さいリンク（2026-10-27：0 個の人の設定ページは小さい字のリンクだけで、主役がなかった）。"""
+    href = e(own.get("add") or "../?add")
+    if not items:
+        return (f'<p class="hint">まだ何も追いかけていません。選ぶと、ここで版面の大きさを決められます。</p>'
+                f'<a class="startgo" href="{href}">追いかけるものを選ぶ →</a>')
+    return f'<p class="hint"><a class="go" href="{href}">{SETTINGS_JA["add"]}</a></p>'
+
+
 def render_settings(items, db, updated, schemes=(), own=None):
     """设置页（docs/settings.html）：改每个关注项的篇幅 S / M / L，新增 / 修改关注项。都不用口令。
     items：[{name, section, subtitle, size, fields}]（items.yaml 的顺序；fields 是网页上能改的那些字段的现值）；
@@ -2040,7 +2050,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
 <div class="page">
 <a class="back" href="{T["back_href"]}">{T["back"]}</a>
 <header><h1 style="margin:0;font:900 40px/1.1 var(--font-sans);letter-spacing:.04em">{T["title"]}</h1></header>
-{T["links"] if not own else f'<p class="hint"><a class="go" href="{e(own.get("add") or "../?add")}">{T["add"]}</a></p>'}
+{T["links"] if not own else _own_add(own, items)}
 <p class="intro">{T["intro"]}</p>
 <dl class="legend">{T["legend"]}</dl>
 {sch_html}
@@ -4033,7 +4043,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 .wl-mine ul.kw li small{font:500 var(--fs-label) var(--font-sans);opacity:.7}
 .wl-mine ul.kw li button{margin:0;padding:0 7px;background:var(--card);font-size:12px}
 .wl-mine .wl-back{display:flex;flex-wrap:wrap;gap:8px 18px;margin:-8px 0 18px;font:700 14px/1.5 var(--font-sans)}.wl-mine .wl-back a{color:var(--ink)}
-.wl-mine .empty{padding:22px 20px;border:2px dashed var(--ink);background:var(--sheet)}.wl-mine .empty b{display:block;font:900 17px/1.4 var(--font-sans)}
+.wl-mine .go.big{display:flex;align-items:center;justify-content:center;min-height:56px;font:900 18px var(--font-sans);box-shadow:4px 4px 0 var(--ink)}.wl-mine .empty{padding:22px 20px;border:2px dashed var(--ink);background:var(--sheet)}.wl-mine .empty b{display:block;font:900 17px/1.4 var(--font-sans)}
 .wl-mine .note{margin-top:18px;font-size:13px;opacity:.85}
 .wl-mine form.add{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 .wl-mine form.add input,.wl-mine form.add select{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
@@ -4465,7 +4475,7 @@ AUTH_JS = r"""
         '<a class="go" href="'+ADD+'">好きなものを選ぶ →</a></div>';return;}
     if(page!=='index'&&page!=='settings'){
       box.innerHTML=h+'<div class="empty">'+(picks.length?'<b>追いかけているものの記事は、トップにまとまっています</b><p>'+picks.length+' つを追いかけています。</p>':
-        '<b>まだ何も追いかけていません</b><p>トップで追いかけたいものを選ぶと、記事が並びます。</p>')+'<a class="go" href="./">トップへ</a></div>';return;}
+        '<b>まだ何も追いかけていません</b><p>好きな作品・人・場所を選ぶと、記事が並びます。</p>')+(picks.length?'<a class="go" href="./">トップへ</a>':'<a class="go big" href="'+ADD+'">追いかけるものを選ぶ →</a>')+'</div>';return;}
     var items=(A.items||[]), chosen={}, secsOn={};
     picks.forEach(function(x){chosen[x.name]=x.sec;secsOn[x.sec]=1;});
     // 設定の画面から自分のトップへ戻る道と、トップと同じ「カードで選んで足す」流れへの道（網址を打たせない・ブラウザの戻るに頼らない）
