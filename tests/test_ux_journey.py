@@ -48,5 +48,37 @@ class Press(unittest.TestCase):
         self.assertNotEqual(title, "pushed")
 
 
+class Copy(unittest.TestCase):
+    def test_wait_regex_knows_the_current_copy(self):
+        """空の最初の画面の言い回しを user_pages が変えたら、通しが黙って壊れる前にここで落ちる。"""
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+        import user_pages
+        txt = user_pages.user_issue([], None, {}, 0, {})["items"][0]["status"]
+        self.assertTrue(ux_check.re_pick().search(txt), txt)
+
+    def test_empty_page_shows_no_raw_markdown(self):
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+        import re
+        import user_pages
+        h = user_pages.build("a@example.com", {"picks": []}, {}, [], None, {}, 0, {}, [])
+        self.assertNotRegex(re.sub(r"<[^>]+>", "", h), r"\]\(")
+
+    @unittest.skipUnless(sync_playwright, "playwright がない")
+    def test_pick_skips_hidden_match(self):
+        html = '<b hidden>追いかけるものを選ぶ</b><a href="#x" onclick="document.title=\'pushed\'">追いかけるものを選ぶ →</a>'
+        with sync_playwright() as pw:
+            try:
+                b = pw.chromium.launch()
+            except Exception as ex:  # noqa: BLE001
+                self.skipTest(f"ブラウザがない：{ex}")
+            pg = b.new_page()
+            pg.set_content(html)
+            why = ux_check.press(pg, pg.locator("a:visible,button:visible").filter(has_text=ux_check.re_pick()), "選ぶ", timeout=1500)
+            title = pg.title()
+            b.close()
+        self.assertIsNone(why)
+        self.assertEqual(title, "pushed")
+
+
 if __name__ == "__main__":
     unittest.main()
