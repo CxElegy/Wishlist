@@ -1,14 +1,14 @@
 {
- "admin": "85969a7fe5f2",
- "admin-ai": "89a6c086c816",
+ "admin": "e5d4bad58649",
+ "admin-ai": "e0946de5bfd1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5c8cf19f"
+   "dda5d94b"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "df5b5186"
+   "28fe8038"
   ]
  },
  "admin-boards": "6cc54f123150",
@@ -22,11 +22,11 @@
    "0ccd21c6"
   ]
  },
- "admin-emblem": "5fdfe09f26d6",
+ "admin-emblem": "878cfdcd84a9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "2f37bd35"
+   "62a95cbb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0a0ba07d09df",
  "admin-members_marks": {},
- "admin-now": "57a0f28b85f1",
+ "admin-now": "b0dce1ba1504",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "54373072"
+   "95c9e6d8"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "0b3c305a"
+   "4522653c"
   ]
  },
- "admin-system": "be5f9834c08d",
+ "admin-system": "c044c9d0b620",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "7ad1f8ab"
+   "b1cceb46"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "77bc9990"
+   "e59db0c9"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "72320844"
   ]
  },
- "index": "7a12c1b5ede8",
+ "index": "c3cfb0f0263a",
  "index_marks": {
   "front": [
    "トップ",
-   "fb4ec866"
+   "6797f655"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "38a25116"
+   "aad5d803"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "d805006d"
+   "f640b3e2"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "9bfc1df0"
+   "0dec2f5c"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "9bb3f3c9"
+   "6a69a8eb"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -157,11 +157,11 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "a7b6c12e"
+   "82c1775f"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "aa265da3"
+   "feb2f162"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "bfed131a"
+   "fef999af"
   ],
   "w-f303ad09": [
    "绝区零",
    "cd838a3a"
   ]
  },
- "updated": "10.26 20:37",
- "wishlist": "86c9cd85e98e"
+ "updated": "10.26 20:42",
+ "wishlist": "9cf5d9015925"
 }
