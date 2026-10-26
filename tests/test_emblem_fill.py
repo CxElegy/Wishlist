@@ -1913,6 +1913,38 @@ class FindSources(unittest.TestCase):
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual([x["subject"] for x in got["emblem"]], ["Axe", "Axe 2", "Soldier 11"])
 
+    def test_redirected_page_does_not_take_the_leads_picture(self):
+        """BLEACH Mirrors High：「Zangetsu (Quincy Powers)」の Fandom ページは黒崎一護のページへの転送で、一護の代表画像を先に取った。
+        一護本人は「もう使っている画像」で 1 枚も取れなかった。別の人のページの画像は取らず、前からのものは emblem_reject に入れずに外す。"""
+        who = ["Ichigo Kurosaki", "Rukia Kuchiki", "Zangetsu (Quincy Powers)", "Tōshirō Hitsugaya"]
+        ich = "https://bleach.fandom.com/wiki/Ichigo_Kurosaki"
+        self.assertEqual(ef.page_owner(ich, "Zangetsu (Quincy Powers)", who), "Ichigo Kurosaki")
+        self.assertIsNone(ef.page_owner(ich, "Ichigo Kurosaki", who))
+        self.assertIsNone(ef.page_owner("https://bleach.fandom.com/wiki/Toushirou_Hitsugaya", "Tōshirō Hitsugaya", who))   # 同じ人の書き方違い
+        self.assertIsNone(ef.page_owner("https://bleach.fandom.com/wiki/File:BBSMaster_Ichigo.png", "Ichigo Kurosaki 2", who))
+        self.assertIsNone(ef.page_owner("https://bleach.fandom.com/wiki/Zangetsu", "Zangetsu (Quincy Powers)", who))   # 名簿の人のページでなければ可
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "items.yaml").write_text('items:\n  - name: b\n    emblem_kind: character\n    emblem:\n'
+                                            f'      - {{subject: "Zangetsu (Quincy Powers)", image: "z.webp", page: "{ich}"}}\n'
+                                            '      - {subject: "Rukia Kuchiki", image: "r.webp", page: "https://bleach.fandom.com/wiki/Rukia_Kuchiki"}\n', encoding="utf-8")
+            item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+            item["emblem_who"] = who
+            with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp):
+                self.assertEqual(ef.wrong_owner(item, log=lambda *_: None), 1)
+            got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        self.assertEqual([x["subject"] for x in got["emblem"]], ["Rukia Kuchiki"])
+        self.assertNotIn("emblem_reject", got)
+
+    def test_head_missing_counts_leads_without_emblem(self):
+        """名簿の先頭 3 人（主役）のうち小元素がいない人。実写は「役（出演者）」、(…) つきの名前も同じ人。"""
+        item = {"emblem_who": ["Ichigo Kurosaki", "Rukia Kuchiki", "Renji Abarai", "Uryuu Ishida"],
+                "emblem": [{"subject": "Rukia Kuchiki"}, {"subject": "Uryuu Ishida"}]}
+        self.assertEqual(ef.head_missing(item), ["Ichigo Kurosaki", "Renji Abarai"])
+        live = {"emblem_who": ["Chris Hemsworth", "Pedro Pascal"], "emblem": [{"subject": "Thor（Chris Hemsworth）"}]}
+        self.assertEqual(ef.head_missing(live), ["Pedro Pascal"])
+        self.assertEqual(ef.head_missing({"emblem_who": ["Inklings"], "emblem": [{"subject": "Inklings 2"}]}), [])
+
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""
         who = ["Red (Adventures)", "Ash Ketchum", "Gold (Adventures)", "Goh", "Red (Origins)", "Roy"]
