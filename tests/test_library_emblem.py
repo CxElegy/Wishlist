@@ -167,7 +167,7 @@ class Fill(unittest.TestCase):
         now = 10 ** 6
         nv = emblem_fill.NAMES_V
         bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv}}},   # 済み・今の規則 → 飛ばす
-              {"id": 9, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv - 1}}},   # 済みでも名簿の規則が前の版 → 最後に数え直す
+              {"id": 9, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv - 1}}},   # 済みでも名簿の規則が前の版 → 途中より先に数え直す
               {"id": 8, "config": {"emblem_state": {"state": "ok", "at": 0, "have": 3}}},   # 済みでも前の版の規則 → 作り直し
               {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES}}},
               {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2}}},   # 前の版の規則 → すぐ
@@ -178,7 +178,7 @@ class Fill(unittest.TestCase):
               {"id": 10, "config": {"emblem_fandom": "jjk", "emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES}}},   # 届かなかったキャラの版面も名簿の版で
               {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES, "bv": emblem_fill.BROKEN_V}}},   # 手がかりなし → 24 時間待つ
               {"id": 12, "config": {"emblem_state": {"state": "failed", "at": now - 60, "have": 49, "v": le.RULES, "nv": nv}}}]   # 公開の箱の小元素を今の壊れ方の規則で見ていない → 待たない
-        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 10, 12, 4, 8, 6, 9])
+        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 10, 12, 9, 4, 8, 6])
 
     def test_unbroken_drops_cut_public_emblems(self):
         """公開の箱の小元素は emblem_fill.broken_cuts が見ない → 同じ規則（broken_image）で外す。ほかの網址・ロゴ・読めないものは残す。"""
