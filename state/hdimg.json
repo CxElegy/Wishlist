@@ -605,6 +605,19 @@
   "v": 3,
   "blur": 0.323
  },
+ "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_a2o_aijing_5156_20261015.webp": {
+  "w": 452,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.629,
+  "local": "pics/7f03da2ce0868d81.webp",
+  "out": [
+   1280,
+   850
+  ],
+  "why": "看不清"
+ },
  "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_b58e8fe0b34f082a043f04f172b43629_20261023.webp": {
   "w": 405,
   "h": 300,
@@ -1608,12 +1621,6 @@
  "https://kagit-media.atreez.cc/uploads/2026-10-19/rjswog6orxf7mm9n05yf9dgk.jpg": {
   "w": 1600,
   "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://kagit-media.atreez.cc/uploads/2026-10-21/e8q5op2smsy5m4jytoua8h18.png": {
-  "w": 695,
-  "h": 350,
   "target": 720,
   "v": 3
  },
@@ -2998,6 +3005,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026130704": {
+  "w": 640,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.383
+ },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
   "h": 225,
@@ -3406,13 +3420,6 @@
    720
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.mgRA6CsgTMQsdFtE2ho-Tw&pid=News&w=640": {
-  "w": 640,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.407
  },
  "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200": {
   "w": 700,
