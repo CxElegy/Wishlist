@@ -2631,7 +2631,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
                 pic = {"image": imgs[0] if imgs else None, "_fbs": imgs[1:], "_work": w["name"],
                        **{k: first.get(k) for k in ("url", "source", "source_icon")}}
             else:
-                text, cls = w.get("status") or "新着なし", "tape q"
+                text, cls = re.sub(r"\[([^\]]+)\]\([^)\s]+\)", r"\1", w.get("status") or "新着なし"), "tape q"   # 背表紙は文字だけ（[文字](リンク) の書き方をそのまま出さない）
                 pic = {"image": w.get("_thumb"), "_work": w["name"], "_fbs": []}
             tapes.append(f'<a class="{cls}" href="#{_wid(w["name"])}"><span class="spine" aria-hidden="true"></span>'
                          f'{_pic(pic)}<span class="lbl"><i>{e(w["name"])}</i><b>{e(text)}</b></span></a>')

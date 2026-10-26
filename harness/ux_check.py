@@ -260,6 +260,7 @@ def check_emb_fade(pw, base, width):
 
 JOURNEY_MAIL = "test-d@example.com"   # 空のアカウント（HARNESS.md「test-c・test-d：空」）
 JOURNEY_TIMEOUT = 6000
+PICK_RE = "好きなものを選ぶ|追いかけるものを選ぶ|追いかけるものを足す"   # 空の最初の画面の入口の文言（言い回しが変わったらここ 1 か所）
 
 
 def press(pg, target, label, timeout=JOURNEY_TIMEOUT):
@@ -344,9 +345,10 @@ def journey(pw, base, width, out):
             pg.wait_for_function("()=>!!localStorage.getItem('wl-auth')", timeout=15000)
         if not step("ログイン入力", login):
             return bad
-        pg.wait_for_function("()=>/好きなものを選ぶ|追いかけるものを足す/.test(document.body.innerText)", timeout=30000)   # 空の最初の画面
+        if not step("空の最初の画面", lambda: pg.wait_for_function("p=>new RegExp(p).test(document.body.innerText)", arg=PICK_RE, timeout=30000) and None):
+            return bad
         frame("空の最初の画面")
-        pick = pg.get_by_text(re_pick())
+        pick = pg.locator("a:visible,button:visible").filter(has_text=re_pick())   # 見える押せるもの（隠れた <b> に当たらない）
         if not step("最初の 1 つを選ぶ", lambda: press(pg, pick, "好きなものを選ぶ")):
             return bad
         pg.wait_for_selector(".genre", timeout=20000)
@@ -404,7 +406,7 @@ def journey(pw, base, width, out):
 
 def re_pick():
     import re
-    return re.compile("好きなものを選ぶ|追いかけるものを選ぶ|追いかけるものを足す")
+    return re.compile(PICK_RE)
 
 
 
