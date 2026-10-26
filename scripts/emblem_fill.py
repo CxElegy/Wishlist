@@ -2016,7 +2016,8 @@ def _write_sheet(item, good):
 
 def material(item):
     """その関注項の「材料」の指紋：集めた記事の数（直近 30 日）と、小元素の手がかり（emblem_who・urls・fandom・wiki・site・reject）。
-    失敗した版面は、これが変わったら（新しい記事・手がかりが増えた）待たずにすぐやり直す。"""
+    失敗した版面は、これが変わったら（新しい記事・手がかりが増えた）待たずにすぐやり直す。
+    規則の版（NAMES_V・BROKEN_V）も入れる：規則を直しても失敗の版面が材料同じで 1〜24 時間待たされ、直したのが本番に効くのが遅れた（#526 のあと The Mandalorian が 04:19 まで待ち）。"""
     import hashlib
     n = 0
     for path in sorted((ROOT / "inbox").glob("????-??-??.json"), reverse=True)[:30]:
@@ -2027,7 +2028,7 @@ def material(item):
         except ValueError:
             pass
     keys = {k: item.get(k) for k in ("emblem_who", "emblem_urls", "emblem_fandom", "wiki", "site", "emblem_reject", "emblem_kind", "emblem_icon")}
-    return hashlib.sha1(json.dumps([n, keys], sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
+    return hashlib.sha1(json.dumps([n, keys, NAMES_V, BROKEN_V], sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
 
 
 def _live(board, label=None, step=0):
