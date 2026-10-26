@@ -68,9 +68,9 @@
   "漫威电影": 58,
   "GTA 6": 56,
   "A2O LITE": 49,
-  "周杰伦": 18,
+  "周杰伦": 23,
   "ILLIT": 64,
-  "日本顶级网球赛事": 15,
+  "日本顶级网球赛事": 22,
   "MMORPG 新作": 5,
   "哈利波特剧集": 2,
   "猫用品": 5,
@@ -79,13 +79,13 @@
   "绝区零": 7,
   "Astrae Oratio": 8,
   "三星手机": 19,
-  "dota2": 11,
+  "dota2": 16,
   "FROM": 1,
   "The Mandalorian": 2,
   "gelato pique": 4,
   "星巴克马克杯": 4,
   "Vaundy": 2,
-  "ぐでたま": 1,
+  "ぐでたま": 4,
   "チェーンソーマン": 1
  },
  "GTA 6": [
@@ -235,7 +235,9 @@
     11,
     16,
     17,
-    18
+    18,
+    19,
+    20
    ]
   },
   {
@@ -245,6 +247,16 @@
    "weight": "normal",
    "refs": [
     14
+   ]
+  },
+  {
+   "headline": "周杰倫抓包！庾澄慶認了：我是低科技人才",
+   "highlight": "低科技人才",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    21,
+    22
    ]
   }
  ],
@@ -387,7 +399,8 @@
    "blurb": "Order of play for Monday October 26 across Basel, Vienna, Tokyo and Guangzhou. WTA Tokyo (Toray Pan Pacific Open) main draw begins.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    20
    ],
    "image": "https://tennisconnected.com/wp-content/uploads/2026/03/alexandra-eala-joc481o-fonseca-get-03-17-26-e1773723674883.jpg.webp"
   },
@@ -420,7 +433,8 @@
    "refs": [
     5,
     6,
-    11
+    11,
+    21
    ]
   },
   {
@@ -440,7 +454,12 @@
    "refs": [
     15,
     14,
-    13
+    13,
+    18,
+    19,
+    16,
+    17,
+    22
    ]
   }
  ],
@@ -680,7 +699,8 @@
    "blurb": "Dota 2 gets a new Tidehunter Arcana, a Drow Ranger Arcana rerun and more in the Trove of Terror treasure.",
    "weight": "lead",
    "refs": [
-    3
+    3,
+    12
    ],
    "image": "https://static.gosugamers.net/01/a5/ef/a3c6b6bbb5f78914840e3c1e4d1b2923f481e402996e80ff8f389e1415.jpg"
   },
@@ -718,6 +738,15 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "Valve has once again disabled one of the heroes in Dota 2",
+   "highlight": "disabled",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
    ]
   }
  ],
@@ -814,12 +843,22 @@
    "blurb": "アベイルで「ぐでたま」グッズが10月31日に発売。",
    "weight": "hero",
    "refs": [
-    1
+    1,
+    3
    ],
    "event": {
     "date": "2026-10-31",
     "label": "発売日"
    }
+  },
+  {
+   "headline": "金のぐでたまも当たる！サークルKサンクスでフェア開催",
+   "highlight": "金のぐでたま",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "チェーンソーマン": []

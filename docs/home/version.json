@@ -1,32 +1,32 @@
 {
- "admin": "e5d4bad58649",
- "admin-ai": "e0946de5bfd1",
+ "admin": "298b3946b179",
+ "admin-ai": "7e81f3c8559f",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "dda5d94b"
+   "af103ccf"
   ],
   "tokens": [
    "AI 編集のトークン",
    "28fe8038"
   ]
  },
- "admin-boards": "6cc54f123150",
+ "admin-boards": "685713ebc992",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "265df89b"
+   "3c06bd27"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "878cfdcd84a9",
+ "admin-emblem": "efa202823454",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "62a95cbb"
+   "c9e97a4e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0a0ba07d09df",
  "admin-members_marks": {},
- "admin-now": "b0dce1ba1504",
+ "admin-now": "4393b0437b28",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "95c9e6d8"
+   "84353512"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "4522653c"
   ]
  },
- "admin-system": "c044c9d0b620",
+ "admin-system": "98a575cec1c5",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b1cceb46"
+   "c0700ce4"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e59db0c9"
+   "2f4d10b5"
   ]
  },
  "admin_marks": {},
- "heat": "2ffa6b81db7f",
+ "heat": "f303461538df",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "196f7198"
+   "4e6c69e0"
   ],
   "ranking": [
    "ランキング",
-   "72320844"
+   "a1f7516e"
   ]
  },
- "index": "c3cfb0f0263a",
+ "index": "2e8f56318ed0",
  "index_marks": {
   "front": [
    "トップ",
-   "6797f655"
+   "3ff28113"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "690be9ad"
+   "b92e7c0b"
   ],
   "w-130724c0": [
    "猫用品",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "c25a720d"
+   "9707b728"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "0dec2f5c"
+   "9b2530e1"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "fee39b8b"
+   "6a3e6b63"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "e795040e"
+   "c62cc2ff"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "82c1775f"
+   "8eb2c239"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "cd838a3a"
   ]
  },
- "updated": "10.26 20:42",
+ "updated": "10.26 20:49",
  "wishlist": "9cf5d9015925"
 }

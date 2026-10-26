@@ -787,6 +787,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://happygamer.com/wp-content/uploads/2026/10/zenless-zone-zero-drops-truvia-enemy-dossier-with-season-3-spoilers.jpg": {
   "w": 1200,
   "h": 675,
@@ -811,10 +817,16 @@
   "target": 1280,
   "v": 3
  },
- "https://hawk.live/storage/images/posts/meepo-removed-dota-2-25143.jpg": {
+ "https://hawk.live/storage/images/posts/malr1ne-names-best-mid-laners-matchmaking-25264.jpg": {
   "w": 1200,
   "h": 628,
   "target": 720,
+  "v": 3
+ },
+ "https://hawk.live/storage/images/posts/meepo-removed-dota-2-25143.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/mindcontrol-will-not-return-pro-scene-25371.jpg": {
@@ -1534,12 +1546,6 @@
   "target": 720,
   "v": 3
  },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/26/5619207_2.jpg": {
-  "w": 800,
-  "h": 1069,
-  "target": 720,
-  "v": 3
- },
  "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg": {
   "w": 800,
   "h": 588,
@@ -2073,8 +2079,15 @@
  "https://news.walkerplus.com/article/58231/322776_615.jpg": {
   "w": 615,
   "h": 572,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.436,
+  "local": "pics/7b2d151edfcd31ef.webp",
+  "out": [
+   1280,
+   1191
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/8540/22863_615.jpg": {
   "w": 615,
@@ -3136,13 +3149,6 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026203412": {
-  "w": 640,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.383
- },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
   "h": 225,
@@ -3347,6 +3353,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.1uBXQmuFS9kEJBgLDVKJJQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3384,6 +3396,19 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.BFsT2cviS5z3NEOtrXqLcw&pid=News&w=800": {
+  "w": 700,
+  "h": 409,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.495,
+  "local": "pics/70c1c5717f098043.webp",
+  "out": [
+   1280,
+   748
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
@@ -3530,6 +3555,13 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.mgRA6CsgTMQsdFtE2ho-Tw&pid=News&w=640": {
+  "w": 640,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.407
  },
  "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200": {
   "w": 700,
