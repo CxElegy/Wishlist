@@ -103,7 +103,10 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
     b.close()
     if page:   # 設定ページ：版面・目次はないので、枠組み（題字・令牌）と本人の分か
-        if st["text"] < (40 if first and first.get("zero") else 100):   # 0 個の人の欲しい物・話題度は字が少ないのが正しい。本物の殻（「まだ何も追いかけていません」）が出ているときだけ緩める
+        shell = page in ("wishlist.html", "heat.html") and WHO[who]   # AUTH_JS の「index・settings 以外」の枝：本人の殻（.wl-mine .empty）が出ているのが正しい。殻は字が少ない（0 個 77・1 個 72 字）ので下限 40、殻がなければ 100
+        if shell and not first.get("shell"):
+            bad.append("本人の殻（.wl-mine .empty）が出ていない")
+        if st["text"] < (40 if shell and first.get("shell") else 100):
             bad.append(f"白い画面（文字 {st['text']}）")
         if WHO[who] and page == "settings.html" and st["boxes"]:
             bad.append(f"素の箱 {st['boxes']} 個（本人の設定ページではない）")
@@ -155,7 +158,7 @@ FIRST_JS = """()=>{const g=document.querySelector('.startgo,.wl-mine .go.big'),f
   H:innerHeight,shelves:!!document.querySelector('.shelfbox'),sum,tapes:document.querySelectorAll('.shelf .tapes>a').length,
   zero:!!document.querySelector('.calm.start,.top.start')||/まだ何も追いかけていません/.test((document.querySelector('.page,.wl-mine')||{}).innerText||''),
   quiet:[...document.querySelectorAll('.poster,.calm.start,.pill .cnt,.calm .tag')].map(x=>x.innerText||'').join(' ').replace(/\\s+/g,'').includes('新着なし'),
-  links:document.querySelectorAll('.page a.startgo,.page .calm a,.wl-mine .go.big').length}}"""
+  links:document.querySelectorAll('.page a.startgo,.page .calm a,.wl-mine .go.big').length,shell:!!document.querySelector('.wl-mine .empty')}}"""
 
 
 def first_screen_bad(f, gap=8):
