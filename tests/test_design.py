@@ -672,3 +672,31 @@ class PhotolessHeadTest(unittest.TestCase):
         self.assertNotIn('class="pic', h)
         h2 = render._tcard(self.st(1, "normal", "https://i.example/1.jpg"), 4, 0, "2026-10-25", mini=True)
         self.assertIn('class="pic', h2)
+
+
+class BrokenPhotoBecomesTextCard(unittest.TestCase):
+    """2026-10-27：写真の網址はあるが本物のブラウザで開けない（防盗链）記事が、出典アイコンの札のまま版面の頭に残った
+    （test-a の呪術廻戦）。開けない写真は「写真なし」と同じ字だけの形（.nophoto）に落とす。どの版面の・どの大きさのカードでも同じ。"""
+
+    def test_every_card_size_degrades(self):
+        try:
+            from playwright.sync_api import sync_playwright
+        except Exception:  # noqa: BLE001
+            self.skipTest("playwright がない")
+        import render
+        st = {"headline": "見出し", "url": "https://a.example/1", "weight": "hero", "image": "http://127.0.0.1:9/x.jpg",
+              "_issue": "2026-10-26", "source": "S", "date": "2026-10-26"}
+        cards = [render._tcard(st, 12, 0, "2026-10-26"), render._tcard({**st, "weight": "normal"}, 4, 0, "2026-10-26", mini=True),
+                 render._tcard({**st, "weight": "normal"}, 4, 0, "2026-10-26", small=True)]
+        with sync_playwright() as pw:
+            try:
+                b = pw.chromium.launch()
+            except Exception as ex:  # noqa: BLE001
+                self.skipTest(f"ブラウザがない：{ex}")
+            pg = b.new_page()
+            pg.set_content("<section><div class='grid'>" + "".join(cards) + "</div></section>")
+            pg.wait_for_timeout(1500)
+            left = pg.evaluate("document.querySelectorAll('article .pic').length")
+            plain = pg.evaluate("document.querySelectorAll('article.card.nophoto').length")
+            b.close()
+        self.assertEqual((left, plain), (0, 3))

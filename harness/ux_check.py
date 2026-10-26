@@ -79,7 +79,7 @@ def check(pw, base, who, width, out, page="", emb="off"):
         own:!!document.querySelector('meta[name="wl-own"]'),
         arts:document.querySelectorAll('section.sec article').length,
         pics:[...document.querySelectorAll('section.sec article img')].length,
-        heads:[...document.querySelectorAll('section.sec')].filter(s=>{const p=s.querySelector('.grid>article .pic');return p&&p.matches('.icon,.none')}).map(s=>s.dataset.k),
+        heads:[...document.querySelectorAll('section.sec')].filter(s=>s.querySelector('.grid article .pic.icon,.grid article .pic.none')).map(s=>s.dataset.k),
         plates:document.querySelectorAll('section.sec .pic.icon,section.sec .pic.none').length,
         frames:document.querySelectorAll('section.sec .pic').length,
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
@@ -124,8 +124,8 @@ def check(pw, base, who, width, out, page="", emb="off"):
         bad.append("ポスターの写真が出ていない")
     if st["arts"] and st["empty"]:   # 2026-10-24：記事が 8 本あってもポスターが「直近 7 日は新着なし」（写真のある記事がない）
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
-    if st["heads"]:   # 2026-10-25：版面の頭の枠が出典のアイコンの札（写真が出ない）
-        bad.append(f"版面の頭が写真なし（札）{len(st['heads'])}：" + "・".join(st["heads"][:3]))
+    if st["heads"]:   # 2026-10-25：版面の記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：頭だけでなく版面の全部の記事。開けない写真は render.SWAP_JS が .nophoto に落とす
+        bad.append(f"版面の記事が写真なし（札。開けない写真は字だけの形に落とす）{len(st['heads'])}：" + "・".join(st["heads"][:3]))
     if st["plates"]:
         print(f"  札 {st['plates']}／写真枠 {st['frames']}（{who} {width}px。0 が目標）")
     if near:

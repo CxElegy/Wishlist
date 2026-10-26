@@ -700,18 +700,21 @@ def _headline(story):
 
 
 # 主图打不开：换下一张备用图（同一版面已经有这张图就跳过，免得两张卡片同一张图），背景模糊图跟着换；
-# 备用图也用完了：有来源图标就换成来源图标，没有才显示作品名封面块
+# 备用图也用完了：記事のカード（article.card）は写真なしの記事と同じ字だけの形（.nophoto，2026-10-27：頭の写真が開けず札になった）、
+# それ以外の枠は有来源图标就换成来源图标，没有才显示作品名封面块
 SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest('section'),"
            "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
            "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
            "if(f.length){me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
-           "else{var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
+           "else{var a=p.closest('article.card');if(a){p.remove();a.classList.add('nophoto')}else{"
+           "var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
            "if(ic){p.classList.add('icon');var l=ic.dataset.icons.split(' ');ic.src=l.shift();ic.dataset.icons=l.join(' ')}"
-           "else{p.classList.add('none')}}")
+           "else{p.classList.add('none')}}}")
 # 来源图标打不开、或者只有 16px（Google 图标服务查不到时给的地球图标）：换下一个，都不行才是作品名封面块
 ICON_NEXT_JS = ("var l=(this.dataset.icons||'').split(' ').filter(Boolean);"
                 "if(l.length){this.src=l.shift();this.dataset.icons=l.join(' ')}"
-                "else{var p=this.closest('.pic');p.classList.remove('icon');p.classList.add('none');this.remove()}")
+                "else{var p=this.closest('.pic'),a=p.closest('article.card');if(a){p.remove();a.classList.add('nophoto')}"
+                "else{p.classList.remove('icon');p.classList.add('none');this.remove()}}")
 ICON_LOAD_JS = "if(this.naturalWidth<32){" + ICON_NEXT_JS + "}"
 
 
