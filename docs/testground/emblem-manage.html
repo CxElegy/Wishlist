@@ -81,6 +81,26 @@ main{max-width:980px;margin:0 auto;padding:22px 16px 140px;display:flex;flex-dir
 .bar button{background:var(--gold);border:2px solid var(--card);padding:5px 16px;font-weight:900;color:var(--ink)}
 .bar .ghost{background:none;color:var(--card);border-color:transparent;text-decoration:underline;font-weight:500}
 .bar small{opacity:.8}
+/* 人を足す：版面の頭の「＋ 人を足す」→ 版面の上に開く候補の一覧 */
+.addbtn{margin-left:auto;background:var(--gold);border:2px solid var(--ink);padding:3px 14px;font-weight:900;box-shadow:3px 3px 0 var(--ink)}
+.addbtn[aria-expanded=true]{background:var(--ink);color:var(--card)}
+.add{border:2px solid var(--ink);background:#fff;padding:12px 14px 14px;margin:0 0 16px;display:flex;flex-direction:column;gap:10px}
+.add[hidden]{display:none}
+.add h3{margin:0;font:900 14px var(--font-sans)}
+.add p{margin:0;font-size:12px;color:var(--muted)}
+.rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.row{display:grid;grid-template-columns:44px minmax(0,1fr) 22px;gap:2px 10px;align-items:center;text-align:left;background:var(--card);border:2px solid var(--ink);padding:6px 8px}
+.row .ph{grid-row:span 2;width:44px;aspect-ratio:4/5;border:1.5px solid var(--ink);background:#efebe2;overflow:hidden}
+.row img{width:100%;height:100%;object-fit:cover;display:block}
+.row b{font:900 14px/1.3 var(--font-sans)}.row small{font-size:11px;color:var(--muted);line-height:1.35}
+.row u{grid-column:3;grid-row:1 / span 2;width:20px;height:20px;border:2px solid var(--ink);background:#fff;text-decoration:none;font:900 14px/16px var(--font-sans);text-align:center}
+.row[aria-pressed=true]{box-shadow:3px 3px 0 var(--rose);background:#fff}.row[aria-pressed=true] u{background:var(--rose);color:#fff}
+.byname{display:flex;flex-wrap:wrap;gap:6px}
+.byname input{flex:1 1 180px;min-width:0;font:500 14px var(--font-sans);padding:5px 8px;border:2px solid var(--ink);background:#fff}
+.byname button{background:#fff;border:2px solid var(--ink);padding:4px 12px;font-weight:900}
+.pick{display:flex;flex-wrap:wrap;gap:6px}.pick button{background:#fff;border:1.5px solid var(--ink);padding:3px 10px;font-size:12px;font-weight:700}
+.pick button[aria-pressed=true]{background:var(--ink);color:var(--card)}
+.tgt{font:700 13px var(--font-mono)}
 .mock{font:700 11px var(--font-mono);color:var(--alert);letter-spacing:.06em}
 @media (max-width:600px){
   .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -101,6 +121,7 @@ main{max-width:980px;margin:0 auto;padding:22px 16px 140px;display:flex;flex-dir
     <ol>
       <li>版面を選び、気になる小元素を押す。</li>
       <li>「どうしたい？」を 3 つから選ぶ：<b>同じ人の別の写真に替える</b>・<b>この写真で固定</b>・<b>この人ごと外す</b>。</li>
+      <li>人数が足りない版面は、頭の<b>「＋ 人を足す」</b>から今いない人を選んで足す（名前で探すこともできる）。</li>
       <li>下の帯の「送る」で、まとめて依頼。替える写真は次の後台作業（1 時間以内）か「今すぐ」で探す。</li>
     </ol>
     <p class="mock">※ 見本：送っても本番は変わりません。「候補から選ぶ」の写真は同じ画像の位置をずらした仮のものです。</p>
@@ -142,8 +163,9 @@ var BOARDS=[
  {name:'Astrae Oratio',kind:'キャラ（ゲーム）',items:[
   ['Erin Tanaka','erin-tanaka','Wiki の分類「Wizards」'],['Anna M. Battenberg','anna-m-battenberg','Wiki の分類「Wizards」'],['Mai Asakura','mai-asakura','Wiki の分類「Wizards」'],
   ['Aizumi Yuzuki','aizumi-yuzuki','Wiki の分類「Wizards」'],['Akina Akitsu','akina-akitsu','Wiki の分類「Wizards」'],['Ai Hiwagishikari','ai-hiwagishikari','Fandom の立ち絵'],
-  ['Kanon Mizutani','kanon-mizutani','Fandom の立ち絵'],['Luna Mitsukoe','luna-mitsukoe','Fandom の立ち絵']].map(function(x){return {s:x[0],img:E+'astrae-oratio-'+x[1]+'.webp',why:x[2]};})},
- {name:'GTA 6',kind:'キャラ（ゲーム）',items:[{s:'Jason Duval',img:E+'gta-6-jason-duval.webp',why:'GTA6 の二人の主人公'},{s:'Lucia Caminos',img:E+'gta-6-lucia-caminos.webp',why:'GTA6 の二人の主人公'}]}
+  ['Kanon Mizutani','kanon-mizutani','Fandom の立ち絵'],['Luna Mitsukoe','luna-mitsukoe','Fandom の立ち絵']].map(function(x){return {s:x[0],img:E+'astrae-oratio-'+x[1]+'.webp',why:x[2]};}),
+  cands:[['Chikage Takarabe','chikage-takarabe','Wiki の分類「Wizards」・記事 6 本'],['Haru Kagamihara','haru-kagamihara','Wiki の分類「Wizards」・記事 4 本'],['Moa Hanamori','moa-hanamori','Fandom の立ち絵・記事 3 本'],['Nono Haibara','nono-haibara','Wiki の分類「Wizards」'],['Ren Shiranui','ren-shiranui','Wikidata の登場人物']].map(function(x){return {s:x[0],img:E+'astrae-oratio-'+x[1]+'.webp',why:x[2]};})},
+ {name:'GTA 6',cands:[['Michael De Santa','michael-de-santa','Wikidata の登場人物'],['Trevor Phillips','trevor-phillips','Wikidata の登場人物'],['Cal Hampton','cal-hampton','Wiki の分類・記事 5 本'],['Boobie Ike','boobie-ike','Wiki の分類・記事 2 本']].map(function(x){return {s:x[0],img:E+'gta-6-'+x[1]+'.webp',why:x[2]};}),kind:'キャラ（ゲーム）',items:[{s:'Jason Duval',img:E+'gta-6-jason-duval.webp',why:'GTA6 の二人の主人公'},{s:'Lucia Caminos',img:E+'gta-6-lucia-caminos.webp',why:'GTA6 の二人の主人公'}]}
 ];
 var SWAP_WHY=['小さい・遠い','切れている','ぼやけ・暗い','漫画のコマ・画面','古い・雰囲気が違う','そのほか'];
 var DROP_WHY=['別人・別のキャラ','この作品と関係ない','同じ人の重複','そのほか'];
@@ -153,9 +175,15 @@ function k(b,it){return b.name+'|'+it.img;}
 function label(r){return r.a==='swap'?'替え中':r.a==='lock'?'固定':'外す';}
 function drawBoards(){$('boards').innerHTML=BOARDS.map(function(b,i){return '<button type="button" aria-pressed="'+(i===cur)+'" data-b="'+i+'">'+b.name+'</button>';}).join('');}
 function drawBoard(){var b=BOARDS[cur];
-  $('board').innerHTML='<div class="bhead"><h2>'+b.name+'</h2><span>'+b.kind+' · 今 '+b.items.length+' 枚 · 押すと「どうしたい？」</span></div><div class="grid">'+
+  $('board').innerHTML='<div class="bhead"><h2>'+b.name+'</h2><span>'+b.kind+' · 今 '+b.items.length+' 枚 · 押すと「どうしたい？」</span><button type="button" class="addbtn" id="addbtn" aria-expanded="'+addOpen+'">＋ 人を足す</button></div>'+addPanel(b)+'<div class="grid">'+
   b.items.map(function(it,i){var r=req[k(b,it)];return '<button type="button" class="tile" data-i="'+i+'"'+(r?' data-st="'+r.a+'"':'')+' aria-haspopup="dialog"><span class="ph"><img src="'+it.img+'" alt="" loading="lazy">'+
    (r?'<span class="st '+r.a+'">'+label(r)+'</span>':'')+'</span><b>'+it.s+'</b><small>'+it.why+'</small></button>';}).join('')+'</div>';}
+var addOpen=false,adds={};   // adds[版面|名前] = {s,img,why,name}
+function addPanel(b){var n=Object.keys(adds).filter(function(x){return x.indexOf(b.name+'|')===0;}).length;
+  return '<div class="add" id="add"'+(addOpen?'':' hidden')+'><h3>この版面に足す人を選ぶ（いくつでも）</h3><p>名簿・Wikidata・記事によく出る名前から、今いない人を出しています。写真は 1 人 1 枚、送ると次の回（起きたらすぐ）で集めます。</p>'+
+   '<div class="rows">'+b.cands.map(function(c){var on=adds[b.name+'|'+c.s];return '<button type="button" class="row" data-c="'+c.s+'" aria-pressed="'+!!on+'"><span class="ph"><img src="'+c.img+'" alt="" loading="lazy"></span><b>'+c.s+'</b><small>'+c.why+'</small><u>'+(on?'✓':'')+'</u></button>';}).join('')+'</div>'+
+   '<h3>候補にいない人は名前で</h3><div class="byname"><input id="byname" placeholder="名前（例：Chikage）" aria-label="名前"><button type="button" id="byname-go">探す</button></div><div class="pick" id="pick" hidden></div>'+
+   '<span class="tgt">目標 '+b.items.length+' → '+(b.items.length+n)+'（足す '+n+' 人）</span><button type="button" class="go" id="add-go"'+(n?'':' disabled')+'>足す依頼に入れる</button></div>';}
 function chips(el,list,multi){el.innerHTML=list.map(function(t){return '<button type="button" aria-pressed="false">'+t+'</button>';}).join('');
   el.onclick=function(ev){var c=ev.target.closest('button');if(!c)return;if(!multi)[].forEach.call(el.children,function(x){if(x!==c)x.setAttribute('aria-pressed','false');});
    c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')!=='true');var g=sheet.querySelector('[data-go=drop]');g.disabled=!sheet.querySelector('[data-chips=drop] [aria-pressed=true]');};}
@@ -173,10 +201,15 @@ function place(){if(innerWidth<=600||!anchor)return;var r=anchor.getBoundingClie
   sheet.style.left=Math.max(12,Math.min(r.right+12,innerWidth-w-12))+'px';sheet.style.top=Math.max(12,Math.min(r.top,innerHeight-h-12))+'px';}
 function setMode(m){[].forEach.call(sheet.querySelectorAll('[data-mode]'),function(b){b.setAttribute('aria-pressed',b.dataset.mode===m);});$('cands').hidden=$('cnote').hidden=m!=='pick';place();}
 function closeSheet(){sheet.hidden=true;var t=document.querySelector('.tile[data-i="'+tile+'"]');if(t)t.focus();}
-function paintBar(){var n=Object.keys(req).length,c={swap:0,lock:0,drop:0};Object.keys(req).forEach(function(x){c[req[x].a]++;});
-  $('bar').hidden=!n&&!$('bar-msg').textContent;$('bar-n').textContent=n?('依頼 '+n+' 件：替える '+c.swap+' · 固定 '+c.lock+' · 外す '+c.drop):'';$('bar-go').hidden=$('bar-clr').hidden=!n;}
+function paintBar(){var na=Object.keys(adds).length,n=Object.keys(req).length+na,c={swap:0,lock:0,drop:0};Object.keys(req).forEach(function(x){c[req[x].a]++;});
+  $('bar').hidden=!n&&!$('bar-msg').textContent;$('bar-n').textContent=n?('依頼 '+n+' 件：替える '+c.swap+' · 固定 '+c.lock+' · 外す '+c.drop+' · 足す '+na):'';$('bar-go').hidden=$('bar-clr').hidden=!n;}
 document.addEventListener('click',function(ev){
-  var b=ev.target.closest('[data-b]');if(b){cur=+b.dataset.b;drawBoards();drawBoard();return;}
+  if(ev.target.closest('#addbtn')){addOpen=!addOpen;drawBoard();if(addOpen)$('add').scrollIntoView({block:'nearest'});return;}
+  var rw=ev.target.closest('.row');if(rw){var bd=BOARDS[cur],c=bd.cands.filter(function(x){return x.s===rw.dataset.c;})[0],kk=bd.name+'|'+c.s;if(adds[kk])delete adds[kk];else adds[kk]=c;drawBoard();paintBar();return;}
+  if(ev.target.closest('#byname-go')){var q=$('byname').value.trim();if(!q)return;$('pick').hidden=false;$('pick').innerHTML='<span class="tgt">Wikidata で候補（1 つに決める）：</span>'+['2 '+q+'（このキャラ・'+BOARDS[cur].name+'）','3 '+q+'（別の作品の人）'].map(function(x){return '<button type="button" data-w="'+q+'" aria-pressed="false">'+x.slice(2)+'</button>';}).join('');return;}
+  var w=ev.target.closest('[data-w]');if(w){var bd2=BOARDS[cur];adds[bd2.name+'|'+w.dataset.w]={s:w.dataset.w,img:bd2.items[0].img,why:'名前で足した'};bd2.cands.push(adds[bd2.name+'|'+w.dataset.w]);drawBoard();paintBar();return;}
+  if(ev.target.closest('#add-go')){addOpen=false;drawBoard();paintBar();$('bar-msg').textContent='（見本）足す人を依頼に入れました。下の「送る」で本番なら目標を足した分だけ上げ、次の回で写真を集めます';$('bar').hidden=false;return;}
+  var b=ev.target.closest('[data-b]');if(b){cur=+b.dataset.b;addOpen=false;drawBoards();drawBoard();return;}
   var t=ev.target.closest('.tile');if(t){openSheet(t);return;}
   var a=ev.target.closest('.act');if(a){var open=a.getAttribute('aria-expanded')!=='true';
     [].forEach.call(sheet.querySelectorAll('.act'),function(x){x.setAttribute('aria-expanded',x===a&&open);});
@@ -189,8 +222,8 @@ document.addEventListener('click',function(ev){
   if(!sheet.hidden&&!ev.target.closest('#sheet'))closeSheet();
 });
 document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!sheet.hidden)closeSheet();});
-$('bar-clr').onclick=function(){req={};$('bar-msg').textContent='';drawBoard();paintBar();};
-$('bar-go').onclick=function(){var n=Object.keys(req).length;req={};drawBoard();$('bar-msg').textContent='（見本）'+n+' 件を送りました · 本番なら 1〜2 分で反映、替える写真は次の後台作業で探す';paintBar();};
+$('bar-clr').onclick=function(){req={};adds={};$('bar-msg').textContent='';drawBoard();paintBar();};
+$('bar-go').onclick=function(){var n=Object.keys(req).length+Object.keys(adds).length;req={};adds={};drawBoard();$('bar-msg').textContent='（見本）'+n+' 件を送りました · 本番なら 1〜2 分で反映、替える写真は次の後台作業で探す';paintBar();};
 drawBoards();drawBoard();
 </script>
 </body>
