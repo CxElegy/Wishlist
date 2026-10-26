@@ -224,7 +224,7 @@ PROCESSES = [
                    "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "scripts/emblem_face.py", "scripts/emblem_rules.py", "scripts/emblem_fame.py", ".github/workflows/background.yml"],
         "doc": "TEMPLATES.md", "rules": "emblem",
-        "uses": ["roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
+        "uses": ["facefit", "roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
         "flow": [
             {"id": "b0", "kind": "step", "lane": "actions", "title": "候補から選ぶ（管理ページの 🔍）",
              "text": "後台の頭で、積んだ依頼を先に：選ばれた候補は今の写真と入れ替えて固定（apply_pick）、「集めて」の人は候補を 4〜6 枚（emblem_cands.find：下の取り方の段と同じ順・Web 画像検索も使う・今ある／外した画像は除く）→ state/emblem_cands.json → 管理ページ「小元素」の札に並ぶ · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
@@ -456,7 +456,7 @@ PROCESSES = [
         "id": "colors", "name": "トップの配色", "en": "COLORS", "lane": "actions", "when": "ページ生成のたび",
         "trigger": "ページを作るとき。同じ画像の色は state/themes.json に残して使い回す",
         "summary": "その日の頭条の写真から、トップの地色と強調色を取る。字が必ず読めるように明るさを直す。",
-        "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "docs/rules/design.md", "uses": ["octree"],
+        "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "docs/rules/design.md", "uses": ["facefit", "octree"],
         "flow": [
             {"id": "t1", "kind": "step", "lane": "actions", "title": "頭条の写真", "text": "200×200 に縮める"},
             {"id": "t2", "kind": "decision", "lane": "repo", "title": "前に取った色がない？", "text": "state/themes.json の hero|URL", "no": "それを使う"},
@@ -555,7 +555,7 @@ PROCESSES = [
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。",
-        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "docs/rules/design.md", "uses": ["heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
+        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める", "text": "checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
