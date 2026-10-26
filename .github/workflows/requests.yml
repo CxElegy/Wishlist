@@ -65,7 +65,7 @@ jobs:
           git add items.yaml docs state
           git diff --cached --quiet || git commit -q -m "设置页的请求 $(TZ=Asia/Shanghai date +'%F %H:%M')"
           for i in 1 2 3; do
-            if git pull --rebase -X theirs -q; then
+            if python scripts/pull_rebase.py; then
               python scripts/digest.py render
               git add docs
               git diff --cached --quiet || git commit -q -m "重新生成网页"
