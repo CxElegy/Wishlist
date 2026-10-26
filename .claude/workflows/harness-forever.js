@@ -26,9 +26,11 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 エンブレム（小元素）はサイトの売り：出ない・表示が違うものはほかの段より先に、EMBLEM_PLAYBOOK.md の過去の直し方の型で規則を直す（1 枚ずつ手で直さない）。新しい壊れ方を直したら EMBLEM_PLAYBOOK.md に 1 行足す。
 一番大事な決まり（HARNESS.md）：test-a・test-b などを個別に直さない（データの手直し・特定のアカウントだけの分岐はしない）、直すのはいつも規則。ログインしたお客さまはだれでも店長と同じ P5 の枠組み（令牌・硬い影・傾けた見出し・札・ポスター・版面の主題と配色・小元素・目次）を見て、違うのは中身だけ。素の箱は出さない。確かめは test-a（多い）・test-b（1 つ）・test-c（0 個）を並べて。段を終えたら PROGRESS.md に 1 行（日付・何をした・PR・確かめた結果・次）。
 段を取る印：BACKLOG の \`[~] … （開始 日付 時:分 JST・持ち主 {ID}）\` の形で書く（持ち主 = この係の名前。書き込みのたびに「最終 日付 時:分 JST」を足す）。\`python harness/claims.py BACKLOG.md --live <今動いている係の名前,…>\` で持ち主のいない [~]（持ち主が動いていない・書き込みから 60 分・書き方が古い）を出し、それは取り直してよい。動いている持ち主の新しい [~] は飛ばす。「取った」と知らせるのは、その段の最初のコミットが main か PR に出てから（BACKLOG の印だけで言わない）。
+全体に効かせる（HARNESS.md「その箇所だけ直さない」、ユーザー 2026-10-26）：指摘された 1 か所・1 枚・1 版面だけを直さない。①なぜそこが壊れたかを規則の言葉で書く ②同じ規則で壊れている所を全部数える（連動の範囲の 5 つ：同じ種類の版面・店長とお客さま・同じ部品の画面・同じ数字の場所・前に作ったもの）③規則を直して全部に当てる ④ux_check か tests に、同じ壊れ方を数える点検を足す。PR の本文に「連動の範囲：…（n 件）」と「点検：…」を書く。⑤そのうえで「同じ考えでほかに直せる所」を 1〜3 個探し、BACKLOG.md に段として足す（返す spread・similar に書く）。
 設計書にない新しい決めごと・本番のデータベースの形を変える／消すことが要るときは、作らずに BACKLOG.md を [?]（聞きたいことを木の形で、案ごとに良い点・困る点とおすすめ）にして status=asked で返す。答えが設計書から決まることは聞かない。`
 const RESULT = { type: 'object', properties: {
-  status: { type: 'string', enum: ['done', 'asked', 'failed', 'none'] }, step: { type: 'string' }, pr: { type: 'string' }, summary: { type: 'string' } },
+  status: { type: 'string', enum: ['done', 'asked', 'failed', 'none'] }, step: { type: 'string' }, pr: { type: 'string' }, summary: { type: 'string' },
+  spread: { type: 'string' }, similar: { type: 'array', items: { type: 'string' } } },
   required: ['status', 'summary'] }
 const PLAN = { type: 'object', properties: { added: { type: 'array', items: { type: 'string' } }, pr: { type: 'string' } }, required: ['added'] }
 const VERDICT = { type: 'object', properties: { ok: { type: 'boolean' }, problems: { type: 'array', items: { type: 'string' } } }, required: ['ok', 'problems'] }
@@ -52,7 +54,7 @@ for (let i = 1; i <= MAX; i++) {
     continue
   }
   for (let round = 1; r.status === 'done' && round <= 2; round++) {
-    const v = await agent(`${COMMON.replace(/\{ID\}/g, id + 'v' + round)}\n\n別の目として確かめるだけ（直さない）。段「${r.step}」が終わったと言っている：${r.summary}（${r.pr || ''}）。本番と HARNESS.md に照らして本当にできているか、店長のページが壊れていないか。`,
+    const v = await agent(`${COMMON.replace(/\{ID\}/g, id + 'v' + round)}\n\n別の目として確かめるだけ（直さない）。段「${r.step}」が終わったと言っている：${r.summary}（${r.pr || ''}）。本番と HARNESS.md に照らして本当にできているか、店長のページが壊れていないか。指摘の 1 か所だけでなく、同じ規則で壊れていた所が全部直ったか（連動の範囲を自分で数え直す。1 つでも残っていれば ok=false）、同じ壊れ方の点検が足されたか。`,
       { label: `check:${id}:${round}`, phase: 'Check', model: 'sonnet', schema: VERDICT })
     if (!v || v.ok) break
     r = await agent(COMMON.replace(/\{ID\}/g, id + 'f' + round) + `\n\n段「${r.step}」の続き。別の目の指摘を直して PR・合併・本番で確かめる：\n${v.problems.join('\n')}\n最後に同じ形で返す。`,
