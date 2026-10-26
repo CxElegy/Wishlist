@@ -173,7 +173,8 @@ class Issue(unittest.TestCase):
         b = user_pages.user_issue([], None, {}, 0, {})["items"]
         self.assertEqual([x["name"] for x in b], [user_pages.FIRST_BOARD])
         self.assertTrue(b[0]["quiet"] and b[0]["theme"])
-        self.assertIn(user_pages.ADD_URL, b[0]["status"])
+        self.assertEqual(user_pages.ADD_URL, b[0]["start"])   # 道は主役のボタン 1 つ（status にはリンクを置かない）
+        self.assertNotIn(user_pages.ADD_URL, b[0]["status"])
         html_ = render._md_links(b[0]["status"])
         self.assertNotIn("_blank", html_)          # サイトの中の網址は同じタブ
 
@@ -231,6 +232,10 @@ class FirstScreenTests(unittest.TestCase):
         h = user_pages.build("c@example.com", {"picks": []}, {}, [], None, {}, 0, {}, [], {})
         self.assertIn('class="startgo"', h)
         self.assertNotIn("は新着なし</span>", h)
+        self.assertNotIn("新着なし", h.replace("新着なしの帯", ""))   # 目次の札・静かな版面の tag にも出さない
+        self.assertNotIn("新 着 な し", h)
+        self.assertEqual(h.count("追いかけるものを選ぶ"), 1)           # 入口は主役のボタン 1 つ
+        self.assertIn('class="calm start"', h)
         self.assertNotIn('class="shelfbox"', h)
 
     def test_first_screen_check_catches_overlap(self):
@@ -241,3 +246,8 @@ class FirstScreenTests(unittest.TestCase):
         self.assertEqual(ux_check.first_screen_bad(ok), [])
         self.assertEqual(len(ux_check.first_screen_bad({**ok, "go": {"t": 780, "b": 830, "l": 20, "r": 360}})), 1)
         self.assertEqual(len(ux_check.first_screen_bad({**ok, "sum": 1})), 1)
+        z = {**ok, "zero": True, "quiet": False, "links": 1}
+        self.assertEqual(ux_check.first_screen_bad(z), [])
+        self.assertEqual(len(ux_check.first_screen_bad({**z, "go": None})), 1)    # 主役のボタンが消えた
+        self.assertEqual(len(ux_check.first_screen_bad({**z, "quiet": True})), 1)  # 新着なし
+        self.assertEqual(len(ux_check.first_screen_bad({**z, "links": 2})), 1)    # 入口が二重

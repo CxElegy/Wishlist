@@ -53,7 +53,9 @@ class Copy(unittest.TestCase):
         """空の最初の画面の言い回しを user_pages が変えたら、通しが黙って壊れる前にここで落ちる。"""
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
         import user_pages
-        txt = user_pages.user_issue([], None, {}, 0, {})["items"][0]["status"]
+        import re
+        h = user_pages.build("a@example.com", {"picks": []}, {}, [], None, {}, 0, {}, [])   # 入口の文言は主役のボタン（status ではない）
+        txt = re.sub(r"<[^>]+>", "", h)
         self.assertTrue(ux_check.re_pick().search(txt), txt)
 
     def test_empty_page_shows_no_raw_markdown(self):

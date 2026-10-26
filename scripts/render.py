@@ -1204,8 +1204,8 @@ def _calm(block):
     if last:
         tail = (f'<a class="last" href="{e(last["url"])}" target="_blank" rel="noopener">'
                 f'<span class="mono">直近 · {e(last["date"].replace("-", "."))}{_from(last)}</span><b>{e(last["headline"])}</b></a>')
-    tag = "収 集 中" if block.get("collecting") else "整 理 待 ち" if block.get("pending") else "新 着 な し"
-    return (f'<div class="calm">{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
+    tag = "収 集 中" if block.get("collecting") else "整 理 待 ち" if block.get("pending") else "は じ め に" if block.get("start") else "新 着 な し"   # 版面 0 個の人に「新着なし」と言わない
+    return (f'<div class="calm{" start" if block.get("start") else ""}">{pic}<div class="txt"><span class="tag">{tag}</span>{status}</div>'
             f"{tail}</div>")
 
 
@@ -2963,6 +2963,7 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
                     f'data-sub="{e(sub)}" href="#{_wid(w["name"])}" title="{e(w["name"])} の{e(lab)}"><span class="br"></span>'
                     f'<span class="nm">{e(lab)}</span>' + (f'<span class="new">+{n}</span>' if n else "") + '</a>')
         recent = sum(1 for x in w["stories"] if x["_issue"] >= cutoff)
+        cnt = "" if w.get("start") else f'<small class="cnt">{f"今週 {recent} 件" if recent else "新着なし"}</small>'   # 版面 0 個の人の「はじめに」には件数を出さない
         icon = _nav_icon(w)
         ic = (f'<i class="ic has" style="--img:url({e(urllib.parse.quote(icon, safe=":/?&=%#@+,;~"))})"></i>' if icon
               else f'<i class="ic">{e(w["name"][:1])}</i>')
@@ -2973,12 +2974,12 @@ def _nav(works, date, wishes=(), picks=(), subs=None, hide=NAV_HIDE, parents=Non
             return (f'<a class="pill xfer" style="--sc:{sc}" data-x="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" '
                     f'data-sub="{e(sub)}" href="#{_wid(w["name"])}" title="版面は「{e(_sec_name(home))}」にあります">'
                     f'<i class="no">{page_no[w["name"]]:02d}</i>{ic}'
-                    f'<span class="nm">{e(w["name"])}<small class="cnt">{f"今週 {recent} 件" if recent else "新着なし"}</small></span>'
+                    f'<span class="nm">{e(w["name"])}{cnt}</span>'
                     f'<span class="xref" style="--sc:{_sec_color(home)}">⇄ {e(_sec_name(home))}</span></a>')
         return (f'<a class="pill{" kid" if kid else ""}" style="--sc:{sc}" data-for="{e(w["name"])}" data-n="{page_no[w["name"]]}" data-hot="{recent}" data-heat="{int((w.get("_heat") or {}).get("score") or 0)}" '
                 f'data-sub="{e(sub)}" href="#{_wid(w["name"])}"><i class="no">{page_no[w["name"]]:02d}</i>{ic}'
                 + ('<span class="br"></span>' if kid else "")
-                + f'<span class="nm">{e(w["name"])}<small class="cnt">{f"今週 {recent} 件" if recent else "新着なし"}</small></span>'
+                + f'<span class="nm">{e(w["name"])}{cnt}</span>'
                 + xref + (f'<span class="new">+{recent}</span>' if recent else "") + '</a>')
 
     head = [f'<a class="pill" style="--sc:#D7261E" data-for="front" data-n="0" href="#front"><i class="no">00</i>'
