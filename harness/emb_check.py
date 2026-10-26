@@ -147,7 +147,7 @@ def _faces(im):
     return [(r, pad, s) for r in sorted(f, key=lambda r: -r[2] * r[3])] if f is not None else []
 
 
-def cut_edge(img, faces=None):
+def cut_edge(img, faces=None, whole=False):
     """切り抜き（透明の地）が上の端で切れている → 理由、なければ ""。左右・下は見ない（胸像の切り口・腕）。
     上の端の 6 割で決めていたときは、額まで切れた哈利波特（上の端 9%）を拾えず、髪の上だけ切れた写真と分けられなかった。"""
     im = img.convert("RGBA")
@@ -156,6 +156,8 @@ def cut_edge(img, faces=None):
     if im.height < STRIP_MAX:
         return f"切れ端 {im.width}×{im.height}"
     a = im.getchannel("A").load()
+    if whole:   # 公式の全身の絵（body の足の裏が画像の中）：上の端は絵そのもの（ポチタの持ち手）。emblem_fill.broken_image と同じ
+        return ""
     top = sum(1 for x in range(im.width) if a[x, 0] > 128) / im.width
     if top > TOP_MAX:
         return f"上の端 {top:.0%}"
@@ -327,7 +329,8 @@ def check(pg, who, width, out, full=False, guest=False):
                     nf_why.setdefault(emblem_face.none_reason(img), []).append(f"{s['k']} {name}")
                 faces = _faces(img.convert("RGBA"))
                 nomodel |= faces is None
-                why = cut_edge(img, faces)
+                b = a.get("body")
+                why = cut_edge(img, faces, whole=bool(b) and len(b) > 1 and b[1] <= 1)
                 if why:
                     found["E7"].append(f"{s['k']} {name} {why}")
                 flaw = cutshape.flat_flaw(img)

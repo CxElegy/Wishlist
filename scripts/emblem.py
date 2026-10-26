@@ -1353,7 +1353,11 @@ def real_body(img, mk):
     w, h = img.size
     top, foot = float(ys.min()), mk[1] * h
     m = _pose_model()
-    if m is None:   # モデルがない（Actions）：決めない。fit_all がこの版面のほかの小元素に合わせる
+    if m is None:   # モデルがない（Actions）：顔がなければ人の体つきではない（モデルありの最後と同じ結論：ポチタが顔の切れ端になっていた）。顔があれば決めず fit_all がこの版面のほかの小元素に合わせる
+        bg0 = Image.new("RGBA", img.size, "white")
+        bg0.alpha_composite(img.convert("RGBA"))
+        if not face_box(bg0):
+            return False, "人の体つきが見つからない（動物・マスコット：姿勢モデルなし・顔なし）"
         return None, "姿勢モデルなし（ほかの小元素に合わせる）"
     if m is not None:
         p = int(max(w, h) * 0.15)
