@@ -1,34 +1,5 @@
 [
 {
-"at": "2026-10-26T09:17:39+00:00",
-"text": "判断：emblem あり（足りない 6 版面（Actions で Python が埋める）・失敗 7 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 18:22 から）） · edit あり（整理待ちの記事 13 件（8 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": true,
-"edit": true,
-"photos": false
-}
-},
-{
-"at": "2026-10-26T09:23:37+00:00",
-"text": "判断：emblem あり（足りない 2 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 18:29 から）） · edit あり（整理待ちの記事 13 件（8 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": true,
-"edit": true,
-"photos": false
-}
-},
-{
-"at": "2026-10-26T09:23:39+00:00",
-"text": "Claude を起こした：AI 編集",
-"level": "ok",
-"results": {
-"edit": "Claude を起こした",
-"photos": "仕事なし（起こさない）"
-}
-},
-{
 "at": "2026-10-26T09:29:42+00:00",
 "text": "判断：emblem なし（失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 18:29 から）） · edit あり（整理待ちの記事 13 件（8 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
 "level": "info",
@@ -568,6 +539,35 @@
 "level": "info",
 "results": {
 "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+"photos": "仕事なし（起こさない）"
+}
+},
+{
+"at": "2026-10-26T19:50:40+00:00",
+"text": "判断：emblem あり（足りない 14 版面（Actions で Python が埋める）） · edit あり（整理待ちの記事 28 件（12 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": true,
+"edit": true,
+"photos": false
+}
+},
+{
+"at": "2026-10-26T20:14:32+00:00",
+"text": "判断：emblem なし（失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 05:52 から）） · edit あり（整理待ちの記事 28 件（12 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": false,
+"edit": true,
+"photos": false
+}
+},
+{
+"at": "2026-10-26T20:14:33+00:00",
+"text": "Claude を起こした：AI 編集",
+"level": "ok",
+"results": {
+"edit": "Claude を起こした",
 "photos": "仕事なし（起こさない）"
 }
 }
