@@ -289,6 +289,8 @@ class RejectEmblems(unittest.TestCase):
         self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-yunah.webp"}]}},
                       {"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-minju.webp"}]}})
         self.assertEqual(self.item()["emblem_redo"], ["Yunah", "Minju"])
+        self.assertTrue({"https://src.example/yunah.jpg", "https://src.example/minju.jpg"} <= set(self.item()["emblem_reject"]))   # 元の画像の reject も全員分残る
+        self.assertEqual([x["subject"] for x in self.item()["emblem"]], ["Logo"])
         text = self.file.read_text(encoding="utf-8")
         new, _ = digest.reject_emblems(text, "ILLIT", ["https://src.example/logo.svg"], swap=True)   # 3 回目：同じ人は重ねない
         self.assertEqual(yaml.safe_load(new)["items"][0]["emblem_redo"], ["Yunah", "Minju", "Logo"])
