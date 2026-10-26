@@ -1,14 +1,14 @@
 {
- "admin": "dd7466613d20",
- "admin-ai": "9129b3a744ae",
+ "admin": "45fef9b7613a",
+ "admin-ai": "eb804d5cd126",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4c985ba2"
+   "7db13319"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "188a02d9"
+   "0df1a5bd"
   ]
  },
  "admin-boards": "6bd731450c05",
@@ -22,11 +22,11 @@
    "0ccd21c6"
   ]
  },
- "admin-emblem": "cd75d1c5ad2b",
+ "admin-emblem": "8af7c90916e6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b4fec2cc"
+   "70a8a76e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "f0a6a4b0fa03",
  "admin-members_marks": {},
- "admin-now": "e9440dce239e",
+ "admin-now": "17c60debe1f5",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "91be6340"
+   "3fd37733"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "6fb10e4f"
+   "1879d4b5"
   ]
  },
- "admin-system": "56f9b705abdc",
+ "admin-system": "a4187c84d1e3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "72b4d155"
+   "423808b5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "85e93465"
+   "0a9d1116"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "6e8a0223"
   ]
  },
- "index": "ef4f259ab740",
+ "index": "844a985cef42",
  "index_marks": {
   "front": [
    "トップ",
-   "5b89cd2c"
+   "a6a171db"
   ],
   "picks": [
    "気になるかも？",
@@ -105,11 +105,11 @@
   ],
   "w-0242c181": [
    "dota2",
-   "b8a7c656"
+   "24f18c39"
   ],
   "w-130724c0": [
    "猫用品",
-   "46494e64"
+   "50770844"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "8fa2882e"
+   "767456ee"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "3c524b0d"
+   "b0aec1b1"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "1fdea46e"
+   "98e4cdfa"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "2350e0c6"
+   "a25b7cb4"
   ],
   "w-f303ad09": [
    "绝区零",
    "578d630c"
   ]
  },
- "updated": "10.26 14:45",
+ "updated": "10.26 14:47",
  "wishlist": "18f110b90b3c"
 }
