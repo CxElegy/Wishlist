@@ -55,6 +55,7 @@ HARNESS.md は `EMBLEM_PLAYBOOK.md`（リポジトリの直下）を読むこと
 | 38 | 切り抜きが commit のたびに縮む（Black Panther 73×23 → 60×10・mashiro-kuna 304×217 → 209×45） | `fit_all` が emblems/ の自分の出力をもう一度 `face_fit` で切り詰めた（#372 は書き出しの下限だけで根は残った） | `fit_all`：image が emblems/ の cutout は整え直さない（元が透明な source だけ source から作り直す）。テスト：同じ版面で 2 回走らせても大きさが変わらない | 2026-10-26 |
 | 39 | 前からの切り抜きで上の端の半分以上が人物（コマ。#389 のあと guest E7 12：BLEACH Mirrors High Muramasa・Retsu Unohana…） | `check_whole` は TOP_MAX で拒むが `broken_image` は見ておらず、前に取った分が残った | `broken_image` に `top_share > TOP_MAX` を足す（店長の drop_broken・お客さまの library_emblem で同じ）。外した分は次の候補で取り直す | （この PR） |
 | 40 | 別の作品・持ち物の絵が小元素（あつ森 Redd・Gulliver・Tortimer の SSBB_Trophy、原神 Kaeya・Kazuha に Item_Stella_Fortuna）・同じ絵が 2〜3 枚（Vaundy 3 本が同じ vaundy-vaundy.webp）・別の人なのに「同じ画像」（呪術廻戦の背の高い立ち絵） | 取るとき（check）も前からのもの（broken_cuts・ライブラリ）もファイル名を見ていなかった・前の書き込みの重複が残った・差分ハッシュが透明を黒にして測り細い立ち絵どうしが同じ形 | `emblem.BAD_SOURCE`（元の画像の道すじ）を cutout_on_page・check・broken_cuts・unbroken・E9 で共通に、`emblem_fill.drop_same`（同じ image・file_key は reject に入れず、同じ見た目は reject へ）、`_hash` は灰の上に置いて測る。BROKEN_V 6 | 2026-10-26 |
+| 41 | 2 人が並んだ切り抜きが前からのものに残る（BLEACH Mirrors High niko-kuna・呪術廻戦・A2O LITE：点検 E11） | 取るときの `other_faces` は写真（人物）だけ・前からのもの（broken_image）は顔の数を見ていない | `broken_image` に `other_faces(ratio=CROWD_H 0.77)`（キャラの絵も）、BROKEN_V 7 | 2026-10-26 |
 
 ## 2. よく効いた直し方の型（手順）
 

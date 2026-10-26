@@ -135,6 +135,19 @@ class Rules(unittest.TestCase):
         self.assertEqual([x["subject"] for x in looks], ["C"])   # 固定の D は残す
         self.assertGreater(bin(ef._hash(a) ^ ef._hash(b)).count("1"), ef.SAME_BITS)
 
+    def test_broken_image_two_people(self):
+        # 2 番目の顔がいちばん大きい顔と同じくらい（CROWD_H）= 2 人が並んだ切り抜きは前からのものも外す（点検 E11）
+        from unittest import mock
+        from PIL import Image
+        im = Image.new("RGBA", (200, 200))
+        with mock.patch.object(ef.emblem, "head_cut", return_value=False), mock.patch.object(ef.emblem, "flat_flaw", return_value=False), \
+                mock.patch.object(ef.emblem, "top_share", return_value=0.0):
+            with mock.patch.object(ef.emblem, "other_faces", return_value=1) as m:
+                self.assertTrue(ef.broken_image(im, False))
+                self.assertEqual(m.call_args.kwargs["ratio"], ef.emblem.CROWD_H)
+            with mock.patch.object(ef.emblem, "other_faces", return_value=0):
+                self.assertFalse(ef.broken_image(im, False))
+
     def test_unbreak_restores_by_current_rule(self):
         # 前の版の broken_cuts で外した小元素を、今の規則で外れなければ戻し、emblem_reject からも抜く
         import tempfile
