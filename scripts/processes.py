@@ -53,7 +53,7 @@ COMPONENTS = {
                    "what": "Actions から編集するときだけ（digest.edit_stories）。使ったトークンは数える"},
     # ---- アルゴリズム
     "pace": {"kind": "algo", "name": "サイトごとの間隔（全スレッド共有）", "spec": "Reddit 2 秒 · Google / Bing 0.5 秒 · Wikimedia 同じホスト 1 本ずつ・1.3 秒 + 全体 0.4 秒（毎分 150）",
-             "what": "sources._pace / wikihttp.get。並列でもサイトから見た間隔は同じ"},
+             "what": "sources._pace / wikihttp.get。Fandom は emblem._get（ホストごと 1 本・間隔 1 秒・429 は Retry-After）。並列でもサイトから見た間隔は同じ"},
     "wikiua": {"kind": "rule", "name": "Wikimedia の決まり（wikihttp）", "spec": "UA「WishlistEmblemBot/1.1 (repo; Issues) python-requests」· WIKIMEDIA_TOKEN があれば API に OAuth 2.0 Bearer（上限が共有 IP でなくアカウントごと）· "
                "Wikidata の項目は Special:EntityData（CDN）· api.php に maxlag=5（Wikidata は WDQS の遅れまで数えるので付けない）· "
                "429 / 503 / maxlag は Retry-After（なければ 5・15・45 秒）で 3 回まで · Retry-After > 120 秒か続く 429 → そのホスト 5 分休む · titles は 50 件ずつ · Fandom の api.php（<wiki>.fandom.com）も同じ道〔ホストごと 1 本・Retry-After・3 日キャッシュ、maxlag・トークン・Wikimedia 全体の間隔は使わない〕",
