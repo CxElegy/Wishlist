@@ -186,7 +186,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
 # 2026-10-27：版面 0 個の人の最初の画面。主役のボタンが最初の画面の中にあり、右下の固定ボタンと 8px 以上離れる。「N 作品」の数は本当の数と一致
 FIRST_JS = """()=>{const g=document.querySelector('.startgo,.wl-mine .go.big'),f=document.querySelector('.wl-auth'),r=x=>x?x.getBoundingClientRect():null;
  const sum=[...document.querySelectorAll('.shelf h3 small')].reduce((s,x)=>s+(+((x.textContent.match(/(\\d+) 作品/)||[])[1])||0),0);
- const g1=r(g),f1=r(f);return {go:g1?{t:g1.top,b:g1.bottom,l:g1.left,r:g1.right}:null,fix:f1?{t:f1.top,b:f1.bottom,l:f1.left,r:f1.right}:null,
+ const g1=r(g),f1=r(f);let hit=true;if(g1){const e=document.elementFromPoint((g1.left+g1.right)/2,Math.min((g1.top+g1.bottom)/2,innerHeight-1));hit=!!e&&g.contains(e);}return {hit,go:g1?{t:g1.top,b:g1.bottom,l:g1.left,r:g1.right}:null,fix:f1?{t:f1.top,b:f1.bottom,l:f1.left,r:f1.right}:null,
   H:innerHeight,shelves:!!document.querySelector('.shelfbox'),sum,tapes:document.querySelectorAll('.shelf .tapes>a').length,
   zero:!!document.querySelector('.calm.start,.top.start')||/まだ何も追いかけていません/.test((document.querySelector('.page,.wl-mine')||{}).innerText||''),
   quiet:[...document.querySelectorAll('.poster,.calm.start,.pill .cnt,.calm .tag')].map(x=>x.innerText||'').join(' ').replace(/\\s+/g,'').includes('新着なし'),
@@ -202,6 +202,8 @@ def first_screen_bad(f, gap=8):
     if g:
         if g["b"] > f["H"]:
             bad.append(f"主役のボタンが最初の画面に入らない（下端 {round(g['b'])}px／画面 {f['H']}px）")
+        if f.get("hit") is False:   # 2026-10-27：.top の中の子は pointer-events:none だったため、見えていても押せなかった
+            bad.append("主役のボタンの真ん中を押すと別の部品に当たる（押せない）")
         if x and g["l"] < x["r"] + gap and x["l"] < g["r"] + gap and g["t"] < x["b"] + gap and x["t"] < g["b"] + gap:
             bad.append("主役のボタンが右下の固定ボタンと重なる・近すぎる（8px 未満）")
         if f["shelves"]:
