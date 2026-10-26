@@ -56,10 +56,10 @@
  ],
  "_covered": {
   "漫威电影": 35,
-  "GTA 6": 16,
-  "A2O LITE": 13,
+  "GTA 6": 19,
+  "A2O LITE": 23,
   "周杰伦": 4,
-  "ILLIT": 6,
+  "ILLIT": 9,
   "日本顶级网球赛事": 6,
   "MMORPG 新作": 1,
   "哈利波特剧集": 1,
@@ -68,8 +68,8 @@
   "滑雪": 2,
   "绝区零": 1,
   "Astrae Oratio": 8,
-  "三星手机": 1,
-  "dota2": 3,
+  "三星手机": 4,
+  "dota2": 8,
   "FROM": 1
  },
  "GTA 6": [
@@ -100,18 +100,43 @@
    "refs": [
     14
    ]
+  },
+  {
+   "headline": "GTA 5 heartbreaking dog secret somehow has us even more hyped for GTA 6",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
+   ]
+  },
+  {
+   "headline": "20億美元做出這種Bug？玩家狂酸《GTA 6》，前B社設計師看不下去了",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
+   ]
   }
  ],
  "A2O LITE": [
   {
-   "headline": "今日人气歌谣1位：A2O LITE《NEON》恭喜4冠王！",
-   "highlight": "4冠王",
-   "blurb": "A2O LITE《NEON》拿下今日人气歌谣第1位，累计4冠。",
+   "headline": "A2O LITEが『人気歌謡』で1位に..音楽番組で4冠達成",
+   "highlight": "4冠達成",
+   "blurb": "A2O LITEが『人気歌謡』で1位となり、音楽番組で4冠を達成した。",
    "weight": "lead",
    "refs": [
+    16,
     2,
-    6
-   ]
+    6,
+    14,
+    18,
+    15,
+    17,
+    22
+   ],
+   "image": "https://image.starnewskorea.com/cdn-cgi/image/f=jpeg,w=1200,h=675,fit=cover,g=face,q=high/21/2026/10/2026102608513559256_1.jpg"
   },
   {
    "headline": "サニー、叔父イ・スマン自慢したくなる熱血指導…A2O LITEに直接振付",
@@ -121,7 +146,9 @@
    "refs": [
     4,
     5,
-    1
+    1,
+    19,
+    20
    ]
   },
   {
@@ -141,6 +168,15 @@
    "refs": [
     7,
     11
+   ]
+  },
+  {
+   "headline": "K-POP Spotify月听众人数 TUIDE创新高 A2O LITE突破200万创新高",
+   "highlight": "突破200万",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    21
    ]
   }
  ],
@@ -177,6 +213,24 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "아일릿 원희, 날씨 요정 된다…일일 기상캐스터 도전",
+   "highlight": "일일 기상캐스터",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "아일릿, '어장관리남' 정조준…'체포하겠어' MV 티저 속 발칙한 카타르시스",
+   "highlight": "'체포하겠어' MV 티저",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],
@@ -347,6 +401,16 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "Samsung「Exynos 2700」がSnapdragonを約20％上回るCPU性能との報告。次期Galaxy S27への搭載が期待される",
+   "highlight": "約20％上回るCPU性能",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    4
+   ]
   }
  ],
  "dota2": [
@@ -359,6 +423,24 @@
     3
    ],
    "image": "https://static.gosugamers.net/01/a5/ef/a3c6b6bbb5f78914840e3c1e4d1b2923f481e402996e80ff8f389e1415.jpg"
+  },
+  {
+   "headline": "官宣才过十天，教练 Astini 自宣离队，瑞士轮0-3 垫底",
+   "highlight": "Astini 自宣离队",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "355 个账号被永久封禁，游戏环境需要你的共同维护",
+   "highlight": "355 个账号被永久封禁",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
   }
  ],
  "FROM": [

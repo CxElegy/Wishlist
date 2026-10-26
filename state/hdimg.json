@@ -61,18 +61,18 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261025ac/219/w659h360/20261025/e413-2f37d11136feb6aa1f2f9fc4758640f2.jpg": {
-  "w": 659,
-  "h": 360,
-  "target": 1280,
+ "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
+  "w": 446,
+  "h": 1297,
+  "target": 720,
   "v": 3,
-  "blur": 0.455,
-  "local": "pics/b7c3769667fada81.webp",
+  "local": "pics/adf7bf8261641f14.webp",
   "out": [
-   1280,
-   699
+   440,
+   1280
   ],
-  "why": "看不清"
+  "why": "防盗链",
+  "ref": true
  },
  "http://wx1.sinaimg.cn/middle/d2cfaf37gy1iib6xxk8xbj20xi0bmgmw.jpg": {
   "w": 1206,
@@ -100,6 +100,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
+  "w": 755,
+  "h": 1777,
+  "target": 720,
+  "v": 3,
+  "local": "pics/011fd3b5fffe02df.webp",
+  "out": [
+   544,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/008txX0Ply1iidpkzkyz7j31o02yo7wi.jpg": {
   "w": 2000,
   "h": 3556,
@@ -109,6 +122,19 @@
   "out": [
    720,
    1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/647c8fably1iicrz92o5hj20es0e0acn.jpg": {
+  "w": 532,
+  "h": 504,
+  "target": 720,
+  "v": 3,
+  "local": "pics/d0e2d8ffe14ec60f.webp",
+  "out": [
+   532,
+   504
   ],
   "why": "防盗链",
   "ref": true
@@ -370,6 +396,12 @@
  "https://cdn.mos.cms.futurecdn.net/JJUXJNug7549JTRVW9fSjA-2000-80.jpg": {
   "w": 2000,
   "h": 1125,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.nc.press/news/photo/202610/629390_866523_1030.jpg": {
+  "w": 600,
+  "h": 1343,
   "target": 720,
   "v": 3
  },
@@ -637,12 +669,6 @@
   "w": 1000,
   "h": 1000,
   "target": 1280,
-  "v": 3
- },
- "https://dimg.donga.com/wps/SPORTS/IMAGE/2026/10/26/134906926.1.jpg": {
-  "w": 1600,
-  "h": 1067,
-  "target": 720,
   "v": 3
  },
  "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg": {
@@ -997,6 +1023,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.starnewskorea.com/cdn-cgi/image/f=jpeg,w=1200,h=675,fit=cover,g=face,q=high/21/2026/10/2026102608513559256_1.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://image.sunmedia.tw/banners/7601c2fa-e258-4915-9a3b-1b416d1c0870.jpeg": {
   "w": 1200,
   "h": 669,
@@ -1291,6 +1323,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g1rsR.img": {
   "w": 1920,
   "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g3n26.img": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -1763,6 +1801,12 @@
   "w": 1200,
   "h": 961,
   "target": 1280,
+  "v": 3
+ },
+ "https://media.xenospectrum.com/exynos_2700_vs_snapdragon_8_elite_extreme_gen6_76e11dbba2.webp": {
+  "w": 1672,
+  "h": 941,
+  "target": 720,
   "v": 3
  },
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2608867-90fdd87d4160.jpg": {
@@ -2441,6 +2485,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://photo.jtbc.co.kr/news/jam_photo/202610/25/1a03e766-71d1-41fa-a0e3-714412135388.jpg": {
+  "w": 560,
+  "h": 784,
+  "target": 720,
+  "v": 3
+ },
  "https://pimg.mk.co.kr/news/cms/202610/19/news-p.v1.20261019.7037adaeab3444c8a60f9d6dcb8fa3cc_R.png": {
   "w": 1000,
   "h": 560,
@@ -2943,7 +2993,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026093447": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026094406": {
   "w": 640,
   "h": 450,
   "target": 1280,
@@ -3263,6 +3313,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.419
+ },
+ "https://www.bing.com/th?id=ONUT.JuCa6kvgVJI_iQI0lhTV_A&pid=News&w=1200": {
+  "w": 700,
+  "h": 437,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200": {
   "w": 100,
@@ -3685,6 +3741,12 @@
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.superdope.games/wp-content/uploads/2026/09/image-105.png": {
+  "w": 1245,
+  "h": 700,
   "target": 720,
   "v": 3
  },
