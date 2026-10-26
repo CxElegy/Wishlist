@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-10-25T03:55:59+00:00",
-"text": "2026-10-25 第 2 バッチを出刊：GTA 6（1 版面・5 本・残り 1 版面） · token 新規入力 3,163・キャッシュ読み 39.2万・出力 1,469",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.41,
-"mem_total": 16872804352,
-"mem_free": 16056705024,
-"disk_used": 10747502592,
-"disk_free": 30535667712,
-"disk_total": 41283170304,
-"peak": 166096896
-},
-"batch": 2,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 1,
-"edited": 19,
-"run": 1792899749.8190627,
-"tok": {
-"in": 10,
-"cw": 3153,
-"cr": 391559,
-"out": 1469,
-"calls": 5,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 396191
-},
-{
 "at": "2026-10-25T04:01:17+00:00",
 "text": "2026-10-25 第 3 バッチを出刊：ILLIT（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 1,165・キャッシュ読み 8.0万・出力 736",
 "level": "ok",
@@ -1851,5 +1819,59 @@
 "calls": 19,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-26T10:39:27+00:00",
+"text": "2026-10-26 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 17（23 版面・64 本・今日の整理待ちは全部終わり） · token 新規入力 4.3万・キャッシュ読み 49.4万・出力 1,873",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.19,
+"mem_total": 16872804352,
+"mem_free": 15893766144,
+"disk_used": 10726207488,
+"disk_free": 30556962816,
+"disk_total": 41283170304,
+"peak": 294576128
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"ILLIT",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"星巴克马克杯",
+"滑雪",
+"漫威电影",
+"猫用品",
+"绝区零"
+],
+"stories": 64,
+"left": 0,
+"edited": 22,
+"run": null,
+"tok": {
+"in": 16,
+"cw": 42920,
+"cr": 494275,
+"out": 1873,
+"calls": 8,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 539084
 }
 ]

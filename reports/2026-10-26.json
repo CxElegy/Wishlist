@@ -1,6 +1,6 @@
 {
  "date": "2026-10-26",
- "edit_sig": "db724ebfc732",
+ "edit_sig": "2f1cf92eeea6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -573,8 +573,8 @@
      "date": "2026-10-25",
      "headline": "【女子テニス】大坂なおみ 4年ぶり東レPPO出場へ意気込み 「心の師」錦織圭さんの後を継ぐ",
      "highlight": "4年ぶり東レPPO出場",
-     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261026-00000006-spnannex-000-7-view.jpg?exp=10800",
-     "image_via": "og:image",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261026-00000006-spnannex-000-7-view.jpg?pri=l&w=566&h=640&exp=10800",
+     "image_via": "正文图",
      "url": "https://news.yahoo.co.jp/articles/15bd05a015c0ede872f53c73a95dc95a97fa34cd",
      "weight": "normal"
     },
@@ -844,39 +844,6 @@
     "bg": "#F7F2E9",
     "fg": "#1E1A18",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
-   "facts": [
-    {
-     "changed": false,
-     "label": "播出状态",
-     "text": "[《チェンソーマン 刺客篇》](https://anilist.co/anime/204429) · 未开播 · 开播日期未定"
-    }
-   ],
-   "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-10-26",
-     "n": 1,
-     "source": "山陽新聞",
-     "title": "劇場版『チェンソーマン レゼ篇』Prime Videoで9月19日配信決定 藤本タツキ「7回くらい見た」",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBtdXVRVnFNSGJDQVhIRGZqZEhvVFhjOWJJVEFxSUQ3bDA0VHZHOS11WnM5X3lsZTB3UTVwSUthVGlvbFJLQnUzd3hadGd2X0d5S3c?oc=5"
-    }
-   ],
-   "section": "影视",
-   "stories": [],
-   "subtitle": "チェンソーマン",
-   "theme": {
-    "accent": "#DD8355",
-    "alt_accent": "#AE5223",
-    "alt_bg": "#F7EDE9",
-    "alt_fg": "#1E1A18",
-    "bg": "#211712",
-    "fg": "#F4EEE4",
-    "font": "serif",
     "split": true
    }
   },
@@ -1226,8 +1193,8 @@
      "date": "2026-10-25",
      "headline": "A2O LITE EYE-CONTACT最新概念照公开",
      "highlight": "最新概念照",
-     "image": "http://wx4.sinaimg.cn/middle/002I0yDzly1iieprfrhrxj635s23vb2902.jpg",
-     "image_via": "正文图（本站保存）",
+     "image": "http://wx2.sinaimg.cn/middle/8b511c18gy1iiepor8ao9j235s23v1kx.jpg",
+     "image_via": "正文图（其它来源）（本站保存）",
      "url": "https://www.sina.cn/news/detail/5357955169648856.html",
      "weight": "normal"
     },
@@ -1636,6 +1603,56 @@
     "bg": "#F7F0E9",
     "fg": "#1E1A18",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://chainsawman.dog/assets/portal/og/ogp.jpg?251221",
+   "facts": [],
+   "last": {
+    "date": "2026-10-25",
+    "headline": "「ネズミの寓話が印象的」 チェンソーマン レゼ篇 zpさんの映画レビュー",
+    "url": "https://eiga.com/movie/100938/review/07112238/"
+   },
+   "name": "チェーンソーマン",
+   "quiet": true,
+   "section": "影视",
+   "status": "",
+   "stories": [],
+   "subtitle": "チェンソーマン",
+   "theme": {
+    "accent": "#DD8355",
+    "alt_accent": "#AE5223",
+    "alt_bg": "#F7EDE9",
+    "alt_fg": "#1E1A18",
+    "bg": "#211712",
+    "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-25",
+    "headline": "みごとなめいがの偽物の見分け方 | 本物との違い【あつ森】",
+    "url": "https://gamewith.jp/atsumori/article/show/198906"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   },
