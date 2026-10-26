@@ -211,7 +211,9 @@ class RejectEmblems(unittest.TestCase):
             (self.emb / f"{n}.webp").write_bytes(b"x")
         import emblem
         self.log = tmp / "emblem_rejects.json"
-        for obj, attr, val in ((digest, "ITEMS_FILE", self.file), (emblem, "EMB_DIR", self.emb), (digest, "EMBLEM_REJECTS_FILE", self.log)):
+        self.looks = {}   # 画像の鍵（本物は絵を取り直して測る。ここでは網にも出ない）
+        for obj, attr, val in ((digest, "ITEMS_FILE", self.file), (emblem, "EMB_DIR", self.emb), (digest, "EMBLEM_REJECTS_FILE", self.log),
+                               (digest, "_look_hex", lambda x: self.looks.get(x.get("subject")))):
             p = mock.patch.object(obj, attr, val)
             p.start()
             self.addCleanup(p.stop)
@@ -289,6 +291,8 @@ class RejectEmblems(unittest.TestCase):
         self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-yunah.webp"}]}},
                       {"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-minju.webp"}]}})
         self.assertEqual(self.item()["emblem_redo"], ["Yunah", "Minju"])
+        self.assertTrue({"https://src.example/yunah.jpg", "https://src.example/minju.jpg"} <= set(self.item()["emblem_reject"]))   # 元の画像の reject も全員分残る
+        self.assertEqual([x["subject"] for x in self.item()["emblem"]], ["Logo"])
         text = self.file.read_text(encoding="utf-8")
         new, _ = digest.reject_emblems(text, "ILLIT", ["https://src.example/logo.svg"], swap=True)   # 3 回目：同じ人は重ねない
         self.assertEqual(yaml.safe_load(new)["items"][0]["emblem_redo"], ["Yunah", "Minju", "Logo"])
@@ -297,6 +301,15 @@ class RejectEmblems(unittest.TestCase):
         """requests.yml は触発時の提交でなく いまの main を取る（待っている間に前の回が書いた emblem_redo を、古い版の提交が上書きしていた）。"""
         wf = (digest.ROOT / ".github" / "workflows" / "requests.yml").read_text(encoding="utf-8")
         self.assertIn("ref: ${{ github.ref }}", wf)
+
+    def test_swap_keeps_the_look_of_the_rejected_picture(self):
+        """替える・外す：元の絵の見た目の鍵が emblem_reject_look に残り（全員分・重複なし）、emblem_reject（網址）は壊れない。"""
+        self.looks = {"Yunah": "00ff00ff00ff00ff", "Minju": "0f0f0f0f0f0f0f0f"}
+        self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-yunah.webp"}]}},
+                      {"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-minju.webp"}]}})
+        it = self.item()
+        self.assertEqual(it["emblem_reject_look"], ["00ff00ff00ff00ff", "0f0f0f0f0f0f0f0f"])
+        self.assertIn("https://src.example/yunah.jpg", it["emblem_reject"])
 
     def test_lock_and_unlock(self):
         self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_lock": [{"image": "emblems/illit-minju.webp", "on": True}]}})
