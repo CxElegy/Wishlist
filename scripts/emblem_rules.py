@@ -44,7 +44,9 @@ def rules():
         {"stage": STAGES[2], "title": "白紙", "by": "rule", "code": "emblem_fill.check", "reason": "白紙",
          "rule": f"明るさの標準偏差 < {ef.BLANK_STD}（ほぼ一色）"},
         {"stage": STAGES[2], "title": "同じ画像", "by": "rule", "code": "emblem_fill.check", "reason": "同じ画像",
-         "rule": f"差分ハッシュの違い ≤ {ef.SAME_BITS} ビット"},
+         "rule": f"差分ハッシュ（透明は灰の上に置いて測る）の違い ≤ {ef.SAME_BITS} ビット。前からの重複は emblem_fill.drop_same が外す"},
+        {"stage": STAGES[2], "title": "別の作品の絵", "by": "rule", "code": "emblem.BAD_SOURCE", "reason": "別の作品の絵",
+         "rule": "元の画像のファイル名が大乱闘のフィギュア（Trophy・SSBB・amiibo）・持ち物（Item_・Weapon_・Artifact_）"},
         # ④ 人物の写真（本人・グループ・出演者）
         {"stage": STAGES[3], "title": "顔がない", "by": "model", "code": "face_id.photo_problem（YuNet）", "reason": "顔なし",
          "rule": "顔が見つからない（観客席・物・絵画）"},

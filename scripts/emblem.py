@@ -84,7 +84,7 @@ def _host_lock(host):
 
 
 def _get(url, limit=MAX_BYTES):
-    if wikihttp.is_wikimedia(url):   # Wikimedia は決まりどおりの UA・1 本ずつ・Retry-After・キャッシュ
+    if wikihttp.is_wikimedia(url) or wikihttp.is_fandom(url):   # Wikimedia・Fandom の API は決まりどおりの UA・1 本ずつ・Retry-After・キャッシュ
         return wikihttp.get(url, limit)
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     host = urllib.parse.urlparse(url).netloc
@@ -210,6 +210,17 @@ def anilist_main(media_id, n):
 
 # 名簿に入れないページ：まとめ・一覧（MHD: FV: Felyne List）・遊ぶ人そのもの（Player）・別の作品に出たときの姿（Pokémon Trainer (Super Smash Bros.)・
 # Monster Hunter (Marvel vs. Capcom: Infinite)）。括弧の中に別の作品（Smash Bros・○○ vs. ○○）があれば、その作品のキャラ。分類の名前の単数（あつ森の Special character）も
+# 別の作品・人でないものの絵（大乱闘のフィギュア：あつ森 Redd・Gulliver の「…_SSBB_Trophy.png」、Fandom の持ち物：原神 Kaeya に「Item_Stella_Fortuna」）。
+# 元の画像のファイル名で見る。取るとき（cutout_on_page・check）・前からのもの（broken_cuts・library_emblem.unbroken）・点検（emb_check E9）が同じ式
+BAD_SOURCE = re.compile(r"trophy|ssbb|ssb4|ssbu|amiibo|figurine|statue|sticker|(?:^|[/_ ])(?:item|weapon|artifact|material|furnishing)_", re.I)
+
+
+def bad_source(x):
+    """小元素 1 つ（dict）か網址が、BAD_SOURCE に当たるか（元の画像のファイル名）。"""
+    u = x if isinstance(x, str) else str((x or {}).get("source") or "")
+    return bool(BAD_SOURCE.search(urllib.parse.unquote(u.split("?")[0].split("//", 1)[-1].split("/", 1)[-1])))   # 道すじ全部（Fandom は …/Item_X.png/revision/latest）
+
+
 NOT_CHAR = re.compile(r"\bcharacters?\b|\blist\b|^(?:the )?(?:players?|parents?|protagonists?)$|^unnamed\b|\([^)]*(?:smash bros|\bvs\.)", re.I)
 
 
@@ -360,7 +371,7 @@ def cutout_on_page(api, title, limit=25):
         for p in json.loads(_get(f"{api}?{q}", 4_000_000))["query"]["pages"].values():
             info = (p.get("imageinfo") or [{}])[0]
             url = info.get("thumburl") or info.get("url")
-            if not url or not named(p["title"]) or re.search(r"icon|logo|chibi|sprite|swimsuit|halloween|christmas|valentine|summer|bunny|wedding|new ?year", p["title"], re.I):
+            if not url or not named(p["title"]) or BAD_SOURCE.search(p["title"]) or re.search(r"icon|logo|chibi|sprite|swimsuit|halloween|christmas|valentine|summer|bunny|wedding|new ?year", p["title"], re.I):
                 continue
             try:
                 shape, key, img = inspect(_get(url))

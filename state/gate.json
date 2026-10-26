@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-26T00:47:42+00:00",
+ "checked": "2026-10-26T00:58:19+00:00",
  "fired": {
-  "at": "2026-10-26T00:47:42+00:00",
+  "at": "2026-10-26T00:58:19+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -57,13 +57,11 @@
   "emblem": {
    "claude": false,
    "items": [
-    "チェーンソーマン",
-    "dota2"
+    "Astrae Oratio"
    ],
    "need": true,
-   "sig": "5ae20a1465ca",
+   "sig": "99293de97a4a",
    "waiting": [
-    "Astrae Oratio",
     "あつ森",
     "FROM",
     "漫威电影",
@@ -73,9 +71,11 @@
     "GTA 6",
     "The Mandalorian",
     "A2O LITE",
-    "Vaundy"
+    "Vaundy",
+    "dota2",
+    "チェーンソーマン"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 09:54 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:41 から）"
   },
   "photos": {
    "claude": true,

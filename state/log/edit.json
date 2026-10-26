@@ -1,78 +1,5 @@
 [
 {
-"at": "2026-10-24T19:11:51+00:00",
-"text": "2026-10-25 第 2 バッチを出刊：日本顶级网球赛事（1 版面・3 本・残り 4 版面） · token 新規入力 6,217・キャッシュ読み 33.5万・出力 2,420",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.21,
-"mem_total": 16872804352,
-"mem_free": 15829721088,
-"disk_used": 10715058176,
-"disk_free": 30568112128,
-"disk_total": 41283170304,
-"peak": 484524032
-},
-"batch": 2,
-"boards": [
-"日本顶级网球赛事"
-],
-"stories": 3,
-"left": 4,
-"edited": 10,
-"run": 1792868398.6157424,
-"tok": {
-"in": 8,
-"cw": 6209,
-"cr": 334988,
-"out": 2420,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 343625
-},
-{
-"at": "2026-10-24T19:15:54+00:00",
-"text": "2026-10-25 第 3 バッチを出刊：Vaundy（1 版面・0 本・今日の整理待ちは全部終わり） · token 新規入力 3,315・キャッシュ読み 26.9万・出力 1,277",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.25,
-"mem_total": 16872804352,
-"mem_free": 15977893888,
-"disk_used": 10716880896,
-"disk_free": 30566289408,
-"disk_total": 41283170304,
-"peak": 197234688
-},
-"batch": 3,
-"boards": [
-"Vaundy"
-],
-"stories": 0,
-"left": 0,
-"edited": 14,
-"run": 1792868398.6157424,
-"tok": {
-"in": 6,
-"cw": 3309,
-"cr": 268993,
-"out": 1277,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 273585,
-"secs": 955,
-"run_tok": {
-"in": 46,
-"cw": 63498,
-"cr": 1681966,
-"out": 10886,
-"calls": 23,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-24T21:00:31+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1749,6 +1676,83 @@
 "cr": 895789,
 "out": 3488,
 "calls": 13,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-10-26T00:48:32+00:00",
+"text": "2026-10-26 第 1 バッチを出刊：A2O LITE、GTA 6、ILLIT、dota2、三星手机（5 版面・20 本・残り 3 版面） · token 新規入力 5.1万・キャッシュ読み 86.3万・出力 4,552",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.3,
+"mem_total": 16872804352,
+"mem_free": 15799668736,
+"disk_used": 10723078144,
+"disk_free": 30560092160,
+"disk_total": 41283170304,
+"peak": 385695744
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"GTA 6",
+"ILLIT",
+"dota2",
+"三星手机"
+],
+"stories": 20,
+"left": 3,
+"edited": 16,
+"run": 1792975319.88002,
+"tok": {
+"in": 26,
+"cw": 51145,
+"cr": 863407,
+"out": 4552,
+"calls": 13,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 919130
+},
+{
+"at": "2026-10-26T00:53:47+00:00",
+"text": "2026-10-26 第 2 バッチを出刊：漫威电影（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 5,384・キャッシュ読み 40.8万・出力 1,729",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.4,
+"mem_total": 16872804352,
+"mem_free": 15871041536,
+"disk_used": 10784514048,
+"disk_free": 30498656256,
+"disk_total": 41283170304,
+"peak": 321744896
+},
+"batch": 2,
+"boards": [
+"漫威电影"
+],
+"stories": 5,
+"left": 0,
+"edited": 16,
+"run": 1792975319.88002,
+"tok": {
+"in": 10,
+"cw": 5374,
+"cr": 408201,
+"out": 1729,
+"calls": 5,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 415314,
+"secs": 708,
+"run_tok": {
+"in": 36,
+"cw": 56519,
+"cr": 1271608,
+"out": 6281,
+"calls": 18,
 "model": "claude-sonnet-5-5"
 }
 }

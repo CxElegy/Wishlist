@@ -40,7 +40,7 @@ import cutshape  # noqa: E402  （numpy・OpenCV・PIL だけ。emblem は impor
 FIRST_BOARD = "はじめに"   # user_pages.FIRST_BOARD
 SAME_BITS = 4              # emblem_fill.SAME_BITS
 TOP_MAX, TOP_TOUCH = 0.5, 0.03   # emblem.TOP_MAX・TOP_TOUCH（取るときの規則）。emblem を import すると sources の opener が入り Wikimedia が 403 を返す（E2 を見誤った）
-BAD_SOURCE = re.compile(r"trophy|ssbb|ssb4|ssbu|amiibo|figurine|statue|sticker", re.I)   # 別の作品（大乱闘のフィギュア・amiibo）の絵
+BAD_SOURCE = re.compile(r"trophy|ssbb|ssb4|ssbu|amiibo|figurine|statue|sticker|(?:^|[/_ ])(?:item|weapon|artifact|material|furnishing)_", re.I)   # emblem.BAD_SOURCE と同じ：別の作品（大乱闘のフィギュア・amiibo）・持ち物の絵
 HEAD_ROWS, HEAD_EDGE = 3, 0.2   # emblem.HEAD_ROWS・HEAD_EDGE：上の 3px に絵が横幅の 20% 以上 = 頭のてっぺんが切れた（BLEACH Mirrors High）
 EYE_TOP = 1.4             # 目の高さ < 目〜口の距離 × これ = 額まで切れた（本番の cutout：哈利波特 1.23、髪だけ切れたものは 1.5 以上）
 STRIP_MAX = 40            # cutout の高さがこれ未満 = 人物が消えて切れ端だけ残った（漫威 Black Panther 73×23）
@@ -103,7 +103,8 @@ def _get(url):
 
 
 def dhash(img):
-    g = img.convert("L").resize((9, 8))
+    im = img.convert("RGBA")   # emblem_fill._hash と同じ：透明は灰の上に置いて測る（黒にすると細い立ち絵どうしが同じに見える）
+    g = Image.alpha_composite(Image.new("RGBA", im.size, (128, 128, 128, 255)), im).convert("L").resize((9, 8))
     px = list(g.getdata())
     return int("".join("1" if px[r * 9 + c] > px[r * 9 + c + 1] else "0" for r in range(8) for c in range(8)), 2)
 
@@ -248,7 +249,7 @@ def check(pg, who, width, out, full=False, guest=False):
             if same:
                 found["E8"].append(f"{s['k']} {name}＝{same}")
             hashes[name] = h
-            if BAD_SOURCE.search(urllib.parse.unquote(src)):
+            if BAD_SOURCE.search(urllib.parse.unquote(src.split("?")[0].split("//", 1)[-1].split("/", 1)[-1])):
                 found["E9"].append(f"{s['k']} {name}（{src.rsplit('/', 1)[-1][:40]}）")
         hs = []
         for j in range(len(s["alts"]) if full else 1):
