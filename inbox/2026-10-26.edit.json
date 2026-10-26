@@ -66,15 +66,16 @@
   "日本顶级网球赛事": 10,
   "MMORPG 新作": 3,
   "哈利波特剧集": 2,
-  "猫用品": 4,
+  "猫用品": 5,
   "あつ森": 2,
   "滑雪": 4,
   "绝区零": 6,
   "Astrae Oratio": 8,
   "三星手机": 8,
-  "dota2": 8,
+  "dota2": 9,
   "FROM": 1,
-  "The Mandalorian": 2
+  "The Mandalorian": 2,
+  "gelato pique": 1
  },
  "GTA 6": [
   {
@@ -391,6 +392,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "いなばペットフードが高齢猫用CIAO 焼かつおちゅ〜る和え2品を新発売",
+   "highlight": "高齢猫用",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "あつ森": [],
@@ -522,6 +532,15 @@
    "refs": [
     8
    ]
+  },
+  {
+   "headline": "刀友被自己打死，连杀终止金钱却算在自己头上",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
   }
  ],
  "FROM": [
@@ -553,6 +572,17 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "【gelato pique(ジェラート ピケ)】毎年大好評の福袋『HAPPY BOX 2027』が今年も登場！",
+   "highlight": "『HAPPY BOX 2027』",
+   "blurb": "毎年大好評の福袋『HAPPY BOX 2027』が今年も登場。",
+   "weight": "lead",
+   "refs": [
+    1
    ]
   }
  ]

@@ -139,6 +139,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/647c8fably1iidwfyfwunj20j10c0tbn.jpg": {
+  "w": 685,
+  "h": 432,
+  "target": 720,
+  "v": 3,
+  "local": "pics/456574cecf4da4a1.webp",
+  "out": [
+   685,
+   432
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/002I0yDzly1iieprfrhrxj635s23vb2902.jpg": {
   "w": 2000,
   "h": 1333,
@@ -1927,6 +1940,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/802703_1.jpg": {
+  "w": 281,
+  "h": 534,
+  "target": 720,
+  "v": 3
+ },
  "https://news.dellows.jp/wp-content/uploads/2026/10/808572_1.jpg": {
   "w": 1024,
   "h": 683,
@@ -2555,7 +2574,7 @@
  "https://prcdn.freetls.fastly.net/release_image/18505/4576/18505-4576-3c0ae2cf4e150a39d7fa573bc8b19b8d-1080x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1080,
   "h": 1080,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/188297/9/188297-9-325739f58f3f1a65829bfef3a8a73d82-1557x865.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3023,7 +3042,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026143647": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026144222": {
   "w": 640,
   "h": 450,
   "target": 1280,
@@ -3086,12 +3105,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.349
- },
- "https://tennisconnected.com/wp-content/uploads/2026/03/alexandra-eala-joc481o-fonseca-get-03-17-26-e1773723674883.jpg.webp": {
-  "w": 1500,
-  "h": 845,
-  "target": 1280,
-  "v": 3
  },
  "https://tfi.gamepedia.jp/image/w=1200,h=630,fit=pad,f=webp/puppeteer.gamepedia.jp/gamepedia.jp/ac-switch/thumbnail/63317/4345231d7bff38b91b280f4eb2272bef": {
   "w": 1200,
@@ -3256,6 +3269,19 @@
   "out": [
    1280,
    719
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.1uBXQmuFS9kEJBgLDVKJJQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.583,
+  "local": "pics/c35675e1c7e92fa8.webp",
+  "out": [
+   1280,
+   720
   ],
   "why": "看不清"
  },
@@ -3708,6 +3734,19 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://www.nikkansports.com/entertainment/news/img/202610260000390-w500_0.jpg": {
+  "w": 500,
+  "h": 419,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.497,
+  "local": "pics/b1852403f316261a.webp",
+  "out": [
+   1280,
+   1073
+  ],
+  "why": "看不清"
  },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,
