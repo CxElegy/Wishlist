@@ -62,7 +62,7 @@
   "GTA 6": 26,
   "A2O LITE": 29,
   "周杰伦": 9,
-  "ILLIT": 9,
+  "ILLIT": 12,
   "日本顶级网球赛事": 8,
   "MMORPG 新作": 1,
   "哈利波特剧集": 2,
@@ -201,10 +201,25 @@
  ],
  "ILLIT": [
   {
+   "headline": "ILLITが新アルバムであいまいな態度の相手を「逮捕しちゃうぞ」",
+   "highlight": "",
+   "blurb": "ILLITが26日、5枚目ミニアルバム「BREAK EVEN」を午後6時に発表。MVも公開する。",
+   "weight": "lead",
+   "refs": [
+    10,
+    8
+   ],
+   "event": {
+    "date": "2026-10-26",
+    "label": "リリース",
+    "time": "18:00"
+   }
+  },
+  {
    "headline": "【韓流】ILLITが26日から６日間、ソウルでポップアップ開催 未公開フォトカード用意",
    "highlight": "26日から６日間",
    "blurb": "ILLITが10月26日から6日間、ソウルでポップアップを開催。未公開フォトカードを用意。",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     1
    ],
@@ -234,21 +249,13 @@
    ]
   },
   {
-   "headline": "아일릿 원희, 날씨 요정 된다…일일 기상캐스터 도전",
-   "highlight": "일일 기상캐스터",
+   "headline": "ILLITウォンヒ、初の一日お天気キャスター…新曲映像は日本でもチャート入り",
+   "highlight": "初の一日お天気キャスター",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    11,
     7
-   ]
-  },
-  {
-   "headline": "아일릿, '어장관리남' 정조준…'체포하겠어' MV 티저 속 발칙한 카타르시스",
-   "highlight": "'체포하겠어' MV 티저",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    8
    ]
   }
  ],

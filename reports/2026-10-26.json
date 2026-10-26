@@ -1,6 +1,6 @@
 {
  "date": "2026-10-26",
- "edit_sig": "022865c5bdca",
+ "edit_sig": "88d3cb26ce0b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,7 +23,7 @@
      "date": "2026-10-25",
      "headline": "‘코믹마켓’부터 ‘AGF’까지⋯ 엔씨가 ‘아스오라’에 공 들이는 이유",
      "highlight": "",
-     "image": "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026131926",
+     "image": "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026132334",
      "image_via": "og:image",
      "url": "https://www.viva100.com/article/20261025500351",
      "weight": "normal"
@@ -721,31 +721,23 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-26",
-     "n": 10,
-     "source": "日刊スポーツ 芸能",
-     "title": "【韓流】ILLITが新アルバムであいまいな態度の相手を「逮捕しちゃうぞ」",
-     "url": "https://www.nikkansports.com/entertainment/news/202610260000390.html"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 11,
-     "source": "KOREA WAVE",
-     "title": "ILLITウォンヒ、初の一日お天気キャスター…新曲映像は日本でもチャート入り",
-     "url": "https://news.google.com/rss/articles/CBMisAJBVV95cUxQeXlkVWh3cnpVNzdtU0E2akZnZWM0eGxxWkFjWV9JYlNUeWp5QnhkcE9iVFNaU2dha1JXUklkbHp4Yi1pMFFjSnFyelRZTUs1UGZnQmFmX0xZQkdNcXlJWDU4NUhjcFNoU2VFbkN4QV9QZHkwTXZYaDJYUHRUVmEzTm42cWRneFlnN1Z2YkpJMGFobjQ1ZHgxYTV3aHRfNGxUZ1d6dUt5Q2ZsZ0JxaUZrc1ZMVjlZQ2lxMTFVbXA0aWhvX084M2EzV3ZRbGMyMDNjY1VmYU5tSlFLM01Tcl9oa25CcFZiX2dHNFN1VHNBYWNTOHpDWExzTGZmdW1oenViVDBRS190RG1Jdy1NQ3VSbzRmdEZQSWcteEctd3lCV3FjX0FyX0JaSmFDcW1DZjJt?oc=5"
-    },
-    {
-     "date": "2026-10-19",
-     "n": 12,
-     "source": "産経ニュース",
-     "title": "『ILLIT LIVE ‘PRESS START♥’ ENCORE in KOREA』（P）＆（C）BELIFT LAB Inc.",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdGQ4YnVPNGJCLWhCZjZvcHV5WkRTNEI2bEhsUm4xVzdCRFFmYmctYU9SQmNVRkhaQzBKU1RmcXJQaFNlTTdYdEZMWkpaYUhYaFVrUFpQeFFDQmJELUhhbFNKcGM4V2xuTnJuR09yR0ttczNYNnJDME10TzVnbHdJSzBvSDVBaUNXcGpxQkdfd1hHdGQ2TnZtcFZiUnRRcVJ0Vmc?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
+    {
+     "blurb": "ILLITが26日、5枚目ミニアルバム「BREAK EVEN」を午後6時に発表。MVも公開する。",
+     "date": "2026-10-26",
+     "event": {
+      "date": "2026-10-26",
+      "label": "リリース",
+      "time": "18:00"
+     },
+     "headline": "ILLITが新アルバムであいまいな態度の相手を「逮捕しちゃうぞ」",
+     "highlight": "",
+     "image": "https://cdn.nc.press/news/photo/202610/629390_866523_1030.jpg",
+     "image_via": "og:image",
+     "url": "https://www.nikkansports.com/entertainment/news/202610260000390.html",
+     "weight": "lead"
+    },
     {
      "blurb": "ILLITが10月26日から6日間、ソウルでポップアップを開催。未公開フォトカードを用意。",
      "date": "2026-10-22",
@@ -759,7 +751,7 @@
      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261022-40220125-nksports-000-3-view.jpg?exp=10800",
      "image_via": "AI 挑选",
      "url": "https://news.yahoo.co.jp/articles/42cc16c794e40146b0c3c4b31e03aceac8324e99",
-     "weight": "lead"
+     "weight": "normal"
     },
     {
      "blurb": "",
@@ -784,21 +776,11 @@
     {
      "blurb": "",
      "date": "2026-10-25",
-     "headline": "아일릿 원희, 날씨 요정 된다…일일 기상캐스터 도전",
-     "highlight": "일일 기상캐스터",
+     "headline": "ILLITウォンヒ、初の一日お天気キャスター…新曲映像は日本でもチャート入り",
+     "highlight": "初の一日お天気キャスター",
      "image": "https://photo.jtbc.co.kr/news/jam_photo/202610/25/1a03e766-71d1-41fa-a0e3-714412135388.jpg",
      "image_via": "og:image",
-     "url": "https://news.jtbc.co.kr/article/NB12324703",
-     "weight": "normal"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-24",
-     "headline": "아일릿, '어장관리남' 정조준…'체포하겠어' MV 티저 속 발칙한 카타르시스",
-     "highlight": "'체포하겠어' MV 티저",
-     "image": "https://cdn.nc.press/news/photo/202610/629390_866523_1030.jpg",
-     "image_via": "og:image",
-     "url": "https://www.nc.press/news/articleView.html?idxno=629390",
+     "url": "https://koreawave.jp/illit%E3%82%A6%E3%82%A9%E3%83%B3%E3%83%92%E3%80%81%E5%88%9D%E3%81%AE%E4%B8%80%E6%97%A5%E3%81%8A%E5%A4%A9%E6%B0%97%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E6%96%B0%E6%9B%B2%E6%98%A0/",
      "weight": "normal"
     }
    ],
