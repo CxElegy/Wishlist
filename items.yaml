@@ -1617,7 +1617,7 @@ items:
     site: "http://www.dota2.com/"
     steam_appid: 570
     notes: "2026-10-16 从网页设置页加进来的。关注：电竞比赛。维基数据：線上遊戲。"
-    emblem_redo: ["Lycan", "Ember Spirit", "Gyrocopter", "Skywrath Mage"]
+    emblem_redo: ["Lycan", "Ember Spirit", "Gyrocopter", "Skywrath Mage", "Mars", "Blood Commander", "Medusa", "Puck", "Warlock", "Bounty Hunter", "Luna", "Queen of Pain", "Crystal Maiden", "Doom"]
 
   - name: "A2O LITE"
     wikidata: Q141752366   # Wikidata の番号（ライブラリで同じものかどうかの印、library.find_wikidata）
