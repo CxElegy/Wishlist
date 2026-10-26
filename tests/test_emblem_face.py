@@ -66,6 +66,17 @@ class Everything(unittest.TestCase):
 
 
 class CustomerRender(unittest.TestCase):
+    def test_no_face_gets_nf_not_m(self):
+        """顔なし（face[0] = 0）は nf=1・m なし。顔ありは m で nf なし（ux_check E13 が「測ったか」をこれで見る）。"""
+        import html
+        import json
+        import re
+        import render
+        def alt(face):
+            return json.loads(html.unescape(re.search(r'data-alts="([^"]*)"', render._emblem([{"image": "https://x.supabase.co/a.webp", "shape": "cutout", "face": face}])).group(1)))[0]
+        self.assertEqual((alt([0, 0, 0.5, 0.5, 40, 80]).get("nf"), alt([0, 0, 0.5, 0.5, 40, 80]).get("m")), (1, None))
+        self.assertEqual((alt([0.2, 0.05, 0.5, 0.5, 40, 80]).get("nf"), alt([0.2, 0.05, 0.5, 0.5, 40, 80]).get("m")), (None, 1.6))
+
     def test_url_cutout_with_face_gets_m_and_fs(self):
         """お客さまの版面（網址の小元素）も、店長と同じ式で倍率 m と顔の高さ fs が alts に出る（ux_check E14 が数える材料）。"""
         import json
