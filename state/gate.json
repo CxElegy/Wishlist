@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-26T21:59:23+00:00",
+ "checked": "2026-10-26T22:02:13+00:00",
  "fired": {
-  "at": "2026-10-26T21:59:23+00:00",
+  "at": "2026-10-26T22:02:13+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -43,11 +43,9 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "あつ森"
-   ],
-   "need": true,
-   "sig": "586e844112df",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "Vaundy",
     "チェーンソーマン",
@@ -58,12 +56,13 @@
     "哈利波特剧集",
     "dota2",
     "FROM",
+    "あつ森",
     "Astrae Oratio",
     "The Mandalorian",
     "A2O LITE",
     "ILLIT"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 07:06 から）"
+   "why": "失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 07:06 から）"
   },
   "photos": {
    "claude": true,
