@@ -187,15 +187,23 @@ def unbroken(emblems, photo, fetch=None):
     """公開の箱の網址の小元素のうち、壊れたもの（emblem_fill.broken_image）を外す。→ 新しいリスト。読めないものは残す（次の回）。"""
     import urllib.request
     from PIL import Image
+    import emblem
     import emblem_fill
     fetch = fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read())
-    out = []
+    out, hashes = [], []
     for x in emblems or []:
         u = str(x.get("image") or "") if isinstance(x, dict) else ""
+        if isinstance(x, dict) and emblem.bad_source(x):   # 別の作品・持ち物の絵（原神 Kaeya の Item_Stella_Fortuna）
+            continue
         if f"/storage/v1/object/public/{BUCKET}/" in u and x.get("shape") not in ("logo", "icon", "badge"):   # 自分で切り抜いて上げたものだけ
             try:
-                if emblem_fill.broken_image(Image.open(io.BytesIO(fetch(u))), photo):
+                im = Image.open(io.BytesIO(fetch(u)))
+                if emblem_fill.broken_image(im, photo):
                     continue
+                h = emblem_fill._hash(im)   # 同じ見た目の画像は 1 枚（前の回に別の名前で上がった同じ絵）。固定は残す
+                if not x.get("lock") and any(bin(h ^ y).count("1") <= emblem_fill.SAME_BITS for y in hashes):
+                    continue
+                hashes.append(h)
             except Exception:
                 pass
         out.append(x)

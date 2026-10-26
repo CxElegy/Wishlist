@@ -1455,7 +1455,10 @@ STRATEGIES = [("標準", "gather"), ("名前を広げる", "gather_wide"), ("公
 
 
 def _hash(img):
-    g = img.convert("L").resize((9, 8))
+    """差分ハッシュ（64 ビット）。透明な切り抜きは灰の上に置いてから測る（透明を黒にすると、背の高い細い立ち絵どうしが同じ形に見えた：呪術廻戦）。"""
+    from PIL import Image
+    im = img.convert("RGBA")
+    g = Image.alpha_composite(Image.new("RGBA", im.size, (128, 128, 128, 255)), im).convert("L").resize((9, 8))
     px = list(g.get_flattened_data() if hasattr(g, "get_flattened_data") else g.getdata())
     return int("".join("1" if px[r * 9 + c] > px[r * 9 + c + 1] else "0" for r in range(8) for c in range(8)), 2)
 
@@ -1500,6 +1503,9 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None):
         log(f"  [{why}] {c['subject']}（{c['source']}）{detail}")
     dl = []
     for c in cands:
+        if emblem.bad_source(c.get("image") or ""):   # 別の作品・持ち物の絵（大乱闘のフィギュア・Item_）
+            drop("別の作品の絵", c)
+            continue
         try:
             data = _get(c["image"], 6_000_000)
             if c["image"].lower().split("?")[0].endswith(".svg"):
@@ -2058,6 +2064,9 @@ def broken_cuts(item):
         p = emblem.sitedir.SITE_DIR / im
         if not im.startswith("emblems/") or x.get("shape") in ("logo", "icon", "badge") or not p.exists():
             continue
+        if emblem.bad_source(x):   # 別の作品・持ち物の絵（あつ森の大乱闘のフィギュア・原神の Item_）
+            bad.append(x)
+            continue
         try:
             im = Image.open(p)
         except Exception:
@@ -2080,7 +2089,7 @@ def broken_image(im, photo):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 5   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 6   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 
 def _broken_log(d=None):
@@ -2157,12 +2166,64 @@ def repair_flat(item, log=print):
     return len(fixed)
 
 
+def same_pics(emblems, load):
+    """同じ画像の小元素（後のほう）→ (同じファイル, 同じ見た目で別ファイル)。同じ image・同じ元のファイル（file_key）= 前の書き込みの重複（Vaundy 3 本が同じ vaundy-vaundy.webp）、
+    差分ハッシュが SAME_BITS 以下 = 別の名前で同じ絵（原神の Item_Stella_Fortuna が 3 人に）。固定（lock）は落とさない。load(x) → PIL か None。"""
+    files, looks, seen, hashes = [], [], set(), []
+    for x in emblems:
+        if not isinstance(x, dict):
+            continue
+        ks = {k for k in (x.get("image"), file_key(x.get("source")) if x.get("source") else None) if k}
+        if ks & seen:
+            if not x.get("lock"):
+                files.append(x)
+            continue
+        seen |= ks
+        im = None if x.get("shape") in ("logo", "icon") else load(x)
+        if im is None:
+            continue
+        h = _hash(im)
+        if any(bin(h ^ y).count("1") <= SAME_BITS for y in hashes):
+            if not x.get("lock"):
+                looks.append(x)
+            continue
+        hashes.append(h)
+    return files, looks
+
+
+def drop_same(item, log=print):
+    """同じ画像の小元素の後ろを外す（same_pics）。同じファイルは emblem_reject に入れない（残すほうと同じ網址）、見た目だけ同じものは外して次の候補へ。→ 外した枚数。"""
+    from PIL import Image
+
+    def load(x):
+        p = emblem.sitedir.SITE_DIR / str(x.get("image") or "")
+        try:
+            return Image.open(p) if str(x.get("image")).startswith("emblems/") and p.exists() else None
+        except Exception:
+            return None
+    files, looks = same_pics(item.get("emblem") or [], load)
+    if not files and not looks:
+        return 0
+    gone = files + looks
+    keep = [x for x in item.get("emblem") or [] if not any(x is b for b in gone)]
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in looks]))
+    with WRITE_LOCK:
+        emblem.write_item(item["name"], keep, None)
+        if looks:
+            _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+    log(f"  [外した] {item['name']}：同じ画像の小元素 {len(gone)} 枚（{'、'.join(b.get('subject', '') for b in gone)}）")
+    return len(gone)
+
+
 def drop_broken(item, log=print):
-    """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。直せる形の傷は先に repair_flat で直す。"""
+    """broken_cuts を外し、元の画像を emblem_reject に（次は同じ人の次の候補）。→ 外した枚数。直せる形の傷は先に repair_flat で直す。同じ画像（drop_same）も。"""
     repair_flat(item, log)
+    n = drop_same(item, log)
+    if n:
+        item = next((i for i in load_items() if i["name"] == item["name"]), item)
     bad = [b for b in broken_cuts(item) if not b.get("lock")]   # 固定した写真は替えない
     if not bad:
-        return 0
+        return n
     with WRITE_LOCK:
         d = _broken_log()
         d.setdefault(item["name"], []).extend({"v": BROKEN_V, "emblem": b} for b in bad)
@@ -2173,7 +2234,7 @@ def drop_broken(item, log=print):
         emblem.write_item(item["name"], keep, None)
         _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
     log(f"  [外した] {item['name']}：読めない・切れ端・頭が切れた・ぼやけた小元素 {len(bad)} 枚（{'、'.join(b.get('subject', '') for b in bad)}）")
-    return len(bad)
+    return len(bad) + n
 
 
 def fresh_have(item):
