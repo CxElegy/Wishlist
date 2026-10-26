@@ -15,6 +15,7 @@
   E9 中身        元の画像のファイル名が別の作品の絵（大乱闘のフィギュア・amiibo など、BAD_SOURCE）
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
+  E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
@@ -178,6 +179,27 @@ def sources():
             if isinstance(x, dict) and x.get("image")}
 
 
+def head_missing():
+    """E15：名簿の先頭 3 人に小元素がいない → {版面: [名前]}（emblem_fill.head_missing と同じ式。emblem は import しない）。"""
+    import unicodedata
+    key = lambda s: re.sub(r"[^a-z0-9]", "", "".join(c for c in unicodedata.normalize("NFKD", str(s).lower()) if not unicodedata.combining(c)).replace("ou", "o").replace("uu", "u"))
+    bare = lambda s: re.sub(r"\s*[(（].*?[)）]", "", re.sub(r" \d+$", "", str(s or "")))
+    out = {}
+    for it in yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
+        if it.get("emblem_kind") not in ("character", "group"):
+            continue
+        have = set()
+        for x in it.get("emblem") or []:
+            if isinstance(x, dict):
+                s = re.sub(r" \d+$", "", str(x.get("subject") or ""))
+                m = re.fullmatch(r".+（(.+)）", s)
+                have |= {key(s), key(bare(s))} | ({key(m.group(1))} if m else set())
+        miss = [w for w in (it.get("emblem_who") or [])[:3] if key(w) not in have and key(bare(w)) not in have]
+        if miss:
+            out[it["name"]] = miss
+    return out
+
+
 PROGRESS = "https://raw.githubusercontent.com/CxElegy/Wishlist/main/state/emblem_progress.json"
 
 
@@ -219,7 +241,7 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 15)}
+    found = {f"E{n}": [] for n in range(1, 16)}
     nomodel = False
     src_of = sources()
     shots, embdir = [], out / "emb"
@@ -309,11 +331,13 @@ def check(pg, who, width, out, full=False, guest=False):
                 found["E4"].append(f"{s['k']} {name} {h}px（中央値 {med:.0f}）")
     if guest:   # 店長の版面（ログインなし）だけ：止まっている版面は後台の状態から
         found["E10"] = [f"{k} {v}" for k, v in stuck().items()]
+    if guest:
+        found["E15"] = [f"{k} {'・'.join(v)}" for k, v in head_missing().items()]
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E12": "形の傷（直線の切り口・凹み）"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E12": "形の傷（直線の切り口・凹み）"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     return bad + (["E7・E11 顔のモデルなし（額の切れ・何人もは見ていない）"] if nomodel else [])

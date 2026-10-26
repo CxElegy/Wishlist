@@ -678,6 +678,8 @@ def gather(item, log=print, tried=None):
         if kind == "character" and api and not item.get("emblem_people"):
             try:   # 先に、同じページの透明背景の立ち絵（ゲームの公式イラストなど）。代表画像は漫画のコマ・アニメの場面のことが多い
                 r = emblem.cutout_on_page(api, subj)
+                if r and page_owner(r[2], subj, item.get("emblem_who")):
+                    r = None
                 if r:
                     tried["Fandom"] = tried.get("Fandom", 0) + 1
                     cands.append({"subject": subj, "image": r[1], "page": r[2], "source": "Fandom",
@@ -687,6 +689,8 @@ def gather(item, log=print, tried=None):
                 log(f"  [Fandom] {subj}：{e}")
             try:
                 r = emblem.page_image(api, subj)
+                if (other := page_owner(r[1], subj, item.get("emblem_who"))):   # 別の人のページへの転送（Zangetsu (Quincy Powers) → 黒崎一護）
+                    raise ValueError(f"{other} のページへの転送")
                 tried["Fandom"] = tried.get("Fandom", 0) + 1
                 cands.append({"subject": subj, "image": small_url(r[0]), "page": r[1], "source": "Fandom", "why": f"{subj}（Fandom のページ）", "license": ""})
                 got += 1
@@ -1412,6 +1416,8 @@ def gather_wide(item, log=print, tried=None):
                 for t in {subj.split()[0], f"{subj} (character)"} - {subj}:
                     try:
                         r = emblem.page_image(api, t)
+                        if page_owner(r[1], subj, item.get("emblem_who")):   # 名だけで引くと別の人のページ（Zangetsu → 黒崎一護）
+                            continue
                         add(subj, [{"image": small_url(r[0]), "page": r[1]}], "Fandom", f"{subj}（Fandom・{t}）")
                         break
                     except Exception:
@@ -1811,6 +1817,46 @@ def _who_of(s):
     return {s, m.group(1)} if m else {s}
 
 
+def page_owner(page, subj, who):
+    """Fandom のページの網址 → そのページが名簿の別の人のものなら、その人の名前（なければ None）。
+    「Zangetsu (Quincy Powers)」は黒崎一護のページへの転送で、一護の代表画像を斬魄刀の小元素として先に取ってしまい、
+    一護本人は「もう使っている画像」で 1 枚も取れなかった（BLEACH Mirrors High）。"""
+    m = re.search(r"/wiki/([^#?]+)", str(page or ""))
+    if not m:
+        return None
+    title = urllib.parse.unquote(m.group(1)).replace("_", " ")
+    if title.lower().startswith("file:"):
+        return None
+    key, mine = _name_key(title), {_name_key(subj), _name_key(_base_subject(subj))}
+    if not key or key in mine:
+        return None
+    return next((w for w in who or [] if _name_key(w) == key), None)
+
+
+def wrong_owner(item, log=print):
+    """前からの小元素のうち、ページが名簿の別の人のもの（page_owner）を外す。画像そのものは悪くない（その人の絵）ので emblem_reject には入れない：
+    本人が次の回にその画像を取れる。固定（lock）は替えない。→ 外した枚数。"""
+    who = item.get("emblem_who") or []
+    if kind_of(item) != "character" or live_action(item) or not who:
+        return 0
+    ems = [x for x in item.get("emblem") or [] if isinstance(x, dict)]
+    bad = [x for x in ems if not x.get("lock") and page_owner(x.get("page"), x.get("subject"), who)]
+    if not bad:
+        return 0
+    with WRITE_LOCK:
+        emblem.write_item(item["name"], [x for x in ems if not any(x is b for b in bad)], None)
+    log(f"  [別の人のページ] {item['name']}：{'、'.join(str(b.get('subject')) + '→' + page_owner(b.get('page'), b.get('subject'), who) for b in bad)}（本人の画像を先に取れるよう外した）")
+    return len(bad)
+
+
+def head_missing(item, n=3):
+    """名簿の先頭 n 人（いちばん点数が高い・リンクの多い人）のうち、小元素がいない人。主役が欠けた版面の点検（emb_check E15 と同じ式）。"""
+    who = [w for w in item.get("emblem_who") or [] if not emblem.not_character(w)][:n]
+    have = {_name_key(k) for x in item.get("emblem") or [] if isinstance(x, dict) for s in _who_of(x.get("subject"))
+            for k in (s, re.sub(r"\s*[(（].*?[)）]", "", s))}
+    return [w for w in who if _name_key(w) not in have and _name_key(re.sub(r"\s*[(（].*?[)）]", "", w)) not in have]
+
+
 def _have_images(item):
     """今ある小元素の画像と、目で見て外した画像（emblem_reject）。自動ではどちらも選ばない。"""
     have = {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
@@ -2013,7 +2059,7 @@ def fill_one(item, log=print):
             log(f"  [名簿] {item['name']}：{e}")
     if unbreak(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
-    if off_roster(item, log) | drop_broken(item, log) | untied_roles(item, log):
+    if off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
     if status(item)["state"] == "ok":   # 名簿を数え直しても足りている（名簿を確かめに来ただけ）：集めない
         st = status(item)
