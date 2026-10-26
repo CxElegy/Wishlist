@@ -1704,6 +1704,7 @@
     {
      "date": "2026-10-26T07:16:00+00:00",
      "image": "",
+     "link": "https://news.yahoo.co.jp/articles/2cc8ff546c95399eebe4233631a69e90a94efbb6",
      "n": 13,
      "seen": "2026-10-26T07:55:09+00:00",
      "site": "https://news.yahoo.co.jp",
@@ -1962,7 +1963,9 @@
     },
     {
      "date": "2026-10-23T07:00:00+00:00",
-     "image": "",
+     "image": "https://news.walkerplus.com/article/1254137/14292686_615.jpg",
+     "image_via": "og:image",
+     "link": "https://www.walkerplus.com/article/1254137/",
      "n": 4,
      "seen": "2026-10-26T07:55:36+00:00",
      "site": "https://www.walkerplus.com",
