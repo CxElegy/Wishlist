@@ -29,6 +29,12 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
 class Rules(unittest.TestCase):
+    def test_work_names_strip_accents(self):
+        """Pokémon の é で英数字の呼び名が空になり、own_wiki が外れてポケモンの分類が見つからなかった。"""
+        item = {"name": "ポケットモンスター", "wiki": ["en:Pokémon", "ja:ポケットモンスター"], "keywords": ["ポケットモンスター"]}
+        self.assertEqual(ef.work_names(item), ["Pokemon"])
+        self.assertTrue(ef.own_wiki("https://pokemon.fandom.com/api.php", "Pokémon Wiki", item))
+
     def test_kind_inferred_from_type(self):
         self.assertEqual(ef.kind_of({"type": "anime"}), "character")
         self.assertEqual(ef.kind_of({"type": "event"}), "person")
