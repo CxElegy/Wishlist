@@ -3098,13 +3098,6 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026183255": {
-  "w": 640,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.383
- },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
   "h": 225,
@@ -3526,6 +3519,13 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.mgRA6CsgTMQsdFtE2ho-Tw&pid=News&w=640": {
+  "w": 640,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.407
  },
  "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200": {
   "w": 700,

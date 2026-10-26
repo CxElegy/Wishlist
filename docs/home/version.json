@@ -1,32 +1,32 @@
 {
- "admin": "5930aeb51c7a",
- "admin-ai": "b8f69b2169de",
+ "admin": "637d1174a1fd",
+ "admin-ai": "937cb7ceff49",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "656f3a51"
+   "e5a6b8c7"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "d2bc29a4"
+   "ab44846a"
   ]
  },
- "admin-boards": "54111871da42",
+ "admin-boards": "d07a8d77df61",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "a6a0c583"
+   "52a8f80c"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "ffcb81a50749",
+ "admin-emblem": "ae7dedd5d1f8",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1efa054e"
+   "ff91e091"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0a0ba07d09df",
  "admin-members_marks": {},
- "admin-now": "074ddb8e847a",
+ "admin-now": "a8c69910d68a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2eb582e7"
+   "d3127975"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "af4c2a1b"
+   "e75494c6"
   ]
  },
- "admin-system": "d3f8fd9b3b1d",
+ "admin-system": "481fae624348",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "25c953ac"
+   "ba4e5e64"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "74ae53b3"
+   "61e431c7"
   ]
  },
  "admin_marks": {},
- "heat": "fe911f74972b",
+ "heat": "6de4cbc8d65e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "5e95074a"
+   "acd9fc04"
   ],
   "ranking": [
    "ランキング",
-   "3b118d73"
+   "fc12868b"
   ]
  },
- "index": "7bcdb8a0a771",
+ "index": "a68768a5ba86",
  "index_marks": {
   "front": [
    "トップ",
-   "e6ee38e9"
+   "e87090bc"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "6fc80444"
+   "d9a8f434"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "863c05c1"
+   "f20d544a"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "578d630c"
   ]
  },
- "updated": "10.26 18:37",
+ "updated": "10.26 18:43",
  "wishlist": "86c9cd85e98e"
 }
