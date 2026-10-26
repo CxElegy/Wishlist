@@ -20,6 +20,7 @@
   E16 顔だけのアップ  cutout（全身 body は除く）の顔の幅 > 画像の幅の CLOSE_W（45%）か、顔の下端から下が高さの SHOULDER_MIN（15%）未満（emblem_fill.closeup_of と同じしきい値。ここは YuNet で測れたものだけ：アニメ絵の検出は取るときの規則だけ）。小元素は胸像（BLEACH の黒崎一護）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
+  E17 顔が測れない理由別の数（情報：✗ にしない）  顔なし（測ったが顔がない：網页の nf）の cutout を emblem_face.none_reason の札で数える。sheet＝向きを並べた図・small＝顔らしい箱はあるが小さい・noface＝箱がない（怪物・武器・物・覆面）。測り方の足りない（見つかる顔を見落とした）ものを増やさないための数え直しの材料
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
                  （scripts/cutshape.py：取るときの emblem.trim_flat・drop_broken と同じ式。まっすぐでよいのは下の端だけ）
 顔のモデル（face_id、初回に約 39MB）が取れないときは E7 の顔・E11 を見ない（✗ の行に「顔のモデルなし」と出す）。
@@ -42,6 +43,7 @@ from PIL import Image
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import cutshape  # noqa: E402  （numpy・OpenCV・PIL だけ。emblem は import しない）
+import emblem_face  # noqa: E402  （E17 の理由の札。import の時点では pathlib だけ）
 FIRST_BOARD = "はじめに"   # user_pages.FIRST_BOARD
 SAME_BITS = 4              # emblem_fill.SAME_BITS
 TOP_MAX, TOP_TOUCH = 0.5, 0.03   # emblem.TOP_MAX・TOP_TOUCH（取るときの規則）。emblem を import すると sources の opener が入り Wikimedia が 403 を返す（E2 を見誤った）
@@ -297,6 +299,7 @@ def check(pg, who, width, out, full=False, guest=False):
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
     found = {f"E{n}": [] for n in range(1, 18)}
     nomodel = False
+    nf_why = {}   # E17：顔が測れない理由の札 → [版面 名前]
     src_of = sources()
     shots, embdir = [], out / "emb"
     if full:
@@ -320,6 +323,8 @@ def check(pg, who, width, out, full=False, guest=False):
             if a["shape"] == "cutout":
                 if not (a.get("body") or a.get("m") or a.get("nf")):   # 網址の小元素（お客さまの版面）も。前は除いていて、135 枚の未測定を見逃した
                     found["E13"].append(f"{s['k']} {name}")   # 顔を測っていない（emblem_face.measure_item・library_emblem.measure_faces が回っていない）= 表示で顔の大きさがそろわない
+                if a.get("nf") and not a.get("body"):
+                    nf_why.setdefault(emblem_face.none_reason(img), []).append(f"{s['k']} {name}")
                 faces = _faces(img.convert("RGBA"))
                 nomodel |= faces is None
                 why = cut_edge(img, faces)
@@ -395,6 +400,8 @@ def check(pg, who, width, out, full=False, guest=False):
         found["E17"] = [f"{k} {'・'.join(v)}" for k, v in not_people().items()]
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
+    if nf_why:
+        print(f"  情報 E17 顔が測れない {sum(map(len, nf_why.values()))} 枚の理由：" + "・".join(f"{k} {len(v)}（{emblem_face.NONE_REASONS[k]}）" for k, v in sorted(nf_why.items())))
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",

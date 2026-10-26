@@ -2,6 +2,7 @@
 import pathlib
 import sys
 import unittest
+import zlib
 
 import yaml
 
@@ -121,3 +122,55 @@ class CustomerRender(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def _models():
+    """検出のモデルが手元にあるときだけ（CI で 80MB を落とさない）。"""
+    try:
+        import face_id
+        return (face_id.CACHE / "anime_face.onnx").exists() and (face_id.CACHE / "yunet.onnx").exists()
+    except Exception:  # noqa: BLE001
+        return False
+
+
+@unittest.skipUnless(_models(), "顔のモデルが手元にない")
+class Anime(unittest.TestCase):
+    """アニメ・ゲームの絵の顔（2 段目 relax・3 段目 weak）と、測り済みの値が変わらないこと。docs/home/emblems/ の既存の画像だけ。"""
+
+    def img(self, name):
+        from PIL import Image
+        im = Image.open(ROOT / "docs" / "home" / "emblems" / name)
+        im.load()
+        return im
+
+    def test_lowered_face_close_up_relax(self):
+        """髪・角の大きい上半身のアップは顔が絵の下半分にある（BLEACH の Franceska 0.54、dota2 の Dark Willow 0.22）。"""
+        for name, fs in (("bleach-mirrors-high-franceska-mila-rose.webp", 0.537), ("dota2-dark-willow.webp", 0.221)):
+            self.assertAlmostEqual(ef.measure(self.img(name))[0], fs, delta=0.01, msg=name)
+
+    def test_weak_threshold_finds_anime_face(self):
+        for name in ("bleach-mirrors-high-yammy-llargo.webp", "timmy-and-tommy.webp", "bleach-mirrors-high-s-ken-ishida.webp"):
+            self.assertGreater(ef.measure(self.img(name))[0], 0.3, name)
+
+    def test_sheet_is_not_weak_measured(self):
+        """向きを並べた図（dota2 Ursa）は、しきい値を下げると体の模様を顔とするので 3 段目に進まない。"""
+        im = self.img("dota2-ursa.webp")
+        self.assertEqual(ef.measure(im)[0], 0)
+        self.assertEqual(ef.none_reason(im), "sheet")
+
+    def test_no_face_reasons(self):
+        self.assertEqual(ef.none_reason(self.img("gun-devil.webp")), "noface")
+        self.assertEqual(ef.none_reason(self.img("dota2-queen-of-pain.webp")), "sheet")
+        self.assertEqual(ef.none_reason(self.img("dota2-juggernaut.webp")), "small")
+        self.assertEqual(ef.measure(self.img("gun-devil.webp"))[0], 0)
+
+    def test_measured_values_unchanged(self):
+        """測り済みの十数枚（アニメ・3D・写真）の値が items.yaml のとおり変わらない（前の段で測れたものは後の段に進まない）。"""
+        n = 0
+        for it in board_items():
+            for x in it.get("emblem") or []:
+                f = x.get("face") if isinstance(x, dict) else None
+                if f and f[0] and str(x.get("image", "")).startswith("emblems/") and n < 12 and zlib.crc32(x["image"].encode()) % 25 == 0:
+                    self.assertEqual(ef.measure(self.img(x["image"].split("/", 1)[1])), f, x["image"])
+                    n += 1
+        self.assertGreaterEqual(n, 5)
