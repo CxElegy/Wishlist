@@ -94,3 +94,4 @@
 - 2026-10-26 f1f1：記事の写真が書いた人の顔写真（BLEACH Mirrors High・noisypixel）：根は JSON-LD の Yoast @graph の Person の image（theouterhaven の 100_0578-scaled.jpg）を拾い、別家報道で借りたこと。JSON-LD の Person/author を除き state/author_imgs.json に覚え、repair_images でも外す。tests 889 通過。次：合併後 repair の回で写真が替わるのを本番で確かめる。
 - 2026-10-26 r4：小元素の選び方①「点数」の見本（emblem_fame.py・testground/emblem-pick.html）。3 版面で前後を並べた、本番は変えず。AniList の名前ゆれ（Tōshirō→Toushirou）を名字検索で拾い、Wikipedia は 429 を残さない。次：ユーザーの見本の答え（BACKLOG [?]）。
 - 2026-10-26 f1f2：BLEACH Mirrors High の顔写真が洗い直しで残った→ repair_images の「代わりなしなら画像なし」に author_imgs を足した（PR #475）。本番 reports/2026-10-24.json image null・home に 100_0578 0 件。ux_check：guest は E10 のみ（前から）、test-a は呪術廻戦の札に写真なし 1（前から・別の段）、test-b ✓
+- 2026-10-26 r1：小元素の「パッ」対策（decode 後ふわっと・場所と影・eager）。PR #480。遅い回線の点検 1400/390 ✓。ux_check ✗4 は前からの E10・呪術廻戦の頭。次：残りの写真類の同じ出方
