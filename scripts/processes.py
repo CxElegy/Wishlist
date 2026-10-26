@@ -226,7 +226,7 @@ PROCESSES = [
         "uses": ["roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
         "flow": [
             {"id": "b0", "kind": "step", "lane": "actions", "title": "候補から選ぶ（管理ページの 🔍）",
-             "text": "後台の頭で、積んだ依頼を先に：選ばれた候補は今の写真と入れ替えて固定（apply_pick）、「集めて」の人は候補を 4〜6 枚（emblem_cands.find：下の取り方の段と同じ順・Web 画像検索も使う・今ある／外した画像は除く）→ state/emblem_cands.json → 管理ページ「小元素」の札に並ぶ"},
+             "text": "後台の頭で、積んだ依頼を先に：選ばれた候補は今の写真と入れ替えて固定（apply_pick）、「集めて」の人は候補を 4〜6 枚（emblem_cands.find：下の取り方の段と同じ順・Web 画像検索も使う・今ある／外した画像は除く）→ state/emblem_cands.json → 管理ページ「小元素」の札に並ぶ · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "b1", "kind": "decision", "lane": "actions", "title": "ゲート：足りない版面がある？",
              "text": "目標未満 · 失敗した版面は「新しい記事・手がかりが来た」か「1 時間たった」（毎時の後台）ら対象に戻る",
              "uses": ["gate"], "no": "何もしない（Actions 20 秒で終わり）"},
@@ -290,7 +290,7 @@ PROCESSES = [
             {"id": "g1l", "kind": "decision", "lane": "actions", "title": "ライブラリの最後の回から 80 分たった？", "text": "library.yml の成功した回（gh run list）· 毎時 41 分の定時は抜けることがある（2026-10-24 00:41 は来なかった）",
              "uses": ["libwatch"], "yes": "走っていない・並んでいない・30 分以内に始まっていなければ library.yml を users_only で起こす（お客さまの選んだもの → follows）", "no": "何もしない"},
             {"id": "g2", "kind": "decision", "lane": "actions", "title": "小元素の仕事がある？", "no": "飛ばす"},
-            {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 6 本並列", "text": "「小元素の自動補完」· 失敗しても次の段（AI 編集を起こす・提交）へ進む（continue-on-error）· items.yaml は一時ファイルから置き換える · 提交の前に items.yaml が読めなければ書き込みを戻す · 落ちた回は続けて起こし直さない · 提交の pull --rebase は scripts/pull_rebase.py（店長の「違う」が消した画像と同時に書いた衝突 modify/delete は消した側を勝たせる：git rm ＋ items.yaml のその画像の行を外す。background・digest・requests 共通） · items.yaml を変えた回は library.yml を users_only で起こす（bot の push では起きない：ライブラリの店長の版面の写しを新しく）"},
+            {"id": "g3", "kind": "step", "lane": "actions", "title": "その場で Python で埋める", "x": "AI なし · 6 本並列", "text": "「小元素の自動補完」· 失敗しても次の段（AI 編集を起こす・提交）へ進む（continue-on-error）· items.yaml は一時ファイルから置き換える · 提交の前に items.yaml が読めなければ書き込みを戻す · 落ちた回は続けて起こし直さない · 提交の pull --rebase は scripts/pull_rebase.py（店長の「違う」が消した画像と同時に書いた衝突 modify/delete は消した側を勝たせる：git rm ＋ items.yaml のその画像の行を外す。background・digest・requests 共通） · items.yaml を変えた回は library.yml を users_only で起こす（bot の push では起きない：ライブラリの店長の版面の写しを新しく） · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "g4", "kind": "decision", "lane": "actions", "title": "AI が要る仕事がある？", "text": "AI 編集・写真", "no": "Claude は起こさない（トークン 0）"},
             {"id": "g4r", "kind": "decision", "lane": "actions", "title": "溜まった版面がある？", "text": "整理待ち 3 件以上 · いちばん古いものが 2 時間 · 初めての版面（前の 3 日の edit.json にない）· 今日のトークンが 100 万未満",
              "uses": ["gate"], "no": "起こさない（溜まるか 2 時間たつのを待つ・上限なら明日）"},
@@ -535,7 +535,7 @@ PROCESSES = [
         "uses": ["supabase", "roster", "cutcheck", "facefit", "facerule"],
         "flow": [
             {"id": "le1", "kind": "step", "lane": "web", "title": "対象の版面を読む", "uses": ["supabase"],
-             "text": "boards の followers > 0 で test1 が追いかけていないもの · 順：一度も試していない → 0 枚の版面（途中・届かなかったもの）→ 名簿の規則の版が古い届かなかったキャラの版面（数え直し）→ 済みで名簿の版が古い版面の数え直し（軽いので途中より先）→ 途中（running）→ 届かなかったものは 24 時間後 · 済み（ok）は飛ばす（名簿の規則の版 emblem_state.nv が古ければ 1 回数え直す。届かなかったキャラの版面〔Fandom・分類・名簿・AniList の手がかりあり〕も nv が古ければ 24 時間を待たずに数え直す）· 前の版の規則（RULES、いま 8：頭のてっぺんが切れた絵・ぼやけた写真を外す〔7〕・グループは Wikidata のメンバーで〔8：#428 の前に届かなかった BTS・YOASOBI・Mrs. GREEN APPLE を 24 時間待たず作り直す〕）で作った版面は済みでもすぐ作り直す：名簿・分類・小元素（REDO）を捨てて規則から（新しい規則が書いた値は前と同じでも消さない）、キャラもほかも新しい規則で 1 枚も取れなければ前のものを残す（字だけ・図・古い写真は外す）· 同じ画像（公開の箱の指紋が同じ）は 1 枚、キャラの版面はキャラでないページ（emblem.not_character）を外す · 公開の箱へ上げた前の回の小元素も店長と同じ壊れ方の規則（emblem_fill.broken_image：切れ端・頭のてっぺん・額が上の端で切れた・ぼやけた写真）で見直す（library_emblem.unbroken、前のものを残すときも）· グループの版面（小分類の形 = グループ）は店長の emblem_who（メンバー）がないので、Wikidata の P527・P463 で人（Q5）のメンバーを最大 12 人 emblem_who に（library_emblem.group_members。グループ全体の写真は「何人も」で落ちて 0 枚だった：BTS・YOASOBI・Mrs. GREEN APPLE）。emblem_state.bv が BROKEN_V より古い版面は届かなかった・済みでも待たずに 1 回"},
+             "text": "boards の followers > 0 で test1 が追いかけていないもの · 順：一度も試していない → 0 枚の版面（途中・届かなかったもの）→ 名簿の規則の版が古い届かなかったキャラの版面（数え直し）→ 済みで名簿の版が古い版面の数え直し（軽いので途中より先）→ 途中（running）→ 届かなかったものは 24 時間後 · 済み（ok）は飛ばす（名簿の規則の版 emblem_state.nv が古ければ 1 回数え直す。届かなかったキャラの版面〔Fandom・分類・名簿・AniList の手がかりあり〕も nv が古ければ 24 時間を待たずに数え直す）· 前の版の規則（RULES、いま 8：頭のてっぺんが切れた絵・ぼやけた写真を外す〔7〕・グループは Wikidata のメンバーで〔8：#428 の前に届かなかった BTS・YOASOBI・Mrs. GREEN APPLE を 24 時間待たず作り直す〕）で作った版面は済みでもすぐ作り直す：名簿・分類・小元素（REDO）を捨てて規則から（新しい規則が書いた値は前と同じでも消さない）、キャラもほかも新しい規則で 1 枚も取れなければ前のものを残す（字だけ・図・古い写真は外す）· 同じ画像（公開の箱の指紋が同じ）は 1 枚、キャラの版面はキャラでないページ（emblem.not_character）を外す · 公開の箱へ上げた前の回の小元素も店長と同じ壊れ方の規則（emblem_fill.broken_image：切れ端・頭のてっぺん・額が上の端で切れた・ぼやけた写真）で見直す（library_emblem.unbroken、前のものを残すときも）· グループの版面（小分類の形 = グループ）は店長の emblem_who（メンバー）がないので、Wikidata の P527・P463 で人（Q5）のメンバーを最大 12 人 emblem_who に（library_emblem.group_members。グループ全体の写真は「何人も」で落ちて 0 枚だった：BTS・YOASOBI・Mrs. GREEN APPLE）。emblem_state.bv が BROKEN_V より古い版面は届かなかった・済みでも待たずに 1 回 · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "le1b", "kind": "step", "lane": "actions", "title": "管理ページの依頼を反映（apply_requests）", "uses": ["supabase"],
              "text": "管理ページ「小元素」から店長が押した 替える・固定・外す（RPC board_emblem_request → config.emblem_requests）を先に反映：外す・替える = 小元素から抜いて元の画像を emblem_reject へ、替える は人を emblem_redo に残して emblem_state を running に（次の段で同じ人の別の写真）、固定 = lock: true（規則の版が上がっても残す）· 候補から選ぶ：_emblem_cands は集める人を config.emblem_want に、_emblem_pick は並んだ候補（config.emblem_cands）にある網址だけを emblem_picks に積む → serve が 候補を集め（emblem_cands.find：fill_one と同じ取り方の段・Web 画像検索も使う・4〜6 枚）、選ばれた候補は一時の場所で入れ替えて固定（apply_pick）して公開の箱へ"},
             {"id": "le2", "kind": "step", "lane": "ext", "title": "種類を規則で（library_emblem.kind_for）",
@@ -554,7 +554,7 @@ PROCESSES = [
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。",
         "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "docs/rules/design.md", "uses": ["heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
-            {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める"},
+            {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める", "text": "checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
             {"id": "p2b", "kind": "decision", "lane": "actions", "title": "報告が最新の edit.json を取り込んでいる？",
              "text": "reports の edit_sig（edit.json の SHA-1 先頭 12 桁）と比べる。収集が古い checkout で出刊している間に AI 編集が push した／競合で報告だけ相手側が残った場合は「いいえ」",
