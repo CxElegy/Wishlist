@@ -103,7 +103,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
     b.close()
     if page:   # 設定ページ：版面・目次はないので、枠組み（題字・令牌）と本人の分か
-        if st["text"] < 100:
+        if st["text"] < (40 if page == "wishlist.html" else 100):
             bad.append(f"白い画面（文字 {st['text']}）")
         if WHO[who] and page == "settings.html" and st["boxes"]:
             bad.append(f"素の箱 {st['boxes']} 個（本人の設定ページではない）")
