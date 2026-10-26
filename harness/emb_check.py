@@ -46,7 +46,7 @@ EYE_TOP = 1.4             # 目の高さ < 目〜口の距離 × これ = 額ま
 STRIP_MAX = 40            # cutout の高さがこれ未満 = 人物が消えて切れ端だけ残った（漫威 Black Panther 73×23）
 YT = re.compile(r"(?:youtube\.com/watch\?v=|youtu\.be/|i\.ytimg\.com/vi/)([\w-]{11})")
 SIZE = {1400: (100, 215), 390: (60, 140)}
-NOSTILL = ".emb-in{opacity:1!important;transform:none!important;transition:none!important}.emb{animation:none!important}"
+NOSTILL = ".emb img{opacity:1!important;transform:none!important}.emb-in{opacity:1!important;transform:none!important;transition:none!important}.emb{animation:none!important}"
 
 READ = r"""() => [...document.querySelectorAll('section.sec')].map((s, i) => {
   const t = s.querySelector('.band .title, .band h2, h2'), el = s.querySelector('.emb');

@@ -216,6 +216,30 @@ def check_admin_pages(pw, base, width, out):
     return bad
 
 
+def check_emb_fade(pw, base, width):
+    """小元素の「パッ」：画像を 1.5 秒遅らせ、出る前は透明で場所（高さ）が変わらず、届いたら不透明になるか。"""
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    pg = b.new_page(viewport={"width": width, "height": 900})
+    pg.route("**/*", lambda r: (time.sleep(1.5), r.continue_()) if r.request.resource_type == "image" else r.continue_())
+    pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+    q = "()=>{const i=document.querySelector('.emb img'),e=i&&i.closest('.emb');return i?{o:+getComputedStyle(i).opacity,h:Math.round(e.getBoundingClientRect().height),ld:i.classList.contains('ld')}:null}"
+    pg.wait_for_timeout(500)
+    before = pg.evaluate(q)
+    pg.wait_for_timeout(8000)
+    after = pg.evaluate(q)
+    b.close()
+    if not before or not after:
+        return ["小元素がない"]
+    bad = []
+    if before["o"] > 0.01 and not before["ld"]:
+        bad.append(f"読み込み前に見えている（透明度 {before['o']}）")
+    if before["h"] != after["h"]:
+        bad.append(f"出るとき高さが変わる（{before['h']}→{after['h']}px）")
+    if after["o"] < 0.99:
+        bad.append(f"出たあとも透明（{after['o']}）")
+    return bad
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="https://cxelegy.github.io/Wishlist/home/")
@@ -250,6 +274,13 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
+        for w in a.widths.split(","):
+            try:
+                bad = check_emb_fade(pw, a.base, int(w))
+            except Exception as ex:  # noqa: BLE001
+                bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + f"小元素の出方（遅い回線）{w}px：" + ("、".join(bad) if bad else "パッと出ない"))
     print(f"点検：✗ {fails} 件")
     return 1 if fails else 0
 
