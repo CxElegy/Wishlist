@@ -65,6 +65,8 @@ def rules():
          "rule": "同じ人・同じ代表作は 1 枚（本人だけは別の写真を何枚でも）"},
         {"stage": STAGES[4], "title": "使っている・外した画像は選ばない", "by": "rule", "code": "emblem_fill.auto_pick", "reason": "もう使っている・外した画像",
          "rule": "今ある小元素の画像と emblem_reject（目で見て外した画像）は二度と選ばない"},
+        {"stage": STAGES[4], "title": "使える画像が 1 枚もない人", "by": "rule", "code": "emblem_fill.fill_one", "reason": "画像のない人",
+         "rule": "試したのに使える候補が 1 つもない人（新作の端役。候補が外した画像だけの人も）。数えるだけで、残りが全員そうなら札にそう書く"},
         {"stage": STAGES[4], "title": "目標まで", "by": "rule", "code": "emblem_fill.auto_pick", "reason": "目標を超える",
          "rule": "目標の枚数に届いたら、残りの候補は選ばない"},
         # ⑥ 切り抜き（rembg birefnet-general-lite のあと）

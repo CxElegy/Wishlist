@@ -1106,6 +1106,13 @@ class Ladder(unittest.TestCase):
         self.assertEqual(r["state"], "ok")
         self.assertEqual([x["added"] for x in r["steps"]], [1, 1])
 
+    def test_failed_names_people_without_image(self):
+        ef.gather_wide = lambda item, log, tried: []   # b には候補が 1 つもない
+        r = ef.fill_one(self.items[0], log=lambda m: None)
+        self.assertEqual(r["state"], "failed")
+        self.assertEqual(r["funnel"]["rejected"].get("画像のない人"), 1)
+        self.assertIn("全員が画像のない人", r["note"])
+
     def test_all_steps_then_failed_with_material(self):
         ef.gather_wide = lambda item, log, tried: self.calls.append("2") or []
         r = ef.fill_one(self.items[0], log=lambda m: None)
