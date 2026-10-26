@@ -2069,8 +2069,8 @@ def broken_cuts(item):
 
 
 def broken_image(im, photo):
-    """切り抜き 1 枚（PIL）が壊れているか：切れ端・頭のてっぺん・額が上の端で切れた・写真がぼやけた。broken_cuts とお客さまの版面（library_emblem）で同じ。"""
-    if emblem.is_sliver(*im.size) or emblem.head_cut(im) or emblem.top_share(im) > emblem.TOP_TOUCH and emblem.forehead_cut(im):   # 頭のてっぺん・額まで切れた前からの切り抜き（check_whole と同じ：額は上の端に TOP_TOUCH 以上当たっているときだけ見る。The Mandalorian Gideon 1.0%・Mayfeld 0.3% は頭が全部入っている）
+    """切り抜き 1 枚（PIL）が壊れているか：切れ端・上の端の半分以上が人物（TOP_MAX：コマの切り抜き）・頭のてっぺん・額が上の端で切れた・写真がぼやけた。broken_cuts とお客さまの版面（library_emblem）で同じ。"""
+    if emblem.is_sliver(*im.size) or emblem.head_cut(im) or emblem.top_share(im) > emblem.TOP_MAX or emblem.top_share(im) > emblem.TOP_TOUCH and emblem.forehead_cut(im):   # 頭のてっぺん・額まで切れた前からの切り抜き（check_whole と同じ：額は上の端に TOP_TOUCH 以上当たっているときだけ見る。The Mandalorian Gideon 1.0%・Mayfeld 0.3% は頭が全部入っている）
         return True
     if photo and emblem.faceless_scrap(im):   # 顔がなく髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）
         return True

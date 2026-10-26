@@ -233,6 +233,40 @@ class Fill(unittest.TestCase):
         self.assertEqual(add["emblem_state"]["have"], 1)
 
 
+class Requests(unittest.TestCase):
+    """管理ページの 替える・固定・外す（boards.config.emblem_requests）→ apply_requests。"""
+    def cfg(self):
+        return {"emblem": [{"image": "https://x/a.webp", "source": "https://s/a.jpg", "subject": "A"},
+                           {"image": "https://x/b.webp", "source": "https://s/b.jpg", "subject": "B"},
+                           {"image": "https://x/c.webp", "subject": "C"}],
+                "emblem_state": {"state": "ok", "have": 3, "v": le.RULES},
+                "emblem_requests": [{"_emblem_swap": [{"image": "https://x/a.webp", "reason": "misc"}],
+                                     "_emblem_lock": [{"image": "https://x/b.webp", "on": True}],
+                                     "_emblem_reject": [{"image": "https://x/c.webp", "reason": "misc"}]}]}
+
+    def test_apply(self):
+        add = le.apply_requests(self.cfg())
+        self.assertEqual([x["subject"] for x in add["emblem"]], ["B"])
+        self.assertTrue(add["emblem"][0]["lock"])
+        self.assertEqual(add["emblem_reject"], ["https://s/a.jpg", "https://x/a.webp", "https://x/c.webp"])
+        self.assertEqual(add["emblem_redo"], ["A"])               # 替えるだけ人を残す（外すは残さない）
+        self.assertEqual(add["emblem_requests"], [])
+        self.assertEqual((add["emblem_state"]["state"], add["emblem_state"]["have"]), ("running", 1))
+
+    def test_nothing_and_unlock(self):
+        self.assertEqual(le.apply_requests({"emblem": []}), {})
+        c = {"emblem": [{"image": "https://x/a.webp", "lock": True}], "emblem_requests": [{"_emblem_lock": [{"image": "https://x/a.webp", "on": False}]}]}
+        add = le.apply_requests(c)
+        self.assertNotIn("lock", add["emblem"][0])
+        self.assertNotIn("emblem_state", add)                      # 固定だけなら探し直さない
+
+    def test_lock_survives_rebuild(self):
+        b = {"id": 1, "name": "X", "config": {"emblem": [{"image": "https://x/a.webp", "lock": True}, {"image": "https://x/b.webp"}],
+                                              "emblem_state": {"state": "ok", "v": le.RULES - 1}}}
+        it = le.board_item(b, {"section": "运动", "subs": {}}, lambda p: {"entities": {}})
+        self.assertEqual([x["image"] for x in it["emblem"]], ["https://x/a.webp"])
+
+
 class UserPage(unittest.TestCase):
     def test_library_emblem_on_user_board(self):
         em = [{"subject": "A", "image": f"{BASE}/storage/v1/object/public/emblems/Q1-abc.webp", "shape": "cutout"}]

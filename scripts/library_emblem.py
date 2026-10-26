@@ -118,6 +118,8 @@ def board_item(board, follow, get=None):
     old = int((cfg.get("emblem_state") or {}).get("v") or 1) < RULES
     item = {k: v for k, v in cfg.items() if (k.startswith("emblem") and k != "emblem_state" or k in ("emblem", "theme", "anilist_id", "wiki"))
             and v is not None and not (old and k in REDO)}
+    if old and any(x.get("lock") for x in cfg.get("emblem") or []):   # 固定した小元素は規則の版が上がっても残す
+        item["emblem"] = [x for x in cfg["emblem"] if x.get("lock")]
     item.update(name=board["name"], type=user_pages.TYPE_OF_SEC.get(sec, "category"),
                 keywords=cfg.get("keywords") or [board["name"]])
     item.setdefault("emblem_kind", kind_for(sec, (follow or {}).get("subs"), human))
@@ -257,6 +259,42 @@ def cfg(b):
     return b.get("config") or {}
 
 
+def apply_requests(c):
+    """管理ページ「小元素」の依頼（boards.config.emblem_requests：_emblem_swap・_emblem_lock・_emblem_reject）を版面の config に反映する。
+    店長の版面の digest.reject_emblems / lock_emblems と同じ決まり：外す・替える = 小元素から抜いて元の画像を emblem_reject に（二度と選ばない）、
+    替える はその人（subject）を emblem_redo に残して次の回に同じ人の別の写真を探す、固定 = lock: true（作り直しでも替えない）。
+    → config に足す分。替える・外すがあれば、足りない分を次の回に埋める（emblem_state を running に）。依頼がなければ {}。"""
+    reqs = [r for r in c.get("emblem_requests") or [] if isinstance(r, dict)]
+    if not reqs:
+        return {}
+    ems = [x for x in c.get("emblem") or [] if isinstance(x, dict)]
+    rej, redo, gone = list(c.get("emblem_reject") or []), list(c.get("emblem_redo") or []), 0
+
+    def hit(x, want):
+        return x.get("image") in want or x.get("source") in want
+    for r in reqs:
+        for key in ("_emblem_swap", "_emblem_reject"):
+            want = {m.get("image") for m in r.get(key) or [] if isinstance(m, dict)}
+            for x in [x for x in ems if hit(x, want)]:
+                ems.remove(x)
+                gone += 1
+                rej += [u for u in (x.get("source"), x.get("image")) if isinstance(u, str) and re.match(r"https?://", u)]
+                if key == "_emblem_swap" and x.get("subject"):
+                    redo.append(x["subject"])
+        for m in r.get("_emblem_lock") or []:
+            for x in ems:
+                if isinstance(m, dict) and hit(x, {m.get("image")}):
+                    x.pop("lock", None)
+                    if m.get("on") is not False:
+                        x["lock"] = True
+    add = {"emblem": ems, "emblem_reject": list(dict.fromkeys(rej)), "emblem_requests": []}
+    if redo:
+        add["emblem_redo"] = list(dict.fromkeys(redo))
+    if gone:
+        add["emblem_state"] = {**(c.get("emblem_state") or {}), "state": "running", "have": len(ems)}
+    return add
+
+
 def due(boards, now):
     """やる順：まだ一度も試していない版面 → 0 枚の版面（エンブレムが出ていない：途中・届かなかったもの）→ 途中（running）→
     届かなかったものは RETRY_HOURS たってから（前の版の規則で試したものはすぐ）。済み（ok）は飛ばす。
@@ -307,6 +345,12 @@ def main(argv):
         raise SystemExit("SUPABASE_SERVICE_KEY がありません")
     shop = {f["board_id"] for f in digest.supabase("follows?account=eq.test1&select=board_id") or []}
     boards = [b for b in digest.supabase("boards?followers=gt.0&select=id,name,wd,config&order=id") or [] if b["id"] not in shop]
+    for b in boards:   # 管理ページの 替える・固定・外す の依頼を先に反映（替える・外すは次の due で同じ人の別の写真を探す）
+        add = apply_requests(cfg(b))
+        if add:
+            cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
+            b["config"] = {**cur, **add}
+            digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")
     todo = due(boards, time.time())
     done = {"ok": 0, "running": 0, "failed": 0, "blocked": 0}
     for b in todo:
