@@ -565,6 +565,7 @@ button{font-family:inherit}
 .pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:5px;min-width:0;margin:-18px 10px 0;padding:14px 14px 10px;background:var(--card);
  box-shadow:var(--shadow);transform:rotate(-1deg)}
 .pk:nth-child(even) .pkt{transform:rotate(1deg)}
+.pk.nophoto .pkt{margin:0}.pk.nophoto.big .pkt{margin:0;padding:28px 22px 22px}  /* 写真が開けない「気になるかも？」のカード（SWAP_JS）：札だけ */
 .pk.big .pkt{margin:-40px 24px 0;padding:22px 22px 16px;transform:rotate(-1.2deg)}
 .pk .why{order:-1;font:15px/1.45 var(--font-hand);color:var(--ink)}
 .pk .why mark{color:inherit;background:linear-gradient(transparent 55%,var(--gold) 55% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 2px}
@@ -1651,7 +1652,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.27 02:50</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.27 03:06</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
