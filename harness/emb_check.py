@@ -296,6 +296,17 @@ def closeup_stage():
     return {k: (len(v), [s for s, x in v.items() if int((x or {}).get("n") or 0) >= 3]) for k, v in d.items() if v}
 
 
+def closeup_eta_lines():
+    """胸像待ちの見込み（emblem_fill.close_line：N 人・次の回・外すまであと約 N 回）。"""
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import emblem_fill as ef
+        who = {i["name"]: i.get("emblem_who") or [] for i in ef.load_items()}
+        return [ef.close_line(k, v, who.get(k, [])) for k, v in ef.closeup_state().items() if v]
+    except Exception:  # noqa: BLE001
+        return []
+
+
 def exhausted():
     """候補が尽きた版面（残りの人が全員「画像のない人」：emblem_fill の exhausted）→ {名前: have/target}。"""
     try:
@@ -423,6 +434,8 @@ def check(pg, who, width, out, full=False, guest=False):
         found["E15"] = [f"{k} {'・'.join(v)}" for k, v in head_missing().items()]
     if guest and (cs := closeup_stage()):
         print("  情報：胸像待ち（顔だけのアップの入れ替え中）" + "・".join(f"{k} {n} 人（3 回を超えた {len(o)} 人：{'、'.join(o[:5])}）" for k, (n, o) in cs.items()))
+        for ln in closeup_eta_lines():
+            print("  情報 胸像待ちの見込み " + ln)
     if guest:
         found["E17"] = [f"{k} {'・'.join(v)}" for k, v in not_people().items()]
     if guest:

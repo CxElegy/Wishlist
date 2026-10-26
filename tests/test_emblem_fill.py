@@ -2061,6 +2061,19 @@ class FindSources(unittest.TestCase):
                 self.assertEqual(got["emblem_redo"], ["Low"])
                 self.assertEqual(ef.closeup_state()["b"], {"W1": {"n": 3}})
 
+    def test_close_round_top_every_time_and_eta(self):
+        """上位 12 人は毎回（巡回の 8 人に入れない）・ほかは回数の少ない順に 8 人。見込みは 足りない回数 ÷ 8 回・次の回は毎時 47 分。"""
+        import datetime as dt
+        who = [f"P{i}" for i in range(20)]
+        subj = [f"P{i}" for i in range(20)] + [f"X{i}" for i in range(10)]
+        r = ef.close_round(subj, who, {s: 2 for s in subj[:12]})   # 上位は何回探しても毎回入る
+        self.assertEqual(r[:12], [f"P{i}" for i in range(12)])
+        self.assertEqual(len(r), 12 + ef.CLOSE_PER_ROUND)
+        mine = {"X0": {"n": 1}, "X1": {"n": 0}, "P0": {"n": 5}}
+        e = ef.close_eta(mine, who, dt.datetime(2026, 10, 27, 7, 50, tzinfo=dt.timezone(dt.timedelta(hours=9))))
+        self.assertEqual((e["waiting"], e["top"], e["rounds"], e["next"]), (3, 1, 1, "08:47"))
+        self.assertIn("次の回 08:47", ef.close_line("b", mine, who, dt.datetime(2026, 10, 27, 7, 50, tzinfo=dt.timezone(dt.timedelta(hours=9)))))
+
     def test_better_cut_floor_and_gain(self):
         """入れ替えの質の下限：短い辺 256px 未満は取らない（一護 146×225）。元より質が上がらないものも取らない。元が下限未満なら下限以上のとき取る。"""
         from PIL import Image

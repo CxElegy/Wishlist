@@ -32,6 +32,7 @@ emblem_skip で逃げる (3) 何枚あれば足りるかの基準がなく、1 �
 """
 
 import argparse
+import datetime as dt
 import io
 import json
 import os
@@ -2310,6 +2311,39 @@ def close_order(subjects, who, tries):
     return sorted(subjects, key=lambda s: (tries.get(s, 0), r(s)))
 
 
+def close_round(subjects, who, tries):
+    """この回に胸像を探す人：名簿の上位 CLOSE_TOP 人は毎回（一護が先・巡回に入れない）＋ほかは回数の少ない順に CLOSE_PER_ROUND 人。"""
+    order = close_order(subjects, who, tries)
+    top = [s for s in close_order(subjects, who, {}) if close_top(s, who)]   # 名簿の順（一護が先）
+    return top + [s for s in order if s not in top][:CLOSE_PER_ROUND]
+
+
+CLOSE_CRON_MIN = 47   # background.yml の毎時 47 分（JST も同じ分）
+
+
+def close_next_run(now=None):
+    """次の後台の回の時刻（JST の 'HH:MM'）。"""
+    now = (now or dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))).astimezone(dt.timezone(dt.timedelta(hours=9)))
+    nxt = now.replace(minute=CLOSE_CRON_MIN, second=0, microsecond=0)
+    if nxt <= now:
+        nxt += dt.timedelta(hours=1)
+    return nxt.strftime("%H:%M")
+
+
+def close_eta(mine, who, now=None):
+    """胸像待ち 1 版面の見込み。mine = {人: {n}}。→ {waiting, top, rounds, next}：
+    top = 名簿の上位（毎回探して外さない）の待ち人数、rounds = 上位以外が全員外れるまであと約何回（1 回 CLOSE_PER_ROUND 人・足りない回数の合計 ÷ 8）。"""
+    top = [s for s in mine if close_top(s, who)]
+    rest = [s for s in mine if s not in top]
+    need = sum(max(0, CLOSE_TRIES - int((mine[s] or {}).get("n") or 0)) for s in rest)
+    return {"waiting": len(mine), "top": len(top), "rounds": -(-need // CLOSE_PER_ROUND), "next": close_next_run(now)}
+
+
+def close_line(name, mine, who, now=None):
+    e = close_eta(mine, who, now)
+    return f"{name}：胸像待ち {e['waiting']} 人（上位 {e['top']} 人は毎回探す）・次の回 {e['next']}・上位以外を外すまであと約 {e['rounds']} 回"
+
+
 def close_top(subject, who):
     """名簿の上位 CLOSE_TOP 人か（3 回で外さない人）。"""
     keys = {_name_key(w) for w in (who or [])[:CLOSE_TOP]}
@@ -2356,7 +2390,7 @@ def stage_closeups(item, bad, log=print):
     skip = {u for u in item.get("emblem_reject") or []} | {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
     by = {b["subject"]: b for b in bad}
     swapped, dropped = {}, []
-    for s in close_order(cur, who, tries)[:CLOSE_PER_ROUND]:
+    for s in close_round(cur, who, tries):   # 上位 12 人は毎回・ほかは 1 回 8 人
         try:
             _check_time()
         except OutOfTime:
@@ -2408,6 +2442,8 @@ def stage_closeups(item, bad, log=print):
             emblem_face.measure_item(next((i for i in load_items() if i["name"] == name), item), log)
         closeup_state(st)
     left = len(cur) - len(swapped) - len(dropped)
+    if mine:
+        log("  [胸像待ち] " + close_line(name, mine, who))
     log(f"  [胸像待ち] {name}：胸像に入れ替え {len(swapped)}（{'、'.join(swapped)}）・{CLOSE_TRIES} 回で外した {len(dropped)}・まだ待ち {left}（うち探した回数が {CLOSE_TRIES} 回以上の上位 {sum(1 for s in mine if mine[s]['n'] >= CLOSE_TRIES)}）")
     return len(swapped), len(dropped)
 

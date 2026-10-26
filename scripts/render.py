@@ -5922,6 +5922,18 @@ def _admin_emblem_progress(run):
             f'<p class="emp-meta"><span class="emp-st">{chips}</span><span>{last}{since}</span></p></div>')
 
 
+def _admin_closeup_wait():
+    """胸像待ち（顔だけのアップを胸像に入れ替え中）の版面ごとに「N 人・次の回 HH:MM・外すまであと約 N 回」（emblem_fill.close_line）。"""
+    try:
+        import emblem_fill as ef
+        st = ef.closeup_state()
+        who = {i["name"]: i.get("emblem_who") or [] for i in ef.load_items()}
+        lines = [ef.close_line(k, v, who.get(k, [])) for k, v in st.items() if v]
+    except Exception:  # noqa: BLE001
+        return ""
+    return ('<p class="empty">' + "<br>".join(e(x) for x in lines) + "</p>") if lines else ""
+
+
 def _admin_emblems(rows, run=None):
     """小元素（版面右上のステッカー）の状況：種類・目標・いまの枚数と、定時の自動補完の進捗。止まっているものを上に。"""
     rows = [r for r in rows if r.get("emblem")]
@@ -5954,7 +5966,7 @@ def _admin_emblems(rows, run=None):
     gap = sum(1 for r in rows if r["emblem"]["state"] != "ok")
     note = (f'<p class="empty">{gap} 件が目標に届いていません。定時の自動補完（プロセス「小元素の自動補完（定時）」）が、足りない順に埋めていきます。'
             '「要確認」は AI が候補の一覧を目で見て選びます。</p>' if gap else '<p class="empty">すべての版面が目標の枚数に届いています。</p>')
-    return (_admin_emblem_progress(run) + note
+    return (_admin_emblem_progress(run) + _admin_closeup_wait() + note
             + '<div class="tw"><table class="adm"><thead><tr><th>作品</th><th>種類</th><th>枚数 / 目標</th><th>状態</th><th>最近の結果</th><th>内訳</th></tr></thead><tbody>'
             + "".join(out) + "</tbody></table></div>")
 
