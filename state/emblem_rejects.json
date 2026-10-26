@@ -118,9 +118,37 @@
    "page": "https://commons.wikimedia.org/wiki/File:Rada_Djuricin_2018.jpg",
    "reason": "other",
    "shape": "cutout",
-   "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Rada_Djuricin_2018.jpg/500px-Rada_Djuricin_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "subject": "RADA",
-   "why": "RADA（作品名つきの Commons）"
+   "source": "https://static.wikia.nocookie.net/zenless-zone-zero/images/4/45/Agent_Pyrois_Portrait.png/revision/latest/scale-to-width-down/400?cb=20260617071637",
+   "subject": "Pyrois",
+   "why": "Pyrois（Fandom の公式の立ち絵・透明背景）"
+  },
+  {
+   "act": "swap",
+   "at": "2026-10-26T13:03:15+00:00",
+   "board": "ILLIT",
+   "host": "i.ytimg.com",
+   "kind": "group",
+   "note": "顔だけになってる、胸像にして",
+   "page": "https://www.youtube.com/watch?v=xXTxuXCFvlc",
+   "reason": "cut",
+   "shape": "cutout",
+   "source": "https://i.ytimg.com/vi/xXTxuXCFvlc/hq2.jpg",
+   "subject": "Iroha",
+   "why": "Iroha（YouTube の動画のサムネイル）"
+  },
+  {
+   "act": "swap",
+   "at": "2026-10-26T13:03:15+00:00",
+   "board": "ILLIT",
+   "host": "i.ytimg.com",
+   "kind": "group",
+   "note": "顔だけになってる",
+   "page": "https://www.youtube.com/watch?v=7kYbMbkR1M4",
+   "reason": "misc",
+   "shape": "cutout",
+   "source": "https://i.ytimg.com/vi/7kYbMbkR1M4/hq3.jpg",
+   "subject": "Moka",
+   "why": "Moka（YouTube の動画のサムネイル）"
   }
  ]
 }
