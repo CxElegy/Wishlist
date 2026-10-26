@@ -24,6 +24,7 @@ class _R:
 
 
 class FandomGap(unittest.TestCase):
+    """Fandom の api.php は wikihttp の道（test_wikihttp）。ここは wikihttp を通らない画像などのホスト（static.wikia.nocookie.net）。"""
     def setUp(self):
         emblem._next.clear()
 
@@ -37,7 +38,7 @@ class FandomGap(unittest.TestCase):
                 raise err
             return _R(b"ok")
         with mock.patch.object(emblem.urllib.request, "urlopen", op), mock.patch.object(emblem, "_sleep", sleeps.append):
-            self.assertEqual(emblem._get("https://bleach.fandom.com/api.php"), b"ok")
+            self.assertEqual(emblem._get("https://static.wikia.nocookie.net/bleach/a.png"), b"ok")
         self.assertEqual(len(calls), 2)
         self.assertTrue(any(6 < s <= 7.1 for s in sleeps), sleeps)
 
@@ -52,7 +53,7 @@ class FandomGap(unittest.TestCase):
             active[0] -= 1
             return _R(b"ok")
         with mock.patch.object(emblem.urllib.request, "urlopen", op), mock.patch.object(emblem, "_sleep", lambda s: None):
-            ts = [threading.Thread(target=emblem._get, args=("https://dota2.fandom.com/api.php",)) for _ in range(6)]
+            ts = [threading.Thread(target=emblem._get, args=("https://static.wikia.nocookie.net/dota2/a.png",)) for _ in range(6)]
             [t.start() for t in ts]
             [t.join() for t in ts]
         self.assertEqual(peak[0], 1)

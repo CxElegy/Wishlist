@@ -71,7 +71,7 @@ def write_atomic(path, text):
         raise
 
 
-HOST_GAP = 1.0   # Wikimedia 以外（Fandom）の同じホストへの間隔（秒）
+HOST_GAP = 1.0   # wikihttp を通らないホスト（Fandom の画像など）の同じホストへの間隔（秒）
 _host_locks = {}
 _host_locks_lock = threading.Lock()
 _next = {}       # ホスト → この時刻までは叩かない
