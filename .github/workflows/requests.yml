@@ -45,6 +45,7 @@ jobs:
         if: steps.check.outputs.go
         with:
           fetch-depth: 0
+          ref: ${{ github.ref }}   # 触发时的提交ではなく、いまの main の先頭。排队中に前の回が足した emblem_redo を古い版で上書きしない（pull --rebase -X theirs は同じ行なら自分の版が勝つ。2026-10-26 dota2 の 10 人が消えた）
 
       - uses: actions/setup-python@v6
         if: steps.check.outputs.go

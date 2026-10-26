@@ -284,6 +284,20 @@ class RejectEmblems(unittest.TestCase):
         self.assertEqual(digest.load_json(self.log)["rows"][-1]["act"], "drop")
         self.assertEqual(self.item()["emblem_redo"], ["Yunah"])   # 外すほうは emblem_redo を足さない
 
+    def test_many_swaps_in_one_run_all_reach_redo(self):
+        """同じ回で _emblem_swap を何件まとめても、全員が emblem_redo に入る（後の依頼が前の分を上書きしない）。次の回も足し算で重複なし。"""
+        self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-yunah.webp"}]}},
+                      {"action": "edit", "name": "ILLIT", "config": {"_emblem_swap": [{"image": "emblems/illit-minju.webp"}]}})
+        self.assertEqual(self.item()["emblem_redo"], ["Yunah", "Minju"])
+        text = self.file.read_text(encoding="utf-8")
+        new, _ = digest.reject_emblems(text, "ILLIT", ["https://src.example/logo.svg"], swap=True)   # 3 回目：同じ人は重ねない
+        self.assertEqual(yaml.safe_load(new)["items"][0]["emblem_redo"], ["Yunah", "Minju", "Logo"])
+
+    def test_requests_workflow_checks_out_latest_main(self):
+        """requests.yml は触発時の提交でなく いまの main を取る（待っている間に前の回が書いた emblem_redo を、古い版の提交が上書きしていた）。"""
+        wf = (digest.ROOT / ".github" / "workflows" / "requests.yml").read_text(encoding="utf-8")
+        self.assertIn("ref: ${{ github.ref }}", wf)
+
     def test_lock_and_unlock(self):
         self.run_with({"action": "edit", "name": "ILLIT", "config": {"_emblem_lock": [{"image": "emblems/illit-minju.webp", "on": True}]}})
         it = self.item()
