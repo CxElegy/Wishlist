@@ -1302,7 +1302,7 @@ def _emblem(items, ring="accent"):
             m, _ = emblem_face.fit(fc)   # 測ってある顔：拡大も縮小もして、顔の高さをそろえる
             if m:
                 a["m"] = m
-            else:
+                a["fs"] = float(fc[0])   # 点検（ux_check E14）が「顔の高さ × 倍率」を数える材料。お客さまの版面は x.fs がない
                 a["nf"] = 1   # 顔なし（物・生き物・覆面）：測ったがない。大きさはそのまま
         if x.get("shape") in ("logo", "icon"):
             a["shape"] = x["shape"]

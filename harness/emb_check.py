@@ -16,6 +16,7 @@
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
+  E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
                  （scripts/cutshape.py：取るときの emblem.trim_flat・drop_broken と同じ式。まっすぐでよいのは下の端だけ）
 顔のモデル（face_id、初回に約 39MB）が取れないときは E7 の顔・E11 を見ない（✗ の行に「顔のモデルなし」と出す）。
@@ -46,6 +47,7 @@ HEAD_ROWS, HEAD_EDGE = 3, 0.2   # emblem.HEAD_ROWS・HEAD_EDGE：上の 3px に�
 EYE_TOP = 1.4             # 目の高さ < 目〜口の距離 × これ = 額まで切れた（本番の cutout：哈利波特 1.23、髪だけ切れたものは 1.5 以上）
 STRIP_MAX = 40            # cutout の高さがこれ未満 = 人物が消えて切れ端だけ残った（漫威 Black Panther 73×23）
 YT = re.compile(r"(?:youtube\.com/watch\?v=|youtu\.be/|i\.ytimg\.com/vi/)([\w-]{11})")
+FACE_TARGET, FACE_TOL = 0.32, 0.11   # emblem_face.TARGET・TOL
 SIZE = {1400: (100, 215), 390: (60, 140)}
 NOSTILL = ".emb img{opacity:1!important;transform:none!important}.emb-in{opacity:1!important;transform:none!important;transition:none!important}.emb{animation:none!important}"
 
@@ -217,7 +219,7 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 14)}
+    found = {f"E{n}": [] for n in range(1, 15)}
     nomodel = False
     src_of = sources()
     shots, embdir = [], out / "emb"
@@ -240,8 +242,8 @@ def check(pg, who, width, out, full=False, guest=False):
             if a["shape"] in ("logo", "cutout") and white_box(img):
                 found["E3"].append(f"{s['k']} {name}")
             if a["shape"] == "cutout":
-                if not (a.get("body") or a.get("m") or a.get("nf")) and not a["src"].startswith("http"):
-                    found["E13"].append(f"{s['k']} {name}")   # 顔を測っていない（emblem_face.measure_item が回っていない）= 表示で顔の大きさがそろわない
+                if not (a.get("body") or a.get("m") or a.get("nf")):   # 網址の小元素（お客さまの版面）も。前は除いていて、135 枚の未測定を見逃した
+                    found["E13"].append(f"{s['k']} {name}")   # 顔を測っていない（emblem_face.measure_item・library_emblem.measure_faces が回っていない）= 表示で顔の大きさがそろわない
                 faces = _faces(img.convert("RGBA"))
                 nomodel |= faces is None
                 why = cut_edge(img, faces)
@@ -264,6 +266,10 @@ def check(pg, who, width, out, full=False, guest=False):
             hashes[name] = h
             if BAD_SOURCE.search(urllib.parse.unquote(src.split("?")[0].split("//", 1)[-1].split("/", 1)[-1])):
                 found["E9"].append(f"{s['k']} {name}（{src.rsplit('/', 1)[-1][:40]}）")
+        shares = [a["fs"] * a["m"] for a in s["alts"] if a.get("m") and a.get("fs") and a["shape"] == "cutout" and not a.get("body")]   # 顔の高さ ÷ 枠の高さ（版面の中の全候補）
+        shares = [v for v in shares if abs(v - FACE_TARGET) <= FACE_TARGET * FACE_TOL]   # そろえきれず札のついたもの（big/small）は別の段（BACKLOG：別の写真に替える）
+        if shares and max(shares) / min(shares) > 1.25:
+            found["E14"].append(f"{s['k']} 顔の大きさ {max(shares) / min(shares):.2f} 倍")
         hs = []
         for j in range(len(s["alts"]) if full else 1):
             if full:
@@ -308,6 +314,6 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E12": "形の傷（直線の切り口・凹み）"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E12": "形の傷（直線の切り口・凹み）"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     return bad + (["E7・E11 顔のモデルなし（額の切れ・何人もは見ていない）"] if nomodel else [])
