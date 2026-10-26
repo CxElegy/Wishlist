@@ -287,11 +287,56 @@ def apply_requests(c):
                     x.pop("lock", None)
                     if m.get("on") is not False:
                         x["lock"] = True
-    add = {"emblem": ems, "emblem_reject": list(dict.fromkeys(rej)), "emblem_requests": []}
+    import emblem_cands   # 候補から選ぶ：集める人（emblem_want）・選んだ候補（emblem_picks。並んだ候補にある網址だけ）
+    want, picks = list(c.get("emblem_want") or []), list(c.get("emblem_picks") or [])
+    for r in reqs:
+        for m in r.get("_emblem_cands") or []:
+            s = str(m.get("subject") or "")[:120] if isinstance(m, dict) else ""
+            if s and s not in want and len(want) < emblem_cands.MAX_WANT:
+                want.append(s)
+        for m in r.get("_emblem_pick") or []:
+            f = emblem_cands.lookup(c.get("emblem_cands"), m.get("pick")) if isinstance(m, dict) else None
+            if f and isinstance(m.get("image"), str):
+                picks.append({"old": m["image"], "subject": f[0], "cand": f[1]})
+    add = {"emblem": ems, "emblem_reject": list(dict.fromkeys(rej)), "emblem_requests": [], "emblem_want": want, "emblem_picks": picks}
     if redo:
         add["emblem_redo"] = list(dict.fromkeys(redo))
     if gone:
         add["emblem_state"] = {**(c.get("emblem_state") or {}), "state": "running", "have": len(ems)}
+    return add
+
+
+def serve(board, follow, upload, base, get=None):
+    """候補から選ぶ（emblem_cands）：選ばれた候補への入れ替え（fill_board と同じ一時の場所・同じ公開の箱）と、候補集め。→ boards.config に足す分。"""
+    import emblem_cands
+    import emblem_fill
+    c = cfg(board)
+    add, cands = {}, dict(c.get("emblem_cands") or {})
+    picks = [p for p in c.get("emblem_picks") or [] if isinstance(p, dict)]
+    if picks:
+        def pick_fill(item, log=print):
+            for p in picks:
+                emblem_cands.apply_pick(item["name"], p["old"], p["cand"], log)
+            it = next(i for i in emblem_fill.load_items() if i["name"] == item["name"])
+            return {"state": "ok" if emblem_fill.status(it)["state"] == "ok" else "running", "note": "候補から選んだ"}
+        add = fill_board(board, follow, upload, base, fill=pick_fill, get=get)
+        for p in picks:
+            cands.pop(p.get("subject"), None)
+        add["emblem_picks"] = []
+    want = [s for s in c.get("emblem_want") or [] if isinstance(s, str)]
+    if want:
+        item = board_item(board, follow, get)
+        left = []
+        with sandbox(item), contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            for s in want:
+                try:
+                    cands[s] = emblem_cands.find(item, s, log=lambda *a, **k: None)
+                except emblem_fill.OutOfTime:
+                    left.append(s)
+                except Exception:  # noqa: BLE001  1 人の失敗でほかを止めない
+                    cands[s] = []
+        add["emblem_want"] = left
+    add["emblem_cands"] = cands
     return add
 
 
@@ -348,6 +393,17 @@ def main(argv):
     for b in boards:   # 管理ページの 替える・固定・外す の依頼を先に反映（替える・外すは次の due で同じ人の別の写真を探す）
         add = apply_requests(cfg(b))
         if add:
+            cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
+            b["config"] = {**cur, **add}
+            digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")
+    for b in boards:   # 候補から選ぶ（入れ替え・候補集め）。名前は出さない
+        if cfg(b).get("emblem_want") or cfg(b).get("emblem_picks"):
+            f = (digest.supabase(f"follows?board_id=eq.{b['id']}&select=section,subs&order=created_at&limit=1") or [{}])[0]
+            try:
+                add = serve(b, f, _upload(base, key), base)
+            except Exception as ex:  # noqa: BLE001
+                print(f"候補から選ぶ：1 版面で失敗 {type(ex).__name__}")
+                continue
             cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
             b["config"] = {**cur, **add}
             digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")

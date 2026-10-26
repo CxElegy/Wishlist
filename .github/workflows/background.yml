@@ -135,7 +135,7 @@ jobs:
           # 小元素の段が途中で落ちても（continue-on-error）、壊れた items.yaml は push しない（全部のワークフローの load_config が止まる）
           python -c "import yaml; yaml.safe_load(open('items.yaml', encoding='utf-8'))" || { echo "::warning::items.yaml が読めない：小元素の書き込みを戻す"; git checkout -- items.yaml; }
           # まだないファイル（新しいアカウントを空から始めた直後の emblem_progress.json など）は飛ばす：1 つでもないと git add 全体が失敗する
-          for f in items.yaml docs/home/emblems state/emblem_progress.json state/emblem_broken.json state/log/emblem.json; do if [ -e "$f" ]; then git add "$f"; fi; done
+          for f in items.yaml docs/home/emblems state/emblem_progress.json state/emblem_broken.json state/emblem_cands.json state/log/emblem.json; do if [ -e "$f" ]; then git add "$f"; fi; done
           # ゲートの記録は、判断が前と変わったとき（最初の check・小元素のあとの check）・Claude を本当に起こしたとき・
           # 収集を起こそうとしたとき（起こせなかった・回の様子が読めなかったときも：管理ページ・ライブログに出す）だけ
           # （GATE_FIRE が開いているだけでは足さない：前は毎時「后台作業」のコミットが増えていた）

@@ -5537,7 +5537,8 @@ def _admin_emm(rows):
         btns.append(f'<button type="button" class="emm-bt" data-bi="{n}" data-n="{e(r["name"])}" aria-pressed="{"true" if n == 0 else "false"}">{e(r["name"])}<small>{len(em)}</small></button>')
         tiles = "".join(
             f'<button type="button" class="emm-tile" data-b="{e(r["name"])}" data-img="{e(x["image"])}" data-lock="{1 if x["lock"] else 0}"'
-            f' data-subj="{e(x["subject"])}" data-why="{e(x["why"])}" aria-haspopup="dialog">'
+            f' data-subj="{e(x["subject"])}" data-why="{e(x["why"])}" data-cands="{e(json.dumps(x.get("cands") or [], ensure_ascii=False))}"'
+            f' data-wait="{1 if x.get("wait") else 0}" aria-haspopup="dialog">'
             f'<span class="emm-ph"><img src="{e(x["image"])}" alt="" loading="lazy"></span>'
             f'<b>{e(x["subject"] or "小元素")}</b><small>{e(x["why"])}</small></button>' for x in em)
         boards.append(f'<div class="emm-board" data-bi="{n}"{"" if n == 0 else " hidden"}><p class="emm-h"><b>{e(r["name"])}</b>'
@@ -5552,6 +5553,10 @@ def _admin_emm(rows):
              f'<div class="emm-more" data-for="swap" hidden><h3>今の写真のどこがだめ？（任意・今後の規則の手がかり）</h3><div class="emm-chips" data-chips="swap">{opts}</div>'
              '<input type="text" class="emm-note" maxlength="200" placeholder="ひとこと（任意）" aria-label="ひとこと（任意）">'
              '<button type="button" class="emm-go" data-go="swap">替える依頼に入れる</button></div>'
+             '<button type="button" class="emm-act" data-a="cands" aria-expanded="false"><i>🔍</i><b>候補から選ぶ</b>'
+             '<span>こだわる時に。この人の写真を集めて、並んだ中から自分で決める。決めた写真は固定</span></button>'
+             '<div class="emm-more" data-for="cands" hidden><div class="emm-cands" id="emm-cands"></div><p class="emm-ct" id="emm-cands-t"></p>'
+             '<button type="button" class="emm-go" data-go="cands" id="emm-cands-go">候補を集める依頼に入れる</button></div>'
              '<button type="button" class="emm-act" data-a="lock" aria-expanded="false"><i>📌</i><b id="emm-lock-t">この写真で固定</b>'
              '<span id="emm-lock-d">自動の補完・規則の作り直し・検査でも替えない</span></button>'
              '<div class="emm-more" data-for="lock" hidden><button type="button" class="emm-go" data-go="lock" id="emm-lock-go">固定する</button></div>'
@@ -5602,7 +5607,7 @@ EMM_JS = r"""
   var KEY='wl-emm-'+(window.WL_ACCOUNT||''),sent={},req={},cur=null,anchor=null;   // req[版面|画像] = {a,reason,note,board,img}。送った印はこのブラウザが 6 時間覚える
   try{sent=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){}
   Object.keys(sent).forEach(function(k){if(Date.now()-sent[k]>21600000)delete sent[k];});
-  var AL={swap:'替える',lock:'固定',unlock:'固定をはずす',drop:'外す'},RL={};
+  var AL={swap:'替える',cands:'候補を集める',pick:'候補から決める',lock:'固定',unlock:'固定をはずす',drop:'外す'},RL={};
   [].forEach.call(sheet.querySelectorAll('[data-chips=drop] [data-r]'),function(b){RL[b.dataset.r]=b.textContent;});
   function key(t){return t.dataset.b+'|'+t.dataset.img;}
   var lib={};   // お客さまの版面（ライブラリ）：名前 → 版面の id。店長（管理者）でログインしているときだけ読める（RLS）
@@ -5622,7 +5627,9 @@ EMM_JS = r"""
         '</div>';
       var g=d.querySelector('.emm-grid');
       em.forEach(function(x){var tl=document.createElement('button');tl.type='button';tl.className='emm-tile';tl.dataset.b=r.name;tl.dataset.img=x.image;tl.dataset.lock=x.lock?'1':'0';
-        tl.dataset.subj=x.subject||'';tl.dataset.why=x.why||'';tl.setAttribute('aria-haspopup','dialog');
+        tl.dataset.subj=x.subject||'';tl.dataset.why=x.why||'';
+        tl.dataset.cands=JSON.stringify(((r.config.emblem_cands||{})[x.subject||'']||[]).filter(function(c){return !em.some(function(y){return y.image===c.image;});}).map(function(c){return {image:c.image,why:c.why||''};}));
+        tl.dataset.wait=((r.config.emblem_want||[]).indexOf(x.subject||'')>=0)?'1':'0';tl.setAttribute('aria-haspopup','dialog');
         tl.innerHTML='<span class="emm-ph"><img alt="" loading="lazy"></span><b></b><small></small>';
         tl.querySelector('img').src=x.image;tl.querySelector('b').textContent=x.subject||'小元素';tl.querySelector('small').textContent=x.why||'';g.appendChild(tl);});
       host.insertBefore(d,sh);});
@@ -5648,6 +5655,11 @@ EMM_JS = r"""
   function open(t){
     cur=t;anchor=t;var lock=t.dataset.lock==='1';
     $('emm-img').src=t.dataset.img;$('emm-name').textContent=t.dataset.subj||'小元素';$('emm-why').textContent=t.dataset.why?'取り方：'+t.dataset.why:'';
+    var cs=[],box=$('emm-cands');try{cs=JSON.parse(t.dataset.cands||'[]');}catch(e){}
+    box.innerHTML='';cs.forEach(function(c){var b=document.createElement('button'),im=document.createElement('img');b.type='button';b.className='emm-cand';b.dataset.u=c.image;b.title=c.why||'';
+      im.alt='候補';im.loading='lazy';im.src=c.image;b.appendChild(im);box.appendChild(b);});
+    $('emm-cands-t').textContent=cs.length?'候補 '+cs.length+' 枚。押して決める（今の写真と入れ替わり、そのまま固定）':t.dataset.wait==='1'?'集めています。次の後台作業のあと（1 時間ほど）にここに並びます':'まだ候補がありません。集める依頼を送ると、次の後台作業のあと（1 時間ほど）に並びます';
+    $('emm-cands-go').hidden=cs.length>0||t.dataset.wait==='1';
     $('emm-lock-t').textContent=lock?'固定をはずす':'この写真で固定';
     $('emm-lock-d').textContent=lock?'いまは固定中。はずすと自動の補完・作り直しで替わることがある':'自動の補完・規則の作り直し・検査でも替えない';
     $('emm-lock-go').textContent=lock?'固定をはずす':'固定する';
@@ -5667,13 +5679,15 @@ EMM_JS = r"""
     if(a){var o=a.getAttribute('aria-expanded')!=='true';
       [].forEach.call(sheet.querySelectorAll('.emm-act'),function(x){x.setAttribute('aria-expanded',x===a&&o);});
       [].forEach.call(sheet.querySelectorAll('.emm-more'),function(m){m.hidden=!(o&&m.dataset.for===a.dataset.a);});place();return;}
+    var pk=ev.target.closest('.emm-cand');
+    if(pk&&cur){req[key(cur)]={a:'pick',pick:pk.dataset.u,reason:'',note:'',board:cur.dataset.b,img:cur.dataset.img,subj:cur.dataset.subj};$('emm-msg').textContent='';close();paint();return;}
     var c=ev.target.closest('.emm-chips [data-r]');
     if(c){var box=c.parentNode,was=c.getAttribute('aria-pressed')==='true';
       [].forEach.call(box.children,function(x){x.setAttribute('aria-pressed','false');});c.setAttribute('aria-pressed',!was);
       if(box.dataset.chips==='drop')sheet.querySelector('[data-go=drop]').disabled=was;return;}
     var g=ev.target.closest('.emm-go');
     if(g&&!g.disabled&&cur){var kind=g.dataset.go,more=g.closest('.emm-more'),on=more.querySelector('[aria-pressed=true]'),nt=more.querySelector('.emm-note');
-      req[key(cur)]={a:kind==='lock'&&cur.dataset.lock==='1'?'unlock':kind,reason:on?on.dataset.r:'',note:nt?nt.value.trim():'',board:cur.dataset.b,img:cur.dataset.img};
+      req[key(cur)]={a:kind==='lock'&&cur.dataset.lock==='1'?'unlock':kind,reason:on?on.dataset.r:'',note:nt?nt.value.trim():'',board:cur.dataset.b,img:cur.dataset.img,subj:cur.dataset.subj};
       $('emm-msg').textContent='';close();paint();return;}
     if(ev.target.closest('#emm-close')){close();return;}
     if(!sheet.hidden&&!ev.target.closest('#emm-sheet'))close();});
@@ -5684,6 +5698,8 @@ EMM_JS = r"""
     var by={},ks=Object.keys(req);if(!ks.length)return;
     ks.forEach(function(k){var r=req[k],c=by[r.board]=by[r.board]||{};
       if(r.a==='swap')(c._emblem_swap=c._emblem_swap||[]).push({image:r.img,reason:r.reason||'misc',note:r.note});
+      else if(r.a==='cands')(c._emblem_cands=c._emblem_cands||[]).push({image:r.img,subject:r.subj});
+      else if(r.a==='pick')(c._emblem_pick=c._emblem_pick||[]).push({image:r.img,pick:r.pick});
       else if(r.a==='drop')(c._emblem_reject=c._emblem_reject||[]).push({image:r.img,reason:r.reason,note:r.note});
       else(c._emblem_lock=c._emblem_lock||[]).push({image:r.img,on:r.a==='lock'});});
     if(!confirm(Object.keys(by).map(function(b){return b+'：'+ks.filter(function(k){return req[k].board===b;}).map(function(k){return AL[req[k].a];}).join('、');}).join('\n')+'\n\nこの依頼を送りますか？（外した・替えた画像は二度と自動で選ばれません）'))return;
@@ -5693,13 +5709,13 @@ EMM_JS = r"""
     (function next(i){
       if(i>=names.length){
         try{localStorage.setItem(KEY,JSON.stringify(sent));}catch(e){}
-        $('emm-msg').textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（お客さまの版面は次のライブラリの小元素の回で）（替える写真は次の後台作業で探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
+        $('emm-msg').textContent=(ok?ok+' 版面の依頼を送りました · 1〜2 分で反映（お客さまの版面は次のライブラリの小元素の回で）（替える・候補を集める写真は次の後台作業で探す）':'')+(ng.length?' 送れなかった：'+ng.join('、'):'');
         go.disabled=false;paint();return;}
       var name=names[i];
       fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/rpc/'+(lib[name]?'board_emblem_request':'submit_item'),{method:'POST',headers:{apikey:CFG.key,'Content-Type':'application/json'},
         body:JSON.stringify(lib[name]?{p_board:lib[name],p_edit:by[name]}:{p_account:window.WL_ACCOUNT,p_action:'edit',p_name:name,p_config:by[name]})})
         .then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok)throw new Error((j&&j.message)||r.status);});})
-        .then(function(){ok++;Object.keys(req).forEach(function(k){if(req[k].board===name){if(req[k].a!=='lock'&&req[k].a!=='unlock')sent[k]=Date.now();delete req[k];}});},
+        .then(function(){ok++;Object.keys(req).forEach(function(k){if(req[k].board===name){if(req[k].a!=='lock'&&req[k].a!=='unlock'&&req[k].a!=='cands')sent[k]=Date.now();delete req[k];}});},
               function(err){ng.push(name+'（'+err.message+'）');})
         .then(function(){next(i+1);});
     })(0);
@@ -6073,6 +6089,9 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .emm-act[aria-expanded=true]{background:var(--ink);color:var(--card)}
 .emm-more{border-left:4px solid var(--rose);margin:2px 0 4px;padding:8px 0 4px 12px;display:flex;flex-direction:column;gap:10px}
 .emm-more h3{margin:0;font:900 13px var(--font-sans)}
+.emm-cands{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.emm-cands:empty{display:none}.emm-ct{margin:0;font-size:12px;opacity:.75}
+.emm-cand{padding:0;border:2px solid var(--ink);background:var(--card);aspect-ratio:4/5;cursor:pointer;overflow:hidden}.emm-cand img{width:100%;height:100%;object-fit:cover;display:block}.emm-cand:hover,.emm-cand:focus-visible{box-shadow:3px 3px 0 var(--rose)}
+.emm-st.pick,.emm-st.cands{background:var(--rose)}
 .emm-chips{display:flex;flex-wrap:wrap;gap:6px}
 .emm-chips button{background:var(--card);border:1.5px solid var(--ink);padding:3px 10px;font:700 12px var(--font-sans);color:var(--ink);cursor:pointer}
 .emm-chips button[aria-pressed=true]{background:var(--ink);color:var(--card)}

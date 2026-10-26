@@ -2228,6 +2228,14 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
     deadline = clock() + minutes * 60
     if clock is time.time:
         _deadline[0] = deadline - 60   # 集めるのはここまで（残りの 1 分で書き込みと切り抜き）
+    if path is None:   # 本番：管理ページ「候補から選ぶ」の入れ替えと候補集めを先に（テストは触らない）
+        try:
+            import emblem_cands
+            emblem_cands.run_shop(log)
+        except OutOfTime:
+            pass
+        except Exception as e:  # noqa: BLE001
+            log(f"[候補] {e}")
     prog = load_progress(path)
     now = _now()
     prog.setdefault("started", now)
