@@ -66,3 +66,4 @@
 - 2026-10-26 前からの切り抜きの上の端 >50%：broken_image に TOP_MAX（店長 drop_broken・お客さま library_emblem 共通）· #420 · 后台作業を手で起こしたあと ux_check guest 1400/390 E7 0 · 次：E8 Vaundy・E9 あつ森・test-a E1 3
 - 2026-10-26 小元素の管理（依頼）候補から選ぶ：管理ページ「小元素」の札に 🔍（押すと集め始め、次の後台で 4〜6 枚並び、1 枚選ぶと入れ替えて固定）· 店長 = state/emblem_cands.json（emblem_cands.run_shop が後台の頭）、お客さま = config.emblem_want/cands/picks（library_emblem.serve）· RPC board_emblem_request に _emblem_cands/_emblem_pick を足した（本番に適用済み）· 863 本 OK · 次：本番で 替える・固定・候補を店長ログインで確かめ、ux_check
 - 2026-10-26 店長の版面の E7・E2：本番 ux_check guest × 1400/390 を quick・full で測り E7 0・E2 0（#420 で直っていた）· コード変更なし、BACKLOG を [x] · full の残り E4 2・E5 6（390）・E11 2（a2o-lite）・E8・E9・E10 · 次：小元素の残り ✗（E8 Vaundy・E9 あつ森）
+- 2026-10-26 Fandom の 429：emblem._get をホストごと 1 本・間隔 1 秒・Retry-After（wikihttp と同じ考え）· テスト追加 · 次：NAMES_V の数え直しの回で後台ログの 429 0 を確かめる

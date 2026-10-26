@@ -39,6 +39,7 @@ import pathlib
 import re
 import sys
 import threading
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -70,20 +71,39 @@ def write_atomic(path, text):
         raise
 
 
+HOST_GAP = 1.0   # Wikimedia 以外（Fandom）の同じホストへの間隔（秒）
+_host_locks = {}
+_host_locks_lock = threading.Lock()
+_next = {}       # ホスト → この時刻までは叩かない
+_sleep = time.sleep   # テストで差し替える
+
+
+def _host_lock(host):
+    with _host_locks_lock:
+        return _host_locks.setdefault(host, threading.Lock())
+
+
 def _get(url, limit=MAX_BYTES):
     if wikihttp.is_wikimedia(url):   # Wikimedia は決まりどおりの UA・1 本ずつ・Retry-After・キャッシュ
         return wikihttp.get(url, limit)
-    import time
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    for wait in (0, 3, 8, 20):   # Fandom などの「多すぎ」（429）は少し待って取り直す
-        time.sleep(wait)
-        try:
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-                data = r.read(limit + 1)
-            break
-        except urllib.error.HTTPError as e:
-            if e.code != 429 or wait == 20:
-                raise
+    host = urllib.parse.urlparse(url).netloc
+    with _host_lock(host):   # Fandom などは同じホストへ 1 本ずつ・前の応答から GAP 秒あける（後台の並列で一度に当たって 429 になった）
+        for wait in (0, 3, 8, 20):   # 「多すぎ」（429）は Retry-After（なければ少し）待って取り直す
+            _sleep(max(wait, _next.get(host, 0) - time.time()))
+            try:
+                with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+                    data = r.read(limit + 1)
+                _next[host] = time.time() + HOST_GAP
+                break
+            except urllib.error.HTTPError as e:
+                _next[host] = time.time() + HOST_GAP
+                if e.code != 429 or wait == 20:
+                    raise
+                try:
+                    _next[host] = time.time() + min(60.0, float(e.headers.get("Retry-After", "")))
+                except (TypeError, ValueError):
+                    pass
     if len(data) > limit:
         raise ValueError("画像が大きすぎる")
     return data
