@@ -695,9 +695,10 @@ class BrokenPhotoBecomesTextCard(unittest.TestCase):
                 self.skipTest(f"ブラウザがない：{ex}")
             pg = b.new_page()
             wc = "".join(f"<article class='wc{c}'>{render._pic(st)}<b>見出し</b></article>" for c in ("", " lead"))   # トップの写真の壁（2026-10-27）
-            pg.set_content("<section><div class='grid'>" + "".join(cards) + "</div><div class='wall'>" + wc + "</div></section>")
+            pk = f"<div class='pk'><a href='#'>{render._pic(st)}<span class='pkt'>t</span></a></div>"   # 気になるかも？
+            pg.set_content("<section><div class='grid'>" + "".join(cards) + "</div><div class='wall'>" + wc + "</div>" + pk + "</section>")
             pg.wait_for_timeout(1500)
             left = pg.evaluate("document.querySelectorAll('article .pic').length")
-            plain = pg.evaluate("document.querySelectorAll('article.card.nophoto,article.wc.nophoto').length")
+            plain = pg.evaluate("document.querySelectorAll('article.card.nophoto,article.wc.nophoto,.pk.nophoto').length")
             b.close()
-        self.assertEqual((left, plain), (0, 5))
+        self.assertEqual((left, plain), (0, 6))
