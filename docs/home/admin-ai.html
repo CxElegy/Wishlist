@@ -1534,7 +1534,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-ai" content="4e0a4d8bfd2f"><style>
+<meta name="wl-ver" data-page="admin-ai" content="4f16b9041451"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1664,7 +1664,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 .wl-mine ul.kw li small{font:500 var(--fs-label) var(--font-sans);opacity:.7}
 .wl-mine ul.kw li button{margin:0;padding:0 7px;background:var(--card);font-size:12px}
 .wl-mine .wl-back{display:flex;flex-wrap:wrap;gap:8px 18px;margin:-8px 0 18px;font:700 14px/1.5 var(--font-sans)}.wl-mine .wl-back a{color:var(--ink)}
-.wl-mine .empty{padding:22px 20px;border:2px dashed var(--ink);background:var(--sheet)}.wl-mine .empty b{display:block;font:900 17px/1.4 var(--font-sans)}
+.wl-mine .go.big{display:flex;align-items:center;justify-content:center;min-height:56px;font:900 18px var(--font-sans);box-shadow:4px 4px 0 var(--ink)}.wl-mine .empty{padding:22px 20px;border:2px dashed var(--ink);background:var(--sheet)}.wl-mine .empty b{display:block;font:900 17px/1.4 var(--font-sans)}
 .wl-mine .note{margin-top:18px;font-size:13px;opacity:.85}
 .wl-mine form.add{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 .wl-mine form.add input,.wl-mine form.add select{min-width:0;padding:6px 8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:500 14px var(--font-sans)}
@@ -2094,7 +2094,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
         '<a class="go" href="'+ADD+'">好きなものを選ぶ →<\/a><\/div>';return;}
     if(page!=='index'&&page!=='settings'){
       box.innerHTML=h+'<div class="empty">'+(picks.length?'<b>追いかけているものの記事は、トップにまとまっています<\/b><p>'+picks.length+' つを追いかけています。<\/p>':
-        '<b>まだ何も追いかけていません<\/b><p>トップで追いかけたいものを選ぶと、記事が並びます。<\/p>')+'<a class="go" href="./">トップへ<\/a><\/div>';return;}
+        '<b>まだ何も追いかけていません<\/b><p>好きな作品・人・場所を選ぶと、記事が並びます。<\/p>')+(picks.length?'<a class="go" href="./">トップへ<\/a>':'<a class="go big" href="'+ADD+'">追いかけるものを選ぶ →<\/a>')+'<\/div>';return;}
     var items=(A.items||[]), chosen={}, secsOn={};
     picks.forEach(function(x){chosen[x.name]=x.sec;secsOn[x.sec]=1;});
     // 設定の画面から自分のトップへ戻る道と、トップと同じ「カードで選んで足す」流れへの道（網址を打たせない・ブラウザの戻るに頼らない）
@@ -2193,7 +2193,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ④ AI 編集</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.27 03:26</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.27 03:33</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html" aria-current="page"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
