@@ -1972,9 +1972,12 @@ def sync_progress(prog, items):
 def due(prog, items, now):
     """後台で処理する順：目標に届いていないものを、足りない枚数の多い順（同じなら前回の処理が古い順）。
     RETRY_HOURS（1 時間）以内に失敗して材料も変わっていないものは飛ばす。"""
-    rows, broken = [], _broken_log()
+    rows, broken, closing = [], _broken_log(), closeup_state()
     for item in items:
         st = status(item)
+        if item["name"] in closing:   # 胸像待ち（1 回 8 人ずつ入れ替え中）：失敗の待ち・そろっている版面でも毎回（待つと 1 日 1 回も進まない）
+            rows.append((st["have"] - st["target"], (prog["items"].get(item["name"]) or {}).get("at") or "", item["name"], item))
+            continue
         e = prog["items"].get(item["name"]) or {}
         hint = any(item.get(k) for k in ("emblem_fandom", "emblem_api", "emblem_category", "anilist_id", "wikidata"))
         recount = item.get("emblem_category") and not item.get("emblem_pool")   # 分類はあるのに数えられなかった（429）：版を待たずに次の回も
