@@ -103,7 +103,10 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
     b.close()
     if page:   # 設定ページ：版面・目次はないので、枠組み（題字・令牌）と本人の分か
-        if st["text"] < (40 if page == "wishlist.html" else 100):
+        shell = page in ("wishlist.html", "heat.html") and WHO[who]   # AUTH_JS の「index・settings 以外」の枝：本人の殻（.wl-mine .empty）が出ているのが正しい。殻は字が少ない（0 個 77・1 個 72 字）ので下限 40、殻がなければ 100
+        if shell and not first.get("shell"):
+            bad.append("本人の殻（.wl-mine .empty）が出ていない")
+        if st["text"] < (40 if shell and first.get("shell") else 100):
             bad.append(f"白い画面（文字 {st['text']}）")
         if WHO[who] and page == "settings.html" and st["boxes"]:
             bad.append(f"素の箱 {st['boxes']} 個（本人の設定ページではない）")
@@ -155,7 +158,7 @@ FIRST_JS = """()=>{const g=document.querySelector('.startgo,.wl-mine .go.big'),f
   H:innerHeight,shelves:!!document.querySelector('.shelfbox'),sum,tapes:document.querySelectorAll('.shelf .tapes>a').length,
   zero:!!document.querySelector('.calm.start,.top.start')||/まだ何も追いかけていません/.test((document.querySelector('.page,.wl-mine')||{}).innerText||''),
   quiet:[...document.querySelectorAll('.poster,.calm.start,.pill .cnt,.calm .tag')].map(x=>x.innerText||'').join(' ').replace(/\\s+/g,'').includes('新着なし'),
-  links:document.querySelectorAll('.page a.startgo,.page .calm a,.wl-mine .go.big').length}}"""
+  links:document.querySelectorAll('.page a.startgo,.page .calm a,.wl-mine .go.big').length,shell:!!document.querySelector('.wl-mine .empty')}}"""
 
 
 def first_screen_bad(f, gap=8):
@@ -469,6 +472,17 @@ def re_pick():
 
 
 
+def runs_for(who, widths):
+    """人ごとの (幅, ページ, 高さ)。欲しい物・話題度（AUTH_JS の「index・settings 以外」の枝＝同じ殻の 2 ページ）はログインした人みんな・全幅、
+    0 個の人（test-c）は 390 幅の小さい端末（高さ 667・740）でも、最初の画面・設定・欲しい物・話題度（2026-10-27）。"""
+    runs = [(int(w), pg, 900) for pg in ("", "settings.html") for w in widths]
+    if WHO[who]:
+        runs += [(int(w), pg, 900) for pg in ("wishlist.html", "heat.html") for w in widths]
+    if who == "test-c" and "390" in widths:
+        runs += [(390, pg, h) for h in (667, 740) for pg in ("", "settings.html", "wishlist.html", "heat.html")]
+    return runs
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="https://cxelegy.github.io/Wishlist/home/")
@@ -490,9 +504,7 @@ def main(argv):
             print(f"1 日通し：✗ {fails} 件")
             return 1 if fails else 0
         for who in a.who.split(","):
-            runs = [(int(w), pg, 900) for pg in ("", "settings.html") for w in a.widths.split(",")]
-            if who == "test-c" and "390" in a.widths.split(","):   # 2026-10-27：0 個の人は小さい端末（高さ 667・740）でも、最初の画面・設定・欲しい物の主役のボタンが固定ボタンと重ならない
-                runs += [(390, pg, h) for h in (667, 740) for pg in ("", "settings.html", "wishlist.html")]
+            runs = runs_for(who, a.widths.split(","))
             for w, page, h in runs:
                 try:
                     st, bad = check(pw, a.base, who, w, out, page, a.emb if h == 900 else "off", h, WATCH_S if h == 900 else 10)

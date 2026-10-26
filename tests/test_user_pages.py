@@ -122,8 +122,6 @@ class Layout(unittest.TestCase):
         user_pages.build("a@example.com", {"picks": self.PICKS, "sizes": {}}, {}, [], None, {}, 0, {}, self.FOL, {}, pages)
         self.assertNotIn('<a class="startgo" href="', pages["settings.html"])
         self.assertIn(">＋ 追いかけるものを足す</a>", pages["settings.html"])
-        me = render.render_me()   # 欲しい物ページの 0 個の人も選ぶへ直接
-        self.assertIn("go big", render.AUTH_JS)
 
     def test_shop_settings_unchanged(self):
         s = render.render_settings([{"name": "あつ森", "section": "游戏", "size": "M"}], {"url": "u", "key": "k"}, "x")
@@ -276,3 +274,54 @@ class FirstScreenTests(unittest.TestCase):
         self.assertEqual(len(ux_check.first_screen_bad({**z, "go": None})), 1)    # 主役のボタンが消えた
         self.assertEqual(len(ux_check.first_screen_bad({**z, "quiet": True})), 1)  # 新着なし
         self.assertEqual(len(ux_check.first_screen_bad({**z, "links": 2})), 1)    # 入口が二重
+
+
+class ZeroShellRendered(unittest.TestCase):
+    """欲しい物・話題度（AUTH_JS の「index・settings 以外」の枝）を node で動かし、できた HTML を見る（字の有無でなく、0 個の人に主役のボタンが出るか）。"""
+    def _html(self, page, picks, src=None):
+        import json, subprocess
+        js = src or render.AUTH_JS
+        i = js.index("function drawMine(box,p,err){")
+        k = js.index("var items=(A.items||[])", i)
+        body = js[i:k] + "}"
+        prog = ("var tok='t',page=%s,me={name:'x'},user={email:'a@b'},ADD='add.html';function esc(s){return String(s)}"
+                "function isMail(s){return /@/.test(s)}function picksOf(p){return p.picks}%s"
+                "var box={dataset:{}};drawMine(box,{picks:%s},false);console.log(box.innerHTML)") % (
+                    json.dumps(page), body, json.dumps(picks))
+        r = subprocess.run(["node", "-e", prog], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr[:400])
+        return r.stdout
+
+    @unittest.skipUnless(__import__("shutil").which("node"), "node がない")
+    def test_zero_person_gets_main_button_on_both_pages(self):
+        for page in ("wishlist", "heat"):
+            h = self._html(page, [])
+            self.assertEqual(h.count('class="go big"'), 1, page)
+            self.assertIn("まだ何も追いかけていません", h)
+            self.assertIn('href="add.html"', h)
+            h = self._html(page, [{"name": "a", "sec": "x"}])
+            self.assertNotIn("go big", h)
+            self.assertIn("トップへ", h)
+
+    @unittest.skipUnless(__import__("shutil").which("node"), "node がない")
+    def test_broken_variant_is_caught(self):
+        # わざと主役のボタンを外した版（.go.big をただのリンクにする）では、点検の条件（go big が 1 つ）が満たされない
+        broken = render.AUTH_JS.replace('<a class="go big" href="', '<a class="go" href="')
+        self.assertNotEqual(broken, render.AUTH_JS)
+        for page in ("wishlist", "heat"):
+            self.assertEqual(self._html(page, [], broken).count('class="go big"'), 0)
+
+    def test_ux_check_covers_both_pages_everywhere(self):
+        import sys, pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        for who in ("test-a", "test-b", "test-c"):
+            r = ux_check.runs_for(who, ["1400", "390"])
+            for pg in ("wishlist.html", "heat.html"):
+                self.assertIn((1400, pg, 900), r)
+                self.assertIn((390, pg, 900), r)
+        r = ux_check.runs_for("test-c", ["1400", "390"])
+        for pg in ("settings.html", "wishlist.html", "heat.html"):
+            for h in (667, 740):
+                self.assertIn((390, pg, h), r)
+        self.assertNotIn((1400, "wishlist.html", 900), ux_check.runs_for("guest", ["1400", "390"]))
