@@ -1,32 +1,32 @@
 {
- "admin": "a00db4344a33",
- "admin-ai": "b55a9ca71d27",
+ "admin": "542f1f6a4b38",
+ "admin-ai": "a70355063786",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "07a8ec61"
+   "7296e277"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "6bb29693"
+   "d38e64a8"
   ]
  },
- "admin-boards": "4d00d42bc8c5",
+ "admin-boards": "f2d974123930",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e5ad5c6f"
+   "71681b0e"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "49becd6d8956",
+ "admin-emblem": "4f1a9a92955b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b50d4e1d"
+   "6e609494"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,51 +34,51 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "feaee4ed"
+   "4bb91bc6"
   ],
   "emblems": [
    "小元素",
-   "ee16abe6"
+   "818629fd"
   ]
  },
  "admin-members": "7f70a5597e5e",
  "admin-members_marks": {},
- "admin-now": "aa0be178e64f",
+ "admin-now": "244289f294ee",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d790e92c"
+   "659d3367"
   ],
   "queue": [
    "いまの状況",
-   "7b2ee842"
+   "16c35482"
   ],
   "status": [
    "運行状況",
-   "ddc8e49e"
+   "10059aed"
   ],
   "term-panel": [
    "ライブログ",
-   "3f860603"
+   "ae422c93"
   ]
  },
- "admin-system": "e3606202126b",
+ "admin-system": "a44ce9d4c69b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "552a154d"
+   "9f39b7dd"
   ],
   "procs": [
    "全体の構成（詳しい図）",
-   "b893687a"
+   "7d4fcf5c"
   ],
   "res": [
    "リソース・並列と制限",
-   "23641f22"
+   "3dfee1f9"
   ]
  },
  "admin_marks": {},
- "heat": "e6ea186ca8cd",
+ "heat": "c878be742940",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "3797392e"
+   "cd78dae8"
   ],
   "ranking": [
    "ランキング",
-   "c9feeabb"
+   "e3913303"
   ]
  },
- "index": "36ed892df1c4",
+ "index": "3b3c249edcdf",
  "index_marks": {
   "front": [
    "トップ",
@@ -196,6 +196,6 @@
    "6fafa6d4"
   ]
  },
- "updated": "10.27 05:01",
+ "updated": "10.27 05:25",
  "wishlist": "9a356cf07820"
 }

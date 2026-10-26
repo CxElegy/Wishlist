@@ -196,6 +196,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/78961de9gy1iiewsmyjeuj24002o0npg.jpg": {
+  "w": 2000,
+  "h": 1333,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/75a1bdacba1d384b.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/90b10eb9ly1iig5bdy80qj21881kwb29.jpg": {
   "w": 1592,
   "h": 2048,
@@ -718,6 +731,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "https://di2ponv0v5otw.cloudfront.net/posts/2025/12/13/693dcc079b21589d3203adc3/l_wp_693dcc079b21589d3203adc4.webp": {
+  "w": 1000,
+  "h": 1000,
+  "target": 720,
+  "v": 3
+ },
  "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg": {
   "w": 2000,
   "h": 2605,
@@ -849,6 +868,12 @@
   "w": 1200,
   "h": 628,
   "target": 720,
+  "v": 3
+ },
+ "https://helios-i.mashable.com/imagery/articles/00bly3NxVIcyJ7Qh1ILwhjd/hero-image.fill.size_1200x675.v1793018517.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://hermes.media.transform.aol.com/6963b3a9e84468c005cf8e0f1a63b74929e18a0a/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/26/ed77719c-b688-350a-97da-f6a05c739b20/613078da-95c5-4764-9387-4bf49a8c73c5.jpg": {
@@ -1376,12 +1401,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g5Iqp.img": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g6gL0.img": {
-  "w": 1280,
-  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -2068,19 +2087,6 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/184834/1101752_615.jpg": {
-  "w": 615,
-  "h": 412,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.513,
-  "local": "pics/f6ebccfa1836f1bf.webp",
-  "out": [
-   1280,
-   857
-  ],
-  "why": "看不清"
- },
  "https://news.walkerplus.com/article/198145/1195520_615.jpg": {
   "w": 615,
   "h": 410,
@@ -2627,6 +2633,12 @@
  "https://prtimes.jp/img/55787/1070/resize/d55787-1070-f312cb8d0a784f2a3c2b-0.jpg": {
   "w": 650,
   "h": 434,
+  "target": 720,
+  "v": 3
+ },
+ "https://prtimes.jp/img/5623/452/resize/d5623-452-fe47ebb5921c5d89f60d-0.jpg": {
+  "w": 650,
+  "h": 650,
   "target": 720,
   "v": 3
  },
@@ -3285,12 +3297,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.-bU11Q48kucCl75zAmumFw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3303,13 +3309,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.90WLkFrAOYUZh6bENh_a5Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.348
  },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
@@ -3331,6 +3330,12 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Dzom2GUKVVgsa7QfVjfAbA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.EfQzchA1gP2Fyp_7nJfUug&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3725,6 +3730,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://www.kocpc.com.tw/wp-content/uploads/2026/04/20260426234433_0_82a249.jpg": {
+  "w": 1002,
+  "h": 619,
+  "target": 1280,
   "v": 3
  },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/a2olite01.webp": {

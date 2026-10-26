@@ -2037,12 +2037,13 @@ class FindSources(unittest.TestCase):
             item["emblem_who"] = who
             bust = ("https://x/bust.png", Image.new("RGBA", (120, 150), (50, 50, 50, 255)), 0.3)
             with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
-                    mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"):
+                    mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"), \
+                    mock.patch.object(ef.emblem_face, "measure_item") as meas:
                 def run(found):
                     now = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
                     now["emblem_who"] = who
                     bad = [x for x in now["emblem"] if x["subject"] in ("Ichigo Kurosaki", "W1", "Low") and x.get("source") != "https://x/bust.png"]   # 胸像に替わった人はもう顔だけのアップでない
-                    with mock.patch.object(ef, "bust_replacement", side_effect=lambda it, x, skip, log=print: bust if x["subject"] in found else None):
+                    with mock.patch.object(ef, "bust_replacement", side_effect=lambda it, x, skip, log=print, **kw: bust if x["subject"] in found else None):
                         return ef.stage_closeups(now, bad, log=lambda *_: None)
                 self.assertEqual(run({"Ichigo Kurosaki"}), (1, 0))   # 1 回目：一護だけ胸像が取れた
                 got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
@@ -2057,6 +2058,35 @@ class FindSources(unittest.TestCase):
                 self.assertEqual(sorted(x["subject"] for x in got["emblem"]), ["Ichigo Kurosaki", "W1"])
                 self.assertEqual(got["emblem_redo"], ["Low"])
                 self.assertEqual(ef.closeup_state()["b"], {"W1": {"n": 3}})
+
+    def test_better_cut_floor_and_gain(self):
+        """入れ替えの質の下限：短い辺 256px 未満は取らない（一護 146×225）。元より質が上がらないものも取らない。元が下限未満なら下限以上のとき取る。"""
+        from PIL import Image
+        em = ef.emblem
+        mk = lambda w, h: Image.new("RGBA", (w, h), (80, 80, 80, 255))
+        with mock.patch.object(em, "face_sharp", return_value=None):
+            self.assertFalse(em.better_cut(mk(146, 225), mk(372, 519)))   # 下限未満
+            self.assertFalse(em.better_cut(mk(300, 300), mk(372, 519)))   # 下限は満たすが元より小さい
+            self.assertTrue(em.better_cut(mk(400, 600), mk(372, 519)))
+            self.assertTrue(em.better_cut(mk(256, 300), mk(100, 100)))   # 元が下限未満：候補が下限以上なら
+            self.assertFalse(em.better_cut(mk(255, 400), mk(100, 100)))
+            self.assertTrue(em.better_cut(mk(300, 300)))
+        with mock.patch.object(em, "face_sharp", side_effect=[(50, 0.5, .5)]):
+            self.assertFalse(em.better_cut(mk(400, 400)))   # ぼやけ（SHARP_MIN 未満）
+        with mock.patch.object(em, "face_sharp", side_effect=[(50, 2.0, .5), (50, 3.0, .5)]):
+            self.assertFalse(em.better_cut(mk(400, 600), mk(372, 519)))   # 元よりぼやける
+
+    def test_official_images_and_site(self):
+        """胸像の入れ替えは公式サイトの立ち絵が先：パスに char… と名前の語が入るものだけ（-sp・サムネ・ロゴ・ほかのキャラは除く）。site がなければアイコンの出どころの網域。"""
+        em = ef.emblem
+        html = ('<img src="/top/character/ichigo/body.webp"><img src="/top/character/ichigo/body-sp.webp">'
+                '<img data-src="/assets/character/thumb_01.jpg"><img src="/top/character/rukia/body.webp"><img src="/common/logo.webp">')
+        with mock.patch.object(em, "_get", return_value=html.encode()):
+            self.assertEqual(em.official_images("https://s.example/", ["Ichigo", "Kurosaki"]), ["https://s.example/top/character/ichigo/body.webp"])
+            self.assertEqual(em.official_images("https://s.example/", ["Orihime"]), [])
+        self.assertEqual(em.official_images(None, ["Ichigo"]), [])
+        self.assertEqual(em.official_site({"icon": {"source": "https://s.example/ogp/a.jpg"}}), "https://s.example/")
+        self.assertTrue(em.SCENE_FILE.search("File:Ep308IchigoBankai.png") and not em.SCENE_FILE.search("File:Ep363HitsugayaProfile.png"))
 
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""

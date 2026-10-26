@@ -777,6 +777,33 @@ def face_sharp(img):
     return round(fw * w0 / im.width), float(np.percentile(mg, 99)) / span, float(g.mean()) / 255
 
 
+BUST_MIN_SIDE = 256   # 入れ替えの候補（胸像）の短い辺の下限 px（BLEACH Mirrors High の一護が 146×225 のぼやけた胸像に替わった：2026-10-27）
+
+
+def cut_score(im):
+    """切り抜き 1 枚の質の点数 → (短い辺 px, 顔の鋭さ か None)。鋭さは face_sharp（#479：SHARP_MIN の測り）。顔が測れなければ None。"""
+    try:
+        fq = face_sharp(im)
+    except Exception:
+        fq = None
+    return min(im.size), (fq[1] if fq else None)
+
+
+def better_cut(cand, orig=None):
+    """入れ替えの候補 cand（PIL）を取ってよいか：短い辺 >= BUST_MIN_SIDE・鋭さ >= SHARP_MIN（測れたとき）が必ず。
+    元 orig（PIL）があれば、さらに質の点数が元より上がるときだけ（元が下限未満なら下限を満たせば足りる）：
+    短い辺が元より小さくない・鋭さが元より低くない（両方測れたとき）。"""
+    cs, cq = cut_score(cand)
+    if cs < BUST_MIN_SIDE or (cq is not None and cq < SHARP_MIN):
+        return False
+    if orig is None:
+        return True
+    os_, oq = cut_score(orig)
+    if os_ < BUST_MIN_SIDE or (oq is not None and oq < SHARP_MIN):
+        return True
+    return cs >= os_ and (cq is None or oq is None or cq >= oq)
+
+
 NOFACE_WIDE = 1.3   # 写真の切り抜きに顔がなく、横が縦のこの倍より長い = 髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）。顔のない兜（The Mandalorian）は縦長の全身なので当たらない
 
 
@@ -1061,13 +1088,49 @@ def file_base(url):
     return re.sub(r"^file:", "", seg.replace(" ", "_").lower())
 
 
-def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, photo=False, skip=()):
+OFFICIAL_PATH = re.compile(r"char|member|cast|figure|visual|profile", re.I)
+OFFICIAL_SKIP = re.compile(r"thumb|icon|logo|-sp\b|_sp\b|/sp/|banner|btn|button|sns", re.I)
+
+
+def official_images(site, words, limit=6):
+    """公式サイトのトップページにあるキャラの絵（パスに char/member/cast… とそのキャラの名前の語が入るもの）→ [網址]。
+    BLEACH Mirrors High の公式サイトは /top/character/ichigo/body.webp（透明背景の公式立ち絵）。名前の語はパスの区切りごとに一致を見る（姓でも名でも）。"""
+    if not site:
+        return []
+    ws = {w.lower() for w in words if len(w) >= 3}
+    try:
+        html = _get(site, 1_500_000).decode("utf-8", "replace")
+    except Exception:
+        return []
+    out = []
+    for m in re.finditer(r'(?:src|data-src|srcset)=["\']([^"\'\s,]+\.(?:png|webp|jpe?g))', html, re.I):
+        u = urllib.parse.urljoin(site, m.group(1).replace("&amp;", "&"))
+        path = urllib.parse.urlparse(u).path
+        if u not in out and OFFICIAL_PATH.search(path) and not OFFICIAL_SKIP.search(path) \
+                and ws & set(re.split(r"[/_.\-\s]+", path.lower())):
+            out.append(u)
+    return out[:limit]
+
+
+def official_site(item):
+    """その関注項の公式サイト：site、なければ目次のアイコンの出どころの網域。"""
+    s = item.get("site") or (item.get("icon") or {}).get("source") or ""
+    m = re.match(r"^(https?://[^/]+)", str(s))
+    return (m.group(1) + "/") if m else None
+
+
+SCENE_FILE = re.compile(r"^File:Ep\d+(?!.*profile)", re.I)   # アニメの場面（Ep308…）。立ち絵・プロフィールより後
+
+
+def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, photo=False, skip=(), orig=None, official=()):
     """顔のアップ（顔が高さの 5 割を超える）しかないとき：同じページに載っている画像から、切り抜いて胸像になるもの
     （顔がはっきり見えて、顔の割合 fs が lo〜hi）を探す。名前に人物名を含む画像を先に、大きい順。→ (網址, 切り抜き画像, fs) か None"""
     from PIL import Image
     from rembg import remove
-    q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "images", "imlimit": 300, "format": "json", "redirects": 1})
-    pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
+    pg = {}
+    if api:
+        q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "images", "imlimit": 300, "format": "json", "redirects": 1})
+        pg = next(iter(json.loads(_get(f"{api}?{q}", 2_000_000))["query"]["pages"].values()))
     # 名前のどれか（姓でも名でも：「Yasutora Sado」の公式イラストは BBSSado.png）がファイル名に入っているもの
     words = [w.lower() for w in ([word] if word else []) + re.split(r"[\s(),]+", title) if len(w) >= 3]
     files = [x["title"] for x in pg.get("images", []) if re.search(r"\.(png|jpe?g|webp)$", x["title"], re.I)
@@ -1084,7 +1147,10 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
             if info.get("width", 0) >= 300 and info.get("height", 0) >= 300:
                 infos.append((info["width"] * info["height"], info.get("thumburl") or info["url"], p["title"]))
     backup = None
-    for _, url, t in sorted(infos, reverse=True)[:limit]:
+    # 公式サイトの絵が先（A17：公式 → Fandom の立ち絵 → 場面画像は最後）
+    order = [(u, "公式 " + u.rsplit("/", 2)[-2]) for u in official if u not in set(skip)] \
+        + [(u, t) for _, u, t in sorted(infos, key=lambda i: (bool(SCENE_FILE.search(i[2])), -i[0]))[:limit]]
+    for url, t in order:
         try:
             raw = Image.open(io.BytesIO(_get(url)))
             clear_bg = raw.mode in ("RGBA", "LA", "P") and raw.convert("RGBA").getchannel("A").getextrema()[0] < 16   # もとから透明な背景（公式の立ち絵）
@@ -1093,13 +1159,23 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
             if photo and lost_face(img, out):   # 写真：手・物・暗い背景を切り抜いたもの
                 raise ValueError("顔が切り抜きに残っていない")
             fitted, fs = face_fit(out)
+            if fs is None and url in official and clear_bg:   # 公式の立ち絵はアニメ絵で顔が測れないことが多い：上半身に切って使う（公式が先）
+                ub = upper_body(out)[0]
+                if orig is None or better_cut(ub, orig):
+                    print(f"  [胸像・公式] {url[:80]}", file=sys.stderr)
+                    return url, ub, None
+            if orig is not None and not better_cut(fitted, orig):   # 元より質が上がらない・下限未満：取らず次の候補へ（orig を渡された入れ替えだけ）
+                print(f"  [質が足りない] {t}：{cut_score(fitted)}", file=sys.stderr)
+                continue
             if fs and lo <= fs <= hi:
                 print(f"  [胸像] {t}：顔 {fs}", file=sys.stderr)
                 return url, fitted, fs
             # 前髪で目が隠れているキャラ（チャド）は顔が見つからない：きれいに切れた一番大きいものを控えに。
             # ただし控えはもとから透明な背景の絵（公式の立ち絵）だけ：漫画のコマ・場面（jpg）は枠で切れ・「©」の文字が残る（ちいかわ のあのこ、2026-10-20）
             if noface and fs is None and backup is None and clear_bg:
-                backup = (url, upper_body(out)[0], None)
+                ub = upper_body(out)[0]
+                if orig is None or better_cut(ub, orig):
+                    backup = (url, ub, None)
             print(f"  [合わない] {t}：顔 {fs}", file=sys.stderr)
         except Exception as e:
             print(f"  [合わない] {t}：{e}", file=sys.stderr)
