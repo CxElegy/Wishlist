@@ -37,7 +37,7 @@ const done = []
 let planned = 0
 for (let i = 1; i <= MAX; i++) {
   const id = `${LANE === 'request' ? 'r' : 'f'}${i}`
-  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から最初の 1 つだけを進める（依頼の係）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日付 時:分 JST・持ち主 ${id}・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（持ち主のいない [~] も：claims.py で出る）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
+  let r = await agent(COMMON.replace(/\{ID\}/g, id) + `\n\nmain に hermes/ACTIVE があれば（Hermes が作る係）何もせず status=none で返す。なければ ${LANE === 'request' ? 'BACKLOG.md の【依頼】の付いた [ ] の上から、ユーザーの答え待ち（本文に [?] の答えが先に要ると明記）や持ち主のいる [~] で進められない段は飛ばして、進められる最初の 1 つだけを進める（依頼の係。先頭が答え待ちなだけで status=none にしない）。取ったらまず main の BACKLOG.md でその段を [~] …（開始 日付 時:分 JST・持ち主 ${id}・依頼の係）にして push し、ふだんのループと重ならないようにする' : 'BACKLOG.md の「いちばん先」の上から最初の [ ]（持ち主のいない [~] も：claims.py で出る）を 1 つだけ進める'}。進める段がなければ（全部 [x] か [?]）何もせず status=none。最後に status・step（段の名前）・pr・summary（日本語 3 行）を返す。`,
     { label: `step:${id}`, phase: 'Step', model: 'sonnet', schema: RESULT })
   if (!r) { log(`${id}: 返事なし`); break }
   if (r.status === 'none') {
