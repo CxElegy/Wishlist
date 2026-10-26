@@ -221,7 +221,9 @@ def bad_source(x):
     return bool(BAD_SOURCE.search(urllib.parse.unquote(u.split("?")[0].split("//", 1)[-1].split("/", 1)[-1])))   # 道すじ全部（Fandom は …/Item_X.png/revision/latest）
 
 
-NOT_CHAR = re.compile(r"\bcharacters?\b|\blist\b|^(?:the )?(?:players?|parents?|protagonists?)$|^unnamed\b|\([^)]*(?:smash bros|\bvs\.)", re.I)
+NOT_CHAR = re.compile(r"\bcharacters?\b|\blist\b|^(?:the )?(?:players?|parents?|protagonists?)$|^unnamed\b|\([^)]*(?:smash bros|\bvs\.)"
+                      r"|^(?:the )?(?:travell?ers?|hunters?|wyverians?|inklings?|octolings?)$|^octolings? \(|\bmanekin\b|\bmannequins?\b"   # 種族（Wyverians・Inklings）・役割（Hunter・Traveler）・名無しの人形（Wonderland Manekin）
+                      r"|^(?:an? |the )?(?:old (?:man|woman)|merchant|fairy|villagers?)$", re.I)   # 名前のない役（ゼルダの Old Man・Merchant）
 
 
 def not_character(name):
