@@ -30,6 +30,8 @@ jobs:
       WIKIMEDIA_TOKEN: ${{ secrets.WIKIMEDIA_TOKEN }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}   # 触发时の提交ではなく、いまの main の先頭（待っている間に前の回が push した分を古い版で上書きしない。pull --rebase -X theirs は同じ行なら自分の版が勝つ）
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
