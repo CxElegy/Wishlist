@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-26T02:52:54+00:00",
+ "checked": "2026-10-26T03:03:10+00:00",
  "fired": {
   "at": "2026-10-26T02:53:24+00:00",
   "results": {
@@ -19,26 +19,20 @@
     "resp": "cse_01S4qXJPg5vzmYJuTK6Ja7Su",
     "sig": "a82a7cc873f1"
    },
-   "items": [
-    "哈利波特剧集",
-    "猫用品"
-   ],
-   "last_batch": "2026-10-26T00:53:47+00:00",
+   "items": [],
+   "last_batch": "2026-10-26T03:00:07+00:00",
    "last_error": {
     "at": "2026-10-25T20:34:09+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 135,
+   "need": false,
+   "prog": 137,
    "prog_day": "2026-10-26",
-   "ripe": [
-    "哈利波特剧集",
-    "猫用品"
-   ],
-   "sig": "a82a7cc873f1",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 351418,
-   "why": "整理待ちの記事 2 件（2 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 403479,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
