@@ -70,7 +70,11 @@
   "周杰伦": 4,
   "滑雪": 4,
   "チェーンソーマン": 3,
-  "星巴克马克杯": 3
+  "星巴克马克杯": 3,
+  "绝区零": 3,
+  "猫用品": 2,
+  "BLEACH Mirrors High": 1,
+  "あつ森": 1
  },
  "GTA 6": [
   {
@@ -576,5 +580,41 @@
     2
    ]
   }
- ]
+ ],
+ "绝区零": [
+  {
+   "headline": "【独立企划】如果绝区零做一款买断制前传？《往逝：始》设定与叙事拆解",
+   "highlight": "《往逝：始》",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "大人気イベント「ねこ休み展」多摩に初上陸！スター猫写真＆癒やしの猫グッズが大集合",
+   "highlight": "多摩に初上陸",
+   "blurb": "人気イベント「ねこ休み展」が多摩に初上陸し、スター猫の写真や猫グッズが集まる。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://news.walkerplus.com/article/1140018/11816984_615.jpg"
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "BLEACH Mirrors High Confirms Launch Roster: 13 Returning Characters and 5 Kubo Originals",
+   "highlight": "Launch Roster",
+   "blurb": "BLEACH Mirrors High confirms its launch roster: 13 returning characters and 5 Kubo originals.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://sm.ign.com/ign_in/cover/b/bleach-mir/bleach-mirrors-high_brrm.jpg"
+  }
+ ],
+ "あつ森": []
 }

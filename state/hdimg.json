@@ -196,19 +196,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/78961de9gy1iiewsmyjeuj24002o0npg.jpg": {
-  "w": 2000,
-  "h": 1333,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/75a1bdacba1d384b.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/90b10eb9ly1iig5bdy80qj21881kwb29.jpg": {
   "w": 1592,
   "h": 2048,
@@ -389,6 +376,12 @@
   "w": 820,
   "h": 461,
   "target": 1280,
+  "v": 3
+ },
+ "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg": {
+  "w": 618,
+  "h": 348,
+  "target": 720,
   "v": 3
  },
  "https://blogfiles.ncsoft.net/news/341760c3-50f2-4a41-856a-5961cb9466ca.jpg": {
@@ -858,12 +851,6 @@
   "target": 720,
   "v": 3
  },
- "https://helios-i.mashable.com/imagery/articles/00bly3NxVIcyJ7Qh1ILwhjd/hero-image.fill.size_1200x675.v1793018517.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://hermes.media.transform.aol.com/6963b3a9e84468c005cf8e0f1a63b74929e18a0a/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/26/ed77719c-b688-350a-97da-f6a05c739b20/613078da-95c5-4764-9387-4bf49a8c73c5.jpg": {
   "w": 1200,
   "h": 675,
@@ -880,6 +867,12 @@
   "w": 1680,
   "h": 960,
   "target": 720,
+  "v": 3
+ },
+ "https://hips.hearstapps.com/hmg-prod/images/8972b059-9897-4bde-9973-3bb6b04f0d67.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
+  "w": 1200,
+  "h": 600,
+  "target": 1280,
   "v": 3
  },
  "https://hips.hearstapps.com/hmg-prod/images/8b2afa82-9272-4199-8136-22d9d5456461.jpg?crop=0.6666666666666666xw:1xh;center,top&resize=1200:*": {
@@ -2024,6 +2017,19 @@
   "v": 3,
   "blur": 0.398
  },
+ "https://news.walkerplus.com/article/1140018/11816984_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.435,
+  "local": "pics/c8edd1c6e202898f.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://news.walkerplus.com/article/1149488/12021924_615.jpg": {
   "w": 615,
   "h": 287,
@@ -2558,6 +2564,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://platform.landgrantholyland.com/wp-content/uploads/sites/96/2026/07/reuters-tagreuters.com2026newsml_MT1USATODAY29426102475495388.jpg?quality=90&strip=all&crop=0%2C10.72592060985%2C100%2C78.5481587803&w=1200": {
+  "w": 1200,
+  "h": 623,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/145961/21/145961-21-a6310e4915f324825db0661a4e89caff-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1890,
   "h": 1260,
@@ -2615,12 +2627,6 @@
  "https://prtimes.jp/img/55787/1070/resize/d55787-1070-f312cb8d0a784f2a3c2b-0.jpg": {
   "w": 650,
   "h": 434,
-  "target": 720,
-  "v": 3
- },
- "https://prtimes.jp/img/5623/452/resize/d5623-452-fe47ebb5921c5d89f60d-0.jpg": {
-  "w": 650,
-  "h": 650,
   "target": 720,
   "v": 3
  },
@@ -2778,6 +2784,12 @@
   "w": 1344,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://sm.ign.com/ign_in/cover/b/bleach-mir/bleach-mirrors-high_brrm.jpg": {
+  "w": 1024,
+  "h": 1024,
+  "target": 1280,
   "v": 3
  },
  "https://static.beebom.com/wp-content/uploads/2026/10/GTA-6-Cars-suggest-a-Live-Action-Trailer-Is-Coming.jpg": {
@@ -3199,6 +3211,12 @@
   "target": 720,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/09/1791510301377_smartphone-quai-vat-3-camera-200mp-doi-thu-dang-gom-cua-galaxy-s27-ultra-3279.png": {
+  "w": 1825,
+  "h": 977,
+  "target": 1280,
+  "v": 3
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/21/1792574443851_img_e6975105.jpeg": {
   "w": 1200,
   "h": 630,
@@ -3286,6 +3304,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.90WLkFrAOYUZh6bENh_a5Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.348
+ },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
   "h": 700,
@@ -3310,19 +3335,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.FN9_SMhNBiSZwF3-mhTwMg&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.533,
-  "local": "pics/7ce8b13c80d8fcf9.webp",
-  "out": [
-   1280,
-   852
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
@@ -3713,12 +3725,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://www.kocpc.com.tw/wp-content/uploads/2026/04/20260426234433_0_82a249.jpg": {
-  "w": 1002,
-  "h": 619,
-  "target": 1280,
   "v": 3
  },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/a2olite01.webp": {
