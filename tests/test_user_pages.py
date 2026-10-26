@@ -272,6 +272,7 @@ class FirstScreenTests(unittest.TestCase):
         z = {**ok, "zero": True, "quiet": False, "links": 1}
         self.assertEqual(ux_check.first_screen_bad(z), [])
         self.assertEqual(len(ux_check.first_screen_bad({**z, "go": None})), 1)    # 主役のボタンが消えた
+        self.assertEqual(len(ux_check.first_screen_bad({**z, "hit": False})), 1)  # 見えているが覆われて押せない
         self.assertEqual(len(ux_check.first_screen_bad({**z, "quiet": True})), 1)  # 新着なし
         self.assertEqual(len(ux_check.first_screen_bad({**z, "links": 2})), 1)    # 入口が二重
 
@@ -341,3 +342,10 @@ class ZeroShellRendered(unittest.TestCase):
         for pg in ["settings.html"] + pages:
             for h in (667, 740):
                 self.assertIn((390, pg, h), r)
+
+    def test_start_button_clickable_inside_top(self):
+        # .top の子は pointer-events:none（クリックは .lk か .vt だけ）。主役のボタン .startgo は例外に入っていること（入っていないと押せない）
+        import re
+        css = pathlib.Path(render.__file__).read_text(encoding="utf-8")
+        m = re.search(r":is\(\.card,\.top,\.wc\) :not\(([^)]*)\)\{pointer-events:none\}", css)
+        self.assertTrue(m and ".startgo" in m.group(1))
