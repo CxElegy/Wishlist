@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-26T17:35:06+00:00",
+ "checked": "2026-10-26T17:40:42+00:00",
  "fired": {
   "at": "2026-10-26T16:01:24+00:00",
   "results": {
@@ -36,11 +36,9 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "あつ森",
     "dota2",
@@ -50,13 +48,14 @@
     "Vaundy",
     "漫威电影",
     "哈利波特剧集",
+    "BLEACH Mirrors High",
     "绝区零",
     "Astrae Oratio",
     "ILLIT",
     "A2O LITE",
     "The Mandalorian"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 03:18 から）"
+   "why": "失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 03:18 から）"
   },
   "photos": {
    "claude": true,
