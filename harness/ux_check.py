@@ -17,7 +17,12 @@
 ⑤しくみ admin-system.html は、ログインなしで門を外して HTML の作りだけ）：「全体の構成（詳しい図）」の枠が潰れていない（PC で枠の幅 140px 以上、
 2026-10-25 に枠が 24px に潰れた）・枠の下の空白 800px 以下（Actions の枠だけ 5,129px で下の枠が押し下げられた）・部品の重なり 0・枠や部品の字のはみ出し 0・横にはみ出さない。写真 OUT/admin-arch-<幅>.png。
 写真は OUT/<だれ>-<幅>.png・OUT/<だれ>-set-<幅>.png。
+「1 日通し」（--journey、2026-10-27）：空のアカウント test-d で、押して通す。入口 →「ログイン」→ 空の最初の画面の「好きなものを選ぶ」→ ジャンル → カード → 確認 →「足す」→
+自分のページに札が出る → 設定ページに出る →札を押して外れる → 空に戻る（本人の追いかけるものを空にする）。各段で本物のクリック（ほかの部品が上に重なっていれば押せずに ✗）、前後の画面を OUT/journey-<幅>-<段>.png に残す。
+✗：押せない・押しても変わらない・JS のエラー・素の箱・横にはみ出す・同じ id の重複。始めと終わりに本人の追いかけるもの（prefs.picks）を空にする（本人の行だけ、my_keywords_set）。
+今のところ 👍・欲しい物は通さない（空の人には 👍 する記事も欲しい物の入口もない。BACKLOG に書いた）。
 
+    python harness/ux_check.py --journey [--base ...]   （1 日通しだけ。ふだんの点検には混ぜない）
     python harness/ux_check.py [--base https://cxelegy.github.io/Wishlist/home/] [--out DIR] [--who test-a,test-b] [--emb quick|full|off]
 """
 import argparse
@@ -251,6 +256,155 @@ def check_emb_fade(pw, base, width):
         bad.append("画面外の未着の写真に先に .ld が付いている（近づくと「パッ」と出る）")
     return bad
 
+JOURNEY_MAIL = "test-d@example.com"   # 空のアカウント（HARNESS.md「test-c・test-d：空」）
+JOURNEY_TIMEOUT = 6000
+
+
+def press(pg, target, label, timeout=JOURNEY_TIMEOUT):
+    """本物のクリック（Playwright は、上に別の部品が重なっていれば押せずに待って落ちる）。押せなければ理由を返す。"""
+    try:
+        loc = target.first if hasattr(target, "first") else pg.locator(target).first
+        loc.click(timeout=timeout)
+    except Exception as ex:  # noqa: BLE001
+        why = "上に別の部品が重なって押せない" if "intercepts pointer" in str(ex) else "見つからない・押せない"
+        return f"「{label}」が{why}"
+    return None
+
+
+def journey_rpc(base_url, key, tok, fn, body):
+    req = urllib.request.Request(base_url.rstrip("/") + "/rest/v1/rpc/" + fn, data=json.dumps(body).encode(), method="POST",
+                                 headers={"apikey": key, "Authorization": "Bearer " + tok, "Content-Type": "application/json"})
+    return urllib.request.urlopen(req, timeout=30).read().decode()
+
+
+def journey_reset():
+    """本人（test-d）の追いかけるものを空にする。本人の行だけ（my_keywords_set は呼んだ人の prefs.picks だけ置き換える）。"""
+    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    tok = session(JOURNEY_MAIL)["access_token"]
+    journey_rpc(s["supabase_url"], s["supabase_key"], tok, "my_keywords_set", {"p_picks": []})
+
+
+BOX_JS = "b=>({boxes:[...document.querySelectorAll(b)].filter(x=>x.offsetParent).length,sw:document.documentElement.scrollWidth,\
+dup:[...document.querySelectorAll('[id]')].map(x=>x.id).filter((v,i,a)=>a.indexOf(v)!==i).slice(0,3)})"
+
+
+def journey(pw, base, width, out):
+    """1 日通し。返り値は ✗ の一覧（空なら ✓）。"""
+    bad, errors, n = [], [], [0]
+    entry = base.rstrip("/").rsplit("/", 1)[0] + "/"   # 入口（/home/ の 1 つ上）
+    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    pg = b.new_page(viewport={"width": width, "height": 900})
+    pg.on("pageerror", lambda e: errors.append(str(e)[:120]))
+
+    def shot(name):
+        n[0] += 1
+        pg.screenshot(path=str(out / f"journey-{width}-{n[0]}-{name}.png"))
+
+    def step(name, fn):
+        """段を 1 つ：前の画面・後の画面を残し、出た理由を ✗ に足す。✗ が出たらそこで通しを止める（先は同じ原因で崩れる）。"""
+        try:
+            shot(name + "-前")
+            why = fn()
+            pg.wait_for_timeout(300)
+            shot(name + "-後")
+        except Exception as ex:  # noqa: BLE001
+            why = f"{type(ex).__name__}: {str(ex)[:100]}"
+        if why:
+            bad.append(f"{name}：{why}")
+        return not why
+
+    def frame(label):
+        st = pg.evaluate(BOX_JS, BOXES)
+        if st["boxes"]:
+            bad.append(f"{label}：素の箱 {st['boxes']} 個")
+        if st["sw"] > width:
+            bad.append(f"{label}：横にはみ出す（{st['sw']}px）")
+        if st["dup"]:
+            bad.append(f"{label}：同じ id が 2 回（{'・'.join(st['dup'])}）")
+
+    try:
+        journey_reset()
+        pg.goto(entry, wait_until="domcontentloaded", timeout=60000)
+        pg.wait_for_selector("text=新しく始める", timeout=15000)
+        if not step("入口", lambda: None if pg.evaluate("()=>[...document.querySelectorAll('a,button')].filter(x=>/新しく始める|ログイン/.test(x.innerText)&&x.getBoundingClientRect().bottom<innerHeight).length>=2") else "最初の画面に「新しく始める」と「ログイン」が並んでいない"):
+            return bad
+        # 入口の「ログイン」→ 店長のページのログイン欄（本物の入力と送信）
+        if not step("ログイン", lambda: press(pg, pg.get_by_role("link", name="ログイン", exact=True), "ログイン")):
+            return bad
+
+        def login():
+            pg.wait_for_selector(".wl-login input[type=email]", timeout=15000)
+            pg.fill(".wl-login input[type=email]", JOURNEY_MAIL)
+            pg.fill(".wl-login .pw input", PASSWORD)
+            if (w := press(pg, ".wl-login .go", "ログインのボタン")):
+                return w
+            pg.wait_for_function("()=>!!localStorage.getItem('wl-auth')", timeout=15000)
+        if not step("ログイン入力", login):
+            return bad
+        pg.wait_for_function("()=>/好きなものを選ぶ|追いかけるものを足す/.test(document.body.innerText)", timeout=30000)   # 空の最初の画面
+        frame("空の最初の画面")
+        pick = pg.get_by_text(re_pick())
+        if not step("最初の 1 つを選ぶ", lambda: press(pg, pick, "好きなものを選ぶ")):
+            return bad
+        pg.wait_for_selector(".genre", timeout=20000)
+        if not step("ジャンル", lambda: press(pg, ".genre", "ジャンル") or press(pg, "#to-cards:not([disabled])", "ジャンルの「次へ」")):
+            return bad
+        pg.wait_for_selector(".act.y", timeout=15000)
+        if not step("カード", lambda: press(pg, ".act.y", "気になる（♥）") or press(pg, "#to-check", "「この中から始める」")):
+            return bad
+        name = pg.evaluate("()=>{const e=document.querySelector('.picked li .nm');return e?e.innerText:''}")
+        if not name:
+            bad.append("確認：選んだものが 1 つも出ていない")
+            return bad
+        if not step("足す", lambda: press(pg, "#to-done", "「足す」")):
+            return bad
+        pg.wait_for_url("**/home/**", timeout=30000)
+
+        def mine():
+            pg.wait_for_function("n=>document.body.innerText.includes(n)", arg=name, timeout=30000)
+        if not step("自分のページに札", mine):
+            return bad
+        pg.wait_for_timeout(3000)   # 描き替えが終わるのを待つ
+        frame("足したあとの自分のページ")
+        pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+        pg.wait_for_function("()=>/外す/.test(document.body.innerText)", timeout=30000)
+
+        def settings():   # 自分のページの「外す」→ 設定ページに名前が出る
+            if (w := press(pg, pg.get_by_role("link", name="外す", exact=True), "外す（設定へ）")):
+                return w
+            pg.wait_for_function("n=>document.body.innerText.includes(n)", arg=name, timeout=30000)
+            pg.wait_for_timeout(3000)
+            frame("設定ページ")
+        if not step("設定に出る", settings):
+            return bad
+
+        def off():   # 札をもう一度押すと外れる（最後の 1 つは保存が「ひとつ以上えらぶ」で止まる。空に戻すのは journey_reset）
+            tile = pg.locator(".tiles button", has_text=name)
+            if (w := press(pg, tile, f"札「{name}」")):
+                return w
+            pg.wait_for_timeout(500)
+            if tile.first.get_attribute("aria-pressed") == "true":
+                return "札を押しても外れない"
+        step("外す", off)
+    except Exception as ex:  # noqa: BLE001
+        bad.append(f"通せなかった（{type(ex).__name__}: {str(ex)[:120]}）")
+    finally:
+        b.close()
+        try:
+            journey_reset()   # 失敗しても空に戻す
+        except Exception as ex:  # noqa: BLE001
+            bad.append(f"後始末ができなかった（{type(ex).__name__}）：test-d の追いかけるものを手で空にする")
+    if errors:
+        bad.append("JS のエラー：" + " / ".join(errors[:2]))
+    return bad
+
+
+def re_pick():
+    import re
+    return re.compile("好きなものを選ぶ|追いかけるものを選ぶ|追いかけるものを足す")
+
+
 
 def main(argv):
     ap = argparse.ArgumentParser()
@@ -259,11 +413,19 @@ def main(argv):
     ap.add_argument("--who", default=",".join(WHO))
     ap.add_argument("--widths", default="1400,390")
     ap.add_argument("--emb", default="quick", choices=("quick", "full", "off"))
+    ap.add_argument("--journey", action="store_true", help="1 日通し（空のアカウントで押して通す）だけを走らせる")
     a = ap.parse_args(argv)
     out = pathlib.Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     fails = 0
     with sync_playwright() as pw:
+        if a.journey:
+            for w in a.widths.split(","):
+                bad = journey(pw, a.base, int(w), out)
+                fails += bool(bad)
+                print(("✗ " if bad else "✓ ") + f"1 日通し {w}px：" + ("、".join(bad) if bad else "入口 → ログイン → 足す → 自分のページ → 設定 → 外す"))
+            print(f"1 日通し：✗ {fails} 件")
+            return 1 if fails else 0
         for who in a.who.split(","):
             for w, page in [(int(w), pg) for pg in ("", "settings.html") for w in a.widths.split(",")]:
                 try:
