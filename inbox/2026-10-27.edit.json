@@ -65,7 +65,12 @@
   "三星手机": 12,
   "gelato pique": 10,
   "ILLIT": 6,
-  "MMORPG 新作": 5
+  "MMORPG 新作": 5,
+  "dota2": 4,
+  "周杰伦": 4,
+  "滑雪": 4,
+  "チェーンソーマン": 3,
+  "星巴克马克杯": 3
  },
  "GTA 6": [
   {
@@ -418,6 +423,157 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Dota 2 Reaches Its Highest Concurrent Player Peak Since 2016",
+   "highlight": "Highest Concurrent Player Peak Since 2016",
+   "blurb": "Dota 2 has hit its highest concurrent player peak since 2016.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://www.talkesport.com/wp-content/uploads/image-503.webp"
+  },
+  {
+   "headline": "四支种子队已就位，EPL 大师赛双败淘汰赛名单公布",
+   "highlight": "双败淘汰赛名单公布",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Two Players Have Left PlayTime’s Dota 2 Roster",
+   "highlight": "Two Players",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Predator partners with NAVI in PUBG and Dota 2",
+   "highlight": "Predator",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦转发点赞“中国歌手”身份介绍 国台办回应",
+   "highlight": "国台办回应",
+   "blurb": "周杰伦转发点赞“中国歌手”身份介绍，国台办作出回应。",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ]
+  },
+  {
+   "headline": "周杰伦最“冤”的一张神专：明明首首封神，当年却被骂“没进步”",
+   "highlight": "首首封神",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "neinei说周杰伦鼓励她弹钢琴，对小朋友们都特别好",
+   "highlight": "鼓励她弹钢琴",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "【SURF&SNOW】2026-27シーズン、スキー場オープン情報！10月23日に「イエティ」が日本一早い営業開始へ",
+   "highlight": "10月23日",
+   "blurb": "2026-27シーズンのスキー場オープン情報。10月23日に「イエティ」が日本一早い営業開始となる。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-10-23",
+    "label": "営業開始"
+   },
+   "image": "https://images.gunosy.com/cache_v1/article/61442341/thumbnail/e0c1593c.jpg"
+  },
+  {
+   "headline": "【ネコマ マウンテン】超早割は11月3日まで！新登場の3日券・5日券と新しい宿泊拠点",
+   "highlight": "超早割は11月3日まで",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-11-03",
+    "label": "超早割締切"
+   }
+  },
+  {
+   "headline": "Burton Blossom Snowboard Review",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "「チェンソーマン」とクロックスが初コラボ、デンジやポチタの全4足が発売",
+   "highlight": "全4足が発売",
+   "blurb": "「チェンソーマン」とクロックスが初コラボ。デンジやポチタをフィーチャーした全4モデルが発売された。",
+   "weight": "lead",
+   "refs": [
+    2,
+    3,
+    1
+   ],
+   "image": "https://image.news.livedoor.com/newsimage/stf/4/6/46f1e_1838_f5ad7721d161e61fe6bdbe25c8b4350d.jpg"
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "40cm10kg！スタバ“どでか”マグカップが登場",
+   "highlight": "40cm10kg",
+   "blurb": "スターバックスから高さ40cm・重さ10kgの“どでか”マグカップが登場。",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://news.walkerplus.com/article/68792/385524_615.jpg"
+  },
+  {
+   "headline": "出雲大社店限定！スタバがオシャレなご当地マグカップを発売",
+   "highlight": "出雲大社店限定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "熊本のスターバックス発、パートナーの声を形にした限定マグカップを体験してきた",
+   "highlight": "熊本",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ]

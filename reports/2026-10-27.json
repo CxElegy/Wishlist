@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "30f63584c88f",
+ "edit_sig": "d4a5f5198062",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
@@ -155,38 +155,47 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "2026-27シーズンのスキー場オープン情報。10月23日に「イエティ」が日本一早い営業開始となる。",
+     "date": "2026-10-20",
+     "event": {
+      "date": "2026-10-23",
+      "label": "営業開始"
+     },
+     "headline": "【SURF&SNOW】2026-27シーズン、スキー場オープン情報！10月23日に「イエティ」が日本一早い営業開始へ",
+     "highlight": "10月23日",
+     "image": "https://images.gunosy.com/cache_v1/article/61442341/thumbnail/e0c1593c.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://gunosy.com/articles/tJTjQ",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-26",
-     "n": 1,
-     "source": "note",
-     "title": "【ネコマ マウンテン】超早割は11月3日まで！新登場の3日券・5日券と新しい宿泊拠点",
-     "url": "https://note.com/bintang1955/n/n113cff67fc8d"
+     "event": {
+      "date": "2026-11-03",
+      "label": "超早割締切"
+     },
+     "headline": "【ネコマ マウンテン】超早割は11月3日まで！新登場の3日券・5日券と新しい宿泊拠点",
+     "highlight": "超早割は11月3日まで",
+     "image": "https://assets.st-note.com/production/uploads/images/328820926/rectangle_large_type_2_b90aa288a09593956f38a7150bdaca33.jpeg?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/bintang1955/n/n113cff67fc8d",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-20",
-     "n": 2,
-     "source": "グノシー",
-     "title": "【SURF&SNOW】2026-27シーズン、スキー場オープン情報！10月23日に「イエティ」が日本一早い営業開始へ",
-     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE54eS1VRlJQY0VJc1JPZWVTclRkbFB5WVJadmdzMlNUR192eGZLNHdOZ3hOcXVDRE1KRk56dFBTS2VDRm9nV3l2Vg?oc=5"
-    },
-    {
-     "date": "2026-10-20",
-     "n": 3,
-     "source": "日本経済新聞",
-     "title": "日本スキー場開発[6040]：コーポレート・ガバナンスに関する報告書 2026/10/20 2026年10月20日(適時開示) ：日経会社情報DIGITAL",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9INHR3clZHSGJHaHBZM3VYclVreGRkUkRnMmllbjBncGRHNkIxbE1XMGNlbEhkMjllZlBuX196QlJ4YXVPbmdWQ3RvRnJ6V1YyZktkNkR6RVQtWk5XclRjR01QQndIZHlnTEE?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 4,
-     "source": "Board of the World",
-     "title": "Burton Blossom Snowboard Review",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5tYlRnNGRxZ2M5M1dPNldHQTl1c1JsUlZFUjctU2lzVUlKNlVTRFJlQzhiVDNHNHU5Vm9fS1pTU0JYT2RrVlBKQTF2S0JoOEpGV3NmVVZWdmxmeWtDRjZZSDFiZXRDSGtyd2FkYzdadGlXdw?oc=5"
+     "headline": "Burton Blossom Snowboard Review",
+     "highlight": "",
+     "image": "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.boardoftheworld.com/burton-blossom-snowboard-review/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -306,8 +315,8 @@
      "date": "2026-10-26",
      "headline": "短いスカートの“女性警察官”衣装で物議のILLIT、口を開く…かつてBLACKPINK、i-dleも職業コスチュームで騒動に",
      "highlight": "口を開く",
-     "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg",
-     "image_via": "og:image",
+     "image": "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg",
+     "image_via": "AI 挑选",
      "url": "https://topics.smt.docomo.ne.jp/article/sportsseoulweb/entertainment/sportsseoulweb-162031",
      "weight": "lead"
     },
@@ -588,31 +597,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "「チェンソーマン」とクロックスが初コラボ。デンジやポチタをフィーチャーした全4モデルが発売された。",
      "date": "2026-10-26",
-     "n": 1,
-     "source": "https://mediadogs.jp/",
-     "title": "チェンソーマン×クロックス初コラボ発売 atmos限定のポチタなど4モデルの販売店と価格を整理",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1pTkZRUFNZVFJicjNVcW5RejRXNi16RFFua2lZZGVCZnhpWkxqZUNLT3c1a3RqWFhPdGJIb2xLLTBLaGJpZnMtbFJqQWJKM1FGVjNHRG54YjdkUXBJakVLd3FSS2VUUXk3?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 2,
-     "source": "ライブドアニュース",
-     "title": "「チェンソーマン」とクロックスが初コラボ、デンジやポチタの全4足が発売 (2026年10月27日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE80Qnc1d1BHMW82WnJqamdLcFBXcURub3lLcENZYU14ejdRUm5oaENtdGl2UmYza2lMV3Rnay12cHZacmdRbV9LYk11RU1GNTlnOUozM0Zjb2Nsa21yRFE?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 3,
-     "source": "GAME Watch",
-     "title": "「チェンソーマン」×「クロックス」コラボが本日発売！デンジやポチタをフィーチャーした全4モデルが登場",
-     "url": "https://game.watch.impress.co.jp/docs/news/2150748.html"
+     "headline": "「チェンソーマン」とクロックスが初コラボ、デンジやポチタの全4足が発売",
+     "highlight": "全4足が発売",
+     "image": "https://image.news.livedoor.com/newsimage/stf/4/6/46f1e_1838_f5ad7721d161e61fe6bdbe25c8b4350d.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.livedoor.com/topics/detail/32663057/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -715,38 +712,39 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "周杰伦转发点赞“中国歌手”身份介绍，国台办作出回应。",
      "date": "2026-10-26",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "neinei说周杰伦鼓励她弹钢琴，对小朋友们都特别好",
-     "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNamxRdmxZNEExdUE0aWhwNTdUd0wwbklOWVFRSUt2U2tEVDFzam9tOENlR3BrTm1oYzJ0aXVuQmFMd1pLb01OZEpGVzNydURXNjlqYTNOeWJUckFPdjkwODlYVVJVOEdDTlN2bEM5T3kwM2pIakdjdU5sa1EtVm9wYUJtS21FQ2hMbVV3c2hSLUlQSDJrWFJfNVJ6V2lVaG9fYTFoOERuaEJheEdSa2QxeTdnVk1BMGF1anJoanY0bnFVQ2I0NDBUSENrRDVJeHpFdEVWcmtoMVhOSldzbktPenJBcWxMR1k?oc=5"
+     "headline": "周杰伦转发点赞“中国歌手”身份介绍 国台办回应",
+     "highlight": "国台办回应",
+     "image": "http://n.sinaimg.cn/sinakd20261026ac/200/w640h360/20261026/bad8-a850b02eb99f532c72ec846dfd4eb152.jpg",
+     "image_via": "og:image",
+     "url": "https://k.sina.com.cn/article_7879923551_m1d5ae175f03301tei0.html?cre=tianyi&mod=pcent&loc=8&r=0&rfunc=14&tj=cxvertical_pc_ent&tr=12&from=ent",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-22",
-     "n": 2,
-     "source": "搜狐网",
-     "title": "给周杰伦点赞，岛内绿色恐怖下转发自己是中国人，需要巨大的勇气",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1LNVZVOHJ0ZnJHRnFjWHp2WjZvMWlOSnhIZ0ZIZDVNeXJPcXdZZmRPNWxLa0Y1dVlWUVZfc0NkYnE5Z1J2LUwybWNXTTJOQ2UyQVdn?oc=5"
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "周杰伦最“冤”的一张神专：明明首首封神，当年却被骂“没进步”",
+     "highlight": "首首封神",
+     "image": "https://inews.gtimg.com/news_ls/OExABtF0mLidG6kMFnv9xaEZGbpMJ1Fx5UDb9ZiHgAzx8AA/0",
+     "image_via": "og:image",
+     "url": "https://news.qq.com/rain/a/20261026V0C54V00",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-26",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "周杰伦转发点赞“中国歌手”身份介绍 国台办回应。视频来源，新华社 #专业视频创作季##热点观点# ​",
-     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQRE1SS2psbGpVZDg0ZU5KcGVvNTJ0Um1uOHM5czFISTFwZmh4azV0R0h4MXR0UHlNSUZNT0lyTTA3dkVNS2hOV0VBY0pRcGNQcEJYTEJKQ0pEUURQSHZ6N3U5dXJ4aXpFTjRaTHhaeXNkbTFvSXY5QzVLeTY2MmhNV2lXVW8wWVY3elhGQXo2NGNWZW1PbkdSazkyeGxXWnN0b2Z6ZXpsZnNmLW1MME1JcHJWY0hIOUZvSHFUR05DLXNkaEVMV05OUUFGM2hvVktkcWZnb0p2cEI?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 4,
-     "source": "腾讯新闻",
-     "title": "周杰伦最“冤”的一张神专：明明首首封神，当年却被骂“没进步”",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE94WVotRXNtN0E1ajQtclljZy1vOXZ2cG1CcGFqcVJ5Z05zREt1NmhBMjZrSC0tbVJKa1VLWXduM0NacHdrcWNSY0o2VUVUaTBMSkZpM1JB?oc=5"
+     "headline": "neinei说周杰伦鼓励她弹钢琴，对小朋友们都特别好",
+     "highlight": "鼓励她弹钢琴",
+     "image": "http://n.sinaimg.cn/sinakd20261026ac/533/w480h853/20261026/b20e-061e2fabe029746cd542bc3cf2b32608.jpg",
+     "image_via": "og:image",
+     "url": "https://k.sina.com.cn/article_5705021476_m1540bb82403301e56c.html?cre=tianyi&mod=pcent&loc=1&r=0&rfunc=50&tj=cxvertical_pc_ent&tr=12&from=ent&subch=oent",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",
@@ -804,38 +802,49 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Dota 2 has hit its highest concurrent player peak since 2016.",
      "date": "2026-10-26",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "四支种子队已就位，EPL 大师赛双败淘汰赛名单公布|EPL Masters III|Natus Vincere|GamerLegion|LEGION|OG|DOTA2",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1LN1ZHYmxWTTY5QnZaeGNIT21jei1zNlJxMVpzQTJMNVRQSUY2OUMtcWVnQlE0ajNIc1BfNnBOaDBKUWo5M2pFbW5lTWlWa0JtMDI2a0tEbXNZZlcwekF0MkVGSQ?oc=5"
+     "headline": "Dota 2 Reaches Its Highest Concurrent Player Peak Since 2016",
+     "highlight": "Highest Concurrent Player Peak Since 2016",
+     "image": "https://www.talkesport.com/wp-content/uploads/image-503.webp",
+     "image_via": "AI 挑选",
+     "url": "https://www.talkesport.com/news/dota2/dota-2-player-count-nears-1-million-2026/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-26",
-     "n": 2,
-     "source": "TalkEsport",
-     "title": "Dota 2 Reaches Its Highest Concurrent Player Peak Since 2016",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOMkZTMktFb1M3OFA0YXE2V1UtNS1Geml5M0hIZlo2TnE1bXo2M0tiRTY5OUxDWWxXTElOVDlYSFlmZkpWdDRzUU8wSlM1eUE4TndSNHBJbXh4eTFXaUNsTTdxemw4d0VoOEVPT1hfZnVKX0JOMzJZaDlrUlkwa3NuenBDZU1EZw?oc=5"
+     "headline": "四支种子队已就位，EPL 大师赛双败淘汰赛名单公布",
+     "highlight": "双败淘汰赛名单公布",
+     "image": "http://wx3.sinaimg.cn/middle/647c8fably1iig7or5h03j20u011i40a.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5358424976264527.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "Two Players Have Left PlayTime’s Dota 2 Roster",
+     "highlight": "Two Players",
+     "image": "https://hawk.live/storage/images/posts/gorgc-recalled-story-miracle-25387.jpg",
+     "image_via": "og:image",
+     "url": "https://hawk.live/posts/two-players-left-playtimes-dota-2-roster",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 3,
-     "source": "Natus Vincere",
-     "title": "Predator partners with NAVI in PUBG and Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBtY1lDNmJIbHRxaEt6SmhSYVdBT3ZmN3ZjRjM4dmNDLXMyWVR0X0Vqa3R5X2pIVWdHdHA1c19yU3dBZzJQMEs1SV9SSWxVS180UURITk9EMmZ5NVk?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 4,
-     "source": "Hawk Live",
-     "title": "Two Players Have Left PlayTime’s Dota 2 Roster",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBQdktWM1lRLUplMDIySGRlZEdtOXItSm5UZjhVdWRlUURHNjZGRWxBY3RveFRxYVZTNXFDamVuanFaVkYxcVd6ei1fUDhfeFZmTExFbVJsYXBqZ0RCNFYzUi1kUlVpSkFIYWtrbTJPZWlUZw?oc=5"
+     "headline": "Predator partners with NAVI in PUBG and Dota 2",
+     "highlight": "Predator",
+     "image": "https://img.navi.gg/publications/2026/10/publications-12142/thumbnail/65132/1738x800_EN.png",
+     "image_via": "转载 navi.gg",
+     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBtY1lDNmJIbHRxaEt6SmhSYVdBT3ZmN3ZjRjM4dmNDLXMyWVR0X0Vqa3R5X2pIVWdHdHA1c19yU3dBZzJQMEs1SV9SSWxVS180UURITk9EMmZ5NVk?oc=5",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",
@@ -944,36 +953,37 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 2,
-     "source": "ウォーカープラス",
-     "title": "＜画像23 / 32＞熊本のスターバックス発、パートナーの声を形にした限定マグカップを体験してきた",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5wd2ZQcUFxVVNKTjh1WEpVbzNMOWZoYVBXYWhRMnF1NTlTVmFGWFViTGxHN2dPbEp3N2JnTXI0VXFJWmFTelhvZ3JwWDhnS0E5VlVoT2VKYXB2SmxPYkV5cXBDNHQzNVlKbXBJ?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "スターバックスから高さ40cm・重さ10kgの“どでか”マグカップが登場。",
      "date": "2026-10-25",
-     "headline": "＜画像4 / 5＞出雲大社店限定！スタバがオシャレなご当地マグカップを発売",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/49841/268597_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/49841/image268600.html",
-     "weight": "hero"
+     "headline": "40cm10kg！スタバ“どでか”マグカップが登場",
+     "highlight": "40cm10kg",
+     "image": "https://news.walkerplus.com/article/68792/385524_615.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.walkerplus.com/article/68792/image385522.html",
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-25",
-     "headline": "＜画像2 / 4＞40cm10kg！スタバ“どでか”マグカップが登場",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/68792/385520_615.jpg",
+     "headline": "出雲大社店限定！スタバがオシャレなご当地マグカップを発売",
+     "highlight": "出雲大社店限定",
+     "image": "https://news.walkerplus.com/article/49841/268597_615.jpg",
      "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/68792/image385522.html",
-     "weight": "hero"
+     "url": "https://www.walkerplus.com/article/49841/image268600.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-25",
+     "headline": "熊本のスターバックス発、パートナーの声を形にした限定マグカップを体験してきた",
+     "highlight": "熊本",
+     "image": "https://news.walkerplus.com/article/198145/1195520_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/198145/image1195513.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
