@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-26T05:44:46+00:00",
+ "checked": "2026-10-26T06:18:20+00:00",
  "fired": {
   "at": "2026-10-26T05:44:46+00:00",
   "results": {
@@ -19,28 +19,20 @@
     "resp": "cse_01LBfPmbiQbXynpKGn2Xxfdv",
     "sig": "3dcf110d40e7"
    },
-   "items": [
-    "dota2",
-    "gelato pique",
-    "猫用品"
-   ],
-   "last_batch": "2026-10-26T05:41:21+00:00",
+   "items": [],
+   "last_batch": "2026-10-26T05:47:33+00:00",
    "last_error": {
     "at": "2026-10-25T20:34:09+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 176,
+   "need": false,
+   "prog": 179,
    "prog_day": "2026-10-26",
-   "ripe": [
-    "dota2",
-    "gelato pique",
-    "猫用品"
-   ],
-   "sig": "fe0c3f8c4732",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 520959,
-   "why": "整理待ちの記事 3 件（3 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 524463,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
