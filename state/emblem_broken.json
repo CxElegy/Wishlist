@@ -587,6 +587,65 @@
     "upper": true,
     "fs": 0.372
    }
+  },
+  {
+   "v": 7,
+   "emblem": {
+    "subject": "Yasutora Sado",
+    "why": "Bleach: Brave Souls の公式イラスト（代表画像は漫画のコマで、吹き出しを消した跡がえぐれていた）",
+    "image": "emblems/bleach-mirrors-high-yasutora-sado.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/b/b5/BBSSado.png/revision/latest/scale-to-width-down/600?cb=20220517080936&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Yasutora_Sado",
+    "shape": "cutout",
+    "face": [
+     0.19,
+     0.104,
+     0.398,
+     0.492,
+     253,
+     276
+    ]
+   }
+  },
+  {
+   "v": 7,
+   "emblem": {
+    "subject": "Gin Ichimaru",
+    "why": "Gin Ichimaru（Fandom・Gin） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-gin-ichimaru.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/4/4b/Ep307GinGrabsHogyoku.png/revision/latest/scale-to-width-down/600?cb=20220925194613&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Gin_Ichimaru",
+    "shape": "cutout",
+    "ar": 0.75,
+    "face": [
+     0.306,
+     0.0,
+     0.52,
+     0.476,
+     130,
+     111
+    ]
+   }
+  },
+  {
+   "v": 7,
+   "emblem": {
+    "subject": "Baraggan Louisenbairn",
+    "why": "Baraggan Louisenbairn（Fandom・Baraggan）",
+    "image": "emblems/bleach-mirrors-high-baraggan-louisenbairn.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/9/93/Ep226BaragganProfile.png/revision/latest/scale-to-width-down/400?cb=20230831172929&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Baraggan_Louisenbairn",
+    "shape": "cutout",
+    "fs": 0.386,
+    "face": [
+     0.386,
+     0.152,
+     0.633,
+     0.505,
+     240,
+     197
+    ]
+   }
   }
  ],
  "The Mandalorian": [
