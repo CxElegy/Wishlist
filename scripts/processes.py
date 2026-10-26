@@ -548,7 +548,7 @@ PROCESSES = [
             {"id": "le4", "kind": "store", "lane": "web", "title": "公開の箱 emblems と boards.config", "uses": ["supabase"],
              "text": "画像 = emblems/<Wikidata の番号か b+id>-<中身の指紋 10 字>.webp（版面の名前は出さない）· config.emblem・theme・emblem_*（手がかり）・emblem_state {state, have, at, note}（note の「もう一度」は店長の毎時ではなく RETRY_HOURS 24 時間に書き換える）"},
             {"id": "le5", "kind": "step", "lane": "actions", "title": "お客さまのページを作り直す（user_pages.py）",
-             "text": "follows の boards(name,config) から emblem・theme を版面に（店長の版面と同じ render._emblem）。小元素の画像は decode 後に .ld で透明→不透明（パッと出ない・1 画面目は eager）"},
+             "text": "follows の boards(name,config) から emblem・theme を版面に（店長の版面と同じ render._emblem）。小元素の画像は decode 後に .ld で透明→不透明（パッと出ない・1 画面目は eager）。版面 0 個の人は render._front が「最初の 1 つを選ぶ」ボタンを主役に（新着なしの帯・棚の数なし）"},
         ],
     },
     {
