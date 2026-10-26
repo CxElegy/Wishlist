@@ -95,3 +95,4 @@
 - 2026-10-26 r4：小元素の選び方①「点数」の見本（emblem_fame.py・testground/emblem-pick.html）。3 版面で前後を並べた、本番は変えず。AniList の名前ゆれ（Tōshirō→Toushirou）を名字検索で拾い、Wikipedia は 429 を残さない。次：ユーザーの見本の答え（BACKLOG [?]）。
 - 2026-10-26 f1f2：BLEACH Mirrors High の顔写真が洗い直しで残った→ repair_images の「代わりなしなら画像なし」に author_imgs を足した（PR #475）。本番 reports/2026-10-24.json image null・home に 100_0578 0 件。ux_check：guest は E10 のみ（前から）、test-a は呪術廻戦の札に写真なし 1（前から・別の段）、test-b ✓
 - 2026-10-26 r1：小元素の「パッ」対策（decode 後ふわっと・場所と影・eager）。PR #480。遅い回線の点検 1400/390 ✓。ux_check ✗4 は前からの E10・呪術廻戦の頭。次：残りの写真類の同じ出方
+- 2026-10-26 f2：小元素の選び方の見本を案 2 で作り直し（emblem_fame に公式人気投票・使えるキャラ・記事に出た回数、harness/emblem_pick_page.py に顔の大きさをそろえた胸像）。本番は変えず。確かめ：testground/emblem-pick.html を 1100px で画像確認、tests 追加。次：ユーザーの答え（BACKLOG [?]）。
