@@ -223,3 +223,21 @@ class Loader(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FirstScreenTests(unittest.TestCase):
+    def test_zero_boards_start_button_and_no_shelf(self):
+        # 版面 0 個：主役は「選ぶ」ボタン（新着なしの帯・ジャンル別の数は出さない）
+        h = user_pages.build("c@example.com", {"picks": []}, {}, [], None, {}, 0, {}, [], {})
+        self.assertIn('class="startgo"', h)
+        self.assertNotIn("は新着なし</span>", h)
+        self.assertNotIn('class="shelfbox"', h)
+
+    def test_first_screen_check_catches_overlap(self):
+        import sys, pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        ok = {"go": {"t": 400, "b": 460, "l": 20, "r": 360}, "fix": {"t": 790, "b": 832, "l": 250, "r": 378}, "H": 844, "shelves": False, "sum": 0, "tapes": 0}
+        self.assertEqual(ux_check.first_screen_bad(ok), [])
+        self.assertEqual(len(ux_check.first_screen_bad({**ok, "go": {"t": 780, "b": 830, "l": 20, "r": 360}})), 1)
+        self.assertEqual(len(ux_check.first_screen_bad({**ok, "sum": 1})), 1)

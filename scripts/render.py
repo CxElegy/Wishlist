@@ -152,6 +152,10 @@ button{font-family:inherit}
 .top h2{margin:0;max-width:600px;font:900 clamp(21px,2.2vw,31px)/1.55 var(--font-sans);letter-spacing:.01em;transform:rotate(var(--tilt));transform-origin:left top}
 .top:hover .hb{background:var(--deep,var(--ink))}
 .top p{margin:0;max-width:560px;font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.startgo{display:flex;align-items:center;justify-content:center;width:max-content;max-width:100%;min-height:56px;padding:10px 26px;border:2px solid var(--ink);background:var(--gold);color:var(--ink);
+ font:900 19px/1.3 var(--font-sans);letter-spacing:.04em;text-decoration:none;box-shadow:5px 5px 0 var(--ink);transform:skewX(var(--skew,-10deg))}
+.startgo:hover,.startgo:focus-visible{background:var(--card);box-shadow:2px 2px 0 var(--ink)}
+@media (max-width:560px){.startgo{width:100%}.top.start{display:block}.top.start .pdate{display:none}}
 .pfoot{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;margin-top:16px;padding-top:12px;border-top:1.5px solid var(--ink);
  font:700 11px/1.4 var(--font-sans);letter-spacing:.06em;color:var(--deep,var(--ink))}
 @media (max-width:560px){.pfoot .pnote{display:none}}  /* 右下の固定ボタンの下で 2 行目が切れる */
@@ -2587,6 +2591,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     top_w, top = chosen[0] if chosen else (None, None)
     more = chosen[1:]
 
+    start = next((w["start"] for w in works if w.get("start")), "") if works and all(w.get("start") for w in works) else ""
     d = dt.date.fromisoformat(today)
     head = (f'<div class="phead"><span class="lab">トップ</span><span>直近 {HOLD_DAYS} 日 · {len(pool)} 件</span>'
             f'<span class="day">{d.year}.{d.month:02d}.{d.day:02d}（{WEEKDAY[d.weekday()]}）</span></div>')
@@ -2604,6 +2609,11 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
                     f'<h2><span class="hb">{_headline(top)}</span></h2>'
                     + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + _extras(top) + "</div></article>")
         style = f' style="{_poster_colors(top, themes)}"'
+    elif start:   # 版面 0 個の人：「新着なし」ではなく、最初の 1 つを選ぶ大きなボタンを主役に（2026-10-27）
+        top_html = (f'<div class="top start">{date_html}<div class="ptxt"><h2><span class="hb">最初の 1 つを選ぼう</span></h2>'
+                    f'<p>好きな作品・人・場所を選ぶと、記事がここに並びます。</p>'
+                    f'<a class="startgo" href="{e(start)}">追いかけるものを選ぶ →</a></div></div>')
+        style = ""
     else:
         top_html = f'<div class="top">{date_html}<div class="ptxt"><h2><span class="hb">直近 {HOLD_DAYS} 日は新着なし</span></h2></div></div>'
         style = ""
@@ -2619,7 +2629,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
         groups.setdefault(w.get("section") or "其他", []).append(w)
     order = [n for n in SECTIONS] + [n for n in groups if n not in SECTIONS]
     shelves, n_works = [], 0
-    for name in order:
+    for name in ([] if start else order):   # 版面 0 個の人には棚も「N 作品」の数も出さない
         tapes = []
         for w in groups.get(name, []):
             rec = _recent(w, today)

@@ -183,7 +183,7 @@ def user_issue(items, shop_issue, rows, deadline, themes):
     if not blocks:   # 版面が 0 個の人も同じ枠組み：静かな版面（主題・配色つき）で最初の 1 つを選ぶ道を出す（素の箱にしない）
         first = {"name": FIRST_BOARD, "type": "category", "section": "其他"}
         blocks.append({"name": FIRST_BOARD, "section": "其他", "subtitle": "", "stories": [], "facts": [], "pending": [], "cover": None,
-                       "theme": theme.resolve(first, None, themes), "quiet": True,
+                       "theme": theme.resolve(first, None, themes), "quiet": True, "start": ADD_URL,
                        "status": f"まだ何も追いかけていません。[追いかけるものを選ぶ →]({ADD_URL})"})
     date = (shop_issue or {}).get("date") or dt.date.today().isoformat()
     return {"date": date, "no": (shop_issue or {}).get("no", 0), "items": blocks}
