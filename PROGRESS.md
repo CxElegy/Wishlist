@@ -87,3 +87,4 @@
 - 2026-10-26 ポケモンの並びが直らない根（r1f1）：RULES 8 の作り直しで分類を捨てたあと、Pokémon の é で作品の呼び名が空になり own_wiki が外れて名簿が空だった（work_names を NFKD に、NAMES_V 10）· https://github.com/CxElegy/Wishlist/pull/458 · 手元：最初の 10 は全部アニメ · ux_check 本番：test-a ✗ は呪術廻戦 E11 だけ（作り直し中）· 本番 run 40291679538：boards.id=144 の最初の 10 は全部アニメ〔Red (Adventures) なし〕· 次：現行シリーズを先に（Liko・Roy）
 - 2026-10-26 r1（依頼）：小元素の管理の本番確かめ＝実データで swap/lock を offline 再現 OK・tests 28 通過・本番の swap/lock 依頼は 0 件（店長ログインのクリック待ち）· PR なし（文書のみ）· 次：店長が 1 回「替える」→ 次の後台で確認
 2026-10-26 r2：小元素の人を足す：見本 emblem-manage.html に「＋ 人を足す」を足した（1400/390 で確認）、置き方 3 案を BACKLOG [?] に。次：ユーザーの答え → 本番
+2026-10-26 f4：check_arch が「書いた場所」も見る（#462）。変えたファイルを files に持つ流れの絵が変わっていなければ ✗、テスト 4 本・全テスト OK・CI ✓。次：ux_check（下記）
