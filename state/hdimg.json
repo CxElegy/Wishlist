@@ -74,19 +74,6 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/005KUU1vgy1iif0bqhe3aj30xc0qwqca.jpg": {
-  "w": 1200,
-  "h": 968,
-  "target": 720,
-  "v": 3,
-  "local": "pics/df35057da03d5b65.webp",
-  "out": [
-   1200,
-   968
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx1.sinaimg.cn/middle/d2cfaf37gy1iib6xxk8xbj20xi0bmgmw.jpg": {
   "w": 1206,
   "h": 418,
@@ -276,15 +263,15 @@
   "target": 1280,
   "v": 3
  },
- "https://biz.chosun.com/resizer/v2/GRTDEZTCGZSWIY3FGU2TCNDGGE.jpg?auth=4c75d4c3b6f382c940727fdf540ac9cf031e4226db3b3221453f03d0bc304715&width=600&height=315&smart=true": {
-  "w": 600,
-  "h": 315,
-  "target": 720,
-  "v": 3
- },
  "https://bloximages.newyork1.vip.townnews.com/griffindailynews.com/content/tncms/assets/v3/editorial/a/b9/ab90c9fc-1c26-5ebd-8b60-3f8328044d5c/6a13c291b798b.image.jpg?crop=1762%2C926%2C0%2C124&resize=1200%2C631&order=crop%2Cresize": {
   "w": 1200,
   "h": 631,
+  "target": 720,
+  "v": 3
+ },
+ "https://bntonline.com.br/_next/image/?url=https%3A%2F%2Fbntonline.com.br%2Fwp-content%2Fuploads%2F2026%2F10%2Fkitty-cat-kitten-pet-45201-2.jpeg&w=3840&q=75": {
+  "w": 1600,
+  "h": 1672,
   "target": 720,
   "v": 3
  },
@@ -650,6 +637,12 @@
   "w": 1000,
   "h": 1000,
   "target": 1280,
+  "v": 3
+ },
+ "https://dimg.donga.com/wps/SPORTS/IMAGE/2026/10/26/134906926.1.jpg": {
+  "w": 1600,
+  "h": 1067,
+  "target": 720,
   "v": 3
  },
  "https://dispatch.cdnser.be/cms-content/uploads/2026/10/23/e702cf71-0542-45aa-8abe-f9eb62c65c63.jpg": {
@@ -1772,6 +1765,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2608867-90fdd87d4160.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://motoryokoblog.com/wp-content/uploads/2026/09/illit_18227_fv.png": {
   "w": 1200,
   "h": 628,
@@ -2278,12 +2277,12 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261026-00000006-spnannex-000-5-view.jpg?exp=10800": {
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261026-00000006-spnannex-000-6-view.jpg?exp=10800": {
   "w": 1062,
   "h": 1200,
   "target": 720,
   "v": 3,
-  "local": "pics/847acfd2e53bdb6b.webp",
+  "local": "pics/f2be3ca039b421bb.webp",
   "out": [
    1062,
    1200
@@ -2944,6 +2943,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026093447": {
+  "w": 640,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.383
+ },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
   "h": 225,
@@ -3110,6 +3116,12 @@
   "target": 720,
   "v": 3
  },
+ "https://wimg.munhwa.com/news/cms/2026/10/26/news-p.v1.20261026.59dc5b074f7846b5ae00b4e5453126f8_R.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://www.4gamer.net/games/528/G052880/20261020018/SS/001.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3265,6 +3277,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.MpbVZ0s1GnOqlnoKhsM1dg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.YQOWVk6tArirle6eiDvGBQ&pid=News&w=600": {
   "w": 600,
   "h": 399,
@@ -3321,13 +3339,6 @@
    720
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.mgRA6CsgTMQsdFtE2ho-Tw&pid=News&w=640": {
-  "w": 640,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.407
  },
  "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200": {
   "w": 700,
