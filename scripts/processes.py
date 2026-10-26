@@ -223,7 +223,7 @@ PROCESSES = [
         "schedule": "gate", "when": "ゲートが仕事ありのとき · 6 本並列 · 3 段 · AI なし",
         "trigger": "後台のゲート（毎時・収集のあと）が「足りない版面がある」と判断したとき。GitHub Actions で Python だけで動く",
         "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。前は Claude が目で見ていた判断（別人・遠景・集合写真・"
-                   "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。",
+                   "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。顔だけのアップの胸像への入れ替えは質の下限つき（短い辺 256px 以上・元より悪くしない：bust 札）。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "scripts/emblem_face.py", "scripts/emblem_rules.py", "scripts/emblem_fame.py", ".github/workflows/background.yml"],
         "doc": "TEMPLATES.md", "rules": "emblem",
         "uses": ["bust", "owner", "facefit", "roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
@@ -533,7 +533,7 @@ PROCESSES = [
         "id": "libemblem", "name": "ライブラリの小元素", "en": "LIB EMBLEM", "lane": "actions", "workflow": "library_emblem.yml",
         "when": "2 時間ごと（偶数時 29 分）· 手で起こす",
         "trigger": "定時（29 */2 * * *）か workflow_dispatch（minutes、既定 30 分）",
-        "summary": "お客さまの版面（ライブラリの版面のうち店長の版面でないもの）にも、店長と同じ規則（emblem_fill.fill_one）で小元素を版面ごとに 1 回。画像は Supabase Storage の公開の箱、全員で同じものを共有。AI なし。切り抜きの検査は店長と同じ（公式の全身の絵は上の端を見ない・姿勢モデルのない Actions でも顔がなければ全身）",
+        "summary": "お客さまの版面（ライブラリの版面のうち店長の版面でないもの）にも、店長と同じ規則（emblem_fill.fill_one）で小元素を版面ごとに 1 回。胸像への入れ替え（stage_holds）も店長と同じ質の下限つき（元の画像を取って比べる）。画像は Supabase Storage の公開の箱、全員で同じものを共有。AI なし。切り抜きの検査は店長と同じ（公式の全身の絵は上の端を見ない・姿勢モデルのない Actions でも顔がなければ全身）",
         "files": [".github/workflows/library_emblem.yml", "scripts/library_emblem.py", "db/emblems.sql"], "doc": "docs/rules/emblem.md",
         "uses": ["supabase", "roster", "cutcheck", "bust", "facefit", "facerule"],
         "flow": [
