@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-26T01:38:53+00:00",
+ "checked": "2026-10-26T01:46:34+00:00",
  "fired": {
-  "at": "2026-10-26T01:38:53+00:00",
+  "at": "2026-10-26T01:46:34+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -40,11 +40,10 @@
   "emblem": {
    "claude": false,
    "items": [
-    "チェーンソーマン",
-    "dota2"
+    "チェーンソーマン"
    ],
    "need": true,
-   "sig": "5ae20a1465ca",
+   "sig": "98abcc91241a",
    "waiting": [
     "绝区零",
     "あつ森",
@@ -56,9 +55,10 @@
     "GTA 6",
     "Vaundy",
     "A2O LITE",
-    "The Mandalorian"
+    "The Mandalorian",
+    "dota2"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:46 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:46 から）"
   },
   "photos": {
    "claude": true,
