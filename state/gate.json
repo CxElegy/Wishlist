@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-10-26T03:17:27+00:00",
+ "changed": true,
+ "checked": "2026-10-26T03:48:10+00:00",
  "fired": {
   "at": "2026-10-26T02:53:24+00:00",
   "results": {
@@ -49,13 +49,12 @@
     "Vaundy",
     "A2O LITE",
     "Astrae Oratio",
-    "绝区零",
-    "ILLIT"
+    "绝区零"
    ],
    "need": true,
-   "sig": "320ddc1ef81f",
+   "sig": "1e437b1ac65e",
    "waiting": [],
-   "why": "足りない 14 版面（Actions で Python が埋める）"
+   "why": "足りない 13 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
