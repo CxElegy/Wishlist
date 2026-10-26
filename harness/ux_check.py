@@ -141,7 +141,10 @@ def check(pw, base, who, width, out, page="", emb="off"):
 FIRST_JS = """()=>{const g=document.querySelector('.startgo'),f=document.querySelector('.wl-auth'),r=x=>x?x.getBoundingClientRect():null;
  const sum=[...document.querySelectorAll('.shelf h3 small')].reduce((s,x)=>s+(+((x.textContent.match(/(\\d+) 作品/)||[])[1])||0),0);
  const g1=r(g),f1=r(f);return {go:g1?{t:g1.top,b:g1.bottom,l:g1.left,r:g1.right}:null,fix:f1?{t:f1.top,b:f1.bottom,l:f1.left,r:f1.right}:null,
-  H:innerHeight,shelves:!!document.querySelector('.shelfbox'),sum,tapes:document.querySelectorAll('.shelf .tapes>a').length}}"""
+  H:innerHeight,shelves:!!document.querySelector('.shelfbox'),sum,tapes:document.querySelectorAll('.shelf .tapes>a').length,
+  zero:!!document.querySelector('.calm.start,.top.start'),
+  quiet:[...document.querySelectorAll('.poster,.calm.start,.pill .cnt,.calm .tag')].map(x=>x.innerText||'').join(' ').replace(/\\s+/g,'').includes('新着なし'),
+  links:document.querySelectorAll('.page a.startgo,.page .calm a').length}}"""
 
 
 def first_screen_bad(f, gap=8):
@@ -157,6 +160,13 @@ def first_screen_bad(f, gap=8):
             bad.append("主役のボタンが右下の固定ボタンと重なる・近すぎる（8px 未満）")
         if f["shelves"]:
             bad.append("版面 0 個なのにジャンル別の棚が出ている")
+    if f.get("zero"):   # 版面 0 個の人：主役のボタンが必ずある・新着の話をしない（目次・ポスター・静かな版面）・道は 1 つ
+        if not g:
+            bad.append("版面 0 個なのに主役のボタン（.startgo）がない")
+        if f.get("quiet"):
+            bad.append("版面 0 個なのに「新着なし」の字が出ている（目次・ポスター・静かな版面）")
+        if f.get("links", 0) > 1:
+            bad.append(f"版面 0 個の画面に「選ぶ」の入口が {f['links']} 個ある（主役の 1 つだけ）")
     if f["sum"] != f["tapes"]:
         bad.append(f"「N 作品」の数 {f['sum']} が棚の本当の数 {f['tapes']} と違う")
     return bad
