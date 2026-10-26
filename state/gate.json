@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-26T13:30:02+00:00",
+ "checked": "2026-10-26T13:42:15+00:00",
  "fired": {
-  "at": "2026-10-26T13:30:03+00:00",
+  "at": "2026-10-26T13:42:15+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -60,12 +60,13 @@
     "BLEACH Mirrors High",
     "GTA 6",
     "Vaundy",
+    "ILLIT",
     "Astrae Oratio",
     "The Mandalorian",
     "绝区零",
     "A2O LITE"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 23:05 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 23:05 から）"
   },
   "photos": {
    "claude": true,
