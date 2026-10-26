@@ -1,6 +1,6 @@
 {
  "date": "2026-10-26",
- "edit_sig": "83f11bf10afe",
+ "edit_sig": "247a83f2ee89",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,7 +23,7 @@
      "date": "2026-10-25",
      "headline": "‘코믹마켓’부터 ‘AGF’까지⋯ 엔씨가 ‘아스오라’에 공 들이는 이유",
      "highlight": "",
-     "image": "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026234724",
+     "image": "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026235711",
      "image_via": "og:image",
      "url": "https://www.viva100.com/article/20261025500351",
      "weight": "normal"
@@ -706,57 +706,7 @@
   {
    "cover": null,
    "facts": [],
-   "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-26",
-     "n": 3,
-     "source": "Howl.Link",
-     "title": "【あつ森】島暮らし始めます！#１４",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE1ZZjNTWkI0QkZaSzVKVG9Lb0VhQXJTeXdjdko0MU5BcGFfTnluaGs2QlhUVnlqZ291YXAw?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "あつまれ どうぶつの森",
-   "theme": {
-    "accent": "#9B5A22",
-    "alt_accent": "#DA9558",
-    "alt_bg": "#211912",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7EFE9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-26",
-     "n": 24,
-     "source": "虎扑体育网",
-     "title": "周杰伦昆凌大女儿很喜欢穿汉服",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBvdnRBZC1uWVhCeEZEcER2dngxSXFNdEx6VjVBWnQ0Q3NSanNRbllhOHV4R3BObDZJQXo0NzRzUGgzYktLdFQ3UFVlREI1QQ?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 25,
-     "source": "凤凰网",
-     "title": "国台办回应周杰伦被绿营攻击",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9DYWtiWFQ2Tlh3MnlRYzRfZW9MWExWR1lhVmYyZHotM0pQS2tCemJfaTJMZTFYNVNsbG1uSzVsTmlDRnRvLWo4ek5ZZ1Y?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 26,
-     "source": "手机新浪网",
-     "title": "刘畊宏晒周杰伦吴尊柯有伦合照",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE15VW5ZeDM0ZGdtNjg3UHNVaUpVNXgwQVVnTE1FQ3BfMWlrZEJ0MHBPR0FNcWlFaTNiZXJxTE14ak9kUkZ6eUd4QzVwcThqazNFOEVBYUR5QkRVV1RxblhGQmVMY1NHbFN3c2N3dHJoMnc?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -784,8 +734,8 @@
      "date": "2026-10-26",
      "headline": "周杰倫抓包！庾澄慶認了：我是低科技人才",
      "highlight": "低科技人才",
-     "image": "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/26/5619207_2.jpg",
-     "image_via": "JSON-LD",
+     "image": "https://www.bing.com/th?id=ONUT.BFsT2cviS5z3NEOtrXqLcw&pid=News&w=800",
+     "image_via": "Bing 缩略图",
      "url": "https://ent.ltn.com.tw/news/breakingnews/5619207",
      "weight": "normal"
     }
@@ -1309,6 +1259,31 @@
     "bg": "#211712",
     "fg": "#F4EEE4",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-25",
+    "headline": "みごとなめいがの偽物の見分け方 | 本物との違い【あつ森】",
+    "url": "https://gamewith.jp/atsumori/article/show/198906"
+   },
+   "name": "あつ森",
+   "quiet": true,
+   "section": "游戏",
+   "status": "",
+   "stories": [],
+   "subtitle": "あつまれ どうぶつの森",
+   "theme": {
+    "accent": "#9B5A22",
+    "alt_accent": "#DA9558",
+    "alt_bg": "#211912",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7EFE9",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   },

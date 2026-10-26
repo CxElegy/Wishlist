@@ -448,12 +448,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.mos.cms.futurecdn.net/JJUXJNug7549JTRVW9fSjA-2000-80.jpg": {
-  "w": 2000,
-  "h": 1125,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.physiciansweekly.com/wp-content/uploads/2026/10/iStock-1445377245-modified-06da5fcb-206e-4164-8cff-b29e4a7f136f.jpg": {
   "w": 1913,
   "h": 957,
@@ -1036,6 +1030,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/8/7/87e1f_760_2485651_20261012_195457_size640wh_65767024.jpg": {
+  "w": 452,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/d/e/decb2_1682_f7872f8b_5c2c583a.jpg": {
   "w": 1200,
   "h": 900,
@@ -1563,12 +1563,6 @@
   "w": 1200,
   "h": 768,
   "target": 720,
-  "v": 3
- },
- "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/26/5619207_2.jpg": {
-  "w": 800,
-  "h": 1069,
-  "target": 1280,
   "v": 3
  },
  "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg": {
@@ -2528,6 +2522,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/6ada5e768ea04b32a3db3c7cfd01ac05.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://nimage.newsway.co.kr/photo/2026/02/25/20260225000063_1200.jpg": {
   "w": 1200,
   "h": 870,
@@ -2591,12 +2591,6 @@
  "https://p2.bahamut.com.tw/B/2KU/86/40a9c19295c5da7cd47c0046b820td25.JPG": {
   "w": 1024,
   "h": 576,
-  "target": 1280,
-  "v": 3
- },
- "https://penang.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg": {
-  "w": 1200,
-  "h": 628,
   "target": 1280,
   "v": 3
  },
@@ -2813,12 +2807,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.eximg.jp/exnews/feed/Nijimen/cd/Nijimen_0000000000643046/Nijimen_0000000000643046_1.jpg": {
-  "w": 1452,
-  "h": 943,
-  "target": 720,
-  "v": 3
- },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
   "h": 630,
@@ -2986,12 +2974,6 @@
  "https://static.sanyonews.jp/image/article/size1/2/2/9/0/22902e4f34b44e2c44d9f269166203df_1.jpg": {
   "w": 640,
   "h": 360,
-  "target": 720,
-  "v": 3
- },
- "https://static.sanyonews.jp/image/article/size1/3/e/8/4/3e84c1f4e13b217a1409e48ea6608889_1.jpg": {
-  "w": 452,
-  "h": 640,
   "target": 720,
   "v": 3
  },
@@ -3186,12 +3168,12 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026234724": {
-  "w": 640,
-  "h": 450,
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026235711": {
   "target": 1280,
   "v": 3,
-  "blur": 0.383
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-26"
  },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
@@ -3440,6 +3422,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.BFsT2cviS5z3NEOtrXqLcw&pid=News&w=800": {
+  "w": 700,
+  "h": 409,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.495,
+  "local": "pics/70c1c5717f098043.webp",
+  "out": [
+   1280,
+   748
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
   "h": 700,
@@ -3643,6 +3638,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.wMRvg-xMmB9IWF--rfi0VQ&pid=News&w=896": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3659,6 +3660,12 @@
   "w": 690,
   "h": 460,
   "target": 720,
+  "v": 3
+ },
+ "https://www.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
   "v": 3
  },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
