@@ -434,6 +434,7 @@ button{font-family:inherit}
 .pk .pkt{position:relative;z-index:1;display:flex;flex-direction:column;gap:5px;min-width:0;margin:-18px 10px 0;padding:14px 14px 10px;background:var(--card);
  box-shadow:var(--shadow);transform:rotate(-1deg)}
 .pk:nth-child(even) .pkt{transform:rotate(1deg)}
+.pk.nophoto .pkt{margin:0}.pk.nophoto.big .pkt{margin:0;padding:28px 22px 22px}  /* 写真が開けない「気になるかも？」のカード（SWAP_JS）：札だけ */
 .pk.big .pkt{margin:-40px 24px 0;padding:22px 22px 16px;transform:rotate(-1.2deg)}
 .pk .why{order:-1;font:15px/1.45 var(--font-hand);color:var(--ink)}
 .pk .why mark{color:inherit;background:linear-gradient(transparent 55%,var(--gold) 55% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 2px}
@@ -708,14 +709,14 @@ SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest
            "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
            "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
            "if(f.length){me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
-           "else{var a=p.closest('article.card,article.wc');if(a){p.remove();a.classList.add('nophoto')}else{"
+           "else{var a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto')}else{"
            "var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
            "if(ic){p.classList.add('icon');var l=ic.dataset.icons.split(' ');ic.src=l.shift();ic.dataset.icons=l.join(' ')}"
            "else{p.classList.add('none')}}}")
 # 来源图标打不开、或者只有 16px（Google 图标服务查不到时给的地球图标）：换下一个，都不行才是作品名封面块
 ICON_NEXT_JS = ("var l=(this.dataset.icons||'').split(' ').filter(Boolean);"
                 "if(l.length){this.src=l.shift();this.dataset.icons=l.join(' ')}"
-                "else{var p=this.closest('.pic'),a=p.closest('article.card,article.wc');if(a){p.remove();a.classList.add('nophoto')}"
+                "else{var p=this.closest('.pic'),a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto')}"
                 "else{p.classList.remove('icon');p.classList.add('none');this.remove()}}")
 ICON_LOAD_JS = "if(this.naturalWidth<32){" + ICON_NEXT_JS + "}"
 
