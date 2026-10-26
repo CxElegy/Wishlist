@@ -2528,12 +2528,6 @@
   "target": 720,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/6ada5e768ea04b32a3db3c7cfd01ac05.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://nimage.newsway.co.kr/photo/2026/02/25/20260225000063_1200.jpg": {
   "w": 1200,
   "h": 870,
@@ -2597,6 +2591,12 @@
  "https://p2.bahamut.com.tw/B/2KU/86/40a9c19295c5da7cd47c0046b820td25.JPG": {
   "w": 1024,
   "h": 576,
+  "target": 1280,
+  "v": 3
+ },
+ "https://penang.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg": {
+  "w": 1200,
+  "h": 628,
   "target": 1280,
   "v": 3
  },
@@ -2811,6 +2811,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.eximg.jp/exnews/feed/Nijimen/cd/Nijimen_0000000000643046/Nijimen_0000000000643046_1.jpg": {
+  "w": 1452,
+  "h": 943,
+  "target": 720,
   "v": 3
  },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
@@ -3180,7 +3186,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026230843": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026234724": {
   "w": 640,
   "h": 450,
   "target": 1280,
@@ -3396,6 +3402,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.4PX3O4daTd0BoTCtmoCsyQ&pid=News&w=934": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6eebhV_f2jbvQzhRjnY32g&pid=News&w=1200": {
   "w": 700,
@@ -3647,12 +3659,6 @@
   "w": 690,
   "h": 460,
   "target": 720,
-  "v": 3
- },
- "https://www.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 1280,
   "v": 3
  },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
@@ -3931,12 +3937,6 @@
  "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg": {
   "w": 1000,
   "h": 600,
-  "target": 720,
-  "v": 3
- },
- "https://www.sankei.com/resizer/v2/6T3L6IPV2RNE3AZXKIWN7RU4K4.jpg?auth=9a734cf8bd1f5d36c08b1a25c61fd855dffbcd1689261c05121db6c66b823d16&quality=50&focal=827%2C838&width=1200&height=675": {
-  "w": 1200,
-  "h": 675,
   "target": 720,
   "v": 3
  },
