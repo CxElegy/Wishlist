@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-24T23:26:14+00:00",
-"text": "2026-10-25 第 1 バッチを出刊：漫威电影（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 4.7万・キャッシュ読み 51.0万・出力 2,011",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.08,
-"mem_total": 16872804352,
-"mem_free": 15920848896,
-"disk_used": 10629705728,
-"disk_free": 30653464576,
-"disk_total": 41283170304,
-"peak": 277225472
-},
-"batch": 1,
-"boards": [
-"漫威电影"
-],
-"stories": 5,
-"left": 0,
-"edited": 18,
-"run": 1792883903.2667544,
-"tok": {
-"in": 16,
-"cw": 46816,
-"cr": 510189,
-"out": 2011,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 559032,
-"secs": 472,
-"run_tok": {
-"in": 16,
-"cw": 46816,
-"cr": 510189,
-"out": 2011,
-"calls": 8,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-25T00:23:54+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1809,5 +1768,41 @@
 "calls": 21,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-26T05:41:21+00:00",
+"text": "2026-10-26 第 1 バッチを出刊：MMORPG 新作、The Mandalorian、日本顶级网球赛事、滑雪、绝区零（5 版面・14 本・残り 3 版面） · token 新規入力 5.2万・キャッシュ読み 66.8万・出力 4,077",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.26,
+"mem_total": 16872804352,
+"mem_free": 15831482368,
+"disk_used": 10676162560,
+"disk_free": 30607007744,
+"disk_total": 41283170304,
+"peak": 376369152
+},
+"batch": 1,
+"boards": [
+"MMORPG 新作",
+"The Mandalorian",
+"日本顶级网球赛事",
+"滑雪",
+"绝区零"
+],
+"stories": 14,
+"left": 3,
+"edited": 17,
+"run": 1792992926.386008,
+"tok": {
+"in": 20,
+"cw": 52078,
+"cr": 667610,
+"out": 4077,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 723785
 }
 ]

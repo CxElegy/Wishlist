@@ -63,17 +63,18 @@
   "A2O LITE": 29,
   "周杰伦": 9,
   "ILLIT": 12,
-  "日本顶级网球赛事": 8,
-  "MMORPG 新作": 1,
+  "日本顶级网球赛事": 10,
+  "MMORPG 新作": 3,
   "哈利波特剧集": 2,
   "猫用品": 4,
   "あつ森": 2,
-  "滑雪": 2,
-  "绝区零": 4,
+  "滑雪": 4,
+  "绝区零": 6,
   "Astrae Oratio": 8,
   "三星手机": 8,
   "dota2": 8,
-  "FROM": 1
+  "FROM": 1,
+  "The Mandalorian": 2
  },
  "GTA 6": [
   {
@@ -277,7 +278,9 @@
    "weight": "normal",
    "refs": [
     3,
-    4
+    4,
+    9,
+    10
    ]
   },
   {
@@ -323,6 +326,16 @@
     "label": "早期アクセス"
    },
    "image": "https://www.gamespark.jp/imgs/zoom/1209212.png"
+  },
+  {
+   "headline": "NCがMMORPG「アイオン2」のグローバル発売以後、累積成果を盛り込んだインフォグラフィックを公開",
+   "highlight": "累積成果",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    2
+   ]
   }
  ],
  "哈利波特剧集": [
@@ -399,6 +412,24 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "スキー場オープン日2026-27と宿の単価｜軽井沢10/31開幕、11→12月は白馬+60%・倶知安2倍",
+   "highlight": "軽井沢10/31開幕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "東急リゾーツ＆ステイ、2スキー場で平日子どもリフト券無料化へ",
+   "highlight": "平日子どもリフト券無料化",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
@@ -503,6 +534,26 @@
     1
    ],
    "image": "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg"
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "\"The Mandalorian\" and the Future of 'Star Wars'",
+   "highlight": "Future of 'Star Wars'",
+   "blurb": "IMDb takes a look at The Mandalorian and what it means for the future of Star Wars.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "The Mandalorian - Season 1 Recap",
+   "highlight": "Season 1 Recap",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }

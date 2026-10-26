@@ -756,12 +756,11 @@
   "target": 1280,
   "v": 3
  },
- "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
+ "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og1x1.webp": {
+  "w": 1200,
+  "h": 1200,
   "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-26"
+  "v": 3
  },
  "https://happygamer.com/wp-content/uploads/2026/10/zenless-zone-zero-drops-truvia-enemy-dossier-with-season-3-spoilers.jpg": {
   "w": 1200,
@@ -854,6 +853,12 @@
   "v": 3
  },
  "https://hobby.dengeki.com/ss/hobby/2026/10/469b052e3131133723f1851142a51ec0_iou4TnIzCZeyie9Rrw3CVkQEjcudOi4__S642FaTM9bjOmxzH2gt5OeFEjObqdu7x.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hotelbank.jp/wp-content/uploads/eyecatch-190612-auto.png": {
   "w": 1200,
   "h": 630,
   "target": 1280,
@@ -2523,6 +2528,12 @@
   ],
   "why": "看不清"
  },
+ "https://pimg.mk.co.kr/news/cms/202610/26/news-p.v1.20261026.5069ffb800714b69a5bbec41cbe36a86_R.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://platform.landgrantholyland.com/wp-content/uploads/sites/96/2026/07/reuters-tagreuters.com2026newsml_MT1USATODAY29426102475495388.jpg?quality=90&strip=all&crop=0%2C10.72592060985%2C100%2C78.5481587803&w=1200": {
   "w": 1200,
   "h": 623,
@@ -3012,7 +3023,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026132334": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026143647": {
   "w": 640,
   "h": 450,
   "target": 1280,
@@ -3403,12 +3414,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.jKLZddefChI7azwP8PJkPA&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.l96Uxxl6gZXI5S0YNVmzjw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3494,6 +3499,12 @@
  "https://www.bing.com/th?id=ONUT.zcqfu7_W0e40mFU6UMDwRw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.boardoftheworld.com/wp-content/uploads/2025/07/Capita-Dark-Horse-Review-2026.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -3791,6 +3802,12 @@
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
   "h": 899,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.switchbacktravel.com/sites/default/files/images/articles/Smith%20Level%20MIPS%20ski%20helmet%20%28close%20up%29.jpg": {
+  "w": 1198,
+  "h": 799,
   "target": 720,
   "v": 3
  },
