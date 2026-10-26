@@ -3060,7 +3060,7 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026155607": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026160137": {
   "w": 640,
   "h": 450,
   "target": 1280,
@@ -3426,19 +3426,6 @@
   "v": 3,
   "blur": 0.513,
   "local": "pics/aba9df9c13524401.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.c8b2SJqmR8v4_gXWrxrN3g&pid=News&w=1024": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.498,
-  "local": "pics/cbd660ee6e0b7e01.webp",
   "out": [
    1280,
    719
@@ -3866,6 +3853,12 @@
  "https://www.snowsportsnews.com/media/ugpjnz0j/park-city-coc.jpg?width=1200&quality=100&v=1dd6089191d7590": {
   "w": 1200,
   "h": 527,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.superdope.games/wp-content/uploads/2026/09/image-105.png": {
+  "w": 1245,
+  "h": 700,
   "target": 720,
   "v": 3
  },
