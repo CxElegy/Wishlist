@@ -2,6 +2,7 @@
 import pathlib
 import sys
 import unittest
+from unittest import mock
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
 import emblem  # noqa: E402
@@ -253,6 +254,38 @@ class Fill(unittest.TestCase):
 
 class Requests(unittest.TestCase):
     """管理ページの 替える・固定・外す（boards.config.emblem_requests）→ apply_requests。"""
+    def setUp(self):
+        import emblem_fill
+        self.looks = {"A": "00ff00ff00ff00ff", "B": "0f0f0f0f0f0f0f0f", "C": "123456789abcdef0"}   # 絵の鍵（本物は絵を取り直して測る。ここでは網に出ない）
+        p = mock.patch.object(emblem_fill, "look_of", lambda x: self.looks.get(x.get("subject")))
+        p.start()
+        self.addCleanup(p.stop)
+
+    def test_looks_of_all_requests_in_one_run_are_kept(self):
+        """同じ回の複数の依頼：外した絵の鍵が全員分残る（前の鍵も消さない・重複なし）。"""
+        c = self.cfg()
+        c["emblem_reject_look"] = ["aaaaaaaaaaaaaaaa", self.looks["A"]]
+        c["emblem_requests"] = [{"_emblem_swap": [{"image": "https://x/a.webp"}]}, {"_emblem_swap": [{"image": "https://x/b.webp"}]},
+                                {"_emblem_reject": [{"image": "https://x/c.webp"}]}]
+        add = le.apply_requests(c)
+        self.assertEqual(add["emblem_reject_look"], ["aaaaaaaaaaaaaaaa", self.looks["A"], self.looks["B"], self.looks["C"]])
+        self.assertEqual(add["emblem_redo"], ["A", "B"])
+
+    def test_rejected_look_reaches_the_candidate_check(self):
+        """お客さまの版面：外した絵は board_item を通って emblem_fill.check まで届き、別 URL・別サイズの同じ絵は落ち、別の絵は残る。"""
+        import emblem_fill
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+        from test_emblem_reject_look import picture, png
+        a = picture(1)
+        b = {"id": 1, "name": "X", "config": {"emblem_reject_look": [emblem_fill.look_hex(a)], "emblem_state": {"state": "ok", "v": le.RULES}}}
+        it = le.board_item(b, {"section": "运动", "subs": {}}, lambda p: {"entities": {}})
+        self.assertEqual(it["emblem_reject_look"], [emblem_fill.look_hex(a)])
+        pics = {"https://cdn/other.png": png(a), "https://cdn/small.png": png(a.resize((200, 250))), "https://cdn/diff.png": png(picture(2))}
+        cands = [{"subject": "X", "image": u, "source": "t", "why": ""} for u in pics]
+        with mock.patch.object(emblem_fill, "_get", side_effect=lambda u, *a, **k: pics[u]):
+            kept = [c["image"] for c in emblem_fill.check(cands, log=lambda *x: None, reject_looks=emblem_fill.reject_looks(it))]
+        self.assertEqual(kept, ["https://cdn/diff.png"])
+
     def cfg(self):
         return {"emblem": [{"image": "https://x/a.webp", "source": "https://s/a.jpg", "subject": "A"},
                            {"image": "https://x/b.webp", "source": "https://s/b.jpg", "subject": "B"},

@@ -1454,20 +1454,9 @@ def _reject_marks(marks):
 
 
 def _look_hex(x):
-    """外す小元素の絵の見た目の鍵（emblem_fill.look_hex）。元の画像（source）を取り直して測る（候補は元の画像のまま測るので、切り抜きの webp とは別）。
-    取れなければ倉庫の webp で。どちらもだめなら None（URL だけの reject になる）。"""
-    import emblem
+    """外す小元素の絵の見た目の鍵（emblem_fill.look_of）。"""
     import emblem_fill
-    try:
-        if re.match(r"https?://", str(x.get("source") or "")):
-            return emblem_fill.look_hex(emblem.inspect(emblem._get(x["source"], 6_000_000))[2])
-    except Exception:
-        pass
-    try:
-        from PIL import Image
-        return emblem_fill.look_hex(Image.open(emblem.EMB_DIR / str(x.get("image")).split("/", 1)[1]))
-    except Exception:
-        return None
+    return emblem_fill.look_of(x)
 
 
 def reject_emblems(text, name, marks, swap=False):
