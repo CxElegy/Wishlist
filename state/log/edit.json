@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-25T01:38:21+00:00",
-"text": "2026-10-25 第 4 バッチを出刊：dota2（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 644・キャッシュ読み 7.4万・出力 433",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.62,
-"mem_total": 16872804352,
-"mem_free": 16041615360,
-"disk_used": 10683678720,
-"disk_free": 30599491584,
-"disk_total": 41283170304,
-"peak": 206155776
-},
-"batch": 4,
-"boards": [
-"dota2"
-],
-"stories": 1,
-"left": 0,
-"edited": 19,
-"run": 1792891320.045724,
-"tok": {
-"in": 2,
-"cw": 642,
-"cr": 73669,
-"out": 433,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 74746,
-"secs": 981,
-"run_tok": {
-"in": 30,
-"cw": 46001,
-"cr": 1000250,
-"out": 3433,
-"calls": 15,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-25T02:39:02+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1813,5 +1772,37 @@
 "calls": 20,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-26T08:07:54+00:00",
+"text": "2026-10-26 第 1 バッチを出刊：ILLIT（1 版面・8 本・残り 5 版面） · token 新規入力 4.7万・キャッシュ読み 71.5万・出力 2,314",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.78,
+"mem_total": 16872804352,
+"mem_free": 15908278272,
+"disk_used": 10693529600,
+"disk_free": 30589640704,
+"disk_total": 41283170304,
+"peak": 268877824
+},
+"batch": 1,
+"boards": [
+"ILLIT"
+],
+"stories": 8,
+"left": 5,
+"edited": 19,
+"run": 1793001705.7510927,
+"tok": {
+"in": 22,
+"cw": 46573,
+"cr": 715302,
+"out": 2314,
+"calls": 11,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 764211
 }
 ]

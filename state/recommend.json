@@ -45,6 +45,7 @@
   "https://prtimes.jp/main/html/rd/p/000001247.000012048.html": "https://prcdn.freetls.fastly.net/release_image/12048/1247/12048-1247-64977d38e7992af398fbe6cd29e05b7d-1415x2000.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://realsound.jp/2026/10/post-2563729.html": "https://realsound.jp/wp-content/uploads/2026/10/20261025-isee-99.jpeg",
   "https://realsound.jp/2026/10/post-2564383.html": "https://realsound.jp/wp-content/uploads/2026/10/20261026-tbsq-99.jpeg",
+  "https://sports.khan.co.kr/article/202610261500003": "https://images.khan.co.kr/article/2026/10/26/news-p.v1.20261026.6e82a528d1954ed38f2717f04901c630_P1.jpg",
   "https://sports.yahoo.co.jp/video/player/28425195": "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-c5107fb3cab563f904aec69918eb1145/images/3acfc4e9-5472-4205-a25a-9618be6633c1.jpg",
   "https://sunmedia.tw/news/technology/1792537601-%E9%9B%BB%E7%8E%A9%E7%88%86%E6%96%99%E8%80%85%E6%B4%A9%E9%9C%B2%E3%80%8A%E9%AD%94%E6%88%92%E3%80%8B%E6%96%B0%E9%81%8A%E6%88%B2%E6%83%85%E5%A0%B1%E3%80%80%E6%9C%89%E6%9C%9B%202027%20%E5%B9%B4%E6%8E%A8%E5%87%BA%E9%96%8B%E6%94%BE%E4%B8%96%E7%95%8C%20RPG": "https://image.sunmedia.tw/banners/7601c2fa-e258-4915-9a3b-1b416d1c0870.jpeg",
   "https://t.co/Lbpa1JeJE2": "https://i.ytimg.com/vi/k8gGlojJQn8/maxresdefault.jpg?v=6addc4e7",
@@ -68,7 +69,6 @@
   "https://www.msn.com/en-us/entertainment/general/zenless-zone-zero-official-version-3-4-void-hunter-enchainer-agent-sunbringer-trailer/vi-AA2fZIiP": "https://www.bing.com/th?id=ONUT.y1DykR_-3YQyGw2CIxtK5g&pid=News&w=1200",
   "https://www.msn.com/en-us/entertainment/tv/moff-gideon-s-cloning-agenda-in-the-mandalorian/vi-AA1RDmv2": "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200",
   "https://www.msn.com/ja-jp/technology/%E5%85%A8%E8%88%AC/%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88-%E3%81%8C%E5%85%A8%E5%9B%BD%E5%88%9D%E3%83%95%E3%83%A9%E3%82%A4%E3%83%88%E3%81%A7%E9%95%B7%E5%B4%8E%E7%A9%BA%E6%B8%AF%E3%81%AB-%E4%BA%BA%E6%B0%97%E6%BC%AB%E7%94%BB%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%AE%E6%A9%9F%E4%BD%93%E3%81%AB%E5%B1%95%E6%9C%9B%E3%83%87%E3%83%83%E3%82%AD%E3%81%AF400%E4%BA%BA%E8%B6%85%E3%81%AE%E3%83%95%E3%82%A1%E3%83%B3-%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%81%A8%E4%B8%80%E7%B7%92%E3%81%AB%E6%92%AE%E3%82%8C%E3%81%9F%E3%82%89/ar-AA2fyBxF": "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640",
-  "https://www.nc.press/news/articleView.html?idxno=629390": "https://cdn.nc.press/news/photo/202610/629390_866523_1030.jpg",
   "https://www.pocketgamer.com/bleach-mirrors-high/original-cost-unveiled/": "https://www.bing.com/th?id=ONUT.qGYJAS6mikmGqlfcHZws8A&pid=News&w=820",
   "https://www.right-media.news/archives/240457": "https://www.right-media.news/wp-content/uploads/2026/10/FotoJet191.jpg",
   "https://www.sankei.com/article/20261025-OLETXYVU6FK6NCP23TRABVKBPA/": "https://www.sankei.com/resizer/v2/6T3L6IPV2RNE3AZXKIWN7RU4K4.jpg?auth=9a734cf8bd1f5d36c08b1a25c61fd855dffbcd1689261c05121db6c66b823d16&quality=50&focal=827%2C838&width=1200&height=675",
@@ -968,6 +968,27 @@
   },
   {
    "batch": 1,
+   "because": "ILLIT",
+   "date": "2026-10-26",
+   "hits": [],
+   "image": "https://images.khan.co.kr/article/2026/10/26/news-p.v1.20261026.6e82a528d1954ed38f2717f04901c630_P1.jpg",
+   "kind": "board",
+   "liked": "李沅禧出席香奈儿活动",
+   "score": 8,
+   "source": "스포츠경향",
+   "taste": [
+    [
+     "作品:ILLIT",
+     6
+    ]
+   ],
+   "title": "아일릿, ‘여경 성적 대상화’ 논란에 입 열었다…“보여줄 스타일링 많아”",
+   "url": "https://sports.khan.co.kr/article/202610261500003",
+   "words": [],
+   "work": "ILLIT"
+  },
+  {
+   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-10-26",
    "hits": [],
@@ -1051,7 +1072,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 1,
+   "batch": 2,
    "because": "绝区零",
    "date": "2026-10-25",
    "hits": [],
@@ -1172,7 +1193,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "三星手机",
    "date": "2026-10-24",
    "hits": [
@@ -1269,27 +1290,6 @@
     "starbucks"
    ],
    "work": "gelato pique"
-  },
-  {
-   "batch": 3,
-   "because": "ILLIT",
-   "date": "2026-10-24",
-   "hits": [],
-   "image": "https://cdn.nc.press/news/photo/202610/629390_866523_1030.jpg",
-   "kind": "board",
-   "liked": "李沅禧出席香奈儿活动",
-   "score": 8,
-   "source": "뉴스컬처",
-   "taste": [
-    [
-     "作品:ILLIT",
-     6
-    ]
-   ],
-   "title": "아일릿, '어장관리남' 정조준…'체포하겠어' MV 티저 속 발칙한 카타르시스",
-   "url": "https://www.nc.press/news/articleView.html?idxno=629390",
-   "words": [],
-   "work": "ILLIT"
   },
   {
    "batch": 3,
@@ -2065,11 +2065,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
