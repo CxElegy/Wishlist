@@ -208,6 +208,21 @@ class Rules(unittest.TestCase):
             got = ef.check(cands, log=lambda *_: None, need_face=True, strict=True)
         self.assertEqual([c["image"] for c in got], ["http://hptv"])
 
+    def test_is_remake(self):
+        # 原作が同じ別の映像作品がある剧だけ作り直し（哈利波特剧集）。FROM は前の映画がないので外さない
+        from unittest import mock
+        ent = lambda **c: {"entities": {k: {"claims": v} for k, v in c.items()}}
+        cl = lambda p, q: {p: [{"mainsnak": {"datavalue": {"value": {"id": q}}}}]}
+        tbl = {"QHP": ent(QHP=cl("P144", "QBOOK")), "QBOOK": ent(QBOOK=cl("P4969", "QFILM")),
+               "QFROM": ent(QFROM={}), "QF2": ent(QF2=cl("P144", "QB2")), "QB2": ent(QB2=cl("P4969", "QF2"))}
+        ef._REMAKE.clear()
+        with mock.patch.object(ef, "_wd_get", side_effect=lambda p: tbl[p["ids"]]):
+            self.assertTrue(ef.is_remake({"wikidata": "QHP"}))
+            self.assertFalse(ef.is_remake({"wikidata": "QFROM"}))
+            self.assertFalse(ef.is_remake({"wikidata": "QF2"}))   # 原作の派生が自分だけ
+            self.assertFalse(ef.is_remake({}))
+        ef._REMAKE.clear()
+
     def test_faceless_scrap(self):
         # 写真の切り抜きに顔がなく横長 = 髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）は外す。顔のない縦長の兜は残す
         from unittest import mock

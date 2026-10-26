@@ -1158,6 +1158,30 @@ def work_since(item):
     return _SINCE[q]
 
 
+_REMAKE = {}
+
+
+def is_remake(item):
+    """作り直しの剧か：Wikidata で原作（P144）が同じ別の映像作品（原作の P4969）がある（哈利波特剧集＝映画 8 本と同じ原作）。
+    前の映画のない剧（FROM・The Mandalorian）は作品の動画・役の記事の画像も本人なので untied で外さない。読めないときは False（外さない）。"""
+    q = item.get("wikidata")
+    if not q:
+        return False
+    if q not in _REMAKE:
+        try:
+            c = _wd_get({"action": "wbgetentities", "ids": q, "props": "claims"})["entities"][q]["claims"]
+            src = [s["mainsnak"]["datavalue"]["value"]["id"] for s in c.get("P144", []) if s["mainsnak"].get("datavalue")]
+            n = 0
+            if src:
+                d = _wd_get({"action": "wbgetentities", "ids": "|".join(src[:5]), "props": "claims"})["entities"]
+                n = sum(1 for e in d.values() for s in e.get("claims", {}).get("P4969", [])
+                        if s["mainsnak"].get("datavalue") and s["mainsnak"]["datavalue"]["value"]["id"] != q)
+            _REMAKE[q] = n > 0
+        except Exception:
+            return False
+    return _REMAKE[q]
+
+
 def anchor_rows(api, actor):
     """出演者本人の写真（本人確認の基準）：Fandom の出演者の記事の代表画像、なければ Wikidata P18。→ [(画像, ページ)]"""
     if api:
@@ -1256,6 +1280,7 @@ def gather_roles(item, log=print, tried=None):
     # 動画の題名は英語のことが多いので、作品名は英語版の記事名（「Harry Potter (TV series)」→ Harry Potter）。なければ関注項の名前
     work_en = re.sub(r"\s*\(.*?\)", "", wiki_titles(item).get("en", "")) or name
     since = work_since(item)
+    remake = is_remake(item)
     cands = []
     for actor in subjects(item, "character", rule(item)[3]):
         _check_time()
@@ -1291,7 +1316,7 @@ def gather_roles(item, log=print, tried=None):
                     cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "役の記事",
                                   "why": f"{role}（{actor}）：Fandom の役の記事の{'代表画像' if r.get('infobox') else '剧照'}",
                                   "license": "", "trust_noface": bool(r.get("infobox")), "title": r.get("title", ""),
-                                  "untied": not tied(r["image"], actor, work_en, since)})
+                                  "untied": remake and not tied(r["image"], actor, work_en, since)})
             except Exception as e:
                 log(f"  [役の記事] {role}：{e}")
         try:   # 作品の動画の場面（題名に作品名と役名）。役がわからないときは探さない（出演者名だとインタビューばかり）
@@ -1300,7 +1325,7 @@ def gather_roles(item, log=print, tried=None):
             for r in rows:
                 cands.append({"subject": subj, "image": r["image"], "page": r["page"], "source": "作品の動画の場面",
                               "why": f"{role or actor}（{actor}）：作品の動画の場面", "license": r.get("license", ""),
-                              "untied": not tied(f"{r['image']} {r.get('title', '')}", actor, work_en, since)})
+                              "untied": remake and not tied(f"{r['image']} {r.get('title', '')}", actor, work_en, since)})
         except Exception as e:
             log(f"  [動画] {role or actor}：{e}")
     if api:   # 作品の記事の剧照を顔で出演者に（ファイル名に役名がない：哈利波特剧集の HBO Max Still）
@@ -2056,7 +2081,7 @@ def off_roster(item, log=print):
 def untied_roles(item, log=print):
     """実写の版面の前からの小元素のうち、役の記事・作品の動画から取ったもので（tied でない）、出演者の顔の基準もないもの（本人と確かめられない）を外す。
     哈利波特剧集 Padma Patil（Anjula Murali）：役の記事の代表画像＝映画の Padma（Afshan Azad）。→ 外した枚数。"""
-    if not live_action(item) or face_id.engine() is None:
+    if not live_action(item) or face_id.engine() is None or not is_remake(item):
         return 0
     api = fandom_api(item)
     work = re.sub(r"\s*\(.*?\)", "", wiki_titles(item).get("en", "")) or item["name"]
