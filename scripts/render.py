@@ -1241,6 +1241,7 @@ def _body_len(alts):
             b.append(round(max(leg, b[4] / ratio) if b[4] / leg > ratio * BODY_CROUCH else leg, 3))
 
 
+EMB_TOP = 12   # 版面の顔に出す小元素の数の下限（これか集まった枚数の 2 割の多いほう）。開いて最初に出る 1 枚は EMB_JS が上位 3 人から
 WIDE_LOGO = 0.5   # ロゴの 高さ÷幅 がこれ未満 = 横長の文字のロゴ。高さでそろえると字が小さすぎる（The Mandalorian）ので幅で大きく
 
 
@@ -1292,6 +1293,7 @@ def _emblem(items, ring="accent"):
         if x.get("plate"):   # 濃い地の板ごとのタイトルロゴ：カードの窓で切らず、板そのものに枠
             a["plate"] = True
         alts.append(a)
+    alts = alts[:max(EMB_TOP, -(-len(alts) // 5))]   # 版面の顔に出すのは「知られている順」の上位だけ（並びは名簿の順）。脇役は管理ページの一覧に残る
     _body_len(alts)
     if not alts:
         return ""
@@ -1707,7 +1709,7 @@ EMB_JS = """
     let alts = []; try { alts = JSON.parse(el.dataset.alts || '[]'); } catch (_) {}
     const inner = el.querySelector('.emb-in'), img = el.querySelector('img');
     if (alts.length > 1 && inner && img) {
-      const a = alts[Math.floor(Math.random() * alts.length)];
+      const a = alts[Math.floor(Math.random() * Math.min(alts.length, 3))];   // 最初に出る 1 枚は知られている順の 1〜3 位から
       const n = img.cloneNode(); n.src = a.src;
       const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));   // render.CARD_AR：カードと比率が離れたら切らない
       n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
