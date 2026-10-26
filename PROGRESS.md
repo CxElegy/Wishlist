@@ -72,3 +72,4 @@
 - 2026-10-26 GTA 6 が 19/27 で止まる：fill_one が失敗の理由に「画像のない人 N」を数える · https://github.com/CxElegy/Wishlist/pull/432 · 本番 retry_now 回で画像のない人 8（+0、残り 4 人は確かでない取り方）· ux_check の ✗ は既存（E1 3・E2 429・E11）· 次：確かでない取り方 4 人
 - 2026-10-26 GTA 6 の残り 4 人：確かでない取り方の候補（ゲバラ写真・公式宣伝画像）は名前がなく、画像のない人に数える（emblem_fill._named_in）· PR 待ち · 本番の回で札に「全員が画像のない人」を確かめる
 - 2026-10-26 小元素の残り ✗（別の目の指摘 4）：E1 は library_emblem が RULES 7 の 24 時間待ちで飛ばしていた → RULES 8 で本番の emblem_who が入った（YOASOBI 2・Mrs. GREEN APPLE 6・BTS 7、有 1・1・6）· E4 は顔のアップを --k の分戻して測る（Fennec・Dre'Quan）· E10 は残り 1 枚を除く · https://github.com/CxElegy/Wishlist/pull/436 · 本番 ux_check guest 1400/390：E4 0、残り E10 5・E11 2 · 次：後台の回のあと E11 2 と E10 5、test-a/b/c の full
+- 2026-10-26 小元素 E1・E11 の確かめ：E1 はページの遅れ・E11 は後台の落ち（#437）が原因で、規則は変えず。#440：候補が尽きた版面を exhausted（24 時間おき・ux_check E10 は情報）、PLAYBOOK 44・45。本番 ux_check 4 人×2 幅：test-a/b/c ✗0、guest E10 だけ。次：E10（GTA 6・漫威电影・Vaundy・BLEACH・FROM）
