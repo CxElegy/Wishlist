@@ -472,7 +472,7 @@ button{font-family:inherit}
 .lk{position:absolute;inset:0;z-index:1}  /* 原文链接 = 卡片全体を覆う透明な層 */
 .lk:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 :is(.card,.top,.wc) :not(.lk,.vt,.vt *,.startgo){pointer-events:none}  /* クリックは必ず .lk か 👍/👎 に届く */
-:is(.card,.top,.wc) :is(.vt,.vt *){pointer-events:auto}  /* pointer-events は継承されるので明示的に戻す */
+:is(.card,.top,.wc) :is(.vt,.vt *,.startgo){pointer-events:auto}  /* pointer-events は継承されるので明示的に戻す */
 /* 👍/👎 = 日付の行の右端に置く小さな印。普段は線の拇指だけ（枠なし）、押すと「NEW」と同じ塗りの札になる */
 .vt,.vote>span{--vc:var(--ac,var(--ink));--vt:var(--bg,var(--card));--vf:var(--fg,var(--ink));display:inline-flex;align-items:center;gap:2px;flex:none}
 .vt{position:absolute;right:-6px;top:0;height:var(--vth,28px);padding:0 4px 0 12px;z-index:2;font-size:0;cursor:default;-webkit-tap-highlight-color:transparent;touch-action:manipulation}  /* 周りの余白も按钮区：按偏了也不会打开原文 */

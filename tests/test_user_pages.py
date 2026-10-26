@@ -349,3 +349,5 @@ class ZeroShellRendered(unittest.TestCase):
         css = pathlib.Path(render.__file__).read_text(encoding="utf-8")
         m = re.search(r":is\(\.card,\.top,\.wc\) :not\(([^)]*)\)\{pointer-events:none\}", css)
         self.assertTrue(m and ".startgo" in m.group(1))
+        # pointer-events は継承される：親の .ptxt が none なので、.startgo に auto を明示しないと子の自分も押せない（#545 の取りこぼし）
+        self.assertRegex(css, r":is\(\.card,\.top,\.wc\) :is\([^)]*\.startgo[^)]*\)\{pointer-events:auto\}")
