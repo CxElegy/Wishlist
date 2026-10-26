@@ -27,3 +27,24 @@ class CheckArchTest(unittest.TestCase):
         ok, msg = check_arch.check(["scripts/render.py"], "修错字\n架构图：不用改（只改注释）")
         self.assertTrue(ok)
         self.assertIn("只改注释", msg)
+
+    def test_wrong_place_fails(self):
+        # #380：progress.yml と before_after を変え、library の絵だけ書いた
+        place = ({".github/workflows/progress.yml": {"progress"}}, {"library"})
+        ok, msg = check_arch.check([".github/workflows/progress.yml", "scripts/processes.py"], "", place)
+        self.assertFalse(ok)
+        self.assertIn("progress", msg)
+
+    def test_right_place_passes(self):
+        place = ({".github/workflows/progress.yml": {"progress"}}, {"progress", "library"})
+        self.assertTrue(check_arch.check([".github/workflows/progress.yml", "scripts/processes.py"], "", place)[0])
+
+    def test_unowned_file_and_skip(self):
+        self.assertTrue(check_arch.check(["scripts/x.py", "scripts/processes.py"], "", ({}, {"a"}))[0])
+        place = ({"scripts/x.py": {"a"}}, {"b"})
+        self.assertTrue(check_arch.check(["scripts/x.py", "scripts/processes.py"], "架构图：不用改（理由）", place)[0])
+
+    def test_place_info_on_real_file(self):
+        owners, changed = check_arch.place_info("HEAD")
+        self.assertIn("progress", owners.get(".github/workflows/progress.yml", set()))
+        self.assertEqual(changed, set())
