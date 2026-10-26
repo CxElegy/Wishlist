@@ -1432,7 +1432,7 @@ def delete_item(text, name):
 
 
 EMBLEM_REJECT_MAX = 50   # 1 回の依頼で外せる小元素の数（管理ページの「違う」は版面ごとに 1 件の依頼にまとめて送る）
-EMBLEM_KEYS = ("_emblem_reject", "_emblem_swap", "_emblem_lock")   # 管理ページ「小元素」の依頼（submit_item の edit の config）
+EMBLEM_KEYS = ("_emblem_reject", "_emblem_swap", "_emblem_lock", "_emblem_cands", "_emblem_pick")   # 管理ページ「小元素」の依頼（submit_item の edit の config）
 EMBLEM_REJECT_KEEP = 1000   # 理由の記録（state/emblem_rejects.json）に残す件数
 
 
@@ -1569,6 +1569,9 @@ def take_item_requests():
                     gone += g
                 if "_emblem_lock" in cfg:
                     new = lock_emblems(new, name, cfg["_emblem_lock"])
+                if "_emblem_cands" in cfg or "_emblem_pick" in cfg:   # 候補から選ぶ：集める依頼・選んだ候補（入れ替えは次の後台の頭、emblem_cands.run_shop）
+                    import emblem_cands
+                    emblem_cands.queue(name, cfg)
                 got = (yaml.safe_load(new) or {}).get("items") or []
                 assert [i for i in got if i.get("name") != name] == [i for i in items if i.get("name") != name], "别的关注项被改动了"
                 text, items = new, got
@@ -2445,7 +2448,11 @@ def backend_cells(items, rows, latest, run):
                        and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]   # 全部（表の行は先頭だけ、「小元素の探し方」を開くと全部）
         r["emblems"] = [{"image": x["image"], "subject": x.get("subject") or "", "why": x.get("why") or "", "lock": bool(x.get("lock"))}
                         for x in item.get("emblem") or [] if isinstance(x, dict)
-                        and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]   # 管理ページ「小元素」の大きい写真（名前・取り方・固定）
+                        and re.fullmatch(r"https?://\S+|emblems/[a-z0-9-]+\.webp", str(x.get("image") or ""))]
+        import emblem_cands
+        cv = emblem_cands.view(emblem_cands.load(), name, r["emblems"])   # 候補から選ぶ：並んだ候補・集め中
+        for x in r["emblems"]:
+            x.update(cv[x["image"]])   # 管理ページ「小元素」の大きい写真（名前・取り方・固定）
 
 
 def _next_slot(after, slots):
