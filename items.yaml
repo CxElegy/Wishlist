@@ -1625,7 +1625,7 @@ items:
     subs: {scene: K-POP, form: グループ}   # 小分類（分け方ごと。sections.yaml、目次の札。必ず全部の分け方を書く）
     icon: {image: "icons/a2o-lite.webp", kind: person, why: "グループ：Spotify のアーティスト写真", source: "https://open.spotify.com/artist/0Vkn28k7P4K95Ce3knN0hQ"}   # 目次のアイコン（1 作品 1 枚、CLAUDE.md「目次のアイコン」）
     emblem_kind: group   # 小元素の種類（scripts/emblem_fill.py）
-    emblem_reject: ["https://i.ytimg.com/vi/fdQw9DapCWI/hq2.jpg", "https://i.ytimg.com/vi/3hUPgNRotSg/hq2.jpg", "https://i.ytimg.com/vi/MmuU2he4yaU/hq2.jpg", "https://i.ytimg.com/vi/65I3Lk7Zht8/hq2.jpg", "https://i.ytimg.com/vi/c1eoCyLNUIg/hq3.jpg", "https://i.ytimg.com/vi/eB6vt-ne3A4/hq2.jpg", "https://i.ytimg.com/vi/pbmb_TsEugU/hq2.jpg", "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/15/30001093689_16v9.jpg"]   # 目で見て・検査で外した画像。自動補完は選ばない
+    emblem_reject: ["https://i.ytimg.com/vi/fdQw9DapCWI/hq2.jpg", "https://i.ytimg.com/vi/3hUPgNRotSg/hq2.jpg", "https://i.ytimg.com/vi/MmuU2he4yaU/hq2.jpg", "https://i.ytimg.com/vi/65I3Lk7Zht8/hq2.jpg", "https://i.ytimg.com/vi/c1eoCyLNUIg/hq3.jpg", "https://i.ytimg.com/vi/eB6vt-ne3A4/hq2.jpg", "https://i.ytimg.com/vi/pbmb_TsEugU/hq2.jpg", "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/15/30001093689_16v9.jpg", "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Walter_De_Vora_-_FC_Wacker_Innsbruck_%281%29.jpg/500px-Walter_De_Vora_-_FC_Wacker_Innsbruck_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Rada_Djuricin_2018.jpg/500px-Rada_Djuricin_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"]
     emblem_who: ["YOUNG", "HIMEKI", "VORA", "XILI", "RADA", "MERCI", "AYUNE", "OA", "AIJING"]   # 集める対象（メンバー・キャラ・出演者）
     motif: idol          # 版面テーマ（templates/index.yaml・TEMPLATES.md）：新人ガールズグループ
     emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準
@@ -1633,8 +1633,6 @@ items:
       - {subject: "XILI", why: "XILI（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-xili.webp", source: "https://i.ytimg.com/vi/CaTWuXOqWrE/hq3.jpg", page: "https://www.youtube.com/watch?v=CaTWuXOqWrE", shape: "cutout"}
       - {subject: "AYUNE", why: "AYUNE（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-ayune.webp", source: "https://i.ytimg.com/vi/fdQw9DapCWI/hq1.jpg", page: "https://www.youtube.com/watch?v=fdQw9DapCWI", shape: "cutout"}
       - {subject: "YOUNG", why: "YOUNG（YouTube の動画のサムネイル）", image: "emblems/a2o-lite-young.webp", source: "https://i.ytimg.com/vi/DQ6deVtlp4E/hq2.jpg", page: "https://www.youtube.com/watch?v=DQ6deVtlp4E", shape: "cutout", fs: 0.327}
-      - {subject: "VORA", why: "VORA（作品名つきの Commons）", image: "emblems/a2o-lite-vora.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Walter_De_Vora_-_FC_Wacker_Innsbruck_%281%29.jpg/500px-Walter_De_Vora_-_FC_Wacker_Innsbruck_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Walter_De_Vora_-_FC_Wacker_Innsbruck_(1).jpg", shape: "cutout"}
-      - {subject: "RADA", why: "RADA（作品名つきの Commons）", image: "emblems/a2o-lite-rada.webp", source: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Rada_Djuricin_2018.jpg/500px-Rada_Djuricin_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", page: "https://commons.wikimedia.org/wiki/File:Rada_Djuricin_2018.jpg", shape: "cutout"}
     theme: {bg: "#FBEFF4", fg: "#1E1A18", accent: "#B5285F", alt_bg: "#1E1218", alt_fg: "#F4EEE4", alt_accent: "#F07AA8", split: true}  # 自选：ネオンピンク + 墨紫（デビュー曲「NEON」）
     type: product
     section: "演出"
@@ -1649,3 +1647,4 @@ items:
       - "(A2O LITE).{0,30}(セール|特價|特价|折扣|降價|降价|sale|値下げ|半額|半价)"
       - "(A2O LITE).{0,30}(コラボ|联名|聯名|限定|collab)"
     notes: "2026-10-16 从网页设置页加进来的。关注：新品、新款发售、降价、促销、联名、限定款。"
+    emblem_redo: ["VORA", "RADA"]
