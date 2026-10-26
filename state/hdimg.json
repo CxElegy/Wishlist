@@ -1546,6 +1546,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/26/5619207_2.jpg": {
+  "w": 800,
+  "h": 1069,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg": {
   "w": 800,
   "h": 588,
@@ -3149,6 +3155,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026222905": {
+  "w": 640,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.383
+ },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
   "h": 225,
@@ -3359,6 +3372,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.6eebhV_f2jbvQzhRjnY32g&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3378,37 +3397,11 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.6yV0nhpcJFR2WHAzYdQ_-A&pid=News&w=500": {
-  "w": 500,
-  "h": 281,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.476,
-  "local": "pics/ce5fc0a43aff4617.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.906XEyT31Bfd-JCzL8GKLA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.BFsT2cviS5z3NEOtrXqLcw&pid=News&w=800": {
-  "w": 700,
-  "h": 409,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.495,
-  "local": "pics/70c1c5717f098043.webp",
-  "out": [
-   1280,
-   748
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
@@ -3461,6 +3454,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.IPAT_lx6FNfuMwr6najMfw&pid=News&w=1200": {
+  "w": 700,
+  "h": 305,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Ig_Fk64GSqNj2vKTyOlyUw&pid=News&w=700": {
   "w": 700,
   "h": 518,
@@ -3479,6 +3478,12 @@
    732
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.Qma6xnRBrNhs2zlH7SvOvA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.UKV_ApYouzJkc9fq-plfSQ&pid=News&w=600": {
   "w": 600,
@@ -3531,12 +3536,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.hGCujZSCvNQ4dTRcJtSNHA&pid=News&w=1024": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.l4a_AZxWa4cpg5NhlSeyPA&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -3555,13 +3554,6 @@
    720
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.mgRA6CsgTMQsdFtE2ho-Tw&pid=News&w=640": {
-  "w": 640,
-  "h": 450,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.407
  },
  "https://www.bing.com/th?id=ONUT.n4DO9aIfoU1RaS4mfOLp7Q&pid=News&w=1200": {
   "w": 700,
@@ -3598,12 +3590,6 @@
  "https://www.bing.com/th?id=ONUT.qGYJAS6mikmGqlfcHZws8A&pid=News&w=820": {
   "w": 700,
   "h": 350,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.ttZSM_3lyjCg2xt52KKo9Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 390,
   "target": 720,
   "v": 3
  },
