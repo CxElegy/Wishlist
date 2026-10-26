@@ -448,6 +448,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.mos.cms.futurecdn.net/JJUXJNug7549JTRVW9fSjA-2000-80.jpg": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.physiciansweekly.com/wp-content/uploads/2026/10/iStock-1445377245-modified-06da5fcb-206e-4164-8cff-b29e4a7f136f.jpg": {
   "w": 1913,
   "h": 957,
@@ -604,12 +610,6 @@
   "w": 2000,
   "h": 1125,
   "target": 1280,
-  "v": 3
- },
- "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-test-screening-reactions-praise-doctor-doom-as-one-of-the-mcus-best-villains-ab230632.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
   "v": 3
  },
  "https://comicbookmovie.com/images/articles/banners/before-hbos-harry-potter-series-arrives-the-films-get-a-bigger-art-book-with-fantastic-beasts-added-ab230566.jpg": {
@@ -824,16 +824,16 @@
   "target": 720,
   "v": 3
  },
+ "https://hawk.live/storage/images/posts/gorgc-recalled-story-miracle-25387.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://hawk.live/storage/images/posts/maelstorm-reflects-atf-transfer-team-yandex-25291.jpg": {
   "w": 1200,
   "h": 628,
   "target": 1280,
-  "v": 3
- },
- "https://hawk.live/storage/images/posts/malr1ne-names-best-mid-laners-matchmaking-25264.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 720,
   "v": 3
  },
  "https://hawk.live/storage/images/posts/meepo-removed-dota-2-25143.jpg": {
@@ -1027,12 +1027,6 @@
  "https://image.news.livedoor.com/newsimage/stf/2/2/2210b_1604_5c184691_2e0e0ff2.jpg": {
   "w": 1200,
   "h": 842,
-  "target": 720,
-  "v": 3
- },
- "https://image.news.livedoor.com/newsimage/stf/8/7/87e1f_760_2485651_20261012_195457_size640wh_65767024.jpg": {
-  "w": 452,
-  "h": 640,
   "target": 720,
   "v": 3
  },
@@ -1563,6 +1557,12 @@
   "w": 1200,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://img.ltn.com.tw/Upload/ent/page/800/2026/10/26/5619207_2.jpg": {
+  "w": 800,
+  "h": 1069,
+  "target": 1280,
   "v": 3
  },
  "https://img.ltn.com.tw/Upload/news/600/2026/10/26/php39DAMT.jpg": {
@@ -2977,6 +2977,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.sanyonews.jp/image/article/size1/3/e/8/4/3e84c1f4e13b217a1409e48ea6608889_1.jpg": {
+  "w": 452,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://static.sanyonews.jp/image/article/size1/3/f/f/2/3ff24c261a165613c93a74b121b9b124_1.jpg": {
   "w": 640,
   "h": 426,
@@ -3168,12 +3174,12 @@
   "target": 1280,
   "v": 3
  },
- "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261026235711": {
+ "https://stqnq5ux4599.edge.naverncp.com/data2//content/image/2026/09/23/.cache/512/20260923500469.jpg?v=20261027003005": {
+  "w": 640,
+  "h": 450,
   "target": 1280,
   "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-26"
+  "blur": 0.383
  },
  "https://straightpress.jp/wp-content/uploads/2026/10/sato202610210700-300x225.jpg": {
   "w": 300,
@@ -3385,12 +3391,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.4PX3O4daTd0BoTCtmoCsyQ&pid=News&w=934": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6eebhV_f2jbvQzhRjnY32g&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3415,25 +3415,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.906XEyT31Bfd-JCzL8GKLA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.BFsT2cviS5z3NEOtrXqLcw&pid=News&w=800": {
-  "w": 700,
-  "h": 409,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.495,
-  "local": "pics/70c1c5717f098043.webp",
-  "out": [
-   1280,
-   748
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
@@ -3511,6 +3492,12 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
+ "https://www.bing.com/th?id=ONUT.PGznIf3HYsWmcfiTsfIvmQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Qma6xnRBrNhs2zlH7SvOvA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3565,6 +3552,12 @@
  "https://www.bing.com/th?id=ONUT.h1__6WSmxo7D9Lx6uBvTaQ&pid=News&w=960": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.jhCB5hQDYZFtU1D7sf3AqA&pid=News&w=616": {
+  "w": 616,
+  "h": 347,
   "target": 720,
   "v": 3
  },
@@ -3637,12 +3630,6 @@
    984
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.wMRvg-xMmB9IWF--rfi0VQ&pid=News&w=896": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
@@ -3947,6 +3934,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.sankei.com/resizer/v2/6T3L6IPV2RNE3AZXKIWN7RU4K4.jpg?auth=9a734cf8bd1f5d36c08b1a25c61fd855dffbcd1689261c05121db6c66b823d16&quality=50&focal=827%2C838&width=1200&height=675": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://www.sankei.com/resizer/v2/https%3A%2F%2Fdpgdieoe6npux.cloudfront.net%2Fprtimes%2FVFR23K4GO5MGXDTT2UYX6UA5N4?auth=9a414e57a91eb9e1ca5e403be51ea3162b6a6ae3547730c8d6840dc9793014f6&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
   "h": 675,
@@ -3969,6 +3962,12 @@
   "w": 1245,
   "h": 700,
   "target": 720,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/edited-image-2026-10-26T141134.529.webp?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://www.svg.com/img/gallery/can-you-play-gta-6-without-an-internet-connection/l-intro-1792619749.jpg": {
