@@ -33,6 +33,10 @@ if __name__ == "__main__":
 
 
 class EmbFade(unittest.TestCase):
+    def test_pic_fade(self):
+        self.assertIn("'.pic img'", render.EMB_JS)
+        self.assertIn(".emb-fade .pic img:not(.bg):not(.ico):not(.ld){opacity:0", open(render.__file__, encoding="utf-8").read())
+
     def test_fade_in_after_decode(self):
         self.assertIn("emb-fade", render.EMB_HEAD_JS)
         self.assertIn("img.decode()", render.EMB_JS)
