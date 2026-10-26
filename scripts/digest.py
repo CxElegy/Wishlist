@@ -3804,7 +3804,7 @@ def repair_images():
                         st["image"], st["image_via"], changed = res.image, res.source, True
                         used.add(res.image)
                         fixed += 1
-                    elif img and (images.GENERIC.search(urllib.parse.urlparse(img).path) or first_user.get(img) != st["url"]
+                    elif img and (images.GENERIC.search(urllib.parse.urlparse(img).path) or first_user.get(img) != st["url"] or img in author_imgs
                                   or "验证不了" in (st.get("image_via") or "") or not images.check(img, _saved_ref(st))[0]):
                         st["image"], changed = None, True  # 错的图宁可不放（网页上用作品封面或作品名封面块）
                         st.pop("image_via", None)
