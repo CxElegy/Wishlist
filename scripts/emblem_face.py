@@ -192,6 +192,40 @@ def measure_item(item, log=print, root=None, force=False):
     return len(done)
 
 
+def measure_emblems(emblems, load):
+    """小元素のリスト（店長の items.yaml でもお客さまの boards.config.emblem でも）の人物の切り抜きのうち、face がない・画像が替わったものを測って書く。
+    load(image) → PIL 画像（手元のファイルでも公開の箱の網址でも。読めなければ None＝次の回）。→ 測った枚数。
+    お客さまの版面は measure_item（店長の items.yaml だけ）が届かなかったので、ここを library_emblem が呼ぶ（2026-10-27：版面 17 個・135 枚が未測定だった）。"""
+    n = 0
+    for x in emblems or []:
+        if not isinstance(x, dict) or x.get("shape") in ("logo", "icon", "badge") or not x.get("image"):
+            continue
+        try:
+            img = load(str(x["image"]))
+            if img is None:
+                continue
+            img.load()
+        except Exception:
+            continue
+        f = x.get("face")
+        if isinstance(f, list) and len(f) == 6 and f[4:] == list(img.size):
+            continue
+        x["face"] = measure(img)
+        if x.get("fs") is not None:
+            if x["face"][0]:
+                x["fs"] = x["face"][0]
+            else:
+                x.pop("fs", None)
+        n += 1
+    return n
+
+
+def unmeasured(emblems):
+    """face がない人物の切り抜き（全身 body は顔でそろえない別の物差し）の数。版面ごとの点検（ux_check・tests）と同じ数え方。"""
+    return sum(1 for x in emblems or [] if isinstance(x, dict) and x.get("shape") not in ("logo", "icon", "badge") and x.get("image")
+               and not x.get("body") and not (isinstance(x.get("face"), list) and len(x["face"]) == 6))
+
+
 def audit(items):
     """版面ごとの 顔の大きさのそろい具合 → [{name, n, none, small, big, spread}]（管理ページ・ux_check・tests）。
     spread = 札のない小元素の「顔の高さ ÷ 枠の高さ」の最大 ÷ 最小（1.25 以下ならそろっている）。"""

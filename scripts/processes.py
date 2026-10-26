@@ -112,7 +112,7 @@ COMPONENTS = {
                "what": "Wiki の分類（emblem_category）か AniList の主役を数えて emblem_pool に。名前は参照の多い順に全員 emblem_who へ。まだいない人から 10 人ずつ集める（emblem_fill.STEP）"},
     "cutcheck": {"kind": "algo", "name": "切り抜きの検査 check_whole", "spec": "上の端 >50%（コマの切り抜き）· 上の端に当たり額まで切れた（YuNet の目が目〜口 ×1.4 より上：emblem.forehead_cut、前からの小元素も drop_broken で外す・哈利波特 Dominic 197×101。前からの小元素も上の端に 3% 以上当たったときだけ見る〔check_whole と同じ〕。上の端の 50% 超が人物 TOP_MAX も前からの小元素を drop_broken で外し次の候補で取り直す〔BLEACH Mirrors High Muramasa〕。規則の版 BROKEN_V を上げると前の版で外した小元素を今の規則で見直して戻す：emblem_fill.unbreak・state/emblem_broken.json・The Mandalorian Gideon・Mayfeld）· 頭のてっぺんが切れた（上 3px に横幅の 20% 以上：emblem.head_cut、顔が全部入っていても ✗・前からの小元素も drop_broken で外す。壊れた小元素のある版面は失敗の待ち〔RETRY_HOURS〕も待たない・BLEACH Mirrors High）· 写真で顔がなく横長（横 > 縦×1.3）= 髪・額だけの切れ端は ✗（emblem.faceless_scrap・BROKEN_V 3・哈利波特剧集 Hermione 194×92。縦長の兜は残す）· 写真は顔の幅 ≥80px・顔の輪郭の鋭さ ≥1.0（emblem.face_sharp：拡大したぼやけた剧照を使わない・哈利波特剧集 Oliver Wood）· 形の健康（scripts/cutshape.py・emblem.trim_flat：左右の端にそって高さの 15% を超えてまっすぐ続く直線の切り口は、切り口が始まる行で下を切り落として半身に〔残り ≥40%・顔の下まで〕、直せなければ ✗ で次の候補・上の端に横幅の 25% を超えて直線・面積 ÷ 凸包 <0.30 の凹みすぎも ✗。顔の大きさをそろえる face_fit の横の切り口も同じ trim_flat。前からの小元素は emblem_fill.repair_flat が半身に直し、直せないものは drop_broken が外す：哈利波特剧集 Gregory Goyle・BROKEN_V 4〔凹みの閾値は 5 で 0.45→0.30〕、お客さまの版面は bv が古いので 1 回見直す）· 左右の端 >10% · 面積 <12% · 半透明 >18% · 写真は切り抜きに顔が残ること・明るさ ≥16%（暗い場面は使わない）· 外れた画像は emblem_reject へ · 同じファイル（Wikimedia の網址違い）は 1 枚 · 書き出す切り抜きは短い辺 ≥64px・横 ≤ 縦×3（emblem.save_cut：切れ端は書かず前の画像を残す）、fit_all は自分の前の出力（emblems/ の cutout）を整え直さない〔commit のたびに縮んだ。作り直すなら元の画像 source から〕、前からの切れ端・読めない（0 バイト）切り抜きは外して emblem_reject へ（emblem_fill.drop_broken、due にも入る：漫威电影 Black Panther 60×10・BLEACH Mirrors High 209×45・0 バイトの nianzol-weizol）· 元の画像のファイル名が大乱闘のフィギュア・持ち物（Trophy・SSBB・Item_…：emblem.BAD_SOURCE）は取らず、前からのものは broken_cuts／library_emblem.unbroken が外す（BROKEN_V 6・あつ森 Redd・原神 Kaeya）· 2 番目の顔がいちばん大きい顔の高さの 77% 以上（2 人が並んだ切り抜き：emblem.CROWD_H、キャラの絵も）は前からのものも外す（BROKEN_V 7・BLEACH Mirrors High・呪術廻戦）· 同じ image・同じ元のファイル・同じ見た目（差分ハッシュ、透明は灰の上で測る）は 1 枚（emblem_fill.drop_same・unbroken：Vaundy 3 本・Stella Fortuna 3 人。背の高い細い立ち絵どうしを同じと誤る E8 も直した：呪術廻戦）",
                  "what": "emblem.check_whole：体が枠で切れた・輪郭がにじんだものを使わない"},
-    "facefit": {"kind": "algo", "name": "顔の大きさをそろえる", "spec": "全部の人物の顔を測る（YuNet・アニメ顔 YOLO・カスケード）→ 表示は顔 = 枠の高さの 32%・目の線 30%・頭の上の余白 6〜14%、拡大は 1.6 倍まで・縮小は 0.5 倍まで、そろいきらないものは札（小さい・大きい）· 全身のページ表示は目から足の長さ",
+    "facefit": {"kind": "algo", "name": "顔の大きさをそろえる", "spec": "お客さまの版面（boards.config.emblem の網址の小元素）も library_emblem.measure_faces で同じ measure を回し、emblem_face.measure_emblems / unmeasured で数える · 網页の alts に fs・m を出す（ux_check E13・E14）· 全部の人物の顔を測る（YuNet・アニメ顔 YOLO・カスケード）→ 表示は顔 = 枠の高さの 32%・目の線 30%・頭の上の余白 6〜14%、拡大は 1.6 倍まで・縮小は 0.5 倍まで、そろいきらないものは札（小さい・大きい）· 全身のページ表示は目から足の長さ",
                 "what": "emblem_face.measure / fit / view（render・管理ページの一覧が同じ関数）· emblem.face_fit / upper_body / keep_framing"},
     "facerule": {"kind": "rule", "name": "写真の規則 photo_problem", "spec": "顔の高さ ≥ 10% · 2 番目の顔 < 60% · 基準なしは同じ顔 2 枚以上",
                  "what": "face_id.py：前は Claude が目で見ていた「遠景・集合写真・別人」を数で判断する"},
@@ -224,7 +224,7 @@ PROCESSES = [
                    "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "scripts/emblem_face.py", "scripts/emblem_rules.py", "scripts/emblem_fame.py", ".github/workflows/background.yml"],
         "doc": "TEMPLATES.md", "rules": "emblem",
-        "uses": ["roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
+        "uses": ["facefit", "roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
         "flow": [
             {"id": "b0", "kind": "step", "lane": "actions", "title": "候補から選ぶ（管理ページの 🔍）",
              "text": "後台の頭で、積んだ依頼を先に：選ばれた候補は今の写真と入れ替えて固定（apply_pick）、「集めて」の人は候補を 4〜6 枚（emblem_cands.find：下の取り方の段と同じ順・Web 画像検索も使う・今ある／外した画像は除く）→ state/emblem_cands.json → 管理ページ「小元素」の札に並ぶ · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
@@ -456,7 +456,7 @@ PROCESSES = [
         "id": "colors", "name": "トップの配色", "en": "COLORS", "lane": "actions", "when": "ページ生成のたび",
         "trigger": "ページを作るとき。同じ画像の色は state/themes.json に残して使い回す",
         "summary": "その日の頭条の写真から、トップの地色と強調色を取る。字が必ず読めるように明るさを直す。",
-        "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "docs/rules/design.md", "uses": ["octree"],
+        "files": ["scripts/theme.py", "scripts/render.py", "state/themes.json"], "doc": "docs/rules/design.md", "uses": ["facefit", "octree"],
         "flow": [
             {"id": "t1", "kind": "step", "lane": "actions", "title": "頭条の写真", "text": "200×200 に縮める"},
             {"id": "t2", "kind": "decision", "lane": "repo", "title": "前に取った色がない？", "text": "state/themes.json の hero|URL", "no": "それを使う"},
@@ -537,6 +537,8 @@ PROCESSES = [
         "flow": [
             {"id": "le1", "kind": "step", "lane": "web", "title": "対象の版面を読む", "uses": ["supabase"],
              "text": "boards の followers > 0 で test1 が追いかけていないもの · 順：一度も試していない → 0 枚の版面（途中・届かなかったもの）→ 名簿の規則の版が古い届かなかったキャラの版面（数え直し）→ 済みで名簿の版が古い版面の数え直し（軽いので途中より先）→ 途中（running）→ 届かなかったものは 24 時間後 · 済み（ok）は飛ばす（名簿の規則の版 emblem_state.nv が古ければ 1 回数え直す。届かなかったキャラの版面〔Fandom・分類・名簿・AniList の手がかりあり〕も nv が古ければ 24 時間を待たずに数え直す）· 前の版の規則（RULES、いま 8：頭のてっぺんが切れた絵・ぼやけた写真を外す〔7〕・グループは Wikidata のメンバーで〔8：#428 の前に届かなかった BTS・YOASOBI・Mrs. GREEN APPLE を 24 時間待たず作り直す〕）で作った版面は済みでもすぐ作り直す：名簿・分類・小元素（REDO）を捨てて規則から（新しい規則が書いた値は前と同じでも消さない）、キャラもほかも新しい規則で 1 枚も取れなければ前のものを残す（字だけ・図・古い写真は外す）· 同じ画像（公開の箱の指紋が同じ）は 1 枚、キャラの版面はキャラでないページ（emblem.not_character）を外す · 公開の箱へ上げた前の回の小元素も店長と同じ壊れ方の規則（emblem_fill.broken_image：切れ端・頭のてっぺん・額が上の端で切れた・ぼやけた写真）で見直す（library_emblem.unbroken、前のものを残すときも）· グループの版面（小分類の形 = グループ）は店長の emblem_who（メンバー）がないので、Wikidata の P527・P463 で人（Q5）のメンバーを最大 12 人 emblem_who に（library_emblem.group_members。グループ全体の写真は「何人も」で落ちて 0 枚だった：BTS・YOASOBI・Mrs. GREEN APPLE）。emblem_state.bv が BROKEN_V より古い版面は届かなかった・済みでも待たずに 1 回 · checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
+            {"id": "le1c", "kind": "step", "lane": "actions", "title": "顔を測る（library_emblem.measure_faces）", "uses": ["supabase", "facefit"],
+             "text": "boards.config.emblem の人物の切り抜き（全身 body は除く）のうち face がないもの・画像の大きさが替わったものを、店長の items.yaml と同じ emblem_face.measure で測って config に書く（公開の箱の網址から読む）。作り直した版面・前の回から続く小元素も fill_board の最後に測る。前に作った版面（17 版面・135 枚が未測定だった）は 1 回だけ測り直す、済めば何もしない。点検：ux_check E13（網址の小元素も数える）・E14（同じ版面の顔の高さ × 倍率の最大 ÷ 最小 ≤1.25）"},
             {"id": "le1b", "kind": "step", "lane": "actions", "title": "管理ページの依頼を反映（apply_requests）", "uses": ["supabase"],
              "text": "管理ページ「小元素」から店長が押した 替える・固定・外す（RPC board_emblem_request → config.emblem_requests）を先に反映：外す・替える = 小元素から抜いて元の画像を emblem_reject へ（絵の見た目の鍵も config.emblem_reject_look に：店長と同じ emblem_fill.look_of・次の集めで違い ≤ 8 ビットの絵を落とす）、替える は人を emblem_redo に残して emblem_state を running に（次の段で同じ人の別の写真）、固定 = lock: true（規則の版が上がっても残す）· 候補から選ぶ：_emblem_cands は集める人を config.emblem_want に、_emblem_pick は並んだ候補（config.emblem_cands）にある網址だけを emblem_picks に積む → serve が 候補を集め（emblem_cands.find：fill_one と同じ取り方の段・Web 画像検索も使う・4〜6 枚）、選ばれた候補は一時の場所で入れ替えて固定（apply_pick）して公開の箱へ"},
             {"id": "le2", "kind": "step", "lane": "ext", "title": "種類を規則で（library_emblem.kind_for）",
@@ -553,7 +555,7 @@ PROCESSES = [
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。",
-        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "docs/rules/design.md", "uses": ["heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
+        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める", "text": "checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},

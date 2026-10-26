@@ -328,5 +328,35 @@ class UserPage(unittest.TestCase):
         self.assertIn("Q1-abc.webp", render._emblem(items[0]["emblem"]))
 
 
+class Faces(unittest.TestCase):
+    """お客さまの版面の人物の切り抜きにも face を測る（2026-10-27：版面 17 個・135 枚が未測定で、顔の大きさがそろわなかった）。"""
+
+    def img(self):
+        import io
+        from PIL import Image
+        b = io.BytesIO()
+        Image.new("RGBA", (40, 80), (200, 0, 0, 255)).save(b, "PNG")
+        return b.getvalue()
+
+    def test_measure_faces_fills_url_cutouts_only(self):
+        em = [{"image": "https://x.supabase.co/a.webp", "shape": "cutout"}, {"image": "https://x.supabase.co/l.webp", "shape": "logo"},
+              {"image": "https://x.supabase.co/b.webp", "shape": "cutout", "face": [0.3, 0.1, 0.5, 0.5, 40, 80]}]
+        out, n = le.measure_faces(em, fetch=lambda u: self.img())
+        self.assertEqual(n, 1)
+        self.assertEqual(len(out[0]["face"]), 6)
+        self.assertNotIn("face", out[1])
+        self.assertEqual(out[2]["face"][0], 0.3)   # 画像の大きさが違う（測り直し）ではなく 40×80 と同じ = そのまま
+        import emblem_face
+        self.assertEqual(emblem_face.unmeasured(out), 0)
+        self.assertEqual(emblem_face.unmeasured([{"image": "u", "shape": "cutout"}]), 1)
+
+    def test_fill_board_measures_kept_emblems(self):
+        em = [{"image": "https://x.supabase.co/a.webp", "shape": "cutout"}]
+        b = {"id": 9, "name": "x", "wd": None, "config": {"emblem": em, "emblem_state": {"state": "ok", "v": le.RULES}}}
+        r = {"state": "ok", "note": ""}
+        add = le.fill_board(b, {"section": "生活"}, None, BASE, fill=lambda item, log=None: r, now=1, fetch=lambda u: self.img())
+        self.assertEqual(len(add["emblem"][0]["face"]), 6)
+
+
 if __name__ == "__main__":
     unittest.main()

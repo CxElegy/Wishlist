@@ -65,5 +65,17 @@ class Everything(unittest.TestCase):
         self.assertEqual(stale, [])
 
 
+class CustomerRender(unittest.TestCase):
+    def test_url_cutout_with_face_gets_m_and_fs(self):
+        """お客さまの版面（網址の小元素）も、店長と同じ式で倍率 m と顔の高さ fs が alts に出る（ux_check E14 が数える材料）。"""
+        import json
+        import re
+        import render
+        html = render._emblem([{"image": "https://x.supabase.co/a.webp", "shape": "cutout", "face": [0.2, 0.05, 0.5, 0.5, 400, 800]}])
+        a = json.loads(__import__("html").unescape(re.search(r'data-alts="([^"]*)"', html).group(1)))[0]
+        self.assertEqual(a["m"], 1.6)
+        self.assertAlmostEqual(a["fs"] * a["m"], 0.32, places=2)
+
+
 if __name__ == "__main__":
     unittest.main()

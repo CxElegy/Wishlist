@@ -247,7 +247,24 @@ def unbroken(emblems, photo, fetch=None):
     return out
 
 
-def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
+def measure_faces(emblems, fetch=None):
+    """人物の切り抜き（公開の箱の網址）の顔を測る（店長の items.yaml と同じ emblem_face.measure）。→ (新しいリスト, 測った枚数)。
+    お客さまの版面も店長と同じ fit/view で顔の大きさをそろえる材料（boards.config.emblem[].face）。"""
+    import urllib.request
+    from PIL import Image
+    import emblem_face
+    get = fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read())
+
+    def load(u):
+        try:
+            return Image.open(io.BytesIO(get(u))) if u.startswith("http") else None
+        except Exception:
+            return None
+    out = [dict(x) if isinstance(x, dict) else x for x in emblems or []]
+    return out, emblem_face.measure_emblems(out, load)
+
+
+def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch=None):
     """版面 1 つ → boards.config に足す分 {emblem, theme, emblem_*, emblem_state}。"""
     import emblem
     import emblem_fill
@@ -290,6 +307,11 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None):
                 imgs.add(x.get("image"))
                 out.append(x)
             add["emblem"] = out
+    cur_em = add["emblem"] if "emblem" in add else cfg.get("emblem")   # 顔の大きさ：新しいものも、前の回から続くもの（網址）も、店長と同じに測る
+    if cur_em:
+        measured, n = measure_faces(cur_em, fetch)
+        if n:
+            add["emblem"] = measured
     have = len(add.get("emblem") or []) if "emblem" in add else len(got.get("emblem") or [])
     note = re.sub(r"新しい記事が来たらすぐ、来なくても \d+ 時間後", f"{RETRY_HOURS} 時間後", str(r.get("note") or ""))  # 店長の文のまま（材料の指紋・毎時）だと中身と合わない
     add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES,
@@ -431,6 +453,7 @@ def _upload(base, key):
 def main(argv):
     import os
     import digest
+    import emblem_face
     import emblem_fill
     import library
     minutes = float(argv[argv.index("--minutes") + 1]) if "--minutes" in argv else 25
@@ -459,6 +482,18 @@ def main(argv):
             cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
             b["config"] = {**cur, **add}
             digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")
+    for b in boards:   # 顔を測っていない小元素のある版面（前に作ったもの）を測る。1 回済めば次からは何もしない
+        if end - time.time() < PER_BOARD_S:
+            break
+        if emblem_face.unmeasured(cfg(b).get("emblem")):
+            try:
+                em, n = measure_faces(cfg(b).get("emblem"))
+            except Exception:  # noqa: BLE001
+                continue
+            if n:
+                cur = (digest.supabase(f"boards?id=eq.{b['id']}&select=config") or [{}])[0].get("config") or {}
+                b["config"] = {**cur, "emblem": em}
+                digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")
     todo = due(boards, time.time())
     done = {"ok": 0, "running": 0, "failed": 0, "blocked": 0}
     for b in todo:
