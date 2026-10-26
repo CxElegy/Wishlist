@@ -493,6 +493,10 @@ class Background(unittest.TestCase):
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T22:59:00+00:00")
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 1 時間たった
+        prog["items"]["zero"]["exhausted"] = True   # 残りが全員「画像のない人」：1 日おき（1 時間では飛ばす）
+        self.assertNotIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+        prog["items"]["zero"]["failed_at"] = "2026-10-15T23:00:00+00:00"
+        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
 
     def test_background_streams_lines(self):
         """管理ページのライブログ：開始・版面ごとの作業の 1 行 1 行・結果・終了が live_log に流れる（「今すぐ再挑戦」から起きたらそう書く）。"""

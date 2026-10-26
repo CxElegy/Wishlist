@@ -1792,6 +1792,7 @@ def auto_pick(item, good, web=True, strict=False):
 
 # ---------------------------------------------------------------- 定時の後台（--background）と進捗
 PROGRESS = ROOT / "state" / "emblem_progress.json"
+EXHAUSTED_HOURS = 24      # 残りの人が全員「画像のない人」の版面（exhausted）は、候補が増えるのを待つので 1 日おき（1 時間おきに同じ人を試さない）
 RETRY_HOURS = 1           # 全部の段で届かなかった関注項は、材料（記事・手がかり）が変わらなければこの時間は飛ばす。
                           # AI を使わないので資源は気にしない（2026-10-22，用户定的：6 時間は待たせすぎ）→ 毎時の後台で毎回やり直す
 MARGIN = 120              # 残り時間がこれ（秒）を切ったら、次の関注項に入らない
@@ -1863,7 +1864,7 @@ def due(prog, items, now):
         if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
         h = _hours_since(e.get("failed_at"), now)
-        if (e.get("state") == "failed" and h is not None and h < RETRY_HOURS and not os.environ.get("EMBLEM_RETRY_NOW")
+        if (e.get("state") == "failed" and h is not None and h < (EXHAUSTED_HOURS if e.get("exhausted") else RETRY_HOURS) and not os.environ.get("EMBLEM_RETRY_NOW")
                 and e.get("material") == material(item) and not broken_cuts(item) and not unbreak_due):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
             continue                                                            # 壊れた小元素（頭が切れた・ぼやけた）が出ている版面も待たずに外して取り直す
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
@@ -1880,7 +1881,7 @@ def waiting(prog, items, now):
         if item["name"] in due_names or e.get("state") != "failed" or status(item)["state"] == "ok":
             continue
         try:
-            at = (dt.datetime.fromisoformat(e["failed_at"]) + dt.timedelta(hours=RETRY_HOURS)).isoformat(timespec="seconds")
+            at = (dt.datetime.fromisoformat(e["failed_at"]) + dt.timedelta(hours=EXHAUSTED_HOURS if e.get("exhausted") else RETRY_HOURS)).isoformat(timespec="seconds")
         except (KeyError, ValueError):
             at = ""
         out.append((item["name"], at))
@@ -2022,7 +2023,8 @@ def fill_one(item, log=print):
     left = st["target"] - st["have"]
     only = f"。残り {left} 枚のうち試した {len(noimg)} 人は全員が画像のない人（使える画像が 1 枚もない）" if noimg and len(noimg) == len([w for w in want if w not in have1]) else ""
     return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh),
-            "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}{only}。新しい記事が来たらすぐ、来なくても {RETRY_HOURS} 時間後にもう一度"}
+            "exhausted": bool(only),   # 残りの人が全員「画像のない人」＝いまは取れる候補が尽きた（失敗と分けて数える・次は EXHAUSTED_HOURS 後）
+            "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}{only}。新しい記事が来たらすぐ、来なくても {EXHAUSTED_HOURS if only else RETRY_HOURS} 時間後にもう一度"}
 
 
 def off_roster(item, log=print):
@@ -2278,6 +2280,10 @@ def record(prog, item, result, now):
     for k in ("steps", "material"):
         if k in result:
             e[k] = result[k]
+    if result.get("exhausted"):
+        e["exhausted"] = True
+    else:
+        e.pop("exhausted", None)
     if "tried" in result and st["kind"] == "character":
         e["names_v"] = NAMES_V
     if result.get("sheet"):

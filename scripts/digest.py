@@ -2487,7 +2487,7 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
     after = now
     if state == "failed" and entry.get("failed_at"):
         try:
-            after = max(now, dt.datetime.fromisoformat(entry["failed_at"]) + dt.timedelta(hours=emblem_fill.RETRY_HOURS))
+            after = max(now, dt.datetime.fromisoformat(entry["failed_at"]) + dt.timedelta(hours=emblem_fill.EXHAUSTED_HOURS if entry.get("exhausted") else emblem_fill.RETRY_HOURS))
         except ValueError:
             pass
     nxt = _next_slot(after, slots) if slots and state != "ok" else None
