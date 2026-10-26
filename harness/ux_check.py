@@ -30,6 +30,7 @@ import argparse
 import json
 import os
 import pathlib
+import re
 import sys
 import time
 import urllib.request
@@ -123,6 +124,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
+        dup:[...document.querySelectorAll('[id]')].map(x=>x.id).filter((v,i,a)=>a.indexOf(v)!==i).slice(0,3),
         sw:document.documentElement.scrollWidth})""", BOXES)
     near = [] if page else pg.evaluate(NEAR_JS)
     fails = pg.evaluate("window.__imgFail||[]") if (st["nohead"] or st["heads"]) else []
@@ -144,6 +146,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
             bad.append(f"素の箱 {st['boxes']} 個（本人の設定ページではない）")
         if WHO[who] and page == "settings.html" and not st["own"]:
             bad.append("本人の設定ページではない")
+        if st["dup"]:   # 2026-10-27：素の箱を 2 回描いて id mine・wl-addn が重なった（同じ id の部品を数える）
+            bad.append("同じ id が 2 回：" + "・".join(st["dup"]))
         if not (st["mast"] and st["token"]):
             bad.append("題字・令牌がない")
         if st["sw"] > width:
@@ -158,6 +162,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append(f"白い画面（文字 {st['text']}・版面 {st['secs']}）")
     if WHO[who] and st["boxes"]:
         bad.append(f"素の箱 {st['boxes']} 個")
+    if st["dup"]:
+        bad.append("同じ id が 2 回：" + "・".join(st["dup"]))
     if not (st["nav"] and st["mast"] and st["token"]):
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
     if st["sw"] > width:
@@ -376,6 +382,15 @@ def journey_rpc(base_url, key, tok, fn, body):
     return urllib.request.urlopen(req, timeout=30).read().decode()
 
 
+PENDING_BAD = ("最初の 1 つを選ぼう", "まだ何も追いかけていません", "選ぶボタンは上のポスター")
+
+
+def pending_contradiction(text, name):
+    """足したものが画面に名前で出ているのに、同じ画面が「まだ何も」と言っていれば、その言い回しの一覧（空なら矛盾なし）。
+    焼いた版（2 時間ごと）は足す前の姿なので、足した直後は画面の中で食い違う（2026-10-27：「集めています 呪術廻戦」の下に「最初の 1 つを選ぼう」）。"""
+    return [w for w in PENDING_BAD if name in text and w in text]
+
+
 def journey_reset():
     """本人（test-d）の追いかけるものを空にする。本人の行だけ（my_keywords_set は呼んだ人の prefs.picks だけ置き換える）。"""
     s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
@@ -467,25 +482,29 @@ def journey(pw, base, width, out):
             return bad
         pg.wait_for_timeout(3000)   # 描き替えが終わるのを待つ
         frame("足したあとの自分のページ")
-        pg.goto(base, wait_until="domcontentloaded", timeout=60000)
-        pg.wait_for_function("()=>/外す/.test(document.body.innerText)", timeout=30000)
+        for w in pending_contradiction(pg.evaluate("()=>document.body.innerText"), name):
+            bad.append(f"足したあとの自分のページ：名前が出ているのに「{w}」とも言っている")
 
-        def settings():   # 自分のページの「外す」→ 設定ページに名前が出る
-            if (w := press(pg, pg.get_by_role("link", name="外す", exact=True), "外す（設定へ）")):
+        def settings():   # 自分のページの「設定」ボタン → 設定ページにも名前が出る（ボタンで行く。網址は打たない）
+            if (w := press(pg, pg.get_by_role("link", name=re.compile("設定")).first, "設定")):
                 return w
             pg.wait_for_function("n=>document.body.innerText.includes(n)", arg=name, timeout=30000)
             pg.wait_for_timeout(3000)
             frame("設定ページ")
+            for w in pending_contradiction(pg.evaluate("()=>document.body.innerText"), name):
+                return f"名前が出ているのに「{w}」とも言っている"
         if not step("設定に出る", settings):
             return bad
 
-        def off():   # 札をもう一度押すと外れる（最後の 1 つは保存が「ひとつ以上えらぶ」で止まる。空に戻すのは journey_reset）
-            tile = pg.locator(".tiles button", has_text=name)
-            if (w := press(pg, tile, f"札「{name}」")):
+        def off():   # 「<名前> を外す」（焼いた設定の行も、集めている最中の札も同じ名前）を押すと本人の追いかけるものから消える
+            if (w := press(pg, pg.get_by_role("button", name=f"{name} を外す"), f"「{name} を外す」")):
                 return w
-            pg.wait_for_timeout(500)
-            if tile.first.get_attribute("aria-pressed") == "true":
-                return "札を押しても外れない"
+            tok = session(JOURNEY_MAIL)["access_token"]
+            for _ in range(10):
+                pg.wait_for_timeout(500)
+                if name not in journey_rpc(s["supabase_url"], s["supabase_key"], tok, "my_page", {}):
+                    return None
+            return "外すを押しても本人の追いかけるものから消えない"
         step("外す", off)
     except Exception as ex:  # noqa: BLE001
         bad.append(f"通せなかった（{type(ex).__name__}: {str(ex)[:120]}）")

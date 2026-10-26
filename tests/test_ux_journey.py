@@ -16,6 +16,14 @@ GONE = "<p>好きなものを選ぶ はありません</p>"   # 向導のボタ�
 COVERED = OK + '<div style="position:fixed;left:0;top:0;width:100%;height:100%;background:#000"></div>'   # 固定の部品が上に重なる
 
 
+class Pending(unittest.TestCase):
+    def test_contradiction_is_counted(self):
+        # 足したものが名前で出ているのに「最初の 1 つを選ぼう」とも言う画面は ✗（2026-10-27）
+        self.assertEqual(ux_check.pending_contradiction("集めています 呪術廻戦 最初の 1 つを選ぼう", "呪術廻戦"), ["最初の 1 つを選ぼう"])
+        self.assertEqual(ux_check.pending_contradiction("集めています 呪術廻戦", "呪術廻戦"), [])
+        self.assertEqual(ux_check.pending_contradiction("最初の 1 つを選ぼう", "呪術廻戦"), [])   # 足していないなら正しい
+
+
 class Press(unittest.TestCase):
     def run_press(self, html):
         with sync_playwright() as pw:

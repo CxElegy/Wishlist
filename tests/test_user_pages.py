@@ -234,6 +234,21 @@ class Loader(unittest.TestCase):
         self.assertIn("function ownWait(picks)", js)
         self.assertIn("wl-ownwait", js)
 
+    def test_pending_picks_are_consistent_and_removable(self):
+        # 焼いた版が「最初の 1 つを選ぼう」のままでも、足したものがあれば画面の中で食い違わず、外す道がある（2026-10-27）
+        js = render.AUTH_JS
+        i = js.index("function ownWait(picks)")
+        body = js[i:js.index("function soleBox()")]
+        for w in ("'集めています'", ".top.start .hb", ".startgo", "pnx", "my_keywords_set", "calm.start"):
+            self.assertIn(w, body)
+
+    def test_one_box_and_bounce_count(self):
+        # 素の箱はいつも 1 つ（soleBox）・殻に入った回数でなく跳ね返された回数で止める（me.html の back が書く）
+        js = render.AUTH_JS
+        self.assertEqual(js.count("document.createElement('main');b"), 1)   # soleBox の 1 か所
+        self.assertNotIn("hist.push", js)
+        self.assertIn("h.push(Date.now())", render.render_me())
+
     def test_bucket_is_private(self):
         sql = (ROOT / "db" / "user_pages.sql").read_text(encoding="utf-8")
         self.assertIn("false", sql.split("insert into storage.buckets")[1].split(";")[0])
