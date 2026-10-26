@@ -12,6 +12,7 @@ Wikipedia や Commons の記事には、本人と関係のない画像（絵画�
 
 import os
 import pathlib
+import threading
 import urllib.request
 
 MODELS = {
@@ -35,18 +36,20 @@ def _models():
 
 
 def engine():
-    """→ (detector, recognizer) か None（OpenCV がない・モデルを取れない）。"""
-    if "e" in _engine:
-        return _engine["e"]
+    """→ (detector, recognizer) か None（OpenCV がない・モデルを取れない）。
+    スレッドごとに別のものを作る：検出器は setInputSize → detect の間に状態を持つので、6 本並列の後台で共有すると Segmentation fault で落ちた（#433 のあと）。"""
+    key = threading.get_ident()
+    if key in _engine:
+        return _engine[key]
     try:
         import cv2
         det_p, rec_p = _models()
         det = cv2.FaceDetectorYN.create(str(det_p), "", (320, 320), 0.8, 0.3, 5000)
         rec = cv2.FaceRecognizerSF.create(str(rec_p), "")
-        _engine["e"] = (det, rec)
+        _engine[key] = (det, rec)
     except Exception:
-        _engine["e"] = None
-    return _engine["e"]
+        _engine[key] = None
+    return _engine[key]
 
 
 FACE_MIN_RATIO = 0.10   # 顔の高さが画像の高さのこの割合より小さい = 遠景（ステッカーにすると顔が見えない）

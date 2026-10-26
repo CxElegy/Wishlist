@@ -644,6 +644,23 @@ class Identity(unittest.TestCase):
         self.assertIsNone(face_id.same_person([1, 1]))
 
 
+class FaceEnginePerThread(unittest.TestCase):
+    def test_engine_not_shared_between_threads(self):
+        # 検出器を共有すると 6 本並列の後台が Segmentation fault で落ちた（#433 のあと）
+        import threading
+        saved = dict(face_id._engine)
+        face_id._engine.clear()
+        try:
+            got = []
+            t = threading.Thread(target=lambda: got.append(face_id.engine()))
+            main = face_id.engine()
+            t.start(); t.join()
+            if main is not None:
+                self.assertIsNot(got[0][0], main[0])
+        finally:
+            face_id._engine.clear(); face_id._engine.update(saved)
+
+
 class Processes(unittest.TestCase):
     def test_flows_are_well_formed(self):
         ids = [p["id"] for p in processes.PROCESSES]

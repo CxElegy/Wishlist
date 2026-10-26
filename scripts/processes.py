@@ -38,7 +38,7 @@ COMPONENTS = {
     "rembg": {"kind": "model", "name": "rembg birefnet-general-lite", "spec": "ONNX 224MB · 1 枚ずつ · 出力 420×520 WEBP",
               "what": "人物・キャラを背景から切り抜く（emblem.cut_out）。onnxruntime のメモリ池は切ってある"},
     "yunet": {"kind": "model", "name": "YuNet face_detection_yunet_2023mar", "spec": "入力 320×320 · score 0.8 · NMS 0.3",
-              "what": "顔を見つける（face_id.py、OpenCV FaceDetectorYN、HuggingFace から）"},
+              "what": "顔を見つける（face_id.py、OpenCV FaceDetectorYN、HuggingFace から。検出器はスレッドごとに別：共有すると 6 本並列で Segmentation fault）"},
     "sface": {"kind": "model", "name": "SFace face_recognition_sface_2021dec", "spec": "128 次元 · cos ≥ 0.363 で本人",
               "what": "顔の特徴量で同じ人か比べる（face_id.py）。基準 = 記事の代表画像、合わなければ多数決"},
     "roles": {"kind": "rule", "name": "実写の作品は役の姿 gather_roles", "spec": "出演者 → 役（Fandom の出演者の記事・表・検索、役の記事で演者を確かめる）→ 出演者の記事・ファイル検索の「X as 役」の写真（作り直しの剧は役の記事が前の映画の役者）→ 役の記事の画像・作品の動画の場面（出演者の顔の基準がないときは、ファイル名に出演者・作品の略号〔HPTV〕がある・作品の始まりの 2 年前より後に上がった画像だけ：emblem_fill.tied。前からの小元素も untied_roles で外す・哈利波特 Padma の映画の写真）→ 作品の記事の剧照（ファイル名に役名がない HBO Max Still）は名簿の出演者ぜんぶの顔の基準と比べ、いちばん近い人へ（cos ≥ 0.363・2 番目と 0.08 以上の差：emblem_fill.assign_stills。暗さは顔が見えれば顔の明るさ 10% で：emblem.FACE_DARK）· 生活の写真は基準だけ",
