@@ -2021,7 +2021,7 @@ def fill_one(item, log=print):
         return {"state": "running", "tried": tried, "funnel": funnel, "steps": steps,
                 "note": f"{added} 枚足した（{path}）。あと {st['target'] - st['have']} 枚、次の回に続きの {STEP} 人"}
     left = st["target"] - st["have"]
-    only = f"。残り {left} 枚のうち試した {len(noimg)} 人は全員が画像のない人（使える画像が 1 枚もない）" if noimg and len(noimg) == len([w for w in want if w not in have1]) else ""
+    only = f"。残り {left} 枚のうち試した {len(noimg)} 人は全員が画像のない人（使える画像が 1 枚もない）" if noimg and len(noimg) == len([w for w in want if w not in have1]) and queued <= len(want) else ""   # 名簿の残り全員を試したときだけ（BLEACH は残り 108 人のうち 10 人で 24 時間待ちになっていた）   # 名簿の残り全員を試したときだけ（BLEACH は残り 108 人のうち 10 人を試しただけで 24 時間待ちになっていた）
     return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh),
             "exhausted": bool(only),   # 残りの人が全員「画像のない人」＝いまは取れる候補が尽きた（失敗と分けて数える・次は EXHAUSTED_HOURS 後）
             "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}{only}。新しい記事が来たらすぐ、来なくても {EXHAUSTED_HOURS if only else RETRY_HOURS} 時間後にもう一度"}
