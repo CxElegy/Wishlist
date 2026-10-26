@@ -4263,7 +4263,7 @@ AUTH_JS = r"""
     if(!on){R.dataset.mine='0';clearInterval(R._wlub);R._wlmb=null;if(box) box.remove();var b0=document.querySelector('.wl-mybar');if(b0)b0.remove();
       document.querySelectorAll('.wl-off').forEach(function(x){x.classList.remove('wl-off');});return;}
     if(R.dataset.mine!=='2') R.dataset.mine='1';
-    if(!box){box=document.createElement('main');box.className='wl-mine';box.id='mine';document.body.appendChild(box);}
+    if(!box)box=soleBox();
     if(!box.dataset.ready) box.innerHTML='<p class="wl-msg" role="status">読み込み中…</p>';
     (tok?rpc('my_page'):Promise.resolve(null)).then(function(p){route(box,p,'');},function(e){route(box,null,e.message);});
   }
@@ -4272,12 +4272,13 @@ AUTH_JS = r"""
   // 本人のページ（scripts/user_pages.py が店長と同じ部品で作り、非公開の箱 pages/<account>/index.html に置く）は、
   // 小さな殻のページ me.html が読み込んで描く（render.render_me）。このページの中で差し替えると、店長のページの JS
   // （ログインの見張り・版の確かめ）が同じ窓に残って、差し替え → 開き直し をくり返し、白い画面にもなった（2026-10-24）。
-  // ここではお客さまを me.html へ送るだけ。殻が読めなかったとき（?own=0）は送らずに前の画面。30 秒に 3 回まで
+  // ここではお客さまを me.html へ送るだけ。殻が読めなかったとき（?own=0）は送らずに前の画面。
+  // 止めるのは「跳ね返された」回数（me.html の back が sessionStorage の wl-own-at に書く）が 30 秒に 3 回のとき。入った回数ではない
+  // （足す → 設定 → 戻る と速く動く人・通しの点検は 30 秒に 3 回入る。入った回数で止めると 3 回目に殻でない画面になり、素の箱が 2 個出た。2026-10-27）
   function ownPage(){
     if(!tok||(page!=='index'&&page!=='settings')||/[?&]own=0/.test(location.search)) return Promise.resolve(false);
     var hist=[];try{hist=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){return Date.now()-x<30000;});}catch(_){}
     if(hist.length>=3) return Promise.resolve(false);
-    try{hist.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(hist));}catch(_){}
     location.replace('me.html'+(page==='settings'?'?p=settings':'')+location.hash);   // 設定も本人の分（同じ部品の render_settings）
     return Promise.resolve(true);
   }
@@ -4288,18 +4289,36 @@ AUTH_JS = r"""
     var have=[].map.call(document.querySelectorAll('section.sec[data-k]'),function(s){return s.dataset.k;});
     var wait=picks.filter(function(x){return !have.some(function(k){return shopHit(k,x.name);});});
     if(!wait.length)return;
+    // 焼いた版は「何も追いかけていません」のまま。足した人に「最初の 1 つを選ぼう」「まだ何も…」と矛盾して見せず、外す道も出す（2026-10-27 の通し点検）
+    var hb=document.querySelector('.top.start .hb'),pp=document.querySelector('.top.start .ptxt p'),sg=document.querySelector('.startgo');
+    if(hb)hb.textContent='集めています';
+    if(pp)pp.textContent='足したものの記事が集まりしだい、ここに並びます。';
+    if(sg){var hh=sg.previousElementSibling;if(hh&&hh.classList.contains('hint'))hh.remove();sg.remove();}
+    document.querySelectorAll('section.sec.quiet:has(.calm.start)').forEach(function(s){
+      s.classList.add('wl-off');document.querySelectorAll('.pill[data-for="'+s.dataset.k+'"],.nsum a[href="#'+s.id+'"]').forEach(function(a){(a.closest('.nsum')||a).classList.add('wl-off');});});
+    document.querySelectorAll('.nslot').forEach(function(n){   // 版面が全部消えた駅（その他）は駅ごと・上の目次の札ごと
+      if(n.querySelector('.pill:not(.wl-off)'))return;n.classList.add('wl-off');
+      document.querySelectorAll('.mtabs a[data-sec]').forEach(function(a){if(a.dataset.sec===n.dataset.sec)a.classList.add('wl-off');});});
+    document.dispatchEvent(new Event('wl-nav'));
     var bar=document.createElement('div');bar.className='wl-mybar wl-ownwait';bar.setAttribute('role','status');
-    bar.innerHTML='<b>集めています</b><span>'+wait.map(function(x){return esc(x.name);}).join('・')+'</span><small class="ok">足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。</small>';
-    var m=document.querySelector('main.issues')||document.body;m.insertBefore(bar,m.firstChild);
+    bar.innerHTML='<b>集めています</b>'+wait.map(function(x){return '<span>'+esc(x.name)+' <button type="button" class="pnx" data-n="'+esc(x.name)+'" aria-label="'+esc(x.name)+' を外す">外す</button></span>';}).join('')+
+      '<small class="ok">足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。</small>';
+    bar.querySelectorAll('.pnx').forEach(function(b){b.onclick=function(){b.disabled=true;
+      var rest=picks.filter(function(x){return x.name!==b.dataset.n;});
+      rpc('my_keywords_set',{p_picks:rest}).then(function(){if(rest.length&&rest.some(function(x){return !have.some(function(k){return shopHit(k,x.name);});}))ownWait(rest);else location.reload();},function(){b.disabled=false;});};});
+    var m=document.querySelector('main.issues')||document.querySelector('.page')||document.body;m.insertBefore(bar,m.firstChild);
   }
+  // 素の箱はいつも 1 つ（mine() が rpc の返事ごとに呼ばれ、非同期の枝が 2 つ描くと id mine・wl-addn が 2 回になる）
+  function soleBox(){document.querySelectorAll('.wl-mine').forEach(function(x){x.remove();});
+    var b=document.createElement('main');b.className='wl-mine';b.id='mine';document.body.appendChild(b);return b;}
   function route(box,p,err){
     var picks=picksOf(p);
     if(document.querySelector('meta[name="wl-own"]')){box.remove();R.dataset.mine='2';ownWait(picks);return;}   // もう本人のページの中
     // ログインしたお客さまはだれでも、まず本人のページ（店長と同じ枠組み）。版面の数によらない（HARNESS.md「一番大事な決まり」）
-    if(page==='settings'&&!err&&tok){box.remove();ownPage().then(function(done){if(!done){var b3=document.createElement('main');b3.className='wl-mine';b3.id='mine';document.body.appendChild(b3);drawMine(b3,p,'');}});return;}
+    if(page==='settings'&&!err&&tok){box.remove();ownPage().then(function(done){if(!done)drawMine(soleBox(),p,'');});return;}
     if(page==='index'&&!err&&tok&&document.querySelector('section.sec[data-k]')){
       box.remove();ownPage().then(function(done){if(done)return;
-        if(picks.length)showMine(p,picks);else{var b2=document.createElement('main');b2.className='wl-mine';b2.id='mine';document.body.appendChild(b2);drawMine(b2,p,'');}});return;}
+        if(picks.length)showMine(p,picks);else drawMine(soleBox(),p,'');});return;}
     drawMine(box,p,err);
   }
   var UB='あなたが足したもの';   // お客さまが足した版面の小分類（本文の見出し・目次の札）
@@ -5188,7 +5207,8 @@ def render_me():
 (function(){{
   var C={cfg};
   var SET=/[?&]p=settings/.test(location.search), PG=SET?'settings.html':'index.html';   // どのページか（AUTH_JS の ownPage）
-  function back(q){{location.replace('./'+(SET?'settings.html':'')+(q||'')+location.hash);}}
+  function back(q){{try{{var h=JSON.parse(sessionStorage.getItem('wl-own-at')||'[]').filter(function(x){{return Date.now()-x<30000;}});h.push(Date.now());sessionStorage.setItem('wl-own-at',JSON.stringify(h));}}catch(_){{}}
+    location.replace('./'+(SET?'settings.html':'')+(q||'')+location.hash);}}
   var s=document.createElement('script');s.src=C.lib;s.onerror=function(){{back('?own=0');}};
   s.onload=function(){{
     var sb=window.supabase.createClient(C.url,C.key,{{auth:{{persistSession:true,storageKey:'wl-auth',detectSessionInUrl:false}}}});
