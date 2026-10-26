@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-26T16:01:24+00:00",
+ "checked": "2026-10-26T16:09:51+00:00",
  "fired": {
   "at": "2026-10-26T16:01:24+00:00",
   "results": {
@@ -36,27 +36,26 @@
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "哈利波特剧集",
-    "FROM"
-   ],
-   "need": true,
-   "sig": "8b1ef2777236",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
-    "あつ森",
     "GTA 6",
     "dota2",
     "Vaundy",
     "チェーンソーマン",
     "漫威电影",
     "BLEACH Mirrors High",
+    "あつ森",
+    "FROM",
+    "哈利波特剧集",
     "绝区零",
     "Astrae Oratio",
     "ILLIT",
     "A2O LITE",
     "The Mandalorian"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 01:18 から）"
+   "why": "失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 01:41 から）"
   },
   "photos": {
    "claude": true,
