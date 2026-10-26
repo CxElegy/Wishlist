@@ -62,3 +62,4 @@
 - 2026-10-26 三星手机の小元素 E2：本番を ux_check（guest・test-a × 1400/390）で測り E2 0（前の回までに直っていた）· コード変更なし、BACKLOG を [x] · 残り：guest E8 Vaundy 2・E9 あつ森 3、test-a E1（Mrs. GREEN APPLE・BTS）・E8 · 次：前からの上の端 >50% を drop_broken で外す段。
 - 2026-10-26 小元素の形の傷（依頼の続き）：参照される小元素の形の傷は 3 枚（logo のみ）、「79 枚」は置き去りファイルだった · SOLID_MIN 0.45→0.30・BROKEN_V 5・0 バイト置き去り 2 枚削除・notify.py の weight 欠けを直し 842 本 OK · PR #414（合併 5156aea）· 本番 ux_check：E12 は guest・test-a・b・c × 1400/390 すべて 0、test-b・test-c ✓ · 次：合併後に ux_check と BROKEN_V 5 の回の戻り枚数
 - 2026-10-26 小元素の管理（依頼）お客さまの版面の分：管理者でログインすると管理ページ「小元素」にライブラリの版面のボタンが増え、替える・固定・外すが RPC board_emblem_request → config.emblem_requests → library_emblem.apply_requests（次の回で反映・固定は規則の版が上がっても残る）· 851 本 OK · 本番の確かめ（替える→別の写真・固定が残る）と「候補から選ぶ」は次
+- 2026-10-26 前からの切り抜きの上の端 >50%：broken_image に TOP_MAX（店長 drop_broken・お客さま library_emblem 共通）· #420 · 后台作業を手で起こしたあと ux_check guest 1400/390 E7 0 · 次：E8 Vaundy・E9 あつ森・test-a E1 3
