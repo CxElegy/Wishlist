@@ -50,6 +50,14 @@ class Compose(unittest.TestCase):
             out = Image.open(io.BytesIO(ba.compose(a, b)))
             self.assertLess(out.height, 1500)   # ページ全体ではなく切り抜き
 
+    def test_spotted_column_shows_whole(self):   # 「画面：」の欄は切らず欄ぜんぶ（小さな変化が端にあっても）
+        with tempfile.TemporaryDirectory() as t:
+            a, b = pathlib.Path(t, "a.png"), pathlib.Path(t, "b.png")
+            png(a, size=(800, 900)), png(b, (720, 800, 780, 860), size=(800, 900))
+            self.assertLess(Image.open(io.BytesIO(ba.compose(a, b))).height, 900)   # ふだんは切り抜き
+            out = Image.open(io.BytesIO(ba.compose(a, b, whole=True)))
+            self.assertGreaterEqual(out.height, 900)   # 欄の高さのまま（拡大で 900 を超える）
+
     def test_taller_page_keeps_the_change(self):   # 別の目の指摘 1：高さが変わると上 1400px だけ・赤枠なしだった
         box = (700, 2500, 1100, 2900)
         with tempfile.TemporaryDirectory() as t:
