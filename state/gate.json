@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-26T02:14:40+00:00",
+ "checked": "2026-10-26T02:52:54+00:00",
  "fired": {
-  "at": "2026-10-26T02:15:12+00:00",
+  "at": "2026-10-26T02:53:24+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-26T00:38:03+00:00",
+    "at": "2026-10-26T02:53:24+00:00",
     "attempts": 1,
     "day": "2026-10-26",
-    "prog": 103,
-    "resp": "cse_01Uk5xDCxqLA5R6JupNpCsPo",
-    "sig": "0595cf5f7d05"
+    "prog": 135,
+    "resp": "cse_01S4qXJPg5vzmYJuTK6Ja7Su",
+    "sig": "a82a7cc873f1"
    },
    "items": [
     "哈利波特剧集",
@@ -31,11 +31,14 @@
    "need": true,
    "prog": 135,
    "prog_day": "2026-10-26",
-   "ripe": [],
-   "sig": "2ad23929648f",
+   "ripe": [
+    "哈利波特剧集",
+    "猫用品"
+   ],
+   "sig": "a82a7cc873f1",
    "token_cap": 1000000,
    "tokens_today": 351418,
-   "why": "整理待ちの記事 2 件（2 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 2 件（2 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -51,15 +54,14 @@
     "The Mandalorian",
     "Vaundy",
     "A2O LITE",
+    "Astrae Oratio",
+    "绝区零",
     "ILLIT"
    ],
    "need": true,
-   "sig": "18b456b31e80",
-   "waiting": [
-    "Astrae Oratio",
-    "绝区零"
-   ],
-   "why": "足りない 12 版面（Actions で Python が埋める）・失敗 2 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 12:03 から）"
+   "sig": "320ddc1ef81f",
+   "waiting": [],
+   "why": "足りない 14 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
