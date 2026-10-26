@@ -1723,6 +1723,16 @@ AUTO_SOURCES = {
 }
 
 
+def _named_in(c):
+    """候補の画像のファイル名にその人の名前の語があるか。ないものは「その人の画像」と言えない（GTA 6 の Ernesto→ゲバラの Wikipedia 写真・Phil→公式サイトの宣伝画像）ので、
+    確かでない取り方の候補としても数えず、使える画像が 1 枚もない人のまま。"""
+    base = re.sub(r"\s*[(（].*?[)）]", "", _base_subject(c.get("subject")))
+    words = {_name_key(w) for w in re.split(r"[^\w]+", base) if len(w) >= 3}
+    name = urllib.parse.unquote(str(c.get("image") or "").split("?")[0].rsplit("/", 1)[-1])
+    toks = {_name_key(w) for w in re.split(r"[^A-Za-z0-9]+|(?<=[a-z])(?=[A-Z])", name) if w}
+    return bool(words & toks)
+
+
 def _base_subject(s):
     return re.sub(r" \d+$", "", str(s or ""))
 
@@ -1981,14 +1991,14 @@ def fill_one(item, log=print):
                     seen.add(_base_subject(c["subject"]))
                     continue
                 if not needs_face(item) and c["source"].split("(")[0] not in AUTO_SOURCES.get(kind, ()):
-                    why = "確かでない取り方"
+                    why = "確かでない取り方" if kind != "character" or _named_in(c) else "名前の合わない候補"
                 elif kind in ("group", "character") and c["subject"] in covered:
                     why = "重複（その人はもういる）"
                 elif c["image"] in _have_images(fresh):
                     why = "もう使っている・外した画像"
                 else:
                     why = "目標を超える"
-                if why != "もう使っている・外した画像":
+                if why not in ("もう使っている・外した画像", "名前の合わない候補"):
                     seen.add(_base_subject(c["subject"]))
                 reasons[why] = reasons.get(why, 0) + 1
             if status(fresh)["state"] == "ok":

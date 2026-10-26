@@ -1126,6 +1126,19 @@ class Ladder(unittest.TestCase):
         self.assertEqual(r["funnel"]["rejected"].get("画像のない人"), 1)
         self.assertIn("全員が画像のない人", r["note"])
 
+    def test_unnamed_unsure_candidate_is_no_image(self):
+        ef.gather_wide = lambda item, log, tried: [{"subject": "b", "image": "https://x/Che_Guevara.jpg", "source": "Wikipedia"}]
+        ef.auto_pick = lambda item, good, **k: [1] if good and good[0]["subject"] == "a" else []
+        r = ef.fill_one(self.items[0], log=lambda m: None)
+        self.assertEqual(r["funnel"]["rejected"].get("画像のない人"), 1)
+        self.assertEqual(r["funnel"]["rejected"].get("名前の合わない候補"), 1)
+        self.assertIn("全員が画像のない人", r["note"])
+
+    def test_named_in(self):
+        self.assertTrue(ef._named_in({"subject": "Phil (GTA VI)", "image": "https://x/Phil-GTAVI-Portrait.png?a=1"}))
+        self.assertFalse(ef._named_in({"subject": "Phil (GTA VI)", "image": "https://x/GTAVI_Merch_PromoCard.jpg"}))
+        self.assertFalse(ef._named_in({"subject": "Ernesto", "image": "https://x/Che_Guevara_June_2%2C_1959.jpg"}))
+
     def test_all_steps_then_failed_with_material(self):
         ef.gather_wide = lambda item, log, tried: self.calls.append("2") or []
         r = ef.fill_one(self.items[0], log=lambda m: None)
