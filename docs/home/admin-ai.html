@@ -635,6 +635,7 @@ button{font-family:inherit}
   drop-shadow(var(--sx) var(--sy) 0 var(--ink))}  /* フチと影は外側に：切り抜きの輪郭にも、カードの四辺形にも沿う */
 .emb-in{display:flex;align-items:flex-end}
 .emb{clip-path:inset(-100vh -100vw -14px -100vw)}  /* 帯の線より下は見せない（飛び出す動きの途中）：下のニュースの字・ボタンに重ねない。絵そのものは線より上に置くので切れない。-14px はフチ（5.5px）と影（8px）の分 */
+.emb img.fz{align-self:flex-start;height:calc(100% * var(--m));max-width:230px;object-position:top;clip-path:inset(0 0 calc(100% * (var(--m) - 1) / var(--m)) 0)}  /* 顔が小さい絵は拡大して、頭の位置はそのまま・下を切る（emblem_face.fit：顔の高さを枠の 32% に、1.6 倍まで） */
 .emb img{display:block;height:calc(100% * var(--k,1));width:auto;max-width:190px;object-fit:contain;object-position:bottom}  /* --k：顔の大きさをそろえる（アップの絵は小さく） */
 .emb{--leg:116px;--legc:290px;--anc:62px;--bmax:200px}  /* 全身の立ち絵の「目から足の裏まで」の長さ（emblem.body_marks）。どのキャラも同じ背の高さに見える */
 .emb img.body{--bh:calc(var(--leg) / var(--bl));--bz:min(var(--bh), var(--bmax));height:var(--bz);width:calc(var(--bz) * var(--ba));max-width:none;
@@ -1085,6 +1086,8 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .emm-tile:disabled{cursor:default;opacity:.55}
 .emm-ph{position:relative;display:block;aspect-ratio:4/5;background:repeating-linear-gradient(45deg,color-mix(in srgb,var(--ink) 8%,var(--card)) 0 6px,var(--sheet) 6px 12px);border:2px solid var(--ink);overflow:hidden}
 .emm-ph img{width:100%;height:100%;object-fit:contain;display:block}
+.emm-ph img.fv{position:absolute;max-width:none;object-fit:fill;width:calc(var(--fw) * 100%);height:calc(var(--fm) * 100%);left:calc(var(--fx) * 100%);top:calc(var(--fy) * 100%)}  /* emblem_face.view：顔の高さ 32%・目の線 30%・頭の上の余白 6〜14% */
+.emm-fl{position:absolute;left:0;bottom:0;z-index:1;font:700 var(--fs-tag)/1.4 var(--font-sans);font-style:normal;background:var(--ink);color:var(--card);padding:0 5px}
 .emm-tile b{font:900 13px/1.35 var(--font-sans)}.emm-tile small{font-size:var(--fs-label);line-height:1.4;opacity:.65}
 .emm-tile:hover .emm-ph{box-shadow:3px 3px 0 var(--rose)}
 .emm-st{position:absolute;left:-4px;top:8px;padding:1px 8px;font:900 11px/1.6 var(--font-sans);color:var(--card);transform:skewX(var(--skew));background:var(--ink)}
@@ -1524,7 +1527,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-ai" content="f0ebe2df84cb"><style>
+<meta name="wl-ver" data-page="admin-ai" content="391bbac1dd9e"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2183,7 +2186,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ④ AI 編集</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.27 00:35</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.27 00:36</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html" aria-current="page"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
