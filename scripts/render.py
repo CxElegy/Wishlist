@@ -1728,16 +1728,20 @@ EMB_JS = """
       } else inner.replaceChildren(n);
     }
   });
+  // 3 秒の保険は、画面に入ってから数える（画面外の lazy の写真に先に .ld を付けると、近づいたとき transition なしで「パッ」と出る）
+  const late = img => { const go = () => setTimeout(() => img.classList.add('ld'), 3000);
+    if (!('IntersectionObserver' in window)) return go();
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); go(); } }); io.observe(img); };
   // 読み込み（decode）が終わってから .ld を付けて、透明 → 不透明で出す。1 画面目の小元素は先に読む。3 秒たっても終わらなければ出す
   els.forEach(el => { const img = el.querySelector('img'); if (!img) return;
     if (el.getBoundingClientRect().top < innerHeight) { img.loading = 'eager'; img.fetchPriority = 'high'; }
     const show = () => img.classList.add('ld');
-    (img.decode ? img.decode() : Promise.reject()).then(show, show); setTimeout(show, 3000); });
+    (img.decode ? img.decode() : Promise.reject()).then(show, show); late(img); });
   // 記事の写真（.pic）も届いたら .ld で出す。あとから JS が作る写真も拾うので load は capture で受ける。3 秒たっても届かなければ出す
   const okPic = i => i.matches && i.matches('.pic img') && i.naturalWidth;
   addEventListener('load', ev => { if (okPic(ev.target)) ev.target.classList.add('ld'); }, true);
   const sweep = () => document.querySelectorAll('.pic img').forEach(i => { if (i.complete && i.naturalWidth || !i.getAttribute('src')) i.classList.add('ld'); });
-  sweep(); setTimeout(() => document.querySelectorAll('.pic img').forEach(i => i.classList.add('ld')), 3000);
+  sweep(); document.querySelectorAll('.pic img').forEach(late);
   // 小元素の本当の幅だけ、見出しの帯の右を空ける（画像ごとに幅が違う。固定の幅だと横長の絵が題字・副題の上に乗る）
   const room = el => { const band = el.parentElement, img = el.querySelector('img'); if (!band || !img) return;
     const go = () => { const b = band.getBoundingClientRect(), r = el.getBoundingClientRect();
