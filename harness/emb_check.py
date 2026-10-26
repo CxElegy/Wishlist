@@ -13,7 +13,7 @@
                  高さ 40px 未満の切れ端だけ（STRIP_MAX）
   E8 同じ画像    同じ版面に同じ src か、差分ハッシュの違い ≤ 4 ビット（emblem_fill.SAME_BITS）か、同じ動画（YouTube）の場面が 2 本以上
   E9 中身        元の画像のファイル名が別の作品の絵（大乱闘のフィギュア・amiibo など、BAD_SOURCE）
-  E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く）
+  E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
                  （scripts/cutshape.py：取るときの emblem.trim_flat・drop_broken と同じ式。まっすぐでよいのは下の端だけ）
@@ -188,7 +188,16 @@ def stuck():
         d = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
     d = d.get("items", {})
     # 残り 1 枚だけ届かない（Astrae Oratio 29/30・绝区零 60/61）は名簿の最後の 1 人に使える画像がないだけなので ✗ にしない
-    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and (v.get("target") or 0) - (v.get("have") or 0) > 1}
+    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and not v.get("exhausted") and (v.get("target") or 0) - (v.get("have") or 0) > 1}
+
+
+def exhausted():
+    """候補が尽きた版面（残りの人が全員「画像のない人」：emblem_fill の exhausted）→ {名前: have/target}。"""
+    try:
+        d = json.loads(urllib.request.urlopen(PROGRESS, timeout=20).read()).get("items", {})
+    except Exception:  # noqa: BLE001
+        return {}
+    return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and v.get("exhausted")}
 
 
 def _sheet(shots, path):
@@ -289,6 +298,8 @@ def check(pg, who, width, out, full=False, guest=False):
                 found["E4"].append(f"{s['k']} {name} {h}px（中央値 {med:.0f}）")
     if guest:   # 店長の版面（ログインなし）だけ：止まっている版面は後台の状態から
         found["E10"] = [f"{k} {v}" for k, v in stuck().items()]
+    if guest and (ex := exhausted()):
+        print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
