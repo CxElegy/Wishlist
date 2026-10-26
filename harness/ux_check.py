@@ -59,12 +59,41 @@ def session(email):
     return out
 
 
+# 2026-10-27：手元の回線（点検の箱のプロキシ）だけで開けない写真を ✗ に数えない。ブラウザで開けなかった写真を、
+# ブラウザと同じ頭で取り直して画像が返れば「サイトの欠陥ではない」（AOL・Yahoo の写真が guest・test-a の版面の頭で ✗ になった）
+FAIL_JS = ("window.__imgFail=[];addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.src&&!t.classList.contains('bg')){"
+           "var s=t.closest('section.sec');window.__imgFail.push([s?s.dataset.k:'トップ',t.src])}},true)")
+BROWSER_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
+                   "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"}
+
+
+def server_opens(url):
+    """写真の網址を、Referer なしのブラウザの頭で取り直して画像が返るか。"""
+    try:
+        r = urllib.request.urlopen(urllib.request.Request(url, headers=BROWSER_HEADERS), timeout=20)
+        return r.status == 200 and r.headers.get("content-type", "").startswith("image/")
+    except Exception:
+        return False
+
+
+def nohead_real(nohead, fails, opens=server_opens):
+    """版面の頭が写真なしの版面のうち、本当に写真が開けない（または写真がない）もの。
+    ブラウザで開けなかった写真が全部、取り直せば開く版面は手元の回線の都合なので外す。"""
+    out = []
+    for k in nohead:
+        srcs = [s for kk, s in fails if kk == k]
+        if not srcs or not all(opens(s) for s in dict.fromkeys(srcs)):
+            out.append(k)
+    return out
+
+
 def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_S):
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
     pg = b.new_page(viewport={"width": width, "height": height})
     loads, errors = [], []
     pg.on("load", lambda: loads.append(pg.url))
     pg.on("pageerror", lambda e: errors.append(str(e)[:160]))
+    pg.add_init_script(FAIL_JS)
     pg.goto(base, wait_until="domcontentloaded", timeout=60000)
     if WHO[who]:
         pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}",
@@ -96,6 +125,9 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         hero:(p=>{if(!p)return false;const i=p.querySelector('img:not(.bg):not(.ico)');return p.matches('.icon,.none')||!i||!(i.complete&&i.naturalWidth>0)})(document.querySelector('.poster .top .pic')),
         sw:document.documentElement.scrollWidth})""", BOXES)
     near = [] if page else pg.evaluate(NEAR_JS)
+    fails = pg.evaluate("window.__imgFail||[]") if (st["nohead"] or st["heads"]) else []
+    nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
+    heads = nohead_real(sorted(set(st["heads"])), fails) if st["heads"] else []
     first = pg.evaluate(FIRST_JS)
     pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
     bad = []
@@ -137,10 +169,10 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append("ポスターの写真が出ていない")
     if st["arts"] and st["empty"]:   # 2026-10-24：記事が 8 本あってもポスターが「直近 7 日は新着なし」（写真のある記事がない）
         bad.append(f"記事が {st['arts']} 本あるのにポスターが「新着なし」（写真 {st['pics']} 枚）")
-    if st["heads"]:   # 2026-10-25：記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：版面の全部の記事に、さらにトップ（#front の article.wc）も。開けない写真は render.SWAP_JS が .nophoto に落とす
-        bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(st['heads'])}：" + "・".join(sorted(set(st["heads"]))[:4]))
-    if st["nohead"]:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
-        bad.append(f"版面の頭が写真なし（字だけの形）{len(st['nohead'])}：" + "・".join(st["nohead"][:4]))
+    if heads:   # 2026-10-25：記事の枠が出典のアイコンの札（写真が出ない）。2026-10-27：版面の全部の記事に、さらにトップ（#front の article.wc）も。開けない写真は render.SWAP_JS が .nophoto に落とす
+        bad.append(f"記事が札（写真が出ない。開けない写真は字だけの形に落とす）{len(heads)}：" + "・".join(heads[:4]))
+    if nohead:   # 2026-10-27：札は字だけの形に落ちても、版面の頭（大きい枠）が写真なしのままでは「頭に写真」の規則が守られていない（開けない写真を組むときに知らない。BACKLOG の [?] 呪術廻戦の頭）
+        bad.append(f"版面の頭が写真なし（字だけの形）{len(nohead)}：" + "・".join(nohead[:4]))
     if st["plates"]:
         print(f"  札 {st['plates']}／写真枠 {st['frames']}（{who} {width}px。0 が目標）")
     if near:

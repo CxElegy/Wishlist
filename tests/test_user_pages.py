@@ -311,6 +311,15 @@ class ZeroShellRendered(unittest.TestCase):
         for page in ("wishlist", "heat"):
             self.assertEqual(self._html(page, [], broken).count('class="go big"'), 0)
 
+    def test_nohead_excuses_only_pictures_that_open_from_server(self):
+        """版面の頭が写真なし：ブラウザで開けなかった写真が取り直せば開くなら手元の回線の都合（外す）。開かない・写真がないなら ✗。"""
+        import sys, pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        fails = [("A", "http://x/ok.jpg"), ("B", "http://x/bad.jpg"), ("B", "http://x/ok.jpg")]
+        opens = lambda u: u.endswith("ok.jpg")
+        self.assertEqual(ux_check.nohead_real(["A", "B", "C"], fails, opens), ["B", "C"])
+
     def test_ux_check_covers_every_shell_page(self):
         import sys, pathlib
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
