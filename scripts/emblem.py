@@ -254,6 +254,15 @@ def groups(api, titles):
     return out
 
 
+ALT_VERSION = re.compile(r"[（(]\s*(?:Adventures|Origins|Masters|Manga|Special|Pocket Monsters)\s*[）)]\s*$", re.I)   # 同じ名前の別の版（漫画・外伝）
+
+
+def known_first(names):
+    """名簿の順を「見てすぐわかる人」から：同じ名前の別の版（Red (Adventures)・Red (Origins)）は後ろへ（元の順は保つ）。
+    リンク数だけだと、漫画の人がアニメの主役より先に来た（ポケットモンスター、2026-10-25）。"""
+    return sorted(names, key=lambda n: bool(ALT_VERSION.search(str(n))))
+
+
 def category_top(api, category, n, dropped=None):
     """Wiki の分類（例：Wizards）のキャラを「ほかのページからのリンク数」→「記事の長さ」の順に多い n 人。
     物語の中心にいるキャラほど多くのページから参照される（AniList にないゲームなどで主要キャラを決める基準）。"""
@@ -287,7 +296,7 @@ def category_top(api, category, n, dropped=None):
     # リンク数が同じ（ナビ欄で全員つながっているだけ）のときは、記事の長さ（主要キャラほど長い）で決める
     ranked = sorted(titles, key=lambda t: (-counts[t], -length[t]))
     print("  リンク数・記事の長さ：" + "、".join(f"{t} {counts[t]}/{length[t]}" for t in ranked[:n + 3]), file=sys.stderr)
-    return ranked[:n]
+    return known_first(ranked)[:n]
 
 
 def gallery(api, page, match, n):

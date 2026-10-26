@@ -77,7 +77,7 @@ RULES = {
 # 一度に全部は集めず、1 回の後台で STEP 人ずつ（まだいない人から、回ごとにずらして）足していく
 CEIL = {"person": 10, "group": 50, "character": 200, "brand": 1, "topic": 10}
 STEP = 10
-NAMES_V = 7   # 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
+NAMES_V = 8   # 8：名簿の順を見てすぐわかる人から（同じ名前の別の版 (Adventures)・(Origins)・(Masters) は後ろ、emblem.known_first。済みの版面の小元素の並びも名簿の順に、off_roster）。 7：Cast の節を Wikidata の記事（sitelink）からも・名字を足した書き方は同じ人・役の中の <!-- --> を消す・そろっていても版が上がった回は roster（_recount）。6：名前のない端役（Unnamed …）と集まりのページ（分類 Music bands・Gangs）を名簿・数から外す（GTA 6 の 39 人に 12）。 5：5：実写の wiki: の記事を同じ言語でも全部（漫威电影の Avengers: Doomsday が MCU に隠れていた）。 名簿（find_sources・roster）の規則の版。上げると、そろっているキャラの版面も 1 回ずつ名簿を数え直す（2：作品の分類・AniList より分類・実写は出演者、3：実写は wiki: の記事の P161・Cast の節も、4：分類に作品の登場人物 P674 がいるか・手で数えた人数に合う分類・名簿にいない人の小元素を外す、2026-10-25）
 KIND_BY_TYPE = {"anime": "character", "game": "character", "show": "character",
                 "event": "person", "product": "brand", "category": "topic"}
 KIND_JA = {"person": "本人", "group": "グループ", "character": "キャラ", "brand": "ブランド", "topic": "主題"}
@@ -505,17 +505,19 @@ def roster(item, log=print):
     elif item.get("anilist_id"):
         names = emblem.anilist_main(item["anilist_id"], 50)
         how = "AniList の主役（role MAIN）の人数"
-    names = [x for x in names if not emblem.not_character(x)]   # まとめ・一覧・Player・別の作品の姿（Smash Bros・vs.）は人ではない
+    who = emblem.known_first(who)
+    names = emblem.known_first([x for x in names if not emblem.not_character(x)])   # まとめ・一覧・Player・別の作品の姿（Smash Bros・vs.）は人ではない
     if not names:
         return None
     n = len(names)
     add = [x for x in names if not any(_same_person(y, x) for y in who)][:max(0, min(CEIL["character"], n) - len(who))]   # 前の名簿の「Uryuu Ishida」と分類の「Uryū Ishida」は同じ人（2 枚にしない）
     with WRITE_LOCK:
         _set_field(item["name"], "emblem_pool", f"{n}   # 主要な要素の数＝小元素の上限（{how}、scripts/emblem_fill.py の roster）")
-        if add or who != old:
-            _set_field(item["name"], "emblem_who", json.dumps(who + add, ensure_ascii=False)
+        full = emblem.known_first(who + add)   # 別の版（Red (Adventures)）は後ろ。足した名前がその前に入る
+        if add or full != old:
+            _set_field(item["name"], "emblem_who", json.dumps(full, ensure_ascii=False)
                        + "   # 集める対象（メンバー・キャラ・出演者）")
-        roles = {**{k: v for k, v in cast_roles.items() if k in who + add}, **(item.get("emblem_roles") or {})}   # 記事の「X as Y」の役（手で書いた・前に引いた役が先）
+        roles = {**{k: v for k, v in cast_roles.items() if k in full}, **(item.get("emblem_roles") or {})}   # 記事の「X as Y」の役（手で書いた・前に引いた役が先）
         if roles != (item.get("emblem_roles") or {}):
             _set_field(item["name"], "emblem_roles", json.dumps(roles, ensure_ascii=False) + "   # 出演者 → 役（記事の Cast の節・gather_roles）")
     log(f"  [名簿] {item['name']}：{how} {n} → 上限 {min(CEIL['character'], n)}、名前を {len(add)} 人足した")
@@ -2037,12 +2039,16 @@ def off_roster(item, log=print):
     keys = {_name_key(w) for w in who if not emblem.not_character(w)}   # 名簿にいても人でない名前（Unnamed Officer 1）は外す
     ems = [x for x in item.get("emblem") or [] if isinstance(x, dict)]
     keep = [x for x in ems if x.get("lock") or _name_key(x.get("subject")) in keys or _name_key(_base_subject(x.get("subject"))) in keys]   # 「Soldier 11」は名前のまま。固定した写真は替えない
-    if len(keep) == len(ems):
+    rank = {}
+    for i, w in enumerate(who):
+        rank.setdefault(_name_key(w), i)
+    keep.sort(key=lambda x: rank.get(_name_key(x.get("subject")), rank.get(_name_key(_base_subject(x.get("subject"))), len(rank))))   # 小元素の並びも名簿の順（見てすぐわかる人が先）
+    if keep == ems:
         return 0
     with WRITE_LOCK:
         emblem.write_item(item["name"], keep, None)
-    log(f"  [名簿] {item['name']}：名簿にいない {len(ems) - len(keep)} 枚を外した")
-    return len(ems) - len(keep)
+    log(f"  [名簿] {item['name']}：名簿にいない {len(ems) - len(keep)} 枚を外した・名簿の順に並べた")
+    return len(ems) - len(keep) or 1   # 並べ直しだけでも「変えた」
 
 
 def untied_roles(item, log=print):
