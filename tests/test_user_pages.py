@@ -311,17 +311,24 @@ class ZeroShellRendered(unittest.TestCase):
         for page in ("wishlist", "heat"):
             self.assertEqual(self._html(page, [], broken).count('class="go big"'), 0)
 
-    def test_ux_check_covers_both_pages_everywhere(self):
+    def test_ux_check_covers_every_shell_page(self):
         import sys, pathlib
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
         import ux_check
-        for who in ("test-a", "test-b", "test-c"):
+        pages = ux_check.shell_pages()
+        for pg in ("wishlist.html", "heat.html", "themes.html", "terms.html"):
+            self.assertIn(pg, pages)
+        # AUTH_JS を持つ docs/home の html を数え直して突き合わせる（ページを足すと点検が自動で広がる）
+        home = pathlib.Path(__file__).resolve().parent.parent / "docs" / "home"
+        want = sorted(f.name for f in home.glob("*.html") if "wl-auth" in f.read_text(encoding="utf-8")
+                      and f.stem not in ("index", "settings", "me") and not f.stem.startswith("admin"))
+        self.assertEqual(pages, want)
+        for who in ("guest", "test-a", "test-b", "test-c"):
             r = ux_check.runs_for(who, ["1400", "390"])
-            for pg in ("wishlist.html", "heat.html"):
-                self.assertIn((1400, pg, 900), r)
-                self.assertIn((390, pg, 900), r)
+            for pg in pages:
+                self.assertIn((1400, pg, 900), r, (who, pg))
+                self.assertIn((390, pg, 900), r, (who, pg))
         r = ux_check.runs_for("test-c", ["1400", "390"])
-        for pg in ("settings.html", "wishlist.html", "heat.html"):
+        for pg in ["settings.html"] + pages:
             for h in (667, 740):
                 self.assertIn((390, pg, h), r)
-        self.assertNotIn((1400, "wishlist.html", 900), ux_check.runs_for("guest", ["1400", "390"]))

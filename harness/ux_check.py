@@ -472,14 +472,22 @@ def re_pick():
 
 
 
+def shell_pages():
+    """AUTH_JS（wl-auth）を持ち、index・settings・me・admin 以外のページ＝ログインした人が同じ殻（drawMine）に入るページ。
+    docs/home の html から数えるので、ページを足しても点検が自動で広がる（2026-10-27：themes・terms の数え漏れ）。"""
+    d = ROOT / "docs" / "home"
+    return sorted(f.name for f in d.glob("*.html")
+                  if f.stem not in ("index", "settings", "me") and not f.stem.startswith("admin")
+                  and "wl-auth" in f.read_text(encoding="utf-8"))
+
+
 def runs_for(who, widths):
-    """人ごとの (幅, ページ, 高さ)。欲しい物・話題度（AUTH_JS の「index・settings 以外」の枝＝同じ殻の 2 ページ）はログインした人みんな・全幅、
+    """人ごとの (幅, ページ, 高さ)。殻のページ（shell_pages＝AUTH_JS の「index・settings 以外」の枝）は guest を含む全員・全幅、
     0 個の人（test-c）は 390 幅の小さい端末（高さ 667・740）でも、最初の画面・設定・欲しい物・話題度（2026-10-27）。"""
     runs = [(int(w), pg, 900) for pg in ("", "settings.html") for w in widths]
-    if WHO[who]:
-        runs += [(int(w), pg, 900) for pg in ("wishlist.html", "heat.html") for w in widths]
+    runs += [(int(w), pg, 900) for pg in shell_pages() for w in widths]   # guest も（殻なし・100 字の下限の枝）
     if who == "test-c" and "390" in widths:
-        runs += [(390, pg, h) for h in (667, 740) for pg in ("", "settings.html", "wishlist.html", "heat.html")]
+        runs += [(390, pg, h) for h in (667, 740) for pg in ["", "settings.html"] + shell_pages()]
     return runs
 
 
