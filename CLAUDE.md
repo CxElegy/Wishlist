@@ -47,6 +47,7 @@
 - 做完、测试通过 → **直接开 PR 并合并**，不问「要不要合并」。合并后确认网页已更新，附链接告诉我。
 - **开 PR 前先改架构图**：改了逻辑（规则・算法・阈值・流程・定时）→ 同一个 PR 改 `scripts/processes.py`（`COMPONENTS` 加 / 改札，`PROCESSES` 的 `flow` 加步骤、`uses` 连上），规矩见 `docs/rules/admin.md`「架构图・流程图的规矩」。
   CI `scripts/check_arch.py` 拦：改了 `scripts/*.py` 或 workflow 没改 `processes.py` 的 PR 不通过。不影响图的，PR 说明写一行「架构图：不用改（理由）」。（2026-10-17 连着漏两次后加的）
+  书写位置也拦（#383 的续篇）：改了的 `scripts/*.py`・workflow 若写在某个 PROCESSES 的 `files` 里，那个流程（或它 `uses` 的部件）自己也要改了，写进别的流程不算。
 
 ## 我的 👍 / 👎 要记住
 

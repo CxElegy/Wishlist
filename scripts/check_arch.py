@@ -33,6 +33,33 @@ def changed_files(base):
     return [p for p in out.stdout.splitlines() if p]
 
 
+def _load(src):
+    ns = {"__name__": "processes_snapshot"}
+    exec(compile(src, ARCH_FILE, "exec"), ns)  # processes.py は html / json / re だけを読む
+    return ns["PROCESSES"], ns.get("COMPONENTS", {})
+
+
+def place_info(base):
+    """(ファイル → それを files に持つプロセスの id の集まり, 絵が書き換わったプロセスの id の集まり)。
+    プロセスが「書き換わった」= 自分の定義、または uses の部品の定義が base と違う。読めなければ None（この検査は飛ばす）。"""
+    try:
+        old = subprocess.run(["git", "show", f"{base}:{ARCH_FILE}"], capture_output=True, text=True, check=True).stdout
+        with open(ARCH_FILE, encoding="utf-8") as f:
+            new = f.read()
+        (op, oc), (np, nc) = _load(old), _load(new)
+    except Exception:
+        return None
+    dump = lambda o: json.dumps(o, sort_keys=True, ensure_ascii=False, default=str)  # noqa: E731
+    before = {p["id"]: dump(p) for p in op}
+    owners, changed = {}, set()
+    for p in np:
+        for f in p.get("files", []):
+            owners.setdefault(f, set()).add(p["id"])
+        if before.get(p["id"]) != dump(p) or any(dump(oc.get(u)) != dump(nc.get(u)) for u in p.get("uses", [])):
+            changed.add(p["id"])
+    return owners, changed
+
+
 def pr_body():
     path = os.environ.get("GITHUB_EVENT_PATH")
     if not path or not os.path.exists(path):
@@ -41,16 +68,28 @@ def pr_body():
         return ((json.load(f).get("pull_request") or {}).get("body")) or ""
 
 
-def check(files, body=""):
-    """返回 (通过吗, 说明)。"""
+def misplaced(logic, place):
+    """改った逻辑文件のうち、それを files に持つプロセスがあるのに、そのどれの絵も書き換わっていないもの。"""
+    owners, changed = place
+    return [(p, sorted(owners[p])) for p in logic if owners.get(p) and not (owners[p] & changed)]
+
+
+def check(files, body="", place=None):
+    """返回 (通过吗, 说明)。place = place_info() の結果（書いた場所も見る）。"""
     logic = [p for p in files if is_logic(p)]
     if not logic:
         return True, "没改逻辑文件"
+    skip = next((line.strip() for line in body.splitlines() if SKIP_TOKEN in line), None)
     if ARCH_FILE in files:
+        bad = misplaced(logic, place) if place and not skip else []
+        if bad:
+            return False, ("架构图改了，但改了的文件对应的流程（PROCESSES）没改：\n  " +
+                           "\n  ".join(f"{p}（写在 {', '.join(ids)} 的 files 里）" for p, ids in bad) +
+                           "\n这个变化要写进上面的流程（flow / COMPONENTS），写在别的流程里不算。"
+                           f"\n确实不用的话，在 PR 说明里写一行「{SKIP_TOKEN}（理由）」。")
         return True, f"逻辑和架构图一起改了：{', '.join(logic)}"
-    for line in body.splitlines():
-        if SKIP_TOKEN in line:
-            return True, f"PR 说明写了不用改图：{line.strip()}"
+    if skip:
+        return True, f"PR 说明写了不用改图：{skip}"
     return False, ("改了逻辑却没改架构图（" + ARCH_FILE + "）：\n  " + "\n  ".join(logic) +
                    "\n改了的规则 / 算法 / 流程要写进 COMPONENTS 和对应 PROCESSES 的 flow（docs/rules/admin.md「架构图・流程图的规矩」）。"
                    f"\n确实不影响图的话，在 PR 说明里写一行「{SKIP_TOKEN}（理由）」。")
@@ -58,7 +97,7 @@ def check(files, body=""):
 
 def main():
     base = sys.argv[1] if len(sys.argv) > 1 else f"origin/{os.environ.get('GITHUB_BASE_REF') or 'main'}"
-    ok, msg = check(changed_files(base), pr_body())
+    ok, msg = check(changed_files(base), pr_body(), place_info(base))
     print(("✓ " if ok else "✗ ") + msg)
     sys.exit(0 if ok else 1)
 
