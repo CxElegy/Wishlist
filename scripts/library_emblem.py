@@ -247,6 +247,30 @@ def unbroken(emblems, photo, fetch=None):
     return out
 
 
+def split_closeups(emblems, fetch=None):
+    """公開の箱の網址の小元素のうち顔だけのアップ（emblem_fill.closeup_of：顔の幅 > CLOSE_W か、顔の下 < SHOULDER_MIN）を分ける。
+    → (残す, 外す)。1 版面で CLOSE_HOLD 以上が当たるときは外さない（小元素が極端に減る）。顔が測れない・読めないものは残す。固定・全身・ロゴは見ない。
+    外したものの元の画像は emblem_reject、人は emblem_redo に（呼び側。DB には直接書かない：この回の config の書き直しの道）。"""
+    import urllib.request
+    from PIL import Image
+    import emblem_fill
+    fetch = fetch or (lambda u: urllib.request.urlopen(u, timeout=20).read())
+    keep, gone = [], []
+    for x in emblems or []:
+        u = str(x.get("image") or "") if isinstance(x, dict) else ""
+        if isinstance(x, dict) and f"/storage/v1/object/public/{BUCKET}/" in u and x.get("shape") not in ("logo", "icon", "badge") and not x.get("body") and not x.get("lock"):
+            try:
+                if emblem_fill.closeup_of(Image.open(io.BytesIO(fetch(u)))):
+                    gone.append(x)
+                    continue
+            except Exception:
+                pass
+        keep.append(x)
+    if emblems and len(gone) / len(emblems) >= emblem_fill.CLOSE_HOLD:
+        return list(emblems), []
+    return keep, gone
+
+
 def measure_faces(emblems, fetch=None):
     """人物の切り抜き（公開の箱の網址）の顔を測る（店長の items.yaml と同じ emblem_face.measure）。→ (新しいリスト, 測った枚数)。
     お客さまの版面も店長と同じ fit/view で顔の大きさをそろえる材料（boards.config.emblem[].face）。"""
@@ -283,6 +307,11 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
         recheck = int(((board.get("config") or {}).get("emblem_state") or {}).get("bv") or 0) < emblem_fill.BROKEN_V
         if recheck and got.get("emblem"):   # 前の回に公開の箱へ上げた小元素は emblem_fill.broken_cuts が見ない（emblems/ の手元の画像だけ）→ ここで同じ規則（ポケモン 2・Mrs. GREEN APPLE 1）
             got["emblem"] = unbroken(got["emblem"], emblem_fill.needs_face(item))
+            if emblem_fill.kind_of(item) in ("person", "group", "character"):   # 顔だけのアップ（BROKEN_V 8）：外して元の画像は emblem_reject・人は emblem_redo → 次の回に胸像を探す
+                got["emblem"], gone = split_closeups(got["emblem"], fetch)
+                if gone:
+                    got["emblem_reject"] = list(dict.fromkeys(list(got.get("emblem_reject") or []) + [g.get("source") or g["image"] for g in gone]))
+                    got["emblem_redo"] = list(dict.fromkeys(list(got.get("emblem_redo") or []) + [g["subject"] for g in gone if g.get("subject")]))
         stem = board.get("wd") or f"b{board['id']}"
         cfg = board.get("config") or {}
         add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}

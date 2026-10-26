@@ -1727,6 +1727,7 @@ def commit(item, good, picks, replace=False, log=print):
         emblem.cut_all(name, not needs_face(item), [x["image"] for x in old])   # 実在の人は写真として切る。前からの小元素は取景で外さない
         emblem.fit_all(name, not needs_face(item))
         drop_broken(next((i for i in load_items() if i["name"] == name), item), log)   # 作り直しで縮んだ・読めない前からの小元素も外す
+        drop_closeups(next((i for i in load_items() if i["name"] == name), item), log, only={u for x in chosen for u in (x.get("image"), x.get("source")) if u})   # 今回選んだものが顔だけのアップなら外して次の候補へ
         # 切り抜きの検査で外れた画像は emblem_reject に書く（次は同じ人の次の候補を選ぶ。同じ画像で何度も失敗しない）
         now = next((i for i in load_items() if i["name"] == name), {})
         kept = {u for x in now.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source"))}
@@ -2059,7 +2060,7 @@ def fill_one(item, log=print):
             log(f"  [名簿] {item['name']}：{e}")
     if unbreak(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
-    if off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log):
+    if off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log) | drop_closeups(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
     if status(item)["state"] == "ok":   # 名簿を数え直しても足りている（名簿を確かめに来ただけ）：集めない
         st = status(item)
@@ -2232,7 +2233,74 @@ def broken_image(im, photo):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 7   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 8   # broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+
+
+CLOSE_W = 0.45         # 顔の幅 ÷ 画像の幅がこれを超える = 顔だけのアップ（髪から顎まで。小元素は胸像：BLEACH の黒崎一護 372×519 は顔の幅 54〜68%）
+SHOULDER_MIN = 0.15    # 顔の下端から下の余白 ÷ 画像の高さがこれ未満 = 肩・胸が写っていない（一護 5%・チェーンソーマンなどの胸像は 20% 以上）
+CLOSE_HOLD = 0.5       # 1 版面でこの割合以上が当たるときは、前からの小元素は外さず報告だけ（BLEACH Mirrors High 52/92：Fandom のページ画像が顔だけのアップ）
+
+
+def closeup_of(im):
+    """切り抜き 1 枚（PIL）が「顔だけのアップ」か → True / False / None（顔が測れない：アニメ絵で検出できない・物・覆面。落とさず数に出す）。
+    顔の測りは emblem_face.measure（fs・top）と、同じ検出器の箱（emblem_face._boxes）の幅を呼ぶだけ（書き換えない）。"""
+    import emblem_face
+    f = emblem_face.measure(im)
+    if not f[0]:
+        return None
+    w, h = im.size
+    box = min((b for b in emblem_face._boxes(im) if h and abs(b[3] / h - f[0]) < 0.003), key=lambda b: abs(b[3] / h - f[0]), default=None)
+    face_w = box[2] / w if box and w else 0
+    return face_w > CLOSE_W or 1 - f[1] - f[0] < SHOULDER_MIN
+
+
+def closeup_cuts(item, only=None):
+    """今ある小元素（人物の切り抜き・全身 body は除く）のうち顔だけのアップ → ([小元素], 顔が測れない枚数, 調べた枚数)。only = 元の画像の組を渡すと、それだけ。"""
+    from PIL import Image
+    bad, nof, n = [], 0, 0
+    for x in item.get("emblem") or []:
+        im = str(x.get("image") or "") if isinstance(x, dict) else ""
+        p = emblem.sitedir.SITE_DIR / im
+        if not im.startswith("emblems/") or x.get("shape") in ("logo", "icon", "badge") or x.get("body") or x.get("lock") or not p.exists():
+            continue
+        if only is not None and (x.get("source") or im) not in only and im not in only:
+            continue
+        try:
+            r = closeup_of(Image.open(p))
+        except Exception:
+            continue
+        n += 1
+        if r is None:
+            nof += 1
+        elif r:
+            bad.append(x)
+    return bad, nof, n
+
+
+def drop_closeups(item, log=print, only=None):
+    """顔だけのアップの小元素を外す：元の画像は emblem_reject（二度と選ばない）、その人は emblem_redo（次の回に同じ人の別の写真を先に）。
+    取るとき（commit の直後、only = 今回選んだ元の画像）は無条件。前からのもの（only なし）は、1 版面の CLOSE_HOLD 以上が当たるときは外さず報告だけ
+    （小元素が極端に減る：BLEACH Mirrors High 52/92）。顔が測れないものは落とさず数に出す。固定（lock）は替えない。→ 外した枚数。"""
+    if kind_of(item) not in ("person", "group", "character"):
+        return 0
+    bad, nof, n = closeup_cuts(item, only)
+    if nof:
+        log(f"  [顔だけのアップ] {item['name']}：顔が測れない {nof} 枚は落とさない（アニメ絵など）")
+    if not bad:
+        return 0
+    total = len([x for x in item.get("emblem") or [] if isinstance(x, dict)])
+    if only is None and total and len(bad) / total >= CLOSE_HOLD:
+        log(f"  [顔だけのアップ] {item['name']}：{len(bad)}/{total} 枚が当たるので外さず報告だけ（{'、'.join(str(b.get('subject')) for b in bad[:6])}…）")
+        return 0
+    keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad]))
+    redo = list(dict.fromkeys(list(item.get("emblem_redo") or []) + [b["subject"] for b in bad if b.get("subject")]))
+    with WRITE_LOCK:
+        emblem.write_item(item["name"], keep, None)
+        _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+        _set_field(item["name"], "emblem_redo", json.dumps(redo, ensure_ascii=False) + "   # 別の写真に替える人（次の集めで先に）")
+    log(f"  [外した] {item['name']}：顔だけのアップ {len(bad)} 枚（{'、'.join(str(b.get('subject')) for b in bad)}）→ 胸像を探し直す")
+    return len(bad)
 
 
 def _broken_log(d=None):
@@ -2262,7 +2330,7 @@ def unbreak(item, log=print):
         for e in old:
             x = e["emblem"]
             if (_name_key(x.get("subject")) not in have and (emblem.sitedir.SITE_DIR / str(x.get("image"))).exists()
-                    and not broken_cuts({**item, "emblem": [x]})):
+                    and not broken_cuts({**item, "emblem": [x]}) and not closeup_cuts({**item, "emblem": [x]})[0]):   # 顔だけのアップ（8）は戻さない
                 back.append(x)
                 have.add(_name_key(x.get("subject")))
         d[name] = [e for e in ents if e not in old] + [{**e, "v": BROKEN_V} for e in old if e["emblem"] not in back]

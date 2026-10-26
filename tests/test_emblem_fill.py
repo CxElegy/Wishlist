@@ -1945,6 +1945,50 @@ class FindSources(unittest.TestCase):
         self.assertEqual(ef.head_missing(live), ["Pedro Pascal"])
         self.assertEqual(ef.head_missing({"emblem_who": ["Inklings"], "emblem": [{"subject": "Inklings 2"}]}), [])
 
+    def test_closeup_is_face_only_without_shoulders(self):
+        """BLEACH の黒崎一護 372×519：顔の幅 54〜68%・顔の下 5% = 顔だけのアップ。胸像（顔の下 26%）は可。顔が測れないものは None（落とさない）。"""
+        from PIL import Image
+        im = Image.new("RGBA", (372, 519))
+        with mock.patch.object(ef.emblem_face, "measure", return_value=[0.733, 0.22, 0.54, 0.51, 372, 519]), \
+                mock.patch.object(ef.emblem_face, "_boxes", return_value=[(60, 114, 252, 380)]):
+            self.assertTrue(ef.closeup_of(im))
+        with mock.patch.object(ef.emblem_face, "measure", return_value=[0.31, 0.08, 0.5, 0.5, 372, 519]), \
+                mock.patch.object(ef.emblem_face, "_boxes", return_value=[(130, 40, 110, 161)]):
+            self.assertFalse(ef.closeup_of(im))   # 顔の幅 30%・顔の下 61%
+        with mock.patch.object(ef.emblem_face, "measure", return_value=[0.2, 0.75, 0.5, 0.5, 372, 519]), \
+                mock.patch.object(ef.emblem_face, "_boxes", return_value=[(130, 389, 80, 104)]):
+            self.assertTrue(ef.closeup_of(im))   # 顔は小さいが顔の下が 5%（肩・胸が写っていない）
+        with mock.patch.object(ef.emblem_face, "measure", return_value=[0, 0, 0.5, 0.5, 372, 519]):
+            self.assertIsNone(ef.closeup_of(im))
+
+    def test_drop_closeups_rejects_source_and_marks_redo(self):
+        """顔だけのアップは外して元の画像を emblem_reject・人を emblem_redo に。顔が測れないものは残す。固定は替えない。半分以上が当たる前からの版面は外さず報告だけ（取るときは無条件）。"""
+        from PIL import Image
+        def run(flags, only=None):
+            with tempfile.TemporaryDirectory() as d:
+                tmp = pathlib.Path(d)
+                (tmp / "emblems").mkdir()
+                lines = ["items:", "  - name: b", "    emblem_kind: character", "    emblem:"]
+                for i in range(len(flags)):
+                    Image.new("RGBA", (40, 50), (9, 9, 9, 255)).save(tmp / "emblems" / f"p{i}.png")
+                    lines.append(f'      - {{subject: "P{i}", image: "emblems/p{i}.png", source: "https://x/p{i}.png", shape: cutout}}')
+                lines.append(f'      - {{subject: "Locked", image: "emblems/p0.png", source: "https://x/l.png", shape: cutout, lock: true}}')
+                (tmp / "items.yaml").write_text("\n".join(lines) + "\n", encoding="utf-8")
+                item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+                it = iter(flags)
+                with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
+                        mock.patch.object(ef, "closeup_of", side_effect=lambda im: next(it)):
+                    n = ef.drop_closeups(item, log=lambda *_: None, only=only)
+                return n, yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        n, got = run([True, False, None, False, False, False])   # 1/7 当たる
+        self.assertEqual(n, 1)
+        self.assertEqual([x["subject"] for x in got["emblem"]], ["P1", "P2", "P3", "P4", "P5", "Locked"])
+        self.assertEqual((got["emblem_reject"], got["emblem_redo"]), (["https://x/p0.png"], ["P0"]))
+        n, got = run([True, True, True, False])   # 3/5 = 半分以上：前からのものは外さない
+        self.assertEqual((n, len(got["emblem"])), (0, 5))
+        n, got = run([True, True, True, False], only={"https://x/p0.png", "https://x/p1.png", "https://x/p2.png"})   # 取るときは無条件
+        self.assertEqual((n, len(got["emblem"])), (3, 2))
+
     def test_known_first_puts_other_versions_last(self):
         """ポケモン：漫画の (Adventures) の人がアニメの主役より先に来ない。元の順は保つ。小元素の並びも名簿の順。"""
         who = ["Red (Adventures)", "Ash Ketchum", "Gold (Adventures)", "Goh", "Red (Origins)", "Roy"]
