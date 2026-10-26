@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-24T19:15:54+00:00",
-"text": "2026-10-25 第 3 バッチを出刊：Vaundy（1 版面・0 本・今日の整理待ちは全部終わり） · token 新規入力 3,315・キャッシュ読み 26.9万・出力 1,277",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.25,
-"mem_total": 16872804352,
-"mem_free": 15977893888,
-"disk_used": 10716880896,
-"disk_free": 30566289408,
-"disk_total": 41283170304,
-"peak": 197234688
-},
-"batch": 3,
-"boards": [
-"Vaundy"
-],
-"stories": 0,
-"left": 0,
-"edited": 14,
-"run": 1792868398.6157424,
-"tok": {
-"in": 6,
-"cw": 3309,
-"cr": 268993,
-"out": 1277,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 273585,
-"secs": 955,
-"run_tok": {
-"in": 46,
-"cw": 63498,
-"cr": 1681966,
-"out": 10886,
-"calls": 23,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-24T21:00:31+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1755,5 +1714,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 919130
+},
+{
+"at": "2026-10-26T00:53:47+00:00",
+"text": "2026-10-26 第 2 バッチを出刊：漫威电影（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 5,384・キャッシュ読み 40.8万・出力 1,729",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.4,
+"mem_total": 16872804352,
+"mem_free": 15871041536,
+"disk_used": 10784514048,
+"disk_free": 30498656256,
+"disk_total": 41283170304,
+"peak": 321744896
+},
+"batch": 2,
+"boards": [
+"漫威电影"
+],
+"stories": 5,
+"left": 0,
+"edited": 16,
+"run": 1792975319.88002,
+"tok": {
+"in": 10,
+"cw": 5374,
+"cr": 408201,
+"out": 1729,
+"calls": 5,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 415314,
+"secs": 708,
+"run_tok": {
+"in": 36,
+"cw": 56519,
+"cr": 1271608,
+"out": 6281,
+"calls": 18,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
