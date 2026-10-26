@@ -82,3 +82,4 @@
 - 2026-10-26 小元素は見てすぐわかる人から：名簿の別の版 (Adventures) などを後ろへ（known_first・off_roster の並べ直し・NAMES_V 8）· https://github.com/CxElegy/Wishlist/pull/450 · 全テスト 877 通過・CI 緑・ux_check guest は既知の E10 のみ · 次：library_emblem 後にポケモン版面の最初の 10 枚を確認
 - 2026-10-26 分類の端の企画ページ（f1f1）：本番で確かめた＝dota2 名簿 127→124（Yasuo・Irelia・John Raider なし・Ringmaster あり）· https://github.com/CxElegy/Wishlist/pull/451 · ux_check ✗ は E10 だけ（既知・[?] 待ち）· 次：[?] の答え
 - 2026-10-26 f1f2：dota2 端のページの別の目の指摘＝EMBLEM_PLAYBOOK に 48 行目・BACKLOG の NAMES_V 8→9 と Blood* 5 枚は残す決定を記録（文書だけ）· 確かめ：PR #451 の差分・items.yaml dota2 emblem_pool 124・本番 200 は別の目が確認済み · 次：[?] の答え
+- 2026-10-26 f2：1 画面目の穴＝日付の □（数字・等幅の書体に日本語の予備）・足の注記を畳む・ux_check に □ と頭条の写真 · https://github.com/CxElegy/Wishlist/pull/455 ・ https://github.com/CxElegy/Wishlist/pull/456 · 全テスト 878 通過・CI 緑・ux_check guest ✓（点検が本番の「N 件」の □ も見つけた） · 次：浮いているボタンが中身を隠さない
