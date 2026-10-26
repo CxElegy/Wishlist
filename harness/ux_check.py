@@ -103,7 +103,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad += emb_check.check(pg, who, width, out, full=emb == "full", guest=not WHO[who])
     b.close()
     if page:   # 設定ページ：版面・目次はないので、枠組み（題字・令牌）と本人の分か
-        if st["text"] < (40 if page == "wishlist.html" else 100):
+        if st["text"] < (40 if first and first.get("zero") else 100):   # 0 個の人の欲しい物・話題度は字が少ないのが正しい。本物の殻（「まだ何も追いかけていません」）が出ているときだけ緩める
             bad.append(f"白い画面（文字 {st['text']}）")
         if WHO[who] and page == "settings.html" and st["boxes"]:
             bad.append(f"素の箱 {st['boxes']} 個（本人の設定ページではない）")
@@ -469,6 +469,17 @@ def re_pick():
 
 
 
+def runs_for(who, widths):
+    """人ごとの (幅, ページ, 高さ)。欲しい物・話題度（AUTH_JS の「index・settings 以外」の枝＝同じ殻の 2 ページ）はログインした人みんな・全幅、
+    0 個の人（test-c）は 390 幅の小さい端末（高さ 667・740）でも、最初の画面・設定・欲しい物・話題度（2026-10-27）。"""
+    runs = [(int(w), pg, 900) for pg in ("", "settings.html") for w in widths]
+    if WHO[who]:
+        runs += [(int(w), pg, 900) for pg in ("wishlist.html", "heat.html") for w in widths]
+    if who == "test-c" and "390" in widths:
+        runs += [(390, pg, h) for h in (667, 740) for pg in ("", "settings.html", "wishlist.html", "heat.html")]
+    return runs
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="https://cxelegy.github.io/Wishlist/home/")
@@ -490,9 +501,7 @@ def main(argv):
             print(f"1 日通し：✗ {fails} 件")
             return 1 if fails else 0
         for who in a.who.split(","):
-            runs = [(int(w), pg, 900) for pg in ("", "settings.html") for w in a.widths.split(",")]
-            if who == "test-c" and "390" in a.widths.split(","):   # 2026-10-27：0 個の人は小さい端末（高さ 667・740）でも、最初の画面・設定・欲しい物の主役のボタンが固定ボタンと重ならない
-                runs += [(390, pg, h) for h in (667, 740) for pg in ("", "settings.html", "wishlist.html")]
+            runs = runs_for(who, a.widths.split(","))
             for w, page, h in runs:
                 try:
                     st, bad = check(pw, a.base, who, w, out, page, a.emb if h == 900 else "off", h, WATCH_S if h == 900 else 10)
