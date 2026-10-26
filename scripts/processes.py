@@ -56,7 +56,7 @@ COMPONENTS = {
              "what": "sources._pace / wikihttp.get。並列でもサイトから見た間隔は同じ"},
     "wikiua": {"kind": "rule", "name": "Wikimedia の決まり（wikihttp）", "spec": "UA「WishlistEmblemBot/1.1 (repo; Issues) python-requests」· WIKIMEDIA_TOKEN があれば API に OAuth 2.0 Bearer（上限が共有 IP でなくアカウントごと）· "
                "Wikidata の項目は Special:EntityData（CDN）· api.php に maxlag=5（Wikidata は WDQS の遅れまで数えるので付けない）· "
-               "429 / 503 / maxlag は Retry-After（なければ 5・15・45 秒）で 3 回まで · Retry-After > 120 秒か続く 429 → そのホスト 5 分休む · titles は 50 件ずつ",
+               "429 / 503 / maxlag は Retry-After（なければ 5・15・45 秒）で 3 回まで · Retry-After > 120 秒か続く 429 → そのホスト 5 分休む · titles は 50 件ずつ · Fandom の api.php（<wiki>.fandom.com）も同じ道〔ホストごと 1 本・Retry-After・3 日キャッシュ、maxlag・トークン・Wikimedia 全体の間隔は使わない〕",
                "what": "scripts/wikihttp.py（小元素・話題度の閲覧数）。ブラウザのふりの UA（Mozilla/…）は 403、名乗らないと毎分 10 回まで。守ったボットは全サイト合わせて毎分 200。"
                        "クラウドのコンテナ・Actions は IP を共有していて 1 回目から 429 のことがあるので、トークンで名乗る"},
     "httpcache": {"kind": "algo", "name": "requests-cache（SQLite）", "spec": "~/.cache/wishlist-http · api.php 3 日 · 画像 14 日 · 200 だけ（maxlag の断りは残さない）",

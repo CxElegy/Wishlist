@@ -71,7 +71,7 @@ def write_atomic(path, text):
 
 
 def _get(url, limit=MAX_BYTES):
-    if wikihttp.is_wikimedia(url):   # Wikimedia は決まりどおりの UA・1 本ずつ・Retry-After・キャッシュ
+    if wikihttp.is_wikimedia(url) or wikihttp.is_fandom(url):   # Wikimedia・Fandom の API は決まりどおりの UA・1 本ずつ・Retry-After・キャッシュ
         return wikihttp.get(url, limit)
     import time
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})

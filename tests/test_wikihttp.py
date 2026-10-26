@@ -95,6 +95,17 @@ class WikiHttpTest(unittest.TestCase):
         for u in ("https://genshin-impact.fandom.com/api.php", "https://notwikipedia.org/x", "https://example.com/?u=wikipedia.org"):
             self.assertFalse(wikihttp.is_wikimedia(u), u)
 
+    def test_fandom_api_one_at_a_time_no_token_no_maxlag(self):
+        wikihttp._token[0] = "SECRET"
+        s = self.use(_resp(429, headers={"Retry-After": "3"}), _resp(200, b'{"f":1}'))
+        u = "https://bleach.fandom.com/api.php?action=query"
+        self.assertTrue(wikihttp.is_fandom(u))
+        self.assertFalse(wikihttp.is_fandom("https://static.wikia.nocookie.net/x.png"))
+        self.assertEqual(emblem._get(u), b'{"f":1}')
+        self.assertEqual([c[1] for c in s.calls], [u, u])   # maxlag を付けない
+        self.assertEqual(s.auth, [None, None])   # トークンは Wikimedia だけ
+        self.assertIn(3.0, self.waits)   # Retry-After を守った
+
     def test_maxlag_added_to_api_only(self):
         self.assertEqual(wikihttp.with_maxlag("https://en.wikipedia.org/w/api.php?action=query"),
                          "https://en.wikipedia.org/w/api.php?action=query&maxlag=5")
