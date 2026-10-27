@@ -43,6 +43,12 @@ class NoneKind(unittest.TestCase):
             emblem_face._store(x, fig())
         self.assertFalse({"nk", "bb", "nfv"} & set(x))
 
+    def test_stale_when_nk_missing(self):
+        x = {"face": [0, 0, 0.5, 0.5, 320, 400], "nfv": emblem_face.NONE_V}
+        self.assertTrue(emblem_face.stale(x, (320, 400)))
+        x.update(nk="keep", bb=[0, 1, 0, 1])
+        self.assertFalse(emblem_face.stale(x, (320, 400)))
+
     def test_store_keys_survive_items_yaml(self):
         """_store が書くキーが全部 items.yaml へ書き戻される（nk・bb を落として「? 10」のままだった根）。"""
         import emblem

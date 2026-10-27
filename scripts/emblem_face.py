@@ -165,7 +165,7 @@ def stale(x, size):
     f = x.get("face")
     if not (isinstance(f, list) and len(f) == 6 and f[4:] == list(size)):
         return True
-    return f[0] == 0 and x.get("nfv") != NONE_V
+    return f[0] == 0 and (x.get("nfv") != NONE_V or not x.get("nk") or not x.get("bb"))   # nk・bb が欠けた顔なしも測り直す（書き戻しで落ちていた分）
 
 
 def _store(x, img):
