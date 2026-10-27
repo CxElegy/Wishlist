@@ -4008,7 +4008,7 @@ html[data-mine="2"] .mastwish,html[data-mine="2"] .navwish,html[data-mine="2"] .
 html[data-mine="2"] .vt,html[data-mine="2"] .vote,html[data-mine="2"] [data-vote]{display:none!important}
 html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none}
 .wl-cards>a.np{padding-top:8px}
-@media (max-width:560px){html[data-mine="2"] body{padding-bottom:72px}.wl-cards>a.np{display:flex}}
+@media (max-width:560px){html[data-mine="2"] body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.wl-cards>a.np{display:flex}}
 .wl-mybar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 14px;padding:6px 2px;border-bottom:2px solid var(--ink);font:700 13px/1.5 var(--font-sans);color:var(--ink)}   /* 箱にしない：店長のページの上に 1 本の帯だけ */
 .wl-mybar b{font:900 18px/1.3 var(--font-sans)}.wl-mybar a{color:var(--ink)}.wl-mybar small{flex-basis:100%;font-weight:500;opacity:.8}
 .wl-mybar a.add{padding:4px 12px;background:var(--gold);border:2px solid var(--ink);text-decoration:none}.wl-mybar small.ok{opacity:1;color:var(--ink);background:var(--paper);padding:4px 8px}

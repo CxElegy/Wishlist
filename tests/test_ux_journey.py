@@ -97,6 +97,19 @@ class CoverTest(unittest.TestCase):
         import render
         self.assertIn("body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}", render.AUTH_CSS if hasattr(render, "AUTH_CSS") else open(render.__file__, encoding="utf-8").read())
 
+    def test_every_phone_rule_keeps_safe_area(self):
+        """同じ規則の数え：≤560px で body の下の空きを決める所は全部 72px＋safe-area（render.py・札を持つ試作ページ）。plain な 72px が残らない。"""
+        import pathlib, re
+        root = pathlib.Path(__file__).resolve().parent.parent
+        files = [root / "scripts" / "render.py"] + [f for f in (root / "docs" / "testground").glob("*.html")
+                                                      if "max-width:560px){body{padding-bottom" in f.read_text(encoding="utf-8")
+                                                      or ".wl-auth{top:auto;bottom:12px" in f.read_text(encoding="utf-8")]
+        self.assertGreaterEqual(len(files), 3)   # render.py と d5-new・d5-now
+        for f in files:
+            t = f.read_text(encoding="utf-8")
+            self.assertNotRegex(t, r"body\{padding-bottom:72px\}", f.name)
+            self.assertIn("72px + env(safe-area-inset-bottom", t, f.name)
+
     def test_cover_bad(self):
         self.assertEqual(ux_check.cover_bad([]), [])
         self.assertIn("隠す", ux_check.cover_bad(["p:末尾"])[0])
