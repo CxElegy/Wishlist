@@ -319,6 +319,14 @@ def stage_holds(item, emblems, hold, pend, fetch=None):
     return rows, dropped, {s: n for s, n in new.items() if s in cur and n is not None}
 
 
+def closeup_fields(pend, who):
+    """胸像待ちの boards.config に書く分。待ちの人 {人: 取れなかった回数}（なくなれば None で消す）・各人の次に試す見込み・版面の見込み
+    （店長の state/emblem_closeup*.json と同じ式 emblem_fill.close_plan）。点検 emb_check E20 が読む。"""
+    import emblem_fill
+    at, eta = emblem_fill.close_plan(pend, who) if pend else (None, None)
+    return {"emblem_closeup": pend or None, "emblem_closeup_next": at, "emblem_closeup_eta": eta}
+
+
 def measure_faces(emblems, fetch=None):
     """人物の切り抜き（公開の箱の網址）の顔を測る（店長の items.yaml と同じ emblem_face.measure）。→ (新しいリスト, 測った枚数)。
     お客さまの版面も店長と同じ fit/view で顔の大きさをそろえる材料（boards.config.emblem[].face）。"""
@@ -372,10 +380,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
         cfg = board.get("config") or {}
         add = {k: v for k, v in got.items() if k not in KEEP and v != cfg.get(k)}
         if touched and (pend or cfg.get("emblem_closeup")):
-            add["emblem_closeup"] = pend or None   # 段階的な入れ替え中の人 {人: 取れなかった回数}。なくなれば消す
-            # 各人の次に試す見込み・版面の待ちが終わる見込み（店長の state/emblem_closeup*.json と同じ式 emblem_fill.close_plan）
-            at, eta = emblem_fill.close_plan(pend, item.get("emblem_who") or []) if pend else (None, None)
-            add["emblem_closeup_next"], add["emblem_closeup_eta"] = at, eta
+            add.update(closeup_fields(pend, item.get("emblem_who") or []))
         if got.get("emblem"):
             add["emblem"] = stash(got["emblem"], site, stem, upload, base)
         char = item["emblem_kind"] == "character"

@@ -127,3 +127,4 @@
 2026-10-27 f1 通しの「自分のページに札」✗：焼いた本人のページが足した直後は空だった → ownWait（#551）。確かめ：tests 961 OK、本番は焼き直し後に --journey。次：1 人分の即時焼き直し。
 - 2026-10-27 r1f1：#550 の連動の残り。お客さまの版面〔stage_holds〕が旧 close_order[:8] のまま→close_round に・見込みを保存〔close_plan：各人 next・版面 eta。店長 state/・お客さま boards.config〕・点検 E20〔✗〕・入口が close_round を使う tests。確かめ：tests OK。次：後台の回のあと E20=0・上位 12 人の入れ替え
 2026-10-27 f1 通し ✗ の続き（#554）：焼いた版と画面の食い違い・外す道・素の箱 1 つ・殻へ送る上限を跳ね返し回数に・id 重複を普段の回へ。確かめ：tests OK、本番 --journey 1400・390 とも ✓、ux_check は guest・test-a・test-b（--emb off）で枠組み・設定・欲しい物・話題度すべて ✓（✗ は小元素 E2/E7/E10 の前からのもの）、test-c は 580 秒で終わらず未確認〔通し実行を 15 分に収める段〕。次：0 個の焼いた版から空の「はじめに」を外す。
+- 2026-10-27 r1f2：#556 の別の目の指摘。E20 にお客さまの版面（boards.config）の分を足し〔boards_closeup_bad〕、保存の式を closeup_fields にして tests で E20 に通した。確かめ：tests OK・ux_check の E20 は ✗ なし（お客さまの待ち 0 件）・library_emblem を dispatch して bv 9 になった版面に待ちなし。次：待ちが出る版面での next/eta の実書き込み

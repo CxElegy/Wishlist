@@ -94,6 +94,14 @@ class CloseupWait(unittest.TestCase):
         old = {"b": {"A": {"n": 1, "next": "2026-10-27T07:47+09:00"}}}
         self.assertIn("古い", emb_check.closeup_wait_bad(old, {"b": {"waiting": 1}}, now)[0])
 
+    def test_library_save_passes_E20(self):
+        """お客さまの入口が書く config（library_emblem.closeup_fields）を E20 の読み方で数えて ✗ にならない／待ちがなくなれば消える。"""
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
+        import library_emblem
+        f = library_emblem.closeup_fields({"Ichigo": 1, "Rukia": 2}, ["Ichigo", "Rukia"])
+        self.assertEqual(emb_check.boards_closeup_bad([{"name": "X", "config": f}])[0], [])
+        self.assertEqual(library_emblem.closeup_fields({}, []), {"emblem_closeup": None, "emblem_closeup_next": None, "emblem_closeup_eta": None})
+
     def test_boards_closeup_bad(self):
         import datetime as dt
         now = dt.datetime(2026, 10, 27, 12, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
