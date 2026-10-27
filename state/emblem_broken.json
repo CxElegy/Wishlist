@@ -677,6 +677,164 @@
     "page": "https://bleach.fandom.com/wiki/Tatsufusa_Enj%C5%8Dji",
     "shape": "cutout"
    }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Rukia Kuchiki",
+    "why": "Bleach: Brave Souls の公式イラスト（顔だけのアップではなく胸像）",
+    "image": "emblems/bleach-mirrors-high-rukia-kuchiki.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/b/bc/BBSCaptain_Rukia.png/revision/latest?cb=20210108074047&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/File:BBSCaptain_Rukia.png",
+    "shape": "cutout",
+    "face": [
+     0.53,
+     0.214,
+     0.651,
+     0.557,
+     227,
+     202
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Renji Abarai",
+    "why": "Bleach: Brave Souls の公式イラスト（顔だけのアップではなく胸像）",
+    "image": "emblems/bleach-mirrors-high-renji-abarai.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/5/5e/BBSRenji.png/revision/latest/scale-to-width-down/1200?cb=20210131173341&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/File:BBSRenji.png",
+    "shape": "cutout",
+    "face": [
+     0.482,
+     0.486,
+     0.456,
+     0.444,
+     384,
+     233
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Orihime Inoue",
+    "why": "Orihime Inoue（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-orihime-inoue.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/9/94/686Post-War_Orihime.png/revision/latest/scale-to-width-down/400?cb=20190523143321&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Orihime_Inoue",
+    "shape": "cutout",
+    "face": [
+     0.647,
+     0.149,
+     0.597,
+     0.555,
+     185,
+     178
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Rangiku Matsumoto",
+    "why": "Rangiku Matsumoto（Fandom・Rangiku）",
+    "image": "emblems/bleach-mirrors-high-rangiku-matsumoto.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/3/32/685Rangiku_profile.png/revision/latest/scale-to-width-down/400?cb=20200322073312&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Rangiku_Matsumoto",
+    "shape": "cutout",
+    "face": [
+     0.514,
+     0.208,
+     0.426,
+     0.515,
+     234,
+     217
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Jūshirō Ukitake",
+    "why": "Jūshirō Ukitake（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-j-shir-ukitake.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/4/49/Ukitake_helps_out_Shunsui.png/revision/latest/scale-to-width-down/600?cb=20220731002259&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/J%C5%ABshir%C5%8D_Ukitake",
+    "shape": "cutout",
+    "ar": 0.75,
+    "fs": 0.346,
+    "face": [
+     0.346,
+     0.155,
+     0.503,
+     0.499,
+     199,
+     138
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Yumichika Ayasegawa",
+    "why": "Yumichika Ayasegawa（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-yumichika-ayasegawa.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/9/9f/Ep139YumichikaBlocksTentacle.png/revision/latest/scale-to-width-down/600?cb=20230301190048&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Yumichika_Ayasegawa",
+    "shape": "cutout",
+    "ar": 0.723,
+    "face": [
+     0,
+     0,
+     0.5,
+     0.631,
+     136,
+     162
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Kon",
+    "why": "Kon（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-kon.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/b/bd/Ep320KonProfile.png/revision/latest/scale-to-width-down/400?cb=20220907000221&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Kon",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.5,
+     223,
+     299
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Isane Kotetsu",
+    "why": "Isane Kotetsu（Fandom のページの胸像：顔だけのアップの代わり）",
+    "image": "emblems/bleach-mirrors-high-isane-kotetsu.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/2/24/BBSIsane.png/revision/latest/scale-to-width-down/600?cb=20220711135345&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Isane_Kotetsu",
+    "shape": "cutout",
+    "fs": 0.242,
+    "face": [
+     0.242,
+     0.156,
+     0.43,
+     0.538,
+     181,
+     190
+    ]
+   }
   }
  ],
  "The Mandalorian": [
@@ -738,6 +896,26 @@
     "page": "https://harrypotter.fandom.com/wiki/File:The_Philosopher%27s_Stone_HBO_Max_Still_04.jpg",
     "shape": "cutout",
     "upper": true
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Rubeus Hagrid（Nick Frost）",
+    "why": "Rubeus Hagrid（Nick Frost）：作品の記事の剧照（顔で出演者を照合 cos 0.38）",
+    "image": "emblems/rubeus-hagrid-nick-frost.webp",
+    "source": "https://static.wikia.nocookie.net/harrypotter/images/e/eb/The_Philosopher%27s_Stone_HBO_Max_Still_10.jpg/revision/latest/scale-to-width-down/1600?cb=20260325195221",
+    "page": "https://harrypotter.fandom.com/wiki/File:The_Philosopher%27s_Stone_HBO_Max_Still_10.jpg",
+    "shape": "cutout",
+    "fs": 0.613,
+    "face": [
+     0.613,
+     0.172,
+     0.668,
+     0.54,
+     207,
+     146
+    ]
    }
   }
  ],
@@ -878,6 +1056,46 @@
     "page": "https://www.youtube.com/watch?v=DG7yk78Fwoo",
     "shape": "cutout"
    }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Captain America（Anthony Mackie）",
+    "why": "Captain America（Anthony Mackie）：Fandom の役の記事の剧照",
+    "image": "emblems/captain-america-anthony-mackie.webp",
+    "source": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/d/dc/Captain_America_Brave_New_World_Teaser_Trailer_%2861%29.png/revision/latest/scale-to-width-down/600?cb=20240713040748",
+    "page": "https://marvelcinematicuniverse.fandom.com/wiki/File:Captain_America_Brave_New_World_Teaser_Trailer_(61).png",
+    "shape": "cutout",
+    "face": [
+     0.337,
+     0.095,
+     0.505,
+     0.493,
+     171,
+     175
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Winter Soldier（Sebastian Stan）",
+    "why": "Winter Soldier（Sebastian Stan）：Fandom の役の記事の代表画像 → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/winter-soldier-sebastian-stan.webp",
+    "source": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/7/76/Winter_Soldier_%282014%29.jpg/revision/latest/scale-to-width-down/600?cb=20150717170422",
+    "page": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier",
+    "shape": "cutout",
+    "ar": 1.333,
+    "fs": 0.328,
+    "face": [
+     0.328,
+     0.147,
+     0.581,
+     0.539,
+     185,
+     168
+    ]
+   }
   }
  ],
  "A2O LITE": [
@@ -925,6 +1143,64 @@
     "page": "",
     "shape": "cutout"
    }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "XILI",
+    "why": "XILI（YouTube の動画のサムネイル）",
+    "image": "emblems/a2o-lite-xili.webp",
+    "source": "https://i.ytimg.com/vi/CaTWuXOqWrE/hq3.jpg",
+    "page": "https://www.youtube.com/watch?v=CaTWuXOqWrE",
+    "shape": "cutout",
+    "face": [
+     0.59,
+     0.199,
+     0.294,
+     0.435,
+     310,
+     214
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "AYUNE",
+    "why": "AYUNE（YouTube の動画のサムネイル）",
+    "image": "emblems/a2o-lite-ayune.webp",
+    "source": "https://i.ytimg.com/vi/fdQw9DapCWI/hq1.jpg",
+    "page": "https://www.youtube.com/watch?v=fdQw9DapCWI",
+    "shape": "cutout",
+    "face": [
+     0.548,
+     0.17,
+     0.363,
+     0.526,
+     228,
+     250
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "YOUNG",
+    "why": "YOUNG（YouTube の動画のサムネイル）",
+    "image": "emblems/a2o-lite-young.webp",
+    "source": "https://i.ytimg.com/vi/DQ6deVtlp4E/hq2.jpg",
+    "page": "https://www.youtube.com/watch?v=DQ6deVtlp4E",
+    "shape": "cutout",
+    "fs": 0.355,
+    "face": [
+     0.355,
+     0.088,
+     0.521,
+     0.464,
+     112,
+     168
+    ]
+   }
   }
  ],
  "GTA 6": [
@@ -962,6 +1238,82 @@
     "shape": "cutout",
     "fs": 0.439
    }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Boobie Ike",
+    "why": "Boobie Ike（Fandom のページ）",
+    "image": "emblems/gta-6-boobie-ike.webp",
+    "source": "https://static.wikia.nocookie.net/gtawiki/images/1/16/BoobieIke-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250506151417",
+    "page": "https://gta.fandom.com/wiki/Boobie_Ike",
+    "shape": "cutout",
+    "face": [
+     0.525,
+     0.066,
+     0.587,
+     0.53,
+     332,
+     252
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Lori Heder",
+    "why": "Lori Heder（Fandom のページ）",
+    "image": "emblems/gta-6-lori-heder.webp",
+    "source": "https://static.wikia.nocookie.net/gtawiki/images/6/60/LoriHeder-GTAVI-Portrait.png/revision/latest/scale-to-width-down/400?cb=20250507212802",
+    "page": "https://gta.fandom.com/wiki/Lori_Heder",
+    "shape": "cutout",
+    "face": [
+     0.638,
+     0.165,
+     0.644,
+     0.427,
+     360,
+     244
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Rudi",
+    "why": "Rudi（Fandom のページ）",
+    "image": "emblems/gta-6-rudi.webp",
+    "source": "https://static.wikia.nocookie.net/gtawiki/images/5/5d/GTAVITrailer-GTAVI-SS32.png/revision/latest/scale-to-width-down/400?cb=20231206021645",
+    "page": "https://gta.fandom.com/wiki/Rudi",
+    "shape": "cutout",
+    "face": [
+     0.266,
+     0.134,
+     0.64,
+     0.587,
+     298,
+     222
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Andrés de León",
+    "why": "Andrés de León（Fandom のページ）",
+    "image": "emblems/gta-6-andr-s-de-le-n.webp",
+    "source": "https://static.wikia.nocookie.net/gtawiki/images/e/ee/GTA-VI-Andres-de-Leon.jpg/revision/latest/scale-to-width-down/400?cb=20260828143811",
+    "page": "https://gta.fandom.com/wiki/Andr%C3%A9s_de_Le%C3%B3n",
+    "shape": "cutout",
+    "face": [
+     0.503,
+     0.145,
+     0.571,
+     0.51,
+     238,
+     197
+    ]
+   }
   }
  ],
  "Vaundy": [
@@ -974,6 +1326,25 @@
     "source": "https://i.ytimg.com/vi/7HgJIAUtICU/hq3.jpg",
     "page": "https://www.youtube.com/watch?v=7HgJIAUtICU",
     "shape": "cutout"
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Vaundy 2",
+    "why": "Vaundy（YouTube の動画のサムネイル）",
+    "image": "emblems/vaundy-vaundy-2.webp",
+    "source": "https://i.ytimg.com/vi/NuPVr1BxqU8/hq3.jpg",
+    "page": "https://www.youtube.com/watch?v=NuPVr1BxqU8",
+    "shape": "cutout",
+    "face": [
+     0.414,
+     0.204,
+     0.709,
+     0.609,
+     264,
+     207
+    ]
    }
   }
  ],
@@ -1078,6 +1449,164 @@
      247
     ]
    }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Queen of Pain",
+    "why": "Queen of Pain（Fandom のページ）",
+    "image": "emblems/dota2-queen-of-pain.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/a0/Queen_of_Pain_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509191639",
+    "page": "https://dota2.fandom.com/wiki/Queen_of_Pain",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.532,
+     396,
+     168
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Sven",
+    "why": "Sven（Fandom のページ）",
+    "image": "emblems/dota2-sven.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/91/Sven_Concept_Art1.jpg/revision/latest/scale-to-width-down/400?cb=20160804185542",
+    "page": "https://dota2.fandom.com/wiki/Sven",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.422,
+     209,
+     148
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Broodmother",
+    "why": "Broodmother（Fandom の公式の立ち絵・透明背景）",
+    "image": "emblems/dota2-broodmother.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/5/56/Broodmother_Spiderite_model.png/revision/latest/scale-to-width-down/400?cb=20220413152218",
+    "page": "https://dota2.fandom.com/wiki/File:Broodmother_Spiderite_model.png",
+    "shape": "cutout",
+    "face": [
+     0.292,
+     0.093,
+     0.525,
+     0.486,
+     344,
+     239
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Tiny",
+    "why": "Tiny（Fandom のページ）",
+    "image": "emblems/dota2-tiny.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/ad/Tiny_Concept_Art1.jpg/revision/latest/scale-to-width-down/400?cb=20160802210158",
+    "page": "https://dota2.fandom.com/wiki/Tiny",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.475,
+     291,
+     174
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Death Prophet",
+    "why": "Death Prophet（Fandom のページ）",
+    "image": "emblems/dota2-death-prophet.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/2/22/Death_Prophet_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509191822",
+    "page": "https://dota2.fandom.com/wiki/Death_Prophet",
+    "shape": "cutout",
+    "face": [
+     0.103,
+     0.113,
+     0.224,
+     0.469,
+     319,
+     220
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Witch Doctor",
+    "why": "Witch Doctor（Fandom のページ）",
+    "image": "emblems/dota2-witch-doctor.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/7a/Witch_Doctor_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509190749",
+    "page": "https://dota2.fandom.com/wiki/Witch_Doctor",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.484,
+     343,
+     248
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Terrorblade",
+    "why": "Terrorblade（Fandom のページ）",
+    "image": "emblems/dota2-terrorblade.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/8/88/Terrorblade_model.jpg/revision/latest/scale-to-width-down/400?cb=20150521162937",
+    "page": "https://dota2.fandom.com/wiki/Terrorblade",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.646,
+     300,
+     254
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Warlock",
+    "why": "Warlock（Fandom のページ）",
+    "image": "emblems/dota2-warlock.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/1/17/Warlock_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509191520",
+    "page": "https://dota2.fandom.com/wiki/Warlock",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.497,
+     295,
+     227
+    ],
+    "nfv": 3
+   }
   }
  ],
  "FROM": [
@@ -1112,6 +1641,102 @@
     "source": "https://i.ytimg.com/vi/rQPQLI6G_Cw/hq2.jpg",
     "page": "https://www.youtube.com/watch?v=rQPQLI6G_Cw",
     "shape": "cutout"
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Tabitha Matthews（Catalina Sandino Moreno）",
+    "why": "Tabitha Matthews（Catalina Sandino Moreno）：作品の動画の場面",
+    "image": "emblems/from-tabitha-matthews-catalina-sandino-moreno.webp",
+    "source": "https://i.ytimg.com/vi/mUzFtWsnjYs/hq2.jpg",
+    "page": "https://www.youtube.com/watch?v=mUzFtWsnjYs",
+    "shape": "cutout",
+    "fs": 0.486,
+    "face": [
+     0.486,
+     0.087,
+     0.498,
+     0.526,
+     244,
+     196
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Jim Matthews（Eion Bailey）",
+    "why": "Jim Matthews（Eion Bailey）：作品の動画の場面",
+    "image": "emblems/from-jim-matthews-eion-bailey.webp",
+    "source": "https://i.ytimg.com/vi/9KGvwlE5EAA/hq3.jpg",
+    "page": "https://www.youtube.com/watch?v=9KGvwlE5EAA",
+    "shape": "cutout",
+    "face": [
+     0.62,
+     0.12,
+     0.535,
+     0.493,
+     288,
+     197
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Clara（Katerina Bakolias）",
+    "why": "Clara（Katerina Bakolias）：作品の動画の場面",
+    "image": "emblems/from-clara-katerina-bakolias.webp",
+    "source": "https://i.ytimg.com/vi/9UsvQGECku0/hq2.jpg",
+    "page": "https://www.youtube.com/watch?v=9UsvQGECku0",
+    "shape": "cutout",
+    "face": [
+     0.672,
+     0.046,
+     0.218,
+     0.354,
+     265,
+     209
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Meredith（Paula Feener）",
+    "why": "Meredith（Paula Feener）：作品の動画の場面",
+    "image": "emblems/from-meredith-paula-feener.webp",
+    "source": "https://i.ytimg.com/vi/BcfkAYij82Y/hq2.jpg",
+    "page": "https://www.youtube.com/watch?v=BcfkAYij82Y",
+    "shape": "cutout",
+    "face": [
+     0.685,
+     0.108,
+     0.558,
+     0.542,
+     258,
+     197
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Sophia（Julia Doyle）",
+    "why": "Sophia（Julia Doyle）：作品の動画の場面",
+    "image": "emblems/from-sophia-julia-doyle.webp",
+    "source": "https://i.ytimg.com/vi/K1wsQO-5wiY/hq2.jpg",
+    "page": "https://www.youtube.com/watch?v=K1wsQO-5wiY",
+    "shape": "cutout",
+    "face": [
+     0.514,
+     0.143,
+     0.58,
+     0.483,
+     215,
+     202
+    ]
    }
   }
  ],
@@ -1216,6 +1841,25 @@
     "page": "https://en.wikipedia.org/wiki/Wonhee",
     "shape": "cutout"
    }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Wonhee",
+    "why": "Wonhee（YouTube の動画のサムネイル）",
+    "image": "emblems/illit-wonhee.webp",
+    "source": "https://i.ytimg.com/vi/-kzHg2cbOJg/hq2.jpg",
+    "page": "https://www.youtube.com/watch?v=-kzHg2cbOJg",
+    "shape": "cutout",
+    "face": [
+     0.557,
+     0.241,
+     0.466,
+     0.406,
+     266,
+     221
+    ]
+   }
   }
  ],
  "あつ森": [
@@ -1285,6 +1929,184 @@
      197,
      186
     ]
+   }
+  }
+ ],
+ "周杰伦": [
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "周杰倫 2",
+    "why": "周杰倫（Wikidata の代表画像）",
+    "image": "emblems/2-6cb3220b.webp",
+    "source": "https://commons.wikimedia.org/wiki/Special:FilePath/1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8%20%EF%BC%888%EF%BC%89.jpg?width=500",
+    "page": "https://commons.wikimedia.org/wiki/File:1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg",
+    "shape": "cutout",
+    "face": [
+     0.161,
+     0.08,
+     0.546,
+     0.429,
+     254,
+     520
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "周杰倫 5",
+    "why": "周杰倫（YouTube の動画のサムネイル）",
+    "image": "emblems/5-01638fc0.webp",
+    "source": "https://i.ytimg.com/vi/lSgKYQME6rQ/hq3.jpg",
+    "page": "https://www.youtube.com/watch?v=lSgKYQME6rQ",
+    "shape": "cutout",
+    "face": [
+     0.556,
+     0.199,
+     0.426,
+     0.445,
+     285,
+     222
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "周杰倫 6",
+    "why": "周杰倫（YouTube の動画のサムネイル）",
+    "image": "emblems/6-1e63dfe1.webp",
+    "source": "https://i.ytimg.com/vi/ZLldhJXp7iw/hq1.jpg",
+    "page": "https://www.youtube.com/watch?v=ZLldhJXp7iw",
+    "shape": "cutout",
+    "face": [
+     0.321,
+     0.118,
+     0.145,
+     0.387,
+     143,
+     176
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "周杰倫 2",
+    "why": "周杰倫（Wikidata の代表画像）",
+    "image": "emblems/2-6cb3220b.webp",
+    "source": "https://commons.wikimedia.org/wiki/Special:FilePath/1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8%20%EF%BC%888%EF%BC%89.jpg?width=500",
+    "page": "https://commons.wikimedia.org/wiki/File:1203%E5%92%AA%E5%92%95%E9%9F%B3%E4%B9%90%E7%9B%9B%E5%85%B8_%EF%BC%888%EF%BC%89.jpg",
+    "shape": "cutout",
+    "face": [
+     0.161,
+     0.08,
+     0.546,
+     0.429,
+     254,
+     520
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "周杰倫 5",
+    "why": "周杰倫（YouTube の動画のサムネイル）",
+    "image": "emblems/5-01638fc0.webp",
+    "source": "https://i.ytimg.com/vi/lSgKYQME6rQ/hq3.jpg",
+    "page": "https://www.youtube.com/watch?v=lSgKYQME6rQ",
+    "shape": "cutout",
+    "face": [
+     0.556,
+     0.199,
+     0.426,
+     0.445,
+     285,
+     222
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "周杰倫 6",
+    "why": "周杰倫（YouTube の動画のサムネイル）",
+    "image": "emblems/6-1e63dfe1.webp",
+    "source": "https://i.ytimg.com/vi/ZLldhJXp7iw/hq1.jpg",
+    "page": "https://www.youtube.com/watch?v=ZLldhJXp7iw",
+    "shape": "cutout",
+    "face": [
+     0.321,
+     0.118,
+     0.145,
+     0.387,
+     143,
+     176
+    ]
+   }
+  }
+ ],
+ "ぐでたま": [
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Gudetama2018ranking.png",
+    "why": "Gudetama の別シーン（Wiki の画像）",
+    "image": "emblems/gudetama2018ranking-png.webp",
+    "source": "https://static.wikia.nocookie.net/hellokitty/images/4/41/Gudetama2018ranking.png/revision/latest/scale-to-width-down/400?cb=20260228135811",
+    "page": "https://hellokitty.fandom.com/wiki/File:Gudetama2018ranking.png",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.506,
+     252,
+     249
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Gudetama2019ranking.png",
+    "why": "Gudetama の別シーン（Wiki の画像）",
+    "image": "emblems/gudetama2019ranking-png.webp",
+    "source": "https://static.wikia.nocookie.net/hellokitty/images/9/98/Gudetama2019ranking.png/revision/latest/scale-to-width-down/400?cb=20260302104646",
+    "page": "https://hellokitty.fandom.com/wiki/File:Gudetama2019ranking.png",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.501,
+     233,
+     297
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Gudetama2020ranking.png",
+    "why": "Gudetama の別シーン（Wiki の画像）",
+    "image": "emblems/gudetama2020ranking-png.webp",
+    "source": "https://static.wikia.nocookie.net/hellokitty/images/c/c2/Gudetama2020ranking.png/revision/latest/scale-to-width-down/400?cb=20260211060247",
+    "page": "https://hellokitty.fandom.com/wiki/File:Gudetama2020ranking.png",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.447,
+     360,
+     147
+    ],
+    "nfv": 3
    }
   }
  ]
