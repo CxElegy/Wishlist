@@ -574,6 +574,8 @@ PROCESSES = [
              "text": "作品ごとに 1 本目 → 2 本目 · 同じ写真・同じ出来事は 1 回", "uses": ["frontpick"]},
             {"id": "p4s", "kind": "step", "lane": "actions", "title": "版面 0 個の人の最初の画面", "x": "block.start のとき",
              "text": "主役 = 「選ぶ」ボタン 1 つ · 目次の件数・静かな版面の tag・棚は「新着なし」と言わず出さない · 文字は render.SETTINGS_JA の表（直書きなし・tests PyWording） · ボタンは .top の中でも押せる（pointer-events は継承されるので .startgo に auto を明示、ux_check が真ん中を押して当たるか見る）"},
+            {"id": "p4t", "kind": "step", "lane": "actions", "title": "スマホ（560px 以下）の右下の札", "x": "AUTH_CSS",
+             "text": "body の下に札の高さ（72px＋safe-area）の空き · 下へ読むあいだは札をしまう · ux_check が一番下で札と重なる字を数える"},
             {"id": "p5", "kind": "table", "lane": "actions", "title": "版面の組み方",
              "rows": [("写真の壁", "15 枚（スマホ 6）· 16:10"), ("普通の記事", "1 行 3 枚まで · 4 枚 = 2 + 2"), ("篇幅", "S 3 / M 4 / L 10 件"),
                       ("本文の区切り", "目次と同じ 板块 → 小分類 の順に並べ、小分類が変わる所に細い見出し（板块の札・件数）"),

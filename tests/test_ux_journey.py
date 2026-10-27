@@ -90,5 +90,33 @@ class Copy(unittest.TestCase):
         self.assertEqual(title, "pushed")
 
 
+class CoverTest(unittest.TestCase):
+    """右下の札が一番下の字を隠す点検（ux_check.COVER_JS）。スマホの CSS に札の高さの空きがある。"""
+
+    def test_css_has_bottom_space(self):
+        import render
+        self.assertIn("body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}", render.AUTH_CSS if hasattr(render, "AUTH_CSS") else open(render.__file__, encoding="utf-8").read())
+
+    def test_cover_bad(self):
+        self.assertEqual(ux_check.cover_bad([]), [])
+        self.assertIn("隠す", ux_check.cover_bad(["p:末尾"])[0])
+
+    def test_cover_js_finds_overlap(self):
+        from playwright.sync_api import sync_playwright
+        css = "body{margin:0}.wl-auth{position:fixed;bottom:12px;right:12px;width:120px;height:40px}p{margin:0;text-align:right}"
+        for pad, want in (("0", 1), ("72px", 0)):
+            with sync_playwright() as pw:
+                try:
+                    b = pw.chromium.launch()
+                except Exception as ex:  # noqa: BLE001
+                    self.skipTest(f"ブラウザがない：{ex}")
+                pg = b.new_page(viewport={"width": 390, "height": 600})
+                pg.set_content(f"<style>{css}body{{padding-bottom:{pad}}}</style><div style='height:900px'></div><p>おわり</p><div class=wl-auth>札</div>")
+                pg.evaluate("window.scrollTo(0,99999)")
+                n = len(pg.evaluate(ux_check.COVER_JS))
+                b.close()
+            self.assertEqual(n, want, pad)
+
+
 if __name__ == "__main__":
     unittest.main()
