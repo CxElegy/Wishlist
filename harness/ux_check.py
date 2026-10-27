@@ -73,6 +73,9 @@ FAIL_JS = ("window.__imgFail=[];addEventListener('error',function(e){var t=e.tar
            "new MutationObserver(function(ms){ms.forEach(function(m){m.removedNodes.forEach(function(n){if(n.nodeType!==1)return;"
            "var l=n.tagName==='IMG'?[n]:[].slice.call(n.querySelectorAll('img'));var s=m.target.closest&&m.target.closest('section.sec');"
            "l.forEach(function(i){if(i.src&&!i.classList.contains('bg'))window.__imgFail.push([s?s.dataset.k:'トップ',i.src])})})})}).observe(document,{childList:true,subtree:true})")
+# 外れて DOM に残っている写真（document.open のあと error の聞き手が消えた分。MutationObserver は外された写真しか拾わない）も数える
+FAILS_JS = ("(window.__imgFail||[]).concat([].slice.call(document.querySelectorAll('img:not(.bg)')).filter(function(i){return i.src&&i.complete&&!i.naturalWidth})"
+            ".map(function(i){var s=i.closest('section.sec');return [s?s.dataset.k:'トップ',i.src]}))")
 BROWSER_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
                    "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"}
 
@@ -136,7 +139,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         dup:[...document.querySelectorAll('[id]')].map(x=>x.id).filter((v,i,a)=>a.indexOf(v)!==i).slice(0,3),
         sw:document.documentElement.scrollWidth})""", BOXES)
     near = [] if page else pg.evaluate(NEAR_JS)
-    fails = pg.evaluate("window.__imgFail||[]") if (st["nohead"] or st["heads"]) else []
+    fails = pg.evaluate(FAILS_JS) if (st["nohead"] or st["heads"]) else []
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
     heads = nohead_real(sorted(set(st["heads"])), fails) if st["heads"] else []
     first = pg.evaluate(FIRST_JS)

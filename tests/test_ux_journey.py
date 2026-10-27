@@ -76,6 +76,25 @@ class ImgFail(unittest.TestCase):
         self.assertIn(["K", "http://x.invalid/a.jpg"], fails)
 
 
+    @unittest.skipUnless(sync_playwright, "playwright がない")
+    def test_failed_photo_that_stays_in_dom_is_counted(self):
+        # document.open のあと error の聞き手が消え、外されもしない（DOM に残る）開けない写真も FAILS_JS が数える
+        with sync_playwright() as pw:
+            try:
+                b = pw.chromium.launch()
+            except Exception as ex:  # noqa: BLE001
+                self.skipTest(f"ブラウザがない：{ex}")
+            pg = b.new_page()
+            pg.add_init_script(ux_check.FAIL_JS)
+            pg.goto("data:text/html,<p>x</p>")
+            pg.evaluate("()=>{document.open();document.write('<section class=\"sec\" data-k=\"K\"><img src=\"http://x.invalid/a.jpg\"><img class=\"bg\" src=\"http://x.invalid/bg.jpg\"></section>');document.close()}")
+            pg.wait_for_timeout(1500)
+            fails = pg.evaluate(ux_check.FAILS_JS)
+            b.close()
+        self.assertIn(["K", "http://x.invalid/a.jpg"], fails)
+        self.assertNotIn("http://x.invalid/bg.jpg", [s for _, s in fails])
+
+
 class Copy(unittest.TestCase):
     def test_wait_regex_knows_the_current_copy(self):
         """空の最初の画面の言い回しを user_pages が変えたら、通しが黙って壊れる前にここで落ちる。"""

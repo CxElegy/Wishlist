@@ -3965,6 +3965,7 @@ def main():
     elif args.step == "unedited":
         print("、".join(unedited(args.only.split("、") if args.only is not None else None)))
     elif args.step == "render":
+        render.OPENS = render.photo_opens   # 頭に選ぶ写真が本当に開くか焼く時に見る（開かなければ次の写真のある記事）
         stale = stale_report()
         if stale:   # edit.json が報告に入っていない（競合で落ちた）→ 出刊し直してから網页を作る
             print(f"{stale.stem} の報告が最新の edit.json を取り込んでいない → 出刊し直します", file=sys.stderr)
