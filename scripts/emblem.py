@@ -487,6 +487,10 @@ def write_item(name, emblems, th):
     write_atomic(path, item_text(path.read_text(encoding="utf-8"), name, emblems, th))
 
 
+# items.yaml に書き戻す小元素のキー。emblem_face._store が書くもの（face・nfv・nk・bb）を落とすと次の回で測り直しが終わらない（2026-10-27：nk・bb が落ちて点検が「? 10」のまま）。ここ 1 か所
+EMBLEM_KEEP = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock", "face", "nfv", "nk", "bb")
+
+
 def item_text(text, name, emblems, th=None):
     """write_item の中身（items.yaml の全文 → 新しい全文）。emblems が空なら emblem の行ごと消す。"""
     lines = text.split("\n")
@@ -502,7 +506,7 @@ def item_text(text, name, emblems, th=None):
         skip = False
         block.append(l)
     at = next((i + 1 for i, l in enumerate(block) if l.startswith("    motif:")), 0)
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock", "face", "nfv")
+    keep = EMBLEM_KEEP
     block[at:at] = ((["    emblem:  # 作品の小元素（scripts/emblem.py）：網页を開くたびに 1 枚をランダムに出す。先頭が配色の基準"] if emblems else [])
                     + [f"      - {_flow({k: x[k] for k in keep if k in x})}" for x in emblems]
                     + ([f"    theme: {_flow(th)}  # 小元素「{emblems[0]['subject']}」の色に合わせた配色（scripts/emblem.py）"] if th else []))
@@ -1335,7 +1339,7 @@ def _write_emblems(name, ems):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock", "face", "nfv")
+    keep = EMBLEM_KEEP
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     write_atomic(path, "\n".join(lines))
 
@@ -1654,7 +1658,7 @@ def cut_all(name, drawn, old=()):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock", "face", "nfv")
+    keep = EMBLEM_KEEP
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     write_atomic(path, "\n".join(lines))
 

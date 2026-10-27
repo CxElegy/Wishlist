@@ -2581,7 +2581,7 @@ def official_swap(item, log=print):
             url, out, fs = swapped[x["subject"]]
             slug = emblem.slugify(name, x["subject"])
             emblem.save_cut(out, slug)
-            y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar", "nfv")}
+            y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar", "nfv", "nk", "bb")}
             y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：Fandom から取り直し）")
             if fs is not None:
                 y["fs"] = fs
