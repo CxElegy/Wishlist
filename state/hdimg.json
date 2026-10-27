@@ -1665,6 +1665,19 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.487,
+  "local": "pics/6da94d65020c72a9.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1739,6 +1752,12 @@
    856
   ],
   "why": "看不清"
+ },
+ "https://kubrick.htvapps.com/htv-prod/images/8597236e-02f2-41ea-b263-0d7e83f76fb3.png?crop=1.00xw%3A0.789xh%3B0%2C0.0269xh&resize=1200%3A*": {
+  "w": 1200,
+  "h": 677,
+  "target": 720,
+  "v": 3
  },
  "https://kushironews.jp/wp-content/uploads/2026/10/MN20261026T711CAw00010_P1130TPT50327KSB_resized.jpg": {
   "w": 1200,
@@ -3014,6 +3033,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
+  "w": 1200,
+  "h": 653,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3260,19 +3285,6 @@
   "target": 720,
   "v": 3
  },
- "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
-  "w": 647,
-  "h": 431,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.452,
-  "local": "pics/9a1ea62ec61eeb92.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
- },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3386,12 +3398,6 @@
    732
   ],
   "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.S3RTZ9lUDxZkSFaxikVpIg&pid=News&w=960": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
@@ -3511,19 +3517,6 @@
   "out": [
    1280,
    861
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.t-lB6XIFO5-DiGdwXwKv5A&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.559,
-  "local": "pics/28506e5a2c075b57.webp",
-  "out": [
-   1280,
-   719
   ],
   "why": "看不清"
  },
