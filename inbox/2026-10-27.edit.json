@@ -80,20 +80,20 @@
   "GTA 6": 56,
   "A2O LITE": 18,
   "The Mandalorian": 9,
-  "日本顶级网球赛事": 26,
+  "日本顶级网球赛事": 28,
   "三星手机": 19,
-  "gelato pique": 10,
+  "gelato pique": 11,
   "ILLIT": 27,
-  "MMORPG 新作": 6,
-  "dota2": 6,
-  "周杰伦": 6,
+  "MMORPG 新作": 7,
+  "dota2": 8,
+  "周杰伦": 8,
   "滑雪": 8,
   "チェーンソーマン": 5,
   "星巴克马克杯": 4,
   "绝区零": 8,
   "猫用品": 3,
   "BLEACH Mirrors High": 1,
-  "あつ森": 1,
+  "あつ森": 2,
   "FROM": 3,
   "ぐでたま": 2,
   "Astrae Oratio": 1
@@ -574,6 +574,15 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "MMO-lite RPG, Scramble Knights Online is out now!",
+   "highlight": "is out now",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
