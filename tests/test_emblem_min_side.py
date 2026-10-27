@@ -2,8 +2,10 @@
 
 import inspect
 import pathlib
+import tempfile
 import sys
 import unittest
+from unittest import mock
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "scripts"))
 
@@ -64,6 +66,17 @@ class MinSide(unittest.TestCase):
         self.assertTrue(emblem_fill.too_small(Image.new("RGBA", (255, 400))))
         self.assertFalse(emblem_fill.too_small(Image.new("RGBA", (256, 400))))
         self.assertFalse(emblem_fill.too_small(Image.new("RGBA", (100, 400)), body=True))
+        # 1 回に外す上限（版面が一度に空かない）
+        with tempfile.TemporaryDirectory() as d:
+            tmp = pathlib.Path(d)
+            (tmp / "emblems").mkdir()
+            rows = []
+            for k in range(emblem_fill.SMALL_DROP_MAX + 3):
+                Image.new("RGBA", (200, 300), (9, 9, 9, 255)).save(tmp / "emblems" / f"s{k}.webp")
+                rows.append({"subject": f"s{k}", "image": f"emblems/s{k}.webp", "shape": "cutout"})
+            with mock.patch.object(emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(emblem_fill, "broken_image", return_value=False):
+                bad = emblem_fill.broken_cuts({"emblem": rows, "emblem_kind": "character"})
+            self.assertEqual(len(bad), emblem_fill.SMALL_DROP_MAX)
         import inspect as i
         self.assertIn("too_small", i.getsource(emblem_fill.broken_cuts))
         import library_emblem
