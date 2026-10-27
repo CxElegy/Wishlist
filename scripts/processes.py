@@ -572,6 +572,8 @@ PROCESSES = [
              "text": "主言語 → 副言語の順で残す · 予定の欄は同じ日・同じラベル 1 回", "uses": ["lang"]},
             {"id": "p4b", "kind": "step", "lane": "actions", "title": "トップの記事を選ぶ", "x": "直近 7 日の全号から",
              "text": "作品ごとに 1 本目 → 2 本目 · 同じ写真・同じ出来事は 1 回", "uses": ["frontpick"]},
+            {"id": "p4h", "kind": "step", "lane": "actions", "title": "頭の写真が開くか見る", "x": "店長・お客さま・ポスター共通",
+             "text": "render.photo_opens：404・410（または画像でない 200）の写真の記事は頭・ポスター・壁に選ばず、写真のある次の記事を頭へ（_head_photo）· つながらない・403 は「開く」とみなす（防盗链は本站保存・SWAP_JS）· 作品表紙の備えがあれば残す · digest render と user_pages だけが有効（試験は見ない）· ux_check は DOM に残った外れた写真も数える", "uses": ["frontpick"]},
             {"id": "p4s", "kind": "step", "lane": "actions", "title": "版面 0 個の人の最初の画面", "x": "block.start のとき",
              "text": "主役 = 「選ぶ」ボタン 1 つ · 目次の件数・静かな版面の tag・棚は「新着なし」と言わず出さない · 文字は render.SETTINGS_JA / SETTINGS_ZH の表（設定ページの「⇄ にも」・静かな版面の名前も。直書きなし・tests PyWording が user_pages 全体と own 経路の関数を数える） · ボタンは .top の中でも押せる（pointer-events は継承されるので .startgo に auto を明示、ux_check が真ん中を押して当たるか見る）"},
             {"id": "p4t", "kind": "step", "lane": "actions", "title": "スマホ（560px 以下）の右下の札", "x": "AUTH_CSS",
