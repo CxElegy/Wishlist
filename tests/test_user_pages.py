@@ -239,7 +239,7 @@ class Loader(unittest.TestCase):
         js = render.AUTH_JS
         i = js.index("function ownWait(picks)")
         body = js[i:js.index("function soleBox()")]
-        for w in ("'集めています'", ".top.start .hb", ".startgo", "pnx", "my_keywords_set", "calm.start"):
+        for w in ("L.collecting", ".top.start .hb", ".startgo", "pnx", "my_keywords_set", "calm.start"):
             self.assertIn(w, body)
 
     def test_every_baked_empty_wording_is_known(self):
@@ -327,10 +327,11 @@ class ZeroShellRendered(unittest.TestCase):
         i = js.index("function drawMine(box,p,err){")
         k = js.index("var items=(A.items||[])", i)
         body = js[i:k] + "}"
-        prog = ("var tok='t',page=%s,me={name:'x'},user={email:'a@b'},ADD='add.html';function esc(s){return String(s)}"
-                "function isMail(s){return /@/.test(s)}function picksOf(p){return p.picks}%s"
+        ui = js[js.index("var UI={"):js.index("var UB=")]   # 言語表（画面の文字）
+        prog = ("var A={},tok='t',page=%s,me={name:'x'},user={email:'a@b'},ADD='add.html';function esc(s){return String(s)}"
+                "function isMail(s){return /@/.test(s)}function picksOf(p){return p.picks}%s%s"
                 "var box={dataset:{}};drawMine(box,{picks:%s},false);console.log(box.innerHTML)") % (
-                    json.dumps(page), body, json.dumps(picks))
+                    json.dumps(page), ui, body, json.dumps(picks))
         r = subprocess.run(["node", "-e", prog], capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stderr[:400])
         return r.stdout

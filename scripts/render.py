@@ -4301,7 +4301,7 @@ AUTH_JS = r"""
       document.querySelectorAll('.mtabs a[data-sec]').forEach(function(a){if(a.dataset.sec===n.dataset.sec)a.classList.add('wl-off');});});
     document.dispatchEvent(new Event('wl-nav'));
     var bar=document.createElement('div');bar.className='wl-mybar wl-ownwait';bar.setAttribute('role','status');
-    bar.innerHTML='<b>'+L.collecting+'</b>'+wait.map(function(x){return '<span>'+esc(x.name)+' <button type="button" class="pnx" data-n="'+esc(x.name)+'" aria-label="'+esc(x.name)+'+L.rmAria+'">'+L.rm+'</button></span>';}).join('')+
+    bar.innerHTML='<b>'+L.collecting+'</b>'+wait.map(function(x){return '<span>'+esc(x.name)+' <button type="button" class="pnx" data-n="'+esc(x.name)+'" aria-label="'+esc(x.name)+L.rmAria+'">'+L.rm+'</button></span>';}).join('')+
       '<small class="ok">'+L.added+'</small>';
     bar.querySelectorAll('.pnx').forEach(function(b){b.onclick=function(){b.disabled=true;
       var rest=picks.filter(function(x){return x.name!==b.dataset.n;});

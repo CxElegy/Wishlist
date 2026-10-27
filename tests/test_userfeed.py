@@ -505,7 +505,7 @@ class Wiring(unittest.TestCase):
         self.assertIn("if(sig===R._wlsig&&!bad)return;", js)    # 5 分ごとの読み直しで、返事が同じなら描き直さない
         self.assertIn("s.dataset.sub=UB", js)                    # 自分の版面は自分の小分類（店長の小分類の見出しの下に入れない）
         self.assertIn("'wl-uchip'", js.replace('"', "'"))
-        self.assertIn("← '+esc(sh)+' さんのページへ", js)        # 設定から自分のトップへ戻る道
+        self.assertIn("L.back+esc(sh)+L.backTo", js); self.assertIn("backTo:' さんのページへ'", js)        # 設定から自分のトップへ戻る道
         self.assertIn("SPARE_MAX", render.NAV_JS)                # 駅が少ないときに板块の間を大きく空けない
         self.assertIn(".wl-auth.away", render.AUTH_CSS)          # スマホの右下の札は、下へ読み進める間しまう（本文に重ねない）
 
