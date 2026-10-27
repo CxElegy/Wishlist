@@ -83,7 +83,7 @@
   "日本顶级网球赛事": 28,
   "三星手机": 20,
   "gelato pique": 11,
-  "ILLIT": 27,
+  "ILLIT": 33,
   "MMORPG 新作": 7,
   "dota2": 8,
   "周杰伦": 8,
@@ -491,7 +491,10 @@
     1,
     14,
     21,
-    24
+    24,
+    28,
+    32,
+    33
    ],
    "image": "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg"
   },
@@ -506,7 +509,8 @@
     7,
     8,
     10,
-    22
+    22,
+    31
    ]
   },
   {
@@ -561,6 +565,15 @@
     16,
     25,
     27
+   ]
+  },
+  {
+   "headline": "BIGBANG、ENHYPEN、ILLITらが出演！グローバルK-POP授賞式『2026 MAMA AWARDS』をU-NEXTで日本独占生配信決定！",
+   "highlight": "日本独占生配信決定",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30
    ]
   }
  ],
