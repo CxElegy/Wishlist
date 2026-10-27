@@ -1,32 +1,32 @@
 {
- "admin": "8507961fe38f",
- "admin-ai": "7c54186f7047",
+ "admin": "1cdaae11bfb5",
+ "admin-ai": "7e9779fd7428",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "74e6a817"
+   "3c317afb"
   ],
   "tokens": [
    "AI 編集のトークン",
    "2a9893b0"
   ]
  },
- "admin-boards": "1eb819838493",
+ "admin-boards": "906275a935ba",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "983216fc"
+   "f2dc1708"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "bc190ad3c56e",
+ "admin-emblem": "825df0a6f94e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "72e62948"
+   "f261cc48"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "be19396da526",
  "admin-members_marks": {},
- "admin-now": "1a84965263f0",
+ "admin-now": "6f443351ea23",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "afffbef5"
+   "4e511236"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "987e0520"
+   "0276ac8b"
   ],
   "term-panel": [
    "ライブログ",
-   "afcac779"
+   "e0a07d22"
   ]
  },
- "admin-system": "267d317eb73e",
+ "admin-system": "b7c649815e61",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "559f9eb0"
+   "e108a0a5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8418f9d6"
+   "c7f80a42"
   ]
  },
  "admin_marks": {},
- "heat": "2e9ab15c6aad",
+ "heat": "b67a8432fecc",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "6045e1f5"
+   "1993ff7d"
   ],
   "ranking": [
    "ランキング",
-   "807dcf37"
+   "634006a7"
   ]
  },
- "index": "c4e24a4d7430",
+ "index": "b1f49cbbf8f1",
  "index_marks": {
   "front": [
    "トップ",
-   "2cc6c756"
+   "74f2ed3c"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "e83d5469"
+   "b075f9ae"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "256ac48e"
+   "de925923"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "cc6d2946"
+   "5c729a0a"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "4ba41110"
+   "cd89fc71"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "6fafa6d4"
   ]
  },
- "updated": "10.27 08:48",
- "wishlist": "86f02672e798"
+ "updated": "10.27 09:03",
+ "wishlist": "b5aabae9ab02"
 }
