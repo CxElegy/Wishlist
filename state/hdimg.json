@@ -126,19 +126,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/008kvqgEgy1ii8qmuwbrfj31hc0u01kx.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3,
-  "local": "pics/cbaf8705105576dd.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008eZAxIgy1iifydiquu1j32hk31fqva.jpg": {
   "w": 2000,
   "h": 2444,
@@ -2673,7 +2660,7 @@
  "https://prcdn.freetls.fastly.net/release_image/174697/3/174697-3-a0394415951be9911a3ce6117d1747a5-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1672,
   "h": 941,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/183117/46/183117-46-e39187709e2e41c0b9031e7ff0210805-1908x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3942,6 +3929,12 @@
  "https://www.sammyfans.com/wp-content/uploads/2026/10/samsung-galaxy-s26-ultra-sg26u-img-1000x600.jpg": {
   "w": 1000,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.sankei.com/resizer/v2/6T3L6IPV2RNE3AZXKIWN7RU4K4.jpg?auth=9a734cf8bd1f5d36c08b1a25c61fd855dffbcd1689261c05121db6c66b823d16&quality=50&focal=827%2C838&width=1200&height=675": {
+  "w": 1200,
+  "h": 675,
   "target": 720,
   "v": 3
  },

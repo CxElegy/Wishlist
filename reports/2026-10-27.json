@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "27e57438104c",
+ "edit_sig": "d0723bc61aa9",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
@@ -863,8 +863,9 @@
      "date": "2026-10-20",
      "headline": "无幽浮不捣蛋，这次换你进诡屋当个捣蛋鬼",
      "highlight": "",
-     "image": "http://wx2.sinaimg.cn/middle/008kvqgEgy1ii8qmuwbrfj31hc0u01kx.jpg",
-     "image_via": "正文图（本站保存）",
+     "image": null,
+     "source": "手机新浪网",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
      "url": "https://www.sina.cn/news/detail/5356102456707278.html",
      "weight": "normal"
     },
@@ -1023,15 +1024,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 3,
-     "source": "PR TIMES",
-     "title": "FIPから猫を守る、新たなアプローチ。腸管FCoVに着目した経口薬候補「HNW-001」、猫での探索試験を完了",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5KNU9JSVVhYURyel9PbVRTdEJZREU5RjRhRUpRZ29uSUhfTlB4LUl2TW4xRG9RRW5rcm5qRGZFSmRBaFRCWkx4clN6ZDRRRDVWRldCckozMjBoUEZkWE1CbmJGSWZRLVlVeEE?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1043,6 +1035,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.walkerplus.com/article/1140018/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "FIPから猫を守る、新たなアプローチ。腸管FCoVに着目した経口薬候補「HNW-001」、猫での探索試験を完了",
+     "highlight": "HNW-001",
+     "image": "https://prcdn.freetls.fastly.net/release_image/174697/3/174697-3-a0394415951be9911a3ce6117d1747a5-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000003.000174697.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "猫グッズ · 家里两只猫",

@@ -40,7 +40,6 @@
   "https://nijimen.kusuguru.co.jp/topics/643046": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/6ada5e768ea04b32a3db3c7cfd01ac05.jpg",
   "https://note.com/kappalyno/n/n0672d8bd435a": "https://www.bing.com/th?id=ONUT.Hjl-eeI0P0hkVpGmmzWAFQ&pid=News&w=1200",
   "https://otonanswer.jp/post/403060/": "https://otonanswer.jp/wp-content/uploads/2027/10/20261022tfal01.jpg",
-  "https://prtimes.jp/main/html/rd/p/000000003.000174697.html": "https://prcdn.freetls.fastly.net/release_image/174697/3/174697-3-a0394415951be9911a3ce6117d1747a5-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://realsound.jp/2026/10/post-2563729.html": "https://realsound.jp/wp-content/uploads/2026/10/20261025-isee-99.jpeg",
   "https://realsound.jp/2026/10/post-2564383.html": "https://realsound.jp/wp-content/uploads/2026/10/20261026-tbsq-99.jpeg",
   "https://rocketnews24.com/2026/10/23/2833550/": "https://rocketnews24.com/wp-content/uploads/sites/2/2026/10/collage_5604a7.jpg?w=1200&h=630&crop=1",
@@ -76,6 +75,7 @@
   "https://www.nownews.com/news/6886769": "https://media.nownews.com/nn_media/thumbnail/2026/10/1793021523355-111816baf98c406c8940b6651069038e-1200x675.webp?unShow=false",
   "https://www.physiciansweekly.com/post/preventable-halloween-eye-injuries-persist-despite-warnings": "https://cdn.physiciansweekly.com/wp-content/uploads/2026/10/iStock-1445377245-modified-06da5fcb-206e-4164-8cff-b29e4a7f136f.jpg",
   "https://www.right-media.news/archives/240457": "https://www.right-media.news/wp-content/uploads/2026/10/FotoJet191.jpg",
+  "https://www.sankei.com/article/20261025-OLETXYVU6FK6NCP23TRABVKBPA/": "https://www.sankei.com/resizer/v2/6T3L6IPV2RNE3AZXKIWN7RU4K4.jpg?auth=9a734cf8bd1f5d36c08b1a25c61fd855dffbcd1689261c05121db6c66b823d16&quality=50&focal=827%2C838&width=1200&height=675",
   "https://www.sanyonews.jp/article/1912545": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
   "https://www.sanyonews.jp/article/1977453": "https://static.sanyonews.jp/image/article/size1/2/2/9/0/22902e4f34b44e2c44d9f269166203df_1.jpg",
   "https://www.sanyonews.jp/article/2003552": "https://static.sanyonews.jp/image/article/size1/3/e/8/4/3e84c1f4e13b217a1409e48ea6608889_1.jpg",
@@ -966,35 +966,6 @@
   },
   {
    "batch": 1,
-   "because": "猫用品",
-   "date": "2026-10-27",
-   "hits": [
-    "猫"
-   ],
-   "image": "https://prcdn.freetls.fastly.net/release_image/174697/3/174697-3-a0394415951be9911a3ce6117d1747a5-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
-   "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
-   "score": 8,
-   "source": "PR TIMES",
-   "taste": [
-    [
-     "猫",
-     6
-    ],
-    [
-     "作品:猫用品",
-     5
-    ]
-   ],
-   "title": "FIPから猫を守る、新たなアプローチ。腸管FCoVに着目した経口薬候補「HNW-001」、猫での探索試験を完了",
-   "url": "https://prtimes.jp/main/html/rd/p/000000003.000174697.html",
-   "words": [
-    "猫"
-   ],
-   "work": "猫用品"
-  },
-  {
-   "batch": 1,
    "because": "绝区零",
    "date": "2026-10-26",
    "hits": [],
@@ -1078,7 +1049,7 @@
    "work": "GTA 6"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "猫用品",
    "date": "2026-10-26",
    "hits": [],
@@ -1195,7 +1166,7 @@
    "work": "あつ森"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "チェーンソーマン",
    "date": "2026-10-26",
    "hits": [],
@@ -1289,6 +1260,35 @@
    "url": "https://tenki.jp/leisure/3/16/91/188221/1hour.html",
    "words": [],
    "work": "チェーンソーマン"
+  },
+  {
+   "batch": 3,
+   "because": "猫用品",
+   "date": "2026-10-24",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://www.sankei.com/resizer/v2/6T3L6IPV2RNE3AZXKIWN7RU4K4.jpg?auth=9a734cf8bd1f5d36c08b1a25c61fd855dffbcd1689261c05121db6c66b823d16&quality=50&focal=827%2C838&width=1200&height=675",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "産経ニュース",
+   "taste": [
+    [
+     "猫",
+     6
+    ],
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "19世紀末芸術の鍵握る黒猫 展覧会「スタンランと猫のジャポニスム」 荏原 畠山美術館",
+   "url": "https://www.sankei.com/article/20261025-OLETXYVU6FK6NCP23TRABVKBPA/",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
   },
   {
    "batch": 3,
@@ -2070,11 +2070,11 @@
    8
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
