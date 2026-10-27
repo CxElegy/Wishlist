@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "652a3871bdaa",
+ "edit_sig": "af13b55e0caf",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -806,29 +806,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 6,
-     "source": "手机新浪网",
-     "title": "#SuperJunior跳NEON# Super Junior成员利特和金希澈 跳了李秀满新女团A2O LITE《NEON》舞蹈[偷笑] ​",
-     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPSVU0aUY1cnN3Z1pkZnhvOGphVklHQmhzTjFkRVpZNXlPR3dhQnZZeGNBNGZHdDc3WnBvQUpwZG1aWElmWmFtVnBQb2Q2WG5Oc3pydHBSYlZMLU1Nc3drb1VSc1gtbXo2MS1yVUM4TFNUZHNTNEtqNXJHNTBRWFZvMHhpeUpWUnRDbFJOZEJoeXNPMXpEVFdmR1hfand6aExPTF9CaWtQN3VCOTFHdE1Xc2NXT25jUjAwVVNpNHp2akVPdmsxRnlINDE1aWNQZHhrSW1NMDlmOURIdw?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 7,
-     "source": "Kagit",
-     "title": "A2O LITEのダンサー、AIJINGとXILIの驚異的実力！振付師J.BLACKが「20時間未満で習得」と絶賛",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5fdC1kLV9iRzVxejFUVVc4a0E3Z2VaWVRhX3JEUTZIYUZMSXBtZHFQWUg3cS1FUTBOM281UXdFaEs1ZkR0cVd5bUFITkdZdkw2NEJxY09PRQ?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 8,
-     "source": "手机新浪网",
-     "title": "A2OLITE今日打歌舞台幕后照，你最喜欢的是？ ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1rekw0N1lncmZIUmxab2RJQXpCWkRFdE5VZEJlZUVBYXo0ZEdjUW12SDVPT2JxZ21DWnZaZkRLRXlUVXpCeXdKdFJQRTVnWGRkZjYzTFNfb19BWnY1X1RjbHJ3TQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -847,8 +824,18 @@
      "headline": "SM 回应禁止跳NEON 传闻，金希澈利特：谁能阻止我们",
      "highlight": "",
      "image": "http://n.sinaimg.cn/sinakd20261027ac/321/w480h641/20261027/c9ec-4013f2d4c5bd749fee69c1c0f029e2c1.jpg",
-     "image_via": "同一件事的别家报道 k.sina.com.cn（本站保存）",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.sina.cn/news/detail/5358687140971378.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "A2O LITEのダンサー、AIJINGとXILIの驚異的実力！振付師J.BLACKが「20時間未満で習得」と絶賛",
+     "highlight": "20時間未満で習得",
+     "image": "https://kagit-media.atreez.cc/uploads/2026-10-27/v6k9lcewuo3hsf2qq0go5jyd.jpg",
+     "image_via": "og:image",
+     "url": "https://kagit.kr/ja/posts/a2o-lite-dance-duo",
      "weight": "normal"
     }
    ],
