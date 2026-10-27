@@ -246,6 +246,16 @@ class PyWording(unittest.TestCase):
         for T in (render.SETTINGS_ZH, render.SETTINGS_JA):
             self.assertIn("{}", T["also"])
 
+    def test_settings_tables_have_same_keys(self):
+        """render_settings は T[鍵] で読む。片方の表に鍵がないと本番で KeyError（also を足すとき片方だけ足し忘れうる）。"""
+        import inspect
+        used = set(re.findall(r'T\["(\w+)"\]', inspect.getsource(render.render_settings)))
+        own_only = {"out", "out_aria"}   # 「外す」は本人の設定ページ（日本語の表）だけ
+        for name, T in (("ZH", render.SETTINGS_ZH), ("JA", render.SETTINGS_JA)):
+            self.assertEqual(used - own_only - set(T), set(), name)
+        self.assertEqual(own_only - set(render.SETTINGS_JA), set())
+        self.assertEqual(set(render.SETTINGS_ZH) - set(render.SETTINGS_JA), set())   # 店長の表の鍵は本人の表にもある
+
     def test_table_keys_exist(self):
         for k in ("none_hint", "pick", "start_h", "start_p", "none_status", "collecting", "out", "out_aria", "other"):
             self.assertTrue(render.SETTINGS_JA.get(k), k)
