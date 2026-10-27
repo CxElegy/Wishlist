@@ -67,6 +67,12 @@
   ],
   "why": "看不清"
  },
+ "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
   "h": 1297,
@@ -414,6 +420,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.essential-japan.com/wp-content/uploads/2026/10/bleach-mirrors-high-new-characters-0.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://cdn.gamemeca.com/trees/g000/55/46/gm338794_tree_bg_sealm2.jpg": {
   "w": 1240,
   "h": 348,
@@ -584,6 +596,12 @@
   "h": 576,
   "target": 1280,
   "v": 3
+ },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/10/MLB-Avengers_-Doomsday-MLB-Promo-Fantastic-Four-Reed-Richards-Ben-Grimm.jpg?resize=2000,1125": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/g-t-a-6.png?resize=2000,1125": {
   "w": 2000,
@@ -803,6 +821,12 @@
   ],
   "why": "看不清"
  },
+ "https://gamegpu.com/images/1_2026/NEWS/Q4/okt/27/mhzpi2mhzpi2mhzp_gamegpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/okt/27/mhzpi2mhzpi2mhzp_gamegpu.webp?width=1920&height=1080": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://gamenewsplus.net/wp-content/uploads/2026/10/GTA-6-REVIEW-CODES.webp": {
   "w": 1920,
   "h": 1080,
@@ -881,6 +905,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hermes.media.transform.aol.com/a360a8c8f386c0ba9c75467163c4ebe39c4446dc/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/27/933c8f10-7ef9-3855-8423-fdeccae4f3e2/7806376e-24d3-466b-bf10-a0a4b4cfe507.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg": {
   "w": 1200,
   "h": 675,
@@ -946,6 +976,12 @@
   "h": 810,
   "target": 720,
   "v": 3
+ },
+ "https://i.insider.com/6ae0ba3e3ae265b597b027f4?width=1200&format=jpeg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/Bleach-Mirrors-High-1-million-pre-registrations.webp?fit=1920%2C1080&ssl=1": {
   "w": 1920,
@@ -1266,6 +1302,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.thedirect.com/media/photos/team1.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_77,w_4908,h_2760/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/308/01kwb50hwecnm69sey79.jpg": {
   "w": 1440,
   "h": 810,
@@ -1423,6 +1465,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gbfkb.img": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://img.4gamers.com.tw/news-image/30592e27-3cf0-4f66-b229-fc5e54665aeb.jpg": {
   "w": 1600,
   "h": 900,
@@ -1446,6 +1494,12 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://img.etimg.com/thumb/msid-135240520,width-1200,height-900,imgsize-151596,overlay-etpanache/articleshow.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://img.etnews.com/news/article/2026/10/23/news-p.v1.20261023.29a15b4b82ff4b5488d09c6afc6f124d_P1.png": {
   "w": 700,
@@ -1767,6 +1821,12 @@
   ],
   "why": "看不清"
  },
+ "https://imgix.bustle.com/uploads/image/2026/10/26/5a27ff6a/roc-13831_r4.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://imgpai.thepaper.cn/newpai/image/1792554189334_Yt4xWr_1792554189761.png": {
   "w": 1035,
   "h": 582,
@@ -2001,6 +2061,12 @@
   "h": 1228,
   "target": 1280,
   "v": 3
+ },
+ "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://motoryokoblog.com/wp-content/uploads/2026/09/illit_18227_fv.png": {
   "w": 1200,
@@ -2866,6 +2932,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/25666260becd7fad956549beeaea1df87fac2b73990952faa6c844e0d0f53dd2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpc_gamer_708%2F7e50446d5ce92d480b693d3e5cc45b66.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://s.yimg.com/lo/mysterio/api/516b3f728ed06962e624e263634b5374beccd01772918f02f0c61625dc35ebee/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fslashfilm_videos_419%2F44385178f3144e723897b80576bfa6b4.jpg": {
   "w": 1200,
   "h": 675,
@@ -2883,6 +2955,12 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/7dc940cb64e006a0125c7d9e0b9de842d75c3557798abcc3b0823042a67e808f/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpeople_218%2F62e06a2909da57162cd55f6cddeb727b.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://s.yimg.com/lo/mysterio/api/ef4e9ffb846b4ac8d334dc7341c01dea6c4c1d79f1a577cf82b9e9b8b339935d/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbeincrypto_us_662%2F35988ae8cbc31e6f09b1aa3265662fd1.jpg": {
   "w": 1200,
@@ -3406,6 +3484,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://virus.hr/storage/11938/conversions/01M5YVGSXGQ7PG0B36D9XFESGS-hero.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://vphoto.vietnam.vn/thumb/640x360/vietnam/resource/IMAGE/2026/10/16/1792169865739_img-14c0fcb120261016231916-jpg-v-2.jpeg": {
   "w": 640,
   "h": 360,
@@ -3473,6 +3557,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.-uijTEGIvI3LnJNGANmBxA&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://www.bing.com/th?id=ONUT.3jPrxdlM5f5LjNUMigY6Pw&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3497,12 +3587,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.AWhCYGvHVZMEzvJ2_tEvVw&pid=News&w=1200": {
-  "w": 700,
-  "h": 524,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
@@ -3555,11 +3639,11 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.PCcXQ78nkzriQoM-vyzAqg&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
+ "https://www.bing.com/th?id=ONUT.Ruz96ApZwC1D3kw_rQhncQ&pid=News&w=700": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
@@ -3593,6 +3677,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.b3TynM3TLvhPfx7ZYVGERg&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3621,12 +3711,6 @@
  "https://www.bing.com/th?id=ONUT.h1__6WSmxo7D9Lx6uBvTaQ&pid=News&w=960": {
   "w": 700,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.h9eGbvy2TRA5enxzvQjacw&pid=News&w=650": {
-  "w": 650,
-  "h": 366,
   "target": 720,
   "v": 3
  },
@@ -3704,6 +3788,19 @@
   "h": 460,
   "target": 720,
   "v": 3
+ },
+ "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102732098654.jpg": {
+  "w": 690,
+  "h": 460,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.444,
+  "local": "pics/cfcbb5c221193afc.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://www.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg": {
   "w": 1200,
@@ -4176,6 +4273,12 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://www.syfy.com/sites/syfy/files/2026/10/article-promotes-1825x1217_25.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://www.talkesport.com/wp-content/uploads/image-503.webp": {
   "w": 824,
