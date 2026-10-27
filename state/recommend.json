@@ -7,7 +7,7 @@
   "https://www.sina.cn/news/detail/5358314460545289.html": "2026-10-27"
  },
  "images": {
-  "http://k.sina.com.cn/article_2286092114_m8842ff5203302lj8m.html": "http://n.sinaimg.cn/sinakd20261026ac/598/w383h215/20261026/709f-40372cd4540f8fb93006ea0a28b38027.jpg",
+  "http://k.sina.com.cn/article_7879923704_m1d5ae17f8033020ltu.html": "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg",
   "https://article.auone.jp/5e6bb488-14ab-472e-a7d0-5d6f71a5a42d": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_jp_i_1486554983406584528_w640.webp",
   "https://article.auone.jp/fb958b8c-b16d-4d90-b3ba-a160b9eb565c": "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912",
   "https://ascii.jp/elem/000/004/445/4445672/": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122",
@@ -1345,6 +1345,27 @@
   },
   {
    "batch": 4,
+   "because": "周杰伦",
+   "date": "2026-10-26",
+   "hits": [],
+   "image": "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg",
+   "kind": "board",
+   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
+   "score": 6,
+   "source": "手机新浪网",
+   "taste": [
+    [
+     "作品:周杰伦",
+     2
+    ]
+   ],
+   "title": "周杰伦演唱会粉丝点唱五月天你不是真正的快乐",
+   "url": "http://k.sina.com.cn/article_7879923704_m1d5ae17f8033020ltu.html",
+   "words": [],
+   "work": "周杰伦"
+  },
+  {
+   "batch": 4,
    "because": "The Mandalorian",
    "date": "2026-10-26",
    "hits": [],
@@ -1407,7 +1428,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "A2O LITE",
    "date": "2026-10-26",
    "hits": [],
@@ -1426,27 +1447,6 @@
    "url": "https://sports.khan.co.kr/article/202610262149003",
    "words": [],
    "work": "A2O LITE"
-  },
-  {
-   "batch": 5,
-   "because": "周杰伦",
-   "date": "2026-10-26",
-   "hits": [],
-   "image": "http://n.sinaimg.cn/sinakd20261026ac/598/w383h215/20261026/709f-40372cd4540f8fb93006ea0a28b38027.jpg",
-   "kind": "board",
-   "liked": "周杰伦亮相上海，打卡这处宝藏地标！好看、好玩，还有免费大师课！",
-   "score": 6,
-   "source": "手机新浪网",
-   "taste": [
-    [
-     "作品:周杰伦",
-     2
-    ]
-   ],
-   "title": "刘畊宏晒周杰伦吴尊柯有伦合照",
-   "url": "http://k.sina.com.cn/article_2286092114_m8842ff5203302lj8m.html",
-   "words": [],
-   "work": "周杰伦"
   },
   {
    "batch": 5,
@@ -2069,15 +2069,15 @@
    8
   ],
   [
+   "三星 Galaxy",
+   7
+  ],
+  [
    "作品:三星手机",
    7
   ],
   [
    "galaxy",
-   7
-  ],
-  [
-   "三星 Galaxy",
    7
   ],
   [
