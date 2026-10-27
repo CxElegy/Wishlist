@@ -1,44 +1,5 @@
 [
 {
-"at": "2026-10-26T08:19:57+00:00",
-"text": "2026-10-26 第 3 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・今日の整理待ちは全部終わり） · token 新規入力 1,013・キャッシュ読み 17.2万・出力 665",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.76,
-"mem_total": 16872804352,
-"mem_free": 15886229504,
-"disk_used": 10703433728,
-"disk_free": 30579736576,
-"disk_total": 41283170304,
-"peak": 351121408
-},
-"batch": 3,
-"boards": [],
-"stories": 0,
-"left": 0,
-"edited": 19,
-"run": 1793001705.7510927,
-"tok": {
-"in": 4,
-"cw": 1009,
-"cr": 171952,
-"out": 665,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 173630,
-"secs": 1092,
-"run_tok": {
-"in": 44,
-"cw": 58426,
-"cr": 1595266,
-"out": 6080,
-"calls": 22,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-26T09:31:53+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1868,5 +1829,50 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1405596
+},
+{
+"at": "2026-10-27T12:07:53+00:00",
+"text": "2026-10-27 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、Vaundy、dota2 ほか 8（14 版面・40 本・残り 2 版面） · token 新規入力 5.6万・キャッシュ読み 159.5万・出力 5,399",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.26,
+"mem_total": 16872812544,
+"mem_free": 15660240896,
+"disk_used": 10904920064,
+"disk_free": 30417588224,
+"disk_total": 41322508288,
+"peak": 539983872
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"星巴克马克杯",
+"漫威电影",
+"猫用品"
+],
+"stories": 40,
+"left": 2,
+"edited": 22,
+"run": null,
+"tok": {
+"in": 44,
+"cw": 55629,
+"cr": 1594732,
+"out": 5399,
+"calls": 22,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1655804
 }
 ]
