@@ -993,6 +993,166 @@
      190
     ]
    }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Rukia Kuchiki",
+    "why": "Bleach: Brave Souls の公式イラスト（顔だけのアップではなく胸像）",
+    "image": "emblems/bleach-mirrors-high-rukia-kuchiki.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/b/bc/BBSCaptain_Rukia.png/revision/latest?cb=20210108074047&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/File:BBSCaptain_Rukia.png",
+    "shape": "cutout",
+    "face": [
+     0.53,
+     0.214,
+     0.651,
+     0.557,
+     227,
+     202
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Orihime Inoue",
+    "why": "Orihime Inoue（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-orihime-inoue.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/9/94/686Post-War_Orihime.png/revision/latest/scale-to-width-down/400?cb=20190523143321&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Orihime_Inoue",
+    "shape": "cutout",
+    "face": [
+     0.647,
+     0.149,
+     0.597,
+     0.555,
+     185,
+     178
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Rangiku Matsumoto",
+    "why": "Rangiku Matsumoto（Fandom・Rangiku）",
+    "image": "emblems/bleach-mirrors-high-rangiku-matsumoto.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/3/32/685Rangiku_profile.png/revision/latest/scale-to-width-down/400?cb=20200322073312&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Rangiku_Matsumoto",
+    "shape": "cutout",
+    "face": [
+     0.514,
+     0.208,
+     0.426,
+     0.515,
+     234,
+     217
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Jūshirō Ukitake",
+    "why": "Jūshirō Ukitake（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-j-shir-ukitake.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/4/49/Ukitake_helps_out_Shunsui.png/revision/latest/scale-to-width-down/600?cb=20220731002259&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/J%C5%ABshir%C5%8D_Ukitake",
+    "shape": "cutout",
+    "ar": 0.75,
+    "fs": 0.346,
+    "face": [
+     0.346,
+     0.155,
+     0.503,
+     0.499,
+     199,
+     138
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Yumichika Ayasegawa",
+    "why": "Yumichika Ayasegawa（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-yumichika-ayasegawa.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/9/9f/Ep139YumichikaBlocksTentacle.png/revision/latest/scale-to-width-down/600?cb=20230301190048&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Yumichika_Ayasegawa",
+    "shape": "cutout",
+    "ar": 0.723,
+    "face": [
+     0,
+     0,
+     0.5,
+     0.631,
+     136,
+     162
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Kon",
+    "why": "Kon（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-kon.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/b/bd/Ep320KonProfile.png/revision/latest/scale-to-width-down/400?cb=20220907000221&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Kon",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.5,
+     223,
+     299
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Isane Kotetsu",
+    "why": "Isane Kotetsu（Fandom のページの胸像：顔だけのアップの代わり）",
+    "image": "emblems/bleach-mirrors-high-isane-kotetsu.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/2/24/BBSIsane.png/revision/latest/scale-to-width-down/600?cb=20220711135345&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Isane_Kotetsu",
+    "shape": "cutout",
+    "fs": 0.242,
+    "face": [
+     0.242,
+     0.156,
+     0.43,
+     0.538,
+     181,
+     190
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Nemu Kurotsuchi",
+    "why": "Nemu Kurotsuchi（Fandom・Nemu） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-nemu-kurotsuchi.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/c/cd/BBSNemuKurotsuchiTYBW.png/revision/latest/scale-to-width-down/600?cb=20200808011021&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Nemu_Kurotsuchi",
+    "shape": "cutout",
+    "ar": 0.948,
+    "fs": 0.239,
+    "face": [
+     0.239,
+     0.128,
+     0.623,
+     0.525,
+     170,
+     225
+    ]
+   }
   }
  ],
  "The Mandalorian": [
@@ -1919,6 +2079,165 @@
      0.502,
      393,
      243
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Shadow Demon",
+    "why": "Shadow Demon（Fandom のページ）",
+    "image": "emblems/dota2-shadow-demon.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/2/2d/Shadow_Demon_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150508145512",
+    "page": "https://dota2.fandom.com/wiki/Shadow_Demon",
+    "shape": "cutout",
+    "face": [
+     0.131,
+     0.121,
+     0.203,
+     0.491,
+     349,
+     252
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Ancient Apparition",
+    "why": "Ancient Apparition（Fandom のページ）",
+    "image": "emblems/dota2-ancient-apparition.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/f/ff/Ancient_Apparition_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150508151007",
+    "page": "https://dota2.fandom.com/wiki/Ancient_Apparition",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.567,
+     312,
+     167
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Bane",
+    "why": "Bane（Fandom のページ）",
+    "image": "emblems/dota2-bane.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/d/d6/Bane_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509190142",
+    "page": "https://dota2.fandom.com/wiki/Bane",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.494,
+     331,
+     219
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Outworld Destroyer",
+    "why": "Outworld Destroyer（Fandom・Outworld）",
+    "image": "emblems/dota2-outworld-destroyer.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/0/03/Outworld_Destroyer_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150508150047",
+    "page": "https://dota2.fandom.com/wiki/Outworld_Destroyer",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.529,
+     335,
+     152
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Slardar",
+    "why": "Slardar（Fandom のページ）",
+    "image": "emblems/dota2-slardar.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/4/4d/Slardar_Model.jpg/revision/latest/scale-to-width-down/400?cb=20161212210547",
+    "page": "https://dota2.fandom.com/wiki/Slardar",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.43,
+     262,
+     160
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Leshrac",
+    "why": "Leshrac（Fandom のページ）",
+    "image": "emblems/dota2-leshrac.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/a2/Leshrac_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509192710",
+    "page": "https://dota2.fandom.com/wiki/Leshrac",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.479,
+     280,
+     230
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Elder Titan",
+    "why": "Elder Titan（Fandom・Elder）",
+    "image": "emblems/dota2-elder-titan.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/d/df/Cosmetic_icon_Timebreaker.png/revision/latest/scale-to-width-down/400?cb=20130629210303",
+    "page": "https://dota2.fandom.com/wiki/Elder",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.619,
+     374,
+     221
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Night Stalker",
+    "why": "Night Stalker（Fandom のページ）",
+    "image": "emblems/dota2-night-stalker.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/b/b5/Night_Stalker_Day_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150129172705",
+    "page": "https://dota2.fandom.com/wiki/Night_Stalker",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.516,
+     378,
+     161
     ],
     "nfv": 3
    }
