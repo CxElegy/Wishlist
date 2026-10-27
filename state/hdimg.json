@@ -87,15 +87,15 @@
   "target": 720,
   "v": 3
  },
- "http://wx1.sinaimg.cn/middle/008eZAxIly1iig4cgmelfj30ow0re426.jpg": {
-  "w": 896,
-  "h": 986,
+ "http://wx1.sinaimg.cn/middle/61ae99cfgy1iifxjko4ffj210o1ejqcm.jpg": {
+  "w": 1320,
+  "h": 1819,
   "target": 1280,
   "v": 3,
-  "local": "pics/813b6a0f6593f366.webp",
+  "local": "pics/9ba8f673893e9ca2.webp",
   "out": [
-   896,
-   986
+   929,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -771,6 +771,12 @@
   "w": 1962,
   "h": 1308,
   "target": 1280,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/rusutsu.jpg": {
+  "w": 1150,
+  "h": 560,
+  "target": 720,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/shiobara.jpg": {
@@ -1672,10 +1678,17 @@
   "day": "2026-10-27"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
+  "w": 640,
+  "h": 480,
   "target": 1280,
   "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
+  "blur": 0.487,
+  "local": "pics/6da94d65020c72a9.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
@@ -1832,11 +1845,11 @@
   "target": 720,
   "v": 3
  },
- "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0-enlarge.jpg": {
+ "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0.jpg": {
+  "w": 500,
+  "h": 333,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
+  "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg": {
   "w": 2000,
@@ -2648,6 +2661,12 @@
   "w": 1672,
   "h": 941,
   "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/183117/46/183117-46-e39187709e2e41c0b9031e7ff0210805-1908x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 890,
+  "h": 1260,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/18505/4576/18505-4576-3c0ae2cf4e150a39d7fa573bc8b19b8d-1080x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3568,6 +3587,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.boardoftheworld.com/wp-content/uploads/2025/09/Capita-Mercury-Review-2026.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102319226971.jpg": {
   "w": 690,
   "h": 460,
@@ -3947,6 +3972,12 @@
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
   "h": 899,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.switchbacktravel.com/sites/default/files/images/articles/Smith%20Level%20MIPS%20ski%20helmet%20%28close%20up%29.jpg": {
+  "w": 1198,
+  "h": 799,
   "target": 720,
   "v": 3
  },

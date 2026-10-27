@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "0973c6ac356a",
+ "edit_sig": "302bbe1021b8",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -216,36 +216,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-26",
-     "n": 5,
-     "source": "DMKsnowboard",
-     "title": "【ルスツリゾート】最大35時間滑れる前売リフト券を期間限定販売",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9fZklOTXdtS051eFJKMDg2QU0xZUZYWE1aUnpwNHA0WGloeGl5MFlXbVlhZ0huR1dTWnNqajZVMmFCV2ZyT0dGcllxYks0STdUUkplZUdNLTJmZFdCd3RaTk1ySWhoV1l4c0dtYQ?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 6,
-     "source": "Board of the World",
-     "title": "Capita Mercury Review: The Quiver Killer That Crushes the Park, too?",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE04ak9FVDFSOTNYdVFxTmZHR0lZY1AzTlhuNUJDM0ZrWXdmQ01YX1VGNGVCRVFqblJBa3gxVmRlbG9KMXRwWUlBQmR4c0JZZW5JQm9aamtuT2RqcG5yWkV4b1hBZFQ?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 7,
-     "source": "PR TIMES",
-     "title": "佐久平PA直結で運転ラクラク！「佐久スキーガーデン パラダ」2026-2027シーズン公式ポスターが完成！完全ファミリー＆初心者向け、手ぶらで楽しむ快適スノーリゾート",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1ZT2Zzb1hzbTBESVlzUjdYUXNiRnVleFVxekZEZktpT2poWmFaMlEyVUoxNlVQTndXRmxFQ2VuakhlU1RLV1dmNlcwd2RhWGlPQTMxVmszaDVoZ3N3alBwV0RUaU5fWVdVYVE?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 8,
-     "source": "PR TIMES",
-     "title": "【ネコマ マウンテン】東京ドーム約6個分の広大なツリーランゾーンへ拡大！26-27シーズンは滑りも滞在拠点もさらにパワーアップ",
-     "url": "https://prtimes.jp/main/html/rd/p/000002659.000033064.html"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -284,6 +254,26 @@
      "image": "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg",
      "image_via": "og:image",
      "url": "https://www.boardoftheworld.com/burton-blossom-snowboard-review/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "【ルスツリゾート】最大35時間滑れる前売リフト券を期間限定販売",
+     "highlight": "最大35時間",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/rusutsu.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/rusutsu-25hour-lift-ticket-2026-27/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "「佐久スキーガーデン パラダ」2026-2027シーズン公式ポスターが完成！完全ファミリー＆初心者向け、手ぶらで楽しむ快適スノーリゾート",
+     "highlight": "",
+     "image": "https://prcdn.freetls.fastly.net/release_image/183117/46/183117-46-e39187709e2e41c0b9031e7ff0210805-1908x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000046.000183117.html",
      "weight": "normal"
     }
    ],
@@ -597,7 +587,7 @@
      "headline": "短いスカートの“女性警察官”衣装で物議のILLIT、口を開く…かつてBLACKPINK、i-dleも職業コスチュームで騒動に",
      "highlight": "口を開く",
      "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg",
-     "image_via": "og:image",
+     "image_via": "条目自带",
      "url": "https://topics.smt.docomo.ne.jp/article/sportsseoulweb/entertainment/sportsseoulweb-162031",
      "weight": "lead"
     },
@@ -636,8 +626,8 @@
      "date": "2026-10-26",
      "headline": "ILLIT、活動休止中のMOKAは「回復に向けて頑張ってます」５人での活動心待ち",
      "highlight": "",
-     "image": "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0-enlarge.jpg",
-     "image_via": "og:image",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0.jpg",
+     "image_via": "JSON-LD",
      "url": "https://news.infoseek.co.jp/amp/article/nikkansports_202610260001341/",
      "weight": "normal"
     },
@@ -1275,8 +1265,8 @@
      "date": "2026-10-26",
      "headline": "A2O LITE 新歌《NEON》Spotify 全球榜排名创新高",
      "highlight": "排名创新高",
-     "image": "http://wx1.sinaimg.cn/middle/008eZAxIly1iig4cgmelfj30ow0re426.jpg",
-     "image_via": "正文图（本站保存）",
+     "image": "http://wx1.sinaimg.cn/middle/61ae99cfgy1iifxjko4ffj210o1ejqcm.jpg",
+     "image_via": "正文图（其它来源）（本站保存）",
      "url": "https://www.sina.cn/news/detail/5358396442411714.html",
      "weight": "lead"
     },
