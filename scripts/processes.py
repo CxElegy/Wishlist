@@ -557,7 +557,7 @@ PROCESSES = [
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。",
-        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
+        "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py", "harness/d5_sample.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める", "text": "checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
@@ -589,6 +589,8 @@ PROCESSES = [
                       ("開けない写真", "網址があっても本物のブラウザで開けない（防盗链）記事カードは、備えの写真も尽きたら出典アイコンの札でなく写真なしと同じ字だけの形（.nophoto）に落とす（頭・mini・小カード・トップの article.wc・気になるかも？の .pk とも。ux_check は札を下までスクロールして全部数え、版面の頭が字だけなら別に ✗）"),
                       ("足したばかりの人の本人のページ", "焼いた版（2 時間ごと）にまだない picks は、開いたとき網页（ownWait）が「集めています」と名前＋「外す」を出し、焼いた版の「最初の 1 つを選ぼう」・空の「はじめに」版面は隠す（食い違わせない）· 素の箱は soleBox で 1 つだけ · 殻へ送るのを止めるのは跳ね返された回数（入った回数でなく） · 画面の文字は AUTH_JS 全体で言語表 UI〔A.ui、今は ja だけ〕に置き、JS に直書きしない（直書き 0・使う鍵が表にあることを tests が数える）"),
                       ("目次：通り過ぎた駅", "読んでいる駅より目次の並びで前の駅を板块の色で塗る（版面の番号ではなく目次の順）")]},
+            {"id": "p5d", "kind": "step", "lane": "actions", "title": "試作ページ d5 の殻を合わせる", "x": "殻がずれたときだけ",
+             "text": "harness/d5_sample.py --if-stale：testground の d5-now・d5-new が今の render.AUTH_CSS と違うときだけ作り直す（毎回だと 3MB の写しが履歴に積もる）· 失敗しても発布は止めない · tests が同じずれを PR で止める"},
             {"id": "p6", "kind": "store", "lane": "repo", "title": "docs/home/*.html", "text": "店長のページ（網址 /home/ はみんな同じ・中身はログインした人で決まる、旧 /test1/・/shop/ は飛ぶだけ）· docs/test2/ は 2026-10-19〜21 の凍結した写し · docs/index.html は入口"},
             {"id": "p6a", "kind": "store", "lane": "repo", "title": "管理ページ 7 枚", "x": "render.ADMIN_PAGES",
              "text": "admin.html（トップ：6 枚のカードと数）＋ admin-now（①いま）・admin-boards（②版面）・admin-emblem（③エンブレム）・admin-ai（④AI 編集）・admin-system（⑤しくみ）・admin-members（⑥お客さまと店長）。"

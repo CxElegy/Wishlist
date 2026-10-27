@@ -2,6 +2,7 @@
 
     python scripts/digest.py render      # 今のページ docs/home/index.html を作る
     python harness/d5_sample.py          # docs/testground/d5-now.html（今）と d5-new.html（案）
+    （--if-stale を付けると、写しの殻が今の render.AUTH_CSS と同じなら何もしない。render.yml が毎回つなぐ）
 
 d5-now.html = 今のページの写し（画像などは <base href="../home/"> で本番の場所から読む・自動更新は止める）。
 d5-new.html = 同じものに上書きの CSS（令牌だけ）を足したもの：
@@ -11,6 +12,7 @@ d5-new.html = 同じものに上書きの CSS（令牌だけ）を足したも�
 """
 import pathlib
 import re
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "docs/home/index.html"
@@ -120,7 +122,17 @@ def base(html, title):
     return html
 
 
+def fresh():
+    """写し 2 枚が今の render.AUTH_CSS（殻）を含むか（tests の test_testground_copies_carry_current_shell_css と同じ見方）"""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import render
+    return all((OUT / f).exists() and render.AUTH_CSS in (OUT / f).read_text(encoding="utf-8")
+               for f in ("d5-now.html", "d5-new.html"))
+
+
 def main():
+    if "--if-stale" in sys.argv and fresh():   # render.yml から：殻がずれたときだけ作り直す（毎回だと 3MB の写しが履歴に積もる）
+        return print("d5：殻は今のまま、作り直さない")
     src = SRC.read_text(encoding="utf-8")
     assert src.count("<head>") == 1
     now = base(src, "D5 見本・今")
