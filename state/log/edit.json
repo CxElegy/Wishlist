@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-26T04:27:05+00:00",
-"text": "2026-10-26 第 6 バッチを出刊：ILLIT（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 1,417・キャッシュ読み 16.5万・出力 839",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.39,
-"mem_total": 16872804352,
-"mem_free": 15928315904,
-"disk_used": 10744995840,
-"disk_free": 30538174464,
-"disk_total": 41283170304,
-"peak": 306143232
-},
-"batch": 6,
-"boards": [
-"ILLIT"
-],
-"stories": 5,
-"left": 0,
-"edited": 16,
-"run": 1792987260.9018104,
-"tok": {
-"in": 4,
-"cw": 1413,
-"cr": 164773,
-"out": 839,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 167029,
-"secs": 1565,
-"run_tok": {
-"in": 42,
-"cw": 55183,
-"cr": 1513565,
-"out": 6080,
-"calls": 21,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-26T05:41:21+00:00",
 "text": "2026-10-26 第 1 バッチを出刊：MMORPG 新作、The Mandalorian、日本顶级网球赛事、滑雪、绝区零（5 版面・14 本・残り 3 版面） · token 新規入力 5.2万・キャッシュ読み 66.8万・出力 4,077",
 "level": "ok",
@@ -1921,5 +1880,10 @@
 "calls": 31,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-27T09:33:07+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]

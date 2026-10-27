@@ -48,19 +48,6 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261026ac/200/w640h360/20261026/bad8-a850b02eb99f532c72ec846dfd4eb152.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.445,
-  "local": "pics/2cffde8141cd6c2b.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
   "w": 640,
   "h": 360,
@@ -431,6 +418,12 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://cdn.hk01.com/di/media/images/dw/20261022/1189990231294611456712386.jpeg/QPH6CVayi4is_F7cwy7Az9VHWqWwBCTiUR-IoVEfiKE": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://cdn.livedoor.jp/kstyle/514ee8edcb07f7e84eadfecd6f0ec5c7.jpg/r.580x0": {
   "w": 580,
@@ -1715,19 +1708,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/6da94d65020c72a9.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1999,6 +1979,12 @@
   "target": 720,
   "v": 3
  },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853007429197_664_2000.JPEG": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
   "w": 650,
   "h": 367,
@@ -2128,6 +2114,12 @@
   "v": 3,
   "blur": 0.404
  },
+ "https://news.walkerplus.com/article/1133751/11694997_615.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
   "w": 615,
   "h": 346,
@@ -2166,13 +2158,6 @@
   "h": 589,
   "target": 720,
   "v": 3
- },
- "https://news.walkerplus.com/article/1330479/16314659_615.jpg": {
-  "w": 615,
-  "h": 769,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.353
  },
  "https://news.walkerplus.com/article/1445517/18700633_615.jpg": {
   "w": 615,
@@ -3396,6 +3381,12 @@
   "target": 720,
   "v": 3
  },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3509,6 +3500,18 @@
    732
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.PGznIf3HYsWmcfiTsfIvmQ&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
+ "https://www.bing.com/th?id=ONUT.SEjLe-VjuyuNDKLrg1DcBA&pid=News&w=1200": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
@@ -3839,12 +3842,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-ultra-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -3875,12 +3872,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg": {
-  "w": 1392,
-  "h": 934,
-  "target": 720,
-  "v": 3
- },
  "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-41.jpg": {
   "w": 1280,
   "h": 720,
@@ -3897,12 +3888,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://www.justjared.com/wp-content/uploads/2026/10/from-season-3-netflix.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://www.kocpc.com.tw/wp-content/uploads/2026/04/20260426234433_0_82a249.jpg": {
@@ -3987,12 +3972,6 @@
   "w": 600,
   "h": 399,
   "target": 720,
-  "v": 3
- },
- "https://www.right-media.news/wp-content/uploads/2026/10/FotoJet191.jpg": {
-  "w": 1600,
-  "h": 1200,
-  "target": 1280,
   "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {

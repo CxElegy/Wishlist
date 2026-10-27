@@ -67,6 +67,7 @@
   "https://www.etnews.com/20261023000235": "https://img.etnews.com/news/article/2026/10/23/news-p.v1.20261023.29a15b4b82ff4b5488d09c6afc6f124d_P1.png",
   "https://www.ettoday.net/news/20261023/3258963.htm": "https://cdn2.ettoday.net/images/8978/e8978484.jpg",
   "https://www.filmink.com.au/public-notice/official-trailer-release-for-mental-illness-prevention-documentary-raising-superheroes/": "https://www.filmink.com.au/wp-content/uploads/2026/09/trailer.jpg",
+  "https://www.hk01.com/%E6%95%B8%E7%A2%BC%E7%94%9F%E6%B4%BB/60402067/2026%E5%B0%8F%E5%B1%8F%E6%89%8B%E6%A9%9F%E6%8E%A8%E8%96%A6-vivo%E5%B0%8F%E7%B1%B34%E6%AC%BE%E5%96%AE%E6%89%8B%E7%A5%9E%E6%A9%9F-7500mah%E9%9B%BB%E9%87%8F%E4%B8%8D%E5%A6%A5%E5%8D%94": "https://cdn.hk01.com/di/media/images/dw/20261022/1189990231294611456712386.jpeg/QPH6CVayi4is_F7cwy7Az9VHWqWwBCTiUR-IoVEfiKE",
   "https://www.jedinews.com/film-music-tv/articles/kuiils-wise-advice-the-mandalorian-official-compilation/": "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-41.jpg",
   "https://www.kocpc.com.tw/archives/640658": "https://www.kocpc.com.tw/wp-content/uploads/2026/04/20260426234433_0_82a249.jpg",
   "https://www.landgrantholyland.com/youre-nuts/124524/youre-nuts-halloween-edition-one-trick-and-one-treat-for-ohio-state-mens-basketball": "https://platform.landgrantholyland.com/wp-content/uploads/sites/96/2026/07/reuters-tagreuters.com2026newsml_MT1USATODAY29426102475495388.jpg?quality=90&strip=all&crop=0%2C10.72592060985%2C100%2C78.5481587803&w=1200",
@@ -78,7 +79,6 @@
   "https://www.msn.com/ko-kr/news/other/s27-%EC%9A%B8%ED%8A%B8%EB%9D%BC%EB%A7%8C-%EB%B0%B0%ED%84%B0%EB%A6%AC-%EC%BB%A4%EC%A7%80%EB%83%90-s27-%ED%94%84%EB%A1%9C%EB%8F%84-%EB%B0%B0%ED%84%B0%EB%A6%AC-%EC%BB%A4%EC%A7%84%EB%8B%A4/ar-AA2g8Ejw": "https://www.bing.com/th?id=ONUT.I0Qz3hwjbhDb1llUkzPXPA&pid=News&w=1200",
   "https://www.nownews.com/news/6886769": "https://media.nownews.com/nn_media/thumbnail/2026/10/1793021523355-111816baf98c406c8940b6651069038e-1200x675.webp?unShow=false",
   "https://www.physiciansweekly.com/post/preventable-halloween-eye-injuries-persist-despite-warnings": "https://cdn.physiciansweekly.com/wp-content/uploads/2026/10/iStock-1445377245-modified-06da5fcb-206e-4164-8cff-b29e4a7f136f.jpg",
-  "https://www.right-media.news/archives/240457": "https://www.right-media.news/wp-content/uploads/2026/10/FotoJet191.jpg",
   "https://www.sanyonews.jp/article/1912545": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
   "https://www.sanyonews.jp/article/1977453": "https://static.sanyonews.jp/image/article/size1/2/2/9/0/22902e4f34b44e2c44d9f269166203df_1.jpg",
   "https://www.sanyonews.jp/article/2003552": "https://static.sanyonews.jp/image/article/size1/3/e/8/4/3e84c1f4e13b217a1409e48ea6608889_1.jpg",
@@ -887,6 +887,35 @@
   },
   {
    "batch": 5,
+   "because": "Galaxy S27 Pro",
+   "date": "2026-10-22",
+   "hits": [
+    "小屏旗舰",
+    "手机"
+   ],
+   "image": "https://cdn.hk01.com/di/media/images/dw/20261022/1189990231294611456712386.jpeg/QPH6CVayi4is_F7cwy7Az9VHWqWwBCTiUR-IoVEfiKE",
+   "kind": "wish",
+   "score": 6,
+   "source": "香港01",
+   "taste": [
+    [
+     "小屏旗舰",
+     1
+    ],
+    [
+     "小屏",
+     1
+    ]
+   ],
+   "title": "2026小屏手機推薦｜vivo小米4款單手神機 7500mAh電量不妥協",
+   "url": "https://www.hk01.com/%E6%95%B8%E7%A2%BC%E7%94%9F%E6%B4%BB/60402067/2026%E5%B0%8F%E5%B1%8F%E6%89%8B%E6%A9%9F%E6%8E%A8%E8%96%A6-vivo%E5%B0%8F%E7%B1%B34%E6%AC%BE%E5%96%AE%E6%89%8B%E7%A5%9E%E6%A9%9F-7500mah%E9%9B%BB%E9%87%8F%E4%B8%8D%E5%A6%A5%E5%8D%94",
+   "words": [
+    "小屏"
+   ],
+   "work": "三星手机"
+  },
+  {
+   "batch": 5,
    "because": "黑貓魔法術溫變馬克杯",
    "date": "2026-10-22",
    "hits": [
@@ -936,34 +965,6 @@
     "旗舰"
    ],
    "work": "三星手机"
-  },
-  {
-   "batch": 5,
-   "because": "黑貓魔法術溫變馬克杯",
-   "date": "2026-10-21",
-   "hits": [
-    "万圣节"
-   ],
-   "image": "https://www.right-media.news/wp-content/uploads/2026/10/FotoJet191.jpg",
-   "kind": "wish",
-   "score": 6,
-   "source": "睿傳媒 Rightmedia",
-   "taste": [
-    [
-     "万圣节",
-     3
-    ],
-    [
-     "ハロウィン",
-     3
-    ]
-   ],
-   "title": "南仁湖推台東秋冬森活季！萬聖打卡送DIY 11月植物手作接力登場",
-   "url": "https://www.right-media.news/archives/240457",
-   "words": [
-    "ハロウィン"
-   ],
-   "work": "星巴克马克杯"
   },
   {
    "batch": 1,
@@ -2068,7 +2069,7 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
@@ -2076,7 +2077,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
