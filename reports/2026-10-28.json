@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "564826161753",
+ "edit_sig": "05eaf026dc5a",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -347,24 +347,29 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "ILLITの新曲MVはソン・ガンを「逮捕」する追跡劇仕立てで、恋の駆け引きを描く。",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "Yahoo!ニュース",
-     "title": "ILLIT、新曲MVで俳優ソン・ガンを「逮捕」？ 恋の駆け引きを描く追跡劇 (Rolling Stone Japan)",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQRVF2ZGxQTTdia2JhNWcyckJ0Nmp1NjFOMmlRMjM1Q2s4TWJDTmM4YVNMMTVuVXR1Z2wtaHR4YUlTdjBvTHpIbE1wQWg1b3o4YmM0RFQ4ZEsycDZoZWZrOFg3UnFDMlNNZGg4YjAxRjhGaDFqSjhzTHNNZjBkUmV2a210bjNFV2pGczdxVGhn?oc=5"
+     "headline": "ILLIT、新曲MVで俳優ソン・ガンを「逮捕」？ 恋の駆け引きを描く追跡劇",
+     "highlight": "新曲MVで俳優ソン・ガンを「逮捕」",
+     "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnax2f7OIyXc1WmQRDOjM-h8Yn9Gd6cjzMehWgq6BPeDImBHdGhoTErPtYsLyPaPzfFvf9v_c28o8qn8mFUGSUsnkDbqYqvg7SN2-YK0YukEflnUE4vG_1bAdOi-TgtgE4Q==",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/e0047c785684cf0dd0d4307df9cc78db25f8589d/images/000",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 2,
-     "source": "note",
-     "title": "ILLITは初動最下位でもSpotify1位。10/26同日カムバックのIVE・ILLIT・RIIZEは、勝っている場所が違った。",
-     "url": "https://note.com/keke_ent/n/naa0ad0d59485"
+     "headline": "ILLITは初動最下位でもSpotify1位。10/26同日カムバックのIVE・ILLIT・RIIZEは、勝っている場所が違った。",
+     "highlight": "",
+     "image": "https://assets.st-note.com/production/uploads/images/327624810/rectangle_large_type_2_aed04e16319fb3675554717e75078d48.png?fit=bounds&quality=85&width=1280",
+     "image_via": "og:image",
+     "url": "https://note.com/keke_ent/n/naa0ad0d59485",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
@@ -381,17 +386,20 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "Cat food helped Purina outpace Nestlé in Q3 2026.",
      "date": "2026-10-27",
-     "n": 1,
+     "headline": "Cat food helped Purina outpace Nestlé in Q3 2026",
+     "highlight": "Purina outpace Nestlé",
+     "image": null,
      "source": "PetfoodIndustry",
-     "title": "Cat food helped Purina outpace Nestlé in Q3 2026",
-     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPRXZ1Qk5jZDVWNHk3dm8xTGU5aHlXdHVsVC1XRHF3V01HNUtKS3U3VmFqV3ZyUXFoMUp0S25zck41bzhTbE53eUhJYjhZN29aU2pqb255ZlpjZ2p5QnNmdWVQMnF5QnMwaDI0VmtFTnB6VFpWbXFDUkRZNDl5aHFQTkJnNWk5cDdJLVJtblZnNkNFODB3eEFOa0NhRHRKemlCWmJvSlpJY0o5STBzcW03am9PS1M4S0UxREFKVFdhQk5wY1Nxa2U5U1U4U1VNN2VC?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.petfoodindustry.com&sz=128",
+     "url": "https://www.petfoodindustry.com/pet-food-market/market-trends-and-reports/news/15975496/cat-food-helped-purina-outpace-nestl-in-q3-2026",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -408,24 +416,19 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "大坂なおみは東レPPO1回戦でパオリーニに6―3、7―6で勝ち2回戦へ進んだ。",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "東スポWEB on MSN",
-     "title": "大坂なおみが4年ぶりの東レPPOで成長明かす「とても落ち着いている自分がいる」",
-     "url": "https://www.msn.com/ja-jp/sports/%E5%85%A8%E8%88%AC/%E5%A4%A7%E5%9D%82%E3%81%AA%E3%81%8A%E3%81%BF%E3%81%8C%EF%BC%94%E5%B9%B4%E3%81%B6%E3%82%8A%E3%81%AE%E6%9D%B1%E3%83%AC%EF%BD%90%EF%BD%90%EF%BD%8F%E3%81%A7%E6%88%90%E9%95%B7%E6%98%8E%E3%81%8B%E3%81%99-%E3%81%A8%E3%81%A6%E3%82%82%E8%90%BD%E3%81%A1%E7%9D%80%E3%81%84%E3%81%A6%E3%81%84%E3%82%8B%E8%87%AA%E5%88%86%E3%81%8C%E3%81%84%E3%82%8B/ar-AA2gaxfF"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 2,
-     "source": "毎日新聞デジタル",
-     "title": "テニス 東レ・パンパシフィック・オープン 大坂2回戦へ",
-     "url": "https://mainichi.jp/articles/20261028/ddm/035/050/025000c"
+     "headline": "大坂なおみが4年ぶりの東レPPOで成長明かす「とても落ち着いている自分がいる」",
+     "highlight": "4年ぶりの東レPPO",
+     "image": "https://cdn.mainichi.jp/vol1/2026/10/28/20261028ddm035050160000p/0c10.jpg?2",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/ja-jp/sports/%E5%85%A8%E8%88%AC/%E5%A4%A7%E5%9D%82%E3%81%AA%E3%81%8A%E3%81%BF%E3%81%8C%EF%BC%94%E5%B9%B4%E3%81%B6%E3%82%8A%E3%81%AE%E6%9D%B1%E3%83%AC%EF%BD%90%EF%BD%90%EF%BD%8F%E3%81%A7%E6%88%90%E9%95%B7%E6%98%8E%E3%81%8B%E3%81%99-%E3%81%A8%E3%81%A6%E3%82%82%E8%90%BD%E3%81%A1%E7%9D%80%E3%81%84%E3%81%A6%E3%81%84%E3%82%8B%E8%87%AA%E5%88%86%E3%81%8C%E3%81%84%E3%82%8B/ar-AA2gaxfF",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "ATP・WTA ツアー 日本開催",
    "theme": {
     "accent": "#D7F03C",
@@ -487,17 +490,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Chainsaw Man's first Crocs collection launches with Denji, Power and Pochita designs.",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "Essential Japan",
-     "title": "Chainsaw Man's First-Ever Crocs Collection Officially Launches With Denji, Power and Pochita Designs",
-     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNQ28tOGh2MzNIeTZ3bFQ1TFVfelZSaHd1UWdacmQ2TkxUZ183YmgxMjBfenlJXzRaNXFVRE50SzBfVkdYZWxzUDZaVWV1a09HR2gzTDJQR21iaWJ2Z1hSTkpjQWwwblRBYUNLcTR1LTZibXRHRmZQWUpHZXM1MXFlQXpyM1BWT3NnaF9kTTVPXzYxalhOdTRyVnIxT2VHSVBoeTJlNjI2ZzFtbHFoRTMtRl9ad3FOamw4SDhmYUJXSGRPUWlIZk1DNG44QzA?oc=5"
+     "headline": "Chainsaw Man's First-Ever Crocs Collection Officially Launches With Denji, Power and Pochita Designs",
+     "highlight": "First-Ever Crocs Collection",
+     "image": "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp",
+     "image_via": "og:image",
+     "url": "https://essential-japan.com/news/chainsaw-mans-first-ever-crocs-collection-officially-launches-with-denji-power-and-pochita-designs/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -521,8 +526,8 @@
      "date": "2026-10-27",
      "headline": "The Mandalorian is back this November with a new Star Wars adventure",
      "highlight": "this November",
-     "image": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg?resize=1200,630",
-     "image_via": "同一件事的别家报道 www.superherohype.com",
+     "image": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+     "image_via": "作品封面",
      "source": "Skoar! on MSN",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.msn.com&sz=128",
      "url": "https://www.msn.com/en-in/news/other/the-mandalorian-is-back-this-november-with-a-new-star-wars-adventure/ar-AA2g9zuc",
@@ -545,24 +550,30 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "Vaundy書き下ろしの「かげろう」とABC高校野球のコラボPVが完成した。",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "山陽新聞",
-     "title": "Vaundy書き下ろし「かげろう」×ABC高校野球 コラボレーションPV完成",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1KVG9Xa2p4aDVIR29LOWlCR3FoZ2Y4ZUl2elp4d3o3ckRJRkVFbFdUTG13UUFmeGdXUVJOX2xnOVFZQkZIQm5td055RkRJOWRNaVNaRkVoUDBGREc0NmNpT1BxWVJ5OUJHREhhaXZkNzg4Ums?oc=5"
+     "headline": "Vaundy書き下ろし「かげろう」×ABC高校野球 コラボレーションPV完成",
+     "highlight": "コラボレーションPV完成",
+     "image": "https://static.sanyonews.jp/image/article/size1/f/a/5/3/fa53d6bb2a79d4838238076752cf8fcd_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.sanyonews.jp/article/1948780?rct=oricon_music&kw=2024",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 2,
+     "headline": "“CROSS TALK” Jeremy Quartus SPECIAL with Vaundy & n-buna（ヨルシカ）",
+     "highlight": "",
+     "image": null,
      "source": "Howl.Link",
-     "title": "“CROSS TALK” Jeremy Quartus SPECIAL with Vaundy & n-buna（ヨルシカ）",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9ieHJFbTdGdWNmWXQ1SDI0N01QWWRkVjNJMndHR2VacGd4RGlqVWd6QmE1c0JwZjl5SVcw?oc=5"
+     "source_icon": null,
+     "url": "https://t.co/N0Znd9KEYB",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",

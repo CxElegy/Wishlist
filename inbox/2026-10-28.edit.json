@@ -191,7 +191,12 @@
   "绝区零": 3,
   "FROM": 2,
   "周杰伦": 2,
-  "The Mandalorian": 1
+  "The Mandalorian": 1,
+  "ILLIT": 2,
+  "Vaundy": 2,
+  "日本顶级网球赛事": 2,
+  "チェーンソーマン": 1,
+  "猫用品": 1
  },
  "三星手机": [
   {
@@ -305,6 +310,84 @@
    "headline": "The Mandalorian is back this November with a new Star Wars adventure",
    "highlight": "this November",
    "blurb": "The Art of Star Wars: The Mandalorian and Grogu offers a look at the creative journey of Jon Favreau's 2026 film.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT、新曲MVで俳優ソン・ガンを「逮捕」？ 恋の駆け引きを描く追跡劇",
+   "highlight": "新曲MVで俳優ソン・ガンを「逮捕」",
+   "blurb": "ILLITの新曲MVはソン・ガンを「逮捕」する追跡劇仕立てで、恋の駆け引きを描く。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnax2f7OIyXc1WmQRDOjM-h8Yn9Gd6cjzMehWgq6BPeDImBHdGhoTErPtYsLyPaPzfFvf9v_c28o8qn8mFUGSUsnkDbqYqvg7SN2-YK0YukEflnUE4vG_1bAdOi-TgtgE4Q=="
+  },
+  {
+   "headline": "ILLITは初動最下位でもSpotify1位。10/26同日カムバックのIVE・ILLIT・RIIZEは、勝っている場所が違った。",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy書き下ろし「かげろう」×ABC高校野球 コラボレーションPV完成",
+   "highlight": "コラボレーションPV完成",
+   "blurb": "Vaundy書き下ろしの「かげろう」とABC高校野球のコラボPVが完成した。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/f/a/5/3/fa53d6bb2a79d4838238076752cf8fcd_1.jpg"
+  },
+  {
+   "headline": "“CROSS TALK” Jeremy Quartus SPECIAL with Vaundy & n-buna（ヨルシカ）",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "大坂なおみが4年ぶりの東レPPOで成長明かす「とても落ち着いている自分がいる」",
+   "highlight": "4年ぶりの東レPPO",
+   "blurb": "大坂なおみは東レPPO1回戦でパオリーニに6―3、7―6で勝ち2回戦へ進んだ。",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://cdn.mainichi.jp/vol1/2026/10/28/20261028ddm035050160000p/0c10.jpg?2"
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man's First-Ever Crocs Collection Officially Launches With Denji, Power and Pochita Designs",
+   "highlight": "First-Ever Crocs Collection",
+   "blurb": "Chainsaw Man's first Crocs collection launches with Denji, Power and Pochita designs.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp"
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "Cat food helped Purina outpace Nestlé in Q3 2026",
+   "highlight": "Purina outpace Nestlé",
+   "blurb": "Cat food helped Purina outpace Nestlé in Q3 2026.",
    "weight": "lead",
    "refs": [
     1

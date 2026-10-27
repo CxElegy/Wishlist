@@ -366,6 +366,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.st-note.com/production/uploads/images/327624810/rectangle_large_type_2_aed04e16319fb3675554717e75078d48.png?fit=bounds&quality=85&width=1280": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://assets.st-note.com/production/uploads/images/328407719/rectangle_large_type_2_f56d80df8805c485022a99c99999e3e1.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -435,10 +441,10 @@
   "v": 3
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
-  "w": 1950,
-  "h": 1097,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/The-Apothecary-Diaries-Movie-x-Kenshi-Yonezu-Official-Theme-Song-0.webp": {
   "w": 1280,
@@ -488,6 +494,12 @@
   "h": 630,
   "target": 720,
   "v": 3
+ },
+ "https://cdn.mainichi.jp/vol1/2026/10/28/20261028ddm035050160000p/0c10.jpg?2": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
   "w": 960,
@@ -664,6 +676,12 @@
   "h": 900,
   "target": 720,
   "v": 3
+ },
+ "https://d2goguvysdoarq.cloudfront.net/system/facility_photos/photos/313773/normal.jpg?1790224008&w=640&h=640&t=r": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/165a06c8c5684c2083c5a4bd62e008afe2badda7.png": {
   "w": 1280,
@@ -2163,6 +2181,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnax2f7OIyXc1WmQRDOjM-h8Yn9Gd6cjzMehWgq6BPeDImBHdGhoTErPtYsLyPaPzfFvf9v_c28o8qn8mFUGSUsnkDbqYqvg7SN2-YK0YukEflnUE4vG_1bAdOi-TgtgE4Q==": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://news.dellows.jp/wp-content/uploads/2026/09/444878_1.jpg": {
   "w": 1024,
   "h": 586,
@@ -2964,6 +2988,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.eximg.jp/exnews/feed/Nekojournal/88/Nekojournal_post31091/Nekojournal_post31091_1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
   "h": 630,
@@ -3222,10 +3252,10 @@
   "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/f/a/5/3/fa53d6bb2a79d4838238076752cf8fcd_1.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://static.sanyonews.jp/image/article/size3/1/0/2/7/10277f53ca257918cfc178239badb31c_1.jpg": {
   "w": 320,
@@ -3625,12 +3655,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-28"
- },
- "https://www.bing.com/th?id=ONUT.3jPrxdlM5f5LjNUMigY6Pw&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.5C92Ku7vfec32N7T7QXo7g&pid=News&w=1200": {
   "w": 700,
@@ -4324,12 +4348,6 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
