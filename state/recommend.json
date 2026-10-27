@@ -11,7 +11,6 @@
   "https://article.auone.jp/5e6bb488-14ab-472e-a7d0-5d6f71a5a42d": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_jp_i_1486554983406584528_w640.webp",
   "https://article.auone.jp/fb958b8c-b16d-4d90-b3ba-a160b9eb565c": "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912",
   "https://ascii.jp/elem/000/004/445/4445672/": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122",
-  "https://brobible.com/culture/article/marvel-edited-chris-evans-hairline-nose-theory/": "https://brobible.com/wp-content/uploads/2026/10/Chris-Evans.png",
   "https://collabo-cafe.com/en/events/collabo/gudetama-avail-goods-2026/": "https://collabo-cafe.com/wp-content/uploads/gudetama-avail-2026-lineup.jpg",
   "https://collabo-cafe.com/events/collabo/gudetama-avail-goods-2026/": "https://collabo-cafe.com/wp-content/uploads/gudetama-avail-2026-lineup.jpg",
   "https://collabo-cafe.com/events/collabo/saikikuso-meets-palude-knitfactory-anime-store-goods2026/": "https://collabo-cafe.com/wp-content/uploads/086711674d70f7e953b3416296c989a7-253.jpg",
@@ -46,6 +45,7 @@
   "https://tbreak.com/activision-open-world-game-elsewhere-emergent-gameplay/": "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/activision-open-world-game-elsewhere-emergent-gameplay.png?fit=1200%2C675&ssl=1",
   "https://tech-insider.org/activision-open-world-game-emergent-gameplay-elsewhere-2026/": "https://tech-insider.org/wp-content/uploads/2026/10/activision-open-world-game-emergent-gameplay-elsewhere-2026-gen.webp",
   "https://tenki.jp/leisure/3/16/91/188221/1hour.html": "https://d2goguvysdoarq.cloudfront.net/system/facility_photos/photos/313773/normal.jpg?1790224008&w=640&h=640&t=r",
+  "https://thedirect.com/article/marvel-studios-disney-plus-avengers-doomsday-series-delay": "https://images.thedirect.com/media/article_full/avengers-doomsday-disney-plus-series.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/insidegames/trend/insidegames-189922": "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-189922.jpg",
   "https://trilltrill.jp/articles/5135144": "https://media.trilltrill.jp/articles/5135144/featured-image.62527985e3aec638ee3b46081775f209?w=1200",
   "https://ure.pia.co.jp/articles/-/3524153": "https://urepia.ismcdn.jp/mwimgs/9/f/-/img_9f0e16825892da92c7175ca1d118299a103028.jpg",
@@ -1393,6 +1393,27 @@
    "because": "漫威电影",
    "date": "2026-10-27",
    "hits": [],
+   "image": "https://images.thedirect.com/media/article_full/avengers-doomsday-disney-plus-series.jpg",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "The Direct",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Report: Marvel Delays Its Next Disney+ Series To Release After 'Avengers Doomsday'",
+   "url": "https://thedirect.com/article/marvel-studios-disney-plus-avengers-doomsday-series-delay",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-10-27",
+   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.-uijTEGIvI3LnJNGANmBxA&pid=News&w=1200",
    "kind": "board",
    "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
@@ -1410,7 +1431,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "The Mandalorian",
    "date": "2026-10-27",
    "hits": [],
@@ -1471,27 +1492,6 @@
    "url": "https://khorasantimes.com/?kh=4317612",
    "words": [],
    "work": "The Mandalorian"
-  },
-  {
-   "batch": 5,
-   "because": "漫威电影",
-   "date": "2026-10-26",
-   "hits": [],
-   "image": "https://brobible.com/wp-content/uploads/2026/10/Chris-Evans.png",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "BroBible",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Marvel Seemingly Used VFX To Edit Chris Evans' Hairline And Nose In The Newest 'Avengers: Doomsday' Teaser",
-   "url": "https://brobible.com/culture/article/marvel-edited-chris-evans-hairline-nose-theory/",
-   "words": [],
-   "work": "漫威电影"
   },
   {
    "batch": 5,
@@ -2066,15 +2066,15 @@
    8
   ],
   [
+   "三星 Galaxy",
+   7
+  ],
+  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "三星 Galaxy",
    7
   ],
   [
