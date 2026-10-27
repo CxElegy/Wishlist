@@ -23,6 +23,9 @@
 ✗：押せない・押しても変わらない・JS のエラー・素の箱・横にはみ出す・同じ id の重複。始めと終わりに本人の追いかけるもの（prefs.picks）を空にする（本人の行だけ、my_keywords_set）。
 今のところ 👍・欲しい物は通さない（空の人には 👍 する記事も欲しい物の入口もない。BACKLOG に書いた）。
 
+--fast（2026-10-27）：札・枠組みだけを速く（小元素 off・待ち 6 秒・最初の画面と設定の 2 枚だけ・test-c の小さい端末なし）。4 人×2 幅で 5 分以内。小元素・殻のページ・40 秒の開き直しは見ない（全部は ふだんの点検）。
+
+    python harness/ux_check.py --fast [--base ...]   （定時の速い回）
     python harness/ux_check.py --journey [--base ...]   （1 日通しだけ。ふだんの点検には混ぜない）
     python harness/ux_check.py [--base https://cxelegy.github.io/Wishlist/home/] [--out DIR] [--who test-a,test-b] [--emb quick|full|off]
 """
@@ -45,6 +48,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WHO = {"guest": None, "test-a": "test-a@example.com", "test-b": "test-b@example.com", "test-c": "test-c@example.com"}
 PASSWORD = "0000"   # テスト用アカウントの決まった合言葉（CLAUDE.md「ログイン」）
 WATCH_S = 40
+FAST_S = 6   # --fast の待ち
 BOXES = ".wl-mine,.wl-wait,.wl-today,.wl-maybe"
 NEAR_JS = (pathlib.Path(__file__).resolve().parent / "near.js").read_text(encoding="utf-8")
 
@@ -567,10 +571,12 @@ def shell_pages():
                   and "wl-auth" in f.read_text(encoding="utf-8"))
 
 
-def runs_for(who, widths):
+def runs_for(who, widths, fast=False):
     """人ごとの (幅, ページ, 高さ)。殻のページ（shell_pages＝AUTH_JS の「index・settings 以外」の枝）は guest を含む全員・全幅、
     0 個の人（test-c）は 390 幅の小さい端末（高さ 667・740）でも、最初の画面・設定・欲しい物・話題度（2026-10-27）。"""
     runs = [(int(w), pg, 900) for pg in ("", "settings.html") for w in widths]
+    if fast:
+        return runs   # 札・枠組みだけ：最初の画面と設定（殻のページ・小さい端末は ふだんの点検）
     runs += [(int(w), pg, 900) for pg in shell_pages() for w in widths]   # guest も（殻なし・100 字の下限の枝）
     if who == "test-c" and "390" in widths:
         runs += [(390, pg, h) for h in (667, 740) for pg in ["", "settings.html"] + shell_pages()]
@@ -584,8 +590,11 @@ def main(argv):
     ap.add_argument("--who", default=",".join(WHO))
     ap.add_argument("--widths", default="1400,390")
     ap.add_argument("--emb", default="quick", choices=("quick", "full", "off"))
+    ap.add_argument("--fast", action="store_true", help="札・枠組みだけを速く（小元素 off・待ち 6 秒・最初の画面と設定だけ）")
     ap.add_argument("--journey", action="store_true", help="1 日通し（空のアカウントで押して通す）だけを走らせる")
     a = ap.parse_args(argv)
+    if a.fast:
+        a.emb = "off"
     out = pathlib.Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     fails = 0
@@ -598,10 +607,10 @@ def main(argv):
             print(f"1 日通し：✗ {fails} 件")
             return 1 if fails else 0
         for who in a.who.split(","):
-            runs = runs_for(who, a.widths.split(","))
+            runs = runs_for(who, a.widths.split(","), a.fast)
             for w, page, h in runs:
                 try:
-                    st, bad = check(pw, a.base, who, w, out, page, a.emb if h == 900 else "off", h, WATCH_S if h == 900 else 10)
+                    st, bad = check(pw, a.base, who, w, out, page, a.emb if h == 900 else "off", h, FAST_S if a.fast else WATCH_S if h == 900 else 10)
                 except Exception as ex:  # noqa: BLE001
                     st, bad = {}, [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
                 fails += bool(bad)

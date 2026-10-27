@@ -386,6 +386,15 @@ class ZeroShellRendered(unittest.TestCase):
             for h in (667, 740):
                 self.assertIn((390, pg, h), r)
 
+    def test_fast_runs_are_two_pages_per_width(self):
+        import sys, pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        # --fast は札・枠組みだけ：最初の画面と設定の 2 枚 × 幅（4 人×2 幅で 16 回、5 分に収まる数）
+        for who in ("guest", "test-a", "test-b", "test-c"):
+            self.assertEqual(sorted(ux_check.runs_for(who, ["1400", "390"], True)),
+                             sorted((w, pg, 900) for pg in ("", "settings.html") for w in (1400, 390)), who)
+
     def test_start_button_clickable_inside_top(self):
         # .top の子は pointer-events:none（クリックは .lk か .vt だけ）。主役のボタン .startgo は例外に入っていること（入っていないと押せない）
         import re
