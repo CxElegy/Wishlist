@@ -184,19 +184,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/647c8fably1iig7or5h03j20u011i40a.jpg": {
-  "w": 1080,
-  "h": 1350,
-  "target": 720,
-  "v": 3,
-  "local": "pics/02ff0a6a28588d35.webp",
-  "out": [
-   1024,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/78961de9gy1iiewsmyjeuj24002o0npg.jpg": {
   "w": 2000,
   "h": 1333,
@@ -245,6 +232,19 @@
   "out": [
    1125,
    878
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx4.sinaimg.cn/middle/647c8fably1iig7or5jn8j20u011iwgg.jpg": {
+  "w": 1080,
+  "h": 1350,
+  "target": 720,
+  "v": 3,
+  "local": "pics/6731d2dd1a2f8fc1.webp",
+  "out": [
+   1024,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -917,12 +917,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hermes.media.transform.aol.com/6963b3a9e84468c005cf8e0f1a63b74929e18a0a/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/26/ed77719c-b688-350a-97da-f6a05c739b20/613078da-95c5-4764-9387-4bf49a8c73c5.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg": {
   "w": 1200,
   "h": 675,
@@ -975,12 +969,6 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
-  "v": 3
- },
- "https://i.abcnewsfe.com/a/3f4d22ad-8045-4791-a537-3773774a4769/doomsday-1-ht-jef-260720_1784553718149_hpMain_16x9.jpg?w=1600": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
   "v": 3
  },
  "https://i.cdn.newsbytesapp.com/images/l144_20281793008781.jpg": {
@@ -1725,6 +1713,19 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.487,
+  "local": "pics/6da94d65020c72a9.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
@@ -3130,6 +3131,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
+  "w": 1200,
+  "h": 653,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3387,19 +3394,6 @@
   "h": 630,
   "target": 720,
   "v": 3
- },
- "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
-  "w": 647,
-  "h": 431,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.452,
-  "local": "pics/9a1ea62ec61eeb92.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
  },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
@@ -3709,6 +3703,12 @@
   "w": 650,
   "h": 341,
   "target": 720,
+  "v": 3
+ },
+ "https://www.comicbasics.com/wp-content/uploads/2025/11/X-Men-.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/06/slika_2026-06-29_160304513.webp": {
