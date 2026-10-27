@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-27T02:14:07+00:00",
+ "checked": "2026-10-27T02:15:41+00:00",
  "fired": {
-  "at": "2026-10-27T02:14:07+00:00",
+  "at": "2026-10-27T02:25:33+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -23,7 +23,6 @@
     "A2O LITE",
     "Astrae Oratio",
     "FROM",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
@@ -32,33 +31,28 @@
     "チェーンソーマン",
     "三星手机",
     "周杰伦",
-    "日本顶级网球赛事",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-10-27T02:00:50+00:00",
+   "last_batch": "2026-10-27T02:13:13+00:00",
    "last_error": {
     "at": "2026-10-27T01:47:50+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 255,
+   "prog": 266,
    "prog_day": "2026-10-27",
    "ripe": [
     "A2O LITE",
     "Astrae Oratio",
     "FROM",
-    "GTA 6",
     "The Mandalorian",
     "チェーンソーマン",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "绝区零"
+    "周杰伦"
    ],
-   "sig": "ecbbef4f5999",
+   "sig": "61bb6491d423",
    "token_cap": 1000000,
-   "tokens_today": 298851,
-   "why": "整理待ちの記事 26 件（15 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 304771,
+   "why": "整理待ちの記事 15 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
