@@ -1,4 +1,5 @@
 """ログイン（Google・招待制・访客は見るだけ・管理ページは管理者だけ）の部品の検査。"""
+import inspect
 import pathlib
 import re
 import sys
@@ -207,19 +208,43 @@ class PyWording(unittest.TestCase):
     """Python 側の、お客さま用の日本語も表 SETTINGS_JA に置く（0 個の人の入口・外す・その他）。"""
     JA = UiWording.JA
 
-    def test_own_entry_points_have_no_literal_japanese(self):
-        import inspect, user_pages
-        src = inspect.getsource(render._own_add)
-        src = re.sub(r'""".*?"""', "", src, flags=re.S)
-        self.assertIsNone(self.JA.search(src))
+    KANA = re.compile(r"[\u3041-\u30fa\u30fc-\u30ff]")   # かな（漢字は中文の板块名と同じ字なので数えない。「・」は区切り）
+    # 操作する人が Actions のログで読む文（お客さまの画面に出ない）
+    OPERATOR = {"_supa", "main"}
+
+    def _literal_kana(self, mod, only=None, skip=()):
+        """関数の中の文字列で、かなを含むもの（docstring・コメントは数えない。JS・CSS の中のコメント行は除く）。"""
+        import ast
+        t = ast.parse(inspect.getsource(mod))
+        doc = {id(n.body[0].value) for n in ast.walk(t)
+               if isinstance(n, (ast.Module, ast.FunctionDef, ast.ClassDef)) and n.body
+               and isinstance(n.body[0], ast.Expr) and isinstance(getattr(n.body[0], "value", None), ast.Constant)}
+        bad = []
+        for fn in ast.walk(t):
+            if not isinstance(fn, ast.FunctionDef) or fn.name in skip or (only and fn.name not in only):
+                continue
+            for n in ast.walk(fn):
+                if isinstance(n, ast.Constant) and isinstance(n.value, str) and id(n) not in doc:
+                    s = re.sub(r"//.*$|/\*.*?\*/", "", n.value, flags=re.M | re.S)
+                    if self.KANA.search(s):
+                        bad.append((fn.name, n.lineno, n.value.strip()[:40]))
+        return bad
+
+    def test_own_path_has_no_literal_japanese(self):
+        import user_pages
+        self.assertEqual(self._literal_kana(user_pages, skip=self.OPERATOR), [])
+        self.assertEqual(self._literal_kana(render, only={"_own_add", "render_settings"}), [])
+        # トップの 0 個の人のポスター（elif start:）
         r = inspect.getsource(render)
         i = r.index("elif start:")
-        seg = r[i:r.index('style = ""', i)]
-        seg = re.sub(r"  #.*$", "", seg, flags=re.M)
-        self.assertIsNone(self.JA.search(seg))
-        up = [l for l in inspect.getsource(user_pages).split("\n")
-              if ('"status"' in l or "sub_of(i, x" in l) and self.JA.search(re.sub(r"#.*$", "", l))]
-        self.assertEqual(up, [])
+        seg = re.sub(r"  #.*$", "", r[i:r.index('style = ""', i)], flags=re.M)
+        self.assertIsNone(self.KANA.search(seg))
+
+    def test_first_board_and_also_come_from_table(self):
+        import user_pages
+        self.assertEqual(user_pages.FIRST_BOARD, render.SETTINGS_JA["first_board"])
+        for T in (render.SETTINGS_ZH, render.SETTINGS_JA):
+            self.assertIn("{}", T["also"])
 
     def test_table_keys_exist(self):
         for k in ("none_hint", "pick", "start_h", "start_p", "none_status", "collecting", "out", "out_aria", "other"):

@@ -1812,7 +1812,7 @@ def _asset_ver(name):
 
 
 SETTINGS_ZH = {
-    "lang": "zh-CN", "title": "设置", "back": "← 回到简报", "back_href": "index.html", "updated": "更新于", "add": "",
+    "lang": "zh-CN", "also": "⇄ 也在 {}", "title": "设置", "back": "← 回到简报", "back_href": "index.html", "updated": "更新于", "add": "",
     "links": '<p class="hint"><a href="themes.html">版面主题（30 套）和 👍 演出（20 种）一览 →</a>　<a href="admin.html">管理页（运行状况・投票・各关注项的记事数）→</a></p>',
     "intro": '点 S / M / L 改篇幅，点「改」修改这一项关注什么；想关注新的东西，在最下面「新增关注项」里只写个名字，一步一步回答几个问题就行。改完立刻存进数据库，<span id="wl-eta">下次更新时（最多 2 小时）网页按新的设置更新</span>。',
     "legend": "<dt>S</dt><dd>少：每期最多 3 条，大约一行</dd><dt>M</dt><dd>中等：每期最多 5 条</dd><dt>L</dt><dd>多：每期最多 8 条，满满一整屏</dd>",
@@ -1821,7 +1821,7 @@ SETTINGS_ZH = {
     "js_nodb": "未连数据库", "js_saving": "保存中…", "js_saved": "已保存 ✓", "js_fail": "没存上", "js_offline": "连不上"}
 # お客さま本人の設定ページ（user_pages.py）。画面の文字は日本語（app_users.ui_lang、今の登録者は日本語）
 SETTINGS_JA = {
-    "lang": "ja", "title": "設定", "back": "← 自分のページへ", "back_href": "./", "updated": "更新", "add": "＋ 追いかけるものを足す", "links": "",
+    "lang": "ja", "also": "⇄ {} にも", "first_board": "はじめに", "title": "設定", "back": "← 自分のページへ", "back_href": "./", "updated": "更新", "add": "＋ 追いかけるものを足す", "links": "",
     # 0 個の人の入口の文字（設定ページ・最初のポスター・本人のページの静かな版面）。Python 側の日本語はここに置く（tests が数える）
     "none_hint": "まだ何も追いかけていません。選ぶと、ここで版面の大きさを決められます。", "pick": "追いかけるものを選ぶ →",
     "start_h": "最初の 1 つを選ぼう", "start_p": "好きな作品・人・場所を選ぶと、記事がここに並びます。",
@@ -1880,7 +1880,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
             sub = f'<small>{e(it["subtitle"])}</small>' if it.get("subtitle") else ""
             also = (it.get("fields") or {}).get("also") or {}
             if also:   # ほかの板块にも乗換の駅がある
-                sub += f'<small>⇄ {e("・".join(_sec_name(k) for k in also))} にも</small>'
+                sub += f'<small>{T["also"].format(e("・".join(_sec_name(k) for k in also)))}</small>'
             btns = "".join(f'<button type="button" data-v="{v}" aria-pressed="{str(v == (it.get("size") or "M")).lower()}">'
                            f'{v}</button>' for v in ("S", "M", "L"))
             tail = (f'<button type="button" class="edit out" aria-label="{e(it["name"])}{T["out_aria"]}">{T["out"]}</button>' if own else

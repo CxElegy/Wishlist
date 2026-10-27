@@ -142,3 +142,4 @@
 2026-10-27 r2：BLEACH 公式の段を本番で確認〔Ichigo・Byakuya が公式サイトの立ち絵に・E19 BLEACH 0〕。E21 の誤り〔取り直し済みの行を Fandom 由来と数え、毎回取り直す〕を emblem.fandom_sourced で直した。tests 1004 OK。次：後台の回のあと E21 が 0 になるのを数える
 - 2026-10-27 胸像待ちの見込み（依頼の係 r3）：本番で待ち 49→1 人・E20 ✗ なし・E19 1 枚＝確認済み · #550/#556 · 次：お客さま側の next/eta は待ちが出る版面を待つ・E10/E15 の別の段
 2026-10-27 f5：Python 側のお客さま用の日本語 9 つを SETTINGS_JA へ（直書き 0・試験 PyWording）：https://github.com/CxElegy/Wishlist/pull/576。次：render.py の残りの日本語（店長と共通の札）は言語を足す段で
+2026-10-27 f5f1：「⇄ にも」と FIRST_BOARD を SETTINGS_JA/ZH の表へ（店長の中文設定にも日本語が出ていた）・PyWording を user_pages 全体と render の own 経路の ast 数えに。次：ZH/JA の鍵そろえ点検・render() 共通部分の直書き
