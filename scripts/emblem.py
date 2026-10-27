@@ -874,9 +874,9 @@ def is_sliver(w, h):
     return min(w, h) < CUT_MIN or w > h * CUT_WIDE
 
 
-def save_cut(out, slug, min_side=0):
+def save_cut(out, slug, min_side=BUST_MIN_SIDE):
     """切り抜きを docs/emblems/<slug>.webp に書く。切れ端（is_sliver）は書かずに外す（前の画像を上書きして壊さない）。
-    min_side：取るときの下限（胸像・半身は BUST_MIN_SIDE。全身の body は渡さない）。満たさなければ書かず ValueError（別の候補へ）。"""
+    min_side：取るときの下限。既定が BUST_MIN_SIDE＝どの入口も渡さなくても下限が掛かる（E18）。0 を渡してよいのは全身の body と、既にある画像の整え直し（repair_flat）だけ。満たさなければ書かず ValueError（別の候補へ）。"""
     out.thumbnail((420, 520))
     if is_sliver(*out.size):
         raise ValueError(f"切れ端（{out.size[0]}×{out.size[1]}）")
@@ -1227,6 +1227,7 @@ def fit_all(name, drawn=False):
     path = ROOT / "items.yaml"
     item = next(i for i in yaml.safe_load(path.read_text(encoding="utf-8"))["items"] if i["name"] == name)
     ems = item.get("emblem") or []
+    small = []   # 短い辺の下限で外した画像の網址
     cuts = [x["body"][1] > 1 for x in ems if x.get("body")]   # 前に決めた「上半身に切る / 全身」（モデルがないときはこの多数に合わせる）
     for x in ems:
         if x.get("shape") == "badge" and not x.get("ar") and not x.get("crop"):   # カードの縦横比（窓で切るか全体を見せるかの判断に使う）
@@ -1294,7 +1295,7 @@ def fit_all(name, drawn=False):
             if out is None:
                 out, _ = upper_body(img, force=x.get("upper"))
             slug = slugify(name, x["subject"])
-            save_cut(out, slug, 0 if x.get("body") else BUST_MIN_SIDE)   # 短い辺が 256px 未満は取らない（E18）。外れたものは emblem_reject へ（commit）
+            save_cut(out, slug, 0 if x.get("body") else BUST_MIN_SIDE)   # 短い辺が 256px 未満は取らない（E18）。外れた網址は small → emblem_reject
             if not x["image"].startswith("emblems/"):
                 x["source"] = x["image"]
             x["image"], x["shape"] = f"emblems/{slug}.webp", "cutout"
@@ -1308,7 +1309,14 @@ def fit_all(name, drawn=False):
             print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
             if "小さすぎる" in str(e):
                 x["_drop"] = True
+                rej = x.get("source") or x["image"]
+                if str(rej).startswith("http"):
+                    small.append(rej)
     _write_emblems(name, [x for x in ems if not x.get("_drop")])
+    if small:   # 前からの画像も commit の外れと同じに emblem_reject へ（次の回に同じ小さい画像をまた拾わない）
+        import emblem_fill
+        rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + small))
+        emblem_fill._set_field(name, "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")
 
 
 def _write_emblems(name, ems):
@@ -1339,7 +1347,7 @@ def upper_all(name):
             if not cut:
                 continue
             slug = slugify(name, x["subject"])
-            save_cut(out, slug)
+            save_cut(out, slug, 0 if x.get("body") else BUST_MIN_SIDE)
             if not src.startswith("emblems/"):
                 x["source"] = src
             x["image"], x["shape"] = f"emblems/{slug}.webp", "cutout"
