@@ -880,7 +880,7 @@ html{scroll-behavior:smooth}
 .wish.expired .wimg img{filter:grayscale(.65) contrast(.95);opacity:.85}
 .wish.expired .wcard:hover .wimg img{filter:none;opacity:1}
 </style>
-<meta name="wl-ver" data-page="wishlist" content="10e687764bc7"><style>
+<meta name="wl-ver" data-page="wishlist" content="058e96756ec8"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1045,6 +1045,98 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   var OWN=!!document.querySelector('meta[name="wl-own"]'), signedOut=false;   // 本人のページ（user_pages.py）の中か
   try{ if(!OWN&&/^(index|wishlist|heat|settings)$/.test(page)&&(localStorage.getItem('wl-user')||localStorage.getItem('wl-auth'))) R.dataset.maybeMine='1'; }catch(e){}   // ログインを覚えている：自分のページか決まるまで店長の中身を見せない（本人のページはもう本人のものなので隠さない）
   var ROLE={"admin": "店長", "user": "お客さま", "guest": "ゲスト"}, LOCK={"index": "[data-vote]", "heat": "[data-vote]", "wishlist": "[data-vote],#snap button,#snap input,#snap textarea", "settings": "button,input,select,textarea,[contenteditable]", "admin": "button,input,select,textarea"}[page]||'', tok=null, user=null, sb=null, of=window.fetch.bind(window);
+  // お客さまの画面の文字。言語は app_users.ui_lang〔今は ja だけ〕。直書きを足さずここへ（tests が数える）
+  var UI={ja:{sayMail:'確認のメールを送れませんでした（メール送信の設定待ち）',sayRate:'送りすぎです。少し待ってからもう一度',bindLogin9:'メールアドレスかパスワードが違います',collecting:'集めています',waitP:'足したものの記事が集まりしだい、ここに並びます。',rm:'外す',rmAria:' を外す',
+    added:'足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。',
+    pageOf:' さんのページ',loadFail:'読み込めませんでした。ページを開き直してください。',reLogin:'もう一度ログインしてください。',
+    introB:'ここは、あなたが追いかけたいものの新しいニュースが毎日並ぶページです',
+    introP:'好きなジャンルを選んで、出てくるカードを「気になる」か「パス」に分けるだけ。店長が集めに行き、記事が届いた版面から順に並びます。',
+    pick:'好きなものを選ぶ →',inTop:'追いかけているものの記事は、トップにまとまっています',nPicks:' つを追いかけています。',
+    none:'まだ何も追いかけていません',noneP:'好きな作品・人・場所を選ぶと、記事が並びます。',toTop:'トップへ',pickBig:'追いかけるものを選ぶ →',
+    back:'← ',backTo:' さんのページへ',cards:'＋ カードで選んで足す',addRm:'追いかけるものを足す・外す',genre:'好きなジャンルは？',
+    tapHint:'押して選ぶ（いくつでも）。押してある札をもう一度押すと外れます。',which:'どれを追いかける？',more:'ほかに追いかけたいもの',
+    ph:'作品・ブランド・人の名前',genreAria:'ジャンル',add:'足す',saveN:' つで保存する',pickOne:'ひとつ以上えらぶ',
+    saving:'保存しています…',saved:'保存しました（',savedEnd:' つ）。',see:'ページで見る →',saveFail:'保存できませんでした。もう一度お試しください。',
+    sayErr1:'うまくいきませんでした',
+    sayErr2:'" target="_blank" rel="noopener">利用規約・プライバシーポリシー<\/a>に同意する<\/span><\/label>',
+    loginForm1:'<label>メールアドレス<input type="email" required maxlength="80" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録したメールアドレス"><\/label>',
+    loginForm2:'<label class="pw"><span class="pwl">パスワード<\/span><input type="password" maxlength="72" autocomplete="current-password"><\/label>',
+    loginForm3:'<button type="submit" class="go">ログイン<\/button><p class="st" aria-live="polite"><\/p>',
+    loginForm4:'">新しく始める →<\/a><br><small>メールアドレスとパスワード・ニュースの言語・好きなジャンルを選ぶだけ（1 分）<\/small><\/p><\/form>',
+    loginForm5:'<p class="first">はじめての方：<a href="',
+    after1:' さん',
+    after2:'ようこそ、',
+    bindLogin1:'メールアドレスを入れてください（例：name@example.com）',
+    bindLogin2:'パスワードを入れてください',
+    bindLogin3:'準備中です。少し待ってからもう一度',
+    askAgree1:'続けて使うには、同意をお願いします。',
+    askAgree2:'内容が新しくなりました。',
+    askAgree3:'<div><h2>利用規約・プライバシーポリシー<\/h2><p>',
+    askAgree4:'関心のある作品・投票などの情報（興味・関心の情報）を、サービスのためだけに使います。<\/p><form>',
+    askAgree5:'<div class="row"><button type="submit">同意して続ける<\/button><button type="button" data-out>同意しない（ログアウト）<\/button><\/div><\/form><\/div>',
+    askAgree6:'チェックを入れてください',
+    askAgree7:'ありがとうございます',
+    logout1:'ここは店長のページなので、見るだけです',
+    logout2:'見るだけです。変えるには右上の「ログイン」から',
+    chip1:'">はじめのページ<\/a>',
+    chip2:'<span class="shop">店長のページ · 見るだけ<\/span>',
+    chip3:'<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン<\/button><div class="menu" hidden>',
+    chip4:'">このサイトについて（はじめのページ）<\/a><\/div>',
+    chip5:'<br>このブラウザが覚えています<\/small>',
+    chip6:'<button type="button" data-go="admin">管理ページへ<\/button>',
+    chip7:'<button type="button" data-pw>パスワードを変える<\/button>',
+    chip8:'">このサイトについて（はじめのページ）<\/a>',
+    chip9:'">利用規約・プライバシーポリシー<\/a>',
+    chip10:'<button type="button" data-out>ログアウト<\/button><\/div>',
+    chip11:'新しいパスワード（8 文字以上）',
+    chip12:'8 文字以上にしてください',
+    chip13:'2 回のパスワードが違います',
+    chip14:'もう一度',
+    chip15:'パスワードを変えました',
+    gate1:'このページは店長だけが見られます。店長はログアウトして、メールとパスワードでログインしてください。',
+    gate2:'<div><h1>管理ページ<\/h1><p>',
+    gate3:'店長だけが見られます。店長のメールアドレスとパスワードでログインしてください。',
+    gate4:'<a href="./">← ウォッチリスト通信に戻る<\/a><\/div>',
+    readOnlyNote1:'見るだけです。設定を変えるには右上の「ログイン」から。',
+    secJa1:'その他',
+    mine1:'<p class="wl-msg" role="status">読み込み中…<\/p>',
+    route1:'あなたが足したもの',
+    showMine1:'">＋ 追いかけるものを足す<\/a><a href="settings.html">外す<\/a>',
+    showMine2:' さんのページ<\/b><span>追いかけているもの ',
+    showMine3:' を足しました。記事が集まりしだい、下の版面に並びます（数時間かかることがあります）。<\/small>',
+    showMine4:'<small>新しい記事は 1 日に何度か届きます。<\/small>',
+    secEl1:'其他',
+    pill1:'集めています',
+    pill2:'読み込めません',
+    pill3:'お休み中',
+    pill4:'まだ記事なし',
+    pill5:' 件',
+    pill6:'記事 ',
+    board1:'<p>まだ記事が見つかっていません。新しい記事が出たら、ここに並びます。<\/p>',
+    board2:'<p>追いかけられるのは 100 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>',
+    board3:'<p>記事を読み込めませんでした。少し時間をおいて、ページを開き直してください。<\/p>',
+    board4:'<p><i class="dot"><\/i>記事を集めています。集まりしだい、ここに並びます（数時間かかることがあります）。<\/p>',
+    todayBox1:'<h2>今日の主なニュース<\/h2>',
+    todayBox2:'<p class="empty"><b>ここに、あなたが追いかけているものの今日の主なニュースが並びます<\/b>記事が届いたものから、大事なものを先頭に。下には追いかけているものごとの版面が並び、記事が集まりしだい埋まっていきます。<\/p>',
+    maybeBox1:'<h2>気になるかも？<\/h2><p class="hint">追いかけているものと同じジャンルの新着です。<\/p>',
+    maybeBox2:' を追いかける<\/a>',
+    members1:'<p class="st">店長のメールとパスワードでログインすると、ここでお客さまを管理できます。<\/p>',
+    members2:'<table><thead><tr><th>メールアドレス<\/th><th>種類<\/th><th>規約<\/th><th>最後に見た日<\/th><th><\/th><\/tr><\/thead><tbody>',
+    members3:'（パスワードなし）',
+    members4:'お客さま',
+    members5:'テスト用',
+    members6:'店長',
+    members7:'未同意',
+    members8:'同意済み',
+    members9:'<button type="button" data-upw>パスワードを変える<\/button>',
+    members10:'<form><input type="email" required placeholder="店長にする人のメールアドレス（5 人まで）" aria-label="メール"><button type="submit">店長にする<\/button><\/form>',
+    members11:'<p class="st">店長：',
+    members12:' の新しいパスワード（4 文字以上）',
+    members13:'できませんでした：',
+    members14:' のパスワードを変えました',
+    members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
+    members16:'<p class="st">読み込めませんでした：'}};
+  var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
     try{
@@ -1078,22 +1170,22 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   var isMail=function(n){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n||'');};
   function sayErr(m){
     m=String(m||'');
-    if(/not authorized/i.test(m)) return '確認のメールを送れませんでした（メール送信の設定待ち）';
-    if(/rate limit|security purposes|too many/i.test(m)) return '送りすぎです。少し待ってからもう一度';
-    return m||'うまくいきませんでした';
+    if(/not authorized/i.test(m)) return L.sayMail;
+    if(/rate limit|security purposes|too many/i.test(m)) return L.sayRate;
+    return m||L.sayMail;
   }
-  var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+'" target="_blank" rel="noopener">利用規約・プライバシーポリシー<\/a>に同意する<\/span><\/label>';};
+  var agreeBox=function(){return '<label class="agree"><input type="checkbox"> <span><a href="'+esc(TURL)+L.sayRate;};
   // 右上はログインだけ。新しく始めるのは入口の流れ（言語・ジャンル・最初の版面を選ぶ）に一本化（2026-10-21，サイト全体で同じ始め方に）
   function loginForm(){
     return '<form class="wl-login" data-mode="old" novalidate>'+
-      '<label>メールアドレス<input type="email" required maxlength="80" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="登録したメールアドレス"><\/label>'+
-      '<label class="pw"><span class="pwl">パスワード<\/span><input type="password" maxlength="72" autocomplete="current-password"><\/label>'+
-      '<button type="submit" class="go">ログイン<\/button><p class="st" aria-live="polite"><\/p>'+
-      '<p class="first">はじめての方：<a href="'+esc(START)+'">新しく始める →<\/a><br><small>メールアドレスとパスワード・ニュースの言語・好きなジャンルを選ぶだけ（1 分）<\/small><\/p><\/form>';
+      L.loginForm1+
+      L.loginForm2+
+      L.loginForm3+
+      L.loginForm5+esc(START)+L.loginForm4;
   }
   function after(name,agreed,st){
     if(agreed<TV){ askAgree(); return; }
-    toast('ようこそ、'+(isMail(name)?name.split('@')[0]:name)+' さん'); refresh();   // 成功は短く（clarify）
+    toast(L.after2+(isMail(name)?name.split('@')[0]:name)+L.after1); refresh();   // 成功は短く（clarify）
   }
   function bindLogin(root){
     var f=root.querySelector('.wl-login'); if(!f) return;
@@ -1102,12 +1194,12 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     f.onsubmit=function(ev){
       ev.preventDefault(); ev.stopImmediatePropagation();
       var n=inp.value.trim().toLowerCase(), p=pw.value;
-      if(!isMail(n)){ st.textContent='メールアドレスを入れてください（例：name@example.com）'; return; }
-      if(!p){ st.textContent='パスワードを入れてください'; pw.focus(); return; }
-      if(!sb){ st.textContent='準備中です。少し待ってからもう一度'; return; }
+      if(!isMail(n)){ st.textContent=L.bindLogin1; return; }
+      if(!p){ st.textContent=L.bindLogin2; pw.focus(); return; }
+      if(!sb){ st.textContent=L.bindLogin3; return; }
       go.disabled=true; st.textContent='';
       sb.auth.signInWithPassword({email:n,password:p})
-        .then(function(r){ if(r.error) throw new Error(/invalid/i.test(r.error.message)?'メールアドレスかパスワードが違います':r.error.message);
+        .then(function(r){ if(r.error) throw new Error(/invalid/i.test(r.error.message)?L.bindLogin9:r.error.message);
           return rpc('user_login',{p_name:n}).catch(function(){ return {name:n,agreed_version:TV}; }); })
         .then(function(r){ go.disabled=false; saveMe({name:r.name||n,v:r.agreed_version||0,at:Date.now()}); after(r.name||n,r.agreed_version||0,st); })
         .catch(function(e){ go.disabled=false; st.textContent=sayErr(e.message); });
@@ -1117,14 +1209,14 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   function askAgree(){
     if(!me) return;
     var d=document.querySelector('.wl-agree'); if(!d){d=document.createElement('div');d.className='wl-agree';d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');document.body.appendChild(d);}
-    d.innerHTML='<div><h2>利用規約・プライバシーポリシー<\/h2><p>'+(me.v?'内容が新しくなりました。':'')+'続けて使うには、同意をお願いします。'+
-      '関心のある作品・投票などの情報（興味・関心の情報）を、サービスのためだけに使います。<\/p><form>'+agreeBox()+
-      '<div class="row"><button type="submit">同意して続ける<\/button><button type="button" data-out>同意しない（ログアウト）<\/button><\/div><\/form><\/div>';
+    d.innerHTML=L.askAgree3+(me.v?L.askAgree2:'')+L.askAgree1+
+      L.askAgree4+agreeBox()+
+      L.askAgree5;
     var f=d.querySelector('form');
     d.querySelector('[data-out]').onclick=logout;
     f.onsubmit=function(ev){ev.preventDefault();
-      if(!f.querySelector('.agree input').checked){ toast('チェックを入れてください'); return; }
-      rpc('user_agree',{p_name:me.name,p_version:TV}).then(function(){ me.v=TV; saveMe(me); d.remove(); toast('ありがとうございます'); refresh(); })
+      if(!f.querySelector('.agree input').checked){ toast(L.askAgree6); return; }
+      rpc('user_agree',{p_name:me.name,p_version:TV}).then(function(){ me.v=TV; saveMe(me); d.remove(); toast(L.askAgree7); refresh(); })
         .catch(function(e){ toast(sayErr(e.message)); });};
   }
   function logout(){
@@ -1137,7 +1229,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     var t=ev.target.closest&&ev.target.closest(LOCK);
     if(!t||t.closest('.wl-auth,.wl-gate,.wl-toast,.wl-live,.wl-agree,.wl-mine')) return;
     ev.preventDefault(); ev.stopImmediatePropagation();
-    toast(R.dataset.role==='guest'?'見るだけです。変えるには右上の「ログイン」から':'ここは店長のページなので、見るだけです');
+    toast(R.dataset.role==='guest'?L.logout2:L.logout1);
   },true);
   document.addEventListener('submit',function(ev){ if(locked()&&LOCK&&!(ev.target.closest&&ev.target.closest('.wl-auth,.wl-gate,.wl-agree,.wl-mine'))){ev.preventDefault();ev.stopImmediatePropagation();} },true);
   // スマホ（右下に固定）：下へ読み進めると札をしまい、上へ戻す・ページの上と下の端で出す（本文の写真・文字に重ねたままにしない。よくある「下へで隠す・上へで出す」）
@@ -1151,32 +1243,32 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     if(!name){
       // 見るだけの人：「はじめのページ」（入口＝紹介・新しく始める・ログイン・店長のページ）と「ログイン」をいつも見える所に
       // （2026-10-21，用户定的：網址を打たせない。どの画面からも入口へ戻れる。「新しく始める」は入口にある）
-      box.innerHTML=(SHOP?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ<\/a>'+
-        '<button type="button" class="in" aria-haspopup="true" aria-expanded="false">ログイン<\/button><div class="menu" hidden>'+loginForm()+
-        '<a class="about" href="'+esc(HOME)+'">このサイトについて（はじめのページ）<\/a><\/div>';
+      box.innerHTML=(SHOP?L.chip2:'')+'<a class="new home" href="'+esc(HOME)+L.chip1+
+        L.chip3+loginForm()+
+        '<a class="about" href="'+esc(HOME)+L.chip4;
       var lb=box.querySelector(':scope>button'), lm=box.querySelector('.menu');
       lb.onclick=function(){var o=lm.hidden;lm.hidden=!o;lb.setAttribute('aria-expanded',String(o));if(o) lm.querySelector('input[type=email]').focus();};
       bindLogin(box); return;
     }
     var label=ROLE[role]||role, sh=isMail(name)?name.split('@')[0]:name;
     // ログイン中も「はじめのページ」は画面に見える所に（メニューの中だけだと見つからない。2026-10-21，用户指摘）
-    box.innerHTML=(role!=='admin'&&SHOP&&!isMine()?'<span class="shop">店長のページ · 見るだけ<\/span>':'')+'<a class="new home" href="'+esc(HOME)+'">はじめのページ<\/a>'+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
+    box.innerHTML=(role!=='admin'&&SHOP&&!isMine()?L.chip2:'')+'<a class="new home" href="'+esc(HOME)+L.chip1+'<button type="button" aria-haspopup="true" aria-expanded="false"><span class="ini" aria-hidden="true">'+esc(sh.charAt(0).toUpperCase())+'<\/span>'+
       '<span class="nm">'+esc(sh)+'<\/span><span class="rl '+esc(role)+'">'+esc(label)+'<\/span><\/button>'+
-      '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+'<br>このブラウザが覚えています<\/small>'+
-      (role==='admin'&&page!=='admin'?'<button type="button" data-go="admin">管理ページへ<\/button>':'')+
-      (tok?'<button type="button" data-pw>パスワードを変える<\/button>':'')+
-      '<a href="'+esc(HOME)+'">このサイトについて（はじめのページ）<\/a>'+
-      '<a href="'+esc(TURL)+'">利用規約・プライバシーポリシー<\/a>'+
-      '<button type="button" data-out>ログアウト<\/button><\/div>';
+      '<div class="menu"'+(keepOpen?'':' hidden')+'><small>'+esc(name)+L.chip5+
+      (role==='admin'&&page!=='admin'?L.chip6:'')+
+      (tok?L.chip7:'')+
+      '<a href="'+esc(HOME)+L.chip8+
+      '<a href="'+esc(TURL)+L.chip9+
+      L.chip10;
     var b=box.querySelector(':scope>button'), menu=box.querySelector('.menu');
     b.onclick=function(){var o=menu.hidden;menu.hidden=!o;b.setAttribute('aria-expanded',String(o));};
     menu.querySelector('[data-out]').onclick=logout;
     var go=menu.querySelector('[data-go]'); if(go) go.onclick=function(){location.href='admin.html';};
     var pb=menu.querySelector('[data-pw]'); if(pb) pb.onclick=function(){   // ログインしたまま新しいパスワードに
-      var p=prompt('新しいパスワード（8 文字以上）'); if(p===null) return;
-      if(p.length<8){ toast('8 文字以上にしてください'); return; }
-      if(prompt('もう一度')!==p){ toast('2 回のパスワードが違います'); return; }
-      sb.auth.updateUser({password:p}).then(function(r){ toast(r.error?sayErr(r.error.message):'パスワードを変えました'); });
+      var p=prompt(L.chip11); if(p===null) return;
+      if(p.length<8){ toast(L.chip12); return; }
+      if(prompt(L.chip14)!==p){ toast(L.chip13); return; }
+      sb.auth.updateUser({password:p}).then(function(r){ toast(r.error?sayErr(r.error.message):L.chip15); });
     };
   }
   function gate(){
@@ -1184,10 +1276,10 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     R.dataset.gate=need?'1':'0';
     var g=document.querySelector('.wl-gate'); if(!need){if(g) g.remove(); return;}
     if(!g){g=document.createElement('div');g.className='wl-gate';document.body.appendChild(g);}
-    g.innerHTML='<div><h1>管理ページ<\/h1><p>'+(me?'このページは店長だけが見られます。店長はログアウトして、メールとパスワードでログインしてください。':
-      '店長だけが見られます。店長のメールアドレスとパスワードでログインしてください。')+'<\/p>'+
+    g.innerHTML=L.gate2+(me?L.gate1:
+      L.gate3)+'<\/p>'+
       (me?'':loginForm())+
-      '<a href="./">← ウォッチリスト通信に戻る<\/a><\/div>';
+      L.gate4;
     bindLogin(g);
   }
   function readOnlyNote(){
@@ -1196,7 +1288,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     if(!locked()){if(n) n.remove(); return;}
     if(n) return;
     n=document.createElement('p'); n.className='wl-ro';
-    n.textContent='見るだけです。設定を変えるには右上の「ログイン」から。';
+    n.textContent=L.readOnlyNote1;
     var at=document.querySelector('.page'); if(at) at.insertBefore(n,at.firstChild);
   }
   // お客さま自分のページ（2026-10-22，用户定的：アカウントは 1 つずつ独立。ログインしたお客さまに店長の中身は出さない）。
@@ -1207,7 +1299,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   //   ・入力には見える名前（例の文字は名前の代わりにならない）。外したら「元に戻す」（確認より元に戻せるほうがよい）
   var SECS=A.secs||[], ADD='../?add';   // 足す = 入口と同じ「ジャンル → 左右に払うカード → 確認」（welcome.py の ?add）
   function isMine(){return SHOP&&R.dataset.role==='user'&&!!(me||user);}
-  function secJa(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][1];return k||'その他';}
+  function secJa(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][1];return k||L.secJa1;}
   function secColor(k){for(var i=0;i<SECS.length;i++)if(SECS[i][0]===k)return SECS[i][2]||'';return '';}
   function norm(s){return String(s||'').toLowerCase().replace(/\s+/g,'');}
   // 店長の版面と同じものか（scripts/userfeed.py の shop_hit と同じ規則。変えるときは両方）：空白・大小を無視して同じ、
@@ -1229,7 +1321,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       document.querySelectorAll('.wl-off').forEach(function(x){x.classList.remove('wl-off');});return;}
     if(R.dataset.mine!=='2') R.dataset.mine='1';
     if(!box)box=soleBox();
-    if(!box.dataset.ready) box.innerHTML='<p class="wl-msg" role="status">読み込み中…<\/p>';
+    if(!box.dataset.ready) box.innerHTML=L.mine1;
     (tok?rpc('my_page'):Promise.resolve(null)).then(function(p){route(box,p,'');},function(e){route(box,null,e.message);});
   }
   function picksOf(p){return ((p&&p.prefs&&p.prefs.picks)||[]).filter(function(x){return x&&x.name;});}
@@ -1286,20 +1378,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
         if(picks.length)showMine(p,picks);else drawMine(soleBox(),p,'');});return;}
     drawMine(box,p,err);
   }
-  // お客さまの画面の文字（本人のページ・設定の素の画面）。言語は app_users.ui_lang〔今は ja だけ〕。直書きを足さずここへ（tests が数える）
-  var UI={ja:{collecting:'集めています',waitP:'足したものの記事が集まりしだい、ここに並びます。',rm:'外す',rmAria:' を外す',
-    added:'足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。',
-    pageOf:' さんのページ',loadFail:'読み込めませんでした。ページを開き直してください。',reLogin:'もう一度ログインしてください。',
-    introB:'ここは、あなたが追いかけたいものの新しいニュースが毎日並ぶページです',
-    introP:'好きなジャンルを選んで、出てくるカードを「気になる」か「パス」に分けるだけ。店長が集めに行き、記事が届いた版面から順に並びます。',
-    pick:'好きなものを選ぶ →',inTop:'追いかけているものの記事は、トップにまとまっています',nPicks:' つを追いかけています。',
-    none:'まだ何も追いかけていません',noneP:'好きな作品・人・場所を選ぶと、記事が並びます。',toTop:'トップへ',pickBig:'追いかけるものを選ぶ →',
-    back:'← ',backTo:' さんのページへ',cards:'＋ カードで選んで足す',addRm:'追いかけるものを足す・外す',genre:'好きなジャンルは？',
-    tapHint:'押して選ぶ（いくつでも）。押してある札をもう一度押すと外れます。',which:'どれを追いかける？',more:'ほかに追いかけたいもの',
-    ph:'作品・ブランド・人の名前',genreAria:'ジャンル',add:'足す',saveN:' つで保存する',pickOne:'ひとつ以上えらぶ',
-    saving:'保存しています…',saved:'保存しました（',savedEnd:' つ）。',see:'ページで見る →',saveFail:'保存できませんでした。もう一度お試しください。'}};
-  var L=UI[A.ui]||UI.ja;
-  var UB='あなたが足したもの';   // お客さまが足した版面の小分類（本文の見出し・目次の札）
+  var UB=L.route1;   // お客さまが足した版面の小分類（本文の見出し・目次の札）
   function showMine(p,picks){
     R.dataset.mine='2';
     var got={};
@@ -1320,9 +1399,9 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     var added=(location.search.match(/[?&]added=([^&]*)/)||[])[1];
     if(added&&history.replaceState) history.replaceState(null,'',location.pathname+location.hash);   // 開き直したときにはもう出さない
     try{added=added?decodeURIComponent(added):'';}catch(_){added='';}
-    bar.innerHTML='<b>'+esc(sh)+' さんのページ<\/b><span>追いかけているもの '+picks.length+'<\/span><a class="add" href="'+ADD+'">＋ 追いかけるものを足す<\/a><a href="settings.html">外す<\/a>'+
-      (added?'<small class="ok">'+esc(added)+' を足しました。記事が集まりしだい、下の版面に並びます（数時間かかることがあります）。<\/small>':'')+
-      '<small>新しい記事は 1 日に何度か届きます。<\/small>';
+    bar.innerHTML='<b>'+esc(sh)+L.showMine2+picks.length+'<\/span><a class="add" href="'+ADD+L.showMine1+
+      (added?'<small class="ok">'+esc(added)+L.showMine3:'')+
+      L.showMine4;
     var m=document.querySelector('main.issues')||document.body; if(!bar.parentNode) m.insertBefore(bar,m.firstChild);
     var issue=document.querySelector('main.issues .issue')||m;
     var secOf={};(A.items||[]).forEach(function(x){secOf[norm(x[0])]=x[1];});
@@ -1337,7 +1416,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       function shown(){return [].slice.call(issue.querySelectorAll(':scope>[data-k]:not(.wl-off)')).filter(function(v){return v.id!=='front'&&v.id!=='picks';});}
       function secEl(v){return v.dataset.sec||secOf[norm(v.dataset.k)];}
       var last={};
-      wait.forEach(function(x,i){var b=mineB[norm(x.name)]||{state:bad?'err':'wait',stories:[]}, sec=b.sec||x.sec||'其他';
+      wait.forEach(function(x,i){var b=mineB[norm(x.name)]||{state:bad?'err':'wait',stories:[]}, sec=b.sec||x.sec||L.secEl1;
         var s=document.createElement('section');s.className='wl-wait'+(b.state==='ok'?' wl-ub':'');s.id='wl-ub-'+i;s.dataset.k=x.name;s.dataset.sec=sec;s.dataset.sub=UB;
         s.style.setProperty('--sc',secColor(sec)||'var(--ink)');
         s.innerHTML='<small>'+esc(secJa(sec))+'<\/small><h2>'+esc(x.name)+'<\/h2>'+board(b);
@@ -1377,7 +1456,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       return d;
     }
     function pill(n,sec,id,b){var d=slotFor(sec);if(!d)return;
-      var st=b.state==='ok'?'記事 '+(b.stories||[]).length+' 件':b.state==='none'?'まだ記事なし':b.state==='limit'?'お休み中':b.state==='err'?'読み込めません':'集めています';
+      var st=b.state==='ok'?L.pill6+(b.stories||[]).length+L.pill5:b.state==='none'?L.pill4:b.state==='limit'?L.pill3:b.state==='err'?L.pill2:L.pill1;
       var nb=d.querySelector('.nbody'),subs=nb.querySelector('.nsubs'),sub=subs?UB:'';
       // 店長の板块（小分類の札がある）に足すときは、札と小見出しも「あなたが足したもの」を 1 つ（店長の小分類の下に見えないように）
       if(subs&&!subs.querySelector('.wl-uchip')){var c=document.createElement('a');c.className='wl-uchip';c.dataset.sub=UB;c.href='#'+id;c.innerHTML=UB+'<small>0<\/small>';subs.appendChild(c);
@@ -1423,13 +1502,13 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function story2card(st,bn){return {title:st.title,url:st.url,img:st.image,source:st.source,when:md(st.date||st.seen),isNew:fresh(st.date||st.seen),board:bn,t:Date.parse(st.date||st.seen||'')||0};}
     function board(b){
       if(b.state==='ok')return '<div class="wl-cards">'+(b.stories||[]).map(function(st){return card(story2card(st,''));}).join('')+'<\/div>';
-      if(b.state==='none')return '<p>まだ記事が見つかっていません。新しい記事が出たら、ここに並びます。<\/p>';
-      if(b.state==='limit')return '<p>追いかけられるのは 100 個までです。<a href="settings.html">ほかのものを外す<\/a>と、これも集め始めます。<\/p>';
-      if(b.state==='err')return '<p>記事を読み込めませんでした。少し時間をおいて、ページを開き直してください。<\/p>';
-      return '<p><i class="dot"><\/i>記事を集めています。集まりしだい、ここに並びます（数時間かかることがあります）。<\/p>';
+      if(b.state==='none')return L.board1;
+      if(b.state==='limit')return L.board2;
+      if(b.state==='err')return L.board3;
+      return L.board4;
     }
     // ニュースらしくないもの（攻略・一覧のページ、予約・通販の商品）は「新着」として出さない
-    var NOTNEWS=/攻略|一覧と|最新版】?$|[《【(（]\s*\d+\s*月予約|予約受付|予約開始中|最終値下げ|在庫あり|送料無料/;
+    var NOTNEWS=/*data*/ /攻略|一覧と|最新版】?$|[《【(（]\s*\d+\s*月予約|予約受付|予約開始中|最終値下げ|在庫あり|送料無料/;
     // 店長のページの版面の記事（いま出ている版面だけ）。カードの形にそろえる
     function shopCards(sec,n){var out=[];sec.querySelectorAll('article').forEach(function(a){if(out.length>=n)return;var lk=a.querySelector('a.lk');if(!lk)return;
       var t=lk.getAttribute('aria-label')||'';if(!t||NOTNEWS.test(t))return;
@@ -1446,8 +1525,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       mine.sort(function(a,b){return b.t-a.t;}).forEach(add);
       issue.querySelectorAll(':scope>section.sec[data-k]:not(.wl-off)').forEach(function(s){shopCards(s,1).forEach(add);});
       list=list.slice(0,6);
-      box.innerHTML='<h2>今日の主なニュース<\/h2>'+(list.length?'<div class="wl-cards">'+list.map(card).join('')+'<\/div>':
-        '<p class="empty"><b>ここに、あなたが追いかけているものの今日の主なニュースが並びます<\/b>記事が届いたものから、大事なものを先頭に。下には追いかけているものごとの版面が並び、記事が集まりしだい埋まっていきます。<\/p>');
+      box.innerHTML=L.todayBox1+(list.length?'<div class="wl-cards">'+list.map(card).join('')+'<\/div>':
+        L.todayBox2);
     }
     // 気になるかも？（規則・AI なし）：選んだジャンルにある、まだ追いかけていない店長の版面の新着 → 名前だけの候補。
     // 「＋ X を追いかける」は X を選んだ状態で足す流れ（入口の ?add の確認の画面）へ
@@ -1458,8 +1537,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       if(!cards.length&&!names.length)return null;
       var s=document.createElement('section');s.className='wl-maybe';
       var cand=cards.map(function(c){return [c.board,secOf[norm(c.board)]||''];}).concat(names).slice(0,6);
-      s.innerHTML='<h2>気になるかも？<\/h2><p class="hint">追いかけているものと同じジャンルの新着です。<\/p>'+(cards.length?'<div class="wl-cards">'+cards.map(card).join('')+'<\/div>':'')+
-        '<div class="chips">'+cand.map(function(x){return '<a href="'+esc(ADD+'&pick='+encodeURIComponent(x[0])+'&s='+encodeURIComponent(x[1]||''))+'">＋ '+esc(x[0])+' を追いかける<\/a>';}).join('')+'<\/div>';
+      s.innerHTML=L.maybeBox1+(cards.length?'<div class="wl-cards">'+cards.map(card).join('')+'<\/div>':'')+
+        '<div class="chips">'+cand.map(function(x){return '<a href="'+esc(ADD+'&pick='+encodeURIComponent(x[0])+'&s='+encodeURIComponent(x[1]||''))+'">＋ '+esc(x[0])+L.maybeBox2;}).join('')+'<\/div>';
       return s;
     }
     draw();
@@ -1522,28 +1601,28 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     var box=document.getElementById('wl-members'); if(!box) return;
     if(R.dataset.role!=='admin'){box.closest('section').hidden=true; return;}
     box.closest('section').hidden=false;
-    if(!tok){ box.innerHTML='<p class="st">店長のメールとパスワードでログインすると、ここでお客さまを管理できます。<\/p>'; return; }
+    if(!tok){ box.innerHTML=L.members1; return; }
     // お客さま（テスト用を含む）の一覧：パスワードを変える。店長を足す（5 人まで）。退会の機能はいらない（2026-10-21，用户定的）
     Promise.all([rpc('admin_users'),rpc('admin_list_invites')]).then(function(v){
       var us=v[0]||[], inv=v[1]||[];
-      box.innerHTML='<table><thead><tr><th>メールアドレス<\/th><th>種類<\/th><th>規約<\/th><th>最後に見た日<\/th><th><\/th><\/tr><\/thead><tbody>'+
+      box.innerHTML=L.members2+
         us.map(function(u){var shop=u.role==='admin';
-          return '<tr data-mail="'+esc(u.email)+'"><td>'+esc(u.email)+'<\/td><td>'+(shop?'店長':u.is_test?'テスト用':'お客さま')+(u.has_password?'':'（パスワードなし）')+'<\/td>'+
-            '<td>'+(u.agreed_version>=TV?'同意済み':'未同意')+'<\/td><td>'+esc(String(u.last_seen||'').slice(0,10))+'<\/td>'+
-            '<td>'+(shop?'':'<button type="button" data-upw>パスワードを変える<\/button>')+'<\/td><\/tr>';}).join('')+
+          return '<tr data-mail="'+esc(u.email)+'"><td>'+esc(u.email)+'<\/td><td>'+(shop?L.members6:u.is_test?L.members5:L.members4)+(u.has_password?'':L.members3)+'<\/td>'+
+            '<td>'+(u.agreed_version>=TV?L.members8:L.members7)+'<\/td><td>'+esc(String(u.last_seen||'').slice(0,10))+'<\/td>'+
+            '<td>'+(shop?'':L.members9)+'<\/td><\/tr>';}).join('')+
         '<\/tbody><\/table><p class="st" aria-live="polite"><\/p>'+
-        '<form><input type="email" required placeholder="店長にする人のメールアドレス（5 人まで）" aria-label="メール"><button type="submit">店長にする<\/button><\/form>'+
-        '<p class="st">店長：'+inv.filter(function(x){return x.role==='admin';}).map(function(x){return esc(x.email);}).join('、')+'<\/p>';
+        L.members10+
+        L.members11+inv.filter(function(x){return x.role==='admin';}).map(function(x){return esc(x.email);}).join('、')+'<\/p>';
       var st=box.querySelector('.st');
       box.querySelectorAll('[data-upw]').forEach(function(b){ b.onclick=function(){ var m=b.closest('tr').dataset.mail;
-        var p=prompt(m+' の新しいパスワード（4 文字以上）'); if(p===null) return;
-        rpc('admin_user_password',{p_email:m,p_password:p}).then(function(){ st.textContent=m+' のパスワードを変えました'; }).catch(function(e){ st.textContent='できませんでした：'+e.message; }); }; });
+        var p=prompt(m+L.members12); if(p===null) return;
+        rpc('admin_user_password',{p_email:m,p_password:p}).then(function(){ st.textContent=m+L.members14; }).catch(function(e){ st.textContent=L.members13+e.message; }); }; });
       var f=box.querySelector('form');
       f.onsubmit=function(ev){ev.preventDefault();
         rpc('admin_invite',{p_email:f.querySelector('input').value,p_role:'admin'})
-          .then(function(a){st.textContent=a+' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。';members();})
-          .catch(function(e){st.textContent='できませんでした：'+e.message;});};
-    }).catch(function(e){box.innerHTML='<p class="st">読み込めませんでした：'+esc(e.message)+'<\/p>';});
+          .then(function(a){st.textContent=a+L.members15;members();})
+          .catch(function(e){st.textContent=L.members13+e.message;});};
+    }).catch(function(e){box.innerHTML=L.members16+esc(e.message)+'<\/p>';});
   }
   function refresh(){
     return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
@@ -1559,7 +1638,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   function start(){
     if(me&&me.admin){ me.admin=false; saveMe(me); }   // メールの確認を待っていた人（前の仕組み）
     if(me&&me.name&&!me.admin) rpc('user_login',{p_name:me.name}).then(function(r){ if((r.agreed_version||0)<TV){ me.v=r.agreed_version||0; saveMe(me); askAgree(); } })
-      .catch(function(e){ if(/見つかりません|登録されていません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
+      .catch(function(e){ if(/*data*/ /見つかりません|登録されていません/.test(e.message)){ saveMe(null); refresh(); } });   // 退会した名前・消えた名前ならログアウト
     var q=new URLSearchParams(location.search+'&'+location.hash.replace(/^#/,'')), err=q.get('error_description');
     if(err){ toast(sayErr(err)); if(history.replaceState) history.replaceState(null,'',location.pathname); }
     if(!window.supabase){refresh();return;}
@@ -1582,7 +1661,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>愿望清单</h1></div>
-<div class="tools"><div class="meta"><small>更新于</small><b>10.27 12:41</b></div></div>
+<div class="tools"><div class="meta"><small>更新于</small><b>10.27 12:52</b></div></div>
 </header>
 <a class="back" href="./">← 回到关注清单通信</a>
 <div class="wsum">
