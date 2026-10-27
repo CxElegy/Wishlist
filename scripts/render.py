@@ -4291,8 +4291,8 @@ AUTH_JS = r"""
     if(!wait.length)return;
     // 焼いた版は「何も追いかけていません」のまま。足した人に「最初の 1 つを選ぼう」「まだ何も…」と矛盾して見せず、外す道も出す（2026-10-27 の通し点検）
     var hb=document.querySelector('.top.start .hb'),pp=document.querySelector('.top.start .ptxt p'),sg=document.querySelector('.startgo');
-    if(hb)hb.textContent='集めています';
-    if(pp)pp.textContent='足したものの記事が集まりしだい、ここに並びます。';
+    if(hb)hb.textContent=L.collecting;
+    if(pp)pp.textContent=L.waitP;
     if(sg){var hh=sg.previousElementSibling;if(hh&&hh.classList.contains('hint'))hh.remove();sg.remove();}
     document.querySelectorAll('section.sec.quiet:has(.calm.start)').forEach(function(s){
       s.classList.add('wl-off');document.querySelectorAll('.pill[data-for="'+s.dataset.k+'"],.nsum a[href="#'+s.id+'"]').forEach(function(a){(a.closest('.nsum')||a).classList.add('wl-off');});});
@@ -4301,8 +4301,8 @@ AUTH_JS = r"""
       document.querySelectorAll('.mtabs a[data-sec]').forEach(function(a){if(a.dataset.sec===n.dataset.sec)a.classList.add('wl-off');});});
     document.dispatchEvent(new Event('wl-nav'));
     var bar=document.createElement('div');bar.className='wl-mybar wl-ownwait';bar.setAttribute('role','status');
-    bar.innerHTML='<b>集めています</b>'+wait.map(function(x){return '<span>'+esc(x.name)+' <button type="button" class="pnx" data-n="'+esc(x.name)+'" aria-label="'+esc(x.name)+' を外す">外す</button></span>';}).join('')+
-      '<small class="ok">足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。</small>';
+    bar.innerHTML='<b>'+L.collecting+'</b>'+wait.map(function(x){return '<span>'+esc(x.name)+' <button type="button" class="pnx" data-n="'+esc(x.name)+'" aria-label="'+esc(x.name)+L.rmAria+'">'+L.rm+'</button></span>';}).join('')+
+      '<small class="ok">'+L.added+'</small>';
     bar.querySelectorAll('.pnx').forEach(function(b){b.onclick=function(){b.disabled=true;
       var rest=picks.filter(function(x){return x.name!==b.dataset.n;});
       rpc('my_keywords_set',{p_picks:rest}).then(function(){if(rest.length&&rest.some(function(x){return !have.some(function(k){return shopHit(k,x.name);});}))ownWait(rest);else location.reload();},function(){b.disabled=false;});};});
@@ -4321,6 +4321,19 @@ AUTH_JS = r"""
         if(picks.length)showMine(p,picks);else drawMine(soleBox(),p,'');});return;}
     drawMine(box,p,err);
   }
+  // お客さまの画面の文字（本人のページ・設定の素の画面）。言語は app_users.ui_lang〔今は ja だけ〕。直書きを足さずここへ（tests が数える）
+  var UI={ja:{collecting:'集めています',waitP:'足したものの記事が集まりしだい、ここに並びます。',rm:'外す',rmAria:' を外す',
+    added:'足しました。記事が集まりしだい、版面に並びます（数時間かかることがあります）。',
+    pageOf:' さんのページ',loadFail:'読み込めませんでした。ページを開き直してください。',reLogin:'もう一度ログインしてください。',
+    introB:'ここは、あなたが追いかけたいものの新しいニュースが毎日並ぶページです',
+    introP:'好きなジャンルを選んで、出てくるカードを「気になる」か「パス」に分けるだけ。店長が集めに行き、記事が届いた版面から順に並びます。',
+    pick:'好きなものを選ぶ →',inTop:'追いかけているものの記事は、トップにまとまっています',nPicks:' つを追いかけています。',
+    none:'まだ何も追いかけていません',noneP:'好きな作品・人・場所を選ぶと、記事が並びます。',toTop:'トップへ',pickBig:'追いかけるものを選ぶ →',
+    back:'← ',backTo:' さんのページへ',cards:'＋ カードで選んで足す',addRm:'追いかけるものを足す・外す',genre:'好きなジャンルは？',
+    tapHint:'押して選ぶ（いくつでも）。押してある札をもう一度押すと外れます。',which:'どれを追いかける？',more:'ほかに追いかけたいもの',
+    ph:'作品・ブランド・人の名前',genreAria:'ジャンル',add:'足す',saveN:' つで保存する',pickOne:'ひとつ以上えらぶ',
+    saving:'保存しています…',saved:'保存しました（',savedEnd:' つ）。',see:'ページで見る →',saveFail:'保存できませんでした。もう一度お試しください。'}};
+  var L=UI[A.ui]||UI.ja;
   var UB='あなたが足したもの';   // お客さまが足した版面の小分類（本文の見出し・目次の札）
   function showMine(p,picks){
     R.dataset.mine='2';
@@ -4496,34 +4509,34 @@ AUTH_JS = r"""
     box.dataset.ready='1';
     var name=(p&&p.name)||(me&&me.name)||(user&&user.email)||'', sh=isMail(name)?name.split('@')[0]:name;
     var picks=picksOf(p);
-    var h='<header><h1>'+esc(sh)+' さんのページ</h1></header>';
-    if(err){box.innerHTML=h+'<p class="wl-msg" role="alert">読み込めませんでした。ページを開き直してください。</p>';return;}
-    if(!tok){box.innerHTML=h+'<p class="wl-msg" role="alert">もう一度ログインしてください。</p>';return;}
+    var h='<header><h1>'+esc(sh)+L.pageOf+'</h1></header>';
+    if(err){box.innerHTML=h+'<p class="wl-msg" role="alert">'+L.loadFail+'</p>';return;}
+    if(!tok){box.innerHTML=h+'<p class="wl-msg" role="alert">'+L.reLogin+'</p>';return;}
     if(page==='index'&&!picks.length){   // 最初：何ができるか＋選ぶ（左右に払うカードの流れ）へ
-      box.innerHTML=h+'<div class="empty"><b>ここは、あなたが追いかけたいものの新しいニュースが毎日並ぶページです</b>'+
-        '<p>好きなジャンルを選んで、出てくるカードを「気になる」か「パス」に分けるだけ。店長が集めに行き、記事が届いた版面から順に並びます。</p>'+
-        '<a class="go" href="'+ADD+'">好きなものを選ぶ →</a></div>';return;}
+      box.innerHTML=h+'<div class="empty"><b>'+L.introB+'</b>'+
+        '<p>'+L.introP+'</p>'+
+        '<a class="go" href="'+ADD+'">'+L.pick+'</a></div>';return;}
     if(page!=='index'&&page!=='settings'){
-      box.innerHTML=h+'<div class="empty">'+(picks.length?'<b>追いかけているものの記事は、トップにまとまっています</b><p>'+picks.length+' つを追いかけています。</p>':
-        '<b>まだ何も追いかけていません</b><p>好きな作品・人・場所を選ぶと、記事が並びます。</p>')+(picks.length?'<a class="go" href="./">トップへ</a>':'<a class="go big" href="'+ADD+'">追いかけるものを選ぶ →</a>')+'</div>';return;}
+      box.innerHTML=h+'<div class="empty">'+(picks.length?'<b>'+L.inTop+'</b><p>'+picks.length+L.nPicks+'</p>':
+        '<b>'+L.none+'</b><p>'+L.noneP+'</p>')+(picks.length?'<a class="go" href="./">'+L.toTop+'</a>':'<a class="go big" href="'+ADD+'">'+L.pickBig+'</a>')+'</div>';return;}
     var items=(A.items||[]), chosen={}, secsOn={};
     picks.forEach(function(x){chosen[x.name]=x.sec;secsOn[x.sec]=1;});
     // 設定の画面から自分のトップへ戻る道と、トップと同じ「カードで選んで足す」流れへの道（網址を打たせない・ブラウザの戻るに頼らない）
-    var back=page==='settings'?'<p class="wl-back"><a href="./">← '+esc(sh)+' さんのページへ</a><a href="'+ADD+'">＋ カードで選んで足す</a></p>':'';
+    var back=page==='settings'?'<p class="wl-back"><a href="./">'+L.back+esc(sh)+L.backTo+'</a><a href="'+ADD+'">'+L.cards+'</a></p>':'';
     function draw(){
-      var t=h+back+'<h2>'+(picks.length?'追いかけるものを足す・外す':'好きなジャンルは？')+'</h2><p class="hint">押して選ぶ（いくつでも）。押してある札をもう一度押すと外れます。</p><div class="tiles secs">'+
+      var t=h+back+'<h2>'+(picks.length?L.addRm:L.genre)+'</h2><p class="hint">'+L.tapHint+'</p><div class="tiles secs">'+
         SECS.map(function(x){return '<button type="button" data-gsec="'+esc(x[0])+'" aria-pressed="'+(!!secsOn[x[0]])+'" style="--sc:'+esc(x[2]||'var(--ink)')+'">'+esc(x[1])+'</button>';}).join('')+'</div>';
       var keys=Object.keys(secsOn).filter(function(k){return secsOn[k];});
       if(keys.length){
         var cand=items.filter(function(x){return secsOn[x[1]];}).map(function(x){return x[0];});
         Object.keys(chosen).forEach(function(n){if(cand.indexOf(n)<0)cand.push(n);});
-        t+='<h2>どれを追いかける？</h2><div class="tiles its">'+cand.map(function(n){var sec=chosen[n]||(items.filter(function(x){return x[0]===n;})[0]||[])[1]||keys[0];
+        t+='<h2>'+L.which+'</h2><div class="tiles its">'+cand.map(function(n){var sec=chosen[n]||(items.filter(function(x){return x[0]===n;})[0]||[])[1]||keys[0];
             return '<button type="button" data-it="'+esc(n)+'" data-s="'+esc(sec)+'" aria-pressed="'+(n in chosen)+'" style="--sc:'+esc(secColor(sec)||'var(--ink)')+'">'+esc(n)+'<small>'+esc(secJa(sec))+'</small></button>';}).join('')+'</div>'+
-          '<form class="add"><label for="wl-addn">ほかに追いかけたいもの</label><input id="wl-addn" name="n" maxlength="80" autocomplete="off" placeholder="作品・ブランド・人の名前">'+
-          '<select name="s" aria-label="ジャンル">'+keys.map(function(k){return '<option value="'+esc(k)+'">'+esc(secJa(k))+'</option>';}).join('')+'</select><button type="submit" class="ghost">足す</button></form>';
+          '<form class="add"><label for="wl-addn">'+L.more+'</label><input id="wl-addn" name="n" maxlength="80" autocomplete="off" placeholder="'+L.ph+'">'+
+          '<select name="s" aria-label="'+L.genreAria+'">'+keys.map(function(k){return '<option value="'+esc(k)+'">'+esc(secJa(k))+'</option>';}).join('')+'</select><button type="submit" class="ghost">'+L.add+'</button></form>';
       }
       var n=Object.keys(chosen).length;
-      t+='<p class="wl-msg" role="status" aria-live="polite"></p><button type="button" class="save"'+(n?'':' disabled')+'>'+(n?n+' つで保存する':'ひとつ以上えらぶ')+'</button>';
+      t+='<p class="wl-msg" role="status" aria-live="polite"></p><button type="button" class="save"'+(n?'':' disabled')+'>'+(n?n+L.saveN:L.pickOne)+'</button>';
       box.innerHTML=t;
       box.querySelectorAll('[data-gsec]').forEach(function(b){b.onclick=function(){secsOn[b.dataset.gsec]=!secsOn[b.dataset.gsec];draw();};});
       box.querySelectorAll('[data-it]').forEach(function(b){b.onclick=function(){var k=b.dataset.it;if(k in chosen)delete chosen[k];else chosen[k]=b.dataset.s;draw();};});
@@ -4532,11 +4545,11 @@ AUTH_JS = r"""
       var st=box.querySelector('.wl-msg'), sv=box.querySelector('.save');
       sv.onclick=function(){
         var list=Object.keys(chosen).map(function(k){return {name:k,sec:chosen[k]};});
-        st.textContent='保存しています…';sv.disabled=true;
+        st.textContent=L.saving;sv.disabled=true;
         rpc('my_keywords_set',{p_picks:list}).then(function(){
           if(page==='index'){p=p||{};p.prefs=p.prefs||{};p.prefs.picks=list;box.remove();showMine(p,list);scrollTo(0,0);}
-          else{picks=list;st.innerHTML='保存しました（'+list.length+' つ）。<a href="./">ページで見る →</a>';sv.disabled=false;}
-        }).catch(function(){st.textContent='保存できませんでした。もう一度お試しください。';sv.disabled=false;});};
+          else{picks=list;st.innerHTML=L.saved+list.length+L.savedEnd+'<a href="./">'+L.see+'</a>';sv.disabled=false;}
+        }).catch(function(){st.textContent=L.saveFail;sv.disabled=false;});};
     }
     draw();
   }

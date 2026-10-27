@@ -180,5 +180,27 @@ class Welcome(unittest.TestCase):
         self.assertTrue({p["sec"] for p in picks} <= set(welcome.taxonomy.SECTIONS))
 
 
+class UiWording(unittest.TestCase):
+    """お客さまの画面の文字（ownWait・drawMine）は言語表 UI に置き、JS に日本語を直書きしない。AUTH_JS 全体の直書きの行数は増やさない。"""
+    JA = re.compile(r"[\u3040-\u30ff\u4e00-\u9fff]")
+
+    def _code_lines(self, js):
+        return [l for l in js.split("\n") if self.JA.search(re.sub(r"//.*$", "", l))]
+
+    def test_customer_screens_have_no_literal_japanese(self):
+        js = render.AUTH_JS
+        for fn in ("ownWait", "drawMine"):
+            i = js.index(f"function {fn}(")
+            j = js.index("\n  function ", i + 10)
+            self.assertEqual(self._code_lines(js[i:j]), [], fn)
+
+    def test_literal_japanese_lines_do_not_grow(self):
+        js = render.AUTH_JS
+        i = js.index("var UI={")
+        j = js.index("var L=UI", i)
+        n = len(self._code_lines(js[:i] + js[j:]))
+        self.assertLessEqual(n, 67, "AUTH_JS の日本語の直書きが増えた。言語表 UI に置く")
+
+
 if __name__ == "__main__":
     unittest.main()
