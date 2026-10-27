@@ -242,7 +242,8 @@
   "Vaundy": 2,
   "日本顶级网球赛事": 8,
   "チェーンソーマン": 1,
-  "猫用品": 1
+  "猫用品": 1,
+  "Astrae Oratio": 3
  },
  "三星手机": [
   {
@@ -481,6 +482,27 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "엔씨, AGF 2026 메인 스폰서로 참가…'아스트라에 오라티오'로 서브컬처팬 사로잡는다",
+   "highlight": "AGF 2026 메인 스폰서",
+   "blurb": "엔씨가 AGF(Anime X Game Festival) 2026에 기대작 ‘아스트라에 오라티오’를 출품한다.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g0tNg.img"
+  },
+  {
+   "headline": "Clan Key Visual Reveal “Kobato Mart”",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ]

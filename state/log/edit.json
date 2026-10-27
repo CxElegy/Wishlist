@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-27T03:48:40+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-27T03:53:26+00:00",
 "text": "2026-10-27 第 1 バッチを出刊：三星手机（1 版面・7 本・残り 5 版面） · token 新規入力 4.3万・キャッシュ読み 63.8万・出力 2,044",
 "level": "ok",
@@ -1803,5 +1798,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 178421
+},
+{
+"at": "2026-10-27T21:26:57+00:00",
+"text": "2026-10-28 第 5 バッチを出刊：Astrae Oratio（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 3,294・キャッシュ読み 27.1万・出力 1,174",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.28,
+"mem_total": 16872808448,
+"mem_free": 15944478720,
+"disk_used": 10917883904,
+"disk_free": 30404624384,
+"disk_total": 41322508288,
+"peak": 297119744
+},
+"batch": 5,
+"boards": [
+"Astrae Oratio"
+],
+"stories": 2,
+"left": 0,
+"edited": 18,
+"run": 1793134745.7948844,
+"tok": {
+"in": 6,
+"cw": 3288,
+"cr": 270549,
+"out": 1174,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 275017,
+"secs": 1671,
+"run_tok": {
+"in": 50,
+"cw": 64030,
+"cr": 1939762,
+"out": 9075,
+"calls": 25,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

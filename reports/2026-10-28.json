@@ -1,36 +1,34 @@
 {
  "date": "2026-10-28",
- "edit_sig": "af13b55e0caf",
+ "edit_sig": "659d16518f3c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "엔씨가 AGF(Anime X Game Festival) 2026에 기대작 ‘아스트라에 오라티오’를 출품한다.",
      "date": "2026-10-23",
-     "n": 1,
-     "source": "녹색경제신문 on MSN",
-     "title": "엔씨, AGF 2026 메인 스폰서로 참가…'아스트라에 오라티오'로 서브컬처팬 사로잡는다",
-     "url": "https://www.msn.com/ko-kr/entertainment/%EC%9D%BC%EB%B0%98/%EC%97%94%EC%94%A8-agf-2026-%EB%A9%94%EC%9D%B8-%EC%8A%A4%ED%8F%B0%EC%84%9C%EB%A1%9C-%EC%B0%B8%EA%B0%80-%EC%95%84%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%97%90-%EC%98%A4%EB%9D%BC%ED%8B%B0%EC%98%A4-%EB%A1%9C-%EC%84%9C%EB%B8%8C%EC%BB%AC%EC%B2%98%ED%8C%AC-%EC%82%AC%EB%A1%9C%EC%9E%A1%EB%8A%94%EB%8B%A4/ar-AA2g0a5I"
+     "headline": "엔씨, AGF 2026 메인 스폰서로 참가…'아스트라에 오라티오'로 서브컬처팬 사로잡는다",
+     "highlight": "AGF 2026 메인 스폰서",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g0tNg.img",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/ko-kr/entertainment/%EC%9D%BC%EB%B0%98/%EC%97%94%EC%94%A8-agf-2026-%EB%A9%94%EC%9D%B8-%EC%8A%A4%ED%8F%B0%EC%84%9C%EB%A1%9C-%EC%B0%B8%EA%B0%80-%EC%95%84%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%97%90-%EC%98%A4%EB%9D%BC%ED%8B%B0%EC%98%A4-%EB%A1%9C-%EC%84%9C%EB%B8%8C%EC%BB%AC%EC%B2%98%ED%8C%AC-%EC%82%AC%EB%A1%9C%EC%9E%A1%EB%8A%94%EB%8B%A4/ar-AA2g0a5I",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-25",
-     "n": 2,
-     "source": "r/Astrae_Oratio",
-     "title": "Ai and Shunin's Daughters (カニ / Kani)",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xer2el/ai_and_shunins_daughters_カニ_kani/"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 3,
-     "source": "r/Astrae_Oratio",
-     "title": "Clan Key Visual Reveal “Kobato Mart”",
-     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xd3jrx/clan_key_visual_reveal_kobato_mart/"
+     "headline": "Clan Key Visual Reveal “Kobato Mart”",
+     "highlight": "",
+     "image": "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603",
+     "image_via": "条目自带",
+     "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xd3jrx/clan_key_visual_reveal_kobato_mart/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
