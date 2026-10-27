@@ -230,7 +230,7 @@
   "The Mandalorian": 1,
   "ILLIT": 2,
   "Vaundy": 2,
-  "日本顶级网球赛事": 2,
+  "日本顶级网球赛事": 8,
   "チェーンソーマン": 1,
   "猫用品": 1
  },
@@ -426,9 +426,29 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    3,
+    8
    ],
    "image": "https://cdn.mainichi.jp/vol1/2026/10/28/20261028ddm035050160000p/0c10.jpg?2"
+  },
+  {
+   "headline": "【女子テニス】青山修子、梁恩碩組 初戦敗退も前向く「来年につながると思う」",
+   "highlight": "初戦敗退",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  },
+  {
+   "headline": "Naomi Osaka and Hana Yagi Collaborate on Toray Pan Pacific Open Kit",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "チェーンソーマン": [
