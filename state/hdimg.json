@@ -955,12 +955,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hermes.media.transform.aol.com/a360a8c8f386c0ba9c75467163c4ebe39c4446dc/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/27/933c8f10-7ef9-3855-8423-fdeccae4f3e2/7806376e-24d3-466b-bf10-a0a4b4cfe507.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
  "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg": {
   "w": 1200,
   "h": 675,
@@ -3996,6 +3990,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.comicbasics.com/wp-content/uploads/2026/06/Doctor-Doom-marvel-comics.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://www.comicbasics.com/wp-content/uploads/2026/06/slika_2026-06-29_160304513.webp": {
