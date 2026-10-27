@@ -181,25 +181,26 @@ class Welcome(unittest.TestCase):
 
 
 class UiWording(unittest.TestCase):
-    """お客さまの画面の文字（ownWait・drawMine）は言語表 UI に置き、JS に日本語を直書きしない。AUTH_JS 全体の直書きの行数は増やさない。"""
+    """お客さまの画面の文字は言語表 UI に置き、AUTH_JS に日本語を直書きしない（記事の文字を照らす正規表現は /*data*/ の印で除く）。"""
     JA = re.compile(r"[\u3040-\u30ff\u4e00-\u9fff]")
 
-    def _code_lines(self, js):
-        return [l for l in js.split("\n") if self.JA.search(re.sub(r"//.*$", "", l))]
-
-    def test_customer_screens_have_no_literal_japanese(self):
-        js = render.AUTH_JS
-        for fn in ("ownWait", "drawMine"):
-            i = js.index(f"function {fn}(")
-            j = js.index("\n  function ", i + 10)
-            self.assertEqual(self._code_lines(js[i:j]), [], fn)
-
-    def test_literal_japanese_lines_do_not_grow(self):
+    def _parts(self):
         js = render.AUTH_JS
         i = js.index("var UI={")
         j = js.index("var L=UI", i)
-        n = len(self._code_lines(js[:i] + js[j:]))
-        self.assertLessEqual(n, 67, "AUTH_JS の日本語の直書きが増えた。言語表 UI に置く")
+        return js[:i] + js[j:], js[i:j]
+
+    def test_no_literal_japanese_in_code(self):
+        code, _ = self._parts()
+        bad = [l.strip()[:80] for l in code.split("\n")
+               if self.JA.search(re.sub(r"//.*$", "", l)) and "/*data*/" not in l]
+        self.assertEqual(bad, [])
+
+    def test_every_key_used_is_in_the_table(self):
+        code, tab = self._parts()
+        used = set(re.findall(r"\bL\.(\w+)", code))
+        have = set(re.findall(r"(?:^|[{,\s])(\w+):'", tab))
+        self.assertEqual(sorted(used - have), [])
 
 
 if __name__ == "__main__":
