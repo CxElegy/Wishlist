@@ -1,34 +1,5 @@
 [
 {
-"at": "2026-10-27T10:27:11+00:00",
-"text": "判断：emblem あり（足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:35 から）） · edit あり（整理待ちの記事 7 件（5 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": true,
-"edit": true,
-"photos": false
-}
-},
-{
-"at": "2026-10-27T10:27:13+00:00",
-"text": "Claude を起こした：AI 編集",
-"level": "ok",
-"results": {
-"edit": "Claude を起こした",
-"photos": "仕事なし（起こさない）"
-}
-},
-{
-"at": "2026-10-27T10:43:15+00:00",
-"text": "判断：emblem あり（足りない 6 版面（Actions で Python が埋める）・失敗 10 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:47 から）） · edit あり（整理待ちの記事 7 件（5 版面・AI 編集まで版面に載らない）） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": true,
-"edit": true,
-"photos": false
-}
-},
-{
 "at": "2026-10-27T10:43:16+00:00",
 "text": "Claude は起こさなかった（AI 編集 60 分以内に起こし済み（編集中かもしれないので待つ） / 写真から愿望 仕事なし（起こさない））",
 "level": "info",
@@ -565,6 +536,32 @@
 {
 "at": "2026-10-27T17:01:09+00:00",
 "text": "判断：emblem あり（足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 02:22 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": true,
+"edit": false,
+"photos": false
+}
+},
+{
+"at": "2026-10-27T17:17:30+00:00",
+"text": "収集の控えの時計：最後の収集から 157 分（定時が抜けた）→ 収集を起こす",
+"level": "warn",
+"collect_kick": true
+},
+{
+"at": "2026-10-27T17:17:41+00:00",
+"text": "判断：emblem あり（足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 02:22 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": true,
+"edit": false,
+"photos": false
+}
+},
+{
+"at": "2026-10-27T17:24:16+00:00",
+"text": "判断：emblem あり（足りない 3 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 02:33 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
 "level": "info",
 "jobs": {
 "emblem": true,
