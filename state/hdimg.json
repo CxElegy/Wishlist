@@ -444,6 +444,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.hk01.com/di/media/images/dw/20261022/1189990231294611456712386.jpeg/QPH6CVayi4is_F7cwy7Az9VHWqWwBCTiUR-IoVEfiKE": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://cdn.livedoor.jp/kstyle/514ee8edcb07f7e84eadfecd6f0ec5c7.jpg/r.580x0": {
   "w": 580,
   "h": 362,
@@ -1685,6 +1691,12 @@
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161977.jpg": {
   "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
+  "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
@@ -3345,19 +3357,6 @@
   "target": 720,
   "v": 3
  },
- "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
-  "w": 647,
-  "h": 431,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.452,
-  "local": "pics/9a1ea62ec61eeb92.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
- },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3471,6 +3470,18 @@
    732
   ],
   "why": "Bing の小さい縮小画像"
+ },
+ "https://www.bing.com/th?id=ONUT.PGznIf3HYsWmcfiTsfIvmQ&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
+ "https://www.bing.com/th?id=ONUT.SEjLe-VjuyuNDKLrg1DcBA&pid=News&w=1200": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
@@ -3788,12 +3799,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-ultra-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -3840,12 +3845,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://www.justjared.com/wp-content/uploads/2026/10/from-season-3-netflix.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
   "v": 3
  },
  "https://www.kocpc.com.tw/wp-content/uploads/2026/04/20260426234433_0_82a249.jpg": {
@@ -3930,12 +3929,6 @@
   "w": 600,
   "h": 399,
   "target": 720,
-  "v": 3
- },
- "https://www.right-media.news/wp-content/uploads/2026/10/FotoJet191.jpg": {
-  "w": 1600,
-  "h": 1200,
-  "target": 1280,
   "v": 3
  },
  "https://www.sammyfans.com/wp-content/uploads/2026/07/samsung-galaxy-s26-series-sg26s-img.jpg": {
