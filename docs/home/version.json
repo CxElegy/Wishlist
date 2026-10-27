@@ -1,14 +1,14 @@
 {
  "admin": "5f07d22c8f23",
- "admin-ai": "5525872db612",
+ "admin-ai": "238c67480395",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6cd900d1"
+   "c0b2ff42"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "42f1d473"
+   "e4c22324"
   ]
  },
  "admin-boards": "1e44a33086e0",
@@ -22,11 +22,11 @@
    "0ccd21c6"
   ]
  },
- "admin-emblem": "89c699c7bd09",
+ "admin-emblem": "1de9a1d44131",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "4e094dc4"
+   "21384389"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "be19396da526",
  "admin-members_marks": {},
- "admin-now": "545bc2a0bab2",
+ "admin-now": "ccac31197076",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9ffb8fdc"
+   "f73155d4"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "88ef2da9"
+   "730dac7b"
   ]
  },
- "admin-system": "5e9db6ba6bd1",
+ "admin-system": "ca897f50bb99",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ab502a7d"
+   "4f67499f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "63053392"
+   "d48a376a"
   ]
  },
  "admin_marks": {},
- "heat": "da66cc6faa27",
+ "heat": "cbcad9486dfc",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "78df782a"
+   "67ec7960"
   ],
   "ranking": [
    "ランキング",
-   "c76cfeeb"
+   "050a9958"
   ]
  },
- "index": "63ebfceba919",
+ "index": "dd5ad962dfdd",
  "index_marks": {
   "front": [
    "トップ",
-   "d2851935"
+   "8cdc4067"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "117cbb17"
+   "256ac48e"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "da1de628"
+   "515b6c2d"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "91205b45"
+   "ac89351c"
   ],
   "w-f303ad09": [
    "绝区零",
    "3a22dde0"
   ]
  },
- "updated": "10.27 10:56",
+ "updated": "10.27 11:00",
  "wishlist": "fc1e4ea1094e"
 }

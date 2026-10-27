@@ -11,6 +11,7 @@
   "https://article.auone.jp/5e6bb488-14ab-472e-a7d0-5d6f71a5a42d": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_jp_i_1486554983406584528_w640.webp",
   "https://article.auone.jp/fb958b8c-b16d-4d90-b3ba-a160b9eb565c": "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912",
   "https://ascii.jp/elem/000/004/445/4445672/": "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122",
+  "https://brobible.com/culture/article/marvel-edited-chris-evans-hairline-nose-theory/": "https://brobible.com/wp-content/uploads/2026/10/Chris-Evans.png",
   "https://charalab.com/144578/": "https://charalab.com/images/2026/10/261020_pooh_-2.jpg",
   "https://collabo-cafe.com/en/events/collabo/gudetama-avail-goods-2026/": "https://collabo-cafe.com/wp-content/uploads/gudetama-avail-2026-lineup.jpg",
   "https://collabo-cafe.com/events/collabo/gudetama-avail-goods-2026/": "https://collabo-cafe.com/wp-content/uploads/gudetama-avail-2026-lineup.jpg",
@@ -58,7 +59,6 @@
   "https://www.chinatimes.com/realtimenews/20261025002598-260421": "https://images.chinatimes.com/newsphoto/2026-10-25/656/20261025002600.jpg",
   "https://www.ciiblog.in/detail/93685572237": null,
   "https://www.cinemablend.com/streaming-news/realizing-harry-potter-shows-actor-rafe-spall-link-movies-timothy-spall": "https://cdn.mos.cms.futurecdn.net/JJUXJNug7549JTRVW9fSjA-2000-80.jpg",
-  "https://www.comingsoon.net/movies/news/2212918-avengers-doomsday-spider-man-mcu-appearance-hint": "https://www.bing.com/th?id=ONUT.znAdu6_wtr_xerO2iJNxSQ&pid=News&w=1200",
   "https://www.dexerto.com/gaming/arknights-endfield-gameplay-trailers-platforms-beta-1833704/": "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg",
   "https://www.ebrun.com/20261022/715165.shtml": null,
   "https://www.etnews.com/20261023000235": "https://img.etnews.com/news/article/2026/10/23/news-p.v1.20261023.29a15b4b82ff4b5488d09c6afc6f124d_P1.png",
@@ -1370,6 +1370,27 @@
    "because": "漫威电影",
    "date": "2026-10-26",
    "hits": [],
+   "image": "https://brobible.com/wp-content/uploads/2026/10/Chris-Evans.png",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "BroBible",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "Marvel Seemingly Used VFX To Edit Chris Evans' Hairline And Nose In The Newest 'Avengers: Doomsday' Teaser",
+   "url": "https://brobible.com/culture/article/marvel-edited-chris-evans-hairline-nose-theory/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-10-26",
+   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.Z8wU73kn7azeaHgRxOFisg&pid=News&w=1200",
    "kind": "board",
    "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
@@ -1383,27 +1404,6 @@
    ],
    "title": "New Avengers: Doomsday TV Spot Offers Fresh Look at Marvel Epic",
    "url": "https://www.themovieblog.com/2026/10/new-avengers-doomsday-tv-spot-offers-fresh-look-at-marvel-epic/",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 4,
-   "because": "漫威电影",
-   "date": "2026-10-26",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.znAdu6_wtr_xerO2iJNxSQ&pid=News&w=1200",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "ComingSoon.net",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Spider-Man Fans Are Convinced New Avengers: Doomsday Release Confirms Tom Holland’s Casting",
-   "url": "https://www.comingsoon.net/movies/news/2212918-avengers-doomsday-spider-man-mcu-appearance-hint",
    "words": [],
    "work": "漫威电影"
   },
@@ -2086,15 +2086,15 @@
    8
   ],
   [
-   "galaxy",
-   7
-  ],
-  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
+   7
+  ],
+  [
+   "galaxy",
    7
   ],
   [

@@ -87,15 +87,15 @@
   "target": 720,
   "v": 3
  },
- "http://wx1.sinaimg.cn/middle/61ae99cfgy1iifxjko4ffj210o1ejqcm.jpg": {
-  "w": 1320,
-  "h": 1819,
+ "http://wx1.sinaimg.cn/middle/008eZAxIly1iig4cgmelfj30ow0re426.jpg": {
+  "w": 896,
+  "h": 986,
   "target": 1280,
   "v": 3,
-  "local": "pics/9ba8f673893e9ca2.webp",
+  "local": "pics/813b6a0f6593f366.webp",
   "out": [
-   929,
-   1280
+   896,
+   986
   ],
   "why": "防盗链",
   "ref": true
@@ -1677,19 +1677,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/6da94d65020c72a9.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1845,7 +1832,7 @@
   "target": 720,
   "v": 3
  },
- "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0.jpg": {
+ "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0-enlarge.jpg": {
   "w": 500,
   "h": 333,
   "target": 720,
@@ -3082,6 +3069,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
+  "w": 1200,
+  "h": 653,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3328,6 +3321,19 @@
   "target": 720,
   "v": 3
  },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "w": 647,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/9a1ea62ec61eeb92.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3566,12 +3572,6 @@
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.znAdu6_wtr_xerO2iJNxSQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
   "target": 720,
   "v": 3
  },
