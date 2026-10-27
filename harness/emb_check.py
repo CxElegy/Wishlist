@@ -132,6 +132,9 @@ def white_box(img):
     return white / max(1, len(edge)) >= 0.9
 
 
+DRIFT = []   # 検出器のしきい値が標準でなかった回のしきい値（空が正しい）
+
+
 def _faces(im):
     """白い地に置いた cutout の顔（YuNet の行：x, y, w, h, 右目, 左目, 鼻, 口の右, 口の左, 点数）。上に余白を足す（額が切れていても見つける）。
     顔のモデルがなければ None。"""
@@ -147,6 +150,9 @@ def _faces(im):
     bg = Image.new("RGBA", (w, h + pad), "white")
     bg.alpha_composite(im.resize((w, h)), (0, pad))
     bgr = cv2.cvtColor(np.array(bg.convert("RGB")), cv2.COLOR_RGB2BGR)
+    if abs(eng[0].getScoreThreshold() - face_id.SCORE) > 1e-6:   # 誰かが戻し忘れた：標準に戻して測り、あとで「順番しだい」と出す（E7 が前の測りしだいで変わる）
+        DRIFT.append(round(eng[0].getScoreThreshold(), 2))
+        eng[0].setScoreThreshold(face_id.SCORE)
     eng[0].setInputSize((bgr.shape[1], bgr.shape[0]))
     f = eng[0].detect(bgr)[1]
     return [(r, pad, s) for r in sorted(f, key=lambda r: -r[2] * r[3])] if f is not None else []
@@ -524,4 +530,6 @@ def check(pg, who, width, out, full=False, guest=False):
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
              "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
+    if DRIFT:
+        bad.append(f"E7 順番しだい 検出器のしきい値が標準でない回が {len(DRIFT)} 回（{DRIFT[0]}）：変えた所が戻していない（emblem_face._boxes と同じ型）")
     return bad + (["E7・E11 顔のモデルなし（額の切れ・何人もは見ていない）"] if nomodel else [])
