@@ -160,6 +160,16 @@ class CoverTest(unittest.TestCase):
                 self.assertIn(render.AUTH_CSS, t, f"{f.name} の殻が古い：python harness/d5_sample.py")
         self.assertGreaterEqual(n, 2)
 
+    def test_d5_if_stale_skips_when_shell_is_current(self):
+        """render.yml がつなぐ d5_sample --if-stale：写しの殻が今と同じなら作り直さない（ファイルを書かない）、違えば fresh() が偽。"""
+        import pathlib, sys
+        root = pathlib.Path(__file__).resolve().parent.parent
+        sys.path.insert(0, str(root / "harness"))
+        import d5_sample
+        self.assertTrue(d5_sample.fresh())
+        wf = (root / ".github" / "workflows" / "render.yml").read_text(encoding="utf-8")
+        self.assertIn("d5_sample.py --if-stale", wf)
+
     def test_cover_bad(self):
         self.assertEqual(ux_check.cover_bad([]), [])
         self.assertIn("隠す", ux_check.cover_bad(["p:末尾"])[0])
