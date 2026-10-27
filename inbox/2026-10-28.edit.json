@@ -184,6 +184,117 @@
   "漫威电影": 12,
   "哈利波特剧集": 8,
   "BLEACH Mirrors High": 6,
-  "A2O LITE": 5
- }
+  "A2O LITE": 5,
+  "三星手机": 4,
+  "MMORPG 新作": 3,
+  "滑雪": 3,
+  "绝区零": 3,
+  "FROM": 2
+ },
+ "三星手机": [
+  {
+   "headline": "Galaxy S27のドコモ版やSIMフリー版などの発売が確定 国内向け型番が認証通過！",
+   "highlight": "国内向け型番が認証通過",
+   "blurb": "Galaxy S27のドコモ版やSIMフリー版などの国内向け型番が認証を通過し、日本での発売が確定した。",
+   "weight": "hero",
+   "refs": [
+    1
+   ],
+   "image": "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-27-115520.jpg"
+  },
+  {
+   "headline": "Case makers are already selling Galaxy S27 Pro and Ultra covers",
+   "highlight": "Galaxy S27 Pro and Ultra",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "ArcheAge Chronicles: Official Release Date Trailer",
+   "highlight": "Release Date Trailer",
+   "blurb": "Explore Auroria in the Age of Pioneers in the upcoming fantasy-themed open-world action-MMORPG ArcheAge Chronicles.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200"
+  },
+  {
+   "headline": "『AION2』が好調スタート “新規MMO冬の時代”に風穴を開けられるか",
+   "highlight": "『AION2』が好調スタート",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "富良野スキー場、1日10名限定のファーストトラック企画を2027年1月に開催へ",
+   "highlight": "2027年1月に開催",
+   "blurb": "富良野スキー場が2027年1月に、1日10名限定のファーストトラック企画を開催する。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.dellows.jp/wp-content/uploads/2026/10/829054_1.jpg"
+  },
+  {
+   "headline": "Nitro Phase x Motörhead Snowboard Review: All-Mountain Performance & Value",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Rome Service Dog Snowboard Review: Upgraded and Ready to Jib",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "Ellen Joe is still an Ice character in Honkai: Star Rail",
+   "highlight": "Honkai: Star Rail",
+   "blurb": "A new Zenless Zone Zero teaser for Ellen Joe ahead of her Honkai: Star Rail debut shows her element.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200"
+  },
+  {
+   "headline": "绝区零联动星穹铁道，知更鸟这身紫色造型太戳人",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "When Does The Next Season of 'From' Premiere on Netflix and MGM+?",
+   "highlight": "Premiere",
+   "blurb": "FROM has been renewed for a fifth and final season expected in 2027; MGM+ has not confirmed a date.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200"
+  }
+ ]
 }

@@ -125,6 +125,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/008CTCXEgy1iigw4manoxj30nl0xc4qj.jpg": {
+  "w": 849,
+  "h": 1200,
+  "target": 720,
+  "v": 3,
+  "local": "pics/16e54ac8788639db.webp",
+  "out": [
+   849,
+   1200
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -199,6 +212,19 @@
   "out": [
    1280,
    853
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx4.sinaimg.cn/middle/005DZlpOly1iig74pp1h0j30sg14w7dn.jpg": {
+  "w": 1024,
+  "h": 1472,
+  "target": 720,
+  "v": 3,
+  "local": "pics/403d037da10098af.webp",
+  "out": [
+   890,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -1465,6 +1491,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gbfkb.img": {
   "target": 720,
   "v": 3,
@@ -2074,6 +2106,12 @@
   "target": 720,
   "v": 3
  },
+ "https://mtnweekly.com/wp-content/uploads/2026/10/Nitro-Phase-2027-Motorhead-Snowboard-17.jpg": {
+  "w": 1200,
+  "h": 859,
+  "target": 720,
+  "v": 3
+ },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
   "w": 664,
   "h": 497,
@@ -2171,6 +2209,12 @@
   "w": 1024,
   "h": 683,
   "target": 720,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/829054_1.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
   "v": 3
  },
  "https://news.dellows.jp/wp-content/uploads/2026/10/843115_1.jpg": {
@@ -3544,6 +3588,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.androidauthority.com/wp-content/uploads/2026/05/Samsung-Galaxy-S26-Ultra-home-screen-black-cat-scaled.jpg": {
+  "w": 2560,
+  "h": 1440,
+  "target": 720,
+  "v": 3
+ },
  "https://www.atpress.ne.jp/releases/643108/LL_img_643108_3.jpg?format=webp&ts=1792744226": {
   "w": 800,
   "h": 800,
@@ -3554,6 +3604,19 @@
   "out": [
    1280,
    1280
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.438,
+  "local": "pics/5cbd3517c2e166a6.webp",
+  "out": [
+   1280,
+   719
   ],
   "why": "看不清"
  },
@@ -3601,18 +3664,18 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.EfKjFhm1fPg2aVKYu88knA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
   "h": 334,
   "target": 1280,
   "v": 3,
   "blur": 0.393
- },
- "https://www.bing.com/th?id=ONUT.HnmlmvZYRffwzsctHdRbPg&pid=News&w=900": {
-  "w": 525,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
@@ -3674,8 +3737,15 @@
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.436,
+  "local": "pics/e9ec4e7bd101ff22.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.b3TynM3TLvhPfx7ZYVGERg&pid=News&w=1200": {
   "target": 720,
@@ -3746,12 +3816,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.pP6FU5B5nnnOlrddNqRaHg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200": {
   "w": 700,
   "h": 471,
@@ -3771,6 +3835,13 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.358
+ },
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3780,6 +3851,12 @@
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.boardoftheworld.com/wp-content/uploads/2024/03/Rome-Service-Dog-2026.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
   "v": 3
  },

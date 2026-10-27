@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "acf6f568286c",
+ "edit_sig": "0ced6c57a889",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -112,31 +112,29 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Explore Auroria in the Age of Pioneers in the upcoming fantasy-themed open-world action-MMORPG ArcheAge Chronicles.",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "doope!",
-     "title": "リアルタイム株取引MMOシム「Screen Stocks スクリーンストック」が本日リリース、40％オフセールも",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE05MDh1blk4V1JpYWI4SFJDUkxuTU54dW95SGdma3ZkMmZwRVphZUVLZVlhMkM0dGlrV0pIVzlFZnljdjRnVjhTcFRlcw?oc=5"
+     "headline": "ArcheAge Chronicles: Official Release Date Trailer",
+     "highlight": "Release Date Trailer",
+     "image": "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.ign.com/videos/archeage-chronicles-official-release-date-trailer",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-27",
-     "n": 2,
-     "source": "IGN",
-     "title": "ArcheAge Chronicles: Official Release Date Trailer",
-     "url": "https://www.ign.com/videos/archeage-chronicles-official-release-date-trailer"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 3,
-     "source": "リアルサウンド on MSN",
-     "title": "『AION2』が好調スタート “新規MMO冬の時代”に風穴を開けられるか",
-     "url": "https://www.msn.com/ja-jp/gaming/mmo/aion2-%E3%81%8C%E5%A5%BD%E8%AA%BF%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88-%E6%96%B0%E8%A6%8Fmmo%E5%86%AC%E3%81%AE%E6%99%82%E4%BB%A3-%E3%81%AB%E9%A2%A8%E7%A9%B4%E3%82%92%E9%96%8B%E3%81%91%E3%82%89%E3%82%8C%E3%82%8B%E3%81%8B/ar-AA2ganW3"
+     "headline": "『AION2』が好調スタート “新規MMO冬の時代”に風穴を開けられるか",
+     "highlight": "『AION2』が好調スタート",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/gaming/mmo/aion2-%E3%81%8C%E5%A5%BD%E8%AA%BF%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88-%E6%96%B0%E8%A6%8Fmmo%E5%86%AC%E3%81%AE%E6%99%82%E4%BB%A3-%E3%81%AB%E9%A2%A8%E7%A9%B4%E3%82%92%E9%96%8B%E3%81%91%E3%82%89%E3%82%8C%E3%82%8B%E3%81%8B/ar-AA2ganW3",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "近期上线 · 测试 · 新公布的网游",
    "theme": {
     "accent": "#E3B341",
@@ -153,31 +151,39 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "富良野スキー場が2027年1月に、1日10名限定のファーストトラック企画を開催する。",
      "date": "2026-10-25",
-     "n": 1,
-     "source": "Dellows News",
-     "title": "富良野スキー場、1日10名限定のファーストトラック企画を2027年1月に開催へ",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9GZTAzVEhTdzdEaFNMa3VRMWEyUmNsTlEtMGhNYV91NGlyUUdybXhqNzdVZlQ5bks0T0ZfYnlMaXJnbDRPTTRtUG9lUXNEWUZfNG5nUzBPQUtBSVZPaGpmVjQzQlN4MjNX?oc=5"
+     "headline": "富良野スキー場、1日10名限定のファーストトラック企画を2027年1月に開催へ",
+     "highlight": "2027年1月に開催",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/829054_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://news.dellows.jp/829054/?from=related-reading-list",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-25",
-     "n": 2,
-     "source": "Mountain Weekly News",
-     "title": "Nitro Phase x Motörhead Snowboard Review: All-Mountain Performance & Value",
-     "url": "https://mtnweekly.com/reviews/snowboards/nitro-motorhead-phase/"
+     "headline": "Nitro Phase x Motörhead Snowboard Review: All-Mountain Performance & Value",
+     "highlight": "",
+     "image": "https://mtnweekly.com/wp-content/uploads/2026/10/Nitro-Phase-2027-Motorhead-Snowboard-17.jpg",
+     "image_via": "og:image",
+     "url": "https://mtnweekly.com/reviews/snowboards/nitro-motorhead-phase/",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-22",
-     "n": 3,
-     "source": "Board of the World",
-     "title": "Rome Service Dog Snowboard Review: Upgraded and Ready to Jib",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE8tWFNMMXg3RnpjcWJrOUttekE3TDdQWDUxM01KMlJxeHVrSGk3bmE3Y0NDTXVEajdxbzFUMEQzSWtkZ0xtZ3pYRUZxdTlZLUd0R3E1MFZ1QnV3bFduSGhaaEdWdC1nYlU5b3E1TFMwVHhCcHdD?oc=5"
+     "headline": "Rome Service Dog Snowboard Review: Upgraded and Ready to Jib",
+     "highlight": "",
+     "image": "https://www.boardoftheworld.com/wp-content/uploads/2024/03/Rome-Service-Dog-2026.jpg",
+     "image_via": "og:image",
+     "url": "https://www.boardoftheworld.com/rome-service-dog-snowboard-review/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -263,24 +269,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "FROM has been renewed for a fifth and final season expected in 2027; MGM+ has not confirmed a date.",
      "date": "2026-10-26",
-     "n": 1,
-     "source": "Decider",
-     "title": "When Does The Next Season of 'From' Premiere on Netflix and MGM+? 'From' Seasons 4 and 5 Release Dates Info",
-     "url": "https://decider.com/2026/10/27/from-season-4-on-netflix-release-date-from-season-5-next-season-mgm-plus-netflix/"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 2,
-     "source": "International Business Times UK",
-     "title": "When Will 'FROM' Season 5 Hit Netflix? Sci-Fi Horror Series Gets 96% Rotten Tomatoes Score",
-     "url": "https://www.ibtimes.co.uk/season-5-release-date-netflix-availability-1828188"
+     "headline": "When Does The Next Season of 'From' Premiere on Netflix and MGM+?",
+     "highlight": "Premiere",
+     "image": "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://decider.com/2026/10/27/from-season-4-on-netflix-release-date-from-season-5-next-season-mgm-plus-netflix/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
@@ -441,40 +442,27 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 2,
-     "source": "Android Authority",
-     "title": "Case makers are already selling Galaxy S27 Pro and Ultra covers",
-     "url": "https://www.androidauthority.com/samsung-galaxy-s27-pro-ultra-cases-3728539/"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 3,
-     "source": "Vietnam.vn",
-     "title": "配备 1 亿像素前置摄像头的智能手机：Galaxy S27 Ultra 和 iPhone 20 如何竞争？",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNTE1WZWtBVVA2bjVzcGM2NDFmeE02OGZDbF8xWDc1UzNMZGlLMnIyMC04VloxblpQTlFTTjJaLXBkVGZpQTByVE5hOThmdS00M1hST1kzRS1xX25KRVNPaHB5QVRPZGVheFZMcmtmQlBMWFI2UFRrS3k4M2o1Q1BrS1ZxWEdGOVo3WU5EYkFZaHBYczlhSzRKSldmd3RSdGMyQ2hjTlo5cFFHT2M?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 4,
-     "source": "IranWire",
-     "title": "Iran Bans Mobile Registry for 24 Flagship Smartphones Including iPhone 18 and Galaxy S27",
-     "url": "https://iranwire.com/en/news/159431-iran-bans-mobile-registry-for-24-flagship-smartphones-including-iphone-18-and-galaxy-s27/"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "Galaxy S27のドコモ版やSIMフリー版などの国内向け型番が認証を通過し、日本での発売が確定した。",
      "date": "2026-10-27",
      "headline": "Galaxy S27のドコモ版やSIMフリー版などの発売が確定 国内向け型番が認証通過！",
-     "highlight": "",
+     "highlight": "国内向け型番が認証通過",
      "image": "https://sumahodigest.com/wp-content/uploads/2026/10/Screenshot-2026-10-27-115520.jpg",
      "image_via": "og:image",
      "url": "https://sumahodigest.com/?p=74928",
      "weight": "hero"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "Case makers are already selling Galaxy S27 Pro and Ultra covers",
+     "highlight": "Galaxy S27 Pro and Ultra",
+     "image": "https://www.androidauthority.com/wp-content/uploads/2026/05/Samsung-Galaxy-S26-Ultra-home-screen-black-cat-scaled.jpg",
+     "image_via": "og:image",
+     "url": "https://www.androidauthority.com/samsung-galaxy-s27-pro-ultra-cases-3728539/",
+     "weight": "normal"
     }
    ],
    "subtitle": "Galaxy S27 Ultra · S27 Pro · 系列情报",
@@ -621,31 +609,29 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "A new Zenless Zone Zero teaser for Ellen Joe ahead of her Honkai: Star Rail debut shows her element.",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "Siliconera on MSN",
-     "title": "Ellen Joe is still an Ice character in Honkai: Star Rail",
-     "url": "https://www.msn.com/en-us/entertainment/general/ellen-joe-is-still-an-ice-character-in-honkai-star-rail/ar-AA2gbeIN"
+     "headline": "Ellen Joe is still an Ice character in Honkai: Star Rail",
+     "highlight": "Honkai: Star Rail",
+     "image": "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "url": "https://www.msn.com/en-us/entertainment/general/ellen-joe-is-still-an-ice-character-in-honkai-star-rail/ar-AA2gbeIN",
+     "weight": "lead"
     },
     {
-     "date": "2026-10-27",
-     "n": 2,
-     "source": "手机新浪网",
-     "title": "Twi: pupgutty #GL漫画[超话]##绝区零# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5ZMWN1Y3RNVE9ORjRoMm1sekpPMnJZYXdQbC1oYnBhVUY5eFRFcHl4TEZvMUhWcUlET28ydVZfNHAtN2hpX0pmeGJBN19kb2RTTklUMUpCaDg3dHFZRHBRaE1UQQ?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-26",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "绝区零联动星穹铁道，知更鸟这身紫色造型太戳人|星穹铁道|初音未来|绝区零|知更鸟",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1tVXBpQkJwSS1vV3liWm1mbDBlR25uazVKV3JKTmxMdkcySHZYS1dsMTYwODYtdGVhSjVia21sVkR5aXBuZnVxUHJOa2F0YmJTLWg5UG1aSXdmZXRJV0JiZjd6dw?oc=5"
+     "headline": "绝区零联动星穹铁道，知更鸟这身紫色造型太戳人",
+     "highlight": "",
+     "image": "http://wx4.sinaimg.cn/middle/005DZlpOly1iig74pp1h0j30sg14w7dn.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5358420049789759.html",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
