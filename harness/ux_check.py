@@ -133,8 +133,11 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     first = pg.evaluate(FIRST_JS)
     covered = []
     if width <= 560:   # 2026-10-27：右下の札が一番下の字を隠す。下までスクロールして札の矩形と重なる字の要素を数える
-        pg.evaluate("window.scrollTo(0,document.documentElement.scrollHeight)")
-        pg.wait_for_timeout(600)
+        for _ in range(8):   # 写真が読み込まれて高さが伸びるので、本当の底に着くまで（伸びが止まるまで）くり返す
+            pg.evaluate("window.scrollTo(0,document.documentElement.scrollHeight)")
+            pg.wait_for_timeout(700)
+            if pg.evaluate("innerHeight+scrollY>=document.documentElement.scrollHeight-2"):
+                break
         covered = pg.evaluate(COVER_JS)
         pg.evaluate("window.scrollTo(0,0)")
     pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
@@ -207,10 +210,11 @@ FIRST_JS = """()=>{const g=document.querySelector('.startgo,.wl-mine .go.big'),f
   links:document.querySelectorAll('.page a.startgo,.page .calm a,.wl-mine .go.big').length,shell:!!document.querySelector('.wl-mine .empty')}}"""
 
 
+# checkVisibility：閉じた <details> の中は箱があっても見えない
 # ページの一番下で、右下の札（.wl-auth）の矩形に重なる字の要素（札・通知・固定の部品を除く）。0 が正しい
 COVER_JS = """()=>{const f=document.querySelector('.wl-auth');if(!f)return [];const r=f.getBoundingClientRect();if(!r.width)return [];
  return [...document.querySelectorAll('body *')].filter(e=>!e.closest('.wl-auth,.wl-toast,.wl-live,.wl-gate,.wl-agree')&&[...e.childNodes].some(n=>n.nodeType===3&&n.data.trim())
-  &&getComputedStyle(e).visibility!=='hidden'&&getComputedStyle(e).position!=='fixed').filter(e=>{const b=e.getBoundingClientRect();
+  &&(!e.checkVisibility||e.checkVisibility({checkVisibilityCSS:true}))&&getComputedStyle(e).position!=='fixed').filter(e=>{const b=e.getBoundingClientRect();
   return b.width&&b.height&&b.left<r.right&&r.left<b.right&&b.top<r.bottom&&r.top<b.bottom}).slice(0,3).map(e=>(e.className||e.tagName)+':'+e.innerText.slice(0,12))}"""
 
 
