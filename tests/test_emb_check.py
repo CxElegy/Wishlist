@@ -137,12 +137,26 @@ class CloseupOfficial(unittest.TestCase):
                     self.assertIn("official", [k.arg for k in c.keywords], f"{f}:{c.lineno} find_bust に official がない")
         self.assertGreaterEqual(n, 3)
 
-    def test_gather_asks_official_first(self):
-        """名簿の取り方（gather）も公式の立ち絵を先に探す（Fandom より前）。"""
+    def test_every_gather_asks_official_first(self):
+        """名簿の取り方の全入口（gather・gather_wide・gather_pages・gather_roles）が official_cands を呼び、Fandom より前に置く。"""
+        import ast
         src = (pathlib.Path(__file__).resolve().parent.parent / "scripts" / "emblem_fill.py").read_text(encoding="utf-8")
-        g = src[src.index("\ndef gather(item"):src.index("\ndef gather_roles")]
-        self.assertIn("official_for", g)
-        self.assertLess(g.index("official_for"), g.index("cutout_on_page"))
+        tree = ast.parse(src)
+        fns = {f.name: f for f in tree.body if isinstance(f, ast.FunctionDef) and f.name.startswith("gather")}
+        want = {"gather", "gather_wide", "gather_pages", "gather_roles"}
+        self.assertTrue(want <= set(fns))
+        for n in want:
+            seg = ast.get_source_segment(src, fns[n])
+            self.assertIn("official_cands(", seg, f"{n} が公式を先に探していない")
+            for fandom in ("cutout_on_page(", "page_image(api", "role_images("):
+                if fandom in seg:
+                    self.assertLess(seg.index("official_cands("), seg.index(fandom), f"{n}：公式が {fandom} より後")
+
+    def test_fandom_over_official_counts(self):
+        items = [{"name": "A", "emblem_kind": "character", "emblem": [{"subject": "Ichigo", "why": "Ichigo（Fandom のページ）"}, {"subject": "Rukia", "why": "Rukia（Fandom のページ）"}, {"subject": "Ai", "why": "Ai（公式サイトの立ち絵）"}]},
+                 {"name": "B", "emblem_kind": "group", "emblem": [{"subject": "X", "why": "Fandom"}]}]
+        got = emb_check.fandom_over_official(official=lambda it, s: ["u"] if s in ("Ichigo", "Ai") else [], items=items)
+        self.assertEqual(got, {"A": ["Ichigo"]})
 
 
 if __name__ == "__main__":

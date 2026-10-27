@@ -16,6 +16,7 @@
   E10 届かない   main の state/emblem_progress.json（後台が書く本番の状態）で state=failed（目標の本数に届かず止まっている。残り 1 枚だけは除く。残りの人が全員「画像のない人」＝候補が尽きた版面〔exhausted〕は ✗ にせず、下の「情報」に名前を出す）
   E11 何人も     cutout に顔が 2 つ以上、2 番目がいちばん大きい顔の face_id.CROWD_RATIO 以上（取るときの写真の規則と同じ）
   E15 主役がいない  キャラ・グループの版面で、名簿（emblem_who）の先頭 3 人（点数が高い・リンクの多い人）に小元素がいない人（emblem_fill.head_missing と同じ式。店長の items.yaml。BLEACH Mirrors High の黒崎一護：転送ページの別の人が一護の画像を先に取っていた）
+  E21 公式があるのに Fandom から取った（情報）  名簿の人で、画像の出どころが Fandom なのに公式サイトに同じ人の立ち絵がある数。gather 系の全入口で公式が先かを実際の名簿で数える
   E19 公式があるのにアップのまま（情報：✗ にしない）  顔だけのアップ（fs > 0.5）が残る小元素の数と、そのうち公式サイトに同じ人の立ち絵（emblem.official_images）がある数を版面ごとに出す。公式が先の規則が gather・控え・入れ替えの全部の入口に効いているかの数え直し（0 に向かう）
   E20 胸像待ちが回っていない  state/emblem_closeup.json の待ちの人に「次に試す見込み」next がない・版面の見込み（emblem_closeup_eta.json）がない・毎回探す名簿の上位の next が 3 時間より古い（後台が回っていない）。close_plan の保存が全部の入口で効いているかの数え。お客さまの版面の分は boards.config.emblem_closeup（待ち）に emblem_closeup_next・_eta がないか・古いかを同じ式で数える（boards_closeup_bad）。入口が close_round を使うかは tests/test_emblem_fill.py も数える\n  E18 短い辺が小さい  cutout（全身 body は除く）の画像の短い辺 < SMALL_SIDE（256px。emblem.BUST_MIN_SIDE と同じ数。ぼやけて見える）。数を出す。入れ替えで下限未満にはしない（emblem.better_cut）
   E17 人でない名前   キャラの版面で、名簿（emblem_who）の先頭 10 人に種族・役割・名無し（Wyverians・Hunter・Traveler・Wonderland Manekin。emblem.NOT_CHAR と同じ式）がいる、または小元素の主題にいる
@@ -267,6 +268,23 @@ def closeup_left(official=None, items=None):
     return out
 
 
+def fandom_over_official(official=None, items=None):
+    """E21（情報）：名簿の上位（目標の枚数）の人のうち、画像を Fandom から取っているのに公式サイトに同じ人の立ち絵がある人
+    → {版面: [人]}。「公式が先」が名簿の取り方（gather 系の全部の入口）で効いているかを、実際の名簿で数える（0 に向かう）。
+    official(item, subject) → 網址のリスト（試験では差し替える）。"""
+    if official is None:
+        import emblem
+        official = lambda it, s: emblem.official_for(it, {"subject": s})
+    out = {}
+    for it in items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
+        if it.get("emblem_kind") != "character" or it.get("emblem_people"):
+            continue
+        bad = [x["subject"] for x in it.get("emblem") or [] if isinstance(x, dict) and "Fandom" in (x.get("why") or "") and official(it, x["subject"])]
+        if bad:
+            out[it["name"]] = bad
+    return out
+
+
 PROGRESS = "https://raw.githubusercontent.com/CxElegy/Wishlist/main/state/emblem_progress.json"
 
 
@@ -515,6 +533,13 @@ def check(pg, who, width, out, full=False, guest=False):
                   + "".join(f"\n    {k}：{v[0]} 枚・公式あり {v[1]}（{'・'.join(v[2][:4])}）" for k, v in cl.items()))
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E19 数えられなかった：{e}")
+    if guest:
+        try:
+            fo = fandom_over_official()
+            print(f"  情報 E21 公式サイトに立ち絵があるのに Fandom から取った人 {sum(len(v) for v in fo.values())} 人（{len(fo)} 版面）"
+                  + "".join(f"\n    {k}：{'・'.join(v[:4])}" for k, v in fo.items()))
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E21 数えられなかった：{e}")
     if guest and (ex := exhausted()):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
     if nf_why:
@@ -522,6 +547,6 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     return bad + (["E7・E11 顔のモデルなし（額の切れ・何人もは見ていない）"] if nomodel else [])

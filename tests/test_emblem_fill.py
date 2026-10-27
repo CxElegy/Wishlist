@@ -2154,6 +2154,18 @@ class FindSources(unittest.TestCase):
         self.assertEqual([c[0][1] for c in cut.call_args_list], ["Rukia Kuchiki"])   # Ichigo は Fandom に行かない
         self.assertEqual(g.call_count, 1)
 
+    def test_gather_wide_official_first(self):
+        """名前を広げる（gather_wide）も公式が先：公式で取れた人は Fandom の別名を引かない。"""
+        em = ef.emblem
+        em._OFFICIAL_HTML.clear()
+        item = {"name": "BLEACH", "type": "anime", "emblem_kind": "character", "site": "https://s.example/", "emblem_fandom": "bleach",
+                "emblem_who": ["Ichigo Kurosaki", "Rukia Kuchiki"]}
+        with mock.patch.object(em, "_get", return_value=b'<img src="/top/character/ichigo/body.webp">'), \
+                mock.patch.object(em, "page_image", side_effect=ValueError("none")) as pi:
+            cands = ef.gather_wide(item, log=lambda *a: None, tried={})
+        self.assertEqual([c["source"] for c in cands], ["公式サイト"])
+        self.assertFalse(any(c[0][1].startswith("Ichigo") for c in pi.call_args_list))
+
     def test_official_images_and_site(self):
         """胸像の入れ替えは公式サイトの立ち絵が先：パスに char… と名前の語が入るものだけ（-sp・サムネ・ロゴ・ほかのキャラは除く）。site がなければアイコンの出どころの網域。"""
         em = ef.emblem
