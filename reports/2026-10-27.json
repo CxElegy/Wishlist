@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "83b23be4b42d",
+ "edit_sig": "f3a8f20e5fd8",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
@@ -895,15 +895,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 6,
-     "source": "Dexerto",
-     "title": "Two Dota 2 Players Don’t Make it Home Following Tournament in Philippines, One Confirmed Deceased",
-     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOQVVVWldkR01DN3ZNMFhRMkhpNXQzTjdlYmQ5MFNCWVRaaXlRb2ZnTEdqOVphVDBWZmtvSmZYdVFuMGxRb08zNmx0a1Fsb2hpTWYyRU9iNHdtWHN6bFFfSFpDdlBEQ01sUHdUUFBKa2Nqay1nYlJvUDJxcGcxVnZqRTZjNkVBcWk4Q3cyM3I5eVlReDkydFA0Nl9vSkoyTGJocUJkOWN3Q3pURlIwMTJ3ckRjM2laNmswMjAxb3ExZm1uTURFMlJoaUtRVWY5amdX?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -944,6 +935,16 @@
      "image": "https://img.navi.gg/publications/2026/10/publications-12142/thumbnail/65132/1738x800_EN.png",
      "image_via": "转载 navi.gg",
      "url": "https://navi.gg/en/publications/predator-x-navi",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "Two Dota 2 Players Don’t Make it Home Following Tournament in Philippines, One Confirmed Deceased",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/thumbnails/_thumbnailLarge/One-player-dead-and-another-missing-after-Dota-tournament-in-Philippines.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/esports/two-dota-2-players-dont-make-it-home-following-tournament-in-philippines-one-confirmed-deceased-155628/",
      "weight": "normal"
     }
    ],
