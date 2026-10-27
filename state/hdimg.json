@@ -826,6 +826,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://foro3d.com/2026/octubre/imagenes/sunbringer-llega-a-zenless-zone-zero-con-tres-agentes-en-uno.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://gachapolitan.com/wp-content/uploads/2026/10/5671-1.jpg": {
   "w": 800,
   "h": 565,
@@ -2092,6 +2098,12 @@
  "https://news.dellows.jp/wp-content/uploads/2026/10/893817_1.jpg": {
   "w": 1024,
   "h": 499,
+  "target": 1280,
+  "v": 3
+ },
+ "https://news.denfaminicogamer.jp/wp-content/uploads/2026/10/HVmuJmVWsAAndQw.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -3464,25 +3476,6 @@
    1280
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.DOk64WaFvxmgMlxnbU23Sw&pid=News&w=300": {
-  "w": 300,
-  "h": 300,
-  "target": 720,
-  "v": 3,
-  "blur": 0.516,
-  "local": "pics/4d51533f60ffa0c6.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.EfKjFhm1fPg2aVKYu88knA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
