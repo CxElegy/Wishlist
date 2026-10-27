@@ -2245,7 +2245,7 @@ def broken_cuts(item):
             bad.append(x)
             continue
         b = x.get("body")
-        if too_small(im, bool(b)) and small < SMALL_DROP_MAX:   # 1 回に外す小さい画像は版面ごとに SMALL_DROP_MAX 枚まで（dota2 29・BLEACH 28 を一度に外すと版面が空く。補完が追いつく数ずつ）
+        if (too_small(im, bool(b)) or replace_nf(x)) and small < SMALL_DROP_MAX:   # 1 回に外す小さい画像は版面ごとに SMALL_DROP_MAX 枚まで（dota2 29・BLEACH 28 を一度に外すと版面が空く。補完が追いつく数ずつ）
             small += 1
             bad.append(x)
         elif broken_image(im, photo, whole=bool(b) and len(b) > 1 and b[1] <= 1):
@@ -2254,6 +2254,11 @@ def broken_cuts(item):
 
 
 SMALL_DROP_MAX = 8   # 前から入っている小さい画像を 1 回に外す上限（版面ごと）
+
+
+def replace_nf(x):
+    """顔なしの 3 分け（emblem_face.none_kind）で ③「絵として成り立たない」（向きを並べた図・小さすぎ）と測られた小元素 = 同じ人の別の絵に替える対象。固定（lock）と全身は替えない。broken_cuts とお客さまの版面（library_emblem.unbroken）が同じ。"""
+    return isinstance(x, dict) and x.get("nk") == "replace" and not x.get("lock") and not x.get("body")
 
 
 def too_small(im, body=False):
@@ -2275,7 +2280,7 @@ def broken_image(im, photo, whole=False):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 9   # 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 10   # 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 RULE_VERSION_NAMES = ("NAMES_V", "BROKEN_V")   # 規則の版は 1 か所：上がると失敗の待ちを解く（店長 material・お客さま library_emblem.due）。*_V を足したらここにも（tests が拦める）
 

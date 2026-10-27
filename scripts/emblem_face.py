@@ -10,6 +10,7 @@ items.yaml の emblem の 1 枚に `face: [fs, top, fx, mx, w, h]`：
 """
 
 import pathlib
+import re
 
 TARGET = 0.32     # 顔の高さ ÷ 枠の高さ。どの版面・どの欄でも、顔がこの大きさに見える（emblem.FACE_SHARE と同じ）
 EYE = 0.30        # 目の線は枠の上から 30%（一覧の並びで目の高さがそろう）
@@ -156,7 +157,7 @@ def measure(img):
     return [0, 0, 0.5, mx, w, h]
 
 
-NONE_V = 3   # 顔なしと測ったときの測り方の版（x["nfv"]）。測り方を上げたら数を上げる：古い版で顔なしの絵だけ 1 回測り直す（測り済みの絵は触らない）
+NONE_V = 4   # 4：顔なしの 3 分け（nk）と体の枠（bb）を書く。 3 以前： 顔なしと測ったときの測り方の版（x["nfv"]）。測り方を上げたら数を上げる：古い版で顔なしの絵だけ 1 回測り直す（測り済みの絵は触らない）
 
 
 def stale(x, size):
@@ -171,9 +172,12 @@ def _store(x, img):
     """測って x に書く（顔なしなら測り方の版 nfv も）。"""
     x["face"] = measure(img)
     if x["face"][0]:
-        x.pop("nfv", None)
+        for k in ("nfv", "nk", "bb"):
+            x.pop(k, None)
     else:
         x["nfv"] = NONE_V
+        x["nk"] = none_kind(img, x)
+        x["bb"] = body_box(img)
 
 
 NONE_REASONS = {"sheet": "向きを並べた図（顔が小さい）", "small": "顔らしい箱はあるが小さい・場所が合わない（全身が小さい）", "noface": "顔らしいものがない（怪物・武器・物・覆面）"}
@@ -200,6 +204,35 @@ def none_reason(img):
     if _is_sheet(np.array(img.getchannel("A")) > 128, w, h):
         return "sheet"
     return "small" if _boxes(img, weak=True) else "noface"
+
+
+BUST_MIN_SIDE = 256   # emblem.BUST_MIN_SIDE と同じ（emblem を import しない・試験で一致を見る）
+OBJECT_NAME = re.compile(r"(?:^|[/_\- ])(?:item|weapon|artifact|material|furnishing|logo|icon|emblem|badge|sword|shield)(?:[/_\-. ]|$)", re.I)
+NONE_KINDS = {"keep": "① 看板の姿（顔がないのが姿：怪物・仮面・兜）→ 残す。体の枠でそろえる",
+              "symbol": "② 物・ロゴ・アイテム → 作品の記号。体の枠でそろえる",
+              "replace": "③ 絵として成り立たない（設定資料の図・小さすぎ）→ 同じ人の別の絵に替える"}
+
+
+def none_kind(img, x=None):
+    """顔なし（measure の fs = 0）の絵の 3 分け → "keep"（①）/ "symbol"（②）/ "replace"（③）。NONE_KINDS。
+    ③ = 向きを並べた図（sheet）・短い辺が BUST_MIN_SIDE 未満。② = 名前が物・ロゴ（OBJECT_NAME）。それ以外（名前のあるキャラの顔なし）は ① = 看板の姿として残す。"""
+    import urllib.parse
+    if none_reason(img) == "sheet" or min(img.size) < BUST_MIN_SIDE:
+        return "replace"
+    x = x or {}
+    nm = urllib.parse.unquote(str(x.get("image") or "").split("?")[0].rsplit("/", 1)[-1]) + " " + str(x.get("subject") or "")
+    return "symbol" if logo_named(x) or OBJECT_NAME.search(nm) else "keep"
+
+
+def body_box(img):
+    """不透明な所（アルファ > 128）の外接枠 → [上, 下, 左, 右]（画像の高さ・幅に対する割合）。顔のない絵を、顔でなく体の枠でそろえるときの物差し（render の .nb）。"""
+    import numpy as np
+    a = np.array(img.convert("RGBA").getchannel("A")) > 128
+    h, w = a.shape
+    if not a.any():
+        return [0, 1, 0, 1]
+    ys, xs = np.where(a.any(axis=1))[0], np.where(a.any(axis=0))[0]
+    return [round(float(ys[0]) / h, 3), round(float(ys[-1] + 1) / h, 3), round(float(xs[0]) / w, 3), round(float(xs[-1] + 1) / w, 3)]
 
 
 def fit(face):
@@ -235,7 +268,6 @@ def view(face, frame_ar=FRAME_AR):
     return {"m": m, "ox": round(ox, 4), "oy": round(oy, 4), "w": round(w, 4), "flag": flag, "eye": round(oy + m * eye, 3)}
 
 
-import re
 LOGO_NAME = re.compile(r"logo|wordmark|ロゴ", re.I)
 
 

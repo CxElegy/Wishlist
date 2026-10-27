@@ -23,6 +23,8 @@
   E16 顔だけのアップ  cutout（全身 body は除く）の顔の幅 > 画像の幅の CLOSE_W（45%）か、顔の下端から下が高さの SHOULDER_MIN（15%）未満（emblem_fill.closeup_of と同じしきい値。ここは YuNet で測れたものだけ：アニメ絵の検出は取るときの規則だけ）。小元素は胸像（BLEACH の黒崎一護）
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
+  E22 顔なし ①② を体の枠でそろえていない  顔なしの cutout で nk が keep・symbol なのに a.nb（x.bb から render が作る）がない（render の .nb が効いていない）。
+  E17（続き）顔なしの 3 分け ①keep ②symbol ③replace の数（情報）も出す：emblem_face.none_kind。
   E17 顔が測れない理由別の数（情報：✗ にしない）  顔なし（測ったが顔がない：網页の nf）の cutout を emblem_face.none_reason の札で数える。sheet＝向きを並べた図・small＝顔らしい箱はあるが小さい・noface＝箱がない（怪物・武器・物・覆面）。測り方の足りない（見つかる顔を見落とした）ものを増やさないための数え直しの材料
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
                  （scripts/cutshape.py：取るときの emblem.trim_flat・drop_broken と同じ式。まっすぐでよいのは下の端だけ）
@@ -420,9 +422,10 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 21)}
+    found = {f"E{n}": [] for n in range(1, 21)} | {"E22": []}
     nomodel = False
     nf_why = {}   # E17：顔が測れない理由の札 → [版面 名前]
+    nf_kind = {}  # E17：顔なしの 3 分け（nk：keep ①・symbol ②・replace ③・? = まだ測り直していない）→ [版面 名前]
     src_of = sources()
     shots, embdir = [], out / "emb"
     if full:
@@ -448,6 +451,9 @@ def check(pg, who, width, out, full=False, guest=False):
                     found["E13"].append(f"{s['k']} {name}")   # 顔を測っていない（emblem_face.measure_item・library_emblem.measure_faces が回っていない）= 表示で顔の大きさがそろわない
                 if a.get("nf") and not a.get("body"):
                     nf_why.setdefault(emblem_face.none_reason(img), []).append(f"{s['k']} {name}")
+                    nf_kind.setdefault(a.get("nk") or "?", []).append(f"{s['k']} {name}")
+                    if not a.get("nb") and a.get("nk") in ("keep", "symbol"):
+                        found["E22"].append(f"{s['k']} {name}")   # ①②なのに体の枠（bb）でそろえていない
                 faces = _faces(img.convert("RGBA"))
                 nomodel |= faces is None
                 b = a.get("body")
@@ -550,10 +556,12 @@ def check(pg, who, width, out, full=False, guest=False):
         print(f"  情報：候補が尽きた版面（✗ にしない・1 日おきに見直す）{ex}")
     if nf_why:
         print(f"  情報 E17 顔が測れない {sum(map(len, nf_why.values()))} 枚の理由：" + "・".join(f"{k} {len(v)}（{emblem_face.NONE_REASONS[k]}）" for k, v in sorted(nf_why.items())))
+    if nf_kind:
+        print("  情報 E17 顔なしの 3 分け：" + "・".join(f"{k} {len(v)}（{emblem_face.NONE_KINDS.get(k, 'まだ 3 分けしていない：次の測り直し待ち').split('→')[0].strip()}）" for k, v in sorted(nf_kind.items())))
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     if DRIFT:
         bad.append(f"E7 順番しだい 検出器のしきい値が標準でない回が {len(DRIFT)} 回（{DRIFT[0]}）：変えた所が戻していない（emblem_face._boxes と同じ型）")
