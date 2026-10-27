@@ -579,6 +579,18 @@ def _tracking(log, tried):
     return out
 
 
+def official_cands(item, subj, cands, tried):
+    """名簿の取り方の全部の入口（gather・gather_wide・gather_pages・gather_roles）が、Fandom より先に呼ぶ 1 つの口。
+    公式サイトの立ち絵を cands に足し、足した枚数を返す（0 でなければ Fandom に行かない）。"""
+    n = 0
+    for u in emblem.official_for(item, {"subject": subj})[:2]:
+        tried["公式サイト"] = tried.get("公式サイト", 0) + 1
+        cands.append({"subject": subj, "image": u, "page": emblem.official_site(item), "source": "公式サイト",
+                      "why": f"{subj}（公式サイトの立ち絵）", "license": ""})
+        n += 1
+    return n
+
+
 def gather(item, log=print, tried=None):
     """種類に合わせて、上の順で候補を集める。→ [{subject, image, page, why, source, license, kind}]。
     tried（dict）を渡すと、試した取り方ごとの候補数を書き込む（進捗の記録用）。"""
@@ -676,7 +688,10 @@ def gather(item, log=print, tried=None):
     for subj in who:
         _check_time()
         got = 0
-        if kind == "character" and api and not item.get("emblem_people"):
+        if kind == "character" and not item.get("emblem_people"):
+            # 公式サイトの立ち絵が先（A17：公式が先、Fandom の場面画像は最後）。取れた人は Fandom に行かない
+            got += official_cands(item, subj, cands, tried)
+        if kind == "character" and api and not item.get("emblem_people") and not got:
             try:   # 先に、同じページの透明背景の立ち絵（ゲームの公式イラストなど）。代表画像は漫画のコマ・アニメの場面のことが多い
                 r = emblem.cutout_on_page(api, subj)
                 if r and page_owner(r[2], subj, item.get("emblem_who")):
@@ -1310,6 +1325,8 @@ def gather_roles(item, log=print, tried=None):
                               "why": f"{actor} 本人の写真（本人確認の基準。小元素には使わない）", "anchor": True, "anchor_only": True})
         except Exception as e:
             log(f"  [基準] {actor}：{e}")
+        if role:   # 公式サイトの役の絵も候補に（顔で出演者本人かは後で確かめる。Fandom を飛ばさない）
+            official_cands(item, subj, cands, tried)
         if role and api:
             try:   # 出演者の記事の役の写真（この作品のこの役者の役の姿。役の記事は前の作品の役者のことがある）
                 rows = actor_role_images(api, actor, role)
@@ -1417,6 +1434,8 @@ def gather_wide(item, log=print, tried=None):
     for subj in who:
         _check_time()
         if kind == "character" and not item.get("emblem_people"):
+            if official_cands(item, subj, cands, tried):   # 公式が先：取れた人は Fandom に行かない
+                continue
             if api:   # 絵のキャラ：Fandom のページ名の別の書き方（名だけ・(character) つき）
                 for t in {subj.split()[0], f"{subj} (character)"} - {subj}:
                     try:
@@ -1474,6 +1493,8 @@ def gather_pages(item, log=print, tried=None):
             log(f"  [公式サイト] {e}")
     for subj in who:
         _check_time()
+        if kind == "character" and not item.get("emblem_people"):
+            official_cands(item, subj, cands, tried)   # 公式の立ち絵は og:image より先
         mine = [r for r in site_imgs if relevant(r["image"].rsplit("/", 1)[-1], subj)] if len(who) > 1 else site_imgs[:8]
         add(subj, mine, "公式サイト", f"{subj}（公式サイトの画像）")
         rows = []

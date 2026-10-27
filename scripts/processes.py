@@ -223,7 +223,7 @@ PROCESSES = [
         "schedule": "gate", "when": "ゲートが仕事ありのとき · 6 本並列 · 3 段 · AI なし",
         "trigger": "後台のゲート（毎時・収集のあと）が「足りない版面がある」と判断したとき。GitHub Actions で Python だけで動く",
         "summary": "目標に届いていない版面の小元素を、足りない順に 4 本並列で埋める。前は Claude が目で見ていた判断（別人・遠景・集合写真・"
-                   "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。顔だけのアップの胸像への入れ替えは公式サイトの立ち絵が先（入口は 3 つとも同じ official_for：取るときの fit_all・例外時の控え・後の入れ替え bust_replacement。点検 E19 が残りを数える）。胸像待ちは名簿の上位 12 人を毎回（1 回 8 人の巡回に入れない）、見込み「N 人・次の回 HH:MM・外すまであと約 N 回」（close_eta）を管理ページの小元素と emb_check に出す（official_images：site かアイコンの出どころの網域のトップにある char… のパスの絵）・Fandom の場面画像は最後・質の下限つき（短い辺 256px 以上・元より悪くしない：bust 札）。",
+                   "切り抜きの穴・重複）は全部規則にしたので、AI は使わない。取れなかった版面は理由ごとに助言を出す。名簿の取り方（gather・gather_wide・gather_pages・gather_roles の全部）も公式サイトの立ち絵が先（入口は official_cands 1 つ）で、取れた人は Fandom に行かない（点検 E21 が実際の名簿で数える）。顔だけのアップの胸像への入れ替えも公式の立ち絵が先（入口は 3 つとも同じ official_for：取るときの fit_all・例外時の控え・後の入れ替え bust_replacement。点検 E19 が残りを数える）。胸像待ちは名簿の上位 12 人を毎回（1 回 8 人の巡回に入れない）、見込み「N 人・次の回 HH:MM・外すまであと約 N 回」（close_eta）を管理ページの小元素と emb_check に出す（official_images：site かアイコンの出どころの網域のトップにある char… のパスの絵）・Fandom の場面画像は最後・質の下限つき（短い辺 256px 以上・元より悪くしない：bust 札）。",
         "files": ["scripts/emblem_fill.py", "scripts/emblem.py", "scripts/face_id.py", "scripts/emblem_face.py", "scripts/emblem_rules.py", "scripts/emblem_fame.py", ".github/workflows/background.yml"],
         "doc": "TEMPLATES.md", "rules": "emblem",
         "uses": ["bust", "owner", "facefit", "roster", "rembg", "yunet", "sface", "facerule", "holes", "wiki", "wikiua", "httpcache", "fandom"],
