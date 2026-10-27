@@ -48,6 +48,19 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261026ac/200/w640h360/20261026/bad8-a850b02eb99f532c72ec846dfd4eb152.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.445,
+  "local": "pics/2cffde8141cd6c2b.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
   "w": 640,
   "h": 360,
@@ -102,19 +115,6 @@
   "out": [
    898,
    1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx2.sinaimg.cn/middle/008kvqgEgy1ii8qmuwbrfj31hc0u01kx.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3,
-  "local": "pics/cbaf8705105576dd.webp",
-  "out": [
-   1280,
-   720
   ],
   "why": "防盗链",
   "ref": true
@@ -1702,19 +1702,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/6da94d65020c72a9.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1979,19 +1966,6 @@
   "h": 628,
   "target": 720,
   "v": 3
- },
- "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
-  "w": 664,
-  "h": 497,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.436,
-  "local": "pics/f6555c6989a7b066.webp",
-  "out": [
-   1280,
-   958
-  ],
-  "why": "看不清"
  },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
   "w": 650,
@@ -3395,6 +3369,25 @@
   "h": 630,
   "target": 720,
   "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/27/1793087289997_smartphone-co-camera-selfie-100mp-galaxy-s27-ultra-va-iphone-20-doi-dau-ra-sao-1442.png": {
+  "w": 1200,
+  "h": 642,
+  "target": 1280,
+  "v": 3
+ },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "w": 647,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/9a1ea62ec61eeb92.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,

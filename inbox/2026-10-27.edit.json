@@ -91,7 +91,7 @@
   "A2O LITE": 37,
   "The Mandalorian": 11,
   "日本顶级网球赛事": 49,
-  "三星手机": 23,
+  "三星手机": 30,
   "gelato pique": 13,
   "ILLIT": 39,
   "MMORPG 新作": 11,
@@ -428,7 +428,8 @@
     10,
     15,
     16,
-    23
+    23,
+    30
    ],
    "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/samsung-galaxy-s27.jpg"
   },
@@ -464,7 +465,8 @@
     13,
     14,
     17,
-    21
+    21,
+    24
    ]
   },
   {
@@ -493,6 +495,17 @@
    "weight": "normal",
    "refs": [
     19
+   ]
+  },
+  {
+   "headline": "1億画素のセルフィーカメラを搭載したスマートフォン：Galaxy S27 UltraとiPhone 20はどのように競合するのか？",
+   "highlight": "1億画素",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    28,
+    25,
+    26
    ]
   }
  ],
