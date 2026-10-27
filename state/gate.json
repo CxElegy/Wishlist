@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-27T22:49:04+00:00",
+ "checked": "2026-10-27T22:55:09+00:00",
  "fired": {
-  "at": "2026-10-27T22:49:05+00:00",
+  "at": "2026-10-27T23:01:12+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -20,43 +20,34 @@
     "sig": "319e9b702d29"
    },
    "items": [
-    "FROM",
-    "ILLIT",
-    "チェーンソーマン",
-    "周杰伦",
-    "滑雪",
-    "猫用品"
+    "周杰伦"
    ],
-   "last_batch": "2026-10-27T21:26:57+00:00",
+   "last_batch": "2026-10-27T22:42:59+00:00",
    "last_error": {
-    "at": "2026-10-27T20:58:53+00:00",
+    "at": "2026-10-27T22:39:28+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 151,
+   "prog": 158,
    "prog_day": "2026-10-28",
    "ripe": [
-    "FROM",
-    "ILLIT",
-    "チェーンソーマン",
-    "滑雪",
-    "猫用品"
+    "周杰伦"
    ],
-   "sig": "319e9b702d29",
+   "sig": "fae4d470aa21",
    "token_cap": 1000000,
-   "tokens_today": 162671,
-   "why": "整理待ちの記事 8 件（6 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 211260,
+   "why": "整理待ちの記事 1 件（1 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "dota2"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "16311e037971",
    "waiting": [
-    "チェーンソーマン",
-    "dota2",
     "FROM",
     "あつ森",
     "周杰伦",
@@ -71,7 +62,7 @@
     "Astrae Oratio",
     "A2O LITE"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 07:53 から）"
+   "why": "足りない 3 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:05 から）"
   },
   "photos": {
    "claude": true,
