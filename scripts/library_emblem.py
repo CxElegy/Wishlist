@@ -314,7 +314,7 @@ def stage_holds(item, emblems, hold, pend, fetch=None):
             url, cut, fs = swapped[x["subject"]]
             slug = emblem.slugify(item["name"], x["subject"]) + "-bust"
             emblem.save_cut(cut, slug)
-            y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar")}
+            y = {k: v for k, v in x.items() if k not in emblem.EMBLEM_MEASURED}
             y.update(emblem_fill.bust_fields(item, x, url, slug, fs))
             rows.append(y)
         elif not any(x is d for d in dropped):
@@ -587,7 +587,7 @@ def main(argv):
     for b in boards:   # 顔を測っていない小元素のある版面（前に作ったもの）を測る。1 回済めば次からは何もしない
         if end - time.time() < PER_BOARD_S:
             break
-        if emblem_face.unmeasured(cfg(b).get("emblem")):
+        if emblem_face.unmeasured(cfg(b).get("emblem")) or emblem_face.none_stale(cfg(b).get("emblem")):   # nk・bb が欠けた顔なしも（face はあるので unmeasured に数えない）
             try:
                 em, n = measure_faces(cfg(b).get("emblem"))
             except Exception:  # noqa: BLE001

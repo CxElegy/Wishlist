@@ -168,6 +168,11 @@ def stale(x, size):
     return f[0] == 0 and (x.get("nfv") != NONE_V or not x.get("nk") or not x.get("bb"))   # nk・bb が欠けた顔なしも測り直す（書き戻しで落ちていた分）
 
 
+def none_stale(emblems):
+    """顔なしと測ったのに nk・bb が欠けている（書き戻しで落ちた）小元素の数。face はあるので unmeasured には数えない＝これも見て測り直す。"""
+    return sum(1 for x in emblems or [] if isinstance(x, dict) and isinstance(x.get("face"), list) and x["face"][:1] == [0] and not (x.get("nk") and x.get("bb")))
+
+
 def _store(x, img):
     """測って x に書く（顔なしなら測り方の版 nfv も）。"""
     x["face"] = measure(img)

@@ -24,7 +24,7 @@
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
   E22 顔なし ①② を体の枠でそろえていない  顔なしの cutout で nk が keep・symbol なのに a.nb（x.bb から render が作る）がない（render の .nb が効いていない）。
-  E23 測ったキーが落ちた  店長の items.yaml で nfv（顔なしを測った版）があるのに nk か bb がない小元素（_store が書いたキーが emblem.EMBLEM_KEEP から漏れた印。0 であること）。
+  E23 測ったキーが落ちた  店長の items.yaml とお客さまの版面（boards.config.emblem）で nfv（顔なしを測った版）があるのに nk か bb がない小元素（_store が書いたキーが emblem.EMBLEM_KEEP から漏れた印。0 であること）。
   E17（続き）顔なしの 3 分け ①keep ②symbol ③replace の数（情報）も出す：emblem_face.none_kind。
   E17 顔が測れない理由別の数（情報：✗ にしない）  顔なし（測ったが顔がない：網页の nf）の cutout を emblem_face.none_reason の札で数える。sheet＝向きを並べた図・small＝顔らしい箱はあるが小さい・noface＝箱がない（怪物・武器・物・覆面）。測り方の足りない（見つかる顔を見落とした）ものを増やさないための数え直しの材料
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
@@ -265,6 +265,11 @@ def dropped_keys(items=None):
     items = items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", [])
     return [f"{it['name']} {x.get('subject')}" for it in items for x in it.get("emblem") or []
             if isinstance(x, dict) and x.get("nfv") == emblem_face.NONE_V and not (x.get("nk") and x.get("bb"))]
+
+
+def boards_dropped_keys(rows):
+    """E23 のお客さまの版面の分：boards の行 [{name, config}] の config.emblem に、dropped_keys と同じ壊れ方（nfv があるのに nk・bb がない）→ [版面 主題]。"""
+    return [line for r in rows for line in dropped_keys([{"name": r.get("name"), "emblem": (r.get("config") or {}).get("emblem")}])]
 
 
 def closeup_left(official=None, items=None):
@@ -549,6 +554,10 @@ def check(pg, who, width, out, full=False, guest=False):
         found["E17"] = [f"{k} {'・'.join(v)}" for k, v in not_people().items()]
     if guest:
         found["E23"] = dropped_keys()
+        try:
+            found["E23"] += [f"お客さま {s}" for s in boards_dropped_keys(boards_rows())]   # boards.config.emblem（店長と同じ壊れ方がお客さまの版面にも）
+        except Exception as e:  # noqa: BLE001
+            print(f"  情報 E23 お客さまの版面を数えられなかった：{e}")
     if guest:
         try:
             cl = closeup_left()

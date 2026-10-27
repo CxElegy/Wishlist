@@ -488,6 +488,8 @@ def write_item(name, emblems, th):
 
 
 # items.yaml に書き戻す小元素のキー。emblem_face._store が書くもの（face・nfv・nk・bb）を落とすと次の回で測り直しが終わらない（2026-10-27：nk・bb が落ちて点検が「? 10」のまま）。ここ 1 か所
+# 画像を替えたとき捨てる測り値（新しい絵を測り直す）。EMBLEM_KEEP の中の「測った値」の 1 か所（emblem_fill の 2 か所・library_emblem が使う）
+EMBLEM_MEASURED = ("face", "fs", "crop", "upper", "ar", "nfv", "nk", "bb")
 EMBLEM_KEEP = ("subject", "why", "image", "source", "page", "shape", "crop", "ar", "upper", "framing", "body", "work", "plate", "fs", "lock", "face", "nfv", "nk", "bb")
 
 
