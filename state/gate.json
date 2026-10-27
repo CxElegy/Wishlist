@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-27T16:55:38+00:00",
+ "checked": "2026-10-27T17:01:09+00:00",
  "fired": {
   "at": "2026-10-27T16:04:54+00:00",
   "results": {
@@ -37,12 +37,12 @@
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "GTA 6"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "e780661c1c57",
    "waiting": [
-    "GTA 6",
     "FROM",
     "漫威电影",
     "あつ森",
@@ -58,7 +58,7 @@
     "A2O LITE",
     "ILLIT"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 02:00 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 02:22 から）"
   },
   "photos": {
    "claude": true,
