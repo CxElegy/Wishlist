@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-27T08:05:01+00:00",
+ "checked": "2026-10-27T08:26:35+00:00",
  "fired": {
-  "at": "2026-10-27T08:11:42+00:00",
+  "at": "2026-10-27T08:26:35+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -20,60 +20,67 @@
     "sig": "6fdc2b1b1012"
    },
    "items": [
+    "A2O LITE",
+    "ILLIT",
     "MMORPG 新作",
+    "The Mandalorian",
     "dota2",
     "gelato pique",
+    "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "日本顶级网球赛事",
     "滑雪",
     "漫威电影",
+    "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-10-27T08:00:59+00:00",
+   "last_batch": "2026-10-27T08:14:41+00:00",
    "last_error": {
     "at": "2026-10-27T06:46:33+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 346,
+   "prog": 359,
    "prog_day": "2026-10-27",
    "ripe": [
+    "A2O LITE",
+    "ILLIT",
     "MMORPG 新作",
-    "周杰伦",
+    "三星手机",
     "日本顶级网球赛事",
-    "绝区零"
+    "漫威电影"
    ],
-   "sig": "2941ab34f3b8",
+   "sig": "d93da104dec8",
    "token_cap": 1000000,
-   "tokens_today": 486162,
-   "why": "整理待ちの記事 24 件（9 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 497307,
+   "why": "整理待ちの記事 37 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "あつ森",
-    "FROM"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "e34d6414e818",
+   "sig": "b6804aff6de5",
    "waiting": [
-    "チェーンソーマン",
-    "Vaundy",
-    "ぐでたま",
     "哈利波特剧集",
-    "周杰伦",
     "dota2",
     "GTA 6",
-    "漫威电影",
-    "ILLIT",
-    "Astrae Oratio",
-    "The Mandalorian",
+    "あつ森",
+    "FROM",
+    "Vaundy",
+    "周杰伦",
+    "チェーンソーマン",
     "A2O LITE",
-    "绝区零"
+    "ILLIT",
+    "ぐでたま",
+    "漫威电影",
+    "Astrae Oratio",
+    "绝区零",
+    "The Mandalorian"
    ],
-   "why": "足りない 3 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:06 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:28 から）"
   },
   "photos": {
    "claude": true,
