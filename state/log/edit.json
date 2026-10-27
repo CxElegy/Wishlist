@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-26T09:43:51+00:00",
-"text": "2026-10-26 第 2 バッチを出刊：绝区零（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 3,007・キャッシュ読み 45.2万・出力 1,316",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.22,
-"mem_total": 16872804352,
-"mem_free": 15958908928,
-"disk_used": 10832089088,
-"disk_free": 30451081216,
-"disk_total": 41283170304,
-"peak": 269930496
-},
-"batch": 2,
-"boards": [
-"绝区零"
-],
-"stories": 1,
-"left": 0,
-"edited": 21,
-"run": 1793006723.1780362,
-"tok": {
-"in": 12,
-"cw": 2995,
-"cr": 452426,
-"out": 1316,
-"calls": 6,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 456749,
-"secs": 1109,
-"run_tok": {
-"in": 38,
-"cw": 48959,
-"cr": 1308797,
-"out": 4562,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-26T10:39:27+00:00",
 "text": "2026-10-26 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT ほか 17（23 版面・64 本・今日の整理待ちは全部終わり） · token 新規入力 4.3万・キャッシュ読み 49.4万・出力 1,873",
 "level": "ok",
@@ -1926,5 +1885,10 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 2087334
+},
+{
+"at": "2026-10-27T13:07:01+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
