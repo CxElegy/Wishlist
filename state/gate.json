@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-27T04:43:35+00:00",
+ "checked": "2026-10-27T04:44:50+00:00",
  "fired": {
-  "at": "2026-10-27T04:23:44+00:00",
+  "at": "2026-10-27T04:58:18+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,53 +12,73 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-27T03:41:01+00:00",
+    "at": "2026-10-27T04:58:18+00:00",
     "attempts": 1,
     "day": "2026-10-27",
-    "prog": 273,
-    "resp": "cse_01W4x6f8NMruuhqCQQpyh2b9",
-    "sig": "d760e8e2c651"
+    "prog": 281,
+    "resp": "cse_01W4x6f66JfDf6av3N7wwHZM",
+    "sig": "4fa5dd6229e2"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影"
+   ],
    "last_batch": "2026-10-27T04:22:59+00:00",
    "last_error": {
     "at": "2026-10-27T03:48:40+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 281,
    "prog_day": "2026-10-27",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "漫威电影"
+   ],
+   "sig": "4fa5dd6229e2",
    "token_cap": 1000000,
    "tokens_today": 369480,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 37 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "dota2",
+    "あつ森",
     "哈利波特剧集",
+    "漫威电影",
+    "GTA 6",
+    "A2O LITE",
     "Vaundy",
     "周杰伦",
+    "ILLIT",
     "ぐでたま"
    ],
    "need": true,
-   "sig": "cde2bc871630",
+   "sig": "63811cb72e0f",
    "waiting": [
-    "あつ森",
-    "dota2",
-    "GTA 6",
     "FROM",
-    "漫威电影",
-    "チェーンソーマン",
     "绝区零",
     "Astrae Oratio",
-    "A2O LITE",
-    "The Mandalorian",
-    "ILLIT"
+    "The Mandalorian"
    ],
-   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 14:33 から）"
+   "why": "足りない 12 版面（Actions で Python が埋める）・失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 14:43 から）"
   },
   "photos": {
    "claude": true,
