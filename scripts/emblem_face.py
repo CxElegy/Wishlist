@@ -95,7 +95,10 @@ def _boxes(img, weak=False):
             det = eng[0]
             det.setInputSize((a.shape[1], a.shape[0]))
             det.setScoreThreshold(WEAK_YUNET if weak else 0.5)
-            _, f = det.detect(a)
+            try:
+                _, f = det.detect(a)
+            finally:
+                det.setScoreThreshold(face_id.SCORE)   # 戻す：共有の検出器に残すと forehead_cut・E7 の判定が前の測りしだいで変わる（2026-10-27：Gin Ichimaru ほか 7 枚）
             out += sorted(((r[0] / s - q, r[1] / s - q, r[2] / s, r[3] / s) for r in (f if f is not None else [])), key=lambda b: -b[2] * b[3])
     except Exception:
         pass

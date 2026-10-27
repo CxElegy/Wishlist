@@ -174,3 +174,22 @@ class Anime(unittest.TestCase):
                     self.assertEqual(ef.measure(self.img(x["image"].split("/", 1)[1])), f, x["image"])
                     n += 1
         self.assertGreaterEqual(n, 5)
+
+
+class Threshold(unittest.TestCase):
+    """検出器のしきい値は、共有の 1 つを書き換えた人が戻す（2026-10-27：_boxes が 0.5・0.32 のまま残し、額切れ forehead_cut・点検 E7 が前の測りしだいで変わった：Gin Ichimaru ほか 7 枚）。"""
+
+    def test_every_set_is_restored_to_the_default(self):
+        import re
+        sets = {p.name: len(re.findall(r"setScoreThreshold\(", p.read_text(encoding="utf-8"))) for p in (ROOT / "scripts").glob("*.py")}
+        sets = {k: v for k, v in sets.items() if v}
+        self.assertEqual(sets, {"emblem_face.py": 2})   # 変える所（1）と戻す所（2）だけ。増やすなら戻し方もここに足す
+        self.assertIn("setScoreThreshold(face_id.SCORE)", (ROOT / "scripts" / "emblem_face.py").read_text(encoding="utf-8"))
+
+    @unittest.skipUnless(_models(), "顔のモデルが手元にない")
+    def test_weak_boxes_leave_the_detector_at_default(self):
+        import face_id
+        from PIL import Image
+        ef._boxes(Image.new("RGBA", (120, 120), (200, 120, 90, 255)), weak=True)
+        self.assertAlmostEqual(face_id.engine()[0].getScoreThreshold(), face_id.SCORE, places=5)
+

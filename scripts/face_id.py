@@ -35,6 +35,9 @@ def _models():
     return CACHE / "yunet.onnx", CACHE / "sface.onnx"
 
 
+SCORE = 0.8   # 検出器のしきい値の標準。変えた人は必ず戻す（検出器はスレッドで 1 つ共有。戻さないと、あとの額切れ・顔の数えが前の測りの残りで変わる）
+
+
 def engine():
     """→ (detector, recognizer) か None（OpenCV がない・モデルを取れない）。
     スレッドごとに別のものを作る：検出器は setInputSize → detect の間に状態を持つので、6 本並列の後台で共有すると Segmentation fault で落ちた（#433 のあと）。"""
@@ -44,7 +47,7 @@ def engine():
     try:
         import cv2
         det_p, rec_p = _models()
-        det = cv2.FaceDetectorYN.create(str(det_p), "", (320, 320), 0.8, 0.3, 5000)
+        det = cv2.FaceDetectorYN.create(str(det_p), "", (320, 320), SCORE, 0.3, 5000)
         rec = cv2.FaceRecognizerSF.create(str(rec_p), "")
         _engine[key] = (det, rec)
     except Exception:
