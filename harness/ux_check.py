@@ -326,8 +326,18 @@ def check_admin_pages(pw, base, width, out):
             if ey["off"]:
                 bad.append(f"{f} E16 目の線がずれた小元素 {ey['off']} 枚（{ey['n']} 枚中。札 short {ey['short']} 枚は別）")
             print(f"  [管理ページ小元素] 顔そろえの置き方 {ey['n']} 枚・目の線ずれ {ey['off']}・札 short {ey['short']}")
+        cov = []
+        if width <= 560:   # 2026-10-27：管理ページ 7 枚も右下の札が一番下の字を隠さない（最初の画面・設定と同じ規則）
+            for _ in range(6):
+                pg.evaluate("window.scrollTo(0,document.documentElement.scrollHeight)")
+                pg.wait_for_timeout(500)
+                if pg.evaluate("innerHeight+scrollY>=document.documentElement.scrollHeight-2"):
+                    break
+            cov = pg.evaluate(COVER_JS)
+            pg.evaluate("window.scrollTo(0,0)")
         pg.screenshot(path=str(out / f"{f[:-5]}-{width}.png"))
         pg.close()
+        bad += [f"{f} {m}" for m in cover_bad(cov)]
         if not r or r.status != 200:
             bad.append(f"{f} が開けない（{r.status if r else '?'}）")
             continue
