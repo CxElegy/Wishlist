@@ -1,32 +1,32 @@
 {
- "admin": "49e2197a1af2",
- "admin-ai": "539229ca7d38",
+ "admin": "2665fca87cf6",
+ "admin-ai": "339c60479073",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f29290d8"
+   "2978acce"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "cd267808"
+   "6cf1cbee"
   ]
  },
- "admin-boards": "c2ec5b0c807a",
+ "admin-boards": "2d03cdaf20a6",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "f5786c39"
+   "8df43ad7"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "a78611406671",
+ "admin-emblem": "02620d024110",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "87d96170"
+   "429b2311"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "e3faa531"
+   "a9ec640c"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "f4af677e2fb4",
+ "admin-now": "cf84f77de76b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e261f48b"
+   "c2287322"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "9f4bbe85"
+   "7d990f83"
   ],
   "term-panel": [
    "ライブログ",
-   "0717cd7d"
+   "ff840b2d"
   ]
  },
- "admin-system": "299d241d2811",
+ "admin-system": "08a59c464d43",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9e68ff01"
+   "5080e6c7"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "e9f64c7b"
+   "3075e6d7"
   ]
  },
  "admin_marks": {},
- "heat": "cede77a1f900",
+ "heat": "aaaf4b646293",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "71c92dc1"
+   "e82915ac"
   ],
   "ranking": [
    "ランキング",
-   "aa08b6e7"
+   "f1afc0ed"
   ]
  },
- "index": "eca0e5f5f495",
+ "index": "1ff7afaee52e",
  "index_marks": {
   "front": [
    "トップ",
-   "5a81b981"
+   "4e61c84c"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "f20e35fe"
+   "e30013aa"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "a1ca4c99"
+   "cc2b41c4"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "e015cf97"
+   "d3dab5b7"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "eba6dfc8"
+   "6d553367"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "18fa98fc"
+   "b43d0a76"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "4773a13a"
   ]
  },
- "updated": "10.28 02:40",
+ "updated": "10.28 02:49",
  "wishlist": "bd867b9214b2"
 }
