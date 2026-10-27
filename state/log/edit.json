@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-25T20:34:09+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-25T20:37:01+00:00",
 "text": "2026-10-26 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作 ほか 10（16 版面・15 本・今日の整理待ちは全部終わり） · token 新規入力 5.0万・キャッシュ読み 86.8万・出力 4,347",
 "level": "ok",
@@ -1929,5 +1924,37 @@
 "at": "2026-10-27T06:46:33+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
+},
+{
+"at": "2026-10-27T06:51:04+00:00",
+"text": "2026-10-27 第 1 バッチを出刊：あつ森（1 版面・0 本・残り 4 版面） · token 新規入力 4.8万・キャッシュ読み 102.9万・出力 3,352",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.22,
+"mem_total": 16872812544,
+"mem_free": 15936974848,
+"disk_used": 10838147072,
+"disk_free": 30484361216,
+"disk_total": 41322508288,
+"peak": 308322304
+},
+"batch": 1,
+"boards": [
+"あつ森"
+],
+"stories": 0,
+"left": 4,
+"edited": 21,
+"run": 1793083187.0570545,
+"tok": {
+"in": 30,
+"cw": 47954,
+"cr": 1028752,
+"out": 3352,
+"calls": 15,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1080088
 }
 ]
