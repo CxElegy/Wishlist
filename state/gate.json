@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-27T10:27:11+00:00",
+ "checked": "2026-10-27T10:43:15+00:00",
  "fired": {
-  "at": "2026-10-27T10:27:11+00:00",
+  "at": "2026-10-27T10:43:15+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -50,27 +50,27 @@
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "dota2",
-    "あつ森",
-    "FROM"
-   ],
-   "need": true,
-   "sig": "8e39c8b6cf69",
-   "waiting": [
+    "チェーンソーマン",
+    "漫威电影",
     "周杰伦",
     "Vaundy",
-    "漫威电影",
-    "チェーンソーマン",
-    "ぐでたま",
+    "ぐでたま"
+   ],
+   "need": true,
+   "sig": "3258db27b3ee",
+   "waiting": [
     "GTA 6",
     "哈利波特剧集",
+    "あつ森",
+    "FROM",
+    "dota2",
     "Astrae Oratio",
     "绝区零",
     "The Mandalorian",
     "A2O LITE",
     "ILLIT"
    ],
-   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:35 から）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 10 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:47 から）"
   },
   "photos": {
    "claude": true,
