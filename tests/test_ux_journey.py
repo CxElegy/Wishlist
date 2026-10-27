@@ -56,6 +56,26 @@ class Press(unittest.TestCase):
         self.assertNotEqual(title, "pushed")
 
 
+class ImgFail(unittest.TestCase):
+    @unittest.skipUnless(sync_playwright, "playwright がない")
+    def test_removed_photo_is_recorded_even_after_document_open(self):
+        # お客さまのページは me.html が document.open で書き替える。error の聞き手が消えても、外された写真の網址は残る（test-a の頭の誤判定）
+        with sync_playwright() as pw:
+            try:
+                b = pw.chromium.launch()
+            except Exception as ex:  # noqa: BLE001
+                self.skipTest(f"ブラウザがない：{ex}")
+            pg = b.new_page()
+            pg.add_init_script(ux_check.FAIL_JS)
+            pg.goto("data:text/html,<p>x</p>")
+            pg.evaluate("()=>{document.open();document.write('<section class=\"sec\" data-k=\"K\"><div class=\"pic\"><img src=\"http://x.invalid/a.jpg\"></div></section>');document.close()}")
+            pg.evaluate("()=>document.querySelector('.pic').remove()")
+            pg.wait_for_timeout(200)
+            fails = pg.evaluate("window.__imgFail")
+            b.close()
+        self.assertIn(["K", "http://x.invalid/a.jpg"], fails)
+
+
 class Copy(unittest.TestCase):
     def test_wait_regex_knows_the_current_copy(self):
         """空の最初の画面の言い回しを user_pages が変えたら、通しが黙って壊れる前にここで落ちる。"""

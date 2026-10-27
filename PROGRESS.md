@@ -146,3 +146,4 @@
 2026-10-27 r4：スマホ右下の札が一番下の字を隠さない（≤560px の body 下 72px＋ux_check COVER_JS）：https://github.com/CxElegy/Wishlist/pull/577 ・#578（点検の誤検出〔閉じた details〕を直した）。本番 ux_check guest・test-a・test-b ✗0。次：561〜760px を右下にそろえるかをユーザーに聞く
 2026-10-27 f6：SETTINGS_ZH/JA の鍵そろえを試験で止める：https://github.com/CxElegy/Wishlist/pull/582 。全試験 1012 通過・CI 緑・合併。次：render.render の共通部分の日本語の直書き。
 2026-10-27 r4f1：スマホ右下の札の続き（管理ページ 7 枚の点検・殻の safe-area 統一・試作 2 枚）：https://github.com/CxElegy/Wishlist/pull/583 。全試験 1012 通過・CI 緑・合併。本番 ux_check 390 guest/test-a ✓・管理 7 枚 390/560 ✗0。次：ux_check の --fast（全部だと 25 分超）。
+2026-10-27 f1 ux_check --fast（札・枠組みだけ 2 枚×4 人×2 幅）＋お客さまのページの外れた写真を数え損ねる誤判定を直す。PR #587＋次の PR。確かめ：本番 --fast 手元 5 分 50 秒。次：頭の写真が 404 の版面（test-a 大谷翔平・大相撲）を焼く時に除く

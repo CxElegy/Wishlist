@@ -67,7 +67,12 @@ def session(email):
 # 2026-10-27：手元の回線（点検の箱のプロキシ）だけで開けない写真を ✗ に数えない。ブラウザで開けなかった写真を、
 # ブラウザと同じ頭で取り直して画像が返れば「サイトの欠陥ではない」（AOL・Yahoo の写真が guest・test-a の版面の頭で ✗ になった）
 FAIL_JS = ("window.__imgFail=[];addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.src&&!t.classList.contains('bg')){"
-           "var s=t.closest('section.sec');window.__imgFail.push([s?s.dataset.k:'トップ',t.src])}},true)")
+           "var s=t.closest('section.sec');window.__imgFail.push([s?s.dataset.k:'トップ',t.src])}},true);"
+           # お客さまのページは me.html が document.open で書き替えるので、上の error の聞き手が消える（2026-10-27：test-a の頭が「写真なし」と
+           # 数えられ、取り直せば開く写真まで ✗ になった）。document に付けた MutationObserver は残るので、外された写真の網址もここで拾う
+           "new MutationObserver(function(ms){ms.forEach(function(m){m.removedNodes.forEach(function(n){if(n.nodeType!==1)return;"
+           "var l=n.tagName==='IMG'?[n]:[].slice.call(n.querySelectorAll('img'));var s=m.target.closest&&m.target.closest('section.sec');"
+           "l.forEach(function(i){if(i.src&&!i.classList.contains('bg'))window.__imgFail.push([s?s.dataset.k:'トップ',i.src])})})})}).observe(document,{childList:true,subtree:true})")
 BROWSER_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
                    "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"}
 
