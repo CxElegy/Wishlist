@@ -73,6 +73,12 @@
   ],
   "why": "看不清"
  },
+ "http://wx1.sinaimg.cn/middle/8b511c18ly1iihc12wblpj20qo0w1jwg.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
   "h": 1297,
@@ -1044,6 +1050,12 @@
   "h": 773,
   "target": 1280,
   "v": 3
+ },
+ "https://i0.wp.com/kanstarpress.com/wp-content/uploads/2026/10/b6a7982bb6fb0304d3a0a296e505d4e7.webp?fit=900%2C1200&ssl=1": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/activision-open-world-game-elsewhere-emergent-gameplay.png?fit=1200%2C675&ssl=1": {
   "w": 1200,
@@ -3013,6 +3025,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.eximg.jp/exnews/feed/Nekojournal/88/Nekojournal_post31091/Nekojournal_post31091_1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
   "h": 630,
@@ -3915,24 +3933,17 @@
   "target": 720,
   "v": 3
  },
+ "https://www.boardoftheworld.com/wp-content/uploads/2025/03/Capita-Super-DOA-2027-Review.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102319226971.jpg": {
   "w": 690,
   "h": 460,
   "target": 720,
   "v": 3
- },
- "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102732098654.jpg": {
-  "w": 690,
-  "h": 460,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.444,
-  "local": "pics/cfcbb5c221193afc.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
  },
  "https://www.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg": {
   "w": 1200,

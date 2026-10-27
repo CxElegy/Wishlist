@@ -233,16 +233,16 @@
   "A2O LITE": 8,
   "三星手机": 13,
   "MMORPG 新作": 3,
-  "滑雪": 3,
+  "滑雪": 4,
   "绝区零": 3,
-  "FROM": 2,
+  "FROM": 3,
   "周杰伦": 2,
   "The Mandalorian": 1,
-  "ILLIT": 2,
+  "ILLIT": 4,
   "Vaundy": 2,
   "日本顶级网球赛事": 8,
-  "チェーンソーマン": 1,
-  "猫用品": 1,
+  "チェーンソーマン": 3,
+  "猫用品": 2,
   "Astrae Oratio": 3
  },
  "三星手机": [
@@ -339,6 +339,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "Capita Super DOA Review: Is It Worth the Upgrade vs the Regular DOA?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "绝区零": [
@@ -394,7 +403,8 @@
    "blurb": "ILLITの新曲MVはソン・ガンを「逮捕」する追跡劇仕立てで、恋の駆け引きを描く。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    4
    ],
    "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnax2f7OIyXc1WmQRDOjM-h8Yn9Gd6cjzMehWgq6BPeDImBHdGhoTErPtYsLyPaPzfFvf9v_c28o8qn8mFUGSUsnkDbqYqvg7SN2-YK0YukEflnUE4vG_1bAdOi-TgtgE4Q=="
   },
@@ -405,6 +415,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "【イベントレポ】｢R U Next?｣発・日本人MOKAとIROHA所属 K-POP人気ガールグループ ILLIT (アイリット)、5thミニアルバム『BREAK EVEN』メディアショーケース開催―「みなさんの心を逮捕します」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
@@ -482,6 +501,15 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "FDA issues advisory for cat food due to salmonella fears",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ],

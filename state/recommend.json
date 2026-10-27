@@ -9,6 +9,7 @@
  },
  "images": {
   "http://k.sina.com.cn/article_7879923704_m1d5ae17f8033020ltu.html": "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg",
+  "http://www.excite.co.jp/news/article/Nekojournal_post31091/": "https://s.eximg.jp/exnews/feed/Nekojournal/88/Nekojournal_post31091/Nekojournal_post31091_1.jpg",
   "https://3c.ltn.com.tw/news/68052": "https://img.ltn.com.tw/Upload/3c/page/2026/10/24/261024-68052-1.png",
   "https://article.auone.jp/5e6bb488-14ab-472e-a7d0-5d6f71a5a42d": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/25/https___news_jp_i_1486554983406584528_w640.webp",
   "https://article.auone.jp/fb958b8c-b16d-4d90-b3ba-a160b9eb565c": "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912",
@@ -68,7 +69,6 @@
   "https://www.inside-games.jp/article/2026/10/26/189878.html": "https://www.inside-games.jp/imgs/ogp_f/1799137.jpg",
   "https://www.inverse.com/entertainment/new-avengers-doomsday-clip-captain-america-phase-6-problem": "https://imgix.bustle.com/uploads/image/2026/10/26/5a27ff6a/roc-13831_r4.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg",
   "https://www.jedinews.com/film-music-tv/articles/kuiils-wise-advice-the-mandalorian-official-compilation/": "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-41.jpg",
-  "https://www.ksnt.com/news/local-news/fda-issues-advisory-for-cat-food-due-to-salmonella-fears/": "https://www.bing.com/th?id=ONUT.cowUjjp9JfyrTwe1yeH-hQ&pid=News&w=1200",
   "https://www.mrjjxw.com/articles/2026-10-27/4621300.html": "https://static.mrjjxw.com/images/new_nbd_icon_300.png",
   "https://www.msn.com/en-in/news/other/hbo-harry-potter-series-casts-jasper-talbot-and-hannah-chinn-as-parents/ar-AA2gbjQO": "https://www.bing.com/th?id=ONUT.Hca-hAi4jrja9NkijF-iIg&pid=News&w=920",
   "https://www.msn.com/en-us/news/other/thinking-of-adopting-a-cat-a-vet-explains-how-to-find-the-right-fit/ar-AA2g5IqA": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g5Iqp.img",
@@ -1003,27 +1003,6 @@
   },
   {
    "batch": 1,
-   "because": "猫用品",
-   "date": "2026-10-27",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.cowUjjp9JfyrTwe1yeH-hQ&pid=News&w=1200",
-   "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
-   "score": 8,
-   "source": "KSNT 27 News",
-   "taste": [
-    [
-     "作品:猫用品",
-     5
-    ]
-   ],
-   "title": "FDA issues advisory for cat food due to salmonella fears",
-   "url": "https://www.ksnt.com/news/local-news/fda-issues-advisory-for-cat-food-due-to-salmonella-fears/",
-   "words": [],
-   "work": "猫用品"
-  },
-  {
-   "batch": 1,
    "because": "GTA 6",
    "date": "2026-10-27",
    "hits": [],
@@ -1086,7 +1065,7 @@
    "work": "绝区零"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "三星手机",
    "date": "2026-10-27",
    "hits": [
@@ -1203,7 +1182,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "ILLIT",
    "date": "2026-10-26",
    "hits": [],
@@ -1318,6 +1297,35 @@
    "url": "https://news.yahoo.co.jp/articles/0e96450b04671f00714ffa8e7dee323997cc24dc",
    "words": [],
    "work": "gelato pique"
+  },
+  {
+   "batch": 3,
+   "because": "猫用品",
+   "date": "2026-10-22",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://s.eximg.jp/exnews/feed/Nekojournal/88/Nekojournal_post31091/Nekojournal_post31091_1.jpg",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "Excite エキサイト",
+   "taste": [
+    [
+     "猫",
+     6
+    ],
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "猫とはたらくvol.07：獣医にしかできない仕事を追求し続ける。獣医学者・宮沢孝幸さんが語る「猫への恩返し」とは",
+   "url": "http://www.excite.co.jp/news/article/Nekojournal_post31091/",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
   },
   {
    "batch": 4,
@@ -2015,15 +2023,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "作品:三星手机",
    7
   ],
   [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "galaxy",
    7
   ],
   [
