@@ -1062,17 +1062,54 @@ def _front_pick(ranked, n):
     return picked
 
 
+OPENS = None   # 焼く時に写真の網址が開くか見る関数（url → bool）。digest の render と user_pages が photo_opens を入れる（テストは None＝見ない）
+_OPENS_MEMO = {}
+
+
+def photo_opens(url):
+    """写真の網址が本当に開くか（2026-10-27：当日の Yahoo 画像が 404 で、頭が字だけになった）。404・410、または 200 でも画像でないものだけ「開かない」。
+    つながらない・403（防盗链＝本站保存か SWAP_JS に任せる）は分からないので「開く」とみなし、版面を落とさない。"""
+    if url in _OPENS_MEMO:
+        return _OPENS_MEMO[url]
+    import urllib.error
+    import urllib.request
+    ok = True
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130.0 Safari/537.36",
+                                                   "Accept": "image/*,*/*;q=0.8", "Range": "bytes=0-1023"})
+        with urllib.request.urlopen(req, timeout=8) as r:
+            ok = r.headers.get("content-type", "image/").lower().startswith("image/")
+    except urllib.error.HTTPError as ex:
+        ok = ex.code not in (404, 410)
+    except Exception:  # noqa: BLE001
+        ok = True
+    _OPENS_MEMO[url] = ok
+    return ok
+
+
+def _head_photo(x):
+    """頭（重大・頭条・ポスター・壁）に選んでよい写真か。写真があり、自分の写真の網址が開く（開かなくても作品の表紙の備えがある）。"""
+    if not _has_photo(x):
+        return False
+    img = x.get("image")
+    if OPENS and isinstance(img, str):
+        u = _img_url(img)
+        if u.startswith(("http://", "https://")) and not OPENS(u):
+            return bool(x.get("_fbs"))
+    return True
+
+
 def _photo_head(stories):
     """版面の頭（重大・頭条の大きい枠）は写真のある記事だけ（2026-10-25）。写真のない頭条・重大は普通の記事に下げ、
     頭が空いたら、写真のある記事のうち新しいものを頭条に上げる。元の記事は書き換えない（写しを返す）。"""
     out, demoted = [], None
     for x in stories:
-        if x.get("weight") in ("hero", "lead") and not _has_photo(x):
+        if x.get("weight") in ("hero", "lead") and not _head_photo(x):
             demoted = demoted or x["weight"]
             x = {**x, "weight": "normal"}
         out.append(x)
     if demoted and not any(x.get("weight") in ("hero", "lead") for x in out):
-        pic = [x for x in out if _has_photo(x)]
+        pic = [x for x in out if _head_photo(x)]
         if pic:
             best = max(pic, key=lambda x: x.get("date") or x["_issue"])
             out[out.index(best)] = {**best, "weight": "lead"}
@@ -2616,7 +2653,7 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
     pool = [(w, x) for w in works for x in _recent(w, today)]
     newest = sorted(pool, key=lambda p: p[1].get("date") or p[1]["_issue"], reverse=True)
     # ポスターと壁は写真があるものだけ（来源アイコンは数えない）。借りた作品の表紙は、同じ重要度なら記事自身の写真の後ろ
-    pictured = [p for p in newest if _has_photo(p[1])]
+    pictured = [p for p in newest if _head_photo(p[1])]
     ranked = sorted(pictured, key=lambda p: (RANK.get(p[1].get("weight"), 2), not _own_photo(p[1])))
     chosen = _front_pick(ranked, SPOT_COUNT)
     top_w, top = chosen[0] if chosen else (None, None)

@@ -665,6 +665,35 @@ class PhotolessHeadTest(unittest.TestCase):
         self.assertEqual([x["weight"] for x in out], ["lead", "normal"])
         self.assertEqual(xs[1]["weight"], "lead")   # 元は書き換えない
 
+    def test_dead_photo_is_not_chosen_as_head(self):
+        """2026-10-27：当日の Yahoo 画像が 404 で頭が字だけになった。焼く時に開かない写真の記事は頭にせず、開く写真の記事を頭へ（店長・お客さま・トップが共通の _head_photo）"""
+        import render
+        xs = [self.st(1, "normal", "https://i.example/ok.jpg"), self.st(2, "lead", "https://i.example/dead.jpg")]
+        old, render.OPENS = render.OPENS, (lambda u: "dead" not in u)
+        try:
+            out = render._photo_head(xs)
+            self.assertEqual([x["weight"] for x in out], ["lead", "normal"])
+            self.assertFalse(render._head_photo(xs[1]))
+            self.assertTrue(render._head_photo({**xs[1], "_fbs": ["https://i.example/cover.jpg"]}))   # 作品の表紙の備えがあれば写真は出る
+            render.OPENS = None
+            self.assertTrue(render._head_photo(xs[1]))   # 見ない設定（テスト・手元）では落とさない
+        finally:
+            render.OPENS = old
+
+    def test_photo_opens_counts_only_definite_404(self):
+        import urllib.error
+        import render
+        from unittest import mock
+        render._OPENS_MEMO.clear()
+        err = lambda c: urllib.error.HTTPError("u", c, "x", {}, None)
+        with mock.patch("urllib.request.urlopen", side_effect=err(404)):
+            self.assertFalse(render.photo_opens("https://x.example/a.jpg"))
+        with mock.patch("urllib.request.urlopen", side_effect=err(403)):
+            self.assertTrue(render.photo_opens("https://x.example/b.jpg"))   # 防盗链は本站保存・SWAP_JS に任せる
+        with mock.patch("urllib.request.urlopen", side_effect=OSError("down")):
+            self.assertTrue(render.photo_opens("https://x.example/c.jpg"))
+        render._OPENS_MEMO.clear()
+
     def test_textonly_card_has_no_pic(self):
         import render
         h = render._tcard(self.st(1, "normal", None), 4, 0, "2026-10-25", mini=True)

@@ -242,6 +242,8 @@ def _supa(path, data=None, method="GET", ctype="application/json"):
 
 
 def main(argv):
+    if argv[:1] != ["--local"]:
+        render.OPENS = render.photo_opens   # 頭に選ぶ写真が開くか焼く時に見る（店長と同じ規則）
     settings, shop_items = digest.load_config()
     reports = sorted(digest.REPORTS_DIR.glob("????-??-??.json"))
     shop_issue = digest.load_json(reports[-1]) if reports else None
