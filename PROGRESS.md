@@ -144,3 +144,4 @@
 2026-10-27 f5：Python 側のお客さま用の日本語 9 つを SETTINGS_JA へ（直書き 0・試験 PyWording）：https://github.com/CxElegy/Wishlist/pull/576。次：render.py の残りの日本語（店長と共通の札）は言語を足す段で
 2026-10-27 f5f1：「⇄ にも」と FIRST_BOARD を SETTINGS_JA/ZH の表へ（店長の中文設定にも日本語が出ていた）・PyWording を user_pages 全体と render の own 経路の ast 数えに。次：ZH/JA の鍵そろえ点検・render() 共通部分の直書き
 2026-10-27 r4：スマホ右下の札が一番下の字を隠さない（≤560px の body 下 72px＋ux_check COVER_JS）：https://github.com/CxElegy/Wishlist/pull/577 ・#578（点検の誤検出〔閉じた details〕を直した）。本番 ux_check guest・test-a・test-b ✗0。次：561〜760px を右下にそろえるかをユーザーに聞く
+2026-10-27 f6：SETTINGS_ZH/JA の鍵そろえを試験で止める：https://github.com/CxElegy/Wishlist/pull/582 。全試験 1012 通過・CI 緑・合併。次：render.render の共通部分の日本語の直書き。
