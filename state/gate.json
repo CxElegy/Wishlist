@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-27T02:15:41+00:00",
+ "checked": "2026-10-27T02:43:38+00:00",
  "fired": {
-  "at": "2026-10-27T02:25:33+00:00",
+  "at": "2026-10-27T02:43:38+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,39 +20,26 @@
     "sig": "54651f0a9011"
    },
    "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
     "ILLIT",
     "MMORPG 新作",
-    "The Mandalorian",
     "dota2",
     "ぐでたま",
-    "チェーンソーマン",
     "三星手机",
-    "周杰伦",
     "猫用品"
    ],
-   "last_batch": "2026-10-27T02:13:13+00:00",
+   "last_batch": "2026-10-27T02:23:45+00:00",
    "last_error": {
     "at": "2026-10-27T01:47:50+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 266,
+   "prog": 273,
    "prog_day": "2026-10-27",
-   "ripe": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
-    "The Mandalorian",
-    "チェーンソーマン",
-    "周杰伦"
-   ],
-   "sig": "61bb6491d423",
+   "ripe": [],
+   "sig": "b8ea20b695d4",
    "token_cap": 1000000,
-   "tokens_today": 304771,
-   "why": "整理待ちの記事 15 件（12 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 311888,
+   "why": "整理待ちの記事 8 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -62,21 +49,21 @@
    "need": true,
    "sig": "b6804aff6de5",
    "waiting": [
-    "チェーンソーマン",
     "あつ森",
-    "Vaundy",
-    "FROM",
-    "哈利波特剧集",
-    "GTA 6",
+    "チェーンソーマン",
     "dota2",
+    "GTA 6",
+    "FROM",
     "漫威电影",
-    "The Mandalorian",
-    "Astrae Oratio",
-    "A2O LITE",
+    "Vaundy",
+    "哈利波特剧集",
     "绝区零",
+    "Astrae Oratio",
+    "The Mandalorian",
+    "A2O LITE",
     "ILLIT"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 11:16 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 12:28 から）"
   },
   "photos": {
    "claude": true,

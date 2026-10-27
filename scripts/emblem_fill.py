@@ -2230,7 +2230,7 @@ def broken_cuts(item):
     写真がぼやけた（emblem.SHARP_MIN）切り抜きの小元素 → [小元素]。
     網页の .emb では 60×10 の紫の帯（漫威电影 Black Panther）・209×45（BLEACH Mirrors High）になる。"""
     from PIL import Image
-    bad, photo = [], needs_face(item)
+    bad, photo, small = [], needs_face(item), 0
     for x in item.get("emblem") or []:
         im = str(x.get("image") or "") if isinstance(x, dict) else ""
         p = emblem.sitedir.SITE_DIR / im
@@ -2245,9 +2245,20 @@ def broken_cuts(item):
             bad.append(x)
             continue
         b = x.get("body")
-        if broken_image(im, photo, whole=bool(b) and len(b) > 1 and b[1] <= 1):
+        if too_small(im, bool(b)) and small < SMALL_DROP_MAX:   # 1 回に外す小さい画像は版面ごとに SMALL_DROP_MAX 枚まで（dota2 29・BLEACH 28 を一度に外すと版面が空く。補完が追いつく数ずつ）
+            small += 1
+            bad.append(x)
+        elif broken_image(im, photo, whole=bool(b) and len(b) > 1 and b[1] <= 1):
             bad.append(x)
     return bad
+
+
+SMALL_DROP_MAX = 8   # 前から入っている小さい画像を 1 回に外す上限（版面ごと）
+
+
+def too_small(im, body=False):
+    """前から入っている小さい切り抜き（短い辺 < BUST_MIN_SIDE：E18。全身 body は除く）。取るときの下限（save_cut）の前の分を外して emblem_reject → 次の回は大きい幅で取り直す。broken_cuts とお客さまの版面（library_emblem.unbroken）で同じ。"""
+    return not body and min(im.size) < emblem.BUST_MIN_SIDE
 
 
 def broken_image(im, photo, whole=False):
@@ -2671,7 +2682,7 @@ def repair_flat(item, log=print):
             if out.size == img.crop(img.getchannel("A").getbbox()).size:
                 continue
             with WRITE_LOCK:
-                emblem.save_cut(out, p.stem)
+                emblem.save_cut(out, p.stem, 0)   # 既にある画像の整え直し（小さいものは broken_image が外す）
         except Exception:
             continue
         f = emblem.face_box(out)

@@ -206,7 +206,9 @@ class Fill(unittest.TestCase):
         xs = [{"subject": "cut", "image": pub + "cut.webp"}, {"subject": "ok", "image": pub + "ok.webp"},
               {"subject": "gone", "image": pub + "gone.webp"}, {"subject": "logo", "image": pub + "cut.webp", "shape": "logo"},
               {"subject": "wd", "image": "https://e.org/cut.webp"}]
-        self.assertEqual([x["subject"] for x in le.unbroken(xs, False, fetch=fetch)], ["ok", "gone", "logo", "wd"])
+        with mock.patch.object(emblem, "BUST_MIN_SIDE", 0):
+            self.assertEqual([x["subject"] for x in le.unbroken(xs, False, fetch=fetch)], ["ok", "gone", "logo", "wd"])
+        self.assertEqual([x["subject"] for x in le.unbroken(xs, False, fetch=fetch)], ["gone", "logo", "wd"])   # 既定の下限（256px）：100×120 の ok は外れる（E18）
 
     def test_rebuild_on_new_rules(self):
         """版が上がった版面は前の規則のもの（名簿・分類・小元素）を捨てて作り直す。キャラも、新しい規則で取れた分があれば前の小元素は残さない
