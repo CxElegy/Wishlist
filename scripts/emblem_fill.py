@@ -2245,9 +2245,14 @@ def broken_cuts(item):
             bad.append(x)
             continue
         b = x.get("body")
-        if broken_image(im, photo, whole=bool(b) and len(b) > 1 and b[1] <= 1):
+        if too_small(im, bool(b)) or broken_image(im, photo, whole=bool(b) and len(b) > 1 and b[1] <= 1):
             bad.append(x)
     return bad
+
+
+def too_small(im, body=False):
+    """前から入っている小さい切り抜き（短い辺 < BUST_MIN_SIDE：E18。全身 body は除く）。取るときの下限（save_cut）の前の分を外して emblem_reject → 次の回は大きい幅で取り直す。broken_cuts とお客さまの版面（library_emblem.unbroken）で同じ。"""
+    return not body and min(im.size) < emblem.BUST_MIN_SIDE
 
 
 def broken_image(im, photo, whole=False):
@@ -2662,7 +2667,7 @@ def repair_flat(item, log=print):
             if out.size == img.crop(img.getchannel("A").getbbox()).size:
                 continue
             with WRITE_LOCK:
-                emblem.save_cut(out, p.stem)
+                emblem.save_cut(out, p.stem, 0)   # 既にある画像の整え直し（小さいものは broken_image が外す）
         except Exception:
             continue
         f = emblem.face_box(out)

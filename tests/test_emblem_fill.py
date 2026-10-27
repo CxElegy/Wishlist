@@ -99,11 +99,11 @@ class Rules(unittest.TestCase):
         Image.new("RGBA", (200, 200)).save(tmp / "emblems" / "a.webp")
         Image.new("RGBA", (200, 200)).save(tmp / "emblems" / "b.webp")
         item = {"emblem": [{"subject": "A", "image": "emblems/a.webp"}, {"subject": "B", "image": "emblems/b.webp"}]}
-        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "top_share", return_value=0.05), \
+        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "BUST_MIN_SIDE", 0), mock.patch.object(ef.emblem, "top_share", return_value=0.05), \
                 mock.patch.object(ef.emblem, "forehead_cut", side_effect=lambda im: im.filename.endswith("a.webp")):
             self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["A"])
         # 上の端に TOP_TOUCH 未満しか当たっていない（頭が全部入っている：The Mandalorian Gideon 1.0%）は額を見ない（check_whole と同じ）
-        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "top_share", return_value=0.01), \
+        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "BUST_MIN_SIDE", 0), mock.patch.object(ef.emblem, "top_share", return_value=0.01), \
                 mock.patch.object(ef.emblem, "forehead_cut", return_value=True):
             self.assertEqual(ef.broken_cuts(item), [])
 
@@ -277,7 +277,7 @@ class Rules(unittest.TestCase):
         ok.save(tmp / "emblems" / "c.webp")
         item = {"emblem_kind": "person", "emblem": [{"subject": s, "image": f"emblems/{s.lower()}.webp"} for s in "ABC"]}
         sharp = lambda im: (100, 0.5 if im.filename.endswith("c.webp") else 1.5)
-        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "forehead_cut", return_value=False), \
+        with mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), mock.patch.object(ef.emblem, "BUST_MIN_SIDE", 0), mock.patch.object(ef.emblem, "forehead_cut", return_value=False), \
                 mock.patch.object(ef.emblem, "face_sharp", side_effect=sharp):
             self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["A", "C"])
             self.assertEqual([x["subject"] for x in ef.broken_cuts({**item, "emblem_kind": "character"})], ["A"])   # 絵はぼやけを見ない
@@ -1069,7 +1069,8 @@ class FlatCut(unittest.TestCase):
             from PIL import Image
             self.assertLess(Image.open(tmp / "emblems" / "a.webp").height, 160)
             self.assertEqual(Image.open(tmp / "emblems" / "b.webp").height, 300)   # 直せないものは触らない
-            self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["B"])   # 直せなかった B だけ外れる
+            with mock.patch.object(ef.emblem, "BUST_MIN_SIDE", 0):
+                self.assertEqual([x["subject"] for x in ef.broken_cuts(item)], ["B"])   # 直せなかった B だけ外れる
         self.assertEqual(len(written), 1)
 
 
@@ -2044,7 +2045,7 @@ class FindSources(unittest.TestCase):
             (tmp / "state").mkdir()
             item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
             item["emblem_who"] = who
-            bust = ("https://x/bust.png", Image.new("RGBA", (120, 150), (50, 50, 50, 255)), 0.3)
+            bust = ("https://x/bust.png", Image.new("RGBA", (300, 380), (50, 50, 50, 255)), 0.3)
             with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(ef.emblem, "ROOT", tmp), mock.patch.object(ef.emblem.sitedir, "SITE_DIR", tmp), \
                     mock.patch.object(ef.emblem, "EMB_DIR", tmp / "emblems"), \
                     mock.patch.object(ef.emblem_face, "measure_item") as meas:
@@ -2293,7 +2294,7 @@ class FindSources(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             tmp = pathlib.Path(d)
             (tmp / "emblems").mkdir()
-            for n, size in (("ok", (120, 160)), ("bar", (60, 10)), ("band", (209, 45)), ("wide", (400, 100))):
+            for n, size in (("ok", (300, 400)), ("bar", (60, 10)), ("band", (209, 45)), ("wide", (400, 100))):
                 Image.new("RGBA", size).save(tmp / "emblems" / f"{n}.webp")
             (tmp / "emblems" / "zero.webp").write_bytes(b"")
             (tmp / "items.yaml").write_text('items:\n  - name: M\n    emblem_kind: character\n    emblem:\n'

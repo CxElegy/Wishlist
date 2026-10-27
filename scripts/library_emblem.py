@@ -235,7 +235,7 @@ def unbroken(emblems, photo, fetch=None):
         if f"/storage/v1/object/public/{BUCKET}/" in u and x.get("shape") not in ("logo", "icon", "badge"):   # 自分で切り抜いて上げたものだけ
             try:
                 im = Image.open(io.BytesIO(fetch(u)))
-                if emblem_fill.broken_image(im, photo):
+                if emblem_fill.too_small(im, bool(x.get("body"))) or emblem_fill.broken_image(im, photo):
                     continue
                 h = emblem_fill._hash(im)   # 同じ見た目の画像は 1 枚（前の回に別の名前で上がった同じ絵）。固定は残す
                 if not x.get("lock") and any(bin(h ^ y).count("1") <= emblem_fill.SAME_BITS for y in hashes):
