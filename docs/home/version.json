@@ -1,14 +1,14 @@
 {
- "admin": "4800478c1c4b",
- "admin-ai": "c21e42ca67cb",
+ "admin": "6d88bc0b70e7",
+ "admin-ai": "e401a9237ecd",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "89e7f2aa"
+   "21f805e8"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "b3dbd43c"
+   "cb1286d3"
   ]
  },
  "admin-boards": "70ee632a9687",
@@ -22,11 +22,11 @@
    "b9f295e9"
   ]
  },
- "admin-emblem": "9433bb476c32",
+ "admin-emblem": "d648725e964c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "5ae9aa82"
+   "1a329e7e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "050b03d2e468",
+ "admin-now": "7202aa1ad24a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "14b3ec55"
+   "ee8448be"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "6b58d993"
+   "6aee8527"
   ]
  },
- "admin-system": "f2d04526d029",
+ "admin-system": "819d855c1005",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d7575634"
+   "b46cff46"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f191be01"
+   "6eb37ba8"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "b6d8084c"
   ]
  },
- "index": "17c459de3943",
+ "index": "3fd904562461",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "934e2c9c"
+   "76b44509"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "ed74ea9e"
+   "81d1316c"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "22d67ed3"
+   "0f538936"
   ],
   "w-f303ad09": [
    "绝区零",
    "b31d88e8"
   ]
  },
- "updated": "10.28 07:37",
+ "updated": "10.28 07:42",
  "wishlist": "bd867b9214b2"
 }
