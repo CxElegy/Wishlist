@@ -139,19 +139,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/008eZAxIgy1iifydiquu1j32hk31fqva.jpg": {
-  "w": 2000,
-  "h": 2444,
-  "target": 720,
-  "v": 3,
-  "local": "pics/013d8e581040aed1.webp",
-  "out": [
-   1047,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -801,6 +788,19 @@
   "h": 1185,
   "target": 1280,
   "v": 3
+ },
+ "https://en.koreadaily.com/wp-content/uploads/2026/10/202610271010772560_6adffdc58088a.jpg": {
+  "w": 650,
+  "h": 433,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.465,
+  "local": "pics/4f1097f12f258843.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://eng.belta.by/images/storage/news/with_archive/2026/000028_1792916227_187922_big.jpg": {
   "w": 870,
@@ -1952,6 +1952,12 @@
   "w": 1672,
   "h": 941,
   "target": 720,
+  "v": 3
+ },
+ "https://mediamixi.jp/app/uploads/2026/10/1027-01.jpg": {
+  "w": 2184,
+  "h": 1228,
+  "target": 1280,
   "v": 3
  },
  "https://motoryokoblog.com/wp-content/uploads/2026/09/illit_18227_fv.png": {
@@ -3415,12 +3421,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.8UILRm4r1PA4_81tpWZ_Ng&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
   "h": 700,
@@ -3668,13 +3668,13 @@
   ],
   "why": "看不清"
  },
- "https://www.chosun.com/resizer/v2/MVRWKZLCGIYDGMBTGY3DAMRQGQ.jpg?auth=69c0a274547ce82569db98e198f99eef360261586cd370566f70b5c356bbc2f1&width=650&height=341&smart=true": {
+ "https://www.chosun.com/resizer/v2/MIYTANTCGMZDOOJRMVSTCOJZMU.jpg?auth=08031504b413bc826963dda749d4339b0e15d8b5c0be20086b8d7774070d211e&width=650&height=341&smart=true": {
   "w": 650,
   "h": 341,
   "target": 1280,
   "v": 3,
-  "blur": 0.477,
-  "local": "pics/f2dff78ac5ed30ff.webp",
+  "blur": 0.464,
+  "local": "pics/8a3d199c545ed14e.webp",
   "out": [
    1280,
    672
@@ -3847,12 +3847,6 @@
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Sandra-Huller-Main-2026.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
-  "target": 720,
-  "v": 3
- },
- "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg": {
-  "w": 1392,
-  "h": 934,
   "target": 720,
   "v": 3
  },

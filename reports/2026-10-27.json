@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "bacf3c27d599",
+ "edit_sig": "1c85010fdf23",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
@@ -574,8 +574,8 @@
      "date": "2026-10-27",
      "headline": "ILLIT BREAK EVEN — Smashes 380K Sales on Day One",
      "highlight": "380K",
-     "image": "https://www.chosun.com/resizer/v2/MVRWKZLCGIYDGMBTGY3DAMRQGQ.jpg?auth=69c0a274547ce82569db98e198f99eef360261586cd370566f70b5c356bbc2f1&width=650&height=341&smart=true",
-     "image_via": "og:image（其它来源）",
+     "image": "https://en.koreadaily.com/wp-content/uploads/2026/10/202610271010772560_6adffdc58088a.jpg",
+     "image_via": "og:image",
      "url": "https://en.koreadaily.com/illit-break-even-smashes-380k-sales-on-day-one/",
      "weight": "normal"
     }
@@ -998,8 +998,9 @@
      "date": "2026-10-26",
      "headline": "Sideshow Shares First Look at Hot Toys Deluxe The Mandalorian and Grogu Set",
      "highlight": "Hot Toys",
-     "image": "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "Jedi News",
+     "source_icon": "https://www.jedinews.com/wp-content/uploads/2020/02/cropped-New_JediNews_Watermark_250-192x192.png",
      "url": "https://www.jedinews.com/collecting/articles/sideshow-shares-first-look-at-hot-toys-deluxe-the-mandalorian-and-grogu-set/",
      "weight": "normal"
     }
@@ -1258,143 +1259,36 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 19,
-     "source": "스페셜타임스",
-     "title": "A2O LITE, 데뷔 2주 만에 美 빌보드 차트 TOP 10 진입",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5yeGtSRkY2ZXZkandVT0hERTVURjBzMFRDc1pkWVdOZUd3REVNSnpzOUpsNTNWQjBRVzRqYjhYN3ZuV0RSenhieXY4RV9nVWg1cWdMbGpEdjVONUFaX3VUSXZPbF94SW1yYkllZVlwQlBjdw?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 20,
-     "source": "허프포스트코리아",
-     "title": "'볶음너구리'부터 걸그룹 'A2O LITE'까지, 과거에서 답을 찾다 : 마시면 이틀 뒤 일어나는 '캪틴큐'도 품절",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1iU3BXQ3NjelZMRUpjNUdyd1BqaGxaeGVOUmdrNVV1WFlSQ3JCUmZvQmlGdXllV3RXeTA0VHlRUmhhRUJ5Q3NGNVg2UzFWMEJBZ3lBWFFYUQ?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 21,
-     "source": "스타뉴스",
-     "title": "'이수만 걸 그룹' A2O LITE, 데뷔 2주만 일냈다..美 빌보드 2개 차트 TOP10",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1VY29mWGZvWWRIUXdfaW9RVWdGSkQ1Zm9Fc0ZiaUJVaTJ5b2xNNDB6dFI0SnZGdzN1bXpIQ2szREhPdFRHRWE4UzQzanVLNDFSRzQxbkRMUTE2a1NSck5JNFRZYU9DSXByb3hLeDF3bjZvZVVf?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 22,
-     "source": "스타뉴스",
-     "title": "“李秀满系女团”A2O LITE，出道仅两周便交出成绩单……登上美国Billboard两大榜单TOP10",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE83cDFtSWFBenY0X2t4V0pUeFhYdS1jeDhISG9TREFJTFVDR1g0RW5kY2JuOHFIWGtvQUlSMERTb3NkSXVKa3JYd0p3bVhqT1FwWk5zMEFZZ0NmaFB6V2FRcTZubXQ0eTg1TXkzSkhXb0NVVndmZnNTYg?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 23,
-     "source": "Chosunbiz",
-     "title": "A2O LITE, 'NEON' 칼군무, 미국에서도 먹힐까..美빌보드 차트 보니 [Oh!쎈 이슈]",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOZm5VRHp0MlBydUtDckcwQjhYSXVHQnVBY2VxNDMzSWFzTkhXTlpkR285Yld6WnR2U3NLaGQtSXlzWWxVdDlaRjBDbHJjN3Izc2l5Y3JqMkU2bWpqSC1wQWxuQVNwR29lS3IwdkhlX2JVOVVHdnphbXgteFZtUU1hYUxMOGFUNnByS2dwRFpIYmUyaFXSAacBQVVfeXFMTWhfQ0ItRUhvWU56ZG5qaGNXUjZzSFllOERPSVBMQzk3VmJBUVg0X09aTGFDektnb3o5XzY1RUZvNi16b2syY2RNSlNpUzlhSDN2cmRnVFRDV1lxZUdEX2FEU05VaHdvbjRFRVVlbWFHaXdITWl2QU5ON1NSVWxhOW1XTnJXeVhaaWI0eHZicy11Y09Ud1Nzem9QTWdPWEVPY2o1bWVUZUU?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 24,
-     "source": "조선일보",
-     "title": "A2O LITE「NEON」、米国でも通用か…ビルボード世界8位",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxORE9NQzBKVGpXem9vTm82Y0M0Q1Uzb21scnBwODR4Q0lhaUs0YjBOR2ZsSUxnbkk3NVpxTnZ3LWJTYXpDcnhWV3I4djdGRnhzQkpDY09ZY2xjYUNTSklBNDBpR1g1VC1Hd0ZYVmpaQ0pHSzRWNG9jWUppdXpYSXUzdERTNC1IcHM?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 25,
-     "source": "BNT뉴스",
-     "title": "A2O LITE, 데뷔 2주 만에 빌보드 글로벌 톱10",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5GbWlzRmwxbWg5aFJVM0RqaFZfeFdYNjVjM255clgtOUEzQy1neC0xZEx0QWZnd1ROb3ZDTGJxa2M3Sms5R1NYbEM0X0RsQV9yUE1LcjkxOVZGRDV4bHU1RWd2eGg?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 26,
-     "source": "톱스타뉴스",
-     "title": "A2O LITE, 데뷔곡 ‘NEON’으로 美 빌보드 글로벌 차트 TOP10 진입",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBJSXE1emdlLW9FVFRycVBNZE1TRDZLZmdMMng0WGhnNjlFUUUxQU9PWkRaa2JDZG5ZZ1hhZU54azJWbjkzTXhBeDEzRlFSQnVtZzEybjFiTVRNRk9HUDAteExmWDhkRjNpLUFxZXFaSHdJUQ?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 27,
-     "source": "MEDIAMIXI",
-     "title": "【Spotify日本週間チャート】A2O LITE「NEON」が16位に初登場 / 1〜8位まで前週と同じ順位〜集計期間：2026年10/16〜10/22",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBpZFNJSENyX0M0RjlSNWxza1JQVlNlamJSNnlXakFtYWNoSHR2b01JRUJ5ekRQRzRVZWE5dDl1Um9QbFdvVVh0eWtR?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 28,
-     "source": "Pirates & Princesses on MSN",
-     "title": "A2O Lite's Neon scores a perfect all-kill, plus more K-pop news",
-     "url": "https://www.msn.com/en-us/news/other/a2o-lites-neon-scores-a-perfect-all-kill-plus-more-k-pop-news/ar-AA2g92sC"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 29,
-     "source": "스포츠경향",
-     "title": "Arirang TV ‘ShowK-POP’ A2O LITE unveils a stage aimed at overseas fans···The ‘ShowStage’ segment expected to deliver a true showdown of idol performances",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5hN1FiaEFib2gzdUFJM21kYUducm1yenE0ZE1KMFVWN2NGQ1F2ZHVwOFJsVml3MmpDMExVbHd2MElHOGpEZF9rVko1bTRFOE9fc3JCVjFUTHNvM0xYZk9jTXlR?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 30,
-     "source": "뉴스인사이드",
-     "title": "'괴물 신인' A2O LITE, 데뷔 13일 만에 음방 4관왕",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9PR2FlaExyT2hZYURsTW80UHplc2dSWXh0MDBBUjVOZEFPc1NLeGZ0MG1QRGlES01aVGEyTUJVbVUwYW1LbmlUZWpEUHA4aW44dGhGQUJ2TFMtYU9qYWlOd01tTERNNjVCckdlOHZB?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 31,
-     "source": "https://www.frame-less.co.kr/",
-     "title": "A2O LITE, 데뷔 13일 만에 음악방송 4관왕…‘인기가요’ 첫 정상",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBka1NsdFFsbzZ0NkE0ZWNlczJ0TW0xRVhXbzduaC1YbXdvcnB3Z1hYMDFWWE5BNmJ3N0xMWm9YMVZ2T3BzMjdyV1JXX1JGUmNPMXRwWFk4YW9yWUpXVU1TZlNWM01xNV9yX1k1RjJB?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 32,
-     "source": "스타데일리뉴스",
-     "title": "A2O LITE, ‘NEON’으로 ‘인기가요’ 1위…음악방송 4관왕 달성",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9kZFU3eXlBaE15TzRaRThaMWlLSXZHd1d6YUw5NmJoZFlCWGtuRXV4Yml1ZkhRQkRKRnlocDQ5d3VkZVRKUWlCZDVMVjVGOXkwRE1ubWs3RXlVdkppRFZSWlhKMXE0ZW5QOC1UX1VrcGlna0t5?oc=5"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 33,
-     "source": "재경일보",
-     "title": "A2O LITE '네온', 6060점으로 '인기가요' 1위 : 연예",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE4ydkdnZ1RZMWZrbWtRODh4Uy10Y0d5RkM1amFCel9heGVQVVNnUmpIRVRQa19nY0c0LWVFUF80ZTR2eThUa3JMQjJ3QQ?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
-     "blurb": "A2O LITE 新歌《NEON》在 Spotify 全球榜上的排名创下新高。",
-     "date": "2026-10-26",
-     "headline": "A2O LITE 新歌《NEON》Spotify 全球榜排名创新高",
-     "highlight": "排名创新高",
-     "image": "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png",
-     "image_via": "同一件事的别家报道 www.weschoolnews.com",
-     "url": "https://www.sina.cn/news/detail/5358396442411714.html",
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "【Spotify日本週間チャート】A2O LITE「NEON」が16位に初登場 / 1〜8位まで前週と同じ順位〜集計期間：2026年10/16〜10/22",
+     "highlight": "",
+     "image": "https://mediamixi.jp/app/uploads/2026/10/1027-01.jpg",
+     "image_via": "og:image",
+     "url": "https://mediamixi.jp/column/17313/",
      "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-10-26",
-     "headline": "A2O LITE 出道单曲",
+     "headline": "A2O Lite's Neon scores a perfect all-kill, plus more K",
      "highlight": "",
-     "image": "http://wx3.sinaimg.cn/middle/008eZAxIgy1iifydiquu1j32hk31fqva.jpg",
-     "image_via": "正文图（本站保存）",
-     "url": "https://www.sina.cn/news/detail/5358344061847288.html",
+     "image": "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png",
+     "image_via": "og:image（其它来源）",
+     "url": "https://www.msn.com/en-us/news/other/a2o-lites-neon-scores-a-perfect-all-kill-plus-more-k-pop-news/ar-AA2g92sC",
      "weight": "normal"
     },
     {
      "blurb": "",
-     "date": "2026-10-23",
-     "headline": "A2O LITE 出道舞台直拍：盛艾敬等成员舞台表现",
+     "date": "2026-10-26",
+     "headline": "Arirang TV ‘ShowK-POP’ A2O LITE unveils a stage aimed at overseas fans···The ‘ShowStage’ segment expected to deliver a true showdown of idol performances",
      "highlight": "",
      "image": "https://images.khan.co.kr/article/2026/10/26/news-p.v1.20261026.d38ab67c082745d497f30d6c5d8bc87d_P1.png",
      "image_via": "og:image",
-     "url": "https://www.sina.cn/news/detail/5357162576216231.html",
+     "url": "https://sports.khan.co.kr/en/article/202610262151007",
      "weight": "normal"
     },
     {
@@ -1405,6 +1299,16 @@
      "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161977.jpg",
      "image_via": "og:image",
      "url": "https://topics.smt.docomo.ne.jp/amp/article/sportsseoulweb/entertainment/sportsseoulweb-161977",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "A2O LITE「NEON」、米国でも通用か…ビルボード世界8位",
+     "highlight": "ビルボード世界8位",
+     "image": "https://www.chosun.com/resizer/v2/MIYTANTCGMZDOOJRMVSTCOJZMU.jpg?auth=08031504b413bc826963dda749d4339b0e15d8b5c0be20086b8d7774070d211e&width=650&height=341&smart=true",
+     "image_via": "og:image",
+     "url": "https://www.chosun.com/jp/culture-life-jp/2026/10/27/TYNDDIS23RAO5DLTOPRDPEWUSY/",
      "weight": "normal"
     }
    ],
