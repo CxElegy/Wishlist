@@ -1,14 +1,14 @@
 {
- "admin": "0ac9f9d814a3",
- "admin-ai": "50633759f180",
+ "admin": "f8813b6f3792",
+ "admin-ai": "9b9c1ca60c02",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c236b267"
+   "1274bb46"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "152c0e35"
+   "d6275a97"
   ]
  },
  "admin-boards": "2bba1f0fcdbe",
@@ -22,11 +22,11 @@
    "0ccd21c6"
   ]
  },
- "admin-emblem": "ee0676e5d121",
+ "admin-emblem": "c1b2cc312268",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "eede210a"
+   "10abdc42"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "5f622a07"
+   "c9ef06a7"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "daf250301e43",
+ "admin-now": "16f69c47b4cb",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "ca2d6df3"
+   "11ae0d9b"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "dc16d1c1"
+   "304ef403"
   ]
  },
- "admin-system": "51d19b481b55",
+ "admin-system": "0da8b255584e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1a8868b4"
+   "7d4219cc"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "38009454"
+   "2d7159d6"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "f1fa2abe"
   ]
  },
- "index": "594a76d73fe3",
+ "index": "ca701ffa812b",
  "index_marks": {
   "front": [
    "トップ",
-   "30ee0342"
+   "6513f54e"
   ],
   "picks": [
    "気になるかも？",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "1a593d94"
+   "f33bf505"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "b507fc74"
+   "062d1829"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "0a175726"
+   "77f28dac"
   ]
  },
- "updated": "10.27 20:41",
+ "updated": "10.27 20:50",
  "wishlist": "ddb3bf11aaf6"
 }
