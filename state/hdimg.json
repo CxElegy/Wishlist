@@ -677,12 +677,6 @@
   "target": 720,
   "v": 3
  },
- "https://d2goguvysdoarq.cloudfront.net/system/facility_photos/photos/313773/normal.jpg?1790224008&w=640&h=640&t=r": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
  "https://d2l930y2yx77uc.cloudfront.net/production/social_images/165a06c8c5684c2083c5a4bd62e008afe2badda7.png": {
   "w": 1280,
   "h": 670,
@@ -949,6 +943,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hermes.media.static.aol.com/media/2026/10/27/e374586d-dee7-3eb4-90d1-482ce328c856/552c2684-66e2-4132-a26d-2ac4959999bc.jpg": {
+  "w": 4724,
+  "h": 3149,
+  "target": 1280,
+  "v": 3
+ },
  "https://hermes.media.transform.aol.com/a360a8c8f386c0ba9c75467163c4ebe39c4446dc/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/27/933c8f10-7ef9-3855-8423-fdeccae4f3e2/7806376e-24d3-466b-bf10-a0a4b4cfe507.jpg": {
   "target": 720,
   "v": 3,
@@ -1026,6 +1026,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-28"
+ },
+ "https://i.ytimg.com/vi/QtHFx2ReeiI/maxresdefault.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
  },
  "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/Bleach-Mirrors-High-1-million-pre-registrations.webp?fit=1920%2C1080&ssl=1": {
   "w": 1920,
@@ -1520,6 +1526,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-28"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gc0Zw.img": {
+  "w": 1024,
+  "h": 555,
+  "target": 720,
+  "v": 3
  },
  "https://img.4gamers.com.tw/news-image/30592e27-3cf0-4f66-b229-fc5e54665aeb.jpg": {
   "w": 1600,
@@ -2988,12 +3000,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.eximg.jp/exnews/feed/Nekojournal/88/Nekojournal_post31091/Nekojournal_post31091_1.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
   "h": 630,
@@ -3515,6 +3521,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://thepeoplesmovies.com/wp-content/uploads/2026/10/Harry-Potter-HBO-2026.1.jpg": {
+  "w": 740,
+  "h": 467,
+  "target": 720,
+  "v": 3
+ },
  "https://thesource.com/wp-content/uploads/2026/10/Screenshot-2026-10-24-at-3.30.47-PM.jpg": {
   "w": 852,
   "h": 458,
@@ -3650,12 +3662,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.-uijTEGIvI3LnJNGANmBxA&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
  "https://www.bing.com/th?id=ONUT.5C92Ku7vfec32N7T7QXo7g&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3688,6 +3694,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.EIPAhM1UOcOWkkEyd3Np9w&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.EfKjFhm1fPg2aVKYu88knA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3701,9 +3713,21 @@
   "v": 3,
   "blur": 0.393
  },
+ "https://www.bing.com/th?id=ONUT.Hca-hAi4jrja9NkijF-iIg&pid=News&w=920": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.LON8diSY51-UhKhOA2RJUw&pid=News&w=1200": {
+  "w": 700,
+  "h": 365,
   "target": 720,
   "v": 3
  },
@@ -3719,12 +3743,6 @@
    732
   ],
   "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.O7nhoPckd7mZBKLAyPiZtQ&pid=News&w=1024": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Ruz96ApZwC1D3kw_rQhncQ&pid=News&w=700": {
   "target": 720,
@@ -3771,12 +3789,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.b3TynM3TLvhPfx7ZYVGERg&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3790,15 +3802,15 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.csvTQeo-s8NtUIZlyDOLeg&pid=News&w=530": {
-  "w": 530,
-  "h": 690,
+ "https://www.bing.com/th?id=ONUT.cowUjjp9JfyrTwe1yeH-hQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 465,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.e6Fubi-X8yjoqBcua_Fsnw&pid=News&w=1200": {
-  "w": 700,
-  "h": 468,
+ "https://www.bing.com/th?id=ONUT.csvTQeo-s8NtUIZlyDOLeg&pid=News&w=530": {
+  "w": 530,
+  "h": 690,
   "target": 720,
   "v": 3
  },
@@ -3852,6 +3864,12 @@
    861
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.rxYOQ55apuDFWod0T4ZIjQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
   "w": 700,

@@ -1,32 +1,32 @@
 {
- "admin": "5545e758efd8",
- "admin-ai": "db344e3bf293",
+ "admin": "f6afc0ae0e14",
+ "admin-ai": "82bb18a4b3c7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8b7226f1"
+   "91c89240"
   ],
   "tokens": [
    "AI 編集のトークン",
    "cd1b95f6"
   ]
  },
- "admin-boards": "2d03cdaf20a6",
+ "admin-boards": "aa6ac4f1db64",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "8df43ad7"
+   "70eedeae"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "708254145c9b",
+ "admin-emblem": "8e6fe31ddc36",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "95e0d175"
+   "90ee7506"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "62a384fa5eb3",
+ "admin-now": "293d396877a1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7bc01612"
+   "9c9a2884"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "7d990f83"
+   "b43c11c0"
   ],
   "term-panel": [
    "ライブログ",
-   "a0b472b8"
+   "d8c72965"
   ]
  },
- "admin-system": "dd7308f82117",
+ "admin-system": "b366e6a1cde5",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4ff3b6ae"
+   "2d285541"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "ea01a4b2"
+   "52c7170b"
   ]
  },
  "admin_marks": {},
- "heat": "aaaf4b646293",
+ "heat": "bf05dc6aec0a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e82915ac"
+   "321ba88c"
   ],
   "ranking": [
    "ランキング",
-   "f1afc0ed"
+   "99c4a97c"
   ]
  },
- "index": "980a02374dbb",
+ "index": "0287ec6a910a",
  "index_marks": {
   "front": [
    "トップ",
-   "8438a2d2"
+   "59ce17df"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "e30013aa"
+   "4e4fe97f"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "a593a09a"
+   "8a0a6b7a"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
