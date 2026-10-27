@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-27T19:35:01+00:00",
+ "checked": "2026-10-27T20:28:33+00:00",
  "fired": {
   "at": "2026-10-27T19:35:01+00:00",
   "results": {
@@ -19,58 +19,46 @@
     "resp": "cse_01W4x6f79xwdmJmzmMbdj5Mc",
     "sig": "08a9a59d6f8d"
    },
-   "items": [
-    "ILLIT",
-    "Vaundy",
-    "チェーンソーマン",
-    "日本顶级网球赛事",
-    "猫用品"
-   ],
-   "last_batch": "2026-10-27T18:02:42+00:00",
+   "items": [],
+   "last_batch": "2026-10-27T19:45:43+00:00",
    "last_error": {
-    "at": "2026-10-27T17:44:48+00:00",
+    "at": "2026-10-27T19:42:25+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 67,
+   "need": false,
+   "prog": 75,
    "prog_day": "2026-10-28",
-   "ripe": [
-    "ILLIT",
-    "Vaundy",
-    "チェーンソーマン",
-    "日本顶级网球赛事",
-    "猫用品"
-   ],
-   "sig": "08a9a59d6f8d",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 88151,
-   "why": "整理待ちの記事 8 件（5 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 141922,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "ぐでたま"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "6776b114e210",
    "waiting": [
+    "チェーンソーマン",
+    "dota2",
     "あつ森",
-    "周杰伦",
     "GTA 6",
+    "周杰伦",
     "Vaundy",
     "FROM",
     "漫威电影",
     "哈利波特剧集",
-    "ぐでたま",
-    "チェーンソーマン",
-    "dota2",
     "Astrae Oratio",
     "绝区零",
     "A2O LITE",
     "ILLIT",
     "The Mandalorian"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 04:50 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 05:30 から）"
   },
   "photos": {
    "claude": true,
