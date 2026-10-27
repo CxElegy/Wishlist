@@ -1,32 +1,32 @@
 {
- "admin": "1549211c8a4d",
- "admin-ai": "82bb18a4b3c7",
+ "admin": "252a120857b9",
+ "admin-ai": "69ef6a90a75d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "91c89240"
+   "6175c931"
   ],
   "tokens": [
    "AI 編集のトークン",
    "cd1b95f6"
   ]
  },
- "admin-boards": "aa6ac4f1db64",
+ "admin-boards": "1f0f47740b77",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "70eedeae"
+   "d1ad8281"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "7defc7ee46c2",
+ "admin-emblem": "38c2864ace3f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3e923289"
+   "51092322"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "8221e1ce"
+   "569a53a5"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "6bad67c46d2e",
+ "admin-now": "47a102e65e50",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b91a67ae"
+   "8c85244a"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "b43c11c0"
+   "ecc8a256"
   ],
   "term-panel": [
    "ライブログ",
-   "451b99ac"
+   "ef7e1d36"
   ]
  },
- "admin-system": "03dffc4047e3",
+ "admin-system": "4d5c2d368d6c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "03debf14"
+   "0bb779cc"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "24af8c39"
+   "d616c0f0"
   ]
  },
  "admin_marks": {},
- "heat": "bf05dc6aec0a",
+ "heat": "dbf4c0b0ec90",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "321ba88c"
+   "72043cec"
   ],
   "ranking": [
    "ランキング",
-   "99c4a97c"
+   "5e4871b8"
   ]
  },
- "index": "0287ec6a910a",
+ "index": "9b1e550773dd",
  "index_marks": {
   "front": [
    "トップ",
-   "59ce17df"
+   "e3fae22c"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "4e4fe97f"
+   "b62839e5"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "d3dab5b7"
+   "1423d046"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -196,6 +196,6 @@
    "b31d88e8"
   ]
  },
- "updated": "10.28 05:44",
+ "updated": "10.28 05:52",
  "wishlist": "bd867b9214b2"
 }

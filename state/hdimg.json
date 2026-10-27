@@ -54,6 +54,12 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261027ac/321/w480h641/20261027/c9ec-4013f2d4c5bd749fee69c1c0f029e2c1.jpg": {
+  "w": 480,
+  "h": 641,
+  "target": 720,
+  "v": 3
+ },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
@@ -66,12 +72,6 @@
    960
   ],
   "why": "看不清"
- },
- "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
  },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
@@ -3521,12 +3521,6 @@
   "target": 1280,
   "v": 3
  },
- "https://thepeoplesmovies.com/wp-content/uploads/2026/10/Harry-Potter-HBO-2026.1.jpg": {
-  "w": 740,
-  "h": 467,
-  "target": 720,
-  "v": 3
- },
  "https://thesource.com/wp-content/uploads/2026/10/Screenshot-2026-10-24-at-3.30.47-PM.jpg": {
   "w": 852,
   "h": 458,
@@ -3662,12 +3656,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.5C92Ku7vfec32N7T7QXo7g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3744,11 +3732,17 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.Ruz96ApZwC1D3kw_rQhncQ&pid=News&w=700": {
+ "https://www.bing.com/th?id=ONUT.O7nhoPckd7mZBKLAyPiZtQ&pid=News&w=1024": {
+  "w": 700,
+  "h": 393,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.PRVjmeaYgromOHqxb7b3RQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
@@ -3868,6 +3862,12 @@
  "https://www.bing.com/th?id=ONUT.rxYOQ55apuDFWod0T4ZIjQ&pid=News&w=1200": {
   "w": 700,
   "h": 394,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.uvwWaSZZIHNLVN7zkrAr9Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
