@@ -2897,6 +2897,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static.digit.in/Samsung-Galaxy-S27-Pro-render.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://static.gosugamers.net/01/a5/ef/a3c6b6bbb5f78914840e3c1e4d1b2923f481e402996e80ff8f389e1415.jpg": {
   "w": 2400,
   "h": 1350,
@@ -3499,19 +3505,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.eoP1n-V7cn1I8RL2p9fIIQ&pid=News&w=768": {
-  "w": 700,
-  "h": 393,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.436,
-  "local": "pics/0a16a690ee6fb987.webp",
-  "out": [
-   1280,
-   719
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.h1__6WSmxo7D9Lx6uBvTaQ&pid=News&w=960": {
   "w": 700,
   "h": 700,
@@ -4004,6 +3997,12 @@
   "h": 389,
   "target": 1280,
   "v": 3
+ },
+ "https://www.techjuice.pk/wp-content/uploads/2026/10/samsungs-new-exynos-modem-could-improve-battery-life-in-galaxy-s27-techjuice-259011.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://www.techpowerup.com/img/XCcQ8Q7DB7qC3Ztf.jpg": {
   "w": 1707,

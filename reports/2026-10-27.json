@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "40581833ca03",
+ "edit_sig": "d148a5ac4cf8",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
@@ -519,22 +519,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-26",
-     "n": 18,
-     "source": "Digit",
-     "title": "Samsung Galaxy S27 series prices leaked: How much Galaxy S27 Ultra, S27 Pro and other phones may cost",
-     "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQUE8zcEdic0hYYXBHcUpFMURfUzJ3R0pKdWd0bmxtZFhGLVpWUGNPQjNycWhDOXlmYmp3Sm04WmtaeXVvMzJ3cU82a3hCclpyMlpKczlIOHhCaE9VRzYxZkFqeERMdm9BZHd2d3JJb2cxNGQ4U2VDbE9halV5UXdsVDhwVlRrRUdVQzlvUmloQlp2U3JNdGp3TEtkS25VOVNWQndtZUxxQUp4X3VOZGZ0XzVZRUl2VWRvZ1FqNVYyZHJHTVpHTEpKanB5X2lhZ1FGMncyczltUmF1cjA50gHjAUFVX3lxTE5aVFp5TDViV0ZRZzBJSXQzakRWWFJaMmU4VVdBZk5iUHc0SWM0WG1JTHJSdkhlOVplek1BcUF1MFRtQlhTSzFhRXEzc0FKcXJuREthWmlkMkIxNUhWOTE3WXAxU2xoWkRXUDBYLTkxcklXZ2FSVlJubmdyZzRKUUxJNUFWNWpfWHB3MUdCNm9wZGdMb3NrV0FtTXZmcTFPZzhieFdaRUpGVDU0OVdFSk1BV3V6aDhwN1ZQMkdNNGhiNG91N19QQUo4VUlVbXNLVVE5aXJXUTVPRUprbkhMQlo0SUFN?oc=5"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 19,
-     "source": "TechJuice",
-     "title": "Samsung’s New Exynos Modem Could Improve Battery Life in Galaxy S27",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNWGcwRGtfTU1uT0Y5ZWNRdVh4dGJkemhBd29ybWJlNnU4dzdDMXZQY3JiMkNQTWZYeFF1eXVuZVpGV3VUbHkxMGk4RDU0WU9MNmhQOWpPSFhhTGZZTGVyakIwaFZkNmRMQ0xhYXlheURCRzBZUy00VXZmTkxudWptRlVIdFlmY091bG1neXVyZFNMNEFqRVRN?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -585,6 +569,26 @@
      "image": "https://sundayguardianlive.com/wp-content/uploads/2026/10/untitled-design-2026-10-22t133839925.png",
      "image_via": "og:image",
      "url": "https://sundayguardianlive.com/tech-news/samsung-galaxy-s27-ultra-vs-galaxy-s26-ultra-which-one-is-better-check-snapdragon-processor-display-ram-camera-battery-storage-price-all-you-need-to-know-310045/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "Samsung Galaxy S27 series prices leaked: How much Galaxy S27 Ultra, S27 Pro and other phones may cost",
+     "highlight": "",
+     "image": "https://static.digit.in/Samsung-Galaxy-S27-Pro-render.png",
+     "image_via": "og:image",
+     "url": "https://www.digit.in/news/mobile-phones/samsung-galaxy-s27-series-prices-leaked-how-much-galaxy-s27-ultra-s27-pro-and-other-phones-may-cost.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-21",
+     "headline": "Samsung’s New Exynos Modem Could Improve Battery Life in Galaxy S27",
+     "highlight": "",
+     "image": "https://www.techjuice.pk/wp-content/uploads/2026/10/samsungs-new-exynos-modem-could-improve-battery-life-in-galaxy-s27-techjuice-259011.jpg",
+     "image_via": "og:image",
+     "url": "https://www.techjuice.pk/samsungs-new-exynos-modem-could-improve-battery-life-in-galaxy-s27/",
      "weight": "normal"
     }
    ],
@@ -785,7 +789,7 @@
      "headline": "Sideshow Shares First Look at Hot Toys Deluxe The Mandalorian and Grogu Set",
      "highlight": "Hot Toys",
      "image": "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-02-Oct26.jpg",
-     "image_via": "正文图",
+     "image_via": "正文图（2 枚から）",
      "url": "https://www.jedinews.com/collecting/articles/sideshow-shares-first-look-at-hot-toys-deluxe-the-mandalorian-and-grogu-set/",
      "weight": "normal"
     }

@@ -1,51 +1,5 @@
 [
 {
-"at": "2026-10-25T13:48:16+00:00",
-"text": "2026-10-25 第 3 バッチを出刊：日本顶级网球赛事（1 版面・10 本・今日の整理待ちは全部終わり） · token 新規入力 4,658・キャッシュ読み 56.1万・出力 1,952",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.34,
-"mem_total": 16872804352,
-"mem_free": 15936241664,
-"disk_used": 10782060544,
-"disk_free": 30501109760,
-"disk_total": 41283170304,
-"peak": 271040512
-},
-"batch": 3,
-"boards": [
-"日本顶级网球赛事"
-],
-"stories": 10,
-"left": 0,
-"edited": 21,
-"run": 1792934850.7305028,
-"tok": {
-"in": 14,
-"cw": 4644,
-"cr": 561461,
-"out": 1952,
-"calls": 7,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 568071,
-"secs": 1246,
-"run_tok": {
-"in": 48,
-"cw": 54567,
-"cr": 1735351,
-"out": 6504,
-"calls": 24,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-10-25T14:36:09+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-25T14:48:21+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1949,5 +1903,42 @@
 "calls": 26,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-27T03:48:40+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-10-27T03:53:26+00:00",
+"text": "2026-10-27 第 1 バッチを出刊：三星手机（1 版面・7 本・残り 5 版面） · token 新規入力 4.3万・キャッシュ読み 63.8万・出力 2,044",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.16,
+"mem_total": 16872812544,
+"mem_free": 15920959488,
+"disk_used": 10730008576,
+"disk_free": 30592499712,
+"disk_total": 41322508288,
+"peak": 287760384
+},
+"batch": 1,
+"boards": [
+"三星手机"
+],
+"stories": 7,
+"left": 5,
+"edited": 21,
+"run": 1793072505.572571,
+"tok": {
+"in": 20,
+"cw": 43228,
+"cr": 638040,
+"out": 2044,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 683332
 }
 ]
