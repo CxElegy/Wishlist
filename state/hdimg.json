@@ -1677,6 +1677,19 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
+  "w": 640,
+  "h": 480,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.487,
+  "local": "pics/6da94d65020c72a9.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "看不清"
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1862,12 +1875,6 @@
   "h": 675,
   "target": 1280,
   "v": 3
- },
- "https://media.image.infoseek.co.jp/shared/barter/2512_Pandahoro_650x150.png": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
  },
  "https://media.ixbt.games/1600x900/smart/jpeg/ixbt-data/1731240/media-3ca3619f2374376db4722d60e0fde93c51c68d66a05846eaa3cc0f00bfd72a8e.png": {
   "w": 1600,
@@ -3321,22 +3328,15 @@
   "target": 720,
   "v": 3
  },
- "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
-  "w": 647,
-  "h": 431,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.452,
-  "local": "pics/9a1ea62ec61eeb92.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
- },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://wotpack.ru/wp-content/uploads/2026/10/v-zzz-pokazali-geympley-pevitsy-galovianki-i-sanbringer.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -3572,6 +3572,12 @@
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.zId3hMbx0JrrKyI53wiH-A&pid=News&w=691": {
+  "w": 472,
+  "h": 700,
   "target": 720,
   "v": 3
  },
