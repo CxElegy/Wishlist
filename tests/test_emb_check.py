@@ -18,6 +18,21 @@ class EmbCheck(unittest.TestCase):
         ImageDraw.Draw(clear).ellipse((20, 20, 80, 80), fill=(200, 0, 0, 255))
         self.assertFalse(emb_check.white_box(clear))      # 地を抜いたもの
 
+    def test_faces_pins_detector_and_reports_drift(self):
+        import face_id
+        eng = face_id.engine()
+        if eng is None:
+            self.skipTest("顔のモデルが手元にない")
+        emb_check.DRIFT.clear()
+        eng[0].setScoreThreshold(0.5)
+        try:
+            emb_check._faces(Image.new("RGBA", (80, 80), (200, 120, 90, 255)))
+            self.assertEqual(emb_check.DRIFT, [0.5])   # 戻し忘れを数える
+            self.assertAlmostEqual(eng[0].getScoreThreshold(), face_id.SCORE, places=5)   # 測りは標準で
+        finally:
+            eng[0].setScoreThreshold(face_id.SCORE)
+            emb_check.DRIFT.clear()
+
     def test_cut_edge(self):
         im = Image.new("RGBA", (100, 100), (0, 0, 0, 0))
         ImageDraw.Draw(im).rectangle((10, 0, 90, 99), fill=(90, 60, 40, 255))
