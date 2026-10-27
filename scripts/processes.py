@@ -37,7 +37,7 @@ COMPONENTS = {
     # ---- モデル
     "rembg": {"kind": "model", "name": "rembg birefnet-general-lite", "spec": "ONNX 224MB · 1 枚ずつ · 出力 420×520 WEBP",
               "what": "人物・キャラを背景から切り抜く（emblem.cut_out）。onnxruntime のメモリ池は切ってある"},
-    "yunet": {"kind": "model", "name": "YuNet face_detection_yunet_2023mar", "spec": "入力 320×320 · score 0.8 · NMS 0.3",
+    "yunet": {"kind": "model", "name": "YuNet face_detection_yunet_2023mar", "spec": "入力 320×320 · score 0.8（face_id.SCORE）· NMS 0.3。弱い測り〔0.5・0.32〕は測ったあと必ず 0.8 に戻す",
               "what": "顔を見つける（face_id.py、OpenCV FaceDetectorYN、HuggingFace から。検出器はスレッドごとに別：共有すると 6 本並列で Segmentation fault）"},
     "sface": {"kind": "model", "name": "SFace face_recognition_sface_2021dec", "spec": "128 次元 · cos ≥ 0.363 で本人",
               "what": "顔の特徴量で同じ人か比べる（face_id.py）。基準 = 記事の代表画像、合わなければ多数決"},

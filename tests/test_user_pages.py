@@ -242,6 +242,26 @@ class Loader(unittest.TestCase):
         for w in ("'集めています'", ".top.start .hb", ".startgo", "pnx", "my_keywords_set", "calm.start"):
             self.assertIn(w, body)
 
+    def test_every_baked_empty_wording_is_known(self):
+        # 0 個の人に焼く「空」の言い回しは、足した直後に画面の中で食い違う元（本人のページ 2 枚 = index・settings の全部）。
+        # 焼く側に新しい言い回しが増えたら、ownWait（直す）と ux_check.PENDING_BAD（通しで数える）の両方に足さないと落ちる（2026-10-27 別の目の指摘）
+        import re
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import ux_check
+        pages = {}
+        html = user_pages.build("c@example.com", {"picks": []}, {}, [], None, {}, 0, {}, [], {}, pages)
+        found = set()
+        for h in [html, pages["settings.html"]]:
+            txt = re.sub(r"<[^>]+>", "\n", h)
+            found |= {m.strip() for m in re.findall(r"[^\n。]*(?:まだ何も|最初の 1 つ|選ぶボタンは)[^\n。]*", txt) if len(m.strip()) < 60}
+        self.assertTrue(found)
+        for w in found:
+            self.assertTrue(any(b in w for b in ux_check.PENDING_BAD), f"通しの点検が知らない空の言い回し：{w}")
+        body = render.AUTH_JS[render.AUTH_JS.index("function ownWait(picks)"):render.AUTH_JS.index("function soleBox()")]
+        self.assertIn(".startgo", body)   # 設定ページの「まだ何も…」＋ボタンはここで外す
+        self.assertIn(".top.start .hb", body)   # 最初の画面の「最初の 1 つを選ぼう」はここで書き換える
+        self.assertIn("calm.start", body)   # 静かな版面の「選ぶボタンは上のポスター…」はここで隠す
+
     def test_one_box_and_bounce_count(self):
         # 素の箱はいつも 1 つ（soleBox）・殻に入った回数でなく跳ね返された回数で止める（me.html の back が書く）
         js = render.AUTH_JS
