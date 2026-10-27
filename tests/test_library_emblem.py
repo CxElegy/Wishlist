@@ -170,14 +170,14 @@ class Fill(unittest.TestCase):
         bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv}}},   # 済み・今の規則 → 飛ばす
               {"id": 9, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv - 1}}},   # 済みでも名簿の規則が前の版 → 途中より先に数え直す
               {"id": 8, "config": {"emblem_state": {"state": "ok", "at": 0, "have": 3}}},   # 済みでも前の版の規則 → 作り直し
-              {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES}}},
+              {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V}}},   # 今の規則で届かなかった → 24 時間待つ
               {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2}}},   # 前の版の規則 → すぐ
               {"id": 3, "config": {"emblem_state": {"state": "failed", "at": 0}}},   # 0 枚 → 途中より先
               {"id": 4, "config": {"emblem_state": {"state": "running", "at": now, "have": 5}}},
               {"id": 7, "config": {"emblem_state": {"state": "running", "at": now, "have": 0}}},
               {"id": 5, "config": {}},
               {"id": 10, "config": {"emblem_fandom": "jjk", "emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES}}},   # 届かなかったキャラの版面も名簿の版で
-              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES, "bv": emblem_fill.BROKEN_V}}},   # 手がかりなし → 24 時間待つ
+              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V}}},   # 手がかりなし → 24 時間待つ
               {"id": 12, "config": {"emblem_state": {"state": "failed", "at": now - 60, "have": 49, "v": le.RULES, "nv": nv}}}]   # 公開の箱の小元素を今の壊れ方の規則で見ていない → 待たない
         self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 10, 12, 9, 4, 8, 6])
 
