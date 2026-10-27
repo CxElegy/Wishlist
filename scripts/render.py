@@ -515,6 +515,7 @@ button{font-family:inherit}
 .emb img.body{--bh:calc(var(--leg) / var(--bl));--bz:min(var(--bh), var(--bmax));height:var(--bz);width:calc(var(--bz) * var(--ba));max-width:none;
  margin-bottom:0;  /* 絵の下端を帯の線に（足より下の尻尾・武器・裾があれば、その分だけ足が少し上がる）。帯の線より下へは出さない：下のニュースの字に重ねず、切れもしない。高さは --bmax まで */
  margin-right:calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc)))}  /* 重心を右端から --anc のところに：武器・尻尾が長くても体は同じ位置 */
+.emb{--nbt:136px;--nw:190px}.emb img.nb{--nz:min(calc(var(--nbt) / var(--nh)),calc(var(--nw) / var(--na)),calc(var(--nbt) * 1.6));height:var(--nz);width:auto;max-width:none;object-fit:fill;margin-bottom:calc(var(--nz) * var(--ng) * -1)}  /* 顔のない絵（怪物・覆面・物）：顔でなく体の枠（不透明な所の外接枠 x.bb）でそろえる。高さ = --nbt ÷ 枠の高さの割合（幅は --nw まで、1.6 倍まで）、下の端を帯の線に。emblem_face.none_kind の ①② */
 .emb img.body.cut{--bh:calc(var(--legc) / var(--bl));margin-bottom:0}  /* 上半身に切ったもの：目から足の裏（画像の外）を --legc にそろえ、切り口を帯の線に。顔の大きさがほかの胸像と同じくらい */
 .emb img.logo{height:62%;max-width:150px}.emb img.logo.wide{height:auto;width:220px;max-width:220px;margin-bottom:12%}  /* 横長の文字のロゴは幅で大きく */
 .emb img.icon{height:70%}  /* ロゴ・物のアイコン：人物より小さめ */
@@ -531,7 +532,7 @@ button{font-family:inherit}
 @keyframes embdrift{from{translate:0 0}to{translate:0 -36px}}  /* スクロールに合わせてゆっくり浮く。上へだけ動く（下へ動くと帯の下のニュースの字に重なる） */
 .has-emb .band{padding-right:260px}  /* 小元素の右からの位置（〜52px）＋幅（〜190px）＋傾きの分 */
 .has-emb .deco{display:none}  /* 小元素がその版面の飾り：題字横の装飾字は出さない（右に寄せた数字と重なるため） */
-@media (max-width:600px){.emb{height:100px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
+@media (max-width:600px){.emb{height:100px;--nbt:88px;--nw:140px;right:8px;--leg:74px;--legc:186px;--anc:40px;--bmax:130px}.emb img{max-width:140px}.emb img.logo.wide{width:130px;max-width:130px}.has-emb .band{padding-right:118px}
  .emb img.body{margin-right:max(calc(var(--anc) - var(--bz) * var(--ba) * (1 - var(--bc))),-22px)}}  /* 横に長い立ち絵（武器・尻尾）が画面の右へ 1〜11px はみ出す（ux_check E5：绝区零・Astrae Oratio）：右へ出す分を 22px までに */
 .emb img{transition:opacity .25s ease-out,transform .25s ease-out}
 .emb-fade .emb img:not(.ld){opacity:0;transform:translateY(8px)}  /* 読み込みが終わる（decode）まで見せず、終わったら下から少し上がって現れる：空 → いきなり絵、の「パッ」をなくす */
@@ -1268,10 +1269,12 @@ def _emblem_img(a):
     顔の割合（fs）が基準より大きい（アップの）ものは小さく表示して、どの版面でも顔が同じくらいの大きさに見えるように。"""
     m = a.get("m")   # 顔の大きさをそろえる倍率（emblem_face.fit）：1 未満は小さく（アップ）、1 以上は拡大して下を切る（.fz）
     k = (f' style="--k:{m:.3f}"' if m < 1 else f' style="--m:{m:.3f}"') if m else f' style="--k:{min(1, FACE_SHARE / a["fs"]):.3f}"' if a.get("fs") else ""
+    if a.get("nb"):   # 顔なし：不透明な所の高さをどの絵も同じに、下の端を帯の線に
+        k = ' style="--nh:{};--ng:{};--na:{}"'.format(*a["nb"])
     if a.get("body"):   # 全身：目から足の裏までの長さをどのキャラも同じに、足の裏を帯の線に
         b = a["body"]
         k = ' style="--bl:{:.3f};--bf:{:.3f};--bc:{:.3f};--ba:{:.3f}"'.format(b[5] if len(b) > 5 else b[1] - b[0], b[1], b[2], b[3])
-    body_cls = (" body cut" if a["body"][1] > 1 else " body") if a.get("body") else " fz" if m and m >= 1 else ""
+    body_cls = (" body cut" if a["body"][1] > 1 else " body") if a.get("body") else " nb" if a.get("nb") else " fz" if m and m >= 1 else ""
     img = (f'<img class="{a["shape"]}{body_cls}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
            f'onerror="var s=this.closest(\'.sec\');if(s)s.classList.remove(\'has-emb\');this.closest(\'.emb\').remove()">')
     c = a.get("crop")
@@ -1314,7 +1317,12 @@ def _emblem(items, ring="accent"):
                 a["m"] = m
                 a["fs"] = float(fc[0])   # 点検（ux_check E14）が「顔の高さ × 倍率」を数える材料。お客さまの版面は x.fs がない
             else:
-                a["nf"] = 1   # 顔なし（物・生き物・覆面）：測ったがない。大きさはそのまま
+                a["nf"] = 1   # 顔なし（物・生き物・覆面）：測ったがない
+                bb, nk = x.get("bb"), x.get("nk")
+                if nk in emblem_face.NONE_KINDS:
+                    a["nk"] = nk   # ①看板の姿・②作品の記号・③替える対象（emblem_face.none_kind）。点検 E17 が数える
+                if isinstance(bb, list) and len(bb) == 4 and all(isinstance(v, (int, float)) for v in bb) and 0 <= bb[0] < bb[1] <= 1 and 0 <= bb[2] < bb[3] <= 1:
+                    a["nb"] = [round(bb[1] - bb[0], 3), round(1 - bb[1], 3), round(fc[4] / fc[5], 3)]   # 顔でなく体の枠（不透明な所の高さ・下の余白・縦横比）でそろえる（.nb）
         if x.get("shape") in ("logo", "icon"):
             a["shape"] = x["shape"]
         elif a["shape"] == "cutout" and emblem_face.logo_named(x):
@@ -1742,8 +1750,8 @@ EMB_JS = """
       const a = alts[Math.floor(Math.random() * Math.min(alts.length, 3))];   // 最初に出る 1 枚は知られている順の 1〜3 位から
       const n = img.cloneNode(); n.src = a.src;
       const whole = a.shape === 'badge' && !a.crop && (a.plate || a.ar && (a.ar < 0.95 || a.ar > 1.6));   // render.CARD_AR：カードと比率が離れたら切らない
-      n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : a.m >= 1 ? ' fz' : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
-      n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';   // a.m = emblem_face.fit
+      n.className = a.shape + (a.body ? (a.body[1] > 1 ? ' body cut' : ' body') : a.nb ? ' nb' : a.m >= 1 ? ' fz' : '') + (whole ? ' whole' : '') + (a.shape === 'logo' && a.ar && a.ar < 0.5 ? ' wide' : '');   // 0.5 = render.WIDE_LOGO
+      n.style.cssText = a.body ? '--bl:' + (a.body[5] || (a.body[1] - a.body[0])) + ';--bf:' + a.body[1] + ';--bc:' + a.body[2] + ';--ba:' + a.body[3] : a.nb ? '--nh:' + a.nb[0] + ';--ng:' + a.nb[1] + ';--na:' + a.nb[2] : a.m ? (a.m < 1 ? '--k:' : '--m:') + a.m.toFixed(3) : a.fs ? '--k:' + Math.min(1, 0.32 / a.fs).toFixed(3) : '';   // a.m = emblem_face.fit
       if (a.shape === 'badge' && a.crop) {
         const c = document.createElement('span'); c.className = 'crop';
         c.style.cssText = '--cx:' + a.crop[0] + ';--cy:' + a.crop[1] + ';--cw:' + a.crop[2] + ';--ar:' + (a.ar || 1);
@@ -5621,6 +5629,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
 # 🔄 同じ人の別の写真に替える（_emblem_swap：今の写真は emblem_reject・人は emblem_redo に残す）／📌 この写真で固定（_emblem_lock：lock: true）／
 # ✕ この人ごと外す（_emblem_reject：理由 1 つ必須）。下の帯でまとめて submit_item の edit に送る → requests.yml の take-items が digest.take_item_requests で items.yaml へ。
 EMM_FLAG = {"small": "顔が小さい", "big": "顔が大きい（アップ）", "short": "下が足りない（目の線が合わない）", "none": "顔なし"}
+EMM_NK = {"keep": "顔なし ① 看板の姿", "symbol": "顔なし ② 作品の記号", "replace": "顔なし ③ 替える対象"}   # emblem_face.NONE_KINDS
 
 
 def _emm_img(x):
@@ -5628,7 +5637,7 @@ def _emm_img(x):
     顔が小さすぎる・大きすぎてそろえきれないものは札をつける（選び方の規則で同じ人の別の写真に替える対象）。顔なしは今までどおり全体を見せる。"""
     v = emblem_face.view(x["face"]) if x.get("face") else None
     if not v:
-        return f'<img src="{e(x["image"])}" alt="" loading="lazy">' + (f'<em class="emm-fl">{EMM_FLAG["none"]}</em>' if x.get("face") else "")
+        return f'<img src="{e(x["image"])}" alt="" loading="lazy">' + (f'<em class="emm-fl">{EMM_NK.get(x.get("nk"), EMM_FLAG["none"])}</em>' if x.get("face") else "")
     return (f'<img class="fv" src="{e(x["image"])}" alt="" loading="lazy" data-eye="{v["eye"]}" style="--fm:{v["m"]};--fw:{v["w"]};--fx:{v["ox"]};--fy:{v["oy"]}">'
             + (f'<em class="emm-fl">{EMM_FLAG[v["flag"]]}</em>' if v["flag"] else ""))
 
@@ -5678,7 +5687,10 @@ def _admin_emm(rows):
              '<div class="emm-bar" id="emm-bar" role="region" aria-label="小元素の依頼" hidden><b id="emm-n"></b>'
              '<button type="button" id="emm-go">送る</button><button type="button" id="emm-clr">全部取り消す</button>'
              '<small id="emm-msg" aria-live="polite"></small></div>')
-    return (f'<div class="emm-boards" role="group" aria-label="版面">{"".join(btns)}</div>{"".join(boards)}{sheet}')
+    from collections import Counter
+    nk = Counter(x.get("nk") for r in rows for x in r["emblems"] if x.get("nk") in EMM_NK)
+    nks = (f'<p class="emm-nk">顔のない小元素：' + "・".join(f'{EMM_NK[k]} {nk[k]}' for k in EMM_NK) + '（① ② は体の枠でそろえて残す・③ は同じ人の別の絵に替える）</p>') if nk else ""
+    return (f'{nks}<div class="emm-boards" role="group" aria-label="版面">{"".join(btns)}</div>{"".join(boards)}{sheet}')
 
 
 def _admin_emx_stats(rows):
@@ -6184,6 +6196,7 @@ th .nx-go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;marg
 .bgc .bg-cd{display:block;font:700 var(--fs-label) var(--font-mono);color:var(--alert)}
 .bgc .nx-go{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px}.bg-redo{padding:5px 10px}
 .bg-th img{width:26px;height:26px;object-fit:cover;object-position:top;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}.bg-th img.fit{object-fit:contain;border-radius:4px;padding:2px}
+.emm-nk{margin:0 0 10px;font-size:.9em}
 .emm-boards{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .emm-bt{background:var(--card);border:2px solid var(--ink);padding:5px 14px;font:900 14px var(--font-sans);color:var(--ink);cursor:pointer}
 .emm-bt small{margin-left:6px;font:700 var(--fs-label) var(--font-mono);opacity:.6}

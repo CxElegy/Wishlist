@@ -235,7 +235,7 @@ def unbroken(emblems, photo, fetch=None):
         if f"/storage/v1/object/public/{BUCKET}/" in u and x.get("shape") not in ("logo", "icon", "badge"):   # 自分で切り抜いて上げたものだけ
             try:
                 im = Image.open(io.BytesIO(fetch(u)))
-                if emblem_fill.too_small(im, bool(x.get("body"))) and small < emblem_fill.SMALL_DROP_MAX:   # 店長と同じ：1 回に外す小さい画像の上限
+                if (emblem_fill.too_small(im, bool(x.get("body"))) or emblem_fill.replace_nf(x)) and small < emblem_fill.SMALL_DROP_MAX:   # 店長と同じ：1 回に外す小さい画像の上限
                     small += 1
                     continue
                 if emblem_fill.broken_image(im, photo):
