@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "0ced6c57a889",
+ "edit_sig": "564826161753",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -514,17 +514,21 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "The Art of Star Wars: The Mandalorian and Grogu offers a look at the creative journey of Jon Favreau's 2026 film.",
      "date": "2026-10-27",
-     "n": 1,
+     "headline": "The Mandalorian is back this November with a new Star Wars adventure",
+     "highlight": "this November",
+     "image": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg?resize=1200,630",
+     "image_via": "同一件事的别家报道 www.superherohype.com",
      "source": "Skoar! on MSN",
-     "title": "The Mandalorian is back this November with a new Star Wars adventure",
-     "url": "https://www.msn.com/en-in/news/other/the-mandalorian-is-back-this-november-with-a-new-star-wars-adventure/ar-AA2g9zuc"
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.msn.com&sz=128",
+     "url": "https://www.msn.com/en-in/news/other/the-mandalorian-is-back-this-november-with-a-new-star-wars-adventure/ar-AA2g9zuc",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -568,40 +572,6 @@
     "bg": "#15131C",
     "fg": "#EEEAF4",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-21",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "#台独给周杰伦扣帽子国台办回应# 那些质疑他的，可曾看过这个百度百科？ ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFA3SGdjYmJfTlluNENMLWpaWFBVcEFHanBlbzRjWVk5cTBTc210ek5oZTNiaERiYmI4NDZsM1F0dzAtdDJIMnJlZlRhOWFDOFV3UjhDNDVNTEc3U2ZzTHpWU0FWaw?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 2,
-     "source": "www.mrjjxw.com",
-     "title": "周杰伦、Lisa等明星都爱穿，一枚戒指20万元，一条牛仔裤20万元，还经常缺货！一个无代言的品牌，怎么火出圈的？",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5vb0NlbzJLLThvZ1MzUmZZeEp1ZkFxanNYdktKeTBGMWEtZ1JBbkhkcEkxQ19abDNjV2lyWHA0TkM5SVYtWFBLTFlCS3dNVFlldFh1aVBLM291VGdLZmRycDhwWkhWQQ?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "周杰倫",
-   "theme": {
-    "accent": "#2F5F8F",
-    "alt_accent": "#8DB6DE",
-    "alt_bg": "#14202E",
-    "alt_fg": "#EEF1F4",
-    "bg": "#F6F2EA",
-    "fg": "#1D2430",
-    "font": "sans",
     "split": true
    }
   },
@@ -804,6 +774,31 @@
     "alt_fg": "#F4EEE4",
     "bg": "#F7EFE9",
     "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-27",
+    "headline": "周杰伦转发点赞“中国歌手”身份介绍 国台办回应",
+    "url": "https://k.sina.com.cn/article_7879923551_m1d5ae175f03301tei0.html?cre=tianyi&mod=pcent&loc=8&r=0&rfunc=14&tj=cxvertical_pc_ent&tr=12&from=ent"
+   },
+   "name": "周杰伦",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "周杰倫",
+   "theme": {
+    "accent": "#2F5F8F",
+    "alt_accent": "#8DB6DE",
+    "alt_bg": "#14202E",
+    "alt_fg": "#EEF1F4",
+    "bg": "#F6F2EA",
+    "fg": "#1D2430",
     "font": "sans",
     "split": true
    }

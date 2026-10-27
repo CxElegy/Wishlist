@@ -189,7 +189,9 @@
   "MMORPG 新作": 3,
   "滑雪": 3,
   "绝区零": 3,
-  "FROM": 2
+  "FROM": 2,
+  "周杰伦": 2,
+  "The Mandalorian": 1
  },
  "三星手机": [
   {
@@ -295,6 +297,18 @@
     2
    ],
    "image": "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200"
+  }
+ ],
+ "周杰伦": [],
+ "The Mandalorian": [
+  {
+   "headline": "The Mandalorian is back this November with a new Star Wars adventure",
+   "highlight": "this November",
+   "blurb": "The Art of Star Wars: The Mandalorian and Grogu offers a look at the creative journey of Jon Favreau's 2026 film.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }
