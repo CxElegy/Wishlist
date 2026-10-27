@@ -73,6 +73,12 @@
   ],
   "why": "看不清"
  },
+ "http://wx1.sinaimg.cn/middle/8b511c18ly1iihc12wblpj20qo0w1jwg.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
   "h": 1297,
@@ -834,6 +840,12 @@
   "target": 720,
   "v": 3
  },
+ "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt859507d51581f713/6ae0fbc4f6e3e04aa497e290/gtaviluciaweightsfeatured.jpg?disable=upscale&width=1200&height=630&fit=crop": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://fieldlevelmedia.com/wp-content/uploads/2026/10/11882973-1024x696.jpg": {
   "w": 1024,
   "h": 696,
@@ -1020,12 +1032,6 @@
   "h": 810,
   "target": 720,
   "v": 3
- },
- "https://i.insider.com/6ae0ba3e3ae265b597b027f4?width=1200&format=jpeg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
  },
  "https://i.ytimg.com/vi/QtHFx2ReeiI/maxresdefault.jpg": {
   "w": 1280,
@@ -3300,6 +3306,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.dualshockersimages.com/wordpress/wp-content/uploads/2026/10/players-are-freaking-out-over-gta-6s-download-size-1.jpg?w=1600&h=900&fit=crop": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://static0.gamerantimages.com/wordpress/wp-content/authors/66d60c58971a1-Dominik%20B%20-%20Edited.jpg": {
   "w": 2000,
   "h": 2000,
@@ -3738,12 +3750,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.PRVjmeaYgromOHqxb7b3RQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
   "h": 538,
@@ -3907,19 +3913,6 @@
   "h": 460,
   "target": 720,
   "v": 3
- },
- "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102732098654.jpg": {
-  "w": 690,
-  "h": 460,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.444,
-  "local": "pics/cfcbb5c221193afc.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
  },
  "https://www.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg": {
   "w": 1200,
