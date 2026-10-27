@@ -6,7 +6,7 @@
 ## いちばん先（目標：お客さまが登録して、自分の版面を毎日読める。HARNESS「目標から決める」）
 
 - [x] 【別の目の指摘】ux_check の小元素 ✗（E2・E7・E10）を原因まで（https://github.com/CxElegy/Wishlist/pull/559 ・f1f2 2026-10-27：E2 は guest・test-a とも 0〔コード変更なし〕。E7〔Gin Ichimaru・Frieren〕の原因＝`emblem_face._boxes` が共有の顔検出器のしきい値を 0.5/0.32 に書き換えて戻さず、額切れ判定が前の測りしだいで変わっていた〔487 枚中 7 枚〕→ `face_id.SCORE` に戻す＋試験。本番 ux_check guest・test-a・test-b・test-c × 1400/390：E7 0、test-c は全ページ ✓〔最初の画面は 1400/390 で目で確認〕。残り E10 9・E15 4〔後台の回待ち〕・E18 8〔test-a、短い辺 256px 未満〕は下の段）。連動：焼く空の言い回しを数える試験 test_every_baked_empty_wording_is_known〔本人の焼くページは index・settings の 2 枚、通しが両方を見る〕。画面の文字は app_users.ui_lang〔今は全員 ja〕で、JS の日本語を言語表にする段は下
-- [~] 同じ測りを順番で変えない点検を ux_check に：E7 が ✗ のとき、その画像を検出器を標準に戻して測り直し、違えば「順番しだい」と出す（emb_check.cut_edge）。同じ型：emblem.py の face_id.engine() を使う 6 か所が標準値を前提にしていること（開始 2026-10-27 09:45 JST・持ち主 f2）
+- [x] 同じ測りを順番で変えない点検を ux_check に：E7 が ✗ のとき、その画像を検出器を標準に戻して測り直し、違えば「順番しだい」と出す（emb_check.cut_edge）。同じ型：emblem.py の face_id.engine() を使う 6 か所が標準値を前提にしていること（https://github.com/CxElegy/Wishlist/pull/562 ・f2 2026-10-27：emb_check._faces が測る前に検出器のしきい値を標準へ戻し、戻し忘れを数えて「E7 順番しだい」と出す。試験つき。本番 guest 1400/390：E7 0。setScoreThreshold は scripts で emblem_face の 1 か所だけ）
 - [ ] test-a の E18（短い辺 256px 未満 8：Frieren 247×434・222×262・ポケモン 255×331…）を、お客さまの版面の小元素を取る規則で（取るとき短い辺 256px 未満を断る〔店長と同じ規則〕か、同じ人の大きい画像へ替える）。店長の emblem の最小の辺の規則と同じ部品で
 - [ ] 画面の日本語の文字を言語表に（AUTH_JS の ownWait・drawMine の日本語の文字は直書き。app_users.ui_lang が ja 以外になる前に）：まず直書きの数を数え、SETTINGS_JA と同じ表へ。急ぎではない
 
