@@ -1148,6 +1148,12 @@ def official_site(item):
     return (m.group(1) + "/") if m else None
 
 
+def fandom_sourced(x):
+    """出どころが Fandom の小元素か。公式サイトから取り直した行の why「公式サイトの立ち絵：Fandom から取り直し」は数えない（数えると毎回取り直す・E21 が減らない）。"""
+    w = x.get("why") or ""
+    return "Fandom" in w and "公式サイトの" not in w
+
+
 def official_for(item, x):
     """顔のアップを胸像に替える全部の入口（gather の fit_all・例外時の控え・bust_replacement）が公式を先に探すための 1 つの口。"""
     try:
