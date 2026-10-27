@@ -2415,6 +2415,16 @@ def close_top(subject, who):
     return _name_key(subject) in keys or _name_key(re.sub(r"\s*[(（].*?[)）]", "", _base_subject(subject))) in keys
 
 
+def bust_fields(item, x, url, slug, fs):
+    """胸像に入れ替えた小元素の書き込み分（店長・お客さま共通）。fs は公式の立ち絵〔顔が測れず上半身に切った〕のとき None → 書かない（顔は測り直しで入る）。"""
+    off = urllib.parse.urlparse(url).netloc == urllib.parse.urlparse(emblem.official_site(item) or "").netloc
+    y = {"image": f"emblems/{slug}.webp", "source": url, "shape": "cutout",
+         "why": f"{x['subject']}（{'公式サイトの絵' if off else 'Fandom のページの胸像'}：顔だけのアップの代わり）"}
+    if fs is not None:
+        y["fs"] = fs
+    return y
+
+
 def bust_replacement(item, x, skip, log=print, orig=None):
     """顔だけのアップ x の代わりの胸像を、同じ Fandom のページの別の画像（公式イラスト・ギャラリーのアニメの立ち絵）から探す。
     外した画像・今ある画像（skip）は探さない。顔だけのアップ・壊れた切り抜きはまた外す。
@@ -2432,7 +2442,7 @@ def bust_replacement(item, x, skip, log=print, orig=None):
         except Exception as e:
             log(f"  [胸像] {x['subject']}：{e}")
             return None
-        if not got or got[2] is None:
+        if not got or (got[2] is None and got[0] not in official):   # fs なしは公式の立ち絵（顔が測れないアニメ絵を上半身に切った）だけ
             return None
         if closeup_of(got[1]) is not True and not broken_image(got[1], False):
             return got
@@ -2496,8 +2506,7 @@ def stage_closeups(item, bad, log=print):
                 emblem.save_cut(out, slug)
                 slugs[x["subject"]] = x.get("source") or x["image"]
                 y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar")}
-                y.update(image=f"emblems/{slug}.webp", source=url, shape="cutout", fs=fs,
-                         why=f"{x['subject']}（{'公式サイトの絵' if urllib.parse.urlparse(url).netloc == urllib.parse.urlparse(emblem.official_site(item) or '').netloc else 'Fandom のページの胸像'}：顔だけのアップの代わり）")
+                y.update(bust_fields(item, x, url, slug, fs))
                 rows.append(y)
             elif not any(x is d for d in dropped):
                 rows.append(x)
