@@ -1,32 +1,32 @@
 {
- "admin": "6d88bc0b70e7",
- "admin-ai": "1ea91a917ef6",
+ "admin": "f16ac09c78c0",
+ "admin-ai": "0ff63657aedf",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "21f805e8"
+   "4fd24983"
   ],
   "tokens": [
    "AI 編集のトークン",
    "856a9110"
   ]
  },
- "admin-boards": "70ee632a9687",
+ "admin-boards": "ef2b10f7874d",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "bf00d78d"
+   "e8edc5af"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "5ac47a490345",
+ "admin-emblem": "f01e5b64a1ab",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f2015158"
+   "b84a228f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "52af10027e47",
+ "admin-now": "1a413dd0e211",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "a920eb42"
+   "263da5af"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "ecc8a256"
+   "e8e410c7"
   ],
   "term-panel": [
    "ライブログ",
-   "5345798e"
+   "b9952fdc"
   ]
  },
- "admin-system": "301de331d82a",
+ "admin-system": "80d6c8c882df",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c04e9152"
+   "988715b3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1c1892ef"
+   "b7c19acb"
   ]
  },
  "admin_marks": {},
- "heat": "dd09d1cc2ef6",
+ "heat": "ec5fc5526956",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "9bd9c072"
+   "40a392ca"
   ],
   "ranking": [
    "ランキング",
-   "b6d8084c"
+   "4e0b714d"
   ]
  },
- "index": "3fd904562461",
+ "index": "3cfc385fb2ea",
  "index_marks": {
   "front": [
    "トップ",
-   "8438a2d2"
+   "146dcacf"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "3f0fb0a3"
+   "24d7490a"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -196,6 +196,6 @@
    "b31d88e8"
   ]
  },
- "updated": "10.28 08:35",
+ "updated": "10.28 08:39",
  "wishlist": "bd867b9214b2"
 }

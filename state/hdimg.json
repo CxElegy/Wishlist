@@ -125,19 +125,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/008CTCXEgy1iigw4manoxj30nl0xc4qj.jpg": {
-  "w": 849,
-  "h": 1200,
-  "target": 720,
-  "v": 3,
-  "local": "pics/16e54ac8788639db.webp",
-  "out": [
-   849,
-   1200
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -563,6 +550,12 @@
   "target": 720,
   "v": 3
  },
+ "https://charagoo.jp/wp-content/uploads/2026/10/668w_668h-60.jpg": {
+  "w": 668,
+  "h": 668,
+  "target": 720,
+  "v": 3
+ },
  "https://cimg.kgl-systems.io/camion/files/91218/thumbnail_TrwC.jpg?x=1280": {
   "w": 1280,
   "h": 720,
@@ -761,12 +754,6 @@
   "why": "防盗链",
   "ref": true
  },
- "https://di2ponv0v5otw.cloudfront.net/posts/2025/12/13/693dcc079b21589d3203adc3/l_wp_693dcc079b21589d3203adc4.webp": {
-  "w": 1000,
-  "h": 1000,
-  "target": 720,
-  "v": 3
- },
  "https://di2ponv0v5otw.cloudfront.net/posts/2026/08/25/6a8e1efbce5b0a11feba93d5/l_wp_6a8e1efe1ae1adc474d5bf8a.webp": {
   "w": 1000,
   "h": 1000,
@@ -833,12 +820,6 @@
   "h": 486,
   "target": 720,
   "v": 3
- },
- "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt859507d51581f713/6ae0fbc4f6e3e04aa497e290/gtaviluciaweightsfeatured.jpg?disable=upscale&width=1200&height=630&fit=crop": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
  },
  "https://fieldlevelmedia.com/wp-content/uploads/2026/10/11882973-1024x696.jpg": {
   "w": 1024,
@@ -2025,6 +2006,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_189942_0-enlarge.jpg": {
+  "w": 640,
+  "h": 426,
+  "target": 720,
+  "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/itmedia_favlog/itmedia_favlog_4062502_0.jpg": {
   "w": 1200,
@@ -3232,12 +3219,6 @@
   ],
   "why": "看不清"
  },
- "https://static.sanyonews.jp/image/article/size1/2/2/9/0/22902e4f34b44e2c44d9f269166203df_1.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "https://static.sanyonews.jp/image/article/size1/6/b/d/5/6bd5ae98a8676317af2175d8ef86b187_1.jpg": {
   "w": 450,
   "h": 640,
@@ -3801,6 +3782,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Z_lB_6Izm27y4qYc1OJ7UA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3839,9 +3826,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.h1__6WSmxo7D9Lx6uBvTaQ&pid=News&w=960": {
+ "https://www.bing.com/th?id=ONUT.dQ27Fm8LIPACX_VXI2Jx0Q&pid=News&w=1200": {
   "w": 700,
-  "h": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.fPuBC42PXLEzxglrfEWVLA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -3896,6 +3889,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.vyiLOjCJVNhznANLndPcUw&pid=News&w=1200": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3912,6 +3911,12 @@
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.yQTn8yVopd9NgLlJSmZFYA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4249,12 +4254,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-41.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://www.joblo.com/wp-content/uploads/2026/02/the-mandalorian-and-grogu-concerns.jpg": {
   "w": 1200,
   "h": 630,
@@ -4391,6 +4390,12 @@
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
   "w": 2000,
   "h": 1125,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.superdope.games/wp-content/uploads/2026/08/image-110.png": {
+  "w": 1600,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
