@@ -1,32 +1,32 @@
 {
- "admin": "7eb5101635ea",
- "admin-ai": "803695625585",
+ "admin": "7eb5aeef8f0a",
+ "admin-ai": "193729183e08",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "da5cc3a8"
+   "019bde60"
   ],
   "tokens": [
    "AI 編集のトークン",
    "40e912f3"
   ]
  },
- "admin-boards": "2bba1f0fcdbe",
+ "admin-boards": "18b0ea7c0003",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e4803617"
+   "d9ede8b7"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "6613721249d1",
+ "admin-emblem": "41e0dc084621",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a571e0d2"
+   "609947ca"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "f4eccd74c94d",
+ "admin-now": "8282a41b082c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b0618acd"
+   "aaf30532"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "1dad5680"
+   "e483ab55"
   ],
   "term-panel": [
    "ライブログ",
-   "5c55ba4a"
+   "c282479a"
   ]
  },
- "admin-system": "23e5d762d3c5",
+ "admin-system": "df133902d49b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4ff3b6ae"
+   "92937e96"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d18dd98f"
+   "00340eca"
   ]
  },
  "admin_marks": {},
- "heat": "c5a4c63d5302",
+ "heat": "51211dbc0ed0",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "dd0732e2"
+   "fcbf2a05"
   ],
   "ranking": [
    "ランキング",
-   "9757d283"
+   "40caa6ce"
   ]
  },
- "index": "a2d03e91c4e3",
+ "index": "ee6db257336d",
  "index_marks": {
   "front": [
    "トップ",
-   "de7dea61"
+   "75ca1dbb"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "154b4c2b"
+   "803d24d7"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "9ec5d755"
+   "adf5fb41"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "34edc1eb"
+   "3150005d"
   ],
   "w-f303ad09": [
    "绝区零",
    "0a175726"
   ]
  },
- "updated": "10.27 22:37",
+ "updated": "10.27 22:40",
  "wishlist": "6b69186782d2"
 }

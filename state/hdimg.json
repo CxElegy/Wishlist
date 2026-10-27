@@ -456,12 +456,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.mos.cms.futurecdn.net/JJUXJNug7549JTRVW9fSjA-2000-80.jpg": {
-  "w": 2000,
-  "h": 1125,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.sakigake.jp/newspack/PN2026102601001168.-.-.CI0003.jpg": {
   "w": 450,
   "h": 305,
@@ -531,6 +525,12 @@
   "v": 3
  },
  "https://cimg.kgl-systems.io/camion/files/91546/ogp_nwMY.jpg?x=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cimg.kgl-systems.io/camion/files/92095/ogp_xopY.jpg?x=1280": {
   "w": 1280,
   "h": 720,
   "target": 1280,
@@ -787,6 +787,12 @@
   "w": 1024,
   "h": 696,
   "target": 1280,
+  "v": 3
+ },
+ "https://finalweapon.net/wp-content/uploads/2026/10/Bleach-Mirrors-High-release-date.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://foro3d.com/2026/octubre/imagenes/la-serie-de-harry-potter-de-hbo-arranca-con-1474-millones-en-su-primer.webp": {
@@ -1241,6 +1247,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/avengers-doomsday-disney-plus-series.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://images.thedirect.com/media/article_full/avengers-doomsday-thor-captain-america-mcu.jpg": {
   "w": 1280,
   "h": 720,
@@ -1456,6 +1468,19 @@
   "out": [
    1280,
    366
+  ],
+  "why": "看不清"
+ },
+ "https://img.etnews.com/news/article/2026/10/25/news-p.v1.20261025.8cdc4656b9234931815e7989a6dde62a_P1.png": {
+  "w": 700,
+  "h": 398,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.488,
+  "local": "pics/71873b43bf7892f8.webp",
+  "out": [
+   1280,
+   728
   ],
   "why": "看不清"
  },
@@ -1702,12 +1727,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1725,6 +1744,12 @@
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.toy-people.com/member/179309945213.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://img1.bjd.com.cn/2026/10/21/3b1cb1847634fda933afccea83977936cffe5bd5.jpeg": {
@@ -1749,12 +1774,6 @@
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://inews.gtimg.com/news_ls/OExABtF0mLidG6kMFnv9xaEZGbpMJ1Fx5UDb9ZiHgAzx8AA/0": {
-  "w": 1145,
-  "h": 644,
   "target": 720,
   "v": 3
  },
@@ -1898,12 +1917,6 @@
   "w": 650,
   "h": 200,
   "target": 720,
-  "v": 3
- },
- "https://media.ixbt.games/1600x900/smart/jpeg/ixbt-data/1731240/media-3ca3619f2374376db4722d60e0fde93c51c68d66a05846eaa3cc0f00bfd72a8e.png": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
   "v": 3
  },
  "https://media.ixbt.games/1600x900/smart/jpeg/ixbt-data/1731242/media-97b0d552367a1b2dcbdadae5cd42cb8580328a93d52474f555f95c06996b0bfc.png": {
@@ -2191,19 +2204,6 @@
   "h": 410,
   "target": 720,
   "v": 3
- },
- "https://news.walkerplus.com/article/32726/154171_615.jpg": {
-  "w": 615,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.442,
-  "local": "pics/415e420dc52ae878.webp",
-  "out": [
-   1280,
-   833
-  ],
-  "why": "看不清"
  },
  "https://news.walkerplus.com/article/49841/268597_615.jpg": {
   "w": 615,
@@ -2982,6 +2982,19 @@
   "target": 720,
   "v": 3
  },
+ "https://static.mrjjxw.com/images/new_nbd_icon_300.png": {
+  "w": 300,
+  "h": 300,
+  "target": 720,
+  "v": 3,
+  "blur": 0.461,
+  "local": "pics/1a7fb8fe4cb352f9.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清"
+ },
  "https://static.sanyonews.jp/image/article/size1/0/4/7/8/047891ef5abc2da9f3a2359a4c8aa816_1.jpg": {
   "w": 640,
   "h": 427,
@@ -3117,12 +3130,6 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
-  "v": 3
- },
- "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
-  "w": 1200,
-  "h": 653,
-  "target": 720,
   "v": 3
  },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
@@ -3395,6 +3402,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "w": 647,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/9a1ea62ec61eeb92.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3425,6 +3445,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.-uijTEGIvI3LnJNGANmBxA&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
@@ -3458,12 +3484,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://www.bing.com/th?id=ONUT.E8GDwvUB6OO9ThKX5eOKGQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.EfKjFhm1fPg2aVKYu88knA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3477,13 +3497,19 @@
   "v": 3,
   "blur": 0.393
  },
+ "https://www.bing.com/th?id=ONUT.HnmlmvZYRffwzsctHdRbPg&pid=News&w=900": {
+  "w": 525,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.I0Qz3hwjbhDb1llUkzPXPA&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.I2yc1TotuiDhesTW5rLT7A&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3528,7 +3554,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.Z8wU73kn7azeaHgRxOFisg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.b3TynM3TLvhPfx7ZYVGERg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3610,9 +3636,21 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.yKX-t1l9ZqE7fssZmRpF-g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
