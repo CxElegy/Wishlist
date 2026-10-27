@@ -1,98 +1,5 @@
 [
 {
-"at": "2026-10-25T19:26:41+00:00",
-"text": "2026-10-26 第 1 バッチを出刊：滑雪（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 4.5万・キャッシュ読み 63.4万・出力 2,642",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.33,
-"mem_total": 16872804352,
-"mem_free": 15880421376,
-"disk_used": 10721968128,
-"disk_free": 30561202176,
-"disk_total": 41283170304,
-"peak": 310693888
-},
-"batch": 1,
-"boards": [
-"滑雪"
-],
-"stories": 1,
-"left": 0,
-"edited": 12,
-"run": 1792956132.4827588,
-"tok": {
-"in": 20,
-"cw": 44627,
-"cr": 634121,
-"out": 2642,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 681410,
-"secs": 269,
-"run_tok": {
-"in": 20,
-"cw": 44627,
-"cr": 634121,
-"out": 2642,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-10-25T20:34:09+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
-"at": "2026-10-25T20:37:01+00:00",
-"text": "2026-10-26 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、GTA 6、ILLIT、MMORPG 新作 ほか 10（16 版面・15 本・今日の整理待ちは全部終わり） · token 新規入力 5.0万・キャッシュ読み 86.8万・出力 4,347",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.33,
-"mem_total": 16872804352,
-"mem_free": 15912603648,
-"disk_used": 10720899072,
-"disk_free": 30562271232,
-"disk_total": 41283170304,
-"peak": 258760704
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"GTA 6",
-"ILLIT",
-"MMORPG 新作",
-"The Mandalorian",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"チェーンソーマン",
-"哈利波特剧集",
-"漫威电影",
-"绝区零"
-],
-"stories": 15,
-"left": 0,
-"edited": 13,
-"run": null,
-"tok": {
-"in": 26,
-"cw": 49734,
-"cr": 867856,
-"out": 4347,
-"calls": 13,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 921963
-},
-{
 "at": "2026-10-25T22:17:32+00:00",
 "text": "2026-10-26 第 1 バッチを出刊：漫威电影（1 版面・5 本・残り 2 版面） · token 新規入力 4.8万・キャッシュ読み 93.9万・出力 4,017",
 "level": "ok",
@@ -1963,6 +1870,84 @@
 "cr": 812801,
 "out": 4687,
 "calls": 12,
+"model": "claude-sonnet-5-5"
+}
+},
+{
+"at": "2026-10-27T06:46:33+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-10-27T06:51:04+00:00",
+"text": "2026-10-27 第 1 バッチを出刊：あつ森（1 版面・0 本・残り 4 版面） · token 新規入力 4.8万・キャッシュ読み 102.9万・出力 3,352",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.22,
+"mem_total": 16872812544,
+"mem_free": 15936974848,
+"disk_used": 10838147072,
+"disk_free": 30484361216,
+"disk_total": 41322508288,
+"peak": 308322304
+},
+"batch": 1,
+"boards": [
+"あつ森"
+],
+"stories": 0,
+"left": 4,
+"edited": 21,
+"run": 1793083187.0570545,
+"tok": {
+"in": 30,
+"cw": 47954,
+"cr": 1028752,
+"out": 3352,
+"calls": 15,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1080088
+},
+{
+"at": "2026-10-27T06:57:21+00:00",
+"text": "2026-10-27 第 2 バッチを出刊：滑雪（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 5,154・キャッシュ読み 54.9万・出力 1,841",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.13,
+"mem_total": 16872812544,
+"mem_free": 15913857024,
+"disk_used": 10840711168,
+"disk_free": 30481797120,
+"disk_total": 41322508288,
+"peak": 301993984
+},
+"batch": 2,
+"boards": [
+"滑雪"
+],
+"stories": 5,
+"left": 0,
+"edited": 22,
+"run": 1793083187.0570545,
+"tok": {
+"in": 14,
+"cw": 5140,
+"cr": 549438,
+"out": 1841,
+"calls": 7,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 556433,
+"secs": 1055,
+"run_tok": {
+"in": 44,
+"cw": 53094,
+"cr": 1578190,
+"out": 5193,
+"calls": 22,
 "model": "claude-sonnet-5-5"
 }
 }

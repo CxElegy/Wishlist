@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-27T06:38:49+00:00",
+ "checked": "2026-10-27T06:59:38+00:00",
  "fired": {
-  "at": "2026-10-27T06:38:49+00:00",
+  "at": "2026-10-27T06:59:38+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,67 +20,55 @@
     "sig": "4bea3b885e12"
    },
    "items": [
-    "MMORPG 新作",
-    "dota2",
-    "gelato pique",
-    "あつ森",
     "チェーンソーマン",
     "三星手机",
-    "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
     "滑雪"
    ],
-   "last_batch": "2026-10-27T05:14:24+00:00",
+   "last_batch": "2026-10-27T06:51:04+00:00",
    "last_error": {
-    "at": "2026-10-27T05:05:52+00:00",
+    "at": "2026-10-27T06:46:33+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 305,
+   "prog": 314,
    "prog_day": "2026-10-27",
    "ripe": [
-    "MMORPG 新作",
-    "dota2",
-    "gelato pique",
-    "あつ森",
     "チェーンソーマン",
     "三星手机",
-    "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
     "滑雪"
    ],
-   "sig": "4bea3b885e12",
+   "sig": "4dd196879773",
    "token_cap": 1000000,
-   "tokens_today": 371954,
-   "why": "整理待ちの記事 13 件（10 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 423290,
+   "why": "整理待ちの記事 4 件（4 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "dota2",
+    "あつ森",
+    "周杰伦"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "ef0834a7fea9",
    "waiting": [
-    "FROM",
-    "周杰伦",
-    "あつ森",
-    "dota2",
-    "チェーンソーマン",
     "Vaundy",
     "ぐでたま",
     "GTA 6",
     "漫威电影",
     "哈利波特剧集",
+    "FROM",
     "绝区零",
     "Astrae Oratio",
     "The Mandalorian",
     "ILLIT",
     "A2O LITE"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 15:48 から）"
+   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 16:06 から）"
   },
   "photos": {
    "claude": true,

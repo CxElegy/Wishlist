@@ -80,23 +80,24 @@
   "GTA 6": 56,
   "A2O LITE": 18,
   "The Mandalorian": 9,
-  "日本顶级网球赛事": 26,
-  "三星手机": 19,
-  "gelato pique": 10,
+  "日本顶级网球赛事": 28,
+  "三星手机": 20,
+  "gelato pique": 11,
   "ILLIT": 27,
-  "MMORPG 新作": 6,
-  "dota2": 6,
-  "周杰伦": 6,
-  "滑雪": 8,
-  "チェーンソーマン": 5,
+  "MMORPG 新作": 7,
+  "dota2": 8,
+  "周杰伦": 8,
+  "滑雪": 9,
+  "チェーンソーマン": 6,
   "星巴克马克杯": 4,
   "绝区零": 8,
   "猫用品": 3,
   "BLEACH Mirrors High": 1,
-  "あつ森": 1,
+  "あつ森": 2,
   "FROM": 3,
   "ぐでたま": 2,
-  "Astrae Oratio": 1
+  "Astrae Oratio": 1,
+  "哈利波特剧集": 1
  },
  "GTA 6": [
   {
@@ -575,6 +576,15 @@
    "refs": [
     6
    ]
+  },
+  {
+   "headline": "MMO-lite RPG, Scramble Knights Online is out now!",
+   "highlight": "is out now",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "dota2": [
@@ -724,6 +734,19 @@
     1
    ],
    "image": "https://image.news.livedoor.com/newsimage/stf/4/6/46f1e_1838_f5ad7721d161e61fe6bdbe25c8b4350d.jpg"
+  },
+  {
+   "headline": "デンジの“S.H.Figuarts”が10/31再版！ 豊富なオプションで劇中アクションを再現！ もちろんポチタ付き!!",
+   "highlight": "10/31再版",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ],
+   "event": {
+    "date": "2026-10-31",
+    "label": "再販日"
+   }
   }
  ],
  "星巴克马克杯": [
@@ -861,5 +884,17 @@
    ]
   }
  ],
- "Astrae Oratio": []
+ "Astrae Oratio": [],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO's Harry Potter series kicks off with 147.4 million in its first season",
+   "highlight": "147.4 million",
+   "blurb": "HBO's Harry Potter series kicks off with 147.4 million in its first season.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://foro3d.com/2026/octubre/imagenes/la-serie-de-harry-potter-de-hbo-arranca-con-1474-millones-en-su-primer.webp"
+  }
+ ]
 }

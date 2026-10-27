@@ -43,6 +43,16 @@ class NoneKind(unittest.TestCase):
             emblem_face._store(x, fig())
         self.assertFalse({"nk", "bb", "nfv"} & set(x))
 
+    def test_store_keys_survive_items_yaml(self):
+        """_store が書くキーが全部 items.yaml へ書き戻される（nk・bb を落として「? 10」のままだった根）。"""
+        import emblem
+        x = {"subject": "Zeus", "image": "emblems/zeus.webp", "shape": "cutout"}
+        with mock.patch.object(emblem_face, "measure", return_value=[0, 0, 0.5, 0.5, 320, 400]), mock.patch.object(emblem_face, "none_reason", return_value="noface"):
+            emblem_face._store(x, fig())
+        self.assertLessEqual({"face", "nfv", "nk", "bb"}, set(emblem.EMBLEM_KEEP))
+        txt = "\n".join(["  - name: A", "    motif: retro"])
+        self.assertIn("nk:", emblem.item_text(txt, "A", [x]))
+
 
 class Display(unittest.TestCase):
     def item(self, **kw):
