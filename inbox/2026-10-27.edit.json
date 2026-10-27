@@ -87,7 +87,7 @@
   "三星手机": 20,
   "gelato pique": 11,
   "ILLIT": 39,
-  "MMORPG 新作": 7,
+  "MMORPG 新作": 11,
   "dota2": 8,
   "周杰伦": 13,
   "滑雪": 9,
@@ -613,7 +613,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    8
    ]
   },
   {
@@ -640,7 +641,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    9
    ]
   }
  ],
