@@ -106,7 +106,7 @@
   "星巴克马克杯": 4,
   "绝区零": 15,
   "猫用品": 4,
-  "BLEACH Mirrors High": 1,
+  "BLEACH Mirrors High": 11,
   "あつ森": 2,
   "FROM": 3,
   "ぐでたま": 2,
@@ -1020,14 +1020,35 @@
  ],
  "BLEACH Mirrors High": [
   {
+   "headline": "『ブリーチ Mirrors High』10月28日よりサービス開始",
+   "highlight": "10月28日",
+   "blurb": "“藍染惣右介”はリリース後最初のガチャで実装、久保帯人が手掛ける新人隊士10人も解禁。",
+   "weight": "hero",
+   "refs": [
+    9,
+    10,
+    3,
+    8,
+    7,
+    2,
+    4,
+    6,
+    5
+   ],
+   "event": {
+    "date": "2026-10-28",
+    "label": "サービス開始"
+   },
+   "image": "https://cimg.kgl-systems.io/camion/files/92097/thumbnail_fPNM.jpg?x=1280"
+  },
+  {
    "headline": "BLEACH Mirrors High Confirms Launch Roster: 13 Returning Characters and 5 Kubo Originals",
    "highlight": "Launch Roster",
-   "blurb": "BLEACH Mirrors High confirms its launch roster: 13 returning characters and 5 Kubo originals.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
-   ],
-   "image": "https://sm.ign.com/ign_in/cover/b/bleach-mir/bleach-mirrors-high_brrm.jpg"
+   ]
   }
  ],
  "あつ森": [],
