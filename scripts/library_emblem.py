@@ -525,6 +525,8 @@ def due(boards, now):
             out.append((1 if zero else 2, st.get("at", 0), b))
         elif int(st.get("v") or 1) < RULES or st.get("state") != "ok" and now - int(st.get("at") or 0) > RETRY_HOURS * 3600:
             out.append((1 if zero else 3, st.get("at", 0), b))
+        elif st.get("state") != "ok" and (st.get("nv") != names_v or int(st.get("bv") or 0) < emblem_fill.BROKEN_V):   # 届かなかった版面も、規則の版が上がったら 24 時間を待たない
+            out.append((1 if zero else 1.5, st.get("at", 0), b))
         elif st.get("nv") != names_v and (st.get("state") == "ok" or any(cfg(b).get(k) for k in NAMES_HINT)):
             # そろっていても、届かなかったキャラの版面も（RETRY_HOURS を待たずに）、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
             # 届かなかった版面の数え直しは途中（running）より先（1.5）：途中の版面は 10 枚ずつで何十回も続き、後ろの 142・146 が 24 時間待たされていた

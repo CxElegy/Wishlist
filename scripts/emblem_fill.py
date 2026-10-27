@@ -2053,7 +2053,7 @@ def material(item):
         except ValueError:
             pass
     keys = {k: item.get(k) for k in ("emblem_who", "emblem_urls", "emblem_fandom", "wiki", "site", "emblem_reject", "emblem_kind", "emblem_icon")}
-    return hashlib.sha1(json.dumps([n, keys, NAMES_V, BROKEN_V], sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
+    return hashlib.sha1(json.dumps([n, keys, rule_versions()], sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
 
 
 def _live(board, label=None, step=0):
@@ -2265,6 +2265,12 @@ def broken_image(im, photo, whole=False):
 
 
 BROKEN_V = 9   # 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+
+RULE_VERSION_NAMES = ("NAMES_V", "BROKEN_V")   # 規則の版は 1 か所：上がると失敗の待ちを解く（店長 material・お客さま library_emblem.due）。*_V を足したらここにも（tests が拦める）
+
+
+def rule_versions():
+    return {n: globals()[n] for n in RULE_VERSION_NAMES}
 
 
 CLOSE_W = 0.45         # 顔の幅 ÷ 画像の幅がこれを超える = 顔だけのアップ（髪から顎まで。小元素は胸像：BLEACH の黒崎一護 372×519 は顔の幅 54〜68%）

@@ -540,8 +540,9 @@ class Background(unittest.TestCase):
             self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 頭が切れた・ぼやけた小元素のある版面は待たない
         with mock.patch.object(ef, "closeup_state", return_value={"zero": {"Ichigo": {"n": 1}}}):
             self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 胸像待ちの版面は失敗の待ちに入らない（BLEACH が 1 度も回らなかった）
-        with mock.patch.object(ef, "BROKEN_V", ef.BROKEN_V + 1):   # 規則の版が上がった：材料が同じでも待たずにやり直す
-            self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+        for v in ef.RULE_VERSION_NAMES:   # 規則の版が上がった：材料が同じでも待たずにやり直す（版ごと）
+            with mock.patch.object(ef, v, getattr(ef, v) + 1):
+                self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)], v)
         prog["items"]["zero"].pop("material")   # 指紋の記録がない古い失敗は待たない
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         self.assertEqual(ef.waiting(prog, self.items, now), [])
@@ -553,6 +554,12 @@ class Background(unittest.TestCase):
         self.assertNotIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
         prog["items"]["zero"]["failed_at"] = "2026-10-15T23:00:00+00:00"
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+
+    def test_rule_versions_all_listed(self):
+        """*_V（規則の版）を足して RULE_VERSION_NAMES に入れ忘れると、失敗の待ちが解けない（#526 のあとの BLEACH）。"""
+        import re
+        found = {k for k, v in vars(ef).items() if re.fullmatch(r"[A-Z]+_V", k) and isinstance(v, int)}
+        self.assertEqual(found, set(ef.RULE_VERSION_NAMES))
 
     def test_background_streams_lines(self):
         """管理ページのライブログ：開始・版面ごとの作業の 1 行 1 行・結果・終了が live_log に流れる（「今すぐ再挑戦」から起きたらそう書く）。"""
