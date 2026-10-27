@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-27T20:54:30+00:00",
+ "checked": "2026-10-27T20:58:10+00:00",
  "fired": {
-  "at": "2026-10-27T20:54:30+00:00",
+  "at": "2026-10-27T20:58:10+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,22 +12,20 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-27T20:54:30+00:00",
+    "at": "2026-10-27T20:58:10+00:00",
     "attempts": 1,
     "day": "2026-10-28",
     "prog": 75,
-    "resp": "cse_01W4x6f4yR9HXzJWJ8L3i3Ab",
-    "sig": "0a9a2b5934d0"
+    "resp": "cse_01W4x6f5edZKEer9qTqzBcRj",
+    "sig": "c8724b74008a"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
     "FROM",
     "GTA 6",
     "ILLIT",
     "チェーンソーマン",
     "三星手机",
-    "周杰伦",
     "哈利波特剧集",
     "日本顶级网球赛事",
     "滑雪",
@@ -43,44 +41,42 @@
    "prog": 75,
    "prog_day": "2026-10-28",
    "ripe": [
-    "A2O LITE",
-    "Astrae Oratio",
     "GTA 6",
     "三星手机",
     "哈利波特剧集",
     "日本顶级网球赛事",
     "漫威电影"
    ],
-   "sig": "0a9a2b5934d0",
+   "sig": "c8724b74008a",
    "token_cap": 1000000,
    "tokens_today": 141922,
-   "why": "整理待ちの記事 84 件（13 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 58 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "FROM",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "周杰伦",
-    "Astrae Oratio",
-    "ILLIT"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "8e5240e59485",
+   "sig": "b6804aff6de5",
    "waiting": [
     "あつ森",
+    "周杰伦",
     "Vaundy",
     "ぐでたま",
     "dota2",
+    "GTA 6",
+    "チェーンソーマン",
+    "FROM",
+    "漫威电影",
+    "哈利波特剧集",
     "绝区零",
-    "The Mandalorian"
+    "A2O LITE",
+    "The Mandalorian",
+    "Astrae Oratio",
+    "ILLIT"
    ],
-   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 6 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:18 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 06:18 から）"
   },
   "photos": {
    "claude": true,
