@@ -129,3 +129,4 @@
 2026-10-27 f1 通し ✗ の続き（#554）：焼いた版と画面の食い違い・外す道・素の箱 1 つ・殻へ送る上限を跳ね返し回数に・id 重複を普段の回へ。確かめ：tests OK、本番 --journey 1400・390 とも ✓、ux_check は guest・test-a・test-b（--emb off）で枠組み・設定・欲しい物・話題度すべて ✓（✗ は小元素 E2/E7/E10 の前からのもの）、test-c は 580 秒で終わらず未確認〔通し実行を 15 分に収める段〕。次：0 個の焼いた版から空の「はじめに」を外す。
 - 2026-10-27 r1f2：#556 の別の目の指摘。E20 にお客さまの版面（boards.config）の分を足し〔boards_closeup_bad〕、保存の式を closeup_fields にして tests で E20 に通した。確かめ：tests OK・ux_check の E20 は ✗ なし（お客さまの待ち 0 件）・library_emblem を dispatch して bv 9 になった版面に待ちなし。次：待ちが出る版面での next/eta の実書き込み
 - 2026-10-27 f1f2：別の目の指摘（E2・E7・E10）。E2 は 0。E7 の原因＝顔検出器のしきい値を書き換えて戻さず判定が順番で変わる（7/487 枚）→ face_id.SCORE に戻す（#559）。tests 974 OK・CI 緑。本番 ux_check guest・test-a・test-b・test-c × 1400/390：E7 0、test-c 全 ✓、残りは E10・E15・E18。次：E18（test-a）
+- 2026-10-27 r2f1：#560 の別の目の指摘。公式が先を gather の全入口（wide・pages・roles）に official_cands 1 つの口で。E21 点検＋全入口テスト。tests 976 OK・CI 緑・合併。ux_check：E21 BLEACH 2 人、✗ は guest 390 の E10・E15 のみ（前から）。次：E21 の取り直し
