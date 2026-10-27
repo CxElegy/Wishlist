@@ -1473,6 +1473,147 @@
      123
     ]
    }
+  },
+  {
+   "v": 10,
+   "emblem": {
+    "subject": "Cang Du",
+    "why": "Cang Du（Fandom・Cang）",
+    "image": "emblems/bleach-mirrors-high-cang-du.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/4/44/Ep382CangProfile2.png/revision/latest/scale-to-width-down/400?cb=20230722215027&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Cang_Du",
+    "shape": "cutout",
+    "upper": true,
+    "face": [
+     0,
+     0,
+     0.5,
+     0.5,
+     331,
+     174
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 10,
+   "emblem": {
+    "subject": "Yoshino Sōma",
+    "why": "Yoshino Sōma（Fandom・Yoshino） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-yoshino-s-ma.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/9/9c/Ep74YoshinoPast.png/revision/latest/scale-to-width-down/600?cb=20210415054711&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Yoshino_S%C5%8Dma",
+    "shape": "cutout",
+    "ar": 0.75,
+    "fs": 0.202,
+    "face": [
+     0.202,
+     0.084,
+     0.495,
+     0.488,
+     185,
+     396
+    ]
+   }
+  },
+  {
+   "v": 10,
+   "emblem": {
+    "subject": "Aaroniero Arruruerie",
+    "why": "Aaroniero Arruruerie（Fandom・Aaroniero）",
+    "image": "emblems/bleach-mirrors-high-aaroniero-arruruerie.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/5/5c/Ep153AaronieroProfile.png/revision/latest/scale-to-width-down/400?cb=20220531233955&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Aaroniero_Arruruerie",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.528,
+     249,
+     296
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 10,
+   "emblem": {
+    "subject": "Shaz Domino",
+    "why": "Shaz Domino（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-shaz-domino.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/f/f9/512Shaz_profile.png/revision/latest/scale-to-width-down/400?cb=20170830215707&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Shaz_Domino",
+    "shape": "cutout",
+    "face": [
+     0.573,
+     0.265,
+     0.257,
+     0.275,
+     175,
+     176
+    ]
+   }
+  },
+  {
+   "v": 10,
+   "emblem": {
+    "subject": "Maki Ichinose",
+    "why": "Maki Ichinose（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-maki-ichinose.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/7/70/Ep76IchinoseReiatsu.png/revision/latest/scale-to-width-down/600?cb=20210415062315&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Maki_Ichinose",
+    "shape": "cutout",
+    "ar": 0.76,
+    "face": [
+     0.298,
+     0.114,
+     0.499,
+     0.497,
+     170,
+     250
+    ]
+   }
+  },
+  {
+   "v": 10,
+   "emblem": {
+    "subject": "Ayon",
+    "why": "Ayon（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-ayon.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/b/b7/Ep225AyonProfile.png/revision/latest/scale-to-width-down/400?cb=20190312134321&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Ayon",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.508,
+     250,
+     265
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 10,
+   "emblem": {
+    "subject": "Tobiume (Zanpakutō spirit)",
+    "why": "Tobiume (Zanpakutō spirit)（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-tobiume-zanpakut-spirit.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/c/c8/265Tobiume%2C_Rangiku%2C_Haineko%2C_Katen_Kyokotsu%2C_Nanao%2C_and_Momo_sit.png/revision/latest/scale-to-width-down/600?cb=20230823205524&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Tobiume_(Zanpakut%C5%8D_spirit)",
+    "shape": "cutout",
+    "ar": 0.994,
+    "face": [
+     0.373,
+     0.225,
+     0.549,
+     0.514,
+     162,
+     123
+    ]
+   }
   }
  ],
  "The Mandalorian": [
