@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "87359577e15c",
+ "edit_sig": "05dbcc1c742c",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
@@ -387,8 +387,8 @@
      "date": "2026-10-26",
      "headline": "短いスカートの“女性警察官”衣装で物議のILLIT、口を開く…かつてBLACKPINK、i-dleも職業コスチュームで騒動に",
      "highlight": "口を開く",
-     "image": "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg",
-     "image_via": "og:image",
+     "image": "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg",
+     "image_via": "AI 挑选",
      "url": "https://topics.smt.docomo.ne.jp/article/sportsseoulweb/entertainment/sportsseoulweb-162031",
      "weight": "lead"
     },
@@ -654,26 +654,6 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-27",
-     "headline": "【2027年福袋】今年も注目！「ジェラート ピケ」の福袋が11月2日より抽選販売スタート！気になる中身は？",
-     "highlight": "",
-     "image": "https://img.topics.smt.news.goo.ne.jp/picture/inredweb/m_inredweb-108030.jpg",
-     "image_via": "og:image",
-     "url": "https://topics.smt.docomo.ne.jp/article/inredweb/trend/inredweb-108030",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
-     "date": "2026-10-25",
-     "headline": "セサミストリートとジェラピケのコラボ第3弾が登場！「ROOMIES」をテーマにしたラインナップが話題",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/1330479/16314659_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/1330479/",
-     "weight": "hero"
-    },
-    {
      "blurb": "ジェラート ピケとセサミストリートのコラボアイテムが発売。「ベアブリック」も新発売で、イメチェンしたエルモとクッキーモンスターに注目。",
      "date": "2026-10-25",
      "headline": "ジェラピケ×セサミストリートのコラボアイテムが発売！渡辺直美も「かわいい」と大絶賛",
@@ -701,6 +681,30 @@
      "image": "https://news.walkerplus.com/article/1003055/10019309_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1003055/image10019323.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-22",
+     "headline": "スヌーピー×ジェラピケの新作コラボアイテムが登場！おうち時間を幸せにするルームウェアをももクロが着こなす",
+     "highlight": "スヌーピー",
+     "image": "https://news.walkerplus.com/article/1133751/11694997_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1133751/image11694989.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "event": {
+      "date": "2026-11-02",
+      "label": "抽選販売開始"
+     },
+     "headline": "【2027年福袋】今年も注目！「ジェラート ピケ」の福袋が11月2日より抽選販売スタート！",
+     "highlight": "11月2日より抽選販売",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/inredweb/m_inredweb-108030.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/inredweb/trend/inredweb-108030",
      "weight": "normal"
     }
    ],
@@ -870,8 +874,9 @@
      "date": "2026-10-26",
      "headline": "Sideshow Shares First Look at Hot Toys Deluxe The Mandalorian and Grogu Set",
      "highlight": "Hot Toys",
-     "image": "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "Jedi News",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.jedinews.com&sz=128",
      "url": "https://www.jedinews.com/collecting/articles/sideshow-shares-first-look-at-hot-toys-deluxe-the-mandalorian-and-grogu-set/",
      "weight": "normal"
     }

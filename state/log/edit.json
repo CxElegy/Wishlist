@@ -1,82 +1,5 @@
 [
 {
-"at": "2026-10-26T04:27:05+00:00",
-"text": "2026-10-26 第 6 バッチを出刊：ILLIT（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 1,417・キャッシュ読み 16.5万・出力 839",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.39,
-"mem_total": 16872804352,
-"mem_free": 15928315904,
-"disk_used": 10744995840,
-"disk_free": 30538174464,
-"disk_total": 41283170304,
-"peak": 306143232
-},
-"batch": 6,
-"boards": [
-"ILLIT"
-],
-"stories": 5,
-"left": 0,
-"edited": 16,
-"run": 1792987260.9018104,
-"tok": {
-"in": 4,
-"cw": 1413,
-"cr": 164773,
-"out": 839,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 167029,
-"secs": 1565,
-"run_tok": {
-"in": 42,
-"cw": 55183,
-"cr": 1513565,
-"out": 6080,
-"calls": 21,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-10-26T05:41:21+00:00",
-"text": "2026-10-26 第 1 バッチを出刊：MMORPG 新作、The Mandalorian、日本顶级网球赛事、滑雪、绝区零（5 版面・14 本・残り 3 版面） · token 新規入力 5.2万・キャッシュ読み 66.8万・出力 4,077",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.26,
-"mem_total": 16872804352,
-"mem_free": 15831482368,
-"disk_used": 10676162560,
-"disk_free": 30607007744,
-"disk_total": 41283170304,
-"peak": 376369152
-},
-"batch": 1,
-"boards": [
-"MMORPG 新作",
-"The Mandalorian",
-"日本顶级网球赛事",
-"滑雪",
-"绝区零"
-],
-"stories": 14,
-"left": 3,
-"edited": 17,
-"run": 1792992926.386008,
-"tok": {
-"in": 20,
-"cw": 52078,
-"cr": 667610,
-"out": 4077,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 723785
-},
-{
 "at": "2026-10-26T05:47:33+00:00",
 "text": "2026-10-26 第 2 バッチを出刊：dota2（1 版面・4 本・今日の整理待ちは全部終わり） · token 新規入力 2,199・キャッシュ読み 24.5万・出力 1,305",
 "level": "ok",
@@ -1921,5 +1844,42 @@
 "calls": 31,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-27T09:33:07+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-10-27T09:37:17+00:00",
+"text": "2026-10-27 第 1 バッチを出刊：gelato pique（1 版面・5 本・残り 2 版面） · token 新規入力 4.8万・キャッシュ読み 94.1万・出力 3,108",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.5,
+"mem_total": 16872812544,
+"mem_free": 15909883904,
+"disk_used": 10777374720,
+"disk_free": 30545133568,
+"disk_total": 41322508288,
+"peak": 343535616
+},
+"batch": 1,
+"boards": [
+"gelato pique"
+],
+"stories": 5,
+"left": 2,
+"edited": 22,
+"run": 1793093166.7163746,
+"tok": {
+"in": 30,
+"cw": 47930,
+"cr": 940781,
+"out": 3108,
+"calls": 14,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 991849
 }
 ]

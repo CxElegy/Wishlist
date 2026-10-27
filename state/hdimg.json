@@ -1715,19 +1715,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/6da94d65020c72a9.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -2128,6 +2115,12 @@
   "v": 3,
   "blur": 0.404
  },
+ "https://news.walkerplus.com/article/1133751/11694997_615.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
   "w": 615,
   "h": 346,
@@ -2166,13 +2159,6 @@
   "h": 589,
   "target": 720,
   "v": 3
- },
- "https://news.walkerplus.com/article/1330479/16314659_615.jpg": {
-  "w": 615,
-  "h": 769,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.353
  },
  "https://news.walkerplus.com/article/1445517/18700633_615.jpg": {
   "w": 615,
@@ -3396,6 +3382,12 @@
   "target": 720,
   "v": 3
  },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3872,12 +3864,6 @@
  "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/Sandra-Huller-Main-2026.jpg?w=1296&h=730&crop=1": {
   "w": 1296,
   "h": 730,
-  "target": 720,
-  "v": 3
- },
- "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg": {
-  "w": 1392,
-  "h": 934,
   "target": 720,
   "v": 3
  },

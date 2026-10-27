@@ -85,7 +85,7 @@
   "The Mandalorian": 9,
   "日本顶级网球赛事": 35,
   "三星手机": 23,
-  "gelato pique": 11,
+  "gelato pique": 13,
   "ILLIT": 39,
   "MMORPG 新作": 11,
   "dota2": 8,
@@ -460,7 +460,8 @@
    "weight": "lead",
    "refs": [
     3,
-    8
+    8,
+    13
    ],
    "image": "https://news.walkerplus.com/article/1168007/12392132_615.jpg"
   },
@@ -494,13 +495,17 @@
    ]
   },
   {
-   "headline": "「gelato pique(ジェラート ピケ)」の犬猫用ライン初のブランドブックが発売！桐谷美玲や板垣李光人の撮り下ろしカットも",
-   "highlight": "ブランドブック",
+   "headline": "【2027年福袋】今年も注目！「ジェラート ピケ」の福袋が11月2日より抽選販売スタート！",
+   "highlight": "11月2日より抽選販売",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
-   ]
+    12
+   ],
+   "event": {
+    "date": "2026-11-02",
+    "label": "抽選販売開始"
+   }
   }
  ],
  "ILLIT": [

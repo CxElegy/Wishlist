@@ -1,32 +1,32 @@
 {
- "admin": "22599c58a44e",
- "admin-ai": "1217f5bcf6db",
+ "admin": "ff0521c6391d",
+ "admin-ai": "878e8e4790f3",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "27a84b06"
+   "7b7bd637"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ab6c2a40"
+   "f64e995a"
   ]
  },
- "admin-boards": "3e9a4a19db8c",
+ "admin-boards": "68e40de550f0",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "aae79c1a"
+   "651cd34b"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "177c831c5fdf",
+ "admin-emblem": "b9abdf9ab062",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "03e7fa05"
+   "334fe25b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "aa1eb869"
+   "37ab262f"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "6a55adf2191c",
+ "admin-now": "67b0ef778815",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3a7b6b73"
+   "9c80fa05"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "f075064d"
+   "6c6b59de"
   ]
  },
- "admin-system": "613c8893b89b",
+ "admin-system": "b00b4af39c75",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d78f0cdc"
+   "0a7a5150"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "4f21e641"
+   "56579de5"
   ]
  },
  "admin_marks": {},
- "heat": "09408b0fc76b",
+ "heat": "b21d29c69282",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d31566d6"
+   "f938afd0"
   ],
   "ranking": [
    "ランキング",
-   "5fd363f8"
+   "d9464f4c"
   ]
  },
- "index": "6e7149ba9e03",
+ "index": "fbe12dbe16f1",
  "index_marks": {
   "front": [
    "トップ",
-   "5cf92bd2"
+   "765fc5a8"
   ],
   "picks": [
    "気になるかも？",
@@ -173,11 +173,11 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "f8911422"
+   "e27b2399"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "357cb21a"
+   "9d779daa"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "1fb3074d"
+   "60fb247f"
   ],
   "w-f303ad09": [
    "绝区零",
    "d7972698"
   ]
  },
- "updated": "10.27 18:07",
+ "updated": "10.27 18:37",
  "wishlist": "ddb3bf11aaf6"
 }
