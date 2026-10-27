@@ -2838,6 +2838,14 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
             pass
         except Exception as e:  # noqa: BLE001
             log(f"[候補] {e}")
+    if path is None:   # 本番：待ちの有無にかかわらず毎回、顔の測り直し（face・nk・bb が欠けた分）。drop_broken は変化のある版面でしか回らず、測り直しが届かなかった
+        try:
+            with WRITE_LOCK:
+                m = sum(emblem_face.measure_item(i, log) for i in load_items())
+            if m:
+                log(f"[顔を測り直し] 全版面で {m} 枚")
+        except Exception as e:  # noqa: BLE001
+            log(f"[顔を測り直し] {e}")
     prog = load_progress(path)
     now = _now()
     prog.setdefault("started", now)
