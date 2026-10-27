@@ -191,5 +191,30 @@ class CoverTest(unittest.TestCase):
             self.assertEqual(n, want, pad)
 
 
+class Settle(unittest.TestCase):
+    """決まった待ち（--fast は 6 秒）だけでは遅い回線で字が出る前に測る（設定 1400 が文字 6 の白い画面）。測る前に字が出るまで待ち直す（2026-10-27）。"""
+
+    def test_check_settles_before_measuring(self):
+        import inspect
+        src = inspect.getsource(ux_check.check)
+        self.assertLess(src.index("settle(pg)"), src.index("st = pg.evaluate"))   # 測る前に待ち直す
+
+    def test_waits_for_late_text(self):
+        if sync_playwright is None:
+            self.skipTest("playwright がない")
+        late = "<body>x<script>setTimeout(()=>{document.body.innerText='あ'.repeat(150)},1500)</script>"
+        with sync_playwright() as pw:
+            try:
+                b = pw.chromium.launch()
+            except Exception as ex:  # noqa: BLE001
+                self.skipTest(f"ブラウザがない：{ex}")
+            pg = b.new_page()
+            pg.set_content(late)
+            ux_check.settle(pg)
+            n = pg.evaluate("document.body.innerText.length")
+            b.close()
+        self.assertGreaterEqual(n, 100)
+
+
 if __name__ == "__main__":
     unittest.main()

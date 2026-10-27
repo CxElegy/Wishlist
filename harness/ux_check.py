@@ -100,6 +100,18 @@ def nohead_real(nohead, fails, opens=server_opens):
     return out
 
 
+READY_JS = """()=>{const t=document.body?document.body.innerText.replace(/\\s+/g,'').length:0;return t>=100||!!document.querySelector('.startgo,.wl-mine .empty')}"""
+SETTLE_S = 30   # 決まった待ちのあと、字が出るまで足す上限
+
+
+def settle(pg):
+    """待ちは回線しだいで足りない（--fast の 6 秒で設定 1400 が文字 6 のまま測られた）。決まった待ちのあと、字が出るまで最大 SETTLE_S 秒待ち直してから測る（出なければそのまま測って ✗）"""
+    try:
+        pg.wait_for_function(READY_JS, timeout=SETTLE_S * 1000)
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_S):
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)   # Actions では入っている Chrome（UX_CHANNEL=chrome）
     pg = b.new_page(viewport={"width": width, "height": height})
@@ -114,6 +126,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     loads.clear()
     pg.goto(base + page, wait_until="domcontentloaded", timeout=60000)
     pg.wait_for_timeout(wait * 1000)
+    settle(pg)
     if not page:   # 2026-10-27：loading=lazy の写真は下までスクロールしないと読み込まれず、開けない写真（札）を数え損ねる。下まで読んでから数える
         for y in range(0, 40000, 800):
             pg.evaluate(f"window.scrollTo(0,{y})")
