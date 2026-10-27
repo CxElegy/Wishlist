@@ -119,19 +119,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/008CTCXEgy1iigw4manoxj30nl0xc4qj.jpg": {
-  "w": 849,
-  "h": 1200,
-  "target": 720,
-  "v": 3,
-  "local": "pics/16e54ac8788639db.webp",
-  "out": [
-   849,
-   1200
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -232,6 +219,19 @@
   "out": [
    1125,
    878
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx4.sinaimg.cn/middle/90b10eb9ly1iih0mx4ixnj20rs0rsagh.jpg": {
+  "w": 1000,
+  "h": 1000,
+  "target": 720,
+  "v": 3,
+  "local": "pics/8d86067b7720aa34.webp",
+  "out": [
+   1000,
+   1000
   ],
   "why": "防盗链",
   "ref": true
@@ -630,12 +630,6 @@
  "https://d.ibtimes.co.uk/en/full/1837366/gta-6.png": {
   "w": 1600,
   "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://d1x4njjgkw4jf2.cloudfront.net/nownews/NewsImage/2026-10-27-00-44-24JR9eJmnL.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -1429,6 +1423,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gafCw.img": {
+  "w": 1000,
+  "h": 691,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.4gamers.com.tw/news-image/30592e27-3cf0-4f66-b229-fc5e54665aeb.jpg": {
   "w": 1600,
   "h": 900,
@@ -1690,19 +1690,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/6da94d65020c72a9.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1744,6 +1731,12 @@
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://inews.gtimg.com/news_ls/OExABtF0mLidG6kMFnv9xaEZGbpMJ1Fx5UDb9ZiHgAzx8AA/0": {
+  "w": 1145,
+  "h": 644,
   "target": 720,
   "v": 3
  },
@@ -3112,12 +3105,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
-  "w": 1200,
-  "h": 653,
-  "target": 720,
-  "v": 3
- },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3376,6 +3363,19 @@
   "target": 720,
   "v": 3
  },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "w": 647,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/9a1ea62ec61eeb92.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3457,6 +3457,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
+ },
+ "https://www.bing.com/th?id=ONUT.E8GDwvUB6OO9ThKX5eOKGQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.EfKjFhm1fPg2aVKYu88knA&pid=News&w=1200": {
   "w": 700,
@@ -3541,9 +3547,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.cOvkIs8aK__hSpjz6Rj2Vw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.bX-wpx9jPDfyDzjQDP45jw&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
+  "h": 467,
   "target": 720,
   "v": 3
  },
@@ -3610,21 +3616,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ORMS.487fd419d350aaf501fea60b514b8b17&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.znTmyqimrKz7tA03nC60Eg&pid=News&w=1200": {
   "w": 700,
-  "h": 427,
+  "h": 367,
   "target": 720,
   "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.boardoftheworld.com/wp-content/uploads/2025/06/VS-1.jpg": {
-  "w": 1440,
-  "h": 810,
   "target": 720,
   "v": 3
  },
