@@ -1,32 +1,32 @@
 {
- "admin": "5f91746948f4",
- "admin-ai": "a33d4e8d824a",
+ "admin": "7c347c1bec83",
+ "admin-ai": "975abaf47cf8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8cd8a930"
+   "3d5ced01"
   ],
   "tokens": [
    "AI 編集のトークン",
    "42f1d473"
   ]
  },
- "admin-boards": "afb66ec81791",
+ "admin-boards": "1e44a33086e0",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "f9301058"
+   "5d5fd4bd"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "9cdc063535be",
+ "admin-emblem": "aee522c1d951",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "01535938"
+   "05be3fd0"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "cca7d8f5"
+   "fa3d0c0e"
   ]
  },
  "admin-members": "be19396da526",
  "admin-members_marks": {},
- "admin-now": "5feeffbb527a",
+ "admin-now": "832ceaaff802",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f11a74e0"
+   "6967c983"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "6b94126c"
+   "e1111def"
   ],
   "term-panel": [
    "ライブログ",
-   "6e7c601c"
+   "466a2224"
   ]
  },
- "admin-system": "13dfe37e6115",
+ "admin-system": "4789d9a8ed76",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "92588895"
+   "adcfc5bb"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b7d67277"
+   "e691e860"
   ]
  },
  "admin_marks": {},
- "heat": "6d99f058f6e2",
+ "heat": "da66cc6faa27",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "01c91fce"
+   "78df782a"
   ],
   "ranking": [
    "ランキング",
-   "a7df6035"
+   "c76cfeeb"
   ]
  },
- "index": "b720394e7507",
+ "index": "93376e8eef47",
  "index_marks": {
   "front": [
    "トップ",
-   "bbcdc2e8"
+   "c38df96e"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "256ac48e"
+   "117cbb17"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -196,6 +196,6 @@
    "3a22dde0"
   ]
  },
- "updated": "10.27 10:52",
+ "updated": "10.27 10:55",
  "wishlist": "fc1e4ea1094e"
 }
