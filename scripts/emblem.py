@@ -534,7 +534,7 @@ def recrop(name):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "page", "shape", "crop", "ar", "lock")
+    keep = EMBLEM_KEEP
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     write_atomic(path, "\n".join(lines))
 
@@ -1372,7 +1372,7 @@ def upper_all(name):
     k = j + 1
     while k < len(lines) and lines[k].startswith("      - "):
         k += 1
-    keep = ("subject", "why", "image", "source", "page", "shape", "upper", "lock")
+    keep = EMBLEM_KEEP
     lines[j + 1:k] = [f"      - {_flow({kk: x[kk] for kk in keep if kk in x})}" for x in ems]
     write_atomic(path, "\n".join(lines))
 

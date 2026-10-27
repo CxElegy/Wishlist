@@ -60,6 +60,29 @@ class NoneKind(unittest.TestCase):
         self.assertIn("nk:", emblem.item_text(txt, "A", [x]))
 
 
+    def test_no_own_keep_list_in_scripts(self):
+        """小元素を items.yaml に書き戻す許可リストは EMBLEM_KEEP の 1 か所だけ（recrop・upper_all の狭い独自リストが face・nfv・nk・bb・body を落としていた）。"""
+        import re
+        root = pathlib.Path(__file__).resolve().parent.parent / "scripts"
+        own = [f"{f.name}:{n}" for f in root.glob("*.py") for n, l in enumerate(f.read_text(encoding="utf-8").split("\n"), 1)
+               if re.match(r'\s*keep = \(.*"subject", "why", "image"', l) and not l.lstrip().startswith("EMBLEM_KEEP")]
+        self.assertEqual(own, [])
+
+    def test_dropped_keys_check(self):
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import emb_check
+        ok = {"subject": "A", "nfv": emblem_face.NONE_V, "nk": "keep", "bb": [0, 1, 0, 1]}
+        lost = {"subject": "B", "nfv": emblem_face.NONE_V, "nk": "keep"}
+        waiting = {"subject": "C", "nfv": 3}
+        self.assertEqual(emb_check.dropped_keys([{"name": "S", "emblem": [ok, lost, waiting]}]), ["S B"])
+
+    def test_background_measures_every_round(self):
+        """後台は版面に変化がなくても毎回、顔の測り直し（measure_item）を全版面に回す（drop_broken の中だけでは回らなかった）。"""
+        src = pathlib.Path(emblem_fill.__file__).read_text(encoding="utf-8")
+        body = src[src.index("def background("):]
+        self.assertIn("emblem_face.measure_item(i, log) for i in load_items()", body.split("\ndef ")[0])
+
+
 class Display(unittest.TestCase):
     def item(self, **kw):
         return [{"image": "emblems/zeus.webp", "shape": "cutout", "face": [0, 0, 0.5, 0.5, 320, 400], "nk": "keep", "bb": [0.1, 0.95, 0.19, 0.81], **kw}]
