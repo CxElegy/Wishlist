@@ -131,6 +131,12 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
     nohead = nohead_real(st["nohead"], fails) if st["nohead"] else []
     heads = nohead_real(sorted(set(st["heads"])), fails) if st["heads"] else []
     first = pg.evaluate(FIRST_JS)
+    covered = []
+    if width <= 560:   # 2026-10-27：右下の札が一番下の字を隠す。下までスクロールして札の矩形と重なる字の要素を数える
+        pg.evaluate("window.scrollTo(0,document.documentElement.scrollHeight)")
+        pg.wait_for_timeout(600)
+        covered = pg.evaluate(COVER_JS)
+        pg.evaluate("window.scrollTo(0,0)")
     pg.screenshot(path=str(out / f"{who}-{page.split('.')[0] + '-' if page else ''}{width}x{height}.png"))
     bad = []
     if not page and emb != "off":
@@ -154,6 +160,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
             bad.append(f"横にはみ出す（{st['sw']}px）")
         if errors:
             bad.append("JS のエラー：" + " / ".join(errors[:2]))
+        bad += cover_bad(covered)
         bad += first_screen_bad(first)   # 0 個の人の設定・欲しい物：主役のボタンがあり・最初の画面に入り・固定ボタンと重ならない
         return st, bad
     if len(loads) > 3:
@@ -168,6 +175,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
     if st["sw"] > width:
         bad.append(f"横にはみ出す（{st['sw']}px）")
+    bad += cover_bad(covered)
     bad += first_screen_bad(first)
     if st["tofu"]:   # 2026-10-26：数字の書体（Anton）に日本語の字がなく □□□ になった（「（日）」）
         bad.append("日本語の字が日本語の書体でない（□になる）：" + "・".join(map(str, st["tofu"])))
@@ -197,6 +205,17 @@ FIRST_JS = """()=>{const g=document.querySelector('.startgo,.wl-mine .go.big'),f
   zero:!!document.querySelector('.calm.start,.top.start')||/まだ何も追いかけていません/.test((document.querySelector('.page,.wl-mine')||{}).innerText||''),
   quiet:[...document.querySelectorAll('.poster,.calm.start,.pill .cnt,.calm .tag')].map(x=>x.innerText||'').join(' ').replace(/\\s+/g,'').includes('新着なし'),
   links:document.querySelectorAll('.page a.startgo,.page .calm a,.wl-mine .go.big').length,shell:!!document.querySelector('.wl-mine .empty')}}"""
+
+
+# ページの一番下で、右下の札（.wl-auth）の矩形に重なる字の要素（札・通知・固定の部品を除く）。0 が正しい
+COVER_JS = """()=>{const f=document.querySelector('.wl-auth');if(!f)return [];const r=f.getBoundingClientRect();if(!r.width)return [];
+ return [...document.querySelectorAll('body *')].filter(e=>!e.closest('.wl-auth,.wl-toast,.wl-live,.wl-gate,.wl-agree')&&[...e.childNodes].some(n=>n.nodeType===3&&n.data.trim())
+  &&getComputedStyle(e).visibility!=='hidden'&&getComputedStyle(e).position!=='fixed').filter(e=>{const b=e.getBoundingClientRect();
+  return b.width&&b.height&&b.left<r.right&&r.left<b.right&&b.top<r.bottom&&r.top<b.bottom}).slice(0,3).map(e=>(e.className||e.tagName)+':'+e.innerText.slice(0,12))}"""
+
+
+def cover_bad(c):
+    return [f"右下の札が一番下の字を隠す（{len(c)}：" + "・".join(c) + "）"] if c else []
 
 
 def first_screen_bad(f, gap=8):
