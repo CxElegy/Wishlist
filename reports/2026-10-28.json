@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "e7a46e7bfe8f",
+ "edit_sig": "07d10fc8ebfa",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -893,8 +893,9 @@
      "date": "2026-10-26",
      "headline": "绝区零联动星穹铁道，知更鸟这身紫色造型太戳人",
      "highlight": "",
-     "image": "http://wx4.sinaimg.cn/middle/005DZlpOly1iig74pp1h0j30sg14w7dn.jpg",
-     "image_via": "正文图（本站保存）",
+     "image": null,
+     "source": "手机新浪网",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.sina.cn&sz=128",
      "url": "https://www.sina.cn/news/detail/5358420049789759.html",
      "weight": "normal"
     }
@@ -915,36 +916,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 9,
-     "source": "Yahoo!ニュース",
-     "title": "【オリコン】原因は自分にある。週間1000万回超えで初1位 A2O LITEデビュー曲で初TOP5、めいちゃん初登場6位【ストリーミング上位動向】",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9rM2lhVzIwYTB6ekNxTTZ6NzVmREthU2JPOWVCaGd3QkFKQjdySU82c1NRdkc1eGxqU21xMUVtWUV2UXFSSmNSTHdkTGZEZ0Y5bjVLRTNTWU8tVTFaX3F0TWZEeG5MTGpyWGZqTzBtUTZoNER1NEVHRFY4VEI4Mmc?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 10,
-     "source": "Soompi",
-     "title": "A2O LITE, NCT WISH, PLAVE, Soyeon, And ILLIT Top Circle Weekly Charts",
-     "url": "https://www.soompi.com/article/1882039wpp/a2o-lite-nct-wish-plave-soyeon-and-illit-top-circle-weekly-charts"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 11,
-     "source": "Soompi",
-     "title": "SM Denies Rumors Of Banning A2O LITE Challenge Among Its Artists",
-     "url": "https://www.soompi.com/article/1882033wpp/sm-denies-rumors-of-banning-a2o-lite-challenge-among-its-artists"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 12,
-     "source": "스포츠경향",
-     "title": "A2O LITE, ‘NEON’ 무대 또 레전드 찍었다... 아이찡 표정 연기→‘칼각 텃팅’ 교체",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9rMFVUVm5ETmVTN2pNLU5NOEl1SXR6a0c1cHBnZF9xeEJUQ0JnUUhmSVRYUzBpbDIwdGtuQlVOa1FVRW5zT0p2WEpYekk3bGNoZ0NqQmd1anZYVUJKd3fSAWNBVV95cUxPWENJUlBUbkRxYVBfR2QydmFCVERkeDlweGljVHd5YzU0M19tT2k1YWpINkI0Z3FIYm5TVG1VNW5ER3Z6YlhyWUxodUF5emRsNzk5TVRvVjVBNmRKd0tDTXRDWVE?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -960,11 +931,11 @@
     {
      "blurb": "",
      "date": "2026-10-27",
-     "headline": "SM 回应禁止跳NEON 传闻，金希澈利特：谁能阻止我们",
+     "headline": "SM Denies Rumors Of Banning A2O LITE Challenge Among Its Artists",
      "highlight": "",
-     "image": "http://n.sinaimg.cn/sinakd20261027ac/321/w480h641/20261027/c9ec-4013f2d4c5bd749fee69c1c0f029e2c1.jpg",
-     "image_via": "og:image（其它来源）",
-     "url": "https://www.sina.cn/news/detail/5358687140971378.html",
+     "image": "https://0.soompi.io/wp-content/uploads/2026/10/28063552/SM-A2O-LITE.jpg",
+     "image_via": "og:image",
+     "url": "https://www.soompi.com/article/1882033wpp/sm-denies-rumors-of-banning-a2o-lite-challenge-among-its-artists",
      "weight": "normal"
     },
     {
@@ -975,6 +946,26 @@
      "image": "https://kagit-media.atreez.cc/uploads/2026-10-27/v6k9lcewuo3hsf2qq0go5jyd.jpg",
      "image_via": "og:image",
      "url": "https://kagit.kr/ja/posts/a2o-lite-dance-duo",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "【オリコン】原因は自分にある。週間1000万回超えで初1位 A2O LITEデビュー曲で初TOP5",
+     "highlight": "週間1000万回超えで初1位",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00000348-oric-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/60f2bf4370ab63785b3707dfee55ac062afebcd9",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "A2O LITE, ‘NEON’ 무대 또 레전드 찍었다... 아이찡 표정 연기→‘칼각 텃팅’ 교체",
+     "highlight": "",
+     "image": "https://images.khan.co.kr/article/2026/10/23/news-p.v1.20261023.fa0a5e04f36944d5adc333b89514a2a4_P1.jpg",
+     "image_via": "og:image",
+     "url": "https://sports.khan.co.kr/article/202610231949003",
      "weight": "normal"
     }
    ],

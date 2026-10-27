@@ -84,7 +84,7 @@
   "https://www.setn.com/news/897693": "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg",
   "https://www.sina.cn/news/detail/5358018526972618.html": "http://wx3.sinaimg.cn/middle/78961de9gy1iiewsmyjeuj24002o0npg.jpg",
   "https://www.sina.cn/news/detail/5358676786547090.html": "http://wx4.sinaimg.cn/middle/90b10eb9ly1iih0mx4ixnj20rs0rsagh.jpg",
-  "https://www.soompi.com/article/1882033wpp/sm-denies-rumors-of-banning-a2o-lite-challenge-among-its-artists": "https://www.bing.com/th?id=ONUT.dQ27Fm8LIPACX_VXI2Jx0Q&pid=News&w=1200",
+  "https://www.sina.cn/news/detail/5358687140971378.html": "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg",
   "https://www.superherohype.com/tv/702122-harry-potter-hbo-max-tv-show-casts-james-lily-potter-charlie-weasley": "https://www.bing.com/th?id=ONUT.O7nhoPckd7mZBKLAyPiZtQ&pid=News&w=1024",
   "https://www.toy-people.com/en/?p=115398": "https://img.toy-people.com/member/179241036689_1200.png",
   "https://www.ttv.com.tw/finance/view/10202621095998C694B9231848C68EB7DF49CA3E37BA840D/587": "https://www.moneydj.com/kmdj/images/news-default.jpg"
@@ -1426,27 +1426,6 @@
   },
   {
    "batch": 4,
-   "because": "A2O LITE",
-   "date": "2026-10-27",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.dQ27Fm8LIPACX_VXI2Jx0Q&pid=News&w=1200",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "Soompi",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "SM Denies Rumors Of Banning A2O LITE Challenge Among Its Artists",
-   "url": "https://www.soompi.com/article/1882033wpp/sm-denies-rumors-of-banning-a2o-lite-challenge-among-its-artists",
-   "words": [],
-   "work": "A2O LITE"
-  },
-  {
-   "batch": 5,
    "because": "漫威电影",
    "date": "2026-10-27",
    "hits": [],
@@ -1528,6 +1507,27 @@
    "url": "https://www.aol.com/articles/avengers-doomsday-video-announces-wild-175559000.html",
    "words": [],
    "work": "漫威电影"
+  },
+  {
+   "batch": 5,
+   "because": "A2O LITE",
+   "date": "2026-10-27",
+   "hits": [],
+   "image": "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "手机新浪网",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "SM 回应禁止跳NEON 传闻，金希澈利特：谁能阻止我们|Super Junior|A2O LITE",
+   "url": "https://www.sina.cn/news/detail/5358687140971378.html",
+   "words": [],
+   "work": "A2O LITE"
   },
   {
    "batch": 5,
@@ -2057,15 +2057,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "三星 Galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "galaxy",
    7
   ],
   [

@@ -54,12 +54,6 @@
   "target": 720,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261027ac/321/w480h641/20261027/c9ec-4013f2d4c5bd749fee69c1c0f029e2c1.jpg": {
-  "w": 480,
-  "h": 641,
-  "target": 720,
-  "v": 3
- },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
@@ -72,6 +66,19 @@
    960
   ],
   "why": "看不清"
+ },
+ "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg": {
+  "w": 690,
+  "h": 1165,
+  "target": 720,
+  "v": 3,
+  "local": "pics/ef6ea0a942024992.webp",
+  "out": [
+   690,
+   1165
+  ],
+  "why": "防盗链",
+  "ref": true
  },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
@@ -203,19 +210,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx4.sinaimg.cn/middle/005DZlpOly1iig74pp1h0j30sg14w7dn.jpg": {
-  "w": 1024,
-  "h": 1472,
-  "target": 720,
-  "v": 3,
-  "local": "pics/403d037da10098af.webp",
-  "out": [
-   890,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx4.sinaimg.cn/middle/006gNTEUgy1iidjugajd2j399c6fe7wq.jpg": {
   "w": 2000,
   "h": 1388,
@@ -259,6 +253,12 @@
   "w": 900,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://0.soompi.io/wp-content/uploads/2026/10/28063552/SM-A2O-LITE.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
   "v": 3
  },
  "https://afpbb.ismcdn.jp/mwimgs/b/f/400w/img_bfc686f4a9e4ab6c69b7d59a7396a88c70341.jpg": {
@@ -1256,6 +1256,12 @@
  },
  "https://images.khan.co.kr/article/2026/10/20/news-p.v1.20261020.4c924d72449246b59d479a2890b8217c_P1.jpg": {
   "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://images.khan.co.kr/article/2026/10/23/news-p.v1.20261023.fa0a5e04f36944d5adc333b89514a2a4_P1.jpg": {
+  "w": 800,
   "h": 800,
   "target": 720,
   "v": 3
@@ -2740,6 +2746,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00000348-oric-000-1-view.jpg?exp=10800": {
+  "w": 960,
+  "h": 640,
+  "target": 720,
+  "v": 3,
+  "local": "pics/1f54763844bd7409.webp",
+  "out": [
+   960,
+   640
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
   "h": 1080,
@@ -3835,12 +3853,6 @@
  "https://www.bing.com/th?id=ONUT.csvTQeo-s8NtUIZlyDOLeg&pid=News&w=530": {
   "w": 530,
   "h": 690,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.dQ27Fm8LIPACX_VXI2Jx0Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
   "target": 720,
   "v": 3
  },
