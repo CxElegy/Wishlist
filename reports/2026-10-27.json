@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "d148a5ac4cf8",
+ "edit_sig": "cfeb14cbcdb8",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
@@ -351,22 +351,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 15,
-     "source": "The Korea Daily",
-     "title": "ILLIT BREAK EVEN — Smashes 380K Sales on Day One",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE45OHNkTGZTdkw1TmxnVUJXNlRBbHlyanhJeTlvLUdfNUFiV3ROdWVocm1xVXdoUzRZYUFPLU1IZ1R2YVBTdXZ6T0R6andUaGhvbmhjaVRrdllGQUR4UmFmT1ltU2ZqN0VMQXZlVlBwaXhNcFVKOVNaYXJFTVVPdw?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 16,
-     "source": "조선일보",
-     "title": "ILLIT's 'BREAK EVEN' Shatters First-Day Sales Record",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxORVB0Sm5OaWJQY1U0a1Y4Q1hvd09DWnE4QWs0VHI0d2ZvYXE4Nmo0RGl3RjEtNjVVTVQ1Q1NKRWtxeV81Q1JGTWtaTEtPeTFIeEU1T0VXazZIQk0yeXRzNU10VDVRcEVELV90Q2JZYUQ1UlpKVUY0UVFESHE5ZnpKMW9Sb1pPcndPVVlqUXVB?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -427,6 +411,16 @@
      "image": "https://media.image.infoseek.co.jp/shared/barter/2512_Pandahoro_650x150.png",
      "image_via": "正文图",
      "url": "https://news.infoseek.co.jp/article/koreawave_3659472/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "ILLIT BREAK EVEN — Smashes 380K Sales on Day One",
+     "highlight": "380K",
+     "image": "https://en.koreadaily.com/wp-content/uploads/2026/10/202610271010772560_6adffdc58088a.jpg",
+     "image_via": "og:image",
+     "url": "https://en.koreadaily.com/illit-break-even-smashes-380k-sales-on-day-one/",
      "weight": "normal"
     }
    ],
@@ -788,8 +782,8 @@
      "date": "2026-10-26",
      "headline": "Sideshow Shares First Look at Hot Toys Deluxe The Mandalorian and Grogu Set",
      "highlight": "Hot Toys",
-     "image": "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-02-Oct26.jpg",
-     "image_via": "正文图（2 枚から）",
+     "image": "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg",
+     "image_via": "og:image",
      "url": "https://www.jedinews.com/collecting/articles/sideshow-shares-first-look-at-hot-toys-deluxe-the-mandalorian-and-grogu-set/",
      "weight": "normal"
     }

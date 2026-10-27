@@ -797,6 +797,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://en.koreadaily.com/wp-content/uploads/2026/10/202610271010772560_6adffdc58088a.jpg": {
+  "w": 650,
+  "h": 433,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.465,
+  "local": "pics/4f1097f12f258843.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://eng.belta.by/images/storage/news/with_archive/2026/000028_1792916227_187922_big.jpg": {
   "w": 870,
   "h": 486,
@@ -3800,9 +3813,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-02-Oct26.jpg": {
+ "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg": {
   "w": 1392,
-  "h": 974,
+  "h": 934,
   "target": 720,
   "v": 3
  },
