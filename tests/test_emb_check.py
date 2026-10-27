@@ -174,6 +174,13 @@ class CloseupOfficial(unittest.TestCase):
         got = emb_check.fandom_over_official(official=lambda it, s: ["u"] if s in ("Ichigo", "Ai") else [], items=items)
         self.assertEqual(got, {"A": ["Ichigo"]})
 
+    def test_official_retaken_row_is_not_fandom(self):
+        """「公式サイトの立ち絵：Fandom から取り直し」の行は取り直し済み＝E21 にも fandom_rows にも数えない。"""
+        import emblem_fill as ef
+        it = {"name": "A", "emblem_kind": "character", "emblem": [{"subject": "Ichigo", "shape": "cutout", "why": "Ichigo（公式サイトの立ち絵：Fandom から取り直し）"}]}
+        self.assertEqual(emb_check.fandom_over_official(official=lambda i, s: ["u"], items=[it]), {})
+        self.assertEqual(ef.fandom_rows(it), [])
+
     def test_fandom_rows_match_e21(self):
         """取り直しの対象（fandom_rows）と点検 E21 が同じ人を数える。固定・人物（emblem_people）・公式にない人は対象外。"""
         import emblem_fill as ef

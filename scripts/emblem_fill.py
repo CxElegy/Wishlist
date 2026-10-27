@@ -2541,7 +2541,7 @@ def fandom_rows(item):
     """取り直しの対象 = 点検 E21 が数える人：character の版面で、出どころが Fandom・固定でなく、公式サイトに同じ人の立ち絵がある小元素。"""
     if item.get("emblem_kind") != "character" or item.get("emblem_people"):
         return []
-    return [x for x in item.get("emblem") or [] if isinstance(x, dict) and "Fandom" in (x.get("why") or "") and not x.get("lock")
+    return [x for x in item.get("emblem") or [] if isinstance(x, dict) and emblem.fandom_sourced(x) and not x.get("lock")
             and x.get("shape") == "cutout" and emblem.official_for(item, x)]
 
 

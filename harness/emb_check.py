@@ -280,14 +280,14 @@ def fandom_over_official(official=None, items=None):
     """E21（情報）：名簿の上位（目標の枚数）の人のうち、画像を Fandom から取っているのに公式サイトに同じ人の立ち絵がある人
     → {版面: [人]}。「公式が先」が名簿の取り方（gather 系の全部の入口）で効いているかを、実際の名簿で数える（0 に向かう）。
     official(item, subject) → 網址のリスト（試験では差し替える）。"""
+    import emblem
     if official is None:
-        import emblem
         official = lambda it, s: emblem.official_for(it, {"subject": s})
     out = {}
     for it in items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", []):
         if it.get("emblem_kind") != "character" or it.get("emblem_people"):
             continue
-        bad = [x["subject"] for x in it.get("emblem") or [] if isinstance(x, dict) and "Fandom" in (x.get("why") or "") and official(it, x["subject"])]
+        bad = [x["subject"] for x in it.get("emblem") or [] if isinstance(x, dict) and emblem.fandom_sourced(x) and official(it, x["subject"])]
         if bad:
             out[it["name"]] = bad
     return out

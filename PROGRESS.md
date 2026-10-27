@@ -139,3 +139,4 @@
 - 2026-10-27 f4：お客さまの画面の文字（ownWait・drawMine）を言語表 UI へ・直書きを数える試験 UiWording〔残り 67 行は歯止め〕。tests 993 OK。次：AUTH_JS の残り 67 行
 2026-10-27 r1 顔なしの小元素を 3 つに分けた（①看板の姿・②記号・③替える）・体の枠の表示・点検 E17/E22：https://github.com/CxElegy/Wishlist/pull/572 テスト 1001 OK・ux_check 新しい ✗ なし。本番の 3 分けは次の後台の回のあとで確認。
 - 2026-10-27 f4：AUTH_JS の日本語の直書き 67 行を全部言語表 UI へ（別の目の指摘：内訳の数え違いも直した）。試験 UiWording を 0 と鍵の存在に。次：render._own_add など Python 側の直書き
+2026-10-27 r2：BLEACH 公式の段を本番で確認〔Ichigo・Byakuya が公式サイトの立ち絵に・E19 BLEACH 0〕。E21 の誤り〔取り直し済みの行を Fandom 由来と数え、毎回取り直す〕を emblem.fandom_sourced で直した。tests 1004 OK。次：後台の回のあと E21 が 0 になるのを数える
