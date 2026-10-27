@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-27T23:23:37+00:00",
+ "checked": "2026-10-27T23:33:27+00:00",
  "fired": {
-  "at": "2026-10-27T23:23:37+00:00",
+  "at": "2026-10-27T23:33:28+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -41,16 +41,16 @@
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "あつ森",
+    "漫威电影",
+    "GTA 6",
+    "周杰伦",
+    "Vaundy"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "f6cc57320182",
    "waiting": [
-    "あつ森",
-    "周杰伦",
-    "Vaundy",
-    "GTA 6",
-    "漫威电影",
     "ぐでたま",
     "哈利波特剧集",
     "チェーンソーマン",
@@ -62,7 +62,7 @@
     "Astrae Oratio",
     "A2O LITE"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:29 から）"
+   "why": "足りない 6 版面（Actions で Python が埋める）・失敗 10 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:41 から）"
   },
   "photos": {
    "claude": true,
