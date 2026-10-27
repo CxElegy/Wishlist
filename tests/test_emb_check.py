@@ -2,6 +2,7 @@
 import pathlib
 import sys
 import unittest
+from unittest import mock
 
 from PIL import Image, ImageDraw
 
@@ -172,6 +173,44 @@ class CloseupOfficial(unittest.TestCase):
                  {"name": "B", "emblem_kind": "group", "emblem": [{"subject": "X", "why": "Fandom"}]}]
         got = emb_check.fandom_over_official(official=lambda it, s: ["u"] if s in ("Ichigo", "Ai") else [], items=items)
         self.assertEqual(got, {"A": ["Ichigo"]})
+
+    def test_fandom_rows_match_e21(self):
+        """取り直しの対象（fandom_rows）と点検 E21 が同じ人を数える。固定・人物（emblem_people）・公式にない人は対象外。"""
+        import emblem_fill as ef
+        items = {"name": "A", "emblem_kind": "character", "emblem": [
+            {"subject": "Ichigo", "why": "Ichigo（Fandom のページ）", "shape": "cutout"},
+            {"subject": "Rukia", "why": "Rukia（Fandom のページ）", "shape": "cutout", "lock": True},
+            {"subject": "Nobody", "why": "Nobody（Fandom のページ）", "shape": "cutout"},
+            {"subject": "Ai", "why": "Ai（公式サイトの立ち絵）", "shape": "cutout"}]}
+        with mock.patch.object(ef.emblem, "official_for", side_effect=lambda it, x: ["u"] if x["subject"] != "Nobody" else []):
+            rows = [x["subject"] for x in ef.fandom_rows(items)]
+            self.assertEqual(rows, ["Ichigo"])
+            self.assertEqual(emb_check.fandom_over_official(official=lambda it, s: ["u"], items=[items]), {"A": ["Ichigo", "Rukia", "Nobody"]})   # E21 は固定も数える（見張りは広め）
+            self.assertEqual(ef.fandom_rows({**items, "emblem_people": True}), [])
+
+    def test_official_swap_replaces_and_keeps_on_failure(self):
+        import emblem_fill as ef
+        from PIL import Image
+        item = {"name": "A", "emblem_kind": "character", "emblem": [
+            {"subject": "Ichigo", "why": "Ichigo（Fandom のページ）", "shape": "cutout", "image": "emblems/a-ichigo.webp", "source": "f1", "face": [1]},
+            {"subject": "Rukia", "why": "Rukia（Fandom のページ）", "shape": "cutout", "image": "emblems/a-rukia.webp", "source": "f2"}]}
+        saved = {}
+        def fb(api, title, **kw):
+            return ("https://o/char/ichigo/body.webp", Image.new("RGBA", (4, 4)), None) if title == "Ichigo" else None
+        with mock.patch.object(ef.emblem, "official_for", return_value=["https://o/char/x/body.webp"]), mock.patch.object(ef.emblem, "official_site", return_value="https://o/"), \
+                mock.patch.object(ef.emblem, "find_bust", side_effect=fb), mock.patch.object(ef.emblem, "save_cut", side_effect=lambda im, slug: saved.setdefault("s", slug)), \
+                mock.patch.object(ef.emblem, "write_item", side_effect=lambda n, rows, r: saved.setdefault("rows", rows)), mock.patch.object(ef.emblem_face, "measure_item"), \
+                mock.patch.object(ef, "load_items", return_value=[item]), mock.patch.object(ef, "closeup_of", return_value=False), mock.patch.object(ef, "broken_image", return_value=False):
+            self.assertEqual(ef.official_swap(item, log=lambda *a: None), 1)
+        rows = {x["subject"]: x for x in saved["rows"]}
+        self.assertEqual(rows["Ichigo"]["source"], "https://o/char/ichigo/body.webp")
+        self.assertNotIn("face", rows["Ichigo"])
+        self.assertIn("公式サイト", rows["Ichigo"]["why"])
+        self.assertEqual(rows["Rukia"]["source"], "f2")   # 取れなかった人は元のまま
+
+    def test_official_swap_is_in_background_chain(self):
+        src = (pathlib.Path(__file__).resolve().parent.parent / "scripts" / "emblem_fill.py").read_text(encoding="utf-8")
+        self.assertIn("| official_swap(item, log)", src)
 
 
 if __name__ == "__main__":

@@ -2090,7 +2090,7 @@ def fill_one(item, log=print):
             log(f"  [名簿] {item['name']}：{e}")
     if unbreak(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
-    if off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log) | drop_closeups(item, log):
+    if off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log) | drop_closeups(item, log) | official_swap(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
     if status(item)["state"] == "ok":   # 名簿を数え直しても足りている（名簿を確かめに来ただけ）：集めない
         st = status(item)
@@ -2501,6 +2501,67 @@ def stage_closeups(item, bad, log=print):
         log("  [胸像待ち] " + close_line(name, mine, who))
     log(f"  [胸像待ち] {name}：胸像に入れ替え {len(swapped)}（{'、'.join(swapped)}）・{CLOSE_TRIES} 回で外した {len(dropped)}・まだ待ち {left}（うち探した回数が {CLOSE_TRIES} 回以上の上位 {sum(1 for s in mine if mine[s]['n'] >= CLOSE_TRIES)}）")
     return len(swapped), len(dropped)
+
+
+OFFICIAL_PER_ROUND = 4   # 1 回の掃除で Fandom から公式に取り直す人数（rembg で切るので重い）
+
+
+def fandom_rows(item):
+    """取り直しの対象 = 点検 E21 が数える人：character の版面で、出どころが Fandom・固定でなく、公式サイトに同じ人の立ち絵がある小元素。"""
+    if item.get("emblem_kind") != "character" or item.get("emblem_people"):
+        return []
+    return [x for x in item.get("emblem") or [] if isinstance(x, dict) and "Fandom" in (x.get("why") or "") and not x.get("lock")
+            and x.get("shape") == "cutout" and emblem.official_for(item, x)]
+
+
+def official_swap(item, log=print):
+    """前に Fandom から取った小元素（規則「公式が先」の前の分）を、公式サイトの立ち絵に取り直す（胸像の入れ替えと同じ入れ替え方：
+    取れた人から入れ替え・取れなければ元のまま。元より質が下がるものは取らない）。1 回 OFFICIAL_PER_ROUND 人。→ 入れ替えた人数。"""
+    rows = fandom_rows(item)
+    if not rows:
+        return 0
+    name = item["name"]
+    skip = {u for u in item.get("emblem_reject") or []} | {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
+    swapped = {}
+    for x in rows[:OFFICIAL_PER_ROUND]:
+        try:
+            _check_time()
+        except OutOfTime:
+            break
+        try:
+            from PIL import Image
+            orig = Image.open(emblem.sitedir.SITE_DIR / str(x["image"]))
+            orig.load()
+        except Exception:
+            orig = None
+        try:
+            got = emblem.find_bust(None, _base_subject(x["subject"]), word=re.split(r"[\s(]", _base_subject(x["subject"]))[0], skip=skip, orig=orig,
+                                   official=emblem.official_for(item, x))
+        except Exception as e:
+            log(f"  [公式へ] {x['subject']}：{e}")
+            continue
+        if got and closeup_of(got[1]) is not True and not broken_image(got[1], False):
+            swapped[x["subject"]] = got
+    if not swapped:
+        return 0
+    rows_out = []
+    for x in item.get("emblem") or []:
+        if isinstance(x, dict) and x.get("subject") in swapped and "Fandom" in (x.get("why") or ""):
+            url, out, fs = swapped[x["subject"]]
+            slug = emblem.slugify(name, x["subject"])
+            emblem.save_cut(out, slug)
+            y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar", "nfv")}
+            y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：Fandom から取り直し）")
+            if fs is not None:
+                y["fs"] = fs
+            rows_out.append(y)
+        else:
+            rows_out.append(x)
+    with WRITE_LOCK:
+        emblem.write_item(name, rows_out, None)
+        emblem_face.measure_item(next((i for i in load_items() if i["name"] == name), item), log)
+    log(f"  [公式へ] {name}：Fandom から公式の立ち絵に取り直し {len(swapped)}（{'、'.join(swapped)}）・まだ Fandom {len(rows) - len(swapped)}")
+    return len(swapped)
 
 
 def drop_closeups(item, log=print, only=None):
