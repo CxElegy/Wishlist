@@ -143,3 +143,4 @@
 - 2026-10-27 胸像待ちの見込み（依頼の係 r3）：本番で待ち 49→1 人・E20 ✗ なし・E19 1 枚＝確認済み · #550/#556 · 次：お客さま側の next/eta は待ちが出る版面を待つ・E10/E15 の別の段
 2026-10-27 f5：Python 側のお客さま用の日本語 9 つを SETTINGS_JA へ（直書き 0・試験 PyWording）：https://github.com/CxElegy/Wishlist/pull/576。次：render.py の残りの日本語（店長と共通の札）は言語を足す段で
 2026-10-27 f5f1：「⇄ にも」と FIRST_BOARD を SETTINGS_JA/ZH の表へ（店長の中文設定にも日本語が出ていた）・PyWording を user_pages 全体と render の own 経路の ast 数えに。次：ZH/JA の鍵そろえ点検・render() 共通部分の直書き
+2026-10-27 r4：スマホ右下の札が一番下の字を隠さない（≤560px の body 下 72px＋ux_check COVER_JS）：https://github.com/CxElegy/Wishlist/pull/577 ・#578（点検の誤検出〔閉じた details〕を直した）。本番 ux_check guest・test-a・test-b ✗0。次：561〜760px を右下にそろえるかをユーザーに聞く
