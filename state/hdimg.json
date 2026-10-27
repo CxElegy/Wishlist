@@ -1721,19 +1721,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/6da94d65020c72a9.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -3420,6 +3407,13 @@
   "h": 642,
   "target": 1280,
   "v": 3
+ },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-27"
  },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
