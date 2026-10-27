@@ -61,6 +61,12 @@
   ],
   "why": "看不清"
  },
+ "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
@@ -1708,19 +1714,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/6da94d65020c72a9.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -1762,12 +1755,6 @@
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://inews.gtimg.com/news_ls/OExABtF0mLidG6kMFnv9xaEZGbpMJ1Fx5UDb9ZiHgAzx8AA/0": {
-  "w": 1145,
-  "h": 644,
   "target": 720,
   "v": 3
  },
@@ -3164,7 +3151,7 @@
  "https://statics-prod.mirrordaily.news/images/f211b6c1-51ee-48b0-8c00-36437b0529f0.webp": {
   "w": 1600,
   "h": 1069,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://stea.jp/wp-content/uploads/2026/10/yonex-tennis-festival_2.jpg": {
@@ -3364,6 +3351,19 @@
   "h": 630,
   "target": 720,
   "v": 3
+ },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "w": 647,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/9a1ea62ec61eeb92.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
