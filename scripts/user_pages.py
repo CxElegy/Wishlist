@@ -104,7 +104,7 @@ def settings_page(prefs, items, schemes, settings, updated):
         for x in good:
             groups = {}
             for i in ins:
-                g = digest.sub_of(i, x["id"]) or "その他"
+                g = digest.sub_of(i, x["id"]) or render.SETTINGS_JA["other"]
                 groups[g] = groups.get(g, 0) + 1
             o.append({"id": x["id"], "label": x.get("label") or x["id"], "groups": list(groups.items())})
         srows.append({"section": sec, "chosen": schemes.get(sec, o[0]["id"]), "options": o})
@@ -179,12 +179,12 @@ def user_issue(items, shop_issue, rows, deadline, themes):
         blocks.append({"name": it["name"], "section": it.get("section"), "subtitle": "", "stories": st, "facts": [],
                        "pending": [], "cover": cover, "theme": theme.resolve(it, cover, themes),
                        **({} if st else {"quiet": True, "collecting": True,
-                                         "status": "記事を集めています。集まりしだい、ここに並びます"})})
+                                         "status": render.SETTINGS_JA["collecting"]})})
     if not blocks:   # 版面が 0 個の人も同じ枠組み：静かな版面（主題・配色つき）で最初の 1 つを選ぶ道を出す（素の箱にしない）
         first = {"name": FIRST_BOARD, "type": "category", "section": "其他"}
         blocks.append({"name": FIRST_BOARD, "section": "其他", "subtitle": "", "stories": [], "facts": [], "pending": [], "cover": None,
                        "theme": theme.resolve(first, None, themes), "quiet": True, "start": ADD_URL,
-                       "status": "まだ何も追いかけていません。選ぶボタンは上のポスターにあります。"})   # 道は主役のボタン 1 つだけ（ここに 2 つ目のリンクを置かない）
+                       "status": render.SETTINGS_JA["none_status"]})   # 道は主役のボタン 1 つだけ（ここに 2 つ目のリンクを置かない）
     date = (shop_issue or {}).get("date") or dt.date.today().isoformat()
     return {"date": date, "no": (shop_issue or {}).get("no", 0), "items": blocks}
 

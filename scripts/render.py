@@ -1822,6 +1822,10 @@ SETTINGS_ZH = {
 # お客さま本人の設定ページ（user_pages.py）。画面の文字は日本語（app_users.ui_lang、今の登録者は日本語）
 SETTINGS_JA = {
     "lang": "ja", "title": "設定", "back": "← 自分のページへ", "back_href": "./", "updated": "更新", "add": "＋ 追いかけるものを足す", "links": "",
+    # 0 個の人の入口の文字（設定ページ・最初のポスター・本人のページの静かな版面）。Python 側の日本語はここに置く（tests が数える）
+    "none_hint": "まだ何も追いかけていません。選ぶと、ここで版面の大きさを決められます。", "pick": "追いかけるものを選ぶ →",
+    "start_h": "最初の 1 つを選ぼう", "start_p": "好きな作品・人・場所を選ぶと、記事がここに並びます。",
+    "none_status": "まだ何も追いかけていません。選ぶボタンは上のポスターにあります。", "out": "外す", "collecting": "記事を集めています。集まりしだい、ここに並びます", "out_aria": " を外す", "other": "その他",
     "intro": "S / M / L で版面の大きさを、ジャンルごとに目次の分け方を選べます。選ぶとすぐ保存され、数分でページに反映されます。",
     "legend": "<dt>S</dt><dd>小：1 回に 3 本まで、だいたい 1 行</dd><dt>M</dt><dd>中：1 回に 5 本まで</dd><dt>L</dt><dd>大：1 回に 8 本まで、画面いっぱい</dd>",
     "sch_h": "目次の小分類の分け方", "sch_intro": "ジャンルごとに 1 つ選ぶと、左の目次の札とジャンルの中の版面の並びがその分け方になります。",
@@ -1834,8 +1838,8 @@ def _own_add(own, items):
     1 つ以上ある人は小さいリンク（2026-10-27：0 個の人の設定ページは小さい字のリンクだけで、主役がなかった）。"""
     href = e(own.get("add") or "../?add")
     if not items:
-        return (f'<p class="hint">まだ何も追いかけていません。選ぶと、ここで版面の大きさを決められます。</p>'
-                f'<a class="startgo" href="{href}">追いかけるものを選ぶ →</a>')
+        return (f'<p class="hint">{SETTINGS_JA["none_hint"]}</p>'
+                f'<a class="startgo" href="{href}">{SETTINGS_JA["pick"]}</a>')
     return f'<p class="hint"><a class="go" href="{href}">{SETTINGS_JA["add"]}</a></p>'
 
 
@@ -1879,7 +1883,7 @@ def render_settings(items, db, updated, schemes=(), own=None):
                 sub += f'<small>⇄ {e("・".join(_sec_name(k) for k in also))} にも</small>'
             btns = "".join(f'<button type="button" data-v="{v}" aria-pressed="{str(v == (it.get("size") or "M")).lower()}">'
                            f'{v}</button>' for v in ("S", "M", "L"))
-            tail = (f'<button type="button" class="edit out" aria-label="{e(it["name"])} を外す">外す</button>' if own else
+            tail = (f'<button type="button" class="edit out" aria-label="{e(it["name"])}{T["out_aria"]}">{T["out"]}</button>' if own else
                     f'<button type="button" class="edit" aria-label="修改 {e(it["name"])}">改</button>'
                     f'<button type="button" class="del" aria-label="删除 {e(it["name"])}">删</button>')
             rows.append(f'<div class="row" data-item="{e(it["name"])}"><div class="nm"><b>{e(it["name"])}</b>{sub}</div>'
@@ -2637,9 +2641,9 @@ def _front(works, today, updated, themes=None, wishes=(), taste=()):
                     + (f'<p>{e(top["blurb"])}</p>' if top.get("blurb") else "") + _extras(top) + "</div></article>")
         style = f' style="{_poster_colors(top, themes)}"'
     elif start:   # 版面 0 個の人：「新着なし」ではなく、最初の 1 つを選ぶ大きなボタンを主役に（2026-10-27）
-        top_html = (f'<div class="top start">{date_html}<div class="ptxt"><h2><span class="hb">最初の 1 つを選ぼう</span></h2>'
-                    f'<p>好きな作品・人・場所を選ぶと、記事がここに並びます。</p>'
-                    f'<a class="startgo" href="{e(start)}">追いかけるものを選ぶ →</a></div></div>')
+        top_html = (f'<div class="top start">{date_html}<div class="ptxt"><h2><span class="hb">{SETTINGS_JA["start_h"]}</span></h2>'
+                    f'<p>{SETTINGS_JA["start_p"]}</p>'
+                    f'<a class="startgo" href="{e(start)}">{SETTINGS_JA["pick"]}</a></div></div>')
         style = ""
     else:
         top_html = f'<div class="top">{date_html}<div class="ptxt"><h2><span class="hb">直近 {HOLD_DAYS} 日は新着なし</span></h2></div></div>'

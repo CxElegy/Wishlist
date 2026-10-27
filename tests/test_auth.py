@@ -203,5 +203,33 @@ class UiWording(unittest.TestCase):
         self.assertEqual(sorted(used - have), [])
 
 
+class PyWording(unittest.TestCase):
+    """Python 側の、お客さま用の日本語も表 SETTINGS_JA に置く（0 個の人の入口・外す・その他）。"""
+    JA = UiWording.JA
+
+    def test_own_entry_points_have_no_literal_japanese(self):
+        import inspect, user_pages
+        src = inspect.getsource(render._own_add)
+        src = re.sub(r'""".*?"""', "", src, flags=re.S)
+        self.assertIsNone(self.JA.search(src))
+        r = inspect.getsource(render)
+        i = r.index("elif start:")
+        seg = r[i:r.index('style = ""', i)]
+        seg = re.sub(r"  #.*$", "", seg, flags=re.M)
+        self.assertIsNone(self.JA.search(seg))
+        up = [l for l in inspect.getsource(user_pages).split("\n")
+              if ('"status"' in l or "sub_of(i, x" in l) and self.JA.search(re.sub(r"#.*$", "", l))]
+        self.assertEqual(up, [])
+
+    def test_table_keys_exist(self):
+        for k in ("none_hint", "pick", "start_h", "start_p", "none_status", "collecting", "out", "out_aria", "other"):
+            self.assertTrue(render.SETTINGS_JA.get(k), k)
+
+    def test_empty_person_settings_entry_uses_table(self):
+        h = render._own_add({"add": "../?add"}, [])
+        self.assertIn(render.SETTINGS_JA["pick"], h)
+        self.assertIn(render.SETTINGS_JA["none_hint"], h)
+
+
 if __name__ == "__main__":
     unittest.main()
