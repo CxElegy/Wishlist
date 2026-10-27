@@ -46,7 +46,6 @@
   "https://t.co/GoBXPp3UvQ": null,
   "https://tbreak.com/activision-open-world-game-elsewhere-emergent-gameplay/": "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/activision-open-world-game-elsewhere-emergent-gameplay.png?fit=1200%2C675&ssl=1",
   "https://tech-insider.org/activision-open-world-game-emergent-gameplay-elsewhere-2026/": "https://tech-insider.org/wp-content/uploads/2026/10/activision-open-world-game-emergent-gameplay-elsewhere-2026-gen.webp",
-  "https://thedirect.com/article/marvel-studios-disney-plus-avengers-doomsday-series-delay": "https://images.thedirect.com/media/article_full/avengers-doomsday-disney-plus-series.jpg",
   "https://topics.smt.docomo.ne.jp/amp/article/insidegames/trend/insidegames-189922": "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-189922.jpg",
   "https://trilltrill.jp/articles/5135144": "https://media.trilltrill.jp/articles/5135144/featured-image.62527985e3aec638ee3b46081775f209?w=1200",
   "https://ure.pia.co.jp/articles/-/3524153": "https://urepia.ismcdn.jp/mwimgs/9/f/-/img_9f0e16825892da92c7175ca1d118299a103028.jpg",
@@ -67,6 +66,7 @@
   "https://www.filmink.com.au/public-notice/official-trailer-release-for-mental-illness-prevention-documentary-raising-superheroes/": "https://www.filmink.com.au/wp-content/uploads/2026/09/trailer.jpg",
   "https://www.inside-games.jp/article/2026/10/26/189864.html": "https://www.inside-games.jp/imgs/ogp_f/1774489.webp",
   "https://www.inside-games.jp/article/2026/10/26/189878.html": "https://www.inside-games.jp/imgs/ogp_f/1799137.jpg",
+  "https://www.inverse.com/entertainment/new-avengers-doomsday-clip-captain-america-phase-6-problem": "https://imgix.bustle.com/uploads/image/2026/10/26/5a27ff6a/roc-13831_r4.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg",
   "https://www.jedinews.com/film-music-tv/articles/kuiils-wise-advice-the-mandalorian-official-compilation/": "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-41.jpg",
   "https://www.ksnt.com/news/local-news/fda-issues-advisory-for-cat-food-due-to-salmonella-fears/": "https://www.bing.com/th?id=ONUT.cowUjjp9JfyrTwe1yeH-hQ&pid=News&w=1200",
   "https://www.mrjjxw.com/articles/2026-10-27/4621300.html": "https://static.mrjjxw.com/images/new_nbd_icon_300.png",
@@ -1386,6 +1386,27 @@
   },
   {
    "batch": 4,
+   "because": "漫威电影",
+   "date": "2026-10-27",
+   "hits": [],
+   "image": "https://imgix.bustle.com/uploads/image/2026/10/26/5a27ff6a/roc-13831_r4.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "Inverse",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "New 'Avengers: Doomsday' Clip Highlights One Of Marvel Phase 6's Big Problems",
+   "url": "https://www.inverse.com/entertainment/new-avengers-doomsday-clip-captain-america-phase-6-problem",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 4,
    "because": "周杰伦",
    "date": "2026-10-27",
    "hits": [],
@@ -1406,7 +1427,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "漫威电影",
    "date": "2026-10-27",
    "hits": [],
@@ -1423,27 +1444,6 @@
    ],
    "title": "Avengers: Doomsday Video Announces a Wild Crossover MCU Fans Didn’t See Coming",
    "url": "https://www.aol.com/articles/avengers-doomsday-video-announces-wild-175559000.html",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 5,
-   "because": "漫威电影",
-   "date": "2026-10-27",
-   "hits": [],
-   "image": "https://images.thedirect.com/media/article_full/avengers-doomsday-disney-plus-series.jpg",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "The Direct",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "Report: Marvel Delays Its Next Disney+ Series To Release After 'Avengers Doomsday'",
-   "url": "https://thedirect.com/article/marvel-studios-disney-plus-avengers-doomsday-series-delay",
    "words": [],
    "work": "漫威电影"
   },
