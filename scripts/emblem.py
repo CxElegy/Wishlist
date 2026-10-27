@@ -1092,6 +1092,9 @@ OFFICIAL_PATH = re.compile(r"char|member|cast|figure|visual|profile", re.I)
 OFFICIAL_SKIP = re.compile(r"thumb|icon|logo|-sp\b|_sp\b|/sp/|banner|btn|button|sns", re.I)
 
 
+_OFFICIAL_HTML = {}   # 公式サイトのトップ：名簿の人ごとに取り直さない（1 回の実行の間だけ）
+
+
 def official_images(site, words, limit=6):
     """公式サイトのトップページにあるキャラの絵（パスに char/member/cast… とそのキャラの名前の語が入るもの）→ [網址]。
     BLEACH Mirrors High の公式サイトは /top/character/ichigo/body.webp（透明背景の公式立ち絵）。名前の語はパスの区切りごとに一致を見る（姓でも名でも）。"""
@@ -1099,7 +1102,7 @@ def official_images(site, words, limit=6):
         return []
     ws = {w.lower() for w in words if len(w) >= 3}
     try:
-        html = _get(site, 1_500_000).decode("utf-8", "replace")
+        html = _OFFICIAL_HTML[site] if site in _OFFICIAL_HTML else _OFFICIAL_HTML.setdefault(site, _get(site, 1_500_000).decode("utf-8", "replace"))
     except Exception:
         return []
     out = []

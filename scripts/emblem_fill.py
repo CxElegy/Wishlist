@@ -676,7 +676,14 @@ def gather(item, log=print, tried=None):
     for subj in who:
         _check_time()
         got = 0
-        if kind == "character" and api and not item.get("emblem_people"):
+        if kind == "character" and not item.get("emblem_people"):
+            # 公式サイトの立ち絵が先（A17：公式が先、Fandom の場面画像は最後）。取れた人は Fandom に行かない
+            for u in emblem.official_for(item, {"subject": subj})[:2]:
+                tried["公式サイト"] = tried.get("公式サイト", 0) + 1
+                cands.append({"subject": subj, "image": u, "page": emblem.official_site(item), "source": "公式サイト",
+                              "why": f"{subj}（公式サイトの立ち絵）", "license": ""})
+                got += 1
+        if kind == "character" and api and not item.get("emblem_people") and not got:
             try:   # 先に、同じページの透明背景の立ち絵（ゲームの公式イラストなど）。代表画像は漫画のコマ・アニメの場面のことが多い
                 r = emblem.cutout_on_page(api, subj)
                 if r and page_owner(r[2], subj, item.get("emblem_who")):

@@ -137,6 +137,13 @@ class CloseupOfficial(unittest.TestCase):
                     self.assertIn("official", [k.arg for k in c.keywords], f"{f}:{c.lineno} find_bust に official がない")
         self.assertGreaterEqual(n, 3)
 
+    def test_gather_asks_official_first(self):
+        """名簿の取り方（gather）も公式の立ち絵を先に探す（Fandom より前）。"""
+        src = (pathlib.Path(__file__).resolve().parent.parent / "scripts" / "emblem_fill.py").read_text(encoding="utf-8")
+        g = src[src.index("\ndef gather(item"):src.index("\ndef gather_roles")]
+        self.assertIn("official_for", g)
+        self.assertLess(g.index("official_for"), g.index("cutout_on_page"))
+
 
 if __name__ == "__main__":
     unittest.main()

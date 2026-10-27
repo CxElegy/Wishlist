@@ -2136,9 +2136,28 @@ class FindSources(unittest.TestCase):
         with mock.patch.object(em, "face_sharp", side_effect=[(50, 2.0, .5), (50, 3.0, .5)]):
             self.assertFalse(em.better_cut(mk(400, 600), mk(372, 519)))   # 元よりぼやける
 
+    def test_gather_official_first_skips_fandom(self):
+        """名簿の取り方（gather）も公式サイトの立ち絵が先：公式で取れた人は Fandom に行かず、取れない人だけ Fandom（トップは 1 回しか取りに行かない）。"""
+        em = ef.emblem
+        em._OFFICIAL_HTML.clear()
+        html = b'<img src="/top/character/ichigo/body.webp">'
+        item = {"name": "BLEACH", "type": "anime", "emblem_kind": "character", "site": "https://s.example/", "emblem_fandom": "bleach",
+                "emblem_who": ["Ichigo Kurosaki", "Rukia Kuchiki"]}
+        fandom = mock.Mock(side_effect=ValueError("none"))
+        with mock.patch.object(em, "_get", return_value=html) as g, mock.patch.object(em, "cutout_on_page", return_value=None) as cut, \
+                mock.patch.object(em, "page_image", fandom), mock.patch.object(ef, "wikipedia_photos", return_value=[]), \
+                mock.patch.object(ef, "commons_photos", return_value=[]), mock.patch.object(ef, "news_images", return_value=[]), \
+                mock.patch.object(ef, "site_images", return_value=[]), mock.patch.object(ef, "bing_images", return_value=[]):
+            tried = {}
+            cands = ef.gather(item, log=lambda *a: None, tried=tried)
+        self.assertEqual([c["image"] for c in cands if c["source"] == "公式サイト"], ["https://s.example/top/character/ichigo/body.webp"])
+        self.assertEqual([c[0][1] for c in cut.call_args_list], ["Rukia Kuchiki"])   # Ichigo は Fandom に行かない
+        self.assertEqual(g.call_count, 1)
+
     def test_official_images_and_site(self):
         """胸像の入れ替えは公式サイトの立ち絵が先：パスに char… と名前の語が入るものだけ（-sp・サムネ・ロゴ・ほかのキャラは除く）。site がなければアイコンの出どころの網域。"""
         em = ef.emblem
+        em._OFFICIAL_HTML.clear()
         html = ('<img src="/top/character/ichigo/body.webp"><img src="/top/character/ichigo/body-sp.webp">'
                 '<img data-src="/assets/character/thumb_01.jpg"><img src="/top/character/rukia/body.webp"><img src="/common/logo.webp">')
         with mock.patch.object(em, "_get", return_value=html.encode()):
