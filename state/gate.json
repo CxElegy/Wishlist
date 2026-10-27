@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-27T23:40:56+00:00",
+ "checked": "2026-10-27T23:44:17+00:00",
  "fired": {
-  "at": "2026-10-27T23:40:56+00:00",
+  "at": "2026-10-27T23:44:17+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-27T23:40:56+00:00",
+    "at": "2026-10-27T23:44:17+00:00",
     "attempts": 1,
     "day": "2026-10-28",
     "prog": 158,
-    "resp": "cse_01W4x6f6BoJe4CrMYZ3bHAqm",
-    "sig": "e5dd60896ae3"
+    "resp": "cse_01W4x6f6zf7Bs1pc3jGqJByQ",
+    "sig": "fae4d470aa21"
    },
    "items": [
     "A2O LITE",
@@ -60,27 +60,26 @@
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "あつ森",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "The Mandalorian",
-    "周杰伦",
-    "Vaundy",
-    "绝区零",
-    "ILLIT"
+    "ぐでたま"
    ],
    "need": true,
-   "sig": "9ee455045eeb",
+   "sig": "6776b114e210",
    "waiting": [
-    "ぐでたま",
     "哈利波特剧集",
     "dota2",
     "FROM",
-    "Astrae Oratio"
+    "周杰伦",
+    "あつ森",
+    "GTA 6",
+    "Vaundy",
+    "漫威电影",
+    "绝区零",
+    "The Mandalorian",
+    "ILLIT",
+    "Astrae Oratio",
+    "A2O LITE"
    ],
-   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 5 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:41 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:48 から）"
   },
   "photos": {
    "claude": true,
