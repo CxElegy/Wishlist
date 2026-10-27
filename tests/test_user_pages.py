@@ -327,7 +327,7 @@ class ZeroShellRendered(unittest.TestCase):
         i = js.index("function drawMine(box,p,err){")
         k = js.index("var items=(A.items||[])", i)
         body = js[i:k] + "}"
-        ui = js[js.index("var UI={"):js.index("var UB=")]   # 言語表（画面の文字）
+        ui = js[js.index("var UI={"):js.index("var L=UI[A.ui]||UI.ja;") + len("var L=UI[A.ui]||UI.ja;")]   # 言語表（画面の文字）
         prog = ("var A={},tok='t',page=%s,me={name:'x'},user={email:'a@b'},ADD='add.html';function esc(s){return String(s)}"
                 "function isMail(s){return /@/.test(s)}function picksOf(p){return p.picks}%s%s"
                 "var box={dataset:{}};drawMine(box,{picks:%s},false);console.log(box.innerHTML)") % (
