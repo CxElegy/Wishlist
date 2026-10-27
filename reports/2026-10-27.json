@@ -1,6 +1,6 @@
 {
  "date": "2026-10-27",
- "edit_sig": "f3a8f20e5fd8",
+ "edit_sig": "27e57438104c",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-c7421f17.jpg",
@@ -665,16 +665,6 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-26",
-     "headline": "＜画像13 / 19＞一緒にぐでぐでしよ～？話題のスーパー銭湯に、“ぐでたまの湯”が期間限定で登場！",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/153903/881093_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/trend/matome/article/153903/image881156.html",
-     "weight": "hero"
-    },
-    {
      "blurb": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升",
      "date": "2026-10-25",
      "headline": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升♥",
@@ -683,6 +673,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.setn.com/news/22762",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "一緒にぐでぐでしよ～？話題のスーパー銭湯に、“ぐでたまの湯”が期間限定で登場！",
+     "highlight": "期間限定",
+     "image": "https://news.walkerplus.com/article/153903/881093_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/trend/matome/article/153903/image881156.html",
+     "weight": "normal"
     }
    ],
    "subtitle": "Gudetama",
