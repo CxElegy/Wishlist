@@ -106,19 +106,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/008kvqgEgy1ii8qmuwbrfj31hc0u01kx.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3,
-  "local": "pics/cbaf8705105576dd.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -1968,10 +1955,17 @@
   "v": 3
  },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
+  "w": 664,
+  "h": 497,
   "target": 1280,
   "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
+  "blur": 0.436,
+  "local": "pics/f6555c6989a7b066.webp",
+  "out": [
+   1280,
+   958
+  ],
+  "why": "看不清"
  },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
   "w": 650,
@@ -2522,6 +2516,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261027-00010005-tennisnet-000-1-view.jpg?exp=10800": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
   "h": 1080,
@@ -2847,6 +2847,12 @@
   "h": 675,
   "target": 720,
   "v": 3
+ },
+ "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://sammyguru.com/wp-content/uploads/2026/02/Galaxy-S26-Ultra-SammyGuru-5-display-lockscreen.jpg": {
   "w": 2880,

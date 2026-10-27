@@ -1,78 +1,5 @@
 [
 {
-"at": "2026-10-26T07:11:41+00:00",
-"text": "2026-10-26 第 3 バッチを出刊：星巴克马克杯（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 7,139・キャッシュ読み 56.0万・出力 2,749",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.36,
-"mem_total": 16872804352,
-"mem_free": 15812378624,
-"disk_used": 10692481024,
-"disk_free": 30590689280,
-"disk_total": 41283170304,
-"peak": 382242816
-},
-"batch": 3,
-"boards": [
-"星巴克马克杯"
-],
-"stories": 3,
-"left": 0,
-"edited": 19,
-"run": 1792997442.2799644,
-"tok": {
-"in": 14,
-"cw": 7125,
-"cr": 560343,
-"out": 2749,
-"calls": 7,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 570231,
-"secs": 1259,
-"run_tok": {
-"in": 40,
-"cw": 55732,
-"cr": 1428731,
-"out": 6672,
-"calls": 20,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-10-26T08:07:54+00:00",
-"text": "2026-10-26 第 1 バッチを出刊：ILLIT（1 版面・8 本・残り 5 版面） · token 新規入力 4.7万・キャッシュ読み 71.5万・出力 2,314",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.78,
-"mem_total": 16872804352,
-"mem_free": 15908278272,
-"disk_used": 10693529600,
-"disk_free": 30589640704,
-"disk_total": 41283170304,
-"peak": 268877824
-},
-"batch": 1,
-"boards": [
-"ILLIT"
-],
-"stories": 8,
-"left": 5,
-"edited": 19,
-"run": 1793001705.7510927,
-"tok": {
-"in": 22,
-"cw": 46573,
-"cr": 715302,
-"out": 2314,
-"calls": 11,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 764211
-},
-{
 "at": "2026-10-26T08:15:28+00:00",
 "text": "2026-10-26 第 2 バッチを出刊：A2O LITE（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 1.1万・キャッシュ読み 70.8万・出力 3,101",
 "level": "ok",
@@ -1890,5 +1817,53 @@
 "calls": 13,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-27T11:45:56+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-10-27T11:50:20+00:00",
+"text": "2026-10-27 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、Vaundy、dota2、gelato pique ほか 6（12 版面・30 本・残り 4 版面） · token 新規入力 4.9万・キャッシュ読み 87.1万・出力 3,183",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.23,
+"mem_total": 16872812544,
+"mem_free": 15831449600,
+"disk_used": 10773352448,
+"disk_free": 30549155840,
+"disk_total": 41322508288,
+"peak": 407810048
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"Vaundy",
+"dota2",
+"gelato pique",
+"あつ森",
+"ぐでたま",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"星巴克马克杯",
+"猫用品"
+],
+"stories": 30,
+"left": 4,
+"edited": 22,
+"run": null,
+"tok": {
+"in": 26,
+"cw": 49276,
+"cr": 871197,
+"out": 3183,
+"calls": 13,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 923682
 }
 ]
