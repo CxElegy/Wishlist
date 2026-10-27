@@ -76,6 +76,24 @@ class NoneKind(unittest.TestCase):
         waiting = {"subject": "C", "nfv": 3}
         self.assertEqual(emb_check.dropped_keys([{"name": "S", "emblem": [ok, lost, waiting]}]), ["S B"])
 
+    def test_boards_dropped_keys_and_none_stale(self):
+        """お客さまの版面（boards.config.emblem）でも nk・bb が欠けた顔なしを数え（E23）、library_emblem が測り直す対象にする。"""
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import emb_check
+        lost = {"subject": "B", "nfv": emblem_face.NONE_V, "face": [0, 0, 0, 0, 9, 9]}
+        ok = {"subject": "A", "nfv": emblem_face.NONE_V, "nk": "keep", "bb": [0, 1, 0, 1], "face": [0, 0, 0, 0, 9, 9]}
+        self.assertEqual(emb_check.boards_dropped_keys([{"name": "G", "config": {"emblem": [ok, lost]}}, {"name": "H", "config": {}}]), ["G B"])
+        self.assertEqual(emblem_face.none_stale([ok, lost]), 1)
+        self.assertEqual(emblem_face.unmeasured([lost]), 0)
+
+    def test_measured_keys_one_list(self):
+        """画像を替えるとき捨てる測り値の一覧は emblem.EMBLEM_MEASURED の 1 か所（nfv・nk・bb も。二つの除外リストが食い違っていた）。"""
+        import re
+        root = pathlib.Path(__file__).resolve().parent.parent / "scripts"
+        own = [f.name for f in root.glob("*.py") if re.search(r'not in \("face", "fs"', f.read_text(encoding="utf-8"))]
+        self.assertEqual(own, [])
+        self.assertTrue({"face", "fs", "nfv", "nk", "bb"} <= set(emblem.EMBLEM_MEASURED))
+
     def test_background_measures_every_round(self):
         """後台は版面に変化がなくても毎回、顔の測り直し（measure_item）を全版面に回す（drop_broken の中だけでは回らなかった）。"""
         src = pathlib.Path(emblem_fill.__file__).read_text(encoding="utf-8")

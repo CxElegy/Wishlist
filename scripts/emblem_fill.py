@@ -2510,7 +2510,7 @@ def stage_closeups(item, bad, log=print):
                 slug = emblem.slugify(name, x["subject"])
                 emblem.save_cut(out, slug)
                 slugs[x["subject"]] = x.get("source") or x["image"]
-                y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar")}
+                y = {k: v for k, v in x.items() if k not in emblem.EMBLEM_MEASURED}
                 y.update(bust_fields(item, x, url, slug, fs))
                 rows.append(y)
             elif not any(x is d for d in dropped):
@@ -2581,7 +2581,7 @@ def official_swap(item, log=print):
             url, out, fs = swapped[x["subject"]]
             slug = emblem.slugify(name, x["subject"])
             emblem.save_cut(out, slug)
-            y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar", "nfv", "nk", "bb")}
+            y = {k: v for k, v in x.items() if k not in emblem.EMBLEM_MEASURED}
             y.update(image=f"emblems/{slug}.webp", source=url, page=emblem.official_site(item), shape="cutout", why=f"{x['subject']}（公式サイトの立ち絵：Fandom から取り直し）")
             if fs is not None:
                 y["fs"] = fs
