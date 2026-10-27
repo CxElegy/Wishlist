@@ -2143,6 +2143,33 @@ class FindSources(unittest.TestCase):
         with mock.patch.object(em, "face_sharp", side_effect=[(50, 2.0, .5), (50, 3.0, .5)]):
             self.assertFalse(em.better_cut(mk(400, 600), mk(372, 519)))   # 元よりぼやける
 
+    def test_official_bust_not_rejected_by_sharpness_or_missing_fs(self):
+        """公式の立ち絵は顔の鋭さを元と比べず（大きい絵ほど数が低く出る：一護 3.06<3.45 で 15 回外れた）、顔が測れず fs なしでも
+        bust_replacement が通し、書き込み分（bust_fields・店長もお客さまも同じ）は fs を書かず「公式サイトの絵」と言う。"""
+        from PIL import Image
+        em = ef.emblem
+        mk = lambda w, h: Image.new("RGBA", (w, h), (80, 80, 80, 255))
+        with mock.patch.object(em, "face_sharp", side_effect=[(50, 3.06, .5), (50, 3.45, .5)]):
+            self.assertFalse(em.better_cut(mk(1026, 1256), mk(372, 519)))
+        with mock.patch.object(em, "face_sharp", side_effect=[(50, 3.06, .5), (50, 3.45, .5)]):
+            self.assertTrue(em.better_cut(mk(1026, 1256), mk(372, 519), official=True))
+        with mock.patch.object(em, "face_sharp", side_effect=[(50, 0.5, .5)]):
+            self.assertFalse(em.better_cut(mk(1026, 1256), official=True))   # 下限のぼやけは公式でも取らない
+        item = {"name": "B", "site": "https://s.example/", "emblem_fandom": "bleach"}
+        x = {"subject": "Ichigo Kurosaki", "image": "emblems/a.webp"}
+        u = "https://s.example/top/character/ichigo/body.webp"
+        with mock.patch.object(em, "official_for", return_value=[u]), \
+                mock.patch.object(em, "find_bust", return_value=(u, mk(900, 1100), None)), \
+                mock.patch.object(ef, "closeup_of", return_value=False), mock.patch.object(ef, "broken_image", return_value=False):
+            self.assertEqual(ef.bust_replacement(item, x, set())[0], u)
+        with mock.patch.object(em, "official_for", return_value=[]), \
+                mock.patch.object(em, "find_bust", return_value=("https://f.example/x.png", mk(900, 1100), None)):
+            self.assertIsNone(ef.bust_replacement(item, x, set()))   # 公式でない fs なし（顔なしの控え）は通さない
+        y = ef.bust_fields(item, x, u, "b-ichigo", None)
+        self.assertNotIn("fs", y)
+        self.assertIn("公式サイトの絵", y["why"])
+        self.assertEqual(ef.bust_fields(item, x, "https://f.example/x.png", "s", 0.3)["fs"], 0.3)
+
     def test_gather_official_first_skips_fandom(self):
         """名簿の取り方（gather）も公式サイトの立ち絵が先：公式で取れた人は Fandom に行かず、取れない人だけ Fandom（トップは 1 回しか取りに行かない）。"""
         em = ef.emblem

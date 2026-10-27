@@ -312,7 +312,7 @@ def stage_holds(item, emblems, hold, pend, fetch=None):
             slug = emblem.slugify(item["name"], x["subject"]) + "-bust"
             emblem.save_cut(cut, slug)
             y = {k: v for k, v in x.items() if k not in ("face", "fs", "crop", "upper", "ar")}
-            y.update(image=f"emblems/{slug}.webp", source=url, shape="cutout", fs=fs, why=f"{x['subject']}（Fandom のページの胸像：顔だけのアップの代わり）")
+            y.update(emblem_fill.bust_fields(item, x, url, slug, fs))
             rows.append(y)
         elif not any(x is d for d in dropped):
             rows.append(x)

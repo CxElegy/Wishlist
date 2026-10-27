@@ -810,10 +810,12 @@ def cut_score(im):
     return min(im.size), (fq[1] if fq else None)
 
 
-def better_cut(cand, orig=None):
+def better_cut(cand, orig=None, official=False):
     """入れ替えの候補 cand（PIL）を取ってよいか：短い辺 >= BUST_MIN_SIDE・鋭さ >= SHARP_MIN（測れたとき）が必ず。
     元 orig（PIL）があれば、さらに質の点数が元より上がるときだけ（元が下限未満なら下限を満たせば足りる）：
-    短い辺が元より小さくない・鋭さが元より低くない（両方測れたとき）。"""
+    短い辺が元より小さくない・鋭さが元より低くない（両方測れたとき）。
+    公式サイトの立ち絵（official）は鋭さを元と比べない：大きく描き込んだ絵ほど顔の鋭さの数が低く出て、
+    372px の Fandom の絵に負けていた（一護 3.06 < 3.45、公式 1026px が 15 回外れた 2026-10-27）。下限と「短い辺が元より小さくない」だけ見る。"""
     cs, cq = cut_score(cand)
     if cs < BUST_MIN_SIDE or (cq is not None and cq < SHARP_MIN):
         return False
@@ -822,7 +824,7 @@ def better_cut(cand, orig=None):
     os_, oq = cut_score(orig)
     if os_ < BUST_MIN_SIDE or (oq is not None and oq < SHARP_MIN):
         return True
-    return cs >= os_ and (cq is None or oq is None or cq >= oq)
+    return cs >= os_ and (official or cq is None or oq is None or cq >= oq)
 
 
 NOFACE_WIDE = 1.3   # 写真の切り抜きに顔がなく、横が縦のこの倍より長い = 髪・額だけの切れ端（哈利波特剧集 Hermione 194×92）。顔のない兜（The Mandalorian）は縦長の全身なので当たらない
@@ -1196,11 +1198,11 @@ def find_bust(api, title, word=None, limit=14, lo=0.2, hi=0.45, noface=False, ph
             fitted, fs = face_fit(out)
             if fs is None and url in official and clear_bg:   # 公式の立ち絵はアニメ絵で顔が測れないことが多い：上半身に切って使う（公式が先）
                 ub = upper_body(out)[0]
-                if orig is None or better_cut(ub, orig):
+                if orig is None or better_cut(ub, orig, official=True):
                     print(f"  [胸像・公式] {url[:80]}", file=sys.stderr)
                     return url, ub, None
-            if orig is not None and not better_cut(fitted, orig):   # 元より質が上がらない・下限未満：取らず次の候補へ（orig を渡された入れ替えだけ）
-                print(f"  [質が足りない] {t}：{cut_score(fitted)}", file=sys.stderr)
+            if orig is not None and (fitted is None or not better_cut(fitted, orig, official=url in official)):   # 元より質が上がらない・下限未満：取らず次の候補へ（orig を渡された入れ替えだけ）
+                print(f"  [質が足りない] {t}：{cut_score(fitted) if fitted is not None else '顔が測れない'}", file=sys.stderr)
                 continue
             if fs and lo <= fs <= hi:
                 print(f"  [胸像] {t}：顔 {fs}", file=sys.stderr)
