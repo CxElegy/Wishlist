@@ -1147,7 +1147,8 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 .wl-mem input{flex:1 1 220px}
 .wl-mem button{border:2px solid var(--ink);background:var(--ink);color:var(--card);padding:5px 14px;font:700 13px var(--font-sans);cursor:pointer}
 .wl-mem .st{min-height:1.4em;font-size:13px}
-@media (max-width:560px){.wl-auth{top:auto;bottom:12px;right:12px;transition:transform .25s ease,opacity .25s ease}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}
+@media (max-width:560px){body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}   /* 右下の札の高さ＋余白：一番下の字が札に隠れない（2026-10-27） */
+.wl-auth{top:auto;bottom:12px;right:12px;transition:transform .25s ease,opacity .25s ease}.wl-auth .menu{top:auto;bottom:calc(100% + 8px)}.wl-auth .shop{display:none}
   .wl-auth.away{transform:translateY(calc(100% + 24px));opacity:0;pointer-events:none}}
 @media (max-width:560px) and (prefers-reduced-motion:reduce){.wl-auth{transition:none}}
 </style><script>
@@ -1775,7 +1776,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.27 13:58</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.27 14:01</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>
