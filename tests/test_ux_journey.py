@@ -149,6 +149,17 @@ class CoverTest(unittest.TestCase):
             self.assertNotRegex(t, r"body\{padding-bottom:72px\}", f.name)
             self.assertIn("72px + env(safe-area-inset-bottom", t, f.name)
 
+    def test_testground_copies_carry_current_shell_css(self):
+        """焼いた写しの試作ページ（.wl-auth を持つもの）は、今の render.AUTH_CSS をそのまま含む。ずれたら harness/d5_sample.py で作り直す。"""
+        import pathlib, render
+        n = 0
+        for f in (pathlib.Path(__file__).resolve().parent.parent / "docs" / "testground").rglob("*.html"):
+            t = f.read_text(encoding="utf-8")
+            if ".wl-auth" in t:
+                n += 1
+                self.assertIn(render.AUTH_CSS, t, f"{f.name} の殻が古い：python harness/d5_sample.py")
+        self.assertGreaterEqual(n, 2)
+
     def test_cover_bad(self):
         self.assertEqual(ux_check.cover_bad([]), [])
         self.assertIn("隠す", ux_check.cover_bad(["p:末尾"])[0])
