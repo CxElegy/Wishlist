@@ -78,7 +78,7 @@
   "日本顶级网球赛事": 22,
   "三星手机": 17,
   "gelato pique": 10,
-  "ILLIT": 10,
+  "ILLIT": 14,
   "MMORPG 新作": 5,
   "dota2": 5,
   "周杰伦": 4,
@@ -413,7 +413,8 @@
    "weight": "lead",
    "refs": [
     5,
-    1
+    1,
+    14
    ],
    "image": "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg"
   },
@@ -446,7 +447,26 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    12
+   ]
+  },
+  {
+   "headline": "ILLIT、活動休止中のMOKAは「回復に向けて頑張ってます」５人での活動心待ち",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
+  },
+  {
+   "headline": "ILLITの新曲MVにソン・ガン出演…ユナが撮影現場での応援に感謝",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
    ]
   }
  ],
