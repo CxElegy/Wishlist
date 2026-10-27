@@ -77,21 +77,15 @@
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
-  "target": 720,
-  "v": 3
- },
- "http://wx1.sinaimg.cn/middle/008eZAxIly1iig4cgmelfj30ow0re426.jpg": {
-  "w": 896,
-  "h": 986,
   "target": 1280,
   "v": 3,
-  "local": "pics/813b6a0f6593f366.webp",
+  "blur": 0.589,
+  "local": "pics/64dc622ae48f3615.webp",
   "out": [
-   896,
-   986
+   1280,
+   960
   ],
-  "why": "防盗链",
-  "ref": true
+  "why": "看不清"
  },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
@@ -141,6 +135,19 @@
   "out": [
    1280,
    720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/008eZAxIgy1iifydiquu1j32hk31fqva.jpg": {
+  "w": 2000,
+  "h": 2444,
+  "target": 720,
+  "v": 3,
+  "local": "pics/013d8e581040aed1.webp",
+  "out": [
+   1047,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -3800,9 +3807,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg": {
+ "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-02-Oct26.jpg": {
   "w": 1392,
-  "h": 934,
+  "h": 974,
   "target": 720,
   "v": 3
  },
@@ -3816,6 +3823,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://www.justjared.com/wp-content/uploads/2026/10/from-season-3-netflix.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://www.kocpc.com.tw/wp-content/uploads/2026/04/20260426234433_0_82a249.jpg": {
