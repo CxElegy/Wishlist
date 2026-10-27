@@ -138,6 +138,27 @@ def small_url(src, width=400):
     return src
 
 
+FULL_W = 1000   # 切り抜く元の画像の幅 px（small_url の 400 だと、人物が幅の半分の絵は切り抜きの短い辺が 256px に届かない：E18）
+
+
+def full_url(src, width=FULL_W):
+    """small_url で縮めた網址を、切り抜く用の大きな幅に戻す（Fandom の scale-to-width-down/<幅>・Wikimedia の thumb の <幅>px）。
+    それ以外はそのまま。店長もお客さまも切り抜く所（cut_out・fit_all）がこれ 1 つを通る。"""
+    out = re.sub(r"/scale-to-width-down/\d+", f"/scale-to-width-down/{width}", src)
+    return re.sub(r"(/thumb/[0-9a-f]/[0-9a-f]{2}/([^/]+)/)\d+px-", rf"\g<1>{width}px-", out) if "wikimedia.org" in out else out
+
+
+def get_full(url, limit=MAX_BYTES):
+    """大きい幅で取る（取れなければ元の網址）。"""
+    big = full_url(url)
+    if big != url:
+        try:
+            return _get(big, limit)
+        except Exception:
+            pass
+    return _get(url, limit)
+
+
 def inspect(data):
     """→ (shape, 代表色, 画像)。shape は cutout（縁がほぼ透明）か badge。"""
     from PIL import Image
@@ -540,7 +561,7 @@ def cut_out(url, slug, drawn=True):
     from PIL import Image
     from rembg import new_session, remove
 
-    img = Image.open(io.BytesIO(_get(url))).convert("RGB")
+    img = Image.open(io.BytesIO(get_full(url))).convert("RGB")
     if "i.ytimg.com/" in url:
         img = video_frame(img)
     out = remove(img, session=_session("birefnet-general-lite"))   # 絵も写真もいちばん輪郭がきれいだった（isnet-anime・u2net と比べた）
@@ -548,7 +569,7 @@ def cut_out(url, slug, drawn=True):
     if not drawn and lost_face(img, out):
         raise ValueError("顔が切り抜きに残っていない（別のもの：手・物・背景を切り抜いた）")
     out, _ = upper_body(out)   # 縦長の全身は上半身に（小さく貼ると顔が見えない）
-    save_cut(out, slug)
+    save_cut(out, slug, BUST_MIN_SIDE)
     return f"emblems/{slug}.webp"
 
 
@@ -853,11 +874,14 @@ def is_sliver(w, h):
     return min(w, h) < CUT_MIN or w > h * CUT_WIDE
 
 
-def save_cut(out, slug):
-    """切り抜きを docs/emblems/<slug>.webp に書く。切れ端（is_sliver）は書かずに外す（前の画像を上書きして壊さない）。"""
+def save_cut(out, slug, min_side=0):
+    """切り抜きを docs/emblems/<slug>.webp に書く。切れ端（is_sliver）は書かずに外す（前の画像を上書きして壊さない）。
+    min_side：取るときの下限（胸像・半身は BUST_MIN_SIDE。全身の body は渡さない）。満たさなければ書かず ValueError（別の候補へ）。"""
     out.thumbnail((420, 520))
     if is_sliver(*out.size):
         raise ValueError(f"切れ端（{out.size[0]}×{out.size[1]}）")
+    if min(out.size) < min_side:
+        raise ValueError(f"小さすぎる（{out.size[0]}×{out.size[1]}：短い辺 {min_side}px 未満）")
     EMB_DIR.mkdir(parents=True, exist_ok=True)
     out.save(EMB_DIR / f"{slug}.webp", "WEBP", quality=88, method=6)
 
@@ -1230,13 +1254,13 @@ def fit_all(name, drawn=False):
             src = x.get("source")
             img = None
             if src:   # 元が透明な立ち絵なら、そこから整え直す（切り詰める前の全身から）
-                cand = Image.open(io.BytesIO(_get(src))).convert("RGBA")
-                if inspect(_get(src))[0] == "cutout":
+                cand = Image.open(io.BytesIO(get_full(src))).convert("RGBA")
+                if inspect(get_full(src))[0] == "cutout":
                     img = cand
             if img is None:
                 if x["image"].startswith("emblems/") and x.get("shape") == "cutout":
                     continue   # 自分の前の出力は整え直さない（commit のたびに face_fit で縮んだ：Black Panther 73×23 → 60×10）。作り直すなら元の画像（source）から
-                img = Image.open(io.BytesIO(_get(x["image"]))).convert("RGBA") if not x["image"].startswith("emblems/") else Image.open(sitedir.SITE_DIR / x["image"]).convert("RGBA")
+                img = Image.open(io.BytesIO(get_full(x["image"]))).convert("RGBA") if not x["image"].startswith("emblems/") else Image.open(sitedir.SITE_DIR / x["image"]).convert("RGBA")
             full = want_full(x, drawn, item.get("emblem_framing"))
             if full:
                 x.pop("upper", None)   # 前に多数決で書いた「上半身に切る」は、全身と決まったら消す
@@ -1270,7 +1294,7 @@ def fit_all(name, drawn=False):
             if out is None:
                 out, _ = upper_body(img, force=x.get("upper"))
             slug = slugify(name, x["subject"])
-            save_cut(out, slug)
+            save_cut(out, slug, 0 if x.get("body") else BUST_MIN_SIDE)   # 短い辺が 256px 未満は取らない（E18）。外れたものは emblem_reject へ（commit）
             if not x["image"].startswith("emblems/"):
                 x["source"] = x["image"]
             x["image"], x["shape"] = f"emblems/{slug}.webp", "cutout"
@@ -1282,7 +1306,9 @@ def fit_all(name, drawn=False):
                 print(f"  {x['subject']}：顔 {fs if fs else '見つからない（上半身の規則）'}", file=sys.stderr)
         except Exception as e:
             print(f"  [飛ばす] {x['subject']}：{e}", file=sys.stderr)
-    _write_emblems(name, ems)
+            if "小さすぎる" in str(e):
+                x["_drop"] = True
+    _write_emblems(name, [x for x in ems if not x.get("_drop")])
 
 
 def _write_emblems(name, ems):
@@ -1590,7 +1616,7 @@ def cut_all(name, drawn, old=()):
                     print(f"  [胸像探し失敗] {x['subject']}：{e2}", file=sys.stderr)
             if found:
                 try:
-                    save_cut(found[1], slugify(name, x["subject"]))
+                    save_cut(found[1], slugify(name, x["subject"]), BUST_MIN_SIDE)
                 except ValueError as e3:
                     print(f"  [切れ端] {x['subject']}：{e3}", file=sys.stderr)
                     found = None
