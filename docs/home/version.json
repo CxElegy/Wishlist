@@ -1,32 +1,32 @@
 {
- "admin": "6802f90fbd18",
- "admin-ai": "1a1647125175",
+ "admin": "0d9995b9762d",
+ "admin-ai": "07db754b7099",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6ee70f09"
+   "b3659c96"
   ],
   "tokens": [
    "AI 編集のトークン",
    "78e183a5"
   ]
  },
- "admin-boards": "45d86cf73251",
+ "admin-boards": "afb66ec81791",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e33a7805"
+   "f9301058"
   ],
   "votes": [
    "投票",
    "0ccd21c6"
   ]
  },
- "admin-emblem": "902bf3dd1797",
+ "admin-emblem": "40fccf32efc9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "71db1cc5"
+   "8a3de86d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "be19396da526",
  "admin-members_marks": {},
- "admin-now": "a7a638fb5109",
+ "admin-now": "3da6fdbe6e92",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "fdd6e501"
+   "a20b1af7"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "0276ac8b"
+   "6b94126c"
   ],
   "term-panel": [
    "ライブログ",
-   "c4ec38ea"
+   "7a1145c3"
   ]
  },
- "admin-system": "220e1a8c8063",
+ "admin-system": "427286106170",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e95c77b7"
+   "294e9df8"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "54f69726"
+   "016459d9"
   ]
  },
  "admin_marks": {},
- "heat": "a9149eb7e9d2",
+ "heat": "6d99f058f6e2",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "aece987c"
+   "01c91fce"
   ],
   "ranking": [
    "ランキング",
-   "9582c311"
+   "a7df6035"
   ]
  },
- "index": "20ec2a9c2dd8",
+ "index": "8f2af1b74cf9",
  "index_marks": {
   "front": [
    "トップ",
-   "30c8cdca"
+   "8cdc4067"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "16a60b44"
+   "dfb5e3a2"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "8ed81318"
+   "0b0fb5e7"
   ],
   "w-f303ad09": [
    "绝区零",
    "3a22dde0"
   ]
  },
- "updated": "10.27 10:39",
+ "updated": "10.27 10:40",
  "wishlist": "fc1e4ea1094e"
 }

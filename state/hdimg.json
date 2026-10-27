@@ -1665,19 +1665,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
  },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "w": 640,
-  "h": 480,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.487,
-  "local": "pics/6da94d65020c72a9.webp",
-  "out": [
-   1280,
-   960
-  ],
-  "why": "看不清"
- },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
   "h": 427,
@@ -2122,6 +2109,19 @@
   "out": [
    1024,
    1280
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/153903/881093_615.jpg": {
+  "w": 615,
+  "h": 464,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.437,
+  "local": "pics/4cda2ff1099fb0e4.webp",
+  "out": [
+   1280,
+   966
   ],
   "why": "看不清"
  },
@@ -2618,6 +2618,12 @@
   "w": 1890,
   "h": 1260,
   "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/174697/3/174697-3-a0394415951be9911a3ce6117d1747a5-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1672,
+  "h": 941,
+  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/18505/4576/18505-4576-3c0ae2cf4e150a39d7fa573bc8b19b8d-1080x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3285,6 +3291,19 @@
   "target": 720,
   "v": 3
  },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "w": 647,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/9a1ea62ec61eeb92.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3361,12 +3380,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.G9JGOA4QGwl57e4laL-NAA&pid=News&w=912": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
   "h": 334,
@@ -3424,6 +3437,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.Z8wU73kn7azeaHgRxOFisg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
@@ -3541,12 +3560,6 @@
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.boardoftheworld.com/wp-content/uploads/2025/09/Capita-Mercury-Review-2026.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -3878,12 +3891,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.sankei.com/resizer/v2/6T3L6IPV2RNE3AZXKIWN7RU4K4.jpg?auth=9a734cf8bd1f5d36c08b1a25c61fd855dffbcd1689261c05121db6c66b823d16&quality=50&focal=827%2C838&width=1200&height=675": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://www.sankei.com/resizer/v2/https%3A%2F%2Fdpgdieoe6npux.cloudfront.net%2Fprtimes%2FVFR23K4GO5MGXDTT2UYX6UA5N4?auth=9a414e57a91eb9e1ca5e403be51ea3162b6a6ae3547730c8d6840dc9793014f6&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
   "h": 675,
@@ -3935,12 +3942,6 @@
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
   "h": 899,
-  "target": 720,
-  "v": 3
- },
- "https://www.switchbacktravel.com/sites/default/files/images/articles/Smith%20Level%20MIPS%20ski%20helmet%20%28close%20up%29.jpg": {
-  "w": 1198,
-  "h": 799,
   "target": 720,
   "v": 3
  },
