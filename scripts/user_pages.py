@@ -38,7 +38,7 @@ IMG_PER_BOARD = 3        # 1 版面で写真を探す記事の数（頭から）
 IMG_BUDGET_S = 240       # 1 回の写真探しの合計時間（秒）
 STORIES_PER_BOARD = 8
 BOARD_DESIGN = ("emblem", "theme")   # ライブラリの版面の共有のデザイン（boards.config、library_emblem.py が規則で作る）
-FIRST_BOARD = "はじめに"   # 版面が 0 個の人のページに置く静かな版面の名前
+FIRST_BOARD = render.SETTINGS_JA["first_board"]   # 版面が 0 個の人のページに置く静かな版面の名前（文字は表）
 ADD_URL = "../?add"       # 追いかけるものを足す流れ（入口と同じ、render.AUTH_JS の ADD）
 
 
