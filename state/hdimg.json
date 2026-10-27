@@ -61,12 +61,6 @@
   ],
   "why": "看不清"
  },
- "http://n.sinaimg.cn/sinakd20261026ac/533/w480h853/20261026/b20e-061e2fabe029746cd542bc3cf2b32608.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
@@ -128,6 +122,19 @@
   "out": [
    1280,
    720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/008CTCXEgy1iigw4manoxj30nl0xc4qj.jpg": {
+  "w": 849,
+  "h": 1200,
+  "target": 720,
+  "v": 3,
+  "local": "pics/16e54ac8788639db.webp",
+  "out": [
+   849,
+   1200
   ],
   "why": "防盗链",
   "ref": true
@@ -206,19 +213,6 @@
   "out": [
    1280,
    853
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx3.sinaimg.cn/middle/90b10eb9ly1iig5bdy80qj21881kwb29.jpg": {
-  "w": 1592,
-  "h": 2048,
-  "target": 720,
-  "v": 3,
-  "local": "pics/a813aa3147cac98d.webp",
-  "out": [
-   995,
-   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -720,6 +714,12 @@
   ],
   "why": "看不清"
  },
+ "https://dam.mediacorp.sg/image/upload/s--2rDThzi5--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/8world/images/2026/10/27/20261027_ent_the-ooooone_02.jpg?itok=BaqLaMgc": {
+  "w": 1200,
+  "h": 676,
+  "target": 1280,
+  "v": 3
+ },
  "https://dccdn11.dcinside.co.kr/viewimage.php?id=29bed223f6c6&no=24b0d769e1d32ca73ce782fa11d02831c544c0747503709e757c5354a739fc95e2b8e572cd6dde67aac5dcc584e01733953d400b4089f2d4aec48d28eb8b0ab0a77861d9ea6a": {
   "w": 225,
   "h": 300,
@@ -802,19 +802,6 @@
   "target": 1280,
   "v": 3
  },
- "https://en.koreadaily.com/wp-content/uploads/2026/10/202610271010772560_6adffdc58088a.jpg": {
-  "w": 650,
-  "h": 433,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.465,
-  "local": "pics/4f1097f12f258843.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
- },
  "https://eng.belta.by/images/storage/news/with_archive/2026/000028_1792916227_187922_big.jpg": {
   "w": 870,
   "h": 486,
@@ -831,12 +818,6 @@
   "w": 1920,
   "h": 1080,
   "target": 1280,
-  "v": 3
- },
- "https://foro3d.com/2026/octubre/imagenes/sunbringer-llega-a-zenless-zone-zero-con-tres-agentes-en-uno.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
   "v": 3
  },
  "https://gachapolitan.com/wp-content/uploads/2026/10/5671-1.jpg": {
@@ -982,6 +963,12 @@
   "w": 1920,
   "h": 1080,
   "target": 720,
+  "v": 3
+ },
+ "https://i.abcnewsfe.com/a/3f4d22ad-8045-4791-a537-3773774a4769/doomsday-1-ht-jef-260720_1784553718149_hpMain_16x9.jpg?w=1600": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://i.cdn.newsbytesapp.com/images/l144_20281793008781.jpg": {
@@ -1669,6 +1656,19 @@
   "target": 720,
   "v": 3
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/inredweb/m_inredweb-108030.jpg": {
+  "w": 640,
+  "h": 410,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.616,
+  "local": "pics/ec11b31337453356.webp",
+  "out": [
+   1280,
+   820
+  ],
+  "why": "看不清"
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161631.jpg": {
   "w": 640,
   "h": 480,
@@ -1697,12 +1697,6 @@
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161977.jpg": {
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
- },
- "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162031.jpg": {
-  "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-27"
@@ -2095,19 +2089,6 @@
   "v": 3,
   "blur": 0.404
  },
- "https://news.walkerplus.com/article/1133751/11694997_615.jpg": {
-  "w": 615,
-  "h": 323,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.489,
-  "local": "pics/6d8f572f20bd47d2.webp",
-  "out": [
-   1280,
-   672
-  ],
-  "why": "看不清"
- },
  "https://news.walkerplus.com/article/1133922/11697468_615.jpg": {
   "w": 615,
   "h": 346,
@@ -2141,17 +2122,18 @@
   "target": 1280,
   "v": 3
  },
- "https://news.walkerplus.com/article/1171992/12465516_615.jpg": {
-  "w": 615,
-  "h": 870,
-  "target": 1280,
-  "v": 3
- },
  "https://news.walkerplus.com/article/1254137/14292686_615.jpg": {
   "w": 615,
   "h": 589,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/1330479/16314659_615.jpg": {
+  "w": 615,
+  "h": 769,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.353
  },
  "https://news.walkerplus.com/article/1445517/18700633_615.jpg": {
   "w": 615,
@@ -2842,12 +2824,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/f999a2886590a25d4098d13dafa7454dd5bc6917f29b04ef20c366004e698d81/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fctwant_com_582%2F6c0bf4dfa5689e34b665533c6722f7e8.jpg": {
-  "w": 1200,
-  "h": 632,
-  "target": 720,
-  "v": 3
- },
  "https://sammyguru.com/wp-content/uploads/2026/02/Galaxy-S26-Ultra-SammyGuru-5-display-lockscreen.jpg": {
   "w": 2880,
   "h": 1620,
@@ -3105,12 +3081,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
-  "w": 1200,
-  "h": 653,
-  "target": 720,
-  "v": 3
- },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3162,6 +3132,12 @@
  "https://statics-prod.mirrordaily.news/images/0f0ff192-36b2-458e-adef-6d490374d1fb.jpg": {
   "w": 2048,
   "h": 1536,
+  "target": 720,
+  "v": 3
+ },
+ "https://statics-prod.mirrordaily.news/images/f211b6c1-51ee-48b0-8c00-36437b0529f0.webp": {
+  "w": 1600,
+  "h": 1069,
   "target": 720,
   "v": 3
  },
@@ -3363,6 +3339,19 @@
   "target": 720,
   "v": 3
  },
+ "https://wimg.heraldcorp.com/news/cms/2026/10/26/news-p.v1.20261026.ae4eee20a34143a69f04cc4e0bca79ef_P1.jpg": {
+  "w": 647,
+  "h": 431,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.452,
+  "local": "pics/9a1ea62ec61eeb92.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3426,6 +3415,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.8UILRm4r1PA4_81tpWZ_Ng&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
   "h": 700,
@@ -3439,11 +3434,18 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.DoKdWtdo559bwJOBF1G12g&pid=News&w=900": {
-  "w": 700,
-  "h": 466,
+ "https://www.bing.com/th?id=ONUT.DOk64WaFvxmgMlxnbU23Sw&pid=News&w=300": {
+  "w": 300,
+  "h": 300,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "blur": 0.516,
+  "local": "pics/4d51533f60ffa0c6.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
@@ -3453,6 +3455,12 @@
   "blur": 0.393
  },
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.I0Qz3hwjbhDb1llUkzPXPA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -3522,6 +3530,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.cOvkIs8aK__hSpjz6Rj2Vw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.csvTQeo-s8NtUIZlyDOLeg&pid=News&w=530": {
   "w": 530,
   "h": 690,
@@ -3529,12 +3543,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.h1__6WSmxo7D9Lx6uBvTaQ&pid=News&w=960": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.l4a_AZxWa4cpg5NhlSeyPA&pid=News&w=800": {
   "w": 700,
   "h": 700,
   "target": 720,
@@ -3572,12 +3580,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.oPpmz_dPRwtD8ENpkIcWrg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ot6mqtmVy1VE5NRomSOM3Q&pid=News&w=1200": {
   "w": 700,
   "h": 700,
@@ -3612,6 +3614,12 @@
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.boardoftheworld.com/wp-content/uploads/2025/06/VS-1.jpg": {
+  "w": 1440,
+  "h": 810,
   "target": 720,
   "v": 3
  },
@@ -3657,6 +3665,19 @@
   "out": [
    1280,
    671
+  ],
+  "why": "看不清"
+ },
+ "https://www.chosun.com/resizer/v2/MVRWKZLCGIYDGMBTGY3DAMRQGQ.jpg?auth=69c0a274547ce82569db98e198f99eef360261586cd370566f70b5c356bbc2f1&width=650&height=341&smart=true": {
+  "w": 650,
+  "h": 341,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.477,
+  "local": "pics/f2dff78ac5ed30ff.webp",
+  "out": [
+   1280,
+   672
   ],
   "why": "看不清"
  },
@@ -4012,12 +4033,6 @@
  "https://www.svg.com/img/gallery/gta-6-advanced-weather-system-rockstar/l-intro-1791388577.jpg": {
   "w": 1600,
   "h": 899,
-  "target": 720,
-  "v": 3
- },
- "https://www.switchbacktravel.com/sites/default/files/images/articles/Smith%20Level%20MIPS%20ski%20helmet%20%28close%20up%29.jpg": {
-  "w": 1198,
-  "h": 799,
   "target": 720,
   "v": 3
  },
