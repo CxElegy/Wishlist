@@ -23,7 +23,7 @@
 ✗：押せない・押しても変わらない・JS のエラー・素の箱・横にはみ出す・同じ id の重複。始めと終わりに本人の追いかけるもの（prefs.picks）を空にする（本人の行だけ、my_keywords_set）。
 今のところ 👍・欲しい物は通さない（空の人には 👍 する記事も欲しい物の入口もない。BACKLOG に書いた）。
 
---fast（2026-10-27）：札・枠組みだけを速く（小元素 off・待ち 6 秒・最初の画面と設定の 2 枚だけ・test-c の小さい端末なし）。4 人×2 幅で 5 分以内。小元素・殻のページ・40 秒の開き直しは見ない（全部は ふだんの点検）。
+--fast（2026-10-27）：札・枠組みだけを速く（小元素 off・待ち 6 秒・最初の画面と設定の 2 枚だけ・test-c の小さい端末なし）。4 人×2 幅で 5 分以内。小元素（出方も）・殻のページ・管理ページ 7 枚・40 秒の開き直しは見ない（全部は ふだんの点検）。
 
     python harness/ux_check.py --fast [--base ...]   （定時の速い回）
     python harness/ux_check.py --journey [--base ...]   （1 日通しだけ。ふだんの点検には混ぜない）
@@ -623,13 +623,15 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"管理ページ 全体の構成 {w}px：" + ("、".join(bad) if bad else "崩れなし"))
+            if a.fast:
+                continue   # 管理ページ 7 枚は ふだんの点検
             try:
                 bad = check_admin_pages(pw, a.base, int(w), out)
             except Exception as ex:  # noqa: BLE001
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
-        for w in a.widths.split(","):
+        for w in ([] if a.fast else a.widths.split(",")):   # --fast は小元素を見ない
             try:
                 bad = check_emb_fade(pw, a.base, int(w))
             except Exception as ex:  # noqa: BLE001
