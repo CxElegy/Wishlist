@@ -835,6 +835,164 @@
      190
     ]
    }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Rukia Kuchiki",
+    "why": "Bleach: Brave Souls の公式イラスト（顔だけのアップではなく胸像）",
+    "image": "emblems/bleach-mirrors-high-rukia-kuchiki.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/b/bc/BBSCaptain_Rukia.png/revision/latest?cb=20210108074047&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/File:BBSCaptain_Rukia.png",
+    "shape": "cutout",
+    "face": [
+     0.53,
+     0.214,
+     0.651,
+     0.557,
+     227,
+     202
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Renji Abarai",
+    "why": "Bleach: Brave Souls の公式イラスト（顔だけのアップではなく胸像）",
+    "image": "emblems/bleach-mirrors-high-renji-abarai.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/5/5e/BBSRenji.png/revision/latest/scale-to-width-down/1200?cb=20210131173341&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/File:BBSRenji.png",
+    "shape": "cutout",
+    "face": [
+     0.482,
+     0.486,
+     0.456,
+     0.444,
+     384,
+     233
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Orihime Inoue",
+    "why": "Orihime Inoue（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-orihime-inoue.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/9/94/686Post-War_Orihime.png/revision/latest/scale-to-width-down/400?cb=20190523143321&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Orihime_Inoue",
+    "shape": "cutout",
+    "face": [
+     0.647,
+     0.149,
+     0.597,
+     0.555,
+     185,
+     178
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Rangiku Matsumoto",
+    "why": "Rangiku Matsumoto（Fandom・Rangiku）",
+    "image": "emblems/bleach-mirrors-high-rangiku-matsumoto.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/3/32/685Rangiku_profile.png/revision/latest/scale-to-width-down/400?cb=20200322073312&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Rangiku_Matsumoto",
+    "shape": "cutout",
+    "face": [
+     0.514,
+     0.208,
+     0.426,
+     0.515,
+     234,
+     217
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Jūshirō Ukitake",
+    "why": "Jūshirō Ukitake（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-j-shir-ukitake.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/4/49/Ukitake_helps_out_Shunsui.png/revision/latest/scale-to-width-down/600?cb=20220731002259&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/J%C5%ABshir%C5%8D_Ukitake",
+    "shape": "cutout",
+    "ar": 0.75,
+    "fs": 0.346,
+    "face": [
+     0.346,
+     0.155,
+     0.503,
+     0.499,
+     199,
+     138
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Yumichika Ayasegawa",
+    "why": "Yumichika Ayasegawa（Fandom のページ） → 同じページの別の画像（代表画像は切り抜きの検査で外れた）",
+    "image": "emblems/bleach-mirrors-high-yumichika-ayasegawa.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/9/9f/Ep139YumichikaBlocksTentacle.png/revision/latest/scale-to-width-down/600?cb=20230301190048&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Yumichika_Ayasegawa",
+    "shape": "cutout",
+    "ar": 0.723,
+    "face": [
+     0,
+     0,
+     0.5,
+     0.631,
+     136,
+     162
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Kon",
+    "why": "Kon（Fandom のページ）",
+    "image": "emblems/bleach-mirrors-high-kon.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/b/bd/Ep320KonProfile.png/revision/latest/scale-to-width-down/400?cb=20220907000221&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Kon",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.5,
+     223,
+     299
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Isane Kotetsu",
+    "why": "Isane Kotetsu（Fandom のページの胸像：顔だけのアップの代わり）",
+    "image": "emblems/bleach-mirrors-high-isane-kotetsu.webp",
+    "source": "https://static.wikia.nocookie.net/bleach/images/2/24/BBSIsane.png/revision/latest/scale-to-width-down/600?cb=20220711135345&path-prefix=en",
+    "page": "https://bleach.fandom.com/wiki/Isane_Kotetsu",
+    "shape": "cutout",
+    "fs": 0.242,
+    "face": [
+     0.242,
+     0.156,
+     0.43,
+     0.538,
+     181,
+     190
+    ]
+   }
   }
  ],
  "The Mandalorian": [
@@ -1604,6 +1762,163 @@
      0.497,
      295,
      227
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Monkey King",
+    "why": "Monkey King（Fandom のページ）",
+    "image": "emblems/dota2-monkey-king.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/e/ef/Money_King_Model.jpg/revision/latest/scale-to-width-down/400?cb=20161212233212",
+    "page": "https://dota2.fandom.com/wiki/Monkey_King",
+    "shape": "cutout",
+    "face": [
+     0.141,
+     0.073,
+     0.27,
+     0.477,
+     356,
+     132
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Chaos Knight",
+    "why": "Chaos Knight（Fandom のページ）",
+    "image": "emblems/dota2-chaos-knight.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/3/31/Chaos_knight_wallpaper.jpg/revision/latest/scale-to-width-down/400?cb=20120612221507",
+    "page": "https://dota2.fandom.com/wiki/Chaos_Knight",
+    "shape": "cutout",
+    "face": [
+     0.112,
+     0.158,
+     0.275,
+     0.392,
+     152,
+     182
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Ursa",
+    "why": "Ursa（Fandom のページ）",
+    "image": "emblems/dota2-ursa.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/77/Ursa_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150129173251",
+    "page": "https://dota2.fandom.com/wiki/Ursa",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.491,
+     347,
+     121
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Gyrocopter",
+    "why": "Gyrocopter（Fandom のページ）",
+    "image": "emblems/dota2-gyrocopter.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/a0/Oldmod-gyro.png/revision/latest/scale-to-width-down/400?cb=20131206063640",
+    "page": "https://dota2.fandom.com/wiki/Gyrocopter",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.457,
+     297,
+     141
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Pugna",
+    "why": "Pugna（Fandom のページ）",
+    "image": "emblems/dota2-pugna.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/8/86/Pugna_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509192627",
+    "page": "https://dota2.fandom.com/wiki/Pugna",
+    "shape": "cutout",
+    "face": [
+     0.171,
+     0.251,
+     0.168,
+     0.52,
+     329,
+     148
+    ]
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Lich",
+    "why": "Lich（Fandom のページ）",
+    "image": "emblems/dota2-lich.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/a/a6/Lich_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509190406",
+    "page": "https://dota2.fandom.com/wiki/Lich",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.519,
+     284,
+     200
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Dazzle",
+    "why": "Dazzle（Fandom のページ）",
+    "image": "emblems/dota2-dazzle.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/3/3b/Dazzle_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509192541",
+    "page": "https://dota2.fandom.com/wiki/Dazzle",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.455,
+     352,
+     178
+    ],
+    "nfv": 3
+   }
+  },
+  {
+   "v": 9,
+   "emblem": {
+    "subject": "Weaver",
+    "why": "Weaver（Fandom の公式の立ち絵・透明背景）",
+    "image": "emblems/dota2-weaver.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/9e/Weaver_Beetle_model.png/revision/latest/scale-to-width-down/400?cb=20160315131743",
+    "page": "https://dota2.fandom.com/wiki/File:Weaver_Beetle_model.png",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.502,
+     393,
+     243
     ],
     "nfv": 3
    }
