@@ -111,7 +111,7 @@
   "FROM": 3,
   "ぐでたま": 2,
   "Astrae Oratio": 1,
-  "哈利波特剧集": 1
+  "哈利波特剧集": 8
  },
  "GTA 6": [
   {
@@ -1097,14 +1097,29 @@
  "Astrae Oratio": [],
  "哈利波特剧集": [
   {
-   "headline": "HBO's Harry Potter series kicks off with 147.4 million in its first season",
-   "highlight": "147.4 million",
-   "blurb": "HBO's Harry Potter series kicks off with 147.4 million in its first season.",
+   "headline": "HBO's Harry Potter Series Officially Casts Its Two Most Important Characters",
+   "highlight": "Casts",
+   "blurb": "HBO's Harry Potter series has cast James Potter, Lily Potter and Charlie Weasley ahead of its December 2026 premiere.",
    "weight": "lead",
    "refs": [
-    1
+    6,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
    ],
-   "image": "https://foro3d.com/2026/octubre/imagenes/la-serie-de-harry-potter-de-hbo-arranca-con-1474-millones-en-su-primer.webp"
+   "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/03/screenshot-2026-03-24-at-16-35-49.png?w=1600&h=900&fit=crop"
+  },
+  {
+   "headline": "HBO's Harry Potter series kicks off with 147.4 million in its first season",
+   "highlight": "147.4 million",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
   }
  ]
 }

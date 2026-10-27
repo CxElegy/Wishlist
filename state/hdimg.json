@@ -1889,7 +1889,7 @@
   "target": 720,
   "v": 3
  },
- "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0-enlarge.jpg": {
+ "https://media.image.infoseek.co.jp/isnews/photos/nikkansports/nikkansports_202610260001341_0.jpg": {
   "w": 500,
   "h": 333,
   "target": 720,
@@ -3106,6 +3106,12 @@
  "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg": {
   "w": 1000,
   "h": 667,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/03/screenshot-2026-03-24-at-16-35-49.png?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
   "target": 1280,
   "v": 3
  },
