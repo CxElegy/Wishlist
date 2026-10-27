@@ -158,6 +158,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx3.sinaimg.cn/middle/647c8fably1iig7or5h03j20u011i40a.jpg": {
+  "w": 1080,
+  "h": 1350,
+  "target": 720,
+  "v": 3,
+  "local": "pics/02ff0a6a28588d35.webp",
+  "out": [
+   1024,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx3.sinaimg.cn/middle/78961de9gy1iiewsmyjeuj24002o0npg.jpg": {
   "w": 2000,
   "h": 1333,
@@ -209,12 +222,6 @@
   ],
   "why": "防盗链",
   "ref": true
- },
- "http://wx4.sinaimg.cn/middle/647c8fably1iig7or5lqaj20u011imyz.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
  },
  "http://wx4.sinaimg.cn/middle/90b10eb9ly1iih0mx4ixnj20rs0rsagh.jpg": {
   "w": 1000,
@@ -3495,18 +3502,6 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.PGznIf3HYsWmcfiTsfIvmQ&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
- },
- "https://www.bing.com/th?id=ONUT.SEjLe-VjuyuNDKLrg1DcBA&pid=News&w=1200": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-27"
- },
  "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
   "h": 538,
@@ -3849,6 +3844,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-ultra-3.jpg": {
   "w": 1280,
   "h": 720,
@@ -3933,6 +3934,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://www.justjared.com/wp-content/uploads/2026/10/from-season-3-netflix.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/a2olite01.webp": {
