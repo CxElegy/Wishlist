@@ -215,7 +215,7 @@
   "哈利波特剧集": 8,
   "BLEACH Mirrors High": 6,
   "A2O LITE": 5,
-  "三星手机": 4,
+  "三星手机": 13,
   "MMORPG 新作": 3,
   "滑雪": 3,
   "绝区零": 3,
@@ -245,7 +245,31 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    5,
+    9,
+    10
+   ]
+  },
+  {
+   "headline": "Samsung to Launch Galaxy S27 Series Earlier in January 2027",
+   "highlight": "January 2027",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13,
+    8,
+    6,
+    7
+   ]
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra leaks: Price in India, camera, processor, camera and other details we know so far",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
