@@ -1,10 +1,10 @@
 {
- "admin": "591b0fd56f18",
- "admin-ai": "f466caa154f1",
+ "admin": "22599c58a44e",
+ "admin-ai": "9a481bde9333",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fae79ae4"
+   "f4fc94a9"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "0ccd21c6"
   ]
  },
- "admin-emblem": "c23c54987eaf",
+ "admin-emblem": "a12c9aef5be6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "604f9ad7"
+   "8c70d203"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "b73236d7ec01",
+ "admin-now": "b9cbda5e2f5e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d892af2e"
+   "00bf7edf"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "58596a68"
   ]
  },
- "admin-system": "14134a90ffdf",
+ "admin-system": "e8418dae05b2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "0a4206ee"
+   "61910066"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "41a80eb1"
+   "33397967"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "9757d283"
   ]
  },
- "index": "7d5df8bf8c26",
+ "index": "4f717ecb6a89",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "0d48f802"
+   "1182f991"
   ],
   "w-130724c0": [
    "猫用品",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "d3d444db"
+   "062d1829"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "77f28dac"
+   "0a175726"
   ]
  },
- "updated": "10.27 21:13",
+ "updated": "10.27 21:21",
  "wishlist": "6b69186782d2"
 }
