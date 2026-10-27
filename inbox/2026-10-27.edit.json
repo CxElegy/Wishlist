@@ -82,19 +82,19 @@
   "漫威电影": 92,
   "GTA 6": 63,
   "A2O LITE": 37,
-  "The Mandalorian": 9,
+  "The Mandalorian": 11,
   "日本顶级网球赛事": 35,
   "三星手机": 23,
   "gelato pique": 13,
   "ILLIT": 39,
   "MMORPG 新作": 11,
   "dota2": 9,
-  "周杰伦": 13,
+  "周杰伦": 15,
   "滑雪": 10,
-  "チェーンソーマン": 6,
+  "チェーンソーマン": 7,
   "星巴克马克杯": 4,
-  "绝区零": 12,
-  "猫用品": 3,
+  "绝区零": 13,
+  "猫用品": 4,
   "BLEACH Mirrors High": 1,
   "あつ森": 2,
   "FROM": 3,
@@ -713,8 +713,10 @@
    "weight": "lead",
    "refs": [
     3,
-    2
-   ]
+    2,
+    15
+   ],
+   "image": "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG"
   },
   {
    "headline": "寵夫寵上天！周杰倫生日「愛妻包下整座球場」 林志穎慶生2億超跑當背景",
@@ -817,6 +819,15 @@
     "date": "2026-10-31",
     "label": "再販日"
    }
+  },
+  {
+   "headline": "劇場版「チェンソーマン」より、「レゼ」がカフェ二道のバイト衣装でプライズフィギュア化！",
+   "highlight": "プライズフィギュア化",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
   }
  ],
  "星巴克马克杯": [
@@ -858,7 +869,8 @@
    "refs": [
     11,
     10,
-    12
+    12,
+    13
    ],
    "image": "https://news.denfaminicogamer.jp/wp-content/uploads/2026/10/HVmuJmVWsAAndQw.jpg"
   },
@@ -909,6 +921,19 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "アベイルで「mofusand」グッズが10月31日発売！猫じゃらしや爪とぎなどペットグッズ全10種類",
+   "highlight": "10月31日発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ],
+   "event": {
+    "date": "2026-10-31",
+    "label": "発売日"
+   }
   }
  ],
  "BLEACH Mirrors High": [

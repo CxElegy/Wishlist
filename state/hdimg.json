@@ -48,19 +48,6 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261026ac/200/w640h360/20261026/bad8-a850b02eb99f532c72ec846dfd4eb152.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.445,
-  "local": "pics/2cffde8141cd6c2b.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "看不清"
- },
  "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
   "w": 640,
   "h": 360,
@@ -827,12 +814,6 @@
   "target": 1280,
   "v": 3
  },
- "https://foro3d.com/2026/octubre/imagenes/sunbringer-llega-a-zenless-zone-zero-con-tres-agentes-en-uno.webp": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://gachapolitan.com/wp-content/uploads/2026/10/5671-1.jpg": {
   "w": 800,
   "h": 565,
@@ -1591,12 +1572,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img.gamewith.jp/article/thumbnail/rectangle_l/584641.png?date=1793077434": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://img.gamewith.jp/assets/images/games/covers/50cbe0a5b2198fa7f738269d38eb2672.png": {
   "w": 980,
   "h": 300,
@@ -1872,10 +1847,10 @@
   "v": 3
  },
  "https://media.image.infoseek.co.jp/isnews/photos/inside/inside_189909_0-enlarge.jpg": {
-  "w": 640,
-  "h": 640,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://media.image.infoseek.co.jp/isnews/photos/itmedia_favlog/itmedia_favlog_4062502_0.jpg": {
   "w": 1200,
@@ -1998,6 +1973,12 @@
   "h": 1080,
   "target": 720,
   "v": 3
+ },
+ "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/23/179273329286478784_664_2000.JPEG": {
   "w": 650,
@@ -3471,6 +3452,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.DOk64WaFvxmgMlxnbU23Sw&pid=News&w=300": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
  "https://www.bing.com/th?id=ONUT.EfKjFhm1fPg2aVKYu88knA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3874,11 +3861,17 @@
   "target": 720,
   "v": 3
  },
- "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-02-Oct26.jpg": {
-  "w": 1392,
-  "h": 974,
+ "https://www.inside-games.jp/imgs/ogp_f/1799460.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
+ },
+ "https://www.jedinews.com/wp-content/uploads/2026/10/The-Mandalorian-and-Grogu-Deluxe-01-Oct26.jpg": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://www.jedinews.com/wp-content/uploads/2026/10/maxresdefault-41.jpg": {
   "w": 1280,
@@ -4005,6 +3998,12 @@
   "h": 600,
   "target": 720,
   "v": 3
+ },
+ "https://www.sankei.com/resizer/v2/6T3L6IPV2RNE3AZXKIWN7RU4K4.jpg?auth=9a734cf8bd1f5d36c08b1a25c61fd855dffbcd1689261c05121db6c66b823d16&quality=50&focal=827%2C838&width=1200&height=675": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-27"
  },
  "https://www.sankei.com/resizer/v2/https%3A%2F%2Fdpgdieoe6npux.cloudfront.net%2Fprtimes%2FVFR23K4GO5MGXDTT2UYX6UA5N4?auth=9a414e57a91eb9e1ca5e403be51ea3162b6a6ae3547730c8d6840dc9793014f6&quality=50&smart=true&width=1200&height=675": {
   "w": 1200,
