@@ -909,6 +909,12 @@
   "target": 720,
   "v": 3
  },
+ "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt859507d51581f713/6ae0fbc4f6e3e04aa497e290/gtaviluciaweightsfeatured.jpg?disable=upscale&width=1200&height=630&fit=crop": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://fieldlevelmedia.com/wp-content/uploads/2026/10/11882973-1024x696.jpg": {
   "w": 1024,
   "h": 696,
@@ -4676,12 +4682,6 @@
  "https://www.starwarsnewsnet.com/wp-content/uploads/2026/10/Nightmare_on_Nevarro_header.jpg": {
   "w": 2000,
   "h": 1125,
-  "target": 1280,
-  "v": 3
- },
- "https://www.superdope.games/wp-content/uploads/2026/05/image-665-scaled.png": {
-  "w": 2560,
-  "h": 1440,
   "target": 1280,
   "v": 3
  },
