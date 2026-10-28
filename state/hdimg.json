@@ -2351,6 +2351,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1264268/14572030_615.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "https://news.walkerplus.com/article/1317098/15915699_615.jpg": {
   "w": 615,
   "h": 870,
@@ -2369,6 +2375,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1446866/18749265_615.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://news.walkerplus.com/article/1447118/18760300_615.jpg": {
   "w": 615,
@@ -3509,6 +3521,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=1601,fit=cover,f=auto,quality=high,sharpen=2,g=face/21/2026/10/2026102618252436679_1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "https://today-obs.line-scdn.net/0hSex4nYMuDEpFTRDM0uBzHRcbDyV2IR9JIXtdfjtMFwUOFUpJD1QZUwkqFgQOfQNnJldLfD89UQE3HUN3C0BDTQU6FxEONBFjD3ZCRysuCgYdDRdMHCoF/w1200": {
   "w": 1200,
   "h": 801,
@@ -3769,6 +3787,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,

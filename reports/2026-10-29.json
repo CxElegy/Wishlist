@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "5d128ca41bb7",
+ "edit_sig": "3313d31452c0",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -320,22 +320,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-26",
-     "n": 2,
-     "source": "머니투데이",
-     "title": "ILLIT in Short Uniforms... What Is Their Stance on the \"Sexual Objectification of Female Police Officers\" Controversy?",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1xT0tZQ0JBRUhvT2pBUWxIcGI0UDhVcFROOUhhV3dzQTJDdFlWYlgwTW5oa2ZQdjdFeF8zdjlkWTNvdC15UWFSVUxkTlFodlRvdDNZR3FXZGNCNVJKWkhDMWJnaDJtbldyMlhBVGJrUEs3dU92dDE4?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 3,
-     "source": "일간스포츠",
-     "title": "[포토]아일릿, 미니5집 '브레이크 이븐'으로 컴백",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5wY0RUSV9QS2RqaXpkc2syUHpodm9jbmZMSjRYV2pZNnRFTGpCWkhxN0RwSWM5S3UxT1Z6U05wbkZOeG9ESGhTMFFNcjQ3WFdZbG1DNmVlS3g1ZnZXeERoMzF3?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -347,6 +331,26 @@
      "image_via": "og:image",
      "url": "https://news.livedoor.com/article/image_detail/32666240/?img_id=57230148",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "[포토]아일릿, 미니5집 '브레이크 이븐'으로 컴백",
+     "highlight": "미니5집",
+     "image": "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800",
+     "image_via": "转载 www.msn.com（Bing 缩略图）",
+     "url": "http://isplus.joins.com/article/view/isp202610260142",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "ILLIT in Short Uniforms... What Is Their Stance on the \"Sexual Objectification of Female Police Officers\" Controversy?",
+     "highlight": "",
+     "image": "https://thumb.mt.co.kr/cdn-cgi/image/w=1200,h=1601,fit=cover,f=auto,quality=high,sharpen=2,g=face/21/2026/10/2026102618252436679_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.mt.co.kr/en/entertainment/2026/10/26/2026102618252436679",
+     "weight": "normal"
     }
    ],
    "subtitle": "アイリット · 日本公演特别关注",
@@ -506,17 +510,19 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "ジェラート ピケ×サンリオ第2弾。クロミ・マイメロディなど5キャラのもこもこウェアが10月21日に発売。",
      "date": "2026-10-28",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "画像2 / 22＞ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5oNzlQbjVBbXYyQmk3d3dDWUZ0N3FjSUhyRUdwQUVIb3ZYT3JkZXhqRV8yWWpDSFVmZkdIb2RGOXZHdUhMQk5icXVrcE5nanhnbmIwbmo4V3JlTXBHYzdjZkJyNExKN0NVLThST2dn?oc=5"
+     "headline": "ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売",
+     "highlight": "10月21日発売",
+     "image": "https://news.walkerplus.com/article/1446866/18749265_615.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.walkerplus.com/article/1446866/image18749266.html",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "ジェラート ピケ · ルームウェア",
    "theme": {
     "accent": "#EE8FA7",
@@ -680,16 +686,6 @@
    "section": "影视",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-28",
-     "headline": "The Mandalorian season 4 (2027) Pedro Pascal & Katee Sackhoff",
-     "highlight": "",
-     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ggFyY.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/en-us/entertainment/tv/the-mandalorian-season-4-2027-pedro-pascal-katee-sackhoff/vi-AA2ggsX5",
-     "weight": "hero"
-    },
-    {
      "blurb": "Save on this Mandalorian LEGO set ahead of the season 3 premiere.",
      "date": "2026-10-28",
      "headline": "White Mandalorian Lego - Save on this Mandalorian LEGO set ahead of the season 3 premiere",
@@ -707,6 +703,16 @@
      "image": "https://assets.hldycdn.com/bdaeb944-3649-41e9-a1cc-559b84e94c40.jpeg",
      "image_via": "og:image",
      "url": "https://www.haveagood-holiday.com/en/articles/star-wars-mandalorian-official-visual-guide-2026",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "The Mandalorian season 4 (2027) Pedro Pascal & Katee Sackhoff",
+     "highlight": "season 4 (2027)",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ggFyY.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/entertainment/tv/the-mandalorian-season-4-2027-pedro-pascal-katee-sackhoff/vi-AA2ggsX5",
      "weight": "normal"
     }
    ],
@@ -726,15 +732,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 2,
-     "source": "Howl.Link",
-     "title": "ミナ / mina piano on Instagram: \"#しわあわせ #vaundy #ママがこの世界にいなくても\"",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE4yZ1NoRTlvX0FGa1I0ZFlkcUxJWmdyX18xMDY4REh2T1JnNVFkWXpTZ2FYMUdzeU10U21Z?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -793,22 +790,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 2,
-     "source": "17173",
-     "title": "《绝区零》「赛博圣手，出诊!」活动说明",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1PWUZTZ09hUkhjdGpiS3FaeU03VjVDaFNXd0VGX2dGUV8zUDlZcklUR09lOXZCS04tZzNNdFhKWlBJREdRM3FDc0ZUa0xwMUF1cXpBTGdxVkdtdVpmV1J6NzJVbGg?oc=5"
-    },
-    {
-     "date": "2026-10-23",
-     "n": 3,
-     "source": "神ゲー攻略",
-     "title": "ゼンレスゾーンゼロ向けスマホのおすすめ11選！落ちるときの対処法も紹介",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9uY1hqTmJqWmNGajJTNjhiM3Bsa2F1X1FGNDBfejRnYXBjVDBpc2NLWjV6b0dPU2lJVmQ3N0Qza2ZyeXJadWV5V05ScEFsdw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -820,6 +801,17 @@
      "image_via": "条目自带（Bing 缩略图）",
      "url": "https://www.thenewstribune.com/news/article317816639.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "《绝区零》「赛博圣手，出诊!」活动说明",
+     "highlight": "赛博圣手",
+     "image": null,
+     "source": "17173",
+     "source_icon": "https://www.google.com/s2/favicons?domain=news.17173.com&sz=128",
+     "url": "http://news.17173.com/content/10282026/144632074.shtml",
+     "weight": "normal"
     }
    ],
    "subtitle": "ゼンレスゾーンゼロ",

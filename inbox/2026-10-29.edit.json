@@ -243,19 +243,20 @@
   "A2O LITE": 10,
   "チェーンソーマン": 22,
   "三星手机": 7,
-  "The Mandalorian": 3,
+  "The Mandalorian": 4,
   "星巴克马克杯": 2,
   "あつ森": 1,
   "MMORPG 新作": 2,
   "哈利波特剧集": 2,
   "日本顶级网球赛事": 2,
   "FROM": 4,
-  "ILLIT": 1,
-  "Vaundy": 1,
+  "ILLIT": 3,
+  "Vaundy": 2,
   "滑雪": 1,
-  "绝区零": 1,
+  "绝区零": 3,
   "ぐでたま": 16,
-  "周杰伦": 3
+  "周杰伦": 3,
+  "gelato pique": 1
  },
  "三星手机": [
   {
@@ -331,6 +332,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "The Mandalorian season 4 (2027) Pedro Pascal & Katee Sackhoff",
+   "highlight": "season 4 (2027)",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -414,6 +424,24 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "[포토]아일릿, 미니5집 '브레이크 이븐'으로 컴백",
+   "highlight": "미니5집",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ILLIT in Short Uniforms... What Is Their Stance on the \"Sexual Objectification of Female Police Officers\" Controversy?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "Vaundy": [
@@ -446,6 +474,15 @@
    "weight": "lead",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "《绝区零》「赛博圣手，出诊!」活动说明",
+   "highlight": "赛博圣手",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
    ]
   }
  ],
@@ -508,6 +545,18 @@
     3
    ],
    "image": "https://www.therakyatpost.com/wp-content/uploads/2026/10/jay_chou_vivo_cover.jpg"
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラート ピケ×サンリオ第2弾！クロミ・マイメロディなど5キャラのもこもこウェアが10月21日発売",
+   "highlight": "10月21日発売",
+   "blurb": "ジェラート ピケ×サンリオ第2弾。クロミ・マイメロディなど5キャラのもこもこウェアが10月21日に発売。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/1446866/18749265_615.jpg"
   }
  ]
 }
