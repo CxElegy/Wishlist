@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T03:15:11+00:00",
+ "checked": "2026-10-28T04:35:09+00:00",
  "fired": {
-  "at": "2026-10-28T03:15:11+00:00",
+  "at": "2026-10-28T04:35:09+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,21 +12,33 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-28T01:40:10+00:00",
+    "at": "2026-10-28T04:35:09+00:00",
     "attempts": 1,
     "day": "2026-10-28",
-    "prog": 205,
-    "resp": "cse_01W4x6f8rFeSQ3HREoTLwb1L",
-    "sig": "e3f1387129cf"
+    "prog": 247,
+    "resp": "cse_01W4x6f7swZbNSvGXMEWyKdx",
+    "sig": "96089484a91f"
    },
    "items": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "猫用品"
+    "日本顶级网球赛事",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-10-28T01:49:13+00:00",
    "last_error": {
@@ -36,37 +48,53 @@
    "need": true,
    "prog": 247,
    "prog_day": "2026-10-28",
-   "ripe": [],
-   "sig": "0f83a686df58",
+   "ripe": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
+   ],
+   "sig": "96089484a91f",
    "token_cap": 1000000,
    "tokens_today": 346638,
-   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 73 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
+    "チェーンソーマン",
     "dota2",
-    "あつ森",
     "哈利波特剧集",
+    "FROM",
     "漫威电影",
     "GTA 6",
-    "周杰伦",
-    "Vaundy"
-   ],
-   "need": true,
-   "sig": "54a6002e4939",
-   "waiting": [
-    "ぐでたま",
-    "チェーンソーマン",
-    "FROM",
-    "Astrae Oratio",
     "A2O LITE",
+    "Astrae Oratio",
     "ILLIT",
     "绝区零",
+    "ぐでたま"
+   ],
+   "need": true,
+   "sig": "a26208fce94c",
+   "waiting": [
+    "周杰伦",
+    "Vaundy",
+    "あつ森",
     "The Mandalorian"
    ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 8 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 12:25 から）"
+   "why": "足りない 12 版面（Actions で Python が埋める）・失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 13:45 から）"
   },
   "photos": {
    "claude": true,
