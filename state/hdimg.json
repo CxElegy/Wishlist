@@ -839,19 +839,6 @@
   ],
   "why": "看不清"
  },
- "https://dailyholonet.com/wp-content/uploads/2019/03/Twitter.jpg": {
-  "w": 350,
-  "h": 250,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.548,
-  "local": "pics/41d849cb13d32e8b.webp",
-  "out": [
-   1050,
-   750
-  ],
-  "why": "看不清"
- },
  "https://dam.mediacorp.sg/image/upload/s--2rDThzi5--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/v1/8world/images/2026/10/27/20261027_ent_the-ooooone_02.jpg?itok=BaqLaMgc": {
   "w": 1200,
   "h": 676,
@@ -4240,6 +4227,13 @@
    861
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.415
  },
  "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
   "w": 700,
