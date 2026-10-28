@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T06:33:14+00:00",
+ "checked": "2026-10-28T06:58:06+00:00",
  "fired": {
-  "at": "2026-10-28T06:33:15+00:00",
+  "at": "2026-10-28T06:58:06+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -21,40 +21,38 @@
    },
    "items": [
     "Astrae Oratio",
-    "BLEACH Mirrors High",
     "FROM",
     "ぐでたま"
    ],
-   "last_batch": "2026-10-28T05:10:16+00:00",
+   "last_batch": "2026-10-28T06:41:16+00:00",
    "last_error": {
     "at": "2026-10-28T04:45:17+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 315,
+   "prog": 317,
    "prog_day": "2026-10-28",
    "ripe": [
     "Astrae Oratio",
-    "BLEACH Mirrors High",
     "FROM",
     "ぐでたま"
    ],
-   "sig": "eb1a4b280123",
+   "sig": "8986d131504c",
    "token_cap": 1000000,
-   "tokens_today": 370349,
-   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 416961,
+   "why": "整理待ちの記事 3 件（3 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
-   "waiting": [
-    "GTA 6",
+    "BLEACH Mirrors High",
     "チェーンソーマン",
     "dota2",
+    "GTA 6"
+   ],
+   "need": true,
+   "sig": "8cc9c3553b3e",
+   "waiting": [
     "ぐでたま",
     "ILLIT",
     "FROM",
@@ -68,7 +66,7 @@
     "A2O LITE",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 15:57 から）"
+   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 16:10 から）"
   },
   "photos": {
    "claude": true,
