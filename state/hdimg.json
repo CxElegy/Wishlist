@@ -570,12 +570,6 @@
   ],
   "why": "看不清"
  },
- "https://cdn.sanity.io/images/0vv8moc6/dvm360/45cd96b50bc0fe26c6fdfdc3d7650e713951af5a-356x464.png": {
-  "w": 356,
-  "h": 464,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg": {
   "w": 600,
   "h": 338,
@@ -4585,6 +4579,12 @@
  "https://www.kpopmonster.jp/wp-content/uploads/2026/10/illit01.webp": {
   "w": 1200,
   "h": 628,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.ksnt.com/wp-content/uploads/sites/86/2026/06/GettyImages-2194895813-e1781116790619.jpg?w=1280": {
+  "w": 1200,
+  "h": 798,
   "target": 720,
   "v": 3
  },
