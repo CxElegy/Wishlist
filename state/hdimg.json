@@ -526,6 +526,12 @@
   ],
   "why": "看不清"
  },
+ "https://cdn.sanity.io/images/0vv8moc6/dvm360/45cd96b50bc0fe26c6fdfdc3d7650e713951af5a-356x464.png": {
+  "w": 356,
+  "h": 464,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.spochoo.com/news/photo/202610/131353_262683_513.jpg": {
   "w": 600,
   "h": 338,
@@ -550,19 +556,6 @@
   "h": 800,
   "target": 1280,
   "v": 3
- },
- "https://cdnjs.cls.cn/www/20180717/images/rightSide/kfCodeSlider.png": {
-  "w": 444,
-  "h": 324,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.579,
-  "local": "pics/14dce6f96bbc9338.webp",
-  "out": [
-   1280,
-   934
-  ],
-  "why": "看不清"
  },
  "https://charagoo.jp/wp-content/uploads/2025/08/D103923_01.jpg": {
   "w": 1000,
@@ -907,6 +900,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-28"
+ },
+ "https://gizmodo.com/app/uploads/2026/10/Samsung-A17-Mint-Mobile-1200x675.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
  },
  "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
   "w": 1200,
@@ -2175,6 +2174,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2608867-90fdd87d4160.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
   "target": 1280,
   "v": 3,
@@ -2352,6 +2357,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.404
+ },
+ "https://news.walkerplus.com/article/1068055/10648734_615.jpg": {
+  "w": 615,
+  "h": 997,
+  "target": 1280,
+  "v": 3
  },
  "https://news.walkerplus.com/article/1133751/11694997_615.jpg": {
   "w": 615,
@@ -2889,12 +2900,6 @@
   "target": 720,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/220a5803851742a389145d15077bb05b.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
   "w": 1024,
   "h": 576,
@@ -3148,6 +3153,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://s.eximg.jp/exnews/feed/Nekojournal/88/Nekojournal_post31091/Nekojournal_post31091_1.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 720,
   "v": 3
  },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
@@ -3983,12 +3994,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.cowUjjp9JfyrTwe1yeH-hQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 465,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.csvTQeo-s8NtUIZlyDOLeg&pid=News&w=530": {
   "w": 530,
   "h": 690,
@@ -4057,13 +4062,6 @@
    861
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
-  "w": 700,
-  "h": 380,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.415
  },
  "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
   "w": 700,
@@ -4293,6 +4291,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
+  "w": 1000,
+  "h": 544,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
   "w": 1000,
   "h": 1000,
@@ -4458,6 +4462,19 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://www.moneydj.com/kmdj/images/news-default.jpg": {
+  "w": 315,
+  "h": 210,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.481,
+  "local": "pics/f010b339337d96fe.webp",
+  "out": [
+   945,
+   630
+  ],
+  "why": "看不清"
  },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,

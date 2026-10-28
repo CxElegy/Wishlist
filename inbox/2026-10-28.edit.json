@@ -296,17 +296,18 @@
   "滑雪": 4,
   "绝区零": 11,
   "FROM": 3,
-  "周杰伦": 3,
-  "The Mandalorian": 4,
+  "周杰伦": 4,
+  "The Mandalorian": 5,
   "ILLIT": 11,
   "Vaundy": 2,
-  "日本顶级网球赛事": 14,
+  "日本顶级网球赛事": 17,
   "チェーンソーマン": 7,
-  "猫用品": 2,
+  "猫用品": 4,
   "Astrae Oratio": 3,
   "gelato pique": 1,
   "星巴克马克杯": 1,
-  "dota2": 3
+  "dota2": 3,
+  "あつ森": 1
  },
  "三星手机": [
   {
@@ -620,7 +621,8 @@
    "refs": [
     9,
     10,
-    13
+    13,
+    15
    ]
   },
   {
@@ -685,7 +687,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    3
+   ]
+  },
+  {
+   "headline": "ハッピーねこちゃんわんちゃん、FIP発症前の介入を目指す化合物の猫試験を完了",
+   "highlight": "FIP発症前の介入",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
    ]
   }
  ],
@@ -744,6 +756,17 @@
    "highlight": "联机服务出现故障",
    "blurb": "",
    "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "あつ森に、桃鉄、マリオパーティも！Nintendo Switchソフトを買いそろえるチャンス！最大26％OFFで話題のタイトルがめちゃくちゃ安い！",
+   "highlight": "最大26％OFF",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
    ]

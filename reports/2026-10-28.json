@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "d3e6a5aecf55",
+ "edit_sig": "67ba6fe68190",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -519,22 +519,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 3,
-     "source": "DVM360",
-     "title": "FDA finds Salmonella in 2 lots of Darwin’s raw cat food after cat is hospitalized",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQbk96TkhLLWRnSXlOQnVvOGdDbUpqOXlZOHlLbjNvMXhRWVlYVlhhR1NPS2dTWDN0Z2pDNnpCSmIyQmMzVmt1TXpDeWl6eHpIZlNTSGgtQ3k3V0VoY05zVF9qTkhTZGhaSHVZQU9Hdjg1cEhFSHViT2xZanlfQmtCcDVsU181YVpIaHhMd0FaT3AzQWN1V1p6aDZqWS1nU0RMOHdmQzVPVlRQeFJLaEE?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 4,
-     "source": "Dellows News",
-     "title": "ハッピーねこちゃんわんちゃん、FIP発症前の介入を目指す化合物の猫試験を完了",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE40a3dhWW04RTRxVUZLTzhPTVJOUlhnU0NFOHdrUkx6N0c5TlZramlYX0JlTmpoX1lQN0ZMa1R2NFZTX05yR2c?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -553,9 +537,19 @@
      "date": "2026-10-27",
      "headline": "FDA issues advisory for cat food due to salmonella fears",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.cowUjjp9JfyrTwe1yeH-hQ&pid=News&w=1200",
-     "image_via": "Bing 缩略图",
+     "image": "https://cdn.sanity.io/images/0vv8moc6/dvm360/45cd96b50bc0fe26c6fdfdc3d7650e713951af5a-356x464.png",
+     "image_via": "og:image（其它来源）",
      "url": "https://www.ksnt.com/news/local-news/fda-issues-advisory-for-cat-food-due-to-salmonella-fears/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "ハッピーねこちゃんわんちゃん、FIP発症前の介入を目指す化合物の猫試験を完了",
+     "highlight": "FIP発症前の介入",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/901015_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/901015/",
      "weight": "normal"
     }
    ],
@@ -575,29 +569,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 15,
-     "source": "スポーツナビ",
-     "title": "2回戦進出！大坂 なおみ 1回戦終了後インタビュー／東レ パン パシフィック オープンテニス2026",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE92eUhfTXh5di0tZXI3aVVldFpVSEl4UFk0cE1MR1lZMTdIV19mWXRlNGxnUWg5YlFZVkk1ZHBPX3h5Z0Zqc1lWVEV6Q3BQTlpkTWR6bTQ5NEZhZ2pI?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 16,
-     "source": "スポーツナビ",
-     "title": "テニス - 東レ・パンパシフィック・オープン - マヤ ジョイヌト vs. ソラナ チルステア- 試合速報",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOY09VMV8yc0tPaWswZmo2SGcteWEwRDBJRktTUTcyaDJrNnBEeGpFcjlyampESTRLeFhkTHR2UTRpdTVreUZ0ZXF2dWNvTXhUNjVVUmhmQzI5Q1pNeGFPeTd6UWZpR2VZRWdTOERnWXpYQW4xY0hibW1odFpSQWo1V2x0WjJZeHFPX2VtNElYSQ?oc=5"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 17,
-     "source": "サンスポ",
-     "title": "内島萌夏は1回戦敗退 東レ・パンパシフィック・オープン／テニス（写真・画像 1/1）",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOUkZONFo3bGhxWTEtckdxRFZUVU5HczhHY0FTWFRoSnhCVmg1ang1MVRCOF9ndW1rWG1abmZ5bVRhbGFHbmNRN0tZc1hodVpiLXptQUJRempwNFl4WDNPc3puRGNXNWVQYUJtVmVZTWY3WElGYkJPaFZraGhJcFl0ZDVvbTM4bDM5NmtUZ1V3ZEdHcDZGVEdhRjMwUlBZelVhZHc?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -851,15 +822,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 5,
-     "source": "ScreenRant",
-     "title": "Prime Video's 26-Episode Space Western Masterpiece Is Everything The Mandalorian Should Have Been",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9IcF9SLTBFaUJHanM3Vk9mYkc1ckZ0a3RJQ3Fqc3ZhLXFlSjcwUV9Ea1lCQzg3Z2czdHFzVURYaGtGaXpZeWZsMVRTV19aOHlwcFFwX3Y4VTFwYmVpYWlYaVZuMEFGSTFOYVl2NzVhb09MTWFxV3d3?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -879,8 +841,8 @@
      "date": "2026-10-27",
      "headline": "The Mandalorian and Grogu nominated at the 2026 Concept Art Association Awards",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000",
-     "image_via": "Bing 缩略图",
+     "image": "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg",
+     "image_via": "og:image",
      "url": "https://www.fanthatracks.com/news/film-music-tv/the-mandalorian-and-grogu-nominated-at-the-2026-concept-art-association-awards/",
      "weight": "normal"
     }
@@ -901,17 +863,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "あつ森に、桃鉄、マリオパーティも！Nintendo Switchソフトを買いそろえるチャンス！最大26％OFFで話題のタイトルがめちゃくちゃ安い！【Amazonセール】",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1YdVBCQ0dqZDBvVjd1bGNfeklwY0NfWkVKdnFoTy1lcDExWkpkLVJlR2NSdjlSVVNRZHBMUzBldUdERlV5UERuN19PVTdSQmltRDJDak5R0gFbQVVfeXFMT2Iwei1PZmI3Z21Qb2pNTThveHZGM1NsWnNfVThzeG1KOXBlSC1UR0tOQUFqakpMSVBhbG9SYTNZZ2NCWFR0SU9MX0dKaHhDSkhWdDRsVjBqQWRWaw?oc=5"
+     "headline": "あつ森に、桃鉄、マリオパーティも！Nintendo Switchソフトを買いそろえるチャンス！最大26％OFFで話題のタイトルがめちゃくちゃ安い！",
+     "highlight": "最大26％OFF",
+     "image": "https://news.walkerplus.com/article/1068055/10648734_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1068055/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -960,33 +924,6 @@
     "bg": "#15131C",
     "fg": "#EEEAF4",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 4,
-     "source": "on.cc東網",
-     "title": "庾澄慶發文感謝A-Lin遇蝦碌 遭周杰倫糾正自嘲「低科技人才」",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNUVg3YTlPUTJUbDR3QjNuNEJGQ2FwR1kyUWQ4RXRKNnMtNVFqLXBRd3d4cWQ2cm9ZM1gxUjZvYUhYNGlaMG54SnlmbEU0SVBDUVk5UkZZVU9veXR2UkxCLVpRbVpZT2U3eHRNUGxRLTlKOFVmeUNCQTIwWGprT1pLcHNFMHBIZmZBSTNVaGJSa0tNUklEclNN?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "周杰倫",
-   "theme": {
-    "accent": "#2F5F8F",
-    "alt_accent": "#8DB6DE",
-    "alt_bg": "#14202E",
-    "alt_fg": "#EEF1F4",
-    "bg": "#F6F2EA",
-    "fg": "#1D2430",
-    "font": "sans",
     "split": true
    }
   },
@@ -1167,6 +1104,31 @@
     "bg": "#F6F1E7",
     "fg": "#1E3932",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-27",
+    "headline": "周杰伦转发点赞“中国歌手”身份介绍 国台办回应",
+    "url": "https://k.sina.com.cn/article_7879923551_m1d5ae175f03301tei0.html?cre=tianyi&mod=pcent&loc=8&r=0&rfunc=14&tj=cxvertical_pc_ent&tr=12&from=ent"
+   },
+   "name": "周杰伦",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "周杰倫",
+   "theme": {
+    "accent": "#2F5F8F",
+    "alt_accent": "#8DB6DE",
+    "alt_bg": "#14202E",
+    "alt_fg": "#EEF1F4",
+    "bg": "#F6F2EA",
+    "fg": "#1D2430",
+    "font": "sans",
     "split": true
    }
   }
