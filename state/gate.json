@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-28T07:03:17+00:00",
+ "checked": "2026-10-28T07:25:34+00:00",
  "fired": {
   "at": "2026-10-28T06:58:06+00:00",
   "results": {
@@ -38,27 +38,27 @@
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "dota2",
-    "GTA 6"
+    "哈利波特剧集"
    ],
    "need": true,
-   "sig": "8cc9c3553b3e",
+   "sig": "579eedeeab8a",
    "waiting": [
+    "周杰伦",
+    "あつ森",
+    "Vaundy",
+    "dota2",
+    "GTA 6",
+    "チェーンソーマン",
     "ぐでたま",
     "ILLIT",
     "FROM",
     "漫威电影",
-    "哈利波特剧集",
-    "周杰伦",
-    "あつ森",
-    "Vaundy",
     "The Mandalorian",
     "Astrae Oratio",
     "A2O LITE",
     "绝区零"
    ],
-   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 16:10 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 16:27 から）"
   },
   "photos": {
    "claude": true,
