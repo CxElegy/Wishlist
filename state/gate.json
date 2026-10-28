@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T01:40:10+00:00",
+ "checked": "2026-10-28T02:07:08+00:00",
  "fired": {
-  "at": "2026-10-28T01:40:10+00:00",
+  "at": "2026-10-28T02:07:09+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,47 +20,27 @@
     "sig": "e3f1387129cf"
    },
    "items": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
-    "gelato pique",
     "あつ森",
-    "チェーンソーマン",
-    "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-10-28T00:14:09+00:00",
+   "last_batch": "2026-10-28T01:49:13+00:00",
    "last_error": {
     "at": "2026-10-27T23:48:16+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 205,
+   "prog": 247,
    "prog_day": "2026-10-28",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "ILLIT",
-    "gelato pique",
-    "チェーンソーマン",
-    "三星手机",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "绝区零"
-   ],
-   "sig": "e3f1387129cf",
+   "ripe": [],
+   "sig": "0f83a686df58",
    "token_cap": 1000000,
-   "tokens_today": 274219,
-   "why": "整理待ちの記事 10 件（8 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 346638,
+   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -70,22 +50,23 @@
    "need": true,
    "sig": "b6804aff6de5",
    "waiting": [
-    "周杰伦",
-    "あつ森",
-    "Vaundy",
     "ぐでたま",
     "チェーンソーマン",
+    "FROM",
+    "あつ森",
+    "GTA 6",
+    "dota2",
+    "周杰伦",
+    "Vaundy",
     "漫威电影",
     "哈利波特剧集",
-    "dota2",
-    "FROM",
     "Astrae Oratio",
     "A2O LITE",
     "ILLIT",
     "绝区零",
     "The Mandalorian"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:41 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 11:20 から）"
   },
   "photos": {
    "claude": true,
