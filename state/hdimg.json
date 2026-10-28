@@ -427,12 +427,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.telegraphindia.com/telegraph/2026/Oct/1793170383_doomsday-new-release.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 720,
-  "v": 3
- },
  "https://assets.topics.apps-jp.nintendo.com/image/2021/09/08042244878749/820/32766_820_461.jpg": {
   "w": 820,
   "h": 461,
@@ -995,6 +989,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://gizmodo.com/app/uploads/2026/10/Connor-Storrie-Heated-Rivalry-1200x675.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
   "w": 1200,
   "h": 675,
@@ -1127,13 +1127,6 @@
   "target": 720,
   "v": 3
  },
- "https://i.ytimg.com/vi/QtHFx2ReeiI/maxresdefault.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-28"
- },
  "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/BLEACH-Mirrors-High-interview.webp?fit=1920%2C1080&ssl=1": {
   "w": 1920,
   "h": 1080,
@@ -1167,12 +1160,6 @@
  "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/sandra-huller-avengers-doomsday-cameo.png?fit=1200%2C675&ssl=1": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://i0.wp.com/thedisinsider.com/wp-content/uploads/2026/10/1000007227.jpg?fit=4000%2C2000&ssl=1": {
-  "w": 4000,
-  "h": 2000,
   "target": 720,
   "v": 3
  },
@@ -2946,6 +2933,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00010006-tennisnet-000-2-view.jpg?exp=10800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00035813-tennismagv-000-1-view.jpg?exp=10800": {
   "w": 1280,
   "h": 960,
@@ -3059,6 +3052,12 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://ogre.natalie.mu/media/news/comic/2026/1028/202610280943356ae14537662a6.jpg?impolicy=ogp_face_crop": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg": {
   "w": 1728,
@@ -3279,6 +3278,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2026/10/avengers-4-1793169416.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/bltc75232029a110828/6ad78d7a4497d755a6b830fc/Skyrim_gamers_have_a_promising_new_fantasy_open-world_RPG_to_(1).png": {
   "w": 1200,
   "h": 675,
@@ -3350,12 +3355,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-28"
- },
- "https://s.yimg.com/lo/mysterio/api/a8757b35f64e1e8ef539f56ef9cd1b6bfbf4e9c7ca17b3cccddb13ddb6f89105/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fprnewswire.com%2Fddab70b1b9ac03dd49c44ee355f3bcd7.jpg": {
-  "w": 1200,
-  "h": 672,
-  "target": 1280,
-  "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ef4e9ffb846b4ac8d334dc7341c01dea6c4c1d79f1a577cf82b9e9b8b339935d/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbeincrypto_us_662%2F35988ae8cbc31e6f09b1aa3265662fd1.jpg": {
   "w": 1200,
@@ -4006,6 +4005,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.6PqeeENr1giNJJUTWH8vDw&pid=News&w=700": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4209,6 +4214,12 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.pGsOG1PjFHXkwvk2y7YF2w&pid=News&w=1010": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://www.bing.com/th?id=ONUT.pSthXSkIYfjhwCxwILmlAg&pid=News&w=1200": {
   "w": 700,
@@ -4511,12 +4522,6 @@
   "w": 1280,
   "h": 720,
   "target": 720,
-  "v": 3
- },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/Galaxy-S27.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {

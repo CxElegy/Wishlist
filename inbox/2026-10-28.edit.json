@@ -8,7 +8,8 @@
    "refs": [
     9,
     17,
-    11
+    11,
+    130
    ],
    "event": {
     "date": "2026-10-29",
@@ -61,7 +62,14 @@
     111,
     116,
     110,
-    115
+    115,
+    136,
+    134,
+    129,
+    125,
+    121,
+    122,
+    135
    ]
   },
   {
@@ -73,7 +81,8 @@
     2,
     59,
     84,
-    88
+    88,
+    137
    ]
   },
   {
@@ -102,7 +111,8 @@
     62,
     75,
     71,
-    85
+    85,
+    132
    ]
   }
  ],
@@ -257,7 +267,10 @@
     27,
     26,
     29,
-    30
+    30,
+    34,
+    37,
+    41
    ],
    "event": {
     "date": "2026-10-28",
@@ -358,10 +371,10 @@
   }
  ],
  "_covered": {
-  "GTA 6": 118,
+  "GTA 6": 138,
   "漫威电影": 96,
   "哈利波特剧集": 23,
-  "BLEACH Mirrors High": 31,
+  "BLEACH Mirrors High": 41,
   "A2O LITE": 45,
   "三星手机": 23,
   "MMORPG 新作": 24,
@@ -370,10 +383,10 @@
   "FROM": 4,
   "周杰伦": 19,
   "The Mandalorian": 5,
-  "ILLIT": 21,
+  "ILLIT": 26,
   "Vaundy": 5,
-  "日本顶级网球赛事": 31,
-  "チェーンソーマン": 15,
+  "日本顶级网球赛事": 36,
+  "チェーンソーマン": 19,
   "猫用品": 6,
   "Astrae Oratio": 5,
   "gelato pique": 1,
@@ -715,7 +728,8 @@
    "refs": [
     1,
     4,
-    6
+    6,
+    22
    ],
    "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnax2f7OIyXc1WmQRDOjM-h8Yn9Gd6cjzMehWgq6BPeDImBHdGhoTErPtYsLyPaPzfFvf9v_c28o8qn8mFUGSUsnkDbqYqvg7SN2-YK0YukEflnUE4vG_1bAdOi-TgtgE4Q=="
   },
@@ -767,7 +781,9 @@
    "weight": "normal",
    "refs": [
     13,
-    16
+    16,
+    23,
+    24
    ]
   },
   {
@@ -886,7 +902,20 @@
     29,
     26,
     27,
-    25
+    25,
+    33,
+    35
+   ]
+  },
+  {
+   "headline": "イーラ 圧巻の逆転勝ちで東レPPO8強、大坂なおみの衣装を高く評価",
+   "highlight": "東レPPO8強",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    32,
+    34,
+    36
    ]
   }
  ],
@@ -921,7 +950,8 @@
     7,
     9,
     11,
-    13
+    13,
+    16
    ],
    "event": {
     "date": "2026-11-03",
@@ -936,6 +966,16 @@
    "refs": [
     12,
     10
+   ]
+  },
+  {
+   "headline": "劇場版「チェンソーマン レゼ篇」のオリジナルラテ全3種",
+   "highlight": "オリジナルラテ全3種",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18,
+    17
    ]
   }
  ],
