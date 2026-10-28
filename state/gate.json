@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-10-28T08:59:41+00:00",
+ "changed": false,
+ "checked": "2026-10-28T09:24:47+00:00",
  "fired": {
-  "at": "2026-10-28T09:07:32+00:00",
+  "at": "2026-10-28T09:24:47+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -22,7 +22,6 @@
    "items": [
     "A2O LITE",
     "Astrae Oratio",
-    "BLEACH Mirrors High",
     "GTA 6",
     "ILLIT",
     "MMORPG 新作",
@@ -36,44 +35,41 @@
     "日本顶级网球赛事",
     "星巴克马克杯",
     "滑雪",
-    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-10-28T08:18:02+00:00",
+   "last_batch": "2026-10-28T09:12:47+00:00",
    "last_error": {
-    "at": "2026-10-28T07:55:13+00:00",
+    "at": "2026-10-28T08:55:52+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 391,
+   "prog": 412,
    "prog_day": "2026-10-28",
    "ripe": [
     "A2O LITE",
-    "BLEACH Mirrors High",
     "GTA 6",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "三星手机",
     "周杰伦",
     "星巴克马克杯",
-    "漫威电影"
+    "滑雪",
+    "猫用品"
    ],
-   "sig": "43205478d27c",
+   "sig": "e046dd9a6343",
    "token_cap": 1000000,
-   "tokens_today": 505310,
-   "why": "整理待ちの記事 55 件（18 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 561497,
+   "why": "整理待ちの記事 34 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "漫威电影",
-    "GTA 6",
-    "A2O LITE",
-    "周杰伦",
-    "Astrae Oratio",
-    "ILLIT"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "4451fa88ac05",
+   "sig": "b6804aff6de5",
    "waiting": [
     "FROM",
     "あつ森",
@@ -81,10 +77,17 @@
     "Vaundy",
     "ぐでたま",
     "哈利波特剧集",
+    "周杰伦",
+    "GTA 6",
+    "チェーンソーマン",
+    "漫威电影",
     "The Mandalorian",
-    "绝区零"
+    "绝区零",
+    "Astrae Oratio",
+    "A2O LITE",
+    "ILLIT"
    ],
-   "why": "足りない 8 版面（Actions で Python が埋める）・失敗 8 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 18:32 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 18:32 から）"
   },
   "photos": {
    "claude": true,
