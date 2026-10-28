@@ -1,14 +1,14 @@
 {
- "admin": "5088edd55e3c",
- "admin-ai": "b3d572ecb3eb",
+ "admin": "c72e9a84427e",
+ "admin-ai": "f099c898dc58",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7f6dee16"
+   "2bd5cccc"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "2b258267"
+   "8ae19004"
   ]
  },
  "admin-boards": "78fe8c262d31",
@@ -22,11 +22,11 @@
    "b9f295e9"
   ]
  },
- "admin-emblem": "805c35bd8368",
+ "admin-emblem": "309511c8408c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f4f309e2"
+   "b7eb89e1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "91f3f066c5e4",
+ "admin-now": "64a24b085aa0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2f29ed01"
+   "0bd5652f"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "250c0b79"
+   "006c08b0"
   ]
  },
- "admin-system": "3eb3c1d9c680",
+ "admin-system": "fa5d676c3b02",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a926bd9c"
+   "7d125877"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "14428e9f"
+   "4553867b"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "ea42016f"
   ]
  },
- "index": "9e4a12e579fc",
+ "index": "0c2c1e6b894f",
  "index_marks": {
   "front": [
    "トップ",
-   "b3768e2b"
+   "286ede26"
   ],
   "picks": [
    "気になるかも？",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "76b44509"
+   "35b98f13"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "04d970de"
+   "81bd962f"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "ed64947e"
+   "51ff69f3"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "b576cade"
+   "5f12ae21"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "122692a2"
+   "f47dd396"
   ]
  },
- "updated": "10.28 14:16",
+ "updated": "10.28 14:19",
  "wishlist": "caeaf8767088"
 }
