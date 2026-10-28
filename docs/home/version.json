@@ -1,14 +1,14 @@
 {
- "admin": "32b8b4e24736",
- "admin-ai": "b37e056166e2",
+ "admin": "cdaadef24da2",
+ "admin-ai": "8777c1504984",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "71b98033"
+   "828489f5"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "77a81b21"
+   "70987b7d"
   ]
  },
  "admin-boards": "4bb1e361ca46",
@@ -22,11 +22,11 @@
    "b9f295e9"
   ]
  },
- "admin-emblem": "4257c9c9692e",
+ "admin-emblem": "a377e9082e76",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "357ef5f4"
+   "e4b5dcbe"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "467323666880",
+ "admin-now": "32551899dc82",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "01104875"
+   "829b1f47"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "fa071d95"
+   "e1695eb6"
   ]
  },
- "admin-system": "7013fb842a8e",
+ "admin-system": "83bc3be42ba3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "94660c19"
+   "c78fbca7"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "edfb9c25"
+   "2dd4c565"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "c5de45f7"
   ]
  },
- "index": "85c316c8832e",
+ "index": "84076ce8b395",
  "index_marks": {
   "front": [
    "トップ",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "0915a3f3"
+   "8838e23f"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "eb344b0b"
+   "f95072e6"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "730e060c"
+   "6a9d3d96"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "96d5eadc"
+   "b31d88e8"
   ]
  },
- "updated": "10.28 08:58",
+ "updated": "10.28 09:03",
  "wishlist": "bd867b9214b2"
 }

@@ -210,6 +210,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/005DZlpOly1iig74pp1h0j30sg14w7dn.jpg": {
+  "w": 1024,
+  "h": 1472,
+  "target": 720,
+  "v": 3,
+  "local": "pics/403d037da10098af.webp",
+  "out": [
+   890,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/006gNTEUgy1iidjugajd2j399c6fe7wq.jpg": {
   "w": 2000,
   "h": 1388,
@@ -2142,6 +2155,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2608867-90fdd87d4160.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
   "target": 1280,
   "v": 3,
@@ -2904,6 +2923,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://powerupgaming.co.uk/wp-content/uploads/image1-35-1024x512.png": {
+  "w": 1024,
+  "h": 512,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/145961/21/145961-21-a6310e4915f324825db0661a4e89caff-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1890,
   "h": 1260,
@@ -2967,12 +2992,6 @@
  "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603": {
   "w": 640,
   "h": 449,
-  "target": 720,
-  "v": 3
- },
- "https://preview.redd.it/nxnl71d8mkwh1.jpeg?width=640&crop=smart&auto=webp&s=c7e0ba24a427682c35471068d26c430247923978": {
-  "w": 640,
-  "h": 853,
   "target": 720,
   "v": 3
  },
@@ -4426,6 +4445,12 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },

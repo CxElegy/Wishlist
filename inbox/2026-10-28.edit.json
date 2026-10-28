@@ -270,7 +270,7 @@
   "BLEACH Mirrors High": 6,
   "A2O LITE": 12,
   "三星手机": 13,
-  "MMORPG 新作": 3,
+  "MMORPG 新作": 6,
   "滑雪": 4,
   "绝区零": 3,
   "FROM": 3,
@@ -335,7 +335,9 @@
    "blurb": "Explore Auroria in the Age of Pioneers in the upcoming fantasy-themed open-world action-MMORPG ArcheAge Chronicles.",
    "weight": "lead",
    "refs": [
-    2
+    2,
+    4,
+    6
    ],
    "image": "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200"
   },
@@ -346,6 +348,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "FFXIV’s Next Chapter Tests How Long-Running MMOs Stay Relevant",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
