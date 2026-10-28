@@ -48,6 +48,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://www.mountainwatch.com/wp-content/uploads/2019/12/Green-Leaf-Onsen-Large.jpg": {
+  "w": 1170,
+  "h": 596,
+  "target": 720,
+  "v": 3
+ },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
@@ -113,6 +119,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/001gSRX0ly1iihaz2k6a3j63uw3w6x6v02.jpg": {
+  "w": 2000,
+  "h": 2018,
+  "target": 720,
+  "v": 3,
+  "local": "pics/fd3c985bf86bdb94.webp",
+  "out": [
+   1269,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/006dNg2Pgy1iibmtu4e33j30xh1bpgr5.jpg": {
   "w": 1205,
   "h": 1717,
@@ -135,6 +154,19 @@
   "out": [
    1280,
    720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg": {
+  "w": 1269,
+  "h": 708,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/535ccb7cb030968c.webp",
+  "out": [
+   1269,
+   708
   ],
   "why": "防盗链",
   "ref": true
@@ -403,6 +435,12 @@
   ],
   "why": "看不清"
  },
+ "https://attach.setn.com/newsimages/2016/06/04/549320-PH.jpg": {
+  "w": 650,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg": {
   "w": 618,
   "h": 348,
@@ -557,6 +595,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdnjs.cls.cn/www/20180717/images/rightSide/kfCodeSlider.png": {
+  "w": 444,
+  "h": 324,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.579,
+  "local": "pics/14dce6f96bbc9338.webp",
+  "out": [
+   1280,
+   934
+  ],
+  "why": "看不清"
+ },
  "https://charagoo.jp/wp-content/uploads/2025/08/D103923_01.jpg": {
   "w": 1000,
   "h": 1000,
@@ -611,6 +662,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cimg.kgl-systems.io/camion/files/dengeki/92185/a156005c5baf40ff51a327f1c34f2975b.jpg?x=1280": {
+  "w": 853,
+  "h": 1280,
+  "target": 1280,
+  "v": 3
+ },
  "https://cms-cdn-rg-prod-bemymedia-com.s3.us-east-2.amazonaws.com/WTA_1_037cd01c0c.jpg": {
   "w": 1920,
   "h": 1080,
@@ -621,12 +678,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://collabo-cafe.com/wp-content/uploads/gudetama-avail-2026-lineup.jpg": {
-  "w": 1824,
-  "h": 1026,
-  "target": 1280,
   "v": 3
  },
  "https://collabo-cafe.com/wp-content/uploads/hellokitty-egoist-cecilmcbee-donki-2026-cecilmcbee-jersey.jpg": {
@@ -895,18 +946,6 @@
   "target": 1280,
   "v": 3
  },
- "https://gizmodo.com/app/uploads/2026/10/Connor-Storrie-Heated-Rivalry-1200x675.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
- "https://gizmodo.com/app/uploads/2026/10/Samsung-A17-Mint-Mobile-1200x675.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
  "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
   "w": 1200,
   "h": 675,
@@ -917,6 +956,12 @@
   "w": 800,
   "h": 600,
   "target": 720,
+  "v": 3
+ },
+ "https://gourmet.watch.impress.co.jp/img/grw/list/2151/872/01.jpg": {
+  "w": 1920,
+  "h": 1270,
+  "target": 1280,
   "v": 3
  },
  "https://happygamer.com/wp-content/uploads/2026/10/zenless-zone-zero-drops-truvia-enemy-dossier-with-season-3-spoilers.jpg": {
@@ -1093,6 +1138,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/thedisinsider.com/wp-content/uploads/2026/10/1000007227.jpg?fit=4000%2C2000&ssl=1": {
+  "w": 4000,
+  "h": 2000,
+  "target": 720,
+  "v": 3
+ },
  "https://i1.hoopchina.com.cn/bbs-editor-web/17926623656181.jpg": {
   "w": 780,
   "h": 1212,
@@ -1146,6 +1197,12 @@
  "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/10/20261019_EN_ILLIT-FB_source-web_.jpg": {
   "w": 640,
   "h": 335,
+  "target": 720,
+  "v": 3
+ },
+ "https://image.doctorbio.org/articles/01a17f8e-c761-79d5-a2a7-4dfc982a38f4/01a17f8e-c231-79d4-823c-26cb1bf89ee8.jpg": {
+  "w": 1200,
+  "h": 669,
   "target": 720,
   "v": 3
  },
@@ -2031,12 +2088,6 @@
   "target": 720,
   "v": 3
  },
- "https://m.exophase.com/android/games/o/g164b7e.png?9ea0993cab8b2b0f8854adc67437b826": {
-  "w": 512,
-  "h": 250,
-  "target": 720,
-  "v": 3
- },
  "https://m.media-amazon.com/images/I/31EAvTj+mDL._SL500_.jpg": {
   "w": 500,
   "h": 500,
@@ -2125,6 +2176,12 @@
   "target": 720,
   "v": 3
  },
+ "https://media.ixbt.games/1600x900/smart/jpeg/ixbt-data/1731947/2f3d552e-774f-40ea-b6a8-bdf211494315.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://media.nownews.com/nn_media/thumbnail/2026/10/WsmmswqeCx0-1200x675.webp": {
   "w": 1200,
   "h": 675,
@@ -2177,12 +2234,6 @@
  "https://mediamixi.jp/app/uploads/2026/10/1027-01.jpg": {
   "w": 2184,
   "h": 1228,
-  "target": 1280,
-  "v": 3
- },
- "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2608867-90fdd87d4160.jpg": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -2906,6 +2957,12 @@
   "target": 720,
   "v": 3
  },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/220a5803851742a389145d15077bb05b.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://noisypixel.net/wp-content/uploads/2026/10/bleach-mirrors-high-1024x576.jpg": {
   "w": 1024,
   "h": 576,
@@ -3083,12 +3140,6 @@
   "target": 720,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/96034/121/96034-121-678641ce595fd641e231c928524ae9ca-1800x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 840,
-  "h": 1260,
-  "target": 720,
-  "v": 3
- },
  "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603": {
   "w": 640,
   "h": 449,
@@ -3161,12 +3212,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.eximg.jp/exnews/feed/Nekojournal/88/Nekojournal_post31091/Nekojournal_post31091_1.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 720,
-  "v": 3
- },
  "https://s.tradingview.com/static/images/illustrations/news-story.jpg": {
   "w": 1200,
   "h": 630,
@@ -3208,6 +3253,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-28"
+ },
+ "https://s.yimg.com/lo/mysterio/api/90ee9f7d2475ccff7dbb8b1dcddd1b3d4c4634fd4bb4d066001138575db20505/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fvaundy-minnie-yahoo-10-31-11-2_9180.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/ef4e9ffb846b4ac8d334dc7341c01dea6c4c1d79f1a577cf82b9e9b8b339935d/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbeincrypto_us_662%2F35988ae8cbc31e6f09b1aa3265662fd1.jpg": {
   "w": 1200,
@@ -3334,19 +3385,6 @@
   "h": 688,
   "target": 720,
   "v": 3
- },
- "https://static.mrjjxw.com/images/new_nbd_icon_300.png": {
-  "w": 300,
-  "h": 300,
-  "target": 720,
-  "v": 3,
-  "blur": 0.461,
-  "local": "pics/1a7fb8fe4cb352f9.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清"
  },
  "https://static.sanyonews.jp/image/article/size1/0/4/7/8/047891ef5abc2da9f3a2359a4c8aa816_1.jpg": {
   "w": 640,
@@ -3893,12 +3931,6 @@
   "v": 3,
   "blur": 0.393
  },
- "https://www.bing.com/th?id=ONUT.GnCiYYVWxssjAX9L8t1lmA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Hca-hAi4jrja9NkijF-iIg&pid=News&w=920": {
   "w": 700,
   "h": 393,
@@ -3917,12 +3949,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.LON8diSY51-UhKhOA2RJUw&pid=News&w=1200": {
-  "w": 700,
-  "h": 365,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.MCb5fcIUPap5vvULMLJ5Nw&pid=News&w=1200": {
   "w": 100,
   "h": 100,
@@ -3935,12 +3961,6 @@
    732
   ],
   "why": "Bing の小さい縮小画像"
- },
- "https://www.bing.com/th?id=ONUT.O7nhoPckd7mZBKLAyPiZtQ&pid=News&w=1024": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
   "w": 700,
@@ -4024,6 +4044,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.kTEZXAnf3f4FW3gJ_EHKcw&pid=News&w=468": {
+  "w": 468,
+  "h": 624,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
   "h": 360,
@@ -4036,6 +4062,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.lzZLVGB0_mXcXEkCyxwI2w&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.nmQBPUIe6hJu6JWV3BuQPQ&pid=News&w=1200": {
   "w": 700,
@@ -4079,6 +4111,12 @@
  "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.v1R-PD5HFsUkWCKGKqkbNw&pid=News&w=960": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4470,19 +4508,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.moneydj.com/kmdj/images/news-default.jpg": {
-  "w": 315,
-  "h": 210,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.481,
-  "local": "pics/f010b339337d96fe.webp",
-  "out": [
-   945,
-   630
-  ],
-  "why": "看不清"
- },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,
   "h": 390,
@@ -4576,12 +4601,6 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg?resize=1200,630": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
