@@ -161,10 +161,20 @@
  ],
  "チェーンソーマン": [
   {
+   "headline": "『チェンソーマン 刺客篇』制作決定！興収96億円突破の『レゼ篇』に続く新作",
+   "highlight": "刺客篇』制作決定",
+   "blurb": "『レゼ篇』に続く新作『刺客篇』の制作が決定し、クァンシら新たな刺客たちの姿が解禁された。放送・公開時期は未発表。",
+   "weight": "hero",
+   "refs": [
+    9
+   ],
+   "image": "https://news.walkerplus.com/article/1317098/15915699_615.jpg"
+  },
+  {
    "headline": "BANPRESTOプライズ「劇場版『チェンソーマン レゼ篇』GLITTER＆GLAMOURS-REZE-カフェ二道ver.」2026年11月登場！",
    "highlight": "2026年11月登場",
    "blurb": "",
-   "weight": "lead",
+   "weight": "normal",
    "refs": [
     2,
     1,
@@ -180,6 +190,25 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "劇場版「チェンソーマン レゼ篇」とグラニフのコラボレーションアイテム",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    6
+   ]
+  },
+  {
+   "headline": "Crocs x チェンソーマン コラボサンダルが国内10月27日より発売",
+   "highlight": "10月27日より発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
   }
  ],
  "_covered": {
@@ -187,7 +216,7 @@
   "漫威电影": 10,
   "BLEACH Mirrors High": 8,
   "A2O LITE": 4,
-  "チェーンソーマン": 4,
+  "チェーンソーマン": 22,
   "三星手机": 4,
   "The Mandalorian": 3,
   "星巴克马克杯": 2,
