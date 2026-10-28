@@ -1,10 +1,10 @@
 {
- "admin": "c72e9a84427e",
- "admin-ai": "8e641282fc76",
+ "admin": "9813e2f10442",
+ "admin-ai": "7c7cffd47fda",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "fde7e81f"
+   "93e5e93e"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "b9f295e9"
   ]
  },
- "admin-emblem": "952982155d09",
+ "admin-emblem": "0801bd03aed1",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "21e56fc8"
+   "93e0e5bc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "43f4c2d09685",
+ "admin-now": "42da3688badf",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c8ebfa4c"
+   "5bb7e2cb"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "a18d356b"
   ]
  },
- "admin-system": "75c43013cc0a",
+ "admin-system": "1c290ea85d78",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "41cc6aac"
+   "a3161e62"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "00fa3759"
+   "be632568"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "c22999c2"
   ]
  },
- "index": "b157fa236d03",
+ "index": "e87a239c61f5",
  "index_marks": {
   "front": [
    "トップ",
@@ -141,11 +141,11 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "1c733b71"
+   "d0556372"
   ],
   "w-7a894105": [
    "周杰伦",
-   "cc110919"
+   "a24e86ed"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "5f12ae21"
+   "b576cade"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "8a0a6b7a"
+   "a593a09a"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "8808a9fd"
   ]
  },
- "updated": "10.28 20:12",
+ "updated": "10.28 20:24",
  "wishlist": "9505070f7168"
 }

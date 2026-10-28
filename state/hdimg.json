@@ -170,20 +170,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/008rJyJHly1iiasni9ainj30xc0tc0w9.jpg": {
-  "w": 690,
-  "h": 607,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.462,
-  "local": "pics/695d0d9b07204374.webp",
-  "out": [
-   1280,
-   1126
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008txX0Ply1iidpkzkyz7j31o02yo7wi.jpg": {
   "w": 2000,
   "h": 3556,
@@ -271,6 +257,19 @@
   "out": [
    1280,
    888
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx4.sinaimg.cn/middle/006rmNzUgy1iiasi8ip4dj30zu25ob29.jpg": {
+  "w": 1290,
+  "h": 2796,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/d56eda55408df29c.webp",
+  "out": [
+   591,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -1130,12 +1129,6 @@
  "https://i.cdn.newsbytesapp.com/images/l144_20281793008781.jpg": {
   "w": 1440,
   "h": 810,
-  "target": 720,
-  "v": 3
- },
- "https://i.ytimg.com/vi/QtHFx2ReeiI/maxresdefault.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -4187,6 +4180,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.415
+ },
  "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4224,15 +4224,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.boardoftheworld.com/wp-content/uploads/2024/03/Rome-Service-Dog-2026.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
  "https://www.boardoftheworld.com/wp-content/uploads/2025/03/Capita-Super-DOA-2027-Review.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.boardoftheworld.com/wp-content/uploads/2026/05/Rome-Service-Dog-Snowboard-2027.jpg": {
+  "w": 700,
+  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -4419,12 +4419,6 @@
   "w": 1000,
   "h": 544,
   "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
-  "w": 1000,
-  "h": 544,
-  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
