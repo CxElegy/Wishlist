@@ -297,7 +297,7 @@
   "MMORPG 新作": 15,
   "滑雪": 4,
   "绝区零": 11,
-  "FROM": 3,
+  "FROM": 4,
   "周杰伦": 4,
   "The Mandalorian": 5,
   "ILLIT": 11,
@@ -305,11 +305,12 @@
   "日本顶级网球赛事": 17,
   "チェーンソーマン": 7,
   "猫用品": 4,
-  "Astrae Oratio": 3,
+  "Astrae Oratio": 4,
   "gelato pique": 1,
   "星巴克马克杯": 1,
   "dota2": 3,
-  "あつ森": 1
+  "あつ森": 1,
+  "ぐでたま": 1
  },
  "三星手机": [
   {
@@ -486,6 +487,15 @@
     2
    ],
    "image": "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200"
+  },
+  {
+   "headline": "FROM Seasons 1, 2, and 3 Explained (Plus How to Watch Season 4)",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "周杰伦": [],
@@ -722,6 +732,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "아스트라에 오라티오 | 캐릭터 소개 「키토라 시즈쿠」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "gelato pique": [
@@ -773,5 +792,6 @@
     1
    ]
   }
- ]
+ ],
+ "ぐでたま": []
 }

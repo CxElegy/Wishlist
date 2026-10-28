@@ -644,7 +644,7 @@
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/From-Seasons-1-2-3-Recap-Explained-How-to-Watch-4.jpg?resize=2000,1125": {
   "w": 2000,
   "h": 1125,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/GTA-6-Vice-City.jpg?w=1024": {
@@ -2958,7 +2958,7 @@
  "https://pbs.twimg.com/media/HVjH3ugbMAAtR8a?format=webp&name=large": {
   "w": 1500,
   "h": 2000,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://pgw.worldjournal.com/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/22/35443336.png&M=1&s=Y&x=2&y=99&sw=450&sh=300&sl=W&fw=800&exp=3600": {
@@ -4576,6 +4576,12 @@
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
   "target": 1280,
   "v": 3
  },

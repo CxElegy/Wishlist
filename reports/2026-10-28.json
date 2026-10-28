@@ -1,20 +1,11 @@
 {
  "date": "2026-10-28",
- "edit_sig": "1242d9b04eb2",
+ "edit_sig": "425345b34b12",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 4,
-     "source": "인벤",
-     "title": "아스트라에 오라티오 | 캐릭터 소개 「키토라 시즈쿠」",
-     "url": "https://www.inven.co.kr/board/party/6553/284"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -35,6 +26,16 @@
      "image": "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603",
      "image_via": "条目自带",
      "url": "https://www.reddit.com/r/Astrae_Oratio/comments/1xd3jrx/clan_key_visual_reveal_kobato_mart/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "아스트라에 오라티오 | 캐릭터 소개 「키토라 시즈쿠」",
+     "highlight": "",
+     "image": "https://pbs.twimg.com/media/HVjH3ugbMAAtR8a?format=webp&name=large",
+     "image_via": "og:image",
+     "url": "https://www.inven.co.kr/board/party/6553/284",
      "weight": "normal"
     }
    ],
@@ -347,15 +348,6 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 4,
-     "source": "ComicBook.com",
-     "title": "FROM Seasons 1, 2, and 3 Explained (Plus How to Watch Season 4)",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNRS1qR1NFYlgyU2dyNTlKU3dCaFdrTVNkbVpnUWNzMWdXZmRZSzNMczU4VE13WV9jQ3dLaXNEUjZnNk1rdXVPa1RtYjc3d015c3ZiOFlDYVNSUDJob09NMG1RV0VrWXFSeGFRYVlpd1ZIYlY4bEdEZUt4b0RzWHNOVkxxSjVzVzBIcVJHMUF0ejZ3em9XZkEzbjFEZ2lXdms?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -367,6 +359,16 @@
      "image_via": "AI 挑选",
      "url": "https://decider.com/2026/10/27/from-season-4-on-netflix-release-date-from-season-5-next-season-mgm-plus-netflix/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "FROM Seasons 1, 2, and 3 Explained (Plus How to Watch Season 4)",
+     "highlight": "",
+     "image": "https://comicbook.com/wp-content/uploads/sites/4/2026/10/From-Seasons-1-2-3-Recap-Explained-How-to-Watch-4.jpg?resize=2000,1125",
+     "image_via": "og:image",
+     "url": "https://comicbook.com/tv-shows/feature/from-seasons-1-2-and-3-eplained-plus-how-to-watch-season-4/",
+     "weight": "normal"
     }
    ],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
@@ -717,33 +719,6 @@
    }
   },
   {
-   "cover": null,
-   "facts": [],
-   "name": "ぐでたま",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 1,
-     "source": "選挙ドットコム",
-     "title": "#佐久市🌞本日【市立#中込小学校２年生「小諸市動物園へ秋の遠足」】😄🍱三女は「ぐでたま弁当」持...",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5SRlhhTnNYZ3JkbDcwblRGRFpHc2NGMkRZZ25WZkdZREQtTlNOc2xwd3ZfVGg1M1c3NXVPV2hIOTJjTk5CUFlyUmktbzJJTGZqa2ZudjNwcnd6cWVmZmc?oc=5"
-    }
-   ],
-   "section": "好物",
-   "stories": [],
-   "subtitle": "Gudetama",
-   "theme": {
-    "accent": "#885D0C",
-    "alt_accent": "#EEB444",
-    "alt_bg": "#211C12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F2E9",
-    "fg": "#1E1A18",
-    "font": "sans",
-    "split": true
-   }
-  },
-  {
    "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204429-9scYA2ab3Zz3.jpg",
    "facts": [
     {
@@ -813,8 +788,8 @@
      "date": "2026-10-27",
      "headline": "The Mandalorian is back this November with a new Star Wars adventure",
      "highlight": "this November",
-     "image": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
-     "image_via": "作品封面",
+     "image": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg?resize=1200,630",
+     "image_via": "同一件事的别家报道 www.superherohype.com",
      "source": "Skoar! on MSN",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.msn.com&sz=128",
      "url": "https://www.msn.com/en-in/news/other/the-mandalorian-is-back-this-november-with-a-new-star-wars-adventure/ar-AA2g9zuc",
@@ -1088,6 +1063,31 @@
     "bg": "#F6F1E7",
     "fg": "#1E3932",
     "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-27",
+    "headline": "超可愛《無力蛋》三麗鷗新食物角色 蛋黃哥人氣急上升♥",
+    "url": "https://www.setn.com/news/22762"
+   },
+   "name": "ぐでたま",
+   "quiet": true,
+   "section": "好物",
+   "status": "",
+   "stories": [],
+   "subtitle": "Gudetama",
+   "theme": {
+    "accent": "#885D0C",
+    "alt_accent": "#EEB444",
+    "alt_bg": "#211C12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F2E9",
+    "fg": "#1E1A18",
+    "font": "sans",
     "split": true
    }
   },
