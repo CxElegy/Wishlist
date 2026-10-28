@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "ac64e125d683",
+ "edit_sig": "b7317d5584b9",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -427,29 +427,6 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 5,
-     "source": "すまほん!!",
-     "title": "未発表「Galaxy S27 Pro / Ultra」のケース、早くもAmazonで販売。Proは6.47型か",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5FTG91Y3ZJTmg5cVVVUmx5bzU0aUU5ZVZFWFRMRDFuR1pGV2s5RDhsR0kxd2M1eXRjRHJCcTRLZ3RWeTBTZ1l3TTNGWnRiUXRfdlhXTE1Md0M4cTFsUXlMd3RJLVVXd2pYWEFZaVhUeWFfUTdTZWfSAXtBVV95cUxPcUc2V0hZOHBkY2N0cTJjd1RmVkdJcUR6V3RxZmpqMjhodjFqdkF4XzNMVkRIQXJLc0RuNEQyLUVNQ0hucW42RzloZllIVFVETTljZ0hwQVJ6cXVoR1l4TU5jNlRHTmNZWWtUazB0X3JMVFFUT3h0ZExYYlU?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 6,
-     "source": "TechJuice",
-     "title": "Samsung Galaxy S27 Series May Get Privacy Display on Two Models",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQZWliSVMyWTU5d1pWM2tkUk9OT0JYM0NLUkp6eHRtay1HNHpIUy1NcDVxRWpHQkp5Q3V6RXhObHB0dnIzN0xYZXBqZEdMemtJaXlQd0Fqdm1zc3N6Y0haSTBFdTlHbVFxSlllb05vcDBQVzJLSE05Wkl2T3dGNmlaMWhwSTk0c1NuVkxGbzlMY245dzg?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 7,
-     "source": "Digit on MSN",
-     "title": "Samsung Galaxy S27 Ultra vs iPhone 18 Pro Max vs Vivo X300 Ultra: From price in India to specs, check expected differences",
-     "url": "https://www.msn.com/en-in/news/other/samsung-galaxy-s27-ultra-vs-iphone-18-pro-max-vs-vivo-x300-ultra-from-price-in-india-to-specs-check-expected-differences/ar-AA2g9tAE"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -490,6 +467,26 @@
      "image": "https://assets.content.technologyadvice.com/Smartphone_Quick_Settings_in_Cozy_Bedroom_1abad4f929.webp",
      "image_via": "og:image",
      "url": "https://samsung.gadgethacks.com/news/galaxy-s27-ultra-pwm-dimming-why-its-still-unconfirmed/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "未発表「Galaxy S27 Pro / Ultra」のケース、早くもAmazonで販売。Proは6.47型か",
+     "highlight": "Proは6.47型か",
+     "image": "https://smhn.info/wp-content/uploads/2026/10/galaxy-s27-pro-case-dwaybox.webp",
+     "image_via": "og:image",
+     "url": "https://smhn.info/202610-galaxy-s27-pro-ultra-cases-amazon-listings",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "Samsung Galaxy S27 Series May Get Privacy Display on Two Models",
+     "highlight": "Privacy Display",
+     "image": "https://www.techjuice.pk/wp-content/uploads/2026/09/samsung-galaxy-s27-series-may-get-privacy-display-on-two-models-techjuice-252351.jpg",
+     "image_via": "og:image",
+     "url": "https://www.techjuice.pk/samsung-galaxy-s27-series-may-get-privacy-display-on-two-models/",
      "weight": "normal"
     }
    ],
