@@ -249,7 +249,7 @@
   "MMORPG 新作": 2,
   "哈利波特剧集": 2,
   "日本顶级网球赛事": 2,
-  "FROM": 1,
+  "FROM": 4,
   "ILLIT": 1,
   "Vaundy": 1,
   "滑雪": 1,
@@ -372,7 +372,17 @@
    "blurb": "'From' expands to more Netflix regions in November 2026; the Season 4 date is still unclear.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    2
+   ]
+  },
+  {
+   "headline": "When does “From” season 5 premiere? What to expect from the horror series’ final chapter",
+   "highlight": "season 5",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],

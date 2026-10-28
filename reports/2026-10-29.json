@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "0f11acbb07f1",
+ "edit_sig": "ac64e125d683",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -252,29 +252,6 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 2,
-     "source": "Fiction Horizon",
-     "title": "‘From’ Is Escaping MGM+ as Netflix Opens Its Doors to More Countries",
-     "url": "https://fictionhorizon.com/from-is-escaping-mgm-as-netflix-opens-its-doors-to-more-countries/"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 3,
-     "source": "Entertainment Weekly on MSN",
-     "title": "When does “From” season 5 premiere? What to expect from the horror series’ final chapter",
-     "url": "https://www.msn.com/en-us/music/news/when-does-from-season-5-premiere-what-to-expect-from-the-horror-series-final-chapter/ar-AA2gggDW"
-    },
-    {
-     "date": "2026-10-21",
-     "n": 4,
-     "source": "People.com",
-     "title": "‘From’ Season 3 Ending, Explained: Who Is the Man in the Yellow Suit?",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1rWG5pMFVLNHc3dzJnMk5lSVZYQ1RDR3RIZjZpRmdJYkNQZFkxNmFOZVZ3TF9FWmVxRHZSeHduWS1JQ2xXbVlBSWJkM2J4a2pwWmpPQ1Q5VDQyanNFbVYxRm9SMndTRjJsdUE?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -286,6 +263,16 @@
      "image_via": "og:image",
      "url": "https://www.whats-on-netflix.com/news/from-expands-to-more-netflix-regions-in-november-2026-and-wheres-season-4/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "When does “From” season 5 premiere? What to expect from the horror series’ final chapter",
+     "highlight": "season 5",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gfU9G.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/music/news/when-does-from-season-5-premiere-what-to-expect-from-the-horror-series-final-chapter/ar-AA2gggDW",
+     "weight": "normal"
     }
    ],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
