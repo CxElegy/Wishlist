@@ -1,32 +1,32 @@
 {
- "admin": "7eb5101635ea",
- "admin-ai": "fe586e41b358",
+ "admin": "ff4fd4e1664c",
+ "admin-ai": "cc284fbb9e56",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c1511cb0"
+   "cb5b5ea7"
   ],
   "tokens": [
    "AI 編集のトークン",
    "6062281f"
   ]
  },
- "admin-boards": "2ae4a2903eea",
+ "admin-boards": "44dd303628fe",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "9b4958b1"
+   "bc0dcd60"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "45c7f6f42e2f",
+ "admin-emblem": "d69937703346",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "0195873e"
+   "16e4057a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "55d3f2af99a4",
+ "admin-now": "60e0900f9601",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7e96aa69"
+   "0aebcb81"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "d62f4f59"
+   "6bdd6c67"
   ],
   "term-panel": [
    "ライブログ",
-   "c6829d5a"
+   "82598d8c"
   ]
  },
- "admin-system": "6ad88c55c86a",
+ "admin-system": "07e19ef9f59f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4ff3b6ae"
+   "c2eb3645"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a4fce96c"
+   "dd412e07"
   ]
  },
  "admin_marks": {},
- "heat": "561d8be2163e",
+ "heat": "44a7395a24ce",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "3403f7c3"
+   "cf1759f5"
   ],
   "ranking": [
    "ランキング",
-   "ee2e240c"
+   "eb43422d"
   ]
  },
- "index": "4474da3e73c1",
+ "index": "10216961c759",
  "index_marks": {
   "front": [
    "トップ",
-   "7ed42c2b"
+   "ad710720"
   ],
   "picks": [
    "気になるかも？",
@@ -113,11 +113,11 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "4f9d6d3e"
+   "d8792c2e"
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "a84d9192"
+   "8fe3343e"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "05e613ad"
+   "2c3e512f"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "e598c624"
+   "2e908db8"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "b51b465f"
+   "4b9d2f0d"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "91a14a63"
   ]
  },
- "updated": "10.29 04:27",
+ "updated": "10.29 04:31",
  "wishlist": "1f54628bebd4"
 }

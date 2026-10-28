@@ -29,9 +29,9 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
-  "w": 640,
-  "h": 360,
+ "http://n.sinaimg.cn/sinakd20261029ac/533/w480h853/20261029/0c00-53eb91d347560355d47cfb0c66678f70.jpg": {
+  "w": 480,
+  "h": 853,
   "target": 720,
   "v": 3
  },
@@ -876,6 +876,12 @@
   "target": 720,
   "v": 3
  },
+ "https://fictionhorizon.com/wp-content/uploads/2026/10/From-2.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://fieldlevelmedia.com/wp-content/uploads/2026/10/11882973-1024x696.jpg": {
   "w": 1024,
   "h": 696,
@@ -1006,6 +1012,12 @@
  "https://hjweb.jp/wp-content/uploads/2026/10/2-3.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://hk.on.cc/hk/bkn/cnt/entertainment/20261029/photo/bkn-20261029000108879-1029_00862_001_02b.jpg?20261028233531": {
+  "w": 780,
+  "h": 920,
   "target": 720,
   "v": 3
  },
@@ -1542,9 +1554,21 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gfU9G.img": {
+  "w": 2000,
+  "h": 1333,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gfrYn.img": {
   "w": 2400,
   "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ggFyY.img": {
+  "w": 1280,
+  "h": 720,
   "target": 1280,
   "v": 3
  },
@@ -2309,11 +2333,24 @@
   "target": 720,
   "v": 3
  },
- "https://news.walkerplus.com/article/1264268/14572030_615.jpg": {
+ "https://news.walkerplus.com/article/1317098/15915699_615.jpg": {
   "w": 615,
-  "h": 615,
-  "target": 720,
+  "h": 870,
+  "target": 1280,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/139337/781089_615.jpg": {
+  "w": 615,
+  "h": 331,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.469,
+  "local": "pics/dfb39ba6f01121b3.webp",
+  "out": [
+   1280,
+   689
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/1445517/18700633_615.jpg": {
   "w": 615,
@@ -2325,6 +2362,19 @@
   "out": [
    1024,
    1280
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/1447118/18760300_615.jpg": {
+  "w": 615,
+  "h": 346,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.453,
+  "local": "pics/c158cac8037bb388.webp",
+  "out": [
+   1280,
+   720
   ],
   "why": "看不清"
  },
@@ -2347,6 +2397,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/49501/266317_615.jpg": {
+  "w": 615,
+  "h": 837,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/49841/268597_615.jpg": {
   "w": 615,
   "h": 409,
@@ -2357,6 +2413,32 @@
   "out": [
    1280,
    851
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/55811/307224_615.jpg": {
+  "w": 615,
+  "h": 547,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.502,
+  "local": "pics/1a8a67ba21c091dc.webp",
+  "out": [
+   1280,
+   1138
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/56657/312478_615.jpg": {
+  "w": 615,
+  "h": 608,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.517,
+  "local": "pics/df13a73ba65aa3b8.webp",
+  "out": [
+   1280,
+   1265
   ],
   "why": "看不清"
  },
@@ -2383,6 +2465,19 @@
   "out": [
    1280,
    949
+  ],
+  "why": "看不清"
+ },
+ "https://news.walkerplus.com/article/77515/437427_615.jpg": {
+  "w": 615,
+  "h": 406,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.449,
+  "local": "pics/f810f9d0b954fb10.webp",
+  "out": [
+   1280,
+   845
   ],
   "why": "看不清"
  },
@@ -2937,12 +3032,6 @@
   "target": 720,
   "v": 3
  },
- "https://s.yimg.com/lo/mysterio/api/1f140c0126f23d52c1b9343aab259ad314e3f1dc0306645f6ffdc076e0e0f320/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fzh-tw%2Fsetn.com.tw%2Fa897244907a94e222928d25431cc857a.jpg": {
-  "w": 1200,
-  "h": 885,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/25666260becd7fad956549beeaea1df87fac2b73990952faa6c844e0d0f53dd2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fpc_gamer_708%2F7e50446d5ce92d480b693d3e5cc45b66.jpg": {
   "w": 1200,
   "h": 677,
@@ -2959,18 +3048,6 @@
   "w": 1200,
   "h": 800,
   "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/90ee9f7d2475ccff7dbb8b1dcddd1b3d4c4634fd4bb4d066001138575db20505/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fvaundy-minnie-yahoo-10-31-11-2_9180.png": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://s.yimg.com/lo/mysterio/api/f0ad7d42651cab0d9735499a50c58fddb47974f3984a93991f2ae0ac0ced48fd/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2F10-31-kklive-taiwan_3560.jpg": {
-  "w": 1200,
-  "h": 1563,
-  "target": 1280,
   "v": 3
  },
  "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png": {
@@ -2997,6 +3074,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/863731025_18113819123136266_8341631685060904376_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=iTs7h2Vfgs8Q7kNvwGrgaGE&_nc_oc=AdpwhwNnMB8wJEVWRchoaGgxfhPHEpZhmRokbhAvMSY9OhcAKX2Vjv3V9u_HatmMOic&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=OHQSM3yeRulQJQeCJj8uTA&_nc_ss=7860f&oh=00_AQRH0nsqAbOs2W_FQ_TvXr3jcUj86CMG-wMCovABI6q2qw&oe=6AE81D63": {
+  "w": 360,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "https://sffgazette.com/images/articles/banners/hbos-harry-potter-series-budget-revealed-and-its-even-bigger-than-you-might-expect-ab11618.jpg": {
   "w": 1600,
   "h": 900,
@@ -3007,6 +3090,12 @@
   "w": 1344,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 1280,
   "v": 3
  },
  "https://sm.ign.com/t/ign_in/screenshot/default/bleach-mirrors-high-overview-trailer-0-39-screenshot_9eu8.1200.jpg": {
@@ -3614,6 +3703,12 @@
   "v": 3,
   "blur": 0.393
  },
+ "https://www.bing.com/th?id=ONUT.GnfuotQq9lSw0iAEUnYA-g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3703,12 +3798,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.hb44IBRSrrf6lMtkIoEOEQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
   "h": 360,
@@ -3721,6 +3810,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.l_BxLGlE1sivlilPsh3V5A&pid=News&w=750": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.lzZLVGB0_mXcXEkCyxwI2w&pid=News&w=1200": {
   "target": 720,
@@ -3813,12 +3908,6 @@
  "https://www.bing.com/th?id=ONUT.yQTn8yVopd9NgLlJSmZFYA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.zz7z3sJJUnWZWFArzQjcLw&pid=News&w=676": {
-  "w": 676,
-  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -4155,12 +4244,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 1280,
-  "v": 3
- },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,
   "h": 390,
@@ -4335,6 +4418,19 @@
   "h": 630,
   "target": 1280,
   "v": 3
+ },
+ "https://www.therakyatpost.com/wp-content/uploads/2026/10/vivoeventfeatimg.jpg": {
+  "w": 720,
+  "h": 420,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.462,
+  "local": "pics/5a7dd187c1bce71d.webp",
+  "out": [
+   1280,
+   747
+  ],
+  "why": "看不清"
  },
  "https://www.trustedreviews.com/wp-content/uploads/sites/7/2026/10/5a32df85-7990-4d4c-ad50-11f9dac7171b.jpg": {
   "w": 1920,
