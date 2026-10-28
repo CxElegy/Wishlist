@@ -125,6 +125,12 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/008eZAxIly1iii6jhgqbpj317r0och1p.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "http://wx2.sinaimg.cn/middle/008kvqgEgy1ii8qmuwbrfj31hc0u01kx.jpg": {
   "w": 1920,
   "h": 1080,
@@ -1113,6 +1119,12 @@
   "v": 3,
   "blur": 0.402
  },
+ "https://image.news.livedoor.com/newsimage/stf/1/d/1db61_1682_c83ed2c7_381ffeaa.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "https://image.news.livedoor.com/newsimage/stf/2/2/2210b_1604_5c184691_2e0e0ff2.jpg": {
   "w": 1200,
   "h": 842,
@@ -1504,6 +1516,12 @@
   "h": 555,
   "target": 720,
   "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcDpO.img": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gctq5.img": {
   "w": 1456,
@@ -2931,10 +2949,10 @@
   "v": 3
  },
  "https://s.yimg.jp/images/sports/all_device/common/ogp/tennis.png": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://sammyguru.com/wp-content/uploads/2026/02/Galaxy-S26-Ultra-SammyGuru-5-display-lockscreen.jpg": {
   "w": 2880,
@@ -3494,12 +3512,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.1I3jDl0ot4ZYrKeqGzerkQ&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.5OVWqixs8K4brEpx8v07LA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3677,6 +3689,12 @@
    720
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.lzZLVGB0_mXcXEkCyxwI2w&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://www.bing.com/th?id=ONUT.nmQBPUIe6hJu6JWV3BuQPQ&pid=News&w=1200": {
   "w": 700,
@@ -4305,10 +4323,10 @@
   "v": 3
  },
  "https://www.whats-on-netflix.com/wp-content/uploads/2026/10/from-expanding-on-netflix.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://x-bomberth.com/wp-content/uploads/2026/10/s-fsfdsa-1.jpg": {
   "w": 1280,

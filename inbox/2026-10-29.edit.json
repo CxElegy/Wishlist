@@ -191,7 +191,12 @@
   "三星手机": 4,
   "The Mandalorian": 3,
   "星巴克马克杯": 2,
-  "あつ森": 1
+  "あつ森": 1,
+  "MMORPG 新作": 2,
+  "哈利波特剧集": 2,
+  "日本顶级网球赛事": 2,
+  "FROM": 1,
+  "ILLIT": 1
  },
  "三星手机": [
   {
@@ -267,5 +272,61 @@
    }
   }
  ],
- "あつ森": []
+ "あつ森": [],
+ "MMORPG 新作": [
+  {
+   "headline": "Classic-Inspired MMO-Lite Everlast: Undying Tale Enters Early Access Today",
+   "highlight": "Early Access",
+   "blurb": "Everlast: Undying Tale, a classic-inspired MMO-lite, enters Early Access today.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "HBO's Harry Potter show casts Harry's parents, Lily and James",
+   "highlight": "Lily and James",
+   "blurb": "HBO's Harry Potter series casts Harry's parents Lily and James, along with Ron's brother Charlie Weasley.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ]
+  }
+ ],
+ "日本顶级网球赛事": [
+  {
+   "headline": "テニス - 東レ・パンパシフィック・オープン - クリスティナ ブクサ vs. マヤ ジョイヌト- 試合速報",
+   "highlight": "試合速報",
+   "blurb": "東レ・パンパシフィック・オープンの試合速報。",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "‘From’ Expands to More Netflix Regions in November 2026, And Where’s Season 4?",
+   "highlight": "November 2026",
+   "blurb": "'From' expands to more Netflix regions in November 2026; the Season 4 date is still unclear.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "【画像】「朝7時からビジュアル最強」ILLIT・ウォンヒ、“お天気キャスター”に変身！ニュース番組出演が話題",
+   "highlight": "お天気キャスター",
+   "blurb": "ILLITのウォンヒがニュース番組でお天気キャスターに変身し、ビジュアルが話題に。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ]
 }
