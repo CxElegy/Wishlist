@@ -187,6 +187,85 @@
   "漫威电影": 10,
   "BLEACH Mirrors High": 8,
   "A2O LITE": 4,
-  "チェーンソーマン": 4
- }
+  "チェーンソーマン": 4,
+  "三星手机": 4,
+  "The Mandalorian": 3,
+  "星巴克马克杯": 2,
+  "あつ森": 1
+ },
+ "三星手机": [
+  {
+   "headline": "Samsung Galaxy S27 Ultra Rumor Roundup: All The Renders, Specs And Leaks",
+   "highlight": "Rumor Roundup",
+   "blurb": "Samsung's Galaxy S27 series is a few months out from public release, and HotHardware has gathered the leaks so far.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://images.hothardware.com/contentimages/newsitem/71972/content/16x9_2133x1200_highres-ice-universe-s27-ultra-back.jpg"
+  },
+  {
+   "headline": "Samsung Galaxy S27 Ultra Camera Leak Points to 200MP Sensor and Variable Aperture",
+   "highlight": "200MP Sensor",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "Samsung Cancels Variable Aperture Camera Plans for Galaxy S27 Ultra",
+   "highlight": "Cancels Variable Aperture",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra PWM Dimming: Why It's Still Unconfirmed",
+   "highlight": "Still Unconfirmed",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "White Mandalorian Lego - Save on this Mandalorian LEGO set ahead of the season 3 premiere",
+   "highlight": "LEGO set",
+   "blurb": "Save on this Mandalorian LEGO set ahead of the season 3 premiere.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Official Star Wars The Mandalorian Visual Guide With Exclusive Cross-Section Art Goes on Sale October 25",
+   "highlight": "October 25",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "【スタバ新作グッズ】デザイン素敵すぎる♪ ホリデーシーズン限定の華やかなボトル、可愛いマグなど11/2発売スタート",
+   "highlight": "11/2発売スタート",
+   "blurb": "ホリデーシーズン限定の華やかなボトルや可愛いマグなどが11/2に発売スタート。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "event": {
+    "date": "2026-11-02",
+    "label": "発売日"
+   }
+  }
+ ],
+ "あつ森": []
 }

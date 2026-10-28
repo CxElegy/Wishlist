@@ -125,19 +125,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/008eZAxIly1iii6jhgqbpj317r0och1p.jpg": {
-  "w": 1575,
-  "h": 876,
-  "target": 720,
-  "v": 3,
-  "local": "pics/a8070006b2f73205.webp",
-  "out": [
-   1280,
-   712
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/008kvqgEgy1ii8qmuwbrfj31hc0u01kx.jpg": {
   "w": 1920,
   "h": 1080,
@@ -335,10 +322,28 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.content.technologyadvice.com/Smartphone_Quick_Settings_in_Cozy_Bedroom_1abad4f929.webp": {
+  "w": 1672,
+  "h": 941,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.games.gg/grand_theft_auto_vi_tv_spot_differences_og_050838fff630dd6fe366a7bb_4d02128e8a.webp": {
   "w": 1200,
   "h": 630,
   "target": 1280,
+  "v": 3
+ },
+ "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
+  "w": 1350,
+  "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
+ "https://assets.hldycdn.com/bdaeb944-3649-41e9-a1cc-559b84e94c40.jpeg": {
+  "w": 970,
+  "h": 600,
+  "target": 720,
   "v": 3
  },
  "https://assets.mmoexp.com/images/202610/2982d8041c42f73c55e7ae64fe80cde444d350b3.jpg": {
@@ -594,6 +599,19 @@
   "h": 800,
   "target": 1280,
   "v": 3
+ },
+ "https://cdnjs.cls.cn/www/20180717/images/rightSide/kfCodeSlider.png": {
+  "w": 444,
+  "h": 324,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.579,
+  "local": "pics/14dce6f96bbc9338.webp",
+  "out": [
+   1280,
+   934
+  ],
+  "why": "看不清"
  },
  "https://charagoo.jp/wp-content/uploads/2025/08/D103923_01.jpg": {
   "w": 1000,
@@ -1229,6 +1247,12 @@
   "w": 2133,
   "h": 1200,
   "target": 720,
+  "v": 3
+ },
+ "https://images.hothardware.com/contentimages/newsitem/71972/content/16x9_2133x1200_highres-ice-universe-s27-ultra-back.jpg": {
+  "w": 2133,
+  "h": 1200,
+  "target": 1280,
   "v": 3
  },
  "https://images.khan.co.kr/article/2026/10/23/news-p.v1.20261023.0671972ae03442a7bf73b2f031c49090_P1.jpg": {
@@ -2052,12 +2076,6 @@
  "https://mediamixi.jp/app/uploads/2026/10/1027-01.jpg": {
   "w": 2184,
   "h": 1228,
-  "target": 1280,
-  "v": 3
- },
- "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2608867-90fdd87d4160.jpg": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -3507,6 +3525,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
+  "w": 700,
+  "h": 590,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.608,
+  "local": "pics/241dbd8a56fd4464.webp",
+  "out": [
+   1280,
+   1079
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.C7DX8jaOh25SjObQh2RAxQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -3610,12 +3641,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.cfoRYan-28rSi3FAe5Qy2Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.csvTQeo-s8NtUIZlyDOLeg&pid=News&w=530": {
   "w": 530,
   "h": 690,
@@ -3707,6 +3732,12 @@
  "https://www.bing.com/th?id=ONUT.tjRLRKvzviUi6JPgAPNGOA&pid=News&w=1200": {
   "w": 700,
   "h": 525,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4183,6 +4214,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Avengers-Secret-Wars-X-Men-Rumor-Reveals-Some-Fan-Favorite-Characters-Surprise-Returns.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg": {
   "w": 1200,
   "h": 675,
@@ -4223,6 +4260,18 @@
   "w": 824,
   "h": 389,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.techjuice.pk/wp-content/uploads/2026/05/techjuice-233217-scaled.jpg": {
+  "w": 2560,
+  "h": 1440,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.techjuice.pk/wp-content/uploads/2026/08/techjuice-248391.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://www.techjuice.pk/wp-content/uploads/2026/10/samsungs-new-exynos-modem-could-improve-battery-life-in-galaxy-s27-techjuice-259011.jpg": {

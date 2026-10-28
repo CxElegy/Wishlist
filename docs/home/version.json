@@ -1,32 +1,32 @@
 {
- "admin": "2037285120cd",
- "admin-ai": "4d5887ee7926",
+ "admin": "22599c58a44e",
+ "admin-ai": "1e92c473ce53",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "cffb6e29"
+   "9aea0709"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f44081ab"
+   "90888704"
   ]
  },
- "admin-boards": "37db88eab0d2",
+ "admin-boards": "2ae4a2903eea",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5b875bd7"
+   "9b4958b1"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "4f9e651f21f0",
+ "admin-emblem": "701aac32e373",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "49a120fc"
+   "acc18376"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "989b2285efe8",
+ "admin-now": "8e54044bf182",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "57f6c957"
+   "3d6e867a"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "eb6a5ef7"
+   "a411307d"
   ]
  },
- "admin-system": "87f06108bf9f",
+ "admin-system": "03672f92d2a3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "48e3d4d5"
+   "2f9b172f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "223c7734"
+   "676ce452"
   ]
  },
  "admin_marks": {},
- "heat": "49504447a6be",
+ "heat": "561d8be2163e",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e833c626"
+   "3403f7c3"
   ],
   "ranking": [
    "ランキング",
-   "81944fa4"
+   "ee2e240c"
   ]
  },
- "index": "c3a2c705abe5",
+ "index": "34fd8fa2d039",
  "index_marks": {
   "front": [
    "トップ",
-   "12114094"
+   "a7e79d6b"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "65aa7766"
+   "b89d27ba"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,15 +129,15 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "8b9daa3d"
+   "d4517210"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "df18cd29"
+   "d4b66295"
   ],
   "w-6676e624": [
    "三星手机",
-   "34e2cf4e"
+   "9c820392"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "2e6d1e23"
+   "b51b465f"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "9cf28218"
   ]
  },
- "updated": "10.29 01:59",
- "wishlist": "240e54b47469"
+ "updated": "10.29 02:04",
+ "wishlist": "1f54628bebd4"
 }
