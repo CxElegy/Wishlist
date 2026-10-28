@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-10-28T09:24:47+00:00",
+ "changed": true,
+ "checked": "2026-10-28T09:38:25+00:00",
  "fired": {
-  "at": "2026-10-28T09:24:47+00:00",
+  "at": "2026-10-28T09:38:25+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -22,7 +22,6 @@
    "items": [
     "A2O LITE",
     "Astrae Oratio",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "Vaundy",
@@ -37,17 +36,16 @@
     "滑雪",
     "猫用品"
    ],
-   "last_batch": "2026-10-28T09:12:47+00:00",
+   "last_batch": "2026-10-28T09:24:42+00:00",
    "last_error": {
     "at": "2026-10-28T08:55:52+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 412,
+   "prog": 418,
    "prog_day": "2026-10-28",
    "ripe": [
     "A2O LITE",
-    "GTA 6",
     "Vaundy",
     "dota2",
     "あつ森",
@@ -58,20 +56,20 @@
     "滑雪",
     "猫用品"
    ],
-   "sig": "e046dd9a6343",
+   "sig": "0c35a4fcf29d",
    "token_cap": 1000000,
-   "tokens_today": 561497,
-   "why": "整理待ちの記事 34 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 565293,
+   "why": "整理待ちの記事 28 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "FROM"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "5bb55d760c3f",
    "waiting": [
-    "FROM",
     "あつ森",
     "dota2",
     "Vaundy",
@@ -87,7 +85,7 @@
     "A2O LITE",
     "ILLIT"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 18:32 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 18:43 から）"
   },
   "photos": {
    "claude": true,
