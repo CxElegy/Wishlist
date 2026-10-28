@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-27T08:41:15+00:00",
-"text": "2026-10-27 第 12 バッチを出刊：日本顶级网球赛事（1 版面・6 本・今日の整理待ちは全部終わり） · token 新規入力 1,384・キャッシュ読み 9.7万・出力 433",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.29,
-"mem_total": 16872812544,
-"mem_free": 15940800512,
-"disk_used": 10782425088,
-"disk_free": 30540083200,
-"disk_total": 41322508288,
-"peak": 315379712
-},
-"batch": 12,
-"boards": [
-"日本顶级网球赛事"
-],
-"stories": 6,
-"left": 0,
-"edited": 22,
-"run": 1793086833.2226071,
-"tok": {
-"in": 2,
-"cw": 1382,
-"cr": 97162,
-"out": 433,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 98979,
-"secs": 3643,
-"run_tok": {
-"in": 62,
-"cw": 70064,
-"cr": 2433907,
-"out": 10937,
-"calls": 31,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-27T09:33:07+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1805,5 +1764,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1026673
+},
+{
+"at": "2026-10-28T09:12:47+00:00",
+"text": "2026-10-28 第 2 バッチを出刊：BLEACH Mirrors High（1 版面・3 本・残り 11 版面） · token 新規入力 3,890・キャッシュ読み 38.7万・出力 1,249",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.27,
+"mem_total": 16872808448,
+"mem_free": 15962636288,
+"disk_used": 10739326976,
+"disk_free": 30583181312,
+"disk_total": 41322508288,
+"peak": 298795008
+},
+"batch": 2,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 3,
+"left": 11,
+"edited": 23,
+"run": 1793177362.9301202,
+"tok": {
+"in": 10,
+"cw": 3880,
+"cr": 387159,
+"out": 1249,
+"calls": 5,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 392298
 }
 ]

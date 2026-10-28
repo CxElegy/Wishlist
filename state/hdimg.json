@@ -170,12 +170,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/008rJyJHly1iiasni9ainj30xc0tc0w9.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
  "http://wx3.sinaimg.cn/middle/008txX0Ply1iidpkzkyz7j31o02yo7wi.jpg": {
   "w": 2000,
   "h": 3556,
@@ -263,6 +257,19 @@
   "out": [
    1280,
    888
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx4.sinaimg.cn/middle/006rmNzUgy1iiasi8ip4dj30zu25ob29.jpg": {
+  "w": 1290,
+  "h": 2796,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/d56eda55408df29c.webp",
+  "out": [
+   591,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -1115,6 +1122,12 @@
  "https://i.ytimg.com/vi/QtHFx2ReeiI/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/BLEACH-Mirrors-High-interview.webp?fit=1920%2C1080&ssl=1": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -4082,12 +4095,6 @@
  "https://www.bing.com/th?id=ONUT.csvTQeo-s8NtUIZlyDOLeg&pid=News&w=530": {
   "w": 530,
   "h": 690,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.cwS4mgHDvfNsNbIrrkifIQ&pid=News&w=700": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },

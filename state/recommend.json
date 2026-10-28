@@ -17,6 +17,7 @@
   "https://collabo-cafe.com/events/collabo/saikikuso-meets-palude-knitfactory-anime-store-goods2026/?amp=1": "https://collabo-cafe.com/wp-content/uploads/086711674d70f7e953b3416296c989a7-253.jpg",
   "https://collabo-cafe.com/zh-hans/events/collabo/hellokitty-egoist-cecilmcbee-donki-setup-2026/": "https://collabo-cafe.com/wp-content/uploads/hellokitty-egoist-cecilmcbee-donki-2026-cecilmcbee-jersey.jpg",
   "https://comicbook.com/tv-shows/news/hbos-harry-potter-series-corrects-a-major-casting-problem-from-the-movies/": "https://www.bing.com/th?id=ONUT.lzZLVGB0_mXcXEkCyxwI2w&pid=News&w=1200",
+  "https://dengekionline.com/article/202610/92288": "https://cimg.kgl-systems.io/camion/files/92288/ogp_cNFU.jpg?x=1280",
   "https://esports.gg/news/dota-2/dota-2-dark-carnival-acts-1-and-2-surpass-crownfall-gap-between-acts/": null,
   "https://finance.biggo.com.tw/news/05b3b013-216a-4f27-81fb-d260ddc260da": "https://img.biggo.com/Xi1m7gpscBkFQTOcOUX76UcBMP7zueqdHqpvaIKcVyE/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwLzA1YjNiMDEzLTIxNmEtNGYyNy04MWZiLWQyNjBkZGMyNjBkYV8xNzkyNjUyNTA4X2RlZmF1bHQuanBn.jpg",
   "https://ftw.usatoday.com/story/tech/gaming/2026/10/27/gta-6-delay-rockstar-games-2027/92462670007/": "https://hermes.media.static.aol.com/media/2026/10/27/e374586d-dee7-3eb4-90d1-482ce328c856/552c2684-66e2-4132-a26d-2ac4959999bc.jpg",
@@ -82,7 +83,6 @@
   "https://www.sanyonews.jp/article/1912545": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
   "https://www.setn.com/news/152854": "https://attach.setn.com/newsimages/2016/06/04/549320-PH.jpg",
   "https://www.setn.com/news/897693": "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg",
-  "https://www.siliconera.com/bleach-mirrors-high-release-date-is-tomorrow/": "https://www.bing.com/th?id=ONUT.cwS4mgHDvfNsNbIrrkifIQ&pid=News&w=700",
   "https://www.sina.cn/news/detail/5358018526972618.html": "http://wx3.sinaimg.cn/middle/78961de9gy1iiewsmyjeuj24002o0npg.jpg",
   "https://www.sina.cn/news/detail/5358687140971378.html": "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg",
   "https://www.sina.cn/news/detail/5358775953527407.html": "http://wx1.sinaimg.cn/middle/8b511c18ly1iihc12wblpj20qo0w1jwg.jpg",
@@ -1298,6 +1298,27 @@
   },
   {
    "batch": 3,
+   "because": "BLEACH Mirrors High",
+   "date": "2026-10-28",
+   "hits": [],
+   "image": "https://cimg.kgl-systems.io/camion/files/92288/ogp_cNFU.jpg?x=1280",
+   "kind": "board",
+   "liked": "【ミラハイ】配信日や事前登録など最新情報まとめ【BLEACH Mirrors High】",
+   "score": 6,
+   "source": "電撃オンライン",
+   "taste": [
+    [
+     "作品:BLEACH Mirrors High",
+     2
+    ]
+   ],
+   "title": "『BLEACH Mirrors High（ミラハイ）』配信開始！ ガシャ50連分や一護・ルキア配布＆藍染も登場",
+   "url": "https://dengekionline.com/article/202610/92288",
+   "words": [],
+   "work": "BLEACH Mirrors High"
+  },
+  {
+   "batch": 4,
    "because": "周杰伦",
    "date": "2026-10-28",
    "hits": [],
@@ -1402,7 +1423,7 @@
    "work": "BLEACH Mirrors High"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "The Mandalorian",
    "date": "2026-10-28",
    "hits": [],
@@ -1484,27 +1505,6 @@
    "url": "https://www.msn.com/en-us/entertainment/tv/why-mandalorian-grogu-just-bombed/vi-AA2gbNw5",
    "words": [],
    "work": "The Mandalorian"
-  },
-  {
-   "batch": 5,
-   "because": "BLEACH Mirrors High",
-   "date": "2026-10-27",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.cwS4mgHDvfNsNbIrrkifIQ&pid=News&w=700",
-   "kind": "board",
-   "liked": "【ミラハイ】配信日や事前登録など最新情報まとめ【BLEACH Mirrors High】",
-   "score": 6,
-   "source": "Siliconera",
-   "taste": [
-    [
-     "作品:BLEACH Mirrors High",
-     2
-    ]
-   ],
-   "title": "Bleach Mirrors High Release Date Is Tomorrow",
-   "url": "https://www.siliconera.com/bleach-mirrors-high-release-date-is-tomorrow/",
-   "words": [],
-   "work": "BLEACH Mirrors High"
   },
   {
    "batch": 5,
@@ -2001,7 +2001,7 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
@@ -2009,7 +2009,7 @@
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
