@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-28T12:36:07+00:00",
+ "checked": "2026-10-28T12:47:30+00:00",
  "fired": {
-  "at": "2026-10-28T12:36:07+00:00",
+  "at": "2026-10-28T12:47:30+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -23,40 +23,36 @@
     "ILLIT",
     "MMORPG 新作",
     "Vaundy",
-    "チェーンソーマン",
     "三星手机",
-    "哈利波特剧集",
     "滑雪",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-10-28T12:24:01+00:00",
+   "last_batch": "2026-10-28T12:35:03+00:00",
    "last_error": {
     "at": "2026-10-28T11:01:41+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 492,
+   "prog": 499,
    "prog_day": "2026-10-28",
    "ripe": [
-    "MMORPG 新作",
-    "チェーンソーマン",
-    "哈利波特剧集"
+    "MMORPG 新作"
    ],
-   "sig": "db02c6d48e6f",
+   "sig": "512418f99c13",
    "token_cap": 1000000,
-   "tokens_today": 670292,
-   "why": "整理待ちの記事 18 件（9 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 672916,
+   "why": "整理待ちの記事 11 件（7 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "GTA 6"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "e780661c1c57",
    "waiting": [
-    "GTA 6",
     "チェーンソーマン",
     "周杰伦",
     "Vaundy",
@@ -72,7 +68,7 @@
     "绝区零",
     "ILLIT"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:46 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:48 から）"
   },
   "photos": {
    "claude": true,
