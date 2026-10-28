@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T15:49:37+00:00",
+ "checked": "2026-10-28T16:05:59+00:00",
  "fired": {
-  "at": "2026-10-28T15:49:37+00:00",
+  "at": "2026-10-28T16:05:59+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "仕事なし（起こさない）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -19,36 +19,28 @@
     "resp": "cse_01W4x6f66fjWcy8x2qhfE7nQ",
     "sig": "f20b1304a8b4"
    },
-   "items": [
-    "The Mandalorian",
-    "あつ森",
-    "三星手机",
-    "星巴克马克杯"
-   ],
+   "items": [],
    "last_batch": "2026-10-28T14:55:59+00:00",
    "last_error": {
     "at": "2026-10-28T14:41:40+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 568,
-   "prog_day": "2026-10-28",
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-10-29",
    "ripe": [],
-   "sig": "d1bf74ecbe3a",
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 850030,
-   "why": "整理待ちの記事 5 件（4 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "dota2",
-    "FROM",
-    "ぐでたま"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "683f66cb48f3",
+   "sig": "b6804aff6de5",
    "waiting": [
     "Vaundy",
     "周杰伦",
@@ -58,12 +50,15 @@
     "ILLIT",
     "漫威电影",
     "哈利波特剧集",
+    "ぐでたま",
+    "dota2",
+    "FROM",
     "Astrae Oratio",
     "绝区零",
     "A2O LITE",
     "The Mandalorian"
    ],
-   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 01:11 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 01:11 から）"
   },
   "photos": {
    "claude": true,
