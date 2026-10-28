@@ -1,10 +1,10 @@
 {
- "admin": "372aebae9ba9",
- "admin-ai": "8e099e2d691e",
+ "admin": "14b58f892047",
+ "admin-ai": "b389fd2acb51",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9002eea6"
+   "55708838"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "aac2b147e800",
+ "admin-emblem": "86c546a740bf",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "296fbb62"
+   "d1652f75"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "f1c7cd354862",
+ "admin-now": "3e2d75cc287a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "331b0e49"
+   "7530e5f3"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "ca079e5c"
+   "b3a906af"
   ]
  },
- "admin-system": "a0e69d868cf0",
+ "admin-system": "07f94bc242b7",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "711a2502"
+   "eab72165"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c4da3743"
+   "b179f6a0"
   ]
  },
  "admin_marks": {},
- "heat": "46879a0cfd75",
+ "heat": "e61b50bf2f7f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "5685a17e"
+   "51fedaea"
   ],
   "ranking": [
    "ランキング",
-   "98540ecf"
+   "ba11da2d"
   ]
  },
- "index": "418ccae9d9eb",
+ "index": "2fa5609b04f7",
  "index_marks": {
   "front": [
    "トップ",
-   "1d0909b8"
+   "23e9cb36"
   ],
   "picks": [
    "気になるかも？",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "1ed668b2"
+   "7fa723d9"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -173,11 +173,11 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "1e202a74"
+   "9cc3db71"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "aa3d9b14"
+   "700c0266"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "f273a9a5"
+   "b1df3398"
   ],
   "w-f303ad09": [
    "绝区零",
-   "91a14a63"
+   "d382b953"
   ]
  },
- "updated": "10.29 06:17",
+ "updated": "10.29 06:42",
  "wishlist": "1f54628bebd4"
 }

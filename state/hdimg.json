@@ -1,4 +1,10 @@
 {
+ "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/AcHFkGbugaufjwq.jpg": {
+  "w": 690,
+  "h": 320,
+  "target": 720,
+  "v": 3
+ },
  "http://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/NyJetYbufkdtirs.jpg": {
   "w": 790,
   "h": 4317,
@@ -537,19 +543,6 @@
   "h": 720,
   "target": 1280,
   "v": 3
- },
- "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg": {
-  "w": 300,
-  "h": 300,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.661,
-  "local": "pics/436da2d62021597d.webp",
-  "out": [
-   900,
-   900
-  ],
-  "why": "看不清"
  },
  "https://cdn.livedoor.jp/kstyle/b4d9d285e668cb548e563e3d7218ddeb_WI.jpg": {
   "w": 1024,
