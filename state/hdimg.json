@@ -1125,6 +1125,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/BLEACH-Mirrors-High-interview.webp?fit=1920%2C1080&ssl=1": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://i0.wp.com/finalweapon.net/wp-content/uploads/2026/10/Bleach-Mirrors-High-1-million-pre-registrations.webp?fit=1920%2C1080&ssl=1": {
   "w": 1920,
   "h": 1080,
@@ -2877,19 +2883,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00000021-isd-000-1-view.jpg?exp=10800": {
-  "w": 800,
-  "h": 449,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.391,
-  "local": "pics/4283bf577bbf318a.webp",
-  "out": [
-   800,
-   449
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00000348-oric-000-1-view.jpg?exp=10800": {
   "w": 960,
   "h": 640,
@@ -2908,6 +2901,18 @@
   "target": 720,
   "v": 3,
   "local": "pics/8db4697b0e191ad7.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00035827-tennismagv-000-1-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/1f0c51f6b6175c56.webp",
   "out": [
    1280,
    960
@@ -2971,6 +2976,12 @@
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/220a5803851742a389145d15077bb05b.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/b711b2d8f2fe4a02b2c39b1d29cf343a.jpg": {
+  "w": 1120,
+  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -3203,6 +3214,12 @@
   "w": 1268,
   "h": 714,
   "target": 1280,
+  "v": 3
+ },
+ "https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2026/10/avengers-4-1793169416.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://resizer.ladbiblegroup.com/ogimage/v3/assets/bltbc1876152fcd9f07/bltc75232029a110828/6ad78d7a4497d755a6b830fc/Skyrim_gamers_have_a_promising_new_fantasy_open-world_RPG_to_(1).png": {
@@ -3858,6 +3875,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.appbank.net/wp-content/uploads/2026/10/20261028_091828_781_01.webp": {
+  "w": 1793,
+  "h": 1251,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.atpress.ne.jp/releases/643108/LL_img_643108_3.jpg?format=webp&ts=1792744226": {
   "w": 800,
   "h": 800,
@@ -4257,12 +4280,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.comicbasics.com/wp-content/uploads/2026/06/Doctor-Doom-marvel-comics.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://www.comicbasics.com/wp-content/uploads/2026/06/slika_2026-06-29_160304513.webp": {
   "w": 2000,
   "h": 959,
@@ -4530,6 +4547,19 @@
   "h": 390,
   "target": 720,
   "v": 3
+ },
+ "https://www.nikkansports.com/sports/news/img/202610280000508-w500_1.jpg": {
+  "w": 500,
+  "h": 666,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.521,
+  "local": "pics/8a8d4a5d8e865076.webp",
+  "out": [
+   961,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://www.nishinippon.co.jp/uploads/image/1950882/sns_8124789914_org.jpg": {
   "w": 1200,

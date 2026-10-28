@@ -121,12 +121,13 @@
    ]
   },
   {
-   "headline": "‘Avengers: Doomsday’ Just Out-Sold ‘Endgame’ in Germany in a Single Day",
-   "highlight": "Out-Sold ‘Endgame’",
+   "headline": "Avengers: Doomsday to release in India before US, Robert Downey Jr and Chris Evans wish fans Happy Diwali",
+   "highlight": "release in India before US",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    13
+    70,
+    72
    ]
   },
   {
@@ -139,7 +140,9 @@
     8,
     17,
     18,
-    35
+    35,
+    68,
+    71
    ]
   },
   {
@@ -158,7 +161,8 @@
     37,
     32,
     50,
-    55
+    55,
+    69
    ]
   }
  ],
@@ -182,7 +186,10 @@
     11,
     13,
     14,
-    16
+    16,
+    18,
+    19,
+    20
    ],
    "image": "https://www.syfy.com/sites/syfy/files/2026/10/article-promotes-1825x1217_25.jpg"
   },
@@ -218,7 +225,8 @@
     4,
     6,
     7,
-    9
+    9,
+    13
    ],
    "event": {
     "date": "2026-10-28",
@@ -232,7 +240,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    12
+   ]
+  },
+  {
+   "headline": "Interview: BLEACH Mirrors High Producers on Development and Creator Tite Kubo’s Role",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -300,21 +318,21 @@
  ],
  "_covered": {
   "GTA 6": 103,
-  "漫威电影": 66,
-  "哈利波特剧集": 17,
-  "BLEACH Mirrors High": 10,
+  "漫威电影": 72,
+  "哈利波特剧集": 20,
+  "BLEACH Mirrors High": 13,
   "A2O LITE": 34,
   "三星手机": 19,
   "MMORPG 新作": 22,
   "滑雪": 4,
-  "绝区零": 11,
+  "绝区零": 17,
   "FROM": 4,
   "周杰伦": 10,
   "The Mandalorian": 5,
   "ILLIT": 18,
   "Vaundy": 2,
-  "日本顶级网球赛事": 17,
-  "チェーンソーマン": 7,
+  "日本顶级网球赛事": 22,
+  "チェーンソーマン": 11,
   "猫用品": 4,
   "Astrae Oratio": 4,
   "gelato pique": 1,
@@ -472,8 +490,10 @@
    "refs": [
     10,
     7,
-    1
-   ]
+    1,
+    13
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200"
   },
   {
    "headline": "绝区零联动星穹铁道，知更鸟这身紫色造型太戳人",
@@ -492,6 +512,28 @@
    "refs": [
     6,
     11
+   ]
+  },
+  {
+   "headline": "『原神』『ゼンレスゾーンゼロ』など公式グッズ1,500種類以上の売場「コミLab.」が未来屋書店日の出店に誕生！ 10月30日リニューアルオープン",
+   "highlight": "10月30日リニューアルオープン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ],
+   "event": {
+    "date": "2026-10-30",
+    "label": "リニューアルオープン"
+   }
+  },
+  {
+   "headline": "『ゼンレスゾーンゼロ』浮波柚葉がイラストそのままにフィギュア化。悪戯っぽい笑みや柔らかそうな足、大きな傘が印象的",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    15
    ]
   }
  ],
@@ -713,6 +755,24 @@
     11,
     12
    ]
+  },
+  {
+   "headline": "大坂なおみの着物風衣装に反響大「美しい鶴！」物憂げな表情から躍動カットも",
+   "highlight": "着物風衣装",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
+   ]
+  },
+  {
+   "headline": "鮎川真奈／ウェブリー スミスが繰り上がり出場も初戦敗退、3大会連続優勝中のダブロウスキー／ステファニーが連勝を「13」に延長 [東レPPOテニス]",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    19
+   ]
   }
  ],
  "チェーンソーマン": [
@@ -742,12 +802,23 @@
    "weight": "normal",
    "refs": [
     5,
-    7
+    7,
+    9,
+    11
    ],
    "event": {
     "date": "2026-11-03",
     "label": "発売日"
    }
+  },
+  {
+   "headline": "「MAPPA EXPO 15th Anniversary」東京会場の後期が開幕！呪術廻戦「死滅回游 前編」の初披露原画やチェンソーマン・進撃の巨人の新展示も",
+   "highlight": "東京会場の後期が開幕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
   }
  ],
  "猫用品": [
