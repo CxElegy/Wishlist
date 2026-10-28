@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "fc089e836d45",
+ "edit_sig": "078c7db5cbd4",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1329,39 +1329,20 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 2,
-     "source": "オリコンニュース",
-     "title": "画像・写真 | スターバックス「ロースタリー 東京」ホリデーコレクション グリッター輝くボトルやブーツ型マグが勢ぞろい 22枚目",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBJNjNSYkpsOUxvMDBlSmg1ZFVyUXBJYzVJVEJZcVZBOHVRZzhsRkdISFRHMGUyOHFpQnY0ZnFRNldaSmZIam40ZnZpM2ZKVjVZX3hmV0NTNTBaOXc?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-28",
-     "headline": "スターバックス リザーブ、ホリデー限定グッズ発売 ブーツ型マグやグリッタータンブラー登場",
-     "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832",
-     "image_via": "转载 news.yahoo.co.jp（Bing 缩略图）",
-     "url": "https://news.nicovideo.jp/watch/nw19928740?news_ref=search_search",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
+     "blurb": "ホリデーコレクションとして、グリッター輝くボトルやブーツ型マグなどが登場。ロースタリー 東京・リザーブでも展開される。",
      "date": "2026-10-28",
      "headline": "スターバックス、パールストラップのボトルやブーツ型マグなどホリデーアイテムを発売",
-     "highlight": "",
-     "image": "https://gourmet.watch.impress.co.jp/img/grw/list/2151/872/01.jpg",
-     "image_via": "og:image",
+     "highlight": "ブーツ型マグ",
+     "image": "https://asset.watch.impress.co.jp/img/grw/docs/2151/872/05_l.jpg",
+     "image_via": "AI 挑选",
      "url": "https://gourmet.watch.impress.co.jp/docs/news/2151872.html",
-     "weight": "hero"
+     "weight": "lead"
     },
     {
-     "blurb": "A new Disney x Starbucks holiday line with mint tumblers, a “Merriest Place on Earth” mug and a pink cup with a topper arrives Nov. 6.",
+     "blurb": "",
      "date": "2026-10-27",
      "event": {
       "date": "2026-11-06",
@@ -1372,7 +1353,7 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gctq5.img",
      "image_via": "AI 挑选",
      "url": "https://www.msn.com/en-us/entertainment/general/disney-and-starbucks-mint-to-be-holiday-collection-drops-nov-6/ar-AA2gcoDF",
-     "weight": "lead"
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",

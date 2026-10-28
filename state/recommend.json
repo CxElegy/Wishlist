@@ -4,8 +4,7 @@
   "https://k.sina.com.cn/article_7879996032_1d5af328006801qpm0.html?from=digit": "2026-10-28",
   "https://news.nicovideo.jp/watch/nw19926817?news_ref=watch_20_nw19790425": "2026-10-28",
   "https://t.co/1ZZTw5DGz2": "2026-10-28",
-  "https://t.co/BRjd8SR6kJ": "2026-10-28",
-  "https://www.ciiblog.in/detail/93685572237": "2026-10-28"
+  "https://t.co/BRjd8SR6kJ": "2026-10-28"
  },
  "images": {
   "http://k.sina.com.cn/article_7879923704_m1d5ae17f8033020ltu.html": "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg",
@@ -35,6 +34,7 @@
   "https://nagoya-dolphins.jp/news/detail/id=24269": "https://nagoya-dolphins.jp/files/user/common/2026-27/news/osakashimane_ticket.png",
   "https://news.infoseek.co.jp/article/oshiraku_28731/": "https://media.image.infoseek.co.jp/isnews/photos/oshiraku/oshiraku_28731_0-enlarge.jpg",
   "https://news.nicovideo.jp/watch/nw19926817?news_ref=watch_20_nw19790425": null,
+  "https://news.nicovideo.jp/watch/nw19928740?news_ref=search_search": "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832",
   "https://news.yahoo.co.jp/articles/0e96450b04671f00714ffa8e7dee323997cc24dc": "https://www.bing.com/th?id=ONUT.h1__6WSmxo7D9Lx6uBvTaQ&pid=News&w=960",
   "https://nijimen.kusuguru.co.jp/topics/644177": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/220a5803851742a389145d15077bb05b.jpg",
   "https://otonanswer.jp/post/403060/": "https://otonanswer.jp/wp-content/uploads/2027/10/20261022tfal01.jpg",
@@ -51,7 +51,6 @@
   "https://www.chiba-tv.com/plus/detail/amp/2026102164478": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1487722053736941283/origin_1.webp",
   "https://www.chinapress.com.my/20261026/%E5%B9%BC%E7%8C%AB%E6%94%BE%E5%85%A5%E8%9B%87%E7%AE%B1%E5%BC%95%E4%BA%89%E8%AE%AE-%E5%85%BD%E5%8C%BB%E5%B1%80%EF%BC%9A%E6%9C%AA%E6%8E%A5%E8%8E%B7%E6%8A%95%E6%8A%A5/": "https://www.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg",
   "https://www.chinatimes.com/realtimenews/20261025002598-260421": "https://images.chinatimes.com/newsphoto/2026-10-25/656/20261025002600.jpg",
-  "https://www.ciiblog.in/detail/93685572237": null,
   "https://www.cinemacafe.net/article/2026/10/26/113608.html": "https://www.cinemacafe.net/imgs/ogp_f/841987.jpg",
   "https://www.cls.cn/detail/2477078": "https://cdnjs.cls.cn/www/20180717/images/rightSide/kfCodeSlider.png",
   "https://www.cls.cn/detail/2499492": "https://cdnjs.cls.cn/www/20180717/images/rightSide/kfCodeSlider.png",
@@ -170,15 +169,15 @@
   {
    "batch": 0,
    "because": "小熊維尼蜂蜜罐馬克杯（Winnie the Pooh 聯名系列）",
-   "date": "2026-10-26",
+   "date": "2026-10-28",
    "hits": [
     "星巴克",
     "马克杯"
    ],
-   "image": null,
+   "image": "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832",
    "kind": "wish",
    "score": 9,
-   "source": "ciiblog.in",
+   "source": "ニコニコニュース",
    "taste": [
     [
      "作品:星巴克马克杯",
@@ -193,8 +192,8 @@
      6
     ]
    ],
-   "title": "キッチン・食器 新品 Starbucks(スターバックス) マグカップ 長野 355ml",
-   "url": "https://www.ciiblog.in/detail/93685572237",
+   "title": "スターバックス リザーブ、ホリデー限定グッズ発売 ブーツ型マグやグリッタータンブラー登場",
+   "url": "https://news.nicovideo.jp/watch/nw19928740?news_ref=search_search",
    "words": [
     "starbucks"
    ],
@@ -2001,11 +2000,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [

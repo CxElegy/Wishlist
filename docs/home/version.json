@@ -1,32 +1,32 @@
 {
- "admin": "2bd01051c925",
- "admin-ai": "1ece5cbc3445",
+ "admin": "162835b95ea6",
+ "admin-ai": "3a72c531cdd8",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d45ea292"
+   "191ff015"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c0a65c58"
+   "d6fa2042"
   ]
  },
- "admin-boards": "ee5ccab63808",
+ "admin-boards": "fe035865e9e5",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "b8505343"
+   "ab08f374"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "efccc15fac1d",
+ "admin-emblem": "b539b14e9d3e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "14759fef"
+   "45eac84f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "9bf5797c"
+   "fbc35a16"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "a08b768ae4f3",
+ "admin-now": "b726b10e3e7d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4ab46448"
+   "3898dbf5"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a1627cb4"
+   "0ee270dd"
   ]
  },
- "admin-system": "d24bf185c20c",
+ "admin-system": "8b76dce09cba",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "8c686d11"
+   "872fe2bd"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "fcba18c0"
+   "6052ae74"
   ]
  },
  "admin_marks": {},
- "heat": "8a3ace9557e5",
+ "heat": "da38f427f5b9",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "1c7e2db5"
+   "9d48a83b"
   ],
   "ranking": [
    "ランキング",
-   "b1275c39"
+   "0fa1f1f3"
   ]
  },
- "index": "4f84497101a1",
+ "index": "1d2b8bbaa8cf",
  "index_marks": {
   "front": [
    "トップ",
-   "9bd60447"
+   "ddc4bb68"
   ],
   "picks": [
    "気になるかも？",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "218e2c74"
+   "92fad2bd"
   ],
   "w-6676e624": [
    "三星手机",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "5f12ae21"
+   "b576cade"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "8808a9fd"
   ]
  },
- "updated": "10.28 18:41",
- "wishlist": "07e659c78efc"
+ "updated": "10.28 18:54",
+ "wishlist": "9505070f7168"
 }

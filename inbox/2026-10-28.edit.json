@@ -356,7 +356,7 @@
   "猫用品": 4,
   "Astrae Oratio": 4,
   "gelato pique": 1,
-  "星巴克马克杯": 1,
+  "星巴克马克杯": 4,
   "dota2": 3,
   "あつ森": 1,
   "ぐでたま": 1
@@ -916,10 +916,22 @@
  ],
  "星巴克马克杯": [
   {
+   "headline": "スターバックス、パールストラップのボトルやブーツ型マグなどホリデーアイテムを発売",
+   "highlight": "ブーツ型マグ",
+   "blurb": "ホリデーコレクションとして、グリッター輝くボトルやブーツ型マグなどが登場。ロースタリー 東京・リザーブでも展開される。",
+   "weight": "lead",
+   "refs": [
+    3,
+    2,
+    4
+   ],
+   "image": "https://asset.watch.impress.co.jp/img/grw/docs/2151/872/05_l.jpg"
+  },
+  {
    "headline": "Disney and Starbucks Mint to Be holiday collection drops Nov. 6",
    "highlight": "drops Nov. 6",
-   "blurb": "A new Disney x Starbucks holiday line with mint tumblers, a “Merriest Place on Earth” mug and a pink cup with a topper arrives Nov. 6.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
    ],
