@@ -1,32 +1,32 @@
 {
- "admin": "d22e393eba88",
- "admin-ai": "7ce7f7ac2e77",
+ "admin": "78d40936e652",
+ "admin-ai": "5f2e77f9e263",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9dafbc85"
+   "52550315"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "5806d340"
+   "1c19330e"
   ]
  },
- "admin-boards": "6e46c628d84f",
+ "admin-boards": "3adfc215d681",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "0cabe938"
+   "e4ccd241"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "08c0846697f5",
+ "admin-emblem": "1269ed35c9bd",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "29731aff"
+   "c47ddb0f"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "c985aae5c76a",
+ "admin-now": "d10cd13243ea",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "787d75c1"
+   "da1352d0"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "2163d570"
+   "d5b66aac"
   ]
  },
- "admin-system": "2001e0b6dabb",
+ "admin-system": "04aa24a3ed6c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b4f9127d"
+   "ab96aeef"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "84a8f9dd"
+   "82153832"
   ]
  },
  "admin_marks": {},
- "heat": "e4cd7cf80a16",
+ "heat": "152ce0c6fe19",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "85f389f2"
+   "77e52570"
   ],
   "ranking": [
    "ランキング",
-   "a1297692"
+   "d1aa8605"
   ]
  },
- "index": "83396677bd00",
+ "index": "eaaab77076ac",
  "index_marks": {
   "front": [
    "トップ",
-   "46c32526"
+   "8a56f668"
   ],
   "picks": [
    "気になるかも？",
@@ -121,11 +121,11 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "e41f79a3"
+   "f9e30764"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "1792fefb"
+   "ef72e853"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "f31db663"
+   "c212ee87"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "51ff69f3"
+   "05206d17"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "599bb557"
+   "8808a9fd"
   ]
  },
- "updated": "10.28 17:13",
+ "updated": "10.28 17:18",
  "wishlist": "9505070f7168"
 }
