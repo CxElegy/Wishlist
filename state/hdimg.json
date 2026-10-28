@@ -74,6 +74,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx1.sinaimg.cn/middle/8b511c18ly1iihc12wblpj20qo0w1jwg.jpg": {
+  "w": 960,
+  "h": 1153,
+  "target": 720,
+  "v": 3,
+  "local": "pics/2552e6e7c4e80530.webp",
+  "out": [
+   960,
+   1153
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
   "h": 1297,
@@ -119,6 +132,19 @@
   "target": 720,
   "v": 3,
   "local": "pics/cbaf8705105576dd.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/006PiM45ly1ii9vmz5fr7j31z41404qr.jpg": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
+  "v": 3,
+  "local": "pics/f7a84de9bf1f7c5b.webp",
   "out": [
    1280,
    720
@@ -253,6 +279,12 @@
   "w": 1200,
   "h": 800,
   "target": 720,
+  "v": 3
+ },
+ "https://afpbb.ismcdn.jp/mwimgs/7/f/1000x/img_7f9796789ecc5949a099ce4d5b98fb5582038.jpg": {
+  "w": 1000,
+  "h": 666,
+  "target": 1280,
   "v": 3
  },
  "https://afpbb.ismcdn.jp/mwimgs/b/f/400w/img_bfc686f4a9e4ab6c69b7d59a7396a88c70341.jpg": {
@@ -864,6 +896,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://gizmodo.com/app/uploads/2026/10/Connor-Storrie-Heated-Rivalry-1200x675.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://gizmodo.com/app/uploads/2026/10/Samsung-A17-Mint-Mobile-1200x675.jpg": {
   "w": 1200,
   "h": 675,
@@ -1172,6 +1210,12 @@
   "w": 1200,
   "h": 1668,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=1800,fit=cover,q=high,sharpen=2/21/2026/10/2026102808095718866_1.jpg": {
+  "w": 1200,
+  "h": 1800,
+  "target": 720,
   "v": 3
  },
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=665,fit=cover,q=high,sharpen=2/21/2026/10/2026102307582091459_1.jpg": {
@@ -2752,6 +2796,30 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00035813-tennismagv-000-1-view.jpg?exp=10800": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
+  "v": 3,
+  "local": "pics/8db4697b0e191ad7.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00122070-thedigest-000-7-view.jpg?exp=10800": {
+  "w": 1440,
+  "h": 960,
+  "target": 720,
+  "v": 3,
+  "local": "pics/3d609550f63ea51f.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/iwiz-yn/rpr/nakajimakei/02746943/title-1792455891487.jpeg?exp=10800": {
   "w": 1920,
   "h": 1080,
@@ -3710,12 +3778,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.5og7m04rjF_0HZ8y-OmZMw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3925,13 +3987,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
-  "w": 700,
-  "h": 380,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.415
- },
  "https://www.bing.com/th?id=ONUT.vyiLOjCJVNhznANLndPcUw&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -3980,19 +4035,6 @@
   "h": 460,
   "target": 720,
   "v": 3
- },
- "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102732098654.jpg": {
-  "w": 690,
-  "h": 460,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.444,
-  "local": "pics/cfcbb5c221193afc.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
  },
  "https://www.chinapress.com.my/wp-content/uploads/2026/10/20261026CPKK23a.jpg": {
   "w": 1200,
@@ -4171,6 +4213,12 @@
   "w": 1000,
   "h": 544,
   "target": 720,
+  "v": 3
+ },
+ "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
+  "w": 1000,
+  "h": 544,
+  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {

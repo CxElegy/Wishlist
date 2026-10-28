@@ -140,7 +140,9 @@
     33,
     34,
     37,
-    32
+    32,
+    50,
+    55
    ]
   }
  ],
@@ -194,7 +196,8 @@
    "refs": [
     3,
     4,
-    6
+    6,
+    7
    ],
    "event": {
     "date": "2026-10-28",
@@ -220,8 +223,10 @@
    "weight": "lead",
    "refs": [
     4,
-    1
-   ]
+    1,
+    14
+   ],
+   "image": "https://afpbb.ismcdn.jp/mwimgs/7/f/1000x/img_7f9796789ecc5949a099ce4d5b98fb5582038.jpg"
   },
   {
    "headline": "SM 回应禁止跳NEON 传闻，金希澈利特：谁能阻止我们",
@@ -265,20 +270,20 @@
  ],
  "_covered": {
   "GTA 6": 70,
-  "漫威电影": 45,
+  "漫威电影": 58,
   "哈利波特剧集": 14,
-  "BLEACH Mirrors High": 6,
-  "A2O LITE": 12,
+  "BLEACH Mirrors High": 8,
+  "A2O LITE": 15,
   "三星手机": 13,
   "MMORPG 新作": 6,
   "滑雪": 4,
-  "绝区零": 3,
+  "绝区零": 6,
   "FROM": 3,
   "周杰伦": 3,
   "The Mandalorian": 4,
-  "ILLIT": 4,
+  "ILLIT": 6,
   "Vaundy": 2,
-  "日本顶级网球赛事": 8,
+  "日本顶级网球赛事": 14,
   "チェーンソーマン": 3,
   "猫用品": 2,
   "Astrae Oratio": 3
@@ -418,6 +423,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "绝区零3.3 版本更新：新主线与菲欧妮体验",
+   "highlight": "3.3 版本更新",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "FROM": [
@@ -462,7 +476,8 @@
    "weight": "lead",
    "refs": [
     1,
-    4
+    4,
+    6
    ],
    "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnax2f7OIyXc1WmQRDOjM-h8Yn9Gd6cjzMehWgq6BPeDImBHdGhoTErPtYsLyPaPzfFvf9v_c28o8qn8mFUGSUsnkDbqYqvg7SN2-YK0YukEflnUE4vG_1bAdOi-TgtgE4Q=="
   },
@@ -482,6 +497,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "ILLIT's \"It's Me\" Music Video Surpasses 200 Million Views... Major Hit Following \"Magnetic\"",
+   "highlight": "200 Million Views",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -536,6 +560,27 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "大坂なおみが４年ぶりの東レPPO初戦で見せた勝負強さ。強打と粘りで「危険な選手」パオリーニを振り切る",
+   "highlight": "パオリーニを振り切る",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    10,
+    13
+   ]
+  },
+  {
+   "headline": "2019年大会チャンピオン大坂なおみら8人がシングルス2回戦へ、今季限りで引退予定のシルステアはシードダウン第1号に",
+   "highlight": "シングルス2回戦へ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11,
+    12
    ]
   }
  ],
