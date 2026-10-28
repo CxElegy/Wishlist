@@ -254,7 +254,8 @@
   "Vaundy": 1,
   "滑雪": 1,
   "绝区零": 1,
-  "ぐでたま": 16
+  "ぐでたま": 16,
+  "周杰伦": 3
  },
  "三星手机": [
   {
@@ -495,6 +496,18 @@
    "refs": [
     1
    ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "vivo X500 Pro Max Lands In Malaysia With A 200MP Zoom And Jay Chou Tickets Up For Grabs",
+   "highlight": "Jay Chou Tickets",
+   "blurb": "vivo X500 Pro Max is open for pre-order in Malaysia from RM6,099; early-bird buyers before 2 Nov get Jay Chou tickets.",
+   "weight": "lead",
+   "refs": [
+    3
+   ],
+   "image": "https://www.therakyatpost.com/wp-content/uploads/2026/10/jay_chou_vivo_cover.jpg"
   }
  ]
 }

@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-27T22:42:59+00:00",
-"text": "2026-10-28 第 1 バッチを出刊：ILLIT（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 4.6万・キャッシュ読み 57.5万・出力 2,730",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.17,
-"mem_total": 16872808448,
-"mem_free": 15934525440,
-"disk_used": 10842718208,
-"disk_free": 30479790080,
-"disk_total": 41322508288,
-"peak": 322383872
-},
-"batch": 1,
-"boards": [
-"ILLIT"
-],
-"stories": 3,
-"left": 0,
-"edited": 18,
-"run": 1793140563.4990392,
-"tok": {
-"in": 18,
-"cw": 45841,
-"cr": 574909,
-"out": 2730,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 623498,
-"secs": 416,
-"run_tok": {
-"in": 18,
-"cw": 45841,
-"cr": 574909,
-"out": 2730,
-"calls": 9,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-27T23:48:16+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1856,5 +1815,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 107109
+},
+{
+"at": "2026-10-28T21:17:38+00:00",
+"text": "2026-10-29 第 10 バッチを出刊：周杰伦（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 2,801・キャッシュ読み 43.0万・出力 1,403",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.21,
+"mem_total": 16872808448,
+"mem_free": 15974952960,
+"disk_used": 10214051840,
+"disk_free": 31108456448,
+"disk_total": 41322508288,
+"peak": 326782976
+},
+"batch": 10,
+"boards": [
+"周杰伦"
+],
+"stories": 1,
+"left": 0,
+"edited": 19,
+"run": 1793217575.7475815,
+"tok": {
+"in": 8,
+"cw": 2793,
+"cr": 429880,
+"out": 1403,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 434084,
+"secs": 4683,
+"run_tok": {
+"in": 80,
+"cw": 80565,
+"cr": 3517850,
+"out": 13859,
+"calls": 40,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
