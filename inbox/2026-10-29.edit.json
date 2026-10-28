@@ -239,7 +239,8 @@
   "ILLIT": 1,
   "Vaundy": 1,
   "滑雪": 1,
-  "绝区零": 1
+  "绝区零": 1,
+  "ぐでたま": 16
  },
  "三星手机": [
   {
@@ -400,6 +401,55 @@
    "highlight": "Orphie and Magus glasses",
    "blurb": "Gunnar Optiks and Zenless Zone Zero collaborate again with three lens options.",
    "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "大人気“ぐでたまかふぇ”の常設店が梅田にオープン！",
+   "highlight": "常設店が梅田にオープン",
+   "blurb": "人気のぐでたまかふぇの常設店が梅田に登場。",
+   "weight": "lead",
+   "refs": [
+    9
+   ],
+   "image": "https://news.walkerplus.com/article/70253/393788_615.jpg"
+  },
+  {
+   "headline": "テーマはトロピカルリゾート！なんばパークス「ぐでたま」コラボカフェ",
+   "highlight": "なんばパークス",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "ぐでたまがスイーツに！期間限定カフェが関西初登場",
+   "highlight": "関西初登場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    14
+   ]
+  },
+  {
+   "headline": "「ぐでたま」コラボ雑貨全16種がサンキューマートに登場！",
+   "highlight": "全16種",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ぐでたまふぇすてぃばる！ゆる～い“卵キャラ”がピューロランドをジャック",
+   "highlight": "ぐでたまふぇすてぃばる",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
    ]

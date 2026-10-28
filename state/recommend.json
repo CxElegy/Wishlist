@@ -92,7 +92,7 @@
   "https://www.sina.cn/news/detail/5358687140971378.html": "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg",
   "https://www.sina.cn/news/detail/5358775953527407.html": "http://wx1.sinaimg.cn/middle/8b511c18ly1iihc12wblpj20qo0w1jwg.jpg",
   "https://www.toy-people.com/en/?p=115398": "https://img.toy-people.com/member/179241036689_1200.png",
-  "https://www.walkerplus.com/article/49501/image266318.html": "https://news.walkerplus.com/article/49501/266317_615.jpg",
+  "https://www.walkerplus.com/article/56657/image312478.html": "https://news.walkerplus.com/article/56657/312478_615.jpg",
   "https://www.youtube.com/watch?v=bp4hvkBNhCw": "https://i3.ytimg.com/vi/bp4hvkBNhCw/hqdefault.jpg"
  },
  "picks": [
@@ -1431,6 +1431,27 @@
   },
   {
    "batch": 5,
+   "because": "ぐでたま",
+   "date": "2026-10-28",
+   "hits": [],
+   "image": "https://news.walkerplus.com/article/56657/312478_615.jpg",
+   "kind": "board",
+   "liked": "難波にアメリカ西海岸がテーマのぐでたまカフェ登場",
+   "score": 6,
+   "source": "ウォーカープラス",
+   "taste": [
+    [
+     "作品:ぐでたま",
+     2
+    ]
+   ],
+   "title": "＜画像1 / 2＞ぐでたまがすすめるクラシック音楽とは？コンピCD発売",
+   "url": "https://www.walkerplus.com/article/56657/image312478.html",
+   "words": [],
+   "work": "ぐでたま"
+  },
+  {
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-28",
    "hits": [],
@@ -1514,7 +1535,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "The Mandalorian",
    "date": "2026-10-27",
    "hits": [],
@@ -1554,27 +1575,6 @@
    "url": "https://www.sina.cn/news/detail/5358687140971378.html",
    "words": [],
    "work": "A2O LITE"
-  },
-  {
-   "batch": 6,
-   "because": "ぐでたま",
-   "date": "2026-10-27",
-   "hits": [],
-   "image": "https://news.walkerplus.com/article/49501/266317_615.jpg",
-   "kind": "board",
-   "liked": "難波にアメリカ西海岸がテーマのぐでたまカフェ登場",
-   "score": 6,
-   "source": "ウォーカープラス",
-   "taste": [
-    [
-     "作品:ぐでたま",
-     2
-    ]
-   ],
-   "title": "＜画像2 / 3＞サンリオキャラ「ぐでたま」のクレープに新メニュー",
-   "url": "https://www.walkerplus.com/article/49501/image266318.html",
-   "words": [],
-   "work": "ぐでたま"
   },
   {
    "batch": 6,
@@ -2168,11 +2168,11 @@
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
