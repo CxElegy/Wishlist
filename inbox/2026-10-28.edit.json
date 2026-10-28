@@ -80,7 +80,9 @@
     46,
     51,
     57,
-    62
+    62,
+    75,
+    71
    ]
   }
  ],
@@ -269,12 +271,12 @@
   }
  ],
  "_covered": {
-  "GTA 6": 70,
+  "GTA 6": 79,
   "漫威电影": 58,
   "哈利波特剧集": 14,
   "BLEACH Mirrors High": 8,
   "A2O LITE": 15,
-  "三星手机": 13,
+  "三星手机": 14,
   "MMORPG 新作": 6,
   "滑雪": 4,
   "绝区零": 6,
@@ -284,9 +286,11 @@
   "ILLIT": 6,
   "Vaundy": 2,
   "日本顶级网球赛事": 14,
-  "チェーンソーマン": 3,
+  "チェーンソーマン": 4,
   "猫用品": 2,
-  "Astrae Oratio": 3
+  "Astrae Oratio": 3,
+  "gelato pique": 1,
+  "星巴克马克杯": 1
  },
  "三星手机": [
   {
@@ -594,6 +598,15 @@
     1
    ],
    "image": "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp"
+  },
+  {
+   "headline": "劇場版『チェンソーマン レゼ篇』 コロンとおすわりポチタぬいぐるみコレクション～ゴムひも付き～",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "猫用品": [
@@ -635,6 +648,34 @@
    "refs": [
     3
    ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "「かわいい部屋着」ではgelato piqueが92.9%、「夏の寝汗」ではGUNZEが78.8%──AIへの相談で変わるルームウェアの言及率",
+   "highlight": "92.9%",
+   "blurb": "AIへの相談でルームウェアの言及率がどう変わるかを調べたプレスリリース。「かわいい部屋着」ではgelato piqueが92.9%。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://prcdn.freetls.fastly.net/release_image/186744/9/186744-9-58b393910f5946bfe5819bc03f89ca0f-1448x1086.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "Disney and Starbucks Mint to Be holiday collection drops Nov. 6",
+   "highlight": "drops Nov. 6",
+   "blurb": "A new Disney x Starbucks holiday line with mint tumblers, a “Merriest Place on Earth” mug and a pink cup with a topper arrives Nov. 6.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-11-06",
+    "label": "発売日"
+   },
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gctq5.img"
   }
  ]
 }

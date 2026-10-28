@@ -1583,6 +1583,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gctq5.img": {
+  "w": 1456,
+  "h": 819,
+  "target": 1280,
+  "v": 3
+ },
  "https://img.4gamers.com.tw/news-image/30592e27-3cf0-4f66-b229-fc5e54665aeb.jpg": {
   "w": 1600,
   "h": 900,
@@ -2990,6 +2996,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/186744/9/186744-9-58b393910f5946bfe5819bc03f89ca0f-1448x1086.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1448,
+  "h": 1086,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/188297/9/188297-9-325739f58f3f1a65829bfef3a8a73d82-1557x865.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1557,
   "h": 865,
@@ -3310,6 +3322,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://static.sanyonews.jp/image/article/size1/2/2/9/0/22902e4f34b44e2c44d9f269166203df_1.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/6/b/d/5/6bd5ae98a8676317af2175d8ef86b187_1.jpg": {
   "w": 450,
@@ -3892,12 +3910,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.Z_lB_6Izm27y4qYc1OJ7UA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3939,6 +3951,12 @@
  "https://www.bing.com/th?id=ONUT.fPuBC42PXLEzxglrfEWVLA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.h1__6WSmxo7D9Lx6uBvTaQ&pid=News&w=960": {
+  "w": 700,
+  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -3987,11 +4005,12 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.vyiLOjCJVNhznANLndPcUw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
+  "h": 380,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.415
  },
  "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
   "w": 700,
@@ -4213,12 +4232,6 @@
   "w": 1000,
   "h": 544,
   "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
-  "w": 1000,
-  "h": 544,
-  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
