@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-27T15:17:52+00:00",
-"text": "2026-10-27 第 9 バッチを出刊：漫威电影（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 1,077・キャッシュ読み 19.9万・出力 748",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.35,
-"mem_total": 16872812544,
-"mem_free": 15931084800,
-"disk_used": 10947293184,
-"disk_free": 30375215104,
-"disk_total": 41322508288,
-"peak": 330698752
-},
-"batch": 9,
-"boards": [
-"漫威电影"
-],
-"stories": 5,
-"left": 0,
-"edited": 22,
-"run": 1793109966.685819,
-"tok": {
-"in": 4,
-"cw": 1073,
-"cr": 198687,
-"out": 748,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 200512,
-"secs": 4306,
-"run_tok": {
-"in": 72,
-"cw": 71653,
-"cr": 2872857,
-"out": 11515,
-"calls": 36,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-27T17:44:48+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1763,5 +1722,51 @@
 "at": "2026-10-28T14:41:40+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
+},
+{
+"at": "2026-10-28T14:49:41+00:00",
+"text": "2026-10-28 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT、MMORPG 新作 ほか 9（15 版面・57 本・残り 4 版面） · token 新規入力 5.4万・キャッシュ読み 71.7万・出力 4,307",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.18,
+"mem_total": 16872808448,
+"mem_free": 15927799808,
+"disk_used": 10784022528,
+"disk_free": 30538485760,
+"disk_total": 41322508288,
+"peak": 329269248
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"ILLIT",
+"MMORPG 新作",
+"Vaundy",
+"dota2",
+"gelato pique",
+"ぐでたま",
+"チェーンソーマン",
+"日本顶级网球赛事",
+"滑雪",
+"猫用品",
+"绝区零"
+],
+"stories": 57,
+"left": 4,
+"edited": 23,
+"run": null,
+"tok": {
+"in": 22,
+"cw": 54339,
+"cr": 716508,
+"out": 4307,
+"calls": 11,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 775176
 }
 ]
