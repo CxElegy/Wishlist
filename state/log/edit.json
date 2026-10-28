@@ -1,53 +1,5 @@
 [
 {
-"at": "2026-10-27T11:45:56+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
-"at": "2026-10-27T11:50:20+00:00",
-"text": "2026-10-27 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、Vaundy、dota2、gelato pique ほか 6（12 版面・30 本・残り 4 版面） · token 新規入力 4.9万・キャッシュ読み 87.1万・出力 3,183",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.23,
-"mem_total": 16872812544,
-"mem_free": 15831449600,
-"disk_used": 10773352448,
-"disk_free": 30549155840,
-"disk_total": 41322508288,
-"peak": 407810048
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"哈利波特剧集",
-"日本顶级网球赛事",
-"星巴克马克杯",
-"猫用品"
-],
-"stories": 30,
-"left": 4,
-"edited": 22,
-"run": null,
-"tok": {
-"in": 26,
-"cw": 49276,
-"cr": 871197,
-"out": 3183,
-"calls": 13,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 923682
-},
-{
 "at": "2026-10-27T11:58:32+00:00",
 "text": "2026-10-27 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、Vaundy、dota2 ほか 7（13 版面・35 本・残り 3 版面） · token 新規入力 5.4万・キャッシュ読み 134.7万・出力 4,606",
 "level": "ok",
@@ -1841,5 +1793,42 @@
 "calls": 51,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-28T11:01:41+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-10-28T11:07:27+00:00",
+"text": "2026-10-28 第 1 バッチを出刊：ILLIT（1 版面・7 本・残り 4 版面） · token 新規入力 4.4万・キャッシュ読み 62.7万・出力 2,127",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.14,
+"mem_total": 16872808448,
+"mem_free": 15959949312,
+"disk_used": 10779197440,
+"disk_free": 30543310848,
+"disk_total": 41322508288,
+"peak": 287215616
+},
+"batch": 1,
+"boards": [
+"ILLIT"
+],
+"stories": 7,
+"left": 4,
+"edited": 23,
+"run": 1793184810.2345214,
+"tok": {
+"in": 20,
+"cw": 44416,
+"cr": 627166,
+"out": 2127,
+"calls": 10,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 673729
 }
 ]
