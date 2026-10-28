@@ -1,32 +1,32 @@
 {
- "admin": "d2bd376bd085",
- "admin-ai": "a35f93e0796d",
+ "admin": "2727ee868283",
+ "admin-ai": "d8854fa14084",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "62fcae96"
+   "cdec62a5"
   ],
   "tokens": [
    "AI 編集のトークン",
    "6accdfaa"
   ]
  },
- "admin-boards": "66eb022de111",
+ "admin-boards": "25b7157f1ec7",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e9a20095"
+   "773a97c4"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "6b35488e7301",
+ "admin-emblem": "49c1fd097a4c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ec5c1a6e"
+   "a446d89d"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "04acedbe"
+   "8b2ff15d"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "30287a25bf05",
+ "admin-now": "111b69659a5b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1f86572e"
+   "e89bb6d5"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "f62ee4c9"
+   "df4d59b0"
   ],
   "term-panel": [
    "ライブログ",
-   "9ac8c12f"
+   "00c7ccd5"
   ]
  },
- "admin-system": "79c1df9bedc0",
+ "admin-system": "2ac3da2560f6",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "31704370"
+   "d9ab4bec"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3eace8a2"
+   "be7090d4"
   ]
  },
  "admin_marks": {},
- "heat": "9039b14a0ec6",
+ "heat": "33d754327670",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "117c7c32"
+   "d100d05c"
   ],
   "ranking": [
    "ランキング",
-   "6cf7957b"
+   "c455de9f"
   ]
  },
- "index": "82c732fd8caf",
+ "index": "369823bf022b",
  "index_marks": {
   "front": [
    "トップ",
-   "f4836b83"
+   "eb39f23c"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "4c2a9b71"
+   "98b10b10"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "b1df3398"
+   "fa08d278"
   ],
   "w-f303ad09": [
    "绝区零",
    "0929dd51"
   ]
  },
- "updated": "10.29 07:40",
+ "updated": "10.29 07:49",
  "wishlist": "1f54628bebd4"
 }
