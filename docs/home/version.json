@@ -1,32 +1,32 @@
 {
- "admin": "7eb5101635ea",
- "admin-ai": "f54d05824e2b",
+ "admin": "9902d6a0fd1d",
+ "admin-ai": "0cb0571af52e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "47e6f9a8"
+   "76a7564f"
   ],
   "tokens": [
    "AI 編集のトークン",
    "71405474"
   ]
  },
- "admin-boards": "ba88c0abb104",
+ "admin-boards": "5a60b5f54e7c",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "8e2703d6"
+   "99386b87"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "84a58d680e6c",
+ "admin-emblem": "a3cc16832409",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "071da8e5"
+   "a71a5209"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "dd185e923067",
+ "admin-now": "26347242f871",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "06a593b3"
+   "6a95f592"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "1d6b3340"
+   "4dbae0ce"
   ],
   "term-panel": [
    "ライブログ",
-   "b621ee12"
+   "4bdee9bb"
   ]
  },
- "admin-system": "ae92ba0ee439",
+ "admin-system": "26d3d01398c4",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4ff3b6ae"
+   "1e6ad6e1"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "fc4038ac"
+   "20dbc1dc"
   ]
  },
  "admin_marks": {},
- "heat": "085197628a4b",
+ "heat": "f6007adbc1a2",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "6c678894"
+   "40bdbea8"
   ],
   "ranking": [
    "ランキング",
-   "4cdb11db"
+   "0ce91497"
   ]
  },
- "index": "95fe06141a59",
+ "index": "32c52ababde9",
  "index_marks": {
   "front": [
    "トップ",
-   "a486aeea"
+   "ed6c54de"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "f9e30764"
+   "78f966dd"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "c212ee87"
+   "cfd4c33e"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "799eb200"
+   "30ec3eb2"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "8808a9fd"
   ]
  },
- "updated": "10.28 22:55",
+ "updated": "10.28 23:10",
  "wishlist": "240e54b47469"
 }
