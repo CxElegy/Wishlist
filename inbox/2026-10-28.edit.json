@@ -102,7 +102,8 @@
    "blurb": "A new promo says Earth-616 now has competing claims on the title of Earth's Mightiest Heroes, and Doomsday will merge three teams.",
    "weight": "lead",
    "refs": [
-    10
+    10,
+    65
    ],
    "image": "https://images.thedirect.com/media/photos/team1.png"
   },
@@ -256,7 +257,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    17
    ]
   },
   {
@@ -266,7 +268,8 @@
    "weight": "normal",
    "refs": [
     9,
-    10
+    10,
+    16
    ]
   },
   {
@@ -281,18 +284,18 @@
  ],
  "_covered": {
   "GTA 6": 92,
-  "漫威电影": 58,
+  "漫威电影": 66,
   "哈利波特剧集": 14,
   "BLEACH Mirrors High": 8,
-  "A2O LITE": 15,
+  "A2O LITE": 21,
   "三星手机": 14,
-  "MMORPG 新作": 6,
+  "MMORPG 新作": 15,
   "滑雪": 4,
   "绝区零": 6,
   "FROM": 3,
   "周杰伦": 3,
   "The Mandalorian": 4,
-  "ILLIT": 6,
+  "ILLIT": 11,
   "Vaundy": 2,
   "日本顶级网球赛事": 14,
   "チェーンソーマン": 4,
@@ -355,7 +358,10 @@
    "refs": [
     2,
     4,
-    6
+    6,
+    7,
+    8,
+    14
    ],
    "image": "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200"
   },
@@ -365,7 +371,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    9
    ]
   },
   {
@@ -518,7 +525,19 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    9,
+    10,
+    11
+   ]
+  },
+  {
+   "headline": "ILLITイロハがショートボブでイメージ激変！黒縁メガネ姿で軽やかにダンス",
+   "highlight": "ショートボブでイメージ激変",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
