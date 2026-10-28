@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "35100acf1a49",
+ "edit_sig": "0c8035b4fc8a",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -753,8 +753,8 @@
      "date": "2026-10-27",
      "headline": "The Mandalorian and Grogu nominated at the 2026 Concept Art Association Awards",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000",
-     "image_via": "Bing 缩略图",
+     "image": "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg",
+     "image_via": "og:image",
      "url": "https://www.fanthatracks.com/news/film-music-tv/the-mandalorian-and-grogu-nominated-at-the-2026-concept-art-association-awards/",
      "weight": "normal"
     }
@@ -807,33 +807,6 @@
     "bg": "#15131C",
     "fg": "#EEEAF4",
     "font": "serif",
-    "split": true
-   }
-  },
-  {
-   "cover": null,
-   "facts": [],
-   "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 3,
-     "source": "LINE TODAY",
-     "title": "討論牆 | 影音／周杰倫開唱〈女兒殿下〉被監督 「我美嗎女士」認真表情太萌",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1rWC1NcjV5dUhKWnItWUVVa3BWOTBhbS1FQ0xmYjd5aTRGQzY5UzMxbm1jYUszcjJjUkZMdEgxM3lvUEJ6eHRxUDJNMUVrUlJFSU0xLWUyX2praWVxekQwckw5R1Q?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "周杰倫",
-   "theme": {
-    "accent": "#2F5F8F",
-    "alt_accent": "#8DB6DE",
-    "alt_bg": "#14202E",
-    "alt_fg": "#EEF1F4",
-    "bg": "#F6F2EA",
-    "fg": "#1D2430",
-    "font": "sans",
     "split": true
    }
   },
@@ -1027,6 +1000,31 @@
     "alt_fg": "#F4EEE4",
     "bg": "#F7EFE9",
     "fg": "#1E1A18",
+    "font": "sans",
+    "split": true
+   }
+  },
+  {
+   "cover": null,
+   "facts": [],
+   "last": {
+    "date": "2026-10-27",
+    "headline": "周杰伦转发点赞“中国歌手”身份介绍 国台办回应",
+    "url": "https://k.sina.com.cn/article_7879923551_m1d5ae175f03301tei0.html?cre=tianyi&mod=pcent&loc=8&r=0&rfunc=14&tj=cxvertical_pc_ent&tr=12&from=ent"
+   },
+   "name": "周杰伦",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "周杰倫",
+   "theme": {
+    "accent": "#2F5F8F",
+    "alt_accent": "#8DB6DE",
+    "alt_bg": "#14202E",
+    "alt_fg": "#EEF1F4",
+    "bg": "#F6F2EA",
+    "fg": "#1D2430",
     "font": "sans",
     "split": true
    }

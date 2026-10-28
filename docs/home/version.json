@@ -1,10 +1,10 @@
 {
- "admin": "e52072b56829",
- "admin-ai": "dcdba26cd31e",
+ "admin": "7d0a0e336e3a",
+ "admin-ai": "b0ce989a07fb",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6e2a3c0e"
+   "f78a04da"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "b9f295e9"
   ]
  },
- "admin-emblem": "a7dfb401db8a",
+ "admin-emblem": "0b2c783c6674",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3dc998f4"
+   "c2d104dc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "a79ffee3b469",
+ "admin-now": "32befa705c62",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d4c95b1c"
+   "0ea4d578"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "9047bd88"
   ]
  },
- "admin-system": "f1f324f4afc9",
+ "admin-system": "e583b92d5ed8",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1e3a4926"
+   "6b128180"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "c5de45f7"
   ]
  },
- "index": "bec5b20abe67",
+ "index": "88ef1f2e9bdb",
  "index_marks": {
   "front": [
    "トップ",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "b576cade"
+   "5f12ae21"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "b31d88e8"
   ]
  },
- "updated": "10.28 09:07",
+ "updated": "10.28 09:13",
  "wishlist": "542ae22b10d8"
 }
