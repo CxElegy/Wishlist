@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "278ae8baf3a5",
+ "edit_sig": "d8c063fbe20b",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -252,22 +252,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 5,
-     "source": "Mountainwatch",
-     "title": "Top 10 Onsens in Niseko – Mountainwatch Guide To Good Onsens",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOSEk4Z3NWTGdHY09YZnllcUlaTlV5d0UyMi1qMkY3YjgwS3UweDJzYU9rVHU5ZjlfbnV5dWZJU25DX3pxOEg3OHNMdEh1Yy1jVjl6SllHNGl6ZWdHbkUzN3dHTkFtbEFxaXd5N1FHYmxhODBKUEVFTjd1cXVWSHBNUXNaczExa1RHZlFvcUIySGVGb1RQLVE5c194YVJEbDQ?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 6,
-     "source": "ニコニコニュース",
-     "title": "世界最高峰のフリーライドスキー・スノーボードの国際大会Freeride World",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBqaHBINzB0MjduVFpiVVZFV1ZUUWVDWUFzRHhWb0JQbE5jNG9NeHVReUhzU1o2NktsM0xqZkg1bmtFeVdKNUIwMjBKeWtDSWdqNzVDOFRRdUdMb0ZEMEJMUVlseXhZTzJKcnptR1F1dW5SeGl4UWloRUF6NA?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -295,8 +279,8 @@
      "date": "2026-10-22",
      "headline": "Rome Service Dog Snowboard Review: Upgraded and Ready to Jib",
      "highlight": "",
-     "image": "https://www.boardoftheworld.com/wp-content/uploads/2024/03/Rome-Service-Dog-2026.jpg",
-     "image_via": "og:image",
+     "image": "https://www.boardoftheworld.com/wp-content/uploads/2026/05/Rome-Service-Dog-Snowboard-2027.jpg",
+     "image_via": "正文图（4 枚から）",
      "url": "https://www.boardoftheworld.com/rome-service-dog-snowboard-review/",
      "weight": "normal"
     },
@@ -308,6 +292,17 @@
      "image": "https://www.boardoftheworld.com/wp-content/uploads/2025/03/Capita-Super-DOA-2027-Review.jpg",
      "image_via": "og:image",
      "url": "https://www.boardoftheworld.com/capita-super-doa-review-and-comparison/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "世界最高峰のフリーライドスキー・スノーボードの国際大会Freeride World",
+     "highlight": "",
+     "image": null,
+     "source": "ニコニコニュース",
+     "source_icon": "https://www.google.com/s2/favicons?domain=nicovideo.jp&sz=128",
+     "url": "https://news.nicovideo.jp/watch/nw19926817?news_ref=watch_20_nw19790425",
      "weight": "normal"
     }
    ],
@@ -589,15 +584,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 5,
-     "source": "Life 生活網",
-     "title": "美國FDA 警告：兩批 Darwin's 貓糧驗出沙門氏菌 籲飼主停餵",
-     "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxPWHZUcmFNWGc5RWYzc1Q3U1hSajVLMk1yZGtqZzhhQlNHMmd5cDN5WXNYTm5ZX0NuVXVIT09fVjdXTWJPT0dJVGluZlJZb2ZJcVJFcUYyeTk3WmZnclktVjlaNHUtYmhIZjYyVFhmc05mTW9DbnZadkpjT2JxSUJPN1lPY2FjVlM1THg1aEo0NTU0TEczQWMzem81SVByaEZiV2theVM4RVBoUnByc09yRmVDV3JkS1RjRzJSSUFvQnVCSUJuQ3JBTmJLYTBKMHNWd3FmY3UtTDVGeFVVbFNPc3hWS3JJa3dFN2FVVzI0S0FoQURiRWlFNF93SXhLckRCRGtEQzBRX1dNSUpycU9J?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -861,17 +847,19 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-28",
-     "n": 2,
-     "source": "三立新聞",
-     "title": "「不想上班～」慵懶風當道蛋黃哥主題餐廳將進駐台北東區| 生活",
-     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE9qRVpMUnlDSVNTX1BQbWVzZXQ4ajQxaXBydk03TUdBM0sxM2F2RmhrU3VTWW80WkFBSGVwZ3NFbXQ3T0dPdzlN?oc=5"
+     "headline": "「不想上班～」慵懶風當道蛋黃哥主題餐廳將進駐台北東區",
+     "highlight": "蛋黃哥主題餐廳",
+     "image": "https://attach.setn.com/newsimages/2016/06/04/549320-PH.jpg",
+     "image_via": "og:image",
+     "url": "https://www.setn.com/news/152854",
+     "weight": "normal"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Gudetama",
    "theme": {
     "accent": "#885D0C",
@@ -985,8 +973,8 @@
      "date": "2026-10-27",
      "headline": "The Mandalorian and Grogu nominated at the 2026 Concept Art Association Awards",
      "highlight": "",
-     "image": "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000",
+     "image_via": "Bing 缩略图",
      "url": "https://www.fanthatracks.com/news/film-music-tv/the-mandalorian-and-grogu-nominated-at-the-2026-concept-art-association-awards/",
      "weight": "normal"
     }
@@ -1007,15 +995,6 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 2,
-     "source": "Howl.Link",
-     "title": "【あつ森雑談】せや！更地にしよう！島クリ配信がまた始まります。【ACNH】【あつまれどうぶつの森】",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE96aWdXTHFrNUNaWWg2VTZPc1VsQld1QmUyMVZ0ZHBQRmtqWk9JYTRaNlVjNlZoSERfSU9v?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1047,16 +1026,6 @@
    "name": "Vaundy",
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-28",
-     "headline": "藤井風、Vaundy、舒華、告五人、MINNIE⋯本周演唱會快報！時間地點、入場須知速看｜本周想見你10/31~11/2",
-     "highlight": "",
-     "image": "https://s.yimg.com/lo/mysterio/api/90ee9f7d2475ccff7dbb8b1dcddd1b3d4c4634fd4bb4d066001138575db20505/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2Fvaundy-minnie-yahoo-10-31-11-2_9180.png",
-     "image_via": "og:image",
-     "url": "https://tw.news.yahoo.com/%E8%97%A4%E4%BA%95%E9%A2%A8%E3%80%81vaundy%E3%80%81%E8%88%92%E8%8F%AF%E3%80%81%E5%91%8A%E4%BA%94%E4%BA%BA%E3%80%81minnie%E2%8B%AF%E6%9C%AC%E5%91%A8%E6%BC%94%E5%94%B1%E6%9C%83%E5%BF%AB%E5%A0%B1%EF%BC%81%E6%99%82%E9%96%93%E5%9C%B0%E9%BB%9E%E3%80%81%E5%85%A5%E5%A0%B4%E9%A0%88%E7%9F%A5%E9%80%9F%E7%9C%8B%EF%BD%9C%E6%9C%AC%E5%91%A8%E6%83%B3%E8%A6%8B%E4%BD%A01031112-050643722.html",
-     "weight": "hero"
-    },
     {
      "blurb": "Vaundy書き下ろしの「かげろう」とABC高校野球のコラボPVが完成した。",
      "date": "2026-10-27",
@@ -1216,15 +1185,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 4,
-     "source": "iXBT.games",
-     "title": "Phantom Blade Zero takes over Steam ahead of release, overtaking Counter-Strike 2 and Dota 2",
-     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPZTNnLTB6dno0dXdRUGJLZEpzTUNILW9nRWJhSnZxQVF4N3dpcFo4ajV6V1F5T2dkR0YxM3kzYWU5ekNpU0xtU1Y2OUk1T1BDVGNHRVNPdjUxRmtpWFFQSVFoR0lpYTFzWkh5UVUwSVRRbUVYVHBDaXpCb3R4cExIdVVSN01FOXoyQUNUM1hueE5OVW1sZXJ1SmV3Y3pWdkhLTGg5c2w1Z3ozVWNDcHFrMlotbWFlSjY5eGlaVkE4VdIBxAFBVV95cUxQOUF0SkNSZy11WWdoQTNhTktFMWZIUlY3eEdaa2R0QmRrYmsxYjdYdThIV3Y4MmI0M3R0a3kzUmRjS253M0FZaV9zeXJqNkRyWmJFZ3lBUkFYdkl4Rm5LRDRhQUdBb1NHU2xVZ3c2cUNOZlJVTFJlSV9uSVJwb0dmUHNPc2RGUThhMnlKbjZvSWlVY0Jva3BiYXhVZlNmOUQ0LWpJakExSkloa0xCWnlLME9xM0d6UDd3aGhfT1J0am9VQ3Jh?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {

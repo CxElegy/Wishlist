@@ -1,32 +1,32 @@
 {
- "admin": "162835b95ea6",
- "admin-ai": "f5f360c31ea5",
+ "admin": "d2bd376bd085",
+ "admin-ai": "ee5b8102ccf0",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "191ff015"
+   "e4148ef8"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "0100693d"
+   "46e61515"
   ]
  },
- "admin-boards": "fe035865e9e5",
+ "admin-boards": "b12cff0e8d01",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "ab08f374"
+   "f2dd5f7d"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "34d97f2f6a2c",
+ "admin-emblem": "637fc38c35fc",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "eeff4151"
+   "c5afd8bd"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "782326898ebf",
+ "admin-now": "8624ddc416f9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "d6744a2a"
+   "288d28ba"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "090a722e"
+   "275a92c5"
   ]
  },
- "admin-system": "05d6561288a4",
+ "admin-system": "79b6de4ba153",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "33d90784"
+   "c55758b3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0bb028f3"
+   "11a64a28"
   ]
  },
  "admin_marks": {},
- "heat": "da38f427f5b9",
+ "heat": "169235cb52fe",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "9d48a83b"
+   "f69843ce"
   ],
   "ranking": [
    "ランキング",
-   "0fa1f1f3"
+   "c22999c2"
   ]
  },
- "index": "1d2b8bbaa8cf",
+ "index": "55f570dfd4ad",
  "index_marks": {
   "front": [
    "トップ",
-   "ddc4bb68"
+   "a486aeea"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "65abadbd"
+   "8d470938"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -137,11 +137,11 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "7a5e5ffd"
+   "4c0f0002"
   ],
   "w-79b3c280": [
    "滑雪",
-   "81d1316c"
+   "d0556372"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "695a2a81"
+   "8a0a6b7a"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "8808a9fd"
   ]
  },
- "updated": "10.28 18:54",
+ "updated": "10.28 19:08",
  "wishlist": "9505070f7168"
 }

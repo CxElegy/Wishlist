@@ -444,8 +444,15 @@
  "https://attach.setn.com/newsimages/2016/06/04/549320-PH.jpg": {
   "w": 650,
   "h": 366,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.531,
+  "local": "pics/68af2717b6cd4fd8.webp",
+  "out": [
+   1280,
+   721
+  ],
+  "why": "看不清"
  },
  "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg": {
   "w": 618,
@@ -695,6 +702,12 @@
  "https://collabo-cafe.com/wp-content/uploads/086711674d70f7e953b3416296c989a7-253.jpg": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://collabo-cafe.com/wp-content/uploads/gudetama-avail-2026-lineup.jpg": {
+  "w": 1824,
+  "h": 1026,
   "target": 720,
   "v": 3
  },
@@ -3175,6 +3188,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/96034/121/96034-121-678641ce595fd641e231c928524ae9ca-1800x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 840,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603": {
   "w": 640,
   "h": 449,
@@ -4168,6 +4187,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.415
+ },
  "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4205,15 +4231,15 @@
   "target": 720,
   "v": 3
  },
- "https://www.boardoftheworld.com/wp-content/uploads/2024/03/Rome-Service-Dog-2026.jpg": {
+ "https://www.boardoftheworld.com/wp-content/uploads/2025/03/Capita-Super-DOA-2027-Review.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
   "v": 3
  },
- "https://www.boardoftheworld.com/wp-content/uploads/2025/03/Capita-Super-DOA-2027-Review.jpg": {
-  "w": 1280,
-  "h": 720,
+ "https://www.boardoftheworld.com/wp-content/uploads/2026/05/Rome-Service-Dog-Snowboard-2027.jpg": {
+  "w": 700,
+  "h": 700,
   "target": 720,
   "v": 3
  },
@@ -4400,12 +4426,6 @@
   "w": 1000,
   "h": 544,
   "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
-  "w": 1000,
-  "h": 544,
-  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
