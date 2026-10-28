@@ -1,10 +1,10 @@
 {
- "admin": "66f26c8a5444",
- "admin-ai": "a4539fcada28",
+ "admin": "2037285120cd",
+ "admin-ai": "4d5887ee7926",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1434bbf1"
+   "cffb6e29"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "a89150fd2e9a",
+ "admin-emblem": "4f9e651f21f0",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b927d502"
+   "49a120fc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "a77fa8c162cf",
+ "admin-now": "989b2285efe8",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "83ebb977"
+   "57f6c957"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "e8eefb89"
+   "d62f4f59"
   ],
   "term-panel": [
    "ライブログ",
-   "c4801652"
+   "eb6a5ef7"
   ]
  },
- "admin-system": "7d77d66288bf",
+ "admin-system": "87f06108bf9f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9746ccc8"
+   "48e3d4d5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "12a0c0f0"
+   "223c7734"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "81944fa4"
   ]
  },
- "index": "7e55e8093633",
+ "index": "c3a2c705abe5",
  "index_marks": {
   "front": [
    "トップ",
-   "ad9502b1"
+   "12114094"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "36df6553"
+   "a84d9192"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "28174467"
+   "65aa7766"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "e2cc3b34"
+   "8b9daa3d"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "cc3f44fe"
+   "f9ad40f4"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "7ed36b18"
+   "e598c624"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "9cf28218"
   ]
  },
- "updated": "10.29 01:50",
+ "updated": "10.29 01:59",
  "wishlist": "240e54b47469"
 }

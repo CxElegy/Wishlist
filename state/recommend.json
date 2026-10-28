@@ -40,7 +40,6 @@
   "https://news.livedoor.com/topics/detail/32677643/": "https://image.news.livedoor.com/newsimage/stf/a/8/a84a9_1830_709a350d_14660206.jpg",
   "https://nijimen.kusuguru.co.jp/topics/645125": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/7c033deae70845d99df67c2390632314.jpg",
   "https://note.com/kimonoclub/n/n81583111eff7?hl=en": "https://www.bing.com/th?id=ONUT.xJ4TPQ2Ls59Z59VRELT6pw&pid=News&w=1200",
-  "https://note.com/regal_oriole6571/n/na532bef151af?hl=en": "https://www.bing.com/th?id=ONUT.8hv1hcS66m1NT29CO8jSbA&pid=News&w=700",
   "https://otonanswer.jp/post/403060/": "https://otonanswer.jp/wp-content/uploads/2027/10/20261022tfal01.jpg",
   "https://t.co/BRjd8SR6kJ": null,
   "https://t.co/poss7QrSIb": null,
@@ -50,6 +49,7 @@
   "https://tw.news.yahoo.com/%E9%81%AD%E7%88%86%E9%9B%BB%E6%A2%AF%E6%91%B8%E5%A5%B3%E5%8A%A9%E7%90%86%E5%B1%81%E8%82%A1-%E5%91%A8%E6%9D%B0%E5%80%AB%E9%96%8B%E8%A8%98%E8%80%85%E6%9C%83%E6%BE%84%E6%B8%85-%E9%A9%9A%E5%90%90-1%E5%8F%A5%E8%A9%B1-%E5%85%A8%E7%B6%B2%E7%AC%91%E7%BF%BB-091700650.html": "https://s.yimg.com/lo/mysterio/api/1f140c0126f23d52c1b9343aab259ad314e3f1dc0306645f6ffdc076e0e0f320/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fzh-tw%2Fsetn.com.tw%2Fa897244907a94e222928d25431cc857a.jpg",
   "https://ure.pia.co.jp/articles/-/3524153": "https://urepia.ismcdn.jp/mwimgs/9/f/-/img_9f0e16825892da92c7175ca1d118299a103028.jpg",
   "https://ure.pia.co.jp/articles/-/3530000": "https://urepia.ismcdn.jp/mwimgs/8/9/-/img_8908df67a2145b0646452913d11f8c07276921.jpg",
+  "https://www.asahi.com/and/pressrelease/17000438": "https://www.bing.com/th?id=ONUT.U4e88_DnYQb6ae0Iwr7XgQ&pid=News&w=1200",
   "https://www.bleachernation.com/picks/2026/10/27/fernandez-vs-mertens-prediction-at-the-toray-pan-pacific-open-tennis-wednesday-october-28/": "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300",
   "https://www.chiba-tv.com/plus/detail/amp/2026102164478": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1487722053736941283/origin_1.webp",
   "https://www.chinatimes.com/realtimenews/20261025002598-260421": "https://images.chinatimes.com/newsphoto/2026-10-25/656/20261025002600.jpg",
@@ -1135,27 +1135,6 @@
   },
   {
    "batch": 2,
-   "because": "チェーンソーマン",
-   "date": "2026-10-28",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.8hv1hcS66m1NT29CO8jSbA&pid=News&w=700",
-   "kind": "board",
-   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
-   "score": 8,
-   "source": "note",
-   "taste": [
-    [
-     "作品:チェーンソーマン",
-     5
-    ]
-   ],
-   "title": "Thoughts on the final episode of Chainsaw Man",
-   "url": "https://note.com/regal_oriole6571/n/na532bef151af?hl=en",
-   "words": [],
-   "work": "チェーンソーマン"
-  },
-  {
-   "batch": 2,
    "because": "あつ森",
    "date": "2026-10-28",
    "hits": [],
@@ -1218,7 +1197,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "Astrae Oratio",
    "date": "2026-10-27",
    "hits": [],
@@ -1291,6 +1270,27 @@
    "url": "https://www.msn.com/ko-kr/news/other/%EC%BD%98%EC%84%9C%ED%8A%B8-%EC%95%84%EC%89%AC%EC%9B%A0%EB%8D%98-%EC%95%84%EC%9D%BC%EB%A6%BF-%EC%B6%9C%EA%B7%BC%EA%B8%B8-%EC%B0%A8%ED%8A%B8%EB%8A%94-%EC%83%81%EC%8A%B9-%EC%9D%B4%EB%B2%88%EC%97%94-%ED%8C%AC%EC%8B%AC-%EC%B2%B4%ED%8F%AC%ED%95%A0%EA%B9%8C-ten%EC%8A%A4%ED%83%80%ED%95%84%EB%93%9C/ar-AA2gcERv",
    "words": [],
    "work": "ILLIT"
+  },
+  {
+   "batch": 3,
+   "because": "チェーンソーマン",
+   "date": "2026-10-27",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.U4e88_DnYQb6ae0Iwr7XgQ&pid=News&w=1200",
+   "kind": "board",
+   "liked": "劇場版「チェンソーマン レゼ篇」より「レゼ」プライズフィギュアが10月29日順次展開！デンジと夜の学校デートを楽しむ姿で立体化",
+   "score": 8,
+   "source": "朝日新聞デジタル",
+   "taste": [
+    [
+     "作品:チェーンソーマン",
+     5
+    ]
+   ],
+   "title": "劇場版『チェンソーマン レゼ篇』とのコラボレーションアイテムを11月3日(火・祝)より発売",
+   "url": "https://www.asahi.com/and/pressrelease/17000438",
+   "words": [],
+   "work": "チェーンソーマン"
   },
   {
    "batch": 3,
@@ -2180,7 +2180,7 @@
    8
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
@@ -2188,7 +2188,7 @@
    7
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [

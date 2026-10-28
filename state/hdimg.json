@@ -125,6 +125,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx2.sinaimg.cn/middle/008eZAxIly1iii6jhgqbpj317r0och1p.jpg": {
+  "w": 1575,
+  "h": 876,
+  "target": 720,
+  "v": 3,
+  "local": "pics/a8070006b2f73205.webp",
+  "out": [
+   1280,
+   712
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx2.sinaimg.cn/middle/008kvqgEgy1ii8qmuwbrfj31hc0u01kx.jpg": {
   "w": 1920,
   "h": 1080,
@@ -286,6 +299,12 @@
   ],
   "why": "看不清"
  },
+ "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
+  "w": 506,
+  "h": 253,
+  "target": 720,
+  "v": 3
+ },
  "https://asset.watch.impress.co.jp/img/grw/docs/2151/872/05_l.jpg": {
   "w": 960,
   "h": 960,
@@ -366,6 +385,12 @@
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/328820926/rectangle_large_type_2_b90aa288a09593956f38a7150bdaca33.jpeg?fit=bounds&quality=85&width=1280": {
+  "w": 1280,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.st-note.com/production/uploads/images/329544200/rectangle_large_type_2_9d5be981b6f6cb0e26a1c641fefd0035.png?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
   "target": 720,
@@ -488,6 +513,19 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg": {
+  "w": 300,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.661,
+  "local": "pics/436da2d62021597d.webp",
+  "out": [
+   900,
+   900
+  ],
+  "why": "看不清"
  },
  "https://cdn.livedoor.jp/kstyle/b4d9d285e668cb548e563e3d7218ddeb_WI.jpg": {
   "w": 1024,
@@ -831,6 +869,12 @@
    904
   ],
   "why": "看不清"
+ },
+ "https://gamefragger.com/images/articles/banners/bleach-mirrors-high-introduces-10-new-characters-designed-by-tite-kubo-ahead-of-its-launch-ab30039.jpg": {
+  "w": 1500,
+  "h": 844,
+  "target": 1280,
+  "v": 3
  },
  "https://gamegpu.com/images/1_2026/NEWS/Q4/okt/27/mhzpi2mhzpi2mhzp_gamegpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/okt/27/mhzpi2mhzpi2mhzp_gamegpu.webp?width=1920&height=1080": {
   "w": 1920,
@@ -1187,6 +1231,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.khan.co.kr/article/2026/10/23/news-p.v1.20261023.0671972ae03442a7bf73b2f031c49090_P1.jpg": {
+  "w": 1200,
+  "h": 665,
+  "target": 720,
+  "v": 3
+ },
  "https://images.khan.co.kr/article/2026/10/25/news-p.v1.20261025.854c4fa97b1f460fa0b5f8642b81b141_P1.jpg": {
   "w": 1200,
   "h": 2685,
@@ -1283,6 +1333,12 @@
   "w": 960,
   "h": 540,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cflpr.img": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2fK6OE.img": {
@@ -1763,6 +1819,13 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.toy-people.com/member/179319829696_1200.jpg": {
+  "w": 668,
+  "h": 668,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.413
+ },
  "https://img1.bjd.com.cn/2026/10/21/3b1cb1847634fda933afccea83977936cffe5bd5.jpeg": {
   "w": 382,
   "h": 287,
@@ -1779,6 +1842,12 @@
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://insider-gaming.com/wp-content/uploads/2026/09/gta-6-rockstars-biggest-map.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 720,
   "v": 3
  },
@@ -1857,6 +1926,12 @@
   "v": 3
  },
  "https://media.esports.gg/uploads/2026/10/malr1ne-plays-for-team-liquid-in-pari-universe-dota-2.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://media.godisageek.com/uploads/rockstar-uk-staff-head-to-union-recognition-ballot-as-gta-vi-5f78c1a61e0f44d9.webp": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3095,6 +3170,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/12/ichigo-kurosaki-as-seen-in-bleach-anime.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/07/guardians-of-the-galaxy-3.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3168,6 +3249,12 @@
    540
   ],
   "why": "看不清"
+ },
+ "https://substackcdn.com/image/fetch/$s_!FDrg!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41f733df-517b-42df-bfaa-99d88d084bf4_1456x819.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
  },
  "https://substackcdn.com/image/fetch/$s_!t4zE!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6841f6a4-2ba1-47ff-b7b8-65f83cac410a_1920x1280.webp": {
   "w": 1200,
@@ -3420,12 +3507,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.8hv1hcS66m1NT29CO8jSbA&pid=News&w=700": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.C7DX8jaOh25SjObQh2RAxQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -3483,6 +3564,12 @@
    984
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.U4e88_DnYQb6ae0Iwr7XgQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.UKV_ApYouzJkc9fq-plfSQ&pid=News&w=600": {
   "w": 600,
@@ -3603,6 +3690,19 @@
   "h": 700,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.sc2tDAScB5yYeFIA0enCew&pid=News&w=500": {
+  "w": 500,
+  "h": 281,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.464,
+  "local": "pics/a9f09a8bc486a4b7.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.tjRLRKvzviUi6JPgAPNGOA&pid=News&w=1200": {
   "w": 700,
@@ -3760,10 +3860,22 @@
   "target": 720,
   "v": 3
  },
+ "https://www.comicbasics.com/wp-content/uploads/2026/08/Avengers-doomsday.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.comicbasics.com/wp-content/uploads/2026/10/avengers-doomsday.webp": {
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/10/Ghost-Rider-Connor-Storrie.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://www.dailysunny.com/wp-content/uploads/2026/10/Peanuts-x-Best-Friends-Merch-Overview.jpg": {
@@ -3962,6 +4074,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,
   "h": 390,
@@ -3997,6 +4115,12 @@
   "w": 2000,
   "h": 1500,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6ViceCityPlane.jpg": {
+  "w": 2000,
+  "h": 1500,
+  "target": 720,
   "v": 3
  },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6YouTube.jpg": {
