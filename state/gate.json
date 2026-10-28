@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T04:39:56+00:00",
+ "checked": "2026-10-28T05:01:21+00:00",
  "fired": {
-  "at": "2026-10-28T04:39:56+00:00",
+  "at": "2026-10-28T05:01:21+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -49,55 +49,52 @@
    "prog": 247,
    "prog_day": "2026-10-28",
    "ripe": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "あつ森",
+    "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "猫用品"
+    "日本顶级网球赛事",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
-   "sig": "b6f4d7944b3a",
+   "sig": "96089484a91f",
    "token_cap": 1000000,
    "tokens_today": 346638,
-   "why": "整理待ちの記事 10 件（7 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 73 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
+    "あつ森",
+    "周杰伦",
+    "Vaundy"
+   ],
+   "need": true,
+   "sig": "e2e6d18b99b1",
+   "waiting": [
     "チェーンソーマン",
     "dota2",
-    "哈利波特剧集",
+    "GTA 6",
     "FROM",
-    "漫威电影",
-    "GTA 6"
-   ],
-   "need": true,
-   "sig": "7d8edb371c92",
-   "waiting": [
-    "周杰伦",
-    "Vaundy",
-    "あつ森",
+    "ILLIT",
     "ぐでたま",
-    "チェーンソーマン",
-    "FROM",
+    "漫威电影",
+    "哈利波特剧集",
+    "The Mandalorian",
     "Astrae Oratio",
     "A2O LITE",
-    "Astrae Oratio",
-    "ILLIT",
-    "绝区零",
-    "ぐでたま"
+    "绝区零"
    ],
-   "need": true,
-   "sig": "a26208fce94c",
-   "waiting": [
-    "周杰伦",
-    "Vaundy",
-    "あつ森",
-    "The Mandalorian"
-   ],
-   "why": "足りない 5 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 13:45 から）"
+   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 14:47 から）"
   },
   "photos": {
    "claude": true,
