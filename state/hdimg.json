@@ -48,6 +48,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "http://www.mountainwatch.com/wp-content/uploads/2019/12/Green-Leaf-Onsen-Large.jpg": {
   "w": 1170,
   "h": 596,
@@ -158,19 +164,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/f2a7bdeegy1iib3neegahj20z90jo79y.jpg": {
-  "w": 1269,
-  "h": 708,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/535ccb7cb030968c.webp",
-  "out": [
-   1269,
-   708
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -183,6 +176,12 @@
   ],
   "why": "防盗链",
   "ref": true
+ },
+ "http://wx3.sinaimg.cn/middle/008rJyJHly1iiasni9ainj30xc0tc0w9.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "http://wx3.sinaimg.cn/middle/008txX0Ply1iidpkzkyz7j31o02yo7wi.jpg": {
   "w": 2000,
@@ -492,6 +491,12 @@
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/bleach-mirrors-high-new-characters-0.webp": {
   "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
+ "https://cdn.gamemeca.com/gmdata/0001/782/498/gm977274_thumb___30.webp": {
+  "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-28"
@@ -909,6 +914,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://file2.nocutnews.co.kr/newsroom/image/2026/10/26/202610261525493793_0.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://foro3d.com/2026/octubre/imagenes/la-serie-de-harry-potter-de-hbo-arranca-con-1474-millones-en-su-primer.webp": {
   "w": 1920,
   "h": 1080,
@@ -945,6 +956,12 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://gizmodo.com/app/uploads/2026/10/Connor-Storrie-Heated-Rivalry-1200x675.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
   "w": 1200,
@@ -1135,12 +1152,6 @@
  "https://i0.wp.com/tbreak.com/wp-content/uploads/2026/10/sandra-huller-avengers-doomsday-cameo.png?fit=1200%2C675&ssl=1": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://i0.wp.com/thedisinsider.com/wp-content/uploads/2026/10/1000007227.jpg?fit=4000%2C2000&ssl=1": {
-  "w": 4000,
-  "h": 2000,
   "target": 720,
   "v": 3
  },
@@ -1356,12 +1367,6 @@
  },
  "https://images.khan.co.kr/article/2026/10/20/news-p.v1.20261020.4c924d72449246b59d479a2890b8217c_P1.jpg": {
   "w": 1200,
-  "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://images.khan.co.kr/article/2026/10/23/news-p.v1.20261023.fa0a5e04f36944d5adc333b89514a2a4_P1.jpg": {
-  "w": 800,
   "h": 800,
   "target": 720,
   "v": 3
@@ -1975,6 +1980,12 @@
    960
   ],
   "why": "看不清"
+ },
+ "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-162144.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/tokyosports/m_tokyosports-407827.jpg": {
   "w": 640,
@@ -3043,6 +3054,12 @@
   "target": 720,
   "v": 3
  },
+ "https://picture01.52hrttpic.com/image/infoImage/202608/31/gf7fcdd7fdced4ab6b6ca620bfd5d8a4d.jpeg?1004x683": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
+ },
  "https://pimg.mk.co.kr/news/cms/202610/21/news-p.v1.20261021.93bb71d828084bc1916717c8caacb902_R.jpeg": {
   "w": 1000,
   "h": 700,
@@ -3072,12 +3089,6 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
-  "v": 3
- },
- "https://powerupgaming.co.uk/wp-content/uploads/image1-35-1024x512.png": {
-  "w": 1024,
-  "h": 512,
-  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/145961/21/145961-21-a6310e4915f324825db0661a4e89caff-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -4152,10 +4163,10 @@
   "v": 3
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2025/03/Capita-Super-DOA-2027-Review.jpg": {
+  "w": 1280,
+  "h": 720,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
+  "v": 3
  },
  "https://www.breaknews.com/imgdata/breaknews_com/202610/2026102319226971.jpg": {
   "w": 690,
@@ -4181,6 +4192,12 @@
    671
   ],
   "why": "看不清"
+ },
+ "https://www.chosun.com/resizer/v2/GJRTKNRZMM2DMOJQMFSDGYLGMY.jpg?auth=8a5eb0aa84747556c5a4e55d75865c57b2924996f369fc0ebb3782e718271fd4&width=650&height=341&smart=true": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-28"
  },
  "https://www.chosun.com/resizer/v2/GVSDIZBQMRTDANJSMU2WKMRTGE.jpg?auth=441556fe1f49094d407da2bf8f73f4e7ac132caee5ef7414abd4fc6eed23a4e5&width=650&height=341&smart=true": {
   "w": 650,

@@ -50,7 +50,11 @@
     82,
     83,
     81,
-    89
+    89,
+    98,
+    95,
+    97,
+    101
    ]
   },
   {
@@ -241,7 +245,9 @@
    "refs": [
     4,
     1,
-    14
+    14,
+    25,
+    33
    ],
    "image": "https://afpbb.ismcdn.jp/mwimgs/7/f/1000x/img_7f9796789ecc5949a099ce4d5b98fb5582038.jpg"
   },
@@ -278,29 +284,34 @@
    ]
   },
   {
-   "headline": "A2O LITE, ‘NEON’ 무대 또 레전드 찍었다... 아이찡 표정 연기→‘칼각 텃팅’ 교체",
-   "highlight": "",
+   "headline": "WayV、EVAN、A2O LITEが出演決定！K-POP授賞式「D AWARDS」、第4弾ラインナップ発表",
+   "highlight": "D AWARDS",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    12
+    28,
+    29,
+    24,
+    26,
+    30,
+    32
    ]
   }
  ],
  "_covered": {
-  "GTA 6": 92,
+  "GTA 6": 103,
   "漫威电影": 66,
   "哈利波特剧集": 17,
   "BLEACH Mirrors High": 10,
-  "A2O LITE": 21,
+  "A2O LITE": 34,
   "三星手机": 19,
-  "MMORPG 新作": 15,
+  "MMORPG 新作": 22,
   "滑雪": 4,
   "绝区零": 11,
   "FROM": 4,
-  "周杰伦": 4,
+  "周杰伦": 10,
   "The Mandalorian": 5,
-  "ILLIT": 11,
+  "ILLIT": 18,
   "Vaundy": 2,
   "日本顶级网球赛事": 17,
   "チェーンソーマン": 7,
@@ -381,7 +392,8 @@
     6,
     7,
     8,
-    14
+    14,
+    18
    ],
    "image": "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200"
   },
@@ -392,17 +404,24 @@
    "weight": "normal",
    "refs": [
     3,
-    9
+    9,
+    16
    ]
   },
   {
-   "headline": "FFXIV’s Next Chapter Tests How Long-Running MMOs Stay Relevant",
-   "highlight": "",
+   "headline": "MMORPG新作「ファンタジーフォーユー」11月10日正式リリース",
+   "highlight": "11月10日正式リリース",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
-   ]
+    17,
+    21,
+    22
+   ],
+   "event": {
+    "date": "2026-11-10",
+    "label": "正式リリース"
+   }
   }
  ],
  "滑雪": [
@@ -498,7 +517,35 @@
    ]
   }
  ],
- "周杰伦": [],
+ "周杰伦": [
+  {
+   "headline": "周杰伦这句“我是中国人，有什么可讨论的”",
+   "highlight": "我是中国人",
+   "blurb": "周杰伦在上海劳力士大师赛现场被介绍为“中国著名歌手”，点头认可并转发视频，引发评论区争论。演唱会・新歌方面暂无新消息。",
+   "weight": "lead",
+   "refs": [
+    10
+   ]
+  },
+  {
+   "headline": "黄循财上“中文课”：去听周杰伦",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "周杰伦昆凌合体上综艺，14岁年龄差太明显，站一起像父女？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  }
+ ],
  "The Mandalorian": [
   {
    "headline": "The Mandalorian is back this November with a new Star Wars adventure",
@@ -538,7 +585,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    14
    ]
   },
   {
@@ -569,6 +617,25 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  },
+  {
+   "headline": "ILLIT's 'I Will Arrest You' Dominates Global Charts",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13,
+    16
+   ]
+  },
+  {
+   "headline": "아일릿 '체포하겠어' 경찰 의상 논란…\"뜨거운 관심 놀라워\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
    ]
   }
  ],
