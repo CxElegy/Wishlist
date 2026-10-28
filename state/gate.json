@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-28T06:58:06+00:00",
+ "checked": "2026-10-28T07:03:17+00:00",
  "fired": {
   "at": "2026-10-28T06:58:06+00:00",
   "results": {
@@ -19,28 +19,20 @@
     "resp": "cse_01W4x6f5QMajo7MLbSpwKrCp",
     "sig": "eb1a4b280123"
    },
-   "items": [
-    "Astrae Oratio",
-    "FROM",
-    "ぐでたま"
-   ],
-   "last_batch": "2026-10-28T06:41:16+00:00",
+   "items": [],
+   "last_batch": "2026-10-28T06:51:02+00:00",
    "last_error": {
     "at": "2026-10-28T04:45:17+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 317,
+   "need": false,
+   "prog": 320,
    "prog_day": "2026-10-28",
-   "ripe": [
-    "Astrae Oratio",
-    "FROM",
-    "ぐでたま"
-   ],
-   "sig": "8986d131504c",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 416961,
-   "why": "整理待ちの記事 3 件（3 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 424232,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
