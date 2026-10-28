@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-28T05:01:21+00:00",
+ "checked": "2026-10-28T05:16:39+00:00",
  "fired": {
-  "at": "2026-10-28T05:01:21+00:00",
+  "at": "2026-10-28T05:16:39+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -20,66 +20,43 @@
     "sig": "b6f4d7944b3a"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
-    "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-10-28T01:49:13+00:00",
+   "last_batch": "2026-10-28T05:04:00+00:00",
    "last_error": {
-    "at": "2026-10-27T23:48:16+00:00",
+    "at": "2026-10-28T04:45:17+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 247,
+   "prog": 307,
    "prog_day": "2026-10-28",
    "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
-    "dota2",
     "あつ森",
-    "チェーンソーマン",
-    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
     "日本顶级网球赛事",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "sig": "96089484a91f",
+   "sig": "22953306a098",
    "token_cap": 1000000,
-   "tokens_today": 346638,
-   "why": "整理待ちの記事 73 件（19 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 364957,
+   "why": "整理待ちの記事 13 件（9 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "あつ森",
-    "周杰伦",
-    "Vaundy"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "e2e6d18b99b1",
+   "sig": "b6804aff6de5",
    "waiting": [
     "チェーンソーマン",
     "dota2",
@@ -89,12 +66,15 @@
     "ぐでたま",
     "漫威电影",
     "哈利波特剧集",
+    "あつ森",
+    "周杰伦",
+    "Vaundy",
     "The Mandalorian",
     "Astrae Oratio",
     "A2O LITE",
     "绝区零"
    ],
-   "why": "足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 14:47 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 14:47 から）"
   },
   "photos": {
    "claude": true,
