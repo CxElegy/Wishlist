@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T23:30:05+00:00",
+ "checked": "2026-10-28T23:44:08+00:00",
  "fired": {
-  "at": "2026-10-28T23:30:05+00:00",
+  "at": "2026-10-28T23:44:08+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-28T22:33:45+00:00",
+    "at": "2026-10-28T23:44:08+00:00",
     "attempts": 1,
     "day": "2026-10-29",
-    "prog": 154,
-    "resp": "cse_01W4x6f9VAf7N687mQWAtmAx",
-    "sig": "ec8b2416e9b5"
+    "prog": 185,
+    "resp": "cse_01W4x6f7dJkEv3LLyYLrk6PB",
+    "sig": "4309a922f159"
    },
    "items": [
     "A2O LITE",
@@ -60,7 +60,6 @@
    "need": true,
    "sig": "b6804aff6de5",
    "waiting": [
-    "哈利波特剧集",
     "GTA 6",
     "チェーンソーマン",
     "周杰伦",
@@ -70,13 +69,14 @@
     "Vaundy",
     "dota2",
     "FROM",
+    "哈利波特剧集",
     "Astrae Oratio",
     "ILLIT",
     "绝区零",
     "A2O LITE",
     "The Mandalorian"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:30 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 08:59 から）"
   },
   "photos": {
    "claude": true,
