@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "ded826070b41",
+ "edit_sig": "e55e350081d0",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -154,17 +154,19 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "Tester-approved snowboard bindings that are responsive, reliable, and fun.",
      "date": "2026-10-28",
-     "n": 1,
-     "source": "Outside Online on MSN",
-     "title": "Lock in: These are the best snowboard bindings of 2027",
-     "url": "https://www.msn.com/en-us/health/general/lock-in-these-are-the-best-snowboard-bindings-of-2027/ar-AA2ggnuR"
+     "headline": "Lock in: These are the best snowboard bindings of 2027",
+     "highlight": "best snowboard bindings of 2027",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gfrYn.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/health/general/lock-in-these-are-the-best-snowboard-bindings-of-2027/ar-AA2ggnuR",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -542,17 +544,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "2026年演唱會售票日期整理，包含藤井風、Vaundy、米津玄師等，持續更新。",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "Yahoo新聞",
-     "title": "2026演唱會資訊售票日期一次看！藤井風、Vaundy、孫盛希、米津玄師…（持續更新）",
-     "url": "https://news.google.com/rss/articles/CBMiqwNBVV95cUxPbGItQ0NkY3QzV0FuUGpTZVpISW1wbUN3VGZfNGVDTkJiSTBQYlZraExBNFBkQ214bnhYZklZWEtLb3A1a0tSR3FzRXhmMHpYRUhUWURpSGJwLU84eTI2VklwMFluZVdvNF94Rk5LbktDMm1RbC0tLXRjeE05NlVrY1FPQlhHUXlQZXE3MkFxQ3dOOWRObHdBQW9VWVlnTlZnZ0hMbnZ0RldmaV8ta05HM0lOaU9pbTIyNEpJdThDbGpZSDllVHdEUmJkcW9WTEowWGR0aUJvTi1TZzRlRnRic1FTdU53aTUwMDYtdGR5OWs0LXRodFQ2RDFHcUdGODgzZ1NrY0xXTERjMFEtdkpWVkNlWWwydG5ZdWlYN2JHWVd2aXYya19adTdmZXhmYUtJaE9LVV9POUtKT3g3YXpLck9qSG5ua3JUby1xUmRZM0cydmZTRmRpVVkxVHNCU0p3a183T2lrOWoxUDBrejRPcDNYazNlUkNPU19SMjM1c0lLV0VVLWJiTlkwVTJSZ0xmZkRWNm5fYzNWTW96TlJPc3FYYnpIbnFRSnhB?oc=5"
+     "headline": "2026演唱會資訊售票日期一次看！藤井風、Vaundy、孫盛希、米津玄師…（持續更新）",
+     "highlight": "售票日期",
+     "image": "https://s.yimg.com/lo/mysterio/api/f0ad7d42651cab0d9735499a50c58fddb47974f3984a93991f2ae0ac0ced48fd/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2F10-31-kklive-taiwan_3560.jpg",
+     "image_via": "og:image",
+     "url": "https://tw.news.yahoo.com/2025%E6%BC%94%E5%94%B1%E6%9C%83%E8%B3%87%E8%A8%8A%E5%94%AE%E7%A5%A8%E6%97%A5%E6%9C%9F%E4%B8%80%E6%AC%A1%E7%9C%8B%EF%BC%81aaa%E3%80%81zerobasone%E3%80%81nct-dream%E3%80%81%E6%B0%91%E6%AD%8C50%E3%80%81twice%EF%BC%88%E6%8C%81%E7%BA%8C%E6%9B%B4%E6%96%B0%EF%BC%89-015243121.html",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
@@ -569,17 +573,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Gunnar Optiks and Zenless Zone Zero collaborate again with three lens options.",
      "date": "2026-10-28",
-     "n": 1,
-     "source": "The News Tribune",
-     "title": "ZZZ, Gunnar partner once more with Orphie and Magus glasses",
-     "url": "https://www.thenewstribune.com/news/article317816639.html"
+     "headline": "ZZZ, Gunnar partner once more with Orphie and Magus glasses",
+     "highlight": "Orphie and Magus glasses",
+     "image": "https://www.bing.com/th?id=ONUT.eGSpHzdASzB76oQ6bAamTg&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
+     "url": "https://www.thenewstribune.com/news/article317816639.html",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",

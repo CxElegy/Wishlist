@@ -196,7 +196,10 @@
   "哈利波特剧集": 2,
   "日本顶级网球赛事": 2,
   "FROM": 1,
-  "ILLIT": 1
+  "ILLIT": 1,
+  "Vaundy": 1,
+  "滑雪": 1,
+  "绝区零": 1
  },
  "三星手机": [
   {
@@ -323,6 +326,39 @@
    "headline": "【画像】「朝7時からビジュアル最強」ILLIT・ウォンヒ、“お天気キャスター”に変身！ニュース番組出演が話題",
    "highlight": "お天気キャスター",
    "blurb": "ILLITのウォンヒがニュース番組でお天気キャスターに変身し、ビジュアルが話題に。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "2026演唱會資訊售票日期一次看！藤井風、Vaundy、孫盛希、米津玄師…（持續更新）",
+   "highlight": "售票日期",
+   "blurb": "2026年演唱會售票日期整理，包含藤井風、Vaundy、米津玄師等，持續更新。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "Lock in: These are the best snowboard bindings of 2027",
+   "highlight": "best snowboard bindings of 2027",
+   "blurb": "Tester-approved snowboard bindings that are responsive, reliable, and fun.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "ZZZ, Gunnar partner once more with Orphie and Magus glasses",
+   "highlight": "Orphie and Magus glasses",
+   "blurb": "Gunnar Optiks and Zenless Zone Zero collaborate again with three lens options.",
    "weight": "lead",
    "refs": [
     1
