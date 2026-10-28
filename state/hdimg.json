@@ -48,12 +48,6 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
@@ -245,19 +239,6 @@
   "out": [
    1125,
    878
-  ],
-  "why": "防盗链",
-  "ref": true
- },
- "http://wx4.sinaimg.cn/middle/90b10eb9ly1iih0mx4ixnj20rs0rsagh.jpg": {
-  "w": 1000,
-  "h": 1000,
-  "target": 720,
-  "v": 3,
-  "local": "pics/8d86067b7720aa34.webp",
-  "out": [
-   1000,
-   1000
   ],
   "why": "防盗链",
   "ref": true
@@ -883,12 +864,6 @@
   "target": 1280,
   "v": 3
  },
- "https://gizmodo.com/app/uploads/2026/10/Connor-Storrie-Heated-Rivalry-1200x675.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-28"
- },
  "https://gizmodo.com/app/uploads/2026/10/Samsung-A17-Mint-Mobile-1200x675.jpg": {
   "w": 1200,
   "h": 675,
@@ -1001,6 +976,12 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
+  "v": 3
+ },
+ "https://hk.on.cc/hk/bkn/cnt/entertainment/20261028/photo/bkn-20261028020131578-1028_00862_001_04b.jpg?20261027221532": {
+  "w": 780,
+  "h": 1040,
+  "target": 720,
   "v": 3
  },
  "https://hobby.dengeki.com/ss/hobby/2026/10/469b052e3131133723f1851142a51ec0_P437HPsVMEmFGao0mXu4SGOnUG8c2BKt_Gz6kdpKi-rLflqwVUS64gS-gBGp0I9WO.jpg": {
@@ -1371,6 +1352,12 @@
   "v": 3
  },
  "https://images2.minutemediacdn.com/image/upload/c_crop,x_403,y_0,w_1396,h_785/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m5k4pgv1pvtp668dha.jpg": {
+  "w": 1440,
+  "h": 810,
+  "target": 1280,
+  "v": 3
+ },
+ "https://images2.minutemediacdn.com/image/upload/c_crop,x_646,y_167,w_1612,h_906/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ImageExchange/mmsport/308/01m5x7jhnhmj7f89xy11.jpg": {
   "w": 1440,
   "h": 810,
   "target": 1280,
@@ -3373,12 +3360,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/06/hugh-jackman-at-the-sheep-detectives-premiere.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/08/robert-downey-as-doctor-doom-in-avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3425,6 +3406,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/the-mandalorian-prime-video.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/untitled2.jpg?w=1600&h=900&fit=crop": {
@@ -3698,6 +3685,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.-SRvpHMm6--o1gMJ1w-B0Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3710,6 +3703,18 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.5OVWqixs8K4brEpx8v07LA&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.5og7m04rjF_0HZ8y-OmZMw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
@@ -3737,12 +3742,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.EIPAhM1UOcOWkkEyd3Np9w&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.EfKjFhm1fPg2aVKYu88knA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3755,6 +3754,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.393
+ },
+ "https://www.bing.com/th?id=ONUT.GnCiYYVWxssjAX9L8t1lmA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Hca-hAi4jrja9NkijF-iIg&pid=News&w=920": {
   "w": 700,
@@ -3818,6 +3823,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.WgVSs3tq7zasxUa8db1jAQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 488,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Z_lB_6Izm27y4qYc1OJ7UA&pid=News&w=1200": {
   "w": 700,
@@ -3914,11 +3925,12 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.uvwWaSZZIHNLVN7zkrAr9Q&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
+  "h": 380,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.415
  },
  "https://www.bing.com/th?id=ONUT.vyiLOjCJVNhznANLndPcUw&pid=News&w=1200": {
   "w": 700,
@@ -3942,12 +3954,6 @@
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.yQTn8yVopd9NgLlJSmZFYA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4165,12 +4171,6 @@
   "w": 1000,
   "h": 544,
   "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
-  "w": 1000,
-  "h": 544,
-  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
