@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T08:24:33+00:00",
+ "checked": "2026-10-28T08:36:54+00:00",
  "fired": {
-  "at": "2026-10-28T08:24:33+00:00",
+  "at": "2026-10-28T08:36:54+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,67 +20,54 @@
     "sig": "852e34404a67"
    },
    "items": [
-    "BLEACH Mirrors High",
     "Vaundy",
     "dota2",
     "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
     "三星手机",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
     "星巴克马克杯",
     "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-10-28T08:00:15+00:00",
+   "last_batch": "2026-10-28T08:18:02+00:00",
    "last_error": {
     "at": "2026-10-28T07:55:13+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 364,
+   "prog": 391,
    "prog_day": "2026-10-28",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "漫威电影",
-    "绝区零"
-   ],
-   "sig": "d2f2ec23adc1",
+   "ripe": [],
+   "sig": "01678916570f",
    "token_cap": 1000000,
-   "tokens_today": 487355,
-   "why": "整理待ちの記事 38 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 505310,
+   "why": "整理待ちの記事 11 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "FROM"
-   ],
-   "need": true,
-   "sig": "5bb55d760c3f",
-   "waiting": [
-    "あつ森",
-    "dota2",
     "チェーンソーマン",
+    "dota2",
+    "あつ森",
     "GTA 6",
     "周杰伦",
-    "Vaundy",
+    "Vaundy"
+   ],
+   "need": true,
+   "sig": "4dec996a7dc9",
+   "waiting": [
     "漫威电影",
     "ぐでたま",
     "哈利波特剧集",
+    "FROM",
     "The Mandalorian",
     "Astrae Oratio",
     "绝区零",
     "A2O LITE",
     "ILLIT"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:32 から）"
+   "why": "足りない 7 版面（Actions で Python が埋める）・失敗 9 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 17:38 から）"
   },
   "photos": {
    "claude": true,
