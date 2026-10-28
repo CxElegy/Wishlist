@@ -15,7 +15,9 @@
     22,
     23,
     28,
-    32
+    32,
+    42,
+    44
    ],
    "image": "https://substackcdn.com/image/fetch/$s_!FDrg!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41f733df-517b-42df-bfaa-99d88d084bf4_1456x819.webp"
   },
@@ -27,7 +29,8 @@
    "refs": [
     5,
     24,
-    27
+    27,
+    38
    ]
   },
   {
@@ -91,7 +94,8 @@
    "weight": "normal",
    "refs": [
     5,
-    10
+    10,
+    26
    ]
   },
   {
@@ -237,12 +241,12 @@
   }
  ],
  "_covered": {
-  "GTA 6": 35,
-  "漫威电影": 20,
+  "GTA 6": 47,
+  "漫威电影": 33,
   "BLEACH Mirrors High": 13,
   "A2O LITE": 10,
   "チェーンソーマン": 22,
-  "三星手机": 7,
+  "三星手机": 10,
   "The Mandalorian": 4,
   "星巴克马克杯": 2,
   "あつ森": 1,
@@ -253,7 +257,7 @@
   "ILLIT": 3,
   "Vaundy": 2,
   "滑雪": 1,
-  "绝区零": 3,
+  "绝区零": 6,
   "ぐでたま": 16,
   "周杰伦": 3,
   "gelato pique": 1,
@@ -276,7 +280,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    10
    ]
   },
   {
@@ -294,7 +299,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    9
    ]
   },
   {
@@ -475,7 +481,8 @@
    "weight": "lead",
    "refs": [
     1
-   ]
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.eGSpHzdASzB76oQ6bAamTg&pid=News&w=1200"
   },
   {
    "headline": "《绝区零》「赛博圣手，出诊!」活动说明",
@@ -484,6 +491,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Zenless Zone Zero 3.4 new characters: Sunbringer, Kafka, and Robin announced",
+   "highlight": "3.4 new characters",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
