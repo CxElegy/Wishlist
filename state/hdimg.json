@@ -139,19 +139,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/006PiM45ly1ii9vmz5fr7j31z41404qr.jpg": {
-  "w": 2000,
-  "h": 1125,
-  "target": 720,
-  "v": 3,
-  "local": "pics/f7a84de9bf1f7c5b.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -2133,12 +2120,6 @@
   "target": 720,
   "v": 3
  },
- "https://media.ixbt.games/1600x900/smart/jpeg/ixbt-data/1731242/media-97b0d552367a1b2dcbdadae5cd42cb8580328a93d52474f555f95c06996b0bfc.png": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://media.nownews.com/nn_media/thumbnail/2026/10/WsmmswqeCx0-1200x675.webp": {
   "w": 1200,
   "h": 675,
@@ -2804,6 +2785,32 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00000010-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 800,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.358,
+  "local": "pics/3bbb7d08f4cfdfd1.webp",
+  "out": [
+   800,
+   800
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00000021-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 449,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.391,
+  "local": "pics/4283bf577bbf318a.webp",
+  "out": [
+   800,
+   449
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261028-00000348-oric-000-1-view.jpg?exp=10800": {
   "w": 960,
   "h": 640,
@@ -2917,6 +2924,13 @@
   "h": 1080,
   "target": 1280,
   "v": 3
+ },
+ "https://oss.5eplay.com/cloudx/p/admin5e/home/dbfplkkconkip2fe7ge0.jpg?x-oss-process=image/format,jpg,image/quality,q_10": {
+  "w": 800,
+  "h": 509,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.359
  },
  "https://otonanswer.jp/wp-content/uploads/2027/10/20261022tfal01.jpg": {
   "w": 1122,
@@ -3748,6 +3762,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/28/1793151284696_galaxy-s27-ultra-tu-bo-chip-snapdragon-co-loi-cho-fan-samsung-3006.png": {
+  "w": 1600,
+  "h": 857,
+  "target": 1280,
+  "v": 3
+ },
  "https://wotpack.ru/wp-content/uploads/2026/10/insayd-v-zzz-vyydet-tri-novyh-agenta-v-patche-3.4.jpg": {
   "w": 1080,
   "h": 600,
@@ -3899,9 +3919,9 @@
   ],
   "why": "Bing の小さい縮小画像"
  },
- "https://www.bing.com/th?id=ONUT.RFqNoezKqT8bZ7u0jFGJfQ&pid=News&w=700": {
+ "https://www.bing.com/th?id=ONUT.O7nhoPckd7mZBKLAyPiZtQ&pid=News&w=1024": {
   "w": 700,
-  "h": 466,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4037,6 +4057,13 @@
    861
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.415
  },
  "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
   "w": 700,
@@ -4264,12 +4291,6 @@
   "w": 1000,
   "h": 544,
   "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
-  "w": 1000,
-  "h": 544,
-  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {

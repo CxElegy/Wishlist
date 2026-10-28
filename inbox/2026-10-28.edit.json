@@ -160,11 +160,12 @@
  ],
  "哈利波特剧集": [
   {
-   "headline": "HBO's Harry Potter TV Series Adds a Weasley Missing From the Movies—Plus Harry's Parents",
-   "highlight": "Harry's Parents",
-   "blurb": "HBO announced new casting: Jasper Talbot and Hannah Chinn play James and Lily Potter, plus a Weasley missing from the films.",
+   "headline": "新ドラマ「ハリー・ポッター」両親ジェームズ＆リリー役が決定 ─ 映画版ではほぼ登場しなかったチャーリー・ウィーズリーも",
+   "highlight": "両親ジェームズ＆リリー役が決定",
+   "blurb": "HBOのドラマ版「ハリー・ポッター」で、ハリーの両親ジェームズ＆リリー役と、映画版ではほぼ登場しなかったチャーリー・ウィーズリー役が決定した。",
    "weight": "lead",
    "refs": [
+    17,
     2,
     1,
     3,
@@ -176,7 +177,8 @@
     10,
     11,
     13,
-    14
+    14,
+    16
    ],
    "image": "https://www.syfy.com/sites/syfy/files/2026/10/article-promotes-1825x1217_25.jpg"
   },
@@ -195,7 +197,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    15
    ]
   }
  ],
@@ -285,24 +288,25 @@
  "_covered": {
   "GTA 6": 92,
   "漫威电影": 66,
-  "哈利波特剧集": 14,
+  "哈利波特剧集": 17,
   "BLEACH Mirrors High": 8,
   "A2O LITE": 21,
-  "三星手机": 14,
+  "三星手机": 19,
   "MMORPG 新作": 15,
   "滑雪": 4,
-  "绝区零": 6,
+  "绝区零": 11,
   "FROM": 3,
   "周杰伦": 3,
   "The Mandalorian": 4,
   "ILLIT": 11,
   "Vaundy": 2,
   "日本顶级网球赛事": 14,
-  "チェーンソーマン": 4,
+  "チェーンソーマン": 7,
   "猫用品": 2,
   "Astrae Oratio": 3,
   "gelato pique": 1,
-  "星巴克马克杯": 1
+  "星巴克马克杯": 1,
+  "dota2": 3
  },
  "三星手机": [
   {
@@ -324,7 +328,8 @@
     2,
     5,
     9,
-    10
+    10,
+    19
    ]
   },
   {
@@ -346,6 +351,17 @@
    "weight": "normal",
    "refs": [
     11
+   ]
+  },
+  {
+   "headline": "Galaxy S27UltraがSnapdragonチップを廃止したことは、サムスンファンにとってメリットとなるのだろうか？",
+   "highlight": "Snapdragonチップを廃止",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17,
+    16,
+    15
    ]
   }
  ],
@@ -426,14 +442,15 @@
  ],
  "绝区零": [
   {
-   "headline": "Ellen Joe is still an Ice character in Honkai: Star Rail",
-   "highlight": "Honkai: Star Rail",
-   "blurb": "A new Zenless Zone Zero teaser for Ellen Joe ahead of her Honkai: Star Rail debut shows her element.",
+   "headline": "『崩壊：スターレイル』×『ゼンゼロ』コラボがVer.4.8で開催！エレン・ジョー、アストラ・ヤオの公式イラストや属性・運命が公開",
+   "highlight": "Ver.4.8で開催",
+   "blurb": "HoYoverseは『崩壊：スターレイル』×『ゼンゼロ』コラボをVer.4.8で開催すると発表。エレン・ジョー、アストラ・ヤオの公式イラストや属性・運命が公開された。",
    "weight": "lead",
    "refs": [
+    10,
+    7,
     1
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200"
+   ]
   },
   {
    "headline": "绝区零联动星穹铁道，知更鸟这身紫色造型太戳人",
@@ -450,7 +467,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6
+    6,
+    11
    ]
   }
  ],
@@ -635,6 +653,20 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "グラニフ×劇場版「チェンソーマン レゼ篇」コラボグッズが11月3日発売！",
+   "highlight": "11月3日発売",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5,
+    7
+   ],
+   "event": {
+    "date": "2026-11-03",
+    "label": "発売日"
+   }
   }
  ],
  "猫用品": [
@@ -704,6 +736,17 @@
     "label": "発売日"
    },
    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gctq5.img"
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Dota2和CS2联机服务出现故障，可能与Steam大规模宕机有关",
+   "highlight": "联机服务出现故障",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }
