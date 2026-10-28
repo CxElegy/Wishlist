@@ -1,32 +1,32 @@
 {
- "admin": "7eb5101635ea",
- "admin-ai": "50966de29e01",
+ "admin": "11e58715c57f",
+ "admin-ai": "f42527e4c5c9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "30fcec0d"
+   "0bec9399"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ce6ed22f"
+   "6063cf1c"
   ]
  },
- "admin-boards": "9b51ffe56405",
+ "admin-boards": "66eb022de111",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "64124a9f"
+   "e9a20095"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "5d5cd9406ab7",
+ "admin-emblem": "109359c4ef57",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a1f65ed9"
+   "cc4f84d5"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "f83c45b4d119",
+ "admin-now": "5d81ebd2227e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6c45770e"
+   "8b2037b1"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "6bdd6c67"
+   "f62ee4c9"
   ],
   "term-panel": [
    "ライブログ",
-   "60f7ad3f"
+   "7dfec1d4"
   ]
  },
- "admin-system": "b328c7888b54",
+ "admin-system": "4bac3c41c4a4",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4ff3b6ae"
+   "ee030f3c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "164709e1"
+   "abddcca9"
   ]
  },
  "admin_marks": {},
- "heat": "e61b50bf2f7f",
+ "heat": "9039b14a0ec6",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "51fedaea"
+   "117c7c32"
   ],
   "ranking": [
    "ランキング",
-   "ba11da2d"
+   "6cf7957b"
   ]
  },
- "index": "16b1172bac5e",
+ "index": "72251ed681a2",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "a84d9192"
+   "8fe3343e"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "a7963b1b"
+   "48e09ac1"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "d382b953"
   ]
  },
- "updated": "10.29 06:47",
+ "updated": "10.29 07:31",
  "wishlist": "1f54628bebd4"
 }

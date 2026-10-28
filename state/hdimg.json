@@ -150,19 +150,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx3.sinaimg.cn/middle/006PiM45ly1ii9vmz5fr7j31z41404qr.jpg": {
-  "w": 2000,
-  "h": 1125,
-  "target": 720,
-  "v": 3,
-  "local": "pics/f7a84de9bf1f7c5b.webp",
-  "out": [
-   1280,
-   720
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
   "h": 1777,
@@ -825,6 +812,12 @@
   "w": 1962,
   "h": 1104,
   "target": 1280,
+  "v": 3
+ },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/karuizawa.jpg": {
+  "w": 1962,
+  "h": 1472,
+  "target": 720,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/nigata-ski-10.jpg": {
@@ -2003,6 +1996,12 @@
   "target": 720,
   "v": 3
  },
+ "https://massivelyop.com/wp-content/uploads/2026/10/everlast-undying-tale-mage-is-boutta-go-ham.jpg": {
+  "w": 880,
+  "h": 290,
+  "target": 1280,
+  "v": 3
+ },
  "https://maxblizz.com/wp-content/uploads/2026/10/Marvel-Studios-Phase-7-movies-new.jpg": {
   "w": 1280,
   "h": 720,
@@ -3001,12 +3000,6 @@
   "target": 720,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/96034/121/96034-121-678641ce595fd641e231c928524ae9ca-1800x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 840,
-  "h": 1260,
-  "target": 720,
-  "v": 3
- },
  "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603": {
   "w": 640,
   "h": 449,
@@ -3137,6 +3130,12 @@
   "w": 1344,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 1280,
   "v": 3
  },
  "https://sm.ign.com/t/ign_in/screenshot/default/bleach-mirrors-high-overview-trailer-0-39-screenshot_9eu8.1200.jpg": {
@@ -3704,12 +3703,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.7SHEY9SAptWz85p4GOaH2A&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
   "h": 590,
@@ -3722,12 +3715,6 @@
    1079
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.C7DX8jaOh25SjObQh2RAxQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
@@ -3761,12 +3748,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.393
- },
- "https://www.bing.com/th?id=ONUT.GnfuotQq9lSw0iAEUnYA-g&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
@@ -3819,6 +3800,18 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT._DGuYFRlMcBSoIeG0Kj9jg&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.a087SNHlotX0kXFG0z1G4A&pid=News&w=960": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
   "h": 367,
@@ -3851,6 +3844,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.eb1q0cKGGyKjCIrKIpVqdg&pid=News&w=1200": {
+  "w": 700,
+  "h": 402,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.fPuBC42PXLEzxglrfEWVLA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3870,12 +3869,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.l_BxLGlE1sivlilPsh3V5A&pid=News&w=750": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.lzZLVGB0_mXcXEkCyxwI2w&pid=News&w=1200": {
   "target": 720,
   "v": 3,
@@ -3894,6 +3887,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.oVpWMzVyfJazYlxNo60oJg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ot6mqtmVy1VE5NRomSOM3Q&pid=News&w=1200": {
   "w": 700,
@@ -3938,6 +3937,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.358
+ },
+ "https://www.bing.com/th?id=ONUT.x2N0vNhxuD3s-kqLM7O2og&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.xJ4TPQ2Ls59Z59VRELT6pw&pid=News&w=1200": {
   "w": 700,
@@ -4287,12 +4292,6 @@
  "https://www.laughingplace.com/uploads/media/2026/10/LBE-Mando-Grogu.png": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
-  "w": 900,
-  "h": 600,
   "target": 1280,
   "v": 3
  },
