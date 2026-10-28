@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T01:29:03+00:00",
+ "checked": "2026-10-28T01:36:09+00:00",
  "fired": {
-  "at": "2026-10-28T01:29:03+00:00",
+  "at": "2026-10-28T01:36:09+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,21 +12,31 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-27T23:44:17+00:00",
+    "at": "2026-10-28T01:36:09+00:00",
     "attempts": 1,
     "day": "2026-10-28",
-    "prog": 158,
-    "resp": "cse_01W4x6f6zf7Bs1pc3jGqJByQ",
-    "sig": "fae4d470aa21"
+    "prog": 205,
+    "resp": "cse_01W4x6f7r8v1RExEKh8S8GJi",
+    "sig": "22d7e6e72fc8"
    },
    "items": [
+    "A2O LITE",
     "BLEACH Mirrors High",
+    "GTA 6",
     "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
     "gelato pique",
+    "あつ森",
     "チェーンソーマン",
     "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
     "日本顶级网球赛事",
     "星巴克马克杯",
+    "漫威电影",
+    "猫用品",
     "绝区零"
    ],
    "last_batch": "2026-10-28T00:14:09+00:00",
@@ -37,37 +47,49 @@
    "need": true,
    "prog": 205,
    "prog_day": "2026-10-28",
-   "ripe": [],
-   "sig": "8df7804cc089",
+   "ripe": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "gelato pique",
+    "チェーンソーマン",
+    "三星手机",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "漫威电影",
+    "绝区零"
+   ],
+   "sig": "22d7e6e72fc8",
    "token_cap": 1000000,
    "tokens_today": 274219,
-   "why": "整理待ちの記事 10 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 52 件（18 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "dota2"
+    "dota2",
+    "あつ森",
+    "哈利波特剧集",
+    "FROM",
+    "漫威电影",
+    "GTA 6",
+    "A2O LITE",
+    "The Mandalorian",
+    "周杰伦",
+    "ILLIT",
+    "绝区零"
    ],
    "need": true,
-   "sig": "ee9feb620745",
+   "sig": "79d13c63a20f",
    "waiting": [
-    "FROM",
-    "周杰伦",
-    "あつ森",
     "Vaundy",
     "ぐでたま",
-    "GTA 6",
     "チェーンソーマン",
-    "漫威电影",
-    "哈利波特剧集",
-    "Astrae Oratio",
-    "A2O LITE",
-    "ILLIT",
-    "绝区零",
-    "The Mandalorian"
+    "Astrae Oratio"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:30 から）"
+   "why": "足りない 12 版面（Actions で Python が埋める）・失敗 4 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:52 から）"
   },
   "photos": {
    "claude": true,
