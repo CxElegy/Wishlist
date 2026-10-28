@@ -1,32 +1,32 @@
 {
- "admin": "21fdb8d86429",
- "admin-ai": "af6f06909bac",
+ "admin": "7eb5aeef8f0a",
+ "admin-ai": "52172e4a195d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f2ccf696"
+   "bee84068"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "7e8c6dbb"
+   "a24bbbf4"
   ]
  },
- "admin-boards": "e2f093a420f6",
+ "admin-boards": "70b4c92f5f31",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "0d1f2da3"
+   "da806bef"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "4ec4eb73ca5e",
+ "admin-emblem": "4f25aaa2fa7e",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c543e721"
+   "6e6af409"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "326f2eeb"
+   "3977b36f"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "b57c04bef19b",
+ "admin-now": "0d3ec84ce84b",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3b3de632"
+   "4c03fe3a"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "432f46de"
+   "13a9f164"
   ]
  },
- "admin-system": "6353c9e7811d",
+ "admin-system": "785ced6bc5c3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b8b69192"
+   "6eb5a835"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "71c8d0f6"
+   "44002105"
   ]
  },
  "admin_marks": {},
- "heat": "5b447dcd16a2",
+ "heat": "18524706ac1f",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "35f04d7e"
+   "78b2c10c"
   ],
   "ranking": [
    "ランキング",
-   "d4c3fae8"
+   "a65d2660"
   ]
  },
- "index": "775a26f39cda",
+ "index": "9262294fc70f",
  "index_marks": {
   "front": [
    "トップ",
-   "d9fe8cea"
+   "3643d1ec"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "2fb51409"
+   "3f0fb0a3"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "ffa10ede"
+   "e41f79a3"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -196,6 +196,6 @@
    "7fba2309"
   ]
  },
- "updated": "10.28 13:42",
+ "updated": "10.28 13:46",
  "wishlist": "c98bcba02123"
 }
