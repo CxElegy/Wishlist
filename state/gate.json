@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-28T10:41:17+00:00",
+ "checked": "2026-10-28T10:52:17+00:00",
  "fired": {
-  "at": "2026-10-28T10:41:17+00:00",
+  "at": "2026-10-28T10:52:17+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-28T09:50:06+00:00",
+    "at": "2026-10-28T10:52:17+00:00",
     "attempts": 1,
     "day": "2026-10-28",
-    "prog": 423,
-    "resp": "cse_01W4x6f8ZETWztL6MHbeuvvQ",
-    "sig": "9b4144c90679"
+    "prog": 439,
+    "resp": "cse_01W4x6f6GGBfNHEk1upYcyFo",
+    "sig": "bdd8fc4d872f"
    },
    "items": [
     "Astrae Oratio",
@@ -38,9 +38,10 @@
     "Astrae Oratio",
     "ILLIT",
     "MMORPG 新作",
+    "チェーンソーマン",
     "日本顶级网球赛事"
    ],
-   "sig": "97b9809c6714",
+   "sig": "bdd8fc4d872f",
    "token_cap": 1000000,
    "tokens_today": 593853,
    "why": "整理待ちの記事 7 件（5 版面・AI 編集まで版面に載らない）"
@@ -48,13 +49,12 @@
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "FROM"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "5bb55d760c3f",
    "waiting": [
-    "あつ森",
-    "FROM",
     "ぐでたま",
     "Vaundy",
     "dota2",
@@ -63,13 +63,14 @@
     "GTA 6",
     "チェーンソーマン",
     "漫威电影",
+    "あつ森",
     "The Mandalorian",
     "绝区零",
     "Astrae Oratio",
     "A2O LITE",
     "ILLIT"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:44 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 19:58 から）"
   },
   "photos": {
    "claude": true,
