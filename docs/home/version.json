@@ -1,32 +1,32 @@
 {
- "admin": "22599c58a44e",
- "admin-ai": "5f2e77f9e263",
+ "admin": "2727ee868283",
+ "admin-ai": "d9d752c319ca",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "52550315"
+   "cfbd7a58"
   ],
   "tokens": [
    "AI 編集のトークン",
    "1c19330e"
   ]
  },
- "admin-boards": "3adfc215d681",
+ "admin-boards": "ee5ccab63808",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e4ccd241"
+   "b8505343"
   ],
   "votes": [
    "投票",
    "b9f295e9"
   ]
  },
- "admin-emblem": "fe93c7b8f28f",
+ "admin-emblem": "e47a7dad35e5",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "66fc5970"
+   "3c33e82e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "cb90ad51cd91",
+ "admin-now": "ed28eb0b651d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "690964e1"
+   "fd32ae0f"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "68cf1abd"
+   "8040dfe3"
   ],
   "term-panel": [
    "ライブログ",
-   "64ec9a9d"
+   "518df8e2"
   ]
  },
- "admin-system": "98b8ddbe73ab",
+ "admin-system": "57b6a65aad65",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "47a98e7d"
+   "c43e3ad4"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "566938a5"
+   "b62e5d2c"
   ]
  },
  "admin_marks": {},
- "heat": "152ce0c6fe19",
+ "heat": "0518ea615831",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "77e52570"
+   "7421363f"
   ],
   "ranking": [
    "ランキング",
-   "d1aa8605"
+   "8bad6fcf"
   ]
  },
- "index": "eaaab77076ac",
+ "index": "e807f311f329",
  "index_marks": {
   "front": [
    "トップ",
-   "8a56f668"
+   "b763e55a"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "f9e30764"
+   "78f966dd"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "c2613f87"
+   "218e2c74"
   ],
   "w-6676e624": [
    "三星手机",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "c212ee87"
+   "305e980e"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -196,6 +196,6 @@
    "8808a9fd"
   ]
  },
- "updated": "10.28 17:39",
- "wishlist": "9505070f7168"
+ "updated": "10.28 17:45",
+ "wishlist": "07e659c78efc"
 }
