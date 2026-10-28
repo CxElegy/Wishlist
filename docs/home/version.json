@@ -1,14 +1,14 @@
 {
- "admin": "70ecee736877",
- "admin-ai": "fbce87106a57",
+ "admin": "3ee11ed9ecc6",
+ "admin-ai": "7dbeb319148e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "3fdc95ab"
+   "3bcfc829"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "6062281f"
+   "7f3700fe"
   ]
  },
  "admin-boards": "44dd303628fe",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "be116e8ce8a8",
+ "admin-emblem": "7824fb8f0faf",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "6b775182"
+   "b4309250"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "16ade8b6f78d",
+ "admin-now": "41c06aeaa4b6",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "a62d02be"
+   "cd869448"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c76fdc17"
+   "34f1c3fd"
   ]
  },
- "admin-system": "8b735851d9ea",
+ "admin-system": "a38452e55deb",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fb91ec03"
+   "c69ae5e7"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1fe508e7"
+   "ada4fd5f"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "eb43422d"
   ]
  },
- "index": "27844fcb2777",
+ "index": "03bf78529a27",
  "index_marks": {
   "front": [
    "トップ",
-   "90906c23"
+   "09014801"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "8fe3343e"
+   "a84d9192"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "2e908db8"
+   "d62b6aff"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "4b9d2f0d"
+   "aa3d9b14"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "4faf3b53"
+   "25377ec3"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "9cf28218"
+   "91a14a63"
   ]
  },
- "updated": "10.29 05:01",
+ "updated": "10.29 05:09",
  "wishlist": "1f54628bebd4"
 }
