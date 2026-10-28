@@ -1,14 +1,14 @@
 {
- "admin": "f748134ff85e",
- "admin-ai": "a488c5067355",
+ "admin": "c72e9a84427e",
+ "admin-ai": "5ded440c0d49",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d3d7ac45"
+   "f740ae8e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "dc73af3d"
+   "ddbc8941"
   ]
  },
  "admin-boards": "5a60b5f54e7c",
@@ -22,11 +22,11 @@
    "b9f295e9"
   ]
  },
- "admin-emblem": "eedb1fe85048",
+ "admin-emblem": "871e664e35c4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e2063fa8"
+   "6f44bcb1"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "ab34bf430098",
+ "admin-now": "b8fed752e9f5",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "981ba444"
+   "8953ed41"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "e65df788"
+   "4c077b9b"
   ]
  },
- "admin-system": "a772d6ee2948",
+ "admin-system": "1849c4bc6578",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "0049b4b6"
+   "41cc6aac"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "1b661f67"
+   "4552660b"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "b6083a06"
   ]
  },
- "index": "6ac6ce97bf30",
+ "index": "832ba500fe21",
  "index_marks": {
   "front": [
    "トップ",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "ad430879"
+   "b576cade"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "ea69f0ab"
+   "09c3316c"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "8808a9fd"
   ]
  },
- "updated": "10.28 23:51",
+ "updated": "10.28 23:56",
  "wishlist": "240e54b47469"
 }
