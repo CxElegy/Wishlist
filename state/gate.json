@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-28T17:53:47+00:00",
+ "checked": "2026-10-28T18:13:00+00:00",
  "fired": {
-  "at": "2026-10-28T17:53:47+00:00",
+  "at": "2026-10-28T18:25:00+00:00",
   "results": {
    "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
@@ -46,12 +46,12 @@
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "あつ森"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "772b1a1c3a03",
    "waiting": [
-    "あつ森",
     "チェーンソーマン",
     "dota2",
     "GTA 6",
@@ -67,7 +67,7 @@
     "绝区零",
     "The Mandalorian"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 03:12 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 03:14 から）"
   },
   "photos": {
    "claude": true,
