@@ -1,14 +1,14 @@
 {
- "admin": "2727ee868283",
- "admin-ai": "d7c128dd5d25",
+ "admin": "db058fc7a3a2",
+ "admin-ai": "50ffdedbc5cf",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "466a35e5"
+   "6c4190a8"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "2630a680"
+   "f1d02e18"
   ]
  },
  "admin-boards": "34a2d28f0a81",
@@ -22,11 +22,11 @@
    "b9f295e9"
   ]
  },
- "admin-emblem": "72ecea6586f0",
+ "admin-emblem": "a67bd94e357b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1d7cd96c"
+   "a6bf226e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "fbf5b4d15896",
+ "admin-now": "26ba28530ead",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "342bcaee"
+   "0f0a2957"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "4b840606"
+   "37041396"
   ]
  },
- "admin-system": "867a0ecdba27",
+ "admin-system": "0dbd8ba1cb7a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b0cf4fae"
+   "20d09fdd"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "216e2419"
+   "a2a46492"
   ]
  },
  "admin_marks": {},
- "heat": "22e1abe1c81a",
+ "heat": "096aac32d63c",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "b96ce896"
+   "440aa0f6"
   ],
   "ranking": [
    "ランキング",
-   "886edba9"
+   "a251c4ca"
   ]
  },
- "index": "b670838d3d59",
+ "index": "4ebc13dada2c",
  "index_marks": {
   "front": [
    "トップ",
-   "a245bef3"
+   "83a3d043"
   ],
   "picks": [
    "気になるかも？",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "dde8c332"
+   "c212ee87"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "5f12ae21"
+   "b576cade"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "8a0a6b7a"
+   "a593a09a"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "8808a9fd"
   ]
  },
- "updated": "10.28 20:51",
+ "updated": "10.28 20:59",
  "wishlist": "9505070f7168"
 }

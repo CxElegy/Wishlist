@@ -662,6 +662,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cimg.kgl-systems.io/camion/files/92288/ogp_cNFU.jpg?x=1280": {
+  "w": 1200,
+  "h": 1200,
+  "target": 720,
+  "v": 3
+ },
  "https://cimg.kgl-systems.io/camion/files/dengeki/92185/a156005c5baf40ff51a327f1c34f2975b.jpg?x=1280": {
   "w": 853,
   "h": 1280,
@@ -1093,12 +1099,6 @@
  "https://i.cdn.newsbytesapp.com/images/l144_20281793008781.jpg": {
   "w": 1440,
   "h": 810,
-  "target": 720,
-  "v": 3
- },
- "https://i.ytimg.com/vi/QtHFx2ReeiI/maxresdefault.jpg": {
-  "w": 1280,
-  "h": 720,
   "target": 720,
   "v": 3
  },
@@ -1630,12 +1630,6 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gctq5.img": {
   "w": 1456,
   "h": 819,
-  "target": 1280,
-  "v": 3
- },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gdVBC.img": {
-  "w": 1200,
-  "h": 630,
   "target": 1280,
   "v": 3
  },
@@ -4162,6 +4156,13 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
+  "w": 700,
+  "h": 380,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.415
+ },
  "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4400,12 +4401,6 @@
   "w": 1000,
   "h": 544,
   "target": 720,
-  "v": 3
- },
- "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
-  "w": 1000,
-  "h": 544,
-  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {

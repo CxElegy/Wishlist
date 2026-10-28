@@ -1,52 +1,5 @@
 [
 {
-"at": "2026-10-27T12:22:05+00:00",
-"text": "2026-10-27 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、Vaundy ほか 10（16 版面・53 本・今日の整理待ちは全部終わり） · token 新規入力 5.9万・キャッシュ読み 202.1万・出力 7,104",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.18,
-"mem_total": 16872812544,
-"mem_free": 15906709504,
-"disk_used": 10918395904,
-"disk_free": 30404112384,
-"disk_total": 41322508288,
-"peak": 346583040
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"三星手机",
-"哈利波特剧集",
-"日本顶级网球赛事",
-"星巴克马克杯",
-"漫威电影",
-"猫用品"
-],
-"stories": 53,
-"left": 0,
-"edited": 22,
-"run": null,
-"tok": {
-"in": 54,
-"cw": 58780,
-"cr": 2021396,
-"out": 7104,
-"calls": 27,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 2087334
-},
-{
 "at": "2026-10-27T13:07:01+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1791,5 +1744,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 990256
+},
+{
+"at": "2026-10-28T11:59:23+00:00",
+"text": "2026-10-28 第 5 バッチを出刊：BLEACH Mirrors High（1 版面・3 本・残り 7 版面） · token 新規入力 2,347・キャッシュ読み 17.3万・出力 895",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.18,
+"mem_total": 16872808448,
+"mem_free": 15945256960,
+"disk_used": 10826948608,
+"disk_free": 30495559680,
+"disk_total": 41322508288,
+"peak": 318935040
+},
+"batch": 5,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 3,
+"left": 7,
+"edited": 23,
+"run": 1793184810.2345214,
+"tok": {
+"in": 4,
+"cw": 2343,
+"cr": 173223,
+"out": 895,
+"calls": 2,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 176465
 }
 ]
