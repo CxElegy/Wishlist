@@ -89,8 +89,8 @@
   "https://www.sanyonews.jp/article/1912545": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
   "https://www.setn.com/news/897693": "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg",
   "https://www.sina.cn/news/detail/5358018526972618.html": "http://wx3.sinaimg.cn/middle/78961de9gy1iiewsmyjeuj24002o0npg.jpg",
-  "https://www.sina.cn/news/detail/5358687140971378.html": "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg",
   "https://www.sina.cn/news/detail/5358775953527407.html": "http://wx1.sinaimg.cn/middle/8b511c18ly1iihc12wblpj20qo0w1jwg.jpg",
+  "https://www.sina.cn/news/detail/5359041700170693.html": "http://wx2.sinaimg.cn/middle/008eZAxIly1iii6jhgqbpj317r0och1p.jpg",
   "https://www.toy-people.com/en/?p=115398": "https://img.toy-people.com/member/179241036689_1200.png",
   "https://www.walkerplus.com/article/1264268/image14572032.html": "https://news.walkerplus.com/article/1264268/14572030_615.jpg",
   "https://www.walkerplus.com/article/56657/image312478.html": "https://news.walkerplus.com/article/56657/312478_615.jpg",
@@ -1432,6 +1432,27 @@
   },
   {
    "batch": 5,
+   "because": "A2O LITE",
+   "date": "2026-10-28",
+   "hits": [],
+   "image": "http://wx2.sinaimg.cn/middle/008eZAxIly1iii6jhgqbpj317r0och1p.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "手机新浪网",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "恭喜 A2O LITE 拿下第六个一位，NEON 冠军秀二连冠",
+   "url": "https://www.sina.cn/news/detail/5359041700170693.html",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-28",
    "hits": [],
@@ -1515,7 +1536,7 @@
    "work": "ぐでたま"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "A2O LITE",
    "date": "2026-10-27",
    "hits": [],
@@ -1576,27 +1597,6 @@
    "url": "https://www.msn.com/en-us/entertainment/general/moff-gideon-s-imperial-motive-in-the-mandalorian-explained/vi-AA1EsQvE",
    "words": [],
    "work": "The Mandalorian"
-  },
-  {
-   "batch": 6,
-   "because": "A2O LITE",
-   "date": "2026-10-27",
-   "hits": [],
-   "image": "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "手机新浪网",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "SM 回应禁止跳NEON 传闻，金希澈利特：谁能阻止我们|Super Junior|A2O LITE",
-   "url": "https://www.sina.cn/news/detail/5358687140971378.html",
-   "words": [],
-   "work": "A2O LITE"
   },
   {
    "batch": 6,
@@ -2190,11 +2190,11 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [

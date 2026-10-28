@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-10-28T00:03:14+00:00",
-"text": "2026-10-28 第 4 バッチを出刊：MMORPG 新作（1 版面・3 本・残り 2 版面） · token 新規入力 1,196・キャッシュ読み 7.8万・出力 611",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.15,
-"mem_total": 16872808448,
-"mem_free": 15879446528,
-"disk_used": 10899083264,
-"disk_free": 30423425024,
-"disk_total": 41322508288,
-"peak": 333193216
-},
-"batch": 4,
-"boards": [
-"MMORPG 新作"
-],
-"stories": 3,
-"left": 2,
-"edited": 18,
-"run": 1793144718.6769216,
-"tok": {
-"in": 2,
-"cw": 1194,
-"cr": 78495,
-"out": 611,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 80302
-},
-{
 "at": "2026-10-28T00:07:25+00:00",
 "text": "2026-10-28 第 5 バッチを出刊：The Mandalorian（1 版面・2 本・残り 1 版面） · token 新規入力 1,098・キャッシュ読み 8.0万・出力 597",
 "level": "ok",
@@ -1874,5 +1842,10 @@
 "calls": 9,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-28T23:51:27+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]

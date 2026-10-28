@@ -174,7 +174,8 @@
    "weight": "normal",
    "refs": [
     1,
-    8
+    8,
+    11
    ]
   },
   {
@@ -185,6 +186,15 @@
    "refs": [
     7,
     6
+   ]
+  },
+  {
+   "headline": "被指上半身弱？李彩演回应：没想赢过原唱，只是太急了",
+   "highlight": "李彩演回应",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
    ]
   }
  ],
@@ -207,7 +217,8 @@
    "refs": [
     2,
     1,
-    3
+    3,
+    23
    ],
    "image": "https://img.toy-people.com/member/179319829696_1200.jpg"
   },
@@ -241,18 +252,18 @@
   }
  ],
  "_covered": {
-  "GTA 6": 47,
-  "漫威电影": 33,
+  "GTA 6": 50,
+  "漫威电影": 37,
   "BLEACH Mirrors High": 13,
-  "A2O LITE": 10,
-  "チェーンソーマン": 22,
+  "A2O LITE": 13,
+  "チェーンソーマン": 25,
   "三星手机": 10,
   "The Mandalorian": 4,
   "星巴克马克杯": 2,
   "あつ森": 1,
-  "MMORPG 新作": 2,
+  "MMORPG 新作": 5,
   "哈利波特剧集": 2,
-  "日本顶级网球赛事": 2,
+  "日本顶级网球赛事": 6,
   "FROM": 4,
   "ILLIT": 3,
   "Vaundy": 2,
@@ -374,7 +385,26 @@
    "blurb": "Everlast: Undying Tale, a classic-inspired MMO-lite, enters Early Access today.",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    4
+   ]
+  },
+  {
+   "headline": "Cozy MMO Spirit Crossing Gets November Release, Including on Nintendo Switch and Switch 2",
+   "highlight": "November Release",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "[위클리오늘] 온라인 게임_엔씨, 컴투스(10.28)",
+   "highlight": "리니지W",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ],
@@ -398,6 +428,42 @@
    "weight": "lead",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "「私たちの後が続かないのは悲しい」加藤未唯が東レPPO初戦勝利で示した、日本女子ダブルス黄金世代の矜持",
+   "highlight": "加藤未唯",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "フルセットマッチを制したシュナイダー＆イアラ＆ラヒモワ＆ジョイントがシングルス8強入り",
+   "highlight": "シングルス8強入り",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "車いすテニス発展へ共生 木下グループジャパンOP、来年は実施へ",
+   "highlight": "来年は実施へ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "木下ジャパンオープンテニスに越前リョーマ＆リョーガが！ 錦織圭選手と撮影も",
+   "highlight": "越前リョーマ＆リョーガ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],

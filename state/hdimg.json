@@ -66,18 +66,11 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/005yrRy7gy1iih1qq9ccsj30j60wdwhw.jpg": {
-  "w": 690,
-  "h": 1165,
+ "http://wx1.sinaimg.cn/middle/0066hpr1gy1iihd6m9z6aj30ty1jok2i.jpg": {
   "target": 720,
   "v": 3,
-  "local": "pics/ef6ea0a942024992.webp",
-  "out": [
-   690,
-   1165
-  ],
-  "why": "防盗链",
-  "ref": true
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "http://wx1.sinaimg.cn/middle/8b511c18ly1iihc12wblpj20qo0w1jwg.jpg": {
   "w": 960,
@@ -303,6 +296,12 @@
   "h": 253,
   "target": 720,
   "v": 3
+ },
+ "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3781255026102026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.26&fp-y=0.2&h=630&w=1200&s=b39ff38e4d5a957487b66c3b3a8a9b59": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://asset.watch.impress.co.jp/img/grw/docs/2151/872/05_l.jpg": {
   "w": 960,
@@ -769,6 +768,12 @@
   "h": 400,
   "target": 720,
   "v": 3
+ },
+ "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_A2O-LIT_20261028.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://daebak.tokyo/wp-content/uploads/2026/10/thumb_2_a2o_aijing_5156_20261015.webp": {
   "w": 452,
@@ -1947,12 +1952,6 @@
   "target": 1280,
   "v": 3
  },
- "https://isplus.com/data/isp/image/2026/10/26/isp20261026000355.800x.0.jpg": {
-  "w": 800,
-  "h": 556,
-  "target": 720,
-  "v": 3
- },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
   "w": 1600,
   "h": 900,
@@ -2780,6 +2779,18 @@
    853
   ],
   "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-00035826-tennismagv-000-1-view.jpg?exp=10800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-00122116-thedigest-000-3-view.jpg?exp=10800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://ni.yam.com/20261023/jp-prt-18505-4495-1-261023043229102-2cbbcdfdb31dc2c7.webp": {
   "w": 1200,
@@ -3787,6 +3798,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4098,6 +4115,12 @@
   "h": 630,
   "target": 1280,
   "v": 3
+ },
+ "https://www.crank-in.net/img/db/267108025175442_1200.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://www.dailysunny.com/wp-content/uploads/2026/10/Peanuts-x-Best-Friends-Merch-Overview.jpg": {
   "w": 966,
