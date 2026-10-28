@@ -4162,13 +4162,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
-  "w": 700,
-  "h": 380,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.415
- },
  "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4401,6 +4394,12 @@
   "w": 1000,
   "h": 544,
   "target": 720,
+  "v": 3
+ },
+ "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg": {
+  "w": 1000,
+  "h": 544,
+  "target": 1280,
   "v": 3
  },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
