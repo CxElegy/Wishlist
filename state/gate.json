@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-28T12:04:06+00:00",
+ "checked": "2026-10-28T12:23:07+00:00",
  "fired": {
-  "at": "2026-10-28T12:10:49+00:00",
+  "at": "2026-10-28T12:23:07+00:00",
   "results": {
    "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
@@ -21,7 +21,6 @@
    },
    "items": [
     "A2O LITE",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "Vaundy",
@@ -29,58 +28,55 @@
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
     "滑雪",
     "猫用品",
     "绝区零"
    ],
-   "last_batch": "2026-10-28T11:59:23+00:00",
+   "last_batch": "2026-10-28T12:12:37+00:00",
    "last_error": {
     "at": "2026-10-28T11:01:41+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 465,
+   "prog": 481,
    "prog_day": "2026-10-28",
    "ripe": [
     "A2O LITE",
-    "GTA 6",
     "MMORPG 新作",
     "チェーンソーマン",
     "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事"
+    "哈利波特剧集"
    ],
-   "sig": "1022244cfbac",
+   "sig": "be2c8d97aa66",
    "token_cap": 1000000,
-   "tokens_today": 662615,
-   "why": "整理待ちの記事 45 件（13 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 667410,
+   "why": "整理待ちの記事 29 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "あつ森",
-    "FROM"
+    "dota2",
+    "ぐでたま"
    ],
    "need": true,
-   "sig": "e34d6414e818",
+   "sig": "e6ad5686f8d5",
    "waiting": [
-    "ぐでたま",
-    "dota2",
     "GTA 6",
     "チェーンソーマン",
     "周杰伦",
     "Vaundy",
     "漫威电影",
     "哈利波特剧集",
+    "あつ森",
+    "FROM",
     "The Mandalorian",
     "Astrae Oratio",
     "A2O LITE",
     "绝区零",
     "ILLIT"
    ],
-   "why": "足りない 3 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:19 から）"
+   "why": "足りない 3 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 21:46 から）"
   },
   "photos": {
    "claude": true,
