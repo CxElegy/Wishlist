@@ -1,14 +1,14 @@
 {
- "admin": "b794be7d77c3",
- "admin-ai": "f96af31710f1",
+ "admin": "2727ee868283",
+ "admin-ai": "d7c128dd5d25",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d8c4c605"
+   "466a35e5"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "135f2caf"
+   "2630a680"
   ]
  },
  "admin-boards": "34a2d28f0a81",
@@ -22,11 +22,11 @@
    "b9f295e9"
   ]
  },
- "admin-emblem": "32e9b76d8b4c",
+ "admin-emblem": "72ecea6586f0",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c99ee545"
+   "1d7cd96c"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "5d189b4e"
+   "cf429d37"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "b473853e56f2",
+ "admin-now": "fbf5b4d15896",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "492388e3"
+   "342bcaee"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a1f62c34"
+   "4b840606"
   ]
  },
- "admin-system": "95106a9a85fc",
+ "admin-system": "867a0ecdba27",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "7da0a41c"
+   "b0cf4fae"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "53b7810e"
+   "216e2419"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "886edba9"
   ]
  },
- "index": "f86886da18d5",
+ "index": "b670838d3d59",
  "index_marks": {
   "front": [
    "トップ",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "78f966dd"
+   "f9e30764"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -141,11 +141,11 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "d0556372"
+   "1c733b71"
   ],
   "w-7a894105": [
    "周杰伦",
-   "a24e86ed"
+   "cc110919"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "677c7426"
+   "47f3a310"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "b576cade"
+   "5f12ae21"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "a593a09a"
+   "8a0a6b7a"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "8808a9fd"
   ]
  },
- "updated": "10.28 20:41",
+ "updated": "10.28 20:51",
  "wishlist": "9505070f7168"
 }

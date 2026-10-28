@@ -65,6 +65,7 @@
   "https://www.inside-games.jp/article/2026/10/26/189864.html": "https://www.inside-games.jp/imgs/ogp_f/1774489.webp",
   "https://www.inside-games.jp/article/2026/10/26/189878.html": "https://www.inside-games.jp/imgs/ogp_f/1799137.jpg",
   "https://www.inven.co.kr/board/party/6553/253": "https://www.bing.com/th?id=ONUT.DOk64WaFvxmgMlxnbU23Sw&pid=News&w=300",
+  "https://www.inven.co.kr/board/party/6553/284": "https://pbs.twimg.com/media/HVjH3ugbMAAtR8a?format=webp&name=large",
   "https://www.mountainwatch.com/Snow-news/top-10-onsens-in-niseko-mountainwatch-guide-to-good-onsens": "http://www.mountainwatch.com/wp-content/uploads/2019/12/Green-Leaf-Onsen-Large.jpg",
   "https://www.msn.com/en-in/news/other/hbo-harry-potter-series-casts-jasper-talbot-and-hannah-chinn-as-parents/ar-AA2gbjQO": "https://www.bing.com/th?id=ONUT.Hca-hAi4jrja9NkijF-iIg&pid=News&w=920",
   "https://www.msn.com/en-us/entertainment/general/ellen-joe-is-still-an-ice-character-in-honkai-star-rail/ar-AA2gbeIN": "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200",
@@ -1082,6 +1083,27 @@
   },
   {
    "batch": 1,
+   "because": "Astrae Oratio",
+   "date": "2026-10-27",
+   "hits": [],
+   "image": "https://pbs.twimg.com/media/HVjH3ugbMAAtR8a?format=webp&name=large",
+   "kind": "board",
+   "liked": "AGF 2026 主赞助，设 150 台试玩",
+   "score": 8,
+   "source": "인벤",
+   "taste": [
+    [
+     "作品:Astrae Oratio",
+     7
+    ]
+   ],
+   "title": "아스트라에 오라티오 | 캐릭터 소개 「키토라 시즈쿠」",
+   "url": "https://www.inven.co.kr/board/party/6553/284",
+   "words": [],
+   "work": "Astrae Oratio"
+  },
+  {
+   "batch": 2,
    "because": "三星手机",
    "date": "2026-10-27",
    "hits": [
@@ -1210,7 +1232,7 @@
    "work": "三星手机"
   },
   {
-   "batch": 2,
+   "batch": 3,
    "because": "あつ森",
    "date": "2026-10-27",
    "hits": [],
@@ -1315,7 +1337,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 3,
+   "batch": 4,
    "because": "周杰伦",
    "date": "2026-10-28",
    "hits": [],
@@ -1420,7 +1442,7 @@
    "work": "ぐでたま"
   },
   {
-   "batch": 4,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-28",
    "hits": [],
@@ -1525,7 +1547,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "ぐでたま",
    "date": "2026-10-26",
    "hits": [],
@@ -1630,7 +1652,7 @@
    "work": "哈利波特剧集"
   },
   {
-   "batch": 6,
+   "batch": 7,
    "because": "哈利波特剧集",
    "date": "2026-10-27",
    "hits": [],
@@ -1717,7 +1739,7 @@
    "work": "日本顶级网球赛事"
   },
   {
-   "batch": 7,
+   "batch": 8,
    "because": "日本顶级网球赛事",
    "date": "2026-10-27",
    "hits": [],
@@ -2019,7 +2041,7 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
@@ -2027,7 +2049,7 @@
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [

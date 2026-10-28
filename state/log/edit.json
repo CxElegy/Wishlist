@@ -1,51 +1,5 @@
 [
 {
-"at": "2026-10-27T12:13:31+00:00",
-"text": "2026-10-27 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、Vaundy、dota2 ほか 9（15 版面・48 本・残り 1 版面） · token 新規入力 5.8万・キャッシュ読み 184.8万・出力 6,294",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.89,
-"mem_total": 16872812544,
-"mem_free": 15897329664,
-"disk_used": 10907152384,
-"disk_free": 30415355904,
-"disk_total": 41322508288,
-"peak": 348626944
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"BLEACH Mirrors High",
-"FROM",
-"GTA 6",
-"Vaundy",
-"dota2",
-"gelato pique",
-"あつ森",
-"ぐでたま",
-"三星手机",
-"哈利波特剧集",
-"日本顶级网球赛事",
-"星巴克马克杯",
-"漫威电影",
-"猫用品"
-],
-"stories": 48,
-"left": 1,
-"edited": 22,
-"run": null,
-"tok": {
-"in": 50,
-"cw": 57647,
-"cr": 1848365,
-"out": 6294,
-"calls": 25,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1912356
-},
-{
 "at": "2026-10-27T12:22:05+00:00",
 "text": "2026-10-27 第 1 バッチを出刊：A2O LITE、Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、Vaundy ほか 10（16 版面・53 本・今日の整理待ちは全部終わり） · token 新規入力 5.9万・キャッシュ読み 202.1万・出力 7,104",
 "level": "ok",
@@ -1805,5 +1759,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 78264
+},
+{
+"at": "2026-10-28T11:52:01+00:00",
+"text": "2026-10-28 第 4 バッチを出刊：漫威电影（1 版面・5 本・残り 8 版面） · token 新規入力 8,437・キャッシュ読み 97.9万・出力 3,147",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.24,
+"mem_total": 16872808448,
+"mem_free": 15876554752,
+"disk_used": 10824921088,
+"disk_free": 30497587200,
+"disk_total": 41322508288,
+"peak": 383631360
+},
+"batch": 4,
+"boards": [
+"漫威电影"
+],
+"stories": 5,
+"left": 8,
+"edited": 23,
+"run": 1793184810.2345214,
+"tok": {
+"in": 24,
+"cw": 8413,
+"cr": 978672,
+"out": 3147,
+"calls": 12,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 990256
 }
 ]
