@@ -363,18 +363,18 @@
   "哈利波特剧集": 23,
   "BLEACH Mirrors High": 31,
   "A2O LITE": 45,
-  "三星手机": 21,
+  "三星手机": 23,
   "MMORPG 新作": 24,
-  "滑雪": 6,
-  "绝区零": 17,
+  "滑雪": 7,
+  "绝区零": 19,
   "FROM": 4,
   "周杰伦": 19,
   "The Mandalorian": 5,
-  "ILLIT": 20,
-  "Vaundy": 3,
+  "ILLIT": 21,
+  "Vaundy": 5,
   "日本顶级网球赛事": 31,
   "チェーンソーマン": 15,
-  "猫用品": 5,
+  "猫用品": 6,
   "Astrae Oratio": 5,
   "gelato pique": 1,
   "星巴克马克杯": 4,
@@ -446,6 +446,24 @@
    "refs": [
     20,
     21
+   ]
+  },
+  {
+   "headline": "Leaked Galaxy S27 Ultra Details Reveal What Samsung is Changing This Year",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra Charging Speed: 60W vs S26 Ultra Explained",
+   "highlight": "60W",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    23
    ]
   }
  ],
@@ -539,6 +557,15 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "二世古滑雪住宿「Niseko Wow Lodge」推日本居民限定折扣 12月起冬季入住",
+   "highlight": "日本居民限定折扣",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -772,6 +799,15 @@
    "refs": [
     2
    ]
+  },
+  {
+   "headline": "【ビルボード】Vaundy、リバイバル中「しわあわせ」で自身初のストリーミング・ソング首位",
+   "highlight": "自身初のストリーミング・ソング首位",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "日本顶级网球赛事": [
@@ -931,6 +967,15 @@
    "weight": "normal",
    "refs": [
     4
+   ]
+  },
+  {
+   "headline": "猫と人間の間で感染する『人獣共通感染症』4つ 表れる症状や避けるべき行為も解説",
+   "highlight": "人獣共通感染症",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],

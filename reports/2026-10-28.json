@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "d32b1421bd8f",
+ "edit_sig": "1d7f25421e47",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -234,15 +234,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 7,
-     "source": "蕃新聞",
-     "title": "二世古滑雪住宿「Niseko Wow Lodge」推日本居民限定折扣 12月起冬季入住",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9vdUxyTl93bkdlbGFmOFIxN2JXWm1aRU0yNHQtYjhWYmNRNlNwUFVkTC10YkRfb0NITUdrREREMjgyaFZJR01mVGpqT1llb2pZYXc?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -294,6 +285,16 @@
      "source": "ニコニコニュース",
      "source_icon": "https://www.google.com/s2/favicons?domain=nicovideo.jp&sz=128",
      "url": "https://news.nicovideo.jp/watch/nw19926817?news_ref=watch_20_nw19790425",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "二世古滑雪住宿「Niseko Wow Lodge」推日本居民限定折扣 12月起冬季入住",
+     "highlight": "日本居民限定折扣",
+     "image": "https://ni.yam.com/20261028/jp-atp-644249-1-261028065001627-7e3992de8906e940.webp",
+     "image_via": "og:image",
+     "url": "https://n.yam.com/Article/20261028704514",
      "weight": "normal"
     }
    ],
@@ -470,15 +471,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 21,
-     "source": "Weverse",
-     "title": "Post de la Comunidad ILLIT - 노스카나! 체포하겠어",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1YLU5pQXNmdlFwb0lORmlxNnRmVkdrQ3lvV0c4Sk5hSmFLM1YxeEthR0YyY3ZmY015RFZMZGVRSjRuYzBaV3p4T1JUcFJEMGRqYU1Uc1k2SzBCZ3pNNUE?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -568,15 +560,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 6,
-     "source": "ライブドアニュース",
-     "title": "猫と人間の間で感染する『人獣共通感染症』4つ 表れる症状や避けるべき行為も解説 (2026年10月28日掲載)",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5POHY2cUk1eTJZbW1maHFMVFg4cDgwUDhGbllIQzlQd21rX3VKZXotSXdQUkswWVI4RksxVU1vdWhwWi05TkNjeEthdnptcEdzR0hZak5HUFU5R3E3U1E?oc=5"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -595,7 +578,7 @@
      "date": "2026-10-27",
      "headline": "FDA issues advisory for cat food due to salmonella fears",
      "highlight": "",
-     "image": "https://cdn.sanity.io/images/0vv8moc6/dvm360/45cd96b50bc0fe26c6fdfdc3d7650e713951af5a-356x464.png",
+     "image": "https://cdn.sanity.io/images/0vv8moc6/dvm360/45cd96b50bc0fe26c6fdfdc3d7650e713951af5a-356x464.png?w=1200&fit=max&fm=png",
      "image_via": "og:image（其它来源）",
      "url": "https://www.ksnt.com/news/local-news/fda-issues-advisory-for-cat-food-due-to-salmonella-fears/",
      "weight": "normal"
@@ -608,6 +591,16 @@
      "image": "https://news.dellows.jp/wp-content/uploads/2026/10/901015_1.jpg",
      "image_via": "og:image",
      "url": "https://news.dellows.jp/901015/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "猫と人間の間で感染する『人獣共通感染症』4つ 表れる症状や避けるべき行為も解説",
+     "highlight": "人獣共通感染症",
+     "image": "https://image.news.livedoor.com/newsimage/stf/f/f/ff326_1847_e12f636a1a8a860958b052fc0f578b98.jpg",
+     "image_via": "og:image",
+     "url": "https://news.livedoor.com/topics/detail/32677335/",
      "weight": "normal"
     }
    ],
@@ -716,22 +709,6 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 22,
-     "source": "Geeky Gadgets",
-     "title": "Leaked Galaxy S27 Ultra Details Reveal What Samsung is Changing This Year",
-     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-leaks-24/"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 23,
-     "source": "Gadget Hacks",
-     "title": "Galaxy S27 Ultra Charging Speed: 60W vs S26 Ultra Explained",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOeU1JcEdnVXZIejJWeDZZSS1CbDltOUx2aUY0cWR2LW9ZeXF1RGVnckZlT3c5Ujd3WURiS2RZOURQUnRkdmJ6WkNtbDVaUjExemdmQW9UMjVVVl9IRlRROXF5ZmhfcEtqTThyZFcxWFVPa29GbC1feGZ4RjIybG9WTlU0dnNKcFVrLVhxMmpMbW9lUTlXc1BiLUpMSHE?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -792,6 +769,26 @@
      "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.cn/zh-cn/%E6%8A%80%E6%9C%AF/%E6%B6%88%E8%B4%B9%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81/%E4%B8%89%E6%98%9F-galaxy-s27-pro-ultra-%E6%89%8B%E6%9C%BA%E7%94%B5%E6%B1%A0%E6%9B%9D%E5%85%89-5240mah-5700mah/ar-AA2gdFkj",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "Leaked Galaxy S27 Ultra Details Reveal What Samsung is Changing This Year",
+     "highlight": "",
+     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/Galaxy-S27.jpg",
+     "image_via": "og:image",
+     "url": "https://www.geeky-gadgets.com/samsung-galaxy-s27-ultra-leaks-24/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "Galaxy S27 Ultra Charging Speed: 60W vs S26 Ultra Explained",
+     "highlight": "60W",
+     "image": "https://assets.content.technologyadvice.com/Galaxy_Ultra_Phones_and_60_W_Charger_5670f752e2.webp",
+     "image_via": "og:image",
+     "url": "https://samsung.gadgethacks.com/news/galaxy-s27-ultra-charging-speed-60w-vs-s26-ultra-explained/",
      "weight": "normal"
     }
    ],
@@ -1008,22 +1005,6 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 4,
-     "source": "LINE TODAY",
-     "title": "藤井風來台撞期Vaundy！令和音樂鬼才你選誰？",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBPV0dVZEJzZUZqRHZod0hjTE5GRnFfTjZNelBaTGtFNkFQbkR5SHlFbWVycVVaM1NreXlhTzZmRHZGejZsTExqSWV3TFltbGo0dXc?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 5,
-     "source": "Billboard JAPAN",
-     "title": "【ビルボード】Vaundy、リバイバル中「しわあわせ」で自身初のストリーミング・ソング首位 A2O LITEが4位に急浮上",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE8tdFJJQnRQTksyOFBBRjdLb3UwNFJjbkZ3bzBvT28wUXFYOUh4THNkTkw3YllTMU9maGV3VTd6Zks5d205Wl9nRm91cGtLLVh4ODVfVXppa2xUZXg4UEZLQzdB?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1043,8 +1024,18 @@
      "highlight": "",
      "image": null,
      "source": "Howl.Link",
-     "source_icon": null,
+     "source_icon": "https://www.youtube.com/s/desktop/46f6e5ef/img/favicon_144x144.png",
      "url": "https://t.co/N0Znd9KEYB",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "【ビルボード】Vaundy、リバイバル中「しわあわせ」で自身初のストリーミング・ソング首位",
+     "highlight": "自身初のストリーミング・ソング首位",
+     "image": "https://www.billboard-japan.com/common/sys/img/news/00000166/166889/image.jpg",
+     "image_via": "og:image",
+     "url": "https://www.billboard-japan.com/d_news/detail/166889",
      "weight": "normal"
     }
    ],
@@ -1113,22 +1104,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 18,
-     "source": "Howl.Link",
-     "title": "みーと on X: \"セヴェリアン🐈‍⬛ #ゼンゼロ #zzzero #ZenlessZoneZero\"",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE1JTEhsQ2dzdWlmakE2VWJzVW5mMGdvRXREM3VSckxHNmFlekI5cXJwSW5nbjJTaTg4c21j?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 19,
-     "source": "手机新浪网",
-     "title": "#绝区零# Indol @ Indol_5 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5qeV8wTDRyM3BwOVdHb2pLaTVVQTFIQTI3bUVmb3BWM1M3TVBkNGw5SmdWUFFiWERVOFJ1d3VCaGFYVXBFTllOS1Q5a2k0MG9SQVpGSnBmWGxHX0RWc1NFaTVDcw?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
