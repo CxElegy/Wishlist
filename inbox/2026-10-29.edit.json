@@ -256,7 +256,8 @@
   "绝区零": 3,
   "ぐでたま": 16,
   "周杰伦": 3,
-  "gelato pique": 1
+  "gelato pique": 1,
+  "猫用品": 1
  },
  "三星手机": [
   {
@@ -557,6 +558,18 @@
     1
    ],
    "image": "https://news.walkerplus.com/article/1446866/18749265_615.jpg"
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "FDA warns pet owners after salmonella found in frozen cat food",
+   "highlight": "salmonella found in frozen cat food",
+   "blurb": "The FDA is warning pet owners after salmonella was found in frozen cat food.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/10/1280/720/darwin-cat-food.png?ve=1&tl=1"
   }
  ]
 }

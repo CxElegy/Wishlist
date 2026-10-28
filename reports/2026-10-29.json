@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "3313d31452c0",
+ "edit_sig": "83f0bbae86be",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -836,9 +836,8 @@
      "date": "2026-10-27",
      "headline": "이수만이 론칭한 걸그룹 A2O LITE, 데뷔 2주 만에 美 빌보드 톱10 진입",
      "highlight": "빌보드 톱10 진입",
-     "image": null,
-     "source": "한국미디어창업뉴스",
-     "source_icon": "https://cdn.kmedia-news.com/image/logo/favicon.png",
+     "image": "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg",
+     "image_via": "og:image",
      "url": "http://www.kmedia-news.com/news/articleView.html?idxno=12863",
      "weight": "lead"
     },
@@ -889,17 +888,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "The FDA is warning pet owners after salmonella was found in frozen cat food.",
      "date": "2026-10-27",
-     "n": 1,
-     "source": "LiveNOW from FOX",
-     "title": "FDA warns pet owners after salmonella found in frozen cat food",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPRENad2ZIdnkwSmhrTUN1elhLTEZzSXFkSnpLOGRVM3pwZGhEMFVqRmtNNjcyTEQxaXJlMUJsaWNlN2doTWNESjVXMWpJYVJkeHo2WWJISC1sX0lHeWRkdmlxYXVXcEdFb1d0d3BZS3ZyeElKUi13ZFNha2ZiTTc3VDczVjRJaW9tR3kzN1VTZC1BbHpZUlE?oc=5"
+     "headline": "FDA warns pet owners after salmonella found in frozen cat food",
+     "highlight": "salmonella found in frozen cat food",
+     "image": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/10/1280/720/darwin-cat-food.png?ve=1&tl=1",
+     "image_via": "AI 挑选",
+     "url": "https://www.livenowfox.com/news/fda-warns-pet-owners-after-salmonella-found-frozen-cat-food",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
