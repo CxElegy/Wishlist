@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "9df824f5df3f",
+ "edit_sig": "35100acf1a49",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -734,29 +734,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 2,
-     "source": "Fantha Tracks",
-     "title": "The Mandalorian and Grogu nominated at the 2026 Concept Art Association Awards",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNNUY2eTBBYkVSa29GVWR4Ymt6T2NTMFpCT1BuRVR2NHlFb2VHamtQVGdEX0lCSHdFeTN1cllvQVFKZ1F4TjBrZXpqMWdQc0wtUUhYX3NkbW9UNF9rM3BoeFZUbGlwUndPZjBKSkFvWE00LXRPLTg1RkV1b2lSVlBvT0twTVVoWHdEOFk4UllNb0ZFUmN5QW0tM2c5U3RTS0kzRk03TjdtaUlHeFJPVEJzLWFSbTJrTlhLajdOT3RwdERRX19lb3c?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 3,
-     "source": "Dailymotion on MSN",
-     "title": "Why Mandalorian & Grogu just bombed",
-     "url": "https://www.msn.com/en-us/entertainment/tv/why-mandalorian-grogu-just-bombed/vi-AA2gbNw5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 4,
-     "source": "Red Five on MSN",
-     "title": "Moff Gideon's imperial motive in The Mandalorian explained",
-     "url": "https://www.msn.com/en-us/entertainment/general/moff-gideon-s-imperial-motive-in-the-mandalorian-explained/vi-AA1EsQvE"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -764,12 +741,22 @@
      "date": "2026-10-27",
      "headline": "The Mandalorian is back this November with a new Star Wars adventure",
      "highlight": "this November",
-     "image": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Star-Wars-The-Mandalorian-and-Grogu.jpg?resize=1200,630",
-     "image_via": "同一件事的别家报道 www.superherohype.com",
+     "image": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
+     "image_via": "作品封面",
      "source": "Skoar! on MSN",
      "source_icon": "https://www.google.com/s2/favicons?domain=www.msn.com&sz=128",
      "url": "https://www.msn.com/en-in/news/other/the-mandalorian-is-back-this-november-with-a-new-star-wars-adventure/ar-AA2g9zuc",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "The Mandalorian and Grogu nominated at the 2026 Concept Art Association Awards",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000",
+     "image_via": "Bing 缩略图",
+     "url": "https://www.fanthatracks.com/news/film-music-tv/the-mandalorian-and-grogu-nominated-at-the-2026-concept-art-association-awards/",
+     "weight": "normal"
     }
    ],
    "subtitle": "ザ・マンダロリアン",
