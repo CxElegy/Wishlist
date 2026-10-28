@@ -1,6 +1,6 @@
 {
  "date": "2026-10-28",
- "edit_sig": "078c7db5cbd4",
+ "edit_sig": "278ae8baf3a5",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -753,22 +753,6 @@
    "cover": null,
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 20,
-     "source": "IT之家 on MSN",
-     "title": "三星 Galaxy S27 Pro/Ultra 手机电池曝光：5240mAh/5700mAh",
-     "url": "https://www.msn.cn/zh-cn/%E6%8A%80%E6%9C%AF/%E6%B6%88%E8%B4%B9%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81/%E4%B8%89%E6%98%9F-galaxy-s27-pro-ultra-%E6%89%8B%E6%9C%BA%E7%94%B5%E6%B1%A0%E6%9B%9D%E5%85%89-5240mah-5700mah/ar-AA2gdFkj"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 21,
-     "source": "M투데이",
-     "title": "삼성 갤럭시 S27 울트라, 배터리 5700mAh로 확대⋯중국산 배터리 탑재 가능성",
-     "url": "https://www.autodaily.co.kr/news/articleView.html?idxno=601559"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -819,6 +803,16 @@
      "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/28/1793151284696_galaxy-s27-ultra-tu-bo-chip-snapdragon-co-loi-cho-fan-samsung-3006.png",
      "image_via": "og:image",
      "url": "https://www.vietnam.vn/ja/galaxy-s27-ultra-tu-bo-chip-snapdragon-co-loi-cho-fan-samsung",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "三星 Galaxy S27 Pro/Ultra 手机电池曝光：5240mAh/5700mAh",
+     "highlight": "5240mAh/5700mAh",
+     "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.cn/zh-cn/%E6%8A%80%E6%9C%AF/%E6%B6%88%E8%B4%B9%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81/%E4%B8%89%E6%98%9F-galaxy-s27-pro-ultra-%E6%89%8B%E6%9C%BA%E7%94%B5%E6%B1%A0%E6%9B%9D%E5%85%89-5240mah-5700mah/ar-AA2gdFkj",
      "weight": "normal"
     }
    ],
@@ -991,8 +985,8 @@
      "date": "2026-10-27",
      "headline": "The Mandalorian and Grogu nominated at the 2026 Concept Art Association Awards",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000",
-     "image_via": "Bing 缩略图",
+     "image": "https://www.fanthatracks.com/wp-content/uploads/2026/10/TMAG_CAAA_cover_1a.jpg",
+     "image_via": "og:image",
      "url": "https://www.fanthatracks.com/news/film-music-tv/the-mandalorian-and-grogu-nominated-at-the-2026-concept-art-association-awards/",
      "weight": "normal"
     }
