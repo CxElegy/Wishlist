@@ -1,14 +1,14 @@
 {
- "admin": "bbe7693ad54b",
- "admin-ai": "de2886f7e738",
+ "admin": "ee46dfddd348",
+ "admin-ai": "ad32203b3727",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "edd7e8b3"
+   "cb02ed33"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "cc9cd7e9"
+   "86b05746"
   ]
  },
  "admin-boards": "646bfc3a6b15",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "ceceede088ad",
+ "admin-emblem": "3f267e6efead",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "374be849"
+   "72d1025e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -34,20 +34,20 @@
   ],
   "emblem-manage": [
    "小元素の管理",
-   "8282fd72"
+   "43816b27"
   ],
   "emblems": [
    "小元素",
-   "c8c15bf5"
+   "e78c16be"
   ]
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "799a746e3d0b",
+ "admin-now": "b0a5be783e19",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e8cfa917"
+   "2221d99e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "cbba4c9a"
+   "a54409b8"
   ]
  },
- "admin-system": "aa81703adb9a",
+ "admin-system": "8e236ebf698c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4daf0fa4"
+   "6481ba44"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d81dd239"
+   "f44c65d5"
   ]
  },
  "admin_marks": {},
- "heat": "301537e27a8a",
+ "heat": "2318141a2c97",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "675e0deb"
+   "95442ee6"
   ],
   "ranking": [
    "ランキング",
-   "fd3c6668"
+   "25d46275"
   ]
  },
- "index": "d72c40d87658",
+ "index": "58ed2770fd47",
  "index_marks": {
   "front": [
    "トップ",
-   "a6998a70"
+   "a9418b07"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "5ff9e4c3"
+   "9f7bf316"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "f8b5ba9f"
+   "f358fc8f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 05:02",
+ "updated": "10.30 05:09",
  "wishlist": "7af11c19700f"
 }

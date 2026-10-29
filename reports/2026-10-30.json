@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "b5cfdfe45eb6",
+ "edit_sig": "c1590d9e9ea8",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -171,8 +171,9 @@
      },
      "headline": "Nexon、「オーバーギアード」オンラインショーケースを11月5日に配信",
      "highlight": "11月5日",
-     "image": "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "DigitalToday",
+     "source_icon": "https://cdn.digitaltoday.co.kr/image/logo/favicon.ico",
      "url": "https://www.digitaltoday.co.kr/jp/view/121244/nexon-to-hold-tembbal-overgeared-online-showcase-on-nov-5",
      "weight": "normal"
     }
@@ -193,62 +194,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 34,
-     "source": "IMDb",
-     "title": "New Look at Doctor Doom With the Latverian Witches in ‘Avengers: Doomsday’ Revealed",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9tdnFEbUlQLXpqbUF0cldpU0ZyRmNMUjJEcnp1N0RBWlpGMEZDekRxWGJ1ZXBpTmZ0UTZzSkgtbm9KRG5UYlVCQWlReFNhTTFNN3BpeV9aaUt0S0NiZjJERG5QZC1DUTg?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 35,
-     "source": "SlashFilm",
-     "title": "Avengers: Doomsday Theater Merchandise Is All About Doctor Doom And The Sentinels",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOYVZJOEFoSG9Pc1lONW1pdEpnMFhFQ1pTaWpRTE5VaUM1VjlOLVdMbHpXaEw2dlJUb2MyTkx2LVFOTG9NX1dkOElqTUF0dlpOQUM4QmowWXQtQUFZSGZBMUd6Xy1XZ29MdlJYalUwNWNQNVRRZ0pUdjlDNUF5aVBFWE9LbXJ6M3VOdVhfVGpUaE1IYUhyYXB0dktn?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 36,
-     "source": "IMDb",
-     "title": "New Look at Doctor Doom Controlling the Sentinels in ‘Avengers: Doomsday’ Revealed",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBHcjdGRU11dG9ZQkZ4b0laaXpibWlLeTJYOTcwb3llbWZ2RnZ1X3JnSGc2Q25tbkV3bmpmdFc2cjFFTFJBMGRjZnRUNkdXY0xrU1J2d2N2bzhFVWpOQ2VKdTRjT29qZkU?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 37,
-     "source": "SYFY",
-     "title": "Anthony Mackie Teases Where We Find Captain America in Avengers: Doomsday (Exclusive)",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQa1RTV0ZWbzE1VWh0MHlPZXhXWXFxZHYzS1R1ODRnMGdZVHptdTJ3MFRyZG1oR0JKWmhBQmpWV1otUmpmTDFqRzktOWpVS182Y3Ffd3BxdEdGdHdRWW5lTTRrRU40RE12ejRZMlFIV01vR1dWeVgyandYNVF2dVBscl82cjY5aW9jVjJfYlVERnI4eGNmQ0U2dFJId2V4WDliam4xU0NDVFNwZlVsYjFr?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 38,
-     "source": "Yahoo",
-     "title": "Dunesday's Box Office Presales Show A Clear Winner Between Avengers: Doomsday And Dune: Part Three",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOUFFPY1FuSmdkVWc3bVlZemYtaHd5cUdScDhJbmZ4TUp0NzBKZUlLQ1MyYWhHa1ZVckdPRjZoZ3NJcld0V1JTdktBT29VWlctV0RsbHI2dFBzZERVUUwzc3F6UG9fZUt2TnRwWVlBcFRITjZxcDRPSXhBYkVaTHdlVl9GbXNUUTFWLUQzY09qYlRsRmNnZmJmeURUMndvNkF0dnRZ?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 39,
-     "source": "Collider",
-     "title": "From ‘The Traitors’ to ‘Avengers: Doomsday,’ Alan Cumming Has a Few Tricks Left up His Sleeve",
-     "url": "https://collider.com/alan-cumming-the-traitors-avengers-doomsday-interview/"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-25",
-     "headline": "《复仇者联盟5》试映好评+预售强势，毁灭博士被放到灭霸级别",
-     "highlight": "",
-     "image": "https://img-s.msn.cn/tenant/amp/entityid/AA2g3wYq.img",
-     "image_via": "MSN 接口",
-     "url": "https://www.msn.com/zh-cn/entertainment/movies/%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F5-%E8%AF%95%E6%98%A0%E5%A5%BD%E8%AF%84-%E9%A2%84%E5%94%AE%E5%BC%BA%E5%8A%BF-%E6%AF%81%E7%81%AD%E5%8D%9A%E5%A3%AB%E8%A2%AB%E6%94%BE%E5%88%B0%E7%81%AD%E9%9C%B8%E7%BA%A7%E5%88%AB/ar-AA2g2Zmd",
-     "weight": "hero"
-    },
     {
      "blurb": "New international, IMAX and 4DX posters put Doctor Doom and his Latverian witches front and center, with theater merch revealed.",
      "date": "2026-10-29",
@@ -291,6 +238,16 @@
      "image": "https://maxblizz.com/wp-content/uploads/2026/10/secret-wars.jpg",
      "image_via": "og:image（其它来源）",
      "url": "https://www.imdb.com/news/ni66085963/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "Ghost Rider Writer Wants an R-Rated MCU Horror Movie",
+     "highlight": "",
+     "image": "https://gdm-universal-media.b-cdn.net/epicstream/d674716a-ghost-rider.webp?width=1600&height=840",
+     "image_via": "og:image",
+     "url": "https://epicstream.com/article/ghost-rider-writer-wants-an-r-rated-mcu-horror-movie",
      "weight": "normal"
     }
    ],
