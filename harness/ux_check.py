@@ -36,6 +36,7 @@ import pathlib
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 
 import yaml
@@ -331,6 +332,66 @@ ADMIN_JS = """() => ({ids:[...document.querySelectorAll('section.panel[id]')].ma
 EYE_JS = """() => { const t = [...document.querySelectorAll('.emm-ph img.fv')];
  return {n: t.length, off: t.filter(i => !i.parentElement.querySelector('.emm-fl') && Math.abs(+i.dataset.eye - 0.3) > 0.05).length,
   short: t.filter(i => (i.parentElement.querySelector('.emm-fl') || {}).textContent === '下が足りない（目の線が合わない）').length} }"""
+
+
+def rest_boards(tok=None, exact=False):
+    """boards を REST で読む（tok なし＝ログインなし）。(名前の一覧, 本当の件数) を返す。"""
+    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    base, key = s["supabase_url"].rstrip("/"), s["supabase_key"]
+    h = {"apikey": key, "Authorization": "Bearer " + (tok or key), "Prefer": "count=exact"}
+    r = urllib.request.urlopen(urllib.request.Request(base + "/rest/v1/boards?select=id,name", headers=h), timeout=30)
+    rows = json.loads(r.read())
+    return [x["name"] for x in rows], int(r.headers.get("Content-Range", "0-0/0").split("/")[-1])
+
+
+def check_public_leak(base):
+    """公開の HTML（だれでも開ける管理ページなど）にお客さまだけの版面の名前が焼かれていない（HARNESS §2-5・BACKLOG：公開の場所にお客さまの中身を出さない）。
+    お客さまだけの名前 ＝ test-a が読める版面 − ログインなしが読める版面。"""
+    anon, _ = rest_boards()
+    mine = set()
+    for e in ("test-a@example.com", "test-b@example.com"):
+        mine |= set(rest_boards(session(e)["access_token"])[0])
+    only = sorted(n for n in mine - set(anon) if len(n) >= 3)
+    pages = ADMIN_FILES + ["index.html", "settings.html", "wishlist.html"]
+    bad = []
+    for f in pages:
+        html = urllib.request.urlopen(urllib.request.Request(base + f, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
+        # 版面の名前としての出方（data-k・data-name・表の1マス）だけ数える。記事の題や BACKLOG の文に入った同じ字は版面ではない
+        hit = [n for n in only if any(m in html for m in (f'data-k="{n}"', f'data-name="{n}"', f'<td>{n}</td>'))]
+        if hit:
+            bad.append(f"{f} にお客さまだけの版面の名前 {len(hit)} 件（{hit[:3]}）")
+    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    try:   # 配色の RPC は anon が呼べない（実際の権限。is_admin の弾きは「管理者だけ」、権限なしは permission denied）
+        journey_rpc(s["supabase_url"], s["supabase_key"], s["supabase_key"], "board_theme_set", {"p_board": 0, "p_theme": {}})
+        bad.append("board_theme_set をログインなしで呼べた")
+    except urllib.error.HTTPError as ex:
+        if "permission denied" not in ex.read().decode("utf-8", "replace"):
+            bad.append("board_theme_set がログインなしで関数まで届いた（anon の execute が残っている）")
+    return bad, len(only)
+
+
+def check_admin_coverage(pw, base, width):
+    """管理ページ②版面（店長でログイン）に出る版面の数＝ライブラリの版面の数（HARNESS §2-5）。店長の合言葉が要る：
+    UX_ADMIN_EMAIL・UX_ADMIN_PASSWORD（Actions の Secrets）。なければ None（未確認。✓ とは言わない）。"""
+    em, pw_ = os.environ.get("UX_ADMIN_EMAIL"), os.environ.get("UX_ADMIN_PASSWORD")
+    if not (em and pw_):
+        return None
+    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    k, u = s["supabase_key"], s["supabase_url"].rstrip("/")
+    ses = json.loads(urllib.request.urlopen(urllib.request.Request(
+        u + "/auth/v1/token?grant_type=password", data=json.dumps({"email": em, "password": pw_}).encode(),
+        headers={"apikey": k, "Content-Type": "application/json"}), timeout=30).read())
+    ses["expires_at"] = int(time.time()) + int(ses.get("expires_in", 3600))
+    want = rest_boards(ses["access_token"])[1]
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    pg = b.new_page(viewport={"width": width, "height": 900})
+    pg.goto(base, wait_until="domcontentloaded", timeout=60000)
+    pg.evaluate("s=>{localStorage.setItem('wl-auth',JSON.stringify(s));localStorage.setItem('wl-user',JSON.stringify({name:s.user.email}));}", ses)
+    pg.goto(base + "admin-boards.html", wait_until="networkidle", timeout=60000)
+    pg.wait_for_selector("#wl-libboards[data-n]", state="attached", timeout=30000)
+    got = pg.evaluate("[+document.getElementById('wl-libboards').dataset.n, document.querySelectorAll('#wl-libboards tr[data-id]').length]")
+    b.close()
+    return [] if got[0] == want and got[1] == want else [f"ライブラリの版面 {want} に対して管理ページは {got[0]}（行 {got[1]}）"]
 
 
 def check_admin_pages(pw, base, width, out):
@@ -678,6 +739,22 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
+        if not a.fast:   # 公開の HTML にお客さまだけの版面の名前が 0 件・店長でログインした管理ページの版面の数＝ライブラリの数
+            try:
+                bad, n = check_public_leak(a.base)
+            except Exception as ex:  # noqa: BLE001
+                bad, n = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"], 0
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + "公開の HTML にお客さまだけの版面の名前：" + ("、".join(bad) if bad else f"{n} 件の名前が 0 か所"))
+            try:
+                bad = check_admin_coverage(pw, a.base, 1400)
+            except Exception as ex:  # noqa: BLE001
+                bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+            if bad is None:
+                print("– 管理ページの網羅：未確認（UX_ADMIN_EMAIL・UX_ADMIN_PASSWORD がない。✓ とは言わない）")
+            else:
+                fails += bool(bad)
+                print(("✗ " if bad else "✓ ") + "管理ページの網羅：" + ("、".join(bad) if bad else "ライブラリの版面の数と同じ"))
         for w in ([] if a.fast else sorted({*a.widths.split(","), "520"}, key=int)):   # 演出のはみ出し（390・520・1400）
             try:
                 bad = check_fx_edge(pw, a.base, int(w))
