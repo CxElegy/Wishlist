@@ -333,7 +333,7 @@
   "The Mandalorian": 8,
   "星巴克马克杯": 9,
   "あつ森": 8,
-  "MMORPG 新作": 15,
+  "MMORPG 新作": 18,
   "哈利波特剧集": 5,
   "日本顶级网球赛事": 27,
   "FROM": 4,
@@ -583,17 +583,18 @@
    "image": "https://cdn.gamemeca.com/gmdata/0001/782/562/gm361604_thumb______.webp"
   },
   {
-   "headline": "コージーMMO『クロスランド(Spirit Crossing)』11月16日発売決定",
-   "highlight": "11月16日発売決定",
+   "headline": "コージーMMO『クロスランド』Switch2 / Switch / PC向けに11月17日発売決定",
+   "highlight": "11月17日発売決定",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    16,
     6,
     9,
     3
    ],
    "event": {
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "label": "発売日"
    }
   },
@@ -604,6 +605,24 @@
    "weight": "normal",
    "refs": [
     11
+   ]
+  },
+  {
+   "headline": "“デューン/砂の惑星”サバイバルMMO「Dune: Awakening」の国内PS5版が本日発売",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17
+   ]
+  },
+  {
+   "headline": "Netmarble's Vampire-Themed MMORPG Vampir Officially Launches in New Global Markets",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    18
    ]
   }
  ],
