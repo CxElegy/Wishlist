@@ -2266,6 +2266,14 @@ def too_small(im, body=False):
     return not body and min(im.size) < emblem.BUST_MIN_SIDE
 
 
+def wide_retry(x):
+    """小さいだけで外した小元素か：元の網址が縮めた幅（narrow_source）で、切り抜きの短い辺が BUST_MIN_SIDE 未満（face の w・h）。
+    縮めた網址のまま emblem_reject に入れると、大きい幅で取り直せる絵（dota2 Crystal Maiden 390×247 は幅 400 の絵）が二度と選ばれない。reject に入れず、次の回に大きい幅で取り直す（まだ小さければ save_cut が外す）。"""
+    f = x.get("face") or []
+    return (not x.get("body") and not x.get("lock") and not emblem.bad_source(x) and emblem.narrow_source(x.get("source"))
+            and len(f) >= 6 and min(f[4], f[5]) < emblem.BUST_MIN_SIDE)
+
+
 def broken_image(im, photo, whole=False):
     """切り抜き 1 枚（PIL）が壊れているか：切れ端・上の端の半分以上が人物（TOP_MAX：コマの切り抜き）・頭のてっぺん・額が上の端で切れた・写真がぼやけた。broken_cuts とお客さまの版面（library_emblem）で同じ。"""
     if emblem.is_sliver(*im.size) or not whole and (emblem.head_cut(im) or emblem.top_share(im) > emblem.TOP_MAX or emblem.top_share(im) > emblem.TOP_TOUCH and emblem.forehead_cut(im)):   # whole：公式の全身の絵（body の足の裏が画像の中）は上の端が絵そのもの（ポチタの持ち手）で、枠で切れたのではない   # 頭のてっぺん・額まで切れた前からの切り抜き（check_whole と同じ：額は上の端に TOP_TOUCH 以上当たっているときだけ見る。The Mandalorian Gideon 1.0%・Mayfeld 0.3% は頭が全部入っている）
@@ -2280,7 +2288,7 @@ def broken_image(im, photo, whole=False):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 10   # 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 11   # 11：小さいだけで外した縮めた網址の絵を emblem_reject に入れない・前の分は戻す（wide_retry：dota2 89 枚が大きい幅で取り直されなかった）。 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 RULE_VERSION_NAMES = ("NAMES_V", "BROKEN_V")   # 規則の版は 1 か所：上がると失敗の待ちを解く（店長 material・お客さま library_emblem.due）。*_V を足したらここにも（tests が拦める）
 
@@ -2658,7 +2666,7 @@ def unbreak(item, log=print):
                 have.add(_name_key(x.get("subject")))
         d[name] = [e for e in ents if e not in old] + [{**e, "v": BROKEN_V} for e in old if e["emblem"] not in back]
         _broken_log(d)
-        free = {(e["emblem"].get("source") or "") for e in old if e["emblem"] not in back and e["emblem"].get("body") and _name_key(e["emblem"].get("subject")) not in have and not closeup_cuts({**item, "emblem": [e["emblem"]]})[0]}   # 体の絵は元の画像（公式の全身）から今の規則で切り直す：前の規則の切り口で外れた画像の札を解く
+        free = {(e["emblem"].get("source") or "") for e in old if e["emblem"] not in back and (e["emblem"].get("body") or wide_retry(e["emblem"])) and _name_key(e["emblem"].get("subject")) not in have and not closeup_cuts({**item, "emblem": [e["emblem"]]})[0]}   # 体の絵は元の画像（公式の全身）から今の規則で切り直す：前の規則の切り口で外れた画像の札を解く
         if not back and not free:
             return 0
         src = {b.get("source") or b["image"] for b in back} | free
@@ -2766,7 +2774,7 @@ def drop_broken(item, log=print):
         d.setdefault(item["name"], []).extend({"v": BROKEN_V, "emblem": b} for b in bad)
         _broken_log(d)
     keep = [x for x in item.get("emblem") or [] if not any(x is b for b in bad)]
-    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad]))
+    rej = list(dict.fromkeys(list(item.get("emblem_reject") or []) + [b.get("source") or b["image"] for b in bad if not wide_retry(b)]))
     with WRITE_LOCK:
         emblem.write_item(item["name"], keep, None)
         _set_field(item["name"], "emblem_reject", json.dumps(rej, ensure_ascii=False) + "   # 目で見て・検査で外した画像。自動補完は選ばない")

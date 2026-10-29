@@ -90,5 +90,45 @@ class MinSide(unittest.TestCase):
 
 
 
+class WideRetry(unittest.TestCase):
+    """縮めた幅（400）で小さいと測れて外した絵を emblem_reject に入れない（dota2 Crystal Maiden 390×247）。"""
+
+    NARROW = "https://static.wikia.nocookie.net/d/images/c/c2/A.jpg/revision/latest/scale-to-width-down/400?cb=1"
+
+    def test_narrow_source(self):
+        self.assertTrue(emblem.narrow_source(self.NARROW))
+        self.assertTrue(emblem.narrow_source("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Y.jpg/500px-Y.jpg"))
+        self.assertFalse(emblem.narrow_source(self.NARROW.replace("/400", "/1200")))
+        self.assertFalse(emblem.narrow_source("https://static.wikia.nocookie.net/b/images/b/bc/R.png/revision/latest?cb=1"))   # Rukia：元の大きさのまま小さい = 本当に小さい
+
+    def test_wide_retry(self):
+        import emblem_fill as ef
+        x = {"subject": "CM", "source": self.NARROW, "face": [0.1, 0.1, 0.5, 0.5, 390, 247]}
+        self.assertTrue(ef.wide_retry(x))
+        self.assertFalse(ef.wide_retry({**x, "face": [0.1, 0.1, 0.5, 0.5, 390, 300]}))      # 小さくない
+        self.assertFalse(ef.wide_retry({**x, "source": self.NARROW.split("/revision")[0]}))   # 縮めた網址ではない
+        self.assertFalse(ef.wide_retry({**x, "lock": True}))
+
+    def test_drop_broken_keeps_narrow_small_out_of_reject(self):
+        import emblem_fill as ef
+        src = inspect.getsource(ef.drop_broken)
+        self.assertIn("wide_retry", src)
+
+    def test_unbreak_frees_narrow_small_source(self):
+        import json
+        import yaml
+        import emblem_fill as ef
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        (tmp / "state").mkdir()
+        x = {"subject": "CM", "image": "emblems/gone.webp", "source": self.NARROW, "face": [0.1, 0.1, 0.5, 0.5, 390, 247]}
+        (tmp / "state" / "emblem_broken.json").write_text(json.dumps({"M": [{"v": 10, "emblem": x}]}), encoding="utf-8")
+        (tmp / "items.yaml").write_text(f'items:\n  - name: M\n    emblem_kind: character\n    emblem_reject: ["{self.NARROW}", "http://s/z"]\n    emblem: []\n', encoding="utf-8")
+        item = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        with mock.patch.object(ef, "ROOT", tmp), mock.patch.object(emblem, "ROOT", tmp), mock.patch.object(emblem.sitedir, "SITE_DIR", tmp):
+            ef.unbreak(item, log=lambda *_: None)
+        got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
+        self.assertEqual(got["emblem_reject"], ["http://s/z"])
+
+
 if __name__ == "__main__":
     unittest.main()
