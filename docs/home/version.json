@@ -1,32 +1,32 @@
 {
- "admin": "9813e2f10442",
- "admin-ai": "8dbc61f0df84",
+ "admin": "14b58f892047",
+ "admin-ai": "cf9096da75f6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "a81c706f"
+   "a7484a0a"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "b31f4248"
+   "b7feab5f"
   ]
  },
- "admin-boards": "25b7157f1ec7",
+ "admin-boards": "241a99a7dd03",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "773a97c4"
+   "4c193d88"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "4ebecf425e6f",
+ "admin-emblem": "fb6bd64db121",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1df3d373"
+   "f74bfc7e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "dd02ba5aea49",
+ "admin-now": "8db580fb221a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1f21b6da"
+   "fdbc82d4"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "ef91d181"
+   "c19de4e0"
   ]
  },
- "admin-system": "542bb56a9b66",
+ "admin-system": "1bd502dd8eb3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a3161e62"
+   "b46cff46"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0871467f"
+   "46a93ac2"
   ]
  },
  "admin_marks": {},
- "heat": "33d754327670",
+ "heat": "cefe533d27a7",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d100d05c"
+   "85ae7fb5"
   ],
   "ranking": [
    "ランキング",
-   "c455de9f"
+   "85976736"
   ]
  },
- "index": "e557629bb848",
+ "index": "ee798b3dcbc6",
  "index_marks": {
   "front": [
    "トップ",
-   "eb39f23c"
+   "f4836b83"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "98b10b10"
+   "4c2a9b71"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "ef85c092"
+   "df260791"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -196,6 +196,6 @@
    "0929dd51"
   ]
  },
- "updated": "10.29 10:08",
+ "updated": "10.29 10:17",
  "wishlist": "6992f9a6d927"
 }

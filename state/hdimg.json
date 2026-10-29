@@ -535,6 +535,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg": {
+  "w": 300,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.661,
+  "local": "pics/436da2d62021597d.webp",
+  "out": [
+   900,
+   900
+  ],
+  "why": "看不清"
+ },
  "https://cdn.livedoor.jp/kstyle/b4d9d285e668cb548e563e3d7218ddeb_WI.jpg": {
   "w": 1024,
   "h": 576,
@@ -3516,6 +3529,12 @@
   "w": 1200,
   "h": 801,
   "target": 720,
+  "v": 3
+ },
+ "https://today-obs.line-scdn.net/0hyA9Kp778Jm4EMjrrBnpZOTxkKh83VDxnJl1rDSExeA17HjU8awZ1DSRicEJ6UWZsJFduDyAyfFYoUmIwbw/w1200": {
+  "w": 1000,
+  "h": 667,
+  "target": 1280,
   "v": 3
  },
  "https://tokyochips.tokyo/contents/wp-content/uploads/2026/10/torayppo_nmntn_c_2.jpg": {

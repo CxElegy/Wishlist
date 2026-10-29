@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "be4ffe5a36b9",
+ "edit_sig": "6624cbd7dbc0",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -841,15 +841,6 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 4,
-     "source": "LINE TODAY",
-     "title": "討論牆| vivo X500系列攜周杰倫開啟「晴天」影像魅力！10/30登台鎖定直播搶500萬回饋、再抽簽名手機",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBQRFQ5MDBWckpLQkNiZF85c3dLTXhXNUd0TjB5QXF0WUUzeU1qUEs5RkJlZHEzT0xZdEtEaTkybmZSVHBMcFF6QnRxM1R6aHpEZDR6Y1ZxR1lsYzRDRkZEYnNHTnM?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -861,6 +852,20 @@
      "image_via": "AI 挑选",
      "url": "https://www.therakyatpost.com/news/2026/10/28/vivo-x500-pro-max-lands-in-malaysia-with-a-200mp-zoom-and-jay-chou-tickets-up-for-grabs/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "event": {
+      "date": "2026-10-30",
+      "label": "登台"
+     },
+     "headline": "討論牆| vivo X500系列攜周杰倫開啟「晴天」影像魅力！10/30登台鎖定直播搶500萬回饋、再抽簽名手機",
+     "highlight": "10/30登台",
+     "image": "https://today-obs.line-scdn.net/0hyA9Kp778Jm4EMjrrBnpZOTxkKh83VDxnJl1rDSExeA17HjU8awZ1DSRicEJ6UWZsJFduDyAyfFYoUmIwbw/w1200",
+     "image_via": "og:image",
+     "url": "https://today.line.me/tw/v3/posts/list/article/OplQgDG",
+     "weight": "normal"
     }
    ],
    "subtitle": "周杰倫",
@@ -935,9 +940,8 @@
      "date": "2026-10-27",
      "headline": "이수만이 론칭한 걸그룹 A2O LITE, 데뷔 2주 만에 美 빌보드 톱10 진입",
      "highlight": "빌보드 톱10 진입",
-     "image": null,
-     "source": "한국미디어창업뉴스",
-     "source_icon": "https://cdn.kmedia-news.com/image/logo/favicon.png",
+     "image": "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg",
+     "image_via": "og:image",
      "url": "http://www.kmedia-news.com/news/articleView.html?idxno=12863",
      "weight": "lead"
     },
