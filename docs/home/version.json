@@ -1,32 +1,32 @@
 {
- "admin": "3dd3f6447095",
- "admin-ai": "fcc7174f51aa",
+ "admin": "ea5865e66e25",
+ "admin-ai": "ccac9e07475a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "477e14b7"
+   "e019826e"
   ],
   "tokens": [
    "AI 編集のトークン",
    "a6229145"
   ]
  },
- "admin-boards": "3ef470e1b3e1",
+ "admin-boards": "27008c42cce3",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "ba79026a"
+   "827b110a"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "9643430fdf0a",
+ "admin-emblem": "9b9f343767b9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "30571c4c"
+   "d5eef24e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "26b0ff22"
+   "a449cef9"
   ]
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "1a3ed138a4c8",
+ "admin-now": "0bf2701b79e8",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "5fa864c1"
+   "96bccbde"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "681802da"
+   "6fabc489"
   ],
   "term-panel": [
    "ライブログ",
-   "915f3819"
+   "7f46587c"
   ]
  },
- "admin-system": "f6d8db9b1b7f",
+ "admin-system": "134704ccbcfa",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "88f75992"
+   "4ba506ec"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "a113a1e3"
+   "062e489d"
   ]
  },
  "admin_marks": {},
- "heat": "ae12f8f6a047",
+ "heat": "7dc34364ab1c",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "82dbd113"
+   "b689957a"
   ],
   "ranking": [
    "ランキング",
-   "a05c8225"
+   "76e8f363"
   ]
  },
- "index": "1243add1e176",
+ "index": "746327aa7786",
  "index_marks": {
   "front": [
    "トップ",
-   "cf6c3533"
+   "987c0eea"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "84b92818"
+   "b9ce07ab"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "875611f3"
+   "9c75c5b8"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "0bd50c9d"
+   "d5e341bb"
   ],
   "w-f303ad09": [
    "绝区零",
    "0929dd51"
   ]
  },
- "updated": "10.30 00:51",
+ "updated": "10.30 00:57",
  "wishlist": "00aa5670e3de"
 }
