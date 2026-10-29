@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "12f43984fd46",
+ "edit_sig": "be4ffe5a36b9",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -612,16 +612,6 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
-     "date": "2026-10-24",
-     "headline": "＜画像5 / 8＞ぐでたまが博多弁!?天神にぐでたまカフェがオープン",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/81852/462362_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/81852/image462373.html",
-     "weight": "hero"
-    },
-    {
      "blurb": "人気のぐでたまかふぇの常設店が梅田に登場。",
      "date": "2026-10-25",
      "headline": "大人気“ぐでたまかふぇ”の常設店が梅田にオープン！",
@@ -659,6 +649,16 @@
      "image": "https://news.walkerplus.com/article/1447118/18760300_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1447118/image18760304.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "ぐでたまふぇすてぃばる！ゆる～い“卵キャラ”がピューロランドをジャック",
+     "highlight": "ぐでたまふぇすてぃばる",
+     "image": "https://news.walkerplus.com/article/75130/431003_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/75130/image431011.html",
      "weight": "normal"
     }
    ],
@@ -935,8 +935,9 @@
      "date": "2026-10-27",
      "headline": "이수만이 론칭한 걸그룹 A2O LITE, 데뷔 2주 만에 美 빌보드 톱10 진입",
      "highlight": "빌보드 톱10 진입",
-     "image": "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "한국미디어창업뉴스",
+     "source_icon": "https://cdn.kmedia-news.com/image/logo/favicon.png",
      "url": "http://www.kmedia-news.com/news/articleView.html?idxno=12863",
      "weight": "lead"
     },

@@ -535,19 +535,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg": {
-  "w": 300,
-  "h": 300,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.661,
-  "local": "pics/436da2d62021597d.webp",
-  "out": [
-   900,
-   900
-  ],
-  "why": "看不清"
- },
  "https://cdn.livedoor.jp/kstyle/b4d9d285e668cb548e563e3d7218ddeb_WI.jpg": {
   "w": 1024,
   "h": 576,
@@ -2453,16 +2440,16 @@
   ],
   "why": "看不清"
  },
- "https://news.walkerplus.com/article/81852/462362_615.jpg": {
+ "https://news.walkerplus.com/article/75130/431003_615.jpg": {
   "w": 615,
-  "h": 461,
+  "h": 410,
   "target": 1280,
   "v": 3,
-  "blur": 0.609,
-  "local": "pics/3bcab3850c1ea638.webp",
+  "blur": 0.54,
+  "local": "pics/039e0299b16dd793.webp",
   "out": [
    1280,
-   959
+   853
   ],
   "why": "看不清"
  },

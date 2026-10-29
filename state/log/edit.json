@@ -1,83 +1,5 @@
 [
 {
-"at": "2026-10-28T01:43:10+00:00",
-"text": "2026-10-28 第 1 バッチを出刊：A2O LITE、BLEACH Mirrors High、ILLIT、日本顶级网球赛事、漫威电影、绝区零（6 版面・24 本・残り 5 版面） · token 新規入力 5.9万・キャッシュ読み 91.9万・出力 4,667",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.22,
-"mem_total": 16872808448,
-"mem_free": 15785181184,
-"disk_used": 10728431616,
-"disk_free": 30594076672,
-"disk_total": 41322508288,
-"peak": 426455040
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"BLEACH Mirrors High",
-"ILLIT",
-"日本顶级网球赛事",
-"漫威电影",
-"绝区零"
-],
-"stories": 24,
-"left": 5,
-"edited": 18,
-"run": 1793151439.153574,
-"tok": {
-"in": 26,
-"cw": 58878,
-"cr": 918937,
-"out": 4667,
-"calls": 13,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 982508
-},
-{
-"at": "2026-10-28T01:49:13+00:00",
-"text": "2026-10-28 第 2 バッチを出刊：GTA 6（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 6,502・キャッシュ読み 44.6万・出力 2,346",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.09,
-"mem_total": 16872808448,
-"mem_free": 15870468096,
-"disk_used": 10845401088,
-"disk_free": 30477107200,
-"disk_total": 41322508288,
-"peak": 349442048
-},
-"batch": 2,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 0,
-"edited": 20,
-"run": 1793151439.153574,
-"tok": {
-"in": 10,
-"cw": 6492,
-"cr": 445749,
-"out": 2346,
-"calls": 5,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 454597,
-"secs": 715,
-"run_tok": {
-"in": 36,
-"cw": 65370,
-"cr": 1364686,
-"out": 7013,
-"calls": 18,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-28T04:45:17+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1820,5 +1742,69 @@
 "at": "2026-10-29T01:01:38+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
+},
+{
+"at": "2026-10-29T01:07:36+00:00",
+"text": "2026-10-29 第 1 バッチを出刊：The Mandalorian（1 版面・4 本・残り 3 版面） · token 新規入力 4.6万・キャッシュ読み 57.3万・出力 2,292",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.1,
+"mem_total": 16872808448,
+"mem_free": 15982690304,
+"disk_used": 10905165824,
+"disk_free": 30417342464,
+"disk_total": 41322508288,
+"peak": 273854464
+},
+"batch": 1,
+"boards": [
+"The Mandalorian"
+],
+"stories": 4,
+"left": 3,
+"edited": 21,
+"run": 1793235283.6234355,
+"tok": {
+"in": 18,
+"cw": 45525,
+"cr": 573139,
+"out": 2292,
+"calls": 9,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 620974
+},
+{
+"at": "2026-10-29T01:13:19+00:00",
+"text": "2026-10-29 第 2 バッチを出刊：ぐでたま（1 版面・5 本・残り 2 版面） · token 新規入力 701・キャッシュ読み 7.4万・出力 659",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.14,
+"mem_total": 16872808448,
+"mem_free": 15935877120,
+"disk_used": 10905214976,
+"disk_free": 30417293312,
+"disk_total": 41322508288,
+"peak": 316993536
+},
+"batch": 2,
+"boards": [
+"ぐでたま"
+],
+"stories": 5,
+"left": 2,
+"edited": 21,
+"run": 1793235283.6234355,
+"tok": {
+"in": 2,
+"cw": 699,
+"cr": 74005,
+"out": 659,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 75365
 }
 ]
