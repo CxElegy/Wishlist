@@ -35,6 +35,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
@@ -438,11 +444,18 @@
   ],
   "why": "看不清"
  },
- "https://bayobserver.ca/wp-content/uploads/2026/10/spooktacular-crowds-1024x597.png": {
+ "https://bdimg7.qunliao.info/fastdfs8/M00/D1/63/720x-/-/-/rBXRn2rfiAuAZaeYAAAtGuJXujg990.jpg?watermark/1/image/aHR0cHM6Ly9pbWcxLmRvbmdxaXVkaS5jb20vZmFzdGRmczIvTTAwLzJBL0UyLzEyMHgtLy0vLS9DaE9xTTFvUy1lV0FQRHEzQUFCQTVVZ3JCVDgxNDIucG5n/dissolve/100/dx/14/dy/10": {
+  "w": 720,
+  "h": 288,
   "target": 1280,
   "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
+  "blur": 0.445,
+  "local": "pics/e480292eb53cda57.webp",
+  "out": [
+   1280,
+   512
+  ],
+  "why": "看不清"
  },
  "https://bleedingcool.com/wp-content/uploads/2026/07/L1050980-Edit-2-2000x1125.jpg": {
   "target": 720,
@@ -604,6 +617,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.thesun.ng/wp-content/uploads/2026/10/Untitled-Design-5.jpg": {
+  "w": 1200,
+  "h": 700,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdndark.darkhorizons.com/wp-content/uploads/2026/10/pratt-confirms-star-lord-will-return-to-mcu.jpg": {
   "w": 1200,
   "h": 800,
@@ -646,29 +665,11 @@
   "target": 720,
   "v": 3
  },
- "https://collabo-cafe.com/wp-content/uploads/086711674d70f7e953b3416296c989a7-253.jpg": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://collabo-cafe.com/wp-content/uploads/dekineko-avail-2026-keyvisual.jpg": {
   "w": 2340,
   "h": 1170,
   "target": 1280,
   "v": 3
- },
- "https://collabo-cafe.com/wp-content/uploads/hellokitty-egoist-cecilmcbee-donki-2026-cecilmcbee-jersey.jpg": {
-  "w": 1281,
-  "h": 1281,
-  "target": 1280,
-  "v": 3
- },
- "https://collabo-cafe.com/wp-content/uploads/panda-kopanda-news-55th-teaser-visual-christmas-advent-2026-scene.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/From-Seasons-1-2-3-Recap-Explained-How-to-Watch-4.jpg?resize=2000,1125": {
   "w": 2000,
@@ -1011,12 +1012,6 @@
   "target": 1280,
   "v": 3
  },
- "https://hermes.media.static.aol.com/media/2026/10/26/60861c47-a9eb-3578-a8a7-f0a9120b02c4/531c14f0-8fcb-4352-b3e7-7c9e2c43eb29.png": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
- },
  "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg": {
   "w": 1200,
   "h": 675,
@@ -1046,6 +1041,19 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://hk.on.cc/hk/bkn/cnt/entertainment/20261029/photo/bkn-20261029000108879-1029_00862_001_01b.jpg?20261029084531": {
+  "w": 780,
+  "h": 557,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.429,
+  "local": "pics/9168e4139944b5db.webp",
+  "out": [
+   1280,
+   914
+  ],
+  "why": "看不清"
  },
  "https://holrmagazine.com/wp-content/uploads/2026/10/screenshot-2026-10-29t093053.578-e1793246738872.png": {
   "w": 750,
@@ -1200,6 +1208,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.402
+ },
+ "https://image.gamebase.com.tw/gb_img/6/004/520/4520236.jpg?og=y": {
+  "w": 624,
+  "h": 315,
+  "target": 720,
+  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/1/d/1db61_1682_c83ed2c7_381ffeaa.jpg": {
   "target": 1280,
@@ -1668,18 +1682,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://img.biggo.com/Xi1m7gpscBkFQTOcOUX76UcBMP7zueqdHqpvaIKcVyE/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwLzA1YjNiMDEzLTIxNmEtNGYyNy04MWZiLWQyNjBkZGMyNjBkYV8xNzkyNjUyNTA4X2RlZmF1bHQuanBn.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 1280,
-  "v": 3
- },
- "https://img.cava.tw/cava2022/news/2026/10/22/1792706888_10968.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 1280,
   "v": 3
  },
  "https://img.etimg.com/thumb/msid-135169887,width-1200,height-900,imgsize-158031,overlay-economictimes/articleshow.jpg": {
@@ -2190,6 +2192,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://media.image.infoseek.co.jp/isnews/photos/wowkorea/wowkorea_540202_0-enlarge.jpg": {
+  "w": 640,
+  "h": 352,
+  "target": 720,
+  "v": 3
+ },
  "https://media.image.infoseek.co.jp/shared/barter/2512_Pandahoro_650x150.png": {
   "w": 650,
   "h": 200,
@@ -2227,6 +2235,12 @@
   "v": 3,
   "blur": 0.394
  },
+ "https://media.trilltrill.jp/articles/5135144/featured-image.62527985e3aec638ee3b46081775f209?w=1200": {
+  "w": 1200,
+  "h": 960,
+  "target": 1280,
+  "v": 3
+ },
  "https://media.xenospectrum.com/exynos_2700_vs_snapdragon_8_elite_extreme_gen6_76e11dbba2.webp": {
   "w": 1672,
   "h": 941,
@@ -2236,6 +2250,12 @@
  "https://mediamixi.jp/app/uploads/2026/10/1027-01.jpg": {
   "w": 2184,
   "h": 1228,
+  "target": 1280,
+  "v": 3
+ },
+ "https://mmx.prnewswire.com/media/MS2021299/Pentel-of-America-Peanuts-x-Pentel-Image.jpg?id=OA3040701&p=facebook": {
+  "w": 2700,
+  "h": 1414,
   "target": 1280,
   "v": 3
  },
@@ -3215,18 +3235,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.eximg.jp/exnews/feed/nekochan/dd/nekochan_cat50231/nekochan_cat50231_1.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
- },
- "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
-  "w": 810,
-  "h": 344,
-  "target": 720,
-  "v": 3
- },
  "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
   "w": 1200,
   "h": 675,
@@ -3275,6 +3283,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://sammyguru.com/wp-content/uploads/2026/10/Galaxy-Tab-S11-Ultra.jpg": {
+  "w": 2880,
+  "h": 1620,
+  "target": 1280,
+  "v": 3
+ },
  "https://samsungmagazine.eu/wp-content/uploads/2026/03/Galaxy-S26-Ultra-iPhone-17-Pro-Max-23.jpeg": {
   "w": 1900,
   "h": 1425,
@@ -3317,12 +3331,6 @@
   "target": 720,
   "v": 3
  },
- "https://static-cdn.nextapple.tw/prod/2026-10/80EBC38A73C011E755476D4BEC356C93/8aa18249ff26e6dccf1404fb9a5ce02a_1280.jpeg": {
-  "w": 1280,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "https://static.beebom.com/wp-content/uploads/2026/10/GTA-6-platforms.jpg": {
   "w": 1200,
   "h": 675,
@@ -3332,12 +3340,6 @@
  "https://static.beebom.com/wp-content/uploads/2026/10/how-many-gta-6-pre-order-copies-have-been-sold-featured-image.jpg": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://static.ctwant.com/images/cover/76/504376/lg-5bfc53c68a06154040232cc4e182c6ef.jpg": {
-  "w": 1200,
-  "h": 632,
   "target": 720,
   "v": 3
  },
@@ -3825,6 +3827,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.abc27.com/wp-content/uploads/sites/55/2026/10/FEATURE_The-viral-Starbucks-Bearista-cup-returns-with-a-new-mystery-box.jpg?w=1280": {
+  "w": 870,
+  "h": 490,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.androidauthority.com/wp-content/uploads/2026/05/Samsung-Galaxy-S26-Ultra-home-screen-black-cat-scaled.jpg": {
   "w": 2560,
   "h": 1440,
@@ -3856,7 +3864,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bgr.com/img/gallery/samsung-is-being-fined-15m-for-misleading-marketing-on-some-galaxy-phones-and-tablets/l-intro-1793218209.jpg": {
+ "https://www.bgr.com/img/gallery/samsung-galaxy-users-are-reporting-one-key-issue-after-updating-to-one-ui-9/l-intro-1793215051.jpg": {
   "w": 1600,
   "h": 899,
   "target": 1280,
@@ -3866,12 +3874,6 @@
   "w": 999,
   "h": 999,
   "target": 1280,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.-SRvpHMm6--o1gMJ1w-B0Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.-VhpE4N1wgEtnT0i8NhqaA&pid=News&w=1200": {
@@ -3906,17 +3908,30 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.6ubhW8puht5WZf4CnZJd5w&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
+ "https://www.bing.com/th?id=ONUT.8As_DJmA332KXtNmDDXTIQ&pid=News&w=1080": {
+  "w": 699,
+  "h": 700,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.8nZvs5fHXIIT0p2hKirmNw&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
+ "https://www.bing.com/th?id=ONUT.Atrc8zvAwiIrtr2ezW7inA&pid=News&w=512": {
+  "w": 512,
+  "h": 640,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.BQo7S7QZazwA45oA42rOow&pid=News&w=592": {
+  "w": 592,
+  "h": 564,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.524,
+  "local": "pics/d63039559a6f4fdf.webp",
+  "out": [
+   1280,
+   1219
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
@@ -3960,6 +3975,25 @@
  "https://www.bing.com/th?id=ONUT.KOsfIlpysro4UjegnaF79g&pid=News&w=1200": {
   "w": 560,
   "h": 700,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.482,
+  "local": "pics/c6cd7ed963c64002.webp",
+  "out": [
+   1024,
+   1280
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.PFxHtTUXhm1WN-rIrSSZzg&pid=News&w=700": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
+  "w": 700,
+  "h": 467,
   "target": 720,
   "v": 3
  },
@@ -3982,6 +4016,25 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-29"
  },
+ "https://www.bing.com/th?id=ONUT.Y9T7HPM6diJuNnzVfJecGA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.YcQEwCRbDvgg9CUaREkhuQ&pid=News&w=385": {
+  "w": 385,
+  "h": 216,
+  "target": 720,
+  "v": 3,
+  "blur": 0.511,
+  "local": "pics/43851e495789ca96.webp",
+  "out": [
+   720,
+   404
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3994,6 +4047,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.b599IgmyuPGyJ7Vbvf8W-w&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
@@ -4083,12 +4142,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.rDZZS97xez9to68ZyrbrMA&pid=News&w=960": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
   "h": 380,
@@ -4099,6 +4152,12 @@
  "https://www.bing.com/th?id=ONUT.tjRLRKvzviUi6JPgAPNGOA&pid=News&w=1200": {
   "w": 700,
   "h": 525,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.uyx94Ru4fEAa_6a9dPmrsw&pid=News&w=700": {
+  "w": 700,
+  "h": 359,
   "target": 720,
   "v": 3
  },
@@ -4156,12 +4215,6 @@
   "h": 460,
   "target": 720,
   "v": 3
- },
- "https://www.chinapress.com.my/wp-content/uploads/2026/10/enhannah-261029-pmy-hp.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
   "w": 530,
@@ -4282,19 +4335,7 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-29"
  },
- "https://www.dailysunny.com/wp-content/uploads/2026/10/Peanuts-x-Best-Friends-Merch-Overview.jpg": {
-  "w": 966,
-  "h": 966,
-  "target": 1280,
-  "v": 3
- },
  "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/01/29/dota-2-hero-tier-list.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
- "https://www.dexerto.com/cdn-image/wp-content/uploads/2022/05/27/Arknights-Endfield-release-date-gameplay-beta.jpg": {
   "w": 1600,
   "h": 900,
   "target": 720,
@@ -4333,12 +4374,6 @@
  "https://www.disneydining.com/wp-content/uploads/2026/07/Untitled-design-100.jpg": {
   "w": 1200,
   "h": 600,
-  "target": 1280,
-  "v": 3
- },
- "https://www.engadget.com/img/gallery/heres-how-much-your-older-samsung-phones-are-actually-worth/l-intro-1792776180.jpg": {
-  "w": 1600,
-  "h": 899,
   "target": 1280,
   "v": 3
  },
@@ -4731,6 +4766,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-29"
+ },
+ "https://www.wnky.com/content/uploads/2026/10/a/t/sequence-0600-00-48-02still001.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
  },
  "https://x-bomberth.com/wp-content/uploads/2026/10/s-fsfdsa-1.jpg": {
   "w": 1280,
