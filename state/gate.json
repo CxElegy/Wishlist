@@ -1,6 +1,6 @@
 {
  "changed": false,
- "checked": "2026-10-29T10:47:45+00:00",
+ "checked": "2026-10-29T11:23:18+00:00",
  "fired": {
   "at": "2026-10-29T10:47:45+00:00",
   "results": {
@@ -19,34 +19,20 @@
     "resp": "cse_01W4x6f7TkGZu9QSEnNn8SQc",
     "sig": "606e958a7b57"
    },
-   "items": [
-    "ILLIT",
-    "あつ森",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "滑雪",
-    "猫用品"
-   ],
-   "last_batch": "2026-10-29T10:03:17+00:00",
+   "items": [],
+   "last_batch": "2026-10-29T11:14:51+00:00",
    "last_error": {
-    "at": "2026-10-29T08:34:46+00:00",
+    "at": "2026-10-29T10:55:44+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 400,
+   "need": false,
+   "prog": 409,
    "prog_day": "2026-10-29",
-   "ripe": [
-    "ILLIT",
-    "あつ森",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "滑雪",
-    "猫用品"
-   ],
-   "sig": "606e958a7b57",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 843434,
-   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 903286,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
