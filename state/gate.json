@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-29T00:39:31+00:00",
+ "checked": "2026-10-29T00:53:50+00:00",
  "fired": {
-  "at": "2026-10-29T00:39:31+00:00",
+  "at": "2026-10-29T00:53:50+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-28T23:44:08+00:00",
+    "at": "2026-10-29T00:53:50+00:00",
     "attempts": 1,
     "day": "2026-10-29",
-    "prog": 185,
-    "resp": "cse_01W4x6f7dJkEv3LLyYLrk6PB",
-    "sig": "4309a922f159"
+    "prog": 205,
+    "resp": "cse_01W4x6f7FJRa2CTqsY1LHbDn",
+    "sig": "3bfb0317146f"
    },
    "items": [
     "The Mandalorian",
@@ -34,9 +34,12 @@
    "prog": 205,
    "prog_day": "2026-10-29",
    "ripe": [
+    "The Mandalorian",
+    "ぐでたま",
+    "周杰伦",
     "滑雪"
    ],
-   "sig": "e650383a2868",
+   "sig": "3bfb0317146f",
    "token_cap": 1000000,
    "tokens_today": 381088,
    "why": "整理待ちの記事 4 件（4 版面・AI 編集まで版面に載らない）"
@@ -49,7 +52,6 @@
    "need": true,
    "sig": "b6804aff6de5",
    "waiting": [
-    "哈利波特剧集",
     "周杰伦",
     "ぐでたま",
     "GTA 6",
@@ -59,13 +61,14 @@
     "Vaundy",
     "dota2",
     "FROM",
+    "哈利波特剧集",
     "Astrae Oratio",
     "ILLIT",
     "绝区零",
     "A2O LITE",
     "The Mandalorian"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 09:42 から）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:04 から）"
   },
   "photos": {
    "claude": true,
