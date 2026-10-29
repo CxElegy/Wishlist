@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-10-29T15:48:16+00:00",
+ "changed": true,
+ "checked": "2026-10-29T16:27:03+00:00",
  "fired": {
   "at": "2026-10-29T15:48:17+00:00",
   "results": {
@@ -19,62 +19,29 @@
     "resp": "cse_01W4x6f6nHU7m6i44KUSPW58",
     "sig": "365fde9244b9"
    },
-   "items": [
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "dota2",
-    "gelato pique",
-    "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
-   ],
+   "items": [],
    "last_batch": "2026-10-29T12:58:26+00:00",
    "last_error": {
     "at": "2026-10-29T11:59:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 465,
-   "prog_day": "2026-10-29",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "dota2",
-    "gelato pique",
-    "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
-    "绝区零"
-   ],
-   "sig": "087022f3a622",
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-10-30",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 1479082,
-   "why": "整理待ちの記事 88 件（16 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "dota2"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "ee9feb620745",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
@@ -83,7 +50,6 @@
     "ILLIT",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
@@ -92,7 +58,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
