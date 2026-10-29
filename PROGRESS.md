@@ -159,3 +159,4 @@
 2026-10-29 r1 E15 の根：小さいだけで外した縮めた幅の絵を emblem_reject に入れていた（89 枚が大きい幅で取り直されない）→ wide_retry・BROKEN_V 11・unbreak で戻す。試験つき。次：背景の回のあと E15 を数え直す。
 2026-10-29 r1f1 E15 の続き：縮めた幅の reject を実データで数える点検 E24 を足した〔合併前 80 件〕・お客さま unbroken が reject に入れない試験。PR は合併後に記す。確かめ：背景の回 run 40802808081 のあと E24 0・E15 を数え直す。次：外した理由を残す〔BACKLOG〕。
 2026-10-29 r1f1 E24 を合併〔#603〕・背景の回 40803254817 のあと E24 80→5、E15 は 6 版面のまま〔取り直し待ち〕。次：E24 の残り 5 件の理由・外した理由を reject に残す。
+2026-10-29 r1f2 E15：先頭の人を redo より先・外した網址を版ごとに 1 回見直す（release_head_rejects）・人ごとの理由を funnel.heads に記録して E15 に添える。PR #605。確かめ：背景の回 12:24 JST success、E15 6→5 版面（dota2 Crystal Maiden 戻る）、ux_check guest/test-a/b 1400/390 は E2（Wikimedia 403/429）と E10 のみ。次：Rukia（候補なし）と漫威・FROM・ILLIT・A2O LITE の理由別の規則
