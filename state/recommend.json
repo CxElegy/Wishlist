@@ -6,6 +6,7 @@
   "https://t.co/poss7QrSIb": "2026-10-29"
  },
  "images": {
+  "http://www.kmedia-news.com/news/articleView.html?idxno=12863": "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg",
   "https://3c.ltn.com.tw/news/68052": "https://img.ltn.com.tw/Upload/3c/page/2026/10/24/261024-68052-1.png",
   "https://appuals.com/zenless-zone-zero-black-screen-graphics-issue/": "https://www.bing.com/th?id=ONUT.eb1q0cKGGyKjCIrKIpVqdg&pid=News&w=1200",
   "https://article.auone.jp/3b56a209-913e-4891-ad3f-eecd20b9765c": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/28/https___news_jp_i_1488317094651085808_w700.webp",
@@ -91,7 +92,6 @@
   "https://www.rohto.co.jp/news/release/2026/1028_01": "https://www.rohto.co.jp/news/release/2026/-/media/cojp/news/release/2026/1028_01/261028_01.png",
   "https://www.sanyonews.jp/article/1912545": "https://static.sanyonews.jp/image/article/size1/2/0/6/a/206a8f6736f9248712e80e9b09d71376_1.jpg",
   "https://www.setn.com/news/897693": "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg",
-  "https://www.sina.cn/news/detail/5358786003075789.html": "http://wx1.sinaimg.cn/middle/0066hpr1gy1iihd6m9z6aj30ty1jok2i.jpg",
   "https://www.sina.cn/news/detail/5359041700170693.html": "http://wx2.sinaimg.cn/middle/008eZAxIly1iii6jhgqbpj317r0och1p.jpg",
   "https://www.walkerplus.com/article/1264268/image14572032.html": "https://news.walkerplus.com/article/1264268/14572030_615.jpg",
   "https://www.walkerplus.com/article/56657/image312478.html": "https://news.walkerplus.com/article/56657/312478_615.jpg",
@@ -1584,19 +1584,19 @@
    "because": "A2O LITE",
    "date": "2026-10-27",
    "hits": [],
-   "image": "http://wx1.sinaimg.cn/middle/0066hpr1gy1iihd6m9z6aj30ty1jok2i.jpg",
+   "image": "https://cdn.kmedia-news.com/news/thumbnail/202610/12863_17981_223_v150.jpg",
    "kind": "board",
    "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
    "score": 6,
-   "source": "手机新浪网",
+   "source": "한국미디어창업뉴스",
    "taste": [
     [
      "作品:A2O LITE",
      2
     ]
    ],
-   "title": "被指上半身弱？李彩演回应：没想赢过原唱，只是太急了|A2O LITE|李彩演|NEON_新浪新闻",
-   "url": "https://www.sina.cn/news/detail/5358786003075789.html",
+   "title": "이수만이 론칭한 걸그룹 A2O LITE, 데뷔 2주 만에 美 빌보드 톱10 진입",
+   "url": "http://www.kmedia-news.com/news/articleView.html?idxno=12863",
    "words": [],
    "work": "A2O LITE"
   },
@@ -2248,15 +2248,15 @@
    8
   ],
   [
-   "作品:三星手机",
-   7
-  ],
-  [
    "三星 Galaxy",
    7
   ],
   [
    "galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
    7
   ],
   [

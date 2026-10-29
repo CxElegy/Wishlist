@@ -60,11 +60,18 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/0066hpr1gy1iihd6m9z6aj30ty1jok2i.jpg": {
+ "http://wx1.sinaimg.cn/middle/0066hpr1gy1iihd6llhvhj30u01fagv0.jpg": {
+  "w": 1080,
+  "h": 1846,
   "target": 720,
   "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
+  "local": "pics/d2e07eed06cb4c23.webp",
+  "out": [
+   749,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
  },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
@@ -3632,12 +3639,6 @@
   "w": 1200,
   "h": 630,
   "target": 720,
-  "v": 3
- },
- "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/23/1792751373230_a20-jpg.webp": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/25/1792892380268_tnw-samsung-galaxy-s26-ultrathanh-nien-00018-1775326231035720446832-109-0-1366-2400-crop-1792880007653393781657-17928800204011989883181.jpeg": {
