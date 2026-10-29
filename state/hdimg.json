@@ -332,6 +332,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
+  "w": 1350,
+  "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
  "https://assets.hldycdn.com/bdaeb944-3649-41e9-a1cc-559b84e94c40.jpeg": {
   "w": 970,
   "h": 600,
@@ -1195,6 +1201,12 @@
   ],
   "why": "看不清"
  },
+ "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227970/thumb001.png?height=720&quality=75&version=1793197755&width=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227974/thumb001.png?height=720&quality=75&version=1792723153&width=1280": {
   "w": 1280,
   "h": 720,
@@ -1516,6 +1528,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g5Iqp.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img": {
@@ -1905,6 +1923,19 @@
   ],
   "why": "看不清"
  },
+ "https://img1.mydrivers.com/img/20261027/Sfe466081-bb4e-4ee2-9120-ef5e3fc8da67.png": {
+  "w": 600,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.537,
+  "local": "pics/0ad29d7a99a125a6.webp",
+  "out": [
+   1280,
+   640
+  ],
+  "why": "看不清"
+ },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -1922,6 +1953,13 @@
   "h": 600,
   "target": 1280,
   "v": 3
+ },
+ "https://k.sinaimg.cn/n/spider20261028/523/w660h663/20261028/0381-f9309344077324303a8604f6a1221f3a.jpg/w300h300z1l10t10q1004b7.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-29"
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
   "w": 1600,
@@ -2127,12 +2165,6 @@
   "target": 1280,
   "v": 3
  },
- "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2608867-90fdd87d4160.jpg": {
-  "w": 1200,
-  "h": 630,
-  "target": 1280,
-  "v": 3
- },
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
   "w": 1920,
   "h": 1080,
@@ -2186,8 +2218,9 @@
  "https://newportal.portal.auone.jp/media/thumbnails/2026/10/28/https___news_jp_i_1488317094651085808_w700.webp": {
   "w": 700,
   "h": 327,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.327
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnax2f7OIyXc1WmQRDOjM-h8Yn9Gd6cjzMehWgq6BPeDImBHdGhoTErPtYsLyPaPzfFvf9v_c28o8qn8mFUGSUsnkDbqYqvg7SN2-YK0YukEflnUE4vG_1bAdOi-TgtgE4Q==": {
   "w": 934,
@@ -3071,6 +3104,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
+  "w": 810,
+  "h": 344,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
   "w": 1200,
   "h": 675,
@@ -3419,6 +3458,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://staticg.sportskeeda.com/editor/2026/10/cef56-17932369719786-1920.jpg": {
+  "w": 1920,
+  "h": 1280,
+  "target": 720,
+  "v": 3
+ },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3669,6 +3714,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.androidauthority.com/wp-content/uploads/2026/08/Samsung-Galaxy-S26FE-all-3-colors.jpg": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://www.appbank.net/wp-content/uploads/2026/10/20261028_091828_781_01.webp": {
   "w": 1793,
   "h": 1251,
@@ -3694,7 +3745,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bgr.com/img/gallery/samsung-is-being-fined-15m-for-misleading-marketing-on-some-galaxy-phones-and-tablets/l-intro-1793218209.jpg": {
+ "https://www.bgr.com/img/gallery/samsung-galaxy-users-are-reporting-one-key-issue-after-updating-to-one-ui-9/l-intro-1793215051.jpg": {
   "w": 1600,
   "h": 899,
   "target": 1280,
@@ -3788,11 +3839,18 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.CfrJV8vNIbzUncP0dQzwFw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
+ "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300": {
+  "w": 300,
+  "h": 300,
   "target": 720,
-  "v": 3
+  "v": 3,
+  "blur": 0.644,
+  "local": "pics/45d8e8296dea3cb4.webp",
+  "out": [
+   720,
+   720
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
@@ -3961,6 +4019,12 @@
  "https://www.bing.com/th?id=ONUT.tjRLRKvzviUi6JPgAPNGOA&pid=News&w=1200": {
   "w": 700,
   "h": 525,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4183,12 +4247,6 @@
  "https://www.disneydining.com/wp-content/uploads/2026/07/Untitled-design-100.jpg": {
   "w": 1200,
   "h": 600,
-  "target": 1280,
-  "v": 3
- },
- "https://www.engadget.com/img/gallery/heres-how-much-your-older-samsung-phones-are-actually-worth/l-intro-1792776180.jpg": {
-  "w": 1600,
-  "h": 899,
   "target": 1280,
   "v": 3
  },
@@ -4592,6 +4650,12 @@
  "https://x0.ifengimg.com/res/2026/D4F52D36036F5D19D6D9074B534DDFF6898FDDDE_size30_w1080_h460.jpg": {
   "w": 1080,
   "h": 460,
+  "target": 1280,
+  "v": 3
+ },
+ "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/7f3721c0-58ce-4391-a385-023452ad923d.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },

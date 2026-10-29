@@ -282,13 +282,13 @@
   "BLEACH Mirrors High": 15,
   "A2O LITE": 18,
   "チェーンソーマン": 25,
-  "三星手机": 10,
+  "三星手机": 13,
   "The Mandalorian": 7,
   "星巴克马克杯": 2,
   "あつ森": 1,
-  "MMORPG 新作": 7,
+  "MMORPG 新作": 11,
   "哈利波特剧集": 2,
-  "日本顶级网球赛事": 6,
+  "日本顶级网球赛事": 10,
   "FROM": 4,
   "ILLIT": 12,
   "Vaundy": 3,
@@ -297,7 +297,8 @@
   "ぐでたま": 17,
   "周杰伦": 4,
   "gelato pique": 1,
-  "猫用品": 1
+  "猫用品": 3,
+  "dota2": 2
  },
  "三星手机": [
   {
@@ -355,6 +356,33 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "三星S27+或砍掉UWB",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
+   ]
+  },
+  {
+   "headline": "Samsung teases Galaxy S27 plans as its phone business slips into the red again",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Pro와 S27 Ultra 배터리에 대한 첫 언급",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
    ]
   }
  ],
@@ -440,6 +468,7 @@
    "weight": "normal",
    "refs": [
     6,
+    9,
     3
    ],
    "event": {
@@ -463,6 +492,29 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  },
+  {
+   "headline": "MMORPG《裝備仔》線上發表會預定11 月 5 日晚上播出將釋出實機畫面與上市日期《overgeared》",
+   "highlight": "11 月 5 日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    8
+   ],
+   "event": {
+    "date": "2026-11-05",
+    "label": "オンライン発表会"
+   }
+  },
+  {
+   "headline": "엔씨 리니지W, 5주년 업데이트 사전예약 시작…신규 월드·직업 추가",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],
@@ -522,6 +574,34 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "【2回戦】A.イアラ vs T.ギブソン ハイライト│東レ パン パシフィック オープンテニス2026",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    7
+   ]
+  },
+  {
+   "headline": "Elena Rybakina vs Yulia Putintseva preview, head-to-head, odds, prediction & betting tips | Pan Pacific Open 2026",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  },
+  {
+   "headline": "第4日 コートA 【東レ パン パシフィック オープンテニス】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -798,6 +878,26 @@
     1
    ],
    "image": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/10/1280/720/darwin-cat-food.png?ve=1&tl=1"
+  },
+  {
+   "headline": "愛猫が「サイレントニャー」するのを見たことはある？ 調査＆獣医師解説",
+   "highlight": "サイレントニャー",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "Team Spirit’s playoff run takes a hit after shocking loss to OG at Dota 2 PARI Universe",
+   "highlight": "",
+   "blurb": "Team Spirit suffered a shock loss to OG at Dota 2 PARI Universe, putting their playoff run at risk.",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
   }
  ]
 }
