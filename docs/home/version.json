@@ -1,14 +1,14 @@
 {
- "admin": "02979ac65663",
- "admin-ai": "b6a78cb3bee5",
+ "admin": "916f015f307e",
+ "admin-ai": "ff7de1c64220",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "77fce01c"
+   "f2a26f34"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "a6229145"
+   "c4722a26"
   ]
  },
  "admin-boards": "9c1a96c54da6",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "9c20b5db50d5",
+ "admin-emblem": "c8a709728f65",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b2ab00e4"
+   "b44f6514"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "90c073adb5c2",
+ "admin-now": "d0591967fd5d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3befef71"
+   "55dfb689"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "a84194c7"
+   "60d757fa"
   ],
   "term-panel": [
    "ライブログ",
-   "a2f49ad4"
+   "34c9eddd"
   ]
  },
- "admin-system": "2a517a47bfce",
+ "admin-system": "ec5098f63432",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4f6bab32"
+   "d1de8e07"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "5aaa3971"
+   "0c4aef19"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "d76076ca"
   ]
  },
- "index": "363e6efa3c8e",
+ "index": "d479538cde52",
  "index_marks": {
   "front": [
    "トップ",
-   "ca944082"
+   "bb89758c"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "09446b5e"
+   "c22a6e99"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "f522713b"
+   "9f7bf316"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "af5d84df"
+   "506bb16d"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "b23f0f0c"
+   "0f45c139"
   ],
   "w-b867582f": [
    "あつ森",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "a0aee9c2"
+   "4c84d010"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "364e2946"
+   "b2010023"
   ],
   "w-f303ad09": [
    "绝区零",
    "6acc089f"
   ]
  },
- "updated": "10.30 03:46",
- "wishlist": "00aa5670e3de"
+ "updated": "10.30 03:54",
+ "wishlist": "f4fee3424436"
 }

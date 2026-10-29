@@ -3037,12 +3037,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
  },
- "https://s.yimg.com/lo/mysterio/api/eea63eb88273104028cf2c6d32f6e535e3b28feb6090d6ebd3a90c8488e3ce18/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaystation_lifestyle_666%2F0b6df3fc2604c0abf36abf6da4b8071a.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
- },
  "https://s.yimg.com/lo/mysterio/api/f0ad7d42651cab0d9735499a50c58fddb47974f3984a93991f2ae0ac0ced48fd/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2F10-31-kklive-taiwan_3560.jpg": {
   "w": 1200,
   "h": 1563,
@@ -3245,6 +3239,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.291
+ },
+ "https://static.tweaktown.com/news/1/1/114388_1_gta-6-npcs-get-personality-traits-that-decide-whether-they-flee-or-fight-back_full.png": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
+  "v": 3
  },
  "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg": {
   "w": 1000,
@@ -3968,12 +3968,6 @@
   "v": 3,
   "blur": 0.415
  },
- "https://www.bing.com/th?id=ONUT.rz9MTMrDZ_vVX79e3w7ZlQ&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
- },
  "https://www.bing.com/th?id=ONUT.tjRLRKvzviUi6JPgAPNGOA&pid=News&w=1200": {
   "target": 720,
   "v": 3,
@@ -4198,6 +4192,12 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-1.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
