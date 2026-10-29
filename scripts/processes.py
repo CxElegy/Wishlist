@@ -286,7 +286,7 @@ PROCESSES = [
         "files": ["scripts/gate.py", "scripts/collect_watch.py", "scripts/library_watch.py", ".github/workflows/background.yml", "state/gate.json"], "doc": "docs/rules/background.md", "uses": ["gate"],
         "flow": [
             {"id": "g1", "kind": "fan", "lane": "actions", "title": "仕事を調べる", "mode": "全部を毎回",
-             "items": [("1", "小元素", "目標未満の版面（1 時間以内の失敗で材料が同じものは除く）"), ("2", "AI 編集", "今日の inbox の整理待ち（_covered より後・edit.json にない版面）"),
+             "items": [("1", "小元素", "目標未満の版面（失敗して材料が同じものは時間がたっても除く：時間では待たない）"), ("2", "AI 編集", "今日の inbox の整理待ち（_covered より後・edit.json にない版面）"),
                        ("3", "写真", "inbox/photos/*.json")]},
             {"id": "g1c", "kind": "decision", "lane": "actions", "title": "最後の収集から 150 分たった？", "text": "state/log/collect.json · GitHub の定時（17 */2）は抜けることがある · この段は pg_cron で毎時必ず通る（判断の段より前：判断が落ちてもここは通る）",
              "uses": ["collectwatch"], "yes": "収集の回が走っていない・並んでいない・60 分以内に始まっていなければ digest.yml を起こす（workflow_dispatch）。起こせなかったら記録して管理ページへ", "no": "何もしない"},
@@ -319,7 +319,7 @@ PROCESSES = [
         "files": [".github/workflows/digest.yml", "scripts/digest.py", "scripts/sources.py", "scripts/intel.py", "intel/japan.yaml", "scripts/userfeed.py", "db/user_boards.sql"], "doc": "README.md",
         "uses": ["gnews", "bing", "reddit", "steam", "gdelt", "youtube", "bluesky", "mastodon", "intel", "dedupe", "spam", "srcfilter", "match", "userfeed"],
         "flow": [
-            {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 40 分まで · 同時に 1 本 · 前の回に時間切れで残った版面・初めて取る版面（新関注項）を先に取る"},
+            {"id": "c1", "kind": "step", "lane": "actions", "title": "起動", "text": "Ubuntu 4 コア · 40 分まで · 同時に 1 本 · 前の回に時間切れで残った版面・初めて取る版面（新関注項）を先に取る · 管理ページの小元素の格子（digest.emblem_detail）は失敗の待ちに時刻を出さず「材料待ち」と書く"},
             {"id": "c1d", "kind": "decision", "lane": "actions", "title": "始めてから 18 分たっていない？", "text": "版面ごとに、取り始める前に見る（COLLECT_DEADLINE_MIN）· 始まった版面が 23 分たっても終わらなければ待たずに先へ（固まった版面も次の回へ。そのスレッドがあとで終わっても帯は立て直さない・情報員の様子は写しを読む）",
              "uses": ["deadline"], "yes": "↓ その版面を取る", "no": "その版面は始めない → 次の回に先に取る（ログ「時間切れで N 版面を次の回へ」）"},
             {"id": "c2", "kind": "fan", "lane": "ext", "title": "記事を集める", "x": "×6 関注項を同時に", "mode": "それぞれのサイトへ",
