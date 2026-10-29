@@ -594,7 +594,7 @@ PROCESSES = [
             {"id": "p6", "kind": "store", "lane": "repo", "title": "docs/home/*.html", "text": "店長のページ（網址 /home/ はみんな同じ・中身はログインした人で決まる、旧 /test1/・/shop/ は飛ぶだけ）· docs/test2/ は 2026-10-19〜21 の凍結した写し · docs/index.html は入口"},
             {"id": "p6a", "kind": "store", "lane": "repo", "title": "管理ページ 7 枚", "x": "render.ADMIN_PAGES",
              "text": "admin.html（トップ：6 枚のカードと数）＋ admin-now（①いま）・admin-boards（②版面）・admin-emblem（③エンブレム）・admin-ai（④AI 編集）・admin-system（⑤しくみ）・admin-members（⑥お客さまと店長）。"
-                     "どのページにも 7 つの切り替え · 前の網址 admin.html#欄 はトップがその欄のページへ送る · ux_check が 7 枚と「なくした欄 0」を見る"},
+                     "どのページにも 7 つの切り替え · 前の網址 admin.html#欄 はトップがその欄のページへ送る · ux_check が 7 枚と「なくした欄 0」を見る · ②版面の「ライブラリの版面」は店長がログインしたときだけ JS が boards を読む（HTML に名前を焼かない）・配色は RPC board_theme_set"},
             {"id": "p7", "kind": "step", "lane": "web", "title": "GitHub Pages に公開", "text": "約 1 分", "uses": ["fit", "confetti"]},
         ],
     },
