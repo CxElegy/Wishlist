@@ -2851,6 +2851,18 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-00000376-spnannex-000-3-view.jpg?exp=10800": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3,
+  "local": "pics/efe961952e5c6ef9.webp",
+  "out": [
+   1200,
+   800
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-00035826-tennismagv-000-1-view.jpg?exp=10800": {
   "target": 720,
   "v": 3,
@@ -3574,12 +3586,6 @@
   "h": 900,
   "target": 1280,
   "v": 3
- },
- "https://staticg.sportskeeda.com/editor/2026/10/cef56-17932369719786-1920.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,

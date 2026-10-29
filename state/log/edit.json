@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-28T12:41:14+00:00",
-"text": "2026-10-28 第 12 バッチを出刊：MMORPG 新作（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 757・キャッシュ読み 9.7万・出力 231",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.13,
-"mem_total": 16872808448,
-"mem_free": 15977193472,
-"disk_used": 10859528192,
-"disk_free": 30462980096,
-"disk_total": 41322508288,
-"peak": 265068544
-},
-"batch": 12,
-"boards": [
-"MMORPG 新作"
-],
-"stories": 3,
-"left": 0,
-"edited": 23,
-"run": 1793184810.2345214,
-"tok": {
-"in": 2,
-"cw": 755,
-"cr": 96612,
-"out": 231,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 97600,
-"secs": 6464,
-"run_tok": {
-"in": 74,
-"cw": 68887,
-"cr": 2878993,
-"out": 11090,
-"calls": 37,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-28T13:34:45+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1816,5 +1775,48 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1042876
+},
+{
+"at": "2026-10-29T12:14:54+00:00",
+"text": "2026-10-29 第 1 バッチを出刊：Astrae Oratio、FROM、GTA 6、The Mandalorian、Vaundy、ぐでたま ほか 6（12 版面・48 本・残り 7 版面） · token 新規入力 4.9万・キャッシュ読み 106.8万・出力 3,841",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.12,
+"mem_total": 16872808448,
+"mem_free": 15954558976,
+"disk_used": 10790678528,
+"disk_free": 30531829760,
+"disk_total": 41322508288,
+"peak": 296419328
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"FROM",
+"GTA 6",
+"The Mandalorian",
+"Vaundy",
+"ぐでたま",
+"三星手机",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"星巴克马克杯",
+"猫用品",
+"绝区零"
+],
+"stories": 48,
+"left": 7,
+"edited": 23,
+"run": null,
+"tok": {
+"in": 32,
+"cw": 49205,
+"cr": 1067989,
+"out": 3841,
+"calls": 16,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1121067
 }
 ]
