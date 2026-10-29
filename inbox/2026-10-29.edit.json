@@ -25,9 +25,23 @@
     64,
     65,
     68,
-    71
+    71,
+    95
    ],
    "image": "https://substackcdn.com/image/fetch/$s_!FDrg!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41f733df-517b-42df-bfaa-99d88d084bf4_1456x819.webp"
+  },
+  {
+   "headline": "「GTA6」約10万円の高級コレクターズボックスが10月30日に予約受付開始！ 帽子やマグなど11点入り",
+   "highlight": "10月30日に予約開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    90
+   ],
+   "event": {
+    "date": "2026-10-30",
+    "label": "予約開始"
+   }
   },
   {
    "headline": "Circana: Nearly 1-in-3 U.S. Gamers Plan to Buy 'Grand Theft Auto VI,' Setting New Industry Record",
@@ -38,7 +52,8 @@
     5,
     24,
     27,
-    38
+    38,
+    91
    ]
   },
   {
@@ -52,29 +67,19 @@
     70,
     67,
     85,
-    83
+    83,
+    89
    ]
   },
   {
-   "headline": "GTA 6 ‘Original Score’ Releases After Launch With 50 Songs",
-   "highlight": "50 Songs",
+   "headline": "South Park Just Aired Real and Fresh GTA 6 Gameplay Footage",
+   "highlight": "GTA 6 Gameplay Footage",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    6,
-    15,
-    25,
-    34
-   ]
-  },
-  {
-   "headline": "Rockstar UK Staff Head to Union Recognition Ballot as GTA VI Hits Shelves",
-   "highlight": "Union Recognition Ballot",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    12,
-    26
+    92,
+    93,
+    94
    ]
   }
  ],
@@ -144,12 +149,23 @@
    "weight": "hero",
    "refs": [
     14,
-    15
+    15,
+    19
    ],
    "event": {
     "date": "2026-10-28",
     "label": "サービス開始"
-   }
+   },
+   "image": "https://www.appbank.net/wp-content/uploads/2026/10/20261028_171558_755_01.webp"
+  },
+  {
+   "headline": "BLEACH Mirrors High Mobile Game Releases Opening Movie Featuring suisoh’s \"CRITICAL\"",
+   "highlight": "Opening Movie",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20
+   ]
   },
   {
    "headline": "Bleach: Mirrors High Introduces 10 New Characters Designed By Tite Kubo Ahead Of Its Launch",
@@ -157,27 +173,10 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    23
    ],
    "image": "https://gamefragger.com/images/articles/banners/bleach-mirrors-high-introduces-10-new-characters-designed-by-tite-kubo-ahead-of-its-launch-ab30039.jpg"
-  },
-  {
-   "headline": "Bleach Officially Replaces Ichigo Kurosaki In Brand-New Sequel Mirrors High",
-   "highlight": "Replaces Ichigo Kurosaki",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4
-   ]
-  },
-  {
-   "headline": "【ミラハイ】日番谷冬獅郎(星4)の評価と性能【BLEACHミラーズハイ】",
-   "highlight": "評価と性能",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
   }
  ],
  "A2O LITE": [
@@ -188,8 +187,10 @@
    "weight": "lead",
    "refs": [
     2,
-    15
-   ]
+    15,
+    28
+   ],
+   "image": "https://img.khan.co.kr/news/2026/10/29/news-p.v1.20261028.62e9dd8e67f8479fbfbefc3d4a51da99_P1.jpg"
   },
   {
    "headline": "A2O LITE claims a ‘triple crown’ on music shows just ten days after debut ··· a relay of No. 1 wins",
@@ -198,7 +199,8 @@
    "weight": "normal",
    "refs": [
     3,
-    4
+    4,
+    26
    ]
   },
   {
@@ -215,6 +217,17 @@
    ]
   },
   {
+   "headline": "A2O LITE，《NEON》热潮席卷日本……Oricon飙升榜登顶第一",
+   "highlight": "Oricon飙升榜登顶第一",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    25,
+    32,
+    31
+   ]
+  },
+  {
    "headline": "제이블랙, 유재석도 감탄한 A2O LITE ‘NEON’ 원작자 춤선…‘유퀴즈’ 직접 등판",
    "highlight": "‘유퀴즈’ 직접 등판",
    "blurb": "",
@@ -222,16 +235,6 @@
    "refs": [
     7,
     6
-   ]
-  },
-  {
-   "headline": "被指上半身弱？李彩演回应：没想赢过原唱，只是太急了",
-   "highlight": "李彩演回应",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    12,
-    16
    ]
   }
  ],
@@ -291,18 +294,18 @@
   }
  ],
  "_covered": {
-  "GTA 6": 87,
+  "GTA 6": 97,
   "漫威电影": 57,
-  "BLEACH Mirrors High": 18,
-  "A2O LITE": 24,
+  "BLEACH Mirrors High": 23,
+  "A2O LITE": 35,
   "チェーンソーマン": 29,
-  "三星手机": 16,
+  "三星手机": 23,
   "The Mandalorian": 8,
   "星巴克马克杯": 9,
   "あつ森": 6,
   "MMORPG 新作": 12,
   "哈利波特剧集": 4,
-  "日本顶级网球赛事": 11,
+  "日本顶级网球赛事": 20,
   "FROM": 4,
   "ILLIT": 15,
   "Vaundy": 3,
@@ -345,16 +348,6 @@
    ]
   },
   {
-   "headline": "Galaxy S27 Ultra PWM Dimming: Why It's Still Unconfirmed",
-   "highlight": "Still Unconfirmed",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2,
-    9
-   ]
-  },
-  {
    "headline": "未発表「Galaxy S27 Pro / Ultra」のケース、早くもAmazonで販売。Proは6.47型か",
    "highlight": "Proは6.47型か",
    "blurb": "",
@@ -373,21 +366,25 @@
    ]
   },
   {
-   "headline": "三星S27+或砍掉UWB",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    11
-   ]
-  },
-  {
    "headline": "Samsung teases Galaxy S27 plans as its phone business slips into the red again",
    "highlight": "",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    12
+    12,
+    17,
+    21,
+    23
+   ]
+  },
+  {
+   "headline": "The Tables Have Turned: Why the Galaxy S27 Ultra’s Exynos Chip Might Actually Beat Snapdragon",
+   "highlight": "Exynos Chip",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22,
+    19
    ]
   },
   {
@@ -615,12 +612,29 @@
  ],
  "日本顶级网球赛事": [
   {
-   "headline": "テニス - 東レ・パンパシフィック・オープン - クリスティナ ブクサ vs. マヤ ジョイヌト- 試合速報",
-   "highlight": "試合速報",
-   "blurb": "東レ・パンパシフィック・オープンの試合速報。",
+   "headline": "大坂なおみは2回戦で世界144位の18歳ポハンコバにストレート負け [東レPPOテニス]",
+   "highlight": "ストレート負け",
+   "blurb": "4年ぶり出場の大坂なおみは2回戦で18歳のポハンコバに敗れ、8強入りならず。",
    "weight": "lead",
    "refs": [
-    2
+    12,
+    18,
+    19,
+    13,
+    15,
+    17,
+    14
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-00035840-tennismagv-000-2-view.jpg?pri=l&w=640&h=426&exp=10800"
+  },
+  {
+   "headline": "テニス - 東レ・パンパシフィック・オープン - クリスティナ ブクサ vs. マヤ ジョイヌト- 試合速報",
+   "highlight": "試合速報",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    16
    ]
   },
   {
@@ -677,15 +691,6 @@
    "weight": "normal",
    "refs": [
     9
-   ]
-  },
-  {
-   "headline": "第4日 コートA 【東レ パン パシフィック オープンテニス】",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10
    ]
   }
  ],

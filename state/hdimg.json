@@ -60,19 +60,6 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/0066hpr1gy1iihd6m9z6aj30ty1jok2i.jpg": {
-  "w": 1078,
-  "h": 2004,
-  "target": 720,
-  "v": 3,
-  "local": "pics/c6a22a89b875518b.webp",
-  "out": [
-   689,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
   "h": 1297,
@@ -266,6 +253,12 @@
   ],
   "why": "看不清"
  },
+ "https://animetv-jp.net/wp-content/uploads/2026/10/filters_quality95formatwebp-2026-10-29T082640.562.webp": {
+  "w": 960,
+  "h": 539,
+  "target": 1280,
+  "v": 3
+ },
  "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
   "w": 506,
   "h": 253,
@@ -311,12 +304,6 @@
  "https://assets.content.technologyadvice.com/Galaxy_Ultra_Phones_and_60_W_Charger_5670f752e2.webp": {
   "w": 1536,
   "h": 1024,
-  "target": 720,
-  "v": 3
- },
- "https://assets.content.technologyadvice.com/Smartphone_Quick_Settings_in_Cozy_Bedroom_1abad4f929.webp": {
-  "w": 1672,
-  "h": 941,
   "target": 720,
   "v": 3
  },
@@ -902,6 +889,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://foro3d.com/2026/octubre/imagenes/primeras-referencias-a-las-baterias-del-galaxy-s27-pro-y-s27-ultra.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://gachapolitan.com/wp-content/uploads/2026/10/5671-1.jpg": {
   "w": 800,
   "h": 565,
@@ -1090,6 +1083,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i0.wp.com/uploads.saigacdn.com/2026/10/gta-vi-goodtime-state-vice-city-collection-announcement-00.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://i1.hoopchina.com.cn/bbs-editor-web/17926623656181.jpg": {
   "w": 780,
   "h": 1212,
@@ -1221,12 +1220,6 @@
   ],
   "why": "看不清"
  },
- "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227970/thumb001.png?height=720&quality=75&version=1793197755&width=1280": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://image.p-c2-x.abema-tv.com/image/programs/wo_C227974/thumb001.png?height=720&quality=75&version=1792723153&width=1280": {
   "w": 1280,
   "h": 720,
@@ -1266,6 +1259,12 @@
  "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=665,fit=cover,q=high,sharpen=2/21/2026/10/2026102307582091459_1.jpg": {
   "w": 1200,
   "h": 665,
+  "target": 1280,
+  "v": 3
+ },
+ "https://image.starnewskorea.com/cdn-cgi/image/f=auto,w=1200,h=800,fit=cover,q=high,sharpen=2/21/2026/10/2026102917072613448_1.jpg": {
+  "w": 1200,
+  "h": 800,
   "target": 1280,
   "v": 3
  },
@@ -1766,9 +1765,9 @@
   ],
   "why": "看不清"
  },
- "https://img.khan.co.kr/news/2026/10/29/news-p.v1.20261028.f8c0001b762041b0bacd3a15b3e1ba6e_P1.png": {
+ "https://img.khan.co.kr/news/2026/10/29/news-p.v1.20261028.62e9dd8e67f8479fbfbefc3d4a51da99_P1.jpg": {
   "w": 1200,
-  "h": 675,
+  "h": 800,
   "target": 1280,
   "v": 3
  },
@@ -1975,22 +1974,10 @@
   "target": 720,
   "v": 3
  },
- "https://insider-gaming.com/wp-content/uploads/2026/09/gta-6-rockstars-biggest-map.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://insidethemagic.net/wp-content/uploads/2026/05/mandalorian-and-grogu-characters.jpg": {
   "w": 1200,
   "h": 600,
   "target": 1280,
-  "v": 3
- },
- "https://isplus.com/data/isp/image/2026/10/26/isp20261026000355.800x.0.jpg": {
-  "w": 800,
-  "h": 556,
-  "target": 720,
   "v": 3
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
@@ -2085,9 +2072,9 @@
   "target": 720,
   "v": 3
  },
- "https://media.godisageek.com/uploads/rockstar-uk-staff-head-to-union-recognition-ballot-as-gta-vi-5f78c1a61e0f44d9.webp": {
-  "w": 1200,
-  "h": 675,
+ "https://media.gtaboom.com/variants/1920/media/images/bb/dc/south-park-just-aired-real-and-fresh-gta-6-gameplay-footage.jpg": {
+  "w": 1920,
+  "h": 1079,
   "target": 720,
   "v": 3
  },
@@ -2827,6 +2814,19 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-29"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-00035840-tennismagv-000-2-view.jpg?pri=l&w=640&h=426&exp=10800": {
+  "w": 640,
+  "h": 427,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.58,
+  "local": "pics/5399d72ea2ad6baa.webp",
+  "out": [
+   1280,
+   854
+  ],
+  "why": "期限付きの網址"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-00122116-thedigest-000-3-view.jpg?exp=10800": {
   "target": 720,
   "v": 3,
@@ -3154,6 +3154,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
+  "w": 810,
+  "h": 344,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
   "w": 1200,
   "h": 675,
@@ -3227,12 +3233,6 @@
   "v": 3
  },
  "https://shattered.io/wp-content/uploads/2026/10/gta-6-launch-1-5-million-sick-days-cost-2026-gen.webp": {
-  "w": 1344,
-  "h": 768,
-  "target": 720,
-  "v": 3
- },
- "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
   "w": 1344,
   "h": 768,
   "target": 720,
@@ -3506,6 +3506,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://staticg.sportskeeda.com/editor/2026/10/cef56-17932369719786-1920.jpg": {
+  "w": 1920,
+  "h": 1280,
+  "target": 720,
   "v": 3
  },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
@@ -3896,6 +3902,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.PSNDRO6vs6Fb1gBEHqZAQw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
   "h": 467,
@@ -3915,6 +3927,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3927,6 +3945,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.a7NahHzTAa0npxm0wHHWbg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
@@ -3972,12 +3996,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.fybc0bccpU4PwR5hBuF-LA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
   "h": 360,
@@ -4010,12 +4028,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.nvQS4D90clmQXzKjDnUPUA&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.oVpWMzVyfJazYlxNo60oJg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4028,24 +4040,12 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.pGsOG1PjFHXkwvk2y7YF2w&pid=News&w=1010": {
-  "w": 700,
-  "h": 350,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
   "h": 380,
   "target": 1280,
   "v": 3,
   "blur": 0.415
- },
- "https://www.bing.com/th?id=ONUT.s3dLb-Q-vzxxtHf2KFqaDg&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.tjRLRKvzviUi6JPgAPNGOA&pid=News&w=1200": {
   "w": 700,
@@ -4318,6 +4318,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-5.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {
   "w": 1280,
   "h": 720,
@@ -4421,6 +4427,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 720,
   "v": 3
  },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
