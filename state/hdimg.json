@@ -302,6 +302,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.khelnow.com/news/uploads/2026/10/khelnow.com-Feature-Image-How-lower-brackets-give-Dota-2-teams-another-route-to-the-final.jpeg": {
+  "w": 1672,
+  "h": 941,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.mmoexp.com/images/202610/2982d8041c42f73c55e7ae64fe80cde444d350b3.jpg": {
   "w": 1200,
   "h": 324,
@@ -1166,6 +1172,12 @@
   "target": 720,
   "v": 3
  },
+ "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228091/thumb001.png?height=720&quality=75&version=1793183357&width=1280": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://image.starnewskorea.com/21/2026/10/2026102309421333450_1.jpg": {
   "w": 1200,
   "h": 1748,
@@ -1513,6 +1525,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcS7d.img": {
+  "w": 1300,
+  "h": 731,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gctq5.img": {
   "w": 1456,
   "h": 819,
@@ -1815,9 +1833,21 @@
   "v": 3,
   "blur": 0.413
  },
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F53%252FKyodo_1488533556721008904%252FKyodo_1488533556721008904_1.jpg,zoom=560x320,quality=100,type=jpg": {
+  "w": 480,
+  "h": 320,
+  "target": 720,
+  "v": 3
+ },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://inews.gtimg.com/om_ls/OFib5TjEOs_dNE4B2YAvKRmiC8Nmhs92AM0U6nk4otgJwAA_640330/0": {
+  "w": 640,
+  "h": 330,
   "target": 720,
   "v": 3
  },
@@ -2171,6 +2201,19 @@
   "h": 800,
   "target": 1280,
   "v": 3
+ },
+ "https://news.pchome.com.tw/newsdata/game/gamer/20261028/79315739359867203104_5.jpg": {
+  "w": 384,
+  "h": 512,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.421,
+  "local": "pics/1601a166c271ffd1.webp",
+  "out": [
+   960,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://news.walkerplus.com/article/1003055/10019309_615.jpg": {
   "w": 615,
@@ -3097,6 +3140,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://sm.ign.com/t/ign_nordic/gallery/t/the-art-of/the-art-of-the-mandalorian-and-grogu-preview-gallery_pczz.1200.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://smhn.info/wp-content/uploads/2026/10/galaxy-s27-pro-case-dwaybox.webp": {
   "w": 1200,
   "h": 1169,
@@ -3622,6 +3671,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.appbank.net/wp-content/uploads/2026/10/20261029_103305_562_01.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://www.atpress.ne.jp/releases/643108/LL_img_643108_3.jpg?format=webp&ts=1792744226": {
   "w": 800,
   "h": 800,
@@ -3747,6 +3802,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
+  "w": 700,
+  "h": 508,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
   "h": 334,
@@ -3782,14 +3843,15 @@
  "https://www.bing.com/th?id=ONUT.KVEdgwjflIJprj4phTDrSQ&pid=News&w=700": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.KvHWmZH2iiliaZGdbpOVaQ&pid=News&w=640": {
-  "w": 640,
-  "h": 330,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.442,
+  "local": "pics/de1b43be54e63c0e.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
@@ -4312,6 +4374,19 @@
   "out": [
    961,
    1280
+  ],
+  "why": "看不清"
+ },
+ "https://www.nikkansports.com/sports/news/img/202610290001904-w500_3.jpg": {
+  "w": 500,
+  "h": 422,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.634,
+  "local": "pics/5ef69825d9fa3125.webp",
+  "out": [
+   1280,
+   1080
   ],
   "why": "看不清"
  },

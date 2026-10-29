@@ -309,6 +309,171 @@
   "GTA 6": 26,
   "三星手机": 19,
   "ILLIT": 18,
-  "哈利波特剧集": 11
- }
+  "哈利波特剧集": 11,
+  "日本顶级网球赛事": 10,
+  "dota2": 8,
+  "MMORPG 新作": 7,
+  "BLEACH Mirrors High": 4,
+  "The Mandalorian": 4
+ },
+ "日本顶级网球赛事": [
+  {
+   "headline": "【テニス】大坂なおみ「まだまだ用意していた」8強入り逃し、衣装お披露目機会奪われる",
+   "highlight": "8強入り逃し",
+   "blurb": "東レ・パンパシフィック・オープン2回戦で第7シードの大坂なおみが18歳のポハンコバに3-6、5-7で敗れた。",
+   "weight": "lead",
+   "refs": [
+    9,
+    5,
+    1,
+    7
+   ],
+   "image": "https://www.nikkansports.com/sports/news/img/202610290001904-w500_3.jpg"
+  },
+  {
+   "headline": "Eala seeks redemption against Shnaider in Pan Pacific tourney",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "テニス - 東レ・パンパシフィック・オープン - エレーナ リバキナ vs. ユリア プティンツェワ",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2,
+    3
+   ]
+  },
+  {
+   "headline": "ダブルス女王シニアコバ、大阪決勝でクルーガーに6-1、6-0 3年ぶりシングルスV",
+   "highlight": "6-1、6-0",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
+   ]
+  },
+  {
+   "headline": "女子ダブルス1回戦 【ショートハイライト】東レ パン パシフィック オープンテニス 2026",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "ESL FACEIT Group Announces ESL One Munich 2027 Dota 2 Tournament",
+   "highlight": "ESL One Munich 2027",
+   "blurb": "ESL One Munich 2027 runs April 4–11, bringing 16 top Dota 2 teams to BMW Park for $1 million in prize money.",
+   "weight": "hero",
+   "refs": [
+    7,
+    6,
+    5,
+    8
+   ],
+   "event": {
+    "date": "2027-04-04",
+    "label": "大会開幕",
+    "place": "ミュンヘン BMW Park"
+   },
+   "image": "https://www.bing.com/th?id=ONUT.KVEdgwjflIJprj4phTDrSQ&pid=News&w=700"
+  },
+  {
+   "headline": "DOTA2在线再创十年新高，国服福利活动同步进行中",
+   "highlight": "十年新高",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "Dota 2 peak online drops 300k players after Valve reportedly bans bots from Arcade games",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "MMORPG 新作": [
+  {
+   "headline": "아키에이지 크로니클, 11월 4일 스팀 얼리액세스 출시",
+   "highlight": "11월 4일",
+   "blurb": "엑스엘게임즈가 개발·서비스하는 오픈월드 액션 MMORPG '아키에이지 크로니클'이 11월 4일 오전 8시(한국 시간) 스팀 얼리액세스로 출시된다.",
+   "weight": "hero",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-11-04",
+    "label": "アーリーアクセス"
+   },
+   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcS7d.img"
+  },
+  {
+   "headline": "コージーMMO『クロスランド』が11月16日発売！ Switch・Switch 2・PCで登場",
+   "highlight": "11月16日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ],
+   "event": {
+    "date": "2026-11-16",
+    "label": "発売日"
+   }
+  },
+  {
+   "headline": "Nexon、「オーバーギアード」オンラインショーケースを11月5日に配信",
+   "highlight": "11月5日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    7
+   ],
+   "event": {
+    "date": "2026-11-05",
+    "label": "ショーケース配信",
+    "time": "20:00"
+   }
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "《BLEACH Mirrors High》今日上市公布片頭動畫、片頭曲等情報首次轉蛋實裝藍染惣右介",
+   "highlight": "今日上市",
+   "blurb": "配信開始に合わせてオープニングアニメ・主題歌を公開、初のガチャで藍染惣右介が実装された。",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "image": "https://news.pchome.com.tw/newsdata/game/gamer/20261028/79315739359867203104_5.jpg"
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Slideshow: The Art of The Mandalorian and Grogu Preview Gallery",
+   "highlight": "",
+   "blurb": "Preview gallery from 'The Art of The Mandalorian and Grogu' plus a new behind-the-scenes look. No new release-date news.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2,
+    3
+   ],
+   "image": "https://sm.ign.com/t/ign_nordic/gallery/t/the-art-of/the-art-of-the-mandalorian-and-grogu-preview-gallery_pczz.1200.jpg"
+  }
+ ]
 }

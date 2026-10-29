@@ -1,32 +1,32 @@
 {
- "admin": "916f015f307e",
- "admin-ai": "ff7de1c64220",
+ "admin": "965861f34c02",
+ "admin-ai": "a9caddc508f2",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "f2a26f34"
+   "7a5721c4"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "c4722a26"
+   "b8e13c91"
   ]
  },
- "admin-boards": "9c1a96c54da6",
+ "admin-boards": "2662b2d9483d",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "fce4e09b"
+   "b284e057"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "c8a709728f65",
+ "admin-emblem": "552503edfb6a",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "b44f6514"
+   "28d7fb8b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "d0591967fd5d",
+ "admin-now": "f25f495b8c9e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "55dfb689"
+   "a7e19236"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "34c9eddd"
+   "da0ae49e"
   ]
  },
- "admin-system": "ec5098f63432",
+ "admin-system": "f9af2a3ebb26",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d1de8e07"
+   "a74f83b3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "0c4aef19"
+   "6cde0638"
   ]
  },
  "admin_marks": {},
- "heat": "63dc0a7a4dc4",
+ "heat": "62838fb5dd76",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "7aa30cd9"
+   "076a3be0"
   ],
   "ranking": [
    "ランキング",
-   "d76076ca"
+   "3b331740"
   ]
  },
- "index": "d479538cde52",
+ "index": "505f6a01f92c",
  "index_marks": {
   "front": [
    "トップ",
-   "bb89758c"
+   "53d3dd7b"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "7cade0ea"
+   "b32c31e4"
   ],
   "w-130724c0": [
    "猫用品",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "008441d3"
+   "9a1e2e76"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -161,11 +161,11 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "84ea1731"
+   "f9867b27"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "59e14c48"
+   "f358fc8f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -177,7 +177,7 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "579e461b"
+   "d4f381cd"
   ],
   "w-da15ac21": [
    "Vaundy",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 03:54",
+ "updated": "10.30 03:59",
  "wishlist": "f4fee3424436"
 }
