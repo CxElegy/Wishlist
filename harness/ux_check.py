@@ -322,6 +322,7 @@ def check_admin(pw, base, width, out):
 # 前の 1 枚の管理ページ（2026-10-25 まで）にあった欄と小見出し：6 つに分けても全部どこかにある（なくした欄 0）
 ADMIN_OLD_IDS = ["members", "term-panel", "tokens", "ov", "status", "editdiff", "backend", "emblem-ex", "procs", "queue", "items", "emblems", "votes", "libboards"]
 ADMIN_OLD_H3 = ["いま待っているもの", "いま動いているもの", "次の実行", "リソース", "AI を使うか", "並列と制限", "待ち行列", "ログ", "版面ごとの状態", "「違う」の理由"]
+ANON_OK_FN = {"board_visible"}   # 意図的な公開（boards の RLS が使う）
 ADMIN_FILES = ["admin.html", "admin-now.html", "admin-boards.html", "admin-emblem.html", "admin-ai.html", "admin-system.html", "admin-members.html"]
 ADMIN_JS = """() => ({ids:[...document.querySelectorAll('section.panel[id]')].map(s=>s.id),
  h3:[...document.querySelectorAll('h3.h3')].map(h=>(h.firstChild&&h.firstChild.textContent||'').trim()),
@@ -349,24 +350,46 @@ def check_public_leak(base):
     お客さまだけの名前 ＝ test-a が読める版面 − ログインなしが読める版面。"""
     anon, _ = rest_boards()
     mine = set()
-    for e in ("test-a@example.com", "test-b@example.com"):
-        mine |= set(rest_boards(session(e)["access_token"])[0])
+    for e in ("test-a", "test-b", "test-c", "test-d", "test-e"):   # お客さま全員（ログインできない人は数えない）
+        try:
+            mine |= set(rest_boards(session(e + "@example.com")["access_token"])[0])
+        except urllib.error.HTTPError:
+            pass
     only = sorted(n for n in mine - set(anon) if len(n) >= 3)
-    pages = ADMIN_FILES + ["index.html", "settings.html", "wishlist.html"]
+    # 公開の HTML 全部：docs/home/*.html（glob）と docs/ 直下の複製
+    up = base.rstrip("/").rsplit("/", 1)[0] + "/"
+    pages = [(base + f.name, f.name) for f in sorted((ROOT / "docs" / "home").glob("*.html"))]
+    pages += [(up + f.name, "../" + f.name) for f in sorted((ROOT / "docs").glob("*.html"))]
     bad = []
-    for f in pages:
-        html = urllib.request.urlopen(urllib.request.Request(base + f, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
+    for url, f in pages:
+        html = urllib.request.urlopen(urllib.request.Request(url, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
         # 版面の名前としての出方（data-k・data-name・表の1マス）だけ数える。記事の題や BACKLOG の文に入った同じ字は版面ではない
         hit = [n for n in only if any(m in html for m in (f'data-k="{n}"', f'data-name="{n}"', f'<td>{n}</td>'))]
         if hit:
             bad.append(f"{f} にお客さまだけの版面の名前 {len(hit)} 件（{hit[:3]}）")
     s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
-    try:   # 配色の RPC は anon が呼べない（実際の権限。is_admin の弾きは「管理者だけ」、権限なしは permission denied）
-        journey_rpc(s["supabase_url"], s["supabase_key"], s["supabase_key"], "board_theme_set", {"p_board": 0, "p_theme": {}})
-        bad.append("board_theme_set をログインなしで呼べた")
-    except urllib.error.HTTPError as ex:
-        if "permission denied" not in ex.read().decode("utf-8", "replace"):
-            bad.append("board_theme_set がログインなしで関数まで届いた（anon の execute が残っている）")
+    # 管理者用の RPC（admin_・board_ で始まる）は anon が実行できない。db/*.sql の関数を、ログインなしで引数ダミーで呼び、
+    # 「permission denied」以外（＝関数まで届いた）を数える。board_visible は RLS の読みが使う意図的な公開
+    dummy = {"text": "", "bigint": 0, "int": 0, "integer": 0, "jsonb": {}, "boolean": False}
+    open_fn = []
+    for f in sorted((ROOT / "db").glob("*.sql")):
+        for m in re.finditer(r"create\s+(?:or\s+replace\s+)?function\s+public\.((?:admin|board)_\w+)\s*\(([^)]*)\)", f.read_text(encoding="utf-8")):
+            fn = m.group(1)
+            if fn in ANON_OK_FN or fn in open_fn:
+                continue
+            body = {}
+            for arg in filter(None, (x.strip() for x in m.group(2).split(","))):
+                nm, ty = arg.split()[:2]
+                body[nm] = dummy.get(ty, "")
+            try:
+                journey_rpc(s["supabase_url"], s["supabase_key"], s["supabase_key"], fn, body)
+                open_fn.append(fn)
+            except urllib.error.HTTPError as ex:
+                msg = ex.read().decode("utf-8", "replace")
+                if "permission denied" not in msg and "PGRST202" not in msg:   # PGRST202 = 本番にまだ無い関数
+                    open_fn.append(fn)
+    if open_fn:
+        bad.append(f"ログインなしで実行できる管理者用の関数 {len(open_fn)} 個（{open_fn}）")
     return bad, len(only)
 
 

@@ -395,7 +395,7 @@ language sql stable security definer set search_path = '' as $$
    limit 1;
 $$;
 revoke all on function public.admin_email_for(text) from public;
-grant execute on function public.admin_email_for(text) to anon, authenticated;
+grant execute on function public.admin_email_for(text) to authenticated;   -- 2026-10-29：anon が店長のメールを引けたので anon から外した（本番は revoke 済み）
 
 -- ⑯ ログインはメールアドレス（2026-10-21，用户定的：ユーザー名から変えた）。app_users の name = メールアドレス（小文字で重ならない）。
 --    ⑮ の店長の名前 CxElegy は、店長のメールの行にする（admin_email_for は残すが網页はもう使わない）。

@@ -23,4 +23,5 @@ begin
 end;
 $$;
 revoke all on function public.board_emblem_request(bigint, jsonb) from public;
+revoke all on function public.board_emblem_request(bigint, jsonb) from anon;   -- 2026-10-29：anon に権限を残さない（board_theme_set と同じ規則）
 grant execute on function public.board_emblem_request(bigint, jsonb) to authenticated;
