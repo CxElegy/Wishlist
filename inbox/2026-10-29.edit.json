@@ -271,7 +271,7 @@
   "哈利波特剧集": 2,
   "日本顶级网球赛事": 6,
   "FROM": 4,
-  "ILLIT": 3,
+  "ILLIT": 12,
   "Vaundy": 2,
   "滑雪": 2,
   "绝区零": 6,
@@ -529,6 +529,39 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "ILLIT、本日（26日）カムバック！新AL『BREAK EVEN』で“損する恋の終わり”を宣言",
+   "highlight": "新AL『BREAK EVEN』",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
+   ]
+  },
+  {
+   "headline": "ILLIT — Girl Group Climbs Oricon Chart with 5th Mini Album",
+   "highlight": "Oricon Chart",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8,
+    11,
+    9,
+    10,
+    4
+   ]
+  },
+  {
+   "headline": "아일릿 ‘체포하겠어’ 韓日 모두 통했다…차트 동시 최상위권",
+   "highlight": "차트 동시 최상위권",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    5,
+    6
    ]
   }
  ],
