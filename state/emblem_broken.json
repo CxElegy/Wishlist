@@ -2800,6 +2800,33 @@
      238
     ]
    }
+  },
+  {
+   "v": 12,
+   "emblem": {
+    "subject": "Bane",
+    "why": "Bane（Fandom のページ）",
+    "image": "emblems/dota2-bane.webp",
+    "source": "https://static.wikia.nocookie.net/dota2_gamepedia/images/d/d6/Bane_Model.jpg/revision/latest/scale-to-width-down/400?cb=20150509190142",
+    "page": "https://dota2.fandom.com/wiki/Bane",
+    "shape": "cutout",
+    "face": [
+     0,
+     0,
+     0.5,
+     0.491,
+     420,
+     277
+    ],
+    "nfv": 4,
+    "nk": "replace",
+    "bb": [
+     0.0,
+     1.0,
+     0.0,
+     1.0
+    ]
+   }
   }
  ],
  "FROM": [
