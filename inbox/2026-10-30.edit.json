@@ -319,7 +319,13 @@
   "星巴克马克杯": 4,
   "滑雪": 4,
   "绝区零": 4,
-  "gelato pique": 3
+  "gelato pique": 3,
+  "A2O LITE": 2,
+  "チェーンソーマン": 2,
+  "Vaundy": 1,
+  "あつ森": 1,
+  "ぐでたま": 1,
+  "猫用品": 1
  },
  "日本顶级网球赛事": [
   {
@@ -553,6 +559,76 @@
     "label": "福袋抽選受付",
     "time": "12:00"
    }
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "李秀满在烤肉店豪爽支付顾客餐费，庆祝A2O LITE夺得音乐节目第一",
+   "highlight": "夺得音乐节目第一",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "不再追求自然律动，她们把身体变成了切割节奏的精密仪器",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "劇場版「チェンソーマン レゼ篇」×グラニフ",
+   "highlight": "グラニフ",
+   "blurb": "「チェンソーマン レゼ篇」とグラニフのコラボ商品が公開。ハーフジップスウェットは7900円。",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ],
+   "image": "https://ogre.natalie.mu/media/news/eiga/2026/1028/chainsawman_graniph_20261028_14.jpg?impolicy=ogp_face_crop"
+  }
+ ],
+ "Vaundy": [],
+ "あつ森": [
+  {
+   "headline": "【あつ森】『ゼルダの伝説』マイデザイン配布！コログのかさやトライフォースTシャツが登場",
+   "highlight": "マイデザイン配布",
+   "blurb": "『ゼルダの伝説』のマイデザインが配布開始。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://cimg.kgl-systems.io/camion/files/92525/ogp_kjfu.jpg?x=1280"
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "Where is Tophat Gudetama this week in Hello Kitty Island Adventure?",
+   "highlight": "",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/10/jlee_251027_1001_hkia_gudetama.jpg?q=49&fit=crop&w=825&dpr=2"
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "【ダイソー】猫好きさん、朗報だよ……。超大当たりだった猫グッズ3選",
+   "highlight": "ダイソー",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://media.trilltrill.jp/articles/5145090/description-image.9b32604df154ad2b4d43c97c6d326853"
   }
  ]
 }

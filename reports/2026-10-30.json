@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "5c59a8a448da",
+ "edit_sig": "33250456d23c",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -602,17 +602,19 @@
    "cover": null,
    "facts": [],
    "name": "ぐでたま",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-26",
-     "n": 1,
-     "source": "Polygon",
-     "title": "Where is Tophat Gudetama this week in Hello Kitty Island Adventure?",
-     "url": "https://www.polygon.com/hello-kitty-island-adventure-guides/518836/tophat-gudetama-location-map-week-where-to-find/"
+     "headline": "Where is Tophat Gudetama this week in Hello Kitty Island Adventure?",
+     "highlight": "",
+     "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/10/jlee_251027_1001_hkia_gudetama.jpg?q=49&fit=crop&w=825&dpr=2",
+     "image_via": "AI 挑选",
+     "url": "https://www.polygon.com/hello-kitty-island-adventure-guides/518836/tophat-gudetama-location-map-week-where-to-find/",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "Gudetama",
    "theme": {
     "accent": "#885D0C",
@@ -635,24 +637,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "「チェンソーマン レゼ篇」とグラニフのコラボ商品が公開。ハーフジップスウェットは7900円。",
      "date": "2026-10-29",
-     "n": 1,
-     "source": "ナタリー",
-     "title": "劇場版「チェンソーマン レゼ篇」×グラニフ 二道 | ハーフジップスウェット（7900円） [画像ギャラリー 13/28]",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE04T0N3UkJlWDJJUFFzcFZmTzlOX29lc0VkSklOVzZ3RTJDY1o4MGQ5SUdMdDI2VjBFSEt3aUFBaGxaM05mQUlfaEVFNkJJak1UV2t0RzBRNTRXQV9YWEZwQw?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 2,
-     "source": "ナタリー",
-     "title": "劇場版「チェンソーマン レゼ篇」×グラニフ キービジュアル [画像ギャラリー 5/28]",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPV0tVbDVoUzNCRmNKVjlNbm43YlBjaUpybGFGR3AwUzlNaFgwekxFLVNiMjlXTjFtNEJRbGJPcThUMWJ0S3pFaXF3Qlk1WlA4ZzNXbU0tSkYwcEpwd2FnTWo3NTA1OEg3OHVwZXUwdGpvVnRBMnVGTjVudmZWRDdicmtsa1l5cE0?oc=5"
+     "headline": "劇場版「チェンソーマン レゼ篇」×グラニフ",
+     "highlight": "グラニフ",
+     "image": "https://ogre.natalie.mu/media/news/eiga/2026/1028/chainsawman_graniph_20261028_14.jpg?impolicy=ogp_face_crop",
+     "image_via": "AI 挑选",
+     "url": "https://natalie.mu/eiga/gallery/news/695686/3003293",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -698,17 +695,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "『ゼルダの伝説』のマイデザインが配布開始。",
      "date": "2026-10-29",
-     "n": 1,
-     "source": "電撃オンライン",
-     "title": "【あつ森】『ゼルダの伝説』マイデザイン配布！コログのかさやトライフォースTシャツが登場",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5TeVA4S29mcUpOR3NkSVFrRDNCVS1SYlU5OUxtVXBSVFVtZjNkZGl0WXF4RzNiLW9TSlp4dHJ4Zm9jZ0c3cTBMc0dwRTFZVm9ybWQ3ZkRNQQ?oc=5"
+     "headline": "【あつ森】『ゼルダの伝説』マイデザイン配布！コログのかさやトライフォースTシャツが登場",
+     "highlight": "マイデザイン配布",
+     "image": "https://cimg.kgl-systems.io/camion/files/92525/ogp_kjfu.jpg?x=1280",
+     "image_via": "AI 挑选",
+     "url": "http://news.dengeki.com/article/202610/92525",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -718,33 +717,6 @@
     "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://vaundy.jp/og_image.png",
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 1,
-     "source": "note",
-     "title": "[Kokura Daily Life] Medley performance on the Vaundy-themed Kokura Station piano - A warm encounter with a crowd of over a dozen people and visiting fans",
-     "url": "https://note.com/kumacha_piano/n/n6f518889c3f4?hl=en"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
-    "font": "serif",
     "split": true
    }
   },
@@ -836,24 +808,29 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 1,
-     "source": "新浪网",
-     "title": "不再追求自然律动，她们把身体变成了切割节奏的精密仪器|A2O LITE|梁淅沥|盛艾敬|NEON_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9RRWZNNjQ0YzBwYU5pZ0M1RWl0UmJKY3doaUxRN1RTVHcxM1I3TkI4VVlCOU1jWjBOSUJBRHA0eFlHdGo3SEVob21iRzV5UThMTU82WWxlSUdMajYwUlZVZU45dw?oc=5"
+     "headline": "李秀满在烤肉店豪爽支付顾客餐费，庆祝A2O LITE夺得音乐节目第一",
+     "highlight": "夺得音乐节目第一",
+     "image": "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif",
+     "image_via": "og:image",
+     "url": "https://www.ajudaily.com/view/20261023092870270",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-23",
-     "n": 2,
-     "source": "亚洲日报",
-     "title": "李秀满在烤肉店豪爽支付顾客餐费，庆祝A2O LITE夺得音乐节目第一",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBhaFJ2dzFCMmhSM3JqV1JBLTRQajE5TzFHNkV3ZHdvMWN2dkZGbnlhQ3NpZl9Rc21uaS1veWl5Ykh3Njc5cFByRnNRVmdFNlI5NEQ3RjJHM1gzbXc?oc=5"
+     "headline": "不再追求自然律动，她们把身体变成了切割节奏的精密仪器",
+     "highlight": "",
+     "image": "http://wx4.sinaimg.cn/middle/008l2owuly8iicjorsei4j30sg11sdqp.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5357275381761500.html",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "",
    "theme": {
     "accent": "#B5285F",
@@ -899,17 +876,19 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-29",
-     "n": 1,
-     "source": "TRILL【トリル】",
-     "title": "【ダイソー】猫好きさん、朗報だよ……。超大当たりだった猫グッズ3選",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9VZUZORWp4RVJXRjlzNzlqbE1EcEYwSkZHOEFyZXM2YmhwdFhPUHpRd29RZWlSWEFNY0tSb0kyYTVYNUdiZlFOWWh0OUNBUkE?oc=5"
+     "headline": "【ダイソー】猫好きさん、朗報だよ……。超大当たりだった猫グッズ3選",
+     "highlight": "ダイソー",
+     "image": "https://media.trilltrill.jp/articles/5145090/description-image.9b32604df154ad2b4d43c97c6d326853",
+     "image_via": "AI 挑选",
+     "url": "https://trilltrill.jp/articles/5145090",
+     "weight": "lead"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
@@ -968,6 +947,31 @@
     "alt_fg": "#0F1512",
     "bg": "#0F1512",
     "fg": "#ECE7DC",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-10-29",
+    "headline": "2026演唱會資訊售票日期一次看！藤井風、Vaundy、孫盛希、米津玄師…（持續更新）",
+    "url": "https://tw.news.yahoo.com/2025%E6%BC%94%E5%94%B1%E6%9C%83%E8%B3%87%E8%A8%8A%E5%94%AE%E7%A5%A8%E6%97%A5%E6%9C%9F%E4%B8%80%E6%AC%A1%E7%9C%8B%EF%BC%81aaa%E3%80%81zerobasone%E3%80%81nct-dream%E3%80%81%E6%B0%91%E6%AD%8C50%E3%80%81twice%EF%BC%88%E6%8C%81%E7%BA%8C%E6%9B%B4%E6%96%B0%EF%BC%89-015243121.html"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
     "font": "serif",
     "split": true
    }

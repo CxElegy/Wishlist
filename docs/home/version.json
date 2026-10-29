@@ -1,14 +1,14 @@
 {
- "admin": "6559fa2dff67",
- "admin-ai": "6cfd900de922",
+ "admin": "8e92f6e1d702",
+ "admin-ai": "dec4d4699ca6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "acef6f8c"
+   "12ee56f6"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "092da9d6"
+   "5a238764"
   ]
  },
  "admin-boards": "2662b2d9483d",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "fecff22fd318",
+ "admin-emblem": "ea63b8ebd180",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "aa5d4a4e"
+   "c62f5a05"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "07dc444e97da",
+ "admin-now": "65e28a64af70",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "43ad701c"
+   "b3dfe9ee"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "9f6c3ae1"
+   "28bd9d98"
   ]
  },
- "admin-system": "ebf6970f35ca",
+ "admin-system": "0da568d58bdd",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3f884e32"
+   "b7ca1384"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "5f1ea050"
+   "c74a661a"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "3b331740"
   ]
  },
- "index": "7b10e63011d3",
+ "index": "9cd64c030cc9",
  "index_marks": {
   "front": [
    "トップ",
-   "b4148c3c"
+   "a9418b07"
   ],
   "picks": [
    "気になるかも？",
@@ -109,11 +109,11 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "ff6aeacf"
+   "05f9d53b"
   ],
   "w-2309d720": [
    "ぐでたま",
-   "b912e7d7"
+   "f1f08af2"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "23907f23"
+   "cd40a3b1"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "268ad893"
+   "c3fea5ac"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "65e791f7"
+   "b6badd39"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 04:05",
+ "updated": "10.30 04:10",
  "wishlist": "7af11c19700f"
 }

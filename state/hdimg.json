@@ -211,6 +211,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/008l2owuly8iicjorsei4j30sg11sdqp.jpg": {
+  "w": 1024,
+  "h": 1360,
+  "target": 720,
+  "v": 3,
+  "local": "pics/59fab5aed6ac784a.webp",
+  "out": [
+   964,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://0.soompi.io/wp-content/uploads/2026/10/28063552/SM-A2O-LITE.jpg": {
   "w": 1200,
   "h": 800,
@@ -615,6 +628,13 @@
   "h": 934,
   "target": 1280,
   "v": 3
+ },
+ "https://cimg.kgl-systems.io/camion/files/92525/ogp_kjfu.jpg?x=1280": {
+  "w": 680,
+  "h": 383,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.413
  },
  "https://cimg.kgl-systems.io/camion/files/dengeki/92185/a156005c5baf40ff51a327f1c34f2975b.jpg?x=1280": {
   "w": 853,
@@ -1102,6 +1122,12 @@
   "w": 900,
   "h": 507,
   "target": 720,
+  "v": 3
+ },
+ "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif": {
+  "w": 594,
+  "h": 1056,
+  "target": 1280,
   "v": 3
  },
  "https://image.doctorbio.org/articles/01a17f8e-c761-79d5-a2a7-4dfc982a38f4/01a17f8e-c231-79d4-823c-26cb1bf89ee8.jpg": {
@@ -2088,11 +2114,12 @@
   "target": 1280,
   "v": 3
  },
- "https://media.trilltrill.jp/articles/5145090/featured-image.1353e8661175b6f31ccb0e4199a66fed?w=1200": {
-  "w": 1200,
-  "h": 1200,
-  "target": 720,
-  "v": 3
+ "https://media.trilltrill.jp/articles/5145090/description-image.9b32604df154ad2b4d43c97c6d326853": {
+  "w": 720,
+  "h": 540,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.419
  },
  "https://media.xenospectrum.com/exynos_2700_vs_snapdragon_8_elite_extreme_gen6_76e11dbba2.webp": {
   "w": 1672,
@@ -2853,6 +2880,12 @@
   "target": 720,
   "v": 3
  },
+ "https://ogre.natalie.mu/media/news/eiga/2026/1028/chainsawman_graniph_20261028_14.jpg?impolicy=ogp_face_crop": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://olimg.3dmgame.com/uploads/images/raiders/20240801/1722474179_466511.jpg": {
   "w": 1728,
   "h": 1080,
@@ -3418,6 +3451,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/10/jlee_251027_1001_hkia_gudetama.jpg?q=49&fit=crop&w=825&dpr=2": {
+  "w": 1650,
+  "h": 928,
+  "target": 1280,
+  "v": 3
  },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/screen-shot-2026-08-17-at-2-01-03-pm.jpg?w=1200&h=675&fit=crop": {
   "w": 1200,
