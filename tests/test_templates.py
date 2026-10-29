@@ -98,6 +98,15 @@ class Templates(unittest.TestCase):
         self.assertIn(likefx.CONFETTI_JS, render.LIKEFX_HEAD)
         self.assertIn("burstPath", likefx.FX_JS)
 
+    def test_like_fx_stays_on_screen(self):
+        # 端の 👍 でも札・字・👍 が切れない：中心を room() で寄せる。帯の横滑りは中心から ±70px まで（SHAPE_ROOM の strip・stripe がその分を持つ）
+        import likefx
+        self.assertIn("const room = (name, fx)", likefx.FX_JS)
+        self.assertIn("Math.min(Math.max(r.left + r.width / 2, hx), W - hx)", likefx.FX_JS)
+        self.assertIn("x: cx / innerWidth", likefx.FX_JS)
+        self.assertNotIn("P(-240, 40)", likefx.FX_JS)
+        self.assertNotIn("el.style.left = (r.left", likefx.FX_JS)
+
     def test_emblems(self):
         # 作品の小元素：既存の画像の網址（http(s)）だけ。何枚でもよく、網页で 1 枚をランダムに。色のフチは emblem_ring
         _, items = digest.load_config()

@@ -383,6 +383,32 @@ def check_admin_pages(pw, base, width, out):
     return bad
 
 
+FX_JS_CHECK = """async()=>{const out=[],W=document.documentElement.clientWidth,H=innerHeight,q=n=>[...n];
+const pos={'左上':[2,2],'右上':[W-30,2],'真ん中':[W/2,H/2],'左下':[2,H-30]};
+for(const name of window.likeFx.names){const booms=[];
+ for(const [lab,[x,y]] of Object.entries(pos)){const b=document.createElement('button');b.style.cssText='position:fixed;width:28px;height:28px;left:'+x+'px;top:'+y+'px;z-index:1';document.body.appendChild(b);
+  const n0=document.querySelectorAll('.boom').length;window.likeFx(b,1,name,null);const bm=[...document.querySelectorAll('.boom')].slice(n0);if(bm[0])booms.push([lab,bm[0],b]);}
+ for(const t of [150,350,600,850]){await new Promise(r=>setTimeout(r,t===150?150:t===350?200:t===600?250:250));
+  for(const [lab,bm,b] of booms){const parts=[bm.firstElementChild,...bm.querySelectorAll('.fx-sfx svg,.fx-sfx span,.fx-strip,.fx-stripe')];
+   for(const e of parts){if(!e||!e.isConnected)continue;if(+getComputedStyle(e).opacity<.05)continue;const r=e.getBoundingClientRect();if(!r.width)continue;
+    const o=Math.max(0,-r.left,r.right-W,-r.top);if(o>1)out.push(name+'／'+lab+'／'+(e.className.baseVal??e.className)+' '+Math.round(o)+'px');}}}
+ booms.forEach(([l,bm,b])=>b.remove());await new Promise(r=>setTimeout(r,300));}
+return [...new Set(out)];}"""
+
+
+def check_fx_edge(pw, base, width):
+    """👍 の演出（likefx 20 種）の札・字・👍 本体が、端の 👍（左上・右上・左下）を押しても画面の外へ切れないか。
+    テーマ見本ページで likeFx を直接押し、0.15〜0.85 秒の間に見える部品の矩形を測る（粒・光・輪は除く）。2026-10-29 ユーザー指摘「イイネ！が左へ切れる」。"""
+    b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    pg = b.new_page(viewport={"width": width, "height": 900})
+    pg.goto(base + "themes.html", wait_until="domcontentloaded", timeout=60000)
+    pg.wait_for_function("()=>window.likeFx", timeout=30000)
+    pg.wait_for_timeout(1500)
+    bad = pg.evaluate(FX_JS_CHECK)
+    b.close()
+    return [f"演出が画面の外へ切れる {len(bad)} 件（{'、'.join(bad[:4])}）"] if bad else []
+
+
 def check_emb_fade(pw, base, width):
     """小元素の「パッ」：画像を 1.5 秒遅らせ、出る前は透明で場所（高さ）が変わらず、届いたら不透明になるか。"""
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
@@ -652,6 +678,13 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
+        for w in ([] if a.fast else sorted({*a.widths.split(","), "520"}, key=int)):   # 演出のはみ出し（390・520・1400）
+            try:
+                bad = check_fx_edge(pw, a.base, int(w))
+            except Exception as ex:  # noqa: BLE001
+                bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+            fails += bool(bad)
+            print(("✗ " if bad else "✓ ") + f"👍 の演出のはみ出し {w}px：" + ("、".join(bad) if bad else "20 種×端・真ん中で切れない"))
         for w in ([] if a.fast else a.widths.split(",")):   # --fast は小元素を見ない
             try:
                 bad = check_emb_fade(pw, a.base, int(w))

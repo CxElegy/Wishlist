@@ -139,8 +139,8 @@ window.likeFx = (() => {
     slice: () => { const x = R(-70, 70), y = R(-60, 60);
       return [[{ transform: C + P(x, y), opacity: 1, easing: 'steps(1)' }, { transform: C + P(x + R(-30, 30), y), opacity: 1, offset: .5, easing: 'steps(1)' },
         { transform: C + P(x, y), opacity: 0 }], 260, R(150, 420)]; },
-    swipe: () => [[{ transform: C + P(-240, 40) + ' rotate(-6deg)', opacity: 1, easing: 'cubic-bezier(.2,.9,.3,1)' },
-      { transform: C + P(0, 40) + ' rotate(-6deg)', opacity: 1, offset: .45 }, { transform: C + P(240, 40) + ' rotate(-6deg)', opacity: 0 }], 760, 40],
+    swipe: () => [[{ transform: C + P(-70, 40) + ' rotate(-6deg)', opacity: 1, easing: 'cubic-bezier(.2,.9,.3,1)' },
+      { transform: C + P(0, 40) + ' rotate(-6deg)', opacity: 1, offset: .45 }, { transform: C + P(70, 40) + ' rotate(-6deg)', opacity: 0 }], 760, 40],
   };
   // 演出の一覧：[👍 の動き, [[形, 数, 動き], …], 文字]
   const FX = {
@@ -181,6 +181,14 @@ window.likeFx = (() => {
   };
   const burstPath = (n, r1, r2) => { let d = ''; for (let i = 0; i < n * 2; i++) { const a = i / (n * 2) * 6.283, r = (i % 2 ? r2 * R(.85, 1.1) : r1 * R(.9, 1.12));
     d += (i ? 'L' : 'M') + (95 + Math.cos(a) * r * 1.45).toFixed(1) + ' ' + (62 + Math.sin(a) * r).toFixed(1); } return d + 'Z'; };
+  // 演出の中心を画面の端から寄せる余白 [左右, 上]：札・字・👍 本体が切れない大きさ（飛び散る粒は含めない）。2026-10-29
+  const SHAPE_ROOM = { strip: [200, 60], stripe: [220, 60], beam: [120, 262], ring: [91, 173] };
+  const room = (name, fx) => {
+    let hx = 100, ht = fx[0] === 'rocket' ? 380 : 190;
+    fx[1].forEach(([s]) => { const q = SHAPE_ROOM[s]; if (q) { hx = Math.max(hx, q[0]); ht = Math.max(ht, q[1]); } });
+    if (fx[2]) { ht = 340; hx = Math.max(hx, name === 'stamp' ? 170 : name === 'combo' ? 100 : (80 + [...fx[2]].length * 46) * .68); }
+    return [hx, ht];
+  };
   const PAPER = ['var(--c)', 'var(--gold)', 'var(--rose)', 'var(--card)'];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const play = (btn, v, name, emblem) => {
@@ -189,8 +197,11 @@ window.likeFx = (() => {
     const r = btn.getBoundingClientRect(), up = v > 0, fx = FX[name] || FX.pop;
     const el = document.createElement('div');
     el.className = 'boom' + (up ? '' : ' no');
-    el.style.left = (r.left + r.width / 2) + 'px';
-    el.style.top = (r.top + r.height / 2) + 'px';
+    const [hx, ht] = up ? room(name, fx) : [45, 100], W = document.documentElement.clientWidth;
+    const cx = W < hx * 2 ? W / 2 : Math.min(Math.max(r.left + r.width / 2, hx), W - hx);
+    const cy = Math.min(Math.max(r.top + r.height / 2, ht), Math.max(innerHeight - 60, ht));
+    el.style.left = cx + 'px';
+    el.style.top = cy + 'px';
     el.style.setProperty('--c', getComputedStyle(btn).getPropertyValue('--vc').trim() || 'var(--rose)');
     el.innerHTML = __THUMB__ + '<b></b>';
     document.body.appendChild(el);
@@ -203,7 +214,7 @@ window.likeFx = (() => {
       const viaLib = window.confetti && CONFETTI[name];
       if (viaLib) {
         const c = hex(getComputedStyle(btn).getPropertyValue('--vc').trim() || tok('--rose'));
-        CONFETTI[name]({ origin: { x: (r.left + r.width / 2) / innerWidth, y: (r.top - 70) / innerHeight }, zIndex: 70, disableForReducedMotion: true },
+        CONFETTI[name]({ origin: { x: cx / innerWidth, y: (cy - 70) / innerHeight }, zIndex: 70, disableForReducedMotion: true },
           [c, hex(tok('--gold')), hex(tok('--rose')), hex(tok('--card'))]);
       }
       const all = viaLib ? [] : parts.slice();

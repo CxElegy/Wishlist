@@ -179,7 +179,7 @@ COMPONENTS = {
     "pgnet": {"kind": "api", "name": "pg_net → GitHub dispatch", "spec": "20 秒に 1 回まで", "what": "設定ページの依頼ですぐ Actions を起こす"},
     "discord": {"kind": "api", "name": "Discord Webhook", "spec": "要紧 ≤6 行 · 埋め込み ≤10 · 30 日は二重に送らない",
                 "what": "notify.py"},
-    "confetti": {"kind": "api", "name": "canvas-confetti 1.9.3", "spec": "👍 の演出 20 種", "what": "likefx.py"},
+    "confetti": {"kind": "api", "name": "canvas-confetti 1.9.3", "spec": "👍 の演出 20 種 · 演出の中心は画面の端から札・字・👍 の半分より内側へ寄せる（likefx.room、ux_check 👍 の演出のはみ出し 390・520・1400）", "what": "likefx.py"},
     "maillink": {"kind": "api", "name": "だれでもメールアドレス＋パスワード（Supabase Auth signInWithPassword・bcrypt・supabase-js 2.45.4）",
                  "spec": "だれでもメール＋パスワード（2026-10-21，用户定的：メールは送らない・再発行なし・退会の機能なし）· 新しく始める＝メール・パスワード（8 文字以上）・規約・好みを user_signup で一度に → Supabase Auth のユーザーを確認済みで作る（private.make_auth_user）→ そのままログイン · ログイン中のメニューで自分のパスワードを変える · 店長は管理ページでお客さまのパスワードを変える（admin_users / admin_user_password）· テスト用 5 つはパスワード 0000",
                  "what": "render.AUTH_JS（右上の「ログイン」）。Google ログインは保留（PENDING.md）"},
