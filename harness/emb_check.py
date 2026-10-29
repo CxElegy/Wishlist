@@ -259,6 +259,21 @@ def head_missing():
     return out
 
 
+def head_cause_text(board, names, progress=None):
+    """E15 の原因：state/emblem_progress.json の funnel.heads（emblem_fill.head_causes が後台の回ごとに書く、人ごとの外した理由）を読む。記録がなければ「原因の記録なし」（次の回で出る）。"""
+    if progress is None:
+        try:
+            progress = json.loads((ROOT / "state" / "emblem_progress.json").read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            progress = {}
+    heads = (((progress.get("items") or {}).get(board) or {}).get("funnel") or {}).get("heads") or {}
+    parts = []
+    for n in names:
+        d = heads.get(n)
+        parts.append(f"{n}：" + ("・".join(f"{k} {v}" for k, v in sorted(d.items(), key=lambda kv: -kv[1])[:3]) if d else "原因の記録なし"))
+    return "；".join(parts)
+
+
 def dropped_keys(items=None):
     """E23：顔なしを測った版（nfv）が書いてあるのに nk か bb がない小元素 → [版面 主題]。_store が書いたキーが items.yaml への書き戻しで落ちている印（2026-10-27：nk・bb が許可リストになく「? 10」のまま）。
     書き戻しの許可リストは emblem.EMBLEM_KEEP 1 か所。測り直し待ち（nfv が古い・face がない）は数えない。"""
@@ -560,7 +575,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if guest:   # 店長の版面（ログインなし）だけ：止まっている版面は後台の状態から
         found["E10"] = [f"{k} {v}" for k, v in stuck().items()]
     if guest:
-        found["E15"] = [f"{k} {'・'.join(v)}" for k, v in head_missing().items()]
+        found["E15"] = [f"{k} {'・'.join(v)}（{head_cause_text(k, v)}）" for k, v in head_missing().items()]
     if guest and (cs := closeup_stage()):
         print("  情報：胸像待ち（顔だけのアップの入れ替え中）" + "・".join(f"{k} {n} 人（3 回を超えた {len(o)} 人：{'、'.join(o[:5])}）" for k, (n, o) in cs.items()))
         for ln in closeup_eta_lines():

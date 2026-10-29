@@ -161,6 +161,14 @@ class WideRetryEverywhere(unittest.TestCase):
         items[0]["emblem_reject"] = []   # unbreak が抜いたあと
         self.assertEqual(emb_check.narrow_small_rejects(items, rec), [])
 
+    def test_head_cause_text_reads_recorded_reasons(self):
+        """E15 に原因を添える：progress の funnel.heads を読み、記録がなければ「原因の記録なし」。"""
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import emb_check
+        prog = {"items": {"M": {"funnel": {"heads": {"Ann": {"顔なし": 3, "遠景": 1}}}}}}
+        self.assertEqual(emb_check.head_cause_text("M", ["Ann", "Bob"], prog), "Ann：顔なし 3・遠景 1；Bob：原因の記録なし")
+        self.assertEqual(emb_check.head_cause_text("Z", ["Ann"], prog), "Ann：原因の記録なし")
+
 
 if __name__ == "__main__":
     unittest.main()
