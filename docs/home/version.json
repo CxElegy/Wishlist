@@ -1,32 +1,32 @@
 {
- "admin": "7eb5101635ea",
- "admin-ai": "f020af54ffa9",
+ "admin": "3ab1371a433f",
+ "admin-ai": "39845efc7196",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4e8e5e9d"
+   "73e9c9b5"
   ],
   "tokens": [
    "AI 編集のトークン",
    "859250ba"
   ]
  },
- "admin-boards": "54f2881a5e4e",
+ "admin-boards": "809b4708006b",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "ed30e136"
+   "95247d45"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "179566162f48",
+ "admin-emblem": "d157388f6690",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "bf196f97"
+   "a688eff8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "521b97e25037",
+ "admin-now": "8a87fd647806",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "426c31ce"
+   "ed652534"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "df4d59b0"
+   "47d0aa28"
   ],
   "term-panel": [
    "ライブログ",
-   "028cf9a0"
+   "a79fe406"
   ]
  },
- "admin-system": "42056b43cd89",
+ "admin-system": "cdc424bef442",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "4ff3b6ae"
+   "3a67ac12"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "3b52c453"
+   "49b985ab"
   ]
  },
  "admin_marks": {},
- "heat": "14dc7217b963",
+ "heat": "4e3df8e525c1",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "4f7fe44c"
+   "b1c4ab83"
   ],
   "ranking": [
    "ランキング",
-   "3f165408"
+   "e8f80360"
   ]
  },
- "index": "b595253d7267",
+ "index": "5b2a36957190",
  "index_marks": {
   "front": [
    "トップ",
-   "f4836b83"
+   "949c10a5"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "a84d9192"
+   "8fe3343e"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "4bbe52c0"
+   "72196dcd"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "64b956c4"
+   "67860708"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "0929dd51"
   ]
  },
- "updated": "10.29 10:26",
+ "updated": "10.29 10:32",
  "wishlist": "6992f9a6d927"
 }

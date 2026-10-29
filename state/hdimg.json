@@ -47,12 +47,6 @@
   "target": 720,
   "v": 3
  },
- "http://www.mountainwatch.com/wp-content/uploads/2019/12/Green-Leaf-Onsen-Large.jpg": {
-  "w": 1170,
-  "h": 596,
-  "target": 720,
-  "v": 3
- },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
@@ -71,19 +65,6 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-29"
- },
- "http://wx1.sinaimg.cn/middle/8b511c18ly1iihc12wblpj20qo0w1jwg.jpg": {
-  "w": 960,
-  "h": 1153,
-  "target": 720,
-  "v": 3,
-  "local": "pics/2552e6e7c4e80530.webp",
-  "out": [
-   960,
-   1153
-  ],
-  "why": "防盗链",
-  "ref": true
  },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
@@ -335,6 +316,12 @@
  "https://assets.games.gg/grand_theft_auto_vi_tv_spot_differences_og_050838fff630dd6fe366a7bb_4d02128e8a.webp": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
+  "w": 1350,
+  "h": 1350,
   "target": 1280,
   "v": 3
  },
@@ -804,9 +791,9 @@
   "target": 1280,
   "v": 3
  },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/karuizawa.jpg": {
-  "w": 1962,
-  "h": 1472,
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/maina-waribiki.jpg": {
+  "w": 1376,
+  "h": 768,
   "target": 720,
   "v": 3
  },
@@ -883,6 +870,12 @@
   "target": 720,
   "v": 3
  },
+ "https://foro3d.com/2026/octubre/imagenes/image-engine-publica-su-desglose-de-vfx-de-the-mandalorian-grogu.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://foro3d.com/2026/octubre/imagenes/la-serie-de-harry-potter-de-hbo-arranca-con-1474-millones-en-su-primer.webp": {
   "w": 1920,
   "h": 1080,
@@ -925,12 +918,6 @@
   "h": 675,
   "target": 1280,
   "v": 3
- },
- "https://gizmodo.com/app/uploads/2026/10/Samsung-A17-Mint-Mobile-1200x675.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
   "w": 1200,
@@ -1512,12 +1499,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g5Iqp.img": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img": {
   "w": 1200,
   "h": 675,
@@ -1899,6 +1880,19 @@
   ],
   "why": "看不清"
  },
+ "https://img1.mydrivers.com/img/20261027/Sfe466081-bb4e-4ee2-9120-ef5e3fc8da67.png": {
+  "w": 600,
+  "h": 300,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.537,
+  "local": "pics/0ad29d7a99a125a6.webp",
+  "out": [
+   1280,
+   640
+  ],
+  "why": "看不清"
+ },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -2139,6 +2133,13 @@
   "target": 720,
   "v": 3
  },
+ "https://n.sinaimg.cn/spider20261028/523/w660h663/20261028/0381-f9309344077324303a8604f6a1221f3a.jpg": {
+  "w": 660,
+  "h": 663,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.313
+ },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
   "w": 664,
   "h": 497,
@@ -2170,6 +2171,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.413
+ },
+ "https://newportal.portal.auone.jp/media/thumbnails/2026/10/28/https___news_jp_i_1488317094651085808_w700.webp": {
+  "w": 700,
+  "h": 327,
+  "target": 720,
+  "v": 3
  },
  "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnax2f7OIyXc1WmQRDOjM-h8Yn9Gd6cjzMehWgq6BPeDImBHdGhoTErPtYsLyPaPzfFvf9v_c28o8qn8mFUGSUsnkDbqYqvg7SN2-YK0YukEflnUE4vG_1bAdOi-TgtgE4Q==": {
   "w": 934,
@@ -2927,6 +2934,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/163718/90/163718-90-05a90f266b3f82d8c94cbd1c9aec72fd-1491x1055.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1491,
+  "h": 1055,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/174697/3/174697-3-a0394415951be9911a3ce6117d1747a5-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1672,
   "h": 941,
@@ -2955,6 +2968,12 @@
   "w": 1557,
   "h": 865,
   "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/193049/1/193049-1-e6fb1b52fe45aa411f3f0fb0a6f476d4-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/21881/89/21881-89-8fd1b4c5834994ab56f955d2e4e45891-2500x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3117,6 +3136,12 @@
   "w": 1344,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 1280,
   "v": 3
  },
  "https://sm.ign.com/t/ign_in/screenshot/default/bleach-mirrors-high-overview-trailer-0-39-screenshot_9eu8.1200.jpg": {
@@ -3597,6 +3622,12 @@
   "target": 720,
   "v": 3
  },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/23/1792751373230_a20-jpg.webp": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/25/1792892380268_tnw-samsung-galaxy-s26-ultrathanh-nien-00018-1775326231035720446832-109-0-1366-2400-crop-1792880007653393781657-17928800204011989883181.jpeg": {
   "w": 1200,
   "h": 630,
@@ -3658,11 +3689,11 @@
   ],
   "why": "看不清"
  },
- "https://www.bgr.com/img/gallery/samsung-is-being-fined-15m-for-misleading-marketing-on-some-galaxy-phones-and-tablets/l-intro-1793218209.jpg": {
+ "https://www.bgr.com/img/gallery/samsung-galaxy-users-are-reporting-one-key-issue-after-updating-to-one-ui-9/l-intro-1793215051.jpg": {
+  "w": 1600,
+  "h": 899,
   "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
+  "v": 3
  },
  "https://www.billboard-japan.com/common/sys/img/news/00000166/166889/image.jpg": {
   "w": 999,
@@ -3707,6 +3738,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.8nZvs5fHXIIT0p2hKirmNw&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.BV4wUevcxmaQpULxq2JA0Q&pid=News&w=832": {
   "w": 700,
@@ -3924,12 +3961,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.wLiC6AdyDWMpnz3W32mnzg&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3960,25 +3991,6 @@
   "h": 466,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.yQTn8yVopd9NgLlJSmZFYA&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.zwC0tKs82Ddmc_D7iOCMLQ&pid=News&w=640": {
-  "w": 640,
-  "h": 457,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.635,
-  "local": "pics/19ef1fac89d3d1a5.webp",
-  "out": [
-   1280,
-   914
-  ],
-  "why": "看不清"
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
@@ -4177,12 +4189,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.engadget.com/img/gallery/heres-how-much-your-older-samsung-phones-are-actually-worth/l-intro-1792776180.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
- },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
   "w": 1000,
   "h": 1000,
@@ -4309,12 +4315,6 @@
  "https://www.laughingplace.com/uploads/media/2026/10/LBE-Mando-Grogu.png": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
-  "w": 900,
-  "h": 600,
   "target": 1280,
   "v": 3
  },
