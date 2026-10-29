@@ -1,10 +1,10 @@
 {
- "changed": true,
- "checked": "2026-10-29T22:02:52+00:00",
+ "changed": false,
+ "checked": "2026-10-29T22:27:52+00:00",
  "fired": {
-  "at": "2026-10-29T22:02:52+00:00",
+  "at": "2026-10-29T22:27:52+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,41 +20,31 @@
     "sig": "0494561cbec8"
    },
    "items": [
-    "A2O LITE",
-    "ILLIT",
-    "The Mandalorian",
     "dota2",
     "gelato pique",
     "あつ森",
-    "チェーンソーマン",
-    "三星手机",
     "星巴克马克杯",
     "猫用品"
    ],
-   "last_batch": "2026-10-29T20:21:21+00:00",
+   "last_batch": "2026-10-29T22:13:40+00:00",
    "last_error": {
-    "at": "2026-10-29T19:58:22+00:00",
+    "at": "2026-10-29T22:09:43+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 197,
+   "prog": 204,
    "prog_day": "2026-10-30",
    "ripe": [
-    "A2O LITE",
-    "ILLIT",
-    "The Mandalorian",
     "dota2",
     "gelato pique",
     "あつ森",
-    "チェーンソーマン",
-    "三星手机",
     "星巴克马克杯",
     "猫用品"
    ],
-   "sig": "0494561cbec8",
+   "sig": "81de9cf9611d",
    "token_cap": 1000000,
-   "tokens_today": 164621,
-   "why": "整理待ちの記事 12 件（10 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 214747,
+   "why": "整理待ちの記事 5 件（5 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
