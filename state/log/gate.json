@@ -1,25 +1,5 @@
 [
 {
-"at": "2026-10-28T16:44:57+00:00",
-"text": "判断：emblem あり（足りない 3 版面（Actions で Python が埋める）・失敗 13 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 01:47 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": true,
-"edit": false,
-"photos": false
-}
-},
-{
-"at": "2026-10-28T16:50:40+00:00",
-"text": "判断：emblem あり（足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 01:56 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
-"level": "info",
-"jobs": {
-"emblem": true,
-"edit": false,
-"photos": false
-}
-},
-{
 "at": "2026-10-28T17:05:08+00:00",
 "text": "判断：emblem あり（足りない 4 版面（Actions で Python が埋める）・失敗 12 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 02:13 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
 "level": "info",
@@ -559,6 +539,26 @@
 "results": {
 "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
 "photos": "仕事なし（起こさない）"
+}
+},
+{
+"at": "2026-10-29T01:29:20+00:00",
+"text": "判断：emblem あり（足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:33 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": true,
+"edit": false,
+"photos": false
+}
+},
+{
+"at": "2026-10-29T01:36:10+00:00",
+"text": "判断：emblem あり（足りない 5 版面（Actions で Python が埋める）・失敗 11 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:51 から）） · edit なし（今日の新着はすべて AI 編集済み） · photos なし（受付の写真なし）",
+"level": "info",
+"jobs": {
+"emblem": true,
+"edit": false,
+"photos": false
 }
 }
 ]
