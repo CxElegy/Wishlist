@@ -26,6 +26,15 @@ class LibBoards(unittest.TestCase):
         self.assertNotIn("to anon", sql)
         self.assertIn("from anon;", sql)   # 実際の権限は ux_check（check_public_leak）が本番で anon の呼び出しを確かめる
 
+    def test_no_anon_grant_on_admin_functions(self):
+        """db/*.sql：admin_・board_ の関数を anon に grant しない（board_visible は RLS が使う公開）。revoke から anon を外し忘れも拾う。"""
+        import re
+        for f in (ROOT / "db").glob("*.sql"):
+            for m in re.finditer(r"grant\s+execute\s+on\s+function\s+public\.((?:admin|board)_\w+)\s*\([^)]*\)\s+to\s+([^;]+);", f.read_text(encoding="utf-8")):
+                if m.group(1) != "board_visible":
+                    self.assertNotIn("anon", m.group(2), f"{f.name}: {m.group(1)}")
+        self.assertIn("from anon;", (ROOT / "db" / "board_emblem.sql").read_text(encoding="utf-8"))
+
     def test_published_html_has_no_board_rows(self):
         """公開の docs/home/admin-boards.html に版面の行（名前）が焼かれていない。ライブラリの欄は空の入れ物だけ。"""
         f = ROOT / "docs" / "home" / "admin-boards.html"
@@ -38,6 +47,8 @@ class LibBoards(unittest.TestCase):
 
     def test_ux_check_has_coverage_and_leak_checks(self):
         src = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        self.assertIn('glob("*.html")', src)   # 公開 HTML は名指しでなく glob で全部
+        self.assertIn("ANON_OK_FN", src)
         for name in ("def check_public_leak", "def check_admin_coverage", "UX_ADMIN_EMAIL"):
             self.assertIn(name, src)
 
