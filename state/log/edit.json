@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-10-28T11:59:23+00:00",
-"text": "2026-10-28 第 5 バッチを出刊：BLEACH Mirrors High（1 版面・3 本・残り 7 版面） · token 新規入力 2,347・キャッシュ読み 17.3万・出力 895",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.18,
-"mem_total": 16872808448,
-"mem_free": 15945256960,
-"disk_used": 10826948608,
-"disk_free": 30495559680,
-"disk_total": 41322508288,
-"peak": 318935040
-},
-"batch": 5,
-"boards": [
-"BLEACH Mirrors High"
-],
-"stories": 3,
-"left": 7,
-"edited": 23,
-"run": 1793184810.2345214,
-"tok": {
-"in": 4,
-"cw": 2343,
-"cr": 173223,
-"out": 895,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 176465
-},
-{
 "at": "2026-10-28T12:05:42+00:00",
 "text": "2026-10-28 第 6 バッチを出刊：GTA 6（1 版面・5 本・残り 6 版面） · token 新規入力 1,807・キャッシュ読み 8.9万・出力 669",
 "level": "ok",
@@ -1833,5 +1801,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 184750
+},
+{
+"at": "2026-10-29T10:03:17+00:00",
+"text": "2026-10-29 第 3 バッチを出刊：Astrae Oratio（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 1.1万・キャッシュ読み 105.8万・出力 3,865",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.18,
+"mem_total": 16872808448,
+"mem_free": 15821389824,
+"disk_used": 10924204032,
+"disk_free": 30398304256,
+"disk_total": 41322508288,
+"peak": 374161408
+},
+"batch": 3,
+"boards": [
+"Astrae Oratio"
+],
+"stories": 2,
+"left": 0,
+"edited": 23,
+"run": 1793266695.954941,
+"tok": {
+"in": 22,
+"cw": 10921,
+"cr": 1058064,
+"out": 3865,
+"calls": 11,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1072872,
+"secs": 1501,
+"run_tok": {
+"in": 68,
+"cw": 74736,
+"cr": 2797378,
+"out": 11766,
+"calls": 34,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

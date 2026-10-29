@@ -41,11 +41,24 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261029ac/533/w480h853/20261029/0c00-53eb91d347560355d47cfb0c66678f70.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
   "target": 720,
   "v": 3
+ },
+ "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
+  "w": 600,
+  "h": 338,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.357
  },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
@@ -498,6 +511,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.gamemeca.com/gmdata/0001/782/562/gm361604_thumb______.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/trees/g000/55/46/gm338794_tree_bg_sealm2.jpg": {
   "w": 1240,
   "h": 348,
@@ -812,6 +831,12 @@
  "https://doope.jp/media/26q4/img2849_01.jpg": {
   "w": 700,
   "h": 394,
+  "target": 720,
+  "v": 3
+ },
+ "https://economist.co.kr/data/ecn/image/2026/10/24/ecn20261024000021.800x.0.jpg": {
+  "w": 800,
+  "h": 562,
   "target": 720,
   "v": 3
  },
@@ -1573,6 +1598,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcDFq.img": {
+  "w": 1423,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcDpO.img": {
   "target": 1280,
   "v": 3,
@@ -2033,12 +2064,6 @@
   "w": 500,
   "h": 500,
   "target": 720,
-  "v": 3
- },
- "https://massivelyop.com/wp-content/uploads/2026/10/everlast-undying-tale-mage-is-boutta-go-ham.jpg": {
-  "w": 880,
-  "h": 290,
-  "target": 1280,
   "v": 3
  },
  "https://maxblizz.com/wp-content/uploads/2026/10/Marvel-Studios-Phase-7-movies-new.jpg": {
@@ -4100,6 +4125,12 @@
   "w": 690,
   "h": 460,
   "target": 720,
+  "v": 3
+ },
+ "https://www.chinapress.com.my/wp-content/uploads/2026/10/enhannah-261029-pmy-hp.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
   "v": 3
  },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {

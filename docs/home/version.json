@@ -1,14 +1,14 @@
 {
- "admin": "64b8ec9e2d09",
- "admin-ai": "f3926973c56e",
+ "admin": "8175d05c296a",
+ "admin-ai": "8da24f4dad40",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "27350953"
+   "49d067ad"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "80f3e075"
+   "cb6724e5"
   ]
  },
  "admin-boards": "f2b36d101dd0",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "0047d465e41a",
+ "admin-emblem": "e26d04b44f0b",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a4a6cf08"
+   "47a2b52e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "81706efe548f",
+ "admin-now": "fd054a96d31d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "1f0c6c0c"
+   "e5c2d314"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "e2246902"
+   "9af8548a"
   ]
  },
- "admin-system": "8a09424f95c4",
+ "admin-system": "638ee83c3a15",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a3c93f55"
+   "c5129b34"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "d851c87a"
+   "0d6c6ed3"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "fe78e24c"
   ]
  },
- "index": "2709efa7d03d",
+ "index": "c3f5686398ec",
  "index_marks": {
   "front": [
    "トップ",
-   "cd337f72"
+   "ea2b044b"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "4fb0058c"
+   "84b92818"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "7c26d4ed"
+   "a5d412b3"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "c1c3751b"
+   "3f402bd6"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "60a8cfa3"
+   "05ca6271"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "df260791"
+   "563e58ec"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -157,15 +157,15 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "a0b67185"
+   "0eb0c89d"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "cb7b1385"
+   "680e09ab"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "6e59b084"
+   "2ee8b5c2"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "54c6096c"
+   "bdf7543b"
   ],
   "w-f303ad09": [
    "绝区零",
    "0929dd51"
   ]
  },
- "updated": "10.29 18:51",
- "wishlist": "f0acdb0385d8"
+ "updated": "10.29 19:03",
+ "wishlist": "28f157bbb318"
 }
