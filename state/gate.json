@@ -1,10 +1,10 @@
 {
- "changed": true,
- "checked": "2026-10-29T07:00:33+00:00",
+ "changed": false,
+ "checked": "2026-10-29T08:24:43+00:00",
  "fired": {
-  "at": "2026-10-29T07:06:22+00:00",
+  "at": "2026-10-29T08:24:43+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-29T06:30:04+00:00",
+    "at": "2026-10-29T08:24:43+00:00",
     "attempts": 1,
     "day": "2026-10-29",
-    "prog": 307,
-    "resp": "cse_01W4x6f9YDxnNcvKRRcPm9HX",
-    "sig": "a9ed10f6c5c9"
+    "prog": 337,
+    "resp": "cse_01W4x6f7Et7T9x8iqJfuidvK",
+    "sig": "3bfa4a1ebd03"
    },
    "items": [
     "A2O LITE",
@@ -35,11 +35,18 @@
    "need": true,
    "prog": 337,
    "prog_day": "2026-10-29",
-   "ripe": [],
-   "sig": "e44e93185dd6",
+   "ripe": [
+    "A2O LITE",
+    "MMORPG 新作",
+    "あつ森",
+    "ぐでたま",
+    "日本顶级网球赛事",
+    "星巴克马克杯"
+   ],
+   "sig": "3bfa4a1ebd03",
    "token_cap": 1000000,
    "tokens_today": 703651,
-   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
