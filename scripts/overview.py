@@ -77,7 +77,7 @@ PAGES = [
          [N("emblem", "② 名前を広げる", "別名・関連語で探す", "actions", m="found=2")],
          [N("emblem", "③ 公式・記事のページ", "公式サイトや記事の写真", "actions", m="found=3")],
          [N("emblem", "規則で確かめる", "顔の大きさ・人数・本人・切り抜きの穴", "actions")],
-         [N(None, "items.yaml に書く", "足りたら終わり", "repo"), N(None, "失敗 → 待つ", "新しい材料が来たらすぐ・来なくても 1 時間後（毎時の後台）", "actions")],
+         [N(None, "items.yaml に書く", "足りたら終わり", "repo"), N(None, "失敗 → 待つ", "新しい材料が来たらすぐ（時間では待たない）", "actions")],
      ]},
     {"id": "page", "title": "ページ更新", "lead": "リポジトリが変わると公開ページを作り直す。開いているページは 1 分ごとに気づいて、静かに読み直す。",
      "edges": ["", "", "", "", ""],
@@ -132,7 +132,7 @@ def waits(data):
         out.append(("AI 編集", f"整理待ち {ed['n']} 件（{ed.get('boards', 0)} 版面）", why + extra, "edit_now"))
     failed = [r["name"] for r in rows if (r.get("bg") or {}).get("emblem", {}).get("state") == "failed"]
     if failed:
-        out.append(("小元素", f"失敗 {len(failed)} 版面", "候補が足りなかった版面。新しい記事・手がかりが来たらすぐ、来なくても 1 時間後に自動で再挑戦する（ボタンで今すぐ）", "background"))
+        out.append(("小元素", f"失敗 {len(failed)} 版面", "候補が足りなかった版面。新しい記事・手がかり・規則の版が変わったらすぐ自動で再挑戦する（時間では待たない・ボタンで今すぐ）", "background"))
     short = [r["name"] for r in rows if (r.get("bg") or {}).get("emblem", {}).get("state") == "wait"]
     if short:
         out.append(("小元素", f"足りない {len(short)} 版面", "次の回（毎時 17・47 分）に順に埋める。AI は使わない", None))

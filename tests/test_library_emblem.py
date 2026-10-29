@@ -156,9 +156,13 @@ class Fill(unittest.TestCase):
 
     def test_note_uses_library_retry(self):
         b = {"id": 9, "name": "x", "wd": None, "config": {}}
-        r = {"state": "failed", "note": "0 枚足した（a）。外した理由：b。新しい記事が来たらすぐ、来なくても 1 時間後にもう一度"}
+        r = {"state": "failed", "note": "0 枚足した（a）。外した理由：b。新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度"}
         add = le.fill_board(b, {}, None, BASE, fill=lambda item, log=None: r, now=1)
-        self.assertEqual(add["emblem_state"]["note"], f"0 枚足した（a）。外した理由：b。{le.RETRY_HOURS} 時間後にもう一度")
+        self.assertEqual(add["emblem_state"]["note"], "0 枚足した（a）。外した理由：b。手がかり・規則の版が変わったらすぐもう一度")
+        self.assertNotRegex(add["emblem_state"]["note"], r"\d+ 時間")   # 待ちの理由に時間が出ない
+        self.assertEqual(add["emblem_state"]["m"], le.material({**b["config"], **add}))   # 材料の指紋を残す
+        slow = le.fill_board(b, {}, None, BASE, fill=lambda item, log=None: {"state": "failed", "note": "時間切れ"}, now=1)
+        self.assertNotIn("m", slow["emblem_state"])   # 時間切れは指紋を残さない（次の見回りですぐ）
 
     def test_quote_name_skipped(self):
         add = le.fill_board({"id": 1, "name": 'a"b', "config": {}}, {}, None, BASE, fill=lambda *a, **k: 1 / 0, now=5)
@@ -170,16 +174,40 @@ class Fill(unittest.TestCase):
         bs = [{"id": 1, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv}}},   # 済み・今の規則 → 飛ばす
               {"id": 9, "config": {"emblem_state": {"state": "ok", "at": 0, "v": le.RULES, "nv": nv - 1}}},   # 済みでも名簿の規則が前の版 → 途中より先に数え直す
               {"id": 8, "config": {"emblem_state": {"state": "ok", "at": 0, "have": 3}}},   # 済みでも前の版の規則 → 作り直し
-              {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V}}},   # 今の規則で届かなかった → 24 時間待つ
+              {"id": 2, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V}}},   # 今の規則で届かなかった・指紋なし → 1 回だけ（指紋が付く）
               {"id": 6, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2}}},   # 前の版の規則 → すぐ
               {"id": 3, "config": {"emblem_state": {"state": "failed", "at": 0}}},   # 0 枚 → 途中より先
               {"id": 4, "config": {"emblem_state": {"state": "running", "at": now, "have": 5}}},
               {"id": 7, "config": {"emblem_state": {"state": "running", "at": now, "have": 0}}},
               {"id": 5, "config": {}},
               {"id": 10, "config": {"emblem_fandom": "jjk", "emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES}}},   # 届かなかったキャラの版面も名簿の版で
-              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V}}},   # 手がかりなし → 24 時間待つ
+              {"id": 11, "config": {"emblem_state": {"state": "failed", "at": now - 3600, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V}}},   # 手がかりなし・指紋なし → 1 回だけ
               {"id": 12, "config": {"emblem_state": {"state": "failed", "at": now - 60, "have": 49, "v": le.RULES, "nv": nv}}}]   # 公開の箱の小元素を今の壊れ方の規則で見ていない → 待たない
-        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 7, 10, 12, 9, 4, 8, 6])
+        self.assertEqual([b["id"] for b in le.due(bs, now)], [5, 3, 2, 7, 10, 12, 9, 4, 8, 6, 11])   # 指紋のない古い失敗（2・11）は 1 回だけ（指紋が付く）
+
+    def test_due_waits_for_material_not_time(self):
+        """届かなかった版面は、何日たっても手がかり・規則の版が同じなら試さない（待ちが見回りで増えない）。変わったらすぐ。"""
+        nv = emblem_fill.NAMES_V
+        cfg0 = {"emblem_fandom": "jjk"}
+        st = {"state": "failed", "at": 0, "have": 2, "v": le.RULES, "nv": nv, "bv": emblem_fill.BROKEN_V, "m": le.material(cfg0)}
+        b = {"id": 1, "config": {**cfg0, "emblem_state": st}}
+        for now in (10 ** 4, 10 ** 8):   # 3 時間後でも 3 年後でも
+            self.assertEqual(le.due([b], now), [])
+        self.assertEqual([x["id"] for x in le.due([{"id": 1, "config": {**b["config"], "emblem_fandom": "other"}}], 10 ** 4)], [1])   # 手がかりが変わった
+        with mock.patch.object(le, "RULES", le.RULES + 1):
+            self.assertEqual([x["id"] for x in le.due([b], 10 ** 4)], [1])   # 規則の版が上がった
+        self.assertEqual([x["id"] for x in le.due([{"id": 1, "config": {**cfg0, "emblem_state": {k: v for k, v in st.items() if k != "m"}}}], 10 ** 4)], [1])   # 時間切れ・例外（指紋なし）
+
+    def test_no_time_wait_left(self):
+        """待ちを時間で決める定数・文言が小元素の仕組みに残っていない（2026-10-29：RETRY_HOURS 廃止）。"""
+        import re
+        root = pathlib.Path(__file__).resolve().parent.parent
+        for f in ("emblem_fill.py", "library_emblem.py", "gate.py", "digest.py", "overview.py", "emblem_rules.py"):
+            src = (root / "scripts" / f).read_text(encoding="utf-8")
+            self.assertNotRegex(src, r"(?<!IMG_)RETRY_HOURS|EXHAUSTED_HOURS", f)
+            if f != "emblem_fill.py":   # emblem_fill は前の版の言葉を書き換える正規表現（TIME_WAIT）を持つ
+                self.assertNotRegex(src, r"来なくても[^\n\"']{0,20}時間後", f)
+        self.assertFalse(hasattr(le, "RETRY_HOURS"))
 
     def test_unbroken_drops_cut_public_emblems(self):
         """公開の箱の小元素は emblem_fill.broken_cuts が見ない → 同じ規則（broken_image）で外す。ほかの網址・ロゴ・読めないものは残す。"""
