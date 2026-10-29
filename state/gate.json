@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-29T20:42:35+00:00",
+ "checked": "2026-10-29T22:02:52+00:00",
  "fired": {
-  "at": "2026-10-29T20:42:35+00:00",
+  "at": "2026-10-29T22:02:52+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-29T19:53:25+00:00",
+    "at": "2026-10-29T22:02:52+00:00",
     "attempts": 1,
     "day": "2026-10-30",
-    "prog": 167,
-    "resp": "cse_01W4x6f5LLj13HstDAnpZiyh",
-    "sig": "1e620bcd2d90"
+    "prog": 197,
+    "resp": "cse_01W4x6f863pk9MR7g9sW7VBh",
+    "sig": "0494561cbec8"
    },
    "items": [
     "A2O LITE",
@@ -39,20 +39,30 @@
    "need": true,
    "prog": 197,
    "prog_day": "2026-10-30",
-   "ripe": [],
-   "sig": "d749ef2b55fb",
+   "ripe": [
+    "A2O LITE",
+    "ILLIT",
+    "The Mandalorian",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "星巴克马克杯",
+    "猫用品"
+   ],
+   "sig": "0494561cbec8",
    "token_cap": 1000000,
    "tokens_today": 164621,
-   "why": "整理待ちの記事 12 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 12 件（10 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "あつ森"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "772b1a1c3a03",
+   "sig": "b6804aff6de5",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
@@ -62,6 +72,7 @@
     "The Mandalorian",
     "Vaundy",
     "dota2",
+    "あつ森",
     "ぐでたま",
     "チェーンソーマン",
     "周杰伦",
@@ -69,7 +80,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
