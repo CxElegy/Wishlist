@@ -35,29 +35,11 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
-  "w": 640,
-  "h": 360,
-  "target": 720,
-  "v": 3
- },
- "http://n.sinaimg.cn/sinakd20261029ac/533/w480h853/20261029/0c00-53eb91d347560355d47cfb0c66678f70.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 720,
-  "v": 3
- },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
   "target": 720,
   "v": 3
- },
- "http://www.mountainwatch.com/wp-content/uploads/2019/12/Green-Leaf-Onsen-Large.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
@@ -335,6 +317,12 @@
  "https://assets.hldycdn.com/bdaeb944-3649-41e9-a1cc-559b84e94c40.jpeg": {
   "w": 970,
   "h": 600,
+  "target": 720,
+  "v": 3
+ },
+ "https://assets.khelnow.com/news/uploads/2026/10/khelnow.com-Feature-Image-How-lower-brackets-give-Dota-2-teams-another-route-to-the-final.jpeg": {
+  "w": 1672,
+  "h": 941,
   "target": 720,
   "v": 3
  },
@@ -987,6 +975,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://hawk.live/storage/images/posts/343-speaks-challenges-facing-dota-2-pro-scene-25394.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
+  "v": 3
+ },
  "https://hawk.live/storage/images/posts/dota-2-update-25379.jpg": {
   "w": 1200,
   "h": 628,
@@ -1052,6 +1046,19 @@
   "h": 800,
   "target": 720,
   "v": 3
+ },
+ "https://hk.on.cc/hk/bkn/cnt/entertainment/20261029/photo/bkn-20261029000108879-1029_00862_001_01b.jpg?20261029084531": {
+  "w": 780,
+  "h": 557,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.429,
+  "local": "pics/9168e4139944b5db.webp",
+  "out": [
+   1280,
+   914
+  ],
+  "why": "看不清"
  },
  "https://holrmagazine.com/wp-content/uploads/2026/10/screenshot-2026-10-29t093053.578-e1793246738872.png": {
   "w": 750,
@@ -1179,6 +1186,12 @@
  "https://i4.ytimg.com/vi/SBkOE6D8g-g/hqdefault.jpg": {
   "w": 480,
   "h": 360,
+  "target": 720,
+  "v": 3
+ },
+ "https://image-cdn.learnin.tw/bnextmedia/image/album/2026-10/img-mcp-096a69ce57966fc5.jpg?w=900&output=webp": {
+  "w": 900,
+  "h": 507,
   "target": 720,
   "v": 3
  },
@@ -2035,6 +2048,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://isplus.com/data/isp/image/2026/10/26/isp20261026000355.800x.0.jpg": {
+  "w": 800,
+  "h": 556,
+  "target": 720,
+  "v": 3
+ },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
   "w": 1600,
   "h": 900,
@@ -2184,21 +2203,9 @@
   "target": 1280,
   "v": 3
  },
- "https://media.image.infoseek.co.jp/isnews/photos/yomiuri/yomiuri_20261029_gyt1t00261_0-enlarge.jpg": {
-  "w": 500,
-  "h": 333,
-  "target": 720,
-  "v": 3
- },
  "https://media.image.infoseek.co.jp/shared/barter/2512_Pandahoro_650x150.png": {
   "w": 650,
   "h": 200,
-  "target": 720,
-  "v": 3
- },
- "https://media.ixbt.games/1600x900/smart/jpeg/ixbt-data/1731947/2f3d552e-774f-40ea-b6a8-bdf211494315.jpg": {
-  "w": 1600,
-  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -3077,6 +3084,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/165726/357/165726-357-6abc9335f68717dbb21e8152f7675dd9-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1890,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/174697/3/174697-3-a0394415951be9911a3ce6117d1747a5-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1672,
   "h": 941,
@@ -3203,12 +3216,6 @@
   "target": 1280,
   "v": 3
  },
- "https://s.eximg.jp/exnews/feed/nekochan/dd/nekochan_cat50231/nekochan_cat50231_1.jpg": {
-  "w": 700,
-  "h": 467,
-  "target": 720,
-  "v": 3
- },
  "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
   "w": 810,
   "h": 344,
@@ -3305,6 +3312,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static-cdn.nextapple.tw/prod/2026-10/80EBC38A73C011E755476D4BEC356C93/8aa18249ff26e6dccf1404fb9a5ce02a_1280.jpeg": {
+  "w": 1280,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "https://static.beebom.com/wp-content/uploads/2026/10/GTA-6-platforms.jpg": {
   "w": 1200,
   "h": 675,
@@ -3314,6 +3327,12 @@
  "https://static.beebom.com/wp-content/uploads/2026/10/how-many-gta-6-pre-order-copies-have-been-sold-featured-image.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://static.ctwant.com/images/cover/76/504376/lg-5bfc53c68a06154040232cc4e182c6ef.jpg": {
+  "w": 1200,
+  "h": 632,
   "target": 720,
   "v": 3
  },
@@ -3561,12 +3580,6 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
-  "v": 3
- },
- "https://staticg.sportskeeda.com/editor/2026/10/cef56-17932369719786-1920.jpg": {
-  "w": 1920,
-  "h": 1280,
-  "target": 720,
   "v": 3
  },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
@@ -3900,12 +3913,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.8XYxvYRwnOkpd2kH3N6Wxg&pid=News&w=1200": {
-  "w": 700,
-  "h": 527,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.8nZvs5fHXIIT0p2hKirmNw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3957,9 +3964,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.PSNDRO6vs6Fb1gBEHqZAQw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
-  "h": 393,
+  "h": 467,
   "target": 720,
   "v": 3
  },
@@ -3975,12 +3982,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
@@ -4039,6 +4040,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.k8H4SXWS66ZEErAiClCvUw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
   "h": 360,
@@ -4071,15 +4078,21 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.oVpWMzVyfJazYlxNo60oJg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.nvQS4D90clmQXzKjDnUPUA&pid=News&w=1200": {
   "w": 700,
-  "h": 393,
+  "h": 466,
   "target": 720,
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.ot6mqtmVy1VE5NRomSOM3Q&pid=News&w=1200": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.rDZZS97xez9to68ZyrbrMA&pid=News&w=960": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4121,6 +4134,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.zD0XCAcY8Ko9qNZs2nLzJg&pid=News&w=800": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
   "h": 700,
@@ -4143,12 +4162,6 @@
   "w": 690,
   "h": 460,
   "target": 720,
-  "v": 3
- },
- "https://www.chinapress.com.my/wp-content/uploads/2026/10/enhannah-261029-pmy-hp.jpg": {
-  "w": 1200,
-  "h": 628,
-  "target": 1280,
   "v": 3
  },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
