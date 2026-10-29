@@ -1,32 +1,32 @@
 {
- "admin": "8e92f6e1d702",
- "admin-ai": "71706818517d",
+ "admin": "dbd459213c97",
+ "admin-ai": "301a253c2763",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "b4f1b4aa"
+   "da6ad17e"
   ],
   "tokens": [
    "AI 編集のトークン",
    "eb980719"
   ]
  },
- "admin-boards": "646bfc3a6b15",
+ "admin-boards": "5d733a3ccf51",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "05c5d205"
+   "06ca38cb"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "876208ec04bb",
+ "admin-emblem": "f2a3302bd926",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d23d3f5f"
+   "e6caebef"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "b8a7b88ae10e",
+ "admin-now": "f0859b57fe69",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7e96aa69"
+   "63c68926"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "9f8b3f5b"
+   "27285ea8"
   ],
   "term-panel": [
    "ライブログ",
-   "bd7ac912"
+   "46d402c1"
   ]
  },
- "admin-system": "fa9f61b8ce95",
+ "admin-system": "179131c4fc7d",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b7ca1384"
+   "5b4efe8f"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "49960974"
+   "4ada4466"
   ]
  },
  "admin_marks": {},
- "heat": "2318141a2c97",
+ "heat": "a583d975f871",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "95442ee6"
+   "66646e36"
   ],
   "ranking": [
    "ランキング",
-   "25d46275"
+   "48532545"
   ]
  },
- "index": "d63e9b30d026",
+ "index": "ac5fbac175e4",
  "index_marks": {
   "front": [
    "トップ",
-   "a9418b07"
+   "43cebc56"
   ],
   "picks": [
    "気になるかも？",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "30bf5fa6"
+   "98095f8d"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "0f45c139"
+   "b23f0f0c"
   ],
   "w-b867582f": [
    "あつ森",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "6f4fc1b8"
+   "9cfff97e"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 07:30",
+ "updated": "10.30 07:33",
  "wishlist": "7af11c19700f"
 }
