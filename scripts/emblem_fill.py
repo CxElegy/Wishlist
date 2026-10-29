@@ -469,7 +469,8 @@ def subjects(item, kind, hi):
         have = {n for x in item.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
         rest = [w for w in who[:hi] if w not in have]
         redo = {n for s in item.get("emblem_redo") or [] for n in _who_of(s)}   # 管理ページで「別の写真に替える」を押した人は先に
-        rest = [w for w in rest if w in redo] + [w for w in rest if w not in redo]
+        miss = head_missing(item)   # 名簿の先頭 3 人で小元素がいない人は、別の写真に替える人（redo）より先（BLEACH Rukia：redo 48 人の後ろで何時間も対象に入らなかった：E15）
+        rest = [w for w in rest if w in miss] + [w for w in rest if w in redo and w not in miss] + [w for w in rest if w not in redo and w not in miss]
         if len(rest) <= STEP:
             return rest or who[:1]
         # 名簿の上（主役：ちいかわ・ハチワレ・うさぎ）の HEAD 人はいつも先に。残りは回ごとにずらす（見つからない人で止まらない）
@@ -1586,7 +1587,7 @@ def reject_looks(item):
     return out
 
 
-def check(cands, log=print, need_face=False, strict=False, reasons=None, reject_looks=()):
+def check(cands, log=print, need_face=False, strict=False, reasons=None, reject_looks=(), by_who=None):
     """ダウンロードして使えるか確かめる（短辺 160px 以上・開ける）。落とした理由は reasons（dict）に数える。
     need_face（人物・グループ・出演者）：顔の特徴量で「その人」かを確かめる（face_id）。目で見ていた判断を規則にしたもの：
       顔なし（観客席・絵画・物）／遠景（顔が画像の高さの 10% 未満）／何人も写っている（2 番目の顔が 60% 以上）／
@@ -1596,6 +1597,9 @@ def check(cands, log=print, need_face=False, strict=False, reasons=None, reject_
 
     def drop(why, c, detail=""):
         reasons[why] = reasons.get(why, 0) + 1
+        if by_who is not None:   # 人ごとの外した理由（E15 の原因：名簿の先頭の人がなぜ取れないか）
+            w = by_who.setdefault(_base_subject(c.get("subject")), {})
+            w[why] = w.get(why, 0) + 1
         log(f"  [{why}] {c['subject']}（{c['source']}）{detail}")
     dl = []
     for c in cands:
@@ -1884,6 +1888,19 @@ def head_missing(item, n=3):
     return [w for w in who if _name_key(w) not in have and _name_key(re.sub(r"\s*[(（].*?[)）]", "", w)) not in have]
 
 
+def head_causes(missing, by_who, want):
+    """名簿の先頭 3 人で小元素がいない人 → {名前: {外した理由: 数}}（E15 の原因の記録）。今回試した（want）のに外した理由が 1 つもない人は「候補なし」、試さなかった人は「今回は対象外」。"""
+    out = {}
+    for w in missing:
+        got = {}
+        for s, d in (by_who or {}).items():
+            if _who_of(s) & _who_of(w):
+                for k, v in d.items():
+                    got[k] = got.get(k, 0) + v
+        out[w] = got or {("候補なし" if w in want else "今回は対象外"): 1}
+    return out
+
+
 def _have_images(item):
     """今ある小元素の画像と、目で見て外した画像（emblem_reject）。自動ではどちらも選ばない。"""
     have = {u for x in item.get("emblem") or [] if isinstance(x, dict) for u in (x.get("image"), x.get("source")) if u}
@@ -2088,7 +2105,7 @@ def fill_one(item, log=print):
                 item = next(i for i in load_items() if i["name"] == item["name"])
         except Exception as e:
             log(f"  [名簿] {item['name']}：{e}")
-    if unbreak(item, log):
+    if unbreak(item, log) | release_head_rejects(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
     if off_roster(item, log) | wrong_owner(item, log) | drop_broken(item, log) | untied_roles(item, log) | drop_closeups(item, log) | official_swap(item, log):
         item = next(i for i in load_items() if i["name"] == item["name"])
@@ -2100,7 +2117,7 @@ def fill_one(item, log=print):
     queued = len([w for w in item.get("emblem_who") or [] if w not in have0])   # まだいない人の数。STEP を超えれば今回は一部だけ
     if needs_face(item) and face_id.engine() is None:
         return {"state": "failed", "note": "顔のモデルが使えず本人確認ができないので、自動では選ばなかった", "tried": {}}
-    tried, reasons, steps = {}, {}, []
+    tried, reasons, steps, by_who = {}, {}, [], {}
     funnel = {"found": 0, "usable": 0, "auto": 0}
     fresh = item
     kind0 = kind_of(item)
@@ -2115,7 +2132,7 @@ def fill_one(item, log=print):
             cands = globals()[fn]({**fresh, "_no_web": True}, log, got)
             for k, v in got.items():
                 tried[k] = tried.get(k, 0) + v
-            good = check(cands, log, need_face=needs_face(item), strict=True, reasons=reasons, reject_looks=reject_looks(item))
+            good = check(cands, log, need_face=needs_face(item), strict=True, reasons=reasons, reject_looks=reject_looks(item), by_who=by_who)
             picks = auto_pick(fresh, good, web=False, strict=True)
             with WRITE_LOCK:
                 before_step = status(fresh)["have"]
@@ -2125,6 +2142,12 @@ def fill_one(item, log=print):
             added_step = max(0, status(fresh)["have"] - before_step)
             if len(picks) > added_step:   # 書いたが切り抜きの検査（穴・端で切れた・にじみ）で落ちた
                 reasons["切り抜きの検査"] = reasons.get("切り抜きの検査", 0) + len(picks) - added_step
+                kept = {n for x in fresh.get("emblem") or [] if isinstance(x, dict) for n in _who_of(x.get("subject"))}
+                for i in picks:
+                    s = _base_subject(good[i - 1]["subject"])
+                    if not _who_of(s) & kept:
+                        w = by_who.setdefault(s, {})
+                        w["切り抜きの検査"] = w.get("切り抜きの検査", 0) + 1
             funnel["found"] += sum(got.values())
             funnel["usable"] += len(good)
             funnel["auto"] += len(picks)
@@ -2157,6 +2180,9 @@ def fill_one(item, log=print):
     if noimg:
         reasons["画像のない人"] = len(noimg)
     funnel.update(added=added, rejected=reasons)
+    heads = head_causes(head_missing(fresh), by_who, want)
+    if heads:
+        funnel["heads"] = heads
     path = " → ".join(f"{x['label']} +{x['added']}" for x in steps)
     top = "・".join(f"{k} {v}" for k, v in sorted(reasons.items(), key=lambda kv: -kv[1])[:3])
     if st["state"] == "ok":
@@ -2288,7 +2314,7 @@ def broken_image(im, photo, whole=False):
     return bool(fq and fq[1] < emblem.SHARP_MIN)
 
 
-BROKEN_V = 11   # 11：小さいだけで外した縮めた網址の絵を emblem_reject に入れない・前の分は戻す（wide_retry：dota2 89 枚が大きい幅で取り直されなかった）。 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
+BROKEN_V = 12   # 12：名簿の先頭 3 人で小元素がいない人の外した網址の札を 1 回解いて今の規則で見直す（release_head_rejects：Crystal Maiden の公式の立ち絵）。 11：小さいだけで外した縮めた網址の絵を emblem_reject に入れない・前の分は戻す（wide_retry：dota2 89 枚が大きい幅で取り直されなかった）。 10：顔なしの ③（図・小さすぎ：nk = replace）を替える対象に（replace_nf）。 9：公式の全身の絵（body の足の裏が画像の中）は上の端の検査を外し（ポチタ・Crystal Maiden）、体の絵を作り直せるよう外した元の画像の札を解く。 8 以前： broken_cuts の規則の版。上げると前の版で外した小元素を今の規則で見直す（unbreak）。7：2 人が並んだ切り抜き（other_faces・CROWD_H）を足した。6：別の作品・持ち物の絵（BAD_SOURCE）と同じ画像（drop_same）を足した。3：顔のない髪・額だけの切れ端（faceless_scrap）を足した。2：額の判定を上の端に当たったときだけに（#389 で頭が全部入った The Mandalorian 2 枚を外した）。4：形の傷（emblem.flat_flaw）を足した。5：凹みの閾値 0.45→0.30（翼・稲妻の小元素を戻す）
 
 RULE_VERSION_NAMES = ("NAMES_V", "BROKEN_V")   # 規則の版は 1 か所：上がると失敗の待ちを解く（店長 material・お客さま library_emblem.due）。*_V を足したらここにも（tests が拦める）
 
@@ -2675,6 +2701,49 @@ def unbreak(item, log=print):
                    + "   # 目で見て・検査で外した画像。自動補完は選ばない")
     log(f"  [戻した] {name}：前の規則で外した小元素 {len(back)} 枚（{'、'.join(b.get('subject', '') for b in back)}）")
     return len(back)
+
+
+def _name_tokens(name):
+    """名前 → 画像のファイル名に出る語（アクセントを外した英数字、2 字以上）。字だけの名前（日本語・韓国語）は空。"""
+    import unicodedata
+    s = "".join(c for c in unicodedata.normalize("NFKD", str(name).lower()) if not unicodedata.combining(c))
+    return [w for w in re.findall(r"[a-z0-9]+", re.sub(r"\s*[(（].*?[)）]", "", s)) if len(w) >= 2]
+
+
+def head_reject_urls(item, who):
+    """emblem_reject のうち、who（名簿の先頭で小元素がいない人）のファイル名の語が全部（か 5 字以上の 1 語：Rukia）入っている網址。"""
+    import unicodedata
+    toks = _name_tokens(who)
+    if not toks:
+        return []
+    out = []
+    for u in item.get("emblem_reject") or []:
+        name = urllib.parse.unquote(str(u).split("?")[0])
+        name = "".join(c for c in unicodedata.normalize("NFKD", name.split("://")[-1].split("/", 1)[-1].lower()) if not unicodedata.combining(c))
+        flat = re.sub(r"[^a-z0-9]", "", name)
+        if all(w in flat for w in toks) or any(len(w) >= 5 and w in flat for w in toks):
+            out.append(u)
+    return out
+
+
+def release_head_rejects(item, log=print):
+    """規則の版（BROKEN_V）が上がるたびに 1 回、名簿の先頭 3 人で小元素がいない人の外した網址（emblem_reject）を今の規則で見直す。
+    emblem_reject は前の規則で外した理由も残さず「二度と選ばない」だった：Crystal Maiden の公式の立ち絵は今の規則なら通るのに、前の規則の札で取れなかった（E15）。
+    店長が「違う」で外した絵は emblem_reject_look（見た目の鍵）で check が外すので、札を解いても戻らない。解いても同じ理由で外れたものは reject に戻る（版が上がるまで再び解かない）。→ 解いた数。"""
+    if int(item.get("emblem_headv") or 0) >= BROKEN_V or kind_of(item) not in ("character", "group"):
+        return 0
+    miss = head_missing(item)
+    if not miss:
+        return 0
+    free = {u for w in miss for u in head_reject_urls(item, w)}
+    with WRITE_LOCK:
+        if free:
+            _set_field(item["name"], "emblem_reject", json.dumps([u for u in item.get("emblem_reject") or [] if u not in free], ensure_ascii=False)
+                       + "   # 目で見て・検査で外した画像。自動補完は選ばない")
+        _set_field(item["name"], "emblem_headv", f"{BROKEN_V}   # 名簿の先頭の人の外した画像を見直した規則の版（release_head_rejects）")
+    if free:
+        log(f"  [先頭の人] {item['name']}：先頭の小元素がない人の外した画像 {len(free)} 枚の札を解いた（今の規則で見直す）")
+    return len(free)
 
 
 def repair_flat(item, log=print):

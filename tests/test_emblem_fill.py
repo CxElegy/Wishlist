@@ -1174,8 +1174,9 @@ class Ladder(unittest.TestCase):
     """取り方の段：① 標準 → ② 名前を広げる → ③ 公式・記事のページ を、届くまで同じ回の中で上がる。"""
 
     def setUp(self):
-        self.saved = {k: getattr(ef, k) for k in ("gather", "gather_wide", "gather_pages", "check", "auto_pick", "commit", "load_items", "_live", "subjects")}
+        self.saved = {k: getattr(ef, k) for k in ("gather", "gather_wide", "gather_pages", "check", "auto_pick", "commit", "load_items", "_live", "subjects", "release_head_rejects")}
         self.items = [{"name": "X", "type": "game", "emblem_who": ["a", "b"], "emblem": []}]
+        ef.release_head_rejects = lambda *a, **k: 0   # items.yaml に書く処理は別の試験で
         ef.load_items = lambda: self.items
         ef._live = lambda *a, **k: None
         ef.check = lambda cands, log, **k: cands
@@ -1980,6 +1981,45 @@ class FindSources(unittest.TestCase):
         self.assertEqual(ef.head_missing(live), ["Pedro Pascal"])
         self.assertEqual(ef.head_missing({"emblem_who": ["Inklings"], "emblem": [{"subject": "Inklings 2"}]}), [])
 
+    def test_subjects_puts_missing_leads_before_redo(self):
+        """redo（別の写真に替える人）が多くても、名簿の先頭 3 人で小元素がいない人が先（BLEACH Rukia：redo 48 人の後ろで対象に入らなかった：E15）。"""
+        who = ["Ichigo", "Rukia", "Renji"] + [f"P{i}" for i in range(30)]
+        item = {"emblem_who": who, "emblem": [{"subject": "Ichigo"}, {"subject": "Renji"}], "emblem_redo": [f"P{i}" for i in range(30)]}
+        got = ef.subjects(item, "character", 100)
+        self.assertEqual(got[0], "Rukia")
+        self.assertEqual(got[1], "P0")
+
+    def test_release_head_rejects_frees_leads_old_rejects_once_per_version(self):
+        """名簿の先頭で小元素がいない人の外した網址は、規則の版が上がるたびに 1 回解く（Crystal Maiden の公式の立ち絵・BLEACH Rukia）。ほかの人の札は残す。"""
+        cm = "https://cdn.akamai.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/crystal_maiden.png"
+        rk = "https://static.wikia.nocookie.net/bleach/images/b/bc/BBSCaptain_Rukia.png/revision/latest?cb=1"
+        other = "https://x/y/Queen_of_Pain.png"
+        item = {"name": "T", "emblem_kind": "character", "emblem_who": ["Crystal Maiden", "Rukia Kuchiki", "Doom"],
+                "emblem": [{"subject": "Doom"}], "emblem_reject": [cm, rk, other]}
+        self.assertEqual(sorted(ef.head_reject_urls(item, "Crystal Maiden")), [cm])
+        self.assertEqual(ef.head_reject_urls(item, "Rukia Kuchiki"), [rk])
+        calls = []
+        with mock.patch.object(ef, "_set_field", side_effect=lambda n, k, v: calls.append((k, v))):
+            self.assertEqual(ef.release_head_rejects(item, log=lambda *_: None), 2)
+            self.assertEqual(ef.release_head_rejects({**item, "emblem_headv": ef.BROKEN_V}, log=lambda *_: None), 0)
+        self.assertIn(other, calls[0][1])
+        self.assertNotIn("crystal_maiden", calls[0][1])
+        self.assertEqual(calls[1][0], "emblem_headv")
+        self.assertEqual(ef.head_reject_urls({"emblem_reject": [cm]}, "ヒカル"), [])
+
+    def test_head_causes_records_reason_per_lead(self):
+        """E15 の原因：先頭の人ごとに外した理由を残す（役（出演者）の subject も同じ人）。試したのに記録がなければ「候補なし」、試さなければ「今回は対象外」。"""
+        by_who = {"Thor（Chris Hemsworth）": {"顔なし": 2, "別人": 1}, "Other": {"遠景": 9}}
+        got = ef.head_causes(["Chris Hemsworth", "Rukia", "Mackie"], by_who, ["Chris Hemsworth", "Rukia"])
+        self.assertEqual(got, {"Chris Hemsworth": {"顔なし": 2, "別人": 1}, "Rukia": {"候補なし": 1}, "Mackie": {"今回は対象外": 1}})
+
+    def test_check_counts_reasons_per_person(self):
+        """check の drop が人ごとの理由（by_who）にも数える。"""
+        by_who = {}
+        with mock.patch.object(ef.emblem, "bad_source", return_value=True):
+            ef.check([{"subject": "Thor（Chris Hemsworth）", "source": "x", "image": "http://a/b.png"}], log=lambda *_: None, by_who=by_who)
+        self.assertEqual(by_who, {"Thor（Chris Hemsworth）": {"別の作品の絵": 1}})
+
     def test_closeup_is_face_only_without_shoulders(self):
         """BLEACH の黒崎一護 372×519：顔の幅 54〜68%・顔の下 5% = 顔だけのアップ。胸像（顔の下 26%）は可。顔が測れないものは None（落とさない）。"""
         from PIL import Image
@@ -2245,7 +2285,7 @@ class FindSources(unittest.TestCase):
             got = yaml.safe_load((tmp / "items.yaml").read_text(encoding="utf-8"))["items"][0]
         self.assertEqual([(x["subject"], x.get("lock")) for x in got["emblem"]], [("Axe", None), ("Pololo", True)])
         who = [f"c{i}" for i in range(30)]
-        got = ef.subjects({"type": "game", "emblem_who": who, "emblem_redo": ["c25", "c3"]}, "character", 30)
+        got = ef.subjects({"type": "game", "emblem_who": who, "emblem_redo": ["c25", "c3"], "emblem": [{"subject": f"c{i}"} for i in range(3)]}, "character", 30)   # 先頭 3 人はいる（いなければ redo より先：test_subjects_puts_missing_leads_before_redo）
         self.assertEqual(got[:2], ["c3", "c25"])
 
     def test_live_action_roster_is_the_cast(self):
@@ -2309,6 +2349,7 @@ class FindSources(unittest.TestCase):
         calls = []
         with mock.patch.object(ef, "find_sources", return_value=False), mock.patch.object(ef, "roster", side_effect=lambda i, log: calls.append(1)), \
                 mock.patch.object(ef, "off_roster", return_value=0), mock.patch.object(ef, "drop_broken", return_value=0), \
+                mock.patch.object(ef, "release_head_rejects", return_value=0), \
                 mock.patch.object(ef, "status", return_value={"state": "ok", "have": 2, "target": 2}):
             ef.fill_one(item, log=lambda *_: None)
             self.assertEqual(calls, [])
