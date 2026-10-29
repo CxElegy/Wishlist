@@ -1,14 +1,14 @@
 {
- "admin": "965861f34c02",
- "admin-ai": "a9caddc508f2",
+ "admin": "6559fa2dff67",
+ "admin-ai": "6cfd900de922",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "7a5721c4"
+   "acef6f8c"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "b8e13c91"
+   "092da9d6"
   ]
  },
  "admin-boards": "2662b2d9483d",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "552503edfb6a",
+ "admin-emblem": "fecff22fd318",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "28d7fb8b"
+   "aa5d4a4e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "f25f495b8c9e",
+ "admin-now": "07dc444e97da",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "a7e19236"
+   "43ad701c"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "da0ae49e"
+   "9f6c3ae1"
   ]
  },
- "admin-system": "f9af2a3ebb26",
+ "admin-system": "ebf6970f35ca",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "a74f83b3"
+   "3f884e32"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "6cde0638"
+   "5f1ea050"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "3b331740"
   ]
  },
- "index": "505f6a01f92c",
+ "index": "7b10e63011d3",
  "index_marks": {
   "front": [
    "トップ",
-   "53d3dd7b"
+   "b4148c3c"
   ],
   "picks": [
    "気になるかも？",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "b8545b50"
+   "00ca5544"
   ],
   "w-6676e624": [
    "三星手机",
@@ -141,11 +141,11 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "0d460665"
+   "bd9ca341"
   ],
   "w-7a894105": [
    "周杰伦",
-   "c9eaf7e9"
+   "41990684"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "f358fc8f"
+   "f8b5ba9f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "774c6c0e"
+   "31a17ef4"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 03:59",
- "wishlist": "f4fee3424436"
+ "updated": "10.30 04:05",
+ "wishlist": "7af11c19700f"
 }

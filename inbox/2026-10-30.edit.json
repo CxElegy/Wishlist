@@ -314,7 +314,12 @@
   "dota2": 8,
   "MMORPG 新作": 7,
   "BLEACH Mirrors High": 4,
-  "The Mandalorian": 4
+  "The Mandalorian": 4,
+  "周杰伦": 4,
+  "星巴克马克杯": 4,
+  "滑雪": 4,
+  "绝区零": 4,
+  "gelato pique": 3
  },
  "日本顶级网球赛事": [
   {
@@ -474,6 +479,80 @@
     3
    ],
    "image": "https://sm.ign.com/t/ign_nordic/gallery/t/the-art-of/the-art-of-the-mandalorian-and-grogu-preview-gallery_pczz.1200.jpg"
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰倫打網球被澳洲小朋友認出：你打過澳洲公開賽1分大滿貫？",
+   "highlight": "澳洲小朋友認出",
+   "blurb": "ツアー・新曲の新情報はなし。本人が29日にSNSでテニス中のエピソードを投稿。",
+   "weight": "lead",
+   "refs": [
+    1,
+    3,
+    4
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.b599IgmyuPGyJ7Vbvf8W-w&pid=News&w=1200"
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "スターバックス リザーブ ロースタリー 東京クリスマスグッズ、パールストラップ付きグリッターボトル等",
+   "highlight": "",
+   "blurb": "ティバーナ マグ＆リッドリーフなど、ロースタリー東京のクリスマス限定グッズ。",
+   "weight": "lead",
+   "refs": [
+    4
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.kQ4dry7TSi0lf6kAkumLsQ&pid=News&w=1200"
+  },
+  {
+   "headline": "【最新】『THREE』新作2026ホリデーコレクションを全部お試しレビュー！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "ザ・ウィンザーホテル洞爺、2026-2027ウィンターシーズンアクティビティを発表",
+   "highlight": "プライベート・貸切ゲレンデ",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://prcdn.freetls.fastly.net/release_image/165726/357/165726-357-7391157bb14470907d9f66b3988dfef8-3900x2600.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff"
+  }
+ ],
+ "绝区零": [],
+ "gelato pique": [
+  {
+   "headline": "人気のルームウェアブランド「ジェラート ピケ」直営店が松江に 駅ナカ「シャミネ」に新テナント",
+   "highlight": "松江に",
+   "blurb": "山陰初の直営店が駅ナカ「シャミネ松江」にオープン。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1
+   ]
+  },
+  {
+   "headline": "ホームファッション毎年人気「gelato pique」の福袋が今年も登場 11・2正午から抽選販売の受付開始",
+   "highlight": "11・2正午から",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ],
+   "event": {
+    "date": "2026-11-02",
+    "label": "福袋抽選受付",
+    "time": "12:00"
+   }
   }
  ]
 }
