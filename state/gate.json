@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-29T00:53:50+00:00",
+ "checked": "2026-10-29T01:23:51+00:00",
  "fired": {
-  "at": "2026-10-29T00:53:50+00:00",
+  "at": "2026-10-29T01:23:51+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,55 +20,53 @@
     "sig": "3bfb0317146f"
    },
    "items": [
-    "The Mandalorian",
     "ぐでたま",
     "周杰伦",
     "滑雪"
    ],
    "last_batch": "2026-10-28T23:56:05+00:00",
    "last_error": {
-    "at": "2026-10-28T23:51:27+00:00",
+    "at": "2026-10-29T01:01:38+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 205,
+   "prog": 206,
    "prog_day": "2026-10-29",
    "ripe": [
-    "The Mandalorian",
     "ぐでたま",
     "周杰伦",
     "滑雪"
    ],
-   "sig": "3bfb0317146f",
+   "sig": "5e5962a27d1b",
    "token_cap": 1000000,
    "tokens_today": 381088,
-   "why": "整理待ちの記事 4 件（4 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 3 件（3 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "漫威电影"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "a13740a33d82",
    "waiting": [
-    "周杰伦",
-    "ぐでたま",
-    "GTA 6",
-    "チェーンソーマン",
-    "漫威电影",
     "あつ森",
     "Vaundy",
     "dota2",
     "FROM",
     "哈利波特剧集",
+    "周杰伦",
+    "GTA 6",
+    "ぐでたま",
+    "チェーンソーマン",
     "Astrae Oratio",
     "ILLIT",
     "绝区零",
     "A2O LITE",
     "The Mandalorian"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:04 から）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても 10:33 から）"
   },
   "photos": {
    "claude": true,
