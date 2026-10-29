@@ -405,12 +405,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets.topics.apps-jp.nintendo.com/image/2026/10/23020211541109/1280/75f00733c8034255a6f7adac9aaedde0.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
  "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
   "w": 510,
   "h": 340,
@@ -957,10 +951,10 @@
   "target": 720,
   "v": 3
  },
- "https://go2senkyo-com-production-1.s3.ap-northeast-1.amazonaws.com/uploads/ckeditor/pictures/2456215/content_ea4bb1ff-743f-4eab-8879-05ae1577c240.jpg": {
-  "w": 800,
-  "h": 600,
-  "target": 720,
+ "https://gourmet.watch.impress.co.jp/img/grw/list/2152/256/00.jpg": {
+  "w": 1920,
+  "h": 1280,
+  "target": 1280,
   "v": 3
  },
  "https://happygamer.com/wp-content/uploads/2026/10/zenless-zone-zero-drops-truvia-enemy-dossier-with-season-3-spoilers.jpg": {
@@ -1170,12 +1164,24 @@
   "target": 720,
   "v": 3
  },
+ "https://image.news.livedoor.com/newsimage/stf/4/4/440f4_1845_54580daa_3b96419f.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/4/6/46f1e_1838_f5ad7721d161e61fe6bdbe25c8b4350d.jpg": {
   "w": 800,
   "h": 450,
   "target": 1280,
   "v": 3,
   "blur": 0.377
+ },
+ "https://image.news.livedoor.com/newsimage/stf/4/e/4e81b_1845_d512e374_4cea4b62.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/a/8/a84a9_1830_709a350d_14660206.jpg": {
   "w": 1200,
@@ -2917,6 +2923,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://pbs.twimg.com/media/HVvxUGqbkAA6Bzk?format=webp&name=large": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "https://pgw.worldjournal.com/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/22/35443336.png&M=1&s=Y&x=2&y=99&sw=450&sh=300&sl=W&fw=800&exp=3600": {
   "w": 450,
   "h": 300,
@@ -3202,6 +3214,12 @@
   "target": 720,
   "v": 3
  },
+ "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
  "https://sm.ign.com/t/ign_in/screenshot/default/bleach-mirrors-high-overview-trailer-0-39-screenshot_9eu8.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -3470,12 +3488,6 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
-  "v": 3
- },
- "https://staticg.sportskeeda.com/editor/2026/10/cef56-17932369719786-1920.jpg": {
-  "w": 1920,
-  "h": 1280,
-  "target": 720,
   "v": 3
  },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
@@ -3790,9 +3802,9 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.2SxZz3eOFnZAZ2IXvVsBIA&pid=News&w=700": {
+ "https://www.bing.com/th?id=ONUT.5OVWqixs8K4brEpx8v07LA&pid=News&w=1200": {
   "w": 700,
-  "h": 389,
+  "h": 466,
   "target": 720,
   "v": 3
  },
@@ -4005,6 +4017,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.nvQS4D90clmQXzKjDnUPUA&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.oVpWMzVyfJazYlxNo60oJg&pid=News&w=1200": {
   "w": 700,
@@ -4411,12 +4429,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 720,
   "v": 3
  },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
