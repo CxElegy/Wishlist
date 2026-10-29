@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-28T13:34:45+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-28T13:40:33+00:00",
 "text": "2026-10-28 第 1 バッチを出刊：ILLIT、Vaundy、三星手机、滑雪、猫用品、绝区零（6 版面・33 本・今日の整理待ちは全部終わり） · token 新規入力 5.0万・キャッシュ読み 94.2万・出力 3,739",
 "level": "ok",
@@ -1818,5 +1813,49 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1121067
+},
+{
+"at": "2026-10-29T12:19:44+00:00",
+"text": "2026-10-29 第 1 バッチを出刊：Astrae Oratio、FROM、GTA 6、The Mandalorian、Vaundy、ぐでたま ほか 7（13 版面・53 本・残り 6 版面） · token 新規入力 5.1万・キャッシュ読み 114.6万・出力 4,275",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.29,
+"mem_total": 16872808448,
+"mem_free": 15971094528,
+"disk_used": 10793025536,
+"disk_free": 30529482752,
+"disk_total": 41322508288,
+"peak": 278495232
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"FROM",
+"GTA 6",
+"The Mandalorian",
+"Vaundy",
+"ぐでたま",
+"三星手机",
+"哈利波特剧集",
+"日本顶级网球赛事",
+"星巴克马克杯",
+"漫威电影",
+"猫用品",
+"绝区零"
+],
+"stories": 53,
+"left": 6,
+"edited": 23,
+"run": null,
+"tok": {
+"in": 34,
+"cw": 50850,
+"cr": 1145674,
+"out": 4275,
+"calls": 17,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1200833
 }
 ]
