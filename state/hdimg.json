@@ -1047,19 +1047,6 @@
   "target": 720,
   "v": 3
  },
- "https://hk.on.cc/hk/bkn/cnt/entertainment/20261029/photo/bkn-20261029000108879-1029_00862_001_01b.jpg?20261029084531": {
-  "w": 780,
-  "h": 557,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.429,
-  "local": "pics/9168e4139944b5db.webp",
-  "out": [
-   1280,
-   914
-  ],
-  "why": "看不清"
- },
  "https://holrmagazine.com/wp-content/uploads/2026/10/screenshot-2026-10-29t093053.578-e1793246738872.png": {
   "w": 750,
   "h": 500,
@@ -2046,12 +2033,6 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
-  "v": 3
- },
- "https://isplus.com/data/isp/image/2026/10/26/isp20261026000355.800x.0.jpg": {
-  "w": 800,
-  "h": 556,
-  "target": 720,
   "v": 3
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
@@ -3216,6 +3197,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.eximg.jp/exnews/feed/nekochan/dd/nekochan_cat50231/nekochan_cat50231_1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
   "w": 810,
   "h": 344,
@@ -3581,6 +3568,12 @@
   "h": 900,
   "target": 1280,
   "v": 3
+ },
+ "https://staticg.sportskeeda.com/editor/2026/10/cef56-17932369719786-1920.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
@@ -3964,12 +3957,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
-  "w": 700,
-  "h": 467,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.UKV_ApYouzJkc9fq-plfSQ&pid=News&w=600": {
   "w": 600,
   "h": 337,
@@ -3982,6 +3969,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
@@ -4078,12 +4071,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.nvQS4D90clmQXzKjDnUPUA&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.ot6mqtmVy1VE5NRomSOM3Q&pid=News&w=1200": {
   "w": 700,
   "h": 700,
@@ -4163,6 +4150,18 @@
   "h": 460,
   "target": 720,
   "v": 3
+ },
+ "https://www.businesspost.co.kr/news/photo/202610/20261029153835_84953.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
+ "https://www.chinapress.com.my/wp-content/uploads/2026/10/enhannah-261029-pmy-hp.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://www.chosun.com/resizer/v2/G42WIZTEMZSTCMZYMRQTAZTGMI.jpg?auth=716d8e6a62ed0e5e496949e5346be00f3fdbae3896fa27a47c1869a88d5b3ad3&width=530&height=278&smart=true": {
   "w": 530,
@@ -4375,12 +4374,6 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/Galaxy-S27.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-5.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
