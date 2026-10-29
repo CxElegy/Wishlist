@@ -325,21 +325,21 @@
   "ILLIT": 19,
   "哈利波特剧集": 14,
   "日本顶级网球赛事": 14,
-  "dota2": 8,
+  "dota2": 9,
   "MMORPG 新作": 10,
   "BLEACH Mirrors High": 4,
   "The Mandalorian": 5,
   "周杰伦": 4,
-  "星巴克马克杯": 4,
+  "星巴克马克杯": 5,
   "滑雪": 4,
   "绝区零": 4,
-  "gelato pique": 3,
+  "gelato pique": 4,
   "A2O LITE": 3,
   "チェーンソーマン": 4,
   "Vaundy": 1,
-  "あつ森": 1,
+  "あつ森": 2,
   "ぐでたま": 1,
-  "猫用品": 1
+  "猫用品": 2
  },
  "日本顶级网球赛事": [
   {
@@ -546,6 +546,15 @@
    "refs": [
     3
    ]
+  },
+  {
+   "headline": "STARBUCKS Indonesia Mug Cup Starbucks Overseas Limited Edition",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "滑雪": [
@@ -570,7 +579,8 @@
    "refs": [
     2,
     1
-   ]
+   ],
+   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-90025195-tsk-000-1-thumb.jpg?exp=10800"
   },
   {
    "headline": "ホームファッション毎年人気「gelato pique」の福袋が今年も登場 11・2正午から抽選販売の受付開始",
@@ -585,6 +595,15 @@
     "label": "福袋抽選受付",
     "time": "12:00"
    }
+  },
+  {
+   "headline": "愛らしいシロクマ柄と柔らか素材が魅力のジェラート ピケのロングパンツが10%OFF",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "A2O LITE": [
@@ -649,6 +668,15 @@
     1
    ],
    "image": "https://cimg.kgl-systems.io/camion/files/92525/ogp_kjfu.jpg?x=1280"
+  },
+  {
+   "headline": "【あつ森】『Ninten島』が更新！島主の家が増築しゼルダやスプラ部屋が登場！",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "ぐでたま": [
