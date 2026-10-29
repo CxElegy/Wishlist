@@ -2927,7 +2927,7 @@ def background(minutes, log=print, fill=None, clock=time.time, path=None, runlog
         lines.add("管理ページの「今すぐ再挑戦」から起動：失敗した版面も待たずにやり直す")
     lines.add(head)
     if not queue:
-        lines.add("やることなし：どの版面も目標に届いているか、再挑戦の時刻がまだ", level="ok")
+        lines.add("やることなし：どの版面も目標に届いているか、失敗した版面に新しい材料がまだ来ていない", level="ok")
     lock = threading.Lock()   # 進捗・ログ・待ち行列
     stop = threading.Event()
     todo = list(queue)

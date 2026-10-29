@@ -209,6 +209,13 @@ class Fill(unittest.TestCase):
                 self.assertNotRegex(src, r"来なくても[^\n\"']{0,20}時間後", f)
         self.assertFalse(hasattr(le, "RETRY_HOURS"))
 
+    def test_no_time_wait_phrases_in_scripts_and_rules(self):
+        """固定文言（札・凡例・規則書）にも時間で待つ言い回しが残っていない（emb_check E25 の固定文言版・2026-10-29）。"""
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import emb_check
+        self.assertEqual(emb_check.static_time_waits(), [])
+        self.assertTrue(emb_check.STATIC_TIME_WAIT.search("失敗は時間か新しい材料を待つ"))
+
     def test_unbroken_drops_cut_public_emblems(self):
         """公開の箱の小元素は emblem_fill.broken_cuts が見ない → 同じ規則（broken_image）で外す。ほかの網址・ロゴ・読めないものは残す。"""
         import io
