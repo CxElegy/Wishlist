@@ -531,8 +531,8 @@ PROCESSES = [
     },
     {
         "id": "libemblem", "name": "ライブラリの小元素", "en": "LIB EMBLEM", "lane": "actions", "workflow": "library_emblem.yml",
-        "when": "2 時間ごと（偶数時 29 分）· 手で起こす",
-        "trigger": "定時（29 */2 * * *）か workflow_dispatch（minutes、既定 30 分）",
+        "when": "15 分ごとの見回り（待ちがなければ数十秒で終わる）· 待ちが残って増えていれば自分で次の回を起こす（空になるまで・20 回まで）· 手で起こす",
+        "trigger": "定時（11,26,41,56 * * * *：--check で待ちを見て、なければ重い道具を入れずに終わる）か workflow_dispatch（minutes、既定 30 分・chain）。終わりに待ちが残り、この回で 1 版面でも増えたなら gh workflow run で次の回（1 版面も増えなければ止める）",
         "summary": "お客さまの版面（ライブラリの版面のうち店長の版面でないもの）にも、店長と同じ規則（emblem_fill.fill_one）で小元素を版面ごとに 1 回。胸像待ち（config.emblem_closeup）の版面は届かなかった・済みでも待たずに次の回も（店長の emblem_fill.due と同じ）。胸像への入れ替え（stage_holds）も店長と同じ質の下限つき（元の画像を取って比べる）。画像は Supabase Storage の公開の箱、全員で同じものを共有。AI なし。切り抜きの検査は店長と同じ（公式の全身の絵は上の端を見ない・姿勢モデルのない Actions でも顔がなければ全身）",
         "files": [".github/workflows/library_emblem.yml", "scripts/library_emblem.py", "db/emblems.sql"], "doc": "docs/rules/emblem.md",
         "uses": ["supabase", "roster", "cutcheck", "bust", "facefit", "facerule"],
