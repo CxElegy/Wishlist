@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-28T11:01:41+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-28T11:07:27+00:00",
 "text": "2026-10-28 第 1 バッチを出刊：ILLIT（1 版面・7 本・残り 4 版面） · token 新規入力 4.4万・キャッシュ読み 62.7万・出力 2,127",
 "level": "ok",
@@ -1813,5 +1808,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 946681
+},
+{
+"at": "2026-10-29T06:50:29+00:00",
+"text": "2026-10-29 第 2 バッチを出刊：gelato pique（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 3,596・キャッシュ読み 24.9万・出力 1,773",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.24,
+"mem_total": 16872808448,
+"mem_free": 15847886848,
+"disk_used": 10910580736,
+"disk_free": 30411927552,
+"disk_total": 41322508288,
+"peak": 343859200
+},
+"batch": 2,
+"boards": [
+"gelato pique"
+],
+"stories": 2,
+"left": 0,
+"edited": 22,
+"run": 1793255460.470315,
+"tok": {
+"in": 6,
+"cw": 3590,
+"cr": 249234,
+"out": 1773,
+"calls": 3,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 254603,
+"secs": 1169,
+"run_tok": {
+"in": 32,
+"cw": 57637,
+"cr": 1138489,
+"out": 5126,
+"calls": 16,
+"model": "claude-sonnet-5-5"
+}
 }
 ]

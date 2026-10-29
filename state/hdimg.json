@@ -1041,6 +1041,19 @@
   "target": 720,
   "v": 3
  },
+ "https://holrmagazine.com/wp-content/uploads/2026/10/screenshot-2026-10-29t093053.578-e1793246738872.png": {
+  "w": 750,
+  "h": 500,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.431,
+  "local": "pics/fdb3841b96221e39.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://hotelbank.jp/wp-content/uploads/eyecatch-190612-auto.png": {
   "w": 1200,
   "h": 630,
@@ -3032,6 +3045,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/18505/4452/18505-4452-425429f0e17926ae0f8af6668ccaecfb-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1008,
+  "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4576/18505-4576-3c0ae2cf4e150a39d7fa573bc8b19b8d-1080x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1080,
   "h": 1080,
@@ -4622,6 +4641,12 @@
    747
   ],
   "why": "看不清"
+ },
+ "https://www.travelvoice.jp/wp-content/uploads/2026/10/3d882516-efef-4cf4-b573-44e7902bcd80.jpg": {
+  "w": 836,
+  "h": 478,
+  "target": 1280,
+  "v": 3
  },
  "https://www.trustedreviews.com/wp-content/uploads/sites/7/2026/10/5a32df85-7990-4d4c-ad50-11f9dac7171b.jpg": {
   "w": 1920,

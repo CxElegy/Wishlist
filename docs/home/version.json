@@ -1,10 +1,10 @@
 {
- "admin": "bc4f972f4200",
- "admin-ai": "d1a072628310",
+ "admin": "ff0521c6391d",
+ "admin-ai": "4ad5480a1eaa",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "e87b0d2b"
+   "3550925c"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "3e3172b12e9e",
+ "admin-emblem": "3baccaf7cb51",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "21765b3b"
+   "33430219"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "7459f077"
+   "8dd2294b"
   ]
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "a82f8ace6e11",
+ "admin-now": "492e3cc61ed0",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "ed54d045"
+   "97b413ca"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "d166a958"
+   "3d93cfa7"
   ]
  },
- "admin-system": "9e706c7a8d8d",
+ "admin-system": "b0cec6220c7e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "876e653c"
+   "c5129b34"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "4a69314a"
+   "9c468d24"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "8dfb5859"
   ]
  },
- "index": "1a60bbf52b88",
+ "index": "a7fa2cb7e9cb",
  "index_marks": {
   "front": [
    "トップ",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "83019520"
+   "7c5e0976"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "9cc3db71"
+   "0ce38715"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "30189450"
+   "875611f3"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "0929dd51"
   ]
  },
- "updated": "10.29 15:45",
+ "updated": "10.29 15:50",
  "wishlist": "e8e34d8416c4"
 }

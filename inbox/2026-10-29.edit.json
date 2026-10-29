@@ -296,20 +296,20 @@
   "A2O LITE": 22,
   "チェーンソーマン": 29,
   "三星手机": 16,
-  "The Mandalorian": 7,
+  "The Mandalorian": 8,
   "星巴克马克杯": 7,
   "あつ森": 4,
   "MMORPG 新作": 11,
-  "哈利波特剧集": 2,
+  "哈利波特剧集": 4,
   "日本顶级网球赛事": 10,
   "FROM": 4,
   "ILLIT": 15,
   "Vaundy": 3,
-  "滑雪": 4,
+  "滑雪": 5,
   "绝区零": 6,
   "ぐでたま": 17,
-  "周杰伦": 4,
-  "gelato pique": 1,
+  "周杰伦": 6,
+  "gelato pique": 3,
   "猫用品": 3,
   "dota2": 2
  },
@@ -435,7 +435,8 @@
    "weight": "normal",
    "refs": [
     5,
-    7
+    7,
+    8
    ]
   },
   {
@@ -570,6 +571,16 @@
    "refs": [
     1,
     2
+   ]
+  },
+  {
+   "headline": "HBO’s New Harry Potter Series: Release Date, Cast and Story",
+   "highlight": "Release Date",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    3
    ]
   }
  ],
@@ -795,6 +806,15 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "小学生以下は全国16カ所のスキー場が滑り放題、共通シーズンパスが登場、参加費1人1800円",
+   "highlight": "滑り放題",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "绝区零": [
@@ -909,9 +929,19 @@
    "blurb": "ジェラート ピケ×サンリオ第2弾。クロミ・マイメロディなど5キャラのもこもこウェアが10月21日に発売。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    3
    ],
    "image": "https://news.walkerplus.com/article/1446866/18749265_615.jpg"
+  },
+  {
+   "headline": "【gelato pique】第3回を迎えるホリデーギフトに特化したポップアップイベント「クリスマス ギフト マーケット2026」",
+   "highlight": "クリスマス ギフト マーケット2026",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "猫用品": [
