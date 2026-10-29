@@ -148,6 +148,13 @@ def full_url(src, width=FULL_W):
     return re.sub(r"(/thumb/[0-9a-f]/[0-9a-f]{2}/([^/]+)/)\d+px-", rf"\g<1>{width}px-", out) if "wikimedia.org" in out else out
 
 
+def narrow_source(src):
+    """small_url で縮めた網址か（Fandom の scale-to-width-down/<幅>・Wikimedia の thumb の <幅>px が FULL_W 未満）。縮めた網址で小さいと測れた絵は、大きい幅ならまだ使える（full_url）。"""
+    s = str(src or "")
+    w = re.findall(r"/scale-to-width-down/(\d+)", s) + (re.findall(r"/thumb/[0-9a-f]/[0-9a-f]{2}/[^/]+/(\d+)px-", s) if "wikimedia.org" in s else [])
+    return any(int(n) < FULL_W for n in w)
+
+
 def get_full(url, limit=MAX_BYTES):
     """大きい幅で取る（取れなければ元の網址）。"""
     big = full_url(url)
