@@ -1174,8 +1174,9 @@ class Ladder(unittest.TestCase):
     """取り方の段：① 標準 → ② 名前を広げる → ③ 公式・記事のページ を、届くまで同じ回の中で上がる。"""
 
     def setUp(self):
-        self.saved = {k: getattr(ef, k) for k in ("gather", "gather_wide", "gather_pages", "check", "auto_pick", "commit", "load_items", "_live", "subjects")}
+        self.saved = {k: getattr(ef, k) for k in ("gather", "gather_wide", "gather_pages", "check", "auto_pick", "commit", "load_items", "_live", "subjects", "release_head_rejects")}
         self.items = [{"name": "X", "type": "game", "emblem_who": ["a", "b"], "emblem": []}]
+        ef.release_head_rejects = lambda *a, **k: 0   # items.yaml に書く処理は別の試験で
         ef.load_items = lambda: self.items
         ef._live = lambda *a, **k: None
         ef.check = lambda cands, log, **k: cands
@@ -2348,6 +2349,7 @@ class FindSources(unittest.TestCase):
         calls = []
         with mock.patch.object(ef, "find_sources", return_value=False), mock.patch.object(ef, "roster", side_effect=lambda i, log: calls.append(1)), \
                 mock.patch.object(ef, "off_roster", return_value=0), mock.patch.object(ef, "drop_broken", return_value=0), \
+                mock.patch.object(ef, "release_head_rejects", return_value=0), \
                 mock.patch.object(ef, "status", return_value={"state": "ok", "have": 2, "target": 2}):
             ef.fill_one(item, log=lambda *_: None)
             self.assertEqual(calls, [])
