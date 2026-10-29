@@ -128,10 +128,24 @@
  ],
  "BLEACH Mirrors High": [
   {
+   "headline": "『BLEACH』新作スマホゲーム「BLEACH Mirrors High」が10月28日にサービス開始",
+   "highlight": "10月28日にサービス開始",
+   "blurb": "『BLEACH Mirrors High』が10月28日にサービス開始。黒崎一護とルキアがもらえる。",
+   "weight": "hero",
+   "refs": [
+    14,
+    15
+   ],
+   "event": {
+    "date": "2026-10-28",
+    "label": "サービス開始"
+   }
+  },
+  {
    "headline": "Bleach: Mirrors High Introduces 10 New Characters Designed By Tite Kubo Ahead Of Its Launch",
    "highlight": "10 New Characters",
-   "blurb": "Bleach: Mirrors High introduces 10 new characters designed by Tite Kubo ahead of its launch.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     2
    ],
@@ -265,20 +279,20 @@
  "_covered": {
   "GTA 6": 66,
   "漫威电影": 44,
-  "BLEACH Mirrors High": 13,
+  "BLEACH Mirrors High": 15,
   "A2O LITE": 18,
   "チェーンソーマン": 25,
   "三星手机": 10,
-  "The Mandalorian": 5,
+  "The Mandalorian": 7,
   "星巴克马克杯": 2,
   "あつ森": 1,
-  "MMORPG 新作": 5,
+  "MMORPG 新作": 7,
   "哈利波特剧集": 2,
   "日本顶级网球赛事": 6,
   "FROM": 4,
   "ILLIT": 12,
-  "Vaundy": 2,
-  "滑雪": 2,
+  "Vaundy": 3,
+  "滑雪": 4,
   "绝区零": 6,
   "ぐでたま": 17,
   "周杰伦": 4,
@@ -378,7 +392,17 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    7
+   ]
+  },
+  {
+   "headline": "Image Engine 发布《The Mandalorian & Grogu》视效解析",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -410,13 +434,18 @@
    ]
   },
   {
-   "headline": "Cozy MMO Spirit Crossing Gets November Release, Including on Nintendo Switch and Switch 2",
-   "highlight": "November Release",
+   "headline": "コージーMMO『クロスランド(Spirit Crossing)』11月16日発売決定",
+   "highlight": "11月16日発売決定",
    "blurb": "",
    "weight": "normal",
    "refs": [
+    6,
     3
-   ]
+   ],
+   "event": {
+    "date": "2026-11-16",
+    "label": "発売日"
+   }
   },
   {
    "headline": "[위클리오늘] 온라인 게임_엔씨, 컴투스(10.28)",
@@ -425,6 +454,15 @@
    "weight": "normal",
    "refs": [
     5
+   ]
+  },
+  {
+   "headline": "핼러윈 이벤트에 성장 지원까지..MMORPG 이용자 확보 경쟁",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],
@@ -579,6 +617,15 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "Apple Music週間ソング10/19〜10/25、Vaundyの「しわあわせ」が1位にランクイン",
+   "highlight": "1位にランクイン",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ],
  "滑雪": [
@@ -604,6 +651,24 @@
     "label": "オープン",
     "place": "軽井沢プリンスホテルスキー場"
    }
+  },
+  {
+   "headline": "【JAM福井勝山マウンテンリゾート】“通過する場所”から“過ごす場所”へ。リゾートセンターを「JAM HALL」として大幅リニューアル",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "スキー場で「マイナ割引」が拡大！リフト券が最大39％引き、10スキー場共通券も登場",
+   "highlight": "最大39％引き",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "绝区零": [

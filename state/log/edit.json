@@ -1,42 +1,5 @@
 [
 {
-"at": "2026-10-28T07:55:13+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
-"at": "2026-10-28T08:00:15+00:00",
-"text": "2026-10-28 第 1 バッチを出刊：A2O LITE（1 版面・5 本・残り 6 版面） · token 新規入力 5.7万・キャッシュ読み 129.3万・出力 6,349",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.47,
-"mem_total": 16872808448,
-"mem_free": 15985127424,
-"disk_used": 10779062272,
-"disk_free": 30543446016,
-"disk_total": 41322508288,
-"peak": 293482496
-},
-"batch": 1,
-"boards": [
-"A2O LITE"
-],
-"stories": 5,
-"left": 6,
-"edited": 23,
-"run": 1793173426.6626112,
-"tok": {
-"in": 38,
-"cw": 56736,
-"cr": 1293020,
-"out": 6349,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1356143
-},
-{
 "at": "2026-10-28T08:18:02+00:00",
 "text": "2026-10-28 第 2 バッチを出刊：BLEACH Mirrors High、チェーンソーマン、哈利波特剧集、日本顶级网球赛事、漫威电影、绝区零（6 版面・27 本・今日の整理待ちは全部終わり） · token 新規入力 1.3万・キャッシュ読み 90.2万・出力 5,224",
 "level": "ok",
@@ -1825,5 +1788,42 @@
 "calls": 21,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-29T03:48:20+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-10-29T04:14:55+00:00",
+"text": "2026-10-29 第 1 バッチを出刊：BLEACH Mirrors High（1 版面・4 本・残り 4 版面） · token 新規入力 6.3万・キャッシュ読み 143.3万・出力 6,048",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.17,
+"mem_total": 16872808448,
+"mem_free": 16019652608,
+"disk_used": 10731421696,
+"disk_free": 30591086592,
+"disk_total": 41322508288,
+"peak": 274817024
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 4,
+"left": 4,
+"edited": 21,
+"run": 1793245275.2848914,
+"tok": {
+"in": 42,
+"cw": 62496,
+"cr": 1432526,
+"out": 6048,
+"calls": 20,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1501112
 }
 ]
