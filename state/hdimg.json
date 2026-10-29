@@ -862,8 +862,15 @@
  "https://en.koreadaily.com/wp-content/uploads/2026/10/202610290812775074_6ae2832d9628c.jpg": {
   "w": 650,
   "h": 433,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.497,
+  "local": "pics/15c6594c411b13b7.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
  },
  "https://eng.belta.by/images/storage/news/with_archive/2026/000028_1792916227_187922_big.jpg": {
   "w": 870,
@@ -3785,12 +3792,6 @@
  "https://www.bing.com/th?id=ONUT.2SxZz3eOFnZAZ2IXvVsBIA&pid=News&w=700": {
   "w": 700,
   "h": 389,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.5OVWqixs8K4brEpx8v07LA&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
   "target": 720,
   "v": 3
  },
