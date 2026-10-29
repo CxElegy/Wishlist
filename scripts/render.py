@@ -5753,7 +5753,7 @@ def _admin_backend(rows, todo=None, log=None, res=None):
         if d:
             body.append(f'<tr class="bgx"><td colspan="{len(BG_COLS) + 1}">{_emblem_flow(d, r["bg"]["emblem"]["state"], pics)}</td></tr>')
     return {"now": now, "sys": sys_,
-            "table": ('<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 時間をおいて再挑戦</small></h3>'
+            "table": ('<h3 class="h3">版面ごとの状態 <small>済 = 終わった · 待ち = 次の回で動く · 要確認 = AI が目で選ぶ · 失敗 = 新しい材料が来るまで待つ</small></h3>'
                       f'<div class="tw"><table class="adm bgm"><thead><tr><th>版面</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
                       + _admin_emx_stats(rows)),
             "manage": _admin_emm(rows)}

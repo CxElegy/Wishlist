@@ -460,10 +460,25 @@ def exhausted():
 TIME_WAIT = re.compile(r"\d+ 時間後|\d+:\d+ から|\d+:\d+ に再挑戦")
 
 
+# 固定文言（コード・規則書・画面）に残る「時間で待つ」言い回し。scripts と docs/rules を数える（tests/test_library_emblem.py も同じ表を使う）
+STATIC_TIME_WAIT = re.compile(r"1 時間たった|時間をおいて再挑戦|時間か新しい|自动再挑战的时刻|再挑戦の(?:時刻|カウントダウン)")
+
+
+def static_time_waits(root=None):
+    """E25 の固定文言版：scripts/*.py・docs/rules/*.md に時間で待つ古い言い回しが残っていれば ['ファイル:行', …]（IMG_RETRY_HOURS＝画像用は別物）。"""
+    root = root or pathlib.Path(__file__).resolve().parent.parent
+    out = []
+    for p in sorted(list((root / "scripts").glob("*.py")) + list((root / "docs" / "rules").glob("*.md"))):
+        for n, ln in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+            if STATIC_TIME_WAIT.search(ln.replace("IMG_RETRY_HOURS", "")) and "TIME_WAIT" not in ln:
+                out.append(f"{p.name}:{n}")
+    return out
+
+
 def time_waits():
     """E25 待ちの理由に時間が出る：店長の state/emblem_progress.json とお客さまの boards.config.emblem_state の note に「◯時間後」「◯:◯◯ から」が残る版面
     （小元素は時間では待たない〔2026-10-29〕：材料の指紋が変わるまで。残っていれば時間で待つ古い規則がどこかに残っている）→ ['店長 名前', 'お客さま n 版面']。"""
-    out = []
+    out = list(static_time_waits())
     try:
         d = json.loads(urllib.request.urlopen(PROGRESS, timeout=20).read()).get("items", {})
         out += [f"店長 {k}" for k, v in d.items() if v.get("state") == "failed" and TIME_WAIT.search(str(v.get("note") or ""))]
