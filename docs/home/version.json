@@ -1,32 +1,32 @@
 {
- "admin": "225b79bc5c38",
- "admin-ai": "ad0082c92fcc",
+ "admin": "013d96e7b74a",
+ "admin-ai": "3a0f034e5722",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "edd429db"
+   "7fb08095"
   ],
   "tokens": [
    "AI 編集のトークン",
    "4eac7da7"
   ]
  },
- "admin-boards": "6c759bc02073",
+ "admin-boards": "d89d210e891e",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "250f8fd8"
+   "fe9757f4"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "f93277f18562",
+ "admin-emblem": "7b794f1e85cf",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "34ac2d33"
+   "2d4c8c6e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "e9ed00225e4d",
+ "admin-now": "e2f7f3b58531",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "496ae014"
+   "0b38a532"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "47d0aa28"
+   "43ef14c9"
   ],
   "term-panel": [
    "ライブログ",
-   "92356b8d"
+   "95c19093"
   ]
  },
- "admin-system": "60fb1e33d6d8",
+ "admin-system": "0fbf44e35882",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "d569a473"
+   "ff68c57b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "650eacc4"
+   "75e3b78f"
   ]
  },
  "admin_marks": {},
- "heat": "5f8e23201977",
+ "heat": "a11eea74b5a4",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e4d2fa53"
+   "dcd5e1fb"
   ],
   "ranking": [
    "ランキング",
-   "10c94482"
+   "53f58c15"
   ]
  },
- "index": "4f7222813be7",
+ "index": "101c80408a9b",
  "index_marks": {
   "front": [
    "トップ",
-   "bddfab13"
+   "16463bc9"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "7725d98a"
+   "767075fc"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "c237fdfa"
+   "aad8e86e"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "6bcfa4db"
+   "86821771"
   ],
   "w-f303ad09": [
    "绝区零",
    "0929dd51"
   ]
  },
- "updated": "10.29 13:00",
+ "updated": "10.29 13:15",
  "wishlist": "6992f9a6d927"
 }

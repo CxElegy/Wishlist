@@ -60,14 +60,14 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/0066hpr1gy1iihd6llhvhj30u01fagv0.jpg": {
-  "w": 1080,
-  "h": 1846,
+ "http://wx1.sinaimg.cn/middle/0066hpr1gy1iihd6m9z6aj30ty1jok2i.jpg": {
+  "w": 1078,
+  "h": 2004,
   "target": 720,
   "v": 3,
-  "local": "pics/d2e07eed06cb4c23.webp",
+  "local": "pics/c6a22a89b875518b.webp",
   "out": [
-   749,
+   689,
    1280
   ],
   "why": "防盗链",
@@ -326,12 +326,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
-  "w": 1350,
-  "h": 1350,
-  "target": 1280,
-  "v": 3
- },
  "https://assets.hldycdn.com/bdaeb944-3649-41e9-a1cc-559b84e94c40.jpeg": {
   "w": 970,
   "h": 600,
@@ -397,6 +391,12 @@
   "w": 820,
   "h": 461,
   "target": 1280,
+  "v": 3
+ },
+ "https://assets.topics.apps-jp.nintendo.com/image/2026/10/23020211541109/1280/75f00733c8034255a6f7adac9aaedde0.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
@@ -1905,19 +1905,6 @@
   ],
   "why": "看不清"
  },
- "https://img1.mydrivers.com/img/20261027/Sfe466081-bb4e-4ee2-9120-ef5e3fc8da67.png": {
-  "w": 600,
-  "h": 300,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.537,
-  "local": "pics/0ad29d7a99a125a6.webp",
-  "out": [
-   1280,
-   640
-  ],
-  "why": "看不清"
- },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -1934,6 +1921,12 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://isplus.com/data/isp/image/2026/10/26/isp20261026000355.800x.0.jpg": {
+  "w": 800,
+  "h": 556,
+  "target": 720,
   "v": 3
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
@@ -1957,6 +1950,12 @@
  "https://kushironews.jp/wp-content/uploads/2026/10/MN20261026T711CAw00010_P1130TPT50327KSB_resized.jpg": {
   "w": 1200,
   "h": 801,
+  "target": 1280,
+  "v": 3
+ },
+ "https://lasisa.net/wp-content/uploads/2027/10/20261029_sbuxbag_01.jpg": {
+  "w": 1200,
+  "h": 800,
   "target": 1280,
   "v": 3
  },
@@ -2017,12 +2016,6 @@
   "v": 3
  },
  "https://media.esports.gg/uploads/2026/10/malr1ne-plays-for-team-liquid-in-pari-universe-dota-2.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://media.godisageek.com/uploads/rockstar-uk-staff-head-to-union-recognition-ballot-as-gta-vi-5f78c1a61e0f44d9.webp": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -2140,6 +2133,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2608867-90fdd87d4160.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
   "w": 1920,
   "h": 1080,
@@ -2157,13 +2156,6 @@
   "h": 859,
   "target": 720,
   "v": 3
- },
- "https://n.sinaimg.cn/spider20261028/523/w660h663/20261028/0381-f9309344077324303a8604f6a1221f3a.jpg": {
-  "w": 660,
-  "h": 663,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.313
  },
  "https://n1.itc.cn/img7/adapt/wb/sohulife/2026/10/22/179264853008932509_664_2000.JPEG": {
   "w": 664,
@@ -2350,12 +2342,6 @@
   "h": 589,
   "target": 720,
   "v": 3
- },
- "https://news.walkerplus.com/article/1264268/14572030_615.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://news.walkerplus.com/article/1317098/15915699_615.jpg": {
   "w": 615,
@@ -3163,6 +3149,12 @@
   "target": 720,
   "v": 3
  },
+ "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
  "https://sm.ign.com/t/ign_in/screenshot/default/bleach-mirrors-high-overview-trailer-0-39-screenshot_9eu8.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -3702,7 +3694,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bgr.com/img/gallery/samsung-galaxy-users-are-reporting-one-key-issue-after-updating-to-one-ui-9/l-intro-1793215051.jpg": {
+ "https://www.bgr.com/img/gallery/samsung-is-being-fined-15m-for-misleading-marketing-on-some-galaxy-phones-and-tablets/l-intro-1793218209.jpg": {
   "w": 1600,
   "h": 899,
   "target": 1280,
@@ -3733,6 +3725,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.2SxZz3eOFnZAZ2IXvVsBIA&pid=News&w=700": {
+  "w": 700,
+  "h": 389,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.5OVWqixs8K4brEpx8v07LA&pid=News&w=1200": {
   "w": 700,
   "h": 466,
@@ -3751,6 +3749,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.6ubhW8puht5WZf4CnZJd5w&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.8nZvs5fHXIIT0p2hKirmNw&pid=News&w=1200": {
   "w": 700,
@@ -3784,18 +3788,11 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300": {
-  "w": 300,
-  "h": 300,
+ "https://www.bing.com/th?id=ONUT.CfrJV8vNIbzUncP0dQzwFw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
-  "v": 3,
-  "blur": 0.644,
-  "local": "pics/45d8e8296dea3cb4.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清"
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
@@ -3810,18 +3807,17 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
+ "https://www.bing.com/th?id=ONUT.KOsfIlpysro4UjegnaF79g&pid=News&w=1200": {
+  "w": 560,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.PSNDRO6vs6Fb1gBEHqZAQw&pid=News&w=1200": {
   "w": 700,
-  "h": 538,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.492,
-  "local": "pics/7d4ee150368733a3.webp",
-  "out": [
-   1280,
-   984
-  ],
-  "why": "看不清"
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.UKV_ApYouzJkc9fq-plfSQ&pid=News&w=600": {
   "w": 600,
@@ -3836,12 +3832,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
- },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3854,12 +3844,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.a087SNHlotX0kXFG0z1G4A&pid=News&w=960": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
@@ -3974,24 +3958,12 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.wecKx2HsTUOHEUaChzT5zw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 1280,
   "v": 3,
   "blur": 0.358
- },
- "https://www.bing.com/th?id=ONUT.x2N0vNhxuD3s-kqLM7O2og&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.xJ4TPQ2Ls59Z59VRELT6pw&pid=News&w=1200": {
   "w": 700,
@@ -4202,6 +4174,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.engadget.com/img/gallery/heres-how-much-your-older-samsung-phones-are-actually-worth/l-intro-1792776180.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
   "w": 1000,
   "h": 1000,
@@ -4344,12 +4322,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
-  "w": 900,
-  "h": 600,
-  "target": 1280,
-  "v": 3
- },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,
   "h": 390,
@@ -4379,6 +4351,12 @@
   "w": 2000,
   "h": 1270,
   "target": 720,
+  "v": 3
+ },
+ "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6BensMarina.jpg": {
+  "w": 2000,
+  "h": 1500,
+  "target": 1280,
   "v": 3
  },
  "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/GTA6JasonReviewEmbargo.jpg": {
