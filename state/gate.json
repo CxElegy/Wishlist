@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-10-29T12:37:54+00:00",
+ "changed": true,
+ "checked": "2026-10-29T12:48:47+00:00",
  "fired": {
-  "at": "2026-10-29T12:37:55+00:00",
+  "at": "2026-10-29T12:48:47+00:00",
   "results": {
    "edit": "今日のトークンが上限（1,000,000）に達した（明日まで待つ・ボタンは起こせる）",
    "photos": "仕事なし（起こさない）"
@@ -20,9 +20,6 @@
     "sig": "365fde9244b9"
    },
    "items": [
-    "A2O LITE",
-    "ILLIT",
-    "MMORPG 新作",
     "dota2",
     "gelato pique",
     "あつ森",
@@ -30,34 +27,30 @@
     "周杰伦",
     "滑雪"
    ],
-   "last_batch": "2026-10-29T12:24:38+00:00",
+   "last_batch": "2026-10-29T12:39:24+00:00",
    "last_error": {
     "at": "2026-10-29T11:59:26+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 449,
+   "prog": 459,
    "prog_day": "2026-10-29",
    "ripe": [
-    "A2O LITE",
-    "ILLIT",
-    "MMORPG 新作",
     "dota2",
     "周杰伦"
    ],
-   "sig": "85a26753ae04",
+   "sig": "084c152c8be1",
    "token_cap": 1000000,
-   "tokens_today": 1166909,
-   "why": "整理待ちの記事 22 件（9 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 1348067,
+   "why": "整理待ちの記事 12 件（6 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High",
-    "dota2"
+    "BLEACH Mirrors High"
    ],
    "need": true,
-   "sig": "ee9feb620745",
+   "sig": "b6804aff6de5",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
@@ -66,6 +59,7 @@
     "ILLIT",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
@@ -74,7 +68,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
