@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "d35cab7c5677",
+ "edit_sig": "2c7f86fb64b5",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -512,47 +512,24 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 3,
-     "source": "LASISA",
-     "title": "【スタバ福袋2027】内容発表！8800円→9500円に値上げも\"絞れるトート\"が好評 1000個限定ゴールドマグ＆ベアリスタも",
-     "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE5QWUdHay0zVWp0Sl9PUDNMbllYR2RBWGhwSHBvbVljTmxueW5mRDNyTThNaFJibzJXLTJsV2MwRlV0VEtv?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 4,
-     "source": "Yahoo!ニュース",
-     "title": "【スタバ福袋2027】豪華ラインナップで登場!大容量トートや1000個限定の特別仕様マグ＆ベアリスタも 11月4日より抽選エントリー開始（めざましmedia）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBxVXdyX25jSkNaZThtb05Mb1l4d1Q5VnVQQVV5R1VrV1NPR0FTaTR5RkY0LVVsSG4zUjNuX0E4NlU3cDllUVgtSWVldDZwa0VOQko2VUV6V2ltSXVibEpKV0pFVjFwS0x4bnlMcWIzTWg3NFpqUENZN0F6Z05tMjg?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 5,
-     "source": "イザ！",
-     "title": "スタバ「2027年福袋」11月4日抽選予約開始 限定バッグや1000個限定金マグも",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5hZm9Jc1pSbm1GcGNMY3pURWlad19JeTBoaVJWWThxaldhVGVEMzNpZTRYb2NDaEVaSzM1MExoUE85di14UndDQzZxeUxLWDVoN21KTURjRkJ4NHkxcnhiZDFNWTVLU2FNcG43Zmx1bjJYR2Fx0gGIAUFVX3lxTE52XzFQMk9HT3FJZDhIYlh0TnVlMGZkYVBBYWprY1JrTzZ0QlhLSXU1T3RQaXF2bHhmN2Uxc0VGcmJ5VGlERGYwczdiQnowZFoxWi1OVTQ5ZTk2RmNIMWE1bzBOSTdWSmY3LXlyUWo5TFdVbjRHek02eHBiV1R5SFNtcHdJWkhIbjE?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 6,
-     "source": "ライブドアニュース",
-     "title": "「スタバ福袋2027」内容発表 “1000個限定”ゴールドに輝く特別仕様マグ＆ベアリスタも・11月4日エントリー開始",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFB0WW13bEVYZ0JjemtGaUx2dFJNZno0YVpzR3VqSmNrOGhOTVIxWVpYb05ZRV9JWkNPOUZEbFB2NG5idERWSFdOQmE2dVdrT3l0MkYzTjVXX0tjVzRSTEkw?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 7,
-     "source": "クランクイン！ on MSN",
-     "title": "スタバ「福袋」が今年も発売へ！ 絞れるトートバッグや限定ステンレスボトルなどセットに",
-     "url": "https://www.msn.com/ja-jp/lifestyle/other/%E3%82%B9%E3%82%BF%E3%83%90-%E7%A6%8F%E8%A2%8B-%E3%81%8C%E4%BB%8A%E5%B9%B4%E3%82%82%E7%99%BA%E5%A3%B2%E3%81%B8-%E7%B5%9E%E3%82%8C%E3%82%8B%E3%83%88%E3%83%BC%E3%83%88%E3%83%90%E3%83%83%E3%82%B0%E3%82%84%E9%99%90%E5%AE%9A%E3%82%B9%E3%83%86%E3%83%B3%E3%83%AC%E3%82%B9%E3%83%9C%E3%83%88%E3%83%AB%E3%81%AA%E3%81%A9%E3%82%BB%E3%83%83%E3%83%88%E3%81%AB/ar-AA2giE9b"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
-     "blurb": "ホリデーシーズン限定の華やかなボトルや可愛いマグなどが11/2に発売スタート。",
+     "blurb": "福袋2027の内容が発表。1000個限定のゴールドマグ付きで、11月4日から抽選エントリー開始。",
+     "date": "2026-10-29",
+     "event": {
+      "date": "2026-11-04",
+      "label": "抽選エントリー開始"
+     },
+     "headline": "【スタバ福袋2027】内容発表！8800円→9500円に値上げも\"絞れるトート\"が好評 1000個限定ゴールドマグ＆ベアリスタも",
+     "highlight": "内容発表",
+     "image": "https://lasisa.net/wp-content/uploads/2027/10/20261029_sbuxbag_01.jpg",
+     "image_via": "og:image",
+     "url": "https://lasisa.net/post/166636",
+     "weight": "lead"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-28",
      "event": {
       "date": "2026-11-02",
@@ -563,7 +540,7 @@
      "image": "https://urepia.ismcdn.jp/mwimgs/8/9/-/img_8908df67a2145b0646452913d11f8c07276921.jpg",
      "image_via": "og:image",
      "url": "https://ure.pia.co.jp/articles/-/3530000",
-     "weight": "lead"
+     "weight": "normal"
     }
    ],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
@@ -748,7 +725,7 @@
      "date": "2026-10-29",
      "headline": "三星S27+或砍掉UWB",
      "highlight": "",
-     "image": "https://s.rfidworld.com.cn/2026/10/27/dced27b69f50aeca.png",
+     "image": "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg",
      "image_via": "正文图（4 枚から）",
      "url": "https://www.rfidworld.com.cn/news/2610_71DC1AE996282857.html",
      "weight": "normal"

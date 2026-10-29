@@ -3110,9 +3110,9 @@
   "target": 1280,
   "v": 3
  },
- "https://s.rfidworld.com.cn/2026/10/27/dced27b69f50aeca.png": {
-  "w": 1046,
-  "h": 550,
+ "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
+  "w": 810,
+  "h": 344,
   "target": 1280,
   "v": 3
  },
@@ -3882,6 +3882,19 @@
   "h": 393,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
+  "w": 700,
+  "h": 538,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.492,
+  "local": "pics/7d4ee150368733a3.webp",
+  "out": [
+   1280,
+   984
+  ],
+  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.UKV_ApYouzJkc9fq-plfSQ&pid=News&w=600": {
   "w": 600,
