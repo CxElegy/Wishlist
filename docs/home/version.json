@@ -1,32 +1,32 @@
 {
- "admin": "9dbd60bccccc",
- "admin-ai": "6ff9c64e1206",
+ "admin": "64b8ec9e2d09",
+ "admin-ai": "f3926973c56e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "c0ffcc08"
+   "27350953"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ef536acb"
+   "80f3e075"
   ]
  },
- "admin-boards": "8e9f26a55cae",
+ "admin-boards": "f2b36d101dd0",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "6b1cce39"
+   "1b2bd7bf"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "cf4d4dfc20ed",
+ "admin-emblem": "250a1c5b25f8",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "a189109b"
+   "6c96990e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "2f8b1e81"
+   "a956d5b5"
   ]
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "4b6e1bd30c3f",
+ "admin-now": "6fb05aa4d6d4",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "f9204691"
+   "74634a4e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c1de3d09"
+   "68bae591"
   ]
  },
- "admin-system": "4a8569302588",
+ "admin-system": "244f6afa74fa",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "58bfa967"
+   "a3c93f55"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b9ce892b"
+   "59c9cde9"
   ]
  },
  "admin_marks": {},
- "heat": "01da9786442b",
+ "heat": "1099cf4afb1b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "d5c21bae"
+   "6ce9e02d"
   ],
   "ranking": [
    "ランキング",
-   "a7cd9ccb"
+   "fe78e24c"
   ]
  },
- "index": "409faddcbc04",
+ "index": "2709efa7d03d",
  "index_marks": {
   "front": [
    "トップ",
-   "6321ebd1"
+   "cd337f72"
   ],
   "picks": [
    "気になるかも？",
@@ -129,11 +129,11 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "aad8e86e"
+   "c1c3751b"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "32c36881"
+   "6b832569"
   ],
   "w-6676e624": [
    "三星手机",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "edd272ec"
+   "573ca54e"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -197,5 +197,5 @@
   ]
  },
  "updated": "10.29 17:50",
- "wishlist": "371f1d08edcd"
+ "wishlist": "f0acdb0385d8"
 }
