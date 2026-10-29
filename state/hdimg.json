@@ -47,6 +47,12 @@
   "target": 720,
   "v": 3
  },
+ "http://www.mountainwatch.com/wp-content/uploads/2019/12/Green-Leaf-Onsen-Large.jpg": {
+  "w": 1170,
+  "h": 596,
+  "target": 720,
+  "v": 3
+ },
  "http://www.weschoolnews.com/modules/news/upload/news/s120810/2026/10/26/s120810_20261026213404_fbf138464fa777ecbd6c6e16caaa46a6174147_thumb.png": {
   "w": 480,
   "h": 360,
@@ -632,12 +638,6 @@
   "w": 1200,
   "h": 934,
   "target": 1280,
-  "v": 3
- },
- "https://cimg.kgl-systems.io/camion/files/92288/ogp_cNFU.jpg?x=1280": {
-  "w": 1200,
-  "h": 1200,
-  "target": 720,
   "v": 3
  },
  "https://cimg.kgl-systems.io/camion/files/dengeki/92185/a156005c5baf40ff51a327f1c34f2975b.jpg?x=1280": {
@@ -1923,12 +1923,6 @@
   "target": 1280,
   "v": 3
  },
- "https://isplus.com/data/isp/image/2026/10/26/isp20261026000355.800x.0.jpg": {
-  "w": 800,
-  "h": 556,
-  "target": 720,
-  "v": 3
- },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
   "w": 1600,
   "h": 900,
@@ -2954,7 +2948,7 @@
  "https://prcdn.freetls.fastly.net/release_image/163718/90/163718-90-05a90f266b3f82d8c94cbd1c9aec72fd-1491x1055.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1491,
   "h": 1055,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/174697/3/174697-3-a0394415951be9911a3ce6117d1747a5-1672x941.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -2990,7 +2984,7 @@
  "https://prcdn.freetls.fastly.net/release_image/193049/1/193049-1-e6fb1b52fe45aa411f3f0fb0a6f476d4-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/21881/89/21881-89-8fd1b4c5834994ab56f955d2e4e45891-2500x1280.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
@@ -3008,6 +3002,12 @@
  "https://prcdn.freetls.fastly.net/release_image/5113/4320/5113-4320-d0212b0932b9e9e4f4f6ce954e74a77e-960x640.png?width=536&quality=85%2C75&format=jpeg": {
   "w": 536,
   "h": 357,
+  "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/96034/121/96034-121-678641ce595fd641e231c928524ae9ca-1800x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 840,
+  "h": 1260,
   "target": 720,
   "v": 3
  },
@@ -3144,12 +3144,6 @@
   "v": 3
  },
  "https://shattered.io/wp-content/uploads/2026/10/gta-6-launch-1-5-million-sick-days-cost-2026-gen.webp": {
-  "w": 1344,
-  "h": 768,
-  "target": 720,
-  "v": 3
- },
- "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
   "w": 1344,
   "h": 768,
   "target": 720,
@@ -3681,6 +3675,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.appbank.net/wp-content/uploads/2026/10/20261028_171558_755_01.webp": {
+  "w": 1237,
+  "h": 1238,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.atpress.ne.jp/releases/643108/LL_img_643108_3.jpg?format=webp&ts=1792744226": {
   "w": 800,
   "h": 800,
@@ -3832,6 +3832,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3974,6 +3980,12 @@
  "https://www.bing.com/th?id=ONUT.xdkR84ifTe0Nu6LlLoGjUg&pid=News&w=1200": {
   "w": 700,
   "h": 466,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.yQTn8yVopd9NgLlJSmZFYA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4320,6 +4332,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
+  "w": 900,
+  "h": 600,
+  "target": 720,
   "v": 3
  },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
