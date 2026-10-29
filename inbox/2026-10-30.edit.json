@@ -165,7 +165,8 @@
     7,
     6,
     15,
-    19
+    19,
+    21
    ]
   },
   {
@@ -176,7 +177,8 @@
    "refs": [
     16,
     18,
-    9
+    9,
+    20
    ]
   },
   {
@@ -271,7 +273,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    19
    ]
   }
  ],
@@ -318,21 +321,21 @@
  "_covered": {
   "漫威电影": 40,
   "GTA 6": 39,
-  "三星手机": 19,
-  "ILLIT": 18,
+  "三星手机": 21,
+  "ILLIT": 19,
   "哈利波特剧集": 14,
   "日本顶级网球赛事": 14,
   "dota2": 8,
   "MMORPG 新作": 10,
   "BLEACH Mirrors High": 4,
-  "The Mandalorian": 4,
+  "The Mandalorian": 5,
   "周杰伦": 4,
   "星巴克马克杯": 4,
   "滑雪": 4,
   "绝区零": 4,
   "gelato pique": 3,
-  "A2O LITE": 2,
-  "チェーンソーマン": 2,
+  "A2O LITE": 3,
+  "チェーンソーマン": 4,
   "Vaundy": 1,
   "あつ森": 1,
   "ぐでたま": 1,
@@ -499,6 +502,15 @@
     3
    ],
    "image": "https://sm.ign.com/t/ign_nordic/gallery/t/the-art-of/the-art-of-the-mandalorian-and-grogu-preview-gallery_pczz.1200.jpg"
+  },
+  {
+   "headline": "Hasbro's Star Wars: The Vintage Collection Mandalorian 3-pack features Carson Teva, Trapper Wolf and the Frog Lady",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "周杰伦": [
@@ -606,6 +618,24 @@
     2
    ],
    "image": "https://ogre.natalie.mu/media/news/eiga/2026/1028/chainsawman_graniph_20261028_14.jpg?impolicy=ogp_face_crop"
+  },
+  {
+   "headline": "劇場版『チェンソーマン レゼ篇』 おおきなSOFVIMATES～てくてくポチタ～",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "チェンソーマン アクリルボード",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "Vaundy": [],

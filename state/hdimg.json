@@ -513,6 +513,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.flickeringmyth.com/wp-content/uploads/2026/10/STAR-WARS-THE-VINTAGE-COLLECTION-MANDALORIAN-3-PACK-2.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
  "https://cdn.gamemeca.com/gmdata/0001/782/498/gm977274_thumb___30.webp": {
   "w": 1200,
   "h": 670,
@@ -606,11 +612,23 @@
   "target": 1280,
   "v": 3
  },
+ "https://charagoo.jp/wp-content/uploads/2025/08/668w_668h-267.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
  "https://charagoo.jp/wp-content/uploads/2025/08/D103923_01.jpg": {
   "w": 1000,
   "h": 1000,
   "target": 720,
   "v": 3
+ },
+ "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://charagoo.jp/wp-content/uploads/2026/10/668w_668h-60.jpg": {
   "w": 668,
@@ -1899,7 +1917,7 @@
   ],
   "why": "看不清"
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F53%252FKyodo_1488533556721008904%252FKyodo_1488533556721008904_1.jpg,zoom=560x320,quality=100,type=jpg": {
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F35%252FKyodo_1488645827462545587%252FKyodo_1488645827462545587_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
@@ -3095,10 +3113,10 @@
   "v": 3
  },
  "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
+  "w": 760,
+  "h": 1125,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
+  "v": 3
  },
  "https://r2-media.wdwnt.com/2026/10/the-art-of-the-mandalorian-and-grogu-cover-1.jpg": {
   "w": 1500,
@@ -3245,10 +3263,10 @@
   "v": 3
  },
  "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/10/29/could-samsungs-galaxy-s27-ultra-ditch-snapdragon-and-benefit-buyers-30af08c3f3fe4ae8ba8acb405796cacd-20.png?width=0&s=p_xLDljzCGFk1KggnSBVug": {
+  "w": 1600,
+  "h": 857,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
+  "v": 3
  },
  "https://static.beebom.com/wp-content/uploads/2026/10/GTA-6-platforms.jpg": {
   "w": 1200,

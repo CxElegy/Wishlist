@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "801d9e977fc1",
+ "edit_sig": "191e556b45a0",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -292,15 +292,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 19,
-     "source": "Weverse",
-     "title": "ILLIT Community Post - 히히 하이브 1층 팝업에서 우리의 흔적을 찾아보세요 ~ 😝 - WONHEE",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE0teTlGN0RWVzI4S3BYT1dEbG1CZV9fbGJTczJaTnJYMF9Ld0R0RnhlVUtZeC1QdHh5V1ZvTHFndWoyYnVXMDdFQm1qNGdlMmIzb1dtUGV3?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -455,7 +446,7 @@
      "date": "2026-10-25",
      "headline": "ダブルス女王シニアコバ、大阪決勝でクルーガーに6-1、6-0 3年ぶりシングルスV",
      "highlight": "6-1、6-0",
-     "image": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F53%252FKyodo_1488533556721008904%252FKyodo_1488533556721008904_1.jpg,zoom=560x320,quality=100,type=jpg",
+     "image": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F35%252FKyodo_1488645827462545587%252FKyodo_1488645827462545587_1.jpg,zoom=560x320,quality=100,type=jpg",
      "image_via": "正文图（6 枚から）",
      "url": "https://www.excite.co.jp/news/article/sportsbull_2444600/",
      "weight": "normal"
@@ -487,22 +478,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 20,
-     "source": "Android Headlines on MSN",
-     "title": "Galaxy S27 certification reconfirms disappointing 25W fast charging",
-     "url": "https://www.msn.com/en-us/technology/consumer-electronics/galaxy-s27-certification-reconfirms-disappointing-25w-fast-charging/ar-AA2gm9q1"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 21,
-     "source": "VOI.ID",
-     "title": "三星Galaxy S27 Pro和Ultra将配备16 MP前置摄像头",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBRSGY4UDJjdkhQLWxFRGNzNVJoRVFUY3JNYnlNR0NNZjBabjlJUno3LUV2eFlGTkRia3c1MDZGZ1AwTWpNSkY1bE5pRU14TnfSAUJBVV95cUxNNEM0bUhFUXR6a2NoazFvNnVPRk9uVUlnNkV0TFJ4cURtSDV6M05wWDU4NGxET21iZXE5QkVBQkFhSkE?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -680,22 +655,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-10-24",
-     "n": 3,
-     "source": "キャラグー",
-     "title": "劇場版『チェンソーマン レゼ篇』 おおきなSOFVIMATES～てくてくポチタ～｜チェンソーマンのプライズ 入荷予定・取扱店舗",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE11SnNsMDhXNzJFN0dDeVJTQ2RnX3JZeXYtUmpHTGszV0xSejVrUWo0aHpFZXBFMlBqNmtiamFZNHpYLVZOc3FUUHBhQ1ZCdjJlZHJHNl9acw?oc=5"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 4,
-     "source": "キャラグー",
-     "title": "チェンソーマン アクリルボード｜チェンソーマンのプライズ 入荷予定・取扱店舗",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9SMXNmNmJoaHhhR29DTjlXbkJVMWtrMUpHSFM0TDRfdXNacTJLZ2Vrbzl4a2hDRUIwNV9tbW8zenE2OXNKQVBQMzJVTEZMVWx5TDlMSnVkUQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -707,6 +666,26 @@
      "image_via": "AI 挑选",
      "url": "https://natalie.mu/eiga/gallery/news/695686/3003293",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "劇場版『チェンソーマン レゼ篇』 おおきなSOFVIMATES～てくてくポチタ～",
+     "highlight": "",
+     "image": "https://charagoo.jp/wp-content/uploads/2026/07/668w_668h-161.jpg",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/prize/item/6fe5380a76ab/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-24",
+     "headline": "チェンソーマン アクリルボード",
+     "highlight": "",
+     "image": "https://charagoo.jp/wp-content/uploads/2025/08/668w_668h-267.jpg",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/prize/item/0109f51302b1/",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
@@ -725,15 +704,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-10-23",
-     "n": 5,
-     "source": "Flickering Myth",
-     "title": "Hasbro's Star Wars: The Vintage Collection Mandalorian 3-pack features Carson Teva, Trapper Wolf and the Frog Lady",
-     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPM1I0eTJaUUx5Ql9nM3ItSU85VExvRzlGTmpEbzNqekhMelJ5b001Rm9jdS12a21Ia0c0RW96REstTHAyLVR3MW9QNWNlRm9qMVItX1YxcGptX243RXV0QXFiaVhxRGxOcG04TWJhenYwc0otTFNvRXVDcTQzWEhKVHAwVkhzbVRDbDhmQi13T25hbDRzQWt6d19MWDlYMXl4WHBndmJQOG1BTzBqMDBCdTFNZHg5LVVQZEU1azJZUHMtMDVqNnRGRGhtbm83ZHlmNWliRUxhcUpoQQ?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -745,6 +715,16 @@
      "image_via": "AI 挑选",
      "url": "https://nordic.ign.com/the-mandalorian-grogu/114950/the-art-of-the-mandalorian-and-grogu-preview-gallery?p=1",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-23",
+     "headline": "Hasbro's Star Wars: The Vintage Collection Mandalorian 3-pack features Carson Teva, Trapper Wolf and the Frog Lady",
+     "highlight": "",
+     "image": "https://cdn.flickeringmyth.com/wp-content/uploads/2026/10/STAR-WARS-THE-VINTAGE-COLLECTION-MANDALORIAN-3-PACK-2.jpg",
+     "image_via": "og:image",
+     "url": "https://www.flickeringmyth.com/hasbro-star-wars-the-vintage-collection-mandalorian-3-pack-features-carson-teva-trapper-wolf-and-the-frog-lady/",
+     "weight": "normal"
     }
    ],
    "subtitle": "ザ・マンダロリアン",
@@ -894,15 +874,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "#李彩领因翻跳NEON泡泡道歉#emmmmmITZY翻跳A2O LITE对比，大家看吧",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1sdk1ZMi14OTl5OGhVU2NGZGswTFlOdHpodnI1UmZMSnZUeTF5OG1QQVoyNnZVYVJuMkxpbjRjZDRZMUdicnFVbXp2QVpiYk45QWhScHFIQWhjUTdxMzlUU0dpWXJFbW04Nm5jcUdVY0ZlZw?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
