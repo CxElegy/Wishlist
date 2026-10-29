@@ -53,6 +53,12 @@
   "target": 720,
   "v": 3
  },
+ "http://www.mountainwatch.com/wp-content/uploads/2019/12/Green-Leaf-Onsen-Large.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
   "h": 338,
@@ -541,6 +547,12 @@
    900
   ],
   "why": "看不清"
+ },
+ "https://cdn.livedoor.jp/kstyle/a2231d2c178b8fa2a4816938d1b3f2e2_WI.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://cdn.livedoor.jp/kstyle/b4d9d285e668cb548e563e3d7218ddeb_WI.jpg": {
   "w": 1024,
@@ -1213,6 +1225,12 @@
   "h": 675,
   "target": 720,
   "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/stf/6/c/6c091_1845_de86ce3c_a753d37e.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://image.news.livedoor.com/newsimage/stf/a/8/a84a9_1830_709a350d_14660206.jpg": {
   "w": 1200,
@@ -3970,12 +3988,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.a7NahHzTAa0npxm0wHHWbg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.bW0YdLR8WdbZHmuaWWdvAw&pid=News&w=1200": {
   "w": 700,
