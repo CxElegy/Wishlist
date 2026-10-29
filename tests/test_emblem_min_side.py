@@ -130,5 +130,37 @@ class WideRetry(unittest.TestCase):
         self.assertEqual(got["emblem_reject"], ["http://s/z"])
 
 
+class WideRetryEverywhere(unittest.TestCase):
+    """縮めた幅の絵が「小さいだけ」で reject に入らない壊れ方を、店長・お客さま・点検の 3 か所で数える。"""
+
+    NARROW = WideRetry.NARROW
+
+    def test_customer_unbroken_drops_small_without_reject(self):
+        """お客さまの版面（library_emblem.unbroken）は小さい絵を外すだけ。返すのはリストだけで emblem_reject を書く道がない（店長の drop_broken と別の道）。"""
+        import io
+        import library_emblem as le
+        from PIL import Image
+        buf = io.BytesIO()
+        Image.new("RGBA", (390, 247), (200, 100, 50, 255)).save(buf, "PNG")
+        u = f"https://x.supabase.co/storage/v1/object/public/{le.BUCKET}/a.png"
+        x = {"subject": "CM", "image": u, "source": self.NARROW, "shape": "cutout"}
+        got = le.unbroken([x], False, fetch=lambda _u: buf.getvalue())
+        self.assertEqual(got, [])
+        self.assertNotIn("emblem_reject", inspect.getsource(le.unbroken))
+        self.assertNotIn("drop_broken", inspect.getsource(le.unbroken))
+
+    def test_e24_counts_narrow_small_reject_without_emblem(self):
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import emb_check
+        face = [0.1, 0.1, 0.5, 0.5, 390, 247]
+        rec = {"M": [{"v": 10, "emblem": {"subject": "CM", "source": self.NARROW, "face": face}},
+                     {"v": 10, "emblem": {"subject": "Has", "source": self.NARROW + "2", "face": face}},
+                     {"v": 10, "emblem": {"subject": "Big", "source": self.NARROW + "3", "face": [0, 0, 1, 1, 900, 900]}}]}
+        items = [{"name": "M", "emblem_reject": [self.NARROW, self.NARROW + "2", self.NARROW + "3"], "emblem": [{"subject": "Has", "image": "emblems/h.webp"}]}]
+        self.assertEqual(emb_check.narrow_small_rejects(items, rec), ["M CM"])
+        items[0]["emblem_reject"] = []   # unbreak が抜いたあと
+        self.assertEqual(emb_check.narrow_small_rejects(items, rec), [])
+
+
 if __name__ == "__main__":
     unittest.main()

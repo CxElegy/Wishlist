@@ -24,7 +24,7 @@
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
   E22 顔なし ①② を体の枠でそろえていない  顔なしの cutout で nk が keep・symbol なのに a.nb（x.bb から render が作る）がない（render の .nb が効いていない）。
-  E23 測ったキーが落ちた  店長の items.yaml とお客さまの版面（boards.config.emblem）で nfv（顔なしを測った版）があるのに nk か bb がない小元素（_store が書いたキーが emblem.EMBLEM_KEEP から漏れた印。0 であること）。
+  E24 縮めた幅の絵が reject に残る  縮めた網址（Fandom の scale-to-width-down/400 など）で小さいと測れて外した絵（wide_retry）が emblem_reject に残り、その人にまだ小元素がない数（0 であること。大きい幅で取り直せる絵が二度と選ばれない：dota2 Crystal Maiden）。BROKEN_V 11 の unbreak が抜く。\n  E23 測ったキーが落ちた  店長の items.yaml とお客さまの版面（boards.config.emblem）で nfv（顔なしを測った版）があるのに nk か bb がない小元素（_store が書いたキーが emblem.EMBLEM_KEEP から漏れた印。0 であること）。
   E17（続き）顔なしの 3 分け ①keep ②symbol ③replace の数（情報）も出す：emblem_face.none_kind。
   E17 顔が測れない理由別の数（情報：✗ にしない）  顔なし（測ったが顔がない：網页の nf）の cutout を emblem_face.none_reason の札で数える。sheet＝向きを並べた図・small＝顔らしい箱はあるが小さい・noface＝箱がない（怪物・武器・物・覆面）。測り方の足りない（見つかる顔を見落とした）ものを増やさないための数え直しの材料
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
@@ -267,6 +267,27 @@ def dropped_keys(items=None):
             if isinstance(x, dict) and x.get("nfv") == emblem_face.NONE_V and not (x.get("nk") and x.get("bb"))]
 
 
+def narrow_small_rejects(items=None, broken=None):
+    """E24：縮めた幅（400）で小さいと測れて外した絵（emblem_fill.wide_retry）の網址が emblem_reject に残り、その人にまだ小元素がない → [版面 主題]。
+    大きい幅で取り直せる絵が二度と選ばれない壊れ方（dota2 Crystal Maiden 390×247・#602）。BROKEN_V 11 の unbreak が抜く。外す道（drop_broken・stage_closeups・drop_closeups・drop_same）のうち「小さいだけ」で外すのは drop_broken だけ。
+    お客さま側は library_emblem.unbroken が reject に入れない（tests/test_emblem_min_side.py が数える）。"""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import emblem_fill as ef
+    items = items if items is not None else yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8")).get("items", [])
+    if broken is None:
+        p = ROOT / "state" / "emblem_broken.json"
+        broken = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    out = []
+    for it in items:
+        rej = set(it.get("emblem_reject") or [])
+        have = {ef._name_key(x.get("subject")) for x in it.get("emblem") or [] if isinstance(x, dict)}
+        for e in broken.get(it["name"]) or []:
+            x = e.get("emblem") or {}
+            if (x.get("source") or x.get("image")) in rej and ef.wide_retry(x) and ef._name_key(x.get("subject")) not in have:
+                out.append(f"{it['name']} {x.get('subject')}")
+    return out
+
+
 def boards_dropped_keys(rows):
     """E23 のお客さまの版面の分：boards の行 [{name, config}] の config.emblem に、dropped_keys と同じ壊れ方（nfv があるのに nk・bb がない）→ [版面 主題]。"""
     return [line for r in rows for line in dropped_keys([{"name": r.get("name"), "emblem": (r.get("config") or {}).get("emblem")}])]
@@ -436,7 +457,7 @@ def check(pg, who, width, out, full=False, guest=False):
     """1 枚の網页（読み込み済み）のエンブレムを点検して、✗ の言葉の一覧を返す。"""
     pg.add_style_tag(content=NOSTILL)
     secs = [s for s in pg.evaluate(READ) if s["title"] != FIRST_BOARD and s["k"] != FIRST_BOARD]
-    found = {f"E{n}": [] for n in range(1, 21)} | {"E22": [], "E23": []}
+    found = {f"E{n}": [] for n in range(1, 21)} | {"E22": [], "E23": [], "E24": []}
     nomodel = False
     nf_why = {}   # E17：顔が測れない理由の札 → [版面 名前]
     nf_kind = {}  # E17：顔なしの 3 分け（nk：keep ①・symbol ②・replace ③・? = まだ測り直していない）→ [版面 名前]
@@ -559,6 +580,8 @@ def check(pg, who, width, out, full=False, guest=False):
         except Exception as e:  # noqa: BLE001
             print(f"  情報 E23 お客さまの版面を数えられなかった：{e}")
     if guest:
+        found["E24"] = narrow_small_rejects()
+    if guest:
         try:
             cl = closeup_left()
             print(f"  情報 E19 顔だけのアップが残る {sum(v[0] for v in cl.values())} 枚（{len(cl)} 版面）のうち、公式サイトに同じ人の立ち絵がある {sum(v[1] for v in cl.values())} 枚（{len([k for k, v in cl.items() if v[1]])} 版面）"
@@ -581,7 +604,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     if DRIFT:
         bad.append(f"E7 順番しだい 検出器のしきい値が標準でない回が {len(DRIFT)} 回（{DRIFT[0]}）：変えた所が戻していない（emblem_face._boxes と同じ型）")
