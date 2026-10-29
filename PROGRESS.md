@@ -161,3 +161,4 @@
 2026-10-29 r1f1 E24 を合併〔#603〕・背景の回 40803254817 のあと E24 80→5、E15 は 6 版面のまま〔取り直し待ち〕。次：E24 の残り 5 件の理由・外した理由を reject に残す。
 2026-10-29 r1f2 E15：先頭の人を redo より先・外した網址を版ごとに 1 回見直す（release_head_rejects）・人ごとの理由を funnel.heads に記録して E15 に添える。PR #605。確かめ：背景の回 12:24 JST success、E15 6→5 版面（dota2 Crystal Maiden 戻る）、ux_check guest/test-a/b 1400/390 は E2（Wikimedia 403/429）と E10 のみ。次：Rukia（候補なし）と漫威・FROM・ILLIT・A2O LITE の理由別の規則
 2026-10-29 r1 「頭が切れた」の段を閉じた：本番 ux_check 4 人×1400/390 で E7 全員 0（test-a・b・c ✓、guest は E10・E15・E16・E4 が別の段で残る）。コードの変更なし。次：E4 チェーンソーマン pochita の大きさ（47〜74px）を規則で。
+2026-10-29 r2 小元素を待たせない第 1 弾：library_emblem.yml を 15 分ごとの見回り＋増えたら自分で次の回（#609）。確かめ：試験 Chain・ux_check --fast ✗0・手動回 40822513249 は --check 通過で実行中。次：①起きたらすぐ（収集・requests・library の終わりから dispatch）・chain の本番確認。
