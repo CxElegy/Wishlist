@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "c1590d9e9ea8",
+ "edit_sig": "5db5a69cdb37",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -171,9 +171,8 @@
      },
      "headline": "Nexon、「オーバーギアード」オンラインショーケースを11月5日に配信",
      "highlight": "11月5日",
-     "image": null,
-     "source": "DigitalToday",
-     "source_icon": "https://cdn.digitaltoday.co.kr/image/logo/favicon.ico",
+     "image": "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg",
+     "image_via": "og:image",
      "url": "https://www.digitaltoday.co.kr/jp/view/121244/nexon-to-hold-tembbal-overgeared-online-showcase-on-nov-5",
      "weight": "normal"
     }
@@ -465,36 +464,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 11,
-     "source": "スポニチ on MSN",
-     "title": "【女子テニス】ルバキナ 東レPPO快勝発進! 今季の世界ランク1位確定「誇りに思う」",
-     "url": "https://www.msn.com/ja-jp/news/other/%E5%A5%B3%E5%AD%90%E3%83%86%E3%83%8B%E3%82%B9-%E3%83%AB%E3%83%90%E3%82%AD%E3%83%8A-%E6%9D%B1%E3%83%ACppo%E5%BF%AB%E5%8B%9D%E7%99%BA%E9%80%B2-%E4%BB%8A%E5%AD%A3%E3%81%AE%E4%B8%96%E7%95%8C%E3%83%A9%E3%83%B3%E3%82%AF1%E4%BD%8D%E7%A2%BA%E5%AE%9A-%E8%AA%87%E3%82%8A%E3%81%AB%E6%80%9D%E3%81%86/ar-AA2gm4Ty"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 12,
-     "source": "スポーツナビ",
-     "title": "【2回戦】大坂 なおみ vs M.ポハンコバ ハイライト│東レ パン パシフィック オープンテニス2026",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1QQnBEd09YQzRaR3hWcnM2NmFxSV9OcVBsY3VGMzNoVXdfbTFMOGpZQ2lSMjB0dHAxZ29RWmRnQzUtRDBUbDRreVRBUXZwcGF5UFNEdVl3enA5OWEx?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 13,
-     "source": "沖縄タイムス",
-     "title": "大坂、2回戦敗退 東レ女子テニス単",
-     "url": "https://www.okinawatimes.co.jp/articles/-/1955693"
-    },
-    {
-     "date": "2026-10-25",
-     "n": 14,
-     "source": "ABEMA",
-     "title": "最終日 センターコート 【木下グループジャパンオープンテニスウィメンズ】",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBPWHNrY3Brc19RQW14Y1luNEMzRlEtXzNoNndZcmZWampMdzQ2OWRRYmE4dEZTNXNJNHBFU1hQX3h2NTk1RjBMbG5wQVhlQkVic0ZOcHF3RzQzamkzNXRCY0pWR1F3cl9vSXRHUjNOQ2VIUQ?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -539,12 +508,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-28",
-     "headline": "女子ダブルス1回戦 【ショートハイライト】東レ パン パシフィック オープンテニス 2026",
-     "highlight": "",
-     "image": "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228091/thumb001.png?height=720&quality=75&version=1793183357&width=1280",
-     "image_via": "og:image",
-     "url": "https://abema.tv/video/episode/wo_C228091",
+     "date": "2026-10-29",
+     "headline": "【女子テニス】ルバキナ 東レPPO快勝発進! 今季の世界ランク1位確定「誇りに思う」",
+     "highlight": "世界ランク1位確定",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gmL1z.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/ja-jp/news/other/%E5%A5%B3%E5%AD%90%E3%83%86%E3%83%8B%E3%82%B9-%E3%83%AB%E3%83%90%E3%82%AD%E3%83%8A-%E6%9D%B1%E3%83%ACppo%E5%BF%AB%E5%8B%9D%E7%99%BA%E9%80%B2-%E4%BB%8A%E5%AD%A3%E3%81%AE%E4%B8%96%E7%95%8C%E3%83%A9%E3%83%B3%E3%82%AF1%E4%BD%8D%E7%A2%BA%E5%AE%9A-%E8%AA%87%E3%82%8A%E3%81%AB%E6%80%9D%E3%81%86/ar-AA2gm4Ty",
      "weight": "normal"
     }
    ],

@@ -488,6 +488,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
   "h": 1097,
@@ -1211,12 +1217,6 @@
   "target": 720,
   "v": 3
  },
- "https://image.p-c2-x.abema-tv.com/image/programs/wo_C228091/thumb001.png?height=720&quality=75&version=1793183357&width=1280": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://image.starnewskorea.com/21/2026/10/2026102309421333450_1.jpg": {
   "w": 1200,
   "h": 1748,
@@ -1593,6 +1593,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gmL1z.img": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
  },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img": {
   "w": 1200,

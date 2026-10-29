@@ -1,14 +1,14 @@
 {
- "admin": "ee46dfddd348",
- "admin-ai": "ad32203b3727",
+ "admin": "70d5bc3525bc",
+ "admin-ai": "86bb80ca31ff",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "cb02ed33"
+   "db5fcdc2"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "86b05746"
+   "15a9c45a"
   ]
  },
  "admin-boards": "646bfc3a6b15",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "3f267e6efead",
+ "admin-emblem": "216798475dc2",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "72d1025e"
+   "31ca14cd"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "b0a5be783e19",
+ "admin-now": "1b11d1a4464d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "2221d99e"
+   "3effc9c0"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "a54409b8"
+   "42f043ce"
   ]
  },
- "admin-system": "8e236ebf698c",
+ "admin-system": "7afda889b6ff",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "6481ba44"
+   "383e037d"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "f44c65d5"
+   "620ef805"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "25d46275"
   ]
  },
- "index": "58ed2770fd47",
+ "index": "2615a407c1b5",
  "index_marks": {
   "front": [
    "トップ",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "9a1e2e76"
+   "e5d30c4e"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "f358fc8f"
+   "f8b5ba9f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 05:09",
+ "updated": "10.30 05:13",
  "wishlist": "7af11c19700f"
 }
