@@ -4220,7 +4220,9 @@ AUTH_JS = r"""
     members13:'できませんでした：',
     members14:' のパスワードを変えました',
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
-    members16:'<p class="st">読み込めませんでした：'}};
+    members16:'<p class="st">読み込めませんでした：',
+    lb1:'<table><thead><tr><th>版面</th><th>人数</th><th>小元素</th><th>配色（背景・文字・差し色）</th></tr></thead><tbody>',
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -4709,12 +4711,33 @@ AUTH_JS = r"""
           .catch(function(e){st.textContent=L.members13+e.message;});};
     }).catch(function(e){box.innerHTML=L.members16+esc(e.message)+'</p>';});
   }
+  function libboards(){   // ②版面：ライブラリの全部の版面（お客さまの分を含む）。店長がログインしたときだけ読む（RLS）・名前はHTMLに焼かない
+    var box=document.getElementById('wl-libboards'); if(!box) return;
+    var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; if(sec.nextElementSibling) sec.nextElementSibling.hidden=false; return;}
+    sec.hidden=false; if(sec.nextElementSibling) sec.nextElementSibling.hidden=true;
+    of(base+'/rest/v1/boards?select=id,name,followers,config&order=followers.desc,id',{headers:{apikey:A.key,Authorization:'Bearer '+tok}})
+      .then(function(r){if(!r.ok) throw new Error(r.status); return r.json();}).then(function(bs){
+        var cs=['bg','fg','accent'];
+        box.dataset.n=bs.length;
+        box.innerHTML='<p class="st">'+bs.length+L.lb8+'</p>'+L.lb1+bs.map(function(b){
+          var th=(b.config||{}).theme||{},em=(b.config||{}).emblem||[];
+          return '<tr data-id="'+b.id+'"><td>'+esc(b.name)+'</td><td>'+b.followers+L.lb3+'</td><td>'+em.length+'</td><td>'+
+            cs.map(function(c){return '<input type="color" data-c="'+c+'" value="'+(th[c]||(c==='fg'?'#f1eee6':c==='bg'?'#1a1c22':'#e0703f'))+'" aria-label="'+c+'">';}).join('')+
+            ' <button type="button" data-save>'+L.lb4+'</button> <button type="button" data-reset>'+L.lb5+'</button></td></tr>';}).join('')+
+          '</tbody></table><p class="st" aria-live="polite"></p>';
+        var st=box.querySelector('p.st:last-child');
+        box.querySelectorAll('tr[data-id]').forEach(function(tr){
+          function go(th){rpc('board_theme_set',{p_board:+tr.dataset.id,p_theme:th}).then(function(){st.textContent=L.lb6;}).catch(function(e){st.textContent=L.lb7+e.message;});}
+          tr.querySelector('[data-save]').onclick=function(){var th={};tr.querySelectorAll('input[data-c]').forEach(function(i){th[i.dataset.c]=i.value;});go(th);};
+          tr.querySelector('[data-reset]').onclick=function(){go({});};});
+      }).catch(function(e){box.innerHTML=L.members16+esc(e.message)+'</p>';});
+  }
   function refresh(){
     return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){mine();chip();gate();readOnlyNote();members();
+      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
           var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
@@ -6641,7 +6664,7 @@ ADMIN_PAGE_JS = """
 # (ファイル, 印, 名前, 中身の説明, 欄の id)。前の網址 admin.html#<id> はトップの JS がその欄のあるページへ送る。
 ADMIN_PAGES = [
     ("admin-now.html", "①", "いま", "ライブログ・運行状況・次の実行・Actions と依頼", ["term-panel", "status", "nextrun", "queue"]),
-    ("admin-boards.html", "②", "版面", "ウォッチ項目の表・投票", ["items", "votes"]),
+    ("admin-boards.html", "②", "版面", "ウォッチ項目の表・ライブラリの全版面・投票", ["items", "libboards", "votes"]),
     ("admin-emblem.html", "③", "エンブレム", "小元素の管理（替える・固定・外す）・進捗・版面ごとの状態・判断の例", ["emblem-manage", "emblems", "backend", "emblem-ex"]),
     ("admin-ai.html", "④", "AI 編集", "トークン・編集の前後", ["tokens", "editdiff"]),
     ("admin-system.html", "⑤", "しくみ", "全体図・詳しい図・リソース・並列と制限", ["ov", "procs", "res"]),
@@ -6724,6 +6747,8 @@ def render_admin(data, db, updated):
         "items": panel("items", "ウォッチ項目", f'赤い「最新の記事」= {ADMIN_STALE_DAYS} 日以上 新しい記事なし · 主題と配色の見本は <a href="themes.html">テーマ見本</a>', _admin_items(items)),
         "emblems": panel("emblems", "小元素", '版面右上のステッカー · 種類ごとの目標枚数 · 見本：<a href="../testground/emblem-pop.html">はみ出し・立体 3 案</a>', _admin_emblems(items, data.get("emblem_run"))),
         "emblem-manage": panel("emblem-manage", "小元素の管理", "版面を選ぶ → 押して「どうしたい？」：同じ人の別の写真に替える · この写真で固定 · この人ごと外す", bg["manage"]),
+        "libboards": '<section class="panel" id="libboards" hidden><h2 class="sh"><span>ライブラリの版面</span><small>お客さまの版面も全部 · 配色を替える（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libboards"><p class="empty">読み込み中…</p></div></section>'
+                     '<p class="empty">この欄は店長がログインしたときだけ出ます。</p>',
         "votes": panel("votes", "投票", "👍 / 👎 · 前回の収集時点", _admin_votes(data.get("votes") or {})),
     }
     counts = _admin_counts(data)
