@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-10-28T12:35:03+00:00",
-"text": "2026-10-28 第 11 バッチを出刊：哈利波特剧集（1 版面・3 本・残り 1 版面） · token 新規入力 848・キャッシュ読み 9.6万・出力 249",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.27,
-"mem_total": 16872808448,
-"mem_free": 15995072512,
-"disk_used": 10857426944,
-"disk_free": 30465081344,
-"disk_total": 41322508288,
-"peak": 265777152
-},
-"batch": 11,
-"boards": [
-"哈利波特剧集"
-],
-"stories": 3,
-"left": 1,
-"edited": 23,
-"run": 1793184810.2345214,
-"tok": {
-"in": 2,
-"cw": 846,
-"cr": 95766,
-"out": 249,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 96863
-},
-{
 "at": "2026-10-28T12:41:14+00:00",
 "text": "2026-10-28 第 12 バッチを出刊：MMORPG 新作（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 757・キャッシュ読み 9.7万・出力 231",
 "level": "ok",
@@ -1806,5 +1774,47 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 891115
+},
+{
+"at": "2026-10-29T12:09:53+00:00",
+"text": "2026-10-29 第 1 バッチを出刊：Astrae Oratio、FROM、GTA 6、The Mandalorian、Vaundy、ぐでたま ほか 5（11 版面・40 本・残り 8 版面） · token 新規入力 4.7万・キャッシュ読み 99.2万・出力 3,337",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.24,
+"mem_total": 16872808448,
+"mem_free": 15960174592,
+"disk_used": 10788298752,
+"disk_free": 30534209536,
+"disk_total": 41322508288,
+"peak": 290308096
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"FROM",
+"GTA 6",
+"The Mandalorian",
+"Vaundy",
+"ぐでたま",
+"三星手机",
+"哈利波特剧集",
+"星巴克马克杯",
+"猫用品",
+"绝区零"
+],
+"stories": 40,
+"left": 8,
+"edited": 23,
+"run": null,
+"tok": {
+"in": 30,
+"cw": 47212,
+"cr": 992297,
+"out": 3337,
+"calls": 15,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1042876
 }
 ]
