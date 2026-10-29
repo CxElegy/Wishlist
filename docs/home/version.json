@@ -1,32 +1,32 @@
 {
- "admin": "81b72cc0def0",
- "admin-ai": "c26e97813ed7",
+ "admin": "6d2cee1a84a4",
+ "admin-ai": "5e8b1944854a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "1ec6db06"
+   "5d7dc829"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "fe8a40fe"
+   "ac5e957d"
   ]
  },
- "admin-boards": "d89d210e891e",
+ "admin-boards": "c3f3d4264923",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "fe9757f4"
+   "1da467fa"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "54a24395487f",
+ "admin-emblem": "a6b7db5b194c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ea15d54c"
+   "452d5e24"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "749cdd749f27",
+ "admin-now": "59e67dadbe1e",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "8dc0e22d"
+   "4eae6867"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b2de03cd"
+   "302c7c08"
   ]
  },
- "admin-system": "cb76ba82b632",
+ "admin-system": "870c5bbf8f66",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ac866163"
+   "992b1fb8"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "67442bb3"
+   "b6ee6a26"
   ]
  },
  "admin_marks": {},
- "heat": "b9b2804a46a2",
+ "heat": "eb8d797236af",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e631d829"
+   "7faad9c7"
   ],
   "ranking": [
    "ランキング",
-   "18821bb8"
+   "52d6f925"
   ]
  },
- "index": "256d6c49d645",
+ "index": "017c85aa0b25",
  "index_marks": {
   "front": [
    "トップ",
-   "772f69cf"
+   "aab361e2"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "25bebd55"
+   "d1b6d167"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "6d48aa6e"
+   "5951f9e8"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -196,6 +196,6 @@
    "0929dd51"
   ]
  },
- "updated": "10.29 14:26",
+ "updated": "10.29 14:32",
  "wishlist": "9eb88d74ea95"
 }
