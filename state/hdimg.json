@@ -35,21 +35,15 @@
   "target": 1280,
   "v": 3
  },
- "http://n.sinaimg.cn/sinakd20261029ac/533/w480h853/20261029/0c00-53eb91d347560355d47cfb0c66678f70.jpg": {
-  "w": 480,
-  "h": 853,
+ "http://n.sinaimg.cn/sinakd20261027ac/200/w640h360/20261027/e6e6-0008bdc0602dc85d34dfea41b94cbb27.jpg": {
+  "w": 640,
+  "h": 360,
   "target": 720,
   "v": 3
  },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
-  "target": 720,
-  "v": 3
- },
- "http://www.mountainwatch.com/wp-content/uploads/2019/12/Green-Leaf-Onsen-Large.jpg": {
-  "w": 1170,
-  "h": 596,
   "target": 720,
   "v": 3
  },
@@ -329,12 +323,6 @@
  "https://assets.games.gg/grand_theft_auto_vi_tv_spot_differences_og_050838fff630dd6fe366a7bb_4d02128e8a.webp": {
   "w": 1200,
   "h": 630,
-  "target": 1280,
-  "v": 3
- },
- "https://assets.hldycdn.com/21d75f3d-19a1-4abf-80d1-a6c8131cfccf.jpeg": {
-  "w": 1350,
-  "h": 1350,
   "target": 1280,
   "v": 3
  },
@@ -1035,12 +1023,6 @@
   "target": 720,
   "v": 3
  },
- "https://hk.on.cc/hk/bkn/cnt/entertainment/20261029/photo/bkn-20261029000108879-1029_00862_001_02b.jpg?20261028233531": {
-  "w": 780,
-  "h": 920,
-  "target": 720,
-  "v": 3
- },
  "https://holrmagazine.com/wp-content/uploads/2026/10/screenshot-2026-10-29t093053.578-e1793246738872.png": {
   "w": 750,
   "h": 500,
@@ -1568,12 +1550,6 @@
   "target": 1280,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g5Iqp.img": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img": {
   "w": 1200,
   "h": 675,
@@ -1657,12 +1633,6 @@
   "h": 900,
   "target": 720,
   "v": 3
- },
- "https://img.etnews.com/news/article/2026/10/23/news-p.v1.20261023.29a15b4b82ff4b5488d09c6afc6f124d_P1.png": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://img.etnews.com/news/article/2026/10/25/news-p.v1.20261025.8cdc4656b9234931815e7989a6dde62a_P1.png": {
   "w": 700,
@@ -1876,6 +1846,19 @@
   ],
   "why": "看不清"
  },
+ "https://img.topics.smt.news.goo.ne.jp/picture/insidegames/m_insidegames-189922.jpg": {
+  "w": 560,
+  "h": 560,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.548,
+  "local": "pics/48061f7655672eb9.webp",
+  "out": [
+   1280,
+   1280
+  ],
+  "why": "看不清"
+ },
  "https://img.topics.smt.news.goo.ne.jp/picture/sportsseoulweb/m_sportsseoulweb-161631.jpg": {
   "w": 640,
   "h": 480,
@@ -2002,6 +1985,12 @@
   "w": 1200,
   "h": 600,
   "target": 1280,
+  "v": 3
+ },
+ "https://isplus.com/data/isp/image/2026/10/26/isp20261026000355.800x.0.jpg": {
+  "w": 800,
+  "h": 556,
+  "target": 720,
   "v": 3
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
@@ -2157,6 +2146,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://media.image.infoseek.co.jp/isnews/photos/yomiuri/yomiuri_20261029_gyt1t00261_0-enlarge.jpg": {
+  "w": 500,
+  "h": 333,
+  "target": 720,
   "v": 3
  },
  "https://media.image.infoseek.co.jp/shared/barter/2512_Pandahoro_650x150.png": {
@@ -2868,12 +2863,6 @@
   "target": 1280,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/220a5803851742a389145d15077bb05b.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
- },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/7c033deae70845d99df67c2390632314.jpg": {
   "w": 960,
   "h": 540,
@@ -3093,15 +3082,15 @@
   "target": 720,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/5113/4320/5113-4320-d0212b0932b9e9e4f4f6ce954e74a77e-960x640.png?width=536&quality=85%2C75&format=jpeg": {
-  "w": 536,
-  "h": 357,
+ "https://prcdn.freetls.fastly.net/release_image/33064/2374/33064-2374-aafbde6387e9d7b24dd5643746614460-3900x2601.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1889,
+  "h": 1260,
   "target": 720,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/96034/121/96034-121-678641ce595fd641e231c928524ae9ca-1800x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 840,
-  "h": 1260,
+ "https://prcdn.freetls.fastly.net/release_image/5113/4320/5113-4320-d0212b0932b9e9e4f4f6ce954e74a77e-960x640.png?width=536&quality=85%2C75&format=jpeg": {
+  "w": 536,
+  "h": 357,
   "target": 720,
   "v": 3
  },
@@ -3164,13 +3153,6 @@
   "h": 675,
   "target": 1280,
   "v": 3
- },
- "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-29"
  },
  "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
   "w": 1200,
@@ -3245,6 +3227,12 @@
   "v": 3
  },
  "https://shattered.io/wp-content/uploads/2026/10/gta-6-launch-1-5-million-sick-days-cost-2026-gen.webp": {
+  "w": 1344,
+  "h": 768,
+  "target": 720,
+  "v": 3
+ },
+ "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
   "w": 1344,
   "h": 768,
   "target": 720,
@@ -3519,12 +3507,6 @@
   "h": 900,
   "target": 1280,
   "v": 3
- },
- "https://staticg.sportskeeda.com/editor/2026/10/cef56-17932369719786-1920.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
@@ -3801,7 +3783,7 @@
   ],
   "why": "看不清"
  },
- "https://www.bgr.com/img/gallery/samsung-galaxy-users-are-reporting-one-key-issue-after-updating-to-one-ui-9/l-intro-1793215051.jpg": {
+ "https://www.bgr.com/img/gallery/samsung-is-being-fined-15m-for-misleading-marketing-on-some-galaxy-phones-and-tablets/l-intro-1793218209.jpg": {
   "w": 1600,
   "h": 899,
   "target": 1280,
@@ -3857,6 +3839,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.8XYxvYRwnOkpd2kH3N6Wxg&pid=News&w=1200": {
+  "w": 700,
+  "h": 527,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.8nZvs5fHXIIT0p2hKirmNw&pid=News&w=1200": {
   "w": 700,
   "h": 366,
@@ -3889,19 +3877,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.DXeGkpI2Kh95jB4Bj2SfJw&pid=News&w=300": {
-  "w": 300,
-  "h": 300,
-  "target": 720,
-  "v": 3,
-  "blur": 0.644,
-  "local": "pics/45d8e8296dea3cb4.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清"
- },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
   "h": 334,
@@ -3921,9 +3896,9 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.PSNDRO6vs6Fb1gBEHqZAQw&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
-  "h": 393,
+  "h": 467,
   "target": 720,
   "v": 3
  },
@@ -3939,12 +3914,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
@@ -4003,6 +3972,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.fybc0bccpU4PwR5hBuF-LA&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.lAg97B8sECAhlC-Obt1q7Q&pid=News&w=640": {
   "w": 640,
   "h": 360,
@@ -4034,6 +4009,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.nvQS4D90clmQXzKjDnUPUA&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.oVpWMzVyfJazYlxNo60oJg&pid=News&w=1200": {
   "w": 700,
@@ -4069,12 +4050,6 @@
  "https://www.bing.com/th?id=ONUT.tjRLRKvzviUi6JPgAPNGOA&pid=News&w=1200": {
   "w": 700,
   "h": 525,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.wWu09CHshmXhb0_FMiqPGQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4300,6 +4275,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.engadget.com/img/gallery/heres-how-much-your-older-samsung-phones-are-actually-worth/l-intro-1792776180.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 1280,
+  "v": 3
+ },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
   "w": 1000,
   "h": 1000,
@@ -4441,12 +4422,6 @@
   "h": 720,
   "target": 1280,
   "v": 3
- },
- "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,

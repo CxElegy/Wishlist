@@ -1,32 +1,32 @@
 {
- "admin": "8175d05c296a",
- "admin-ai": "c4e393bef83b",
+ "admin": "9dbd60bccccc",
+ "admin-ai": "6ff9c64e1206",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "3550925c"
+   "c0ffcc08"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ef536acb"
   ]
  },
- "admin-boards": "a40f17009462",
+ "admin-boards": "8e9f26a55cae",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "642b450c"
+   "6b1cce39"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "878d55e387fc",
+ "admin-emblem": "cf4d4dfc20ed",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3427e22d"
+   "a189109b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "e7bf7d43"
+   "2f8b1e81"
   ]
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "2f07175b8c0e",
+ "admin-now": "4b6e1bd30c3f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "97b413ca"
+   "f9204691"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "d5103ef8"
+   "56661043"
   ],
   "term-panel": [
    "ライブログ",
-   "8c77bc87"
+   "c1de3d09"
   ]
  },
- "admin-system": "3a2890e5db04",
+ "admin-system": "4a8569302588",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c5129b34"
+   "58bfa967"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "b1fd5f2f"
+   "b9ce892b"
   ]
  },
  "admin_marks": {},
- "heat": "3c3e42ba9b53",
+ "heat": "01da9786442b",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "da0c1f7a"
+   "d5c21bae"
   ],
   "ranking": [
    "ランキング",
-   "8dfb5859"
+   "a7cd9ccb"
   ]
  },
- "index": "541effc928ed",
+ "index": "409faddcbc04",
  "index_marks": {
   "front": [
    "トップ",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "d1b6d167"
+   "4fb0058c"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "7ff1ce3b"
+   "7c26d4ed"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "6d48aa6e"
+   "60a8cfa3"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "bdf7543b"
+   "54c6096c"
   ],
   "w-f303ad09": [
    "绝区零",
    "0929dd51"
   ]
  },
- "updated": "10.29 17:41",
- "wishlist": "a07a092f1f08"
+ "updated": "10.29 17:50",
+ "wishlist": "371f1d08edcd"
 }
