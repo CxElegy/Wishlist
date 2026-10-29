@@ -1,32 +1,32 @@
 {
- "admin": "ddf7241636f7",
- "admin-ai": "51fc9f1cbbfc",
+ "admin": "9509298b7ed1",
+ "admin-ai": "dcf9cca3446c",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "12ee56f6"
+   "ece128bc"
   ],
   "tokens": [
    "AI 編集のトークン",
    "49f33ea2"
   ]
  },
- "admin-boards": "2662b2d9483d",
+ "admin-boards": "646bfc3a6b15",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "b284e057"
+   "05c5d205"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "bdaebeaf3431",
+ "admin-emblem": "c4253f2a93ad",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "2f61f01e"
+   "508f952a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "d23ab645"
+   "0d6ed576"
   ]
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "291b2c4a09f6",
+ "admin-now": "b182a04d4b3f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b2b48d40"
+   "497611bb"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "60d757fa"
+   "9f8b3f5b"
   ],
   "term-panel": [
    "ライブログ",
-   "4298e1a2"
+   "e1ef02d6"
   ]
  },
- "admin-system": "d64195b99ad2",
+ "admin-system": "4a7ad80a815f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "cc56c297"
+   "67a008ef"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "bd87d0a1"
+   "0b948852"
   ]
  },
  "admin_marks": {},
- "heat": "62838fb5dd76",
+ "heat": "301537e27a8a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "076a3be0"
+   "675e0deb"
   ],
   "ranking": [
    "ランキング",
-   "3b331740"
+   "fd3c6668"
   ]
  },
- "index": "d536fd31b830",
+ "index": "fc8b8898876e",
  "index_marks": {
   "front": [
    "トップ",
-   "a9418b07"
+   "87192957"
   ],
   "picks": [
    "気になるかも？",
@@ -121,11 +121,11 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "9f7bf316"
+   "5ff9e4c3"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "9a1e2e76"
+   "e41c0842"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "0f45c139"
+   "b23f0f0c"
   ],
   "w-b867582f": [
    "あつ森",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 04:38",
+ "updated": "10.30 04:51",
  "wishlist": "7af11c19700f"
 }
