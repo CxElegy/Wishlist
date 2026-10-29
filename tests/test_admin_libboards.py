@@ -24,6 +24,22 @@ class LibBoards(unittest.TestCase):
         self.assertIn("if not public.is_admin()", sql)
         self.assertIn("grant execute on function public.board_theme_set(bigint, jsonb) to authenticated", sql)
         self.assertNotIn("to anon", sql)
+        self.assertIn("from anon;", sql)   # 実際の権限は ux_check（check_public_leak）が本番で anon の呼び出しを確かめる
+
+    def test_published_html_has_no_board_rows(self):
+        """公開の docs/home/admin-boards.html に版面の行（名前）が焼かれていない。ライブラリの欄は空の入れ物だけ。"""
+        f = ROOT / "docs" / "home" / "admin-boards.html"
+        if not f.exists():
+            self.skipTest("docs 未生成")
+        html = f.read_text(encoding="utf-8")
+        i = html.index('id="wl-libboards"')
+        self.assertNotIn("<tr data-id", html[i:i + 400])
+        self.assertIn("読み込み中", html[i:i + 120])
+
+    def test_ux_check_has_coverage_and_leak_checks(self):
+        src = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        for name in ("def check_public_leak", "def check_admin_coverage", "UX_ADMIN_EMAIL"):
+            self.assertIn(name, src)
 
 
 if __name__ == "__main__":

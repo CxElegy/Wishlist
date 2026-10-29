@@ -22,4 +22,6 @@ begin
 end;
 $$;
 revoke all on function public.board_theme_set(bigint, jsonb) from public;
+-- Supabase は anon にも既定で execute を付ける（from public だけでは外れない）。2026-10-29：anon からも外した
+revoke all on function public.board_theme_set(bigint, jsonb) from anon;
 grant execute on function public.board_theme_set(bigint, jsonb) to authenticated;
