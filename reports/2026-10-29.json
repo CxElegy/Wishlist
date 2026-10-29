@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "6624cbd7dbc0",
+ "edit_sig": "2cdf9cc2bfc3",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -175,15 +175,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 2,
-     "source": "DMKsnowboard",
-     "title": "【2026-27】軽井沢プリンスホテルスキー場が10月31日オープン！初日は2コースで営業開始",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9LaG1rUEZfejRWanYwZVozNktzcE9NblZVSDV5ekxKMXI0NjRURE9HRURnZl9NWEhMYXNEYTZvVkFUelVmZDFlcjJGZ01SbTBER0J2LXRZaFJtRXhvNjB2R0xoejlWYTJ6R0xZaU1naWUyVmx3?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -195,6 +186,21 @@
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-us/health/general/lock-in-these-are-the-best-snowboard-bindings-of-2027/ar-AA2ggnuR",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "event": {
+      "date": "2026-10-31",
+      "label": "オープン",
+      "place": "軽井沢プリンスホテルスキー場"
+     },
+     "headline": "【2026-27】軽井沢プリンスホテルスキー場が10月31日オープン！初日は2コースで営業開始",
+     "highlight": "10月31日オープン",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/10/karuizawa.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/karuizawa-prince-ski-resort-opening-2026/",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",

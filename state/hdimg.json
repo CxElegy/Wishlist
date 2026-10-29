@@ -2975,6 +2975,12 @@
   "target": 720,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/96034/121/96034-121-678641ce595fd641e231c928524ae9ca-1800x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 840,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603": {
   "w": 640,
   "h": 449,
@@ -3961,6 +3967,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.zwC0tKs82Ddmc_D7iOCMLQ&pid=News&w=640": {
+  "w": 640,
+  "h": 457,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.635,
+  "local": "pics/19ef1fac89d3d1a5.webp",
+  "out": [
+   1280,
+   914
+  ],
+  "why": "看不清"
+ },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
   "h": 700,
@@ -4241,19 +4260,6 @@
   "out": [
    1280,
    1280
-  ],
-  "why": "看不清"
- },
- "https://www.inside-games.jp/imgs/ogp_f/1799137.jpg": {
-  "w": 600,
-  "h": 428,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.651,
-  "local": "pics/669505249fc2a59a.webp",
-  "out": [
-   1280,
-   913
   ],
   "why": "看不清"
  },
