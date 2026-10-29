@@ -2446,7 +2446,7 @@ def backend_cells(items, rows, latest, run):
         elif st == "review":
             cells["emblem"] = ("review", f"{count} · 一覧から選ぶ")
         elif st == "failed":
-            cells["emblem"] = ("failed", f"{count} · 新しい材料が来たらすぐ・来なくても {emblem_fill.RETRY_HOURS} 時間後に再挑戦")
+            cells["emblem"] = ("failed", f"{count} · 新しい材料が来たらすぐ再挑戦（時間では待たない）")
         else:
             pos = queue.index(name) + 1 if name in queue else None
             cells["emblem"] = ("wait", f"{count} · 順番 {pos} 番目" if pos else count)
@@ -2494,13 +2494,7 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
            "brand": "公式ロゴ", "topic": "主題を表す物"}.get(kind, "")
     now = dt.datetime.now(dt.timezone.utc)
     slots = processes.slots(next(p for p in processes.PROCESSES if p["id"] == "emblem-cron")) or [[h, 47] for h in range(24)]
-    after = now
-    if state == "failed" and entry.get("failed_at"):
-        try:
-            after = max(now, dt.datetime.fromisoformat(entry["failed_at"]) + dt.timedelta(hours=emblem_fill.EXHAUSTED_HOURS if entry.get("exhausted") else emblem_fill.RETRY_HOURS))
-        except ValueError:
-            pass
-    nxt = _next_slot(after, slots) if slots and state != "ok" else None
+    nxt = _next_slot(now, slots) if slots and state not in ("ok", "failed") else None   # 失敗は時刻で待たない（材料が変わったらすぐ）
     when = nxt.astimezone(tz).strftime("%m/%d %H:%M") if nxt else ""
     found = sum(v for v in tried.values() if v)
     if state == "ok":
@@ -2508,7 +2502,7 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
     elif state == "review":
         todo = f"一覧から手で選べる（python scripts/emblem_fill.py \"{item.get('name')}\" --commit 番号）"
     elif state == "failed":
-        todo = f"新しい記事・手がかりが来たらすぐ、来なくても {when} に再挑戦"
+        todo = "新しい記事・手がかり・規則の版が変わったらすぐ再挑戦（時間では待たない）"
     else:
         pos = queue.index(item.get("name")) + 1 if item.get("name") in queue else None
         todo = f"次の回 {when} に" + (f"（順番 {pos} 番目）" if pos else "")
@@ -2534,7 +2528,7 @@ def emblem_detail(item, entry, state, queue, tz_name=None):
             "lo": st.get("lo"), "hi": st.get("hi"), "chain": chain, "funnel": entry.get("funnel") or {},
             "faces": emblem_fill.needs_face(item) if item else False, "rejects": len(item.get("emblem_reject") or []),
             "note": entry.get("note") or "", "at": at, "todo": todo, "advice": advice,
-            "next_at": nxt.isoformat() if nxt and state == "failed" else ""}   # 失敗の自動の再挑戦（管理ページで残り時間を数える）
+            "next_at": ""}   # 失敗の自動の再挑戦に時刻はない（管理ページの残り時間は出さない）
 
 
 def emblem_progress(items, tz):

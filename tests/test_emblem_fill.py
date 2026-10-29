@@ -532,9 +532,11 @@ class Background(unittest.TestCase):
         self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["zero", "one", "brand"])   # 足りない枚数の多い順
         zero = next(i for i in self.items if i["name"] == "zero")
         prog["items"]["zero"].update(state="failed", failed_at="2026-10-16T23:30:00+00:00", material=ef.material(zero))
-        self.assertEqual(ef.RETRY_HOURS, 1)   # AI なし：6 時間は待たせすぎ（2026-10-22）→ 毎時の後台で毎回
-        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 1 時間以内・材料が同じ失敗は飛ばす
-        self.assertEqual(ef.waiting(prog, self.items, now), [("zero", "2026-10-17T00:30:00+00:00")])   # 再挑戦待ちとして見える
+        self.assertFalse(hasattr(ef, "RETRY_HOURS") or hasattr(ef, "EXHAUSTED_HOURS"))   # 時間では待たない（2026-10-29）
+        self.assertEqual([i["name"] for i in ef.due(prog, self.items, now)], ["one", "brand"])   # 材料が同じ失敗は飛ばす
+        self.assertEqual(ef.waiting(prog, self.items, now), [("zero", "")])   # 材料待ちとして見える（時刻はない）
+        later = "2026-12-31T00:00:00+00:00"
+        self.assertNotIn("zero", [i["name"] for i in ef.due(prog, self.items, later)])   # 何日たっても、材料が同じなら試さない
         from unittest import mock
         with mock.patch.object(ef, "broken_cuts", side_effect=lambda i: [1] if i["name"] == "zero" else []):
             self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 頭が切れた・ぼやけた小元素のある版面は待たない
@@ -548,12 +550,18 @@ class Background(unittest.TestCase):
         self.assertEqual(ef.waiting(prog, self.items, now), [])
         prog["items"]["zero"]["material"] = "old"   # 新しい記事・手がかりが来た
         self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
-        prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-16T22:59:00+00:00")
-        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])   # 1 時間たった
-        prog["items"]["zero"]["exhausted"] = True   # 残りが全員「画像のない人」：1 日おき（1 時間では飛ばす）
+        prog["items"]["zero"].update(material=ef.material(zero), failed_at="2026-10-15T22:59:00+00:00", exhausted=True)   # 残りが全員「画像のない人」も同じ：時間では待たず、材料が変わるまで
         self.assertNotIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
-        prog["items"]["zero"]["failed_at"] = "2026-10-15T23:00:00+00:00"
-        self.assertIn("zero", [i["name"] for i in ef.due(prog, self.items, now)])
+
+    def test_old_time_notes_are_rewritten(self):
+        """前の版が書いた「◯時間後にもう一度」の note は同期のたびに今の言葉に（待ちの理由に時間を出さない：emb_check E25）。"""
+        prog = {"items": {"zero": {"state": "failed", "note": "0 枚足した（a）。新しい記事が来たらすぐ、来なくても 24 時間後にもう一度"}}}
+        ef.sync_progress(prog, self.items)
+        self.assertNotRegex(prog["items"]["zero"]["note"], r"\d+ 時間")
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "harness"))
+        import emb_check
+        self.assertTrue(emb_check.TIME_WAIT.search("来なくても 24 時間後にもう一度"))
+        self.assertFalse(emb_check.TIME_WAIT.search(prog["items"]["zero"]["note"]))
 
     def test_rule_versions_all_listed(self):
         """*_V（規則の版）を足して RULE_VERSION_NAMES に入れ忘れると、失敗の待ちが解けない（#526 のあとの BLEACH）。"""
@@ -1140,7 +1148,8 @@ class EmblemDetail(unittest.TestCase):
         failed = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=1)).isoformat(timespec="seconds")
         d = digest.emblem_detail(item, {"tried": {"Wikipedia": 1, "Wikimedia Commons": 22}, "failed_at": failed, "at": failed,
                                         "note": "x"}, "failed", [], "Asia/Tokyo")
-        self.assertTrue(d["todo"].endswith("以降に再挑戦") or "新しい記事" in d["todo"])
+        self.assertIn("時間では待たない", d["todo"])
+        self.assertEqual(d["next_at"], "")   # 失敗に時刻はない
         self.assertIn("emblem_urls", d["advice"])   # Wiki に記事がないグループ → 公式の写真を
         self.assertEqual(d["why"], "メンバー 3 人")
         self.assertEqual([c["n"] for c in d["chain"]][:3], [None, 1, 22])
@@ -1240,17 +1249,18 @@ class Ladder(unittest.TestCase):
         self.assertEqual(self.calls, ["1", "2", "3"])
         self.assertEqual(r["state"], "failed")
         self.assertTrue(r["material"])
-        self.assertIn("新しい記事が来たらすぐ", r["note"])
+        self.assertIn("新しい記事・手がかりが来たらすぐ", r["note"])
+        self.assertNotRegex(r["note"], r"\d+ 時間")   # 待ちの理由に時間を出さない
 
 
 class GateWhy(unittest.TestCase):
     def test_waiting_is_not_silent(self):
         import gate
         self.assertEqual(gate._emblem_why([], []), "全部そろっている")
-        why = gate._emblem_why(["a"], [("b", "2026-10-17T08:00:00+00:00")])
+        why = gate._emblem_why(["a"], [("b", "")])
         self.assertIn("足りない 1 版面", why)
-        self.assertIn("失敗 1 版面は再挑戦待ち", why)
-        self.assertIn("17:00", why)   # 日本時間
+        self.assertIn("失敗 1 版面は材料待ち", why)
+        self.assertNotRegex(why, r"\d+:\d+|\d+ 時間")   # 待ちの理由に時間が出ない
 
 
 class Gate(unittest.TestCase):

@@ -148,8 +148,8 @@ def rules():
         # ⑧ 届かなかったら
         {"stage": STAGES[7], "title": "検査で外れた画像は二度と選ばない", "by": "rule", "code": "emblem_fill.commit",
          "rule": "選んだのに切り抜きの検査で外れた画像は emblem_reject に書く。次は同じ人の次の候補を選ぶ（同じ画像で何度も失敗しない）"},
-        {"stage": STAGES[7], "title": "段を上がる・待つ", "by": "rule", "code": "emblem_fill.fill_one / RETRY_HOURS",
-         "rule": f"① 標準 → ② 名前を広げる → ③ 公式・記事のページ。全部だめなら失敗：新しい記事・手がかりが来たらすぐ、来なくても {ef.RETRY_HOURS} 時間後"},
+        {"stage": STAGES[7], "title": "段を上がる・待つ", "by": "rule", "code": "emblem_fill.fill_one / material",
+         "rule": f"① 標準 → ② 名前を広げる → ③ 公式・記事のページ。全部だめなら失敗：新しい記事・手がかり・規則の版が変わったらすぐ（時間では待たない）"},
         {"stage": STAGES[7], "title": "管理ページで「違う」と言われた画像は外す", "by": "rule", "code": "digest.reject_emblems",
          "rule": "管理ページの小元素を押して理由（REJECT_REASONS）を選び「外す」→ その小元素を items.yaml から外し、元の画像を emblem_reject に（二度と選ばない）。理由・取り方・網域は state/emblem_rejects.json に残り、同じ理由が溜まったら近い判断を締める。足りなくなった分は次の後台で別の画像を探す。同じ欄の「替える」は人を残して写真だけ外し（emblem_redo）、「固定」は lock: true で名簿外し・検査外し・作り直しから守る"},
         {"stage": STAGES[7], "title": "目で見て選ぶ（手で頼んだときだけ）", "by": "ai", "code": "emblem_fill.py \"名前\" → --commit",

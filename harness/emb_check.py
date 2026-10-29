@@ -24,7 +24,8 @@
   E13 顔を測っていない  cutout（全身の body は除く）に、顔の倍率 m も「顔なし」の印 nf もない（emblem_face.measure_item が回っていない。表示で顔の大きさがそろわない）
   E14 顔の大きさ  同じ版面の人物（全身 body は除く）の「顔の高さ × 倍率」の最大 ÷ 最小 > 1.25（emblem_face.fit が全版面に効いていない。店長もお客さまの版面も）
   E22 顔なし ①② を体の枠でそろえていない  顔なしの cutout で nk が keep・symbol なのに a.nb（x.bb から render が作る）がない（render の .nb が効いていない）。
-  E24 縮めた幅の絵が reject に残る  縮めた網址（Fandom の scale-to-width-down/400 など）で小さいと測れて外した絵（wide_retry）が emblem_reject に残り、その人にまだ小元素がない数（0 であること。大きい幅で取り直せる絵が二度と選ばれない：dota2 Crystal Maiden）。BROKEN_V 11 の unbreak が抜く。\n  E23 測ったキーが落ちた  店長の items.yaml とお客さまの版面（boards.config.emblem）で nfv（顔なしを測った版）があるのに nk か bb がない小元素（_store が書いたキーが emblem.EMBLEM_KEEP から漏れた印。0 であること）。
+  E24 縮めた幅の絵が reject に残る  縮めた網址（Fandom の scale-to-width-down/400 など）で小さいと測れて外した絵（wide_retry）が emblem_reject に残り、その人にまだ小元素がない数（0 であること。大きい幅で取り直せる絵が二度と選ばれない：dota2 Crystal Maiden）。BROKEN_V 11 の unbreak が抜く。\n  E25 待ちの理由に時間が出る  失敗した版面の note に「◯時間後」「◯:◯◯ から」が残る（店長の state/emblem_progress.json・お客さまの boards.config.emblem_state）。小元素は時間では待たない（材料の指紋が変わるまで・2026-10-29）。0 であること。時間切れ・例外は指紋を残さず次の見回りですぐ。
+  E23 測ったキーが落ちた  店長の items.yaml とお客さまの版面（boards.config.emblem）で nfv（顔なしを測った版）があるのに nk か bb がない小元素（_store が書いたキーが emblem.EMBLEM_KEEP から漏れた印。0 であること）。
   E17（続き）顔なしの 3 分け ①keep ②symbol ③replace の数（情報）も出す：emblem_face.none_kind。
   E17 顔が測れない理由別の数（情報：✗ にしない）  顔なし（測ったが顔がない：網页の nf）の cutout を emblem_face.none_reason の札で数える。sheet＝向きを並べた図・small＝顔らしい箱はあるが小さい・noface＝箱がない（怪物・武器・物・覆面）。測り方の足りない（見つかる顔を見落とした）ものを増やさないための数え直しの材料
   E12 形の傷     cutout の左右の端（高さの 15% を超えてまっすぐ）か上の端（横幅の 25% を超えて）に直線の切り口、または形が凹みすぎ（面積 ÷ 凸包 < 0.45）
@@ -456,6 +457,28 @@ def exhausted():
     return {k: f"{v.get('have')}/{v.get('target')}" for k, v in d.items() if v.get("state") == "failed" and v.get("exhausted")}
 
 
+TIME_WAIT = re.compile(r"\d+ 時間後|\d+:\d+ から|\d+:\d+ に再挑戦")
+
+
+def time_waits():
+    """E25 待ちの理由に時間が出る：店長の state/emblem_progress.json とお客さまの boards.config.emblem_state の note に「◯時間後」「◯:◯◯ から」が残る版面
+    （小元素は時間では待たない〔2026-10-29〕：材料の指紋が変わるまで。残っていれば時間で待つ古い規則がどこかに残っている）→ ['店長 名前', 'お客さま n 版面']。"""
+    out = []
+    try:
+        d = json.loads(urllib.request.urlopen(PROGRESS, timeout=20).read()).get("items", {})
+        out += [f"店長 {k}" for k, v in d.items() if v.get("state") == "failed" and TIME_WAIT.search(str(v.get("note") or ""))]
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        n = sum(1 for b in boards_rows() if (b.get("config") or {}).get("emblem_state", {}).get("state") == "failed"
+                and TIME_WAIT.search(str((b["config"]["emblem_state"] or {}).get("note") or "")))
+        if n:
+            out.append(f"お客さま {n} 版面")
+    except Exception:  # noqa: BLE001
+        pass
+    return out
+
+
 def _sheet(shots, path):
     if not shots:
         return
@@ -596,6 +619,7 @@ def check(pg, who, width, out, full=False, guest=False):
             print(f"  情報 E23 お客さまの版面を数えられなかった：{e}")
     if guest:
         found["E24"] = narrow_small_rejects()
+        found["E25"] = time_waits()
     if guest:
         try:
             cl = closeup_left()
@@ -619,7 +643,7 @@ def check(pg, who, width, out, full=False, guest=False):
     if full:
         _sheet(shots, embdir / f"sheet-{who}-{width}.png")
     label = {"E1": "エンブレムなし", "E2": "読めない", "E3": "白い四角", "E4": "大きさ", "E5": "はみ出し", "E6": "題字に重なる",
-             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る"}
+             "E7": "切れている", "E8": "同じ画像", "E9": "別の作品の絵", "E10": "目標に届かない", "E11": "何人も写っている", "E13": "顔を測っていない", "E14": "顔の大きさがばらつく", "E15": "主役がいない", "E16": "顔だけのアップ", "E17": "人でない名前", "E18": "短い辺が256px未満", "E19": "公式があるのにアップ", "E21": "公式があるのに Fandom", "E20": "胸像待ちが回っていない", "E12": "形の傷（直線の切り口・凹み）", "E22": "顔なしを体の枠でそろえていない", "E23": "測ったキーが書き戻しで落ちた", "E24": "縮めた幅で小さいだけの絵が reject に残る", "E25": "待ちの理由に時間が出る"}
     bad = [f"{e} {label[e]} {len(v)}（{'・'.join(v[:4])}{'…' if len(v) > 4 else ''}）" for e, v in found.items() if v]
     if DRIFT:
         bad.append(f"E7 順番しだい 検出器のしきい値が標準でない回が {len(DRIFT)} 回（{DRIFT[0]}）：変えた所が戻していない（emblem_face._boxes と同じ型）")

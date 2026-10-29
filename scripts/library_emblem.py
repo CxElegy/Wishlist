@@ -25,8 +25,18 @@ import urllib.request
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 BUCKET = "emblems"
-RETRY_HOURS = 24      # 届かなかった版面をもう一度試すまで（店長の版面と違い、材料の指紋がないので 1 日おき）
-RULES = 8             # 取り方の規則の版。上げると、全部の版面（済みも）を RETRY_HOURS を待たずに作り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号、
+MATERIAL_KEYS = ("emblem_who", "emblem_urls", "emblem_fandom", "emblem_category", "anilist_id", "wiki", "site", "emblem_reject", "emblem_icon", "emblem_pool")
+
+
+def material(config):
+    """版面の「材料」の指紋：小元素の手がかり（config の MATERIAL_KEYS）＋規則の版。届かなかった版面は、これが変わるまで試さない（時間では待たない：店長の emblem_fill.material と同じ考え）。"""
+    import hashlib
+    import emblem_fill
+    c = config or {}
+    return hashlib.sha1(json.dumps([{k: c.get(k) for k in MATERIAL_KEYS}, emblem_fill.rule_versions(), RULES], sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
+
+
+RULES = 8             # 取り方の規則の版。上げると、全部の版面（済みも）を作り直す（2：Wikidata から AniList・Fandom の名簿、3：題材の記号、
                       # 4：分類の続き・参照 500 超え・Playable Characters・字だけ／図／古い写真を外す、5：Commons のロゴはロゴのファイルで名前だけのもの、6：作り直しでキャラも前の小元素を残さない・名簿にまとめ／Player／別の作品の姿を入れない・同じ画像は 1 枚。ロゴのない製品の P18 は版を上げない：届かなかった版面だけの話で 24 時間後に取り直す、
                       # 7：頭のてっぺんが上の端で切れた絵〔上 3px に 20%〕・小さい顔〔80px 未満〕・ぼやけた写真を使わない＝emblem.check_whole），
                       # 8：グループの版面は Wikidata のメンバーを emblem_who に〔#428。7 で届かなかった YOASOBI・Mrs. GREEN APPLE・BTS は 24 時間待たず作り直す〕
@@ -354,7 +364,7 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
     import yaml
     fill = fill or emblem_fill.fill_one
     if re.search(r'["\\\n]', board["name"]):
-        return {"emblem_state": {"state": "failed", "have": 0, "at": int(now or time.time()), "note": "名前に \" か \\ がある", "v": RULES}}
+        return {"emblem_state": {"state": "failed", "have": 0, "at": int(now or time.time()), "note": "名前に \" か \\ がある", "v": RULES, "m": material(board.get("config"))}}
     item = board_item(board, follow, get)
     with sandbox(item) as (root, site):
         with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):   # emblem の print（版面・人の名前、多くは stderr）を公開のログに出さない
@@ -411,9 +421,11 @@ def fill_board(board, follow, upload, base, fill=None, get=None, now=None, fetch
         if n:
             add["emblem"] = measured
     have = len(add.get("emblem") or []) if "emblem" in add else len(got.get("emblem") or [])
-    note = re.sub(r"新しい記事が来たらすぐ、来なくても \d+ 時間後", f"{RETRY_HOURS} 時間後", str(r.get("note") or ""))  # 店長の文のまま（材料の指紋・毎時）だと中身と合わない
+    note = str(r.get("note") or "").replace("新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度", "手がかり・規則の版が変わったらすぐもう一度")  # 記事は見ない（店長の文のままだと中身と合わない）
     add["emblem_state"] = {"state": r.get("state", "failed"), "have": have, "at": int(now or time.time()), "note": note[:200], "v": RULES,
                          "nv": emblem_fill.NAMES_V, "bv": emblem_fill.BROKEN_V}   # bv：公開の箱の小元素を見直した壊れ方の規則の版   # 名簿の規則の版（上がると、そろった版面も 1 回名簿を数え直す）
+    if add["emblem_state"]["state"] == "failed" and note != "時間切れ":   # 材料の指紋を残す（時間切れ・例外は残さない＝次の見回りですぐ）
+        add["emblem_state"]["m"] = material({**cfg, **add})
     return add
 
 
@@ -514,7 +526,7 @@ def serve(board, follow, upload, base, get=None):
 
 def due(boards, now):
     """やる順：まだ一度も試していない版面 → 0 枚の版面（エンブレムが出ていない：途中・届かなかったもの）→ 途中（running）→
-    届かなかったものは RETRY_HOURS たってから（前の版の規則で試したものはすぐ）。済み（ok）は飛ばす。
+    届かなかったものは材料（手がかり・規則の版）が変わったときだけ（時間では待たない）。済み（ok）は飛ばす。
     0 枚を先に：キャラの多い途中の版面（1 回 1 版面 5 分）が前にいると、0 枚の版面が何回も待たされる（#329 のあと 28 版面待ち）。"""
     import emblem_fill
     names_v = emblem_fill.NAMES_V
@@ -526,12 +538,14 @@ def due(boards, now):
             out.append((0, b["id"], b))
         elif st.get("state") == "running":
             out.append((1 if zero else 2, st.get("at", 0), b))
-        elif int(st.get("v") or 1) < RULES or st.get("state") != "ok" and now - int(st.get("at") or 0) > RETRY_HOURS * 3600:
+        elif int(st.get("v") or 1) < RULES:
             out.append((1 if zero else 3, st.get("at", 0), b))
-        elif st.get("state") != "ok" and (st.get("nv") != names_v or int(st.get("bv") or 0) < emblem_fill.BROKEN_V):   # 届かなかった版面も、規則の版が上がったら 24 時間を待たない
+        elif st.get("state") != "ok" and (st.get("nv") != names_v or int(st.get("bv") or 0) < emblem_fill.BROKEN_V):   # 届かなかった版面も、規則の版が上がったらすぐ
             out.append((1 if zero else 1.5, st.get("at", 0), b))
+        elif st.get("state") != "ok" and st.get("m") != material(cfg(b)):   # 届かなかった版面：手がかりが変わった・時間切れで指紋がない → 次の見回りですぐ（変わらなければ何時間でも試さない）
+            out.append((1 if zero else 3, st.get("at", 0), b))
         elif st.get("nv") != names_v and (st.get("state") == "ok" or any(cfg(b).get(k) for k in NAMES_HINT)):
-            # そろっていても、届かなかったキャラの版面も（RETRY_HOURS を待たずに）、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
+            # そろっていても、届かなかったキャラの版面も、名簿の規則が新しくなったら 1 回数え直す（呪術廻戦が AniList の主役 4 人で止まっていた）
             # 届かなかった版面の数え直しは途中（running）より先（1.5）：途中の版面は 10 枚ずつで何十回も続き、後ろの 142・146 が 24 時間待たされていた
             out.append((1.8 if st.get("state") == "ok" else 1 if zero else 1.5, st.get("at", 0), b))   # 済みの数え直しは軽い（名簿を数えるだけ）ので途中（2）より先：最後だと 41 版面の後ろで 4 時間たっても回らなかった（ポケモンの名簿の順）
         elif cfg(b).get("emblem_closeup"):   # 顔だけのアップを段階的に入れ替え中（胸像を探す・3 回で外す）：待たずに次の回も

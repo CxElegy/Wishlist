@@ -1949,9 +1949,7 @@ def auto_pick(item, good, web=True, strict=False):
 
 # ---------------------------------------------------------------- 定時の後台（--background）と進捗
 PROGRESS = ROOT / "state" / "emblem_progress.json"
-EXHAUSTED_HOURS = 24      # 残りの人が全員「画像のない人」の版面（exhausted）は、候補が増えるのを待つので 1 日おき（1 時間おきに同じ人を試さない）
-RETRY_HOURS = 1           # 全部の段で届かなかった関注項は、材料（記事・手がかり）が変わらなければこの時間は飛ばす。
-                          # AI を使わないので資源は気にしない（2026-10-22，用户定的：6 時間は待たせすぎ）→ 毎時の後台で毎回やり直す
+# 失敗した版面は時間では待たない（2026-10-29，用户定った：AI を使わないので待つ理由がない）。もう一度試すのは中身（材料の指紋 material：記事・手がかり・規則の版）が変わったときと、管理ページの依頼のとき
 MARGIN = 120              # 残り時間がこれ（秒）を切ったら、次の関注項に入らない
 STATE_JA = {"ok": "そろっている", "running": "進行中", "review": "要確認", "failed": "失敗"}
 
@@ -1959,14 +1957,6 @@ STATE_JA = {"ok": "そろっている", "running": "進行中", "review": "要�
 def _now():
     import datetime as dt
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
-
-
-def _hours_since(stamp, now):
-    import datetime as dt
-    try:
-        return (dt.datetime.fromisoformat(now) - dt.datetime.fromisoformat(stamp)).total_seconds() / 3600
-    except (TypeError, ValueError):
-        return None
 
 
 def load_progress(path=None):
@@ -1984,6 +1974,9 @@ def save_progress(prog, path=None):
     path.write_text(json.dumps(prog, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
 
 
+TIME_WAIT = re.compile(r"新しい記事が来たらすぐ、来なくても \d+ 時間後にもう一度")
+
+
 def sync_progress(prog, items):
     """items.yaml の今の枚数を進捗に写す（ネットには出ない）。目標に届いたものは「そろっている」、
     届いていないのにまだ手を付けていないものは「進行中（順番待ち）」。items.yaml から消えた関注項は消す。"""
@@ -1993,6 +1986,8 @@ def sync_progress(prog, items):
         names.append(st["name"])
         e = prog["items"].setdefault(st["name"], {})
         e.update(kind=st["kind"], have=st["have"], target=st["target"])
+        if e.get("note"):   # 前の版の「◯時間後にもう一度」は今の規則（時間では待たない）の言葉に
+            e["note"] = TIME_WAIT.sub("新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度", e["note"])
         if st["state"] == "ok":
             if e.get("state") != "ok":
                 e["note"] = f"{st['have']} / {st['target']} 枚で目標に届いた"
@@ -2010,7 +2005,7 @@ def sync_progress(prog, items):
 
 def due(prog, items, now):
     """後台で処理する順：目標に届いていないものを、足りない枚数の多い順（同じなら前回の処理が古い順）。
-    RETRY_HOURS（1 時間）以内に失敗して材料も変わっていないものは飛ばす。"""
+    失敗して材料も変わっていないものは、時間がたっても飛ばす（時間では待たない：材料の指紋 material が変わるまで）。"""
     rows, broken, closing = [], _broken_log(), closeup_state()
     for item in items:
         st = status(item)
@@ -2023,8 +2018,7 @@ def due(prog, items, now):
         unbreak_due = any(x.get("v", 1) < BROKEN_V for x in broken.get(item["name"]) or [])   # 前の規則で外した小元素の見直し待ち
         if st["state"] == "ok" and not broken_cuts(item) and not unbreak_due and (st["kind"] != "character" or not hint or e.get("names_v") == NAMES_V and not recount):   # そろっていても名簿を今の規則で 1 回は数える
             continue
-        h = _hours_since(e.get("failed_at"), now)
-        if (e.get("state") == "failed" and h is not None and h < (EXHAUSTED_HOURS if e.get("exhausted") else RETRY_HOURS) and not os.environ.get("EMBLEM_RETRY_NOW")
+        if (e.get("state") == "failed" and not os.environ.get("EMBLEM_RETRY_NOW")
                 and e.get("material") == material(item) and not broken_cuts(item) and not unbreak_due):   # 材料（新しい記事・手がかり）が変わったら待たない。指紋の記録がない古い失敗も待たない。
             continue                                                            # 壊れた小元素（頭が切れた・ぼやけた）が出ている版面も待たずに外して取り直す
         rows.append((st["have"] - st["target"], e.get("at") or "", item["name"], item))
@@ -2032,20 +2026,15 @@ def due(prog, items, now):
 
 
 def waiting(prog, items, now):
-    """失敗して再挑戦を待っている版面 → [(名前, 再挑戦の時刻 ISO)]。材料が変われば時刻を待たずに due() に入る。"""
-    import datetime as dt
+    """失敗して、材料が変わるのを待っている版面 → [(名前, "")]（時刻はない：時間では待たない）。材料が変われば due() に入る。"""
     out = []
     due_names = {i["name"] for i in due(prog, items, now)}
     for item in items:
         e = prog["items"].get(item["name"]) or {}
         if item["name"] in due_names or e.get("state") != "failed" or status(item)["state"] == "ok":
             continue
-        try:
-            at = (dt.datetime.fromisoformat(e["failed_at"]) + dt.timedelta(hours=EXHAUSTED_HOURS if e.get("exhausted") else RETRY_HOURS)).isoformat(timespec="seconds")
-        except (KeyError, ValueError):
-            at = ""
-        out.append((item["name"], at))
-    return sorted(out, key=lambda r: r[1])
+        out.append((item["name"], ""))
+    return sorted(out)
 
 
 def _write_sheet(item, good):
@@ -2089,7 +2078,7 @@ def fill_one(item, log=print):
     """後台で 1 つの関注項を埋める。AI も人も見ない：目で見ていた判断は全部規則にしてある。
     取り方の段（STRATEGIES）を、目標に届くまで同じ回の中で順に上がる：① 標準 → ② 名前を広げる → ③ 公式・記事のページ。
     各段で 集める → 確かめる（check：顔なし・遠景・何人も・別人・同じ画像を理由つきで落とす）→ 選ぶ（auto_pick）→ 書いて切り抜く。
-    → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わるか RETRY_HOURS 後にもう一度）。"""
+    → {state: ok / failed, note, tried, funnel, steps, material}。全部の段で届かなければ failed（材料が変わったらもう一度）。"""
     found = False
     try:   # 取り方に要るもの（作品の Fandom・キャラの分類）が書いていなければ先に探す
         if find_sources(item, log):
@@ -2193,8 +2182,8 @@ def fill_one(item, log=print):
     left = st["target"] - st["have"]
     only = f"。残り {left} 枚のうち試した {len(noimg)} 人は全員が画像のない人（使える画像が 1 枚もない）" if noimg and len(noimg) == len([w for w in want if w not in have1]) and queued <= len(want) else ""   # 名簿の残り全員を試したときだけ（BLEACH は残り 108 人のうち 10 人で 24 時間待ちになっていた）   # 名簿の残り全員を試したときだけ（BLEACH は残り 108 人のうち 10 人を試しただけで 24 時間待ちになっていた）
     return {"state": "failed", "tried": tried, "funnel": funnel, "steps": steps, "material": material(fresh),
-            "exhausted": bool(only),   # 残りの人が全員「画像のない人」＝いまは取れる候補が尽きた（失敗と分けて数える・次は EXHAUSTED_HOURS 後）
-            "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}{only}。新しい記事が来たらすぐ、来なくても {EXHAUSTED_HOURS if only else RETRY_HOURS} 時間後にもう一度"}
+            "exhausted": bool(only),   # 残りの人が全員「画像のない人」＝いまは取れる候補が尽きた（失敗と分けて数える・次は材料が変わったとき）
+            "note": f"{added} 枚足した（{path}）。外した理由：{top or '候補なし'}{only}。新しい記事・手がかりが来たらすぐ、来なくても規則を直したらもう一度"}
 
 
 def off_roster(item, log=print):

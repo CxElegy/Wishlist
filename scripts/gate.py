@@ -216,8 +216,8 @@ def photo_work(inbox=INBOX):
 
 
 def emblem_work():
-    """小元素：目標に届いていない版面で、今やってよいもの（RETRY_HOURS 以内の失敗で材料が同じものは除く）→ (名前のリスト, 再挑戦待ち)。
-    再挑戦待ち = [(名前, 時刻)]：失敗して、新しい材料も RETRY_HOURS もまだ来ていない版面。AI は要らない。"""
+    """小元素：目標に届いていない版面で、今やってよいもの（失敗して材料が同じものは除く）→ (名前のリスト, 再挑戦待ち)。
+    再挑戦待ち = [(名前, 時刻)]：失敗して、新しい材料がまだ来ていない版面（時刻はない）。AI は要らない。"""
     import emblem_fill
     items = emblem_fill.load_items()
     prog = emblem_fill.sync_progress(emblem_fill.load_progress(), items)
@@ -230,9 +230,7 @@ def _emblem_why(todo, wait, tz="Asia/Tokyo"):
     if todo:
         parts.append(f"足りない {len(todo)} 版面（Actions で Python が埋める）")
     if wait:
-        first = min((t for _, t in wait if t), default="")
-        when = dt.datetime.fromisoformat(first).astimezone(zoneinfo.ZoneInfo(tz)).strftime("%H:%M") if first else "?"
-        parts.append(f"失敗 {len(wait)} 版面は再挑戦待ち（新しい記事が来たらすぐ、来なくても {when} から）")
+        parts.append(f"失敗 {len(wait)} 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）")
     return "・".join(parts) or "全部そろっている"
 
 
