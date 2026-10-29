@@ -383,5 +383,43 @@ class Faces(unittest.TestCase):
         self.assertEqual(len(add["emblem"][0]["face"]), 6)
 
 
+class Chain(unittest.TestCase):
+    """空になるまで：待ちが残っていて 1 版面でも増えたら次の回を起こす（GITHUB_OUTPUT の more）。増えなければ止める。--check は待ちの有無だけ。"""
+
+    def run_main(self, argv, boards, state_after, tmp):
+        import digest
+        out = pathlib.Path(tmp) / "out"
+        sup = lambda path, body=None, method="GET": ([{"board_id": 0}] if path.startswith("follows?account") else boards if path.startswith("boards?followers") else [{"config": {}}])  # noqa: E731
+        with mock.patch.dict("os.environ", {"GITHUB_OUTPUT": str(out), "SUPABASE_SERVICE_KEY": "k"}), \
+             mock.patch.object(digest, "load_config", lambda: ({"supabase_url": BASE}, None)), \
+             mock.patch.object(digest, "supabase", sup), \
+             mock.patch.object(le, "due", lambda bs, now: list(bs)), \
+             mock.patch.object(le, "apply_requests", lambda c: None), \
+             mock.patch.object(le, "fill_board", lambda b, f, up, base: {"emblem_state": state_after}), \
+             mock.patch.object(le, "PER_BOARD_S", 0):
+            le.main(argv)
+        return dict(line.split("=") for line in out.read_text().split())
+
+    def test_more_only_when_progress_and_left(self):
+        import tempfile
+        b = lambda have: {"id": 1, "name": "x", "wd": None, "config": {"emblem_state": {"state": "running", "have": have}}}  # noqa: E731
+        with tempfile.TemporaryDirectory() as d:
+            r = self.run_main(["--minutes", "1"], [b(2)], {"state": "running", "have": 5}, d)
+            self.assertEqual((r["worked"], r["more"]), ("true", "true"))   # 増えて、まだ途中
+        with tempfile.TemporaryDirectory() as d:
+            r = self.run_main(["--minutes", "1"], [b(5)], {"state": "running", "have": 5}, d)
+            self.assertEqual(r["more"], "false")   # 1 人も増えない：止める
+        with tempfile.TemporaryDirectory() as d:
+            r = self.run_main(["--minutes", "1"], [b(2)], {"state": "ok", "have": 5}, d)
+            self.assertEqual(r["more"], "false")   # そろった・残りなし
+
+    def test_check_only_reports(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            self.assertEqual(self.run_main(["--check"], [], {}, d), {"due": "false"})
+        with tempfile.TemporaryDirectory() as d:
+            self.assertEqual(self.run_main(["--check"], [{"id": 1, "config": {}}], {}, d), {"due": "true"})
+
+
 if __name__ == "__main__":
     unittest.main()

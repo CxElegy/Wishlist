@@ -552,6 +552,15 @@ def _upload(base, key):
     return up
 
 
+def _out(**kv):
+    """GitHub Actions の step output（GITHUB_OUTPUT）に書く。手元で走らせたときは何もしない。"""
+    import os
+    path = os.environ.get("GITHUB_OUTPUT")
+    if path:
+        with open(path, "a", encoding="utf-8") as f:
+            f.writelines(f"{k}={v}\n" for k, v in kv.items())
+
+
 def main(argv):
     import os
     import digest
@@ -597,10 +606,16 @@ def main(argv):
                 b["config"] = {**cur, "emblem": em}
                 digest.supabase(f"boards?id=eq.{b['id']}", {"config": b["config"]}, method="PATCH")
     todo = due(boards, time.time())
+    if "--check" in argv:   # 待ちはある？（library_emblem.yml の見回り：空なら重い道具を入れずに終える）
+        _out(due="true" if todo else "false")
+        print(f"ライブラリの小元素：待ち {len(todo)} 版面")
+        return
     done = {"ok": 0, "running": 0, "failed": 0, "blocked": 0}
+    tried = gained = 0
     for b in todo:
         if end - time.time() < PER_BOARD_S:
             break
+        tried += 1
         f = (digest.supabase(f"follows?board_id=eq.{b['id']}&select=section,subs&order=created_at&limit=1") or [{}])[0]
         try:
             add = fill_board(b, f, _upload(base, key), base)
@@ -613,6 +628,9 @@ def main(argv):
         digest.supabase(f"boards?id=eq.{b['id']}", {"config": {**cur, **add}}, method="PATCH")
         st = add["emblem_state"]["state"]
         done[st] = done.get(st, 0) + 1
+        gained += int(add["emblem_state"].get("have") or 0) > int((cfg(b).get("emblem_state") or {}).get("have") or 0)
+    # 空になるまで：時間切れで残った版面か途中（running）があり、この回で 1 版面でも増えたなら次の回をすぐ起こす（増えなければ止める）
+    _out(worked="true" if tried else "false", more="true" if gained and (len(todo) > tried or done["running"]) else "false")
     print(f"ライブラリの小元素：対象 {len(todo)} 版面（店長の版面を除く {len(boards)}）・"
           f"そろった {done['ok']}・途中 {done['running']}・届かない {done['failed']}・Wikidata に断られて次へ {done['blocked']}")
 

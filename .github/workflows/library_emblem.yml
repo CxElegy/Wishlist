@@ -2,20 +2,25 @@ name: ライブラリの小元素
 
 # お客さまの版面（ライブラリの版面のうち店長の版面でないもの）にも、店長と同じ規則で小元素を（scripts/library_emblem.py）。
 # 版面ごとに 1 回、結果は boards.config.emblem、画像は Supabase Storage の公開の箱 emblems（db/emblems.sql）。倉庫には何も書かない。
-# 2 時間ごと（毎時 29 分の偶数時）と手で。まだ一度も試していない版面から、時間の予算の中で。終わったらお客さまのページを作り直す。
+# 15 分ごとの見回り（待ちがなければ数十秒で終わる）と手で。まだ一度も試していない版面から、時間の予算の中で。
+# 待ちが残っていて増えていれば、終わりに自分で次の回を起こす（空になるまで。1 版面も増えなかったら止まる・chain は 20 回まで）。終わったらお客さまのページを作り直す。
 # ログは数だけ（Actions のログは公開：版面の名前は出さない）。
 
 on:
   schedule:
-    - cron: "29 */2 * * *"
+    - cron: "11,26,41,56 * * * *"
   workflow_dispatch:
     inputs:
       minutes:
         description: "時間の予算（分）"
         default: "30"
+      chain:
+        description: "（自動）接着跑の第何回。20 回まで"
+        default: "0"
 
 permissions:
   contents: read
+  actions: write   # 待ちが残っているとき、自分で次の回を起こす（gh workflow run）
 
 concurrency:
   group: library-emblem
@@ -36,10 +41,14 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: |
-          pip install -r requirements.txt
-          pip install -q "rembg[cpu]>=2.0.60,<3"
+      - run: pip install -r requirements.txt
+      - name: 待ちはある？（なければここで終わる）
+        id: check
+        run: python scripts/library_emblem.py --check
+      - if: steps.check.outputs.due == 'true'
+        run: pip install -q "rembg[cpu]>=2.0.60,<3"
       - name: 模型的缓存（店長の後台と同じ）
+        if: steps.check.outputs.due == 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -47,8 +56,16 @@ jobs:
             ~/.cache/wishlist-faces
           key: emblem-models-v1
       - name: 小元素（店長と同じ emblem_fill を版面ごとに）
+        id: fill
+        if: steps.check.outputs.due == 'true'
         run: python scripts/library_emblem.py --minutes "${{ inputs.minutes || '30' }}"
       - name: お客さまのページを作り直す
+        if: steps.fill.outputs.worked == 'true'
         continue-on-error: true
         timeout-minutes: 10
         run: python scripts/user_pages.py
+      - name: 接着跑（待ちが残っていて増えたとき）
+        if: steps.fill.outputs.more == 'true' && inputs.chain < 20
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run library_emblem.yml -f chain=$(( ${{ inputs.chain || '0' }} + 1 )) -f minutes=30
