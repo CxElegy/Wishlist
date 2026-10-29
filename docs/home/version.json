@@ -1,14 +1,14 @@
 {
- "admin": "dfad2c59482d",
- "admin-ai": "e56983deaf24",
+ "admin": "dfdc7712cfb5",
+ "admin-ai": "656bdf123ea1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "39c87caf"
+   "e290a52b"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "a3fc3514"
+   "34914b15"
   ]
  },
  "admin-boards": "0faec13583d5",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "13495db4cc9c",
+ "admin-emblem": "05fe4d150a2d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "1d1c6abe"
+   "2c9b55ee"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "8ab037754e5b",
+ "admin-now": "647d7d6a5526",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6512c72a"
+   "fa09c7e8"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c4250e00"
+   "4ad7e820"
   ]
  },
- "admin-system": "6f919b5d9e57",
+ "admin-system": "ebab715f27a3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9aa0ba57"
+   "fc8672ea"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "46edc177"
+   "7a3a7125"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "c6e2decf"
   ]
  },
- "index": "37efd1cc0a3a",
+ "index": "c7632d7b64d8",
  "index_marks": {
   "front": [
    "トップ",
@@ -109,7 +109,7 @@
   ],
   "w-130724c0": [
    "猫用品",
-   "8d258b2d"
+   "0dae0ecb"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "5435310c"
+   "a5d412b3"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "ad084221"
+   "563e58ec"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "38fc3025"
+   "fec9f5dd"
   ],
   "w-f303ad09": [
    "绝区零",
    "0929dd51"
   ]
  },
- "updated": "10.29 20:55",
+ "updated": "10.29 21:04",
  "wishlist": "28f157bbb318"
 }

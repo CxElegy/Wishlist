@@ -4151,12 +4151,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.businesspost.co.kr/news/photo/202610/20261029153835_84953.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
- },
  "https://www.chinapress.com.my/wp-content/uploads/2026/10/enhannah-261029-pmy-hp.jpg": {
   "target": 1280,
   "v": 3,
@@ -4374,6 +4368,12 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/Galaxy-S27.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-5.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
