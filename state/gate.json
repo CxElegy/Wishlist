@@ -1,10 +1,10 @@
 {
  "changed": false,
- "checked": "2026-10-29T09:36:59+00:00",
+ "checked": "2026-10-29T10:23:28+00:00",
  "fired": {
-  "at": "2026-10-29T09:36:59+00:00",
+  "at": "2026-10-29T10:23:28+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -20,45 +20,26 @@
     "sig": "7162b1455047"
    },
    "items": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "GTA 6",
     "ILLIT",
-    "MMORPG 新作",
     "あつ森",
     "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
     "哈利波特剧集",
-    "日本顶级网球赛事",
     "滑雪",
-    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-10-29T08:40:16+00:00",
+   "last_batch": "2026-10-29T10:03:17+00:00",
    "last_error": {
     "at": "2026-10-29T08:34:46+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 346,
+   "prog": 400,
    "prog_day": "2026-10-29",
-   "ripe": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "MMORPG 新作",
-    "三星手机",
-    "周杰伦",
-    "日本顶级网球赛事",
-    "漫威电影"
-   ],
-   "sig": "7162b1455047",
+   "ripe": [],
+   "sig": "13c4fc293cef",
    "token_cap": 1000000,
-   "tokens_today": 756864,
-   "why": "整理待ちの記事 63 件（15 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 843434,
+   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
