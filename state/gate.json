@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-10-29T11:23:18+00:00",
+ "changed": true,
+ "checked": "2026-10-29T11:52:09+00:00",
  "fired": {
-  "at": "2026-10-29T10:47:45+00:00",
+  "at": "2026-10-29T11:52:09+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,35 +12,62 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-29T10:47:45+00:00",
+    "at": "2026-10-29T11:52:09+00:00",
     "attempts": 1,
     "day": "2026-10-29",
-    "prog": 400,
-    "resp": "cse_01W4x6f7TkGZu9QSEnNn8SQc",
-    "sig": "606e958a7b57"
+    "prog": 409,
+    "resp": "cse_01W4x6f6nHU7m6i44KUSPW58",
+    "sig": "365fde9244b9"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影"
+   ],
    "last_batch": "2026-10-29T11:14:51+00:00",
    "last_error": {
     "at": "2026-10-29T10:55:44+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 409,
    "prog_day": "2026-10-29",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "dota2",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "漫威电影"
+   ],
+   "sig": "365fde9244b9",
    "token_cap": 1000000,
    "tokens_today": 903286,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 62 件（14 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "dota2"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "ee9feb620745",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
@@ -49,7 +76,6 @@
     "ILLIT",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
@@ -58,7 +84,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
