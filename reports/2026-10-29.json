@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "93629ace3783",
+ "edit_sig": "da7503f954a3",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -170,7 +170,7 @@
      "highlight": "리니지W",
      "image": null,
      "source": "위클리오늘",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.weeklytoday.com&sz=128",
+     "source_icon": "https://cdn.weeklytoday.com/image/logo/favicon.png",
      "url": "https://www.weeklytoday.com/news/articleView.html?idxno=799872",
      "weight": "normal"
     }
@@ -702,8 +702,8 @@
      "date": "2026-10-29",
      "headline": "三星S27+或砍掉UWB",
      "highlight": "",
-     "image": "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg",
-     "image_via": "正文图（4 枚から）",
+     "image": "https://s.rfidworld.com.cn/2026/10/28/6019de72d23f1ab1.jpg",
+     "image_via": "正文图（3 枚から）",
      "url": "https://www.rfidworld.com.cn/news/2610_71DC1AE996282857.html",
      "weight": "normal"
     },
@@ -1003,31 +1003,19 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "「トライフォースのTシャツ」と「コログのかさ」のゼルダ コラボ マイデザインが配布開始。",
      "date": "2026-10-29",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "「あつ森」にて「ゼルダ」コラボマイデザインが配布開始！ 「トライフォースのTシャツ」と「コログのかさ」（GAME Watch）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE8xem5wdmFaWjJ3Z1lldTlBX19jWXJNSVhBZVFRaEkwM0dyLXIyT2dPYjBSZFE3SGhXdkNKTk5qV2hWX0xma1BRZWRxMVcxekFGdzhYV1Rrbldka1Fob3ZhTWJtSnJSZnlfNnc3Q3ltNEF5dXladkd4aXlLMV9TdTg?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 3,
-     "source": "Nintendo",
-     "title": "『あつまれ どうぶつの森』で「ゼルダの伝説」のマイデザインを配布中。",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOSEFYS0p6TEpjTnBHZTIwYURDcmNVdEhMazFycnk4N183WlphSlcwWF95cHBsTnVFUlhTYU9ocXV5VGhOMjFrc0t6SzlyQXhldmg3MnpyMXZDWk5JNXJmYU9wR2JTcEt4cTg5WjVXaGxkTlVvUGEtVXAyRFpaaWVJcGstYnVadw?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 4,
-     "source": "GoNintendo",
-     "title": "Legend of Zelda custom designs available in Animal Crossing: New Horizons",
-     "url": "https://gonintendo.com/contents/66635-legend-of-zelda-custom-designs-available-in-animal-crossing-new-horizons"
+     "headline": "『あつまれ どうぶつの森』で「ゼルダの伝説」のマイデザインを配布中。",
+     "highlight": "マイデザインを配布中",
+     "image": "https://assets.topics.apps-jp.nintendo.com/image/2026/10/23020211541109/1280/75f00733c8034255a6f7adac9aaedde0.jpg",
+     "image_via": "og:image",
+     "url": "https://www.nintendo.com/jp/topics/article/72628ca2-91a6-42e6-8041-82df388b3f0c",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",

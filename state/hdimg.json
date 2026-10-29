@@ -408,7 +408,7 @@
  "https://assets.topics.apps-jp.nintendo.com/image/2026/10/23020211541109/1280/75f00733c8034255a6f7adac9aaedde0.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
@@ -3117,11 +3117,12 @@
   "target": 1280,
   "v": 3
  },
- "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
-  "w": 810,
-  "h": 344,
+ "https://s.rfidworld.com.cn/2026/10/28/6019de72d23f1ab1.jpg": {
   "target": 1280,
-  "v": 3
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-29"
  },
  "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
   "w": 1200,

@@ -293,7 +293,7 @@
   "三星手机": 13,
   "The Mandalorian": 7,
   "星巴克马克杯": 7,
-  "あつ森": 1,
+  "あつ森": 4,
   "MMORPG 新作": 11,
   "哈利波特剧集": 2,
   "日本顶级网球赛事": 10,
@@ -474,7 +474,19 @@
    }
   }
  ],
- "あつ森": [],
+ "あつ森": [
+  {
+   "headline": "『あつまれ どうぶつの森』で「ゼルダの伝説」のマイデザインを配布中。",
+   "highlight": "マイデザインを配布中",
+   "blurb": "「トライフォースのTシャツ」と「コログのかさ」のゼルダ コラボ マイデザインが配布開始。",
+   "weight": "lead",
+   "refs": [
+    3,
+    2,
+    4
+   ]
+  }
+ ],
  "MMORPG 新作": [
   {
    "headline": "Classic-Inspired MMO-Lite Everlast: Undying Tale Enters Early Access Today",
