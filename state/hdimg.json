@@ -405,6 +405,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.topics.apps-jp.nintendo.com/image/2026/10/23020211541109/1280/75f00733c8034255a6f7adac9aaedde0.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "https://attach.setn.com/newsimages/2014/05/09/78709-XXL.jpg": {
   "w": 510,
   "h": 340,
@@ -468,12 +474,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.386
- },
- "https://bloximages.newyork1.vip.townnews.com/2news.com/content/tncms/assets/v3/editorial/f/4a/f4a15846-a198-4a3a-af4f-4a393d308346/6ae13df9256cf.preview.jpg?crop=1920%2C1008%2C0%2C35&resize=1200%2C630&order=crop%2Cresize": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-29"
  },
  "https://bloximages.newyork1.vip.townnews.com/griffindailynews.com/content/tncms/assets/v3/editorial/a/b9/ab90c9fc-1c26-5ebd-8b60-3f8328044d5c/6a13c291b798b.image.jpg?crop=1762%2C926%2C0%2C124&resize=1200%2C631&order=crop%2Cresize": {
   "w": 1200,
@@ -669,6 +669,12 @@
   "h": 1281,
   "target": 1280,
   "v": 3
+ },
+ "https://collabo-cafe.com/wp-content/uploads/panda-kopanda-news-55th-teaser-visual-christmas-advent-2026-scene.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/10/From-Seasons-1-2-3-Recap-Explained-How-to-Watch-4.jpg?resize=2000,1125": {
   "w": 2000,
@@ -992,6 +998,12 @@
   "h": 675,
   "target": 1280,
   "v": 3
+ },
+ "https://hermes.media.static.aol.com/media/2026/10/26/60861c47-a9eb-3578-a8a7-f0a9120b02c4/531c14f0-8fcb-4352-b3e7-7c9e2c43eb29.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://hermes.media.transform.aol.com/b813d56f35a677625504beac2b0250e4523bdc1e/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/25/1f1d9c4a-80f3-3dbe-b8d3-f9335a92d364/838f177d-2f9b-4576-8591-6ba1599f1553.jpg": {
   "w": 1200,
@@ -1633,6 +1645,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.etnews.com/news/article/2026/10/23/news-p.v1.20261023.29a15b4b82ff4b5488d09c6afc6f124d_P1.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "https://img.etnews.com/news/article/2026/10/25/news-p.v1.20261025.8cdc4656b9234931815e7989a6dde62a_P1.png": {
   "w": 700,
   "h": 398,
@@ -1966,13 +1984,6 @@
   "h": 600,
   "target": 1280,
   "v": 3
- },
- "https://k.sinaimg.cn/n/spider20261028/523/w660h663/20261028/0381-f9309344077324303a8604f6a1221f3a.jpg/w300h300z1l10t10q1004b7.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-29"
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-22/i4q2207nh58bzjv15maz1dko.jpg": {
   "w": 1600,
@@ -2838,7 +2849,7 @@
   "target": 1280,
   "v": 3
  },
- "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/2d9aa7a41d8741fbb277324d667914c1.jpg": {
+ "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/220a5803851742a389145d15077bb05b.jpg": {
   "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
@@ -3214,12 +3225,6 @@
   "target": 720,
   "v": 3
  },
- "https://shattered.io/wp-content/uploads/2026/10/gta-vi-29-percent-purchase-intent-circana-record-2026-gen.webp": {
-  "w": 1344,
-  "h": 768,
-  "target": 720,
-  "v": 3
- },
  "https://sm.ign.com/t/ign_in/screenshot/default/bleach-mirrors-high-overview-trailer-0-39-screenshot_9eu8.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -3490,6 +3495,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://staticg.sportskeeda.com/editor/2026/10/cef56-17932369719786-1920.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
+ },
  "https://staticg.sportskeeda.com/editor/2026/10/d963c-17925559015474-1920.jpg": {
   "w": 1920,
   "h": 1080,
@@ -3668,12 +3679,6 @@
   "target": 1280,
   "v": 3
  },
- "https://urepia.ismcdn.jp/mwimgs/9/f/-/img_9f0e16825892da92c7175ca1d118299a103028.jpg": {
-  "w": 1280,
-  "h": 914,
-  "target": 1280,
-  "v": 3
- },
  "https://virus.hr/storage/11938/conversions/01M5YVGSXGQ7PG0B36D9XFESGS-hero.webp": {
   "w": 1600,
   "h": 900,
@@ -3802,12 +3807,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.5OVWqixs8K4brEpx8v07LA&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -3896,19 +3895,6 @@
   "h": 393,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.SnAIWwxWQY7fA0BFahPb2g&pid=News&w=912": {
-  "w": 700,
-  "h": 538,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.492,
-  "local": "pics/7d4ee150368733a3.webp",
-  "out": [
-   1280,
-   984
-  ],
-  "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.UKV_ApYouzJkc9fq-plfSQ&pid=News&w=600": {
   "w": 600,
@@ -4017,12 +4003,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.nvQS4D90clmQXzKjDnUPUA&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.oVpWMzVyfJazYlxNo60oJg&pid=News&w=1200": {
   "w": 700,
@@ -4430,6 +4410,12 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://www.mediaplaynews.com/wp-content/uploads/2023/12/Grand-Theft-Auto-VI-Trailer-1.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://www.nikkansports.com/sports/news/img/202610220000924-w500_0.jpg": {
   "w": 500,
