@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-29T06:07:23+00:00",
+ "checked": "2026-10-29T06:30:04+00:00",
  "fired": {
-  "at": "2026-10-29T06:13:03+00:00",
+  "at": "2026-10-29T06:30:04+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,38 +12,55 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-29T05:22:55+00:00",
+    "at": "2026-10-29T06:30:04+00:00",
     "attempts": 1,
     "day": "2026-10-29",
-    "prog": 270,
-    "resp": "cse_01W4x6f5UnUjscYwMgAQDbkF",
-    "sig": "2cda4c2e0adf"
+    "prog": 307,
+    "resp": "cse_01W4x6f9YDxnNcvKRRcPm9HX",
+    "sig": "a9ed10f6c5c9"
    },
    "items": [
+    "A2O LITE",
     "BLEACH Mirrors High",
+    "GTA 6",
+    "MMORPG 新作",
     "The Mandalorian",
     "gelato pique",
     "あつ森",
+    "ぐでたま",
     "チェーンソーマン",
+    "三星手机",
     "周杰伦",
     "哈利波特剧集",
-    "滑雪"
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影"
    ],
-   "last_batch": "2026-10-29T06:00:18+00:00",
+   "last_batch": "2026-10-29T06:06:51+00:00",
    "last_error": {
     "at": "2026-10-29T03:48:20+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 304,
+   "prog": 307,
    "prog_day": "2026-10-29",
    "ripe": [
-    "あつ森"
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "The Mandalorian",
+    "gelato pique",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影"
    ],
-   "sig": "bc01f57c621a",
+   "sig": "a9ed10f6c5c9",
    "token_cap": 1000000,
-   "tokens_today": 639219,
-   "why": "整理待ちの記事 10 件（8 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 640856,
+   "why": "整理待ちの記事 39 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
