@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-29T19:16:03+00:00",
+ "checked": "2026-10-29T19:53:25+00:00",
  "fired": {
-  "at": "2026-10-29T19:10:53+00:00",
+  "at": "2026-10-29T19:53:25+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,53 +12,75 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-29T18:44:52+00:00",
+    "at": "2026-10-29T19:53:25+00:00",
     "attempts": 1,
     "day": "2026-10-30",
-    "prog": 0,
-    "resp": "cse_01W4x6f61RUKnaSNV9FQWmug",
-    "sig": "2e8949ed6f17"
+    "prog": 167,
+    "resp": "cse_01W4x6f5LLj13HstDAnpZiyh",
+    "sig": "1e620bcd2d90"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "星巴克马克杯",
+    "漫威电影",
+    "猫用品"
+   ],
    "last_batch": "2026-10-29T19:10:39+00:00",
    "last_error": {
     "at": "2026-10-29T18:50:52+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 167,
    "prog_day": "2026-10-30",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "GTA 6",
+    "MMORPG 新作",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "漫威电影"
+   ],
+   "sig": "1e620bcd2d90",
    "token_cap": 1000000,
    "tokens_today": 101888,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 42 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
+    "チェーンソーマン",
     "dota2",
-    "あつ森"
+    "哈利波特剧集",
+    "あつ森",
+    "漫威电影",
+    "GTA 6",
+    "A2O LITE",
+    "The Mandalorian",
+    "ILLIT"
    ],
    "need": true,
-   "sig": "5f5f7cd68dc5",
+   "sig": "805a619fa448",
    "waiting": [
-    "A2O LITE",
     "Astrae Oratio",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
     "Vaundy",
     "ぐでたま",
-    "チェーンソーマン",
     "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 3 版面（Actions で Python が埋める）・失敗 13 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 6 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
