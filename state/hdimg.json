@@ -1592,6 +1592,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2g5Iqp.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ga95n.img": {
   "w": 1200,
   "h": 675,
@@ -3197,6 +3203,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.eximg.jp/exnews/feed/nekochan/dd/nekochan_cat50231/nekochan_cat50231_1.jpg": {
+  "w": 700,
+  "h": 467,
+  "target": 720,
+  "v": 3
+ },
  "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
   "w": 810,
   "h": 344,
@@ -3948,12 +3960,6 @@
  "https://www.bing.com/th?id=ONUT.PSNDRO6vs6Fb1gBEHqZAQw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
-  "w": 700,
-  "h": 467,
   "target": 720,
   "v": 3
  },

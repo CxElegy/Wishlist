@@ -1,6 +1,6 @@
 {
  "date": "2026-10-29",
- "edit_sig": "cf424a948028",
+ "edit_sig": "bf58b538c6f9",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1352,15 +1352,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-10-28",
-     "n": 4,
-     "source": "エキサイト",
-     "title": "猫の『抜歯』をした方がいいケース3選 必要になる理由や予防ケアの方法まで",
-     "url": "https://www.excite.co.jp/news/article/nekochan_cat50231/"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1381,6 +1372,16 @@
      "image": "https://newportal.portal.auone.jp/media/thumbnails/2026/10/28/https___news_jp_i_1488317094651085808_w700.webp",
      "image_via": "og:image",
      "url": "https://article.auone.jp/3b56a209-913e-4891-ad3f-eecd20b9765c",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-28",
+     "headline": "猫の『抜歯』をした方がいいケース3選 必要になる理由や予防ケアの方法まで",
+     "highlight": "抜歯",
+     "image": "https://s.eximg.jp/exnews/feed/nekochan/dd/nekochan_cat50231/nekochan_cat50231_1.jpg",
+     "image_via": "og:image",
+     "url": "https://www.excite.co.jp/news/article/nekochan_cat50231/",
      "weight": "normal"
     }
    ],
