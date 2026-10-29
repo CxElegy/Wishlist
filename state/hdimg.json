@@ -1190,10 +1190,10 @@
   "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/4/4/440f4_1845_54580daa_3b96419f.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://image.news.livedoor.com/newsimage/stf/4/6/46f1e_1838_f5ad7721d161e61fe6bdbe25c8b4350d.jpg": {
   "w": 800,
@@ -1795,6 +1795,12 @@
    1080
   ],
   "why": "看不清"
+ },
+ "https://img.khan.co.kr/news/2026/10/29/news-p.v1.20261028.f8c0001b762041b0bacd3a15b3e1ba6e_P1.png": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
  },
  "https://img.ltn.com.tw/Upload/3c/page/2026/10/24/261024-68052-1.png": {
   "w": 1080,
@@ -3825,6 +3831,12 @@
    719
   ],
   "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.2SxZz3eOFnZAZ2IXvVsBIA&pid=News&w=700": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-29"
  },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
