@@ -1,14 +1,14 @@
 {
- "admin": "8f9aebd7b2f9",
- "admin-ai": "dfb4bf76ed3c",
+ "admin": "bc4f972f4200",
+ "admin-ai": "0e630da8988a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "19587a24"
+   "e87b0d2b"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f058675e"
+   "28705f56"
   ]
  },
  "admin-boards": "0b714059e63b",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "569eb45953c4",
+ "admin-emblem": "2e0e0964cfa8",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "66099f04"
+   "6e95a2cc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5589b82cda2a",
  "admin-members_marks": {},
- "admin-now": "b6c09fb2d4bb",
+ "admin-now": "8d1af5d19dbe",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e44025ed"
+   "ed54d045"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "18ad9a23"
+   "485d9938"
   ]
  },
- "admin-system": "739c2c9efe27",
+ "admin-system": "6598cff7b54c",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "e0908648"
+   "876e653c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "89bd19e5"
+   "f5466f6e"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "8dfb5859"
   ]
  },
- "index": "8e3306711562",
+ "index": "1a60bbf52b88",
  "index_marks": {
   "front": [
    "トップ",
-   "fe7bb7e6"
+   "6321ebd1"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "4fb0058c"
+   "d1b6d167"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "7c26d4ed"
+   "7ff1ce3b"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -133,11 +133,11 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "86f08e2e"
+   "32c36881"
   ],
   "w-6676e624": [
    "三星手机",
-   "0b0b0327"
+   "6d48aa6e"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -153,7 +153,7 @@
   ],
   "w-b867582f": [
    "あつ森",
-   "0d672d68"
+   "edd272ec"
   ],
   "w-bf928230": [
    "Astrae Oratio",
@@ -196,6 +196,6 @@
    "0929dd51"
   ]
  },
- "updated": "10.29 15:35",
+ "updated": "10.29 15:44",
  "wishlist": "e8e34d8416c4"
 }
