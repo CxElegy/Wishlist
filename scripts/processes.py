@@ -603,7 +603,7 @@ PROCESSES = [
         "when": "ページを開いたとき · ログイン・ログアウトしたとき",
         "trigger": "どのページでも右上の「ログイン」（メールアドレスだけ）。開いたときに身份を確かめ、見るだけかどうかを決める",
         "summary": "访客は見るだけ（👍・設定・写真・ボタンは止まる、管理ページは見えない）。だれでもメールアドレスだけで始められ（重ならない・規約に同意・ブラウザが覚える。管理者のメールを名前にしたときだけ最初の 1 回メールで確認）、ユーザーは自分の account だけ、管理者は全部を変えられる。門番はデータベース。",
-        "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql"], "doc": "docs/rules/login.md",
+        "files": ["scripts/render.py（AUTH_JS / AUTH_CSS / _auth_tag / AUTH_LOCK）", "db/my_page.sql", "db/auth.sql", "db/auth_guard.sql", "db/auth_enforce.sql", "db/auth_delete.sql", "db/board_theme.sql"], "doc": "docs/rules/login.md",
         "flow": [
             {"id": "a0", "kind": "step", "lane": "web", "title": "入口（docs/index.html）→「新しく始める」",
              "text": "何のサイトか・店長のページの本物の画面。メール・パスワードと規約 → ニュースの言語（よく使う 6 つ＋地域ごとの 56 言語、検索できる）→ 好きなジャンル → 候補のタイルを押して選ぶ・名前でも足せる（AniList の話題・Steam の売れ筋・店長がフォローしてきたもの）→ 最初の版面 5 つまで → user_signup（名前・同意・好みを一度に）。覚えているブラウザは入口を飛ばして自分のページへ（いまは店長のページ）。入口は digest render のたびに 24 時間より古ければ作り直す", "uses": ["maillink", "terms", "welcome"]},
@@ -633,6 +633,7 @@ PROCESSES = [
                       ("👍👎（feedback）", "ログインした人：can_edit(account) · ログインしていない人：開關が閉じている間だけ"),
                       ("今すぐ実行（run_now）", "管理者だけ（pg_cron の tick は除く）"),
                       ("管理者の追加・ユーザー一覧", "管理者だけ（メールは管理者の表だけ、ユーザー一覧は名前だけ）"),
+                      ("ライブラリの全版面を読む・配色を替える（管理ページ②版面）", "管理者だけ：boards の RLS（board_visible が is_admin で全部）· board_theme_set は is_admin() の関数。名前は HTML に焼かない（ログイン後に JS が読む）"),
                       ("開關（auth_flags.enforce）", "閉 = 前と同じ（だれでも変えられる）· 開 = 上の制限が効く（db/auth_enforce.sql で開く）")]},
         ],
     },
