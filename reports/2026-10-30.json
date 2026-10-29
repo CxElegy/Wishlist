@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "5db5a69cdb37",
+ "edit_sig": "61075beae123",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -108,29 +108,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 8,
-     "source": "Massively Overpowered",
-     "title": "Cozy MMO Spirit Crossing secures November 16 for launch at a $30 price point",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPQ3JjZHkwMzZsSmRjYlZYdzdPdVFPUUJzMVdoQ28tOWJ3ZWRmZ1NwblcxNWt3MlpxN08xRk13MndiaS12ZjlmSktnNVNsZWoyRjYtUjRzY3VBSVVYTmZUbWFHUzh6WklxWjh6S1lTM1BCTVpaLVZ0SkJ6Wm9RdGZIdnhSd0l3SDFPQ3d5Q3hDdjVucVRLLVpFWDRZVWN1QTUyZE9rVjljQWh3cDlrRXU1Xw?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 9,
-     "source": "디스이즈게임 on MSN",
-     "title": "'판타지포유' 사전예약 30만명 돌파…11월 10일 낮 12시 정식 서비스",
-     "url": "https://www.msn.com/ko-kr/gaming/mmo/%ED%8C%90%ED%83%80%EC%A7%80%ED%8F%AC%EC%9C%A0-%EC%82%AC%EC%A0%84%EC%98%88%EC%95%BD-30%EB%A7%8C%EB%AA%85-%EB%8F%8C%ED%8C%8C-11%EC%9B%94-10%EC%9D%BC-%EB%82%AE-12%EC%8B%9C-%EC%A0%95%EC%8B%9D-%EC%84%9C%EB%B9%84%EC%8A%A4/ar-AA2gifhv"
-    },
-    {
-     "date": "2026-10-26",
-     "n": 10,
-     "source": "쿠키뉴스",
-     "title": "부담 없는 MMORPG?…‘이클립스’ 어떤 점이 가벼웠나 직접 해보니 [쿠키 게임]",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBSb19wZ0cwcUV0RUVBdHg2aC1HcXBlcTIwOEtjd2luRTB3VlV2VFJwX3JUUDdONWpMcXkzQjJDeDhoRzEtb1drYzE3ZllFWnNDa3NVUFhBZDF2R21FdHlFR0pNRQ?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -171,8 +148,9 @@
      },
      "headline": "Nexon、「オーバーギアード」オンラインショーケースを11月5日に配信",
      "highlight": "11月5日",
-     "image": "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "DigitalToday",
+     "source_icon": "https://cdn.digitaltoday.co.kr/image/logo/favicon.ico",
      "url": "https://www.digitaltoday.co.kr/jp/view/121244/nexon-to-hold-tembbal-overgeared-online-showcase-on-nov-5",
      "weight": "normal"
     }

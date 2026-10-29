@@ -320,7 +320,7 @@
   "哈利波特剧集": 11,
   "日本顶级网球赛事": 14,
   "dota2": 8,
-  "MMORPG 新作": 7,
+  "MMORPG 新作": 10,
   "BLEACH Mirrors High": 4,
   "The Mandalorian": 4,
   "周杰伦": 4,
@@ -448,7 +448,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    8
    ],
    "event": {
     "date": "2026-11-16",
