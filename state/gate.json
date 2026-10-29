@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-29T20:22:10+00:00",
+ "checked": "2026-10-29T20:42:35+00:00",
  "fired": {
-  "at": "2026-10-29T20:22:10+00:00",
+  "at": "2026-10-29T20:42:35+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -22,47 +22,37 @@
    "items": [
     "A2O LITE",
     "ILLIT",
-    "MMORPG 新作",
     "The Mandalorian",
     "dota2",
     "gelato pique",
     "あつ森",
     "チェーンソーマン",
     "三星手机",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
     "星巴克马克杯",
-    "漫威电影",
     "猫用品"
    ],
-   "last_batch": "2026-10-29T19:10:39+00:00",
+   "last_batch": "2026-10-29T20:21:21+00:00",
    "last_error": {
     "at": "2026-10-29T19:58:22+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 180,
+   "prog": 197,
    "prog_day": "2026-10-30",
-   "ripe": [
-    "MMORPG 新作",
-    "哈利波特剧集",
-    "日本顶级网球赛事",
-    "漫威电影"
-   ],
-   "sig": "b74d4103f406",
+   "ripe": [],
+   "sig": "d749ef2b55fb",
    "token_cap": 1000000,
-   "tokens_today": 101888,
-   "why": "整理待ちの記事 29 件（14 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 164621,
+   "why": "整理待ちの記事 12 件（10 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
   },
   "emblem": {
    "claude": false,
    "items": [
     "BLEACH Mirrors High",
-    "dota2",
     "あつ森"
    ],
    "need": true,
-   "sig": "5f5f7cd68dc5",
+   "sig": "772b1a1c3a03",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
@@ -71,6 +61,7 @@
     "ILLIT",
     "The Mandalorian",
     "Vaundy",
+    "dota2",
     "ぐでたま",
     "チェーンソーマン",
     "周杰伦",
@@ -78,7 +69,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 3 版面（Actions で Python が埋める）・失敗 13 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
