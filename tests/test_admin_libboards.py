@@ -95,6 +95,16 @@ class LibEdit(unittest.TestCase):
         self.assertIn("管理ページ④に出ない版面", src)
 
 
+class LibState(unittest.TestCase):
+    def test_state_panel(self):   # ③に「ライブラリの版面ごとの状態」：焼かない・店長の令牌で読んだ boards.config から・全員／ユーザーを選ぶ
+        out = render.render_admin({}, {"url": "https://x.supabase.co", "key": "k"}, "u")["admin-emblem.html"]
+        self.assertIn('id="libstate" hidden', out)
+        self.assertIn('id="wl-libstate"><p class="empty">読み込み中', out)
+        self.assertIn("function libState", render.EMM_JS)
+        self.assertIn("emblem_state", render.EMM_JS)
+        self.assertIn("libstate", [s for _, s, _ in render.ADMIN_WHO])
+
+
 class AdminWho(unittest.TestCase):
     def test_every_section_decided(self):   # 区画ごとに「切り替えを入れた」か「入れない理由」のどちらかが書いてある（漏れ 0）
         ids = {i for *_, ids in render.ADMIN_PAGES for i in ids}

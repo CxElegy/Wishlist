@@ -5964,6 +5964,13 @@ EMM_JS = r"""
         tl.querySelector('img').src=x.image;tl.querySelector('b').textContent=x.subject||'小元素';tl.querySelector('small').textContent=x.why||'';g.appendChild(tl);});
       host.insertBefore(d,sh);});
     if(n)paint();}
+  var ST={ok:'済',running:'待ち（次の回で動く）',failed:'失敗（新しい材料が来るまで待つ）'};
+  function libState(rows){   // ライブラリの全版面ごとの小元素の状態（boards.config から。名前は焼かない）
+    var box=$('wl-libstate'),sec=box&&box.closest('section');if(!box)return;sec.hidden=false;box.dataset.n=rows.length;
+    box.innerHTML='<table class="wl-tbl"><thead><tr><th>版面</th><th>人数</th><th>小元素</th><th>状態</th><th>前回</th><th>メモ</th></tr></thead><tbody>'+rows.map(function(r){
+      var c=r.config||{},s=c.emblem_state||{},n=(c.emblem||[]).length,at=s.at?new Date(s.at*1000).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
+      return '<tr data-id="'+r.id+'"><td>'+esc(r.name)+'</td><td>'+(r.followers||0)+'</td><td>'+n+'</td><td>'+esc(ST[s.state]||(n?'—':'まだ'))+'</td><td>'+at+'</td><td>'+esc(s.note||'')+'</td></tr>';}).join('')+'</tbody></table>';
+    if(window.WL_WHO)window.WL_WHO.mount(box,'tr[data-id]',function(el){return [el.dataset.id];});}
   function whoTabs(){if(window.WL_WHO&&bts0())window.WL_WHO.mount(bts0().parentNode,'.emm-bt',function(el){return [el.dataset.bid||'shop'];});}
   function bts0(){return document.querySelector('.emm-boards');}
   var libDone=false;   // ライブラリの全部の版面（②と同じ：店長の令牌で読む・followers 0 も含める）。店長以外は何も足さない
@@ -5971,7 +5978,7 @@ EMM_JS = r"""
     if(libDone||!window.WL_TOK||!CFG.url||!window.fetch)return;libDone=true;
     fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/boards?select=id,name,followers,config&order=followers.desc,id',{headers:{apikey:CFG.key,Authorization:'Bearer '+window.WL_TOK}})
       .then(function(r){return r.ok?r.json():[];}).then(function(rows){
-        var bts=document.querySelector('.emm-boards');if(bts)bts.dataset.lib=rows.length;addLib(rows);whoTabs();},function(){libDone=false;});}
+        var bts=document.querySelector('.emm-boards');if(bts)bts.dataset.lib=rows.length;addLib(rows);whoTabs();libState(rows);},function(){libDone=false;});}
   document.addEventListener('wl-token',loadLib);loadLib();
   function paint(){
     [].forEach.call(document.querySelectorAll('.emm-tile'),function(t){
@@ -6724,18 +6731,18 @@ ADMIN_PAGE_JS = """
 ADMIN_PAGES = [
     ("admin-now.html", "①", "いま", "ライブログ・運行状況・次の実行・Actions と依頼", ["term-panel", "status", "nextrun", "queue"]),
     ("admin-boards.html", "②", "版面", "ウォッチ項目の表・ライブラリの全版面・投票", ["items", "libboards", "votes"]),
-    ("admin-emblem.html", "③", "エンブレム", "小元素の管理（替える・固定・外す）・進捗・版面ごとの状態・判断の例", ["emblem-manage", "emblems", "backend", "emblem-ex"]),
+    ("admin-emblem.html", "③", "エンブレム", "小元素の管理（替える・固定・外す）・進捗・版面ごとの状態・判断の例", ["emblem-manage", "emblems", "backend", "libstate", "emblem-ex"]),
     ("admin-ai.html", "④", "AI 編集", "トークン・編集の前後", ["tokens", "editdiff", "libedit"]),
     ("admin-system.html", "⑤", "しくみ", "全体図・詳しい図・リソース・並列と制限", ["ov", "procs", "res"]),
     ("admin-members.html", "⑥", "お客さまと店長", "登録した人・パスワード・店長（店長のログインで）", ["members"]),
 ]
 # 全区画に「全員／ユーザーを選ぶ」（AUTH_JS の WL_WHO 1 つ）：入れた区画（ページ, 区画 id, 行の選び方）と、入れない区画の理由。
 # 区画を足したらどちらかに書く（tests/test_admin_libboards.py が漏れを数える・ux_check が選んで絞れるか見る）。
-ADMIN_WHO = [("admin-boards.html", "libboards", "tr[data-id]"), ("admin-ai.html", "libedit", "tr[data-id]"), ("admin-emblem.html", "emblem-manage", ".emm-bt")]
+ADMIN_WHO = [("admin-boards.html", "libboards", "tr[data-id]"), ("admin-ai.html", "libedit", "tr[data-id]"), ("admin-emblem.html", "emblem-manage", ".emm-bt"), ("admin-emblem.html", "libstate", "tr[data-id]")]
 ADMIN_WHO_NO = {
     "term-panel": "裏の仕組みの全体のログ（ユーザーごとではない）", "status": "仕組みの運行状況", "nextrun": "仕組みの次の実行", "queue": "仕組みの待ち行列",
     "items": "店長の items.yaml の表（お客さまの版面は ② ライブラリの版面）", "votes": "店長の投票（feedback.json）。お客さまの 👍👎 は未対応＝BACKLOG",
-    "emblems": "小元素の種類ごとの目標（店長の版面）。お客さまの版面は ③ 小元素の管理", "backend": "店長の版面の状態表。ライブラリの版面ごとの状態は未対応＝BACKLOG",
+    "emblems": "小元素の種類ごとの目標（店長の版面）。お客さまの版面は ③ 小元素の管理", "backend": "店長の版面の状態表。ライブラリの版面は ③ ライブラリの版面ごとの状態",
     "emblem-ex": "規則の判断の例（版面に属さない）", "tokens": "AI 編集のトークン（店長の inbox）。全アカウント合計は未対応＝BACKLOG",
     "editdiff": "店長の版面の前後。ライブラリの版面は ④ ライブラリの全版面", "ov": "しくみの全体図", "procs": "しくみの詳しい図", "res": "サーバーの残り",
     "members": "ユーザーの一覧そのもの（1 行 1 人）",
@@ -6820,6 +6827,7 @@ def render_admin(data, db, updated):
         "libboards": '<section class="panel" id="libboards" hidden><h2 class="sh"><span>ライブラリの版面</span><small>お客さまの版面も全部 · 配色を替える（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libboards"><p class="empty">読み込み中…</p></div></section>'
                      '<p class="empty">この欄は店長がログインしたときだけ出ます。</p>',
         "libedit": '<section class="panel" id="libedit" hidden><h2 class="sh"><span>ライブラリの全版面の AI 編集</span><small>お客さまの版面も全部 · 最新の日の記事と整理待ち（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libedit"><p class="empty">読み込み中…</p></div></section>',
+        "libstate": '<section class="panel" id="libstate" hidden><h2 class="sh"><span>ライブラリの版面ごとの状態</span><small>お客さまの版面も全部 · 小元素の枚数と進み具合（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libstate"><p class="empty">読み込み中…</p></div></section>',
         "votes": panel("votes", "投票", "👍 / 👎 · 前回の収集時点", _admin_votes(data.get("votes") or {})),
     }
     counts = _admin_counts(data)
