@@ -211,6 +211,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/008l2owuly8iicjorsei4j30sg11sdqp.jpg": {
+  "w": 520,
+  "h": 690,
+  "target": 720,
+  "v": 3,
+  "local": "pics/59fab5aed6ac784a.webp",
+  "out": [
+   520,
+   690
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "https://0.soompi.io/wp-content/uploads/2026/10/28063552/SM-A2O-LITE.jpg": {
   "w": 1200,
   "h": 800,
@@ -480,6 +493,13 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "下载失败或不是图片",
+  "dead": true,
+  "day": "2026-10-30"
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
@@ -3293,7 +3313,7 @@
   "target": 1280,
   "v": 3
  },
- "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/863731025_18113819123136266_8341631685060904376_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=iTs7h2Vfgs8Q7kNvwGrgaGE&_nc_oc=AdpwhwNnMB8wJEVWRchoaGgxfhPHEpZhmRokbhAvMSY9OhcAKX2Vjv3V9u_HatmMOic&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=OHQSM3yeRulQJQeCJj8uTA&_nc_ss=7860f&oh=00_AQRH0nsqAbOs2W_FQ_TvXr3jcUj86CMG-wMCovABI6q2qw&oe=6AE81D63": {
+ "https://scontent-ord5-1.cdninstagram.com/v/t51.82787-15/863731025_18113819123136266_8341631685060904376_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=iTs7h2Vfgs8Q7kNvwEOWyDc&_nc_oc=AdohhuNLdnqWutYcVHH80Y14R6RQfEHxin30mOGvnWjysjxfAirDZM13AnpHOIPXJZ8&_nc_zt=23&_nc_ht=scontent-ord5-1.cdninstagram.com&_nc_gid=_q4OAD0yBhtHqeRYAsBA0g&_nc_ss=7860f&oh=00_AQSYKDbeFHnIwMGJDJq7yl2Hnr4NGFdXuJPA1fkRSxDSrw&oe=6AE9DF63": {
   "w": 360,
   "h": 640,
   "target": 720,
