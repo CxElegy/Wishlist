@@ -560,7 +560,7 @@ PROCESSES = [
         "files": [".github/workflows/photo_store.yml", "scripts/photo_store.py", "db/photos.sql"], "doc": "docs/rules/design.md",
         "uses": ["supabase"],
         "flow": [
-            {"id": "ph1", "kind": "step", "lane": "actions", "title": "公開ページの主写真を数える（scan）", "text": "docs/home/*.html の主写真（data-e=s）。置いてあるものは最後に使った日を更新、置いてないものは取る候補"},
+            {"id": "ph1", "kind": "step", "lane": "actions", "title": "公開ページの主写真を数える（scan）", "text": "docs/home/*.html ＋お客さまのページ（Storage pages/ をサービス鍵で読む）の写真（data-e=s 主写真・r ぼかし／ギャラリー／欲しい物）。店長もお客さまも同じ置き場・網址ごとに 1 回。置いてあるものは最後に使った日を更新、置いてないものは取る候補"},
             {"id": "ph2", "kind": "step", "lane": "actions", "title": "取って縮めて上げる（fetch・shrink・upload）", "uses": ["supabase"], "x": "8 並列・12 分まで",
              "text": "Referer なしで取り、幅 400／800 の webp に縮める（拡大しない・64px 未満・動くものは置かない）。取れなかった網址は 1 日あけて取り直す"},
             {"id": "ph3", "kind": "step", "lane": "actions", "title": "古いものを消す（evict）", "uses": ["supabase"],
@@ -575,7 +575,7 @@ PROCESSES = [
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。",
         "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py", "harness/d5_sample.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
-            {"id": "p1ph", "kind": "step", "lane": "actions", "title": "主写真は写真の一時保管を先に（render._pic）", "uses": ["supabase"], "text": "state/photo_store.json に置いてある写真なら Storage の 800 の網址を先頭に、原寸は data-fb の落ち先に。管理ページ ① のメーターもここ（流程 photostore）"},
+            {"id": "p1ph", "kind": "step", "lane": "actions", "title": "主写真は写真の一時保管を先に（render._pic）", "uses": ["supabase"], "text": "state/photo_store.json に置いてある写真なら Storage の 800 の網址を先頭に（srcset で 400／800・ぼかしは 400・ギャラリーと欲しい物は 400）、原寸は data-fb の落ち先に（落ちるとき SWAP_JS が srcset を外す）。ux_check が一時保管の割合（店長もお客さまも）と srcset を点検。管理ページ ① のメーターもここ（流程 photostore）"},
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める", "text": "checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
             {"id": "p2b", "kind": "decision", "lane": "actions", "title": "報告が最新の edit.json を取り込んでいる？",

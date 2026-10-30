@@ -146,6 +146,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         heads:[...document.querySelectorAll('.pic.icon,.pic.none')].filter(x=>!x.closest('.nav,.fside')).map(x=>(x.closest('section.sec')||{dataset:{k:'トップ'}}).dataset.k),
         nohead:[...document.querySelectorAll('section.sec')].filter(s=>{const h=s.querySelector('.grid article.card.hero,.grid article.card.wide');return h&&h.classList.contains('nophoto')}).map(s=>s.dataset.k),
         plates:document.querySelectorAll('.pic.icon,.pic.none').length,
+        ph:[...document.querySelectorAll('img[data-e="s"],img[data-e="r"]')].map(i=>i.currentSrc||i.src).filter(u=>{try{return new URL(u).origin!==location.origin}catch(x){return false}}).reduce((a,u)=>{a[0]++;if(/\/storage\/v1\/object\/public\/photos\//.test(u))a[1]++;return a},[0,0]),
         frames:document.querySelectorAll('section.sec .pic').length,
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
@@ -202,6 +203,8 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         bad.append("同じ id が 2 回：" + "・".join(st["dup"]))
     if not (st["nav"] and st["mast"] and st["token"]):
         bad.append("店長と同じ枠組みがない（目次・題字・令牌）")
+    if not page and st["ph"][0] >= 20 and st["ph"][1] * 2 < st["ph"][0]:   # 2026-10-31：店長もお客さまも同じ写真の一時保管（主写真・ぼかし・ギャラリー・欲しい物）。半分も使われていない
+        bad.append(f"写真 {st['ph'][0]} 枚のうち一時保管から出たのは {st['ph'][1]} 枚（半分未満）")
     if st["sw"] > width:
         bad.append(f"横にはみ出す（{st['sw']}px）")
     bad += cover_bad(covered)
@@ -365,6 +368,10 @@ def html_weight_bad(html):
     kept = sum("/storage/v1/object/public/photos/" in s for s in mains)
     if kept and kept * 2 < len(mains):   # 一時保管が動いているのに半分も使われていない（photo_store の取りこぼし・render の外れ）
         bad.append(f"主写真 {len(mains)} 枚のうち写真の一時保管から出たのは {kept} 枚（半分未満）")
+    st = re.findall(r'<img src="[^"]*/photos/[^"]*"([^>]*?)data-e="s">', html)
+    nosrc = sum("srcset=" not in x for x in st)
+    if nosrc:   # 一時保管の幅 400 を置いても srcset で渡さなければ使われない（2026-10-31）
+        bad.append(f"一時保管の主写真 {len(st)} 枚のうち srcset がないのが {nosrc} 枚")
     if 'fetchpriority="high"' not in html and 'data-e="s"' in html:
         bad.append("最初の写真に loading=eager / fetchpriority=high がない（LCP の先読み）")
     return bad

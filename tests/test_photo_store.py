@@ -24,7 +24,25 @@ class PhotoStore(unittest.TestCase):
                 '<img src="https://x.example/a.jpg" alt="" data-e="s">'
                 f'<img src="https://s.example/storage/v1/object/public/photos/{P.name(k)}" data-fb="y" data-e="s">', encoding="utf-8")
             seen, want, total = P.scan(d)
-            self.assertEqual((seen, list(want), total), ({k}, [k], 2))
+            self.assertEqual((seen, list(want), total), ({k}, [k], 1))
+            # ぼかし・ギャラリー・欲しい物(r)もお客さまのページ(extra)も数える
+            k2, k3 = P.key("https://y.example/b.jpg"), P.key("https://z.example/c.jpg")
+            (d / "j.html").write_text('<img class="bg" src="https://y.example/b.jpg" alt="" data-e="r">', encoding="utf-8")
+            seen, want, total = P.scan(d, ['<img src="https://z.example/c.jpg" data-e="s">'])
+            self.assertEqual(set(want), {k, k2, k3})
+
+    def test_render_pic_gives_srcset_and_small_bg(self):
+        import render
+        u = "https://x.example/a.jpg"
+        k = P.key(u)
+        P._CACHE[:] = [{"base": "https://s.example", "p": {k: {"at": 1, "b": 5}}, "x": {}, "stat": {}}]
+        try:
+            h = render._pic({"image": u, "title": "t"})
+        finally:
+            P._CACHE[:] = []
+        self.assertIn(f'<img class="bg" src="https://s.example/storage/v1/object/public/photos/{k}-400.webp"', h)
+        self.assertIn(f'srcset="https://s.example/storage/v1/object/public/photos/{k}-400.webp 400w, https://s.example/storage/v1/object/public/photos/{k}-800.webp 800w"', h)
+        self.assertIn(f'data-fb="{u}"', h)
 
     def test_shrink_never_upscales(self):
         from PIL import Image

@@ -710,7 +710,7 @@ def _headline(story):
 SWAP_JS = ("var me=this,p=me.parentNode,b=p.querySelector('img.bg'),s=me.closest('section'),"
            "f=(me.dataset.fb||'').split(' ').filter(function(u){return u&&!(s&&[].some.call("
            "s.querySelectorAll('.pic img:not(.bg)'),function(i){return i!==me&&i.src===u}))});"
-           "if(f.length){me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
+           "if(f.length){me.removeAttribute('srcset');me.src=f.shift();me.dataset.fb=f.join(' ');if(b)b.src=me.src}"
            "else{var a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto')}else{"
            "var ic=p.querySelector('img.ico');if(b)b.remove();me.remove();"
            "if(ic){p.classList.add('icon');var l=ic.dataset.icons.split(' ');ic.src=l.shift();ic.dataset.icons=l.join(' ')}"
@@ -768,12 +768,16 @@ def _pic(story):
     fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
     # 第一张是 src，其余按顺序备用。本站的高清版打不开时还有原图
     chain = list(dict.fromkeys(v for u in [img, *fbs] if u for v in (_img_url(u), _img_url(u, local=False))))
-    if chain and (kept := photo_store.stored(chain[0])):   # 写真の一時保管に置いてあれば先頭に（原寸は落ち先に残る）
-        chain.insert(0, kept)
+    big = small = None
+    if chain and (big := photo_store.stored(chain[0])):   # 写真の一時保管に置いてあれば先頭に（原寸は落ち先に残る）
+        chain.insert(0, big)
+        small = photo_store.stored(chain[1], 400)
     fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
     src = chain[0] if chain else None
-    tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
-           f'<img src="{e(src)}"{fb} alt="" loading="lazy" referrerpolicy="no-referrer" data-e="s">') if src else ""
+    # 一時保管の写真は幅 400／800 を srcset で渡す（小さい画面・小さい枠は 400）。背景のぼかしは 400 で足りる
+    srcset = f' srcset="{e(small)} 400w, {e(big)} 800w" sizes="(max-width:700px) 100vw, 33vw"' if small else ""
+    tag = (f'<img class="bg" src="{e(small or src)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
+           f'<img src="{e(src)}"{srcset}{fb} alt="" loading="lazy" referrerpolicy="no-referrer" data-e="s">') if src else ""
     label = f'<span class="ph">{e(name)}</span>' if name else ""
     icons = _icons(story)
     icon = ""
@@ -874,7 +878,7 @@ def _extras(story):
     gal = [u for u in (story.get("gallery") or [])[:4] if _safe_url(u)] if isinstance(story.get("gallery"), list) else []
     if gal:
         out += '<div class="xgal">' + "".join(
-            f'<img src="{e(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">' for u in gal) + "</div>"
+            f'<img src="{e(photo_store.stored(u, 400) or u)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">' for u in gal) + "</div>"
     return out
 
 
@@ -2641,7 +2645,7 @@ def _side(works, today, wishes=(), taste=()):
             price = (f'{e(str(x.get("currency", "")))} {x["price"]:,.0f}' if isinstance(x.get("price"), (int, float))
                      else e(str(x.get("price") or "")))
             torn = (x.get("status") == "纠结")
-            pic = (f'<img src="{e(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
+            pic = (f'<img src="{e(photo_store.stored(img, 400) or img)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
                    if _safe_url(img) or img.startswith("wishlist/") else "")
             rows.append(f'<li><span class="wthumb">{pic}</span>'
                         f'<span class="wt"><b>{e(x["name"])}</b><em>{price}</em></span>'
