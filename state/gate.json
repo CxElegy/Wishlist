@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-10-30T16:02:55+00:00",
+ "checked": "2026-10-30T17:33:00+00:00",
  "fired": {
   "at": "2026-10-30T16:02:55+00:00",
   "results": {
@@ -20,7 +20,7 @@
     "sig": "cd1aa7af14a8"
    },
    "items": [],
-   "last_batch": "2026-10-30T15:43:41+00:00",
+   "last_batch": "2026-10-30T16:11:46+00:00",
    "last_error": {
     "at": "2026-10-30T15:23:35+00:00",
     "text": "出刊に失敗：No module named 'requests'"
@@ -31,16 +31,17 @@
    "ripe": [],
    "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 0,
+   "tokens_today": 3564,
    "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
+    "BLEACH Mirrors High",
+    "dota2"
    ],
    "need": true,
-   "sig": "b6804aff6de5",
+   "sig": "ee9feb620745",
    "waiting": [
     "A2O LITE",
     "Astrae Oratio",
@@ -49,7 +50,6 @@
     "ILLIT",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "あつ森",
     "ぐでたま",
     "チェーンソーマン",
@@ -58,7 +58,7 @@
     "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 2 版面（Actions で Python が埋める）・失敗 14 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
