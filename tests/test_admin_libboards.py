@@ -73,9 +73,6 @@ class LibBoards(unittest.TestCase):
             self.assertIn(name, src)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 
 class LibEdit(unittest.TestCase):
     def test_edit_state_panel(self):
@@ -90,8 +87,30 @@ class LibEdit(unittest.TestCase):
     def test_edit_user_switch(self):   # ④にも「全員／ユーザーを選ぶ」（admin.md）。follows を店長の令牌で読み、メールは出さない
         i = render.AUTH_JS.index("function libedit")
         js = render.AUTH_JS[i:i + 2500]
-        self.assertIn("data-who", js)
-        self.assertIn("rest/v1/follows", js)
-        self.assertNotIn("email", js)
+        self.assertIn("whoMount(", js)
+        w = render.AUTH_JS[render.AUTH_JS.index("function whoLoad"):render.AUTH_JS.index("window.WL_WHO")]
+        self.assertIn("rest/v1/follows", w)
+        self.assertNotIn("email", w)
         src = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
         self.assertIn("管理ページ④に出ない版面", src)
+
+
+class AdminWho(unittest.TestCase):
+    def test_every_section_decided(self):   # 区画ごとに「切り替えを入れた」か「入れない理由」のどちらかが書いてある（漏れ 0）
+        ids = {i for *_, ids in render.ADMIN_PAGES for i in ids}
+        have = {s for _, s, _ in render.ADMIN_WHO}
+        self.assertFalse(ids - have - set(render.ADMIN_WHO_NO), ids - have - set(render.ADMIN_WHO_NO))
+        self.assertFalse(have & set(render.ADMIN_WHO_NO))
+
+    def test_one_component(self):   # 切り替えは AUTH_JS の WL_WHO 1 つ。区画が自分で select を作らない
+        self.assertEqual(render.AUTH_JS.count("<select data-who>"), 1)
+        self.assertIn("window.WL_WHO", render.AUTH_JS)
+        for fn in ("function libboards", "function libedit"):
+            i = render.AUTH_JS.index(fn)
+            self.assertIn("whoMount(", render.AUTH_JS[i:i + 3500])
+        self.assertIn("WL_WHO.mount", render.EMM_JS)
+        self.assertNotIn("data-who", render.EMM_JS)
+
+
+if __name__ == "__main__":
+    unittest.main()

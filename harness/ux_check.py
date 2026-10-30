@@ -451,9 +451,38 @@ def check_admin_coverage(pw, base, width):
     miss = [n for n in rest_boards(ses["access_token"])[0] if n not in names]
     if miss:
         bad.append(f"管理ページ④に出ない版面 {len(miss)} 個（{miss[:5]}）")
-    sw = pg.evaluate("[document.querySelectorAll('#wl-libedit [data-who] option').length, (document.querySelector('#wl-libedit [data-who]')||{}).value]")
-    if sw[0] < 2:
-        bad.append("管理ページ④に「全員／ユーザーを選ぶ」の切り替えがない")
+    # 区画ごとの「全員／ユーザーを選ぶ」（render.ADMIN_WHO の全部）：切り替えがある・選ぶと行が follows の通りに絞れる・全員に戻すと元の数
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import render as _r
+    s = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    fl = json.loads(urllib.request.urlopen(urllib.request.Request(
+        s["supabase_url"].rstrip("/") + "/rest/v1/follows?select=account,board_id",
+        headers={"apikey": s["supabase_key"], "Authorization": "Bearer " + ses["access_token"]}), timeout=30).read())
+    mine = {}
+    for f in fl:
+        mine.setdefault(f["account"], set()).add(f["board_id"])
+    acc = next((a for a in sorted(mine) if a != "test1"), None)
+    for page, sec, row in _r.ADMIN_WHO:
+        pg.goto(base + page, wait_until="networkidle", timeout=60000)
+        host = "#wl-" + sec if sec.startswith("lib") else ".emm-boards"
+        try:
+            pg.wait_for_selector(f"{host} [data-who], [data-who]", state="attached", timeout=30000)
+        except Exception:
+            bad.append(f"管理ページ {page} の区画 {sec} に「全員／ユーザーを選ぶ」がない")
+            continue
+        sel = "[data-who]" if host == ".emm-boards" else f"{host} [data-who]"
+        rows = f"{host} {row}" if host != ".emm-boards" else row
+        total = pg.evaluate(f"document.querySelectorAll({json.dumps(rows)}).length")
+        if acc is None:
+            continue
+        pg.select_option(sel, acc)
+        shown = pg.evaluate(f"[...document.querySelectorAll({json.dumps(rows)})].filter(x=>!x.hidden).length")
+        if shown != len(mine[acc]) or shown >= total:
+            bad.append(f"{page} の区画 {sec}：{acc} を選ぶと {shown} 行（期待 {len(mine[acc])}・全体 {total}）")
+        pg.select_option(sel, "")
+        back = pg.evaluate(f"[...document.querySelectorAll({json.dumps(rows)})].filter(x=>!x.hidden).length")
+        if back != total:
+            bad.append(f"{page} の区画 {sec}：全員に戻すと {back} 行（全体 {total}）")
     b.close()
     return bad
 

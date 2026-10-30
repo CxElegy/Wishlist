@@ -4717,6 +4717,30 @@ AUTH_JS = r"""
           .catch(function(e){st.textContent=L.members13+e.message;});};
     }).catch(function(e){box.innerHTML=L.members16+esc(e.message)+'</p>';});
   }
+  // 管理ページ共通の「見る人：全員／ユーザーを選ぶ」（admin.md）。区画ごとに作らず、ここ 1 つ。店長の令牌で follows を読む（RLS）・メールは出さない
+  var whoP=null;
+  function whoLoad(){ return whoP||(whoP=of(base+'/rest/v1/follows?select=account,board_id',{headers:{apikey:A.key,Authorization:'Bearer '+tok}}).then(function(r){return r.ok?r.json():[];}).catch(function(){return [];}).then(function(fl){
+    var who={shop:['test1']}, accs=[]; fl.forEach(function(f){(who[f.board_id]=who[f.board_id]||[]).push(f.account); if(accs.indexOf(f.account)<0) accs.push(f.account);});
+    accs.sort(function(a,b){return a==='test1'?-1:b==='test1'?1:a<b?-1:1;}); return {who:who,accs:accs}; })); }
+  function whoApply(host){
+    var p=host.querySelector(':scope>.wl-who'); if(!p) return;
+    var c=p._w, a=p.querySelector('select').value, n=0, first=null;
+    host.querySelectorAll(c.rowSel).forEach(function(el){
+      var ok=!a||c.idsOf(el).some(function(i){return (c.w.who[i]||[]).indexOf(a)>=0;});
+      el.hidden=!ok; if(ok){n++; first=first||el;} });
+    host.dataset.shown=n; p.querySelector('.wn').textContent=n+L.lb8;
+    var cur=host.querySelector(c.rowSel+'[aria-pressed=true]'); if(cur&&cur.hidden&&first) first.click();   // 選んでいた札が隠れたら見えている最初の札へ
+  }
+  function whoMount(host,rowSel,idsOf){   // host の先頭に切り替えを 1 つ置く（もう置いてあれば絞り直すだけ）。idsOf(要素) = その要素が表す版面の id の配列
+    if(!tok) return Promise.resolve();
+    return whoLoad().then(function(w){
+      var p=host.querySelector(':scope>.wl-who');
+      if(!p){ p=document.createElement('p'); p.className='wl-who';
+        p.innerHTML='<label>'+L.le2+' <select data-who><option value="">'+L.le3+'</option>'+w.accs.map(function(a){return '<option value="'+esc(a)+'">'+(a==='test1'?L.le4:esc(a))+'</option>';}).join('')+'</select></label> <span class="wn" aria-live="polite"></span>';
+        host.insertBefore(p,host.firstChild); p.querySelector('select').onchange=function(){whoApply(host);}; }
+      p._w={w:w,rowSel:rowSel,idsOf:idsOf}; whoApply(host); });
+  }
+  window.WL_WHO={mount:whoMount};
   function libboards(){   // ②版面：ライブラリの全部の版面（お客さまの分を含む）。店長がログインしたときだけ読む（RLS）・名前はHTMLに焼かない
     var box=document.getElementById('wl-libboards'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; if(sec.nextElementSibling) sec.nextElementSibling.hidden=false; return;}
@@ -4736,25 +4760,20 @@ AUTH_JS = r"""
           function go(th){rpc('board_theme_set',{p_board:+tr.dataset.id,p_theme:th}).then(function(){st.textContent=L.lb6;}).catch(function(e){st.textContent=L.lb7+e.message;});}
           tr.querySelector('[data-save]').onclick=function(){var th={};tr.querySelectorAll('input[data-c]').forEach(function(i){th[i.dataset.c]=i.value;});go(th);};
           tr.querySelector('[data-reset]').onclick=function(){go({});};});
+        whoMount(box,'tr[data-id]',function(el){return [el.dataset.id];});
       }).catch(function(e){box.innerHTML=L.members16+esc(e.message)+'</p>';});
   }
   function libedit(){   // ④AI 編集：ライブラリの全版面（お客さまの分を含む）の最新の編集状態。admin_board_edit_state() は店長だけ・名前は HTML に焼かない
     var box=document.getElementById('wl-libedit'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
     sec.hidden=false;
-    Promise.all([rpc('admin_board_edit_state'),of(base+'/rest/v1/follows?select=account,board_id',{headers:{apikey:A.key,Authorization:'Bearer '+tok}}).then(function(r){return r.ok?r.json():[];}).catch(function(){return [];})]).then(function(v){
-      var rs=v[0]||[], fl=v[1]||[], who={}, accs=[];   // 版面→追う account（店長 test1・お客さま u_…）。メールは出さない
-      fl.forEach(function(f){(who[f.board_id]=who[f.board_id]||[]).push(f.account); if(accs.indexOf(f.account)<0) accs.push(f.account);});
-      accs.sort(function(a,b){return a==='test1'?-1:b==='test1'?1:a<b?-1:1;});
-      box.dataset.n=rs.length;
-      box.innerHTML='<p class="st"></p><p><label>'+L.le2+' <select data-who><option value="">'+L.le3+'</option>'+accs.map(function(a){return '<option value="'+esc(a)+'">'+(a==='test1'?L.le4:esc(a))+'</option>';}).join('')+'</select></label></p>'+L.le1+rs.map(function(r){
+    rpc('admin_board_edit_state').then(function(rs){
+      rs=rs||[]; box.dataset.n=rs.length;
+      box.innerHTML=L.le1+rs.map(function(r){
         var tot=r.stories+r.pending, w=tot?Math.round(r.stories/tot*100):0;
         return '<tr data-id="'+r.board_id+'"><td>'+esc(r.name)+'</td><td>'+r.followers+'</td><td>'+(r.day||'—')+'</td><td>'+r.stories+'</td><td>'+r.pending+'</td>'+
           '<td><span style="display:inline-block;width:96px;height:8px;background:#8884;border:1px solid"><i style="display:block;height:100%;width:'+w+'%;background:#4a8fe7"></i></span></td></tr>';}).join('')+'</tbody></table>';
-      var sel=box.querySelector('[data-who]'), st=box.querySelector('p.st');
-      function show(){var a=sel.value, n=0; box.querySelectorAll('tr[data-id]').forEach(function(tr){var ok=!a||(who[tr.dataset.id]||[]).indexOf(a)>=0; tr.hidden=!ok; if(ok) n++;});
-        box.dataset.shown=n; st.textContent=n+L.lb8;}
-      sel.onchange=show; show();
+      whoMount(box,'tr[data-id]',function(el){return [el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'</p>';});
   }
   function refresh(){
@@ -5929,10 +5948,10 @@ EMM_JS = r"""
     var host=bts.parentNode,sh=document.getElementById('emm-sheet'),n=0;
     rows.forEach(function(r){
       var em=((r.config||{}).emblem||[]).filter(function(x){return x&&/^https?:/.test(x.image||'');});
-      if(shop[r.name])return;
+      if(shop[r.name]){var sb=bts.querySelector('.emm-bt[data-n="'+r.name.replace(/"/g,'\\"')+'"]');if(sb)sb.dataset.bid=r.id;return;}   // 店長の版面の札にもライブラリの id を付ける（切り替えが読む）
       lib[r.name]=r.id;var bi='L'+r.id,first=!bts.querySelector('.emm-bt');n++;
       var b=document.createElement('button');b.type='button';b.className='emm-bt';b.dataset.bi=bi;b.dataset.n=r.name;b.setAttribute('aria-pressed',first?'true':'false');
-      b.innerHTML=esc(r.name)+'<small>'+em.length+'</small>';bts.appendChild(b);
+      b.dataset.bid=r.id;b.innerHTML=esc(r.name)+'<small>'+em.length+'</small>';bts.appendChild(b);
       var d=document.createElement('div');d.className='emm-board';d.dataset.bi=bi;d.hidden=!first;
       d.innerHTML='<p class="emm-h"><b>'+esc(r.name)+'</b><span>ライブラリの版面（'+(r.followers||0)+' 人が読んでいる） · 今 '+em.length+' 枚'+(em.length?' · 押すと「どうしたい？」':' · まだ小元素がない（次のライブラリの小元素の回で探す）')+'</span></p><div class="emm-grid">'+
         '</div>';
@@ -5945,12 +5964,14 @@ EMM_JS = r"""
         tl.querySelector('img').src=x.image;tl.querySelector('b').textContent=x.subject||'小元素';tl.querySelector('small').textContent=x.why||'';g.appendChild(tl);});
       host.insertBefore(d,sh);});
     if(n)paint();}
+  function whoTabs(){if(window.WL_WHO&&bts0())window.WL_WHO.mount(bts0().parentNode,'.emm-bt',function(el){return [el.dataset.bid||'shop'];});}
+  function bts0(){return document.querySelector('.emm-boards');}
   var libDone=false;   // ライブラリの全部の版面（②と同じ：店長の令牌で読む・followers 0 も含める）。店長以外は何も足さない
   function loadLib(){
     if(libDone||!window.WL_TOK||!CFG.url||!window.fetch)return;libDone=true;
     fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/boards?select=id,name,followers,config&order=followers.desc,id',{headers:{apikey:CFG.key,Authorization:'Bearer '+window.WL_TOK}})
       .then(function(r){return r.ok?r.json():[];}).then(function(rows){
-        var bts=document.querySelector('.emm-boards');if(bts)bts.dataset.lib=rows.length;addLib(rows);},function(){libDone=false;});}
+        var bts=document.querySelector('.emm-boards');if(bts)bts.dataset.lib=rows.length;addLib(rows);whoTabs();},function(){libDone=false;});}
   document.addEventListener('wl-token',loadLib);loadLib();
   function paint(){
     [].forEach.call(document.querySelectorAll('.emm-tile'),function(t){
@@ -6708,6 +6729,17 @@ ADMIN_PAGES = [
     ("admin-system.html", "⑤", "しくみ", "全体図・詳しい図・リソース・並列と制限", ["ov", "procs", "res"]),
     ("admin-members.html", "⑥", "お客さまと店長", "登録した人・パスワード・店長（店長のログインで）", ["members"]),
 ]
+# 全区画に「全員／ユーザーを選ぶ」（AUTH_JS の WL_WHO 1 つ）：入れた区画（ページ, 区画 id, 行の選び方）と、入れない区画の理由。
+# 区画を足したらどちらかに書く（tests/test_admin_libboards.py が漏れを数える・ux_check が選んで絞れるか見る）。
+ADMIN_WHO = [("admin-boards.html", "libboards", "tr[data-id]"), ("admin-ai.html", "libedit", "tr[data-id]"), ("admin-emblem.html", "emblem-manage", ".emm-bt")]
+ADMIN_WHO_NO = {
+    "term-panel": "裏の仕組みの全体のログ（ユーザーごとではない）", "status": "仕組みの運行状況", "nextrun": "仕組みの次の実行", "queue": "仕組みの待ち行列",
+    "items": "店長の items.yaml の表（お客さまの版面は ② ライブラリの版面）", "votes": "店長の投票（feedback.json）。お客さまの 👍👎 は未対応＝BACKLOG",
+    "emblems": "小元素の種類ごとの目標（店長の版面）。お客さまの版面は ③ 小元素の管理", "backend": "店長の版面の状態表。ライブラリの版面ごとの状態は未対応＝BACKLOG",
+    "emblem-ex": "規則の判断の例（版面に属さない）", "tokens": "AI 編集のトークン（店長の inbox）。全アカウント合計は未対応＝BACKLOG",
+    "editdiff": "店長の版面の前後。ライブラリの版面は ④ ライブラリの全版面", "ov": "しくみの全体図", "procs": "しくみの詳しい図", "res": "サーバーの残り",
+    "members": "ユーザーの一覧そのもの（1 行 1 人）",
+}
 ADMIN_NAV_CSS = """
 .admnav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 18px;padding:0;list-style:none}
 .admnav a{display:inline-flex;align-items:center;min-height:36px;padding:4px 12px;background:var(--card);color:var(--ink);border:2px solid var(--ink);
