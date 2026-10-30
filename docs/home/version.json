@@ -1,32 +1,32 @@
 {
- "admin": "60e9cbfeb5b1",
- "admin-ai": "b72260e324ae",
+ "admin": "b500b5fe9f81",
+ "admin-ai": "cac551b1b60e",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "484d2d80"
+   "d355bd7c"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ba0d6234"
+   "f0a23eec"
   ]
  },
- "admin-boards": "30ba633949d6",
+ "admin-boards": "eac6c0475b8e",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5240b37f"
+   "7175d7c5"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "c099dcd7e9eb",
+ "admin-emblem": "d66de7034685",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "ee6f9695"
+   "e967322a"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "a2932da7ba82",
  "admin-members_marks": {},
- "admin-now": "36aeea5528e7",
+ "admin-now": "1e6aaad68abd",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "520811e2"
+   "b312570e"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "c79519f0"
+   "cdeb3ff3"
   ]
  },
- "admin-system": "f50fdef88f3c",
+ "admin-system": "b9393a350a32",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3cf0fd49"
+   "3f884e32"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c9f88ac5"
+   "95ca2c64"
   ]
  },
  "admin_marks": {},
- "heat": "21f697f71aaf",
+ "heat": "3f1b8c0814bb",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "ce590e7d"
+   "63d6294a"
   ],
   "ranking": [
    "ランキング",
-   "33f6886d"
+   "0ba628cc"
   ]
  },
- "index": "2b4927c472e9",
+ "index": "2c6c009951b0",
  "index_marks": {
   "front": [
    "トップ",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "55b8dbf7"
+   "38e7d014"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "f4b719df"
+   "27761406"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "32b9d3e0"
+   "bdec789f"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -196,6 +196,6 @@
    "c2bddac4"
   ]
  },
- "updated": "10.31 00:19",
+ "updated": "10.31 00:30",
  "wishlist": "a87c6ee86587"
 }

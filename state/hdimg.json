@@ -55,12 +55,6 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/7d297217gy1iidjcjy46vj20m80m8tc6.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
- },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
   "h": 1297,
@@ -498,6 +492,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
   "h": 1097,
@@ -593,19 +593,6 @@
   "h": 400,
   "target": 720,
   "v": 3
- },
- "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
-  "w": 600,
-  "h": 400,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.513,
-  "local": "pics/b84bf57f910f0c92.webp",
-  "out": [
-   1280,
-   853
-  ],
-  "why": "看不清"
  },
  "https://cdn.livedoor.jp/kstyle/a2231d2c178b8fa2a4816938d1b3f2e2_WI.jpg": {
   "w": 1024,
@@ -3418,12 +3405,6 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
  },
- "https://s.yimg.com/lo/mysterio/api/b96d6b7304c10c23406b926591a91c6ed0caa369729b60b3310761c0fe4ed2a9/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaystation_lifestyle_666%2F0b6df3fc2604c0abf36abf6da4b8071a.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
- },
  "https://s.yimg.com/lo/mysterio/api/c674c8fba0d3c7652e10427604c9216bebbccf124c97fe4d3c9fc7d03e5da890/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2F1_9597.png": {
   "w": 1200,
   "h": 1054,
@@ -3656,6 +3637,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.291
+ },
+ "https://static.tweaktown.com/news/1/1/114388_1_gta-6-npcs-get-personality-traits-that-decide-whether-they-flee-or-fight-back_full.png": {
+  "w": 1500,
+  "h": 844,
+  "target": 720,
+  "v": 3
  },
  "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg": {
   "w": 1000,
@@ -4145,6 +4132,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.BizbljJ6e79nxoCcLSJNrw&pid=News&w=600": {
+  "w": 600,
+  "h": 400,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.516,
+  "local": "pics/5d5012e4b0a03bef.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.CCPvmZQjh5FqH9bKeumRPA&pid=News&w=1105": {
   "w": 699,
   "h": 700,
@@ -4437,12 +4437,6 @@
   "v": 3,
   "blur": 0.415
  },
- "https://www.bing.com/th?id=ONUT.rz9MTMrDZ_vVX79e3w7ZlQ&pid=News&w=1200": {
-  "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
- },
  "https://www.bing.com/th?id=ONUT.v9dtj3P9-rcQX1YBCbXqOA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -4691,6 +4685,12 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-1.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
@@ -5005,6 +5005,12 @@
  "https://www.whats-on-netflix.com/wp-content/uploads/2026/10/from-expanding-on-netflix.jpg": {
   "w": 1200,
   "h": 675,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/Breaking/106/532601/623967_1280W.webp": {
+  "w": 1280,
+  "h": 960,
   "target": 1280,
   "v": 3
  },
