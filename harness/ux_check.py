@@ -445,6 +445,21 @@ def check_admin_coverage(pw, base, width):
     ls = pg.evaluate("[+document.getElementById('wl-libstate').dataset.n, document.querySelectorAll('#wl-libstate tr[data-id]').length]")
     if ls != [want, want]:
         bad.append(f"ライブラリの版面 {want} に対して管理ページ③の版面ごとの状態は {ls[0]}（行 {ls[1]}）")
+    # 中身：各行の人数・小元素の枚数・状態の札が boards.config と一致（人数 0・失敗・まだ の版面も）
+    s0 = yaml.safe_load((ROOT / "items.yaml").read_text(encoding="utf-8"))["settings"]
+    brs = json.loads(urllib.request.urlopen(urllib.request.Request(
+        s0["supabase_url"].rstrip("/") + "/rest/v1/boards?select=id,followers,config",
+        headers={"apikey": s0["supabase_key"], "Authorization": "Bearer " + ses["access_token"]}), timeout=30).read())
+    cells = pg.evaluate("Object.fromEntries([...document.querySelectorAll('#wl-libstate tr[data-id]')].map(r=>[r.dataset.id,[...r.cells].slice(1,4).map(c=>c.textContent)]))")
+    lab = {"ok": "済", "running": "待ち", "failed": "失敗"}
+    for b in brs:
+        c = b.get("config") or {}
+        n = len(c.get("emblem") or [])
+        st = (c.get("emblem_state") or {}).get("state")
+        w = lab.get(st, "—" if n else "まだ")
+        g = cells.get(str(b["id"]))
+        if not g or g[0] != str(b.get("followers") or 0) or g[1] != str(n) or not g[2].startswith(w):
+            bad.append(f"③の版面ごとの状態：版面 {b['id']} は 人数・枚数・状態 {g}、本物は {b.get('followers') or 0}・{n}・{w}")
     pg.goto(base + "admin-ai.html", wait_until="networkidle", timeout=60000)
     pg.wait_for_selector("#wl-libedit[data-n]", state="attached", timeout=30000)
     ae = pg.evaluate("+document.getElementById('wl-libedit').dataset.n")
