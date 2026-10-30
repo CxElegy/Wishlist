@@ -1,41 +1,5 @@
 [
 {
-"at": "2026-10-29T22:13:40+00:00",
-"text": "2026-10-30 第 1 バッチを出刊：A2O LITE、ILLIT、The Mandalorian、チェーンソーマン、三星手机（5 版面・19 本・残り 5 版面） · token 新規入力 4.7万・キャッシュ読み 65.4万・出力 3,155",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.45,
-"mem_total": 16872808448,
-"mem_free": 15884173312,
-"disk_used": 10738495488,
-"disk_free": 30584012800,
-"disk_total": 41322508288,
-"peak": 336687104
-},
-"batch": 1,
-"boards": [
-"A2O LITE",
-"ILLIT",
-"The Mandalorian",
-"チェーンソーマン",
-"三星手机"
-],
-"stories": 19,
-"left": 5,
-"edited": 21,
-"run": 1793311420.553995,
-"tok": {
-"in": 20,
-"cw": 46951,
-"cr": 654317,
-"out": 3155,
-"calls": 10,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 704443
-},
-{
 "at": "2026-10-29T22:22:12+00:00",
 "text": "2026-10-30 第 2 バッチを出刊：dota2（1 版面・3 本・今日の整理待ちは全部終わり） · token 新規入力 4,910・キャッシュ読み 46.2万・出力 1,888",
 "level": "ok",
@@ -1844,5 +1808,10 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1427776
+},
+{
+"at": "2026-10-30T15:23:35+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
