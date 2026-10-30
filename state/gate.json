@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-30T15:45:35+00:00",
+ "changed": true,
+ "checked": "2026-10-30T16:02:55+00:00",
  "fired": {
-  "at": "2026-10-30T15:45:35+00:00",
+  "at": "2026-10-30T16:02:55+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "仕事なし（起こさない）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -19,34 +19,20 @@
     "resp": "cse_01W4x6f6msuk2k7EAgHZtxeJ",
     "sig": "cd1aa7af14a8"
    },
-   "items": [
-    "A2O LITE",
-    "Vaundy",
-    "ぐでたま",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事"
-   ],
-   "last_batch": "2026-10-30T15:30:44+00:00",
+   "items": [],
+   "last_batch": "2026-10-30T15:43:41+00:00",
    "last_error": {
     "at": "2026-10-30T15:23:35+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 537,
-   "prog_day": "2026-10-30",
-   "ripe": [
-    "A2O LITE",
-    "Vaundy",
-    "ぐでたま",
-    "周杰伦",
-    "哈利波特剧集",
-    "日本顶级网球赛事"
-   ],
-   "sig": "099d149284ae",
+   "need": false,
+   "prog": 0,
+   "prog_day": "2026-10-31",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 624268,
-   "why": "整理待ちの記事 8 件（6 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 0,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
