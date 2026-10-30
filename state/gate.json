@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-10-30T22:08:29+00:00",
+ "checked": "2026-10-30T22:55:58+00:00",
  "fired": {
-  "at": "2026-10-30T21:49:09+00:00",
+  "at": "2026-10-30T22:55:58+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -12,27 +12,44 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-30T21:49:09+00:00",
+    "at": "2026-10-30T22:55:58+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 131,
-    "resp": "cse_01W4x6f8iiTeTuw8rSQLtzt6",
-    "sig": "897fa9985597"
+    "prog": 144,
+    "resp": "cse_01W4x6f7aV63amRiB3LxhfH6",
+    "sig": "42b194e6168b"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "FROM",
+    "GTA 6",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
+    "gelato pique",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影"
+   ],
    "last_batch": "2026-10-30T21:56:57+00:00",
    "last_error": {
     "at": "2026-10-30T20:59:18+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 144,
    "prog_day": "2026-10-31",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "GTA 6",
+    "哈利波特剧集",
+    "漫威电影"
+   ],
+   "sig": "42b194e6168b",
    "token_cap": 1000000,
    "tokens_today": 244470,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 50 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
