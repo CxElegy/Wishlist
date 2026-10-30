@@ -554,11 +554,28 @@ PROCESSES = [
         ],
     },
     {
+        "id": "photostore", "name": "写真の一時保管", "en": "PHOTO STORE", "lane": "actions", "workflow": "photo_store.yml", "when": "3 時間ごと · 手で",
+        "trigger": "定時（17 */3 * * *）か workflow_dispatch（minutes、既定 12 分）",
+        "summary": "記事の主写真をよその原寸へ直リンクせず、先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置く。網页（render._pic）は置いてあれば先に読み、原寸は落ち先に残す。溜めない：いまのページに載っているか最後に使ってから 14 日以内だけ、全体 300MB 超えは古い順に消す（箱の中だけ）。",
+        "files": [".github/workflows/photo_store.yml", "scripts/photo_store.py", "db/photos.sql"], "doc": "docs/rules/design.md",
+        "uses": ["supabase"],
+        "flow": [
+            {"id": "ph1", "kind": "step", "lane": "actions", "title": "公開ページの主写真を数える（scan）", "text": "docs/home/*.html の主写真（data-e=s）。置いてあるものは最後に使った日を更新、置いてないものは取る候補"},
+            {"id": "ph2", "kind": "step", "lane": "actions", "title": "取って縮めて上げる（fetch・shrink・upload）", "uses": ["supabase"], "x": "8 並列・12 分まで",
+             "text": "Referer なしで取り、幅 400／800 の webp に縮める（拡大しない・64px 未満・動くものは置かない）。取れなかった網址は 1 日あけて取り直す"},
+            {"id": "ph3", "kind": "step", "lane": "actions", "title": "古いものを消す（evict）", "uses": ["supabase"],
+             "text": "ページに載っていない＆最後に使ってから 14 日超え、なお上限 300MB 超えなら古い順。消すのは photos の箱の中だけ"},
+            {"id": "ph4", "kind": "store", "lane": "repo", "title": "state/photo_store.json", "text": "指紋ごとの最後に使った日・大きさ。render が読む"},
+            {"id": "ph5", "kind": "step", "lane": "actions", "title": "網页を作り直して発布", "text": "置いた・消したものがあるときだけ digest.py render"},
+        ],
+    },
+    {
         "id": "render", "name": "ページ生成", "en": "RENDER", "lane": "actions", "workflow": "render.yml", "when": "push のたび · 約 1 分",
         "trigger": "main に push されたとき（コード・items.yaml・愿望清单など）",
         "summary": "収集を待たず、網页だけを 1 分ほどで作り直して公開する。話題度・配色・版面の組み方もここで決まる。管理ページの小元素には胸像待ちの見込み（次の回・外すまでの回数）も出す。失敗した版面の凡例は「新しい材料が来るまで待つ」（時間の待ちは出さない）。",
         "files": [".github/workflows/render.yml", "scripts/render.py", "scripts/lang.py", "harness/d5_sample.py"], "doc": "docs/rules/design.md", "uses": ["facefit", "heat", "octree", "softalt", "frontpick", "fit", "confetti", "lang"],
         "flow": [
+            {"id": "p1ph", "kind": "step", "lane": "actions", "title": "主写真は写真の一時保管を先に（render._pic）", "uses": ["supabase"], "text": "state/photo_store.json に置いてある写真なら Storage の 800 の網址を先頭に、原寸は data-fb の落ち先に。管理ページ ① のメーターもここ（流程 photostore）"},
             {"id": "p1", "kind": "step", "lane": "actions", "title": "main に push", "x": "新しい回が来たら古い回を止める", "text": "checkout は触発時の提交でなく いまの main の先頭（ref: github.ref）"},
             {"id": "p2", "kind": "step", "lane": "web", "title": "篇幅を読む", "text": "S / M / L", "uses": ["supabase"]},
             {"id": "p2b", "kind": "decision", "lane": "actions", "title": "報告が最新の edit.json を取り込んでいる？",
@@ -742,6 +759,7 @@ ARCH = [
         {"id": "p-requests", "proc": "requests"},
         {"id": "p-library", "proc": "library"},
         {"id": "p-libemblem", "proc": "libemblem"},
+        {"id": "p-photostore", "proc": "photostore"},
         {"id": "p-progress", "proc": "progress"},
         {"id": "p-render", "proc": "render", "subs": ["colors"]}]},
     {"id": "repo", "title": "GitHub リポジトリ", "note": "ずっと残る · 全部の元データ", "cost": "無料", "style": "keep", "nodes": [
