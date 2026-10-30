@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "6c181a3b7b5a",
+ "edit_sig": "ff94b1e12696",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -1033,15 +1033,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 5,
-     "source": "Infoseek",
-     "title": "【星野リゾート】福島県のスキー場「ネコマ マウンテン」26-27シーズンの営業開始 - ツリーランゾーンが拡大、新たな宿泊拠点も誕生へ",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1TVHhQMm1CTVJvVmFndHc0U3BOb1U1ZmkzOC1OTVFWVU9tYm5UblgtZWtMalJMMm9BeURFbUQwWHduc0FYcTVHMjd6VnY3ZzFHbFhJUWFmdWl6YmVyV3lOMw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1053,6 +1044,16 @@
      "image_via": "AI 挑选",
      "url": "https://prtimes.jp/main/html/rd/p/000000357.000165726.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "【星野リゾート】福島県のスキー場「ネコマ マウンテン」26-27シーズンの営業開始 - ツリーランゾーンが拡大、新たな宿泊拠点も誕生へ",
+     "highlight": "ツリーランゾーンが拡大",
+     "image": "https://media.image.infoseek.co.jp/isnews/photos/mynavi/mynavi_3241189_0-enlarge.jpg",
+     "image_via": "og:image",
+     "url": "https://news.infoseek.co.jp/article/mynavi_3241189/",
+     "weight": "normal"
     }
    ],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
