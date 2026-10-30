@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-10-30T19:31:21+00:00",
+ "checked": "2026-10-30T19:41:38+00:00",
  "fired": {
-  "at": "2026-10-30T19:31:22+00:00",
+  "at": "2026-10-30T19:41:38+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,15 +12,33 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-30T18:33:59+00:00",
+    "at": "2026-10-30T19:41:38+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 0,
-    "resp": "cse_01W4x6f8i9EmJACsSC4V7rMv",
-    "sig": "5f6045eb96f7"
+    "prog": 92,
+    "resp": "cse_01W4x6f9b7LsGxDWaoZQ8xra",
+    "sig": "537549686950"
    },
    "items": [
-    "チェーンソーマン"
+    "A2O LITE",
+    "Astrae Oratio",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
    "last_batch": "2026-10-30T18:56:01+00:00",
    "last_error": {
@@ -30,37 +48,47 @@
    "need": true,
    "prog": 92,
    "prog_day": "2026-10-31",
-   "ripe": [],
-   "sig": "aed3e87ab20b",
+   "ripe": [
+    "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "Vaundy",
+    "あつ森",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影"
+   ],
+   "sig": "537549686950",
    "token_cap": 1000000,
    "tokens_today": 88735,
-   "why": "整理待ちの記事 1 件（1 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 52 件（19 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "dota2",
+    "哈利波特剧集",
     "FROM",
+    "漫威电影",
     "GTA 6",
-    "ILLIT",
+    "あつ森",
+    "A2O LITE",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
     "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "绝区零",
+    "Astrae Oratio",
+    "ILLIT",
+    "ぐでたま"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "need": true,
+   "sig": "c7c7d879161d",
+   "waiting": [
+    "チェーンソーマン"
+   ],
+   "why": "足りない 15 版面（Actions で Python が埋める）・失敗 1 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
