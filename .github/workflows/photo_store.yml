@@ -2,7 +2,7 @@ name: 写真の一時保管
 
 # 記事の主写真を先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置き、網页はそちらを先に読む（scripts/photo_store.py）。
 # 溜めない：いまのページに載っているか、最後に使ってから 14 日以内だけ。全体 300MB 超えは古い順に消す（箱の中だけ）。
-# 置いたら state/photo_store.json を書き、網页を作り直して発布する。ログは数だけ。
+# 置いたら state/photo_store.json だけ発布し、網页の作り直しは render.yml を起こして任せる。ログは数だけ。
 
 on:
   schedule:
@@ -42,22 +42,27 @@ jobs:
       - name: 写真を置く・古いのを消す
         id: store
         run: python scripts/photo_store.py --minutes "${{ inputs.minutes || '12' }}"
-      - name: 網页を作り直して発布
+      - name: 状態を発布して網页の作り直しを起こす
+        # 網页の作り直しは 3 分かかり、その間に main が進んで push が負けた（2026-10-31 の run #2 が 3 回とも負けて 271 枚の記録を失った）。
+        # ここは状態の 1 ファイルだけを最新の main に載せ直して push（数秒）、作り直しは render.yml に任せる。
         if: steps.store.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for i in 1 2 3; do
-            python scripts/digest.py render
-            git add docs state/photo_store.json
-            git diff --cached --quiet && exit 0
-            git commit -q -m "写真の一時保管"
-            git push && exit 0
-            git reset -q --hard HEAD~1 && git pull -q --rebase
-            python scripts/photo_store.py --minutes 1
-            sleep $((i * 5))
+          cp state/photo_store.json "$RUNNER_TEMP/ps.json"
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp "$RUNNER_TEMP/ps.json" state/photo_store.json
+            git add state/photo_store.json
+            git diff --cached --quiet && break
+            git commit -q -m "写真の一時保管：状態"
+            git push -q && break
+            sleep $((i * 4))
+            [ "$i" = 5 ] && exit 1
           done
-          exit 1
+          gh workflow run render.yml
       - name: 接着跑（順番待ちが残っていて増えたとき）
         if: steps.store.outputs.more == 'true' && inputs.chain < 10
         env:

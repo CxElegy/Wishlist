@@ -1,7 +1,7 @@
 """写真の一時保管（2026-10-31，用户定的：記事の写真を先にサーバーへ置き、読み込みを速くする。溜めない）。
 
 網页の記事の主写真は、よそのサイトの原寸へ直リンクだった（重い・遅い・防盗链で落ちる）。この係が
-  1. docs/home/*.html の主写真（data-e="s"）の網址を数え、
+  1. docs/home/*.html とお客さまのページ（Storage pages/）の写真（data-e="s"／"r"：主写真・ぼかし・ギャラリー・欲しい物）の網址を数え、
   2. まだ置いていないものを Referer なしで取って、幅 400／800 の webp に縮め、
   3. Supabase Storage の公開の箱 photos（db/photos.sql）へ上げる。
 render.py の _pic は置いてあるものなら 800 の網址を先頭にし、原寸の網址は落ち先（data-fb）に残す。
@@ -35,7 +35,7 @@ CAP = 300 * 1024 * 1024
 RETRY_DAYS = 1       # 取れなかった網址は 1 日あけて取り直す
 MAX_FETCH = 12 * 1024 * 1024
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-IMG_RE = re.compile(r'<img src="([^"]*)"([^>]*?)data-e="s">')
+IMG_RE = re.compile(r'<img\b[^>]*?\bsrc="([^"]*)"[^>]*?data-e="[sr]"')   # 主写真(s)・ぼかし／ギャラリー／欲しい物(r)
 
 
 def day():
@@ -65,32 +65,55 @@ def load(path=None):
 _CACHE = []
 
 
-def stored(url):
-    """render 用：置いてある写真なら一時保管の 800 の網址、なければ None。"""
+def stored(url, w=800):
+    """render 用：置いてある写真なら一時保管の幅 w（400／800）の網址、なければ None。"""
     if not _CACHE:
         _CACHE.append(load())
     st = _CACHE[0]
     k = key(url)
-    return public(st["base"], k) if st["base"] and k in st["p"] else None
+    return public(st["base"], k, w) if st["base"] and k in st["p"] else None
 
 
 def pages(site=None):
     return sorted((site or sitedir.SITE_DIR).glob("*.html"))
 
 
-def scan(site=None):
-    """公開ページの主写真を数える。→ (載っている指紋の集合, {指紋: 原寸の網址}（まだ置いていないもの）, 主写真の枚数)。"""
-    seen, want, total = set(), {}, 0
+def user_pages(base, keyv):
+    """お客さまのページ（Storage の pages/<本人>/*.html。user_pages.py が作る）の本文。店長と同じ置き場を使うため、写真を数える。取れなければ空。"""
+    out = []
+    try:
+        req = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/list/pages", data=json.dumps({"prefix": "", "limit": 1000}).encode(),
+                                     method="POST", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}", "Content-Type": "application/json"})
+        folders = [d["name"] for d in json.loads(urllib.request.urlopen(req, timeout=30).read()) if d.get("name")]
+    except Exception:  # noqa: BLE001
+        return out
+    for fo in folders:
+        try:
+            r = urllib.request.Request(f"{base.rstrip('/')}/storage/v1/object/pages/{fo}/index.html", headers={"apikey": keyv, "Authorization": f"Bearer {keyv}"})
+            out.append(urllib.request.urlopen(r, timeout=30).read().decode("utf-8", "replace"))
+        except Exception:  # noqa: BLE001
+            continue
+    return out
+
+
+def scan_text(texts, seen, want):
     pre = f"/storage/v1/object/public/{BUCKET}/"
-    for f in pages(site):
-        for src, _ in IMG_RE.findall(f.read_text(encoding="utf-8")):
+    for text in texts:
+        for src in IMG_RE.findall(text):
             src = html.unescape(src)
-            total += 1
             if pre in src:
                 seen.add(src.rsplit("/", 1)[-1].split("-")[0])
             elif src.startswith("http"):
                 want[key(src)] = src
-    return seen, want, total
+
+
+def scan(site=None, extra=()):
+    """公開ページ（＋お客さまのページ extra）の写真を数える。→ (載っている指紋の集合, {指紋: 原寸の網址}（まだ置いていないもの）, 写真の種類の数)。
+    店長もお客さまも、主写真・ぼかし・ギャラリー・欲しい物の写真を同じ置き場で（網址ごとに 1 回）。"""
+    seen, want = set(), {}
+    scan_text([f.read_text(encoding="utf-8") for f in pages(site)], seen, want)
+    scan_text(extra, seen, want)
+    return seen, want, len(seen | set(want))
 
 
 def shrink(data):
@@ -165,7 +188,7 @@ def run(minutes=10, base=None, keyv=None, site=None, path=None, workers=8):
     base = base or ""
     st = load(path)
     p, x = st["p"], st["x"]
-    seen, want, total = scan(site)
+    seen, want, total = scan(site, user_pages(base, keyv) if base and keyv else ())
     today = day()
     seen |= set(want) & set(p)   # 置いたが、まだ網页を作り直していない分
     for k in seen & set(p):
