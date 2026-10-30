@@ -510,7 +510,7 @@
   "星巴克马克杯": 7,
   "滑雪": 9,
   "绝区零": 8,
-  "gelato pique": 8,
+  "gelato pique": 10,
   "A2O LITE": 14,
   "チェーンソーマン": 10,
   "Vaundy": 2,
@@ -927,7 +927,8 @@
    "weight": "lead",
    "refs": [
     2,
-    1
+    1,
+    10
    ],
    "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-90025195-tsk-000-1-thumb.jpg?exp=10800"
   },
@@ -961,7 +962,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    7
+    7,
+    9
    ]
   }
  ],
