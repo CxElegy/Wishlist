@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "e59120d9c451",
+ "edit_sig": "90663cf6d671",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -52,9 +52,8 @@
      "date": "2026-10-30",
      "headline": "‘아스오라’ 개발진에게 물었다, CBT 이후 무엇이 달라지나?",
      "highlight": "",
-     "image": null,
-     "source": "PNN",
-     "source_icon": "https://cdn.ipnn.co.kr/favicon.ico",
+     "image": "https://cdn.ipnn.co.kr/news/photo/202610/418071_79925_3013.jpg",
+     "image_via": "og:image",
      "url": "https://www.ipnn.co.kr/news/articleView.html?idxno=418071",
      "weight": "normal"
     },
@@ -1391,29 +1390,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-10-25",
-     "n": 7,
-     "source": "ABEMA",
-     "title": "ゼルデン／オーストリア(10/25) 男子 ジャイアントスラローム【アルペンスキー FIS ワールドカップ 2026/27】",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1FeTg4RElMcEJFUEptTjA4RUVYaTNZTTBJallEeFMzUmlIMWJfYTUtbGdmQlpXcU4zV29nN290Q09JQkRRUmdaWm5Dbng0Sm1ubFBOSmpCNWM0WWF0OW1kTHlIelJ0VU1RWWVEZVVZMmRDdw?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 8,
-     "source": "Infoseek",
-     "title": "福島・会津磐梯と山形・蔵王の広域エリア連携「Tohoku Deep Trail」が始動。「星野リゾート ネコマ マウンテン」と「蔵王温泉スキー場」を結ぶ直行バス運行と特別滞在パッケージの発売が決定！",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1ZREY0QWF6c0gyY3drQml6ek1PVExySlRfQWNlNXktejJXNHRmVGlLcHd4Q0FPTW5mOUJJZ2JhelR2UXdaazJfU2JZRzEyb1hlTjlvbmlwUDk5RnVJUXpiLV85ZG1hWXF5dVV4aGY3d0V4UQ?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 9,
-     "source": "Dellows News",
-     "title": "686が日本限定スノーボードウェアLS1とLS2の2026-27モデルを発売",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFA1MkJxYTBhSGpkV1I0OUw1WGFEUTFKNldSc1V0cEV6MVBUU182a3gyS21Hc0dpUzd0dDI2RUNfSTZuS0NEOGc?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -1444,6 +1420,16 @@
      "image": "https://prcdn.freetls.fastly.net/release_image/14685/994/14685-994-c26c451d29ca3cd34fd598df0e05b477-3900x2759.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
      "image_via": "og:image",
      "url": "https://prtimes.jp/main/html/rd/p/000000994.000014685.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-27",
+     "headline": "686が日本限定スノーボードウェアLS1とLS2の2026-27モデルを発売",
+     "highlight": "2026-27モデル",
+     "image": "https://news.dellows.jp/wp-content/uploads/2026/10/900914_1.jpg",
+     "image_via": "og:image",
+     "url": "https://news.dellows.jp/900914/",
      "weight": "normal"
     }
    ],

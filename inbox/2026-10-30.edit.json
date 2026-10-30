@@ -482,7 +482,7 @@
   "The Mandalorian": 8,
   "周杰伦": 12,
   "星巴克马克杯": 5,
-  "滑雪": 6,
+  "滑雪": 9,
   "绝区零": 6,
   "gelato pique": 6,
   "A2O LITE": 14,
@@ -819,7 +819,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    8
    ]
   },
   {
@@ -829,6 +830,15 @@
    "weight": "normal",
    "refs": [
     6
+   ]
+  },
+  {
+   "headline": "686が日本限定スノーボードウェアLS1とLS2の2026-27モデルを発売",
+   "highlight": "2026-27モデル",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],

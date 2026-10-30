@@ -579,6 +579,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.ipnn.co.kr/news/photo/202610/418071_79925_3013.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
   "target": 1280,
   "v": 3,
@@ -2350,6 +2356,12 @@
   "w": 1024,
   "h": 499,
   "target": 1280,
+  "v": 3
+ },
+ "https://news.dellows.jp/wp-content/uploads/2026/10/900914_1.jpg": {
+  "w": 683,
+  "h": 1024,
+  "target": 720,
   "v": 3
  },
  "https://news.dellows.jp/wp-content/uploads/2026/10/901015_1.jpg": {
