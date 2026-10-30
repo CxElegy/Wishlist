@@ -4791,7 +4791,7 @@ AUTH_JS = r"""
       whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'</p>';});
   }
-  function libaccts(){   // ②欲しい物と写真・篇幅・依頼・言語：全アカウント分（admin_accounts／admin_ui_langs は店長だけ・名前とメールは HTML に焼かない）
+  function libaccts(){   // ②欲しい物と写真・分量・依頼・言語：全アカウント分（admin_accounts／admin_ui_langs は店長だけ・名前とメールは HTML に焼かない）
     var box=document.getElementById('wl-libaccts'); if(!box) return;
     var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
     sec.hidden=false;
