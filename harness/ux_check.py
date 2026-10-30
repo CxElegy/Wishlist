@@ -522,6 +522,8 @@ def check_admin_coverage(pw, base, width):
 def check_admin_pages(pw, base, width, out):
     """管理ページのトップと 6 つの別ページ：開ける・切り替え（7 つのリンク）・横にはみ出さない・JS のエラーなし・前の欄が全部どこかにある。"""
     b = pw.chromium.launch(channel=os.environ.get("UX_CHANNEL") or None)
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import render as _r
     bad, ids, h3 = [], set(), set()
     for f in ADMIN_FILES:
         pg = b.new_page(viewport={"width": width, "height": 900})
@@ -538,6 +540,10 @@ def check_admin_pages(pw, base, width, out):
                 bad.append(f"{f} ④の tokens の注記が事実とずれている（お客さまの版面はまだ編集されない）")
             elif "店長の inbox の分だけ" not in htm:
                 bad.append(f"{f} ④の tokens に「店長の分だけ」の注記がない")
+        miss = pg.evaluate("""(ids)=>ids.filter(i=>{const s=document.getElementById(i);return s&&!s.querySelector('[data-scope=mine]')})""",
+                           [k for k, v in _r.ADMIN_WHO_NO.items() if v.startswith("店長の") and k in {i for fn, _, _, _, ids in _r.ADMIN_PAGES if fn == f for i in ids}])
+        if miss:   # 「店長の分だけ」の区画は、画面に範囲の注記がある
+            bad.append(f"{f} 店長の分だけの区画に注記がない：{','.join(miss)}")
         if f == "admin-emblem.html":   # E16：札のない小元素の目の線が枠の上から 30% ±5% を外れる（emblem_face.view。札 short は別の写真に替える対象）
             ey = pg.evaluate(EYE_JS)
             if ey["off"]:

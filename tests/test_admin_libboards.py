@@ -36,8 +36,16 @@ class LibBoards(unittest.TestCase):
         self.assertEqual(len(row), 1)
         self.assertNotIn("- [x]", row[0])
         # 「店長の分だけ」の区画（ADMIN_WHO_NO の理由に「店長の」）が残る間は、全部が [x] ではない
-        mine = [k for k, v in render.ADMIN_WHO_NO.items() if "店長の" in v]
+        mine = [k for k, v in render.ADMIN_WHO_NO.items() if v.startswith("店長の")]
         self.assertTrue(mine)
+        # 区画ごとに、画面の注記が出ている（見出しの文だけでは「店長の分だけ」と読めなかった・2026-10-31）
+        out = {}
+        for h in render.render_admin({"items": [], "votes": {}}, {"url": "https://x.supabase.co", "key": "k"}, "u").values():
+            out[h] = 1
+        for k in mine:
+            hits = [h for h in out if f'id="{k}"' in h and 'data-scope="mine"' in h.split(f'id="{k}"', 1)[1].split("</section>", 1)[0]]
+            self.assertTrue(hits, f"{k}: 画面に「店長の分だけ」の注記がない")
+        self.assertGreaterEqual(len(mine), 6)
 
     def test_page_is_in_admin_pages(self):
         ids = [i for f, _, _, _, ids in render.ADMIN_PAGES if f == "admin-boards.html" for i in ids]

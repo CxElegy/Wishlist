@@ -6320,7 +6320,7 @@ def _admin_edit_tokens(d):
         sm = g["sum"]
         out += (f'<h3 class="h3">{e(g["when"])} の回 <small>{len(g["batches"])} バッチ · 新規入力 {_tk(sm.get("in", 0) + sm.get("cw", 0))}'
                 f' · キャッシュ読み {_tk(sm.get("cr"))} · 出力 {_tk(sm.get("out"))}</small></h3><ol class="tks">{rows}</ol>')
-    return out + ('<p class="mt-x">この数字は店長の inbox の分だけです（アカウント別・版面別の内訳はありません）。お客さまの版面はまだ編集されません（版面ごとの記事を board_stories に書く処理がまだ無い）。全アカウントの合計になるのは、お客さまの版面の編集ができてからです。</p>'
+    return out + ('<p class="mt-x" data-scope="mine">この数字は店長の inbox の分だけです（アカウント別・版面別の内訳はありません）。お客さまの版面はまだ編集されません（版面ごとの記事を board_stories に書く処理がまだ無い）。全アカウントの合計になるのは、お客さまの版面の編集ができてからです。</p>'
                   '<p class="mt-x">数字は Claude のセッションの記録から（推定ではない）。キャッシュ読みは料金がずっと安い。'
                   'サブスク枠の残りは <a href="https://claude.ai/settings/usage" target="_blank" rel="noopener noreferrer">Claude の設定 → 使用量</a> で。</p>')
 
@@ -6758,7 +6758,7 @@ ADMIN_WHO = [("admin-boards.html", "libboards", "tr[data-id]"), ("admin-ai.html"
 ADMIN_WHO_NO = {
     "term-panel": "裏の仕組みの全体のログ（ユーザーごとではない）", "status": "仕組みの運行状況", "nextrun": "仕組みの次の実行", "queue": "仕組みの待ち行列",
     "items": "店長の items.yaml の表（お客さまの版面は ② ライブラリの版面）", "votes": "店長の投票（feedback.json・前回の収集時点の作品ごと）。全アカウント分は ② ライブラリの全アカウントの投票",
-    "emblems": "小元素の種類ごとの目標（店長の版面）。お客さまの版面は ③ 小元素の管理", "backend": "店長の版面の状態表。ライブラリの版面は ③ ライブラリの版面ごとの状態",
+    "emblems": "店長の版面の小元素の種類ごとの目標。お客さまの版面は ③ 小元素の管理", "backend": "店長の版面の状態表。ライブラリの版面は ③ ライブラリの版面ごとの状態",
     "emblem-ex": "規則の判断の例（版面に属さない）", "tokens": "店長の inbox の AI 編集の分だけ（実行ログの数字はアカウント別でも版面別でもない）。お客さまの版面はまだ編集されず、board_stories に書く処理も無い＝全アカウント合計は未対応（お客さま専用の編集ができたら版面ごとに残して足す）",
     "editdiff": "店長の版面の前後。ライブラリの版面は ④ ライブラリの全版面", "ov": "しくみの全体図", "procs": "しくみの詳しい図", "res": "サーバーの残り",
     "members": "ユーザーの一覧そのもの（1 行 1 人）",
@@ -6819,6 +6819,9 @@ def render_admin(data, db, updated):
     dialogs = "".join(processes.detail(p) for p in processes.PROCESSES)   # 「次の実行」の名前・全体図の部品を押すと開く流れの図
 
     def panel(i, title, sub, body, cls=""):
+        why = ADMIN_WHO_NO.get(i, "")
+        if why.startswith("店長の") and 'data-scope="mine"' not in body:   # 店長の分だけの区画は、画面にそう書く（全区画に同じ部品・tests と ux_check が数える）
+            body = f'<p class="mt-x" data-scope="mine"><b>範囲：店長の分だけ</b>。{e(why)}</p>' + body
         return f'<section class="panel{cls}" id="{i}"><h2 class="sh"><span>{title}</span><small>{sub}</small></h2>{body}</section>'
     S = {
         "members": '<section class="panel" id="members" hidden><h2 class="sh"><span>お客さまと店長</span><small>だれでもメールアドレス＋パスワードで始められる（重ならない・規約に同意・メールは送らない）· お客さまのパスワードを変える · 店長は 5 人まで</small></h2><div class="wl-mem" id="wl-members"><p class="empty">読み込み中…</p></div></section>'
