@@ -454,7 +454,8 @@
     12,
     13,
     14,
-    16
+    16,
+    18
    ],
    "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/03/harry-potter-season-1-alastair-stout-dominic-mclaughlin-arabella-stanton.jpg?w=1600&h=900&fit=crop"
   },
@@ -500,19 +501,19 @@
   "GTA 6": 76,
   "三星手机": 40,
   "ILLIT": 46,
-  "哈利波特剧集": 17,
+  "哈利波特剧集": 18,
   "日本顶级网球赛事": 28,
   "dota2": 15,
-  "MMORPG 新作": 12,
-  "BLEACH Mirrors High": 7,
+  "MMORPG 新作": 13,
+  "BLEACH Mirrors High": 8,
   "The Mandalorian": 8,
   "周杰伦": 15,
   "星巴克马克杯": 7,
-  "滑雪": 9,
+  "滑雪": 10,
   "绝区零": 8,
   "gelato pique": 10,
   "A2O LITE": 14,
-  "チェーンソーマン": 10,
+  "チェーンソーマン": 11,
   "Vaundy": 2,
   "あつ森": 8,
   "ぐでたま": 2,
@@ -718,6 +719,15 @@
     "label": "ショーケース配信",
     "time": "20:00"
    }
+  },
+  {
+   "headline": "MMO 新作《王國 W：血盟之誓》事前登錄開跑主打「3 種族 ×5 武器」自由戰鬥",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    13
+   ]
   }
  ],
  "BLEACH Mirrors High": [
@@ -898,6 +908,15 @@
    "refs": [
     9
    ]
+  },
+  {
+   "headline": "苗場・かぐら・六日町八海山スキー場で今シーズンからマイナンバーカード連携商品を販売開始",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
   }
  ],
  "绝区零": [
@@ -1066,6 +1085,15 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  },
+  {
+   "headline": "「MAPPA EXPO 15th Anniversary」後期より、劇場版「チェンソーマン レゼ篇」エリア",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    11
    ]
   }
  ],

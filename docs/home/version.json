@@ -1,10 +1,10 @@
 {
- "admin": "9b14ac8dca82",
- "admin-ai": "d01b1f66935b",
+ "admin": "8e92f6e1d702",
+ "admin-ai": "aebbaa0094c1",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "01d3fabb"
+   "93741d40"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "ad88d7085be6",
+ "admin-emblem": "841d3f77942c",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "28dd17ef"
+   "11504db6"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "ca071da88668",
+ "admin-now": "dfb7083ed166",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "57a66e01"
+   "7e96aa69"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "ff0736e8"
   ]
  },
- "admin-system": "e4d5afb7e795",
+ "admin-system": "ea19863ddc6a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3a168135"
+   "b7ca1384"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -93,7 +93,7 @@
    "924810d6"
   ]
  },
- "index": "020eb750ef73",
+ "index": "cae4d7bff8ee",
  "index_marks": {
   "front": [
    "トップ",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "cb2ca695"
+   "a4d90aed"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "27fc4284"
+   "5e093ecc"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -196,6 +196,6 @@
    "19b1dc0a"
   ]
  },
- "updated": "10.30 20:06",
+ "updated": "10.30 20:16",
  "wishlist": "3ffe0e7d185f"
 }

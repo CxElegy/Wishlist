@@ -1215,6 +1215,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image-cdn.learnin.tw/bnextmedia/image/album/2026-10/img-mcp-096a69ce57966fc5.jpg?w=900&output=webp": {
+  "w": 900,
+  "h": 507,
+  "target": 720,
+  "v": 3
+ },
  "https://image.ajunews.com/content/image/2026/10/23/20261023082805604431.gif": {
   "w": 594,
   "h": 1056,
@@ -2000,11 +2006,11 @@
   ],
   "why": "看不清"
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FMBSnews%252Fa8%252FMBSnews_article3052357%252FMBSnews_article3052357_1.jpg,zoom=560x320,quality=100,type=jpg": {
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F53%252FKyodo_1488844386926903972%252FKyodo_1488844386926903972_1.jpg,zoom=560x320,quality=100,type=jpg": {
+  "w": 455,
+  "h": 320,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
+  "v": 3
  },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
@@ -4075,12 +4081,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.1fQveZyPmZIlNixQR5V80w&pid=News&w=800": {
-  "w": 700,
-  "h": 624,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.2lp2WqkTcKGG_YLk4raCTQ&pid=News&w=1200": {
   "w": 700,
   "h": 390,
@@ -4224,6 +4224,13 @@
   "h": 467,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.UBRO9CAO0UKiuMrm--RzFg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.417
  },
  "https://www.bing.com/th?id=ONUT.UKV_ApYouzJkc9fq-plfSQ&pid=News&w=600": {
   "w": 600,

@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-29T19:10:39+00:00",
-"text": "2026-10-30 第 4 バッチを出刊：A2O LITE（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 6,423・キャッシュ読み 44.6万・出力 2,039",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.19,
-"mem_total": 16872808448,
-"mem_free": 15812141056,
-"disk_used": 10877374464,
-"disk_free": 30445133824,
-"disk_total": 41322508288,
-"peak": 366075904
-},
-"batch": 4,
-"boards": [
-"A2O LITE"
-],
-"stories": 2,
-"left": 0,
-"edited": 21,
-"run": 1793299540.459833,
-"tok": {
-"in": 8,
-"cw": 6415,
-"cr": 445567,
-"out": 2039,
-"calls": 4,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 454029,
-"secs": 1499,
-"run_tok": {
-"in": 52,
-"cw": 87502,
-"cr": 2288001,
-"out": 14334,
-"calls": 26,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-29T19:58:22+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1812,5 +1771,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 143840
+},
+{
+"at": "2026-10-30T11:16:45+00:00",
+"text": "2026-10-30 第 3 バッチを出刊：BLEACH Mirrors High（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 6,885・キャッシュ読み 52.2万・出力 2,401",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.21,
+"mem_total": 16872808448,
+"mem_free": 15937552384,
+"disk_used": 10756124672,
+"disk_free": 30566383616,
+"disk_total": 41322508288,
+"peak": 336572416
+},
+"batch": 3,
+"boards": [
+"BLEACH Mirrors High"
+],
+"stories": 1,
+"left": 0,
+"edited": 23,
+"run": 1793357222.8663476,
+"tok": {
+"in": 13,
+"cw": 6872,
+"cr": 522360,
+"out": 2401,
+"calls": 7,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 531646,
+"secs": 1783,
+"run_tok": {
+"in": 34,
+"cw": 50292,
+"cr": 1199802,
+"out": 5589,
+"calls": 18,
+"model": "claude-sonnet-5-5"
+}
 }
 ]
