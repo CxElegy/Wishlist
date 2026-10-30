@@ -1,10 +1,10 @@
 {
- "admin": "ae1dbb0fa6e9",
- "admin-ai": "f32ce9a5d3ec",
+ "admin": "2d2ad77a2f68",
+ "admin-ai": "28466b5e2b85",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "65ee3f11"
+   "053d7a66"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "c9b59832a404",
+ "admin-emblem": "d36d09830b12",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "16a4eeb0"
+   "84aa5ee2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "7ddb8c1ace7e",
+ "admin-now": "e45fc8ffc98d",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "942ebe19"
+   "72bf5c8f"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "9b7a4a65"
   ]
  },
- "admin-system": "48662796b133",
+ "admin-system": "b3004ba74b40",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fd85df7d"
+   "2b6fe8c5"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "7a008531"
+   "68ffe826"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "ac123465"
   ]
  },
- "index": "ea6c5e664019",
+ "index": "ae1d861d8e20",
  "index_marks": {
   "front": [
    "トップ",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "f8db4141"
+   "623d436f"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 11:15",
+ "updated": "10.30 11:23",
  "wishlist": "7af11c19700f"
 }
