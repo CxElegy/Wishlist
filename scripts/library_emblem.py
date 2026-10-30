@@ -589,7 +589,7 @@ def main(argv):
     if not (base and key):
         raise SystemExit("SUPABASE_SERVICE_KEY がありません")
     shop = {f["board_id"] for f in digest.supabase("follows?account=eq.test1&select=board_id") or []}
-    boards = [b for b in digest.supabase("boards?followers=gt.0&select=id,name,wd,config&order=id") or [] if b["id"] not in shop]
+    boards = [b for b in digest.supabase("boards?select=id,name,wd,config&order=id") or [] if b["id"] not in shop]
     for b in boards:   # 管理ページの 替える・固定・外す の依頼を先に反映（替える・外すは次の due で同じ人の別の写真を探す）
         add = apply_requests(cfg(b))
         if add:
