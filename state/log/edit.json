@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-29T22:09:43+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-29T22:13:40+00:00",
 "text": "2026-10-30 第 1 バッチを出刊：A2O LITE、ILLIT、The Mandalorian、チェーンソーマン、三星手机（5 版面・19 本・残り 5 版面） · token 新規入力 4.7万・キャッシュ読み 65.4万・出力 3,155",
 "level": "ok",
@@ -1802,5 +1797,52 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 908007
+},
+{
+"at": "2026-10-30T13:41:51+00:00",
+"text": "2026-10-30 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、ILLIT、MMORPG 新作 ほか 10（16 版面・81 本・今日の整理待ちは全部終わり） · token 新規入力 4.8万・キャッシュ読み 137.4万・出力 5,556",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.19,
+"mem_total": 16872808448,
+"mem_free": 15806464000,
+"disk_used": 10796851200,
+"disk_free": 30525657088,
+"disk_total": 41322508288,
+"peak": 370663424
+},
+"batch": 1,
+"boards": [
+"Astrae Oratio",
+"BLEACH Mirrors High",
+"FROM",
+"GTA 6",
+"ILLIT",
+"MMORPG 新作",
+"The Mandalorian",
+"dota2",
+"gelato pique",
+"チェーンソーマン",
+"三星手机",
+"星巴克马克杯",
+"滑雪",
+"漫威电影",
+"猫用品",
+"绝区零"
+],
+"stories": 81,
+"left": 0,
+"edited": 23,
+"run": null,
+"tok": {
+"in": 40,
+"cw": 47886,
+"cr": 1374294,
+"out": 5556,
+"calls": 21,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1427776
 }
 ]

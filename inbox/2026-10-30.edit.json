@@ -556,13 +556,13 @@
     "哈利波特剧集": 18,
     "日本顶级网球赛事": 34,
     "dota2": 18,
-    "MMORPG 新作": 13,
+    "MMORPG 新作": 15,
     "BLEACH Mirrors High": 11,
     "The Mandalorian": 8,
     "周杰伦": 20,
     "星巴克马克杯": 7,
-    "滑雪": 10,
-    "绝区零": 8,
+    "滑雪": 12,
+    "绝区零": 9,
     "gelato pique": 14,
     "A2O LITE": 20,
     "チェーンソーマン": 11,
@@ -571,7 +571,7 @@
     "ぐでたま": 2,
     "猫用品": 3,
     "FROM": 1,
-    "Astrae Oratio": 12
+    "Astrae Oratio": 13
   },
   "日本顶级网球赛事": [
     {
@@ -993,6 +993,24 @@
       "weight": "normal",
       "refs": [
         10
+      ]
+    },
+    {
+      "headline": "苗場ドラゴンドラ・田代ロープウェー紅葉が見頃ピークに！",
+      "highlight": "見頃ピーク",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        11
+      ]
+    },
+    {
+      "headline": "今季は連続ウェーブやコブラインが新登場",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        12
       ]
     }
   ],
