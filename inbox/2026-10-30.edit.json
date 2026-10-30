@@ -518,7 +518,7 @@
   "ぐでたま": 2,
   "猫用品": 3,
   "FROM": 1,
-  "Astrae Oratio": 10
+  "Astrae Oratio": 12
  },
  "日本顶级网球赛事": [
   {
@@ -1203,7 +1203,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    11
    ]
   },
   {
@@ -1213,6 +1214,15 @@
    "weight": "normal",
    "refs": [
     10
+   ]
+  },
+  {
+   "headline": "“‘아스오라’만의 전략적 전투와 신전기, 앞으로도 기대 부탁”, ‘아스오라’ CBT 서면 인터뷰",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
    ]
   }
  ]
