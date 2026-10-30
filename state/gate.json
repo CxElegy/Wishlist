@@ -1,6 +1,6 @@
 {
  "changed": false,
- "checked": "2026-10-30T10:46:13+00:00",
+ "checked": "2026-10-30T11:24:25+00:00",
  "fired": {
   "at": "2026-10-30T10:46:13+00:00",
   "results": {
@@ -19,36 +19,20 @@
     "resp": "cse_01W4x6f6spqyW2xJa9mNaAuk",
     "sig": "cb50aab40b6f"
    },
-   "items": [
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "MMORPG 新作",
-    "gelato pique",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "滑雪"
-   ],
-   "last_batch": "2026-10-30T09:12:55+00:00",
+   "items": [],
+   "last_batch": "2026-10-30T11:16:45+00:00",
    "last_error": {
-    "at": "2026-10-30T08:55:48+00:00",
+    "at": "2026-10-30T10:53:27+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 451,
+   "need": false,
+   "prog": 460,
    "prog_day": "2026-10-30",
-   "ripe": [
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "MMORPG 新作",
-    "gelato pique",
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "滑雪"
-   ],
-   "sig": "cb50aab40b6f",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 587266,
-   "why": "整理待ちの記事 9 件（7 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 541293,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
