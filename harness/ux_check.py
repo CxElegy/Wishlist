@@ -446,6 +446,14 @@ def check_admin_coverage(pw, base, width):
     ae = pg.evaluate("+document.getElementById('wl-libedit').dataset.n")
     if ae != want:
         bad.append(f"ライブラリの版面 {want} に対して管理ページ④は {ae}")
+    # ④の行に、ライブラリの版面の名前が 1 つ残らず出る（お客さまの版面。例：test-a のフリーレン）＋「全員／ユーザーを選ぶ」の切り替えで絞れる
+    names = set(pg.evaluate("[...document.querySelectorAll('#wl-libedit tr[data-id] td:first-child')].map(x=>x.textContent)"))
+    miss = [n for n in rest_boards(ses["access_token"])[0] if n not in names]
+    if miss:
+        bad.append(f"管理ページ④に出ない版面 {len(miss)} 個（{miss[:5]}）")
+    sw = pg.evaluate("[document.querySelectorAll('#wl-libedit [data-who] option').length, (document.querySelector('#wl-libedit [data-who]')||{}).value]")
+    if sw[0] < 2:
+        bad.append("管理ページ④に「全員／ユーザーを選ぶ」の切り替えがない")
     b.close()
     return bad
 

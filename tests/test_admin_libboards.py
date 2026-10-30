@@ -86,3 +86,12 @@ class LibEdit(unittest.TestCase):
         sql = (ROOT / "db" / "admin_board_edit.sql").read_text(encoding="utf-8")
         self.assertIn("if not public.is_admin()", sql)
         self.assertNotIn("to anon", sql)
+
+    def test_edit_user_switch(self):   # ④にも「全員／ユーザーを選ぶ」（admin.md）。follows を店長の令牌で読み、メールは出さない
+        i = render.AUTH_JS.index("function libedit")
+        js = render.AUTH_JS[i:i + 2500]
+        self.assertIn("data-who", js)
+        self.assertIn("rest/v1/follows", js)
+        self.assertNotIn("email", js)
+        src = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
+        self.assertIn("管理ページ④に出ない版面", src)
