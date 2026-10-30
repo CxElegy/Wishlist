@@ -386,7 +386,8 @@
   "Vaundy": 1,
   "あつ森": 4,
   "ぐでたま": 1,
-  "猫用品": 2
+  "猫用品": 2,
+  "FROM": 1
  },
  "日本顶级网球赛事": [
   {
@@ -810,6 +811,17 @@
     1
    ],
    "image": "https://media.trilltrill.jp/articles/5145090/description-image.9b32604df154ad2b4d43c97c6d326853"
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "'From' Explodes on Streaming as 4-Year-Old Series Hits Netflix for First Time",
+   "highlight": "Hits Netflix for First Time",
+   "blurb": "In the run up to Halloween, the Samba Weekly Wrap Report streaming chart shows audiences flocking to the series.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
   }
  ]
 }

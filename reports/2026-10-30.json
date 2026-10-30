@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "5a479ce7ff9a",
+ "edit_sig": "6b4b5930b697",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -86,7 +86,7 @@
      "date": "2026-10-29",
      "headline": "GTA 6 gets a much longer day-night cycle: Rockstar says GTA 5 felt too fast",
      "highlight": "",
-     "image": "https://static.tweaktown.com/news/1/1/114388_1_gta-6-npcs-get-personality-traits-that-decide-whether-they-flee-or-fight-back_full.png",
+     "image": "https://s.yimg.com/lo/mysterio/api/b96d6b7304c10c23406b926591a91c6ed0caa369729b60b3310761c0fe4ed2a9/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaystation_lifestyle_666%2F0b6df3fc2604c0abf36abf6da4b8071a.jpg",
      "image_via": "og:image（其它来源）",
      "url": "https://en.softonic.com/articles/gta-6-gets-a-much-longer-day-night-cycle-rockstar-says-gta-5-felt-too-fast",
      "weight": "normal"
@@ -580,8 +580,8 @@
      "date": "2026-10-29",
      "headline": "Latest Samsung Galaxy S27 Ultra Rumours: Everything Leaked So Far",
      "highlight": "",
-     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-1.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.rz9MTMrDZ_vVX79e3w7ZlQ&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
      "url": "https://www.geeky-gadgets.com/galaxy-s27-release-date-rumors/",
      "weight": "normal"
     },
@@ -1135,17 +1135,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "In the run up to Halloween, the Samba Weekly Wrap Report streaming chart shows audiences flocking to the series.",
      "date": "2026-10-29",
-     "n": 1,
-     "source": "TheWrap on MSN",
-     "title": "'From' Explodes on Streaming as 4-Year-Old Series Hits Netflix for First Time | Charts",
-     "url": "https://www.msn.com/en-us/entertainment/tv/from-explodes-on-streaming-as-4-year-old-series-hits-netflix-for-first-time-charts/ar-AA2gmhV3"
+     "headline": "'From' Explodes on Streaming as 4-Year-Old Series Hits Netflix for First Time",
+     "highlight": "Hits Netflix for First Time",
+     "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gmJ01.img",
+     "image_via": "MSN 接口",
+     "url": "https://www.msn.com/en-us/entertainment/tv/from-explodes-on-streaming-as-4-year-old-series-hits-netflix-for-first-time-charts/ar-AA2gmhV3",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",

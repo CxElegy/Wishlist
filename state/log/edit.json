@@ -1,10 +1,5 @@
 [
 {
-"at": "2026-10-29T03:48:20+00:00",
-"text": "出刊に失敗：No module named 'requests'",
-"level": "error"
-},
-{
 "at": "2026-10-29T04:14:55+00:00",
 "text": "2026-10-29 第 1 バッチを出刊：BLEACH Mirrors High（1 版面・4 本・残り 4 版面） · token 新規入力 6.3万・キャッシュ読み 143.3万・出力 6,048",
 "level": "ok",
@@ -1947,5 +1942,10 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 188129
+},
+{
+"at": "2026-10-30T01:37:33+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
 }
 ]
