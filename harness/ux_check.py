@@ -532,6 +532,12 @@ def check_admin_pages(pw, base, width, out):
                          "html[data-auth] body>*{visibility:visible!important}")
         pg.wait_for_timeout(1500)
         st = pg.evaluate(ADMIN_JS)
+        if f == "admin-ai.html":   # 画面の文と実際の範囲：お客さまの版面を編集する処理が無い間は「同じ編集で作る」と言わない
+            htm = pg.content()
+            if "同じ編集で作る" in htm or "全アカウント分の合計です" in htm:
+                bad.append(f"{f} ④の tokens の注記が事実とずれている（お客さまの版面はまだ編集されない）")
+            elif "店長の inbox の分だけ" not in htm:
+                bad.append(f"{f} ④の tokens に「店長の分だけ」の注記がない")
         if f == "admin-emblem.html":   # E16：札のない小元素の目の線が枠の上から 30% ±5% を外れる（emblem_face.view。札 short は別の写真に替える対象）
             ey = pg.evaluate(EYE_JS)
             if ey["off"]:

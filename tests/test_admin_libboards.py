@@ -20,8 +20,24 @@ class LibBoards(unittest.TestCase):
         self.assertIn("まだ記録がありません", out)
         d = {"runs": [{"when": "10/31", "at": "x", "batches": [{"when": "01:00", "batch": 1, "boards": ["a"], "stories": 1,
               "tok": {"in": 1, "cw": 0, "cr": 0, "out": 1}, "total": 2}], "sum": {"in": 1}}], "today": {"in": 1}, "week": {"in": 1}}
-        self.assertIn("全アカウント分の合計", render._admin_edit_tokens(d))
-        self.assertNotIn("未対応", render.ADMIN_WHO_NO["tokens"])
+        s = render._admin_edit_tokens(d)
+        self.assertNotIn("同じ編集で作る", s)
+        self.assertNotIn("全アカウント分の合計です", s)
+        self.assertIn("店長の inbox の分だけ", s)
+        self.assertIn("まだ編集されません", s)
+
+    def test_screen_text_matches_edit_scope(self):   # 画面の文と実際の範囲：board_stories に書く処理が無い間は「お客さまの版面は編集されない」、BACKLOG の親の段は [x] にしない
+        import re
+        writers = [f.name for f in (ROOT / "scripts").glob("*.py") if f.name not in ("render.py", "processes.py", "library.py") and "board_stories" in f.read_text(encoding="utf-8")]
+        self.assertEqual(writers, [], "board_stories に書く処理ができたら、④の文と ADMIN_WHO_NO を直す")
+        self.assertIn("未対応", render.ADMIN_WHO_NO["tokens"])
+        bl = (ROOT / "BACKLOG.md").read_text(encoding="utf-8")
+        row = [l for l in bl.splitlines() if "管理ページ④：AI 編集のトークンを全アカウント合計に" in l]
+        self.assertEqual(len(row), 1)
+        self.assertNotIn("- [x]", row[0])
+        # 「店長の分だけ」の区画（ADMIN_WHO_NO の理由に「店長の」）が残る間は、全部が [x] ではない
+        mine = [k for k, v in render.ADMIN_WHO_NO.items() if "店長の" in v]
+        self.assertTrue(mine)
 
     def test_page_is_in_admin_pages(self):
         ids = [i for f, _, _, _, ids in render.ADMIN_PAGES if f == "admin-boards.html" for i in ids]
