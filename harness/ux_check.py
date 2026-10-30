@@ -434,8 +434,15 @@ def check_admin_coverage(pw, base, width):
     pg.goto(base + "admin-boards.html", wait_until="networkidle", timeout=60000)
     pg.wait_for_selector("#wl-libboards[data-n]", state="attached", timeout=30000)
     got = pg.evaluate("[+document.getElementById('wl-libboards').dataset.n, document.querySelectorAll('#wl-libboards tr[data-id]').length]")
+    bad = [] if got[0] == want and got[1] == want else [f"ライブラリの版面 {want} に対して管理ページ②は {got[0]}（行 {got[1]}）"]
+    # ③エンブレムも同じ数（店長の版面＋ライブラリで足した版面。店長の版面と同じ名前は札 1 つ）：札の数 ≥ ライブラリの版面の数（店長の版面の名前が重なる分だけ減る）
+    pg.goto(base + "admin-emblem.html", wait_until="networkidle", timeout=60000)
+    pg.wait_for_selector(".emm-boards[data-lib]", state="attached", timeout=30000)
+    em = pg.evaluate("[+document.querySelector('.emm-boards').dataset.lib, document.querySelectorAll('.emm-bt').length]")
+    if em[0] != want or em[1] < want:
+        bad.append(f"ライブラリの版面 {want} に対して管理ページ③は読んだ {em[0]}・札 {em[1]}")
     b.close()
-    return [] if got[0] == want and got[1] == want else [f"ライブラリの版面 {want} に対して管理ページは {got[0]}（行 {got[1]}）"]
+    return bad
 
 
 def check_admin_pages(pw, base, width, out):

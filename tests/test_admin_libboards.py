@@ -45,6 +45,18 @@ class LibBoards(unittest.TestCase):
         self.assertNotIn("<tr data-id", html[i:i + 400])
         self.assertIn("読み込み中", html[i:i + 120])
 
+    def test_emblem_page_reads_all_library_boards(self):
+        """③エンブレムの版面の札：店長の令牌でライブラリの boards 全部（②と同じ。anon の followers>0 だけ、にしない）・版面の数を点検する。"""
+        js = render.EMM_JS
+        self.assertIn("Authorization:'Bearer '+window.WL_TOK", js)
+        self.assertNotIn("followers=gt.0", js)
+        self.assertIn("wl-token", render.AUTH_JS)
+        self.assertIn("dataset.lib", js)
+        self.assertIn("dataset.lib", (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8"))
+        out = render.render_admin({}, {"url": "https://x.supabase.co", "key": "k"}, "u")["admin-emblem.html"]
+        self.assertNotIn("お客さまの名前", out)   # 焼かない：版面の札は JS が読む
+        self.assertIn("board_emblem_request", js)
+
     def test_ux_check_has_coverage_and_leak_checks(self):
         src = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
         self.assertIn('glob("*.html")', src)   # 公開 HTML は名指しでなく glob で全部
