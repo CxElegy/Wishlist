@@ -1,6 +1,6 @@
 {
  "changed": false,
- "checked": "2026-10-30T02:34:32+00:00",
+ "checked": "2026-10-30T02:46:06+00:00",
  "fired": {
   "at": "2026-10-30T02:34:32+00:00",
   "results": {
@@ -19,24 +19,20 @@
     "resp": "cse_01W4x6f98VCLyhWx4f4jG65P",
     "sig": "dc3bb6f56273"
    },
-   "items": [
-    "滑雪"
-   ],
-   "last_batch": "2026-10-30T02:23:33+00:00",
+   "items": [],
+   "last_batch": "2026-10-30T02:29:37+00:00",
    "last_error": {
     "at": "2026-10-30T01:37:33+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": true,
-   "prog": 289,
+   "need": false,
+   "prog": 290,
    "prog_day": "2026-10-30",
-   "ripe": [
-    "滑雪"
-   ],
-   "sig": "dc3bb6f56273",
+   "ripe": [],
+   "sig": "a80fc5f308c4",
    "token_cap": 1000000,
-   "tokens_today": 315197,
-   "why": "整理待ちの記事 1 件（1 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 316700,
+   "why": "今日の新着はすべて AI 編集済み"
   },
   "emblem": {
    "claude": false,
