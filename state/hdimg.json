@@ -541,13 +541,19 @@
  "https://cdn.gameinsight.co.kr/news/photo/202610/36920_90717_3439.jpg": {
   "w": 900,
   "h": 600,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://cdn.gamemeca.com/data_center/345/722/20261027172433.webp": {
   "w": 1200,
   "h": 676,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.gamemeca.com/gmdata/0001/782/442/gm176120_261027-risell-yy4.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 720,
   "v": 3
  },
  "https://cdn.gamemeca.com/gmdata/0001/782/498/gm977274_thumb___30.webp": {
@@ -650,6 +656,12 @@
  "https://cdn.mediaus.co.kr/news/photo/202610/318631_233956_4423.jpg": {
   "w": 960,
   "h": 639,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.playforum.net/news/photo/202610/635726_67705_1837.jpg": {
+  "w": 960,
+  "h": 640,
   "target": 720,
   "v": 3
  },
@@ -1065,7 +1077,7 @@
  "https://hawk.live/storage/images/posts/ramzes666-reveals-will-continue-career-25330.jpg": {
   "w": 1200,
   "h": 628,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://helios-i.mashable.com/imagery/articles/00neHlysIUGSvZO3qDRl3Xc/hero-image.fill.size_1200x675.v1793182424.jpg": {
@@ -1824,6 +1836,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://img.opencritic.com/article/o/eLUhwqCXi0fZXo9asrLUvc1SvfwOt3V1.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://img.sbs.co.kr/newsnet/etv/upload/2026/10/26/30001095737_1280.jpg": {
   "w": 1200,
   "h": 898,
@@ -2418,6 +2436,19 @@
   "target": 1280,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1180815/12665527_615.jpg": {
+  "w": 615,
+  "h": 492,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.532,
+  "local": "pics/5ca0f4484f313f3f.webp",
+  "out": [
+   1280,
+   1024
+  ],
+  "why": "看不清"
+ },
  "https://news.walkerplus.com/article/1254137/14292686_615.jpg": {
   "w": 615,
   "h": 589,
@@ -2947,7 +2978,7 @@
  "https://ni.yam.com/20261030/jp-atp-645910-1-261030120814554-623c4b763deef2a2.webp": {
   "w": 1066,
   "h": 602,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/7c033deae70845d99df67c2390632314.jpg": {
@@ -3304,6 +3335,12 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/37aca8b878d75fcc703a527655b95b3ab99115c5d4fd125453b36e379ac215b3/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcomplex_131%2F602997a72093a21704e9bc7346c7d41e": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://s.yimg.com/lo/mysterio/api/64f7780b11b03d1beb12b4f748d418164ce06b93ccccd826296df220d2b67849/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fglobenewswire.com%2F27189a6532558515a61ef9efb58f06cb.png": {
   "w": 1200,
   "h": 675,
   "target": 720,
@@ -3931,12 +3968,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.4QoQq20UArKtveYKdz4q1A&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.585AXRfL_8k6iLulkr5P9w&pid=News&w=600": {
   "w": 600,
   "h": 391,
@@ -4291,9 +4322,22 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.pY__MqddmbzgsqrIlk7pqw&pid=News&w=640": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.397
+ },
  "https://www.bing.com/th?id=ONUT.pl2-sDCV10JpH5QScs8v8w&pid=News&w=1200": {
   "w": 700,
   "h": 366,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.q1hRkCdeN6YSKCvze8YhMg&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4334,6 +4378,19 @@
   "h": 466,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ybfuzUti5i3iqvG7yuCIlg&pid=News&w=500": {
+  "w": 500,
+  "h": 281,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.482,
+  "local": "pics/44f2974d86879e50.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
  },
  "https://www.boardoftheworld.com/wp-content/uploads/2023/07/2024-burton-blossom-snowboard-review-2.jpg": {
   "w": 700,
@@ -4878,6 +4935,12 @@
  "https://x0.ifengimg.com/res/2026/B6494457AC45B537C3995C763F802BF7716E55E8_size897_w1207_h2458.png": {
   "w": 1207,
   "h": 2458,
+  "target": 1280,
+  "v": 3
+ },
+ "https://yvpub-pctr.c.yimg.jp/dk/yvpub-bucket001-west/contents/yvpub-content-8e21309f0ab9e8f398f424861f3ba0bb/images/6f61845a-c66c-4ff2-ad6c-d882f54b595a.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
