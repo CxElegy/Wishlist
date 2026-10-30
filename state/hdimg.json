@@ -359,6 +359,12 @@
   "target": 720,
   "v": 3
  },
+ "https://assets.content.technologyadvice.com/Screenshot_2026_10_12_at_4_46_57_PM_4e1a5e9138.webp": {
+  "w": 1788,
+  "h": 1312,
+  "target": 720,
+  "v": 3
+ },
  "https://assets.games.gg/grand_theft_auto_vi_tv_spot_differences_og_050838fff630dd6fe366a7bb_4d02128e8a.webp": {
   "w": 1200,
   "h": 630,
@@ -2230,6 +2236,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://mikiki.ismcdn.jp/mwimgs/b/2/-/img_b2fa3fc067ee835b6f7be52cada3919b993648.jpg": {
+  "w": 1312,
+  "h": 875,
+  "target": 720,
+  "v": 3
+ },
  "https://mobidevices.com/images/2026/10/gta-6-lucia.jpeg": {
   "w": 1920,
   "h": 1080,
@@ -3407,6 +3419,12 @@
   "target": 720,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/b0eee20946a96f91d64cf47ca23c10b644b99bc662336f37f8978e9f7d33441e/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2Faff49120deb3c49c06670a6d01f8f396.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/c674c8fba0d3c7652e10427604c9216bebbccf124c97fe4d3c9fc7d03e5da890/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fd29szjachogqwa.cloudfront.net%2Fimages%2Fuser-uploaded%2F1_9597.png": {
   "w": 1200,
   "h": 1054,
@@ -3582,6 +3600,12 @@
    1280
   ],
   "why": "看不清"
+ },
+ "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg": {
+  "w": 640,
+  "h": 433,
+  "target": 720,
+  "v": 3
  },
  "https://static.sanyonews.jp/image/article/size1/9/1/7/9/9179248e10de5d450d706548e5be2a76_1.jpg": {
   "w": 640,
@@ -4085,12 +4109,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.J9WfbwisqQSccwlG4g-p2A&pid=News&w=1200": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.KOsfIlpysro4UjegnaF79g&pid=News&w=1200": {
   "w": 560,
   "h": 700,
@@ -4116,12 +4134,6 @@
    719
   ],
   "why": "看不清"
- },
- "https://www.bing.com/th?id=ONUT.LqQ7JkcDXFYBAyYiJRL7xQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.OxiJ5-NxJTwjyR84qxjhBQ&pid=News&w=1080": {
   "w": 700,
@@ -4968,17 +4980,24 @@
   "target": 1280,
   "v": 3
  },
- "https://www.wowkorea.jp/img/Breaking/106/532431/623798_1280W.webp": {
-  "w": 1280,
-  "h": 960,
-  "target": 720,
-  "v": 3
- },
  "https://www.wowkorea.jp/img/Breaking/106/532601/623967_1280W.webp": {
   "w": 1280,
   "h": 960,
   "target": 1280,
   "v": 3
+ },
+ "https://www.wowkorea.jp/img/Breaking/106/532624/623990_tmb.webp": {
+  "w": 320,
+  "h": 240,
+  "target": 720,
+  "v": 3,
+  "blur": 0.466,
+  "local": "pics/f163a43d40100387.webp",
+  "out": [
+   720,
+   540
+  ],
+  "why": "看不清"
  },
  "https://x0.ifengimg.com/res/2026/7DB009EBC78419C0A22C491DF17530B86991AC52_size23_w689_h293.jpg": {
   "w": 689,

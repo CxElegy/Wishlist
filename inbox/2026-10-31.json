@@ -1286,6 +1286,7 @@
     {
      "date": "2026-10-28T01:33:34+00:00",
      "image": "",
+     "link": "https://weverse.io/illit/notice/40425",
      "n": 7,
      "seen": "2026-10-30T19:32:59+00:00",
      "site": "https://weverse.io",
@@ -1298,6 +1299,7 @@
     {
      "date": "2026-10-26T07:00:00+00:00",
      "image": "",
+     "link": "https://www.mdtoday.co.kr/news/articleView.html?idxno=611993",
      "n": 8,
      "seen": "2026-10-30T19:32:59+00:00",
      "site": "https://www.mdtoday.co.kr",
@@ -1436,6 +1438,7 @@
     {
      "date": "2026-10-27T03:04:00+00:00",
      "image": "",
+     "link": "https://sumahodigest.com/?p=74857",
      "n": 9,
      "seen": "2026-10-30T19:33:17+00:00",
      "site": "https://sumahodigest.com",
@@ -1447,7 +1450,9 @@
     },
     {
      "date": "2026-10-26T18:02:57+00:00",
-     "image": "",
+     "image": "https://assets.content.technologyadvice.com/Screenshot_2026_10_12_at_4_46_57_PM_4e1a5e9138.webp",
+     "image_via": "og:image",
+     "link": "https://samsung.gadgethacks.com/news/galaxy-s27-ultra-overheating-issues-exynos-switch-unproven/",
      "n": 10,
      "seen": "2026-10-30T19:33:17+00:00",
      "site": "https://samsung.gadgethacks.com",
@@ -2076,7 +2081,9 @@
     },
     {
      "date": "2026-10-29T17:30:27+00:00",
-     "image": "",
+     "image": "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg",
+     "image_via": "og:image",
+     "link": "https://www.sanyonews.jp/article/1965453?rct=oricon_music&kw=%E7%A6%8F%E7%A5%B1",
      "n": 4,
      "seen": "2026-10-30T19:33:29+00:00",
      "site": "https://www.sanyonews.jp",
@@ -2102,7 +2109,9 @@
     },
     {
      "date": "2026-10-28T16:41:00+00:00",
-     "image": "",
+     "image": "https://mikiki.ismcdn.jp/mwimgs/b/2/-/img_b2fa3fc067ee835b6f7be52cada3919b993648.jpg",
+     "image_via": "og:image",
+     "link": "https://mikiki.tokyo.jp/articles/-/45989",
      "n": 6,
      "seen": "2026-10-30T19:33:29+00:00",
      "site": "https://mikiki.tokyo.jp",

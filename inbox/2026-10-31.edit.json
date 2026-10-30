@@ -4,12 +4,12 @@
   "哈利波特剧集": 19,
   "GTA 6": 23,
   "A2O LITE": 8,
-  "三星手机": 8,
-  "ILLIT": 5,
-  "周杰伦": 4,
+  "三星手机": 11,
+  "ILLIT": 8,
+  "周杰伦": 7,
   "BLEACH Mirrors High": 3,
   "The Mandalorian": 3,
-  "Vaundy": 3,
+  "Vaundy": 6,
   "gelato pique": 3,
   "Astrae Oratio": 5,
   "MMORPG 新作": 2,
@@ -225,7 +225,8 @@
    "refs": [
     6,
     8,
-    5
+    5,
+    11
    ],
    "image": "https://media.loom-app.com/loom/2026/10/30/72661fc5-833a-4f4e-a1a2-5f553cc4cd6d/original.jpg?w=1200&h=630"
   },
@@ -246,7 +247,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    2,
+    9
    ]
   },
   {
@@ -256,6 +258,15 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultra Overheating Issues: Exynos Switch Unproven",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -287,6 +298,24 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "BTS, ILLIT And CORTIS Lead 2026 Melon Music Awards Nominations",
+   "highlight": "Melon Music Awards Nominations",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "아일릿, 이번엔 관계의 ‘손익분기점’ 따진다…10월 ‘BREAK EVEN’ 컴백",
+   "highlight": "BREAK EVEN",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    8
    ]
   }
  ],
@@ -365,6 +394,24 @@
     2
    ],
    "image": "https://hips.hearstapps.com/hmg-prod/images/e28aa674-2c9b-4131-a4d4-45d43af65363.png?crop=0.494xw:0.987xh;0,0.0130xh&resize=1200:*"
+  },
+  {
+   "headline": "Vaundy、初の甲子園球場で貴重ショット 夏の高校野球応援ソングに込めた思い「あえて答えを用意していません」",
+   "highlight": "初の甲子園球場",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "SWEET LOVE SHOWER 2026が大盛況のうちに終幕! あいみょん、Creepy Nuts、レミオロメン、アジカン、Vaundyら96組が集結した3日間",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "gelato pique": [
