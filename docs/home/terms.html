@@ -1248,7 +1248,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
     members16:'<p class="st">読み込めませんでした：',
     lb1:'<table><thead><tr><th>版面<\/th><th>人数<\/th><th>小元素<\/th><th>配色（背景・文字・差し色）<\/th><\/tr><\/thead><tbody>',
-    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><th>載せた：待ち（前後）<\/th><\/tr><\/thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）'}};
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><th>載せた：待ち（前後）<\/th><\/tr><\/thead><tbody>',lv1:'<table class="wl-tbl"><thead><tr><th>アカウント<\/th><th>👍（今の票）<\/th><th>👎（今の票）<\/th><th>この 7 日に押した回数<\/th><th>最後の投票<\/th><th>最近の票<\/th><\/tr><\/thead><tbody>',le2:'見る人',le3:'全員',le4:'店長（test1）'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -1740,7 +1740,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
   // 管理ページ共通の「見る人：全員／ユーザーを選ぶ」（admin.md）。区画ごとに作らず、ここ 1 つ。店長の令牌で follows を読む（RLS）・メールは出さない
   var whoP=null;
   function whoLoad(){ return whoP||(whoP=of(base+'/rest/v1/follows?select=account,board_id',{headers:{apikey:A.key,Authorization:'Bearer '+tok}}).then(function(r){return r.ok?r.json():[];}).catch(function(){return [];}).then(function(fl){
-    var who={shop:['test1']}, accs=[]; fl.forEach(function(f){(who[f.board_id]=who[f.board_id]||[]).push(f.account); if(accs.indexOf(f.account)<0) accs.push(f.account);});
+    var who={shop:['test1'],'acc:test1':['test1']}, accs=[]; fl.forEach(function(f){(who[f.board_id]=who[f.board_id]||[]).push(f.account); if(accs.indexOf(f.account)<0){ accs.push(f.account); who['acc:'+f.account]=[f.account]; }});
     accs.sort(function(a,b){return a==='test1'?-1:b==='test1'?1:a<b?-1:1;}); return {who:who,accs:accs}; })); }
   function whoApply(host){
     var p=host.querySelector(':scope>.wl-who'); if(!p) return;
@@ -1796,12 +1796,27 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
       whoMount(box,'tr[data-id]',function(el){return [el.dataset.id];});
     }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
   }
+  function libvotes(){   // ②投票：全アカウントの 👍👎（feedback の account ごと）。admin_votes() は店長だけ・アカウント名は HTML に焼かない。票のないアカウントも 0 の行で出す
+    var box=document.getElementById('wl-libvotes'); if(!box) return;
+    var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
+    sec.hidden=false;
+    Promise.all([rpc('admin_votes'),whoLoad()]).then(function(v){
+      var rs=v[0]||[], by={}; rs.forEach(function(r){by[r.account]=r;});
+      v[1].accs.forEach(function(a){ if(!by[a]) rs.push(by[a]={account:a,up:0,down:0,week:0,last_at:null,recent:[]}); });
+      rs.sort(function(a,b){return a.account==='test1'?-1:b.account==='test1'?1:a.account<b.account?-1:1;});
+      box.dataset.n=rs.length; box.dataset.up=rs.reduce(function(s,r){return s+r.up;},0); box.dataset.down=rs.reduce(function(s,r){return s+r.down;},0);
+      box.innerHTML=L.lv1+rs.map(function(r){
+        return '<tr data-id="'+esc(r.account)+'"><td>'+(r.account==='test1'?L.le4:esc(r.account))+'<\/td><td>'+r.up+'<\/td><td>'+r.down+'<\/td><td>'+r.week+'<\/td><td>'+esc(String(r.last_at||'—').slice(0,10))+'<\/td><td>'+
+          (r.recent||[]).map(function(x){return (x.vote>0?'👍 ':'👎 ')+esc(String(x.title||x.work||x.url||'').slice(0,40));}).join('<br>')+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+      whoMount(box,'tr[data-id]',function(el){return ['acc:'+el.dataset.id];});
+    }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
+  }
   function refresh(){
     return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();
+      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();libvotes();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
           var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
