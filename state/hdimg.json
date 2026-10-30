@@ -2298,6 +2298,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnbKO4yRvCMedPqwW7GIyRes6Dq0-b0horielnHQmI9zAruanx6ZKZWl6cDtpTc45KsWtFHrAtf0hY-u3uVJ2J_0vwb3XyyKGnBDcA-AiRgVr8i_xiyB76dzWC-cmpqoEog==": {
+  "w": 934,
+  "h": 701,
+  "target": 1280,
+  "v": 3
+ },
  "https://news.dellows.jp/wp-content/uploads/2026/09/529500_5.jpg": {
   "w": 1024,
   "h": 768,
@@ -2902,6 +2908,18 @@
   "out": [
    1280,
    720
+  ],
+  "why": "期限付きの網址"
+ },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-00010005-tennisnet-000-2-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1567,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/1c6066cba44d642f.webp",
+  "out": [
+   1280,
+   912
   ],
   "why": "期限付きの網址"
  },

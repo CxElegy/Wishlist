@@ -1,49 +1,5 @@
 [
 {
-"at": "2026-10-29T12:19:44+00:00",
-"text": "2026-10-29 第 1 バッチを出刊：Astrae Oratio、FROM、GTA 6、The Mandalorian、Vaundy、ぐでたま ほか 7（13 版面・53 本・残り 6 版面） · token 新規入力 5.1万・キャッシュ読み 114.6万・出力 4,275",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.29,
-"mem_total": 16872808448,
-"mem_free": 15971094528,
-"disk_used": 10793025536,
-"disk_free": 30529482752,
-"disk_total": 41322508288,
-"peak": 278495232
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"FROM",
-"GTA 6",
-"The Mandalorian",
-"Vaundy",
-"ぐでたま",
-"三星手机",
-"哈利波特剧集",
-"日本顶级网球赛事",
-"星巴克马克杯",
-"漫威电影",
-"猫用品",
-"绝区零"
-],
-"stories": 53,
-"left": 6,
-"edited": 23,
-"run": null,
-"tok": {
-"in": 34,
-"cw": 50850,
-"cr": 1145674,
-"out": 4275,
-"calls": 17,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1200833
-},
-{
 "at": "2026-10-29T12:24:38+00:00",
 "text": "2026-10-29 第 1 バッチを出刊：Astrae Oratio、BLEACH Mirrors High、FROM、GTA 6、The Mandalorian、Vaundy ほか 8（14 版面・57 本・残り 5 版面） · token 新規入力 5.2万・キャッシュ読み 122.5万・出力 4,774",
 "level": "ok",
@@ -1955,5 +1911,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 87540
+},
+{
+"at": "2026-10-30T06:30:53+00:00",
+"text": "2026-10-30 第 14 バッチを出刊：日本顶级网球赛事（1 版面・8 本・残り 1 版面） · token 新規入力 1,131・キャッシュ読み 8.7万・出力 582",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.37,
+"mem_total": 16872808448,
+"mem_free": 15944781824,
+"disk_used": 10939744256,
+"disk_free": 30382764032,
+"disk_total": 41322508288,
+"peak": 313606144
+},
+"batch": 14,
+"boards": [
+"日本顶级网球赛事"
+],
+"stories": 8,
+"left": 1,
+"edited": 23,
+"run": 1793335875.9349003,
+"tok": {
+"in": 2,
+"cw": 1129,
+"cr": 87174,
+"out": 582,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 88887
 }
 ]

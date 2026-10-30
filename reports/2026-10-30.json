@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "2c0a0a3fe518",
+ "edit_sig": "e59120d9c451",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -611,29 +611,6 @@
    "cover": "https://www.japanopentennis.com/wta/application/themes/rakuten-open/img/ogp/rakuten_ogp-2.png",
    "facts": [],
    "name": "日本顶级网球赛事",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 22,
-     "source": "Yahoo!ニュース",
-     "title": "加藤未唯ペア 第1シードと熱戦も東レPPO4強ならず、惜敗で準々決勝敗退＜女子テニス＞（tennis365.net）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAyQlgyUEhwTFN6ejA3TkkxdHNrbGMtd3BfUEUxWkRDSkd5eERhTmIzUFdpaWZpVEk0R2ZSV1lINTRKTDlEZFRPUXU4QllXMkVFOXNrb21rV2dtRkNHamdXcmdCMXdqSGpzV3laeGtzdk9BdWRKdXRweXZacngzdzQ?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 23,
-     "source": "Yahoo!ニュース",
-     "title": "元世界4位の錦織圭、現役最後の公式戦 [木下グループジャパンオープンテニス] (テニスマガジンONLINE)",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQOTVibXczM2J2UUJFcTV6cVBZMS1sZmoyaDJ4TU5IM2xjTWFmSHNrTHowWFpDVV90WW90bm80SEFINFRqUF9xaXQ2YjZFcUNNdDNXckRLbzhrb2ZRek9zSUJkUTcyMFg1UXQxaGllb2w2dkJCbXZKNXpqSDNBYlczNmVrWXRPNFNWWmtwaTF3?oc=5"
-    },
-    {
-     "date": "2026-10-27",
-     "n": 24,
-     "source": "スポーツナビ",
-     "title": "テニス - 東レ・パンパシフィック・オープン - ディアヌ パリ vs. クリスティナ ブクサ- 試合速報",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNdklrTVhuRW44aUZ5c1MxbkpERnVOMndMZ1hORE50dFJaMkR5b3hodlJqaVRjeGg4bXhKM0M1M0QwUDVaNnVQTWtqQ3NPTlhodG9EZzh0cWtlNHl1Nm9xalpBVEt6OEd5ZEtncUJwQl9WN0xzTmpJY3BhbzZkV0VfRHZKVjgzZU1pNnJDM05VZEU0enJid1dIdFczdw?oc=5"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -694,6 +671,26 @@
      "image": "https://tennis.jp/wp-content/uploads/2026/10/Uchijima-20261026_03s-1024x682.jpg",
      "image_via": "og:image",
      "url": "https://tennis.jp/news/archives/348794",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "元世界4位の錦織圭、現役最後の公式戦",
+     "highlight": "現役最後の公式戦",
+     "image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y3xudcUclfbXjZqAvGT8NJnbKO4yRvCMedPqwW7GIyRes6Dq0-b0horielnHQmI9zAruanx6ZKZWl6cDtpTc45KsWtFHrAtf0hY-u3uVJ2J_0vwb3XyyKGnBDcA-AiRgVr8i_xiyB76dzWC-cmpqoEog==",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/e6a7feca414f32acd429301004f32d1e739ac92f/images/000",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "加藤未唯ペア 第1シードと熱戦も東レPPO4強ならず、惜敗で準々決勝敗退",
+     "highlight": "",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-00010005-tennisnet-000-2-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "url": "https://news.yahoo.co.jp/articles/ad028357919b04652e7104d81a09eba53295f824",
      "weight": "normal"
     }
    ],
