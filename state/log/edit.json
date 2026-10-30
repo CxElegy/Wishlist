@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-29T12:04:11+00:00",
-"text": "2026-10-29 第 1 バッチを出刊：Astrae Oratio、FROM、GTA 6、The Mandalorian、Vaundy、ぐでたま ほか 4（10 版面・32 本・残り 9 版面） · token 新規入力 4.5万・キャッシュ読み 84.3万・出力 2,719",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.25,
-"mem_total": 16872808448,
-"mem_free": 15954067456,
-"disk_used": 10786144256,
-"disk_free": 30536364032,
-"disk_total": 41322508288,
-"peak": 295903232
-},
-"batch": 1,
-"boards": [
-"Astrae Oratio",
-"FROM",
-"GTA 6",
-"The Mandalorian",
-"Vaundy",
-"ぐでたま",
-"哈利波特剧集",
-"星巴克马克杯",
-"猫用品",
-"绝区零"
-],
-"stories": 32,
-"left": 9,
-"edited": 23,
-"run": null,
-"tok": {
-"in": 26,
-"cw": 45368,
-"cr": 843002,
-"out": 2719,
-"calls": 13,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 891115
-},
-{
 "at": "2026-10-29T12:09:53+00:00",
 "text": "2026-10-29 第 1 バッチを出刊：Astrae Oratio、FROM、GTA 6、The Mandalorian、Vaundy、ぐでたま ほか 5（11 版面・40 本・残り 8 版面） · token 新規入力 4.7万・キャッシュ読み 99.2万・出力 3,337",
 "level": "ok",
@@ -1985,5 +1944,37 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 84507
+},
+{
+"at": "2026-10-30T06:14:09+00:00",
+"text": "2026-10-30 第 11 バッチを出刊：周杰伦（1 版面・3 本・残り 4 版面） · token 新規入力 1,168・キャッシュ読み 8.4万・出力 405",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.24,
+"mem_total": 16872808448,
+"mem_free": 15959003136,
+"disk_used": 10928271360,
+"disk_free": 30394236928,
+"disk_total": 41322508288,
+"peak": 296128512
+},
+"batch": 11,
+"boards": [
+"周杰伦"
+],
+"stories": 3,
+"left": 4,
+"edited": 23,
+"run": 1793335875.9349003,
+"tok": {
+"in": 2,
+"cw": 1166,
+"cr": 84078,
+"out": 405,
+"calls": 1,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 85651
 }
 ]
