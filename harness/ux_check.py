@@ -146,7 +146,7 @@ def check(pw, base, who, width, out, page="", emb="off", height=900, wait=WATCH_
         heads:[...document.querySelectorAll('.pic.icon,.pic.none')].filter(x=>!x.closest('.nav,.fside')).map(x=>(x.closest('section.sec')||{dataset:{k:'トップ'}}).dataset.k),
         nohead:[...document.querySelectorAll('section.sec')].filter(s=>{const h=s.querySelector('.grid article.card.hero,.grid article.card.wide');return h&&h.classList.contains('nophoto')}).map(s=>s.dataset.k),
         plates:document.querySelectorAll('.pic.icon,.pic.none').length,
-        ph:[...document.querySelectorAll('img[data-e="s"],img[data-e="r"]')].map(i=>i.currentSrc||i.src).filter(u=>{try{return new URL(u).origin!==location.origin}catch(x){return false}}).reduce((a,u)=>{a[0]++;if(/\/storage\/v1\/object\/public\/photos\//.test(u))a[1]++;return a},[0,0]),
+        ph:[...document.querySelectorAll('img[data-e="s"],img[data-e="r"]')].map(i=>i.currentSrc||i.src).filter(u=>{try{return new URL(u).origin!==location.origin}catch(x){return false}}).reduce((a,u)=>{a[0]++;if(/[/]storage[/]v1[/]object[/]public[/]photos[/]/.test(u))a[1]++;return a},[0,0]),
         frames:document.querySelectorAll('section.sec .pic').length,
         empty:/新着なし/.test((document.querySelector('.poster .top')||{}).innerText||''),
         tofu:[...document.querySelectorAll('body *')].filter(x=>x.offsetParent&&![...x.childNodes].every(n=>n.nodeType!==3||!/[\u3000-\u9fff\uff00-\uffef]/.test(n.data))&&!/Noto Sans|Serif|Yusei/.test(getComputedStyle(x).fontFamily)&&!/^(SCRIPT|STYLE)$/.test(x.tagName)).map(x=>x.className||x.tagName).slice(0,3),
@@ -368,7 +368,7 @@ def html_weight_bad(html):
     kept = sum("/storage/v1/object/public/photos/" in s for s in mains)
     if kept and kept * 2 < len(mains):   # 一時保管が動いているのに半分も使われていない（photo_store の取りこぼし・render の外れ）
         bad.append(f"主写真 {len(mains)} 枚のうち写真の一時保管から出たのは {kept} 枚（半分未満）")
-    st = re.findall(r'<img src="[^"]*/photos/[^"]*"([^>]*?)data-e="s">', html)
+    st = re.findall(r'<img src="[^"]*/storage/v1/object/public/photos/[^"]*"([^>]*?)data-e="s">', html)
     nosrc = sum("srcset=" not in x for x in st)
     if nosrc:   # 一時保管の幅 400 を置いても srcset で渡さなければ使われない（2026-10-31）
         bad.append(f"一時保管の主写真 {len(st)} 枚のうち srcset がないのが {nosrc} 枚")
