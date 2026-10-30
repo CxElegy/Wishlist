@@ -167,3 +167,5 @@
 - 2026-10-29 r4：管理ページ②版面に「ライブラリの版面」欄（店長ログインでだけ全版面を読む・配色の変更 board_theme_set）。PR https://github.com/CxElegy/Wishlist/pull/613 ・本番に公開を確認・テスト全通過〔emblem_face 2 件は元から赤〕・ux_check 管理ページ ✗0（guest は小元素の E1/E2/E4/E10 のみ）。次：motif の通し・店長ログインでの確認（[?]）
 2026-10-29 r4f1 管理ページ全版面の点検を足した（#614）：ux_check に「公開 HTML のお客さまだけの版面名 0」（本番 35 名・8 枚で 0 件）「管理ページの網羅」（店長の合言葉がないと未確認）、board_theme_set の anon execute を外した（本番）。boards の読みは boards_visible で anon は 23/64 のみ。次：点検用の店長アカウント [?]・未達 4 件。ux_check --fast guest/test-a に別件 ✗ 2（星巴克马克杯の近さ 390・生成AI の頭が写真なし 390）
 2026-10-29 r4f2 管理者用 RPC の anon 権限の取りこぼし：board_emblem_request・admin_email_for を revoke from anon（本番適用・anon で実行できる admin_/board_ は board_visible のみ）。点検を名指しから数える形に（db/*.sql の関数を anon で呼ぶ）・公開 HTML を glob で全 19 枚・お客さま test-a〜e。確かめ：ux_check check_public_leak ✗0（35 名）・tests。次：anon 実行の security definer 41 本の総点検（BACKLOG）
+
+- 2026-10-30 r1（依頼）：最初のニュースを速く 1 段目。画像ごとの onerror/onload を head の 1 か所へ。PR #618。本番 index 4.1MB→1.9MB・guest ux_check --fast 1400 ✓。次：自前の縮小画像・HTML を分ける
