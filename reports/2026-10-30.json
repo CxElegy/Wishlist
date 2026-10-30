@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "b94f5ba71c7d",
+ "edit_sig": "5e8c5e8a34bf",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -23,8 +23,8 @@
      "date": "2026-10-30",
      "headline": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
      "highlight": "",
-     "image": "https://www.bing.com/th?id=ONUT.BizbljJ6e79nxoCcLSJNrw&pid=News&w=600",
-     "image_via": "条目自带（Bing 缩略图）",
+     "image": "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg",
+     "image_via": "og:image",
      "url": "https://www.khgames.co.kr/news/articleView.html?idxno=309806",
      "weight": "normal"
     },
@@ -348,22 +348,18 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-10-27",
-     "n": 20,
-     "source": "搜狐",
-     "title": "饰演HBO的《哈利·波特》系列中的詹姆和莉莉·波特",
-     "url": "https://www.sohu.com/a/1093528038_544020"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "HBO製ドラマ版『ハリー・ポッター』が12月25日よりHuluで日本配信される。",
      "date": "2026-10-30",
-     "headline": "HBO製ドラマ版ハリー・ポッターが12月25日よりHuluで日本配信開始 (2026年10月30日掲載)",
-     "highlight": "",
+     "event": {
+      "date": "2026-12-25",
+      "label": "配信開始",
+      "place": "Hulu"
+     },
+     "headline": "HBO製ドラマ版ハリー・ポッターが12月25日よりHuluで日本配信開始",
+     "highlight": "12月25日よりHuluで日本配信開始",
      "image": "https://image.news.livedoor.com/newsimage/stf/1/7/17f3f_1815_517adb37_effde14d.jpg",
      "image_via": "og:image",
      "url": "https://news.livedoor.com/topics/detail/32691490/",
