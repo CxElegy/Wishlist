@@ -345,6 +345,27 @@ def rest_boards(tok=None, exact=False):
     return [x["name"] for x in rows], int(r.headers.get("Content-Range", "0-0/0").split("/")[-1])
 
 
+HTML_MAX_MB = 2.6   # 2026-10-30：店長のページ 4.1MB→2.1MB。画像 1 枚ごとの onerror が戻ると倍になるので、ここを超えたら ✗
+IMG_MAX = 4500
+
+
+def html_weight_bad(html):
+    """最初に取る HTML の重さ・画像 1 枚ごとのハンドラ・最初の写真の eager を数える（2026-10-30 最初のニュースを速く）。✗ の一覧を返す。"""
+    bad = []
+    mb = len(html.encode("utf-8")) / 1e6
+    if mb > HTML_MAX_MB:
+        bad.append(f"HTML {mb:.1f}MB（上限 {HTML_MAX_MB}MB）")
+    n = len(re.findall(r"<img\b[^>]*\bon(?:error|load)=", html))
+    if n:
+        bad.append(f"画像 1 枚ごとの onerror/onload が {n} 件（data-e に寄せる）")
+    imgs = len(re.findall(r"<img\b", html))
+    if imgs > IMG_MAX:
+        bad.append(f"<img> {imgs} 枚（上限 {IMG_MAX}）")
+    if 'fetchpriority="high"' not in html and 'data-e="s"' in html:
+        bad.append("最初の写真に loading=eager / fetchpriority=high がない（LCP の先読み）")
+    return bad
+
+
 def check_public_leak(base):
     """公開の HTML（だれでも開ける管理ページなど）にお客さまだけの版面の名前が焼かれていない（HARNESS §2-5・BACKLOG：公開の場所にお客さまの中身を出さない）。
     お客さまだけの名前 ＝ test-a が読める版面 − ログインなしが読める版面。"""
@@ -762,6 +783,13 @@ def main(argv):
                 bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
             fails += bool(bad)
             print(("✗ " if bad else "✓ ") + f"管理ページ 7 枚 {w}px：" + ("、".join(bad) if bad else f"欄 {len(ADMIN_OLD_IDS)}・小見出し {len(ADMIN_OLD_H3)} が全部ある"))
+        try:   # HTML の重さ・画像 1 枚ごとのハンドラ（ログインなしで取れる店長のページ）
+            html = urllib.request.urlopen(urllib.request.Request(a.base, headers=BROWSER_HEADERS), timeout=30).read().decode("utf-8", "replace")
+            bad = html_weight_bad(html)
+        except Exception as ex:  # noqa: BLE001
+            bad = [f"開けなかった（{type(ex).__name__}: {str(ex)[:120]}）"]
+        fails += bool(bad)
+        print(("✗ " if bad else "✓ ") + "最初に取る HTML：" + ("、".join(bad) if bad else "軽い・画像 1 枚ごとのハンドラ 0・最初の写真は eager"))
         if not a.fast:   # 公開の HTML にお客さまだけの版面の名前が 0 件・店長でログインした管理ページの版面の数＝ライブラリの数
             try:
                 bad, n = check_public_leak(a.base)

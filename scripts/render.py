@@ -720,8 +720,8 @@ ICON_NEXT_JS = ("var l=(this.dataset.icons||'').split(' ').filter(Boolean);"
                 "else{var p=this.closest('.pic'),a=p.closest('article.card,article.wc,.pk');if(a){p.remove();a.classList.add('nophoto')}"
                 "else{p.classList.remove('icon');p.classList.add('none');this.remove()}}")
 # 2026-10-30：上の 3 つを 1 枚ごとの onerror/onload に書くと HTML の半分（4.1MB のうち 2.1MB）が同じ文字の繰り返しだった。
-# 画像には data-e（r=背景を外す・s=主图を換える・i=来源图标）／data-l（i=読めたが小さい）の印だけ付け、処理は head の 1 か所が capture で受ける。
-IMG_FALLBACK_JS = ("(function(){var H={r:function(){this.remove()},s:function(){" + SWAP_JS + "},i:function(){" + ICON_NEXT_JS + "}};"
+# 画像には data-e（r=自分を外す・p=親の枠ごと外す・x=小元素を外して has-emb を戻す・s=主图を換える・i=来源图标）／data-l（i=読めたが小さい）の印だけ付け、処理は head の 1 か所が capture で受ける。
+IMG_FALLBACK_JS = ("(function(){var H={r:function(){this.remove()},p:function(){this.parentNode.remove()},x:function(){var s=this.closest('.sec'),m=this.closest('.emb');if(s)s.classList.remove('has-emb');if(m)m.remove()},s:function(){" + SWAP_JS + "},i:function(){" + ICON_NEXT_JS + "}};"
                    "document.addEventListener('error',function(v){var t=v.target;if(t&&t.tagName==='IMG'&&H[t.dataset.e])H[t.dataset.e].call(t)},true);"
                    "document.addEventListener('load',function(v){var t=v.target;if(t&&t.tagName==='IMG'&&t.dataset.l==='i'&&t.naturalWidth<32)H.i.call(t)},true)})();")
 
@@ -871,7 +871,7 @@ def _extras(story):
     gal = [u for u in (story.get("gallery") or [])[:4] if _safe_url(u)] if isinstance(story.get("gallery"), list) else []
     if gal:
         out += '<div class="xgal">' + "".join(
-            f'<img src="{e(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">' for u in gal) + "</div>"
+            f'<img src="{e(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">' for u in gal) + "</div>"
     return out
 
 
@@ -1316,8 +1316,7 @@ def _emblem_img(a):
         b = a["body"]
         k = ' style="--bl:{:.3f};--bf:{:.3f};--bc:{:.3f};--ba:{:.3f}"'.format(b[5] if len(b) > 5 else b[1] - b[0], b[1], b[2], b[3])
     body_cls = (" body cut" if a["body"][1] > 1 else " body") if a.get("body") else " nb" if a.get("nb") else " fz" if m and m >= 1 else ""
-    img = (f'<img class="{a["shape"]}{body_cls}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
-           f'onerror="var s=this.closest(\'.sec\');if(s)s.classList.remove(\'has-emb\');this.closest(\'.emb\').remove()">')
+    img = (f'<img class="{a["shape"]}{body_cls}"{k} src="{e(a["src"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-e="x">')
     c = a.get("crop")
     ar = a.get("ar")
     if a["shape"] == "badge" and not c and (a.get("plate") or ar and not (CARD_AR[0] <= float(ar) <= CARD_AR[1])):
@@ -2639,7 +2638,7 @@ def _side(works, today, wishes=(), taste=()):
             price = (f'{e(str(x.get("currency", "")))} {x["price"]:,.0f}' if isinstance(x.get("price"), (int, float))
                      else e(str(x.get("price") or "")))
             torn = (x.get("status") == "纠结")
-            pic = (f'<img src="{e(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'
+            pic = (f'<img src="{e(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
                    if _safe_url(img) or img.startswith("wishlist/") else "")
             rows.append(f'<li><span class="wthumb">{pic}</span>'
                         f'<span class="wt"><b>{e(x["name"])}</b><em>{price}</em></span>'
@@ -4590,7 +4589,7 @@ AUTH_JS = r"""
     function fresh(d){var t=Date.parse(d||'');return !isNaN(t)&&Date.now()-t<36*3600e3;}
     // カード 1 枚。見出し・出典は外から来た文字なので必ず esc。網址は http(s) だけ。画像がなければ字だけのカード（同じ仮の絵を並べない）
     function card(c){var u=safe(c.url);if(!u||!c.title)return '';var img=pic(c.img);
-      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"'+(img?'':' class="np"')+'>'+(img?'<span class="pic"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></span>':'')+
+      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"'+(img?'':' class="np"')+'>'+(img?'<span class="pic"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="p"></span>':'')+
         (c.board?'<span class="k">'+esc(c.board)+'</span>':'')+'<b>'+(c.isNew?'<i>NEW</i>':'')+esc(c.title)+'</b>'+
         '<small>'+esc([c.when,c.source].filter(Boolean).join(' · '))+'</small></a>';}
     function story2card(st,bn){return {title:st.title,url:st.url,img:st.image,source:st.source,when:md(st.date||st.seen),isNew:fresh(st.date||st.seen),board:bn,t:Date.parse(st.date||st.seen||'')||0};}
@@ -4841,7 +4840,16 @@ def _board_marks(html_, updated=""):
         if m and 'id="' in part[:part.index(">")]:
             part = f'<section data-h="{_board_hash(part)}"' + part[len("<section"):]
         out.append(part)
-    return "".join(out)
+    return _eager_first("".join(out))
+
+
+EAGER_N = 3
+
+
+def _eager_first(html_, n=EAGER_N):
+    """最初の n 枚の記事の写真（主图）だけ lazy を外して先に取る。実行時の JS では先読み（preload scanner）に間に合わない
+    ので HTML に直接書く（2026-10-30 最初のニュースを速く）。bg（ぼかし）は lazy のまま。"""
+    return re.sub(r'(<img src="[^"]*"[^>]*?) loading="lazy"([^>]*data-e="s">)', r'\1 loading="eager" fetchpriority="high"\2', html_, count=n)
 
 
 def page_marks(html_):

@@ -169,3 +169,4 @@
 2026-10-29 r4f2 管理者用 RPC の anon 権限の取りこぼし：board_emblem_request・admin_email_for を revoke from anon（本番適用・anon で実行できる admin_/board_ は board_visible のみ）。点検を名指しから数える形に（db/*.sql の関数を anon で呼ぶ）・公開 HTML を glob で全 19 枚・お客さま test-a〜e。確かめ：ux_check check_public_leak ✗0（35 名）・tests。次：anon 実行の security definer 41 本の総点検（BACKLOG）
 
 - 2026-10-30 r1（依頼）：最初のニュースを速く 1 段目。画像ごとの onerror/onload を head の 1 か所へ。PR #618。本番 index 4.1MB→1.9MB・guest ux_check --fast 1400 ✓。次：自前の縮小画像・HTML を分ける
+- 2026-10-30 r1f1（依頼）：最初のニュースを速く 1.5 段。残っていた inline onerror 4 か所〔xgal・小元素・wthumb・JS カード〕を data-e へ、最初の 3 枚を HTML で eager。点検を tests と ux_check に足した。次：Lighthouse で LCP を前後測る・自前の縮小画像
