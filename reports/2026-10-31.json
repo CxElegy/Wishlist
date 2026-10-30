@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "b3f5f69e4230",
+ "edit_sig": "4246379abd77",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -346,7 +346,7 @@
      "highlight": "BREAK EVEN",
      "image": null,
      "source": "메디컬투데이",
-     "source_icon": "https://www.google.com/s2/favicons?domain=www.mdtoday.co.kr&sz=128",
+     "source_icon": "https://cdn.mdtoday.co.kr/favicon.ico",
      "url": "https://www.mdtoday.co.kr/news/articleView.html?idxno=611993",
      "weight": "normal"
     }
@@ -510,17 +510,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "",
      "date": "2026-10-29",
-     "n": 1,
-     "source": "キャラグー",
-     "title": "劇場版『チェンソーマン レゼ篇』 めじるしアクセサリー1｜チェンソーマンのガチャガチャ 発売日・価格・設置場所",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9sRkw0cVJtcjgzTFQ2TlItSGJUMmsyZ2N1b1FydXViaFNnLXhobWJhMG9Rbjk4aFdpRGlkYktrTlBPMUxaZG5jNHN2TnNxdDQtZFNNR3NnYw?oc=5"
+     "headline": "劇場版『チェンソーマン レゼ篇』 めじるしアクセサリー1｜チェンソーマンのガチャガチャ 発売日・価格・設置場所",
+     "highlight": "",
+     "image": "https://charagoo.jp/wp-content/uploads/2026/08/1000255204_1.jpg",
+     "image_via": "og:image",
+     "url": "https://charagoo.jp/gacha/item/3f090c713eb9/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -847,8 +849,8 @@
      "date": "2026-10-30",
      "headline": "[ショーチャンピオン_1分間のライブ配信] A2O LITE_ _ RADAの＜NEON＞",
      "highlight": "",
-     "image": "https://www.wowkorea.jp/img/Breaking/106/532624/623990_tmb.webp",
-     "image_via": "正文图",
+     "image": "https://www.wowkorea.jp/img/Breaking/106/532431/623798_1280W.webp",
+     "image_via": "og:image",
      "url": "https://www.wowkorea.jp/Breaking/read/532431.html",
      "weight": "normal"
     },

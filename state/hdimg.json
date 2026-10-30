@@ -739,10 +739,10 @@
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2026/08/1000255204_1.jpg": {
-  "w": 1200,
-  "h": 1200,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://charagoo.jp/wp-content/uploads/2026/10/668w_668h-60.jpg": {
   "w": 668,
@@ -4141,6 +4141,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.Q9dry0f98vaYnNMmJmWk5g&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
   "h": 467,
@@ -4217,6 +4223,12 @@
   "h": 346,
   "target": 720,
   "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.ZihHWBLSjGNMY8YZXiPRsQ&pid=News&w=1080": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
  },
  "https://www.bing.com/th?id=ONUT.Zm8EYtYCMP07VWund8lUrQ&pid=News&w=1200": {
   "w": 700,
@@ -4980,24 +4992,17 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.wowkorea.jp/img/Breaking/106/532431/623798_1280W.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-31"
+ },
  "https://www.wowkorea.jp/img/Breaking/106/532601/623967_1280W.webp": {
   "w": 1280,
   "h": 960,
   "target": 1280,
   "v": 3
- },
- "https://www.wowkorea.jp/img/Breaking/106/532624/623990_tmb.webp": {
-  "w": 320,
-  "h": 240,
-  "target": 720,
-  "v": 3,
-  "blur": 0.466,
-  "local": "pics/f163a43d40100387.webp",
-  "out": [
-   720,
-   540
-  ],
-  "why": "看不清"
  },
  "https://x0.ifengimg.com/res/2026/7DB009EBC78419C0A22C491DF17530B86991AC52_size23_w689_h293.jpg": {
   "w": 689,
