@@ -171,3 +171,4 @@
 - 2026-10-30 r1（依頼）：最初のニュースを速く 1 段目。画像ごとの onerror/onload を head の 1 か所へ。PR #618。本番 index 4.1MB→1.9MB・guest ux_check --fast 1400 ✓。次：自前の縮小画像・HTML を分ける
 - 2026-10-30 r1f1（依頼）：最初のニュースを速く 1.5 段。残っていた inline onerror 4 か所〔xgal・小元素・wthumb・JS カード〕を data-e へ、最初の 3 枚を HTML で eager。点検を tests と ux_check に足した。次：Lighthouse で LCP を前後測る・自前の縮小画像
 - 2026-10-30 r1：管理ページ③エンブレムの版面の札をライブラリ全版面に（店長の令牌・②と同じ読み方）· https://github.com/CxElegy/Wishlist/pull/623 · CI 緑・合併、ux_check は guest の既存の小元素 ✗ のみ（③の数は店長ログインの回で確認）· 次：④AI 編集を全版面に
+- 2026-10-30 r1f1：③の続き。library_emblem.py の収集が followers>0 のままだったのを外した〔0 人の版面も小元素を探す・画面の約束どおり〕。tests に scripts 全体の followers 絞り 0 件の点検。本番 boards 64 行は全部 followers=1 で数は変わらず。次：④AI 編集・③の状態表を全版面に。

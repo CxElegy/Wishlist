@@ -57,6 +57,14 @@ class LibBoards(unittest.TestCase):
         self.assertNotIn("お客さまの名前", out)   # 焼かない：版面の札は JS が読む
         self.assertIn("board_emblem_request", js)
 
+    def test_no_script_filters_library_boards_by_followers(self):
+        """ライブラリの版面一覧を followers>0（や匿名鍵）で絞って読む所が scripts 全体に 0 件。0 人の版面も収集・表示の対象（画面の約束と同じ規則）。"""
+        import re
+        bad = [f"{p.name}:{i}" for p in sorted((ROOT / "scripts").glob("*.py")) if p.name != "processes.py"
+               for i, ln in enumerate(p.read_text(encoding="utf-8").splitlines(), 1)
+               if re.search(r"boards\?[^\"']*followers=(gt|gte)\.", ln)]
+        self.assertEqual(bad, [])
+
     def test_ux_check_has_coverage_and_leak_checks(self):
         src = (ROOT / "harness" / "ux_check.py").read_text(encoding="utf-8")
         self.assertIn('glob("*.html")', src)   # 公開 HTML は名指しでなく glob で全部
