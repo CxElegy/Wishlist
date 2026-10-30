@@ -1,14 +1,14 @@
 {
- "admin": "f6a2455db289",
- "admin-ai": "39d44c3f553c",
+ "admin": "522ae3309b1b",
+ "admin-ai": "a7969f606cad",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4c278446"
+   "7d50bd85"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "9701f7a6"
+   "33439a27"
   ]
  },
  "admin-boards": "78a19682af6e",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "5f4d02033152",
+ "admin-emblem": "f2c931997793",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "7ca7a381"
+   "a5936a43"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "dc551b4f1be9",
+ "admin-now": "ba178a4a2fa9",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "c00a85ed"
+   "1136e3d5"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "88a39f6e"
+   "3aa3129a"
   ]
  },
- "admin-system": "511bf086443e",
+ "admin-system": "5af9f35b6d9a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "ee6187ab"
+   "b2e95050"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "82c6e48c"
+   "799a2bd0"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "f3fbfc3b"
   ]
  },
- "index": "0f1c748ed222",
+ "index": "0bdc63b99186",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "b32c31e4"
+   "ecb1a8c7"
   ],
   "w-130724c0": [
    "猫用品",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "f699a9d6"
+   "f8db4141"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "cdc9dd74"
+   "15e032bf"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "f358fc8f"
+   "f8b5ba9f"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 10:13",
+ "updated": "10.30 10:19",
  "wishlist": "7af11c19700f"
 }

@@ -353,7 +353,7 @@
   "ILLIT": 22,
   "哈利波特剧集": 14,
   "日本顶级网球赛事": 18,
-  "dota2": 9,
+  "dota2": 12,
   "MMORPG 新作": 10,
   "BLEACH Mirrors High": 4,
   "The Mandalorian": 8,
@@ -437,7 +437,8 @@
     7,
     6,
     5,
-    8
+    8,
+    11
    ],
    "event": {
     "date": "2027-04-04",
@@ -462,6 +463,24 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "LEGION Dota 2チームの概要と視聴者統計",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  },
+  {
+   "headline": "OG Beat Team Spirit 2-1 In PARI Universe Dota 2 Upset",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
    ]
   }
  ],

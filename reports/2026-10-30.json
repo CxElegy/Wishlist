@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "a1a65c6e41e4",
+ "edit_sig": "0cb3badc3a9d",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -157,9 +157,8 @@
      },
      "headline": "Nexon、「オーバーギアード」オンラインショーケースを11月5日に配信",
      "highlight": "11月5日",
-     "image": null,
-     "source": "DigitalToday",
-     "source_icon": "https://cdn.digitaltoday.co.kr/image/logo/favicon.ico",
+     "image": "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg",
+     "image_via": "og:image",
      "url": "https://www.digitaltoday.co.kr/jp/view/121244/nexon-to-hold-tembbal-overgeared-online-showcase-on-nov-5",
      "weight": "normal"
     }
@@ -486,7 +485,7 @@
      "date": "2026-10-25",
      "headline": "ダブルス女王シニアコバ、大阪決勝でクルーガーに6-1、6-0 3年ぶりシングルスV",
      "highlight": "6-1、6-0",
-     "image": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FTBSNews%252F0f%252FTBSNews_1488684649171256082%252FTBSNews_1488684649171256082_1.jpg,zoom=560x320,quality=100,type=jpg",
+     "image": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F6d%252FKyodo_1488696552689173224%252FKyodo_1488696552689173224_1.jpg,zoom=560x320,quality=100,type=jpg",
      "image_via": "正文图（6 枚から）",
      "url": "https://www.excite.co.jp/news/article/sportsbull_2444600/",
      "weight": "normal"
@@ -960,29 +959,6 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 10,
-     "source": "Esports Charts",
-     "title": "LEGION Dota 2チームの概要と視聴者統計",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9uUk50UmVuNXRjaGE4RlJwTjZUSFdjMF9heFFCUDcySmtxOHV5cnd5T0pVY2E5bmp4bU80SEF4T1VXMVNlS1NkUnZyWWFZcTdOYndLYnRPSQ?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 11,
-     "source": "Players",
-     "title": "ESL One Munich 2027 Announced for Dota 2 With a $1,000,000 Prize Pool",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxORjF1T0FBdmdTc3UwUkFOZWd2bThSWmxJeEJEM2ZBWEdIOHhKeEpBOTdfcE5IalIyNnpGMFprMXRxQ3I1UExOcG9fSWRiQ3ZuLU5iM0NyQ2hBbWM1ei1yVmF6Y1hRaWRGSmFQYW9GVWFJRmEyVFFOQkR2TS1LWjBhdFVNQlRCUEowd2Jqb1Frb2x3bFNfNFVmbDN5cTZBMUlPSlHSAaoBQVVfeXFMTWZGa1ZyWVdrXzJJMC1lUHFSNVQxczBrRTA1Nk0xREE3MHlBcnUwaW54OHJvLWJJWkdrcV96YnZkU1ZtRE1wU05pTXVoUmhYYmJaTlRnMXhOYXFzTkFIQWdOOHNGeGdfMXJhRXV1ZDdQZkxqMnR4VE1JWEJHWS1WaXdSX1B3MGtPTy1Pb3hvYlRXb2tPRDljamNqenp0aWxZd2kwTTJHRXBJUEE?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 12,
-     "source": "Gambling.com",
-     "title": "OG Beat Team Spirit 2-1 In PARI Universe Dota 2 Upset",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPc1NxWmlDN2tndTdCOHRjY0RFLUxudVdQSXNFcF9FaFZjTFVNSXd6SEdmZko3dHA2VjZMYnNqVG1aTG9SUjYwT3lVUHlBRlpFNHVMQWhSeEl5dGozWnd0MXJxNXpjd3pvMW0wNkZTOEJwbUFZTmw1bEUxa1FlLTFsT0F2SE1yVThOYjNz?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -1019,6 +995,27 @@
      "source": "escorenews.com",
      "source_icon": "https://www.google.com/s2/favicons?domain=escorenews.com&sz=128",
      "url": "https://escorenews.com/en/dota-2/news/82274-dota-2-peak-online-drops-300k-players-after-valve-reportedly-bans-bots-from-arcade-games",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "LEGION Dota 2チームの概要と視聴者統計",
+     "highlight": "",
+     "image": null,
+     "source": "Esports Charts",
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
+     "url": "https://escharts.com/ja/teams/dota2/legion-1",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "OG Beat Team Spirit 2-1 In PARI Universe Dota 2 Upset",
+     "highlight": "",
+     "image": "https://www.gambling.com/cdn-cgi/image/w=1200,format=webp/https://objects.kaxmedia.com/genesis/og-esports.webp?v=32e8ecb2d051e367153db4e5417a973fcfe59790",
+     "image_via": "og:image",
+     "url": "https://www.gambling.com/news/og-beat-team-spirit-2-1-in-pari-universe-dota-2-upset",
      "weight": "normal"
     }
    ],
@@ -1075,8 +1072,9 @@
      "date": "2026-10-29",
      "headline": "李秀满新团炸场！A2O LITE《NEON》MCD初舞台直接杀疯了",
      "highlight": "",
-     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "搜狐网",
+     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
      "url": "https://m.sohu.com/a/1088209635_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }
