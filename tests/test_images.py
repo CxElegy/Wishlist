@@ -706,6 +706,31 @@ class ImagesTest(unittest.TestCase):
         self.assertNotIn('没图的消息</a></li>', page)
         self.assertRegex(page, r'<article class="top"[^>]*><a class="lk" href="https://a/1"')  # 没图的 hero 不上头条大图
 
+    def test_no_per_image_handlers_anywhere(self):
+        """画像 1 枚ごとの onerror/onload は、どの出し口でも書かない（2026-10-30 連動の範囲：xgal・小元素・欲しい物の小さい写真・
+        JS が組むカード）。処理は IMG_FALLBACK_JS の data-e 1 か所。"""
+        import re
+        import render
+        gal = render._extras({"gallery": ["https://a/1.jpg", "https://a/2.jpg"]})
+        emb = render._emblem_img({"src": "https://x/a.jpg", "shape": "badge", "ar": 1.0})
+        for h in (gal, emb):
+            self.assertNotRegex(h, r"\son(error|load)=")
+            self.assertIn('data-e="', h)
+        self.assertEqual(gal.count('data-e="r"'), 2)
+        self.assertIn('data-e="x"', emb)
+        src = pathlib.Path(render.__file__).read_text(encoding="utf-8")
+        self.assertEqual(re.findall(r"<img[^>]*\son(?:error|load)=", src), [])   # render.py のどの文字列にも <img … onerror= を書かない
+        for k in ("p:function", "x:function", "r:function"):
+            self.assertIn(k, render.IMG_FALLBACK_JS)
+
+    def test_first_photos_eager_in_html(self):
+        """最初の 3 枚の主图だけ HTML で eager＋fetchpriority=high（実行時 JS では preload scanner に効かない）。ぼかしの bg は lazy のまま。"""
+        import render
+        h = render._eager_first("".join(render._pic({"image": f"https://a/{i}.jpg", "url": "https://x.com/a"}) for i in range(5)))
+        self.assertEqual(h.count('fetchpriority="high"'), 3)
+        self.assertEqual(h.count('loading="eager"'), 3)
+        self.assertNotIn('class="bg" src="https://a/0.jpg" alt="" loading="eager"', h)
+
     def test_render_icon_fallback_order(self):
         """兜底顺序：自己的图 → 作品封面 → 来源图标（存的 → 完整域名 → 主域名）→ 作品名封面块。"""
         import render
