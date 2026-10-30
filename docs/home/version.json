@@ -1,32 +1,32 @@
 {
- "admin": "99f6d6862998",
- "admin-ai": "8c89d0733ea3",
+ "admin": "14bd2364418c",
+ "admin-ai": "c9707d71ceca",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d7ed5d73"
+   "68e236dd"
   ],
   "tokens": [
    "AI 編集のトークン",
    "512f48eb"
   ]
  },
- "admin-boards": "78a19682af6e",
+ "admin-boards": "b04f5e696234",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "cf8f9397"
+   "e3b896ad"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "c273c58a09c4",
+ "admin-emblem": "2beb731c0bff",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d7f49220"
+   "288d8793"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "44c46bf842fb",
+ "admin-now": "f7b538ccacdc",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "6cbd4b50"
+   "97869819"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "0b3f5be7"
+   "ff1f7d1d"
   ]
  },
- "admin-system": "97735bd490f5",
+ "admin-system": "c01ba0905346",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "740c55cb"
+   "675c5a63"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "48db342e"
+   "c90c523a"
   ]
  },
  "admin_marks": {},
- "heat": "f9cd13dfc62d",
+ "heat": "7626a22214a9",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "e32159f6"
+   "64815db8"
   ],
   "ranking": [
    "ランキング",
-   "f3fbfc3b"
+   "ac123465"
   ]
  },
- "index": "96a62fd69b92",
+ "index": "c45928849bef",
  "index_marks": {
   "front": [
    "トップ",
-   "43cebc56"
+   "fd23ba11"
   ],
   "picks": [
    "気になるかも？",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "b23f0f0c"
+   "9f946fc2"
   ],
   "w-b867582f": [
    "あつ森",
@@ -181,7 +181,7 @@
   ],
   "w-da15ac21": [
    "Vaundy",
-   "9cfff97e"
+   "7fc68382"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 10:34",
+ "updated": "10.30 10:44",
  "wishlist": "7af11c19700f"
 }
