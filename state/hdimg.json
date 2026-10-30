@@ -1058,7 +1058,7 @@
  "https://gamegpu.com/images/1_2026/NEWS/Q4/okt/30/2026_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/okt/30/2026_gpu.webp?width=1920&height=1080": {
   "w": 1920,
   "h": 1080,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://gamenewsplus.net/wp-content/uploads/2026/10/GTA-6-REVIEW-CODES.webp": {
@@ -1751,12 +1751,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s.msn.cn/tenant/amp/entityid/AA2gp7XM.img": {
-  "w": 1080,
-  "h": 607,
-  "target": 1280,
-  "v": 3
- },
  "https://img.biggo.com/teH3NbIxFSt-CqvQ3yCIx_NPe2np828iadfx9SgSY7c/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwLzBiNDEzMTQzLTI1NmYtNGE2OC05ODM1LTVhZWNkNTUxNjM3NV8xNzkzMjc4NjkwX2RlZmF1bHQuanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -1881,6 +1875,12 @@
   "w": 1600,
   "h": 900,
   "target": 1280,
+  "v": 3
+ },
+ "https://img.opencritic.com/article/o/OEmGhyL1UTjNvzkx5fQjfzZKmGzaOEz8.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
   "v": 3
  },
  "https://img.opencritic.com/article/o/eLUhwqCXi0fZXo9asrLUvc1SvfwOt3V1.jpg": {

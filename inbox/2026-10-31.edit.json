@@ -2,7 +2,7 @@
  "_covered": {
   "漫威电影": 53,
   "哈利波特剧集": 19,
-  "GTA 6": 23,
+  "GTA 6": 29,
   "A2O LITE": 9,
   "三星手机": 11,
   "ILLIT": 8,
@@ -165,13 +165,17 @@
    ]
   },
   {
-   "headline": "媒体估算《GTA6/侠盗猎车6》主线约需60至70小时",
-   "highlight": "60至70小时",
+   "headline": "GTA 6 First Official Post-Launch Release Confirmed For December 11",
+   "highlight": "December 11",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    10
-   ]
+    29
+   ],
+   "event": {
+    "date": "2026-12-11",
+    "label": "配信日"
+   }
   },
   {
    "headline": "Grand Theft Auto VI's graphics are noticeably more detailed than in 2023.",
@@ -179,7 +183,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    1
+    1,
+    24
    ]
   },
   {
