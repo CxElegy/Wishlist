@@ -5,6 +5,13 @@
 
 ## いちばん先（目標：お客さまが登録して、自分の版面を毎日読める。HARNESS「目標から決める」）
 
+- [ ] 【依頼】最初のニュースが出るまで長い：開いたらすぐ・スクロールしたらすぐ画像が見える仕組み（**最優先**・2026-10-30 ユーザー：「最初のNEWSをみるときに、ローディング時間が長すぎる、スクロールしたらすぐ画像がみえるような仕組み組んで」）。
+  - 測った今（2026-10-30 入口の会話、docs/home/index.html）：HTML 1 枚が **4.1MB**、`<img>` **3875 枚**（3874 枚が loading=lazy、eager・fetchpriority・srcset は 0）。画像はほぼ全部が**よそのサイトの原寸に直リンク**（msn 140・bing 98・walkerplus 62・prtimes 60・yimg 72…）で、縮めた版がない。最初の `<img>` は 171KB 目（前に style 117KB・script 130KB・svg 40KB が直書き）。→ 遅さの根は「1 枚に全部」「原寸の直リンク」「最初の画面の画像を先に取らない」の 3 つ。
+  - 一流の人がやること（頼まれていなくても）：①最初の画面（1400/390px の折り目まで）の画像だけ eager＋fetchpriority=high、ほかは lazy ②画像を**自前で縮めて置く**（幅 400/800 の webp・srcset/sizes、版面ごとに生成。小元素と同じ置き場の考え）③幅と高さを先に入れて画面がずれない（CLS 0）・読めない画像は枠を保ったまま差し替え ④小さい下絵（色か 16px のぼかし）を先に出し、本物は読み込めたらフェード（#480 の「パッと出ない」と同じ部品）⑤HTML を分ける：最初の画面＋最初の数記事だけを本体に、残りはスクロールの 1 画面手前（IntersectionObserver の rootMargin）で取る ⑥style・script を別ファイルにしてキャッシュ ⑦よく使う画像の置き場へ preconnect。
+  - 元の材料：本番を Lighthouse／Playwright で測る（LCP・転送量・画像の枚数とバイト）、render.py の img の作り方、各記事の画像の網址と原寸、Pages の配信（gzip 後の大きさ）。
+  - 正しいと言える物差し（自分の目以外）：スマホ 390px・Fast 3G 相当で **LCP ≤2.5 秒・最初のニュースの画像が 1.5 秒以内・CLS ≤0.1・最初に取るバイト ≤500KB**。スクロールで画面に入った時点で読み込み済みの画像 ≥90%。直す前と後の数字を PR に並べる。ux_check に点検（HTML の大きさ・eager の数・幅高さのない img・自前で縮めていない画像の割合）を足し、戻ったら ✗。
+  - 全体に効かせる（1 ページだけ直さない）：店長のページ・お客さまのページ（同じ render）・話題度・愿望清单・管理ページ・入口、PC とスマホ。小元素の画像も同じ置き方に。
+  - 同じ考えでほかに：古い記事を版面ごとの別ページ（「もっと見る」）へ／壊れた画像の網址を出刊のときに数えて外す／フォントの読み込み（font-display）。
 - [x] 【別の目の指摘】ux_check の小元素 ✗（E2・E7・E10）を原因まで（https://github.com/CxElegy/Wishlist/pull/559 ・f1f2 2026-10-27：E2 は guest・test-a とも 0〔コード変更なし〕。E7〔Gin Ichimaru・Frieren〕の原因＝`emblem_face._boxes` が共有の顔検出器のしきい値を 0.5/0.32 に書き換えて戻さず、額切れ判定が前の測りしだいで変わっていた〔487 枚中 7 枚〕→ `face_id.SCORE` に戻す＋試験。本番 ux_check guest・test-a・test-b・test-c × 1400/390：E7 0、test-c は全ページ ✓〔最初の画面は 1400/390 で目で確認〕。残り E10 9・E15 4〔後台の回待ち〕・E18 8〔test-a、短い辺 256px 未満〕は下の段）。連動：焼く空の言い回しを数える試験 test_every_baked_empty_wording_is_known〔本人の焼くページは index・settings の 2 枚、通しが両方を見る〕。画面の文字は app_users.ui_lang〔今は全員 ja〕で、JS の日本語を言語表にする段は下
 - [x] 同じ測りを順番で変えない点検を ux_check に：E7 が ✗ のとき、その画像を検出器を標準に戻して測り直し、違えば「順番しだい」と出す（emb_check.cut_edge）。同じ型：emblem.py の face_id.engine() を使う 6 か所が標準値を前提にしていること（https://github.com/CxElegy/Wishlist/pull/562 ・f2 2026-10-27：emb_check._faces が測る前に検出器のしきい値を標準へ戻し、戻し忘れを数えて「E7 順番しだい」と出す。試験つき。本番 guest 1400/390：E7 0。setScoreThreshold は scripts で emblem_face の 1 か所だけ）
 - [x] test-a の E18（短い辺 256px 未満）を取る規則で（https://github.com/CxElegy/Wishlist/pull/566 ・f3 2026-10-27：根＝small_url が幅 400 に縮めて渡し、人物が幅の半分の絵は切り抜きが 256px に届かない。cut_out・fit_all が emblem.get_full〔幅 1000〕で取り、save_cut の min_side で取るとき 256px 未満は断る〔commit が emblem_reject へ・店長もお客さまも同じ〕。試験つき。前からの小さい分は E18 が数え続け、入れ替えは下の【依頼】の段。本番の数の変化は次の回で見る）

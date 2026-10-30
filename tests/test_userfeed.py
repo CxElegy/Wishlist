@@ -298,6 +298,7 @@ class Merge(unittest.TestCase):
 class Collect(unittest.TestCase):
     def test_same_filters_as_shop(self):
         it = userfeed.board_item("広島旅行", "出行", ["ja-JP"])
+        NOW = dt.datetime.now(dt.timezone.utc)   # stories_for は本当の今で古さを測る（固定の日付だと日が経つと落ちる）
         raw = [sources.Entry(title="広島旅行で行きたい紅葉の名所", url="https://a.example/1", published=NOW, source="旅の例",
                              summary="<b>秋</b>の広島", image="https://a.example/1.jpg"),
                sources.Entry(title="広島旅行 在线看 高清完整", url="https://b.example/2", published=NOW, source="spam"),
