@@ -4,6 +4,7 @@
 
 - 管理ページの全区画は「店長が見ている分」でなく**ライブラリの全版面（店長＋お客さま＋テスト用）**を対象にする。版面の一覧は 1 つの読み方にそろえる＝店長の令牌（`window.WL_TOK`、AUTH_JS が出す）で `boards` 全部（followers 0 も）を読む。②版面「ライブラリの版面」と③エンブレムの札が使っている。
 - ユーザーのデータは公開 HTML に焼かない（名前・メールも）。読むのは `is_admin()` の RLS／RPC だけ。RPC は足すだけ（消す操作は聞く）。押して「どうしたい？」は店長の版面なら `submit_item`、お客さまの版面なら `board_emblem_request`。
+- ②版面の「全アカウントの篇幅・写真・依頼・言語」＝RPC `admin_accounts()`・`admin_ui_langs()`（`db/admin_accounts.sql`、is_admin のみ）。account ごとに追う版面数・篇幅 S/M/L（店長は sizes 表、お客さまは follows.size）・写真の受付（済/全部）・関注項の依頼（待ち/全部）。画面の言語は app_users に account との結びがないので言語ごとの人数だけ。ux_check が follows のアカウントの漏れ 0 を見る（2026-10-31 r4）。
 - ②版面の「全アカウントの投票」＝RPC `admin_votes()`（`db/admin_votes.sql`、is_admin のみ）。account ごとに今の票（同じ記事は最後の票・撤銷 0 は除く）の 👍👎・この 7 日の回数・最後の投票・最近 8 件。follows にいて票のないアカウントも 0 の行で出す。「全員／ユーザーを選ぶ」の行キーは `acc:<名前>`。ux_check が follows のアカウントの漏れ 0 と店長の票 >0 を見る（2026-10-31）。
 - ④AI 編集の「ライブラリの全版面の AI 編集」＝RPC `admin_board_edit_state()`（`db/admin_board_edit.sql`、is_admin のみ）。版面の数は ②③ と同じ boards の数。各行に「載せた：整理待ち」の棒（ライブラリの版面には集めた数がなく、前後はこの 2 つ）と「全員／ユーザーを選ぶ」（店長の令牌で `follows` を読む）。店長の版面だけの前後は上の「AI 編集の前後」（`edit_diff`）。
 - 点検：`ux_check.check_admin_coverage`（店長でログイン）が ②③ の版面の数 ＝ boards の数を見る。区画を足す・変えるときは同じ読み方を使う（店長だけの一覧を別に作らない）。

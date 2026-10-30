@@ -176,3 +176,19 @@ class AdminWho(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LibAccts(unittest.TestCase):
+    def test_accts_panel(self):   # ②に「全アカウントの篇幅・写真・依頼・言語」：焼かない・admin_accounts()／admin_ui_langs()（店長だけ）で読む・全員／ユーザーを選ぶ
+        out = render.render_admin({}, {"url": "https://x.supabase.co", "key": "k"}, "u")["admin-boards.html"]
+        self.assertIn('id="libaccts" hidden', out)
+        self.assertIn('id="wl-libaccts"><p class="empty">読み込み中', out)
+        self.assertIn("rpc('admin_accounts')", render.AUTH_JS)
+        self.assertIn("rpc('admin_ui_langs')", render.AUTH_JS)
+        self.assertIn("libaccts", [s for _, s, _ in render.ADMIN_WHO])
+        i = render.AUTH_JS.index("function libaccts")
+        self.assertIn("whoMount(", render.AUTH_JS[i:i + 2500])
+        sql = (ROOT / "db" / "admin_accounts.sql").read_text(encoding="utf-8")
+        self.assertEqual(sql.count("if not public.is_admin()"), 2)
+        self.assertNotIn("to anon", sql)
+        self.assertNotIn("email", sql)
