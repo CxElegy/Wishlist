@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "0cb3badc3a9d",
+ "edit_sig": "669fbd9a0f8e",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -248,29 +248,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 15,
-     "source": "wheretowatch.tv",
-     "title": "Harry Potter TV Series Reportedly Set for Movie-Length Opening Episode Ahead of Christmas Debut",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNVUlCb1o0Zk1NaGt0bjRzaVpNelM1RDBDWkdramJaWDBkTm1KV1NYeDQ1V1puOVZKNmlsTkl6UUpqbXN0dnFRUFhxaVEwRW9lUzBDRjl6b1pWUExLMmtpeWFWZUxVbHBRNWR1UnlmcVBzcFFFRTlUSktpb2FxeDR1M1dwenJTTXRLQ3ZxREhYeWc0VktqeVQ2OVN6R2FFVG1ETTc2MnpRMHJjZmFlejFfdg?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 16,
-     "source": "Unboxholics",
-     "title": "Harry Potter Series: HBO Max Release Date and First Look at Harry!",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOUkxYdTM2LWFqSEVmLV9qcmlNMExaRjdYZGwzZ3doSHJFQWVnVFQ0MTBzWDl5VjJzUldIY1F4U0RYWTV5Q2Zoa203TUg4dkdJNVJGak1RLUxmRVlmekhHTUhFU3liZ001QkFLRktsRnlrdmVrRU9FVl9SRHdwbVN2b3UxODJrN3FyUWdnNlBNdDhKdE1EMDQ2cVpjT2JSTjU5ZTcxc1RoVGV6Yms2?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 17,
-     "source": "ScreenRant",
-     "title": "HBO's Harry Potter Casting Update Confirms A Devastating Truth",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNbm1CaXhoMG9mTU5jZU9OWGxaUmo2YlVISFl4WlNVano5Y1hGMUhJNkV4eVBrT1RKZ0x6THZtbU50ODh5RWZ5OFo4Q0dDUklpbW9adXljT0dQbllnN21YUGlGd09kc3dNWEtCbGxza2pCcjhfWUY4Q3ptV2ctUC12YVpwRGRMdw?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -301,6 +278,26 @@
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2glAYg.img",
      "image_via": "MSN 接口",
      "url": "https://www.msn.com/en-us/entertainment/celebrities/hbo-s-harry-potter-season-2-what-we-know-so-far/ar-AA2glhel",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "Harry Potter TV Series Reportedly Set for Movie-Length Opening Episode Ahead of Christmas Debut",
+     "highlight": "Movie-Length Opening Episode",
+     "image": "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg",
+     "image_via": "og:image",
+     "url": "https://wheretowatch.tv/tv-news-2/harry-potter-tv-series-reportedly-set-for-movie-length-opening-episode/29/10/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "HBO's Harry Potter Casting Update Confirms A Devastating Truth",
+     "highlight": "",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/john-lithgow-1.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://screenrant.com/harry-potter-lily-james-casting-young-devastating-truth/",
      "weight": "normal"
     }
    ],
@@ -1072,9 +1069,8 @@
      "date": "2026-10-29",
      "headline": "李秀满新团炸场！A2O LITE《NEON》MCD初舞台直接杀疯了",
      "highlight": "",
-     "image": null,
-     "source": "搜狐网",
-     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1088209635_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }

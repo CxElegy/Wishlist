@@ -3179,6 +3179,12 @@
   "target": 720,
   "v": 3
  },
+ "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
+  "w": 360,
+  "h": 616,
+  "target": 720,
+  "v": 3
+ },
  "https://r2-media.wdwnt.com/2026/10/the-art-of-the-mandalorian-and-grogu-cover-1.jpg": {
   "w": 1500,
   "h": 853,
@@ -3574,6 +3580,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/john-lithgow-1.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/10/catalina-sandino-moreno-and-hannah-cheramy-in-from-season-3.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -3823,6 +3835,12 @@
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
+ },
+ "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
+  "w": 495,
+  "h": 619,
+  "target": 720,
+  "v": 3
  },
  "https://woman-asset.tvbs.com.tw/images/2026/10/20261029224830-8iLWh5be.webp": {
   "w": 1200,
