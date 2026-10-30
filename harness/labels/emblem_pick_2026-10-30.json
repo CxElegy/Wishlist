@@ -1,0 +1,78 @@
+{
+ "date": "2026-10-30",
+ "source": "ユーザーが testground/emblem-pick.html の「新しい：合計点の上位 12 枚・顔の大きさと目の高さをそろえた胸像」に付けた印（スクショ 3 枚）",
+ "meaning": {
+  "o": "良い",
+  "x": "だめ",
+  "-": "どちらでもない（使えるが良くはない）"
+ },
+ "boards": {
+  "BLEACH Mirrors High": {
+   "o": [
+    "Byakuya Kuchiki",
+    "Yasutora Sado",
+    "Suì-Fēng"
+   ],
+   "x": [
+    "Rukia Kuchiki",
+    "Tōshirō Hitsugaya",
+    "Orihime Inoue",
+    "Renji Abarai",
+    "Rangiku Matsumoto",
+    "Grimmjow Jaegerjaquez",
+    "Gin Ichimaru",
+    "Ulquiorra Cifer",
+    "Shūhei Hisagi"
+   ],
+   "-": []
+  },
+  "チェーンソーマン": {
+   "o": [
+    "Makima",
+    "Angel Devil",
+    "Akane Sawatari",
+    "Princi",
+    "Gun Devil",
+    "Hirokazu Arai"
+   ],
+   "x": [
+    "Denji",
+    "Power",
+    "Mysterious Man"
+   ],
+   "-": [
+    "Aki Hayakawa",
+    "Kobeni Higashiyama",
+    "Beam"
+   ]
+  },
+  "哈利波特剧集": {
+   "o": [
+    "Harry Potter（Dominic McLaughlin）",
+    "Severus Snape（Paapa Essiedu）",
+    "Hermione Granger（Arabella Stanton）",
+    "Draco Malfoy（Lox Pratt）",
+    "Minerva McGonagall（Janet McTeer）",
+    "Peeves（Peter Serafinowicz）",
+    "Gregory Goyle（William Nash）",
+    "Ronald Weasley（Alastair Stout）"
+   ],
+   "x": [
+    "Rubeus Hagrid（Nick Frost）",
+    "Gilderoy Lockhart（Kit Harington）",
+    "Quirinus Quirrell（Luke Thallon）",
+    "George Weasley（Gabriel Harland）"
+   ],
+   "-": []
+  }
+ },
+ "observations_by_intake": [
+  "× の多く：頭だけが小さく浮いて上に大きな空き（Rukia・Orihime・Rangiku・Grimmjow・Quirrell・Lockhart・Ulquiorra）＝顔のアップを胸像の枠に入れて縮めたもの。システムも『顔だけのアップ』と札を付けていたものは全部 ×",
+  "× のもう一つ：頭の上が枠で切れている（Denji・Power・Hagrid・Renji・Hisagi の髪）",
+  "× のもう一つ：白く飛んだ・ぼやけた写真（Gin・George・Hitsugaya）",
+  "○：顔が上 1/3 で肩から胸まで枠を埋める胸像（Suì-Fēng・Makima・Angel Devil・Akane・Princi・Arai・Harry・Snape・Hermione・Draco・McGonagall・Goyle・Ron）",
+  "○ だが全身：人でない・全身が見分けの印（Gun Devil・Peeves）や公式の立ち絵（Byakuya）",
+  "−：人の全身で小さい（Aki・Kobeni・Beam）＝使えるが胸像より下",
+  "人気の順位は印と関係が薄い（Hitsugaya 2 位・Rukia 3 位・Renji 4 位でも ×）＝絵の選び方の問題"
+ ]
+}
