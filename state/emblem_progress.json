@@ -111,8 +111,8 @@
    }
   },
   "BLEACH Mirrors High": {
-   "at": "2026-10-30T20:03:47+00:00",
-   "failed_at": "2026-10-30T20:03:47+00:00",
+   "at": "2026-10-30T20:17:55+00:00",
+   "failed_at": "2026-10-30T20:17:55+00:00",
    "funnel": {
     "added": 0,
     "auto": 0,
@@ -929,25 +929,11 @@
   }
  },
  "last_run": {
-  "at": "2026-10-30T19:50:19+00:00",
+  "at": "2026-10-30T20:12:13+00:00",
   "done": [
-   "GTA 6",
-   "dota2",
-   "あつ森",
-   "FROM",
-   "A2O LITE",
-   "漫威电影",
-   "Vaundy",
-   "周杰伦",
-   "Astrae Oratio",
-   "The Mandalorian",
-   "ILLIT",
-   "绝区零",
-   "ぐでたま",
-   "BLEACH Mirrors High",
-   "哈利波特剧集"
+   "BLEACH Mirrors High"
   ],
-  "end": "2026-10-30T20:03:58+00:00",
+  "end": "2026-10-30T20:17:56+00:00",
   "minutes": 40.0,
   "workers": 6
  },
