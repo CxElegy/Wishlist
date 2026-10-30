@@ -15,6 +15,14 @@ class LibBoards(unittest.TestCase):
         self.assertIn('id="wl-libboards"><p class="empty">読み込み中', out)   # 中身は JS が店長のログインで読む（焼かない）
         self.assertIn("店長がログインしたときだけ", out)
 
+    def test_tokens_panel_says_all_accounts(self):   # 2026-10-31：AI 編集は 1 本だけ＝実行ログの合計が全アカウント分
+        out = render._admin_edit_tokens({"runs": [], "today": {}, "week": {}})
+        self.assertIn("まだ記録がありません", out)
+        d = {"runs": [{"when": "10/31", "at": "x", "batches": [{"when": "01:00", "batch": 1, "boards": ["a"], "stories": 1,
+              "tok": {"in": 1, "cw": 0, "cr": 0, "out": 1}, "total": 2}], "sum": {"in": 1}}], "today": {"in": 1}, "week": {"in": 1}}
+        self.assertIn("全アカウント分の合計", render._admin_edit_tokens(d))
+        self.assertNotIn("未対応", render.ADMIN_WHO_NO["tokens"])
+
     def test_page_is_in_admin_pages(self):
         ids = [i for f, _, _, _, ids in render.ADMIN_PAGES if f == "admin-boards.html" for i in ids]
         self.assertIn("libboards", ids)
