@@ -30,7 +30,6 @@
   "https://news.livedoor.com/topics/detail/32677643/": "https://image.news.livedoor.com/newsimage/stf/a/8/a84a9_1830_709a350d_14660206.jpg",
   "https://news.mydrivers.com/1/1160/1160968.htm": "https://img1.mydrivers.com/img/20261027/Sfe466081-bb4e-4ee2-9120-ef5e3fc8da67.png",
   "https://news.yahoo.co.jp/articles/b99312a43ff734cc77e4fc9aeb6e2215c0067751": "https://www.bing.com/th?id=ONUT.8As_DJmA332KXtNmDDXTIQ&pid=News&w=1080",
-  "https://newsbytes.ph/2026/10/30/pt-sports-taps-dawn-bulls-as-stand-in-dota-2-roster-for-nov-tourneys/": "https://newsbytes.ph/wp-content/uploads/2026/10/PT-sports.jpg",
   "https://nijimen.kusuguru.co.jp/topics/645125": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/10/7c033deae70845d99df67c2390632314.jpg",
   "https://note.com/kimonoclub/n/n81583111eff7?hl=en": "https://www.bing.com/th?id=ONUT.xJ4TPQ2Ls59Z59VRELT6pw&pid=News&w=1200",
   "https://otonanswer.jp/post/403060/": "https://otonanswer.jp/wp-content/uploads/2027/10/20261022tfal01.jpg",
@@ -1641,27 +1640,6 @@
   {
    "batch": 6,
    "because": "dota2",
-   "date": "2026-10-30",
-   "hits": [],
-   "image": "https://newsbytes.ph/wp-content/uploads/2026/10/PT-sports.jpg",
-   "kind": "board",
-   "liked": "警察突襲電競戰隊宿舍！不信他們是職業選手 直到親眼看到32殺才放人",
-   "score": 5,
-   "source": "Newsbytes.PH",
-   "taste": [
-    [
-     "作品:dota2",
-     1
-    ]
-   ],
-   "title": "PT Sports taps Dawn Bulls as stand-in Dota 2 roster for Nov. tourneys",
-   "url": "https://newsbytes.ph/2026/10/30/pt-sports-taps-dawn-bulls-as-stand-in-dota-2-roster-for-nov-tourneys/",
-   "words": [],
-   "work": "dota2"
-  },
-  {
-   "batch": 7,
-   "because": "dota2",
    "date": "2026-10-29",
    "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.OxiJ5-NxJTwjyR84qxjhBQ&pid=News&w=1080",
@@ -1759,7 +1737,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 8,
+   "batch": 7,
    "because": "滑雪",
    "date": "2026-10-29",
    "hits": [],
@@ -2219,7 +2197,7 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "galaxy",
    7
   ],
   [
@@ -2227,7 +2205,7 @@
    7
   ],
   [
-   "galaxy",
+   "三星 Galaxy",
    7
   ],
   [

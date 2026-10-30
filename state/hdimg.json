@@ -1999,11 +1999,11 @@
   ],
   "why": "看不清"
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FTBSNews%252F1a%252FTBSNews_1488776486495699658%252FTBSNews_1488776486495699658_1.jpg,zoom=560x320,quality=100,type=jpg": {
-  "w": 560,
-  "h": 316,
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252Fntv%252Ffb%252Fntv_1488789084582282187%252Fntv_1488789084582282187_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
@@ -2408,6 +2408,12 @@
   "v": 3,
   "blur": 0.404
  },
+ "https://news.walkerplus.com/article/1005392/10038375_615.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
  "https://news.walkerplus.com/article/1068055/10648734_615.jpg": {
   "w": 615,
   "h": 997,
@@ -2457,6 +2463,12 @@
   "h": 589,
   "target": 720,
   "v": 3
+ },
+ "https://news.walkerplus.com/article/1269610/14714200_615.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://news.walkerplus.com/article/1317098/15915699_615.jpg": {
   "w": 615,
@@ -2936,10 +2948,10 @@
   "why": "期限付きの網址"
  },
  "https://newsbytes.ph/wp-content/uploads/2026/10/PT-sports.jpg": {
-  "w": 1162,
-  "h": 641,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://ni.yam.com/20261023/jp-prt-18505-4495-1-261023043229102-2cbbcdfdb31dc2c7.webp": {
   "w": 1200,
@@ -3203,6 +3215,12 @@
   "h": 1260,
   "target": 1280,
   "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/18505/4399/18505-4399-1d88d749ef7d53a8cc590d2dcd19d46d-1562x1808.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://prcdn.freetls.fastly.net/release_image/18505/4452/18505-4452-425429f0e17926ae0f8af6668ccaecfb-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1008,
