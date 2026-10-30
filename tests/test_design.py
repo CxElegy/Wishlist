@@ -269,7 +269,7 @@ class AdminPage(unittest.TestCase):
         self.assertNotIn('href="javascript:', out)
         # データを変える操作はない：ボタンは流れを開く・閉じるものと、裏の仕組みを早く動かす「今すぐ実行」だけ
         for b in re.findall(r"<button[^>]*>", out):
-            self.assertRegex(b, r"data-(open|close|run|ectl|p=)|id=\"term-pause\"", b)   # 流れを開く・閉じる・図のページ切り替え・ログの一時停止、または「今すぐ実行」（データは変えない）
+            self.assertRegex(b, r"data-(open|close|run|ectl|p=)|id=\"term-pause\"|class=\"emm-|id=\"emm-|data-r=", b)   # 流れを開く・閉じる・図のページ切り替え・ログの一時停止、または「今すぐ実行」（データは変えない）
         self.assertNotIn("<form", out)
 
     def test_empty(self):
@@ -349,7 +349,7 @@ class BackendTable(unittest.TestCase):
         self.assertNotIn("emx", out["table"])   # 表の小さい丸は押せない（操作は新しい欄へ）
         self.assertEqual(render._bg_thumb(("u.png", "logo")), '<img src="u.png" alt="" loading="lazy" class=fit>')
         self.assertIn("まだありません", out["table"])
-        self.assertIn("小元素のある版面がありません", render._admin_emm(self._rows(1)))
+        self.assertIn('class="emm-boards"', render._admin_emm(self._rows(1)))   # 店長の版面に小元素がなくても札の入れ物は出す（ライブラリの版面を JS が足す）
 
     def test_reject_reason_stats(self):
         rows = self._rows(2)

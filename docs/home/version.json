@@ -1,36 +1,36 @@
 {
- "admin": "b500b5fe9f81",
- "admin-ai": "cac551b1b60e",
+ "admin": "5d0d22649150",
+ "admin-ai": "a795a2d19cee",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d355bd7c"
+   "33738e3b"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f0a23eec"
+   "ec6bf410"
   ]
  },
- "admin-boards": "eac6c0475b8e",
+ "admin-boards": "e804f3c57ad7",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "7175d7c5"
+   "6698190a"
   ],
   "votes": [
    "投票",
-   "2055c56d"
+   "247613de"
   ]
  },
- "admin-emblem": "d66de7034685",
+ "admin-emblem": "e7ea8f0fad4d",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "e967322a"
+   "bdbcecea"
   ],
   "emblem-ex": [
    "小元素の判断の例",
-   "44fd7346"
+   "ae0093bd"
   ],
   "emblem-manage": [
    "小元素の管理",
@@ -38,35 +38,35 @@
   ],
   "emblems": [
    "小元素",
-   "23a1b580"
+   "03029037"
   ]
  },
- "admin-members": "a2932da7ba82",
+ "admin-members": "ddc6c9cc353e",
  "admin-members_marks": {},
- "admin-now": "1e6aaad68abd",
+ "admin-now": "177f2d0b3274",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "b312570e"
+   "d4a1b9c6"
   ],
   "queue": [
    "いまの状況",
-   "32d243c5"
+   "03f251c4"
   ],
   "status": [
    "運行状況",
-   "a03d23c4"
+   "48ef979f"
   ],
   "term-panel": [
    "ライブログ",
-   "cdeb3ff3"
+   "bae97b9e"
   ]
  },
- "admin-system": "b9393a350a32",
+ "admin-system": "ad05171f7bbc",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "3f884e32"
+   "55240838"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "95ca2c64"
+   "67391e63"
   ]
  },
  "admin_marks": {},
- "heat": "3f1b8c0814bb",
+ "heat": "3ca8ff061f5a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "63d6294a"
+   "293f2ad6"
   ],
   "ranking": [
    "ランキング",
-   "0ba628cc"
+   "19c1558c"
   ]
  },
- "index": "2c6c009951b0",
+ "index": "f0f154786b18",
  "index_marks": {
   "front": [
    "トップ",
-   "20cdcb22"
+   "43083a0a"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "b4d50f54"
+   "9df314f6"
   ],
   "w-130724c0": [
    "猫用品",
@@ -125,7 +125,7 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "38e7d014"
+   "c8fc1881"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "bdec789f"
+   "8f50899d"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "eb07b67d"
+   "93e7c86d"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "c2bddac4"
   ]
  },
- "updated": "10.31 00:30",
- "wishlist": "a87c6ee86587"
+ "updated": "10.31 01:06",
+ "wishlist": "d976115dd371"
 }

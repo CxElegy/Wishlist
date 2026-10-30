@@ -424,7 +424,7 @@ class Chain(unittest.TestCase):
     def run_main(self, argv, boards, state_after, tmp):
         import digest
         out = pathlib.Path(tmp) / "out"
-        sup = lambda path, body=None, method="GET": ([{"board_id": 0}] if path.startswith("follows?account") else boards if path.startswith("boards?followers") else [{"config": {}}])  # noqa: E731
+        sup = lambda path, body=None, method="GET": ([{"board_id": 0}] if path.startswith("follows?account") else boards if path.startswith("boards?select") else [{"config": {}}])  # noqa: E731
         with mock.patch.dict("os.environ", {"GITHUB_OUTPUT": str(out), "SUPABASE_SERVICE_KEY": "k"}), \
              mock.patch.object(digest, "load_config", lambda: ({"supabase_url": BASE}, None)), \
              mock.patch.object(digest, "supabase", sup), \

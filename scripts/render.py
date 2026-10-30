@@ -4759,6 +4759,7 @@ AUTH_JS = r"""
     sb=window.supabase.createClient(base,A.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,storageKey:'wl-auth'}});
     sb.auth.onAuthStateChange(function(ev,s){
       var t=s&&s.access_token||null, changed=t!==tok; tok=t; user=s&&s.user||null; if(ev==='SIGNED_OUT')signedOut=true;
+      window.WL_TOK=t; if(changed) document.dispatchEvent(new Event('wl-token'));   // ③エンブレムなど、別の部品が店長の令牌でライブラリを読むため
       if(changed||ev==='INITIAL_SESSION') setTimeout(refresh,0);   // Supabase の公式ドキュメント：コールバックの中で直接 Supabase を呼ぶと固まることがある → 後に回す
       if(ev==='SIGNED_IN'&&/access_token=|[?&]code=/.test(location.hash+location.search)) history.replaceState(null,'',location.pathname);
     });
@@ -5817,9 +5818,7 @@ def _emm_img(x):
 def _admin_emm(rows):
     """「小元素」の欄：版面のボタン → その版面の小元素を大きく並べる（押すと EMM_JS の「どうしたい？」の札）。"""
     import emblem_rules
-    rows = [r for r in rows if r.get("emblems")]
-    if not rows:
-        return '<p class="empty">小元素のある版面がありません。</p>'
+    rows = [r for r in rows if r.get("emblems")]   # 店長の版面で小元素のあるもの。そのほかの版面（お客さま・テスト用）は JS が店長の令牌でライブラリから足す
     btns, boards = [], []
     for n, r in enumerate(rows):
         em = r["emblems"]
@@ -5911,12 +5910,12 @@ EMM_JS = r"""
     var host=bts.parentNode,sh=document.getElementById('emm-sheet'),n=0;
     rows.forEach(function(r){
       var em=((r.config||{}).emblem||[]).filter(function(x){return x&&/^https?:/.test(x.image||'');});
-      if(shop[r.name]||!em.length)return;
-      lib[r.name]=r.id;var bi='L'+r.id;n++;
-      var b=document.createElement('button');b.type='button';b.className='emm-bt';b.dataset.bi=bi;b.dataset.n=r.name;b.setAttribute('aria-pressed','false');
+      if(shop[r.name])return;
+      lib[r.name]=r.id;var bi='L'+r.id,first=!bts.querySelector('.emm-bt');n++;
+      var b=document.createElement('button');b.type='button';b.className='emm-bt';b.dataset.bi=bi;b.dataset.n=r.name;b.setAttribute('aria-pressed',first?'true':'false');
       b.innerHTML=esc(r.name)+'<small>'+em.length+'</small>';bts.appendChild(b);
-      var d=document.createElement('div');d.className='emm-board';d.dataset.bi=bi;d.hidden=true;
-      d.innerHTML='<p class="emm-h"><b>'+esc(r.name)+'</b><span>お客さまの版面（ライブラリ） · 今 '+em.length+' 枚 · 押すと「どうしたい？」</span></p><div class="emm-grid">'+
+      var d=document.createElement('div');d.className='emm-board';d.dataset.bi=bi;d.hidden=!first;
+      d.innerHTML='<p class="emm-h"><b>'+esc(r.name)+'</b><span>ライブラリの版面（'+(r.followers||0)+' 人が読んでいる） · 今 '+em.length+' 枚'+(em.length?' · 押すと「どうしたい？」':' · まだ小元素がない（次のライブラリの小元素の回で探す）')+'</span></p><div class="emm-grid">'+
         '</div>';
       var g=d.querySelector('.emm-grid');
       em.forEach(function(x){var tl=document.createElement('button');tl.type='button';tl.className='emm-tile';tl.dataset.b=r.name;tl.dataset.img=x.image;tl.dataset.lock=x.lock?'1':'0';
@@ -5927,8 +5926,13 @@ EMM_JS = r"""
         tl.querySelector('img').src=x.image;tl.querySelector('b').textContent=x.subject||'小元素';tl.querySelector('small').textContent=x.why||'';g.appendChild(tl);});
       host.insertBefore(d,sh);});
     if(n)paint();}
-  if(CFG.url&&window.fetch)fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/boards?followers=gt.0&select=id,name,config&order=id',{headers:{apikey:CFG.key}})
-    .then(function(r){return r.ok?r.json():[];}).then(addLib,function(){});
+  var libDone=false;   // ライブラリの全部の版面（②と同じ：店長の令牌で読む・followers 0 も含める）。店長以外は何も足さない
+  function loadLib(){
+    if(libDone||!window.WL_TOK||!CFG.url||!window.fetch)return;libDone=true;
+    fetch(CFG.url.replace(/\/$/,'')+'/rest/v1/boards?select=id,name,followers,config&order=followers.desc,id',{headers:{apikey:CFG.key,Authorization:'Bearer '+window.WL_TOK}})
+      .then(function(r){return r.ok?r.json():[];}).then(function(rows){
+        var bts=document.querySelector('.emm-boards');if(bts)bts.dataset.lib=rows.length;addLib(rows);},function(){libDone=false;});}
+  document.addEventListener('wl-token',loadLib);loadLib();
   function paint(){
     [].forEach.call(document.querySelectorAll('.emm-tile'),function(t){
       var r=req[key(t)],s=sent[key(t)],old=t.querySelector('.emm-st');if(old)old.remove();
