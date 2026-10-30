@@ -4,7 +4,12 @@
   "哈利波特剧集": 15,
   "GTA 6": 14,
   "A2O LITE": 8,
-  "三星手机": 8
+  "三星手机": 8,
+  "ILLIT": 5,
+  "周杰伦": 4,
+  "BLEACH Mirrors High": 3,
+  "The Mandalorian": 3,
+  "Vaundy": 3
  },
  "漫威电影": [
   {
@@ -236,6 +241,114 @@
    "refs": [
     3
    ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT、大学祭もホイッスルの音で染めた！新曲「You’re Under Arrest」のステージに熱い反響…デビューアルバム収録曲、Spotifyで相次いで億単位のストリーミングを突破し好調",
+   "highlight": "億単位のストリーミングを突破",
+   "blurb": "ILLITが大学祭で新曲「You’re Under Arrest」のステージを披露し、熱い反響。デビューアルバム収録曲はSpotifyで相次いで億単位のストリーミングを突破している。",
+   "weight": "lead",
+   "refs": [
+    3,
+    4
+   ],
+   "image": "https://k-plaza.com/wp-content/uploads/2026/10/ILLIT-2-3.jpg"
+  },
+  {
+   "headline": "ウォニとイロハが負傷し、振り付けを調整するILLIT。",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "아일릿 원희, 성장한 지점? \"여유가 늘었다…앞으로의 성장도 지켜봐 주셨으면\"",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦2026广州站开票猫眼近600万想看",
+   "highlight": "近600万想看",
+   "blurb": "周杰伦2026广州站开票，猫眼想看人数近600万。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "http://n.sinaimg.cn/sinakd20261030ac/200/w640h360/20261030/26b9-24fb1a42955fbd686893da9d3952627b.jpg"
+  },
+  {
+   "headline": "vivo X500 系列登台！周杰倫濾鏡、2億畫素長焦打造「直出電影感」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3,
+    4
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "【ミラハイ】星3朽木白哉の評価と性能【BLEACHミラーズハイ】",
+   "highlight": "",
+   "blurb": "星3朽木白哉の評価と性能をまとめた攻略記事。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://appmedia.jp/wp-content/uploads/2025/06/144841_zw02r.webp"
+  },
+  {
+   "headline": "【ミラハイ】課金要素のおすすめとパックまとめ【BLEACHミラーズハイ】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "Star Wars \"The Mandalorian\" Officially Licensed Gaming Soundboards Launched by Voicemod, Marvel Coming Soon",
+   "highlight": "Officially Licensed",
+   "blurb": "Voicemod launches officially licensed Mandalorian and Grogu soundboards, with Marvel coming soon.",
+   "weight": "lead",
+   "refs": [
+    3,
+    2
+   ],
+   "image": "https://www.laughingplace.com/uploads/media/2026/10/Star-Wars-The-Mandalorian-Officially-Licensed-Soundboards-Launched-by-VoiceMod,-Marvel-Coming-Soon.jpg"
+  },
+  {
+   "headline": "Star Wars: The Mandalorian Cookbook – Mr. Daps’ Cookbook Review",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy為什麼這麼紅？關於他的6個神祕事蹟：26歲日本鬼才首攻台北小巨蛋，7年從YouTube彈進東京巨蛋",
+   "highlight": "首攻台北小巨蛋",
+   "blurb": "26歲的 Vaundy 首度登上台北小巨蛋，7年從YouTube一路唱進東京巨蛋。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://hips.hearstapps.com/hmg-prod/images/e28aa674-2c9b-4131-a4d4-45d43af65363.png?crop=0.494xw:0.987xh;0,0.0130xh&resize=1200:*"
   }
  ]
 }

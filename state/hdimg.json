@@ -35,6 +35,19 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261030ac/200/w640h360/20261030/26b9-24fb1a42955fbd686893da9d3952627b.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.539,
+  "local": "pics/33af9078c78eb98f.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清"
+ },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
@@ -290,6 +303,18 @@
   "w": 2500,
   "h": 1313,
   "target": 720,
+  "v": 3
+ },
+ "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png": {
+  "w": 506,
+  "h": 253,
+  "target": 720,
+  "v": 3
+ },
+ "https://appmedia.jp/wp-content/uploads/2025/06/144841_zw02r.webp": {
+  "w": 750,
+  "h": 1000,
+  "target": 1280,
   "v": 3
  },
  "https://appmedia.jp/wp-content/uploads/2026/10/173706_th2s4.webp": {
@@ -841,7 +866,7 @@
  "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg": {
   "w": 1280,
   "h": 720,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://di2ponv0v5otw.cloudfront.net/posts/2026/05/31/6a1cd9e924b20b43afebb864/l_wp_6a1cd9e924b20b43afebb865.webp": {
@@ -1070,6 +1095,12 @@
  "https://hips.hearstapps.com/hmg-prod/images/0432eedb-4257-4df9-b568-17dc2236bb70.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*": {
   "w": 1200,
   "h": 600,
+  "target": 1280,
+  "v": 3
+ },
+ "https://hips.hearstapps.com/hmg-prod/images/e28aa674-2c9b-4131-a4d4-45d43af65363.png?crop=0.494xw:0.987xh;0,0.0130xh&resize=1200:*": {
+  "w": 1186,
+  "h": 1184,
   "target": 1280,
   "v": 3
  },
@@ -1927,6 +1958,12 @@
   "target": 720,
   "v": 3
  },
+ "https://imgs.niusnews.com/upload/posts/posts_image3_142340_1793359668.jpg": {
+  "w": 1200,
+  "h": 628,
+  "target": 1280,
+  "v": 3
+ },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -1963,6 +2000,19 @@
   "h": 864,
   "target": 720,
   "v": 3
+ },
+ "https://k-plaza.com/wp-content/uploads/2026/10/ILLIT-2-3.jpg": {
+  "w": 700,
+  "h": 466,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.545,
+  "local": "pics/6b3cdeabc4ab58bf.webp",
+  "out": [
+   1280,
+   852
+  ],
+  "why": "看不清"
  },
  "https://kagit-media.atreez.cc/uploads/2026-10-27/v6k9lcewuo3hsf2qq0go5jyd.jpg": {
   "w": 1600,
@@ -3029,6 +3079,12 @@
   "target": 720,
   "v": 3
  },
+ "https://pickcon.co.kr/site/data/img_dir/2026/10/26/2026102680187_0.jpg": {
+  "w": 900,
+  "h": 1262,
+  "target": 720,
+  "v": 3
+ },
  "https://picture01.52hrttpic.com/image/infoImage/202608/31/gf7fcdd7fdced4ab6b6ca620bfd5d8a4d.jpeg?1004x683": {
   "w": 1004,
   "h": 683,
@@ -3787,6 +3843,12 @@
   "w": 900,
   "h": 600,
   "target": 720,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/30/1793356261242_screenshot-2026-10-30-112555-1793334537356715650470-56-0-331-525-crop-17933350432051572197109.png": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://wheretowatch.tv/wp-content/uploads/2026/10/first-episode-run-time-for-harry-potter-hbo-series.jpg": {
@@ -4578,6 +4640,12 @@
  "https://www.laughingplace.com/uploads/media/2026/10/LBE-Mando-Grogu.png": {
   "w": 1280,
   "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.laughingplace.com/uploads/media/2026/10/Star-Wars-The-Mandalorian-Officially-Licensed-Soundboards-Launched-by-VoiceMod,-Marvel-Coming-Soon.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },

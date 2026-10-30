@@ -1,6 +1,6 @@
 {
  "date": "2026-10-31",
- "edit_sig": "c6793c6e8297",
+ "edit_sig": "a5a6705f2330",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -40,31 +40,29 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-10-30",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】課金要素のおすすめとパックまとめ【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1BVFo5RXVQOUVtRmxBNVl2V21iMHAzQVMtVzhaMGpxdjBWb01RU0VoVXhnblU0VE1VNGtOeGNyemZOLTlUakRUdW5hY1R1TVU?oc=5"
-    },
-    {
+     "blurb": "星3朽木白哉の評価と性能をまとめた攻略記事。",
      "date": "2026-10-29",
-     "n": 2,
-     "source": "AppMedia",
-     "title": "【ミラハイ】星3朽木白哉の評価と性能【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFAxbUJiN1FNTWxTVzVJbEt5N182WDlSQWNnUWFFcDdfRzBfMUxUem9INmFxUTIxbFVoWUNVbjBwOFdHUGFOWFBKaTRHcmsxT1k?oc=5"
+     "headline": "【ミラハイ】星3朽木白哉の評価と性能【BLEACHミラーズハイ】",
+     "highlight": "",
+     "image": "https://appmedia.jp/wp-content/uploads/2025/06/144841_zw02r.webp",
+     "image_via": "AI 挑选",
+     "url": "https://appmedia.jp/bleach-mh/80523208",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 3,
-     "source": "Reddit",
-     "title": "Bleach Mirrors High collection @nekoranten",
-     "url": "https://www.reddit.com/r/bankaifolk/comments/1xj7h7b/bleach_mirrors_high_collection_nekoranten/"
+     "headline": "【ミラハイ】課金要素のおすすめとパックまとめ【BLEACHミラーズハイ】",
+     "highlight": "",
+     "image": "https://appmedia.jp/wp-content/uploads/2026/10/182616_ik0dw.webp",
+     "image_via": "og:image",
+     "url": "https://appmedia.jp/bleach-mh/80531035",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "死神 新作手游",
    "theme": {
     "accent": "#9A550E",
@@ -273,45 +271,39 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "ILLITが大学祭で新曲「You’re Under Arrest」のステージを披露し、熱い反響。デビューアルバム収録曲はSpotifyで相次いで億単位のストリーミングを突破している。",
      "date": "2026-10-30",
-     "n": 1,
-     "source": "alphavilleearredores.com.br",
-     "title": "ILLIT MAMIHLAPINATAPAI Special Trading Card Moka alphavilleearredores.com.br",
-     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQa1FXZUt6bWN1UTVEQmN4UGRUcmxLUVFjamg1bUJEeFRTcFVmVlJnSnBkb3ZYaHBvSFBBNHRlVF9pSHZWYVZNQ1RtR21KZVc2aFRsRVN5a3QyMkI4czlCcWpNZ2I2YURjT0FzOHoyNElSRlhGWjVmRlAyUEF2eUFmaS1FWmNnTkxIVWZaZl9VTF9qZ0lmR2dwRDYzdGpfSVVsZDhhTVVRaW5EUkNrekRCdzl5RGNudFYzZGVsVm4yUXV1am8?oc=5"
+     "headline": "ILLIT、大学祭もホイッスルの音で染めた！新曲「You’re Under Arrest」のステージに熱い反響…デビューアルバム収録曲、Spotifyで相次いで億単位のストリーミングを突破し好調",
+     "highlight": "億単位のストリーミングを突破",
+     "image": "https://k-plaza.com/wp-content/uploads/2026/10/ILLIT-2-3.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://k-plaza.com/2026/10/illit-261030.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "ウォニとイロハが負傷し、振り付けを調整するILLIT。",
+     "highlight": "",
+     "image": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/10/30/1793356261242_screenshot-2026-10-30-112555-1793334537356715650470-56-0-331-525-crop-17933350432051572197109.png",
+     "image_via": "og:image",
+     "url": "https://www.vietnam.vn/ja/illit-dieu-chinh-vu-dao-sau-khi-wonhee-va-iroha-chan-thuong",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
      "date": "2026-10-26",
-     "n": 2,
-     "source": "픽콘",
-     "title": "아일릿 원희, 성장한 지점? \"여유가 늘었다…앞으로의 성장도 지켜봐 주셨으면\"",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBPZGZjanJQWEVZS21FTzZramd3MW8yRFlmUVZSRVA1aDB6MDlVMXNXLWRjeVZDNC1GNGc1Wm5nYzVuNUhuOXBPMS1VYlVfTXpLMmp2SHVJUHZDSkYxQURobGh2Vi1fODZqTHNLS3lFNFZpTS0wVnfSAXZBVV95cUxQT2RmY2pyUFhFWUttRU82a2pndzFvMkRZZlFWUkVQNWgwejA5VTFzVy1kY3lWQzQtRjRnNVpuZ2M1bjVIbjlwTzEtVWJVX016SzJqdkh1SVB2Q0pGMUFEaGxodlYtXzg2akxzS0t5RTRWaU0tMFZ3?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "K-PLAZA",
-     "title": "ILLIT、大学祭もホイッスルの音で染めた！新曲「You’re Under Arrest」のステージに熱い反響…デビューアルバム収録曲、Spotifyで相次いで億単位のストリーミングを突破し好調",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBPVWttMUZOOHFsNWc3U1BvU2JVTklRdU5SMUlmOURWQTZQTnJYaUJKb2VGVTdQdG12QUpmZFgtLVdKeDAxRV9pR1JFSHEzV1lBN0ZVbTI2SUo?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "YouTube · ILLIT",
-     "title": "#체포하겠어 🚨 with @h_evva_n #EVAN#You_re_Under_Arrest #ILLIT #아일릿",
-     "url": "https://www.youtube.com/watch?v=mCH845XvSZ8"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 5,
-     "source": "Vietnam.vn",
-     "title": "ウォニとイロハが負傷し、振り付けを調整するILLIT。",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNeUZIdktYMFdrbHc1STVucXRpb25BR0hkUWx1OW5nMWlaNjFlR1lleEpmcGNfOFZGTnBiUF90UmNlZVVBdnNER0g2ZV9Xa1RQVXlST0QxRy1XRWw2cGZJMW9ZZlIxM2gwamxFekN5NDZ3dGtXUVUtMnM3d2tvZC1QRWJsNUI0X2tMZlFjWmtB?oc=5"
+     "headline": "아일릿 원희, 성장한 지점? \"여유가 늘었다…앞으로의 성장도 지켜봐 주셨으면\"",
+     "highlight": "",
+     "image": "https://pickcon.co.kr/site/data/img_dir/2026/10/26/2026102680187_0.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://pickcon.co.kr/m/view.amp.html?catid=22&contid=2026102680189",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "アイリット · 日本公演特别关注",
    "theme": {
     "accent": "#E8394F",
@@ -461,31 +453,29 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Voicemod launches officially licensed Mandalorian and Grogu soundboards, with Marvel coming soon.",
      "date": "2026-10-30",
-     "n": 1,
-     "source": "Daps Magic",
-     "title": "Star Wars: The Mandalorian Cookbook – Mr. Daps’ Cookbook Review",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOGRYVW9XRmk4UV9LenBiQTVnRWw1NlY3SE9jbFc5dzE4VGpNZU5wYl9NZFNFWkFGM3JwNC1EaGtnQkFsTVFIT21vWVJoeHd0bVJyc1pvZU9aZ1lZYXRIOGRQZC1VakVPRzE3ZFRDcHU1RDdXRG8wb0N1OTVTLUNSQnNLRXo1b3MyYVRYLWxDeXpRQlE?oc=5"
+     "headline": "Star Wars \"The Mandalorian\" Officially Licensed Gaming Soundboards Launched by Voicemod, Marvel Coming Soon",
+     "highlight": "Officially Licensed",
+     "image": "https://www.laughingplace.com/uploads/media/2026/10/Star-Wars-The-Mandalorian-Officially-Licensed-Soundboards-Launched-by-VoiceMod,-Marvel-Coming-Soon.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.laughingplace.com/disney-entertainment/star-wars-marvel-soundboards-voicemod/",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 2,
-     "source": "The Main Street Mouse",
-     "title": "You Can Now Drop The Mandalorian and Grogu Sound Clips Into Discord Thanks to a New Disney Deal",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPMHVmbXQ4eGZCb1VHMmxqdWx0M1l4Qk5fUF9kaWo4a3FMQTlVa0xwVDc5ZlctaXQ0OEN3SUFZVmxBYXFfcy1BNTdPbDFoMEFaOHpaQnA0SW1tejVuMWRVcE9GMkczaGw1VnF3Qm80LXBhZnhELWFrQ3hUVmpEZzN4R3NLaWt1QjhZdlRyRVlPajA?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "LaughingPlace.com",
-     "title": "Star Wars \"The Mandalorian\" Officially Licensed Gaming Soundboards Launched by Voicemod, Marvel Coming Soon",
-     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNT2lRYkJJOERLcEhWNjNGaXI3OGQ2MGVrSmlOM2lfTFZWaXg5STFjcVNmM09UeTVtcmZIVENFSVdwUjVROExkU2ZUeEVjeG9XSUtaSk5fQ3p2b2tyU1ZTYzhrVW81MlRnUkpnT2w1SFQwNFM2MDV4TGxYUm5BclNUZ1ZicU9uSTAzQTN5VlBIQ2JVQVk?oc=5"
+     "headline": "Star Wars: The Mandalorian Cookbook – Mr. Daps’ Cookbook Review",
+     "highlight": "",
+     "image": "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg",
+     "image_via": "og:image",
+     "url": "https://dapsmagic.com/2026/10/star-wars-the-mandalorian-cookbook-mr-daps-cookbook-review/",
+     "weight": "normal"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -536,31 +526,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
-     "date": "2026-10-26",
-     "n": 1,
-     "source": "note",
-     "title": "There is a hint of anxiety in the kindness of Vaundy's \"Shiwaawase\"",
-     "url": "https://note.com/sakai_naoto/n/n97d894ffc8ee?hl=en"
-    },
-    {
+     "blurb": "26歲的 Vaundy 首度登上台北小巨蛋，7年從YouTube一路唱進東京巨蛋。",
      "date": "2026-10-30",
-     "n": 2,
-     "source": "ELLE",
-     "title": "Vaundy為什麼這麼紅？關於他的6個神祕事蹟：26歲日本鬼才首攻台北小巨蛋，7年從YouTube彈進東京巨蛋",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9zN0t3ZDlVb1o2ZzFNLVdfVGxJSDFiSWxhSjhuTGZLZ0twbkJqdEpiaUhoZm4yRmR6WVlHcGxWcUl6dlQ1dWtEdmdUaTVtTTdaWGdTRk9odTdUNkVIRVNxRE51bDRxUWNSRTlNbW90V1BidFh3RElz?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 3,
-     "source": "note",
-     "title": "I want to share the greatness of Vaundy (those interested in live shows, take a look)",
-     "url": "https://note.com/pure_wolf7465/n/nee37c0b38e95?hl=en"
+     "headline": "Vaundy為什麼這麼紅？關於他的6個神祕事蹟：26歲日本鬼才首攻台北小巨蛋，7年從YouTube彈進東京巨蛋",
+     "highlight": "首攻台北小巨蛋",
+     "image": "https://hips.hearstapps.com/hmg-prod/images/e28aa674-2c9b-4131-a4d4-45d43af65363.png?crop=0.494xw:0.987xh;0,0.0130xh&resize=1200:*",
+     "image_via": "AI 挑选",
+     "url": "https://www.elle.com/tw/entertainment/voice/g74295106/who-is-vaundy/",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",
@@ -577,38 +555,29 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "周杰伦2026广州站开票，猫眼想看人数近600万。",
      "date": "2026-10-30",
-     "n": 1,
-     "source": "手机新浪网",
-     "title": "周杰伦2026广州站开票猫眼近600万想看",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5FYlR1Y3FYUmx3NE1fTkRwaDc1VURZMGlDa2NKclNHUDRUSDFZRm1OTVpyMFoyYlNmcjU2TzN2UmZjNlBNWFJfRnFVSnlMMmlSaHlPTFRkS0RjVXgtSWI0cEt6Ujd2TnFmVU4wUkF5YzIzbU0?oc=5"
+     "headline": "周杰伦2026广州站开票猫眼近600万想看",
+     "highlight": "近600万想看",
+     "image": "http://n.sinaimg.cn/sinakd20261030ac/200/w640h360/20261030/26b9-24fb1a42955fbd686893da9d3952627b.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://k.sina.com.cn/article_5719836546_m154edc78203301jdcq.html",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 2,
-     "source": "新浪网",
-     "title": "周杰伦的音乐台",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBPM3A4MG1rWVJKaHN1eVVURWZpTHZoeGVRbzlCWjk4bnFCWWxQQWJNRXNKamwwczEzMFUxbDFIQURPU29WY1Z5MUtXbndDQVExcXdTWklHckpPVXFHNkxzaVpXYw?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 3,
-     "source": "Niusnews妞新聞",
-     "title": "vivo X500 系列登台！周杰倫濾鏡、2億畫素長焦打造「直出電影感」",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE03S2dSOHAzanF6emhxZmtZY1BLQ0JlSlZ0Q0dIYmFDTU1tRElXWnhscEVVR0EtZGc4LS1fTW5hbXhOdHpTdmFaSU1IWQ?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 4,
-     "source": "JazzNews",
-     "title": "攜手周杰倫定義直出電影感！vivo X500 旗艦系列登台：首創 17EV LOFIC 技術、2 億畫素蔡司長焦，X Fold6 摺疊機首度支援增距鏡",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE45SXFONzd0WXFTelRxR2VnZFA1ODZ6QWdjTkRyOG1JSlB6QXBLcG5WNm1FeUMxNnBnVGtoeEVYcXB4VndXZmxfd3RRbzNWbDc3dlpvMlZ2MGdYUTQ?oc=5"
+     "headline": "vivo X500 系列登台！周杰倫濾鏡、2億畫素長焦打造「直出電影感」",
+     "highlight": "",
+     "image": "https://imgs.niusnews.com/upload/posts/posts_image3_142340_1793359668.jpg",
+     "image_via": "og:image",
+     "url": "https://www.niusnews.com/=P3i0jp0u2",
+     "weight": "normal"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "周杰倫",
    "theme": {
     "accent": "#2F5F8F",

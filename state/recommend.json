@@ -6,12 +6,11 @@
  "images": {
   "https://3c.ltn.com.tw/news/68052": "https://img.ltn.com.tw/Upload/3c/page/2026/10/24/261024-68052-1.png",
   "https://alphavilleearredores.com.br/artigo/category/eventos/?YH=5077051": "https://di2ponv0v5otw.cloudfront.net/posts/2026/05/31/6a1cd9e924b20b43afebb864/l_wp_6a1cd9e924b20b43afebb865.webp",
-  "https://appmedia.jp/bleach-mh/80531035": "https://appmedia.jp/wp-content/uploads/2026/10/182616_ik0dw.webp",
+  "https://appmedia.jp/bleach-mh/80523283": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
   "https://apps-island.com/newgameapp": "https://apps-island.com/wp-content/uploads/2020/10/newgameapp.png",
   "https://appuals.com/zenless-zone-zero-black-screen-graphics-issue/": "https://www.bing.com/th?id=ONUT.eb1q0cKGGyKjCIrKIpVqdg&pid=News&w=1200",
   "https://biz.chosun.com/jp/jp-it/2026/10/28/GQBA7DQSQJB45IDAGH5ZDPCBFE/": null,
   "https://charagoo.jp/gacha/item/3f090c713eb9/": "https://charagoo.jp/wp-content/uploads/2026/08/1000255204_1.jpg",
-  "https://dapsmagic.com/2026/10/star-wars-the-mandalorian-cookbook-mr-daps-cookbook-review/": "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg",
   "https://fictionhorizon.com/from-is-escaping-mgm-as-netflix-opens-its-doors-to-more-countries/": "https://fictionhorizon.com/wp-content/uploads/2026/10/From-2.webp",
   "https://gnn.gamer.com.tw/detail.php?sn=314082": "https://p2.bahamut.com.tw/B/2KU/34/9e75d3a03377619005b741850420w965.JPG",
   "https://hawk.live/posts/ramzes666-reflects-future-dota-2-pro-scene": "https://hawk.live/storage/images/posts/ramzes666-reveals-will-continue-career-25330.jpg",
@@ -1403,48 +1402,6 @@
   },
   {
    "batch": 4,
-   "because": "The Mandalorian",
-   "date": "2026-10-30",
-   "hits": [],
-   "image": "https://dapsmagic.com/wp-content/uploads/2026/10/The-Mandalorian-Cookbook-1.jpg",
-   "kind": "board",
-   "liked": "Resident Evil Worldwide Box Office: On Track To Beat The Disney Biggie, The Mandalorian And Grogu Soon!",
-   "score": 6,
-   "source": "Daps Magic",
-   "taste": [
-    [
-     "作品:The Mandalorian",
-     2
-    ]
-   ],
-   "title": "Star Wars: The Mandalorian Cookbook – Mr. Daps’ Cookbook Review",
-   "url": "https://dapsmagic.com/2026/10/star-wars-the-mandalorian-cookbook-mr-daps-cookbook-review/",
-   "words": [],
-   "work": "The Mandalorian"
-  },
-  {
-   "batch": 4,
-   "because": "BLEACH Mirrors High",
-   "date": "2026-10-30",
-   "hits": [],
-   "image": "https://appmedia.jp/wp-content/uploads/2026/10/182616_ik0dw.webp",
-   "kind": "board",
-   "liked": "【ミラハイ】配信日や事前登録など最新情報まとめ【BLEACH Mirrors High】",
-   "score": 6,
-   "source": "AppMedia",
-   "taste": [
-    [
-     "作品:BLEACH Mirrors High",
-     2
-    ]
-   ],
-   "title": "【ミラハイ】課金要素のおすすめとパックまとめ【BLEACHミラーズハイ】",
-   "url": "https://appmedia.jp/bleach-mh/80531035",
-   "words": [],
-   "work": "BLEACH Mirrors High"
-  },
-  {
-   "batch": 5,
    "because": "漫威电影",
    "date": "2026-10-30",
    "hits": [],
@@ -1465,7 +1422,7 @@
    "work": "漫威电影"
   },
   {
-   "batch": 5,
+   "batch": 4,
    "because": "漫威电影",
    "date": "2026-10-30",
    "hits": [],
@@ -1549,7 +1506,7 @@
    "work": "The Mandalorian"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "ぐでたま",
    "date": "2026-10-29",
    "hits": [],
@@ -1570,7 +1527,7 @@
    "work": "ぐでたま"
   },
   {
-   "batch": 6,
+   "batch": 5,
    "because": "BLEACH Mirrors High",
    "date": "2026-10-28",
    "hits": [],
@@ -1587,6 +1544,27 @@
    ],
    "title": "Bleach Officially Replaces Ichigo Kurosaki In Brand-New Sequel Mirrors High",
    "url": "https://screenrant.com/bleach-mirrors-high-ichigo-kurosaki-replaced/",
+   "words": [],
+   "work": "BLEACH Mirrors High"
+  },
+  {
+   "batch": 6,
+   "because": "BLEACH Mirrors High",
+   "date": "2026-10-28",
+   "hits": [],
+   "image": "https://appmedia.jp/wp-content/uploads/2020/01/home_image.png",
+   "kind": "board",
+   "liked": "【ミラハイ】配信日や事前登録など最新情報まとめ【BLEACH Mirrors High】",
+   "score": 6,
+   "source": "AppMedia",
+   "taste": [
+    [
+     "作品:BLEACH Mirrors High",
+     2
+    ]
+   ],
+   "title": "【ミラハイ】日番谷冬獅郎(星4)の評価と性能【BLEACHミラーズハイ】",
+   "url": "https://appmedia.jp/bleach-mh/80523283",
    "words": [],
    "work": "BLEACH Mirrors High"
   },
@@ -1654,7 +1632,7 @@
    "work": "周杰伦"
   },
   {
-   "batch": 7,
+   "batch": 6,
    "because": "dota2",
    "date": "2026-10-30",
    "hits": [],
@@ -1753,7 +1731,7 @@
    "work": "滑雪"
   },
   {
-   "batch": 8,
+   "batch": 7,
    "because": "日本顶级网球赛事",
    "date": "2026-10-29",
    "hits": [],
@@ -2253,11 +2231,11 @@
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [

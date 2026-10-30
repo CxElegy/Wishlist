@@ -1,10 +1,10 @@
 {
- "admin": "96b1c216f273",
- "admin-ai": "5e7b9aa1110d",
+ "admin": "c27c511c3898",
+ "admin-ai": "754b57eeb850",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9eeb1af9"
+   "5b8961d1"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "631e3d99"
   ]
  },
- "admin-emblem": "8658a9fd59e9",
+ "admin-emblem": "dee27e569198",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "c1ae6cdc"
+   "693e0dc7"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "f199adca"
+   "7dd83fe7"
   ]
  },
  "admin-members": "0857387f9132",
  "admin-members_marks": {},
- "admin-now": "24856a0a2e3a",
+ "admin-now": "206f4c9f81a1",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "318edc41"
+   "5a1a1406"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "35aa4e18"
   ]
  },
- "admin-system": "c442815b3205",
+ "admin-system": "ae2f3239cbb2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9625595c"
+   "3e77b35c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "9516be25"
+   "36070302"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "1e911f29"
   ]
  },
- "index": "78eb13fc82fa",
+ "index": "9789f9867ed9",
  "index_marks": {
   "front": [
    "トップ",
-   "cfb1ee37"
+   "6c4f9a2e"
   ],
   "picks": [
    "気になるかも？",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "1c4e1f92"
+   "42e58950"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -161,7 +161,7 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "a7658e87"
+   "bb8ecf43"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
@@ -177,11 +177,11 @@
   ],
   "w-d3621ce3": [
    "The Mandalorian",
-   "fb918896"
+   "3c9c5b5e"
   ],
   "w-da15ac21": [
    "Vaundy",
-   "eca501a1"
+   "432b0e4a"
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "82d5af49"
+   "ddce38a4"
   ],
   "w-f303ad09": [
    "绝区零",
    "398c34f6"
   ]
  },
- "updated": "10.31 03:40",
+ "updated": "10.31 03:49",
  "wishlist": "64c8b93f9eb4"
 }
