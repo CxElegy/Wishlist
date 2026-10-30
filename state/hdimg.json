@@ -211,19 +211,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx4.sinaimg.cn/middle/008l2owuly8iicjorsei4j30sg11sdqp.jpg": {
-  "w": 1024,
-  "h": 1360,
-  "target": 720,
-  "v": 3,
-  "local": "pics/59fab5aed6ac784a.webp",
-  "out": [
-   964,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "https://0.soompi.io/wp-content/uploads/2026/10/28063552/SM-A2O-LITE.jpg": {
   "w": 1200,
   "h": 800,
@@ -492,12 +479,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
@@ -1956,6 +1937,13 @@
   "h": 675,
   "target": 720,
   "v": 3
+ },
+ "https://inews.gtimg.com/news_ls/OVzsrSYhJcUdGuwDJFQvF5pXlCV8uAnlTxAUnMl4VFiGAAA/0": {
+  "w": 323,
+  "h": 430,
+  "target": 720,
+  "v": 3,
+  "blur": 0.41
  },
  "https://inews.gtimg.com/om_ls/OFib5TjEOs_dNE4B2YAvKRmiC8Nmhs92AM0U6nk4otgJwAA_640330/0": {
   "w": 640,
