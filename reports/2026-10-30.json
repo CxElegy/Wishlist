@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "b5e21367d9fd",
+ "edit_sig": "070a2c815eb6",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -165,7 +165,7 @@
      "date": "2026-10-29",
      "headline": "GTA 6 gets a much longer day-night cycle: Rockstar says GTA 5 felt too fast",
      "highlight": "",
-     "image": "https://static.tweaktown.com/news/1/1/114388_1_gta-6-npcs-get-personality-traits-that-decide-whether-they-flee-or-fight-back_full.png",
+     "image": "https://s.yimg.com/lo/mysterio/api/b96d6b7304c10c23406b926591a91c6ed0caa369729b60b3310761c0fe4ed2a9/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaystation_lifestyle_666%2F0b6df3fc2604c0abf36abf6da4b8071a.jpg",
      "image_via": "og:image（其它来源）",
      "url": "https://en.softonic.com/articles/gta-6-gets-a-much-longer-day-night-cycle-rockstar-says-gta-5-felt-too-fast",
      "weight": "normal"
@@ -335,8 +335,8 @@
      "date": "2026-10-24",
      "headline": "HBO《哈利波特》剧集首季烧掉 2 亿美元，圣诞上线",
      "highlight": "圣诞上线",
-     "image": "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg",
-     "image_via": "JSON-LD",
+     "image": "https://q2.itc.cn/images01/20261024/32997312c9084fbf8aba8aa0f13d478d.jpeg",
+     "image_via": "og:image",
      "url": "https://www.sohu.com/a/1092093173_120015068",
      "weight": "normal"
     },
@@ -572,7 +572,7 @@
      "date": "2026-10-25",
      "headline": "ダブルス女王シニアコバ、大阪決勝でクルーガーに6-1、6-0 3年ぶりシングルスV",
      "highlight": "6-1、6-0",
-     "image": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F24%252FKyodo_1488733277832315317%252FKyodo_1488733277832315317_1.jpg,zoom=560x320,quality=100,type=jpg",
+     "image": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FTBSNews%252F37%252FTBSNews_1488737487142732262%252FTBSNews_1488737487142732262_1.jpg,zoom=560x320,quality=100,type=jpg",
      "image_via": "正文图（6 枚から）",
      "url": "https://www.excite.co.jp/news/article/sportsbull_2444600/",
      "weight": "normal"
@@ -671,8 +671,8 @@
      "date": "2026-10-29",
      "headline": "Latest Samsung Galaxy S27 Ultra Rumours: Everything Leaked So Far",
      "highlight": "",
-     "image": "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-1.jpg",
-     "image_via": "og:image",
+     "image": "https://www.bing.com/th?id=ONUT.rz9MTMrDZ_vVX79e3w7ZlQ&pid=News&w=1200",
+     "image_via": "条目自带（Bing 缩略图）",
      "url": "https://www.geeky-gadgets.com/galaxy-s27-release-date-rumors/",
      "weight": "normal"
     },
@@ -1055,24 +1055,26 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "GUNNAR's Zenless Zone Zero Orphie & Magus Glasses launch November 5, 2026 for $89 with three lens tints.",
      "date": "2026-10-29",
-     "n": 5,
-     "source": "GameDaily on MSN",
-     "title": "Reduce digital eye strain with new Zenless Zone Zero inspired eyewear",
-     "url": "https://www.msn.com/en-us/lifestyle/other/reduce-digital-eye-strain-with-new-zenless-zone-zero-inspired-eyewear/ar-AA2gmRJr"
-    },
-    {
-     "date": "2026-10-24",
-     "n": 6,
-     "source": "新浪网",
-     "title": "我去 绝区零这新boss简直 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFA1U01jYXlOeUFydVZUV20yN09LVTlseDVnQnNyN2RfVl9kdW1ZRS1QV0EzUWR1S3RtZnQzMTItU1VERThSRjJZcko5dHFUVUxrV3FnUV9Hb1hRcUxXN1Zia2Exdw?oc=5"
+     "event": {
+      "date": "2026-11-05",
+      "label": "発売日"
+     },
+     "headline": "Reduce digital eye strain with new Zenless Zone Zero inspired eyewear",
+     "highlight": "November 5, 2026",
+     "image": "https://www.bing.com/th?id=ONUT.UODS4BI_eES0rH_UcQ0ejw&pid=News&w=1200",
+     "image_via": "AI 挑选",
+     "price": {
+      "now": "$89"
+     },
+     "url": "https://www.msn.com/en-us/lifestyle/other/reduce-digital-eye-strain-with-new-zenless-zone-zero-inspired-eyewear/ar-AA2gmRJr",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -1211,9 +1213,8 @@
      "date": "2026-10-29",
      "headline": "李秀满新团炸场！A2O LITE《NEON》MCD初舞台直接杀疯了",
      "highlight": "",
-     "image": null,
-     "source": "搜狐网",
-     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1088209635_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }

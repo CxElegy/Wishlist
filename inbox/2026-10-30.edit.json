@@ -425,7 +425,7 @@
   "周杰伦": 8,
   "星巴克马克杯": 5,
   "滑雪": 5,
-  "绝区零": 4,
+  "绝区零": 6,
   "gelato pique": 5,
   "A2O LITE": 11,
   "チェーンソーマン": 9,
@@ -746,7 +746,25 @@
    ]
   }
  ],
- "绝区零": [],
+ "绝区零": [
+  {
+   "headline": "Reduce digital eye strain with new Zenless Zone Zero inspired eyewear",
+   "highlight": "November 5, 2026",
+   "blurb": "GUNNAR's Zenless Zone Zero Orphie & Magus Glasses launch November 5, 2026 for $89 with three lens tints.",
+   "weight": "lead",
+   "refs": [
+    5
+   ],
+   "price": {
+    "now": "$89"
+   },
+   "event": {
+    "date": "2026-11-05",
+    "label": "発売日"
+   },
+   "image": "https://www.bing.com/th?id=ONUT.UODS4BI_eES0rH_UcQ0ejw&pid=News&w=1200"
+  }
+ ],
  "gelato pique": [
   {
    "headline": "人気のルームウェアブランド「ジェラート ピケ」直営店が松江に 駅ナカ「シャミネ」に新テナント",

@@ -2000,7 +2000,7 @@
   ],
   "why": "看不清"
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F24%252FKyodo_1488733277832315317%252FKyodo_1488733277832315317_1.jpg,zoom=560x320,quality=100,type=jpg": {
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FTBSNews%252F37%252FTBSNews_1488737487142732262%252FTBSNews_1488737487142732262_1.jpg,zoom=560x320,quality=100,type=jpg": {
   "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
@@ -3247,11 +3247,17 @@
   "target": 1280,
   "v": 3
  },
- "https://q1.itc.cn/images01/20261024/e319be701d294ec399b36a2c98a29714.jpeg": {
-  "w": 760,
-  "h": 1125,
+ "https://q2.itc.cn/images01/20261024/32997312c9084fbf8aba8aa0f13d478d.jpeg": {
   "target": 720,
-  "v": 3
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
+ "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://r2-media.wdwnt.com/2026/10/the-art-of-the-mandalorian-and-grogu-cover-1.jpg": {
   "w": 1500,
@@ -3320,6 +3326,12 @@
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/876527c0122ebf5081552cda6551c04bb68b2866991d61061f6df6aa5e318a00/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fgamespot_323%2Fa42bcb13f916e625ccffd69f27f53b9d.jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
+ "https://s.yimg.com/lo/mysterio/api/b96d6b7304c10c23406b926591a91c6ed0caa369729b60b3310761c0fe4ed2a9/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fplaystation_lifestyle_666%2F0b6df3fc2604c0abf36abf6da4b8071a.jpg": {
   "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
@@ -3539,12 +3551,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.291
- },
- "https://static.tweaktown.com/news/1/1/114388_1_gta-6-npcs-get-personality-traits-that-decide-whether-they-flee-or-fight-back_full.png": {
-  "w": 1500,
-  "h": 844,
-  "target": 720,
-  "v": 3
  },
  "https://static.wixstatic.com/media/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/94ff92_3a92a793e68d44a0bad11dd0b8ab8941~mv2.jpg": {
   "w": 1000,
@@ -4142,10 +4148,10 @@
   "why": "看不清"
  },
  "https://www.bing.com/th?id=ONUT.UODS4BI_eES0rH_UcQ0ejw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
   "w": 700,
@@ -4317,6 +4323,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.415
+ },
+ "https://www.bing.com/th?id=ONUT.rz9MTMrDZ_vVX79e3w7ZlQ&pid=News&w=1200": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://www.bing.com/th?id=ONUT.v9dtj3P9-rcQX1YBCbXqOA&pid=News&w=1200": {
   "w": 700,
@@ -4572,12 +4584,6 @@
   "v": 3
  },
  "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/galaxy-s27-ultra-render-9.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
- "https://www.geeky-gadgets.com/wp-content/uploads/2026/10/s27-1.jpg": {
   "w": 1280,
   "h": 720,
   "target": 720,
