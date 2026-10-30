@@ -1,10 +1,10 @@
 {
  "changed": false,
- "checked": "2026-10-30T20:36:16+00:00",
+ "checked": "2026-10-30T20:47:37+00:00",
  "fired": {
-  "at": "2026-10-30T20:36:16+00:00",
+  "at": "2026-10-30T20:47:37+00:00",
   "results": {
-   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-30T19:41:38+00:00",
+    "at": "2026-10-30T20:47:37+00:00",
     "attempts": 1,
     "day": "2026-10-31",
-    "prog": 92,
-    "resp": "cse_01W4x6f9b7LsGxDWaoZQ8xra",
-    "sig": "537549686950"
+    "prog": 130,
+    "resp": "cse_01W4x6f8z4SuRFg2qR6B7Npb",
+    "sig": "35d259adc51f"
    },
    "items": [
     "A2O LITE",
