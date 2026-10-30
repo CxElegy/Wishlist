@@ -441,6 +441,10 @@ def check_admin_coverage(pw, base, width):
     em = pg.evaluate("[+document.querySelector('.emm-boards').dataset.lib, document.querySelectorAll('.emm-bt').length]")
     if em[0] != want or em[1] < want:
         bad.append(f"ライブラリの版面 {want} に対して管理ページ③は読んだ {em[0]}・札 {em[1]}")
+    pg.wait_for_selector("#wl-libstate[data-n]", state="attached", timeout=30000)
+    ls = pg.evaluate("[+document.getElementById('wl-libstate').dataset.n, document.querySelectorAll('#wl-libstate tr[data-id]').length]")
+    if ls != [want, want]:
+        bad.append(f"ライブラリの版面 {want} に対して管理ページ③の版面ごとの状態は {ls[0]}（行 {ls[1]}）")
     pg.goto(base + "admin-ai.html", wait_until="networkidle", timeout=60000)
     pg.wait_for_selector("#wl-libedit[data-n]", state="attached", timeout=30000)
     ae = pg.evaluate("+document.getElementById('wl-libedit').dataset.n")
