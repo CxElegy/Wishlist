@@ -1,6 +1,6 @@
 {
  "date": "2026-10-30",
- "edit_sig": "473b55a54781",
+ "edit_sig": "a1a65c6e41e4",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -157,8 +157,9 @@
      },
      "headline": "Nexon、「オーバーギアード」オンラインショーケースを11月5日に配信",
      "highlight": "11月5日",
-     "image": "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg",
-     "image_via": "og:image",
+     "image": null,
+     "source": "DigitalToday",
+     "source_icon": "https://cdn.digitaltoday.co.kr/image/logo/favicon.ico",
      "url": "https://www.digitaltoday.co.kr/jp/view/121244/nexon-to-hold-tembbal-overgeared-online-showcase-on-nov-5",
      "weight": "normal"
     }
@@ -778,34 +779,8 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-10-29",
-     "n": 6,
-     "source": "IMDb",
-     "title": "Baby Yoda 2.0, the ‘Empire’ and ‘Sorcerer’ homages, and exclusive concept art from the best scene of ‘The Mandalorian and Grogu’",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9fTU5iNzdyaVNvTUVmTXFxUDJwa082OE1iQ0lKcGxEZHNjXzV3TTFtT1RhempyRGRicFF4YTRfZ0k0V0NURU5SSjBNSUljRkhnVzVDVVV2MzFQQ3pLWnZsbkhjeE53LVE?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 7,
-     "source": "Port of Rotterdam",
-     "title": "❁++!Downl𝚘ad+* (FREE)! \"Star Wars: The Mandalorian and Grogu 𝐇𝐈𝐍𝐃𝐈(❁𝟮𝟬𝟮𝟲❁) .FullMov𝗂e.Fre 1080 & F𝗂lmyZ𝗂la & Kutty & 𝐌𝐨𝐯𝐢𝐞𝐬 Hindi/ENGLIS 𝐌𝐀𝐑𝐀𝐓𝐇𝐈 BlockbusteR",
-     "url": "https://news.google.com/rss/articles/CBMihgNBVV95cUxQdDRNdnNISk80Y3NnMHdtUGtBSFhMUGxzby0tVmV5WnVYam44RFE5ZmNnWHBPUjl5YktQUGExODIteFlfUGgzQk53bVhZS0g5ajVHdlQtek40dzkzODFoMFJJdEI3MTB6emVselFHSVRqWGNUdGF3bXpuTEgzZGZqVDRMb0l2cHZVajFsUzFBNnlOQ0twQThkc1NyR2RfQWswTUJTMzh5SmZSUDZpay1kQ1B5UGpJdFZMbU5XZm1zWjh3emtHQ2pMQlFIb2ZxMlJBQnp3VWxkSDlkRERfSkx4WFpjMnRreDM1U2x3U21BSGFMYTM5dXlnMWtoSDVjWXBrZFlxN240UWZfR3c4bjdDMWt1cW04UlJ4OHVYcE9zemN1UFktQXBPVWhJeXhEVkNGZ2xVT1JkMmRkcEVXTHJibG00djFCSnZIT2tRemVtX0xyWHNPTnFzSFNNWkRYTlpscERDTnlwYldnZFlUXzZRX2Y2SGxmbl9FRnZQOGZkQlV3TDg4VWc?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-26",
-     "headline": "When does The Mandalorian Season 3 take place? Star Wars timeline explained",
-     "highlight": "",
-     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2023/03/21/the-mandalorian-season-3-timeline.jpg",
-     "image_via": "og:image",
-     "url": "https://www.dexerto.com/tv-movies/when-does-the-mandalorian-season-3-take-place-star-wars-timeline-explained-2073710/",
-     "weight": "hero"
-    },
     {
      "blurb": "Preview gallery from 'The Art of The Mandalorian and Grogu' plus a new behind-the-scenes look. No new release-date news.",
      "date": "2026-10-29",
@@ -824,6 +799,26 @@
      "image": "https://cdn.flickeringmyth.com/wp-content/uploads/2026/10/STAR-WARS-THE-VINTAGE-COLLECTION-MANDALORIAN-3-PACK-2.jpg",
      "image_via": "og:image",
      "url": "https://www.flickeringmyth.com/hasbro-star-wars-the-vintage-collection-mandalorian-3-pack-features-carson-teva-trapper-wolf-and-the-frog-lady/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "Baby Yoda 2.0, the ‘Empire’ and ‘Sorcerer’ homages, and exclusive concept art from the best scene of ‘The Mandalorian and Grogu’",
+     "highlight": "",
+     "image": "https://sm.ign.com/t/ign_in/preview/s/star-wars-/star-wars-see-an-exclusive-preview-of-the-art-of-the-mandalo_y367.1200.jpg",
+     "image_via": "同一件事的别家报道 in.ign.com",
+     "url": "https://www.imdb.com/news/ni66086283/?ref_=ttnw_art_perm",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-26",
+     "headline": "When does The Mandalorian Season 3 take place? Star Wars timeline explained",
+     "highlight": "",
+     "image": "https://www.dexerto.com/cdn-image/wp-content/uploads/2023/03/21/the-mandalorian-season-3-timeline.jpg",
+     "image_via": "og:image",
+     "url": "https://www.dexerto.com/tv-movies/when-does-the-mandalorian-season-3-take-place-star-wars-timeline-explained-2073710/",
      "weight": "normal"
     }
    ],
@@ -1080,9 +1075,8 @@
      "date": "2026-10-29",
      "headline": "李秀满新团炸场！A2O LITE《NEON》MCD初舞台直接杀疯了",
      "highlight": "",
-     "image": null,
-     "source": "搜狐网",
-     "source_icon": "https://zmt.itc.cn/static/images/pic/sohu-logo/logo-144.png",
+     "image": "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg",
+     "image_via": "og:image",
      "url": "https://m.sohu.com/a/1088209635_121792543?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334",
      "weight": "normal"
     }

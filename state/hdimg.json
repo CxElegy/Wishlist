@@ -494,13 +494,6 @@
   "target": 1280,
   "v": 3
  },
- "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
-  "target": 720,
-  "v": 3,
-  "fail": "下载失败或不是图片",
-  "dead": true,
-  "day": "2026-10-30"
- },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
   "w": 1950,
   "h": 1097,
@@ -3160,6 +3153,12 @@
   "target": 720,
   "v": 3
  },
+ "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
+  "w": 360,
+  "h": 616,
+  "target": 720,
+  "v": 3
+ },
  "https://r2-media.wdwnt.com/2026/10/the-art-of-the-mandalorian-and-grogu-cover-1.jpg": {
   "w": 1500,
   "h": 853,
@@ -3284,6 +3283,12 @@
   "w": 1344,
   "h": 768,
   "target": 720,
+  "v": 3
+ },
+ "https://sm.ign.com/t/ign_in/preview/s/star-wars-/star-wars-see-an-exclusive-preview-of-the-art-of-the-mandalo_y367.1200.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
   "v": 3
  },
  "https://sm.ign.com/t/ign_in/screenshot/default/bleach-mirrors-high-overview-trailer-0-39-screenshot_9eu8.1200.jpg": {
