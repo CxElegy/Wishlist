@@ -1,32 +1,32 @@
 {
- "admin": "8e92f6e1d702",
- "admin-ai": "322f8290529d",
+ "admin": "9fc44a62f34a",
+ "admin-ai": "4ab345cc6a79",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "5284a905"
+   "907ce7f5"
   ],
   "tokens": [
    "AI 編集のトークン",
    "524edc35"
   ]
  },
- "admin-boards": "b04f5e696234",
+ "admin-boards": "05c3d6b0aa57",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "e3b896ad"
+   "58de7454"
   ],
   "votes": [
    "投票",
    "2055c56d"
   ]
  },
- "admin-emblem": "c0ee26c13a42",
+ "admin-emblem": "2f6cf61f87d4",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "200b454e"
+   "93b478d9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -38,16 +38,16 @@
   ],
   "emblems": [
    "小元素",
-   "034f57ee"
+   "4359d068"
   ]
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "ca883441973a",
+ "admin-now": "fea0c8331e83",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7e96aa69"
+   "a712e81a"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "abf9e158"
+   "cd7cd029"
   ],
   "term-panel": [
    "ライブログ",
-   "c671b037"
+   "a04c04ac"
   ]
  },
- "admin-system": "4eeb09a9acbd",
+ "admin-system": "d442effc4d0f",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b7ca1384"
+   "98417364"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "06c2676c"
+   "3e68236d"
   ]
  },
  "admin_marks": {},
- "heat": "7626a22214a9",
+ "heat": "035fd5ac8b9a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "64815db8"
+   "8819194a"
   ],
   "ranking": [
    "ランキング",
-   "ac123465"
+   "6c1dd3ec"
   ]
  },
- "index": "c606e7128049",
+ "index": "8f2f4a8b5b19",
  "index_marks": {
   "front": [
    "トップ",
-   "fd23ba11"
+   "ed2a843e"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "ecb1a8c7"
+   "686f4723"
   ],
   "w-130724c0": [
    "猫用品",
@@ -121,11 +121,11 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "6524f9ef"
+   "a6c203a4"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "623d436f"
+   "98095f8d"
   ],
   "w-577b9e00": [
    "A2O LITE",
@@ -196,6 +196,6 @@
    "6acc089f"
   ]
  },
- "updated": "10.30 11:49",
+ "updated": "10.30 11:52",
  "wishlist": "7af11c19700f"
 }

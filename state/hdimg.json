@@ -35,6 +35,12 @@
   "target": 720,
   "v": 3
  },
+ "http://p0.qhimg.com/t11508c75c85fd3a48017d17459.jpg": {
+  "w": 2000,
+  "h": 2760,
+  "target": 720,
+  "v": 3
+ },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
   "h": 338,
@@ -525,6 +531,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
  },
+ "https://cdn.gamemeca.com/gmdata/0001/782/442/gm176120_261027-risell-yy4.webp": {
+  "w": 1200,
+  "h": 670,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gamemeca.com/gmdata/0001/782/498/gm977274_thumb___30.webp": {
   "w": 1200,
   "h": 670,
@@ -875,6 +887,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/teams/legion-1?game=2&v=1793328616": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt859507d51581f713/6ae0fbc4f6e3e04aa497e290/gtaviluciaweightsfeatured.jpg?disable=upscale&width=1200&height=630&fit=crop": {
   "w": 1200,
   "h": 630,
@@ -906,6 +924,12 @@
   "v": 3
  },
  "https://foro3d.com/2026/octubre/imagenes/la-serie-de-harry-potter-de-hbo-arranca-con-1474-millones-en-su-primer.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
+  "v": 3
+ },
+ "https://foro3d.com/2026/octubre/imagenes/marvel-valora-retrasar-el-rodaje-de-secret-wars-hasta-febrero-de-2027.webp": {
   "w": 1920,
   "h": 1080,
   "target": 1280,
@@ -952,12 +976,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://gdm-universal-media.b-cdn.net/epicstream/d674716a-ghost-rider.webp?width=1600&height=840": {
-  "w": 1493,
-  "h": 840,
-  "target": 720,
   "v": 3
  },
  "https://global.mediafine.co.kr/storage/mediafine/2026/10/95b38469-6662-4872-a87c-163b509676da-77b1053b-og16x9.webp": {
@@ -1147,12 +1165,6 @@
   "w": 1100,
   "h": 733,
   "target": 1280,
-  "v": 3
- },
- "https://i3.ytimg.com/vi/bp4hvkBNhCw/hqdefault.jpg": {
-  "w": 480,
-  "h": 360,
-  "target": 720,
   "v": 3
  },
  "https://image-cdn.learnin.tw/bnextmedia/image/album/2026-10/img-mcp-096a69ce57966fc5.jpg?w=900&output=webp": {
@@ -1943,19 +1955,6 @@
   "out": [
    1280,
    640
-  ],
-  "why": "看不清"
- },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FSportsHochi%252F61%252FSportsHochi_20261030_OHT1T51039%252FSportsHochi_20261030_OHT1T51039_1.jpg,zoom=560x320,quality=100,type=jpg": {
-  "w": 400,
-  "h": 320,
-  "target": 720,
-  "v": 3,
-  "blur": 0.528,
-  "local": "pics/5555837dbce2929f.webp",
-  "out": [
-   720,
-   576
   ],
   "why": "看不清"
  },
@@ -2973,12 +2972,6 @@
   "target": 720,
   "v": 3
  },
- "https://pbs.twimg.com/media/HVjH3ugbMAAtR8a?format=webp&name=large": {
-  "w": 1500,
-  "h": 2000,
-  "target": 1280,
-  "v": 3
- },
  "https://pbs.twimg.com/media/HVvxUGqbkAA6Bzk?format=webp&name=large": {
   "w": 1920,
   "h": 1080,
@@ -3246,12 +3239,6 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
-  "v": 3
- },
- "https://s.rfidworld.com.cn/2026/10/29/3e3ed2f421242b4b.jpg": {
-  "w": 810,
-  "h": 344,
-  "target": 720,
   "v": 3
  },
  "https://s.yimg.com/lo/mysterio/api/07e140aab69c4cebab526813467e217fc16a2097940b3f6f8daf5ac5327d227e/lightyear_networkapi/resizefill_w1200_h675%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftennishead_808%2Feb0a17f6b0185d978d5ed70f18760cad.jpg": {
@@ -3955,12 +3942,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.2w8zw7n4HIC9AGEbd4oYsQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650": {
   "target": 1280,
   "v": 3,
@@ -4030,6 +4011,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.GcYGVoMlW89sOie9K6qFYg&pid=News&w=1200": {
+  "w": 700,
+  "h": 350,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.GkCPsnRoh_xlR3sd41814g&pid=News&w=638": {
   "w": 638,
   "h": 334,
@@ -4040,6 +4027,12 @@
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.K8lLvZLqbA6JDDY2vAyObg&pid=News&w=1000": {
+  "w": 700,
+  "h": 525,
   "target": 720,
   "v": 3
  },
@@ -4069,6 +4062,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.OxiJ5-NxJTwjyR84qxjhBQ&pid=News&w=1080": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.QuF_Go2zgy9f4FCXiYjmWA&pid=News&w=700": {
   "w": 700,
   "h": 467,
@@ -4088,6 +4087,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.UODS4BI_eES0rH_UcQ0ejw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4097,6 +4102,12 @@
  "https://www.bing.com/th?id=ONUT.Wp-0nTTjwzl7GiwYfqfOHw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Y4Wp2ewnZ6-_7QnNijF27Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4233,6 +4244,19 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.rI0WDSe73rhXubLqBBnaoQ&pid=News&w=300": {
+  "w": 300,
+  "h": 224,
+  "target": 720,
+  "v": 3,
+  "blur": 0.518,
+  "local": "pics/7781421edac0415a.webp",
+  "out": [
+   720,
+   538
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.rswb3X_wfNNlKgbHDjmfdw&pid=News&w=1000": {
   "w": 700,
   "h": 380,
@@ -4252,6 +4276,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.358
+ },
+ "https://www.bing.com/th?id=ONUT.xD-OVQFLi2YhPiBTU0LbPA&pid=News&w=1200": {
+  "w": 700,
+  "h": 348,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.xJ4TPQ2Ls59Z59VRELT6pw&pid=News&w=1200": {
   "w": 700,
