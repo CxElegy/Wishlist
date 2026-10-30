@@ -35,12 +35,6 @@
   "target": 720,
   "v": 3
  },
- "http://p0.qhimg.com/t11508c75c85fd3a48017d17459.jpg": {
-  "w": 2000,
-  "h": 2760,
-  "target": 720,
-  "v": 3
- },
  "http://www.popcornnews.net/news/photo/202610/137736_164100_4858.jpg": {
   "w": 600,
   "h": 338,
@@ -60,19 +54,6 @@
    960
   ],
   "why": "看不清"
- },
- "http://wx1.sinaimg.cn/middle/7d297217gy1iidjcjy46vj20m80m8tc6.jpg": {
-  "w": 800,
-  "h": 800,
-  "target": 720,
-  "v": 3,
-  "local": "pics/d217daab3b0f5962.webp",
-  "out": [
-   800,
-   800
-  ],
-  "why": "防盗链",
-  "ref": true
  },
  "http://wx1.sinaimg.cn/middle/b7cceb19gy1ii7p8ebw0tj20ce1011kx.jpg": {
   "w": 446,
@@ -122,6 +103,19 @@
   "out": [
    1280,
    720
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
+ "http://wx2.sinaimg.cn/middle/87fc3b5egy1iik5j5zxt3j22dc35cu0y.jpg": {
+  "w": 2000,
+  "h": 2656,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/006f4fef1f12b0cb.webp",
+  "out": [
+   964,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -923,6 +917,12 @@
   "target": 720,
   "v": 3
  },
+ "https://escharts.com/metaImage/teams/legion-1?game=2&v=1793328616": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
  "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt859507d51581f713/6ae0fbc4f6e3e04aa497e290/gtaviluciaweightsfeatured.jpg?disable=upscale&width=1200&height=630&fit=crop": {
   "w": 1200,
   "h": 630,
@@ -945,6 +945,12 @@
   "w": 710,
   "h": 473,
   "target": 720,
+  "v": 3
+ },
+ "https://foro3d.com/2026/octubre/imagenes/fundas-para-el-galaxy-s27-ultra-ya-a-la-venta-antes-del-anuncio-oficia.webp": {
+  "w": 1920,
+  "h": 1080,
+  "target": 1280,
   "v": 3
  },
  "https://foro3d.com/2026/octubre/imagenes/image-engine-publica-su-desglose-de-vfx-de-the-mandalorian-grogu.webp": {
@@ -2000,12 +2006,6 @@
   ],
   "why": "看不清"
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FTBSNews%252Fa6%252FTBSNews_1488752626464423958%252FTBSNews_1488752626464423958_1.jpg,zoom=560x320,quality=100,type=jpg": {
-  "w": 560,
-  "h": 316,
-  "target": 720,
-  "v": 3
- },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
   "h": 675,
@@ -2530,6 +2530,13 @@
   ],
   "why": "看不清"
  },
+ "https://news.walkerplus.com/article/52948/288968_615.jpg": {
+  "w": 615,
+  "h": 505,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.413
+ },
  "https://news.walkerplus.com/article/56657/312478_615.jpg": {
   "w": 615,
   "h": 608,
@@ -2904,6 +2911,12 @@
    720
   ],
   "why": "期限付きの網址"
+ },
+ "https://newsbytes.ph/wp-content/uploads/2026/10/PT-sports.jpg": {
+  "w": 1162,
+  "h": 641,
+  "target": 720,
+  "v": 3
  },
  "https://ni.yam.com/20261023/jp-prt-18505-4495-1-261023043229102-2cbbcdfdb31dc2c7.webp": {
   "w": 1200,
@@ -4002,11 +4015,29 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.0HVY0wuMVSYz1jsvtl4Ppg&pid=News&w=744": {
+  "w": 700,
+  "h": 395,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.2lp2WqkTcKGG_YLk4raCTQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 390,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650": {
   "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
+ },
+ "https://www.bing.com/th?id=ONUT.585AXRfL_8k6iLulkr5P9w&pid=News&w=600": {
+  "w": 600,
+  "h": 391,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6kis5XhqZ767JfXoJhYzmw&pid=News&w=1200": {
   "w": 700,
@@ -4065,15 +4096,15 @@
   ],
   "why": "看不清"
  },
- "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
+ "https://www.bing.com/th?id=ONUT.FRvVdoY_0D2E_qIytSDr3g&pid=News&w=1200": {
   "w": 700,
-  "h": 508,
+  "h": 393,
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.GcYGVoMlW89sOie9K6qFYg&pid=News&w=1200": {
+ "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
-  "h": 350,
+  "h": 508,
   "target": 720,
   "v": 3
  },
@@ -4087,12 +4118,6 @@
  "https://www.bing.com/th?id=ONUT.Hrwc6-bP68-ts5T3nvVhvw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.K8lLvZLqbA6JDDY2vAyObg&pid=News&w=1000": {
-  "w": 700,
-  "h": 525,
   "target": 720,
   "v": 3
  },
@@ -4153,6 +4178,12 @@
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
  },
+ "https://www.bing.com/th?id=ONUT.UdZD2aE3gOR_Po4ANJ8axw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.Uis7-f-jxAibFDYzjNknVg&pid=News&w=800": {
   "w": 700,
   "h": 700,
@@ -4162,6 +4193,12 @@
  "https://www.bing.com/th?id=ONUT.Wp-0nTTjwzl7GiwYfqfOHw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.Y4Wp2ewnZ6-_7QnNijF27Q&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4241,23 +4278,11 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.g4JI11yusPjEVD0T5J9BEQ&pid=News&w=1080": {
-  "w": 626,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.iOLgomJRjCnpWxI4P5DdVg&pid=News&w=1200": {
   "target": 720,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
- },
- "https://www.bing.com/th?id=ONUT.k8H4SXWS66ZEErAiClCvUw&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.kQ4dry7TSi0lf6kAkumLsQ&pid=News&w=1200": {
   "w": 700,
@@ -4288,6 +4313,12 @@
  "https://www.bing.com/th?id=ONUT.lQsIUNMhEObjGgAYxA4EXQ&pid=News&w=830": {
   "w": 700,
   "h": 386,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.lU-8rnG6yiARLhu243XsJg&pid=News&w=1069": {
+  "w": 689,
+  "h": 700,
   "target": 720,
   "v": 3
  },
