@@ -61,15 +61,15 @@
   ],
   "why": "看不清"
  },
- "http://wx1.sinaimg.cn/middle/7d297217gy1iidjcjy46vj20m80m8tc6.jpg": {
-  "w": 800,
-  "h": 800,
+ "http://wx1.sinaimg.cn/middle/7d297217gy1iidjckamgmj20wi1mdtgy.jpg": {
+  "w": 1170,
+  "h": 2101,
   "target": 720,
   "v": 3,
-  "local": "pics/d217daab3b0f5962.webp",
+  "local": "pics/a246b5b0e2536c74.webp",
   "out": [
-   800,
-   800
+   713,
+   1280
   ],
   "why": "防盗链",
   "ref": true
@@ -568,6 +568,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://cdn.gametoc.co.kr/news/photo/202610/112537_327288_452.jpg": {
+  "w": 1280,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.gamevu.co.kr/news/photo/202610/61854_99991_4649.jpg": {
   "target": 720,
   "v": 3,
@@ -578,6 +584,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.ipnn.co.kr/news/photo/202610/418071_79925_3013.jpg": {
+  "w": 600,
+  "h": 400,
+  "target": 720,
   "v": 3
  },
  "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg": {
@@ -1988,11 +2000,11 @@
   ],
   "why": "看不清"
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FTBSNews%252F37%252FTBSNews_1488737487142732262%252FTBSNews_1488737487142732262_1.jpg,zoom=560x320,quality=100,type=jpg": {
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FTBSNews%252Fa6%252FTBSNews_1488752626464423958%252FTBSNews_1488752626464423958_1.jpg,zoom=560x320,quality=100,type=jpg": {
+  "w": 560,
+  "h": 316,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
+  "v": 3
  },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
@@ -3436,12 +3448,6 @@
  "https://static.gosugamers.net/8f/56/46/fa5291266f096ab3631803021c9b1f4ad32d17200a0373b390defac5cc.webp": {
   "w": 1200,
   "h": 675,
-  "target": 720,
-  "v": 3
- },
- "https://static.inven.co.kr/column/2026/10/27/news/i1759176400.jpg": {
-  "w": 1920,
-  "h": 1349,
   "target": 720,
   "v": 3
  },
