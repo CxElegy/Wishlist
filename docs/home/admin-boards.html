@@ -1536,7 +1536,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin-boards" content="e804f3c57ad7"><style>
+<meta name="wl-ver" data-page="admin-boards" content="4ca15983244d"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -1794,7 +1794,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
     members16:'<p class="st">読み込めませんでした：',
     lb1:'<table><thead><tr><th>版面<\/th><th>人数<\/th><th>小元素<\/th><th>配色（背景・文字・差し色）<\/th><\/tr><\/thead><tbody>',
-    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）'}};
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面<\/th><th>追う人<\/th><th>最新の日<\/th><th>記事<\/th><th>整理待ち<\/th><\/tr><\/thead><tbody>'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -2304,12 +2304,22 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
           tr.querySelector('[data-reset]').onclick=function(){go({});};});
       }).catch(function(e){box.innerHTML=L.members16+esc(e.message)+'<\/p>';});
   }
+  function libedit(){   // ④AI 編集：ライブラリの全版面（お客さまの分を含む）の最新の編集状態。admin_board_edit_state() は店長だけ・名前は HTML に焼かない
+    var box=document.getElementById('wl-libedit'); if(!box) return;
+    var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
+    sec.hidden=false;
+    rpc('admin_board_edit_state').then(function(rs){
+      rs=rs||[]; box.dataset.n=rs.length;
+      box.innerHTML='<p class="st">'+rs.length+L.lb8+'<\/p>'+L.le1+rs.map(function(r){
+        return '<tr data-id="'+r.board_id+'"><td>'+esc(r.name)+'<\/td><td>'+r.followers+'<\/td><td>'+(r.day||'—')+'<\/td><td>'+r.stories+'<\/td><td>'+r.pending+'<\/td><\/tr>';}).join('')+'<\/tbody><\/table>';
+    }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'<\/p>';});
+  }
   function refresh(){
     return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();
+      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
           var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
@@ -2342,7 +2352,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ ② 版面</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.31 01:17</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.31 01:48</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html" aria-current="page"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
