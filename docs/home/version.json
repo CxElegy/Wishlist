@@ -1,14 +1,14 @@
 {
- "admin": "ad3483aa764d",
- "admin-ai": "938c84ca531f",
+ "admin": "96b1c216f273",
+ "admin-ai": "5e7b9aa1110d",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "cae8d32b"
+   "9eeb1af9"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ef4bcec1"
+   "4ef007a2"
   ]
  },
  "admin-boards": "783c1057fb28",
@@ -22,11 +22,11 @@
    "631e3d99"
   ]
  },
- "admin-emblem": "83e9fe9acd74",
+ "admin-emblem": "8658a9fd59e9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "524728a6"
+   "c1ae6cdc"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "0857387f9132",
  "admin-members_marks": {},
- "admin-now": "90d5b2d1e00b",
+ "admin-now": "24856a0a2e3a",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "9de8f356"
+   "318edc41"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "9b4b6efc"
+   "86f1f14a"
   ],
   "term-panel": [
    "ライブログ",
-   "52c7be16"
+   "35aa4e18"
   ]
  },
- "admin-system": "1af8895dcf6d",
+ "admin-system": "c442815b3205",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "c9411361"
+   "9625595c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "57bb39a7"
+   "9516be25"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "1e911f29"
   ]
  },
- "index": "69b9b3f2b021",
+ "index": "78eb13fc82fa",
  "index_marks": {
   "front": [
    "トップ",
-   "cf850617"
+   "cfb1ee37"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "85c599ec"
+   "24dda9ea"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "2c644419"
+   "3d69c6bd"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -129,7 +129,7 @@
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "2608c664"
+   "84ae355d"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "d14ab20c"
+   "15351c56"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "ae385b40"
+   "4c76a6f4"
   ],
   "w-b867582f": [
    "あつ森",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "5e2fdec3"
+   "8139de72"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "398c34f6"
   ]
  },
- "updated": "10.31 03:37",
- "wishlist": "8584e84693a6"
+ "updated": "10.31 03:40",
+ "wishlist": "64c8b93f9eb4"
 }

@@ -29,6 +29,12 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261030ac/200/w640h360/20261030/0e25-3210d412f304cbefb5499d03e3721a6c.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 720,
+  "v": 3
+ },
  "http://p0.qhimg.com/t11508c75c802840333ce11d41d.jpg": {
   "w": 1660,
   "h": 2090,
@@ -211,6 +217,19 @@
   "why": "防盗链",
   "ref": true
  },
+ "http://wx4.sinaimg.cn/middle/008eZAxIly1iiks5gm3h7j313v194n29.jpg": {
+  "w": 1435,
+  "h": 1624,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/cc5f093deb073c64.webp",
+  "out": [
+   1131,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true
+ },
  "http://wx4.sinaimg.cn/middle/008l2owuly8iicjorsei4j30sg11sdqp.jpg": {
   "w": 1024,
   "h": 1360,
@@ -234,6 +253,12 @@
   "w": 1200,
   "h": 628,
   "target": 1280,
+  "v": 3
+ },
+ "https://9to5google.com/wp-content/uploads/sites/4/2026/10/S26-Ultra-Pixel-11-Pro-and-iPhone-17-Pro.jpg?quality=82&strip=all&resize=1200,628": {
+  "w": 1200,
+  "h": 628,
+  "target": 720,
   "v": 3
  },
  "https://afpbb.ismcdn.jp/mwimgs/7/f/1000x/img_7f9796789ecc5949a099ce4d5b98fb5582038.jpg": {
@@ -445,12 +470,6 @@
   "target": 720,
   "v": 3
  },
- "https://bleedingcool.com/wp-content/uploads/2026/07/L1050980-Edit-2-2000x1125.jpg": {
-  "w": 2000,
-  "h": 1125,
-  "target": 720,
-  "v": 3
- },
  "https://blogfiles.ncsoft.net/news/341760c3-50f2-4a41-856a-5961cb9466ca.jpg": {
   "w": 800,
   "h": 420,
@@ -639,6 +658,12 @@
   "w": 1200,
   "h": 700,
   "target": 1280,
+  "v": 3
+ },
+ "https://cdn.utaten.com/uploads/images/kentei/kentei/1174/2c512f1f2055341b9217e039060ef29b1b188e85.jpeg?r=2026103103": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
   "v": 3
  },
  "https://charagoo.jp/wp-content/uploads/2025/08/668w_668h-267.jpg": {
@@ -947,6 +972,12 @@
   "v": 3
  },
  "https://gamegpu.com/images/1_2026/NEWS/Q4/okt/27/mhzpi2mhzpi2mhzp_gamegpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/okt/27/mhzpi2mhzpi2mhzp_gamegpu.webp?width=1920&height=1080": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://gamegpu.com/images/1_2026/NEWS/Q4/okt/30/2026_gpu.webp#joomlaImage://local-images/1_2026/NEWS/Q4/okt/30/2026_gpu.webp?width=1920&height=1080": {
   "w": 1920,
   "h": 1080,
   "target": 720,
@@ -1362,6 +1393,12 @@
   "v": 3,
   "blur": 0.357
  },
+ "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://images.thedirect.com/media/article_full/1000009740_ybMftis.jpg": {
   "w": 1280,
   "h": 720,
@@ -1406,6 +1443,12 @@
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2cflpr.img": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2e9ELc.img": {
   "w": 1920,
   "h": 1080,
   "target": 720,
@@ -1600,10 +1643,22 @@
   "target": 720,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2grasE.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2gdg2A.img": {
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://img-s.msn.cn/tenant/amp/entityid/AA2gp7XM.img": {
+  "w": 1080,
+  "h": 607,
+  "target": 1280,
   "v": 3
  },
  "https://img.biggo.com/teH3NbIxFSt-CqvQ3yCIx_NPe2np828iadfx9SgSY7c/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTEwLzBiNDEzMTQzLTI1NmYtNGE2OC05ODM1LTVhZWNkNTUxNjM3NV8xNzkzMjc4NjkwX2RlZmF1bHQuanBn.jpg": {
@@ -1903,6 +1958,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://journalarta.com/wp-content/uploads/2026/10/samsung-may-use-snapdragon-8-elite-gen-6-extreme-in-europe-f-source-ai-ja-discover-1536x864.jpg": {
+  "w": 1536,
+  "h": 864,
+  "target": 720,
+  "v": 3
+ },
  "https://kagit-media.atreez.cc/uploads/2026-10-27/v6k9lcewuo3hsf2qq0go5jyd.jpg": {
   "w": 1600,
   "h": 900,
@@ -2044,6 +2105,12 @@
   "w": 650,
   "h": 200,
   "target": 720,
+  "v": 3
+ },
+ "https://media.loom-app.com/loom/2026/10/30/72661fc5-833a-4f4e-a1a2-5f553cc4cd6d/original.jpg?w=1200&h=630": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://media.nownews.com/nn_media/thumbnail/2026/10/1793021523355-111816baf98c406c8940b6651069038e-1200x675.webp?unShow=false": {
@@ -3174,6 +3241,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/260c9b58cc6906802b6531651f394cb08d87b859a16d4e5579150f27d27c2aee/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmandatory_995%2F588c5a89d05ed306c854eabe8a877264.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/37aca8b878d75fcc703a527655b95b3ab99115c5d4fd125453b36e379ac215b3/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fcomplex_131%2F602997a72093a21704e9bc7346c7d41e": {
   "w": 1200,
   "h": 675,
@@ -3220,6 +3293,12 @@
   "w": 1900,
   "h": 1425,
   "target": 1280,
+  "v": 3
+ },
+ "https://samsungmagazine.eu/wp-content/uploads/2026/05/Galaxy-S26-110.jpg": {
+  "w": 1900,
+  "h": 1425,
+  "target": 720,
   "v": 3
  },
  "https://samsungmagazine.eu/wp-content/uploads/2026/08/Galaxy-S27-Pro-cover.png": {
@@ -3483,6 +3562,12 @@
   "w": 1200,
   "h": 653,
   "target": 720,
+  "v": 3
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/10/dominic-mclaughlin.jpg?q=49&fit=contain&w=750&h=422&dpr=2": {
+  "w": 1499,
+  "h": 844,
+  "target": 1280,
   "v": 3
  },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/14951418/145720_2627.jpg?w=1600&h=900&fit=crop": {
@@ -3840,6 +3925,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.bing.com/th?id=ONUT.CrHdDUfI1dO_Dwn25qQGVQ&pid=News&w=780": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.FxAp6kEC9efeg_JaTfkfaw&pid=News&w=1000": {
   "w": 700,
   "h": 508,
@@ -3947,15 +4038,35 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.VCtl0_0zS7d6VwafdvBizg&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.568,
+  "local": "pics/ba67941f2c1a1780.webp",
+  "out": [
+   1280,
+   671
+  ],
+  "why": "看不清"
+ },
+ "https://www.bing.com/th?id=ONUT.VDAPUdqXyfACkGa_Jd_2nw&pid=News&w=500": {
+  "w": 500,
+  "h": 281,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.537,
+  "local": "pics/27f4e922b27c37bf.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.Wgnw38sqkN-vD5tIA09_gQ&pid=News&w=650": {
   "w": 650,
   "h": 346,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.X97L9oqhfPLFYIUh4V8aEg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -4035,6 +4146,19 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.ghPPO0q95yYTjDKycYEn6g&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.616,
+  "local": "pics/fcda39ef4453f089.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清"
+ },
  "https://www.bing.com/th?id=ONUT.h-a0kXMRJuiF2YDt_UZ_Jg&pid=News&w=626": {
   "w": 626,
   "h": 352,
@@ -4085,6 +4209,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.325
+ },
+ "https://www.bing.com/th?id=ONUT.nHblBEj4odbWt2GolGBuxg&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.nmQBPUIe6hJu6JWV3BuQPQ&pid=News&w=1200": {
   "w": 700,
@@ -4531,6 +4661,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Anthony-Mackie-1.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/10/Avengers-Secret-Wars-X-Men-Rumor-Reveals-Some-Fan-Favorite-Characters-Surprise-Returns.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
@@ -4559,6 +4695,12 @@
   "w": 1600,
   "h": 898,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.svg.com/img/gallery/what-happens-if-you-cancel-your-gta-6-preorder/l-intro-1793030057.jpg": {
+  "w": 1600,
+  "h": 899,
+  "target": 720,
   "v": 3
  },
  "https://www.syfy.com/sites/syfy/files/2026/10/article-promotes-1825x1217_25.jpg": {
@@ -4616,6 +4758,12 @@
   ],
   "why": "看不清"
  },
+ "https://www.tovima.com/wp-content/uploads/2026/10/30/harry-potter-max.jpg": {
+  "w": 2048,
+  "h": 1365,
+  "target": 720,
+  "v": 3
+ },
  "https://www.travelvoice.jp/wp-content/uploads/2026/10/3d882516-efef-4cf4-b573-44e7902bcd80.jpg": {
   "w": 836,
   "h": 478,
@@ -4632,6 +4780,12 @@
   "w": 1200,
   "h": 675,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/Breaking/106/532431/623798_1280W.webp": {
+  "w": 1280,
+  "h": 960,
+  "target": 720,
   "v": 3
  },
  "https://www.wowkorea.jp/img/Breaking/106/532601/623967_1280W.webp": {
