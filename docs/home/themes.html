@@ -1613,7 +1613,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function fresh(d){var t=Date.parse(d||'');return !isNaN(t)&&Date.now()-t<36*3600e3;}
     // カード 1 枚。見出し・出典は外から来た文字なので必ず esc。網址は http(s) だけ。画像がなければ字だけのカード（同じ仮の絵を並べない）
     function card(c){var u=safe(c.url);if(!u||!c.title)return '';var img=pic(c.img);
-      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"'+(img?'':' class="np"')+'>'+(img?'<span class="pic"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"><\/span>':'')+
+      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"'+(img?'':' class="np"')+'>'+(img?'<span class="pic"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="p"><\/span>':'')+
         (c.board?'<span class="k">'+esc(c.board)+'<\/span>':'')+'<b>'+(c.isNew?'<i>NEW<\/i>':'')+esc(c.title)+'<\/b>'+
         '<small>'+esc([c.when,c.source].filter(Boolean).join(' · '))+'<\/small><\/a>';}
     function story2card(st,bn){return {title:st.title,url:st.url,img:st.image,source:st.source,when:md(st.date||st.seen),isNew:fresh(st.date||st.seen),board:bn,t:Date.parse(st.date||st.seen||'')||0};}
@@ -1799,7 +1799,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast"><div class="mtitle"><h1>テーマ見本</h1><span class="stamp">ウォッチリスト通信</span></div>
 <div class="tools"><div class="meta"><small>テーマ</small><b>30</b></div><div class="meta"><small>👍 演出</small><b>20</b></div>
-<div class="meta"><small>更新</small><b>10.30 21:21</b></div></div></header>
+<div class="meta"><small>更新</small><b>10.30 21:22</b></div></div></header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <p class="lede">各作品の版面は、この中のテーマ（背景の柄・題字の形・写真の枠・👍 を押したときの演出）を一つ使います。
 色は作品ごとに違うので、同じテーマでも作品によって雰囲気が変わります。👍 を押すと演出を試せます（ここでは保存しません）。</p>

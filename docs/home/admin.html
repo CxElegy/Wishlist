@@ -1536,7 +1536,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:13px}
 @keyframes termblink{50%{opacity:0}}
 @media (max-width:560px){.term-tt{display:none}.term-body{height:300px;font-size:12px}.term-body li{grid-template-columns:auto minmax(0,1fr)}.term-body time{grid-column:1/-1}}
 </style>
-<meta name="wl-ver" data-page="admin" content="8175d05c296a"><style>
+<meta name="wl-ver" data-page="admin" content="7efcbedb505e"><style>
 .wl-live{position:fixed;left:50%;bottom:20px;z-index:80;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);
  transform:translateX(-50%) rotate(var(--tilt));background:var(--ink);color:var(--card);padding:10px 16px;box-shadow:4px 4px 0 var(--rose);
  font:700 14px/1.4 var(--font-sans);letter-spacing:.03em}
@@ -2155,7 +2155,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
     function fresh(d){var t=Date.parse(d||'');return !isNaN(t)&&Date.now()-t<36*3600e3;}
     // カード 1 枚。見出し・出典は外から来た文字なので必ず esc。網址は http(s) だけ。画像がなければ字だけのカード（同じ仮の絵を並べない）
     function card(c){var u=safe(c.url);if(!u||!c.title)return '';var img=pic(c.img);
-      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"'+(img?'':' class="np"')+'>'+(img?'<span class="pic"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"><\/span>':'')+
+      return '<a href="'+esc(u)+'" target="_blank" rel="noopener"'+(img?'':' class="np"')+'>'+(img?'<span class="pic"><img src="'+esc(img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="p"><\/span>':'')+
         (c.board?'<span class="k">'+esc(c.board)+'<\/span>':'')+'<b>'+(c.isNew?'<i>NEW<\/i>':'')+esc(c.title)+'<\/b>'+
         '<small>'+esc([c.when,c.source].filter(Boolean).join(' · '))+'<\/small><\/a>';}
     function story2card(st,bn){return {title:st.title,url:st.url,img:st.image,source:st.source,when:md(st.date||st.seen),isNew:fresh(st.date||st.seen),board:bn,t:Date.parse(st.date||st.seen||'')||0};}
@@ -2341,7 +2341,7 @@ html[data-mine="2"] .subhead small,html[data-mine="2"] details.pend{display:none
 <div class="page">
 <header class="mast">
 <div class="mtitle"><h1>管理ページ</h1><span class="stamp">ウォッチリスト通信 · 自動更新</span></div>
-<div class="tools"><div class="meta"><small>更新</small><b>10.30 21:21</b></div></div>
+<div class="tools"><div class="meta"><small>更新</small><b>10.30 21:22</b></div></div>
 </header>
 <a class="back" href="./">← ウォッチリスト通信に戻る</a>
 <nav aria-label="管理ページの切り替え"><ul class="admnav"><li><a class="adm-top" href="admin.html" aria-current="page"><span>← 管理のトップ</span></a></li><li><a href="admin-now.html"><span>① いま</span></a></li><li><a href="admin-boards.html"><span>② 版面</span></a></li><li><a href="admin-emblem.html"><span>③ エンブレム</span></a></li><li><a href="admin-ai.html"><span>④ AI 編集</span></a></li><li><a href="admin-system.html"><span>⑤ しくみ</span></a></li><li><a href="admin-members.html"><span>⑥ お客さまと店長</span></a></li></ul></nav>
