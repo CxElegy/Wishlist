@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-10-29T10:03:17+00:00",
-"text": "2026-10-29 第 3 バッチを出刊：Astrae Oratio（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 1.1万・キャッシュ読み 105.8万・出力 3,865",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.18,
-"mem_total": 16872808448,
-"mem_free": 15821389824,
-"disk_used": 10924204032,
-"disk_free": 30398304256,
-"disk_total": 41322508288,
-"peak": 374161408
-},
-"batch": 3,
-"boards": [
-"Astrae Oratio"
-],
-"stories": 2,
-"left": 0,
-"edited": 23,
-"run": 1793266695.954941,
-"tok": {
-"in": 22,
-"cw": 10921,
-"cr": 1058064,
-"out": 3865,
-"calls": 11,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 1072872,
-"secs": 1501,
-"run_tok": {
-"in": 68,
-"cw": 74736,
-"cr": 2797378,
-"out": 11766,
-"calls": 34,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-29T10:55:44+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1951,5 +1910,35 @@
 "calls": 19,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-30T05:42:39+00:00",
+"text": "2026-10-30 第 6 バッチを出刊：（新しく終わった版面なし）（0 版面・0 本・残り 7 版面） · token 新規入力 1,939・キャッシュ読み 29.6万・出力 1,116",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.1,
+"mem_total": 16872808448,
+"mem_free": 15951867904,
+"disk_used": 10903105536,
+"disk_free": 30419402752,
+"disk_total": 41322508288,
+"peak": 303087616
+},
+"batch": 6,
+"boards": [],
+"stories": 0,
+"left": 7,
+"edited": 23,
+"run": 1793335875.9349003,
+"tok": {
+"in": 8,
+"cw": 1931,
+"cr": 296088,
+"out": 1116,
+"calls": 4,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 299143
 }
 ]
