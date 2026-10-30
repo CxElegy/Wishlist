@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-30T12:31:52+00:00",
+ "changed": true,
+ "checked": "2026-10-30T13:12:12+00:00",
  "fired": {
-  "at": "2026-10-30T12:31:52+00:00",
+  "at": "2026-10-30T13:12:12+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,19 +12,29 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-30T11:54:06+00:00",
+    "at": "2026-10-30T13:12:12+00:00",
     "attempts": 1,
     "day": "2026-10-30",
-    "prog": 460,
-    "resp": "cse_01W4x6f7jiDdCTuKXebLgJJS",
-    "sig": "2cb53218b9ed"
+    "prog": 512,
+    "resp": "cse_01W4x6f9ZsvfK9NWZpwMb3TG",
+    "sig": "4e60bed71dd6"
    },
    "items": [
+    "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
+    "GTA 6",
     "MMORPG 新作",
+    "Vaundy",
     "dota2",
+    "あつ森",
+    "ぐでたま",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "日本顶级网球赛事",
     "滑雪",
+    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-10-30T12:21:45+00:00",
@@ -35,37 +45,43 @@
    "need": true,
    "prog": 512,
    "prog_day": "2026-10-30",
-   "ripe": [],
-   "sig": "f861f0e14ec5",
+   "ripe": [
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "dota2",
+    "三星手机",
+    "漫威电影"
+   ],
+   "sig": "4e60bed71dd6",
    "token_cap": 1000000,
    "tokens_today": 544380,
-   "why": "整理待ちの記事 9 件（6 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 33 件（16 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
    "items": [
-    "BLEACH Mirrors High"
-   ],
-   "need": true,
-   "sig": "b6804aff6de5",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "FROM",
-    "GTA 6",
-    "ILLIT",
-    "The Mandalorian",
-    "Vaundy",
+    "BLEACH Mirrors High",
     "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
     "哈利波特剧集",
     "漫威电影",
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "Vaundy",
+    "周杰伦",
+    "ぐでたま"
+   ],
+   "need": true,
+   "sig": "7f28e58f1b8c",
+   "waiting": [
+    "Astrae Oratio",
+    "FROM",
+    "ILLIT",
+    "The Mandalorian",
+    "チェーンソーマン",
     "绝区零"
    ],
-   "why": "足りない 1 版面（Actions で Python が埋める）・失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 6 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
