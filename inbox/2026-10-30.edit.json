@@ -1,1305 +1,1354 @@
 {
- "漫威电影": [
-  {
-   "headline": "Marvel Studios Honors Patrick Stewart and Confirms ‘Avengers: Doomsday’ Will Be His Final On-Screen Role",
-   "highlight": "Final On-Screen Role",
-   "blurb": "Marvel Studios and Kevin Feige paid tribute to Patrick Stewart, confirming ‘Avengers: Doomsday’ will be his last on-screen role.",
-   "weight": "lead",
-   "refs": [
-    43,
-    45,
-    54,
-    52,
-    59,
-    60,
-    44,
-    61,
-    63,
-    65,
-    41,
-    47,
-    49,
-    58,
-    48,
-    50,
-    51,
-    68,
-    73,
-    76,
-    77,
-    80,
-    81,
-    74,
-    78,
-    85,
-    72,
-    86,
-    90,
-    89,
-    91,
-    93,
-    92,
-    94,
-    97,
-    98,
-    104,
-    101,
-    103,
-    99,
-    100,
-    102,
-    106,
-    107,
-    109,
-    111
-   ],
-   "image": "https://cdn.marvel.com/content/2x/patrick_stewart_tribute.webp"
-  },
-  {
-   "headline": "Robert Downey Jr's Doctor Doom Has an Army in New Look at 'Avengers: Doomsday'",
-   "highlight": "Doctor Doom",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    20,
-    2,
-    3,
-    5,
-    7,
-    9,
-    11,
-    17,
-    18,
-    34,
-    36,
-    35,
-    82,
-    79,
-    84,
-    95,
-    110
-   ],
-   "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2026/08/avengers-doomsday-poster.jpg"
-  },
-  {
-   "headline": "Marvel’s ‘Ghost Rider’ Production Grid Reveals Working Title, Shoot Window, and Real Story Behind \"Leaked\" Synopsis",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    12,
-    13
-   ]
-  },
-  {
-   "headline": "Avengers: Secret Wars Rumors Reveal Plans For Iron Man, Steve Rogers, And Wolverine - Possible Spoilers",
-   "highlight": "Secret Wars",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    21,
-    16,
-    22,
-    23,
-    30,
-    87,
-    105
-   ]
-  },
-  {
-   "headline": "Ghost Rider Writer Wants an R-Rated MCU Horror Movie",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    14,
-    29,
-    32,
-    66
-   ]
-  },
-  {
-   "headline": "MCU: Marvin Jones III's Tombstone Looks Perfect In First HD Live-Action Photos",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    88
-   ]
-  },
-  {
-   "headline": "Marvel Studios’ Black Panther Recast Announcement Hints at Huge Phase 7 Time Jump After Avengers: Secret Wars",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    96
-   ]
-  }
- ],
- "GTA 6": [
-  {
-   "headline": "Grand Theft Auto VI: Original Score launches December 11",
-   "highlight": "December 11",
-   "blurb": "Original Score by French electronic duo Justice on December 11 across all major music streaming services, plus vinyl and CD.",
-   "weight": "lead",
-   "refs": [
-    23,
-    21,
-    22,
-    13,
-    3,
-    11,
-    19,
-    18,
-    27,
-    58,
-    79
-   ],
-   "event": {
-    "date": "2026-12-11",
-    "label": "発売日"
-   },
-   "image": "https://www.bing.com/th?id=ONUT.Zxg8uAMC6RPaqiZ4lfllVQ&pid=News&w=1200"
-  },
-  {
-   "headline": "GTA 6's map is roughly twice GTA 5's and almost as big as GTA 4, GTA 5, and RDR2 combined",
-   "highlight": "twice GTA 5's",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    8,
-    25,
-    33,
-    35,
-    59,
-    62
-   ]
-  },
-  {
-   "headline": "South Park season 29 airs real GTA 6 gameplay footage, and it is absolutely gross",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10,
-    24,
-    17,
-    9,
-    43,
-    48,
-    63,
-    64,
-    72,
-    73,
-    82
-   ]
-  },
-  {
-   "headline": "GTA 6: 210 GB File Size, Edge Issue 430’s 16-Page Preview, Preload Date & Reviews",
-   "highlight": "210 GB",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    14,
-    16,
-    31,
-    36,
-    60,
-    61,
-    86,
-    81
-   ]
-  },
-  {
-   "headline": "GTA 6 gets a much longer day-night cycle: Rockstar says GTA 5 felt too fast",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    26,
-    4,
-    12,
-    66,
-    83
-   ]
-  },
-  {
-   "headline": "GTA 6 Officially Reveals 12 New Screenshots and Gameplay Details",
-   "highlight": "12 New Screenshots",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    68,
-    74,
-    85,
-    84,
-    77,
-    80
-   ]
-  }
- ],
- "三星手机": [
-  {
-   "headline": "Samsung teases Galaxy S27 plans, foldable lineup expansion, more",
-   "highlight": "Galaxy S27",
-   "blurb": "Samsung hints at a Galaxy S27 redesign with distinct identities per model, plus more foldables and smart glasses. No launch date confirmed.",
-   "weight": "lead",
-   "refs": [
-    17,
-    1,
-    3,
-    4,
-    8,
-    22,
-    26,
-    32,
-    33,
-    41
-   ],
-   "image": "https://9to5google.com/wp-content/uploads/sites/4/2026/07/S26-Ultra-Z-Fold-8-Ultra-and-Z-Fold-8.jpg?quality=82&strip=all&resize=1200,628"
-  },
-  {
-   "headline": "サムスン「Galaxy S27 Ultra」のリーク、5,700mAhバッテリーと新たな「Pro」モデルの登場を示唆",
-   "highlight": "5,700mAh",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7,
-    6,
-    15,
-    19,
-    21,
-    25,
-    40
-   ]
-  },
-  {
-   "headline": "Samsung Galaxy S27 charging speed revealed ahead of launch",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    16,
-    18,
-    9,
-    20,
-    23,
-    24,
-    31,
-    27,
-    29,
-    30,
-    38,
-    35,
-    36,
-    39,
-    43,
-    45,
-    42,
-    44
-   ]
-  },
-  {
-   "headline": "Samsung、スマホ事業で2四半期連続の営業赤字 Galaxy S27では差別化を強化か",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10,
-    12
-   ]
-  },
-  {
-   "headline": "サムスンがGalaxy A減産 シェアとS27前倒し巡り苦慮",
-   "highlight": "S27前倒し",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    14
-   ]
-  },
-  {
-   "headline": "Latest Samsung Galaxy S27 Ultra Rumours: Everything Leaked So Far",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    11,
-    46
-   ]
-  },
-  {
-   "headline": "Could Samsung's Galaxy S27 Ultra ditch Snapdragon and benefit buyers?",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2,
-    37,
-    34
-   ]
-  },
-  {
-   "headline": "Galaxy S27 Ultra 手机壳在官方发布前已开售",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    28
-   ]
-  }
- ],
- "ILLIT": [
-  {
-   "headline": "ILLIT storms Korea with 'Break Even' comeback and arresting title track",
-   "highlight": "Break Even",
-   "blurb": "5th mini album 'BREAK EVEN' released Oct 26 as a four-member group; Japan tour/dome announcements not yet made.",
-   "weight": "lead",
-   "refs": [
-    7,
-    9,
-    18,
-    6,
-    12,
-    17,
-    8,
-    11,
-    22,
-    30,
-    45,
-    39,
-    40,
-    51
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650"
-  },
-  {
-   "headline": "아일릿 미니 5집, 日 오리콘 ‘데일리 앨범 랭킹’ 상위권 안착",
-   "highlight": "오리콘",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    3,
-    15
-   ]
-  },
-  {
-   "headline": "ウォニとイロハ (ILLIT) が怪我の最新情報を提供します。",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    14,
-    5,
-    20,
-    24,
-    32,
-    31,
-    35,
-    43
-   ]
-  },
-  {
-   "headline": "아일릿 모카, 불안증세로 또 활동중단→4인조 컴백 “빈자리 커서 아쉽다”",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10
-   ]
-  },
-  {
-   "headline": "ILLIT 커뮤니티 포스트 - 히히 하이브 1층 팝업에서 우리의 흔적을 찾아보세요",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1,
-    19
-   ]
-  },
-  {
-   "headline": "ILLIT・WONHEE & IROHAにインタビュー。二人が見出す音楽の力",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    21
-   ]
-  },
-  {
-   "headline": "ILLIT、大学祭を魅了した「逮捕しちゃうぞ」…笛の大合唱も",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    28,
-    26,
-    27,
-    34,
-    33,
-    38,
-    37,
-    42,
-    41,
-    47,
-    48,
-    49,
-    50
-   ]
-  },
-  {
-   "headline": "ENHYPENニキ×ILLITイロハの日本人メンバーコラボに反響「マンネズ最高」「安定のHipHop兄妹」「待ってた!」",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    29
-   ]
-  }
- ],
- "哈利波特剧集": [
-  {
-   "headline": "HBO's Harry Potter Reboot Finally Reveals First Look at the New Hogwarts Castle",
-   "highlight": "Hogwarts Castle",
-   "blurb": "HBO released the first official poster of the Harry Potter series, featuring Dominic McLaughlin as Harry and a new look at Hogwarts. Premiere is set for Christmas.",
-   "weight": "lead",
-   "refs": [
-    1,
-    2,
-    6,
-    10,
-    8,
-    7,
-    3,
-    4,
-    12,
-    13,
-    14,
-    16,
-    18
-   ],
-   "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/03/harry-potter-season-1-alastair-stout-dominic-mclaughlin-arabella-stanton.jpg?w=1600&h=900&fit=crop"
-  },
-  {
-   "headline": "HBO《哈利波特》剧集首季烧掉 2 亿美元，圣诞上线",
-   "highlight": "圣诞上线",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    11
-   ]
-  },
-  {
-   "headline": "HBO’s Harry Potter season 2: What we know so far",
-   "highlight": "season 2",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    9
-   ]
-  },
-  {
-   "headline": "Harry Potter TV Series Reportedly Set for Movie-Length Opening Episode Ahead of Christmas Debut",
-   "highlight": "Movie-Length Opening Episode",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    15
-   ]
-  },
-  {
-   "headline": "HBO's Harry Potter Casting Update Confirms A Devastating Truth",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    17
-   ]
-  }
- ],
- "_covered": {
-  "漫威电影": 111,
-  "GTA 6": 87,
-  "三星手机": 46,
-  "ILLIT": 51,
-  "哈利波特剧集": 18,
-  "日本顶级网球赛事": 34,
-  "dota2": 15,
-  "MMORPG 新作": 13,
-  "BLEACH Mirrors High": 8,
-  "The Mandalorian": 8,
-  "周杰伦": 20,
-  "星巴克马克杯": 7,
-  "滑雪": 10,
-  "绝区零": 8,
-  "gelato pique": 14,
-  "A2O LITE": 20,
-  "チェーンソーマン": 11,
-  "Vaundy": 5,
-  "あつ森": 8,
-  "ぐでたま": 2,
-  "猫用品": 3,
-  "FROM": 1,
-  "Astrae Oratio": 12
- },
- "日本顶级网球赛事": [
-  {
-   "headline": "【テニス】大坂なおみ「まだまだ用意していた」8強入り逃し、衣装お披露目機会奪われる",
-   "highlight": "8強入り逃し",
-   "blurb": "東レ・パンパシフィック・オープン2回戦で第7シードの大坂なおみが18歳のポハンコバに3-6、5-7で敗れた。",
-   "weight": "lead",
-   "refs": [
-    9,
-    5,
-    1,
-    7,
-    13,
-    12,
-    15,
-    16,
-    18,
-    19,
-    31
-   ],
-   "image": "https://www.nikkansports.com/sports/news/img/202610290001904-w500_3.jpg"
-  },
-  {
-   "headline": "Eala seeks redemption against Shnaider in Pan Pacific tourney",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  },
-  {
-   "headline": "テニス - 東レ・パンパシフィック・オープン - エレーナ リバキナ vs. ユリア プティンツェワ",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2,
-    3,
-    20
-   ]
-  },
-  {
-   "headline": "ダブルス女王シニアコバ、大阪決勝でクルーガーに6-1、6-0 3年ぶりシングルスV",
-   "highlight": "6-1、6-0",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    8
-   ]
-  },
-  {
-   "headline": "【女子テニス】ルバキナ 東レPPO快勝発進! 今季の世界ランク1位確定「誇りに思う」",
-   "highlight": "世界ランク1位確定",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    11,
-    17,
-    26
-   ]
-  },
-  {
-   "headline": "内島萌夏がシード選手と対戦「スキのなさ」を感じ１回戦敗退【東レPPOテニス2026】",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    21
-   ]
-  },
-  {
-   "headline": "元世界4位の錦織圭、現役最後の公式戦",
-   "highlight": "現役最後の公式戦",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    23
-   ]
-  },
-  {
-   "headline": "加藤未唯ペア 第1シードと熱戦も東レPPO4強ならず、惜敗で準々決勝敗退",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    22,
-    25,
-    32,
-    33
-   ]
-  }
- ],
- "dota2": [
-  {
-   "headline": "ESL FACEIT Group Announces ESL One Munich 2027 Dota 2 Tournament",
-   "highlight": "ESL One Munich 2027",
-   "blurb": "ESL One Munich 2027 runs April 4–11, bringing 16 top Dota 2 teams to BMW Park for $1 million in prize money.",
-   "weight": "hero",
-   "refs": [
-    7,
-    6,
-    5,
-    8,
-    11
-   ],
-   "event": {
-    "date": "2027-04-04",
-    "label": "大会開幕",
-    "place": "ミュンヘン BMW Park"
-   },
-   "image": "https://www.bing.com/th?id=ONUT.KVEdgwjflIJprj4phTDrSQ&pid=News&w=700"
-  },
-  {
-   "headline": "DOTA2在线再创十年新高，国服福利活动同步进行中",
-   "highlight": "十年新高",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4
-   ]
-  },
-  {
-   "headline": "Dota 2 peak online drops 300k players after Valve reportedly bans bots from Arcade games",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
-   ]
-  },
-  {
-   "headline": "LEGION Dota 2チームの概要と視聴者統計",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10
-   ]
-  },
-  {
-   "headline": "OG Beat Team Spirit 2-1 In PARI Universe Dota 2 Upset",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    12
-   ]
-  },
-  {
-   "headline": "PT Sports taps Dawn Bulls as stand-in Dota 2 roster for Nov. tourneys",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    14
-   ]
-  }
- ],
- "MMORPG 新作": [
-  {
-   "headline": "아키에이지 크로니클, 11월 4일 스팀 얼리액세스 출시",
-   "highlight": "11월 4일",
-   "blurb": "엑스엘게임즈가 개발·서비스하는 오픈월드 액션 MMORPG '아키에이지 크로니클'이 11월 4일 오전 8시(한국 시간) 스팀 얼리액세스로 출시된다.",
-   "weight": "hero",
-   "refs": [
-    3
-   ],
-   "event": {
-    "date": "2026-11-04",
-    "label": "アーリーアクセス"
-   },
-   "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcS7d.img"
-  },
-  {
-   "headline": "コージーMMO『クロスランド』が11月16日発売！ Switch・Switch 2・PCで登場",
-   "highlight": "11月16日",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5,
-    8
-   ],
-   "event": {
-    "date": "2026-11-16",
-    "label": "発売日"
-   }
-  },
-  {
-   "headline": "Nexon、「オーバーギアード」オンラインショーケースを11月5日に配信",
-   "highlight": "11月5日",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6,
-    7
-   ],
-   "event": {
-    "date": "2026-11-05",
-    "label": "ショーケース配信",
-    "time": "20:00"
-   }
-  },
-  {
-   "headline": "MMO 新作《王國 W：血盟之誓》事前登錄開跑主打「3 種族 ×5 武器」自由戰鬥",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    13
-   ]
-  }
- ],
- "BLEACH Mirrors High": [
-  {
-   "headline": "新作スマートフォンゲーム「BLEACH Mirrors High」がサービス開始！ 最初の限定ガシャでは「[天に立つ]藍染 惣右介」が登場！",
-   "highlight": "サービス開始",
-   "blurb": "新作スマートフォンゲーム「BLEACH Mirrors High」がサービス開始。最初の限定ガシャでは藍染 惣右介が登場。",
-   "weight": "lead",
-   "refs": [
-    5,
-    4,
-    6
-   ],
-   "image": "https://news.pchome.com.tw/newsdata/game/gamer/20261028/79315739359867203104_5.jpg"
-  }
- ],
- "The Mandalorian": [
-  {
-   "headline": "Slideshow: The Art of The Mandalorian and Grogu Preview Gallery",
-   "highlight": "",
-   "blurb": "Preview gallery from 'The Art of The Mandalorian and Grogu' plus a new behind-the-scenes look. No new release-date news.",
-   "weight": "lead",
-   "refs": [
-    1,
-    2,
-    3
-   ],
-   "image": "https://sm.ign.com/t/ign_nordic/gallery/t/the-art-of/the-art-of-the-mandalorian-and-grogu-preview-gallery_pczz.1200.jpg"
-  },
-  {
-   "headline": "Hasbro's Star Wars: The Vintage Collection Mandalorian 3-pack features Carson Teva, Trapper Wolf and the Frog Lady",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5
-   ]
-  },
-  {
-   "headline": "Baby Yoda 2.0, the ‘Empire’ and ‘Sorcerer’ homages, and exclusive concept art from the best scene of ‘The Mandalorian and Grogu’",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  },
-  {
-   "headline": "When does The Mandalorian Season 3 take place? Star Wars timeline explained",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    8
-   ]
-  }
- ],
- "周杰伦": [
-  {
-   "headline": "周杰倫打網球被澳洲小朋友認出：你打過澳洲公開賽1分大滿貫？",
-   "highlight": "澳洲小朋友認出",
-   "blurb": "ツアー・新曲の新情報はなし。本人が29日にSNSでテニス中のエピソードを投稿。",
-   "weight": "lead",
-   "refs": [
-    1,
-    3,
-    4,
-    6,
-    9,
-    13,
-    14,
-    15
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.b599IgmyuPGyJ7Vbvf8W-w&pid=News&w=1200"
-  },
-  {
-   "headline": "周杰伦成为第一个在墨尔本大型场馆开唱的中国歌手！",
-   "highlight": "第一个在墨尔本大型场馆开唱",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5
-   ]
-  },
-  {
-   "headline": "周杰伦老歌又火了！12年前写的歌曲《怎么了》，曾在演唱会被歌迷安可",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    20
-   ]
-  }
- ],
- "星巴克马克杯": [
-  {
-   "headline": "スターバックス リザーブ ロースタリー 東京クリスマスグッズ、パールストラップ付きグリッターボトル等",
-   "highlight": "",
-   "blurb": "ティバーナ マグ＆リッドリーフなど、ロースタリー東京のクリスマス限定グッズ。",
-   "weight": "lead",
-   "refs": [
-    4
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.kQ4dry7TSi0lf6kAkumLsQ&pid=News&w=1200"
-  },
-  {
-   "headline": "【最新】『THREE』新作2026ホリデーコレクションを全部お試しレビュー！",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3
-   ]
-  },
-  {
-   "headline": "STARBUCKS Indonesia Mug Cup Starbucks Overseas Limited Edition",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5
-   ]
-  },
-  {
-   "headline": "お家でスターバックス気分に！マグカップやタンブラーなどお洒落アイテム5選",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  },
-  {
-   "headline": "スターバックスのJIMOTO Made＋新作は沖縄から。100年先をつなぐ、やちむんマグ",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7
-   ]
-  }
- ],
- "滑雪": [
-  {
-   "headline": "ザ・ウィンザーホテル洞爺、2026-2027ウィンターシーズンアクティビティを発表",
-   "highlight": "プライベート・貸切ゲレンデ",
-   "blurb": "",
-   "weight": "lead",
-   "refs": [
-    2
-   ],
-   "image": "https://prcdn.freetls.fastly.net/release_image/165726/357/165726-357-7391157bb14470907d9f66b3988dfef8-3900x2600.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff"
-  },
-  {
-   "headline": "【星野リゾート】福島県のスキー場「ネコマ マウンテン」26-27シーズンの営業開始 - ツリーランゾーンが拡大、新たな宿泊拠点も誕生へ",
-   "highlight": "ツリーランゾーンが拡大",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5,
-    8
-   ]
-  },
-  {
-   "headline": "【国内初】スキー場跡地の斜面を生かした、全長330mの舗装スネークランが誕生！岡山県西粟倉村「MOUNTAIN TRACK おおがや」2028年春開業へ",
-   "highlight": "2028年春開業",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  },
-  {
-   "headline": "686が日本限定スノーボードウェアLS1とLS2の2026-27モデルを発売",
-   "highlight": "2026-27モデル",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    9
-   ]
-  },
-  {
-   "headline": "苗場・かぐら・六日町八海山スキー場で今シーズンからマイナンバーカード連携商品を販売開始",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10
-   ]
-  }
- ],
- "绝区零": [
-  {
-   "headline": "Reduce digital eye strain with new Zenless Zone Zero inspired eyewear",
-   "highlight": "November 5, 2026",
-   "blurb": "GUNNAR's Zenless Zone Zero Orphie & Magus Glasses launch November 5, 2026 for $89 with three lens tints.",
-   "weight": "lead",
-   "refs": [
-    5
-   ],
-   "price": {
-    "now": "$89"
-   },
-   "event": {
-    "date": "2026-11-05",
-    "label": "発売日"
-   },
-   "image": "https://www.bing.com/th?id=ONUT.UODS4BI_eES0rH_UcQ0ejw&pid=News&w=1200"
-  }
- ],
- "gelato pique": [
-  {
-   "headline": "人気のルームウェアブランド「ジェラート ピケ」直営店が松江に 駅ナカ「シャミネ」に新テナント",
-   "highlight": "松江に",
-   "blurb": "山陰初の直営店が駅ナカ「シャミネ松江」にオープン。",
-   "weight": "lead",
-   "refs": [
-    2,
-    1,
-    10
-   ],
-   "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-90025195-tsk-000-1-thumb.jpg?exp=10800"
-  },
-  {
-   "headline": "ホームファッション毎年人気「gelato pique」の福袋が今年も登場 11・2正午から抽選販売の受付開始",
-   "highlight": "11・2正午から",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3,
-    6,
-    14
-   ],
-   "event": {
-    "date": "2026-11-02",
-    "label": "福袋抽選受付",
-    "time": "12:00"
-   }
-  },
-  {
-   "headline": "愛らしいシロクマ柄と柔らか素材が魅力のジェラート ピケのロングパンツが10%OFF",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4
-   ]
-  },
-  {
-   "headline": "【gelato pique】PEANUTSとのコラボレーション10周年！ボーダー柄ルームウェアを着たスヌーピーたち10キャラクターの特別なアートが登場",
-   "highlight": "コラボレーション10周年",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7,
-    9,
-    11,
-    12,
-    13
-   ]
-  }
- ],
- "A2O LITE": [
-  {
-   "headline": "李秀满在烤肉店豪爽支付顾客餐费，庆祝A2O LITE夺得音乐节目第一",
-   "highlight": "夺得音乐节目第一",
-   "blurb": "",
-   "weight": "lead",
-   "refs": [
-    2
-   ]
-  },
-  {
-   "headline": "不再追求自然律动，她们把身体变成了切割节奏的精密仪器",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    1
-   ]
-  },
-  {
-   "headline": "‘이수만 걸그룹’ A2O LITE, 일본까지 홀렸다…오리콘 급상승 1위",
-   "highlight": "오리콘 급상승 1위",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6,
-    10,
-    11,
-    8
-   ]
-  },
-  {
-   "headline": "李秀满新团炸场！A2O LITE《NEON》MCD初舞台直接杀疯了",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5,
-    17,
-    18,
-    19,
-    20,
-    16
-   ]
-  },
-  {
-   "headline": "괴물신인 A2O LITE, 초고속 1위하더니‥데뷔 2주만 ‘디 어워즈’ 참석 확정",
-   "highlight": "디 어워즈",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    13
-   ]
-  }
- ],
- "チェーンソーマン": [
-  {
-   "headline": "劇場版「チェンソーマン レゼ篇」×グラニフ",
-   "highlight": "グラニフ",
-   "blurb": "「チェンソーマン レゼ篇」とグラニフのコラボ商品が公開。ハーフジップスウェットは7900円。",
-   "weight": "lead",
-   "refs": [
-    1,
-    2,
-    5,
-    6,
-    8
-   ],
-   "image": "https://ogre.natalie.mu/media/news/eiga/2026/1028/chainsawman_graniph_20261028_14.jpg?impolicy=ogp_face_crop"
-  },
-  {
-   "headline": "劇場版『チェンソーマン レゼ篇』 おおきなSOFVIMATES～てくてくポチタ～",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3
-   ]
-  },
-  {
-   "headline": "チェンソーマン アクリルボード",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4
-   ]
-  },
-  {
-   "headline": "アパレル製品における劇場版『チェンソーマン レゼ篇』のライセンス契約締結のお知らせ",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7
-   ]
-  },
-  {
-   "headline": "劇場版『チェンソーマン レゼ篇』 Figuno-DENJI＆REZE＆CHAINSAW MAN＆BOMB-",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    9
-   ]
-  },
-  {
-   "headline": "「MAPPA EXPO 15th Anniversary」後期より、劇場版「チェンソーマン レゼ篇」エリア",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    11
-   ]
-  }
- ],
- "Vaundy": [
-  {
-   "headline": "Why I, who dislike crowds, cried in the front row at a Vaundy concert",
-   "highlight": "",
-   "blurb": "",
-   "weight": "lead",
-   "refs": [
-    2
-   ]
-  },
-  {
-   "headline": "Vaundyの5年前の曲が今1位に！？『しわあわせ』『怪獣の花唄』のトラック・メイクを分析",
-   "highlight": "5年前の曲が今1位に",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5
-   ]
-  }
- ],
- "あつ森": [
-  {
-   "headline": "【あつ森】『ゼルダの伝説』マイデザイン配布！コログのかさやトライフォースTシャツが登場",
-   "highlight": "マイデザイン配布",
-   "blurb": "『ゼルダの伝説』のマイデザインが配布開始。",
-   "weight": "lead",
-   "refs": [
-    1,
-    3,
-    5,
-    6,
-    7
-   ],
-   "image": "https://cimg.kgl-systems.io/camion/files/92525/ogp_kjfu.jpg?x=1280"
-  },
-  {
-   "headline": "【あつ森】『Ninten島』が更新！島主の家が増築しゼルダやスプラ部屋が登場！",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
-   ]
-  }
- ],
- "ぐでたま": [
-  {
-   "headline": "Where is Tophat Gudetama this week in Hello Kitty Island Adventure?",
-   "highlight": "",
-   "blurb": "",
-   "weight": "lead",
-   "refs": [
-    1
-   ],
-   "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/10/jlee_251027_1001_hkia_gudetama.jpg?q=49&fit=crop&w=825&dpr=2"
-  },
-  {
-   "headline": "ぐでたまが駅員に変身！東京駅に期間限定ショップがオープン",
-   "highlight": "東京駅に期間限定ショップ",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    2
-   ]
-  }
- ],
- "猫用品": [
-  {
-   "headline": "【ダイソー】猫好きさん、朗報だよ……。超大当たりだった猫グッズ3選",
-   "highlight": "ダイソー",
-   "blurb": "",
-   "weight": "lead",
-   "refs": [
-    1
-   ],
-   "image": "https://media.trilltrill.jp/articles/5145090/description-image.9b32604df154ad2b4d43c97c6d326853"
-  }
- ],
- "FROM": [
-  {
-   "headline": "'From' Explodes on Streaming as 4-Year-Old Series Hits Netflix for First Time",
-   "highlight": "Hits Netflix for First Time",
-   "blurb": "In the run up to Halloween, the Samba Weekly Wrap Report streaming chart shows audiences flocking to the series.",
-   "weight": "lead",
-   "refs": [
-    1
-   ]
-  }
- ],
- "Astrae Oratio": [
-  {
-   "headline": "Astrae Oratio Launches with a Character Lineup of 30",
-   "highlight": "Character Lineup of 30",
-   "blurb": "Astrae Oratio will launch with a lineup of 30 characters.",
-   "weight": "lead",
-   "refs": [
-    1,
-    2
-   ],
-   "image": "https://cdn.gamemeca.com/data_center/345/722/20261027172433.webp"
-  },
-  {
-   "headline": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    4,
-    9
-   ]
-  },
-  {
-   "headline": "[인터뷰] 아스오라 “BM 피드백 반영해서 개선하겠다”",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    5,
-    8
-   ]
-  },
-  {
-   "headline": "‘아스오라’ 개발진에게 물었다, CBT 이후 무엇이 달라지나?",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    6
-   ]
-  },
-  {
-   "headline": "엔씨 ‘아스오라’ 개발진 \"90년대 일본 애니 감성, 현대적으로 재해석\"",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    7
-   ]
-  },
-  {
-   "headline": "엔씨 ‘아스트라에 오라티오’ 임종규 디렉터, “오타쿠는 위 아 더 월드”",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    3,
-    11
-   ]
-  },
-  {
-   "headline": "엔씨 신작 ‘아스트라에 오라티오’, “전투 흐름 개선…더 완성도 높일 것”",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    10
-   ]
-  },
-  {
-   "headline": "“‘아스오라’만의 전략적 전투와 신전기, 앞으로도 기대 부탁”, ‘아스오라’ CBT 서면 인터뷰",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    12
-   ]
-  }
- ]
+  "漫威电影": [
+    {
+      "headline": "Marvel Studios Honors Patrick Stewart and Confirms ‘Avengers: Doomsday’ Will Be His Final On-Screen Role",
+      "highlight": "Final On-Screen Role",
+      "blurb": "Marvel Studios and Kevin Feige paid tribute to Patrick Stewart, confirming ‘Avengers: Doomsday’ will be his last on-screen role.",
+      "weight": "lead",
+      "refs": [
+        43,
+        45,
+        54,
+        52,
+        59,
+        60,
+        44,
+        61,
+        63,
+        65,
+        41,
+        47,
+        49,
+        58,
+        48,
+        50,
+        51,
+        68,
+        73,
+        76,
+        77,
+        80,
+        81,
+        74,
+        78,
+        85,
+        72,
+        86,
+        90,
+        89,
+        91,
+        93,
+        92,
+        94,
+        97,
+        98,
+        104,
+        101,
+        103,
+        99,
+        100,
+        102,
+        106,
+        107,
+        109,
+        111,
+        112,
+        114
+      ],
+      "image": "https://cdn.marvel.com/content/2x/patrick_stewart_tribute.webp"
+    },
+    {
+      "headline": "Robert Downey Jr's Doctor Doom Has an Army in New Look at 'Avengers: Doomsday'",
+      "highlight": "Doctor Doom",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4,
+        20,
+        2,
+        3,
+        5,
+        7,
+        9,
+        11,
+        17,
+        18,
+        34,
+        36,
+        35,
+        82,
+        79,
+        84,
+        95,
+        110,
+        113,
+        115
+      ],
+      "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2026/08/avengers-doomsday-poster.jpg"
+    },
+    {
+      "headline": "Marvel’s ‘Ghost Rider’ Production Grid Reveals Working Title, Shoot Window, and Real Story Behind \"Leaked\" Synopsis",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        12,
+        13
+      ]
+    },
+    {
+      "headline": "Avengers: Secret Wars Rumors Reveal Plans For Iron Man, Steve Rogers, And Wolverine - Possible Spoilers",
+      "highlight": "Secret Wars",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        21,
+        16,
+        22,
+        23,
+        30,
+        87,
+        105
+      ]
+    },
+    {
+      "headline": "Ghost Rider Writer Wants an R-Rated MCU Horror Movie",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        14,
+        29,
+        32,
+        66
+      ]
+    },
+    {
+      "headline": "MCU: Marvin Jones III's Tombstone Looks Perfect In First HD Live-Action Photos",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        88
+      ]
+    },
+    {
+      "headline": "Marvel Studios’ Black Panther Recast Announcement Hints at Huge Phase 7 Time Jump After Avengers: Secret Wars",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        96
+      ]
+    }
+  ],
+  "GTA 6": [
+    {
+      "headline": "Grand Theft Auto VI: Original Score launches December 11",
+      "highlight": "December 11",
+      "blurb": "Original Score by French electronic duo Justice on December 11 across all major music streaming services, plus vinyl and CD.",
+      "weight": "lead",
+      "refs": [
+        23,
+        21,
+        22,
+        13,
+        3,
+        11,
+        19,
+        18,
+        27,
+        58,
+        79
+      ],
+      "event": {
+        "date": "2026-12-11",
+        "label": "発売日"
+      },
+      "image": "https://www.bing.com/th?id=ONUT.Zxg8uAMC6RPaqiZ4lfllVQ&pid=News&w=1200"
+    },
+    {
+      "headline": "GTA 6's map is roughly twice GTA 5's and almost as big as GTA 4, GTA 5, and RDR2 combined",
+      "highlight": "twice GTA 5's",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        8,
+        25,
+        33,
+        35,
+        59,
+        62,
+        89
+      ]
+    },
+    {
+      "headline": "South Park season 29 airs real GTA 6 gameplay footage, and it is absolutely gross",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10,
+        24,
+        17,
+        9,
+        43,
+        48,
+        63,
+        64,
+        72,
+        73,
+        82
+      ]
+    },
+    {
+      "headline": "GTA 6: 210 GB File Size, Edge Issue 430’s 16-Page Preview, Preload Date & Reviews",
+      "highlight": "210 GB",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        14,
+        16,
+        31,
+        36,
+        60,
+        61,
+        86,
+        81
+      ]
+    },
+    {
+      "headline": "GTA 6 gets a much longer day-night cycle: Rockstar says GTA 5 felt too fast",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        26,
+        4,
+        12,
+        66,
+        83
+      ]
+    },
+    {
+      "headline": "GTA 6 Officially Reveals 12 New Screenshots and Gameplay Details",
+      "highlight": "12 New Screenshots",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        68,
+        74,
+        85,
+        84,
+        77,
+        80
+      ]
+    },
+    {
+      "headline": "What GTA VI’s $20 Ultimate Edition Upgrade Actually Buys You",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        90
+      ]
+    },
+    {
+      "headline": "GTA 6 Parents Guide: Is It Safe to Play for Kids?",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        88
+      ]
+    }
+  ],
+  "三星手机": [
+    {
+      "headline": "Samsung teases Galaxy S27 plans, foldable lineup expansion, more",
+      "highlight": "Galaxy S27",
+      "blurb": "Samsung hints at a Galaxy S27 redesign with distinct identities per model, plus more foldables and smart glasses. No launch date confirmed.",
+      "weight": "lead",
+      "refs": [
+        17,
+        1,
+        3,
+        4,
+        8,
+        22,
+        26,
+        32,
+        33,
+        41
+      ],
+      "image": "https://9to5google.com/wp-content/uploads/sites/4/2026/07/S26-Ultra-Z-Fold-8-Ultra-and-Z-Fold-8.jpg?quality=82&strip=all&resize=1200,628"
+    },
+    {
+      "headline": "サムスン「Galaxy S27 Ultra」のリーク、5,700mAhバッテリーと新たな「Pro」モデルの登場を示唆",
+      "highlight": "5,700mAh",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        7,
+        6,
+        15,
+        19,
+        21,
+        25,
+        40
+      ]
+    },
+    {
+      "headline": "Samsung Galaxy S27 charging speed revealed ahead of launch",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        16,
+        18,
+        9,
+        20,
+        23,
+        24,
+        31,
+        27,
+        29,
+        30,
+        38,
+        35,
+        36,
+        39,
+        43,
+        45,
+        42,
+        44,
+        48,
+        49
+      ]
+    },
+    {
+      "headline": "Samsung、スマホ事業で2四半期連続の営業赤字 Galaxy S27では差別化を強化か",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10,
+        12
+      ]
+    },
+    {
+      "headline": "サムスンがGalaxy A減産 シェアとS27前倒し巡り苦慮",
+      "highlight": "S27前倒し",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        14
+      ]
+    },
+    {
+      "headline": "Latest Samsung Galaxy S27 Ultra Rumours: Everything Leaked So Far",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        11,
+        46
+      ]
+    },
+    {
+      "headline": "Could Samsung's Galaxy S27 Ultra ditch Snapdragon and benefit buyers?",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2,
+        37,
+        34,
+        47
+      ]
+    },
+    {
+      "headline": "Galaxy S27 Ultra 手机壳在官方发布前已开售",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        28,
+        50
+      ]
+    }
+  ],
+  "ILLIT": [
+    {
+      "headline": "ILLIT storms Korea with 'Break Even' comeback and arresting title track",
+      "highlight": "Break Even",
+      "blurb": "5th mini album 'BREAK EVEN' released Oct 26 as a four-member group; Japan tour/dome announcements not yet made.",
+      "weight": "lead",
+      "refs": [
+        7,
+        9,
+        18,
+        6,
+        12,
+        17,
+        8,
+        11,
+        22,
+        30,
+        45,
+        39,
+        40,
+        51
+      ],
+      "image": "https://www.bing.com/th?id=ONUT.4J2nRakvD3RS1jr8Nsjp5A&pid=News&w=650"
+    },
+    {
+      "headline": "아일릿 미니 5집, 日 오리콘 ‘데일리 앨범 랭킹’ 상위권 안착",
+      "highlight": "오리콘",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4,
+        3,
+        15
+      ]
+    },
+    {
+      "headline": "ウォニとイロハ (ILLIT) が怪我の最新情報を提供します。",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        14,
+        5,
+        20,
+        24,
+        32,
+        31,
+        35,
+        43
+      ]
+    },
+    {
+      "headline": "아일릿 모카, 불안증세로 또 활동중단→4인조 컴백 “빈자리 커서 아쉽다”",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10
+      ]
+    },
+    {
+      "headline": "ILLIT 커뮤니티 포스트 - 히히 하이브 1층 팝업에서 우리의 흔적을 찾아보세요",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1,
+        19
+      ]
+    },
+    {
+      "headline": "ILLIT・WONHEE & IROHAにインタビュー。二人が見出す音楽の力",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        21
+      ]
+    },
+    {
+      "headline": "ILLIT、大学祭を魅了した「逮捕しちゃうぞ」…笛の大合唱も",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        28,
+        26,
+        27,
+        34,
+        33,
+        38,
+        37,
+        42,
+        41,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    {
+      "headline": "ENHYPENニキ×ILLITイロハの日本人メンバーコラボに反響「マンネズ最高」「安定のHipHop兄妹」「待ってた!」",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        29
+      ]
+    }
+  ],
+  "哈利波特剧集": [
+    {
+      "headline": "HBO's Harry Potter Reboot Finally Reveals First Look at the New Hogwarts Castle",
+      "highlight": "Hogwarts Castle",
+      "blurb": "HBO released the first official poster of the Harry Potter series, featuring Dominic McLaughlin as Harry and a new look at Hogwarts. Premiere is set for Christmas.",
+      "weight": "lead",
+      "refs": [
+        1,
+        2,
+        6,
+        10,
+        8,
+        7,
+        3,
+        4,
+        12,
+        13,
+        14,
+        16,
+        18
+      ],
+      "image": "https://static0.cbrimages.com/wordpress/wp-content/uploads/2026/03/harry-potter-season-1-alastair-stout-dominic-mclaughlin-arabella-stanton.jpg?w=1600&h=900&fit=crop"
+    },
+    {
+      "headline": "HBO《哈利波特》剧集首季烧掉 2 亿美元，圣诞上线",
+      "highlight": "圣诞上线",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        11
+      ]
+    },
+    {
+      "headline": "HBO’s Harry Potter season 2: What we know so far",
+      "highlight": "season 2",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        9
+      ]
+    },
+    {
+      "headline": "Harry Potter TV Series Reportedly Set for Movie-Length Opening Episode Ahead of Christmas Debut",
+      "highlight": "Movie-Length Opening Episode",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        15
+      ]
+    },
+    {
+      "headline": "HBO's Harry Potter Casting Update Confirms A Devastating Truth",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        17
+      ]
+    }
+  ],
+  "_covered": {
+    "漫威电影": 115,
+    "GTA 6": 90,
+    "三星手机": 50,
+    "ILLIT": 51,
+    "哈利波特剧集": 18,
+    "日本顶级网球赛事": 34,
+    "dota2": 18,
+    "MMORPG 新作": 13,
+    "BLEACH Mirrors High": 11,
+    "The Mandalorian": 8,
+    "周杰伦": 20,
+    "星巴克马克杯": 7,
+    "滑雪": 10,
+    "绝区零": 8,
+    "gelato pique": 14,
+    "A2O LITE": 20,
+    "チェーンソーマン": 11,
+    "Vaundy": 5,
+    "あつ森": 8,
+    "ぐでたま": 2,
+    "猫用品": 3,
+    "FROM": 1,
+    "Astrae Oratio": 12
+  },
+  "日本顶级网球赛事": [
+    {
+      "headline": "【テニス】大坂なおみ「まだまだ用意していた」8強入り逃し、衣装お披露目機会奪われる",
+      "highlight": "8強入り逃し",
+      "blurb": "東レ・パンパシフィック・オープン2回戦で第7シードの大坂なおみが18歳のポハンコバに3-6、5-7で敗れた。",
+      "weight": "lead",
+      "refs": [
+        9,
+        5,
+        1,
+        7,
+        13,
+        12,
+        15,
+        16,
+        18,
+        19,
+        31
+      ],
+      "image": "https://www.nikkansports.com/sports/news/img/202610290001904-w500_3.jpg"
+    },
+    {
+      "headline": "Eala seeks redemption against Shnaider in Pan Pacific tourney",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6
+      ]
+    },
+    {
+      "headline": "テニス - 東レ・パンパシフィック・オープン - エレーナ リバキナ vs. ユリア プティンツェワ",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2,
+        3,
+        20
+      ]
+    },
+    {
+      "headline": "ダブルス女王シニアコバ、大阪決勝でクルーガーに6-1、6-0 3年ぶりシングルスV",
+      "highlight": "6-1、6-0",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        8
+      ]
+    },
+    {
+      "headline": "【女子テニス】ルバキナ 東レPPO快勝発進! 今季の世界ランク1位確定「誇りに思う」",
+      "highlight": "世界ランク1位確定",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        11,
+        17,
+        26
+      ]
+    },
+    {
+      "headline": "内島萌夏がシード選手と対戦「スキのなさ」を感じ１回戦敗退【東レPPOテニス2026】",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        21
+      ]
+    },
+    {
+      "headline": "元世界4位の錦織圭、現役最後の公式戦",
+      "highlight": "現役最後の公式戦",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        23
+      ]
+    },
+    {
+      "headline": "加藤未唯ペア 第1シードと熱戦も東レPPO4強ならず、惜敗で準々決勝敗退",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        22,
+        25,
+        32,
+        33
+      ]
+    }
+  ],
+  "dota2": [
+    {
+      "headline": "ESL FACEIT Group Announces ESL One Munich 2027 Dota 2 Tournament",
+      "highlight": "ESL One Munich 2027",
+      "blurb": "ESL One Munich 2027 runs April 4–11, bringing 16 top Dota 2 teams to BMW Park for $1 million in prize money.",
+      "weight": "hero",
+      "refs": [
+        7,
+        6,
+        5,
+        8,
+        11
+      ],
+      "event": {
+        "date": "2027-04-04",
+        "label": "大会開幕",
+        "place": "ミュンヘン BMW Park"
+      },
+      "image": "https://www.bing.com/th?id=ONUT.KVEdgwjflIJprj4phTDrSQ&pid=News&w=700"
+    },
+    {
+      "headline": "DOTA2在线再创十年新高，国服福利活动同步进行中",
+      "highlight": "十年新高",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4
+      ]
+    },
+    {
+      "headline": "Dota 2 peak online drops 300k players after Valve reportedly bans bots from Arcade games",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2
+      ]
+    },
+    {
+      "headline": "LEGION Dota 2チームの概要と視聴者統計",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10,
+        16
+      ]
+    },
+    {
+      "headline": "OG Beat Team Spirit 2-1 In PARI Universe Dota 2 Upset",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        12,
+        17
+      ]
+    },
+    {
+      "headline": "PT Sports taps Dawn Bulls as stand-in Dota 2 roster for Nov. tourneys",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        14
+      ]
+    },
+    {
+      "headline": "DOTA2转会动态：Abed、fcr和Elmisho都转为不活跃状态",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        18
+      ]
+    }
+  ],
+  "MMORPG 新作": [
+    {
+      "headline": "아키에이지 크로니클, 11월 4일 스팀 얼리액세스 출시",
+      "highlight": "11월 4일",
+      "blurb": "엑스엘게임즈가 개발·서비스하는 오픈월드 액션 MMORPG '아키에이지 크로니클'이 11월 4일 오전 8시(한국 시간) 스팀 얼리액세스로 출시된다.",
+      "weight": "hero",
+      "refs": [
+        3
+      ],
+      "event": {
+        "date": "2026-11-04",
+        "label": "アーリーアクセス"
+      },
+      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gcS7d.img"
+    },
+    {
+      "headline": "コージーMMO『クロスランド』が11月16日発売！ Switch・Switch 2・PCで登場",
+      "highlight": "11月16日",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5,
+        8
+      ],
+      "event": {
+        "date": "2026-11-16",
+        "label": "発売日"
+      }
+    },
+    {
+      "headline": "Nexon、「オーバーギアード」オンラインショーケースを11月5日に配信",
+      "highlight": "11月5日",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6,
+        7
+      ],
+      "event": {
+        "date": "2026-11-05",
+        "label": "ショーケース配信",
+        "time": "20:00"
+      }
+    },
+    {
+      "headline": "MMO 新作《王國 W：血盟之誓》事前登錄開跑主打「3 種族 ×5 武器」自由戰鬥",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        13
+      ]
+    }
+  ],
+  "BLEACH Mirrors High": [
+    {
+      "headline": "新作スマートフォンゲーム「BLEACH Mirrors High」がサービス開始！ 最初の限定ガシャでは「[天に立つ]藍染 惣右介」が登場！",
+      "highlight": "サービス開始",
+      "blurb": "新作スマートフォンゲーム「BLEACH Mirrors High」がサービス開始。最初の限定ガシャでは藍染 惣右介が登場。",
+      "weight": "lead",
+      "refs": [
+        5,
+        4,
+        6
+      ],
+      "image": "https://news.pchome.com.tw/newsdata/game/gamer/20261028/79315739359867203104_5.jpg"
+    },
+    {
+      "headline": "ターゲットブレイクの攻略と報酬",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        9,
+        11,
+        10
+      ]
+    }
+  ],
+  "The Mandalorian": [
+    {
+      "headline": "Slideshow: The Art of The Mandalorian and Grogu Preview Gallery",
+      "highlight": "",
+      "blurb": "Preview gallery from 'The Art of The Mandalorian and Grogu' plus a new behind-the-scenes look. No new release-date news.",
+      "weight": "lead",
+      "refs": [
+        1,
+        2,
+        3
+      ],
+      "image": "https://sm.ign.com/t/ign_nordic/gallery/t/the-art-of/the-art-of-the-mandalorian-and-grogu-preview-gallery_pczz.1200.jpg"
+    },
+    {
+      "headline": "Hasbro's Star Wars: The Vintage Collection Mandalorian 3-pack features Carson Teva, Trapper Wolf and the Frog Lady",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5
+      ]
+    },
+    {
+      "headline": "Baby Yoda 2.0, the ‘Empire’ and ‘Sorcerer’ homages, and exclusive concept art from the best scene of ‘The Mandalorian and Grogu’",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6
+      ]
+    },
+    {
+      "headline": "When does The Mandalorian Season 3 take place? Star Wars timeline explained",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        8
+      ]
+    }
+  ],
+  "周杰伦": [
+    {
+      "headline": "周杰倫打網球被澳洲小朋友認出：你打過澳洲公開賽1分大滿貫？",
+      "highlight": "澳洲小朋友認出",
+      "blurb": "ツアー・新曲の新情報はなし。本人が29日にSNSでテニス中のエピソードを投稿。",
+      "weight": "lead",
+      "refs": [
+        1,
+        3,
+        4,
+        6,
+        9,
+        13,
+        14,
+        15
+      ],
+      "image": "https://www.bing.com/th?id=ONUT.b599IgmyuPGyJ7Vbvf8W-w&pid=News&w=1200"
+    },
+    {
+      "headline": "周杰伦成为第一个在墨尔本大型场馆开唱的中国歌手！",
+      "highlight": "第一个在墨尔本大型场馆开唱",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5
+      ]
+    },
+    {
+      "headline": "周杰伦老歌又火了！12年前写的歌曲《怎么了》，曾在演唱会被歌迷安可",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        20
+      ]
+    }
+  ],
+  "星巴克马克杯": [
+    {
+      "headline": "スターバックス リザーブ ロースタリー 東京クリスマスグッズ、パールストラップ付きグリッターボトル等",
+      "highlight": "",
+      "blurb": "ティバーナ マグ＆リッドリーフなど、ロースタリー東京のクリスマス限定グッズ。",
+      "weight": "lead",
+      "refs": [
+        4
+      ],
+      "image": "https://www.bing.com/th?id=ONUT.kQ4dry7TSi0lf6kAkumLsQ&pid=News&w=1200"
+    },
+    {
+      "headline": "【最新】『THREE』新作2026ホリデーコレクションを全部お試しレビュー！",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3
+      ]
+    },
+    {
+      "headline": "STARBUCKS Indonesia Mug Cup Starbucks Overseas Limited Edition",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5
+      ]
+    },
+    {
+      "headline": "お家でスターバックス気分に！マグカップやタンブラーなどお洒落アイテム5選",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6
+      ]
+    },
+    {
+      "headline": "スターバックスのJIMOTO Made＋新作は沖縄から。100年先をつなぐ、やちむんマグ",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        7
+      ]
+    }
+  ],
+  "滑雪": [
+    {
+      "headline": "ザ・ウィンザーホテル洞爺、2026-2027ウィンターシーズンアクティビティを発表",
+      "highlight": "プライベート・貸切ゲレンデ",
+      "blurb": "",
+      "weight": "lead",
+      "refs": [
+        2
+      ],
+      "image": "https://prcdn.freetls.fastly.net/release_image/165726/357/165726-357-7391157bb14470907d9f66b3988dfef8-3900x2600.jpg?width=1950&height=1350&quality=85%2C65&format=jpeg&auto=webp&fit=bounds&bg-color=fff"
+    },
+    {
+      "headline": "【星野リゾート】福島県のスキー場「ネコマ マウンテン」26-27シーズンの営業開始 - ツリーランゾーンが拡大、新たな宿泊拠点も誕生へ",
+      "highlight": "ツリーランゾーンが拡大",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5,
+        8
+      ]
+    },
+    {
+      "headline": "【国内初】スキー場跡地の斜面を生かした、全長330mの舗装スネークランが誕生！岡山県西粟倉村「MOUNTAIN TRACK おおがや」2028年春開業へ",
+      "highlight": "2028年春開業",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6
+      ]
+    },
+    {
+      "headline": "686が日本限定スノーボードウェアLS1とLS2の2026-27モデルを発売",
+      "highlight": "2026-27モデル",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        9
+      ]
+    },
+    {
+      "headline": "苗場・かぐら・六日町八海山スキー場で今シーズンからマイナンバーカード連携商品を販売開始",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10
+      ]
+    }
+  ],
+  "绝区零": [
+    {
+      "headline": "Reduce digital eye strain with new Zenless Zone Zero inspired eyewear",
+      "highlight": "November 5, 2026",
+      "blurb": "GUNNAR's Zenless Zone Zero Orphie & Magus Glasses launch November 5, 2026 for $89 with three lens tints.",
+      "weight": "lead",
+      "refs": [
+        5
+      ],
+      "price": {
+        "now": "$89"
+      },
+      "event": {
+        "date": "2026-11-05",
+        "label": "発売日"
+      },
+      "image": "https://www.bing.com/th?id=ONUT.UODS4BI_eES0rH_UcQ0ejw&pid=News&w=1200"
+    }
+  ],
+  "gelato pique": [
+    {
+      "headline": "人気のルームウェアブランド「ジェラート ピケ」直営店が松江に 駅ナカ「シャミネ」に新テナント",
+      "highlight": "松江に",
+      "blurb": "山陰初の直営店が駅ナカ「シャミネ松江」にオープン。",
+      "weight": "lead",
+      "refs": [
+        2,
+        1,
+        10
+      ],
+      "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261029-90025195-tsk-000-1-thumb.jpg?exp=10800"
+    },
+    {
+      "headline": "ホームファッション毎年人気「gelato pique」の福袋が今年も登場 11・2正午から抽選販売の受付開始",
+      "highlight": "11・2正午から",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3,
+        6,
+        14
+      ],
+      "event": {
+        "date": "2026-11-02",
+        "label": "福袋抽選受付",
+        "time": "12:00"
+      }
+    },
+    {
+      "headline": "愛らしいシロクマ柄と柔らか素材が魅力のジェラート ピケのロングパンツが10%OFF",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4
+      ]
+    },
+    {
+      "headline": "【gelato pique】PEANUTSとのコラボレーション10周年！ボーダー柄ルームウェアを着たスヌーピーたち10キャラクターの特別なアートが登場",
+      "highlight": "コラボレーション10周年",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        7,
+        9,
+        11,
+        12,
+        13
+      ]
+    }
+  ],
+  "A2O LITE": [
+    {
+      "headline": "李秀满在烤肉店豪爽支付顾客餐费，庆祝A2O LITE夺得音乐节目第一",
+      "highlight": "夺得音乐节目第一",
+      "blurb": "",
+      "weight": "lead",
+      "refs": [
+        2
+      ]
+    },
+    {
+      "headline": "不再追求自然律动，她们把身体变成了切割节奏的精密仪器",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        1
+      ]
+    },
+    {
+      "headline": "‘이수만 걸그룹’ A2O LITE, 일본까지 홀렸다…오리콘 급상승 1위",
+      "highlight": "오리콘 급상승 1위",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6,
+        10,
+        11,
+        8
+      ]
+    },
+    {
+      "headline": "李秀满新团炸场！A2O LITE《NEON》MCD初舞台直接杀疯了",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5,
+        17,
+        18,
+        19,
+        20,
+        16
+      ]
+    },
+    {
+      "headline": "괴물신인 A2O LITE, 초고속 1위하더니‥데뷔 2주만 ‘디 어워즈’ 참석 확정",
+      "highlight": "디 어워즈",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        13
+      ]
+    }
+  ],
+  "チェーンソーマン": [
+    {
+      "headline": "劇場版「チェンソーマン レゼ篇」×グラニフ",
+      "highlight": "グラニフ",
+      "blurb": "「チェンソーマン レゼ篇」とグラニフのコラボ商品が公開。ハーフジップスウェットは7900円。",
+      "weight": "lead",
+      "refs": [
+        1,
+        2,
+        5,
+        6,
+        8
+      ],
+      "image": "https://ogre.natalie.mu/media/news/eiga/2026/1028/chainsawman_graniph_20261028_14.jpg?impolicy=ogp_face_crop"
+    },
+    {
+      "headline": "劇場版『チェンソーマン レゼ篇』 おおきなSOFVIMATES～てくてくポチタ～",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3
+      ]
+    },
+    {
+      "headline": "チェンソーマン アクリルボード",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4
+      ]
+    },
+    {
+      "headline": "アパレル製品における劇場版『チェンソーマン レゼ篇』のライセンス契約締結のお知らせ",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        7
+      ]
+    },
+    {
+      "headline": "劇場版『チェンソーマン レゼ篇』 Figuno-DENJI＆REZE＆CHAINSAW MAN＆BOMB-",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        9
+      ]
+    },
+    {
+      "headline": "「MAPPA EXPO 15th Anniversary」後期より、劇場版「チェンソーマン レゼ篇」エリア",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        11
+      ]
+    }
+  ],
+  "Vaundy": [
+    {
+      "headline": "Why I, who dislike crowds, cried in the front row at a Vaundy concert",
+      "highlight": "",
+      "blurb": "",
+      "weight": "lead",
+      "refs": [
+        2
+      ]
+    },
+    {
+      "headline": "Vaundyの5年前の曲が今1位に！？『しわあわせ』『怪獣の花唄』のトラック・メイクを分析",
+      "highlight": "5年前の曲が今1位に",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5
+      ]
+    }
+  ],
+  "あつ森": [
+    {
+      "headline": "【あつ森】『ゼルダの伝説』マイデザイン配布！コログのかさやトライフォースTシャツが登場",
+      "highlight": "マイデザイン配布",
+      "blurb": "『ゼルダの伝説』のマイデザインが配布開始。",
+      "weight": "lead",
+      "refs": [
+        1,
+        3,
+        5,
+        6,
+        7
+      ],
+      "image": "https://cimg.kgl-systems.io/camion/files/92525/ogp_kjfu.jpg?x=1280"
+    },
+    {
+      "headline": "【あつ森】『Ninten島』が更新！島主の家が増築しゼルダやスプラ部屋が登場！",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2
+      ]
+    }
+  ],
+  "ぐでたま": [
+    {
+      "headline": "Where is Tophat Gudetama this week in Hello Kitty Island Adventure?",
+      "highlight": "",
+      "blurb": "",
+      "weight": "lead",
+      "refs": [
+        1
+      ],
+      "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/10/jlee_251027_1001_hkia_gudetama.jpg?q=49&fit=crop&w=825&dpr=2"
+    },
+    {
+      "headline": "ぐでたまが駅員に変身！東京駅に期間限定ショップがオープン",
+      "highlight": "東京駅に期間限定ショップ",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        2
+      ]
+    }
+  ],
+  "猫用品": [
+    {
+      "headline": "【ダイソー】猫好きさん、朗報だよ……。超大当たりだった猫グッズ3選",
+      "highlight": "ダイソー",
+      "blurb": "",
+      "weight": "lead",
+      "refs": [
+        1
+      ],
+      "image": "https://media.trilltrill.jp/articles/5145090/description-image.9b32604df154ad2b4d43c97c6d326853"
+    }
+  ],
+  "FROM": [
+    {
+      "headline": "'From' Explodes on Streaming as 4-Year-Old Series Hits Netflix for First Time",
+      "highlight": "Hits Netflix for First Time",
+      "blurb": "In the run up to Halloween, the Samba Weekly Wrap Report streaming chart shows audiences flocking to the series.",
+      "weight": "lead",
+      "refs": [
+        1
+      ]
+    }
+  ],
+  "Astrae Oratio": [
+    {
+      "headline": "Astrae Oratio Launches with a Character Lineup of 30",
+      "highlight": "Character Lineup of 30",
+      "blurb": "Astrae Oratio will launch with a lineup of 30 characters.",
+      "weight": "lead",
+      "refs": [
+        1,
+        2
+      ],
+      "image": "https://cdn.gamemeca.com/data_center/345/722/20261027172433.webp"
+    },
+    {
+      "headline": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        4,
+        9
+      ]
+    },
+    {
+      "headline": "[인터뷰] 아스오라 “BM 피드백 반영해서 개선하겠다”",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        5,
+        8
+      ]
+    },
+    {
+      "headline": "‘아스오라’ 개발진에게 물었다, CBT 이후 무엇이 달라지나?",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        6
+      ]
+    },
+    {
+      "headline": "엔씨 ‘아스오라’ 개발진 \"90년대 일본 애니 감성, 현대적으로 재해석\"",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        7
+      ]
+    },
+    {
+      "headline": "엔씨 ‘아스트라에 오라티오’ 임종규 디렉터, “오타쿠는 위 아 더 월드”",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        3,
+        11
+      ]
+    },
+    {
+      "headline": "엔씨 신작 ‘아스트라에 오라티오’, “전투 흐름 개선…더 완성도 높일 것”",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        10
+      ]
+    },
+    {
+      "headline": "“‘아스오라’만의 전략적 전투와 신전기, 앞으로도 기대 부탁”, ‘아스오라’ CBT 서면 인터뷰",
+      "highlight": "",
+      "blurb": "",
+      "weight": "normal",
+      "refs": [
+        12
+      ]
+    }
+  ]
 }

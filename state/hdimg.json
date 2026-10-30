@@ -95,17 +95,10 @@
   "ref": true
  },
  "http://wx2.sinaimg.cn/middle/647c8fably1iikklyi4toj20u011i0xq.jpg": {
-  "w": 1080,
-  "h": 1350,
-  "target": 720,
+  "target": 1280,
   "v": 3,
-  "local": "pics/89913e3d3e5f238a.webp",
-  "out": [
-   1024,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "http://wx3.sinaimg.cn/middle/008eZAxIly1iiezopn8pfj30kz1ddne1.jpg": {
   "w": 755,
@@ -211,19 +204,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx4.sinaimg.cn/middle/008l2owuly8iicjorsei4j30sg11sdqp.jpg": {
-  "w": 1024,
-  "h": 1360,
-  "target": 720,
-  "v": 3,
-  "local": "pics/59fab5aed6ac784a.webp",
-  "out": [
-   964,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "https://0.soompi.io/wp-content/uploads/2026/10/28063552/SM-A2O-LITE.jpg": {
   "w": 1200,
   "h": 800,
@@ -272,6 +252,18 @@
   "h": 253,
   "target": 720,
   "v": 3
+ },
+ "https://appmedia.jp/wp-content/uploads/2026/10/173706_th2s4.webp": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
+ "https://apps-island.com/wp-content/uploads/2020/10/newgameapp.png": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3781255026102026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.26&fp-y=0.2&h=630&w=1200&s=b39ff38e4d5a957487b66c3b3a8a9b59": {
   "w": 1200,
@@ -329,6 +321,12 @@
  },
  "https://assets.mmoexp.com/images/202610/6fddef34feaf47b9fde27c6f004d0ff52ea8ae33.jpg": {
   "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
+ "https://assets.mtn.co.kr/mtn/2026/10/5IPfZCh3BUVj3d9X/image/20261029_091520//19a5c-fa92e-c3db7-89ccf1.jpg": {
+  "target": 1280,
   "v": 3,
   "fail": "ModuleNotFoundError: No module named 'cv2'",
   "day": "2026-10-30"
@@ -438,19 +436,6 @@
   ],
   "why": "看不清"
  },
- "https://bdimg7.qunliao.info/fastdfs8/M00/D1/63/720x-/-/-/rBXRn2rfiAuAZaeYAAAtGuJXujg990.jpg?watermark/1/image/aHR0cHM6Ly9pbWcxLmRvbmdxaXVkaS5jb20vZmFzdGRmczIvTTAwLzJBL0UyLzEyMHgtLy0vLS9DaE9xTTFvUy1lV0FQRHEzQUFCQTVVZ3JCVDgxNDIucG5n/dissolve/100/dx/14/dy/10": {
-  "w": 720,
-  "h": 288,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.445,
-  "local": "pics/e480292eb53cda57.webp",
-  "out": [
-   1280,
-   512
-  ],
-  "why": "看不清"
- },
  "https://biz.chosun.com/resizer/v2/VEQEHTQKPFIUHCV27Z6TKRHCJQ.jpg?auth=555511c856fc73df5cea9de84cf146538b636aa4d16d22132390d7a860683067&width=1200&height=630&smart=true": {
   "target": 720,
   "v": 3,
@@ -492,12 +477,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://cdn.digitaltoday.co.kr/news/photo/202610/710925_658463_1328.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://cdn.essential-japan.com/wp-content/uploads/2026/10/Chainsaw-Man-x-Crocs-Collab-Collection-1.webp": {
@@ -573,10 +552,10 @@
   "v": 3
  },
  "https://cdn.gamevu.co.kr/news/photo/202610/61854_99991_4649.jpg": {
+  "w": 600,
+  "h": 399,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
+  "v": 3
  },
  "https://cdn.hk01.com/di/media/images/dw/20260903/1172122073309384704439680.jpeg/BfQDg7th0aCYFyxsU184l6CbzVHaia8iRoTg40aE4OM?v=w1280r16_9": {
   "w": 1280,
@@ -674,12 +653,6 @@
  "https://cdn.thesun.ng/wp-content/uploads/2026/10/Untitled-Design-5.jpg": {
   "w": 1200,
   "h": 700,
-  "target": 1280,
-  "v": 3
- },
- "https://cdnweb01.wikitree.co.kr/webdata/editor/202610/28/img_20261028112344_2a863f71.jpg": {
-  "w": 1200,
-  "h": 900,
   "target": 1280,
   "v": 3
  },
@@ -931,12 +904,6 @@
  "https://eng.belta.by/images/storage/news/with_archive/2026/000028_1792916227_187922_big.jpg": {
   "w": 870,
   "h": 486,
-  "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/teams/legion-1?game=2&v=1793328616": {
-  "w": 1200,
-  "h": 630,
   "target": 720,
   "v": 3
  },
@@ -1883,6 +1850,12 @@
   "target": 720,
   "v": 3
  },
+ "https://img.navi.gg/tournaments/2026/10/tournaments-965/banner/65354/conversions/epl_1630x300-webp.webp": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
  "https://img.newspim.com/news/2026/10/19/261019170425901_w.jpg": {
   "w": 700,
   "h": 540,
@@ -1906,6 +1879,12 @@
   "h": 852,
   "target": 720,
   "v": 3
+ },
+ "https://img.topics.smt.news.goo.ne.jp/-/20261028100531/img/trend_x2.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://img.topics.smt.news.goo.ne.jp/picture/cat_benesse/m_cat_benesse-100207.jpg": {
   "w": 560,
@@ -2016,6 +1995,12 @@
    640
   ],
   "why": "看不清"
+ },
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252Fb2%252FJiji_3901317%252FJiji_3901317_1.jpg,zoom=560x320,quality=100,type=jpg": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
@@ -2262,12 +2247,6 @@
  "https://mezha.net/jp/wp-content/mezha-og-r205/kd_image_generate/jp/2610709-b81322aa73d0.jpg": {
   "w": 1200,
   "h": 630,
-  "target": 1280,
-  "v": 3
- },
- "https://mmx.prnewswire.com/media/MS2021299/Pentel-of-America-Peanuts-x-Pentel-Image.jpg?id=OA3040701&p=facebook": {
-  "w": 2700,
-  "h": 1414,
   "target": 1280,
   "v": 3
  },
@@ -2727,6 +2706,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261024-00403060-otonans-000-1-view.jpg?exp=10800": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261025-00010003-tennisnet-000-3-view.jpg?exp=10800": {
   "w": 2049,
   "h": 1626,
@@ -2971,6 +2956,12 @@
   ],
   "why": "期限付きの網址"
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-11803116-asahiand-000-1-view.jpg?exp=10800": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
  "https://newsbytes.ph/wp-content/uploads/2026/10/PT-sports.jpg": {
   "target": 1280,
   "v": 3,
@@ -3074,12 +3065,6 @@
   "v": 3,
   "blur": 0.359
  },
- "https://otonanswer.jp/wp-content/uploads/2027/10/20261022tfal01.jpg": {
-  "w": 1122,
-  "h": 611,
-  "target": 720,
-  "v": 3
- },
  "https://p2.bahamut.com.tw/B/2KU/34/9e75d3a03377619005b741850420w965.JPG": {
   "w": 1279,
   "h": 720,
@@ -3091,19 +3076,6 @@
   "h": 1080,
   "target": 720,
   "v": 3
- },
- "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/27/35458577.jpg&M=1&x=&y=&sw=&sh=&sl=W&fw=800&exp=3600": {
-  "w": 799,
-  "h": 531,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.504,
-  "local": "pics/e967606cc0fada2b.webp",
-  "out": [
-   1280,
-   851
-  ],
-  "why": "期限付きの網址"
  },
  "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/t3/2026/10/27/35459326.png&M=1&s=Y&x=0&y=0&sw=897&sh=598&sl=W&fw=800&exp=3600": {
   "w": 799,
@@ -3294,6 +3266,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/9170/815/9170-815-b39d1cf6c6d941cce13c14cb5322a682-1110x1330.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "target": 720,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
  "https://preview.redd.it/dmk7ksvn25xh1.jpeg?width=640&crop=smart&auto=webp&s=51dcd50276b5884cb711116b933b4e2ad2264603": {
   "w": 640,
   "h": 449,
@@ -3305,19 +3283,6 @@
   "h": 853,
   "target": 1280,
   "v": 3
- },
- "https://pubimg.futunn.com/202205090000029640145feb4f1.jpg": {
-  "w": 400,
-  "h": 320,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.499,
-  "local": "pics/25ec06c6d11f6294.webp",
-  "out": [
-   1200,
-   960
-  ],
-  "why": "看不清"
  },
  "https://punchdrunkcritics.com/wp-content/uploads/2026/10/pdc_avengersdoomsday8.jpg": {
   "w": 1280,
@@ -3493,6 +3458,18 @@
   "h": 1169,
   "target": 720,
   "v": 3
+ },
+ "https://socialbeta.oss-cn-hangzhou.aliyuncs.com/upload/204546-8w4InANhzJtDxI3s.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
+ },
+ "https://socialbeta.oss-cn-hangzhou.aliyuncs.com/upload/210618-P8D0Mbovh3raCaCA.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://static-images.vnncdn.net/vps_images_publish/000001/00000Q/2026/10/29/could-samsungs-galaxy-s27-ultra-ditch-snapdragon-and-benefit-buyers-30af08c3f3fe4ae8ba8acb405796cacd-20.png?width=0&s=p_xLDljzCGFk1KggnSBVug": {
   "w": 1600,
@@ -4013,12 +3990,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.abc27.com/wp-content/uploads/sites/55/2026/10/FEATURE_The-viral-Starbucks-Bearista-cup-returns-with-a-new-mystery-box.jpg?w=1280": {
-  "w": 870,
-  "h": 490,
-  "target": 1280,
-  "v": 3
- },
  "https://www.androidauthority.com/wp-content/uploads/2026/05/Samsung-Galaxy-S26-Ultra-home-screen-black-cat-scaled.jpg": {
   "w": 2560,
   "h": 1440,
@@ -4056,12 +4027,6 @@
   ],
   "why": "看不清"
  },
- "https://www.bgr.com/img/gallery/samsung-galaxy-users-are-reporting-one-key-issue-after-updating-to-one-ui-9/l-intro-1793215051.jpg": {
-  "w": 1600,
-  "h": 899,
-  "target": 1280,
-  "v": 3
- },
  "https://www.billboard-japan.com/common/sys/img/news/00000166/166889/image.jpg": {
   "w": 999,
   "h": 999,
@@ -4090,12 +4055,6 @@
  "https://www.bing.com/th?id=ONUT.08nyzsBTa5VkQJrARfVryQ&pid=News&w=640": {
   "w": 640,
   "h": 480,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.2lp2WqkTcKGG_YLk4raCTQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 390,
   "target": 720,
   "v": 3
  },
@@ -4272,12 +4231,6 @@
  "https://www.bing.com/th?id=ONUT.Wgnw38sqkN-vD5tIA09_gQ&pid=News&w=650": {
   "w": 650,
   "h": 346,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.Y4Wp2ewnZ6-_7QnNijF27Q&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
   "target": 720,
   "v": 3
  },
@@ -4650,12 +4603,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.enduins.com/wp-content/uploads/2026/10/ss_acf68242e105001deff706fd7ad98583694622bc.1920x1080.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "https://www.fashion-press.net//img/news/152471/dLQ.jpg": {
   "w": 1000,
   "h": 1000,
@@ -4815,6 +4762,12 @@
   "h": 720,
   "target": 1280,
   "v": 3
+ },
+ "https://www.micechat.com/wp-content/uploads/2026/10/Disney-Holiday-Merchandise-2026-Full-Guide-Facebook.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://www.nikkansports.com/sports/news/img/202610280000508-w500_1.jpg": {
   "w": 500,
@@ -5023,12 +4976,6 @@
   "target": 1280,
   "v": 3
  },
- "https://www.wnky.com/content/uploads/2026/10/a/t/sequence-0600-00-48-02still001.jpg": {
-  "w": 1920,
-  "h": 1080,
-  "target": 1280,
-  "v": 3
- },
  "https://x0.ifengimg.com/res/2026/7DB009EBC78419C0A22C491DF17530B86991AC52_size23_w689_h293.jpg": {
   "w": 689,
   "h": 293,
@@ -5041,6 +4988,12 @@
    544
   ],
   "why": "看不清"
+ },
+ "https://x0.ifengimg.com/res/2026/B6494457AC45B537C3995C763F802BF7716E55E8_size897_w1207_h2458.png": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-10-30"
  },
  "https://x0.ifengimg.com/res/2026/D4F52D36036F5D19D6D9074B534DDFF6898FDDDE_size30_w1080_h460.jpg": {
   "w": 1080,
