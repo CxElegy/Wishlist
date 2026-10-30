@@ -2329,7 +2329,8 @@ def backend_resources(tz, days=7):
                 pass
         tok = [r for r in rows if r.get("tokens")]
         tokens[proc] = {"name": name, "last": int(tok[-1]["tokens"]) if tok else None, "week": sum(week), "runs": len(week)}
-    return {"sizes": resources.repo_sizes(), "limits": resources.LIMITS, "runs": runs, "tokens": tokens}
+    import photo_store
+    return {"sizes": resources.repo_sizes(), "limits": resources.LIMITS, "runs": runs, "tokens": tokens, "photo": photo_store.load()["stat"]}
 
 
 def backend_todo(items, rows, run):

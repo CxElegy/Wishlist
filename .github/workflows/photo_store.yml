@@ -1,0 +1,56 @@
+name: 写真の一時保管
+
+# 記事の主写真を先にサーバー（Supabase Storage の公開の箱 photos）へ幅 400／800 の webp で置き、網页はそちらを先に読む（scripts/photo_store.py）。
+# 溜めない：いまのページに載っているか、最後に使ってから 14 日以内だけ。全体 300MB 超えは古い順に消す（箱の中だけ）。
+# 置いたら state/photo_store.json を書き、網页を作り直して発布する。ログは数だけ。
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: "時間の予算（分）"
+        default: "12"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: photo-store
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: 写真を置く・古いのを消す
+        id: store
+        run: python scripts/photo_store.py --minutes "${{ inputs.minutes || '12' }}"
+      - name: 網页を作り直して発布
+        if: steps.store.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3; do
+            python scripts/digest.py render
+            git add docs state/photo_store.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "写真の一時保管"
+            git push && exit 0
+            git reset -q --hard HEAD~1 && git pull -q --rebase
+            python scripts/photo_store.py --minutes 1
+            sleep $((i * 5))
+          done
+          exit 1

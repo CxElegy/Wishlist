@@ -361,6 +361,10 @@ def html_weight_bad(html):
     imgs = len(re.findall(r"<img\b", html))
     if imgs > IMG_MAX:
         bad.append(f"<img> {imgs} 枚（上限 {IMG_MAX}）")
+    mains = re.findall(r'<img src="([^"]*)"[^>]*?data-e="s">', html)
+    kept = sum("/storage/v1/object/public/photos/" in s for s in mains)
+    if kept and kept * 2 < len(mains):   # 一時保管が動いているのに半分も使われていない（photo_store の取りこぼし・render の外れ）
+        bad.append(f"主写真 {len(mains)} 枚のうち写真の一時保管から出たのは {kept} 枚（半分未満）")
     if 'fetchpriority="high"' not in html and 'data-e="s"' in html:
         bad.append("最初の写真に loading=eager / fetchpriority=high がない（LCP の先読み）")
     return bad

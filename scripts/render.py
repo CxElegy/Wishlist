@@ -29,6 +29,7 @@ import processes
 import likefx
 import livelog
 import overview
+import photo_store
 import sitedir
 import taxonomy
 import theme
@@ -767,6 +768,8 @@ def _pic(story):
     fbs = story.get("_fbs") if story.get("_fbs") is not None else [story.get("_cover")]
     # 第一张是 src，其余按顺序备用。本站的高清版打不开时还有原图
     chain = list(dict.fromkeys(v for u in [img, *fbs] if u for v in (_img_url(u), _img_url(u, local=False))))
+    if chain and (kept := photo_store.stored(chain[0])):   # 写真の一時保管に置いてあれば先頭に（原寸は落ち先に残る）
+        chain.insert(0, kept)
     fb = f' data-fb="{e(" ".join(chain[1:]))}"' if len(chain) > 1 else ""
     src = chain[0] if chain else None
     tag = (f'<img class="bg" src="{e(src)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-e="r">'
@@ -6113,6 +6116,16 @@ def _meter(label, used, total, note="", warn_at=80):
             f'<i style="width:{pct}%"></i></span>' + (f'<small class="mt-n">{e(note)}</small>' if note else "") + "</div>")
 
 
+def _photo_meter(st):
+    """写真の一時保管（scripts/photo_store.py）：置き場の大きさ（上限の 8 割で赤）・枚数・消した数・主写真のうち一時保管から出した割合。"""
+    if not st:
+        return '<p class="mt-x">写真の一時保管：まだ置いていません（photo_store.yml の最初の回を待っています）</p>'
+    pics = st.get("pics") or 0
+    return (_meter("写真の一時保管（Supabase Storage）", st.get("bytes", 0), st.get("cap"),
+                   f'{st.get("n", 0)} 枚 · 最後の回で 新しく {st.get("new", 0)}・消した {st.get("gone", 0)}・取れず {st.get("bad", 0)}・順番待ち {st.get("wait", 0)}'
+                   f' · 主写真 {pics} 枚のうち一時保管から {st.get("hit", 0)}（{round(100 * st.get("hit", 0) / pics) if pics else 0}%）'))
+
+
 def _admin_resources(res):
     """リソース：容量（リポジトリ・公開ページ）、仕組みごとの最近の実行のサーバー（メモリ・ディスク・CPU）、トークン。"""
     if not res:
@@ -6121,6 +6134,7 @@ def _admin_resources(res):
     cap = (_meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
            + _meter("公開ページ（docs/）", sz.get("pages", 0), lim.get("pages"),
                     f'GitHub Pages は 1GB まで · うち小元素の画像 {_mb(sz.get("emblems", 0))}')
+           + _photo_meter(res.get("photo"))
            + f'<p class="mt-x">集めた記事（inbox/） {_mb(sz.get("inbox", 0))} · 記録（state/） {_mb(sz.get("state", 0))}</p>')
     rows = []
     for proc, r in (res.get("runs") or {}).items():
