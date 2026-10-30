@@ -382,7 +382,7 @@
   "绝区零": 4,
   "gelato pique": 4,
   "A2O LITE": 7,
-  "チェーンソーマン": 4,
+  "チェーンソーマン": 6,
   "Vaundy": 1,
   "あつ森": 4,
   "ぐでたま": 1,
@@ -740,7 +740,9 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    5,
+    6
    ],
    "image": "https://ogre.natalie.mu/media/news/eiga/2026/1028/chainsawman_graniph_20261028_14.jpg?impolicy=ogp_face_crop"
   },
