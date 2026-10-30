@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-10-30T02:46:06+00:00",
+ "changed": true,
+ "checked": "2026-10-30T03:26:46+00:00",
  "fired": {
-  "at": "2026-10-30T02:34:32+00:00",
+  "at": "2026-10-30T03:26:46+00:00",
   "results": {
-   "edit": "Claude を起こした",
+   "edit": "60 分以内に起こし済み（編集中かもしれないので待つ）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -19,20 +19,47 @@
     "resp": "cse_01W4x6f98VCLyhWx4f4jG65P",
     "sig": "dc3bb6f56273"
    },
-   "items": [],
+   "items": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "dota2",
+    "gelato pique",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
+   ],
    "last_batch": "2026-10-30T02:29:37+00:00",
    "last_error": {
     "at": "2026-10-30T01:37:33+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
-   "need": false,
+   "need": true,
    "prog": 290,
    "prog_day": "2026-10-30",
-   "ripe": [],
-   "sig": "a80fc5f308c4",
+   "ripe": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "日本顶级网球赛事",
+    "漫威电影"
+   ],
+   "sig": "459167b253e2",
    "token_cap": 1000000,
    "tokens_today": 316700,
-   "why": "今日の新着はすべて AI 編集済み"
+   "why": "整理待ちの記事 64 件（15 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
