@@ -4228,7 +4228,7 @@ AUTH_JS = r"""
     members15:' を店長にしました。お客さまとして登録済みなら、そのパスワードでログインすると店長になります。',
     members16:'<p class="st">読み込めませんでした：',
     lb1:'<table><thead><tr><th>版面</th><th>人数</th><th>小元素</th><th>配色（背景・文字・差し色）</th></tr></thead><tbody>',
-    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）'}};
+    lb2:'版面',lb3:'人',lb4:'保存',lb5:'封面の色に戻す',lb6:'保存しました。次のページ作りで反映されます',lb7:'できませんでした：',lb8:' 版面（ライブラリの全部）',le1:'<table class="wl-tbl"><thead><tr><th>版面</th><th>追う人</th><th>最新の日</th><th>記事</th><th>整理待ち</th></tr></thead><tbody>'}};
   var L=UI[A.ui]||UI.ja;
   // 自分のデータベース（REST）への呼び出しにだけ、ログインした人の鍵を付ける。ページの JS はそのまま
   window.fetch=function(input,init){
@@ -4738,12 +4738,22 @@ AUTH_JS = r"""
           tr.querySelector('[data-reset]').onclick=function(){go({});};});
       }).catch(function(e){box.innerHTML=L.members16+esc(e.message)+'</p>';});
   }
+  function libedit(){   // ④AI 編集：ライブラリの全版面（お客さまの分を含む）の最新の編集状態。admin_board_edit_state() は店長だけ・名前は HTML に焼かない
+    var box=document.getElementById('wl-libedit'); if(!box) return;
+    var sec=box.closest('section'); if(R.dataset.role!=='admin'||!tok){sec.hidden=true; return;}
+    sec.hidden=false;
+    rpc('admin_board_edit_state').then(function(rs){
+      rs=rs||[]; box.dataset.n=rs.length;
+      box.innerHTML='<p class="st">'+rs.length+L.lb8+'</p>'+L.le1+rs.map(function(r){
+        return '<tr data-id="'+r.board_id+'"><td>'+esc(r.name)+'</td><td>'+r.followers+'</td><td>'+(r.day||'—')+'</td><td>'+r.stories+'</td><td>'+r.pending+'</td></tr>';}).join('')+'</tbody></table>';
+    }).catch(function(e){box.innerHTML='<p class="empty">'+esc(e.message)+'</p>';});
+  }
   function refresh(){
     return Promise.all([rpc('auth_enforced'),tok?rpc('my_role'):Promise.resolve('guest'),rpc('can_edit',{p_account:window.WL_ACCOUNT||''})])
       .then(function(v){var r=v[1]||'guest'; if(r==='guest'&&me) r='user';
         R.dataset.enf=v[0]?'1':'0';R.dataset.role=r;R.dataset.lock=v[0]&&!v[2]&&!(OWN&&tok)?'1':'0';R.dataset.auth='ok';})
       .catch(function(){R.dataset.enf='1';R.dataset.lock='1';R.dataset.auth='err';})
-      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();
+      .then(function(){mine();chip();gate();readOnlyNote();members();libboards();libedit();
         if(/[?&]login=1/.test(location.search)&&!me){   // 入口の「ログイン」から来た：ログインの欄を開いておく
           var b=document.querySelector('.wl-auth>button.in'); if(b) b.click();
           if(history.replaceState) history.replaceState(null,'',location.pathname+location.hash);
@@ -6685,7 +6695,7 @@ ADMIN_PAGES = [
     ("admin-now.html", "①", "いま", "ライブログ・運行状況・次の実行・Actions と依頼", ["term-panel", "status", "nextrun", "queue"]),
     ("admin-boards.html", "②", "版面", "ウォッチ項目の表・ライブラリの全版面・投票", ["items", "libboards", "votes"]),
     ("admin-emblem.html", "③", "エンブレム", "小元素の管理（替える・固定・外す）・進捗・版面ごとの状態・判断の例", ["emblem-manage", "emblems", "backend", "emblem-ex"]),
-    ("admin-ai.html", "④", "AI 編集", "トークン・編集の前後", ["tokens", "editdiff"]),
+    ("admin-ai.html", "④", "AI 編集", "トークン・編集の前後", ["tokens", "editdiff", "libedit"]),
     ("admin-system.html", "⑤", "しくみ", "全体図・詳しい図・リソース・並列と制限", ["ov", "procs", "res"]),
     ("admin-members.html", "⑥", "お客さまと店長", "登録した人・パスワード・店長（店長のログインで）", ["members"]),
 ]
@@ -6768,6 +6778,7 @@ def render_admin(data, db, updated):
         "emblem-manage": panel("emblem-manage", "小元素の管理", "版面を選ぶ → 押して「どうしたい？」：同じ人の別の写真に替える · この写真で固定 · この人ごと外す", bg["manage"]),
         "libboards": '<section class="panel" id="libboards" hidden><h2 class="sh"><span>ライブラリの版面</span><small>お客さまの版面も全部 · 配色を替える（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libboards"><p class="empty">読み込み中…</p></div></section>'
                      '<p class="empty">この欄は店長がログインしたときだけ出ます。</p>',
+        "libedit": '<section class="panel" id="libedit" hidden><h2 class="sh"><span>ライブラリの全版面の AI 編集</span><small>お客さまの版面も全部 · 最新の日の記事と整理待ち（店長がログインしたときだけ読む）</small></h2><div class="wl-mem" id="wl-libedit"><p class="empty">読み込み中…</p></div></section>',
         "votes": panel("votes", "投票", "👍 / 👎 · 前回の収集時点", _admin_votes(data.get("votes") or {})),
     }
     counts = _admin_counts(data)

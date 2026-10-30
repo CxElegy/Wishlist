@@ -4,6 +4,7 @@
 
 - 管理ページの全区画は「店長が見ている分」でなく**ライブラリの全版面（店長＋お客さま＋テスト用）**を対象にする。版面の一覧は 1 つの読み方にそろえる＝店長の令牌（`window.WL_TOK`、AUTH_JS が出す）で `boards` 全部（followers 0 も）を読む。②版面「ライブラリの版面」と③エンブレムの札が使っている。
 - ユーザーのデータは公開 HTML に焼かない（名前・メールも）。読むのは `is_admin()` の RLS／RPC だけ。RPC は足すだけ（消す操作は聞く）。押して「どうしたい？」は店長の版面なら `submit_item`、お客さまの版面なら `board_emblem_request`。
+- ④AI 編集の「ライブラリの全版面の AI 編集」＝RPC `admin_board_edit_state()`（`db/admin_board_edit.sql`、is_admin のみ）。版面の数は ②③ と同じ boards の数。
 - 点検：`ux_check.check_admin_coverage`（店長でログイン）が ②③ の版面の数 ＝ boards の数を見る。区画を足す・変えるときは同じ読み方を使う（店長だけの一覧を別に作らない）。
 
 
