@@ -426,7 +426,7 @@
   "星巴克马克杯": 5,
   "滑雪": 5,
   "绝区零": 6,
-  "gelato pique": 5,
+  "gelato pique": 6,
   "A2O LITE": 11,
   "チェーンソーマン": 9,
   "Vaundy": 2,
@@ -783,7 +783,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    3,
+    6
    ],
    "event": {
     "date": "2026-11-02",
