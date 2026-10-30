@@ -1,10 +1,10 @@
 {
  "changed": false,
- "checked": "2026-10-30T09:24:30+00:00",
+ "checked": "2026-10-30T10:46:13+00:00",
  "fired": {
-  "at": "2026-10-30T09:24:30+00:00",
+  "at": "2026-10-30T10:46:13+00:00",
   "results": {
-   "edit": "整理待ちはまだ溜まっていない（3 件か 2 時間たった版面から編集）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -12,12 +12,12 @@
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-10-30T08:48:23+00:00",
+    "at": "2026-10-30T10:46:13+00:00",
     "attempts": 1,
     "day": "2026-10-30",
-    "prog": 417,
-    "resp": "cse_01W4x6f7pWwXL26Dwk8WpE5U",
-    "sig": "366f60eb6e11"
+    "prog": 451,
+    "resp": "cse_01W4x6f6spqyW2xJa9mNaAuk",
+    "sig": "cb50aab40b6f"
    },
    "items": [
     "Astrae Oratio",
@@ -36,11 +36,19 @@
    "need": true,
    "prog": 451,
    "prog_day": "2026-10-30",
-   "ripe": [],
-   "sig": "a0ff083b3734",
+   "ripe": [
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "MMORPG 新作",
+    "gelato pique",
+    "チェーンソーマン",
+    "哈利波特剧集",
+    "滑雪"
+   ],
+   "sig": "cb50aab40b6f",
    "token_cap": 1000000,
    "tokens_today": 587266,
-   "why": "整理待ちの記事 9 件（7 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 2 時間で編集）"
+   "why": "整理待ちの記事 9 件（7 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
