@@ -1,78 +1,74 @@
 {
  "date": "2026-10-30",
- "edit_sig": "ff94b1e12696",
+ "edit_sig": "49dbf614f694",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
    "facts": [],
    "name": "Astrae Oratio",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "Astrae Oratio will launch with a lineup of 30 characters.",
      "date": "2026-10-30",
-     "n": 1,
-     "source": "게임메카",
-     "title": "Astrae Oratio Launches with a Character Lineup of 30",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE40YUxCc0VidVhxaFFzUDdxX0NtY0RjZzY4YXJzS3lCZHZLSUdRYXZtOW5JSWZRdDZ1RXpzSmtqNGJkQXFSek9CUDRrRkhOUkNOTzBIQjhibG1JZw?oc=5"
+     "headline": "Astrae Oratio Launches with a Character Lineup of 30",
+     "highlight": "Character Lineup of 30",
+     "image": "https://cdn.gamemeca.com/data_center/345/722/20261027172433.webp",
+     "image_via": "AI 挑选",
+     "url": "https://www.gamemeca.com/en/mv.php?gid=1782442",
+     "weight": "lead"
     },
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 2,
-     "source": "게임메카",
-     "title": "아스트라에 오라티오, 출시 때 캐릭터 라인업은 30종",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE94aWRsOC1ZQWtZc0cxN1VnUEZscnJpN28tbnFIUldaRUhDMTZKcVFuVXh0S3lOVWJ4a2tybGNycnVsVnZYZ2hyOU5vcDgzRkdUXzBZWFlDSFnSAVtBVV95cUxNT3BkdjZlam5WNnU4M0M1N3M4STdHaDVMdU4zeFVFNHliMXZTVDA0dDJ0bGhZRjl1d2kybUYyWnI4dkxicUhCQjl3OHJ0WnlUNjNaaXRaYlp1Ql9N?oc=5"
+     "headline": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
+     "highlight": "",
+     "image": "https://cdn.khgames.co.kr/news/photo/202610/309806_317605_756.jpg",
+     "image_via": "og:image",
+     "url": "https://www.khgames.co.kr/news/articleView.html?idxno=309806",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 3,
-     "source": "게임뷰",
-     "title": "엔씨 ‘아스트라에 오라티오’ 임종규 디렉터, “오타쿠는 위 아 더 월드”",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9RTkV3Y2Z1NzdzT2J2TUN2NFN4cUh5aUwzbnF2SlV0VVNwREZhcF9MQnl2elNYa1YxckVlcWUxSk11bF91UzRFeW1ESHhkTDFURDNQZGxNaEFSSERyWTU2SlJqdUJ6SlByNHc?oc=5"
+     "headline": "[인터뷰] 아스오라 “BM 피드백 반영해서 개선하겠다”",
+     "highlight": "",
+     "image": "https://cdn.gametoc.co.kr/news/photo/202610/112537_327288_452.jpg",
+     "image_via": "og:image",
+     "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=112537",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-10-30",
-     "n": 4,
-     "source": "경향게임스",
-     "title": "아스트라에 오라티오 개발진, '수동 조작' 재미, '편의성 강화', 'BM개편' 등 완성도 높인다",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jeGtobkxzOTNZS1NsYmZSWUlHNi1oSURxTFhjck8wMGIxajFPTDJqQkxwME43ZGtRV3FHczVLOWtMLTdwbGJtaXl0WUdFSUN4Tl9QQWM3NXhFZEx0dGh1SlVQYVh5T1hKZ0I3VA?oc=5"
+     "headline": "‘아스오라’ 개발진에게 물었다, CBT 이후 무엇이 달라지나?",
+     "highlight": "",
+     "image": "https://cdn.ipnn.co.kr/news/photo/202610/418071_79925_3013.jpg",
+     "image_via": "og:image",
+     "url": "https://www.ipnn.co.kr/news/articleView.html?idxno=418071",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-30",
-     "n": 5,
-     "source": "게임톡",
-     "title": "[인터뷰] 아스오라 “BM 피드백 반영해서 개선하겠다”",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAtOVNNVTdySjJNWV9uLWRkVThpaWVBRC1fTndxV3lYbkRNOEZMZ2R6NmFheklxSzNRVl9YYWpqX1J3QnFuNGtiMHVLQkRHcXExR254UkFobjd3QXNuQ0wxZkE1ZlNxVC1BUHZwVw?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 6,
-     "source": "PNN",
-     "title": "‘아스오라’ 개발진에게 물었다, CBT 이후 무엇이 달라지나?",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBRQnlBZzlPUkQyUFBRTXBUUWZfdWhURHdSU2JYX2NhT3BNUWZhZHNUVmRBS1JrektlZ25tVjh1UUFvSTk5aW5QcDF1VklyVW5QVTN0OVJtWG41OFBEbmNSM2U0TFUwV2xN?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-10-29",
-     "n": 7,
-     "source": "지디넷코리아",
-     "title": "엔씨 ‘아스오라’ 개발진 \"90년대 일본 애니 감성, 현대적으로 재해석\"",
-     "url": "https://zdnet.co.kr/view/?no=20261029163622"
+     "headline": "엔씨 ‘아스오라’ 개발진 \"90년대 일본 애니 감성, 현대적으로 재해석\"",
+     "highlight": "",
+     "image": "https://image.zdnet.co.kr/2026/10/29/1b8e3f913d352ed15385ec42621f085e.jpg",
+     "image_via": "JSON-LD",
+     "url": "https://zdnet.co.kr/view/?no=20261029163622",
+     "weight": "normal"
     },
     {
-     "date": "2026-10-29",
-     "n": 8,
-     "source": "인벤",
-     "title": "[인터뷰] 아스오라 개발진 \"CBT 피드백 반영해 전투 템포·AP·패링 손본다\"",
-     "url": "https://www.inven.co.kr/webzine/news/?news=322606"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 9,
-     "source": "경향게임스",
-     "title": "아스트라에 오라티오 개발진, “수동 조작의 재미와 편의성 강화가 정식 출사의 핵심”",
-     "url": "https://www.khgames.co.kr/news/articleView.html?idxno=309806"
+     "blurb": "",
+     "date": "2026-10-30",
+     "headline": "엔씨 ‘아스트라에 오라티오’ 임종규 디렉터, “오타쿠는 위 아 더 월드”",
+     "highlight": "",
+     "image": "https://cdn.gamevu.co.kr/news/photo/202610/61854_99991_4649.jpg",
+     "image_via": "og:image",
+     "url": "https://www.gamevu.co.kr/news/articleView.html?idxno=61854",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "アストラエ・オラティオ",
    "theme": {
     "accent": "#C27270",
@@ -141,50 +137,6 @@
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?nrpYjD-X9qCVdRWtREDg1",
    "facts": [],
    "name": "GTA 6",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 58,
-     "source": "Hypebeast",
-     "title": "Rockstar Games 與 Justice 官方宣布推出《Grand Theft Auto VI》原聲帶",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQ3FMQUVhdjVuM0RTLU5qdFl5QWFLTFRsOW9nclg3Z2pCT21zR3VrMTh1Q0I5WHZVSkQtLUVfcFFBQUZQdXFzbmZrSVlQSHQySE8xeDFTUTZzNkhNeDlZTklYQ29hSV9hUm1EWkFyUEFScG45dlgwbkUyM2ozU2NJbEZ0eENCWlB1MkViNWZheWdua2U1ZUFaM3pjU3g1WXBJcWg3MlFZWXFlM1Fta045SnR3?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 59,
-     "source": "COOL-STYLE 潮流生活網",
-     "title": "《GTA 6》情報再度大爆發！地圖規模接近 3 大作總和、NPC 擁有 60 萬組動畫，警察系統全面進化！",
-     "url": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxNNDAzSlFpU3RwdzMzNnd6V2hRNnExck1vUnMtQTFfeXFmajducGdlQnZnSEVJS3hZUC1qRDhVemlqNmx0Q3ZXZF8zRF95emlhdjNRV0hyV1B2QzZvLWUzOEdLd2ZBMm1fSmZqOUc0X3AwNWVlM2JZUnJiRnFWVEQ4ajlRanRsMzBXZHU5dTRjTDM0Vk1jTS1icF81bkZLa0N5dzZXbkh2UW0xWGZFNTU5Y1B3bkNqMDFWeklTYjRSdzhvOURIMEJ4X1YtZFpodmpPQXllZ0dNUUFxU2VwZ2RXcmNvdkFEcHM1STAzZERaTU5RUXBqM2pKaDJKZnRUVWlyaldlMHFfS0owSkZHRURCdUhFZXJOejBQeDA4ZmpKWFZiVUdsUVY3TVNQNHh2RzZGZ19rNm11elFUM3V4NkxZYU9BeUVtNUJpd2tTOUx4bG1ZR3ZvVnFLdllOVdIB4AJBVV95cUxOcHZvX21KT3RrVV9PN3FKampfbXZiSFF1WTBsZUlSTFhYWVhlMTdWYmUwY01lblplOVUyUVZmdjBQVkpxOWpTNGY3VzlMRzZKbUxTZms2TUxGbGNzZkxjYnYzbU5mem1lM2Q0Um1oanRRVmx1NldwLUY0aTJUZmxjdW5hczNBYzhHZU9VTDU4X1NhUlByVDRKUUJ4RWg1UVczbG84QmRDdGlkZ1h6V3lzQV9qRjZuRjJrWGdDenlsdU1YTS1XMk1nQW82aUY3YWgyeDNxYjU3TmdRQnE3bHFuME5OS2VYblY0OEd5enlPT0ZXN21RVjJnYVBPaExaMlhULWJDYjhYeHd5MUZYbTlzWDFueFpQUnBCeW55VTdwekVma3oyNDFKTW1rSGhYV256RzdWZ1Zyc3FiOTNXbnI3V09mQzBkR21CbFBfbVBSRFNyNGJBRUw3TTJERFdZSXNI?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 60,
-     "source": "games.gg",
-     "title": "GTA 6 評測解禁日期：何時能看到各大媒體評分？",
-     "url": "https://news.google.com/rss/articles/CBMitwJBVV95cUxQTmtTQ0FfY2E2ajI2N2RJemhZVmFlTklxTnJmN2drTmhHWkd0NkhUZG01TkIyVng0Y183aUxBdkhLdjV1U1RBXzIyVmp1elJNZ3B5d1c3SDBMLXZKOU90SnhteHVreXF4UndJejhWbGp5UnRyWmhkQThDcmwyczdvUWV2LThZc3cyTVI2Wml1elFPV2gtNzNVVktzM2VWazAtZFV4M3JTRUd4a0NQLUxuNEw2SE9CVXpmdDBjMWNJRE1PTnV1OWxFY0JpanZaaWRXaG9vdFlwcy1ma3QzU0hzdUJkWlVYMlcyVVY3UVVZNmRNSWczdDh0dUpENE5CcmtxaGhpbEdIZzMxd2xsX1lsTHVnV0hCSjlQOWNnRDMxWk5xYnJqeU9fN2JIM3FBd2tHWjFET3ZQTQ?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 61,
-     "source": "Make Tech Easier",
-     "title": "GTA 6’s boxed edition won’t include a disc — here’s what buyers need to know",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE52eXhWNE9ubUMyR2VEcGhvWnZaYW9YSFNOY05wSWNDRVR3bTNEeUdUM2s3S0kyTXp4UzBlMnd4NWkyNGZpaC0yTmRNTXNJb2lNM0thYVh0Y3oyOHRXeFdZdUo3bWdEQQ?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 62,
-     "source": "PC Gamer",
-     "title": "GTA 6's NPCs have about 600,000 animations, as well as personality traits that take 'demographic and professional' variables into account",
-     "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxQSEdyZnQwc19xN3kxckpYNXMzWEVJUnVqQVc4Qk5ueXR1N0JvQjh6THQzdVQtVWl4b1BXV2J4dVFpMWM3R2lEbnloZy1xdHdTTExxeWlmMkI5YVlRR1JrbTNMdVBlQTVTUVFQWHppY1VORzVpdWNuRDl4cEJvMHI2ZDVvR1I4VVF3Ti02OVZ0TmZ6cWRUdGg1ZVFwV25pVE1uZXc4US14cG10YnI5d3FpV2lqV3oyUjJpQ2NKMFhKRDNuYndBTnoxUk5wa0p2M0MySmtwMkF1WTR3YVZyNjhnd0pfbE05WURORTN2S0JpUzlNQXNKTDlUNUYxNTVvVGVDWXo3WnZiR2c0UzNwVXc?oc=5"
-    },
-    {
-     "date": "2026-10-28",
-     "n": 63,
-     "source": "games.gg",
-     "title": "GTA 6 的 Jason 在 South Park 中以狗屎攻擊 NPC",
-     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxORl9PSTloYzZUOEVPMnhoV0wtU1ZmeEFFU1FkUTY1akZ2ZE1SVXUxaWNBZ1BVZThpQnZOTlVsQllONmdLaVo3SGJjYThKWUhaWXdPZm1GS3o3ZHNXQlkySF9Uek94VmF1bEJwb3dFZlBKTUIxVHpMTldQVXplTTRvN3c5c2E1RmtWbURVN0FhLTZQU2pxdUs0eHRiWVNYMHlVRl9rT1BWaVpEdFA2Mmt2R05MOFUyZXhhTkFNSVI4MHRQU2FvYmhZNUpfeVA?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -320,125 +272,8 @@
    "cover": "https://cdn.marvel.com/content/2x/spidermanbrandnewday_lob_mas_min_mob_01.webp",
    "facts": [],
    "name": "漫威电影",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 72,
-     "source": "香港01",
-     "title": "「X教授」柏德烈史釗活離世 羅素兄弟曉治積曼Marvel總裁齊悼念",
-     "url": "https://news.google.com/rss/articles/CBMilgNBVV95cUxQdE03RHFJbGFwVlFxNGZydlBCNTRsQWxLQnZwZXFZSHpDRVZBMXhjNkpxUGIybXEzeDNkSkFKME5iZFAxTmkwMWx6ckFNQUtBQXFNLXUzZG5pSmFoNzRydkpRWFBIcGJrSjBveUhMTVVhVDI1QUNZZnd3S0xWWFRyRWl0NUNaV3pqZHM3YlBTekdSMU9zaEtOcml1UDFWdUx4TkpBOGhqSTJhbDg2SXVaWGtrRlRaMnBERTU5LWdVY2lFSFJ6aXJhZU9PTFQyRzJkUkJ6aWd5WWFrQ2tGRkdZbDk1Rk9kejZEQmhDQVJ1NDFEZVpFUW5rQkk0TWFPV0sxZDkybmxtRFhhVEg1SDlxWk9YbHNQZV9zMkRmazZEbFpHU2UwSEdxODhuM01SOTF3R0pUSHpwOTZXUUdWNVkwWEEzS2pmazN6eFBYN21ieEU2Z2NFSGN3eklUd0g5OGNjWS1XQ3JqZnVVRjJJSmdfb3BMSEpEeW9vV204dkM2cF9OaUdSR2VhS2xIb3B4Yl83dTJuMElB?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 73,
-     "source": "Marie Claire 美麗佳人",
-     "title": "X教授派屈克史都華過世享壽86歲！休傑克曼IG發文告別，《復仇者聯盟5》成遺作",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBZYV9CbGFBb0NhZktJdUV5dWpwVjFnLVRNTWZIUk04WEtGdElLeFdYMEVGcndIYzBfOEdOVS1ucUo2Sm91QkdKZXE0Mmw4Y0UxWHhEc09wREwzdHNSZV9XVUc3eUpzZw?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 74,
-     "source": "AM730",
-     "title": "Patrick Stewart「X教授」逝世享年86歲 《復仇者聯盟︰末日降臨》成最後作品",
-     "url": "https://news.google.com/rss/articles/CBMiygNBVV95cUxORDBZaEhoVVNBR1lLZzQtLUxKVHZLYzRUSkVUa2ZObWE4TUdPMUhTdHRRTTBtQWNBVzlpN1NMRzdyMnN6THhLTkpob1ZJci1kYi1hWEVYWW0wb05HcFFJZ0RHN1ZVOUhXNkpoR2xLcWNyeGRjV1hjRTdDdHpWRUt2cnBCRlpoV3VxMHZydTBfVVpQY0VtUEZiNUFIOEdqbmlNejZSVm1IZHZTdG4xbmU5VWFGQkpWaEctZ1hpekhpWG9Ga1YzUWlBYjdrRGdHSUxyQlozT0JyM3ptQkJWeUl1VmFkdGZiWHA2N3hVSFh4aFlJMjNSMFA0WXN5TmtsNm5ZcWwxLWdwZmdqRG45M3VnYmFsTVU0VHk2VV9xYzIxa3lzd092NTJ5Z0VubFRwRWhVVF9PbGpFeFhVUGx5YTgxUHFWRl80X29zUDFTNnltS0JtYzg2bWl5ektWR0c4ZzNzV0RoZ3RvbDM0UVZuSDhLbVRVYy1wMGFhUy04OEE5OW9wMTNNMU8wSWtpLWk2U00tYk93cS1GelowZENCSGYtQUZlSHI2M1lwbV9ZeHdVR3g2eVliSGdnMlVNd0JRbmc0TlNKZHkyUVpaQQ?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 75,
-     "source": "TVBS新聞網",
-     "title": "漫威年末壓軸！《幻視任務》台日韓收視成績稱霸 保羅貝特尼、蘇格蘭男神引爆話題",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5RNWZ4X1AtWWVsMTBHdk8xVmFDdDFaei1DYU9Ud2tKMUhSMlBmQkZyakZIWmdwQ2k0NzdKX1gzWnNtX1lidnZLbVFxSUNteWhSV214WkJVaTNQX0NadUd5NGQ5dw?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 76,
-     "source": "經濟日報",
-     "title": "「X教授」派崔克史都華逝世享壽86歲！「復仇者聯盟5」成人生遺作",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOdkhTeWVpQk9wN3R0RjJkcWV6cUg5SnJtYmI0VE16THJnb0hTdGxKVVg1UWJGYUFyemRiYkdzb3NqRTFTbkpZMmJJZlZjTzJyYTJhcGI3clR4VTROVTgyMkFZRkk3TGNtdTBiSjRxYmlBaUxPUmJwcXN4clRlWG5xcHkzc3plbHVjV1pVYzgzRzjSAV9BVV95cUxQNVlhS2szZWJONDZKZkh2MEdWQ2JFVzRHR213TW82UVBQb19pTE9OckR1TFpheHFkLXNkN3lDOVdNQ3VVRGpNdFdtTk04d2lGcVM5bGpHSHBWUHRmUE9hdw?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 77,
-     "source": "dotdotnews",
-     "title": "「Professor X」史都華病逝《復仇者聯盟5》成遺作- 娛樂",
-     "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE53bTBsTjJQdWw1XzRKM0hxX3BURUtzV09SRVptWjFmZWMtdUNNbTRMWFhrUEVqaUlGWWUxb1JJd2Jkc2w5NFFjRjJHbWhaa2cxZDZhS0RLMFU2dHZBSmxKR21WYVExb0RBbHJDUUZVWGRJSzNudUxicFl3?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 78,
-     "source": "KONGGOK",
-     "title": "Patrick Stewart 離世享年 86 歲｜代表作品、X 教授及 Doomsday",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE41LW90YzI5SDlyY19ZbXFaRXJJVkFFcnJiZkVrTXUzY1BaVXkxZUV3V29pREstX1pSRlZZc25FekloZE9jQ0JnYWw1NE9wN0tyUzd5cDhnQzdUTkUyYzRydDljMVQtVm4weHkyQklVN2Z3RTIyQUE?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 79,
-     "source": "Collider",
-     "title": "Disney Officially Reveals the Most Expensive Marvel Movie of All Time",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOc25qRUZhV1cydmNUOWp2TDNBZS1WQ3ZuUVlDMkJVc3Z0THgzM2xGb2RlQ3kxWTNqc2lOQUlSWFlWU1JMWUdVU2U1QmVxRFFmSFZVZGdMRFJ5NXFCb3BteFNWYjZheVhqX3RDTFBpdlhRNDZ2bTVvaGItNld1Z1c4Qg?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 80,
-     "source": "玩具人 TOY PEOPLE",
-     "title": "「X 教授」派屈克史都華過世，享壽 86 歲！生前和失智症搏鬥多年，《復仇者聯盟 5》成最終遺作",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5SaEdzbEx4LXNaTHJSNm4zSmNrNGVQUHZ1Vk9udlJET0J0RHFVUXI0WDBXSkhtNXdkeWFDbUE5UHFjSW1mTDI4UmZ0b0U?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 81,
-     "source": "世界新聞網",
-     "title": "「X教授」派崔克史都華逝世 至親好友相伴最後一程 「復聯5」成遺作",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1EdnN1dFJIRXR2dVl3QVBmUWx3aDdSakczMENXeWMxTkNxZms3bTN5R1pkeEIzUWduWjdkTElGRnVYd0RJY09TOTJkLXV3X0YzYUlSLVkzc3Z4THFnU3J0T3FiaHcxRjTSAWdBVV95cUxNRHZzdXRSSEV0dnVZd0FQZlFsd2g3UmpHMzBDV3ljMU5DcWZrN20zeUdaZHhCM1Fnblo3ZExJRkZ1WHdESWNPUzkyZC11d19GM2FJUi1ZM3N2eExxZ1NydE9xYmh3MUY0?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 82,
-     "source": "Cosmic Book News",
-     "title": "Avengers: Doomsday Theater Posters Revealed Along With Doctor Doom Popcorn Bucket",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1sc0lyUU1OSnFXaS1jbWNVUkx4Y291NFdtdFlpTGctU1RQeHl1WU1qSThpMWNuamdnUzgxNElwZGliN0xaN2VCMTNYOFVwN0JWdGFPcGJCd1BvTlpi?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 83,
-     "source": "The New York Times",
-     "title": "Patrick Stewart’s Many Roles, From ‘Star Trek’ to ‘Avengers: Doomsday’",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNN1M2eDhteFhOSmtHV1JBQmhMOVdObFRfYUxzUzR2ZnhQZVREU1hBZ0NPZlVBUHFPOTFPUmM4dTZVQWtjNEstbElsWmRXZm1FWG1rNGN4SmZuY3pDZzFBalpwNUZPTXRsM3k2a1o5ZkpyVEthVFFYUkZsODJLWjRpeHlIdF9HX0FHVG1r?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 84,
-     "source": "LaughingPlace.com",
-     "title": "Disney+ Subscribers Have a Chance to Attend the \"Avengers: Doomsday\" Premiere",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOb2tVLUVONW9RMkFzSFMxRG9rYmN3eXNkV2ZBei1mdzJzRnhkN0haRU1HMTAzQmo2WnVvdHVhc2RRYTFaQkUtSURCaWJ2dndMYy13S2dTQjhIODN0YmFNWEtDLUhIYXFTQ3VnbEphQUtyekRvNHdYeDN2U0VIMmMwZ1NEcHV0Tlh3dUstM0x0aU9zM09XaDZYTG1ENFQ?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 85,
-     "source": "The Times of India",
-     "title": "Ian McKellen pays moving tribute to friend Patrick Stewart; says 'His farewell performance in 'Avengers: Doomsday' is yet to be seen'",
-     "url": "https://timesofindia.indiatimes.com/entertainment/english/hollywood/news/ian-mckellen-pays-moving-tribute-to-friend-patrick-stewart-says-his-farewell-performance-in-avengers-doomsday-is-yet-to-be-seen/articleshow/135338290.cms"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 86,
-     "source": "快科技 on MSN",
-     "title": "漫威“X教授”扮演者去世：《复仇者联盟5》成遗作 12月16日上映",
-     "url": "https://www.msn.com/zh-cn/entertainment/%E5%90%8D%E4%BA%BA/%E6%BC%AB%E5%A8%81-x%E6%95%99%E6%8E%88-%E6%89%AE%E6%BC%94%E8%80%85%E5%8E%BB%E4%B8%96-%E5%A4%8D%E4%BB%87%E8%80%85%E8%81%94%E7%9B%9F5-%E6%88%90%E9%81%97%E4%BD%9C-12%E6%9C%8816%E6%97%A5%E4%B8%8A%E6%98%A0/ar-AA2gmS8D"
-    }
-   ],
    "section": "影视",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-10-23",
-     "headline": "Marvel considers delaying the filming of Secret Wars until February 2027",
-     "highlight": "",
-     "image": "https://foro3d.com/2026/octubre/imagenes/marvel-valora-retrasar-el-rodaje-de-secret-wars-hasta-febrero-de-2027.webp",
-     "image_via": "og:image",
-     "url": "https://foro3d.com/en/2026/octubre/marvel-valora-retrasar-el-rodaje-de-secret-wars-hasta-febrero-de-2027.html",
-     "weight": "hero"
-    },
     {
      "blurb": "Marvel Studios and Kevin Feige paid tribute to Patrick Stewart, confirming ‘Avengers: Doomsday’ will be his last on-screen role.",
      "date": "2026-10-29",
@@ -474,9 +309,19 @@
      "date": "2026-10-28",
      "headline": "Avengers: Secret Wars Rumors Reveal Plans For Iron Man, Steve Rogers, And Wolverine - Possible Spoilers",
      "highlight": "Secret Wars",
-     "image": "https://maxblizz.com/wp-content/uploads/2026/10/secret-wars.jpg",
-     "image_via": "og:image（其它来源）",
+     "image": "https://foro3d.com/2026/octubre/imagenes/marvel-valora-retrasar-el-rodaje-de-secret-wars-hasta-febrero-de-2027.webp",
+     "image_via": "og:image",
      "url": "https://www.imdb.com/news/ni66085963/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "Ghost Rider Writer Wants an R-Rated MCU Horror Movie",
+     "highlight": "",
+     "image": "https://gdm-universal-media.b-cdn.net/epicstream/d674716a-ghost-rider.webp?width=1600&height=840",
+     "image_via": "og:image",
+     "url": "https://epicstream.com/article/ghost-rider-writer-wants-an-r-rated-mcu-horror-movie",
      "weight": "normal"
     }
    ],
@@ -565,64 +410,6 @@
    "cover": "https://www.hybejapan.events/illit/press_start/images/ogp_smt_1200x630.png",
    "facts": [],
    "name": "ILLIT",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 23,
-     "source": "風傳媒",
-     "title": "韓国最大級の音楽授賞式「MMA2026」U-NEXTで独占ライブ配信決定 ATEEZやILLIT ら豪華出演",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE05QkMwMmJHeFl2NEJkbkRVMHFZSmh2ZzF4ZkZDNXhRdE9nem0yRHFkbmtjcXBYcTltcnR0TVV6bGNEOE9mX3FzT2tRR1pGOXdX?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 24,
-     "source": "台灣達人秀TTshow",
-     "title": "ILLIT 成員 WONHEE、IROHA兩人皆腳踝受傷掛傷號！成員「五缺三」健康狀況令粉絲心疼｜TTshow 台灣達人秀",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1QNmF6ZkNicDVvSk5aX203QTdPSWpTZzRRakN6TUd4THFyb2M3dlk3alpyc19JZkljVUp6LU9FQklpRVRuU1RrU0NIU1g?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 25,
-     "source": "더팩트",
-     "title": "[TMA 인터뷰] 아일릿 \"TMA로 데뷔 첫 부산 공연…공기부터 좋았다\"",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9WQ1JxajZ3M182VEU1Q3Y3NkhVVnhtV3lrX1BPUGxlUElSdFV3V1l5UnM4MC1FNDFkVE5faHYwWmtXOEdqSFZLLXZKT3VrMWVncXNxWWJZM05IOUdH0gFXQVVfeXFMTnljQzFkcWE5enUtTEVXMzRHS3ZlenVGcHhwVTFmN2Y0MlV1ZnRXdUlBTTZzbzRqenhUb3c5Tkh0WXl6a2thTF8yQS03UUZLX0N0NHFnTnEw?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 26,
-     "source": "조선일보",
-     "title": "ILLIT Enchants Yonsei Festival With 'I Will Arrest You' Whistle Chorus",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOM1o3dkFYaHp1UHMtYlR2dnlnZzVZMjU2ejJCc0lsM0x3aE5LV0otUnp3S2pwQjBiV2prNVlLcC00c20wTjFfSHZZWUQzMDhwZGt6T01UVUxQUG5nTnZlUzQ4RXVnVmMtM0RDR0lia0NoYmp6MjV6U2pQOUZqeWw1b3E0ODVNVk5SU082c2FR?oc=5"
-    },
-    {
-     "date": "2026-10-30",
-     "n": 27,
-     "source": "Chosunbiz",
-     "title": "Illit captivates Yonsei festival with whistle sing-along and energetic live set",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxObC1JMUJmM3FxbWVDNk80bXV1cEpMUGo3SXZQUkQzWmFMMnVwZEtFakpFTnpJamZWcF9KaGVSbTAzY2hwZ3lSWldzT01JaElfQUZSZUttSkhBODU3OXZMTnZFVzRnRElTbjFDMnFUdE9wTlNxLXB0TmdfS3NCS2JUQ1pwVnphQl9mWXcyOFhENlBsb251VXBkS3RBVFfSAZwBQVVfeXFMTmwtSTFCZjNxcW1lQzZPNG11dXBKTFBqN0l2UFJEM1phTDJ1cGRLRWpKRU56SWpmVnBfSmhlUm0wM2NocGd5UlpXc09NSWhJX0FGUmVLbUpIQTg1Nzl2TE52RVc0Z0RJU24xQzJxVHRPcE5TcS1wdE5nX0tzQktiVENacFZ6YUJfZll3MjhYRDZQbG9udVVwZEt0QVRX?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 28,
-     "source": "조선일보",
-     "title": "ILLIT、大学祭を魅了した「逮捕しちゃうぞ」…笛の大合唱も",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQRzJGX1pKQml0NW9JWTdEeGJHdzg3UTZpMVhzTDJTR25oYXRjbDRfVWdTbFRwUnFBTlhKOHg0ZGhoVC1Nclp5TGtweE95TVJjb21WUkNfOW1OYWFaU1VTRnIzay1YSDl5YmNSczFkOUVuMmstbUtqZTB4T28yczh0ZTkwd25QUnM?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 29,
-     "source": "THE FIRST TIMES on MSN",
-     "title": "ENHYPENニキ×ILLITイロハの日本人メンバーコラボに反響「マンネズ最高」「安定のHipHop兄妹」「待ってた!」",
-     "url": "https://www.msn.com/ja-jp/news/other/enhypen%E3%83%8B%E3%82%AD-illit%E3%82%A4%E3%83%AD%E3%83%8F%E3%81%AE%E6%97%A5%E6%9C%AC%E4%BA%BA%E3%83%A1%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B3%E3%83%A9%E3%83%9C%E3%81%AB%E5%8F%8D%E9%9F%BF-%E3%83%9E%E3%83%B3%E3%83%8D%E3%82%BA%E6%9C%80%E9%AB%98-%E5%AE%89%E5%AE%9A%E3%81%AEhiphop%E5%85%84%E5%A6%B9-%E5%BE%85%E3%81%A3%E3%81%A6%E3%81%9F/ar-AA2gnGAR"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 30,
-     "source": "CBC뉴스",
-     "title": "[스타家] 아일릿 ㅣ 글로벌 스트리밍 기록 행진…신곡 '체포하겠어'로 흥행 잇는다",
-     "url": "https://www.cbci.co.kr/news/articleView.html?idxno=621302"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -683,6 +470,26 @@
      "image": "https://api.ginzamag.com/wp-content/uploads/2026/10/illit-interview2611-ogp-1.jpg",
      "image_via": "og:image",
      "url": "https://ginzamag.com/categories/interview/604569",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "ILLIT、大学祭を魅了した「逮捕しちゃうぞ」…笛の大合唱も",
+     "highlight": "",
+     "image": "https://www.chosun.com/resizer/v2/MU2WEZJSGBTDGNTBMI4TSNZYHE.jpg?auth=da2cb2cc4c9c3562f81b3037ed00ec0ed703a11c0e2a2ab70038f4005788fe99&width=650&height=341&smart=true",
+     "image_via": "og:image",
+     "url": "https://www.chosun.com/jp/culture-life-jp/2026/10/30/N4DX5GNPDVAEDFI22QHK77T3ZM/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-10-29",
+     "headline": "ENHYPENニキ×ILLITイロハの日本人メンバーコラボに反響「マンネズ最高」「安定のHipHop兄妹」「待ってた!」",
+     "highlight": "",
+     "image": "https://www.bing.com/th?id=ONUT.iOLgomJRjCnpWxI4P5DdVg&pid=News&w=1200",
+     "image_via": "转载 news.livedoor.com（Bing 缩略图）",
+     "url": "https://www.msn.com/ja-jp/news/other/enhypen%E3%83%8B%E3%82%AD-illit%E3%82%A4%E3%83%AD%E3%83%8F%E3%81%AE%E6%97%A5%E6%9C%AC%E4%BA%BA%E3%83%A1%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B3%E3%83%A9%E3%83%9C%E3%81%AB%E5%8F%8D%E9%9F%BF-%E3%83%9E%E3%83%B3%E3%83%8D%E3%82%BA%E6%9C%80%E9%AB%98-%E5%AE%89%E5%AE%9A%E3%81%AEhiphop%E5%85%84%E5%A6%B9-%E5%BE%85%E3%81%A3%E3%81%A6%E3%81%9F/ar-AA2gnGAR",
      "weight": "normal"
     }
    ],
@@ -811,8 +618,8 @@
      "date": "2026-10-25",
      "headline": "ダブルス女王シニアコバ、大阪決勝でクルーガーに6-1、6-0 3年ぶりシングルスV",
      "highlight": "6-1、6-0",
-     "image": "https://www.bing.com/th?id=ONUT.Y4Wp2ewnZ6-_7QnNijF27Q&pid=News&w=1200",
-     "image_via": "条目自带（Bing 缩略图）",
+     "image": "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F24%252FKyodo_1488733277832315317%252FKyodo_1488733277832315317_1.jpg,zoom=560x320,quality=100,type=jpg",
+     "image_via": "正文图（6 枚から）",
      "url": "https://www.excite.co.jp/news/article/sportsbull_2444600/",
      "weight": "normal"
     },
@@ -1409,8 +1216,9 @@
      "date": "2026-10-29",
      "headline": "LEGION Dota 2チームの概要と視聴者統計",
      "highlight": "",
-     "image": "https://escharts.com/metaImage/teams/legion-1?game=2&v=1793328616",
-     "image_via": "og:image",
+     "image": null,
+     "source": "Esports Charts",
+     "source_icon": "https://www.google.com/s2/favicons?domain=escharts.com&sz=128",
      "url": "https://escharts.com/ja/teams/dota2/legion-1",
      "weight": "normal"
     },
@@ -1441,36 +1249,6 @@
    "cover": null,
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-10-30",
-     "n": 8,
-     "source": "中国娱乐网",
-     "title": "A2O LITE《NEON》席卷日本市场！登顶Oricon流媒体急升榜 Billboard Japan升至第4",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1peGhzSUhuR3RoS2V2N0VDeEs2Q0U4TW5qZXlZMnIyaUxyYldTUEpwZkl2dTlGNHFQNGdEOUlmbkcxNm5uc1RobGM2b1dBNjY5ZkZnbklBNVZBcW8?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 9,
-     "source": "wowKorea",
-     "title": "[ SHOW CHAMPION_ 1分直カム ] A2O LITE_ _ XILIの＜NEON＞♬ #A2OLITE #XILI #NEON",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBLV0pvMEpuSlExcFhoaVppakRWb1MxeEI0dHNyYmZaWWdrSlh2RGdPVm9Ub0p0aFIzaWtydjlYS2ZnSWRtU2lJeWRRemZQRG1WY3pWOEQtZGthRVhNM3c?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 10,
-     "source": "뉴스인사이드",
-     "title": "A2O LITE, 'NEON'으로 日 오리콘·빌보드 석권",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5DanlGNU1pcWV6RlJVZWhMQTItLU9kZy15QkFiYklJbVMyYTJCRnFXZTBKTGM4a0V4angxLWZwaHhpYkZqSHB3UlhEUi1vRV8zQVpQQUc2RmJ6aU1VTEV2WHFtUnAtY2NMc00zQzRR?oc=5"
-    },
-    {
-     "date": "2026-10-29",
-     "n": 11,
-     "source": "앳스타일",
-     "title": "A2O LITE, 일본 오리콘 급상승 1위…한·미·일 다 터졌네",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9mNUhlNUJMZE5ZeFpzT2pWM3JGbXV4S0JldVhaM1JrYXZ0emRPLWNXTmNabnQzdEFjWlFHY2lTa19nZXZWeXEzbDNCdy1TcVFiTS1XRGEyWWEtWWJBUUExaS1VeGJjbnA1dzZJ0gFuQVVfeXFMTXMxNkhSV2dicktSWUtPanBTV3hKUUhPS0pUMDN2amtDR3lhUnNwMzRubGMxb2VVVWE4MXRFOW56UlQ1TGlmelRoZ3NTSl83VTIxMF9IMDdxbVBUVmlFY1pPZTA4bV9GczU5alFXcmc?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
@@ -1495,12 +1273,12 @@
     },
     {
      "blurb": "",
-     "date": "2026-10-29",
-     "headline": "‘이수만 걸그룹’ A2O LITE, 일본까지 홀렸다…오리콘 급상승 1위",
-     "highlight": "오리콘 급상승 1위",
+     "date": "2026-10-30",
+     "headline": "A2O LITE《NEON》席卷日本市场！登顶Oricon流媒体急升榜 Billboard Japan升至第4",
+     "highlight": "",
      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2gjZ9F.img",
      "image_via": "转载 www.msn.com",
-     "url": "https://m.newsen.com/news_view.php?uid=202610291617020410",
+     "url": "http://news.yule.com.cn/html/202610/361913.html",
      "weight": "normal"
     },
     {

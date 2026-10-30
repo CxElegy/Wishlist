@@ -1,78 +1,5 @@
 [
 {
-"at": "2026-10-29T06:00:18+00:00",
-"text": "2026-10-29 第 5 バッチを出刊：ILLIT（1 版面・6 本・残り 1 版面） · token 新規入力 1,476・キャッシュ読み 16.3万・出力 726",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.25,
-"mem_total": 16872808448,
-"mem_free": 15932559360,
-"disk_used": 10928582656,
-"disk_free": 30393925632,
-"disk_total": 41322508288,
-"peak": 330809344
-},
-"batch": 5,
-"boards": [
-"ILLIT"
-],
-"stories": 6,
-"left": 1,
-"edited": 22,
-"run": 1793251444.255336,
-"tok": {
-"in": 4,
-"cw": 1472,
-"cr": 163427,
-"out": 726,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 165629
-},
-{
-"at": "2026-10-29T06:06:51+00:00",
-"text": "2026-10-29 第 6 バッチを出刊：あつ森（1 版面・1 本・今日の整理待ちは全部終わり） · token 新規入力 1,053・キャッシュ読み 8.3万・出力 584",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.23,
-"mem_total": 16872808448,
-"mem_free": 15968034816,
-"disk_used": 10930851840,
-"disk_free": 30391656448,
-"disk_total": 41322508288,
-"peak": 294068224
-},
-"batch": 6,
-"boards": [
-"あつ森"
-],
-"stories": 1,
-"left": 0,
-"edited": 22,
-"run": 1793251444.255336,
-"tok": {
-"in": 2,
-"cw": 1051,
-"cr": 82830,
-"out": 584,
-"calls": 1,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 84467,
-"secs": 2567,
-"run_tok": {
-"in": 38,
-"cw": 55401,
-"cr": 1361509,
-"out": 6324,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-10-29T06:39:15+00:00",
 "text": "出刊に失敗：No module named 'requests'",
 "level": "error"
@@ -1954,5 +1881,46 @@
 "calls": 61,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-10-30T03:47:41+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-10-30T03:52:39+00:00",
+"text": "2026-10-30 第 1 バッチを出刊：A2O LITE、Astrae Oratio、GTA 6、ILLIT、漫威电影（5 版面・28 本・残り 5 版面） · token 新規入力 5.6万・キャッシュ読み 118.5万・出力 6,833",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.21,
+"mem_total": 16872808448,
+"mem_free": 15879700480,
+"disk_used": 10788761600,
+"disk_free": 30533746688,
+"disk_total": 41322508288,
+"peak": 330956800
+},
+"batch": 1,
+"boards": [
+"A2O LITE",
+"Astrae Oratio",
+"GTA 6",
+"ILLIT",
+"漫威电影"
+],
+"stories": 28,
+"left": 5,
+"edited": 23,
+"run": 1793331614.1377368,
+"tok": {
+"in": 33,
+"cw": 56097,
+"cr": 1185058,
+"out": 6833,
+"calls": 17,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1248021
 }
 ]
