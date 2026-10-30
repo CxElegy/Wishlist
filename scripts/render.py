@@ -6134,7 +6134,7 @@ def _admin_resources(res):
     cap = (_meter("リポジトリ", sz.get("repo", 0), lim.get("repo"), "GitHub は 1GB 未満を推奨（5GB で警告）")
            + _meter("公開ページ（docs/）", sz.get("pages", 0), lim.get("pages"),
                     f'GitHub Pages は 1GB まで · うち小元素の画像 {_mb(sz.get("emblems", 0))}')
-           + _photo_meter(res.get("photo"))
+           + _photo_meter(photo_store.load()["stat"])
            + f'<p class="mt-x">集めた記事（inbox/） {_mb(sz.get("inbox", 0))} · 記録（state/） {_mb(sz.get("state", 0))}</p>')
     rows = []
     for proc, r in (res.get("runs") or {}).items():
