@@ -1,14 +1,14 @@
 {
- "admin": "0acfe0e72643",
- "admin-ai": "1ce46765fa68",
+ "admin": "59426a756511",
+ "admin-ai": "34f322090837",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6980ff02"
+   "c30d45e5"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "4905dd53"
+   "bcfdb4ce"
   ]
  },
  "admin-boards": "05c3d6b0aa57",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "23334e4fa247",
+ "admin-emblem": "aa2fe00b984f",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "38bff40b"
+   "5669dcdb"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "cf1cf6c435ef",
  "admin-members_marks": {},
- "admin-now": "d938ff323278",
+ "admin-now": "07e854999e15",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "edaf5c44"
+   "fc30dbbe"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "ab8e36a9"
+   "cff66205"
   ]
  },
- "admin-system": "0f38ce3118ae",
+ "admin-system": "ff6e44f54865",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "7576ef44"
+   "f308f0cb"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "39f91b2a"
+   "aa2b5200"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "6c1dd3ec"
   ]
  },
- "index": "309bfa2cde91",
+ "index": "836141d44494",
  "index_marks": {
   "front": [
    "トップ",
-   "69660dca"
+   "d7734f3b"
   ],
   "picks": [
    "気になるかも？",
@@ -117,7 +117,7 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "c22a6e99"
+   "1d508a76"
   ],
   "w-3f993d04": [
    "漫威电影",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "67765656"
+   "9e892673"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "9545257b"
+   "03ae9ac2"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "506bb16d"
+   "3d0024d1"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "500cef66"
+   "df66efea"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "6acc089f"
+   "19b1dc0a"
   ]
  },
- "updated": "10.30 14:02",
+ "updated": "10.30 14:05",
  "wishlist": "7af11c19700f"
 }
