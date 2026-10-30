@@ -1,14 +1,14 @@
 {
- "admin": "430008598454",
- "admin-ai": "f14e3ba93337",
+ "admin": "a5bcf128c763",
+ "admin-ai": "03d8f5d24fc9",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "53dbdef3"
+   "f8bcaa1e"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "80a520f8"
+   "d6b3fd39"
   ]
  },
  "admin-boards": "d79d94520291",
@@ -22,11 +22,11 @@
    "2055c56d"
   ]
  },
- "admin-emblem": "d6205f255898",
+ "admin-emblem": "d9de299b2f17",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "aa11bd08"
+   "c992a2f9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "a2932da7ba82",
  "admin-members_marks": {},
- "admin-now": "66c1363e0794",
+ "admin-now": "cde88253ca40",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "0c17c061"
+   "c324d116"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "851a8109"
+   "5b040007"
   ]
  },
- "admin-system": "45535fd0d6b2",
+ "admin-system": "3b3e4a4cb04b",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "10abadf8"
+   "d0a6d306"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c03c8912"
+   "abfb5ac5"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "33f6886d"
   ]
  },
- "index": "d3bcd5558d0e",
+ "index": "2047568d9b1f",
  "index_marks": {
   "front": [
    "トップ",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "17a8d6da"
+   "b4d50f54"
   ],
   "w-130724c0": [
    "猫用品",
@@ -125,11 +125,11 @@
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
-   "c8fc1881"
+   "55b8dbf7"
   ],
   "w-577b9e00": [
    "A2O LITE",
-   "f4b719df"
+   "a8fcfa5c"
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "90880d33"
+   "885d3fc6"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -161,11 +161,11 @@
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
-   "649ec678"
+   "a230945a"
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "148d11cc"
+   "64a0d743"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -196,6 +196,6 @@
    "c2bddac4"
   ]
  },
- "updated": "10.30 22:21",
- "wishlist": "e87c49f2bae9"
+ "updated": "10.30 22:29",
+ "wishlist": "a87c6ee86587"
 }
