@@ -715,7 +715,10 @@ class ImagesTest(unittest.TestCase):
         self.assertIn('<div class="pic">', html)
         self.assertIn('<img class="ico" data-icons="', html)
         self.assertNotIn('class="ico" src=', html)
-        self.assertIn("p.classList.add(&#x27;icon&#x27;)", html)  # 图全打不开：换成来源图标
+        self.assertIn("p.classList.add('icon')", render.IMG_FALLBACK_JS)  # 图全打不开：换成来源图标（処理は head の 1 か所）
+        self.assertNotIn("onerror", html)  # 1 枚ごとの onerror/onload は HTML を倍にする（2026-10-30）：印 data-e だけ
+        self.assertNotIn("onload", html)
+        self.assertEqual(html.count('data-e="'), 3)
         # 没图：直接显示图标，完整域名在前、主域名在后（news.17173.com 有 32px，17173.com 只有 16px）
         html = render._pic({"image": None, "_fbs": [], "url": "https://news.17173.com/a", "_work": "MMO"})
         self.assertIn('class="pic icon"', html)
@@ -723,7 +726,8 @@ class ImagesTest(unittest.TestCase):
         self.assertIn(f'src="{full}"'.replace("&", "&amp;"), html)
         self.assertIn(f'data-icons="{base}"'.replace("&", "&amp;"), html)
         self.assertIn('<span class="ph">MMO</span>', html)  # 图标都不行时换成作品名封面块
-        self.assertIn("naturalWidth&lt;32", html)  # 16px 地球图标也当作不行
+        self.assertIn("naturalWidth<32", render.IMG_FALLBACK_JS)  # 16px 地球图标也当作不行
+        self.assertIn('data-l="i"', html)
         # 出刊时存的图标排第一
         icons = render._icons({"url": "https://news.nicovideo.jp/a", "source_icon": "https://i/nico.png"})
         self.assertEqual(icons, ["https://i/nico.png", svc.format(host="news.nicovideo.jp"), svc.format(host="nicovideo.jp")])
