@@ -81,19 +81,6 @@
   "why": "防盗链",
   "ref": true
  },
- "http://wx2.sinaimg.cn/middle/008eZAxIly1iii6jhgqbpj317r0och1p.jpg": {
-  "w": 1575,
-  "h": 876,
-  "target": 720,
-  "v": 3,
-  "local": "pics/a8070006b2f73205.webp",
-  "out": [
-   1280,
-   712
-  ],
-  "why": "防盗链",
-  "ref": true
- },
  "http://wx2.sinaimg.cn/middle/008kvqgEgy1ii8qmuwbrfj31hc0u01kx.jpg": {
   "w": 1920,
   "h": 1080,
@@ -1993,11 +1980,11 @@
   ],
   "why": "看不清"
  },
- "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FKyodo%252F53%252FKyodo_1488844386926903972%252FKyodo_1488844386926903972_1.jpg,zoom=560x320,quality=100,type=jpg": {
+ "https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexnews%252Ffeed%252FJiji%252F5f%252FJiji_3901237%252FJiji_3901237_1.jpg,zoom=560x320,quality=100,type=jpg": {
+  "w": 498,
+  "h": 320,
   "target": 720,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-10-30"
+  "v": 3
  },
  "https://imgsrv2.voi.id/rxix7eJM7Gw6oZm5g4lF7VU4Bw8rvVmoYv00flG4Opk/auto/1200/675/sm/1/bG9jYWw6Ly8vcHVibGlzaGVycy81OTkyOTcvMjAyNjEwMjAyMTQzLW1haW4uanBn.jpg": {
   "w": 1200,
@@ -2941,19 +2928,6 @@
   ],
   "why": "期限付きの網址"
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-00000040-isd-000-1-view.jpg?exp=10800": {
-  "w": 800,
-  "h": 756,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.361,
-  "local": "pics/f124d794ed69982f.webp",
-  "out": [
-   800,
-   756
-  ],
-  "why": "期限付きの網址"
- },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-00010005-tennisnet-000-2-view.jpg?exp=10800": {
   "w": 2200,
   "h": 1567,
@@ -2963,19 +2937,6 @@
   "out": [
    1280,
    912
-  ],
-  "why": "期限付きの網址"
- },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261030-00193557-crankinn-000-1-view.jpg?exp=10800": {
-  "w": 650,
-  "h": 753,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.393,
-  "local": "pics/f4e2489491274a3e.webp",
-  "out": [
-   650,
-   753
   ],
   "why": "期限付きの網址"
  },
@@ -3242,6 +3203,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/18505/4399/18505-4399-1d88d749ef7d53a8cc590d2dcd19d46d-1562x1808.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1089,
+  "h": 1260,
+  "target": 1280,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4452/18505-4452-425429f0e17926ae0f8af6668ccaecfb-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1008,
   "h": 1260,
@@ -3336,8 +3303,15 @@
  "https://q5.itc.cn/q_70/images01/20260920/212db75b6fa14436a9ae38e602196ef1.jpeg": {
   "w": 360,
   "h": 616,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.598,
+  "local": "pics/d956f21667ab14a0.webp",
+  "out": [
+   748,
+   1280
+  ],
+  "why": "看不清"
  },
  "https://r2-media.wdwnt.com/2026/10/the-art-of-the-mandalorian-and-grogu-cover-1.jpg": {
   "w": 1500,

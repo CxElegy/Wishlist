@@ -47,7 +47,11 @@
     103,
     99,
     100,
-    102
+    102,
+    106,
+    107,
+    109,
+    111
    ],
    "image": "https://cdn.marvel.com/content/2x/patrick_stewart_tribute.webp"
   },
@@ -73,7 +77,8 @@
     82,
     79,
     84,
-    95
+    95,
+    110
    ],
    "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2026/08/avengers-doomsday-poster.jpg"
   },
@@ -250,7 +255,8 @@
     22,
     26,
     32,
-    33
+    33,
+    41
    ],
    "image": "https://9to5google.com/wp-content/uploads/sites/4/2026/07/S26-Ultra-Z-Fold-8-Ultra-and-Z-Fold-8.jpg?quality=82&strip=all&resize=1200,628"
   },
@@ -288,7 +294,11 @@
     38,
     35,
     36,
-    39
+    39,
+    43,
+    45,
+    42,
+    44
    ]
   },
   {
@@ -316,7 +326,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    11
+    11,
+    46
    ]
   },
   {
@@ -506,12 +517,12 @@
   }
  ],
  "_covered": {
-  "漫威电影": 105,
+  "漫威电影": 111,
   "GTA 6": 87,
-  "三星手机": 40,
+  "三星手机": 46,
   "ILLIT": 46,
   "哈利波特剧集": 18,
-  "日本顶级网球赛事": 28,
+  "日本顶级网球赛事": 34,
   "dota2": 15,
   "MMORPG 新作": 13,
   "BLEACH Mirrors High": 8,
@@ -520,8 +531,8 @@
   "星巴克马克杯": 7,
   "滑雪": 10,
   "绝区零": 8,
-  "gelato pique": 10,
-  "A2O LITE": 14,
+  "gelato pique": 14,
+  "A2O LITE": 20,
   "チェーンソーマン": 11,
   "Vaundy": 2,
   "あつ森": 8,
@@ -546,7 +557,8 @@
     15,
     16,
     18,
-    19
+    19,
+    31
    ],
    "image": "https://www.nikkansports.com/sports/news/img/202610290001904-w500_3.jpg"
   },
@@ -615,7 +627,9 @@
    "weight": "normal",
    "refs": [
     22,
-    25
+    25,
+    32,
+    33
    ]
   }
  ],
@@ -967,7 +981,8 @@
    "weight": "normal",
    "refs": [
     3,
-    6
+    6,
+    14
    ],
    "event": {
     "date": "2026-11-02",
@@ -991,7 +1006,10 @@
    "weight": "normal",
    "refs": [
     7,
-    9
+    9,
+    11,
+    12,
+    13
    ]
   }
  ],
@@ -1032,7 +1050,12 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    5
+    5,
+    17,
+    18,
+    19,
+    20,
+    16
    ]
   },
   {
